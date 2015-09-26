@@ -1,0 +1,322 @@
+#!/bin/bash
+#export DISPLAY=:0.0
+
+versuud=1.6
+
+gitsurl=https://gist.githubusercontent.com/agnostic900rr
+lckfile=/tmp/uudwn.lock
+
+#### Predefinitions ####
+aioactiondwn=false
+aioactiongcp=false
+aioactionpam=false
+
+yad --title="UU-AIO $versuud"  --center\
+	--text="UU-All-In-One Tool\nChoose Option" \
+	--form --button="UU-Downloader" \
+	--button="Google-Cloud-Print" \
+	--button="PAM-Authentification"
+
+case $? in
+	0)
+		echo "UU-Downloader"
+		prgpart="Downloader"
+		aioactiondwn=true
+	;;
+	1)
+		echo "Google-Cloud-Print"
+		prgpart="Google-Cloud-Print"
+		aioactiongcp=true
+	;;
+	2)
+		echo "PAM-Authentification"
+		prgpart="PAM-Authentification"
+		aioactionpam=true
+	;;
+	*)
+		echo "Smthing else"
+		exit
+	;;
+esac
+
+########################### gerneral functions ####################################
+function func_lockfile() {
+	exec 9>$lckfile
+	if ! flock -n 9  ; then
+		echo "# another Instance is already running" >&3;
+		echo "# exiting program" >&3;
+		exit
+	fi
+}
+
+function func_internet() {
+	if [ -e /tmp/index.google ] ; then sudo rm -f /tmp/index.google ; fi
+	wget -q --tries=10 --timeout=5 http://www.google.com -O /tmp/index.google &> /dev/null
+	sleep 3
+	if [ ! -s /tmp/index.google ] ; then
+		echo -e "# No Internet Connection!!!\nexiting program" >&3;
+		exit
+	else
+		echo "# Internet Connection available, continuing...." >&3;
+		sudo rm -f /tmp/index.google
+	fi
+}
+
+function yad_dialogue() {
+	exec 3> >(yad --progress --title="UU-$prgpart Vers.$versuud" --width=350 --height 300 --window-icon="/usr/share/icons/logo5.png" \
+		--center --auto-kill --log-on-top --enable-log="Fortschrittsanzeige" --log-expanded)
+}
+
+########################### UU Downloader ########################################
+function func_dwnloader() {
+	yad --title="UU-AIO $versuud"  --center\
+		--text="UU-Downloader\nPlease first check the Status\nThen decide to (re-)install or not" \
+		--form --button="Check Status" \
+		--button="(Re)-Install UU-Upgrades" \
+		--button="Remove UU-Upgrades"
+
+	case $? in
+		0)
+			echo "Checking Status"
+			uuaction=checkuu
+		;;
+		1)
+			echo "Re/Installing Programm"
+			uuaction=installuu
+		;;
+		2)
+			echo "Removing Programm"
+			uuaction=removeuu
+		;;
+		*)
+			echo "Smthing else"
+			exit
+		;;
+	esac
+}
+
+function func_check_install() {
+	wget -q --tries=5 --timeout=10 --no-check-certificate $gitsurl/4413392e94becde40c88/raw/uupgrades -O /tmp/uupgrdprg
+
+	if [ -s /tmp/uupgrdprg ] ; then
+		while read gitsfile ; do
+			if echo "$gitsfile" | grep "uui1=" ; then
+				oud1=$(echo "$gitsfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /tmp/uupgrdprg
+		while read gitsfile ; do
+			if echo "$gitsfile" | grep "uui2=" ; then
+				oud2=$(echo "$gitsfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /tmp/uupgrdprg
+		onlvers="$oud1.$oud2"			
+	else
+		echo "# Gits: UU-Upgrades download failed" >&3;
+		return
+	fi
+
+	echo "# checking for already installed UU-Upgrades\n" >&3;
+	if [ -e /usr/share/uupgrades/uupgrades ] ; then
+		while read instfile ; do
+			if echo "$instfile" | grep "uui1=" ; then
+				uuu1=$(echo "$instfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /usr/share/uupgrades/uupgrades
+		while read instfile ; do
+			if echo "$instfile" | grep "uui2=" ; then
+				uuu2=$(echo "$instfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /usr/share/uupgrades/uupgrades
+		echo "# UU-Upgardes already installed\n" >&3;
+		echo "# Version: $onlvers is newest available online" >&3;
+		echo "# Version: $uuu1.$uuu2 is installed on local machine\n" >&3;
+		echo "# Good-Bye" >&3;
+	elif [ -e /etc/cron.hourly/uupgrades ] ; then
+		while read instfile ; do
+			if echo "$instfile" | grep "uui1=" ; then
+				uuu1=$(echo "$instfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /etc/cron.hourly/uupgrades
+		while read instfile ; do
+			if echo "$instfile" | grep "uui2=" ; then
+				uuu2=$(echo "$instfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /etc/cron.hourly/uupgrades
+		echo "# \n*******************************************\nUU-Upgardes already as PRE-RUN installed\n*******************************************\n" >&3;
+		echo "# Version: $onlvers is newest available online" >&3;
+		echo "# Version: $uuu1.$uuu2 is installed on local machine\n" >&3;
+		echo "# Good-Bye" >&3;
+	else
+		echo "# UU-Upgrades is NOT installed on this machine" >&3;
+		echo "# Version: $onlvers is newest available online" >&3;
+		echo "# Use this program to install UU-Upgrades\n" >&3;
+		echo "# Good-Bye" >&3;
+	fi
+}
+
+function func_installation() {
+	echo "# Installing the mostly famous uupgrades Program" >&3;
+	wget -q --tries=5 --timeout=10 --no-check-certificate $gitsurl/4413392e94becde40c88/raw/uupgrades -O /tmp/uupgrdprg
+
+	if [ -s /tmp/uupgrdprg ] ; then
+		while read gitsfile ; do
+			if echo "$gitsfile" | grep "uui1=" ; then
+				uud1=$(echo "$gitsfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /tmp/uupgrdprg
+		while read gitsfile ; do
+			if echo "$gitsfile" | grep "uui2=" ; then
+				uud2=$(echo "$gitsfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /tmp/uupgrdprg			
+	else
+		echo "# Gits: UU-Upgrades download failed" >&3;
+	fi
+
+	if [ -e /tmp/uupgrdprg ] ; then
+		echo "# installing Version $uud1.$uud2 as Pre-Run!" >&3; 
+		if [ -e /usr/share/uupgrades/uupgrades ] ; then
+			echo "# removing current installation completely" >&3;
+			killall uupgrades
+			rm -r /usr/share/uupgrades/
+			rm -f /usr/share/uupgrades/uupgrades
+			rm -f /usr/bin/uupgrades
+			rm -f /tmp/uup.lock
+			systemctl daemon-reload
+			systemctl disable uupgrades.timer
+			rm -f /etc/systemd/system/uupgrades.timer
+			rm -f /etc/systemd/system/uupgrades.target
+			rm -f /etc/systemd/system/uupgrades.target.wants/uupgrades.service
+			rm -rf /etc/systemd/system/uupgrades.target.wants
+			systemctl daemon-reload
+		elif [ -e /etc/cron.hourly/uupgrades ] ; then
+			echo "# removing PRE-RUN installation completely" >&3;
+			rm -f /etc/cron.hourly/uupgrades
+		fi
+		sudo mv /tmp/uupgrdprg /etc/cron.hourly/uupgrades
+		sudo chmod +x /etc/cron.hourly/uupgrades
+		echo "# \nUU-Upgrades $uud1.$uud2 successfully installed\n" >&3;
+		echo "# UU will run automatically with the next cron-job\nand install itself to the designated locations\n" >&3;
+		echo "# Good-Bye" >&3;
+
+		yad 	--text-align=center \
+			--center --title="UU-Upgrades Start" \
+			--form --separator="," \
+			--button="Run UU-Update:1" \
+			--button=gtk-cancel:0
+		case "$?" in
+			1)
+				sudo /etc/cron.hourly/uupgrades manual
+			;;
+		esac
+	else
+		echo "# NOT INSTALLED - TRY AGAIN!\n" >&3;
+		echo "# Good-Bye" >&3;
+	fi
+}
+
+function func_uninstall_uu() {
+	echo "# uninstalling UU-Upgrades from local machine!\n" >&3; 
+	if [ -e /usr/share/uupgrades/uupgrades ] ; then
+		while read instfile ; do
+			if echo "$instfile" | grep "uui1=" ; then
+				uuu1=$(echo "$instfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /usr/share/uupgrades/uupgrades
+		while read instfile ; do
+			if echo "$instfile" | grep "uui2=" ; then
+				uuu2=$(echo "$instfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /usr/share/uupgrades/uupgrades
+		echo "# removing current installation completely" >&3;
+		killall uupgrades
+		rm -r /usr/share/uupgrades/
+		rm -f /usr/share/uupgrades/uupgrades
+		rm -f /usr/bin/uupgrades
+		rm -f /tmp/uup.lock
+		systemctl daemon-reload
+		systemctl disable uupgrades.timer
+		rm -f /etc/systemd/system/uupgrades.timer
+		rm -f /etc/systemd/system/uupgrades.target
+		rm -f /etc/systemd/system/uupgrades.target.wants/uupgrades.service
+		rm -rf /etc/systemd/system/uupgrades.target.wants
+		systemctl daemon-reload
+	fi
+	if [ -e /etc/cron.hourly/uupgrades ] ; then
+		while read instfile ; do
+			if echo "$instfile" | grep "uui1=" ; then
+				uuu1=$(echo "$instfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /etc/cron.hourly/uupgrades
+		while read instfile ; do
+			if echo "$instfile" | grep "uui2=" ; then
+				uuu2=$(echo "$instfile" |cut -d'=' -f2)
+				break
+			fi
+		done < /etc/cron.hourly/uupgrades
+		echo "# removing PRE-RUN installation completely" >&3;
+		rm -f /etc/cron.hourly/uupgrades
+	fi
+	echo "# \nUU-Upgrades $uuu1.$uuu2 removed from System!\n\nGood-Bye" >&3;
+}
+
+if [ $aioactiondwn = true ] ; then
+	func_dwnloader
+	yad_dialogue
+	case $uuaction in
+		checkuu)
+			func_lockfile
+			func_internet
+			func_check_install
+		;;
+		installuu)
+			func_lockfile
+			func_internet
+			func_installation
+		;;
+		removeuu)
+			func_lockfile
+			func_uninstall_uu
+		;;
+		*)
+			func_lockfile
+			func_internet
+			func_check_install
+		;;
+	esac
+fi
+
+if [ $aioactiongcp = true ] ; then
+	gnome-terminal -x sh -c "echo '*** First Step ***'; /usr/share/cloudprint-cups/upgrade.py; echo '*** Second Step ***'; /usr/share/cloudprint-cups/setupcloudprint.py"
+fi
+
+if [ $aioactionpam = true ] ; then
+	usbfld="$(yad --title="UU-AIO $versuud"  --center\
+		--text="UU-All-In-One Tool\nChoose Option" \
+		--separator="," \
+		--form \
+		--field="Name of USB-Stick:TEXT" \
+		--field="Enter your Username:TEXT")"
+	usbnm=$(echo "$usbfld" | cut -d, -f1)
+	subus=$(echo "$usbfld" | cut -d, -f2)
+
+	echo "STICK: $usbnm"
+	echo "USER: $subus"
+	gnome-terminal -x sh -c "echo '*** First Step ***'; pamusb-conf --add-device=$usbnm; echo '*** Second Step ***'; sudo pamusb-conf --add-user=$subus; echo '*** Third Step ***'; pamusb-check $subus"
+fi
+
+exec 3>&-
+exit
+
+

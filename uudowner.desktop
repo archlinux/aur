@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=UU All-in-One Tool
+GenericName=UU All-in-One Tool
+GenericName[de]=UU All-in-One Tool
+Comment=GUI application for downloading uupgrades, configuring PAM and Cloudprint
+Comment[de]=Programm welches die aktuelle Version von uupgrades installiert, PAM und Google Cloudprint konfiguriert
+Exec=gksudo uudownloader
+Icon=/usr/share/icons/logo5.png
+Terminal=false
+StartupNotify=false
+Encoding=UTF-8
+Categories=Utility;Security;System;
+Name[de_AT]=UU All-in-One Werkzeug
