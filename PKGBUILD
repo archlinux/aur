@@ -4,7 +4,7 @@ _name=eiskaltdcpp
 pkgbase=${_name}-git
 pkgname=${_name}-git
 pkgname=(${_name}-gtk-git ${_name}-qt-git ${_name}-daemon-git ${_name}-core-git ${_name}-data-git)
-pkgver=v2.2.10.35.gd9fe129
+pkgver=v2.2.10.82.g31355fd
 pkgrel=1
 license=('GPL3')
 arch=('i686' 'x86_64' 'arm' 'arm' 'armv7h' 'armv6h')
@@ -13,6 +13,7 @@ conflicts=('eiskaltdcpp')
 options=(!emptydirs)
 source=(git://github.com/${_name}/${_name}.git)
 sha1sums=('SKIP')
+makedepends=(gcc make cmake gtk2 libnotify qt4 bzip2 openssl lua52 libidn pcre)
 
 pkgver() {
   cd ${_name}
