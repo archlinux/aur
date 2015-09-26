@@ -1,14 +1,14 @@
 pkgbase = satyr
 	pkgdesc = Automatic problem management with anonymous reports
-	pkgver = 0.19
-	pkgrel = 2
+	pkgver = 0.20
+	pkgrel = 1
 	url = https://github.com/abrt/satyr
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = python-sphinx
-	source = https://fedorahosted.org/released/abrt/satyr-0.19.tar.xz
-	sha256sums = 3bf57cf0f26b33f9d7a9bf374233af4ce93b9d65b2f4f671070eb24768fc738d
+	source = https://fedorahosted.org/released/abrt/satyr-0.20.tar.xz
+	sha256sums = 1257339d86ea5d7b96896c5fbe9b758c07f2fc37afc290c0dabbe49b93b55624
 
 pkgname = satyr
 
