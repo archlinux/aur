@@ -3,8 +3,7 @@
 # Contributor: Arkham <arkham at archlinux dot us> 
 # Contributor: Artyom Smirnov <smirnoffjr@gmail.com>
 
-pkgname=gtk-theme-gnome-colors-revival
-_pkgname=gnome-colors-revival
+pkgname=gnome-colors-revival
 pkgver=0.1.5
 pkgrel=1
 pkgdesc='GNOME Colors icon theme'

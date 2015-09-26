@@ -1,4 +1,4 @@
-pkgbase = gtk-theme-gnome-colors-revival
+pkgbase = gnome-colors-revival
 	pkgdesc = GNOME Colors icon theme
 	pkgver = 0.1.5
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = gtk-theme-gnome-colors-revival
 	source = gnome-colors-revival-0.1.5.tar.gz::https://github.com/Somasis/gnome-colors-revival/archive/v0.1.5.tar.gz
 	sha256sums = ed185351f6e0817cec2796cd2c9952b1911260c5ee5334ed6dd117e6ce9d6f43
 
-pkgname = gtk-theme-gnome-colors-revival
+pkgname = gnome-colors-revival
 
