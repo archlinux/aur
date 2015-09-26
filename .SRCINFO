@@ -1,0 +1,17 @@
+pkgbase = insync-dolphin
+	pkgdesc = Dolphin integration for insync (kf5)
+	pkgver = 1.2.8
+	pkgrel = 3
+	url = https://www.insynchq.com/downloads
+	install = insync-dolphin.install
+	arch = any
+	license = custom:insync
+	depends = insync
+	depends = kdebase-dolphin
+	noextract = insync-dolphin-1.2.8.deb
+	options = !strip
+	source = insync-dolphin-1.2.8.deb::http://s.insynchq.com/builds/insync-dolphin_1.2.8.35136-precise_all.deb
+	sha256sums = c2c2576739c93a3779e3bfc87ded5054523c9549ca9541ff5b810a84955f24a6
+
+pkgname = insync-dolphin
+

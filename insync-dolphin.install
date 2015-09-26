@@ -1,0 +1,23 @@
+show_message() {
+   if [ -f /usr/share/kde4/services/ServiceMenus/insync-kde-menu.desktop ]; then
+      echo ">>> If you use KDE, two optional plasmoids can be downloaded from here:"
+      echo ">>> http://s.insynchq.com/builds/insync.plasmoid"
+      echo ">>> http://s.insynchq.com/builds/gdrive_webview.plasmoid"
+      echo ">>> Help installing Plasmoids:"
+      echo ">>> http://userbase.kde.org/Plasma/Installing_Plasmoids"
+   fi
+   echo ">>> If you want to run insync daemon automatically on boot, please type:"
+   echo ">>> systemctl enable insync@<your_user_name>"
+}
+
+post_install() {
+   show_message
+}
+
+post_upgrade() {
+   show_message
+}
+
+post_remove() {
+   return 1
+}
