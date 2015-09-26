@@ -2,7 +2,7 @@
 
 pkgname=uudownloader
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Downloader for uupgrades - only gets the program"
 arch=('any')
 url="http://manjaro.org"
@@ -10,10 +10,10 @@ license=('GPL3')
 makedepends=('zip')
 depends=('yad' 'gksu')
 options=('!strip')
-md5sums=('c6d4a4b95971e2dcb6ae6acbb2aaadd1'
+md5sums=('1228dd97314c702859d44cf1d8df6508'
 	 '5ffbc62685af0fd585ce85d5dea11014')
 
-source=("https://dl.dropboxusercontent.com/u/9839330/uupgrades/AUR-Files/uudownloader-$pkgver.tar.gz"
+source=("https://dl.dropboxusercontent.com/u/9839330/uupgrades/AUR-Files/uudownloader/uudownloader-$pkgver.tar.gz"
 	"uudowner.desktop")
 
 package() {
