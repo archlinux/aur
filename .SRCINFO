@@ -1,7 +1,7 @@
 pkgbase = nginx-passenger-git
 	pkgdesc = A fast and robust web server and application server for Ruby, Python, and Node.js
-	pkgver = 5.0.15.r12.g4595e9a
-	pkgrel = 1
+	pkgver = 5.0.20.r1.g696779e
+	pkgrel = 2
 	url = https://www.phusionpassenger.com
 	install = nginx-passenger-git.install
 	arch = i686

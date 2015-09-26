@@ -2,8 +2,8 @@
 _nginxver=1.8.0
 
 pkgname=nginx-passenger-git
-pkgver=5.0.15.r12.g4595e9a
-pkgrel=1
+pkgver=5.0.20.r1.g696779e
+pkgrel=2
 pkgdesc='A fast and robust web server and application server for Ruby, Python, and Node.js'
 arch=('i686' 'x86_64')
 url='https://www.phusionpassenger.com'
@@ -85,7 +85,7 @@ build() {
     --with-http_secure_link_module \
     --with-http_sub_module \
     --with-http_geoip_module \
-    --add-module="$srcdir/passenger/ext/nginx"
+    --add-module="$srcdir/passenger/src/nginx_module"
 
   make
 }
@@ -138,21 +138,22 @@ package() {
   install -Dm755 buildout/support-binaries/PassengerAgent \
     "$pkgdir"/usr/lib/passenger/support-binaries/PassengerAgent
 
-  install -d "$pkgdir"/usr/share/passenger
-  mv helper-scripts/ "$pkgdir"/usr/share/passenger/
+  install -d "$pkgdir"/usr/share/passenger/
+  mv src/helper-scripts/ "$pkgdir"/usr/share/passenger/
 
   install -d "$pkgdir"/usr/lib/ruby/vendor_ruby
-  mv lib/* "$pkgdir"/usr/lib/ruby/vendor_ruby/
+  mv src/ruby_supportlib/* "$pkgdir"/usr/lib/ruby/vendor_ruby/
 
   install -Dm644 "$srcdir"/locations.ini "$pkgdir"/usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini
 
+  install -d "$pkgdir"/usr/share/phusion-passenger/ngx_http_passenger_module
+  mv src/nginx_module/* "$pkgdir"/usr/share/phusion/ngx_http_passenger_module/
+
   install -d "$pkgdir"/usr/share/passenger/ruby_extension_source
-  mv ext/ruby/* "$pkgdir"/usr/share/passenger/ruby_extension_source/
+  mv src/ruby_native_extension/* "$pkgdir"/usr/share/passenger/ruby_extension_source/
 
-  install -d "$pkgdir"/usr/share/passenger/ngx_http_passenger_module
-  mv ext/nginx/* "$pkgdir"/usr/share/passenger/ngx_http_passenger_module/
-
-  mv node_lib/ "$pkgdir"/usr/share/passenger/
+  install -d "$pkgdir"/usr/share/passenger/node
+  mv src/nodejs_supportlib/phusion_passenger/* "$pkgdir"/usr/share/passenger/node/
 
   install -d "$pkgdir"/usr/share/doc/passenger
   mv doc/* "$pkgdir"/usr/share/doc/passenger/
