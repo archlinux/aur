@@ -1,14 +1,14 @@
 # Maintainer: Eduardo Sánchez Muñoz
 
 pkgname=cling-git
-pkgver=r2631.4b08f20
+pkgver=r2663.040bad9
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
 url="https://root.cern.ch/drupal/content/cling"
 license=('custom:Cling Release License')
 depends=('libffi')
-makedepends=('libffi' 'clang' 'git' 'python2' 'make')
+makedepends=('cmake' 'libffi' 'clang' 'git' 'python2')
 options=()
 conflicts=()
 provides=()
@@ -35,32 +35,31 @@ prepare() {
 build() {
 	cd "$srcdir"
 	
-	rm -rf "$srcdir/cling-build"
 	mkdir -p "$srcdir/cling-build"
 	cd "$srcdir/cling-build"
 	
-	CPPFLAGS+=" $(pkg-config --cflags libffi)"
+	cmake \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX="/opt/cling" \
+		-DLLVM_BUILD_LLVM_DYLIB=OFF \
+		-DLLVM_ENABLE_RTTI=ON \
+		-DLLVM_ENABLE_FFI=ON \
+		-DLLVM_BUILD_DOCS=OFF \
+		-DLLVM_ENABLE_SPHINX=OFF \
+		-DLLVM_ENABLE_DOXYGEN=OFF \
+		-DFFI_INCLUDE_DIR=$(pkg-config --cflags-only-I libffi | cut -c3-) \
+		"$srcdir/llvm"
 	
-	"$srcdir/llvm/configure" \
-		--prefix="/opt/cling" \
-		--sysconfdir=/etc \
-		--enable-cxx11 \
-		--enable-libffi \
-		--with-python=python2 \
-		--enable-targets=host \
-		--enable-bindings=none \
-		--enable-optimized \
-		--disable-expensive-checks \
-		--disable-debug-runtime \
-		--disable-assertions
 	make
 }
 
 package() {
 	cd "$srcdir/cling-build"
-	make DESTDIR="$pkgdir" install
+	make -C tools/clang DESTDIR="$pkgdir" install
+	make -C tools/cling DESTDIR="$pkgdir" install
 	
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/cling/bin/cling" "$pkgdir/usr/bin/cling"
+	
 	install -Dm644 "$srcdir/llvm/tools/cling/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
