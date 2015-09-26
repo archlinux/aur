@@ -1,0 +1,15 @@
+pkgbase = python-openmdao
+	pkgdesc = An open-source engineering analysis framework
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://openmdao.org/
+	arch = any
+	license = apache
+	makedepends = python-setuptools
+	depends = python-scipy
+	depends = python-networkx
+	source = https://github.com/OpenMDAO/OpenMDAO/archive/1.1.1.tar.gz
+	md5sums = 3265ba4b909efbb56e36cf77d282b2fe
+
+pkgname = python-openmdao
+
