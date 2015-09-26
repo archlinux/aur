@@ -69,7 +69,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch'
 pkgver='1.6'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686'
       'x86_64')
@@ -131,9 +131,9 @@ disable_module() {
 }
 
 build() {
-  mkdir -p /var/tmp/bin
-  ln -sf /usr/bin/python2 /var/tmp/bin/python
-  PATH="/var/tmp/bin:${PATH}"
+  mkdir -p ${pkgdir}/bin
+  ln -sf /usr/bin/python2 ${pkgdir}/bin/python
+  PATH="${pkgdir}/bin:${PATH}"
   cd ${srcdir}/${_pkgname}
 
   # BUILD BEGINS
@@ -176,8 +176,8 @@ build() {
   make
 
   PATH=${_pathorig}
-  rm -f /var/tmp/bin/python
-  rmdir /var/tmp/bin
+  rm -f ${pkgdir}/bin/python
+  rmdir ${pkgdir}/bin
 }
 
 enable_mod_xml() {
