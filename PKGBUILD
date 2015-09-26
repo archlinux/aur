@@ -8,7 +8,7 @@
 _pkgbase='rxvt-unicode'
 pkgname='rxvt-unicode-fontspacing-noinc-vteclear-secondarywheel'
 pkgver=9.21
-pkgrel=2
+pkgrel=3
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing, no increment resizing, clear patched to behave like VTEs (keep all lines) and secondaryWheel.'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -42,9 +42,9 @@ prepare() {
 build() {
   cd $_pkgbase-$pkgver
   # we disable smart-resize (FS#34807)
+  # do not specify --with-terminfo (FS#46424)
   ./configure \
     --prefix=/usr \
-    --with-terminfo=/usr/share/terminfo \
     --enable-256-color \
     --enable-combining \
     --enable-fading \
