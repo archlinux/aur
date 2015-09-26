@@ -1,6 +1,6 @@
 pkgbase = cen64-qt-git
 	pkgdesc = A basic frontend for CEN64
-	pkgver = 20150915
+	pkgver = 20150926
 	pkgrel = 1
 	url = https://github.com/dh4/cen64-qt
 	install = cen64-qt-git.install

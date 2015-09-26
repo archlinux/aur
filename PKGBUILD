@@ -1,5 +1,5 @@
 pkgname=cen64-qt-git
-pkgver=20150915
+pkgver=20150926
 pkgrel=1
 pkgdesc="A basic frontend for CEN64"
 arch=('i686' 'x86_64')
@@ -11,11 +11,16 @@ install=cen64-qt-git.install
 _gitroot='https://github.com/dh4/cen64-qt.git'
 _gitname='cen64-qt'
 
-build() {
+prepare() {
     cd "$srcdir"
     git clone "$_gitroot"
-    cd "$_gitname"
-    
+}
+
+build() {
+    cd "$srcdir/$_gitname"
+
+    sed -i 's#include <quazip/#include <quazip5/#g' src/common.h
+
     ./build-scripts/revision.sh
     qmake-qt5
     make
