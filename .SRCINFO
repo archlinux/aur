@@ -1,6 +1,6 @@
 pkgbase = python-counterparty-lib
 	pkgdesc = Counterparty Protocol Reference Implementation
-	pkgver = 9.51.3
+	pkgver = 9.51.4
 	pkgrel = 1
 	url = https://github.com/CounterpartyXCP/counterparty-lib
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = python-counterparty-lib
 	optdepends = ethereum: compile Solidity contract code
 	optdepends = ethereum-serpent: compile Serpent contract code
 	options = !emptydirs
-	source = python-counterparty-lib-9.51.3.tar.gz::https://codeload.github.com/CounterpartyXCP/counterparty-lib/tar.gz/v9.51.3
-	sha256sums = 89a9ef92fadcd4419e13fa5799ee5e46cf495d60e3aec31d48c2b954c43a6976
+	source = python-counterparty-lib-9.51.4.tar.gz::https://codeload.github.com/CounterpartyXCP/counterparty-lib/tar.gz/v9.51.4
+	sha256sums = 19c42f425cf4c1837ca407e3d0ce427db7198d12b0c81e5ea3f6a9e1cd73b852
 
 pkgname = python-counterparty-lib
 
