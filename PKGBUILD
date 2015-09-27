@@ -2,8 +2,8 @@
 # Maintainer: Ivailo Monev <xakepa10@gmail.com>
 
 pkgname=copperspice-git
-pkgver=1.2.92e2c75
-pkgrel=2
+pkgver=1.2.022bcf5
+pkgrel=1
 pkgdesc='C++ library derived from the existing Qt 4.8 framework'
 arch=('i686' 'x86_64')
 url='http://www.copperspice.com/'
@@ -36,18 +36,14 @@ build() {
         -DCMAKE_SKIP_RPATH=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-        -DCMAKE_INSTALL_INCLUDEDIR=include/copperspice
+        -DCMAKE_INSTALL_INCLUDEDIR=include/copperspice \
+        -DTOOLS_SUFFIX=-cs
     make
 }
 
 package() {
     cd build
     make DESTDIR="${pkgdir}" install
-
-    # avoid conflicts with qt5 package
-    for tool in "${pkgdir}/usr/bin/"*;do
-        mv -v "${tool}" "${tool}-cs"
-    done
 
     install -vDm644 ../copperspice/license/LGPL_EXCEPTION.txt \
         "${pkgdir}/usr/share/licenses/copperspice-git/LGPL_EXCEPTION.txt"
