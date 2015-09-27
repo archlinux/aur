@@ -1,0 +1,21 @@
+pkgbase = mlton-git
+	pkgdesc = Whole-program, optimizing Standard ML compiler
+	pkgver = r6666.c611cbb
+	pkgrel = 1
+	url = http://www.mlton.org/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	license = MIT
+	license = LGPL
+	makedepends = mlton
+	depends = bash
+	depends = gmp
+	optdepends = python
+	provides = ${pkgname%-git}
+	conflicts = ${pkgname%-git}
+	source = mlton::git+https://github.com/MLton/mlton.git
+	md5sums = SKIP
+
+pkgname = mlton-git
+
