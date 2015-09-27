@@ -1,8 +1,8 @@
 # Maintainer: Remy Adriaanse <remy@adriaanse.it>
 
-_gemname=net-scp
-pkgname=ruby-$_gemname
+pkgname=ruby-net-scp
 pkgver=1.2.1
+_gemname=net-scp
 pkgrel=1
 pkgdesc='A pure Ruby implementation of the SCP client protocol'
 arch=(any)
