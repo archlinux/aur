@@ -1,14 +1,14 @@
 pkgbase = android-google-play-services
 	pkgdesc = Google Play Services client library and sample code
-	pkgver = r26
+	pkgver = r27
 	pkgrel = 1
 	url = https://developers.google.com/android/google-play-services/
 	arch = any
 	license = custom
 	options = !strip
-	source = http://dl.google.com/android/repository/google_play_services_7895000_r26.zip
+	source = http://dl.google.com/android/repository/google_play_services_8115000_r27.zip
 	source = source.properties
-	md5sums = 941d49a030d87cfb2c68b131c9d26f45
+	md5sums = 56439484a09ea1153ac21cab295e1561
 	md5sums = 3bc21395b7a8182cd8442a0b4ceb02ac
 
 pkgname = android-google-play-services
