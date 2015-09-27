@@ -1,5 +1,5 @@
 pkgbase = multimarkdown
-	pkgdesc = C implementation of MultiMarkdown
+	pkgdesc = A superset of Markdown with various output formats
 	pkgver = 4.7.1
 	pkgrel = 1
 	url = http://fletcherpenney.net/multimarkdown/

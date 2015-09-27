@@ -5,7 +5,7 @@
 pkgname=multimarkdown
 pkgver=4.7.1
 pkgrel=1
-pkgdesc="C implementation of MultiMarkdown"
+pkgdesc="A superset of Markdown with various output formats"
 arch=("i686" "x86_64")
 url="http://fletcherpenney.net/multimarkdown/"
 license=("GPL2" "MIT")
