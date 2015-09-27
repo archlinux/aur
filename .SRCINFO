@@ -1,0 +1,17 @@
+pkgbase = python-pep8-naming-git
+	pkgdesc = This module provides a name plugin for flake8, the Python code checker.
+	pkgver = 0.3.3.r0.gfe9bce0
+	pkgrel = 1
+	url = https://github.com/flintwork/pep8-naming
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-${_pkgname}
+	conflicts = python-${_pkgname}
+	source = git+https://github.com/flintwork/pep8-naming
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-pep8-naming-git
+
