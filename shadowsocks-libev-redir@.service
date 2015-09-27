@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
+User=nobody
 ExecStart=/usr/bin/ss-redir -c /etc/shadowsocks/%i.json
 
 [Install]
