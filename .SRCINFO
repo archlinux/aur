@@ -1,12 +1,12 @@
 pkgbase = webstorm
 	pkgdesc = JavaScript IDE and HTML editor.
 	pkgver = 10.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/webstorm
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = java-runtime
+	depends = java-environment
 	options = !strip
 	source = http://download.jetbrains.com/webstorm/WebStorm-10.0.4.tar.gz
 	source = jetbrains-webstorm

@@ -4,13 +4,13 @@ pkgname=webstorm
 _pkgname=WebStorm
 pkgver=10.0.4
 _pkgver=141.1550
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaScript IDE and HTML editor."
 arch=('i686' 'x86_64')
 options=('!strip')
 url="http://www.jetbrains.com/${pkgname}"
 license=('custom')
-depends=('java-runtime')
+depends=('java-environment')
 source=(http://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         jetbrains-webstorm
         jetbrains-webstorm.desktop)
