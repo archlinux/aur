@@ -1,0 +1,9 @@
+post_install() {
+    echo "The Project Generator is in /opt/openFrameworks/apps/projectGenerator/projectGeneratorSimple."
+    echo -e "To initialize the workspace needed for openFrameworks launching the command: \033[0;32mof-make-workspace\033[0m"
+    echo "this command will initialize a workspace folder in your home directory."
+}
+
+post_update() {
+    echo -e "Remeber to regenerate your local workspace using: \033[0;32mof-make-workspace\033[0m".
+}

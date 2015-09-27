@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo -e "Initializing local workspace for openFrameworks..."
+
+WS=~/of-workspace
+
+mkdir -p $WS
+cd $WS
+
+cp -R /opt/openFrameworks/addons .
+
+mkdir -p apps/myApps
+
+cd apps
+
+cp -R /opt/openFrameworks/projectGenerator .
+
+cd myApps
+
+ln -s /opt/openFrameworks/apps/myApps/emptyExample
+
+cd ../..
+
+ln -s /opt/openFrameworks/CHANGELOG.md
+ln -s /opt/openFrameworks/docs
+ln -s /opt/openFrameworks/examples
+ln -s /opt/openFrameworks/export
+ln -s /opt/openFrameworks/INSTALL.md
+cp -R /opt/openFrameworks/libs .
+ln -s /opt/openFrameworks/LICENSE.md
+ln -s /opt/openFrameworks/other
+cp -R /opt/openFrameworks/projectGenerator .
+ln -s /opt/openFrameworks/README.md
+ln -s /opt/openFrameworks/scripts

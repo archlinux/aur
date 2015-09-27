@@ -1,0 +1,24 @@
+pkgbase = openframeworks
+	pkgdesc = openFrameworks is an open source C++ toolkit for creative coding.
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = http://openframeworks.cc/
+	install = openframeworks.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = cairo
+	depends = mpg123
+	depends = gst-plugins-ugly
+	depends = freeimage
+	depends = gst-libav
+	depends = python-lxml
+	optdepends = codeblocks
+	optdepends = xterm
+	source = http://www.openframeworks.cc/versions/v0.8.4/of_v0.8.4_linux64_release.tar.gz
+	source = of-make-workspace
+	md5sums = 8465ecdaf86a45f0e0f43443e98966fe
+	md5sums = 6a6111a7a98279498899ef0eba789589
+
+pkgname = openframeworks
+
