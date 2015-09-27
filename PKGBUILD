@@ -9,10 +9,10 @@ arch=('i686' 'x86_64')
 url="http://namecoin.info"
 makedepends=('boost' 'qt5-base' 'miniupnpc' 'desktop-file-utils' 'qt5-tools')
 license=('MIT')
-source=(https://github.com/namecoin/namecoin/archive/nc$pkgver.tar.gz
+source=(https://github.com/namecoin/namecoin-legacy/archive/nc$pkgver.tar.gz
 	'namecoin-qt.desktop')
-sha256sums=('3f5e5af95cea46111d3cf1663f0e84d5fda653917745e0607a3ca4773baea59c'
-	    'd58f684fb11d8879c5f9fe7ab6c70f1a522d4f76a885e39a2e15157c1d30522e')
+sha256sums=('16646061ffe756a7f8b35e8f9e1a5f133cea9239ca68c0d39edcc61fc4010b94'
+            'd58f684fb11d8879c5f9fe7ab6c70f1a522d4f76a885e39a2e15157c1d30522e')
 
 build() {
   cd "$srcdir/$pkgbase-nc$pkgver/"

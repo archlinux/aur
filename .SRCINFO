@@ -10,9 +10,9 @@ pkgbase = namecoin
 	makedepends = miniupnpc
 	makedepends = desktop-file-utils
 	makedepends = qt5-tools
-	source = https://github.com/namecoin/namecoin/archive/nc0.3.80.tar.gz
+	source = https://github.com/namecoin/namecoin-legacy/archive/nc0.3.80.tar.gz
 	source = namecoin-qt.desktop
-	sha256sums = 3f5e5af95cea46111d3cf1663f0e84d5fda653917745e0607a3ca4773baea59c
+	sha256sums = 16646061ffe756a7f8b35e8f9e1a5f133cea9239ca68c0d39edcc61fc4010b94
 	sha256sums = d58f684fb11d8879c5f9fe7ab6c70f1a522d4f76a885e39a2e15157c1d30522e
 
 pkgname = namecoin-qt
