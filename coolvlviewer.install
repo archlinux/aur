@@ -15,7 +15,7 @@ post_upgrade() {
 	echo ">>> of the file /opt/coolvlviewer/cool_vl_viewer ."
 #	echo ">>> Currently the file is set for use with OSS."
 #	echo ">>> New version of settings file is:"
-	echo ">>> ~/.secondlife/user_settings/settings_coolvlviewer_12614.xml."
+#	echo ">>> ~/.secondlife/user_settings/settings_coolvlviewer_12614.xml."
 
 }
 
