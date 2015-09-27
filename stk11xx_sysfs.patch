@@ -1,0 +1,21 @@
+--- stk11xx-driver.pristine/stk11xx-sysfs.c	2015-01-10 15:16:02.840106809 +0100
++++ stk11xx-driver.new/stk11xx-sysfs.c	2015-01-10 15:18:56.556126613 +0100
+@@ -488,12 +488,12 @@
+ static DEVICE_ATTR(videostatus, S_IRUGO, show_videostatus, NULL);									/**< Video status */
+ static DEVICE_ATTR(informations, S_IRUGO, show_informations, NULL);									/**< Informations */
+ static DEVICE_ATTR(fps, S_IRUGO, show_fps, NULL);													/**< FPS value */
+-static DEVICE_ATTR(brightness, S_IRUGO | S_IWUGO, show_brightness, store_brightness);				/**< Brightness value */
+-static DEVICE_ATTR(contrast, S_IRUGO | S_IWUGO, show_contrast, store_contrast);						/**< Contrast value */
+-static DEVICE_ATTR(whitebalance, S_IRUGO | S_IWUGO, show_whitebalance, store_whitebalance);			/**< Whitebalance value */
+-static DEVICE_ATTR(colour, S_IRUGO | S_IWUGO, show_colour, store_colour);							/**< Hue value */
+-static DEVICE_ATTR(hflip, S_IRUGO | S_IWUGO, show_hflip, store_hflip);								/**< Horizontal filp value */
+-static DEVICE_ATTR(vflip, S_IRUGO | S_IWUGO, show_vflip, store_vflip);								/**< Vertical filp value */
++static DEVICE_ATTR(brightness, 0660, show_brightness, store_brightness);				/**< Brightness value */
++static DEVICE_ATTR(contrast, 0660, show_contrast, store_contrast);						/**< Contrast value */
++static DEVICE_ATTR(whitebalance, 0660, show_whitebalance, store_whitebalance);			/**< Whitebalance value */
++static DEVICE_ATTR(colour, 0660, show_colour, store_colour);							/**< Hue value */
++static DEVICE_ATTR(hflip, 0660, show_hflip, store_hflip);								/**< Horizontal filp value */
++static DEVICE_ATTR(vflip, 0660, show_vflip, store_vflip);								/**< Vertical filp value */
+ 
+ 
+ /** 

@@ -1,0 +1,11 @@
+--- old/stk11xx-v4l.c	2015-09-26 18:38:59.611483232 +0200
++++ stk11xx-v4l.c	2015-09-26 18:51:21.339749268 +0200
+@@ -1559,7 +1559,7 @@ static struct v4l2_file_operations v4l_s
+ 	.read = v4l_stk11xx_read,
+ 	.poll = v4l_stk11xx_poll,
+ 	.mmap = v4l_stk11xx_mmap,
+-	.ioctl = v4l_stk11xx_ioctl,
++	.unlocked_ioctl = v4l_stk11xx_ioctl,
+ #if defined(CONFIG_COMPAT) && defined(v4l_compat_ioctl32)
+ 	.compat_ioctl = v4l_compat_ioctl32,
+ #endif

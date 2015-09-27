@@ -1,0 +1,49 @@
+diff -urp ./old/stk11xx.h ./stk11xx.h
+--- ./old/stk11xx.h	2012-03-10 10:03:12.000000000 +0100
++++ ./stk11xx.h	2013-08-05 22:50:00.000000000 +0200
+@@ -33,6 +33,7 @@
+ 
+ #ifndef STK11XX_H
+ #define STK11XX_H
++#include <media/v4l2-device.h>
+ 
+ #define DRIVER_NAME					"stk11xx"					/**< Name of this driver */
+ #define DRIVER_VERSION				"v3.0.0"					/**< Version of this driver */
+@@ -316,6 +317,7 @@ struct stk11xx_video {
+  * @struct usb_stk11xx
+  */
+ struct usb_stk11xx {
++	struct v4l2_device v4l2_dev;
+ 	struct video_device *vdev; 			/**< Pointer on a V4L2 video device */
+ 	struct usb_device *udev;			/**< Pointer on a USB device */
+ 	struct usb_interface *interface;	/**< Pointer on a USB interface */
+diff -urp ./old/stk11xx-v4l.c ./stk11xx-v4l.c
+--- ./old/stk11xx-v4l.c	2012-03-10 09:54:57.000000000 +0100
++++ ./stk11xx-v4l.c	2013-08-05 22:51:12.000000000 +0200
+@@ -1498,9 +1498,17 @@ int v4l_stk11xx_register_video_device(st
+ {
+ 	int err;
+ 
++	err = v4l2_device_register(&dev->interface->dev, &dev->v4l2_dev);
++	if (err < 0) {
++		STK_ERROR("couldn't register v4l2_device\n");
++		kfree(dev);
++		return err;
++	}
++
+ 	strcpy(dev->vdev->name, DRIVER_DESC);
+ 
+-	dev->vdev->parent = &dev->interface->dev;
++//	dev->vdev->parent = &dev->interface->dev;
++	dev->vdev->v4l2_dev = &dev->v4l2_dev;
+ 	dev->vdev->fops = &v4l_stk11xx_fops;
+ 	dev->vdev->release = video_device_release;
+ 	dev->vdev->minor = -1;
+@@ -1533,6 +1541,7 @@ int v4l_stk11xx_unregister_video_device(
+ 
+ 	video_set_drvdata(dev->vdev, NULL);
+ 	video_unregister_device(dev->vdev);
++	v4l2_device_unregister(&dev->v4l2_dev);
+ 
+ 	return 0;
+ }

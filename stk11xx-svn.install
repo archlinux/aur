@@ -1,0 +1,16 @@
+post_install()
+{
+  depmod $(cat /lib/modules/extramodules-`uname -r | sed "s/\([0-9]\+.[0-9]\+\).*/\1/"`-ARCH/version)
+}
+
+post_upgrade()
+{
+  post_install
+}
+
+post_remove()
+{
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:

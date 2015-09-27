@@ -1,0 +1,11 @@
+--- ./old/stk11xx-dev.c	2011-06-13 21:44:35.630053000 +0200
++++ ./stk11xx-dev.c	2015-09-27 15:14:41.051877270 +0200
+@@ -208,7 +208,7 @@ int dev_stk11xx_check_device(struct usb_
+ 		}
+ 		else if ((value == 0x04) || (value == 0x05))
+ 			return 1;
+-		else if (value == 0x15) 
++		else if (value == 0x15 || (value == 0x0C))
+ 			return 1;
+ 		else {
+ 			STK_ERROR("Check device return error (0x0201 = %02X) !\n", value);
