@@ -1,0 +1,15 @@
+pkgbase = perl-devel-refactor
+	pkgdesc = Devel::Refactor - Perl extension for refactoring Perl code
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-Refactor/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SS/SSOTKA/Devel-Refactor-0.05.tar.gz
+	sha256sums = 1d8338ea6ada6c7e388c9ff1cce07cdc20e4937d1981a8d778bc2b6956358a57
+
+pkgname = perl-devel-refactor
+
