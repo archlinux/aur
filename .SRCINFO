@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-theme-viva-git
+	pkgdesc = A custom gnome-shell theme named viva
+	pkgver = 3.18.0.110.4023c49
+	pkgrel = 1
+	url = https://github.com/vivaeltopo/gnome-shell-theme-viva
+	arch = any
+	groups = gnome-shell-extensions
+	license = GPL3
+	depends = gnome-shell>=3.18
+	source = git+https://github.com/vivaeltopo/gnome-shell-theme-viva.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-theme-viva-git
+
