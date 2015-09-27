@@ -1,0 +1,14 @@
+pkgbase = crand
+	pkgdesc = Randomizer of text strings
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/loctauxphilippe/crand
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = https://github.com/loctauxphilippe/crand/archive/0.3.tar.gz
+	md5sums = 5509d5106101f9b7545971ad3597dcb5
+
+pkgname = crand
+
