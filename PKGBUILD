@@ -13,12 +13,12 @@ _EOF_
 
 pkgname=rstudio-desktop-bin
 pkgver=0.99.484
-pkgrel=4
+pkgrel=5
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r>=2.11.1' 'shared-mime-info' 'gstreamer' 'hicolor-icon-theme' 'libedit' 'ncurses')
+depends=('r>=2.11.1' 'shared-mime-info' 'gstreamer' 'hicolor-icon-theme' 'libedit')
 makedepends=('patchelf')
 #'qt5-imageformats' 'qt5-webkit'
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin')
