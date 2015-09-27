@@ -1,7 +1,7 @@
 pkgbase = i3-workspace-switch-git
 	pkgdesc = Utility to allow switching workspaces by their position on the output
-	pkgver = r0.2.dev0.gcb7f6de
-	pkgrel = 3
+	pkgver = 0.2.dev0.gcb7f6de
+	pkgrel = 1
 	url = https://github.com/languitar/i3-workspace-switch
 	arch = any
 	license = LGPL3
