@@ -1,6 +1,6 @@
 # $Id: PKGBUILD 68685 2012-03-31 16:54:07Z arodseth $
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-docs
