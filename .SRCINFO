@@ -1,0 +1,16 @@
+pkgbase = rolo-git
+	pkgdesc = Tracks your contacts with vCards and displays them to you with a text-based menu.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/yourealwaysbe/rolo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	depends = ncurses
+	depends = libvc-git
+	source = git://github.com/yourealwaysbe/rolo.git
+	md5sums = SKIP
+
+pkgname = rolo-git
+
