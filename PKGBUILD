@@ -3,25 +3,13 @@
 # Contributor: xduugu
 
 pkgname=linux-firmware-git
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for Linux"
 makedepends=('git')
 arch=('any')
 url="http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
-conflicts=('linux-firmware-git'
-           'kernel26-firmware'
-           'ar9170-fw'
-           'iwlwifi-1000-ucode'
-           'iwlwifi-3945-ucode'
-           'iwlwifi-4965-ucode'
-           'iwlwifi-5000-ucode'
-           'iwlwifi-5150-ucode'
-           'iwlwifi-6000-ucode'
-           'rt2870usb-fw'
-           'rt2x00-rt61-fw'
-           'rt2x00-rt71w-fw'
-           'amd-ucode')
+conflicts=('linux-firmware')
 pkgver=20150924.f88e5c2
 provides=("linux-firmware=$pkgver")
 options=(!strip)

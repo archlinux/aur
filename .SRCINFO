@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-git
 	pkgdesc = Firmware files for Linux
 	pkgver = 20150924.f88e5c2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
 	license = GPL2
@@ -9,19 +9,7 @@ pkgbase = linux-firmware-git
 	license = custom
 	makedepends = git
 	provides = linux-firmware=20150924.f88e5c2
-	conflicts = linux-firmware-git
-	conflicts = kernel26-firmware
-	conflicts = ar9170-fw
-	conflicts = iwlwifi-1000-ucode
-	conflicts = iwlwifi-3945-ucode
-	conflicts = iwlwifi-4965-ucode
-	conflicts = iwlwifi-5000-ucode
-	conflicts = iwlwifi-5150-ucode
-	conflicts = iwlwifi-6000-ucode
-	conflicts = rt2870usb-fw
-	conflicts = rt2x00-rt61-fw
-	conflicts = rt2x00-rt71w-fw
-	conflicts = amd-ucode
+	conflicts = linux-firmware
 	options = !strip
 	source = linux-firmware-git::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 	md5sums = SKIP
