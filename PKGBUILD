@@ -3,7 +3,7 @@
 _gemname=nokogiri
 pkgname="ruby-${_gemname}"
 pkgver=1.6.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML, XML, SAX, and Reader parser'
 arch=('any')
 url='http://nokogiri.org'
