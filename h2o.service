@@ -1,6 +1,6 @@
 [Unit]
 Description=H2O - the optimized HTTP/1, HTTP/2 server
-After=network.target nss-lookup.target remote-fs.target
+After=network-online.target nss-lookup.target remote-fs.target
 
 [Service]
 Type=simple
