@@ -1,0 +1,17 @@
+pkgbase = tutch-git
+	pkgdesc = Whole-program, optimizing Standard ML compiler
+	pkgver = 0
+	pkgrel = 1
+	url = http://www2.tcs.ifi.lmu.de/~abel/tutch/
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = mlton-git
+	depends = gmp
+	provides = tutch
+	conflicts = tutch
+	source = tutch::git+https://github.com/rmanne/tutch.git
+	md5sums = SKIP
+
+pkgname = tutch-git
+
