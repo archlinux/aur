@@ -1,7 +1,7 @@
 pkgbase = libyuv-git
 	pkgdesc = A library for YUV scaling (git)
-	pkgver = 0.000001
-	pkgrel = 3
+	pkgver = r1445.0735245
+	pkgrel = 1
 	url = https://github.com/lemenkov/libyuv
 	arch = i686
 	arch = x86_64

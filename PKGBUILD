@@ -1,8 +1,8 @@
 # Maintainer: brent s. <bts (AT) square-r00t [dot] net>
 pkgname=libyuv-git
 _pkgname=libyuv
-pkgver=0.000001
-pkgrel=3
+pkgver=r1445.0735245
+pkgrel=1
 pkgdesc="A library for YUV scaling (git)"
 arch=('i686' 'x86_64')
 url="https://github.com/lemenkov/libyuv"
@@ -15,7 +15,7 @@ source=('git+https://github.com/lemenkov/libyuv.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
