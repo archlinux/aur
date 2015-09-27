@@ -1,17 +1,17 @@
 pkgbase = fred
 	pkgdesc = Digital forensics tool for viewing and reporting on Windows registry files
 	pkgver = 0.1.1
-	pkgrel = 6
-	url = https://www.pinguin.lu/index.php
+	pkgrel = 7
+	url = https://www.pinguin.lu/fred
 	arch = i686
 	arch = x86_64
-	license = LGPL3
+	license = GPL3
 	makedepends = qtwebkit
 	makedepends = qt4
 	makedepends = hivex
 	depends = qt4
 	depends = hivex
-	options = !emptydirs
+	conflicts = fred
 	source = http://files.pinguin.lu/fred-0.1.1.tar.gz
 	md5sums = fdc7ea67a83f2632f2de662f254c9708
 
