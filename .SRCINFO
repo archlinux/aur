@@ -1,0 +1,14 @@
+pkgbase = python-py010parser
+	pkgdesc = Library parsing 010 templates into an AST.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/d0c-s4vage/py010parser
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/d0c-s4vage/py010parser/archive/v0.1.6.tar.gz
+	md5sums = ee3d5c1a308dd11de2e4cd5c81a52456
+
+pkgname = python-py010parser
+
