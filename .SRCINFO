@@ -1,0 +1,19 @@
+pkgbase = libvc-git
+	pkgdesc = vCard library, part of rolo project.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/yourealwaysbe/libvc
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = flex
+	makedepends = git
+	makedepends = autoconf
+	depends = glibc
+	provides = libvc
+	conflicts = libvc
+	source = git://github.com/yourealwaysbe/libvc.git
+	md5sums = SKIP
+
+pkgname = libvc-git
+
