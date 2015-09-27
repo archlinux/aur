@@ -1,6 +1,6 @@
 pkgbase = mytourbook_bin
 	pkgdesc = A tool to visualize and analyze tours recorded by a GPS device, ergometer, bike- or exercise computer.
-	pkgver = 15.6.0
+	pkgver = 15.10.0beta
 	pkgrel = 1
 	url = http://mytourbook.sourceforge.net
 	arch = i686

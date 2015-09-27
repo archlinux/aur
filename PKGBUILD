@@ -2,7 +2,8 @@
 # Contributor: nblock <nblock [/at\] archlinux DOT us>
 
 pkgname=mytourbook_bin
-pkgver=15.6.0
+pkgver=15.10.0beta
+_pkgver=15.10.0
 pkgrel=1
 pkgdesc="A tool to visualize and analyze tours recorded by a GPS device, ergometer, bike- or exercise computer."
 arch=('i686' 'x86_64')
@@ -13,11 +14,11 @@ source=("mytourbook.desktop")
 options=(!strip)
 md5sums=('428a78ad67746b149ccb8e70cc8b086b')
 
-[ "$CARCH" = "i686"   ] && source=(${source[@]} "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${pkgver}/mytourbook_${pkgver}.linux.gtk.x86.zip")
-[ "$CARCH" = "x86_64" ] && source=(${source[@]} "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${pkgver}/mytourbook_${pkgver}.linux.gtk.x86_64.zip")
+[ "$CARCH" = "i686"   ] && source=(${source[@]} "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${_pkgver}.Beta/mytourbook_${_pkgver}.linux.gtk.x86.zip")
+[ "$CARCH" = "x86_64" ] && source=(${source[@]} "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${_pkgver}.Beta/mytourbook_${_pkgver}.linux.gtk.x86_64.zip")
 
-[ "$CARCH" = "i686"   ] && md5sums=(${md5sums[@]} '8019d9af6cfd0d701a2f8ea8864b43df')
-[ "$CARCH" = "x86_64" ] && md5sums=(${md5sums[@]} 'f9ce70f773534256dd9dafeadda693f2')
+[ "$CARCH" = "i686"   ] && md5sums=(${md5sums[@]} '90a139ddc40659d9f7acbb6de8a57369')
+[ "$CARCH" = "x86_64" ] && md5sums=(${md5sums[@]} '83df25a676b9a40223b32ce98ff869c1')
 
 package() {
   mkdir -p ${pkgdir}/usr/{bin,share/mytourbook}
