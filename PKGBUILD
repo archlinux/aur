@@ -1,6 +1,6 @@
 pkgname=osvr-oculus-rift-git
 pkgver=v0.1.r22.ga9bedc6
-pkgrel=3
+pkgrel=2
 pkgdesc="A plugin for OSVR that provides access to Oculus Rift trackers from OSVR applications."
 arch=(i686 x86_64)
 url="https://github.com/OSVR/OSVR-Oculus-Rift"
@@ -41,6 +41,7 @@ package() {
   #mv "$pkgdir/usr/bin/"*"/" "$pkgdir/usr/share/osvr"
   install "$srcdir/osvr-oculus-rift/com_osvr_OculusRift.json" "$pkgdir/usr/share/osvr/sample-configs/"
   mv "$pkgdir/usr/osvr_server_config.oculusrift.sample.json" "$pkgdir/usr/share/osvr/sample-configs/"
+  mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" || true
   sed -i "s;displays/Oculus_Rift_DK2.json;/usr/share/osvr/displays/Oculus_Rift_DK2.json;g" "$pkgdir"/usr/share/osvr/sample-configs/osvr_server_config.oculusrift.sample.json
 }
 
