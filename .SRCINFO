@@ -1,0 +1,33 @@
+pkgbase = perl-pod-abstract
+	pkgdesc = Pod-Abstract - Abstract document tree for Perl POD documents
+	pkgver = 0.20
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Pod-Abstract/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-io-string
+	depends = perl-task-weaken
+	provides = perl-pod-abstract-buildnode
+	provides = perl-pod-abstract-filter
+	provides = perl-pod-abstract-filter-add_podcmds
+	provides = perl-pod-abstract-filter-clear_podcmds
+	provides = perl-pod-abstract-filter-cut
+	provides = perl-pod-abstract-filter-find
+	provides = perl-pod-abstract-filter-number_sections
+	provides = perl-pod-abstract-filter-overlay
+	provides = perl-pod-abstract-filter-sort
+	provides = perl-pod-abstract-filter-summary
+	provides = perl-pod-abstract-filter-uncut
+	provides = perl-pod-abstract-filter-unoverlay
+	provides = perl-pod-abstract-node
+	provides = perl-pod-abstract-parser
+	provides = perl-pod-abstract-path
+	provides = perl-pod-abstract-serial
+	provides = perl-pod-abstract-tree
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BL/BLILBURNE/Pod-Abstract-0.20.tar.gz
+	sha256sums = 956ef7bb884c55456e2fb6e7f229f9a87dd50a61d700500c738db8f2ba277f87
+
+pkgname = perl-pod-abstract
+
