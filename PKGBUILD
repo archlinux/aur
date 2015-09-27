@@ -1,6 +1,6 @@
 # Maintainer: Tao-Yi Lee <tylee@ieee.org>
 pkgname=apache_spark
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Apache Spark™ is a fast and general engine for large-scale data processing."
 arch=('i686' 'x86_64')

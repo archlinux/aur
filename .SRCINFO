@@ -1,6 +1,6 @@
 pkgbase = apache_spark
 	pkgdesc = Apache Spark™ is a fast and general engine for large-scale data processing.
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://spark.apache.org
 	arch = i686
