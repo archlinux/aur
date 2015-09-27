@@ -1,4 +1,4 @@
-# Maintainer: P. Neidhardt <ambrevar at gmail dot com>
+# Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 
 pkgname=streetsofrageremake
 pkgver=5.1
