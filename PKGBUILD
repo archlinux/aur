@@ -2,7 +2,7 @@
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
 
 pkgname=atlassian-confluence
-pkgver=5.8.10
+pkgver=5.8.13
 pkgrel=1
 pkgdesc="Enterprise wiki"
 url="https://www.atlassian.com/software/confluence"
@@ -19,12 +19,11 @@ install='confluence.install'
 source=("http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-$pkgver.tar.gz"
         'confluence.conf.d'
         'confluence.service')
-sha256sums=('6e355f0d57c4e5df2025b15c20a403db7366a843c35ac2516c7f206532420783'
+sha256sums=('a5c1d31bc652ea0316eab3c52a1840ecbe9161ed1fd55fc63fa1f9cc1a03f112'
             '0cf76082cf11c04131ad03cf784c7d58152c2c20bfdcbe9809e552cfd42ae9a3'
             '7017750e78fbe0611111ccc00a44f31a93241c4f924a893875804d50d085f9dd')
 
 package() {
-  cd "$srcdir"
   mkdir -p "$pkgdir/opt/atlassian-confluence/"
   cp -r "$srcdir/atlassian-confluence-$pkgver/"* "$pkgdir/opt/atlassian-confluence/"
   # remove unneeded *.bat files
