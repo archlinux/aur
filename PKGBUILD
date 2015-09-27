@@ -1,6 +1,6 @@
 # Maintainer: Fabio Zanini <fabio.zanini@tuebingen.mpg.de>
 pkgname=stampy
-pkgver=1.0.23
+pkgver=1.0.28
 pkgrel=1
 pkgdesc="Mapper of short reads from illumina sequencing machines onto a reference genome"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('python2')
 makedepends=('gcc')
 source=(http://www.well.ox.ac.uk/bioinformatics/Software/Stampy-latest.tgz)
-md5sums=('30bbfc2c4a2750f6cc87bbfe52394dcd')
+md5sums=('c4f519e13b60be2089ab2dce20f71217')
 
 build() {
  	echo $srcdir
