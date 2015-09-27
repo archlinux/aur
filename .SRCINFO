@@ -1,0 +1,14 @@
+pkgbase = pfp-vim-git
+	pkgdesc = Hex-editor plugin that uses 010 templates to parse binary data using pfp.
+	pkgver = r13.01195ec
+	pkgrel = 1
+	url = https://github.com/d0c-s4vage/pfp-vim
+	arch = any
+	license = MIT
+	depends = vim
+	depends = python2-pfp
+	source = git://github.com/d0c-s4vage/pfp-vim.git
+	md5sums = SKIP
+
+pkgname = pfp-vim-git
+
