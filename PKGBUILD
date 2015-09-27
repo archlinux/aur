@@ -3,7 +3,7 @@
 
 pkgname=rust-racer-git
 _pkgname=racer
-pkgver=1.0.0.r117.gbf8ffa4
+pkgver=1.0.0.r138.gb9750c3
 pkgrel=1
 pkgdesc="Code completion for Rust"
 url="https://github.com/phildawes/racer"
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname/target/release/racer" "$pkgdir/usr/bin/racer"
-  install -Dm644 "$srcdir/$_pkgname/plugin/racer.vim" "$pkgdir/usr/share/vim/vimfiles/plugin/racer.vim"
-  install -Dm644 "$srcdir/$_pkgname/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+  cd "$_pkgname"
+  install -Dm755 target/release/racer "$pkgdir/usr/bin/racer"
+  install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 }
