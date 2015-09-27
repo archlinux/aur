@@ -2,14 +2,14 @@
 
 pkgname=peazip-gtk2-portable
 pkgver=5.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NATIVE 64-BIT GTK2 archiver utility, portable version with few dependencies"
 arch=(x86_64)
 url=http://www.peazip.org/peazip-linux-64.html
 license=(LGPL3)
 depends=(gtk2)
 provides=('peazip')
-conflicts=('peazip-gtk2' 'peazip-qt')
+conflicts=('peazip' 'peazip-gtk2' 'peazip-qt')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.x86_64.GTK2.tar.gz"
         'peazip.png')
@@ -26,12 +26,15 @@ package() {
     install -Dm755 "../peazip" "$pkgdir$HOME/.peazip/peazip"
     install -Dm644 "../copying.txt" "$pkgdir/usr/share/licenses/peazip/COPYING.txt"
     install -Dm644 "$srcdir/peazip.png" "$pkgdir/usr/share/pixmaps/peazip.png"
+    ## Install res directory
     for i in pea pealauncher rnd; do install -Dm755 $i "$_resdir"/$i; done
     for i in arc/{arc,*.sfx}; do install -Dm755 $i "$_resdir"/$i; done
-    for i in altconf.txt lang/* themes/{{nographic,seven}-embedded/*,*.7z} arc/arc.{ini,groups}
+    for i in *.txt lang/* themes/{{nographic,seven}-embedded/*,*.7z} arc/arc.{ini,groups}
       do install -Dm644 $i "$_resdir"/$i; done
     for i in 7z/{7z{,.so,Con.sfx,.sfx},Codecs/Rar29.so}; do install -Dm755 $i "$_resdir"/$i; done
     for i in quad/bcm upx/upx lpaq/lpaq8 paq/paq8o zpaq/zpaq; do install -Dm755 $i "$_resdir"/$i; done
+    #
+    chown -R $USER:users "$pkgdir$HOME/.peazip"
     desktop-file-install --dir "$pkgdir/usr/share/applications/" "$_deskdir/peazip.desktop"
     # Integrate into Nautilus
     if [ -f "/usr/bin/nautilus" ]; then cd "$_deskdir/nautilus-scripts/Archiving/PeaZip"
@@ -40,6 +43,7 @@ package() {
       install -Dm755 "Extract Here" "$_nautdir/Extract Here"
       install -Dm755 "Extract to Folder" "$_nautdir/Extract to Folder"
       install -Dm755 "Open Archive" "$_nautdir/Open Archive"
+      chown -R $USER:users $_nautdir
     fi
     # Integrate into Dolphin
     if [ -f "/usr/bin/dolphin" ]; then cd "$_deskdir/kde4-dolphin/usr/share/kde4/services/ServiceMenus"
@@ -48,5 +52,6 @@ package() {
       install -Dm755 "peazipextfolder" "$_doldir/peazipextfolder"
       install -Dm755 "peazipexthere" "$_doldir/peazipexthere"
       install -Dm755 "peazipopen" "$_doldir/peazipopen"
+      chown -R $USER:users $_doldir
     fi
 }
