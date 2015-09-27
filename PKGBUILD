@@ -5,7 +5,7 @@ pkgdesc="free and open source speech synthesizer for Russian language"
 arch=('i686' 'x86_64')
 url="https://github.com/Olga-Yakovleva/RHVoice"
 license=('GPL3')
-depends=('expat' 'pcre' 'sox' 'libunistring' 'flite-full>=1.4' 'python2' 'portaudio' 'glibmm')
+depends=('expat' 'pcre' 'sox' 'libunistring' 'flite>=2.0' 'python2' 'portaudio' 'glibmm')
 makedepends=('scons' 'gcc')
 optdepends=('alsa-utils: for using aplay')
 provides=('rhvoice')

@@ -12,7 +12,7 @@ pkgbase = rhvoice-git
 	depends = pcre
 	depends = sox
 	depends = libunistring
-	depends = flite-full>=1.4
+	depends = flite>=2.0
 	depends = python2
 	depends = portaudio
 	depends = glibmm
