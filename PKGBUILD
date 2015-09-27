@@ -3,8 +3,8 @@
 
 pkgname=qt-color-widgets-common
 _pkgname=QtColorWidgets
-pkgver=0.r178.7028e5c
-pkgrel=2
+pkgver=0.r183.467bda7
+pkgrel=1
 pkgdesc='Common files used by qt4- and qt5-color-widgets packages'
 arch=('any')
 url='https://github.com/mbasaglia/Qt-Color-Widgets'
