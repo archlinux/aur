@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=RetroArch
+GenericName=RetroArch
+Comment=Simple frontend for the libretro API.
+Icon=/usr/share/pixmaps/retroarch.svg
+Exec=retroarch
+Categories=Game;

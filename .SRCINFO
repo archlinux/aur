@@ -1,7 +1,7 @@
 pkgbase = retroarch
 	pkgdesc = Simple frontend for the libretro API. Stable version.
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.libretro.com/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = retroarch
 	conflicts = retroarch-git
 	backup = etc/retroarch.cfg
 	source = https://github.com/libretro/RetroArch/archive/v1.2.2.tar.gz
+	source = retroarch.desktop
 	md5sums = 09d9d6307334b353cb342dea52b42207
+	md5sums = d53862c705b58746eabf2aca6cb485e6
 
 pkgname = retroarch
 
