@@ -30,4 +30,3 @@ index 69ca4c5..78611e1 100755
 +            self.__exec_cmd(self.cmd_switch)
  
          self.quit()
- 

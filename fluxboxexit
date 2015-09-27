@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+# /usr/bin/fluxboxexit
 
 case "$1" in
 logout)

@@ -1,5 +1,5 @@
 # !/bin/bash
-# blurlock for oblogout-manjaro
+# /usr/bin/ob_blurlock
 
 if [ -e /tmp/screenshot.png ]; then
   convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
