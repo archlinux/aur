@@ -15,7 +15,7 @@ sha256sums=('16646061ffe756a7f8b35e8f9e1a5f133cea9239ca68c0d39edcc61fc4010b94'
             'd58f684fb11d8879c5f9fe7ab6c70f1a522d4f76a885e39a2e15157c1d30522e')
 
 build() {
-  cd "$srcdir/$pkgbase-nc$pkgver/"
+  cd "$srcdir/$pkgbase-legacy-nc$pkgver/"
   qmake-qt5 "USE_UPNP=-" # I can't find a way to compile with UPNP
   make
 
