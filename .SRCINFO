@@ -1,6 +1,6 @@
 pkgbase = yawls-bzr
 	pkgdesc = Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor - Bazaar sources
-	pkgver = 1.2.1.1.r19
+	pkgver = 1.2.2.1.r22
 	pkgrel = 1
 	url = https://launchpad.net/yawls
 	install = yawls-bzr.install
