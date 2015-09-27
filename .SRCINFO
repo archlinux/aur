@@ -1,6 +1,6 @@
 pkgbase = python-counterparty-lib-git
 	pkgdesc = Counterparty Protocol Reference Implementation
-	pkgver = 20150513
+	pkgver = 20150926
 	pkgrel = 1
 	url = https://github.com/CounterpartyXCP/counterparty-lib
 	arch = any
