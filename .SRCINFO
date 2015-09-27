@@ -1,17 +1,19 @@
 pkgbase = mintstick-git
 	pkgdesc = Format or write images to usb-sticks (Linux Mint tool)
-	pkgver = 1.2
-	pkgrel = 5
+	pkgver = r148.02589a6
+	pkgrel = 1
 	url = https://github.com/linuxmint/mintstick
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	depends = python2
-	depends = python2-gobject
-	depends = udisks
-	depends = python2-pyparted
+	license = GPL
+	makedepends = git
 	depends = python2-dbus
-	source = https://github.com/linuxmint/mintstick/archive/master.zip
+	depends = python2-gobject
+	depends = python2-pyparted
+	depends = udisks
+	provides = mintstick
+	conflicts = mintstick
+	source = mintstick-git::git://github.com/linuxmint/mintstick.git
 	md5sums = SKIP
 
 pkgname = mintstick-git
