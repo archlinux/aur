@@ -22,16 +22,21 @@ conflicts=('linux-firmware-git'
            'rt2x00-rt61-fw'
            'rt2x00-rt71w-fw'
            'amd-ucode')
-pkgver=20150513.3161bfa
+pkgver=20150924.f88e5c2
 provides=("linux-firmware=$pkgver")
 options=(!strip)
 source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git")
 md5sums=('SKIP')
 
 pkgver() {
-  # Mimics pkgver from ABS
+  # Mimics ABS pkgver described like this:
+  # Commit date + git rev-parse --short origin/master
   cd "${srcdir}/${pkgname}"
-  echo $(date -d "$(git show --format='%cD' -q master)" '+%Y%m%d').$(git rev-parse --short master)
+  (
+  git show --format='%cI' -q master | sed 's/T.*//g;s/-//g'
+  echo .
+  git rev-parse --short master
+  ) | tr -d '\n'
 }
 
 package() {
