@@ -1,4 +1,4 @@
-# Maintainer: Pierre Neidhardt <ambrevar at gmail dot com>
+# Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 
 pkgname=emacs-flex-mode
 pkgver=1.0
