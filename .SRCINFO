@@ -1,0 +1,15 @@
+pkgbase = pixiecore
+	pkgdesc = PXE booting for people in a hurry
+	pkgver = 2015.09.20.3a2c870
+	pkgrel = 1
+	url = https://github.com/danderson/pixiecore
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = go
+	makedepends = git
+	source = git://github.com/danderson/pixiecore.git
+	md5sums = SKIP
+
+pkgname = pixiecore
+
