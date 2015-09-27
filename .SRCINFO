@@ -1,0 +1,16 @@
+pkgbase = python-pfp
+	pkgdesc = An interpreter for 010 template scripts.
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/d0c-s4vage/pfp
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-py010parser
+	depends = python-six
+	depends = python-intervaltree
+	source = https://github.com/d0c-s4vage/pfp/archive/v0.1.14.tar.gz
+	md5sums = a8e83d72647def9a700f2ce4cae56f7a
+
+pkgname = python-pfp
+
