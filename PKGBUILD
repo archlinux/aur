@@ -11,7 +11,7 @@ license=('GPL')
 # Some of these may be optional, e.g. arpack, lapack, qhull, but if they
 # are installed, octave will be linked against them.
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'gl2ps' 
-	 'qrupdate' 'qscintilla' 'qhull' 'graphicsmagick' 'portaudio'
+	 'qscintilla' 'qhull' 'graphicsmagick' 'portaudio'
 	 'mesa' 'suitesparse')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gnuplot'
 	     'gettext' 'suitesparse' 'transfig' 'epstool' 'texlive-core' 'icoutils')

@@ -26,7 +26,6 @@ pkgbase = octave-hg
 	depends = glpk
 	depends = arpack
 	depends = gl2ps
-	depends = qrupdate
 	depends = qscintilla
 	depends = qhull
 	depends = graphicsmagick
