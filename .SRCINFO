@@ -1,14 +1,14 @@
 pkgbase = pdfcrack
 	pkgdesc = Password recovery tool for PDF-files
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = http://pdfcrack.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = http://downloads.sourceforge.net/pdfcrack/pdfcrack-0.14.tar.gz
-	md5sums = b44e08c2ebda8ad04c8cfa577b18c7b1
+	source = http://downloads.sourceforge.net/pdfcrack/pdfcrack-0.15.tar.gz
+	md5sums = 5a67a63b980a4b022a983e4f44168781
 
 pkgname = pdfcrack
 

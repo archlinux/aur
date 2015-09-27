@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=pdfcrack
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="Password recovery tool for PDF-files"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://pdfcrack.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('b44e08c2ebda8ad04c8cfa577b18c7b1')
+md5sums=('5a67a63b980a4b022a983e4f44168781')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
