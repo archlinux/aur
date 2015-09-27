@@ -1,0 +1,22 @@
+pkgbase = termite-ranger-fix-git
+	pkgdesc = A simple VTE-based terminal. Includes a fix for w3mimgdisplay
+	pkgver = 10.21.g08e553a
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/autrimpo/termite/tree/ranger-fix
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = vte3-ng
+	depends = xdg-utils
+	provides = termite
+	provides = termite-git
+	conflicts = termite
+	conflicts = termite-git
+	backup = etc/xdg/termite/config
+	source = git://github.com/autrimpo/termite.git#branch=ranger-fix
+	md5sums = SKIP
+
+pkgname = termite-ranger-fix-git
+
