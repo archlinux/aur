@@ -1,0 +1,17 @@
+pkgbase = qtcam-git
+	pkgdesc = a free, Open Source Linux Webcamera Software with more than 10 image control settings
+	pkgver = db79dca9
+	pkgrel = 1
+	url = http://www.e-consystems.com/opensource-linux-webcam-software-application.asp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qtchooser
+	depends = qt5-declarative
+	depends = ffmpeg
+	source = git://github.com/econsysqtcam/qtcam.git
+	md5sums = SKIP
+
+pkgname = qtcam-git
+
