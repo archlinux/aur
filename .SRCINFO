@@ -1,0 +1,17 @@
+pkgbase = mutt_vc_query-git
+	pkgdesc = Query vCard database from mutt using query_command, part of rolo
+	pkgver = 001
+	pkgrel = 1
+	url = https://github.com/yourealwaysbe/mutt_vc_query
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	depends = libvc
+	provides = mutt_vc_query
+	conflicts = mutt_vc_query
+	source = git://github.com/yourealwaysbe/mutt_vc_query.git
+	md5sums = SKIP
+
+pkgname = mutt_vc_query-git
+
