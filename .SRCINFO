@@ -1,6 +1,6 @@
 pkgbase = autolatex
 	pkgdesc = Automate generation of large scale LaTeX projects.
-	pkgver = 35.1
+	pkgver = 38.0
 	pkgrel = 1
 	url = http://www.arakhne.org/autolatex/
 	install = autolatex.install
@@ -15,8 +15,8 @@ pkgbase = autolatex
 	depends = perl-config-simple
 	options = !emptydirs
 	backup = etc/autolatex/config
-	source = https://codeload.github.com/gallandarakhneorg/autolatex/zip/autolatex-35.1
-	sha512sums = 21c250fb1209fc463c0b8e55195e644ff25b32cf19ebf74d3f5454cc24e96b4ba2dca8b9240a40c1a65fe335c28435bfe095d6f982ddd5c712a7c8bc29c6d029
+	source = http://download.tuxfamily.org/arakhne/pool/universe/a/autolatex/autolatex_38.0-0arakhne0.tar.gz
+	md5sums = b0480f363a3f5ea623a6f950cc4f83da
 
 pkgname = autolatex
 
