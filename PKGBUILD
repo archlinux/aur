@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=pass-git-helper-git
-pkgver=r4.42075f0
+pkgver=0.2.dev0.g42075f0
 pkgrel=1
 pkgdesc="A git credential helper interfacing with pass, the standard unix password manager"
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.g%s" "$(python setup.py --version 2> /dev/null)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
