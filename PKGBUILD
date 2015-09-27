@@ -1,5 +1,5 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
-# Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: detto <detto-brumm@freenet.de>
 
 pkgname=pidgin-hotkeys
