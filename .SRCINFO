@@ -12,8 +12,8 @@ pkgbase = mlton-git
 	depends = bash
 	depends = gmp
 	optdepends = python
-	provides = ${pkgname%-git}
-	conflicts = ${pkgname%-git}
+	provides = mlton
+	conflicts = mlton
 	source = mlton::git+https://github.com/MLton/mlton.git
 	md5sums = SKIP
 
