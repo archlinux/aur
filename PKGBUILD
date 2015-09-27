@@ -3,7 +3,7 @@
 pkgname=ruby-net-scp
 pkgver=1.2.1
 _gemname=net-scp
-pkgrel=1
+pkgrel=2
 pkgdesc='A pure Ruby implementation of the SCP client protocol'
 arch=(any)
 url='https://github.com/net-ssh/net-scp'

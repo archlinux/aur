@@ -1,7 +1,7 @@
 pkgbase = ruby-net-scp
 	pkgdesc = A pure Ruby implementation of the SCP client protocol
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/net-ssh/net-scp
 	arch = any
 	license = MIT
