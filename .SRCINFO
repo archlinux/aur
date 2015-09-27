@@ -1,7 +1,7 @@
 pkgbase = mpv-legacy-af-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (git version) including legacy audio filters
-	pkgver = 0.10.0_27_g66e517a
-	pkgrel = 2
+	pkgver = 0.10.0_83_g2a7811
+	pkgrel = 1
 	url = https://github.com/2ion/mpv
 	install = mpv.install
 	arch = i686
