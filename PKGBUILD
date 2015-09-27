@@ -2,14 +2,14 @@
 
 pkgname=emacs-xwidget-git
 pkgver=25.0.50.r122754
-pkgrel=1
+pkgrel=2
 pkgdesc="The famous editor from xwidget_mvp branch"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends=('alsa-lib' 'gpm' 'desktop-file-utils' 'hicolor-icon-theme'
 	 'giflib' 'm17n-lib' 'imagemagick' 'librsvg' 'gconf'
-	 'webkitgtk3' 'gobject-introspection-runtime')
+	 'webkitgtk' 'gobject-introspection-runtime')
 makedepends=('git' 'texinfo' 'glproto')
 options=('docs' '!emptydirs' '!makeflags')
 provides=('emacs')

@@ -1,7 +1,7 @@
 pkgbase = emacs-xwidget-git
 	pkgdesc = The famous editor from xwidget_mvp branch
 	pkgver = 25.0.50.r122754
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/emacs/
 	install = emacs.install
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = emacs-xwidget-git
 	depends = imagemagick
 	depends = librsvg
 	depends = gconf
-	depends = webkitgtk3
+	depends = webkitgtk
 	depends = gobject-introspection-runtime
 	provides = emacs
 	conflicts = emacs
