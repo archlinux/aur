@@ -1,0 +1,13 @@
+pkgbase = aliview
+	pkgdesc = Software for aligning viewing and editing dna/aminoacid sequences.
+	pkgver = 1.17.1
+	pkgrel = 1
+	url = http://www.ormbunkar.se/aliview/
+	arch = any
+	license = GPL
+	depends = jre
+	source = http://www.ormbunkar.se/aliview/downloads/linux/linux-version-1.17.1/aliview.tgz
+	md5sums = 9fe3864788e73f76fcb055d7837a99a7
+
+pkgname = aliview
+
