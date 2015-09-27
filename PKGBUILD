@@ -15,7 +15,7 @@ sha256sums=('SKIP'
             '5b72ad0b095beb7c8becb647b2f2cc054e0bb4f476bce66cf2d33af907dec4e5')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-VCS}"
+  cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
