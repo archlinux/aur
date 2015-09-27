@@ -4,7 +4,7 @@
 
 pkgname=chrome-remote-desktop
 pkgver=45.0.2454.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
 arch=('i686' 'x86_64')
@@ -60,5 +60,5 @@ package() {
 
   msg2 "Creating symlinks for chromium compatibility"
   install -dm755 "$pkgdir/etc/chromium"
-  ln -s "$pkgdir/etc/opt/chrome/native-messaging-hosts" "$pkgdir/etc/chromium/native-messaging-hosts"
+  ln -s "/etc/opt/chrome/native-messaging-hosts" "$pkgdir/etc/chromium/native-messaging-hosts"
 }
