@@ -1,0 +1,18 @@
+pkgbase = python-pony
+	pkgdesc = Pony Object-Relational Mapper
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pony
+	arch = any
+	license = AGPL3
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = http://pypi.python.org/packages/source/p/pony/pony-0.6.1.tar.gz
+	md5sums = f6ef652f72de1fd32d3037ed77005a21
+
+pkgname = python-pony
+	depends = python
+
+pkgname = python2-pony
+	depends = python2
+
