@@ -1,11 +1,13 @@
 pkgbase = reaver-wps-fork-t6x-git
 	pkgdesc = Brute force attack against Wifi Protected Setup mod with Pixie Dust Attack
 	pkgver = 1.5.2.r4.g941d383
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/t6x/reaver-wps-fork-t6x
+	arch = arm
+	arch = armv6h
+	arch = armv7h
 	arch = i686
 	arch = x86_64
-	arch = armv6h
 	license = GPL2
 	makedepends = git
 	depends = libpcap
