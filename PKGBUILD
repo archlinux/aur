@@ -1,4 +1,4 @@
-# Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 
 pkgname=libquvi-scripts
 pkgver=0.9.20131130
