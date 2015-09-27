@@ -1,6 +1,6 @@
 pkgbase = mate-power-manager-upower
 	pkgdesc = Power management tool for the MATE desktop (GTK2 version), with upower 0.9.23
-	pkgver = 1.10.0
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = http://mate-desktop.org
 	install = mate-power-manager.install
@@ -28,8 +28,8 @@ pkgbase = mate-power-manager-upower
 	provides = mate-power-manager
 	conflicts = mate-power-manager
 	conflicts = mate-power-manager-gtk3
-	source = http://pub.mate-desktop.org/releases/1.10/mate-power-manager-1.10.0.tar.xz
-	sha1sums = 7540735374e5892c26a9c06f9c973742ef873e74
+	source = http://pub.mate-desktop.org/releases/1.10/mate-power-manager-1.10.2.tar.xz
+	sha1sums = dd609bc7ffc7cd481813371ba4b035fa2efa81bb
 
 pkgname = mate-power-manager-upower
 

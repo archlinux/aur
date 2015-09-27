@@ -3,7 +3,7 @@
 _ver=1.10
 _pkgbase=mate-power-manager
 pkgname=(${_pkgbase}-upower)
-pkgver=${_ver}.0
+pkgver=${_ver}.2
 pkgrel=1
 pkgdesc="Power management tool for the MATE desktop (GTK2 version), with upower 0.9.23"
 url="http://mate-desktop.org"
@@ -18,7 +18,7 @@ source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.
 groups=('mate-extra')
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 provides=("${_pkgbase}")
-sha1sums=('7540735374e5892c26a9c06f9c973742ef873e74')
+sha1sums=('dd609bc7ffc7cd481813371ba4b035fa2efa81bb')
 install=${_pkgbase}.install
 
 prepare() {
