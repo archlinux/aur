@@ -1,8 +1,8 @@
 # Maintainer: Giovanni Santini "ItachiSan" <giovannisantini93@yahoo.it>
 
 pkgname=yawls
-pkgver=1.2.1
-pkgrel=4
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor"
 url="https://launchpad.net/yawls"
 arch=('any')
@@ -36,7 +36,7 @@ source=(
 	)
 install=("$pkgname.install")
 # Got from Launchpad downloads page: https://launchpad.net/yawls/+download
-md5sums=('75b4c2bbd20e27d36884608f4c13dde4'
+md5sums=('e898ad27f010b621404be95baea3dbeb'
          'SKIP'
          'ae6497e82edd0e43914ebc72f1975fa0')
 
