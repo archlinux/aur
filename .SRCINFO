@@ -1,6 +1,6 @@
 pkgbase = tkpacman
 	pkgdesc = A lightweight GUI for pacman built with Tcl/Tk
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/tkpacman
 	arch = any
@@ -10,14 +10,14 @@ pkgbase = tkpacman
 	optdepends = sudo: if you want to use sudo instead of su
 	optdepends = gksu: if you want to use gksu instead of su or sudo
 	optdepends = kdebase-runtime: if you want to use kdesu
-	optdepends = lxterminal: recommended as terminal emulator
 	optdepends = xterm: alternative terminal emulator
 	optdepends = vte: alternative terminal emulator
 	optdepends = xfce4-terminal: alternative terminal emulator
+	optdepends = mate-terminal: alternative terminal emulator
 	optdepends = konsole: alternative terminal emulator
 	optdepends = roxterm: alternative terminal emulator
-	source = http://downloads.sourceforge.net/tkpacman/tkpacman-1.5.0/tkpacman-1.5.0.tar.gz
-	md5sums = b8ba72d64bc798fd9b5a6d85cef0ba79
+	source = http://downloads.sourceforge.net/tkpacman/tkpacman-1.6.0/tkpacman-1.6.0.tar.gz
+	md5sums = 19d32cf86d5b2c0d3e2720c233014c6a
 
 pkgname = tkpacman
 
