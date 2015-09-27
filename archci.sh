@@ -83,7 +83,7 @@ if [ -f "$SCRIPT" ]; then
 fi
 
 # Remove build dependencies
-if [ ! -z $(pacman -Qtdqr "$BUILDDIR/rootfs") ]; then
+if [ ! -z "$(pacman -Qtdqr "$BUILDDIR/rootfs")" ]; then
 	sudo pacman --noconfirm -r "$BUILDDIR/rootfs" -Rns $(pacman -Qtdqr "$BUILDDIR/rootfs")
 fi
 
