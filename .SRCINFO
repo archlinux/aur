@@ -1,0 +1,13 @@
+pkgbase = xfce4-terminal-colors-jellyx
+	pkgdesc = JellyX theme for XFCE terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/atweiden/xfce4-terminal-colors-jellyx
+	arch = any
+	license = UNLICENSE
+	depends = xfce4-terminal
+	source = xfce4-terminal-colors-jellyx-1.0.0.tar.gz::https://codeload.github.com/atweiden/xfce4-terminal-colors-jellyx/tar.gz/1.0.0
+	sha256sums = 250597ceb3a9e5558150e7ee5d5a00d827cda91473d12cab49c094e01e8e1b72
+
+pkgname = xfce4-terminal-colors-jellyx
+
