@@ -9,7 +9,7 @@ license=('Apache')
 depends=('python2' 'python2-matplotlib' 'wxpython2.8' 'tk')
 source=($pkgname.tgz::http://gage.upc.edu/sites/default/files/TEACHING_MATERIAL/TUTORIALS_LAB/LINUX/gLAB_2.2.4_Linux.tgz)
 noextract=($pkgname.tgz)
-md5sums=('9de7d1df227e88fd707c865e8fe54565')
+md5sums=('97d91055a93b862554f8e6c8d4ccfbe0')
 
 build() {
     tar -xf $pkgname.tgz
