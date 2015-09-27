@@ -1,8 +1,8 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=i3-workspace-switch-git
-pkgver=r3.8859363
-pkgrel=1
+pkgver=r0.2.dev0.gcb7f6de
+pkgrel=2
 pkgdesc="Utility to allow switching workspaces by their position on the output"
 arch=(any)
 url="https://github.com/languitar/i3-workspace-switch"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.g%s" "$(python3 setup.py --version 2> /dev/null)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
