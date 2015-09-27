@@ -1,4 +1,4 @@
-# Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andreas Wagner <a.wagner@stud.uni-frankfurt.de>
 
