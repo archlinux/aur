@@ -1,6 +1,6 @@
 pkgbase = tutch-git
 	pkgdesc = Whole-program, optimizing Standard ML compiler
-	pkgver = 0
+	pkgver = r3.b199eff
 	pkgrel = 1
 	url = http://www2.tcs.ifi.lmu.de/~abel/tutch/
 	arch = x86_64
