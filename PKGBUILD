@@ -2,7 +2,7 @@
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
 
 pkgname=atlassian-jira
-pkgver=6.4.11
+pkgver=6.4.12
 pkgrel=1
 pkgdesc="Bug tracking, issue tracking and project management software"
 url="https://www.atlassian.com/software/jira"
@@ -19,12 +19,11 @@ install='jira.install'
 source=("http://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-$pkgver.tar.gz"
         'jira.conf.d'
         'jira.service')
-sha256sums=('a8fb59ea41a65e751888491e4c8c26f8a0a6df053805a1308e2b6711980881ec'
+sha256sums=('a77cf4c646d3f49d3823a5739daea0827adad1254dae1d1677c629e512a7afd4'
             'd1ca27e15edb0032a37b1b0df302209e78d11671d44b6a239a017be9881708d0'
             'cff80b2a8f930ba3d1c11df809afa11ffe29b78d946689cb588b1ce2f4c01e5d')
 
 package() {
-  cd "$srcdir"
   mkdir -p "$pkgdir/opt/atlassian-jira/"
   cp -r "$srcdir/atlassian-jira-$pkgver-standalone/"* "$pkgdir/opt/atlassian-jira/"
   # remove unneeded *.bat files
