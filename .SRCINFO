@@ -1,5 +1,5 @@
 pkgbase = linux-git
-	pkgver = 4.3rc1.r0.g6ff33f3
+	pkgver = 4.3rc3.r25.ge3be426
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = linux-git
 	source = linux-git.preset
 	sha256sums = SKIP
 	sha256sums = e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2
-	sha256sums = 52a0c8ee0e7dcf3062df6a486ee81b6fc9eeebb12af44448303ca02b105a595a
+	sha256sums = db4d602900f21772a06fd55d8210cb743d8180a7a82728c06a46759172c20d33
 	sha256sums = 95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7
 
 pkgname = linux-git
@@ -29,20 +29,20 @@ pkgname = linux-git
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-git=4.3rc1.r0.g6ff33f3
+	provides = kernel26-git=4.3rc3.r25.ge3be426
 	conflicts = kernel26-git
 	replaces = kernel26-git
 	backup = etc/mkinitcpio.d/linux-git.preset
 
 pkgname = linux-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
-	provides = kernel26-git-headers=4.3rc1.r0.g6ff33f3
+	provides = kernel26-git-headers=4.3rc3.r25.ge3be426
 	conflicts = kernel26-git-headers
 	replaces = kernel26-git-headers
 
 pkgname = linux-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
-	provides = kernel26-git-docs=4.3rc1.r0.g6ff33f3
+	provides = kernel26-git-docs=4.3rc3.r25.ge3be426
 	conflicts = kernel26-git-docs
 	replaces = kernel26-git-docs
 
