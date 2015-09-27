@@ -1,0 +1,25 @@
+pkgbase = netzob-git
+	pkgdesc = Netzob is an opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols. This package pulls the current version from master branch containing the current version.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://netzob.org
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = impacket
+	depends = python2
+	depends = python2-numpy
+	depends = python2-sphinx
+	depends = python2-pcapy
+	depends = python2-bitarray
+	depends = python2-babel
+	provides = netzob
+	conflicts = netzob
+	options = !emptydirs
+	source = netzob::git+https://dev.netzob.org/git/netzob.git
+	sha256sums = SKIP
+
+pkgname = netzob-git
+
