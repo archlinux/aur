@@ -1,11 +1,11 @@
 # Maintainer: Agustin Ferrario "py_crash < agustin dot ferrario at hotmail dot com dot ar >
 # Contributor: Luis von Bernus <PaterSiul@gmail.com>
-# Contributors: L42y, aeosynth, Dan Serban, Kalipath
+# Contributors: L43y, aeosynth, Dan Serban, Kalipath
 _name=firefox
 _channel=aurora
-_milestone=42.0a2
+_milestone=43.0a2
 pkgname="${_name}-${_channel}"
-pkgver=42.0a2.20150920004018
+pkgver=43.0a2.20150926004015
 pkgrel=1
 pkgdesc="Firefox Aurora channel - Nightly build"
 url="http://www.mozilla.org/en-US/${_name}/${_channel}/"

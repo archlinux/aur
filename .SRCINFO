@@ -1,6 +1,6 @@
 pkgbase = firefox-aurora
 	pkgdesc = Firefox Aurora channel - Nightly build
-	pkgver = 42.0a2.20150920004018
+	pkgver = 43.0a2.20150926004015
 	pkgrel = 1
 	url = http://www.mozilla.org/en-US/firefox/aurora/
 	install = firefox-aurora.install
@@ -25,7 +25,7 @@ pkgbase = firefox-aurora
 	depends = hunspell
 	source = firefox-aurora.desktop
 	source = firefox-aurora-safe.desktop
-	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora/firefox-42.0a2.en-US.linux-.tar.bz2
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora/firefox-43.0a2.en-US.linux-.tar.bz2
 	sha512sums = 1c0eef1129625ecfb70809dbb9ab764054d1680f05b7807f503145b5889bc42babb268cb4e2b7b102f90c50cc249114f773d91992e9ac41b5a6966e3b5c95675
 	sha512sums = 749bc9bb180909c7319a1576e9df1e4cb06488b33b8dd61b8f1a63e4df9208cb9bb6d0c4ecef3fbe388f78368aef4562ae1dbfda1dbbfa649aa9d247c4903610
 	sha512sums = 
