@@ -32,6 +32,8 @@ MOS=$(sx -jxi $MANIFEST x.labels | sx -jxlf "x.name==='os'" | sx -jx x.value)
 MARCH=$(sx -jxi $MANIFEST x.labels | sx -jxlf "x.name==='arch'" | sx -jx x.value)
 MNAME=$(sx -jxi $MANIFEST 'x.name.split("/")[1]')
 MVERSION=$(sx -jxi $MANIFEST x.labels | sx -jxlf "x.name==='version'" | sx -jx x.value)
+MUSER=$(sx -jxi $MANIFEST x.app.user)
+MGROUP=$(sx -jxi $MANIFEST x.app.group)
 
 # If we have no version in the manifest and no installed packages, abort
 if [ -z $MVERSION ]; then
@@ -82,6 +84,10 @@ if [ -f "$SCRIPT" ]; then
 	rm "$BUILDDIR/rootfs/build"
 fi
 
+# Resolve possible user-/groupname
+NMUSER=$(cat "$BUILDDIR/rootfs/etc/passwd" | grep "^$MUSER:" | cut -d: -f3)
+NMGROUP=$(cat "$BUILDDIR/rootfs/etc/group" | grep "^$MGROUP:" | cut -d: -f3)
+
 # Remove build dependencies
 if [ ! -z "$(pacman -Qtdqr "$BUILDDIR/rootfs")" ]; then
 	sudo pacman --noconfirm -r "$BUILDDIR/rootfs" -Rns $(pacman -Qtdqr "$BUILDDIR/rootfs")
@@ -98,10 +104,13 @@ fi
 
 # Copy and patch the manifest with the version
 if [ -z $MVERSION ]; then
-	sx -jxpi "$MANIFEST" "x.labels.push({'name':'version', 'value':'$MVERSION'}); x" > "$BUILDDIR/manifest"
+	sx -jxpi "$MANIFEST" -o "$BUILDDIR/manifest" "x.labels.push({'name':'version', 'value':'$MVERSION'}); x"
 else
 	cp "$MANIFEST" "$BUILDDIR/manifest"
 fi
+
+sx -jxpF "$BUILDDIR/manifest" "x.app.user = '$NMUSER' || '$MUSER'; x"
+sx -jxpF "$BUILDDIR/manifest" "x.app.group = '$NMGROUP' || '$MGROUP'; x"
 
 # Combine infos into ACI name
 ACI="$TRGDIR/images/$MOS/$MARCH/$MNAME-$MVERSION.aci"

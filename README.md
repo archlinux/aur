@@ -19,6 +19,8 @@ The source directory should contain, at an absolute minimum, a valid appcontaine
 
 If you omit the `version` label in the manifest, the script will try to extract the version of the first aur or repo package. It will patch it into the copied manifest.
 
+The provided `app.user` and `app.group` fields will be resolved against the targets user/group mappings. If not possible, keeps the set value. This should be handled by rkt at some point (according to spec) but currently isn't.
+
 #### Packages
 You may provide a set of files in your source directory to declare the archlinux packages to be installed. A single packagename should be provide on each line.
 The containers rootfs is initialized by installing the `filesystem` package via `pacstrap -cdGM`.
