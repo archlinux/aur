@@ -1,4 +1,4 @@
-# Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: xduugu
 # Contributor: nh2
 # Contributor: Steven Davidovitz <steviedizzle ð gmail đ com>
