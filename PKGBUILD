@@ -1,5 +1,5 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Lukas Fleischer <archlinux@cryptocrack.de>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Vesa Kaihlavirta <vesa@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Tom Burdick <thomas.burdick@wrightwoodtech.com>
