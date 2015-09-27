@@ -1,38 +1,37 @@
-# Maintainer: Carlos Rivas <carlos (a t) twobitcoder (do t) com>
-# Contributor: Joost Bremmer <toost dot b at gmail dot com>
- 
-pkgname=libsoundio-git
-pkgver=20150906
+# Maintainer: Sahan Fernando <sahan.h.fernando@gmail.com>
+# Contributor: Christoph Gysin <christoph.gysin@gmail.com>
+
+_pkgname=libsoundio
+pkgname=${_pkgname}-git
+pkgver=1.0.2.1.g0a0715e
 pkgrel=1
-pkgdesc="A C99 library providing cross-platform audio input and output"
+pkgdesc='A C99 library providing cross-platform audio input and output'
 arch=('x86_64')
-url="http://www.github.com/andrewrk/libsoundio"
+url='http://www.github.com/andrewrk/libsoundio'
 license=('MIT')
-source=("git://github.com/andrewrk/libsoundio"
-    "jack1_compat.patch")
+source=('git://github.com/andrewrk/libsoundio')
 options=('!buildflags')
-md5sums=('SKIP'
-'e25c3e74405dfd34ed85e9e36fe52922')
+provides=('libsoundio')
+conflicts=('libsoundio')
+md5sums=('SKIP')
 
-prepare(){
-  cd ${srcdir}/libsoundio
-
-    #  reverts to a known build of libsoundio, remove if you want the newest
-  git revert 'e2e483a4d523acab5a580b1e58a6ebc218da8f5e' --no-edit
-
-    #  jack1 compatibilty for this library is currently broken, and 
-    #  as a result it won't build at all unless you disable it
-  patch CMakeLists.txt ../jack1_compat.patch
+pkgver() {
+    cd ${_pkgname}
+    git describe --long | sed -e 's/-/./g'
 }
- 
+
 build() {
-  cd ${srcdir}/libsoundio
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr/" .. && make 
+    cd ${srcdir}
+    mkdir -p build
+    cd build
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DENABLE_JACK=OFF \
+        ${srcdir}/${_pkgname}
+    make
 }
- 
+
 package() {
-  cd ${srcdir}/libsoundio/build
-  make install
+    make -C ${srcdir}/build install DESTDIR=${pkgdir}
 }
