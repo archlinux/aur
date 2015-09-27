@@ -2,7 +2,7 @@
 # Contributor: xantares <xantares09 at hotmail dot com>
 
 pkgname=mingw-w64-libusb
-pkgver=1.0.19
+pkgver=1.0.20
 pkgrel=1
 pkgdesc="Library that provides generic access to USB devices (mingw-w64)"
 arch=(any)
@@ -14,7 +14,7 @@ conflicts=('mingw-w64-libusbx')
 replaces=('mingw-w64-libusbx')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("http://downloads.sourceforge.net/project/libusb/libusb-1.0/libusb-${pkgver}/libusb-${pkgver}.tar.bz2")
-sha256sums=('6c502c816002f90d4f76050a6429c3a7e0d84204222cbff2dce95dd773ba6840')
+sha256sums=('cb057190ba0a961768224e4dc6883104c6f945b2bf2ef90d7da39e7c1834f7ff')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
@@ -26,7 +26,8 @@ build() {
     ../configure --prefix=/usr/${_arch} \
                  --host=${_arch} \
                  --enable-shared
-    make
+    # They broke parallel building in libusb 1.20
+    make -j1
     popd
   done
 }
