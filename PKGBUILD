@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
+# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
 
 pkgname=cover_grabber
 pkgver=1.2.1
@@ -8,7 +8,7 @@ arch=('any')
 url="http://sourceforge.net/projects/covergrabber/"
 license=('GPL')
 depends=('python' 'mutagen')
-source=("http://garr.dl.sourceforge.net/project/covergrabber/${pkgname}-${pkgver}.tar.gz")
+source=("http://sourceforge.net/projects/covergrabber/files/${pkgname}-${pkgver}.tar.gz")
 md5sums=('3d173171cb3c19e3f33cb42dbae224b6')
 
 prepare()
