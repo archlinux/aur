@@ -3,7 +3,7 @@
 
 pkgname=awesome-revelation-git
 pkgver=2015.09.22.g6535c9c
-pkgrel=1
+pkgrel=2
 pkgdesc='Show all clients per screen in Awesome window manager. It works for
 both stable and master version of Awesome.'
 
