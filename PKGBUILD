@@ -2,7 +2,7 @@
 # Contributor: Marco Pompili <marcs.pompili@gmail.com>
 
 pkgname=oglplus
-pkgver=0.65
+pkgver=0.66
 pkgrel=1
 pkgdesc="A C++ wrapper for modern OpenGL"
 arch=('any')
@@ -13,15 +13,15 @@ makedepends=('freeglut' 'glew' 'cmake')
 optdepends=('boost')
 provides=('oglplus')
 source=("http://downloads.sourceforge.net/project/oglplus/oglplus-${pkgver}.x/oglplus-${pkgver}.0.tar.gz")
-md5sums=('4ddbbb6777ffd01c08cf9b810465863d')
+md5sums=('5e389643e63979cb6ab3918cf8d88b27')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}.0"
 
   ./configure.sh --prefix /usr --no-examples --no-docs
-  
+
   cd _build
-  
+
   make -j 3
 }
 
