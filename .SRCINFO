@@ -1,0 +1,19 @@
+pkgbase = wavetrack-git
+	pkgdesc = A real-time pitch-tracking library based on wavelets.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ichigo663/WaveTrack
+	install = wavetrack-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = glibc>=2.3
+	provides = wavetrack-git=0.1
+	conflicts = wavetrack-git
+	replaces = wavetrack-git
+	source = wavetrack-git::git+https://github.com/ichigo663/WaveTrack.git
+	md5sums = SKIP
+
+pkgname = wavetrack-git
+
