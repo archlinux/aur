@@ -10,7 +10,7 @@ both stable and master version of Awesome.'
 arch=('any')
 url='https://github.com/guotsuan/awesome-revelation.git'
 license=('GPL3')
-depends=('awesome-git')
+depends=('awesome')
 conflicts=('awesome-revelation')
 source=('git+https://github.com/guotsuan/awesome-revelation.git')
 md5sums=('SKIP')
