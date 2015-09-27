@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=python-broadcast-logging-git
-pkgver=r3.16d0b34
+pkgver=0.2.dev0.g16d0b34
 pkgrel=1
 pkgdesc="A Python logging system handler which broadcasts log messages and a matching receiver executable."
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.g%s" "$(python3 setup.py --version 2> /dev/null)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
