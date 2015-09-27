@@ -9,7 +9,7 @@ pkgbase = android-google-play-services
 	source = http://dl.google.com/android/repository/google_play_services_8115000_r27.zip
 	source = source.properties
 	md5sums = 56439484a09ea1153ac21cab295e1561
-	md5sums = 3bc21395b7a8182cd8442a0b4ceb02ac
+	md5sums = b57e84e218b2ad80a3eed9beab5edaab
 
 pkgname = android-google-play-services
 
