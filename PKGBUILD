@@ -4,9 +4,8 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky [at] gmail.com>
 
 pkgname=geeqie-lirc
-_pkgname=geeqie
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight image browser and viewer (fork of GQview) - with LIRC enabled"
 arch=('i686' 'x86_64')
 url="http://geeqie.sourceforge.net/"
@@ -18,17 +17,17 @@ replaces=('gqview' 'gqview-devel')
 conflicts=('geeqie' 'geeqie-git')
 provides=('geeqie')
 install=geeqie.install
-source=( "http://switch.dl.sourceforge.net/project/${_pkgname}/${_pkgname}/${_pkgname}-$pkgver/${_pkgname}-$pkgver.tar.gz" )
+source=( "http://downloads.sourceforge.net/project/geeqie/geeqie/geeqie-1.1/geeqie-1.1.tar.gz" )
 md5sums=( 'e63351988625c84b0fd80bc4eefd923b' )
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+	cd "${srcdir}/geeqie-1.1"
 	CPPFLAGS="-D_FILE_OFFSET_BITS=64" ./configure --prefix=/usr --enable-lirc
 	make
 }
 
 package(){
-	cd "$srcdir/$_pkgname-$pkgver"
-	install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}-${pkgver}/html"
+	cd "$srcdir/geeqie-1.1"
+	install -d -m755 "${pkgdir}/usr/share/doc/geeqie-1.1/html"
 	make DESTDIR="${pkgdir}" install
 }

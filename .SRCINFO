@@ -1,7 +1,7 @@
 pkgbase = geeqie-lirc
 	pkgdesc = A lightweight image browser and viewer (fork of GQview) - with LIRC enabled
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://geeqie.sourceforge.net/
 	install = geeqie.install
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = geeqie-lirc
 	conflicts = geeqie-git
 	replaces = gqview
 	replaces = gqview-devel
-	source = http://switch.dl.sourceforge.net/project/geeqie/geeqie/geeqie-1.1/geeqie-1.1.tar.gz
+	source = http://downloads.sourceforge.net/project/geeqie/geeqie/geeqie-1.1/geeqie-1.1.tar.gz
 	md5sums = e63351988625c84b0fd80bc4eefd923b
 
 pkgname = geeqie-lirc
