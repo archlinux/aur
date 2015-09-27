@@ -1,4 +1,4 @@
-# Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: joyfulgirl@archlinux.us
 # Contributor: nathan owe ndowens04 at gmail dot com
 
