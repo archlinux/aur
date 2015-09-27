@@ -13,7 +13,7 @@ _EOF_
 
 pkgname=rstudio-desktop-bin
 pkgver=0.99.484
-pkgrel=5
+pkgrel=6
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -64,6 +64,9 @@ package() {
 
   cd "$pkgdir/usr/lib/rstudio/bin/rsclang"
   patchelf --set-rpath '$ORIGIN/..' libclang.so
+
+  cd "$pkgdir/usr/lib/rstudio/bin/plugins"
+  ls */*.so | xargs -n1 patchelf --set-rpath '$ORIGIN/../..'
 
   find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
 
