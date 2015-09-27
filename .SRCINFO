@@ -1,0 +1,14 @@
+pkgbase = perl-devel-dumpvar
+	pkgdesc = Devel-Dumpvar - A pure-OO reimplementation of dumpvar.pl
+	pkgver = 1.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-Dumpvar/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Devel-Dumpvar-1.06.tar.gz
+
+pkgname = perl-devel-dumpvar
+
