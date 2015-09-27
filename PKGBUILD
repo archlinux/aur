@@ -11,8 +11,11 @@ optdepends=('zip: support for zip files' 'unzip: support for zip files')
 source=(http://www.emacswiki.org/emacs/download/sunrise-commander.el)
 md5sums=('efc3dd4773a11193d25e00a0cc606afa')
 
+prepare() {
+  printf "%s" $(awk '/RCS/ {print $5}' $pkgname.el)
+}
+
 package() {
-  cd $srcdir
   install -Dm644 $pkgname.el \
     $pkgdir/usr/share/emacs/site-lisp/$pkgname.el
 }
