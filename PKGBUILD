@@ -2,7 +2,7 @@
 pkgname=libyuv-git
 _pkgname=libyuv
 pkgver=r1445.0735245
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for YUV scaling (git)"
 arch=('i686' 'x86_64')
 url="https://github.com/lemenkov/libyuv"
@@ -25,7 +25,7 @@ package() {
   mkdir out
   cd out
   mkdir -p ${pkgdir}/usr/lib
-  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib" -DCMAKE_BUILD_TYPE="Release" ..
+  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_BUILD_TYPE="Release" ..
   cmake --build . --config Release
   cmake --build . --target install --config Release
 
