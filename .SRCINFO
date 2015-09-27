@@ -1,0 +1,19 @@
+pkgbase = multimarkdown
+	pkgdesc = C implementation of MultiMarkdown
+	pkgver = 4.7.1
+	pkgrel = 1
+	url = http://fletcherpenney.net/multimarkdown/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = MIT
+	makedepends = git
+	makedepends = glib2
+	depends = bash
+	optdepends = texlive-most: LaTeX and PDF output support
+	options = !buildflags
+	source = multimarkdown::git+https://github.com/fletcher/MultiMarkdown-4.git#tag=4.7.1
+	sha1sums = SKIP
+
+pkgname = multimarkdown
+
