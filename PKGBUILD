@@ -1,4 +1,4 @@
-# Maintainer: Pierre Neidhardt <ambrevar at gmail dot com>
+# Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 
 pkgname=emacs-make-regexp
 pkgver=1.02
