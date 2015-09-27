@@ -26,7 +26,7 @@ package_namecoin-qt() {
   depends=(boost-libs qt5-base miniupnpc desktop-file-utils)
   conflicts=(namecoin-qt-git)
   install=namecoin-qt.install
-  cd "$srcdir/$pkgbase-nc$pkgver/"
+  cd "$srcdir/$pkgbase-legacy-nc$pkgver/"
   install -Dm755 namecoin-qt "$pkgdir"/usr/bin/namecoin-qt
   install -Dm644 "$srcdir"/namecoin-qt.desktop \
     "$pkgdir"/usr/share/applications/namecoin-qt.desktop
