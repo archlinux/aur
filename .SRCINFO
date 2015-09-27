@@ -1,14 +1,14 @@
 pkgbase = holo
 	pkgdesc = Minimal configuration management
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/majewsky/holo
 	arch = x86_64
 	license = GPL2
 	makedepends = go
 	depends = shadow
-	source = https://github.com/majewsky/holo/archive/v0.4.0.tar.gz
-	md5sums = b1271897c9a48fe42438d140747b2ab9
+	source = https://github.com/majewsky/holo/archive/v0.5.0.tar.gz
+	md5sums = 034048a85d55201895503c421afd71f3
 
 pkgname = holo
 

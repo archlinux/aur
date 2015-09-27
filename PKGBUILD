@@ -1,6 +1,6 @@
 # This PKGBUILD is maintained at: https://github.com/majewsky/system-configuration/tree/master/holo
 pkgname='holo'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Minimal configuration management'
 arch=('x86_64')
@@ -9,10 +9,12 @@ license=('GPL2')
 depends=('shadow')
 makedepends=('go')
 source=("https://github.com/majewsky/holo/archive/v${pkgver}.tar.gz")
-md5sums=('b1271897c9a48fe42438d140747b2ab9')
+md5sums=('034048a85d55201895503c421afd71f3')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    # work around a typo in the v0.5.0 Makefile
+    sed -i 's/\<utils\>/util/g' Makefile
     make
 }
 
