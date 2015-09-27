@@ -3,7 +3,7 @@
 
 pkgname=gogs
 _pkgname=${pkgname}
-pkgver=0.6.9
+pkgver=0.6.15
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
@@ -31,7 +31,7 @@ source=('gogs.service'
         "$_pkgname::git+https://${_gourl}.git#tag=v${pkgver}")
 
 sha512sums=(2b4303f850e3b13b2fc3c9f0bc5820dae431d228002b35f01be0d4bfbcf05de8dcec2a559a85e318b609e4a4d492d44306eadf5f6508fd72333b198661bb0bb7
-            939be9ad851ae6e20b786e2e189b0b67c0198edfc8c83442934ec48c7be073e03c75172e79f23a6ee1e0eb467c6fa18096a66d69d1142ebba28fdc8bb2a3964c
+            cd00b1f29c0ab2eaf70647b51a7fe135aa00906dcda1b1d99c56ea3371fc6540f82bf77999018078b43294614317df253fb4217c2d84f873398c4a69ae2bfaa5
             e746dbdafc4c8d0b15a224dba95ae3151611ba9ff468ee6f0b1789e489955e4d7eaac0dbdf28a22e5b8211559af5950726f4a37d699a2490fd349f034401028c
             'SKIP')
 

@@ -1,6 +1,24 @@
+2015-09-26
+
+	* V0.6.15
+	Bug fix: 404 when Repository name contains "git" #1593
+	Bug fix: Collaborative repositories missing suburl on dashboard #1594
+	Bug fix: Duplicate commit references when push a new branch #1595
+	Bug fix: Upload image does not handle suburl #1603
+	Bug fix: New SSH keys with comments including whitespace are truncated #1622
+	Bug fix: Change label title resets color #1659
+	Improvement: Able to use GOGS_WORK_DIR environment variable to specify work directory
+	Improvement: Enable login type conversion after account creation #748
+	Improvement: Sort owners list by last changed time when create and migrate repositoriy #1585
+	Features: Add TiDB backend database support
+	Features: Add Emoji support #633
+	Features: Able to disable captcha by config option [service] ENABLE_CAPTCHA = false #697
+	Features: Able to restrict SMTP authentication to specific domains #1620
+	Others: Drop social account login support
+
 2015-09-05
 
-    * V0.6.9
+	* V0.6.9
 	Bug fix: File name with double quotation mark makes the repository inaccessible #966
 	Bug fix: Time zone trouble #1500
 	Bug fix: Removing deploy key does not remove key #1535
