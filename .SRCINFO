@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-fr
 	pkgdesc = Standalone Web Browser from Mozilla — Nightly build (fr)
-	pkgver = 43.0a1.20150811
+	pkgver = 44.0a1.20150927
 	pkgrel = 1
 	url = https://nightly.mozilla.org/
 	install = firefox-nightly.install
@@ -21,7 +21,7 @@ pkgbase = firefox-nightly-fr
 	optdepends = gstreamer0.10-good: h.264 video
 	optdepends = hunspell: spell checking
 	optdepends = hyphen: hyphenation
-	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-43.0a1.fr.linux-.tar.bz2
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-44.0a1.fr.linux-.tar.bz2
 	source = firefox-nightly.desktop
 	source = firefox-nightly-safe.desktop
 	source = vendor.js
