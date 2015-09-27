@@ -2,11 +2,11 @@
 _pkgname=libreoffice-style-elementary
 pkgname=${_pkgname}-git
 pkgver=0.2.r0.g5a180b2
-pkgrel=1
+pkgrel=2
 pkgdesc='elementary icons for LibreOffice'
 arch=('i686' 'x86_64')
 url="https://github.com/shimmerproject/${_pkgname}"
-license=('GPL')
+license=('GPL3')
 conflicts=("${_pkgname}")
 makedepends=('git' 'zip')
 source=("git+${url}")
