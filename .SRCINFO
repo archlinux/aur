@@ -1,6 +1,6 @@
 pkgbase = namecoin
 	pkgver = 0.3.80
-	pkgrel = 2
+	pkgrel = 3
 	url = http://namecoin.info
 	arch = i686
 	arch = x86_64

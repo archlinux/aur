@@ -4,7 +4,7 @@
 pkgbase=namecoin
 pkgname=('namecoin-qt')
 pkgver=0.3.80
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://namecoin.info"
 makedepends=('boost' 'qt5-base' 'miniupnpc' 'desktop-file-utils' 'qt5-tools')
