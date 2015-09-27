@@ -1,0 +1,22 @@
+pkgbase = perl-test-pretty
+	pkgdesc = Test::Pretty - plugin for prove
+	pkgver = 0.32
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Pretty/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	provides = perl-app-prove-plugin-retty
+	provides = perl-tap-formatter-pretty-multi
+	provides = perl-tap-formatter-pretty-multi-session
+	provides = perl-tap-formatter-pretty-single
+	provides = perl-tap-formatter-pretty-single-session
+	provides = perl-test-pretty
+	provides = perl-test-pretty-harness
+	provides = perl-test-pretty-parser
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Test-Pretty-0.32.tar.gz
+
+pkgname = perl-test-pretty
+
