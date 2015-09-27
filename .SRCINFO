@@ -1,6 +1,6 @@
 pkgbase = tor-git
 	pkgdesc = An anonymizing overlay network (development version)
-	pkgver = 0.2.7.2.alpha.20611
+	pkgver = 0.2.8.0.alpha.20840
 	pkgrel = 1
 	url = http://www.torproject.org
 	install = tor.install
