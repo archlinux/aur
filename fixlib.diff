@@ -1,0 +1,13 @@
+Only in sciscipy-1.0.1.orig: build
+diff -ur sciscipy-1.0.1/setup.py sciscipy-1.0.1.orig/setup.py
+--- sciscipy-1.0.1/setup.py	2013-09-07 20:47:53.000000000 +0000
++++ sciscipy-1.0.1.orig/setup.py	2014-02-06 15:10:43.616721604 +0000
+@@ -27,7 +27,7 @@
+ 			  ]
+ 	sci_lib_dir = [os.path.join("/","usr", "lib", "scilab")]
+ 	sci_librairies = []
+-        sci_extra_link_args = ['-Wl,--no-as-needed',  '-lscilab',  '-lsciapi_scilab', '-lscicall_scilab', '-lscioutput_stream',  '-lscicore', '-lscilinear_algebra', '-lsciconsole', '-lscilocalization', '-lscipolynomials', '-lsciio', '-lscielementary_functions', '-lscisparse', '-lscihistory_manager', '-lscihistory_browser', '-lscigraphics', '-lscicompletion', '-lscifunctions', '-lsciboolean', '-lsciwindows_tools', '-lscitime', '-lscifftw', '-lsciintersci', '-lscidouble', '-lscicommons']
++        sci_extra_link_args = ['-Wl,--no-as-needed', '-lscilab']
+ else:
+ 	raise NotImplementedError, "Only 'nt' and 'posix' are supported"
+ 

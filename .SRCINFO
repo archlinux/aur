@@ -1,0 +1,24 @@
+pkgbase = python-sciscipy
+	pkgdesc = A Scilab API for Python
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://forge.scilab.org/index.php/p/sciscipy/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = http://forge.scilab.org/index.php/p/sciscipy/downloads/get/sciscipy-1.0.1.tar.gz
+	source = fixlib.diff
+	md5sums = 80fa3e4dbd85445c2535e173c24ffc77
+	md5sums = SKIP
+
+pkgname = python-sciscipy
+	depends = python-numpy
+	depends = scilab
+	conflicts = python2-sciscipy
+
+pkgname = python2-sciscipy
+	depends = python2-numpy
+	depends = scilab
+	conflicts = python-sciscipy
+
