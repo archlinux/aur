@@ -8,16 +8,22 @@ post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
-  if [ $(uname -m) != armv7h ]; then
-    echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+  if [ "$(uname -m)" = "armv7h" ]; then
+    echo ">>> NOTE: Using this kernel requires GRUB!"
+    echo ">>>       See the Migration Guide for instructions:"
+    echo ">>>       https://wiki.parabola.nu/Migration_from_Arch_ARM#GRUB"
+  elif [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
+    echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
     mkinitcpio -p linux-libre${KERNEL_NAME}
-  else
-    echo "NOTE: Using this kernel requires an updated U-Boot!"
   fi
 }
 
 post_upgrade() {
-  if [ $(uname -m) != armv7h ]; then
+  if [ "$(uname -m)" = "armv7h" ]; then
+    # updating module dependencies
+    echo ">>> Updating module dependencies. Please wait ..."
+    depmod ${KERNEL_VERSION}
+  elif [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
     if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
       echo "WARNING: /boot appears to be a separate partition but is not mounted."
     fi
@@ -25,7 +31,7 @@ post_upgrade() {
     # updating module dependencies
     echo ">>> Updating module dependencies. Please wait ..."
     depmod ${KERNEL_VERSION}
-    echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+    echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
     mkinitcpio -p linux-libre${KERNEL_NAME}
 
     if [ $(vercmp $2 3.13) -lt 0 ]; then
@@ -33,14 +39,10 @@ post_upgrade() {
       echo ">>>          In order to use your keyboard during early init, you MUST"
       echo ">>>          include the 'keyboard' hook in your mkinitcpio.conf."
     fi
-  else
-    # updating module dependencies
-    echo ">>> Updating module dependencies. Please wait ..."
-    depmod ${KERNEL_VERSION}
-  fi 
+  fi
 }
 
-if [ $(uname -m) != armv7h ]; then
+if [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
 post_remove() {
   # also remove the compat symlinks
   rm -f boot/initramfs-linux-libre${KERNEL_NAME}.img

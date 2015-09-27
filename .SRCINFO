@@ -1,6 +1,6 @@
 pkgbase = linux-libre
 	pkgver = 4.1.6_gnu
-	pkgrel = 1.1
+	pkgrel = 3
 	url = http://linux-libre.fsfla.org/
 	arch = i686
 	arch = x86_64
@@ -74,30 +74,19 @@ pkgname = linux-libre
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = linux=4.1.6
-	conflicts = kernel26
-	conflicts = kernel26-libre
-	conflicts = linux-libre-kmod-alx
+	conflicts = linux
 	replaces = linux
-	replaces = kernel26
-	replaces = kernel26-libre
-	replaces = linux-libre-kmod-alx
 	backup = etc/mkinitcpio.d/linux-libre.preset
 
 pkgname = linux-libre-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre kernel
 	provides = linux-headers=4.1.6
-	conflicts = kernel26-headers
-	conflicts = kernel26-libre-headers
+	conflicts = linux-headers
 	replaces = linux-headers
-	replaces = kernel26-headers
-	replaces = kernel26-libre-headers
 
 pkgname = linux-libre-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre kernel
 	provides = linux-docs=4.1.6
-	conflicts = kernel26-docs
-	conflicts = kernel26-libre-docs
+	conflicts = linux-docs
 	replaces = linux-docs
-	replaces = kernel26-docs
-	replaces = kernel26-libre-docs
 
