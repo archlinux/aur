@@ -7,7 +7,7 @@
 pkgbase=lib32-bluez
 pkgname=(${pkgbase}{,-libs,-cups,-plugins})
 pkgver=5.34
-pkgrel=1
+pkgrel=2
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL2')
@@ -28,8 +28,8 @@ prepare() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   # patch not upstreamable for obex file transfer - FS#37773 taken from FC
   # http://www.hadess.net/2013/11/bluetooth-file-sharing-obexpush-in.html
-  patch -Np1 -i "${srcdir}/0001-Allow-using-obexd-without-systemd-in-the-user-session.patch"
-  autoreconf -vfi
+  #patch -Np1 -i "${srcdir}/0001-Allow-using-obexd-without-systemd-in-the-user-session.patch"
+  #autoreconf -vfi
 }
 
 build() {
