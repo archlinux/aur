@@ -1,0 +1,14 @@
+pkgbase = python-sortedcontainers
+	pkgdesc = Library providing sorted container types for Python.
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/d0c-s4vage/py010parser
+	arch = any
+	license = custom:Apache2
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/grantjenks/sorted_containers/archive/v0.9.6.tar.gz
+	md5sums = 04b9c905258533a580c235e99c4e282d
+
+pkgname = python-sortedcontainers
+
