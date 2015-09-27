@@ -1,6 +1,6 @@
 pkgbase = thunderbird-earlybird-ru
 	pkgdesc = Standalone Mail/News reader - Earlybird channel
-	pkgver = 39.0a2.20150405004005
+	pkgver = 43.0a2.20150927004026
 	pkgrel = 1
 	url = http://www.mozilla.org/thunderbird/channel
 	install = thunderbird-earlybird.install
@@ -33,7 +33,7 @@ pkgbase = thunderbird-earlybird-ru
 	optdepends = libcanberra: for sound support
 	replaces = thunderbird-aurora
 	source = thunderbird-earlybird.desktop
-	source = http://ftp.mozilla.org/pub/mozilla.org/thunderbird/nightly/latest-comm-aurora-l10n/thunderbird-39.0a2.ru.linux-.tar.bz2
+	source = http://ftp.mozilla.org/pub/mozilla.org/thunderbird/nightly/latest-comm-aurora-l10n/thunderbird-43.0a2.ru.linux-.tar.bz2
 	sha512sums = c6b9266b52e0328f1ff69e1d2dd3683d2904d85ea1b0f903e5781ea7a1347d0a079e4bfa01e2414498c1fe90e2aef2cc896d394ac7546155617eabeecf3dba30
 	sha512sums = 
 
