@@ -1,6 +1,6 @@
 pkgbase = python2-fabdeploit
 	pkgdesc = fabric utilities for git based deployments
-	pkgver = 0.12.5
+	pkgver = 0.12.6
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/fabdeploit
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python2-fabdeploit
 	depends = python2-gitpython
 	depends = fabric
 	options = !emptydirs
-	source = http://pypi.python.org/packages/source/f/fabdeploit/fabdeploit-0.12.5.tar.gz
-	sha256sums = 02be2d07cd5a2c2227d7d142648237419fd41ae693ef5836f263ed5545bd88ec
+	source = http://pypi.python.org/packages/source/f/fabdeploit/fabdeploit-0.12.6.tar.gz
+	sha256sums = b795e5562c526c46eb04805c2e93145d63bbeb08494577c6fef56943f74b267f
 
 pkgname = python2-fabdeploit
 
