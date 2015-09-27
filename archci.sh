@@ -62,12 +62,12 @@ fi
 
 # Install Repo Dependencies
 if [ -f "$ARCH" ]; then
-	sudo pacman --noconfirm -r "$BUILDDIR/rootfs" -S $(cat "$ARCH")
+	sudo pacman --noconfirm --asexplicit -r "$BUILDDIR/rootfs" -S $(cat "$ARCH")
 fi
 
 # Install Aur dependencies
 if [ -f "$AUR" ]; then
-	PKGDEST="$AURDIR" pacaur --noconfirm --noedit -m $(cat "$AUR")
+	PKGDEST="$AURDIR" pacaur --noconfirm --asexplicit --noedit -m $(cat "$AUR")
 	sudo pacman -r "$BUILDDIR/rootfs" --noconfirm -U $AURDIR/*
 	rm -rf "$AURDIR"
 fi

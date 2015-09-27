@@ -1,6 +1,6 @@
 pkgbase = archci
 	pkgdesc = A script to create AppContainer Images from Arch Linux packages(Repo or Aur)
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/PaulAvery/archci
 	arch = any
