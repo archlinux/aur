@@ -2,7 +2,7 @@
 
 pkgname=salome-gui
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - GUI Module"
 url="http://www.salome-platform.org"
 depends=('salome-kernel>=7.6.0' 'salome-kernel<7.7.0' 'qt4' 'python2-pyqt4' 'opencascade>=6.9.0' 'qwt' 'paraview-salome=4.2.0' 'sip')
@@ -72,7 +72,9 @@ build() {
      -DSIP_ROOT_DIR=/usr \
      -DVTK_DIR="${_paraviewrootdir}/lib/cmake/paraview-${_paraviewver}" \
      -DPARAVIEW_ROOT_DIR="${_paraviewrootdir}" \
-     -DSWIG_EXECUTABLE=/usr/bin/swig-2
+     -DSWIG_EXECUTABLE=/usr/bin/swig-2 \
+     -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
+     -DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2
 
   make
 }
