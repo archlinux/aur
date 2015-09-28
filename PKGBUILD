@@ -1,3 +1,6 @@
+# Maintainer: Marco Pompili <marcs.pompili at gmail dot com>
+# Contributor: Marco Pompili <marcs.pompili at gmail dot com>
+
 pkgname=openframeworks
 pkgver=0.8.4
 pkgrel=1
