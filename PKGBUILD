@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=shards-git
-pkgver=v0.4.0.r0.gff83fe9
+pkgver=v0.5.0.r0.ga501f92
 pkgrel=1
 pkgdesc="The package manager for the Crystal language (git version)"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/ysbaddaden/shards"
 license=('Apache')
 conflicts=('shards')
 provides=('shards')
-depends=('libyaml' 'git' 'libpcl' 'libunwind' 'libevent' 'gc')
+depends=('libyaml' 'git' 'libpcl' 'libevent' 'gc')
 makedepends=('crystal')
 source=("git+https://github.com/ysbaddaden/shards.git")
 
