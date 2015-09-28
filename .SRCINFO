@@ -1,9 +1,10 @@
 pkgbase = linux-libre-pck
-	pkgver = 4.1.6_gnu.pck1
+	pkgver = 4.2.1_gnu.pck1
 	pkgrel = 1
 	url = https://wiki.parabola.nu/PCK
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL2
 	makedepends = xmlto
 	makedepends = docbook-xsl
@@ -11,12 +12,12 @@ pkgbase = linux-libre-pck
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.6-gnu/patch-4.1-gnu-4.1.6-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.6-gnu/patch-4.1-gnu-4.1.6-gnu.xz.sign
-	source = https://repo.parabola.nu/other/pck/patches/4.1.6-gnu/patch-4.1.6-gnu-pck1.patch
-	source = https://repo.parabola.nu/other/pck/patches/4.1.6-gnu/patch-4.1.6-gnu-pck1.patch.sig
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.1-gnu/patch-4.2-gnu-4.2.1-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.1-gnu/patch-4.2-gnu-4.2.1-gnu.xz.sign
+	source = https://repo.parabola.nu/other/pck/patches/4.2.1-gnu/patch-4.2.1-gnu-pck1.patch
+	source = https://repo.parabola.nu/other/pck/patches/4.2.1-gnu/patch-4.2.1-gnu-pck1.patch.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -25,13 +26,24 @@ pkgbase = linux-libre-pck
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
 	source = config.i686
 	source = config.x86_64
+	source = config.armv7h
 	source = linux.preset
 	source = change-default-console-loglevel.patch
-	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.1/rcn-libre-4.2.1-armv7-x2.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.1/rcn-libre-4.2.1-armv7-x2.patch.sig
+	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
+	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
+	source = 0003-SMILE-Plug-device-tree-file.patch
+	source = 0004-fix-mvsdio-eMMC-timing.patch
+	source = 0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+	source = 0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch
+	source = 0007-set-default-cubietruck-led-triggers.patch
+	source = 0008-USB-armory-support.patch
+	sha256sums = 3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49
 	sha256sums = SKIP
-	sha256sums = 335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34
+	sha256sums = 2fb0b42c6cac0bd550ceb71072fef4f7ed72976e64542de8e7ad759a9e195237
 	sha256sums = SKIP
-	sha256sums = 985ce51fbed0630802badaa1848671395b897557969a1109bb0a9da28426d695
+	sha256sums = c1175a26c48cdc69aa4c785834218b391ef2d8afe842ef4f33d11b2d290ed5bf
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -39,10 +51,21 @@ pkgbase = linux-libre-pck
 	sha256sums = SKIP
 	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
 	sha256sums = SKIP
-	sha256sums = 64f051239df7109ef79b25f53d2887ef83223a0b7c39bd08d7dadb535765ebe3
-	sha256sums = 687729e6f321bb07bc7d38fd506a2b229724cea1a4fde535ab3ed61f7a3f8522
+	sha256sums = 8cd611d46755d5dbb545c170a416f189a32e2761fb5367ccaa8c73e4ef24a065
+	sha256sums = 24c0fe6b86a95adcc29be5c617718e5dba066552f161e52f05f92cbb14b7123c
+	sha256sums = 229b9a693539c0f35eb4c3173d48b06cc978f09ea6f502fd5903e1f0c18d5a27
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 1d365219ca72ef7290277a47c45a4f406705f27a9f7c177ac860da0e5b994bdb
+	sha256sums = SKIP
+	sha256sums = 2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d
+	sha256sums = 842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe
+	sha256sums = 810697eec07faa60acb59b97df291e5f2e9428e86ae54e5ef90a6e4b2d0844ab
+	sha256sums = c743e41975260aab3176b6f473707c8d8371cb89575e1c128bddb3bd74030b8b
+	sha256sums = abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0
+	sha256sums = d068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7
+	sha256sums = ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c
+	sha256sums = c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a
 
 pkgname = linux-libre-pck
 	pkgdesc = The Linux-libre-pck kernel and modules with a handful of awesome features not merged into mainline [AUFS, BFQ, BFS, KDBUS, Knock, TuxOnIce, UKSM]
@@ -54,23 +77,20 @@ pkgname = linux-libre-pck
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-zen=4.1.6
-	conflicts = kernel26-zen
+	provides = linux-zen=4.2.1
+	conflicts = 
 	replaces = linux-zen
-	replaces = kernel26-zen
 	backup = etc/mkinitcpio.d/linux-libre-pck.preset
 
 pkgname = linux-libre-pck-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-pck kernel
-	provides = linux-zen-headers=4.1.6
-	conflicts = kernel26-zen-headers
+	provides = linux-zen-headers=4.2.1
+	conflicts = 
 	replaces = linux-zen-headers
-	replaces = kernel26-zen-headers
 
 pkgname = linux-libre-pck-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-pck kernel
-	provides = linux-zen-docs=4.1.6
-	conflicts = kernel26-zen-docs
+	provides = linux-zen-docs=4.2.1
+	conflicts = 
 	replaces = linux-zen-docs
-	replaces = kernel26-zen-docs
 
