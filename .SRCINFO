@@ -1,6 +1,6 @@
 pkgbase = fusioninventory-agent
-	pkgdesc = FusionInventory Agent is an application for keeping track of the hardware and software
-	pkgver = 2.3.16
+	pkgdesc = An application for keeping track of the hardware and software
+	pkgver = 2.3.17
 	pkgrel = 1
 	url = http://fusioninventory.org
 	arch = any
@@ -49,7 +49,7 @@ pkgbase = fusioninventory-agent
 	optdepends = perl-crypt-des: Network inventory SNMPv3 support
 	optdepends = nmap: Network discovery
 	optdepends = perl-net-write: Wake on Lan ethernet method support
-	source = http://forge.fusioninventory.org/attachments/download/1771/FusionInventory-Agent-2.3.16.tar.gz
+	source = http://forge.fusioninventory.org/attachments/download/1883/FusionInventory-Agent-2.3.17.tar.gz
 	source = fusioninventory-agent.service
 	source = fusioninventory-agent.config
 	md5sums = 89467ae101a89544a6fbade2e7a879fe

@@ -4,10 +4,10 @@
 # Contributor: Alex 'AdUser' Z
 pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
-pkgver=2.3.16
-_pkgdir=1771
+pkgver=2.3.17
+_pkgdir=1883
 pkgrel=1
-pkgdesc="FusionInventory Agent is an application for keeping track of the hardware and software"
+pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
 url="http://fusioninventory.org"
 _watch="https://github.com/fusinv/fusioninventory-agent/releases"
