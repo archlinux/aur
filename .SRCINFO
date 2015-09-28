@@ -1,0 +1,21 @@
+pkgbase = mkcl
+	pkgdesc = ManKai Common Lisp
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = http://common-lisp.net/project/mkcl/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	license = custom
+	makedepends = git
+	depends = gawk
+	provides = common-lisp
+	provides = cl-asdf
+	conflicts = mkcl
+	options = staticlibs
+	options = !makeflags
+	source = http://common-lisp.net/project/mkcl/releases/mkcl-1.1.9.tar.gz
+	md5sums = SKIP
+
+pkgname = mkcl
+
