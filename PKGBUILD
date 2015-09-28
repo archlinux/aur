@@ -4,7 +4,7 @@ pkgdesc="ROS - Parser for Semantic Robot Description Format (SRDF)."
 url='http://ros.org/wiki/srdf'
 
 pkgname='ros-indigo-srdfdom'
-pkgver='0.2.7'
+pkgver='0.3.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

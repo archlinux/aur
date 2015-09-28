@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-srdfdom
 	pkgdesc = ROS - Parser for Semantic Robot Description Format (SRDF).
-	pkgver = 0.2.7
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = http://ros.org/wiki/srdf
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = ros-indigo-srdfdom
 	depends = console-bridge
 	depends = tinyxml
 	depends = urdfdom-headers
-	source = srdfdom::git+https://github.com/ros-gbp/srdfdom-release.git#tag=release/indigo/srdfdom/0.2.7-0
+	source = srdfdom::git+https://github.com/ros-gbp/srdfdom-release.git#tag=release/indigo/srdfdom/0.3.0-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-srdfdom
