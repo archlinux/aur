@@ -8,7 +8,7 @@
 
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
-pkgver=r6701
+pkgver=r6705
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ url="http://handbrake.fr/"
 license=('GPL')
 options=('!makeflags')
 md5sums=('SKIP')
-makedepends=('git')
+makedepends=('git' 'cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm' 'prelink')
 source=("git+https://github.com/HandBrake/HandBrake.git")
 md5sums=('SKIP')
 _gitname="HandBrake"
@@ -55,7 +55,6 @@ package_handbrake-gtk-git() {
               'gst-plugins-good: For Preview Window'
               'gst-plugins-ugly: For Preview Window'
               'gst-libav: For Preview Window')
-  makedepends=('cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm' 'prelink')
   provides=('handbrake')
   conflicts=('handbrake')
   install=${pkgbase}.install
