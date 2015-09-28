@@ -3,7 +3,6 @@
 
 pkgname=comptray
 pkgver=r25.1e03525
-_gitrel=0
 pkgrel=1
 pkgdesc="Compton toggle for the tray"
 arch=('any')
