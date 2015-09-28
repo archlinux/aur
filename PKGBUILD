@@ -1,4 +1,5 @@
-# Maintainer: Hector Mtz-Seara <hseara__*a*t*__gmail*.*com>
+# Maintainer: Felix Schindler <felix at schindlerfamily dot de>
+# Contributor: Hector Mtz-Seara <hseara__*a*t*__gmail*.*com>
 
 pkgname=python2-scientificpython
 pkgver=2.9.1
