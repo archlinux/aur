@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('libftd2xx')
 #depends=('libftd2xx' 'ncurses')
 makedepends=('gcc' 'libftd2xx' 'libusb')
-source=("http://sourceforge.net/projects/${pkgname}/files/v${pkgver}/${pkgname}-${pkgver}.zip")
+source=("http://wiki.openwrt.org/_media/media/doc/hardware/zjtag-1.8.zip")
 md5sums=('acc87cd424081f1be7df794ee42eb109')
 
 build() {
