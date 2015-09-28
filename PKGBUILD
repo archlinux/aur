@@ -116,6 +116,8 @@ build() {
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/ibus/ibus.gyp:ibus_mozc renderer/renderer.gyp:mozc_renderer "
   [[ "$_emacs_mozc" == "yes" ]] && _targets+="unix/emacs/emacs.gyp:mozc_emacs_helper "
 
+  unset CC CC_host CC_target CXX CXX_host CXX_target LINK AR AR_host AR_target \
+        NM NM_host NM_target READELF READELF_host READELF_target
   QTDIR=$_qt4dir GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" \
     python2 build_mozc.py gyp
   python2 build_mozc.py build -c $_bldtype -j $_jobs $_targets
