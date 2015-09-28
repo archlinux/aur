@@ -1,0 +1,15 @@
+pkgname=qtodotxt
+
+post_install() {
+  post_upgrade $1
+}
+
+post_upgrade() {
+  update-desktop-database -q
+  xdg-icon-resource forceupdate
+}
+
+post_remove() {
+  update-desktop-database -q
+  xdg-icon-resource forceupdate
+}

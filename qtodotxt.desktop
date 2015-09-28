@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=1.2.0
+Exec=/usr/bin/qtodotxt
+Categories=Qt;Utility;
+Hidden=false
+Name=QTodo.txt
+Comment=GUI for todo.txt lists
+Icon=qtodotxt
