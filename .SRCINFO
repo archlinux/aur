@@ -1,0 +1,16 @@
+pkgbase = psdoom-ng
+	pkgdesc = A FPS and operating system process killer (when you kill an enemy, it kills a process) based on psDooM and Chocolate Doom.
+	pkgver = 20150924
+	pkgrel = 1
+	url = https://github.com/keymon/psdoom-ng
+	arch = any
+	license = GPL
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_net
+	optdepends = freedoom: to get freedoom.wad
+	source = https://github.com/keymon/psdoom-ng/archive/master.tar.gz
+	md5sums = 3a599d4671c37d4f393e988cbf11011a
+
+pkgname = psdoom-ng
+
