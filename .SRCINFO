@@ -1,6 +1,6 @@
 pkgbase = pulsemixer-git
 	pkgdesc = cli and curses mixer for pulseaudio
-	pkgver = 20150708
+	pkgver = r35.c7817ad
 	pkgrel = 1
 	url = https://github.com/GeorgeFilipkin/pulsemixer
 	arch = any
