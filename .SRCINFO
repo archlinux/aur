@@ -1,12 +1,12 @@
 pkgbase = rtorrent-ipv6
 	pkgdesc = Ncurses BitTorrent client based on libTorrent, with IPv6 patch
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rakshasa.github.io/rtorrent/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libtorrent=0.13.6
+	depends = libtorrent-ipv6=0.13.6
 	depends = curl
 	depends = xmlrpc-c
 	depends = libsigc++
