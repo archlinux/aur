@@ -1,8 +1,8 @@
 pkgbase = prezto-git
 	pkgdesc = Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes.
-	pkgver = r1490.02c5f77
+	pkgver = r1523.9dffc39
 	pkgrel = 1
-	url = https://github.com/sorin-ionescu/prezto/
+	url = https://github.com/Eriner/prezto
 	install = install
 	arch = any
 	license = MIT
@@ -15,10 +15,10 @@ pkgbase = prezto-git
 	backup = etc/zsh/zpreztorc
 	backup = etc/zsh/zshenv
 	backup = etc/zsh/zshrc
-	source = git://github.com/sorin-ionescu/prezto.git
+	source = git://github.com/Eriner/prezto.git
 	source = install
 	md5sums = SKIP
-	md5sums = 32c84ec04a6fa7bde49da86aec822906
+	md5sums = 95664ce383e88798a4047305dfd44220
 
 pkgname = prezto-git
 
