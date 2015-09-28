@@ -1,6 +1,6 @@
 pkgbase = octopi
 	pkgver = 0.7.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/aarnt/octopi
 	arch = i686
 	arch = x86_64
@@ -43,14 +43,16 @@ pkgname = octopi-notifier
 	optdepends = xfce4-notifyd: for notifications in XFCE
 	conflicts = octopi-notifier-qt4
 	conflicts = octopi-notifier-kde
-	replaces = octopi-notifier-qt4
+	conflicts = octopi-notifier-kde4
 
-pkgname = octopi-notifier-kde
+pkgname = octopi-notifier-kde4
 	pkgdesc = Notifier for Octopi (KDE)
 	install = octopi.install
 	depends = octopi
 	depends = libnotify
 	conflicts = octopi-notifier
+	conflicts = octopi-notifier-kde
+	replaces = octopi-notifier-kde
 
 pkgname = octopi-repoeditor
 	pkgdesc = Pacman repo editor for Octopi

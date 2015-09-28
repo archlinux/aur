@@ -1,9 +1,9 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgbase=octopi
-pkgname=('octopi' 'octopi-notifier' 'octopi-notifier-kde' 'octopi-repoeditor' 'octopi-cachecleaner')
+pkgname=('octopi' 'octopi-notifier' 'octopi-notifier-kde4' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.7.0
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
 url="https://github.com/aarnt/octopi"
 license=('GPL2')
@@ -104,8 +104,7 @@ package_octopi-notifier() {
 	depends=('octopi' 'libnotify')
 	optdepends=('xfce4-notifyd: for notifications in XFCE')
 	install=octopi.install
-	conflicts=('octopi-notifier-qt4' 'octopi-notifier-kde')
-	replaces=('octopi-notifier-qt4')
+	conflicts=('octopi-notifier-qt4' 'octopi-notifier-kde' 'octopi-notifier-kde4')
 
 	#Octopi-notifier files
 	install -D -m755 "${srcdir}/${pkgbase}-${pkgver}/notifier/bin/octopi-notifier" "${pkgdir}/usr/bin/octopi-notifier"
@@ -113,11 +112,12 @@ package_octopi-notifier() {
 	install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/octopi-notifier.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
 }
 
-package_octopi-notifier-kde() {
+package_octopi-notifier-kde4() {
 	pkgdesc="Notifier for Octopi (KDE)"
 	depends=('octopi' 'libnotify')
 	install=octopi.install
-	conflicts=('octopi-notifier')
+	conflicts=('octopi-notifier' 'octopi-notifier-kde')
+	replaces=('octopi-notifier-kde')
 
 	#Octopi-notifier-kde files
 	install -D -m755 "${srcdir}/${pkgbase}-${pkgver}/notifier-kde/bin/octopi-notifier" "${pkgdir}/usr/bin/octopi-notifier"
