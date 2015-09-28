@@ -80,7 +80,7 @@ fi
 # Run the install script
 if [ -f "$SCRIPT" ]; then
 	cp "$SCRIPT" "$BUILDDIR/rootfs"
-	sudo arch-chroot "$BUILDDIR/rootfs" /build
+	sudo chroot "$BUILDDIR/rootfs" /build
 	rm "$BUILDDIR/rootfs/build"
 fi
 

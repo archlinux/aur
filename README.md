@@ -47,7 +47,7 @@ An optional setup script/executable may be supplied as `build`. It will be run c
 Due to the fact that you are chrooted into your new system, you will have to ensure, that any dependencies of your script are installed (including whatever is declared in your shebang). You should use `arch.build.deps` and `aur.build.deps`, so the dependencies will be removed afterwards.
 
 ### Signing
-The Script will use `gpg` to sign your generated images. It will use the current userss keyring, so make sure it is configured correctly.
+The Script will use `gpg` to sign your generated images. It will use the current users keyring, so make sure it is configured correctly.
 
 ### Output format
 All the work will be done in temporary directories (make sure your tmp folder has enough space available). Once done, the images will be created inside your specified output folder.
