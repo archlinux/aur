@@ -6,7 +6,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgrel=1
-pkgdesc='Whole-program, optimizing Standard ML compiler'
+pkgdesc='tutch is a tool for checking constructive proofs'
 arch=('x86_64' 'i686')
 url="http://www2.tcs.ifi.lmu.de/~abel/tutch/"
 license=('unknown')
