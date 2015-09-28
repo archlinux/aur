@@ -16,7 +16,7 @@ makedepends=(intltool gobject-introspection python python2 packagekit)
 url="http://www.gnome.org"
 options=('!emptydirs')
 source=(http://download.gnome.org/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz nautilus-restore-typeahead.patch)
-sha256sums=('3e7ecdda3a47b6ad03098270940aa506782866fa3602d91e711d99f96741478f' '42baee0cd2a93bf8433da3c611a8acd30df39f15d89179dbbdbe65d08d0b3515')
+sha256sums=('3e7ecdda3a47b6ad03098270940aa506782866fa3602d91e711d99f96741478f' '7c7d82908baf28d2d57471b9fbb2131d987869eb5f8f3d5890c48ab244102154')
 
 prepare() {
   cd $_pkgbase-$pkgver
