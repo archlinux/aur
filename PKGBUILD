@@ -11,9 +11,6 @@ url='http://www.astroml.org/'
 arch=('any')
 license=('BSD-3-Clause')
 
-depends=('python-numpy' 'python2-numpy' 'python-scipy' 'python2-scipy' 
-         'python-scikit-learn' 'python2-scikit-learn' 'python-matplotlib'
-         'python2-matplotlib')
 
 optdepends=('astroml-examples-git')
 
@@ -39,6 +36,7 @@ package_python-astroml-git() {
   conflicts=('python-astroml' )
   optdepends=('astroml-examples-git' 'python-addons-git')
   provides=('python-astroml')
+  depends=('python-numpy' 'python-scipy' 'python-scikit-learn'  'python-matplotlib')
 
   cd "${srcdir}/${_pkgname}"
   python ./setup.py install --root="${pkgdir}" --prefix=/usr
@@ -58,6 +56,7 @@ package_python2-astroml-git() {
   conflicts=('python2-astroml' )
   optdepends=('astroml-examples-git' 'python2-addons-git')
   provides=('python2-astroml')
+  depends=('python2-numpy' 'python2-scipy' 'python2-scikit-learn' 'python2-matplotlib')
 
   cd "${srcdir}/${_pkgname}-py2"
   python2 ./setup.py install --root="${pkgdir}" --prefix=/usr
