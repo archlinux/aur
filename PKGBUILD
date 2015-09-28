@@ -6,15 +6,15 @@ pkgdesc="Fast real-time large-dataset viewing and plotting tool for KDE"
 arch=('i686' 'x86_64')
 url="http://kst-plot.kde.org"
 license=('GPL')
-depends=('gsl' 'qt4' 'muparser' 'python2-scipy>=0.9' 'python2-numpy>=1.6' 'cfitsio' 'netcdf-cxx-legacy' 'python2-pyside')
+depends=('gsl' 'qt4' 'muparser' 'python2-scipy>=0.9' 'python2-numpy>=1.6' 'cfitsio' 'python2-pyside')
 optdepends=(
   'getdata: provides support for files in the Dirfile format'
   'libmatio: provides support for Matlab binary files'
 )
 makedepends=('cmake')
 #install=$pkgname.install
-source=("git://github.com/Kst-plot/kst.git")
-md5sums=('SKIP')
+source=("git://github.com/Kst-plot/kst.git" "0001-Fixed-compilation-error-for-ambiguous-overload-off-a.patch")
+md5sums=('SKIP' '43dad5d63cf1d3415a5dda3df2e02c08')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
@@ -32,6 +32,10 @@ build() {
   -DPYTHON_EXECUTABLE=/usr/bin/python2.7 \
   -Dkst_python_prefix=/usr/lib/python2.7 \
   -Dkst_install_prefix=/usr/
+}
+prepare(){
+	cd "${srcdir}/${_pkgname}"
+	patch -p1 < ../0001-Fixed-compilation-error-for-ambiguous-overload-off-a.patch 
 }
 package() {
   cd "${srcdir}/${_pkgname}"
