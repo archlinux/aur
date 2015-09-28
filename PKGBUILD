@@ -1,23 +1,23 @@
 # Maintainer: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 # Colaborator: Chun Yang <x@cyang.info>
-# Colaborator: Jonhoo 
+# Colaborator: Jonhoo
 
 pkgname=ghost
-pkgver=0.7.0
-pkgrel=4
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
 url="http://ghost.org"
 license=('MIT')
-makedepends=('unzip' 'npm')
+makedepends=('unzip' 'npm' 'java-environment')
 depends=('nodejs>=0.12')
 backup=('srv/ghost/Gruntfile.js' 'srv/ghost/index.js' 'srv/ghost/package.json')
 install=ghost.install
 source=(http://ghost.org/zip/$pkgname-$pkgver.zip
-        ghost.service
+  ghost.service
 	new-node.patch)
 noextract=($pkgname-$pkgver.zip)
-sha256sums=('237c64cd18c97cf685afc7db55b9bc94e48a71ab9cf4bcabeb8286cb031eb551'
+sha256sums=('aeae4b83553633df4ef3fe6bd97479b6082e3e6f752a263b61957cca3a365e10'
             'f6ddfd93a839cadcc34b8b5971948aebad2ab3989210ac04c66b8d681e11d3ee'
             '739766e9c0e0b72b7131a3906cacac72e01e0b4aa59f6b17e7f16fa52723583c')
 
