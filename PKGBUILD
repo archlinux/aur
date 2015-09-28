@@ -6,7 +6,7 @@
 
 pkgname='mongo-c-driver'
 pkgver='1.1.11'
-pkgrel='1'
+pkgrel='2'
 
 pkgdesc='The official MongoDB client library written in C.'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ sha512sums=('ebfc654c2bcd7bf4bf0e7b0ca101e1ecaa55a43224fa82b5663cd1e61a17d111d5e
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./configure --prefix='/usr' CFLAGS='-pthread' LDFLAGS='-lpthread' --enable-man-pages=no --enable-examples=no --enable-tests=no
+    ./configure --prefix='/usr' CFLAGS='-pthread' LDFLAGS='-lpthread' --enable-man-pages=yes --with-libbson=system --enable-examples=no --enable-tests=no
     make
 }
 

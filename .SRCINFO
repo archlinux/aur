@@ -1,7 +1,7 @@
 pkgbase = mongo-c-driver
 	pkgdesc = The official MongoDB client library written in C.
 	pkgver = 1.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mongodb.org/display/DOCS/C+Language+Center
 	arch = i686
 	arch = x86_64
