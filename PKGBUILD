@@ -5,7 +5,7 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.7.0"
+pkgver="1.7.1"
 pkgrel="1"
 pkgdesc="Client Library for OpenStack Identity"
 arch=("any")
@@ -13,11 +13,18 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.3" "python2-pbr>=1.3")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('281b008e8814dd954ababdf3beb0eb967e36f463ae4ebd42ba1173fb5550fede')
+sha256sums=('8457fb65cc88ce009bf757643a27ac00fd5805c7f42d56743d1b6dfc26861e79')
 
 prepare() {
+    sed -ri '/argparse/d' "${srcdir}/${_name}-${pkgver}"/requirements.txt
+    cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
+}
+
+build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    sed -ri '/argparse/d' requirements.txt
+    python setup.py build
+    cd "${srcdir}/${_name}-${pkgver}-python2"
+    python2 setup.py build
 }
 
 package_python-keystoneclient() {
@@ -35,7 +42,7 @@ package_python-keystoneclient() {
              "python-six>=1.9.0"
              "python-stevedore>=1.5.0")
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm644 "tools/${_cmd}.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/${_cmd}"
 }
 
@@ -53,8 +60,8 @@ package_python2-keystoneclient() {
              "python2-requests>=2.5.2"
              "python2-six>=1.9.0"
              "python2-stevedore>=1.5.0")
-    cd "${srcdir}/${_name}-${pkgver}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    cd "${srcdir}/${_name}-${pkgver}-python2"
+    python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
     mv "${pkgdir}/usr/bin/${_cmd}" "${pkgdir}/usr/bin/${_cmd}2"
     install -Dm644 "tools/${_cmd}.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/${_cmd}2"
     sed -i '/complete -F/ s/$/2/' "${pkgdir}/usr/share/bash-completion/completions/${_cmd}2"
