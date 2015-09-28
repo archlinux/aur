@@ -1,7 +1,8 @@
 # Maintainer: Sean Baggaley <coffeescripter@gmail.com>
 pkgname=doomseeker-hg
-pkgver=1.1.1509172124
-pkgrel=2
+_dsver=1.1
+pkgver=1.1.r1509172124
+pkgrel=3
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -17,8 +18,17 @@ source=("doomseeker::hg+https://bitbucket.org/Blzut3/doomseeker"
 sha256sums=('SKIP'
             'a66e2ecca5cd32a0480776f6adfd8420d18fa56de1ca574aae61bbea95bd3c2c'
             '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4')
+conflicts=('doomseeker')
+provides=('doomseeker')
 
 _bbdir=doomseeker
+
+pkgver() {
+    cd $srcdir/$_bbdir
+
+	IFS=' ' read -a split <<< "$(hg log -r. --template "{date|hgdate}" "$PWD")"
+	echo "$dsver.r$(date -d @${split[0]} '+%y%m%d%H%M')"
+}
 
 build() {
     cd $srcdir/$_bbdir
