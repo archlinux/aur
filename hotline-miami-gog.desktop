@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Hotline Miami
+Icon=hotline-miami
+Exec=hotline-miami
+Categories=Game;ActionGame;
+StartupNotify=false
