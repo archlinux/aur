@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-arc-git
 	pkgdesc = A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from Github.
-	pkgver = 263.0d20ef2
+	pkgver = 267.6471abc
 	pkgrel = 1
 	url = https://github.com/horst3180/Arc-theme
 	arch = any
