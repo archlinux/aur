@@ -3,14 +3,14 @@
 pkgname=(python-astroml-addons-git python2-astroml-addons-git)
 pkgbase=python2-astroml-addons-git
 _pkgname=astroML_addons
-pkgver=2015.06.26.g300297c
-pkgrel=1
+pkgver=2015.08.18.g660e18c
+pkgrel=2
 pkgdesc="AstroML addons package contains addon code for the astroML package. AstroML is a Python module for machine learning and data mining built on numpy, scipy, scikit-learn, and matplotlib."
 
 url='http://www.astroml.org/'
 arch=('any')
 license=('BSD-3-Clause')
-depends=('python-astroml' 'python2-astroml')
+#depends=('python-astroml' 'python2-astroml')
 
 source=("git+https://github.com/astroML/${_pkgname}.git")
 
