@@ -2,7 +2,7 @@
 
 pkgname=splunk-forwarder
 pkgver=6.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Universal Forwarders provide reliable, secure data collection from remote sources and forward that data into Splunk (Enterprise, Light, Cloud or Hunk) for indexing and consolidation.'
 arch=('x86_64')
 url='http://www.splunk.com/en_us/download/universal-forwarder.html'
@@ -20,7 +20,7 @@ package() {
 	mkdir -p "$pkgdir/opt"
 	mkdir -p "$pkgdir/usr/bin"
 	mv "$srcdir/splunkforwarder" "$pkgdir/opt"
-	ln -sf "$pkgdir/opt/splunkforwarder/bin/splunk" "$pkgdir/usr/bin/splunk"
+	ln -sf "/opt/splunkforwarder/bin/splunk" "$pkgdir/usr/bin/splunk"
         install -Dm644 "$srcdir/splunk-forwarder.service" "$pkgdir/usr/lib/systemd/system/splunk-forwarder.service"
 }
 

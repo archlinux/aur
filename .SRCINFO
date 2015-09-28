@@ -1,7 +1,7 @@
 pkgbase = splunk-forwarder
 	pkgdesc = Universal Forwarders provide reliable, secure data collection from remote sources and forward that data into Splunk (Enterprise, Light, Cloud or Hunk) for indexing and consolidation.
 	pkgver = 6.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.splunk.com/en_us/download/universal-forwarder.html
 	arch = x86_64
 	source = splunkforwarder-6.3.0-aa7d4b1ccb80-Linux-x86_64.tgz::http://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.3.0&product=universalforwarder&filename=splunkforwarder-6.3.0-aa7d4b1ccb80-Linux-x86_64.tgz&wget=true
