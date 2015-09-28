@@ -52,7 +52,7 @@ build() {
     make IGNORE_PREEMPT_RT_PRESENCE=1 SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 
 if [[ "$CARCH" = "x86_64" ]]; then
-cd uvm
+cd nvidia-uvm
 make IGNORE_PREEMPT_RT_PRESENCE=1 SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 fi
 
