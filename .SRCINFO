@@ -1,6 +1,6 @@
 pkgbase = lib32-bluez
-	pkgver = 5.34
-	pkgrel = 2
+	pkgver = 5.35
+	pkgrel = 1
 	url = http://www.bluez.org/
 	arch = x86_64
 	license = GPL2
@@ -9,12 +9,10 @@ pkgbase = lib32-bluez
 	makedepends = lib32-dbus
 	makedepends = lib32-libical
 	makedepends = lib32-systemd
-	source = http://www.kernel.org/pub/linux/bluetooth/bluez-5.34.tar.xz
-	source = http://www.kernel.org/pub/linux/bluetooth/bluez-5.34.tar.sign
-	source = 0001-Allow-using-obexd-without-systemd-in-the-user-session.patch
-	sha256sums = e461ec2927f5491a202de4a180b2b42377f596b0ce372430d8204ae042d3b19c
+	source = http://www.kernel.org/pub/linux/bluetooth/bluez-5.35.tar.xz
+	source = http://www.kernel.org/pub/linux/bluetooth/bluez-5.35.tar.sign
+	sha256sums = 1afee054644a8b1753ac98d7ad5cd95681a38f5c4cbb1b4bb3ceaa078bf8f0e2
 	sha256sums = SKIP
-	sha256sums = 896a1403d9b7258c4fb0d41f3a6f70fd51eaa1115ab3f4259f3dbbe02b55766b
 
 pkgname = lib32-bluez
 	pkgdesc = Daemons for the bluetooth protocol stack (32-bit)
