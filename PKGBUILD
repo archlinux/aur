@@ -4,25 +4,30 @@
 # Contributor: Michał Masłowski <mtjm@mtjm.eu>
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
+# Contributor: Luke R. <g4jc@openmailbox.org>
 
 # Based on linux-lts package
 
 pkgbase=linux-libre-lts
-_pkgbasever=3.14-gnu
-_pkgver=3.14.52-gnu
+_pkgbasever=4.1-gnu
+_pkgver=4.1.8-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
-_replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
-_replacesoldmodules=('linux-libre%-kmod-alx') # '%' gets replaced with _kernelname
+_replacesoldkernels=() # '%' gets replaced with _kernelname
+_replacesoldmodules=() # '%' gets replaced with _kernelname
 
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-arch=('i686' 'x86_64')
+rcnrel=armv7-x5
+arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+if [ "${CARCH}" = "armv7h" ]; then
+  makedepends+=('git')
+fi
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
@@ -35,19 +40,25 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
         # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config.i686' 'config.x86_64' 'config.armv7h'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-Bluetooth-allocate-static-minor-for-vhci.patch'
-        '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
-        '0003-module-remove-MODULE_GENERIC_TABLE.patch'
-        '0006-genksyms-fix-typeof-handling.patch'
-        'gcc5_buildfixes.diff'
-        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
-sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
+        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
+        # armv7h patches
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
+        '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
+        '0003-SMILE-Plug-device-tree-file.patch'
+        '0004-fix-mvsdio-eMMC-timing.patch'
+        '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
+        '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
+        '0007-set-default-cubietruck-led-triggers.patch'
+        '0008-USB-armory-support.patch')
+sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '5c3f6fb432d567c81df2d76476ca1abafaee9d2de4828d57e78d0219982c4ebc'
+            '1b3a8ef42233467939c9b85ac3151f64676a87d42b0f6bb8b50c2cfa536236f5'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -55,18 +66,25 @@ sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '2d257eadefd31955dd8d887fb6ab0e2932475ae34fb03c1dd64c17e0f8758318'
-            'a06ecf54b9b20c91c66c42e5d742248de8b0543dd0b378fac8f37a91b3f19eb8'
+            '2c0a885ad357f33a2798d75fede26ba21f45f2771eeee9ab8d1b9dde9318176d'
+            'f0bc5cb42ce335d5757ef38a2e7cecd0da5cc0271b70874afe78d8bff9f5557c'
+            '454be705d118e6600e83014c8d3801ef42d34d17303a063169e45eff7cc2b52c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
-            '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
-            '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
-            '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
-            'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a'
-            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
+            '4fed1e0226df8114be7d7021d22e0ded50ed8876e352b043ba34db7bb72f00f6'
+            'SKIP'
+            '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
+            '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
+            '39bfd7f6e2df0b87b52488462edb2fbcfaf9e3eb2a974fc7b3bc22147352fece'
+            '59444ed7dce62697f1c35be340b740899e1d71398b334c419ad07cea838c6ed6'
+            '90cff98e43322e79c8d8b1c6456a328650f6af3ebf018086a82ab690a688da5d'
+            'ed6cf79434d3b1c10e0e141ab6bdc2aa9abfe7e7df6bbb24b2097c0e0d62ac17'
+            '2c3df3d9a3d8fe11fefc485167a81c6fc53635b04ba0312bef144505dc0a6ce4'
+            '0f6b0146096ee7a04938d39a013c23cfd8719f3bef0956b5c88a33e7d7ecafdc')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
+              'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
 )
 
@@ -75,8 +93,9 @@ _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
 _replacesoldkernels=("${_replacesoldkernels[@]/\%/${_kernelname}}")
 _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 
-case "$CARCH" in
+case "${CARCH}" in
   i686|x86_64) KARCH=x86;;
+  armv7h) KARCH=arm;;
 esac
 
 prepare() {
@@ -87,15 +106,24 @@ prepare() {
     patch -p1 -i "${srcdir}/patch-${_pkgbasever}-${_pkgver}"
   fi
 
+  if [ "${CARCH}" = "armv7h" ]; then
+    # RCN patch (CM3 firmware deblobbed)
+    git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+
+    # ALARM patches
+    patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
+    patch -p1 -i "${srcdir}/0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch"
+    patch -p1 -i "${srcdir}/0003-SMILE-Plug-device-tree-file.patch"
+    patch -p1 -i "${srcdir}/0004-fix-mvsdio-eMMC-timing.patch"
+    patch -p1 -i "${srcdir}/0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
+    patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
+    patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
+    patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+  fi
+
   # add freedo as boot logo
   install -m644 -t drivers/video/logo \
     "${srcdir}/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}
-
-  # buildfixes for gcc5
-  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/qla2xxx/qla_nx2.c?id=9493c2422cae272d6f1f567cbb424195defe4176
-  # https://lkml.org/lkml/2014/11/9/27
-  # https://lkml.org/lkml/2014/12/14/55
-  patch -p1 -i "${srcdir}/gcc5_buildfixes.diff"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -105,20 +133,11 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # Fix vhci warning in kmod (to restore every kernel maintainer's sanity)
-  patch -p1 -i "${srcdir}/0001-Bluetooth-allocate-static-minor-for-vhci.patch"
-
-  # Fix atkbd aliases
-  patch -p1 -i "${srcdir}/0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
-  patch -p1 -i "${srcdir}/0003-module-remove-MODULE_GENERIC_TABLE.patch"
-
-  # Fix generation of symbol CRCs
-  # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
-  patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
-
   # Make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
-  patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
+  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then ## This patch is only needed for x86 computers, so we disable it for others
+    patch -p1 -i "${srcdir}/0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch"
+  fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -146,18 +165,26 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  if [ "${CARCH}" = "armv7h" ]; then
+    make ${MAKEFLAGS} LOCALVERSION= zImage modules dtbs
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  fi
 }
 
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules - stable longtime supported kernel package suitable for servers"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base')
-  depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-libre-firmware' 'kmod')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  [ "${CARCH}" = "armv7h" ] && conflicts+=("${_replacesarchkernel}-uimage") && replaces+=("${_replacesarchkernel}-uimage")
+  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    depends+=('mkinitcpio>=0.7')
+    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  fi
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -168,8 +195,16 @@ _package() {
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
+  if [ "${CARCH}" = "armv7h" ]; then
+    mkdir -p "${pkgdir}/boot/dtbs/${pkgbase}"
+  fi
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  if [ "${CARCH}" = "armv7h" ]; then
+    cp arch/$KARCH/boot/zImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+    cp arch/$KARCH/boot/dts/*.dtb "${pkgdir}/boot/dtbs/${pkgbase}"
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  fi
 
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
@@ -179,21 +214,21 @@ _package() {
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
     -i "${startdir}/${install}"
 
-  # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    # install mkinitcpio preset file for kernel
+    install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    sed \
+      -e "1s|'linux.*'|'${pkgbase}'|" \
+      -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
+      -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
+      -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
+      -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  fi
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # gzip -9 all modules to save 100MB of space
-  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
   # make room for external modules
   ln -s "../extramodules-${_basekernel}${_kernelname}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade
@@ -207,8 +242,10 @@ _package() {
   mkdir -p "${pkgdir}/usr"
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
-  # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    # add vmlinux
+    install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  fi
 }
 
 _package-headers() {
@@ -237,6 +274,14 @@ _package-headers() {
   # copy arch includes for external modules
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+  if [ "${CARCH}" = "armv7h" ]; then
+    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2"
+    cp -a arch/${KARCH}/mach-omap2/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2/"
+    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu"
+    cp -a arch/${KARCH}/mach-mvebu/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu/"
+    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap"
+    cp -a arch/${KARCH}/plat-omap/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap/"
+  fi
 
   # copy files necessary for later builds
   cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -303,7 +348,8 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-  cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
+  # removed in 3.17-gnu series
+  # cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
 
   # copy in Kconfig files
   for i in $(find . -name "Kconfig*"); do
