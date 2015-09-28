@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://multimc.org/"
 license=('Apache')
 depends=('qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg')
-makedepends=('git' 'cmake' 'qt5-tools' 'qt5-x11extras' 'java-environment')
+makedepends=('git' 'patch' 'cmake' 'qt5-tools' 'qt5-x11extras' 'java-environment')
 conflicts=('multimc5')
 source=("$pkgname"::"git://github.com/MultiMC/MultiMC5.git#tag=${pkgver}"
   'multimc5.sh'
