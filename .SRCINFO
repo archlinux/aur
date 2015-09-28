@@ -1,6 +1,6 @@
 pkgbase = minlog-git
 	pkgdesc = Interactive proof system based on first order natural deduction calculus.
-	pkgver = 174.2194825
+	pkgver = 182.32e48fb
 	pkgrel = 1
 	url = http://www.mathematik.uni-muenchen.de/~logik/minlog/index.php
 	arch = any
