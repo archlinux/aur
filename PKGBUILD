@@ -35,6 +35,6 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	make PREFIX=/usr DESTDIR="${pkgdir}" TERMINFO="$pkgdir/usr/share/terminfo" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README "${pkgdir}/usr/share/licenses/${pkgname}/README"
+	install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/README"
 }
 md5sums=('SKIP')
