@@ -4,7 +4,7 @@ pkgname=gnome-shell-theme-viva-git
 _pkgver=3.18.1
 pkgver=3.18.1.112.f4fc574
 pkgrel=1
-pkgdesc="A custom gnome-shell theme named viva"
+pkgdesc="A custom gnome-shell theme named viva (blue and orange version)"
 arch=('any')
 url="https://github.com/vivaeltopo/gnome-shell-theme-viva"
 groups=('gnome-shell-extensions')
@@ -19,7 +19,7 @@ pkgver() {
 }
 
 package() {
-	# orange version
+  # orange version
   cd $srcdir/gnome-shell-theme-viva
   make orange
 
