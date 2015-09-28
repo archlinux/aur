@@ -203,6 +203,8 @@ build() {
   [[ "$_ibus_mozc"  == "yes" ]] && _targets+="unix/ibus/ibus.gyp:ibus_mozc renderer/renderer.gyp:mozc_renderer "
   [[ "$_uim_mozc"   == "yes" ]] && _targets+="unix/uim/uim.gyp:uim-mozc "
 
+  unset CC CC_host CC_target CXX CXX_host CXX_target LINK AR AR_host AR_target \
+        NM NM_host NM_target READELF READELF_host READELF_target
   QTDIR=$_qt4dir GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" \
     python2 build_mozc.py gyp
   python2 build_mozc.py build -c $_bldtype -j $_jobs $_targets
