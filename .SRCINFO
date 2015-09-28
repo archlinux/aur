@@ -1,6 +1,6 @@
 pkgbase = llvmlinux-git
 	pkgdesc = The Linux Kernel built with (native) LLVM/Clang
-	pkgver = 4.2.rc3.r228.g33b4017
+	pkgver = 4.3.rc3.r42.g3225031
 	pkgrel = 1
 	url = http://llvm.linuxfoundation.org/index.php/Main_Page
 	install = llvmlinux-git.install
@@ -24,7 +24,7 @@ pkgbase = llvmlinux-git
 	source = 0001_clang_arch.patch
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 738a292265a7dd1be553c8f2b54c14e7
+	md5sums = 9a24944400fadce1f73539b521366c39
 	md5sums = 951a65b16527d6f9058bcde1ec2ec158
 	md5sums = ccd57fa4236cfb7ed622aab11ab71a59
 

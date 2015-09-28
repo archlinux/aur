@@ -3,7 +3,7 @@
 
 pkgbase=llvmlinux-git
 pkgname=${pkgbase}
-pkgver=4.2.rc3.r228.g33b4017
+pkgver=4.3.rc3.r42.g3225031
 pkgrel=1
 pkgdesc="The Linux Kernel built with (native) LLVM/Clang"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=('llvmlinux'::'git://git.linuxfoundation.org/llvmlinux.git'
 	'0001_clang_arch.patch')
 md5sums=('SKIP'
          'SKIP'
-         '738a292265a7dd1be553c8f2b54c14e7'
+         '9a24944400fadce1f73539b521366c39'
          '951a65b16527d6f9058bcde1ec2ec158'
          'ccd57fa4236cfb7ed622aab11ab71a59')
 
