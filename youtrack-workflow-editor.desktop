@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=YouTrack Workflow Editor
+Comment=YouTrack Workflow Editor
+Exec=youtrack-workflow-editor %u
+Icon=youtrack-workflow-editor
+Terminal=false
+Type=Application
+Categories=Development;IDE;

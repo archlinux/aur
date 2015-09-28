@@ -1,0 +1,19 @@
+pkgbase = youtrack-workflow-editor
+	pkgdesc = A MPS-based application to create and edit workflows for YouTrack.
+	pkgver = 6.0
+	pkgrel = 1
+	url = http://www.jetbrains.com/youtrack/
+	arch = any
+	license = Commercial
+	depends = java-environment<7
+	backup = usr/share/youtrack-workflow-editor/bin/idea.properties
+	backup = usr/share/youtrack-workflow-editor/bin/youtrack-workflow.vmoptions
+	source = https://download.jetbrains.com/charisma/youtrack-workflow-editor-3384.tar.gz
+	source = youtrack-workflow-editor.sh
+	source = youtrack-workflow-editor.desktop
+	sha256sums = f25009b9108e50f2b40df3b0dda6fea39825c8885fad67886d6000765f646e9c
+	sha256sums = be320a1d8c56b6fc3feab51a06fbe3acbb7039df842bcda2f3145e9e83f06536
+	sha256sums = 2aef96faa5351a28ee40db1de3e92a9353fde14a2f2c8490e740d89c3339a8f8
+
+pkgname = youtrack-workflow-editor
+
