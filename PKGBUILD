@@ -30,9 +30,6 @@ build() {
 	export CXXFLAGS="-O2 -pipe"
 	export CPPFLAGS="-O2 -pipe"
 
-	# export CFLAGS_FOR_TARGET="-msoft-float -mcpu=leon3 -mno-fpu"
-	# export CXXFLAGS_FOR_TARGET="-msoft-float -mcpu=leon3 -mno-fpu"
-	
 	cd "$srcdir/gdb-$pkgver/gdb-build"
 
 	# build gdb
