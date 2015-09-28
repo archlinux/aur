@@ -1,6 +1,6 @@
 pkgbase = retroarch-git
 	pkgdesc = Simple frontend for the Libretro API
-	pkgver = 1.2.2.r836.80b3bc6
+	pkgver = 1.2.2.r1464.5d9cdcd
 	pkgrel = 1
 	epoch = 2
 	url = http://github.com/libretro/RetroArch
@@ -22,10 +22,9 @@ pkgbase = retroarch-git
 	depends = openal
 	depends = python
 	depends = sdl2
-	optdepends = libretro-super-git: A collection of libretro implementations.
 	provides = retroarch
 	conflicts = retroarch
-	source = git+https://github.com/libretro/RetroArch.git
+	source = git+https://github.com/libretro/RetroArch
 	sha256sums = SKIP
 
 pkgname = retroarch-git
