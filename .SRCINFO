@@ -1,15 +1,15 @@
 pkgbase = python-unicodecsv
 	pkgdesc = Python2's stdlib csv module is nice, but it doesn't support unicode. This module is a drop-in replacement which *does*.
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/jdunck/python-unicodecsv
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/u/unicodecsv/unicodecsv-0.13.0.tar.gz
+	source = https://pypi.python.org/packages/source/u/unicodecsv/unicodecsv-0.14.0.tar.gz
 	source = https://raw.githubusercontent.com/jdunck/python-unicodecsv/master/LICENSE
-	sha256sums = a913fa13a26b4b25058950f8d6231abee855e8a03a0f265274b3ed30a91034a3
+	sha256sums = 495871db660eb0519e351cbbac02996448071e726b2523d4e01bc51ecb8c7795
 	sha256sums = a3b3fcd3f2b3e97b4c4ffc354f719e1519dc95dc0b09d82f769538feeb7db032
 
 pkgname = python-unicodecsv
