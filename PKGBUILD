@@ -3,7 +3,7 @@
 
 pkgname=qtodotxt
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform UI client for todo.txt files (see todotxt.com)."
 arch=('any')
 url="https://github.com/mNantern/QTodoTxt"
