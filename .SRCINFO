@@ -1,6 +1,6 @@
 pkgbase = ruby-sprockets
 	pkgdesc = Rack-based asset packaging system
-	pkgver = 3.3.4
+	pkgver = 3.3.5
 	pkgrel = 1
 	url = http://getsprockets.org/
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = ruby-sprockets
 	depends = ruby-multi_json
 	depends = ruby-rack
 	depends = ruby-tilt-1
-	noextract = sprockets-3.3.4.gem
+	noextract = sprockets-3.3.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sprockets-3.3.4.gem
-	sha1sums = 3598948c1bdf8679877c1e620b5973c8ebe13131
+	source = https://rubygems.org/downloads/sprockets-3.3.5.gem
+	sha1sums = dae26df590a3131b24f90ca9a1e5434cae7fd919
 
 pkgname = ruby-sprockets
 
