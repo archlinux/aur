@@ -1,0 +1,25 @@
+pkgbase = kuaipan4uk
+	pkgdesc = Kingsoft KuaiPan is one of the most popular cloud storage service in China. The aim of this project is to provide an easy-to-use KuaiPan client for UbuntuKylin and all Linux users.
+	pkgver = 2.0.0.5
+	pkgrel = 1
+	url = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&id=21
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = zlib
+	depends = freetype2
+	depends = libsm
+	depends = libxrender
+	depends = libxext
+	depends = bzip2
+	depends = icu
+	depends = rtmpdump
+	depends = crypto++
+	depends = nss
+	depends = libqxt
+	source = http://curl.haxx.se/download/curl-7.23.1.tar.gz
+	md5sums = 8e23151f569fb54afef093ac0695077d
+
+pkgname = kuaipan4uk
+
