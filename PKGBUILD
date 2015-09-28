@@ -11,10 +11,10 @@ depends=('qt4' 'zlib' 'freetype2' 'libsm' 'libxrender' 'libxext' 'bzip2' 'icu' '
 
 if [ "$CARCH" = "i686" ]; then
     source="http://archive.ubuntukylin.com:10006/ubuntukylin/pool/main/k/kuaipan4uk/kuaipan4uk_2.0.0.5_i386.deb"
-    md5sums='a1d125a968b2a5099d8d7ee0291ff4e6'
+    md5sums='a0ab89a03317d75d9c2cf2baa884e679'
 elif [ "$CARCH" = "x86_64" ]; then
     source="http://archive.ubuntukylin.com:10006/ubuntukylin/pool/main/k/kuaipan4uk/kuaipan4uk_2.0.0.5_amd64.deb"
-    md5sums='d9b6804c3679269c5cc99407f2ac7409'
+    md5sums='bdc0c8fd53b22239f49b67c48aa31abc'
 fi
 
 #Check if libcurl exists
