@@ -12,18 +12,15 @@ depends=('python-pyside')
 provides=('qtodotxt')
 conflicts=('qtodotxt-hg' 'qtodotxt-git')
 install=$pkgname.install
-source=(
-  "https://github.com/mNantern/QTodoTxt/archive/$pkgver.tar.gz"
-  qtodotxt.desktop)
-md5sums=('9674a176578cfdaa864e43777023a269'
-         '56774bd2d9895a2f1ea4deee0c5fcf6c')
+source=("https://github.com/mNantern/QTodoTxt/archive/$pkgver.tar.gz")
+md5sums=('9674a176578cfdaa864e43777023a269')
 
 package() {
   cd "$srcdir/QTodoTxt-$pkgver"
   install -Dm755 bin/qtodotxt $pkgdir/usr/share/qtodotxt/bin/qtodotxt
   cp -pr qtodotxt "$pkgdir/usr/share/qtodotxt/"
-  install -Dm644 artwork/icon/qTodo-512.png "${pkgdir}/usr/share/pixmaps/qtodotxt.png"
-  install -Dm644 "$srcdir/qtodotxt.desktop" "${pkgdir}/usr/share/applications/qtodotxt.desktop"
+  install -Dm644 artwork/icon/qTodo-512.png "${pkgdir}/usr/share/qtodotxt/artwork/icon/icon512.png"
+  install -Dm644 packaging/Debian/qtodotxt.desktop "${pkgdir}/usr/share/applications/qtodotxt.desktop"
   mkdir -p $pkgdir/usr/bin/
   ln -s /usr/share/qtodotxt/bin/qtodotxt $pkgdir/usr/bin/qtodotxt
 }
