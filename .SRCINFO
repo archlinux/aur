@@ -1,8 +1,8 @@
 pkgbase = remmina-git
 	pkgdesc = A remote desktop client written in GTK+ - git checkout
-	pkgver = 1.2.0.rcgit.3.r2.g91fd9fd
+	pkgver = 1.2.0.rcgit.4.r1.g6700f29
 	pkgrel = 1
-	url = http://sourceforge.net/projects/remmina/
+	url = http://www.remmina.org/
 	install = remmina.install
 	arch = i686
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = remmina-git
 	optdepends = telepathy-glib
 	provides = remmina
 	provides = grdc
-	provides = grdc=1.2.0.rcgit.3.r2.g91fd9fd
+	provides = grdc=1.2.0.rcgit.4.r1.g6700f29
 	provides = remmina-plugins
 	conflicts = remmina
 	conflicts = grdc
