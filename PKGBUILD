@@ -7,7 +7,7 @@
 _pkgname=squeeze
 _pkgbasever=0.4.90git
 pkgname=squeeze-git
-pkgver=0.4.90git.r1032.af38709
+pkgver=0.4.90git.r1034.12f4d28
 pkgrel=1
 pkgdesc="Squeeze is  a modern and advanced archive manager for the Xfce Desktop Environment"
 arch=(i686 x86_64)
