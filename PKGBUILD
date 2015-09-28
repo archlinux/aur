@@ -1,22 +1,29 @@
-# Maintainer: Marco Pompili marcs.pompili@gmail.com
+# Maintainer: Marco Pompili < marcs (dot) pompili (at) gmail (dot) com >
 # Contributor: Giorgio Gilestro crocowhile@gmail.com
 
 pkgname=sphinxbase
-pkgver=0.8
-pkgrel=4
+pkgver=5prealpha
+pkgrel=1
 pkgdesc='Common library for sphinx speech recognition.'
 url='http://cmusphinx.sourceforge.net/'
 arch=('i686' 'x86_64')
-license=('BSD')
+license=('BSD-2')
 options=('!libtool')
 makedepends=('bison')
-depends=('python2' 'cython2' 'lapack' 'alsa-lib' 'libpulse' 'libsamplerate')
-source=("http://downloads.sourceforge.net/cmusphinx/$pkgname-$pkgver.tar.gz")
-md5sums=('7335d233f7ad4ecc4b508aec7b5dc101')
+depends=('python2' 'cython2' 'swig' 'lapack' 'alsa-lib' 'libpulse' 'libsamplerate')
+source=("http://downloads.sourceforge.net/project/cmusphinx/${pkgname}/${pkgver}/$pkgname-$pkgver.tar.gz"
+        "https://raw.githubusercontent.com/cmusphinx/sphinxbase/master/LICENSE")
+md5sums=('12acdeda1d597631947e5531463431f1'
+         '469fd92fa8cd1d4ca7ee0fe7435af689')
 _pythondir="$pkgdir/usr/lib/python2.7/site-packages"
 
 build() {
     cd $pkgname-$pkgver
+
+    msg2 "Reconfiguring project for Automake v1.15"
+    autoreconf -ivf > /dev/null
+
+    msg2 "Setting python2 as the python installtion for ${pkgname}"
 
     find -type f -exec sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' {} \;
     find -type f -exec sed -i 's_/usr/bin/python_/usr/bin/python2_' {} \;
@@ -27,7 +34,9 @@ build() {
     export PYTHON=/usr/bin/python2
     export PYTHON_CONFIG=/usr/bin/python2-config
 
-     ./configure --prefix=/usr --with-python=/usr/bin/python2
+    msg2 "Building..."
+
+     ./configure --prefix=/usr
 
     make
 }
@@ -39,5 +48,9 @@ package() {
     PYTHONPATH=$_pythondir make DESTDIR="$pkgdir" install
 
     install -d "$pkgdir/usr/share/licenses/$pkgname"
-    install -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/"
-} 
+
+    install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    libtool --finish "$pkgdir/usr/lib"
+    libtool --finish "$pkgdir/usr/lib/python2.7/site-packages/sphinxbase"
+}
