@@ -1,0 +1,33 @@
+pkgbase = mint-fm2
+	pkgdesc = The Linux Mint Fluxbox menu system
+	pkgver = 3.25
+	pkgrel = 5
+	url = http://community.linuxmint.com/tutorial/view/96
+	install = install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = sed
+	makedepends = patch
+	depends = fluxbox
+	depends = bash
+	depends = inotify-tools
+	depends = python2>=2.4
+	depends = pygtk
+	depends = glade
+	depends = zenity
+	depends = sed
+	depends = menu-cache
+	depends = mlocate
+	depends = pm-utils
+	optdepends = lxterminal
+	optdepends = firefox
+	optdepends = thunar
+	optdepends = bc
+	source = http://packages.linuxmint.com/pool/main/m/mint-fm2/mint-fm2_3.25.tar.gz
+	source = mint-fm2-3.25-arch.patch
+	md5sums = 618c5734322b23e363ad29b86a85e708
+	md5sums = 1deaa10d1c05331118c5cbc1d907615f
+
+pkgname = mint-fm2
+

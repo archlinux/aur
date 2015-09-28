@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+#pre_install() {
+# do something here
+#}
+## arg 1: the new package version
+post_install() {
+
+ #link mint-fm2 in bin directory
+ if [ ! -L /usr/bin/mint-fm2 ]
+ then
+	ln -s /usr/lib/linuxmint/mint-fm2/mint-fm2 /usr/bin/mint-fm2
+ fi
+ # link root daemon
+
+ if [ ! -L /etc/rc.d/mfmrootdaemon ]
+ then
+	ln -s /usr/lib/linuxmint/mint-fm2/mfmrootdaemon /etc/rc.d/mfmrootdaemon
+ fi
+ echo "****************************************"
+ echo "Mint-FM2 is the autogenerating and autoupdating menu system 
+	for the Linux Mint Fluxbox Edition. Mint-FM2 also provides an exit dialog.
+	This is the Arch Linux port."
+ echo ""
+ echo "This AUR package will install the system
+	wide daemon to monitor for changes. Please enable
+	the daemon by adding 'mfmrootdaemon' to the DAEMONS
+	section in /etc/rc.conf."
+ echo ""
+ echo "You will also have to launch the menu in
+	your Fluxbox startup file (~/.fluxbox/startup).
+	Simply add the following line at an appropriate
+	place.
+	mint-fm2 start"
+ echo ""
+ echo "If you are upgrading from v2.xx, please
+ 	delete ~/.mint-fm2 and ~/.fluxbox/menu."
+ echo ""
+ echo "For more info visit:
+	http://community.linuxmint.com/tutorial/view/96"
+ echo "****************************************"
+ echo
+}
+
+## arg 1: the new package version
+## arg 2: the old package version
+ pre_upgrade() {
+ sleep 0
+}
+
+## arg 1: the new package version
+## arg 2: the old package version
+post_upgrade() {
+ /etc/rc.d/mfmrootdaemon restart
+ post_install
+}
+
+## arg 1: the old package version
+pre_remove() {
+ /etc/rc.d/mfmrootdaemon stop
+}
+
+## arg 1: the old package version
+post_remove() {
+
+#delete links
+ if [ -L /usr/bin/mint-fm2 ]
+ then
+	rm /usr/bin/mint-fm2
+ fi
+ if [ -L /etc/rc.d/mfmrootdaemon ]
+ then
+	rm /etc/rc.d/mfmrootdaemon
+ fi
+
+ echo
+ echo "****************************************"
+ echo 'Users must delete the folder ~/.mint-fm2 for uninstallation to be complete'
+ echo "****************************************"
+}
