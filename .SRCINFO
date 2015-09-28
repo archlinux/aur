@@ -1,15 +1,20 @@
 pkgbase = python-gitpython
 	pkgdesc = Python Git Library
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gitpython-developers/GitPython
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = https://pypi.python.org/packages/source/G/GitPython/GitPython-1.0.1.tar.gz
 	sha256sums = 9c88c17bbcae2a445ff64024ef13526224f70e35e38c33416be5ceb56ca7f760
 
 pkgname = python-gitpython
 	depends = git>=1.7
 	depends = python-gitdb>=0.6.4
+
+pkgname = python2-gitpython
+	depends = git>=1.7
+	depends = python2-gitdb>=0.6.4
 
