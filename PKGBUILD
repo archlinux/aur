@@ -4,7 +4,7 @@ pkgdesc="ROS - A ROS Driver for V4L USB Cameras."
 url='http://wiki.ros.org/usb_cam'
 
 pkgname='ros-indigo-usb-cam'
-pkgver='0.3.3'
+pkgver='0.3.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
