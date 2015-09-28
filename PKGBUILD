@@ -6,15 +6,15 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.29.0"
+pkgver="2.30.0"
 pkgrel="1"
 pkgdesc="Client library for OpenStack Compute API"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
-makedepends=("python-pbr>=1.3" "python2-pbr>=1.3")
+makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ba673c5b4aefdd172db806f45c3979d1c04d7f225277c73ea5a79e113cf02624')
+sha256sums=('6608f38083966b3bf684574a1a643ae96b9cec8e09761afc330687f94fb4f9f9')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
