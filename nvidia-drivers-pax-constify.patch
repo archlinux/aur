@@ -1,5 +1,5 @@
---- a/kernel/uvm/uvm_common.c
-+++ b/kernel/uvm/uvm_common.c
+--- a/kernel/nvidia-uvm/uvm_common.c
++++ b/kernel/nvidia-uvm/uvm_common.c
 @@ -147,9 +147,11 @@ static RM_STATUS uvmSetupGpuProvider(void)
      RM_STATUS status = RM_OK;
  

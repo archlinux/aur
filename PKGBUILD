@@ -1,29 +1,32 @@
-# Maintainer : Kaan Genç <SeriousBug at gmail dot com>
-# Contributor : Thomas Baechler <thomas@archlinux.org>
+# Maintainer : Kaan Genç <aur@kaangenc.me>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-grsec
-pkgver=352.41
+pkgver=355.11
 _extramodules=extramodules-4.1.7-grsec
-pkgrel=2
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-grsec>=4.1' 'linux-grsec<4.2' "nvidia-utils=${pkgver}" "libgl")
-makedepends=('linux-grsec-headers>=4.1' 'linux-grsec-headers<4.2')
-conflicts=('nvidia-96xx-grsec' 'nvidia-173xx-grsec')
+depends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec>=4.1.7' 'linux-grsec<4.2')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.1.7' 'linux-grsec-headers<4.2')
 license=('custom')
 install=nvidia-grsec.install
 options=(!strip)
-source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
-        "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-        "nvidia-drivers-pax-usercopy.patch"
-        "nvidia-drivers-pax-constify.patch"
-        "nv-drm.patch")
-md5sums=('3f9c9fed035fa845e3f6a1ea5f5732f7'
-         'd41d1a358edbade36cfd97cdcc9a80b9'
-         '5277c8699971b9bae8d2845cc00e0e5d'
-         '29247a931d0d457692ae0bcd278d4d43'
-         'ff8a5f979e4428f8c847423fb007042c')
+source=('nvidia-drivers-pax-usercopy.patch'
+         'nvidia-drivers-pax-constify.patch'
+         'nv-drm.patch')
+md5sums=('2d3de69362039a4ff10b68dadebc49ca'
+         'cea9a028cb816b5495759cfad2d981b6'
+         '72cdf32a6d35729a12c6c23a7e91e972')
+md5sums_i686=('16d143ccafe99328a2ca8e5a396fd4bc')
+md5sums_x86_64=('30133d89690f4683c4e289ec6c0247dc')
+source_i686="ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
+source_x86_64="ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+md5sums_i686='16d143ccafe99328a2ca8e5a396fd4bc'
+md5sums_x86_64='30133d89690f4683c4e289ec6c0247dc'
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -41,11 +44,6 @@ build() {
     _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
     cd "${_pkg}"/kernel
     make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-
-    if [[ "$CARCH" = "x86_64" ]]; then
-        cd uvm
-        make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-    fi
 }
 
 package() {
@@ -53,7 +51,7 @@ package() {
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
 
     if [[ "$CARCH" = "x86_64" ]]; then
-        install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+        install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
             "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
     fi
 
@@ -61,5 +59,4 @@ package() {
     install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
 
     echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-grsec.conf"
-    sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "${startdir}/nvidia-grsec.install"
 }

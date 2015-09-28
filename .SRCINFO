@@ -1,31 +1,32 @@
 pkgbase = nvidia-grsec
 	pkgdesc = NVIDIA drivers for linux-grsec kernel
-	pkgver = 352.41
-	pkgrel = 2
+	pkgver = 355.11
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-grsec.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-grsec-headers>=4.1
+	makedepends = nvidia-libgl
+	makedepends = nvidia-utils=355.11
+	makedepends = linux-grsec
+	makedepends = linux-grsec-headers>=4.1.7
 	makedepends = linux-grsec-headers<4.2
-	depends = linux-grsec>=4.1
-	depends = linux-grsec<4.2
-	depends = nvidia-utils=352.41
 	depends = libgl
-	conflicts = nvidia-96xx-grsec
-	conflicts = nvidia-173xx-grsec
+	depends = nvidia-utils=355.11
+	depends = linux-grsec>=4.1.7
+	depends = linux-grsec<4.2
 	options = !strip
-	source = ftp://download.nvidia.com/XFree86/Linux-x86/352.41/NVIDIA-Linux-x86-352.41.run
-	source = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.41/NVIDIA-Linux-x86_64-352.41-no-compat32.run
 	source = nvidia-drivers-pax-usercopy.patch
 	source = nvidia-drivers-pax-constify.patch
 	source = nv-drm.patch
-	md5sums = 3f9c9fed035fa845e3f6a1ea5f5732f7
-	md5sums = d41d1a358edbade36cfd97cdcc9a80b9
-	md5sums = 5277c8699971b9bae8d2845cc00e0e5d
-	md5sums = 29247a931d0d457692ae0bcd278d4d43
-	md5sums = ff8a5f979e4428f8c847423fb007042c
+	md5sums = 2d3de69362039a4ff10b68dadebc49ca
+	md5sums = cea9a028cb816b5495759cfad2d981b6
+	md5sums = 72cdf32a6d35729a12c6c23a7e91e972
+	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/355.11/NVIDIA-Linux-x86-355.11.run
+	md5sums_i686 = 16d143ccafe99328a2ca8e5a396fd4bc
+	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/355.11/NVIDIA-Linux-x86_64-355.11-no-compat32.run
+	md5sums_x86_64 = 30133d89690f4683c4e289ec6c0247dc
 
 pkgname = nvidia-grsec
 

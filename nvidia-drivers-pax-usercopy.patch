@@ -1,5 +1,5 @@
---- a/kernel/nv.c	2015-01-19 01:04:52.529752767 +0000
-+++ b/kernel/nv.c	2015-01-19 01:06:48.772876992 +0000
+--- a/kernel/nvidia/nv.c	2015-01-19 01:04:52.529752767 +0000
++++ b/kernel/nvidia/nv.c	2015-01-19 01:06:48.772876992 +0000
 @@ -713,11 +713,12 @@
  #if defined(KM_CHECKER)
      NV_SPIN_LOCK_INIT(&km_lock);
@@ -34,8 +34,8 @@
          if (nvidia_p2p_page_t_cache == NULL)
          {
              rc = -ENOMEM;
---- a/kernel/nv-linux.h	2015-01-19 01:04:52.526419343 +0000
-+++ b/kernel/nv-linux.h	2015-01-19 01:05:23.843928675 +0000
+--- a/kernel/common/inc/nv-linux.h	2015-01-19 01:04:52.526419343 +0000
++++ b/kernel/common/inc/nv-linux.h	2015-01-19 01:05:23.843928675 +0000
 @@ -1445,14 +1445,14 @@
  
  extern void *nvidia_stack_t_cache;
