@@ -1,4 +1,5 @@
-# Maintainer: Daniel Reuter <daniel.robin.reuter@googlemail.com>
+# Maintainer: Dimitri Kaparis <kaparis.dimitri@gmail.com>
+# Contributor: Daniel Reuter <daniel.robin.reuter@googlemail.com>
 
 pkgname=qtodotxt
 pkgver=1.4.0
