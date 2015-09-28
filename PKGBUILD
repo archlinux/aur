@@ -2,7 +2,7 @@
 
 pkgname=salome-med
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - MED Module"
 url="http://www.salome-platform.org"
 depends=('scotch>=6.0.3' 'metis4' 'salome-gui>=7.6.0' 'salome-gui<7.7.0')
@@ -59,7 +59,7 @@ build() {
      -DMETIS_INCLUDE_DIRS=/usr/include/metis-4 \
      -DMETIS_LIBRARIES=/usr/lib/libmetis-4.so \
      -DSALOME_MED_PARTITIONER_SCOTCH=BOOL:ON \
-     -DSPHINX_ROOT_DIR=/usr \
+     -DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2 \
      -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
      -DSCOTCH_INCLUDE_DIRS=/usr/include/scotch \
      -DSCOTCH_LIBRARIES=/usr/lib/libscotch.so \
