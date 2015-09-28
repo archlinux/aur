@@ -3,7 +3,7 @@
 _pkgname="fatrat"
 pkgname="$_pkgname-git"
 pkgver=1.2.0_beta2.20.gc76986b
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt Download/Upload Manager"
 arch=("i686" "x86_64")
 url="http://fatrat.dolezel.info"
@@ -12,7 +12,7 @@ depends=("qt5-tools" "qt5-svg" "libtorrent-rasterbar")
 makedepends=("git" "cmake" "boost")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git://git.dolezel.info/fatrat.git")
+source=("git+https://github.com/LubosD/fatrat.git")
 sha256sums=("SKIP")
 
 pkgver() {

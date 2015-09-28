@@ -1,7 +1,7 @@
 pkgbase = fatrat-git
 	pkgdesc = Qt Download/Upload Manager
 	pkgver = 1.2.0_beta2.20.gc76986b
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fatrat.dolezel.info
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = fatrat-git
 	depends = libtorrent-rasterbar
 	provides = fatrat
 	conflicts = fatrat
-	source = git://git.dolezel.info/fatrat.git
+	source = git+https://github.com/LubosD/fatrat.git
 	sha256sums = SKIP
 
 pkgname = fatrat-git
