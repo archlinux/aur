@@ -24,9 +24,11 @@ post_install() {
 
 	COZY_DOMAIN=
 	msg_blue "Choose you Cozy's FQDN (fully-qualified domain name).\nA self-signed certificate will be issued for this domain only, and the web server will configured with this domain name."
-#	prompt_blue "Domain name of your Cozy [cozy.example.tld]: " 
-	read -p "Domain name of your Cozy [cozy.example.tld]: " res 
-	COZY_DOMAIN=$res                                                                                                                             
+	while [ -z $COZY_DOMAIN ]; do
+		msg_blue "Domain name of your Cozy [cozy.example.tld]: " 
+		read res 
+		COZY_DOMAIN=$res
+	done
 
 	msg_blue "Chosen domain name for Cozy: $COZY_DOMAIN"
 
@@ -86,7 +88,8 @@ post_install() {
 		    echo "Your configuration file for Cozy Indexer is different from the one included in this package:"
 		    diff /etc/supervisor.d/cozy-indexer.ini /usr/share/cozy/supervisor-cozy-indexer
 		    while true; do
-		        read -p "Do you want to install the new version? [Y/n] " yn
+		    	msg_blue "Do you want to install the new version? [Y/n]"
+		        read yn
 		        case $yn in
 		            [Nn]* ) echo "The new configuration file is stored on /usr/share/cozy/supervisor-cozy-indexer"; break;;
 		            * ) mv /etc/supervisor.d/cozy-indexer.ini /etc/supervisor.d/cozy-indexer.ini.old;
@@ -119,7 +122,8 @@ post_install() {
 		    echo "Your configuration file for Cozy Controller is different from the one included in this package:"
 		    diff /etc/supervisor.d/cozy-controller.ini /usr/share/cozy/supervisor-cozy-controller
 		    while true; do
-		        read -p "Do you want to install the new version? [Y/n] " yn
+		    	msg_blue "Do you want to install the new version? [Y/n]"
+		        read yn
 		        case $yn in
 		            [Nn]* ) echo "The new configuration file is stored on /usr/share/cozy/supervisor-cozy-controller"; break;;
 		            * ) mv /etc/supervisor.d/cozy-controller.ini /etc/supervisor.d/cozy-controller.ini.old;
@@ -229,7 +233,8 @@ post_install() {
 		            echo "Your configuration file for Apache is different from the one included in this package:"
 		            diff /etc/httpd/conf/extra/cozy.conf /usr/share/cozy/apache-config
 		            while true; do
-		                read -p "Do you want to install the new version? [Y/n] " yn
+			    	msg_blue "Do you want to install the new version? [Y/n]"
+		                read yn
 		                case $yn in
 		                    [Nn]* ) echo "The new configuration file is stored on /usr/share/cozy/apache-config"; break;;
 		                    * ) mv /etc/httpd/conf/extra/cozy.conf /etc/httpd/conf/extra/cozy.conf.old;
@@ -241,7 +246,7 @@ post_install() {
 		        else
 		            cp /usr/share/cozy/apache-config /etc/httpd/conf/extra/cozy.conf;
 		        fi
-				msg_blue 'Restarting Apache2 web server...'
+			msg_blue 'Restarting Apache2 web server...'
 		        systemctl restart httpd
 		    fi
 		fi
