@@ -1,7 +1,7 @@
 pkgbase = ocrdesktop
 	pkgdesc = OCR the current window or desktop and make it browsable for the user
-	pkgver = 0.9.96
-	pkgrel = 2
+	pkgver = 0.9.97
+	pkgrel = 1
 	url = http://www.crivatec.de
 	install = ocrdesktop.install
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = ocrdesktop
 	depends = python-pillow
 	depends = python-tesserwrap
 	depends = tesseract-data-eng
-	source = http://crivatec.de/page/uploads/Downloads/Accessible%20Tools/ocrdesktop-0.9.96.tar.xz
-	md5sums = a6cef9222bde1e49becc1b133c0bb190
+	source = http://crivatec.de/page/uploads/Downloads/Accessible%20Tools/ocrdesktop-0.9.97.tar.xz
+	md5sums = fdad271ff8a440f96f9985d90f9d3379
 
 pkgname = ocrdesktop
 
