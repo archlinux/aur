@@ -1,0 +1,29 @@
+pkgbase = go-ethereum-git
+	pkgdesc = Ethereum Go Client (CLI)
+	pkgver = 20150925
+	pkgrel = 1
+	url = https://github.com/ethereum/go-ethereum
+	arch = i686
+	arch = x86_64
+	groups = ethereum
+	license = GPL
+	makedepends = gcc
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	makedepends = mercurial
+	depends = gmp
+	depends = leveldb
+	depends = readline
+	optdepends = mist: Ether Browser
+	provides = go-ethereum
+	conflicts = go-ethereum
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/ethereum/go-ethereum#branch=develop
+	source = git+https://github.com/ethereum/go-ethereum.wiki
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = go-ethereum-git
+
