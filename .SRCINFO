@@ -4,6 +4,7 @@ pkgbase = linux-libre-knock
 	url = https://gnunet.org/knock
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL2
 	makedepends = xmlto
 	makedepends = docbook-xsl
@@ -25,9 +26,20 @@ pkgbase = linux-libre-knock
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
 	source = config.i686
 	source = config.x86_64
+	source = config.armv7h
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.6/rcn-libre-4.1.6-armv7-x2.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.6/rcn-libre-4.1.6-armv7-x2.patch.sig
+	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
+	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
+	source = 0003-SMILE-Plug-device-tree-file.patch
+	source = 0004-fix-mvsdio-eMMC-timing.patch
+	source = 0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+	source = 0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch
+	source = 0007-set-default-cubietruck-led-triggers.patch
+	source = 0008-USB-armory-support.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
 	sha256sums = 335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34
@@ -57,28 +69,19 @@ pkgname = linux-libre-knock
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
 	provides = linux-knock=4.1.6
-	conflicts = kernel26-knock
-	conflicts = kernel26-libre-knock
+	conflicts = 
 	replaces = linux-knock
-	replaces = kernel26-knock
-	replaces = kernel26-libre-knock
 	backup = etc/mkinitcpio.d/linux-libre-knock.preset
 
 pkgname = linux-libre-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-knock kernel
 	provides = linux-knock-headers=4.1.6
-	conflicts = kernel26-knock-headers
-	conflicts = kernel26-libre-knock-headers
+	conflicts = 
 	replaces = linux-knock-headers
-	replaces = kernel26-knock-headers
-	replaces = kernel26-libre-knock-headers
 
 pkgname = linux-libre-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-knock kernel
 	provides = linux-knock-docs=4.1.6
-	conflicts = kernel26-knock-docs
-	conflicts = kernel26-libre-knock-docs
+	conflicts = 
 	replaces = linux-knock-docs
-	replaces = kernel26-knock-docs
-	replaces = kernel26-libre-knock-docs
 

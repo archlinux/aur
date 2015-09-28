@@ -8,30 +8,40 @@ post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
-  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
-  mkinitcpio -p linux-libre${KERNEL_NAME}
+  if [ "$(uname -m)" = "armv7l" ]; then
+    echo ">>> NOTE: Using this kernel requires GRUB!"
+    echo ">>>       See the Migration Guide for instructions:"
+    echo ">>>       https://wiki.parabola.nu/Migration_from_Arch_ARM#GRUB"
+  elif [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
+    echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
+    mkinitcpio -p linux-libre${KERNEL_NAME}
+  fi
 }
 
 post_upgrade() {
-  if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
-    echo "WARNING: /boot appears to be a separate partition but is not mounted."
-  fi
-
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
-  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
-  mkinitcpio -p linux-libre${KERNEL_NAME}
+  if [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
+    if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
+      echo "WARNING: /boot appears to be a separate partition but is not mounted."
+    fi
 
-  if [ $(vercmp $2 3.13) -lt 0 ]; then
-    echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
-    echo ">>>          In order to use your keyboard during early init, you MUST"
-    echo ">>>          include the 'keyboard' hook in your mkinitcpio.conf."
+    echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
+    mkinitcpio -p linux-libre${KERNEL_NAME}
+
+    if [ $(vercmp $2 3.13) -lt 0 ]; then
+      echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
+      echo ">>>          In order to use your keyboard during early init, you MUST"
+      echo ">>>          include the 'keyboard' hook in your mkinitcpio.conf."
+    fi
   fi
 }
 
+if [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
 post_remove() {
   # also remove the compat symlinks
   rm -f boot/initramfs-linux-libre${KERNEL_NAME}.img
   rm -f boot/initramfs-linux-libre${KERNEL_NAME}-fallback.img
 }
+fi
