@@ -1,0 +1,20 @@
+pkgbase = gst123-git
+	pkgdesc = Flexible command line media player based on Gstreamer, similar to ogg123, flac123, mpg123, mpg321 and modplug123. Development version.
+	pkgver = 0.3.3.r245
+	pkgrel = 1
+	url = http://space.twc.de/~stefan/gst123.php
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ncurses
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-libav
+	depends = gtk2
+	optdepends = gst-plugins-bad: more codecs support
+	optdepends = gst-plugins-ugly: more codecs support
+	source = gst123-git::git+http://space.twc.de/public/git/gst123.git
+	md5sums = SKIP
+
+pkgname = gst123-git
+
