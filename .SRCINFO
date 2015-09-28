@@ -1,0 +1,17 @@
+pkgbase = comptray
+	pkgdesc = Compton toggle for the tray
+	pkgver = r25.1e03525
+	pkgrel = 1
+	url = http://github.com/oleerik/comptray
+	arch = any
+	license = GPL
+	depends = python2
+	depends = gtk2
+	depends = pygtk
+	depends = compton
+	optdepends = compton-conf: GUI configuration for Compton
+	source = git+http://github.com/oleerik/comptray.git
+	md5sums = SKIP
+
+pkgname = comptray
+
