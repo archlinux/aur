@@ -1,11 +1,11 @@
 pkgname=qpress
-pkgver=1
+pkgver=2
 pkgrel=11
 pkgdesc="qpress is a portable file archiver using QuickLZ and designed to utilize fast storage systems to their max"
 arch=('i686' 'x86_64')
 url="http://quicklz.com/"
 license=('GPL')
-source=(http://www.quicklz.com/qpress-$pkgver-source.zip)
+source=(http://www.quicklz.com/qpress-$pkgrel-source.zip)
 md5sums=('ea2d8bc96e86e93f64a93bc546401c95')
 
 build() {

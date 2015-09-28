@@ -1,12 +1,12 @@
 pkgbase = qpress
 	pkgdesc = qpress is a portable file archiver using QuickLZ and designed to utilize fast storage systems to their max
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 11
 	url = http://quicklz.com/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://www.quicklz.com/qpress-1-source.zip
+	source = http://www.quicklz.com/qpress-11-source.zip
 	md5sums = ea2d8bc96e86e93f64a93bc546401c95
 
 pkgname = qpress
