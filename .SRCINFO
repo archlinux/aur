@@ -1,7 +1,7 @@
 pkgbase = nvidia-ck
 	pkgdesc = NVIDIA drivers for linux-ck.
-	pkgver = 352.41
-	pkgrel = 2
+	pkgver = 355.11
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-ck.install
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = nvidia-ck
 	depends = linux-ck>=4.1
 	depends = linux-ck<4.2
 	depends = nvidia-libgl
-	depends = nvidia-utils=352.41
+	depends = nvidia-utils=355.11
 	conflicts = nvidia-340xx-ck
 	conflicts = nvidia-304xx-ck
 	conflicts = nvidia-275xx-ck
@@ -65,10 +65,10 @@ pkgbase = nvidia-ck
 	conflicts = nvidia-340xx-ck-silvermont
 	conflicts = nvidia-304xx-ck-silvermont
 	options = !strip
-	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/352.41/NVIDIA-Linux-x86-352.41.run
-	sha256sums_i686 = b3fc5af7bb2852305272ffb3d5d73fbfba639d6a2af9e34a007dde3c6133f6e3
-	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.41/NVIDIA-Linux-x86_64-352.41-no-compat32.run
-	sha256sums_x86_64 = a67cca72f7de2b5a8d822001b5a78012373989a97388fe9eff56a75e6cad30cd
+	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/355.11/NVIDIA-Linux-x86-355.11.run
+	sha256sums_i686 = 94ce6b879581b931b84d83a9111040b9a5aa9306b012b4380cd93f6ffede3066
+	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/355.11/NVIDIA-Linux-x86_64-355.11-no-compat32.run
+	sha256sums_x86_64 = 0fcc6a62a05fc11344aff375faaca56b358ee1252f6b2c98c00d628ea3d0f842
 
 pkgname = nvidia-ck
 
