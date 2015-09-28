@@ -1,7 +1,7 @@
 pkgbase = dummynet
 	pkgdesc = A live network emulation tool, originally designed for testing networking protocols, and since then used for a variety of applications including bandwidth management.
 	pkgver = 20130607
-	pkgrel = 8
+	pkgrel = 9
 	url = http://info.iet.unipi.it/~luigi/dummynet/
 	install = dummynet.install
 	arch = i686
@@ -9,10 +9,8 @@ pkgbase = dummynet
 	license = BSD
 	makedepends = linux-headers
 	depends = linux
-	source = http://info.iet.unipi.it/~luigi/doc/20130607-ipfw3.tgz
-	source = 4.1.patch
-	md5sums = 004e65e6d545a89c4dcc3e741e287444
-	md5sums = 85d91ca475a1a9b06614584968054251
+	source = git://github.com/gamanakis/dummynet
+	md5sums = SKIP
 
 pkgname = dummynet
 
