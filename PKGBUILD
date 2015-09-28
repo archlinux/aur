@@ -4,7 +4,7 @@
 CMSUSER_GID=26950
 
 pkgname=cms-git
-pkgver=r3151.608a8e4
+pkgver=r3154.52af128
 pkgrel=1
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest."
 arch=('any')
@@ -40,6 +40,11 @@ pkgver() {
 package() {
   cd cms
 
+  # Apply patch: Add --as-root option to prerequisites.py
+  curl https://github.com/wil93/cms/commit/94e36179062f9b5c73330e046524801ef2bfeb2a.diff | patch -p1
+  # Apply patch: Update location and installation of localization files
+  curl https://github.com/wil93/cms/commit/bea5b5a994defe4081563161f746b528964642d8.diff | patch -p1
+
   # Configuration files
   install -D -m660 -g$CMSUSER_GID config/cms.conf.sample $pkgdir/usr/lib/cms/cms.conf
   install -D -m660 -g$CMSUSER_GID config/cms.ranking.conf.sample $pkgdir/usr/lib/cms/cms.ranking.conf
@@ -58,6 +63,9 @@ package() {
   virtualenv -p python2 $pkgdir/usr/lib/cms/venv
   source $pkgdir/usr/lib/cms/venv/bin/activate
   pip install -r requirements.txt
+
+  # Build localization files
+  ./prerequisites.py build_l10n --as-root
 
   # Install the cms python package
   python setup.py install
