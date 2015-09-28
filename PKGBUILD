@@ -2,7 +2,7 @@
 # Maintainer: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
 # Contributor: Kristof Marussy <kris7topher@gmail.com>
 pkgname=liblinear
-pkgver=2.01
+pkgver=2.1
 pkgrel=1
 pkgdesc="A Library for Large Linear Classification"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ options=()
 install=
 source=("http://www.csie.ntu.edu.tw/~cjlin/cgi-bin/liblinear.cgi?+http://www.csie.ntu.edu.tw/~cjlin/liblinear+tar.gz")
 noextract=()
-md5sums=('ea615ef0ea3c05ded206ca0e994100c7')
+md5sums=('0d87a71d054ed17c5ee7656efba06e89')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
