@@ -13,8 +13,8 @@ depends=('fluxbox' 'bash' 'inotify-tools' 'python2>=2.4' 'pygtk' 'glade' 'zenity
 makedepends=('sed' 'patch')
 optdepends=('lxterminal' 'firefox' 'thunar' 'bc')
 install=install
-source=(http://packages.linuxmint.com/pool/main/m/"$pkgname"/"$pkgname"_"$pkgver".tar.gz
-	'mint-fm2-3.25-arch.patch')
+source=("http://packages.linuxmint.com/pool/main/m/${pkgname}/${pkgname}_${pkgver}.tar.gz"
+	"mint-fm2-3.25-arch.patch")
 
 prepare() {
 #Unpack source
@@ -44,4 +44,4 @@ package() {
 # vim:set ts=2 sw=2 et:
 
 md5sums=('618c5734322b23e363ad29b86a85e708'
-         'fa68f21f982749e19292e4412ba32fe1')
+         '7776f5b5e211d2cebad2811f660a6459')

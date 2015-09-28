@@ -1,239 +1,271 @@
 diff -crB mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/endsession/endsession.py mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/endsession/endsession.py
-*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/endsession/endsession.py 2010-06-01 21:10:51.000000000 +0300
---- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/endsession/endsession.py 2010-10-19 20:01:15.950000007 +0300
+*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/endsession/endsession.py	2010-06-01 21:10:51.000000000 +0300
+--- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/endsession/endsession.py	2010-10-19 20:01:15.950000007 +0300
 ***************
 *** 1,4 ****
 ! #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# MintDesktop
+  # -*- coding: utf-8 -*-
+  
+  # MintDesktop
 --- 1,4 ----
 ! #!/usr/bin/env python2
-# -*- coding: utf-8 -*-
-# MintDesktop
+  # -*- coding: utf-8 -*-
+  
+  # MintDesktop
 diff -crB mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/functionLibrary mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/functionLibrary
-*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/functionLibrary 2010-08-31 09:36:51.000000000 +0300
---- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/functionLibrary 2010-09-21 03:05:35.200001776 +0300
+*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/functionLibrary	2010-08-31 09:36:51.000000000 +0300
+--- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/functionLibrary	2010-09-21 03:05:35.200001776 +0300
 ***************
 *** 221,231 ****
-# GET ENTRIES FOR TOP SECTION & QUIT
-homeEntry () {
-! echo "[exec] ($USER) {thunar $HOME} <$(getIconByName *gtk-home*.png)>"
-}
-browserEntry () {
-! echo "[exec] ($(getTranslation "libexo-0.3" "Web Browser" "/usr/share/locale")) {x-www-browser} <$(getIconByName *applications-internet*.png)>"
-}
-mintInstallEntry () {
+  
+  # GET ENTRIES FOR TOP SECTION & QUIT
+  homeEntry () {
+!   echo "[exec]  ($USER)  {thunar $HOME} <$(getIconByName *gtk-home*.png)>"
+  }
+  
+  browserEntry () {
+!   echo "[exec]  ($(getTranslation "libexo-0.3" "Web Browser" "/usr/share/locale"))  {x-www-browser} <$(getIconByName *applications-internet*.png)>"
+  }
+  
+  mintInstallEntry () {
 --- 221,231 ----
-# GET ENTRIES FOR TOP SECTION & QUIT
-homeEntry () {
-! echo "[exec] ($USER) {xdg-open $HOME} <$(getIconByName *gtk-home*.png)>"
-}
-browserEntry () {
-! echo "[exec] ($(getTranslation "libexo-0.3" "Web Browser" "/usr/share/locale")) {xdg-open http://} <$(getIconByName *applications-internet*.png)>"
-}
-mintInstallEntry () {
+  
+  # GET ENTRIES FOR TOP SECTION & QUIT
+  homeEntry () {
+!   echo "[exec]  ($USER)  {xdg-open $HOME} <$(getIconByName *gtk-home*.png)>"
+  }
+  
+  browserEntry () {
+!   echo "[exec]  ($(getTranslation "libexo-0.3" "Web Browser" "/usr/share/locale"))  {xdg-open http://} <$(getIconByName *applications-internet*.png)>"
+  }
+  
+  mintInstallEntry () {
 ***************
 *** 233,239 ****
-}
-terminalEntry () {
-! echo "[exec] ($(getTranslation "libexo-0.3" "Terminal Emulator" "/usr/share/locale")) {x-terminal-emulator} <$(getIconByName *terminal*.png)>"
-}
-runEntry () {
+  }
+  
+  terminalEntry () {
+!   echo "[exec]  ($(getTranslation "libexo-0.3" "Terminal Emulator" "/usr/share/locale"))  {x-terminal-emulator} <$(getIconByName *terminal*.png)>"
+  }
+  
+  runEntry () {
 --- 233,239 ----
-}
-terminalEntry () {
-! echo "[exec] ($(getTranslation "libexo-0.3" "Terminal Emulator" "/usr/share/locale")) {xterm} <$(getIconByName *terminal*.png)>"
-}
-runEntry () {
+  }
+  
+  terminalEntry () {
+!   echo "[exec]  ($(getTranslation "libexo-0.3" "Terminal Emulator" "/usr/share/locale"))  {xterm} <$(getIconByName *terminal*.png)>"
+  }
+  
+  runEntry () {
 ***************
 *** 366,372 ****
-do
-if [[ $RAWINDEX -ge ${CATINDEX[$count-1]} && $RAWINDEX -lt ${CATINDEX[$count]} || -z ${CATINDEX[$count]} ]]
-then
-! echo ${RAWDATA[${CATINDEX[$count-1]}]} | sed -e 's/+//g'
-break
-fi
-done
+    do
+      if [[ $RAWINDEX -ge ${CATINDEX[$count-1]} && $RAWINDEX -lt ${CATINDEX[$count]} || -z ${CATINDEX[$count]} ]]
+      then
+!       echo ${RAWDATA[${CATINDEX[$count-1]}]} | sed -e 's/+//g'
+        break
+      fi
+    done
 --- 366,372 ----
-do
-if [[ $RAWINDEX -ge ${CATINDEX[$count-1]} && $RAWINDEX -lt ${CATINDEX[$count]} || -z ${CATINDEX[$count]} ]]
-then
-! echo ${RAWDATA[${CATINDEX[$count-1]}]} | sed -e 's/+//g; s/ //g'
-break
-fi
-done
+    do
+      if [[ $RAWINDEX -ge ${CATINDEX[$count-1]} && $RAWINDEX -lt ${CATINDEX[$count]} || -z ${CATINDEX[$count]} ]]
+      then
+!       echo ${RAWDATA[${CATINDEX[$count-1]}]} | sed -e 's/+//g; s/ //g'
+        break
+      fi
+    done
 ***************
 *** 389,421 ****
-for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
-do
-RAWINDEX=${CATINDEX[$i]}
-! if [[ "${RAWDATA[$RAWINDEX]}" = "+System" || "${RAWDATA[$RAWINDEX]}" = "+DesktopSettings" || ! -f "$SUBMENUDIR/${RAWDATA[$RAWINDEX]//+/}" ]]
-then
-continue
-fi
-echo "[submenu] ($(getName)) <$(getIconByIndex)>"
-! echo "[include] ($SUBMENUDIR/${RAWDATA[$RAWINDEX]//+/})"
-echo "[end]"
-done
-for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
-do
-RAWINDEX=${CATINDEX[$i]}
-! if [[ "${RAWDATA[$RAWINDEX]}" = "+System" ]]
-then
-entry="[submenu] ($(getName)) <$(getIconByIndex)>"
-echo $entry
-echo $entry
-! echo "[include] ($SUBMENUDIR/${RAWDATA[$RAWINDEX]//+/})"
-echo "[end]"
-fi
-done
-for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
-do
-RAWINDEX=${CATINDEX[$i]}
-! if [[ "${RAWDATA[$RAWINDEX]}" = "+DesktopSettings" ]]
-then
-echo "[submenu] ($(getName)) <$(getIconByIndex)>"
-! echo "[include] ($SUBMENUDIR/${RAWDATA[$RAWINDEX]//+/})"
-echo "[end]"
-echo "[submenu] (Fluxbox) <$(getIconByIndex)>"
-echo "[config] (Fluxbox Menu)"
+    for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
+    do
+      RAWINDEX=${CATINDEX[$i]}
+!     if [[ "${RAWDATA[$RAWINDEX]}" = "+System" || "${RAWDATA[$RAWINDEX]}" = "+DesktopSettings" || ! -f "$SUBMENUDIR/${RAWDATA[$RAWINDEX]//+/}" ]]
+      then
+        continue
+      fi
+      echo "[submenu]  ($(getName))  <$(getIconByIndex)>"
+!     echo "[include] ($SUBMENUDIR/${RAWDATA[$RAWINDEX]//+/})"
+      echo "[end]"
+    done
+    for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
+    do
+      RAWINDEX=${CATINDEX[$i]}
+!     if [[ "${RAWDATA[$RAWINDEX]}" = "+System" ]]
+      then
+        entry="[submenu] ($(getName)) <$(getIconByIndex)>"
+        echo $entry
+        echo $entry
+!       echo "[include] ($SUBMENUDIR/${RAWDATA[$RAWINDEX]//+/})"
+        echo "[end]"
+      fi
+    done
+    for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
+    do
+      RAWINDEX=${CATINDEX[$i]}
+!     if [[ "${RAWDATA[$RAWINDEX]}" = "+DesktopSettings" ]]
+      then
+        echo "[submenu] ($(getName)) <$(getIconByIndex)>"
+!       echo "[include] ($SUBMENUDIR/${RAWDATA[$RAWINDEX]//+/})"
+        echo "[end]"
+        echo "[submenu] (Fluxbox) <$(getIconByIndex)>"
+        echo "[config] (Fluxbox Menu)"
 --- 389,424 ----
-for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
-do
-RAWINDEX=${CATINDEX[$i]}
-! submenuFilename=$(echo ${RAWDATA[$RAWINDEX]} | sed -e 's/+//g; s/ //g') #Local variable to cater for Categories with spaces.
-! if [[ "${RAWDATA[$RAWINDEX]}" = "+System" || "${RAWDATA[$RAWINDEX]}" = "+DesktopSettings" || ! -f "$SUBMENUDIR/$submenuFilename" ]]
-then
-continue
-fi
-echo "[submenu] ($(getName)) <$(getIconByIndex)>"
-! echo "[include] ($SUBMENUDIR/$submenuFilename)"
-echo "[end]"
-done
-for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
-do
-RAWINDEX=${CATINDEX[$i]}
-! submenuFilename=$(echo ${RAWDATA[$RAWINDEX]} | sed -e 's/+//g; s/ //g') #Local variable to cater for Categories with spaces.
-! if [[ "$submenuFilename" = "System" ]]
-then
-entry="[submenu] ($(getName)) <$(getIconByIndex)>"
-echo $entry
-echo $entry
-! echo "[include] ($SUBMENUDIR/$submenuFilename)"
-echo "[end]"
-fi
-done
-for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
-do
-RAWINDEX=${CATINDEX[$i]}
-! submenuFilename=$(echo ${RAWDATA[$RAWINDEX]} | sed -e 's/+//g; s/ //g') #Local variable to cater for Categories with spaces.
-! if [[ "$submenuFilename" = "DesktopSettings" ]]
-then
-echo "[submenu] ($(getName)) <$(getIconByIndex)>"
-! echo "[include] ($SUBMENUDIR/$submenuFilename)"
-echo "[end]"
-echo "[submenu] (Fluxbox) <$(getIconByIndex)>"
-echo "[config] (Fluxbox Menu)"
+    for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
+    do
+      RAWINDEX=${CATINDEX[$i]}
+!     submenuFilename=$(echo ${RAWDATA[$RAWINDEX]} | sed -e 's/+//g; s/ //g') #Local variable to cater for Categories with spaces.
+!     if [[ "${RAWDATA[$RAWINDEX]}" = "+System" || "${RAWDATA[$RAWINDEX]}" = "+DesktopSettings" || ! -f "$SUBMENUDIR/$submenuFilename" ]]
+      then
+        continue
+      fi
+      echo "[submenu]  ($(getName))  <$(getIconByIndex)>"
+!     echo "[include] ($SUBMENUDIR/$submenuFilename)"
+      echo "[end]"
+    done
+    for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
+    do
+      RAWINDEX=${CATINDEX[$i]}
+!     submenuFilename=$(echo ${RAWDATA[$RAWINDEX]} | sed -e 's/+//g; s/ //g') #Local variable to cater for Categories with spaces.
+!     if [[ "$submenuFilename" = "System" ]]
+      then
+        entry="[submenu] ($(getName)) <$(getIconByIndex)>"
+        echo $entry
+        echo $entry
+!       echo "[include] ($SUBMENUDIR/$submenuFilename)"
+        echo "[end]"
+      fi
+    done
+    for (( i=1; i < $[ ${#CATINDEX[@]}-1 ]; i++ ))
+    do
+      RAWINDEX=${CATINDEX[$i]}
+!     submenuFilename=$(echo ${RAWDATA[$RAWINDEX]} | sed -e 's/+//g; s/ //g') #Local variable to cater for Categories with spaces.
+!     if [[ "$submenuFilename" = "DesktopSettings" ]]
+      then
+        echo "[submenu] ($(getName)) <$(getIconByIndex)>"
+!       echo "[include] ($SUBMENUDIR/$submenuFilename)"
+        echo "[end]"
+        echo "[submenu] (Fluxbox) <$(getIconByIndex)>"
+        echo "[config] (Fluxbox Menu)"
 diff -crB mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/mfmrootdaemon mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/mfmrootdaemon
-*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/mfmrootdaemon 2010-05-04 12:27:08.000000000 +0300
---- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/mfmrootdaemon 2010-09-20 20:14:51.816666775 +0300
+*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/mfmrootdaemon	2010-05-04 12:27:08.000000000 +0300
+--- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/mfmrootdaemon	2010-09-20 20:14:51.816666775 +0300
 ***************
 *** 95,101 ****
-then
-rm -rf $CIAODIR/*
-# aplay /usr/share/sounds/mintfb-logout.wav &
-! pmi action sleep
-fi
-#hibernate
+    then
+  	  rm -rf $CIAODIR/*
+    #	aplay /usr/share/sounds/mintfb-logout.wav &
+! 	  pmi action sleep
+    fi
+  
+    #hibernate
 --- 95,101 ----
-then
-rm -rf $CIAODIR/*
-# aplay /usr/share/sounds/mintfb-logout.wav &
-! pm-suspend
-fi
-#hibernate
+    then
+  	  rm -rf $CIAODIR/*
+    #	aplay /usr/share/sounds/mintfb-logout.wav &
+! 	  pm-suspend
+    fi
+  
+    #hibernate
 ***************
 *** 103,109 ****
-then
-rm -rf $CIAODIR/*
-# aplay /usr/share/sounds/mintfb-logout.wav &
-! pmi action hibernate
-fi
-}
+    then
+  	  rm -rf $CIAODIR/*
+    #	aplay /usr/share/sounds/mintfb-logout.wav &
+! 	  pmi action hibernate
+    fi
+  }
+  
 --- 103,109 ----
-then
-rm -rf $CIAODIR/*
-# aplay /usr/share/sounds/mintfb-logout.wav &
-! pm-hibernate
-fi
-}
+    then
+  	  rm -rf $CIAODIR/*
+    #	aplay /usr/share/sounds/mintfb-logout.wav &
+! 	  pm-hibernate
+    fi
+  }
+  
 diff -crB mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/mint-fm2.conf mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/mint-fm2.conf
-*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/mint-fm2.conf 2010-06-02 07:48:37.000000000 +0300
---- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/mint-fm2.conf 2010-09-20 17:32:46.086666775 +0300
+*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/mint-fm2.conf	2010-06-02 07:48:37.000000000 +0300
+--- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/mint-fm2.conf	2010-09-20 17:32:46.086666775 +0300
 ***************
 *** 16,22 ****
-#e.g. MENUTITLE="Linux Mint"
-#------------------------------------------------
+  #e.g. MENUTITLE="Linux Mint"
+  #------------------------------------------------
+  
 ! MENUTITLE="Linux Mint"
-#------------------------------------------------
-#ENTRYORDER - This defines what menu entries should be included
+  
+  #------------------------------------------------
+  #ENTRYORDER - This defines what menu entries should be included
 --- 16,22 ----
-#e.g. MENUTITLE="Linux Mint"
-#------------------------------------------------
+  #e.g. MENUTITLE="Linux Mint"
+  #------------------------------------------------
+  
 ! MENUTITLE="Arch Linux"
-#------------------------------------------------
-#ENTRYORDER - This defines what menu entries should be included
+  
+  #------------------------------------------------
+  #ENTRYORDER - This defines what menu entries should be included
 ***************
 *** 27,33 ****
-#e.g. ENTRYORDER=("customEntry" "homeEntry" "browserEntry" "terminalEntry" "runEntry" "generatedEntry" "separator" "quitEntry")
-#------------------------------------------------
+  #e.g. ENTRYORDER=("customEntry" "homeEntry" "browserEntry" "terminalEntry" "runEntry" "generatedEntry" "separator" "quitEntry")
+  #------------------------------------------------
+  
 ! ENTRYORDER=("homeEntry" "browserEntry" "terminalEntry" "mintConfigEntry" "mintInstallEntry" "synapticEntry" "runEntry" "customEntry" "separator" "generatedEntry" "separator" "quitEntry")
-#------------------------------------------------
-#FBCUSTOM - This defines the custom menu entries file.
+  
+  #------------------------------------------------
+  #FBCUSTOM - This defines the custom menu entries file.
 --- 27,33 ----
-#e.g. ENTRYORDER=("customEntry" "homeEntry" "browserEntry" "terminalEntry" "runEntry" "generatedEntry" "separator" "quitEntry")
-#------------------------------------------------
+  #e.g. ENTRYORDER=("customEntry" "homeEntry" "browserEntry" "terminalEntry" "runEntry" "generatedEntry" "separator" "quitEntry")
+  #------------------------------------------------
+  
 ! ENTRYORDER=("homeEntry" "browserEntry" "terminalEntry" "runEntry" "customEntry" "separator" "generatedEntry" "separator" "quitEntry")
-#------------------------------------------------
-#FBCUSTOM - This defines the custom menu entries file.
+  
+  #------------------------------------------------
+  #FBCUSTOM - This defines the custom menu entries file.
 diff -crB mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/systemConfig mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/systemConfig
-*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/systemConfig 2010-06-02 07:49:51.000000000 +0300
---- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/systemConfig 2010-09-20 19:45:05.776666774 +0300
+*** mint-fm2-3.25/usr/lib/linuxmint/mint-fm2/systemConfig	2010-06-02 07:49:51.000000000 +0300
+--- mint-fm2-3.25-arch/usr/lib/linuxmint/mint-fm2/systemConfig	2010-09-20 19:45:05.776666774 +0300
 ***************
 *** 35,41 ****
-declare -i ZENPROGRESS
-# MENU TITLE
+  declare -i ZENPROGRESS
+  
+  # MENU TITLE
 ! MENUTITLE="Linux Mint"
-# GET CURRENT WORKING DIRECTORY
-WDIR="$HOME/.mint-fm2"
+  
+  # GET CURRENT WORKING DIRECTORY
+  WDIR="$HOME/.mint-fm2"
 --- 35,41 ----
-declare -i ZENPROGRESS
-# MENU TITLE
+  declare -i ZENPROGRESS
+  
+  # MENU TITLE
 ! MENUTITLE="Arch Linux"
-# GET CURRENT WORKING DIRECTORY
-WDIR="$HOME/.mint-fm2"
+  
+  # GET CURRENT WORKING DIRECTORY
+  WDIR="$HOME/.mint-fm2"
 ***************
 *** 94,106 ****
-ICONS="FALSE"
-ICONTHEME="/usr/share/icons/Minty"
-DBG=""
+  ICONS="FALSE"
+  ICONTHEME="/usr/share/icons/Minty"
+  DBG=""
 ! ENTRYORDER=("homeEntry" "browserEntry" "terminalEntry" "mintConfigEntry" "mintInstallEntry" "synapticEntry" "runEntry" "customEntry" "separator" "generatedEntry" "separator" "quitEntry")
-ICONLOCATE="locate -q -l 1 -i "
-# User configs loaded in checks function
-# EXTERNAL DEPENDENCIES (THAT MAY BE DISTRO SPECIFIC)
-# Base command for generating the menu cache
+  ICONLOCATE="locate -q -l 1 -i "
+  # User configs loaded in checks function
+  
+  # EXTERNAL DEPENDENCIES (THAT MAY BE DISTRO SPECIFIC)
+  # Base command for generating the menu cache
 ! MENUCACHEGEN="/usr/lib/libmenu-cache/libexec/menu-cache-gen -i /etc/xdg/menus/mint-fm2-applications.menu -o $LISTNEW"
-# Zenity dialog switch
-# Automatically turned on if run in GUI mode and if X is detected
+  
+  # Zenity dialog switch
+  # Automatically turned on if run in GUI mode and if X is detected
 --- 94,106 ----
-ICONS="FALSE"
-ICONTHEME="/usr/share/icons/Minty"
-DBG=""
+  ICONS="FALSE"
+  ICONTHEME="/usr/share/icons/Minty"
+  DBG=""
 ! ENTRYORDER=("homeEntry" "browserEntry" "terminalEntry" "runEntry" "customEntry" "separator" "generatedEntry" "separator" "quitEntry")
-ICONLOCATE="locate -q -l 1 -i "
-# User configs loaded in checks function
-# EXTERNAL DEPENDENCIES (THAT MAY BE DISTRO SPECIFIC)
-# Base command for generating the menu cache
+  ICONLOCATE="locate -q -l 1 -i "
+  # User configs loaded in checks function
+  
+  # EXTERNAL DEPENDENCIES (THAT MAY BE DISTRO SPECIFIC)
+  # Base command for generating the menu cache
 ! MENUCACHEGEN="/usr/lib/menu-cache/menu-cache-gen -i /etc/xdg/menus/mint-fm2-applications.menu -o $LISTNEW"
-# Zenity dialog switch
-# Automatically turned on if run in GUI mode and if X is detected
+  
+  # Zenity dialog switch
+  # Automatically turned on if run in GUI mode and if X is detected
