@@ -5,15 +5,15 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="3.0.0"
+pkgver="3.1.0"
 pkgrel="1"
 pkgdesc="CLI and Client Library for OpenStack Networking"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
-makedepends=("python-pbr>=1.3" "python2-pbr>=1.3")
+makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f6dc2e514e99df4f7eaf9f983a19344a5f38adf323d71f2908c872f8eba88e2f')
+sha256sums=('02c432b35806f4017c9041ac609a367e0423973cdb48706c3c807c8a56e9263d')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
