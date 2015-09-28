@@ -1,6 +1,6 @@
 pkgbase = tinc-pre-git
 	pkgdesc = Virtual Private Network daemon (prerelease)
-	pkgver = 1.1pre11.168.gae89a25
+	pkgver = 1.1pre11.173.g7306823
 	pkgrel = 1
 	url = http://www.tinc-vpn.org/
 	arch = any
@@ -14,9 +14,7 @@ pkgbase = tinc-pre-git
 	conflicts = tinc-pre
 	conflicts = tinc-pre-systemd
 	source = git+https://github.com/gsliepen/tinc#branch=1.1
-	source = tinc@.service
 	md5sums = SKIP
-	md5sums = 8029b9d35e0abe980d4677c41647f395
 
 pkgname = tinc-pre-git
 
