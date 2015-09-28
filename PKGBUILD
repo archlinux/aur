@@ -2,9 +2,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-340xx-ck
-pkgver=340.76
+pkgver=340.93
 _extramodules=extramodules-4.1-ck
-pkgrel=15
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -16,14 +16,14 @@ conflicts=('nvidia-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvid
 license=('custom')
 install=nvidia-340xx-ck.install
 options=(!strip)
-source=("nv-drm.patch"
-"nvidia-4.0.patch")
+source=("nv-drm.patch")
+#"nvidia-4.0.patch")
 source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301'
-         'f42bdf589f52d4e6c38baa5bef15eef8')
-md5sums_i686=('8064c0a0998c3e7ee3c98ac1832b8194')
-md5sums_x86_64=('440df290e213280d6e20d4d4be6f8b4c')
+sha256sums=('9515310b017ad4134f50e92b39cb437e3d18605d26aead1dda02599d41e6ee26')
+sha256sums_i686=('4a81c158302c595e1e72b5a1812eb3c67c8cf584ca74b1bc24163dad5289d612')
+sha256sums_x86_64=('8fb230a7579a15c778ab7c2f160830682919729235beb8ea2b84326528c54843')
+
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -31,7 +31,7 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
 		patch -Np0 -i "$srcdir/nv-drm.patch"
-		patch -Np0 -i "$srcdir/nvidia-4.0.patch"
+#		patch -Np0 -i "$srcdir/nvidia-4.0.patch"
 }
 
 build() {
