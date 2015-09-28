@@ -12,6 +12,7 @@ pkgbase = gnome-battery-bench-git
 	makedepends = asciidoc
 	makedepends = autoconf
 	makedepends = automake
+	makedepends = gnome-common
 	depends = gtk3
 	depends = json-glib
 	depends = libevdev
