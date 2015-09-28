@@ -10,7 +10,7 @@ license=('APACHE')
 depends=(
   'python2' 
   'mopidy>=0.19'
-  'python2-uritools'
+  'python2-uritools>=1.0'
 )
 makedepends=('python2' 'python2-setuptools')
 source=("https://github.com/tkem/mopidy-local-images/archive/v${pkgver}.tar.gz")
