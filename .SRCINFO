@@ -1,6 +1,6 @@
 pkgbase = fluxdgmenu
 	pkgdesc = Fluxdgmenu is an automated XDG Menu system for Fluxbox.
-	pkgver = 1.7.3.r108
+	pkgver = r62
 	pkgrel = 1
 	url = https://github.com/shimmerproject/Albatross
 	arch = i686

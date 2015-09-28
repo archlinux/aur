@@ -1,0 +1,8 @@
+Fluxdgmenu
+src
+srcdir
+pkg
+pkgdir
+*.tar.*
+*.tar
+*~
