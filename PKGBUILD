@@ -26,7 +26,7 @@
 
 pkgname=catalyst-test
 pkgver=15.9
-pkgrel=2
+pkgrel=3
 # _betano=1.0
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
@@ -39,6 +39,7 @@ optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
+	    'procps-ng: brings pgrep used in acpi event support'
 	    'linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('libgl' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'libcl' 'catalyst-dkms' 'mesa-libgl' 'mesa-libgl-git')
 provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'libcl' 'dri' 'libtxc_dxtn' 'mesa-libgl' 'mesa-libgl-git')
@@ -73,6 +74,9 @@ source=(
     catalyst.sh
     atieventsd.sh
     atieventsd.service
+    ati-powermode.sh
+    a-ac-aticonfig
+    a-lid-aticonfig
     catalyst.conf
     arch-fglrx-authatieventsd_new.patch
     hook-fglrx
@@ -101,7 +105,10 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
          '9d9ea496eadf7e883d56723d65e96edf'
-	 '90a37e010f4e5f45e270cd000894d553'
+	 'b79e144932616221f6d01c4b05dc9306'
+	 '514899437eb209a1d4670df991cdfc10'
+	 '80fdfbff93d96a1dfca2c7f684be8cc1'
+	 '9054786e08cf3ea2a549fe22d7f2cd92'
 	 '3e19c2285c76f4cb92108435a1e9c302'
 	 'b3ceefeb97c609037845f65d0956c4f0'
          '9126e1ef0c724f8b57d3ac0fe77efe2f'
@@ -255,9 +262,13 @@ package() {
       install -m644 usr/share/applications/*.desktop ${pkgdir}/usr/share/applications
 
     # ACPI example files
-      install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
-      sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
-      install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+#       install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
+#       sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
+#       install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+    # lets check our own files - V
+      install -m755 ${srcdir}/ati-powermode.sh ${pkgdir}/etc/acpi
+      install -m644 ${srcdir}/a-ac-aticonfig ${pkgdir}/etc/acpi/events
+      install -m644 ${srcdir}/a-lid-aticonfig ${pkgdir}/etc/acpi/events
 
     # Add ATI Events Daemon launcher
       install -m755 ${srcdir}/atieventsd.sh ${pkgdir}/etc/rc.d/atieventsd
