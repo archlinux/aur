@@ -1,1 +1,3 @@
 *.tar.[gx]z
+pkg/
+src/
