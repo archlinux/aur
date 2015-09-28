@@ -1,7 +1,7 @@
 pkgbase = soundwire
 	pkgdesc = Wirelessly transmit any audio from your PC to your Android phone or other PCs
-	pkgver = 2.1
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = http://georgielabs.net
 	install = soundwire.install
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = soundwire
 	depends = curl
 	optdepends = pavucontrol
 	source_x86_64 = http://georgielabs.altervista.org/SoundWire_Server_linux64.tar.gz
-	md5sums_x86_64 = 032210e672b7500226361f2d3f4f7057
+	md5sums_x86_64 = 306864f9eed02748f7741a3b7c8829e7
 	source_i686 = http://georgielabs.altervista.org/SoundWire_Server_linux32.tar.gz
-	md5sums_i686 = b8b67ebbd8ad1b9591fcd98a0388a5a1
+	md5sums_i686 = 4a04df3cd5cb6c0f5c50ddb884e6edcb
 
 pkgname = soundwire
 
