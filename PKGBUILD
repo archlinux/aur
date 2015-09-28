@@ -3,7 +3,7 @@
 _build=3384
 pkgname=youtrack-workflow-editor
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A MPS-based application to create and edit workflows for YouTrack.'
 arch=('any')
 url='http://www.jetbrains.com/youtrack/'
@@ -14,7 +14,7 @@ source=("https://download.jetbrains.com/charisma/${pkgname}-${_build}.tar.gz" \
         "${pkgname}.sh" \
         "${pkgname}.desktop")
 sha256sums=('f25009b9108e50f2b40df3b0dda6fea39825c8885fad67886d6000765f646e9c'
-            'be320a1d8c56b6fc3feab51a06fbe3acbb7039df842bcda2f3145e9e83f06536'
+            '4c8832f46b7f1513834833837a0148cb90803e886e19df550881d7712a5651df'
             '2aef96faa5351a28ee40db1de3e92a9353fde14a2f2c8490e740d89c3339a8f8')
 
 package() {
