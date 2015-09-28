@@ -1,30 +1,31 @@
 pkgbase = nvidia-340xx-rt
 	pkgdesc = NVIDIA drivers for linux-rt, 340xx legacy branch
-	pkgver = 340.76
-	pkgrel = 6
+	pkgver = 340.93
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-340xx-rt.install
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = nvidia-340xx-libgl=340.93
+	makedepends = nvidia-340xx-utils=340.93
 	makedepends = linux-rt
 	makedepends = linux-rt-headers>=4.1
 	makedepends = linux-rt-headers<4.2
 	depends = linux-rt>=4.1
 	depends = linux-rt<4.2
-	depends = nvidia-340xx-utils=340.76
+	depends = libgl
+	depends = nvidia-340xx-utils=340.93
 	conflicts = nvidia-rt
 	conflicts = nvidia-last-rt
 	conflicts = nvidia-rt-lts
 	options = !strip
 	source = nv-drm.patch
-	source = nvidia-4.0.patch
 	md5sums = 79671a27131da619a33eb02ed0c2c031
-	md5sums = f42bdf589f52d4e6c38baa5bef15eef8
-	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/340.76/NVIDIA-Linux-x86-340.76.run
-	md5sums_i686 = 8064c0a0998c3e7ee3c98ac1832b8194
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.76/NVIDIA-Linux-x86_64-340.76-no-compat32.run
-	md5sums_x86_64 = 440df290e213280d6e20d4d4be6f8b4c
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/340.93/NVIDIA-Linux-x86-340.93.run
+	md5sums_i686 = 4a7edf6838a80c77a57fb6f6ec7f0437
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.93/NVIDIA-Linux-x86_64-340.93-no-compat32.run
+	md5sums_x86_64 = cb80e3f1cb6f2fb6e6eab35fad0884e4
 
 pkgname = nvidia-340xx-rt
 
