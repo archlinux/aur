@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-pixbuf
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt), with support for custom icons and backgrounds
 	pkgver = 9.21
-	pkgrel = 3
+	pkgrel = 4
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64

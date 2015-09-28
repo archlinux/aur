@@ -7,7 +7,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-pixbuf
 pkgver=9.21
-pkgrel=3
+pkgrel=4
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt), with support for custom icons and backgrounds'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -36,9 +36,10 @@ build() {
 	patch -p0 -i ../font-width-fix.patch
 	patch -p0 -i ../line-spacing-fix.patch
 
+	# disable smart-resize (FS#34807)
+	# do not specify --with-terminfo (FS#46424)
 	./configure \
 		--prefix=/usr \
-		--with-terminfo=/usr/share/terminfo \
 		--enable-256-color \
 		--enable-combining \
 		--enable-fading \
