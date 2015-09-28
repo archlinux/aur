@@ -1,0 +1,21 @@
+pkgbase = rdkit-git
+	pkgdesc = RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python.
+	pkgver = 20150928
+	pkgrel = 1
+	url = http://rdkit.org/
+	arch = i686
+	arch = x86_64
+	license = New BSD License
+	makedepends = git
+	depends = bison
+	depends = boost
+	depends = boost-libs
+	depends = cmake
+	depends = flex
+	depends = python
+	depends = sqlite3
+	depends = python-numpy
+	provides = rdkit
+
+pkgname = rdkit-git
+
