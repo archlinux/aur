@@ -8,7 +8,7 @@ pkgname=nvidia-last-rt
 pkgver=355.11
 _extramodules=extramodules-4.1-rt
 _kernver="$(cat /lib/modules/${_extramodules}/version)"
-pkgrel=1
+pkgrel=3
 pkgdesc="NVIDIA last drivers for linux-rt."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -29,8 +29,9 @@ if [ "$CARCH" = "i686" ]; then
 elif [ "$CARCH" = "x86_64" ]; then
     _arch='x86_64'
     _pkg="NVIDIA-Linux-${_arch}-${pkgver}-no-compat32"
-    source=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run"
-            "nv-drm-343.36.patch")
+    source=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run")
+    #source=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run"
+        #"nv-drm-343.36.patch")
     md5sums=('SKIP' 'SKIP' )
 fi
 
@@ -38,7 +39,7 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     # patches here
-    patch -p1 -i ../nv-drm-343.36.patch
+    #patch -p1 -i ../nv-drm-343.36.patch
 }
 
 build() {
