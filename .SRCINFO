@@ -21,12 +21,10 @@ pkgbase = llvmlinux-git
 	source = kernel::git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 	source = https://projects.archlinux.org/svntogit/packages.git/snapshot/packages-packages/linux.tar.gz
 	source = llvmlinux-git.preset
-	source = 0001_clang_arch.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 9a24944400fadce1f73539b521366c39
 	md5sums = 951a65b16527d6f9058bcde1ec2ec158
-	md5sums = ccd57fa4236cfb7ed622aab11ab71a59
 
 pkgname = llvmlinux-git
 

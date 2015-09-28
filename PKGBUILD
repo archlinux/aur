@@ -19,13 +19,11 @@ options=(!strip)
 source=('llvmlinux'::'git://git.linuxfoundation.org/llvmlinux.git'
         'kernel'::'git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         'https://projects.archlinux.org/svntogit/packages.git/snapshot/packages-packages/linux.tar.gz'
-        'llvmlinux-git.preset'
-        '0001_clang_arch.patch')
+        'llvmlinux-git.preset')
 md5sums=('SKIP'
          'SKIP'
          '9a24944400fadce1f73539b521366c39'
-         '951a65b16527d6f9058bcde1ec2ec158'
-         'ccd57fa4236cfb7ed622aab11ab71a59')
+         '951a65b16527d6f9058bcde1ec2ec158')
 
 
 export CC=clang
@@ -33,15 +31,8 @@ export CXX=clang++
 export KARCH=x86
 export USE_ARCH_PATCH="yes"
 
-#32-bit build assume i586, so we need a variable for that
-if [ "${CARCH}" == "i686" ]; then
-    _lll_target=i586
-else
-    _lll_target=x86_64
-fi
-
 pkgver() {
-  cd "${srcdir}/kernel"
+  cd kernel
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
@@ -49,7 +40,18 @@ prepare() {
   # ok some hacking needed to get this working...
   ln -s ${srcdir}/kernel ${srcdir}/llvmlinux/arch/all/kernel.git
 
-  _config=${srcdir}/llvmlinux/targets/${_lll_target}/config_${_lll_target}
+  ##### Adjust targets #####
+  # llvmlinux offers for i586. Arch just provides i686, so does clang
+  cd $srcdir/llvmlinux
+  mv targets/i586 targets/i686
+  mv targets/i686/config_i586 targets/i686/config_i686
+  sed -i 's/i586/i686/g' targets/i686/Makefile
+
+  mv arch/i586 arch/i686
+  mv arch/i686/i586.mk arch/i686/i686.mk
+  sed -i 's/i586/i686/g' arch/i686/i686.mk
+
+  _config=${srcdir}/llvmlinux/targets/${CARCH}/config_${CARCH}
 
   #Add stuff to the default llvmlinux config
   sed -i 's|# CONFIG_BTRFS_FS is not set|CONFIG_BTRFS_FS=m \n CONFIG_BTRFS_FS_POSIX_ACL=y|g' ${_config}
@@ -57,12 +59,12 @@ prepare() {
 
   _archstuff="${srcdir}/packages-packages/linux/trunk"
 
-############################## Config ####################################
+  ##### Config #####
   # Using Arch Linux Kernel Config (32-bit or 64-bit. Depending on $CARCH)
   #if [ ${CARCH} == i686 ]; then
-  #  cp ${_archstuff}/config ${srcdir}/llvmlinux/targets/${_lll_target}/config_${_lll_target}
+  #  cp ${_archstuff}/config ${srcdir}/llvmlinux/targets/${CARCH}/config_${CARCH}
   #else
-  #  cp ${_archstuff}/config.x86_64 ${srcdir}/llvmlinux/targets/${_lll_target}/config_${_lll_target}
+  #  cp ${_archstuff}/config.x86_64 ${srcdir}/llvmlinux/targets/${CARCH}/config_${CARCH}
   #fi
 
   # Alternative methods to configure the kernel. Replace the line below with one of your choice.
@@ -76,34 +78,28 @@ prepare() {
   make localmodconfig
 
   #Copy generated config to llvm target directory
-  cp .config ${srcdir}/llvmlinux/targets/${_lll_target}/config_${_lll_target}
+  cp .config ${srcdir}/llvmlinux/targets/${CARCH}/config_${CARCH}
 
   # fixing some configuration options
   sed -i 's|CONFIG_LOCALVERSION="-ARCH"|CONFIG_LOCALVERSION="-llvmlinux"|g' ${_config}
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ${_config}
 
-################################################################################
-
-############################## ARCH patch ######################################
+  ##### ARCH patch #####
   if [ ${USE_ARCH_PATCH} == yes ]; then
     # patch kernel sources with Arch linux kernel patches
-    mkdir ${srcdir}/llvmlinux/targets/${_lll_target}/patches/
-    cp ${_archstuff}/*.patch ${srcdir}/llvmlinux/targets/${_lll_target}/patches/
+    mkdir ${srcdir}/llvmlinux/targets/${CARCH}/patches/
+    cp ${_archstuff}/*.patch ${srcdir}/llvmlinux/targets/${CARCH}/patches/
   fi
-
-  # i686 llvm from Arch has target i386 and llvmlinux will check for i586 [WIP]
-  #cd $srcdir/
-  #patch -Np0 -i 0001_clang_arch.patch
 }
 
 build() {
-  cd ${srcdir}/llvmlinux/targets/${_lll_target}/
+  cd llvmlinux/targets/${CARCH}/
   # "native" means distro-installed clang (over 3.3 needed).
   make CLANG_TOOLCHAIN=native kernel-build
 }
 
 package() {
-  cd ${srcdir}/llvmlinux/targets/${_lll_target}/src/linux
+  cd llvmlinux/targets/${CARCH}/src/linux
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
