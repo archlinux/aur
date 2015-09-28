@@ -2,7 +2,7 @@
 # Contributor: Bartlomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=pkgconf-git
-pkgver=0.9.12.39.g6a66b52
+pkgver=0.9.12.40.gabbd6b0
 pkgrel=1
 pkgdesc='pkg-config compatible utility which does not depend on glib'
 url='https://github.com/pkgconf/pkgconf'
