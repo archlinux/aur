@@ -3,7 +3,6 @@ pkgbase = kdocker
 	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/user-none/KDocker
-	install = kdocker.install
 	arch = i686
 	arch = x86_64
 	license = GPL2

@@ -6,7 +6,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/user-none/KDocker"
 license=('GPL2')
 depends=('qt5-base' 'qt5-x11extras' 'libxpm' 'libxmu')
-install=kdocker.install
 source=(https://github.com/user-none/KDocker/archive/${pkgver}.tar.gz)
 sha256sums=('711c3a07d36d278eca47fa56db34fcb0f20f30210d9a1e86a9d0243b834e357a')
 
