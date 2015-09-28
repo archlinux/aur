@@ -3,9 +3,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-304xx-ck
-pkgver=304.125
+pkgver=304.128
 _extramodules=extramodules-4.1-ck
-pkgrel=23
+pkgrel=1
 _pkgdesc="NVIDIA drivers for linux-ck, 304xx legacy branch."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -26,8 +26,8 @@ source_x86_64+=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NV
 md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301'
          '965a8455b291fdb414a02101a3a9f587'
          'f42bdf589f52d4e6c38baa5bef15eef8')
-md5sums_i686=('bc3b0ac291fa998d5109a6f7e94fb2d4')
-md5sums_x86_64=('291d41ccdbcc08f752a38f9e0a7eeea0')
+md5sums_i686=('be2b40a4dc3339b050a4f76ddd27e96c')
+md5sums_x86_64=('6478e40ed87d9177cbfc3d0b6e39a051')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
