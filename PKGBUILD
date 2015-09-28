@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 243799 2015-08-17 06:38:41Z tpowa $
+# $Id: PKGBUILD 244761 2015-08-24 05:57:21Z tpowa $
 # Contributor: ${CONTRIBUTOR}
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
@@ -6,8 +6,8 @@
 pkgbase=linux-user-ns-enabled
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.1
-pkgver=4.1.5
-pkgrel=1
+pkgver=4.1.6
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,15 +21,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+'0001-UBUNTU-SAUCE-Overlayfs-allow-unprivileged-mounts.patch')
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
+            '64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070'
             'SKIP'
             'd923f9b46bee7633019f00030db2fbe62e459f169fc102b905a766663d62fc67'
             '03d30d44059c5e0938a826f118a7598f7a22a14bb86b28c2d95623f61347de33'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -41,6 +43,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
+  patch -p1 -i "${srcdir}/0001-UBUNTU-SAUCE-Overlayfs-allow-unprivileged-mounts.patch"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed

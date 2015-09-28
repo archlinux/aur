@@ -2,7 +2,7 @@
 # Thu Jun 25 10:25:49 UTC 2015
 pkgbase = linux-user-ns-enabled
 	pkgver = 4.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
