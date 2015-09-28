@@ -1,0 +1,13 @@
+pkgbase = fusiondirectory-webservice-shell
+	pkgdesc = Webservice shell for FusionDirectory
+	pkgver = 1.0.8.9
+	pkgrel = 1
+	url = http://fusiondirectory.org/
+	arch = any
+	license = LGPL
+	depends = perl-term-readline-gnu
+	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-1.0.8.9.tar.gz
+	md5sums = e169b4ca7ac809a6b939ed06d81c0f2a
+
+pkgname = fusiondirectory-webservice-shell
+
