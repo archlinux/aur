@@ -1,7 +1,7 @@
 pkgbase = addic7ed-cli
 	pkgdesc = Addic7ed command-line interface
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://github.com/BenoitZugmeyer/addic7ed-cli
 	arch = any
 	license = Expat
@@ -10,8 +10,8 @@ pkgbase = addic7ed-cli
 	depends = python-requests
 	depends = python-setuptools
 	options = !emptydirs
-	source = http://github.com/BenoitZugmeyer/addic7ed-cli/archive/v1.2.zip
-	md5sums = 9ac99506eae4d5f54ccf38276d698dfc
+	source = https://github.com/BenoitZugmeyer/addic7ed-cli/archive/v1.3.zip
+	md5sums = 2d31652967e485ea876f07e6963bd9d9
 
 pkgname = addic7ed-cli
 
