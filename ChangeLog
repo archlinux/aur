@@ -1,3 +1,8 @@
+2015-09-23  André Silva  <emulatorman@parabola.nu>
+
+	* linux-libre-4.2.1_gnu-1
+	* Removed am335x-pm-firmware.elf from CONFIG_EXTRA_FIRMWARE for armv7h support
+
 2015-08-20  André Silva  <emulatorman@parabola.nu>
 
 	* linux-libre-4.1.6_gnu-1

@@ -10,8 +10,8 @@
 
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
-_pkgbasever=4.1-gnu
-_pkgver=4.1.6-gnu
+_pkgbasever=4.2-gnu
+_pkgver=4.2.1-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -20,7 +20,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=1
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
@@ -45,6 +45,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
+        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
+        '0001-fix-bridge-regression.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
@@ -57,9 +60,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch')
-sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
+sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
-            '335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34'
+            '2fb0b42c6cac0bd550ceb71072fef4f7ed72976e64542de8e7ad759a9e195237'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -67,22 +70,25 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '7ec6927f4a4bc8e1aa50adfcce868f04b07b0de19a54554a8ad27ee0341b4b45'
-            'ac457bf24c83a4af82251a67cb3de06f0b73e66bd08c2fb1eb936caa3b555c6f'
-            'bddc6542d1a68330e867efca6657cc57e9eeb8f83ec86e5580dc1b6c89332f13'
+            '526249099c8b163e283a239864f3867d62b7df5db1d8487eeb97f88bea9cd5f9'
+            '930a85f346c9e6108654e1e8b6c53eca18c7560a9edbb848715fc2d93eee8ae5'
+            '56e3990839578cc8de71f2bb8bdb4b3d3adc2a62cb1bceb1455708aeea34ab50'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            'b06ab02787e6a61227d91faeaa3f230a3807f6426c388129a1d89150374e8b5b'
+            '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
+            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
+            '0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183'
+            '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
+            '1d365219ca72ef7290277a47c45a4f406705f27a9f7c177ac860da0e5b994bdb'
             'SKIP'
-            '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
-            '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
-            '39bfd7f6e2df0b87b52488462edb2fbcfaf9e3eb2a974fc7b3bc22147352fece'
-            '59444ed7dce62697f1c35be340b740899e1d71398b334c419ad07cea838c6ed6'
-            '90cff98e43322e79c8d8b1c6456a328650f6af3ebf018086a82ab690a688da5d'
-            'ed6cf79434d3b1c10e0e141ab6bdc2aa9abfe7e7df6bbb24b2097c0e0d62ac17'
-            '2c3df3d9a3d8fe11fefc485167a81c6fc53635b04ba0312bef144505dc0a6ce4'
-            '0f6b0146096ee7a04938d39a013c23cfd8719f3bef0956b5c88a33e7d7ecafdc')
+            '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
+            '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
+            '810697eec07faa60acb59b97df291e5f2e9428e86ae54e5ef90a6e4b2d0844ab'
+            'c743e41975260aab3176b6f473707c8d8371cb89575e1c128bddb3bd74030b8b'
+            'abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0'
+            'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
+            'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
+            'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -128,6 +134,19 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
+  # https://lkml.org/lkml/2015/8/18/292
+  patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
+
+  # add not-yet-mainlined patch to fix network unavailability when iptables
+  # rules are applied during startup - happened with Shorewall; journal had
+  # many instances of this error: nf_conntrack: table full, dropping packet
+  patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
+
+  # add not-yes-mainlined patch to fix bridge code
+  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
+  patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
