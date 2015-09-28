@@ -8,6 +8,9 @@ url="http://doomseeker.drdteam.org/"
 license=("GPL2")
 depends=('qt4' 'zlib' 'bzip2')
 makedepends=('gcc' 'cmake' 'make')
+optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
+    	    'odamex: Classic client/server multiplayer fork'
+    	    'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
 source=("https://bitbucket.org/Blzut3/doomseeker/get/1.0.tar.gz"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
@@ -22,7 +25,7 @@ build() {
     mkdir -p build
     cd build
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
-    make
+    make -j$(nproc)
 }
 
 package() {
