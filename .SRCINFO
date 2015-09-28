@@ -1,7 +1,7 @@
 pkgbase = dummynet
 	pkgdesc = A live network emulation tool, originally designed for testing networking protocols, and since then used for a variety of applications including bandwidth management.
 	pkgver = 20130607
-	pkgrel = 9
+	pkgrel = 10
 	url = http://info.iet.unipi.it/~luigi/dummynet/
 	install = dummynet.install
 	arch = i686

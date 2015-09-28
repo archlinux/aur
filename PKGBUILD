@@ -2,7 +2,7 @@
 
 pkgname=dummynet
 pkgver=20130607
-pkgrel=9
+pkgrel=10
 pkgdesc="A live network emulation tool, originally designed for testing networking protocols, and since then used for a variety of applications including bandwidth management."
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -19,7 +19,7 @@ _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
   cd $srcdir/dummynet
-  make
+  make KERNELPATH=/usr/lib/modules/${_kernver}/build
 }
 
 package() {
