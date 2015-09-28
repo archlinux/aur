@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-moveit-core
 	pkgdesc = ROS - Core libraries used by MoveIt!.
 	pkgver = 0.6.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://moveit.ros.org
 	arch = any
 	license = BSD
