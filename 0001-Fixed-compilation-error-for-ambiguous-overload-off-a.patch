@@ -1,0 +1,26 @@
+From 671d22f4c5bd5f971907e13e6b90d4d4ed63f8f8 Mon Sep 17 00:00:00 2001
+From: Nicolas Menard <nicolas.menard@wyss.harvard.edu>
+Date: Mon, 28 Sep 2015 09:42:20 -0400
+Subject: [PATCH] Fixed compilation error for ambiguous overload off abs in
+ curve.cpp
+
+---
+ src/libkstmath/curve.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libkstmath/curve.cpp b/src/libkstmath/curve.cpp
+index dc61ae1..ffe0ee6 100644
+--- a/src/libkstmath/curve.cpp
++++ b/src/libkstmath/curve.cpp
+@@ -36,7 +36,7 @@
+ 
+ #include <time.h>
+ #include <iostream>
+-
++#include <cmath>
+ // #define DEBUG_VECTOR_CURVE
+ // #define BENCHMARK
+ 
+-- 
+2.5.3
+

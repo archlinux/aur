@@ -13,13 +13,14 @@ pkgbase = kst-git
 	depends = python2-scipy>=0.9
 	depends = python2-numpy>=1.6
 	depends = cfitsio
-	depends = netcdf-cxx-legacy
 	depends = python2-pyside
 	optdepends = getdata: provides support for files in the Dirfile format
 	optdepends = libmatio: provides support for Matlab binary files
 	conflicts = kst
 	source = git://github.com/Kst-plot/kst.git
+	source = 0001-Fixed-compilation-error-for-ambiguous-overload-off-a.patch
 	md5sums = SKIP
+	md5sums = 43dad5d63cf1d3415a5dda3df2e02c08
 
 pkgname = kst-git
 
