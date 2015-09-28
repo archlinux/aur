@@ -1,16 +1,18 @@
 pkgbase = python2-marshmallow
-	pkgdesc = A lightweight library for converting complex datatypes into native Python datatypes
-	pkgver = 2.0.0b2
+	pkgdesc = ORM/ODM/framework-agnostic library for converting complex datatypes, such as objects, to and from native Python datatypes
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = http://marshmallow.rtfd.org
+	url = https://github.com/marshmallow-code/marshmallow
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
 	depends = python2
+	optdepends = python2-dateutil: robust datetime deserialization
+	optdepends = python2-simplejson: precision when (de)serializing Python decimal.Decimal types
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/m/marshmallow/marshmallow-2.0.0b2.tar.gz
-	md5sums = b958adde7fe431a43de1c38d63cf6993
-	sha256sums = c4bb1b8569bef322fea40658e523a47d559488e615f5db5789f520564851eb46
+	source = https://pypi.python.org/packages/source/m/marshmallow/marshmallow-2.0.0.tar.gz
+	md5sums = 4cb3ccc9d23f236a557058fa3c7d36af
+	sha256sums = 5d51bf0ae7f6ac8235a7445955707a37669ebb20166efd6d0729ccb44476ee78
 
 pkgname = python2-marshmallow
 
