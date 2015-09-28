@@ -1,26 +1,22 @@
 pkgbase = eclipse-reporting
 	pkgdesc = An IDE for Java and other languages - JEE + BIRT package
-	pkgver = 3.6
-	pkgrel = 2
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = http://eclipse.org
 	install = eclipse.install
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = EPL/1.1
-	makedepends = zip
 	depends = java-environment>=6
 	depends = gtk2>=2.16.1
-	depends = unzip
 	depends = xulrunner>=1.9.0.10
-	provides = eclipse=3.5
-	provides = eclipse-wtp-wst=3.1.1
-	provides = eclipse-wtp=3.1.1
-	provides = eclipse-dtp=1.7.2
-	provides = eclipse-emf=2.5.0
-	conflicts = eclipse
-	source = ftp://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/helios/R/eclipse-reporting-helios-R-linux-gtk.tar.gz
+	options = !strip
 	source = http://svgicons.o7a.net/unofficial/eclipse.svg
-	source = eclipse.sh
-	source = eclipse.desktop
+	sha256sums = daac56ff0f7e4d2da534516cdd07b0f0a9dab85cdba7c9df8bb7bbbfa7e937a2
+	source_i686 = ftp://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/mars/R/eclipse-reporting-mars-R-linux-gtk.tar.gz
+	sha256sums_i686 = 98aaa9737d6dc7e74d72ece61ff00f717c24839be2027291b50b718656da5ee3
+	source_x86_64 = ftp://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/mars/R/eclipse-reporting-mars-R-linux-gtk-x86_64.tar.gz
+	sha256sums_x86_64 = 2d1b0a9e26cbbab09a09a49867dd03ab27eb8a5ae1159cb67e7591a55d8bdbca
 
 pkgname = eclipse-reporting
 

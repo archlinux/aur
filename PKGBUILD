@@ -1,71 +1,106 @@
+# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Contributor: Arthur Zamarin arthurzam gmail
 # Forked from eclipse PKGBUILD
-# Contributor : Pablo Nicolas Diaz <pablonicolas.diaz@gmail.com>
-# Contributor : Andrew Wright <andreww@photism.org>
-# Contributor : Andreas W. Hauser <andy-aur@splashground.de>
-# Mantainer : Paul Mattal <paul@archlinux.org>
+# Contributor: Paul Mattal <paul@archlinux.org>
+# Contributor: Pablo Nicolas Diaz <pablonicolas.diaz@gmail.com>
+# Contributor: Andrew Wright <andreww@photism.org>
+# Contributor: Andreas W. Hauser <andy-aur@splashground.de>
 
-pkgname=eclipse-reporting
-_package=reporting
-pkgver=3.6
-_internal_pkgver=R
-_version=helios
-pkgrel=2
-pkgdesc="An IDE for Java and other languages - JEE + BIRT package"
-arch=('any')
-url="http://eclipse.org"
-depends=('java-environment>=6' 'gtk2>=2.16.1' 'unzip' 'xulrunner>=1.9.0.10')
-install=eclipse.install
-conflicts=('eclipse')
-provides=('eclipse=3.5' 'eclipse-wtp-wst=3.1.1' 'eclipse-wtp=3.1.1' 'eclipse-dtp=1.7.2' 'eclipse-emf=2.5.0')
-makedepends=('zip')
-license=("EPL/1.1")
-if [ "$CARCH" = "x86_64" ]; then
-source=(ftp://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/${_version}/${_internal_pkgver}/eclipse-${_package}-${_version}-linux-gtk-x86_64.tar.gz
-	http://svgicons.o7a.net/unofficial/eclipse.svg
-            eclipse.sh
-            eclipse.desktop)
+# TODO: Integrate with other eclipse packages
+#   move from /usr/share to /usr/lib
+#   remove items from common and other libs
+#   remove conflicts
+#   separate parts into split packages
+#   Eclipse packages are in too much turmoil to do this
+# TODO: Figure out dbf imports, dbf-jdbc
+#   http://www.csv-jdbc.com/stels_dbf_jdbc.htm
 
+# To get started, File New Other, Business Intelligence and Reporting Tools, Report
 
-md5sums=('8dd3a6c8f1fb0a9f3e57109ab8cf47cb'
-         'fdc1501a2e940860c3f03e88c5ddf9d8'
-         'a1666ff79a3c3d48e535d789d4a1b9ff'
-         'd88490571b49c8ebb221ed349815d040')
+set -u
+_internal_pkgver='R'
+_version='mars'
+_package='reporting'
+pkgname="eclipse-${_package}"
+pkgver=4.5.0
+pkgrel=1
+pkgdesc='An IDE for Java and other languages - JEE + BIRT package'
+arch=('i686' 'x86_64')
+url='http://eclipse.org'
+license=('EPL/1.1')
+depends=('java-environment>=6' 'gtk2>=2.16.1' 'xulrunner>=1.9.0.10') # 'unzip'
+#makedepends=('zip')
+#provides=("eclipse=${pkgver}" 'eclipse-wtp-wst=3.1.1' 'eclipse-wtp=3.1.1' 'eclipse-dtp=1.7.2' 'eclipse-emf=2.5.0')
+#conflicts=('eclipse')
+options=('!strip')
+install='eclipse.install'
+source=('http://svgicons.o7a.net/unofficial/eclipse.svg')
+source_x86_64=("ftp://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/${_version}/${_internal_pkgver}/eclipse-${_package}-${_version}-${_internal_pkgver}-linux-gtk-x86_64.tar.gz")
+source_i686="${source_x86_64[@]/-x86_64/}"
+sha256sums=('daac56ff0f7e4d2da534516cdd07b0f0a9dab85cdba7c9df8bb7bbbfa7e937a2')
+sha256sums_i686=('98aaa9737d6dc7e74d72ece61ff00f717c24839be2027291b50b718656da5ee3')
+sha256sums_x86_64=('2d1b0a9e26cbbab09a09a49867dd03ab27eb8a5ae1159cb67e7591a55d8bdbca')
+PKGEXT='.pkg.tar.gz' # xz is only saves 10MB for 3 minutes extra compress time
 
-else
-source=(ftp://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/${_version}/${_internal_pkgver}/eclipse-${_package}-${_version}-${_internal_pkgver}-linux-gtk.tar.gz
-	http://svgicons.o7a.net/unofficial/eclipse.svg
-            eclipse.sh
-            eclipse.desktop)
-
-md5sum=('4d76e6800ea05075f24daf669b6caa2f' 
-        'fdc1501a2e940860c3f03e88c5ddf9d8'
-        'a1666ff79a3c3d48e535d789d4a1b9ff'
-        'd88490571b49c8ebb221ed349815d040')
-fi
-
-build() {
-  cd "${srcdir}/eclipse" || return 1
-
-  # patch to increase default memory limits
-  # patch -Np0 -i "${srcdir}/eclipse.ini.patch" || return 1
-
-  # install eclipse
-  install -m755 -d "${pkgdir}/usr/share"
-  mv "${srcdir}/eclipse" "${pkgdir}/usr/share/" || return 1
-
-  # install misc
-  mkdir -p ${pkgdir}/usr/bin ${pkgdir}/usr/share/applications \
-    ${pkgdir}/usr/share/icons/hicolor/{16x16,32x32,48x48}/apps || return 1
-  install -m755 "${srcdir}/eclipse.sh" "${pkgdir}/usr/bin/eclipse" || return 1
-  install -m644 "${srcdir}/eclipse.desktop" "${pkgdir}/usr/share/applications/" || return 1
-
-  ln -s "${pkgdir}/usr/share/eclipse/plugins/org.eclipse.*/eclipse.png" \
-    "${pkgdir}/usr/share/icons/hicolor/16x16/apps/eclipse.png" || return 1
-  ln -s "${pkgdir}/usr/share/eclipse/plugins/org.eclipse.*/eclipse32.png" \
-    "${pkgdir}/usr/share/icons/hicolor/32x32/apps/eclipse.png" || return 1
-  ln -s "${pkgdir}/usr/share/eclipse/plugins/org.eclipse.*/eclipse48.png" \
-    "${pkgdir}/usr/share/icons/hicolor/48x48/apps/eclipse.png" || return 1
-
-  install -D -m644 ${srcdir}/eclipse.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/eclipse.svg || return 1
+pkgver() {
+  set -u
+  cd 'eclipse'
+  sed -n -e 's:^eclipse.buildId=\(.*\)\.I.*$:\1:p' 'configuration/config.ini'
+  set +u
 }
 
+prepare() {
+  set -u
+  # cd 'eclipse'
+
+  # patch to increase default memory limits
+  # patch -Np0 -i "${srcdir}/eclipse.ini.patch"
+  set +u
+}
+
+package() {
+  set -u
+  local _eclipse='usr/share/eclipsereporting'
+  # install eclipse
+  install -d "${pkgdir}/${_eclipse}"
+  mv 'eclipse' "${pkgdir}/${_eclipse}/"
+  _eclipse="${_eclipse}/eclipse"
+
+  # install misc
+  install -Dm755 <(cat << EOF
+#!/usr/bin/sh
+export ECLIPSE_HOME='/${_eclipse}'
+#export GDK_NATIVE_WINDOWS=true
+\${ECLIPSE_HOME}/eclipse $@
+EOF
+  ) "${pkgdir}/usr/bin/eclipse"
+
+  install -Dm644 <(cat << EOF
+[Desktop Entry]
+Name=Eclipse Reporting (BIRT)
+Comment=A Java Development Environment
+Icon=eclipse
+Exec=/usr/bin/eclipse
+Terminal=false
+Type=Application
+Categories=GNOME;Application;Development;
+StartupNotify=true
+EOF
+  ) "${pkgdir}/usr/share/applications/eclipse.desktop"
+
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor"/{16x16,32x32,48x48}/apps
+  shopt -s failglob
+  local _png
+  cd "${pkgdir}"
+  #_png=("usr/lib/eclipse/plugins/org.eclipse.platform_${pkgver}."*/eclipse.png); test "${#_png}" -eq 1
+  #ln -sf "/${_png}"   "${pkgdir}/usr/share/icons/hicolor/16x16/apps/eclipse.png"
+  _png=("${_eclipse}/plugins/org.eclipse.platform_${pkgver}."*/eclipse32.png); test "${#_png[@]}" -eq 1
+  ln -sf "/${_png}" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/eclipse.png"
+  _png=("${_eclipse}/plugins/org.eclipse.platform_${pkgver}."*/eclipse48.png); test "${#_png[@]}" -eq 1
+  ln -sf "/${_png}" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/eclipse.png"
+  shopt -u failglob
+
+  install -Dpm644 "${srcdir}/eclipse.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/eclipse.svg"
+  set +u
+}
+set +u
