@@ -1,9 +1,9 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=teamviewer-quicksupport
-pkgver=10.0.41499
+pkgver=10.0.46203
 _pkgver_major=${pkgver%%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc='Teamviewer Quicksupport - All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com/'
@@ -14,7 +14,7 @@ depends_x86_64=('lib32-alsa-lib' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-libxd
 conflicts=('teamviewer')
 license=('custom')
 source=("teamviewer_qs-${pkgver}.tar.gz::http://download.teamviewer.com/download/version_10x/teamviewer_qs.tar.gz")
-sha256sums=('c9f27dc7ea4bd74d4d8978e45a65586361996917156d0d69b3ff5669e78b86c8')
+sha256sums=('9d112d3dcb8056115fc2dabeaaab729ec19bdea5352ea7a2ca3858d6e26e1c96')
 
 prepare() {
 	cd teamviewerqs/
@@ -24,11 +24,16 @@ prepare() {
 		exit 1
 	fi
 
-	# remove some trash
-	rm -rf tv_bin/RTlib/
-	rm -f tv_bin/xdg-utils/xdg-email
 	rmdir config
 	rmdir logfiles
+
+	cd tv_bin/
+
+	bsdtar xf archive.tar.xz
+
+	rm -rf RTlib/
+	rm -f xdg-utils/xdg-email
+	rm -f archive.tar.xz
 }
 
 build() {
