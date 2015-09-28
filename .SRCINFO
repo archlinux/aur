@@ -1,7 +1,7 @@
 pkgbase = nvidia-think
 	pkgdesc = NVIDIA drivers for linux-think kernel
-	pkgver = 352.41
-	pkgrel = 2
+	pkgver = 355.11
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia.install
 	arch = i686
@@ -10,13 +10,13 @@ pkgbase = nvidia-think
 	makedepends = linux-think-headers>=4.2
 	depends = linux-think>=4.2
 	depends = linux-think<4.3
-	depends = nvidia-utils=352.41
+	depends = nvidia-utils=355.11
 	depends = libgl
 	options = !strip
-	source = ftp://download.nvidia.com/XFree86/Linux-x86/352.41/NVIDIA-Linux-x86-352.41.run
-	source = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.41/NVIDIA-Linux-x86_64-352.41-no-compat32.run
-	md5sums = 3f9c9fed035fa845e3f6a1ea5f5732f7
-	md5sums = d41d1a358edbade36cfd97cdcc9a80b9
+	source = ftp://download.nvidia.com/XFree86/Linux-x86/355.11/NVIDIA-Linux-x86-355.11.run
+	source = ftp://download.nvidia.com/XFree86/Linux-x86_64/355.11/NVIDIA-Linux-x86_64-355.11-no-compat32.run
+	md5sums = 16d143ccafe99328a2ca8e5a396fd4bc
+	md5sums = 30133d89690f4683c4e289ec6c0247dc
 
 pkgname = nvidia-think
 
