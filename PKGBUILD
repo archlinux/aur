@@ -7,7 +7,7 @@ pkgname='ros-indigo-manipulation-msgs'
 pkgver='0.2.0'
 _pkgver_patch=2
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-indigo-shape-msgs
