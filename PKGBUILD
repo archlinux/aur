@@ -69,6 +69,8 @@ build() {
   _jobs=`sed -n -e "s/.*--jobs=\([0-9]\+\).*/\1/p" -e "s/.*-j *\([0-9]\+\).*/\1/p" <<< "$MAKEFLAGS"`
   _jobs=${_jobs:-1}
 
+  unset CC CC_host CC_target CXX CXX_host CXX_target LINK AR AR_host AR_target \
+        NM NM_host NM_target READELF READELF_host READELF_target
   QTDIR=$_qt4dir python2 build_mozc.py gyp
   python2 build_mozc.py build -c $_bldtype -j $_jobs unix/uim/uim.gyp:uim-mozc
 }
