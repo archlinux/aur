@@ -5,7 +5,7 @@
 # Maintainer:      Tyler Brock <tyler@mongodb.com>
 
 pkgname='mongo-c-driver'
-pkgver='1.1.10'
+pkgver='1.1.11'
 pkgrel='1'
 
 pkgdesc='The official MongoDB client library written in C.'
@@ -22,7 +22,7 @@ optdepends=(
     'openssl: ssl support'
 )
 source=("https://github.com/mongodb/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('10ebd1bddc0c713c0934679974fb1ed29eda1bf8e2ebbe2a1ebbcba219574092c34c4b352231ec65ffe3e350d8d701ef85debaaa9f9c10e6ab36fc3fa29f69df')
+sha512sums=('ebfc654c2bcd7bf4bf0e7b0ca101e1ecaa55a43224fa82b5663cd1e61a17d111d5ea4eeb7157e3f6b452d14c6cefee80b414930de8bc6baa188d9ee7b8d55804')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
