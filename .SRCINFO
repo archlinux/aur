@@ -1,0 +1,16 @@
+pkgbase = archvyrt
+	pkgdesc = libvirt provisioner for archlinux libvirt hosts
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/andrekeller/archvyrt
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-setuptools
+	depends = libvirt-python3
+	source = https://pypi.python.org/packages/source/a/archvyrt/archvyrt-0.1.1.tar.gz
+	md5sums = 20ceeef7e8278222f2ea3be72925c2aa
+
+pkgname = archvyrt
+
