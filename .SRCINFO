@@ -1,0 +1,24 @@
+pkgbase = fluxdgmenu
+	pkgdesc = Fluxdgmenu is an automated XDG Menu system for Fluxbox.
+	pkgver = 1.7.3.r108
+	pkgrel = 1
+	url = https://github.com/shimmerproject/Albatross
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = inotify-tools
+	depends = python2-xdg
+	depends = fluxbox
+	optdepends = python2-gtk2: enables fluxdgmenu to use your current GTK icon theme
+	optdepends = python2-gmenu: makes menu generation 10 times faster...
+	optdepends = python2-gobject: enables the recently used files menu to display item icons according to their mime type.
+	optdepends = zenity: enables fluxdgmenu to display progressbars during menu generation.
+	provides = fluxdgmenu
+	provides = fluxdgmenu-git
+	conflicts = fluxdgmenu-git
+	source = Fluxdgmenu::git+https://github.com/ju1ius/fluxdgmenu.git
+	md5sums = SKIP
+
+pkgname = fluxdgmenu
+
