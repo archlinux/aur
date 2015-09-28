@@ -7,6 +7,7 @@ pkgdesc="Mate Menu fork of MintMenu"
 arch=('any')
 url="https://bitbucket.org/ubuntu-mate/mate-menu/"
 license=('GPL2')
+install="${pkgname}.install"
 makedepends=('git')
 depends=('python2' 'python2-xlib' 'mate-applets' 'python2-distutils-extra' 'python2-setuptools')
 source=('git+https://bitbucket.org/ubuntu-mate/mate-menu.git')
