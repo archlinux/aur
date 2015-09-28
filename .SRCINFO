@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-warehouse-ros
 	pkgdesc = ROS - Persistent storage of ROS data using MongoDB.
 	pkgver = 0.8.8
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ros.org/wiki/warehouse_ros
 	arch = any
 	license = BSD
