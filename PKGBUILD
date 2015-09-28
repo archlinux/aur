@@ -5,7 +5,7 @@
 pkgname=nvidia-last-rt
 pkgver=355.11
 _extramodules=extramodules-4.1-rt
-pkgrel=5
+pkgrel=6
 pkgdesc="NVIDIA drivers for linux"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -48,5 +48,5 @@ package() {
     gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
     install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
 
-    echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
+    #echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
 }

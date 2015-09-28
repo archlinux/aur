@@ -1,7 +1,7 @@
 pkgbase = nvidia-last-rt
 	pkgdesc = NVIDIA drivers for linux
 	pkgver = 355.11
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
