@@ -7,6 +7,10 @@ msg_blue() {
     printf "${blue}==>${bold} $1${all_off}\n"
 }
 
+prompt_blue() {
+    printf "${blue}==>${bold} $1${all_off}"
+}
+
 all_off="$(tput sgr0)"
 bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
@@ -21,6 +25,7 @@ post_install() {
 	COZY_DOMAIN=
 	msg_blue "Choose you Cozy's FQDN (fully-qualified domain name).\nA self-signed certificate will be issued for this domain only, and the web server will configured with this domain name."
 	while [ -z $COZY_DOMAIN ]; do
+		prompt_blue "Domain name of your Cozy [cozy.example.tld]: " 
 		read -p "Domain name of your Cozy [cozy.example.tld]: " res 
 		COZY_DOMAIN=$res                                                                                                                             
 	done
