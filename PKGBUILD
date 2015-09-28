@@ -16,15 +16,13 @@ source=(
 "http://kannada.indiatyping.com/images/downloadfonts/akshar.zip"
 )
 
-md5sums=(
-f71cbf7a0f61a8b3a2831a2face21f11
-0a4dcf89b8c6607dfc4cca0f2f48b591
-245d82f001bf0e2fe01ca674d4a96035
-10dae096b1af741a3fcb25e7c8854ca5
-0e5e8f746abea7d429b907d18674b6a0
-aa0b0250200f375aa3984998b7f2eb9b
-be623cbc7218dff9f005128ad485c53c
-)
+md5sums=('6719857f9109b9b5fe4d7e9e64817325'
+         'd5fd19dbddd3907e1fb049ab09ab31e1'
+         'ed61f8a3862514d5f65cd4e0a506d4c3'
+         '526ffc8d1f98fb7b29de562e6afb0c90'
+         'db9a64eaa3f4b48aa0860cd29d112c19'
+         'f9f3e4cd88b9c63af9d7d17acd2c3906'
+         'be623cbc7218dff9f005128ad485c53c')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/TTF"
