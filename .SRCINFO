@@ -1,0 +1,20 @@
+pkgbase = fenics-viper
+	pkgdesc = A minimalistic scientific plotter and run-time visualization module with support for visualising meshes and solutions in DOLFIN.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://launchpad.net/fenics-viper
+	arch = i686
+	arch = x86_64
+	groups = fenics-git
+	license = GNU LGPL v2.1
+	makedepends = git
+	depends = python2
+	depends = vtk
+	provides = viper
+	conflicts = viper
+	options = !emptydirs
+	source = https://launchpad.net/fenics-viper/1.0.x/1.0.1/+download/viper-1.0.1.tar.gz
+	md5sums = 6c4564f67c4b5f8c01425ca3d2cbd2a3
+
+pkgname = fenics-viper
+
