@@ -1,14 +1,14 @@
 pkgbase = python-openstackclient
 	pkgdesc = OpenStack Command-line Client
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/openstack/python-openstackclient
 	arch = any
 	license = Apache
-	makedepends = python-pbr>=1.4
-	makedepends = python2-pbr>=1.4
-	source = https://pypi.python.org/packages/source/p/python-openstackclient/python-openstackclient-1.6.0.tar.gz
-	sha256sums = 7400b86fc57032bfd7d4fed317ad2311bfb35ee192200c437b23c2ab85d49b24
+	makedepends = python-pbr>=1.8
+	makedepends = python2-pbr>=1.8
+	source = https://pypi.python.org/packages/source/p/python-openstackclient/python-openstackclient-1.7.0.tar.gz
+	sha256sums = d503048f67d04f1bfd00cc6a4ab713e53ffaf970a522c8f5ed9bfd675f82ac62
 
 pkgname = python-openstackclient
 	depends = python-babel>=1.3
@@ -18,12 +18,12 @@ pkgname = python-openstackclient
 	depends = python-glanceclient>=0.18.0
 	depends = python-keystoneclient>=1.6.0
 	depends = python-neutronclient>=2.6.0
-	depends = python-novaclient>=2.26.0
+	depends = python-novaclient>=2.28.1
 	depends = python-os-client-config>=1.4.0
-	depends = python-oslo-config>=1.11.0
+	depends = python-oslo-config>=2.3.0
 	depends = python-oslo-i18n>=1.5.0
-	depends = python-oslo-utils>=1.9.0
-	depends = python-pbr>=1.4
+	depends = python-oslo-utils>=2.0.0
+	depends = python-pbr>=1.6
 	depends = python-requests>=2.5.2
 	depends = python-six>=1.9.0
 	depends = python-stevedore>=1.5.0
@@ -36,12 +36,12 @@ pkgname = python2-openstackclient
 	depends = python2-glanceclient>=0.18.0
 	depends = python2-keystoneclient>=1.6.0
 	depends = python2-neutronclient>=2.6.0
-	depends = python2-novaclient>=2.26.0
+	depends = python2-novaclient>=2.28.1
 	depends = python2-os-client-config>=1.4.0
-	depends = python2-oslo-config>=1.11.0
+	depends = python2-oslo-config>=2.3.0
 	depends = python2-oslo-i18n>=1.5.0
-	depends = python2-oslo-utils>=1.9.0
-	depends = python2-pbr>=1.4
+	depends = python2-oslo-utils>=2.0.0
+	depends = python2-pbr>=1.6
 	depends = python2-requests>=2.5.2
 	depends = python2-six>=1.9.0
 	depends = python2-stevedore>=1.5.0
