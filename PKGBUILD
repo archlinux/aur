@@ -2,8 +2,8 @@
 
 pkgname=mopidy-local-images
 pkgver=0.3.3
-pkgrel=1
-pkgdesc="Responsive Web client for Mopidy"
+pkgrel=2
+pkgdesc="Mopidy local library proxy extension for handling embedded album art"
 arch=('any')
 url="https://github.com/martijnboland/moped"
 license=('APACHE')
