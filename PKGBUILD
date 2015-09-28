@@ -3,7 +3,7 @@
 pkgbase=linux-ec2
 _srcname=linux-4.2
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://git.uplinklabs.net/snoonan/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
 license=('GPL2')
@@ -18,6 +18,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'cancel_balloon_v2.patch'
+        '0001-un-GPL-flush_workqueue-for-NVIDIA-module.patch'
         )
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
@@ -26,7 +27,8 @@ sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
             'SKIP'
             '7460d523b7c5af4d7dcd87236ec708c70511a62cd54c400dc8b770e8c79cbfcb'
-            'b242c90f08ea5deb920b0cd7c1066574ee120ce5519b2d512c552fb92ae7e35e')
+            'b242c90f08ea5deb920b0cd7c1066574ee120ce5519b2d512c552fb92ae7e35e'
+            'baa557ffb82ab855041468a53788a097e11c5eab3130a8077b5d6c7f665d9a13')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -49,6 +51,10 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
   patch -Np1 -i "${srcdir}/cancel_balloon_v2.patch"
+
+  # Make symbols needed for NVIDIA available
+  # https://lkml.org/lkml/2015/8/4/775
+  patch -Np1 -i "${srcdir}/0001-un-GPL-flush_workqueue-for-NVIDIA-module.patch"
 
   cp -L "${srcdir}/config.${CARCH}" .config
 

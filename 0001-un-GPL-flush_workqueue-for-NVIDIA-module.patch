@@ -1,0 +1,28 @@
+From 81c69c9ae0eafd1ab2aa52d1fe0a3250221ed460 Mon Sep 17 00:00:00 2001
+From: Steven Noonan <steven@uplinklabs.net>
+Date: Mon, 28 Sep 2015 13:11:06 -0700
+Subject: [PATCH] un-GPL flush_workqueue for NVIDIA module
+
+https://lkml.org/lkml/2015/8/4/775
+
+Signed-off-by: Steven Noonan <steven@uplinklabs.net>
+---
+ kernel/workqueue.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/workqueue.c b/kernel/workqueue.c
+index 4c4f061..a413acb 100644
+--- a/kernel/workqueue.c
++++ b/kernel/workqueue.c
+@@ -2614,7 +2614,7 @@ void flush_workqueue(struct workqueue_struct *wq)
+ out_unlock:
+ 	mutex_unlock(&wq->mutex);
+ }
+-EXPORT_SYMBOL_GPL(flush_workqueue);
++EXPORT_SYMBOL(flush_workqueue);
+ 
+ /**
+  * drain_workqueue - drain a workqueue
+-- 
+2.5.3
+
