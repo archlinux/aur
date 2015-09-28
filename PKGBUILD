@@ -1,11 +1,9 @@
-# Maintainer: ot com>
-
 pkgname=mopidy-local-images
 pkgver=0.3.3
 pkgrel=2
 pkgdesc="Mopidy local library proxy extension for handling embedded album art"
 arch=('any')
-url="https://github.com/martijnboland/moped"
+url="https://github.com/tkem/mopidy-local-images"
 license=('APACHE')
 depends=(
   'python2' 
