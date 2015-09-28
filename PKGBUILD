@@ -1,6 +1,6 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 pkgname=pdepend
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A tool for PHP software metrics"
 url="http://pdepend.org/"
