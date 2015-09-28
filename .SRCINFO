@@ -1,4 +1,4 @@
-pkgbase = nvidia-rt
+pkgbase = nvidia-last-rt
 	pkgdesc = NVIDIA drivers for linux
 	pkgver = 355.11
 	pkgrel = 5
@@ -17,7 +17,7 @@ pkgbase = nvidia-rt
 	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/355.11/NVIDIA-Linux-x86_64-355.11-no-compat32.run
 	md5sums_x86_64 = SKIP
 
-pkgname = nvidia-rt
+pkgname = nvidia-last-rt
 	pkgdesc = NVIDIA drivers for linux
 	install = nvidia.install
 	depends = linux>=4.2

@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgname=nvidia-rt
+pkgname=nvidia-last-rt
 pkgver=355.11
 _extramodules=extramodules-4.1-rt
 pkgrel=5
