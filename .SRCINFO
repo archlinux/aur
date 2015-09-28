@@ -27,7 +27,7 @@ pkgbase = mint-fm2
 	source = http://packages.linuxmint.com/pool/main/m/mint-fm2/mint-fm2_3.25.tar.gz
 	source = mint-fm2-3.25-arch.patch
 	md5sums = 618c5734322b23e363ad29b86a85e708
-	md5sums = 1deaa10d1c05331118c5cbc1d907615f
+	md5sums = 7776f5b5e211d2cebad2811f660a6459
 
 pkgname = mint-fm2
 

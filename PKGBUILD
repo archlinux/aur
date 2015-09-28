@@ -38,6 +38,9 @@ package() {
 	chmod +x ${pkgdir}/usr/lib/linuxmint/mint-fm2/mfmrootdaemon
 	chmod +x ${pkgdir}/usr/lib/linuxmint/mint-fm2/mfmuserdaemon
 	chmod +x ${pkgdir}/usr/lib/linuxmint/mint-fm2/mint-fm2
+# Delete conflictin directory
+	rmdir ${pkgdir}/usr/sbin
+
 }
 
 # symlinks must be made in install script
