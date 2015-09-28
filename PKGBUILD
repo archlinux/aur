@@ -1,7 +1,7 @@
 # Maintainer: Chrys <mail@chrys.de>
 pkgname=ocrdesktop
 pkgver=0.9.97
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR the current window or desktop and make it browsable for the user"
 arch=('any')
 url="http://www.crivatec.de"
@@ -15,5 +15,5 @@ md5sums=("fdad271ff8a440f96f9985d90f9d3379")
 package() {
  cd "${srcdir}/"
   install -Dm755 ocrdesktop "$pkgdir/usr/bin/ocrdesktop"
-  cp ocrdesktop.1.gz "${pkgdir}/usr/share/man/man1/ocrdesktop.1.gz"
+  install -Dm644 ocrdesktop.1.gz "${pkgdir}/usr/share/man/man1/ocrdesktop.1.gz"
 }

@@ -1,7 +1,7 @@
 pkgbase = ocrdesktop
 	pkgdesc = OCR the current window or desktop and make it browsable for the user
 	pkgver = 0.9.97
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.crivatec.de
 	install = ocrdesktop.install
 	arch = any
