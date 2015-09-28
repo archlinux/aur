@@ -1,4 +1,5 @@
-# Maintainer: Jochen Schalanda <jochen+aur@schalanda.name>
+# Maintainer:  Fabrizio Lungo   <aur@flungo.me>
+# Contributor: Jochen Schalanda <jochen+aur@schalanda.name>
 _build=3384
 pkgname=youtrack-workflow-editor
 pkgver=6.0
