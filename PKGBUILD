@@ -7,7 +7,11 @@ pkgdesc="Mopidy local library proxy extension for handling embedded album art"
 arch=('any')
 url="https://github.com/martijnboland/moped"
 license=('APACHE')
-depends=('python2' 'mopidy>=0.19')
+depends=(
+  'python2' 
+  'mopidy>=0.19'
+  'python2-uritools'
+)
 makedepends=('python2' 'python2-setuptools')
 source=("https://github.com/tkem/mopidy-local-images/archive/v${pkgver}.tar.gz")
 

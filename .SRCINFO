@@ -9,6 +9,7 @@ pkgbase = mopidy-local-images
 	makedepends = python2-setuptools
 	depends = python2
 	depends = mopidy>=0.19
+	depends = python2-uritools
 	source = https://github.com/tkem/mopidy-local-images/archive/v0.3.3.tar.gz
 	md5sums = 1bc4b305b61465003ccdfec2e9d10463
 
