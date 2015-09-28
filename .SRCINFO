@@ -1,13 +1,13 @@
 pkgbase = riak
 	pkgdesc = NOSQL database engine providing decentralized key-value store, flexible map/reduce engine and HTTP/JSON query interface
 	pkgver = 2.1.1
-	pkgrel = 1
-	url = http://riak.basho.com/
+	pkgrel = 2
+	url = http://docs.basho.com/riak/latest/downloads/
 	install = riak.install
 	arch = i686
 	arch = x86_64
 	license = APACHE
-	makedepends = erlang-nox
+	makedepends = erlang-nox-r17
 	makedepends = java-environment
 	optdepends = jdk7-openjdk
 	conflicts = tsung
