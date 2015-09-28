@@ -1,6 +1,6 @@
 pkgbase = rdkit-git
 	pkgdesc = RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python.
-	pkgver = 20150506
+	pkgver = 20150928
 	pkgrel = 1
 	url = http://rdkit.org/
 	arch = i686

@@ -2,7 +2,7 @@
 pkgname=rdkit-git
 _pkgname=RDKit
 gitname=rdkit
-pkgver=20150506
+pkgver=20150928
 pkgrel=1
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64")
@@ -25,6 +25,7 @@ build() {
   cmake ../build/${gitname} \
     -DCMAKE_BUILD_TYPE=Release \
     -DRDK_INSTALL_INTREE=0 \
+    -DRDK_BUILD_THREADSAFE_SSS=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPYTHON_LIBRARY=/usr/lib/python2.7/config/libpython2.7.so \
     -DPYTHON_INCLUDE_DIR=/usr/include/python2.7/ \
