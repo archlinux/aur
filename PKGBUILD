@@ -5,7 +5,7 @@
 # Contributor: 325.15 - patch : Ninez 
 
 pkgname=nvidia-last-rt
-pkgver=352.41
+pkgver=355.11
 _extramodules=extramodules-4.1-rt
 _kernver="$(cat /lib/modules/${_extramodules}/version)"
 pkgrel=1
