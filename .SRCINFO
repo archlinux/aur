@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-moveit-ros-warehouse
 	pkgdesc = ROS - Components of MoveIt connecting to MongoDB.
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://moveit.ros.org
 	arch = any
 	license = BSD
