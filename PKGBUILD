@@ -9,7 +9,7 @@
 # there's no need to manually change pkgver.
 # Please don't flag out-of-date!
 pkgname=atom-editor-git
-pkgver=1.0.15.r166.ge1fb376
+pkgver=1.1.0.beta.0.r178.g575d79a
 pkgrel=1
 pkgdesc="Chrome-based text editor from Github"
 arch=('i686' 'x86_64')
@@ -19,10 +19,8 @@ provides=('atom-editor')
 conflicts=('atom-editor' 'atom-editor-bin')
 depends=('gconf' 'nodejs' 'libgnome-keyring' 'python2')
 makedepends=('git' 'npm')
-source=("atom::git+git://github.com/atom/atom"
-        "atom-python.patch")
-md5sums=('SKIP'
-         'd4e6137fbdea39d0abe2016d4640b0cf')
+source=("atom::git+git://github.com/atom/atom")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/atom"
@@ -32,8 +30,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/atom"
-
-  patch -Np0 -i "$srcdir/atom-python.patch"
 
   sed -e "s/<%= description %>/$pkgdesc/" \
     -e "s|<%= executable %>|/usr/bin/atom|"\
