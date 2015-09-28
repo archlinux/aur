@@ -4,12 +4,13 @@
 
 pkgname=procps-ng-nosystemd
 pkgver=3.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for monitoring your system and its processes'
 url='https://gitlab.com/procps-ng/procps'
 license=('GPL' 'LGPL')
 arch=('i686' 'x86_64')
 depends=('ncurses')
+backup=('etc/sysctl.conf')
 source=("http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-${pkgver}.tar.xz"
         'sysctl.conf')
 sha1sums=('1bdca65547df9ed019bd83649b0f8b8eaa017e25'
