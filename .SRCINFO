@@ -1,7 +1,7 @@
 pkgbase = nomachine
 	pkgdesc = Remote desktop application
-	pkgver = 4.6.4
-	pkgrel = 13
+	pkgver = 4.6.16
+	pkgrel = 1
 	url = http://www.nomachine.com
 	install = nomachine.install
 	arch = x86_64
