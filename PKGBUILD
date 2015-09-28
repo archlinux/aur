@@ -1,0 +1,82 @@
+# Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
+pkgname=all-repository-fonts
+pkgver=20150927
+pkgrel=1
+pkgdesc='Meta package for all fonts in the official repositories.'
+arch=('any')
+url='https://aur.archlinux.org/packages/all-repository-fonts/'
+license=('custom:Public Domain')
+depends=('fontconfig'
+         'adobe-source-code-pro-fonts'
+         'adobe-source-han-sans-cn-fonts'
+         'adobe-source-han-sans-jp-fonts'
+         'adobe-source-han-sans-kr-fonts'
+         'adobe-source-han-sans-otc-fonts'
+         'adobe-source-han-sans-tw-fonts'
+         'adobe-source-sans-pro-fonts'
+         'adobe-source-serif-pro-fonts'
+         'artwiz-fonts'
+         'bdf-unifont'
+         'cantarell-fonts'
+         'dina-font'
+         'font-bh-ttf'
+         'font-bitstream-speedo'
+         'font-mathematica'
+         'gnu-free-fonts'
+         'gsfonts'
+         'opendesktop-fonts'
+         'otf-fira-mono'
+         'otf-fira-sans'
+         'otf-ipafont'
+         'profont'
+         'tamsyn-font'
+         'terminus-font'
+         'tex-gyre-fonts'
+         'ttf-anonymous-pro'
+         'ttf-arphic-ukai'
+         'ttf-arphic-uming'
+         'ttf-baekmuk'
+         'ttf-bitstream-vera'
+         'ttf-cheapskate'
+         'ttf-dejavu'
+         'ttf-droid'
+         'ttf-fira-mono'
+         'ttf-fira-sans'
+         'ttf-freebanglafont'
+         'ttf-freefont'
+         'ttf-gentium'
+         'ttf-hanazono'
+         'ttf-hannom'
+         'ttf-inconsolata'
+         'ttf-indic-otf'
+         'ttf-ionicons'
+         'ttf-junicode'
+         'ttf-khmer'
+         'ttf-liberation'
+         'ttf-linux-libertine'
+         'ttf-linux-libertine-g'
+         'ttf-mph-2b-damase'
+         'ttf-oxygen'
+         'ttf-sazanami'
+         'ttf-symbola'
+         'ttf-tibetan-machine'
+         'ttf-tlwg'
+         'ttf-ubraille'
+         'ttf-ubuntu-font-family'
+         'wqy-bitmapfont'
+         'wqy-microhei'
+         'wqy-microhei-lite'
+         'wqy-zenhei'
+         'xorg-fonts-100dpi'
+         'xorg-fonts-75dpi'
+         'xorg-fonts-cyrillic'
+         'xorg-fonts-misc'
+         'xorg-fonts-type1')
+source=(LICENSE)
+sha512sums=('57f083acfdb3b05be097f27d8df8afb77820c61ca138f097f22564d3e10dd0b713aaf02e421d6ab8223b6fb462ad16833ce08a0f10ed17a0d3a82f34b9494df0')
+package()
+{
+	cd "$srcdir"
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
