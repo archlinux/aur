@@ -1,6 +1,6 @@
 pkgbase = python2-python-bitcoinlib-git
 	pkgdesc = An easy interface to the Bitcoin protocol and data structures
-	pkgver = 20150420
+	pkgver = 20150927
 	pkgrel = 1
 	url = https://github.com/petertodd/python-bitcoinlib
 	arch = any
