@@ -3,7 +3,7 @@
 # % Trigger: 1441370137 %
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
-pkgver=r670.e2bbff3
+pkgver=r672.7eab644
 pkgrel=1
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
@@ -31,7 +31,7 @@ build() {
 	make PREFIX=/usr -C hwdb
 	make PREFIX=/usr -C fs
 
-	make -C libudev-compat
+	make PREFIX=/usr -C libudev-compat
 }
 
 package_vdev-git() {
