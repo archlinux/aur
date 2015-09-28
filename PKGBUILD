@@ -11,9 +11,8 @@ pkgname=('qemu-git'
          'qemu-block-iscsi-git'
          'qemu-block-rbd-git'
          'qemu-block-gluster-git'
-         'qemu-guest-agent-git'
-         'libcacard-git')
-pkgver=2.5.r40527.g7df9671
+         'qemu-guest-agent-git')
+pkgver=2.5.r41275.g9e07142
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -68,7 +67,7 @@ build() {
 package_qemu-git() {
   pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Git version.'
   depends=('pixman' 'libjpeg' 'libpng' 'sdl' 'libgl'
-           'gnutls' 'bluez-libs' 'libcacard'
+           'gnutls' 'bluez-libs'
            'usbredir' 'lzo' 'snappy' 'libpulse' 
            'dtc' 'numactl' 'libnfs' 'libepoxy')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
@@ -96,14 +95,6 @@ package_qemu-git() {
   # bridge_helper needs suid
   # https://bugs.archlinux.org/task/32565
   chmod u+s usr/lib/qemu/qemu-bridge-helper
-
-  # remove libcacard files
-  rm -r usr/include/cacard
-  rmdir usr/include
-  rm usr/lib/libcacard*
-  rm usr/lib/pkgconfig/libcacard.pc
-  rmdir usr/lib/pkgconfig/
-  rm usr/bin/vscclient
 
   # remove splitted block modules
   rm usr/lib/qemu/block-{iscsi,rbd,gluster}.so
@@ -178,20 +169,5 @@ package_qemu-guest-agent-git() {
   install -D $_gitname/qemu-ga "${pkgdir}"/usr/bin/qemu-ga
   install -D qemu-ga.service "${pkgdir}"/usr/lib/systemd/system/qemu-ga.service
 }
-
-package_libcacard-git() {
-  pkgdesc='Common Access Card (CAC) Emulation. Git version.'
-  depends=('nss' 'nspr')
-  conflicts=(libcacard)
-  provides=(libcacard)
-
-  cd "${pkgdir}"
-  install -d usr/{bin,lib/pkgconfig,include/cacard}
-  cp -a "${srcdir}"/$_gitname/libcacard/*.h usr/include/cacard/
-  cp -a "${srcdir}"/$_gitname/libcacard.pc usr/lib/pkgconfig/
-  cp -a "${srcdir}"/$_gitname/.libs/vscclient usr/bin/
-  cp -a "${srcdir}"/$_gitname/.libs/libcacard.so* usr/lib/
-}
-
 
 # vim:set ts=2 sw=2 et:

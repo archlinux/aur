@@ -1,5 +1,5 @@
 pkgbase = qemu-git
-	pkgver = 2.5.r40527.g7df9671
+	pkgver = 2.5.r41275.g9e07142
 	pkgrel = 1
 	url = http://wiki.qemu.org/
 	arch = i686
@@ -59,7 +59,6 @@ pkgname = qemu-git
 	depends = libgl
 	depends = gnutls
 	depends = bluez-libs
-	depends = libcacard
 	depends = usbredir
 	depends = lzo
 	depends = snappy
@@ -121,11 +120,4 @@ pkgname = qemu-guest-agent-git
 	depends = glib2
 	provides = qemu-guest-agent
 	conflicts = qemu-guest-agent
-
-pkgname = libcacard-git
-	pkgdesc = Common Access Card (CAC) Emulation. Git version.
-	depends = nss
-	depends = nspr
-	provides = libcacard
-	conflicts = libcacard
 
