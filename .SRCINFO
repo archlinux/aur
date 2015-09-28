@@ -1,6 +1,6 @@
 pkgbase = pkgconf-git
 	pkgdesc = pkg-config compatible utility which does not depend on glib
-	pkgver = 0.9.12.39.g6a66b52
+	pkgver = 0.9.12.40.gabbd6b0
 	pkgrel = 1
 	url = https://github.com/pkgconf/pkgconf
 	arch = i686
