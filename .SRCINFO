@@ -1,0 +1,16 @@
+pkgbase = mopidy-local-images
+	pkgdesc = Responsive Web client for Mopidy
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/martijnboland/moped
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = mopidy>=0.19
+	source = https://github.com/tkem/mopidy-local-images/archive/v0.3.3.tar.gz
+	md5sums = 1bc4b305b61465003ccdfec2e9d10463
+
+pkgname = mopidy-local-images
+
