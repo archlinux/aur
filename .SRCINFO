@@ -1,7 +1,7 @@
 pkgbase = pdepend
 	pkgdesc = A tool for PHP software metrics
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pdepend.org/
 	install = pdepend.install
 	arch = any
