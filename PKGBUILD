@@ -39,10 +39,9 @@ package() {
 	chmod +x ${pkgdir}/usr/lib/linuxmint/mint-fm2/mfmuserdaemon
 	chmod +x ${pkgdir}/usr/lib/linuxmint/mint-fm2/mint-fm2
 }
-
-
-
 # symlinks must be made in install script
 # vim:set ts=2 sw=2 et:
+
+
 md5sums=('618c5734322b23e363ad29b86a85e708'
-         '1deaa10d1c05331118c5cbc1d907615f')
+         '2757976110bf19349492c144e1943a6e')
