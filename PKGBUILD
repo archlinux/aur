@@ -1,10 +1,8 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
+# Maintainer: Piotr Rogoża <piotr dot r dot public at gmail dot com>
 
 pkgname=vim-unicode
-pkgver=0.17
-_src_id=20656
+pkgver=0.20
+_src_id=22794
 pkgrel=1
 pkgdesc='Enable an easier use of any Unicode glyph'
 arch=('any')
@@ -24,7 +22,9 @@ source=("$pkgname-$pkgver.vmb::http://www.vim.org/scripts/download_script.php?sr
 http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
 LICENSE
 )
- 
+sha256sums=('5865bc82fa6f35ce8f01868a387e0b254f0e3f68c30e0417fbd8c22f8327398a'
+            '38b17e1118206489a7e0ab5d29d7932212d38838df7d3ec025ecb58e8798ec20'
+            'e8281af29c79bbebc50b52f6d620196fdf3ca7326aaa8a84d77bcd1013c3a089')
 package () {
 	cd "$srcdir"
 	_vim_dir='/usr/share/vim/vimfiles'
@@ -40,6 +40,3 @@ package () {
     --exclude UnicodeData.txt \
     | tar -x -C "$pkgdir"/$_vim_dir
 }
-sha256sums=('e1c848e0310ae039209ce73fb38e4afc41754cef16aa228465bff4e5109fb11b'
-            '3f76924f0410ca8ae0e9b5c59bd1ba03196293c32616204b393300f091f52013'
-            'e8281af29c79bbebc50b52f6d620196fdf3ca7326aaa8a84d77bcd1013c3a089')

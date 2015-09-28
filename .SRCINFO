@@ -1,6 +1,6 @@
 pkgbase = vim-unicode
 	pkgdesc = Enable an easier use of any Unicode glyph
-	pkgver = 0.17
+	pkgver = 0.20
 	pkgrel = 1
 	url = http://www.vim.org/scripts/script.php?script_id=2822
 	install = vimdoc.install
@@ -9,11 +9,11 @@ pkgbase = vim-unicode
 	license = custom:vim
 	makedepends = vim-runtime
 	depends = vim-runtime
-	source = vim-unicode-0.17.vmb::http://www.vim.org/scripts/download_script.php?src_id=20656
+	source = vim-unicode-0.20.vmb::http://www.vim.org/scripts/download_script.php?src_id=22794
 	source = http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
 	source = LICENSE
-	sha256sums = e1c848e0310ae039209ce73fb38e4afc41754cef16aa228465bff4e5109fb11b
-	sha256sums = 3f76924f0410ca8ae0e9b5c59bd1ba03196293c32616204b393300f091f52013
+	sha256sums = 5865bc82fa6f35ce8f01868a387e0b254f0e3f68c30e0417fbd8c22f8327398a
+	sha256sums = 38b17e1118206489a7e0ab5d29d7932212d38838df7d3ec025ecb58e8798ec20
 	sha256sums = e8281af29c79bbebc50b52f6d620196fdf3ca7326aaa8a84d77bcd1013c3a089
 
 pkgname = vim-unicode
