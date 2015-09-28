@@ -1,0 +1,16 @@
+pkgbase = python-storjcore
+	pkgdesc = Storj core library
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/Storj/storjcore
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pip
+	depends = python-crypto
+	depends = python-btctxstore
+	source = https://github.com/Storj/storjcore/archive/v0.0.3.tar.gz
+	sha256sums = 068d8342aefb94bb30a764c93b30658390369382d87623a3191a4fb57f4c956e
+
+pkgname = python-storjcore
+
