@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 _gitname=$_pkgname
 pkgname=${_pkgname}-24bit
-pkgver=180ed03
+pkgver=r3538.bdf9f03
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://github.com/spudowiar/rxvt-unicode/tree/24bit'
@@ -30,7 +30,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --always | sed 's|-|.|g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
