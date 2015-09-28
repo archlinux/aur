@@ -42,4 +42,6 @@ package() {
 	chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/emptyExample.cbp
 	chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/emptyExample.workspace
 	chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/Makefile
+
+	install -D -m644 "${srcdir}/${_name}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
