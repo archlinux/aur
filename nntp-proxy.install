@@ -1,0 +1,10 @@
+post_install() {
+  getent group nntpproxy &> /dev/null || groupadd -g 563 nntpproxy &> /dev/null
+  getent passwd nntpproxy &> /dev/null || useradd -u 563 -g nntpproxy -s /bin/false nntpproxy &> /dev/null
+  echo '==> Read https://github.com/nieluj/nntp-proxy#ssl-support for a guide on how to generate required files for SSL support.'
+}
+
+pre_remove() {
+  getent passwd nntpproxy &> /dev/null && userdel nntpproxy &> /dev/null
+  getent group nntpproxy &> /dev/null && groupdel nntpproxy &> /dev/null
+}
