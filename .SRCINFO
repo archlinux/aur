@@ -1,7 +1,7 @@
 pkgbase = sooperlooper
 	pkgdesc = Live looping sampler capable of immediate loop recording
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://essej.net/sooperlooper/
 	install = sooperlooper.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = sooperlooper
 	license = GPL
 	depends = jack
 	depends = liblo
-	depends = libsigcpp1.2
+	depends = libsigc++
 	depends = libxml2
 	depends = rubberband
 	depends = wxgtk2.8

@@ -6,12 +6,12 @@
 
 pkgname=sooperlooper
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Live looping sampler capable of immediate loop recording"
 arch=('i686' 'x86_64')
 url="http://essej.net/sooperlooper/"
 license=('GPL')
-depends=('jack' 'liblo' 'libsigcpp1.2' 'libxml2' 'rubberband' 'wxgtk2.8')
+depends=('jack' 'liblo' 'libsigc++' 'libxml2' 'rubberband' 'wxgtk2.8')
 optdepends=('libsamplerate: audio sample rate conversion')
 install="${pkgname}.install"
 source=("${url}${pkgname}-${pkgver}.tar.gz"
