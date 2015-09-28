@@ -1,12 +1,13 @@
 pkgbase = qtadb
 	pkgdesc = GUI for Android SDK/ADB, Android phone manager
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://qtadb.wordpress.com/
 	install = qtadb.install
 	arch = i686
 	arch = x86_64
 	license = custom:proprietary
+	makedepends = subversion
 	depends = qt4
 	depends = android-sdk-platform-tools
 	source = svn+http://svn.code.sf.net/p/qtadb/code/tags/0.8.0

@@ -3,13 +3,14 @@
 
 pkgname=qtadb
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI for Android SDK/ADB, Android phone manager"
 arch=('i686' 'x86_64')
 url="http://qtadb.wordpress.com/"
 license=('custom:proprietary')
 install=${pkgname}.install
 depends=('qt4' 'android-sdk-platform-tools')
+makedepends=('subversion')
 source=("svn+http://svn.code.sf.net/p/${pkgname}/code/tags/${pkgver}"
         "${pkgname}.desktop"
         "${pkgname}.png")
