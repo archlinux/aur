@@ -9,10 +9,8 @@ arch=('any')
 url="https://github.com/mNantern/QTodoTxt"
 license=('GPL3')
 depends=('python-pyside')
-makedepends=('imagemagick')
-optdepends=('todotxt: command line todo.txt')
 provides=('qtodotxt')
-conflicts=('qtodotxt-hg')
+conflicts=('qtodotxt-hg' 'qtodotxt-git')
 install=$pkgname.install
 source=(
   'https://github.com/mNantern/QTodoTxt/archive/1.4.0.tar.gz'
