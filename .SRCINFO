@@ -1,5 +1,5 @@
 pkgbase = linux-pf-lts
-	pkgver = 3.14.51
+	pkgver = 3.14.53
 	pkgrel = 1
 	url = http://pf.natalenko.name/
 	arch = i686
@@ -45,6 +45,8 @@ pkgbase = linux-pf-lts
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.48-49.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.49-50.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.50-51.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.51-52.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.52-53.xz
 	sha256sums = 61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa
 	sha256sums = SKIP
 	sha256sums = fd4769f86fbe34bf95d26abd6a61ce06ffea9982a782612e60fffdb830927b39
@@ -78,6 +80,8 @@ pkgbase = linux-pf-lts
 	sha256sums = fb73e37497ef06f1948e49dbd90700d3da477cddb2a1f0ec254f1cd0b16b85f1
 	sha256sums = 5f3f624d3a845a94e378f7027a6b43d2a66ed0e542929deb6036b11f2e21e40a
 	sha256sums = 52d0cb16fb2583425cee4cf5cbd7caad6d0fd8f4231e1bc88cf572f014ee3ec7
+	sha256sums = 0413914be2412b48e54c67d2c97edb8e5d08dbed139fb161c3270552ca5e89f4
+	sha256sums = 10f00463928d4c3e985c12e4297ca442db4303e402a0915df58db5356a69fc47
 
 pkgname = linux-pf-lts
 	pkgdesc = Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs3. Long-term support.
@@ -95,7 +99,7 @@ pkgname = linux-pf-lts
 	optdepends = nvidia-beta-all: NVIDIA drivers for all installed kernels
 	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.
 	provides = linux-pf-lts=3.14
-	provides = linux=3.14.51
+	provides = linux=3.14.53
 	provides = aufs3
 	conflicts = linux-pf-lts
 	replaces = aufs3
@@ -104,6 +108,6 @@ pkgname = linux-pf-lts
 pkgname = linux-pf-lts-headers
 	pkgdesc = Header files and scripts for building modules for linux-pf-lts kernel.
 	provides = linux-pf-lts-headers
-	provides = linux-headers=3.14.51
+	provides = linux-headers=3.14.53
 	conflicts = linux-pf-lts-headers
 
