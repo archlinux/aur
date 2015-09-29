@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 247063 2015-09-22 05:59:35Z tpowa $
+# $Id: PKGBUILD 247555 2015-09-28 06:37:29Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-macbook               # Build stock -ARCH kernel
-#pkgbase=linux-custom       # Build kernel with a different name
+#pkgbase=linux               # Build stock -ARCH kernel
+pkgbase=linux-macbook       # Build kernel with a different name
 _srcname=linux-4.2
 pkgver=4.2.1
 pkgrel=1
@@ -20,8 +20,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'bluetooth.patch'
-        'thunderbolt.patch'
         'change-default-console-loglevel.patch'
         '0001-make_flush_workqueue_non_gpl.patch'
         '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
@@ -34,8 +32,6 @@ sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2'
             'a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'dcbed1ae73c4e1383210bad6f1f446bdd13f8b1c24d89bcf0483acc5e178c379'
-            '4909b37856f4b2374e54e44d656971a1f1027900444ac494f4dd1bb113dc9c97'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '4e776734e2c2185910a6fbb6f333d967b04f4a72b3196310af286c6a779bd97d'
             '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
@@ -56,9 +52,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  patch -p1 -i "${srcdir}/bluetooth.patch"
-  patch -p1 -i "${srcdir}/thunderbolt.patch"
 
   # fix work_queue symbol to non GPL for nvidia module building
   # already applied to 4.3 series
@@ -121,7 +114,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules, with patches for 11,4 and 12,1 Macbook pros (2015)"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -180,7 +173,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel, with patches for 11,4 and 12,1 Macbook pros (2015)"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -297,7 +290,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel, with patches for 11,4 and 12,1 Macbook pros (2015)"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
   cd "${srcdir}/${_srcname}"
 
