@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-formatters
 	pkgdesc = ROS - The formatters here simply format various input types to a specified text format.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_formatters
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = ros-indigo-ecl-formatters
 	depends = ros-indigo-ecl-converters
 	depends = ros-indigo-ecl-exceptions
 	depends = ros-indigo-ecl-config
-	source = ecl_formatters::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_formatters/0.61.2-0
+	source = ecl_formatters::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_formatters/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-formatters

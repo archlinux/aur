@@ -4,7 +4,7 @@ pkgdesc="ROS - The formatters here simply format various input types to a specif
 url='http://wiki.ros.org/ecl_formatters'
 
 pkgname='ros-indigo-ecl-formatters'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
