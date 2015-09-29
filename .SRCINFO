@@ -7,10 +7,10 @@ pkgbase = rtl8192du-git
 	arch = x86_64
 	arch = i686
 	license = GPL
-	makedepends = linux-headers>=4.1
+	makedepends = linux-headers>=4.2
 	makedepends = git
-	depends = linux>=4.1
-	depends = linux<4.2
+	depends = linux>=4.2
+	depends = linux<4.3
 	source = git://github.com/lwfinger/rtl8192du.git
 	sha256sums = SKIP
 
