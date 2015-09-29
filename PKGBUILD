@@ -1,9 +1,9 @@
 # Maintainer: Dis McCarthy <aurarch@sigkill.net>
 # Contributor: Stephan Conrad <stephan.conrad@gmail.com
 pkgname=kimchi
-_gitname=kimchi-1.5.0
-pkgver=1.5.0
-pkgrel=6
+_gitname=kimchi-1.5.1
+pkgver=1.5.1
+pkgrel=1
 
 pkgdesc="HTML5 management for KVM"
 
@@ -41,6 +41,7 @@ depends=('python2-cherrypy'
   'sudo'
   'python2-functools32'
   'python2-configobj'
+  'python2-magic'
 )
 
 
@@ -51,7 +52,7 @@ backup=('etc/kimchi/kimchi.conf')
 
 #Git: "git+git://github.com/kimchi-project/kimchi.git#tag=${pkgver}"
 source=(
- "https://github.com/kimchi-project/kimchi/archive/1.5.0.tar.gz"
+ "https://github.com/kimchi-project/kimchi/archive/1.5.1.tar.gz"
  "python2.patch"
  "proxy.patch"
  "kimchid.service"
@@ -59,7 +60,7 @@ source=(
  "psutil.patch"
 )
 
-md5sums=('b71bbd4bec3d8207b40acb6a6c176ab4'
+md5sums=('a89ae8c7cb86518d7c1c5aefed3a6153'
          '1106f1f362e0b7f01409242486b2c495'
          'd8b6bfc1b210cc819dac46931aaecd7f'
          '356d68fd7735c826c36cbde651ebd675'
