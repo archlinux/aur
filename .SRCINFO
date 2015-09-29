@@ -1,7 +1,7 @@
 pkgbase = doomseeker-hg
 	pkgdesc = A cross-platform Doom server browser
-	pkgver = 1.1.r1509172124
-	pkgrel = 3
+	pkgver = 1.1.r1509271217
+	pkgrel = 1
 	url = http://doomseeker.drdteam.org/
 	arch = i686
 	arch = x86_64
