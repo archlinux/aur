@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-turtlebot-simulator
 	pkgdesc = ROS - Catkin metapackage for the turtlebot_simulator stack.
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = http://ros.org/wiki/turtlebot_simulator
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ros-indigo-turtlebot-simulator
 	depends = ros-indigo-turtlebot-stage
 	depends = ros-indigo-turtlebot-stdr
 	depends = ros-indigo-turtlebot-gazebo
-	source = turtlebot_simulator::git+https://github.com/turtlebot-release/turtlebot_simulator-release.git#tag=release/indigo/turtlebot_simulator/2.2.1-0
+	source = turtlebot_simulator::git+https://github.com/turtlebot-release/turtlebot_simulator-release.git#tag=release/indigo/turtlebot_simulator/2.2.2-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-turtlebot-simulator

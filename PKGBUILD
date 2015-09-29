@@ -4,7 +4,7 @@ pkgdesc="ROS - Catkin metapackage for the turtlebot_simulator stack."
 url='http://ros.org/wiki/turtlebot_simulator'
 
 pkgname='ros-indigo-turtlebot-simulator'
-pkgver='2.2.1'
+pkgver='2.2.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
