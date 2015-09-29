@@ -1,0 +1,14 @@
+pkgbase = encryptr-bin
+	pkgdesc = Zero knowledge cloud-based password manager
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://encryptr.org
+	arch = x86_64
+	arch = i686
+	license = GPL
+	source_x86_64 = https://github.com/devgeeks/Encryptr/releases/download/v1.2.0/encryptr_1.2.0_amd64.tar.gz
+	md5sums_x86_64 = 60e34294656a85a5193c9bc42afb0156
+	source_i686 = https://github.com/devgeeks/Encryptr/releases/download/v1.2.0/encryptr_1.2.0_i386.tar.gz
+
+pkgname = encryptr-bin
+
