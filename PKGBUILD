@@ -53,8 +53,8 @@ package() {
   install -dm 755 "${pkgdir}"/var/lib/plex
   chown 421:421 -R "${pkgdir}"/var/lib/plex
 
-  install -dm 755 "${pkgdir}"/usr/share/licenses/plex-media-server
-  install -m 644 terms.txt "${pkgdir}"/usr/share/licenses/plex-media-server/
+  install -dm 755 "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -m 644 terms.txt "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
 
 # vim: ts=2 sw=2 et:
