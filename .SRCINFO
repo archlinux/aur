@@ -1,0 +1,14 @@
+pkgbase = v7
+	pkgdesc = Simple and fast JavaScript engine written in C
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/cesanta/v7
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = v7-1.0.tar.gz::https://github.com/cesanta/v7/archive/1.0.tar.gz
+	sha1sums = 0adcf7c48e7ae99fb69087905ce0c828c9671730
+
+pkgname = v7
+
