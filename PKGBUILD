@@ -1,8 +1,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=0.7.1
-pkgrel=2
+pkgver=1.0.0_rc1
+_pkgver=${pkgver/_/-}
+pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64')
 url="http://mattermost.org"
@@ -14,10 +15,10 @@ optdepends=('mariadb: SQL server storage'
             'percona-server: SQL server storage'
             'postgresql: SQL server storage')
 install=mattermost.install
-source=(https://github.com/mattermost/platform/archive/v$pkgver/$pkgname-$pkgver.tar.gz
+source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgver.tar.gz
         mattermost.service
         mattermost-user.conf)
-sha256sums=('c4fb7885001f174173f636b4c18d540bab768a5c512f6cb8b004164decc97588'
+sha256sums=('8c98a5181a881b38daa975cddcf24c0a8da9738b91670740a56c9b622fdbcb5e'
             'b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd')
 
@@ -25,7 +26,7 @@ prepare() {
 	mkdir -p src/github.com/mattermost
 	cd src/github.com/mattermost
 	rm -f platform
-	ln -s "$srcdir"/platform-$pkgver platform
+	ln -s "$srcdir"/platform-$_pkgver platform
 
 	cd platform
 	sed -r 's|code.google.com/p/freetype-go/freetype|github.com/golang/freetype|g' -i \
@@ -89,7 +90,7 @@ package() {
 
 	sed -e 's@"StorageDirectory": ".*"@"StorageDirectory": "/var/lib/mattermost/"@g' \
 	    -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
-	    "$srcdir"/platform-$pkgver/config/config.json > "$pkgdir"/etc/webapps/mattermost/config.json
+	    "$srcdir"/platform-$_pkgver/config/config.json > "$pkgdir"/etc/webapps/mattermost/config.json
 
 	ln -s /etc/webapps/mattermost/config.json config/config.json
 
