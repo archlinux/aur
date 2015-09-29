@@ -1,15 +1,15 @@
 pkgbase = nodejs-tldr
 	pkgdesc = Simplified and community-driven man pages
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/rprieto/tldr
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = tldr-1.0.0.tgz
-	source = http://registry.npmjs.org/tldr/-/tldr-1.0.0.tgz
-	md5sums = d1aa41ecf73c40c4b9c9fa6024123e89
+	noextract = tldr-1.0.1.tgz
+	source = http://registry.npmjs.org/tldr/-/tldr-1.0.1.tgz
+	sha1sums = 54c9c762020d96aa62c2e55d629314f691c5b95d
 
 pkgname = nodejs-tldr
 
