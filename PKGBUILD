@@ -5,7 +5,7 @@ pkgdesc="Plugin to manage repository for build systems"
 arch=("any")
 url="http://fusiondirectory.org/"
 license=("LGPL")
-depends=("fusiondirectory>=$pkgver", "fusiondirectory-plugin-systems>=$pkgver")
+depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
 
 install=fusiondirectory-plugin-repository.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
