@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-map-server
 	pkgdesc = ROS - map_server provides the map_server ROS Node, which offers map data as a ROS Service.
-	pkgver = 1.11.11
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = http://wiki.ros.org/map_server
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = ros-indigo-map-server
 	depends = ros-indigo-roscpp
 	depends = sdl_image
 	depends = yaml-cpp
-	source = map_server::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/map_server/1.11.11-0
+	source = map_server::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/map_server/1.12.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-map-server
