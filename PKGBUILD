@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=3.18
+pkgver=4.2
 pkgrel=1
 pkgdesc="Netmap is a framework for high speed network packet I/O."
 arch=('any')
@@ -22,7 +22,7 @@ source=("netmap.install")
 noextract=()
 md5sums=("047aa5adec4c52ddbf86d12dbf300f71")
 
-_gitroot="https://v.maffione@code.google.com/p/netmap/"
+_gitroot="https://github.com/luigirizzo/netmap"
 _gitname="netmap"
 
 build() {
@@ -35,8 +35,6 @@ build() {
     else
         git clone "$_gitroot" "$_gitname"
         cd "$srcdir/$_gitname"
-        git branch next origin/next
-        git checkout next
     fi
     msg "GIT checkout done or server timeout"
 
