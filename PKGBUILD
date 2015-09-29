@@ -49,6 +49,7 @@ package() {
 
 	# Create multiple directories
 	install -d -m 0770 $pkgdir/var/spool/$pkgname/
+        install -d -m 0770 $pkgdir/var/cache/$pkgname/
 	install -d -m 0770 $pkgdir/var/cache/$pkgname/tmp/
 	install -d -m 0770 $pkgdir/var/cache/$pkgname/locale/
 	install -d -m 0770 $pkgdir/var/cache/$pkgname/include/
