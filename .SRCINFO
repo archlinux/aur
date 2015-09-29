@@ -1,0 +1,19 @@
+pkgbase = perl-moosex-types-common
+	pkgdesc = A library of commonly used type constraints
+	pkgver = 0.001013
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-Types-Common
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-warnings>=0.005
+	depends = perl-moosex-types
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-Common-0.001013.tar.gz
+	md5sums = 0e737459277df34e646b101cc43e684b
+	sha512sums = 89712f5bb5653ad434480d2621991637aa5d8f9b349e6514a24937668835ad6ca154b03e8f4c09516c69f604ea465068e9676d8af27bca24e7b31159d5964bb8
+
+pkgname = perl-moosex-types-common
+
