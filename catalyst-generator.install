@@ -19,6 +19,14 @@ post_install(){
     echo "fglrx modules - remove them manually with"
     echo " rm  OR"
     echo " pacman -R catalyst-{kernver} (recommended)"
+    echo -e "\e[1;31m--------------------- NO 4.2 KERNEL SUPPORT---------------------\e[0m"
+    echo "catalyst doesn't support linux kernels >= 4.2"
+    echo "please configure bootloader to use proper kernel"
+    echo "like linux-lts in example"
+    echo ""
+    echo "sleeping now for 5 seconds as this is important..."
+    echo -e "\e[1;31m----------------------------------------------------------------\e[0m"
+    sleep 5
 }
 
 post_upgrade(){

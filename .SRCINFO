@@ -1,7 +1,7 @@
 pkgbase = catalyst-generator
 	pkgdesc = AMD/ATI drivers. Generator of catalyst-{kernver} packages with fglrx module inside.
-	pkgver = 15.5
-	pkgrel = 1
+	pkgver = 15.9
+	pkgrel = 3
 	url = http://www.amd.com
 	install = catalyst-generator.install
 	arch = i686
@@ -12,9 +12,10 @@ pkgbase = catalyst-generator
 	depends = gcc>4.0.0
 	depends = make
 	depends = patch
-	optdepends = linux-headers: to build the fglrx module for the linux kernel
-	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
-	provides = catalyst=15.5
+	depends = linux-lts>=3.0
+	depends = linux-lts<4.2
+	depends = linux-lts-headers
+	provides = catalyst=15.9
 	conflicts = catalyst-test
 	conflicts = catalyst-hook
 	conflicts = catalyst
@@ -24,7 +25,7 @@ pkgbase = catalyst-generator
 	options = libtool
 	options = !strip
 	options = !upx
-	source = http://www2.ati.com/drivers/linux/amd-catalyst-omega-15.5-linux-run-installers.zip
+	source = http://www2.ati.com/drivers/linux/amd-catalyst-15.9-linux-installer-15.201.1151-x86.x86_64.zip
 	source = catalyst_build_module
 	source = catalyst-PKGBUILD
 	source = catalyst.install
@@ -38,10 +39,12 @@ pkgbase = catalyst-generator
 	source = cold-fglrx-3.14-current_euid.patch
 	source = fglrx_gpl_symbol.patch
 	source = fglrx_3.17rc6-no_hotplug.patch
-	source = kolasa-3.19-get_cpu_var.patch
-	source = kolasa_4.0-cr4-strn.patch
-	source = kolasa_4.1_remove-IRQF_DISABLED.patch
-	md5sums = 979f9f2e0948fa6e92ff0125f5c6b575
+	source = ubuntu_buildfix_kernel_4.0.patch
+	source = ubuntu_buildfix_kernel_4.1.patch
+	source = ubuntu_buildfix_kernel_4.2.patch
+	source = 4.2-fglrx-has_fpu.patch
+	source = 4.2-kolasa-fpu_save_init.patch
+	md5sums = d2de2df6946b452c266a3c892e6e46ff
 	md5sums = 543e818f543f2897beca49101226e460
 	md5sums = a555dc9a3eb062d7ca4efbf7e0713a3a
 	md5sums = d16871c840b749dcf6d6f5ab85940f6a
@@ -55,9 +58,11 @@ pkgbase = catalyst-generator
 	md5sums = ba33b6ef10896d3e1b5e4cd96390b771
 	md5sums = ef97fc080ce7e5a275fe0c372bc2a418
 	md5sums = 67a22f624bae95a76638ce269392cb01
-	md5sums = 3aa45013515b724a71bbd8e01f98ad99
-	md5sums = dee3df1c5d3ed87363f4304da917fc00
-	md5sums = 81a9e38dee025151cccb7e5db2362cfb
+	md5sums = 880d5e59554cda382f74206c202942be
+	md5sums = 982451bcc1fa1ee3da53ffa481d65581
+	md5sums = 88832af8d6769aa51fa9b266a74394e0
+	md5sums = ed7748a593d6b894269f8c7856b7ae50
+	md5sums = dd51495a1d8f2d1042f04a783bf01e08
 
 pkgname = catalyst-generator
 
