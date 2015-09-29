@@ -8,6 +8,7 @@ User=etherpad
 Group=etherpad
 WorkingDirectory=/var/lib/etherpad-lite
 ExecStart=/usr/share/webapps/etherpad-lite/bin/run.sh
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

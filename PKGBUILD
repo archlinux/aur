@@ -1,15 +1,12 @@
-# Contributions by: Timothée Ravier <tim@siosm.fr>, Jonas Heinrich <onny@project-insanity.org>
-# Maintainer: Ruben Kelevra <ruben@freifunk-nrw.de>
-
 pkgname=etherpad-lite-systemd
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.7
+pkgrel=1
 pkgdesc="etherpad-lite with systemd socket-activation"
 arch=(any)
 url="http://etherpad.org"
 _watch=('http://etherpad.org','Documentation <small>v([\d.]*)</small>')
 license=('GPL2')
-depends=('curl' 'python2' 'openssl' 'nodejs<0.13.0' 'git' 'npm')
+depends=('curl' 'python2' 'openssl' 'nodejs' 'git' 'npm')
 optdepends=('sqlite: to use sqlite as databse'
             'mariadb: to use mariadb as database'
             'postgresql: to use postgresql as database')
@@ -22,6 +19,10 @@ source=("etherpad-lite-${pkgver}.tar.gz::https://github.com/ether/etherpad-lite/
         "etherpad-lite.socket"
         "socket-activation.patch"
         )
+sha512sums=('688205194347f0e4e6f78deb0b189ceaa4f2255efcbaa503d0b6459de8505dd475aa9151399dd818b6cac232bc0b71e5a0fbd6d43f56cb5ce1f9eafcccb3925b'
+            '7b775171da97a3e7ad44a2b1b319970fd307a88e90a171c49bf70d2382767175e98bb21c7054e38ee6c066bd2dfadf94d28a9ff31d4f21145ec4441caa13c4d7'
+            'e80935acc6f7739b2797fc922a503a2f7b5edda010adcd4be5714a21716545b4472229b6901f0af41cf12552ca71c7bba151667f2501ef9b2f7770cdf7f3d723'
+            '542067a2f287d30d6662205de95aba0fe85f0c04d055ee672c17255d4f99abd2e533a57ecd1920a7a3bdde9fceda76050eceaafadd8d64579a1d48fcd2271430')
 
 prepare() {
   cd "$srcdir/etherpad-lite-${pkgver}"
@@ -36,37 +37,25 @@ build() {
 }
 
 package() {
-  cd "$srcdir/etherpad-lite-${pkgver}"
-  echo 'cleaning up unneeded files...'
-  rm bin/installOnWindows.bat start.bat bin/buildDebian.sh bin/buildForWindows.sh  
-  rm -r var bin/deb-src doc 
-  echo 'move files...'
-  install -dm 755 "${pkgdir}"/usr/share/webapps/etherpad-lite
-  cp -a . "${pkgdir}"/usr/share/webapps/etherpad-lite
-  mkdir -p "${pkgdir}"/etc/webapps/etherpad-lite
-  mv "${pkgdir}"/usr/share/webapps/etherpad-lite/settings.json "${pkgdir}"/etc/webapps/etherpad-lite/settings.json
-  ln -s /etc/webapps/etherpad-lite/settings.json "${pkgdir}"/usr/share/webapps/etherpad-lite/settings.json
-  install -Dm644 "${srcdir}"/etherpad-lite.service "${pkgdir}"/usr/lib/systemd/system/etherpad-lite.service
-  install -Dm644 "${srcdir}"/etherpad-lite.socket "${pkgdir}"/usr/lib/systemd/system/etherpad-lite.socket
-  install -Dm644 "${srcdir}"/etherpad-lite.service "${pkgdir}"/usr/lib/systemd/system/etherpad-lite.service
-  install -D LICENSE 	"${pkgdir}"/usr/share/licenses/etherpad-lite/LICENSE
-  echo "setting rights..."
-  #touch "${pkgdir}"/usr/share/webapps/etherpad-lite/APIKEY.txt
-  find "${pkgdir}"/usr/share/webapps/etherpad-lite \
-      \( -type f -exec chmod ug+rw,o+r {} \; \) , \
-      \( -type d -exec chmod ug+rwxs,o+rx {} \; \)
-  chmod u+x "${pkgdir}"/usr/share/webapps/etherpad-lite/bin/run.sh
-  chmod u+x "${pkgdir}"/usr/share/webapps/etherpad-lite/bin/installDeps.sh
+    cd "etherpad-lite-${pkgver}"
+    echo 'cleaning up unneeded files...'
+    rm bin/installOnWindows.bat start.bat bin/buildDebian.sh bin/buildForWindows.sh
+    rm -r var bin/deb-src doc tests
+    echo 'move files...'
+    install -dm 755 "${pkgdir}"/usr/share/webapps/etherpad-lite
+    cp -a . "${pkgdir}"/usr/share/webapps/etherpad-lite
+    mkdir -p "${pkgdir}"/etc/webapps/etherpad-lite/
+    mv "${pkgdir}"/usr/share/webapps/etherpad-lite/settings.json "${pkgdir}"/etc/webapps/etherpad-lite/settings.json
+    ln -s /etc/webapps/etherpad-lite/settings.json "${pkgdir}"/usr/share/webapps/etherpad-lite/settings.json
+    install -Dm644 "${srcdir}"/etherpad-lite.service "${pkgdir}"/usr/lib/systemd/system/etherpad-lite.service
+    install -Dm644 "${srcdir}"/etherpad-lite.socket "${pkgdir}"/usr/lib/systemd/system/etherpad-lite.socket
+    install -Dm644 "${srcdir}"/etherpad-lite.service "${pkgdir}"/usr/lib/systemd/system/etherpad-lite.service
+    install -D LICENSE  "${pkgdir}"/usr/share/licenses/etherpad-lite/LICENSE
+    echo "setting rights..."
+    #touch "${pkgdir}"/usr/share/webapps/etherpad-lite/APIKEY.txt
+    find "${pkgdir}"/usr/share/webapps/etherpad-lite \
+        \( -type f -exec chmod ug+rw,o+r {} \; \) , \
+        \( -type d -exec chmod ug+rwxs,o+rx {} \; \)
+    chmod u+x "${pkgdir}"/usr/share/webapps/etherpad-lite/bin/run.sh
+    chmod u+x "${pkgdir}"/usr/share/webapps/etherpad-lite/bin/installDeps.sh
 }
-md5sums=('d218b5b2d6c1e9390e314df78a507165'
-         '6204c73a5d04019e09ef86e1d0a1a61a'
-         '987fe3ab72dc495c7e8101658ff673ea'
-         '50476ce9e5c1b9bd53063bb875972be7')
-sha1sums=('8e2e55f6e4c4237028e0a6e9f2b66b88455f415e'
-          'a6fdde2ccbe4044e7679d3d0d45f7c54e1d703d6'
-          '8768c601d7920427c6906a5ac3eca8f725981a2c'
-          '24f76b29a17ac9eba704913d136a54968d1152c0')
-sha256sums=('6bdfc3c22a36fd98e72e68e0be4a889d1611b7b1d10e7ebe6dffd1c09bf54bc2'
-            '0eafab2c0385ac8b5b70c5a6e7db502304a0c9accc13a5155cb02f84fb241b0d'
-            '0b6f0f45e4892649e442f6082150c3181352a356926be959a72c9e9dca7973b1'
-            'e1f7cda94688788f2c8a988312ba712f8467c66e702eef275faf03eda4410f36')

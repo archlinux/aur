@@ -17,12 +17,12 @@
 +  server.autoQuit({ timeout: 300 });
 +  server.listen("systemd");
  }
---- src/package.json	2015-02-12 14:36:32.768439764 +0000
-+++ src/package.json	2015-02-12 14:39:52.845623440 +0000
+--- src/package.json	2015-09-28 22:50:34.110518342 +0000
++++ src/package.json	2015-09-28 22:55:46.771103708 +0000
 @@ -43,7 +43,9 @@
                        "jsonminify"              : "0.2.3",
-                       "measured"                : "0.1.6",
-                       "mocha"                   : "2.1.0",
+                       "measured"                : "1.0.0",
+                       "mocha"                   : "2.2.4",
 -                      "supertest"               : "0.15.0"
 +                      "supertest"               : "0.15.0",
 +                      "systemd"                 : "0.2.6",

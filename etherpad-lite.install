@@ -3,14 +3,60 @@ post_install(){
   getent passwd etherpad &>/dev/null || \
     useradd -r -s /usr/bin/bash -g etherpad -G etherpad,http -m \
     -d /var/lib/etherpad-lite etherpad >/dev/null
-    #useradd -r -s /usr/bin/false -g etherpad -G etherpad,http -m \
 
-  ln -s /var/lib/etherpad-lite /usr/share/webapps/etherpad-lite/var
-  touch etherpad /usr/share/webapps/etherpad-lite/APIKEY.txt
-  chmod 644 /usr/share/webapps/etherpad-lite/APIKEY.txt
-  chown etherpad:etherpad /usr/share/webapps/etherpad-lite/APIKEY.txt
+  if [ -h "/usr/share/webapps/etherpad-lite/var/etherpad-lite" ]; then #remove old invalid stuff
+    rm /usr/share/webapps/etherpad-lite/var/etherpad-lite
+  fi
+  if [ -d "/usr/share/webapps/etherpad-lite/var" ]; then
+    if [ ! -h "/usr/share/webapps/etherpad-lite/var" ]; then
+      mkdir -p /var/lib/etherpad-lite #to be sure this exists.
+      mv /usr/share/webapps/etherpad-lite/var/* /var/lib/etherpad-lite/
+      rmdir /usr/share/webapps/etherpad-lite/var
+      if [ $? -ne 0 ]; then
+        exit 1
+      fi
+    fi
+  fi
 
-  systemd-tmpfiles --create etherpad-lite.conf
+  ln -ds /var/lib/etherpad-lite /usr/share/webapps/etherpad-lite/var
+  if [ -f "/etherpad" ]; then #removing old invalid file
+    rm /etherpad
+  fi
+
+  find /usr/share/webapps/etherpad-lite \
+        \( -type f -exec chmod 655 {} \; \) , \
+        \( -type d -exec chmod 755 {} \; \)
+  find /var/lib/etherpad-lite \
+        \( -type f -exec chmod 655 {} \; \) , \
+        \( -type d -exec chmod 755 {} \; \)
+
+  chown -R etherpad:etherpad /usr/share/webapps/etherpad-lite
+  chown -R etherpad:etherpad /var/lib/etherpad-lite
+
+  chmod u+x /usr/share/webapps/etherpad-lite/bin/run.sh
+  chmod u+x /usr/share/webapps/etherpad-lite/bin/installDeps.sh
+
+  #FIXME do we need this really?
+  #systemd-tmpfiles --create etherpad-lite.conf
+
+  if [ -f "/usr/share/webapps/etherpad-lite/settings.json" ]; then
+    if [ ! -h "/usr/share/webapps/etherpad-lite/settings.json" ]; then
+      mkdir -p /etc/webapps/etherpad-lite/
+      mv /usr/share/webapps/etherpad-lite/settings.json /etc/webapps/etherpad-lite/settings.json
+      ln -s /etc/webapps/etherpad-lite/settings.json /usr/share/webapps/etherpad-lite/settings.json
+    fi
+  fi
+  #fix npm bug, using wrong python instance
+  npm config set python /usr/bin/python2 -g
+}
+
+post_upgrade(){
+  post_install
+}
+
+pre_remove() {
+  systemctl stop etherpad-lite || true
+  pkill -u etherpad || true
 }
 
 post_remove() {
