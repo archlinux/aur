@@ -4,7 +4,7 @@ pkgdesc="ROS - Timing utilities are very dependent on the system api provided fo
 url='http://wiki.ros.org/ecl_time'
 
 pkgname='ros-indigo-ecl-time'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
