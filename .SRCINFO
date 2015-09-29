@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-devices
 	pkgdesc = ROS - Provides an extensible and standardised framework for input-output devices.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_devices
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = ros-indigo-ecl-devices
 	depends = ros-indigo-ecl-mpl
 	depends = ros-indigo-ecl-config
 	depends = ros-indigo-ecl-type-traits
-	source = ecl_devices::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_devices/0.61.2-0
+	source = ecl_devices::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_devices/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-devices

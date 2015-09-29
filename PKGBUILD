@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides an extensible and standardised framework for input-outpu
 url='http://wiki.ros.org/ecl_devices'
 
 pkgname='ros-indigo-ecl-devices'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
