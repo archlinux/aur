@@ -3,14 +3,14 @@
 _target=msp430-elf
 pkgname=${_target}-newlib
 pkgver=2.2.0.20150824
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for bare metal systems ${_target} target."
 arch=(any)
 url="https://sourceware.org/newlib/"
 license=('GPL')
 groups=(devel)
 depends=("${_target}-gcc-stage1" "${_target}-binutils")
-options=('!strip' 'staticlibs')
+options=('!makeflags' '!strip' 'staticlibs')
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
 sha256sums=('05c4a82974f30487ded7965465acdd3f726ea487e1398f118e52c516b4aad093')
 
@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd "${srcdir}/newlib-${pkgver}/newlib-build"
 
-  export CFLAGS_FOR_TARGET="-Os -ffunction-sections -fdata-sections"
+  export CFLAGS_FOR_TARGET="-Os -g -ffunction-sections -fdata-sections"
   ../configure \
     --prefix=/usr \
     --target=${_target} \
