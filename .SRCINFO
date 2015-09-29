@@ -1,0 +1,17 @@
+pkgbase = python-gup-git
+	pkgdesc = A general purpose, recursive, top down software build system
+	pkgver = version.0.5.1.r3.g54fca4f
+	pkgrel = 1
+	url = https://github.com/gfxmonk/gup
+	arch = any
+	license = LGPL2
+	makedepends = pychecker
+	makedepends = git
+	depends = python
+	provides = python-gup
+	conflicts = python-gup
+	source = git+https://github.com/gfxmonk/gup.git
+	md5sums = SKIP
+
+pkgname = python-gup-git
+
