@@ -2,12 +2,13 @@
 
 pkgname=tcpping
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='test response times using TCP SYN packets'
 arch=('any')
 url='http://www.vdberg.org/~richard/tcpping.html'
 depends=('bc' 'tcptraceroute')
 source=('http://www.vdberg.org/~richard/tcpping')
+noextract=('tcpping')
 
 sha256sums=(
 'SKIP'

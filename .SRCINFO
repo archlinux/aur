@@ -1,11 +1,12 @@
 pkgbase = tcpping
 	pkgdesc = test response times using TCP SYN packets
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vdberg.org/~richard/tcpping.html
 	arch = any
 	depends = bc
 	depends = tcptraceroute
+	noextract = tcpping
 	source = http://www.vdberg.org/~richard/tcpping
 	sha256sums = SKIP
 
