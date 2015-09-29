@@ -1,7 +1,7 @@
 pkgbase = steam-libs
 	pkgdesc = Collection of libraries to launch Steam without its runtime environment
 	pkgver = 1.0.0.50
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.archlinux.org/index.php/Steam#Using_native_runtime
 	arch = x86_64
 	license = None
@@ -23,6 +23,8 @@ pkgbase = steam-libs
 	optdepends = lib32-curl: Upload minidumps
 	optdepends = lib32-libappindicator-gtk2: Tray icon
 	optdepends = lib32-libappindicator-gtk3: Tray icon
+	optdepends = lib32-libcurl-gnutls: Game dependency
+	optdepends = libcurl-gnutls: Game dependency
 
 pkgname = steam-libs
 

@@ -2,7 +2,7 @@
 
 pkgname=steam-libs
 pkgver=1.0.0.50
-pkgrel=5
+pkgrel=6
 pkgdesc='Collection of libraries to launch Steam without its runtime environment'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam#Using_native_runtime'
@@ -14,6 +14,8 @@ depends=('lib32-dbus-glib' 'lib32-gconf' 'lib32-glew1.10' 'lib32-gtk2'
          'lib32-openal')
 optdepends=('lib32-curl: Upload minidumps'
             'lib32-libappindicator-gtk2: Tray icon'
-            'lib32-libappindicator-gtk3: Tray icon')
+            'lib32-libappindicator-gtk3: Tray icon'
+            'lib32-libcurl-gnutls: Game dependency'
+            'libcurl-gnutls: Game dependency')
 
 # vim: ts=2 sw=2 et:
