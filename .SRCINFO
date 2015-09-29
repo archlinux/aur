@@ -1,4 +1,5 @@
 pkgbase = linux-macbook
+	pkgdesc = Kernel with patches for the 11,5 and 12,1 macbooks (2015)
 	pkgver = 4.2.1
 	pkgrel = 1
 	url = http://www.kernel.org/

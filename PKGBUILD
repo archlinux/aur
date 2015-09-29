@@ -7,6 +7,7 @@ pkgbase=linux-macbook               # Build stock -ARCH kernel
 _srcname=linux-4.2
 pkgver=4.2.1
 pkgrel=1
+pkgdesc="Kernel with patches for the 11,5 and 12,1 macbooks (2015)"
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
