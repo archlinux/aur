@@ -1,9 +1,10 @@
 pkgbase = linux-libre-rt
-	pkgver = 4.1.5_gnu.rt5
+	pkgver = 4.1.7_gnu.rt8
 	pkgrel = 1
 	url = https://rt.wiki.kernel.org/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL2
 	makedepends = xmlto
 	makedepends = docbook-xsl
@@ -13,10 +14,10 @@ pkgbase = linux-libre-rt
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.5-gnu/patch-4.1-gnu-4.1.5-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.5-gnu/patch-4.1-gnu-4.1.5-gnu.xz.sign
-	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/older/patch-4.1.5-rt5.patch.xz
-	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/older/patch-4.1.5-rt5.patch.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.7-gnu/patch-4.1-gnu-4.1.7-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.7-gnu/patch-4.1-gnu-4.1.7-gnu.xz.sign
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.7-rt8.patch.xz
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.7-rt8.patch.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -25,14 +26,25 @@ pkgbase = linux-libre-rt
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
 	source = config.i686
 	source = config.x86_64
+	source = config.armv7h
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.7/rcn-libre-4.1.7-armv7-x5.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.7/rcn-libre-4.1.7-armv7-x5.patch.sig
+	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
+	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
+	source = 0003-SMILE-Plug-device-tree-file.patch
+	source = 0004-fix-mvsdio-eMMC-timing.patch
+	source = 0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+	source = 0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch
+	source = 0007-set-default-cubietruck-led-triggers.patch
+	source = 0008-USB-armory-support.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = 2f8b5d3176112f3b1679a77acbdd303e9e45bffde76a1972f7e90d457614afb3
+	sha256sums = 4ae674b88d75f2cc95c352de476ebd4c1d8726f2e0e91536d26db1bdc54b523d
 	sha256sums = SKIP
-	sha256sums = 0cfa47bedd98fb7c542d422c79c52390be622d3e524fed54c976049d0050fec8
+	sha256sums = 16b52fdee967160d80ba56b3edee7ca321f9068b7281203f69b47a027f32ae4d
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -42,9 +54,20 @@ pkgbase = linux-libre-rt
 	sha256sums = SKIP
 	sha256sums = 634f531ddc13b19fd1bdf179631e278b3ab00440777f74a625ef3a59852c4d85
 	sha256sums = be040e3358f424ab56baaad6d13caeb3e5fdcbb87cb8b6eb09913364b5c019ca
+	sha256sums = 650ca309d2fcea64f64aab0e32ebc5b6b073c7359d8624f6a340aec78350dadd
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d
+	sha256sums = 00296b1b7bca80dd088a31228c57a2fba39e15509cf3ac942fa9cdd53620eca5
+	sha256sums = SKIP
+	sha256sums = 203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7
+	sha256sums = 28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c
+	sha256sums = 39bfd7f6e2df0b87b52488462edb2fbcfaf9e3eb2a974fc7b3bc22147352fece
+	sha256sums = 59444ed7dce62697f1c35be340b740899e1d71398b334c419ad07cea838c6ed6
+	sha256sums = 90cff98e43322e79c8d8b1c6456a328650f6af3ebf018086a82ab690a688da5d
+	sha256sums = ed6cf79434d3b1c10e0e141ab6bdc2aa9abfe7e7df6bbb24b2097c0e0d62ac17
+	sha256sums = 2c3df3d9a3d8fe11fefc485167a81c6fc53635b04ba0312bef144505dc0a6ce4
+	sha256sums = 0f6b0146096ee7a04938d39a013c23cfd8719f3bef0956b5c88a33e7d7ecafdc
 
 pkgname = linux-libre-rt
 	pkgdesc = The Linux-libre-rt kernel and modules with realtime preemption
@@ -54,29 +77,20 @@ pkgname = linux-libre-rt
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-rt=4.1.5_rt5
-	conflicts = kernel26-rt
-	conflicts = kernel26-libre-rt
+	provides = linux-rt=4.1.7_rt8
+	conflicts = 
 	replaces = linux-rt
-	replaces = kernel26-rt
-	replaces = kernel26-libre-rt
 	backup = etc/mkinitcpio.d/linux-libre-rt.preset
 
 pkgname = linux-libre-rt-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-rt kernel
-	provides = linux-rt-headers=4.1.5_rt5
-	conflicts = kernel26-rt-headers
-	conflicts = kernel26-libre-rt-headers
+	provides = linux-rt-headers=4.1.7_rt8
+	conflicts = 
 	replaces = linux-rt-headers
-	replaces = kernel26-rt-headers
-	replaces = kernel26-libre-rt-headers
 
 pkgname = linux-libre-rt-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-rt kernel
-	provides = linux-rt-docs=4.1.5_rt5
-	conflicts = kernel26-rt-docs
-	conflicts = kernel26-libre-rt-docs
+	provides = linux-rt-docs=4.1.7_rt8
+	conflicts = 
 	replaces = linux-rt-docs
-	replaces = kernel26-rt-docs
-	replaces = kernel26-libre-rt-docs
 
