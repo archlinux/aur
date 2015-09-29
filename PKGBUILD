@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-boolean'
-pkgver='0.43'
+pkgver='0.45'
 pkgrel='1'
 pkgdesc="Boolean support for Perl"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.mcpan.org/dist/boolean'
-source=('http://search.mcpan.org/CPAN/authors/id/I/IN/INGY/boolean-0.43.tar.gz')
-md5sums=('6e9d6f64c04d31b1226707732bd59fec')
-sha512sums=('cc34a182c5ac4f5c1814d5d812d9f0a96e57503e711761ef6e8ad24362836a6faff65be9643d7ed373b68305c0b4c7d005526fd7860223c22ecdcecea1c22cc8')
-_distdir="boolean-0.43"
+url='https://metacpan.org/release/boolean'
+source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/boolean-0.45.tar.gz')
+md5sums=('9a7da4cca2c02fb8b575cf0b7bb26046')
+sha512sums=('1acc26a5015f067e701fa52cbc80fb1fe84f2b4246690a96fc1efb608fb9c40cf0998f9932a485e659e3ea03a7c05d82d779fb029ed70a0a468f7bf3573f260e')
+_distdir="boolean-0.45"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
