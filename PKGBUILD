@@ -16,10 +16,12 @@ install="${pkgname}.install"
 provides=('dvb-usb-rtl2832u')
 source=('dvb-usb-rtl2832u.patch::https://github.com/Xtrend-Official/meta-xtrend/raw/master/recipes-bsp/linux/linux-etxx00/dvb-usb-rtl2832.patch'
         'Makefile'
-        'dvb-usb-rtl28xxu.conf')
+        'dvb-usb-rtl28xxu.conf'
+        'linux42.patch')
 md5sums=('263f5060ff7ef969ecaad1494700230a'
          'b91ef30d49fc0e7d8e76b39c98cf3ff6'
-         '063be4e255e010899574fc3cdec67120')
+         '063be4e255e010899574fc3cdec67120'
+         'bc75fc1f5a9030d6545c66642612ef3d')
 PKGEXT='.pkg.tar'
 
 _extramodules="extramodules-$(uname -r | cut -f-2 -d.)-$(uname -r | cut -f3- -d-)"
@@ -27,18 +29,19 @@ _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
   cd "$srcdir"
-  
+
   [[ -e build_dir ]] && rm -r build_dir
   mkdir  build_dir
   cd build_dir
 
   # Get the sources from OpenPLi kernel patch
   patch -p5 < "$srcdir/dvb-usb-rtl2832u.patch" &> /dev/null && return 1
-  
+
   # Copy Makefile
   cp "$srcdir/Makefile" .
-    
+
   ## Patches go here ##
+  patch -p1 < "$srcdir/linux42.patch"
 
   # Build module
   export KBUILD_SRC="/usr/lib/modules/${_kernver}/build"
@@ -50,4 +53,4 @@ package() {
   install -D -m644 "${srcdir}/dvb-usb-rtl28xxu.conf" "${pkgdir}/etc/modprobe.d/dvb-usb-rtl28xxu.conf"
   install -D -m644 "${srcdir}/build_dir/dvb-usb-rtl2832u.ko" "${pkgdir}/usr/lib/modules/${_extramodules}/dvb-usb-rtl2832u.ko"
   sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "${startdir}/${install}"
-} 
+}

@@ -1,0 +1,199 @@
+diff -urZ a/rtl2832u_fe.c b/rtl2832u_fe.c
+--- a/rtl2832u_fe.c	2015-09-29 14:47:15.833563000 +0100
++++ b/rtl2832u_fe.c	2015-09-29 15:22:18.565323000 +0100
+@@ -2770,10 +2770,16 @@
+ }
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+ static int 
+ rtl2832_read_status(
+ 	struct dvb_frontend*	fe,
+ 	fe_status_t*	status)
++#else
++static int
++rtl2832_read_status(
++	struct dvb_frontend*	fe)
++#endif
+ {
+ 	struct rtl2832_state*	p_state = fe->demodulator_priv;
+ 	int	is_lock;			
+@@ -2787,7 +2793,9 @@
+ 		return -1;
+ 	}
+ 
++    #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+ 	*status = 0;	//3initialize "status"
++	#endif
+ 	
+ 	if( mutex_lock_interruptible(&p_state->i2c_repeater_mutex) )	goto mutex_error;
+ 
+@@ -2800,7 +2808,9 @@
+ 	
+ 		if( p_state->pNim->IsSignalLocked(p_state->pNim, &is_lock) ) goto error;
+ 	
+-		if( is_lock==YES ) *status|= (FE_HAS_CARRIER| FE_HAS_VITERBI| FE_HAS_LOCK| FE_HAS_SYNC| FE_HAS_SIGNAL);
++		#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
++        if( is_lock==YES ) *status|= (FE_HAS_CARRIER| FE_HAS_VITERBI| FE_HAS_LOCK| FE_HAS_SYNC| FE_HAS_SIGNAL);
++        #endif
+ 
+ 		 snr = snr_num/snr_dem;
+ 
+@@ -2827,7 +2837,9 @@
+               //if(p_state->pNim2836->pDemod->IsSignalLocked(p_state->pNim2836->pDemod, &is_lock))
+ 		//	  	goto error;
+               
+-		if( is_lock==YES ) *status|= (FE_HAS_CARRIER| FE_HAS_VITERBI| FE_HAS_LOCK| FE_HAS_SYNC| FE_HAS_SIGNAL);
++		#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
++        if( is_lock==YES ) *status|= (FE_HAS_CARRIER| FE_HAS_VITERBI| FE_HAS_LOCK| FE_HAS_SYNC| FE_HAS_SIGNAL);
++        #endif
+               
+ 		deb_info("%s :******RTL2836 Signal Lock=%d******\n", __FUNCTION__, is_lock);	
+ 	}
+@@ -2842,7 +2854,9 @@
+ 
+ 		if(p_state->pNim2840->IsSignalLocked(p_state->pNim2840, &is_lock) != FUNCTION_SUCCESS) goto error;
+ 
+-		if( is_lock==YES ) *status|= (FE_HAS_CARRIER| FE_HAS_VITERBI| FE_HAS_LOCK| FE_HAS_SYNC| FE_HAS_SIGNAL);
++		#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
++        if( is_lock==YES ) *status|= (FE_HAS_CARRIER| FE_HAS_VITERBI| FE_HAS_LOCK| FE_HAS_SYNC| FE_HAS_SIGNAL);
++        #endif
+ 
+ 		deb_info("%s :******RTL2840 Signal Lock=%d******\n", __FUNCTION__, is_lock);	
+ 		
+@@ -3338,12 +3352,20 @@
+ }
+ 
+ #ifdef V4L2_ONLY_DVB_V5
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+ static int
+ rtl2832_tune(struct dvb_frontend *fe,
+ 			   bool re_tune,
+ 			   unsigned int mode_flags, 
+ 			   unsigned int *delay, 
+ 			   fe_status_t *status)
++#else
++static int
++rtl2832_tune(struct dvb_frontend *fe,
++			   bool re_tune,
++			   unsigned int mode_flags,
++			   unsigned int *delay)
++#endif
+ {
+ 	//struct dvb_frontend_private *fepriv = fe->frontend_priv;
+ 	//  fe_status_t s = 0;
+@@ -3352,7 +3374,9 @@
+ 
+ 	if(p_state->rtl2832_audio_video_mode != RTK_AUDIO)
+ 	{
++        #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+ 		*status = 256;
++        #endif
+ 		deb_info("%s: can't set parameter now\n",__FUNCTION__);
+ 		return 0;
+ 	}
+@@ -3360,7 +3384,9 @@
+ 	if (re_tune)
+ 		retval = rtl2832_set_parameters_fm(fe);
+ 	if(retval < 0)
++        #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+ 		*status = 256;//FESTATE_ERROR;
++        #endif
+ 	//else
+ 	//	status = 16;//FESTATE_TUNED;
+ 
+@@ -3370,12 +3396,20 @@
+ 	return 0;
+ }
+ #else
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+ static int
+ rtl2832_tune(struct dvb_frontend *fe, 
+ 			   struct dvb_frontend_parameters *params,
+ 			   unsigned int mode_flags, 
+ 			   unsigned int *delay, 
+ 			   fe_status_t *status)
++#else
++static int
++rtl2832_tune(struct dvb_frontend *fe,
++			   struct dvb_frontend_parameters *params,
++			   unsigned int mode_flags,
++			   unsigned int *delay)
++#endif
+ {
+ 
+ 	//struct dvb_frontend_private *fepriv = fe->frontend_priv;
+@@ -3390,14 +3424,18 @@
+ 
+ 	if(p_state->rtl2832_audio_video_mode != RTK_AUDIO)
+ 	{
+-		*status = 256;
++		#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
++        *status = 256;
++        #endif
+ 		deb_info("%s: can't set parameter now\n",__FUNCTION__);
+ 		return 0;
+ 	}
+ 
+       retval = rtl2832_set_parameters_fm(fe, params);
+ 	if(retval < 0)
++        #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+ 		*status = 256;//FESTATE_ERROR;
++        #endif
+ 	//else
+ 	//	status = 16;//FESTATE_TUNED;
+ 
+@@ -3569,7 +3607,9 @@
+     .get_frontend =			rtl2832_get_parameters,
+     .get_tune_settings =		rtl2832_get_tune_settings,
+ 
++    #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+     .read_status =			rtl2832_read_status,
++    #endif
+     .read_ber =				rtl2832_read_ber,
+     .read_signal_strength =		rtl2832_read_signal_strength,
+     .read_snr =				rtl2832_read_snr,
+@@ -3610,7 +3650,9 @@
+     .get_frontend =			rtl2832_get_parameters,
+     .get_tune_settings =		rtl2832_get_tune_settings,
+ 
++    #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+     .read_status =			rtl2832_read_status,
++    #endif
+     .read_ber =			rtl2832_read_ber,
+     .read_signal_strength =	rtl2832_read_signal_strength,
+     .read_snr =			rtl2832_read_snr,
+@@ -3618,7 +3660,9 @@
+     .ts_bus_ctrl   =			rtl2832_ts_bus_ctrl, 
+ 
+     .get_frontend_algo =        rtl2832_get_algo,
++    #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+     .tune =                            rtl2832_tune,
++    #endif
+ };
+ 
+ static struct dvb_frontend_ops rtl2836_dtmb_ops = {
+@@ -3651,7 +3695,9 @@
+     .get_frontend =			rtl2832_get_parameters,
+     .get_tune_settings =		rtl2832_get_tune_settings,
+ 
++    #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+     .read_status =			rtl2832_read_status,
++    #endif
+     .read_ber =				rtl2832_read_ber,
+     .read_signal_strength =		rtl2832_read_signal_strength,
+     .read_snr =				rtl2832_read_snr,
+diff -urZ a/rtl2832u.h b/rtl2832u.h
+--- a/rtl2832u.h	2015-09-29 14:47:15.830229000 +0100
++++ b/rtl2832u.h	2015-09-29 14:52:26.417991794 +0100
+@@ -115,7 +115,9 @@
+ #endif
+ #define	USB_PID_LEADTEK_WARM_1					0x6680
+ #define	USB_PID_LEADTEK_WARM_2					0x6F11
+-#define	USB_PID_WINFAST_DTV2000DS_PLUS				0x6F12
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
++    #define	USB_PID_WINFAST_DTV2000DS_PLUS				0x6F12
++#endif
+ #define	USB_PID_WINFAST_DTV_DONGLE_MINI				0x6a03
+ 
+ #ifndef  USB_VID_COMPRO

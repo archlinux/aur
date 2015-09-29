@@ -13,9 +13,11 @@ pkgbase = dvb-usb-rtl2832u-openpli
 	source = dvb-usb-rtl2832u.patch::https://github.com/Xtrend-Official/meta-xtrend/raw/master/recipes-bsp/linux/linux-etxx00/dvb-usb-rtl2832.patch
 	source = Makefile
 	source = dvb-usb-rtl28xxu.conf
+	source = linux42.patch
 	md5sums = 263f5060ff7ef969ecaad1494700230a
 	md5sums = b91ef30d49fc0e7d8e76b39c98cf3ff6
 	md5sums = 063be4e255e010899574fc3cdec67120
+	md5sums = bc75fc1f5a9030d6545c66642612ef3d
 
 pkgname = dvb-usb-rtl2832u-openpli
 
