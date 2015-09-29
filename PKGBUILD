@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides the c++ extensions for a variety of threade
 url='http://wiki.ros.org/ecl_threads'
 
 pkgname='ros-indigo-ecl-threads'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

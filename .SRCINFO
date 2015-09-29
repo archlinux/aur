@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-threads
 	pkgdesc = ROS - This package provides the c++ extensions for a variety of threaded programming tools.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_threads
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = ros-indigo-ecl-threads
 	depends = ros-indigo-ecl-build
 	depends = ros-indigo-ecl-time
 	depends = ros-indigo-ecl-config
-	source = ecl_threads::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_threads/0.61.2-0
+	source = ecl_threads::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_threads/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-threads
