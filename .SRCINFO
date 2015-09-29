@@ -1,0 +1,22 @@
+pkgbase = ensime-server
+	pkgdesc = ENSIME server
+	pkgver = 0.9.10
+	pkgrel = 1
+	url = https://github.com/ensime/ensime-server
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = java-environment-jdk
+	noextract = ensime_2.11.6-0.9.10-SNAPSHOT-assembly.jar
+	source = http://ensime.typelevel.org/ensime_2.11.6-0.9.10-SNAPSHOT-assembly.jar
+	source = ensime-server.sh
+	source = ensime-server@.service
+	md5sums = a40de1ec974ad6181f6d4cbe25b29ad0
+	md5sums = d30b6d1a7d27ad8978a32fcf9d5c663a
+	md5sums = 4cbcba55bfb1883a093c76c04fa8b6c4
+	sha256sums = 517bf1567e281fcbedd8aaa7298259fada77249df8c661c502a00b2c469deb40
+	sha256sums = 0cb44a410c4f2018992f8f3648c2a6fc097cc94442d37f40db94e5f8539befd1
+	sha256sums = bdd26cd67a1338386201ae1bb058794c8230d328083e520eed7f481e3020b3f8
+
+pkgname = ensime-server
+

@@ -1,0 +1,9 @@
+[Unit]
+Description=ENSIME user server for %i directory
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ensime-server %I
+
+[Install]
+WantedBy=default.target
