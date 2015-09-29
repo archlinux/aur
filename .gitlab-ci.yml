@@ -3,8 +3,8 @@ image: l3iggs/archlinux-aur
 Build:
   script:
   - export TERM='linux'
-  - PACMAN='yaourt2' makepkg --cleanbuild --clean --force --syncdeps --rmdeps --noconfirm
-    --asdeps
+  - export PACMAN='yaourt2'
+  - makepkg --cleanbuild --clean --force --syncdeps --rmdeps --noconfirm --asdeps
   tags: 
   except:
   - tags
