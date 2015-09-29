@@ -1,6 +1,6 @@
 [Unit]
 Description=Catalyst event Daemon
-Requires=acpid.socket
+Requires=acpid.service
 
 [Service]
 ExecStart=/usr/bin/atieventsd --nodaemon

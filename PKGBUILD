@@ -19,25 +19,27 @@
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: Cold (current_euid patch)
-# Contributor: kolasa (3.19, 4.0 & 4.1 kernel patch)
+# Contributor: ubuntu (parts of 4.0, 4.1 and 4.2 kernel patches)
+# Contributor: kolasa (part of 4.2 kernel patches)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-total
-pkgver=15.5
-pkgrel=1
-#_amdver=15.101.1001
-pkgdesc="AMD/ATI drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
+pkgver=15.9
+pkgrel=2
+_amdver=15.201.1151
+pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.2' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.17.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('linux-lts>=3.0' 'linux-lts<4.2' 'linux-lts-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
-	    'linux-lts-headers: to build the fglrx module for the linux-lts kernel')
+	    'procps-ng: brings pgrep used in acpi event support')
+# 	    'linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('libgl' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'libcl' 'catalyst-dkms' 'mesa-libgl' 'mesa-libgl-git')
 provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'libcl' 'dri' 'libtxc_dxtn' 'mesa-libgl' 'mesa-libgl-git')
 
@@ -63,12 +65,15 @@ source=(
 #    http://www2.ati.com/drivers/beta/amd-catalyst-${pkgver}-beta-v${_betano}-linux-x86.x86_64.run.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-x86.x86_64.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
-    http://www2.ati.com/drivers/linux/amd-catalyst-omega-${pkgver}-linux-run-installers.zip
+    http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
     catalyst_build_module
     lib32-catalyst.sh
     catalyst.sh
     atieventsd.sh
     atieventsd.service
+    ati-powermode.sh
+    a-ac-aticonfig
+    a-lid-aticonfig
     catalyst.conf
     arch-fglrx-authatieventsd_new.patch
     hook-fglrx
@@ -86,16 +91,21 @@ source=(
     cold-fglrx-3.14-current_euid.patch
     fglrx_gpl_symbol.patch
     fglrx_3.17rc6-no_hotplug.patch
-    kolasa-3.19-get_cpu_var.patch
-    kolasa_4.0-cr4-strn.patch
-    kolasa_4.1_remove-IRQF_DISABLED.patch)
+    ubuntu_buildfix_kernel_4.0.patch
+    ubuntu_buildfix_kernel_4.1.patch
+    ubuntu_buildfix_kernel_4.2.patch
+    4.2-fglrx-has_fpu.patch
+    4.2-kolasa-fpu_save_init.patch)
 
-md5sums=('979f9f2e0948fa6e92ff0125f5c6b575'
+md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '601d9c756571dd79d26944e54827631e'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
          '9d9ea496eadf7e883d56723d65e96edf'
-	 '90a37e010f4e5f45e270cd000894d553'
+	 'b79e144932616221f6d01c4b05dc9306'
+	 '514899437eb209a1d4670df991cdfc10'
+	 '80fdfbff93d96a1dfca2c7f684be8cc1'
+	 '9054786e08cf3ea2a549fe22d7f2cd92'
 	 '3e19c2285c76f4cb92108435a1e9c302'
 	 'b3ceefeb97c609037845f65d0956c4f0'
          '9126e1ef0c724f8b57d3ac0fe77efe2f'
@@ -113,16 +123,18 @@ md5sums=('979f9f2e0948fa6e92ff0125f5c6b575'
 	 'ba33b6ef10896d3e1b5e4cd96390b771'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '67a22f624bae95a76638ce269392cb01'
-	 '3aa45013515b724a71bbd8e01f98ad99'
-	 'dee3df1c5d3ed87363f4304da917fc00'
-	 '81a9e38dee025151cccb7e5db2362cfb')
+	 '880d5e59554cda382f74206c202942be'
+	 '982451bcc1fa1ee3da53ffa481d65581'
+	 '88832af8d6769aa51fa9b266a74394e0'
+	 'ed7748a593d6b894269f8c7856b7ae50'
+	 'dd51495a1d8f2d1042f04a783bf01e08')
 
 
 
 build() {
   ## Unpack archive
 #     /bin/sh ./fglrx-${_amdver}/amd-driver-installer-${_amdver}-x86.x86_64.run --extract archive_files
-     /bin/sh ./amd-catalyst-omega-${pkgver}-linux-run-installers.run --extract archive_files
+     /bin/sh ./AMD-Catalyst-${pkgver}-Linux-installer-${_amdver}-x86.x86_64.run --extract archive_files
 #mkdir common
 #mv etc lib usr common
 #mkdir archive_files
@@ -249,9 +261,13 @@ package() {
       install -m644 usr/share/applications/*.desktop ${pkgdir}/usr/share/applications
 
     # ACPI example files
-      install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
-      sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
-      install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+#       install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
+#       sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
+#       install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+    # lets check our own files - V
+      install -m755 ${srcdir}/ati-powermode.sh ${pkgdir}/etc/acpi
+      install -m644 ${srcdir}/a-ac-aticonfig ${pkgdir}/etc/acpi/events
+      install -m644 ${srcdir}/a-lid-aticonfig ${pkgdir}/etc/acpi/events
 
     # Add ATI Events Daemon launcher
       install -m755 ${srcdir}/atieventsd.sh ${pkgdir}/etc/rc.d/atieventsd
@@ -294,15 +310,17 @@ package() {
       patch -Np1 -i ../makefile_compat.patch
       patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
       patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
-      patch -Np1 -i ../lano1106_fglrx-13.8_proc.patch
-      patch -Np1 -i ../cold-fglrx-3.14-current_euid.patch
-      patch -Np1 -i ../fglrx_3.17rc6-no_hotplug.patch
-      patch -Np1 -i ../kolasa-3.19-get_cpu_var.patch
+#       patch -Np1 -i ../lano1106_fglrx-13.8_proc.patch
+#       patch -Np1 -i ../cold-fglrx-3.14-current_euid.patch
+#       patch -Np1 -i ../fglrx_3.17rc6-no_hotplug.patch
 #      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
 #	since 3.19 not only i686 needs gpl symbol - V
       patch -Np1 -i ../fglrx_gpl_symbol.patch
-      patch -Np1 -i ../kolasa_4.0-cr4-strn.patch
-      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.0.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.1.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.2.patch        #three 4.2 patches left for testing purposes, use  simultaneously - V
+      patch -Np1 -i ../4.2-fglrx-has_fpu.patch
+      patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
 
     # Prepare modules source files
       _archdir=x86_64
