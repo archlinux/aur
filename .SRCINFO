@@ -1,6 +1,6 @@
 pkgbase = antimicro-qt4
 	pkgdesc = Graphical program used to map keyboard keys and mouse controls to gamepad buttons (QT4 version)
-	pkgver = 2.19.2
+	pkgver = 2.19.3
 	pkgrel = 1
 	url = https://github.com/Ryochan7/antimicro
 	install = antimicro-qt4.install
@@ -13,11 +13,11 @@ pkgbase = antimicro-qt4
 	depends = qt4
 	depends = sdl2
 	depends = shared-mime-info
-	provides = antimicro=2.19.2
+	provides = antimicro=2.19.3
 	conflicts = antimicro
 	conflicts = antimicro-git
-	source = antimicro-2.19.2.tar.gz::https://github.com/Ryochan7/antimicro/archive/2.19.2.tar.gz
-	md5sums = 13d236171e20e54936cc32dac3789b96
+	source = antimicro-2.19.3.tar.gz::https://github.com/Ryochan7/antimicro/archive/2.19.3.tar.gz
+	md5sums = 723068be04a2214b7d73ae6089d66f64
 
 pkgname = antimicro-qt4
 
