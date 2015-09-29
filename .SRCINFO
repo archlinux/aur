@@ -1,15 +1,15 @@
 pkgbase = nodejs-optimist
 	pkgdesc = Light-weight option parsing with an argv hash. No optstrings attached.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/substack/node-optimist
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = nodejs-wordwrap
-	noextract = optimist-0.6.0.tgz
-	source = http://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz
-	md5sums = b900f399869fbddfc7bd3277994c8b83
+	noextract = optimist-0.6.1.tgz
+	source = http://registry.npmjs.org/optimist/-/optimist-0.6.1.tgz
+	sha1sums = da3ea74686fa21a19a111c326e90eb15a0196686
 
 pkgname = nodejs-optimist
 

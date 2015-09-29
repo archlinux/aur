@@ -1,8 +1,7 @@
-# Maintainer: Gavin Costello <gavcos at gmail dot com>
-# Contributor:
+# Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _npmname=optimist
 pkgname=nodejs-$_npmname
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Light-weight option parsing with an argv hash. No optstrings attached.'
 arch=(any)
@@ -11,7 +10,7 @@ license=(MIT)
 depends=('nodejs' 'nodejs-wordwrap')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-md5sums=('b900f399869fbddfc7bd3277994c8b83')
+sha1sums=('da3ea74686fa21a19a111c326e90eb15a0196686')
 
 package() {
   cd $srcdir
