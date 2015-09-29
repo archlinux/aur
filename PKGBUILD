@@ -4,7 +4,7 @@ pkgdesc="ROS - Ecl frontend to a linear matrix package (currently eigen)."
 url='http://wiki.ros.org/ecl_linear_algebra'
 
 pkgname='ros-indigo-ecl-linear-algebra'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

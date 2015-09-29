@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-linear-algebra
 	pkgdesc = ROS - Ecl frontend to a linear matrix package (currently eigen).
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_linear_algebra
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = ros-indigo-ecl-linear-algebra
 	depends = ros-indigo-ecl-formatters
 	depends = ros-indigo-ecl-exceptions
 	depends = ros-indigo-ecl-eigen
-	source = ecl_linear_algebra::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_linear_algebra/0.61.2-0
+	source = ecl_linear_algebra::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_linear_algebra/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-linear-algebra
