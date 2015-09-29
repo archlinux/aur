@@ -1,0 +1,19 @@
+pkgbase = hypre
+	pkgdesc = A library for solving large, sparse linear systems on massively parallel computers
+	pkgver = 2.10.0b
+	pkgrel = 1
+	url = http://acts.nersc.gov/hypre
+	arch = i686
+	arch = x86_64
+	license = lgpl
+	depends = gcc-libs
+	depends = gcc-fortran
+	depends = openmpi
+	depends = blas
+	depends = lapack
+	depends = superlu
+	source = https://computation.llnl.gov/project/linear_solvers/download/hypre-2.10.0b-babel.tar.gz
+	md5sums = b0d876cb6958e024c24c05af1c257e24
+
+pkgname = hypre
+
