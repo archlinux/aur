@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-dwa-local-planner
 	pkgdesc = ROS - This package provides an implementation of the Dynamic Window Approach to local robot navigation on a plane.
-	pkgver = 1.11.11
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = http://wiki.ros.org/dwa_local_planner
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = ros-indigo-dwa-local-planner
 	depends = ros-indigo-nav-msgs
 	depends = ros-indigo-pluginlib
 	depends = eigen3
-	source = dwa_local_planner::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/dwa_local_planner/1.11.11-0
+	source = dwa_local_planner::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/dwa_local_planner/1.12.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-dwa-local-planner

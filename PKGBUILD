@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides an implementation of the Dynamic Window App
 url='http://wiki.ros.org/dwa_local_planner'
 
 pkgname='ros-indigo-dwa-local-planner'
-pkgver='1.11.11'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -61,6 +61,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
