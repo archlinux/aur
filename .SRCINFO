@@ -1,0 +1,21 @@
+pkgbase = fabariagest
+	pkgdesc = Gestionale aziendale.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://fabariagest.codelinsoft.it/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = qt4
+	depends = mysql
+	depends = cmake
+	depends = qwt
+	depends = python2
+	depends = python2-pyqt4
+	depends = python2-sip
+	depends = python-sip
+	source = http://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabaria-gest-source-code.raw
+	md5sums = 4ee70ebf51ad53f667d0b7cde9d0f9cb
+
+pkgname = fabariagest
+
