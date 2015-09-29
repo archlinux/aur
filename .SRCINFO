@@ -1,6 +1,6 @@
 pkgbase = nodejs-jspm
 	pkgdesc = Registry and format agnostic JavaScript package manager
-	pkgver = 0.16.10
+	pkgver = 0.16.11
 	pkgrel = 1
 	url = https://github.com/jspm/jspm
 	arch = any
