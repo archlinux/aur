@@ -6,5 +6,8 @@ post_install() {
 post_upgrade() {
   # create user/group that the daemon will run as by default, do not delete this on uninstall, as it will own files
   getent group telegraf >/dev/null || groupadd telegraf
-  getent passwd telegraf >/dev/null || useradd -c 'telegraf' -g telegraf -s /bin/false telegraf
+  getent passwd telegraf >/dev/null || useradd -c 'telegraf' -g telegraf -d '/var/lib/telegraf' -m -s /bin/false telegraf
+
+  mkdir -p /var/lib/telegraf
+  chown telegraf.telegraf /var/lib/telegraf
 }
