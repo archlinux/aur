@@ -1,6 +1,6 @@
 pkgbase = rtl8192du-git
 	pkgdesc = Kernel module for Realtek RTL8192DU USB wireless devices.
-	pkgver = 9b87522
+	pkgver = 9e7eb15
 	pkgrel = 1
 	url = https://github.com/lwfinger/rtl8192du
 	install = readme.install
