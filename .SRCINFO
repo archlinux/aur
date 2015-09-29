@@ -1,5 +1,4 @@
 pkgbase = linux-macbook
-	pkgdesc = Kernel with patches for the 11,5 and 12,1 macbooks (2015)
 	pkgver = 4.2.1
 	pkgrel = 1
 	url = http://www.kernel.org/
@@ -42,7 +41,7 @@ pkgbase = linux-macbook
 	sha256sums = 0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183
 
 pkgname = linux-macbook
-	pkgdesc = The Linux-macbook kernel and modules
+	pkgdesc = The Linux-macbook kernel and modules, with patches for 11,4 and 12,1 Macbook pros (2015)
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -52,8 +51,8 @@ pkgname = linux-macbook
 	backup = etc/mkinitcpio.d/linux-macbook.preset
 
 pkgname = linux-macbook-headers
-	pkgdesc = Header files and scripts for building modules for Linux-macbook kernel
+	pkgdesc = Header files and scripts for building modules for Linux-macbook kernel, with patches for 11,4 and 12,1 Macbook pros (2015)
 
 pkgname = linux-macbook-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-macbook kernel
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-macbook kernel, with patches for 11,4 and 12,1 Macbook pros (2015)
 

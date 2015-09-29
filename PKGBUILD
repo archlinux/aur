@@ -7,7 +7,6 @@ pkgbase=linux-macbook               # Build stock -ARCH kernel
 _srcname=linux-4.2
 pkgver=4.2.1
 pkgrel=1
-pkgdesc="Kernel with patches for the 11,5 and 12,1 macbooks (2015)"
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -122,7 +121,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules, with patches for 11,4 and 12,1 Macbook pros (2015)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -181,7 +180,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel, with patches for 11,4 and 12,1 Macbook pros (2015)"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -298,7 +297,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel, with patches for 11,4 and 12,1 Macbook pros (2015)"
 
   cd "${srcdir}/${_srcname}"
 
