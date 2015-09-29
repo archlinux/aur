@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-sigslots
 	pkgdesc = ROS - Provides a signal/slot mechanism (in the same vein as qt sigslots, boost::signals etc for intra-process communication.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://ros.org/wiki/ecl_sigslots
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-ecl-sigslots
 	depends = ros-indigo-ecl-license
 	depends = ros-indigo-ecl-threads
 	depends = ros-indigo-ecl-config
-	source = ecl_sigslots::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_sigslots/0.61.2-0
+	source = ecl_sigslots::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_sigslots/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-sigslots

@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides a signal/slot mechanism (in the same vein as qt sigslots
 url='http://ros.org/wiki/ecl_sigslots'
 
 pkgname='ros-indigo-ecl-sigslots'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
