@@ -1,0 +1,18 @@
+pkgbase = salome-hexablock
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - HEXABLOCK Module
+	pkgver = 7.6.0
+	pkgrel = 1
+	url = http://www.salome-platform.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = doxygen
+	makedepends = python2-sphinx
+	makedepends = swig2
+	depends = salome-geom>=7.6.0
+	depends = salome-geom<7.7.0
+	source = salome-hexablock.profile
+	md5sums = decac3c084d3d9eba96ea046276bad6e
+
+pkgname = salome-hexablock
+
