@@ -1,4 +1,3 @@
-# Maintainer: OmeGa <omega [U+0040] mailoo [.] org>
 # Contributor: Lukas Miczka <lukascpu@gmail.com>
 
 pkgname=gmpc-wikipedia
