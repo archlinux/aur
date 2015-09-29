@@ -1,0 +1,19 @@
+pkgbase = gostcrypt
+	pkgdesc = Free open-source cross-platform disk encryption software
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 0
+	url = https://www.gostcrypt.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fuse>=2.9.4
+	depends = wxgtk2.8>=2.8.12.1
+	optdepends = sudo: mounting encrypted volumes as nonroot users
+	source = https://www.gostcrypt.org/download/1.0/linux/GostCrypt_Linux_1.0.tar.gz
+	source = gostcrypt.desktop
+	sha256sums = f5ad77f222b54b41acd70220d67518a8293707892b143bb598b2aa865023943b
+	sha256sums = c8f003a58970d555f68f47b396d24cba58588f61538f3c5eb79ff2af5db963de
+
+pkgname = gostcrypt
+

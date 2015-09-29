@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=gostcrypt
+Icon=gostcrypt
+Comment=On-the-fly encryption
+Terminal=false
+Name=Gostcrypt
+StartupNotify=true
+Categories=System;
