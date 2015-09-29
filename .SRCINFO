@@ -1,7 +1,7 @@
 pkgbase = nvidia-304xx-ck
 	pkgdesc = NVIDIA drivers for linux-ck, 304xx legacy branch.
 	pkgver = 304.128
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-304xx-ck.install
 	arch = i686
