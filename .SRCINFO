@@ -1,6 +1,6 @@
 pkgbase = system-tar-and-restore
 	pkgdesc = Backup and Restore your system using tar or Transfer it with rsync
-	pkgver = 4.9.4
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/tritonas00/system-tar-and-restore
 	install = readme.install
@@ -18,10 +18,8 @@ pkgbase = system-tar-and-restore
 	optdepends = pbzip2: multicore compression
 	optdepends = pxz: multicore compression
 	optdepends = gtkdialog: GUI wrapper
-	source = https://github.com/tritonas00/system-tar-and-restore/archive/4.9.4.tar.gz
-	source = readme.install
-	md5sums = 0b0f6b5a9451380d6e2511e571f5fcdb
-	md5sums = c2df236e728583b3974f58034e888dc8
+	source = https://github.com/tritonas00/system-tar-and-restore/archive/5.0.tar.gz
+	md5sums = 5ef414b44b53053fb6c0afe96b7136a1
 
 pkgname = system-tar-and-restore
 
