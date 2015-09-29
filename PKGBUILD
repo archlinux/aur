@@ -2,7 +2,7 @@
 # Contributor: graysky <graysky AT archlinux DOT us>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-#pkgbase=linux               # Build stock -ARCH kernel
+#pkgbase=linux           # Build stock -ARCH kernel
 pkgbase=linux-bld       # Build kernel with a different name
 _srcname=linux-4.2
 pkgname=(linux-bld linux-bld-headers)
