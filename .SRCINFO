@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-command-line
 	pkgdesc = ROS - Embeds the TCLAP library inside the ecl.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_command_line
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-ecl-command-line
 	makedepends = ros-indigo-ecl-license
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-ecl-license
-	source = ecl_command_line::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_command_line/0.61.2-0
+	source = ecl_command_line::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_command_line/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-command-line

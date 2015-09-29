@@ -4,7 +4,7 @@ pkgdesc="ROS - Embeds the TCLAP library inside the ecl."
 url='http://wiki.ros.org/ecl_command_line'
 
 pkgname='ros-indigo-ecl-command-line'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
