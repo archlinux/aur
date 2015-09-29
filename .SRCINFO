@@ -1,7 +1,7 @@
 pkgbase = salome-smesh
 	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - SMESH Module
 	pkgver = 7.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.salome-platform.org
 	arch = i686
 	arch = x86_64

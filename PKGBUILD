@@ -2,7 +2,7 @@
 
 pkgname=salome-smesh
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - SMESH Module"
 url="http://www.salome-platform.org"
 depends=('salome-geom>=7.6.0' 'salome-geom<7.7.0' 'salome-med>=7.6.0' 'salome-med<7.7.0')
@@ -53,7 +53,9 @@ build() {
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
      -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
      -DVTK_DIR="${_paraviewrootdir}/lib/cmake/paraview-${_paraviewver}" \
-     -DSWIG_EXECUTABLE=/usr/bin/swig-2
+     -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
+     -DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2
+
   make
 }
 
