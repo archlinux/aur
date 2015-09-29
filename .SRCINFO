@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-utilities
 	pkgdesc = ROS - Includes various supporting tools and utilities for c++ programming.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_utilities
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-ecl-utilities
 	depends = ros-indigo-ecl-license
 	depends = ros-indigo-ecl-mpl
 	depends = ros-indigo-ecl-concepts
-	source = ecl_utilities::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_utilities/0.61.2-0
+	source = ecl_utilities::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_utilities/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-utilities

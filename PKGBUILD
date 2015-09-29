@@ -4,7 +4,7 @@ pkgdesc="ROS - Includes various supporting tools and utilities for c++ programmi
 url='http://wiki.ros.org/ecl_utilities'
 
 pkgname='ros-indigo-ecl-utilities'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
