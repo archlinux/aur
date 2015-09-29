@@ -1,7 +1,7 @@
 pkgbase = etherpad-lite-systemd
 	pkgdesc = etherpad-lite with systemd socket-activation
-	pkgver = 1.5.2
-	pkgrel = 2
+	pkgver = 1.5.7
+	pkgrel = 1
 	url = http://etherpad.org
 	install = etherpad-lite.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = etherpad-lite-systemd
 	depends = curl
 	depends = python2
 	depends = openssl
-	depends = nodejs<0.13.0
+	depends = nodejs
 	depends = git
 	depends = npm
 	optdepends = sqlite: to use sqlite as databse
@@ -18,14 +18,14 @@ pkgbase = etherpad-lite-systemd
 	conflicts = etherpad-lite-git
 	backup = usr/share/webapps/etherpad-lite/settings.json
 	backup = etc/webapps/etherpad-lite/settings.json
-	source = etherpad-lite-1.5.2.tar.gz::https://github.com/ether/etherpad-lite/archive/1.5.2.tar.gz
+	source = etherpad-lite-1.5.7.tar.gz::https://github.com/ether/etherpad-lite/archive/1.5.7.tar.gz
 	source = etherpad-lite.service
 	source = etherpad-lite.socket
 	source = socket-activation.patch
-	sha512sums = 4aa331c2faa5f7cc0a2b467547f0c9028ae593be52c584b520147554f81bf88083f5d26925977e341c9450a51fc03fc4a45bff75cfc7b64e4de7993333ce0ed0
+	sha512sums = 688205194347f0e4e6f78deb0b189ceaa4f2255efcbaa503d0b6459de8505dd475aa9151399dd818b6cac232bc0b71e5a0fbd6d43f56cb5ce1f9eafcccb3925b
 	sha512sums = 7b775171da97a3e7ad44a2b1b319970fd307a88e90a171c49bf70d2382767175e98bb21c7054e38ee6c066bd2dfadf94d28a9ff31d4f21145ec4441caa13c4d7
 	sha512sums = e80935acc6f7739b2797fc922a503a2f7b5edda010adcd4be5714a21716545b4472229b6901f0af41cf12552ca71c7bba151667f2501ef9b2f7770cdf7f3d723
-	sha512sums = 381ea4608a256328a55029716d42e7ee78c817e967f43ccfc82f82d5c28f65d7f2106ee816bcbae8f3a71720a08ddab35f92b9c710b55d520cb0a9dc86e62201
+	sha512sums = 542067a2f287d30d6662205de95aba0fe85f0c04d055ee672c17255d4f99abd2e533a57ecd1920a7a3bdde9fceda76050eceaafadd8d64579a1d48fcd2271430
 
 pkgname = etherpad-lite-systemd
 
