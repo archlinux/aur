@@ -1,14 +1,15 @@
 pkgname=fusiondirectory-webservice-shell
-pkgver=1.0.8.9
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Webservice shell for FusionDirectory"
-arch=('any')
+arch=("any")
 url="http://fusiondirectory.org/"
-license=('LGPL')
-depends=('perl-term-readline-gnu')
+license=("LGPL")
+depends=("perl-term-readline-gnu")
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz")
-md5sums=('e169b4ca7ac809a6b939ed06d81c0f2a')
+
+md5sums=('7c761f082278bfdcc5e9130e8fa4d3a0')
 
 package() {
   cd ./fusiondirectory-plugins-${pkgver}
