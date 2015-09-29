@@ -1,7 +1,7 @@
 pkgbase = nvidia-ck
 	pkgdesc = NVIDIA drivers for linux-ck.
 	pkgver = 355.11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	install = nvidia-ck.install
 	arch = i686
