@@ -1,30 +1,17 @@
 pkgbase = vagrant-git
 	pkgdesc = Build and distribute virtualized development environments
-	pkgver = 1.7.4.40.gb79f0bb
+	pkgver = 1.7.4.43.gb721eb6
 	pkgrel = 1
 	url = http://vagrantup.com
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = puppet
-	makedepends = chrpath
-	makedepends = wget
-	depends = lzo
-	depends = libidn
-	depends = rtmpdump
+	depends = vagrant-substrate
 	conflicts = vagrant
 	options = !emptydirs
 	source = git://github.com/mitchellh/vagrant.git
-	source = git://github.com/mitchellh/vagrant-installers.git
-	source = puppet_module_libiconv.patch
-	source = libiconv.patch
-	source = readline.patch
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 293e1a9bbb8c510f1bc79d9a0bd477ed
-	md5sums = c1bd61a5617b64654c33a2afc506e499
-	md5sums = a4f87b2483c7bd724bb94a69aa5cf733
 
 pkgname = vagrant-git
 

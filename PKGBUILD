@@ -2,7 +2,7 @@
 
 _pkgname=vagrant
 pkgname=vagrant-git
-pkgver=1.7.4.40.gb79f0bb
+pkgver=1.7.4.43.gb721eb6
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
@@ -10,18 +10,10 @@ url="http://vagrantup.com"
 license=('MIT')
 conflicts=('vagrant')
 options=('!emptydirs')
-makedepends=('git' 'puppet' 'chrpath' 'wget')
-depends=('lzo' 'libidn' 'rtmpdump')
-source=(git://github.com/mitchellh/$_pkgname.git
-        git://github.com/mitchellh/$_pkgname-installers.git
-        puppet_module_libiconv.patch
-        libiconv.patch
-        readline.patch)
-md5sums=('SKIP'
-         'SKIP'
-         '293e1a9bbb8c510f1bc79d9a0bd477ed'
-         'c1bd61a5617b64654c33a2afc506e499'
-         'a4f87b2483c7bd724bb94a69aa5cf733')
+makedepends=('git')
+depends=('vagrant-substrate')
+source=(git://github.com/mitchellh/$_pkgname.git)
+md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -29,52 +21,34 @@ pkgver() {
   git describe --tags --long | sed 's/-/./g;s/^v//'
 }
 
-prepare() {
-  cd $_pkgname-installers/substrate
-
-  # Use $srcdir for the working directory
-  sed -i "s:/vagrant-substrate:$srcdir/vagrant-substrate:" hiera/common.yaml
-
-  # Don't create a zip of the substrate
-  sed -i '48,50d' modules/vagrant_substrate/manifests/init.pp
-
-  # Do not set file ownership
-  find . -name *.pp -exec sed -i "/owner.*.=.*.root/d" {} +
-  find . -name *.pp -exec sed -i "/group.*.=.*.root/d" {} +
-
-  # Fix compile issues
-  patch -Np0 -i "$srcdir"/puppet_module_libiconv.patch
-  patch -Np0 -i "$srcdir"/readline.patch
-
-  # https://github.com/mitchellh/vagrant-installers/issues/60
-  sed -i '61 s/^/#/' modules/ruby/manifests/source.pp
-}
-
 build() {
-  cd $_pkgname-installers/substrate
+  cd $_pkgname
 
-  # Create the substrate
-  FACTER_param_output_dir="$srcdir" puppet apply --hiera_config=config/hiera.yaml \
-    --confdir=config --modulepath=modules manifests/init.pp
+  EMBEDDED_DIR=/opt/vagrant/embedded
 
-  cd "$srcdir"/$_pkgname
+  "$EMBEDDED_DIR"/bin/gem build $_pkgname.gemspec
+  cp vagrant-*.gem vagrant.gem
 
-  REV=$( git log -n 1 --pretty=format:"%H" )
-
-  "$srcdir"/$_pkgname-installers/package/support/install_$_pkgname.sh \
-    "$srcdir"/vagrant-substrate/staging/ $REV "$srcdir"/vagrant-substrate/staging/${_pkgname}_version
+  GEM_PATH="$srcdir"/$_pkgname/gems-$pkgver-$pkgrel GEM_HOME="$GEM_PATH" \
+  GEMRC="$EMBEDDED_DIR"/etc/gemrc CPPFLAGS="-I$EMBEDDED_DIR"/include \
+  LDFLAGS="-L$EMBEDDED_DIR"/lib PATH="$EMBEDDED_DIR/bin:$PATH" \
+  SSL_CERT_FILE="$EMBEDDED_DIR"/cacert.pem \
+    "$EMBEDDED_DIR"/bin/gem install $_pkgname.gem --no-ri --no-rdoc
 }
 
 package() {
-  install -d "$pkgdir"/{opt/,usr/bin/,usr/share/bash-completion/completions/}
+  cd $_pkgname
 
-  cp -r "$srcdir"/vagrant-substrate/staging/ "$pkgdir"/opt/$_pkgname/
+  install -d "$pkgdir"/usr/{bin,share/bash-completion/completions}
+  install -d "$pkgdir"/opt/vagrant/embedded
+
+  cp -r gems-$pkgver-$pkgrel "$pkgdir"/opt/vagrant/embedded/gems
 
   ln -s /opt/$_pkgname/bin/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 
-  install -Dm644 "$srcdir"/$_pkgname/contrib/bash/completion.sh \
+  install -Dm644 contrib/bash/completion.sh \
     "$pkgdir"/usr/share/bash-completion/completions/$_pkgname
 
-  install -Dm644 "$srcdir"/$_pkgname/LICENSE \
+  install -Dm644 LICENSE \
     "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 }
