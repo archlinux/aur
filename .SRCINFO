@@ -1,6 +1,6 @@
 pkgbase = mongoose
 	pkgdesc = Easy to use, powerful, embeddable web server
-	pkgver = 5.6
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/cesanta/mongoose
 	arch = i686
@@ -8,13 +8,8 @@ pkgbase = mongoose
 	license = GPL2
 	depends = glibc
 	depends = openssl
-	backup = etc/mongoose/mongoose.conf
-	source = https://github.com/cesanta/mongoose/archive/5.6.tar.gz
-	source = mongoose.conf
-	source = mongoose.service
-	sha1sums = e99340a6db580af2e5abab738b3fab4a10fae843
-	sha1sums = dc53f149c21243e65dbc6e6463f9b373026e79d8
-	sha1sums = 493e5792257b6ea9651f1042683385d4850cc28d
+	source = https://github.com/cesanta/mongoose/archive/6.0.tar.gz
+	sha1sums = 6ce351814405680003bb330959200c375da99f29
 
 pkgname = mongoose
 
