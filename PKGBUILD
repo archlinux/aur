@@ -1,8 +1,8 @@
-# Maintainer: David Adler <david dot jo dot adler at gmail dot com>
+# Maintainer: David Adler <d dot adler aet posteo dot de>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=yoshimi
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="ZynAddSubFX fork with improved JACK audio & MIDI IO"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('GPL')
 depends=('jack' 'fltk' 'fftw' 'mxml' 'cairo' 'lv2')
 makedepends=('cmake' 'boost' 'mesa')
 install="$pkgname.install"
-source=("http://downloads.sourceforge.net/project/$pkgname/1.3/$pkgname-$pkgver.tar.bz2")
-md5sums=('e47f538cafba8579a0350c16aa086d8c')
-sha256sums=('d90569375ac1ab829fea84622654452ff6382b0baef4de64e753ab5a477086ba')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Yoshimi/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('6c908a4161400f957effa0ae69c2c2fd')
+sha256sums=('ff18a0318c9cf26992aabd36e63d1f98fed52b14b96c911d124e0baf66a7c372')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src" 
