@@ -4,7 +4,7 @@ pkgdesc="ROS -  amcl is a probabilistic localization system for a robot moving i
 url='http://wiki.ros.org/amcl'
 
 pkgname='ros-indigo-amcl'
-pkgver='1.11.11'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -23,7 +23,8 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=(ros-indigo-dynamic-reconfigure
   ros-indigo-tf
-  ros-indigo-roscpp)
+  ros-indigo-roscpp
+  ros-indigo-nav-msgs)
 depends=(${ros_depends[@]})
 
 _tag=release/indigo/amcl/${pkgver}-${_pkgver_patch}
@@ -51,6 +52,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
