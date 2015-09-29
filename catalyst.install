@@ -1,5 +1,5 @@
-KERNEL_VERSION=4.1.0-1-mainline
-EXTRAMODULES=extramodules-4.1-mainline
+KERNEL_VERSION=4.1.7-rt8-1-rt
+EXTRAMODULES=extramodules-4.1-rt
 
 
 dep_extr_mod(){
@@ -15,6 +15,14 @@ whisperer(){
     echo "For more info and troubleshooting visit:"
     echo "http://wiki.archlinux.org/index.php/AMD_Catalyst"
     echo "----------------------------------------------------------------"
+    echo -e "\e[1;31m--------------------- NO 4.2 KERNEL SUPPORT---------------------\e[0m"
+    echo "catalyst doesn't support linux kernels >= 4.2"
+    echo "please configure bootloader to use proper kernel"
+    echo "like linux-lts in example"
+    echo ""
+    echo "sleeping now for 5 seconds as this is important..."
+    echo -e "\e[1;31m----------------------------------------------------------------\e[0m"
+    sleep 5
 }
 
 
