@@ -4,7 +4,7 @@ pkgdesc="ROS - The containers included here are intended to extend the stl conta
 url='http://wiki.ros.org/ecl_containers'
 
 pkgname='ros-indigo-ecl-containers'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
