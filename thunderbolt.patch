@@ -1,0 +1,75 @@
+diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
+index a07addd..8dd0af1 100644
+--- a/drivers/extcon/extcon.c
++++ b/drivers/extcon/extcon.c
+@@ -159,7 +159,7 @@ static int find_cable_index_by_name(struct extcon_dev *edev, const char *name)
+ static bool is_extcon_changed(u32 prev, u32 new, int idx, bool *attached)
+ {
+ 	if (((prev >> idx) & 0x1) != ((new >> idx) & 0x1)) {
+-		*attached = new ? true : false;
++		*attached = ((new >> idx) & 0x1) ? true : false;
+ 		return true;
+ 	}
+ 
+diff --git a/drivers/hv/channel_mgmt.c b/drivers/hv/channel_mgmt.c
+index 2f9aead..652afd1 100644
+--- a/drivers/hv/channel_mgmt.c
++++ b/drivers/hv/channel_mgmt.c
+@@ -204,6 +204,8 @@ void hv_process_channel_removal(struct vmbus_channel *channel, u32 relid)
+ 		spin_lock_irqsave(&vmbus_connection.channel_lock, flags);
+ 		list_del(&channel->listentry);
+ 		spin_unlock_irqrestore(&vmbus_connection.channel_lock, flags);
++
++		primary_channel = channel;
+ 	} else {
+ 		primary_channel = channel->primary_channel;
+ 		spin_lock_irqsave(&primary_channel->lock, flags);
+@@ -211,6 +213,14 @@ void hv_process_channel_removal(struct vmbus_channel *channel, u32 relid)
+ 		primary_channel->num_sc--;
+ 		spin_unlock_irqrestore(&primary_channel->lock, flags);
+ 	}
++
++	/*
++	 * We need to free the bit for init_vp_index() to work in the case
++	 * of sub-channel, when we reload drivers like hv_netvsc.
++	 */
++	cpumask_clear_cpu(channel->target_cpu,
++			  &primary_channel->alloced_cpus_in_node);
++
+ 	free_channel(channel);
+ }
+ 
+diff --git a/drivers/misc/mei/debugfs.c b/drivers/misc/mei/debugfs.c
+index 4b469cf..8504dbe 100644
+--- a/drivers/misc/mei/debugfs.c
++++ b/drivers/misc/mei/debugfs.c
+@@ -204,6 +204,8 @@ int mei_dbgfs_register(struct mei_device *dev, const char *name)
+ 	if (!dir)
+ 		return -ENOMEM;
+ 
++	dev->dbgfs_dir = dir;
++
+ 	f = debugfs_create_file("meclients", S_IRUSR, dir,
+ 				dev, &mei_dbgfs_fops_meclients);
+ 	if (!f) {
+@@ -228,7 +230,6 @@ int mei_dbgfs_register(struct mei_device *dev, const char *name)
+ 		dev_err(dev->dev, "allow_fixed_address: registration failed\n");
+ 		goto err;
+ 	}
+-	dev->dbgfs_dir = dir;
+ 	return 0;
+ err:
+ 	mei_dbgfs_deregister(dev);
+diff --git a/drivers/thunderbolt/nhi.c b/drivers/thunderbolt/nhi.c
+index c68fe12..20a41f7 100644
+--- a/drivers/thunderbolt/nhi.c
++++ b/drivers/thunderbolt/nhi.c
+@@ -643,7 +643,7 @@ static struct pci_device_id nhi_ids[] = {
+ 	{
+ 		.class = PCI_CLASS_SYSTEM_OTHER << 8, .class_mask = ~0,
+ 		.vendor = PCI_VENDOR_ID_INTEL, .device = 0x156c,
+-		.subvendor = 0x2222, .subdevice = 0x1111,
++		.subvendor = PCI_ANY_ID, .subdevice = PCI_ANY_ID,
+ 	},
+ 	{ 0,}
+ };

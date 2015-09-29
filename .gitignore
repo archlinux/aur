@@ -1,0 +1,13 @@
+*
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.desktop
+!*.install
+!*.service
+!*.sh
+!*.conf
+!.gitignore
+!config
+!config.x86_64
+!linux.preset

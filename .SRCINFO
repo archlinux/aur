@@ -1,0 +1,58 @@
+pkgbase = linux-macbook
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.1.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.1.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = bluetooth.patch
+	source = thunderbolt.patch
+	source = change-default-console-loglevel.patch
+	source = 0001-make_flush_workqueue_non_gpl.patch
+	source = 0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch
+	source = 0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch
+	source = 0001-fix-bridge-regression.patch
+	sha256sums = cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb
+	sha256sums = SKIP
+	sha256sums = 9d0ab6525eb5f42056e2465267c62fa67efc75c57ad5345b99414b783278e9a3
+	sha256sums = SKIP
+	sha256sums = e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2
+	sha256sums = a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = dcbed1ae73c4e1383210bad6f1f446bdd13f8b1c24d89bcf0483acc5e178c379
+	sha256sums = 4909b37856f4b2374e54e44d656971a1f1027900444ac494f4dd1bb113dc9c97
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 4e776734e2c2185910a6fbb6f333d967b04f4a72b3196310af286c6a779bd97d
+	sha256sums = 0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b
+	sha256sums = 6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3
+	sha256sums = 0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183
+
+pkgname = linux-macbook
+	pkgdesc = The Linux-macbook kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-macbook.preset
+
+pkgname = linux-macbook-headers
+	pkgdesc = Header files and scripts for building modules for Linux-macbook kernel
+
+pkgname = linux-macbook-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-macbook kernel
+
