@@ -6,7 +6,7 @@ pkgname=bluecurve-icon-theme
 pkgver=8.0.2
 _rhpkgrel=11
 _rhpkgver=21
-pkgrel=11
+pkgrel=12
 pkgdesc="Red Hat Icons from Fedora 10"
 arch=('any')
 url="https://fedorahosted.org/bluecurve/"
@@ -19,6 +19,19 @@ optdepends=(
 source=("ftp://rpmfind.net/linux/fedora/linux/releases/${_rhpkgver}/Everything/x86_64/os/Packages/b/bluecurve-icon-theme-${pkgver}-${_rhpkgrel}.fc${_rhpkgver}.noarch.rpm")
 sha256sums=('90ecc04a23776931158774b432df93102d99ca5f0509a75e3695cb0a502c5d91')
 
+build() {
+  cd $srcdir/usr/share/icons
+  mv Bluecurve BluecurveRH
+  sed -i s/Name=Bluecurve/Name=BluecurveRH/ BluecurveRH/index.theme
+}
+
 package() {
-  cp -R "$srcdir/usr" "$pkgdir"
+  install -d -m755 $pkgdir/usr/share/icons
+  install -d -m755 $pkgdir/usr/share/licenses/$pkgname
+
+  cd $srcdir/usr/share/doc/$pkgname
+  install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -D -m644 AUTHORS $pkgdir/usr/share/licenses/$pkgname/AUTHORS
+
+  cp -R $srcdir/usr/share/icons/BluecurveRH $pkgdir/usr/share/icons/
 }
