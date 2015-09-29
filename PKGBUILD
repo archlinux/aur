@@ -14,7 +14,7 @@ depends=('gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugi
 conflicts=('nightingale')
 provides=('nightingale')
 install="nightingale.install"
-source=("nightingale::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=${_branch}"
+source=("nightingale-hacking::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=${_branch}"
 		"nightingale-deps::git://github.com/nightingale-media-player/nightingale-deps.git#branch=xul-192-new"
         "Nightingale.desktop")
 md5sums=('SKIP'
@@ -28,7 +28,7 @@ pkgver() {
 
 prepare() {
    export GST_PLUGIN_PATH="/usr/lib/gstreamer-1.0"
-   echo 'ac_add_options --with-media-core=gstreamer-system' >> "${srcdir}/nightingale-hacking/nightingale.config"
+   echo 'ac_add_options --with-media-core=gstreamer-system' > "${srcdir}/nightingale-hacking/nightingale.config"
    echo 'ac_add_options --with-gstreamer-1.0' >> "${srcdir}/nightingale-hacking/nightingale.config"
    echo 'ac_add_options --with-taglib-source=system' >> "${srcdir}/nightingale-hacking/nightingale.config"
 }
