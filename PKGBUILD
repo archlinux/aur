@@ -1,10 +1,10 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
-pkgname=r3broot-svn
-pkgver=trunk
-pkgrel=2
+pkgname=r3broot-git
+pkgver=jul15
+pkgrel=1
 pkgdesc="Analysis framework based on root for the R3B experiment provided by GSI/FAIR."
 arch=('x86_64')
-url="http://fairroot.gsi.de"
+url="http://www.r3broot.gsi.de"
 license=('unknown')
 groups=()
 fairsoftver=jul15p1-1
@@ -24,11 +24,14 @@ provides=('r3broot')
 replaces=()
 backup=()
 options=('!emptydirs' 'staticlibs' 'libtool' '!strip')
-install=r3broot-svn.install
+install=r3broot.install
 changelog=
-source=("${pkgname}::svn+https://subversion.gsi.de/fairroot/r3broot/trunk")
+source=("${pkgname}::git+https://github.com/R3BRootGroup/R3BRoot"
+	'r3broot.install'
+	)
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '29d9cea27a2cf33f7dfd028447f300d1')
 
 # Do not compress the package for installation
 # PKGEXT='.pkg.tar'
@@ -37,8 +40,8 @@ PKGEXT='.pkg.tar.gz'
 
 pkgver() {
 	cd "$pkgname"
-	local ver="$(svnversion)"
-	printf "r%s" "${ver//[[:alpha:]]}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" \
+	    "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -54,7 +57,7 @@ prepare() {
 	cd build
 	cmake \
 		-DUSE_DIFFERENT_COMPILER=TRUE \
-		-DCMAKE_INSTALL_PREFIX="/opt/r3broot/svn" \
+		-DCMAKE_INSTALL_PREFIX="/opt/r3broot/git" \
 		../${pkgname}
 :
 }
@@ -67,7 +70,7 @@ build() {
 }
 
 package() {
-	installdir=${pkgdir}/opt/r3broot/svn
+	installdir=${pkgdir}/opt/r3broot/git
 
 	cd ${srcdir}/build
 	make DESTDIR="${pkgdir}/" install
