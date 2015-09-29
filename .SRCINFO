@@ -1,6 +1,6 @@
 pkgbase = pypy-setuptools
 	pkgdesc = Easily download, build, install, upgrade, and uninstall Python packages
-	pkgver = 18.3.1
+	pkgver = 18.3.2
 	pkgrel = 1
 	epoch = 1
 	url = http://pypi.python.org/pypi/setuptools
@@ -8,8 +8,8 @@ pkgbase = pypy-setuptools
 	license = PSF
 	makedepends = pypy3
 	makedepends = pypy
-	source = https://pypi.python.org/packages/source/s/setuptools/setuptools-18.3.1.tar.gz
-	sha512sums = 1a00386cd33267c1787b50a26cb008c975e720e0ef17d5d9c89c1d2f62a6b1d86e4731ab259667d9e2eb1d4c29bc96729221e672e1c3a6e18a181c8f35711f21
+	source = https://pypi.python.org/packages/source/s/setuptools/setuptools-18.3.2.tar.gz
+	sha512sums = 0af522af1dc783e4d6b84c44d3cf4205aed75815bfc050ea89c4976434f08edd662501c4063b1618c0ce7a7120bcbd5331818d3f06912aa9136736018ec4b6a1
 
 pkgname = pypy3-setuptools
 	depends = pypy3
