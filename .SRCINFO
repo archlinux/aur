@@ -1,0 +1,20 @@
+pkgbase = dscanner-git
+	pkgdesc = Swiss-army knife for D source code
+	pkgver = r823.eb50bc9
+	pkgrel = 1
+	url = https://github.com/Hackerpilot/Dscanner
+	arch = i686
+	arch = x86_64
+	groups = dlang
+	license = BSL
+	makedepends = dmd
+	makedepends = git
+	depends = libphobos
+	provides = dscanner
+	conflicts = dscanner
+	options = !strip
+	source = git+https://github.com/Hackerpilot/Dscanner
+	sha256sums = SKIP
+
+pkgname = dscanner-git
+
