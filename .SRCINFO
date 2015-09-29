@@ -6,6 +6,7 @@ pkgbase = nodejs-azure-cli
 	arch = any
 	license = Apache
 	depends = nodejs
+	depends = npm
 	noextract = azure-cli-0.9.9.tgz
 	options = !strip
 	source = http://registry.npmjs.org/azure-cli/-/azure-cli-0.9.9.tgz
