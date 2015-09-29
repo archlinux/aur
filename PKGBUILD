@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=otto-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Development and Deployment Made Easy - The Successor to Vagrant"
 arch=('i686' 'x86_64' 'arm')
@@ -36,5 +36,5 @@ sha256sums_arm=('abc5cce40777cad937ddfdf11dd706d62e321c492cd1a589060ccb6b4a12a5b
 noextract=()
 
 package() {
-	install -D -m 777 otto "$pkgdir/usr/bin/otto"
+	install -Dm0755 otto "$pkgdir/usr/bin/otto"
 }

@@ -1,7 +1,7 @@
 pkgbase = otto-bin
 	pkgdesc = Development and Deployment Made Easy - The Successor to Vagrant
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ottoproject.io/
 	arch = i686
 	arch = x86_64
