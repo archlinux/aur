@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-eigen
 	pkgdesc = ROS - This provides an Eigen implementation for ecls linear algebra.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_eigen
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-indigo-ecl-eigen
 	makedepends = eigen3
 	depends = ros-indigo-ecl-license
 	depends = eigen3
-	source = ecl_eigen::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_eigen/0.61.2-0
+	source = ecl_eigen::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_eigen/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-eigen

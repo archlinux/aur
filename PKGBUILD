@@ -4,7 +4,7 @@ pkgdesc="ROS - This provides an Eigen implementation for ecls linear algebra."
 url='http://wiki.ros.org/ecl_eigen'
 
 pkgname='ros-indigo-ecl-eigen'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
