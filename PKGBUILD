@@ -2,8 +2,8 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>, 4679kun <admin at 4679 dot us>
 
 pkgname=shadowsocks-libev
-pkgver=2.3.3
-pkgrel=6
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='A lightweight secured socks5 proxy for embedded devices and low end boxes'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/shadowsocks/shadowsocks-libev'
@@ -19,7 +19,7 @@ source=("https://github.com/shadowsocks/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 
 sha512sums=(
-'d3cd1a523a14850321b312ad1e652099a5bb875e243c960f2883f2484b8c61738f432818acf288ba0d658c948b2b60b9dc72c6beee6de649dffef3236e7500a7'
+'04f1ccf6f880f5f2158c583cfa55290e59986393f6424eb9c52266b107110272edd28e3260d37a1bba6cb41ae3999a9d831f00f80cdedd966794c06e2e1a3336'
 'SKIP'
 'SKIP'
 'SKIP'
