@@ -1,0 +1,15 @@
+pkgbase = python-magic-git
+	pkgdesc = Python 3 packages for alternative (github) implementation of python-magic
+	pkgver = 0.4.6
+	pkgrel = 3
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sed
+	depends = python
+	conflicts = python-magic
+	source = python-magic-git::git+https://github.com/ahupp/python-magic
+	md5sums = SKIP
+
+pkgname = python-magic-git
+
