@@ -1,14 +1,14 @@
 pkgbase = emacs-org-mode
 	pkgdesc = Emacs Org Mode
-	pkgver = 8.3.1
+	pkgver = 8.3.2
 	pkgrel = 1
 	url = http://orgmode.org/
 	install = emacs-org-mode.install
 	arch = any
 	license = GPL
 	depends = emacs
-	source = http://orgmode.org/org-8.3.1.tar.gz
-	sha256sums = 3d13b02fc42c76753aaa2f8873544af00218d2235fd19c13221736b10498c332
+	source = http://orgmode.org/org-8.3.2.tar.gz
+	sha256sums = 8ae811d19546f73306710f70eed8ee1a1ec9981e78b98af077fa224d5e8875b8
 
 pkgname = emacs-org-mode
 
