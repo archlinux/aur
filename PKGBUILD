@@ -86,7 +86,7 @@ package() {
 	
 	install -D "${srcdir}/nightingale-hacking/compiled/dist/chrome/icons/default/default.xpm" \
 		"${pkgdir}/usr/share/pixmaps/nightingale.xpm"
-	install -Dm644 "${srcdir}/nightingale-hacking.desktop" \
+	install -Dm644 "${srcdir}/Nightingale.desktop" \
 		"${pkgdir}/usr/share/applications/Nightingale.desktop"
 
 	find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
