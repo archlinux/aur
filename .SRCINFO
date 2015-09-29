@@ -1,19 +1,18 @@
 pkgbase = caledonia-bundle-plasma5
 	pkgdesc = A bundle with all Caledonia customizations for Plasma 5
 	pkgver = 2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://caledonia.sourceforge.net
 	arch = any
 	license = CCPL:by-sa
 	depends = plasma-workspace
+	depends = caledonia-backgrounds
 	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20%28Plasma-KDE%20Theme%29/Caledonia-2.0.tar.gz
 	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20KSplash/Caledonia-KSplash-2.0.tar.gz
 	source = Caledonia-2.0.colors::http://sourceforge.net/projects/caledonia/files/Caledonia%20Color%20Scheme/Caledonia.colors
-	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20Official%20Wallpapers/Caledonia_Official_Wallpaper_Collection-2.0.tar.gz
 	sha256sums = 3d855b7806d23ad3f748a30e9b0fa94c8ad7ec489fd19a4c026276b3045c5bcc
 	sha256sums = 6b44c2a77bf2e56b2b48f535b3c3678328dcf826d2a558d319357d5fbd3c2c72
 	sha256sums = 455dc9cfe3071f2ade5447ef5cf25b287e75d7c0b3c51b56ed737e10a5639fb0
-	sha256sums = 42caaeff55359bb5789f2c624595a4d67011024ec5201d40212f381b82535e29
 
 pkgname = caledonia-bundle-plasma5
 
