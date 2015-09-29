@@ -1,6 +1,6 @@
 pkgbase = emacs-org-mode-git
 	pkgdesc = Emacs Org Mode from git
-	pkgver = 8.3.1.283.gf6187de
+	pkgver = 8.3.2.137.gf6187de
 	pkgrel = 1
 	url = http://orgmode.org/
 	install = emacs-org-mode.install
@@ -13,7 +13,7 @@ pkgbase = emacs-org-mode-git
 	depends = emacs
 	optdepends = java-environment: for using ditaa.jar in the contrib directory
 	optdepends = zsh: for using dir2org.zsh in the contrib directory
-	provides = emacs-org-mode=8.3.1.283.gf6187de
+	provides = emacs-org-mode=8.3.2.137.gf6187de
 	conflicts = emacs-org-mode
 	source = emacs-org-mode::git://orgmode.org/org-mode.git
 	md5sums = SKIP
