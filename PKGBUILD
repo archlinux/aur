@@ -145,8 +145,4 @@ package() {
 
   # move module tree /lib -> /usr/lib
   mv "$pkgdir/lib" "$pkgdir/usr"
-
-  #ensure that up-to-date Arch linux patches + config are downloaded next time
-  rm ${startdir}/linux.tar.gz
-  rm -rf ${srcdir}/packages-packages
 }
