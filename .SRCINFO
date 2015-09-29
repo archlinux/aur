@@ -1,0 +1,18 @@
+pkgbase = perl-pod-eventual
+	pkgdesc = read a POD document as a series of trivial events
+	pkgver = 0.094001
+	pkgrel = 1
+	url = https://metacpan.org/release/Pod-Eventual
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep
+	checkdepends = perl-perlio-utf8-strict
+	depends = perl-mixin-linewise
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Eventual-0.094001.tar.gz
+	md5sums = 627de0dc05c84f147643d51dc132015a
+	sha512sums = f892653f6895381b3f493b44e8c295d02bf78e70e64c23b9c8602e6692517790524cd5996bb6d84aed7b4e8da60eebe99330a53e5f26f75e4ab017d6e8d317e6
+
+pkgname = perl-pod-eventual
+
