@@ -6,7 +6,7 @@ pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
 pkgver=2.3.17
 _pkgdir=1883
-pkgrel=1
+pkgrel=2
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
 url="http://fusioninventory.org"
@@ -99,7 +99,7 @@ optdepends=(
 source=("http://forge.fusioninventory.org/attachments/download/$_pkgdir/$_pkgname-$pkgver.tar.gz"
   'fusioninventory-agent.service'
   'fusioninventory-agent.config')
-md5sums=('89467ae101a89544a6fbade2e7a879fe'
+md5sums=('29002653bc5c25cd0e42b5990dc4cd2f'
          'cd0d59b266a41977f51d9e99ecca8cd5'
          '7cce12647a737aadcdd79dee4575aff3')
 

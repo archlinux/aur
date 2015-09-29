@@ -1,7 +1,7 @@
 pkgbase = fusioninventory-agent
 	pkgdesc = An application for keeping track of the hardware and software
 	pkgver = 2.3.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fusioninventory.org
 	arch = any
 	license = GPL
@@ -52,7 +52,7 @@ pkgbase = fusioninventory-agent
 	source = http://forge.fusioninventory.org/attachments/download/1883/FusionInventory-Agent-2.3.17.tar.gz
 	source = fusioninventory-agent.service
 	source = fusioninventory-agent.config
-	md5sums = 89467ae101a89544a6fbade2e7a879fe
+	md5sums = 29002653bc5c25cd0e42b5990dc4cd2f
 	md5sums = cd0d59b266a41977f51d9e99ecca8cd5
 	md5sums = 7cce12647a737aadcdd79dee4575aff3
 
