@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-perlio-via-timeout'
-pkgver='0.29'
+pkgver='0.32'
 pkgrel='1'
 pkgdesc="a PerlIO layer that adds read & write timeout to a handle"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-time-out')
-makedepends=('perl-module-build-tiny>=0.030')
+depends=('perl')
+makedepends=('perl-module-build-tiny>=0.039')
 checkdepends=('perl-test-tcp')
-url='http://search.mcpan.org/dist/PerlIO-via-Timeout'
-source=('http://search.mcpan.org/CPAN/authors/id/D/DA/DAMS/PerlIO-via-Timeout-0.29.tar.gz')
-md5sums=('5d11a404ef25fde310e1798c8702ce61')
-sha512sums=('824e99209e8c0ff93b3cff97139f27170a3034c98866a34b9dd80d6a938cfaa8db39ab5dacc20bd87aa94b0411f100b8744ac3f00672049d23d2324430b77f7c')
-_distdir="PerlIO-via-Timeout-0.29"
+url='https://metacpan.org/release/PerlIO-via-Timeout'
+source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAMS/PerlIO-via-Timeout-0.32.tar.gz')
+md5sums=('f18328a39a5eaa386e34df80f066039b')
+sha512sums=('52200c0d19da7a19b9b328473b0e7b57a1a3102fd3ace947af8fef8f670aaebe37811daaa2e2b6cf2f6397855a4cfb2424af053322146a8acefd71e1bb30f681')
+_distdir="PerlIO-via-Timeout-0.32"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

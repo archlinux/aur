@@ -1,18 +1,18 @@
 pkgbase = perl-perlio-via-timeout
 	pkgdesc = a PerlIO layer that adds read & write timeout to a handle
-	pkgver = 0.29
+	pkgver = 0.32
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/PerlIO-via-Timeout
+	url = https://metacpan.org/release/PerlIO-via-Timeout
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-tcp
-	makedepends = perl-module-build-tiny>=0.030
-	depends = perl-time-out
+	makedepends = perl-module-build-tiny>=0.039
+	depends = perl
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/D/DA/DAMS/PerlIO-via-Timeout-0.29.tar.gz
-	md5sums = 5d11a404ef25fde310e1798c8702ce61
-	sha512sums = 824e99209e8c0ff93b3cff97139f27170a3034c98866a34b9dd80d6a938cfaa8db39ab5dacc20bd87aa94b0411f100b8744ac3f00672049d23d2324430b77f7c
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAMS/PerlIO-via-Timeout-0.32.tar.gz
+	md5sums = f18328a39a5eaa386e34df80f066039b
+	sha512sums = 52200c0d19da7a19b9b328473b0e7b57a1a3102fd3ace947af8fef8f670aaebe37811daaa2e2b6cf2f6397855a4cfb2424af053322146a8acefd71e1bb30f681
 
 pkgname = perl-perlio-via-timeout
 
