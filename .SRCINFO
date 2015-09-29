@@ -1,0 +1,16 @@
+pkgbase = sc3-plugins-git
+	pkgdesc = Plugins for SuperCollider (Git version)
+	pkgver = 3.7.0.alpha1.r7.g9367339
+	pkgrel = 1
+	url = http://supercollider.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = supercollider
+	provides = supercollider-with-extras-git
+	conflicts = supercollider-with-extras-git
+	source = sc3-plugins::git+https://github.com/supercollider/sc3-plugins
+	md5sums = SKIP
+
+pkgname = sc3-plugins-git
+
