@@ -1,7 +1,7 @@
 pkgbase = caledonia-backgrounds
 	pkgdesc = The official wallpaper collection for Caledonia (DE-independent)
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://malcer.deviantart.com
 	arch = any
 	license = CCPL
