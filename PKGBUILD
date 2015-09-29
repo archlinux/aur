@@ -4,14 +4,14 @@
 pkgname=qbittorrent-nogui
 _pkgname=qbittorrent
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A bittorrent client based on Qt4 toolkit and libtorrent-rasterbar, w/o gui"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
 license=('GPL')
 depends=('boost-libs'
          'libtorrent-rasterbar'
-         'qt4')
+         'qt5-base')
 makedepends=('boost'
              'which')
 conflicts=('qbittorrent-git-nogui')
@@ -22,7 +22,7 @@ sha256sums=('86a79f3772bd06736a4be104180187d76c5c8feb2c1cdf1054135b4ba602a914'
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  ./configure --prefix=/usr --disable-gui
+  ./configure --prefix=/usr --disable-gui --with-qt5
   make
 }
 
