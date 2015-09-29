@@ -1,5 +1,5 @@
 pkgbase = nightingale-git
-	pkgdesc = Community port of Songbird to be more Linux native, up to date, and open.
+	pkgdesc = No binaries used. Open source fork of the Songbird Media Player with updates and fixes.
 	pkgver = 1e74b6f
 	pkgrel = 1
 	url = http://getnightingale.com/
@@ -28,8 +28,9 @@ pkgbase = nightingale-git
 	provides = nightingale
 	conflicts = nightingale
 	source = nightingale::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=gstreamer-1.0
+	source = nightingale-deps::git://github.com/nightingale-media-player/nightingale-deps.git#branch=xul-192-new
 	source = Nightingale.desktop
-	source = http://downloads.sourceforge.net/project/ngale/1.12-Build-Deps/linux--1.12-20130316-release-final.tar.lzma
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 7741cc247648e95dd9dad8c953616757
 
