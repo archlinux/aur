@@ -4,7 +4,7 @@ pkgdesc="ROS - Introduces a compile time concept checking mechanism that can be 
 url='http://wiki.ros.org/ecl_concepts'
 
 pkgname='ros-indigo-ecl-concepts'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
