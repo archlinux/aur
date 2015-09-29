@@ -51,7 +51,6 @@ build() {
   cmake .. \
      -DCMAKE_INSTALL_PREFIX=$_installdir \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-     -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
      -DVTK_DIR="${_paraviewrootdir}/lib/cmake/paraview-${_paraviewver}" \
      -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
      -DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2
