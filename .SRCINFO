@@ -1,0 +1,19 @@
+pkgbase = perl-moosex-strictconstructor
+	pkgdesc = Make your object constructors blow up on unknown attributes
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-StrictConstructor
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-moose
+	checkdepends = perl-test-fatal
+	depends = perl-moose>=0.94
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/MooseX-StrictConstructor-0.19.tar.gz
+	md5sums = 66cd34ce309c16e2cfe44ba626916bbb
+	sha512sums = 49fe134b4fa9f8deef014851aa851a185f02eb6f75c293e76a1143cb23de760aa46aeefcdb4c22322b545e73058532d35b0924f91de2561277b3f485f7a2fabd
+
+pkgname = perl-moosex-strictconstructor
+
