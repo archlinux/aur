@@ -7,8 +7,8 @@ _p2="60-1-compatdrivers_chan_qos_frag.patch"
 _p3="70-1-fix-channel-negative-1.patch"
 
 pkgname=backports-patches-git
-pkgver=4.1_rc1
-pkgrel=2
+pkgver=4.2_rc1
+pkgrel=1
 pkgdesc="frag+ack, chan_qos_frag, and chan-neg-1 patches for backports-patched."
 url="https://backports.wiki.kernel.org/index.php/Main_Page"
 arch=('any')

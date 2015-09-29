@@ -1,7 +1,7 @@
 pkgbase = backports-patches-git
 	pkgdesc = frag+ack, chan_qos_frag, and chan-neg-1 patches for backports-patched.
-	pkgver = 4.1_rc1
-	pkgrel = 2
+	pkgver = 4.2_rc1
+	pkgrel = 1
 	url = https://backports.wiki.kernel.org/index.php/Main_Page
 	arch = any
 	license = GPL
