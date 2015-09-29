@@ -1,9 +1,11 @@
 pkgbase = dina-powerline
 	pkgdesc = Modified versions of all Dina 13 font variants for use with vim-powerline.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/tampix/Dina-Powerline
 	install = dina-powerline.install
 	arch = any
+	license = custom
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://github.com/tampix/Dina-Powerline/archive/master.zip
