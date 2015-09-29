@@ -1,7 +1,7 @@
 pkgbase = mattermost
 	pkgdesc = Open source Slack-alternative in Golang and React
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 1.0.0_rc1
+	pkgrel = 1
 	url = http://mattermost.org
 	install = mattermost.install
 	arch = i686
@@ -19,10 +19,10 @@ pkgbase = mattermost
 	optdepends = percona-server: SQL server storage
 	optdepends = postgresql: SQL server storage
 	backup = etc/webapps/mattermost/config.json
-	source = https://github.com/mattermost/platform/archive/v0.7.1/mattermost-0.7.1.tar.gz
+	source = https://github.com/mattermost/platform/archive/v1.0.0-rc1/mattermost-1.0.0-rc1.tar.gz
 	source = mattermost.service
 	source = mattermost-user.conf
-	sha256sums = c4fb7885001f174173f636b4c18d540bab768a5c512f6cb8b004164decc97588
+	sha256sums = 8c98a5181a881b38daa975cddcf24c0a8da9738b91670740a56c9b622fdbcb5e
 	sha256sums = b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a
 	sha256sums = 7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd
 
