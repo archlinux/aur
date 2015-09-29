@@ -1,0 +1,15 @@
+pkgbase = qt-sesam-git
+	pkgdesc = Super Easy & Secure Authentication Manager
+	pkgver = 2.0.6.r13.g414e4ca
+	pkgrel = 1
+	url = https://github.com/ola-ct/Qt-SESAM/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	source = git+https://github.com/ola-ct/Qt-SESAM/
+	md5sums = SKIP
+
+pkgname = qt-sesam-git
+
