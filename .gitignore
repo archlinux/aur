@@ -1,0 +1,7 @@
+.*
+!.SRCINFO
+!.gitignore
+*.pkg.*
+bcc/
+pkg/
+src/

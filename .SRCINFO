@@ -1,0 +1,19 @@
+pkgbase = bcc-git
+	pkgdesc = BPF Compiler Collection
+	pkgver = v0.1.6.r134.4d97f7f
+	pkgrel = 1
+	url = https://github.com/iovisor/bcc
+	arch = x86_64
+	arch = x86
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	depends = python
+	provides = bcc
+	conflicts = bcc
+	source = git+https://github.com/iovisor/bcc
+	md5sums = SKIP
+
+pkgname = bcc-git
+
