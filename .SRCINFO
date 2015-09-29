@@ -1,0 +1,15 @@
+pkgbase = ginger
+	pkgdesc = HTML5 management for KVM
+	pkgver = 1.3.0.1
+	pkgrel = 3
+	url = https://github.com/kimchi-project/ginger
+	arch = any
+	license = LGPL2.1
+	license = APACHE
+	depends = kimchi
+	backup = etc/kimchi/kimchi.conf
+	source = https://github.com/kimchi-project/ginger/archive/1.3.0.1-final.tar.gz
+	md5sums = 2150b504f5df529bccf0314beec841a7
+
+pkgname = ginger
+
