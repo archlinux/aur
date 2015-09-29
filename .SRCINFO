@@ -1,13 +1,17 @@
 pkgbase = brother-mfc-j5320dw
 	pkgdesc = LPR and CUPS driver for the Brother MFC-J5320DW
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=mfcj5320dw_eu_as
 	install = brother-mfc-j5320dw.install
 	arch = i686
 	arch = x86_64
 	license = custom:Brother commercial license
 	depends = cups
+	depends = ghostscript
+	depends = poppler
+	depends = a2ps
+	depends = psutils
 	source = http://download.brother.com/welcome/dlf101593/mfcj5320dwlpr-3.0.1-1.i386.rpm
 	source = http://download.brother.com/welcome/dlf101594/mfcj5320dwcupswrapper-3.0.1-1.i386.rpm
 	source = cupswrapper-license.txt
@@ -16,6 +20,7 @@ pkgbase = brother-mfc-j5320dw
 	md5sums = cf72635ca318b06c3c580b7c645e5a12
 	md5sums = 310f8424517f3df127d39393ceaebb6f
 	md5sums = bf894a1a51baf6055a6c58ecf43c9782
+	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfc-j5320dw
 

@@ -3,7 +3,7 @@
 
 pkgname="brother-mfc-j5320dw"
 pkgver="3.0.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="LPR and CUPS driver for the Brother MFC-J5320DW"
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=mfcj5320dw_eu_as"
