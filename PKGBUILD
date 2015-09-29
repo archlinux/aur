@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=32.0.1948.25
+pkgver=32.0.1948.69
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
@@ -31,7 +31,7 @@ source=(
 )
 sha256sums=('508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
-sha256sums_x86_64=('4157732e784d13128a991b640c2d549aa9597d9f6900fc30c768ad17e9e1a2c1')
+sha256sums_x86_64=('b2178af796a9b5adf3a8d6f17391ade03efc6ad3c0f9d853f1e9766735eba91b')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
