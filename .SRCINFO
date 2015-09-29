@@ -1,14 +1,12 @@
 pkgbase = bypy-git
 	pkgdesc = Python client for Baidu Yun (Personal Cloud Storage) 百度云/百度网盘 Python 客户端
-	pkgver = 20150726
+	pkgver = 20150916
 	pkgrel = 1
 	url = https://github.com/houtianze/bypy
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = python2-requests
-	depends = python2-certifi
-	depends = python2-urllib3
 	provides = bypy
 	source = bypy::git+https://github.com/houtianze/bypy
 	md5sums = SKIP
