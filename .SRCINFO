@@ -1,6 +1,6 @@
 pkgbase = skype-desktop-bin
 	pkgdesc = An unofficial client of Skype for Linux, running on top of Node Webkit.
-	pkgver = 8594308
+	pkgver = 664fc5b
 	pkgrel = 1
 	url = https://github.com/haskellcamargo/skype-unofficial-client
 	arch = i686
@@ -11,9 +11,7 @@ pkgbase = skype-desktop-bin
 	depends = gconf
 	depends = libnotify
 	source = git+https://github.com/haskellcamargo/skype-unofficial-client.git
-	source = 0001-Adding-PREFIX-variable.patch
 	md5sums = SKIP
-	md5sums = c419c56f8551b794ce355b955ea63b96
 
 pkgname = skype-desktop-bin
 

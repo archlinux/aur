@@ -1,7 +1,7 @@
 # Maintainer: Trevor <assviolat0r at live dot com>
 # Co-maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=skype-desktop-bin
-pkgver=8594308
+pkgver=664fc5b
 pkgrel=1
 pkgdesc="An unofficial client of Skype for Linux, running on top of Node Webkit."
 arch=('i686' 'x86_64')
@@ -13,20 +13,13 @@ makedepends=('make' 'git')
 # Actually check for the architecture (Trevor, is so much juice! :D)
 [ "$CARCH" = "i686" ]   && _platform=linux_x86
 [ "$CARCH" = "x86_64" ] && _platform=linux_x64
-source=(git+https://github.com/haskellcamargo/skype-unofficial-client.git
-	0001-Adding-PREFIX-variable.patch)
-md5sums=('SKIP'
-         'c419c56f8551b794ce355b955ea63b96')
+source=(git+https://github.com/haskellcamargo/skype-unofficial-client.git)
+md5sums=('SKIP')
 _gitname=skype-unofficial-client
 
 pkgver () {
 	cd $_gitname
 	echo $(git describe --always | sed 's/-/./g')
-}
-
-prepare() {
-	cd "$srcdir/$_gitname"
-	patch -p1 -i ../0001-Adding-PREFIX-variable.patch
 }
 
 package() {
