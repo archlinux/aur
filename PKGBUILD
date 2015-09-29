@@ -1,30 +1,30 @@
 # Maintainer: K1412 <jonathan@opensides.be>
 pkgname=fusiondirectory
-pkgver=1.0.8.9
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="FusionDirectory is a combination of system-administrator and end-user web interface, designed to handle LDAP based setups."
-arch=('any')
+arch=("any")
 url="http://fusiondirectory.org/"
-license=('LGPL')
-depends=('apache' 'smarty3' 'smarty3-i18n' 'prototype' 'scriptaculous' 'schema2ldif' 'javascript-common'
-'perl-path-class' 'perl-ldap' 'perl-mime-base64' 'perl-crypt-passwdmd5' 'perl-term-readkey'
-'perl-crypt-cbc' 'perl-file-copy-recursive' 'perl-xml-twig' 'perl-archive-extract' 'perl-extutils-makemaker'
-'php-imagick' 'php-ldap' 'php-pear' 'php-gd' 'php-imap' 'php-apache')
+license=("LGPL")
+depends=("apache" "smarty3" "smarty3-i18n" "prototype" "scriptaculous" "schema2ldif" "javascript-common"
+"perl-path-class" "perl-ldap" "perl-mime-base64" "perl-crypt-passwdmd5" "perl-term-readkey"
+"perl-crypt-cbc" "perl-file-copy-recursive" "perl-xml-twig" "perl-archive-extract" "perl-extutils-makemaker"
+"php-imagick" "php-ldap" "php-pear" "php-gd" "php-imap" "php-apache")
 install=${pkgname}.install
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz"
-        'fixes-path.patch'
-        'fixes-apache-path.patch'
-        'fixes-pear-lib.patch'
-        'fixes-headers.patch'
-        'fixes-password.patch')
+        "fixes-path.patch"
+        "fixes-apache-path.patch"
+        "fixes-pear-lib.patch"
+        "fixes-headers.patch"
+        "fixes-password.patch")
 
-md5sums=('b894b28677ed7bb9c95753757b5ad99d'
-         '5f92d3e4378d0ea7fda7fa9c8b81d29e'
-         'd2e3d7dedf5c436c6d7484dc049f3f7f'
-         '0a78917932d864cbaefa0139f90c6ab0'
-         '21ff95126a4e956a85219242c609bb3c'
-         '2afdfadf6e441099d7644577640c0cb5')
+md5sums=('76f56b46c20dbf474d5d4030554fc6ba'
+         "5f92d3e4378d0ea7fda7fa9c8b81d29e"
+         "d2e3d7dedf5c436c6d7484dc049f3f7f"
+         "0a78917932d864cbaefa0139f90c6ab0"
+         "21ff95126a4e956a85219242c609bb3c"
+         "2afdfadf6e441099d7644577640c0cb5")
 
 prepare() {
   # In srcdir
