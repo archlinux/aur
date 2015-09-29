@@ -2,8 +2,12 @@
 image: l3iggs/archlinux-aur
 Build:
   script:
+  - export BINDIR=$(mktemp -d)
+  - wget -O ${BINDIR}/pacman2 http://mortzu.andromeda.hostedinspace.de/ci-runner/pacman2
+  - chmod +x ${BINDIR}/pacman2
+  - export PATH=$BINDIR:$PATH
   - export TERM='linux'
-  - export PACMAN='yaourt2'
+  - export PACMAN='pacman2'
   - makepkg --cleanbuild --clean --force --syncdeps --rmdeps --noconfirm --asdeps
   tags: 
   except:
