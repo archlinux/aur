@@ -4,7 +4,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-window-buttons-git
-pkgver=10_e.g.o.r13.g23a7307
+pkgver=2.5
 pkgrel=1
 pkgdesc="Extension which puts minimize, maximize and close buttons in the top panel."
 arch=('any')

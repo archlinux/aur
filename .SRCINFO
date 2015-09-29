@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-window-buttons-git
 	pkgdesc = Extension which puts minimize, maximize and close buttons in the top panel.
-	pkgver = 10_e.g.o.r13.g23a7307
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://github.com/danielkza/Gnome-Shell-Window-Buttons-Extension
 	install = gschemas.install
