@@ -1,0 +1,18 @@
+pkgbase = salome-paravis
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - PARAVIS Module
+	pkgver = 7.6.0
+	pkgrel = 1
+	url = http://www.salome-platform.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = boost
+	makedepends = python2-sphinx
+	depends = salome-smesh>=7.6.0
+	depends = salome-smesh<7.7.0
+	depends = paraview-salome>=4.1.0
+	source = salome-paravis.profile
+	md5sums = c135f9d48f56ccd950de4c0c09221595
+
+pkgname = salome-paravis
+
