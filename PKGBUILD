@@ -7,7 +7,7 @@ arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
 
-depends=('' 'samba-schema')
+depends=("fusiondirectory-schema>=$pkgver" "fusiondirectory-plugin-systems-schema>=$pkgver")
 
 install=fusiondirectory-plugin-samba.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
