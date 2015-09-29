@@ -9,23 +9,23 @@ _pkgbasename=catalyst-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-catalyst-utils' 'lib32-catalyst-libgl' 'lib32-opencl-catalyst')
 
-pkgver=15.5
+pkgver=15.9
 pkgrel=1
-#_amdver=15.101.1001
+_amdver=15.201.1151
 url="http://www.amd.com"
 arch=(x86_64)
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
 source=(
-    http://www2.ati.com/drivers/linux/amd-catalyst-omega-${pkgver}-linux-run-installers.zip
+    http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
     lib32-catalyst.sh)
-md5sums=('979f9f2e0948fa6e92ff0125f5c6b575' 'af7fb8ee4fc96fd54c5b483e33dc71c4')
+md5sums=('d2de2df6946b452c266a3c892e6e46ff' 'af7fb8ee4fc96fd54c5b483e33dc71c4')
 
 url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
 DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 build() {
-     /bin/sh ./amd-catalyst-omega-${pkgver}-linux-run-installers.run --extract archive_files
+     /bin/sh ./AMD-Catalyst-${pkgver}-Linux-installer-${_amdver}-x86.x86_64.run --extract archive_files
 }
 
 package_lib32-catalyst-libgl() {
