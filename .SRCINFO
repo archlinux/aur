@@ -1,6 +1,6 @@
 pkgbase = sslscan-git
 	pkgdesc = sslscan tests SSL/TLS enabled services to discover supported cipher suites
-	pkgver = 302.271e615
+	pkgver = 325.2c15207
 	pkgrel = 1
 	url = https://github.com/rbsec/sslscan
 	arch = i686
