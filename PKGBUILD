@@ -1,17 +1,17 @@
-# Maintainer: Kaan Genç <SeriousBug at gmail dot com>
+# Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _npmname=pulp
 pkgname=nodejs-$_npmname
-pkgver=4.0.2
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='A build system and package manager for PureScript projects.'
 arch=('any')
 url='https://github.com/bodil/pulp'
 license=('LGPL3')
-depends=('npm')
+depends=('npm' 'nodejs')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-md5sums=('0727f690a584ce58468883b34030306b')
+md5sums=('15450ae6048ca23ff2e01524bb0c3eca')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
