@@ -8,6 +8,7 @@ Build:
   - export PATH=$BINDIR:$PATH
   - export TERM='linux'
   - export PACMAN='pacman2'
+  - yaourt -Syu --noconfirm
   - makepkg --cleanbuild --clean --force --syncdeps --rmdeps --noconfirm --asdeps
   tags: 
   except:
