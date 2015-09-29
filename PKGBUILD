@@ -1,19 +1,18 @@
 pkgname=fusiondirectory-plugin-apache2-schema
-pkgver=1.0.8.9
-pkgver=1.0.8.9
+pkgver=1.0.9
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="LDAP schema for FusionDirectory apache2 plugin"
-arch=('any')
+arch=("any")
 url="http://fusiondirectory.org/"
-license=('LGPL')
+license=("LGPL")
 
-depends=('fusiondirectory-schema>=1.0.8.9' 'fusiondirectory-plugin-systems-schema>=1.0.8.9')
+depends=("fusiondirectory-schema>=$pkgver" "fusiondirectory-plugin-systems-schema>=$pkgver")
 
 install=fusiondirectory-plugin-apache2.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('03d3831e2c50248e3cc9e7cefe223234'
-'e169b4ca7ac809a6b939ed06d81c0f2a')
+md5sums=('7c761f082278bfdcc5e9130e8fa4d3a0' '76f56b46c20dbf474d5d4030554fc6ba')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
@@ -33,7 +32,7 @@ cd apache2/
       done
     
       # Files
-      for cur_openldap in $(find ./contrib/openldap -mindepth 1 -maxdepth 1 -type f ! -name 'example.ldif' ) ; do
+      for cur_openldap in $(find ./contrib/openldap -mindepth 1 -maxdepth 1 -type f ! -name "example.ldif" ) ; do
         openldap_line="$(echo ${cur_openldap} | sed "s#./contrib/openldap/##")" 
         cp -a ./contrib/openldap/${openldap_line} ${pkgdir}/etc/openldap/schema/fusiondirectory/
       done
