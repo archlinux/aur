@@ -1,0 +1,15 @@
+pkgbase = nodejs-handlebars
+	pkgdesc = Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = http://handlebarsjs.com/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = handlebars-4.0.2.tgz
+	source = http://registry.npmjs.org/handlebars/-/handlebars-4.0.2.tgz
+	sha256sums = 09807745ef628ab8046c2cbce9f0e1c42e9b31e9f631e7bcc832a972a36182c2
+
+pkgname = nodejs-handlebars
+
