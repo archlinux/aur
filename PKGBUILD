@@ -5,8 +5,8 @@
 
 _npmname=bower
 pkgname=nodejs-$_npmname
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc='A package manager for the web'
 arch=('any')
 url='http://bower.io/'
@@ -16,7 +16,7 @@ makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
         LICENSE)
 noextract=($_npmname-$pkgver.tgz)
-md5sums=('218d35f4106d00d27c8f4930fdd64547'
+md5sums=('3a4130a26d21148a6d3230a4f8555704'
          '135697567327f92e904ef0be2082da5e')
 
 package() {
