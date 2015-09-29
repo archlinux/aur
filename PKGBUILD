@@ -1,4 +1,4 @@
-# Maintainer: Kaan Genç <SeriousBug at gmail dot com>
+# Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _npmname=grunt-purescript
 pkgname=nodejs-$_npmname
@@ -8,7 +8,7 @@ pkgdesc='Compile PureScript files.'
 arch=('any')
 url='https://github.com/purescript/grunt-purescript'
 license=('MIT')
-depends=('npm')
+depends=('npm' 'nodejs')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
 md5sums=('088b7de323c1416bb0f8519386bd37e4')

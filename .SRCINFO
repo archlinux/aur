@@ -6,6 +6,7 @@ pkgbase = nodejs-grunt-purescript
 	arch = any
 	license = MIT
 	depends = npm
+	depends = nodejs
 	noextract = grunt-purescript-0.6.0.tgz
 	source = http://registry.npmjs.org/grunt-purescript/-/grunt-purescript-0.6.0.tgz
 	md5sums = 088b7de323c1416bb0f8519386bd37e4
