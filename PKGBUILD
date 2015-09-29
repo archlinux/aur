@@ -5,7 +5,7 @@
 pkgname=nvidia-ck
 pkgver=355.11
 _extramodules=extramodules-4.1-ck
-pkgrel=1
+pkgrel=2
 _pkgdesc="NVIDIA drivers for linux-ck."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -35,11 +35,6 @@ build() {
 	_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 	cd "${_pkg}/kernel"
 	make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-
-	if [[ "$CARCH" = "x86_64" ]]; then
-		cd uvm
-		make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-	fi
 }
 
 package() {
@@ -47,7 +42,7 @@ package() {
 		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
 
 	if [[ "$CARCH" = "x86_64" ]]; then
-		install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+		install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
 			"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
 	fi
 
