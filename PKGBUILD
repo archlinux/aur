@@ -4,7 +4,7 @@ pkgdesc="ROS - Extends c++ type traits and implements a few more to boot."
 url='http://wiki.ros.org/ecl_type_traits'
 
 pkgname='ros-indigo-ecl-type-traits'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
