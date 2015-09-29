@@ -2,10 +2,11 @@ pkgbase = hawaii-qt5-wayland-git
 	pkgdesc = A cross-platform application and UI framework (QtWayland)
 	pkgver = 20150516.1d0475d
 	pkgrel = 1
-	url = http://qt-project.org/
+	url = http://qt.io/
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7h
 	license = GPL3
 	license = LGPL
 	makedepends = git
@@ -21,7 +22,7 @@ pkgbase = hawaii-qt5-wayland-git
 	replaces = qt5-wayland
 	options = !libtool
 	options = debug
-	source = hawaii-qtwayland::git://github.com/maui-packages/qtwayland#branch=output54
+	source = hawaii-qtwayland::git://code.qt.io/qt/qtwayland#branch=dev
 	md5sums = SKIP
 
 pkgname = hawaii-qt5-wayland-git
