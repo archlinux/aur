@@ -1,18 +1,18 @@
 pkgbase = perl-io-socket-timeout
 	pkgdesc = IO::Socket with read/write timeout
-	pkgver = 0.27
+	pkgver = 0.32
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/IO-Socket-Timeout
+	url = https://metacpan.org/release/IO-Socket-Timeout
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-tcp
-	makedepends = perl-module-build-tiny>=0.036
-	depends = perl-perlio-via-timeout>=0.28
+	makedepends = perl-module-build-tiny>=0.039
+	depends = perl-perlio-via-timeout>=0.32
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/D/DA/DAMS/IO-Socket-Timeout-0.27.tar.gz
-	md5sums = 2e22f5f17b5a8e99f9647ebb120af8cd
-	sha512sums = bd8c7e428fbf5e0a1f35a14acd5f3281d6fa7a84f1d6eb4c07712aa3c2601635fc832433f72c5470d60828ac774fc9f148649c0bc1ac20f0d93bab1c487114a9
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAMS/IO-Socket-Timeout-0.32.tar.gz
+	md5sums = 93d978bb7f8360a215b646cf339b4559
+	sha512sums = 013ad036c796880ab464b18f642260609095cf40c74f3127abaf3c8a596ba8ee85746129dc84d2d1e6f1bbfc86d75969e99c5a9b67736fa3e5e8bc7f5ddf83a6
 
 pkgname = perl-io-socket-timeout
 
