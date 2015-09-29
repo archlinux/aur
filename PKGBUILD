@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-module-path'
-pkgver='0.12'
+pkgver='0.19'
 pkgrel='1'
 pkgdesc="get the full path to a locally installed module"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.006')
-makedepends=('perl-devel-findperl>=0')
-url='http://search.cpan.org/dist/Module-Path'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Module-Path-0.12.tar.gz')
-md5sums=('f9a8b2b4b203213ef5be464fa75b0927')
-sha512sums=('841309a89c042964e56eb98a4a02109175b6fc791808c6fe0a8daba3f5f2682ca772f8099ebdd4d2aba5bc8ee265d7c9ca256e7aa4ed6e6ec8100db1d3d09d84')
-_distdir="Module-Path-0.12"
+depends=('perl-devel-findperl' 'perl')
+makedepends=()
+url='https://metacpan.org/release/Module-Path'
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Module-Path-0.19.tar.gz')
+md5sums=('8f409cc8654c5b3896f5d2770e07ddab')
+sha512sums=('fa71c67f6e8daab9df29a6ced09c557980873ea73ed6e9c28081d10009d153767adc24ddd6acbde0c1423ffbf9cc92f8ab5db29203b73a79643dfc98fc2b2935')
+_distdir="Module-Path-0.19"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
