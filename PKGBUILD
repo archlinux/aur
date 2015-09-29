@@ -1,18 +1,17 @@
 # Maintainer: Lance Chen <cyen0312+aur@gmail.com>
 
-_npmname=LiveScript
+_npmname=livescript
 pkgname=nodejs-livescript
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="LiveScript is a language which compiles to JavaScript"
 arch=(any)
 url="http://livescript.net/"
 license=('MIT')
 depends=('nodejs')
-makedepends=('nodejs')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-md5sums=('cce0e5b859e1d62e648ec4fb73133c1e')
+sha1sums=('e33f24783761c8f803dff70fc5a3023c87484029')
 
 package() {
   cd "$srcdir"
