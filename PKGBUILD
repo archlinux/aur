@@ -1,40 +1,32 @@
-# Maintainer: Alan Witkowski <alan dot witkowski at gmail dot com>
+# Maintainer: Alan Witkowski <alan.witkowski+aur@gmail.com>
 pkgname=choria
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
-pkgdesc="2D MMORPG that's all about grinding and doing chores"
+pkgdesc="a 2D MMORPG that's all about grinding and doing chores."
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/choria/"
+url="https://github.com/jazztickets/choria"
 license=('GPL3')
 depends=('gcc-libs' 'irrlicht' 'sqlite')
 makedepends=('cmake')
-changelog=Changelog
-source=("http://choria.googlecode.com/files/$pkgname-$pkgver-src.tar.gz")
-sha256sums=('6d1e568ccaf1678a3be9aba4000112d01c2a6f1320f72968ad6ba17043077713')
+source=("https://github.com/jazztickets/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.gz")
+
+sha256sums=('28f794394d2bdbff9b3c97f1cf16de2f9dffb84551f6f685d0d2110782efc172')
 
 prepare() {
-	cd $srcdir/$pkgname-$pkgver-src
-
-	# script fix
-	sed -i 's|/local||' deployment/choria
+	cd $srcdir/$pkgname-$pkgver
 }
 
 build() {
-	cd $srcdir/$pkgname-$pkgver-src
+	cd $srcdir/$pkgname-$pkgver
 	cmake -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver-src
+	cd "$srcdir/$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 
-	make DESTDIR=$pkgdir install
-
-	# it's a standard license, rm it
-	rm $pkgdir/usr/share/doc/$pkgname/license.txt
-
-	# place starting script where it's supposed to be
-	install -dm755 $pkgdir/usr/bin
-	mv $pkgdir/usr/games/$pkgname $pkgdir/usr/bin/$pkgname
-	rmdir $pkgdir/usr/games
+	# remove standard license
+	rm $pkgdir/usr/share/doc/$pkgname/LICENSE
 }
+
