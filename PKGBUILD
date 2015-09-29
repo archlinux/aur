@@ -4,7 +4,7 @@ pkgdesc="ROS - Some fast/convenient type converters, mostly for char strings or 
 url='http://wiki.ros.org/ecl_converters'
 
 pkgname='ros-indigo-ecl-converters'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
