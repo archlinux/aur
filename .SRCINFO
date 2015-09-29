@@ -1,0 +1,20 @@
+pkgbase = spideroak-blue
+	pkgdesc = Secure file backup, sync and sharing client. This provides the client for SpiderOak Blue.
+	pkgver = 5.1.10
+	pkgrel = 1
+	url = https://spideroak.com/
+	install = spideroak-blue.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = desktop-file-utils
+	depends = glibc>=2.9
+	provides = spideroak
+	conflicts = spideroak-beta
+	conflicts = spideroak
+	options = !strip
+	source = terms.txt
+	sha256sums = 4819c8d923ab19e552e877b87adf1d45aca6adcb5dffcb238d7819501e6e6737
+
+pkgname = spideroak-blue
+
