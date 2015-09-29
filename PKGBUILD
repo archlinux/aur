@@ -1,11 +1,13 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
+
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-last-rt
 pkgver=355.11
 _extramodules=extramodules-4.1-rt
-pkgrel=6
+pkgrel=7
 pkgdesc="NVIDIA drivers for linux"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
