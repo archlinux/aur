@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly
 	pkgdesc = Standalone web browser from mozilla.org, nightly build
-	pkgver = 43.0a1.20150823
+	pkgver = 44.0a1.20150928
 	pkgrel = 1
 	url = http://www.mozilla.org/projects/firefox
 	arch = i686
@@ -23,13 +23,13 @@ pkgbase = firefox-nightly
 	sha512sums = d2d836b07288d2a13d01d668399df8a2a15884a58a7051303938bf74a30bdfc23a8bc57395494345727ae24e1dd9cab09c67a640a5c9e7a8df895f987e009dcd
 	sha512sums = 00caf982c072c7499433c494ecf2096542c4ddf368c4b97fb22672fd669683911d009a65a498b8a03da61ae9aa5a4e8bdaa6e58b148c2a5d7c008910b2af26a5
 	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
-	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-43.0a1.en-US.linux-i686.tar.bz2
-	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-43.0a1.en-US.linux-i686.txt
-	sha512sums_i686 = ad7f980ba880f4055886894f84d40d2d2b8896b11e389e63722b748853a54a2b22337b5945a0ce36f0542173851f24369909f36943f6ae828f589f9f41b32f8b
+	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-44.0a1.en-US.linux-i686.tar.bz2
+	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-44.0a1.en-US.linux-i686.txt
+	sha512sums_i686 = dd9dda027138efff7e80d6f28236ec0e42f0fabe779bf427a38659ad3fe5025b4a7db60e6f849c2c282ce39f3dc125df7bafbd22b2964e7ea75ae894d7f7f1da
 	sha512sums_i686 = SKIP
-	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-43.0a1.en-US.linux-x86_64.tar.bz2
-	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-43.0a1.en-US.linux-x86_64.txt
-	sha512sums_x86_64 = 3f44934d9a1d1698edc60f829dd3ec8ce5ea7aef11b027e77338a718c207a7eeea163786d9255da3ce031895ef84898db471bec2be4435f723e18dcdcba625ae
+	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-44.0a1.en-US.linux-x86_64.tar.bz2
+	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-44.0a1.en-US.linux-x86_64.txt
+	sha512sums_x86_64 = fa34b9c2ba142703ef78efb3a3121a3dbf4622e7021e0219407f231fb70eddd91a6883fd6bfe9d1b7d1538ea2c9540ac67239b97f119db52da408f93587e9bae
 	sha512sums_x86_64 = SKIP
 
 pkgname = firefox-nightly
