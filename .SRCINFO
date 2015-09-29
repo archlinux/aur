@@ -1,13 +1,12 @@
 pkgbase = caledonia-plasma-theme
 	pkgdesc = Caledonia theme: for KDE plasma
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://caledonia.sourceforge.net
 	arch = any
 	license = CCPL:by-sa
 	depends = plasma-workspace
 	conflicts = caledonia-bundle-plasma5
-	conflicts = plasma-theme-caledonia
 	conflicts = plasma-theme-caledonia
 	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20%28Plasma-KDE%20Theme%29/Caledonia-2.0.tar.gz
 	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20KSplash/Caledonia-KSplash-2.0.tar.gz

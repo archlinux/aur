@@ -4,13 +4,13 @@
 
 pkgname='caledonia-plasma-theme'
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Caledonia theme: for KDE plasma"
 arch=('any')
 url=('http://caledonia.sourceforge.net')
 license=('CCPL:by-sa')
 depends=('plasma-workspace')
-conflicts=('caledonia-bundle-plasma5' 'plasma-theme-caledonia' 'plasma-theme-caledonia')
+conflicts=('caledonia-bundle-plasma5' 'plasma-theme-caledonia')
 replaces=()
 _url='http://sourceforge.net/projects/caledonia/files'
 source=("${_url}/Caledonia%20%28Plasma-KDE%20Theme%29/Caledonia-${pkgver}.tar.gz"
