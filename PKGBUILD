@@ -36,7 +36,6 @@ package() {
 	mkdir -p $pkgdir/etc/openldap/schema/fusiondirectory/
 	mkdir -p $pkgdir/usr/share/doc/$pkgname/
 	cp -a contrib/openldap/* $pkgdir/etc/openldap/schema/fusiondirectory/
-	rm $pkgdir/etc/openldap/schema/fusiondirectory/slapd.conf 
 
 	# Move executables
 	mkdir -p $pkgdir/usr/bin/
