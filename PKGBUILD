@@ -5,7 +5,7 @@
 
 pkgname=broadcom-wl-ck
 pkgver=6.30.223.248
-pkgrel=30
+pkgrel=31
 _pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.'
 _extramodules="extramodules-4.1-ck"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
