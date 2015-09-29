@@ -1,0 +1,14 @@
+pkgbase = stribogsum
+	pkgdesc = The Stribog hash function, developed by the Federal Security Service (FSB) and InfoTeKS
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.gostcrypt.org/download.php
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	source = https://www.gostcrypt.org/download/1.0/linux/Stribogsum.tar.gz
+	sha256sums = 978e81f7de8d4d13c3e11fc2122261146f4b045adebfc20d5a41c200dd9c9bed
+
+pkgname = stribogsum
+
