@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 4.1.8
+	pkgver = 4.1.9
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = linux-ck
 	options = !strip
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.8.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.8.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.9.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.9.sign
 	source = config.x86_64
 	source = config
 	source = linux-ck.preset
@@ -24,7 +24,7 @@ pkgbase = linux-ck
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
-	sha256sums = 4373af2baaae5429be37e5257a22454d468f36b1322f784bb91a608c80ed52a1
+	sha256sums = 9912a9ce6aa47d96c526214349daf439d05c59015270dc64e19b065b309be107
 	sha256sums = SKIP
 	sha256sums = b04ce2128ddb94be5ffafb4383d5c8b016760500696b1426a6e552c9a61ab27c
 	sha256sums = cc181fe0cfcedcd3bf606d7cce53e07dfb206d6c3549238dc7f4d0d27973d1a4
@@ -45,7 +45,7 @@ pkgname = linux-ck
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = nvidia-ck: nVidia drivers for linux-ck
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-ck=4.1.8
+	provides = linux-ck=4.1.9
 	conflicts = kernel26-ck
 	conflicts = linux-ck-corex
 	conflicts = linux-ck-p4
@@ -69,8 +69,8 @@ pkgname = linux-ck
 pkgname = linux-ck-headers
 	pkgdesc = Header files and scripts to build modules for linux-ck.
 	depends = linux-ck
-	provides = linux-ck-headers=4.1.8
-	provides = linux-headers=4.1.8
+	provides = linux-ck-headers=4.1.9
+	provides = linux-headers=4.1.9
 	conflicts = kernel26-ck-headers
 	conflicts = linux-ck-corex-headers
 	conflicts = linux-ck-p4-headers
