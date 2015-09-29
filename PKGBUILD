@@ -18,14 +18,10 @@ conflicts=('nvidia-340xx-ck' 'nvidia-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvid
 license=('custom')
 install=nvidia-304xx-ck.install
 options=(!strip)
-source=('nv-drm.patch'
-'nvidia-3.19.patch'
-'nvidia-4.0.patch')
+source=('nv-drm.patch')
 source_i686+=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301'
-         '965a8455b291fdb414a02101a3a9f587'
-         'f42bdf589f52d4e6c38baa5bef15eef8')
+md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301')
 md5sums_i686=('be2b40a4dc3339b050a4f76ddd27e96c')
 md5sums_x86_64=('6478e40ed87d9177cbfc3d0b6e39a051')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
@@ -35,8 +31,6 @@ prepare() {
 	sh "${_pkg}.run" --extract-only
 	cd "${_pkg}"
 	patch -Np0 -i "$srcdir/nv-drm.patch"
-	patch -p1 -i "$srcdir/nvidia-3.19.patch"
-	patch -p0 -i "$srcdir/nvidia-4.0.patch"
 }
 
 build() {
