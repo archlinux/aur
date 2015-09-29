@@ -16,15 +16,13 @@ source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondire
         "fixes-path.patch"
         "fixes-apache-path.patch"
         "fixes-pear-lib.patch"
-        "fixes-headers.patch"
-        "fixes-password.patch")
+        "fixes-headers.patch")
 
 md5sums=('76f56b46c20dbf474d5d4030554fc6ba'
          "5f92d3e4378d0ea7fda7fa9c8b81d29e"
          "d2e3d7dedf5c436c6d7484dc049f3f7f"
          "0a78917932d864cbaefa0139f90c6ab0"
-         "21ff95126a4e956a85219242c609bb3c"
-         "2afdfadf6e441099d7644577640c0cb5")
+         "21ff95126a4e956a85219242c609bb3c")
 
 prepare() {
   # In srcdir
@@ -35,7 +33,6 @@ prepare() {
   patch -p1 -i ../fixes-apache-path.patch
   patch -p1 -i ../fixes-pear-lib.patch
   patch -p1 -i ../fixes-headers.patch
-  patch -p1 -i ../fixes-password.patch
 
   # Right for executables 
   chmod 750 ./contrib/bin/*
