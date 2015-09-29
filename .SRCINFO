@@ -1,0 +1,14 @@
+pkgbase = keymap-jp106-capsctrl
+	pkgdesc = modified jp106 console keymap to change caps to ctrl
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://example.com/dummy-url/
+	arch = any
+	license = MIT
+	depends = kbd
+	noextract = jp106_capsctrl.map.gz
+	source = jp106_capsctrl.map.gz
+	md5sums = 3999e7c0ff951846ed8ed423fd30b7df
+
+pkgname = keymap-jp106-capsctrl
+
