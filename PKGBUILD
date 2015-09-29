@@ -1,7 +1,6 @@
 # Maintainer: Matt Parnell/ilikenwf
 # Cleanup: Sam Stuewe <halosghost@archlinux.info>
 # still want to build trunk? use http://sprunge.us/XARP instead
-_branch="gstreamer-1.0"
 pkgname="nightingale-git"
 pkgver=1e74b6f
 pkgrel=1
@@ -14,7 +13,7 @@ depends=('gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugi
 conflicts=('nightingale')
 provides=('nightingale')
 install="nightingale.install"
-source=("nightingale-hacking::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=${_branch}"
+source=("nightingale-hacking::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=gstreamer-1.0"
 		"nightingale-deps::git://github.com/nightingale-media-player/nightingale-deps.git#branch=xul-192-new"
         "Nightingale.desktop")
 md5sums=('SKIP'
@@ -61,8 +60,10 @@ build() {
 		msg "Using existing dependencies. If you haven't rebuilt in a while please rm -rf pkg and src and start over."
 	fi
 	
-	# link our hopefully fresh compiled deps (no more bins!)
-	ln -s "${srcdir}/linux-${CARCH}" "${srcdir}/nightingale-hacking/dependencies/linux-${CARCH}"
+	if [ ! -d "${srcdir}/nightingale-hacking/dependencies/linux-${CARCH}" ]; then
+		# link our hopefully fresh compiled deps (no more bins!)
+		ln -s "${srcdir}/linux-${CARCH}" "${srcdir}/nightingale-hacking/dependencies/linux-${CARCH}"
+	fi
 	
 	cd "${srcdir}/nightingale-hacking"
 	
