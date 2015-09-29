@@ -1,11 +1,12 @@
-# Contributor : Yamashita Ren
+# Contributor: Yamashita Ren
 # Contributor: Fredrick Brennan <admin@8chan.co>
+# Contributor: Julien Machiels
 
 pkgname=waifu2x-converter-cpp-cuda-git
 _gitname=${pkgname%-cuda-git}
 pkgver=r250.ca65c93
-pkgrel=1
-pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks"
+pkgrel=2
+pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks, with CUDA support"
 arch=('i686' 'x86_64')
 url="https://github.com/tanakamura/waifu2x-converter-cpp"
 license=('MIT')
@@ -23,9 +24,9 @@ pkgver() {
 
 prepare() {
   cd ${_gitname}
+  patch -Np1 -i ../../arch_use_usr_share_for_models.patch
   sed -i 's/g++-4.7/g++/' CMakeLists.txt
   sed -i 's/gcc-4.7/gcc/' Makefile.linux
-
 }
 
 build() {
@@ -36,9 +37,11 @@ build() {
 
 package() {
   cd ${_gitname}
-  install -D ${_gitname} $pkgdir/usr/bin/${_gitname}
-  install -D src/w2xconv.h $pkgdir/usr/include/w2xconv.h
+  install -D ${_gitname} $pkgdir/usr/bin/waifu2x
   install -D libw2xc.so $pkgdir/usr/lib/libw2xc.so
+  install -D ../../waifu2x.1.gz $pkgdir/usr/share/man/man1/waifu2x.1.gz
+  mkdir -p $pkgdir/usr/share/waifu2x || true
+  cp -r models_rgb $pkgdir/usr/share/waifu2x
 }
 
 check() {

@@ -1,7 +1,7 @@
 pkgbase = waifu2x-converter-cpp-cuda-git
-	pkgdesc = Image rescaling and noise reduction using the power of convolutional neural networks
+	pkgdesc = Image rescaling and noise reduction using the power of convolutional neural networks, with CUDA support
 	pkgver = r250.ca65c93
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tanakamura/waifu2x-converter-cpp
 	arch = i686
 	arch = x86_64
