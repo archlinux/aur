@@ -1,0 +1,50 @@
+From 4f8f9f17dae461aa40d1b3519c1921648df18fd4 Mon Sep 17 00:00:00 2001
+From: darealshinji <djcj@gmx.de>
+Date: Tue, 25 Nov 2014 13:03:22 +0100
+Subject: [PATCH] fix some -Wformat-security warnings for gcc
+
+---
+ mozilla-1.9.2/mozilla/js/src/xpconnect/shell/xpcshell.cpp | 2 +-
+ mozilla-1.9.2/mozilla/toolkit/xre/nsSigHandlers.cpp       | 2 +-
+ mozilla-1.9.2/mozilla/xpcom/base/nsTraceRefcntImpl.cpp    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/mozilla-1.9.2/mozilla/js/src/xpconnect/shell/xpcshell.cpp b/mozilla-1.9.2/mozilla/js/src/xpconnect/shell/xpcshell.cpp
+index 99ee4f8..7783448 100644
+--- a/mozilla-1.9.2/mozilla/js/src/xpconnect/shell/xpcshell.cpp
++++ b/mozilla-1.9.2/mozilla/js/src/xpconnect/shell/xpcshell.cpp
+@@ -267,7 +267,7 @@ GetLine(JSContext *cx, char *bufp, FILE *file, const char *prompt) {
+ #endif
+     {
+         char line[256];
+-        fprintf(gOutFile, prompt);
++        fprintf(gOutFile, "%s", prompt);
+         fflush(gOutFile);
+         if (!fgets(line, sizeof line, file))
+             return JS_FALSE;
+diff --git a/mozilla-1.9.2/mozilla/toolkit/xre/nsSigHandlers.cpp b/mozilla-1.9.2/mozilla/toolkit/xre/nsSigHandlers.cpp
+index b928d66..8e85cec 100644
+--- a/mozilla-1.9.2/mozilla/toolkit/xre/nsSigHandlers.cpp
++++ b/mozilla-1.9.2/mozilla/toolkit/xre/nsSigHandlers.cpp
+@@ -136,7 +136,7 @@ static void PrintStackFrame(void *aPC, void *aClosure)
+ 
+   NS_DescribeCodeAddress(aPC, &details);
+   NS_FormatCodeAddressDetails(aPC, &details, buf, sizeof(buf));
+-  fprintf(stdout, buf);
++  fprintf(stdout, "%s", buf);
+ }
+ 
+ }
+diff --git a/mozilla-1.9.2/mozilla/xpcom/base/nsTraceRefcntImpl.cpp b/mozilla-1.9.2/mozilla/xpcom/base/nsTraceRefcntImpl.cpp
+index 032bbff..608ee3f 100644
+--- a/mozilla-1.9.2/mozilla/xpcom/base/nsTraceRefcntImpl.cpp
++++ b/mozilla-1.9.2/mozilla/xpcom/base/nsTraceRefcntImpl.cpp
+@@ -872,7 +872,7 @@ static void PrintStackFrame(void *aPC, void *aClosure)
+ 
+   NS_DescribeCodeAddress(aPC, &details);
+   NS_FormatCodeAddressDetails(aPC, &details, buf, sizeof(buf));
+-  fprintf(stream, buf);
++  fprintf(stream, "%s", buf);
+ }
+ 
+ }

@@ -1,0 +1,19 @@
+*** mozilla-1.9.2/ipc/chromium/src/base/message_pump_libevent.cc	2012-03-06 16:45:29.000000000 +0200
+--- mozilla-1.9.2/ipc/chromium/src/base/message_pump_libevent.cc	2012-05-03 02:57:20.771136443 +0300
+***************
+*** 3,9 ****
+  // found in the LICENSE file.
+  
+  #include "base/message_pump_libevent.h"
+! 
+  #include <errno.h>
+  #include <fcntl.h>
+  
+--- 3,9 ----
+  // found in the LICENSE file.
+  
+  #include "base/message_pump_libevent.h"
+! #include <unistd.h>
+  #include <errno.h>
+  #include <fcntl.h>
+  

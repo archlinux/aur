@@ -1,0 +1,14 @@
+*** mozilla-1.9.2/ipc/chromium/src/base/file_util.cc	2012-03-06 16:45:29.000000000 +0200
+--- mozilla-1.9.2/ipc/chromium/src/base/file_util.cc	2012-05-02 14:47:02.694747962 +0300
+***************
+*** 9,14 ****
+--- 9,17 ----
+  #endif
+  #include <stdio.h>
+  
++ #if defined(OS_POSIX)
++ #include <unistd.h>
++ #endif
+  #include <fstream>
+  
+  #include "base/file_path.h"

@@ -1,0 +1,12 @@
+*** mozilla-1.9.2/ipc/chromium/src/base/file_util_linux.cc	2012-03-06 16:45:29.000000000 +0200
+--- mozilla-1.9.2/ipc/chromium/src/base/file_util_linux.cc	2012-05-03 18:24:36.346333860 +0300
+***************
+*** 4,9 ****
+--- 4,10 ----
+  
+  #include "base/file_util.h"
+  
++ #include <unistd.h>
+  #include <fcntl.h>
+  
+  #include <string>
