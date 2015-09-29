@@ -4,7 +4,7 @@ pkgdesc="ROS - Metaprogramming tools move alot of runtime calculations to be shi
 url='http://wiki.ros.org/ecl_mpl'
 
 pkgname='ros-indigo-ecl-mpl'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

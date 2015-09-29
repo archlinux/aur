@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-mpl
 	pkgdesc = ROS - Metaprogramming tools move alot of runtime calculations to be shifted to compile time.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_mpl
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-ecl-mpl
 	makedepends = ros-indigo-ecl-license
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-ecl-license
-	source = ecl_mpl::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_mpl/0.61.2-0
+	source = ecl_mpl::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_mpl/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-mpl
