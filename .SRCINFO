@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-streams
 	pkgdesc = ROS - These are lightweight text streaming classes that connect to standardised ecl type devices.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_streams
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = ros-indigo-ecl-streams
 	depends = ros-indigo-ecl-converters
 	depends = ros-indigo-ecl-time
 	depends = ros-indigo-ecl-type-traits
-	source = ecl_streams::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_streams/0.61.2-0
+	source = ecl_streams::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_streams/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-streams

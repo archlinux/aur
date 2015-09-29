@@ -4,7 +4,7 @@ pkgdesc="ROS - These are lightweight text streaming classes that connect to stan
 url='http://wiki.ros.org/ecl_streams'
 
 pkgname='ros-indigo-ecl-streams'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
