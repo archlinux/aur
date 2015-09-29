@@ -1,12 +1,12 @@
 pkgbase = caledonia-bundle
 	pkgdesc = A bundle with all Caledonia customizations for KDE4
 	pkgver = 2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://caledonia.sourceforge.net/
 	arch = any
 	license = CCPL:by-sa
 	depends = kdebase-workspace
-	depends = caledonia-wallpapers
+	depends = caledonia-backgrounds
 	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20%28Plasma-KDE%20Theme%29/Caledonia-2.0.tar.gz
 	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20KDM/Caledonia-KDM-2.0.tar.gz
 	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20KSplash/Caledonia-KSplash-2.0.tar.gz

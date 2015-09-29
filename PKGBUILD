@@ -4,12 +4,12 @@
 
 pkgname=caledonia-bundle
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A bundle with all Caledonia customizations for KDE4"
 arch=('any')
 url=('http://caledonia.sourceforge.net/')
 license=('CCPL:by-sa')
-depends=('kdebase-workspace' 'caledonia-wallpapers')
+depends=('kdebase-workspace' 'caledonia-backgrounds')
 source=("http://sourceforge.net/projects/caledonia/files/Caledonia%20%28Plasma-KDE%20Theme%29/Caledonia-${pkgver}.tar.gz"
         "http://sourceforge.net/projects/caledonia/files/Caledonia%20KDM/Caledonia-KDM-${pkgver}.tar.gz"
         "http://sourceforge.net/projects/caledonia/files/Caledonia%20KSplash/Caledonia-KSplash-${pkgver}.tar.gz"
@@ -24,11 +24,10 @@ package() {
 	mkdir -p -m755 "${pkgdir}/usr/share/apps/kdm/themes" \
 	               "${pkgdir}/usr/share/apps/ksplash/Themes" \
 	               "${pkgdir}/usr/share/apps/desktoptheme" \
-	               "${pkgdir}/usr/share/apps/color-schemes" \
-	               "${pkgdir}/usr/share/wallpapers"
+	               "${pkgdir}/usr/share/apps/color-schemes"
 
-	cp -r --no-preserve=mode Caledonia-KDM     "${pkgdir}/usr/share/apps/kdm/themes"
-	cp -r --no-preserve=mode Caledonia-KSplash "${pkgdir}/usr/share/apps/ksplash/Themes"
-	cp -rf --no-preserve=mode Caledonia        "${pkgdir}/usr/share/apps/desktoptheme"
-	cp --no-preserve=mode Caledonia.colors     "${pkgdir}/usr/share/apps/color-schemes"
+	cp -r  --no-preserve=mode Caledonia-KDM     "${pkgdir}/usr/share/apps/kdm/themes"
+	cp -r  --no-preserve=mode Caledonia-KSplash "${pkgdir}/usr/share/apps/ksplash/Themes"
+	cp -rf --no-preserve=mode Caledonia         "${pkgdir}/usr/share/apps/desktoptheme"
+	cp     --no-preserve=mode Caledonia.colors  "${pkgdir}/usr/share/apps/color-schemes"
 }
