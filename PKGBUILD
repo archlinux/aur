@@ -5,7 +5,7 @@
 pkgname=waifu2x-converter-cpp-cuda-git
 _gitname=${pkgname%-cuda-git}
 pkgver=r250.ca65c93
-pkgrel=2
+pkgrel=3
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks, with CUDA support"
 arch=('i686' 'x86_64')
 url="https://github.com/tanakamura/waifu2x-converter-cpp"
@@ -40,6 +40,7 @@ package() {
   install -D ${_gitname} $pkgdir/usr/bin/waifu2x
   install -D libw2xc.so $pkgdir/usr/lib/libw2xc.so
   install -D ../../waifu2x.1.gz $pkgdir/usr/share/man/man1/waifu2x.1.gz
+  install -D src/w2xconv.h $pkgdir/usr/include/w2xconv.h
   mkdir -p $pkgdir/usr/share/waifu2x || true
   cp -r models_rgb $pkgdir/usr/share/waifu2x
 }
