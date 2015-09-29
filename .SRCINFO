@@ -1,0 +1,33 @@
+pkgbase = ros-indigo-navigation
+	pkgdesc = ROS - A 2D navigation stack that takes in information from odometry, sensor streams, and a goal pose and outputs safe velocity commands that are sent to a mobile base.
+	pkgver = 1.12.4
+	pkgrel = 1
+	url = http://wiki.ros.org/navigation
+	arch = any
+	license = BSD,LGPL,LGPL (amcl)
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-nav-core
+	depends = ros-indigo-carrot-planner
+	depends = ros-indigo-fake-localization
+	depends = ros-indigo-clear-costmap-recovery
+	depends = ros-indigo-base-local-planner
+	depends = ros-indigo-amcl
+	depends = ros-indigo-navfn
+	depends = ros-indigo-global-planner
+	depends = ros-indigo-map-server
+	depends = ros-indigo-voxel-grid
+	depends = ros-indigo-dwa-local-planner
+	depends = ros-indigo-robot-pose-ekf
+	depends = ros-indigo-move-base-msgs
+	depends = ros-indigo-move-slow-and-clear
+	depends = ros-indigo-costmap-2d
+	depends = ros-indigo-rotate-recovery
+	depends = ros-indigo-move-base
+	source = navigation::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/navigation/1.12.4-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-navigation
+
