@@ -5,7 +5,7 @@ pkgdesc="Communication layer between various software and the JSON-RPC Argonaut 
 arch=("any")
 url="http://fusiondirectory.org/"
 license=("LGPL")
-depends=("fusiondirectory>=$pkgver", "fusiondirectory-plugin-systems>=$pkgver")
+depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
 
 install=fusiondirectory-plugin-argonaut.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
