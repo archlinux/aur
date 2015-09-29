@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-geometry
 	pkgdesc = ROS - Any tools relating to mathematical geometry.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_geometry
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = ros-indigo-ecl-geometry
 	depends = ros-indigo-ecl-config
 	depends = ros-indigo-ecl-linear-algebra
 	depends = ros-indigo-ecl-type-traits
-	source = ecl_geometry::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_geometry/0.61.2-0
+	source = ecl_geometry::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_geometry/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-geometry

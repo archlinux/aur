@@ -4,7 +4,7 @@ pkgdesc="ROS - Any tools relating to mathematical geometry."
 url='http://wiki.ros.org/ecl_geometry'
 
 pkgname='ros-indigo-ecl-geometry'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
