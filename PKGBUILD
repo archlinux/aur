@@ -3,7 +3,7 @@
 pkgname=kimchi
 _gitname=kimchi-1.5.0
 pkgver=1.5.0
-pkgrel=5
+pkgrel=6
 
 pkgdesc="HTML5 management for KVM"
 
@@ -17,7 +17,7 @@ depends=('python2-cherrypy'
   'python2-cheetah'
   'libvirt-python'
   'python2-imaging'
-  'pypam2-bzr'
+  'pypam2'
   'python2-m2crypto'
   'python2-jsonschema'
   'qemu'

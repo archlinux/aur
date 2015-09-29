@@ -1,7 +1,7 @@
 pkgbase = kimchi
 	pkgdesc = HTML5 management for KVM
 	pkgver = 1.5.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/kimchi-project/kimchi
 	arch = any
 	license = LGPL2.1
@@ -11,7 +11,7 @@ pkgbase = kimchi
 	depends = python2-cheetah
 	depends = libvirt-python
 	depends = python2-imaging
-	depends = pypam2-bzr
+	depends = pypam2
 	depends = python2-m2crypto
 	depends = python2-jsonschema
 	depends = qemu
