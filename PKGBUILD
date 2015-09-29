@@ -10,8 +10,8 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-libwww' 'perl-template-toolkit' 'perl-www-mechanize>=1.2' 'perl-www-robotrules')
 makedepends=()
-url='http://search.cpan.org/dist/WWW-CheckSite'
-source=('http://search.cpan.org/CPAN/authors/id/A/AB/ABELTJE/WWW-CheckSite-0.020.tar.gz')
+url='https://metacpan.org/release/ABELTJE/WWW-CheckSite-0.020'
+source=('https://cpan.metacpan.org/authors/id/A/AB/ABELTJE/WWW-CheckSite-0.020.tar.gz')
 md5sums=('eb0ae4a4267119c401c2d315f159216d')
 sha512sums=('8c0d8dadc6f885c5c4b3204168394f43680329016600676aa6c17ed4186b9f922c3f049427bb9bbcde7c5fd766360aea2d768c40b2e1d11ea8ae2776f807fa30')
 _distdir="WWW-CheckSite-0.020"
@@ -32,7 +32,6 @@ build() {
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
   )
 }
 
