@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ecl-exceptions
 	pkgdesc = ROS - Template based exceptions - these are simple and practical and avoid the proliferation of exception types.
-	pkgver = 0.61.2
+	pkgver = 0.61.3
 	pkgrel = 1
 	url = http://wiki.ros.org/ecl_exceptions
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-ecl-exceptions
 	depends = ros-indigo-ecl-license
 	depends = ros-indigo-ecl-errors
 	depends = ros-indigo-ecl-config
-	source = ecl_exceptions::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_exceptions/0.61.2-0
+	source = ecl_exceptions::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_exceptions/0.61.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ecl-exceptions

@@ -4,7 +4,7 @@ pkgdesc="ROS - Template based exceptions - these are simple and practical and av
 url='http://wiki.ros.org/ecl_exceptions'
 
 pkgname='ros-indigo-ecl-exceptions'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
