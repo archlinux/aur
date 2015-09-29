@@ -69,9 +69,6 @@ package() {
 	# Move fusiondirectory.conf in template
 	cp ./contrib/fusiondirectory.conf $pkgdir/var/cache/$pkgname/template/
 
-	mkdir -p $pkgdir/usr/share/doc/$pkgname/
-	cp -a contrib/openldap/slapd.conf $pkgdir/usr/share/doc/$pkgname/ 
-
 	# Move executables
 	mkdir -p $pkgdir/usr/bin/
 	cp ./contrib/bin/fusiondirectory-setup $pkgdir/usr/bin/
