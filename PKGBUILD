@@ -1,12 +1,18 @@
 pkgname=dell-srvadmin
-pkgver=7.4.0
+pkgver=8.2
 pkgrel=1
-pkgdesc="Dell iDRAC server management tools (RACADM)"
+pkgdesc="Dell OpenManage iDRAC server management tools (RACADM)"
 arch=(i686 x86_64)
-depends=(openssl098)
-source=(http://downloads.dell.com/FOLDER02020533M/1/OM-MgmtStat-Dell-Web-LX-7.4.0-866_A00.tar.gz{,.sign})
-sha256sums=('ea562fecb8c663912b9a0152a9f3e6cd457ddc7dfdb33da9dedba99c4a376e25'
-            'SKIP')
+url='http://en.community.dell.com/techcenter/systems-management/w/wiki/1760.openmanage-server-administrator-omsa'
+depends=(openssl sblim-sfcc)
+source_i686=("http://downloads.dell.com/FOLDER03253292M/1/OM-SrvAdmin-Dell-Web-LX-8.2.0-1739_A00.tar.gz"
+             "http://downloads.dell.com/FOLDER03253295M/1/OM-SrvAdmin-Dell-Web-LX-8.2.0-1739_A00.tar.gz.sign")
+sha256sums_i686=('40a3e497e83673739e0ab2f3daef2641d0c07ed16d20c9a5c0d09814cff745ff'
+                 '55e5f84ecac25077f0789c62ce28012db85a624e41ead7bb0a1f5f9464d81894')
+source_x86_64=("http://downloads.dell.com/FOLDER03244864M/1/OM-SrvAdmin-Dell-Web-LX-8.2.0-1739.SLES12.x86_64_A00.tar.gz"
+               "http://downloads.dell.com/FOLDER03284075M/1/OM-SrvAdmin-Dell-Web-LX-8.2.0-1739.SLES12.x86_64_A00.tar.gz.sign")
+sha256sums_x86_64=('2a62311c0a2d00591c804262a5e6d28796ac9b12c337b855c6f689dc814574ba'
+                   'ff7fc319694a3c70b8afc5a54a45c6bdc38ec760eeb8d861476c886c2488e925')
 validpgpkeys=('4172E2CE955A1776A5E61BB7CA77951D23B66A9D')
 options=(!strip)
 
@@ -16,7 +22,7 @@ package() {
     x86_64) _sarch=x86_64;;
   esac
 
-  cd "$srcdir/linux/rac/SLES11/$_sarch"
+  cd "$srcdir/linux/RPMS/supportRPMS/srvadmin/SLES12/$_sarch"
 
   for _pkg in *.rpm; do
     msg2 "Extracting $_pkg"
@@ -28,10 +34,13 @@ package() {
   _reloc usr/lib64  usr/lib
   _reloc usr/sbin   usr/bin
 
-  ln -s /opt/dell/srvadmin/bin/idracadm7 "$pkgdir/usr/bin/racadm"
+  ln -s "/opt/dell/srvadmin/bin/idracadm7" "$pkgdir/usr/bin/racadm"
 
   msg2 "Removing crud"
-  rm -f "$pkgdir/usr/lib/udev/rules.d/95-dataeng-udev.rules"
+  rm -vf "$pkgdir/usr/lib/udev/rules.d/95-dataeng-udev.rules"
+
+  msg2 "Removing conflicting files"
+  rm -vf "$pkgdir/usr/lib"/{libcimcclient,libcimcClientXML,libcmpisfcc}.so*
 }
 
 _reloc() {

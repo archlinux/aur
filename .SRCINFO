@@ -1,15 +1,21 @@
 pkgbase = dell-srvadmin
-	pkgdesc = Dell iDRAC server management tools (RACADM)
-	pkgver = 7.4.0
+	pkgdesc = Dell OpenManage iDRAC server management tools (RACADM)
+	pkgver = 8.2
 	pkgrel = 1
+	url = http://en.community.dell.com/techcenter/systems-management/w/wiki/1760.openmanage-server-administrator-omsa
 	arch = i686
 	arch = x86_64
-	depends = openssl098
+	depends = openssl
+	depends = sblim-sfcc
 	options = !strip
-	source = http://downloads.dell.com/FOLDER02020533M/1/OM-MgmtStat-Dell-Web-LX-7.4.0-866_A00.tar.gz
-	source = http://downloads.dell.com/FOLDER02020533M/1/OM-MgmtStat-Dell-Web-LX-7.4.0-866_A00.tar.gz.sign
-	sha256sums = ea562fecb8c663912b9a0152a9f3e6cd457ddc7dfdb33da9dedba99c4a376e25
-	sha256sums = SKIP
+	source_i686 = http://downloads.dell.com/FOLDER03253292M/1/OM-SrvAdmin-Dell-Web-LX-8.2.0-1739_A00.tar.gz
+	source_i686 = http://downloads.dell.com/FOLDER03253295M/1/OM-SrvAdmin-Dell-Web-LX-8.2.0-1739_A00.tar.gz.sign
+	sha256sums_i686 = 40a3e497e83673739e0ab2f3daef2641d0c07ed16d20c9a5c0d09814cff745ff
+	sha256sums_i686 = 55e5f84ecac25077f0789c62ce28012db85a624e41ead7bb0a1f5f9464d81894
+	source_x86_64 = http://downloads.dell.com/FOLDER03244864M/1/OM-SrvAdmin-Dell-Web-LX-8.2.0-1739.SLES12.x86_64_A00.tar.gz
+	source_x86_64 = http://downloads.dell.com/FOLDER03284075M/1/OM-SrvAdmin-Dell-Web-LX-8.2.0-1739.SLES12.x86_64_A00.tar.gz.sign
+	sha256sums_x86_64 = 2a62311c0a2d00591c804262a5e6d28796ac9b12c337b855c6f689dc814574ba
+	sha256sums_x86_64 = ff7fc319694a3c70b8afc5a54a45c6bdc38ec760eeb8d861476c886c2488e925
 
 pkgname = dell-srvadmin
 
