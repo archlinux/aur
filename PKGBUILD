@@ -1,5 +1,3 @@
-# Maintainer: OmeGa <omega [U+0040] mailoo [.] org>
-
 pkgname=gmpc-albumview
 pkgver=11.8.16
 pkgrel=2
