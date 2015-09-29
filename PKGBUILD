@@ -3,16 +3,16 @@
 
 pkgname=('backintime' 'backintime-cli')
 _pkgname="backintime"
-pkgver=1.1.6
-pkgrel=2
+pkgver=1.1.8
+pkgrel=1
 arch=('any')
 url="https://launchpad.net/backintime"
 license=('GPL')
 makedepends=('python')
-_stupidnumber=210130362
+_stupidnumber=219057574
 source=("https://launchpadlibrarian.net/$_stupidnumber/$_pkgname-$pkgver.tar.gz"
 "https://launchpadlibrarian.net/$((_stupidnumber + 1))/$_pkgname-$pkgver.tar.gz.asc")
-sha256sums=('2f86187d3ec237e97ad9d1d620cffab2cf7dea0410d663d8ae359504cd0edc13'
+sha256sums=('a1f2d210e95633dfe383eb50b3b560d1e09c43de4ce89dd4cb193cab40cb8a1e'
             'SKIP')
 validpgpkeys=('3E70692EE3DB8BDDA5991C90615F366D944B4826') # Germar Reitze
 # https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
