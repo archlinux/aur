@@ -27,7 +27,7 @@ pkgbase = nightingale-git
 	depends = taglib
 	provides = nightingale
 	conflicts = nightingale
-	source = nightingale::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=gstreamer-1.0
+	source = nightingale-hacking::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=gstreamer-1.0
 	source = nightingale-deps::git://github.com/nightingale-media-player/nightingale-deps.git#branch=xul-192-new
 	source = Nightingale.desktop
 	md5sums = SKIP
