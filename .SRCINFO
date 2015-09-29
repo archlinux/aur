@@ -10,7 +10,6 @@ pkgbase = daala-git
 	makedepends = git
 	makedepends = sdl2
 	makedepends = wxgtk
-	depends = libogg
 	depends = libpng
 	depends = libjpeg-turbo
 	optdepends = sdl2: For daala example player
