@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-robot-pose-ekf
 	pkgdesc = ROS - The Robot Pose EKF package is used to estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources.
-	pkgver = 1.11.11
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = http://wiki.ros.org/robot_pose_ekf
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = ros-indigo-robot-pose-ekf
 	depends = ros-indigo-tf
 	depends = ros-indigo-nav-msgs
 	depends = ros-indigo-bfl
-	source = robot_pose_ekf::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/robot_pose_ekf/1.11.11-0
+	source = robot_pose_ekf::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/robot_pose_ekf/1.12.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-robot-pose-ekf
