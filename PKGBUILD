@@ -11,7 +11,7 @@ arch=('any')
 url="http://cms-dev.github.io/"
 license=('AGPL3')
 depends=(
-  'isolate' 'postgresql' 'postgresql-libs' 'python2' 'iso-codes' 'shared-mime-info'
+  'isolate' 'testlib' 'postgresql' 'postgresql-libs' 'python2' 'iso-codes' 'shared-mime-info'
 )
 optdepends=(
   'fpc: support for Pascal submissions'
@@ -56,8 +56,9 @@ package() {
   # I'm not even sure if this is needed at all
   install -d -m770 -g$CMSUSER_GID $pkgdir/var/lib/cms
 
-  # testlib.h
-  install -D -m644 cmscontrib/loaders/polygon/testlib.h $pkgdir/usr/include/cms/testlib.h
+  # Fix testlib.h path (maybe patch CMS for this?)
+  install -d -m755 $pkgdir/usr/include/cms
+  ln -s /usr/include/testlib.h $pkgdir/usr/include/cms/testlib.h
 
   # Prepare virtual environment
   virtualenv -p python2 $pkgdir/usr/lib/cms/venv
