@@ -6,10 +6,9 @@ pkgbase = fusiondirectory-plugin-dns-schema
 	install = fusiondirectory-plugin-dns.install
 	arch = any
 	license = LGPL
-	depends = 
-	depends = bind
-	depends = fusiondirectory-plugin-systems
-	depends = fusiondirectory-plugin-argonaut-schema
+	depends = fusiondirectory-schema>=1.0.8.9
+	depends = fusiondirectory-plugin-systems>=1.0.8.9
+	depends = fusiondirectory-plugin-argonaut-schema>=1.0.8.9
 	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-1.0.8.9.tar.gz
 	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-1.0.8.9.tar.gz
 	md5sums = 03d3831e2c50248e3cc9e7cefe223234
