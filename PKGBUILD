@@ -1,11 +1,11 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
 replaces=graylog2-server
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
-arch=(any)
-url="https://graylog.org/"
+arch=('any')
+url="https://www.graylog.org/"
 license=('GPL')
 depends=(java-runtime elasticsearch mongodb)
 install=graylog.install
@@ -17,7 +17,7 @@ source=(
 	graylog-tmpfiles.conf
 	graylog.service
 )
-sha256sums=('a78df6952636cd7d4eab813572d67363766c30f651106d44b9ef63c12837a38d'
+sha256sums=('c179b6aed864aa00c53f6f50717548d74aaac9145a5785d563b098e90b053cbd'
             'SKIP'
             'SKIP')
 
