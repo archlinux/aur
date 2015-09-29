@@ -1,0 +1,14 @@
+pkgbase = nodejs-cozy-dev
+	pkgdesc = Tools to develop Cozy applications easily
+	pkgver = 1.0.24
+	pkgrel = 1
+	url = https://github.com/cozy/cozy-dev
+	arch = any
+	license = LGPLv3
+	makedepends = npm
+	depends = nodejs
+	provides = cozy-dev
+	provides = nodejs-cozy-dev
+
+pkgname = nodejs-cozy-dev
+
