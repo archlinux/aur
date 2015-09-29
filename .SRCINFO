@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-turtlebot-stage
 	pkgdesc = ROS - Stage version of turtlebot simulation.
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = http://wiki.ros.org/turtlebot_stage
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-turtlebot-stage
 	depends = ros-indigo-stage-ros
 	depends = ros-indigo-turtlebot-bringup
 	depends = ros-indigo-turtlebot-navigation
-	source = turtlebot_stage::git+https://github.com/turtlebot-release/turtlebot_simulator-release.git#tag=release/indigo/turtlebot_stage/2.2.1-0
+	source = turtlebot_stage::git+https://github.com/turtlebot-release/turtlebot_simulator-release.git#tag=release/indigo/turtlebot_stage/2.2.2-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-turtlebot-stage

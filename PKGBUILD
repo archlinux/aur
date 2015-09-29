@@ -4,7 +4,7 @@ pkgdesc="ROS - Stage version of turtlebot simulation."
 url='http://wiki.ros.org/turtlebot_stage'
 
 pkgname='ros-indigo-turtlebot-stage'
-pkgver='2.2.1'
+pkgver='2.2.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
