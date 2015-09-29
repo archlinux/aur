@@ -1,17 +1,15 @@
 pkgbase = python2-zeroc-ice
 	pkgdesc = Ice is comprehensive RPC framework with support for Python, C++, .NET, Java, JavaScript and more.
-	pkgver = 3.6.0
-	pkgrel = 3
+	pkgver = 3.6.1
+	pkgrel = 1
 	url = https://zeroc.com
 	arch = any
 	license = GPL
 	license = custom:Ice license
 	depends = python2
 	optdepends = zeroc-ice: other language bindings for zeroc-ice
-	source = https://pypi.python.org/packages/source/z/zeroc-ice/zeroc-ice-3.6.0.zip
-	source = python2-zeroc-ice.patch
-	sha256sums = 030ddd1e35424eeda4669decb51809aef450d2ac97c971123200151d8302236b
-	sha256sums = 62c8ab9a9c2151b552a09ea97015153f7d05f65e5cc1f556bcdef2ad7d8fd7f4
+	source = https://pypi.python.org/packages/source/z/zeroc-ice/zeroc-ice-3.6.1.zip
+	sha256sums = e176073f64edc9b26bda512de39a72a17d599e2dc969db6d61b7e22b68237767
 
 pkgname = python2-zeroc-ice
 
