@@ -1,13 +1,13 @@
 pkgbase = zettair
 	pkgdesc = A fast, compact search engine for HTML (or TREC) collections.
 	pkgver = 0.9.3
-	pkgrel = 1
-	url = http://www.seg.rmit.edu.au/zettair/index.html
+	pkgrel = 2
+	url = http://web.archive.org/web/20150321034649/http://www.seg.rmit.edu.au/zettair/index.html
 	arch = i686
 	arch = x86_64
 	license = bsd
 	makedepends = pkgconfig
-	source = http://www.seg.rmit.edu.au/zettair/download/zettair-0.9.3.tar.bz2
+	source = http://web.archive.org/web/20150321034701/http://www.seg.rmit.edu.au/zettair/download/zettair-0.9.3.tar.bz2
 	md5sums = 03b437d09e605be1eab2b6c42d45165d
 
 pkgname = zettair
