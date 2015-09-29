@@ -20,19 +20,20 @@ source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
         "libm.patch"
         "csound.sh")
 sha256sums=('2384cbc82fe37b70192c87977b52c55b336731ecbfd3be1d8d30c7223815d7b9'
-            'de72618a7d477c7ac213fbef65367b640fc7a7a994b285ecdd4af85da6d26721'
+            '81c9473ad3142c658afe2e509f3ae597b5349bba07f95d4ba03f420188786e57'
             'e5f4ac9885225013b6e1f08b85205cb5b32ced518be39004f398be8c9fe69ab9'
             '23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb')
 
 prepare() {
   cp "$srcdir"/Custom.cmake "csound-${pkgver}"
   patch -p0 < libm.patch
+  cd "csound-${pkgver}"
 }
 
 build() {
   cd "csound-${pkgver}"
   mkdir -p bld && cd bld
-  cmake ..
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
