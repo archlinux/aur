@@ -1,0 +1,22 @@
+pkgbase = topbeat-bin
+	pkgdesc = An open source server monitoring agent that stores metrics in Elasticsearch (precompiled)
+	pkgver = 1.0.0_beta3
+	pkgrel = 1
+	url = https://www.elastic.co/products/beats
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	optdepends = elasticsearch: for running standalone installation
+	provides = topbeat
+	conflicts = topbeat
+	options = !strip
+	backup = etc/topbeat/topbeat.yml
+	source = topbeat.service
+	sha256sums = 62f5b613d9464e4d8b1074c1a54b95cbd1c6615f0c788f1d9093becbdbc6c45d
+	source_i686 = https://download.elastic.co/beats/topbeat/topbeat-1.0.0-beta3-i686.tar.gz
+	sha256sums_i686 = e3a7772b7eb25cb3627b29acc61e3d874dbae6aef0b6e1c5648ebe376d6b89ee
+	source_x86_64 = https://download.elastic.co/beats/topbeat/topbeat-1.0.0-beta3-x86_64.tar.gz
+	sha256sums_x86_64 = 42a8ab17f9638eb62397f79b21198763cc8c8c26370c615047a4656df624409c
+
+pkgname = topbeat-bin
+

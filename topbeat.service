@@ -1,0 +1,9 @@
+[Unit]
+Description=open source server monitoring agent that stores metrics in Elasticsearch
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/topbeat -c /etc/topbeat/topbeat.yml
+
+[Install]
+WantedBy=multi-user.target
