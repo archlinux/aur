@@ -1,0 +1,15 @@
+pkgbase = qslog
+	pkgdesc = An easy to use logger that is based on Qt's QDebug class.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://bitbucket.org/razvanpetru/qslog
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc
+	depends = qt5-base
+	source = https://bitbucket.org/razvanpetru/qslog/get/rel_2.1.0.tar.bz2
+	sha256sums = 06bba4ed0b5fe5867d19810be3581cb250251a4d6ea6174e24039d69a932bc98
+
+pkgname = qslog
+
