@@ -1,7 +1,7 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname='sslyze'
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="Fast and full-featured SSL scanner."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('GPL2')
 depends=('python2')
 source_i686=("https://github.com/nabla-c0d3/sslyze/releases/download/release-${pkgver}/${pkgname}-${pkgver/./_}-linux32.zip")
 source_x86_64=("https://github.com/nabla-c0d3/sslyze/releases/download/release-${pkgver}/${pkgname}-${pkgver/./_}-linux64.zip")
-sha1sums_i686=('9c62315fcee0aaa2a9ba68bd6bd7ea8e276af23f')
-sha1sums_x86_64=('45c6fe9eb53d6226e117a92d437fd2f31fbfe705')
+sha1sums_i686=('1bb34e313a93c57264171446e0bd6c89cf8828c9')
+sha1sums_x86_64=('a8f3f7b7b728281611793c380055c027318c4a47')
 
 prepare() {
 	find $srcdir/*/$pkgname/ -type d -exec chmod 755 {} +
