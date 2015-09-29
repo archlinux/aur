@@ -7,7 +7,8 @@ pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/greenisland/greenisland.git'
 license=('GPL', 'LGPL')
-depends=('libdrm' 'libinput' 'qt5-declarative' 'hawaii-qt5-wayland' 'xkeyboard-config')
+depends=('systemd' 'libdrm' 'libinput' 'qt5-declarative' 'hawaii-qt5-wayland'
+         'xkeyboard-config' 'libxkbcommon' 'fontconfig' 'freetype2')
 provides=('greenisland')
 conflicts=('greenisland')
 replaces=('greenisland')
