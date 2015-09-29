@@ -9,7 +9,7 @@ pkgdesc="Caledonia theme: meta package of backgrounds and plasma"
 arch=('any')
 url=('http://caledonia.sourceforge.net')
 license=('GPL')
-depends=('caledonia-plasma-theme' 'caledonia-wallpapers')
+depends=('caledonia-plasma-theme' 'caledonia-backgrounds')
 optdepends=('caledonia-kdm-theme: if you are still using KDM instead of SDDM')
 
 package() {

@@ -6,7 +6,7 @@ pkgbase = caledonia-kde-meta
 	arch = any
 	license = GPL
 	depends = caledonia-plasma-theme
-	depends = caledonia-wallpapers
+	depends = caledonia-backgrounds
 	optdepends = caledonia-kdm-theme: if you are still using KDM instead of SDDM
 
 pkgname = caledonia-kde-meta
