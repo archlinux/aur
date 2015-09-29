@@ -9,20 +9,21 @@
 # Contributor: lano1106 (patch to improve jacob's patch)
 # Contributor: zoopp
 # Contributor: Cold (current_euid patch)
-# Contributor: kolasa (3.19, 4.0 & 4.1 kernel patch)
+# Contributor: ubuntu (parts of 4.0, 4.1 and 4.2 kernel patches)
+# Contributor: kolasa (part of 4.2 kernel patches)
 
 
 pkgname=catalyst-hook
-pkgver=15.5
-pkgrel=1
-#_amdver=15.101.1001
+pkgver=15.9
+pkgrel=2
+_amdver=15.201.1151
 pkgdesc="AMD/ATI drivers. Auto re-compile fglrx module while shutdown/reboot."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.2' 'linux-headers')
-optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
+depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux-lts>=3.0' 'linux-lts<4.2' 'linux-lts-headers')
+# optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-daemon' 'catalyst' 'catalyst-generator' 'catalyst-dkms')
 provides=("catalyst=${pkgver}")
 replaces=('catalyst')
@@ -32,7 +33,7 @@ url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
 DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
-    http://www2.ati.com/drivers/linux/amd-catalyst-omega-${pkgver}-linux-run-installers.zip
+    http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
     hook-fglrx
     catalyst_build_module
     ati_make.sh
@@ -44,11 +45,13 @@ source=(
     cold-fglrx-3.14-current_euid.patch
     fglrx_gpl_symbol.patch
     fglrx_3.17rc6-no_hotplug.patch
-    kolasa-3.19-get_cpu_var.patch
-    kolasa_4.0-cr4-strn.patch
-    kolasa_4.1_remove-IRQF_DISABLED.patch)
+    ubuntu_buildfix_kernel_4.0.patch
+    ubuntu_buildfix_kernel_4.1.patch
+    ubuntu_buildfix_kernel_4.2.patch
+    4.2-fglrx-has_fpu.patch
+    4.2-kolasa-fpu_save_init.patch)
 
-md5sums=('979f9f2e0948fa6e92ff0125f5c6b575'
+md5sums=('d2de2df6946b452c266a3c892e6e46ff'
          '9126e1ef0c724f8b57d3ac0fe77efe2f'
          '601d9c756571dd79d26944e54827631e'
 	 '62239156a9656c6f41e89a879578925c'
@@ -60,13 +63,15 @@ md5sums=('979f9f2e0948fa6e92ff0125f5c6b575'
 	 'ba33b6ef10896d3e1b5e4cd96390b771'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '67a22f624bae95a76638ce269392cb01'
-	 '3aa45013515b724a71bbd8e01f98ad99'
-	 'dee3df1c5d3ed87363f4304da917fc00'
-	 '81a9e38dee025151cccb7e5db2362cfb')
+	 '880d5e59554cda382f74206c202942be'
+	 '982451bcc1fa1ee3da53ffa481d65581'
+	 '88832af8d6769aa51fa9b266a74394e0'
+	 'ed7748a593d6b894269f8c7856b7ae50'
+	 'dd51495a1d8f2d1042f04a783bf01e08')
 
 
 build() {
-     /bin/sh ./amd-catalyst-omega-${pkgver}-linux-run-installers.run --extract archive_files
+     /bin/sh ./AMD-Catalyst-${pkgver}-Linux-installer-${_amdver}-x86.x86_64.run --extract archive_files
 }
 
 package() {
@@ -80,15 +85,17 @@ package() {
       patch -Np1 -i ../makefile_compat.patch
       patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
       patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
-      patch -Np1 -i ../lano1106_fglrx-13.8_proc.patch
-      patch -Np1 -i ../cold-fglrx-3.14-current_euid.patch
-      patch -Np1 -i ../fglrx_3.17rc6-no_hotplug.patch
-      patch -Np1 -i ../kolasa-3.19-get_cpu_var.patch
+#       patch -Np1 -i ../lano1106_fglrx-13.8_proc.patch
+#       patch -Np1 -i ../cold-fglrx-3.14-current_euid.patch
+#       patch -Np1 -i ../fglrx_3.17rc6-no_hotplug.patch
 #      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
 #	since 3.19 not only i686 needs gpl symbol - V
       patch -Np1 -i ../fglrx_gpl_symbol.patch
-      patch -Np1 -i ../kolasa_4.0-cr4-strn.patch
-      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.0.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.1.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.2.patch        #three 4.2 patches left for testing purposes, use  simultaneously - V
+      patch -Np1 -i ../4.2-fglrx-has_fpu.patch
+      patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
 
     # Prepare modules source files
       _archdir=x86_64

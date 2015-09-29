@@ -8,6 +8,14 @@ whisperer(){
     echo "More info here:"
     echo "https://bbs.archlinux.org/viewtopic.php?pid=1255575#p1255575"
     echo -e "\e[0;36m----------------------------------------------------------------\e[0m"
+    echo -e "\e[1;31m--------------------- NO 4.2 KERNEL SUPPORT---------------------\e[0m"
+    echo "catalyst doesn't support linux kernels >= 4.2"
+    echo "please configure bootloader to use proper kernel"
+    echo "like linux-lts in example"
+    echo ""
+    echo "sleeping now for 5 seconds as this is important..."
+    echo -e "\e[1;31m----------------------------------------------------------------\e[0m"
+    sleep 5
 }
 
 post_install() {
