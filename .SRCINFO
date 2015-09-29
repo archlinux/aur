@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-turtlebot-gazebo
 	pkgdesc = ROS - Gazebo launchers and worlds for TurtleBot simulation.
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = http://ros.org/wiki/turtlebot_gazebo
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ros-indigo-turtlebot-gazebo
 	depends = ros-indigo-robot-pose-ekf
 	depends = ros-indigo-kobuki-gazebo-plugins
 	depends = ros-indigo-turtlebot-navigation
-	source = turtlebot_gazebo::git+https://github.com/turtlebot-release/turtlebot_simulator-release.git#tag=release/indigo/turtlebot_gazebo/2.2.1-0
+	source = turtlebot_gazebo::git+https://github.com/turtlebot-release/turtlebot_simulator-release.git#tag=release/indigo/turtlebot_gazebo/2.2.2-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-turtlebot-gazebo
