@@ -2,7 +2,7 @@
 # Maintainer:  saxonbeta <saxonbeta at gmail __com
 pkgname=elmerfem
 pkgver=8.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver."
 arch=('i686' 'x86_64')
 url="http://www.csc.fi/english/pages/elmer"
@@ -43,13 +43,16 @@ package() {
     cd "$srcdir/$pkgname-release-$pkgver"
     make DESTDIR="$pkgdir" install
     
+    #Create directories
     mkdir -p "${pkgdir}/usr/share/applications/"
     mkdir -p "${pkgdir}/usr/share/pixmaps/"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
     
+    #Icon and desktop files
     install -D -m644 "ElmerGUI/Application/images/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     
+    #Enable parallel solver
     ln -s ElmerSolver_mpi "${pkgdir}/usr/bin/ElmerSolver"
     
     #Clean up and move stuff in place
