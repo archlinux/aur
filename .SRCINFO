@@ -1,6 +1,6 @@
 pkgbase = punes
 	pkgdesc = Nintendo Entertaiment System emulator
-	pkgver = 0.96
+	pkgver = 0.97
 	pkgrel = 1
 	url = http://forums.nesdev.com/viewtopic.php?t=6928
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = punes
 	source = http://dl.dropbox.com/u/21595068/punes.64bit.tar.gz
 	source = punes.desktop
 	source = punes.png
-	md5sums = 9bad894b092c2ef4f3a7c4fe83f1a8e6
-	md5sums = 1210562df8e922b447e3db0a7f7564c3
+	md5sums = 3db39873c671caf54a71a3d1ab48fa1d
+	md5sums = 470e305617d78a4b7cd8b608f029fc2a
 	md5sums = 3114433444c4a59740b3329937708fc4
 	md5sums = 2dedec3df0df318df4df835eb90921e6
 
