@@ -1,13 +1,13 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=greenisland-git
-pkgver=20150719.59e5cb8
+pkgver=20150924.114feb0
 pkgrel=1
 pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/greenisland/greenisland.git'
 license=('GPL', 'LGPL')
-depends=('qt5-declarative' 'hawaii-qt5-wayland' 'xkeyboard-config')
+depends=('libdrm' 'libinput' 'qt5-declarative' 'hawaii-qt5-wayland' 'xkeyboard-config')
 provides=('greenisland')
 conflicts=('greenisland')
 replaces=('greenisland')
