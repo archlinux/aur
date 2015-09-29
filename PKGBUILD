@@ -10,13 +10,15 @@ url="https://github.com/davidedmundson/${_pkgname}"
 license=('GPL3')
 depends=(qt5-{base,x11extras} sni-qt kwindowsystem knotifications)
 makedepends=('extra-cmake-modules' 'git')
-source=("git+https://github.com/davidedmundson/xembed-sni-proxy.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 build() {
     cd ${srcdir}/${_pkgname}
-    mkdir build
-    cd build/
+    if [ -d build ] ; then
+        rm build -rf
+    fi
+    mkdir build && cd build
     cmake ..
     make
 }
