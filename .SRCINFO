@@ -1,0 +1,27 @@
+pkgbase = vagrant-substrate-git
+	pkgdesc = Substrate layer for Vagrant
+	pkgver = 484.9e058bc
+	pkgrel = 1
+	url = http://vagrantup.com
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = puppet
+	makedepends = chrpath
+	makedepends = wget
+	depends = lzo
+	provides = vagrant-substrate
+	conflicts = vagrant-substrate
+	options = !emptydirs
+	source = git://github.com/mitchellh/vagrant-installers.git
+	source = puppet_module_libiconv.patch
+	source = libiconv.patch
+	source = readline.patch
+	md5sums = SKIP
+	md5sums = f6ac254962cf77cc4fba443c2d89644e
+	md5sums = c1bd61a5617b64654c33a2afc506e499
+	md5sums = a4f87b2483c7bd724bb94a69aa5cf733
+
+pkgname = vagrant-substrate-git
+
