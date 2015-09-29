@@ -1,4 +1,3 @@
-# Maintainer: OmeGa <omega [U+0040] mailoo [.] org>
 # Contributor: Claudio Kozický <claudiokozicky@gmail.com>
 
 pkgname=gmpc-tagedit
