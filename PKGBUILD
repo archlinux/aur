@@ -1,7 +1,7 @@
 # Maintainer: Simon Thorpe <simon@hivetechnology.com.au>
 pkgname=easyabc
 pkgver=1.3.6.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical music notation editor for the ABC music notation language"
 arch=('i686' 'x86_64' 'ppc')
 url="http://sourceforge.net/projects/easyabc/"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('wxpython2.8' 'python2-pyparsing' 'python2-pygame' 'abcmidi' 'abcm2ps' 'ghostscript')
 makedepends=('gendesk')
 source=('http://downloads.sourceforge.net/project/easyabc/EasyABC/1.3.6.4/easyabc_source_code_1.3.6.4.4.zip')
-sha256sums=('bc7577b362c7ccb7faf51a3352b121387553aa414ff4a5f856c4f318a6c8c9dd')
+sha256sums=('5b3160bcd6d35b763d75d08170ff4a695428b67416a52f307f28571057d97b46')
 
 prepare(){
   gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
