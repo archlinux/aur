@@ -11,7 +11,7 @@ depends=('libdrm' 'libinput' 'qt5-declarative' 'hawaii-qt5-wayland' 'xkeyboard-c
 provides=('greenisland')
 conflicts=('greenisland')
 replaces=('greenisland')
-makedepends=('git' 'gdb' 'extra-cmake-modules' 'xcb-util-cursor')
+makedepends=('git' 'gdb' 'extra-cmake-modules' 'xcb-util-cursor' 'libxcursor')
 options=('debug')
 
 _gitroot="git://github.com/greenisland/greenisland.git"
