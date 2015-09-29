@@ -4,7 +4,7 @@
 
 pkgname=caledonia-bundle
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A bundle with all Caledonia customizations for KDE4"
 arch=('any')
 url=('http://caledonia.sourceforge.net/')
@@ -26,8 +26,8 @@ package() {
 	               "${pkgdir}/usr/share/apps/desktoptheme" \
 	               "${pkgdir}/usr/share/apps/color-schemes"
 
-	cp -r  --no-preserve=mode Caledonia-KDM     "${pkgdir}/usr/share/apps/kdm/themes"
-	cp -r  --no-preserve=mode Caledonia-KSplash "${pkgdir}/usr/share/apps/ksplash/Themes"
-	cp -rf --no-preserve=mode Caledonia         "${pkgdir}/usr/share/apps/desktoptheme"
-	cp     --no-preserve=mode Caledonia.colors  "${pkgdir}/usr/share/apps/color-schemes"
+	cp -r  --no-preserve=mode Caledonia-KDM               "${pkgdir}/usr/share/apps/kdm/themes"
+	cp -r  --no-preserve=mode Caledonia-KSplash           "${pkgdir}/usr/share/apps/ksplash/Themes"
+	cp -rf --no-preserve=mode Caledonia                   "${pkgdir}/usr/share/apps/desktoptheme"
+	cp     --no-preserve=mode Caledonia-${pkgver}.colors  "${pkgdir}/usr/share/apps/color-schemes"
 }
