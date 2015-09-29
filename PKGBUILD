@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=slepc
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://www.grycap.upv.es/slepc"
@@ -48,12 +48,18 @@ package() {
     export SLEPC_DIR=${_install_dir}
     unset PETSC_ARCH
 
+    sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/include/slepcconf.h"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepcrules"
+    sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepc_rules"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepc_variables"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepcvariables"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/uninstall.py"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/SLEPc.pc"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/modules/${pkgname}/${pkgver}"
+
+    # remove logs containing references to the build dir
+    rm -f "${pkgdir}${_install_dir}/lib/slepc/conf/configure.log"
+    rm -f "${pkgdir}${_install_dir}/lib/slepc/conf/make.log"
 
     mkdir -p ${pkgdir}/etc/profile.d
     echo "export SLEPC_DIR=${_install_dir}" > ${pkgdir}/etc/profile.d/slepc.sh
