@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides simple support to cmath, filling in holes o
 url='http://wiki.ros.org/ecl_math'
 
 pkgname='ros-indigo-ecl-math'
-pkgver='0.61.2'
+pkgver='0.61.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
