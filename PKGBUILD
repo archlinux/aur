@@ -4,7 +4,7 @@
 
 pkgname=csound
 pkgver=6.05.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('i686' 'x86_64')
 url="http://csound.github.io"
@@ -17,14 +17,16 @@ optdepends=('csoundqt: Qt frontend'
             'csound-doc: The Canonical Csound Reference Manual')
 source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
         "Custom.cmake"
+        "libm.patch"
         "csound.sh")
 sha256sums=('2384cbc82fe37b70192c87977b52c55b336731ecbfd3be1d8d30c7223815d7b9'
             'de72618a7d477c7ac213fbef65367b640fc7a7a994b285ecdd4af85da6d26721'
+            'e5f4ac9885225013b6e1f08b85205cb5b32ced518be39004f398be8c9fe69ab9'
             '23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb')
 
 prepare() {
   cp "$srcdir"/Custom.cmake "csound-${pkgver}"
-  sed -i '/execute_process\ (/,+4 d' "csound-${pkgver}/CMakeLists.txt"
+  patch -p0 < libm.patch
 }
 
 build() {
