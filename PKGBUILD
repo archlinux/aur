@@ -76,7 +76,7 @@ build() {
 
 package() {
 	install -d --group=users "${pkgdir}/opt/nightingale"
-	cd "nightingale/compiled/dist"
+	cd "nightingale-hacking/compiled/dist"
 	sed -i 's/0\.10/1\.0/g' nightingale # hack for now to make the launcher work properly
 	cp -a --no-preserve=ownership * ${pkgdir}/opt/nightingale/
 
