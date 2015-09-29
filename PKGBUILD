@@ -5,8 +5,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=aria2-fast
-pkgver=1.19.0
-pkgrel=2
+pkgver=1.19.1
+pkgrel=1
 pkgdesc='Aria2 Download utility with little patch to maximize aria2 download connections'
 arch=('i686' 'x86_64')
 url='http://aria2.sourceforge.net/'
@@ -15,12 +15,12 @@ depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates')
 checkdepends=('cppunit')
 provides=('aria2')
 conflicts=('aria2')
-source=("http://downloads.sourceforge.net/aria2/aria2-${pkgver}.tar.bz2" "aria2-1.16.patch")
+source=("https://github.com/tatsuhiro-t/aria2/releases/download/release-${pkgver}/aria2-${pkgver}.tar.xz" "aria2-fast.patch")
 
 build() {
   cd aria2-${pkgver}
 
-  patch -Np1 < ../aria2-1.16.patch
+  patch -Np1 < ../aria2-fast.patch
 
   ./configure \
     --prefix=/usr \
@@ -46,5 +46,5 @@ package() {
     ${pkgdir}/usr/share/bash-completion/completions
   rm -rf ${pkgdir}/usr/share/doc/aria2/bash_completion
 }
-md5sums=('ad6eb57511a05ce823e194eb71a7e9fa'
-         '8d1c33b0ff5a3611ac0f8e46ca93c48c')
+md5sums=('b8b72b951f3943285a4b445364b6348c'
+         '5bfc37a15ce74bbdfbfa77fb871cc2e7')

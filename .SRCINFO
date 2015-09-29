@@ -1,7 +1,7 @@
 pkgbase = aria2-fast
 	pkgdesc = Aria2 Download utility with little patch to maximize aria2 download connections
-	pkgver = 1.19.0
-	pkgrel = 2
+	pkgver = 1.19.1
+	pkgrel = 1
 	url = http://aria2.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = aria2-fast
 	depends = ca-certificates
 	provides = aria2
 	conflicts = aria2
-	source = http://downloads.sourceforge.net/aria2/aria2-1.19.0.tar.bz2
-	source = aria2-1.16.patch
-	md5sums = ad6eb57511a05ce823e194eb71a7e9fa
-	md5sums = 8d1c33b0ff5a3611ac0f8e46ca93c48c
+	source = https://github.com/tatsuhiro-t/aria2/releases/download/release-1.19.1/aria2-1.19.1.tar.xz
+	source = aria2-fast.patch
+	md5sums = b8b72b951f3943285a4b445364b6348c
+	md5sums = 5bfc37a15ce74bbdfbfa77fb871cc2e7
 
 pkgname = aria2-fast
 

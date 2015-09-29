@@ -1,7 +1,6 @@
-diff -Npur ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc ./src/OptionHandlerFactory.cc
---- ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc	2012-12-16 10:59:30.284471787 +0700
-+++ ./src/OptionHandlerFactory.cc	2012-12-16 11:04:24.561140718 +0700
-@@ -480,8 +480,8 @@ std::vector<OptionHandler*> OptionHandle
+--- ../aria2-1.19.1.orig/src/OptionHandlerFactory.cc	2015-09-27 23:09:47.000000000 +0800
++++ ./src/OptionHandlerFactory.cc	2015-09-29 23:24:46.406091311 +0800
+@@ -507,8 +507,8 @@ std::vector<OptionHandler*> OptionHandle
      OptionHandler* op(new NumberOptionHandler
                        (PREF_MAX_CONNECTION_PER_SERVER,
                         TEXT_MAX_CONNECTION_PER_SERVER,
@@ -12,18 +11,18 @@ diff -Npur ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc ./src/OptionHandlerFa
                         'x'));
      op->addTag(TAG_BASIC);
      op->addTag(TAG_FTP);
-@@ -546,8 +546,8 @@ std::vector<OptionHandler*> OptionHandle
+@@ -573,8 +573,8 @@ std::vector<OptionHandler*> OptionHandle
      OptionHandler* op(new UnitNumberOptionHandler
                        (PREF_MIN_SPLIT_SIZE,
                         TEXT_MIN_SPLIT_SIZE,
 -                       "20M",
--                       1024*1024, 1024*1024*1024,
+-                       1_m, 1_g,
 +                       "16K",
-+                       1024, 1024*1024*1024,
++                       1_k, 1_g,
                         'k'));
      op->addTag(TAG_BASIC);
      op->addTag(TAG_FTP);
-@@ -859,7 +859,7 @@ std::vector<OptionHandler*> OptionHandle
+@@ -976,7 +976,7 @@ std::vector<OptionHandler*> OptionHandle
      OptionHandler* op(new NumberOptionHandler
                        (PREF_CONNECT_TIMEOUT,
                         TEXT_CONNECT_TIMEOUT,
@@ -32,7 +31,7 @@ diff -Npur ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc ./src/OptionHandlerFa
                         1, 600));
      op->addTag(TAG_FTP);
      op->addTag(TAG_HTTP);
-@@ -910,7 +910,7 @@ std::vector<OptionHandler*> OptionHandle
+@@ -1027,7 +1027,7 @@ std::vector<OptionHandler*> OptionHandle
      OptionHandler* op(new NumberOptionHandler
                        (PREF_MAX_TRIES,
                         TEXT_MAX_TRIES,
@@ -41,18 +40,18 @@ diff -Npur ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc ./src/OptionHandlerFa
                         0, -1,
                         'm'));
      op->addTag(TAG_FTP);
-@@ -954,8 +954,8 @@ std::vector<OptionHandler*> OptionHandle
+@@ -1071,8 +1071,8 @@ std::vector<OptionHandler*> OptionHandle
      OptionHandler* op(new UnitNumberOptionHandler
                        (PREF_PIECE_LENGTH,
                         TEXT_PIECE_LENGTH,
 -                       "1M",
--                       1024*1024,
+-                       1_m, 1_g));
 +                       "16K",
-+                       1024,
-                        1024*1024*1024));
++                       1_k, 1_g));
      op->addTag(TAG_ADVANCED);
      op->addTag(TAG_FTP);
-@@ -982,7 +982,7 @@ std::vector<OptionHandler*> OptionHandle
+     op->addTag(TAG_HTTP);
+@@ -1098,7 +1098,7 @@ std::vector<OptionHandler*> OptionHandle
      OptionHandler* op(new NumberOptionHandler
                        (PREF_RETRY_WAIT,
                         TEXT_RETRY_WAIT,
@@ -61,7 +60,7 @@ diff -Npur ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc ./src/OptionHandlerFa
                         0, 600));
      op->addTag(TAG_FTP);
      op->addTag(TAG_HTTP);
-@@ -1040,7 +1040,7 @@ std::vector<OptionHandler*> OptionHandle
+@@ -1155,7 +1155,7 @@ std::vector<OptionHandler*> OptionHandle
      OptionHandler* op(new NumberOptionHandler
                        (PREF_SPLIT,
                         TEXT_SPLIT,
