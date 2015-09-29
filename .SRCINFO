@@ -1,0 +1,20 @@
+pkgbase = salome-yacs
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - YACS Module
+	pkgver = 7.6.0
+	pkgrel = 1
+	url = http://www.salome-platform.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = doxygen
+	makedepends = swig2
+	makedepends = python2-sphinx
+	depends = salome-gui>=7.6.0
+	depends = salome-gui<7.7.0
+	depends = graphviz
+	depends = qscintilla
+	source = salome-yacs.profile
+	md5sums = ef129d9c54d2159510eb9c06430a3439
+
+pkgname = salome-yacs
+
