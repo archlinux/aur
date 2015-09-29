@@ -44,24 +44,27 @@ post_install() {
     echo "For more info and troubleshooting visit:"
     echo "http://wiki.archlinux.org/index.php/ATI_Catalyst"
     echo "----------------------------------------------------------------"
-    echo -e "\e[1;31m-------------------------- SPLIT -------------------------------\e[0m"
-    echo "catalyst-utils is now splitted into:"
+    echo "-------------------------- SPLIT -------------------------------"
+    echo "catalyst-utils is splitted into:"
     echo "catalyst-utils"
     echo "catalyst-libgl"
     echo "opencl-catalyst"
-    echo ""
-    echo -e "You MOST probably want to also install \e[1;31mcatalyst-libgl\e[0m"
+    echo "You MOST probably want to also install catalyst-libgl"
+    echo "----------------------------------------------------------------"
+    echo -e "\e[1;31m-------------------------- TTY BUG -----------------------------\e[0m"
+    echo "There's a bug in switching to VT/TTY"
+    echo "Using uvesafb is a workaround:"
+    echo "https://wiki.archlinux.org/index.php/uvesafb"
     echo -e "\e[1;31m----------------------------------------------------------------\e[0m"
 #    bug_whisper
 #    signa
 }
 
 post_upgrade(){
-    echo -e "\e[1;31m-------------------------- SPLIT -------------------------------\e[0m"
-    echo "catalyst-utils is now splitted into:"
-    echo "catalyst-utils"
-    echo "catalyst-libgl"
-    echo "opencl-catalyst"
+    echo -e "\e[1;31m-------------------------- TTY BUG -----------------------------\e[0m"
+    echo "There's a bug in switching to VT/TTY"
+    echo "Using uvesafb is a workaround:"
+    echo "https://wiki.archlinux.org/index.php/uvesafb"
     echo -e "\e[1;31m----------------------------------------------------------------\e[0m"
 #    bug_whisper
 #    signa
