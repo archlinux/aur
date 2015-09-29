@@ -17,6 +17,7 @@ pkgdesc='Plex Media Server (PlexPass version)'
 arch=('arm' 'armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
+options=('!emptydirs')
 provides=('plex-media-server')
 replaces=('plexmediaserver-plexpass')
 conflicts=('plex-media-server' 'plexmediaserver' 'plexmediaserver-plexpass')
