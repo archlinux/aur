@@ -11,6 +11,7 @@ pkgbase = geary-git
 	makedepends = vala
 	makedepends = git
 	makedepends = intltool
+	makedepends = gnome-doc-utils
 	depends = libcanberra
 	depends = gmime
 	depends = libunique3
