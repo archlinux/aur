@@ -1,17 +1,18 @@
 pkgbase = perl-perlio-utf8-strict
 	pkgdesc = Fast and correct UTF-8 IO
-	pkgver = 0.004
-	pkgrel = 1
-	url = http://search.mcpan.org/dist/PerlIO-utf8_strict
-	arch = any
+	pkgver = 0.006
+	pkgrel = 2
+	url = https://metacpan.org/release/PerlIO-utf8_strict
+	arch = i686
+	arch = x86_64
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-exception
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/PerlIO-utf8_strict-0.004.tar.gz
-	md5sums = b631c8a8a674e4f41a47307bc56a7f0b
-	sha512sums = 6d1d75f6e371e787bb41cafd8e66eef693cafbef0032b1284783e3922121d1eafb49fe9ff5e7f70469fb468894c36b6d37b49c1f4348dd7c1fd4e2e3cca9ae0c
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/PerlIO-utf8_strict-0.006.tar.gz
+	md5sums = 9bd26d4cf55f41d9e17f03e644cc9a1b
+	sha512sums = 9c8423d5e60eba54d1c1ad77840d703577e3bb35333e08ef34ada64bebc8c50630e19c6d536243bfbae4197bf8143de82251122af8581813c61428c8a78111de
 
 pkgname = perl-perlio-utf8-strict
 
