@@ -1,14 +1,16 @@
 # Maintainer: FadeMind <fademind@gmail.com>
+# Contributor: David Edmundson <david@davidedmundson.co.uk>
+
 _exename=xembedsniproxy
 _pkgname=xembed-sni-proxy
 pkgname=${_pkgname}-git
 pkgver=20150929.96ae68b
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert XEmbed system tray icons to SNI icons"
 arch=('i686' 'x86_64')
 url="https://github.com/davidedmundson/${_pkgname}"
 license=('GPL2')
-depends=(qt5-{base,x11extras} sni-qt kwindowsystem knotifications)
+depends=(qt5-{base,x11extras} kwindowsystem)
 makedepends=('extra-cmake-modules' 'git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
