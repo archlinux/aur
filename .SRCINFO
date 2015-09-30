@@ -1,5 +1,5 @@
 pkgbase = linux-next-git
-	pkgver = 20150921
+	pkgver = 20150930
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = any
