@@ -1,7 +1,7 @@
 # Maintainer: Dea1993 <andrea.deangelis93@gmail.com>
 
 pkgname=dmmediaconverter
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="a FFmpeg frontend (GUI) with video stream copy (pass-through) and other features"
 arch=('i686' 'x86_64')
@@ -10,14 +10,14 @@ license=('custom')
 depends=('gtk2' 'desktop-file-utils')
 install="${pkgname}.install"
 source=(
-	"dmMediaConverter_v${pkgver}_linux_x86.tar.gz"::"https://drive.google.com/uc?id=0B1MiTYJef5a9cXdST0lDWkN1cTA"
+	"dmMediaConverter_v${pkgver}_linux_x86.tar.gz"::"https://www.mdonline.ro/FileHosting/Blogger/dmSimpleApps/dmMediaConverter/dmMediaConverter_v1.8.0_linux_x86.tar.gz"
 	"license.zip"::"https://docs.google.com/document/d/1U2xjYwX4VMckRzWc0ol98arPGCb0oaPx6Rw6adRwTjo/export?format=zip"
 	"license.txt"::"https://docs.google.com/document/d/1U2xjYwX4VMckRzWc0ol98arPGCb0oaPx6Rw6adRwTjo/export?format=txt"
 	"${pkgname}.desktop"::"https://docs.google.com/uc?authuser=0&id=0B8AHSEMWV-pnOEJoeGNPNXBnZ0U&export=download"
 	"${pkgname}.png"::"https://docs.google.com/uc?authuser=0&id=0B8AHSEMWV-pnTExiZnpkVHlleGc&export=download"
 )
 md5sums=(
-	'a050c41b0dd56615d6670b43b0dcc675'
+	'1243462ce6b895dc95a6c3d7488d9d13'
 	'SKIP' 
 	'16c60312c92ae94e0b2dbd801d4ebeb6'
 	'9d88ba18721ca9114a25fa670cdb5ff1'
@@ -25,8 +25,8 @@ md5sums=(
 )
 
 if [ "$CARCH" = x86_64 ]; then
-	source[0]="dmMediaConverter_v${pkgver}_linux_x64.tar.gz"::"https://www.mdonline.ro/FileHosting/Blogger/dmSimpleApps/dmMediaConverter/dmMediaConverter_v1.7.0_linux_x64.tar.gz"
-	md5sums[0]='6b001c96c6fbea11128fad4c3e4cb360'
+	source[0]="dmMediaConverter_v${pkgver}_linux_x64.tar.gz"::"https://www.mdonline.ro/FileHosting/Blogger/dmSimpleApps/dmMediaConverter/dmMediaConverter_v1.8.0_linux_x64.tar.gz"
+	md5sums[0]='58b89c50656b808477d673a19efbb02f'
 fi
 
 package() {

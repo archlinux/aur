@@ -1,6 +1,6 @@
 pkgbase = dmmediaconverter
 	pkgdesc = a FFmpeg frontend (GUI) with video stream copy (pass-through) and other features
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = http://dmsimpleapps.blogspot.ro/2014/04/dmmediaconverter.html
 	install = dmmediaconverter.install
@@ -9,12 +9,12 @@ pkgbase = dmmediaconverter
 	license = custom
 	depends = gtk2
 	depends = desktop-file-utils
-	source = dmMediaConverter_v1.7.0_linux_x86.tar.gz::https://drive.google.com/uc?id=0B1MiTYJef5a9cXdST0lDWkN1cTA
+	source = dmMediaConverter_v1.8.0_linux_x86.tar.gz::https://www.mdonline.ro/FileHosting/Blogger/dmSimpleApps/dmMediaConverter/dmMediaConverter_v1.8.0_linux_x86.tar.gz
 	source = license.zip::https://docs.google.com/document/d/1U2xjYwX4VMckRzWc0ol98arPGCb0oaPx6Rw6adRwTjo/export?format=zip
 	source = license.txt::https://docs.google.com/document/d/1U2xjYwX4VMckRzWc0ol98arPGCb0oaPx6Rw6adRwTjo/export?format=txt
 	source = dmmediaconverter.desktop::https://docs.google.com/uc?authuser=0&id=0B8AHSEMWV-pnOEJoeGNPNXBnZ0U&export=download
 	source = dmmediaconverter.png::https://docs.google.com/uc?authuser=0&id=0B8AHSEMWV-pnTExiZnpkVHlleGc&export=download
-	md5sums = a050c41b0dd56615d6670b43b0dcc675
+	md5sums = 1243462ce6b895dc95a6c3d7488d9d13
 	md5sums = SKIP
 	md5sums = 16c60312c92ae94e0b2dbd801d4ebeb6
 	md5sums = 9d88ba18721ca9114a25fa670cdb5ff1
