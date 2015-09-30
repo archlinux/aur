@@ -1,79 +1,64 @@
-# Maintainer: Daniel Milde <daniel@milde.cz>
-# Based on python35 PKGBUILD (Samuel Damashek)
+# Maintainer: Carl George < arch at cgtx dot us >
 
-pkgname=python-git
-pkgver=1.8ec91e9
-pkgrel=1
-_pybasever=3.6
-_gitname=cpython
-pkgdesc="Next generation of the python high-level scripting language"
-arch=('i686' 'x86_64')
-license=('custom')
-url="http://www.python.org/"
-depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
-makedepends=('tk' 'sqlite' 'valgrind')
-optdepends=('tk: for tkinter' 'sqlite')
-options=('!makeflags')
-source=(hg+https://hg.python.org/cpython)
-sha256sums=('SKIP')
+_name="GitPython"
+_module="git"
+_check="disabled"
+
+pkgname=("python-${_module}" "python2-${_module}")
+pkgver="1.0.1"
+pkgrel="3"
+pkgdesc="Python Git Library"
+arch=("any")
+url="https://github.com/gitpython-developers/${_name}"
+license=("BSD")
+makedepends=("python-setuptools" "python2-setuptools")
+if [[ "${_check}" == "enabled" ]]; then
+    checkdepends=("python-mock"
+                  "python-nose"
+                  "python-gitdb"
+                  "python2-mock"
+                  "python2-nose"
+                  "python2-gitdb")
+fi
+source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('9c88c17bbcae2a445ff64024ef13526224f70e35e38c33416be5ceb56ca7f760')
+
+prepare() {
+    cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
+}
 
 build() {
-  cd "${srcdir}/cpython"
-
-  # FS#23997
-  sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
-
-  # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
-  # rather than copies shipped in the tarball
-  rm -rf Modules/expat
-  rm -rf Modules/zlib
-  rm -rf Modules/_ctypes/{darwin,libffi}*
-
-  ./configure --prefix=/usr \
-              --enable-shared \
-              --with-threads \
-              --with-computed-gotos \
-              --enable-ipv6 \
-              --with-valgrind \
-              --with-system-expat \
-              --with-dbmliborder=gdbm:ndbm \
-              --with-system-ffi
-
-  make
+    cd "${srcdir}/${_name}-${pkgver}"
+    python setup.py build
+    cd "${srcdir}/${_name}-${pkgver}-python2"
+    python2 setup.py build
 }
 
-# XXX disabled
-check_DISABLED() {
-  cd "${srcdir}/${_gitname}"
-  LD_LIBRARY_PATH="${srcdir}/${_gitname}":${LD_LIBRARY_PATH} \
-     "${srcdir}/${_gitname}/python" -m test.regrtest -x test_distutils test_site \
-     test_urllib test_uuid test_pydoc
+check() {
+    if [[ "${_check}" == "enabled" ]]; then
+        cd "${srcdir}/${_name}-${pkgver}"
+        nosetests
+        cd "${srcdir}/${_name}-${pkgver}-python2"
+        nosetests2
+    else
+        echo "_check is not set to \"enabled\", skipping check()"
+    fi
 }
 
-package() {
-  cd "${srcdir}/${_gitname}"
-  # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
-  make DESTDIR="${pkgdir}" altinstall maninstall
-
-  # Work around a conflict with 3.4 the 'python' package.
-  rm "${pkgdir}/usr/lib/libpython3.so"
-  rm "${pkgdir}/usr/share/man/man1/python3.1"
-
-  # Fix FS#22552
-  ln -sf ../../libpython${_pybasever}m.so \
-    "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m/libpython${_pybasever}m.so"
-
-  # Fix pycairo build
-  ln -sf python3.6m-config "${pkgdir}/usr/bin/python3.6-config"
-
-  # Clean-up reference to build directory
-  sed -i "s|$srcdir/${_gitname}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m/Makefile"
-
-  # License
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package_python-git() {
+    depends=("git>=1.7" "python-gitdb>=0.6.4")
+    provides=("python-gitpython=${pkgver}-${pkgrel}")
+    conflicts=("python-gitpython")
+    cd "${srcdir}/${_name}-${pkgver}"
+    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+package_python2-git() {
+    depends=("git>=1.7" "python2-gitdb>=0.6.4")
+    provides=("python2-gitpython=${pkgver}-${pkgrel}")
+    conflicts=("python2-gitpython")
+    cd "${srcdir}/${_name}-${pkgver}-python2"
+    python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
