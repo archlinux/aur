@@ -17,7 +17,7 @@ sha256sums=('ce08a8568c964009ccb0cbba45ae78b9a96c823f42a4fd61431a5b0c2c7a19ce')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make -j2
+  make
 }
 
 package() {
