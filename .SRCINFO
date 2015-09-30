@@ -1,6 +1,6 @@
 pkgbase = lib32-libgusb
 	pkgdesc = GLib wrapper around libusb1
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://gitorious.org/gusb/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = lib32-libgusb
 	depends = lib32-glib2
 	depends = lib32-libusb
 	depends = libgusb
-	source = http://people.freedesktop.org/~hughsient/releases/libgusb-0.2.6.tar.xz
-	sha256sums = 6f638bdbc4e77643c0a198a300e50b592ad326e56bddf359de15e04689209c06
+	source = http://people.freedesktop.org/~hughsient/releases/libgusb-0.2.7.tar.xz
+	sha256sums = 0be9578f7875cecb6c163ad47eb39bc6bf497e501b08986c0d384748a054c3ee
 
 pkgname = lib32-libgusb
 
