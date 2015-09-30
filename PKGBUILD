@@ -1,7 +1,3 @@
-# $Id: PKGBUILD 246414 2015-09-16 21:25:15Z daniel $
-# Maintainer: Daniel Isenmann <daniel@archlinux.org>
-# Contributor: Brice Carpentier <brice@dlfp.org>
-
 pkgname=msbuild-bin
 pkgver=14.1.0.0
 _pkgver=$pkgver-prerelease
