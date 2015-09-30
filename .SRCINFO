@@ -1,6 +1,6 @@
 pkgbase = gtkd
-	pkgdesc = D binding and OO wrapper of GTK+
-	pkgver = 3.1.3
+	pkgdesc = A D binding and OO wrapper of GTK+
+	pkgver = 3.1.4
 	pkgrel = 1
 	url = http://gtkd.org
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = gtkd
 	optdepends = gtksourceview3
 	optdepends = gstreamer
 	options = staticlibs
-	source = http://gtkd.org/Downloads/sources/GtkD-3.1.3.zip
-	md5sums = 05e684105b4c25c35c6793e85b760973
+	source = http://gtkd.org/Downloads/sources/GtkD-3.1.4.zip
+	md5sums = e0897c4e12bb5f9fac6986c2131e2d86
 
 pkgname = gtkd
 
