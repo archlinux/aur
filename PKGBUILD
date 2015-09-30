@@ -10,7 +10,7 @@
 # Please don't flag out-of-date!
 pkgname=atom-editor-git
 pkgver=1.1.0.beta.0.r178.g575d79a
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome-based text editor from Github"
 arch=('i686' 'x86_64')
 url="https://github.com/atom/atom"
