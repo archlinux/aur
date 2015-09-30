@@ -3,7 +3,7 @@
 
 _pkgname=lightdm-gtk-greeter-settings
 pkgname=$_pkgname-bzr
-pkgver=r33
+pkgver=r68
 pkgrel=1
 pkgdesc="Settings editor for LightDM GTK+ Greeter"
 arch=('i686' 'x86_64')
