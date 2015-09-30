@@ -1,6 +1,6 @@
 pkgbase = zfs-lts
 	pkgdesc = Kernel modules for the Zettabyte File System.
-	pkgver = 0.6.5.1_4.1.8_1
+	pkgver = 0.6.5.2_4.1.8_1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	install = zfs.install
@@ -15,8 +15,8 @@ pkgbase = zfs-lts
 	provides = zfs
 	conflicts = zfs
 	conflicts = zfs-git
-	source = http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.1.tar.gz
-	sha256sums = 42895af929f3929a83ab150f2038d572cae82a3eec06b286c91a884f73c4a9db
+	source = http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.2.tar.gz
+	sha256sums = f31728ff511b893327e7f33bf070b35cbff6e9b70fa6efe348e27906cec3e43e
 
 pkgname = zfs-lts
 
