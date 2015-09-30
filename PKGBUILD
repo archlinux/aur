@@ -36,8 +36,8 @@ md5sums=('bc41d8e848eb8c2bf8669b32acddd297'
          '560746ff6a325200de014a0a599a69bb'
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
-         '672c19bf72224cfb9e4c1038d59e06d1'
-         'c69d39cfde945b8b3d4072540d2abb87')
+         'c69d39cfde945b8b3d4072540d2abb87'
+         'd0f555a644484baccf649f7969794ece')
 
 # 64-bit?
 if [[ $CARCH = x86_64 ]]; then

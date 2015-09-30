@@ -30,8 +30,8 @@ pkgbase = lastpass
 	md5sums = 560746ff6a325200de014a0a599a69bb
 	md5sums = 151251e415bccdffc1dc0df592d1d7e1
 	md5sums = 9af777d2eea8e67ad332235718a7653d
-	md5sums = 672c19bf72224cfb9e4c1038d59e06d1
 	md5sums = c69d39cfde945b8b3d4072540d2abb87
+	md5sums = d0f555a644484baccf649f7969794ece
 
 pkgname = lastpass
 
