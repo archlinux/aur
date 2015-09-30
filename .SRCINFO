@@ -1,0 +1,17 @@
+pkgbase = python-homeinfo
+	pkgdesc = A multi purpose python library
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/HOMEINFO/homeinfo-lib
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = python
+	replaces = python-homeinfo-lib
+	replaces = python-homeinfo-lib-extra
+	source = python-homeinfo::git+https://github.com/HOMEINFO/homeinfo-lib
+	md5sums = SKIP
+
+pkgname = python-homeinfo
+
