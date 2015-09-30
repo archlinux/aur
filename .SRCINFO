@@ -1,7 +1,7 @@
 pkgbase = epsxe
 	pkgdesc = Enhanced PSX emulator
 	pkgver = 1.9.25
-	pkgrel = 4
+	pkgrel = 6
 	url = http://epsxe.com
 	install = epsxe.install
 	arch = i686

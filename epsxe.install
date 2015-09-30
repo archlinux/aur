@@ -2,12 +2,15 @@ post_install() {
   cat << EOF
 
 Add your user to group 'games' in order to play.
-  
-There are launcher packages out for epsxe. Search
-AUR for epsxe-launcher-* if you want to use it.
 
 EOF
 }
+
+#There are launcher packages out for epsxe. Search
+#AUR for epsxe-launcher-* if you want to use it.
+
+#EOF
+#}
 
 op=$1
 shift
