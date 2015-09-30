@@ -2,13 +2,13 @@
 
 _pkgname=dukto-qt5
 pkgname=${_pkgname}-git
-pkgver=v6.r2.gb26ddab
+pkgver=v6.r4.g0d08928
 pkgrel=1
 pkgdesc="A simple, fast and multi-platform file transfer tool for LAN users - Qt 5.x"
 arch=(i686 x86_64)
 url="https://github.com/arthurzam/${_pkgname}"
 license=('GPL2')
-depends=('qt5-base')
+depends=('qt5-base' 'qt5-quick1')
 makedepends=('')
 replaces=('dukto' 'dukto-svn')
 conflicts=('dukto' 'dukto-svn')
