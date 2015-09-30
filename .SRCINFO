@@ -1,7 +1,7 @@
 pkgbase = owncloud-client-git
 	pkgdesc = ownCloud client based on mirall
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://owncloud.org/
 	install = owncloud-client-git.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = owncloud-client-git
 	makedepends = cmake
 	depends = sqlite3
 	depends = neon
+	depends = qt5-webkit
 	depends = qtkeychain-qt5
 	provides = mirall
 	provides = mirall-git

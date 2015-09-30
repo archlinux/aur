@@ -6,12 +6,12 @@ _version=2.0.1
 
 pkgname=owncloud-client-git
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ownCloud client based on mirall"
 arch=('i686' 'x86_64')
 url="http://owncloud.org/"
 license=('GPL2')
-depends=('sqlite3' 'neon' 'qtkeychain-qt5')
+depends=('sqlite3' 'neon' 'qt5-webkit' 'qtkeychain-qt5')
 optdepends=()
 makedepends=('cmake')
 provides=('mirall' 'mirall-git' 'owncloud-client')
@@ -21,8 +21,6 @@ options=(!strip)
 backup=('etc/ownCloud/sync-exclude.lst')
 _client=client
 source=("${_client}::git+https://github.com/owncloud/client.git")
-#_client=mirall
-#source=("${_client}::git+https://github.com/owncloud/mirall.git")
 md5sums=('SKIP')
 
 pkgver() {
