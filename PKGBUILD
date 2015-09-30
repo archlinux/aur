@@ -1,7 +1,8 @@
-# Maintainer: lorenzo at frenzart dot com
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com>
+# Contributor: lorenzo at frenzart dot com
 pkgname=ttf-luculent
 pkgver=1.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Luculent is a family of scalable (vector), monospaced, geometric sans-serif screen fonts designed for programmers"
 arch=('any')
 url="http://eastfarthing.com/luculent/"
