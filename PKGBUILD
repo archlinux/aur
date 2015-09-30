@@ -1,8 +1,8 @@
 # Maintainer: vtyulb <vtyulb@vtyulb.ru>
 
 pkgname=kumir2-git
-pkgver=19.03.2015
-pkgrel=2
+pkgver=30.09.2015
+pkgrel=1
 pkgdesc="An educational programming language and IDE in Russian schools"
 url="http://lpm.org.ru/kumir"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ replaces=("kumir")
 
 build() {
   cd "${srcdir}"
-  git clone https://gitorious.org/kumir2/kumir2.git
+  git clone https://github.com/victor-yacovlev/kumir2.git
   cd "${srcdir}/kumir2"
   cd src/plugins
   cat CMakeLists.txt | grep -v "llvmcodegenerator" > CMakeLists1
