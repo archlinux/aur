@@ -9,6 +9,9 @@ url="http://hawaiios.org"
 license=('GPL3')
 depends=('hicolor-icon-theme')
 makedepends=('git' 'cmake')
+conflicts=('hawaii-icon-theme')
+replaces=('hawaii-icon-theme')
+provides=('hawaii-icon-theme')
 groups=('hawaii-git')
 
 _gitroot="git://github.com/hawaii-desktop/hawaii-icon-theme.git"

@@ -9,6 +9,9 @@ pkgbase = hawaii-icon-theme-git
 	makedepends = git
 	makedepends = cmake
 	depends = hicolor-icon-theme
+	provides = hawaii-icon-theme
+	conflicts = hawaii-icon-theme
+	replaces = hawaii-icon-theme
 	source = icon-theme::git://github.com/hawaii-desktop/hawaii-icon-theme.git#branch=master
 	md5sums = SKIP
 
