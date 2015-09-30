@@ -1,0 +1,16 @@
+pkgbase = complx-git
+	pkgdesc = Complx the LC-3 Simulator used in CS2110 managed by Brandon
+	pkgver = 4.10.0.0
+	pkgrel = 1
+	url = https://github.gatech.edu/ybeck7/cs-2110-hw06
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = wxgtk
+	depends = webkitgtk2
+	provides = complx
+	conflicts = complx
+
+pkgname = complx-git
+
