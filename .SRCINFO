@@ -1,0 +1,18 @@
+pkgbase = umview-mod-umlwip
+	pkgdesc = LWIPv6 gateway module.
+	pkgver = 0.8.2
+	pkgrel = 2
+	url = https://www.sourceforge.net/projects/view-os
+	arch = x86_64
+	license = GPL2
+	depends = glibc>=2.4
+	depends = libumlib0=0.8.2
+	depends = liblwipv6
+	provides = umview-mod-umlwip=0.8.2
+	conflicts = umview-mod-umlwip
+	replaces = umview-mod-umlwip
+	source = http://ftp.us.debian.org/debian/pool/main/u/umview/umview-mod-umlwip_0.8.2-1.1_amd64.deb
+	md5sums = b5fbf254aadcffeff79100d9d6129f4b
+
+pkgname = umview-mod-umlwip
+
