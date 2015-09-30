@@ -1,7 +1,7 @@
 pkgbase = brotli
 	pkgdesc = Python compression library
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/brotli
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = brotli
 	makedepends = python2
 	source = brotli-0.2.0.tar.gz::https://github.com/google/brotli/archive/v0.2.0.tar.gz
 	sha256sums = 634d1089ee21b35e0ec5066cb5e44dd097e04e679e1e8c50bffa2b0dc77c2c29
+
+pkgname = brotli
 
 pkgname = python-brotli
 	depends = python

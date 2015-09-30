@@ -1,9 +1,9 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgbase=brotli
-pkgname=('python-brotli' 'python2-brotli')
+pkgname=('brotli' 'python-brotli' 'python2-brotli')
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python compression library'
 arch=('i686' 'x86_64')
 license=('Apache')
@@ -20,6 +20,9 @@ build() {
 
 	msg 'Building Python 2...'
 	python2 ./setup.py build_ext
+
+	msg 'Building bro...'
+	cd tools && make
 }
 
 check() {
@@ -30,6 +33,12 @@ check() {
 
 	msg 'Testing Python 2...'
 	python2 ./setup.py test
+}
+
+package_brotli() {
+	cd "$pkgbase-$pkgver/tools"
+
+	install -Dm755 bro "$pkgdir/usr/bin/bro"
 }
 
 package_python-brotli() {
