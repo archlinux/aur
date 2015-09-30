@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 247063 2015-09-22 05:59:35Z tpowa $
+# $Id: PKGBUILD 247555 2015-09-28 06:37:29Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
