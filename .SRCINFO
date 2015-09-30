@@ -2,11 +2,11 @@ pkgbase = perl-module-util
 	pkgdesc = Module name tools and transformations
 	pkgver = 1.09
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Module-Util
+	url = https://metacpan.org/release/Module-Util
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl>=5.5.3
+	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/M/MA/MATTLAW/Module-Util-1.09.tar.gz
 	md5sums = 4b7cc19f3f998e2d543ae033fbcb5666
