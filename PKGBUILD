@@ -1,7 +1,7 @@
 # Maintainer: Anthony Nowell <anowell@gmail.com>
 
 pkgname=algorithmia-bin
-pkgver=1.0.0_beta.1
+pkgver=1.0.0_beta.2
 pkgrel=1
 pkgdesc="Algorithmia command line interface tools"
 arch=('x86_64')
