@@ -1,19 +1,40 @@
-# Maintainer: bitwave <aur [aTt] oomlu [d0t] de>
-pkgname='ttf-monoid'
-pkgdesc='Open Source coding font'
-pkgver=latest
-pkgrel=1
-arch=('any')
-license=('custom:MIT')
-url='http://andreaslarsen.github.io/monoid/'
-source=("https://cdn.rawgit.com/larsenwork/monoid/release/Monoid-Small-0-1-3-l.zip")
-conflicts=('ttf-monoid-git')
-sha512sums=('f7a8e07f170e84dfe2402dd7c02e558be162929531fa4cc53153a77ce97b812667019a76065baf58e36d47644aaa298cc1325684b50ca75ab62ec32ca1538671')
+# Maintainer: Severen Redwood <severen.redwood@gmail.com>
+# Report all package issues to `https://github.com/SShrike/arch-packages`
 
-package () {
-	install -Dm644 "Monoid-Regular-Small-0-1-3-l.ttf" "${pkgdir}/usr/share/fonts/TTF/Monoid-Regular.ttf"
-  install -Dm644 "Monoid-Bold-Small-0-1-3-l.ttf" "${pkgdir}/usr/share/fonts/TTF/Monoid-Bold.ttf"
-  install -Dm644 "Monoid-Oblique-Small-0-1-3-l.ttf" "${pkgdir}/usr/share/fonts/TTF/Monoid-Oblique.ttf"
-  install -Dm644 "Monoid-Retina-Small-0-1-3-l.ttf" "${pkgdir}/usr/share/fonts/TTF/Monoid-Retina.ttf"
-	install -Dm644 "Readme+License.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+_fontname="monoid"
+pkgname="ttf-${_fontname}"
+pkgver='0.61'
+pkgrel=1
+pkgdesc='A customisable coding font'
+arch=('any')
+license=('MIT' 'custom:OFL')
+depends=('xorg-font-utils' 'fontconfig')
+url='http://larsenwork.com/monoid/'
+source=(
+  'https://cdn.rawgit.com/larsenwork/monoid/f16ff9058bb97eafd78d61d415dedefe2d092562/Monoid.zip'
+  'https://raw.githubusercontent.com/larsenwork/monoid/master/Readme.md'
+)
+md5sums=(
+  '5d9163c0096077142e8d7f67d0ecc479'
+  'cb0b56ae7970def29f89e0aa2d9258ed'
+)
+install="${pkgname}.install"
+
+package() {
+  install -D -m644 \
+    'Monoid-Regular.ttf' "${pkgdir}/usr/share/fonts/TTF/Monoid-Regular.ttf"
+  install -D -m644 \
+    'Monoid-Bold.ttf' "${pkgdir}/usr/share/fonts/TTF/Monoid-Bold.ttf"
+  install -D -m644 \
+    'Monoid-Italic.ttf' "${pkgdir}/usr/share/fonts/TTF/Monoid-Italic.ttf"
+  install -D -m644 \
+    'Monoid-Retina.ttf' "${pkgdir}/usr/share/fonts/TTF/Monoid-Retina.ttf"
+
+  # Extract the license from the README.
+  sed -n '/Monoid is dual licensed/,/OTHER DEALINGS IN THE FONT SOFTWARE./p' \
+    'Readme.md' > \
+    'LICENSE'
+  install -D -m644 \
+    'LICENSE' \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

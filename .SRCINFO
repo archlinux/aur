@@ -1,13 +1,18 @@
 pkgbase = ttf-monoid
-	pkgdesc = Open Source coding font
-	pkgver = latest
+	pkgdesc = A customisable coding font
+	pkgver = 0.61
 	pkgrel = 1
-	url = http://andreaslarsen.github.io/monoid/
+	url = http://larsenwork.com/monoid/
+	install = ttf-monoid.install
 	arch = any
-	license = custom:MIT
-	conflicts = ttf-monoid-git
-	source = https://cdn.rawgit.com/larsenwork/monoid/release/Monoid-Small-0-1-3-l.zip
-	sha512sums = f7a8e07f170e84dfe2402dd7c02e558be162929531fa4cc53153a77ce97b812667019a76065baf58e36d47644aaa298cc1325684b50ca75ab62ec32ca1538671
+	license = MIT
+	license = custom:OFL
+	depends = xorg-font-utils
+	depends = fontconfig
+	source = https://cdn.rawgit.com/larsenwork/monoid/f16ff9058bb97eafd78d61d415dedefe2d092562/Monoid.zip
+	source = https://raw.githubusercontent.com/larsenwork/monoid/master/Readme.md
+	md5sums = 5d9163c0096077142e8d7f67d0ecc479
+	md5sums = cb0b56ae7970def29f89e0aa2d9258ed
 
 pkgname = ttf-monoid
 
