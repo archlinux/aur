@@ -2,7 +2,7 @@
 
 pkgname=moxa-uport11x0
 pkgver=1.3.11
-pkgrel=7
+pkgrel=8
 pkgdesc='Moxa UPort 11x0 USB to Serial Hub driver'
 url='http://www.moxa.com/product/usb_to_serial_converters.htm'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('d1e873044f311befe5a387816b996387d612bfe6838da8f1d1fc52e447027f2c'
 
 _kernmajor="$(pacman -Q linux | awk '{print $2}' | cut -d - -f1 | cut -d . -f1,2)"
 _extramodules="extramodules-${_kernmajor}-ARCH"
-_kernver="$(uname -r)"
+_kernver=$(pacman -Q linux | cut -d " " -f2)-"ARCH"
 
 install=install
 
