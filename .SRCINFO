@@ -1,7 +1,7 @@
 pkgbase = analizo
 	pkgdesc = Analizo is a free, multi-language, extensible source code analysis and visualization toolkit.
 	pkgver = 1.18.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://analizo.org
 	arch = any
 	groups = analizo
@@ -14,7 +14,6 @@ pkgbase = analizo
 	depends = perl-app-cmd
 	depends = perl-class
 	depends = perl-data-uuid
-	depends = perl-digest-jhash
 	depends = perl-list-moreutils
 	depends = perl-file-homedir
 	depends = perl-file-copy-recursive
