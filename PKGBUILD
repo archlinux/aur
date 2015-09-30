@@ -2,15 +2,15 @@
 
 pkgname=stem
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python controller library for Tor"
 arch=('i686' 'x86_64')
 url="https://stem.torproject.org/"
 license=('LGPL3')
-makedepends=('git')
+depends=('python')
 optdepends=('tor: you need a tor-server to talk to')
-source=("https://pypi.python.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.bz2")
-md5sums=('e8196b16584796b2817613ca6ba3cbe4')
+source=("https://pypi.python.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-${pkgver}b.tar.bz2")
+sha256sums=('475ba00120d571bd959d7ef24e45c4c698bb568c9321043eb7a10c1f6e554325')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
