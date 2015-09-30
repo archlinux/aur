@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-xwidget-git
-pkgver=25.0.50.r122754
-pkgrel=2
+pkgver=25.0.50.r122907
+pkgrel=1
 pkgdesc="The famous editor from xwidget_mvp branch"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
