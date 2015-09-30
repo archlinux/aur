@@ -1,6 +1,6 @@
 pkgbase = linux-libre
 	pkgver = 4.2.1_gnu
-	pkgrel = 1
+	pkgrel = 1.1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
 	arch = x86_64

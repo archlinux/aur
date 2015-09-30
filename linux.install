@@ -9,9 +9,7 @@ post_install () {
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
   if [ "$(uname -m)" = "armv7l" ]; then
-    echo ">>> NOTE: Using this kernel requires GRUB!"
-    echo ">>>       See the Migration Guide for instructions:"
-    echo ">>>       https://wiki.parabola.nu/Migration_from_Arch_ARM#GRUB"
+    echo ">>> WARNING: Using this kernel requires an updated U-Boot!"
   elif [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
     echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
     mkinitcpio -p linux-libre${KERNEL_NAME}
