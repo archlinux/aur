@@ -1,8 +1,8 @@
 pkgbase = greenisland
 	pkgdesc = Green Island: Qt-based compositor infrastructure for Wayland
-	pkgver = 0.5.90
+	pkgver = 0.6.0
 	pkgrel = 1
-	url = https://github.com/greenisland/greenisland.git
+	url = http://hawaiios.org
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -11,14 +11,21 @@ pkgbase = greenisland
 	license = LGPL
 	makedepends = gdb
 	makedepends = extra-cmake-modules
+	makedepends = xcb-util-cursor
+	makedepends = libxcursor
+	depends = systemd
+	depends = libdrm
+	depends = libinput
 	depends = qt5-declarative
-	depends = hawaii-qt5-wayland-git
-	depends = libkscreen-frameworks
+	depends = hawaii-qt5-wayland
 	depends = xkeyboard-config
+	depends = libxkbcommon
+	depends = fontconfig
+	depends = freetype2
 	conflicts = greenisland-git
 	options = debug
-	source = https://github.com/greenisland/greenisland/archive/v0.5.90.tar.gz
-	md5sums = 5b4c12259f0aafbf823f11db348c7edd
+	source = https://github.com/greenisland/greenisland/releases/download/v0.6.0/greenisland-0.6.0.tar.gz
+	sha1sums = 2d58e303a14b0590603e94e709be244bc8b80575
 
 pkgname = greenisland
 
