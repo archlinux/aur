@@ -7,7 +7,6 @@ pkgbase = fusiondirectory-plugin-argonaut
 	arch = any
 	license = LGPL
 	depends = fusiondirectory>=1.0.9
-	depends = fusiondirectory-plugin-systems>=1.0.9
 	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-1.0.9.tar.gz
 	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-1.0.9.tar.gz
 	md5sums = 7c761f082278bfdcc5e9130e8fa4d3a0
