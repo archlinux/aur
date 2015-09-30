@@ -1,16 +1,16 @@
 # Maintainer: Madara <majetree@yandex.ru>
 
 pkgname=pixiecore
-pkgver=2015.09.20.3a2c870
+pkgver=15.09.20.1320
 pkgrel=1
 epoch=
 pkgdesc="PXE booting for people in a hurry"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/danderson/pixiecore"
 license=('GPL2')
 groups=()
 depends=()
-makedepends=('go' 'git')
+makedepends=('go' 'git>=2.6')
 checkdepends=()
 optdepends=()
 provides=()
@@ -28,7 +28,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	git log -1 --format="%cd.%h" --date=short | sed 's/-/./g'
+	git log -1 --format="%cd" --date=format:"%y.%m.%d.%H%M"
 }
 
 build() {
