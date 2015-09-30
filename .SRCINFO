@@ -1,15 +1,14 @@
 pkgbase = capnproto
 	pkgdesc = Cap'n Proto serialization/RPC system
-	pkgver = 0.5.2
-	pkgrel = 3
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = http://kentonv.github.io/capnproto/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	conflicts = capnproto-git
-	source = http://capnproto.org/capnproto-c++-0.5.2.tar.gz
-	md5sums = 84dcb55dba3f60b0f85734fd0e502401
+	source = http://capnproto.org/capnproto-c++-0.5.3.tar.gz
+	md5sums = d6c91a9129457fe5893302cd92e09324
 
 pkgname = capnproto
 
