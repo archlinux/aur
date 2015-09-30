@@ -1,0 +1,13 @@
+pkgbase = ipython-yf-git
+	pkgdesc = An ipython extension to make it asyncio compatible
+	pkgver = r10.dd488d0
+	pkgrel = 1
+	url = https://github.com/tecki/ipython-yf/
+	arch = any
+	license = BSD
+	depends = ipython
+	source = git://github.com/tecki/ipython-yf.git
+	md5sums = SKIP
+
+pkgname = ipython-yf-git
+
