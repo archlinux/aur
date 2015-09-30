@@ -1,0 +1,15 @@
+pkgbase = cdist
+	pkgdesc = A usable configuration management system
+	pkgver = 3.1.13
+	pkgrel = 1
+	url = https://github.com/ungleich/cdist
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = openssh
+	source = cdist-3.1.13.tar.gz::https://github.com/ungleich/cdist/archive/3.1.13.tar.gz
+	sha256sums = 2891aec4b84333ad0a4eb523b8cb99c98037106f73937f33faac9a04641ab442
+
+pkgname = cdist
+
