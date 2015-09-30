@@ -1,0 +1,15 @@
+pkgbase = mp4fpsmod
+	pkgdesc = Simple CLI MP4 time code editor
+	pkgver = 0.14
+	pkgrel = 2
+	url = https://sites.google.com/site/qaacpage/junk
+	arch = any
+	license = custom
+	makedepends = git
+	provides = mp4fpsmod
+	conflicts = mp4fpsmod-git
+	source = git://github.com/nu774/mp4fpsmod.git#commit=d6fa8ed
+	md5sums = SKIP
+
+pkgname = mp4fpsmod
+
