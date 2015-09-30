@@ -1,0 +1,44 @@
+post_install() {
+	echo ''
+	echo 'To use kingbash-gb, append the following to your ~/.bashrc :'
+	echo ''
+	echo ''
+	echo '    kingbash.gb() {'
+	echo '        OUTPUT=$(/usr/local/bin/kingbash-gb.gambas "$READLINE_LINE" "$READLINE_POINT")'
+	echo '        READLINE_POINT=$(echo "$OUTPUT"|tail -n1)'
+	echo '        READLINE_LINE=$(echo "$OUTPUT"|head -n1)'
+	echo '    }'
+	echo ''
+	echo '    if  [ "$DISPLAY"  != "" ]; then'
+	echo '            #bind -x '"\C-e": kingbash.gb'     #for Use with Ctrl-e'
+	echo '            bind -x '"\t": kingbash.gb'        #for Use with Tab'
+	echo '    fi'
+	echo ''
+	echo ''
+	echo 'Next, and open a new bash terminal and try autocompletion with <TAB> key'
+	echo ''
+
+}
+
+post_upgrade() {
+	echo ''
+	echo 'To use kingbash-gb, append the following to your ~/.bashrc :'
+	echo ''
+	echo ''
+	echo '    kingbash.gb() {'
+	echo '        OUTPUT=$(/usr/local/bin/kingbash-gb.gambas "$READLINE_LINE" "$READLINE_POINT")'
+	echo '        READLINE_POINT=$(echo "$OUTPUT"|tail -n1)'
+	echo '        READLINE_LINE=$(echo "$OUTPUT"|head -n1)'
+	echo '    }'
+	echo ''
+	echo '    if  [ "$DISPLAY"  != "" ]; then'
+	echo '            #bind -x '"\C-e": kingbash.gb'     #for Use with Ctrl-e'
+	echo '            bind -x '"\t": kingbash.gb'        #for Use with Tab'
+	echo '    fi'
+	echo ''
+	echo ''
+	echo 'Next, and open a new bash terminal and try autocompletion with <TAB> key'
+	echo ''
+
+}
+

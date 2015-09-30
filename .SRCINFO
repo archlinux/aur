@@ -1,0 +1,19 @@
+pkgbase = kingbash-gb-git
+	pkgdesc = Menu driven auto-completion for bash terminals under X
+	pkgver = 20150930
+	pkgrel = 1
+	url = https://github.com/kokoko3k/kingbash-gb
+	install = kingbash-gb.install
+	arch = any
+	license = gpl
+	makedepends = gambas3-devel
+	makedepends = git
+	depends = bash
+	depends = gambas3-gb-desktop>=3.6.2
+	depends = gambas3-gb-desktop-x11
+	depends = gambas3-gb-form>=3.6.2
+	depends = gambas3-gb-image>=3.6.2
+	depends = gambas3-gb-qt4>=3.6.2
+
+pkgname = kingbash-gb-git
+
