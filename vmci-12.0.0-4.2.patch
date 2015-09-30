@@ -1,0 +1,131 @@
+diff -ur a/vmci-only/linux/driver.c b/vmci-only/linux/driver.c
+--- vmci-only/linux/driver.c	2015-05-31 16:01:25.000000000 +0300
++++ vmci-only/linux/driver.c	2015-08-08 00:42:47.000000000 +0300
+@@ -26,13 +26,16 @@
+ 
+ #include <linux/file.h>
+ #include <linux/fs.h>
++#include <linux/vmalloc.h>
+ #include <linux/init.h>
++
+ #if defined(__x86_64__) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+ #   include <linux/ioctl32.h>
+ /* Use weak: not all kernels export sys_ioctl for use by modules */
+ asmlinkage __attribute__((weak)) long
+ sys_ioctl(unsigned int fd, unsigned int cmd, unsigned long arg);
+ #endif
++
+ #include <linux/miscdevice.h>
+ #include <linux/moduleparam.h>
+ #include <linux/poll.h>
+@@ -713,7 +716,7 @@
+ 
+    case IOCTL_VMCI_INIT_CONTEXT: {
+       VMCIInitBlock initBlock;
+-      VMCIHostUser user;
++      uid_t user;
+ 
+       retval = copy_from_user(&initBlock, (void *)ioarg, sizeof initBlock);
+       if (retval != 0) {
+@@ -735,7 +738,11 @@
+          goto init_release;
+       }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
+       user = current_uid();
++#else
++      user = from_kuid(&init_user_ns, current_uid());
++#endif
+       retval = VMCIContext_InitContext(initBlock.cid, initBlock.flags,
+                                        0 /* Unused */, vmciLinux->userVersion,
+                                        &user, &vmciLinux->context);
+@@ -1683,7 +1690,7 @@
+    /* This should be last to make sure we are done initializing. */
+    retval = pci_register_driver(&vmci_driver);
+    if (retval < 0) {
+-      vfree(data_buffer);
++      kvfree(data_buffer);
+       data_buffer = NULL;
+       return retval;
+    }
+@@ -2470,7 +2477,7 @@
+ 
+    if (guestDeviceInit) {
+       pci_unregister_driver(&vmci_driver);
+-      vfree(data_buffer);
++      kvfree(data_buffer);
+       guestDeviceInit = FALSE;
+    }
+ 
+diff -ur a/vmci-only/linux/vmciKernelIf.c b/vmci-only/linux/vmciKernelIf.c
+--- vmci-only/linux/vmciKernelIf.c	2015-05-31 16:01:25.000000000 +0300
++++ vmci-only/linux/vmciKernelIf.c	2015-02-24 03:58:06.000000000 +0300
+@@ -40,6 +40,7 @@
+ #include <linux/socket.h>       /* For memcpy_{to,from}iovec(). */
+ #include <linux/vmalloc.h>
+ #include <linux/wait.h>
++#include <linux/skbuff.h>
+ 
+ #include "compat_highmem.h"
+ #include "compat_interrupt.h"
+@@ -1196,21 +1197,21 @@
+       } else {
+          toCopy = size - bytesCopied;
+       }
+-
++      /* Code cloned from kernels drivers/misc/vmw_vmci/vmci_queue_pair.c */
+       if (isIovec) {
+-         struct iovec *iov = (struct iovec *)src;
+-         int err;
++            struct msghdr *msg = (struct msghdr *)src;
++            int err;
+ 
+-         /* The iovec will track bytesCopied internally. */
+-         err = memcpy_fromiovec((uint8 *)va + pageOffset, iov, toCopy);
+-         if (err != 0) {
+-            if (kernelIf->host) {
+-               kunmap(kernelIf->u.h.page[pageIndex]);
++            /* The iovec will track bytes_copied internally. */
++            err = memcpy_from_msg((u8 *)va + pageOffset, msg, toCopy);
++            if (err != 0) {
++                    if (kernelIf->host)
++                            kunmap(kernelIf->u.h.page[pageIndex]);
++                    return VMCI_ERROR_INVALID_ARGS;
+             }
+-            return VMCI_ERROR_INVALID_ARGS;
+-         }
+-      } else {
+-         memcpy((uint8 *)va + pageOffset, (uint8 *)src + bytesCopied, toCopy);
++        } else {
++            memcpy((u8 *)va + pageOffset,
++                   (u8 *)src + bytesCopied, toCopy);
+       }
+ 
+       bytesCopied += toCopy;
+@@ -1273,11 +1274,11 @@
+       }
+ 
+       if (isIovec) {
+-         struct iovec *iov = (struct iovec *)dest;
++	 struct msghdr *msg = (struct msghdr *)dest;
+          int err;
+ 
+          /* The iovec will track bytesCopied internally. */
+-         err = memcpy_toiovec(iov, (uint8 *)va + pageOffset, toCopy);
++	 err = memcpy_to_msg(msg, (uint8 *)va + pageOffset, toCopy);
+          if (err != 0) {
+             if (kernelIf->host) {
+                kunmap(kernelIf->u.h.page[pageIndex]);
+diff -ur a/vmci-only/shared/vm_device_version.h b/vmci-only/shared/vm_device_version.h
+--- vmci-only/shared/vm_device_version.h	2015-05-31 16:01:26.000000000 +0300
++++ vmci-only/shared/vm_device_version.h	2015-02-24 03:58:06.000000000 +0300
+@@ -53,7 +53,9 @@
+  *    VMware HD Audio codec
+  *    VMware HD Audio controller
+  */
++#ifndef PCI_VENDOR_ID_VMWARE
+ #define PCI_VENDOR_ID_VMWARE                    0x15AD
++#endif
+ #define PCI_DEVICE_ID_VMWARE_SVGA2              0x0405
+ #define PCI_DEVICE_ID_VMWARE_SVGA               0x0710
+ #define PCI_DEVICE_ID_VMWARE_VGA                0x0711

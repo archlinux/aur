@@ -1,0 +1,339 @@
+diff -ur a/vmblock-only/linux/control.c b/vmblock-only/linux/control.c
+--- vmblock-only/linux/control.c	2015-05-31 16:01:25.000000000 +0300
++++ vmblock-only/linux/control.c	2015-08-08 00:23:51.000000000 +0300
+@@ -208,9 +208,11 @@
+    VMBlockSetProcEntryOwner(controlProcMountpoint);
+ 
+    /* Create /proc/fs/vmblock/dev */
+-   controlProcEntry = create_proc_entry(VMBLOCK_CONTROL_DEVNAME,
+-                                        VMBLOCK_CONTROL_MODE,
+-                                        controlProcDirEntry);
++   controlProcEntry = proc_create(VMBLOCK_CONTROL_DEVNAME,
++				      VMBLOCK_CONTROL_MODE,
++                                      controlProcDirEntry,
++				          &ControlFileOps);
++
+    if (!controlProcEntry) {
+       Warning("SetupProcDevice: could not create " VMBLOCK_DEVICE "\n");
+       remove_proc_entry(VMBLOCK_CONTROL_MOUNTPOINT, controlProcDirEntry);
+@@ -218,7 +220,10 @@
+       return -EINVAL;
+    }
+
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
+    controlProcEntry->proc_fops = &ControlFileOps;
++#endif
++
+    return 0;
+ }
+
+@@ -272,17 +277,44 @@
+  *----------------------------------------------------------------------------
+  */
+ 
++/* copy-paste from Lustre FS by pavlinux */
++static char *ll_getname(const char __user *filename)
++{
++       int ret = 0, len;
++       char *tmp = __getname();
++
++       if (!tmp)
++               return ERR_PTR(-ENOMEM);
++
++       len = strncpy_from_user(tmp, filename, PATH_MAX);
++       if (len == 0)
++               ret = -ENOENT;
++       else if (len > PATH_MAX)
++               ret = -ENAMETOOLONG;
++
++       if (ret) {
++               __putname(tmp);
++               tmp =  ERR_PTR(ret);
++       }
++       return tmp;
++}
++
+ static int
+ ExecuteBlockOp(const char __user *buf,                // IN: buffer with name
+                const os_blocker_id_t blocker,         // IN: blocker ID (file)
+                int (*blockOp)(const char *filename,   // IN: block operation
+                               const os_blocker_id_t blocker))
+ {
+-   char *name;
++   struct filename *fn = NULL;
++   char *name = (char *)fn->name;
+    int i;
+    int retval;
+ 
+-   name = getname(buf);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
++   name = (char *)getname(buf);
++#else
++   name = (char *)ll_getname(buf);
++#endif
+    if (IS_ERR(name)) {
+       return PTR_ERR(name);
+    }
+@@ -293,7 +325,12 @@
+ 
+    retval = i < 0 ? -EINVAL : blockOp(name, blocker);
+ 
+-   putname(name);
++   if (fn->name != fn->iname) { /* add by pavlinux */
++       __putname(fn->name);
++        kvfree(fn);
++   } else {
++       __putname(fn);
++   }
+
+    return retval;
+ }
+diff -ur a/vmblock-only/linux/dentry.c b/vmblock-only/linux/dentry.c
+--- vmblock-only/linux/dentry.c	2015-05-31 16:01:25.000000000 +0300
++++ vmblock-only/linux/dentry.c	2015-02-24 03:58:06.000000000 +0300
+@@ -32,7 +32,11 @@
+ #include "block.h"
+ 
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
+ static int DentryOpRevalidate(struct dentry *dentry, struct nameidata *nd);
++#else
++static int DentryOpRevalidate(struct dentry *dentry, unsigned int);
++#endif
+ 
+ struct dentry_operations LinkDentryOps = {
+    .d_revalidate = DentryOpRevalidate,
+@@ -58,9 +62,12 @@
+  *----------------------------------------------------------------------------
+  */
+ 
+-static int
+-DentryOpRevalidate(struct dentry *dentry,  // IN: dentry revalidating
+-                   struct nameidata *nd)   // IN: lookup flags & intent
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 14, 0)
++static int DentryOpRevalidate(struct dentry *dentry, struct nameidata *nd)
++#else
++static int DentryOpRevalidate(struct dentry *dentry, unsigned int flags)
++#endif
++
+ {
+    VMBlockInodeInfo *iinfo;
+    struct nameidata actualNd;
+@@ -101,7 +108,11 @@
+    if (actualDentry &&
+        actualDentry->d_op &&
+        actualDentry->d_op->d_revalidate) {
++#if LINUX_VERSION_CODE > KERNEL_VERSION(3, 14, 0)
++      return actualDentry->d_op->d_revalidate(actualDentry, flags);
++#else
+       return actualDentry->d_op->d_revalidate(actualDentry, nd);
++#endif
+    }
+ 
+    if (compat_path_lookup(iinfo->name, 0, &actualNd)) {
+diff -ur a/vmblock-only/linux/file.c b/vmblock-only/linux/file.c
+--- vmblock-only/linux/file.c	2015-05-31 16:01:25.000000000 +0300
++++ vmblock-only/linux/file.c	2015-02-24 03:58:06.000000000 +0300
+@@ -38,6 +38,7 @@
+ typedef ino_t inode_num_t;
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
+ /* Specifically for our filldir_t callback */
+ typedef struct FilldirInfo {
+    filldir_t filldir;
+@@ -76,7 +77,7 @@
+    /* Specify DT_LNK regardless */
+    return info->filldir(info->dirent, name, namelen, offset, ino, DT_LNK);
+ }
+-
++#endif
+ 
+ /* File operations */
+ 
+@@ -132,7 +133,7 @@
+     * and that would try to acquire the inode's semaphore; if the two inodes
+     * are the same we'll deadlock.
+     */
+-   if (actualFile->f_dentry && inode == actualFile->f_dentry->d_inode) {
++   if (actualFile->f_path.dentry && inode == actualFile->f_path.dentry->d_inode) {
+       Warning("FileOpOpen: identical inode encountered, open cannot succeed.\n");
+       if (filp_close(actualFile, current->files) < 0) {
+          Warning("FileOpOpen: unable to close opened file.\n");
+@@ -164,6 +165,7 @@
+  *----------------------------------------------------------------------------
+  */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
+ static int
+ FileOpReaddir(struct file *file,  // IN
+               void *dirent,       // IN
+@@ -193,7 +195,7 @@
+ 
+    return ret;
+ }
+-
++#endif
+ 
+ /*
+  *----------------------------------------------------------------------------
+@@ -237,7 +239,11 @@
+ 
+ 
+ struct file_operations RootFileOps = {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
+    .readdir = FileOpReaddir,
++#endif
++   .owner = THIS_MODULE,
++   .llseek = no_llseek,
+    .open    = FileOpOpen,
+    .release = FileOpRelease,
+ };
+diff -ur a/vmblock-only/linux/filesystem.c b/vmblock-only/linux/filesystem.c
+--- vmblock-only/linux/filesystem.c	2015-05-31 16:01:25.000000000 +0300
++++ vmblock-only/linux/filesystem.c	2015-02-24 03:58:06.000000000 +0300
+@@ -322,6 +322,7 @@
+ {
+    VMBlockInodeInfo *iinfo;
+    struct inode *inode;
++
+    struct nameidata actualNd;
+ 
+    ASSERT(sb);
+diff -ur a/vmblock-only/linux/inode.c b/vmblock-only/linux/inode.c
+--- vmblock-only/linux/inode.c	2015-05-31 16:01:25.000000000 +0300
++++ vmblock-only/linux/inode.c	2015-08-08 00:33:22.000000000 +0300
+@@ -35,26 +35,27 @@
+ 
+ 
+ /* Inode operations */
+-static struct dentry *InodeOpLookup(struct inode *dir,
+-                                    struct dentry *dentry, struct nameidata *nd);
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
++static struct dentry *InodeOpLookup(struct inode *dir, struct dentry *dentry, struct nameidata *nd);
+ static int InodeOpReadlink(struct dentry *dentry, char __user *buffer, int buflen);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+-static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+ #else
+-static int InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
++static struct dentry *InodeOpLookup(struct inode *, struct dentry *, unsigned int);
++static int InodeOpReadlink(struct dentry *, char __user *, int);
+ #endif
+ 
++static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie);
++
+ 
+ struct inode_operations RootInodeOps = {
+    .lookup = InodeOpLookup,
+ };
+ 
+-static struct inode_operations LinkInodeOps = {
++struct inode_operations LinkInodeOps = {
+    .readlink    = InodeOpReadlink,
+    .follow_link = InodeOpFollowlink,
+ };
+ 
+-
+ /*
+  *----------------------------------------------------------------------------
+  *
+@@ -75,7 +76,11 @@
+ static struct dentry *
+ InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
+               struct dentry *dentry,  // IN: dentry to lookup
+-              struct nameidata *nd)   // IN: lookup intent and information
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
++	      struct nameidata *nd)   // IN: lookup intent and information
++#else
++              unsigned int flags)
++#endif
+ {
+    char *filename;
+    struct inode *inode;
+@@ -135,7 +140,12 @@
+    inode->i_size = INODE_TO_IINFO(inode)->nameLen;
+    inode->i_version = 1;
+    inode->i_atime = inode->i_mtime = inode->i_ctime = CURRENT_TIME;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
+    inode->i_uid = inode->i_gid = 0;
++#else
++   inode->i_gid = make_kgid(current_user_ns(), 0);
++   inode->i_uid = make_kuid(current_user_ns(), 0);
++#endif
+    inode->i_op = &LinkInodeOps;
+ 
+    d_add(dentry, inode);
+@@ -177,7 +187,12 @@
+       return -EINVAL;
+    }
+ 
+-   return vfs_readlink(dentry, buffer, buflen, iinfo->name);
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(3, 14, 99)
++	return vfs_readlink(dentry, buffer, buflen, iinfo->name);
++#else
++        return readlink_copy(buffer, buflen, iinfo->name);
++#endif
++
+ }
+ 
+ 
+@@ -198,13 +213,7 @@
+  *----------------------------------------------------------------------------
+  */
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+-static void *
+-#else
+-static int
+-#endif
+-InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
+-                  struct nameidata *nd)   // OUT: stores result
++static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie)
+ {
+    int ret;
+    VMBlockInodeInfo *iinfo;
+@@ -221,7 +230,11 @@
+       goto out;
+    }
+ 
+-   ret = vfs_follow_link(nd, iinfo->name);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++    return *cookie = (char *)(iinfo->name);
++#else
++   nd_set_link(nd, iinfo->name);
++#endif
+ 
+ out:
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+@@ -230,3 +243,4 @@
+    return ret;
+ #endif
+ }
++
+Только в a/vmblock-only/shared/autoconf: dalias.c
+Только в a/vmblock-only/shared/autoconf: truncate_pagecache.c
+diff -ur a/vmblock-only/shared/compat_namei.h b/vmblock-only/shared/compat_namei.h
+--- vmblock-only/shared/compat_namei.h	2015-05-31 16:01:25.000000000 +0300
++++ vmblock-only/shared/compat_namei.h	2015-02-24 03:51:25.000000000 +0300
+@@ -21,6 +21,20 @@
+ 
+ #include <linux/namei.h>
+ 
++/* Copy-n-paste from kernel's source/fs/namei.c */
++struct nameidata {
++         struct path     path;
++         struct qstr     last;
++         struct path     root;
++         struct inode    *inode; /* path.dentry.d_inode */
++         unsigned int    flags;
++         unsigned        seq, m_seq;
++         int             last_type;
++         unsigned        depth;
++         struct file     *base;
++         char *saved_names[MAX_NESTED_LINKS + 1];
++};
++
+ /*
+  * In 2.6.25-rc2, dentry and mount objects were removed from the nameidata
+  * struct. They were both replaced with a struct path.

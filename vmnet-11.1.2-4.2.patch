@@ -1,0 +1,41 @@
+diff -ur a/vmnet-only/vm_device_version.h b/vmnet-only/vm_device_version.h
+--- vmnet-only/vm_device_version.h	2015-05-31 16:40:39.000000000 +0300
++++ vmnet-only/vm_device_version.h	2015-08-07 05:21:33.000000000 +0300
+@@ -53,7 +53,10 @@
+  *    VMware HD Audio codec
+  *    VMware HD Audio controller
+  */
+-#define PCI_VENDOR_ID_VMWARE                    0x15AD
++#ifdef PCI_VENDOR_ID_VMWARE
++	#undef PCI_VENDOR_ID_VMWARE
++	#define PCI_VENDOR_ID_VMWARE             0x15AD
++#endif
+ #define PCI_DEVICE_ID_VMWARE_SVGA2              0x0405
+ #define PCI_DEVICE_ID_VMWARE_SVGA               0x0710
+ #define PCI_DEVICE_ID_VMWARE_VGA                0x0711
+diff -ur a/vmnet-only/vmnetInt.h b/vmnet-only/vmnetInt.h
+--- vmnet-only/vmnetInt.h	2015-05-31 16:40:39.000000000 +0300
++++ vmnet-only/vmnetInt.h	2015-08-07 05:19:49.000000000 +0300
+@@ -77,13 +77,18 @@
+ 
+ 
+ extern struct proto vmnet_proto;
++
+ #ifdef VMW_NETDEV_HAS_NET
+-#   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
+-                                                PF_NETLINK, _pri, &vmnet_proto)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++# define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
++                        PF_NETLINK, _pri, &vmnet_proto, 1)
+ #else
+-#   define compat_sk_alloc(_bri, _pri) sk_alloc(PF_NETLINK, _pri, &vmnet_proto, 1)
++# define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
++                        PF_NETLINK, _pri, &vmnet_proto)
++#endif
++#else
++# define compat_sk_alloc(_bri, _pri) sk_alloc(PF_NETLINK, _pri, &vmnet_proto, 1)
+ #endif
+-
+ 
+ #ifdef NF_IP_LOCAL_IN
+ #define VMW_NF_INET_LOCAL_IN     NF_IP_LOCAL_IN

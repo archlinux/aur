@@ -1,0 +1,119 @@
+diff -ur a/vsock-only/linux/af_vsock.c b/vsock-only/linux/af_vsock.c
+--- vsock-only/linux/af_vsock.c	2015-05-31 16:01:26.000000000 +0300
++++ vsock-only/linux/af_vsock.c	2015-08-07 05:26:39.000000000 +0300
+@@ -2826,7 +2826,9 @@
+     * network namespace, and the option to zero the sock was dropped.
+     *
+     */
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++     sk = sk_alloc(net, vsockVmciFamilyOps.family, priority, &vsockVmciProto, 1);
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+    sk = sk_alloc(vsockVmciFamilyOps.family, priority,
+                  vsockVmciProto.slab_obj_size, vsockVmciProto.slab);
+ #elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 24)
+@@ -4302,7 +4304,7 @@
+       goto out;
+    }
+ 
+-   memcpy_fromiovec(VMCI_DG_PAYLOAD(dg), msg->msg_iov, len);
++   memcpy_from_msg(VMCI_DG_PAYLOAD(dg), msg, len);
+ 
+    dg->dst = VMCI_MAKE_HANDLE(remoteAddr->svm_cid, remoteAddr->svm_port);
+    dg->src = VMCI_MAKE_HANDLE(vsk->localAddr.svm_cid, vsk->localAddr.svm_port);
+@@ -4662,7 +4664,7 @@
+        * able to send.
+        */
+ 
+-      written = vmci_qpair_enquev(vsk->qpair, msg->msg_iov,
++      written = vmci_qpair_enquev(vsk->qpair, &msg->msg_iter.iov,
+                                   len - totalWritten, 0);
+       if (written < 0) {
+          err = -ENOMEM;
+@@ -4721,6 +4723,7 @@
+    VMCIDatagram *dg;
+    size_t payloadLen;
+    struct sk_buff *skb;
++   struct iov_iter to;
+ 
+    sk = sock->sk;
+    noblock = flags & MSG_DONTWAIT;
+@@ -4759,7 +4762,9 @@
+    }
+ 
+    /* Place the datagram payload in the user's iovec. */
+-   err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iov, payloadLen);
++   // err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iter, payloadLen);
++   iov_iter_init(&to, READ, (struct iovec *)&msg->msg_iter.iov, 1, payloadLen);
++   err = skb_copy_datagram_iter(skb, 0, &to, payloadLen);
+    if (err) {
+       goto out;
+    }
+@@ -4905,9 +4910,9 @@
+          }
+ 
+          if (flags & MSG_PEEK) {
+-            read = vmci_qpair_peekv(vsk->qpair, msg->msg_iov, len - copied, 0);
++            read = vmci_qpair_peekv(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
+          } else {
+-            read = vmci_qpair_dequev(vsk->qpair, msg->msg_iov, len - copied, 0);
++            read = vmci_qpair_dequev(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
+          }
+ 
+          if (read < 0) {
+diff -ur a/vsock-only/linux/notify.c b/vsock-only/linux/notify.c
+--- vsock-only/linux/notify.c	2015-05-31 16:01:26.000000000 +0300
++++ vsock-only/linux/notify.c	2015-02-24 01:09:40.000000000 +0300
+@@ -516,7 +516,7 @@
+    PKT_FIELD(vsk, sentWaitingRead) = FALSE;
+ #endif
+ 
+-   sk->sk_data_ready(sk, 0);
++   sk->sk_data_ready(sk);
+ }
+ 
+ 
+diff -ur a/vsock-only/linux/notifyQState.c b/vsock-only/linux/notifyQState.c
+--- vsock-only/linux/notifyQState.c	2015-05-31 16:01:26.000000000 +0300
++++ vsock-only/linux/notifyQState.c	2015-02-24 01:09:40.000000000 +0300
+@@ -164,7 +164,7 @@
+                      struct sockaddr_vm *dst,    // IN: unused
+                      struct sockaddr_vm *src)    // IN: unused
+ {
+-   sk->sk_data_ready(sk, 0);
++   sk->sk_data_ready(sk);
+ }
+
+
+@@ -566,7 +566,7 @@
+       }
+
+       /* See the comment in VSockVmciNotifyPktSendPostEnqueue */
+-      sk->sk_data_ready(sk, 0);
++      sk->sk_data_ready(sk);
+    }
+
+    return err;
+diff -ur a/vsock-only/Makefile b/vsock-only/Makefile
+--- vsock-only/Makefile	2015-05-31 16:01:25.000000000 +0300
++++ vsock-only/Makefile	2015-02-24 01:09:40.000000000 +0300
+@@ -131,7 +131,7 @@
+ 	> /dev/null 2>&1; then echo "$(2)"; else echo "$(3)"; fi)
+ 
+ CC_WARNINGS := -Wall -Wstrict-prototypes
+-CC_OPTS := $(GLOBAL_DEFS) $(CC_WARNINGS) -DVMW_USING_KBUILD
++CC_OPTS := $(GLOBAL_DEFS) $(CC_WARNINGS) -DVMW_USING_KBUILD -g0
+ ifdef VMX86_DEVEL
+ CC_OPTS += -DVMX86_DEVEL
+ endif
+diff -ur a/vsock-only/shared/vmci_kernel_if.h b/vsock-only/shared/vmci_kernel_if.h
+--- vsock-only/shared/vmci_kernel_if.h	2015-05-31 16:01:26.000000000 +0300
++++ vsock-only/shared/vmci_kernel_if.h	2015-02-24 02:51:12.000000000 +0300
+@@ -102,7 +102,7 @@
+   typedef struct semaphore VMCIMutex;
+   typedef PPN *VMCIPpnList; /* List of PPNs in produce/consume queue. */
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 5, 0)
+-  typedef kuid_t VMCIHostUser;
++  typedef uid_t  VMCIHostUser;
+ #else
+   typedef uid_t VMCIHostUser;

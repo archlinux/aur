@@ -1,0 +1,24 @@
+diff -ur a/vmmon-only/linux/driver.c b/vmmon-only/linux/driver.c
+--- vmmon-only/linux/driver.c	2015-05-31 16:40:39.000000000 +0300
++++ vmmon-only/linux/driver.c	2015-08-07 05:30:27.000000000 +0300
+@@ -1328,7 +1328,7 @@
+  *-----------------------------------------------------------------------------
+  */
+ 
+-__attribute__((always_inline)) static Bool
++inline static Bool
+ LinuxDriverSyncReadTSCs(uint64 *delta) // OUT: TSC max - TSC min
+ {
+    TSCDelta tscDelta;
+diff -ur a/vmmon-only/linux/vmmonInt.h b/vmmon-only/linux/vmmonInt.h
+--- vmmon-only/linux/vmmonInt.h	2015-05-31 16:40:39.000000000 +0300
++++ vmmon-only/linux/vmmonInt.h	2015-08-07 05:29:20.000000000 +0300
+@@ -31,7 +31,7 @@
+ #ifdef VMW_HAVE_SMP_CALL_3ARG
+ #define compat_smp_call_function(fn, info, wait) smp_call_function(fn, info, wait)
+ #else
+-#define compat_smp_call_function(fn, info, wait) smp_call_function(fn, info, 1, wait)
++#define compat_smp_call_function(fn, info, wait) smp_call_function(fn, info, wait)
+ #endif
+ 
+ /*
