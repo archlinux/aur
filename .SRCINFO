@@ -1,21 +1,39 @@
 pkgbase = perl-courriel
-	pkgdesc = Courriel - High level email parsing and manipulation
-	pkgver = 0.35
+	pkgdesc = High level email parsing and manipulation
+	pkgver = 0.39
 	pkgrel = 1
-	url = http://search.cpan.org/~drolsky/Courriel-0.35/
+	url = https://metacpan.org/release/Courriel
 	arch = any
-	license = GPL
 	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-differences>=0
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-requires>=0
+	depends = perl-datetime>=0
+	depends = perl-datetime-format-mail>=0
+	depends = perl-datetime-format-natural>=0
+	depends = perl-devel-partialdump>=0
+	depends = perl-email-abstract>=0
+	depends = perl-email-address>=0
+	depends = perl-email-mime-encodings>=0
+	depends = perl-email-messageid>=0
+	depends = perl-file-libmagic>=0
+	depends = perl-file-slurp-tiny>=0
+	depends = perl-list-allutils>=0
+	depends = perl-list-moreutils>=0.28
+	depends = perl-moose>=0
+	depends = perl-moosex-params-validate>=0.21
+	depends = perl-moosex-role-parameterized>=0
+	depends = perl-moosex-strictconstructor>=0
+	depends = perl-moosex-types>=0
+	depends = perl-moosex-types-common>=0
+	depends = perl-sub-exporter>=0
+	depends = perl-namespace-autoclean>=0
 	depends = perl>=5.10.0
-	depends = perl-moose
-	depends = perl-moosex-params-validate
-	depends = perl-moosex-role-parameterized
-	depends = perl-moosex-strictconstructor
-	depends = perl-moosex-types
-	depends = perl-moosex-types-common
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-authors/id/D/DR/DROLSKY/Courriel-0.35.tar.gz
-	md5sums = 3aead41f2c49fa9063386bcc0fe81702
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Courriel-0.39.tar.gz
+	md5sums = e96ed4029f5d92aa481b2351b9cb9058
+	sha512sums = b138cbfc3285b597c00987e1d04cec11435c9ea946d7ac71031cfa008acbf8105bb5b7d4c07852494a504214dfae719ca8c4261d8cbaf6030a142205e1a8c47e
 
 pkgname = perl-courriel
 
