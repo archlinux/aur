@@ -3,7 +3,7 @@
 #
 pkgname=epsxe
 pkgver=1.9.25
-pkgrel=6
+pkgrel=7
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -38,8 +38,8 @@ package () {
 
   ln -sf "$HOME/.${pkgname}rc" -T "$pkgdir/opt/$pkgname/.${pkgname}rc"
   case "$CARCH" in
-    ('x86_64') ln -s /usr/lib32/libncursesw.so."${_lib32_ncurses}" "$pkgdir"/usr/lib/libncurses.so.5;
-	       ln -s /usr/lib32/libtinfo.so "$pkgdir"/usr/lib/libtinfo.so.5;;
-    ('i686') ln -s /usr/lib/libncursesw.so."${_ncurses}" "$pkgdir"/usr/lib/libncurses.so.5;;
+    ('x86_64') ln -s /usr/lib32/libncursesw.so."${_lib32_ncurses}" "$pkgdir"/opt/$pkgname/libncurses.so.5;
+	       ln -s /usr/lib32/libtinfo.so "$pkgdir"/opt/$pkgname/libtinfo.so.5;;
+    ('i686') ln -s /usr/lib/libncursesw.so."${_ncurses}" "$pkgdir"/opt/$pkgname/libncurses.so.5;;
   esac
 }
