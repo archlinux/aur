@@ -1,0 +1,15 @@
+pkgbase = ruby-hike
+	pkgdesc = Find files in a set of paths
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/sstephenson/hike
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = hike-2.1.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hike-2.1.3.gem
+	sha1sums = 83117519c73345d8079a192f649e191e81716346
+
+pkgname = ruby-hike
+
