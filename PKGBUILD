@@ -3,7 +3,7 @@
 # Contributor: aericson <de.ericson@gmail.com>
 
 pkgname=aarchup
-pkgver=1.7.4
+pkgver=1.8
 pkgrel=1
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://github.com/aericson/aarchup"
@@ -12,24 +12,24 @@ license="GPL"
 depends=('pacman' 'libnotify' 'gtk2')
 makedepends=('libnotify' 'autoconf' 'gzip')
 source=("https://github.com/aericson/aarchup/archive/$pkgver.zip")
-md5sums=('d64d1eb513e311409be5cb240b2c0831')
+md5sums=('241a6580515a1996588082fa25ceddd7')
 backup=('etc/systemd/system/aarchup.timer')
 optdepends=('cower: AUR support(--aur)')
 install='aarchup.install'
 
 prepare() {
-	mv -v $pkgname-$pkgver/src/* $pkgname-$pkgver/
-    rmdir $pkgname-$pkgver/src
+  mv -v $pkgname-$pkgver/src/* $pkgname-$pkgver/
+  rmdir $pkgname-$pkgver/src
 }
 
 build() {
-	cd $pkgname-$pkgver/
-	autoconf || return 1
-	./configure --prefix=/usr || return 1
-	make || return 1
+  cd $pkgname-$pkgver/
+  autoconf || return 1
+  ./configure --prefix=/usr || return 1
+  make || return 1
 }
 
 package() {
-	cd $pkgname-$pkgver/
-	make DESTDIR="$pkgdir/" install || return 1
+  cd $pkgname-$pkgver/
+  make DESTDIR="$pkgdir/" install || return 1
 }

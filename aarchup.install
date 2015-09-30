@@ -1,15 +1,19 @@
 post_upgrade() {
   cat << EOF
-    Crontab is no longer supported. The prefered method is still with --loop-time.
-    Alternatively you can use systemd timer included in the package. Please see man aarchup.
-    If you wish to use the systemd timer you can set the time frequency on the file /etc/systemd/system/aarchup.timer
+  To avoid problems with partial upgrades (http://gist.io/5660494) we no longer
+  use the combination of pacman -Sy/-Qu to check for updates.
+
+  As a result of this --ignore-disconnect was removed. Please remove it from your configurations, if you were using it.
+
+  If you were using --command|-c, note that the command has to check for updates now
+  since we no longer call pacman -Sy.
 EOF
 }
 
 post_install() {
   cat <<EOF
-    Please check man pages for installation instructions.
-    If you have any problems or would like to request a feature,
-    check https://bbs.archlinux.org/viewtopic.php?id=119129
+  Please check man pages for installation instructions.
+  If you have any problems or would like to request a feature,
+  check https://bbs.archlinux.org/viewtopic.php?id=119129
 EOF
 }
