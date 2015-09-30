@@ -1,7 +1,7 @@
 pkgbase = aftershotpro
 	pkgdesc = Professional Workflow and RAW Conversion
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = http://www.aftershotpro.com/en/support/updates
 	install = aftershotpro.install
 	arch = x86_64
@@ -22,13 +22,13 @@ pkgbase = aftershotpro
 	optdepends = opencl-nvidia
 	optdepends = opencl-mesa
 	optdepends = opencl-catalyst
-	source_x86_64 = http://dwnld.aftershotpro.com/updates/v2/2.2.1/AfterShotPro2_64bit.rpm
+	source_x86_64 = http://dwnld.aftershotpro.com/updates/v2/2.2.2/AfterShotPro2_64bit.rpm
 	source_x86_64 = LICENSE.rtf
-	sha256sums_x86_64 = b90ba08be6e419b1d1a6befcb8509257e2844b6c73efd1a70109e0be4e4591c6
+	sha256sums_x86_64 = 6f00775d62092a9e1d7bfcf14fe1b20cae7ab6496246a40306703b3d2ecc4a35
 	sha256sums_x86_64 = 45333ed8867b9f09226a4a19bf47ab966e3d735eb4f5dcbc4541a02eda88d2df
-	source_i686 = http://dwnld.aftershotpro.com/updates/v2/2.2.1/AfterShotPro2_32bit.rpm
+	source_i686 = http://dwnld.aftershotpro.com/updates/v2/2.2.2/AfterShotPro2_32bit.rpm
 	source_i686 = LICENSE.rtf
-	sha256sums_i686 = 2ac8a4b998b3a558af210c40edcfc2c93b4616d69cf31c95b4275d5cf98c0620
+	sha256sums_i686 = 05495a0c88a7f64535f8a22a065b74a1d8900449c6e3a0a1786a157e934f6df4
 	sha256sums_i686 = 45333ed8867b9f09226a4a19bf47ab966e3d735eb4f5dcbc4541a02eda88d2df
 
 pkgname = aftershotpro
