@@ -1,0 +1,16 @@
+diff -Nur ipython-yf.orig/yf.py ipython-yf/yf.py
+--- ipython-yf.orig/yf.py	2015-09-30 15:32:28.318774525 +1000
++++ ipython-yf/yf.py	2015-09-30 15:32:53.395457672 +1000
+@@ -35,7 +35,11 @@
+ 
+ 
+ if loaded_api() is not None:
+-    from PyQt4 import QtCore
++    try:
++        from PyQt5 import QtCore
++    except ImportError:
++        from PyQt4 import QtCore
++
+     import quamash
+ 
+ 
