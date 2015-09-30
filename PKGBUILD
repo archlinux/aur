@@ -8,12 +8,12 @@ _pkgname="liferea"
 
 pkgname="${_pkgname}-unstable"
 pkgver=1.11.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop news aggregator for online news feeds and weblogs - Unstable"
 arch=('i686' 'x86_64')
 url="http://lzone.de/liferea/"
 license=('GPL')
-depends=('webkitgtk' 'libnotify' 'json-glib' 'libpeas' 'desktop-file-utils' 'gobject-introspection')
+depends=('webkitgtk' 'libnotify' 'json-glib' 'libpeas' 'desktop-file-utils' 'gobject-introspection' 'python2-gobject')
 makedepends=('pkgconfig' 'diffutils' 'intltool')
 optdepends=('gnome-keyring: for keyring plugin support'
             'libgnome-keyring: for keyring plugin support'

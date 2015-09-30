@@ -1,7 +1,7 @@
 pkgbase = liferea-unstable
 	pkgdesc = A desktop news aggregator for online news feeds and weblogs - Unstable
 	pkgver = 1.11.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lzone.de/liferea/
 	install = liferea-unstable.install
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = liferea-unstable
 	depends = libpeas
 	depends = desktop-file-utils
 	depends = gobject-introspection
+	depends = python2-gobject
 	optdepends = gnome-keyring: for keyring plugin support
 	optdepends = libgnome-keyring: for keyring plugin support
 	optdepends = gst-plugins-base: for media player plugin support
