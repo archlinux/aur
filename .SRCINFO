@@ -1,6 +1,6 @@
 pkgbase = xoreos
 	pkgdesc = A reimplementation of BioWare's Aurora engine
-	pkgver = 0.0.2.r0.gadcb12e
+	pkgver = 0.0.3.r0.g7f297d5
 	pkgrel = 1
 	url = https://xoreos.org/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = xoreos
 	depends = libvorbis
 	depends = faad2
 	depends = xvidcore
-	source = git://github.com/xoreos/xoreos.git#tag=v0.0.2
+	source = git://github.com/xoreos/xoreos.git#tag=v0.0.3
 	md5sums = SKIP
 
 pkgname = xoreos

@@ -1,7 +1,7 @@
 # Maintainer: Sven Hesse <drmccoy@drmccoy.de>
 
 pkgname=xoreos
-pkgver=0.0.2.r0.gadcb12e
+pkgver=0.0.3.r0.g7f297d5
 pkgrel=1
 pkgdesc="A reimplementation of BioWare's Aurora engine"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=('zlib'
          'faad2'
          'xvidcore')
 makedepends=()
-source=('git://github.com/xoreos/xoreos.git#tag=v0.0.2')
+source=('git://github.com/xoreos/xoreos.git#tag=v0.0.3')
 md5sums=('SKIP')
 
 pkgver() {
