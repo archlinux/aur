@@ -1,0 +1,17 @@
+pkgbase = hawaii-icon-theme
+	pkgdesc = Hawaii icon theme
+	pkgver = 0.5.92
+	pkgrel = 1
+	url = http://hawaiios.org
+	arch = any
+	groups = hawaii
+	license = GPL3
+	makedepends = cmake
+	depends = hicolor-icon-theme
+	conflicts = hawaii-icon-theme-git
+	replaces = hawaii-icon-themes
+	source = https://github.com/hawaii-desktop/hawaii-icon-theme/releases/download/v0.5.92/hawaii-icon-theme-0.5.92.tar.gz
+	sha1sums = e19b18f53587078670a7096510f6b79383993ae1
+
+pkgname = hawaii-icon-theme
+
