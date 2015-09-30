@@ -1,7 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=dhewm3-git
-pkgver=2015.03.22.g657ad99
+pkgver=r482.61d3efe
 pkgrel=1
+epoch=1
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
 arch=('i686' 'x86_64')
 url="https://github.com/dhewm/dhewm3"
@@ -9,24 +10,29 @@ license=('GPL3')
 depends=('doom3-data' 'libjpeg' 'libogg' 'libvorbis' 'openal' 'sdl')
 makedepends=('cmake' 'git')
 optdepends=('curl: download support')
-source=("git+$url.git"
+source=("git+$url"
         'dhewm3.desktop'
-        '0001-game_data_location.patch'
-        '0002-find_basepath_correctly.patch')
+        '0001-game_data_location.patch')
 sha256sums=('SKIP'
             '7c9ae892c6cf0453fcd57731689ccedac8f8ce10f33043f7dd5fb66bd73d1287'
-            'dbbb0607a92482a1b753cf9cac97dcc57345b92ee43449c9826f5b23af7624f9'
-            '41ea4db22a8a884a2ce9b6c8e68dc2e0364a02528eda2bec81e4a90b9c322557')
+            'dbbb0607a92482a1b753cf9cac97dcc57345b92ee43449c9826f5b23af7624f9')
 
 pkgver() {
   cd "${pkgname/-git/}"
-  git log -1 --format="%cd.g%h" --date=short | sed 's/-/./g'
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${pkgname/-git/}"
-  patch -p1 < "$srcdir"/0001-game_data_location.patch
-  patch -p1 < "$srcdir"/0002-find_basepath_correctly.patch
+
+  for patch in ../*.patch; do
+    if [ ! -f "$patch" ]; then
+      break;
+    else
+      patch -p1 -i "$patch"
+    fi
+  done
 }
 
 build() {
