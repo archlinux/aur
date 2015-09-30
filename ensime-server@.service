@@ -3,6 +3,8 @@ Description=ENSIME user server for %i directory
 
 [Service]
 Type=simple
+ExecStartPre=/usr/bin/mkdir -p %I/.ensime_cache
+ExecStartPre=/usr/bin/rm -f %I/.ensime_cache/http
 ExecStart=/usr/bin/ensime-server %I
 
 [Install]
