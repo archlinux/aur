@@ -1,6 +1,6 @@
 pkgbase = spl-lts
 	pkgdesc = Solaris Porting Layer kernel modules.
-	pkgver = 0.6.5.1_4.1.8_1
+	pkgver = 0.6.5.2_4.1.8_1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	install = spl.install
@@ -14,8 +14,8 @@ pkgbase = spl-lts
 	provides = spl
 	conflicts = spl
 	conflicts = spl-git
-	source = http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.1.tar.gz
-	sha256sums = b070fdc134280e10681dcc43eab08720495eef77f7fd468045022f6d55bef355
+	source = http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.2.tar.gz
+	sha256sums = ada7892a77e3a179bef633be7afad6e04f472b7e7579591fdd86957149408fc7
 
 pkgname = spl-lts
 
