@@ -19,9 +19,11 @@ srcdir='src'
 package() {
     local PYTHON="/usr/bin/env python3"
     local USR_PATH="${pkgdir}/usr"
+    local LICENSE_DIR="${USR_PATH}/share/licenses/${pkgname}"
 
-    # Set up /usr directory
+    # Set up directories
     install -d -m 755 ${USR_PATH}
+    install -d -m 755 ${LICENSE_DIR}
 
     # Clean up build dir
     rm -Rf build
@@ -34,6 +36,9 @@ package() {
 
     # Install python packages to $pkgdir
     ${PYTHON} setup.py install --prefix ${USR_PATH}
+
+    # Install license file
+    install -m 644 LICENSE ${LICENSE_DIR}
 
     # Make directories accessible for anyone
     find "${USR_PATH}" -type d -exec chmod 755 {} \;
