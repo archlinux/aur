@@ -1,0 +1,27 @@
+pkgbase = libhawaii-git
+	pkgdesc = Hawaii libraries
+	pkgver = 20150924.402cdab
+	pkgrel = 1
+	url = http://hawaiios.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = hawaii-git
+	license = GPL3,
+	license = LGPL3
+	makedepends = git
+	makedepends = gdb
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = glib2
+	provides = libhawaii
+	conflicts = libhawaii
+	replaces = libhawaii
+	options = debug
+	source = libhawaii::git://github.com/hawaii-desktop/libhawaii.git#branch=master
+	md5sums = SKIP
+
+pkgname = libhawaii-git
+
