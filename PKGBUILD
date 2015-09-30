@@ -8,6 +8,7 @@ url="https://www.sourceforge.net/projects/view-os"
 license=('GPL2')
 depends=('glibc>=2.15'
          'libumlib0=0.8.2')
+optdepends=('umview-mod-umlwip: module for umview networking')
 provides=("$pkgname=$pkgver")
 conflicts=("$pkgname")
 replaces=("$pkgname")
