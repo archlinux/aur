@@ -1,7 +1,7 @@
 pkgbase = seafile-server
 	pkgdesc = Next-generation open source cloud storage with advanced features on privacy protection and teamwork. (Server components, without seahub)
 	pkgver = 4.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seafile/
 	install = seafile-server.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = seafile-server
 	license = GPL3
 	makedepends = vala
 	makedepends = intltool
-	depends = seafile-shared>=4.3.3
+	depends = seafile-shared>=4.3.4
 	depends = python2-mako
 	depends = python2-dateutil
 	depends = python2-webpy
@@ -19,7 +19,7 @@ pkgbase = seafile-server
 	depends = python2-virtualenv
 	depends = python2-flup
 	depends = python2-six
-	depends = libevhtp-seafile<=1.2.9
+	depends = libevhtp-seafile>=1.2.9
 	depends = fuse
 	conflicts = django
 	conflicts = django-rest-framework,
