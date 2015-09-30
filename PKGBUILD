@@ -6,7 +6,7 @@
 _gemname=sprockets
 pkgname=ruby-$_gemname
 pkgver=3.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Rack-based asset packaging system'
 arch=(any)
 url='http://getsprockets.org/'

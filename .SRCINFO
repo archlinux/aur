@@ -1,7 +1,7 @@
 pkgbase = ruby-sprockets
 	pkgdesc = Rack-based asset packaging system
 	pkgver = 3.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://getsprockets.org/
 	arch = any
 	license = MIT
