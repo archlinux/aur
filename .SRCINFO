@@ -1,6 +1,6 @@
 pkgbase = nodejs-jscs
 	pkgdesc = JavaScript Code Style
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://jscs.info/
 	arch = any
@@ -8,8 +8,6 @@ pkgbase = nodejs-jscs
 	makedepends = npm
 	depends = nodejs
 	options = !emptydirs
-	source = https://github.com/jscs-dev/node-jscs/archive/v2.1.1.tar.gz
-	sha256sums = c8c3d5a2b8234c96c0854aa2aeabcd0b99a1a5589988355a37ba8c26e6414ff8
 
 pkgname = nodejs-jscs
 
