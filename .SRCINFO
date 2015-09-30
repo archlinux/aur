@@ -1,6 +1,6 @@
 pkgbase = imagemagick-git
 	pkgdesc = An image viewing/manipulation program
-	pkgver = 7.0.0.0.r10090.g7e784cd
+	pkgver = 7.0.0.0.r10204.g979447c
 	pkgrel = 1
 	url = http://www.imagemagick.org/script/
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = imagemagick-git
 	makedepends = opencl-headers
 	makedepends = libcl
 	makedepends = libwebp
+	makedepends = patch
 	makedepends = git
 	source = imagemagick-git::git+http://git.imagemagick.org/repos/ImageMagick.git
 	source = libpng_mmx_patch_x86_64.patch

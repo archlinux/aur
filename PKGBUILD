@@ -11,7 +11,7 @@ _pkgname='imagemagick'
 pkgbase="${_pkgname}-git"
 _srcdir="${pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-doc")
-pkgver=7.0.0.0.r10090.g7e784cd
+pkgver=7.0.0.0.r10204.g979447c
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 arch=('i686' 'x86_64')
@@ -19,12 +19,10 @@ url='http://www.imagemagick.org/script/'
 license=('custom')
 makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
              'openexr' 'libwmf' 'librsvg' 'libxml2' 'liblqr' 'openjpeg2'
-             'opencl-headers' 'libcl' 'libwebp' 'git')
-#source=("ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-${pkgver%.*}-${pkgver##*.}".tar.xz{,.asc})
-#source=("${pkgname}::svn+https://subversion.imagemagick.org/subversion/ImageMagick/trunk/") # svn was shut down August 10, 2015
+             'opencl-headers' 'libcl' 'libwebp' 'patch' 'git')
 _verwatch=("${url/script/download/}" 'ImageMagick-\([-0-9\.]\+\)\.tar\.bz2' 'l')
 _archlink="@@@::https://projects.archlinux.org/togit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
-source=("${pkgname}::git+http://git.imagemagick.org/repos/ImageMagick.git"
+source=("${_srcdir}::git+http://git.imagemagick.org/repos/ImageMagick.git"
     'libpng_mmx_patch_x86_64.patch'
     "${_archlink//@@@/perlmagick.rpath.patch}")
 sha256sums=('SKIP'
@@ -35,9 +33,7 @@ sha256sums=('SKIP'
 pkgver() {
   set -u
   cd "${_srcdir}/"
-  #echo $(grep -o -m1 '[0-9.-]\+' "${pkgname}/ChangeLog" | sed -n '2p' | tr '-' '.').$(svnversion "${SRCDEST}/${pkgname}/" | tr -d 'a-zA-z')
   local _version="$(grep -o -m1 '[0-9]\+\.[0-9]\+\.[0-9\.-]\+' 'ChangeLog')"
-  #_version="${_version//-/.}.$(svnversion | tr -d 'a-zA-z')"
   printf '%s.r%s.g%s' "${_version//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   set +u
 }
