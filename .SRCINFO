@@ -1,0 +1,15 @@
+pkgbase = msbuild-bin
+	pkgdesc = Microsoft Build Engine
+	pkgver = 14.1.0.0
+	pkgrel = 1
+	url = https://github.com/dotnet/corefx/blob/8b6efd4a91288d94b13f9757c6f1a3b356d39dd8/build.sh#L102
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = nuget
+	depends = mono
+	provides = msbuild
+	options = !strip
+
+pkgname = msbuild-bin
+
