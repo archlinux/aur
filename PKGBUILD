@@ -2,7 +2,7 @@
 
 pkgname=i3-gaps-next-git
 pkgver=4.11.370.g31a2aab
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of i3wm tiling window manager (next branch) with more features, including gaps'
 arch=('i686' 'x86_64')
 url='https://github.com/Airblader/i3/tree/gaps-next'
