@@ -1,6 +1,6 @@
 pkgbase = openbr
 	pkgdesc = Open Source Biometrics
-	pkgver = 0.5
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://openbiometrics.org/
 	arch = any
