@@ -6,7 +6,7 @@
 pkgname='dashcore'
 _gitname='dash'
 pkgver=0.12.0.55
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.dashpay.io/"
 depends=('qt4' 'boost' 'boost-libs' 'miniupnpc' 'openssl' 'qrencode')
@@ -16,13 +16,9 @@ pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy
 provides=('dashd' 'dash-qt' 'dash-cli')
 conflicts=('dashcore-git')
 
-#source=("https://github.com/dashpay/dash/archive/v$pkgver.tar.gz")
 source=('dash128.png'
         'dash-qt.desktop'
         'COPYING'
-#source=('https://raw.githubusercontent.com/dashpay/dash/master/share/pixmaps/bitcoin128.png'
-#        'https://raw.githubusercontent.com/dashpay/dash/master/contrib/debian/dash-qt.desktop'
-#        'https://raw.githubusercontent.com/dashpay/dash/master/COPYING')
 )
 source_i686=("https://www.dashpay.io/binaries/dash-$pkgver-linux32.tar.gz")
 source_x86_64=("https://www.dashpay.io/binaries/dash-$pkgver-linux64.tar.gz")
@@ -36,9 +32,6 @@ package() {
   install -D -m755 "$srcdir/$_gitname-${pkgver%.*}/bin/dash-qt" "$pkgdir/usr/bin/dash-qt"
   install -D -m755 "$srcdir/$_gitname-${pkgver%.*}/bin/dashd" "$pkgdir/usr/bin/dashd"
   install -D -m755 "$srcdir/$_gitname-${pkgver%.*}/bin/dash-cli" "$pkgdir/usr/bin/dash-cli"
-  #install -D -m644 "$srcdir/$_gitname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  #install -D -m644 "$srcdir/$_gitname-$pkgver/share/pixmaps/dash128.png" "$pkgdir/usr/share/pixmaps/dash128.png"
-  #install -D -m644 "$srcdir/$_gitname-$pkgver/contrib/debian/dash-qt.desktop" "$pkgdir/usr/share/applications/dash-qt.desktop"
   install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "dash128.png" "$pkgdir/usr/share/pixmaps/dash128.png"
   install -D -m644 "dash-qt.desktop" "$pkgdir/usr/share/applications/dash-qt.desktop"
