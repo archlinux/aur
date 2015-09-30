@@ -4,7 +4,7 @@
 pkgname=visit
 pkgver=2.9.2
 _pkgver=2_9_2
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
@@ -12,7 +12,7 @@ license=('BSD' 'custom')
 makedepends=('cmake' 'java-runtime' 'gcc-fortran')
 depends=('qtwebkit' 'python2-numpy'
          'gperftools' 'icet' 'java-environment'
-         'vtk' 'silo' 'cgns')
+         'vtk=6.1.0' 'silo' 'cgns')
 conflicts=('visit-bin' 'visit-build')
 source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar.gz"
         "visit.sh"
@@ -75,31 +75,31 @@ prepare(){
 
   # Out of source build
   cd "${srcdir}"
-  rm -rf -- build-${pkgver}
-  mkdir -p -- build-${pkgver}
+  rm -rf -- build
+  mkdir -p -- build
 }
 
 build() {
-  cd "${srcdir}/build-${pkgver}"
+  cd "${srcdir}/build"
 
-  cmake "${srcdir}/${pkgname}${pkgver}/src" -Wno-dev \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/opt/visit \
+  cmake "${srcdir}/${pkgname}${pkgver}/src" \
+    -DCMAKE_BUILD_TYPE:STRING=Release \
+    -DCMAKE_INSTALL_PREFIX:PATH=/opt/${pkgname} \
     -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
     -DVISIT_FORTRAN:BOOL=ON -DVISIT_GFORTRAN_DIR=/usr -DCMAKE_Fortran_COMPILER=gfortran \
     -DVISIT_PARALLEL:BOOL=ON -DVISIT_MPI_COMPILER=mpicc \
-    -DVISIT_PYTHON_DIR=/usr -DVISIT_PYTHON_SKIP_INSTALL:BOOL=ON \
-    -DQT_BIN=/usr/lib/qt4/bin -DVISIT_VISIT_QT_SKIP_INSTALL:BOOL=ON \
-    -DVISIT_VTK_DIR=/usr -DVISIT_VTK_SKIP_INSTALL:BOOL=ON \
-    -DVISIT_TCMALLOC_DIR=/usr \
-    -DVISIT_ICET_DIR=/usr \
-    -DVISIT_ZLIB_DIR=/usr \
-    -DVISIT_HDF5_DIR=/usr \
-    -DVISIT_SILO_DIR=/usr \
-    -DVISIT_GDAL_DIR=/usr \
-    -DVISIT_CGNS_DIR=/usr \
+    -DVISIT_CGNS_DIR:PATH=/usr \
+    -DVISIT_GDAL_DIR:PATH=/usr \
+    -DVISIT_HDF5_DIR:PATH=/usr \
+    -DVISIT_ICET_DIR:PATH=/usr \
+    -DVISIT_JAVA:BOOL=ON \
+    -DVISIT_PYTHON_DIR:PATH=/usr -DVISIT_PYTHON_SKIP_INSTALL:BOOL=ON \
+    -DVISIT_QT_BIN:PATH=/usr/lib/qt4/bin -DVISIT_VISIT_QT_SKIP_INSTALL:BOOL=ON \
+    -DVISIT_SILO_DIR:PATH=/usr \
     -DVISIT_THREAD:BOOL=ON \
-    -DVISIT_JAVA:BOOL=ON
+    -DVISIT_TCMALLOC_DIR:PATH=/usr \
+    -DVISIT_VTK_DIR:PATH=/usr -DVISIT_VTK_SKIP_INSTALL:BOOL=ON \
+    -DVISIT_ZLIB_DIR:PATH=/usr
 
   # For Qt5 (for now, it's failing with:
   # This application failed to start because it could not find or load the Qt platform plugin "xcb")
@@ -119,7 +119,7 @@ build() {
 }
 
 package(){
-  cd "${srcdir}/build-${pkgver}"
+  cd "${srcdir}/build"
 
   make install DESTDIR="${pkgdir}"
 
@@ -128,7 +128,8 @@ package(){
    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install script to set path
-  install -Dm755 "${srcdir}/visit.sh" "${pkgdir}/etc/profile.d/visit.sh"
+  install -Dm755 "${srcdir}/visit.sh" \
+    "${pkgdir}/etc/profile.d/visit.sh"
 }
 
 # vim:set ts=2 sw=2 et:
