@@ -1,13 +1,13 @@
 pkgbase = heavything
 	pkgdesc = A General purpose x64 Asm library for 2ton products
-	pkgver = 1.13
+	pkgver = 1.14
 	pkgrel = 1
 	url = https://2ton.com.au/HeavyThing
 	arch = x86_64
 	license = GPL3
 	makedepends = fasm
-	source = https://2ton.com.au/HeavyThing-1.13.tar.gz
-	sha256sums = 95e46bcaef8a90257ae2d81330700d72da0bb633c4ff38fbfeaded30c4f106c6
+	source = https://2ton.com.au/HeavyThing-1.14.tar.gz
+	sha256sums = 2a22cc7e04b4cf8a9550fab685145964474f72dbac32a97a9eb3d0090deff745
 
 pkgname = rwasa
 	pkgdesc = a full featured web server that eclipses nginx
