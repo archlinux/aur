@@ -10,5 +10,5 @@ md5sums=('SKIP')
 depends=('bash' 'scrot' 'curl' 'libnotify')
 
 package() {
-	install -D $srcdir/Locator-v$pkgver-alpha/puush $pkgdir/usr/bin/puush
+	install -D $srcdir/puush4linux-master/puush $pkgdir/usr/bin/puush
 }
