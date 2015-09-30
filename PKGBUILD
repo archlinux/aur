@@ -49,6 +49,5 @@ package() {
 
   script/grunt install --build-dir "$srcdir/atom-build" --install-dir "$pkgdir/usr"
   install -Dm644 resources/linux/Atom.desktop "$pkgdir/usr/share/applications/atom.desktop"
-  install -Dm644 resources/atom.png "$pkgdir/usr/share/pixmaps/atom.png"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
