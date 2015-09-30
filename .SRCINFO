@@ -1,12 +1,13 @@
 pkgbase = pyarchey
 	pkgdesc = A simple python scrip to display an OS logo in ASCII art along with basic system information.
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/pyarchey/
 	arch = any
 	license = GPL
 	depends = python
 	depends = python-psutil
+	depends = python-setuptools
 	source = https://pypi.python.org/packages/source/p/pyarchey/pyarchey-0.6.6.tar.gz
 	source = arch.patch
 	md5sums = 218d9b49bcfa68a38b0797a2c773c713
