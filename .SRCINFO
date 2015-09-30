@@ -1,7 +1,7 @@
 pkgbase = aarchup
 	pkgdesc = Fork of archup a small and lightweight update-notifier for archlinux.
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aericson/aarchup
 	install = aarchup.install
 	arch = i686

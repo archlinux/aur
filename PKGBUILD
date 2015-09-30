@@ -4,7 +4,7 @@
 
 pkgname=aarchup
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://github.com/aericson/aarchup"
 arch=('i686' 'x86_64')

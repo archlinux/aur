@@ -1,7 +1,7 @@
 post_upgrade() {
   cat << EOF
   To avoid problems with partial upgrades (http://gist.io/5660494) we no longer
-  use the combination of pacman -Sy/-Qu to check for updates.
+  use the combination of pacman -Sy/-Qu to check for updates. We now use checkupdates.
 
   As a result of this --ignore-disconnect was removed. Please remove it from your configurations, if you were using it.
 
