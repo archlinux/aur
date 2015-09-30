@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/gambit"
-    git describe --tags|sed 's+-+.r+'| sed 's+-+.+' | cut -c2-
+    git rev-list --ount HEAD
 }
 
 build() {
