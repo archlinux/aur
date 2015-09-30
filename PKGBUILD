@@ -5,7 +5,7 @@ pkgver=0.26
 pkgrel=1
 pkgdesc="web-based user interface for motion"
 arch=(any)
-url="https://bitbucket.org/ccrisan/motioneye"
+url="https://github.com/ccrisan/motioneye/"
 license=('GPL')
 depends=('motion' 
          'ffmpeg' 
@@ -22,7 +22,7 @@ depends=('motion'
 options=(emptydirs)
 install=motioneye.install
 backup=('opt/motioneye/settings.py')
-source=(https://bitbucket.org/ccrisan/motioneye/get/$pkgver.tar.gz
+source=(https://github.com/ccrisan/motioneye/archive/$pkgver.tar.gz
         motioneye.service)
 
 md5sums=('9365129f5953fc7255f4e7477d50ce42'
