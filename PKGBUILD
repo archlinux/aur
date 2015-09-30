@@ -3,7 +3,7 @@
 pkgname=updpkg
 pkgver=20150930
 pkgrel=1
-pkgdesc="checks PKGBUILD and updates checksums and pkgver automatically"
+pkgdesc="checks PKGBUILD and updates checksums and pkgver"
 arch=('i686' 'x86_64')
 url=" "
 license=('GPL')
