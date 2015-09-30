@@ -1,6 +1,4 @@
-#
-# Python 3 packages for alternative (github) implementation of python-magic
-#
+# Maintainer: Richard Neumann aka. rne <r dot neumann at homeinfo fullstop de>
 
 pkgname='python-magic-git'
 pkgver='0.4.6'
