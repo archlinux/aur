@@ -1,0 +1,14 @@
+pkgbase = helpdeco
+	pkgdesc = Decompiler for WinHelp (.hlp) files
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/helpdeco/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/helpdeco/helpdeco-2.1.3.tar.gz
+	sha512sums = 6ef5dd1a4a397589e5bcdd308820f4d38cbf53e413971231505a998bc1c8003de3b291483743027280ff3113338fc0ed9553066435ee5ffb597da33a487e2638
+
+pkgname = helpdeco
+
