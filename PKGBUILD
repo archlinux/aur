@@ -2,8 +2,8 @@
 # Contributor: Otakar Truněček <otakar.trunecek@gmail.com>
 
 pkgname=vcp-git
-pkgver=2.2
-pkgrel=6
+pkgver=2.2.4
+pkgrel=1
 pkgdesc="Visual cp: a cp program with some scrollbars"
 arch=('i686' 'x86_64')
 url="https://github.com/Leask/VCP"
@@ -16,6 +16,11 @@ backup=('etc/vcp.conf')
 source=("git+https://github.com/Leask/VCP")
 md5sums=('SKIP')
 _gitname="VCP"
+
+pkgver() {
+  cd "$srcdir"/"$_gitname"
+  printf "%s.%s" $(echo 2.2) $(git rev-list --count HEAD)
+}
 
 build() {
   cd "$srcdir"/"$_gitname"
