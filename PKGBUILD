@@ -53,6 +53,10 @@ package() {
   sed -i "s|$pkgdir||g" "$pkgdir/opt/grass/demolocation/.grassrc$_shortver" "$pkgdir/usr/bin/grass$_shortver"
   sed -i "s|$srcdir||g" "$pkgdir/opt/grass/docs/html/t.connect.html"
 
+  # This is needed for qgis to find grass
+  install -d "$pkgdir/etc/ld.so.conf.d/"
+  echo "/opt/$pkgname/lib" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
+
   install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/pixmaps/grass.png"
   install -Dm644 gui/icons/grass.desktop "$pkgdir/usr/share/applications/grass.desktop"
 }
