@@ -1,21 +1,23 @@
 pkgbase = firebird-superserver
 	pkgdesc = A open source SQL relational database management system (RDMS)
 	pkgver = 2.5.4.26856_0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.firebirdsql.org/
 	install = firebird-superserver.install
 	arch = i686
 	arch = x86_64
-	license = IPL IDPL
+	license = custom:IPL
+	license = custom:IDPL
+	depends = icu
+	depends = libedit
 	provides = libfbclient=2.5.4.26856
 	conflicts = firebird-classicserver
 	conflicts = libfbclient
-	source = http://downloads.sourceforge.net/firebird/FirebirdSS-2.5.4.26856-0.i686.tar.gz
-	source = firebird-sysv.rc
+	options = !makeflags
+	source = http://downloads.sourceforge.net/firebird/Firebird-2.5.4.26856-0.tar.bz2
 	source = firebird-tmpfiles.conf
 	source = firebird-systemd.service
-	md5sums = 553d2027de702dc06ff077d7a0f4de83
-	md5sums = 19e24e34c773826860958d4938396b05
+	md5sums = 7a17ec9889424b98baa29e001a054434
 	md5sums = 98eff99fd8d195a45c251610d67bd473
 	md5sums = ee9068e9bfdfa01e9dc79c72d1bfcdd8
 
