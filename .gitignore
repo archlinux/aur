@@ -1,2 +1,5 @@
 *~
 *.pkg.tar.xz
+src
+pkg
+python-homeinfo
