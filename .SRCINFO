@@ -1,0 +1,15 @@
+pkgbase = keepass-pt-br
+	pkgdesc = Brazilian Portuguese locale for keepass
+	pkgver = 2.30
+	pkgrel = 1
+	url = http://keepass.info/translations.html
+	arch = any
+	license = GPL2
+	makedepends = p7zip
+	depends = keepass
+	noextract = KeePass-2.30-Portuguese_BR.zip
+	source = https://downloads.sourceforge.net/keepass/KeePass-2.30-Portuguese_BR.zip
+	sha256sums = 896f81a898a01dad80f085337718e4e7f2fa1a5b2e6772f20b74c411744f63fc
+
+pkgname = keepass-pt-br
+
