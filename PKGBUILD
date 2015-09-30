@@ -4,13 +4,14 @@
 pkgname=x86info
 _commit=27ace37d
 pkgver=1.30.137
-pkgrel=1
-pkgdesc='A CPU identification utility. Provides more info than /proc/cpuinfo.'
+pkgrel=2
+pkgdesc='A CPU identification utility. Provides more info than /proc/cpuinfo'
 arch=('i686' 'x86_64')
 url="http://www.codemonkey.org.uk/projects/x86info/"
 license=('GPL')
 install=x86info.install
-source=("git://github.com/dankamongmen/x86info#commit=${_commit}")
+makedepends=('git')
+source=("git://github.com/dankamongmen/x86info.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {

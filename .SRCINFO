@@ -1,13 +1,14 @@
 pkgbase = x86info
-	pkgdesc = A CPU identification utility. Provides more info than /proc/cpuinfo.
+	pkgdesc = A CPU identification utility. Provides more info than /proc/cpuinfo
 	pkgver = 1.30.137
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.codemonkey.org.uk/projects/x86info/
 	install = x86info.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = git://github.com/dankamongmen/x86info#commit=27ace37d
+	makedepends = git
+	source = git://github.com/dankamongmen/x86info.git#commit=27ace37d
 	sha256sums = SKIP
 
 pkgname = x86info
