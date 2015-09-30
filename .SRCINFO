@@ -2,7 +2,7 @@ pkgbase = cnijfilter-mg5500series
 	pkgdesc = Canon MG5500 series printer driver
 	pkgver = 4.00
 	pkgrel = 1
-	url = http://support-sg.canon-asia.com/contents/SG/EN/0100467102.html
+	url = http://support-sg.canon-asia.com/contents/SG/EN/0100550502.html
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -30,7 +30,7 @@ pkgbase = cnijfilter-mg5500series
 	depends = cnijfilter-common
 	options = emptydirs
 	source = http://gdlp01.c-wss.com/gds/5/0100005505/01/cnijfilter-mg5500series-4.00-1-rpm.tar.gz
-	md5sums = 4abe4396e4efc7ff90f459ccf493bb9c
+	sha256sums = 9b06ca574a4ea86781b00d1612278af5ab9e0dea6a8aa4b38cf47d3b07426dba
 
 pkgname = cnijfilter-mg5500series
 
