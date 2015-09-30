@@ -1,0 +1,21 @@
+pkgbase = flexisip
+	pkgdesc = A general purpose SIP proxy with media capabilities
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://flexisip.org
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = belle-sip
+	depends = boost-libs
+	depends = hiredis
+	depends = mediastreamer
+	depends = protobuf
+	depends = sofia-sip-bc
+	depends = unixodbc
+	depends = xsd
+	source = https://github.com/BelleDonneCommunications/flexisip/archive/1.0.5.tar.gz
+	md5sums = 140cfb176b8a19faa0d4f04b031b95cd
+
+pkgname = flexisip
+
