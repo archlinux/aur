@@ -1,6 +1,6 @@
 pkgbase = spl-utils-git
 	pkgdesc = Solaris Porting Layer kernel module support files.
-	pkgver = 0.6.5.1_r0_g2b5a45f_4.2.1_1
+	pkgver = 0.6.5.2_r0_g2fd6834_4.2.1_1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = spl-utils-git
 	conflicts = spl-utils
 	conflicts = spl-utils-lts
 	replaces = spl-utils
-	source = git+https://github.com/zfsonlinux/spl.git#commit=2b5a45f7
+	source = git+https://github.com/zfsonlinux/spl.git#commit=2fd6834e
 	source = spl-utils.hostid
 	md5sums = SKIP
 	md5sums = a54f0041a9e15b050f25c463f1db7449
