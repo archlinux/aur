@@ -8,7 +8,7 @@ pkgdesc="Scheme R5RS interpreter and compiler (via C) - git version"
 arch=('i686' 'x86_64')
 url="http://gambitscheme.org"
 license=('Apache' 'LGPL2.1')
-depends=(ba'sh')
+depends=('bash')
 makedepends=('git')
 provides=('gambit-c')
 conflicts=('gambit-c')
@@ -19,7 +19,6 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/gambit"
-    #    git log -1 --format='%cd.%h' --date=short | tr -d -
     git describe --tags|sed 's+-+.r+'| sed 's+-+.+' | cut -c2-
 }
 
