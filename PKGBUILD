@@ -1,7 +1,7 @@
 # Maintainer: Niklas Hedlund <nojan1989@gmail.com>
 
 pkgname=motioneye
-pkgver=0.26
+pkgver=0.27.2
 pkgrel=1
 pkgdesc="web-based user interface for motion"
 arch=(any)
@@ -11,7 +11,6 @@ depends=('motion'
          'ffmpeg' 
          'v4l-utils' 
          'python2' 
-         'python2-pip' 
          'openssl' 
          'curl' 
          'python2-tornado'
@@ -19,26 +18,27 @@ depends=('motion'
          'python2-pycurl'
          'python2-pillow')
 
+makedepends=('python2-distribute' )
 options=(emptydirs)
 install=motioneye.install
-backup=('opt/motioneye/settings.py')
-source=(https://github.com/ccrisan/motioneye/archive/$pkgver.tar.gz
-        motioneye.service)
+backup=('etc/motioneye/motioneye.conf')
+source=('https://pypi.python.org/packages/source/m/motioneye/motioneye-0.27.2-2.tar.gz')
+md5sums=('015280fa895481b5761efd9fe32766d4')
 
-md5sums=('9365129f5953fc7255f4e7477d50ce42'
-         '63ac2ce77f638d8ade8afa80179b8b9c')
-
-prepare() {
-	sed 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -i $srcdir/ccrisan-motioneye-*/*.py
+build() {
+    cd $srcdir/motioneye-0.27.2
+    python2 setup.py build
 }
 
+
 package() {
-	motiondir=$pkgdir/opt/motioneye
+	mkdir -p $pkgdir/etc/motioneye
+	mkdir -p $pkgdir/var/lib/motioneye
 
-	mkdir -p $motiondir
-	cp -r $srcdir/ccrisan-motioneye-*/* $motiondir
 
-	cp $motiondir/settings_default.py $motiondir/settings.py
+	cp $srcdir/motioneye-$pkgver/extra/motioneye.conf.sample $pkgdir/etc/motioneye/motioneye.conf
+	install -Dm644 "$srcdir/motioneye-$pkgver/extra/motioneye.systemd-unit" $pkgdir/usr/lib/systemd/system/motioneye.service
 
-	install -Dm644 "$srcdir/motioneye.service" "$pkgdir/usr/lib/systemd/system/motioneye.service"
+	cd $srcdir/motioneye-0.27.2
+    	python2 setup.py install --root="$pkgdir" --optimize=1 
 }
