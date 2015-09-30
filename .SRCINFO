@@ -1,0 +1,16 @@
+pkgbase = perl-exporter-lite
+	pkgdesc = lightweight exporting of functions and variables
+	pkgver = 0.06
+	pkgrel = 1
+	url = https://metacpan.org/release/Exporter-Lite
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Exporter-Lite-0.06.tar.gz
+	md5sums = 309d37c45180b3c7716caf3d2ebe1617
+	sha512sums = 97f2127d2dad590522c8e38b05b5cdf43026fe91c0df4030a6d129392c4aea63170f9b1dc17740325cd05e797ed8d897d1663f429c880155dc74fa0c58ca81b3
+
+pkgname = perl-exporter-lite
+
