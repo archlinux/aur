@@ -1,7 +1,7 @@
 pkgbase = iproute2-git
 	pkgdesc = IP Routing Utilities - git checkout
-	pkgver = 4.1.0.r41.g0c4a90c
-	pkgrel = 2
+	pkgver = 4.2.0.r44.g8fe9839
+	pkgrel = 1
 	url = http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 	arch = i686
 	arch = x86_64
@@ -22,9 +22,7 @@ pkgbase = iproute2-git
 	backup = etc/iproute2/rt_scopes
 	backup = etc/iproute2/rt_tables
 	source = git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git
-	source = unwanted-link-help.patch
 	sha256sums = SKIP
-	sha256sums = 3f72492554a5417c13b2b6f6222c158319ce91c0b6c25fd651f49add493323a7
 
 pkgname = iproute2-git
 
