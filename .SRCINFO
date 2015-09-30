@@ -1,6 +1,6 @@
 pkgbase = spl-git
 	pkgdesc = Solaris Porting Layer kernel modules.
-	pkgver = 0.6.5.1_r0_g2b5a45f_4.2.1_1
+	pkgver = 0.6.5.2_r0_g2fd6834_4.2.1_1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	install = spl.install
@@ -16,7 +16,7 @@ pkgbase = spl-git
 	conflicts = spl
 	conflicts = spl-lts
 	replaces = spl
-	source = git+https://github.com/zfsonlinux/spl.git#commit=2b5a45f7
+	source = git+https://github.com/zfsonlinux/spl.git#commit=2fd6834e
 	md5sums = SKIP
 
 pkgname = spl-git
