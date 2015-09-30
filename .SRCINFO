@@ -1,7 +1,7 @@
 pkgbase = sofia-sip-bc
 	pkgdesc = An open-source SIP User-Agent library
 	pkgver = 1.13
-	pkgrel = 2
+	pkgrel = 1
 	url = http://sofia-sip.sourceforge.net
 	arch = i686
 	arch = x86_64
