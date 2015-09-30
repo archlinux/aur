@@ -9,6 +9,7 @@ pkgbase = cms-git
 	makedepends = git
 	makedepends = python-virtualenv
 	depends = isolate
+	depends = testlib
 	depends = postgresql
 	depends = postgresql-libs
 	depends = python2
