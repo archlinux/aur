@@ -1,12 +1,13 @@
 pkgbase = wmutils-git
 	pkgdesc = A set of tools for X windows manipulation.
-	pkgver = 1.0.r25.g7b86e8b
+	pkgver = 1.1.r0.g7b86e8b
 	pkgrel = 1
 	url = https://github.com/wmutils/core
 	arch = i686
 	arch = x86_64
 	license = ISC
 	depends = libxcb
+	conflicts = wmutils
 	source = wmutils-git::git+https://github.com/wmutils/core.git
 	source = git+https://github.com/wmutils/opt.git
 	source = git+https://github.com/wmutils/contrib.git
