@@ -2,7 +2,7 @@ pkgbase = updpkg
 	pkgdesc = checks PKGBUILD, updates checksums and pkgver and creates .SRCINFO
 	pkgver = 20150930
 	pkgrel = 1
-	url = 
+	url = https://forum.manjaro.org/index.php?topic=26744.0
 	arch = i686
 	arch = x86_64
 	license = GPL
