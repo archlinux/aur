@@ -1,6 +1,6 @@
 pkgbase = openmeetings
 	pkgdesc = provides video conferencing, instant messaging, white board, collaborative document editing and other groupware tools using the Red5 Streaming Server
-	pkgver = 3.0.6
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = http://openmeetings.apache.org/
 	arch = any
@@ -20,13 +20,13 @@ pkgbase = openmeetings
 	depends = libreoffice-draw
 	depends = libreoffice-impress
 	depends = libreoffice-writer
-	noextract = apache-openmeetings-3.0.6.tar.gz
+	noextract = apache-openmeetings-3.0.7.tar.gz
 	options = !strip
 	backup = opt/openmeetings/webapps/openmeetings/WEB-INF/classes/META-INF/persistence.xml
-	source = http://www.apache.org/distopenmeetings/3.0.6/bin/apache-openmeetings-3.0.6.tar.gz
-	source = http://www.apache.org/dist/openmeetings/3.0.6/bin/apache-openmeetings-3.0.6.tar.gz.asc
+	source = http://www.apache.org/dist/openmeetings/3.0.7/bin/apache-openmeetings-3.0.7.tar.gz
+	source = http://www.apache.org/dist/openmeetings/3.0.7/bin/apache-openmeetings-3.0.7.tar.gz.asc
 	source = openmeetings.service
-	sha256sums = 1fcddf6ef03861d611a7ed3cf6bc6fc87f67d92a77a30603bb9818bd29e703de
+	sha256sums = 8cf3facec11b238c73a635177b91572bf0fe7f125a8d2188fec17dd3186569ed
 	sha256sums = SKIP
 	sha256sums = a22001d137e7adf92d9f52985a1497967ada421f14f1d697df1823d74cbbce87
 

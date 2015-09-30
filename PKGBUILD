@@ -21,7 +21,7 @@
 
 set -u
 pkgname='openmeetings'
-pkgver='3.0.6'
+pkgver='3.0.7'
 pkgrel='1'
 #pkgdesc='Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration'
 pkgdesc='provides video conferencing, instant messaging, white board, collaborative document editing and other groupware tools using the Red5 Streaming Server'
@@ -33,6 +33,8 @@ depends=('mysql' 'imagemagick' 'ghostscript' 'swftools' 'sox' 'lame' 'openjdk6'
  'ffmpeg' 'libreoffice-base' 'libreoffice-calc' 'libreoffice-common'
   'libreoffice-draw' 'libreoffice-impress' 'libreoffice-writer')
 makedepends=('curl') # 'unzip') # Used to download as zip
+backup=("opt/${pkgname}/webapps/${pkgname}/WEB-INF/classes/META-INF/persistence.xml")
+options=('!strip') # Nothing to strip in a Java package, wastes time!
 #install="${pkgname}.install"
 _srczip="apache-${pkgname}-${pkgver}.tar.gz"
 
@@ -40,16 +42,15 @@ _srczip="apache-${pkgname}-${pkgver}.tar.gz"
 #_apache_cgi='http://www.apache.org/dyn/closer.cgi'
 #_closest="$(curl "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"preferred":"(.+)".*/\1/')" # '
 _closest="http://www.apache.org/dist" # It worked but wasn't compatible with mksrcinfo
-source=("${_closest}${pkgname}/${pkgver}/bin/${_srczip}"
+source=("${_closest}/${pkgname}/${pkgver}/bin/${_srczip}"
         "http://www.apache.org/dist/${pkgname}/${pkgver}/bin/${_srczip}.asc" # Sigs always come from the master repository
         "${pkgname}.service"
 )
-backup=("opt/${pkgname}/webapps/${pkgname}/WEB-INF/classes/META-INF/persistence.xml")
+_verwatch=("https://archive.apache.org/dist/${pkgname}/" "\([0-9\.]\+\)/" 'l')
 noextract=("${_srczip}")
-sha256sums=('1fcddf6ef03861d611a7ed3cf6bc6fc87f67d92a77a30603bb9818bd29e703de'
+sha256sums=('8cf3facec11b238c73a635177b91572bf0fe7f125a8d2188fec17dd3186569ed'
             'SKIP'
             'a22001d137e7adf92d9f52985a1497967ada421f14f1d697df1823d74cbbce87')
-options=('!strip') # Nothing to strip in a Java package, wastes time!
 
 package() {
   set -u
