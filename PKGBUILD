@@ -2,14 +2,14 @@
 
 pkgname=analizo
 pkgver=1.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Analizo is a free, multi-language, extensible source code analysis and visualization toolkit."
 groups=('analizo')
 arch=('any')
 url="http://analizo.org"
 license=('GPLv3')
 depends=('perl' 'perl-cpanplus-dist-arch' 'sloccount' 'doxyparse'
-         'perl-app-cmd' 'perl-chi' 'perl-class' 'perl-data-uuid'
+         'perl-app-cmd' 'perl-class' 'perl-data-uuid'
          'perl-digest-jhash' 'perl-list-moreutils' 'perl-file-homedir'
          'perl-file-copy-recursive' 'perl-getopt-euclid' 'perl-graph'
          'perl-list-compare' 'perl-mro-compat' 'perl-file-sharedir-install'
@@ -23,10 +23,11 @@ build(){
   cd "${srcdir}/${pkgname}"
 
   #Perl modules
-  cpanp -i --skiptest Statistics::Descriptive # Looks like there is no Oficial or AUR candidate
+  cpanp -i --skiptest CHI # This package has dependencies that have not been migrated yet to AUR 4: perl-moox-types-mooselike-numeric, perl-exporter-lite (through perl-time-duration-parse)
+  cpanp -i --skiptest Statistics::Descriptive # Left behind on AUR 3 to 4 migration
   cpanp -i --skiptest Statistics::OnLine # Looks like there is no Oficial or AUR candidate
   cpanp -i --skiptest FindBin::libs # Looks like there is no Oficial or AUR candidate
-  cpanp -i --skiptest Graph::Writer::DSM # Looks like there is no Oficial or AUR candidate
+  cpanp -i --skiptest Graph::Writer::DSM # Looks like there is no Oficial or AUR candidate (it may be provided by perl-graph)
 
   #Analizo
   perl Makefile.PL
