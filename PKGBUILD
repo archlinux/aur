@@ -19,8 +19,7 @@ optdepends=(
     'perl-mp3-tag: add tags to MP3 files'
     'perl-xml-simple: Series and Brand pid parsing'
     'vlc: download files in that are n95 format')
-source=(ftp://ftp.infradead.org/pub/get_iplayer/${pkgname}-${pkgver}.tar.gz)
-md5sums=('180883975710fa3548f1e3359e21d5e2')
+source=(https://github.com/get-iplayer/get_iplayer/archive/v${pkgver}.tar.gz)
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -36,3 +35,4 @@ package() {
 }
 
 # vim:set ts=4 sw=4 et:
+md5sums=('6700245c615ceb3b2bc4b151e05b4c74')
