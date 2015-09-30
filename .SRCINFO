@@ -6,7 +6,7 @@ pkgbase = blis
 	arch = i686
 	arch = x86_64
 	license = BSD
-	provides = blas
+	provides = blas=3.5.0
 	provides = cblas
 	conflicts = blas
 	conflicts = cblas

@@ -7,7 +7,7 @@ pkgdesc="BLAS-like Library Instantiation Software framework by the Science of Hi
 arch=('i686' 'x86_64')
 license=('BSD')
 url=('https://code.google.com/p/blis/')
-provides=('blas' 'cblas')
+provides=('blas=3.5.0' 'cblas')
 conflicts=('blas' 'cblas')
 options=('!makeflags' '!emptydirs')
 
