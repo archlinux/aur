@@ -4,14 +4,14 @@
 pkgbase=heavything-bin
 pkgname=('rwasa-bin' 'webslap-bin' 'hnwatch-bin'
          'dhtool-bin' 'sshtalk-bin')
-pkgver=1.13
-pkgrel=3
+pkgver=1.14
+pkgrel=1
 pkgdesc='A General purpose x64 Asm library for 2ton products'
 arch=('x86_64')
 url='https://2ton.com.au/HeavyThing'
 license=('GPL3')
 source=("$url-$pkgver.tar.gz")
-sha256sums=('95e46bcaef8a90257ae2d81330700d72da0bb633c4ff38fbfeaded30c4f106c6')
+sha256sums=('2a22cc7e04b4cf8a9550fab685145964474f72dbac32a97a9eb3d0090deff745')
 
 package_rwasa-bin () {
   pkgdesc='a full featured web server that eclipses nginx'
