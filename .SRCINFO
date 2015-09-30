@@ -1,7 +1,7 @@
 pkgbase = feedreader
 	pkgdesc = A simple feedreader client for web services like Tiny Tiny RSS and in the future others.
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/feedreader
 	install = feedreader.install
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = feedreader
 	depends = libnotify
 	depends = html2text-with-utf8
 	depends = libsoup
+	depends = libgee
 	depends = json-glib
 	depends = libsecret
 	provides = feedreader
