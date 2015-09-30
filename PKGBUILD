@@ -8,9 +8,9 @@ pkgdesc="High level email parsing and manipulation"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-datetime>=0' 'perl-datetime-format-mail>=0' 'perl-datetime-format-natural>=0' 'perl-devel-partialdump>=0' 'perl-email-abstract>=0' 'perl-email-address>=0' 'perl-email-mime-encodings>=0' 'perl-email-messageid>=0' 'perl-file-libmagic>=0' 'perl-file-slurp-tiny>=0' 'perl-list-allutils>=0' 'perl-list-moreutils>=0.28' 'perl-moose>=0' 'perl-moosex-params-validate>=0.21' 'perl-moosex-role-parameterized>=0' 'perl-moosex-strictconstructor>=0' 'perl-moosex-types>=0' 'perl-moosex-types-common>=0' 'perl-sub-exporter>=0' 'perl-namespace-autoclean>=0' 'perl>=5.10.0')
+depends=('perl-datetime' 'perl-datetime-format-mail' 'perl-datetime-format-natural' 'perl-devel-partialdump' 'perl-email-abstract' 'perl-email-address' 'perl-email-mime-encodings' 'perl-email-messageid' 'perl-file-libmagic' 'perl-file-slurp-tiny' 'perl-list-allutils' 'perl-list-moreutils>=0.28' 'perl-moose' 'perl-moosex-params-validate>=0.21' 'perl-moosex-role-parameterized' 'perl-moosex-strictconstructor' 'perl-moosex-types' 'perl-moosex-types-common' 'perl-sub-exporter' 'perl-namespace-autoclean' 'perl>=5.10.0')
 makedepends=()
-checkdepends=('perl-test-differences>=0' 'perl-test-fatal>=0' 'perl-test-requires>=0')
+checkdepends=('perl-test-differences' 'perl-test-fatal' 'perl-test-requires')
 url='https://metacpan.org/release/Courriel'
 source=('http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Courriel-0.39.tar.gz')
 md5sums=('e96ed4029f5d92aa481b2351b9cb9058')

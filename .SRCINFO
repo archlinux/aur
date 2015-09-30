@@ -6,29 +6,29 @@ pkgbase = perl-courriel
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-differences>=0
-	checkdepends = perl-test-fatal>=0
-	checkdepends = perl-test-requires>=0
-	depends = perl-datetime>=0
-	depends = perl-datetime-format-mail>=0
-	depends = perl-datetime-format-natural>=0
-	depends = perl-devel-partialdump>=0
-	depends = perl-email-abstract>=0
-	depends = perl-email-address>=0
-	depends = perl-email-mime-encodings>=0
-	depends = perl-email-messageid>=0
-	depends = perl-file-libmagic>=0
-	depends = perl-file-slurp-tiny>=0
-	depends = perl-list-allutils>=0
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-requires
+	depends = perl-datetime
+	depends = perl-datetime-format-mail
+	depends = perl-datetime-format-natural
+	depends = perl-devel-partialdump
+	depends = perl-email-abstract
+	depends = perl-email-address
+	depends = perl-email-mime-encodings
+	depends = perl-email-messageid
+	depends = perl-file-libmagic
+	depends = perl-file-slurp-tiny
+	depends = perl-list-allutils
 	depends = perl-list-moreutils>=0.28
-	depends = perl-moose>=0
+	depends = perl-moose
 	depends = perl-moosex-params-validate>=0.21
-	depends = perl-moosex-role-parameterized>=0
-	depends = perl-moosex-strictconstructor>=0
-	depends = perl-moosex-types>=0
-	depends = perl-moosex-types-common>=0
-	depends = perl-sub-exporter>=0
-	depends = perl-namespace-autoclean>=0
+	depends = perl-moosex-role-parameterized
+	depends = perl-moosex-strictconstructor
+	depends = perl-moosex-types
+	depends = perl-moosex-types-common
+	depends = perl-sub-exporter
+	depends = perl-namespace-autoclean
 	depends = perl>=5.10.0
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Courriel-0.39.tar.gz
