@@ -2,7 +2,7 @@
 
 pkgname=kumir2-git
 pkgver=30.09.2015
-pkgrel=1
+pkgrel=2
 pkgdesc="An educational programming language and IDE in Russian schools"
 url="http://lpm.org.ru/kumir"
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ build() {
   cd ../..
   mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" ../
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" ../
   make
 }
 
