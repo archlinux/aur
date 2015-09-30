@@ -1,0 +1,43 @@
+diff -aur freewheeling/configure.ac freewheeling.patched/configure.ac
+--- freewheeling/configure.ac	2015-09-30 01:03:19.524292955 +0200
++++ freewheeling.patched/configure.ac	2015-09-30 02:28:18.321284279 +0200
+@@ -21,12 +21,15 @@
+ # Checks for libraries.
+ 
+ #AC_CHECK_LIB([X11], [XOpenDisplay], , [AC_MSG_ERROR(VIDEO: You need libx11-dev installed)])
+-AC_CHECK_LIB([gnutls-openssl], [main], , [AC_MSG_ERROR(You need libgnutls11-dev installed)])
++#AC_CHECK_LIB([gnutls-openssl], [main], , [AC_MSG_ERROR(You need libgnutls11-dev installed)])
++AC_CHECK_LIB([crypto], [main], , [AC_MSG_ERROR(You need openssl installed)])
+ AC_CHECK_LIB([dl], [main], , [AC_MSG_ERROR(You need libc6-dev installed)])
+ AC_CHECK_LIB([freetype], [FT_Init_FreeType], , 
+   [AC_MSG_ERROR(VIDEO: You need libfreetype6-dev installed.
+ 		http://freetype.sourceforge.net/index2.html)])
+ 
++AC_CHECK_LIB([SDL], [main], , [AC_MSG_ERROR(VIDEO: You need sdl installed)])
++
+ # Check for SDL_gfx with different function names..
+ AC_CHECK_LIB([SDL_gfx], [main], , 
+   [AC_MSG_ERROR(VIDEO: You need libsdl-gfx1.2-dev installed.
+@@ -86,6 +89,7 @@
+ #		          http://www.libsdl.org/])
+ #)
+ 
++AC_CHECK_LIB([ogg], [main], , [AC_MSG_ERROR(AUDIO: You need libogg installed)])
+ AC_CHECK_LIB([vorbis], [main], , 
+   [AC_MSG_ERROR(AUDIO: You need libvorbis-dev installed.
+ 		http://www.xiph.org/ogg/vorbis/)])
+diff -aur freewheeling/src/fweelin_core.h freewheeling.patched/src/fweelin_core.h
+--- freewheeling/src/fweelin_core.h	2015-09-30 01:03:11.610907090 +0200
++++ freewheeling.patched/src/fweelin_core.h	2015-09-30 02:29:20.611629823 +0200
+@@ -25,11 +25,7 @@
+    You should have received a copy of the GNU General Public License
+    along with Freewheeling.  If not, see <http://www.gnu.org/licenses/>. */
+ 
+-#ifdef __MACOSX__
+ #include <openssl/md5.h>
+-#else
+-#include <gnutls/openssl.h>
+-#endif
+ 
+ #include "fweelin_amixer.h"
+ #include "fweelin_midiio.h"

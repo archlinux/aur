@@ -1,0 +1,31 @@
+pkgbase = freewheeling-svn
+	pkgdesc = Live looping instrument that returns us to the joy of making music spontaneously.
+	pkgver = 0.6.1.r100
+	pkgrel = 1
+	url = http://freewheeling.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = subversion
+	depends = fluidsynth
+	depends = freetype2
+	depends = jack2
+	depends = libogg
+	depends = libsm
+	depends = libsndfile
+	depends = libvorbis
+	depends = libxml2
+	depends = openssl
+	depends = sdl
+	depends = sdl_ttf
+	depends = sdl_gfx
+	conflicts = freewheeling
+	source = freewheeling::svn+http://svn.code.sf.net/p/freewheeling/code/
+	source = libraries.patch
+	sha256sums = SKIP
+	sha256sums = fe2b03a306d5b896e6cc87a33fcf98d3d4a118d1ac2474d956c4d392651a7fb2
+
+pkgname = freewheeling-svn
+
