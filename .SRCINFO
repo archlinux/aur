@@ -1,0 +1,18 @@
+pkgbase = perl-software-license
+	pkgver = 0.103010
+	pkgrel = 1
+	url = https://metacpan.org/release/Software-License
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-data-section
+	depends = perl-sub-install
+	depends = perl-text-template
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Software-License-0.103010.tar.gz
+	md5sums = eee95f8d67472fa1a12cdf81e676812b
+	sha512sums = d30564974a333b1ab8d7dc0eea9f740e415b4e7a2e736ceabf97ab6b481855e8ea5786be9e197edd1c1adb601d886461f2ad680714045ea802497c3c23046ae4
+
+pkgname = perl-software-license
+
