@@ -32,4 +32,6 @@ package() {
        MERCURY_COMPILER="$pkgdir"/usr/bin/mercury_compile \
        MERCURY_CONFIG_DIR="$pkgdir"/usr/lib/mercury \
        PARALLEL="$MAKEFLAGS" install
+
+  rm "${pkgdir}"/usr/bin/{mdb,mercury,mprof}.bat
 }
