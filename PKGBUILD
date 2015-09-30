@@ -2,7 +2,7 @@
 
 pkgname=mt7630-pcie-wifi-dkms
 _gitname=mt7630e
-pkgver=22.d9899f0
+pkgver=2.3.4.r0.g9f03397
 pkgrel=1
 pkgdesc="MT7630e PCIe Wifi (DKMS)"
 arch=('i686' 'x86_64')
@@ -11,14 +11,14 @@ license=('GPL')
 depends=('dkms')
 optdepends=('linux-headers: If running standard kernel, otherwise find matching headers for your kernel')
 install=MT7630e-wifi.install
-source=('mt7630e::git+https://github.com/benjarobin/MT7630E.git#tag=v2.3.3'
+source=('mt7630e::git+https://github.com/benjarobin/MT7630E.git#tag=v2.3.4'
         'dkms.conf')
 md5sums=('SKIP'
          'ba71b64eac40daed63a3acbf3b8021a3')
 
 pkgver() {
     cd "${_gitname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
