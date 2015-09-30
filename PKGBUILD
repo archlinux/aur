@@ -3,7 +3,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.19.99.19757.7a1163a
+pkgver=0.19.99.20604.gf8c32c2
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64')
@@ -19,7 +19,8 @@ optdepends=('acpid: power events on laptop lid close'
             'connman: network module'
             'gdb: create backtraces on crash'
             'geoclue2: geolocation module'
-            'packagekit: packagekit module')
+            'packagekit: packagekit module'
+            'xorg-server-xwayland: xwayland module')
 provides=("$_pkgname=$pkgver" 'notification-daemon')
 conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
@@ -48,7 +49,9 @@ build() {
 
   ./autogen.sh \
     --prefix=/usr \
-    --sysconfdir=/etc
+    --sysconfdir=/etc \
+    --enable-wayland \
+    --enable-xwayland
 
   make
 }
@@ -58,11 +61,6 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-# install text files
-  install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
-
-# install license files
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
