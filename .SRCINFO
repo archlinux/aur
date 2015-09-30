@@ -1,0 +1,16 @@
+pkgbase = ruby-netrc
+	pkgdesc = This library can read and update netrc files, preserving formatting including comments and whitespace.
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/geemus/netrc
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = netrc-0.10.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/netrc-0.10.3.gem
+	sha256sums = 8fa24558ed46e2b2d9a58baa78fd7d11cb7efa3ec7e2ec89a057f76dc3abcce4
+
+pkgname = ruby-netrc
+
