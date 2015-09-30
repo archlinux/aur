@@ -1,7 +1,7 @@
 pkgbase = pms
 	pkgdesc = DLNA compliant Upnp Media Server for the PS3, written in Java.
 	pkgver = 1.90.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ps3mediaserver.org/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pms
 	depends = java-runtime
 	depends = mencoder
 	depends = libmediainfo
-	depends = tsmuxer
+	depends = tsmuxer-ng
 	optdepends = vlc: Internet video/audio support
 	backup = opt/pms/PMS.conf
 	backup = opt/pms/WEB.conf
