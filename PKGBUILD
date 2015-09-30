@@ -6,10 +6,10 @@ pkgname=ccnet
 
 # The version number for the software
 pkgver=1.4.2
-_seafilever=4.3.3
+_seafilever=4.3.4
 
 #The release number for the arch package, as fixes are added to the PKGBUILD, the release number will increase
-pkgrel=14
+pkgrel=15
 
 # The description of the package, should be about 80 characters long (one line)
 pkgdesc="A framework for writing networked applications in C."
@@ -75,7 +75,7 @@ package () {
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname
 	cp $srcdir/COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/
 }
-sha256sums=('a7885568099d06435bbde748bab181153bada17ea4968e6e1e4a91c7d0646684'
+sha256sums=('138d6de92388440ce378fc923c50674b80f823e3d2396254dc6c60da5daf2a09'
             'c07aeccf581c255e60acbddcc6af90290e0d6354e6ec0ee1987b82845d3d57ac'
             '66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f'
             '382b1da33e2b6c0ebab8d3921d92b7417fa11d969ad822cd43aee499fd7b3d94')
