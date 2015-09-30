@@ -1,0 +1,9 @@
+#!/bin/bash
+# updpkg
+
+updpkgsums
+makepkg -o
+mksrcinfo
+
+exit
+

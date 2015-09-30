@@ -1,0 +1,14 @@
+pkgbase = updpkg
+	pkgdesc = checks PKGBUILD and updates checksums and pkgver automatically
+	pkgver = 20150930
+	pkgrel = 1
+	url = 
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pkgbuild-introspection
+	source = updpkg
+	md5sums = 461fcc327fec0bd662cacc0d94bfc6ee
+
+pkgname = updpkg
+
