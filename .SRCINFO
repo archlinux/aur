@@ -1,18 +1,18 @@
 pkgbase = seafile-client-cli
 	pkgdesc = Seafile is an online file storage and collaboration tool. This is seafile cli client for synchronizing your local files with seafile server.
-	pkgver = 4.3.3
+	pkgver = 4.3.4
 	pkgrel = 1
 	url = https://github.com/haiwen/seafile/
 	arch = any
 	license = GPL
 	makedepends = vala
 	makedepends = sed
-	depends = seafile-shared>=4.3.3
+	depends = seafile-shared>=4.3.4
 	depends = libevent
 	options = !libtool
 	options = !emptydirs
-	source = https://github.com/haiwen/seafile/archive/v4.3.3.tar.gz
-	sha256sums = 7997b49e78eb621ab8ba6ff7df0be5e02dc3986972a04f8390d0e98bf5fe0bdd
+	source = https://github.com/haiwen/seafile/archive/v4.3.4.tar.gz
+	sha256sums = 572b8d20620cabbe12464acb14694bf6d1113b019776f23c7834e0ac157fc360
 
 pkgname = seafile-client-cli
 
