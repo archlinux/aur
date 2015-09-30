@@ -2,7 +2,7 @@
 
 pkgname='python-magic-git'
 pkgver='0.4.6'
-pkgrel=4
+pkgrel=5
 pkgdesc="Python 3 packages for alternative (github) implementation of python-magic"
 arch=('any')
 url='https://github.com/ahupp/python-magic'

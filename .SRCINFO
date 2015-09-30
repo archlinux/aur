@@ -1,7 +1,7 @@
 pkgbase = python-magic-git
 	pkgdesc = Python 3 packages for alternative (github) implementation of python-magic
 	pkgver = 0.4.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ahupp/python-magic
 	arch = any
 	license = MIT
