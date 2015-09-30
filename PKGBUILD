@@ -14,7 +14,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/hugopl/RubyCreator.git#branch=qtc-3.4')
+source=('git+https://github.com/hugopl/RubyCreator.git#branch=qtc-3.5')
 noextract=()
 md5sums=('SKIP')
 
