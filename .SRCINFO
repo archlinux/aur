@@ -1,0 +1,16 @@
+pkgbase = lylibrary
+	pkgdesc = LyLibrary provides everything necessary to the books cataloguing, the loans management and the registration of the library readers.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://www.codelinsoft.it/sito/2013-11-17-17-56-34/lylibrary.html#
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = qt4
+	depends = mysql
+	depends = qca-ossl
+	source = http://www.codelinsoft.it/sito/download/categoria-linux/LyLibrary/lylibrary-sorgentesource.raw
+	md5sums = 4d6663c7e675b282219673565f290ce3
+
+pkgname = lylibrary
+
