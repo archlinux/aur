@@ -1,0 +1,19 @@
+# Configuration example for Umeå university (https://www.eduroam.umu.se/)
+# see http://www.eeemil.com/guides/2015/08/29/netctl-eduroam.html
+# author: Emil Marklund <eeemil@acc.umu.se>
+Description='Eduroam connection'
+Interface=wlan0
+Connection=wireless
+Security='wpa-configsection'
+IP='dhcp'
+WPAConfigSection=(
+    'ssid="eduroam"'
+    'key_mgmt=WPA-EAP'
+    'eap=TLS'
+    'proto=WPA RSN'
+    'identity="ABCD0123@umu.se"'
+    'private_key="/etc/netctl/umu_eduroam_ABCD0123.p12"'
+    'private_key_passwd="YOURPASSWORD"'
+    'ca_cert="/etc/ca-certificates/extracted/cadir/UmU_eduroam_MasterRoot_CA.pem"'
+    'ca_cert2="/etc/ca-certificates/extracted/cadir/UmU_eduroam_MasterRoot_CA.pem"'
+)
