@@ -1,5 +1,5 @@
 _infodir=/usr/share/info
-_iinfoargs="$_infodir/gambit-c.info.gz $_infodir/dir"
+_iinfoargs="$_infodir/gambit.info.gz $_infodir/dir"
 
 post_install() {
   install-info ${_iinfoargs}
@@ -13,4 +13,3 @@ pre_remove() {
   install-info --delete ${_iinfoargs}
 }
 
-# vim:set ts=2 sw=2 et:
