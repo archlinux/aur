@@ -1,6 +1,6 @@
 pkgbase = nvidia-pf
 	pkgdesc = NVIDIA drivers for linux-pf-haswell.
-	pkgver = 352.41
+	pkgver = 355.11
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia.install
@@ -11,7 +11,7 @@ pkgbase = nvidia-pf
 	makedepends = linux-pf-headers-haswell<4.2
 	depends = linux-pf-haswell>=4.1
 	depends = linux-pf-haswell<4.2
-	depends = nvidia-utils=352.41
+	depends = nvidia-utils=355.11
 	conflicts = nvidia-96xx
 	conflicts = nvidia-173xx
 	conflicts = nvidia-pf-core2
@@ -20,14 +20,13 @@ pkgbase = nvidia-pf
 	conflicts = nvidia-pf-psc
 	conflicts = nvidia-pf-p4
 	conflicts = nvidia-pf-p3
-	conflicts = n
 	conflicts = nvidia-pf-pm
 	conflicts = nvidia-pf-k7
 	options = !strip
-	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/352.41/NVIDIA-Linux-x86-352.41.run
-	md5sums_i686 = 3f9c9fed035fa845e3f6a1ea5f5732f7
-	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.41/NVIDIA-Linux-x86_64-352.41-no-compat32.run
-	md5sums_x86_64 = d41d1a358edbade36cfd97cdcc9a80b9
+	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/355.11/NVIDIA-Linux-x86-355.11.run
+	md5sums_i686 = 16d143ccafe99328a2ca8e5a396fd4bc
+	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/355.11/NVIDIA-Linux-x86_64-355.11-no-compat32.run
+	md5sums_x86_64 = 30133d89690f4683c4e289ec6c0247dc
 
 pkgname = nvidia-pf
 

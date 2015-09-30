@@ -1,7 +1,7 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=352.41
+pkgver=355.11
 pkgrel=1
 _goodkver=4.1
 _badkver=4.2
@@ -33,8 +33,8 @@ options=(!strip)
 
 source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('3f9c9fed035fa845e3f6a1ea5f5732f7')
-md5sums_x86_64=('d41d1a358edbade36cfd97cdcc9a80b9')
+md5sums_i686=('16d143ccafe99328a2ca8e5a396fd4bc')
+md5sums_x86_64=('30133d89690f4683c4e289ec6c0247dc')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
      
@@ -52,11 +52,6 @@ build() {
   _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
   cd "${_pkg}"/kernel
   make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-  
-  if [[ "$CARCH" = "x86_64" ]]; then
-      cd uvm
-      make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-  fi
 }
 
 
@@ -69,7 +64,7 @@ package() {
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
   
   if [[ "$CARCH" = "x86_64" ]]; then
-      install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+      install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
               "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
   fi
 
