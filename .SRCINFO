@@ -1,0 +1,15 @@
+pkgbase = python2-pycha-hg
+	pkgdesc = Pycha is a very simple Python package for drawing charts
+	pkgver = 287.e3e270a0e7ae
+	pkgrel = 1
+	url = http://bitbucket.org/lgs/pycha/
+	arch = any
+	license = LGPL
+	makedepends = python2-distribute
+	makedepends = mercurial
+	depends = python2
+	source = hg+https://bitbucket.org/lgs/pycha
+	md5sums = SKIP
+
+pkgname = python2-pycha-hg
+
