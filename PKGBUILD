@@ -8,7 +8,7 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="zfs-utils-git"
-pkgver=0.6.5.1_r0_g159270e_4.2.1_1
+pkgver=0.6.5.2_r0_g0b7b4bd_4.2.1_1
 pkgrel=1
 license=('CDDL')
 pkgdesc="Kernel module support files for the Zettabyte File System."
@@ -16,7 +16,7 @@ depends=("spl-git")
 makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=159270ef"
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=0b7b4bd2"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook")
