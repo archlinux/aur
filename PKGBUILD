@@ -12,6 +12,7 @@ makedepends=('git' 'cmake')
 conflicts=('hawaii-icon-theme')
 replaces=('hawaii-icon-theme')
 provides=('hawaii-icon-theme')
+replaces=('hawaii-icon-themes-git')
 groups=('hawaii-git')
 
 _gitroot="git://github.com/hawaii-desktop/hawaii-icon-theme.git"
