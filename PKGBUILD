@@ -55,10 +55,6 @@ cd fai/
     if [ -d ./admin ] ; then
       mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/plugins/admin/
 
-      # Add FAI Monitor Service
-      mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/plugins/admin/systems/services/monitor/
-      cp -a ../systems/admin/systems/services/monitor/class_argonautFAIMonitor.inc ${pkgdir}/usr/share/webapps/fusiondirectory/plugins/admin/systems/services/monitor/
-    
       # Directories
       for cur_admin in $(find ./admin -mindepth 1 -maxdepth 1 -type d) ; do
         admin_line="$(echo ${cur_admin} | sed "s#./admin/##")" 
