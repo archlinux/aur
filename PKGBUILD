@@ -3,7 +3,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
  
 pkgname=audio-recorder
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="Free audio-recorder for Linux"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ optdepends=('pulseaudio: for extended recording capabilities'
             'gst-plugins-bad: for AAC encoding'
             'gst-plugins-ugly: for MP3 encoding')
 install="$pkgname.install"
-source=("https://launchpad.net/~${pkgname}/+archive/ubuntu/ppa/+files/${pkgname}_1.7-4%7Ewily.tar.gz")
-md5sums=('4194c3191215848cea7ad2b1b1096d4b')
+source=("https://launchpad.net/~${pkgname}/+archive/ubuntu/ppa/+files/${pkgname}_1.7-5%7Ewily.tar.gz")
+md5sums=('fa454e8df54451880bd824bf2af5841e')
  
 build() {
   cd "$srcdir/trunk"
