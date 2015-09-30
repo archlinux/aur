@@ -1,22 +1,22 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libksane-frameworks-git
-pkgver=0.3.0.r389.6601e5c
+pkgver=5.1.0.r400.f855773
 pkgrel=1
 pkgdesc='A image scanning library that provides a QWidget that contains all the logic needed to interface a sacanner. KF5 Frameworks branch. (GIT version)'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kdegraphics/libs/libksane'
 license=('LGPL')
 depends=('kwallet' 'sane' 'ktextwidgets')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git')
+makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
 conflicts=('libksane')
 source=('git://anongit.kde.org/libksane#branch=frameworks')
 sha1sums=('SKIP')
 
 pkgver() {
   cd libksane
-  _ver="$(cat CMakeLists.txt | grep -e KSANE_LIB_MAJOR_VERSION -e KSANE_LIB_MINOR_VERSION -e KSANE_LIB_PATCH_VERSION | head -n3 | cut -d '"' -f2)"
-  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m1 KF5_VERSION | cut -d '"' -f2 | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {

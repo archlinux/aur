@@ -1,6 +1,6 @@
 pkgbase = libksane-frameworks-git
 	pkgdesc = A image scanning library that provides a QWidget that contains all the logic needed to interface a sacanner. KF5 Frameworks branch. (GIT version)
-	pkgver = 0.3.0.r389.6601e5c
+	pkgver = 5.1.0.r400.f855773
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = libksane-frameworks-git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = git
+	makedepends = python
 	depends = kwallet
 	depends = sane
 	depends = ktextwidgets
