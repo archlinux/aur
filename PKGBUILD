@@ -3,7 +3,7 @@
 pkgbase=adwaita-qt
 pkgname=('adwaita-qt5' 'adwaita-qt4' 'adwaita-qt-common')
 pkgver=0.3.1
-pkgrel=8
+pkgrel=9
 pkgdesc='The stylesheet to bend Qt applications to look like they belong into GNOME Shell'
 arch=('any' 'i686' 'x86_64')
 url='https://github.com/MartinBriza/adwaita-qt'

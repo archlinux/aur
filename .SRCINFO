@@ -1,7 +1,7 @@
 pkgbase = adwaita-qt
 	pkgdesc = The stylesheet to bend Qt applications to look like they belong into GNOME Shell
 	pkgver = 0.3.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/MartinBriza/adwaita-qt
 	arch = any
 	arch = i686
