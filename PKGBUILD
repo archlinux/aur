@@ -3,7 +3,7 @@
 pkgname=vertica-client
 pkgver=7.1.2
 _pkgver=7.1.2-0
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for the Vertica Analytic Database"
 arch=('i686' 'x86_64')
 url="https://www.vertica.com/"
@@ -21,7 +21,7 @@ elif test "$CARCH" == x86_64; then
   __vertica_arch=x86_64
 fi
 
-_vpkg=vertica-client-${_pkgver}.linux.${__vertica_arch}.tar.gz
+_vpkg=vertica-client-${_pkgver}.${__vertica_arch}.tar.gz
 
 build() {
   msg "You need a full copy of the client in order to install it"

@@ -1,7 +1,7 @@
 pkgbase = vertica-client
 	pkgdesc = Client for the Vertica Analytic Database
 	pkgver = 7.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vertica.com/
 	install = vertica-client.install
 	arch = i686
