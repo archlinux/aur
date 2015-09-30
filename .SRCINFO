@@ -1,6 +1,6 @@
 pkgbase = google-appengine-python
 	pkgdesc = Google App Engine SDK for Python
-	pkgver = 1.9.26
+	pkgver = 1.9.27
 	pkgrel = 1
 	url = https://cloud.google.com/appengine/downloads
 	install = install
@@ -19,10 +19,10 @@ pkgbase = google-appengine-python
 	optdepends = python2-webapp2=2.3
 	optdepends = python2-webob=1.1.1
 	optdepends = python2-yaml=3.10
-	noextract = google_appengine_1.9.26.zip
+	noextract = google_appengine_1.9.27.zip
 	options = !strip
-	source = https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.26.zip
-	sha1sums = b0a881aa38c749688682e07a9dc3874416870e37
+	source = https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.27.zip
+	sha1sums = 1803bcfbef8890c175718c89256bcc7fd64e179d
 
 pkgname = google-appengine-python
 
