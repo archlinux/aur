@@ -1,6 +1,6 @@
 pkgbase = libpulse-nosystemd
 	pkgdesc = Client library for PulseAudio
-	pkgver = 6.0
+	pkgver = 7.0
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/PulseAudio
 	arch = i686
@@ -33,6 +33,7 @@ pkgbase = libpulse-nosystemd
 	makedepends = gtk3
 	makedepends = webrtc-audio-processing
 	makedepends = check
+	makedepends = libsoxr
 	depends = dbus
 	depends = libasyncns
 	depends = libcap
@@ -40,15 +41,14 @@ pkgbase = libpulse-nosystemd
 	depends = libsm
 	depends = libsndfile
 	depends = json-c
-	optdepends = alsa-plugins: ALSA support
-	optdepends = avahi: zeroconf support
-	provides = libpulse=6.0
+	provides = libpulse=7.0
 	conflicts = libpulse
 	replaces = libpulse
 	options = !emptydirs
 	backup = etc/pulse/client.conf
-	source = http://freedesktop.org/software/pulseaudio/releases/pulseaudio-6.0.tar.xz
-	sha256sums = b50640e0b80b1607600accfad2e45aabb79d379bf6354c9671efa2065477f6f6
+	source = http://freedesktop.org/software/pulseaudio/releases/pulseaudio-7.0.tar.xz
+	source = padsp-lib32.patch
+	sha256sums = ca1ae1377e8926bfc3ffe2aeb9f657f6c363a16f72861166fcf9454e3eeae8fa
 
 pkgname = libpulse-nosystemd
 

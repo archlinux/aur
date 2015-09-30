@@ -7,7 +7,7 @@
 pkgname=libpulse-nosystemd
 _pkgbase=pulseaudio
 pkgdesc="Client library for PulseAudio"
-pkgver=6.0
+pkgver=7.0
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/PulseAudio"
@@ -16,16 +16,16 @@ depends=(dbus libasyncns libcap libxtst libsm libsndfile json-c)
 makedepends=(libasyncns libcap attr libxtst libsm libsndfile libtool rtkit
              speexdsp tdb dbus avahi bluez bluez-libs gconf intltool jack2-dbus sbc
              lirc openssl xenstore fftw orc json-c gtk3 webrtc-audio-processing
-             check)
-optdepends=('alsa-plugins: ALSA support'
-            'avahi: zeroconf support')
+             check libsoxr)
 provides=("libpulse=${pkgver}")
 conflicts=('libpulse')
 replaces=('libpulse')
 backup=(etc/pulse/client.conf)
 options=(!emptydirs)
-source=(http://freedesktop.org/software/$_pkgbase/releases/$_pkgbase-$pkgver.tar.xz)
-sha256sums=('b50640e0b80b1607600accfad2e45aabb79d379bf6354c9671efa2065477f6f6')
+source=(http://freedesktop.org/software/$_pkgbase/releases/$_pkgbase-$pkgver.tar.xz
+        padsp-lib32.patch)
+sha256sums=('ca1ae1377e8926bfc3ffe2aeb9f657f6c363a16f72861166fcf9454e3eeae8fa'
+            '7832fc59df76538ff10aedd297c03cb7ff117235da8bfad26082994bb5b84332')
 
 prepare() {
   cd $_pkgbase-$pkgver
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd $_pkgbase-$pkgver
 
-  ./configure --prefix=/usr \
+  DATADIRNAME=share ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib \
     --localstatedir=/var \
@@ -59,30 +59,34 @@ package() {
   cd $_pkgbase-$pkgver
   make -j1 DESTDIR="$pkgdir"/temp install
 
-  mkdir -p "$pkgdir"/{etc/pulse,usr/{bin,lib/pulseaudio,share/man/man{1,5}}}
+  cd "$pkgdir"
 
-  mv {"$pkgdir"/temp,"$pkgdir"}/etc/pulse/client.conf
+  # Extract libpulse
+  mkdir -p {etc/pulse,usr/{bin,lib/pulseaudio,share/man/man{1,5}}}
 
-  mv "$pkgdir"/temp/usr/bin/pa{cat,ctl,dsp,mon,play,rec,record} \
-     "$pkgdir/usr/bin"
+  mv {temp/,}etc/pulse/client.conf
 
-  mv "$pkgdir"/temp/usr/lib/libpulse{,-simple,-mainloop-glib}.so* \
-     "$pkgdir/usr/lib"
+  mv temp/usr/bin/pa{cat,ctl,dsp,mon,play,rec,record} \
+     usr/bin
 
-  mv "$pkgdir"/temp/usr/lib/pulseaudio/libpulsedsp.so \
-     "$pkgdir"/temp/usr/lib/pulseaudio/libpulsecommon-*.so \
-     "$pkgdir/usr/lib/pulseaudio"
+  mv temp/usr/lib/libpulse{,-simple,-mainloop-glib}.so* \
+     temp/usr/lib/{cmake,pkgconfig} \
+     usr/lib
 
-  mv {"$pkgdir"/temp,"$pkgdir"}/usr/lib/cmake
-  mv {"$pkgdir"/temp,"$pkgdir"}/usr/lib/pkgconfig
+  mv temp/usr/lib/pulseaudio/libpulsedsp.so \
+     temp/usr/lib/pulseaudio/libpulsecommon-*.so \
+     usr/lib/pulseaudio
 
-  mv {"$pkgdir"/temp,"$pkgdir"}/usr/include
+  mv {temp/,}usr/include
 
-  mv "$pkgdir"/temp/usr/share/man/man1/pa{cat,ctl,dsp,play}.1 \
-     "$pkgdir/usr/share/man/man1"
+  mv temp/usr/share/man/man1/pa{cat,ctl,dsp,mon,play,rec,record}.1 \
+     usr/share/man/man1
 
-  mv {"$pkgdir"/temp,"$pkgdir"}/usr/share/man/man5/pulse-client.conf.5
-  mv {"$pkgdir"/temp,"$pkgdir"}/usr/share/vala
+  mv {temp/,}usr/share/man/man5/pulse-client.conf.5
+  mv {temp/,}usr/share/vala
 
-  rm -rf "$pkgdir"/temp
+  rm -rf temp
+
+  # Fix working padsp with 32-bit applications
+  patch -Np1 -i "$srcdir/padsp-lib32.patch"
 }
