@@ -4,7 +4,7 @@
 # Maintainer: Jan D. Behrens <zykure@web.de>
 
 pkgname=deadbeef-plugin-fb-gtk3
-pkgver=20150807
+pkgver=20150930
 pkgrel=1
 pkgdesc="A filebrowser plugin for the DeaDBeeF audio player"
 arch=('any')
@@ -12,20 +12,20 @@ url="https://gitlab.com/zykure/deadbeef-fb"
 license=(GPL)
 depends=('deadbeef>=0.6', gtk3)
 backup=()
-source=('https://gitlab.com/zykure/deadbeef-fb/repository/archive.tar.gz?ref=20150807')
-md5sums=('0d95e7f908e1783600a8c113d5a06440')
-sha1sums=('e0d2b6beb769790e5dd641d10c6a06dde8d471a5')
-sha256sums=('80c2bd16485b7a2a5cdb43c2c68de95ef0e993cf0a12f9808a02ffb4378e32a5')
+source=('https://gitlab.com/zykure/deadbeef-fb/repository/archive.tar.gz?ref=20150930')
+md5sums=('726d382a81a8b3ea6e7bd511beb46ecd')
+sha1sums=('74ac9d38bd1d4b386fc236059ea479cc5927f292')
+sha256sums=('ff97d1e9360b5d4fa535f88df87710da8dcb100b33ebb09c4dda031aa01ff9a7')
 
 build() {
-  cd $srcdir/deadbeef-fb.git
+  cd $srcdir/deadbeef-fb-20150930-*
   ./autogen.sh
   ./configure --prefix=/usr --disable-gtk2
   make
 }
 
 package() {
-  cd $srcdir/deadbeef-fb.git
+  cd $srcdir/deadbeef-fb-20150930-*
   make DESTDIR="$pkgdir" install
 }
 
