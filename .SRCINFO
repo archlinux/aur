@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-theme-aurora
 	pkgdesc = Aurora GNOME Shell,GTK2,GTK3 theme
 	pkgver = 3.16.20150924
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opendesktop.org/content/show.php?content=170523
 	arch = any
 	license = GPL3
