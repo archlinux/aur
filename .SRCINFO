@@ -1,16 +1,17 @@
 pkgbase = google-appengine-java
-	pkgdesc = Google App Engine SDK for Java.
-	pkgver = 1.9.26
+	pkgdesc = Google App Engine SDK for Java
+	pkgver = 1.9.27
 	pkgrel = 1
 	url = http://code.google.com/appengine/
 	arch = i686
 	arch = x86_64
 	license = Apache 2
+	depends = java-environment
 	options = !strip
-	source = https://commondatastorage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-1.9.26.zip
+	source = https://commondatastorage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-1.9.27.zip
 	source = profile.appengine-java-sdk
-	sha1sums = e46ce0dfd4b9d09179f16c2e54c11bccd34de1b7
-	sha1sums = 9d6e6c6bd7f3ec53dc08cdfacaac931cfa1cf2f3
+	sha1sums = ad600e428b36ee5750c3bcfbd11bd1e58739394e
+	sha1sums = d80d2aa0c5f279456afb6baa58f5b7fb70ac8e71
 
 pkgname = google-appengine-java
 
