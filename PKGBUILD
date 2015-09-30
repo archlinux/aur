@@ -2,17 +2,16 @@
 
 pkgname='python-magic-git'
 pkgver='0.4.6'
-pkgrel=3
+pkgrel=4
 pkgdesc="Python 3 packages for alternative (github) implementation of python-magic"
 arch=('any')
+url='https://github.com/ahupp/python-magic'
 license=('MIT')
 depends=('python')
-makedepends=('git' 'sed')
+makedepends=('git' 'sed' 'python')
 conflicts=('python-magic')
-
 source=("${pkgname}::git+https://github.com/ahupp/python-magic")
 md5sums=('SKIP')
-
 pkgdir='pkg'
 srcdir='src'
 
