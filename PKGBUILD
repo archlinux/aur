@@ -1,11 +1,12 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -64,8 +65,8 @@ package_python-numpy() {
   replaces=('python3-numpy')
   conflicts=('python3-numpy')
 
-  _pyver=3.4
-  _pyinc=3.4m
+  _pyver=3.5
+  _pyinc=3.5m
 
   export ATLAS=None
   export LDFLAGS="$LDFLAGS -shared"
