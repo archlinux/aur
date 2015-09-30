@@ -1,7 +1,7 @@
 pkgbase = h2o
 	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
-	pkgver = 1.5.0.beta4
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/h2o/h2o
 	arch = i686
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = h2o
 	provides = libh2o
 	conflicts = libh2o
 	backup = etc/h2o.conf
-	source = h2o-1.5.0-beta4.tar.gz::https://codeload.github.com/h2o/h2o/tar.gz/v1.5.0-beta4
+	source = h2o-1.5.0.tar.gz::https://codeload.github.com/h2o/h2o/tar.gz/v1.5.0
 	source = h2o.service
-	sha256sums = d6e31bc90dfd7f99152597d76bd63598ccf5e0b6fda5b6e83a76480610064ae6
+	sha256sums = b0700b30e26852d6dca2fc72d3f742ab8a0694ae7e1871e33b0cfb5ce1bdde7e
 	sha256sums = 8a85462b6798deaaab343b5dae73437e251c5018d70d260a4a4440b9bbb053e6
 
 pkgname = h2o
