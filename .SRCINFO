@@ -1,0 +1,23 @@
+pkgbase = tcpick
+	pkgdesc = Tcp stream sniffer and connection tracker
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://tcpick.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://prdownloads.sourceforge.net/tcpick/tcpick-0.2.1.tar.gz
+	source = CVE-2006-0048.patch
+	source = fix-build-with-gcc5.patch
+	source = fix-double-free-error.patch
+	source = fix-infinite-loop-on-powerpc.patch
+	source = fix-man-invocation.patch
+	md5sums = bb94f2f9ea81aeb645619fbe9b3b9a29
+	md5sums = 3efd250f8cb6a308dd07ae858562ccc3
+	md5sums = b6a7330a1a8b0b79a7d1db73712db0c2
+	md5sums = 391c336816f126ecbf7e6c219905340f
+	md5sums = 8c468789fb553f7d31ae48cfc260409d
+	md5sums = 3a2107306148df3d792aa796b04a3309
+
+pkgname = tcpick
+
