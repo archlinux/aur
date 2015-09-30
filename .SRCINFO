@@ -1,7 +1,7 @@
 pkgbase = visit-build
 	pkgdesc = Interactive parallel visualization and graphical analysis tool (built with build_visit).
 	pkgver = 2.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wci.llnl.gov/simulation/computer-codes/visit
 	arch = i686
 	arch = x86_64
@@ -20,10 +20,14 @@ pkgbase = visit-build
 	provides = visit
 	conflicts = visit
 	conflicts = visit-bin
-	source = http://portal.nersc.gov/svn/visit/trunk/releases/2.9.2/build_visit2_9_2
+	source = https://portal.nersc.gov/svn/visit/trunk/releases/2.9.2/build_visit2_9_2
+	source = https://portal.nersc.gov/svn/visit/trunk/releases/2.9.2/visit2.9.2.tar.gz
 	source = visit.sh
+	source = no_extract_visit.patch
 	sha256sums = 4b1d396b41923b3b2c1b2da2524cb424f0166d9898d04f367f52a0426ae7a688
+	sha256sums = 97d19e2609fbba655772feb055919b925214ab68c95ff46481572bd7e9c9ea31
 	sha256sums = d07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da
+	sha256sums = 13f14a8b61cf4b59155c2f1d22fc59e670615343b8b9d78dfbfd9c2e321f6cc7
 
 pkgname = visit-build
 

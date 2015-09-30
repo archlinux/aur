@@ -1,0 +1,24 @@
+--- build_visit2_9_2	2015-09-29 18:35:16.929401021 +0200
++++ build_visit2_9_2.new	2015-09-29 18:36:49.289624506 +0200
+@@ -2433,14 +2433,14 @@
+           return -1
+        fi
+     elif [[ -f ${SRC_FILE%.*} ]] ; then
+-       info "Untarring ${SRC_FILE%.*} . . ."
+-       $TAR xf ${SRC_FILE%.*}
++       #info "Untarring ${SRC_FILE%.*} . . ."
++       #$TAR xf ${SRC_FILE%.*}
+        untarred_src=1
+-       if [[ $? != 0 ]] ; then
+-          warn \
+-"Unable to untar ${SRC_FILE%.*}.  Corrupted file or out of space on device?"
+-          return -1
+-       fi
++       #if [[ $? != 0 ]] ; then
++          #warn \
++#"Unable to untar ${SRC_FILE%.*}.  Corrupted file or out of space on device?"
++          #return -1
++       #fi
+     fi
+     
+     return $untarred_src
