@@ -18,6 +18,8 @@ pkgbase = linux-macbook
 	source = config
 	source = config.x86_64
 	source = linux.preset
+	source = bluetooth.patch
+	source = thunderbolt.patch
 	source = change-default-console-loglevel.patch
 	source = 0001-make_flush_workqueue_non_gpl.patch
 	source = 0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch
@@ -30,6 +32,8 @@ pkgbase = linux-macbook
 	sha256sums = e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2
 	sha256sums = a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = dcbed1ae73c4e1383210bad6f1f446bdd13f8b1c24d89bcf0483acc5e178c379
+	sha256sums = 4909b37856f4b2374e54e44d656971a1f1027900444ac494f4dd1bb113dc9c97
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 4e776734e2c2185910a6fbb6f333d967b04f4a72b3196310af286c6a779bd97d
 	sha256sums = 0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b
@@ -37,7 +41,7 @@ pkgbase = linux-macbook
 	sha256sums = 0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183
 
 pkgname = linux-macbook
-	pkgdesc = The Linux-macbook kernel and modules
+	pkgdesc = The Linux-macbook kernel and modules, with patches for 11,4 and 12,1 Macbook pros (2015)
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -47,8 +51,8 @@ pkgname = linux-macbook
 	backup = etc/mkinitcpio.d/linux-macbook.preset
 
 pkgname = linux-macbook-headers
-	pkgdesc = Header files and scripts for building modules for Linux-macbook kernel
+	pkgdesc = Header files and scripts for building modules for Linux-macbook kernel, with patches for 11,4 and 12,1 Macbook pros (2015)
 
 pkgname = linux-macbook-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-macbook kernel
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-macbook kernel, with patches for 11,4 and 12,1 Macbook pros (2015)
 
