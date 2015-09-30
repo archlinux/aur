@@ -1,0 +1,30 @@
+pkgbase = perl-rex
+	pkgdesc = (R)?ex Deployment & Configuration Management
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = http://www.rexify.org/
+	arch = any
+	license = Apache
+	depends = perl-hash-merge
+	depends = perl-net-ssh2
+	depends = perl-libwww
+	depends = perl-io-string
+	depends = perl-json-xs
+	depends = perl-list-allutils
+	depends = perl-sort-naturally
+	depends = perl-term-readkey
+	depends = perl-text-glob
+	depends = perl-xml-simple
+	depends = perl-yaml
+	depends = perl-net-openssh
+	depends = perl-test-useallmodules
+	depends = perl-io-tty
+	depends = perl-net-sftp-foreign
+	depends = perl-test-pod
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FE/FERKI/Rex-1.3.3.tar.gz
+	md5sums = 39ae7a114998364e3b90bd227bc8c163
+	sha512sums = b2331e400027568f59496ff52f0a19bd009f66fea2a5b80ed9055859f59f0057afa50f61934cccd5af434c6f60dfa99700bc3904127b822a5ae684cb8bb6c70c
+
+pkgname = perl-rex
+
