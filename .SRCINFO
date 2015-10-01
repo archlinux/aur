@@ -1,11 +1,11 @@
 pkgbase = pkgbuilder
 	pkgdesc = A Python AUR helper/library.
 	pkgver = 4.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kwpolska/pkgbuilder
 	arch = any
 	license = BSD
-	depends = python
+	depends = python>=3.5.0-1
 	depends = python-setuptools
 	depends = pyalpm>=0.5.1-1
 	depends = python-requests
