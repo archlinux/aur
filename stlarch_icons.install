@@ -1,0 +1,3 @@
+post_install() {
+echo "Icons are installed to /usr/share/icons/stlarch_icons"
+}
