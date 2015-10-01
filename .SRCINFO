@@ -8,7 +8,7 @@ pkgbase = yaplog
 	makedepends = gcc
 	conflicts = yaplog-git
 	source = http://release.yapbreak.fr/yaplog/yaplog-2.2.1-2.tar.gz
-	md5sums = SKIP
+	md5sums = 204b5d8b78e64f9473dd1e1a19e66724
 
 pkgname = yaplog
 

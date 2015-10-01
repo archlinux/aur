@@ -14,7 +14,7 @@ replaces=()
 backup=()
 source=("http://release.yapbreak.fr/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 noextract=()
-md5sums=('SKIP')
+md5sums=('204b5d8b78e64f9473dd1e1a19e66724')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}"
