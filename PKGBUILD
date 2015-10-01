@@ -4,8 +4,8 @@
 # We're getting this from Debian Experimental
 
 _debname=iceweasel
-_debver=40.0.3
-_debrel=3
+_debver=41.0
+_debrel=1
 _debrepo=http://ftp.de.debian.org/debian/pool/main/i/
  
 pkgname=iceweasel-bin
@@ -33,10 +33,10 @@ install=iceweasel.install
  
  if [ "$CARCH" = "x86_64" ]; then
     _debarch=amd64
-    sha1sums=('2a5600fed0470d1513220937687dca153426f868')
+    sha1sums=('46747141e8d03b23c10d8bbb74d77e2fe57ca193')
 else
     _debarch=i386
-    sha1sums=('7aeed60db98c7c77612839b7e96e2650ef9f14f2')
+    sha1sums=('0aa59b204506fe9542ca1d8e9e37ce8fa41e8c06')
  fi
  
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}_${_debarch}.deb")
