@@ -1,15 +1,15 @@
 pkgbase = opendht-git
 	pkgdesc = A C++11 implementation of the Kademlia DHT (Distributed Hash Table)
 	pkgver = 20150823
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/savoirfairelinux/opendht
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = msgpack-c
 	depends = gnutls
 	depends = nettle
+	depends = msgpack-c
 	provides = opendht
 	conflicts = opendht
 	source = git://github.com/savoirfairelinux/opendht#commit=fe3ded9d0f833b953d1eaa4dfdb509c51ae09ef6
