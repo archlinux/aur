@@ -5,21 +5,21 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=vim-noruby
-pkgver=7.4.854
+pkgver=7.4.884
 _versiondir=74
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
 pkgdesc="Like 'vim' package, but -ruby"
-depends=("vim-runtime=${pkgver}-2" 'gpm' 'lua' 'python2' 'acl')
+depends=("vim-runtime=${pkgver}-1" 'gpm' 'lua' 'python2' 'acl')
 conflicts=('vim-minimal' 'vim-python3' 'gvim' 'gvim-python3' 'vim')
 provides=("vim" "xxd")
 makedepends=('gpm' 'python2' 'python' 'libxt' 'desktop-file-utils' 'lua')
 source=("vim-${pkgver}.tar.gz::https://github.com/vim/vim/archive/v${pkgver}.tar.gz"
         'vimrc'
         'archlinux.vim')
-sha1sums=('f3b1ca74cf0731e90e6f1560ad90930cd1c3cf2d'
+sha1sums=('9ffcf8ac1207684c2165d6d4a821d01ad7b1fff5'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
