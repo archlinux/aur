@@ -13,7 +13,7 @@ makedepends=('qt5-tools' 'subversion')
 optdepends=('smplayer-themes-svn: icon themes collection'
             'smplayer-skins-svn: skin themes collection'
             'smtube-svn: browse and play YouTube videos'
-            'youtube-dl': play streaming videos
+            'youtube-dl: play streaming videos'
             'mplayer: backend for video playback'
             'mpv: alternative modern backend, based on MPlayer/MPlayer2')
 provides=('smplayer')
