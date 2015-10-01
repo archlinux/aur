@@ -1,6 +1,6 @@
 pkgbase = nodejs10
-	pkgdesc = Evented I/O for V8 javascript, frozen in version 0.10.36
-	pkgver = 0.10.36
+	pkgdesc = Evented I/O for V8 javascript, frozen in version 0.10.40
+	pkgver = 0.10.40
 	pkgrel = 3
 	url = http://nodejs.org/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = nodejs10
 	conflicts = nodejs
 	conflicts = npm
 	options = !emptydirs
-	source = http://nodejs.org/dist/v0.10.36/node-v0.10.36.tar.gz
+	source = http://nodejs.org/dist/v0.10.40/node-v0.10.40.tar.gz
 	source = git+https://github.com/npm/npm.git#tag=v2.14.1
 	sha256sums = b9d7d1d0294bce46686b13a05da6fc5b1e7743b597544aa888e8e64a9f178c81
 	sha256sums = SKIP
