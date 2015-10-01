@@ -1,7 +1,7 @@
 pkgbase = tophat
 	pkgdesc = fast splice junction mapper for RNA-Seq reads
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ccb.jhu.edu/software/tophat/index.shtml
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tophat
 	source = http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.0.tar.gz
 	source = https://github.com/seqan/seqan/archive/seqan-v1.4.2.tar.gz
 	source = fix_build_w_seqan1.4.patch
-	md5sums = 1ace6e96fa692af6ed885bad5fe7c4d7
+	md5sums = 34afa379b030c6672a31bbe3689745bc
 	md5sums = 7b0080b01feeb223e054dabef53d6fc5
 	md5sums = 93d47e54408b7b5eb4132d65f5dd5085
 

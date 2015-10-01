@@ -2,7 +2,7 @@
 
 pkgname=tophat
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="fast splice junction mapper for RNA-Seq reads"
 arch=('x86_64' 'i686')
 url="http://ccb.jhu.edu/software/tophat/index.shtml"
@@ -12,7 +12,7 @@ makedepends=('boost')
 source=("http://ccb.jhu.edu/software/tophat/downloads/tophat-$pkgver.tar.gz"
         'https://github.com/seqan/seqan/archive/seqan-v1.4.2.tar.gz'
         'fix_build_w_seqan1.4.patch')
-md5sums=('1ace6e96fa692af6ed885bad5fe7c4d7'
+md5sums=('34afa379b030c6672a31bbe3689745bc'
          '7b0080b01feeb223e054dabef53d6fc5'
          '93d47e54408b7b5eb4132d65f5dd5085')
 
@@ -61,6 +61,12 @@ package() {
   cd $srcdir/$pkgname-$pkgver
 
   make DESTDIR=$pkgdir install
+
+  # fix python install
+  install -d $pkgdir/usr/lib/python2.7/site-packages
+  mv \
+    -t $pkgdir/usr/lib/python2.7/site-packages \
+    $pkgdir/usr/bin/{intervaltree,sortedcontainers}
 
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
