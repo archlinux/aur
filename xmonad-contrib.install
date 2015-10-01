@@ -2,6 +2,7 @@ HS_DIR=usr/share/haskell/xmonad-contrib
 
 post_install() {
   ${HS_DIR}/register.sh
+  echo "You have to rebuild this package after any change to the haskell deps"
 }
 
 pre_upgrade() {
@@ -10,6 +11,7 @@ pre_upgrade() {
 
 post_upgrade() {
   ${HS_DIR}/register.sh
+  echo "You have to rebuild this package after any change to the haskell deps"
 }
 
 pre_remove() {

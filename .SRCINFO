@@ -1,19 +1,20 @@
 pkgbase = xmonad-contrib-git
 	pkgdesc = Add-ons for xmonad
 	pkgver = v0.11.r150.g32f3fbd
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xmonad.org/
 	install = xmonad-contrib.install
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = ghc=7.10.1
+	depends = ghc
 	depends = xmonad-git
 	depends = sh
-	depends = haskell-x11=1.6.1.2
-	depends = haskell-x11-xft=0.3.1
-	depends = haskell-utf8-string=1
-	depends = haskell-random=1.1
+	depends = haskell-x11>=1.6.1
+	depends = haskell-x11<1.7
+	depends = haskell-x11-xft>=0.2
+	depends = haskell-utf8-string
+	depends = haskell-random
 	depends = haskell-old-time
 	provides = xmonad-contrib
 	conflicts = xmonad-contrib

@@ -5,12 +5,19 @@
 
 pkgname=xmonad-contrib-git
 pkgver=v0.11.r150.g32f3fbd
-pkgrel=1
+pkgrel=2
 pkgdesc="Add-ons for xmonad"
 arch=('i686' 'x86_64')
 url="http://xmonad.org/"
 license=('BSD')
-depends=('ghc=7.10.1' 'xmonad-git' 'sh' 'haskell-x11=1.6.1.2' 'haskell-x11-xft=0.3.1' 'haskell-utf8-string=1' 'haskell-random=1.1' 'haskell-old-time')
+depends=('ghc'
+         'xmonad-git'
+         'sh'
+         'haskell-x11>=1.6.1' 'haskell-x11<1.7'
+         'haskell-x11-xft>=0.2'
+         'haskell-utf8-string'
+         'haskell-random'
+         'haskell-old-time')
 conflicts=('xmonad-contrib')
 provides=('xmonad-contrib')
 install='xmonad-contrib.install'
