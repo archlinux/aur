@@ -1,0 +1,39 @@
+From 29b0f9d4e7a5956385e8a14279462252c5d45148 Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@ericsson.com>
+Date: Wed, 30 Sep 2015 17:25:43 -0400
+Subject: [PATCH] Ugly fix
+
+---
+ gdb/dwarf2read.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
+index 5b12342..618d7d6 100644
+--- a/gdb/dwarf2read.c
++++ b/gdb/dwarf2read.c
+@@ -4341,6 +4341,7 @@ read_comp_unit_head (struct comp_unit_head *cu_header,
+   cu_header->offset_size = (bytes_read == 4) ? 4 : 8;
+   info_ptr += bytes_read;
+   cu_header->version = read_2_bytes (abfd, info_ptr);
++  printf("Version is %d\n", cu_header->version);
+   info_ptr += 2;
+   cu_header->abbrev_offset.sect_off = read_offset (abfd, info_ptr, cu_header,
+ 					     &bytes_read);
+@@ -17902,8 +17903,13 @@ dwarf_decode_lines_1 (struct line_header *lh, struct dwarf2_cu *cu,
+ 		  break;
+ 		case DW_LNE_set_address:
+ 		  {
+-		    CORE_ADDR address
+-		      = read_address (abfd, line_ptr, cu, &bytes_read);
++		    unsigned char oplen = extended_end - line_ptr, old_address_size;
++		    CORE_ADDR address;
++		    old_address_size = cu->header.addr_size;
++		    //printf("oplen = %d\n", oplen);
++		    cu->header.addr_size = oplen;
++		    address = read_address (abfd, line_ptr, cu, &bytes_read);
++		    cu->header.addr_size = old_address_size;
+ 
+ 		    line_ptr += bytes_read;
+ 		    check_line_address (cu, &state_machine, line_ptr,
+-- 
+2.5.1

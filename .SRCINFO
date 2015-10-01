@@ -1,7 +1,7 @@
 pkgbase = msp430-elf-gdb
 	pkgdesc = The GNU Debugger for msp430-elf.
 	pkgver = 7.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gdb/download/
 	arch = x86_64
 	arch = x86
@@ -10,7 +10,9 @@ pkgbase = msp430-elf-gdb
 	depends = python2
 	options = strip
 	source = http://ftp.gnu.org/gnu/gdb/gdb-7.10.tar.xz
+	source = fix-dwarf2read.patch
 	sha256sums = 7ebdaa44f9786ce0c142da4e36797d2020c55fa091905ac5af1846b5756208a8
+	sha256sums = 889e4db508dfb572e5530c44b8a1bbccd59857d30729201cf0cd3b778c5140a5
 
 pkgname = msp430-elf-gdb
 

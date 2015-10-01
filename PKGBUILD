@@ -3,7 +3,7 @@
 _target=msp430-elf
 pkgname="${_target}-gdb"
 pkgver=7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Debugger for ${_target}."
 arch=('x86_64' 'x86')
 url="https://www.gnu.org/software/gdb/download/"
@@ -11,14 +11,17 @@ license=('GPL')
 groups=('devel')
 depends=("python2")
 options=('strip')
-source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-sha256sums=('7ebdaa44f9786ce0c142da4e36797d2020c55fa091905ac5af1846b5756208a8')
+source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz"
+        fix-dwarf2read.patch)
+sha256sums=('7ebdaa44f9786ce0c142da4e36797d2020c55fa091905ac5af1846b5756208a8'
+            '889e4db508dfb572e5530c44b8a1bbccd59857d30729201cf0cd3b778c5140a5')
 
 prepare() {
 	cd "$srcdir/gdb-$pkgver"
 	[[ -d gdb-build ]] && rm -rf gdb-build
 	mkdir gdb-build
 	
+  patch -p1 < ../fix-dwarf2read.patch
 	# fix libiberty
 	# sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
