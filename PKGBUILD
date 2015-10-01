@@ -1,7 +1,7 @@
 pkgname=testapp
 pkgdesc="testapp"
 pkgver=r1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/tgharib/PrayerApp"
 license=('GPLV3')

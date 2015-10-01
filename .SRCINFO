@@ -1,7 +1,7 @@
 pkgbase = testapp
 	pkgdesc = testapp
 	pkgver = r1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tgharib/PrayerApp
 	arch = i686
 	arch = x86_64
