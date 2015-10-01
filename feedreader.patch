@@ -1,0 +1,24 @@
+diff -aur package.pristine/src/Widgets/MainWindow.vala package.new/src/Widgets/MainWindow.vala
+--- package.pristine/src/Widgets/MainWindow.vala	2015-09-04 19:03:37.000000000 +0200
++++ package.new/src/Widgets/MainWindow.vala	2015-10-01 13:48:01.918659394 +0200
+@@ -252,7 +252,7 @@
+ 			settings_state.set_int("articlelist-new-rows", 0);
+ 			settings_state.set_enum("show-articles", m_headerbar.getArticleListState());
+ 			settings_state.set_boolean("no-animations", true);
+-			settings_state.set_string("search-term", m_headerbar.getSearchTerm());
++			//settings_state.set_string("search-term", m_headerbar.getSearchTerm());
+ 			settings_state.set_int("articleview-scrollpos", m_content.getArticleViewScrollPos());
+ 
+ 			settings_readability.set_boolean("is-logged-in", false);
+diff -aur package.pristine/src/Widgets/ReaderHeaderbar.vala package.new/src/Widgets/ReaderHeaderbar.vala
+--- package.pristine/src/Widgets/ReaderHeaderbar.vala	2015-09-04 19:03:37.000000000 +0200
++++ package.new/src/Widgets/ReaderHeaderbar.vala	2015-10-01 13:48:24.288344471 +0200
+@@ -131,7 +131,7 @@
+ 
+ 		m_search = new Gtk.SearchEntry();
+ 		m_search.placeholder_text = _("Search Articles");
+-		m_search.text = settings_state.get_string("search-term");
++		//m_search.text = settings_state.get_string("search-term");
+ 		m_search.search_changed.connect(() => {
+ 			search_term(m_search.text);
+ 		});
