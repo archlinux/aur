@@ -6,7 +6,7 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.30.0"
+pkgver="2.31.0"
 pkgrel="1"
 pkgdesc="Client library for OpenStack Compute API"
 arch=("any")
@@ -14,11 +14,18 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6608f38083966b3bf684574a1a643ae96b9cec8e09761afc330687f94fb4f9f9')
+sha256sums=('fa96098936b3d9d26188f182c21df93e96bc01fd5b961975ac1a035c9ba42f91')
 
 prepare() {
+    sed -ri '/argparse/d' "${srcdir}/${_name}-${pkgver}"/requirements.txt
+    cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
+}
+
+build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    sed -ri '/argparse/d' requirements.txt
+    python setup.py build
+    cd "${srcdir}/${_name}-${pkgver}-python2"
+    python2 setup.py build
 }
 
 package_python-novaclient() {
@@ -34,7 +41,7 @@ package_python-novaclient() {
              "python-simplejson>=2.2.0"
              "python-six>=1.9.0")
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm644 "tools/${_cmd}.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/${_cmd}"
 }
 
@@ -50,8 +57,8 @@ package_python2-novaclient() {
              "python2-requests>=2.5.2"
              "python2-simplejson>=2.2.0"
              "python2-six>=1.9.0")
-    cd "${srcdir}/${_name}-${pkgver}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    cd "${srcdir}/${_name}-${pkgver}-python2"
+    python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
     mv "${pkgdir}/usr/bin/${_cmd}" "${pkgdir}/usr/bin/${_cmd}2"
     install -Dm644 "tools/${_cmd}.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/${_cmd}2"
     sed -i '/complete -F/ s/$/2/' "${pkgdir}/usr/share/bash-completion/completions/${_cmd}2"
