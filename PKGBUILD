@@ -11,6 +11,7 @@ license=('GPL')
 depends=('python' 'python-gobject' 'python-cairo' 'python-urwid')
 source=('git://github.com/drestebon/papageorge.git')
 md5sums=('SKIP')
+install=$pkgname.install
 
 package() {
   cd $srcdir/$_gitname

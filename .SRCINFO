@@ -3,6 +3,7 @@ pkgbase = papageorge-git
 	pkgver = 0.1
 	pkgrel = 1
 	url = http://github.com/drestebon/papageorge
+	install = papageorge-git.install
 	arch = any
 	license = GPL
 	depends = python

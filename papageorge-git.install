@@ -1,0 +1,7 @@
+post_install() {
+    echo "------------------------------------------------------------"
+    echo "Don't forget to copy .papageorge.conf in your home directory"
+    echo "and fit it to your needs. You can find it in src/papageorge/"
+    echo "------------------------------------------------------------"
+}
+
