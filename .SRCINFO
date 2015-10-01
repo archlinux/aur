@@ -1,21 +1,21 @@
 pkgbase = python-qrcode
 	pkgdesc = QR Code image generator
 	pkgver = 5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/qrcode
 	arch = any
 	license = BSD
-	depends = python
+	depends = python>=3.5
 	source = https://pypi.python.org/packages/source/q/qrcode/qrcode-5.1.tar.gz
 	sha256sums = 33bdee5e834fc99eb538e1dad198a3a5b70d0a88845629cacf4c592be1ce7f6a
 
 pkgname = python-qrcode
-	depends = python
+	depends = python>=3.5
 	depends = python-six
 	depends = python-pillow
 
 pkgname = python-qrcode-bin
-	depends = python
+	depends = python>=3.5
 	depends = python-setuptools
 	depends = python-qrcode
 	conflicts = python2-qrcode
