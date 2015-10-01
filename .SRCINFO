@@ -1,0 +1,16 @@
+pkgbase = perl-sub-exporter-globexporter
+	pkgdesc = export shared globs with Sub::Exporter collectors
+	pkgver = 0.004
+	pkgrel = 1
+	url = https://metacpan.org/release/Sub-Exporter-GlobExporter
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-sub-exporter
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Sub-Exporter-GlobExporter-0.004.tar.gz
+	md5sums = 52597b6e678409eac7c17f8216a4c7cb
+	sha512sums = 00a61e640afc2e8ac1d0a664d255950dfbbfcf61e0228e7fe36e13a9314f827b478f694519da1dd00b22b6307930c216fb5a53bbae00e46e8e717d865db3365a
+
+pkgname = perl-sub-exporter-globexporter
+
