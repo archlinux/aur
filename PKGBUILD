@@ -1,6 +1,6 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot[de>
 pkgname=moodle
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc='Moodle is a open-source software learning management system'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('php' 'php-intl' 'php-gd')
 conflicts=('moodle-plus')
 options=('!strip')
 source=("https://download.moodle.org/stable29/moodle-${pkgver}.tgz")
-md5sums=('a552b7d3901f2825d3d7ee6eec485d99')
+md5sums=('f58c41a6acaaa76077928b86198b79bd')
 
 package() {
     cd "$pkgdir"
