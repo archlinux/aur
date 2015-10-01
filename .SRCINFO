@@ -1,0 +1,17 @@
+pkgbase = perl-moox-types-mooselike-numeric
+	pkgdesc = Moo types for numbers
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://metacpan.org/release/MooX-Types-MooseLike-Numeric
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0.003
+	depends = perl-moox-types-mooselike>=0.23
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MATEU/MooX-Types-MooseLike-Numeric-1.02.tar.gz
+	md5sums = 5690122ad6dee3cd36db5532b686094d
+	sha512sums = d1df24ea1a9a59c0ffeb828c541a2cab562b2e95582991ca7b594de200ccc725309b0585adb3392b9c746d34bca243ed606e1a835e07a4dd91c5e3eb84050dc3
+
+pkgname = perl-moox-types-mooselike-numeric
+
