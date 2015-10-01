@@ -1,0 +1,15 @@
+pkgbase = file-uri-tools
+	pkgdesc = Simple Perl scripts to convert to and from file:// URI
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = perl-uri
+	provides = file-uri-tools
+	source = file2uri
+	source = uri2file
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = file-uri-tools
+
