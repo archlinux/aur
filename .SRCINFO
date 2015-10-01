@@ -1,6 +1,6 @@
 pkgbase = puush4linux
 	pkgdesc = puush4linux is a Linux client for the popular screenshot host puush. puush4linux aims to reach feature parity with the official Windows puush client. It currently supports authentication, taking screenshots and file uploading.
-	pkgver = 0.01
+	pkgver = r6
 	pkgrel = 1
 	url = https://github.com/crescentrose/puush4linux
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = puush4linux
 	depends = scrot
 	depends = curl
 	depends = libnotify
+	depends = xclip
 	source = https://github.com/crescentrose/puush4linux/archive/master.zip
 	md5sums = SKIP
 
