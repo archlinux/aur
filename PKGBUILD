@@ -1,4 +1,4 @@
-# Maintainer: freaknils <freaknils@gmail.com>
+# Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=brother-ql570-lpr
 _pkgname=ql570lpr
 pkgver=1.0.1
