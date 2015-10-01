@@ -1,6 +1,6 @@
 pkgbase = uzbl-next-git
-	pkgver = 2012.05.14.1252.g95e26b8
-	pkgrel = 4
+	pkgver = 2012.05.14.1260.g315da25
+	pkgrel = 1
 	url = http://www.uzbl.org
 	arch = i686
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgname = uzbl-browser-next-git
 	pkgdesc = A complete browser experience based on uzbl-core
 	install = uzbl.install
 	arch = any
-	depends = uzbl-core-next-git=2012.05.14.1252.g95e26b8
+	depends = uzbl-core-next-git=2012.05.14.1260.g315da25
 	depends = desktop-file-utils
 	depends = python
 	depends = python2
