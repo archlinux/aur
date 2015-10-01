@@ -1,7 +1,7 @@
 pkgbase = mkdocs
 	pkgdesc = Project documentation with Markdown.
 	pkgver = 0.14.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.mkdocs.org
 	arch = any
 	license = BSD

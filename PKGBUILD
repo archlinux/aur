@@ -4,7 +4,7 @@ _name="mkdocs"
 
 pkgname="${_name}"
 pkgver="0.14.0"
-pkgrel="5"
+pkgrel="6"
 pkgdesc="Project documentation with Markdown."
 arch=("any")
 url="http://www.mkdocs.org"
