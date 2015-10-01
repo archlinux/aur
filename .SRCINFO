@@ -1,7 +1,7 @@
 pkgbase = pyparadox
 	pkgdesc = PyParadox is a nix launcher for Paradox titles.
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/carmenbbakker/pyparadox
 	arch = any
 	license = GPL3
@@ -14,8 +14,8 @@ pkgbase = pyparadox
 	source = pyparadox-ck2.desktop
 	source = pyparadox-eu4.desktop
 	md5sums = a91117fb0f3f7eeb836b25f7c7bee76f
-	md5sums = c234612dd8e4a689e4289c31b916ebcf
-	md5sums = c0d932ed642fbdda6c498de11c37d24e
+	md5sums = 842ee52d5967eff0400261031f885bc6
+	md5sums = a2c75a8673659beae2095a565c480361
 
 pkgname = pyparadox
 

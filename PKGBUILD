@@ -1,7 +1,7 @@
 # Maintainer: Carmen Bianca Bakker <carmenbbakker@gmail.com>
 pkgname=pyparadox
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='PyParadox is a nix launcher for Paradox titles.'
 arch=('any')
 url='https://gitlab.com/carmenbbakker/pyparadox'
@@ -13,8 +13,8 @@ source=("https://pypi.python.org/packages/source/p/pyparadox/pyparadox-${pkgver}
         'pyparadox-ck2.desktop'
         'pyparadox-eu4.desktop')
 md5sums=('a91117fb0f3f7eeb836b25f7c7bee76f'
-         'c234612dd8e4a689e4289c31b916ebcf'
-         'c0d932ed642fbdda6c498de11c37d24e')
+         '842ee52d5967eff0400261031f885bc6'
+         'a2c75a8673659beae2095a565c480361')
 
 package() {
     cd "${srcdir}/$pkgname-$pkgver"

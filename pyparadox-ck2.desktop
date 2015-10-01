@@ -3,6 +3,6 @@ Type=Application
 Name=PyParadox (CK2)
 GenericName=Crusader Kings II Launcher
 Comment=Nix launcher for Crusader Kings II
-Icon=/usr/lib/python3.4/site-packages/pyparadox/resources/paradox.png
+Icon=/usr/lib/python3.5/site-packages/pyparadox/resources/paradox.png
 Exec=pyparadox-qt ck2
 Categories=Game

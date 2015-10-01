@@ -3,6 +3,6 @@ Type=Application
 Name=PyParadox (EU4)
 GenericName=Europa Universalis IV Launcher
 Comment=Nix launcher for Europa Universalis IV
-Icon=/usr/lib/python3.4/site-packages/pyparadox/resources/paradox.png
+Icon=/usr/lib/python3.5/site-packages/pyparadox/resources/paradox.png
 Exec=pyparadox-qt eu4
 Categories=Game
