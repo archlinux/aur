@@ -2,7 +2,7 @@
 # Maintainer: Parth Nobel <pnob99 *AT* gmail *DOT* com>
 
 pkgname=triplea
-pkgver=1.8.0.7
+pkgver=1.8.0.9
 pkgrel=1
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('gtk-update-icon-cache' 'java-runtime')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${pkgver//./_}_all_platforms.zip"
         "https://github.com/PTNobel/TripleA/archive/master.zip"
         "triplea")
-sha256sums=('3bb37cec9fda7d0d9838ee365f35d7bab0fb2fa8c2d97ff21f4d7a9f38069fc3'
+sha256sums=('9e94165cbf2b907563dfaf8db776b2941fdbdd511df45dc19c9304c6df1b01fe'
             '36e716f54faeb1e29580602c9607ac5472c24282ba67b7b4cce0e83bd09d1220'
             '4fdd7ad0c1a802a3142e800dc1f354a246586d8bb75b8c17b6dc948b5cf35f05')
 
@@ -37,4 +37,3 @@ package() {
     rm -Rf docs 
     install -D -m 0755 ${srcdir}/triplea ${pkgdir}/usr/bin/triplea
 }
-
