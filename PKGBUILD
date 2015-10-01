@@ -2,7 +2,7 @@
 
 pkgname=rtv
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Browse Reddit from your terminal"
 arch=('any')
 url="https://github.com/michael-lazar/rtv"
