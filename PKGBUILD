@@ -25,14 +25,11 @@ options=()
 install=
 #source=('https://gitlab.com/rich4rd.macwan/libnotify-0.7.6-patched/raw/master/libnotify-0.7.6-patched.tar.gz')
 source=('https://git.gnome.org/browse/libnotify/snapshot/libnotify-0.7.6.tar.xz'
-	'https://gitlab.com/rich4rd.macwan/libnotify-0.7.6-patched/raw/master/notifysend.patch'
 	)
 
 noextract=()
 
-#md5sums=('7f06a4aea92b970fce5e0d4d8f3b7b37'
- #        'c404c151569f3379447fca61fa7fbeea')
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' )
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
