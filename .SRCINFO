@@ -1,0 +1,19 @@
+pkgbase = geoipmarker
+	pkgdesc = Use iptables NFQUEUE to mark packets by country, using a MaxMind GeoIP2 Database
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/m4rienf/GeoIPMarker
+	install = geoipmarker.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = libmaxminddb
+	depends = libnetfilter_queue
+	provides = geoipmarker
+	source = https://github.com/m4rienf/GeoIPMarker/releases/download/v1.0.0/geoipmarker-1.0.0.tar.bz2
+	source = geoipmarker.install
+	sha512sums = f3c5ccf3160773c05056b06d76b40b0c10e5493dbc75fb08cf072637cdae76f2991187d771203f34bad8cd625c998038f7ce1e932ed6331eb6093f9bcfff9ad3
+	sha512sums = 48cb041991cbf5aaacd7d9177eeaf5940897f271bc8fced7d02d4d315bd568dd7b17f9a446bfc3506b317a99efacc2e17fe6faaa3e1a6245c513c11425f66a46
+
+pkgname = geoipmarker
+

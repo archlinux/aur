@@ -1,0 +1,10 @@
+post_install() {
+	cat <<EOF
+**** NOTICE ****
+*
+* To use the geoipmarker package, you need a GeoIP2 database file, and a 
+* systemd Unit Instance Environment file. See
+* <https://github.com/m4rienf/GeoIPMarker/blob/master/README.md>
+*
+EOF
+}
