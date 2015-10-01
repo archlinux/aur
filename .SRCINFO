@@ -1,6 +1,6 @@
 pkgbase = spl-utils-git
 	pkgdesc = Solaris Porting Layer kernel module support files.
-	pkgver = 0.6.5.2_r0_g2fd6834_4.2.1_1
+	pkgver = 0.6.5.2_r0_g2fd6834_4.2.2_1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = i686
