@@ -1,7 +1,7 @@
 pkgbase = mk_vpp
 	pkgdesc = mk and vpp, two tools for the cyclic process of editing, compiling, viewing, and printing a latex, xelatex, or plain tex document.
 	pkgver = 3.06
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ctan.org/pkg/mk
 	arch = any
 	license = GPL

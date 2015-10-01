@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mk_vpp # taken from mk 
 pkgver=3.06
-pkgrel=1
+pkgrel=2
 pkgdesc="mk and vpp, two tools for the cyclic process of editing, compiling, viewing, and printing a latex, xelatex, or plain tex document."
 url="http://www.ctan.org/pkg/mk"
 arch=('any')
