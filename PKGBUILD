@@ -1,10 +1,11 @@
 pkgname=wscat
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Netcat-like utility for WebSockets"
 url="https://github.com/websockets/wscat"
 arch=("x86_64" "i686")
 license="custom"
+depends=("nodejs")
 makedepends=("npm")
 
 pkgver() {
