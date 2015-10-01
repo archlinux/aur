@@ -1,7 +1,7 @@
 pkgbase = python-keystoneclient
 	pkgdesc = Client Library for OpenStack Identity
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openstack/python-keystoneclient
 	arch = any
 	license = Apache

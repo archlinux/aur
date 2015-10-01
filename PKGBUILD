@@ -6,7 +6,7 @@ _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.7.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Client Library for OpenStack Identity"
 arch=("any")
 url="https://github.com/openstack/${_name}"
