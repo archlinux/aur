@@ -1,0 +1,14 @@
+pkgbase = python2-parsedatetime
+	pkgdesc = Parse human-readable date/time strings.
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://github.com/bear/parsedatetime
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/p/parsedatetime/parsedatetime-1.5.tar.gz
+	sha256sums = 3da6be2be506f59cce32e19e30e201053e1bb4d07e25668918e00f8a49ad40ab
+
+pkgname = python2-parsedatetime
+
