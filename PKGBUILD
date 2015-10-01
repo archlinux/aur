@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=1.0.0_rc1
+pkgver=1.0.0_rc2
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
@@ -18,7 +18,7 @@ install=mattermost.install
 source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgver.tar.gz
         mattermost.service
         mattermost-user.conf)
-sha256sums=('8c98a5181a881b38daa975cddcf24c0a8da9738b91670740a56c9b622fdbcb5e'
+sha256sums=('2c68b126464220dbcd6dd8bd963a50e9eb473528c98a3ec8c710e5266be876b4'
             'b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd')
 
@@ -29,9 +29,9 @@ prepare() {
 	ln -s "$srcdir"/platform-$_pkgver platform
 
 	cd platform
-	sed -r 's|code.google.com/p/freetype-go/freetype|github.com/golang/freetype|g' -i \
-	  Godeps/Godeps.json \
-	  api/user.go
+	sed "s|_BUILD_DATE_|$(date -u)|g" -i model/version.go
+	sed "s|_BUILD_NUMBER_|$_pkgver-$pkgrel|g" -i model/version.go
+	sed "s|_BUILD_HASH_|-|g" -i model/version.go
 
 	sed -r 's|github.com/throttled/throttled|gopkg.in/throttled/throttled.v2|g' -i \
 	  Godeps/Godeps.json \
