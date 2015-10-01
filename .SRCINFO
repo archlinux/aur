@@ -1,7 +1,7 @@
 pkgbase = python-rauth
 	pkgdesc = A Python library for OAuth 1.0/a, 2.0, and Ofly
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rauth.readthedocs.org
 	arch = any
 	license = MIT
