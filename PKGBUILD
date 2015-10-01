@@ -23,10 +23,8 @@ replaces=()
 backup=()
 options=()
 install=
-#source=('https://gitlab.com/rich4rd.macwan/libnotify-0.7.6-patched/raw/master/libnotify-0.7.6-patched.tar.gz')
 source=('https://git.gnome.org/browse/libnotify/snapshot/libnotify-0.7.6.tar.xz'
 	)
-
 noextract=()
 
 md5sums=('SKIP' )
@@ -39,8 +37,8 @@ prepare() {
 	#mkdir -p "${pkgname}" && tar -xvf ../libnotify-0.7.6.tar.xz -C "${pkgname}" --strip-components 1
 	tar -xvf ../libnotify-0.7.6.tar.xz
 	#cd libnotify-0.7.6
-	pwd
-	patch -p0 -i "notifysend.patch"
+	
+	patch -p0 -i ../notifysend.patch
 
 }
 
