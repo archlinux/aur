@@ -1,0 +1,12 @@
+[Unit]
+Description=PtokaX DC Hub
+After=network.target
+
+[Service]
+User=ptokax
+Group=ptokax
+PIDFile=/run/ptokax/ptokax.pid
+ExecStart=/usr/bin/ptokax -d -c /var/lib/ptokax -p /run/ptokax/ptokax.pid
+
+[Install]
+WantedBy=default.target

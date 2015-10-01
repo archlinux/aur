@@ -1,0 +1,12 @@
+post_install() {
+	getent group ptokax &>/dev/null || groupadd -r -g 411 ptokax >/dev/null
+	getent passwd ptokax &>/dev/null || useradd -r -u 411 -g ptokax -d /var/lib/ptokax -s /bin/false ptokax>/dev/null
+	chown -R ptokax:ptokax /var/lib/ptokax
+    usr/bin/systemd-tmpfiles --create ptokax.conf || true
+}
+
+post_remove() {
+	getent passwd ptokax &>/dev/null && userdel ptokax >/dev/null
+	getent group ptokax &>/dev/null && groupdel ptokax >/dev/null
+	true
+}
