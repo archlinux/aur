@@ -16,6 +16,7 @@ bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 
 post_install() {
+	npm install -g coffee-script
 	[ ! -d /usr/share/cozy ] && mkdir /usr/share/cozy
 	msg_blue "Downloading config file for Cozy Indexer"
 	wget -q https://raw.githubusercontent.com/cozy/cozy-debian/master/supervisor-cozy-indexer -O /usr/share/cozy/supervisor-cozy-indexer
