@@ -1,12 +1,13 @@
 pkgbase = xvidcap
 	pkgdesc = A small tool to capture things going on on an X-Windows display to either individual frames or an MPEG video
 	pkgver = 1.1.7
-	pkgrel = 7
+	pkgrel = 8
 	url = http://xvidcap.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = rarian
+	makedepends = perl-xml-parser
 	depends = dbus-glib
 	depends = lame
 	depends = libxmu

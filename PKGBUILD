@@ -8,13 +8,13 @@
 
 pkgname=xvidcap
 pkgver=1.1.7
-pkgrel=7
+pkgrel=8
 pkgdesc="A small tool to capture things going on on an X-Windows display to either individual frames or an MPEG video"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://xvidcap.sourceforge.net/"
 depends=('dbus-glib' 'lame' 'libxmu' 'libglade' 'ffmpeg')
-makedepends=('rarian')
+makedepends=('rarian' 'perl-xml-parser')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
         "xextproto-7.1.1.patch"
         "xvidcap-ffmpeg.patch"
