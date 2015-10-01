@@ -1,0 +1,49 @@
+Index: libnotify-0.7.6/tools/notify-send.c
+===================================================================
+--- libnotify-0.7.6.orig/tools/notify-send.c	2011-10-14 11:24:15.000000000 +1300
++++ libnotify-0.7.6/tools/notify-send.c	2012-05-22 20:47:16.228540669 +1200
+@@ -130,6 +130,8 @@
+         static char        *icons = NULL;
+         static char       **n_text = NULL;
+         static char       **hints = NULL;
++        static gboolean     print_id = FALSE;
++        static gint         replace_id = 0;
+         static gboolean     do_version = FALSE;
+         static gboolean     hint_error = FALSE;
+         static glong        expire_timeout = NOTIFY_EXPIRES_DEFAULT;
+@@ -159,6 +161,10 @@
+                  N_
+                  ("Specifies basic extra data to pass. Valid types are int, double, string and byte."),
+                  N_("TYPE:NAME:VALUE")},
++                {"print-id", 'p', 0, G_OPTION_ARG_NONE, &print_id,
++                 N_ ("Print the notification ID."), NULL},
++                {"replace-id", 'r', 0, G_OPTION_ARG_INT, &replace_id,
++                 N_ ("The ID of the notification to replace."), N_("REPLACE_ID")},
+                 {"version", 'v', 0, G_OPTION_ARG_NONE, &do_version,
+                  N_("Version of the package."),
+                  NULL},
+@@ -233,6 +239,9 @@
+ 
+         g_free (body);
+ 
++        if (replace_id)
++                g_object_set (notify, "id", replace_id, NULL);
++
+         /* Set hints */
+         if (hints != NULL) {
+                 gint            i = 0;
+@@ -272,6 +281,14 @@
+         if (!hint_error)
+                 notify_notification_show (notify, NULL);
+ 
++        if (print_id) {
++                gint id;
++                g_object_get (notify, "id", &id, NULL);
++                if (id) {
++                        g_printf ("%d\n", id);
++                }
++        }
++
+         g_object_unref (G_OBJECT (notify));
+ 
+         notify_uninit ();
