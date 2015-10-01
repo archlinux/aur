@@ -3,7 +3,7 @@
 
 pkgname=sddm
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc='QML based X11 display manager'
 arch=('i686' 'x86_64')
 url='http://github.com/sddm/sddm'
@@ -14,11 +14,17 @@ install="${pkgname}.install"
 backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm')
 provides=('display-manager')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('e3261ac93a50c71c973cc79b85387765')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
+	fix-segfault.patch::"https://github.com/davispuh/sddm/commit/671c11d0.patch")
+md5sums=('e3261ac93a50c71c973cc79b85387765'
+         '208f3b1b49792984989172dd809a03bf')
 
 prepare() {
   mkdir -p build
+
+# Fix segfault https://github.com/sddm/sddm/issues/489
+  cd $pkgname-$pkgver
+  patch -p1 -i ../fix-segfault.patch
 }
 
 build() {
