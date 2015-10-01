@@ -1,13 +1,13 @@
 pkgbase = yaplog
 	pkgdesc = Log system library for C/C++ projects
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redmine.yapbreak.fr/projects/yaplog
 	arch = any
 	license = GPL3
 	makedepends = gcc
 	conflicts = yaplog-git
-	source = http://release.yapbreak.fr/yaplog/yaplog-2.2.1-1.tar.gz
+	source = http://release.yapbreak.fr/yaplog/yaplog-2.2.1-2.tar.gz
 	md5sums = SKIP
 
 pkgname = yaplog
