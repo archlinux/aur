@@ -7,10 +7,10 @@
 
 pkgname=android-studio-canary
 _pkgname=android-studio
-pkgver=1.4.0rc1
-_pkgver=1.4.0.7
+pkgver=1.4.0
+_pkgver=1.4.0.10
 pkgrel=1
-_build=141.2262011
+_build=141.2288178
 pkgdesc="The Official Android IDE. Canary branch"
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/installing/studio.html"
@@ -24,7 +24,7 @@ options=('!strip')
 install=$pkgname.install
 source=("http://dl.google.com/dl/android/studio/ide-zips/$_pkgver/android-studio-ide-$_build-linux.zip"
         "$_pkgname.desktop")
-sha1sums=('2ddbd659221df5396535cfedc6305c1fb5a3c7ba'
+sha1sums=('137e3734f2e8e285bd7c1d2fae2e8548d0f164bd'
             'baed66cebe2b372700f436b93022a52cbff313be')
 
 if [ "$CARCH" = "x86_64" ]; then
