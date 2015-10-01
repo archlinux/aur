@@ -11,7 +11,7 @@ pkgbase = puush4linux
 	depends = curl
 	depends = libnotify
 	depends = xclip
-	source = https://github.com/crescentrose/puush4linux/archive/master.zip
+	source = https://github.com/crescentrose/puush4linux.git
 	md5sums = SKIP
 
 pkgname = puush4linux

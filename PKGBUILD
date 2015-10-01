@@ -5,7 +5,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/crescentrose/puush4linux"
 license=('WTFPL')
-source=(https://github.com/crescentrose/puush4linux/archive/master.zip)
+source=(https://github.com/crescentrose/puush4linux.git)
 md5sums=('SKIP')
 depends=('bash' 'scrot' 'curl' 'libnotify' 'xclip')
 
