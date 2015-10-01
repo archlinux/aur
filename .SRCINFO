@@ -1,7 +1,7 @@
 pkgbase = python-click
 	pkgdesc = A simple wrapper around optparse for powerful command line utilities.
 	pkgver = 5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://click.pocoo.org/
 	arch = any
 	license = BSD

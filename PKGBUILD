@@ -6,7 +6,7 @@ _check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="5.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A simple wrapper around optparse for powerful command line utilities."
 arch=("any")
 url="http://click.pocoo.org/"
