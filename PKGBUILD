@@ -2,7 +2,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-devel
-pkgver=3.0.5724.5
+pkgver=3.0.5724.6
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('i686' 'x86_64' 'armv6h')

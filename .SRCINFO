@@ -1,6 +1,6 @@
 pkgbase = emby-server-devel
 	pkgdesc = Bring together your videos, music, photos, and live television
-	pkgver = 3.0.5724.5
+	pkgver = 3.0.5724.6
 	pkgrel = 1
 	url = http://emby.media
 	install = emby-server.install
@@ -17,7 +17,7 @@ pkgbase = emby-server-devel
 	provides = emby-server
 	conflicts = emby-server
 	backup = etc/conf.d/emby-server
-	source = git+https://github.com/MediaBrowser/Emby.git#tag=3.0.5724.5
+	source = git+https://github.com/MediaBrowser/Emby.git#tag=3.0.5724.6
 	source = emby-server
 	source = emby-migrate-database
 	source = emby-server.conf
