@@ -1,14 +1,14 @@
 # Maintainer: Clément DEMOULINS <clement@archivel.fr>
 
 pkgname=vcsn-git
-_realname=vaucanson
+_realname=vcsn
 pkgver=v2.0.r1065.g650cb77
-pkgrel=2
+pkgrel=3
 pkgdesc="Finite state machine manipulation platform, consisting of a library and tools implemented on top of it."
 arch=('i686' 'x86_64')
 url="http://vaucanson.lrde.epita.fr/"
 license=('GPL3')
-depends=('boost' 'gcc' 'ccache' 'libltdl' 'jupyter')
+depends=('boost' 'gcc' 'ccache' 'libltdl' 'jupyter' 'mathjax' 'graphviz')
 makedepends=('git' 'texlive-core' 'doxygen' 'python2-docutils')
 conflicts=('vaucanson-git' 'vaucanson' 'vcsn')
 provides=('vaucanson-git' 'vaucanson' 'vcsn')
