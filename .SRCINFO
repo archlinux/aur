@@ -1,0 +1,23 @@
+pkgbase = linthesia
+	pkgdesc = A game of playing music. A fork of Synthesia
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://linthesia.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gtkmm
+	makedepends = gconfmm
+	makedepends = gtkglextmm
+	makedepends = alsa-lib
+	makedepends = svn
+	depends = gtkmm
+	depends = gconfmm
+	depends = gtkglextmm
+	depends = alsa-lib
+	depends = fluidsynth
+	source = svn+http://svn.code.sf.net/p/linthesia/code/#revision=r87
+	sha256sums = SKIP
+
+pkgname = linthesia
+
