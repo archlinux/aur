@@ -2,11 +2,11 @@
 
 pkgname=madx-dev
 pkgver=5.02.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
-depends=('gcc-libs' 'libx11')
+depends=('gcc-libs' 'libx11' 'lapack')
 conflicts=('madx-svn')
 provides=('madx')
 makedepends=('cmake')

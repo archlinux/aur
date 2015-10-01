@@ -1,13 +1,14 @@
 pkgbase = madx-dev
 	pkgdesc = Accelerator Optics simulation code, latest development release
 	pkgver = 5.02.07
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cern.ch/mad
 	arch = x86_64
 	license = custom
 	makedepends = cmake
 	depends = gcc-libs
 	depends = libx11
+	depends = lapack
 	provides = madx
 	conflicts = madx-svn
 	source = http://madx.web.cern.ch/madx/releases/5.02.07/madx-src.tgz
