@@ -1,0 +1,22 @@
+post_install() {
+	cat <<EOF
+**** NOTICE ****
+*
+* To use the geoipupdate package,
+* you need to add configuration data to /etc/geoipupdate/GeoIP.conf.
+*
+* Please See <http://dev.maxmind.com/geoip/geoipupdate/>
+*
+* To schedule automatic updates, start and enable
+*
+* geoipupdate.timer
+*
+* $ sudo systemctl start geoipupdate.timer
+* $ sudo systemctl enable geoipupdate.timer
+*
+* by default, this will run geoipupdate weekly, and one minute
+* after every reboot.
+* 
+*
+EOF
+}

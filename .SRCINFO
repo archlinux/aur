@@ -1,0 +1,22 @@
+pkgbase = geoipupdate
+	pkgdesc = Automatic updates of MaxMind GeoIP2 and GeoIP Legacy binary databases
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://dev.maxmind.com/geoip/geoipupdate/
+	install = geoipupdate.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = curl
+	provides = geoipupdate
+	source = https://github.com/maxmind/geoipupdate/releases/download/v2.2.1/geoipupdate-2.2.1.tar.gz
+	source = geoipupdate.install
+	source = geoipupdate.service
+	source = geoipupdate.timer
+	sha512sums = 5d28803353badd4d00a9174202912524f31e057ef4f5381360c16909fbccce3033f5ad7ec9c55963b70c0bbdb74589932bde36ea9b34f2a0632c504c1718dd85
+	sha512sums = 660d22d5dc86d6c2a30456e72b6d121d093d40fc1e27f8250d33675b4752c5bb66aef371a17a7177a926df27a7149bc63118248c6048078e861ce420bd875583
+	sha512sums = 20eba13c38f54fb32dc3ed6535c4ab62a7292b0f638d03c9ab5b3d3d968e4324795953fe0ec1596e3e69b279e8de24a5608f1484d68dd9b5d35f11a56b1dbd72
+	sha512sums = 1d865e31eccd7597093df83da05f3866a361e9f68bcc1f1fa10d72cc2fae8a789d9c2cee445cf81f2384a3415ebd12d2c485d6dfe8401ea005f7c111a6331dd2
+
+pkgname = geoipupdate
+

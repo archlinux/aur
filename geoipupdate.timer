@@ -1,0 +1,10 @@
+[Unit]
+Description=Run GeoIP update weekly and on boot
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1w
+
+[Install]
+WantedBy=timers.target
+
