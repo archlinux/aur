@@ -1,0 +1,5 @@
+This is an Arch Linux PKGBUILD that tracks the repositoriy kernel version but
+has the necessary patches applied to allow GPU passthrough with KVM using
+vfio.
+
+See https://bbs.archlinux.org/viewtopic.php?id=162768 for more info.
