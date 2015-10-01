@@ -5,7 +5,7 @@ _module="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.8.0"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Extensions to the Python standard library unit testing framework"
 arch=("any")
 url="https://github.com/testing-cabal/testtools"
@@ -14,6 +14,17 @@ makedepends=("python-pbr" "python2-pbr")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('8afd6400fb4e75adb0b29bd09695ecb2024cd7befab4677a58c147701afadd97')
 
+prepare() {
+    cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
+}
+
+build() {
+    cd "${srcdir}/${_name}-${pkgver}"
+    python setup.py build
+    cd "${srcdir}/${_name}-${pkgver}-python2"
+    python2 setup.py build
+}
+
 package_python-testtools() {
     depends=("python-pbr>=0.11"
              "python-extras"
@@ -21,7 +32,7 @@ package_python-testtools() {
              "python-unittest2>=1.0.0"
              "python-traceback2")
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
 
 package_python2-testtools() {
@@ -30,6 +41,6 @@ package_python2-testtools() {
              "python2-mimeparse"
              "python2-unittest2>=1.0.0"
              "python2-traceback2")
-    cd "${srcdir}/${_name}-${pkgver}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    cd "${srcdir}/${_name}-${pkgver}-python2"
+    python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }

@@ -1,7 +1,7 @@
 pkgbase = python-testtools
 	pkgdesc = Extensions to the Python standard library unit testing framework
 	pkgver = 1.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/testing-cabal/testtools
 	arch = any
 	license = MIT
