@@ -105,6 +105,11 @@ prepare() {
     ln -sf ../contrib contrib
     mkdir -p contrib/freenet-ext/{dist,lib}
 
+    # no need to fetch this file every time freenet starts as its only updated
+    # monthly, if it even changes at all
+    sed -i src/freenet/node/updater/NodeUpdateManager.java \
+        -e "s:updateIPToCountry =.*:updateIPToCountry = false;:"
+
     # had a hard time building these sources, we'll use the prebuilt jars
     cp "$srcdir/commons-compress.jar" contrib/freenet-ext/dist
 
@@ -266,10 +271,13 @@ package() {
     install -m640 "$srcdir"/{wrapper.config,run.sh,IpToCountry.dat} \
                                                                 "$pkgdir"/opt/freenet
     install -m640 "$srcdir"/freenet.ini                         "$pkgdir"/opt/freenet/conf
-    install -m640 "$srcdir"/seednodes.fref                      "$pkgdir"/opt/freenet/noderef
     install -m640 contrib/freenet-ext/dist/freenet-ext.jar \
                   dist/freenet.jar                         \
                   lib/bcprov.jar                                "$pkgdir"/opt/freenet/lib
+
+    # FIXME Workaround for https://bugs.freenetproject.org/view.php?id=6684
+    install -m640 "$srcdir"/seednodes.fref                      "$pkgdir"/opt/freenet
+    ln -s /opt/freenet/seednodes.fref "$pkgdir"/opt/freenet/noderef/
 
     # plugins
     for plugin in ${_plugins[@]}; do
