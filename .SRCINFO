@@ -4,16 +4,25 @@ pkgbase = libumlib0
 	pkgrel = 1
 	url = https://sourceforge.net/projects/view-os
 	install = libumlib0.install
+	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = libtool
 	depends = glibc>=2.4
 	provides = libumlib0=0.8.2
 	conflicts = libumlib0
 	replaces = libumlib0
-	source = http://ftp.us.debian.org/debian/pool/main/u/umview/libumlib0_0.8.2-1.1_amd64.deb
+	source = http://http.debian.net/debian/pool/main/u/umview/umview_0.8.2.orig.tar.gz
 	source = libumlib0.install
-	md5sums = 28edfce5ed77824603fbf0742a790e78
+	source = libumlib0.diff
+	source = http://ftp.us.debian.org/debian/pool/main/u/umview/libumlib0_0.8.2-1.1_i386.deb
+	md5sums = ac6d6baeb5700943ecf5021d980ceb7d
 	md5sums = b4165e6142a92d65c8e14479486decc4
+	md5sums = c3c17eafbb532433d49e37f9cfabbed7
+	md5sums = 7fb63081024db1b749e24cb19416ff66
 
 pkgname = libumlib0
 
