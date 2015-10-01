@@ -1,6 +1,6 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
 pkgname=tomcat8
-pkgver=8.0.26
+pkgver=8.0.27
 pkgrel=1
 pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies'
 arch=('any')
@@ -16,12 +16,12 @@ backup=(etc/${pkgname}/catalina.policy
         etc/${pkgname}/tomcat-users.xml
         etc/${pkgname}/web.xml)
 install=${pkgname}.install
-source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz
+source=(https://dist.apache.org/repos/dist/release/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz
         systemd_${pkgname}.service
         systemd_sysusers.d_${pkgname}.conf
         systemd_tmpfiles.d_${pkgname}.conf)
 
-sha256sums=('9f11588f0ff767adde63cd6919462c0c2742897560f4b367a0ffffdd8b1ed382'
+sha256sums=('8ae7885596feb61d9f8944f928bcd6af7c799de33034fb7435c9991b34aa729a'
             'd44056248b7cdd6671fd4de08a9453b3bd1a83980343d249a99b74939d46f4d4'
             '02e7a1edb82ed117629189806d40c2c7b70ec994ecbafc11cb7dc7eec35af216'
             '0dc1fdb537d3488756755f3fb713a9638597d4c68596f6f94f2707e8363cf5e2')
