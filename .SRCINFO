@@ -1,7 +1,7 @@
 pkgbase = python-linecache2
 	pkgdesc = Backports of the linecache module
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/testing-cabal/linecache2
 	arch = any
 	license = Python
