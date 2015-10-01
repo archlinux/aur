@@ -1,7 +1,7 @@
 # Contributor: Spider.007 <archlinux AT spider007 DOT net>
 pkgname=kibana
 pkgver=4.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="browser based analytics and search dashboard for Elasticsearch. Please note; this package replaces the distributed precompiled binary 'node'"
 arch=('i686' 'x86_64')
 url="http://www.elasticsearch.org/overview/kibana/"
@@ -23,5 +23,6 @@ package() {
 	mkdir -p $pkgdir/usr/lib/kibana/
 	install -Dm644 "$srcdir/kibana.service" "$pkgdir/usr/lib/systemd/system/kibana.service"
 	install -Dm644 "config/kibana.yml" "$pkgdir/etc/elasticsearch/kibana/kibana.yml"
-	cp -Rp ./src/* "$pkgdir/usr/lib/kibana/"
+	chmod +r src/public/worker-json.js
+	cp -Rp src/* "$pkgdir/usr/lib/kibana/"
 }
