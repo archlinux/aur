@@ -1,0 +1,18 @@
+pkgbase = python2-youtube-dl
+	pkgdesc = A small command-line program to download videos from YouTube.com and a few more sites
+	pkgver = 2015.08.28
+	pkgrel = 1
+	url = http://rg3.github.io/youtube-dl/
+	arch = any
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	optdepends = ffmpeg: for video post-processing
+	optdepends = rtmpdump: for rtmp streams support
+	source = http://youtube-dl.org/downloads/2015.08.28/youtube-dl-2015.08.28.tar.gz
+	source = http://youtube-dl.org/downloads/2015.08.28/youtube-dl-2015.08.28.tar.gz.sig
+	md5sums = 1bba40e463e71c65436f76b615f4d15e
+	md5sums = SKIP
+
+pkgname = python2-youtube-dl
+
