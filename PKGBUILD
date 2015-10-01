@@ -2,7 +2,7 @@
 
 pkgname=mrbayes-mpi
 pkgver=3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models"
 arch=('i686' 'x86_64')
 url="http://mrbayes.sourceforge.net/index.php"
@@ -11,16 +11,16 @@ depends=('openmpi')
 conflicts=(mrbayes)
 provides=(mrbayes)
 source=("http://downloads.sourceforge.net/mrbayes/mrbayes-$pkgver.tar.gz")
-md5sums=('cbd21bf0497429dd9a912c28ce78812a')
+md5sums=('a85a63e5382bc7ea36b1ce1c2138ee6e')
 
 prepare() {
-  cd $srcdir/src
+  cd $srcdir/mrbayes_$pkgver/src
 
   autoconf
 }
 
 build() {
-  cd $srcdir/src
+  cd $srcdir/mrbayes_$pkgver/src
 
   ./configure --prefix=/usr --without-beagle --enable-mpi
 
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/src
+  cd $srcdir/mrbayes_$pkgver/src
 
   mkdir -p $pkgdir/usr/bin
 
