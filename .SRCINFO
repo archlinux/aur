@@ -1,7 +1,7 @@
 pkgbase = python-smmap
 	pkgdesc = A pure git implementation of a sliding window memory map manager
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gitpython-developers/smmap
 	arch = any
 	license = BSD

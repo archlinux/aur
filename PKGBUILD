@@ -6,7 +6,7 @@ _check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="0.9.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A pure git implementation of a sliding window memory map manager"
 arch=("any")
 url="https://github.com/gitpython-developers/${_name}"
