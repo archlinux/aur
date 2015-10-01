@@ -1,7 +1,7 @@
 pkgbase = python-github
 	pkgdesc = Use the full Github API v3
 	pkgver = 1.25.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://jacquev6.net/PyGithub/v1/
 	arch = any
 	license = Apache

@@ -6,7 +6,7 @@ _check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.25.2"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="Use the full Github API v3"
 arch=("any")
 url="http://jacquev6.net/${_name}/v1/"
