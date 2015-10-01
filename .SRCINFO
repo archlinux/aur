@@ -1,6 +1,6 @@
 pkgbase = pithos-git
 	pkgdesc = Pandora Internet Radio player for GNOME
-	pkgver = 451
+	pkgver = 485
 	pkgrel = 1
 	epoch = 1
 	url = http://pithos.github.io/
@@ -8,7 +8,7 @@ pkgbase = pithos-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python
+	depends = python>=3.5
 	depends = gtk3
 	depends = python-gobject
 	depends = gst-plugins-good
