@@ -18,6 +18,7 @@ arch=('arm' 'armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
 options=('!emptydirs')
+depends=('python2')
 provides=('plex-media-server')
 conflicts=('plex-media-server')
 backup=('etc/conf.d/plexmediaserver')
@@ -47,6 +48,10 @@ prepare() {
 }
 
 package() {
+  # It ships what seems to be a vanilla Python, de-bundle that
+  rm usr/lib/plexmediaserver/libpython2.7.so.1.0
+  rm -r usr/lib/plexmediaserver/Resources/Python
+
   install -dm 755 "${pkgdir}"/{opt,etc/conf.d,usr/lib/systemd/system}
   cp -dr --no-preserve='ownership' usr/lib/plexmediaserver "${pkgdir}"/opt/
   install -m 644 plexmediaserver.service "${pkgdir}"/usr/lib/systemd/system/
