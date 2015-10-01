@@ -3,13 +3,13 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=1.14.0.r188242
+pkgver=1.14.0.r190389
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 license=('LGPL2' 'LGPL2.1' 'BSD')
-depends=('atk' 'cairo' 'efl' 'enchant' 'espeak' 'gst-plugins-bad' 'geoclue' 'harfbuzz-icu' 'libsoup' 'libxslt')
+depends=('atk' 'cairo' 'efl' 'enchant' 'espeak' 'hyphen' 'gst-plugins-bad' 'geoclue' 'harfbuzz-icu' 'libsoup' 'libxslt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -57,7 +57,5 @@ build() {
 package() {
   make DESTDIR="$pkgdir" install
 
-# install license files
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  install -m644 Source/WebCore/LICENSE-{APPLE,LGPL-2} "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 Source/WebCore/LICENSE-{APPLE,LGPL-2} -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
