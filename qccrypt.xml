@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/x-cpt">
+		<sub-class-of type="text/xml"/>
+		<comment>Encrypted file with Qccrypt/Ccrypt</comment>
+		<glob pattern="*.cpt" />
+	</mime-type>
+</mime-info>

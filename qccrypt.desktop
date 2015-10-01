@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.6.0
+Name=Qccrypt
+Comment=QT based graphical frontend for ccrypt tool
+Icon=qccrypt
+Exec=qccrypt %U
+Categories=Qt;KDE;Utility;X-KDE-Utilities-File;
+Terminal=false
+MimeType=application/x-cpt;
