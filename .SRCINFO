@@ -1,7 +1,7 @@
 pkgbase = python-netcdf4
 	pkgdesc = A python3 library for reading, manpiulating and creating netcdf files
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unidata.github.io/netcdf4-python/
 	arch = x86_64
 	arch = i686

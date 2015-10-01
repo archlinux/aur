@@ -4,7 +4,7 @@
 
 pkgname=python-netcdf4
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A python3 library for reading, manpiulating and creating netcdf files"
 arch=('x86_64' 'i686')
 url="https://unidata.github.io/netcdf4-python/"
@@ -27,7 +27,7 @@ build() {
 check() {
     cd "${srcdir}"/netcdf4-python-${pkgver}rel
     cd "test"
-    PYTHONPATH="../build/lib.linux-${CARCH}-3.4" python -B ./run_all.py
+    PYTHONPATH="../build/lib.linux-${CARCH}-3.5" python -B ./run_all.py
 }
 
 package() {
