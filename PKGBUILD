@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Janouch <p.janouch@gmail.com>
 pkgname=sdtui-git
 _pkgname=sdtui
-pkgver=r96.4c18bd5
+pkgver=r100.ee9f055
 pkgrel=1
 pkgdesc="StarDict terminal UI"
 url="https://github.com/pjanouch/sdtui"
@@ -11,7 +11,8 @@ options=(zipman)
 conflicts=('sdtui')
 provides=('sdtui')
 makedepends=('cmake' 'pkg-config' 'git' 'libxslt')
-depends=('zlib' 'glib2' 'gtk3' 'ncurses' 'pango')
+depends=('zlib' 'glib2' 'ncurses' 'pango')
+optdepends=('gtk3: clipboard watcher')
 source=("git+https://github.com/pjanouch/$_pkgname")
 md5sums=('SKIP')
 
