@@ -4,7 +4,7 @@ _name="unicodecsv"
 _module="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="0.14.0"
+pkgver="0.14.1"
 pkgrel="1"
 pkgdesc="Python2's stdlib csv module is nice, but it doesn't support unicode. This module is a drop-in replacement which *does*."
 arch=("any")
@@ -13,7 +13,7 @@ license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/jdunck/python-unicodecsv/master/LICENSE")
-sha256sums=('495871db660eb0519e351cbbac02996448071e726b2523d4e01bc51ecb8c7795'
+sha256sums=('018c08037d48649a0412063ff4eda26eaa81eff1546dbffa51fa5293276ff7fc'
             'a3b3fcd3f2b3e97b4c4ffc354f719e1519dc95dc0b09d82f769538feeb7db032')
 
 prepare() {
