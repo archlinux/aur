@@ -1,13 +1,13 @@
 # Maintainer: Pavol (Lopo) Hluchy <lopo AT losys DOT eu>
 
 pkgname=gitlab-ci
-pkgver=7.14.3
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="Continuous integration server for gitlabhq | Coordinator"
 arch=('i686' 'x86_64')
 url="http://www.gitlab.com/gitlab-ci"
 license=('MIT')
-depends=('ruby>=2.0' 'ruby-bundler>=1.5.2' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
+depends=('ruby2.1' 'ruby2.1-bundler>=1.5.2' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
 optdepends=(
 	'mariadb: database backend'
 	'postgresql: database backend'
@@ -33,10 +33,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlab-ci/archive/
 	lighttpd.conf.example
 	)
 install='gitlab-ci.install'
-sha512sums=('74c96c36d892f88f204466e99020dcf1438605bf85714484cdac442b04e6590cd79af2e97c1f738a2c2d32f81e1007d5563e6a32f2f165c6f42e76f4f53da479'
+sha512sums=('c0fcaae82a36cd0f8b07c01ecd4bc2a7d1b0d736e34015b39260c56293465b356997f419d2c9c2636c8930898486da0036aadeb156d54232ead945fae2051754'
 	'30cf8ad2a26f0f6d87cb230c69668f8d7b15329af21985349bbc2c8eb3560ccbc82dd173e65be41aa71246b2426fc123f43d45b103371ce47a56d9ba7bda46bc'
-	'3f202f6c21f380f8fd98b34bc7e6d48a94dcb5339e67e71284ef9589b0381dba73ecccdb4f0c3cefd5786e5326e8220c6650ed350c2ba6ea214be9b1232bf253'
-	'b1585c29e3b17f3ba9ad237a1a612749bbc9bc25ed06f0c5862213440b0608ed34b8fdf8e0dbf0b198dc16593120edf9a467c218bb9aac8ab51cfd2867215873'
+	'ea24c7fe19789c82dde144713076c185c258afb103ec35dd3a68320dee8dfc4cb1e9fe0f1045af17798eb8ad9115a4d710d4f6c825d2530a2f60e9f721b7ec40'
+	'1dd9bf5d4d30831397b25e2b6af37167653146aa2dcda489dd66c1d23dac45009f02a520dbcd608cc6b730032ef669d0deb78f20c2f7986567bc5c01a4b5f345'
 	'83642ba8433e1e59ecd2f603098ccebe45a0109bddf1b060a9d95fd958c02f99f86beaf5f26d3c6acadd830f9a579bb2312af534658998fc5a4c56c78244e67d'
 	'cdc948304eed5cfc62de2a953295129a9d9d61ee0be6165397bca6678108052e314d4c0ed4b7211df5a65ebdc39b4738900e7f71b58146b1b3b120bf1cdd4271'
 	'1323dc3bae4f4c9d4a42062abc83f4330014519df78a00a263ac20f9cc489af4d781f1b32a77756ed96b53c44de2bd2bd19c36c193b04f01f40be8c2f5369f7a'
@@ -114,9 +114,9 @@ build() {
 
 	cpus=$(nproc)
 	if [[ $cpus -ge 3 ]]; then
-		bundle install -j$(( cpus - 1 )) --no-cache --no-prune --deployment --without development test ${_wo[@]}
+		bundle-2.1 install -j$(( cpus - 1 )) --no-cache --no-prune --deployment --without development test ${_wo[@]}
 	else
-		bundle install --no-cache --no-prune --deployment --without development test ${_wo[@]}
+		bundle-2.1 install --no-cache --no-prune --deployment --without development test ${_wo[@]}
 	fi
 }
 

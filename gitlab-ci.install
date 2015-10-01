@@ -21,8 +21,8 @@ post_install() {
 	fix_perms
 	echo "You have to configure the database."
 	echo "Configure the application database in ${_etcdir}/database.yml and run:"
-	echo "# su - gitlab_ci -s /bin/sh -c \"cd ${_datadir}; bundle exec rake setup RAILS_ENV=production\""
-	echo "# su - gitlab_ci -s /bin/sh -c \"cd ${_datadir}; bundle exec whenever -w RAILS_ENV=production\""
+	echo "# su - gitlab_ci -s /bin/sh -c \"cd ${_datadir}; bundle-2.1 exec rake setup RAILS_ENV=production\""
+	echo "# su - gitlab_ci -s /bin/sh -c \"cd ${_datadir}; bundle-2.1 exec whenever -w RAILS_ENV=production\""
 	echo "Configure the application in ${_etcdir}/application.yml"
 }
 
@@ -46,7 +46,7 @@ post_upgrade() {
 	pids_dir
 	fix_perms
 
-	su - gitlab_ci -s /bin/sh -c "cd '${_datadir}'; bundle exec rake db:migrate RAILS_ENV=production"
+	su - gitlab_ci -s /bin/sh -c "cd '${_datadir}'; bundle-2.1 exec rake db:migrate RAILS_ENV=production"
 
 	systemctl daemon-reload
 	if [ -e /tmp/gitlab-ci-upgrade-unicorn ]; then

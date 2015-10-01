@@ -4,11 +4,11 @@ Description=GitLab CI Unicorn Server
 [Service]
 User=gitlab_ci
 WorkingDirectory=<DATADIR>
-Environment=RAILS_ENV=production
+Environment=RAILS_ENV=production PATH=/opt/ruby2.1/bin:/usr/bin
 SyslogIdentifier=gitlab-ci-unicorn
 PIDFile=/run/gitlab-ci/unicorn.pid
 
-ExecStart=/usr/bin/bundle exec "unicorn_rails -c <DATADIR>/config/unicorn.rb -E production"
+ExecStart=/usr/bin/bundle-2.1 exec "unicorn_rails -c <DATADIR>/config/unicorn.rb -E production"
 ExecStop=/usr/bin/kill -QUIT $MAINPID
 ExecReload=/usr/bin/kill -USR2 $MAINPID
 

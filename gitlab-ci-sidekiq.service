@@ -5,12 +5,12 @@ Description=GitLab CI Sidekiq Worker
 Type=forking
 User=gitlab_ci
 WorkingDirectory=<DATADIR>
-Environment=RAILS_ENV=production
+Environment=RAILS_ENV=production PATH=/opt/ruby2.1/bin:/usr/bin
 SyslogIdentifier=gitlab-ci-sidekiq
 PIDFile=/var/run/gitlab-ci/sidekiq.pid
 
-ExecStart=/usr/bin/bundle exec "sidekiq -q post_receive -q mailer -q system_hook -q project_web_hook -q gitlab_shell -q common -q default -e production -P /run/gitlab-ci/sidekiq.pid -d -L log/sidekiq.log >> log/sidekiq.log 2>&1"
-ExecStop=/usr/bin/bundle exec "sidekiqctl stop /run/gitlab-ci/sidekiq.pid >> <DATADIR>/log/sidekiq.log 2>&1"
+ExecStart=/usr/bin/bundle-2.1 exec "sidekiq -q post_receive -q mailer -q system_hook -q project_web_hook -q gitlab_shell -q common -q default -e production -P /run/gitlab-ci/sidekiq.pid -d -L log/sidekiq.log >> log/sidekiq.log 2>&1"
+ExecStop=/usr/bin/bundle-2.1 exec "sidekiqctl stop /run/gitlab-ci/sidekiq.pid >> <DATADIR>/log/sidekiq.log 2>&1"
 
 [Install]
 WantedBy=gitlab-ci.target
