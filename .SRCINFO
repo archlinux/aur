@@ -1,6 +1,6 @@
 pkgbase = opera-beta
 	pkgdesc = A fast and secure web browser and Internet suite - beta stream
-	pkgver = 32.0.1948.19
+	pkgver = 33.0.1990.11
 	pkgrel = 1
 	url = http://www.opera.com/browser/
 	install = opera.install
@@ -18,10 +18,10 @@ pkgbase = opera-beta
 	optdepends = opera-ffmpeg-codecs: support h.264 and mp3 codecs
 	options = !strip
 	backup = etc/opera-beta/default
-	source = http://get.geo.opera.com/pub/opera-beta/32.0.1948.19/linux/opera-beta_32.0.1948.19_amd64.deb
+	source = http://get.geo.opera.com/pub/opera-beta/33.0.1990.11/linux/opera-beta_33.0.1990.11_amd64.deb
 	source = opera
 	source = default
-	sha256sums = 1ddcf1f7aba8ba04ec990c1d1c7ca3a3c9d6c58e2c18fb36d24d87178c5088f0
+	sha256sums = 17f69d837046eed24d6e2e63fee2dda01863134cbb85e98b4363d45a53164ea3
 	sha256sums = 508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5
 	sha256sums = 99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231
 
