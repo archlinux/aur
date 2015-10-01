@@ -1,5 +1,4 @@
-# Maintainer: freaknils <nils@czserver.de>
-
+# Maintainer: Nils Czernia <nils[at]czserver[dot[de>
 pkgname=moodle
 pkgver=2.9.1
 pkgrel=1
