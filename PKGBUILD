@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.0.288.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
 install=vivaldi.install
@@ -18,6 +18,9 @@ sha256sums_x86_64=('bdb68e163828e404d6f18935de1aed03925e1a9db06ae51c80eb80f74cc3
 
 package() {
     cp -a {opt,usr} "$pkgdir"
+
+    # suid sanbox
+    chmod 4755 "$pkgdir/opt/vivaldi-snapshot/vivaldi-sandbox"
 
     # install icons
     for res in 16 22 24 32 48 64 128 256; do

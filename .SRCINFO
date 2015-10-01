@@ -1,7 +1,7 @@
 pkgbase = vivaldi-snapshot
 	pkgdesc = An advanced browser made with the power user in mind. (weekly snapshot)
 	pkgver = 1.0.288.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vivaldi.com
 	install = vivaldi.install
 	arch = i686
