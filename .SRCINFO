@@ -1,7 +1,7 @@
 pkgbase = python-oslo-i18n
 	pkgdesc = Oslo i18n library
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openstack/oslo.i18n
 	arch = any
 	license = Apache
