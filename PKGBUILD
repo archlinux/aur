@@ -3,10 +3,10 @@
 pkgname=nodejs-cozy-dev
 _npmname=cozy-dev
 pkgver=1.0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to develop Cozy applications easily"
 arch=('any')
-depends=('nodejs')
+depends=('nodejs10')
 makedepends=('npm')
 url="https://github.com/cozy/cozy-dev"
 license=('LGPLv3')
