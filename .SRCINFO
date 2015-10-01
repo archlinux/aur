@@ -1,7 +1,7 @@
 pkgbase = python-cinderclient
 	pkgdesc = OpenStack Block Storage API Client Library
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openstack/python-cinderclient
 	arch = any
 	license = Apache

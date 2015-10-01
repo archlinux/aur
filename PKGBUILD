@@ -6,7 +6,7 @@ _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.4.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="OpenStack Block Storage API Client Library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
