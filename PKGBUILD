@@ -3,7 +3,7 @@
 # Contributor: Sebastien Binet <binet@cern.ch>
 
 pkgname=waf
-pkgver=1.8.13
+pkgver=1.8.14
 pkgrel=1
 pkgdesc='General-purpose build system modelled after Scons'
 url='http://waf.io/'
@@ -13,8 +13,8 @@ depends=('python')
 makedepends=('unzip')
 provides=('python-waf')
 source=("https://waf.io/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('4665a0190dff45507de0adf434a3173c')
-sha256sums=('b54fc9a90988694d2764c3d094517d34933e5acfcb28d5acf52cca401f81d881')
+md5sums=('3cf130f56c84b4fd16c0b4df0d66fd0e')
+sha256sums=('1e2e79d43e8ffdd1d7536cfe4b6e33bb6c0089c77bd5291fee3c14fcf2d17e4d')
 
 prepare() {
   cd "$pkgname-$pkgver"
