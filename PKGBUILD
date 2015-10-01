@@ -3,13 +3,14 @@
 
 pkgname=mininet
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Process-based network emulator (stable branch)"
 url="https://github.com/mininet/mininet/"
 license=('custom')
-depends=('bash' 'python2' 'python2-networkx' 'net-tools' 'iputils' 'iperf')
-optdepends=('openvswitch' 'xorg-xhost')
+depends=('bash' 'python2' 'python2-networkx' 'net-tools' 'iputils' 'iperf' 'openvswitch')
+optdepends=('xorg-xhost')
 makedepends=('help2man' 'python2-setuptools')
+install="${pkgname}.install"
 arch=('i686' 'x86_64')
 source=("https://github.com/mininet/mininet/archive/$pkgver.tar.gz")
 sha256sums=('e4c20a6ab4ddfe4d5cad06ba25742507967df67a845dbe2e90d627af7cd21705')

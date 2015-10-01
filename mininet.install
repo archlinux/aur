@@ -1,0 +1,14 @@
+post_install() {
+  cat << EOF
+   
+    Mininet requires Open vSwitch to be running in order to
+	instantiate switches. To run it, just execute the following
+	commands (as root or using sudo):
+   
+      # systemctl enable ovsdb-server.service
+      # systemctl start ovs-vswitchd.service
+      # systemctl enable ovsdb-server.service
+      # systemctl start ovs-vswitchd.service
+
+EOF
+}
