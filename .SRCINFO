@@ -1,0 +1,16 @@
+pkgbase = lib32-glitz
+	pkgdesc = OpenGL image compositing library
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = http://cairographics.org/
+	arch = x86_64
+	groups = lib32
+	license = BSD
+	depends = lib32-libgl
+	depends = lib32-glibc
+	depends = glitz
+	source = https://www.archlinux.org/packages/community/i686/glitz/download/#glitz-i686.pkg.tar.xz
+	md5sums = SKIP
+
+pkgname = lib32-glitz
+
