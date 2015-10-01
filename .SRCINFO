@@ -1,0 +1,14 @@
+pkgbase = mp3check
+	pkgdesc = Check mp3 files for consistency plus fix header and id3tag errors
+	pkgver = 0.8.7
+	pkgrel = 1
+	url = https://code.google.com/p/mp3check/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = https://mp3check.googlecode.com/files/mp3check-0.8.7.tgz
+	md5sums = 83f5fd6514a55c88126725275aa2d1d5
+
+pkgname = mp3check
+
