@@ -1,0 +1,20 @@
+pkgbase = perl-role-hasmessage
+	pkgdesc = a thing with a message method
+	pkgver = 0.006
+	pkgrel = 1
+	url = https://metacpan.org/release/Role-HasMessage
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moose
+	depends = perl-moosex-role-parameterized
+	depends = perl-string-errf
+	depends = perl-try-tiny
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Role-HasMessage-0.006.tar.gz
+	md5sums = 42834b39e9da34e5498ab8e8c2ee0a02
+	sha512sums = 2bb8b19fe2c113c0c92a5e16180f53879ad92fbcb63a5b3af4ead167a4c8b3dcd460c9307d3c8e24ab5070e6c58f378d9e6854ed82da0ea231e456d5786b5398
+
+pkgname = perl-role-hasmessage
+
