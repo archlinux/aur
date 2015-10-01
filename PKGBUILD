@@ -3,11 +3,11 @@
 _name="falcon"
 _module="${_name}"
 _cmd="falcon-bench"
-_check="enabled"
+_check="disabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="0.3.0"
-pkgrel="7"
+pkgrel="8"
 pkgdesc="An unladen web framework for building APIs and app backends."
 arch=("i686" "x86_64")
 url="https://github.com/falconry/${_name}"
@@ -16,20 +16,22 @@ makedepends=("cython"
              "python-setuptools"
              "cython2"
              "python2-setuptools")
-checkdepends=("python-coverage"
-              "python-ddt"
-              "python-nose"
-              "python-requests"
-              "python-six"
-              "python-testtools"
-              "python-yaml"
-              "python2-coverage"
-              "python2-ddt"
-              "python2-nose"
-              "python2-requests"
-              "python2-six"
-              "python2-testtools"
-              "python2-yaml")
+if [[ "${_check}" == "enabled" ]]; then
+    checkdepends=("python-coverage"
+                  "python-ddt"
+                  "python-nose"
+                  "python-requests"
+                  "python-six"
+                  "python-testtools"
+                  "python-yaml"
+                  "python2-coverage"
+                  "python2-ddt"
+                  "python2-nose"
+                  "python2-requests"
+                  "python2-six"
+                  "python2-testtools"
+                  "python2-yaml")
+fi
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
         "fix-test_cookies.patch")
 sha256sums=('f27602b5a2ff8ee40b3179b3f5bdb9af09efbcd9af9bb7f01ad6a28ad0fc3b82'
