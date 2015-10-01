@@ -2,7 +2,7 @@
 
 pkgname=crtwo2fits
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A ready-to-use tool and a python module for converting CR2 raw files into FITS images"
 arch=(any)
 url="https://github.com/mauritiusdadd/crtwo2fits"
