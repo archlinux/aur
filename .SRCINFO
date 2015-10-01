@@ -1,7 +1,7 @@
 pkgbase = vcsn-git
 	pkgdesc = Finite state machine manipulation platform, consisting of a library and tools implemented on top of it.
 	pkgver = v2.0.r1065.g650cb77
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vaucanson.lrde.epita.fr/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = vcsn-git
 	conflicts = vaucanson-git
 	conflicts = vaucanson
 	conflicts = vcsn
-	source = git+https://gitlab.lrde.epita.fr/vcsn/vaucanson.git
+	source = git+https://gitlab.lrde.epita.fr/vcsn/vcsn.git
 	md5sums = SKIP
 
 pkgname = vcsn-git
