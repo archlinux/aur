@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-chi'
-pkgver='0.58'
+pkgver='0.60'
 pkgrel='1'
 pkgdesc="Unified cache handling interface"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-carp-assert>=0.20' 'perl-data-uuid' 'perl-digest-jhash' 'perl-hash-moreutils' 'perl-json' 'perl-list-moreutils>=0.13' 'perl-log-any>=0.08' 'perl-moo>=1.003' 'perl-moox-types-mooselike>=0.23' 'perl-moox-types-mooselike-numeric' 'perl-string-rewriteprefix' 'perl-task-weaken' 'perl-time-duration>=1.06' 'perl-time-duration-parse>=0.03' 'perl-timedate' 'perl-try-tiny>=0.05')
-makedepends=('perl-test-class' 'perl-test-deep' 'perl-test-exception' 'perl-test-warn')
-url='http://search.cpan.org/dist/CHI'
-source=('http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/CHI-0.58.tar.gz')
-md5sums=('2efc812710358a6f70fdba7407227d87')
-sha512sums=('bcbb485c5160974efdf313a7f4b90062cfb343e3b91b6060d0888a1eae82f019cfaa8710220cf87fa1aa2d0bfed5d560c7192c3491cf0f2e145aee58f28ce60c')
-_distdir="CHI-0.58"
+depends=('perl-carp-assert>=0.20' 'perl-class-load' 'perl-data-uuid' 'perl-digest-jhash' 'perl-hash-moreutils' 'perl-json-maybexs>=1.003003' 'perl-list-moreutils>=0.13' 'perl-log-any>=0.08' 'perl-moo>=1.003' 'perl-moox-types-mooselike>=0.23' 'perl-moox-types-mooselike-numeric' 'perl-string-rewriteprefix' 'perl-task-weaken' 'perl-time-duration>=1.06' 'perl-time-duration-parse>=0.03' 'perl-timedate' 'perl-try-tiny>=0.05')
+makedepends=()
+checkdepends=('perl-test-class' 'perl-test-deep' 'perl-test-exception' 'perl-test-warn')
+url='https://metacpan.org/release/CHI'
+source=('http://search.cpan.org/CPAN/authors/id/J/JS/JSWARTZ/CHI-0.60.tar.gz')
+md5sums=('e559c52c12de4a27b0210caa1c790e65')
+sha512sums=('06d3f22465f38868795a4ee97e1b3e40e66d423c4e28c066c2f11721b770e77c6134ad122ec9a7ea6a7e215d0b712e57c54d91bae02770fbc61e3c10a465b29d')
+_distdir="CHI-0.60"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
