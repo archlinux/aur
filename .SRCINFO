@@ -1,19 +1,20 @@
 pkgbase = python-cookiecutter
 	pkgdesc = A command-line utility that creates projects from project templates
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/audreyr/cookiecutter
 	arch = any
 	groups = devel
 	license = BSD
-	depends = python
-	depends = python-jinja
-	depends = python-yaml
-	depends = python-binaryornot
-	depends = python-click
+	depends = python-jinja>=2.7
+	depends = python-yaml>=3.10
+	depends = python-binaryornot>=0.2.0
+	depends = python-click>=5.0
+	depends = python-future>=0.15.2
+	depends = python-whichcraft>=0.1.1
 	options = !emptydirs
-	source = https://github.com/audreyr/cookiecutter/archive/1.0.0.tar.gz
-	md5sums = 3a0ea853b74bc9b6aad9fce202743728
+	source = https://github.com/audreyr/cookiecutter/archive/1.1.0.tar.gz
+	md5sums = 30a39ca93bb24ce345dd0107db7d2a5d
 
 pkgname = python-cookiecutter
 
