@@ -1,12 +1,12 @@
 pkgbase = yle-dl
 	pkgdesc = Download video and audio from YLE Areena.
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
 	license = GPL2
 	depends = python2-crypto
-	depends = php
+	depends = php-mcrypt
 	optdepends = python2-youtube-dl: new lightweight backend
 	optdepends = rtmpdump: old rtmpdump backend
 	conflicts = rtmpdump-yle

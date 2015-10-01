@@ -2,13 +2,13 @@
 
 pkgname=yle-dl
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 _gitid=778c39b
 pkgdesc="Download video and audio from YLE Areena."
 arch=("any")
 url="http://aajanki.github.io/yle-dl/"
 license=("GPL2")
-depends=('python2-crypto' 'php')
+depends=('python2-crypto' 'php-mcrypt')
 optdepends=('python2-youtube-dl: new lightweight backend'
             'rtmpdump: old rtmpdump backend')
 conflicts=('rtmpdump-yle')
@@ -23,7 +23,7 @@ prepare() {
   cd "${srcdir}/aajanki-${pkgname}-${_gitid}"
 
   sed 's|/usr/local|/usr|' -i yle-dl
-  sed "s|'php'|'php', '-d extension=bcmath.so', '-d extension=curl.so'|" -i yle-dl
+  sed "s|'php'|'php', '-d extension=bcmath.so', '-d extension=curl.so', '-d extension=mcrypt.so'|" -i yle-dl
 }
 
 package() {
