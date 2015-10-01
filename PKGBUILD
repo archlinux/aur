@@ -21,14 +21,12 @@ source=('git://github.com/knopwob/dunst.git')
 md5sums=('SKIP')
 options=('!makeflags')
 
-pkgver()
-{
+pkgver() {
   cd ${srcdir}/${_gitname}
   echo $(git describe --tags | sed 's+v++g'|sed 's+-+.+g').$(git rev-list --count HEAD)
 }
 
-prepare()
-{
+prepare() {
   cd ${srcdir}/${_gitname}
   [ -f $srcdir/${_gitname}/config.h ] && rm $srcdir/${_gitname}/config.h
   if [ -e ${srcdir}/config.h ]; then
@@ -38,8 +36,7 @@ prepare()
   fi
 }
 
-build()
-{
+build() {
   cd ${srcdir}/${_gitname}
   if [ -e ${SRCDEST}/config.h ]; then
     CFLAGS=-DSTATIC_CONFIG make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
@@ -50,8 +47,7 @@ build()
   fi
 }
 
-package()
-{
+package() {
   cd ${srcdir}/${_gitname}
   if [ -e ${SRCDEST}/config.h ]; then
     CFLAGS=-DSTATIC_CONFIG make DESTDIR="${pkgdir}" PREFIX=/usr install
