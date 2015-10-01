@@ -2,13 +2,13 @@
 
 pkgname=blis
 pkgver=0.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('i686' 'x86_64')
 license=('BSD')
 url=('https://code.google.com/p/blis/')
-provides=('blas=3.5.0' 'cblas')
-conflicts=('blas' 'cblas')
+#provides=('blas=3.5.0' 'cblas')
+#conflicts=('blas' 'cblas')
 options=('!makeflags' '!emptydirs')
 
 source=("https://github.com/flame/blis/archive/${pkgver}.zip")
@@ -45,8 +45,8 @@ package() {
   mkdir -p "${pkgdir}/etc/profile.d"
   cd "${srcdir}/blis-${pkgver}"
   make install BLIS_ENABLE_DYNAMIC_BUILD:=yes
-  ln -s "/usr/lib/libblis.so" "${pkgdir}/usr/lib/libblas.so"
-  ln -s "/usr/lib/libblis.so" "${pkgdir}/usr/lib/libcblas.so"
+#  ln -s "/usr/lib/libblis.so" "${pkgdir}/usr/lib/libblas.so"
+#  ln -s "/usr/lib/libblis.so" "${pkgdir}/usr/lib/libcblas.so"
   printf "# Set blis loop threading environment variables\\n# Please customize for your hardware and application\\n\\nexport BLIS_IR_NT=1\\nexport BLIS_JR_NT=1\\nexport BLIS_IC_NT=1\\nexport BLIS_JC_NT=1" > "${pkgdir}/etc/profile.d/blis.sh"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
