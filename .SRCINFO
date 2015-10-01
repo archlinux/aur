@@ -1,7 +1,7 @@
 pkgbase = ghost
 	pkgdesc = Free, open, simple blogging platform
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ghost.org
 	install = ghost.install
 	arch = any

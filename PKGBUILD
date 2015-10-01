@@ -4,12 +4,12 @@
 
 pkgname=ghost
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
 url="http://ghost.org"
 license=('MIT')
-makedepends=('unzip' 'npm' 'java-environment')
+makedepends=('unzip' 'npm')
 depends=('nodejs>=0.12')
 backup=('srv/ghost/Gruntfile.js' 'srv/ghost/index.js' 'srv/ghost/package.json')
 install=ghost.install
