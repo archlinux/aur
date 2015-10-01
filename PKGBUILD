@@ -1,12 +1,12 @@
 # Maintainer: Harm Müller <harm[DOT]mueller[AT]gmail[DOT]com>
 pkgname='perl-rex'
 pkgver='1.3.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="(R)?ex Deployment & Configuration Management"
 arch=('any')
 license=('Apache')
 options=('!emptydirs')
-depends=('perl-hash-merge' 'perl-net-ssh2' 'perl-libwww' 'perl-io-string' 'perl-json-xs' 'perl-list-allutils' 'perl-sort-naturally' 'perl-term-readkey' 'perl-text-glob' 'perl-xml-simple' 'perl-yaml' 'perl-net-openssh' 'perl-test-useallmodules' 'perl-io-tty' 'perl-net-sftp-foreign' 'perl-test-pod')
+depends=('perl-hash-merge' 'perl-net-ssh2' 'perl-libwww' 'perl-io-string' 'perl-json-xs' 'perl-list-allutils' 'perl-sort-naturally' 'perl-term-readkey' 'perl-text-glob' 'perl-xml-simple' 'perl-yaml' 'perl-net-openssh' 'perl-test-useallmodules' 'perl-io-tty' 'perl-net-sftp-foreign' 'perl-test-pod' 'perl-string-escape')
 makedepends=()
 url='http://www.rexify.org/'
 source=('http://search.cpan.org/CPAN/authors/id/F/FE/FERKI/Rex-1.3.3.tar.gz')
