@@ -2,7 +2,7 @@
 
 pkgname=simpy
 pkgver=3.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Event discrete, process based simulation for Python."
 url="https://simpy.rtfd.org"
 depends=('python' )
