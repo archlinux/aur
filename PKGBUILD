@@ -11,22 +11,22 @@
 _use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
 _use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , _use_clang need set to 1
 _use_ccache=0          # Use ccache when build
-_use_pax=0             # If set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
+_use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
+_use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=47.0.2503.0
-_launcher_ver=2
+pkgver=47.0.2522.1
+_launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
 url='http://www.chromium.org'
 license=('BSD')
 depends=('desktop-file-utils'
-         'gtk2'
-         #'icu'
+         'icu'
          'jsoncpp'
          #'libsrtp'
          'libwebp'
@@ -55,19 +55,20 @@ makedepends=('libexif'
              'python2-html5lib'
              'python2-simplejson'
              'python2-jinja'
+             'python2-ply'
              'subversion'
              'yasm'
              'git'
-             # https://bugs.archlinux.org/task/45625
-             #'python2-ply'
              )
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
+            #
             'kdebase-kdialog: Needed for file dialogs in KDE4'
-            'kdeutils-kwalletmanager: For storing passwords in KWallet in KDE4'
+            'kwalletmanager4: Needed for storing passwords in KWallet in KDE4'
+            #
             'kdialog-frameworks-git: Needed for file dialogs in KF5'
-            'kwalletmanager-git: Needed for storing passwords in KWallet in KF5'
-            'libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)'
+            'kwalletmanager: Needed for storing passwords in KWallet in KF5'
+            #
             'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography')
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
@@ -76,24 +77,22 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'chromium-dev.xml'
         'chromium-dev.svg'
         # Patch form Gentoo
-
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r7.patch'
         # Misc Patches
-        'chromium-system-jinja-r8.patch'
-        'enable_vaapi_on_linux.diff'
+        'enable_vaapi_on_linux-r1.diff'
         # Patch from crbug (chromium bugtracker)
 
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
           "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
-          '55f9646683bc8b92587f8e0a36aff242cb436a24'
+          'd18f8d96e80be9c31d994cc6362d7d8041c53319'
           '0acc45b901418f270d0b2068502e39c407c74ea4'
           '2b98c549332e7337307ce287e150930cfc1dfa5f'
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           # Patch form Gentoo
-
+          'c24d14029714d2295f3220a7173a5a7362f578a2'
           # Misc Patches
-          '51ee08f9500a9006673787b0f29ffa089b09c286'
-          '4e223ea3df5be9374f202f7c3f0679ae55eed495'
+          '255d71cd9b9e55265e1bfeaa4612bcf60d293204'
           # Patch from crbug (chromium bugtracker)
 
           )
@@ -140,6 +139,16 @@ if [ "${_use_bundled_clang}" = "1" ]; then
                 'libffi'
                 'chrpath'
                 )
+fi
+
+# Build with GTK3?
+if [ "${_use_gtk3}" = "1" ]; then
+  depends+=('gtk3')
+  optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
+  _launcher_gtk='GTK=3'
+elif [ "${_use_gtk3}" = "0" ]; then
+  depends+=('gtk2')
+  optdepends+=('libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)')
 fi
 
 # Need you use ccache?
@@ -217,7 +226,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
            'third_party/hunspell'
            'third_party/iccjpeg'
-           'third_party/icu'
            'third_party/jstemplate'
            'third_party/khronos'
            'third_party/leveldatabase'
@@ -230,8 +238,8 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/libudev'
            'third_party/libusb'
            'third_party/libva'
-           'third_party/libvpx'
-           'third_party/libvpx/source/libvpx/third_party/x86inc'
+           'third_party/libvpx_new'
+           'third_party/libvpx_new/source/libvpx/third_party/x86inc'
            'third_party/libxml/chromium'
            'third_party/libwebm'
            'third_party/libXNVCtrl'
@@ -240,7 +248,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/lzma_sdk'
            'third_party/mesa'
            'third_party/mojo'
-           'third_party/mojo/src/mojo/public/third_party/ply'
            'third_party/modp_b64'
            'third_party/mt19937ar'
            'third_party/npapi'
@@ -256,7 +263,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/pdfium/third_party/libjpeg'
            'third_party/pdfium/third_party/libopenjpeg20'
            'third_party/pdfium/third_party/zlib_v128'
-           'third_party/ply'
            'third_party/polymer'
            'third_party/protobuf'
            'third_party/qcms'
@@ -321,6 +327,7 @@ _flags=("-Dclang=${_use_clang}"
         "-Duse_gconf=${_use_gnome}"
         "-Duse_gio=${_use_gnome}"
         "-Duse_gnome_keyring=${_use_gnome_keyring}"
+        "-Duse_gtk3=${_use_gtk3}"
         "-Duse_pulseaudio=${_use_pulseaudio}"
         '-Dwerror='
         )
@@ -365,7 +372,7 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_flac=1'
              '-Duse_system_fontconfig=1'
              '-Duse_system_harfbuzz=1'
-             '-Duse_system_icu=0'
+             '-Duse_system_icu=1'
              '-Duse_system_jsoncpp=1'
              '-Duse_system_libevent=0'
              '-Duse_system_libexif=1'
@@ -420,10 +427,10 @@ prepare() {
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo
+  patch -p0 -i ../chromium-system-jinja-r7.patch
 
   # Misc Patches:
-  patch -p0 -i ../chromium-system-jinja-r8.patch
-  patch -p1 -i ../enable_vaapi_on_linux.diff
+  patch -p1 -i ../enable_vaapi_on_linux-r1.diff
 
   # Patch from crbug (chromium bugtracker)
   # fix the missing define (if not, fail build) (need upstream fix) (https://crbug.com/473866)
@@ -452,7 +459,7 @@ prepare() {
 build() {
 
   msg2 "Build the Launcher"
-  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr
+  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr ${_launcher_gtk}
 
   cd "chromium-${pkgver}"
 
