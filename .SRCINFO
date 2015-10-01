@@ -1,14 +1,14 @@
 pkgbase = thunderbird-usebccinstead
 	pkgdesc = Before the sending occurs it looks for recipients addressed using either TO or CC. When found, it will take action based upon the user-specified options that have been set
-	pkgver = 3.4
-	pkgrel = 2
+	pkgver = 3.4.1
+	pkgrel = 0
 	url = https://addons.mozilla.org/en-US/thunderbird/addon/use-bcc-instead
 	arch = any
 	license = MPL
 	depends = thunderbird
 	noextract = usebccinstead.xpi
-	source = usebccinstead.xpi::https://addons.mozilla.org/thunderbird/downloads/file/288906/use-bcc-instead-3.4-tb.xpi
-	sha256sums = 49bc1530ec9289c9495dca7b60b2d58350ab6de8cfd28f78b8739de5547e9171
+	source = usebccinstead.xpi::https://addons.mozilla.org/thunderbird/downloads/latest/318229/addon-318229-latest.xpi
+	sha256sums = 1fa3f59b822ef0f91af082efcd1ffc26a8b17fa5f85b076ce70154f2ce7c319d
 
 pkgname = thunderbird-usebccinstead
 
