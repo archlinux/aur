@@ -1,6 +1,6 @@
 pkgname=gtk3-optional-csd
-pkgver=3.16.6
-pkgrel=2
+pkgver=3.18.0
+pkgrel=1
 
 pkgdesc='GObject-based multi-platform GUI toolkit with optionally enabled CSD.'
 url='http://www.gtk.org/'
@@ -19,8 +19,8 @@ conflicts=('gtk3')
 source=("https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz"
         'gtk3-make-csd-optional.patch')
 
-sha256sums=('4d12726d0856a968b41802ae5c5971d7e9bac532717e309d3f81b9989da5ffbe'
-            '8ab096e996071cf5859956a54791c24cff628502482073f99adf5b226767ecea')
+sha1sums=('9bd758280de3bcf6898ee989ec3b81671c094263'
+          '5975f8fc5a582288f59b32112c3a3207dc842696')
 
 install='gtk3.install'
 

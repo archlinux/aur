@@ -1,7 +1,7 @@
 pkgbase = gtk3-optional-csd
 	pkgdesc = GObject-based multi-platform GUI toolkit with optionally enabled CSD.
-	pkgver = 3.16.6
-	pkgrel = 2
+	pkgver = 3.18.0
+	pkgrel = 1
 	url = http://www.gtk.org/
 	install = gtk3.install
 	arch = i686
@@ -30,10 +30,10 @@ pkgbase = gtk3-optional-csd
 	depends = rest
 	provides = gtk3
 	conflicts = gtk3
-	source = https://download.gnome.org/sources/gtk+/3.16/gtk+-3.16.6.tar.xz
+	source = https://download.gnome.org/sources/gtk+/3.18/gtk+-3.18.0.tar.xz
 	source = gtk3-make-csd-optional.patch
-	sha256sums = 4d12726d0856a968b41802ae5c5971d7e9bac532717e309d3f81b9989da5ffbe
-	sha256sums = 8ab096e996071cf5859956a54791c24cff628502482073f99adf5b226767ecea
+	sha1sums = 9bd758280de3bcf6898ee989ec3b81671c094263
+	sha1sums = 5975f8fc5a582288f59b32112c3a3207dc842696
 
 pkgname = gtk3-optional-csd
 
