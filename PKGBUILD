@@ -1,13 +1,13 @@
-# Maintainer: DeedleFake <deedlefake at hotmail dot com>
+# Maintainer: DeedleFake <deedlefake at users.noreply.github.com>
 pkgname=complx-git
 pkgver=4.10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Complx the LC-3 Simulator used in CS2110 managed by Brandon"
 arch=('i686' 'x86_64')
-url="https://github.gatech.edu/ybeck7/cs-2110-hw06"
+url="https://www.github.com/TricksterGuy/complx"
 license=('unknown')
-depends=('wxgtk' 'webkitgtk2')
-makedepends=('git')
+depends=('wxgtk')
+makedepends=('git' 'webkitgtk2')
 provides=('complx')
 conflicts=('complx')
 
