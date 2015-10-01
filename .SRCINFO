@@ -1,11 +1,12 @@
 pkgbase = testapp
 	pkgdesc = testapp
 	pkgver = r1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tgharib/PrayerApp
 	arch = i686
 	arch = x86_64
 	license = GPLV3
+	makedepends = git
 	source = git+https://github.com/tgharib/PrayerApp.git
 	md5sums = SKIP
 
