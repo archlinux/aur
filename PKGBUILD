@@ -1,20 +1,22 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=libbobcat
-pkgver=3.25.01
+pkgver=4.01.01
 pkgrel=1
 pkgdesc="Bobcat (Brokken's Own Base Classes And Templates) library"
 arch=('i686' 'x86_64')
-url="http://bobcat.sourceforge.net"
+url="https://fbb-git.github.io/bobcat/"
 license=('GPL')
-depends=('openssl' 'libx11')
-makedepends=('icmake' 'openssl' 'libmilter' 'libx11' 'yodl')
+# Versions taken from the 'required' file in sources
+depends=('openssl' 'libx11>=1.6.2')
+makedepends=('icmake>=7.22.01' 'openssl' 'readline' 'libmilter>=8.14.4' 
+             'libx11>=1.6.2' 'yodl>=3.05.00' 'python')
 optdepends=()
-source=("http://downloads.sourceforge.net/project/bobcat/bobcat/${pkgver}/bobcat_${pkgver}.orig.tar.gz")
-md5sums=('df15f4b981df4f423c408d31198d94c5')
+source=("https://github.com/fbb-git/bobcat/archive/${pkgver}.tar.gz")
+md5sums=('ad6d9aa566f2edd75307d82e7d5cdbf7')
 
 build() {
-  cd "$srcdir/bobcat-${pkgver}"
+  cd "$srcdir/bobcat-${pkgver}/bobcat"
   CXXFLAGS="$CXXFLAGS --std=c++11 -pthread"
   LDFLAGS="$LDFLAGS -pthread"
   ./build libraries all
@@ -22,7 +24,16 @@ build() {
 }
 
 package() {
-  cd "$srcdir/bobcat-${pkgver}"
-  ./build install "$pkgdir" "$pkgdir"
+  cd "$srcdir/bobcat-${pkgver}/bobcat"
+
+  # There seems to be a bug in the install function that causes the package
+  # directory to be used as a relative path from the current directory for
+  # gzip commands. I have found no other way to work around this issue than to
+  # make the package directory relative; the easiest way to do that is using
+  # Python (which is I think a reasonable dependency).
+  relpkgdir=$(python -c "import os.path; print(os.path.relpath('$pkgdir', '.'))")
+  ./build install "$relpkgdir" "$relpkgdir"
+  # Normal version:
+  #./build install "$pkgdir" "$pkgdir"
 }
 
