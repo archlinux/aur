@@ -1,4 +1,5 @@
-# Maintainer: Lara Maia <lara@craft.net.br>
+# Maintainer: Aoibhinn di Tori <email@aoibh.in>
+# Contributor: Lara Maia <lara@craft.net.br>
 # Contributor: estranho <estranho@diogoleal.com>
 # Contributor: tsester <spyridon.papanastasiou@gmail.com>
 # Contributor: dserban <dserban01@yahoo.com>
