@@ -1,0 +1,14 @@
+pkgbase = yaplog-git
+	pkgdesc = Log system library for C/C++ projects
+	pkgver = 2.2.1.2gea79add
+	pkgrel = 1
+	url = https://redmine.yapbreak.fr/projects/yaplog
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	conflicts = YapLog
+	source = git+https://redmine.yapbreak.fr/log.git
+	md5sums = SKIP
+
+pkgname = yaplog-git
+
