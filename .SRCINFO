@@ -1,7 +1,7 @@
 pkgbase = pentadactyl-git
 	pkgdesc = Vim-like five-fingered interface for Firefox
 	pkgver = r7170.41d023a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dactyl.sourceforge.net/pentadactyl
 	arch = any
 	license = MIT

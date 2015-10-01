@@ -15,7 +15,7 @@ pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim-like five-fingered interface for Firefox"
 arch=(any)
 url="http://dactyl.sourceforge.net/pentadactyl"
@@ -29,7 +29,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$_pkgname"
-  sed -i 's/maxVersion="[^"]*/maxVersion="41/' pentadactyl/install.rdf 
+  sed -i 's/maxVersion="[^"]*/maxVersion="42/' pentadactyl/install.rdf 
   make -C pentadactyl xpi
 }
 
