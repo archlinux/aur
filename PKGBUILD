@@ -1,22 +1,23 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=bisonc++
-pkgver=4.10.01
+pkgver=4.11.00
 pkgrel=1
 pkgdesc='C++ parser generator'
 arch=('i686' 'x86_64')
-url='http://bisoncpp.sourceforge.net'
+url='https://fbb-git.github.io/bisoncpp/'
 license=('GPL')
-depends=('libbobcat')
-makedepends=('icmake' 'yodl')
+# Versions taken from the 'required' file in sources
+depends=('libbobcat>=4.01.00')
+makedepends=('icmake>=7.22.01' 'yodl>=3.05.00')
 optdepends=()
-source=("http://downloads.sourceforge.net/project/bisoncpp/bisonc++/${pkgver}/bisonc++_${pkgver}.orig.tar.gz"
+source=("https://github.com/fbb-git/bisoncpp/archive/${pkgver}.tar.gz"
         'manual_license.patch')
-md5sums=('712a8e941a826f7f984ac0ba3d160b5b'
+md5sums=('bf91d34887b0145c8fb2d3914d82cc1d'
          'bab1f76582bd7518df6debe7265fdd7c')
 
 build() {
-  cd "$srcdir/bisonc++-${pkgver}"
+  cd "$srcdir/bisoncpp-${pkgver}/bisonc++"
 
   patch -p1 -i "$srcdir/manual_license.patch"
 
@@ -27,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/bisonc++-${pkgver}"
+  cd "$srcdir/bisoncpp-${pkgver}/bisonc++"
   ./build install program "${pkgdir}/usr/bin/bisonc++"
   ./build install skel "${pkgdir}/usr/share/bisonc++"
   ./build install man "${pkgdir}/usr/share/man/man1"
