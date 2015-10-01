@@ -1,11 +1,12 @@
 pkgbase = tcpick
 	pkgdesc = Tcp stream sniffer and connection tracker
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tcpick.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = libpcap
 	source = http://prdownloads.sourceforge.net/tcpick/tcpick-0.2.1.tar.gz
 	source = CVE-2006-0048.patch
 	source = fix-build-with-gcc5.patch

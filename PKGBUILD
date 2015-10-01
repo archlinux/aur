@@ -2,9 +2,10 @@
 
 pkgname=tcpick
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tcp stream sniffer and connection tracker'
 arch=('i686' 'x86_64')
+depends=('libpcap')
 url='http://tcpick.sourceforge.net'
 license=('GPL')
 source=(http://prdownloads.sourceforge.net/tcpick/$pkgname-$pkgver.tar.gz
@@ -31,11 +32,14 @@ prepare() {
 
 build() {
     cd $srcdir/$pkgname-$pkgver
-    ./configure --prefix=/usr
+    ./configure \
+        --prefix=/usr \
+        --mandir=/usr/share/man
     make
 }
 
 package() {
     cd $srcdir/$pkgname-$pkgver
     make install DESTDIR=$pkgdir
+    rm $pkgdir/usr/share/man/man8/tcpick_italian.8
 }
