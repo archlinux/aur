@@ -1,7 +1,7 @@
 pkgbase = python-click-plugins
 	pkgdesc = An extension module for click to enable registering CLI commands via setuptools entry-points.
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/click-contrib/click-plugins
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = python-click-plugins
 	checkdepends = python2-pytest
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/c/click-plugins/click-plugins-1.0.1.tar.gz
-	sha256sums = 94e6e289e9f10dfe85a35f54891bd071b1640d5b08777995457f38c282e59f67
+	source = https://pypi.python.org/packages/source/c/click-plugins/click-plugins-1.0.2.tar.gz
+	sha256sums = 3e33f24dafbc8f52dd2a557f5fb1452acc7ab67ff354220a832a393bdedb46a8
 
 pkgname = python-click-plugins
 	depends = python-click>=3.0
