@@ -17,6 +17,10 @@ pkgbase = brother-ql570-cupswrapper
 	source = cupswrapper.install
 	md5sums = 9245b4bb5a51aa342c0ca4181bff078a
 	md5sums = 0d68b60c5cd5b14de5533d5544102614
+	depends_x86_64 = cups
+	depends_x86_64 = ghostscript
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = brother-ql570-lpr
 
 pkgname = brother-ql570-cupswrapper
 
