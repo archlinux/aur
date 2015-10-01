@@ -1,7 +1,7 @@
 pkgbase = perl-rex
 	pkgdesc = (R)?ex Deployment & Configuration Management
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rexify.org/
 	arch = any
 	license = Apache
@@ -21,6 +21,7 @@ pkgbase = perl-rex
 	depends = perl-io-tty
 	depends = perl-net-sftp-foreign
 	depends = perl-test-pod
+	depends = perl-string-escape
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/F/FE/FERKI/Rex-1.3.3.tar.gz
 	md5sums = 39ae7a114998364e3b90bd227bc8c163
