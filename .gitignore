@@ -1,3 +1,4 @@
+builds/
 pkg/
 src/
 gnucash-*.pkg.tar.xz

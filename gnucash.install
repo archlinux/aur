@@ -1,9 +1,10 @@
-pkgname=gnucash
+pkgname=gnucash-xbt
+_pkgname=gnucash
 info_dir=usr/share/info
 info_files=(gnucash-design.info)
 
 post_install() {
-  usr/sbin/gconfpkg --install ${pkgname}
+  usr/sbin/gconfpkg --install ${_pkgname}
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
   update-desktop-database -q
   [ -x usr/bin/install-info ] || return 0
@@ -22,7 +23,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-  usr/sbin/gconfpkg --uninstall ${pkgname}
+  usr/sbin/gconfpkg --uninstall ${_pkgname}
   [ -x usr/bin/install-info ] || return 0
   for f in ${info_files[@]}; do
     usr/bin/install-info --delete ${info_dir}/$f.gz ${info_dir}/dir 2> /dev/null
