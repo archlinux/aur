@@ -1,7 +1,7 @@
 pkgbase = troff-git
 	pkgdesc = A port of Plan9 troff tools to Linux, contains troff, tr2ps (dpost), eqn, tbl, pic, and grap.
-	pkgver = 0.r72.dc0f798
-	pkgrel = 2
+	pkgver = r78.593565b
+	pkgrel = 1
 	url = http://repo.or.cz/w/troff.git
 	arch = i686
 	arch = x86_64
