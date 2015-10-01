@@ -8,8 +8,9 @@ pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
 url="https://github.com/Sigil-Ebook/Sigil"
 license=('GPL3')
-depends=('qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'python-lxml')
-makedepends=('git' 'cmake' 'boost')
+depends=('qt5-webkit' 'boost-libs' 'desktop-file-utils' 'minizip'
+         'gtk-update-icon-cache' 'python-lxml' 'python-six')
+makedepends=('git' 'qt5-multimedia' 'qt5-tools ''qt5-svg ''cmake' 'boost')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=sigil.install
@@ -25,6 +26,7 @@ build() {
     mkdir -p "${srcdir}/${pkgname%-git}/build"
     cd "${srcdir}/${pkgname%-git}/build"
     cmake -G "Unix Makefiles" \
+        -DUSE_SYSTEM_LIBS=1 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
