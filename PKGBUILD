@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-time-duration-parse'
-pkgver='0.06'
+pkgver='0.12'
 pkgrel='1'
 pkgdesc="Parse string that represents time duration"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-exporter-lite')
-makedepends=('perl-time-duration')
-url='http://search.cpan.org/dist/Time-Duration-Parse'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Time-Duration-Parse-0.06.tar.gz')
-md5sums=('a23b7ca50a909df57e484cf39a3fa414')
-sha512sums=('846eea74ce9b4882abb667ee92151b19ea8c4788631097b3a98fc621abc1bcb3f97f50a08f3346aa93cc4c0bd609afa848eae38194dc085061b4c82a818ccf55')
-_distdir="Time-Duration-Parse-0.06"
+depends=('perl-exporter-lite' 'perl-time-duration' 'perl>=5.006')
+makedepends=()
+url='https://metacpan.org/release/Time-Duration-Parse'
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Time-Duration-Parse-0.12.tar.gz')
+md5sums=('6c8d00201e54a23ad5f4a1d0847a9160')
+sha512sums=('d8817dc3064faae2d745202a45c471829003f417ab3ac1369c413c83421c4d685c365e270c8897166a559eda463c3226b3e759c55843a2830509e71c4c2bff3f')
+_distdir="Time-Duration-Parse-0.12"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
