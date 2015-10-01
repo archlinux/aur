@@ -1,7 +1,7 @@
 pkgbase = python-cmd2
 	pkgdesc = Extra features for standard library's cmd module
 	pkgver = 0.6.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/catherinedevlin/cmd2
 	arch = any
 	license = Apache
