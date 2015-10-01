@@ -1,16 +1,16 @@
 pkgbase = ruby-highline
 	pkgdesc = A high-level text user interface toolkit for Ruby
-	pkgver = 1.7.3
+	pkgver = 1.7.7
 	pkgrel = 1
 	url = http://rubygems.org/gems/highline
 	arch = any
 	license = GPL2
 	license = RUBY
 	depends = ruby
-	noextract = highline-1.7.3.gem
+	noextract = highline-1.7.7.gem
 	options = !emptydirs
-	source = http://rubygems.org/downloads/highline-1.7.3.gem
-	sha256sums = d2f7b7bf88499a156130e40038d0b3046e1da20fd8eece46a31577a533ab2d0d
+	source = http://rubygems.org/downloads/highline-1.7.7.gem
+	sha256sums = 4acd3a1f8eddb11443e7912f8ed0c688919c85c4ed193a568165d804b7a28add
 
 pkgname = ruby-highline
 
