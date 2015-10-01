@@ -40,5 +40,5 @@ build() {
 
 package() {
   cd "$_pkgname"
-  ./install.sh --prefix="$pkgdir"
+  ./install.sh --="$pkgdir"
 }
