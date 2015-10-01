@@ -1,7 +1,7 @@
 # Maintainer: Adrien Oliva <yapbreak@yapbreak.fr>
 pkgname="yaplog-git"
-pkgver="2.2.1.2gea79add"
-pkgrel="1"
+pkgver="2.2.1"
+pkgrel="2"
 pkgdesc="Log system library for C/C++ projects"
 arch=('any')
 url="https://redmine.yapbreak.fr/projects/yaplog"

@@ -1,7 +1,7 @@
 pkgbase = yaplog-git
 	pkgdesc = Log system library for C/C++ projects
-	pkgver = 2.2.1.2gea79add
-	pkgrel = 1
+	pkgver = 2.2.1
+	pkgrel = 2
 	url = https://redmine.yapbreak.fr/projects/yaplog
 	arch = any
 	license = GPL3
