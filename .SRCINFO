@@ -1,0 +1,21 @@
+pkgbase = libnotify-0.7.6-patched
+	pkgdesc = Patched version of libnotify to replace notifications. Useful for hotkey notifications.
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/rich4rd.macwan/libnotify-0.7.6-patched
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = gnome-common
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	provides = libnotify-0.7.6-patched
+	conflicts = libnotify
+	source = https://git.gnome.org/browse/libnotify/snapshot/libnotify-0.7.6.tar.xz
+	source = https://gitlab.com/rich4rd.macwan/libnotify-0.7.6-patched/raw/master/notifysend.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libnotify-0.7.6-patched
+
