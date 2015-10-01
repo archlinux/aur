@@ -14,6 +14,7 @@ source=("git+https://github.com/pereckerdal/blackhole.git")
 md5sums=('SKIP')
 options=('!makeflags')
 _gitname="blackhole"
+LANG=C
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -23,6 +24,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   sed -i 's+gsc +gambitc +g' compile.sh
+  sed -i 's+gambc+gambit+g' compile.sh
 }
 
 build() {
