@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=lib32-qt5-base-bin
-pkgver=5.4.2
-pkgrel=1
+pkgver=5.5.0
+pkgrel=2
 pkgdesc="Repackaged qt5-base"
 arch=('x86_64')
 url="http://qt-project.org/"
@@ -11,7 +11,7 @@ depends=('qt5-base' 'lib32-libjpeg-turbo' 'lib32-libdbus' 'lib32-fontconfig' 'li
 provides=('lib32-qt5-base')
 conflicts=('lib32-qt-base')
 source=("http://mirrors.kernel.org/archlinux/extra/os/i686/qt5-base-$pkgver-$pkgrel-i686.pkg.tar.xz")
-md5sums=('ccd86c809bd8b85d17207b8d26a0ca9e')
+md5sums=('f7efe4b2274ea9b3868c0643696e88a9')
 
 package() {
   mkdir -p "$pkgdir/usr/"{,include}

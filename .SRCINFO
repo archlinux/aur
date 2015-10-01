@@ -1,7 +1,7 @@
 pkgbase = lib32-qt5-base-bin
 	pkgdesc = Repackaged qt5-base
-	pkgver = 5.4.2
-	pkgrel = 1
+	pkgver = 5.5.0
+	pkgrel = 2
 	url = http://qt-project.org/
 	arch = x86_64
 	license = GPL3
@@ -19,8 +19,8 @@ pkgbase = lib32-qt5-base-bin
 	depends = lib32-icu
 	provides = lib32-qt5-base
 	conflicts = lib32-qt-base
-	source = http://mirrors.kernel.org/archlinux/extra/os/i686/qt5-base-5.4.2-1-i686.pkg.tar.xz
-	md5sums = ccd86c809bd8b85d17207b8d26a0ca9e
+	source = http://mirrors.kernel.org/archlinux/extra/os/i686/qt5-base-5.5.0-2-i686.pkg.tar.xz
+	md5sums = f7efe4b2274ea9b3868c0643696e88a9
 
 pkgname = lib32-qt5-base-bin
 
