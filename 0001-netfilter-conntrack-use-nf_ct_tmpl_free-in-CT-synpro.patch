@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+<title>svntogit/packages.git - Git clone of the 'packages' repository
+</title>
+<meta name='generator' content='cgit v0.10.2'/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/cgit.css'/>
+<link rel='shortcut icon' href='/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='https://projects.archlinux.org/svntogit/packages.git/atom/trunk/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch?h=packages/linux' type='application/atom+xml'/>
+<link rel='vcs-git' href='git://projects.archlinux.org/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
+<link rel='vcs-git' href='http://projects.archlinux.org/git/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
+<link rel='vcs-git' href='https://projects.archlinux.org/git/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
+<link rel='vcs-git' href='ssh://gerolde.archlinux.org/srv/projects/git/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
+</head>
+<body>
+	<div id="archnavbar"><!-- Arch Linux global navigation bar -->
+		<div id="archnavbarlogo">
+			<p><a href="http://www.archlinux.org/" title="Arch news, packages, projects and more"></a></p>
+		</div>
+		<div id="archnavbarmenu">
+			<ul id="archnavbarlist">
+				<li id="anb-home"><a href="http://www.archlinux.org/" title="Arch news, packages, projects and more">Home</a></li>
+				<li id="anb-packages"><a href="http://www.archlinux.org/packages/" title="Arch Package Database">Packages</a></li>
+				<li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
+				<li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
+				<li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and follow bugs">Bugs</a></li>
+				<li id="anb-aur"><a href="https://aur.archlinux.org/" title="Arch Linux User Repository">AUR</a></li>
+				<li id="anb-download"><a href="http://www.archlinux.org/download/" title="Get Arch Linux">Download</a></li>
+			</ul>
+		</div>
+	</div><!-- #archnavbar -->
+<div id='cgit'><table id='header'>
+<tr>
+<td class='main'><a href='/'>index</a> : <a title='svntogit/packages.git' href='/svntogit/packages.git/'>svntogit/packages.git</a></td></tr>
+<tr><td class='sub'>Git clone of the 'packages' repository
+</td><td class='sub right'></td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/svntogit/packages.git/?h=packages/linux'>summary</a><a href='/svntogit/packages.git/refs/?h=packages/linux'>refs</a><a href='/svntogit/packages.git/log/trunk/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch?h=packages/linux'>log</a><a class='active' href='/svntogit/packages.git/tree/trunk/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch?h=packages/linux'>tree</a><a href='/svntogit/packages.git/commit/trunk/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch?h=packages/linux'>commit</a><a href='/svntogit/packages.git/diff/trunk/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch?h=packages/linux'>diff</a><a href='/svntogit/packages.git/stats/trunk/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch?h=packages/linux'>stats</a></td><td class='form'><form class='right' method='get' action='/svntogit/packages.git/log/trunk/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'>
+<input type='hidden' name='h' value='packages/linux'/><select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/svntogit/packages.git/tree/?h=packages/linux'>root</a>/<a href='/svntogit/packages.git/tree/trunk?h=packages/linux'>trunk</a>/<a href='/svntogit/packages.git/tree/trunk/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch?h=packages/linux'>0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch</a></div><div class='content'>blob: 0918357e1f8df4dfe2f4fe9f75d783baed6ddb15 (<a href='/svntogit/packages.git/plain/trunk/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch?h=packages/linux'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+<a id='n14' href='#n14'>14</a>
+<a id='n15' href='#n15'>15</a>
+<a id='n16' href='#n16'>16</a>
+<a id='n17' href='#n17'>17</a>
+<a id='n18' href='#n18'>18</a>
+<a id='n19' href='#n19'>19</a>
+<a id='n20' href='#n20'>20</a>
+<a id='n21' href='#n21'>21</a>
+<a id='n22' href='#n22'>22</a>
+<a id='n23' href='#n23'>23</a>
+<a id='n24' href='#n24'>24</a>
+<a id='n25' href='#n25'>25</a>
+<a id='n26' href='#n26'>26</a>
+<a id='n27' href='#n27'>27</a>
+<a id='n28' href='#n28'>28</a>
+<a id='n29' href='#n29'>29</a>
+<a id='n30' href='#n30'>30</a>
+<a id='n31' href='#n31'>31</a>
+<a id='n32' href='#n32'>32</a>
+<a id='n33' href='#n33'>33</a>
+<a id='n34' href='#n34'>34</a>
+<a id='n35' href='#n35'>35</a>
+<a id='n36' href='#n36'>36</a>
+<a id='n37' href='#n37'>37</a>
+<a id='n38' href='#n38'>38</a>
+<a id='n39' href='#n39'>39</a>
+<a id='n40' href='#n40'>40</a>
+<a id='n41' href='#n41'>41</a>
+<a id='n42' href='#n42'>42</a>
+<a id='n43' href='#n43'>43</a>
+<a id='n44' href='#n44'>44</a>
+<a id='n45' href='#n45'>45</a>
+<a id='n46' href='#n46'>46</a>
+<a id='n47' href='#n47'>47</a>
+<a id='n48' href='#n48'>48</a>
+<a id='n49' href='#n49'>49</a>
+<a id='n50' href='#n50'>50</a>
+<a id='n51' href='#n51'>51</a>
+<a id='n52' href='#n52'>52</a>
+<a id='n53' href='#n53'>53</a>
+<a id='n54' href='#n54'>54</a>
+<a id='n55' href='#n55'>55</a>
+<a id='n56' href='#n56'>56</a>
+<a id='n57' href='#n57'>57</a>
+<a id='n58' href='#n58'>58</a>
+<a id='n59' href='#n59'>59</a>
+<a id='n60' href='#n60'>60</a>
+<a id='n61' href='#n61'>61</a>
+<a id='n62' href='#n62'>62</a>
+<a id='n63' href='#n63'>63</a>
+<a id='n64' href='#n64'>64</a>
+<a id='n65' href='#n65'>65</a>
+<a id='n66' href='#n66'>66</a>
+<a id='n67' href='#n67'>67</a>
+<a id='n68' href='#n68'>68</a>
+<a id='n69' href='#n69'>69</a>
+<a id='n70' href='#n70'>70</a>
+<a id='n71' href='#n71'>71</a>
+<a id='n72' href='#n72'>72</a>
+<a id='n73' href='#n73'>73</a>
+<a id='n74' href='#n74'>74</a>
+<a id='n75' href='#n75'>75</a>
+<a id='n76' href='#n76'>76</a>
+<a id='n77' href='#n77'>77</a>
+<a id='n78' href='#n78'>78</a>
+<a id='n79' href='#n79'>79</a>
+<a id='n80' href='#n80'>80</a>
+<a id='n81' href='#n81'>81</a>
+<a id='n82' href='#n82'>82</a>
+<a id='n83' href='#n83'>83</a>
+<a id='n84' href='#n84'>84</a>
+<a id='n85' href='#n85'>85</a>
+<a id='n86' href='#n86'>86</a>
+<a id='n87' href='#n87'>87</a>
+<a id='n88' href='#n88'>88</a>
+<a id='n89' href='#n89'>89</a>
+<a id='n90' href='#n90'>90</a>
+<a id='n91' href='#n91'>91</a>
+<a id='n92' href='#n92'>92</a>
+<a id='n93' href='#n93'>93</a>
+<a id='n94' href='#n94'>94</a>
+<a id='n95' href='#n95'>95</a>
+<a id='n96' href='#n96'>96</a>
+<a id='n97' href='#n97'>97</a>
+<a id='n98' href='#n98'>98</a>
+<a id='n99' href='#n99'>99</a>
+<a id='n100' href='#n100'>100</a>
+<a id='n101' href='#n101'>101</a>
+<a id='n102' href='#n102'>102</a>
+<a id='n103' href='#n103'>103</a>
+</pre></td>
+<td class='lines'><pre><code>From 9cf94eab8b309e8bcc78b41dd1561c75b537dd0b Mon Sep 17 00:00:00 2001
+From: Daniel Borkmann &lt;daniel&#64;iogearbox.net&gt;
+Date: Mon, 31 Aug 2015 19:11:02 +0200
+Subject: [PATCH] netfilter: conntrack: use nf_ct_tmpl_free in CT/synproxy
+ error paths
+
+Commit 0838aa7fcfcd (&quot;netfilter: fix netns dependencies with conntrack
+templates&quot;) migrated templates to the new allocator api, but forgot to
+update error paths for them in CT and synproxy to use nf_ct_tmpl_free()
+instead of nf_conntrack_free().
+
+Due to that, memory is being freed into the wrong kmemcache, but also
+we drop the per net reference count of ct objects causing an imbalance.
+
+In Brad's case, this leads to a wrap-around of net-&gt;ct.count and thus
+lets __nf_conntrack_alloc() refuse to create a new ct object:
+
+  [   10.340913] xt_addrtype: ipv6 does not support BROADCAST matching
+  [   10.810168] nf_conntrack: table full, dropping packet
+  [   11.917416] r8169 0000:07:00.0 eth0: link up
+  [   11.917438] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+  [   12.815902] nf_conntrack: table full, dropping packet
+  [   15.688561] nf_conntrack: table full, dropping packet
+  [   15.689365] nf_conntrack: table full, dropping packet
+  [   15.690169] nf_conntrack: table full, dropping packet
+  [   15.690967] nf_conntrack: table full, dropping packet
+  [...]
+
+With slab debugging, it also reports the wrong kmemcache (kmalloc-512 vs.
+nf_conntrack_ffffffff81ce75c0) and reports poison overwrites, etc. Thus,
+to fix the problem, export and use nf_ct_tmpl_free() instead.
+
+Fixes: 0838aa7fcfcd (&quot;netfilter: fix netns dependencies with conntrack templates&quot;)
+Reported-by: Brad Jackson &lt;bjackson0971&#64;gmail.com&gt;
+Signed-off-by: Daniel Borkmann &lt;daniel&#64;iogearbox.net&gt;
+Signed-off-by: Pablo Neira Ayuso &lt;pablo&#64;netfilter.org&gt;
+<span class="hl kwb">---</span>
+ include/net/netfilter/nf_conntrack.h | 1 +
+ net/netfilter/nf_conntrack_core.c    | 3 ++-
+ net/netfilter/nf_synproxy_core.c     | 2 +-
+ net/netfilter/xt_CT.c                | 2 +-
+ 4 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/include/net/netfilter/nf_conntrack.h b/include/net/netfilter/nf_conntrack.h
+index 37cd391..4023c4c 100644
+<span class="hl kwb">--- a/include/net/netfilter/nf_conntrack.h</span>
+<span class="hl kwa">+++ b/include/net/netfilter/nf_conntrack.h</span>
+&#64;&#64; -292,6 +292,7 &#64;&#64; extern unsigned int nf_conntrack_hash_rnd;
+ void init_nf_conntrack_hash_rnd(void);
+ 
+ struct nf_conn *nf_ct_tmpl_alloc(struct net *net, u16 zone, gfp_t flags);
+<span class="hl kwa">+void nf_ct_tmpl_free(struct nf_conn *tmpl);</span>
+ 
+ #define NF_CT_STAT_INC(net, count)	  __this_cpu_inc((net)-&gt;ct.stat-&gt;count)
+ #define NF_CT_STAT_INC_ATOMIC(net, count) this_cpu_inc((net)-&gt;ct.stat-&gt;count)
+diff --git a/net/netfilter/nf_conntrack_core.c b/net/netfilter/nf_conntrack_core.c
+index 3c20d02..0625a42 100644
+<span class="hl kwb">--- a/net/netfilter/nf_conntrack_core.c</span>
+<span class="hl kwa">+++ b/net/netfilter/nf_conntrack_core.c</span>
+&#64;&#64; -320,12 +320,13 &#64;&#64; out_free:
+ }
+ EXPORT_SYMBOL_GPL(nf_ct_tmpl_alloc);
+ 
+<span class="hl kwb">-static void nf_ct_tmpl_free(struct nf_conn *tmpl)</span>
+<span class="hl kwa">+void nf_ct_tmpl_free(struct nf_conn *tmpl)</span>
+ {
+ 	nf_ct_ext_destroy(tmpl);
+ 	nf_ct_ext_free(tmpl);
+ 	kfree(tmpl);
+ }
+<span class="hl kwa">+EXPORT_SYMBOL_GPL(nf_ct_tmpl_free);</span>
+ 
+ static void
+ destroy_conntrack(struct nf_conntrack *nfct)
+diff --git a/net/netfilter/nf_synproxy_core.c b/net/netfilter/nf_synproxy_core.c
+index d7f1685..d6ee8f8 100644
+<span class="hl kwb">--- a/net/netfilter/nf_synproxy_core.c</span>
+<span class="hl kwa">+++ b/net/netfilter/nf_synproxy_core.c</span>
+&#64;&#64; -378,7 +378,7 &#64;&#64; static int __net_init synproxy_net_init(struct net *net)
+ err3:
+ 	free_percpu(snet-&gt;stats);
+ err2:
+<span class="hl kwb">-	nf_conntrack_free(ct);</span>
+<span class="hl kwa">+	nf_ct_tmpl_free(ct);</span>
+ err1:
+ 	return err;
+ }
+diff --git a/net/netfilter/xt_CT.c b/net/netfilter/xt_CT.c
+index 43ddeee..f3377ce 100644
+<span class="hl kwb">--- a/net/netfilter/xt_CT.c</span>
+<span class="hl kwa">+++ b/net/netfilter/xt_CT.c</span>
+&#64;&#64; -233,7 +233,7 &#64;&#64; out:
+ 	return 0;
+ 
+ err3:
+<span class="hl kwb">-	nf_conntrack_free(ct);</span>
+<span class="hl kwa">+	nf_ct_tmpl_free(ct);</span>
+ err2:
+ 	nf_ct_l3proto_module_put(par-&gt;family);
+ err1:
+<span class="hl kwb">-- </span>
+2.5.1
+
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div class="foot" style="padding-left:1em;padding-right:1em;">
+<p>Copyright &copy; 2002-2014 <a href="mailto:jvinet@zeroflux.org"
+title="contact Judd Vinet">Judd Vinet</a> and <a href="mailto:aaron@archlinux.org"
+title="contact Aaron Griffin">Aaron Griffin</a>. The Arch Linux name and logo
+are recognized trademarks. Some rights reserved. The registered trademark
+Linux&reg; is used pursuant to a sublicense from LMI, the exclusive licensee
+of Linus Torvalds, owner of the mark on a world-wide basis.</p>
+</div>
+</div> <!-- id=cgit -->
+</body>
+</html>

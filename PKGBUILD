@@ -1,4 +1,4 @@
-#
+# $Id$
 # Maintainer: blackleg <blackleg@openaliasbox.org>
 # Contributor: graysky <graysky AT archlinux DOT us>
 # Linux kernel and modules optimized for my Mountain F11 Netbook (Clevo W110ER).
@@ -12,14 +12,13 @@
 # Disable AMD microcode loading support
 # Default I/O Scheduler Deadline
 
-# $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 
 pkgbase=linux-w110er
-_srcname=linux-4.1
-pkgver=4.1.8
+_srcname=linux-4.2
+pkgver=4.2.2
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -37,16 +36,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        )
+        '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
+        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
+        '0001-fix-bridge-regression.patch')
 
-sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            '4373af2baaae5429be37e5257a22454d468f36b1322f784bb91a608c80ed52a1'
+            '8b4578f1e1dcfbef1e39c39b861d4715aa99917af0b7c2dc324622d65884dcb5'
             'SKIP'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
-            'b30e8a6bcd328364f53c9027839611e0fbcf38b486ab709fc66f7d28ea9960ce'
+            'b44e789a2c6d5109930617665d8d139b22cd292cf58dca49c230f21ecfea6ad5'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
+            'f9b12227bf3bed5de2eb21ae6fe5bf4af4362492992717a36ce9f48f82dbc93b'
+            '0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183')
 
 
 validpgpkeys=(
@@ -64,6 +68,19 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
+  # https://lkml.org/lkml/2015/8/18/292
+  patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
+
+  # add not-yet-mainlined patch to fix network unavailability when iptables
+  # rules are applied during startup - happened with Shorewall; journal had
+  # many instances of this error: nf_conntrack: table full, dropping packet
+  patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
+
+  # add not-yes-mainlined patch to fix bridge code
+  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
+  patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
   
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
