@@ -6,7 +6,7 @@
 pkgname=w3m-mouse
 _w3m_pkgname=w3m
 pkgver=0.5.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Text-based Web browser, as well as pager (mouse enabled)'
 url='http://w3m.sourceforge.net/'
 license=('custom')
@@ -30,29 +30,30 @@ sha256sums=('e994d263f2fd2c22febfbe45103526e00145a7674a0fda79c822b97c2770a9e3'
             '1e0e573e5fc6c0938b1941a81cffdd604a0167f7cf46e1a8479e2e10969e1d04')
 
 prepare() {
-	cd "${srcdir}/${_w3m_pkgname}-${pkgver}"
-	ls ../*.patch | xargs -i patch -p1 -i {}
+  cd "${srcdir}/${_w3m_pkgname}-${pkgver}"
+  ls ../*.patch | xargs -i patch -p1 -i {}
 }
 
 build() {
-	cd "${srcdir}/${_w3m_pkgname}-${pkgver}"
+  cd "${srcdir}/${_w3m_pkgname}-${pkgver}"
   export LIBS="-lX11"
-	./configure \
-		--prefix=/usr \
-		--libexecdir=/usr/lib \
-		--enable-image=x11,fb \
-		--with-imagelib=imlib2 \
-		--with-termlib=ncurses \
-		--disable-w3mmailer \
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --enable-image=x11,fb \
+    --with-imagelib=imlib2 \
+    --with-termlib=ncurses \
+    --disable-w3mmailer \
 
-	make
+  sed 's/@my_libs@/-lX11/g' -i Makefile
+  make
 }
 
 package() {
-	cd "${srcdir}/${_w3m_pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_w3m_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 
-	install -d "${pkgdir}"/usr/share/{doc,licenses}/"${_w3m_pkgname}"
-	find doc/* | grep -v CVS | xargs -i install -m644 "{}" "${pkgdir}/usr/share/doc/${_w3m_pkgname}"
-	ln -s ../../doc/"${_w3m_pkgname}"/README "${pkgdir}/usr/share/licenses/${_w3m_pkgname}"
+  install -d "${pkgdir}"/usr/share/{doc,licenses}/"${_w3m_pkgname}"
+  find doc/* | grep -v CVS | xargs -i install -m644 "{}" "${pkgdir}/usr/share/doc/${_w3m_pkgname}"
+  ln -s ../../doc/"${_w3m_pkgname}"/README "${pkgdir}/usr/share/licenses/${_w3m_pkgname}"
 }
