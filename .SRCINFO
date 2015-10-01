@@ -1,7 +1,7 @@
 pkgbase = python-warlock
 	pkgdesc = Python object model built on JSON schema and JSON patch.
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bcwaldon/warlock
 	arch = any
 	license = Apache
