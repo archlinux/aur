@@ -1,10 +1,11 @@
-# Maintainer: Jochen Schalanda <jochen+aur@schalanda.name>
+# Maintainer: Aoibhinn di Tori <email@aoibh.in>
+# Contributor: Jochen Schalanda <jochen+aur@schalanda.name>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux(at)free.fr>
 # Contributor: Daenyth <Daenyth+Arch AT gmail DOT com>
 _gemname=json
 pkgname=ruby-$_gemname
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 arch=('any')
 pkgdesc='JSON implementation as a Ruby extension in C'
@@ -14,7 +15,7 @@ depends=('ruby')
 optdepends=('jruby' 'java-environment')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('256f73d107635f54e3dd84daba65da7b08f9d6a6e6aeb046db6a46b98bd8fb7f')
+md5sums=('3d076c3efb7545020230e9c1de8ef284')
 
 package() {
   cd "$srcdir"
