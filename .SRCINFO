@@ -1,0 +1,21 @@
+pkgbase = lib32-orbit2
+	pkgdesc = Thin/fast CORBA ORB (32 bit)
+	pkgver = 2.14.19
+	pkgrel = 5
+	url = http://www.gnome.org
+	arch = x86_64
+	license = LGPL
+	license = GPL
+	makedepends = gcc-multilib
+	makedepends = gtk-doc
+	depends = lib32-libidl2
+	depends = orbit2
+	options = !libtool
+	options = !makeflags
+	source = http://ftp.gnome.org/pub/gnome/sources/ORBit2/2.14/ORBit2-2.14.19.tar.bz2
+	source = updates-until-26371ccfe.patch
+	sha256sums = 55c900a905482992730f575f3eef34d50bda717c197c97c08fa5a6eafd857550
+	sha256sums = 55ccbebc03fc60f78141bbba0a0c25b52e4ca434e831f5ddcf29b2ce56b8f676
+
+pkgname = lib32-orbit2
+
