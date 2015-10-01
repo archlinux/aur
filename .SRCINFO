@@ -1,12 +1,13 @@
 pkgbase = qccrypt
 	pkgdesc = A cross-plateform frontend for ccrypt software
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qccrypt.free.fr/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = ccrypt
+	depends = libxcb
 	depends = qt5-base
 	source = http://qccrypt.free.fr/download/qccrypt-0.6.0-src.zip
 	md5sums = 332e2d1db5f1988819fd8942d03b5a4e
