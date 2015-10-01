@@ -1,0 +1,20 @@
+pkgbase = st-solarized-powerline
+	pkgdesc = A simple virtual terminal emulator for X with patched for solarized dark and powerline
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://st.suckless.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	depends = libxft
+	depends = ttf-dejavu-sans-mono-powerline-git
+	source = http://dl.suckless.org/st/st-0.6.tar.gz
+	source = config.h
+	source = patch.diff
+	md5sums = 1a926f450b4eacb7e2f5ac5b8ffea7c8
+	md5sums = faf813f28dfd6d91ca45fb425dd5a15e
+	md5sums = 3a78e4a441b4a7a63e770e73919102a9
+
+pkgname = st-solarized-powerline
+

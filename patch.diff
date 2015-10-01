@@ -1,0 +1,20 @@
+--- st.c	2015-09-25 17:38:28.966373302 +0300
++++ st.c.new	2015-09-25 17:38:54.813041296 +0300
+@@ -1155,6 +1155,8 @@ xsetsel(char *str, Time t) {
+ 	XSetSelectionOwner(xw.dpy, XA_PRIMARY, xw.win, t);
+ 	if (XGetSelectionOwner(xw.dpy, XA_PRIMARY) != xw.win)
+ 		selclear(0);
++
++        clipcopy(NULL);
+ }
+ 
+ void
+@@ -3454,7 +3454,7 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
+ 
+ 	/* Change basic system colors [0-7] to bright system colors [8-15] */
+ 	if((base.mode & ATTR_BOLD_FAINT) == ATTR_BOLD && BETWEEN(base.fg, 0, 7))
+-		fg = &dc.col[base.fg + 8];
++		fg = &dc.col[base.fg];
+ 
+ 	if(IS_SET(MODE_REVERSE)) {
+ 		if(fg == &dc.col[defaultfg]) {
