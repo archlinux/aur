@@ -1,8 +1,8 @@
 pkgbase = sigil-git
 	pkgdesc = A WYSIWYG ebook editor
-	pkgver = 0.8.6.r3135.g9975f58
+	pkgver = 0.8.900.r27.gaaa6196
 	pkgrel = 1
-	url = https://github.com/user-none/Sigil
+	url = https://github.com/Sigil-Ebook/Sigil
 	install = sigil.install
 	arch = i686
 	arch = x86_64
@@ -19,9 +19,7 @@ pkgbase = sigil-git
 	depends = python-lxml
 	provides = sigil
 	conflicts = sigil
-	source = sigil::git+https://github.com/user-none/Sigil.git
-	source = sigil.desktop
-	md5sums = SKIP
+	source = sigil::git+https://github.com/Sigil-Ebook/Sigil
 	md5sums = SKIP
 
 pkgname = sigil-git
