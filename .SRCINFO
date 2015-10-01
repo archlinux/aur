@@ -1,7 +1,7 @@
 pkgbase = nodejs10
 	pkgdesc = Evented I/O for V8 javascript, frozen in version 0.10.40
 	pkgver = 0.10.40
-	pkgrel = 3
+	pkgrel = 1
 	url = http://nodejs.org/
 	arch = any
 	license = MIT

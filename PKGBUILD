@@ -20,7 +20,7 @@ _npmver=2.14.1
 
 pkgname=nodejs10
 pkgver=0.10.40
-pkgrel=3
+pkgrel=1
 pkgdesc='Evented I/O for V8 javascript, frozen in version 0.10.40'
 arch=('any')
 url='http://nodejs.org/'
