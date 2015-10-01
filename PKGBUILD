@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-sequel
-pkgver=4.26.0
+pkgver=4.27.0
 pkgrel=1
 pkgdesc="The Database Toolkit for Ruby"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://sequel.jeremyevans.net"
 license=('MIT')
 depends=('ruby')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('5c51e86898700976e19888a7a94b5ea4ee80331d8a31c6b761a9f90bcf9455c0')
+sha256sums=('dc2785af2eb1a546fb5bfe0ba638a16acfcf3ad24a746bd6c2868b1fe30c1f97')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 provides=('sequel' 'ruby-sequel')
 conflicts=('sequel')
