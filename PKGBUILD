@@ -3,7 +3,7 @@
 
 pkgname=sigil-git
 pkgver=0.8.900.r27.gaaa6196
-pkgrel=1
+pkgrel=2
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
 url="https://github.com/Sigil-Ebook/Sigil"
@@ -11,6 +11,9 @@ license=('GPL3')
 depends=('qt5-webkit' 'boost-libs' 'desktop-file-utils' 'minizip'
          'gtk-update-icon-cache' 'python-lxml' 'python-six')
 makedepends=('git' 'qt5-multimedia' 'qt5-tools ''qt5-svg ''cmake' 'boost')
+optdepends=('python-html5lib: recommended for plugins'
+            'python-pillow: recommended for plugins'
+            'python-regex: recommended for plugins')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=sigil.install
