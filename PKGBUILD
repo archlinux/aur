@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 244413 2015-08-20 09:51:39Z seblu $
+# $Id: PKGBUILD 246530 2015-09-17 21:02:15Z foutrelis $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 #pkgbase=qemu
@@ -11,7 +11,7 @@
 #         'libcacard')
 pkgname='qemu-minimal'
 pkgver=2.4.0
-pkgrel=2
+pkgrel=4
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'

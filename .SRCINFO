@@ -1,6 +1,6 @@
 pkgbase = qemu-minimal
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 4
 	url = http://wiki.qemu.org/
 	arch = i686
 	arch = x86_64
