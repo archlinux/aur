@@ -7,7 +7,7 @@
 
 pkgname=python-matplotlib-noqt
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A python plotting library, making publication quality plots"
 arch=('i686' 'x86_64')
 url='http://matplotlib.org'
