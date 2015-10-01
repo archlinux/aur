@@ -1,8 +1,9 @@
 pkgbase = heaptrack-git
 	pkgdesc = A heap memory profiler
-	pkgver = 1
+	pkgver = 379.cbec4a5
 	pkgrel = 1
 	url = http://milianw.de/tag/heaptrack
+	arch = i686
 	arch = x86_64
 	license = APACHE
 	makedepends = git
