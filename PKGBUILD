@@ -266,7 +266,7 @@ package() {
     install -m640 "$srcdir"/{wrapper.config,run.sh,IpToCountry.dat} \
                                                                 "$pkgdir"/opt/freenet
     install -m640 "$srcdir"/freenet.ini                         "$pkgdir"/opt/freenet/conf
-    install -m640 "$srcdir"/seednodes.fref                      "$pkgdir"/opt/freenet/conf/noderef
+    install -m640 "$srcdir"/seednodes.fref                      "$pkgdir"/opt/freenet/noderef
     install -m640 contrib/freenet-ext/dist/freenet-ext.jar \
                   dist/freenet.jar                         \
                   lib/bcprov.jar                                "$pkgdir"/opt/freenet/lib
