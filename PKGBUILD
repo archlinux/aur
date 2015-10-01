@@ -6,7 +6,7 @@ _cmd="unit2"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="The new features in unittest backported to Python 2.4+."
 arch=("any")
 url="http://www.voidspace.org.uk/python/articles/unittest2.shtml"
@@ -20,13 +20,14 @@ sha256sums=('22882a0e418c284e1f718a822b3b022944d53d2d908e1690b319a9d3eb2c0579'
             'e0bfff5f29a59d078142b8b24b60b0105043057b9e238974d26ae778804ba9bc')
 
 prepare() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    patch -p1 -i "${srcdir}/remove-argparse-requirement.patch"
+    patch -d "${srcdir}/${_name}-${pkgver}" -p1 -i "${srcdir}/remove-argparse-requirement.patch"
+    cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
 }
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py build
+    cd "${srcdir}/${_name}-${pkgver}-python2"
     python2 setup.py build
 }
 
@@ -39,7 +40,7 @@ package_python-unittest2() {
 
 package_python2-unittest2() {
     depends=("python2-six>=1.4.0" "python2-traceback2")
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}-${pkgver}-python2"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm0644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     mv "${pkgdir}/usr/bin/${_cmd}" "${pkgdir}/usr/bin/${_cmd}-python2"

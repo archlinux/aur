@@ -1,7 +1,7 @@
 pkgbase = python-unittest2
 	pkgdesc = The new features in unittest backported to Python 2.4+.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.voidspace.org.uk/python/articles/unittest2.shtml
 	arch = any
 	license = BSD
