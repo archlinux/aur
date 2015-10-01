@@ -3,15 +3,16 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Tobias Hunger <tobias DOT hunger AT gmail DOT com>
 # Contributor: Stefan Tatschner <stefan@sevenbyte.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitlab
-pkgver=7.14.3
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="http://gitlab.org/gitlab-ce"
 license=('MIT')
-depends=('ruby>=2.0' 'git>=1.7.10' 'ruby-bundler>=1.5.2' 'gitlab-shell=2.6.5' 'openssh' 'redis>=2.0' 'libxslt' 'icu' 'nodejs')
+depends=('ruby2.1' 'git>=1.7.10' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.5' 'openssh' 'redis>=2.0' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake')
 optdepends=(
 	'mariadb: database backend'
@@ -44,13 +45,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	nginx-ssl.conf.example
 	lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('f2088c151b424cbca0fbc65073c1198ea9c3619570ca3543cf5f0ddd193a6105941608df418eeb506bde83f2c0bbd34cea267caaed70092afcca54219e84004d'
-	'a16e762b0ff807e6e32ebf45562cf78b6b9b64babbfe4e42856a13f6e190c09553b74eb4d353d6213121c415cc08cc6cc82ffce56916208ebfd67b08cf012680'
-	'88132c32fddd067862b8d6973d3bfbb4fbd66aefc317ef8e030983709c939442a74de0d2ef80e55123837806531667ff5664e4b8d764d6bc1bc3a78a3fede249'
-	'a38c9c55ad77d857b521769442db95706d9aaf238682f9aa17150f1b5f682ac68eaabfb116e49841e7fce628dd3589685b654d770ac067dac718b5f9e0ee6124'
+sha512sums=('e247b3677ca86f43e665623c3a2602ab33843860537813fa64e3cd33b408698f0482e1ce437a4a30976b0656977f86890173ca044b7d07bfdfda3d269d311802'
+	'5dd7a940eee6a84095478af514dcc98c4fc6c4a214de1ddfa4a1e727d4ba34984d66d51affd7844ffebb75fed8f781b38a0da80fba6a5b8fa832948ab39b2249'
+	'5596dd45dea18f0003305e9e6509745ba45a35937aa7b2ff5b21659a62426f9d889d60e337df9d5d7c4aeb6ba2223d1386036545806d358d294cbce105308aa0'
+	'c22439ee4cb34adf42de7619a2b83b02359cada38cbe99dd3031e6e72225ec4b2c2d6306331eadfc1c2044609b7a7e8bceddf7be213b5d4dbcaff86b35fe1ce7'
 	'c11d2c59da8325551a465227096e8d39b0e4bcd5b1db21565cf3439e431838c04bc00aa6f07f4d493f3f47fd6b4e25aeb0fe0fc1a05756064706bf5708c960ec'
 	'c519a51d31300074ea12594fbcc8e9610d991ef04b1dac94d93a2b201df3465999cc7c6ac7f3896e02b117c2366d61dea1ef2f6b9cd7b18998385a7f26e5700f'
-	'e5b8a659b9f0452c38f49a24579f1eac426b62a8ca66fe26b46134dcb0a6976e9597adb723c23728108da33e8e7f2cf80c9397d1fc15b6f71d60bc7aa9a7bc45'
+	'7a0f649f030b24315cc97f23b704dd1879274304706cf1a1fa125772803a6e918a2fa249bed229b9384552a572452c56379c50f46d2fa8aa999dc71c1ee047e0'
 	'a1f52d6ca36b32580062dede23ccdde5633238310b28c6c47deb2ce4496f4e5ffea0de2a49bcb1e0e38fc82b66b0cc91a5e86854716c7e848127769b43eb5067'
 	'cd6b9cae3206dbaa3cd893ea0ead43ffbc70eb6a2ad4bacd3abab1150c751aa4ea64c9931409ac97ee36a2ae83fc019c8eb82b2fe11d5f5b4803a81fa5e79152'
 	'cd563238011696ba4a7fa1eff2c6604bda8d75c3e6bf9ecb6f0f22e68c9d782e49be3ce2eaad0c1b142116e2c7c59c9242936ba5797f02d5d0880f7e3004aa99'
@@ -121,12 +122,12 @@ build() {
 	msg "Fetching bundled gems..."
 	# Gems will be installed into vendor/bundle
 
-	bundle config build.nokogiri --use-system-libraries
+	bundle-2.1 config build.nokogiri --use-system-libraries
 	cpus=$(nproc)
 	if [[ $cpus -ge 3 ]]; then
-		bundle install -j$(( $cpus - 1 )) --no-cache --deployment --without development test aws ${_wo[@]}
+		bundle-2.1 install -j$(( $cpus - 1 )) --no-cache --deployment --without development test aws ${_wo[@]}
 	else
-		bundle install --no-cache --deployment --without development test aws ${_wo[@]}
+		bundle-2.1 install --no-cache --deployment --without development test aws ${_wo[@]}
 	fi
 }
 

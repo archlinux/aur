@@ -8,7 +8,7 @@ After=redis.service mysqld.service postgresql.service network.target
 User=gitlab
 Group=gitlab
 WorkingDirectory=<DATADIR>
-Environment=RAILS_ENV=production
+Environment=RAILS_ENV=production PATH=/opt/ruby2.1/bin:/usr/bin
 SyslogIdentifier=gitlab-sidekiq
 
 CapabilityBoundingSet=
@@ -21,7 +21,7 @@ ProtectHome=true
 # instead you can safely enable this security feature.
 #NoNewPrivileges=true
 
-ExecStart=/usr/bin/bundle exec "sidekiq -q post_receive -q mailer -q system_hook -q project_web_hook -q gitlab_shell -q common -q default -q archive_repo -e production -L <LOGDIR>/sidekiq.log >> <LOGDIR>/sidekiq.log 2>&1"
+ExecStart=/usr/bin/bundle-2.1 exec "sidekiq -q post_receive -q mailer -q system_hook -q project_web_hook -q gitlab_shell -q common -q default -q archive_repo -e production -L <LOGDIR>/sidekiq.log >> <LOGDIR>/sidekiq.log 2>&1"
 
 [Install]
 WantedBy=multi-user.target

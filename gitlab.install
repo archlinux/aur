@@ -27,9 +27,9 @@ post_install() {
 	echo "You have to configure few things."
 	echo "Configure gitlab-shell in /etc/webapps/gitlab-shell/config.yml"
 	echo "Configure the application database in ${_etcdir}/database.yml and run:"
-	echo "# su - gitlab -s /bin/sh -c \"cd '${_datadir}'; bundle exec rake gitlab:setup RAILS_ENV=production\""
+	echo "# su - gitlab -s /bin/sh -c \"cd '${_datadir}'; bundle-2.1 exec rake gitlab:setup RAILS_ENV=production\""
 	echo "Compile Assets:"
-	echo "# su - gitlab -s /bin/sh -c \"cd '${_datadir}'; bundle exec rake assets:precompile RAILS_ENV=production\""
+	echo "# su - gitlab -s /bin/sh -c \"cd '${_datadir}'; bundle-2.1 exec rake assets:precompile RAILS_ENV=production\""
 	echo "Check that ${_etcdir}/secret contains a random hex string."
 }
 
@@ -46,7 +46,7 @@ pre_upgrade() {
 
 	fix_perms
 	cd "${_datadir}"
-	sudo -u gitlab -H bundle exec rake gitlab:backup:create RAILS_ENV=production
+	sudo -u gitlab -H bundle-2.1 exec rake gitlab:backup:create RAILS_ENV=production
 	if [ \( -e "${_datadir}/log" \) -a \( ! -L "${_datadir}/log" \) ]; then
 		mv "${_datadir}/log" "${_datadir}/log.bck"
 	fi
@@ -73,8 +73,8 @@ post_upgrade() {
 	generate_secret
 	fix_perms
 
-	su - gitlab -s /bin/sh -c "cd '${_datadir}'; bundle exec rake db:migrate RAILS_ENV=production"
-	su - gitlab -s /bin/sh -c "cd '${_datadir}'; bundle exec rake assets:clean assets:precompile cache:clear RAILS_ENV=production"
+	su - gitlab -s /bin/sh -c "cd '${_datadir}'; bundle-2.1 exec rake db:migrate RAILS_ENV=production"
+	su - gitlab -s /bin/sh -c "cd '${_datadir}'; bundle-2.1 exec rake assets:clean assets:precompile cache:clear RAILS_ENV=production"
 
 	systemctl daemon-reload
 	if [ -e /tmp/gitlab-upgrade-unicorn ]; then
