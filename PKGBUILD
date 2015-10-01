@@ -15,7 +15,8 @@ depends=('ffmpeg' 'maim' 'slop' 'xclip' 'xininfo-git' 'rofi' 'diffutils')
 optdepends=('fb-client:         Upload to paste.xinu.at (or selfhosted filebin)'
             'openssh:           Upload to SSH server'
             'copyq:             Copy Images to Clipboard'
-            'imgur:             Upload images to imgur.com')
+            'imgur:             Upload images to imgur.com'
+            'libnotify:         Notifications')
 
 options=(!strip)
 install="teiler.install"

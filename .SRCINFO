@@ -18,6 +18,7 @@ pkgbase = teiler-git
 	optdepends = openssh: Upload to SSH server
 	optdepends = copyq: Copy Images to Clipboard
 	optdepends = imgur: Upload images to imgur.com
+	optdepends = libnotify: Notifications
 	provides = teiler
 	conflicts = teiler
 	options = !strip
