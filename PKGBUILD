@@ -1,7 +1,7 @@
 # Maintainer: Filip <fila pruda.com>
 pkgname=mp3directcut
-pkgver=2.20
-_downver=220
+pkgver=2.21
+_downver=221
 pkgrel=1
 pkgdesc="fast audio editor and recorder for mp3 with no need to decompress"
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ license=('FREEWARE')
 [ "$CARCH" = "i686" ] && depends=(wine mpg123)
 [ "$CARCH" = "x86_64" ] && depends=(wine lib32-mpg123)
 makedepends=()
-source=(mp3directcut mp3directcut.desktop mp3dcicon.png http://mp.mpex.net/files/mp3DC$_downver.exe)
+source=(mp3directcut mp3directcut.desktop mp3dcicon.png http://softdar.ru/fileup/mp3DC$_downver.exe)
 md5sums=(
 	'31de44159649baddf5c7b6936b87133f' '910ada5caa9b0ea67a88bfc7ffe9c237'
-	'a56a1f306e2c918f0e5f8b5cabdf8c1d' '7159533de29017dca87f100f31d625bd')
+	'81a5bbd5789094b4bf5822791826c162' '0ca5940345f25f3fe2d1af1f610547ff')
 
 package() {
 
