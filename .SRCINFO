@@ -1,7 +1,7 @@
 pkgbase = python-libcloud
 	pkgdesc = A standard Python library that abstracts away differences among multiple cloud provider APIs.
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libcloud.apache.org
 	arch = any
 	license = Apache
