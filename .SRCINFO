@@ -21,7 +21,7 @@ pkgbase = nodejs10
 	options = !emptydirs
 	source = http://nodejs.org/dist/v0.10.40/node-v0.10.40.tar.gz
 	source = git+https://github.com/npm/npm.git#tag=v2.14.1
-	sha256sums = b9d7d1d0294bce46686b13a05da6fc5b1e7743b597544aa888e8e64a9f178c81
+	sha256sums = bae79c2fd959aebe1629af36077bebbb760128db753da226d2344cd91499149f
 	sha256sums = SKIP
 
 pkgname = nodejs10

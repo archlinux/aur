@@ -33,7 +33,7 @@ checkdepends=('curl')
 options=('!emptydirs')
 source=("http://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.gz"
         git+https://github.com/npm/npm.git#tag=v$_npmver)
-sha256sums=('b9d7d1d0294bce46686b13a05da6fc5b1e7743b597544aa888e8e64a9f178c81'
+sha256sums=('bae79c2fd959aebe1629af36077bebbb760128db753da226d2344cd91499149f'
             'SKIP')
 
 prepare() {
