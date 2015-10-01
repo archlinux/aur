@@ -1,0 +1,15 @@
+pkgbase = shadergen
+	pkgdesc = Automatically generates OpenGL Shading Language shaders that duplicate fixed function OpenGL behavior
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/mojocorp/ShaderGen
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glew
+	depends = qt4
+	source = https://github.com/mojocorp/ShaderGen/archive/v3.3.0.tar.gz
+	md5sums = 22b9cd75d5299cb561f51b536494a9f8
+
+pkgname = shadergen
+
