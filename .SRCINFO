@@ -5,7 +5,6 @@ pkgbase = nodejs-cozy-dev
 	url = https://github.com/cozy/cozy-dev
 	arch = any
 	license = LGPLv3
-	makedepends = npm
 	depends = nodejs10
 	provides = cozy-dev
 	provides = nodejs-cozy-dev

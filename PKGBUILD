@@ -7,7 +7,6 @@ pkgrel=2
 pkgdesc="Tools to develop Cozy applications easily"
 arch=('any')
 depends=('nodejs10')
-makedepends=('npm')
 url="https://github.com/cozy/cozy-dev"
 license=('LGPLv3')
 provides=('cozy-dev' 'nodejs-cozy-dev')
