@@ -1,0 +1,18 @@
+pkgbase = lib32-libidl2
+	pkgdesc = A front-end for CORBA 2.2 IDL and Netscape's XPIDL (32 bit)
+	pkgver = 0.8.14
+	pkgrel = 3
+	url = http://www.gnome.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	depends = lib32-glib2
+	depends = texinfo
+	depends = libidl2
+	options = !libtool
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/gnome/sources/libIDL/0.8/libIDL-0.8.14.tar.bz2
+	sha256sums = c5d24d8c096546353fbc7cedf208392d5a02afe9d56ebcc1cccb258d7c4d2220
+
+pkgname = lib32-libidl2
+
