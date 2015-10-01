@@ -1,6 +1,6 @@
 pkgbase = moodle-plus
 	pkgdesc = Moodle is a open-source software learning management system
-	pkgver = 2.9.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://moodle.org/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = moodle-plus
 	conflicts = moodle
 	options = !strip
 	source = https://download.moodle.org/stable29/moodle-latest-29.tgz
-	md5sums = 1bebd9e60d741f0e510d1cef5057ba68
+	md5sums = 5e77f877d9de4d58fa9599020c70a4c2
 
 pkgname = moodle-plus
 
