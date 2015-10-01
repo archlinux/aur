@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-digest-jhash'
-pkgver='0.07'
+pkgver='0.09'
 pkgrel='1'
 pkgdesc="Perl extension for 32 bit Jenkins Hashing Algorithm"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.008')
 makedepends=()
-url='http://search.cpan.org/dist/Digest-JHash'
-source=('http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Digest-JHash-0.07.tar.gz')
-md5sums=('273adb11b5c4701dc43273d82ab26dd9')
-sha512sums=('b3509771c01036cccef8ca38b7371dd18912d02c0305a199d8d982e77590357f227cb5fe361960e6992cfca70ed0cc3dd97274ca6d433b00e68bd4838ac1798d')
-_distdir="Digest-JHash-0.07"
+url='https://metacpan.org/release/Digest-JHash'
+source=('http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Digest-JHash-0.09.tar.gz')
+md5sums=('2f89a3ee5709181b87110545fa694254')
+sha512sums=('2490abd0bbd2a83e6eb2aa1a856e428ae945b103c1b05959f0fd5e13db4999123dd5222b04aaa1efd846b5f6c7c9865154ec8fb0e4e7ea526d8f126e6963d921')
+_distdir="Digest-JHash-0.09"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
