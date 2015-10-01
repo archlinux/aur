@@ -1,7 +1,7 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot]de
 
 pkgname=winbox-beta
-pkgver=3.0rc15
+pkgver=3.0rc16
 pkgrel=1
 pkgdesc="Configuration tool for MikroTik RouterOS (wine)" 
 url="http://www.mikrotik.com"
@@ -13,11 +13,11 @@ optdepends=(
 )
 install=${pkgname}.install
 source=("http://download2.mikrotik.com/routeros/winbox/${pkgver}/winbox.exe"
-		"http://www.mikrotik.com/downloadterms.html"
+	"http://www.mikrotik.com/downloadterms.html"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
-md5sums=('2df1e45a83fdba80d41cb0780871e59d'
+md5sums=('f15fcf255b97fde14120a3b6ed0fd25b'
          'd034563c27be7e75c6920f308f2d9f85'
          'd1b1fc11e54078239756bbf53b10524a'
          '1147544d4bd5ed8181c0eee5fcd31356'
@@ -31,8 +31,3 @@ package() {
   install -Dm644 "${srcdir}/downloadterms.html" "${pkgdir}/usr/share/licenses/winbox-beta/license.html"
 }
 
-md5sums=('bcea3903031dbff05c6ee447d2e812f4'
-         'd034563c27be7e75c6920f308f2d9f85'
-         'd1b1fc11e54078239756bbf53b10524a'
-         '1147544d4bd5ed8181c0eee5fcd31356'
-         'f151701beaea7bb702e400ffb844f560')
