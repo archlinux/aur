@@ -1,6 +1,6 @@
 pkgbase = nomachine-enterprise-client
 	pkgdesc = Remote desktop application
-	pkgver = 4.6.16
+	pkgver = 5.0.43
 	pkgrel = 1
 	url = http://www.nomachine.com
 	install = nm-ent-client.install
