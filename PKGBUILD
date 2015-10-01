@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=python-sqlalchemy-git
 pkgver=1.0.8.85.g7393ee8
-pkgrel=2
+pkgrel=3
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
 arch=('i686' 'x86_64')
 url="http://www.sqlalchemy.org"
 license=('custom:MIT')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=("python-sqlalchemy=$pkgver")
 conflicts=('python-sqlalchemy')
 source=("git+https://bitbucket.org/zzzeek/sqlalchemy.git")
