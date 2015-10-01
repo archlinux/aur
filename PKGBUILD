@@ -4,9 +4,9 @@
 
 
 pkgname=kokua-secondlife
-pkgver=3.8.2.35975
-_pkgver=3_8_2_35975
-_pkgprever=3.8.2
+pkgver=3.8.4.37073
+_pkgver=3_8_4_37073
+_pkgprever=3.8.4
 
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
@@ -18,20 +18,22 @@ optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvi
 replaces=('kokua-bin')
 conflicts=('kokua-bin')
 
-source_i686=("http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_${_pkgver}_${CARCH}.tar.bz2"
-		'kokua-secondlife.desktop'
-		'kokua-secondlife.launcher')
-md5sums_i686=('46c4e846b7c9310291806a93a7d21e1f'
-         '3893a2c8ae9cb8e2adb4d7c47750029b'
-         'e12fd7bd333f4f810dec66f1be17c71c')
+#http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_${_pkgver}_${CARCH}.tar.bz2"
+source_i686=("http://bitbucket.org/kokua/downloads/downloads/Kokua_${_pkgver}_i686.tar.bz2"
+             'kokua-secondlife.desktop'
+             'kokua-secondlife.launcher')
         
-source_x86_64=("http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_64_${_pkgver}_${CARCH}.tar.bz2"
+#"http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_64_${_pkgver}_${CARCH}.tar.bz2"
+source_x86_64=("http://bitbucket.org/kokua/downloads/downloads/Kokua_64_${_pkgver}_x86_64.tar.bz2"
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
-md5sums_x86_64=('d19f0b8893491aad47cbd9462c65ce27'
-				'3893a2c8ae9cb8e2adb4d7c47750029b'
-				'e12fd7bd333f4f810dec66f1be17c71c')
 
+md5sums_i686=('e0e7e2a8981152594511d08709307de2'
+              '3893a2c8ae9cb8e2adb4d7c47750029b'
+              'e12fd7bd333f4f810dec66f1be17c71c')
+md5sums_x86_64=('956c11edeefcdf296b9e00514b62ace7'
+                '3893a2c8ae9cb8e2adb4d7c47750029b'
+                'e12fd7bd333f4f810dec66f1be17c71c')
 
 package() {
 cd $srcdir
