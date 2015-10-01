@@ -1,6 +1,6 @@
 pkgbase = python2-snakebite
 	pkgdesc = Pure Python HDFS client
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/spotify/snakebite
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = python2-snakebite
 	provides = snakebite
 	conflicts = snakebite
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/s/snakebite/snakebite-2.7.0.tar.gz
-	md5sums = 5c95baa672fbe82fb2ddf4b6909c96fd
-	sha256sums = 95c9fa0a477acf7431dbdfcc03d648500925617ae2a72d103dc7f944cdc8a81f
+	source = https://pypi.python.org/packages/source/s/snakebite/snakebite-2.7.1.tar.gz
+	md5sums = 313ceacc5894b189d1f6dfd248ba6b80
+	sha256sums = 670c54503570b13542fb62c96c7adfef064a71fe91e02711174982c5789afb84
 
 pkgname = python2-snakebite
 
