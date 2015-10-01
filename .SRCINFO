@@ -1,7 +1,7 @@
 pkgbase = kraft
 	pkgdesc = A program suitable for all trades or crafts
-	pkgver = 0.58
-	pkgrel = 3
+	pkgver = 0.59
+	pkgrel = 1
 	url = http://www.volle-kraft-voraus.de/
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = kraft
 	depends = ctemplate
 	depends = python2-reportlab
 	depends = python2-pypdf
-	source = http://downloads.sourceforge.net/project/kraft/kraft-0.58.tar.xz
+	source = http://downloads.sourceforge.net/project/kraft/kraft-0.59.tar.xz
 	source = allow-duplicate-cmake-targets.patch
-	sha256sums = 12c92dbdae05d01a491111ed42dfa6f487ec477f60e536e5a80efa6592997524
+	sha256sums = e05ff0b78a073bafffa5c0e41fe458461216b66fd57fc9432a1064a7be2b2034
 	sha256sums = 2a98be3f535be36161c16ee1f49baba72eab410f222cfc32697c490cfd412370
 
 pkgname = kraft
