@@ -6,7 +6,7 @@ _check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.0.0"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Data-Driven/Decorated Tests"
 arch=("any")
 url="https://github.com/txels/ddt"
