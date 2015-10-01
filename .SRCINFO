@@ -1,0 +1,25 @@
+pkgbase = kvirc-git
+	pkgdesc = Qt4 based IRC-Client, compiled with kde4 support - Git Version
+	pkgver = r5453.f5dc3c4
+	pkgrel = 1
+	url = http://www.kvirc.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = gettext
+	depends = qt5-base
+	depends = glibc
+	depends = openssl
+	depends = zlib
+	depends = perl
+	provides = kvirc
+	provides = kvirc4
+	conflicts = kvirc4
+	conflicts = kvirc
+	source = kvirc-git::git+https://github.com/kvirc/KVIrc.git
+	sha256sums = SKIP
+
+pkgname = kvirc-git
+
