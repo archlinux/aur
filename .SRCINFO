@@ -1,0 +1,14 @@
+pkgbase = texlive-screenplay
+	pkgdesc = A LaTeX package for screenplay writing
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/macros/latex/contrib/screenplay
+	install = texlive-screenplay.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	source = http://mirrors.ctan.org/macros/latex/contrib/screenplay.zip
+	md5sums = 57ae9a3840985984b84cfe68a607f529
+
+pkgname = texlive-screenplay
+
