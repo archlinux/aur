@@ -1,6 +1,6 @@
 pkgbase = madx-dev
 	pkgdesc = Accelerator Optics simulation code, latest development release
-	pkgver = 5.02.06
+	pkgver = 5.02.07
 	pkgrel = 1
 	url = http://cern.ch/mad
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = madx-dev
 	depends = libx11
 	provides = madx
 	conflicts = madx-svn
-	source = http://madx.web.cern.ch/madx/releases/5.02.06/madx-src.tgz
+	source = http://madx.web.cern.ch/madx/releases/5.02.07/madx-src.tgz
 	md5sums = SKIP
 
 pkgname = madx-dev
