@@ -1,0 +1,3 @@
+# Settings for the OpenERP service
+ODOO_CONF=/etc/odoo/odoo.conf
+ODOO_ARGS=""
