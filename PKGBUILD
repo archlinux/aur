@@ -1,7 +1,8 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=multirust-git
-pkgver=0.0.6.r36.g011bb72
+_pkgname=multirust
+pkgver=0.7.0.r0.gb222fcd
 pkgrel=1
 pkgdesc="A tool for managing multiple Rust installations"
 arch=('any')
@@ -20,12 +21,12 @@ conflict=('cargo-bin' 'cargo-git' 'rust' 'rust-git' 'rust-nightly' 'rust-nightly
 provides=('rust' 'cargo')
 
 pkgver() {
-  cd multirust
+  cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/multirust"
+  cd "$_pkgname"
   git submodule init
   git config submodule.rust-installer.url "$srcdir/multirust/src/rust-installer"
   git config submodule.rustup.url "$srcdir/multirust/src/rustup"
@@ -33,13 +34,11 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/multirust"
-
+  cd "$_pkgname"
   ./build.sh
 }
 
 package() {
-  cd "$srcdir/multirust"
-
-  ./install.sh --destdir="$pkgdir"
+  cd "$_pkgname"
+  ./install.sh --prefix="$pkgdir"
 }

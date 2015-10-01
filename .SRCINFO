@@ -1,6 +1,6 @@
 pkgbase = multirust-git
 	pkgdesc = A tool for managing multiple Rust installations
-	pkgver = 0.0.6.r36.g011bb72
+	pkgver = 0.7.0.r0.gb222fcd
 	pkgrel = 1
 	url = https://github.com/brson/multirust
 	arch = any
