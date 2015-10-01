@@ -5,12 +5,12 @@
 
 pkgname=pithos
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pandora Internet Radio player for GNOME'
 arch=('any')
 url="http://pithos.github.io/"
 license=('GPL3')
-depends=('python' 'gtk3' 'python-gobject'
+depends=('python>=3.5' 'gtk3' 'python-gobject'
          'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-base'
          'python-setuptools' 'python-cairo')
 optdepends=('libkeybinder3: for media keys plugin'

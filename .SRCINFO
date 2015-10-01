@@ -1,12 +1,12 @@
 pkgbase = pithos
 	pkgdesc = Pandora Internet Radio player for GNOME
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pithos.github.io/
 	install = pithos.install
 	arch = any
 	license = GPL3
-	depends = python
+	depends = python>=3.5
 	depends = gtk3
 	depends = python-gobject
 	depends = gst-plugins-good
