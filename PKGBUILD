@@ -36,7 +36,7 @@ package() {
 
 	# Update permissions to match the default system ones
 	chmod 755 ${pkgdir}/opt/
-	find ${pkgdir}/usr/ -type d -name "*" -exec chmod 755 {} \;
+	find ${pkgdir}/usr/ -type d -exec chmod 755 {} \;
 
 	# Symlink "runenpass.sh" to "/usr/bin" so it is accessible via terminal
 	mkdir -p ${pkgdir}/usr/bin
