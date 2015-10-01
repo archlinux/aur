@@ -1,6 +1,6 @@
 pkgbase = ponymap-git
 	pkgdesc = Experimental network scanner
-	pkgver = r84.396cc0f
+	pkgver = r87.9c16e19
 	pkgrel = 1
 	url = https://github.com/pjanouch/ponymap
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = ponymap-git
 	makedepends = pkg-config
 	makedepends = git
 	makedepends = help2man
-	depends = lua>=5.3
 	depends = ncurses
 	depends = jansson
 	depends = openssl
+	optdepends = lua>=5.3: support for Lua plugins
 	provides = ponymap
 	conflicts = ponymap
 	options = zipman

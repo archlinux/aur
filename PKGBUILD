@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Janouch <p.janouch@gmail.com>
 pkgname=ponymap-git
 _pkgname=ponymap
-pkgver=r84.396cc0f
+pkgver=r87.9c16e19
 pkgrel=1
 pkgdesc="Experimental network scanner"
 url="https://github.com/pjanouch/ponymap"
@@ -11,7 +11,8 @@ options=(zipman)
 conflicts=('ponymap')
 provides=('ponymap')
 makedepends=('cmake' 'pkg-config' 'git' 'help2man')
-depends=('lua>=5.3' 'ncurses' 'jansson' 'openssl')
+depends=('ncurses' 'jansson' 'openssl')
+optdepends=('lua>=5.3: support for Lua plugins')
 source=("git+https://github.com/pjanouch/$_pkgname.git")
 md5sums=('SKIP')
 
