@@ -1,0 +1,33 @@
+pkgbase = paraview-qt5
+	pkgdesc = Parallel Visualization Application using VTK
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = http://www.paraview.org
+	install = paraview-qt5.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = mesa
+	makedepends = gcc-fortran
+	depends = qt5-tools
+	depends = openmpi
+	depends = python2
+	depends = ffmpeg
+	depends = boost
+	depends = cgns
+	depends = jsoncpp
+	depends = glew
+	depends = shared-mime-info
+	depends = gtk-update-icon-cache
+	optdepends = python2-matplotlib: Needed to support equation rendering using MathText markup language
+	optdepends = python2-numpy: Needed for using some filters such as "Python Calculator"
+	provides = paraview
+	conflicts = paraview
+	source = http://paraview.org/files/v4.4/ParaView-v4.4.0-source.tar.gz
+	source = 0001-find_hdf5.patch
+	sha256sums = c2dc334a89df24ce5233b81b74740fc9f10bc181cd604109fd13f6ad2381fc73
+	sha256sums = 93fabb0b1f57322cd0bfb1fd13724c8250a40528714cd9d994a7bd5a84bc7bd8
+
+pkgname = paraview-qt5
+
