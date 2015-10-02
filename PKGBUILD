@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-file-rsync'
-pkgver='0.43'
+pkgver='0.48'
 pkgrel='1'
-pkgdesc="Wrapper module for rsync(1) http://rsync.samba.org/"
+pkgdesc="perl module interface to rsync(1) http://rsync.samba.org/rsync/"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl-ipc-run3' 'rsync')
 makedepends=()
-url='http://search.cpan.org/dist/File-Rsync'
-source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEAKIN/File-Rsync-0.43.tar.gz')
-md5sums=('fe745f0460454250bc4ed557de8f11ac')
-sha512sums=('b23d4305609eb7d21a19b2e45cd47eb57d3b71aaad741cc5f7457d1826e0509cafa0555975345afc11b5342f19621558940e513be2b17575f322469f732534cd')
-_distdir="File-Rsync-0.43"
+url='https://metacpan.org/release/File-Rsync'
+source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEAKIN/File-Rsync-0.48.tar.gz')
+md5sums=('3a1085ca8995e5804c8f0ac4f0d72881')
+sha512sums=('ced69d97a497e02ad357491a0cbe1cc2be12bacc05db1f86dd10d61787e2ad8ef7ed1c6171a69862a67182f875d724b9c51096500d3d6f079fc39f529268353f')
+_distdir="File-Rsync-0.48"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
