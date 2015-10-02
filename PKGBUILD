@@ -1,4 +1,5 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
+pkgbase=poodlescanner
 pkgname=poodlescanner-git
 pkgver=r2.13bc21d
 pkgrel=1

@@ -1,4 +1,4 @@
-pkgbase = poodlescanner-git
+pkgbase = poodlescanner
 	pkgdesc = Python SSL POODLE Vulnerability Scanner Python tool to scan a netblock for SSLv3 enabled servers.
 	pkgver = r2.13bc21d
 	pkgrel = 1
