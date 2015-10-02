@@ -3,7 +3,7 @@
 pkgname=odoo
 pkgver=9.0
 _pkgsubver=20151002
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
 arch=('any')
@@ -13,6 +13,7 @@ conflicts=('openerp')
 replaces=('openerp')
 depends=(
     'gzip'
+    'nodejs-less-plugin-clean-css'
     'postgresql'
     'python2'
     'python2-argparse'

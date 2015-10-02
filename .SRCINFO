@@ -1,12 +1,13 @@
 pkgbase = odoo
 	pkgdesc = Web-based Open Source Business Apps
 	pkgver = 9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://odoo.com/
 	install = odoo.install
 	arch = any
 	license = GPL3
 	depends = gzip
+	depends = nodejs-less-plugin-clean-css
 	depends = postgresql
 	depends = python2
 	depends = python2-argparse
