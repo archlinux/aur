@@ -16,7 +16,7 @@ ProtectSystem=full
 ProtectHome=true
 NoNewPrivileges=true
 
-ExecStart=/usr/bin/gitlab-git-http-server ~gitlab/repositories
+ExecStart=/usr/bin/gitlab-git-http-server /var/lib/gitlab/repositories
 ExecStop=/usr/bin/kill -QUIT $MAINPID
 ExecReload=/usr/bin/kill -USR2 $MAINPID
 

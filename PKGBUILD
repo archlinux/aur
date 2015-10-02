@@ -2,7 +2,7 @@
 
 pkgname=gitlab-git-http-server
 pkgver=0.2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="HTTP server to unload Git HTTP traffic from GitLab Rails app (Unicorn)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-git-http-server"
@@ -12,7 +12,7 @@ makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-git-http-server/repository/archive.tar.gz?ref=${pkgver}"
         "gitlab-git-http.service")
 sha256sums=('4351b22bb3e336233cfd882ff032c3830576090a18522b30b340295dae14e2d3'
-            '5f810e1c0c7d3cbc15f02e2a8fb1a70d1c1b611d70ff22ead0c1ff544e289793')
+            'd7232e76c3f2b565b75b3b5ab027a3f9fa58c992f4b7e2c7efe4f02697b369d1')
 
 prepare() {
     extract_loc=$(find ./ -maxdepth 1 -type d -name "${pkgname}-${pkgver}-*" )
