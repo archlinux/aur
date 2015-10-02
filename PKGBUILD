@@ -3,18 +3,17 @@
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=142.5047.6
-_pkgver=15.0.0
-_eap="True"
-epoch=2
-pkgver=${_pkgver}.${_buildver}
+_buildver=142.5239.7
+_pkgver=15-PublicPreview
+_eap="False"
+pkgver=15.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
 arch=('any')
 options=(!strip)
 url="http://www.jetbrains.com/idea/"
 license=('Apache2')
-depends=('java-environment>=6' 'giflib' 'libxtst')
+depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
 if [[ ${_eap} = "True" ]]; then
 	source=("http://download.jetbrains.com/idea/ideaIC-${_buildver}.tar.gz")
