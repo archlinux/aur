@@ -1,0 +1,11 @@
+pkgbase = isl29018_driver
+	pkgdesc = Intersil ISL29018 sensor kernel driver
+	pkgver = 0.1.5
+	pkgrel = 4
+	url = https://github.com/torvalds/linux/blob/master/drivers/staging/iio/light/isl29018.c
+	arch = i686
+	arch = x86_64
+	license = GPL
+
+pkgname = isl29018_driver
+
