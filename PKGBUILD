@@ -31,7 +31,11 @@ prepare() {
 build(){
    cd "$srcdir/umview-${pkgver}"
    autoreconf -i &> /dev/null
-   ./configure --prefix="${pkgdir}/usr" --disable-static
+   if [ "$CARCH" == "x86_64" ]; then
+      ./configure --prefix="${pkgdir}/usr" --disable-static
+   else
+      ./configure --prefix="${pkgdir}/usr" --libdir="${pkgdir}/usr/lib32" --disable-static
+   fi
    make
 }
 
