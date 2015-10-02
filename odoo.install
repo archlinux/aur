@@ -10,7 +10,7 @@ post_install() {
   echo "-- Make sure PostgreSQL is correctly installed (see wiki), start it,"
   echo "-- create user with database creation rights for odoo in PostgreSQL"
   echo "-- e.g: # su - postgres -c \"createuser -dRSP <myodoouser>\""
-  echo "-- then edit '/etc/openerp/openerp-server.conf' accordingly."
+  echo "-- then edit '/etc/odoo/odoo-server.conf' accordingly."
   echo "-- Starting odoo will automatically start PostgreSQL as well."
 }
 

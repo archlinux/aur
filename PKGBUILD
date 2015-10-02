@@ -1,8 +1,8 @@
 # Maintainer: Bidossessi Sodonon
 
 pkgname=odoo
-pkgver=8.0
-_pkgsubver=20150929
+pkgver=9.0
+_pkgsubver=20151002
 pkgrel=5
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
@@ -24,11 +24,14 @@ depends=(
     'python2-feedparser'
     'python2-gdata'
     'python2-gevent'
+    'python2-greenlet'
+    'python2-jcconv'
+    'python2-jinja'
     'python2-ldap'
     'python2-lxml'
     'python2-mako'
+    'python2-markupsafe'
     'python2-mock'
-    'python2-jinja'
     'python2-openid'
     #'python2-openssl'
     'python2-passlib'
@@ -37,9 +40,12 @@ depends=(
     'python2-pip'
     'python2-psutil'
     'python2-psycopg2'
+    'python2-psycogreen'
     'python2-pychart'
     'python2-pydot'
     'python2-pyparsing'
+    'python2-pyqrcode'
+    'python2-pyserial'
     'python2-pyusb'
     'python2-reportlab'
     'python2-pypdf'
@@ -48,6 +54,7 @@ depends=(
     'python2-requests'
     'python2-simplejson'
     'python2-six'
+    'python2-suds-jurko'
     'python2-qrcode'
     'python2-unittest2'
     'python2-vatnumber'
@@ -64,7 +71,7 @@ optdepends=(
 )
 
 source=(
-  "http://nightly.odoo.com/8.0/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
+  "http://nightly.odoo.com/9.0/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
   odoo.confd
   odoo.service
   odoo.conf
@@ -84,7 +91,7 @@ package()
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
   install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
 }
-md5sums=('d4a7e5d5f2ae6f956c3e999003ff21a1'
+md5sums=('bf213155ffbba6bb6a7ce0ebebed851c'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '00314ef227c9075767d0165527de9841'
          '0c205f95168a60d140411cce4e173eb8')
