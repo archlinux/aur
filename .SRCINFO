@@ -1,7 +1,7 @@
 pkgbase = python-click-log
 	pkgdesc = Logging integration for Click
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/click-log
 	arch = any
 	license = MIT
