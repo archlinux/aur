@@ -4,9 +4,17 @@ _name="click"
 _module="${_name}"
 _check="enabled"
 
+# Arch normally builds packages with LANG="C".  This causes Python to think
+# that it is limited to ASCII data (it isn't) and breaks the test suite.  We
+# must export a locale that is unicode aware.  If you have not built
+# en_US.UTF-8 on your system, change this variable to locale that you have
+# built that is unicode aware.  See http://click.pocoo.org/5/python3/ for more
+# details.
+_locale="en_US.UTF-8"
+
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="5.1"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="A simple wrapper around optparse for powerful command line utilities."
 arch=("any")
 url="http://click.pocoo.org/"
@@ -29,7 +37,7 @@ build() {
 
 check() {
     if [[ "${_check}" == "enabled" ]]; then
-        export LC_ALL="en_US.UTF-8"
+        export LANG="${_locale}"
         export PYTHONPATH="$(pwd)/build/lib:$PYTHONPATH"
         cd "${srcdir}/${_name}-${pkgver}"
         py.test --tb=short
