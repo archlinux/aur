@@ -1,7 +1,7 @@
 pkgbase = x_x
 	pkgdesc = Excel file CLI Reader
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/krockode/x_x
 	arch = any
 	license = Apache 2.0

@@ -2,7 +2,7 @@
 
 pkgname=x_x
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Excel file CLI Reader"
 url="http://github.com/krockode/x_x"
 depends=('python-six'
