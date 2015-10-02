@@ -1,6 +1,6 @@
 pkgbase = xubuntu-artwork
 	pkgdesc = Xubuntu themes and artwork
-	pkgver = 15.10.4
+	pkgver = 15.10.5
 	pkgrel = 1
 	url = https://launchpad.net/xubuntu-artwork
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = xubuntu-artwork
 	optdepends = xfce-theme-greybird: Official theming, git or stable version are ok
 	optdepends = elementary-xfce-icons: For matching icon theme, or if you want use the git version
 	optdepends = libreoffice: For the new elementary icon style
-	source = http://security.ubuntu.com/ubuntu/pool/universe/x/xubuntu-artwork/xubuntu-artwork_15.10.4.tar.xz
+	source = http://security.ubuntu.com/ubuntu/pool/universe/x/xubuntu-artwork/xubuntu-artwork_15.10.5.tar.xz
 	source = 0001_Plymouth_dir.patch
-	md5sums = 0e1bf19add2d77190c744d8828e789e5
+	md5sums = f1cfb0afbd62ebbc187d7bc635f3c65d
 	md5sums = c9a1b1997abf7d43dda91bf7991ed42c
 
 pkgname = xubuntu-artwork
