@@ -2,7 +2,7 @@
 pkgname=mingw-w64-orc
 pkgver=0.4.23
 pkgrel=2
-pkgdesc="The Oild Runtime Compiler (mingw-w64)"
+pkgdesc="The Oil Runtime Compiler (mingw-w64)"
 arch=('any')
 license=('custom')
 url="http://code.entropywave.com/projects/orc/"

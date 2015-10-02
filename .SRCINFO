@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-orc
-	pkgdesc = The Oild Runtime Compiler (mingw-w64)
+	pkgdesc = The Oil Runtime Compiler (mingw-w64)
 	pkgver = 0.4.23
 	pkgrel = 2
 	url = http://code.entropywave.com/projects/orc/
