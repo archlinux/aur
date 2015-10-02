@@ -1,7 +1,7 @@
 pkgbase = python-kwpbar
 	pkgdesc = A progress bar for Python.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kwpolska/kwpbar.py
 	arch = any
 	license = BSD
