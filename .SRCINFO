@@ -1,0 +1,14 @@
+pkgbase = firmware_ath10k-qca6174
+	pkgdesc = firmware for Atheros Qualcomm Killer N1525 Wireless-AC [168c:003e]
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/sumdog/ath10k-firmware
+	arch = any
+	license = GPL
+	source = https://github.com/sumdog/ath10k-firmware/archive/5faf5bb7c7413f9bb332693179de54cca6fff58e.tar.gz
+	source = ath10k.conf
+	md5sums = 9508fef27520ce82b9f33b453f6344a8
+	md5sums = fce5dbe873ca616de7d519cb55af8e68
+
+pkgname = firmware_ath10k-qca6174
+
