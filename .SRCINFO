@@ -1,7 +1,7 @@
 pkgbase = doomseeker-hg
 	pkgdesc = A cross-platform Doom server browser
 	pkgver = 1.1.r1509271217
-	pkgrel = 1
+	pkgrel = 2
 	url = http://doomseeker.drdteam.org/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = doomseeker-hg
 	makedepends = cmake
 	makedepends = make
 	makedepends = mercurial
+	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = zlib

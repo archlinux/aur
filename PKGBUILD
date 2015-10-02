@@ -2,13 +2,13 @@
 pkgname=doomseeker-hg
 _dsver=1.1
 pkgver=1.1.r1509271217
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
 license=("GPL2")
 depends=('qt5-base' 'qt5-multimedia' 'zlib' 'bzip2')
-makedepends=('gcc' 'cmake' 'make' 'mercurial')
+makedepends=('gcc' 'cmake' 'make' 'mercurial' 'qt5-tools')
 optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
 	    'odamex: Classic client/server multiplayer fork'
 	    'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
