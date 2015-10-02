@@ -1,0 +1,5 @@
+*~
+src/*
+pkg/
+xorg-server-systemd/*
+*.pkg.tar.xz

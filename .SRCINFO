@@ -1,0 +1,14 @@
+pkgbase = xorg-server-systemd
+	pkgdesc = Systemd template to start an X server on the respective display
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = xorg-server
+	depends = systemd
+	source = xorg-server-systemd::git+https://github.com/HOMEINFO/xorg-server-systemd
+	md5sums = SKIP
+
+pkgname = xorg-server-systemd
+
