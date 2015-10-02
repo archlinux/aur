@@ -1,0 +1,21 @@
+pkgbase = liblwipv6-dev
+	pkgdesc = User level (lightweight) TCP/IP stack with IPv6 support (dev files)
+	pkgver = 1.5a
+	pkgrel = 2
+	url = https://sourceforge.net/projects/view-os
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = libtool
+	depends = liblwipv6
+	provides = liblwipv6-dev=1.5a
+	conflicts = liblwipv6-dev
+	replaces = liblwipv6-dev
+	source = http://ftp.us.debian.org/debian/pool/main/l/lwipv6/liblwipv6-dev_1.5a-2_amd64.deb
+	md5sums = 014a0b5ebb86aa9f676eb776fa7772ef
+
+pkgname = liblwipv6-dev
+
