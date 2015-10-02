@@ -1,8 +1,9 @@
 # Contributor: favonia
+# Maintainer: kaptoxic
 
 pkgname=mathpartir
-pkgver=1.2
-pkgrel=4
+pkgver=1.3
+pkgrel=1
 license=('GPL')
 depends=('texlive-core')
 pkgdesc="LaTeX package for typesetting type inference rules"
@@ -11,7 +12,7 @@ url="http://cristal.inria.fr/~remy/latex/"
 options=(!strip)
 install=texlive.install
 source=('http://cristal.inria.fr/~remy/latex/mathpartir.tgz')
-md5sums=('02f5556a17778c4bd79aa7d4e1962ba4')
+md5sums=('aa2b95890d49f74c1babb60da2f7e84c')
 
 package() {
   local lib="$pkgdir"/usr/share/texmf-dist/tex/latex

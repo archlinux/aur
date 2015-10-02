@@ -1,7 +1,7 @@
 pkgbase = mathpartir
 	pkgdesc = LaTeX package for typesetting type inference rules
-	pkgver = 1.2
-	pkgrel = 4
+	pkgver = 1.3
+	pkgrel = 1
 	url = http://cristal.inria.fr/~remy/latex/
 	install = texlive.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mathpartir
 	depends = texlive-core
 	options = !strip
 	source = http://cristal.inria.fr/~remy/latex/mathpartir.tgz
-	md5sums = 02f5556a17778c4bd79aa7d4e1962ba4
+	md5sums = aa2b95890d49f74c1babb60da2f7e84c
 
 pkgname = mathpartir
 
