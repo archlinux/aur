@@ -1,6 +1,6 @@
 pkgbase = opsu
 	pkgdesc = An open source osu!-client written in Java.
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://itdelatrisu.github.io/opsu/
 	changelog = .CHANGELOG
@@ -15,7 +15,7 @@ pkgbase = opsu
 	depends = bash
 	provides = opsu
 	conflicts = opsu
-	source = opsu::git://github.com/itdelatrisu/opsu.git#tag=0.12.0
+	source = opsu::git://github.com/itdelatrisu/opsu.git#tag=0.12.1
 	source = opsu.sh
 	sha512sums = SKIP
 	sha512sums = 4b065052fef55e1860a51dfa5af080930b1001e4c82cd8b3b0383bd68b239d382d788408235a7cb4fb4a1d04123a6049188a2e2c2d0e5fd08a3deb69da25fc2d
