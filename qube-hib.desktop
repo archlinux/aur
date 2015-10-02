@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Q.U.B.E.: Director's Cut
+GenericName=QUBE
+Comment=Q.U.B.E: Director’s Cut is the definitive version of the brain-twisting first-person puzzler.
+Exec=qube-hib
+Icon=qube-hib
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;

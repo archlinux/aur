@@ -1,0 +1,21 @@
+pkgbase = qube-hib
+	pkgdesc = Q.U.B.E: Director’s Cut is the definitive version of the brain-twisting first-person puzzler.
+	pkgver = 2015052901
+	pkgrel = 1
+	url = http://qube-game.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	source = hib://QUBE-Linux-2015052901.sh
+	source = qube-hib.desktop
+	sha256sums = c38a850bbfa4a7396352b750b1351d7afa9df1aa6d77676094fcce9a99c37d21
+	sha256sums = 1151fddc954882c0be9d8fd0bef498a84634e8c348e482c74307cf385caacadf
+	depends_i686 = sdl2
+	depends_i686 = openal
+	depends_i686 = libvorbis
+	depends_x86_64 = lib32-sdl2
+	depends_x86_64 = lib32-openal
+	depends_x86_64 = lib32-libvorbis
+
+pkgname = qube-hib
+
