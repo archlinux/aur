@@ -1,0 +1,23 @@
+pkgbase = routeconverter
+	pkgdesc = A free tool to edit and convert routes, tracks and waypoints.
+	pkgver = 2.16.3
+	pkgrel = 1
+	url = http://www.routeconverter.de/en
+	changelog = ChangeLog
+	arch = i686
+	license = GPL
+	depends = java-environment>=6
+	depends = libwebkit3
+	optdepends = gpsbabel: for some additional format support
+	noextract = RouteConverterCmdLine.jar
+	noextract = RouteConverterLinux.jar
+	noextract = RouteConverterLinux64.jar
+	source = routeconverter
+	source = routeconverter-cli
+	source = http://www.routeconverter.de/download/RouteConverterCmdLine.jar
+	md5sums = 4bc45e6a1a93656a0deb8956f71b6af8
+	md5sums = fdf570309917df1c1536b7e3c7740b33
+	md5sums = e95c8f2f2fe68054eb9e06370eb2439e
+
+pkgname = routeconverter
+
