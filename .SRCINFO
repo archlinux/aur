@@ -1,7 +1,7 @@
 pkgbase = python-blessed
 	pkgdesc = A thin, practical wrapper around terminal capabilities in Python
 	pkgver = 1.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jquast/blessed
 	arch = any
 	license = MIT
