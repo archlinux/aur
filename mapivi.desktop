@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories= Graphics;Viewer;
+Name=Mapivi
+GenericName=Picture manager and organizer
+GenericName[fr]=Gestionnaire de photographies
+Comment=Picture manager and organizer with complete meta information support.
+Comment[fr]=Gestionnaire de photographies avec un support des champs exif/iptc.
+Exec=/usr/bin/mapivi %F
+Icon=/usr/share/pixmaps/mapivi
+

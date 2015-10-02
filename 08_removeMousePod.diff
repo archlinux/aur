@@ -1,0 +1,40 @@
+--- mapivi.orig	2008-02-21 21:53:44.000000000 +0100
++++ mapivi	2009-04-03 17:41:00.000000000 +0200
+@@ -8110,37 +8110,6 @@
+ 				  } )->pack(-side => 'left', -expand => 0, -fill => 'x', -padx => 1, -pady => 1);
+   $balloon->attach($addB, -msg => "Add the selected keywords to the selected pictures");
+ 
+-=pod
+-
+-  my $rmB =
+-	  $af->Button(-text => "remove",
+-				  -command => sub {
+-					  my @keys = $keytree->info('selection');
+-					  return unless checkSelection($keycw, 1, 0, \@keys);
+-					  my @sellist = $lb->info('selection');
+-					  return unless checkSelection($top, 1, 0, \@sellist);
+-					  my $pw = progressWinInit($keycw, "Remove keyword");
+-					  my $i = 0;
+-					  my $sum = @sellist;
+-					  foreach my $dpic (@sellist) {
+-						  last if progressWinCheck($pw);
+-						  $i++;
+-						  progressWinUpdate($pw, "removing keyword ($i/$sum) ...", $i, $sum);
+-						  foreach my $key (@keys) {
+-							  last if progressWinCheck($pw);
+-							  progressWinUpdate($pw, "removing keyword $key ($i/$sum) ...", $i, $sum);
+-							  my $name = getLastItem($key);
+-							  print "remove key $name ($key) from $dpic\n" if $verbose;
+-							  removeIPTCItem($dpic, 'Keywords', $name);
+-							  updateOneRow($dpic, $lb);
+-						  }
+-					  }
+-					  progressWinEnd($pw);
+-				  })->pack(-side => 'left', -expand => 0, -fill => 'x', -padx => 1, -pady => 1);
+-  $balloon->attach($rmB, -msg => "Remove the selected keywords from the selected pictures");
+-
+-=cut
+-
+   $keytree = $keycw->Scrolled('Tree',
+ 							 -separator  => '/',
+ 							 -scrollbars => 'osoe',

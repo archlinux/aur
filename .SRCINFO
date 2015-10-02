@@ -1,0 +1,36 @@
+pkgbase = mapivi
+	pkgdesc = A photo management tool with focus on JPEG pictures. Mapivi supports adding, editing and searching of IPTC/IIM, EXIF data and JPEG comments. The pictures are managed in place (in your folder structure).
+	pkgver = 097
+	pkgrel = 1
+	url = http://mapivi.sourceforge.net/mapivi.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jpegpixi
+	depends = jhead
+	depends = imagemagick
+	depends = libjpeg
+	depends = perl-image-info
+	depends = perl-image-metadata-jpeg
+	depends = tk-matchentry
+	depends = tk-resizebutton
+	depends = tk-splash
+	depends = perl-tk
+	depends = perl-exiftool
+	source = http://downloads.sourceforge.net/mapivi/mapivi097.tar.gz
+	source = mapivi
+	source = mapivi.desktop
+	source = mapivi.png
+	source = 07_usrShareMapivi.diff
+	source = 08_removeMousePod.diff
+	source = 09_qw_parentheses.diff
+	md5sums = f1432cbb0033c1a1a324651dbc0700b2
+	md5sums = 85f09ddc913d654ea92fa987838bcc63
+	md5sums = 5e34164357ee0351d68fd4ca048d99ac
+	md5sums = 15d8e83af7ccfa852774a48d2fb1ba75
+	md5sums = 59e1b327f32eea54e28463295f67496b
+	md5sums = 001918d8da9a54446df603e2c2804592
+	md5sums = 18937b9307fab48277499b76952439d0
+
+pkgname = mapivi
+

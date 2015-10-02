@@ -1,0 +1,14 @@
+#! /bin/sh
+
+if [ -f $HOME/.maprogs/mapivi/icons/folder.png ]
+then
+	cd /usr/share/mapivi/
+	perl mapivi || return 1
+else
+	mkdir -p $HOME/.maprogs/mapivi/{icons,PlugIns}
+	cp /usr/share/mapivi/icons/* $HOME/.maprogs/mapivi/icons/
+	cp /usr/share/mapivi/PlugIns/* $HOME/.maprogs/mapivi/PlugIns/
+	cd /usr/share/mapivi
+	perl mapivi || return 1
+
+fi

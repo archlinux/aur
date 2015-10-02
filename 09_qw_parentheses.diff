@@ -1,0 +1,38 @@
+--- mapivi.orig	2009-04-03 17:44:30.000000000 +0200
++++ mapivi	2013-10-22 18:30:56.925667829 +0200
+@@ -10123,11 +10123,11 @@
+   my $pf = $pfa->Frame(-bd => $config{Borderwidth}, -relief => 'groove')->pack(-side => "left");
+   my $pfn = $pf->Frame()->pack();
+   my $pfs = $pf->Frame()->pack();
+-  foreach my $gravity qw(NorthWest North NorthEast) {
++  foreach my $gravity (qw(NorthWest North NorthEast)) {
+ 	my $but = $pfn->Radiobutton(-text => "", -variable => \$config{CopyPosition}, -value => $gravity)->pack(-side => 'left');
+ 	$balloon->attach($but, -msg => "Align the copyright text or logo in $gravity position");
+   }
+-  foreach my $gravity qw(SouthWest South SouthEast) {
++  foreach my $gravity (qw(SouthWest South SouthEast)) {
+ 	my $but = $pfs->Radiobutton(-text => "", -variable => \$config{CopyPosition}, -value => $gravity)->pack(-side => 'left');
+ 	$balloon->attach($but, -msg => "Align the copyright text or logo in $gravity position");
+   }
+@@ -19972,7 +19972,7 @@
+ ##############################################################
+ sub normalizeCoords {
+   my $canvas = shift;
+-  foreach my $coord qw(m_x1 m_x2 m_y1 m_y2) {
++  foreach my $coord (qw(m_x1 m_x2 m_y1 m_y2)) {
+ 	# assign it to the step width
+ 	$canvas->{$coord} = sprintf "%.0f", ($canvas->{$coord}/$canvas->{m_step});
+ 	$canvas->{$coord} *= $canvas->{m_step};
+@@ -19981,10 +19981,10 @@
+   }
+ 
+   # check upper bound
+-  foreach my $coord qw(m_x1 m_x2) {
++  foreach my $coord (qw(m_x1 m_x2)) {
+ 	$canvas->{$coord} = $canvas->{m_wo} if ($canvas->{$coord} > $canvas->{m_wo});
+   }
+-  foreach my $coord qw(m_y1 m_y2) {
++  foreach my $coord (qw(m_y1 m_y2)) {
+ 	$canvas->{$coord} = $canvas->{m_ho} if ($canvas->{$coord} > $canvas->{m_ho});
+   }
+ }

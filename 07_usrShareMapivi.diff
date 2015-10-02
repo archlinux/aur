@@ -1,0 +1,160 @@
+--- mapivi.orig	2008-02-21 21:53:44.000000000 +0100
++++ mapivi	2009-03-16 16:50:53.000000000 +0100
+@@ -147,12 +147,13 @@
+ }
+ # for windows we use this path
+ $maprogsdir     = $ENV{APPDATA}."/maprogs" if defined $ENV{APPDATA};
++my $usrshare    = "/usr/share/mapivi";    # where static data is held
+ my $configdir   = "$maprogsdir/mapivi";   # the configuration dir
+-my $icon_path   = "$configdir/icons";     # the icon dir
++my $icon_path   = "$usrshare/icons";      # the icon dir
+ 
+ my $splashAvail = (eval "require Tk::Splash")  ? 1 : 0 ;
+ my $splash;
+-my $logo = "$configdir/logo.jpg";
++my $logo = "$usrshare/pics/logo.jpg";
+ if ($splashAvail and -f $logo) {
+   # Splash->Show parameters: $image, $width, $height, $title, $overrideredirect
+   $splash = Tk::Splash->Show($logo, 844, 259, "", 1);
+@@ -360,14 +361,14 @@
+ my $maxCommentLength = 2**16 - 3; # a comment block may have max 64kB
+ 
+ my $trashdir        = "$configdir/trash";     # the trashcan
+-my $plugindir       = "$configdir/PlugIns";   # the mapivi plugin dir
++my $plugindir       = "$usrshare/PlugIns";    # the mapivi plugin dir
+ my $iptcdir         = "$configdir/IPTC_templates";  # the IPTC templates folder
+ my $configFile      = "$configdir/mapivirc";  # the configuration file
+ my $file_Entry_values = "$configdir/Entry_values";
+ my $exifdirname     = ".exif";                # the subdir to store exif infos
+ my $thumbdirname    = ".thumbs";              # the subdir to store thumbnails
+ my $xvpicsdirname   =  ".xvpics";             # a subdir from GIMP we usualy ignore
+-my $thumbExample    = "$configdir/thumbExample.jpg";
++my $thumbExample    = "$usrshare/pics/thumbExample.jpg";
+ my $nonJPEGsuffixes = "gif|png|tif|tiff|bmp|ppm|ps";    # xcf works, but makes problems with layers
+ my $cameraJunkSuffixes = "ctg"; # uninteresting files created by cameras
+ my $copyright_year            = (localtime(time()))[5] + 1900; # the actual year, for the copyright notice
+@@ -544,7 +545,7 @@
+ 			  "ColorThumbBG"    => "azure3",
+ 			  "ColorProgress"   => "#106dba",
+ 			  "ColorPicker"     => "#efefef", # last color selected with color picker
+-			  "DefaultThumb"    => "$configdir/EmptyThumb.jpg",
++			  "DefaultThumb"    => "$usrshare/pics/EmptyThumb.jpg",
+ 			  "Copyright"       => "copyright (c) $copyright_year Herrmann",
+ 			  "Comment"         => "This picture was taken in south africa ...",
+ 			  "MaxProcs"        => 1,
+@@ -677,7 +678,7 @@
+ 			  "CopyFontColFG"   => "white",  # foreground color of the embedded copyright info font
+ 			  "CopyFontColBG"   => "black",  # background color of the embedded copyright info font
+ 			  "CopyFontShadow"  => 1,  # bool - add a shadow to the copyright text
+-			  "CopyrightLogo"   => "$configdir/MapiviIcon.gif",
++			  "CopyrightLogo"   => "$usrshare/pics/MapiviIcon.gif",
+ 			  "CopyTextOrLogo"  => "text",
+ 			  "BorderWidth1x"   => 10,      # border 1 width in x direction
+ 			  "BorderWidth1y"   => 10,      # border 1 width in y direction
+@@ -845,7 +846,7 @@
+ 			  'AutoImport'      => 1,      # boolean = 1 start import at Mapivi wizard if memory card is inserted (ImportSource)
+ 			  'llWatermarkX'    => 16,     # lossless watermark x position
+ 			  'llWatermarkY'    => -16,    # lossless watermark y position
+-			  'llWatermarkFile' => "$configdir/EmptyThumb.jpg", # lossless watermark file name
++			  'llWatermarkFile' => "$usrshare/pics/EmptyThumb.jpg", # lossless watermark file name
+ 			  'AspectBorderN'   => 3,      # lossless aspect ratio border
+ 			  'AspectBorderM'   => 2,      # lossless aspect ratio border
+ 			  'RelativeBorderX' => 10,     # lossless relative border
+@@ -1083,14 +1084,14 @@
+ dKyyLnF00kjQlkTSR9GqxBKzyS6bEbY0EestAAEBADs=
+ EOF
+ my $mapiviicon = $top->Photo(-data => $icon_data);
+-my $mapiviiconfile = "$configdir/MapiviIcon.gif";
+-$mapiviiconfile    = "$configdir/MapiviIcon32.gif" if $EvilOS;
++my $mapiviiconfile = "$usrshare/pics/MapiviIcon.gif";
++$mapiviiconfile    = "$usrshare/pics/MapiviIcon32.gif" if $EvilOS;
+ #my $mapiviicon = $top->Photo(-file => $mapiviiconfile) if (-f $mapiviiconfile);
+ $top->idletasks if $EvilOS; # this line is crucial (at least on windows)
+ $top->iconimage($mapiviicon) if $mapiviicon;
+ 
+-my $dragAndDrop1     = "$configdir/MiniPic.jpg";
+-my $dragAndDrop2     = "$configdir/MiniPicMulti.jpg";
++my $dragAndDrop1     = "$usrshare/pics/MiniPic.jpg";
++my $dragAndDrop2     = "$usrshare/pics/MiniPicMulti.jpg";
+ my $dragAndDropIcon1 = $top->Photo(-file => $dragAndDrop1) if (-f $dragAndDrop1);
+ my $dragAndDropIcon2 = $top->Photo(-file => $dragAndDrop2) if (-f $dragAndDrop2);
+ 
+@@ -13682,10 +13683,10 @@
+   $help_menu->command(-image => compound_menu($top, 'About', 'dialog-information.png'),        -command => \&about);
+   $help_menu->command(-image => compound_menu($top, 'Keys', 'input-keyboard.png'),         -command => \&showkeys);
+   $help_menu->command(-image => compound_menu($top, 'System information', 'utilities-system-monitor.png'), -command => \&systemInfo);
+-  $help_menu->command(-image => compound_menu($top, 'License', ''),      -command => [\&showFile, "$configdir/License.txt"]) if (-f "$configdir/License.txt");
+-  $help_menu->command(-image => compound_menu($top, 'History', ''),      -command => [\&showFile, "$configdir/Changes.txt"]) if (-f "$configdir/Changes.txt");
+-  $help_menu->command(-image => compound_menu($top, 'Tips', 'help-browser.png'),         -command => sub { showFile("$configdir/Tips.txt") }) if (-f "$configdir/Tips.txt");
+-  $help_menu->command(-image => compound_menu($top, 'FAQ', 'help-browser.png'),          -command => [\&showFile, "$configdir/FAQ"]) if (-f "$configdir/FAQ");
++  $help_menu->command(-image => compound_menu($top, 'License', ''),      -command => [\&showFile, "$usrshare/License.txt"]) if (-f "$usrshare/License.txt");
++  $help_menu->command(-image => compound_menu($top, 'History', ''),      -command => [\&showFile, "$usrshare/Changes.txt"]) if (-f "$usrshare/Changes.txt");
++  $help_menu->command(-image => compound_menu($top, 'Tips', 'help-browser.png'),         -command => sub { showFile("$usrshare/Tips.txt") }) if (-f "$usrshare/Tips.txt");
++  $help_menu->command(-image => compound_menu($top, 'FAQ', 'help-browser.png'),          -command => [\&showFile, "$usrshare/FAQ"]) if (-f "$usrshare/FAQ");
+ 
+   $top->configure(-menu => $menubar) if $config{ShowMenu};
+ }
+@@ -16381,7 +16382,7 @@
+ 	my $picName      = shift;
+ 	my $func         = shift;
+ 
+-	my $pic   = "$configdir/$picName";
++	my $pic   = "$usrshare/pics/$picName";
+ 	my $image = $parentWidget->Photo(-file => $pic) if -f $pic;
+ 
+ 	if ($image) {
+@@ -20396,7 +20397,7 @@
+   if (!-d $configdir) {
+ 	# ask the user for permission to create a configdir
+ 	my $rc = $top->messageBox(-icon => 'question',
+-							  -message => "MaPiVi would like to create a folder \"$configdir\" in your home folder to store the configuration of Mapivi and some button and background pictures.",
++							  -message => "MaPiVi would like to create a folder \"$configdir\" in your home folder to store the configuration of Mapivi.",
+ 							  -title => "Mapivi installation", -type => 'OKCancel');
+ 	return if ($rc !~ m/Ok/i);
+   }
+@@ -20436,7 +20437,9 @@
+ 
+   if (!-d $plugindir) {
+ 	if ( !mkdir "$plugindir", 0755 ) {
+-	  $top->messageBox(-icon => 'warning', -message => "Error making PlugIn dir $plugindir: $!",
++	  # RJW: This will likely not work if $usrshare is /usr/share/mapivi
++	  #      and the user is not root.
++	  $top->messageBox(-icon => 'warning', -message => "Error making PlugIn dir $plugindir (should be created by installer?): $!",
+ 					   -title => "Mapivi installation", -type => 'OK');
+ 	  return;
+ 	}
+@@ -23741,7 +23744,7 @@
+   my $stopB = $subF->Button(-text => "Stop",
+ 							-command => sub { $stop = 1; }
+ 						   )->pack(-side => 'left', -anchor => 'w', -expand => 0,-padx => 1,-pady => 1);
+-  my $stopImg = $top->Photo(-file => "$configdir/StopPic.gif") if (-f "$configdir/StopPic.gif");
++  my $stopImg = $top->Photo(-file => "$usrshare/pics/StopPic.gif") if (-f "$usrshare/pics/StopPic.gif");
+   $stopB->configure(-image => $stopImg, -borderwidth => 0) if $stopImg;
+   $stopB->configure(-state => "disabled");
+ 
+@@ -24896,7 +24899,7 @@
+   $stopB = $SButF->Button(-text => "Stop",
+ 						 -command => sub { $stop = 1; }
+ 						 )->pack(-side => 'left', -anchor => 'w', -expand => 0,-padx => 1,-pady => 1);
+-  my $stopImg = $top->Photo(-file => "$configdir/StopPic.gif") if (-f "$configdir/StopPic.gif");
++  my $stopImg = $top->Photo(-file => "$usrshare/pics/StopPic.gif") if (-f "$usrshare/pics/StopPic.gif");
+   $stopB->configure(-image => $stopImg, -borderwidth => 0) if $stopImg;
+   $stopB->configure(-state => "disabled");
+ 
+@@ -28742,7 +28745,7 @@
+   my $stopB = $butF->Button(-text => "Stop",
+ 							-command => sub { $stop = 1; }
+ 						   )->pack(-side => 'left', -anchor => 'w', -expand => 0,-padx => 1,-pady => 1);
+-  my $stopImg = $top->Photo(-file => "$configdir/StopPic.gif") if (-f "$configdir/StopPic.gif");
++  my $stopImg = $top->Photo(-file => "$usrshare/pics/StopPic.gif") if (-f "$usrshare/pics/StopPic.gif");
+   $stopB->configure(-image => $stopImg, -borderwidth => 0) if $stopImg;
+   $stopB->configure(-state => "disabled");
+ 
+@@ -29425,6 +29428,7 @@
+ 
+   my $string = << "EOA";
+    Mapivi config dir: $configdir
++   Mapivi static dir: $usrshare
+ 
+         Perl version: $perlversion
+      Perl/Tk version: $Tk::VERSION
