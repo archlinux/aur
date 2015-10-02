@@ -1,0 +1,16 @@
+pkgbase = nodejs-less-plugin-clean-css
+	pkgdesc = Post-process and compress CSS using clean-css
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/less/less-plugin-clean-css
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	depends = nodejs-clean-css
+	noextract = less-plugin-clean-css-1.5.1.tgz
+	source = https://registry.npmjs.org/less-plugin-clean-css/-/less-plugin-clean-css-1.5.1.tgz
+	md5sums = fb5739bc97267a975507d290797e96b8
+
+pkgname = nodejs-less-plugin-clean-css
+
