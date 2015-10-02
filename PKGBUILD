@@ -2,29 +2,32 @@
 
 pkgname=libmill
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Go-style concurrency in C'
 arch=('i686' 'x86_64')
 url='http://libmill.org/'
-depends=('glib2' 'pkgconfig')
+depends=('pkgconfig')
+options=('!buildflags')
 makedepends=('gcc')
 license=('MIT')
 source=("https://github.com/sustrik/libmill/archive/${pkgver}.tar.gz")
 sha256sums=('397e461a7075ea17c4248b0d8f62b2890c3ed5c260821b9bef3f09e49619b508')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
-# @TODO: figure out why 'make check' fails
-# check() {
-  # cd "${srcdir}/${pkgname}-${pkgver}"
-  # ./configure --prefix=/usr
-  # make DESTDIR="${pkgdir}" check
-# }
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
+}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
