@@ -2,7 +2,7 @@
 
 pkgname=solar-python
 pkgver=2.1.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Solar data calculation and prediction library for Python"
 arch=(any)
 url="https://github.com/maandree/solar-python"
