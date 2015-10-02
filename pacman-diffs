@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+# finding .pacnew files and compare
+# v1.0.0
+
+AGE=360 # ne rechercher que ceux qui ont moins de 360 jours
+EXT='pacnew'
+
+c_red='\033[0m\033[31m'
+c_green='\033[0m\033[32m'
+c_end='\033[0m'
+bold='\033[1m'
+
+## default string constants {{{
+    declare -A txt=(
+        ['label']='differences of'
+        ['error']='Error'
+        ['notfound']='file not found'
+    )
+lg=$(locale 2>/dev/null | awk -F'=' '/^LANG/ {print $2}')
+if [ 'fr' == "${lg:0:2}" ]; then
+    declare -A txt=(
+        ['label']='les différences de'
+        ['error']='Erreur'
+        ['notfound']="fichier n'existe pas"
+    )
+fi
+#}}}
+
+function usage()
+{
+    echo "usage: pacman-diffs [options]"
+    echo -e "\t -x extension (pacnew, pacsave...)"
+    echo -e "\t -d since x days"
+    echo -e "\t -l : list only - no diff"
+    echo -e "\t -e filename : edit files"
+    exit
+}
+
+function erreur()
+{
+	echo -e "\033[41m${txt[error]}:\033[0m $1" >&2
+}
+
+while getopts "hd:x:le:" flags; do
+	case $flags in
+		h) usage;exit 0 ;;
+		d) AGE="${OPTARG}" ;;
+		x) EXT="${OPTARG}" ;;
+		l) lister=1 ;;
+		e) edit="${OPTARG}";lister=1 ;;		
+		:) erreur "Vous avez oublié un argument"; exit 1 ;;
+		?) erreur "invalid Option"; exit 1 ;;
+		*) erreur "*"; exit 1 ;;
+	esac
+done
+
+
+find '/etc' -name "*.$EXT" -mtime -$AGE -type f 2> /dev/null | while read file ; do
+
+    fname=$(basename "$file")
+    fname="${fname%.$EXT}"
+    ofile="$(dirname ${file})/${fname}"
+    dfile=$(stat -c "%y" ${file} | awk '{print $1}')
+    echo -e "\n$bold${fname}$c_end\n-- ${txt[label]} $file\t(${dfile})"
+   
+    if [[ -f "$ofile" ]]; then
+   
+        if [[ $lister -ne 1 ]]; then
+            # < : removed       > : added
+            IFS=$'\n'
+            diff ${ofile} ${file}| grep -E "^>|^<" | while read line ; do
+                if [ "${line::1}" = '<' ]; then c="$c_red-"; else c="$c_green+"; fi
+                echo -e "$c ${line:2}$c_end"
+            done
+        fi
+    
+        if [ "$edit" == "$fname" ]; then
+            if [ -f '/usr/bin/diffuse' ]; then
+                /usr/bin/diffuse $ofile $file &
+            else
+                [ -f '/usr/bin/kompare' ] && /usr/bin/kompare $ofile $file &
+            fi
+        fi
+    
+    else
+        echo -e "\t$bold ${txt[error]}:$c_end ${txt[notfound]} ? $ofile"
+    fi
+    
+done
+
+exit 0

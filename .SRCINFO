@@ -1,0 +1,15 @@
+pkgbase = pacman-diffs
+	pkgdesc = finding .pacnew files and compare
+	pkgver = 1.0.0
+	pkgrel = 0
+	arch = any
+	license = GPL
+	depends = findutils
+	depends = diffutils
+	optdepends = diffuse: graphical editor[community]
+	optdepends = kompare: kde editor [extra]
+	source = pacman-diffs
+	md5sums = SKIP
+
+pkgname = pacman-diffs
+
