@@ -20,7 +20,6 @@ depends=(
     'python2-dateutil'
     'python2-docutils'
     'python2-decorator'
-    'python2-egenix-mx-base'
     'python2-feedparser'
     'python2-gdata'
     'python2-gevent'
@@ -37,7 +36,6 @@ depends=(
     'python2-passlib'
     'python2-paramiko'
     'python2-pillow'
-    'python2-pip'
     'python2-psutil'
     'python2-psycopg2'
     'python2-psycogreen'
@@ -50,12 +48,9 @@ depends=(
     'python2-reportlab'
     'python2-pypdf'
     'python2-pytz'
-    'python2-pywebdav'
     'python2-requests'
-    'python2-simplejson'
     'python2-six'
     'python2-suds-jurko'
-    'python2-qrcode'
     'python2-unittest2'
     'python2-vatnumber'
     'python2-vobject'
@@ -63,11 +58,8 @@ depends=(
     'python2-wsgiref'
     'python2-xlwt'
     'python2-yaml'
-    'wkhtmltopdf-static'
     'python2-zsi'
-)
-optdepends=(
-    'antiword'
+    'wkhtmltopdf-static'
 )
 
 source=(
