@@ -20,7 +20,9 @@ prepare() {
 	cd "$srcdir/gdb-$pkgver"
 	[[ -d gdb-build ]] && rm -rf gdb-build
 	mkdir gdb-build
-	
+
+	# temporary fix for
+  # https://sourceware.org/bugzilla/show_bug.cgi?id=19033
   patch -p1 < ../fix-dwarf2read.patch
 	# fix libiberty
 	# sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
