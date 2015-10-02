@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url=""
 license=('GPL')
 depends=('python2')
+makedepends=("python2-setuptools")
 source=("https://pypi.python.org/packages/source/P/PyQRCode/PyQRCode-1.1.tar.gz")
 md5sums=('4ff9fe80c20217710c0643c4cd339a8c')
 

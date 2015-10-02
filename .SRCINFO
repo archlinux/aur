@@ -5,6 +5,7 @@ pkgbase = python2-pyqrcode
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = python2-setuptools
 	depends = python2
 	source = https://pypi.python.org/packages/source/P/PyQRCode/PyQRCode-1.1.tar.gz
 	md5sums = 4ff9fe80c20217710c0643c4cd339a8c
