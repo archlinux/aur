@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=python-readability-lxml
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a python port of a ruby port of arc90’s readability project"
 arch=(any)
 url="https://github.com/buriy/python-readability"
@@ -13,12 +13,12 @@ source=("https://pypi.python.org/packages/source/r/readability-lxml/readability-
 
 build() {
 	cd "$srcdir/readability-lxml-$pkgver"
-	python2 setup.py build
+	python setup.py build
 }
 
 package() {
 	install -m644 -D LICENSE "$pkgdir/usr/share/licenses/python-readability-lxml/LICENSE"
 	cd "$srcdir/readability-lxml-$pkgver"
-	python2 setup.py install --root="$pkgdir/" --prefix="/usr"
+	python setup.py install --root="$pkgdir/" --prefix="/usr"
 	install -m644 -D README "$pkgdir/usr/share/doc/python-readability-lxml/README"
 }
