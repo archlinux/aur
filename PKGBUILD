@@ -2,7 +2,7 @@
 
 pkgname=python-prompt_toolkit
 pkgver=0.52
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for building powerful interactive command lines in Python"
 arch=('any')
 depends=('python'
