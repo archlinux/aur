@@ -1,0 +1,13 @@
+pkgbase = pixel_keyboard_backlight_driver
+	pkgdesc = pixel_keyboard_backlight_driver
+	pkgver = 0.1.5
+	pkgrel = 4
+	url = https://github.com/xhcnb/pixel_keyboard_backlight_driver
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = git://github.com/xhcnb/pixel_keyboard_backlight_driver.git
+	md5sums = SKIP
+
+pkgname = pixel_keyboard_backlight_driver
+
