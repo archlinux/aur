@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=solar-python
-pkgver=2.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Solar data calculation and prediction library for Python"
 arch=(any)
@@ -10,17 +10,17 @@ license=('AGPL3')
 depends=(python3)
 makedepends=(make coreutils python3)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(eb2e1c23e9e223012d06ed913cefa1d04646c678f939b03b13ce625be437498f)
+sha256sums=(e1abf24356b9b08a7b50a7ceb40f6d0a43350c74a5ac69dceb73f940b361189e)
 
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr PY_MAJOR=3 PY_MINOR=4
+  make PREFIX=/usr PY_MAJOR="$(python -V | cut -d ' ' -f 2 | cut -d . -f 1)" PY_MINOR="$(python -V | cut -d ' ' -f 2 | cut -d . -f 2)"
 }
 
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr PY_MAJOR=3 PY_MINOR=4 install DESTDIR="$pkgdir"
+  make PREFIX=/usr PY_MAJOR="$(python -V | cut -d ' ' -f 2 | cut -d . -f 1)" PY_MINOR="$(python -V | cut -d ' ' -f 2 | cut -d . -f 2)" install DESTDIR="$pkgdir"
 }
 
