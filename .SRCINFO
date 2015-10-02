@@ -1,0 +1,21 @@
+pkgbase = salome-netgenplugin
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - NETGEN plugin
+	pkgver = 7.6.0
+	pkgrel = 1
+	url = http://www.salome-platform.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = salome-smesh>=7.6.0
+	depends = salome-smesh<7.7.0
+	source = http://downloads.sourceforge.net/netgen-mesher/netgen-4.9.13.tar.gz
+	source = netgen-4.9.13-for-SALOME.patch
+	source = netgen-4.9.13-for-CMake.patch
+	source = salome-netgenplugin.profile
+	md5sums = 2d56642ca673106837bcd08ff9913d57
+	md5sums = b19f13b42651b992359eaf0ad4ae346b
+	md5sums = 4ae279ab4558b1719fe1d8d65a1ed1a1
+	md5sums = d143fa3d279a64e0676eb0b43709ffee
+
+pkgname = salome-netgenplugin
+
