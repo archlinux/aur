@@ -7,7 +7,7 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 pkgver=226
-pkgrel=1
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -139,17 +139,11 @@ package_systemd-selinux() {
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
 
-  ### split out manpages for sysvcompat
-  rm -rf "$srcdir/_sysvcompat"
-  install -dm755 "$srcdir"/_sysvcompat/usr/share/man/man8/
-  mv "$pkgdir"/usr/share/man/man8/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
-     "$srcdir"/_sysvcompat/usr/share/man/man8
+  ### manpages shipped with systemd-sysvcompat
+  rm "$pkgdir"/usr/share/man/man8/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
 
-  ### split off runtime libraries
-  rm -rf "$srcdir/_libsystemd"
-  install -dm755 "$srcdir"/_libsystemd/usr/lib
-  cd "$srcdir"/_libsystemd
-  mv "$pkgdir"/usr/lib/lib{systemd,udev}*.so* usr/lib
+  ### runtime libraries shipped with libsystemd
+  rm "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so*
 
   # add example bootctl configuration
   install -Dm644 "$srcdir/arch.conf" "$pkgdir"/usr/share/systemd/bootctl/arch.conf
@@ -166,7 +160,7 @@ package_libsystemd-selinux() {
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=("${pkgname/-selinux}")
 
-  mv "$srcdir/_libsystemd"/* "$pkgdir"
+  make -C "${pkgbase/-selinux}" DESTDIR="$pkgdir" install-libLTLIBRARIES
 }
 
 package_systemd-sysvcompat-selinux() {
@@ -178,7 +172,10 @@ package_systemd-sysvcompat-selinux() {
             "selinux-systemd-sysvcompat=${pkgver}-${pkgrel}")
   replaces=("${pkgname/-selinux}")
 
-  mv "$srcdir/_sysvcompat"/* "$pkgdir"
+  install -dm755 "$pkgdir"/usr/share/man/man8
+  cp -d --no-preserve=ownership,timestamp \
+    "${pkgbase/-selinux}"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
+    "$pkgdir"/usr/share/man/man8
 
   install -dm755 "$pkgdir/usr/bin"
   for tool in runlevel reboot shutdown poweroff halt telinit; do
