@@ -3,7 +3,7 @@
 # Contributor: olav-st <olav.s.th@gmail.com>
 
 pkgname=nomachine
-pkgver=4.6.16
+pkgver=5.0.43
 pkgrel=1
 pkgdesc="Remote desktop application"
 groups=('network')
@@ -18,13 +18,13 @@ install=nomachine.install
 case "$CARCH" in
 	x86_64) _pkgarch="x86_64"
 		pkgrel=1
-		sha256sums=('4c1abc76d844f04f24e5fadf06bb720275dacd3e71aacceb6380bc8755a0f996')
-                source=("http://download.nomachine.com/download/4.6/Linux/${pkgname}_${pkgver}_${pkgrel}_${_pkgarch}.tar.gz")
+		sha512sums=('b07f74c5a30517ef1c3e196fa9702aacda069bebac5c3b1f4227eb306e14324dc9ed88eb4b129466e51a1247e5382f93f9cc209ecdbea354bc1bac5e0601cad4')
+                source=("http://download.nomachine.com/download/5.0/Linux/${pkgname}_${pkgver}_${pkgrel}_${_pkgarch}.tar.gz")
                 ;;
         i686)   _pkgarch="i686"
 		pkgrel=1
-		sha256sums=('c55dcdc895f4427bc5d988467d8313ee2c0678caca6b3913ed53d5b247c3142f')
-                source=("http://download.nomachine.com/download/4.6/Linux/${pkgname}_${pkgver}_${pkgrel}_${_pkgarch}.tar.gz")
+		sha512sums=('e47fe63fa31f50e0ec542deda2912986bca78aa70f93f68e9aa9519c68b956ac59c26df7c14a8225ed2ed6953bbf158f242971e8bfdfe5f5eabeafa67af0f399')
+                source=("http://download.nomachine.com/download/5.0/Linux/${pkgname}_${pkgver}_${pkgrel}_${_pkgarch}.tar.gz")
                 ;;
 esac
 
