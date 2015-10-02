@@ -6,9 +6,9 @@
 
 
 pkgname=('gvim-python3-noconflict')
-pkgver=7.4.854
+pkgver=7.4.884
 _versiondir=74
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
