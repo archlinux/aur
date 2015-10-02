@@ -1,0 +1,37 @@
+*** Makefile.am	2012-05-12 19:31:55.000000000 +0200
+--- changes	2015-10-02 11:12:37.075085327 +0200
+***************
+*** 2,21 ****
+  
+  DEBUGLEVEL = 3
+  
+! SUBDIRS = doc include um_lib um_cmd um_testmodule umdev umdev_testmodules umdevmbr umbinfmt xmview ummisc ummisc_modules um_viewfs umnet umnet_modules umfuse_modules
+! 
+! if ENABLE_UMDEVTAP
+! SUBDIRS += umdevtap
+! endif
+  
+  if ENABLE_UMFUSE
+  SUBDIRS += umfuse
+  endif
+  
+- if ENABLE_UM_LWIP
+- SUBDIRS += umnetlwipv6
+- endif
+- 
+  tags:
+  	ctags -R .
+  
+--- 2,13 ----
+  
+  DEBUGLEVEL = 3
+  
+! SUBDIRS = doc um_lib um_cmd um_testmodule umdev umdev_testmodules umdevmbr umbinfmt ummisc ummisc_modules umnet umnet_modules umfuse_modules
+  
+  if ENABLE_UMFUSE
+  SUBDIRS += umfuse
+  endif
+  
+  tags:
+  	ctags -R .
+  
