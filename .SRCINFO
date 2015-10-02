@@ -1,6 +1,6 @@
 pkgbase = nodejs-jscs
 	pkgdesc = JavaScript Code Style
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://jscs.info/
 	arch = any
