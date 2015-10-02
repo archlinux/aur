@@ -2,8 +2,8 @@
 
 pkgname=mdm-nosystemd
 _pkgname=mdm
-pkgver=1.8.3
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="The MDM Display Manager with consolekit support for non-systemd setups"
 arch=('i686' 'x86_64')
 url="http://www.linuxmint.com"
@@ -87,7 +87,7 @@ rmdir $pkgdir/usr/share/mdm/applications
 
 }
 
-sha256sums=('912d8f7cfc950a70f68e09db46775687cd9b61a54a9d96b7715cf6eff79ba6ba'
+sha256sums=('7e047c45edc6a5a1141650ca9af448d8d5596fe12fb9863001eb8e6f1e0d577c'
             'd6fa4e4c6325ba3f343c6d42675877cde1fb7d48e11cbb2f4b209b28322d8d75'
             '479e8fd4d5ef353fec5af776ad05e4f414a92d6f374f9b8f5deef77b9e301bc7'
             'ce9448356c54d8de5b8af5cdef2b5c30b4e6ae970126ce0c4ef295be557bbd2a'
