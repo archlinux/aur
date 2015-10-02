@@ -1,6 +1,6 @@
 pkgbase = trashman-git
 	pkgdesc = A Python trash manager. (git version)
-	pkgver = 1.5.0.r1.g0bc27dc
+	pkgver = 1.5.0.r5.ga0819f
 	pkgrel = 1
 	url = https://github.com/Kwpolska/trashman
 	arch = any

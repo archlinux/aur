@@ -2,7 +2,7 @@
 pkgname=trashman-git
 _pyname=trashman
 _gitname=trashman
-pkgver=1.5.0.r1.g0bc27dc
+pkgver=1.5.0.r5.ga0819f
 pkgrel=1
 pkgdesc='A Python trash manager. (git version)'
 arch=('any')
