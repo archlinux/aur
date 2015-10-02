@@ -1,7 +1,7 @@
 pkgbase = python-doit
 	pkgdesc = doit automation tool
 	pkgver = 0.29.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pydoit.org/
 	arch = any
 	license = MIT
