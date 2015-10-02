@@ -1,0 +1,17 @@
+pkgbase = lib32-libmill
+	pkgdesc = Go-style concurrency in C
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://libmill.org/
+	arch = x86_64
+	license = MIT
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = pkgconfig
+	depends = libmill
+	options = !buildflags
+	source = https://github.com/sustrik/libmill/archive/1.0.tar.gz
+	sha256sums = 397e461a7075ea17c4248b0d8f62b2890c3ed5c260821b9bef3f09e49619b508
+
+pkgname = lib32-libmill
+
