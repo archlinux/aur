@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgbase=python-yapsy-hg
 pkgname=('python-yapsy-hg' 'python2-yapsy-hg')
-pkgver=349.af8c67ea5a76
+pkgver=386.09ae8fccba69
 pkgrel=1
 pkgdesc='Yet another plugin system (hg version)'
 arch=('any')
