@@ -1,0 +1,44 @@
+diff -Naur -x build openorienteering-mapper-0.5.96-orig/3rd-party/qtsingleapplication/src/qtlocalpeer.h openorienteering-mapper-0.5.96/3rd-party/qtsingleapplication/src/qtlocalpeer.h
+--- openorienteering-mapper-0.5.96-orig/3rd-party/qtsingleapplication/src/qtlocalpeer.h	2014-11-02 16:44:12.000000000 +0300
++++ openorienteering-mapper-0.5.96/3rd-party/qtsingleapplication/src/qtlocalpeer.h	2015-10-03 02:13:47.089873960 +0300
+@@ -43,6 +43,7 @@
+ #include <QLocalServer>
+ #include <QLocalSocket>
+ #include <QDir>
++#include <QDataStream>
+ 
+ #include "qtlockedfile.h"
+ 
+diff -Naur -x build openorienteering-mapper-0.5.96-orig/src/core/map_color.h openorienteering-mapper-0.5.96/src/core/map_color.h
+--- openorienteering-mapper-0.5.96-orig/src/core/map_color.h	2014-11-02 16:44:12.000000000 +0300
++++ openorienteering-mapper-0.5.96/src/core/map_color.h	2015-10-03 02:07:23.306553717 +0300
+@@ -27,6 +27,7 @@
+ #include <QColor>
+ #include <QString>
+ #include <QHash>
++#include <QMetaType>
+ 
+ class Map;
+ class MapColor;
+diff -Naur -x build openorienteering-mapper-0.5.96-orig/src/core/map_grid.h openorienteering-mapper-0.5.96/src/core/map_grid.h
+--- openorienteering-mapper-0.5.96-orig/src/core/map_grid.h	2014-11-02 16:44:12.000000000 +0300
++++ openorienteering-mapper-0.5.96/src/core/map_grid.h	2015-10-03 02:09:34.959882559 +0300
+@@ -23,6 +23,7 @@
+ #define _OPENORIENTEERING_MAP_GRID_H_
+ 
+ #include <QColor>
++#include <QIODevice>
+ 
+ QT_BEGIN_NAMESPACE
+ class QPainter;
+diff -Naur -x build openorienteering-mapper-0.5.96-orig/src/dxfparser.h openorienteering-mapper-0.5.96/src/dxfparser.h
+--- openorienteering-mapper-0.5.96-orig/src/dxfparser.h	2014-11-02 16:44:12.000000000 +0300
++++ openorienteering-mapper-0.5.96/src/dxfparser.h	2015-10-03 01:45:49.063264530 +0300
+@@ -26,6 +26,7 @@
+ #include <QColor>
+ #include <QFont>
+ #include <QRectF>
++#include <QIODevice>
+ 
+ struct DXFCoordinate
+ {

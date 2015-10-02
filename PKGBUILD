@@ -14,6 +14,7 @@ sha256sums=('8d76213183bc1b69c9121a649397986eba8fc3a07ece1c5747a4748cdf881e04')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
+  patch -p1 < ${srcdir}/qt-include.patch
 
   rm -rf ${srcdir}/${pkgname}-${pkgver}/build
   mkdir -p ${srcdir}/${pkgname}-${pkgver}/build
