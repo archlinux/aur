@@ -1,20 +1,28 @@
 pkgbase = liblwipv6
-	pkgdesc = User level (lightweight) TCP/IP stack with IPv6 support.
+	pkgdesc = User level (lightweight) TCP/IP stack with IPv6 support
 	pkgver = 1.5a
 	pkgrel = 2
 	url = https://sourceforge.net/projects/view-os
 	install = liblwipv6.install
+	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = glibc>=2.17
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = libtool
+	depends = glibc
 	depends = libpcap>=0.8
+	depends = vde2
 	provides = liblwipv6=1.5a
 	conflicts = liblwipv6
 	replaces = liblwipv6
-	source = http://ftp.us.debian.org/debian/pool/main/l/lwipv6/liblwipv6-2_1.5a-2_amd64.deb
+	source = http://http.debian.net/debian/pool/main/l/lwipv6/lwipv6_1.5a.orig.tar.gz
 	source = liblwipv6.install
-	md5sums = 256c6a739c765988eafdd347f174635d
+	source = http://ftp.us.debian.org/debian/pool/main/l/lwipv6/liblwipv6-2_1.5a-2_amd64.deb
+	md5sums = 82258b72a5e0abbfd17920a8d7fa1906
 	md5sums = b4165e6142a92d65c8e14479486decc4
+	md5sums = 256c6a739c765988eafdd347f174635d
 
 pkgname = liblwipv6
 
