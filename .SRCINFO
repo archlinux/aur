@@ -1,7 +1,7 @@
 pkgbase = python-redditcurl
 	pkgdesc = Download the images you saved on Reddit.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SeriousBug/redditcurl
 	arch = any
 	license = GPL

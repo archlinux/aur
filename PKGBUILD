@@ -3,7 +3,7 @@
 pkgname=python-redditcurl
 _pkgname=redditcurl
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Download the images you saved on Reddit.'
 arch=(any)
 url='https://github.com/SeriousBug/redditcurl'
