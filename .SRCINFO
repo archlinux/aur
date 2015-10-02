@@ -8,6 +8,8 @@ pkgbase = pacman-diffs
 	depends = diffutils
 	optdepends = diffuse: graphical editor[community]
 	optdepends = kompare: kde editor [extra]
+	optdepends = gksu: gnome gui for su
+	optdepends = kdesu: kde gui for su
 	source = pacman-diffs
 	md5sums = SKIP
 

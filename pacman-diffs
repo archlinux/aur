@@ -75,10 +75,16 @@ find '/etc' -name "*.$EXT" -mtime -$AGE -type f 2> /dev/null | while read file ;
         fi
     
         if [ "$edit" == "$fname" ]; then
-            if [ -f '/usr/bin/diffuse' ]; then
-                /usr/bin/diffuse $ofile $file &
+            kdesu=''
+            if [ -f '/usr/bin/kdesu' ]; then
+                kdesu='kdesu'
             else
-                [ -f '/usr/bin/kompare' ] && /usr/bin/kompare $ofile $file &
+                [ -f '/usr/bin/gksu' ] && kdesu='gksu'
+            fi
+            if [ -f '/usr/bin/diffuse' ]; then
+                $kdesu /usr/bin/diffuse $ofile $file &
+            else
+                [ -f '/usr/bin/kompare' ] && $kdesu /usr/bin/kompare $ofile $file &
             fi
         fi
     

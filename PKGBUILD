@@ -7,7 +7,9 @@ arch=('any')
 license=('GPL')
 depends=('findutils' 'diffutils')
 optdepends=('diffuse: graphical editor[community]'
-        'kompare: kde editor [extra]')
+        'kompare: kde editor [extra]'
+        'gksu: gnome gui for su'
+        'kdesu: kde gui for su')
 source=("pacman-diffs")
 md5sums=('SKIP')
 
