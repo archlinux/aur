@@ -1,7 +1,7 @@
 pkgbase = pypi-cli
 	pkgdesc = A command-line interface to the Python Package Index (PyPI).
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sloria/pypi-cli
 	arch = any
 	license = MIT

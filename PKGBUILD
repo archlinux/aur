@@ -1,7 +1,7 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=pypi-cli
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line interface to the Python Package Index (PyPI)."
 arch=('any')
 url="https://github.com/sloria/pypi-cli"
