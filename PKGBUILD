@@ -11,7 +11,7 @@ provides=('i3-wm')
 conflicts=('i3-wm' 'i3bar' 'i3bar-git' 'i3-git' 'i3-gaps-next-git')
 groups=('i3-vcs')
 depends=('xcb-util-keysyms' 'xcb-util-wm' 'libev' 'yajl'
-         'startup-notification' 'pango' 'perl' 'xcb-util-cursor-git'
+         'startup-notification' 'pango' 'perl' 'xcb-util-cursor'
          'libxkbcommon-x11')
 makedepends=('git' 'asciidoc' 'docbook-xsl' 'pkgconfig')
 optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
