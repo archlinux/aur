@@ -1,6 +1,6 @@
 pkgbase = fbc
 	pkgdesc = FreeBASIC Compiler (Release version)
-	pkgver = 1.03
+	pkgver = 1.04
 	pkgrel = 1
 	url = http://www.freebasic.net
 	arch = i686
@@ -8,13 +8,12 @@ pkgbase = fbc
 	license = GPL2
 	license = LGPL
 	makedepends = libffi
-	makedepends = libffi-compat
 	makedepends = libtinfo
 	provides = fbc
 	conflicts = freebasic
 	conflicts = fbc-git
 	options = staticlibs
-	source = https://downloads.sourceforge.net/fbc/FreeBASIC-1.03.0-source.tar.gz
+	source = https://downloads.sourceforge.net/fbc/FreeBASIC-1.04.0-source.tar.gz
 	sha256sums = SKIP
 
 pkgname = fbc

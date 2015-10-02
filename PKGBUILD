@@ -1,9 +1,9 @@
 # Maintainer: Frontier (frontier314 at gmail dot com)
 
 pkgname=fbc
-pkgver=1.03
-pkgrel=2
-_bootver=1.03.0
+pkgver=1.04
+pkgrel=1
+_bootver=1.04.0
 pkgdesc="FreeBASIC Compiler (Release version)"
 arch=('i686' 'x86_64')
 url="http://www.freebasic.net"
