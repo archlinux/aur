@@ -3,7 +3,7 @@
 pkgname=python-pytest-pep8
 _pypiname=pytest-pep8
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="pytest plugin to check PEP8 requirements."
 arch=('any')
 url="https://bitbucket.org/pytest-dev/pytest-pep8"
@@ -26,6 +26,6 @@ build() {
 
 package() {
 	cd "$srcdir/$_pypiname-$pkgver"
-    python setup.py install --root="$pkgdir"/ --prefix="/usr"
+    python setup.py install --root="$pkgdir"/ --prefix="/usr" --optimize=1
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

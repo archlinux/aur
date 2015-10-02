@@ -1,7 +1,7 @@
 pkgbase = python-pytest-pep8
 	pkgdesc = pytest plugin to check PEP8 requirements.
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/pytest-dev/pytest-pep8
 	arch = any
 	license = MIT
