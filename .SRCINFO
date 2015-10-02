@@ -1,7 +1,7 @@
 pkgbase = python-wcwidth
 	pkgdesc = Measures number of Terminal column cells of wide-character codes
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jquast/wcwidth
 	arch = any
 	license = MIT
