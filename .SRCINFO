@@ -1,0 +1,12 @@
+pkgbase = evopop-icon-theme
+	pkgdesc = Icon theme from Solus OS and Budgie Desktop
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/solus-cold-storage/evopop-icon-theme
+	arch = any
+	license = GPL
+	source = https://github.com/solus-cold-storage/evopop-icon-theme/releases/download/0.8/EvoPop-0.8.tar.xz
+	md5sums = bdea87c89ea45bcf32d8fd6b116f0b84
+
+pkgname = evopop-icon-theme
+
