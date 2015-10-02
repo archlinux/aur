@@ -3,13 +3,13 @@
 pkgname=python2-atomicwrites
 _pkgname=python-atomicwrites
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Atomic file writes on POSIX"
 arch=('i686' 'x86_64')
 url="https://github.com/untitaker/python-atomicwrites"
 license=('MIT')
 makedepends=('python2-setuptools')
-makedepends=('python2')
+depends=('python2')
 source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/untitaker/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('0fce96c2f96b3f4d3b2761e1c23af58de1688479bde5b2a925c372984f30b1ec')
 
