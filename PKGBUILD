@@ -3,7 +3,7 @@
 
 pkgname=pharo-launcher
 pkgver=4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(i686 x86_64)
 source=($pkgname-$pkgver.tar.gz)
@@ -14,12 +14,12 @@ depends=('pharo-vm-latest')
 
 source=(
 	'http://files.pharo.org/media/logo/icon-lighthouse-128x128.png'
-	'https://ci.inria.fr/pharo/view/Launcher/job/Launcher/PHARO=40,VERSION=stable,VM=vm,label=linux/lastSuccessfulBuild/artifact/PharoLauncher-user-stable-2015.08.08.zip'
+	'http://files.pharo.org/platform/launcher/blessed/PharoLauncher-user-0.2.8-2015.08.08.zip'
 )
 
 md5sums=(
 	'dec67d08d24433696375a319de029f34'
-	'9af00eda06a18241c42136b76bf1dfa5'
+	'9307d28dd0c78e4facbe071697f876e6'
 )
 
 prepare() {
