@@ -3,7 +3,7 @@
 
 pkgname=python-picuplib
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Picflash upload library"
 arch=('any')
 url="https://github.com/Arvedui/picuplib"

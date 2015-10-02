@@ -1,7 +1,7 @@
 pkgbase = python-picuplib
 	pkgdesc = Picflash upload library
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Arvedui/picuplib
 	arch = any
 	license = LGPLv2
