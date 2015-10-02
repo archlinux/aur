@@ -1,7 +1,7 @@
 pkgbase = pyfm
 	pkgdesc = A Tiny and Smart Terminal Player of douban.fm.
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skyline75489/pyfm
 	arch = any
 	license = MIT
