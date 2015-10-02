@@ -2,8 +2,8 @@
 
 pkgname=feeluown-git
 _pkgname=FeelUOwn
-pkgver=20150910
-pkgrel=2
+pkgver=20151002
+pkgrel=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
 arch=("any")
 url="https://github.com/cosven/FeelUOwn"

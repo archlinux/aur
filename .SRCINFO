@@ -1,7 +1,7 @@
 pkgbase = feeluown-git
 	pkgdesc = 个性化音乐服务 For Mac And Linux
-	pkgver = 20150910
-	pkgrel = 2
+	pkgver = 20151002
+	pkgrel = 1
 	url = https://github.com/cosven/FeelUOwn
 	arch = any
 	license = MIT
