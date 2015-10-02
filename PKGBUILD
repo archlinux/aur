@@ -1,8 +1,8 @@
 # Maintainer: Lubomir Krajcovic <lubomir.krajcovic(AT)gmail(DOT)com>
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
-pkgver=2.7
-pkgrel=4
+pkgver=2.8
+pkgrel=1
 pkgdesc="Successor to patch-o-matic(-ng). Contains extensions that were not accepted in the main Xtables. DKMS flavor for kernels >= 3.7."
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -17,7 +17,7 @@ source=(dkms.conf
         http://download.sourceforge.net/project/xtables-addons/Xtables-addons/xtables-addons-$pkgver.tar.xz)
 sha512sums=('428fea77c2df17778f6773ffbfcd9c57f91ce466eda2bdece2822ab2402541e4bff41888f4118e9e8da25f44967e978a2b378d07148f0f7edd672f99777dbd2b'
             'b6ebf96d02f919522861205cd17d3a75e5890f7e50cb258689ffca8b4036e77a6e018893fe3ba2ad8ffcee13b6335080b46970486a49983ce0764e8d6fef4a02'
-            '69c371b8bb5e464a4514dd432027be88a0ad5ab343bbe8c1f3cc2150f86e5a811de7a5d8fee2688499e5e49ac1dc275520eeae9afeeb51ec1cfaacc57892954a')
+            '337a0f9f8e1236a14977b1f60f82e9f6ea4b3d1134fb4ff29cdb7edfca54501639760e8f855ac803e259660a9a5afd7366770543e2f077346cb5dda8ef80462e')
 install=$pkgname.install
 
 package() {
