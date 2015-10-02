@@ -1,12 +1,13 @@
 pkgbase = python-atomicwrites
 	pkgdesc = Atomic file writes on POSIX
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/untitaker/python-atomicwrites
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = python
+	makedepends = python-setuptools
+	depends = python
 	source = python-atomicwrites-0.1.8.tar.gz::https://github.com/untitaker/python-atomicwrites/archive/0.1.8.tar.gz
 	sha256sums = 0fce96c2f96b3f4d3b2761e1c23af58de1688479bde5b2a925c372984f30b1ec
 
