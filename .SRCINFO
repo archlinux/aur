@@ -1,0 +1,20 @@
+pkgbase = perl-media-datetime
+	pkgdesc = A simple module to extract the timestamp from media files in an flexible manner.
+	pkgver = 0.48
+	pkgrel = 1
+	url = https://metacpan.org/module/Media-DateTime
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	depends = perl-module-build
+	depends = perl-datetime
+	depends = perl-try-tiny
+	depends = perl-module-pluggable
+	depends = perl-image-exiftool
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/M/MG/MGRIMES/Media-DateTime-0.48.tar.gz
+	md5sums = 5e2444c99e45e2bdb45d472bb13a7b43
+
+pkgname = perl-media-datetime
+
