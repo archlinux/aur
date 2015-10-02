@@ -1,13 +1,13 @@
 pkgbase = checkoutmanager
 	pkgdesc = Gives you overview and control over your git/hg/bzr/svn checkouts/clones
-	pkgver = 2.2
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/checkoutmanager
 	arch = any
 	license = GPL
 	depends = python
-	source = https://pypi.python.org/packages/source/c/checkoutmanager/checkoutmanager-2.2.tar.gz
-	md5sums = 29a196c7f228c3d48d4fdba5e001973c
+	source = https://pypi.python.org/packages/source/c/checkoutmanager/checkoutmanager-2.4.1.tar.gz
+	md5sums = cff92bff9014d81a402d9c332e074ec6
 
 pkgname = checkoutmanager
 
