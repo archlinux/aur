@@ -1,6 +1,6 @@
 pkgbase = pytagomacs
 	pkgdesc = An Emacs like key–value editor library for Python
-	pkgver = 1417073566
+	pkgver = 1443787175
 	pkgrel = 1
 	url = https://github.com/GNU-Pony/pytagomacs
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = pytagomacs
 	makedepends = python3
 	depends = python3
 	depends = coreutils
-	source = https://github.com/GNU-Pony/pytagomacs/archive/1417073566.tar.gz
-	sha256sums = 3b492aed48e0ea5d0d42c8b2189a2db9472d54e68e050be527a30f91e49516d2
+	source = https://github.com/GNU-Pony/pytagomacs/archive/1443787175.tar.gz
+	sha256sums = e259f77bd3a34acfbe2d8327cf9655d31a511a2521caaf9c63f3f1e35bb981ac
 
 pkgname = pytagomacs
 
