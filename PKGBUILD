@@ -2,7 +2,7 @@
 pkgname=upass
 _pyname=upass
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Console UI for pass'
 arch=('any')
 url='https://github.com/Kwpolska/upass'
