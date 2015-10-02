@@ -1,6 +1,6 @@
 pkgbase = newsfeed
 	pkgdesc = An RSS/RDF/Atom reader and aggregator
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = http://mdoege.github.io/3NewsFeed/
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = newsfeed
 	depends = python-feedparser
 	optdepends = python-pyaudio: for audio notifications (recommended)
 	optdepends = snack: for audio notifications (legacy)
-	source = http://mdoege.github.io/3NewsFeed/NewsFeed-3.4.tar.gz
+	source = http://mdoege.github.io/3NewsFeed/NewsFeed-3.5.tar.gz
 	source = newsfeed.desktop
 	source = newsfeed.png
-	md5sums = 140920b20afdbe867d828b0e01678107
+	md5sums = b97493c39b2baba3b4598457ff6008d8
 	md5sums = bf9de50dadb523f9dd4599eb1d852bf5
 	md5sums = 934bc285373e953a21cbf1a4b17888ca
 
