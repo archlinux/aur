@@ -5,14 +5,13 @@
 pkgname=light-locker-consolekit
 _pkgname=light-locker
 pkgver=1.6.0
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc='A simple session locker, with consolekit support'
 arch=('i686' 'x86_64')
 url='https://github.com/the-cavalry/light-locker'
 license=('GPL2')
 depends=('dbus-glib' 'gtk3' 'libxxf86misc' 'lightdm' 'libxss' 'consolekit')
 makedepends=('gnome-common' 'intltool')
-#replaces=('light-locker-upower')
 conflicts=('light-locker' 'light-locker-upower')
 provides=('light-locker')
 install='light-locker.install'
@@ -32,6 +31,7 @@ build () {
     --with-xf86gamma-ext \
     --without-systemd \
     --with-console-kit \
+    --without-upower \
     --disable-schemas-compile \
     --disable-static
   make

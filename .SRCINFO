@@ -1,7 +1,7 @@
 pkgbase = light-locker-consolekit
 	pkgdesc = A simple session locker, with consolekit support
 	pkgver = 1.6.0
-	pkgrel = 1.3
+	pkgrel = 1.4
 	url = https://github.com/the-cavalry/light-locker
 	install = light-locker.install
 	arch = i686
