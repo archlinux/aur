@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Bing Wallpaper
+Name[zh_CN]=Bing壁纸
+Comment=Bing Wallpaper
+Comment[zh_CN]=Bing壁纸
+Exec=/usr/bin/bing-wallpaper-autostart.sh
+Type=Application
+Terminal=false
+StartupNotify=false
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-AutoRestart=false
+X-GNOME-Autostart-Notify=false

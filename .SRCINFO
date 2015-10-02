@@ -1,0 +1,19 @@
+pkgbase = bing-wallpaper-git
+	pkgdesc = Change wallpaper from Bing daily
+	pkgver = r8.2c8d18a
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = curl
+	optdepends = xorg-xrandr: for xfce4 support
+	optdepends = xfconf: for xfce4 support
+	source = bing-wallpaper-git::git+https://github.com/timxx/linux-bing-wallpaper.git
+	source = bing-wallpaper-autostart.sh
+	source = bing-wallpaper.desktop
+	md5sums = SKIP
+	md5sums = b84e976323ea41d5c53c71384bd281a8
+	md5sums = 1e65c7c30461dcc752f4766e5a14bc76
+
+pkgname = bing-wallpaper-git
+
