@@ -5,9 +5,9 @@
 
 pkgname=keepassx-git
 _gitname=keepassx
-pkgver=2.0.beta2.r41.g5a13402
+pkgver=2.0.beta2.r61.g5a59287
 pkgrel=1
-pkgdesc="KeePassX is a cross platform port of the windows application 'Keepass Password Safe'. It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way. It uses a highly encrypted database locked with one master key."
+pkgdesc="It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassx/keepassx"
 license=('GPL2')
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
     cd "${_gitname}"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_BINDIR=/usr/bin -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_VERBOSE_MAKEFILE=ON -DWITH_GUI_TESTS=ON
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_BINDIR=/usr/bin -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_VERBOSE_MAKEFILE=OFF -DWITH_GUI_TESTS=ON
     make
 }
 
