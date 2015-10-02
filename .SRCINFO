@@ -1,0 +1,18 @@
+pkgbase = poodlescanner-git
+	pkgdesc = Python SSL POODLE Vulnerability Scanner Python tool to scan a netblock for SSLv3 enabled servers.
+	pkgver = r2.13bc21d
+	pkgrel = 1
+	url = https://github.com/internetwache/POODLEScanner
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = bash
+	depends = python3
+	depends = python-ipy
+	provides = poodlescanner-git
+	conflicts = poodlescanner-git
+	source = poodlescanner-git::git+https://github.com/internetwache/POODLEScanner.git
+	md5sums = SKIP
+
+pkgname = poodlescanner-git
+
