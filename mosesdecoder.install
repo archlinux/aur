@@ -1,0 +1,6 @@
+post_install() {
+  echo ""
+  echo "It is highly recommended to export the scripts directory by adding this" 
+  echo "to your bashrc: \"export SCRIPTS_ROOTDIR=/opt/moses/moses-scripts\""
+  echo ""
+} 
