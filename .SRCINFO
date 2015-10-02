@@ -1,7 +1,7 @@
 pkgbase = python-natsort
 	pkgdesc = Sort lists naturally.
 	pkgver = 4.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SethMMorton/natsort
 	arch = any
 	license = MIT
