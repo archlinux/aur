@@ -1,6 +1,6 @@
 pkgbase = ruby-html-pipeline
 	pkgdesc = GitHub HTML processing filters and utilities
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/jch/html-pipeline
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ruby-html-pipeline
 	depends = ruby
 	depends = ruby-activesupport
 	depends = ruby-nokogiri
-	noextract = html-pipeline-2.2.0.gem
-	source = https://rubygems.org/downloads/html-pipeline-2.2.0.gem
-	sha256sums = 3d36c95d20d019867b4d564e86d8bd6310fa9678e04c7bd7ab011daac0ae49ed
+	noextract = html-pipeline-2.2.1.gem
+	source = https://rubygems.org/downloads/html-pipeline-2.2.1.gem
+	sha256sums = 71232511d731e03d93ea0ddc5704181ce95bfb8bf7f86b0022387a82802b0c56
 
 pkgname = ruby-html-pipeline
 
