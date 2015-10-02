@@ -3,7 +3,7 @@
 
 pkgname=xprofile
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to manage and automatically apply xrandr configurations."
 arch=('any')
 url="https://github.com/nrocco/xprofile"
