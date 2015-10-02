@@ -1,13 +1,13 @@
 pkgbase = python-pathspec
 	pkgdesc = Utility library for gitignore style pattern matching of file paths
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cpburnz/python-path-specification
 	arch = any
 	license = custom
 	makedepends = python
 	makedepends = python-distribute
-	source = http://pypi.python.org/packages/source/p/pathspec/pathspec-0.3.3.tar.gz
+	source = https://pypi.python.org/packages/source/p/pathspec/pathspec-0.3.3.tar.gz
 	sha256sums = 38d0613ee2ce75adbbad61a33895c3b88122c768a732fb14800e6f660cc1380b
 
 pkgname = python-pathspec
