@@ -1,11 +1,10 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
-	pkgver = 20150927
+	pkgver = 20151001
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
 	license = custom:Public Domain
-	depends = fontconfig
 	depends = adobe-source-code-pro-fonts
 	depends = adobe-source-han-sans-cn-fonts
 	depends = adobe-source-han-sans-jp-fonts

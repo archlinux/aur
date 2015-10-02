@@ -1,13 +1,12 @@
 # Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
 pkgname=all-repository-fonts
-pkgver=20150927
+pkgver=20151001
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
 url='https://aur.archlinux.org/packages/all-repository-fonts/'
 license=('custom:Public Domain')
-depends=('fontconfig'
-         'adobe-source-code-pro-fonts'
+depends=('adobe-source-code-pro-fonts'
          'adobe-source-han-sans-cn-fonts'
          'adobe-source-han-sans-jp-fonts'
          'adobe-source-han-sans-kr-fonts'
