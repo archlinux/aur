@@ -1,6 +1,6 @@
 pkgbase = qmmp-svn
 	pkgdesc = A Qt based audio-player. (SVN Version)
-	pkgver = 1.0.0.svn.r5415
+	pkgver = 1.1.0.svn.r5646
 	pkgrel = 1
 	url = http://qmmp.ylsoftware.com
 	install = qmmp-svn.install
@@ -68,7 +68,7 @@ pkgbase = qmmp-svn
 	optdepends = libogg: OGG audio support
 	provides = qmmp
 	conflicts = qmmp
-	source = qmmp::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-1.0
+	source = qmmp::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-1.1
 	sha1sums = SKIP
 
 pkgname = qmmp-svn
