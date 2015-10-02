@@ -1,0 +1,16 @@
+pkgbase = mypy-git
+	pkgdesc = Optional static typing for Python
+	pkgver = v0.2.0.r600.g0b7ee88
+	pkgrel = 1
+	url = http://www.mypy-lang.org
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = mypy
+	conflicts = mypy
+	source = git+https://github.com/JukkaL/mypy
+	md5sums = SKIP
+
+pkgname = mypy-git
+
