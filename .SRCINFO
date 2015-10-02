@@ -1,7 +1,7 @@
 pkgbase = pelican
 	pkgdesc = A tool to generate a static blog, with restructured text (or markdown) input files.
-	pkgver = 3.6.2
-	pkgrel = 3
+	pkgver = 3.6.3
+	pkgrel = 1
 	url = http://getpelican.com
 	arch = any
 	license = AGPL3
@@ -25,7 +25,7 @@ pkgbase = pelican
 	optdepends = s3cmd: uploading through S3
 	optdepends = ghp-import: uploading through gh-pages
 	optdepends = python-typogrify: typographical enhancements
-	source = http://pypi.python.org/packages/source/p/pelican/pelican-3.6.2.tar.gz
+	source = http://pypi.python.org/packages/source/p/pelican/pelican-3.6.3.tar.gz
 	sha256sums = 393eb7c19ed99336c2fb542084ada81d6db2c8ebb7a3f63066e27fc2eae2cef6
 
 pkgname = pelican
