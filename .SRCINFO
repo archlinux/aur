@@ -12,7 +12,7 @@ pkgbase = libsemanage
 	makedepends = python2
 	makedepends = python
 	makedepends = swig
-	depends = ustr
+	depends = ustr-selinux
 	depends = libselinux>=2.4
 	depends = audit
 	optdepends = python2: python2 bindings
