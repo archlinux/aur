@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=pacapong
+Comment=pong+pacman+space invaders
+Exec=pacapong
+Icon=pacapong
+Categories=Game;ActionGame;

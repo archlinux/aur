@@ -1,0 +1,21 @@
+pkgbase = pacapong
+	pkgdesc = game combining pong, pacman and space invaders
+	pkgver = 1.3
+	pkgrel = 4
+	url = http://kingpenguin.itch.io/pacapong
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = pacapong.sh
+	source = pacapong.desktop
+	md5sums = 780236c531d6a9cdfa8bec22c2f9757b
+	md5sums = e2d8d6e33b04abf3161710df22d1098f
+	depends_i686 = openal
+	depends_i686 = libxxf86vm
+	depends_i686 = glu
+	depends_i686 = libxrandr
+	depends_x86_64 = lib32-openal
+	depends_x86_64 = lib32-glu
+
+pkgname = pacapong
+
