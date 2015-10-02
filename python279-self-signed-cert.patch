@@ -1,0 +1,101 @@
+From 1f99d2f70db544652d30dca4e718ba733d3fd7cf Mon Sep 17 00:00:00 2001
+From: Henri Wahl <h.wahl@ifw-dresden.de>
+Date: Sun, 21 Dec 2014 22:45:49 +0100
+Subject: [PATCH] attempt to fix issue #126 Python 2.7.9 + SSL
+
+---
+ Nagstamon/Nagstamon/Actions.py        | 32 ++++++++++++++++++--------------
+ Nagstamon/Nagstamon/Server/Generic.py | 12 ++++++++++++
+ 2 files changed, 30 insertions(+), 14 deletions(-)
+
+diff --git a/Nagstamon/Nagstamon/Actions.py b/Nagstamon/Nagstamon/Actions.py
+index 5ce2286..5a8ed10 100644
+--- a/Nagstamon/Nagstamon/Actions.py
++++ b/Nagstamon/Nagstamon/Actions.py
+@@ -31,7 +31,8 @@
+ 
+ # if running on windows import winsound
+ import platform
+-if platform.system() == "Windows":
++if platform.system() == "Windows":# necessary for Python-2.7.9-ssl-support-fix https://github.com/HenriWahl/Nagstamon/issues/126
++
+     import winsound
+ 
+ # Garbage collection
+@@ -830,30 +831,33 @@ def BuildURLOpener(server):
+     The MultipartPostHandler is needed for submitting multipart forms from Opsview
+     """
+     # trying with changed digest/basic auth order as some digest auth servers do not
+-    # seem to work wi the previous way
++    # seem to work the previous way
+     if str(server.use_proxy) == "False":
+         server.proxy_handler = urllib2.ProxyHandler({})
+-        urlopener = urllib2.build_opener(server.digest_handler,\
+-                                         server.basic_handler,\
+-                                         server.proxy_handler,\
+-                                         urllib2.HTTPCookieProcessor(server.Cookie),\
++        urlopener = urllib2.build_opener(server.digest_handler,
++                                         server.basic_handler,
++                                         server.proxy_handler,
++                                         server.https_handler,
++                                         urllib2.HTTPCookieProcessor(server.Cookie),
+                                          MultipartPostHandler)
+     elif str(server.use_proxy) == "True":
+         if str(server.use_proxy_from_os) == "True":
+-            urlopener = urllib2.build_opener(server.digest_handler,\
+-                                             server.basic_handler,\
+-                                             urllib2.HTTPCookieProcessor(server.Cookie),\
++            urlopener = urllib2.build_opener(server.digest_handler,
++                                             server.basic_handler,
++                                             server.https_handler,
++                                             urllib2.HTTPCookieProcessor(server.Cookie),
+                                              MultipartPostHandler)
+         else:
+             # if proxy from OS is not used there is to add a authenticated proxy handler
+             server.passman.add_password(None, server.proxy_address, server.proxy_username, server.proxy_password)
+             server.proxy_handler = urllib2.ProxyHandler({"http": server.proxy_address, "https": server.proxy_address})
+             server.proxy_auth_handler = urllib2.ProxyBasicAuthHandler(server.passman)
+-            urlopener = urllib2.build_opener(server.proxy_handler,\
+-                                            server.proxy_auth_handler,\
+-                                            server.digest_handler,\
+-                                            server.basic_handler,\
+-                                            urllib2.HTTPCookieProcessor(server.Cookie),\
++            urlopener = urllib2.build_opener(server.proxy_handler,
++                                            server.proxy_auth_handler,
++                                            server.digest_handler,
++                                            server.basic_handler,
++                                            server.https_handler,
++                                            urllib2.HTTPCookieProcessor(server.Cookie),
+                                             MultipartPostHandler)
+     return urlopener
+ 
+diff --git a/Nagstamon/Nagstamon/Server/Generic.py b/Nagstamon/Nagstamon/Server/Generic.py
+index f678e2c..30d9b64 100644
+--- a/Nagstamon/Nagstamon/Server/Generic.py
++++ b/Nagstamon/Nagstamon/Server/Generic.py
+@@ -30,6 +30,9 @@
+ import base64
+ import re
+ import gobject
++# necessary for Python-2.7.9-ssl-support-fix https://github.com/HenriWahl/Nagstamon/issues/126
++if sys.version_info >= (2, 7, 9):
++    import ssl
+ 
+ # to let Linux distributions use their own BeautifulSoup if existent try importing local BeautifulSoup first
+ # see https://sourceforge.net/tracker/?func=detail&atid=1101370&aid=3302612&group_id=236865
+@@ -141,6 +144,15 @@ def __init__(self, **kwds):
+         self.proxy_handler = None
+         self.proxy_auth_handler = None
+         self.urlopener = None
++        # necessary for Python-2.7.9-ssl-support-fix https://github.com/HenriWahl/Nagstamon/issues/126
++        if sys.version_info >= (2, 7, 9):
++            try:
++                self.https_handler = urllib2.HTTPSHandler(context=ssl._create_unverified_context())
++            except:
++                self.https_handler = urllib2.HTTPSHandler()
++        else:
++            self.https_handler = urllib2.HTTPSHandler()
++
+         # headers for HTTP requests, might be needed for authorization on Nagios/Icinga Hosts
+         self.HTTPheaders = dict()
+         # attempt to use only one bound list of TreeViewColumns instead of ever increasing one

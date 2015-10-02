@@ -1,7 +1,7 @@
 pkgbase = nagstamon
 	pkgdesc = Nagios status monitor for the desktop
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://nagstamon.ifw-dresden.de/
 	arch = any
 	license = GPL
@@ -16,14 +16,17 @@ pkgbase = nagstamon
 	source = nagstamon.desktop
 	source = nagstamon-noti.patch
 	source = xdg-directories.patch
+	source = python279-self-signed-cert.patch
 	md5sums = 1c15e1558c3c0e02644920698c18c4d5
-	md5sums = 484a012b99f483dc293251e329ba760d
+	md5sums = 3c84cd947db8c00ef978a15e94307f39
 	md5sums = cc6eb1d2463415930a30b1337ae448f0
 	md5sums = 0681f614848a96c020720cc3924ed313
+	md5sums = 72d2ef25565201c7ffc5c9714dcb5398
 	sha256sums = e60a2b1fef842deb8377ace02df6791f3dcc5683d9dae4323de3f5f1f8a9893b
-	sha256sums = 8b88e472099cb7593a09e0e251095cad841acce424bcb43ca4280d9c71395917
+	sha256sums = 8c9cdc95c857111e02627ab4371ea628c606c9750be566095e0ddddc8dbc3843
 	sha256sums = ccf631a32ae286c364fe6628e4f635f1b14d0df96ee3f2c1940972a5ace7506d
 	sha256sums = dc303b0bc0a543f3e845772ad633c381c39eead1908a6be9229904b7b4759062
+	sha256sums = 466622be84ed8a41737911c6427eb642fcbc559da50d4ea8189fec023b7c9a7d
 
 pkgname = nagstamon
 
