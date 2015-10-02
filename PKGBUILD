@@ -13,7 +13,7 @@ md5sums=('6bdfd913ad4c94036e8a2b358e49abd7')
 
 build() {
   cd "$srcdir/Pympler-$pkgver"
-  python setup.py build
+  python2 setup.py build
 }
 
 package() {
