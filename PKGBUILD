@@ -1,18 +1,16 @@
 # Maintainer: Peter Lamby <peterlamby@web.de>
 pkgname=valama-git
-pkgver=r930.07e1bfa
-pkgrel=1
+pkgver=r938.2f8f85b
+pkgrel=2
 pkgdesc="Next generation Vala IDE"
 arch=('i686' 'x86_64')
 url="https://github.com/Valama/valama"
 license=('GPL3')
-depends=('glib2' 'vala' 'clutter-gtk' 'libgee' 'gdk-pixbuf2' 'gdl' 'gtksourceview3' 'webkit2gtk' 'intltool')
+depends=('glib2' 'vala' 'clutter-gtk' 'libgee' 'gdk-pixbuf2' 'gdl' 'gtksourceview3' 'webkit2gtk' 'intltool' 'glade')
 makedepends=("cmake" 'imagemagick')
-optdepends=('glade: for glade files')
 options=('!libtool')
 install=valama.install
-source=("${pkgname}"::'git+https://github.com/Valama/valama.git'
-        'CMakeLists.txt.patch')
+source=("${pkgname}"::'git+https://github.com/Valama/valama.git')
 md5sums=('SKIP'
          '21da7a62bdbea1a6e30552fb18be9d5a')
 
@@ -23,7 +21,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-	patch < ../CMakeLists.txt.patch
 }
 
 build() {

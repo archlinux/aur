@@ -1,7 +1,7 @@
 pkgbase = valama-git
 	pkgdesc = Next generation Vala IDE
-	pkgver = r930.07e1bfa
-	pkgrel = 1
+	pkgver = r938.2f8f85b
+	pkgrel = 2
 	url = https://github.com/Valama/valama
 	install = valama.install
 	arch = i686
@@ -18,10 +18,9 @@ pkgbase = valama-git
 	depends = gtksourceview3
 	depends = webkit2gtk
 	depends = intltool
-	optdepends = glade: for glade files
+	depends = glade
 	options = !libtool
 	source = valama-git::git+https://github.com/Valama/valama.git
-	source = CMakeLists.txt.patch
 	md5sums = SKIP
 	md5sums = 21da7a62bdbea1a6e30552fb18be9d5a
 
