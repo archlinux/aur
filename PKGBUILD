@@ -2,7 +2,7 @@
 
 pkgname=python-ptpython
 pkgver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Python prompt with syntax highlighting and code completion"
 arch=('any')
 depends=('python'
