@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 241024 2015-06-18 22:16:52Z heftig $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 # Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
 
@@ -6,7 +5,7 @@ _pkgbase=pygobject
 pkgbase=pygobject-patched
 pkgname=(python-gobject-patched python2-gobject-patched)
 pkgver=3.16.2
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="https://live.gnome.org/PyGObject"
 license=(LGPL)
