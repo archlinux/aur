@@ -5,7 +5,7 @@
 pkgname=isl29018_driver
 pkgver=0.1.5
 pkgrel=4
-pkgdesc='Intersil ISL29018 sensor kernel driver'
+pkgdesc='Intersil ISL29018 sensor kernel driver(light sensor in Chromebook Pixel)'
 arch=('i686' 'x86_64')
 url='https://github.com/torvalds/linux/blob/master/drivers/staging/iio/light/isl29018.c'
 license=('GPL')
