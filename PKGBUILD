@@ -2,7 +2,7 @@
 pkgname=trashman
 _pyname=trashman
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python trash manager.'
 arch=('any')
 url='https://github.com/Kwpolska/trashman'

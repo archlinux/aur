@@ -1,7 +1,7 @@
 pkgbase = trashman
 	pkgdesc = A Python trash manager.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kwpolska/trashman
 	arch = any
 	license = BSD
