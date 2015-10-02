@@ -1,7 +1,7 @@
 pkgbase = python-pager
 	pkgdesc = Terminal/console pager module for Python
 	pkgver = 3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pypi.python.org/pypi/pager
 	arch = any
 	license = Public Domain
