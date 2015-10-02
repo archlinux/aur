@@ -7,6 +7,7 @@ pkgbase = nodejs-less-plugin-clean-css
 	license = MIT
 	depends = nodejs
 	depends = npm
+	depends = nodejs-less
 	depends = nodejs-clean-css
 	noextract = less-plugin-clean-css-1.5.1.tgz
 	source = https://registry.npmjs.org/less-plugin-clean-css/-/less-plugin-clean-css-1.5.1.tgz

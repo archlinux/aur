@@ -7,8 +7,9 @@ arch=('any')
 url="https://github.com/less/less-plugin-clean-css"
 license=('MIT')
 depends=(
-        'nodejs' 
+        'nodejs'
         'npm'
+        'nodejs-less'
         'nodejs-clean-css'
 )
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
