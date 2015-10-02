@@ -14,7 +14,7 @@ optdepends=(
         'xterm: used by the default autostart'
         'dmenu: needed by some scripts'
         'dzen2: needed by panel.sh'
-        'dzen2-xft-xpm-xinerama-git://aur@aur.archlinux.org/katarakt-git.git: view icons as tags'
+        'dzen2-xft-xpm-xinerama-git: view icons as tags'
     )
 makedepends=('git' 'asciidoc')
 provides=($_pkgname)
