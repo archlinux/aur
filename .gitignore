@@ -1,3 +1,4 @@
 /gnupg-*.tar.bz2
+/gnupg-largekeys-*.pkg.tar.xz
 /pkg/
 /src/
