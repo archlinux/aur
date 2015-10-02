@@ -3,7 +3,7 @@
 # Contributor: Julien "Adyxax" Dessaux <judessaux@gmail.com>
 
 pkgname=shinken
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="An open source Nagios like tool, redesigned and rewritten from scratch. Its main goal is to meet today's system monitoring requirements while still following compatibility to Nagios"
 arch=('any')
@@ -156,7 +156,7 @@ package() {
     rm -r $pkgdir/etc/shinken/certs/
 }
 
-sha256sums=('2968cc60ba201c690b10daf9424df4e07708a5077a6a60f0aa954ecb95073254'
+sha256sums=('24b9f36c5628e4efdce0090498103a022384aeb30a53fa2e13df7ea4d3b473d8'
             'efa31d6bac681f6e994f5a0544ecaa5ab044099057d5e75d2e6b41e9e69f361f'
             '845315a7eb1b1a3f7fca8051b1470d28b5e9950ce55cda17bf2d0a7bc4a1e644'
             '86dcb7112517110c6fc4f47070e8f217d45185ce2ceab1b9d69653f3870577c2'
