@@ -5,7 +5,7 @@
 pkgname=pixel_keyboard_backlight_driver
 pkgver=0.1.5
 pkgrel=4
-pkgdesc='pixel_keyboard_backlight_driver'
+pkgdesc='Chromebook Pixel keyboard backlight kernel driver'
 arch=('i686' 'x86_64')
 url='https://github.com/xhcnb/pixel_keyboard_backlight_driver'
 license=('GPL')
