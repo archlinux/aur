@@ -1,3 +1,19 @@
+* commit 724567331e7ebbc447084fe896567fa9a93feada
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Thu Oct 1 23:06:32 2015 -0400
+| 
+|     Updating to 0.12.1.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit 9c7dbce6fd14170f4bd155908792884188ab6110
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Wed Sep 30 00:28:21 2015 -0400
+| 
+|     Updated BloodcatServer to use the new API. (fixes #139, 140)
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
 * commit ab817172e40e7c69155f43e9194ea27823cb7613
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
 | Date:   Tue Sep 22 02:38:18 2015 -0400
@@ -62,20 +78,3 @@
 |     Involves temporarily changing the kinetic scrolling speed, so it's a little messy...
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit 14496050ead706487a79e82d8a535a5fb3764124
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Fri Sep 18 16:02:19 2015 -0400
-| 
-|     Minor style changes from #134.
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|    
-*   commit daf3a2aad35014fd5a2cca3c8464bdbf7b69a488
-|\  Merge: fc27722 131138e
-| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
-| | Date:   Fri Sep 18 15:27:54 2015 -0400
-| | 
-| |     Merge pull request #134 from Bigpet/snakeslider
-| |     
-| |     Snaking sliders implementation.

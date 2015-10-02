@@ -2,7 +2,7 @@
 # Contributor in comments: Misc <https://aur.archlinux.org/account/misc/>
 
 pkgname=opsu-git
-pkgver=0.12.0.r0.gab81717
+pkgver=0.12.1.r0.g7245673
 pkgrel=1
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
