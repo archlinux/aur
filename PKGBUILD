@@ -4,7 +4,7 @@
 
 pkgname=python-kivy
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software library for rapid development of hardware-accelerated multitouch applications."
 arch=('i686' 'x86_64')
 url="http://kivy.org/"

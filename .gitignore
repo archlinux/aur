@@ -1,0 +1,5 @@
+pkg
+src
+python-kivy-*.pkg.tar.xz
+python-kivy-*.src.tar.gz
+Kivy-*.tar.gz

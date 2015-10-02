@@ -1,7 +1,7 @@
 pkgbase = python-kivy
 	pkgdesc = A software library for rapid development of hardware-accelerated multitouch applications.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kivy.org/
 	arch = i686
 	arch = x86_64
