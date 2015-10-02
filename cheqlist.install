@@ -1,7 +1,7 @@
 post_install() {
     echo "==> Updating MIME database..."
     update-mime-database /usr/share/mime
-    echo "Done."
+    echo "==> Done."
 }
 
 post_upgrade() {

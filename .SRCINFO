@@ -1,7 +1,7 @@
 pkgbase = cheqlist
 	pkgdesc = A simple Qt checklist.
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kwpolska/cheqlist
 	install = cheqlist.install
 	arch = any

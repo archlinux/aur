@@ -2,7 +2,7 @@
 pkgname=cheqlist
 _pyname=cheqlist
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple Qt checklist.'
 arch=('any')
 url='https://github.com/Kwpolska/cheqlist'
