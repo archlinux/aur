@@ -1,13 +1,12 @@
 pkgbase = peppermill
 	pkgdesc = Utility to help transition from Qt4 to Copperspice
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.copperspice.com/
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = copperspice-git
-	depends = libxml2
+	depends = copperspice-git
 	options = debug
 	source = http://download.copperspice.com/peppermill/source/PepperMill-1.2.0.tar.bz2
 	sha1sums = b07b4c89b2c2d59e05cf0ae6c209dc89454c15ac
