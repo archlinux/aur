@@ -2,7 +2,7 @@
 
 pkgname=python-gist
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line interface for working with GitHub gists.'
 arch=(any)
 url='https://github.com/jdowner/gist'

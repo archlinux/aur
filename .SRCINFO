@@ -1,7 +1,7 @@
 pkgbase = python-gist
 	pkgdesc = Command line interface for working with GitHub gists.
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jdowner/gist
 	arch = any
 	license = MIT
