@@ -1,7 +1,7 @@
 pkgbase = nap
 	pkgdesc = sleep with a progressbar
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kwpolska/nap
 	arch = i686
 	arch = x86_64

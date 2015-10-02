@@ -2,7 +2,7 @@
 pkgname=nap
 _prname=nap
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='sleep with a progressbar'
 arch=('i686' 'x86_64')
 url='https://github.com/Kwpolska/nap'
