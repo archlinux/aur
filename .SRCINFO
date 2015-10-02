@@ -1,0 +1,30 @@
+pkgbase = hostapd-rtl871xdrv
+	pkgdesc = IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://w1.fi/hostapd/
+	install = hostapd.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = custom
+	makedepends = git
+	depends = openssl
+	depends = libnl
+	provides = hostapd
+	conflicts = hostapd
+	options = emptydirs
+	source = http://w1.fi/releases/hostapd-2.5.tar.gz
+	source = git://github.com/arpankapoor/hostapd-rtl871xdrv.git
+	source = hostapd.service
+	source = hostapd-2.3-noscan.patch
+	source = openvswitch.patch
+	md5sums = 69f9cec3f76d74f402864a43e4f8624f
+	md5sums = SKIP
+	md5sums = 380042b9cf4950e34ed34b3093ab9e7f
+	md5sums = eaf8e48a9a63b5902fddadff2b8933fa
+	md5sums = a0802a604ed957078da0e14863df74f0
+
+pkgname = hostapd-rtl871xdrv
+
