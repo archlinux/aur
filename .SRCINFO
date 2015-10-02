@@ -11,6 +11,8 @@ pkgbase = warspear
 	depends = libgl
 	depends = openal
 	depends = libxft
+	depends = zenity
+	depends = curl
 	source = http://cdn.warspear-online.com/repo/pool/non-free/binary-i386/w/warspear/warspear_5.1.2_i386.deb
 	md5sums = fd22655e465f95689460d79acd68346c
 

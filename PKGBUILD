@@ -7,7 +7,7 @@ pkgdesc='Warspear Online is a cross-platform massively multiplayer online rolepl
 arch=('i686' 'x86_64')
 url='http://warspear-online.com/'
 license=('custom')
-depends=('glibc>=2.15' 'libx11' 'libgl' 'openal' 'libxft')
+depends=('glibc>=2.15' 'libx11' 'libgl' 'openal' 'libxft' 'zenity' 'curl')
 
 _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='amd64'
