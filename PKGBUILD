@@ -2,9 +2,9 @@
 
 pkgname=jaspersoftstudio
 _pkgname=JaspersoftStudio
-_binname="Jaspersoft Studio"
+_binname="Jaspersoft\\ Studio"
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse based Jasper Reports generator"
 arch=('i686' 'x86_64')
 url="http://community.jaspersoft.com/project/jaspersoft-studio"
@@ -19,8 +19,8 @@ package() {
 install -d -m 0755 ${pkgdir}/opt/${pkgname}
 cp -a ${srcdir}/TIBCOJaspersoftStudio-${pkgver}.final/* ${pkgdir}/opt/${pkgname}
 install -d -m 0755 ${pkgdir}/usr/bin
-ln -sf "/opt/${_pkgname}/${_binname}" ${pkgdir}/usr/bin/${_pkgname}
-ln -sf "/opt/${_pkgname}/${_binname}" ${pkgdir}/usr/bin/${pkgname}
+ln -sf "/opt/${pkgname}/${_binname}" ${pkgdir}/usr/bin/${pkgname}
+ln -sf "/opt/${pkgname}/${_binname}" ${pkgdir}/usr/bin/${pkgname}
 
 cat > ${_pkgname}.desktop << EoF
 [Desktop Entry]
@@ -28,12 +28,12 @@ Version=${pkgver}
 Encoding=UTF-8
 Name=Jaspersoft Studio
 Comment=${pkgdesc}
-Exec=GTK2_RC_FILES=/usr/share/themes/Raleigh/gtk-2.0/gtkrc /opt/${_pkgname}/${_binname}
-Icon=/opt/${_pkgname}/icon.xpm
+Exec=GTK2_RC_FILES=/usr/share/themes/Raleigh/gtk-2.0/gtkrc /opt/${pkgname}/${_binname}
+Icon=/opt/${pkgname}/icon.xpm
 Terminal=false
 Type=Application
 Categories=Java;Development;
 EoF
 
-install -D -m 0644 ${srcdir}/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+install -D -m 0644 ${srcdir}/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
