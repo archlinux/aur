@@ -1,16 +1,16 @@
 pkgbase = perl-test-longstring
 	pkgdesc = tests strings for equality, with more helpful failures
-	pkgver = 0.15
-	pkgrel = 2
+	pkgver = 0.17
+	pkgrel = 1
 	url = http://search.cpan.org/dist/Test-LongString
 	arch = any
-	license = PerlArtistic
 	license = GPL
+	license = PerlArtistic
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RG/RGARCIA/Test-LongString-0.15.tar.gz
-	md5sums = e628d735b8e8f33d3992541f823491c3
-	sha512sums = d50bcba177280ff6da17720bde03dce0fe2b034aa7eeaa8825ccf983cbb8e60ee8f18179e47cfd43db1cac217bf30c38d224fb3557fb76ab3b58f573fd1ef529
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
+	sha512sums = 1c0cd6fea35bb72816451ce0790002c9dfb945390bc85d22d04670dd5af7ebbe795307ad361e2615ce4ab4f02a317a3aa5d297f2165bd3b1f6de40b3240f1352
 
 pkgname = perl-test-longstring
 

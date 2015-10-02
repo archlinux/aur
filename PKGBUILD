@@ -1,45 +1,39 @@
 # Contributor: Justin Davis <jrcd83@gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 1.18
+# Contributor: xRemaLx <anton.komolov@gmail.com>
 
 pkgname='perl-test-longstring'
-_pkgname='Test-LongString'
-pkgver='0.15'
-pkgrel='2'
+pkgver='0.17'
+pkgrel='1'
 pkgdesc="tests strings for equality, with more helpful failures"
+_dist='Test-LongString'
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl')
-makedepends=()
 url='http://search.cpan.org/dist/Test-LongString'
-source=("http://search.cpan.org/CPAN/authors/id/R/RG/RGARCIA/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('e628d735b8e8f33d3992541f823491c3')
-sha512sums=('d50bcba177280ff6da17720bde03dce0fe2b034aa7eeaa8825ccf983cbb8e60ee8f18179e47cfd43db1cac217bf30c38d224fb3557fb76ab3b58f573fd1ef529')
+license=('GPL' 'PerlArtistic')
+depends=('perl')
+options=('!emptydirs' purge)
+makedepends=()
+source=("http://search.cpan.org/CPAN/authors/id/R/RG/RGARCIA/${_dist}-${pkgver}.tar.gz")
+sha512sums=('1c0cd6fea35bb72816451ce0790002c9dfb945390bc85d22d04670dd5af7ebbe795307ad361e2615ce4ab4f02a317a3aa5d297f2165bd3b1f6de40b3240f1352')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "${srcdir}/${_dist}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/${_dist}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "${srcdir}/${_dist}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
 
 # Local Variables:
