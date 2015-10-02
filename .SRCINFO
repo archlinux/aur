@@ -1,0 +1,28 @@
+pkgbase = python34
+	pkgdesc = Major release 3.4 of the Python high-level programming language
+	pkgver = 3.4.3
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tk
+	makedepends = sqlite
+	makedepends = valgrind
+	makedepends = bluez-libs
+	makedepends = mpdecimal
+	makedepends = hardening-wrapper
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	optdepends = tk: for tkinter
+	optdepends = sqlite
+	options = !makeflags
+	source = http://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz
+	sha256sums = b5b3963533768d5fc325a4d7a6bd6f666726002d696f1d399ec06b043ea996b8
+
+pkgname = python34
+
