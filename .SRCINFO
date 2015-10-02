@@ -1,7 +1,7 @@
 pkgbase = think
 	pkgdesc = Terminal Think Music
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kwpolska/think
 	arch = any
 	license = BSD
