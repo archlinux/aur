@@ -2,7 +2,7 @@
 _pkgname=python-supergenpass
 pkgname=$_pkgname-git
 pkgver=20130209.gfc9e077
-pkgrel=2
+pkgrel=3
 pkgdesc="SuperGenPass Python module and GTK interface"
 arch=(any)
 url="https://github.com/vianney/python-supergenpass"
