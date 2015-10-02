@@ -1,0 +1,14 @@
+pkgbase = python2-psycogreen
+	pkgdesc = psycopg2 integration with coroutine libraries
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/dvarrazzo/psycogreen
+	arch = any
+	license = BSD
+	depends = python2
+	provides = psycogreen
+	source = https://pypi.python.org/packages/source/p/psycogreen/psycogreen-1.0.tar.gz
+	md5sums = 7a32d8f5abdb4ce17ac512f8c8a698a9
+
+pkgname = python2-psycogreen
+
