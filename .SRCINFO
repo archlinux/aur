@@ -1,0 +1,13 @@
+pkgbase = python-editor
+	pkgdesc = Programmatically open an editor, capture the result
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/fmoo/python-editor
+	arch = any
+	license = Apache
+	depends = python
+	source = https://pypi.python.org/packages/source/p/python-editor/python-editor-0.4.tar.gz
+	md5sums = 30de680ec944d073e0c3f18b44d5aa15
+
+pkgname = python-editor
+
