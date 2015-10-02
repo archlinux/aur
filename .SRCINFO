@@ -1,12 +1,13 @@
 pkgbase = butterflow
 	pkgdesc = Make slow motion and motion interpolated videos from the command line
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dthpham/butterflow
 	install = butterflow.install
 	arch = x86_64
 	license = custom
 	makedepends = python2-setuptools
+	makedepends = opencl-headers
 	depends = python2-numpy
 	depends = ffmpeg
 	depends = opencv

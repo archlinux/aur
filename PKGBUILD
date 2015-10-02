@@ -1,12 +1,12 @@
 # Maintainer: Duong Pham <dthpham@gmail.com>
 pkgname=butterflow
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Make slow motion and motion interpolated videos from the command line"
 arch=('x86_64')
 url="https://github.com/dthpham/butterflow"
 license=('custom')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'opencl-headers')
 depends=('python2-numpy' 'ffmpeg' 'opencv' 'ocl-icd')
 optdepends=('intel-opencl-runtime: Intel processor device support'
             'opencl-nvidia: NVIDIA device support'
