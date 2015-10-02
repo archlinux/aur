@@ -21,3 +21,4 @@ package()
         install -t "${pkgdir}/usr/bin/" customizepkg
         install -d "${pkgdir}/etc/customizepkg.d"
 }
+sha384sums=('f6a5b704448b1060fc9766640717f60c66c535e2a18ec6df7ac2e5f45f2258a39e7e496b1a0c7e4ef3c3a3050e9b4a65')
