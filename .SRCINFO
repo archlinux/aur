@@ -1,7 +1,7 @@
 pkgbase = qtile
 	pkgdesc = A full-featured, pure-Python tiling window manager.
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qtile.org
 	install = qtile.install
 	arch = any
