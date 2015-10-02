@@ -1,7 +1,7 @@
 pkgbase = python2-amodem
 	pkgdesc = Audio Modem Communication Library
 	pkgver = 1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/romanz/amodem
 	arch = any
 	license = MIT

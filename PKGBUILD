@@ -2,7 +2,7 @@
 
 pkgname=python2-amodem
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Modem Communication Library"
 arch=('any')
 depends=('python2' 'python2-argcomplete' 'python2-numpy' 'python2-six')
