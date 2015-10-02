@@ -18,17 +18,6 @@ pkgver() {
   git describe --tags | sed 's|-|.|g'
 }
 
-#prepare() {
-#  cd "$srcdir"/"$_gitname"
-#  # python2 fix
-#  for file in examples/data/scripts/uzbl*; do
-#    sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
-#  done
-#  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-#      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-#      $(find ./ -name '*.py') bin/*
-##}
-
 build() {
   cd "$srcdir"/"$_gitname"
   make PREFIX=/usr
