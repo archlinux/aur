@@ -1,6 +1,6 @@
 pkgbase = python-bbcode-git
 	pkgdesc = A pure python bbcode parser and formatter. (git version)
-	pkgver = 20150606
+	pkgver = 20151002
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/bbcode
 	arch = any
