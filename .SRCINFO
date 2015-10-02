@@ -5,6 +5,7 @@ pkgbase = apache-tools
 	url = http://httpd.apache.org/
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = Apache
 	depends = apr-util
 	depends = pcre
