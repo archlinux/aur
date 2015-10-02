@@ -1,7 +1,7 @@
 pkgbase = think-git
 	pkgdesc = Terminal Think Music (git version)
 	pkgver = 0.1.2.r0.ge2eaa5f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kwpolska/think
 	arch = any
 	license = BSD
