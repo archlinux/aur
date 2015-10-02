@@ -1,7 +1,7 @@
 pkgbase = python-typogrify
 	pkgdesc = Filters to enhance web typography
 	pkgver = 2.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mintchaos/typogrify
 	arch = any
 	license = BSD
