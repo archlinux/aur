@@ -6,7 +6,7 @@ set -u
 _pkgname='pom-ng-console'
 pkgname="${_pkgname}-git"
 pkgver=0.0.5.r0.g6ca6980
-pkgrel=1
+pkgrel=2
 pkgdesc='Packet-o-Matic real time network packet capture forensic tool'
 pkgdesc+=' console interface'
 arch=('i686' 'x86_64')
