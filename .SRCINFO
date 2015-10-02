@@ -1,7 +1,7 @@
 pkgbase = python-husl
 	pkgdesc = Human-friendly HSL
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://husl-colors.org/
 	arch = any
 	license = MIT
