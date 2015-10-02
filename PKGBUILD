@@ -1,7 +1,7 @@
 # Maintainer: Kyle <kyle@gmx.ca>
 pkgname=opus-git
 _gitname=opus
-pkgver=06.36.g56d8504 # automatically determined from git origin
+pkgver=0.0 # automatically determined from git origin
 pkgrel=1
 pkgdesc="codec designed for interactive speech and audio transmission over the Internet (git master)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('opus')
 conflicts=('opus')
 options=('!libtool')
-source=('git://git.opus-codec.org/opus.git')
+source=('git+https://git.xiph.org/opus.git')
 md5sums=('SKIP')
 
 pkgver() {
