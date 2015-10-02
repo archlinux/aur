@@ -1,7 +1,7 @@
 pkgbase = upass-git
 	pkgdesc = Console UI for pass (git version)
 	pkgver = 0.1.4.r1.g44ed2fe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kwpolska/upass
 	arch = any
 	license = BSD
