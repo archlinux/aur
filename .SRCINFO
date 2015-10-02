@@ -1,7 +1,7 @@
 pkgbase = qube-hib
 	pkgdesc = Q.U.B.E: Director’s Cut is the definitive version of the brain-twisting first-person puzzler.
 	pkgver = 2015052901
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qube-game.com/
 	arch = i686
 	arch = x86_64

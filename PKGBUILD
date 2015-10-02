@@ -1,8 +1,8 @@
-# Maintainer:  ainola
+# Maintainer: ainola
 
 pkgname=qube-hib
 pkgver=2015052901
-pkgrel=1
+pkgrel=2
 pkgdesc="Q.U.B.E: Director’s Cut is the definitive version of the brain-twisting first-person puzzler."
 arch=('i686' 'x86_64')
 url="http://qube-game.com/"
@@ -36,8 +36,10 @@ package() {
 
     # Install Binaries/Launchers
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/Binaries/Linux/QUBEGame-Linux" \
-          "${pkgdir}/usr/bin/${pkgname}"
+    # The game expects the user to be in the game dir on launch
+    printf "#!/bin/sh\ncd /opt/${pkgname}/Binaries/Linux/\n ./QUBEGame-Linux" \
+        > "${pkgdir}/usr/bin/${pkgname}"
+    chmod 755 "${pkgdir}/usr/bin/${pkgname}"  
 
     # Desktop Integration
     mkdir -p "${pkgdir}/usr/share/pixmaps/"
