@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=voltdb-enterprise
 _pkgname=voltdb-ent
-pkgver=5.2.2
+pkgver=5.6
 pkgrel=1
 pkgdesc="An in-memory database with pre-compiled Java stored procedures (Enterprise Edition)"
 arch=('i686' 'x86_64')
@@ -44,14 +44,15 @@ package() {
     mv "${srcdir}"/${_pkgname}-${pkgver}/* "${pkgdir}"/opt/voltdb
     
     ln -s /opt/voltdb/bin/csvloader "${pkgdir}"/usr/bin/csvloader
-    ln -s /opt/voltdb/bin/dragent "${pkgdir}"/usr/bin/dragent
     ln -s /opt/voltdb/bin/jdbcloader "${pkgdir}"/usr/bin/jdbcloader
     ln -s /opt/voltdb/bin/kafkaloader "${pkgdir}"/usr/bin/kafkaloader
+    ln -s /opt/voltdb/bin/rabbitmqloader "${pkgdir}"/usr/bin/rabbitmqloader
+    ln -s /opt/voltdb/bin/snapshotconvert "${pkgdir}"/usr/bin/snapshotconvert
+    ln -s /opt/voltdb/bin/snapshotverifier "${pkgdir}"/usr/bin/snapshotverifier
     ln -s /opt/voltdb/bin/sqlcmd "${pkgdir}"/usr/bin/sqlcmd
     ln -s /opt/voltdb/bin/voltadmin "${pkgdir}"/usr/bin/voltadmin
     ln -s /opt/voltdb/bin/voltcompiler "${pkgdir}"/usr/bin/voltcompiler
     ln -s /opt/voltdb/bin/voltdb "${pkgdir}"/usr/bin/voltdb
-    ln -s /opt/voltdb/bin/voltdb3 "${pkgdir}"/usr/bin/voltdb3
     
     install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/voltdb/LICENSE"
 }

@@ -1,6 +1,6 @@
 pkgbase = voltdb-enterprise
 	pkgdesc = An in-memory database with pre-compiled Java stored procedures (Enterprise Edition)
-	pkgver = 5.2.2
+	pkgver = 5.6
 	pkgrel = 1
 	url = http://voltdb.com/
 	install = voltdb-enterprise.install
