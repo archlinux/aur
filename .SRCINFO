@@ -1,7 +1,7 @@
 pkgbase = gitlab-git-http-server
 	pkgdesc = HTTP server to unload Git HTTP traffic from GitLab Rails app (Unicorn)
 	pkgver = 0.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gitlab-org/gitlab-git-http-server
 	arch = i686
 	arch = x86_64
