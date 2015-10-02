@@ -1,7 +1,7 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=nvm-git
-pkgver=0.27.1.r0.g8aebf86
+pkgver=0.28.0.r0.gebdcdc4
 pkgrel=1
 pkgdesc="Simple bash script to manage multiple active node.js versions (git sources)"
 url="https://github.com/creationix/nvm"
