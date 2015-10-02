@@ -3,12 +3,16 @@
 pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments"
 _srcname=linux-4.2
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 
+	     'docbook-xsl' 
+	     'kmod' 
+	     'inetutils' 
+	     'bc')
 optdepends=('nvidia-think: nvidia drivers'
 	    'bbswitch-think: optimus support')
 options=('!strip')
@@ -23,8 +27,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'007-fbcondecor.patch'
 	'008-e1000e_fix_tight_loop_implementation_of_systime_read.patch'
 	'009-fix_bridge_regression.patch'
-	'010-make_flush_workqueue_non_gpl.patch'
-	'011-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch'
+	'010-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch'
         # the main kernel config files
         'config' 
 	'config.x86_64'
@@ -48,7 +51,7 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/001-change_default_console_loglevel.patch"
 
-  # patches for vga arbiter fix in intel systems
+  # Patches for vga arbiter fix in intel systems
   patch -p1 -i "${srcdir}/002-i915.patch"
 
   # Overrides for missing acs capabilities
@@ -66,17 +69,18 @@ prepare() {
   # Enabling fbcondecor
   patch -p1 -i "${srcdir}/007-fbcondecor.patch"
 
-  # Enabling fbcondecor
+  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
+  # https://lkml.org/lkml/2015/8/18/292
   patch -p1 -i "${srcdir}/008-e1000e_fix_tight_loop_implementation_of_systime_read.patch"
 
-  # Enabling fbcondecor
+  # add not-yes-mainlined patch to fix bridge code
+  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
   patch -p1 -i "${srcdir}/009-fix_bridge_regression.patch"
 
-  # Enabling fbcondecor
-  patch -p1 -i "${srcdir}/010-make_flush_workqueue_non_gpl.patch"
-
-  # Enabling fbcondecor
-  patch -p1 -i "${srcdir}/011-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch"
+  # add not-yet-mainlined patch to fix network unavailability when iptables
+  # rules are applied during startup - happened with Shorewall; journal had
+  # many instances of this error: nf_conntrack: table full, dropping packet
+  patch -p1 -i "${srcdir}/010-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch"
 
 
   if [ "${CARCH}" = "x86_64" ]; then
@@ -320,7 +324,7 @@ for _p in ${pkgname[@]}; do
 done
 
 md5sums=('3d5ea06d767e2f35c999eeadafc76523'
-         '3e1cc007d930f8760ef0730609dca035'
+         '5c032ad548007cb8e28e0163c85dc5f9'
          'df7fceae6ee5d7e7be7b60ecd7f6bb35'
          '43bcd5f7d5d86ad22c1817e282872e2e'
          'be91dd41334c87c68ed0e730846b8192'
@@ -330,7 +334,6 @@ md5sums=('3d5ea06d767e2f35c999eeadafc76523'
          '8b7ca23aa660578023a0a244ae235888'
       	 '5eebf645841fdffc62f81a65899361dd'
 	 '20096ff36a623e8eeed2ccb0c9de7d84'
-	 'c740a077024d4499a47b54c00660d293'
 	 '74e5e48a39bd00c680b189e2f468e192'
       	 'ed1d392d9feb77674e7a71c3eda060e6'
 	 '2a8d43290cca1297a5f421b58b7c4058'

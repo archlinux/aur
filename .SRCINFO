@@ -1,6 +1,6 @@
 pkgbase = linux-think
 	pkgdesc = Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = linux-think
 	optdepends = bbswitch-think: optimus support
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.1.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.2.xz
 	source = 001-change_default_console_loglevel.patch
 	source = 002-i915.patch
 	source = 003-override_for_missing_acs_capabilities.patch
@@ -25,13 +25,12 @@ pkgbase = linux-think
 	source = 007-fbcondecor.patch
 	source = 008-e1000e_fix_tight_loop_implementation_of_systime_read.patch
 	source = 009-fix_bridge_regression.patch
-	source = 010-make_flush_workqueue_non_gpl.patch
-	source = 011-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch
+	source = 010-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch
 	source = config
 	source = config.x86_64
 	source = linux.preset
 	md5sums = 3d5ea06d767e2f35c999eeadafc76523
-	md5sums = 3e1cc007d930f8760ef0730609dca035
+	md5sums = 5c032ad548007cb8e28e0163c85dc5f9
 	md5sums = df7fceae6ee5d7e7be7b60ecd7f6bb35
 	md5sums = 43bcd5f7d5d86ad22c1817e282872e2e
 	md5sums = be91dd41334c87c68ed0e730846b8192
@@ -41,7 +40,6 @@ pkgbase = linux-think
 	md5sums = 8b7ca23aa660578023a0a244ae235888
 	md5sums = 5eebf645841fdffc62f81a65899361dd
 	md5sums = 20096ff36a623e8eeed2ccb0c9de7d84
-	md5sums = c740a077024d4499a47b54c00660d293
 	md5sums = 74e5e48a39bd00c680b189e2f468e192
 	md5sums = ed1d392d9feb77674e7a71c3eda060e6
 	md5sums = 2a8d43290cca1297a5f421b58b7c4058
@@ -55,20 +53,20 @@ pkgname = linux-think
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-think=4.2.1
+	provides = kernel26-think=4.2.2
 	conflicts = kernel26-think
 	replaces = kernel26-think
 	backup = etc/mkinitcpio.d/linux-think.preset
 
 pkgname = linux-think-headers
 	pkgdesc = Header files and scripts for building modules for Linux-think kernel
-	provides = kernel26-think-headers=4.2.1
+	provides = kernel26-think-headers=4.2.2
 	conflicts = kernel26-think-headers
 	replaces = kernel26-think-headers
 
 pkgname = linux-think-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-think kernel
-	provides = kernel26-think-docs=4.2.1
+	provides = kernel26-think-docs=4.2.2
 	conflicts = kernel26-think-docs
 	replaces = kernel26-think-docs
 
