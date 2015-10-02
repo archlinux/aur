@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname=svtplay-dl
 pkgver=0.20.2015.09.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Small command-line program to download videos from svtplay.se/tv4play.se/tv3play.se/tv8play.se/tv6play.se/viaplay.se/aftonbladet"
 url="https://github.com/spaam/svtplay-dl"
 license=('MIT')
