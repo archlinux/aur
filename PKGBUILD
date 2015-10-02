@@ -1,7 +1,7 @@
 pkgname=freqtweak
 pkgver=0.7.2
 pkgrel=1
-pkgdesc="Audio Effect Processor"
+pkgdesc="Audio Effect Processor and Spectrum Analyzer"
 arch=('i686' 'x86_64')
 depends=('wxgtk2.8' 'fftw' 'jack' 'libsigc++')
 url="http://freqtweak.sourceforge.net"
