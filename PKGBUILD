@@ -1,6 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=flif-git
+_pkgname=FLIF
 pkgver=r33.232a336
 pkgrel=1
 pkgdesc="Free Lossless Image Format"
@@ -13,17 +14,18 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-      cd "$srcdir/FLIF"
+      cd "$srcdir/${_pkgname}"
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/FLIF"
+  cd "$srcdir/${_pkgname}"
   make
 }
 
 package() {
-  cd $srcdir/FLIF
-  install -dm755 $pkgdir/usr/bin
-  install -m755 flif $pkgdir/usr/bin 
+  cd "$srcdir/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -m755 flif "${pkgdir}/usr/bin" 
 }
