@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-cgi-ex'
-pkgver='2.42'
+pkgver='2.43'
 pkgrel='1'
 pkgdesc="CGI utility suite - makes powerful application writing fun and easy"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cgi' 'perl-template-alloy>=1.016')
+depends=('perl-template-alloy>=1.016')
 makedepends=()
-url='http://search.mcpan.org/dist/CGI-Ex'
-source=('http://search.mcpan.org/CPAN/authors/id/L/LJ/LJEPSON/CGI-Ex-2.42.tar.gz')
-md5sums=('179f4f70747c955485c13cf1a39f586d')
-sha512sums=('787077760a3a49afda7ea8b7c0382e93451cbecc8598607a9f8d7b433e480ff172467695678168999a8d1098019382eb2bfad800a3af75604cb8a6f0420d481a')
-_distdir="CGI-Ex-2.42"
+url='https://metacpan.org/release/CGI-Ex'
+source=('http://search.cpan.org/CPAN/authors/id/L/LJ/LJEPSON/CGI-Ex-2.43.tar.gz')
+md5sums=('77f12e63d85305930a0d845d454f9be5')
+sha512sums=('caff23024299f35b14bf292ef725d25857983bade80dd1c24a0878eb8c35b87d85d7eb73db4baab585c748f67dd73d9449b213a1aa4c3c056a0ffa3b0ebbf9c7')
+_distdir="CGI-Ex-2.43"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
