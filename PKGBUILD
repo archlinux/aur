@@ -3,7 +3,7 @@
 
 pkgname=factorio-experimental
 pkgver=0.12.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories. - Experimental Version"
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
@@ -49,6 +49,7 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/factorio"
   install -d "${pkgdir}/usr/share/licenses/factorio"
+  install -d -m777 "${pkgdir}/usr/share/factorio/scenario-pack"
 
   install -m755 "bin/${__factorio_arch}/factorio" "$pkgdir/usr/bin/factorio"
   cp -r data/* "$pkgdir/usr/share/factorio"
