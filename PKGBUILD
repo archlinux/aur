@@ -2,13 +2,13 @@
 
 pkgname=gnome-flashback
 pkgver=3.18.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc="GNOME Flashback session"
 url="https://wiki.gnome.org/Projects/GnomeFlashback"
 # Note: Dependencies from gnome-panel onwards are flashback session dependencies and are not required for building the flashback module
-depends=('gnome-desktop' 'libcanberra' 'libpulse' 'upower' 'gnome-panel' 'gnome-screensaver' 'gnome-session' 'gnome-settings-daemon' 'metacity' 'nautilus' 'notification-daemon')
+depends=('gnome-desktop' 'libcanberra' 'libpulse' 'upower' 'gnome-bluetooth' 'ibus' 'gnome-panel' 'gnome-screensaver' 'gnome-session' 'gnome-settings-daemon' 'metacity' 'nautilus' 'notification-daemon')
 makedepends=('intltool')
 optdepends=('compiz: required for the GNOME Flashback (Compiz) session')
 install=$pkgname.install

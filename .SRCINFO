@@ -1,7 +1,7 @@
 pkgbase = gnome-flashback
 	pkgdesc = GNOME Flashback session
 	pkgver = 3.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GnomeFlashback
 	install = gnome-flashback.install
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = gnome-flashback
 	depends = libcanberra
 	depends = libpulse
 	depends = upower
+	depends = gnome-bluetooth
+	depends = ibus
 	depends = gnome-panel
 	depends = gnome-screensaver
 	depends = gnome-session
