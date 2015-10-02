@@ -1,7 +1,7 @@
 pkgbase = python-nikola
 	pkgdesc = A modular, fast, simple, static website generator.
 	pkgver = 7.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getnikola.com/
 	arch = any
 	license = MIT
