@@ -1,6 +1,6 @@
 pkgbase = qmmp-plugin-pack-svn
 	pkgdesc = Qmmp Plugin Pack. (SVN Version)
-	pkgver = 1.0.0.svn.r5415
+	pkgver = 1.1.0.svn.r5646
 	pkgrel = 1
 	url = http://qmmp.ylsoftware.com
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = qmmp-plugin-pack-svn
 	optdepends = mpg123: alternative Mpeg-1-2-3 support
 	provides = qmmp-plugin-pack
 	conflicts = qmmp-plugin-pack
-	source = qmmp-plugin-pack::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-1.0
+	source = qmmp-plugin-pack::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-1.1
 	sha1sums = SKIP
 
 pkgname = qmmp-plugin-pack-svn
