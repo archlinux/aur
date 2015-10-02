@@ -13,7 +13,7 @@ pkgbase = jreen
 	provides = jreen
 	conflicts = jreen-git
 	source = jreen-1.2.0.zip::http://github.com/euroelessar/jreen/archive/v1.2.0.zip
-	md5sums = ec99ee35e63dfdd22d650edbdb2e6edb
+	md5sums = 1ac6d90d17371288bebe3fc1921a977c
 
 pkgname = jreen
 

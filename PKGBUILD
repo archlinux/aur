@@ -1,5 +1,4 @@
-# Maintainer: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
-# https://github.com/zizzfizzix/pkgbuilds
+# Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 ##############################################################
 #### The section below can be adjusted to suit your needs ####
@@ -24,7 +23,7 @@ makedepends=('cmake')
 provides=('jreen')
 conflicts=('jreen-git')
 source=("${pkgname}-${pkgver}.zip::http://github.com/euroelessar/${pkgname}/archive/v${pkgver}.zip")
-md5sums=('ec99ee35e63dfdd22d650edbdb2e6edb')
+md5sums=('1ac6d90d17371288bebe3fc1921a977c')
 
 if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
   options=('debug')
