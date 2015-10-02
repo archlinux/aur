@@ -69,117 +69,75 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 ### Do not edit below this line unless you know what you're doing
 
 pkgname=(linux-lts-ck linux-lts-ck-headers)
-_kernelname=-lts-ck
-_srcname=linux-3.14
-pkgver=3.14.51
+_kernelname=-ck
+_srcname=linux-4.1
+pkgver=4.1.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
-_ckpatchversion=1
-_ckpatchname="patch-3.14-ck${_ckpatchversion}"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8"
+_ckpatchversion=2
+_ckpatchname="patch-4.1-ck${_ckpatchversion}"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8"
 
-source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-		"https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
-		"https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
-		"https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign"
-		"http://ck.kolivas.org/patches/3.0/3.14/3.14-ck${_ckpatchversion}/${_ckpatchname}.bz2"
-		"bfs447-454.patch"
-		"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+		"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+		"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+		"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
 		'config.x86_64' 'config'
 		'linux-lts-ck.preset'
 		'change-default-console-loglevel.patch'
-		'0001-Bluetooth-allocate-static-minor-for-vhci.patch'
-		'0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
-		'0003-module-remove-MODULE_GENERIC_TABLE.patch'
-		'0006-genksyms-fix-typeof-handling.patch'
-		"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.14.patch"
-		"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.14.patch"
-		"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.14.0.patch"
-		'fix_CPU0_microcode_on_resume.patch'
-		'gcc5_buildfixes.diff')
+		# ck1
+		"http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
+		# gcc
+		"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
+		# bfq
+		"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.1.patch"
+		"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.1.patch"
+		"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
 
-sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea55f277e7af156b637f22e1584914a46089af85039177cb43485089c74ac26e'
+sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            'bf4a20698634c69c1fe16c7a6344a48aaa31e44ec9092f4a92cff93a8e36ec789b4e5f2f34d51e4724158afc35ab8eaa6ddb43737766baeca5d400e6d8b6c974'
+            '79ecd1c4c00fd52b89795f89d07c520c585733f1641a59045de44dea6a913c94de6b9f33fd8f7a146b68c57ade4107dedc2f8790d4bcec96a0f89812dc7f90fa'
             'SKIP'
-            'd745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305'
-            '1a112daacec768b588af4549a6e90fa24a251b4632bd14dd1ccbb818838a009df25f9df369ad71e3ef9a6900f4e8ff37f8132bd8450c1653c1a6eb7bdffb0ad5'
-            '1b8ac77604b891aac57257bc3d9578596f38f2f75a625310a7d36e7f59612a616da6ef12d028622cb855a065e4fadc739cb67d12370c49bb52708744ad312957'
-            '5204855514432befe709ea24e314afa1dd24b05052baa86bfe508f54f2443a37a83db9c55152fbe9b10419c9986f832ef5e629695909e54de59becee96e9d201'
-            '94a08390fc3fc04610d4828213aa04d1cad956ff0be65f3b95f918aa8c4483f3f43fb75b8bbab876e402a464c512884413d6aa75c62a332d362ced116a16865a'
-            'a93cb41a6a37bfa1a4aae49b3c69d714e0c58d0d5826d6dc13529861e1f7f9a45d524455dca30d6a26f1993e542d8ccddb5b85caf01957a94e4c05dfd1ca71de'
-            '502192b5ce94c8254205f5ddb85bf50c5f1e78c768817b10dca3a7716a8c59d5e093842631acb51e3805cbf85522e0a9200942656f11bbb4ea1b7d61e24ddd78'
-            'f26306c173e3fc35ae6df4c43e9ddbac33845dcc1fb0def612fe370c2d7b8f904b4c70d267eb52717ade879d1e289695b9e971dfcb1c963dac4c6e2fb5230453'
-            'da69065f317212c7937f5c3110afdef6006da7756b0a2a98c4bff94db12eb503dc89040aa3cd7a1655ba1b0641f47dda4e60933309e231eaecbe9bd79cb06ebd'
-            '4b9fa6afdd1f4f4f6a3a439380cff3376ef33e782aac0ae92421f4b7c40140d57a04d7bc57dfd9fb59fdefb3a0a55fe7e7d6022314b11ef454a1cae4b75cf264'
-            'fdb67e9956d9af1518d0198b86b13150b28f43dd28eb52222a9c43699f7304cd1a56d7f421a0690fa4c0d2c266fd5504da9d6217f83a42d05f35b713fd85e2dd'
-            'edf73585f1363011ba4235919b4265713d3943e3a93996822408ee4c99403a52c81d7cbf23d261aabeefeb41d2bb9b5ad26c4c1a0c6af7e27a4e092654c8e967'
-            '91340f269b2aefb4df0e9999dc3664ded7d1758a7257da1268f95ced5f549a1883127b7260657a2ee0782922e7848fb3fac4ae05d822c793ecc9f2c1be9d4b5f'
-            '9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd'
-            '532df1bdcacfb5453dc8b4a0f44c33146cb3c01a28c073a3b8f9900f4e65cb23763c99eeb7128d3448ba1e6f54632c5867f5f3d82ee2ee1b7033ff921ef8e7ba'
-            '947997e7719168b176a24193ec0d1d8b9760dfa9335f8c9bd4842730a497787589b8917361af01600d0164b9574911e64ce80395146340a6c352119e6544295c')
-
+            'ebcfabb18103802bd607f2a9b1a6750b25e57739eb6d36bad8f15e1f8c31daf9064b4a2398d6d8c9fdfc9d95b0b06fd2cc084506477435ef70f9430158f4f5d4'
+            '032296ba49ff77bd70568a4653899a5ce67bd3e9ad11648bbd559553ebdae726a7db5e29c28079b34628fd3f4ed58bccf936dc6450025e4c9aff9a025df827b1'
+            'd365341656f0acf68f9e0bf62f27b14c3eb8583d332f26cdd6b5290153c5bf04d7ac1495bace54f387959ac5330113466fefd73b83663a28e6fcf20224741ca5'
+            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
+            '356e144f858b6015415b2c3f781ca534e5f77b818302e404c3d3b35c088f4a4163356b67f98bfc95175bd52bd8b3e9a9a3e336cbcd8adf6c2d388700ce630d4d'
+            '76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc'
+            '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
+            'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
+            '1db70764577d3e8d5e65351bdef7f2cf61d2546138a6342c4bf4e5e6738b8e06b5291a9a0c12f9fc2c8cb620048006d05474cf75902cb26e7504038150cf0a44')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
 
-
 prepare() {
 	cd "${_srcname}"
 
 	# add upstream patch
-	msg "Patching source to v$pkgver"
 	patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-	# buildfixes for gcc5
-	# https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/qla2xxx/qla_nx2.c?id=9493c2422cae272d6f1f567cbb424195defe4176
-	# https://lkml.org/lkml/2014/11/9/27
-	# https://lkml.org/lkml/2014/12/14/55
-	patch -p1 -i "${srcdir}/gcc5_buildfixes.diff"
-
-	# add latest fixes from stable queue, if needed
-	# http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-	# Fix FS#42689
-	# https://bugzilla.kernel.org/show_bug.cgi?id=88001
-	patch -p1 -i "${srcdir}/fix_CPU0_microcode_on_resume.patch"
-
-	# Fix vhci warning in kmod (to restore every kernel maintainer's sanity)
-	msg "Patching source to fix vhci warning in kmod"
-	patch -p1 -i "${srcdir}/0001-Bluetooth-allocate-static-minor-for-vhci.patch"
-
-	# Fix atkbd aliases
-	msg "Patching source to fix atkbd aliases"
-	patch -p1 -i "${srcdir}/0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
-	patch -p1 -i "${srcdir}/0003-module-remove-MODULE_GENERIC_TABLE.patch"
-
-	# Fix generation of symbol CRCs
-	# http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
-	msg "Patching source to fix generation of symbol CRCs"
-	patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
-	
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck1 including BFS v0.454"
+	msg "Patching source with ck2 including BFS v0.464"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
-	patch -Np1 -i "${srcdir}/bfs447-454.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
-	msg "Patching source to enable more gcc CPU optimizatons"
+	msg "Patching source with gcc patch to enable more cpus types"
 	patch -Np1 -i "${srcdir}/${_gcc_patch}"
-
+	
 	msg "Patching source with BFQ patches"
 	for p in $(ls ${srcdir}/000{1,2,3}-block*.patch); do
 		msg " $p"
@@ -200,10 +158,31 @@ prepare() {
 	# http://ck-hack.blogspot.com/2013/09/bfs-0441-311-ck1.html?showComment=1379234249615#c4156123736313039413
 	if [ -n "$_1k_HZ_ticks" ]; then
 		msg "Setting tick rate to 1k..."
-		sed -i -e 's/^CONFIG_HZ_100=y/# CONFIG_HZ_100 is not set/' \
+		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
 			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-			-i -e 's/^CONFIG_HZ=100/CONFIG_HZ=1000/' .config
+			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
 	fi
+	
+	### Do not disable NUMA until CK figures out why doing so causes panics for
+	### some users!
+
+	# Optionally disable NUMA since >99% of users have mono-socket systems.
+	# For more, see: https://bugs.archlinux.org/task/31187
+#	if [ -n "$_NUMAdisable" ]; then
+#		if [ "${CARCH}" = "x86_64" ]; then
+#			msg "Disabling NUMA from kernel config..."
+#			sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+#				-i -e '/CONFIG_AMD_NUMA=y/d' \
+#				-i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+#				-i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+#				-i -e '/# CONFIG_NUMA_EMU is not set/d' \
+#				-i -e '/CONFIG_NODES_SHIFT=6/d' \
+#				-i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+#				-i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+#				-i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+#				-i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+#		fi
+#	fi
 
 	### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -223,24 +202,6 @@ prepare() {
 	if [ "${_kernelname}" != "" ]; then
 		sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
 		sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-	fi
-
-	### Optionally disable NUMA since >99% of users have mono-socket systems.
-	# For more, see: https://bugs.archlinux.org/task/31187
-	if [ -n "$_NUMAdisable" ]; then
-		if [ "${CARCH}" = "x86_64" ]; then
-			msg "Disabling NUMA from kernel config..."
-			sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-				-i -e '/CONFIG_AMD_NUMA=y/d' \
-				-i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-				-i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-				-i -e '/# CONFIG_NUMA_EMU is not set/d' \
-				-i -e '/CONFIG_NODES_SHIFT=6/d' \
-				-i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-				-i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-				-i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-				-i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-		fi
 	fi
 
 	### Optionally enable BFQ as the default I/O scheduler
@@ -263,10 +224,10 @@ prepare() {
 	### Optionally load needed modules for the make localmodconfig
 	# See https://aur.archlinux.org/packages/modprobed-db
 		if [ -n "$_localmodcfg" ]; then
-		msg "If you have modprobe_db installed, running it in recall mode now"
-		if [ -e /usr/bin/modprobed_db ]; then
+		msg "If you have modprobed-db installed, running it in recall mode now"
+		if [ -e /usr/bin/modprobed-db ]; then
 			[[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
-			sudo /usr/bin/modprobed_db recall
+			sudo /usr/bin/modprobed-db recall
 		fi
 		msg "Running Steven Rostedt's make localmodconfig now"
 		make localmodconfig
@@ -290,16 +251,16 @@ prepare() {
 
 build() {
 		cd "${_srcname}"
-		msg "Running make bzImage and modules"
 		make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+		msg "Running make bzImage and modules"
 }
 
 package_linux-lts-ck() {
-	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.454.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.454.'
+	pkgdesc='Linux Kernel with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
-	optdepends=('crda: to set the correct wireless channels of your country' 'lirc-ck: Linux Infrared Remote Control kernel modules for linux-lts-ck' 'nvidia-lts-ck: nVidia drivers for linux-lts-ck' 'nvidia-340xx-lts-ck: nVidia drivers for linux-lts-ck' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+	optdepends=('crda: to set the correct wireless channels of your country'  'nvidia-lts-ck: nVidia drivers for linux-lts-ck' 'nvidia-340xx-lts-ck: nVidia drivers for linux-lts-ck' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 	provides=("linux-lts-ck=${pkgver}")
 	replaces=('kernel26-lts-ck')
 	backup=("etc/mkinitcpio.d/linux-lts-ck.preset")
@@ -341,8 +302,6 @@ package_linux-lts-ck() {
 	rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
 	# remove the firmware
 	rm -rf "${pkgdir}/lib/firmware"
-	# gzip -9 all modules to save 100MB of space
-	find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
 	# make room for external modules
 	ln -s "../extramodules-${_basekernel}${_kernelname:lts-ck}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
 	# add real version for building modules and running depmod from post_install/upgrade
@@ -430,7 +389,6 @@ package_linux-lts-ck-headers() {
 	# http://bugs.archlinux.org/task/9912
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
 	cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
-
 	# and...
 	# http://bugs.archlinux.org/task/11194
 	###
@@ -464,7 +422,8 @@ package_linux-lts-ck-headers() {
 	# add xfs and shmem for aufs building
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-	cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
+	# removed in 3.17 series
+	#cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
 
 	# copy in Kconfig files
 	for i in $(find . -name "Kconfig*"); do
