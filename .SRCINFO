@@ -1,7 +1,7 @@
 pkgbase = sigal
 	pkgdesc = Simple static gallery generator
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saimn/sigal
 	arch = any
 	license = MIT

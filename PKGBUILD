@@ -1,7 +1,7 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=sigal
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple static gallery generator"
 arch=('any')
 url="https://github.com/saimn/sigal"
