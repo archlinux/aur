@@ -1,0 +1,16 @@
+pkgbase = customizepkg-patching
+	pkgdesc = A tool to automate modification of PKGBUILDs using patch
+	pkgver = 20
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = bash
+	depends = diffutils
+	depends = patch
+	optdepends = vim: For using vimdiff
+	provides = customizepkg
+	conflicts = customizepkg
+	source = customizepkg-patching
+
+pkgname = customizepkg-patching
+

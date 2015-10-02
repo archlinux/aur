@@ -1,0 +1,223 @@
+#!/bin/bash
+ver=20
+#-----------------------------------------------------------------------#
+#
+# customizepkg-patching
+# Applies a patch to PKGBUILD before building.
+#
+#  Maintainer: Michael Duell <michael.duell@rub.de>
+#
+#  Old maintainer:
+#  Daniel Oertwig <Daniel.Oertwig@googlemail.com>
+#  homepage: http://www.proggen.org
+#
+# A modification of the original customizepkg from
+# <wain@archlinux.fr>
+# homepage: http://archlinux.fr
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+#-----------------------------------------------------------------------#
+
+
+
+#-----------------------------------------------------------------------#
+## Some help ...
+#-----------------------------------------------------------------------#
+print_usage()
+{
+  echo "customizepkg - patching version $ver"
+  echo
+  echo "Without any option, this script reads files from the current directory and shows a diff"
+  echo "between the original and the customized version of the files."
+  echo "The patch to apply the changes is read from /etc/customizepkg.d/\$pkgname"
+  echo
+  echo "usage: customizepkg <option>"
+  echo
+  echo "customizepkg --version, -V       Shows version"
+  echo "customizepkg --help, -h          Shows this help"
+  echo "customizepkg --edit, -e          Edit files marked for customization"
+  echo "                                 (add -v to edit with vimdiff)"
+  echo "customizepkg --patch, -p         Review patch (add -m to save)"
+  echo "customizepkg --modify, -m        Apply the saved modifications"
+  echo "customizepkg --vimdiff, -v       Show diff using vimdiff"
+  echo
+  echo "To customize a file, use:"
+  echo "$ cp file file.original"
+  echo "then edit file."
+  echo
+  echo "To add a file, create and edit it, then use:"
+  echo "$ touch file.original"
+  echo
+  echo "To remove a file, use:"
+  echo "$ mv file file.original"
+  echo
+  echo "Written by Daniel Oertwig <Daniel.Oertwig@googlemail.com>"
+  echo "      homepage: http://www.proggen.org"
+  echo " as a modification of the original customizepkg from"
+  echo " <wain@archlinux.fr>"
+  echo "  homepage: http://archlinux.fr"
+  echo
+}
+
+
+
+print_version()
+{
+  echo "customizepkg - patching version $ver"
+}
+
+
+
+#-----------------------------------------------------------------------#
+## MAIN PROGRAMM
+#-----------------------------------------------------------------------#
+shopt -s nullglob
+VIMDIFF=0
+MODIFY=0
+PATCH=0
+EDIT=0
+
+
+
+# Parse commandline options. Modifications are made only
+# if the option -m or --modify are given!
+while [[ "$#" != "0" ]]; do
+  case $1 in
+    -h|--help)
+      print_usage
+      exit 0
+      ;;
+    --version|-V)
+      print_version
+      exit 0
+      ;;
+    -e|--edit)
+      EDIT=1
+      ;;
+    -p|--patch)
+      PATCH=1
+      ;;
+    -m|--modify)
+      MODIFY=1
+      ;;
+    --vimdiff|-v)
+      VIMDIFF=1
+      ;;
+  esac
+  shift
+done
+
+
+
+# Ensure the PKGBUILD file is there and read it to
+# get the pkgname variable!
+if [[ ! -r ./PKGBUILD ]]; then
+  echo "PKGBUILD not found!"
+  exit 1
+fi
+source ./PKGBUILD || exit 1
+
+
+
+# Perform an action on each pair of original and
+# changed files.
+for_changes_do() {
+  for f in ./*.original; do
+    "$@" "$f" "${f%.original}"
+  done
+}
+
+
+
+# Edit customized files, with vimdiff if the VIMDIFF
+# option was given, or with the editor specified by
+# EDITOR (falling back on vi) otherwise.
+if [[ "$EDIT" == "1" ]]; then
+  if [[ "$VIMDIFF" == "1" ]]; then
+    edit="vim -d"
+  else
+    edit="${EDITOR:-vi}"
+  fi
+  for_changes_do $edit
+  exit 0
+fi
+
+
+
+# Show a patch with the current modifications.
+# If the MODIFY option was given, also write it to the
+# configdir.
+if [[ "$PATCH" == "1" ]]; then
+  for_changes_do diff -upN |
+    if [[ "$MODIFY" == "1" ]]; then
+      tee "/etc/customizepkg.d/$pkgname"
+    else
+      cat
+    fi
+  exit 0
+fi
+
+
+
+# Ensure there is a patch available in the configdir!
+if [[ ! -r "/etc/customizepkg.d/$pkgname" ]]; then
+  echo "No configuration for $pkgname in /etc/customizepkg.d"
+  exit 1
+fi
+
+
+
+# Apply the patch. Exit if something goes wrong.
+patch -b -z .original -i "/etc/customizepkg.d/$pkgname"
+if [[ "$?" -gt "1" ]]; then
+  echo "Patching failed!"
+  for f in *.rej; do
+    echo "$f"
+    cat "$f"
+  done
+  exit 1
+fi
+
+
+
+# Show the diffs
+if [[ "$VIMDIFF" == "1" ]]; then
+  for_changes_do vim -d
+else
+  for_changes_do diff -upN
+fi
+
+
+
+# Revert a modification.
+# If the original file is empty, it means that
+# a new file was created by the patch, so remove it.
+revert() {
+  mv -f "$1" "$2"
+  [[ -s "$2" ]] || rm "$2"
+}
+
+
+
+# Only if the MODIFY option was given the 
+# modified file stays. Otherwise, the original
+# file is used.
+if [[ "$MODIFY" == "0" ]]; then
+  for_changes_do revert
+  rm -f *.rej
+fi
+
+
+
+# Exit gracefully :)
+exit 0
+
+
