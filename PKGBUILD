@@ -3,7 +3,7 @@
 
 pkgname=python-retrying
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose Python retyring library"
 arch=('any')
 url="https://github.com/rholder/retrying/releases"
