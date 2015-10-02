@@ -1,8 +1,15 @@
-mlat-client (0.2.4~dev) UNRELEASED; urgency=medium
+mlat-client (0.2.4) unstable; urgency=medium
 
-  * 
+  * Better periodic stats logging.
+  * Grab CLIENT_VERSION from the source in setup.py so it doesn't need to be
+    in two places.
+  * fa-mlat-client: explicitly log exceptions on exit to try to fix cxfreeze
+    weirdness.
+  * fa-mlat-client: log server status messages.
+  * fa-mlat-client: periodically report UDP stats so the server can notice
+    message loss.
 
- -- Oliver Jowett <oliver@mutability.co.uk>  Wed, 29 Jul 2015 13:28:39 +0100
+ -- Oliver Jowett <oliver@mutability.co.uk>  Sun, 27 Sep 2015 23:27:16 +0100
 
 mlat-client (0.2.3) unstable; urgency=medium
 

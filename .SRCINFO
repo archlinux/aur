@@ -1,5 +1,5 @@
 pkgbase = mlat-client-git
-	pkgdesc = Mode S multilateration client
+	pkgdesc = Mode S multilateration client. Mutability git.
 	pkgver = 0.2.4.r1.gfc43b04
 	pkgrel = 1
 	url = https://github.com/mutability/mlat-client
@@ -14,6 +14,8 @@ pkgbase = mlat-client-git
 	depends = python
 	provides = mlat-client
 	provides = fa-mlat-client
+	conflicts = mlat-client
+	conflicts = fa-mlat-client
 	source = mlat-client-git::git://github.com/mutability/mlat-client.git
 	md5sums = SKIP
 
