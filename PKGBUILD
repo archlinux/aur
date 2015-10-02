@@ -3,7 +3,7 @@
 
 pkgname=pyfa
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 everelname="vanguard"
 everelver=1.0
 pkgdesc="EVE Online Fitting Assistant"
@@ -28,3 +28,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
+md5sums=('196a1e680697efd5440bcfafd517c3f9'
+         'a6f1cef5a9fcc5dfd6c5ecdddf2c5e38'
+         '9937192cfce7f5e16e9cf26086f1899c')

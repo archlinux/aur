@@ -1,7 +1,7 @@
 pkgbase = pyfa
 	pkgdesc = EVE Online Fitting Assistant
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/DarkFenX/Pyfa
 	arch = any
 	license = GPL
@@ -14,6 +14,9 @@ pkgbase = pyfa
 	source = https://github.com/DarkFenX/Pyfa/releases/download/v1.15.0/pyfa-1.15.0-vanguard-1.0-linux.zip
 	source = pyfa.desktop
 	source = pyfa-start.sh
+	md5sums = 196a1e680697efd5440bcfafd517c3f9
+	md5sums = a6f1cef5a9fcc5dfd6c5ecdddf2c5e38
+	md5sums = 9937192cfce7f5e16e9cf26086f1899c
 
 pkgname = pyfa
 
