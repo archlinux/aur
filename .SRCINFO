@@ -1,7 +1,7 @@
 pkgbase = python-tzlocal
 	pkgdesc = Tzinfo object for the local timezone
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/tzlocal
 	arch = any
 	license = custom

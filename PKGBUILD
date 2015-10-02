@@ -5,7 +5,7 @@
 _pkgname=tzlocal
 pkgname=python-${_pkgname}
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tzinfo object for the local timezone"
 arch=('any')
 url='https://pypi.python.org/pypi/tzlocal'
