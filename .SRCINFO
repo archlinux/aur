@@ -1,7 +1,7 @@
 pkgbase = python-micawber
 	pkgdesc = A small library for extracting rich content from URLs.
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coleifer/micawber
 	arch = any
 	license = MIT
