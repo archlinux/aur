@@ -1,10 +1,10 @@
 # Maintainer: Frontier (frontier314 at gmail dot com)
 
 pkgname=fbc-git
-pkgver=1.00
-pkgrel=5
+pkgver=1.05
+pkgrel=1
 _pkgname=fbc
-_bootver=1.03.1
+_bootver=1.04.0
 pkgdesc="FreeBASIC Compiler (Development version)"
 arch=('i686' 'x86_64')
 url="http://www.freebasic.net"
