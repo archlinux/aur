@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-orc
-pkgver=0.4.23
-pkgrel=2
+pkgver=0.4.24
+pkgrel=1
 pkgdesc="The Oil Runtime Compiler (mingw-w64)"
 arch=('any')
 license=('custom')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 source=(http://gstreamer.freedesktop.org/data/src/orc/orc-${pkgver}.tar.xz)
-md5sums=('72e0612ace54d77aa2f7a006348ee81a')
+md5sums=('9e793ec34c0e20339659dd4bbbf62135')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build () {
