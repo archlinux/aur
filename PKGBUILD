@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=hangups
 pkgname=${_pkgname}-git
-pkgver=20150826
+pkgver=20150929
 pkgrel=1
 
 pkgdesc="The first third-party instant messaging client for Google Hangouts"
