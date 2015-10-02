@@ -1,7 +1,7 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 
 pkgname=python-pympler
-pkgver=0.4
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Measure, monitor and analyze the memory behavior of Python objects'
 arch=('any')
@@ -9,7 +9,7 @@ url='http://pypi.python.org/pypi/pympler/'
 license=('Apache')
 depends=('python')
 source=("http://pypi.python.org/packages/source/P/Pympler/Pympler-$pkgver.tar.gz")
-md5sums=('68e4a8aa4a268996fa6a321b664918af')
+md5sums=('6bdfd913ad4c94036e8a2b358e49abd7')
 
 build() {
   cd "$srcdir/Pympler-$pkgver"
