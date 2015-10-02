@@ -1,6 +1,6 @@
 pkgbase = webcamoid-git
 	pkgdesc = Webcamoid is a full featured webcam capture application.
-	pkgver = 6.2.0.r5.gf25d4e0
+	pkgver = 6.2.0.r13.ge3172f3
 	pkgrel = 1
 	url = https://github.com/hipersayanX/webcamoid
 	arch = i686
@@ -10,8 +10,6 @@ pkgbase = webcamoid-git
 	makedepends = git
 	makedepends = qt5-tools
 	depends = qt5-quickcontrols
-	depends = qt5-multimedia
-	depends = qt5-graphicaleffects
 	depends = qt5-svg
 	depends = ffmpeg
 	provides = webcamoid
