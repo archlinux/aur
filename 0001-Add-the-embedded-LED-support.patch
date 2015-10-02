@@ -1,0 +1,220 @@
+From bd5dbee2b3ea2a2ce57b3171992f791a23f27e34 Mon Sep 17 00:00:00 2001
+Message-Id: <bd5dbee2b3ea2a2ce57b3171992f791a23f27e34.1368405776.git.matthew.monaco@0x01b.net>
+From: Takashi Iwai <tiwai@suse.de>
+Date: Mon, 10 May 2010 18:15:48 +0200
+Subject: [PATCH 1/3] Add the embedded LED support
+
+This patch adds the control of the embedded LED on the top-left corner
+of new Synaptics devices.  For LED control, it requires the patch to
+Linux synaptics input driver,
+	https://patchwork.kernel.org/patch/92434/
+
+When a sysfs file /sys/class/leds/psmouse::synaptics exists, the driver
+assumes it supports the embeded LED control.
+
+The LED can be controlled via new properties, "Synaptics LED" and
+"Synaptics LED Status".
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ include/synaptics-properties.h |  6 ++++++
+ man/synaptics.man              |  9 +++++++++
+ src/eventcomm.c                | 34 +++++++++++++++++++++++++++++++++-
+ src/properties.c               | 15 +++++++++++++++
+ src/synapticsstr.h             |  2 ++
+ src/synproto.h                 |  1 +
+ tools/synclient.c              |  1 +
+ 7 files changed, 67 insertions(+), 1 deletion(-)
+
+diff --git a/include/synaptics-properties.h b/include/synaptics-properties.h
+index b717880..8753609 100644
+--- a/include/synaptics-properties.h
++++ b/include/synaptics-properties.h
+@@ -152,4 +152,10 @@
+ /* 32 Bit Integer, 2 values, horizontal hysteresis, vertical hysteresis */
+ #define SYNAPTICS_PROP_NOISE_CANCELLATION "Synaptics Noise Cancellation"
+ 
++/* 8 bit (BOOL, read-only), has_led */
++#define SYNAPTICS_PROP_LED "Synaptics LED"
++
++/* 8 bit (BOOL), led_status (on/off) */
++#define SYNAPTICS_PROP_LED_STATUS "Synaptics LED Status"
++
+ #endif                          /* _SYNAPTICS_PROPERTIES_H_ */
+diff --git a/man/synaptics.man b/man/synaptics.man
+index 079a5f8..d1afdd0 100644
+--- a/man/synaptics.man
++++ b/man/synaptics.man
+@@ -834,6 +834,15 @@ right button, two-finger detection, three-finger detection, pressure detection,
+ .BI "Synaptics Pad Resolution"
+ 32 bit unsigned, 2 values (read-only), vertical, horizontal in units/millimeter.
+ 
++.TP 7
++.BI "Synaptics LED"
++8 bit (BOOL, read-only), indicating whether the device has an embedded
++LED support or not.
++
++.TP 7
++.BI "Synaptics LED Status"
++8 bit (BOOL), the light status of the embedded LED.
++
+ .SH "NOTES"
+ Configuration through
+ .I InputClass
+diff --git a/src/eventcomm.c b/src/eventcomm.c
+index 258a538..8edd84d 100644
+--- a/src/eventcomm.c
++++ b/src/eventcomm.c
+@@ -59,6 +59,8 @@
+ #define LONG(x)  ((x) / LONG_BITS)
+ #define TEST_BIT(bit, array) ((array[LONG(bit)] >> OFF(bit)) & 1)
+ 
++#define SYNAPTICS_LED_SYS_FILE	"/sys/class/leds/psmouse::synaptics/brightness"
++
+ /**
+  * Protocol-specific data.
+  */
+@@ -373,6 +375,32 @@ event_get_abs(InputInfoPtr pInfo, int fd, int code,
+     return 0;
+ }
+ 
++static void
++event_query_led(InputInfoPtr pInfo)
++{
++    SynapticsPrivate *priv = (SynapticsPrivate *)pInfo->private;
++
++    priv->synpara.has_led = !access(SYNAPTICS_LED_SYS_FILE, W_OK);
++}
++
++static void EventUpdateLED(InputInfoPtr pInfo)
++{
++    SynapticsPrivate *priv = (SynapticsPrivate *)pInfo->private;
++
++    if (priv->synpara.has_led) {
++        char *val = priv->synpara.led_status ? "255" : "0";
++        int fd = open(SYNAPTICS_LED_SYS_FILE, O_WRONLY);
++        int err;
++
++        if (fd < 0)
++            return;
++        err = write(fd, val, strlen(val));
++        close(fd);
++        if (err < 0)
++	    xf86IDrvMsg(pInfo, X_WARNING, "can't write LED value %s\n", val);
++    }
++}
++
+ /* Query device for axis ranges */
+ static void
+ event_query_axis_ranges(InputInfoPtr pInfo)
+@@ -879,6 +907,9 @@ EventReadDevDimensions(InputInfoPtr pInfo)
+     event_query_model(pInfo->fd, &priv->model, &priv->id_vendor,
+                       &priv->id_product);
+ 
++    event_query_led(pInfo);
++    event_query_model(pInfo->fd, &priv->model, &priv->id_vendor, &priv->id_product);
++
+     xf86IDrvMsg(pInfo, X_PROBED, "Vendor %#hx Product %#hx\n",
+                 priv->id_vendor, priv->id_product);
+ }
+@@ -958,5 +989,6 @@ struct SynapticsProtocolOperations event_proto_operations = {
+     EventQueryHardware,
+     EventReadHwState,
+     EventAutoDevProbe,
+-    EventReadDevDimensions
++    EventReadDevDimensions,
++    EventUpdateLED,
+ };
+diff --git a/src/properties.c b/src/properties.c
+index dd88fc7..7de4a14 100644
+--- a/src/properties.c
++++ b/src/properties.c
+@@ -91,6 +91,8 @@ Atom prop_softbutton_areas = 0;
+ Atom prop_noise_cancellation = 0;
+ Atom prop_product_id = 0;
+ Atom prop_device_node = 0;
++Atom prop_led                   = 0;
++Atom prop_led_status            = 0;
+ 
+ static Atom
+ InitTypedAtom(DeviceIntPtr dev, char *name, Atom type, int format, int nvalues,
+@@ -341,6 +343,9 @@ InitDeviceProperties(InputInfoPtr pInfo)
+                                        SYNAPTICS_PROP_NOISE_CANCELLATION, 32, 2,
+                                        values);
+ 
++    prop_led = InitAtom(pInfo->dev, SYNAPTICS_PROP_LED, 8, 1, &para->has_led);
++    prop_led_status = InitAtom(pInfo->dev, SYNAPTICS_PROP_LED_STATUS, 8, 1, &para->led_status);
++
+     /* only init product_id property if we actually know them */
+     if (priv->id_vendor || priv->id_product) {
+         values[0] = priv->id_vendor;
+@@ -705,6 +710,16 @@ SetProperty(DeviceIntPtr dev, Atom property, XIPropertyValuePtr prop,
+         para->hyst_x = hyst[0];
+         para->hyst_y = hyst[1];
+     }
++    else if (property == prop_led_status) {
++        if (prop->size != 1 || prop->format != 8 || prop->type != XA_INTEGER)
++            return BadMatch;
++
++        if (para->has_led) {
++            para->led_status = *(BOOL*)prop->data;
++            if (priv->proto_ops && priv->proto_ops->UpdateLED)
++                priv->proto_ops->UpdateLED(pInfo);
++        }
++    }
+     else if (property == prop_product_id || property == prop_device_node)
+         return BadValue;        /* read-only */
+     else { /* unknown property */
+diff --git a/src/synapticsstr.h b/src/synapticsstr.h
+index 428befa..c84e1b6 100644
+--- a/src/synapticsstr.h
++++ b/src/synapticsstr.h
+@@ -188,6 +188,8 @@ typedef struct _SynapticsParameters {
+     int area_left_edge, area_right_edge, area_top_edge, area_bottom_edge;       /* area coordinates absolute */
+     int softbutton_areas[2][4]; /* soft button area coordinates, 0 => right, 1 => middle button */
+     int hyst_x, hyst_y;         /* x and y width of hysteresis box */
++    Bool has_led;               /* has an embedded LED */
++    Bool led_status;            /* Current status of LED (1=on) */
+ } SynapticsParameters;
+ 
+ struct _SynapticsPrivateRec {
+diff --git a/src/synproto.h b/src/synproto.h
+index f164393..ac4ab10 100644
+--- a/src/synproto.h
++++ b/src/synproto.h
+@@ -103,6 +103,7 @@ struct SynapticsProtocolOperations {
+                          struct SynapticsHwState * hwRet);
+     Bool (*AutoDevProbe) (InputInfoPtr pInfo, const char *device);
+     void (*ReadDevDimensions) (InputInfoPtr pInfo);
++    void (*UpdateLED)(InputInfoPtr pInfo);
+ };
+
+ #ifdef BUILD_PS2COMM
+diff --git a/src/synproto.h b/src/synproto.h
+index f164393..ac4ab10 100644
+--- a/src/synproto.h
++++ b/src/synproto.h
+@@ -31,6 +31,7 @@
+ #include "config.h"
+ #endif
+ 
++#include <xorg-server.h> 
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+ #include <xf86Xinput.h>
+
+diff --git a/tools/synclient.c b/tools/synclient.c
+index bd7cb61..f61ed45 100644
+--- a/tools/synclient.c
++++ b/tools/synclient.c
+@@ -140,6 +140,7 @@ static struct Parameter params[] = {
+     {"MiddleButtonAreaRight", PT_INT, INT_MIN, INT_MAX, SYNAPTICS_PROP_SOFTBUTTON_AREAS,	32,	5},
+     {"MiddleButtonAreaTop",   PT_INT, INT_MIN, INT_MAX, SYNAPTICS_PROP_SOFTBUTTON_AREAS,	32,	6},
+     {"MiddleButtonAreaBottom", PT_INT, INT_MIN, INT_MAX, SYNAPTICS_PROP_SOFTBUTTON_AREAS,	32,	7},
++    {"LEDStatus",             PT_BOOL, 0,      1,       SYNAPTICS_PROP_LED_STATUS,	8,	0},
+     { NULL, 0, 0, 0, 0 }
+ };
+ 
+-- 
+1.8.2.3
+

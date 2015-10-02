@@ -1,0 +1,32 @@
+From aa3427f11c6da56f10cf22ef479f80063916325c Mon Sep 17 00:00:00 2001
+Message-Id: <aa3427f11c6da56f10cf22ef479f80063916325c.1368405776.git.matthew.monaco@0x01b.net>
+In-Reply-To: <bd5dbee2b3ea2a2ce57b3171992f791a23f27e34.1368405776.git.matthew.monaco@0x01b.net>
+References: <bd5dbee2b3ea2a2ce57b3171992f791a23f27e34.1368405776.git.matthew.monaco@0x01b.net>
+From: Matthew Monaco <matthew.monaco@0x01b.net>
+Date: Wed, 21 Nov 2012 13:50:12 -0700
+Subject: [PATCH 3/3] Add LED debugging statements
+
+---
+ src/eventcomm.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/eventcomm.c b/src/eventcomm.c
+index 8edd84d..67c0512 100644
+--- a/src/eventcomm.c
++++ b/src/eventcomm.c
+@@ -380,7 +380,12 @@ event_query_led(InputInfoPtr pInfo)
+ {
+     SynapticsPrivate *priv = (SynapticsPrivate *)pInfo->private;
+ 
++    xf86IDrvMsg(pInfo, X_INFO, "led: checking for access to %s\n", SYNAPTICS_LED_SYS_FILE);
+     priv->synpara.has_led = !access(SYNAPTICS_LED_SYS_FILE, W_OK);
++    if (priv->synpara.has_led)
++        xf86IDrvMsg(pInfo, X_INFO, "led: access ok\n");
++    else
++        xf86IDrvMsg(pInfo, X_INFO, "led: no access\n");
+ }
+ 
+ static void EventUpdateLED(InputInfoPtr pInfo)
+-- 
+1.8.2.3
+
