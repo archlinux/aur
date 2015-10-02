@@ -1,7 +1,7 @@
 pkgbase = tlp-pmu
 	pkgdesc = Advanced Power Management for Linux, with pm-utils support
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html
 	install = tlp-pmu.install
 	arch = any
@@ -20,14 +20,17 @@ pkgbase = tlp-pmu
 	optdepends = smartmontools: Display S.M.A.R.T. data in tlp-stat
 	optdepends = tp_smapi: ThinkPad battery functions
 	optdepends = x86_energy_perf_policy: Set energy versus performance policy on x86 processors
+	optdepends = openrc-core: for using openrc tlp service
 	provides = tlp
 	conflicts = laptop-mode-tools
 	conflicts = tlp
 	backup = etc/default/tlp
 	source = https://github.com/linrunner/TLP/archive/0.8.tar.gz
 	source = tlp-arch.patch
+	source = https://github.com/dywisor/tlp-portage/raw/maint/app-laptop/tlp/files/tlp-init.openrc-r2
 	sha256sums = d5c0423fde7247cc519001caebd60e538ff5ef2be9456d2049303eef4da1aae3
 	sha256sums = d62af086a8c97db354c2bb57d21f4a2b4faa8e60335d5994fad07698e67b4eba
+	sha256sums = dd2a5bade0e904d685a6a8d0313cda6455820dd3bf634b424dac6ebb7c8334ff
 
 pkgname = tlp-pmu
 

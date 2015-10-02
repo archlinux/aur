@@ -6,7 +6,7 @@
 pkgname=('tlp-pmu')
 _pkgname=tlp
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Power Management for Linux, with pm-utils support'
 depends=('hdparm' 'iw' 'pciutils' 'rfkill' 'usbutils' 'util-linux' 'pm-utils')
 optdepends=('acpi_call: Sandy Bridge and newer ThinkPad battery functions'
@@ -14,7 +14,8 @@ optdepends=('acpi_call: Sandy Bridge and newer ThinkPad battery functions'
             'lsb-release: Display LSB release version in tlp-stat'
             'smartmontools: Display S.M.A.R.T. data in tlp-stat'
             'tp_smapi: ThinkPad battery functions'
-            'x86_energy_perf_policy: Set energy versus performance policy on x86 processors')
+            'x86_energy_perf_policy: Set energy versus performance policy on x86 processors'
+            'openrc-core: for using openrc tlp service')
 conflicts=('laptop-mode-tools' 'tlp')
 provides=($_pkgname)
 backup=('etc/default/tlp')
@@ -23,9 +24,11 @@ arch=('any')
 url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'
 license=('GPL2' 'GPL3')
 source=("https://github.com/linrunner/TLP/archive/${pkgver}.tar.gz"
-        'tlp-arch.patch')
+        'tlp-arch.patch'
+        'https://github.com/dywisor/tlp-portage/raw/maint/app-laptop/tlp/files/tlp-init.openrc-r2')
 sha256sums=('d5c0423fde7247cc519001caebd60e538ff5ef2be9456d2049303eef4da1aae3'
-            'd62af086a8c97db354c2bb57d21f4a2b4faa8e60335d5994fad07698e67b4eba')
+            'd62af086a8c97db354c2bb57d21f4a2b4faa8e60335d5994fad07698e67b4eba'
+            'dd2a5bade0e904d685a6a8d0313cda6455820dd3bf634b424dac6ebb7c8334ff')
 
 prepare() {
   cd TLP-${pkgver}
@@ -48,6 +51,10 @@ package() {
   install -dm 755 "${pkgdir}"/usr/share/man/man{1,8}
   install -m 644 man/*.1 "${pkgdir}"/usr/share/man/man1/
   install -m 644 man/*.8 "${pkgdir}"/usr/share/man/man8/
+
+  # Move out tlp sysvinit service and replace it with the openrc one
+  mv "${pkgdir}/etc/init.d/tlp" "${pkgdir}/etc/init.d/tlp.sysvinit"
+  install -m 755 "${srcdir}/tlp-init.openrc-r2" "${pkgdir}/etc/init.d/tlp"
 }
 
 # vim: ts=2 sw=2 et:
