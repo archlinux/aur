@@ -1,6 +1,6 @@
 pkgbase = glxosd
 	pkgdesc = An OSD for OpenGL applications running under the X Window System. This allows you to monitor your framerate and hardware temperature in games on Linux!
-	pkgver = 2.3.3
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/nickguletskii/GLXOSD
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = glxosd
 	depends = freetype2
 	depends = lm_sensors
 	depends = libxext
-	source = git://github.com/nickguletskii/GLXOSD.git#tag=2.3.3
+	source = git://github.com/nickguletskii/GLXOSD.git#tag=2.5.0
 	md5sums = SKIP
 
 pkgname = glxosd
