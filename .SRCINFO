@@ -1,7 +1,7 @@
 pkgbase = python-phpserialize
 	pkgdesc = A port of the serialize and unserialize functions of php to python.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mitsuhiko/phpserialize
 	arch = any
 	license = BSD
