@@ -23,8 +23,8 @@ md5sums=('c8f1d73c0f0d0b3dba005d2853f2cfa4'
 build() {
   cd $srcdir/$pkgname-$pkgver
 
-  patch -p0 -i $srcdir/../$pkgname.patch
-  patch -p0 -i $srcdir/../utils.patch
+  patch -p0 -i $srcdir/$pkgname.patch
+  patch -p0 -i $srcdir/utils.patch
   make
 }
 
