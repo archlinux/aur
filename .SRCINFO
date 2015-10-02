@@ -1,0 +1,31 @@
+pkgbase = h264enc
+	pkgdesc = Advanced shell script for encoding DVDs or video files to the H.264 format using the encoding utility MEncoder from MPlayer.
+	pkgver = 10.4.6
+	pkgrel = 1
+	url = http://h264enc.sourceforge.net/
+	install = h264enc.install
+	arch = any
+	license = GPL
+	depends = x264
+	depends = lsdvd
+	depends = lame
+	depends = bc
+	depends = mencoder
+	optdepends = mkvtoolnix
+	optdepends = gpac
+	optdepends = ogmtools
+	optdepends = mplayer
+	optdepends = pv
+	optdepends = neroaacenc
+	optdepends = vo-aacenc
+	optdepends = aacplusenc
+	optdepends = tsmuxer
+	optdepends = vorbis-tools
+	optdepends = dcaenc
+	optdepends = opus-tools
+	options = !strip
+	source = http://sf.net/projects/h264enc/files/h264enc/h264enc-10.4.6.tar.gz
+	sha1sums = aa8b20f3a51e8b133c7fc908227f6e024d4e2849
+
+pkgname = h264enc
+

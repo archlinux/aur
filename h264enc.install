@@ -1,0 +1,3 @@
+post_install() {
+  echo "Hint: run 'h264enc -r' after installation of optional packages."
+}
