@@ -1,6 +1,6 @@
 pkgbase = pylibgamma
 	pkgdesc = Display server abstraction layer for gamma ramps and Python 3
-	pkgver = 1.1.1
+	pkgver = 1.1.1.1
 	pkgrel = 1
 	url = https://github.com/maandree/pylibgamma
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = pylibgamma
 	depends = python3
 	depends = libgamma>=0.6
 	depends = glibc
-	source = https://github.com/maandree/pylibgamma/archive/1.1.1.tar.gz
-	sha256sums = a9b89ebd1a8496da5d0bee10c2c0bc6408ac76fc448e7fab299c7e83b1a1146a
+	source = https://github.com/maandree/pylibgamma/archive/1.1.1.1.tar.gz
+	sha256sums = cb9dec5115b518bac4af8706ab33c78d9d04ce24de5692db16988499eb90f8a2
 
 pkgname = pylibgamma
 
