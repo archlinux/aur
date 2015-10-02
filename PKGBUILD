@@ -3,7 +3,7 @@ pkgname=umview
 pkgver=0.8.2
 pkgrel=2
 pkgdesc="User-mode implementation of View-OS."
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://www.sourceforge.net/projects/view-os"
 license=('GPL2')
 depends=('glibc>=2.15'

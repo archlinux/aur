@@ -5,6 +5,7 @@ pkgbase = umview
 	url = https://www.sourceforge.net/projects/view-os
 	install = umview.install
 	arch = x86_64
+	arch = i686
 	license = GPL2
 	makedepends = autoconf
 	makedepends = automake
