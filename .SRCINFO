@@ -1,0 +1,19 @@
+pkgbase = sloc
+	pkgdesc = Simply counts source lines of code
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://bytbox.net/hacks/sloc
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = go
+	optdepends = perl-datetime
+	optdepends = perl-json
+	optdepends = perl-switch
+	optdepends = gnuplot
+	source = sloc::git+http://git.bytbox.net/sloc/#tag=v0.3.1
+	sha256sums = SKIP
+
+pkgname = sloc
+
