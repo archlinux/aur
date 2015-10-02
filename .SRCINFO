@@ -1,6 +1,6 @@
 pkgbase = irrlamb
 	pkgdesc = a 3D game that probably involves a lot of physics and frustrating gameplay.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/jazztickets/irrlamb
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = irrlamb
 	depends = libvorbis
 	depends = libogg
 	depends = sh
-	source = https://github.com/jazztickets/irrlamb/archive/v0.2.0.tar.gz
-	sha256sums = 1d50639cef5e93a91260ca55f456d5a95fd30b2305d35e8e2060eb8c6ee1105e
+	source = https://github.com/jazztickets/irrlamb/releases/download/v0.2.1/irrlamb-0.2.1-src.tar.gz
+	sha256sums = e46fa1ccc8e991b38fcab3b6a27b6706c3c1551503df01c965dd2838c7161a22
 
 pkgname = irrlamb
 
