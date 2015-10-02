@@ -47,5 +47,9 @@ package() {
    cp -r usr/share/man/man5 ${pkgdir}/usr/share/man
    cd "$srcdir/umview-${pkgver}"
    make install > /dev/null 2>&1
-   rm -rf ${pkgdir}/usr/lib/libumlib*
+   if [ "$CARCH" == "x86_64" ]; then
+      rm -rf ${pkgdir}/usr/lib/libumlib*
+   else
+      rm -rf ${pkgdir}/usr/lib32/libumlib*
+   fi
 }
