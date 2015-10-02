@@ -1,7 +1,7 @@
 pkgbase = qtile-python3-git
 	pkgdesc = Python3 full-featured, pure-Python tiling window manager. (git version)
-	pkgver = 1998.9713e17
-	pkgrel = 2
+	pkgver = 2262.776f42f
+	pkgrel = 1
 	url = http://www.qtile.org
 	install = qtile-python3-git.install
 	arch = any
