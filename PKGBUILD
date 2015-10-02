@@ -2,29 +2,25 @@
 # Contributor: Morgan Cox <morgancoxuk@gmail.com>
 # Contributor: AudioLinux <audiolinux AT fastmail DOT fm>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-rt
-pkgver=352.41
+pkgver=355.11
+_extramodules=extramodules-4.1-rt
 pkgrel=1
-
-pkgdesc="NVIDIA drivers for linux-rt."
+pkgdesc="NVIDIA drivers for linux-rt"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-license=('custom')
-
 depends=('linux-rt>=4.1' 'linux-rt<4.2' "nvidia-utils=${pkgver}" 'libgl')
 makedepends=('linux-rt-headers>=4.1' 'linux-rt-headers<4.2')
-_extramodules=extramodules-4.1-rt
-
+license=('custom')
 options=(!strip)
-install="${pkgname}.install"
-
-source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
-        "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-
-md5sums=('3f9c9fed035fa845e3f6a1ea5f5732f7'
-         'd41d1a358edbade36cfd97cdcc9a80b9')
+install=nvidia-rt.install
+source_i686="ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
+source_x86_64="ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+sha256sums_i686=('94ce6b879581b931b84d83a9111040b9a5aa9306b012b4380cd93f6ffede3066')
+sha256sums_x86_64=('0fcc6a62a05fc11344aff375faaca56b358ee1252f6b2c98c00d628ea3d0f842')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -38,12 +34,7 @@ prepare() {
 build() {
     _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
     cd "${_pkg}"/kernel
-    make IGNORE_PREEMPT_RT_PRESENCE=1 SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-
-    if [[ "$CARCH" = "x86_64" ]]; then
-        cd uvm
-        make IGNORE_PREEMPT_RT_PRESENCE=1 SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-    fi
+    make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 }
 
 package() {
@@ -51,7 +42,7 @@ package() {
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
 
     if [[ "$CARCH" = "x86_64" ]]; then
-        install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+        install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
             "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
     fi
 
