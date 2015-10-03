@@ -2,7 +2,7 @@
 # Maintainer: Benoit Favre <benoit.favre@gmail.com>
 pkgname=cmph
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="C minimal perfect hashing library"
 arch=('i686' 'x86_64')
 url="http://cmph.sourceforge.net/"
