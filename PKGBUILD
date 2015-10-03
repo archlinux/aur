@@ -1,7 +1,7 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=cum
-pkgver=0.2
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Comic Updater, Mangafied"
 arch=('any')
 url="https://github.com/Hamuko/cum"
