@@ -1,13 +1,14 @@
 pkgbase = vapoursynth-git
 	pkgdesc = A video processing framework with simplicity in mind. (GIT version)
-	pkgver = r27.19.g3f65f26
+	pkgver = r27.117.g0abe37e
 	pkgrel = 1
-	url = http://www.vapoursynth.com/
+	url = http://www.vapoursynth.com
 	install = vapoursynth-git.install
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	license = custom:OFL
+	license = custom:WFTPL
 	makedepends = cython
 	makedepends = git
 	makedepends = yasm
@@ -15,13 +16,16 @@ pkgbase = vapoursynth-git
 	depends = ffmpeg
 	depends = tesseract
 	depends = python
-	depends = imagemagick-no-hdri
+	depends = imagemagick
+	depends = shared-mime-info
 	provides = vapoursynth
 	conflicts = vapoursynth
 	source = git+http://github.com/vapoursynth/vapoursynth.git
 	source = vapoursynth.xml
+	source = wtfpl.txt::http://www.wtfpl.net/txt/COPYING
 	sha1sums = SKIP
 	sha1sums = 71e04f8a7c177b44e4ce93e5eecbb4242a3c2215
+	sha1sums = 337ece375beddfdb7392699fd00eb9b3e823d03f
 
 pkgname = vapoursynth-git
 
