@@ -2,7 +2,7 @@
 pkgname=mgiza
 pkgver=3.0
 pkgrel=1
-pkgdesc='Multithreaded version of Giza, a statical machine translation toolkit used to train word alignment models'
+pkgdesc='Multithreaded version of Giza, a statistical machine translation toolkit used to train word alignment models'
 arch=('i686' 'x86_64')
 url='https://github.com/moses-smt/mgiza'
 license=('GPL2')
