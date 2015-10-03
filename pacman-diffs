@@ -113,7 +113,7 @@ function make_diff()
     done
     if [[ $nothing -eq 1 ]]; then
         # can remove etc/pacnew
-        echo -e "-- ${c_yellow}you can erase this file${c_end} : sudo rm $file"
+        echo -e "-- ${c_yellow}${txt[erase]}${c_end} : sudo rm $file"
     fi
 }
 
