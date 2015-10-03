@@ -1,6 +1,6 @@
 pkgbase = wsjt-svn
 	pkgdesc = Weak Signal Amateur Hamradio Communication by K1JT
-	pkgver = 10.0.r5770
+	pkgver = 10.0.r5952
 	pkgrel = 1
 	url = http://physics.princeton.edu/pulsar/K1JT/wsjt.html
 	arch = i686

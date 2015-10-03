@@ -55,7 +55,7 @@ set -u
 
 _pkgname='wsjt'
 pkgname="${_pkgname}-svn"
-pkgver=10.0.r5770
+pkgver=10.0.r5952
 pkgrel=1
 pkgdesc='Weak Signal Amateur Hamradio Communication by K1JT'
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
@@ -236,9 +236,9 @@ EOF
 
   # Install a menu item with icon. In XFCE this shows as Other and launches a console window.
   # Placement in the start menu could be better
-  install -Dpm644 "${srcdir}/${pkgname}.png" -t "${pkgdir}/usr/share/pixmaps/"
+  install -Dpm644 "${srcdir}/${pkgbase}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   # Set Terminal=false to supress the terminal screen.
-  install -Dpm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -Dpm644 "${srcdir}/${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   set +u
 }
 set +u
