@@ -3,7 +3,7 @@
 # still want to build trunk? use http://sprunge.us/XARP instead
 pkgname="nightingale-git"
 pkgver=1e74b6f
-pkgrel=1
+pkgrel=2
 pkgdesc="No binaries used. Open source fork of the Songbird Media Player with updates and fixes."
 arch=('i686' 'x86_64')
 url="http://getnightingale.com/"
@@ -55,6 +55,9 @@ build() {
 		make -C xulrunner-1.9.2 -f Makefile.songbird xr-clean xr-build-release xr-packaging-release
 
 		msg2 "Building sqlite...\n"
+		cd sqlite
+		autoreconf --force --install
+		cd ..
 		make -C sqlite -f Makefile.songbird
 	else
 		msg "Using existing dependencies. If you haven't rebuilt in a while please rm -rf pkg and src and start over."

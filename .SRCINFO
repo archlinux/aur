@@ -1,7 +1,7 @@
 pkgbase = nightingale-git
 	pkgdesc = No binaries used. Open source fork of the Songbird Media Player with updates and fixes.
 	pkgver = 1e74b6f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://getnightingale.com/
 	install = nightingale.install
 	arch = i686
