@@ -1,5 +1,5 @@
 pkgbase = giza-pp-git
-	pkgdesc = A statical machine translation toolkit used to train word alignment models
+	pkgdesc = A statistical machine translation toolkit used to train word alignment models
 	pkgver = r21.228a39b
 	pkgrel = 1
 	url = https://github.com/moses-smt/giza-pp
