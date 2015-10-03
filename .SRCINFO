@@ -1,0 +1,13 @@
+pkgbase = hyphen-lt
+	pkgdesc = Lithuanian hyphenation rules
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://wiki.services.openoffice.org/wiki/Dictionaries
+	arch = any
+	license = LGPL
+	optdepends = hyphen: offers hyphenation library functions
+	source = http://sunsite.informatik.rwth-aachen.de/ftp/pub/mirror/OpenOffice/contrib/dictionaries/hyph_lt_LT.zip
+	md5sums = 6d90a1e831f639137077879dacb596cb
+
+pkgname = hyphen-lt
+
