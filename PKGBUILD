@@ -2,12 +2,12 @@
 
 pkgname=ihaskell-git
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Haskell kernel for IPython, built in a sandbox."
 arch=('i686' 'x86_64')
 url="https://github.com/gibiansky/IHaskell"
 license=('MIT')
-depends=('ipython>=4' 'python-pyzmq' 'jupyter' 'ghc<7.11')
+depends=('ipython>=4' 'python-pyzmq' 'jupyter' 'ghc=7.10.1')
 makedepends=('git' 'happy' 'gtk2hs-buildtools' 'haskell-stack')
 provides=('ihaskell')
 conflicts=()
