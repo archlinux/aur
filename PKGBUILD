@@ -2,7 +2,7 @@
 
 pkgname='python-configfile'
 pkgver='1.2.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for dynamically parsing and editing configuration files with support for subsections."
 arch=('any')
 url="https://kynikos.github.io/lib.py.configfile"

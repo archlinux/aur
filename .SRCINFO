@@ -1,7 +1,7 @@
 pkgbase = python-configfile
 	pkgdesc = Python library for dynamically parsing and editing configuration files with support for subsections.
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kynikos.github.io/lib.py.configfile
 	arch = any
 	license = GPL3
