@@ -1,4 +1,4 @@
-pkgbase = servefile
+pkgbase = servefile-git
 	pkgdesc = Serve or receive files from shell via a small HTTP server
 	pkgver = v0.4.2.r17.g0c781c2
 	pkgrel = 1

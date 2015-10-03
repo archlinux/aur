@@ -1,5 +1,5 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
-pkgbase=servefile
+pkgbase=servefile-git
 pkgname=servefile-git
 pkgver=v0.4.2.r17.g0c781c2
 pkgrel=1
