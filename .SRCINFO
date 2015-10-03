@@ -1,0 +1,19 @@
+pkgbase = plist-viewer
+	pkgdesc = Application to open plist files
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/TingPing/plist-viewer
+	install = plist-viewer.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL
+	makedepends = gnome-common
+	depends = gtk3
+	depends = libplist
+	depends = desktop-file-utils
+	source = https://github.com/TingPing/plist-viewer/releases/download/0.1.1/plist-viewer-0.1.1.tar.xz
+	sha256sums = 2a0a964e6fa2bbcb7dde09937e3356f36f3e28333499d4f6b4d235b53c9d1d09
+
+pkgname = plist-viewer
+
