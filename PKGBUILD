@@ -1,24 +1,36 @@
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
 
-pkgname=olsrd-plugins
-pkgver=0.4.10
+pkgname=olsrd
+_pkgvermaj=0.9
+pkgver=${_pkgvermaj}.0.3
 pkgrel=1
-pkgdesc="OLSR daemon is an implementation of the Optimized Link State Routing protocol. The plugins allow to add or extend some of its functionnalities."
+pkgdesc="OLSR daemon is an implementation of the Optimized Link State Routing protocol."
 url="http://www.olsr.org"
-license=""
-depends=('glibc' 'olsrd')
+license="BSD"
+depends=('glibc')
+provides=('olsrd-plugins')
+conflicts=('olsrd-plugins')
 install=
-source=(http://www.olsr.org/releases/0.4/olsrd-$pkgver.tar.gz)
-md5sums=('cb6313649d19b05e5d8d5eaf866bb98d')
+source=(http://www.olsr.org/releases/${_pkgvermaj}/olsrd-$pkgver.tar.bz2)
+arch=('i686' 'x86_64')
 
 
 build() {
-	cd $startdir/src/olsrd-$pkgver
-	plugins=`find lib -maxdepth 1 -type d | sed -e "s#lib/\?##g"`
-	for plug in ${plugins}; do
-		make OS=linux -C lib/$plug || return 1
-	done
-	for plug in ${plugins}; do
-		make OS=linux INSTALL_PREFIX=$startdir/pkg -C lib/$plug install || return 1
+	cd ${srcdir}/olsrd-$pkgver
+	subdirs=`find lib/ -mindepth 1 -maxdepth 1 -type d`
+	for dir in . ${subdirs}; do
+		make OS=linux SBINDIR=/usr/sbin LIBDIR=/usr/lib  MANDIR=/usr/share/man/ -C $dir || return 1
 	done
 }
+
+package() {
+	cd ${srcdir}/olsrd-$pkgver
+	subdirs=`find lib/ -mindepth 1 -maxdepth 1 -type d`
+	for dir in . ${subdirs}; do
+		make OS=linux SBINDIR=${pkgdir}/usr/sbin LIBDIR=${pkgdir}/usr/lib MANDIR=${pkgdir}/usr/share/man/ DESTDIR=${pkgdir} -C $dir install || return 1
+	done
+	install -D ${srcdir}/olsrd-$pkgver/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
+	install -d ${pkgdir}/usr/share/doc/${pkgname}/
+	install ${srcdir}/olsrd-$pkgver/{README-LINUX_NL80211.txt,README-Olsr-Extensions,CHANGELOG} ${pkgdir}/usr/share/doc/${pkgname}/
+}
+md5sums=('fa5cf15c29c7ebd9b8425267676c7865')
