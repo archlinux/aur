@@ -1,0 +1,19 @@
+pkgbase = giza-pp-git
+	pkgdesc = A statical machine translation toolkit used to train word alignment models
+	pkgver = r21.228a39b
+	pkgrel = 1
+	url = https://github.com/moses-smt/giza-pp
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	depends = tcsh
+	provides = giza
+	conflicts = mgiza-git
+	conflicts = mgiza
+	source = git+https://github.com/moses-smt/giza-pp.git
+	md5sums = SKIP
+
+pkgname = giza-pp-git
+
