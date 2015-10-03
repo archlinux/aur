@@ -1,0 +1,21 @@
+pkgbase = decklink
+	pkgdesc = Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards
+	pkgver = 10.5a17
+	pkgrel = 1
+	url = http://www.blackmagic-design.com/products/
+	install = decklink.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = linux-headers
+	depends = libxml2
+	depends = libpng12
+	depends = glu
+	depends = qt4
+	options = !strip
+	options = staticlibs
+	source = file://Blackmagic_Desktop_Video_Linux_10.5.tar.gz
+	sha256sums = 493ef15a1106b5459c64bbdc6fcbd30007c6c5432bbc7be1c05ffcd5f45ef233
+
+pkgname = decklink
+

@@ -1,0 +1,54 @@
+## arg 1:  the new package version
+pre_install() {
+  true
+}
+
+## arg 1:  the new package version
+post_install() {
+  ldconfig
+
+  cd /usr/src/blackmagic-${1%%-*}
+  make
+  install -D -m 0644 blackmagic.ko "/lib/modules/$(uname -r)/kernel/drivers"
+  make clean
+
+  cd /usr/src/blackmagic-io-${1%%-*}
+  make
+  install -D -m 0644 blackmagic-io.ko "/lib/modules/$(uname -r)/kernel/drivers"
+  install -D -m 0644 snd_blackmagic-io.ko "/lib/modules/$(uname -r)/kernel/drivers"
+
+  echo ">>> Updating module dependencies. Please wait..."
+  depmod -a
+
+  echo ">>> Loading modules..."
+  modprobe blackmagic
+  modprobe blackmagic-io
+  modprobe snd_blackmagic-io
+
+  update-desktop-database -q
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+  lsmod | grep blackmagic && modprobe -r blackmagic || true
+  rm -f "/lib/modules/*/kernel/drivers/blackmagic.ko"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  lsmod | grep blackmagic && modprobe -r blackmagic || true
+}
+
+## arg 1:  the old package version
+post_remove() {
+  rm -f "/lib/modules/*/kernel/drivers/blackmagic.ko"
+}
+
+# vim:set ts=2 sw=2 et:
