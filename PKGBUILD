@@ -1,7 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=python-twitter
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An API and command-line toolset for Twitter (twitter.com)'
 arch=('any')
 url='http://pypi.python.org/pypi/twitter/'
@@ -18,4 +18,3 @@ package() {
   cd "$srcdir/twitter-$pkgver"
   python setup.py install --root=$pkgdir --optimize=1
 }
-# vim:set ts=2 sw=2 et:
