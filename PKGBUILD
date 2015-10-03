@@ -3,8 +3,8 @@
 # Contributor: Jeroen Rijken <jeroen dot rijken at gmail dot com>
 
 pkgname=archi
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('i686' 'x86_64')
 url="http://www.archimatetool.com/"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('java-runtime>=1.7' 'webkitgtk')
 provides=('archi')
 source=(http://www.archimatetool.com/downloads/latest/Archi-lnx32_64-$pkgver.tar.gz $pkgname.desktop)
-sha256sums=('807ca0a3d66e24d38790f6e1e7940981bef1294c1b9815ecafbe2698a0888547'
+sha256sums=('025d92acc377fa6d9a4285aceeb595803527755b3fb27a9a1f899b143fb816a8'
             'fa911232f47b9116044b6129965376c8c8acc9fc8bb212c5a2b4b834f03adb7c')
 
 package() {
