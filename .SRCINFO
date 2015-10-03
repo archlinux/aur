@@ -1,4 +1,4 @@
-pkgbase = oscam
+pkgbase = oscam-git
 	pkgdesc = Open Source Conditional Access Module software
 	pkgver = 11033
 	pkgrel = 1
@@ -23,5 +23,5 @@ pkgbase = oscam
 	md5sums = 596b902e3f4a66d39e7f993437feec74
 	md5sums = be0d9d7a5fdd8cf4918c4ea91cebd989
 
-pkgname = oscam
+pkgname = oscam-git
 

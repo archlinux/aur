@@ -3,7 +3,7 @@
 
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
-pkgname=oscam
+pkgname=oscam-git
 pkgver=11033
 _gitrev=57794ecbac8016e07ed1d3f1b6997af37aeec94f
 pkgrel=1
