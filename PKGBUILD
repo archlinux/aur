@@ -23,19 +23,18 @@ sha256sums=('b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283'
 sha256sums_i686=('4f8b70b293ac8cc5c70e571ad5d1878d0f29d133a46fe7869868d9c19b5058cd')
 sha256sums_x86_64=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be')
 
-build() {
-	cd "${srcdir}"
+prepare() {
+  cd "${srcdir}"
 
-	sed -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" \
-		-i src/wl/sys/wl_linux.c
-
-	# delete files not needed for packaging
-	rm *.tar.gz
+	sed -i -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" src/wl/sys/wl_linux.c
 }
 
 package() {
 	cd "${srcdir}"
 	
+	# delete files not needed for packaging
+	rm *.tar.gz
+
 	mkdir -p ${pkgdir}/usr/src/${_pkgname}-${pkgver}
 
 	cp -RL * ${pkgdir}/usr/src/${_pkgname}-${pkgver}
