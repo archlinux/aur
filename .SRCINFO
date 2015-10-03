@@ -1,0 +1,23 @@
+pkgbase = lightscribe-labeler
+	pkgdesc = LightScribe Simple Labeler
+	pkgver = 1.18.15.1
+	pkgrel = 2
+	url = http://www.lightscribe.com/downloadSection/linux/index.aspx?id=815
+	arch = i686
+	license = custom
+	makedepends = rpmextract
+	depends = lightscribe
+	depends = libstdc++5
+	depends = libxi
+	depends = libxcursor
+	depends = libpng
+	depends = fontconfig
+	depends = libsm
+	depends = libxrandr
+	options = !strip
+	source = http://download.lightscribe.com/ls/lightscribeApplications-1.18.15.1-linux-2.6-intel.rpm
+	md5sums = bf5eb9aa41e3b5f4d0c879591464c1db
+	sha256sums = 2e8cf6887974ac1bd4ee8d415a4160a75b39d31d33394eb7284d7179862fa504
+
+pkgname = lightscribe-labeler
+
