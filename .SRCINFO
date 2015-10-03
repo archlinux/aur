@@ -1,0 +1,18 @@
+pkgbase = i3situation-git
+	pkgdesc = A replacement for i3status written in Python 3 with support for huge customisability through plugins
+	pkgver = 1.0.5.r0.g3538925
+	pkgrel = 1
+	url = https://github.com/harveyhunt/i3situation
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	optdepends = python-requests: For webscraping plugins
+	provides = i3situation
+	conflicts = i3situation
+	source = git+https://github.com/harveyhunt/i3situation
+	md5sums = SKIP
+
+pkgname = i3situation-git
+
