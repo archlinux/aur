@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-editor-git
 	pkgdesc = A simple program for edit/create VapourSynth scripts. (GIT version)
-	pkgver = r4.2.g8f9b54d
+	pkgver = r5.1.g4562431
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?p=1688477
 	install = vapoursynth-editor-git.install
@@ -13,7 +13,6 @@ pkgbase = vapoursynth-editor-git
 	depends = qt5-base
 	depends = vapoursynth
 	depends = desktop-file-utils
-	depends = hicolor-icon-theme
 	provides = vapoursynth-editor
 	conflicts = vapoursynth-editor
 	source = git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git

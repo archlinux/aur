@@ -2,13 +2,16 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=r4.2.g8f9b54d
+pkgver=r5.1.g4562431
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?p=1688477"
+url='http://forum.doom9.org/showthread.php?p=1688477'
 license=('CCPL' 'MIT' 'LGPL')
-depends=('qt5-base' 'vapoursynth' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('qt5-base'
+         'vapoursynth'
+         'desktop-file-utils'
+         )
 makedepends=('git')
 provides=('vapoursynth-editor')
 conflicts=('vapoursynth-editor')
@@ -30,7 +33,7 @@ build() {
 }
 
 package() {
-  install -Dm644 ../vsedit.desktop "${pkgdir}/usr/share/applications/vsedit.desktop"
+  install -Dm644 vsedit.desktop "${pkgdir}/usr/share/applications/vsedit.desktop"
 
   [ "${CARCH}" = "i686" ] && _arch=32
   [ "${CARCH}" = "x86_64" ] && _arch=64
