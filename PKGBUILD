@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 build() {
   cd ${srcdir}/${pkgname}
-  make CFLAGS=-DKB_BACKLIGHT=1
+  make CFLAGS_pixel_kb_backlight.o=-DKB_BACKLIGHT=1
 }
 
 
