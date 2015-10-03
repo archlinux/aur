@@ -1,7 +1,7 @@
 pkgbase = broadcom-wl-dkms
 	pkgdesc = Broadcom 802.11 Linux STA wireless driver
 	pkgver = 6.30.223.271
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.broadcom.com/support/?gid=1
 	install = broadcom-wl-dkms.install
 	arch = i686
