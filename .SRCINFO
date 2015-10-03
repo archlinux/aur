@@ -1,0 +1,14 @@
+pkgbase = trackballs-music
+	pkgdesc = Music for the game trackballs.
+	pkgver = 1.4
+	pkgrel = 3
+	url = http://trackballs.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = trackballs
+	source = http://downloads.sourceforge.net/sourceforge/trackballs/trackballs-music-1.4.tar.bz2
+	md5sums = 3b459b7301fbf30375b4e281fdb4bdb2
+
+pkgname = trackballs-music
+
