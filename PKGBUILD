@@ -3,7 +3,7 @@
 
 pkgname=python-lmfit
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Least-Squares Minimization with Constraints for Python"
 arch=('any')
 url="http://lmfit.github.io/lmfit-py/"

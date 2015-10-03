@@ -1,7 +1,7 @@
 pkgbase = python-lmfit
 	pkgdesc = Least-Squares Minimization with Constraints for Python
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lmfit.github.io/lmfit-py/
 	arch = any
 	license = BSD
