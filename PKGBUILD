@@ -1,7 +1,7 @@
 # Maintainer: Fredrick Brennan <admin@8chan.co>
 pkgname=waifu2x-git
-pkgver=r250.ca65c93
-pkgrel=4
+pkgver=r260.2ca9d90
+pkgrel=1
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks"
 arch=('x86_64')
 url=""
@@ -33,25 +33,18 @@ build() {
   # BUILD HERE
   #
   cmake .
-  make -j5
+  make
 }
 
 package() {
   ## Waifu2x's Makefile has no `install`
   ## Just copy its binary, and some files it require...
-  binpath='/usr/bin'
-  sharepath='/usr/share/waifu2x'
-  librarypath='/usr/lib'
-  manualpath='/usr/share/man/man1'
-
-  mkdir -p $pkgdir$binpath || true
-  mkdir -p $pkgdir$sharepath || true
-  mkdir -p $pkgdir$librarypath || true
-  mkdir -p $pkgdir$manualpath || true
-  cp $gitreponame/$gitreponame $pkgdir$binpath/waifu2x
-  cp $gitreponame/libw2xc.so $pkgdir$librarypath
-  cp ../waifu2x.1.gz $pkgdir$manualpath
-  cp -r $gitreponame/models_rgb $pkgdir$sharepath
+  install -D $gitreponame/$gitreponame $pkgdir/usr/bin/waifu2x
+  install -D $gitreponame/libw2xc.so $pkgdir/usr/lib/libw2xc.so
+  install -D ../waifu2x.1.gz $pkgdir/usr/share/man/man1/waifu2x.1.gz
+  install -D $gitreponame/src/w2xconv.h $pkgdir/usr/include/w2xconv.h
+  mkdir -p $pkgdir/usr/share/waifu2x || true
+  cp -r $gitreponame/models_rgb $pkgdir/usr/share/waifu2x
 }
 
 # From https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
