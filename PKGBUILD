@@ -2,7 +2,7 @@
 
 pkgname='python-plural'
 pkgver='1.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python function that returns the needed variation of a word."
 arch=('any')
 url="https://github.com/kynikos/lib.py.plural"

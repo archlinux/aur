@@ -1,7 +1,7 @@
 pkgbase = python-plural
 	pkgdesc = Python function that returns the needed variation of a word.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kynikos/lib.py.plural
 	arch = any
 	license = GPL3
