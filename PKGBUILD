@@ -10,6 +10,7 @@ license=('lgpl' 'mpl')
 depends=('gcc')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('020946deef7418d9daf4195556ecac12')
+options=(staticlibs)
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

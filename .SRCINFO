@@ -8,6 +8,7 @@ pkgbase = cmph
 	license = lgpl
 	license = mpl
 	depends = gcc
+	options = staticlibs
 	source = http://downloads.sourceforge.net/cmph/cmph-2.0.tar.gz
 	md5sums = 020946deef7418d9daf4195556ecac12
 
