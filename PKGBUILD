@@ -6,11 +6,12 @@
 _pkgname=Elixir
 pkgname=python2-elixir
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Declarative mapper for SQLAlchemy"
 url="http://elixir.ematia.de/"
 license=('MIT')
 arch=('any')
+makedepends=('python2-setuptools')
 #depends=('python2-sqlalchemy=0.7.9')
 depends=('python2-sqlalchemy-0.7.9')
 source=(http://pypi.python.org/packages/source/E/$_pkgname/$_pkgname-$pkgver.tar.gz)
