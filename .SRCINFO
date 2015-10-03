@@ -1,7 +1,7 @@
 pkgbase = img2pdf-git
 	pkgdesc = Losslessly convert images to PDF without unnecessarily increasing file size by re-encoding JPEG files.
-	pkgver = 0.1.6
-	pkgrel = 2
+	pkgver = 0.1.6.r23.gfdee171
+	pkgrel = 1
 	url = https://gitlab.mister-muffin.de/josch/img2pdf
 	arch = any
 	license = LGPL3
@@ -9,7 +9,7 @@ pkgbase = img2pdf-git
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-pillow
-	provides = img2pdf=0.1.6
+	provides = img2pdf=0.1.6.r23.gfdee171
 	conflicts = img2pdf
 	options = !emptydirs
 	source = git+http://gitlab.mister-muffin.de/josch/img2pdf.git

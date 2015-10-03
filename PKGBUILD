@@ -2,8 +2,8 @@
 # Contributor: Brandon Invergo <brandon@invergo.net>
 
 pkgname=img2pdf-git
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.6.r23.gfdee171
+pkgrel=1
 pkgdesc="Losslessly convert images to PDF without unnecessarily increasing file size by re-encoding JPEG files."
 arch=('any')
 url="https://gitlab.mister-muffin.de/josch/img2pdf"
