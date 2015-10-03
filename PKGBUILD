@@ -17,7 +17,7 @@ md5sums=('85127ecdfaeed39e850c996b78573d94'
          '76e78a25dddf0c184cc5c9e59eda7006')
 
 prepare() {
-    patch -p3 < Makefile.patch
+    patch -p2 < Makefile.patch
 }
 
 build() {
