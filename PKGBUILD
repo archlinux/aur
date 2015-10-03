@@ -14,7 +14,7 @@ source=("https://github.com/dashpay/dash/archive/v$pkgver.tar.gz"
 )
 sha256sums=('ee36a4984656b2183659182bf107584cb7963841b47b536250da533f492c1ea8'
             '3060917f8e327002da842534265392a1849239ec5049f25c1ae8a81c3952e7b1'
-            '3e0afef47970cdf304a376b51dbbb44759ac7eeb232be1ea4b2b995817b5df88')
+            '00b656fe05c5b58115d41c20ca7dfba6564eaa5335e3ff5c43c3eb8d9479cab9')
 depends=('boost-libs' 'openssl')
 
 build() {
