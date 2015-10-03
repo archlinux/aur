@@ -15,20 +15,15 @@ pre_remove() {
 }
 
 dkms_remove() {
-  local line="$(dkms status -m broadcom-wl)"
-  # in cases where the passed ${1%%-*} fails, use this as a fallback for detecting
-  # which version is installed:
-  # version="$(dkms status broadcom-wl | tr -d ' \n' | awk -F ',' '{print $2}')"
-  if grep -E 'added|built|installed' <<< "${line}"; then
+  # In case a different version is installed, use "dkms status broadcom-wl"
+  # to list and remove installed versions.
+
+  if [ -n "$(dkms status -m broadcom-wl -v ${1%%-*})" ]; then
     dkms remove -m broadcom-wl -v ${1%%-*} --all || return 1
-  else
-    echo "No current dkms module found, skipping dkms remove" || return 1
   fi
 }
 
 dkms_install() {
-  echo ">>> DKMS: Module install" || return 1
-
   dkms install -m broadcom-wl -v ${1%%-*} || return 1
 
   cat << EOF || return 1
