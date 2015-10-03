@@ -1,6 +1,6 @@
 pkgbase = haskell-aur
 	pkgdesc = Access metadata from the Arch Linux User Repository.
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/aur
 	install = haskell-aur.install
@@ -22,7 +22,7 @@ pkgbase = haskell-aur
 	options = strip
 	options = staticlibs
 	source = http://hackage.haskell.org/packages/archive/aur/3.0.0/aur-3.0.0.tar.gz
-	md5sums = abcb782ec60971db2f42d482984f5fec
+	md5sums = 89a039c074e81b6038fb47b8c05778fa
 
 pkgname = haskell-aur
 
