@@ -1,14 +1,17 @@
 pkgbase = zelvici-svn
 	pkgdesc = 2D arcade game featuring lovely turtle (svn version)
-	pkgver = 16
+	pkgver = r26
 	pkgrel = 1
 	url = http://code.google.com/p/zelvici/
 	arch = i686
 	license = GPL-2
+	makedepends = subversion
 	depends = gcc-libs
 	depends = sdl_mixer
+	source = zelvici-read-only::svn+http://zelvici.googlecode.com/svn/trunk/
 	source = http://zelvici.googlecode.com/files/zelvici_i386.tar.gz
 	source = zelvici.desktop
+	md5sums = SKIP
 	md5sums = a4c9718f21b9824595ba973d981dd135
 	md5sums = 23cde56b0478965c568e1b9713f1d6c7
 
