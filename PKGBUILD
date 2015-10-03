@@ -30,16 +30,8 @@ pkgver() {
   git log -1 | grep git-svn-id | cut -d'@' -f2 | cut -d' ' -f1
 }
 
-# prepare() {
-#   cat "${pkgname}-${pkgver}.zip" | bsdtar -xf -
-
-#   cd "$srcdir/trunk"
-#   chmod +x config.sh webif/pages_mkdep
-# }
-
 build() {
-  cd "$srcdir/$pkgname-mirror"
-#   cd "$srcdir/trunk"
+  cd "$srcdir/oscam-mirror"
 
   make CONF_DIR=/var/lib/oscam \
        USE_SSL=1 \
@@ -51,8 +43,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-mirror"
-#   cd "$srcdir/trunk"
+  cd "$srcdir/oscam-mirror"
 
   #Install binaries
   install -Dm755 oscam "$pkgdir/usr/bin/oscam"
