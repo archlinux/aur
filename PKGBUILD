@@ -6,11 +6,12 @@ pkgbase=python-pywapi
 pkgname=(python-pywapi python2-pywapi)
 _pkgname=pywapi
 pkgver=0.3.8
-pkgrel=3
+pkgrel=4
 arch=('any')
-#url="https://launchpad.net/python-weather-api"
-url="http://code.google.com/p/python-weather-api"
+#url="http://code.google.com/p/python-weather-api"
+url="https://launchpad.net/python-weather-api"
 license=('MIT')
+makedepends=('python' 'python2')
 source=(https://launchpad.net/python-weather-api/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz)
 md5sums=('75bf8257f32f2d36169d57d92566cdb1')
 
