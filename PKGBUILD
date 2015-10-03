@@ -1,7 +1,7 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 pkgname=openorienteering-mapper
 pkgver=0.5.96
-pkgrel=1
+pkgrel=2
 pkgdesc="Orienteering map drawing software"
 arch=('i686' 'x86_64')
 url="http://oorienteering.sourceforge.net/?page_id=103"
@@ -9,12 +9,18 @@ license=('GPL3')
 depends=('qt5-tools>=5.3.2' 'polyclipping>=6.1.3a' 'proj>=4.8.0')
 makedepends=('cmake>=2.8.9')
 install=${pkgname}.install
-source=("http://sourceforge.net/projects/oorienteering/files/Mapper/Source/${pkgname}_${pkgver}-src.tgz")
-sha256sums=('8d76213183bc1b69c9121a649397986eba8fc3a07ece1c5747a4748cdf881e04')
+source=("http://sourceforge.net/projects/oorienteering/files/Mapper/Source/${pkgname}_${pkgver}-src.tgz"
+        'qt-include.patch')
+sha256sums=('8d76213183bc1b69c9121a649397986eba8fc3a07ece1c5747a4748cdf881e04'
+            'bb018de5e99a655b132ff43faf3990538126c434953751c6ba7264977758a497')
+
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  patch -Np1 < ${srcdir}/qt-include.patch
+}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p1 < ${srcdir}/qt-include.patch
 
   rm -rf ${srcdir}/${pkgname}-${pkgver}/build
   mkdir -p ${srcdir}/${pkgname}-${pkgver}/build
