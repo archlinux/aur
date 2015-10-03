@@ -5,13 +5,13 @@
 
 pkgname=electricsheep-svn
 pkgver=r134
-pkgrel=1
+pkgrel=2
 pkgdesc="A screensaver that realize the collective dream of sleeping computers from all over the Internet"
 url="http://www.electricsheep.org/"
 arch=('i686' 'x86_64')
 license=('GPLv2')
 
-depends=('boost' 'curl' 'expat' 'flam3' 'glee' 'gtk2' 'ffmpeg' 'libglade' 'libgtop' 'libpng' 'lua' 'tinyxml' 'wxgtk')
+depends=('boost' 'curl' 'expat' 'flam3' 'glee' 'gtk2' 'ffmpeg' 'libglade' 'libgtop' 'libpng' 'lua51' 'tinyxml' 'wxgtk')
 makedepends=('subversion')
 provides=('electricsheep-svn')
 
