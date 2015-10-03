@@ -5,8 +5,8 @@ _pkgname=toxic
 pkgname=toxic-git
 pkgdesc='CLI Frontend in ncurses for Tox'
 license=('GPL3')
-pkgver=r1521.4d73f8b
-pkgrel=4
+pkgver=0.6.1.r3.ga920f3e
+pkgrel=1
 depends=('desktop-file-utils'
          'freealut'
          'libnotify'
@@ -23,7 +23,7 @@ install="${pkgname}.install"
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
