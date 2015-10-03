@@ -2,12 +2,12 @@
 
 _pkgname=backintime
 pkgname=($_pkgname-bzr $_pkgname-cli-bzr)
-pkgver=r1091
+pkgver=r1183
 pkgrel=1
 url="http://backintime.le-web.org"
 license=('GPL')
 arch=('any')
-makedepends=('bzr')
+makedepends=('bzr' 'python')
 source=($_pkgname::bzr+https://code.launchpad.net/~bit-team/backintime/trunk)
 md5sums=('SKIP')
 # https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
