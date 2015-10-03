@@ -1,0 +1,30 @@
+pkgbase = performous-git
+	pkgdesc = A free game like "Singstar", "Rockband" or "Stepmania" (version from git)
+	pkgver = 1.0_94_g2d2052f
+	pkgrel = 1
+	url = http://performous.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake>=2.4
+	makedepends = git
+	makedepends = help2man
+	depends = boost
+	depends = ffmpeg
+	depends = sdl2
+	depends = cairo>=1.2
+	depends = librsvg
+	depends = glew
+	depends = libxml++
+	depends = portaudio
+	depends = imagemagick
+	optdepends = portmidi: MIDI drum support
+	optdepends = opencv: webcam support
+	optdepends = ttf-ms-fonts: Microsoft core fonts
+	provides = performous
+	conflicts = performous
+	source = performous-git::git+https://github.com/performous/performous.git
+	md5sums = SKIP
+
+pkgname = performous-git
+
