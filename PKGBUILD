@@ -2,7 +2,7 @@
 pkgname=pastix
 pkgver=5.2.2.22
 pkgrel=1
-pkgdesc="A scientific library that provides a high performance parallel solver for very large sparse linear systems based on direct methods."
+pkgdesc="high performance parallel solver for very large sparse linear systems based on direct methods"
 arch=('i686' 'x86_64')
 url="https://gforge.inria.fr"
 license=('CeCILL-C')
