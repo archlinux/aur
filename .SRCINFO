@@ -10,8 +10,8 @@ pkgbase = portal
 	depends = nginx
 	optdepends = yamado
 	provides = portal
-	source = git+https://github.com/orbifx/portal.git
-	sha512sums = SKIP
+	source = https://github.com/orbifx/portal/releases/download/v0.1-beta/portal-postconf.tar.gz
+	md5sums = ea060b28005b3eb2d5f54c9556ff72e9
 
 pkgname = portal
 

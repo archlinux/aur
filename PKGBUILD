@@ -17,9 +17,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/orbifx/portal.git")
+source=(#"git+https://github.com/orbifx/portal.git"
+	https://github.com/orbifx/portal/releases/download/v0.1-beta/portal-postconf.tar.gz)
 noextract=()
-sha512sums=('SKIP') #autofill using updpkgsums
+md5sums=('ea060b28005b3eb2d5f54c9556ff72e9')
 
 build() {
 #  cd "$pkgname-$pkgver"
@@ -29,7 +30,6 @@ true
 }
 
 package() {
-#  cd "$pkgname-$pkgver"
-#  make DESTDIR="$pkgdir/" install
-true
+	cd "$pkgname-$pkgver"
+	true
 }
