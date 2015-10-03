@@ -16,7 +16,7 @@ pkgbase = mosesdecoder
 	makedepends = cmph
 	depends = python2
 	depends = xmlrpc-c
-	optdepends = giza-pp: for training models
+	optdepends = giza-pp-git: for training models
 	optdepends = mgiza: multithreaded giza for training models
 	source = mosesdecoder::git+https://github.com/moses-smt/mosesdecoder.git#branch=RELEASE-3.0
 	source = mosesdecoder.sh
