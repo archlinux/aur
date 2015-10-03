@@ -3,15 +3,15 @@
 
 _pkgname=pyradio
 pkgname=$_pkgname-git
-pkgver=0.4.r47.ge615f51
-pkgrel=1
+pkgver=0.4.r49.g022d161
+pkgrel=2
 pkgdesc="Command line internet radio player"
 arch=('any')
 url="http://www.coderholic.com/pyradio/"
 license=('MIT')
 depends=('ncurses' 'python')
 optdepends=('mplayer: as backend' 'vlc: as backend')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=($pkgname::git://github.com/coderholic/pyradio.git
