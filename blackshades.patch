@@ -1,0 +1,11 @@
+--- blackshades/Makefile	2009-03-22 13:09:02.000000000 +0100
++++ blackshades/Makefile	2009-03-22 13:09:32.000000000 +0100
+@@ -8,7 +8,7 @@
+ 
+ CFLAGS := -O2 -Wall -g $(shell sdl-config --cflags) -I$(SRCDIR) -include Source/Support.h
+ CXXFLAGS := $(CFLAGS)
+-LDFLAGS := $(shell sdl-config --libs) -lGL -lGLU -lopenal -lalut # -framework QuickTime
++LDFLAGS := $(shell sdl-config --libs) -lSDL_image -lGL -lGLU -lopenal -lalut # -framework QuickTime
+ 
+ # Don't want ogg?
+ #CFLAGS += -DNOOGG
