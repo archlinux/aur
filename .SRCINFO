@@ -1,15 +1,16 @@
 pkgbase = haskell-stack
 	pkgdesc = The Haskell Tool Stack
 	pkgver = 0.1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/commercialhaskell/stack
 	arch = x86_64
 	license = BSD3
 	depends = libtinfo
 	optdepends = docker: Use Docker images to build your project in a temporary container
+	optdepends = ncurses5-compat-libs: Needed if using a bin dist of GHC compiled with libtinfo-5
 	provides = haskell-stack
 	conflicts = haskell-stack-git
-	source = https://s3.amazonaws.com/download.fpcomplete.com/archlinux/stack_0.1.5.0-x86_64.tar.gz
+	source = https://s3.amazonaws.com/download.fpcomplete.com/archlinux/stack_0.1.5.0-.tar.gz
 
 pkgname = haskell-stack
 

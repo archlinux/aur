@@ -2,14 +2,15 @@
 pkgname=haskell-stack
 _pkgname=stack
 pkgver='0.1.5.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="The Haskell Tool Stack"
 arch=('x86_64')
 url="https://www.github.com/commercialhaskell/stack"
 license=('BSD3')
 depends=('libtinfo')
 makedepends=()
-optdepends=('docker: Use Docker images to build your project in a temporary container')
+optdepends=('docker: Use Docker images to build your project in a temporary container'
+            'ncurses5-compat-libs: Needed if using a bin dist of GHC compiled with libtinfo-5')
 provides=('haskell-stack')
 conflicts=('haskell-stack-git')
 if [ "${CARCH}" = 'x86_64' ]; then
