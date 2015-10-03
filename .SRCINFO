@@ -1,0 +1,20 @@
+pkgbase = argentum-age-git
+	pkgdesc = A digital collectible card game with tactical elements.
+	pkgver = 0.0.1853.g5a4ccf1
+	pkgrel = 1
+	url = http://argentum-age.com/
+	arch = any
+	license = custom
+	makedepends = git
+	depends = anura-git
+	provides = argentum-age
+	provides = anura-citadel-git
+	conflicts = argentum-age
+	conflicts = anura-citadel-git
+	source = git+https://github.com/davewx7/citadel.git
+	source = argentum-age-git.sh
+	md5sums = SKIP
+	md5sums = ad03a90e4ee6019c28e91fa89d5c689c
+
+pkgname = argentum-age-git
+
