@@ -1,0 +1,14 @@
+pkgbase = maptiler64bit
+	pkgdesc = Map Tile Cutter - Tile Overlay Generator for Google Maps and Google Earth
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://www.maptiler.org/
+	arch = x86_64
+	license = BSD
+	makedepends = dpkg
+	depends = gdal
+	source = http://downloads.klokantech.com/maptiler/maptiler64bit-0.6.2-free-linux.debian-jessie.amd64.deb
+	md5sums = 41bb5e03f45051283490a3957f3f5dc6
+
+pkgname = maptiler64bit
+
