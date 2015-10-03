@@ -1,7 +1,7 @@
 pkgbase = util-linux-nosystemd
 	pkgdesc = Miscellaneous system utilities for Linux
-	pkgver = 2.26.2
-	pkgrel = 2
+	pkgver = 2.27
+	pkgrel = 1
 	url = https://www.kernel.org/pub/linux/utils/util-linux/
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = util-linux-nosystemd
 	makedepends = python
 	options = strip
 	options = debug
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.2.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.2.tar.sign
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.27/util-linux-2.27.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.27/util-linux-2.27.tar.sign
 	source = uuidd.tmpfiles
 	source = pam-login
 	source = pam-common
 	source = pam-su
-	md5sums = 9bdf368c395f1b70325d0eb22c7f48fb
+	md5sums = 5b06bbda9309624ee7add15bc8d8ca22
 	md5sums = SKIP
 	md5sums = a39554bfd65cccfd8254bb46922f4a67
 	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
@@ -31,8 +31,8 @@ pkgname = util-linux-nosystemd
 	depends = coreutils
 	depends = libutil-linux
 	optdepends = python: python bindings to libmount
-	provides = util-linux=2.26.2
-	provides = util-linux-ng=2.26.2
+	provides = util-linux=2.27
+	provides = util-linux-ng=2.27
 	provides = eject
 	provides = zramctl
 	conflicts = util-linux
@@ -48,7 +48,7 @@ pkgname = util-linux-nosystemd
 
 pkgname = libutil-linux-nosystemd
 	pkgdesc = util-linux runtime libraries
-	provides = libutil-linux=2.26.2
+	provides = libutil-linux=2.27
 	provides = libblkid.so
 	provides = libfdisk.so
 	provides = libmount.so

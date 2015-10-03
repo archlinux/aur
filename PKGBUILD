@@ -8,8 +8,8 @@
 
 pkgbase=util-linux-nosystemd
 pkgname=(util-linux-nosystemd libutil-linux-nosystemd)
-pkgver=2.26.2
-pkgrel=2
+pkgver=2.27
+pkgrel=1
 pkgdesc="Miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
@@ -17,10 +17,10 @@ makedepends=('python')
 license=('GPL2')
 options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
-source=("https://www.kernel.org/pub/linux/utils/util-linux/v2.26/${pkgname%-nosystemd}-$pkgver.tar."{xz,sign}
+source=("https://www.kernel.org/pub/linux/utils/util-linux/v$pkgver/${pkgname%-nosystemd}-$pkgver.tar."{xz,sign}
         uuidd.tmpfiles
         pam-{login,common,su})
-md5sums=('9bdf368c395f1b70325d0eb22c7f48fb'
+md5sums=('5b06bbda9309624ee7add15bc8d8ca22'
          'SKIP'
          'a39554bfd65cccfd8254bb46922f4a67'
          '4368b3f98abd8a32662e094c54e7f9b1'
