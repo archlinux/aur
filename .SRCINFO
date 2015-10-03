@@ -1,7 +1,7 @@
 pkgbase = hpmyroom
 	pkgdesc = HP MyRoom a collaborative conferencing meetings software
 	pkgver = 10.4.0.0138
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.myroom.hp.com
 	arch = i686
 	arch = x86_64

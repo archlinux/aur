@@ -3,7 +3,7 @@
 # Old Author: jevv
 pkgname=hpmyroom
 pkgver=10.4.0.0138
-pkgrel=2
+pkgrel=3
 pkgdesc="HP MyRoom a collaborative conferencing meetings software"
 url="https://www.myroom.hp.com"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ package() {
   ar x ${pkgname}_v${pkgver}_${_debarch}.deb
   tar xf data.tar.xz --no-same-permissions --no-overwrite-dir -C ${pkgdir}
   chmod a-x ${pkgdir}/usr/share/applications/HP-myroom.desktop
-  chmod a-x ${pkgdir}/usr/share/hpmyroom/Resources/*
+  find ${pkgdir}/usr/share/hpmyroom/Resources/* -type f -exec chmod a-x {} \;
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ft=sh ts=2 sw=2 et:
