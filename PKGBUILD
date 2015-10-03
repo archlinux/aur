@@ -4,7 +4,7 @@
 pkgname=python-bibtexparser
 _pkgname=bibtexparser
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bibtex parser in Python"
 arch=('any')
 url="https://bibtexparser.readthedocs.org/"
