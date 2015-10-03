@@ -1,0 +1,3 @@
+u oscam /var/lib/oscam oscam
+m oscam uucp
+m oscam video
