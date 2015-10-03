@@ -1,0 +1,21 @@
+pkgbase = toxic
+	pkgdesc = CLI Tox client
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://tox.chat
+	install = toxic.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	depends = desktop-file-utils
+	depends = freealut
+	depends = libnotify
+	depends = toxcore
+	source = https://github.com/Tox/toxic/archive/v0.6.1.tar.gz
+	sha256sums = eac982bc65779d283af40ae185e7830e93822b0ec1dabd03b2cbd58e58474be8
+
+pkgname = toxic
+
