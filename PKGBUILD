@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 239466 2015-05-16 16:21:31Z anatolik $
+# $Id: PKGBUILD 246539 2015-09-17 21:02:31Z foutrelis $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
@@ -6,7 +6,7 @@
 _pkgname=vlc
 pkgname=vlc-decklink
 pkgver=2.2.1
-pkgrel=4
+pkgrel=7
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -61,10 +61,8 @@ backup=('usr/share/vlc/lua/http/.hosts'
 options=('!emptydirs')
 install=vlc.install
 source=("http://download.videolan.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-        "vlc-gcc5-sse-target-workaround.patch"
         "lua53_compat.patch")
 md5sums=('42273945758b521c408fabc7fd6d9946'
-         'cf5b92e290da2f1b0b4d0cd0eda6b32b'
          '96d3b346d9149ffb1b430066dfb6249a')
 
 prepare() {
@@ -72,11 +70,6 @@ prepare() {
 
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
-
-  # Fix build with GCC 5 on i686
-  # GCC PR URL: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66047
-  # Workaround: https://bugzilla.redhat.com/show_bug.cgi?id=1215630#c11
-  patch -p1 < "${srcdir}/vlc-gcc5-sse-target-workaround.patch"
 
   patch -p1 < "${srcdir}/lua53_compat.patch"
 
