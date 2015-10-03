@@ -1,4 +1,4 @@
-pkgbase = heartbleedscanner
+pkgbase = heartbleedscanner-git
 	pkgdesc = OpenSSL Heartbleed (CVE-2014-0160) vulnerability scanner, data miner and RSA key-restore tools.
 	pkgver = r15.7ecb1e3
 	pkgrel = 1

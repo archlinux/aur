@@ -1,5 +1,5 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
-pkgbase=heartbleedscanner
+pkgbase=heartbleedscanner-git
 pkgname=heartbleedscanner-git
 pkgver=r15.7ecb1e3
 pkgrel=1
