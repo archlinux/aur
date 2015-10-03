@@ -1,6 +1,6 @@
 pkgbase = libkdcraw-frameworks-git
-	pkgdesc = A C++ interface used to decode RAW picture. KF5 Frameworks branch (GIT version)
-	pkgver = 5.0.0.r1055.9850efb
+	pkgdesc = A C++ interface used to decode RAW picture. KF5 Frameworks branch. (GIT version)
+	pkgver = 5.0.0.r1065.e1a7d02
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
 	install = libkdcraw-frameworks-git.install
@@ -17,7 +17,6 @@ pkgbase = libkdcraw-frameworks-git
 	depends = ki18n
 	depends = libraw
 	depends = hicolor-icon-theme
-	provides = libkdcraw
 	conflicts = libkdcraw
 	source = git://anongit.kde.org/libkdcraw#branch=frameworks
 	sha1sums = SKIP
