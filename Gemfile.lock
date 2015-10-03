@@ -2,48 +2,41 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.3.8)
-    domain_name (0.5.24)
-      unf (>= 0.0.5, < 1.0.0)
     excon (0.45.4)
     foreman (0.78.0)
       thor (~> 0.19.1)
-    heroku (3.41.5)
-      heroku-api (>= 0.3.19)
-      launchy (>= 0.3.2)
-      multi_json (>= 1.10)
-      net-ssh-gateway (>= 1.2.0)
-      netrc (>= 0.10.0)
-      rest-client (>= 1.6.0)
-      rubyzip (>= 0.9.9)
+    heroku (3.42.15)
+      heroku-api (= 0.3.23)
+      launchy (= 2.4.3)
+      multi_json (= 1.11.2)
+      net-ssh-gateway (= 1.2.0)
+      netrc (= 0.10.3)
+      rest-client (= 1.6.8)
+      rubyzip (= 1.1.7)
     heroku-api (0.3.23)
       excon (~> 0.44)
       multi_json (~> 1.8)
-    http-cookie (1.0.2)
-      domain_name (~> 0.5)
     launchy (2.4.3)
       addressable (~> 2.3)
-    mime-types (2.6.1)
+    mime-types (1.25.1)
     multi_json (1.11.2)
-    net-ssh (2.9.2)
+    net-ssh (3.0.1)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     netrc (0.10.3)
-    rest-client (1.8.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
+    rdoc (4.2.0)
+    rest-client (1.6.8)
+      mime-types (~> 1.16)
+      rdoc (>= 2.4.2)
     rubyzip (1.1.7)
     thor (0.19.1)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   foreman (= 0.78.0)
-  heroku (= 3.41.5)
+  heroku (= 3.42.15)
 
 BUNDLED WITH
    1.10.6
