@@ -11,12 +11,12 @@
 pkgname=gnofract4d
 pkgver=3.14.1
 _pkgver="V_${pkgver//./_}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Create beautiful fractal images in PyGTK"
 arch=('any')
 url="http://gnofract4d.sourceforge.net"
 license=('BSD')
-makedepends=('docbook-xsl')
+makedepends=('docbook-xsl' 'python2')
 depends=('desktop-file-utils' 'libjpeg' 'libpng' 'pygtk')
 install=$pkgname.install
 source=(https://github.com/edyoung/gnofract4d/archive/$_pkgver.tar.gz
@@ -54,7 +54,7 @@ package() {
   install -Dm644 doc/gnofract4d.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
 
   # Patch for createdocs.py. Generating "Formula Reference Reference" entries fails:
-  #     Erro:  no refentry: No refentry elements found in "Gnofract 4D".   Gnofract 4D
+  #     Error:  no refentry: No refentry elements found in "Gnofract 4D".   Gnofract 4D
   install -m644 "$srcdir/gnofract4d-manual.html" "$pkgdir/usr/share/gnome/help/gnofract4d/C/gnofract4d-manual.html"
 }
 
