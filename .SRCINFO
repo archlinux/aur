@@ -11,6 +11,7 @@ pkgbase = libgroove-git
 	depends = sdl2
 	depends = chromaprint
 	depends = libebur128
+	depends = libsoundio
 	provides = libgroove
 	conflicts = libgroove
 	options = strip
