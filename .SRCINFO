@@ -6,6 +6,7 @@ pkgbase = pinbadge-icon-theme
 	arch = any
 	license = CCPL:by-sa
 	makedepends = git
+	depends = numix-circle-icon-theme-git
 	provides = pinbadge-icon-theme
 	conflicts = pinbadge-icon-theme
 	source = git+https://github.com/crutchcorn/pinbadge-icon-theme.git

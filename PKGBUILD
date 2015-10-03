@@ -7,6 +7,7 @@ pkgdesc='A wonderful circular icon pack inspired by OSX!'
 arch=('any')
 url='https://github.com/crutchcorn/pinbadge-icon-theme'
 license=('CCPL:by-sa')
+depends=('numix-circle-icon-theme-git')
 makedepends=('git')
 provides=('pinbadge-icon-theme')
 conflicts=('pinbadge-icon-theme')
