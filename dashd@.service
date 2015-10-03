@@ -1,0 +1,12 @@
+[Unit]
+Description=LiteCoin Daemon
+After=network.target 
+
+[Service]
+User=%i
+Group=users
+Type=simple
+ExecStart=/usr/bin/litecoind
+
+[Install]
+WantedBy=multi-user.target
