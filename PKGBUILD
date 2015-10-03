@@ -3,7 +3,7 @@
 # Old Author: jevv
 pkgname=hpmyroom
 pkgver=10.4.0.0138
-pkgrel=1
+pkgrel=2
 pkgdesc="HP MyRoom a collaborative conferencing meetings software"
 url="https://www.myroom.hp.com"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ depends_x86_64=('lib32-attr' 'lib32-bzip2' 'lib32-expat' 'lib32-flac' 'lib32-fon
 
 source_i686=("https://www.myroom.hp.com/downloadfiles/${pkgname}_v${pkgver}_i386.deb")
 source_x86_64=("https://www.myroom.hp.com/downloadfiles/${pkgname}_v${pkgver}_amd64.deb")
-md5sums_i686=('c958c6cc44081c890629cb6019186ee3')
-md5sums_x86_64=('eca5504c500074e4f9993b62d216288b')
+sha256sums_i686=('ade7c0a948fb02e2fa0590a20d51d090c780aedb738478761d207888f720c7ed')
+sha256sums_x86_64=('49d9796dec16856bcde7d76475f8f1ff1183d6bf11f1dc200f6127e861726232')
 
 [[ "$CARCH" = "i686" ]] && _debarch='i386'
 [[ "$CARCH" = "x86_64" ]] && _debarch='amd64'

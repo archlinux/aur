@@ -1,7 +1,7 @@
 pkgbase = hpmyroom
 	pkgdesc = HP MyRoom a collaborative conferencing meetings software
 	pkgver = 10.4.0.0138
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.myroom.hp.com
 	arch = i686
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = hpmyroom
 	depends_i686 = util-linux
 	depends_i686 = xz
 	depends_i686 = zlib
-	md5sums_i686 = c958c6cc44081c890629cb6019186ee3
+	sha256sums_i686 = ade7c0a948fb02e2fa0590a20d51d090c780aedb738478761d207888f720c7ed
 	source_x86_64 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.4.0.0138_amd64.deb
 	depends_x86_64 = lib32-attr
 	depends_x86_64 = lib32-bzip2
@@ -85,7 +85,7 @@ pkgbase = hpmyroom
 	depends_x86_64 = lib32-util-linux
 	depends_x86_64 = lib32-xz
 	depends_x86_64 = lib32-zlib
-	md5sums_x86_64 = eca5504c500074e4f9993b62d216288b
+	sha256sums_x86_64 = 49d9796dec16856bcde7d76475f8f1ff1183d6bf11f1dc200f6127e861726232
 
 pkgname = hpmyroom
 
