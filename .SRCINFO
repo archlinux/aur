@@ -1,0 +1,28 @@
+pkgbase = geogebra-installer
+	pkgdesc = Dynamic mathematics software with interactive graphics, algebra and spreadsheet
+	pkgver = 5.0.156.0
+	pkgrel = 1
+	url = http://www.geogebra.org/
+	install = geogebra.install
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	license = CCPL:by-sa
+	license = CCPL:by-nc
+	makedepends = gendesk
+	depends = desktop-file-utils
+	depends = gsl
+	depends = hicolor-icon-theme
+	depends = java-runtime
+	depends = shared-mime-info
+	depends = xdg-utils
+	conflicts = geogebra
+	source = http://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-5.0.156.0.tar.bz2
+	source = http://static.geogebra.org/images/geogebra-logo.svg
+	source = geogebra
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = geogebra-installer
+
