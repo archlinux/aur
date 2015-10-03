@@ -3,7 +3,7 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=mypaint-git
-pkgver=1.1.0.r3605.84e823e
+pkgver=1.1.0.r3986.5246883
 pkgrel=1
 pkgdesc="A fast and easy painting application for digital painters, with brush dynamics"
 arch=('i686' 'x86_64')
@@ -39,11 +39,10 @@ prepare() {
 
 build() {
 	cd "$srcdir/mypaint"
-	scons
+	scons prefix="/usr"
 }
 
 package() {
 	cd "$srcdir/mypaint"
-	scons prefix="$pkgdir/usr" install
-	sed -e "s|$pkgdir||g" -i "$pkgdir/usr/lib/pkgconfig/"libmypaint*.pc
+	scons prefix="/usr" --install-sandbox="$pkgdir" "$pkgdir"
 }

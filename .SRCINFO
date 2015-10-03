@@ -1,6 +1,6 @@
 pkgbase = mypaint-git
 	pkgdesc = A fast and easy painting application for digital painters, with brush dynamics
-	pkgver = 1.1.0.r3605.84e823e
+	pkgver = 1.1.0.r3986.5246883
 	pkgrel = 1
 	url = http://mypaint.intilinux.com/
 	install = mypaint-git.install
