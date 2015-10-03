@@ -1,0 +1,6 @@
+caps-lv2/
+src/
+pkg/
+caps-lv2-git-*.tar.xz
+caps-lv2-git-*.src.tar.gz
+.AURINFO
