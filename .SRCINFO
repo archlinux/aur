@@ -1,15 +1,15 @@
 pkgbase = eclipse-arm
 	pkgdesc = GNU ARM Eclipse Plug-in
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
-	url = http://sourceforge.net/projects/gnuarmeclipse
+	url = http://gnuarmeclipse.github.io
 	install = eclipse-arm.install
 	arch = any
 	license = GPL
 	depends = eclipse-cpp
 	options = !strip
-	source = http://sourceforge.net/projects/gnuarmeclipse/files/Current%20Releases/2.x/ilg.gnuarmeclipse.repository-2.9.2-201508071246.zip
-	md5sums = 2bf6c4ed6214c482e7cf43ca2ea36abd
+	source = https://github.com/gnuarmeclipse/plug-ins/releases/download/v2.9.3-201508190739/ilg.gnuarmeclipse.repository-2.9.3-201508190739.zip
+	md5sums = 5a76d4dfa6d32f15a4495fef1476a8ce
 
 pkgname = eclipse-arm
 
