@@ -3,7 +3,7 @@
 pkgname=flif
 _pkgname=FLIF
 pkgver=0.1_alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="Free Lossless Image Format"
 arch=(i686 x86_64)
 url="https://github.com/jonsneyers/FLIF"
