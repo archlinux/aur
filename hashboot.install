@@ -1,0 +1,8 @@
+post_install() {
+  echo "After install run 'hashboot index'."
+  echo "Run also 'systemctl enable hashboot.service' to enable."
+}
+
+post_upgrade() {
+  post_install
+}

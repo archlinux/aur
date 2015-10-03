@@ -9,6 +9,7 @@ url="https://git.tastytea.de/?p=hashboot.git;a=summary"
 license=('custom:"hugware"')
 conflicts=('chkboot' 'mkinitcpio-chkcryptoboot')
 depends=('bash' 'coreutils' 'tar' 'which' 'grep' 'gawk' 'util-linux' 'gzip')
+install=('hashboot.install')
 source=(git+git://git.tastytea.de/repositories/hashboot.git)
 md5sums=('SKIP')
 
