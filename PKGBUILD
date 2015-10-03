@@ -1,16 +1,9 @@
-# Maintainer: M0Rf30
-# Contributor: SÃƒÂ©bastien Luttringer <seblu@aur.archlinux.org>
-# Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
-# Contributor: thotypous <matiasÎ˜archlinux-brÂ·org>
-# Contributor: xduugu <xduuguÎ˜gmxÂ·com>
-# Contributor: Peter 'piie' Feuerer <peterÎ˜piieÂ·net>
-# Contributor: Sascha Pfau <MrPeacockÎ˜gmailÂ·com>
-# Contributor: iggy <iggy.mfÎ˜gmailÂ·com>
-# Contributor: Rainmaker <rainmaker52@gmail.com>
+# Maintainer: Rainmaker <rainmaker52@gmail.com>
+# Original script by: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.0.4
-_build=102546
+pkgver=5.0.6
+_build=103037
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -47,7 +40,7 @@ source=(
 )
 
 
-md5sums=('8028829331bc0822fa2d2d3cf301dda3'
+md5sums=('9d67e2df72630dc2ac5983c7cdb1cf5f'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'

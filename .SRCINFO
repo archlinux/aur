@@ -1,6 +1,6 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
-	pkgver = 5.0.4
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = http://virtualbox.org/
 	install = install
@@ -19,7 +19,7 @@ pkgbase = virtualbox-bin
 	depends = python2
 	depends = sdl
 	optdepends = virtualbox-ext-oracle: for Oracle extensions
-	provides = virtualbox=5.0.4
+	provides = virtualbox=5.0.6
 	conflicts = virtualbox
 	conflicts = virtualbox-ose
 	conflicts = virtualbox-modules
@@ -29,12 +29,12 @@ pkgbase = virtualbox-bin
 	options = !strip
 	backup = etc/vbox/vbox.cfg
 	backup = etc/conf.d/vboxweb
-	source = VirtualBox-5.0.4-102546-Linux_amd64.run::http://download.virtualbox.org/virtualbox/5.0.4/VirtualBox-5.0.4-102546-Linux_amd64.run
+	source = VirtualBox-5.0.6-103037-Linux_amd64.run::http://download.virtualbox.org/virtualbox/5.0.6/VirtualBox-5.0.6-103037-Linux_amd64.run
 	source = VBoxFixUSB
 	source = 10-vboxdrv.rules
 	source = vboxweb.rc
 	source = vboxweb.conf
-	md5sums = 8028829331bc0822fa2d2d3cf301dda3
+	md5sums = 9d67e2df72630dc2ac5983c7cdb1cf5f
 	md5sums = 2d04c2e2d8c71558c910a51ec773731a
 	md5sums = fe60f9510502bea67383d9198ae8c13c
 	md5sums = c159d683ba1947290fc2ad2c64194150
