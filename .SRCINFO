@@ -20,6 +20,7 @@ pkgbase = trilinos
 	depends = openmpi
 	depends = python2
 	depends = boost
+	conflicts = gtest
 	source = http://trilinos.org/oldsite/download/files/trilinos-12.2.1-Source.tar.bz2
 	md5sums = 760f14cbce482b4b9a41d1c18297b531
 

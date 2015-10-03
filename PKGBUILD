@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
 depends=('lapack' 'openmpi' 'python2' 'boost')
+conflicts=('gtest')
 source=(http://trilinos.org/oldsite/download/files/${pkgname}-${pkgver}-Source.tar.bz2)
 makedepends=('python2' 'python2-numpy' 'swig' 'gcc' 'gcc-fortran' 'openmpi' 'perl' 'blas' 'lapack' 'cmake')
 # gcc-fortran gcc-fortran-multilib
