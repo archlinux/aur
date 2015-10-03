@@ -1,0 +1,17 @@
+pkgbase = pcf2bdf-git
+	pkgdesc = Convert X font from PCF to BDF
+	pkgver = 16+gfbc3c0a
+	pkgrel = 1
+	url = https://github.com/ganaware/pcf2bdf
+	arch = i686
+	arch = x86_64
+	license = custom:X11
+	makedepends = git
+	depends = gcc-libs
+	provides = pcf2bdf
+	conflicts = pcf2bdf
+	source = git://github.com/ganaware/pcf2bdf.git
+	md5sums = SKIP
+
+pkgname = pcf2bdf-git
+
