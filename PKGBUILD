@@ -1,7 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=python-vk
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python wrapper around the VK.com/VKontakte.ru API.'
 arch=('any')
 url="https://github.com/dimka665/vk"
@@ -15,4 +15,3 @@ package() {
   cd "$srcdir/vk-$pkgver"
   python setup.py install --root=$pkgdir --optimize=1
 }
-# vim:set ts=2 sw=2 et:
