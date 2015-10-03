@@ -1,0 +1,14 @@
+pkgbase = httpripper
+	pkgdesc = A tool to rip content out of the web
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = http://29a.ch/httpripper/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	source = http://29a.ch/httpripper/httpripper-1.1.1.tar.gz
+	md5sums = 1f2c1dbb90dc5d560a60cb1c90f0c905
+
+pkgname = httpripper
+
