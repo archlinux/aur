@@ -1,12 +1,12 @@
 [Unit]
-Description=LiteCoin Daemon
+Description=Dash Daemon
 After=network.target 
 
 [Service]
 User=%i
 Group=users
 Type=simple
-ExecStart=/usr/bin/litecoind
+ExecStart=/usr/bin/dashd
 
 [Install]
 WantedBy=multi-user.target

@@ -1,6 +1,6 @@
 pkgbase = dash
 	pkgver = 0.12.0.55
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dashpay.io/
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 pkgname=('dash-daemon' 'dash-cli' 'dash-qt')
 pkgbase=dash
 pkgver=0.12.0.55
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.dashpay.io/"
 makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
