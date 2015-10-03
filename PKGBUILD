@@ -2,7 +2,6 @@
 # Contributor: Frank Vanderham <twelve.eighty (at) gmail.>
 
 pkgname=broadcom-wl-dkms
-_pkgname=broadcom-wl
 pkgver=6.30.223.271
 pkgrel=1
 pkgdesc="Broadcom 802.11 Linux STA wireless driver"
@@ -26,20 +25,22 @@ sha256sums_x86_64=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c7141
 prepare() {
   cd "${srcdir}"
 
-	sed -i -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" src/wl/sys/wl_linux.c
+  sed -i -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" src/wl/sys/wl_linux.c
 }
 
 package() {
-	cd "${srcdir}"
-	
-	# delete files not needed for packaging
-	rm *.tar.gz
+  cd "${srcdir}"
 
-	mkdir -p ${pkgdir}/usr/src/${_pkgname}-${pkgver}
+  local dest="${pkgdir}/usr/src/${pkgname/-dkms/}-${pkgver}"
 
-	cp -RL * ${pkgdir}/usr/src/${_pkgname}-${pkgver}
-	install -D -m 644 lib/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m 644 broadcom-wl-dkms.conf "${pkgdir}"/etc/modprobe.d/broadcom-wl-dkms.conf
+  mkdir -p "${dest}"
+  cp -RL src lib Makefile dkms.conf "${dest}"
+  chmod a-x "${dest}/lib/LICENSE.txt" # Ships with executable bits set
+
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -rs "${dest}/lib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -D -m 644 broadcom-wl-dkms.conf "${pkgdir}/etc/modprobe.d/broadcom-wl-dkms.conf"
 }
 
 # vim:set ts=2 sw=2 et:
