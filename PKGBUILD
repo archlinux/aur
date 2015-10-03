@@ -8,6 +8,7 @@ pkgdesc="Free Lossless Image Format"
 arch=(i686 x86_64)
 url="https://github.com/jonsneyers/FLIF"
 license=('GPL3')
+conflicts=('flif')
 makedepends=('git' 'make' 'gcc')
 source=('git+https://github.com/jonsneyers/FLIF.git')
 sha256sums=('SKIP')
