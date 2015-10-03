@@ -2,7 +2,7 @@ pkgname=pycharm-community-eap
 _buildver=143.24
 _pkgver=5.0.0
 pkgver=$_pkgver.$_buildver
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition.'
 arch=(any)
 options=('!strip')
@@ -27,7 +27,7 @@ build() {
 	Categories=Development;IDE;
 	Terminal=false
 	StartupNotify=true
-	StartupWMClass=jetbrains-pycharm
+	StartupWMClass=jetbrains-pycharm-ce
 	EOF
 }
 
