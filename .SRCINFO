@@ -1,11 +1,13 @@
 pkgbase = python-sphinxcontrib-spelling
 	pkgdesc = Sphinx spelling extension
 	pkgver = 2.1.2
-	pkgrel = 1
-	url = https://bitbucket.org/birkenfeld/sphinx-contrib/
+	pkgrel = 2
+	url = https://bitbucket.org/dhellmann/sphinxcontrib-spelling
 	arch = any
 	license = BSD
 	depends = python-sphinx
+	depends = python-pyenchant
+	depends = python-six
 	source = http://pypi.python.org/packages/source/s/sphinxcontrib-spelling/sphinxcontrib-spelling-2.1.2.tar.gz
 	sha256sums = c5ac488141408564cb60f355c50efd90b826a9fc7723738a07ab907a0384f086
 
