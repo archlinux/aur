@@ -1,7 +1,7 @@
 pkgbase = python-dask
 	pkgdesc = Minimal task scheduling abstraction
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dask.readthedocs.org/
 	arch = any
 	license = BSD

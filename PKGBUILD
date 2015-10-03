@@ -4,7 +4,7 @@
 pkgname=python-dask
 _pkgname=dask
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
 url="https://dask.readthedocs.org/"
