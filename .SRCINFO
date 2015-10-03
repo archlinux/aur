@@ -1,6 +1,6 @@
 pkgbase = gtg-git
 	pkgdesc = Personal GTD like organizer for the GNOME desktop environment. Git version.
-	pkgver = r5151.647091c
+	pkgver = r5170.a795d66
 	pkgrel = 1
 	url = http://gtgnome.net/
 	install = gtg-git.install
@@ -20,6 +20,7 @@ pkgbase = gtg-git
 	depends = python-liblarch-git
 	depends = python-dbus
 	depends = python-cairo
+	depends = python-xdg
 	optdepends = python-bugz: for Bugzilla plugin
 	optdepends = python-cheetah: for Export and print plugin
 	optdepends = pdflatex: for Export and print plugin
