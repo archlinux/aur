@@ -15,7 +15,7 @@ pkgbase = pastix
 	source = Makefile.patch
 	source = config.in
 	md5sums = 85127ecdfaeed39e850c996b78573d94
-	md5sums = a7143be7e7b05f707cff456eb73c57b6
+	md5sums = 3b717b6a55ce2107948c2d8b3ef429db
 	md5sums = 76e78a25dddf0c184cc5c9e59eda7006
 
 pkgname = pastix
