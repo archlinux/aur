@@ -1,0 +1,14 @@
+pkgbase = sind-git
+	pkgdesc = Simple Notification Daemon. Prints freedesktop notifications to stdout
+	pkgver = r21.aeecca0
+	pkgrel = 1
+	url = https://github.com/htylo/simplenotifydaemon
+	arch = any
+	makedepends = git
+	provides = sind
+	options = !strip
+	source = sind-git::git+https://github.com/htylo/simplenotifydaemon
+	sha512sums = SKIP
+
+pkgname = sind-git
+
