@@ -1,6 +1,6 @@
 # Maintainer: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=typesafe-activator
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='Helper tools to get you started with Play and the Typesafe Reactive Platform - aka playframework'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('java-environment' 'python')
 conflicts=('playframework' 'playframework2')
 replaces=('playframework' 'playframework2')
 source=(http://downloads.typesafe.com/${pkgname}/${pkgver}/${pkgname}-${pkgver}-minimal.zip)
-sha256sums=('bafa6f3ab8078c446b9c019297fb8123c2987d934924160a3dbba95b8136f8ca')
+sha256sums=('3fc80ea6f4068955db65d1355ccc06a1f7e1a0ff05d71dd0861fb30cea415512')
 
 package() {
   cd "${srcdir}/activator-${pkgver}-minimal"
