@@ -1,0 +1,22 @@
+pkgbase = mgiza
+	pkgdesc = Multithreaded version of Giza, a statical machine translation toolkit used to train word alignment models
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/moses-smt/mgiza
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = boost
+	makedepends = boost-libs
+	depends = python
+	depends = bash
+	provides = giza
+	conflicts = mgiza-git
+	conflicts = giza-pp-git
+	source = mgiza::git+https://github.com/moses-smt/mgiza.git#branch=RELEASE-3.0
+	md5sums = SKIP
+
+pkgname = mgiza
+
