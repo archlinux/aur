@@ -1,0 +1,17 @@
+pkgbase = servefile
+	pkgdesc = Serve or receive files from shell via a small HTTP server
+	pkgver = v0.4.2.r17.g0c781c2
+	pkgrel = 1
+	url = http://seba-geek.de/stuff/servefile/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = bash
+	depends = python
+	provides = servefile-git
+	conflicts = servefile-git
+	source = servefile-git::git://git.someserver.de/git/servefile/
+	md5sums = SKIP
+
+pkgname = servefile-git
+
