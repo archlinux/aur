@@ -2,7 +2,7 @@ pkgbase = broadcom-wl-dkms
 	pkgdesc = Broadcom 802.11 Linux STA wireless driver
 	pkgver = 6.30.223.271
 	pkgrel = 1
-	url = http://www.broadcom.com/support/802.11/linux_sta.php
+	url = https://www.broadcom.com/support/?gid=1
 	install = broadcom-wl-dkms.install
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,6 @@ pkgbase = broadcom-wl-dkms
 	source = dkms.conf
 	sha256sums = b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283
 	sha256sums = e81085522db72b0bd6418600507c8a18202aee6dcc07b1befe16ad2e2cfbd971
-	sha256sums = 2f70be509aac743bec2cc3a19377be311a60a1c0e4a70ddd63ea89fae5df08ac
-	sha256sums = b07ce80f2e079cce08c8ec006dda091f6f73f158c8a62df5bac2fbabb6989849
 	source_i686 = http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-6_30_223_271.tar.gz
 	sha256sums_i686 = 4f8b70b293ac8cc5c70e571ad5d1878d0f29d133a46fe7869868d9c19b5058cd
 	source_x86_64 = http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz
