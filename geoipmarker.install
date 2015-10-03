@@ -3,8 +3,16 @@ post_install() {
 **** NOTICE ****
 *
 * To use the geoipmarker package, you need a GeoIP2 database file, and a 
-* systemd Unit Instance Environment file. See
+* systemd Unit Instance Environment file.
+* Copy the example config file from /usr/share/doc/geoipmarker to
+* /etc/conf.d/ as geoipmarker@<queue-num> e.g. geoipmarker@0 for queue 0
+* check the comments in the example.
+*
+* then: systemctl start geoipmarker@0
+*
+* see 
 * <https://github.com/m4rienf/GeoIPMarker/blob/master/README.md>
+* for further instructions
 *
 EOF
 }
