@@ -1,0 +1,24 @@
+pkgbase = trackballs
+	pkgdesc = Simple game similar to the classical game Marble Madness on the Amiga in the 80's
+	pkgver = 1.1.4
+	pkgrel = 7
+	url = http://trackballs.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = guile1.8
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = mesa
+	source = http://downloads.sourceforge.net/sourceforge/trackballs/trackballs-1.1.4.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/trackballs/SixLevels.tar.gz
+	source = trackballs.desktop
+	source = trackballs.patch
+	md5sums = 84e2e8bb68842a636da91673751279a0
+	md5sums = 2bb730894a85334a681cfd9f40fe075e
+	md5sums = 831053e0375b14c905b6cb534ea134a4
+	md5sums = 3c383cf4b88330e6b14dea8881667ab9
+
+pkgname = trackballs
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Trackballs
+Comment=Simple game similar to the classical game Marble Madness
+Exec=trackballs
+Icon=/usr/share/icons/hicolor/32x32/apps/trackballs.png
+Terminal=false
+Type=Application
+Categories=Application;Game;ArcadeGame
