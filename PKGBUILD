@@ -2,8 +2,8 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-experimental
-pkgver=0.12.9
-pkgrel=2
+pkgver=0.12.10
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories. - Experimental Version"
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
@@ -25,15 +25,21 @@ _gamepkg=factorio_alpha_${__factorio_arch}_$pkgver.tar.gz
 
 build() {
   msg "You need a full copy of this game in order to install it"
-  msg "Searching for ${_gamepkg} in dir: \"$startdir\""
-  pkgpath="$startdir"
+  msg "Searching for ${_gamepkg}..."
+  pkgpath="${startdir}"
   if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-    error "Game package not found, please type absolute path to ${_gamepkg} (/home/joe):"
-    read pkgpath
-    if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-      error "Unable to find game package." && return 1
+    if [[ -n "${XDG_DOWNLOAD_DIR}" && -f "${XDG_DOWNLOAD_DIR}/${_gamepkg}" ]]; then
+        pkgpath="${XDG_DOWNLOAD_DIR}"
+    else
+        error "Game package not found, please type absolute path to ${_gamepkg} (/home/joe):"
+        read pkgpath
     fi
   fi
+  msg $pkgpath
+  if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
+      error "Unable to find game package." && return 1
+  fi
+  
   msg "Found game package, unpacking..."
   tar xf "${pkgpath}/${_gamepkg}" -C "${srcdir}"
 }
