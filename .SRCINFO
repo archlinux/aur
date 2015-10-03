@@ -1,6 +1,6 @@
 pkgbase = goatattack
 	pkgdesc = A fast-paced multiplayer pixel art shooter game.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://www.goatattack.net/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = goatattack
 	depends = sdl2
 	depends = libpng
 	depends = sdl2_mixer
-	source = http://www.goatattack.net/installers/goatattack-0.4.1.tar.gz
-	md5sums = 275950eec2040e44f2e125b037c1ea02
+	source = http://www.goatattack.net/installers/goatattack-0.4.2.tar.gz
+	md5sums = 91337bcfce550befd5d7aac357ce6d5c
 
 pkgname = goatattack
 
