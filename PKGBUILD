@@ -6,39 +6,47 @@ pkgver=3.1.2
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'freeimage' 'graphviz' 'doxygen' 'cuda' 'opencl-headers' 'glfw')
-depends=('cblas' 'fftw' 'boost')
+makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'glfw' 'glew' 'boost' 'git')
+makedepends_x86_64=('cuda' 'nvidia-utils')
+depends=('cblas' 'fftw' 'boost-libs' 'lapack' 'forge' 'freeimage')
 optdepends=('cuda: Required for using CUDA backend'
+            'nvidia-utils: Required for using CUDA backend'
             'libclc: Required for using OpenCL backend'
-            'glfw: Required for running the examples')
-source=(http://arrayfire.com/arrayfire_source/arrayfire-full-${pkgveR}.tar.bz2)
-md5sums=('SKIP')
+            'glfw: Required for running the examples'
+            'glew: Required for running the examples')
+source=(http://arrayfire.com/arrayfire_source/arrayfire-full-${pkgver}.tar.bz2)
+md5sums=('c60b10a5ad66ca363ab0732fd9438c15')
 
 check() {
-  cd "${srcdir}/build"
+  cd "${srcdir}/arrayfire-full-${pkgver}/build"
 
-  make test
+  #make test
 }
 
 build() {
-  cd "${srcdir}"
+  cd "${srcdir}/arrayfire-full-${pkgver}/"
 
   rm -rf build
   mkdir build && cd build
 
   cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
+      -DUSE_SYSTEM_FORGE=ON \
+      -DCOMPUTES_DETECTED_LIST="20;30;32;35;50;52;53" \
       -DBUILD_CPU=ON \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_EXAMPLES=ON \
-      -DBUILD_TESTS=ON \
       -DBUILD_DOCS=ON
 
   make
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${srcdir}/arrayfire-full-${pkgver}"
+
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+
+  cd build
 
   make DESTDIR="${pkgdir}/" install
 }
