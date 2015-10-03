@@ -1,0 +1,19 @@
+pkgbase = nbench-byte
+	pkgdesc = A CPU benchmark utility
+	pkgver = 2.2.3
+	pkgrel = 2
+	url = http://www.tux.org/~mayer/linux/bmark.html
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = unknown
+	options = !makeflags
+	source = http://www.tux.org/~mayer/linux/nbench-byte-2.2.3.tar.gz
+	source = Makefile
+	source = nbench
+	md5sums = 285dfab361080759d477ea1fe7d3093a
+	md5sums = 3e0850abdaa162c2b2aa05315a98fa24
+	md5sums = 7db5ab75dbe53578069f708d787fc437
+
+pkgname = nbench-byte
+
