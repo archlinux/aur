@@ -1,0 +1,13 @@
+pkgbase = coremod-git
+	pkgdesc = System information of the Intel Core Processor, BIOS, and RAM
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = http://github.com/cyring/CoreMod
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	source = git+https://github.com/cyring/CoreMod.git
+	md5sums = SKIP
+
+pkgname = coremod-git
+
