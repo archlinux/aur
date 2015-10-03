@@ -3,19 +3,35 @@
 
 pkgbase=python-amqp
 pkgname=('python-amqp' 'python2-amqp')
-pkgver=1.4.6
-pkgrel=2
+pkgver=1.4.7
+pkgrel=1
 pkgdesc="Low-level AMQP client for Python (fork of amqplib)"
 arch=('any')
 url="http://github.com/celery/py-amqp"
 license=('LGPL')
 makedepends=('python-setuptools' 'python2-setuptools' 'git')
-options=(!emptydirs)
+checkdepends=('python-nose' 'python2-nose' 'python-mock' 'python2-mock')
 source=("https://pypi.python.org/packages/source/a/amqp/amqp-$pkgver.tar.gz")
-md5sums=('a061581b6864f838bffd62b6a3d0fb9f')
+md5sums=('5aa44107d142f56385d2375f302cf7b0')
 
 prepare() {
   cp -a amqp-$pkgver{,-py2}
+}
+
+build() {
+  cd "$srcdir/amqp-$pkgver"
+  python setup.py build
+
+  cd "$srcdir/amqp-$pkgver-py2"
+  python2 setup.py build
+}
+
+check() {
+  cd "$srcdir/amqp-$pkgver"
+  nosetests3
+
+  cd "$srcdir/amqp-$pkgver-py2"
+  nosetests2
 }
 
 package_python-amqp() {
