@@ -14,16 +14,18 @@ conflicts=('broadcom-wl')
 backup=('etc/modprobe.d/broadcom-wl-dkms.conf')
 install=broadcom-wl-dkms.install
 source=('broadcom-wl-dkms.conf'
-        'dkms.conf')
+        'dkms.conf.in')
 source_i686=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
 source_x86_64=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
 sha256sums=('b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283'
-            'e81085522db72b0bd6418600507c8a18202aee6dcc07b1befe16ad2e2cfbd971')
+            'c59c3ccf5238fe93cc671e6fa2f6614c0bfec073dc79bfda4d14e3a5be96eac8')
 sha256sums_i686=('4f8b70b293ac8cc5c70e571ad5d1878d0f29d133a46fe7869868d9c19b5058cd')
 sha256sums_x86_64=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be')
 
 prepare() {
   cd "${srcdir}"
+
+  sed -e "s/@PACKAGE_VERSION@/${pkgver}/" dkms.conf.in > dkms.conf
 
   sed -i -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" src/wl/sys/wl_linux.c
 }
