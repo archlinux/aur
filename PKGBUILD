@@ -3,11 +3,11 @@
 pkgname=kde-servicemenus-pdf
 pkgver=0.6
 pkgrel=3
-pkgdesc="KDE (KF5) service menus for PDF documents"
+pkgdesc="A KDE service menus for PDF documents from dolphin"
 arch=('any')
 url="http://kde-apps.org/content/show.php/KDE+Service+Menu+PDF?content=37321"
 license=('GPL')
-depends=('dolphin' 'ghostscript' 'texlive-core' 'poppler' 'pdftk')
+depends=('dolphin' 'kdebase-kdialog' 'ghostscript' 'texlive-core' 'poppler' 'pdftk')
 source=(http://kde-apps.org/CONTENT/content-files/37321-kde-service-menu-pdf_0.6.tar.gz)
 md5sums=('ee032d4984b6eb91d77b33ed82632381')
 
