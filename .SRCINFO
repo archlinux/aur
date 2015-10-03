@@ -1,6 +1,6 @@
 pkgbase = prometheus-node-exporter-git
 	pkgdesc = Prometheus exporter for machine metrics
-	pkgver = r211.3538e26
+	pkgver = r266.ee6b8e7
 	pkgrel = 1
 	url = https://github.com/prometheus/node_exporter
 	arch = x86_64

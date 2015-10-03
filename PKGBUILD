@@ -3,7 +3,7 @@
 
 _pkgname=node_exporter
 pkgname=prometheus-node-exporter-git
-pkgver=r211.3538e26
+pkgver=r266.ee6b8e7
 pkgrel=1
 pkgdesc="Prometheus exporter for machine metrics "
 arch=('x86_64' 'i686')
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  install -Dm755 prometheus-node-exporter.service "$pkgdir/usr/lib/systemd/system/prometheus-node-exporter.service"
+  install -Dm644 prometheus-node-exporter.service "$pkgdir/usr/lib/systemd/system/prometheus-node-exporter.service"
 
   cd "$_pkgname"
 
