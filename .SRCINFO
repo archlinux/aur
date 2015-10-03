@@ -1,0 +1,15 @@
+pkgbase = pinbadge-icon-theme
+	pkgdesc = A wonderful circular icon pack inspired by OSX!
+	pkgver = 0.r89.de5f3a0
+	pkgrel = 1
+	url = https://github.com/crutchcorn/pinbadge-icon-theme
+	arch = any
+	license = CCPL:by-sa
+	makedepends = git
+	provides = pinbadge-icon-theme
+	conflicts = pinbadge-icon-theme
+	source = git+https://github.com/crutchcorn/pinbadge-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = pinbadge-icon-theme
+
