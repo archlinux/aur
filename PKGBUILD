@@ -28,7 +28,7 @@ package() {
   rm bin/node
 
   # Fix symlink path, Python shebangs and default-disable automatic updates
-  patch -p0 < ../../prey-node-client.patch
+  patch -p0 < ${srcdir}/prey-node-client.patch
 
   mkdir -p "$pkgdir/opt/prey-node-client/"
   cp -r ./* "$pkgdir/opt/prey-node-client/"
