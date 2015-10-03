@@ -9,6 +9,7 @@ ARCCHIVEDIR='/var/cache/pacman/pacnew'
 
 c_red='\033[0m\033[31m'
 c_green='\033[0m\033[32m'
+c_yellow='\033[0m\033[33m'
 c_end='\033[0m'
 bold='\033[1m'
 
@@ -20,6 +21,8 @@ bold='\033[1m'
         ['root']='This script must be run as root'
         ['files']='files'
         ['noarchive']='not in archives'
+        ['erase']='You can erase this file'
+        ['archiver']='archive in'
     )
 lg=$(locale 2>/dev/null | awk -F'=' '/^LANG/ {print $2}')
 if [ 'fr' == "${lg:0:2}" ]; then
@@ -30,6 +33,8 @@ if [ 'fr' == "${lg:0:2}" ]; then
         ['root']='Vous devez avoir des droits administrateur'
         ['files']='fichiers'
         ['noarchive']='non archivés'
+        ['erase']='Vous pouvez supprimer ce fichier'
+        ['archiver']='archivé dans'
     )
 fi
 #}}}
@@ -66,15 +71,13 @@ function get_editor(){
 }
 
 function archive()
-# change date pour test
-# sudo touch -t 200106041111 /etc/profile.pacnew
 {
     test_sudo
     local file="$1"
     local name="$2"
     file=$ARCCHIVEDIR${file/$name.$EXT/$(stat -c "%Y" "$1")-$name.$EXT}
     install -D "$1" "$file"
-    echo "archive in $file"
+    echo "-- ${txt[archiver]} $file"
     file=$(dirname $file)
     # want only 2 last files
     nb=$(ls $file/*$name.$EXT | wc -l)
@@ -99,13 +102,19 @@ function make_diff()
 {
     local file1="$1"
     local file2="$2"
+    local original="$3"
+    local nothing=1
     IFS=$'\n'
-    #echo -e "\n diff $file1 $file2\n"
     # < : removed       > : added
     diff $file1 $file2| grep -E "^>|^<" | while read line ; do
         if [ "${line::1}" = '<' ]; then c="$c_red-"; else c="$c_green+"; fi
         echo -e "$c ${line:2}$c_end"
+        nothing=0
     done
+    if [[ $nothing -eq 1 ]]; then
+        # can remove etc/pacnew
+        echo -e "-- ${c_yellow}you can erase this file${c_end} : sudo rm $file"
+    fi
 }
 
 function usage()
@@ -158,15 +167,15 @@ find '/etc' -name "*.$EXT" -mtime -$AGE -type f 2> /dev/null | while read file ;
             if [[ $archivediff -eq 1 ]]; then
                 files=$(in_archive ${file} ${fname})
                 if [ "$?" -ne "1" ]; then
-                        make_diff $files
+                        make_diff ${files} ${file}
                         continue
                 else
-                    echo "${txt[files]} \"${fname}\" ${txt[noarchive]}"
+                    echo "2 ${txt[files]} \"${fname}\" ${txt[noarchive]}"
                     continue
                 fi                
             fi
             
-            make_diff ${ofile} ${file}
+            make_diff ${ofile} ${file} ${file}
         fi
     
         if [ "$edit" == "$fname" ]; then
