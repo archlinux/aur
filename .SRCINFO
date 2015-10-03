@@ -1,0 +1,16 @@
+pkgbase = x11log-bzr
+	pkgdesc = An unprivileged userspace keylogger for X11 sessions
+	pkgver = r25
+	pkgrel = 1
+	url = https://launchpad.net/x11log
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = libx11
+	depends = curl
+	source = x11log::bzr+http://bazaar.launchpad.net/~esonn/x11log/trunk
+	md5sums = SKIP
+
+pkgname = x11log-bzr
+
