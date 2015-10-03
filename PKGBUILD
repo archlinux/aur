@@ -26,7 +26,6 @@ pkgver() {
 prepare() {
   # The version inserted in to libgroove.pc includes no hash. It is something
   # like "4.2.1". This matches what libgroove itself reports.
-  mkdir "${srcdir}/${_pkgname}/build"
   cp "${srcdir}/${_pkgname}/example/libgroove.pc" "${srcdir}/"
   for pattern in \
       's|^libdir=$|libdir=/usr/lib|' \
@@ -37,6 +36,7 @@ prepare() {
 }
 
 build() {
+  mkdir -p "${srcdir}/${_pkgname}/build"
   cd "${srcdir}/${_pkgname}/build"
   cmake ../ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
