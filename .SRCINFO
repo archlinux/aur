@@ -1,0 +1,22 @@
+pkgbase = pastix
+	pkgdesc = A scientific library that provides a high performance parallel solver for very large sparse linear systems based on direct methods.
+	pkgver = 5.2.2.22
+	pkgrel = 1
+	url = https://gforge.inria.fr
+	arch = i686
+	arch = x86_64
+	license = CeCILL-C
+	makedepends = gcc-fortran
+	depends = python2
+	depends = openmpi
+	depends = blas
+	depends = scotch
+	source = https://gforge.inria.fr/frs/download.php/file/35070/pastix_5.2.2.22.tar.bz2
+	source = Makefile.patch
+	source = config.in
+	md5sums = 85127ecdfaeed39e850c996b78573d94
+	md5sums = a7143be7e7b05f707cff456eb73c57b6
+	md5sums = 76e78a25dddf0c184cc5c9e59eda7006
+
+pkgname = pastix
+

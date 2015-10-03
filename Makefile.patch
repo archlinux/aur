@@ -1,0 +1,32 @@
+diff --git a/src/pastix_5.2.2.22/src/Makefile b/src/pastix_5.2.2.22/src/Makefile
+index 8573076..92fe72b 100644
+--- a/src/pastix_5.2.2.22/src/Makefile
++++ b/src/pastix_5.2.2.22/src/Makefile
+@@ -364,15 +364,15 @@ ifeq (i686_mac, ${HOSTARCH})
+ DYLIB_OPT=${LDFLAGS} -L__LIBDIR__ -lpastix
+ endif
+ %/libmatrix_driver${LIB_SO}: $(OBJ_DRIVERS)
+-	$(MPCCPROG) $(subst __SO_NAME__,$@, ${SHARED_FLAGS}) -o $(dir $@)libmatrix_driver${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
++	$(MPCCPROG) $(subst __SO_NAME__,$(subst $(LIBDIR),,$@), ${SHARED_FLAGS}) -o $(dir $@)libmatrix_driver${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
+ 	(cd $(dir $@) && ln -sf libmatrix_driver${VERSIONNAME}${LIB_SO} libmatrix_driver${LIB_SO})
+ 
+ %/libpastix${LIB_SO}: $(OBJ_LIB)
+-	$(MPCCPROG)  $(subst __SO_NAME__,$@, ${SHARED_FLAGS}) -o $(dir $@)libpastix${VERSIONNAME}${LIB_SO} $(^) $(filter-out -lpastix, $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT}))
++	$(MPCCPROG)  $(subst __SO_NAME__,$(subst $(LIBDIR),,$@), ${SHARED_FLAGS}) -o $(dir $@)libpastix${VERSIONNAME}${LIB_SO} $(^) $(filter-out -lpastix, $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT}))
+ 	(cd $(dir $@) && ln -sf libpastix${VERSIONNAME}${LIB_SO} libpastix${LIB_SO})
+ 
+ %/libpastix_murge${LIB_SO}: $(OBJ_MURGE) %/libpastix${LIB}
+-	$(MPCCPROG)  $(subst __SO_NAME__,$@, ${SHARED_FLAGS}) -o $(dir $@)libpastix_murge${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
++	$(MPCCPROG)  $(subst __SO_NAME__,$(subst $(LIBDIR),,$@), ${SHARED_FLAGS}) -o $(dir $@)libpastix_murge${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
+ 	(cd $(dir $@) && ln -sf libpastix_murge${VERSIONNAME}${LIB_SO} libpastix_murge${LIB_SO})
+ 
+ endif
+@@ -394,7 +394,7 @@ $(BUILD_BINDIR)/pastix-conf:	config.in 		\
+ 			$(filter-out $(wildcard $(BUILD_BINDIR)), $(BUILD_BINDIR))
+ 	cp utils/src/pastix-conf.sh $@${VERSIONNAME}.sh
+ 	cat $@${VERSIONNAME}.sh						   | \
+-	   sed -e s%\_LIBS\_%"-L$(BUILD_LIBDIR) -lpastix ${EXTRALIB}"%	   | \
++	   sed -e s%\_LIBS\_%"-L$(patsubst $(ROOT),,$(BUILD_LIBDIR)) -lpastix ${EXTRALIB}"%	   | \
+ 	   sed -e s%\_INC\_%"-I$(BUILD_INCDIR)"%			   | \
+ 	   sed -e s%\_CC\_%"${MPCCPROG}"%				   | \
+ 	   sed -e s%\_CCOPT\_%"${CCOPT}"%				   | \
