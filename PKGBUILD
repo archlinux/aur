@@ -26,7 +26,7 @@ md5sums=('SKIP'
          'be0d9d7a5fdd8cf4918c4ea91cebd989')
 
 pkgver() {
-  cd "$srcdir/$pkgname-mirror"
+  cd "$srcdir/oscam-mirror"
   git log -1 | grep git-svn-id | cut -d'@' -f2 | cut -d' ' -f1
 }
 
