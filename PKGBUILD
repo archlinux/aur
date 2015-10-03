@@ -26,13 +26,13 @@ pkgver() {
 prepare() {
   # The version inserted in to libgroove.pc includes no hash. It is something
   # like "4.2.1". This matches what libgroove itself reports.
-  cp "${srcdir}/${_pkgname}/example/libgroove.pc" "${srcdir}/"
-  for pattern in \
-      's|^libdir=$|libdir=/usr/lib|' \
-      's|^includedir=$|includedir=/usr/include/groove|' \
-      "s|^Version:$|Version: $(cd "$_pkgname" && git describe --always --abbrev=0)|"
-    do sed -i "${pattern}" "${srcdir}/libgroove.pc"
-  done
+  version=$(cd "$_pkgname" && git describe --always --abbrev=0)
+  sed \
+    -e 's|^libdir=$|libdir=/usr/lib|' \
+    -e 's|^includedir=$|includedir=/usr/include/groove|' \
+    -e "s|^Version:$|Version: ${version}|" \
+    "${srcdir}/${_pkgname}/doc/libgroove.pc" \
+    > "${srcdir}/libgroove.pc"
 }
 
 build() {
