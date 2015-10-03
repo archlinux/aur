@@ -2,7 +2,7 @@
 
 pkgname='python-texthistory'
 pkgver='1.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python undo/redo engine for plain text and wxPython TextCtrl"
 arch=('any')
 url="https://github.com/kynikos/lib.py.text-history"
