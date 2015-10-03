@@ -6,19 +6,24 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.11
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
-             'libidn' 'libgadu' 'python2' 'hicolor-icon-theme' 'farstream-0.1'
+             'libidn' 'libgadu' 'python2' 'hicolor-icon-theme' 'farstream'
              'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
-source=(https://downloads.sourceforge.net/project/$pkgname/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007')
-validpgpkeys=('93FF2C7F884CB4AC4E4463DA4E8D870E4C292FCC')
+source=(https://downloads.sourceforge.net/project/$pkgname/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2
+        pidgin-2.10.11-gstreamer1.patch)
+sha256sums=('f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007'
+            '0b083115c4cc05e6da1d1e66fd1b9c33167417a43c12d932f664e6d87dc0afbe')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # Backport support for GStreamer 1.0
+  patch -Np1 -i ../pidgin-2.10.11-gstreamer1.patch
+  autoreconf -vi
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
@@ -45,7 +50,7 @@ build() {
 package_pidgin(){
   pkgdesc="Multi-protocol instant messaging client"
   depends=('libpurple' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
-           'hicolor-icon-theme')
+           'gst-plugins-base' 'gst-plugins-good' 'hicolor-icon-theme')
   optdepends=('aspell: for spelling correction')
   install=pidgin.install
 
@@ -65,7 +70,7 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farstream-0.1' 'libsasl' 'libidn' 'libgadu' 'dbus-glib' 'nss')
+  depends=('farstream' 'libsasl' 'libidn' 'libgadu' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
               'python2-dbus: for purple-remote and purple-url-handler'
@@ -76,10 +81,6 @@ package_libpurple(){
   for _dir in libpurple share/sounds share/ca-certs m4macros po; do
     make -C "$_dir" DESTDIR="$pkgdir" install
   done
-
-  # Remove GConf schema file
-  rm "$pkgdir/etc/gconf/schemas/purple.schemas"
-  rmdir "$pkgdir"/etc{/gconf{/schemas,},}
 }
 
 package_finch(){

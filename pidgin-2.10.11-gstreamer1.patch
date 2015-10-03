@@ -1,0 +1,1144 @@
+Submitted By:            Bruce Dubbs <bdubbs@liinuxfromscratch.org>
+Date:                    2015-07-07
+Initial Package Version: 2.10.11
+Upstream Status:         Unknown
+Origin:                  http://pkgs.fedoraproject.org/cgit/pidgin.git/
+Description:             Allow pidgin to be built with gstreamer-1
+Notes:                   Re-diffed from upstream's original patch
+
+diff -Naur pidgin-2.10.11.orig/configure.ac pidgin-2.10.11/configure.ac
+--- pidgin-2.10.11.orig/configure.ac	2014-11-23 10:41:25.000000000 -0600
++++ pidgin-2.10.11/configure.ac	2015-07-07 15:36:28.689798169 -0500
+@@ -741,42 +741,115 @@
+ dnl #######################################################################
+ dnl # Check for GStreamer
+ dnl #######################################################################
+-dnl
+-dnl TODO: Depend on gstreamer >= 0.10.10, and remove the conditional use of
+-dnl       gst_registry_fork_set_enabled.
+ AC_ARG_ENABLE(gstreamer,
+-	[AC_HELP_STRING([--disable-gstreamer], [compile without GStreamer audio support])],
++	[AS_HELP_STRING([--disable-gstreamer], [compile without GStreamer audio support])],
+ 	enable_gst="$enableval", enable_gst="yes")
++AC_ARG_WITH(gstreamer, [AS_HELP_STRING([--with-gstreamer=<version>],
++		[compile with GStreamer 0.10 or 1.0 interface (default: auto)])],
++	with_gstreamer="$withval", with_gstreamer="auto")
+ if test "x$enable_gst" != "xno"; then
+-	PKG_CHECK_MODULES(GSTREAMER, [gstreamer-0.10], [
+-		AC_DEFINE(USE_GSTREAMER, 1, [Use GStreamer for playing sounds])
+-		AC_SUBST(GSTREAMER_CFLAGS)
+-		AC_SUBST(GSTREAMER_LIBS)
+-		AC_CHECK_LIB(gstreamer-0.10, gst_registry_fork_set_enabled,
+-			[ AC_DEFINE(GST_CAN_DISABLE_FORKING, [],
+-			  [Define if gst_registry_fork_set_enabled exists])],
+-			[], [$GSTREAMER_LIBS])
+-	], [
+-		AC_MSG_RESULT(no)
+-		enable_gst="no"
+-		if test "x$force_deps" = "xyes" ; then
+-			AC_MSG_ERROR([
++	if test "x$with_gstreamer" == "xauto"; then
++		PKG_CHECK_MODULES(GSTREAMER, [gstreamer-1.0], [
++			AC_DEFINE(USE_GSTREAMER, 1, [Use GStreamer for playing sounds])
++			with_gstreamer="1.0"
++			AC_SUBST(GSTREAMER_CFLAGS)
++			AC_SUBST(GSTREAMER_LIBS)
++			dnl Check whether forking stuff is required for this version.
++		], [
++			PKG_CHECK_MODULES(GSTREAMER, [gstreamer-0.10], [
++				AC_DEFINE(USE_GSTREAMER, 1, [Use GStreamer for playing sounds])
++				with_gstreamer="0.10"
++				AC_SUBST(GSTREAMER_CFLAGS)
++				AC_SUBST(GSTREAMER_LIBS)
++			], [
++				AC_MSG_RESULT(no)
++				enable_gst="no"
++				if test "x$force_deps" = "xyes" ; then
++					AC_MSG_ERROR([
+ GStreamer development headers not found.
+ Use --disable-gstreamer if you do not need GStreamer (sound) support.
+ ])
+-		fi])
++				fi
++			])
++		])
++	elif test "x$with_gstreamer" == "x1.0"; then
++		PKG_CHECK_MODULES(GSTREAMER, [gstreamer-1.0], [
++			AC_DEFINE(USE_GSTREAMER, 1, [Use GStreamer 1.0 for playing sounds])
++			AC_SUBST(GSTREAMER_CFLAGS)
++			AC_SUBST(GSTREAMER_LIBS)
++		], [
++			AC_MSG_RESULT(no)
++			enable_gst="no"
++			if test "x$force_deps" = "xyes" ; then
++				AC_MSG_ERROR([
++GStreamer development headers not found.
++Use --disable-gstreamer if you do not need GStreamer (sound) support.
++])
++			fi
++		])
++	elif test "x$with_gstreamer" == "x0.10"; then
++		PKG_CHECK_MODULES(GSTREAMER, [gstreamer-0.10], [
++			AC_DEFINE(USE_GSTREAMER, 1, [Use GStreamer 0.10 for playing sounds])
++			AC_SUBST(GSTREAMER_CFLAGS)
++			AC_SUBST(GSTREAMER_LIBS)
++		], [
++			AC_MSG_RESULT(no)
++			enable_gst="no"
++			if test "x$force_deps" = "xyes" ; then
++				AC_MSG_ERROR([
++GStreamer development headers not found.
++Use --disable-gstreamer if you do not need GStreamer (sound) support.
++])
++			fi
++		])
++	else
++		AC_MSG_ERROR([--with-gstreamer must specify one of 0.10, 1.0 or auto.])
++	fi
++fi
++
++if test "x$with_gtk" == "x3" -a "x$with_gstreamer" == "x0.10"; then
++	AC_MSG_ERROR([WebKitGTK+ 3.0 cannot be mixed with GStreamer 0.10.
++Please switch to WebKitGTK+ 2.0 or GStreamer 1.0.])
++elif test "x$with_gtk" == "x2" -a "x$with_gstreamer" == "x1.0"; then
++	AC_MSG_ERROR([WebKitGTK+ 2.0 cannot be mixed with GStreamer 1.0.
++Please switch to WebKitGTK+ 3.0 or GStreamer 0.10.])
++fi
++if test "x$with_gstreamer" == "x0.10" -o "x$with_gstreamer" == "x1.0"; then
++	AC_SUBST(GSTREAMER_VER, [$with_gstreamer])
++else
++	AC_SUBST(GSTREAMER_VER, "")
++fi
++
++dnl #######################################################################
++dnl # Check for GStreamer Video
++dnl #######################################################################
++if test "x$enable_gst" != "xno" -a "x$with_gstreamer" == "x1.0"; then
++	AC_ARG_ENABLE(gstreamer-video,
++		[AS_HELP_STRING([--disable-gstreamer-video], [compile without GStreamer 1.0 Video Overlay support])],
++			enable_gstvideo="$enableval", enable_gstvideo="yes")
++	if test "x$enable_gstvideo" != "xno"; then
++		PKG_CHECK_MODULES(GSTVIDEO, [gstreamer-video-1.0], [
++			AC_DEFINE(USE_GSTVIDEO, 1, [Use GStreamer Video Overlay support])
++			AC_SUBST(GSTVIDEO_CFLAGS)
++			AC_SUBST(GSTVIDEO_LIBS)
++		], [
++			enable_gstvideo="no"
++		])
++	fi
++else
++	enable_gstvideo="no"
+ fi
+ 
+ dnl #######################################################################
+ dnl # Check for GStreamer Interfaces
+ dnl #######################################################################
+-if test "x$enable_gst" != "xno"; then
++if test "x$enable_gst" != "xno" -a "x$with_gstreamer" == "x0.10"; then
+ 	AC_ARG_ENABLE(gstreamer-interfaces,
+-		[AC_HELP_STRING([--disable-gstreamer-interfaces], [compile without GStreamer interface support])],
++		[AS_HELP_STRING([--disable-gstreamer-interfaces], [compile without GStreamer 0.10 interface support])],
+ 			enable_gstinterfaces="$enableval", enable_gstinterfaces="yes")
+ 	if test "x$enable_gstinterfaces" != "xno"; then
+ 		PKG_CHECK_MODULES(GSTINTERFACES, [gstreamer-interfaces-0.10], [
+-			AC_DEFINE(USE_GSTINTERFACES, 1, [Use GStreamer interfaces for X overlay support])
++			AC_DEFINE(USE_GSTINTERFACES, 1, [Use GStreamer 0.10 interfaces for X overlay support])
+ 			AC_SUBST(GSTINTERFACES_CFLAGS)
+ 			AC_SUBST(GSTINTERFACES_LIBS)
+ 		], [
+@@ -791,32 +864,43 @@
+ dnl # Check for Farstream
+ dnl #######################################################################
+ AC_ARG_ENABLE(farstream,
+-	[AC_HELP_STRING([--disable-farstream], [compile without farstream support])],
++	[AS_HELP_STRING([--disable-farstream], [compile without farstream support])],
+ 	enable_farstream="$enableval", enable_farstream="yes")
+ if test "x$enable_farstream" != "xno"; then
+-	PKG_CHECK_MODULES(FARSTREAM, [farstream-0.1], [
+-		AC_SUBST(FARSTREAM_CFLAGS)
+-		AC_SUBST(FARSTREAM_LIBS)
+- 	], [
+-		# Try farsight.
+-		PKG_CHECK_MODULES(FARSTREAM, [farsight2-0.10 >= 0.0.9], [
+-		        AC_DEFINE(HAVE_FARSIGHT, 1, [Use Farsight instead of Farstream])
++	if test "x$with_gstreamer" == "x1.0"; then
++		PKG_CHECK_MODULES(FARSTREAM, [farstream-0.2], [
+ 			AC_SUBST(FARSTREAM_CFLAGS)
+ 			AC_SUBST(FARSTREAM_LIBS)
+ 		], [
+ 		        enable_farstream="no"
+ 		])
+- 	])
+- fi
++	else
++		PKG_CHECK_MODULES(FARSTREAM, [farstream-0.1], [
++			AC_SUBST(FARSTREAM_CFLAGS)
++			AC_SUBST(FARSTREAM_LIBS)
++		], [
++			# Try farsight.
++			PKG_CHECK_MODULES(FARSTREAM, [farsight2-0.10 >= 0.0.9], [
++			        AC_DEFINE(HAVE_FARSIGHT, 1, [Use Farsight instead of Farstream])
++				AC_SUBST(FARSTREAM_CFLAGS)
++				AC_SUBST(FARSTREAM_LIBS)
++			], [
++			        enable_farstream="no"
++			])
++		])
++	fi
++fi
+ 
+ dnl #######################################################################
+ dnl # Check for Voice and Video support
+ dnl #######################################################################
+ AC_ARG_ENABLE(vv,
+-	[AC_HELP_STRING([--disable-vv], [compile without voice and video support])],
++	[AS_HELP_STRING([--disable-vv], [compile without voice and video support])],
+ 	enable_vv="$enableval", enable_vv="yes")
+ if test "x$enable_vv" != "xno"; then
+-	if test "x$enable_gstreamer" != "xno" -a "x$enable_gstinterfaces" != "xno" -a "x$enable_farstream" != "xno"; then
++	if test "x$enable_gst" != "xno" -a "x$with_gstreamer" == "x1.0" -a "x$enable_gstvideo" != "xno" -a "x$enable_farstream" != "xno"; then
++		AC_DEFINE(USE_VV, 1, [Use voice and video])
++	elif test "x$enable_gst" != "xno" -a "x$with_gstreamer" == "x0.10" -a "x$enable_gstinterfaces" != "xno" -a "x$enable_farstream" != "xno"; then
+ 		AC_DEFINE(USE_VV, 1, [Use voice and video])
+ 	else
+ 		enable_vv="no"
+@@ -829,7 +913,7 @@
+ 		fi
+ 	fi
+ fi
+-AM_CONDITIONAL(USE_VV, test "x$enable_gstreamer" != "xno" -a "x$enable_gstinterfaces" != "xno" -a "x$enable_farstream" != "xno")
++AM_CONDITIONAL(USE_VV, test "x$enable_vv" != "xno")
+ 
+ dnl #######################################################################
+ dnl # Check for Internationalized Domain Name support
+@@ -2605,6 +2689,7 @@
+ echo Protocols to link statically.. : $STATIC_PRPLS
+ echo
+ echo Build with GStreamer support.. : $enable_gst
++echo Build for GStreamer version... : $with_gstreamer
+ echo Build with D-Bus support...... : $enable_dbus
+ echo Build with voice and video.... : $enable_vv
+ if test "x$enable_dbus" = "xyes" ; then
+diff -Naur pidgin-2.10.11.orig/finch/Makefile.am pidgin-2.10.11/finch/Makefile.am
+--- pidgin-2.10.11.orig/finch/Makefile.am	2014-11-23 10:41:25.000000000 -0600
++++ pidgin-2.10.11/finch/Makefile.am	2015-07-07 15:36:28.689798169 -0500
+@@ -73,6 +73,7 @@
+ 	$(LIBXML_LIBS) \
+ 	$(GNT_LIBS) \
+ 	$(GSTREAMER_LIBS) \
++	$(GSTVIDEO_LIBS) \
+ 	./libgnt/libgnt.la \
+ 	$(top_builddir)/libpurple/libpurple.la
+ 
+diff -Naur pidgin-2.10.11.orig/libpurple/Makefile.am pidgin-2.10.11/libpurple/Makefile.am
+--- pidgin-2.10.11.orig/libpurple/Makefile.am	2014-11-23 10:41:25.000000000 -0600
++++ pidgin-2.10.11/libpurple/Makefile.am	2015-07-07 15:36:28.690798136 -0500
+@@ -308,6 +308,7 @@
+ 	$(INTLLIBS) \
+ 	$(FARSTREAM_LIBS) \
+ 	$(GSTREAMER_LIBS) \
++	$(GSTVIDEO_LIBS) \
+ 	$(GSTINTERFACES_LIBS) \
+ 	$(IDN_LIBS) \
+ 	ciphers/libpurple-ciphers.la \
+@@ -324,6 +325,7 @@
+ 	$(LIBXML_CFLAGS) \
+ 	$(FARSTREAM_CFLAGS) \
+ 	$(GSTREAMER_CFLAGS) \
++	$(GSTVIDEO_CFLAGS) \
+ 	$(GSTINTERFACES_CFLAGS) \
+ 	$(IDN_CFLAGS) \
+ 	$(NETWORKMANAGER_CFLAGS)
+diff -Naur pidgin-2.10.11.orig/libpurple/data/purple.pc.in pidgin-2.10.11/libpurple/data/purple.pc.in
+--- pidgin-2.10.11.orig/libpurple/data/purple.pc.in	2014-11-23 10:41:25.000000000 -0600
++++ pidgin-2.10.11/libpurple/data/purple.pc.in	2015-07-07 15:36:28.690798136 -0500
+@@ -5,6 +5,7 @@
+ datarootdir=@datarootdir@
+ datadir=@datadir@
+ sysconfdir=@sysconfdir@
++gstreamer=@GSTREAMER_VER@
+ 
+ plugindir=${libdir}/purple-@PURPLE_MAJOR_VERSION@
+ 
+diff -Naur pidgin-2.10.11.orig/libpurple/example/Makefile.am pidgin-2.10.11/libpurple/example/Makefile.am
+--- pidgin-2.10.11.orig/libpurple/example/Makefile.am	2014-11-23 10:41:25.000000000 -0600
++++ pidgin-2.10.11/libpurple/example/Makefile.am	2015-07-07 15:36:28.690798136 -0500
+@@ -8,6 +8,7 @@
+ 	$(INTLLIBS) \
+ 	$(GLIB_LIBS) \
+ 	$(LIBXML_LIBS) \
++	$(GSTVIDEO_LIBS) \
+ 	$(top_builddir)/libpurple/libpurple.la
+ 
+ AM_CPPFLAGS = \
+diff -Naur pidgin-2.10.11.orig/libpurple/media/backend-fs2.c pidgin-2.10.11/libpurple/media/backend-fs2.c
+--- pidgin-2.10.11.orig/libpurple/media/backend-fs2.c	2014-11-23 10:41:25.000000000 -0600
++++ pidgin-2.10.11/libpurple/media/backend-fs2.c	2015-07-07 15:39:19.813094671 -0500
+@@ -41,6 +41,7 @@
+ #include <farstream/fs-conference.h>
+ #include <farstream/fs-element-added-notifier.h>
+ #include <farstream/fs-utils.h>
++#include <gst/gststructure.h>
+ #endif
+ 
+ /** @copydoc _PurpleMediaBackendFs2Class */
+@@ -239,9 +240,17 @@
+ 	g_return_val_if_reached(PURPLE_MEDIA_NETWORK_PROTOCOL_TCP);
+ }
+ 
++#if GST_CHECK_VERSION(1,0,0)
++static GstPadProbeReturn
++event_probe_cb(GstPad *srcpad, GstPadProbeInfo *info, gpointer unused)
++#else
+ static gboolean
+ event_probe_cb(GstPad *srcpad, GstEvent *event, gboolean release_pad)
++#endif
+ {
++#if GST_CHECK_VERSION(1,0,0)
++	GstEvent *event = GST_PAD_PROBE_INFO_EVENT(info);
++#endif
+ 	if (GST_EVENT_TYPE(event) == GST_EVENT_CUSTOM_DOWNSTREAM
+ 		&& gst_event_has_name(event, "purple-unlink-tee")) {
+ 
+@@ -249,22 +258,40 @@
+ 
+ 		gst_pad_unlink(srcpad, gst_pad_get_peer(srcpad));
+ 
++#if GST_CHECK_VERSION(1,0,0)
++		gst_pad_remove_probe(srcpad,
++			g_value_get_ulong(gst_structure_get_value(s, "handler-id")));
++#else
+ 		gst_pad_remove_event_probe(srcpad,
+ 			g_value_get_uint(gst_structure_get_value(s, "handler-id")));
++#endif
+ 
+ 		if (g_value_get_boolean(gst_structure_get_value(s, "release-pad")))
+ 			gst_element_release_request_pad(GST_ELEMENT_PARENT(srcpad), srcpad);
+ 
++#if GST_CHECK_VERSION(1,0,0)
++		return GST_PAD_PROBE_DROP;
++#else
+ 		return FALSE;
++#endif
+ 	}
+ 
++#if GST_CHECK_VERSION(1,0,0)
++	return GST_PAD_PROBE_OK;
++#else
+ 	return TRUE;
++#endif
+ }
+ 
+ static void
+ unlink_teepad_dynamic(GstPad *srcpad, gboolean release_pad)
+ {
++#if GST_CHECK_VERSION(1,0,0)
++	gulong id = gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM,
++	                              event_probe_cb, NULL, NULL);
++#else
+ 	guint id = gst_pad_add_event_probe(srcpad, G_CALLBACK(event_probe_cb), NULL);
++#endif
+ 
+ 	if (GST_IS_GHOST_PAD(srcpad))
+ 		srcpad = gst_ghost_pad_get_target(GST_GHOST_PAD(srcpad));
+@@ -273,7 +300,11 @@
+ 		gst_event_new_custom(GST_EVENT_CUSTOM_DOWNSTREAM,
+ 			gst_structure_new("purple-unlink-tee",
+ 				"release-pad", G_TYPE_BOOLEAN, release_pad,
++#if GST_CHECK_VERSION(1,0,0)
++				"handler-id", G_TYPE_ULONG, id,
++#else
+ 				"handler-id", G_TYPE_UINT, id,
++#endif
+ 				NULL)));
+ }
+ 
+@@ -855,15 +886,31 @@
+ 	gdouble value_db;
+ 	gdouble percent;
+ 
+-	list = gst_structure_get_value(
+-				gst_message_get_structure(msg), value_name);
++	list = gst_structure_get_value(gst_message_get_structure(msg), value_name);
++#if GST_CHECK_VERSION(1,0,0)
++G_GNUC_BEGIN_IGNORE_DEPRECATIONS
++	value = g_value_array_get_nth(g_value_get_boxed(list), 0);
++G_GNUC_END_IGNORE_DEPRECATIONS
++#else
+ 	value = gst_value_list_get_value(list, 0);
++#endif
+ 	value_db = g_value_get_double(value);
+ 	percent = pow(10, value_db / 20);
+ 	return (percent > 1.0) ? 1.0 : percent;
+ }
+ 
+ static void
++purple_media_error_fs(PurpleMedia *media, const gchar *error,
++		const GstStructure *fs_error)
++{
++	const gchar *error_msg = gst_structure_get_string(fs_error, "error-msg");
++
++	purple_media_error(media, "%s%s%s", error,
++	                   error_msg ? _("\n\nMessage from Farsight: ") : "",
++	                   error_msg ? error_msg : "");
++}
++
++static void
+ gst_handle_message_element(GstBus *bus, GstMessage *msg,
+ 		PurpleMediaBackendFs2 *self)
+ {
+@@ -871,11 +918,12 @@
+ 			PURPLE_MEDIA_BACKEND_FS2_GET_PRIVATE(self);
+ 	GstElement *src = GST_ELEMENT(GST_MESSAGE_SRC(msg));
+ 	static guint level_id = 0;
++	const GstStructure *structure = gst_message_get_structure(msg);
+ 
+ 	if (level_id == 0)
+ 		level_id = g_signal_lookup("level", PURPLE_TYPE_MEDIA);
+ 
+-	if (gst_structure_has_name(msg->structure, "level")) {
++	if (gst_structure_has_name(structure, "level")) {
+ 		GstElement *src = GST_ELEMENT(GST_MESSAGE_SRC(msg));
+ 		gchar *name;
+ 		gchar *participant = NULL;
+@@ -930,31 +978,63 @@
+ 		return;
+ 
+ #ifdef HAVE_FARSIGHT
+-	if (gst_structure_has_name(msg->structure, "farsight-error")) {
++	if (gst_structure_has_name(structure, "farsight-error")) {
+ #else
+-	if (gst_structure_has_name(msg->structure, "farstream-error")) {
++	if (gst_structure_has_name(structure, "farstream-error")) {
+ #endif
+ 		FsError error_no;
+-		gst_structure_get_enum(msg->structure, "error-no",
++		gboolean error_emitted = FALSE;
++		gst_structure_get_enum(structure, "error-no",
+ 				FS_TYPE_ERROR, (gint*)&error_no);
+ 		switch (error_no) {
++			case FS_ERROR_CONSTRUCTION:
++				purple_media_error_fs(priv->media,
++				                      _("Error initializing the call. "
++				                        "This probably denotes problem in "
++#ifdef HAVE_FARSIGHT
++				                        "installation of GStreamer or Farsight."),
++#else
++				                        "installation of GStreamer or Farstream."),
++#endif
++				                      structure);
++				error_emitted = TRUE;
++				break;
++			case FS_ERROR_NETWORK:
++				purple_media_error_fs(priv->media, _("Network error."),
++				                      structure);
++				error_emitted = TRUE;
++				purple_media_end(priv->media, NULL, NULL);
++				break;
++			case FS_ERROR_NEGOTIATION_FAILED:
++				purple_media_error_fs(priv->media,
++				                      _("Codec negotiation failed. "
++				                        "This problem might be resolved by installing "
++				                        "more GStreamer codecs."),
++				                      structure);
++				error_emitted = TRUE;
++				purple_media_end(priv->media, NULL, NULL);
++				break;
+ 			case FS_ERROR_NO_CODECS:
+-				purple_media_error(priv->media, _("No codecs"
+-						" found. Install some"
+-						" GStreamer codecs found"
+-						" in GStreamer plugins"
+-						" packages."));
++				purple_media_error(priv->media,
++				                   _("No codecs found. "
++				                     "Install some GStreamer codecs found "
++				                     "in GStreamer plugins packages."));
++				error_emitted = TRUE;
+ 				purple_media_end(priv->media, NULL, NULL);
+ 				break;
+ #ifdef HAVE_FARSIGHT
+ 			case FS_ERROR_NO_CODECS_LEFT:
+-				purple_media_error(priv->media, _("No codecs"
+-						" left. Your codec"
+-						" preferences in"
+-						" fs-codecs.conf are too"
+-						" strict."));
++				purple_media_error(priv->media,
++				                   _("No codecs left. Your codec preferences "
++				                     "in fs-codecs.conf are too strict."));
++				error_emitted = TRUE;
+ 				purple_media_end(priv->media, NULL, NULL);
+ 				break;
++			case FS_ERROR_CONNECTION_FAILED:
++				purple_media_error(priv->media,
++				                   _("Could not connect to the remote party"));
++				error_emitted = TRUE;
++				break;
+ 			case FS_ERROR_UNKNOWN_CNAME:
+ 				/*
+ 				 * Unknown CName is only a problem for the
+@@ -971,22 +1051,22 @@
+ 						"farstream-error: %i: %s\n",
+ #endif
+ 						error_no,
+-						gst_structure_get_string(
+-						msg->structure, "error-msg"));
++						gst_structure_get_string(structure, "error-msg"));
+ 				break;
+ 		}
+ 
+ 		if (FS_ERROR_IS_FATAL(error_no)) {
++			if (!error_emitted)
+ #ifdef HAVE_FARSIGHT
+-			purple_media_error(priv->media, _("A non-recoverable "
+-					"Farsight2 error has occurred."));
++			purple_media_error(priv->media,
++			                   _("A non-recoverable Farsight2 error has occurred."));
+ #else
+-			purple_media_error(priv->media, _("A non-recoverable "
+-					"Farstream error has occurred."));
++			purple_media_error(priv->media,
++			                   _("A non-recoverable Farstream error has occurred."));
+ #endif
+ 			purple_media_end(priv->media, NULL, NULL);
+ 		}
+-	} else if (gst_structure_has_name(msg->structure,
++	} else if (gst_structure_has_name(structure,
+ #ifdef HAVE_FARSIGHT
+ 			"farsight-new-local-candidate")) {
+ #else
+@@ -1001,9 +1081,9 @@
+ 		PurpleMediaBackendFs2Stream *media_stream;
+ 		gchar *name;
+ 
+-		value = gst_structure_get_value(msg->structure, "stream");
++		value = gst_structure_get_value(structure, "stream");
+ 		stream = g_value_get_object(value);
+-		value = gst_structure_get_value(msg->structure, "candidate");
++		value = gst_structure_get_value(structure, "candidate");
+ 		local_candidate = g_value_get_boxed(value);
+ 
+ 		session = get_session_from_fs_stream(self, stream);
+@@ -1025,7 +1105,7 @@
+ 		g_signal_emit_by_name(self, "new-candidate",
+ 				session->id, name, candidate);
+ 		g_object_unref(candidate);
+-	} else if (gst_structure_has_name(msg->structure,
++	} else if (gst_structure_has_name(structure,
+ #ifdef HAVE_FARSIGHT
+ 			"farsight-local-candidates-prepared")) {
+ #else
+@@ -1037,7 +1117,7 @@
+ 		PurpleMediaBackendFs2Session *session;
+ 		gchar *name;
+ 
+-		value = gst_structure_get_value(msg->structure, "stream");
++		value = gst_structure_get_value(structure, "stream");
+ 		stream = g_value_get_object(value);
+ 		session = get_session_from_fs_stream(self, stream);
+ 
+@@ -1047,7 +1127,7 @@
+ 
+ 		g_signal_emit_by_name(self, "candidates-prepared",
+ 				session->id, name);
+-	} else if (gst_structure_has_name(msg->structure,
++	} else if (gst_structure_has_name(structure,
+ #ifdef HAVE_FARSIGHT
+ 			"farsight-new-active-candidate-pair")) {
+ #else
+@@ -1062,13 +1142,11 @@
+ 		PurpleMediaCandidate *lcandidate, *rcandidate;
+ 		gchar *name;
+ 
+-		value = gst_structure_get_value(msg->structure, "stream");
++		value = gst_structure_get_value(structure, "stream");
+ 		stream = g_value_get_object(value);
+-		value = gst_structure_get_value(msg->structure,
+-				"local-candidate");
++		value = gst_structure_get_value(structure, "local-candidate");
+ 		local_candidate = g_value_get_boxed(value);
+-		value = gst_structure_get_value(msg->structure,
+-				"remote-candidate");
++		value = gst_structure_get_value(structure, "remote-candidate");
+ 		remote_candidate = g_value_get_boxed(value);
+ 
+ 		g_object_get(stream, "participant", &participant, NULL);
+@@ -1085,7 +1163,7 @@
+ 
+ 		g_object_unref(lcandidate);
+ 		g_object_unref(rcandidate);
+-	} else if (gst_structure_has_name(msg->structure,
++	} else if (gst_structure_has_name(structure,
+ #ifdef HAVE_FARSIGHT
+ 			"farsight-recv-codecs-changed")) {
+ #else
+@@ -1095,7 +1173,7 @@
+ 		GList *codecs;
+ 		FsCodec *codec;
+ 
+-		value = gst_structure_get_value(msg->structure, "codecs");
++		value = gst_structure_get_value(structure, "codecs");
+ 		codecs = g_value_get_boxed(value);
+ 		codec = codecs->data;
+ 
+@@ -1106,7 +1184,7 @@
+ 				"farstream-recv-codecs-changed: %s\n",
+ #endif
+ 				codec->encoding_name);
+-	} else if (gst_structure_has_name(msg->structure,
++	} else if (gst_structure_has_name(structure,
+ #ifdef HAVE_FARSIGHT
+ 			"farsight-component-state-changed")) {
+ #else
+@@ -1117,9 +1195,9 @@
+ 		guint component;
+ 		const gchar *state;
+ 
+-		value = gst_structure_get_value(msg->structure, "state");
++		value = gst_structure_get_value(structure, "state");
+ 		fsstate = g_value_get_enum(value);
+-		value = gst_structure_get_value(msg->structure, "component");
++		value = gst_structure_get_value(structure, "component");
+ 		component = g_value_get_uint(value);
+ 
+ 		switch (fsstate) {
+@@ -1154,7 +1232,7 @@
+ #endif
+ 				"component: %u state: %s\n",
+ 				component, state);
+-	} else if (gst_structure_has_name(msg->structure,
++	} else if (gst_structure_has_name(structure,
+ #ifdef HAVE_FARSIGHT
+ 			"farsight-send-codec-changed")) {
+ #else
+@@ -1164,7 +1242,7 @@
+ 		FsCodec *codec;
+ 		gchar *codec_str;
+ 
+-		value = gst_structure_get_value(msg->structure, "codec");
++		value = gst_structure_get_value(structure, "codec");
+ 		codec = g_value_get_boxed(value);
+ 		codec_str = fs_codec_to_string(codec);
+ 
+@@ -1177,7 +1255,7 @@
+ 				codec_str);
+ 
+ 		g_free(codec_str);
+-	} else if (gst_structure_has_name(msg->structure,
++	} else if (gst_structure_has_name(structure,
+ #ifdef HAVE_FARSIGHT
+ 			"farsight-codecs-changed")) {
+ #else
+@@ -1187,7 +1265,7 @@
+ 		FsSession *fssession;
+ 		GList *sessions;
+ 
+-		value = gst_structure_get_value(msg->structure, "session");
++		value = gst_structure_get_value(structure, "session");
+ 		fssession = g_value_get_object(value);
+ 		sessions = g_hash_table_get_values(priv->sessions);
+ 
+@@ -1631,7 +1709,11 @@
+ 		srcpad = gst_element_get_static_pad(session->srcvalve, "src");
+ 		g_object_set(volume, "volume", input_volume, NULL);
+ 	} else {
++#if GST_CHECK_VERSION(1,0,0)
++		srcpad = gst_element_get_request_pad(session->tee, "src_%u");
++#else
+ 		srcpad = gst_element_get_request_pad(session->tee, "src%d");
++#endif
+ 	}
+ 
+ 	purple_debug_info("backend-fs2", "connecting pad: %s\n",
+@@ -1641,11 +1723,14 @@
+ 	gst_object_unref(session->src);
+ 	gst_object_unref(sinkpad);
+ 
+-	gst_element_set_state(session->src, GST_STATE_PLAYING);
+-
+ 	purple_media_manager_create_output_window(purple_media_get_manager(
+ 			priv->media), priv->media, sess_id, NULL);
+ 
++	purple_debug_info("backend-fs2", "create_src: setting source "
++		"state to GST_STATE_PLAYING - it may hang here on win32\n");
++	gst_element_set_state(session->src, GST_STATE_PLAYING);
++	purple_debug_info("backend-fs2", "create_src: state set\n");
++
+ 	return TRUE;
+ }
+ 
+@@ -1849,14 +1934,10 @@
+ 			 *   audioresample ! audioconvert ! realsink
+ 			 */
+ 			stream->queue = gst_element_factory_make("queue", NULL);
+-			stream->volume = gst_element_factory_make(
+-					"volume", NULL);
+-			g_object_set(stream->volume, "volume",
+-					output_volume, NULL);
+-			stream->level = gst_element_factory_make(
+-					"level", NULL);
+-			stream->src = gst_element_factory_make(
+-					"liveadder", NULL);
++			stream->volume = gst_element_factory_make("volume", NULL);
++			g_object_set(stream->volume, "volume", output_volume, NULL);
++			stream->level = gst_element_factory_make("level", NULL);
++			stream->src = gst_element_factory_make("liveadder", NULL);
+ 			sink = purple_media_manager_get_element(
+ 					purple_media_get_manager(priv->media),
+ 					PURPLE_MEDIA_RECV_AUDIO, priv->media,
+@@ -1875,10 +1956,12 @@
+ 			gst_element_link(stream->queue, stream->volume);
+ 			sink = stream->queue;
+ 		} else if (codec->media_type == FS_MEDIA_TYPE_VIDEO) {
+-			stream->src = gst_element_factory_make(
+-					"fsfunnel", NULL);
+-			sink = gst_element_factory_make(
+-					"fakesink", NULL);
++#if GST_CHECK_VERSION(1,0,0)
++			stream->src = gst_element_factory_make("funnel", NULL);
++#else
++			stream->src = gst_element_factory_make("fsfunnel", NULL);
++#endif
++			sink = gst_element_factory_make("fakesink", NULL);
+ 			g_object_set(G_OBJECT(sink), "async", FALSE, NULL);
+ 			gst_bin_add(GST_BIN(priv->confbin), sink);
+ 			gst_element_set_state(sink, GST_STATE_PLAYING);
+@@ -1892,7 +1975,11 @@
+ 		gst_element_link_many(stream->src, stream->tee, sink, NULL);
+ 	}
+ 
++#if GST_CHECK_VERSION(1,0,0)
++	sinkpad = gst_element_get_request_pad(stream->src, "sink_%u");
++#else
+ 	sinkpad = gst_element_get_request_pad(stream->src, "sink%d");
++#endif
+ 	gst_pad_link(srcpad, sinkpad);
+ 	gst_object_unref(sinkpad);
+ 
+@@ -2074,8 +2161,8 @@
+ 	if (!fs_stream_set_transmitter(fsstream, transmitter,
+ 			_params, _num_params, &err)) {
+ 		purple_debug_error("backend-fs2",
+-				"Could not set transmitter %s: %s.\n",
+-				transmitter, err->message);
++			"Could not set transmitter %s: %s.\n",
++			transmitter, err ? err->message : NULL);
+ 		g_clear_error(&err);
+ 		g_free(_params);
+ 		return FALSE;
+@@ -2394,38 +2481,6 @@
+ 	return TRUE;
+ }
+ 
+-static void
+-purple_media_backend_fs2_set_params(PurpleMediaBackend *self,
+-		guint num_params, GParameter *params)
+-{
+-	PurpleMediaBackendFs2Private *priv;
+-	const gchar **supported = purple_media_backend_fs2_get_available_params();
+-	const gchar **p;
+-	guint i;
+-
+-	g_return_if_fail(PURPLE_IS_MEDIA_BACKEND_FS2(self));
+-
+-	priv = PURPLE_MEDIA_BACKEND_FS2_GET_PRIVATE(self);
+-
+-	if (priv->conference == NULL &&
+-		!init_conference(PURPLE_MEDIA_BACKEND_FS2(self))) {
+-		purple_debug_error("backend-fs2",
+-				"Error initializing the conference.\n");
+-		return;
+-	}
+-
+-	for (i = 0; i != num_params; ++i) {
+-		for (p = supported; *p != NULL; ++p) {
+-			if (!strcmp(params[i].name, *p)) {
+-				g_object_set(priv->conference,
+-						params[i].name, g_value_get_string(&params[i].value),
+-						NULL);
+-				break;
+-			}
+-		}
+-	}
+-}
+-
+ static const gchar **
+ purple_media_backend_fs2_get_available_params(void)
+ {
+@@ -2436,6 +2491,72 @@
+ 
+ 	return supported_params;
+ }
++
++static const gchar*
++param_to_sdes_type(const gchar *param)
++{
++  const gchar **supported = purple_media_backend_fs2_get_available_params();
++  static const gchar *sdes_types[] = {
++     "cname", "email", "location", "name", "note", "phone", "tool", NULL
++  };
++  guint i;
++
++  for (i = 0; supported[i] != NULL; ++i) {
++     if (!strcmp(param, supported[i])) {
++        return sdes_types[i];
++     }
++  }
++
++  return NULL;
++}
++
++static void
++purple_media_backend_fs2_set_params(PurpleMediaBackend *self,
++     guint num_params, GParameter *params)
++{
++  PurpleMediaBackendFs2Private *priv;
++  guint i;
++#ifndef HAVE_FARSIGHT
++  GstStructure *sdes;
++#endif
++
++  g_return_if_fail(PURPLE_IS_MEDIA_BACKEND_FS2(self));
++
++  priv = PURPLE_MEDIA_BACKEND_FS2_GET_PRIVATE(self);
++
++  if (priv->conference == NULL &&
++     !init_conference(PURPLE_MEDIA_BACKEND_FS2(self))) {
++     purple_debug_error("backend-fs2",
++           "Error initializing the conference.\n");
++     return;
++  }
++
++#ifdef HAVE_FARSIGHT
++  for (i = 0; i != num_params; ++i) {
++     if (param_to_sdes_type(params[i].name)) {
++        g_object_set(priv->conference,
++                     params[i].name, g_value_get_string(&params[i].value),
++                     NULL);
++     }
++  }
++#else
++  g_object_get(G_OBJECT(priv->conference), "sdes", &sdes, NULL);
++
++  for (i = 0; i != num_params; ++i) {
++     const gchar *sdes_type = param_to_sdes_type(params[i].name);
++     if (!sdes_type)
++        continue;
++
++     gst_structure_set(sdes, sdes_type,
++                       G_TYPE_STRING, g_value_get_string(&params[i].value),
++                       NULL);
++  }
++
++  g_object_set(G_OBJECT(priv->conference), "sdes", sdes, NULL);
++  gst_structure_free(sdes);
++#endif /* HAVE_FARSIGHT */
++}
++
+ #else
+ GType
+ purple_media_backend_fs2_get_type(void)
+@@ -2444,6 +2565,7 @@
+ }
+ #endif /* USE_VV */
+ 
++
+ #ifdef USE_GSTREAMER
+ GstElement *
+ purple_media_backend_fs2_get_src(PurpleMediaBackendFs2 *self,
+diff -Naur pidgin-2.10.11.orig/libpurple/mediamanager.c pidgin-2.10.11/libpurple/mediamanager.c
+--- pidgin-2.10.11.orig/libpurple/mediamanager.c	2014-11-23 10:41:25.000000000 -0600
++++ pidgin-2.10.11/libpurple/mediamanager.c	2015-07-07 15:36:28.691798103 -0500
+@@ -44,7 +44,12 @@
+ #else
+ #include <farstream/fs-element-added-notifier.h>
+ #endif
++
++#if GST_CHECK_VERSION(1,0,0)
++#include <gst/video/videooverlay.h>
++#else
+ #include <gst/interfaces/xoverlay.h>
++#endif
+ 
+ /** @copydoc _PurpleMediaManagerPrivate */
+ typedef struct _PurpleMediaManagerPrivate PurpleMediaManagerPrivate;
+@@ -270,8 +275,11 @@
+ 		gst_bus_add_signal_watch(GST_BUS(bus));
+ 		g_signal_connect(G_OBJECT(bus), "message",
+ 				G_CALLBACK(pipeline_bus_call), manager);
+-		gst_bus_set_sync_handler(bus,
+-				gst_bus_sync_signal_handler, NULL);
++#if GST_CHECK_VERSION(1,0,0)
++		gst_bus_set_sync_handler(bus, gst_bus_sync_signal_handler, NULL, NULL);
++#else
++		gst_bus_set_sync_handler(bus, gst_bus_sync_signal_handler, NULL);
++#endif
+ 		gst_object_unref(bus);
+ 
+ 		filename = g_build_filename(purple_user_dir(),
+@@ -405,20 +413,31 @@
+ {
+ 	GstElement *parent = GST_ELEMENT_PARENT(pad);
+ 	GstIterator *iter;
++#if GST_CHECK_VERSION(1,0,0)
++	GValue tmp = G_VALUE_INIT;
++#endif
+ 	GstPad *remaining_pad;
+ 	GstIteratorResult result;
+ 
+-	gst_element_release_request_pad(GST_ELEMENT_PARENT(pad), pad);
++	gst_element_release_request_pad(parent, pad);
+ 
+ 	iter = gst_element_iterate_src_pads(parent);
+ 
++#if GST_CHECK_VERSION(1,0,0)
++	result = gst_iterator_next(iter, &tmp);
++#else
+ 	result = gst_iterator_next(iter, (gpointer)&remaining_pad);
++#endif
+ 
+ 	if (result == GST_ITERATOR_DONE) {
+ 		gst_element_set_locked_state(parent, TRUE);
+ 		gst_element_set_state(parent, GST_STATE_NULL);
+ 		gst_bin_remove(GST_BIN(GST_ELEMENT_PARENT(parent)), parent);
+ 	} else if (result == GST_ITERATOR_OK) {
++#if GST_CHECK_VERSION(1,0,0)
++		remaining_pad = g_value_get_object(&tmp);
++		g_value_reset(&tmp);
++#endif
+ 		gst_object_unref(remaining_pad);
+ 	}
+ 
+@@ -456,7 +475,11 @@
+ {
+ #ifdef USE_VV
+ 	if (manager->priv->video_caps == NULL)
++#if GST_CHECK_VERSION(1,0,0)
++		manager->priv->video_caps = gst_caps_from_string("video/x-raw,"
++#else
+ 		manager->priv->video_caps = gst_caps_from_string("video/x-raw-yuv,"
++#endif
+ 			"width=[250,352], height=[200,288], framerate=[1/1,20/1]");
+ 	return manager->priv->video_caps;
+ #else
+@@ -539,7 +562,11 @@
+ 		g_free(id);
+ 
+ 		tee = gst_bin_get_by_name(GST_BIN(ret), "tee");
++#if GST_CHECK_VERSION(1,0,0)
++		pad = gst_element_get_request_pad(tee, "src_%u");
++#else
+ 		pad = gst_element_get_request_pad(tee, "src%d");
++#endif
+ 		gst_object_unref(tee);
+ 		ghost = gst_ghost_pad_new(NULL, pad);
+ 		gst_object_unref(pad);
+@@ -730,9 +757,12 @@
+ {
+ 	GstElement *sink;
+ 
+-	if (GST_MESSAGE_TYPE(msg) != GST_MESSAGE_ELEMENT ||
+-			!gst_structure_has_name(msg->structure,
+-			"prepare-xwindow-id"))
++	if (GST_MESSAGE_TYPE(msg) != GST_MESSAGE_ELEMENT
++#if GST_CHECK_VERSION(1,0,0)
++	 || !gst_is_video_overlay_prepare_window_handle_message(msg))
++#else
++	 || !gst_structure_has_name(msg->structure, "prepare-xwindow-id"))
++#endif
+ 		return;
+ 
+ 	sink = GST_ELEMENT(GST_MESSAGE_SRC(msg));
+@@ -746,8 +776,16 @@
+ 			| G_SIGNAL_MATCH_DATA, 0, 0, NULL,
+ 			window_id_cb, ow);
+ 
+-	gst_x_overlay_set_xwindow_id(GST_X_OVERLAY(
+-			GST_MESSAGE_SRC(msg)), ow->window_id);
++#if GST_CHECK_VERSION(1,0,0)
++	gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(GST_MESSAGE_SRC(msg)),
++	                                    ow->window_id);
++#elif GST_CHECK_VERSION(0,10,31)
++	gst_x_overlay_set_window_handle(GST_X_OVERLAY(GST_MESSAGE_SRC(msg)),
++	                                ow->window_id);
++#else
++	gst_x_overlay_set_xwindow_id(GST_X_OVERLAY(GST_MESSAGE_SRC(msg)),
++	                             ow->window_id);
++#endif
+ }
+ #endif
+ 
+@@ -772,17 +810,19 @@
+ 				(participant == ow->participant)) &&
+ 				!strcmp(session_id, ow->session_id)) {
+ 			GstBus *bus;
+-			GstElement *queue, *colorspace;
++			GstElement *queue, *convert;
+ 			GstElement *tee = purple_media_get_tee(media,
+ 					session_id, participant);
+ 
+ 			if (tee == NULL)
+ 				continue;
+ 
+-			queue = gst_element_factory_make(
+-					"queue", NULL);
+-			colorspace = gst_element_factory_make(
+-					"ffmpegcolorspace", NULL);
++			queue = gst_element_factory_make("queue", NULL);
++#if GST_CHECK_VERSION(1,0,0)
++			convert = gst_element_factory_make("videoconvert", NULL);
++#else
++			convert = gst_element_factory_make("ffmpegcolorspace", NULL);
++#endif
+ 			ow->sink = purple_media_manager_get_element(
+ 					manager, PURPLE_MEDIA_RECV_VIDEO,
+ 					ow->media, ow->session_id,
+@@ -795,7 +835,7 @@
+ 				if (g_object_class_find_property(klass,
+ 						"sync"))
+ 					g_object_set(G_OBJECT(ow->sink),
+-							"sync", "FALSE", NULL);
++							"sync", FALSE, NULL);
+ 				if (g_object_class_find_property(klass,
+ 						"async"))
+ 					g_object_set(G_OBJECT(ow->sink),
+@@ -803,7 +843,7 @@
+ 			}
+ 
+ 			gst_bin_add_many(GST_BIN(GST_ELEMENT_PARENT(tee)),
+-					queue, colorspace, ow->sink, NULL);
++					queue, convert, ow->sink, NULL);
+ 
+ 			bus = gst_pipeline_get_bus(GST_PIPELINE(
+ 					manager->priv->pipeline));
+@@ -812,10 +852,10 @@
+ 			gst_object_unref(bus);
+ 
+ 			gst_element_set_state(ow->sink, GST_STATE_PLAYING);
+-			gst_element_set_state(colorspace, GST_STATE_PLAYING);
++			gst_element_set_state(convert, GST_STATE_PLAYING);
+ 			gst_element_set_state(queue, GST_STATE_PLAYING);
+-			gst_element_link(colorspace, ow->sink);
+-			gst_element_link(queue, colorspace);
++			gst_element_link(convert, ow->sink);
++			gst_element_link(queue, convert);
+ 			gst_element_link(tee, queue);
+ 		}
+ 	}
+diff -Naur pidgin-2.10.11.orig/pidgin/Makefile.am pidgin-2.10.11/pidgin/Makefile.am
+--- pidgin-2.10.11.orig/pidgin/Makefile.am	2014-11-23 10:41:26.000000000 -0600
++++ pidgin-2.10.11/pidgin/Makefile.am	2015-07-07 15:36:28.691798103 -0500
+@@ -151,6 +151,7 @@
+ 	$(GLIB_LIBS) \
+ 	$(DBUS_LIBS) \
+ 	$(GSTREAMER_LIBS) \
++	$(GSTVIDEO_LIBS) \
+ 	$(XSS_LIBS) \
+ 	$(SM_LIBS) \
+ 	$(INTLLIBS) \
+diff -Naur pidgin-2.10.11.orig/pidgin/gtkmedia.c pidgin-2.10.11/pidgin/gtkmedia.c
+--- pidgin-2.10.11.orig/pidgin/gtkmedia.c	2014-11-23 10:41:26.000000000 -0600
++++ pidgin-2.10.11/pidgin/gtkmedia.c	2015-07-07 15:36:28.691798103 -0500
+@@ -42,7 +42,9 @@
+ #include <gdk/gdkwin32.h>
+ #endif
+ 
++#if !GST_CHECK_VERSION(1,0,0)
+ #include <gst/interfaces/xoverlay.h>
++#endif
+ 
+ #define PIDGIN_TYPE_MEDIA            (pidgin_media_get_type())
+ #define PIDGIN_MEDIA(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PIDGIN_TYPE_MEDIA, PidginMedia))
+@@ -589,6 +591,9 @@
+ 	if (conv != NULL)
+ 		purple_conversation_write(conv, NULL, error,
+ 				PURPLE_MESSAGE_ERROR, time(NULL));
++	else
++		purple_notify_error(NULL, NULL, _("Media error"), error);
++
+ 	gtk_statusbar_push(GTK_STATUSBAR(gtkmedia->priv->statusbar),
+ 			0, error);
+ }
+diff -Naur pidgin-2.10.11.orig/pidgin/plugins/vvconfig.c pidgin-2.10.11/pidgin/plugins/vvconfig.c
+--- pidgin-2.10.11.orig/pidgin/plugins/vvconfig.c	2014-11-23 10:41:27.000000000 -0600
++++ pidgin-2.10.11/pidgin/plugins/vvconfig.c	2015-07-07 15:36:28.691798103 -0500
+@@ -26,7 +26,11 @@
+ #include "gtkutils.h"
+ #include "gtkprefs.h"
+ 
++#if GST_CHECK_VERSION(1,0,0)
++#include <gst/video/videooverlay.h>
++#else
+ #include <gst/interfaces/propertyprobe.h>
++#endif
+ 
+ /* container window for showing a stand-alone configurator */
+ static GtkWidget *window = NULL;
+@@ -81,8 +85,10 @@
+ 	GList *ret = NULL;
+ 	GstElement *element;
+ 	GObjectClass *klass;
++#if !GST_CHECK_VERSION(1,0,0)
+ 	GstPropertyProbe *probe;
+ 	const GParamSpec *pspec;
++#endif
+ 
+ 	ret = g_list_prepend(ret, (gpointer)_("Default"));
+ 	ret = g_list_prepend(ret, "");
+@@ -103,6 +109,10 @@
+ 		return g_list_reverse(ret);
+ 	}
+ 
++#if GST_CHECK_VERSION(1,0,0)
++	purple_debug_info("vvconfig", "'%s' - gstreamer-1.0 doesn't suport "
++		"property probing\n", element_name);
++#else
+ 	if (!g_object_class_find_property(klass, "device") ||
+ 			!GST_IS_PROPERTY_PROBE(element) ||
+ 			!(probe = GST_PROPERTY_PROBE(element)) ||
+@@ -155,6 +165,7 @@
+ 			gst_element_set_state(element, GST_STATE_NULL);
+ 		}
+ 	}
++#endif
+ 	gst_object_unref(element);
+ 
+ 	return g_list_reverse(ret);
+@@ -168,8 +179,13 @@
+ 	ret = g_list_prepend(ret, "Default");
+ 	ret = g_list_prepend(ret, "");
+ 	for (; plugins[0] && plugins[1]; plugins += 2) {
++#if GST_CHECK_VERSION(1,0,0)
++		if (gst_registry_check_feature_version(gst_registry_get(),
++				plugins[0], 0, 0, 0)) {
++#else
+ 		if (gst_default_registry_check_feature_version(
+ 				plugins[0], 0, 0, 0)) {
++#endif
+ 			ret = g_list_prepend(ret, (gpointer)plugins[1]);
+ 			ret = g_list_prepend(ret, (gpointer)plugins[0]);
+ 		}
+@@ -588,7 +604,13 @@
+ 
+ 	list = gst_structure_get_value(
+ 				gst_message_get_structure(msg), value_name);
++#if GST_CHECK_VERSION(1,0,0)
++G_GNUC_BEGIN_IGNORE_DEPRECATIONS
++	value = g_value_array_get_nth(g_value_get_boxed(list), 0);
++G_GNUC_END_IGNORE_DEPRECATIONS
++#else
+ 	value = gst_value_list_get_value(list, 0);
++#endif
+ 	value_db = g_value_get_double(value);
+ 	percent = pow(10, value_db / 20);
+ 	return (percent > 1.0) ? 1.0 : percent;
+@@ -604,7 +626,7 @@
+ gst_bus_cb(GstBus *bus, GstMessage *msg, BusCbCtx *ctx)
+ {
+ 	if (GST_MESSAGE_TYPE(msg) == GST_MESSAGE_ELEMENT &&
+-		gst_structure_has_name(msg->structure, "level")) {
++		gst_structure_has_name(gst_message_get_structure(msg), "level")) {
+ 
+ 		GstElement *src = GST_ELEMENT(GST_MESSAGE_SRC(msg));
+ 		gchar *name = gst_element_get_name(src);
