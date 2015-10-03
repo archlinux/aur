@@ -8,11 +8,12 @@
 _pkgname=ulipad
 pkgname=$_pkgname-git
 pkgver=r10.c8627cb
-pkgrel=1
+pkgrel=2
 pkgdesc="A wxPython powered, programmer oriented and flexible editor"
 arch=('any')
 url="https://github.com/limodou/ulipad"
 license=('GPL')
+makedepends=('git')
 depends=('wxpython')
 optdepends=('psyco: speed support'
             'python2-pyenchant: spell-checking support')
