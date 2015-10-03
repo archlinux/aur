@@ -1,48 +1,45 @@
 post_install() {
-	dkms_install $1
+  dkms_install $1
 }
 
 pre_upgrade() {
-	dkms_remove $2
-}
-
-pre_remove() {
-	dkms_remove $1
+  dkms_remove $2
 }
 
 post_upgrade() {
-	dkms_install $1
+  dkms_install $1
+}
+
+pre_remove() {
+  dkms_remove $1
 }
 
 dkms_remove() {
-	local line=`dkms status -m broadcom-wl`
-	# in cases where the passed ${1%%-*} fails, use this as a fallback for detecting
-	# which version is installed:
-	# version=`dkms status broadcom-wl | tr -d ' \n' | awk -F ',' '{print $2}'`
-	if echo "$line" | grep -E 'added|built|installed'; then
-		dkms remove -m broadcom-wl -v ${1%%-*} --all
-	else
-		echo "No current dkms module found, skipping dkms remove"
-	fi
+  local line="$(dkms status -m broadcom-wl)"
+  # in cases where the passed ${1%%-*} fails, use this as a fallback for detecting
+  # which version is installed:
+  # version="$(dkms status broadcom-wl | tr -d ' \n' | awk -F ',' '{print $2}')"
+  if grep -E 'added|built|installed' <<< "${line}"; then
+    dkms remove -m broadcom-wl -v ${1%%-*} --all || return 1
+  else
+    echo "No current dkms module found, skipping dkms remove" || return 1
+  fi
 }
 
 dkms_install() {
-	echo ">>> DKMS: Module install"
+  echo ">>> DKMS: Module install" || return 1
 
-	dkms install -m broadcom-wl -v ${1%%-*}
+  dkms install -m broadcom-wl -v ${1%%-*} || return 1
 
-cat << EOF
-It's recommended to execute the following commands to load the module:
-rmmod b43 2>/dev/null
-rmmod b43legacy 2>/dev/null
-rmmod ssb 2>/dev/null
-rmmod bcm43xx 2>/dev/null
-rmmod brcm80211 2>/dev/null
-rmmod brcmfmac 2>/dev/null
-rmmod brcmsmac 2>/dev/null
-rmmod bcma 2>/dev/null
-modprobe wl
+  cat << EOF || return 1
 
-/usr/bin/depmod -a
+To load the new module, execute:
+
+  for m in b43 b43legacy ssb bcm43xx brcm80211 brcmfmac brcmsmac bcma wl; do
+    modprobe -r \$m 2>/dev/null
+  done
+  modprobe wl
+
+or just reboot the system.
 EOF
 }
