@@ -1,0 +1,29 @@
+pkgbase = alpine-fancythreading
+	pkgdesc = The continuation of the Alpine email client from University of Washington. Including Enhanced fancy threading, Topal and maildir patches.
+	pkgver = 2.20
+	pkgrel = 1
+	url = http://patches.freeiz.com/alpine/index.html
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = libldap
+	depends = krb5
+	optdepends = aspell: spell-checking support
+	optdepends = hunspell: spell-checking support
+	provides = pine
+	provides = alpine
+	conflicts = pine
+	conflicts = alpine
+	conflicts = re-alpine
+	replaces = pine
+	replaces = alpine
+	options = !makeflags
+	source = http://patches.freeiz.com/alpine/release/src/alpine-2.20.tar.xz
+	source = http://patches.freeiz.com/alpine/patches/alpine-2.20/maildir.patch.gz
+	source = http://patches.freeiz.com/alpine/patches/alpine-2.20/fancy.patch.gz
+	sha1sums = 05f4908a347969b77b684cc8b995d4aaa1506155
+	sha1sums = 7ae3d7faa19c33a773e3820cf7bcae99ac69a5c4
+	sha1sums = 31f14b276425681d714fda215cc8fb63612996c3
+
+pkgname = alpine-fancythreading
+
