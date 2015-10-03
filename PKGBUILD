@@ -5,7 +5,7 @@
 # Contributor: Pierre Bourdon <delroth@gmail.com>
 pkgname=python-lockfile
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Platform-independent file locking module'
 license=('MIT')
 url="https://pypi.python.org/pypi/lockfile"
