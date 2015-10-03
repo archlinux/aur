@@ -2,8 +2,8 @@
 # Cleanup: Sam Stuewe <halosghost@archlinux.info>
 # still want to build trunk? use http://sprunge.us/XARP instead
 pkgname="nightingale-git"
-pkgver=1e74b6f
-pkgrel=2
+pkgver=4aa731d
+pkgrel=1
 pkgdesc="No binaries used. Open source fork of the Songbird Media Player with updates and fixes."
 arch=('i686' 'x86_64')
 url="http://getnightingale.com/"
@@ -21,7 +21,7 @@ md5sums=('SKIP'
          '7741cc247648e95dd9dad8c953616757')
 
 pkgver() {
-	cd "nightingale"
+	cd "nightingale-hacking"
 	git describe --always | sed 's|-|.|g'
 }
 
@@ -30,6 +30,7 @@ prepare() {
    echo 'ac_add_options --with-media-core=gstreamer-system' > "${srcdir}/nightingale-hacking/nightingale.config"
    echo 'ac_add_options --with-gstreamer-1.0' >> "${srcdir}/nightingale-hacking/nightingale.config"
    echo 'ac_add_options --with-taglib-source=system' >> "${srcdir}/nightingale-hacking/nightingale.config"
+   echo 'ac_add_options --enable-official' >> "${srcdir}/nightingale-hacking/nightingale.config"
 }
 
 build() {
