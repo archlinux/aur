@@ -22,30 +22,30 @@ install=lirc.install
 source=("git://lirc.git.sourceforge.net/gitroot/lirc/lirc"
 lirc.logrotate lirc.tmpfiles)
 md5sums=('SKIP'
-         '3deb02604b37811d41816e9b4385fcc3'
-         'febf25c154a7d36f01159e84f26c2d9a')
+'3deb02604b37811d41816e9b4385fcc3'
+'febf25c154a7d36f01159e84f26c2d9a')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+	cd "$srcdir/$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+	cd "$srcdir/$_pkgname"
 	./autogen.sh
 	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc \
 		--localstatedir=/var --with-transmitter --enable-sandboxed 
-  make
+	make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+	cd "$srcdir/$_pkgname"
 
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 "${srcdir}"/lirc.tmpfiles \
+	make DESTDIR="${pkgdir}" install
+	install -Dm644 "${srcdir}"/lirc.tmpfiles \
 		"${pkgdir}"/usr/lib/tmpfiles.d/lirc.conf
-  install -Dm644 "${srcdir}"/lirc.logrotate \
+	install -Dm644 "${srcdir}"/lirc.logrotate \
 		"${pkgdir}"/etc/logrotate.d/lirc
 
-  rmdir "${pkgdir}"/var/{run/lirc/,run/,}
+	rmdir "${pkgdir}"/var/{run/lirc/,run/,}
 }
