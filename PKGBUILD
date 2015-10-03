@@ -1,7 +1,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 pkgname=python2-trackpy
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="tools for particle tracking"
 url="https://github.com/soft-matter/trackpy"
 arch=(any)
@@ -20,4 +20,4 @@ package() {
     cd $srcdir/trackpy-"$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
 }
-md5sums=('d5327b79365e808eb85f7aafec37c523')
+md5sums=('845a05642ffe0305e22daa3805d24435')
