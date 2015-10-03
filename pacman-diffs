@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # finding .pacnew files and compare
-# v1.0.0
+# v1.1.0
+
 
 AGE=360 # ne rechercher que ceux qui ont moins de 360 jours
 EXT='pacnew'
+ARCCHIVEDIR='/var/cache/pacman/pacnew'
 
 c_red='\033[0m\033[31m'
 c_green='\033[0m\033[32m'
@@ -15,6 +17,9 @@ bold='\033[1m'
         ['label']='differences of'
         ['error']='Error'
         ['notfound']='file not found'
+        ['root']='This script must be run as root'
+        ['files']='files'
+        ['noarchive']='not in archives'
     )
 lg=$(locale 2>/dev/null | awk -F'=' '/^LANG/ {print $2}')
 if [ 'fr' == "${lg:0:2}" ]; then
@@ -22,9 +27,86 @@ if [ 'fr' == "${lg:0:2}" ]; then
         ['label']='les différences de'
         ['error']='Erreur'
         ['notfound']="fichier n'existe pas"
+        ['root']='Vous devez avoir des droits administrateur'
+        ['files']='fichiers'
+        ['noarchive']='non archivés'
     )
 fi
 #}}}
+
+function error()
+{
+    echo -e "\033[41m${txt[error]}:\033[0m $1" >&2
+}
+function test_sudo() {
+    if [[ $EUID -ne 0 ]]; then
+        error "${txt[root]}"
+        exit 1
+    fi
+}
+
+function get_su(){
+    local mysu=''
+    if [ -f '/usr/bin/kdesu' ]; then
+        mysu='kdesu'
+    else
+        [ -f '/usr/bin/gksu' ] && mysu='gksu'
+    fi
+    echo -n "$mysu"
+}
+
+function get_editor(){
+    local ed=''
+    if [ -f '/usr/bin/diffuse' ]; then
+        ed='/usr/bin/diffuse'
+    else
+        [ -f '/usr/bin/kompare' ] && ed='/usr/bin/kompare'
+    fi
+    echo "$ed"
+}
+
+function archive()
+# change date pour test
+# sudo touch -t 200106041111 /etc/profile.pacnew
+{
+    test_sudo
+    local file="$1"
+    local name="$2"
+    file=$ARCCHIVEDIR${file/$name.$EXT/$(stat -c "%Y" "$1")-$name.$EXT}
+    install -D "$1" "$file"
+    echo "archive in $file"
+    file=$(dirname $file)
+    # want only 2 last files
+    nb=$(ls $file/*$name.$EXT | wc -l)
+    if [ "$nb" -gt 2 ]; then
+        ls -v $file/*$name.$EXT | head -$(($nb-2)) | xargs rm
+    fi
+}
+function in_archive(){
+    local file="$1"
+    local name="$2"
+    declare -a out
+    file=$ARCCHIVEDIR${file/$name.$EXT/*-$name.$EXT}
+    nb=$(ls $file | wc -l)
+    if [ "$nb" -gt "1" ]; then
+        echo $(ls -v $file)
+    else
+        return 1
+    fi
+}
+
+function make_diff()
+{
+    local file1="$1"
+    local file2="$2"
+    IFS=$'\n'
+    #echo -e "\n diff $file1 $file2\n"
+    # < : removed       > : added
+    diff $file1 $file2| grep -E "^>|^<" | while read line ; do
+        if [ "${line::1}" = '<' ]; then c="$c_red-"; else c="$c_green+"; fi
+        echo -e "$c ${line:2}$c_end"
+    done
+}
 
 function usage()
 {
@@ -33,27 +115,27 @@ function usage()
     echo -e "\t -d since x days"
     echo -e "\t -l : list only - no diff"
     echo -e "\t -e filename : edit files"
+    echo -e "\t -a archive pacnew in /var/cache/pacman/pacnew/"
+    echo -e "\t -c compare archives"
     exit
 }
 
-function erreur()
-{
-	echo -e "\033[41m${txt[error]}:\033[0m $1" >&2
-}
 
-while getopts "hd:x:le:" flags; do
+
+while getopts "hd:x:le:ac" flags; do
 	case $flags in
 		h) usage;exit 0 ;;
 		d) AGE="${OPTARG}" ;;
 		x) EXT="${OPTARG}" ;;
-		l) lister=1 ;;
-		e) edit="${OPTARG}";lister=1 ;;		
-		:) erreur "Vous avez oublié un argument"; exit 1 ;;
-		?) erreur "invalid Option"; exit 1 ;;
-		*) erreur "*"; exit 1 ;;
+		l) listing=1 ;;
+		e) edit="${OPTARG}"; listing=1 ;;	
+		a) archive=1; listing=1 ;;
+		c) archive=1; archivediff=1 ;;
+		:) error "Vous avez oublié un argument"; exit 1 ;;
+		?) error "invalid Option"; exit 1 ;;
+		*) error "*"; exit 1 ;;
 	esac
 done
-
 
 find '/etc' -name "*.$EXT" -mtime -$AGE -type f 2> /dev/null | while read file ; do
 
@@ -64,28 +146,32 @@ find '/etc' -name "*.$EXT" -mtime -$AGE -type f 2> /dev/null | while read file ;
     echo -e "\n$bold${fname}$c_end\n-- ${txt[label]} $file\t(${dfile})"
    
     if [[ -f "$ofile" ]]; then
-   
-        if [[ $lister -ne 1 ]]; then
-            # < : removed       > : added
-            IFS=$'\n'
-            diff ${ofile} ${file}| grep -E "^>|^<" | while read line ; do
-                if [ "${line::1}" = '<' ]; then c="$c_red-"; else c="$c_green+"; fi
-                echo -e "$c ${line:2}$c_end"
-            done
+    
+        if [[ $archive -eq 1 ]]; then
+            # cp in  /var/cache/pacman/pacnew/
+            archive ${file} ${fname}
+        fi
+        
+ 
+        if [[ $listing -ne 1 ]]; then
+        
+            if [[ $archivediff -eq 1 ]]; then
+                files=$(in_archive ${file} ${fname})
+                if [ "$?" -ne "1" ]; then
+                        make_diff $files
+                        continue
+                else
+                    echo "${txt[files]} \"${fname}\" ${txt[noarchive]}"
+                    continue
+                fi                
+            fi
+            
+            make_diff ${ofile} ${file}
         fi
     
         if [ "$edit" == "$fname" ]; then
-            kdesu=''
-            if [ -f '/usr/bin/kdesu' ]; then
-                kdesu='kdesu'
-            else
-                [ -f '/usr/bin/gksu' ] && kdesu='gksu'
-            fi
-            if [ -f '/usr/bin/diffuse' ]; then
-                $kdesu /usr/bin/diffuse $ofile $file &
-            else
-                [ -f '/usr/bin/kompare' ] && $kdesu /usr/bin/kompare $ofile $file &
-            fi
+            cmd="$(get_su) $(get_editor) $ofile $file &"
+            $cmd
         fi
     
     else

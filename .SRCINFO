@@ -1,6 +1,6 @@
 pkgbase = pacman-diffs
-	pkgdesc = finding .pacnew files and compare
-	pkgver = 1.0.0
+	pkgdesc = finding .pacnew files and compare, and archive
+	pkgver = 1.1.0
 	pkgrel = 0
 	arch = any
 	license = GPL
