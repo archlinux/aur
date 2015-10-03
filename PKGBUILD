@@ -2,7 +2,7 @@
 
 _pkgname=caps-lv2
 pkgname="${_pkgname}-git"
-pkgver=0.9.23.r99.76cce8e
+pkgver=0.9.24.r99.76cce8e
 pkgrel=1
 pkgdesc="The LADSPA C* Audio Plugin Suite (LV2 port)"
 arch=('i686' 'x86_64')
@@ -18,15 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  cat > version.c << __EOF__
-#include "version.h"
-#include <stdio.h>
-void main() {
-    printf("%d.%d.%d", CAPS_version[0], CAPS_version[1], CAPS_version[2]);
-}
-__EOF__
-  gcc version.c
-  version="$(./a.out)"
+  version="$(grep ^VERSION Makefile | awk '{print $3}')"
   echo ${version}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
