@@ -3,7 +3,7 @@
 _projname=repocheck
 _authname=kynikos
 pkgname=${_projname}-git
-pkgver=5.5113fef
+pkgver=11.ee48d0e
 pkgrel=1
 pkgdesc='Check the status of code repositories under a root directory'
 arch=('any')
