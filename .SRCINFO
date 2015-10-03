@@ -1,0 +1,14 @@
+pkgbase = perl-video-subtitle-srt
+	pkgdesc = Video-Subtitle-SRT - manipulate SRT subtitle files
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Video-Subtitle-SRT/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/b/bk/bkb/Video-Subtitle-SRT-0.05.tar.gz
+
+pkgname = perl-video-subtitle-srt
+
