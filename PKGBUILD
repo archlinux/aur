@@ -2,7 +2,7 @@
 
 pkgname=dump1090-mutability-git
 _pkgbase=dump1090-mutability
-pkgver=1.14.r121.g3b4c872
+pkgver=faup1090.2.1.3.r1.gc55c71b
 pkgrel=1
 pkgdesc="ADS-B / Mode S Ground Station System for simple RTL-SDR decoding/translating. Mutability Fork"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -11,7 +11,6 @@ license=('GPL' 'BSD')
 depends=('rtl-sdr')
 makedepends=('git')
 provides=('dump1090' 'fatsv-data-source' 'faup1090')
-conflicts=('dump1090')
 backup=(etc/${_pkgbase})
 install=(${_pkgbase}.install)
 source=(${pkgname}::git://github.com/mutability/dump1090
