@@ -1,0 +1,15 @@
+pkgbase = psftools
+	pkgdesc = Utilities for manipulation of console fonts in PSF format
+	pkgver = 1.0.7
+	pkgrel = 3
+	url = http://www.seasip.info/Unix/PSF/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	options = !libtool
+	source = http://www.seasip.info/Unix/PSF/psftools-1.0.7.tar.gz
+	md5sums = 159022aae93a797dbc2a01014acbd115
+
+pkgname = psftools
+
