@@ -1,11 +1,12 @@
 pkgbase = kde-servicemenus-pdf
-	pkgdesc = KDE (KF5) service menus for PDF documents
+	pkgdesc = A KDE service menus for PDF documents from dolphin
 	pkgver = 0.6
 	pkgrel = 3
 	url = http://kde-apps.org/content/show.php/KDE+Service+Menu+PDF?content=37321
 	arch = any
 	license = GPL
 	depends = dolphin
+	depends = kdebase-kdialog
 	depends = ghostscript
 	depends = texlive-core
 	depends = poppler
