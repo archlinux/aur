@@ -1,0 +1,19 @@
+pkgbase = heartbleedscanner
+	pkgdesc = OpenSSL Heartbleed (CVE-2014-0160) vulnerability scanner, data miner and RSA key-restore tools.
+	pkgver = r15.7ecb1e3
+	pkgrel = 1
+	url = https://github.com/internetwache/heartbleed-tools
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = bash
+	depends = python3
+	depends = python-gmpy
+	depends = python-pyasn1
+	provides = heartbleedscanner-git
+	conflicts = heartbleedscanner-git
+	source = heartbleedscanner-git::git+https://github.com/internetwache/heartbleed-tools.git
+	md5sums = SKIP
+
+pkgname = heartbleedscanner-git
+
