@@ -31,9 +31,9 @@ dkms_install() {
 To load the new module, execute:
 
   for m in b43 b43legacy ssb bcm43xx brcm80211 brcmfmac brcmsmac bcma wl; do
-    modprobe -r \$m 2>/dev/null
+    sudo modprobe -r \$m   # "not found" errors are normal
   done
-  modprobe wl
+  sudo modprobe wl
 
 or just reboot the system.
 EOF
