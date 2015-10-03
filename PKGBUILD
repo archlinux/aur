@@ -1,7 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=python-irclib
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Internet Relay Chat (IRC) protocol client library'
 arch=('any')
 url='https://pypi.python.org/pypi/python-irclib/'
@@ -16,4 +16,3 @@ package() {
   cd "$srcdir/python-irclib-$pkgver"
   python setup.py install --root=$pkgdir --optimize=1
 }
-# vim:set ts=2 sw=2 et:
