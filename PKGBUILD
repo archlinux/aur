@@ -2,7 +2,7 @@
  
 pkgname=guacamole-client
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
 url="http://guacamole.sourceforge.net/"
@@ -15,7 +15,7 @@ depends=('java-runtime' 'tomcat7' 'guacamole-server')
 makedepends=('maven')
  
 source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver.tar.gz" "guacamole.properties")
-md5sums=('9bac0aff464c1024532de4d1e0503680' '1f3ec0a32cc3c6b4f7aeb8a3b2e7531b')
+md5sums=('588ac66f02c5f28a87be1ca562c5ccef' '1f3ec0a32cc3c6b4f7aeb8a3b2e7531b')
  
 backup=('usr/share/tomcat7/.guacamole/guacamole.properties' 'usr/share/tomcat7/.guacamole/user-mapping.xml')
  
