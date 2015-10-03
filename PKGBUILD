@@ -3,13 +3,13 @@
 _pkgname=kakawana
 pkgname=$_pkgname-svn
 pkgver=r212
-pkgrel=1
+pkgrel=2
 pkgdesc="RSS reader specialized for comics"
 arch=('any')
 url="http://kakawana.googlecode.com/"
+makedepends=('python2-setuptools' 'subversion')
 depends=('pyqt' 'python2-sqlalchemy-0.7.9' 'python2-beautifulsoup4' 'python2-elixir' 
          'python2-httplib2' 'python2-keyring' 'python2-lxml' 'python2-oauth2')    #python2-beautifulsoup3
-makedepends=('subversion')
 license=('GPL2')
 conflicts=($_pkgname)
 provides=($_pkgname)
@@ -22,10 +22,12 @@ pkgver() {
   printf "r%s" "${ver//[[:alpha:]]}"
 }
 
-package() {
+build() {
   cd "$srcdir/$pkgname/src/kakawana"
   sh ./build.sh
+}
 
+package() {
   cd "$srcdir/$pkgname"
   python2 setup.py install --root="$pkgdir" --optimize=1
 
