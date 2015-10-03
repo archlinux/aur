@@ -1,0 +1,14 @@
+pkgbase = maptiler32bit
+	pkgdesc = Map Tile Cutter - Tile Overlay Generator for Google Maps and Google Earth
+	pkgver = 1.0.beta2
+	pkgrel = 2
+	url = http://www.maptiler.org/
+	arch = i686
+	license = BSD
+	makedepends = dpkg
+	depends = gdal
+	source = https://dl.dropboxusercontent.com/u/29095940/oss/maptiler.tgz
+	md5sums = a8c61c539c4d280424d9044bcd7c52ef
+
+pkgname = maptiler32bit
+
