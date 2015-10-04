@@ -1,4 +1,4 @@
-# Maintainer: xo <xo@rotce.de>
+# Maintainer: xor <xor@rotce.de>
 
 pkgname=hashboot-git
 pkgver=0.7.4
