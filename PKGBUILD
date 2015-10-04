@@ -4,7 +4,7 @@
 _exename=xembedsniproxy
 _pkgname=xembed-sni-proxy
 pkgname=${_pkgname}-git
-pkgver=20150930.r57.96ae68b
+pkgver=r66.0d6ed03
 pkgrel=1
 pkgdesc="Convert XEmbed system tray icons to SNI icons"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver(){
     cd ${srcdir}/${_pkgname}
-    printf "20$(date +%y%m%d).r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
