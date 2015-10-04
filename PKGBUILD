@@ -3,7 +3,7 @@
 
 pkgname=python-twython
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure Python wrapper for the Twitter API"
 arch=('any')
 url="https://github.com/ryanmcgrath/twython"

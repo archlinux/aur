@@ -1,7 +1,7 @@
 pkgbase = python-twython
 	pkgdesc = Pure Python wrapper for the Twitter API
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanmcgrath/twython
 	arch = any
 	license = MIT
