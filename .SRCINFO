@@ -1,14 +1,14 @@
 pkgbase = python-django-omnibus
 	pkgdesc = Django/JavaScript WebSocket Connections
 	pkgver = 0.2.0
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/django-omnibus
+	pkgrel = 2
+	url = https://github.com/moccu/django-omnibus
 	arch = any
 	license = BSD
 	depends = python
 	depends = python-django
-	source = https://pypi.python.org/packages/source/d/django-omnibus/django-omnibus-0.2.0.tar.gz
-	md5sums = becb93c70f2c885d8b8448a5363aab7c
+	source = git://github.com/moccu/django-omnibus
+	md5sums = SKIP
 
 pkgname = python-django-omnibus
 
