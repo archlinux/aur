@@ -1,0 +1,15 @@
+pkgbase = create_ap-gui
+	pkgdesc = Gui application for easy creating access points. Application allows save configuration for quickly create AP.
+	pkgver = 1.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = python-pip
+	depends = create_ap
+	depends = python>=3.5
+	depends = net-tools
+	source = https://pypi.python.org/packages/source/c/create_ap-gui/create_ap-gui-1.1.tar.gz
+	md5sums = 474e081c396f9a486dcb4ac13c835854
+
+pkgname = create_ap-gui
+
