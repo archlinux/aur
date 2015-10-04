@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('python2' 'gtk2')
 options=(!emptydirs)
 source=("http://waylandev.tk/aur/particle-browser.tar.xz")
-md5sums=('b9c1a0da09e4843c9c718241a4a6a5f0')
+md5sums=('91978c385239f9019c25af28faefe4df')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
