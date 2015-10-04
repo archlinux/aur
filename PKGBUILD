@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="http://libre.adacore.com/libre/tools/GtkAda/"
 license=('GPL')
 
-depends=("gtk3")
+depends=("gtk3" "gprbuild")
 makedepends=("gcc-ada")
 
 source=(http://mirrors.cdn.adacore.com/art/db00d9243e8d34c0da0a583c22903272f2d28135
