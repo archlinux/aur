@@ -1,57 +1,42 @@
 # Maintainer: Maik Broemme <mbroemme@libmpq.org>
+# Contributor: Oliver Jaksch <arch-aur@com-in.de>
 pkgname="dahdi-linux"
 pkgdesc="DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
-pkgver=2.10.1
-pkgrel=2
+pkgver=2.10.2
+pkgrel=1
 arch=("i686" "x86_64")
 url="http://www.asterisk.org/"
 license=("LGPLv2")
-depends=("linux>=4.0" "linux<4.1")
-makedepends=("linux-headers>=4.0" "linux-headers<4.1")
+depends=("linux>=4.2" "linux<4.3")
+makedepends=("linux-headers>=4.2" "linux-headers<4.3")
 conflicts=("dahdi")
 install="${pkgname}.install"
 source=(
   "http://downloads.asterisk.org/pub/telephony/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-  "oslec.h::http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/plain/drivers/misc/echo/oslec.h?id=refs/tags/v4.0"
-  "dahdi-linux-2.10.1-allo.patch"
-  "dahdi-linux-2.10.1-openvox-1.patch"
-  "dahdi-linux-2.10.1-openvox-2.patch"
-  "dahdi-linux-2.10.1-openvox-3.patch"
-  "dahdi-linux-2.10.1-yeastar.patch"
-  "dahdi-kernel-4.0-1.patch::https://github.com/asterisk/dahdi-linux/commit/1cc0ad510acd404e63923ed3062b9302d53580da.diff"
-  "dahdi-kernel-4.0-2.patch::https://github.com/asterisk/dahdi-linux/commit/1559db9d1ae03780788788c07334ca54cdd1253a.diff"
+  "http://mirror.netcologne.de/gentoo/distfiles/gentoo-dahdi-patchset-1.2.3.tar.bz2"
+  "http://www.junghanns.net/downloads/jnet-dahdi-drivers-1.0.14.tar.gz"
 )
 sha256sums=(
-  "94c532e190fc6372f9731df71f8c590fc6f6f184d5394339ce892ac6788843aa"
-  "dc8b86ded9963ad825ea7a18bdbcfb0a4758bbc9dcac5fc9cd9bcf58074a0748"
-  "626c63d2baad6d7236e98904002d447eefc055b051a87264c4e0175446be7625"
-  "5e1e109039395a09412a6639fd25c5e70cc353ebc1c7b1ef26709bec1f22c6cb"
-  "941c8fba7516b1f8fe961fe31087894a556243f2e28fdcbbf25ae0ea962bfd13"
-  "1e06d18f7a995ac2534fc0109f6f170981cd4be9ebc6e69779552a0b2ebd5634"
-  "1830ed6696f6c28f61943d5f037e2f6306237a4a7ba0b6b1c2d5b801378413b8"
-  "ac261ef988e16ef348f9b67e0ccf9cded32808c90b487cc13d8422252516e808"
-  "4cf5aaa0c288661ade991122fbcd5c5dca7f2a3fa4cfad32d98b807b6641d9f1"
+  "6270444cb9b345941267b162038cc45f5ef4485139176e88e2c4d22fa35a2c59"
+  "4bd57ffa61d718b847080af274fdf2414bf83a6567dffa05786e3e9b900cdf5f"
+  "c71d1ac29c78511b59914cc9aa1798529ae7b344cdc8403a797dbcddbe486974"
 )
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  # junghanns hw.
+  cp "${srcdir}/jnet-dahdi-drivers-1.0.14/cwain/"*.[ch] drivers/dahdi
+  cp "${srcdir}/jnet-dahdi-drivers-1.0.14/qozap/"*.[ch] drivers/dahdi
+  cp "${srcdir}/jnet-dahdi-drivers-1.0.14/ztgsm/"*.[ch] drivers/dahdi
+
   # enable additional drivers.
-  patch -Np1 -i "${srcdir}/dahdi-linux-2.10.1-allo.patch"
-  patch -Np1 -i "${srcdir}/dahdi-linux-2.10.1-openvox-1.patch"
-  patch -Np1 -i "${srcdir}/dahdi-linux-2.10.1-openvox-2.patch"
-  patch -Np1 -i "${srcdir}/dahdi-linux-2.10.1-openvox-3.patch"
-  patch -Np1 -i "${srcdir}/dahdi-linux-2.10.1-yeastar.patch"
-
-  # linux >= 4.0 patches.
-  patch -Np1 -i "${srcdir}/dahdi-kernel-4.0-1.patch"
-  patch -Np1 -i "${srcdir}/dahdi-kernel-4.0-2.patch"
-
-  # enable dahdi oslec with upstream echo module.
-  mkdir -p drivers/staging/echo
-  cp "${srcdir}/oslec.h" drivers/staging/echo/oslec.h
-  sed 's|ifneq (,$(wildcard $(src)/../staging/echo/echo.c))|ifneq (,$(wildcard $(src)/../staging/echo/oslec.h))|' -i drivers/dahdi/Kbuild
-  sed '\|obj-m += ../staging/echo/echo.o|d' -i drivers/dahdi/Kbuild
+  patch -Np1 -i "${srcdir}/dahdi-patchset/01-no-depmod.diff"
+  patch -Np1 -i "${srcdir}/dahdi-patchset/02-parallel-make.diff"
+  patch -Np1 -i "${srcdir}/dahdi-patchset/03-grsecurity-no-constify.diff"
+  patch -Np1 -i "${srcdir}/dahdi-patchset/04-dahdi-irq-shared.diff"
+  patch -Np1 -i "${srcdir}/dahdi-patchset/98-non-digium-hardware-and-oslec.diff"
+  patch -Np1 -i "${srcdir}/dahdi-patchset/99-irqf-disabled.diff"
 
   # fix wrong installation paths.
   sed 's,$(DESTDIR)/lib/firmware,$(DESTDIR)/usr/lib/firmware,g' -i drivers/dahdi/firmware/Makefile
