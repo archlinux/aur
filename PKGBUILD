@@ -29,6 +29,7 @@ build() {
 
 package() {
   cd "${srcdir}"
+  cd ..
   install -Dm644 irccloud-election.desktop "$pkgdir/usr/share/applications/irccloud-election.desktop"
   install -Dm644 "${srcdir}/${_pkgname}" "$pkgdir/usr/share/irccloud-election"
 }
