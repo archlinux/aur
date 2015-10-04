@@ -6,13 +6,13 @@
 # Contributor: Behem0th <grantipak@gmail.com> 
 
 pkgname=freshplayerplugin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='PPAPI-host NPAPI-plugin adapter.'
 arch=( 'i686' 'x86_64' )
 url='https://github.com/i-rinat/freshplayerplugin'
 license=( 'MIT' )
-depends=( 'pango' 'alsa-lib' 'freetype2' 'libconfig' 'libevent' 'gtk2' 'libgl' 'v4l-utils' 'ffmpeg' )
+depends=( 'pango' 'alsa-lib' 'freetype2' 'libevent' 'gtk2' 'libgl' 'v4l-utils' 'ffmpeg' )
 makedepends=( 'cmake' 'ragel' )
 conflicts=( 'freshplayerplugin-git' )
 install="${pkgname}.install"
@@ -43,6 +43,3 @@ package() {
   install -Dm644 data/freshwrapper.conf.example "${pkgdir}/usr/share/${pkgname}/freshwrapper.conf.example"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-sha1sums=('eb8062e5f2d9e99792cd374182b4f9c26fe84ed5'
-          '331a3b3877249eaf1c3db917bde1dea6c4d374ab')

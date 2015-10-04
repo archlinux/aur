@@ -1,6 +1,6 @@
 pkgbase = freshplayerplugin
 	pkgdesc = PPAPI-host NPAPI-plugin adapter.
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/i-rinat/freshplayerplugin
 	install = freshplayerplugin.install
@@ -12,7 +12,6 @@ pkgbase = freshplayerplugin
 	depends = pango
 	depends = alsa-lib
 	depends = freetype2
-	depends = libconfig
 	depends = libevent
 	depends = gtk2
 	depends = libgl
@@ -24,10 +23,8 @@ pkgbase = freshplayerplugin
 	optdepends = google-chrome-beta: for the necessary Pepper plugin
 	optdepends = google-chrome-dev: for the necessary Pepper plugin
 	conflicts = freshplayerplugin-git
-	source = https://github.com/i-rinat/freshplayerplugin/archive/v0.3.2.tar.gz
+	source = https://github.com/i-rinat/freshplayerplugin/archive/v0.3.3.tar.gz
 	source = freshplayerplugin.install
-	sha1sums = eb8062e5f2d9e99792cd374182b4f9c26fe84ed5
-	sha1sums = 331a3b3877249eaf1c3db917bde1dea6c4d374ab
 
 pkgname = freshplayerplugin
 
