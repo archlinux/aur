@@ -10,7 +10,6 @@ pkgbase = particle-browser
 	depends = gtk2
 	options = !emptydirs
 	source = http://waylandev.tk/aur/particle-browser.tar.xz
-	md5sums = 91978c385239f9019c25af28faefe4df
+	md5sums = 34539a87162361d3a657122392987836
 
 pkgname = particle-browser
-
