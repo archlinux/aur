@@ -3,7 +3,7 @@
 
 _pkgname=rebar3
 pkgname=${_pkgname}-git
-pkgver=2671.c88a6d3
+pkgver=3068.4177c75
 pkgrel=1
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
