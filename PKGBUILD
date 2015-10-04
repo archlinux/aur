@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"
-  sed irccloud-election.desktop.in > irccloud-election.desktop
+  cp irccloud-election.desktop.in irccloud-election.desktop
 }
 
 build() {
