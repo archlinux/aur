@@ -1,7 +1,7 @@
 # Maintainer: Erikas <erikmnkl@gmail.com>
 
 pkgname=hunspell-lt
-pkgver=20080216
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Lithuanian dictionary for Hunspell"
 arch=('any')
