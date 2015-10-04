@@ -22,3 +22,4 @@ package() {
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cp -R . "$pkgdir/usr/share/$pkgname"
 }
+
