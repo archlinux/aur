@@ -3,7 +3,7 @@
 pkgname="dahdi-tools"
 pkgdesc="DAHDI tools for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64")
 url="http://www.asterisk.org/"
 license=("LGPLv2")
@@ -38,6 +38,7 @@ build() {
   patch -Np1 -i "${srcdir}/dahdi-tools-2.10.1-gcc510.patch"
 
   # fix wrong installation paths.
+  sed 's,/lib/udev,/usr/lib/udev,' -i xpp/Makefile
   sed 's,$(prefix)/sbin,$(prefix)/bin,' -i xpp/Makefile
 
   # compile.
