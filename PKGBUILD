@@ -6,7 +6,7 @@ _check="disabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="0.6.4"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="a pure-Python git object database"
 arch=("i686" "x86_64")
 url="https://github.com/gitpython-developers/${_name}"

@@ -1,7 +1,7 @@
 pkgbase = python-gitdb
 	pkgdesc = a pure-Python git object database
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gitpython-developers/gitdb
 	arch = i686
 	arch = x86_64
