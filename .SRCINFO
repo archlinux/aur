@@ -1,0 +1,20 @@
+pkgbase = gnochm
+	pkgdesc = CHM file viewer for GNOME
+	pkgver = 0.9.11
+	pkgrel = 3
+	url = http://gnochm.sourceforge.net/
+	arch = i686
+	license = GPL
+	depends = python2-pychm
+	depends = python2-gconf
+	depends = python2-gtkhtml2
+	depends = python2-libgnome
+	depends = libgtkhtml
+	depends = gconf>=2.18.0.1-4
+	source = http://sourceforge.net/projects/gnochm/files/gnochm/0.9.11/gnochm-0.9.11.tar.gz
+	source = Makefile.patch
+	md5sums = d77cc819eaa64b3ab333c4a73e88cfc0
+	md5sums = 2a650f7efaa58550ecb3e96753266c1e
+
+pkgname = gnochm
+

@@ -1,0 +1,9 @@
+524,526c524,527
+< 	if test "x$(SHAREDMIME_TOOL)" != "xno"; then \
+< 			$(SHAREDMIME_TOOL) $(datadir)/mime; \
+< 	fi
+---
+> 	:
+> 	#if test "x$(SHAREDMIME_TOOL)" != "xno"; then \
+> 			#$(SHAREDMIME_TOOL) $(datadir)/mime; \
+> 	#fi
