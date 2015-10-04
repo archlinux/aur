@@ -1,0 +1,29 @@
+pkgbase = asymptote-git
+	pkgdesc = A vector graphics language (like metapost)
+	pkgver = 2.36.23.ge660681
+	pkgrel = 1
+	url = http://asymptote.sourceforge.net/
+	install = texlive.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = ghostscript
+	makedepends = imagemagick
+	makedepends = texlive-plainextra
+	depends = gc
+	depends = freeglut
+	depends = glu
+	depends = gsl
+	depends = fftw
+	depends = libsigsegv
+	optdepends = python2: for the xasy GUI
+	optdepends = python-imaging: for the xasy GUI
+	optdepends = tix: for the xasy GUI
+	provides = asymptote=2.36git
+	conflicts = asymptote
+	source = git+https://github.com/vectorgraphics/asymptote.git
+	md5sums = SKIP
+
+pkgname = asymptote-git
+
