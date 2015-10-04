@@ -10,6 +10,7 @@ url='http://github.com/a-sk/node-imapnotify'
 license=('MIT')
 depends=('nodejs')
 optdepends=()
+makedepends=('npm')
 install=$pkgname.install
 conflicts=('nodejs-imapnotify')
 source=($pkgname::git://github.com/a-sk/node-imapnotify.git
