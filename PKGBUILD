@@ -56,5 +56,5 @@ package() {
   rm "${pkgdir}/usr/lib/firmware/".d*
 
   cd drivers
-  find . -name "*.ko" -exec gzip "{}" \; -exec install -D -m 0644 "{}.gz" "${pkgdir}/usr/lib/modules/extramodules-4.0-ARCH/{}.gz" \;
+  find . -name "*.ko" -exec gzip "{}" \; -exec install -D -m 0644 "{}.gz" "${pkgdir}/usr/lib/modules/extramodules-4.2-ARCH/{}.gz" \;
 }
