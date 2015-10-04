@@ -1,10 +1,10 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=4a2012a4ddc7f34e4d9c84364035458980bdd617
+_git=3f97691234d1688ad54b94d9b81f9ef181b0d8e9
 _repo=papirus-pack-kde
 pkgname=papirus-aurorae-theme
-pkgver=20150916
-pkgrel=2
+pkgver=20151004
+pkgrel=1
 pkgdesc="Modified and adaptive Paper decorations for Kwin"
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
@@ -12,7 +12,7 @@ license=('CCPL:by-sa')
 options=('!strip')
 depends=()
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('6ae56de2019c285c79bdb8bfdfc4ddf0ef478614caa04fcdb5f2958472405fc3')
+sha256sums=('87e2b1cbb0e08588a231d5c2638926de7ba566c5c0df81f4a897f95b54957f63')
 
 package() {
     install -d ${pkgdir}/usr/share/aurorae/themes
