@@ -1,0 +1,14 @@
+pkgbase = delayed-hibernation
+	pkgdesc = systemd hook to hibernate suspended system after a delay
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Chrysostomus/delayed-hibernation
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = systemd
+	source = git://github.com/Chrysostomus/delayed-hibernation
+	md5sums = SKIP
+
+pkgname = delayed-hibernation
+
