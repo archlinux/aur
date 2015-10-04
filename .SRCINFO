@@ -1,0 +1,19 @@
+pkgbase = searchandrescue2
+	pkgdesc = Helicopter based search and rescue flight simulator
+	pkgver = 2.3.1
+	pkgrel = 6
+	url = http://sar2.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = scons
+	depends = freealut
+	depends = libxmu
+	depends = libxpm
+	depends = mesa
+	depends = sdl_image
+	source = http://sourceforge.net/projects/sar2/files/sar2-2.3.1.tar.bz2
+	md5sums = 180ad7c3a529e5c7c954b4ef6f758da0
+
+pkgname = searchandrescue2
+
