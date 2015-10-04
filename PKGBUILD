@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}"
-	wget "https://aur.archlinux.org/cgit/aur.git/plain/irccloud-election.desktop?h=irccloud-electron-git" -o ./irccloud-election.desktop
+	wget "https://aur.archlinux.org/cgit/aur.git/plain/irccloud-electron.desktop?h=irccloud-electron-git" -o ./irccloud-electron.desktop
 }
 
 build() {
@@ -34,6 +34,6 @@ build() {
 
 package() {
   cd "${srcdir}"
-	install -Dm644 irccloud-election.desktop "$pkgdir/usr/share/applications/irccloud-election.desktop"
-  install -Dm644 "${srcdir}/${_pkgname}" "$pkgdir/usr/share/irccloud-election"
+	install -Dm644 "${srcdir}/irccloud-electron.desktop" "$pkgdir/usr/share/applications/irccloud-electron.desktop"
+  install -Dm644 "${srcdir}/${_pkgname}" "$pkgdir/usr/share/irccloud-electton"
 }
