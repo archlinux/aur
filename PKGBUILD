@@ -5,17 +5,14 @@
 # Contributor: max1m <mr[dot]mxm86[at]gmail[dot]com>
 
 pkgname=2gis
-pkgver=3.14.12.0
+pkgver=3.15.7.0
 pkgrel=1
 pkgdesc="Geographic Information System (GIS) for some Russian and Ukrainian cities."
 arch=('i686' 'x86_64')
 url="http://help.2gis.ru/linux/"
 license=('Adware')
-if [ "${CARCH}" = 'x86_64' ]; then
-depends=('wine>=1.5' 'lib32-libldap' 'lib32-libxml2' 'hicolor-icon-theme')
-elif [ "${CARCH}" = 'i686' ]; then
-depends=('wine>=1.5' 'libxml2' 'hicolor-icon-theme')
-fi
+depends_x86_64=('wine>=1.5' 'lib32-libldap' 'lib32-libxml2' 'hicolor-icon-theme')
+depends_i686=('wine>=1.5' 'libxml2' 'hicolor-icon-theme')
 makedepends=('xdg-utils')
 install=2gis.install
 
@@ -32,19 +29,19 @@ source=("http://download.2gis.ru/arhives/2GISShell-${pkgver}.orig.zip"
 	"2gis.desktop"
 	"LICENSE.ru"
 	"LICENSE.ua")
-md5sums=('cc8281ff42a1eb1803babe2a1dc7232c'
+sha256sums=('7af78d7ed4837dc1cddb81f76294f2637102b98bc6d0d8bb2b777112f6d2d977'
 
-	'3126035adc7f7873d55137bb921e5356'
-	'6b37fc39d33dc7123eafa15739c51009'
-	'556a7554782ade8f92aa1618db864dea'
-	'd81f31d399f8518802e827ee030e09d9'
-	'e9d4e16abe81b7f9faccb6b0ffe6be42'
-	'a822bf76a89d614bb34019543a31014b'
+	'1bf3ca1fdc82e17b56aec1aa8ee9a42967a6f3e91eaf5313178399529c92f37f'
+	'2a832905089d8fc36eaa6b6a150ae0b45d234676adff462bbb6658b1e0ae8ee5'
+	'879abea0f85b061d0390fce0bf78d4a814feb5905703932b33e692be16fbe907'
+	'7a4d50841be3034b334b61497dfcf9c0a5ccd193b98d3c0d66cad4e10210e3af'
+	'51d32e194bbb07042e643ff8ed1e5cab31e3ff02cea6a5d49cd41cd594545099'
+	'722f03d0a070abfd5da49a0b6f96e168ec4a9cb2d1d9e98c30f301360093523e'
 
-	'd444c77bbc94c687d8edbee794f8f115'
-	'5da78116da466a791741f4c9c29839b7'
-	'415c638aa454ab03b1977c5156888e14'
-	'841a50883a42fe12688e84f66bd26caf')
+	'6b01b53fe254c0afef2a39ae2e4f699120a4983ee557dad5e4c0a4638426902b'
+	'3550306543bd232769a89b4fdeed03dacc934ba63733cc890ceb47461aa059e1'
+	'6f8a3e019f514525ffc334878aea34a6b86a04bdbd968bc982aea9ca7805b32c'
+	'8824e0d8e961a69266593ed0c7d1b63e43a5ec447ae594f4c272238ff8e4e23b')
 
 package() {
   install -d $pkgdir/opt/2gis
