@@ -1,7 +1,7 @@
 pkgbase = hashboot-git
 	pkgdesc = A utility to check at boottime befor network, if /boot or mbr were manipulated.
 	pkgver = 0.7.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.tastytea.de/?p=hashboot.git;a=summary
 	install = hashboot.install
 	arch = any
