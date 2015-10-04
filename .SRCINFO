@@ -1,7 +1,7 @@
 pkgbase = apache-spark
 	pkgdesc = fast and general engine for large-scale data processing
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = http://spark.apache.org
 	install = apache-spark.install
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = apache-spark
 	optdepends = python: PYSPARK_PYTHON=python3 pyspark
 	optdepends = ipython: PYSPARK_DRIVER_PYTHON=ipython pyspark; IPYTHON=1 pyspark
 	backup = etc/apache-spark/spark-env.sh
-	source = http://d3kbcqa49mib13.cloudfront.net/spark-1.4.1.tgz
+	source = http://d3kbcqa49mib13.cloudfront.net/spark-1.5.0.tgz
 	source = apache-spark-standalone.service
 	source = spark-env.sh
-	md5sums = 10ab725b33bb8c6ecc81c75e5018cefb
+	md5sums = 658d5d499a53bbf05c80bbba9de72382
 	md5sums = bb7d8b85366e6f9cc0b2777eaea161a8
 	md5sums = 0913001583e607849270090555dbd309
 
