@@ -1,6 +1,6 @@
 # post install.
 post_install() {
-  depmod $(cat /usr/lib/modules/extramodules-4.0-ARCH/version)
+  depmod $(cat /usr/lib/modules/extramodules-4.2-ARCH/version)
   udevadm control --reload-rules
 }
 

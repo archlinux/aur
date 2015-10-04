@@ -3,7 +3,7 @@
 pkgname="dahdi-linux"
 pkgdesc="DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64")
 url="http://www.asterisk.org/"
 license=("LGPLv2")
@@ -51,6 +51,10 @@ package() {
   make DESTDIR="${pkgdir}" install-firmware
   make DESTDIR="${pkgdir}" install-include
   make DESTDIR="${pkgdir}" install-xpp-firm
+
+  # beautifying firmware directory.
+  rm "${pkgdir}/usr/lib/firmware/".d*
+
   cd drivers
   find . -name "*.ko" -exec gzip "{}" \; -exec install -D -m 0644 "{}.gz" "${pkgdir}/usr/lib/modules/extramodules-4.0-ARCH/{}.gz" \;
 }
