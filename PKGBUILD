@@ -2,7 +2,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 pkgname="sonarr"
 pkgver="2.0.0.3357"
-pkgrel=1
+pkgrel=2
 pkgdesc="PVR for newsgroup users. Formerly known as NZBDrone"
 arch=(any)
 url="http://www.sonarr.tv"
@@ -10,7 +10,9 @@ license=('GPL3')
 depends=('mono' 'libmediainfo' 'sqlite')
 optdepends=('sabnzbd: an NZB downloader'
             'nzbget: an NZB downloader'
-            'transmission: a torrent downloader'
+            'transmission-cli: a torrent downloader (CLI and daemon version)'
+            'transmission-gtk: a torrent downloader (GTK+ version)'
+            'transmission-qt: a torrent downloader (Qt version)'
             'deluge: a torrent downloader')
 install='sonarr.install'
 provides=('nzbdrone' 'nzbdrone-torrents')
