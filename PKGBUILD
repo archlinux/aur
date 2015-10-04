@@ -1,15 +1,15 @@
 # Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
 
 pkgname=lazyusf2-git
-pkgver=r67.3a10429
+pkgver=r69.ab6a646
 pkgrel=1
 pkgdesc="Library for decoding Nintendo 64 Sound Format files using Mupen64plus"
 arch=(i686 x86_64)
-url='https://gitlab.kode54.net/kode54/lazyusf2'
+url='https://bitbucket.org/kode54/lazyusf2'
 license=(GPL2 custom:CC0)
 depends=(glibc zlib)
 makedepends=(git grep)
-source=(${pkgname}::git+https://gitlab.kode54.net/kode54/lazyusf2.git
+source=(${pkgname}::git+https://bitbucket.org/kode54/lazyusf2.git
         makefile.patch
         LICENSE.CC0)
 sha256sums=('SKIP'
