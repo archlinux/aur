@@ -1,0 +1,14 @@
+[Unit]
+Description=Apache Spark Standalone Local Cluster
+After=network.target
+
+[Service]
+User=apache-spark
+Group=apache-spark
+Environment=SPARK_LOG_DIR=/var/lib/apache-spark/logs
+PIDFile=/var/lib/apache-spark/spark-daemon.pid
+ExecStart=/usr/share/apache-spark/sbin/start-all.sh
+ExecStop=/usr/share/apache-spark/sbin/stop-all.sh
+
+[Install]
+WantedBy=multi-user.target
