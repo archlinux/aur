@@ -1,6 +1,6 @@
 pkgbase = python2-path
 	pkgdesc = path.py provides a class (path) for working with files and directories. Less typing than os.path, more fun, a few new tricks
-	pkgver = 8.1.1
+	pkgver = 8.1.2
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/path.py
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-path
 	depends = python2
 	conflicts = ipython2
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/path.py/path.py-8.1.1.tar.gz
-	sha256sums = 2e109f902aed4a7999d465e4ec8456c1112e657840520c5bc7104fb7050d1add
+	source = https://pypi.python.org/packages/source/p/path.py/path.py-8.1.2.tar.gz
+	sha256sums = ada95d117c4559abe64080961daf5badda68561afdd34c278f8ca20f2fa466d2
 
 pkgname = python2-path
 
