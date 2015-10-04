@@ -1,0 +1,14 @@
+pkgbase = libreoffice-fresh-rpm-papirus-theme
+	pkgdesc = Papirus icon theme for LibreOffice Fresh RPM
+	pkgver = 20150815
+	pkgrel = 1
+	url = https://github.com/varlesh/papirus-pack-kde
+	arch = any
+	license = GPL3
+	depends = libreoffice-fresh-rpm
+	noextract = images_papirus.zip
+	source = images_papirus.zip::https://github.com/varlesh/papirus-pack-kde/raw/master/libreoffice-icons/images_papirus.zip
+	sha256sums = 8803e27cd248b8a0d3fbdd97a2e190b21adbe68e4b8708c739d8b738b9217a2f
+
+pkgname = libreoffice-fresh-rpm-papirus-theme
+
