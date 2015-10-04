@@ -1,4 +1,4 @@
-# Maintainer: Flaviu Tamas <tamas.flaviu@gmail.com>
+# Maintainer: Flaviu Tamas <aur@flaviutamas.com>
 # Contributor: Guangyu Zhang <zguangyu123@gmail.com>
 pkgname=testu01
 _pkgname=TestU01
