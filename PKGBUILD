@@ -6,7 +6,7 @@ pkgver=r22.b023e21
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="https://github.com/VFR-maniac/VapourSynth-FFT3DFilter"
+url='https://github.com/VFR-maniac/VapourSynth-FFT3DFilter'
 license=('GPL')
 depends=('vapoursynth' 'fftw')
 makedepends=('git')
@@ -17,16 +17,19 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "r$(git rev-list HEAD 2> /dev/null | wc -l | sed 's/ //g').$(git describe --always)"
+  #echo "$(git describe --long --tags | tr - .)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  rm "${_plug}/VapourSynth.h"
+  rm -fr "${_plug}/VapourSynth.h"
 }
 
 build() {
   cd "${_plug}"
-  ./configure --prefix=/usr --extra-cxxflags="$(pkg-config --cflags vapoursynth)"
+  ./configure --prefix=/usr \
+              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
