@@ -1,0 +1,22 @@
+pkgbase = gst-plugin-libde265
+	pkgdesc = Libde265 plugin (an open h.265 video codec implementation) for gstreamer 1.x.
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/strukturag/gstreamer-libde265
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = libde265
+	depends = gstreamer
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = zlib
+	depends = bzip2
+	source = https://codeload.github.com/strukturag/gstreamer-libde265/zip/v0.1.12
+	source = git://anongit.freedesktop.org/gstreamer/common
+	md5sums = c0f5f3306dfabffb4742bf6432b680e1
+	md5sums = SKIP
+
+pkgname = gst-plugin-libde265
+
