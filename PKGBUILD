@@ -20,7 +20,6 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%%-*}"
-	msg "Checking current version..."
 		git_ver=`git describe --long | sed 's/git-//;s/\([^-]*-g\)/r\1/;s/-/./g'`
 		conf_ver=`sed -n 's/)$//g;s/^AC_INIT(vlc, //p' configure.ac`
 		echo "${git_ver/#${git_ver:0:5}/${conf_ver:0:5}}"
