@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-satip
-pkgver=2.2.1
+pkgver=2.2.3
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="Integrates SAT>IP network devices seamlessly into VDR"
@@ -15,7 +15,7 @@ source=("http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/$pkgname-$pkgver.tgz
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 options=('!emptydirs')
-md5sums=('810393b545e63c19380b8bf71fa457a4'
+md5sums=('e3ce734e15c544f2adc57b651702d48e'
          '1b86395f44c2a7c63b97a7ef6f866ec0')
 
 build() {

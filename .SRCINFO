@@ -1,6 +1,6 @@
 pkgbase = vdr-satip
 	pkgdesc = Integrates SAT>IP network devices seamlessly into VDR
-	pkgver = 2.2.1
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = http://www.saunalahti.fi/rahrenbe/vdr/satip/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = vdr-satip
 	depends = vdr-api=2.2.0
 	options = !emptydirs
 	backup = etc/vdr/conf.avail/50-satip.conf
-	source = http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.1.tgz
+	source = http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.3.tgz
 	source = 50-satip.conf
-	md5sums = 810393b545e63c19380b8bf71fa457a4
+	md5sums = e3ce734e15c544f2adc57b651702d48e
 	md5sums = 1b86395f44c2a7c63b97a7ef6f866ec0
 
 pkgname = vdr-satip
