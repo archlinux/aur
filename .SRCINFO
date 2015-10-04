@@ -1,7 +1,7 @@
 pkgbase = freefilesync
 	pkgdesc = Visual folder comparison and synchronization
-	pkgver = 7.4
-	pkgrel = 1
+	pkgver = 7.5
+	pkgrel = 0
 	url = http://www.freefilesync.org/
 	arch = any
 	license = GPLv3
@@ -10,13 +10,13 @@ pkgbase = freefilesync
 	depends = webkitgtk2
 	depends = boost-libs
 	source = http://downloads.sourceforge.net/project/zenxml/zenXml_2.3.zip
-	source = https://www.dropbox.com/s/iwtqvgnmnuiqv9y/FreeFileSync_7.4_Source.zip?dl=0
+	source = FreeFileSync_7.5_Source.zip::https://db.tt/46y42Ic0
 	source = FreeFileSync.desktop
 	source = ffsicon.png
 	source = RealtimeSync.desktop
 	source = rtsicon.png
 	md5sums = 58baf96cb8e1136d10e1ada7419921c5
-	md5sums = 37887e3c13c0748949928ecc3ba3974c
+	md5sums = 404695994e45758a4bdf0ebcc0956d01
 	md5sums = a7be7841f47f29d8e6210c8ab592a1e3
 	md5sums = 1f452dff6f970d95839411008d86250b
 	md5sums = 90152f1021f2d6fb6ab4fa511dc60fa9
