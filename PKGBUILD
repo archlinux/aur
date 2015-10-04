@@ -22,9 +22,9 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 "55-fractalaudio.rules" "$pkgdir/usr/lib/udev/rules.d/55-fractalaudio.rules"
+  install -Dm644 55-fractalaudio.rules "$pkgdir/usr/lib/udev/rules.d/55-fractalaudio.rules"
   cd "$_pkgname"
-  install -Dm644 "loader/axefx2load.hex" "$pkgdir/usr/share/usb/FractalAudio/axefx2/axefx2load.hex"
+  install -Dm644 loader/axefx2load.hex "$pkgdir/usr/share/usb/FractalAudio/axefx2/axefx2load.hex"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 loader/FAS-License "$pkgdir/usr/share/licenses/$pkgname/FAS-License"
