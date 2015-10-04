@@ -4,7 +4,7 @@
 pkgname=rebar3
 _pkgver=3.0.0-beta.3
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
 url="https://github.com/rebar/rebar3"
@@ -15,6 +15,7 @@ md5sums=('1347cba97461c96dbace6954cd388cf3')
 
 build() {
   cd "$srcdir/$pkgname-$_pkgver"
+  sed -i s/\"git\"/\"${_pkgver}\"/ src/rebar.app.src
   ./bootstrap
 }
 
