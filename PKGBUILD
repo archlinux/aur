@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.2
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -76,8 +76,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
         '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
-        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
-        '0001-fix-bridge-regression.patch')
+        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch')
         
 prepare() {
     cd ${_srcname}
@@ -96,11 +95,6 @@ prepare() {
     # many instances of this error: nf_conntrack: table full, dropping packet
         msg "Add not-yet-mainline-oldd patch to fix network unavailability"
 	patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
-	
-    ### Add not-yes-mainline-oldd patch to fix bridge code
-    # https://bugzilla.kernel.org/show_bug.cgi?id=104161
-        msg "Add not-yes-mainline-oldd patch to fix bridge code"
-        patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
         
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
@@ -451,7 +445,7 @@ package_linux-bfq-docs() {
 
 sha512sums=('a87bbce3c0c6d810a41bbba1c0dcaae80dc38dded9f8571e97fa4ee5a468d655daf52d260911412f7c7da3171a5114e89d63da14b1753b9a3eb2cc38fd89b9ee'
             'SKIP'
-            'b37c71cb46cdbf3b7d2dac84ebf3e09d4e5e2433b150078e0e40ea881296401954b359d7bba6e9358957260cb0ccabafc0579feaef19c949d02ac9cfb48a3002'
+            '08ea0f7da5892ab564310562d511c631a41a06681a0bc602176cdae0827c762bc33804970f66185f4ba27af6eaaf9f0297d5e81fdb0c7705fd8c2df4539d0186'
             'SKIP'
             '077f2c0d5b8e43b295ae52d9b742dc5a7119765016725e4997d0a7cd7941a7622ac057f9bae4b8ed284499853334984f462afbb72ac492806f9657b39ff8503c'
             'a3722869b6bc046a9969efea3c20d96a79ba786a6ce6a834adb70c32453f0c0dac58a456daa842beae53628a30868088efde566be91c7821b74946f2f8dd9c60'
@@ -462,9 +456,7 @@ sha512sums=('a87bbce3c0c6d810a41bbba1c0dcaae80dc38dded9f8571e97fa4ee5a468d655daf
             'f8fedf212f655b4241c9aa4b1161b55ef8f67754b278b46714767819206286d6cee3425268df92aa05cd699b01cc4df72266cc7ba5af7da2986bbdef91c90993'
             'b778ce82f1a8b99b883e802136dc8d3248197198f777e4f96cb1e1ea0990250d88141771f6e6e0139e034e63856f0ae82ef5e470eab64e368278e54fb6e62930'
             '790f82eb281d698db6d3b599a0dcece93345c183a6ebe4478d3e17fa916a2a6d763e89058543b32a87beddab37924078c618e8de1bd3cbcc0747be681be3349b'
-            '151f797ee9c7756bf711422e47482644072988803fa894e62d34ec8d85375e5097dbdc70eecfb7ac8b0d813c634e043a522dba6e3155424013537939cdc931da'
-            'df396cf09a42b1ce1cbf5e611d9322e6136f47a033131f77533efdc678f70e8d91dd7ce8a6050bc3b6e30d82a8ccc3f53e677079d813c1ae0d22b4b6c2746c44')
-
+            '151f797ee9c7756bf711422e47482644072988803fa894e62d34ec8d85375e5097dbdc70eecfb7ac8b0d813c634e043a522dba6e3155424013537939cdc931da')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
