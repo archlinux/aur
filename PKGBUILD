@@ -8,8 +8,8 @@ pkgrel=1
 pkgdesc="Mac App, Win App and Linux app for IRCCloud. (An Electron wrapper for IRCCloud.) "
 arch=('any')
 url="https://github.com/dalinaum/${_pkgname}"
-license=('custom')
-depends=('nodejs' 'nodejs-livescript')
+license=('MIT')
+depends=('nodejs')
 makedepends=('nodejs' 'npm' 'git')
 source=("${_pkgname}"::"git+https://github.com/dalinaum/${_pkgname}.git")
 md5sums=('SKIP')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}/${_pkgname}"
   npm install
   npm run build
 }
