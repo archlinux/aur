@@ -1,7 +1,7 @@
 pkgbase = amide
 	pkgdesc = Medical Imaging Data Examiner
 	pkgver = 1.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://amide.sourceforge.net/packages.html
 	arch = i686
 	arch = x86_64

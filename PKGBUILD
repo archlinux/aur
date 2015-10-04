@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=amide  
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Medical Imaging Data Examiner"
 url="http://amide.sourceforge.net/packages.html"
 arch=('i686' 'x86_64')
@@ -14,8 +14,10 @@ md5sums=('8a9b89e3d3ec1bb3e390f202f4861a7c')
 options=('!makeflags')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --enable-ffmpeg --with-xmedcon-exec-prefix=/usr/bin
+  cd $srcdir/$pkgname-$pkgver/
+  ./configure --prefix=/usr --enable-ffmpeg --enable-libdcmdata=no --enable-gtk-doc=yes
+  make
+  ./configure --prefix=/usr --enable-ffmpeg --enable-libdcmdata --with-xmedcon-exec-prefix=/usr/bin
   make
 }
 package() {
