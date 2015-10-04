@@ -28,7 +28,6 @@ pkgbase = catalyst-test
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	optdepends = acpid: acpi event support / atieventsd
 	optdepends = procps-ng: brings pgrep used in acpi event support
-	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
 	provides = libgl
 	provides = libatical=15.9
 	provides = catalyst=15.9
@@ -77,15 +76,13 @@ pkgbase = catalyst-test
 	source = temp-links-catalyst.service
 	source = lano1106_fglrx_intel_iommu.patch
 	source = lano1106_kcl_agp_13_4.patch
-	source = lano1106_fglrx-13.8_proc.patch
-	source = cold-fglrx-3.14-current_euid.patch
 	source = fglrx_gpl_symbol.patch
-	source = fglrx_3.17rc6-no_hotplug.patch
 	source = ubuntu_buildfix_kernel_4.0.patch
 	source = ubuntu_buildfix_kernel_4.1.patch
 	source = ubuntu_buildfix_kernel_4.2.patch
 	source = 4.2-fglrx-has_fpu.patch
 	source = 4.2-kolasa-fpu_save_init.patch
+	source = ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
 	md5sums = d2de2df6946b452c266a3c892e6e46ff
 	md5sums = 601d9c756571dd79d26944e54827631e
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
@@ -108,15 +105,13 @@ pkgbase = catalyst-test
 	md5sums = 2c22bb4d4f828cb8b024f670c1ae7e45
 	md5sums = 5184b94a2a40216a67996999481dd9ee
 	md5sums = c5156eddf81c8a1719b160d05a2e8d67
-	md5sums = 2ab4837233de42332753882445373d7b
-	md5sums = ba33b6ef10896d3e1b5e4cd96390b771
 	md5sums = ef97fc080ce7e5a275fe0c372bc2a418
-	md5sums = 67a22f624bae95a76638ce269392cb01
 	md5sums = 880d5e59554cda382f74206c202942be
 	md5sums = 982451bcc1fa1ee3da53ffa481d65581
 	md5sums = 88832af8d6769aa51fa9b266a74394e0
 	md5sums = ed7748a593d6b894269f8c7856b7ae50
 	md5sums = dd51495a1d8f2d1042f04a783bf01e08
+	md5sums = 2f7d42fde403a1b4a22e5db8de738d0f
 
 pkgname = catalyst-test
 
