@@ -5,14 +5,14 @@ pkgver=r190.fb78c3b
 pkgrel=1
 pkgdesc="Multi-purpose console music emulator and player library (a.k.a. libgme) (kode54's fork)"
 arch=(i686 x86_64)
-url='https://gitlab.kode54.net/kode54/Game_Music_Emu'
+url='https://github.com/kode54/game_music_emu'
 license=('LGPL2.1')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'qtchooser')
 conflicts=('libgme')
 provides=('libgme')
-source=("${pkgname}::git+https://gitlab.kode54.net/kode54/Game_Music_Emu.git"
-        'File_Extractor::git+https://gitlab.kode54.net/kode54/File_Extractor.git')
+source=("${pkgname}::git+https://github.com/kode54/game_music_emu.git"
+        'File_Extractor::git+https://github.com/kode54/file_extractor.git')
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
