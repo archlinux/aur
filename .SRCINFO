@@ -1,7 +1,7 @@
 pkgbase = simpmd-git
 	pkgdesc = Full emulator of PMD85 (git)
 	pkgver = r1.4472469
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dsrg.mff.cuni.cz/~ceres/prj/SimPMD/
 	arch = i686
 	arch = x86_64
