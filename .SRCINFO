@@ -1,5 +1,5 @@
 pkgbase = zfs-dkms
-	pkgver = 0.6.4.2
+	pkgver = 0.6.5.2
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = zfs-dkms
 pkgname = zfs-dkms
 	pkgdesc = Kernel modules for the Zettabyte File System.
 	install = zfs.install
-	depends = spl-dkms=0.6.4.2-1
-	depends = zfs-utils=0.6.4.2-1
+	depends = spl-dkms=0.6.5.2-1
+	depends = zfs-utils=0.6.5.2-1
 	depends = dkms
 	provides = zfs
 	conflicts = zfs-git
@@ -28,7 +28,7 @@ pkgname = zfs-dkms
 
 pkgname = zfs-utils
 	pkgdesc = Kernel module support files for the Zettabyte File System.
-	depends = spl-dkms=0.6.4.2-1
+	depends = spl-dkms=0.6.5.2-1
 	conflicts = zfs-utils-git
 	conflicts = zfs-utils-lts
 	replaces = zfs-utils-dkms-git

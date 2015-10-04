@@ -8,9 +8,9 @@ post_upgrade() {
 
 check_initramfs() {    
     echo " >>>  To build the module for the current kernel use this command:
-        # dkms install zfs/0.6.4.2 -k _KERNEL_VERSION_HERE_
+        # dkms install zfs/0.6.5.2 -k _KERNEL_VERSION_HERE_
       or just boot to kernel you want to build and do
-        # dkms install zfs/0.6.4.2 -k \$(uname -r)
+        # dkms install zfs/0.6.5.2 -k \$(uname -r)
 
  >>>  Always remember to install kernel headers!
 "
