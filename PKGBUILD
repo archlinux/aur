@@ -6,17 +6,17 @@
 # Maintainer: Taylor Lookabaugh <jesus.christ.i.love@gmail.com>
 pkgname=crandpass
 pkgver=6
-pkgrel=1
+pkgrel=2
 pkgdesc="A random password generator for Linux."
 arch=("any")
 url="http://kitsunerising.blogspot.com/"
 license=('GPL3')
 depends=("bash")
-source=(https://build.opensuse.org/package/rawsourcefile/home:kitsuneflame/$pkgname/$pkgname-$pkgver.tar.gz?srcmd5=1e208bd16cea7dab8ded035562732f23)
-md5sums=('5a789cdd5f68ca618e9bee27bdbc24cf')
+source=(https://github.com/LookTJ/crandpass/archive/master.zip)
+md5sums=('9a9e4d18540c6da9365d09ffb1f4383b')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-master"
 }
 
 
@@ -24,5 +24,5 @@ prepare() {
 
 
 package() {
-    install -D "$srcdir/$pkgname-$pkgver/src/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -D "$srcdir/$pkgname-master/src/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
