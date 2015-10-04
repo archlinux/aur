@@ -1,0 +1,20 @@
+pkgbase = divxenc
+	pkgdesc = An interactive mencoder wrapper to encode DVD/video to FMP4/DivX
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://divxenc.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = lsdvd
+	depends = mplayer
+	optdepends = neroaacenc: AAC+ encoding
+	optdepends = vorbis-tools: Ogg Vorbis encoding
+	optdepends = ogmtools: OGM muxing; exporting DVD chapters
+	optdepends = gpac: AVI->MP4 conversion
+	optdepends = mkvtoolnix: AVI->MKV conversion
+	optdepends = pv: DVD ISO dumps
+	source = http://downloads.sourceforge.net/divxenc/divxenc-1.8.0.tar.gz
+	sha256sums = 39e23a0007226e25f62cfa6aac789ff0dcc00a14118bea55e92bf0f659aaf2fb
+
+pkgname = divxenc
+
