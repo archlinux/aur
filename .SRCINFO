@@ -1,0 +1,24 @@
+pkgbase = pcsxr-gtk2
+	pkgdesc = A Sony PlayStation (PSX) emulator based on the PCSX-df project (Gtk2 version)
+	pkgver = 1.9.92
+	pkgrel = 1
+	url = http://pcsxr.codeplex.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	depends = libcdio
+	depends = libgl
+	depends = libglade
+	depends = libxtst
+	depends = libxv
+	depends = sdl
+	conflicts = pcsxr
+	source = https://sources.archlinux.org/other/community/pcsxr/pcsxr-1.9.92.tar.bz2
+	source = link_order.patch
+	md5sums = 28411aed0b4424f97227d94bdefaec83
+	md5sums = ce021bfc4c19e553a2cdb95b7ca1eb01
+	makedepends_i686 = nasm
+
+pkgname = pcsxr-gtk2
+
