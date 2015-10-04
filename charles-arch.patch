@@ -1,10 +1,10 @@
---- charles/bin/charles.orig	2011-11-14 19:54:27.000000000 +0100
-+++ charles/bin/charles	2011-11-30 11:57:46.635362807 +0100
+--- charles/bin/charles.orig	2015-10-04 12:35:48.719318374 +0200
++++ charles/bin/charles	2015-10-04 12:36:03.395972322 +0200
 @@ -6,15 +6,7 @@
  
  # Find Charles lib directory
  if [ -z "$CHARLES_LIB"]; then
--	CHARLES_LIB=`dirname $0`/../lib
+-	CHARLES_LIB="$(dirname "$(readlink -f "$0")")"/../lib
 -	if [ ! -f "$CHARLES_LIB/charles.jar" ]; then
 -		CHARLES_LIB="/usr/lib/charles-proxy"
 -	fi
