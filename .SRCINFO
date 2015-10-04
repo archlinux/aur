@@ -1,7 +1,7 @@
 pkgbase = python-pyusb
 	pkgdesc = A pure Python module which provides USB access.
 	pkgver = 1.0.0b2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/walac/pyusb
 	arch = any
 	license = custom
