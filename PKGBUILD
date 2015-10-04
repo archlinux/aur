@@ -5,7 +5,7 @@
 
 pkgname=mcomix-git
 _gitname=mcomix
-pkgver=20150907
+pkgver=r1396.9ed169d
 pkgrel=1
 pkgdesc="A user-friendly, customizable image viewer specifically designed to handle comic books"
 arch=('any')
@@ -24,6 +24,11 @@ conflicts=("mcomix")
 source=('git+https://github.com/benoit-pierre/mcomix.git')
 sha256sums=('SKIP')
 install=mcomix.install
+
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
     cd "${srcdir}/${_gitname}"
