@@ -2,7 +2,7 @@
 
 pkgname=hashboot-git
 pkgver=0.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility to check at boottime befor network, if /boot or mbr were manipulated."
 arch=('any')
 url="https://git.tastytea.de/?p=hashboot.git;a=summary"
@@ -21,7 +21,7 @@ package() {
 	install -m755 -d "${pkgdir}/usr/lib/systemd/system/"
 	install -Dm644 initscript.systemd "${pkgdir}/usr/lib/systemd/system/hashboot.service"
 	install -Dm755 hashboot "${pkgdir}/usr/bin/hashboot"
-	sed 's/xfer/ne/g' "hashboot" > hashtboot.tmp
+	sed 's/xfer/ne/g' "hashboot" > "$srcdir/hashtboot.tmp"
         install -Dm755 hashboot.tmp "${pkgdir}/usr/bin/hashboot"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/HUGWARE"
 }
