@@ -1,0 +1,17 @@
+pkgbase = afx2tool-linux-git
+	pkgdesc = Linux CLI tool to backup and restore Axe-FX II data
+	pkgver = 0.r25.f74c4fe
+	pkgrel = 1
+	url = https://github.com/TieDyedDevil/afx2tool-linux
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = alsa-utils
+	depends = afx2usb-linux
+	provides = afx2tool-linux
+	conflicts = afx2tool-linux
+	source = afx2tool-linux::git+https://github.com/TieDyedDevil/afx2tool-linux.git
+	md5sums = SKIP
+
+pkgname = afx2tool-linux-git
+
