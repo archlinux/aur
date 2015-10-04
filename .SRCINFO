@@ -1,13 +1,14 @@
 pkgbase = xkb-switch-git
 	pkgdesc = Program that allows to query and change the XKB layout state
 	pkgver = 20150826
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ierton/xkb-switch
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	depends = libx11
 	source = git://github.com/ierton/xkb-switch
 	sha1sums = SKIP
 
