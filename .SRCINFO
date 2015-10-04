@@ -1,7 +1,7 @@
 pkgbase = python-mpd2
 	pkgdesc = Python MPD client library
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/python-mpd2
 	arch = any
 	license = GPL3

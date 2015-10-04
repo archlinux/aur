@@ -6,7 +6,7 @@
 
 pkgname='python-mpd2'
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python MPD client library"
 url="http://pypi.python.org/pypi/python-mpd2"
 license=('GPL3')
