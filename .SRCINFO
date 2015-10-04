@@ -1,7 +1,7 @@
 pkgbase = tengine-extra
 	pkgdesc = A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tengine.taobao.org
 	install = tengine.install
 	arch = i686

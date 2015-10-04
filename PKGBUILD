@@ -5,9 +5,10 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 
+_tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
@@ -36,6 +37,21 @@ source=($url/download/tengine-$pkgver.tar.gz
 sha256sums=('7729d3a51a5f267c6d39bec957d242b626b798ce0546f207bd0f1a8df86ed570'
             '7abffe0f1ba1ea4d6bd316350a03257cc840a9fbb2e1b640c11e0eb9351a9044'
             '4e2a1835d1e65e6c18b0c76699ff76f8c905124143e66bb686e4795f6b770a8c')
+
+prepare() {
+    cd "$srcdir"
+    msg "Connecting to GIT server..."
+    if [ -d $_tcp_module_gitname ]; then
+        git fetch https://github.com/yaoweibin/$_tcp_module_gitname.git
+        msg "The local files are updated."
+    else
+        git clone --depth=1 https://github.com/yaoweibin/$_tcp_module_gitname.git
+    fi
+    msg "GIT checkout done or server timeout"
+
+    cd "$srcdir"/tengine-$pkgver
+    patch -p1 < "$srcdir"/"$_tcp_module_gitname"/tcp.patch
+}
 
 build() {
     cd tengine-$pkgver
@@ -80,7 +96,8 @@ build() {
         --with-http_mp4_module=shared \
         --with-http_sub_module=shared \
         --with-http_sysguard_module=shared \
-        --with-http_reqstat_module=shared
+        --with-http_reqstat_module=shared \
+        --add-module="$srcdir"/"$_tcp_module_gitname"
 
     make
 }
