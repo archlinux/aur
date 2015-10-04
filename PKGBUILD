@@ -1,4 +1,4 @@
-# Maintainer: Flaviu Tamas <tamas.flaviu@gmail.com>
+# Maintainer: Flaviu Tamas <aur@flaviutamas.com>
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=pylote
