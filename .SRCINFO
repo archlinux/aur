@@ -1,0 +1,14 @@
+pkgbase = ratmen
+	pkgdesc = A simple program to create X menus from the command line
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://www.update.uu.se/~zrajm/programs/
+	arch = i686
+	arch = x86_64
+	license = unknow
+	depends = libx11
+	source = http://www.update.uu.se/~zrajm/programs/ratmen/ratmen-2.2.3.tar.gz
+	md5sums = 4cc8de0f3138d9eacb06f08292df6294
+
+pkgname = ratmen
+
