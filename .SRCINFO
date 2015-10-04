@@ -1,7 +1,7 @@
 pkgbase = flac2all
 	pkgdesc = Multi-threaded audio converter of FLAC to either Ogg Vorbis or MP3 retaining all tags and metadata.
 	pkgver = 3.71
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ZivaVatra/flac2all
 	arch = any
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = flac2all
 	optdepends = opus-tools: for opus support
 	conflicts = flac2all-svn
 	source = https://github.com/graysky2/flac2all/archive/v3.71.tar.gz
-	sha256sums = 2bae1c535dad613f659ea42e8c769f4bb9a89b940edfbeaee60e8561ffcf77e8
+	sha256sums = 57026366350d1d399895611e6b30a3f2e15856afc03981a175cdab4b0e37c07b
 
 pkgname = flac2all
 

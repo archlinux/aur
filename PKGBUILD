@@ -2,7 +2,7 @@
 
 pkgname=flac2all
 pkgver=3.71
-pkgrel=4
+pkgrel=5
 pkgdesc="Multi-threaded audio converter of FLAC to either Ogg Vorbis or MP3 retaining all tags and metadata."
 arch=('any')
 url="https://github.com/ZivaVatra/flac2all"
@@ -15,7 +15,7 @@ optdepends=('lame: for mp3 support'
 
 # graysky is temp hosting on his github until Ziva tags his releases
 source=("https://github.com/graysky2/flac2all/archive/v$pkgver.tar.gz")
-sha256sums=('2bae1c535dad613f659ea42e8c769f4bb9a89b940edfbeaee60e8561ffcf77e8')
+sha256sums=('57026366350d1d399895611e6b30a3f2e15856afc03981a175cdab4b0e37c07b')
 
 package() {
 	cd "$pkgname-$pkgver"
