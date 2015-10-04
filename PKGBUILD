@@ -1,23 +1,23 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libass
-pkgver=0.12.3
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A portable library for SSA/ASS subtitles rendering (mingw-w64)"
 arch=('any')
 url="https://github.com/libass/libass/"
 license=('BSD')
-depends=('mingw-w64-crt' 'mingw-w64-fribidi' 'mingw-w64-fontconfig' 'mingw-w64-enca')
+depends=('mingw-w64-crt' 'mingw-w64-fribidi' 'mingw-w64-fontconfig')
 options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-configure' 'yasm')
-source=("https://github.com/libass/libass/archive/${pkgver}.tar.gz")
-md5sums=('1b53e739ab389335ce46fd626777ec61')
+source=("https://github.com/libass/libass/releases/download/${pkgver}/libass-${pkgver}.tar.xz")
+md5sums=('8e6a506b4e5a637764183083421dc827')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-  cd ${srcdir}/libass-$pkgver
-  ./autogen.sh
-}
+#prepare() {
+#  cd ${srcdir}/libass-$pkgver
+#  ./autogen.sh
+#}
 
 build() {
   for _arch in ${_architectures}; do
@@ -25,7 +25,6 @@ build() {
 
     unset LDFLAGS CPPFLAGS
     ${_arch}-configure \
-    --enable-enca \
     --enable-harfbuzz \
     --enable-fontconfig
 
