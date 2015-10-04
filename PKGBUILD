@@ -5,10 +5,10 @@ _module="${_name%1}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Authentication Library for OpenStack Identity"
 arch=("any")
-url="https://github.com/openstack/${_name}"
+url="https://github.com/openstack/${_module}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
@@ -31,6 +31,7 @@ package_python-keystoneauth() {
              "python-requests>=2.5.2"
              "python-six>=1.9.0"
              "python-stevedore>=1.5.0")
+    provides=("python-${_name}=${pkgver}-${pkgrel}")
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
@@ -40,6 +41,7 @@ package_python2-keystoneauth() {
              "python2-requests>=2.5.2"
              "python2-six>=1.9.0"
              "python2-stevedore>=1.5.0")
+    provides=("python2-${_name}=${pkgver}-${pkgrel}")
     cd "${srcdir}/${_name}-${pkgver}-python2"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
