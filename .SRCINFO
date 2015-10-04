@@ -1,14 +1,15 @@
 pkgbase = auto-complete
 	pkgdesc = A plugin for emacs that allows to auto-complete.Auto Complete Mode is the most intelligent auto-completion extension for GNU Emacs.
-	pkgver = 1.3.1
+	pkgver = 1.5.0
 	pkgrel = 1
-	url = http://cx4a.org/software/auto-complete/
-	install = auto-complete.install
+	url = http://auto-complete.org/
 	arch = any
 	license = GPL3
+	makedepends = emacs
+	makedepends = cask
 	optdepends = emacs
-	source = http://cx4a.org/pub/auto-complete/auto-complete-1.3.1.tar.bz2
-	md5sums = 0ffdc1223d40b8ebc57495e33708ceea
+	source = auto-complete-1.5.0.tar.gz::https://github.com/auto-complete/auto-complete/archive/v1.5.0.tar.gz
+	md5sums = 014530e9988c3f5e98c7993cce0ecd6b
 
 pkgname = auto-complete
 

@@ -1,17 +1,17 @@
 # Maintainer: abf <zouxiaoming@gmail.com>
 
 pkgname=auto-complete
-pkgver=1.3.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A plugin for emacs that allows to auto-complete.Auto Complete Mode is the most intelligent auto-completion extension for GNU Emacs."
 arch=('any')
-url="http://cx4a.org/software/auto-complete/"
+url="http://auto-complete.org/"
 license=('GPL3')
-install=$pkgname.install
 depends=()
+makedepends=('emacs' 'cask')
 optdepends=('emacs')
-source=(http://cx4a.org/pub/auto-complete/$pkgname-$pkgver.tar.bz2)
-md5sums=('0ffdc1223d40b8ebc57495e33708ceea')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/auto-complete/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('014530e9988c3f5e98c7993cce0ecd6b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
