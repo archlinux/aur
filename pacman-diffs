@@ -103,17 +103,17 @@ function make_diff()
     local file1="$1"
     local file2="$2"
     local original="$3"
-    local nothing=1
-    IFS=$'\n'
-    # < : removed       > : added
-    diff $file1 $file2| grep -E "^>|^<" | while read line ; do
-        if [ "${line::1}" = '<' ]; then c="$c_red-"; else c="$c_green+"; fi
-        echo -e "$c ${line:2}$c_end"
-        nothing=0
-    done
-    if [[ $nothing -eq 1 ]]; then
+
+    if [[ $(diff $file1 $file2|wc -l) -eq 0 ]]; then
         # can remove etc/pacnew
-        echo -e "-- ${c_yellow}${txt[erase]}${c_end} : sudo rm $file"
+        echo -e "-- ${c_yellow}${txt[erase]}${c_end} : sudo rm $original"
+    else
+        IFS=$'\n'
+        # < : removed       > : added
+        diff $file1 $file2| grep -E "^>|^<" | while read line ; do
+            if [ "${line::1}" = '<' ]; then c="$c_red-"; else c="$c_green+"; fi
+            echo -e "$c ${line:2}$c_end"
+        done    
     fi
 }
 
