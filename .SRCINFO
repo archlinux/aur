@@ -8,7 +8,7 @@ pkgbase = playerctl
 	license = LGPL3
 	depends = glib2
 	depends = gobject-introspection
-	optdepends = python-gobject
+	optdepends = python-gobject: python bindings
 	source = https://github.com/acrisci/playerctl/releases/download/v0.4.2/playerctl-0.4.2.tar.gz
 	md5sums = 480ef14416607baa3d8bd8fe305d55d1
 

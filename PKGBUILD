@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/acrisci/playerctl"
 license=('LGPL3')
 depends=('glib2' 'gobject-introspection')
-optdepends=('python-gobject')
+optdepends=('python-gobject: python bindings')
 source=("https://github.com/acrisci/playerctl/releases/download/v${pkgver}/playerctl-${pkgver}.tar.gz")
 md5sums=("480ef14416607baa3d8bd8fe305d55d1")
 
