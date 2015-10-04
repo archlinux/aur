@@ -1,13 +1,13 @@
 pkgbase = crandpass
 	pkgdesc = A random password generator for Linux.
 	pkgver = 6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kitsunerising.blogspot.com/
 	arch = any
 	license = GPL3
 	depends = bash
-	source = https://build.opensuse.org/package/rawsourcefile/home:kitsuneflame/crandpass/crandpass-6.tar.gz?srcmd5=1e208bd16cea7dab8ded035562732f23
-	md5sums = 5a789cdd5f68ca618e9bee27bdbc24cf
+	source = https://github.com/LookTJ/crandpass/archive/master.zip
+	md5sums = 9a9e4d18540c6da9365d09ffb1f4383b
 
 pkgname = crandpass
 
