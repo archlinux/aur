@@ -13,6 +13,5 @@ md5sums=('SKIP')
 
 package () {
   cd "$srcdir"
-  install -Dm755 "$srcdir/$pkgname/suspend-to-hibernate.service" 
-"$pkgdir/etc/systemd/system/suspend-to-hibernate.service"
+  install -Dm755 "$srcdir/$pkgname/suspend-to-hibernate.service" "$pkgdir/etc/systemd/system/suspend-to-hibernate.service"
 }
