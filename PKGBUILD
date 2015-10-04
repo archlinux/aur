@@ -19,11 +19,6 @@ pkgver() {
 	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}"
-  cp irccloud-election.desktop.in irccloud-election.desktop
-}
-
 build() {
   cd "${srcdir}/${_pkgname}"
   npm install
