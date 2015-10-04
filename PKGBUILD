@@ -3,6 +3,7 @@
 . PKGBUILD.common
 
 pkgbase='bareos'
+
 pkgname=("${pkgbase}-common"
          "${pkgbase}-bconsole"
          "${pkgbase}-database-common"
@@ -24,5 +25,5 @@ pkgname=("${pkgbase}-common"
 source=("https://github.com/bareos/bareos/archive/Release/${pkgver}.tar.gz"
         "PKGBUILD.common")
 
-sha256sums=('f42bc34afa913cfb4d6b7ef8856c7195d8b13b21c987da1039d46e6c60f06720'
-            '56eb1e45003fa2de137333bfc74a85518b0dae21c50e49f48df44c2e63bb3ebf')
+sha256sums=('020b974b54f10d245ee920dd3144827ef32588599e703e4f3ce1c913a0201160'
+            '4323ea77dc3c370c130d801887d871cdb2aed9f4f251ec63d85b6e80ca7c1f0e')
