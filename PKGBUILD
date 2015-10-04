@@ -1,15 +1,16 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Arkham <arkham at archlinux dot us>
 # Contributor: dirty_d <andrew2085 at gmail dot com>
 
 pkgname=joyutils
 pkgver=1.2.15
-pkgrel=6
+pkgrel=7
 pkgdesc='jscal, jstest, and jsattach utilities for the linux joystick driver'
 arch=('x86_64' 'i686')
 url='http://atrey.karlin.mff.cuni.cz/~vojtech/joystick/'
 license=('GPL')
 makedepends=('addinclude')
+conflicts=('linuxconsole')
 source=("ftp://atrey.karlin.mff.cuni.cz/pub/linux/joystick/joystick-$pkgver.tar.gz")
 sha256sums=('532b3ad453824e7932c6b68b59c3a20b8c40f45c13c343d3cb109ca08296716d')
 
@@ -17,11 +18,11 @@ build() {
   cd "joystick-$pkgver"
 
   addinclude jscal.c stdlib
-  gcc -lm -o jscal jscal.c ${CFLAGS}
-  gcc -o jstest jstest.c ${CFLAGS}
-  gcc -o jsattach jsattach.c ${CFLAGS}
+  gcc -lm -o jscal jscal.c $CFLAGS
+  gcc -o jstest jstest.c $CFLAGS
+  gcc -o jsattach jsattach.c $CFLAGS
 }
-  
+
 package() {
   cd "joystick-$pkgver"
 
