@@ -16,7 +16,7 @@ pkgbase = arch-headless
 	depends = sed
 	depends = util-linux
 	source = https://github.com/wiemag/arch-headless/archive/v1.14.tar.gz
-	md5sums = 651c9aee08187135f5737582ad029e90
+	md5sums = 4121e77baf2f237a82b785c5676da92f
 
 pkgname = arch-headless
 
