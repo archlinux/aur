@@ -1,0 +1,16 @@
+pkgbase = afflib
+	pkgdesc = is an extensible open format for the storage of disk images and related forensic information.
+	pkgver = 3.7.4
+	pkgrel = 1
+	url = https://github.com/simsong/AFFLIBv3/releases
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = openssl
+	depends = fuse
+	source = https://github.com/simsong/AFFLIBv3/archive/v3.7.4.tar.gz
+	md5sums = a81470590cfc2f22a3168f89ebe27ea6
+
+pkgname = afflib
+
