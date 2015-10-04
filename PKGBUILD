@@ -29,7 +29,7 @@ package_libsystemd-standalone() {
   provides=( 'libsystemd.so' 'libsystemd' )
 
   cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libsystemd.so.0.10.1 "${pkgdir}/usr/lib/libsystemd.so.0.8.0"
+  install -Dm644 .libs/libsystemd.so.0.11.0 "${pkgdir}/usr/lib/libsystemd.so.0.8.0"
   ln -s libsystemd.so.0.10.1 "${pkgdir}/usr/lib/libsystemd.so"
 
   # Headers
