@@ -1,0 +1,15 @@
+pkgbase = python-adafruit_dht
+	pkgdesc = Python library to read the DHT series of humidity and temperature sensors on a Raspberry Pi or Beaglebone Black.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mala-zaba/Adafruit_Python_DHT
+	arch = armv5h
+	arch = armv7h
+	license = GPLv3
+	depends = python
+	depends = git
+	source = git://github.com/mala-zaba/Adafruit_Python_DHT
+	md5sums = SKIP
+
+pkgname = python-adafruit_dht
+
