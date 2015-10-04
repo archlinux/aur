@@ -1,0 +1,24 @@
+pkgbase = gimp-plugin-pspi
+	pkgdesc = Pspi is a GIMP plug-in that runs 3rd-party Photoshop plug-in filters.
+	pkgver = 1.0.7
+	pkgrel = 5
+	url = http://the-tml.net/gimp/pspi.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gimp
+	depends = wine
+	source = http://the-tml.net/gimp/gimp-pspi-1.0.7.suse10.i386.tar.gz
+	source = license
+	md5sums = 01a465b0773f1f3cbded197dc1580c06
+	md5sums = 6a1522ad01ba6bc0d6773cd38ad5e240
+	depends_i686 = libpng12
+	depends_i686 = cairo
+	depends_i686 = glitz
+	depends_x86_64 = lib32-libpng12
+	depends_x86_64 = lib32-glitz
+	depends_x86_64 = lib32-cairo
+	depends_x86_64 = lib32-gimp
+
+pkgname = gimp-plugin-pspi
+
