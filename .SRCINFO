@@ -8,6 +8,7 @@ pkgbase = irccloud-electron-git
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = git
+	makedepends = wget
 	depends = nodejs
 	source = IRCCloud::git+https://github.com/dalinaum/IRCCloud.git
 	md5sums = SKIP
