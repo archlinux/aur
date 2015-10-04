@@ -1,6 +1,6 @@
 pkgbase = python2-django-hyperkitty
 	pkgdesc = A Django app that provides a web user interface to access GNU Mailman archives
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/mailman/hyperkitty
 	arch = any
@@ -19,11 +19,11 @@ pkgbase = python2-django-hyperkitty
 	depends = python2-dateutil
 	depends = python2-enum34
 	depends = python2-networkx
-	depends = lessc
 	depends = python2-robot-detection
 	depends = python2-django-extensions
+	depends = sassc
 	options = !emptydirs
-	source = hyperkitty-1.0.1.tar.gz::https://gitlab.com/mailman/hyperkitty/repository/archive.tar.gz?ref=v1.0.1
+	source = hyperkitty-1.0.3.tar.gz::https://gitlab.com/mailman/hyperkitty/repository/archive.tar.gz?ref=v1.0.3
 	sha256sums = c1615b0c98a2611f64e1f1f18f0b57a1d8ef3aaf8d7b14f2f563ae93244c04a3
 
 pkgname = python2-django-hyperkitty
