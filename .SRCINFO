@@ -1,0 +1,18 @@
+pkgbase = ipython-ipyparallel
+	pkgdesc = Interactive Parallel Computing in Python
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/ipython/ipyparallel
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/ipython/ipyparallel/archive/4.0.2.tar.gz
+	md5sums = d33d94b733f02c0f8d6102dcb9be6a58
+
+pkgname = ipython-ipyparallel
+	depends = ipython
+
+pkgname = ipython2-ipyparallel
+	depends = ipython2
+
