@@ -37,6 +37,7 @@ build() {
 
 package() {
   cd "${srcdir}"
+	ln -s /usr/share/irccloud-electron/electron $pkgdir/usr/bin/irccloud-electron
 	echo "Packaging.. : [Desktop Shortcut] | Icon | Other Files | Done"
 	install -Dm644 "${srcdir}/irccloud-electron.desktop" "$pkgdir/usr/share/applications/irccloud-electron.desktop"
 	echo "Packaging.. : Desktop Shortcut | [Icon] | Other Files | Done"

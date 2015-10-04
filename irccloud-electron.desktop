@@ -2,7 +2,7 @@
 Name=IRCCloud
 Comment=Linux app for IRCCloud. (An Electron wrapper for IRCCloud.)
 GenericName=IRCClient
-Exec=/usr/share/irccloud-electron/electron %U
+Exec=irccloud-electron %U
 Icon=/usr/share/irccloud-electron/icon.png
 Type=Application
 StartupNotify=true
