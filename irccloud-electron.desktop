@@ -1,10 +1,9 @@
 [Desktop Entry]
 Name=IRCCloud
-Comment=Mac App, Win App and Linux app for IRCCloud. (An Electron wrapper for IRCCloud.)
+Comment=Linux app for IRCCloud. (An Electron wrapper for IRCCloud.)
 GenericName=IRC Client
-Exec=/usr/share/irccloud-election/electron %U
-Icon=/usr/share/irccloud-election/icon.png
+Exec=/usr/share/irccloud-electron/electron %U
+Icon=/usr/share/irccloud-electron/icon.png
 Type=Application
 StartupNotify=true
-Categories=GNOME;GTK;Utility;
-MimeType=text/plain;
+Categories=GNOME;GTK;Network;IRCClient;
