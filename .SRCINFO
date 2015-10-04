@@ -1,7 +1,7 @@
 pkgbase = python-cliff-tablib
 	pkgdesc = tablib formatters for cliff
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dreamhost/cliff-tablib
 	arch = any
 	license = Apache
