@@ -10,7 +10,9 @@ pkgbase = python-rcssmin
 	provides = python-rcssmin
 	conflicts = python-rcssmin
 	source = https://github.com/ndparker/rcssmin/archive/1.0.5.tar.gz
+	source = package.cfg.patch
 	md5sums = fac36129c42a132c8cf08f879e97e96f
+	md5sums = d07c131e7184213e74c17d2126ace44a
 
 pkgname = python-rcssmin
 

@@ -1,0 +1,19 @@
+*** python-rcssmin/rcssmin-1.0.5/package.cfg	2015-10-04 10:37:03.285618908 +0800
+--- ../python-rcssmin/rcssmin-1.0.5/package.cfg	2014-11-09 04:31:39.000000000 +0800
+***************
+*** 19,25 ****
+  name = rcssmin
+  
+  python.min = 2.3
+! python.max = 3.5
+  pypy.min = 1.9
+  pypy.max = 2.2
+  jython.min = 2.5
+--- 19,25 ----
+  name = rcssmin
+  
+  python.min = 2.3
+! python.max = 3.4
+  pypy.min = 1.9
+  pypy.max = 2.2
+  jython.min = 2.5
