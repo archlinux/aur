@@ -1,7 +1,7 @@
 pkgbase = pacman-diffs
 	pkgdesc = finding .pacnew files, compare and archive
 	pkgver = 1.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/papajoker/pacman-diffs
 	arch = any
 	license = GPL

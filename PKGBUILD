@@ -1,7 +1,7 @@
 # Maintainer: Papajoker <papajoker [at] archlinux [dot] info>
 pkgname=pacman-diffs
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 url=(https://github.com/papajoker/pacman-diffs)
 pkgdesc="finding .pacnew files, compare and archive"
 arch=('any')
@@ -19,5 +19,5 @@ package() {
   install -Dm755 ./${pkgname} ${pkgdir}/usr/bin/${pkgname}
   install -dm755 ${pkgdir}/var/cache/pacman/pacnew/
   install -Dm644 ./${pkgname}.fr ${pkgdir}/usr/share/locale/fr/LC_MESSAGES/${pkgname}
-  install -Dm644 ./${pkgname}.plugins ${pkgdir}/etc/${pkgname}.plugins
+  install -Dm644 ./${pkgname}.conf ${pkgdir}/etc/pacman.d/${pkgname}.conf
 }
