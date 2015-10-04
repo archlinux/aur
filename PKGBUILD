@@ -9,7 +9,8 @@ arch=('i686' 'x86_64')
 url="https://www.broadcom.com/support/?gid=1"
 license=('custom')
 depends=('dkms')
-optdepends=('linux-headers: If running standard kernel, otherwise find matching headers for your kernel')
+optdepends=('linux-headers: build modules against Arch kernel'
+            'linux-lts-headers: build modules against LTS Arch kernel')
 conflicts=('broadcom-wl')
 backup=('etc/modprobe.d/broadcom-wl-dkms.conf')
 install=broadcom-wl-dkms.install
