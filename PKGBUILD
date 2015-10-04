@@ -11,7 +11,7 @@ groups=()
 depends=(
 	'python-pip'
 	'create_ap'
-        'python>=3.5'
+        'python>=3'
         'net-tools'
 	)
 makedepends=()
