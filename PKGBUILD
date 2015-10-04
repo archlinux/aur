@@ -1,6 +1,6 @@
 pkgname=addic7ed-cli
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Addic7ed command-line interface"
 arch=('any')
 url="https://github.com/BenoitZugmeyer/addic7ed-cli"
