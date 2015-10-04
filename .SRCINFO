@@ -1,0 +1,15 @@
+pkgbase = qizxopen
+	pkgdesc = XML indexing and searching engine, fully supporting XQuery
+	pkgver = 4.1
+	pkgrel = 2
+	url = http://www.axyana.com/qizxopen/
+	arch = any
+	license = MPL
+	depends = java-runtime
+	depends = apache-ant
+	depends = bash
+	source = https://dl.dropboxusercontent.com/u/29095940/oss/qizxopen.tgz
+	md5sums = a48c749e441390f9d1d7ae37d6898c91
+
+pkgname = qizxopen
+
