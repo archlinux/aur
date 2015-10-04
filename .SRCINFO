@@ -1,7 +1,7 @@
 pkgbase = bareos-x11
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
-	pkgver = 14.2.5
-	pkgrel = 3
+	pkgver = 15.2.1
+	pkgrel = 1
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -10,19 +10,22 @@ pkgbase = bareos-x11
 	makedepends = sqlite
 	makedepends = libmariadbclient
 	makedepends = postgresql-libs
+	makedepends = lzo
+	makedepends = acl
+	makedepends = libcap
 	optdepends = openssl: network encryption between daemons
-	source = https://github.com/bareos/bareos/archive/Release/14.2.5.tar.gz
+	source = https://github.com/bareos/bareos/archive/Release/15.2.1.tar.gz
 	source = PKGBUILD.common
-	sha256sums = f42bc34afa913cfb4d6b7ef8856c7195d8b13b21c987da1039d46e6c60f06720
-	sha256sums = 56eb1e45003fa2de137333bfc74a85518b0dae21c50e49f48df44c2e63bb3ebf
+	sha256sums = 020b974b54f10d245ee920dd3144827ef32588599e703e4f3ce1c913a0201160
+	sha256sums = 4323ea77dc3c370c130d801887d871cdb2aed9f4f251ec63d85b6e80ca7c1f0e
 
 pkgname = bareos-traymonitor
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Tray Monitor (QT)
-	depends = bareos-common=14.2.5
+	depends = bareos-common=15.2.1
 	depends = qt4
 
 pkgname = bareos-bat
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Admin Tool (GUI)
-	depends = bareos-common=14.2.5
+	depends = bareos-common=15.2.1
 	depends = qt4
 
