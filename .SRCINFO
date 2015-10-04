@@ -10,7 +10,6 @@ pkgbase = mintcoin-daemon-git
 	makedepends = make
 	makedepends = boost
 	depends = boost-libs>=1.46
-	depends = miniupnpc>=1.6
 	depends = openssl
 	provides = mintcoin-daemon
 	conflicts = mintcoin

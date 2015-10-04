@@ -1,4 +1,4 @@
-# Maintainer: Yamashita Ren <lemaitre dot lotus at gmail dot com>
+# Maintainer: Yamashita Ren
 
 # Contributor: Qhor Vertoe <vertoe at qhor dot net>
 # Contributor: Noel Maersk <veox at wemakethings dot net>
@@ -12,7 +12,7 @@ pkgdesc="Mintcoin is a peer-to-peer network-based digital currency (git version)
 arch=('i686' 'x86_64')
 url="http://www.mintcoinofficial.com/"
 license=('MIT')
-depends=('boost-libs>=1.46' 'miniupnpc>=1.6' 'openssl')
+depends=('boost-libs>=1.46' 'openssl')
 makedepends=('git' 'make' 'boost')
 provides=('mintcoin-daemon')
 conflicts=('mintcoin')
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   # make mintcoind daemon
   cd "$srcdir/$_gitname/src"
-  make $MAKEFLAGS -f makefile.unix mintcoind
+  make -f makefile.unix USE_UPNP= mintcoind
 }
 
 package() {
