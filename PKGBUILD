@@ -26,17 +26,20 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+	echo "Building.. : [Install Build Dependencies] | Build"
   npm install
   rm -rf dist
   mkdir dist
+	echo "Building.. : Install Build Dependencies | [Build]"
   ./build-linux.js ${_pkgname} $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
   cd "${srcdir}"
-	echo "Packaging.. : [Desktop Shortcut] | Other Files"
+	echo "Packaging.. : [Desktop Shortcut] | Icon | Other Files"
 	install -Dm644 "${srcdir}/irccloud-electron.desktop" "$pkgdir/usr/share/applications/irccloud-electron.desktop"
+	echo "Packaging.. : Desktop Shortcut | [Icon] | Other Files"
 	install -Dm644 "${srcdir}/${_pkgname}/resources/icon.iconset/icon_512x512.png" "$pkgdir/usr/share/irccloud-electron/icon.png"
-	echo "Packaging.. : Desktop Shortcut | [Other Files]"
-	cp -r "${srcdir}/${_pkgname}/build/IRCCloud-linux" "$pkgdir/usr/share/irccloud-electron"
+	echo "Packaging.. : Desktop Shortcut | Icon | [Other Files]"
+	cp "${srcdir}/${_pkgname}/build/IRCCloud-linux/*" "$pkgdir/usr/share/irccloud-electron"
 }
