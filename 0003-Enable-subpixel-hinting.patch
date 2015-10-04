@@ -1,4 +1,4 @@
-From 717abd800c0b465db73f7e0d1e77669bcab165a5 Mon Sep 17 00:00:00 2001
+From f96a1d21d787b173d6293330fbf782b977194aa7 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 23 Jun 2015 08:43:57 +0200
 Subject: [PATCH 3/4] Enable subpixel hinting
@@ -21,5 +21,5 @@ index ab407e3..a2eab6a 100644
  
    /*************************************************************************/
 -- 
-2.4.4
+2.6.0
 

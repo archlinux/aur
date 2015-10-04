@@ -21,9 +21,9 @@ pkgbase = freetype2-git
 	source = 0003-Enable-subpixel-hinting.patch
 	source = 0004-Add-env-var-to-turn-off-subpixel-hinting.patch
 	sha1sums = SKIP
-	sha1sums = 731fe15f4db20127ed457b0d164f4ff57597c813
-	sha1sums = c0ec37c3b332f09dbafeff874fe658306510b3c1
-	sha1sums = 69caf19093a272e7c780ad8ae91dcd965de7a846
+	sha1sums = 1c7bc438df0428a63f881e7e4343b22c5b09ecb1
+	sha1sums = e2d2b8c4847ab9cfd497179c7140835e99ece711
+	sha1sums = ebe3d7a6fc41304a77c23cb56e94dc718146d963
 	sha1sums = 0a75db92c93c7a1576052348174fa510740d079f
 
 pkgname = freetype2-git

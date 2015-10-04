@@ -1,4 +1,4 @@
-From 2321c9da82f4daf7c118858ec9e77753c3b6f3fb Mon Sep 17 00:00:00 2001
+From 27d96091b2bb0a825cbd62a332ef918f39c6126f Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 23 Jun 2015 08:43:07 +0200
 Subject: [PATCH 2/4] Enable subpixel rendering
@@ -21,5 +21,5 @@ index 4970945..ab407e3 100644
  
    /*************************************************************************/
 -- 
-2.4.4
+2.6.0
 

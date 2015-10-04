@@ -18,9 +18,9 @@ source=(git://git.sv.gnu.org/freetype/freetype2.git
         0003-Enable-subpixel-hinting.patch
         0004-Add-env-var-to-turn-off-subpixel-hinting.patch)
 sha1sums=('SKIP'
-          '731fe15f4db20127ed457b0d164f4ff57597c813'
-          'c0ec37c3b332f09dbafeff874fe658306510b3c1'
-          '69caf19093a272e7c780ad8ae91dcd965de7a846'
+          '1c7bc438df0428a63f881e7e4343b22c5b09ecb1'
+          'e2d2b8c4847ab9cfd497179c7140835e99ece711'
+          'ebe3d7a6fc41304a77c23cb56e94dc718146d963'
           '0a75db92c93c7a1576052348174fa510740d079f')
 
 provides=("freetype2=$pkgver" libfreetype.so)
