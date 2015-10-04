@@ -2,7 +2,7 @@
 
 pkgname=hashboot-git
 pkgver=0.7.5
-pkgrel=6
+pkgrel=7
 pkgdesc="A utility to check at boottime befor network, if /boot or mbr were manipulated."
 arch=('any')
 url="https://git.tastytea.de/?p=hashboot.git;a=summary"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "${srcdir}/hashboot"
-	sed 's/xfer/ne/g' ${srcdir}/hashboot/hashboot > ${srcdir}/hashboot/hashtboot.tmp
+	sed 's/xfer/ne/g' ${srcdir}/hashboot/hashboot > ${srcdir}/hashboot/hashboot.tmp
 }
 
 package() {
