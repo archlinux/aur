@@ -1,0 +1,18 @@
+pkgbase = salome-eficas
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - EFICAS Module
+	pkgver = 2015.2
+	pkgrel = 1
+	url = http://www.code-aster.org/V2/spip.php?article295
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = salome-gui>=7.6.0
+	depends = salome-gui<7.7.0
+	depends = eficas>=2015.2
+	source = http://www.code-aster.org/FICHIERS/SALOME-MECA-2015.2-LGPL-2.tgz
+	source = salome-eficas.profile
+	md5sums = a78eae0b1937f06ced8e7f570b05f94b
+	md5sums = d45d5c60252a726244d7e596b828daff
+
+pkgname = salome-eficas
+
