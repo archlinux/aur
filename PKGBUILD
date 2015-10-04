@@ -5,7 +5,7 @@ _module="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.15.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Command Line Interface Formulation Framework"
 arch=("any")
 url="https://github.com/openstack/${_name}"

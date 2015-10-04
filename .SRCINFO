@@ -1,7 +1,7 @@
 pkgbase = python-cliff
 	pkgdesc = Command Line Interface Formulation Framework
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openstack/cliff
 	arch = any
 	license = Apache
