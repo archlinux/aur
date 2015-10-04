@@ -1,6 +1,6 @@
 pkgbase = treeline-unstable
 	pkgdesc = Tree outliner and PIM which stores any kind of information within a tree structure; unstable development snapshot
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://treeline.bellz.org
 	install = treeline.install
@@ -11,8 +11,8 @@ pkgbase = treeline-unstable
 	depends = ispell
 	conflicts = treeline
 	replaces = treeline
-	source = http://sourceforge.net/projects/treeline/files/2.0.1/treeline-2.0.1.tar.gz/download
-	md5sums = 9ddaa06cd0890194fc9aa371bbf90f10
+	source = http://sourceforge.net/projects/treeline/files/2.0.2/treeline-2.0.2.tar.gz/download
+	md5sums = d846d7346ea97ae2e23efd59497b4952
 
 pkgname = treeline-unstable
 
