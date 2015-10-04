@@ -1,7 +1,7 @@
 pkgbase = pastix
 	pkgdesc = high performance parallel solver for very large sparse linear systems based on direct methods
 	pkgver = 5.2.2.22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gforge.inria.fr
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = pastix
 	source = Makefile.patch
 	source = config.in
 	md5sums = 85127ecdfaeed39e850c996b78573d94
-	md5sums = eca35340bd4c8a5076c00e0a628474b8
+	md5sums = 001fd8641a333134e73c81e0abc2be27
 	md5sums = a9577e2c2b27247828420455be029a19
 
 pkgname = pastix

@@ -5,17 +5,17 @@
  endif
  %/libmatrix_driver${LIB_SO}: $(OBJ_DRIVERS)
 -	$(MPCCPROG) $(subst __SO_NAME__,$@, ${SHARED_FLAGS}) -o $(dir $@)libmatrix_driver${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
-+	$(MPCCPROG) $(subst __SO_NAME__,$(subst $(LIBDIR),,$@), ${SHARED_FLAGS}) -o $(dir $@)libmatrix_driver${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
++	$(MPCCPROG) $(subst __SO_NAME__,$(subst $(LIBDIR)/,,$@), ${SHARED_FLAGS}) -o $(dir $@)libmatrix_driver${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
  	(cd $(dir $@) && ln -sf libmatrix_driver${VERSIONNAME}${LIB_SO} libmatrix_driver${LIB_SO})
  
  %/libpastix${LIB_SO}: $(OBJ_LIB)
 -	$(MPCCPROG)  $(subst __SO_NAME__,$@, ${SHARED_FLAGS}) -o $(dir $@)libpastix${VERSIONNAME}${LIB_SO} $(^) $(filter-out -lpastix, $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT}))
-+	$(MPCCPROG)  $(subst __SO_NAME__,$(subst $(LIBDIR),,$@), ${SHARED_FLAGS}) -o $(dir $@)libpastix${VERSIONNAME}${LIB_SO} $(^) $(filter-out -lpastix, $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT}))
++	$(MPCCPROG)  $(subst __SO_NAME__,$(subst $(LIBDIR)/,,$@), ${SHARED_FLAGS}) -o $(dir $@)libpastix${VERSIONNAME}${LIB_SO} $(^) $(filter-out -lpastix, $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT}))
  	(cd $(dir $@) && ln -sf libpastix${VERSIONNAME}${LIB_SO} libpastix${LIB_SO})
  
  %/libpastix_murge${LIB_SO}: $(OBJ_MURGE) %/libpastix${LIB}
 -	$(MPCCPROG)  $(subst __SO_NAME__,$@, ${SHARED_FLAGS}) -o $(dir $@)libpastix_murge${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
-+	$(MPCCPROG)  $(subst __SO_NAME__,$(subst $(LIBDIR),,$@), ${SHARED_FLAGS}) -o $(dir $@)libpastix_murge${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
++	$(MPCCPROG)  $(subst __SO_NAME__,$(subst $(LIBDIR)/,,$@), ${SHARED_FLAGS}) -o $(dir $@)libpastix_murge${VERSIONNAME}${LIB_SO} $(^) $(subst __LIBDIR__,$(dir $@),${DYLIB_OPT})
  	(cd $(dir $@) && ln -sf libpastix_murge${VERSIONNAME}${LIB_SO} libpastix_murge${LIB_SO})
  
  endif

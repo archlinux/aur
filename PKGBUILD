@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=pastix
 pkgver=5.2.2.22
-pkgrel=2
+pkgrel=3
 pkgdesc="high performance parallel solver for very large sparse linear systems based on direct methods"
 arch=('i686' 'x86_64')
 url="https://gforge.inria.fr"
@@ -13,7 +13,7 @@ source=("${url}/frs/download.php/file/35070/pastix_5.2.2.22.tar.bz2"
         'Makefile.patch'
         'config.in')
 md5sums=('85127ecdfaeed39e850c996b78573d94'
-         'eca35340bd4c8a5076c00e0a628474b8'
+         '001fd8641a333134e73c81e0abc2be27'
          'a9577e2c2b27247828420455be029a19')
 
 prepare() {
