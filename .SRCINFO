@@ -1,6 +1,6 @@
 pkgbase = libass-git
 	pkgdesc = A portable library for SSA/ASS subtitles rendering
-	pkgver = 0.12.0.101.gc7bfc62
+	pkgver = 0.12.0.260.gb2f4d9a
 	pkgrel = 1
 	url = http://code.google.com/p/libass
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = libass-git
 	makedepends = git
 	makedepends = yasm
 	depends = fontconfig
-	depends = enca
 	depends = fribidi
 	provides = libass
 	conflicts = libass
