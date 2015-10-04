@@ -1,8 +1,8 @@
 pkgbase = vgmstream-kode54-git
 	pkgdesc = Library for playback of various streamed audio formats used in video games (kode54's fork)
-	pkgver = r1020.r139.gbdbe4fd
+	pkgver = r1020.r142.gfb74b39
 	pkgrel = 1
-	url = https://gitlab.kode54.net/kode54/vgmstream
+	url = https://github.com/kode54/vgmstream
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -11,7 +11,7 @@ pkgbase = vgmstream-kode54-git
 	depends = libogg
 	depends = libvorbis
 	depends = mpg123
-	source = vgmstream-kode54-git::git+https://gitlab.kode54.net/kode54/vgmstream.git
+	source = vgmstream-kode54-git::git+https://github.com/kode54/vgmstream.git
 	sha256sums = SKIP
 
 pkgname = vgmstream-kode54-git
