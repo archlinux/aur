@@ -9,6 +9,7 @@ url="http://www.asterisk.org/"
 license=("LGPLv2")
 depends=("dahdi-linux" "libusb" "perl")
 backup=(
+  "etc/dahdi/genconf_parameters"
   "etc/dahdi/system.conf"
 )
 source=(
