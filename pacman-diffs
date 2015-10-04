@@ -88,7 +88,6 @@ function archive()
 function in_archive(){
     local file="$1"
     local name="$2"
-    declare -a out
     file=$ARCCHIVEDIR${file/$name.$EXT/*-$name.$EXT}
     nb=$(ls $file | wc -l)
     if [ "$nb" -gt "1" ]; then
@@ -99,11 +98,11 @@ function in_archive(){
 }
 
 function make_diff()
+#TODO : test permission et faire sudo si besoin ou test_sudo() ?
 {
     local file1="$1"
     local file2="$2"
     local original="$3"
-
     if [[ $(diff $file1 $file2|wc -l) -eq 0 ]]; then
         # can remove etc/pacnew
         echo -e "-- ${c_yellow}${txt[erase]}${c_end} : sudo rm $original"
@@ -117,6 +116,16 @@ function make_diff()
     fi
 }
 
+function history_pacman()
+{
+    local history="$1"
+    if [ "$history" -gt "0" ]; then
+        grep "pacnew$" /var/log/pacman.log | sed -e "s/\[ALPM\] warning: //"
+    else
+        grep "pacnew$" /var/log/pacman.log| awk '{print $8}' | sort | uniq
+    fi
+}
+
 function usage()
 {
     echo "usage: pacman-diffs [options]"
@@ -126,12 +135,14 @@ function usage()
     echo -e "\t -e filename : edit files"
     echo -e "\t -a archive pacnew in /var/cache/pacman/pacnew/"
     echo -e "\t -c compare archives"
+    echo -e "\t -i pacman history"
+    echo -e "\t -j pacman history files"
     exit
 }
 
+############## RUN ##############
 
-
-while getopts "hd:x:le:ac" flags; do
+while getopts "hd:x:le:acij" flags; do
 	case $flags in
 		h) usage;exit 0 ;;
 		d) AGE="${OPTARG}" ;;
@@ -140,6 +151,8 @@ while getopts "hd:x:le:ac" flags; do
 		e) edit="${OPTARG}"; listing=1 ;;	
 		a) archive=1; listing=1 ;;
 		c) archive=1; archivediff=1 ;;
+		i) history_pacman 1; exit ;;
+		j) history_pacman 0; exit ;;
 		:) error "Vous avez oublié un argument"; exit 1 ;;
 		?) error "invalid Option"; exit 1 ;;
 		*) error "*"; exit 1 ;;

@@ -1,7 +1,7 @@
 # Maintainer: Papajoker <papajoker [at] archlinux [dot] info>
 pkgname=pacman-diffs
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="finding .pacnew files and compare, and archive"
 arch=('any')
 license=('GPL')
