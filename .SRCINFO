@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-awarpsharp2-git
+	pkgdesc = Plugin for Vapoursynth: awarpsharp2 (GIT version)
+	pkgver = v6.0.g884986e
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-awarpsharp2
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = yasm
+	depends = vapoursynth
+	provides = vapoursynth-plugin-awarpsharp2
+	conflicts = vapoursynth-plugin-awarpsharp2
+	source = awarpsharp2::git+https://github.com/dubhater/vapoursynth-awarpsharp2.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-awarpsharp2-git
+
