@@ -1,0 +1,18 @@
+pkgbase = xiate-git
+	pkgdesc = xiate is a terminal emulator
+	pkgver = 15.10
+	pkgrel = 1
+	url = http://www.uninformativ.de/projects/xiate/
+	arch = i686
+	arch = x86_64
+	license = custom:PIZZA-WARE
+	makedepends = git
+	depends = socat
+	depends = vte3
+	provides = xiate
+	conflicts = xiate
+	source = git://github.com/vain/xiate.git
+	md5sums = SKIP
+
+pkgname = xiate-git
+
