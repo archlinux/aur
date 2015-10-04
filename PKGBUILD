@@ -19,8 +19,23 @@ pkgver() {
 	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-package() {
+prepare() {
+  cd "${srcdir}"
+  sed irccloud-election.desktop.in > irccloud-election.desktop
+}
+
+build() {
   cd "${srcdir}/${_pkgname}"
   npm install
   npm run build
+  rm -rf dist
+  mkdir dist
+  ./generate-icon
+  ./build-linux.js ${_pkgname} $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd "${srcdir}"
+  install -Dm644 irccloud-election.desktop "$pkgdir/usr/share/applications/irccloud-election.desktop"
+  install -Dm644 "${srcdir}/${_pkgname}" "$pkgdir/usr/share/irccloud-election"
 }
