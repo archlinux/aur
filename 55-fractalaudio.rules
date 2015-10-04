@@ -1,0 +1,5 @@
+# Fractal Audio Systems Axe-FX II
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="2466", ATTR{idProduct}=="0003", RUN+="/usr/bin/fxload -l -t fx2lp -I /usr/share/usb/FractalAudio/axefx2/axefx2load.hex -D $env{DEVNAME}"
+
+# <Fractal Audio Systems Axe-FX II>
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="2466", ATTR{idProduct}=="0003", RUN+="/usr/bin/fxload -t fx2lp -I /usr/share/usb/FractalAudio/axefx2/axefx2load.hex -D $env{DEVNAME}"

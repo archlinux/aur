@@ -1,0 +1,19 @@
+pkgbase = afx2usb-linux-git
+	pkgdesc = Install or uninstall USB bootloader firmware for Fractal Audio Systems Axe-FX II audio processor.
+	pkgver = 0.r4.9f2ef7d
+	pkgrel = 1
+	url = https://github.com/TieDyedDevil/afx2usb-linux
+	arch = any
+	license = MIT
+	license = custom
+	makedepends = git
+	depends = fxload
+	provides = afx2usb-linux
+	conflicts = afx2usb-linux
+	source = afx2usb-linux::git+https://github.com/TieDyedDevil/afx2usb-linux.git
+	source = 55-fractalaudio.rules
+	md5sums = SKIP
+	md5sums = b6f4ec51dfff47ea9181e0f25f22b300
+
+pkgname = afx2usb-linux-git
+
