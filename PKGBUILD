@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Lithuanian dictionary for Hunspell"
 arch=('any')
 license=('GPL2' 'LGPL2.1' 'MPL')
+url="https://addons.mozilla.org/en-US/firefox/addon/lithuanian-spellcheck"
 optdepends=('hunspell: Hunspell spell checking library and program')
 source=(https://addons.mozilla.org/firefox/downloads/latest/3716/addon-3716-latest.xpi)
 md5sums=('859da55cde561a400cf869e700fe409b')
