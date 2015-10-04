@@ -1,0 +1,29 @@
+pkgbase = mosesdecoder-git
+	pkgdesc = State of the art Statistical Machine Translation system
+	pkgver = mmt.mvp.v0.12.1.r95.160a7f2
+	pkgrel = 1
+	url = http://www.statmt.org/moses
+	install = mosesdecoder.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc
+	makedepends = boost>=1.48
+	makedepends = zlib
+	makedepends = git
+	makedepends = libtool
+	makedepends = boost-libs
+	makedepends = cmph
+	depends = python2
+	depends = xmlrpc-c
+	optdepends = giza-pp-git: for training models
+	optdepends = mgiza: multithreaded giza for training models
+	provides = mosesdecoder
+	conflicts = mosesdecoder
+	source = mosesdecoder::git+https://github.com/moses-smt/mosesdecoder.git
+	source = mosesdecoder.sh
+	md5sums = SKIP
+	md5sums = 888ae605a7b0a816005d44923b523016
+
+pkgname = mosesdecoder-git
+
