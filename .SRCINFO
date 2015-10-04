@@ -7,6 +7,7 @@ pkgbase = zendframework2-apidoc
 	license = BSD
 	options = !strip
 	source = http://packages.zendframework.com/releases/ZendFramework-2.4.8/ZendFramework-2.4.8-apidoc.tgz
+	sha256sums = 95a3269e7761f6cfa1b7a7642a65ea9e659d7d1e11cfdaf07a4adb249489a6a6
 
 pkgname = zendframework2-apidoc
 
