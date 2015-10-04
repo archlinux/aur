@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Peerunity
+Comment=Peerunity P2P Cryptocurrency
+Exec=peerunity %u
+Terminal=false
+Type=Application
+Icon=peerunity128
+MimeType=x-scheme-handler/peercoin;
+Categories=Office;Finance;

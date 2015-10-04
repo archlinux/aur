@@ -1,0 +1,40 @@
+pkgbase = peerunity
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://www.peercoin.net/download-peerunity
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	makedepends = protobuf
+	depends = boost-libs
+	depends = openssl
+	depends = miniupnpc
+	source = https://github.com/peerunity/peerunity/archive/v0.1.1.tar.gz
+	source = upnp-1.9.patch
+	source = peerunityd@.service
+	source = peerunity.desktop
+	source = peerunity128.png
+	sha256sums = 416ad4c36551b62e2048bcd6844004444ea52b2640c8c7c88bcbd6c0829c5499
+	sha256sums = 3060917f8e327002da842534265392a1849239ec5049f25c1ae8a81c3952e7b1
+	sha256sums = cfc0b8accef8dee3d6559cdb880e13f4ef381119f4150d15cc3f74903da80f35
+	sha256sums = 250aa80695bbb95228286850856d1f1bac9336c98e884cba0b148c9b837d196c
+	sha256sums = 2d089702a9f02db640f7ae0f48b7b61f7de6ecddc3804f80484520b6c461a9b1
+
+pkgname = peerunity-daemon
+	pkgdesc = Community client for Peercoin peer-to-peer network based digital currency (daemon)
+	depends = boost-libs
+	depends = openssl
+	depends = miniupnpc
+
+pkgname = peerunity-qt
+	pkgdesc = Comunity client for Peercoin peer-to-peer network based digital currency (Qt)
+	install = peerunity-qt.install
+	depends = boost-libs
+	depends = qt4
+	depends = qrencode
+	depends = miniupnpc
+
