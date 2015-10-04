@@ -1,7 +1,7 @@
 pkgbase = repo-make
 	pkgdesc = Tool to autobuild a set of PKGBUILDs into a working repository
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://repo-make.tuxfamily.org/
 	arch = any
 	license = AGPL3
