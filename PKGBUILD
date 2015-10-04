@@ -22,10 +22,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
   npm install
-  npm run build
   rm -rf dist
   mkdir dist
-  ./generate-icon
   ./build-linux.js ${_pkgname} $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
