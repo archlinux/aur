@@ -1,0 +1,21 @@
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac	2015-10-04 14:55:27.000000000 +0800
++++ b/configure.ac	2015-10-04 15:03:31.118739997 +0800
+@@ -41,7 +41,7 @@
+ 
+ # required versions of other packages
+ m4_define([babl_required_version], [0.1.10])
+-m4_define([gegl_required_version], [0.2.0])
++m4_define([gegl_required_version], [0.3.0])
+ m4_define([glib_required_version], [2.30.2])
+ m4_define([atk_required_version], [2.2.0])
+ m4_define([gtk_required_version], [2.24.10])
+@@ -525,7 +525,7 @@
+ ###############################
+ 
+ PKG_CHECK_MODULES(BABL, babl >= babl_required_version)
+-PKG_CHECK_MODULES(GEGL, gegl-0.2 >= gegl_required_version)
++PKG_CHECK_MODULES(GEGL, gegl-0.3 >= gegl_required_version)
+ PKG_CHECK_MODULES(ATK, atk >= atk_required_version)
+ 
+ AM_PATH_GLIB_2_0(glib_required_version, :,

@@ -1,0 +1,61 @@
+pkgbase = gimp-painter-git
+	pkgdesc = Fork of GIMP aiming to add drawing and painting features to GIMP. Git version
+	pkgver = 20151004.g87851f6
+	pkgrel = 1
+	url = http://www.gimp.org
+	install = gimp-painter.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = gutenprint>=5.0.0
+	makedepends = intltool>=0.40.1
+	makedepends = gnome-python>=2.16.2
+	makedepends = poppler>=0.12.4
+	makedepends = pkgconfig>=0.21
+	makedepends = alsa-lib>=1.0.0
+	makedepends = libtool>=2.2
+	makedepends = autoconf>=2.54
+	makedepends = automake>=1.10
+	makedepends = libxslt
+	makedepends = pango>=1.29.4
+	makedepends = curl>=7.15.1
+	makedepends = gettext
+	makedepends = git
+	depends = lcms2>=2.2
+	depends = libwmf>=0.2.8
+	depends = webkitgtk2>=1.6.1
+	depends = libgexiv2
+	depends = librsvg>=2.16.1
+	depends = libpng>=1.2.27
+	depends = fontconfig>=2.2.0
+	depends = desktop-file-utils
+	depends = libexif>=0.6.15
+	depends = libart-lgpl>=2.3.19
+	depends = pygtk
+	depends = dbus-glib
+	depends = gtk-doc
+	depends = openexr>=1.6.1
+	depends = cairo>=1.12.2
+	depends = hicolor-icon-theme
+	optdepends = gimp-paint-studio: Extra brushes and accompanying tool presets
+	optdepends = gutenprint: for sophisticated printing only as gimp has built-in cups print support
+	optdepends = poppler-glib: for pdf support
+	optdepends = alsa-lib: for MIDI event controller module
+	optdepends = curl: for URI support
+	optdepends = ghostscript: for postscript support
+	conflicts = gimp
+	conflicts = gimp-painter
+	options = !libtool
+	options = !makeflags
+	source = git://github.com/seagetch/gimp-painter.git
+	source = linux.gpl
+	source = look_for_automake_1.15.patch
+	source = use_gegl_3.patch
+	md5sums = SKIP
+	md5sums = bb27bc214261d36484093e857f015f38
+	md5sums = f900314ce2dbdc9ea5e78ce7b656c0f6
+	md5sums = fe939863cf9a4dc4fe76076a8e4a9645
+
+pkgname = gimp-painter-git
+

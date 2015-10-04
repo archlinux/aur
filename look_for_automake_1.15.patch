@@ -1,0 +1,13 @@
+diff -Naur a/autogen.sh b/autogen.sh
+--- a/autogen.sh	2015-10-04 14:55:27.000000000 +0800
++++ b/autogen.sh	2015-10-04 14:58:33.045394039 +0800
+@@ -157,6 +157,9 @@
+ if ($AUTOMAKE --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=$AUTOMAKE
+    ACLOCAL=$ACLOCAL
++elif (automake-1.15 --version) < /dev/null > /dev/null 2>&1; then
++   AUTOMAKE=automake-1.15
++   ACLOCAL=aclocal-1.15
+ elif (automake-1.14 --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=automake-1.14
+    ACLOCAL=aclocal-1.14
