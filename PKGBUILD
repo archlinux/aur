@@ -17,23 +17,23 @@ source=("git+http://gitlab.mister-muffin.de/josch/img2pdf.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-*}"
-    msg "Checking current version..."
-     git_ver=`git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`
-     echo "${git_ver/#${git_ver:0:5}/${pkgver:0:5}}"
+	cd "${srcdir}/${pkgname%-*}"
+
+	git_ver=`git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`
+	echo "${git_ver/#${git_ver:0:5}/${pkgver:0:5}}"
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-*}"
+	cd "${srcdir}/${pkgname%-*}"
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting setup.py..."
+	msg "GIT checkout done or server timeout"
+	msg "Starting setup.py..."
 
-  python2 setup.py build
+	python2 setup.py build
 }
 
 package() {
+	cd "${srcdir}/${pkgname%-*}"
 
-  cd "${srcdir}/${pkgname%-*}"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" #--optimize=1
+	python2 setup.py install --prefix=/usr --root="$pkgdir" #--optimize=1
 }
