@@ -1,8 +1,8 @@
 # Maintainer: xor <xor@rotce.de>
 
 pkgname=hashboot-git
-pkgver=0.7.5
-pkgrel=7
+pkgver=0.7.6
+pkgrel=1
 pkgdesc="A utility to check at boottime befor network, if /boot or mbr were manipulated."
 arch=('any')
 url="https://git.tastytea.de/?p=hashboot.git;a=summary"
