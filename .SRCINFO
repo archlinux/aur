@@ -1,0 +1,18 @@
+pkgbase = perl-minion
+	pkgdesc = Job queue
+	pkgver = 2.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Minion
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dbm-deep>=2.0011
+	depends = perl-mojolicious>=6.0
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Minion-2.01.tar.gz
+	md5sums = fcc46041f28ee8de1faa6f4e91744aa1
+	sha512sums = 70715280ae551c776959a5da1ffc46ca4a83e6b16241ee07cf5d812ee94245d5d40d64c1c64e47bbfbf0361e5784a2c4481aba7691f548e034c6e2118e19af97
+
+pkgname = perl-minion
+
