@@ -3,13 +3,13 @@
 
 pkgname=qmmp-plugin-pack
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qmmp Plugin Pack"
 arch=('i686' 'x86_64')
 url="http://qmmp.ylsoftware.com"
 license=('GPL')
-depends=("qmmp>=$pkgver" 'qt4>=4.6' 'taglib>=1.7.0' 'mpg123>=1.13.0' 'libxmp>=4.2.0')
-makedepends=('cmake>=2.8.6' 'yasm')
+depends=("qmmp>=$pkgver" 'taglib>=1.7.0' 'mpg123>=1.13.0' 'libxmp>=4.2.0')
+makedepends=('cmake>=2.8.6' 'yasm' 'qt5-tools')
 source=(http://qmmp.ylsoftware.com/files/plugins/${pkgname}-${pkgver}.tar.bz2)
 sha1sums=('df098cfa59857ac7d5227e824d96a7fd30f61edb')
 
