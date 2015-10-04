@@ -7,11 +7,14 @@ pkgdesc="Lithuanian dictionary for Hunspell"
 arch=('any')
 license=('GPL2' 'LGPL2.1' 'MPL')
 optdepends=('hunspell: Hunspell spell checking library and program')
-source=(http://pkgs.fedoraproject.org/repo/pkgs/hunspell-lt/lt_LT-1.2.zip/48e27f6c26e8c72ca11f34526786fd1b/lt_LT-1.2.zip)
-md5sums=('48e27f6c26e8c72ca11f34526786fd1b')
+source=(https://addons.mozilla.org/firefox/downloads/latest/3716/addon-3716-latest.xpi)
+md5sums=('859da55cde561a400cf869e700fe409b')
 
 package() {
-  cd "$srcdir"/lt_LT-1.2
+  cd "$srcdir"/dictionaries
+
+  mv lt.aff lt_LT.aff
+  mv lt.dic lt_LT.dic
 
   install -d -m755 "$pkgdir"/usr/share/hunspell
   install -m644 lt_LT.dic "$pkgdir"/usr/share/hunspell/lt_LT.dic
