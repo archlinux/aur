@@ -6,14 +6,14 @@ _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.7.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="OpenStack Command-line Client"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d503048f67d04f1bfd00cc6a4ab713e53ffaf970a522c8f5ed9bfd675f82ac62')
+sha256sums=('c9a379d5688cf63e5ff9634929bac06204b562d2afe00fca14831ad0799e3240')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
