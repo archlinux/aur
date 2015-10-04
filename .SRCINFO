@@ -1,0 +1,17 @@
+pkgbase = irccloud-electron-git
+	pkgdesc = Mac App, Win App and Linux app for IRCCloud. (An Electron wrapper for IRCCloud.)
+	pkgver = 42.13d2e17
+	pkgrel = 1
+	url = https://github.com/dalinaum/IRCCloud
+	arch = any
+	license = custom
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	depends = nodejs-livescript
+	source = IRCCloud::git+https://github.com/dalinaum/IRCCloud.git
+	md5sums = SKIP
+
+pkgname = irccloud-electron-git
+
