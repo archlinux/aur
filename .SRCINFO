@@ -1,0 +1,18 @@
+pkgbase = python-more_itertools
+	pkgdesc = More routines for operating on iterables, beyond itertools
+	pkgver = 2.2
+	pkgrel = 3
+	url = https://pypi.python.org/pypi/more-itertools
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/m/more-itertools/more-itertools-2.2.tar.gz
+	md5sums = b8d328a33f966bf40bb829bcf8da35ce
+
+pkgname = python-more_itertools
+	depends = python
+
+pkgname = python2-more_itertools
+	depends = python2
+
