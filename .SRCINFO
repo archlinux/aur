@@ -1,6 +1,6 @@
 pkgbase = rofi-git
 	pkgdesc = A window switcher, run dialog and dmenu replacement
-	pkgver = 0.15.8.r45.g536fd98
+	pkgver = 0.15.8.r55.g1369c16
 	pkgrel = 1
 	url = https://davedavenport.github.io/rofi/
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = rofi-git
 	depends = libxdg-basedir
 	depends = libxinerama
 	depends = pango
+	depends = startup-notification
 	optdepends = i3-wm: use as a window switcher
 	provides = rofi
 	conflicts = rofi
