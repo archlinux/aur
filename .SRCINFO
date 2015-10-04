@@ -1,0 +1,14 @@
+pkgbase = testu01
+	pkgdesc = A library offering a collection of utilities for the empirical statistical testing of uniform random number generators
+	pkgver = 1.2.3
+	pkgrel = 3
+	url = http://simul.iro.umontreal.ca/testu01/tu01.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://simul.iro.umontreal.ca/testu01/TestU01.zip
+	sha256sums = bc1d1dd2aea7ed3b3d28eaad2c8ee55913f11ce67aec8fe4f643c1c0d2ed1cac
+
+pkgname = testu01
+
