@@ -10,7 +10,9 @@ pkgbase = python-rjsmin
 	provides = python-rjsmin
 	conflicts = python-rjsmin
 	source = https://github.com/ndparker/rjsmin/archive/1.0.10.tar.gz
+	source = package.cfg.diff
 	md5sums = 2dfd534af5511a2629e40d515d718695
+	md5sums = c1b1135c5dfd0663d1389acbd2c1750d
 
 pkgname = python-rjsmin
 

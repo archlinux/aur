@@ -1,0 +1,19 @@
+*** python-rjsmin/rjsmin-1.0.10/package.cfg	2015-10-04 10:57:13.995726595 +0800
+--- ../python-rjsmin/rjsmin-1.0.10/package.cfg/package.cfg	2015-10-04 10:57:00.802464736 +0800
+***************
+*** 19,25 ****
+  name = rjsmin
+  
+  python.min = 2.4
+! python.max = 3.4
+  pypy.min = 1.9
+  pypy.max = 2.2
+  jython.min = 2.5
+--- 19,25 ----
+  name = rjsmin
+  
+  python.min = 2.4
+! python.max = 3.5
+  pypy.min = 1.9
+  pypy.max = 2.2
+  jython.min = 2.5

@@ -11,8 +11,13 @@ license=('APACHE')
 depends=('python>=3.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(https://github.com/ndparker/rjsmin/archive/${pkgver}.tar.gz)
-md5sums=('2dfd534af5511a2629e40d515d718695')
+source=(https://github.com/ndparker/rjsmin/archive/${pkgver}.tar.gz package.cfg.diff)
+md5sums=('2dfd534af5511a2629e40d515d718695' 'c1b1135c5dfd0663d1389acbd2c1750d')
+
+build(){
+  cd "${srcdir}"
+  patch -p1 -i ../package.cfg.diff
+}
 
 package() {
     cd "${srcdir}/rjsmin-${pkgver}"
