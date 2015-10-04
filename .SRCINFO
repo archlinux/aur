@@ -1,0 +1,21 @@
+pkgbase = mintcoin-daemon-git
+	pkgdesc = Mintcoin is a peer-to-peer network-based digital currency (git version).
+	pkgver = r130.da098b2
+	pkgrel = 1
+	url = http://www.mintcoinofficial.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = boost
+	depends = boost-libs>=1.46
+	depends = miniupnpc>=1.6
+	depends = openssl
+	provides = mintcoin-daemon
+	conflicts = mintcoin
+	source = git://github.com/MintcoinCommunity/mintcoin.git
+	md5sums = SKIP
+
+pkgname = mintcoin-daemon-git
+
