@@ -30,6 +30,5 @@ true
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	true
+	install -Dm544 portal-postconf "$pkgdir/usr/bin/portal-postconf"
 }
