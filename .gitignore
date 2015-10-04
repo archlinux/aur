@@ -1,0 +1,15 @@
+# ignore everything
+*
+!.gitignore
+
+# except PKGBUILD needed files
+!PKGBUILD
+!.SRCINFO
+!*.install
+!ChangeLog
+
+# common wing-man files
+!*.diff
+!*.patch
+
+!pylote.desktop

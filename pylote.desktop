@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=pylote
+Icon=/usr/share/pylote/images/icon.png
+Name=pylote
+Categories=Education;
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false
+
