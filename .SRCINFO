@@ -1,0 +1,15 @@
+pkgbase = python-cairosvg
+	pkgdesc = A Simple SVG Converter for Cairo
+	pkgver = 1.0.16
+	pkgrel = 1
+	url = http://cairosvg.org/
+	arch = any
+	license = LGPL3
+	makedepends = python
+	depends = python
+	depends = python-cairo
+	source = http://pypi.python.org/packages/source/C/CairoSVG/CairoSVG-1.0.16.tar.gz
+	md5sums = e343cedaae2b23de52b2ce37160c16c1
+
+pkgname = python-cairosvg
+
