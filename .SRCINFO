@@ -1,14 +1,14 @@
 pkgbase = papirus-konsole-colorscheme
 	pkgdesc = Modified and adaptive Paper colorscheme for Konsole
-	pkgver = 20150916
+	pkgver = 20151004
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
 	depends = konsole
 	options = !strip
-	source = papirus-pack-kde-20150916.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/4a2012a4ddc7f34e4d9c84364035458980bdd617.tar.gz
-	sha256sums = 6ae56de2019c285c79bdb8bfdfc4ddf0ef478614caa04fcdb5f2958472405fc3
+	source = papirus-pack-kde-20151004.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/3f97691234d1688ad54b94d9b81f9ef181b0d8e9.tar.gz
+	sha256sums = 87e2b1cbb0e08588a231d5c2638926de7ba566c5c0df81f4a897f95b54957f63
 
 pkgname = papirus-konsole-colorscheme
 
