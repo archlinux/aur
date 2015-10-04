@@ -5,9 +5,9 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.2
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
-_toipatch=tuxonice-for-linux-4.2.1-2015-09-23.patch
+_toipatch=tuxonice-for-linux-4.2.2-2015-10-02.patch
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -26,22 +26,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://tuxonice.net/downloads/all/${_toipatch}.bz2"
         '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
         '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
-        '0001-fix-bridge-regression.patch'
 )
 
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            '8b4578f1e1dcfbef1e39c39b861d4715aa99917af0b7c2dc324622d65884dcb5'
+            'e0e066f3fc5f310644e9f3f3ede47db7ac040f44782f0a5cf75ce2c940444972'
             'SKIP'
             'a0c3f8fc64651eb3e28a48c7e74287716bc0a215db5fa7deda1b5c1e3cadf878'
             '956bba07f86e8f6e29deb1d0768f71b1bbcaebc39358083fecef2ad6448f46e6'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '8c270194a0ab5deea628880f42443dff0932d445f1aa6aec6a295924a18b7643'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'e7dc8e56fc7efa8eafbed18d37f406bdb9a6a9201ca06bf5f46a94db605dae14'
+            '6f3640495524c9dbbbc90eee5179da358d7e280659797b1b9d3fb9eab27b8379'
             '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
-            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
-            '0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183')
+            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3')
 validpgpkeys=(
             'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
             '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -66,10 +64,6 @@ prepare() {
   # rules are applied during startup - happened with Shorewall; journal had
   # many instances of this error: nf_conntrack: table full, dropping packet
   patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
-
-  # add not-yes-mainlined patch to fix bridge code
-  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
-  patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
