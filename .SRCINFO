@@ -1,0 +1,16 @@
+pkgbase = afternoonstalker
+	pkgdesc = Afternoon Stalker is a clone of the 1981 Intellivision game Night Stalker.
+	pkgver = 1.1.5
+	pkgrel = 3
+	url = http://perso.b2b2c.ca/sarrazip/dev/afternoonstalker.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = flatzebra>=0.1.6
+	options = !libtool
+	options = !emptydirs
+	source = http://perso.b2b2c.ca/sarrazip/dev/afternoonstalker-1.1.5.tar.gz
+	sha256sums = cb9896e00654057edc1ef8843c6c7f5bbcc0b5313e06227ae6e73d0c1d689097
+
+pkgname = afternoonstalker
+
