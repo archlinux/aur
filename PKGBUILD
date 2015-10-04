@@ -1,45 +1,49 @@
 # Maintainer: Pierre Franco <pierre dot franco at ensimag dot grenoble dash inp dot fr>
-# Based on wine-staging-d3dadapter PKGBUILD
+# Based on wine-staging PKGBUILD
 
 #Additional patches:
+# -Raw input fix
 # -Mip-Map fix (see https://bugs.winehq.org/show_bug.cgi?id=34480 )
 # -Keybind patch reversion
 # -Heap allocation perfomance improvement patch
-
+# -Wbemprox videocontroller query fix (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 
 pkgname=wine-gaming-nine
-pkgver=1.7.51
-pkgrel=2
+pkgver=1.7.52
+pkgrel=1
 
-_basename=wine
+_pkgbasever=${pkgver/rc/-rc}
+_winesrcdir="wine-patched-staging-$pkgver"
 
-source=(https://github.com/wine-mirror/wine/archive/wine-$pkgver.tar.gz
-        https://github.com/wine-compholio/wine-staging/archive/v$pkgver.tar.gz
+source=("https://github.com/wine-compholio/wine-patched/archive/staging-$pkgver.tar.gz"
         keybindings.patch
         raw.patch
         mipmap.patch
-        nine-1.7.51.patch
+        nine-1.7.52.patch
         heap_perf.patch
+        wbemprox_query.patch
         30-win32-aliases.conf)
-
-sha1sums=('f75d41bcc6511c7641d6633ffeb23a23aeb720ef'
-          '9bead94e8a5c7e876f06e32f5119cd451ea3a5ad'
+sha1sums=('843245d4736db4ad1449f00d747a2f7912680c59'
           'f3febb8836f38320742a546c667106608d4c4395'
           '57aa524e4e760c907c2acef287f5569e78ea85b0'
           'c3096fccbac23e520d03f592db7f23350cbbc0bc'
-          'ca80253e74ee6d5cb5d1b54b6445f228d376aab4'
+          '14c63750628866e2f3b29a6d5a4ed11efb67b442'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
+          '20da841265d5b16dba02246f158ad4f54f13b775'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb')
 
-pkgdesc="Based off wine-staging-d3dadapter with a few more hacks"
-url="http://www.winehq.com"
+pkgdesc="Based off wine-staging, including the gallium-nine patches and some more hacks"
+url="http://www.wine-staging.com"
 arch=(i686 x86_64)
 options=(staticlibs)
 license=(LGPL)
 install=wine.install
 
 _depends=(
+    attr            lib32-attr
     fontconfig      lib32-fontconfig
+    lcms2           lib32-lcms2
+    libxml2         lib32-libxml2
     libxcursor      lib32-libxcursor
     libxrandr       lib32-libxrandr
     libxdamage      lib32-libxdamage
@@ -62,29 +66,28 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
     libxcomposite   lib32-libxcomposite
     libxmu          lib32-libxmu
     libxxf86vm      lib32-libxxf86vm
-    libxml2         lib32-libxml2
     libldap         lib32-libldap
-    lcms2           lib32-lcms2
     mpg123          lib32-mpg123
     openal          lib32-openal
     v4l-utils       lib32-v4l-utils
     alsa-lib        lib32-alsa-lib
     libxcomposite   lib32-libxcomposite
     mesa            lib32-mesa
-    #mesa-libgl      lib32-mesa-libgl
+    libgl           lib32-libgl
     libcl           lib32-libcl
     libxslt         lib32-libxslt
+    libpulse        lib32-libpulse
+    libva           lib32-libva
     samba
     opencl-headers
 )
-
+# gtk3            lib32-gtk3
+  
 optdepends=(
     giflib          lib32-giflib
     libpng          lib32-libpng
     libldap         lib32-libldap
     gnutls          lib32-gnutls
-    lcms2           lib32-lcms2
-    libxml2         lib32-libxml2
     mpg123          lib32-mpg123
     openal          lib32-openal
     v4l-utils       lib32-v4l-utils
@@ -97,9 +100,11 @@ optdepends=(
     ncurses         lib32-ncurses
     libcl           lib32-libcl
     libxslt         lib32-libxslt
+    libva           lib32-libva
     cups
     samba           dosbox
 )
+# gtk3            lib32-gtk3
 
 if [[ $CARCH == i686 ]]; then
     # Strip lib32 etc. on i686
@@ -109,34 +114,29 @@ if [[ $CARCH == i686 ]]; then
     optdepends=(${optdepends[@]/*32-*/})
     provides=("wine=$pkgver")
     conflicts=('wine')
-    replaces=('wine')
 else
     makedepends=(${makedepends[@]} ${_depends[@]})
-    provides=("bin32-wine=$pkgver" "wine-wow64=$pkgver" "wine=$pkgver")
-    conflicts=('bin32-wine' 'wine-wow64' 'wine')
-    replaces=('bin32-wine' "wine")
+    provides=("bin32-wine=$pkgver" "wine=$pkgver" "wine-wow64=$pkgver")
+    conflicts=('bin32-wine' 'wine' 'wine-wow64')
 fi
 
 prepare()
 {
-    #Patch source tree
-    cd "$srcdir/wine-staging-$pkgver/patches"
-
-    ./patchinstall.sh DESTDIR="$srcdir/wine-wine-$pkgver" --all
-
-    cd "$srcdir/wine-wine-$pkgver"
-    patch -p1 < ../nine-1.7.51.patch
-    patch -p1 -R < ../keybindings.patch
+    cd wine-patched-staging-$pkgver
+    
+    patch -p1 < ../nine-1.7.52.patch
+    patch -p1 < ../raw.patch
     patch -p1 < ../mipmap.patch
     patch -p1 < ../heap_perf.patch
+    patch -p1 < ../wbemprox_query.patch
+    
+    patch -p1 -R < ../keybindings.patch
 
     #OpenCL fix
     cp configure configure_old
     cp configure.ac configure.ac_old
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' configure_old > configure
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' configure.ac_old > configure.ac
-
-  cd "$srcdir"
 }
 
 build()
@@ -148,55 +148,56 @@ build()
     export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
 
     # Get rid of old build dirs
-    rm -rf $_basename-{32,64}-build
-    mkdir $_basename-32-build
+    rm -rf $pkgname-{32,64}-build
+    mkdir $pkgname-32-build
 
     # These additional CPPFLAGS solve FS#27662 and FS#34195
     export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
 
     if [[ $CARCH == x86_64 ]]; then
-        msg2 "Building Wine-64..."
+            msg2 "Building Wine-64..."
 
-        mkdir $_basename-64-build
-        cd "$srcdir/$_basename-64-build"
-        ../wine-wine-$pkgver/configure \
-            --prefix=/usr \
-            --libdir=/usr/lib \
-            --with-x \
-            --without-gstreamer \
-            --enable-win64 \
-            --disable-tests
-            # Gstreamer was disabled for FS#33655
+            mkdir $pkgname-64-build
+            cd "$srcdir/$pkgname-64-build"
+            ../$_winesrcdir/configure \
+                --prefix=/usr \
+                --libdir=/usr/lib \
+                --with-x \
+                --without-gstreamer \
+                --enable-win64 \
+                --with-xattr \
+                --with-d3dadapter
+                # Gstreamer was disabled for FS#33655
 
-        make
+            make
 
-        _wine32opts=(
-        --libdir=/usr/lib32
-        --with-wine64="$srcdir/$_basename-64-build"
-        )
+            _wine32opts=(
+            --libdir=/usr/lib32
+            --with-wine64="$srcdir/$pkgname-64-build"
+            )
 
-        export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+            export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
     fi
 
     msg2 "Building Wine-32..."
-    cd "$srcdir/$_basename-32-build"
-    ../wine-wine-$pkgver/configure \
+    cd "$srcdir/$pkgname-32-build"
+    ../$_winesrcdir/configure \
         --prefix=/usr \
         --with-x \
         --without-gstreamer \
-        --disable-tests \
-    "${_wine32opts[@]}"
+        --with-xattr \
+        --with-d3dadapter \
+        "${_wine32opts[@]}"
 
     # These additional flags solve FS#23277
     make CFLAGS+="-mstackrealign -mincoming-stack-boundary=2" CXXFLAGS+="-mstackrealign -mincoming-stack-boundary=2"
 }
 
-package()
-{
+package() {
     depends=(${_depends[@]})
 
     msg2 "Packaging Wine-32..."
-    cd "$srcdir/$_basename-32-build"
+    cd "$srcdir/$pkgname-32-build"
 
     if [[ $CARCH == i686 ]]; then
         make prefix="$pkgdir/usr" install
@@ -206,7 +207,7 @@ package()
         dlldir="$pkgdir/usr/lib32/wine" install
 
         msg2 "Packaging Wine-64..."
-        cd "$srcdir/$_basename-64-build"
+        cd "$srcdir/$pkgname-64-build"
         make prefix="$pkgdir/usr" \
         libdir="$pkgdir/usr/lib" \
         dlldir="$pkgdir/usr/lib/wine" install

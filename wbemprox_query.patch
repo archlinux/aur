@@ -1,0 +1,136 @@
+From 3606d31738dbe085a2591c31eef0b2c5cbfb537e Mon Sep 17 00:00:00 2001
+From: "Riccardo (C10uD)" <c10ud.dev@gmail.com>
+Date: Tue, 7 Jul 2015 09:49:33 +0200
+Subject: [PATCH] wbemprox: cache videocontroller queries
+
+---
+ dlls/wbemprox/builtin.c | 78 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ dlls/wbemprox/main.c    |  3 ++
+ 2 files changed, 80 insertions(+), 1 deletion(-)
+
+diff --git a/dlls/wbemprox/builtin.c b/dlls/wbemprox/builtin.c
+index f1e5c4a..8f3aa1f 100644
+--- a/dlls/wbemprox/builtin.c
++++ b/dlls/wbemprox/builtin.c
+@@ -2792,6 +2792,73 @@ static WCHAR *get_pnpdeviceid( DXGI_ADAPTER_DESC *desc )
+     return ret;
+ }
+ 
++/* some games like to continuously ask for the video controller
++   since dxgi is expensive, cache results for subsequent calls */
++static struct record_videocontroller *static_rec = NULL;
++
++static void cache_videocontroller(struct record_videocontroller *rec)
++{
++    if (!(static_rec = heap_alloc( sizeof(struct record_videocontroller) )))
++        return;
++
++    static_rec->adapter_dactype       = heap_strdupW( rec->adapter_dactype );
++    static_rec->adapter_ram           = rec->adapter_ram;
++    static_rec->availability          = rec->availability;
++    static_rec->caption               = heap_strdupW( rec->caption );
++    static_rec->current_bitsperpixel  = rec->current_bitsperpixel;
++    static_rec->current_horizontalres = rec->current_horizontalres;
++    static_rec->current_refreshrate   = rec->current_refreshrate;
++    static_rec->current_scanmode      = rec->current_scanmode;
++    static_rec->current_verticalres   = rec->current_verticalres;
++    static_rec->description           = heap_strdupW( rec->description );
++    static_rec->device_id             = heap_strdupW( rec->device_id );
++    static_rec->driverversion         = heap_strdupW( rec->driverversion );
++    static_rec->name                  = heap_strdupW( rec->name );
++    static_rec->pnpdevice_id          = heap_strdupW( rec->pnpdevice_id );
++    static_rec->videoarchitecture     = rec->videoarchitecture;
++    static_rec->videomemorytype       = rec->videomemorytype;
++    static_rec->videoprocessor        = heap_strdupW( rec->videoprocessor );
++}
++
++static void videocontroller_from_cache(struct record_videocontroller *rec)
++{
++    rec->adapter_dactype       = heap_strdupW( static_rec->adapter_dactype );
++    rec->adapter_ram           = static_rec->adapter_ram;
++    rec->availability          = 3; /* Running or Full Power */
++    rec->caption               = heap_strdupW( static_rec->caption );
++    rec->current_bitsperpixel  = static_rec->current_bitsperpixel;
++    rec->current_horizontalres = static_rec->current_horizontalres;
++    rec->current_refreshrate   = 0; /* default refresh rate */
++    rec->current_scanmode      = 2; /* Unknown */
++    rec->current_verticalres   = static_rec->current_verticalres;
++    rec->description           = heap_strdupW( static_rec->description );
++    rec->device_id             = heap_strdupW( static_rec->device_id );
++    rec->driverversion         = heap_strdupW( static_rec->driverversion );
++    rec->name                  = heap_strdupW( static_rec->name );
++    rec->pnpdevice_id          = heap_strdupW( static_rec->pnpdevice_id );
++    rec->videoarchitecture     = 2; /* Unknown */
++    rec->videomemorytype       = 2; /* Unknown */
++    rec->videoprocessor        = heap_strdupW( static_rec->videoprocessor );
++}
++
++void free_cache_videocontroller()
++{
++    if (static_rec == NULL)
++        return;
++
++    heap_free(static_rec->adapter_dactype);
++    heap_free(static_rec->caption);
++    heap_free(static_rec->description);
++    heap_free(static_rec->device_id);
++    heap_free(static_rec->driverversion);
++    heap_free(static_rec->name);
++    heap_free(static_rec->pnpdevice_id);
++    heap_free(static_rec->videoprocessor);
++
++    heap_free(static_rec);
++    static_rec = NULL;
++}
++
+ static enum fill_status fill_videocontroller( struct table *table, const struct expr *cond )
+ {
+ 
+@@ -2807,6 +2874,14 @@ static enum fill_status fill_videocontroller( struct table *table, const struct
+ 
+     if (!resize_table( table, 1, sizeof(*rec) )) return FILL_STATUS_FAILED;
+ 
++    rec = (struct record_videocontroller *)table->data;
++    if (static_rec != NULL)
++    {
++        TRACE("using cached data at %p\n", static_rec);
++        videocontroller_from_cache(rec);
++        goto done_cached;
++    }
++
+     memset (&desc, 0, sizeof(desc));
+     hr = CreateDXGIFactory( &IID_IDXGIFactory, (void **)&factory );
+     if (FAILED(hr)) goto done;
+@@ -2822,7 +2897,6 @@ static enum fill_status fill_videocontroller( struct table *table, const struct
+     }
+ 
+ done:
+-    rec = (struct record_videocontroller *)table->data;
+     rec->adapter_dactype       = videocontroller_dactypeW;
+     rec->adapter_ram           = vidmem;
+     rec->availability          = 3; /* Running or Full Power */
+@@ -2840,6 +2914,8 @@ done:
+     rec->videoarchitecture     = 2; /* Unknown */
+     rec->videomemorytype       = 2; /* Unknown */
+     rec->videoprocessor        = heap_strdupW( name );
++    cache_videocontroller(rec);
++done_cached:
+     if (!match_row( table, row, cond, &status )) free_row_values( table, row );
+     else row++;
+ 
+diff --git a/dlls/wbemprox/main.c b/dlls/wbemprox/main.c
+index e6ccd5c..24c1612 100644
+--- a/dlls/wbemprox/main.c
++++ b/dlls/wbemprox/main.c
+@@ -123,6 +123,9 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
+             DisableThreadLibraryCalls(hinstDLL);
+             init_table_list();
+             break;
++        case DLL_PROCESS_DETACH:
++            free_cache_videocontroller();
++            break;
+     }
+ 
+     return TRUE;
+-- 
+1.9.1
