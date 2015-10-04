@@ -1,0 +1,23 @@
+pkgbase = bililocal-git
+	pkgdesc = Video player that can display barrage-like comments grabbed from danmaku websites like bilibili.com,acfun.tv and niconico.jp.
+	pkgver = 467.595c40c
+	pkgrel = 1
+	url = http://github.com/AncientLysine/BiliLocal
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = vlc
+	provides = bililocal
+	conflicts = bililocal
+	source = git://github.com/AncientLysine/bililocal.git
+	source = bililocal.svg
+	source = bililocal.desktop
+	md5sums = SKIP
+	md5sums = 2a6ab8d09913bb2494f687d8b9d0a449
+	md5sums = 64d8e7db2aadaa28e2333a97a477e6ba
+
+pkgname = bililocal-git
+
