@@ -4,12 +4,11 @@ pkgbase = irccloud-electron-git
 	pkgrel = 1
 	url = https://github.com/dalinaum/IRCCloud
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = git
 	depends = nodejs
-	depends = nodejs-livescript
 	source = IRCCloud::git+https://github.com/dalinaum/IRCCloud.git
 	md5sums = SKIP
 
