@@ -13,11 +13,11 @@ source=("${url}/frs/download.php/file/35070/pastix_5.2.2.22.tar.bz2"
         'Makefile.patch'
         'config.in')
 md5sums=('85127ecdfaeed39e850c996b78573d94'
-         '3b717b6a55ce2107948c2d8b3ef429db'
-         '76e78a25dddf0c184cc5c9e59eda7006')
+         'eca35340bd4c8a5076c00e0a628474b8'
+         'a9577e2c2b27247828420455be029a19')
 
 prepare() {
-    patch -p2 < Makefile.patch
+   patch -p1 < Makefile.patch
 }
 
 build() {

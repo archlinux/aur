@@ -172,8 +172,8 @@ EXTRALIB   := $(EXTRALIB) -L$(SCOTCH_LIB) -lptscotch -lscotch -lptscotcherrexit
 ###################################################################
 # By default PaStiX uses hwloc to bind threads,
 # comment this lines if you don't want it (not recommended)
-HWLOC_HOME ?= /opt/hwloc/
-HWLOC_INC  ?= $(HWLOC_HOME)/include
+HWLOC_HOME ?= /usr
+HWLOC_INC  ?= $(HWLOC_HOME)/include/hwloc
 HWLOC_LIB  ?= $(HWLOC_HOME)/lib
 CCPASTIX   := $(CCPASTIX) -I$(HWLOC_INC) -DWITH_HWLOC
 EXTRALIB   := $(EXTRALIB) -L$(HWLOC_LIB) -lhwloc
