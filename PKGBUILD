@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=25.0.50.r122888
+pkgver=25.0.50.r122899
 pkgrel=1
 pkgdesc="GNU Emacs. Official git trunk."
 arch=('i686' 'x86_64')
