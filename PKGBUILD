@@ -34,7 +34,6 @@ fi
 pkgver() {
 	if [ "${_compile}" -ne 0 ]; then
 		cd "${srcdir}/${pkgname%%-*}-${pkgver:0:3}"
-		msg "Checking current version..."
 		conf_ver=`sed -n 's/)$//g;s/^AC_INIT(vlc, //p' configure.ac`
 		echo "${conf_ver:0:5}"
 	fi
