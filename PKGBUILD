@@ -43,3 +43,6 @@ package() {
   install -Dm644 data/freshwrapper.conf.example "${pkgdir}/usr/share/${pkgname}/freshwrapper.conf.example"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+sha1sums=('195fe1c097ac896075d0d73e71f6d08df27f97e4'
+          '331a3b3877249eaf1c3db917bde1dea6c4d374ab')
