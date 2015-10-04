@@ -1,13 +1,13 @@
 pkgname=vio2sf-git
-pkgver=r34.78e4a0b
-pkgrel=1
+pkgver=r32.4054499
+pkgrel=2
 pkgdesc="Library for decoding Nintendo DS Sound Format files"
 arch=(i686 x86_64)
-url='https://gitlab.kode54.net/kode54/vio2sf'
+url='https://bitbucket.org/kode54/vio2sf'
 license=(GPL2)
 depends=(glibc zlib)
 makedepends=(git)
-source=(${pkgname}::git+https://gitlab.kode54.net/kode54/vio2sf.git)
+source=(${pkgname}::git+https://bitbucket.org/kode54/vio2sf.git)
 sha256sums=('SKIP')
 
 pkgver() {
