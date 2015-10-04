@@ -19,13 +19,9 @@ md5sums=('SKIP'
 pkgver() {
   cd "$_pkgname"
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  #git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-  #git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-  #git describe --long | sed -r 's/^foo-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-  #install -Dm644 "55-fractalaudio.rules" "$pkgdir/etc/udev/rules.d/55-fractalaudio.rules"
   install -Dm644 "55-fractalaudio.rules" "$pkgdir/usr/lib/udev/rules.d/55-fractalaudio.rules"
   cd "$_pkgname"
   install -Dm644 "loader/axefx2load.hex" "$pkgdir/usr/share/usb/FractalAudio/axefx2/axefx2load.hex"
