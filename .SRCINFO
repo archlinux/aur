@@ -1,0 +1,15 @@
+pkgbase = bandwidth
+	pkgdesc = Benchmark memory and network bandwidth
+	pkgver = 1.1b
+	pkgrel = 1
+	url = http://home.comcast.net/~veritas/bandwidth.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = nasm
+	options = !makeflags
+	source = http://zsmith.co/archives/bandwidth-1.1b.tar.gz
+	md5sums = ae47329daea5c422f552e38b16856376
+
+pkgname = bandwidth
+
