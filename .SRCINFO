@@ -1,0 +1,20 @@
+pkgbase = modsecurity
+	pkgver = 2.9.0
+	pkgrel = 1
+	arch = x86_64
+	arch = i386
+	license = ASLv2
+	depends = apache
+	depends = apr
+	depends = apr-util
+	depends = pcre
+	depends = libxml2
+	depends = lua
+	depends = curl
+	source = https://www.modsecurity.org/tarball/2.9.0/modsecurity-2.9.0.tar.gz
+	source = lua_5.3.patch
+	md5sums = ecf42d21f26338443d7111891851628c
+	md5sums = e932d70f975e6acccd0583a6e91818d1
+
+pkgname = modsecurity
+
