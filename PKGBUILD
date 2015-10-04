@@ -1,7 +1,7 @@
 # Maintainer: David Roheim <david.roheim@gmail.com>
 pkgname=zendframework2-apidoc
 pkgver=2.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="API Documentation for ZendFramework2"
 arch=('any')
 url="http://framework.zend.com/"

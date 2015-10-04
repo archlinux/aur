@@ -1,7 +1,7 @@
 pkgbase = zendframework2-apidoc
 	pkgdesc = API Documentation for ZendFramework2
 	pkgver = 2.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://framework.zend.com/
 	arch = any
 	license = BSD
