@@ -5,7 +5,7 @@
 
 _pkgname=playonlinux
 pkgname=$_pkgname-git
-pkgver=4.2.5.r1.g9183700
+pkgver=4.2.9.r1.g1157b14
 pkgrel=1
 epoch=1
 pkgdesc="GUI for managing Windows programs under linux"
