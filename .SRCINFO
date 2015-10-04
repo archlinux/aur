@@ -1,7 +1,7 @@
 pkgbase = pyjama
 	pkgdesc = Unofficial Python/GTK Medialibrary for Jamendo
 	pkgver = 0.3.0.78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/pyjama
 	arch = any
 	license = GPL
@@ -12,11 +12,11 @@ pkgbase = pyjama
 	depends = gstreamer0.10-bad-plugins
 	depends = python2-numpy
 	depends = gstreamer0.10-ugly-plugins
-	depends = pyxml
+	depends = python2-lxml
 	optdepends = gnome-python-extras
 	optdepends = python2-notify
 	source = http://xn--ngel-5qa.de/pyjama/release/pyjama-0.3.0.78_all.tar.gz
-	md5sums = 3df060cfabcc3e0ecc2879ca3c04c5be
+	sha256sums = 1a96e9ca85fa7fa91a41da535f807cfe66e183d909a22fefe02fd737e6919886
 
 pkgname = pyjama
 
