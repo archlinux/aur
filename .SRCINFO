@@ -1,0 +1,15 @@
+pkgbase = panel-git
+	pkgdesc = Lemonbar wrapper
+	pkgver = 20151004.r2.e94633d
+	pkgrel = 1
+	url = https://github.com/shyiko/commacd
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = lemonbar
+	source = panel::git+git://github.com/moonarch/panel.git
+	sha512sums = SKIP
+
+pkgname = panel-git
+
