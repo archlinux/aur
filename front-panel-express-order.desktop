@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Front Panel Express: Order Products
+Comment=Order custom front panels and enclosures
+Exec=FrontDesign-Order
+Icon=/opt/FrontDesign/share/FrontDesign/FrontDesignOrderIcon.png
+Type=Application
+Terminal=false
+Categories=Development;

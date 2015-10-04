@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Front Panel Designer
+Comment=Design custom front panels and enclosures
+Exec=FrontDesign
+Icon=/opt/FrontDesign/share/FrontDesign/FrontDesignIcon.png
+Type=Application
+Terminal=false
+Categories=Development;
