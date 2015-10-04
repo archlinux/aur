@@ -1,0 +1,99 @@
+pkgbase = papirus-git
+	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE
+	pkgver = r220.3f97691
+	pkgrel = 1
+	url = https://github.com/varlesh/papirus-pack-kde
+	arch = any
+	license = CCPL:by-sa
+	depends = plasma-desktop
+	optdepends = papirus-plasma-theme-git
+	optdepends = papirus-icon-theme-git
+	optdepends = papirus-color-scheme-git
+	optdepends = papirus-gtk-theme-git
+	optdepends = papirus-aurorae-theme-git
+	optdepends = papirus-konsole-colorscheme-git
+	optdepends = papirus-yakuake-theme-git
+	optdepends = bomi-skin-papirus-git
+	optdepends = libreoffice-papirus-theme-git
+	optdepends = papirus-kmail-theme-git
+	conflicts = papirus
+	options = !strip
+	source = git+https://github.com/varlesh/papirus-pack-kde.git
+	sha256sums = SKIP
+
+pkgname = papirus-git
+
+pkgname = papirus-plasma-theme-git
+	pkgdesc = Modified and adaptive Paper plasma theme for KDE
+	optdepends = 
+	conflicts = papirus-plasma-theme
+	options = !strip
+
+pkgname = papirus-icon-theme-git
+	pkgdesc = Modified and adaptive Paper icon theme for KDE
+	optdepends = 
+	conflicts = papirus-icon-theme
+	options = !strip
+
+pkgname = papirus-color-scheme-git
+	pkgdesc = Modified and adaptive Paper color scheme for KDE
+	optdepends = 
+	conflicts = papirus-color-scheme
+	options = !strip
+
+pkgname = papirus-gtk-theme-git
+	pkgdesc = Modified and adaptive Paper GTK theme for KDE
+	depends = gtk-engine-murrine
+	depends = gtk2
+	depends = gtk3
+	optdepends = 
+	conflicts = papirus-gtk-theme
+	options = !strip
+
+pkgname = papirus-aurorae-theme-git
+	pkgdesc = Modified and adaptive Paper decorations for Kwin
+	depends = kwin
+	optdepends = 
+	conflicts = papirus-aurorae-theme
+	options = !strip
+
+pkgname = papirus-konsole-colorscheme-git
+	pkgdesc = Modified and adaptive Paper colorscheme for Konsole
+	depends = konsole
+	optdepends = 
+	conflicts = papirus-konsole-colorscheme
+	options = !strip
+
+pkgname = papirus-yakuake-theme-git
+	pkgdesc = Modified and adaptive Paper theme for Yakuake
+	depends = yakuake
+	optdepends = 
+	conflicts = papirus-yakuake-theme
+	conflicts = yakuake-skin-papirus
+	conflicts = yakuake-skin-papirus-dark
+	conflicts = yakuake-skin-papirus-dark-frameworks
+	conflicts = yakuake-skin-papirus-frameworks
+	options = !strip
+
+pkgname = bomi-skin-papirus-git
+	pkgdesc = Papirus theme for Bomi
+	depends = bomi
+	optdepends = 
+	conflicts = bomi-skin-papirus
+	options = !strip
+
+pkgname = libreoffice-papirus-theme-git
+	pkgdesc = Libreoffice Papirus theme
+	depends = 
+	optdepends = libreoffice
+	optdepends = libreoffice-fresh-rpm
+	conflicts = libreoffice-papirus-theme
+	conflicts = libreoffice-fresh-rpm-papirus-theme
+	options = !strip
+
+pkgname = papirus-kmail-theme-git
+	pkgdesc = Modified and adaptive Paper theme for Kmail
+	depends = kmail
+	optdepends = 
+	options = !strip
+
