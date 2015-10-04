@@ -1,6 +1,6 @@
 # Maintainer: Jakub Pelikan jakub.pelikan@gmail.com
 pkgname=create_ap-gui
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 epoch=
 pkgdesc="Gui application for easy creating access points. Application allows save configuration for quickly create AP."
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://pypi.python.org/packages/source/c/create_ap-gui/create_ap-gui-1.1.tar.gz")
+source=("https://pypi.python.org/packages/source/c/create_ap-gui/create_ap-gui-1.2.tar.gz")
 noextract=()
-md5sums=("474e081c396f9a486dcb4ac13c835854")
+md5sums=("7ac85f76a173c3709b5a3d8606bfe75a")
 validpgpkeys=()
 
 prepare() {
