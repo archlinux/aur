@@ -1,6 +1,6 @@
 pkgbase = opencv-java
 	pkgdesc = Open Source Computer Vision Library - Java bindings
-	pkgver = 2.4.11
+	pkgver = 2.4.12.2
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = i686
@@ -17,13 +17,13 @@ pkgbase = opencv-java
 	depends = xine-lib
 	depends = libdc1394
 	depends = gtkglext
-	depends = opencv=2.4.11
+	depends = opencv=2.4.12.2
 	optdepends = opencv-samples
 	optdepends = eigen2
 	optdepends = libcl: For coding with OpenCL
 	optdepends = python2-numpy: Python 2.x interface
-	source = http://downloads.sourceforge.net/opencvlibrary/opencv-2.4.11.zip
-	md5sums = 32f498451bff1817a60e1aabc2939575
+	source = -2.4.12.2::https://github.com/Itseez/opencv/archive/2.4.12.2.zip
+	md5sums = 5f7cde7f0bccd90542805ea20687fc8d
 
 pkgname = opencv-java
 

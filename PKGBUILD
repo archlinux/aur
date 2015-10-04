@@ -6,7 +6,7 @@
 
 pkgname=opencv-java
 _pkgbase=opencv
-pkgver=2.4.11
+pkgver=2.4.12.2
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library - Java bindings"
 arch=('i686' 'x86_64')
@@ -36,10 +36,8 @@ optdepends=(
 	'python2-numpy: Python 2.x interface'
 	)
 # Sources and checksums section
-source=(
-	"http://downloads.sourceforge.net/opencvlibrary/$_pkgbase-$pkgver.zip"
-	)
-md5sums=('32f498451bff1817a60e1aabc2939575')
+source=("$pkgbase-$pkgver::https://github.com/Itseez/opencv/archive/$pkgver.zip")
+md5sums=('5f7cde7f0bccd90542805ea20687fc8d')
 
 # CMake flags
 _cmakeopts=('-D WITH_OPENCL=ON'
