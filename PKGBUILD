@@ -6,7 +6,7 @@ _check="disabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.0.1"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Python Git Library"
 arch=("any")
 url="https://github.com/gitpython-developers/${_name}"

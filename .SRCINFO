@@ -1,7 +1,7 @@
 pkgbase = python-git
 	pkgdesc = Python Git Library
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gitpython-developers/GitPython
 	arch = any
 	license = BSD
@@ -13,12 +13,12 @@ pkgbase = python-git
 pkgname = python-git
 	depends = git>=1.7
 	depends = python-gitdb>=0.6.4
-	provides = python-gitpython=1.0.1-3
+	provides = python-gitpython=1.0.1-4
 	conflicts = python-gitpython
 
 pkgname = python2-git
 	depends = git>=1.7
 	depends = python2-gitdb>=0.6.4
-	provides = python2-gitpython=1.0.1-3
+	provides = python2-gitpython=1.0.1-4
 	conflicts = python2-gitpython
 
