@@ -12,6 +12,6 @@ source=("http://waylandev.tk/aur/particle-browser.tar.xz")
 md5sums=('91978c385239f9019c25af28faefe4df')
 
 package() {
-  cd "$srcdir/particle-browser"
+  cd "$srcdir"
   ./setup.sh
 }
