@@ -6,8 +6,8 @@
 
 pkgname=coursera-dl-git
 _gitname=coursera
-pkgver=524.57fd3db
-pkgrel=2
+pkgver=823.45bdcac
+pkgrel=1
 pkgdesc="Script for downloading Coursera.org videos and naming them"
 arch=('any')
 url="https://github.com/coursera-dl/coursera/"
@@ -25,8 +25,8 @@ pkgver() {
 package() {
   cd $_gitname
   install -Dm755 ${pkgname%-*} "$pkgdir/usr/bin/${pkgname%-*}"
-  install -dm755 $_gitname "$pkgdir/usr/lib/python3.4/site-packages/$_gitname"
-  install -cm644 $_gitname/*.py "$pkgdir/usr/lib/python3.4/site-packages/$_gitname/"
+  install -dm755 $_gitname "$pkgdir/usr/lib/python3.5/site-packages/$_gitname"
+  install -cm644 $_gitname/*.py "$pkgdir/usr/lib/python3.5/site-packages/$_gitname/"
 }
 
 # vim: set ts=2 sw=2 et:

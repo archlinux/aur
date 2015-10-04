@@ -1,7 +1,7 @@
 pkgbase = coursera-dl-git
 	pkgdesc = Script for downloading Coursera.org videos and naming them
-	pkgver = 524.57fd3db
-	pkgrel = 2
+	pkgver = 823.45bdcac
+	pkgrel = 1
 	url = https://github.com/coursera-dl/coursera/
 	arch = any
 	license = GPL
