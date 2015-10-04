@@ -5,13 +5,13 @@
 # Contributor: pressh
 
 pkgname=kdenlive-git
-pkgver=15.04.0.r5768.66e7120
+pkgver=15.09.0.r6416.8b0b266
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version)"
 arch=('i686' 'x86_64')
-url="http://http://www.kdenlive.org/"
+url="http://www.kdenlive.org/"
 license=('GPL')
-depends=('glu' 'knewstuff' 'kplotting' 'knotifyconfig' 'mlt' 'hicolor-icon-theme')
+depends=('knewstuff' 'kplotting' 'knotifyconfig' 'mlt' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'v4l-utils')
 optdepends=('ffmpeg: for FFmpeg plugin'
             'cdrkit: for creation of DVD ISO images'
@@ -28,7 +28,7 @@ install=$pkgname.install
 
 pkgver() {
   cd kdenlive
-  _ver="$(cat CMakeLists.txt | grep KDENLIVE_VERSION | head -n1 | cut -d ' ' -f2 | tr -d ')')"
+  _ver="$(cat CMakeLists.txt | grep KDE_APPLICATIONS | cut -d '"' -f2 | tr '\n' '.' | cut -d "." -f 1-3)"
   echo "$(echo ${_ver}).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
