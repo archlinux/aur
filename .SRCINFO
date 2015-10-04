@@ -1,0 +1,36 @@
+pkgbase = scala_2.10
+	pkgdesc = A Java-interoperable language with object-oriented and functional features. This is the maintenance version of Scala 2.10.
+	pkgver = 2.10.5
+	pkgrel = 1
+	url = http://www.scala-lang.org
+	arch = any
+	license = BSD
+	depends = java-runtime<=7
+	conflicts = scala
+	conflicts = scala-docs
+	conflicts = scala-sources
+	source = http://www.scala-lang.org/files/archive/scala-2.10.5.tgz
+	source = http://www.scala-lang.org/files/archive/scala-docs-2.10.5.txz
+	md5sums = 79c0f6551ce62d651f700073e654e141
+	md5sums = e895c4641ad8fba4b8a983c957bae948
+
+pkgname = scala_2.10
+	depends = java-runtime<=7
+	optdepends = scala-docs_2.10
+	optdepends = scala-sources_2.10
+	optdepends = graphviz: generate diagrams
+	replaces = scala
+
+pkgname = scala-docs_2.10
+	pkgdesc = Scala documentation
+	depends = 
+	replaces = scala-doc
+	replaces = scala-devel-docs
+	replaces = scala-docs
+
+pkgname = scala-sources_2.10
+	pkgdesc = Scala sources
+	depends = 
+	replaces = scala-src
+	replaces = scala-sources
+
