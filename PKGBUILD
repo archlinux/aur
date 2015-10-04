@@ -12,7 +12,7 @@ url="http://developer.amd.com/tools/heterogeneous-computing/codexl/"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
 groups=('amdapp')
-depends=('libpng' 'libgl' 'libcl')
+depends=('libpng12' 'libgl' 'libcl')
 source=(http://developer.amd.com/download/AMD_CodeXL_Linux_x86_64_$pkgver.$pkgrel.tar.gz
       CodeXL.sh
       codexl.png
