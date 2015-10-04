@@ -67,7 +67,7 @@ fi
 
 # Install Aur dependencies
 if [ -f "$AUR" ]; then
-	PKGDEST="$AURDIR" pacaur --noconfirm --asexplicit --noedit -m $(cat "$AUR")
+	PKGDEST="$AURDIR" pacaur --noconfirm --foreign --noedit -m $(cat "$AUR")
 	sudo pacman -r "$BUILDDIR/rootfs" --noconfirm -U $AURDIR/*
 	rm -rf "$AURDIR"
 fi
