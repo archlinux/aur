@@ -3,7 +3,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=ttf-textfonts
-pkgver=6.00
+pkgver=20151004
 pkgrel=1
 pkgdesc="Fonts based on early works by Alexander Wilson, Claude Garamond, Victor Scholderer, Firmin Didot et al."
 arch=('any')
@@ -12,9 +12,9 @@ license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-alexander' 'ttf-alfios' 'ttf-anaktoria' 'ttf-aroania' 'ttf-atavyros' 'ttf-avdira' 'ttf-asea')
 replaces=('ttf-alexander' 'ttf-alfios' 'ttf-anaktoria' 'ttf-aroania' 'ttf-atavyros' 'ttf-avdira' 'ttf-asea')
-source=("http://users.teilar.gr/~g1951d/TextFonts.zip" "LICENSE")
+source=("http://users.teilar.gr/~g1951d/Textfonts.zip" "LICENSE")
 install=$pkgname.install
-md5sums=('21459dd5a047efe1ae6b81041ed2e276'
+md5sums=('10ea36306952a18d95c58437568736cb'
          'bc1709dc3b1f6a7545ab366923e01a1c')
 
 package()
