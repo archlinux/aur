@@ -1,0 +1,18 @@
+pkgbase = trx-git
+	pkgdesc = Toolset for sending and receiving encoded audio over IP networks
+	pkgver = 21aa558
+	pkgrel = 1
+	url = http://www.pogo.org.uk/~mark/trx/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = ortp
+	depends = opus
+	depends = alsa-lib
+	provides = trx
+	source = trx-git::git+http://www.pogo.org.uk/~mark/trx.git
+	md5sums = SKIP
+
+pkgname = trx-git
+
