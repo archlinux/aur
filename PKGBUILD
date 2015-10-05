@@ -6,6 +6,7 @@ _pkgname=idea-IC
 _buildver=142.5239.7
 _pkgver=15-PublicPreview
 _eap="False"
+epoch=3
 pkgver=15.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
