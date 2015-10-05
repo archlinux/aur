@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <chris@chrisarndt.de>
 
 pkgname=tracktion-6
-pkgver=6.2.1
+pkgver=6.2.3
 pkgrel=1
 pkgdesc="Commercial Proprietary Music Production Software"
 arch=('x86_64')
@@ -20,13 +20,13 @@ source=(
 	'Tracktion6.desktop'
 	)
 install="tracktion.install"
-md5sums=('f8882af3d19142bce91f47a016cba4ae'
+md5sums=('2aecaad58cb84644e2c1b7ebbf5780d3'
          'd7bac73a1a52d26b337761a1d7ec561d'
          'a6ef58fb9f98f01bb23a54d7ce97f678')
 
 package() {
 	tar -x --lzma -f data.tar.lzma -C "${pkgdir}"
-	rm "$pkgdir/usr/share/applications/tracktion.desktop"
+	rm "$pkgdir/usr/share/applications/tracktion6.desktop"
 	install -Dm644 "$startdir/license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$startdir/Tracktion6.desktop" "$pkgdir/usr/share/applications/"
 
