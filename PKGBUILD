@@ -3,7 +3,7 @@
 
 pkgname=sportstracker
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for people who want to track their sporting activities"
 arch=('any')
 url="http://www.saring.de/sportstracker/"
@@ -13,7 +13,7 @@ source=(http://downloads.sourceforge.net/sportstracker/SportsTracker-$pkgver-bin
         sportstracker.sh
         sportstracker.desktop)
 sha1sums=('a588df92a3282f2d46fa85f5ca37446762a59d4f'
-         'a10eefe63bf776c3b9e3b2fa8471c1b17e0c87e5'
+         '14f7feca091a697ad9b0f6ef73bd3a4dd8797c53'
          '663d2bf00a87c1bddc8bda2c7f6dacd8d869c281')
 
 package() {
