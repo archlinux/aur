@@ -2,11 +2,11 @@
 
 pkgname=vis-git
 pkgver=0.r557.g3488bda
-pkgrel=1
+pkgrel=2
 pkgdesc='suckless vim like editor - git checkout'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/vis.git'
-depends=('ncurses' 'libtermkey-bzr')
+depends=('ncurses' 'libtermkey')
 conflicts=('vis')
 provides=('vis')
 makedepends=('git' 'markdown')

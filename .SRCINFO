@@ -1,7 +1,7 @@
 pkgbase = vis-git
 	pkgdesc = suckless vim like editor - git checkout
 	pkgver = 0.r557.g3488bda
-	pkgrel = 1
+	pkgrel = 2
 	url = http://repo.or.cz/vis.git
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = vis-git
 	makedepends = git
 	makedepends = markdown
 	depends = ncurses
-	depends = libtermkey-bzr
+	depends = libtermkey
 	provides = vis
 	conflicts = vis
 	source = git://repo.or.cz/vis.git
