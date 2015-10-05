@@ -3,7 +3,7 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-qt
-pkgver=5.7.2
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="QT archiver utility"
 arch=(i686 x86_64)
@@ -18,9 +18,9 @@ install=${pkgname%-*}.install
 source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/${pkgname%-*}-$pkgver.LINUX.Qt.tgz"
         "${pkgname%-*}.desktop")
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('a57bfd3e72c94ebbd1a7af4815c7e6520483087b4a643370787fca95e5f4bde1'
+sha256sums=('76d7bf9629720ad4005a417c34be524e647d57147a495dc9761ffb8e917e0fac'
             '4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b')
-sha512sums=('94d021cc45f2201a638f4c148916a7b6215a995c56882873230d72f5703f0e3a88520cef81f5b77cf038e85cece84d3b3f3fc819f21a924196c97df0df51e093'
+sha512sums=('90c1f00913a72320b936d6302971076832d00d91fc29b86b8364ac76b83e81cf0d857b081483aa7ac7489e1e010ca4b40a4ed45a06dffe6eedbfac1e4d2a87ac'
             'bc86d42b33285c2709081ddca7c06fe789cc2d42c69c4cbed595c077a776d91e5526eb799dcdc404375a3bfb212927165a02d3d79301f53adb8a89039bf7bb5f')
 
 package() {
