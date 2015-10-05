@@ -53,7 +53,8 @@ build() {
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
      -DVTK_DIR="${_paraviewrootdir}/lib/cmake/paraview-${_paraviewver}" \
      -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
-     -DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2
+     -DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2 \
+     -DSWIG_EXECUTABLE=/usr/bin/swig-2
 
   make
 }
