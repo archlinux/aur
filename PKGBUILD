@@ -2,7 +2,7 @@
 
 pkgname=manager-accounting
 pkgver=15.5.82
-pkgrel=1
+pkgrel=2
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
 license=('custom')
@@ -22,8 +22,9 @@ prepare() {
 }
 
 package() {
-    install -d "$pkgdir"/usr/{lib,share/{applications,icons}}
-    cp -r opt/manager-accounting "$pkgdir/usr/lib/"
-    cp -r usr/share/icons/* "$pkgdir/usr/share/icons/"
+    install -d $pkgdir/usr/{bin,lib,share/{applications,icons}}
+    cp -r opt/manager-accounting $pkgdir/usr/lib/
+    cp -r usr/share/icons/* $pkgdir/usr/share/icons/
+    ln -s /usr/lib/manager-accounting/manager-accounting $pkgdir/usr/bin/manager-accounting
     install -m644 usr/share/applications/"$pkgname.desktop" "$pkgdir/usr/share/applications/"
 }
