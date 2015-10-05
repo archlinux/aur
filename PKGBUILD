@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-pipebang
-pkgver=110.01.00
+pkgver=113.00.00
 pkgrel=1
 license=('Apache')
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ pkgdesc="OCaml syntax extension to transform x |! f into f x"
 url="https://github.com/janestreet/pipebang"
 depends=('ocaml' 'camlp4')
 makedepends=('ocaml-findlib')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+").00/individual/${pkgname#ocaml-}-${pkgver}.tar.gz")
+source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('09094ac5a5ccdf7f8b7a6115ce228a40')
+md5sums=('685ee2184eb95270751c58790f93dd0b')
 
 build() {
   cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
