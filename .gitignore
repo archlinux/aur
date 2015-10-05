@@ -1,4 +1,4 @@
-*.pkg.tar.xz
+*.pkg.*
 pkg
 src
 zen-config
