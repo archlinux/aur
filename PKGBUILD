@@ -2,7 +2,7 @@
 
 pkgname=python-pycddlib
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="pycddlib is a Python wrapper for Komei Fukuda's cddlib."
 url="http://pypi.python.org/pypi/pycddlib"
 # Note: cddlib is bundled with pycddlib
@@ -11,7 +11,7 @@ makedepends=('python')
 license=('GPL')
 arch=('any')
 source=("https://pypi.python.org/packages/source/p/pycddlib/pycddlib-$pkgver.zip")
-md5sums=('2da4347f5d4964b5a8eafddb9dd19d24')
+sha256sums=('d42e50e21310826121163a3c73b40ed0e52e3b29f9cf97fd3a26a7cd71f6664f')
 
 build() {
   cd $srcdir/pycddlib-$pkgver
