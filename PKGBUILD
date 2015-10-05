@@ -16,7 +16,7 @@ sha256sums=('6e29752d93cdb9253b1a380bdaa8331b324f8f72babb29c1f12a32bcd1464aeb')
 build() {
     cd "$srcdir/acquisitionplus-${pkgver}-PLUS"
 
-    qmake QMAKE_CC="$CC" QMAKE_CXX="$CXX"
+    qmake
     make
 }
 
