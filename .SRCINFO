@@ -6,7 +6,9 @@ pkgbase = graphene
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = gtk-doc
 	depends = glib2
+	optdepends = gobject-introspection: Language bindings
 	provides = graphene=1.2.10
 	conflicts = graphene
 	source = git+https://github.com/ebassi/graphene.git#tag=1.2.10
