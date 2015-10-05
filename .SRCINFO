@@ -1,0 +1,14 @@
+pkgbase = python-shyaml
+	pkgdesc = YAML for the command line
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/0k/shyaml
+	arch = x86_64
+	license = BSD
+	depends = python
+	depends = python-yaml
+	source = git+https://github.com/0k/shyaml.git
+	sha256sums = SKIP
+
+pkgname = python-shyaml
+
