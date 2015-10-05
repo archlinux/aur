@@ -1,0 +1,35 @@
+From 3b134589bcf9a4e8317f0b501ea77075f7e46dc8 Mon Sep 17 00:00:00 2001
+From: Paul Gideon Dann <pdgiddie@gmail.com>
+Date: Tue, 20 Oct 2009 18:32:35 +0100
+Subject: [PATCH 4/4] Don't build the main poppler library.
+
+---
+ CMakeLists.txt | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ac3d090..2d18c1e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -471,18 +471,6 @@ if(HAVE_PTHREAD)
+   set(poppler_LIBS ${poppler_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+ endif()
+ 
+-if(MSVC)
+-add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+-set(CMAKE_CXX_FLAGS "/Zc:wchar_t- ${CMAKE_CXX_FLAGS}")
+-add_library(poppler STATIC ${poppler_SRCS})
+-else(MSVC)
+-add_library(poppler SHARED ${poppler_SRCS})
+-endif(MSVC)
+-set_target_properties(poppler PROPERTIES VERSION 55.0.0 SOVERSION 55)
+-target_link_libraries(poppler ${poppler_LIBS})
+-target_link_libraries(poppler LINK_INTERFACE_LIBRARIES "")
+-install(TARGETS poppler RUNTIME DESTINATION bin LIBRARY DESTINATION lib${LIB_SUFFIX} ARCHIVE DESTINATION lib${LIB_SUFFIX})
+-
+ if(ENABLE_XPDF_HEADERS)
+   install(FILES
+     poppler/Annot.h
+-- 
+2.6.0
+

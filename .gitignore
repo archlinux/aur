@@ -1,0 +1,4 @@
+*.swp
+*.tar.xz
+/src
+/pkg
