@@ -9,7 +9,7 @@
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 pkgver=2.27
-pkgrel=2
+pkgrel=5
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
@@ -24,17 +24,23 @@ license=('GPL2')
 options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v2.27/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
-        uuidd.tmpfiles
+        "0001-libmount-monitor-don-t-check-for-regular-mtab.patch"
         pam-{login,common,su})
 md5sums=('5b06bbda9309624ee7add15bc8d8ca22'
          'SKIP'
-         'a39554bfd65cccfd8254bb46922f4a67'
+         'f9e06605db9107b9c4bb1c48059fe18e'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
          'fa85e5cce5d723275b14365ba71a8aad')
 
+prepare() {
+  cd "${pkgbase/-selinux}-$pkgver"
+
+  patch -Np1 <../0001-libmount-monitor-don-t-check-for-regular-mtab.patch
+}
+
 build() {
-  cd "${pkgname/-selinux}-$pkgver"
+  cd "${pkgbase/-selinux}-$pkgver"
 
   ./configure --prefix=/usr \
               --libdir=/usr/lib \
@@ -71,7 +77,7 @@ package_util-linux-selinux() {
           etc/pam.d/su
           etc/pam.d/su-l)
 
-  cd "${pkgname/-selinux}-$pkgver"
+  cd "${pkgbase/-selinux}-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
@@ -85,20 +91,17 @@ package_util-linux-selinux() {
   install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
   install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
 
-  # include tmpfiles fragment for uuidd
   # TODO(dreisner): offer this upstream?
-  install -Dm644 "$srcdir/uuidd.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/uuidd.conf"
+  sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "$pkgdir/usr/lib/systemd/system/uuidd.socket"
 
-  # usrmove
+  # adjust for usrmove
+  # TODO(dreisner): fix configure.ac upstream so that this isn't needed
   cd "$pkgdir"
   mv {,usr/}sbin/* usr/bin
   rmdir sbin usr/sbin
 
-  ### create libutil-linux split
-  rm -rf "$srcdir/_libutil-linux"
-  install -dm755 "$srcdir"/_libutil-linux/usr/lib
-  cd "$srcdir"/_libutil-linux
-  mv "$pkgdir"/usr/lib/lib*.{a,so}* usr/lib
+  ### runtime libs are shipped as part of libutil-linux
+  rm "$pkgdir"/usr/lib/lib*.{a,so}*
 }
 
 package_libutil-linux-selinux() {
@@ -108,5 +111,5 @@ package_libutil-linux-selinux() {
   depends=('libselinux')
   conflicts=("${pkgname/-selinux}")
 
-  mv "$srcdir/_libutil-linux"/* "$pkgdir"
+  make -C "${pkgbase/-selinux}-$pkgver" DESTDIR="$pkgdir" install-usrlib_execLTLIBRARIES
 }
