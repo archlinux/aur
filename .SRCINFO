@@ -1,0 +1,14 @@
+pkgbase = libtermkey
+	pkgdesc = Library for easy processing of keyboard entry from terminal-based programs
+	pkgver = 0.17
+	pkgrel = 1
+	url = http://www.leonerd.org.uk/code/libtermkey
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = unibilium
+	source = http://www.leonerd.org.uk/code/libtermkey/libtermkey-0.17.tar.gz
+	sha256sums = 68949364ed5eaad857b3dea10071cde74b00b9f236dfbb702169f246c3cef389
+
+pkgname = libtermkey
+
