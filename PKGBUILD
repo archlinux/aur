@@ -1,53 +1,54 @@
 # See AUR interface to contact current maintainer.
 
+# Do note that this PKGBUILD follows closely the PKGBUILD provided by 
+# Arch extra repository, for obvious reasons.
+
 pkgname=libreoffice-uglyfix-freetype2
-pkgver=2.6
-pkgrel=2
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="Installs freetype2 .so files in the LibreOffice directory to fix font ugliness"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://freetype.sourceforge.net"
-depends=('zlib' 'bzip2' 'sh' 'libpng' 'libreoffice')
+# adding harfbuzz for improved OpenType features auto-hinting 
+# introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
+depends=('zlib' 'bzip2' 'sh' 'libpng' 'harfbuzz' 'libreoffice')
 options=(!docs)
 source=(
-  "http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2"
-  'libreoffice-uglyfix.patch'
-  'freetype-2.2.1-enable-valid.patch'
-  'freetype-2.5.1-enable-spr.patch'
-  'freetype-2.5.1-enable-sph.patch'
-  'env_FT2_SUBPIXEL_HINTING.diff')    
-sha256sums=('8469fb8124764f85029cc8247c31e132a2c5e51084ddce2a44ea32ee4ae8347e'
-            '78932b6044c92367bf1eca07910b1c533ce6a0e721233feaeb27e6019adc3b81'
-            '54c83a91b0b2ad7edad7df00a2c26a11ca18431a8e323db9471268a139c46f7e'
-            '1c9a03e4cf07799deb7983b47b15f7557a8dbf9b8a7690910d017b6fd6804a23'
-            'ae89da5ce6d196abd5fe44dfbec16e731d7045c0cdc043a503ed3f120663bcfd'
-            '4b0a220ea989da35fc40f58c20bed092a901ecc35f28c45b02da38c96c470855')
+  http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
+  libreoffice-uglyfix-noautohint.patch
+  0001-Enable-table-validation-modules.patch
+  0002-Enable-subpixel-rendering.patch
+  0003-Enable-subpixel-hinting.patch
+  0004-Mask-subpixel-hinting-with-an-env-var.patch)
+sha256sums=('2f6e9a7de3ae8e85bdd2fe237e27d868d3ba7a27495e65906455c27722dd1a17'
+            'SKIP'
+            '65915726ba3adfc5903ddd6b706ce91751994e7635ea6111e33e5939c674496b'
+            '9de28c1156c0a5edff1b3860ad44f4cc2494fc5663bd40c3914fdd64e8ee0724'
+            '60e767ccee37939bfea73fa86229108c51b665713a89fbda5506759af2e7d629'
+            '78aba5d04418952cf4a29351420fc82c5830616d221e95a21a0c8e3da827d681'
+            '3672ef244d6c455623bd0ddecde46bd3758152713a03d475f91aaccfa1a2e0f4')
+validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 prepare()
 {
   cd "$srcdir/freetype-$pkgver"
 
-  patch -Np1 -i "$srcdir/libreoffice-uglyfix.patch"
+  patch -Np1 -i "$srcdir/libreoffice-uglyfix-noautohint.patch"
 
+  #
   # Arch patches
   #
-  # Enable font validity checking (bad fonts can crash your
-  # whole graphics stack)
-  #
-  patch -Np1 -i "$srcdir/freetype-2.2.1-enable-valid.patch"
-  #
-  # Enable subpixel rendering
-  #
-  patch -Np1 -i "$srcdir/freetype-2.5.1-enable-spr.patch"
 
-  # Disabled for now due to resistance
-  # Kept here for easier rebuilds via ABS
+  patch -Np1 -i "${srcdir}/0001-Enable-table-validation-modules.patch"
+  patch -Np1 -i "${srcdir}/0002-Enable-subpixel-rendering.patch"
+
   # https://bugs.archlinux.org/task/35274
-  #
-  # Enable subpixel hinting.
-  #
-  #patch -Np1 -i "$srcdir/freetype-2.5.1-enable-sph.patch"
-
+  patch -Np1 -i "${srcdir}/0003-Enable-subpixel-hinting.patch"
+  # Provide a way to enable the above patch at runtime.
+  # Hopefully just a temporary measure until fontconfig picks up
+  # the necessary configurables.
+  patch -Np1 -i "${srcdir}/0004-Mask-subpixel-hinting-with-an-env-var.patch"
 }
       
 build()

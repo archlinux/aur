@@ -1,6 +1,6 @@
-diff -urN a/include/freetype.h b/include/freetype.h
---- a/include/freetype.h	2013-06-19 00:21:31.000000000 -0500
-+++ b/include/freetype.h	2013-08-25 16:23:40.602691844 -0500
+diff -urN a/include/freetype/freetype.h b/include/freetype/freetype.h
+--- a/include/freetype/freetype.h	2013-06-19 00:21:31.000000000 -0500
++++ b/include/freetype/freetype.h	2013-08-25 16:23:40.602691844 -0500
 @@ -2568,7 +2568,7 @@
  #define FT_LOAD_RENDER                       ( 1L << 2 )
  #define FT_LOAD_NO_BITMAP                    ( 1L << 3 )
