@@ -1,5 +1,5 @@
 pkgbase = linux-vfio-lts
-	pkgver = 4.1.9
+	pkgver = 4.1.10
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-vfio-lts
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.9.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.9.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.10.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.10.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
@@ -23,7 +23,7 @@ pkgbase = linux-vfio-lts
 	source = i915_317.patch
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
-	sha256sums = 9912a9ce6aa47d96c526214349daf439d05c59015270dc64e19b065b309be107
+	sha256sums = 929e210fe6dbd5dd26812c146630be14e979aae6c960a2feb39544babb8e73cb
 	sha256sums = SKIP
 	sha256sums = b5d6829dcb75d99fea401d9579e859a6ebb9bc09b2d6992dde171e8f05d5cbcf
 	sha256sums = ee55d469a4c00b6fb4144549f2a9c5b84d9fe7948c7cbd2637dce72227392b4f
@@ -40,20 +40,20 @@ pkgname = linux-vfio-lts
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-vfio-lts=4.1.9
+	provides = kernel26-vfio-lts=4.1.10
 	conflicts = kernel26-vfio-lts
 	replaces = kernel26-vfio-lts
 	backup = etc/mkinitcpio.d/linux-vfio-lts.preset
 
 pkgname = linux-vfio-lts-headers
 	pkgdesc = Header files and scripts for building modules for Linux-vfio-lts kernel
-	provides = kernel26-vfio-lts-headers=4.1.9
+	provides = kernel26-vfio-lts-headers=4.1.10
 	conflicts = kernel26-vfio-lts-headers
 	replaces = kernel26-vfio-lts-headers
 
 pkgname = linux-vfio-lts-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vfio-lts kernel
-	provides = kernel26-vfio-lts-docs=4.1.9
+	provides = kernel26-vfio-lts-docs=4.1.10
 	conflicts = kernel26-vfio-lts-docs
 	replaces = kernel26-vfio-lts-docs
 
