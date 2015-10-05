@@ -1,0 +1,26 @@
+pkgbase = libumlib0-svn
+	pkgdesc = Library with common functions used by every UMView module.
+	pkgver = r1129
+	pkgrel = 1
+	url = https://sourceforge.net/projects/view-os
+	install = libumlib0-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = libtool
+	depends = glibc>=2.4
+	provides = libumlib0-svn=r1129
+	conflicts = libumlib0-svn
+	replaces = libumlib0-svn
+	source = svn+http://svn.code.sf.net/p/view-os/code/trunk/xmview-os
+	source = libumlib0-svn.install
+	source = libumlib0-svn.diff
+	md5sums = SKIP
+	md5sums = b4165e6142a92d65c8e14479486decc4
+	md5sums = c3c17eafbb532433d49e37f9cfabbed7
+
+pkgname = libumlib0-svn
+
