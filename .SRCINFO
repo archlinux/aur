@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-nohotcorner-git
+	pkgdesc = Gnome-shell extension disabling hotcorners
+	pkgver = 11.0.r4.ge300475
+	pkgrel = 1
+	url = https://github.com/HROMANO/nohotcorner
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = gnome-shell
+	source = git://github.com/HROMANO/nohotcorner.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-nohotcorner-git
+
