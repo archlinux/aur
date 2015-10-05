@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Acquisition Plus
+Comment=Path of Exile Inventory Management Tool
+Exec=acquisitionplus
+Icon=acquisitionplus
+Terminal=false
+Categories=Games;
+StartupNotify=true;
