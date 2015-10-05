@@ -2,7 +2,7 @@
  
 _realname='graphene'
 pkgname="$_realname"
-pkgver=1.2.2
+pkgver=1.2.10
 pkgrel=1
 pkgdesc='A thin layer of graphic data types'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 license=('MIT')
  
-source=('git+https://github.com/ebassi/graphene.git#tag=1.2.2')
+source=('git+https://github.com/ebassi/graphene.git#tag=1.2.10')
 md5sums=('SKIP')
  
 subver() {
