@@ -2,7 +2,7 @@
 
 pkgname='xorg-server-systemd'
 pkgver='1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Systemd template to start an X server on the respective display'
 arch=('any')
 license=('GPL3')
@@ -16,5 +16,5 @@ srcdir='src'
 
 package() {
     install -d -m 755 ${pkgdir}/usr/lib/systemd/system
-    install -m 644 ${srcdir}/X@.service ${pkgdir}/usr/lib/systemd/system/
+    install -m 644 ${srcdir}/xorg-server-systemd/X@.service ${pkgdir}/usr/lib/systemd/system/
 }
