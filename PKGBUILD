@@ -2,8 +2,8 @@
 # Contributor: hagabaka
 
 pkgname='peazip-qt-build'
-pkgver=5.7.2
-pkgrel=2
+pkgver=5.8.0
+pkgrel=1
 pkgdesc='Free cross-platform file archiver (compiles from source)'
 license='GPL3'
 url='http://peazip.org'
@@ -15,8 +15,8 @@ conflicts=('peazip' 'peazip-gtk2' 'peazip-qt')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.src.zip"
         "https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.Qt.tar.gz")
-sha256sums=('a1eb6088291994d3646fc63e8470a46dc7e5d08803c9133a766babab1f3c33c2'
-            '49ccd1f3c3cb996fee6d7f16bbe9a07911d59fbbdaa612e7079485ea3d87bb48')
+sha256sums=('48ea2cfafdf0883185564f754fcd156b7f6f5042e0fc14b1d28ef930b3bc9ff0'
+            'e831943f9467a7761d4836849aa5c5cf2aca2c846e52b2f941c2224f6342e11e')
 
 build() {
   cp -Rf "$srcdir/peazip_portable-$pkgver.LINUX.Qt/res" "$srcdir/peazip-$pkgver.src"
