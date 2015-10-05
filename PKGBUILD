@@ -3,11 +3,11 @@
 _lang=it
 _debver=41.0.1
 _debrel=1
-_debrepo=https://ftp.debian.org/debian/pool/main/i/
+_debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel-i18n-it
 pkgver=$_debver.deb$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="Italian language pack for Iceweasel"
 arch=('any')
 url="https://packages.debian.org/experimental/iceweasel-l10n-it"
