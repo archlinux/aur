@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=4.1.8+521148+g3b7a20d
+pkgver=4.1.10+521344+g57a847e
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
 license=("GPL2")
@@ -128,6 +128,8 @@ package_linux-zen-git() {
 	# add real version for building modules and running depmod from post_install/upgrade
 	mkdir -p "${pkgdir}/usr/lib/modules/extramodules-${_kernver}"
 	echo "${_kernver}" > "${pkgdir}/usr/lib/modules/extramodules-${_kernver}/version"
+	
+	ln -s "${pkgdir}/usr/lib/modules/extramodules-${_kernver}" "${pkgdir}/usr/lib/modules/${_kernver}"
 
 	msg2 "Removing links to source and build directory..."
 	rm "$pkgdir/lib/modules/$_kernver/"{build,source}
