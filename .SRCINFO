@@ -1,14 +1,14 @@
 pkgbase = python2-kitchen
 	pkgdesc = Kitchen contains a cornucopia of useful code
-	pkgver = 1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://fedorahosted.org/kitchen
 	arch = any
 	license = LGPLv2+
 	makedepends = python2
 	depends = python2
-	source = https://pypi.python.org/packages/source/k/kitchen/kitchen-1.1.1.tar.gz
-	md5sums = 059d7ce048ca1d0fb53e6755145137b0
+	source = https://pypi.python.org/packages/source/k/kitchen/kitchen-1.2.1.tar.gz
+	sha256sums = ecfe562538ce1967a32e7a63832b27a5cd823ed43b90569ca98db082b90fc6e5
 
 pkgname = python2-kitchen
 
