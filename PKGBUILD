@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andreas Wagner <Andreas dot Wagner at em dot uni-frankfurt dot de>
 
 pkgname=sux
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Wrapper around su which will transfer your X credentials'
 arch=('any')
 url='http://sourceforge.net/projects/sux/'
@@ -16,6 +16,7 @@ md5sums=('73613f8515e0d90bdd9e871b6fe2e2eb')
 build() {
   cd "sux-$pkgver"
 
+  sed -i -e 's|sux_i -eq 9|sux_i -eq 8|' sux
   sed -i -e 's|tempfile -p sux|mktemp --tmpdir sux.XXXXXXXXXX|' sux
   sed -i -e 's|tempfile -p sux|mktemp --tmpdir sux.XXXXXXXXXX|' suxterm
 }
