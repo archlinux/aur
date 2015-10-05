@@ -1,14 +1,14 @@
 pkgbase = cppclean
 	pkgdesc = Find problems in C++ source that slow development of large code bases.
-	pkgver = 0.2.6
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/myint/cppclean
 	arch = any
 	license = Apache
 	makedepends = python3
 	depends = python
-	source = https://pypi.python.org/packages/source/c/cppclean/cppclean-0.2.6.tar.gz
-	md5sums = feb704abe0804fdf4ad7b65f9bd82c58
+	source = https://pypi.python.org/packages/source/c/cppclean/cppclean-0.5.tar.gz
+	sha256sums = 7cc8f582c1c5cab510c61d27a4be891b59f7be26c7cc7e63141c66f394a9dc51
 
 pkgname = cppclean
 
