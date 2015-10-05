@@ -130,7 +130,7 @@ package_linux-zen-grsec() {
 	# symlink extra
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}"
 	cd "${pkgdir}/usr/lib/modules/${_kernver}"
-	ln -s "../{pkgdir}/usr/lib/modules/extramodules-${_kernver}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+	ln -s "../extramodules-${_kernver}" "./extramodules"
 
 	cd "${srcdir}/build"
 
