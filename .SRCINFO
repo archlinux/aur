@@ -1,6 +1,6 @@
 pkgbase = intel-xdk
 	pkgdesc = Comprehensive, cross-platform HTML5 development environment
-	pkgver = 2496
+	pkgver = 2548
 	pkgrel = 1
 	url = http://xdk.intel.com
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = intel-xdk
 	depends = libudev0
 	source = intel-xdk
 	source = intel-xdk.desktop
-	source = https://download.xdk.intel.com/xdk_web_linux_master_2496.tgz
+	source = https://download.xdk.intel.com/xdk_web_linux_master_2548.tgz
 	md5sums = f7438a93f7691901ac17ea39b3fbb6a8
 	md5sums = 34d9c2b87221acf10812ab1150357dc9
 
