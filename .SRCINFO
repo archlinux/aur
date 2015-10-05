@@ -1,0 +1,17 @@
+pkgbase = yosys-git
+	pkgdesc = A framework for RTL synthesis
+	pkgver = r2435.e51dcc8
+	pkgrel = 1
+	url = http://www.clifford.at/yosys/
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = mercurial
+	depends = tcl
+	provides = yosys-git
+	conflicts = yosys-git
+	source = git+https://github.com/cliffordwolf/yosys.git
+	sha512sums = SKIP
+
+pkgname = yosys-git
+
