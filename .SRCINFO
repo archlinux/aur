@@ -1,8 +1,8 @@
 pkgbase = oblogout-blurlock
-	pkgdesc = Systemd/OpenRC-compatible logout script for Openbox, Fluxbox and others including OutMok icons and blurlock. Originally written for Manjaro-Fluxbox
-	pkgver = 20150927
+	pkgdesc = Systemd/OpenRC-compatible logout script for Openbox, Fluxbox and others. Including blurlock
+	pkgver = 20151005
 	pkgrel = 1
-	url = https://forum.manjaro.org/index.php?topic=25894.0
+	url = https://github.com/oberon2007/oblogout-blurlock
 	install = oblogout-blurlock.install
 	arch = any
 	license = GPL2
@@ -19,18 +19,8 @@ pkgbase = oblogout-blurlock
 	conflicts = openboxlogout-gnome
 	replaces = fluxlogout
 	backup = etc/oblogout.conf
-	source = fluxboxexit
-	source = ob_blurlock
-	source = oblogout.conf
-	source = oblogout_blur
-	source = http://www.oberon.at/oberon/src/OutMok.tar.xz
-	source = switch-user.patch
-	md5sums = f10cb96555b02245d944b381abb14221
-	md5sums = eef31ce5c7a9f002ef407394cf6fd20b
-	md5sums = 026c5552b167b39b40883bd39128cb35
-	md5sums = 0e9d42c6c83022515d3b14275f630f87
-	md5sums = a30813dafbe1b9d650db2f237ac1d89d
-	md5sums = 4bb8046c6d6a9709796afd814feec8f1
+	source = oblogout-blurlock-20151005.tar.gz::https://github.com/oberon2007/oblogout-blurlock/archive/18b3e56d0bac6ed8b555d2e743198a41f3c1a9e1.tar.gz
+	md5sums = d60fd250cad6288cdef8d62adb8f40e6
 
 pkgname = oblogout-blurlock
 

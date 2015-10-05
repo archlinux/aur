@@ -1,8 +1,0 @@
-# !/bin/bash
-# /usr/bin/oblogout_blur
-# lauch oblogout with blurlock
-
-scrot /tmp/screenshot.png &&
-oblogout
-
-exit 0
