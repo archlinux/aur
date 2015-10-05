@@ -18,5 +18,7 @@ package() {
 
   npm install --user root -g --prefix="${pkgdir}"/usr
 
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s ../../../../usr/lib/node_modules/jslint/LICENSE \
+     "${pkgdir}/usr/share/licenses/${pkgname}"
 }
