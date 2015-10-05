@@ -1,7 +1,7 @@
 # Maintainer: Ole Ernst <olebowle[at]gmx[dot]com>
 pkgname=media-build-dvbsky
 pkgver=20150322
-pkgrel=4
+pkgrel=5
 pkgdesc="Driver for DVBSky cards/boxes"
 arch=('i686' 'x86_64')
 url="http://www.dvbsky.net/Support_linux.html"
@@ -26,20 +26,22 @@ prepare() {
   ln -sr v4l/sit2_op.o.x${CARCH: -2} v4l/sit2_op.o
   cp v4l/sit2_mod.dvb linux/drivers/media/dvb-frontends/sit2_mod.c
   sed -i '/eth_rebuild_header/d' linux/drivers/media/dvb-core/dvb_net.c
-  sed -i -e "s|/sbin/lsmod|$(which lsmod)|" -e 's|/sbin/depmod|#/sbin/depmod|' v4l/Makefile
-  sed -i 's|/sbin/depmod|#/sbin/depmod|' v4l/scripts/make_makefile.pl
+  sed -i '/depmod/d' v4l/Makefile v4l/scripts/make_makefile.pl
   patch -p1 -i ../add_c2800e.patch
   patch -p1 -i ../dma_buf_export.patch
+
+  export _kernver=$(</usr/lib/modules/extramodules-[0-9]\.+([0-9])-ARCH/version)
+  sed -i "s/KERNEL_VERSION=.*/KERNEL_VERSION=$_kernver/" "$startdir/$install"
 }
 
 build() {
   cd "$srcdir/media_build-bst"
   #media-build doesn't like parallel jobs
-  make -j1
+  make VER=$_kernver -j1
 }
 
 package() {
   cd "$srcdir/media_build-bst"
-  make DESTDIR="$pkgdir" KDIR26="/usr/lib/modules/$(uname -r)/updates/kernel/drivers/media" media-install
+  make DESTDIR="$pkgdir" KDIR26="/usr/lib/modules/$_kernver/updates/kernel/drivers/media" media-install
   find "$pkgdir" -type f -name '*.ko' -exec gzip -9 {} \;
 }

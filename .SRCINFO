@@ -1,7 +1,7 @@
 pkgbase = media-build-dvbsky
 	pkgdesc = Driver for DVBSky cards/boxes
 	pkgver = 20150322
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.dvbsky.net/Support_linux.html
 	install = media-build-dvbsky.install
 	arch = i686

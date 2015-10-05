@@ -1,5 +1,8 @@
+KERNEL_VERSION=
+
 post_install() {
-  /usr/bin/depmod -a
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod $KERNEL_VERSION
 }
 
 post_upgrade() {
