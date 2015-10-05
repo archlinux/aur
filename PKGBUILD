@@ -2,7 +2,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=freetype2-git
-pkgver=2.6+17+g649f2e5-1
+epoch=1
+pkgver=2.6.1+p1+g30fe5e7
 pkgrel=1
 pkgdesc="TrueType font rendering library (from git)"
 arch=(i686 x86_64)
@@ -33,7 +34,7 @@ pkgver() {
   _tag=$(git describe --abbrev=0 )
   _count=$(git rev-list --count ${_tag}..HEAD)
   _tag=${_tag#VER-}
-  echo ${_tag//-/.}+$_count+g$(git rev-parse --short HEAD)
+  echo ${_tag//-/.}+p$_count+g$(git rev-parse --short HEAD)
 }
 
 prepare() {

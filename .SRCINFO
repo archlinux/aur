@@ -1,7 +1,8 @@
 pkgbase = freetype2-git
 	pkgdesc = TrueType font rendering library (from git)
-	pkgver = 2.6+17+g649f2e5-1
+	pkgver = 2.6.1+p1+g30fe5e7
 	pkgrel = 1
+	epoch = 1
 	url = http://freetype.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -12,7 +13,7 @@ pkgbase = freetype2-git
 	depends = sh
 	depends = libpng
 	depends = harfbuzz
-	provides = freetype2=2.6+17+g649f2e5-1
+	provides = freetype2=2.6.1+p1+g30fe5e7
 	provides = libfreetype.so
 	conflicts = freetype2
 	source = git://git.sv.gnu.org/freetype/freetype2.git
