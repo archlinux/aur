@@ -1,0 +1,24 @@
+pkgbase = ncmpc-git
+	pkgdesc = Fully featured MPD client using ncurses
+	pkgver = 0.24.2.g23c27e8
+	pkgrel = 1
+	url = http://www.musicpd.org/clients/ncmpc/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = doxygen
+	depends = ncurses
+	depends = glib2
+	depends = libmpdclient
+	depends = python
+	depends = expat
+	conflicts = ncmpc
+	conflicts = ncmpc-svn
+	source = ncmpc-git::git+git://git.musicpd.org/master/ncmpc.git
+	md5sums = SKIP
+
+pkgname = ncmpc-git
+
