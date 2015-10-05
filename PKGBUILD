@@ -94,22 +94,22 @@ prepare() {
 
     if [ -n "$_disable_NUMA" ]; then
         if [ "${CARCH}" = "x86_64" ]; then
-            sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-                -i -e '/CONFIG_AMD_NUMA=y/d' \
-                -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-                -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-                -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-                -i -e '/CONFIG_NODES_SHIFT=6/d' \
-                -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-                -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-                -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-                -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+            sed -i -e "s/CONFIG_NUMA=y/# CONFIG_NUMA is not set/" \
+                -i -e "/CONFIG_AMD_NUMA=y/d" \
+                -i -e "/CONFIG_X86_64_ACPI_NUMA=y/d" \
+                -i -e "/CONFIG_NODES_SPAN_OTHER_NODES=y/d" \
+                -i -e "/# CONFIG_NUMA_EMU is not set/d" \
+                -i -e "/CONFIG_NODES_SHIFT=6/d" \
+                -i -e "/CONFIG_NEED_MULTIPLE_NODES=y/d" \
+                -i -e "/# CONFIG_MOVABLE_NODE is not set/d" \
+                -i -e "/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d" \
+                -i -e "/CONFIG_ACPI_NUMA=y/d" ./.config
         fi
     fi
 
     if [ -n "$_enable_BFQ" ]; then
-        sed -i -e '/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq,' \
-            -i -e s'/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/' ./.config
+        sed -i -e "/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq," \
+            -i -e s"/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/" ./.config
     fi
 
     sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
@@ -120,7 +120,7 @@ prepare() {
 
     if [ -n "$_localmodcfg" ]; then
         if [ -e /usr/bin/modprobed_db ]; then
-            [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
+            [[ ! -x /usr/bin/sudo ]] && echo "The sudo executable is missing. Install the relevant package and try again." && exit 1
             sudo /usr/bin/modprobed_db recall
         fi
         make localmodconfig
@@ -138,9 +138,10 @@ build() {
 }
 
 package_linux-lts314-ck() {
-    pkgdesc='Linux 3.14 with Brain Fuck Scheduler'
-    depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-    optdepends=('crda: to set the correct wireless channels of your country' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    pkgdesc="Linux 3.14 with Brain Fuck Scheduler"
+    depends=("coreutils" "linux-firmware" "kmod" "mkinitcpio>=0.7")
+    optdepends=("crda: to set the correct wireless channels for your country"
+        "modprobed_db: to keep a running list of all modules ever probed")
     backup=("etc/mkinitcpio.d/linux-lts314-ck.preset")
     install=linux-lts314-ck.install
 
