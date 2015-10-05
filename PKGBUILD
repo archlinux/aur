@@ -2,7 +2,7 @@
 
 pkgname=salome-smesh
 pkgver=7.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - SMESH Module"
 url="http://www.salome-platform.org"
 depends=('salome-geom>=7.6.0' 'salome-geom<7.7.0' 'salome-med>=7.6.0' 'salome-med<7.7.0')
