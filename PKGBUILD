@@ -2,7 +2,7 @@
 
 pkgname=python-dbutils
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="DBUtils is a suite of Python modules allowing to connect in a safe and efficient way between a threaded Python application and a database. "
 url="http://www.webwareforpython.org/DBUtils"
 license=(Open Software License)

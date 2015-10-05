@@ -1,7 +1,7 @@
 pkgbase = python-dbutils
 	pkgdesc = DBUtils is a suite of Python modules allowing to connect in a safe and efficient way between a threaded Python application and a database.
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.webwareforpython.org/DBUtils
 	arch = any
 	license = Open
