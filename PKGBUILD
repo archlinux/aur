@@ -2,7 +2,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python-pybindgen
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to generate Python bindings for C/C++ code"
 url="http://pypi.python.org/pypi/PyBindGen"
 arch=('i686' 'x86_64')

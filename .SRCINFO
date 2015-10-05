@@ -1,7 +1,7 @@
 pkgbase = python-pybindgen
 	pkgdesc = A tool to generate Python bindings for C/C++ code
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pypi.python.org/pypi/PyBindGen
 	arch = i686
 	arch = x86_64
