@@ -1,0 +1,13 @@
+pkgbase = hack-font
+	pkgdesc = A font optimized for source code
+	pkgver = 2.015
+	pkgrel = 1
+	url = http://sourcefoundry.org/hack/
+	install = fonts.install
+	arch = any
+	license = Hack Open Font License
+	source = hack-font-2.015.zip::https://github.com/chrissimpkins/Hack/archive/v2.015.zip
+	sha1sums = 49545321e497294ab6180698fdedd0727991c7ed
+
+pkgname = hack-font
+
