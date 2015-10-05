@@ -1,5 +1,5 @@
---- ./shell/key-bindings.bash	2015-07-26 18:17:16.610793318 -0700
-+++ ./shell/key-bindings.bash	2015-07-26 18:17:42.424128082 -0700
+--- ./shell/key-bindings.bash	2015-10-05 07:52:39.421599247 -0700
++++ ./shell/key-bindings.bash	2015-10-05 07:52:57.124933562 -0700
 @@ -1,3 +1,8 @@
 +# Auto-completion
 +# ---------------
