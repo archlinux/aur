@@ -1,20 +1,22 @@
 pkgbase = lpcxpresso
 	pkgdesc = NXP LPC microcontroller development suite
-	pkgver = 7.8.0
+	pkgver = 7.9.2
 	pkgrel = 1
 	url = https://www.lpcware.com/lpcxpresso
 	arch = x86_64
 	arch = i686
 	license = custom:EULA
 	options = !strip
-	source = https://s3.amazonaws.com/LPCXpresso7/Installer_LPCXpresso_7.8.0_426_Linux-x86.tar.gz
+	source = https://s3.amazonaws.com/LPCXpresso7/Installer_LPCXpresso_7.9.2_493_Linux-x86.tar.gz
 	source = lpcxpresso.desktop
-	md5sums = 229da033c514df0f8e5e37ee2c8ba45a
+	md5sums = c362e892973d7a3303b6aad4627f6ef0
 	md5sums = 9c6615c32b42bd5bfa72261a5dec569e
 	depends_x86_64 = lib32-libusb-compat
 	depends_x86_64 = lib32-gtk2
+	depends_x86_64 = lib32-libxtst
 	depends_i686 = libusb-compat
 	depends_i686 = gtk2
+	depends_i686 = libxtst
 
 pkgname = lpcxpresso
 
