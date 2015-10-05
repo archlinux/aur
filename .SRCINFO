@@ -1,6 +1,6 @@
 pkgbase = elementary-xfce-icons
 	pkgdesc = Elementary icons forked, extended and maintained for Xfce.
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/shimmerproject/elementary-xfce
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = elementary-xfce-icons
 	optdepends = xfce-theme-greybird: matching Shimmer Project Xfce theme
 	conflicts = elementary-xfce-icons-git
 	options = !strip
-	source = https://github.com/shimmerproject/elementary-xfce/archive/v0.6.zip
-	sha256sums = b3ddf9703c825a5a4d7ee58f9b2ab2e4442f10b8546c5c1a556fb14a834bddf1
+	source = elementary-xfce-icons-0.7.tar.gz::https://github.com/shimmerproject/elementary-xfce/archive/0.7.tar.gz
+	sha256sums = df13a02929cf7235582b511d9014afc05771b72bcb345cc366e91c2dec89a0b8
 
 pkgname = elementary-xfce-icons
 
