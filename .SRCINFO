@@ -1,0 +1,18 @@
+pkgbase = salt-vim-git
+	pkgdesc = Vim files for editing Salt files
+	pkgver = r22.e0e7d4d
+	pkgrel = 1
+	url = https://github.com/saltstack/salt-vim
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = salt-vim
+	conflicts = salt-vim
+	source = git+https://github.com/saltstack/salt-vim
+	sha256sums = SKIP
+
+pkgname = salt-vim-git
+
