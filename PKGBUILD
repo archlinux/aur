@@ -1,25 +1,31 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.r436.gaf43549
+pkgver=0.r557.g3488bda
 pkgrel=1
 pkgdesc='suckless vim like editor - git checkout'
 arch=('i686' 'x86_64')
-url="http://repo.or.cz/vis.git"
-depends=('ncurses')
+url='http://repo.or.cz/vis.git'
+depends=('ncurses' 'libtermkey-bzr')
 conflicts=('vis')
 provides=('vis')
 makedepends=('git' 'markdown')
 license=('custom')
 source=('git://repo.or.cz/vis.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd vis/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
 }
 
@@ -41,4 +47,3 @@ package() {
 	install -D -m0644 'README.html' "${pkgdir}/usr/share/doc/vis/README.html"
 }
 
-sha256sums=('SKIP')
