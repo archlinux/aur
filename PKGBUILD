@@ -2,7 +2,7 @@
 
 pkgname=libfreenect
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
 url="http://openkinect.org"
@@ -17,10 +17,15 @@ sha256sums=('91af5c09b7eae217c4be69234ae5a6371f24da8ff6986f98c2db19f1993f2a71')
 sha384sums=('e0723886adea009e290318ae59a9a7ea1ff82d2b369ed0646a58d59a6ce1bfa30b5eb7c66e0909ee48a6165ba74cfc79')
 sha512sums=('26224a8d4cb0c57ce058754d691631fa14fe4547b3a6b9afbcc9b0fd29577e7b767e65abcfff9bad72e32d1bb9723dd9fc3d41f076a0e0b1cf87b5855faf4b41')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  sed '/set(PYTHON_EXECUTABLE "python2")/d' -i CMakeLists.txt
   sed 's/systemupdate\/FFFE07DF00000001/SystemUpdate\/FFFE07DF00000001/g' -i src/fwfetcher.py
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DPROJECT_INCLUDE_INSTALL_DIR=/usr/include -DLIB_SUFFIX="" \
