@@ -5,7 +5,7 @@
 # Contributor: pressh
 
 pkgname=kdenlive-git
-pkgver=15.09.0.r6416.8b0b266
+pkgver=15.09.0.r6419.68aa759
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version)"
 arch=('i686' 'x86_64')
