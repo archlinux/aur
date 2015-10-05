@@ -1,0 +1,15 @@
+pkgbase = vncterm-git
+	pkgdesc = Export virtual console sessions to any VNC client
+	pkgver = r40.254342f
+	pkgrel = 1
+	url = https://github.com/LibVNC/vncterm
+	arch = i386
+	arch = x86_64
+	license = GPL
+	makedepends = xorg-util-macros
+	depends = libvncserver
+	source = vncterm-git::git+https://github.com/LibVNC/vncterm
+	md5sums = SKIP
+
+pkgname = vncterm-git
+
