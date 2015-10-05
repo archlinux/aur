@@ -4,14 +4,15 @@
 pkgname=retroarch
 _pkgname=RetroArch
 pkgver=1.2.2
-pkgrel=3
-pkgdesc="Simple frontend for the libretro API. Stable version."
+pkgrel=4
+pkgdesc="Simple frontend for the Libretro API. Stable version."
 
 url="http://www.libretro.com/"
 arch=('i686' 'x86_64')
 
 license=('GPL')
-depends=('libgl')
+depends=('ffmpeg' 'jack2' 'libgl' 'libusb' 'libxinerama' 'libxkbcommon'
+	 'libxv' 'mesa' 'nvidia-cg-toolkit' 'openal' 'python' 'sdl2')
 
 conflicts=('retroarch-git')
 provides=('retroarch-git')
