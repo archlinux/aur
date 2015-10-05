@@ -5,8 +5,8 @@
 # Contributor: Triode <triode1 -aT- btinternet -d0t- com>
 
 pkgname=mingw-w64-libsoxr
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='The SoX Resampler library that aims to give fast and high quality results for any constant resampling ratio (mingw-w64)'
 arch=('any') 
 url='http://sourceforge.net/p/soxr/wiki/Home/'
@@ -15,16 +15,13 @@ depends=(mingw-w64-crt)
 makedepends=(mingw-w64-cmake)
 options=(!emptydirs !strip !buildflags staticlibs)
 source=(http://downloads.sourceforge.net/project/soxr/soxr-$pkgver-Source.tar.xz
-        0001-fix-ineffectual-SOXR_MINIMUM_PHASE-and-SOXR_INTERMED.patch
         tests_executable_suffix.patch)
-sha1sums=('f5d90e375db3914a522fef477898bde8c70243e7'
-          '73e6a3418001ce01aa16c3d8e29e2535d0158111'
+sha1sums=('3b990f91dc8dc08e70626cd5fb90deda0239c211'
           'c86f3421065b6110244fd11e9a9e52774670ee67')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd soxr-$pkgver-Source
-  patch -p1 < "$srcdir"/0001-fix-ineffectual-SOXR_MINIMUM_PHASE-and-SOXR_INTERMED.patch
   patch -p1 < "$srcdir"/tests_executable_suffix.patch
 }
 

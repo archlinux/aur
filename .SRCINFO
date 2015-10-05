@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libsoxr
 	pkgdesc = The SoX Resampler library that aims to give fast and high quality results for any constant resampling ratio (mingw-w64)
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = http://sourceforge.net/p/soxr/wiki/Home/
 	arch = any
 	license = GPL
@@ -11,11 +11,9 @@ pkgbase = mingw-w64-libsoxr
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://downloads.sourceforge.net/project/soxr/soxr-0.1.1-Source.tar.xz
-	source = 0001-fix-ineffectual-SOXR_MINIMUM_PHASE-and-SOXR_INTERMED.patch
+	source = http://downloads.sourceforge.net/project/soxr/soxr-0.1.2-Source.tar.xz
 	source = tests_executable_suffix.patch
-	sha1sums = f5d90e375db3914a522fef477898bde8c70243e7
-	sha1sums = 73e6a3418001ce01aa16c3d8e29e2535d0158111
+	sha1sums = 3b990f91dc8dc08e70626cd5fb90deda0239c211
 	sha1sums = c86f3421065b6110244fd11e9a9e52774670ee67
 
 pkgname = mingw-w64-libsoxr
