@@ -1,6 +1,6 @@
 pkgbase = fpp-git
 	pkgdesc = Facebook PathPicker is a simple command line tool that solves the perpetual problem of selecting files out of bash output.
-	pkgver = 0.6.2r.403
+	pkgver = 0.6.2.r403
 	pkgrel = 1
 	url = https://github.com/facebook/PathPicker
 	arch = any
