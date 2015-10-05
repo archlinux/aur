@@ -8,10 +8,11 @@ pkgdesc='A thin layer of graphic data types'
 arch=('i686' 'x86_64')
 url='https://github.com/ebassi/graphene/'
 depends=('glib2')
+makedepends=('gtk-doc')
+optdepends=('gobject-introspection: Language bindings')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 license=('MIT')
- 
 source=('git+https://github.com/ebassi/graphene.git#tag=1.2.10')
 md5sums=('SKIP')
  
