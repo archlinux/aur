@@ -1,0 +1,16 @@
+pkgbase = phptok
+	pkgdesc = A tool for quickly dumping the tokens of a PHP sourcecode file.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sebastianbergmann/phptok
+	install = phptok.install
+	arch = any
+	license = BSD
+	depends = php
+	source = https://phar.phpunit.de/phptok-1.0.0.phar
+	source = https://raw.githubusercontent.com/sebastianbergmann/phptok/1.0.0/LICENSE
+	sha512sums = 0a982e1c4855eaa14ac3c9a4a8e8252f7c47342ba36b11f889a9ef02da0a26144d01cd39e7b3289c91af7b18b89f0076ab00b523b396ae8ef5380684330f7e0f
+	sha512sums = de410d05391c69b08992e71b497da39603a00b29b5b8efc637d236fcd8b9b491defbe29d4d8322a087fbfb849f0c483b5bcb96be7c94cc3423c5cb69b66cc2d1
+
+pkgname = phptok
+
