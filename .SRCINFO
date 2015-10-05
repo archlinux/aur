@@ -1,0 +1,15 @@
+pkgbase = qm-vamp-plugins
+	pkgdesc = A set of Vamp audio analysis plugins developed at the Centre for Digital Music at Queen Mary, University of London
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://code.soundsoftware.ac.uk/projects/qm-vamp-plugins
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = GPL
+	depends = vamp-plugin-sdk
+	source = https://code.soundsoftware.ac.uk/attachments/download/1604/qm-vamp-plugins-1.7.1.tar.gz
+	md5sums = 6274bc8bff6f2363404a9f945613bf51
+
+pkgname = qm-vamp-plugins
+
