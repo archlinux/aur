@@ -129,7 +129,12 @@ package_linux-zen-git() {
 	mkdir -p "${pkgdir}/usr/lib/modules/extramodules-${_kernver}"
 	echo "${_kernver}" > "${pkgdir}/usr/lib/modules/extramodules-${_kernver}/version"
 	
-	ln -s "${pkgdir}/usr/lib/modules/extramodules-${_kernver}" "${pkgdir}/usr/lib/modules/${_kernver}"
+	# symlink extra
+	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}"
+	cd "${pkgdir}/usr/lib/modules/${_kernver}"
+	ln -s "../extramodules-${_kernver}" "./extramodules"
+
+	cd "${srcdir}/build"
 
 	msg2 "Removing links to source and build directory..."
 	rm "$pkgdir/lib/modules/$_kernver/"{build,source}
