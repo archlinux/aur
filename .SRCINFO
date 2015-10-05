@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-arc
 	pkgdesc = A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Official releases only.
-	pkgver = 20150922
+	pkgver = 20151002
 	pkgrel = 1
 	url = https://github.com/horst3180/Arc-theme
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = gtk-theme-arc
 	depends = gtk3
 	depends = gtk-engine-murrine
 	conflicts = gtk-theme-arc-git
-	source = https://github.com/horst3180/Arc-theme/archive/20150922.tar.gz
-	sha256sums = 4cd69ce3fd611034c4d6be88840a23e8b9d3b6c95511459e764ff24e9e512e07
+	source = https://github.com/horst3180/Arc-theme/archive/20151002.tar.gz
+	md5sums = 698f0909aa51b1eeaf795a1f7e670004
 
 pkgname = gtk-theme-arc
 
