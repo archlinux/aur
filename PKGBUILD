@@ -9,7 +9,7 @@ pkgver=1.4.2
 _seafilever=4.3.4
 
 #The release number for the arch package, as fixes are added to the PKGBUILD, the release number will increase
-pkgrel=15
+pkgrel=16
 
 # The description of the package, should be about 80 characters long (one line)
 pkgdesc="A framework for writing networked applications in C."
@@ -45,7 +45,7 @@ source=("https://github.com/haiwen/ccnet/archive/v${_seafilever}.tar.gz"
 
 configure_ccnet() {
 	./autogen.sh
-	CFLAGS="-lpthread" ./configure --enable-server --enable-ldap --prefix=/usr PYTHON=/usr/bin/python2
+	CFLAGS="$CFLAGS -lpthread" ./configure --enable-server --enable-ldap --prefix=/usr PYTHON=/usr/bin/python2
 }
 
 pkgver() {

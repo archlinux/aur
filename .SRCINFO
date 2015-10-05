@@ -1,7 +1,7 @@
 pkgbase = ccnet
 	pkgdesc = A framework for writing networked applications in C.
 	pkgver = 1.4.2
-	pkgrel = 15
+	pkgrel = 16
 	url = https://github.com/haiwen/ccnet/
 	arch = i686
 	arch = x86_64
