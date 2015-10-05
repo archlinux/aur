@@ -3,11 +3,11 @@
 
 pkgname=mumble-jack
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Mumble with support for JACK"
 license=('BSD')
-depends=('qt4' 'speex' 'lsb-release' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack' 'opus' 'xdg-utils' 'speech-dispatcher')
+depends=('qt4' 'speex' 'lsb-release' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack' 'opus' 'xdg-utils' 'speech-dispatcher' 'gtk-update-icon-cache')
 makedepends=('boost' 'mesa')
 provides=('mumble')
 conflicts=('mumble')

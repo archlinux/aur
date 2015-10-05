@@ -1,7 +1,7 @@
 pkgbase = mumble-jack
 	pkgdesc = Mumble with support for JACK
 	pkgver = 1.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mumble.info/
 	install = mumble.install
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = mumble-jack
 	depends = opus
 	depends = xdg-utils
 	depends = speech-dispatcher
+	depends = gtk-update-icon-cache
 	provides = mumble
 	conflicts = mumble
 	source = http://downloads.sourceforge.net/mumble/mumble-1.2.10.tar.gz
