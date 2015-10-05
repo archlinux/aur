@@ -2,7 +2,7 @@
 # Contributor: nylocx <aur@nyloc.de>
 
 pkgname=telegramqml-git
-pkgver=0.8.0.stable.r44.g8cd7abb
+pkgver=0.9.0.stable.r2.g52b0f9e
 pkgrel=1
 pkgdesc="Telegram API tools for QtQml and Qml"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/Aseman-Land/TelegramQML"
 license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-quick1'
          'qt5-webkit>=5.5' 'qt5-imageformats' 'qt5-graphicaleffects'
-         'qt5-quickcontrols' 'libqtelegram-ae>=2:5.0')
+         'qt5-quickcontrols' 'libqtelegram-ae>=2:6.0')
 makedepends=('git')
 source=("${pkgname}"::"git+https://github.com/Aseman-Land/TelegramQML.git")
 md5sums=('SKIP')
@@ -27,13 +27,12 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  sed -i 's#target.path = $$PREFIX/lib/$$LIB_PATH#target.path = $$PREFIX/lib#' telegramqml.pro
   mkdir -p build 
 }
 
 build() {
   cd "${srcdir}/${pkgname}/build"
-  qmake-qt5 -r .. PREFIX=/usr BUILD_MODE+=lib
+  qmake-qt5 -r .. PREFIX=/usr INSTALL_LIBS_PREFIX=/usr/lib INSTALL_HEADERS_PREFIX=/usr/include BUILD_MODE+=lib
   make
 }
 
