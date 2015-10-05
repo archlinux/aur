@@ -1,7 +1,7 @@
 pkgbase = python-icalendar
 	pkgdesc = A parser/generator of iCalendar files (RFC 2445)
-	pkgver = 3.9.0
-	pkgrel = 1
+	pkgver = 3.9.1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/icalendar/
 	arch = any
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = python-icalendar
 	depends = python-pytz
 	depends = python-dateutil
 	conflicts = python-icalendar-git
-	source = https://pypi.python.org/packages/source/i/icalendar/icalendar-3.9.0.tar.gz
-	sha512sums = a937882046666212d011cbd5963f43e3c2ebc677c55f1ac425dd77a08201a204498881986208d40e2e93b163f9f51b285cb3a1250f07d01f9b6a968c4e24065d
+	source = https://pypi.python.org/packages/source/i/icalendar/icalendar-3.9.1.tar.gz
+	sha512sums = 96edfd26a90cc34d90bfe01222403a86390874c5a895ad12f27e616cc248df5b634ac64be386dc72c1c72fb1afcacf6224cf8fbd006ff4f7624e802fced55042
 
 pkgname = python-icalendar
 

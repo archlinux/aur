@@ -3,7 +3,7 @@
 
 pkgname=python-icalendar
 pkgver=3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A parser/generator of iCalendar files (RFC 2445)'
 arch=('any')
 url='http://pypi.python.org/pypi/icalendar/'
