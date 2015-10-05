@@ -1,7 +1,7 @@
 pkgbase = displaylink
 	pkgdesc = DisplayLink DL-5xxx, DL-41xx and DL-3x00 Driver for Linux
 	pkgver = 1.0.138
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.displaylink.com/downloads/ubuntu.php
 	install = displaylink.install
 	changelog = DisplayLink_Ubuntu_1.0.138_release-note.txt

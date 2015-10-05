@@ -1,7 +1,7 @@
 # Maintainer: Ivan <hideaki02@gmail.com>
 pkgname=displaylink
 pkgver=1.0.138
-pkgrel=5
+pkgrel=6
 pkgdesc="DisplayLink DL-5xxx, DL-41xx and DL-3x00 Driver for Linux"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
@@ -15,14 +15,15 @@ md5sums=('177a0905e20f01cb52db991b61f23494'
          'c141a15e973481c7d961f8e135627ca4'
          '4185b016cd64c6069302239515afadff')
 
-build() {
-  mkdir $pkgname-$pkgver
-  cp 99-displaylink.rules $pkgname-$pkgver/
-  cp displaylink.service $pkgname-$pkgver/
-  cp displaylink-sleep.sh $pkgname-$pkgver/
-}
-
 package() {
+  echo "Adding udev rule for DisplayLink DL-3xxx/5xxx devices"
+  install -D -m644 99-displaylink.rules "$pkgdir/etc/udev/rules.d/99-displaylink.rules"
+
+  echo "Installing DLM systemd service"
+  install -D -m644 displaylink.service "$pkgdir/usr/lib/systemd/system/displaylink.service"
+  install -D -m755 displaylink-sleep.sh "$pkgdir/usr/lib/systemd/system-sleep/displaylink.sh"
+  
+  echo "Extracting DisplayLink Driver Package"
   chmod +x displaylink-driver-$pkgver.run
   ./displaylink-driver-$pkgver.run --target $pkgname-$pkgver --noexec
   cd "$pkgname-$pkgver"
@@ -56,12 +57,5 @@ package() {
 
   echo "Installing license file"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  echo "Adding udev rule for DisplayLink DL-3xxx/5xxx devices"
-  install -D -m644 99-displaylink.rules "$pkgdir/etc/udev/rules.d/99-displaylink.rules"
-
-  echo "Installing DLM systemd service"
-  install -D -m644 displaylink.service "$pkgdir/usr/lib/systemd/system/displaylink.service"
-  install -D -m755 displaylink-sleep.sh "$pkgdir/usr/lib/systemd/system-sleep/displaylink.sh"
 }
 
