@@ -1,0 +1,16 @@
+pkgbase = phpunit-skeleton-generator
+	pkgdesc = A tool that can generate skeleton test classes from production code classes and vice versa.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/sebastianbergmann/phpunit-skeleton-generator
+	install = phpunit-skeleton-generator.install
+	arch = any
+	license = BSD
+	depends = php
+	source = https://phar.phpunit.de/phpunit-skelgen-2.0.1.phar
+	source = https://raw.githubusercontent.com/sebastianbergmann/phpunit-skeleton-generator/2.0.1/LICENSE
+	sha512sums = 7b15ffafb4083f416fcde3c486a7333ac0d8b14c20e7478d6f9222754fed9680a1db56bd4d198481fc769b87e335510b69ada4f98f5c47a4eb6528cf0dc35e4c
+	sha512sums = 89011dee7edb6865985beb93757c084c9cee31e8b74bb0c10c5fa88db91b9d6645b98ee970a4d2ab377bf3b3bf52aacdba034c54143d4007b0e46787dc1207ab
+
+pkgname = phpunit-skeleton-generator
+
