@@ -1,29 +1,23 @@
-# Maintainer: FadeMind <fademind@gmail.com>
-# Contributor: Limao Luo <luolimao+AUR@gmail.com>
-# Contributor: Faheem Pervez <trippin1@gmail.com>
+# Contributor: sora <veltlion@foxmail.com>
 
 pkgname=kde-thumbnailer-epub
-pkgver=1.0
-pkgrel=2
-pkgdesc="Thumbnailer to show ePub cover previews in KDE file managers (Dolphin and Konqueror)"
-arch=('i686' 'x86_64')
-license=('GPL')
+pkgver=1.0.9
+pkgrel=1
+pkgdesc="Thumbnailer to show ePub cover previews in KDE file managers."
+arch=('x86_64' 'i686')
 url="http://kde-apps.org/content/show.php/KDE+ePub+Thumbnailer?content=151210"
-depends=('ebook-tools' 'kdelibs')
-makedepends=('automoc4' 'cmake')
-source=("${pkgname}-${pkgver}.tar.gz::http://kde-apps.org/CONTENT/content-files/151210-${pkgname}-${pkgver}.tar.gz")
-sha256sums=('abe892ebc670e04ffbccf8ebf493fb77c69d9684fb096e9fa4e55fd4b9ed5702')
-
+depends=('dolphin')
+makedepends=('cmake' 'extra-cmake-modules')
+license=('GPL')
+source=("http://kde-apps.org/CONTENT/content-files/151210-${pkgname}-${pkgver}.tar.gz")
+md5sums=('d833dd20370533c80466f27e98035f6d')
 build() {
-    install -d build/
-    cd build/
-    cmake ../${pkgname}-${pkgver}/ \
-        -DCMAKE_INSTALL_PREFIX=$(kde4-config --prefix) \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DQT_QMAKE_EXECUTABLE=qmake-qt4
-    make
+	install -d "$pkgname-$pkgver"/build
+	cd "$pkgname-$pkgver"/build
+	cmake -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` ..
+        make
 }
 
 package() {
-    make -C build DESTDIR="${pkgdir}" install
+	make -C "$pkgname-$pkgver"/build DESTDIR="${pkgdir}" install
 }
