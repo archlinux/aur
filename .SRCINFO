@@ -1,15 +1,14 @@
 pkgbase = nodejs-jslint
 	pkgdesc = The JavaScript Code Quality Tool
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reid/node-jslint
 	arch = any
 	license = BSD
 	license = custom:modified MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://github.com/reid/node-jslint/archive/v0.9.3.tar.gz
-	sha256sums = 740ef493529fc11a4fbe700c54fa05c63881ea23d33fecba0cdab966093a93a4
+	options = !emptydirs
 
 pkgname = nodejs-jslint
 

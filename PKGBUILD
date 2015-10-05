@@ -2,7 +2,7 @@
 
 pkgname=nodejs-jslint
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='The JavaScript Code Quality Tool'
 arch=('any')
 url='https://github.com/reid/node-jslint'
