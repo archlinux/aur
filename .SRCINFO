@@ -1,6 +1,6 @@
 pkgbase = package-query
 	pkgdesc = Query ALPM and AUR
-	pkgver = 1.6.2
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/archlinuxfr/package-query/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = package-query
 	depends = pacman>=4.1
 	depends = pacman<4.3
 	depends = yajl>=2.0
-	source = http://mir.archlinux.fr/~tuxce/releases/package-query/package-query-1.6.2.tar.gz
-	md5sums = bee0347035f65edc9b9c95d6061fc038
+	source = http://mir.archlinux.fr/~tuxce/releases/package-query/package-query-1.7.tar.gz
+	md5sums = 16d233dcd2b5072b808cad030fa24e61
 
 pkgname = package-query
 
