@@ -38,7 +38,7 @@ build() {
   patch -Np1 -i "${srcdir}/dahdi-tools-2.10.1-gcc510.patch"
 
   # fix wrong installation paths.
-  sed 's,/lib/udev,/usr/lib/udev,' -i xpp/Makefile
+  sed 's,/lib/udev,/etc/lib/udev,' -i xpp/Makefile
   sed 's,$(prefix)/sbin,$(prefix)/bin,' -i xpp/Makefile
 
   # compile.
