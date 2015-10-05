@@ -7,7 +7,7 @@
 
 pkgname=libqtelegram-ae-git
 epoch=2
-pkgver=5.0.r9.gee2288a
+pkgver=6.0.r2.g70ef02a
 pkgrel=1
 pkgdesc="Telegram library written in Qt based on telegram-cli code"
 arch=('x86_64' 'i686')
@@ -30,13 +30,12 @@ pkgver() {
  
 prepare() {
   cd $pkgname
-  sed -i 's#target.path = $$PREFIX/lib/$$LIB_PATH#target.path = $$PREFIX/lib#' libqtelegram-ae.pro
   mkdir -p build
 }
  
 build() {
   cd $pkgname/build
-  qmake-qt5 -r .. PREFIX=/usr 
+  qmake-qt5 -r .. PREFIX=/usr INSTALL_LIBS_PREFIX=/usr/lib INSTALL_HEADERS_PREFIX=/usr/include
   make
 } 
  
