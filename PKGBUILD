@@ -10,7 +10,7 @@ license=('LGPL')
 groups=('multimedia')
 depends=('libpulse' 'gtk3' 'libnotify' 'avahi' 'libx11' 'gnome-icon-theme'
     'gtk-update-icon-cache')
-makedepends=('git' 'pkg-config' )
+makedepends=('git' 'pkg-config')
 optdepends=(
     'paman: Launch PulseAudio manager from tray icon'
     'pavucontrol: Launch PulseAudio mixer from tray icon'
@@ -30,11 +30,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-
-    aclocal
-    autoconf
-    autoheader
-    automake --add-missing
+    autoreconf -is
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc
