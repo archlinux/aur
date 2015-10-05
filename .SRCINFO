@@ -1,0 +1,15 @@
+pkgbase = acquisition-plus
+	pkgdesc = Inventory management tool for Path of Exile
+	pkgver = 0.3c
+	pkgrel = 1
+	url = https://github.com/Novynn/acquisitionplus
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	source = https://github.com/Novynn/acquisitionplus/archive/0.3c-PLUS.tar.gz
+	sha256sums = 6e29752d93cdb9253b1a380bdaa8331b324f8f72babb29c1f12a32bcd1464aeb
+
+pkgname = acquisition-plus
+
