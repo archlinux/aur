@@ -1,21 +1,21 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
-pkgname=python2-git-up
-pkgver=1.2.0
-pkgrel=1
-pkgdesc="A HTML to markdown-structured text converter"
+pkgname=python-git-up
+pkgver=1.3.0
+pkgrel=0
+pkgdesc="A python implementation of git up"
 arch=('any')
 url="http://github.com/msiemens/PyGitUp"
 license=('MIT')
-depends=('python2-termcolor' 'python2-colorama' 'python2-docopt' 'python2-gitpython')
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools' 'python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython')
 source=(https://github.com/msiemens/PyGitUp/archive/v${pkgver}.tar.gz)
-sha256sums=('963d4dc5745a4c9c74c38e9aafdf8ac0ab3b3946454b4736b39f976a52218dde')
+sha256sums=('9ea833ee6a52359813da82c7ca4f80db757691a271a1e62e5fb53d1b7bcb5e41')
 
 package() {
-  cd "${srcdir}"/PyGitUp-$pkgver
+  depends=('python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython')
 
-  python2 setup.py install --root="${pkgdir}"
+  cd "${srcdir}"/PyGitUp-$pkgver
+  python setup.py install --root="${pkgdir}" --optimize=1
 
 #license
   install -Dm644 LICENCE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
