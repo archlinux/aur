@@ -10,13 +10,13 @@ license=('BSD' 'custom:modified MIT')
 depends=('nodejs')
 makedepends=('npm')
 options=(!emptydirs)
-source=("https://github.com/reid/node-jslint/archive/v${pkgver}.tar.gz")
-sha256sums=('740ef493529fc11a4fbe700c54fa05c63881ea23d33fecba0cdab966093a93a4')
 
 package() {
-  cd "${srcdir}/node-jslint-${pkgver}"
+  npm install --user root -g --prefix="${pkgdir}"/usr jslint@${pkgver}
 
-  npm install --user root -g --prefix="${pkgdir}"/usr
+  install -d -m755 "${pkgdir}"/usr/share/man/man1
+  mv "${pkgdir}"/usr/lib/node_modules/jslint/man/jslint.1 \
+     "${pkgdir}"/usr/share/man/man1
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s ../../../../usr/lib/node_modules/jslint/LICENSE \
