@@ -1,7 +1,7 @@
 pkgbase = kdocker
 	pkgdesc = An application to help you dock any application into the system tray
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/user-none/KDocker
 	arch = i686
 	arch = x86_64
