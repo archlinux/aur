@@ -1,0 +1,17 @@
+pkgbase = omim-git
+	pkgdesc = Offline OpenStreetMap maps
+	pkgver = r12162.8214307
+	pkgrel = 1
+	url = http://maps.me/en/home
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = boost
+	makedepends = cmake
+	depends = boost-libs
+	depends = qt5-base
+	source = git://github.com/mapsme/omim
+	sha1sums = SKIP
+
+pkgname = omim-git
+
