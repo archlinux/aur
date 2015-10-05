@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-sound-output-device-chooser-git
+	pkgdesc = Shows a list of sound output devices (similar to gnome sound settings) in the status menu below the volume slider.
+	pkgver = r6.65da144
+	pkgrel = 1
+	url = https://github.com/kgshank/gse-sound-output-device-chooser
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = gnome-shell
+	source = git://github.com/kgshank/gse-sound-output-device-chooser.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-sound-output-device-chooser-git
+
