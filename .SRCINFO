@@ -1,0 +1,20 @@
+pkgbase = zfc9000
+	pkgdesc = A text-based Zandronum RCon client
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://doomseeker.drdteam.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	makedepends = mercurial
+	depends = ncurses
+	source = zfc9000::hg+https://bitbucket.org/crimsondusk/zfc9000
+	source = revfix.patch
+	sha256sums = SKIP
+	sha256sums = 5ad3a7c19d8e1921f5224ed79f31442f32935081b563cd4e4ddb80987b39c2a6
+
+pkgname = zfc9000
+

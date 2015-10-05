@@ -1,0 +1,13 @@
+diff -r 5e968dc8d552 CMakeLists.txt
+--- a/CMakeLists.txt	Tue Dec 16 04:06:53 2014 +0200
++++ b/CMakeLists.txt	Mon Oct 05 16:08:29 2015 +0100
+@@ -28,7 +28,7 @@
+ target_link_libraries (${PROJECT_NAME} ${CURSES_LIBRARIES})
+ 
+ add_custom_target (make_hginfo_h
+-	COMMAND python
++	COMMAND python2
+ 		"${CMAKE_SOURCE_DIR}/updaterevision/updaterevision.py"
+ 		"${CMAKE_CURRENT_BINARY_DIR}/hginfo.h")
+ add_dependencies (${PROJECT_NAME} make_hginfo_h)
+
