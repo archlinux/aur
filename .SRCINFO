@@ -1,0 +1,18 @@
+pkgbase = shark-ml-svn
+	pkgdesc = Shark C++ machine learning library
+	pkgver = r3515
+	pkgrel = 1
+	url = image.diku.dk/shark
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake>=2.8
+	makedepends = svn
+	depends = boost-libs>=1.55
+	provides = shark-ml
+	conflicts = shark-ml
+	source = svn+https://svn.code.sf.net/p/shark-project/code/trunk/Shark
+	md5sums = SKIP
+
+pkgname = shark-ml-svn
+
