@@ -1,0 +1,9 @@
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-lts314-ck"
+
+PRESETS=('default' 'fallback')
+
+default_image="/boot/initramfs-linux-lts314-ck.img"
+
+fallback_image="/boot/initramfs-linux-lts314-ck-fallback.img" 
+fallback_options="-S autodetect"
