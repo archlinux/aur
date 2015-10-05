@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libmediawiki-frameworks-git
-pkgver=r96.69695da
+pkgver=5.5.0.r101.7fc8d4d
 pkgrel=1
 pkgdesc='A KDE C++ interface for MediaWiki based web service as wikipedia.org. KF5 Frameworks branch (GIT version)'
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd libmediawiki
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m1 KF5_VERSION | cut -d '"' -f2)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {

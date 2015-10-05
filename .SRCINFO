@@ -1,6 +1,6 @@
 pkgbase = libmediawiki-frameworks-git
 	pkgdesc = A KDE C++ interface for MediaWiki based web service as wikipedia.org. KF5 Frameworks branch (GIT version)
-	pkgver = r96.69695da
+	pkgver = 5.5.0.r101.7fc8d4d
 	pkgrel = 1
 	url = http://www.kde.org
 	arch = i686
