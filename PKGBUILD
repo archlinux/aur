@@ -22,8 +22,6 @@ prepare() {
 
     qmake
     sed -i Makefile \
-        -e "s:CC .*=.*:CC = $CC:" \
-        -e "s:CXX .*=.*:CXX = $CXX:" \
         -e "s:CFLAGS .*=.*:CFLAGS = $CFLAGS -D_REENTRANT -fPIC -std=c++11 \$(DEFINES):" \
         -e "s:CXXFLAGS .*=.*:CXXFLAGS = $CXXFLAGS -D_REENTRANT -fPIC -std=c++11 \$(DEFINES):" \
         -e "s:LFLAGS .*=.*:LFLAGS = $LDFLAGS:"
@@ -40,4 +38,5 @@ package() {
     install -Dm755 acquisitionplus "$pkgdir/usr/bin/acquisitionplus"
     install -Dm644 assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/acquisitionplus.svg"
     install -Dm644 ../acquisition.desktop "$pkgdir/usr/share/applications/acquisitionplus.desktop"
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname"
 }
