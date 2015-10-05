@@ -1,21 +1,14 @@
-# Maintainer: Yuki Chiba <yuki.from.akita@gmail.com>
+# Maintainer: yuki-san <yuki.from.akita@gmail.com>
 
 pkgname=auto-complete-nxml-git
 pkgver=0.r28.ac7b09a
-pkgrel=1
-pkgdesc="An extension of Emacs provides completion by auto-complete.el on nXML-mode"
+pkgrel=2
+pkgdesc="An extension of Emacs provides completion on nXML-mode by auto-complete.el"
 arch=('any')
 url="https://github.com/aki2o/auto-complete-nxml"
 license=('GPL')
-groups=()
-depends=('emacs' 'emacs-auto-complete')
-makedepends=('git')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
+depends=('emacs' 'auto-complete' 'emacs-popup-el')
+makedepends=('git' 'emacs')
 install=auto-complete-nxml-git.install
 source=('auto-complete-nxml::git+https://github.com/aki2o/auto-complete-nxml.git')
 md5sums=('SKIP')
