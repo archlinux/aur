@@ -12,7 +12,7 @@ true && pkgname=("linux-zen-grsec" "linux-zen-grsec-headers")
 arch=("i686" "x86_64")
 conflicts=("linux-zen linux-zen-git")
 provides=("linux-zen linux-zen-git linux")
-pkgrel=1
+pkgrel=2
 options=("!strip")
 source=("linux-zen.conf"
         "linux-zen.preset"
