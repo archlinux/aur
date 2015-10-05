@@ -1,0 +1,27 @@
+pkgbase = openvpn-sdnotify
+	pkgdesc = OpenVPN with systemd sd_notify support
+	pkgver = 2.3.8
+	pkgrel = 1
+	url = http://openvpn.net/index.php/open-source.html
+	install = openvpn.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = systemd
+	depends = openssl
+	depends = lzo
+	depends = iproute2
+	depends = libsystemd
+	provides = openvpn=2.3.8
+	conflicts = openvpn
+	source = http://swupdate.openvpn.net/community/releases/openvpn-2.3.8.tar.gz
+	source = http://swupdate.openvpn.net/community/releases/openvpn-2.3.8.tar.gz.asc
+	source = openvpn@.service
+	source = systemd-notify.patch
+	sha256sums = 532435eff61c14b44a583f27b72f93e7864e96c95fe51134ec0ad4b1b1107c51
+	sha256sums = SKIP
+	sha256sums = 5231dd10444b6c24309fa70db441252cad3a84a39231b122c182cb0fdc61ae70
+	sha256sums = 81b3ce649cd2a966be2d1a93278b0881cabefce13f2e355b175613a313dfa835
+
+pkgname = openvpn-sdnotify
+

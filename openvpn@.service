@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenVPN connection to %i
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/openvpn --cd /etc/openvpn --config /etc/openvpn/%i.conf 
+
+[Install]
+WantedBy=multi-user.target
