@@ -12,7 +12,7 @@ depends=('ruby' 'ruby-archive-tar-minitar' 'ruby-commander<4.3.0' 'ruby-highline
          'ruby-net-scp' 'ruby-net-ssh<2.9.3' 'ruby-net-ssh-multi' 'ruby-open4')
 source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-sha1sums=('58370edec2c53180fd07ce61fcab56df6b8168bc')
+sha1sums=('b92bb65f40f2f4df0199be2b22d179ddf7fc3518')
 
 package() {
   cd "$srcdir"
