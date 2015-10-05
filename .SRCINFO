@@ -1,6 +1,6 @@
 pkgbase = ocaml-pa_bench
 	pkgdesc = Syntax extension for inline benchmarks
-	pkgver = 112.06.00
+	pkgver = 113.00.00
 	pkgrel = 1
 	url = https://github.com/janestreet/pa_bench
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = ocaml-pa_bench
 	depends = ocaml-pa_ounit
 	depends = ocaml-type_conv
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/112.06.00/individual/pa_bench-112.06.00.tar.gz
-	md5sums = c270ccea47f83bf2a9206d1fa502c02e
+	source = https://ocaml.janestreet.com/ocaml-core/113.00/files/pa_bench-113.00.00.tar.gz
+	md5sums = 151e7c08f376d4b0c6a1b9b250ffb282
 
 pkgname = ocaml-pa_bench
 
