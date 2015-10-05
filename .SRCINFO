@@ -1,7 +1,7 @@
 pkgbase = muttqt
 	pkgdesc = Mutt Query Tool
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/tgray/muttqt
 	arch = any
 	license = GPL
@@ -9,9 +9,11 @@ pkgbase = muttqt
 	source = muttqt-0.1.0.tar.gz::https://github.com/tgray/muttqt/archive/0.1.0.tar.gz
 	source = 0001-fix-sed.patch
 	source = 0002-use-python-2.patch
+	source = 0003-store-configuration-under-.config.patch
 	sha1sums = 6df69a2e0c3548655e682eee7c848e7271e02b5f
 	sha1sums = 878b84d812a61a8179642cbfca4d2dcc9a22210d
 	sha1sums = c71eccfdacd57e05597cdd92c1a3ad89a24864d6
+	sha1sums = 3591a0de11bbacf9cc79e65c196486a88a183e3c
 
 pkgname = muttqt
 

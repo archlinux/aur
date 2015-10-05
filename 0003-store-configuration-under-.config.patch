@@ -1,0 +1,25 @@
+From 6b7b1235c8827d31acbb0525d0d85fe66ebc8029 Mon Sep 17 00:00:00 2001
+From: Peter Hoeg <peter@speartail.com>
+Date: Mon, 5 Oct 2015 11:29:46 +0800
+Subject: [PATCH 3/3] store configuration under .config
+
+---
+ muttqt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/muttqt b/muttqt
+index 7be9ab2..c917d11 100755
+--- a/muttqt
++++ b/muttqt
+@@ -19,7 +19,7 @@ __version__ = "0.1.0"
+ __commit__ = None
+ 
+ # constants
+-configfile = '~/.muttqt/muttqt.conf'
++configfile = '~/.config/muttqt/muttqt.conf'
+ configfile = os.path.expanduser(configfile)
+ sqldateformat = '%Y-%m-%d %H:%M:%S'
+ lbdbdateformat = '%Y-%m-%d %H:%M'
+-- 
+2.6.0
+
