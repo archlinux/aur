@@ -9,7 +9,7 @@ pkgdesc="Shark C++ machine learning library"
 arch=('i686' 'x86_64')
 url="image.diku.dk/shark"
 license=('LGPL3')
-depends=('boost-libs>=1.55')
+depends=('boost>=1.55')
 makedepends=('cmake>=2.8' 'svn')
 source=('svn+https://svn.code.sf.net/p/shark-project/code/trunk/Shark')
 md5sums=('SKIP')
