@@ -144,6 +144,22 @@ package_linux-zen-grsec() {
 		"$pkgdir/etc/mkinitcpio.d/linux-zen.preset"
 	sed -i "s/^ALL_kver=.*$/ALL_kver=$_kernver/" \
 		"$pkgdir/etc/mkinitcpio.d/linux-zen.preset"
+		
+	# add grsecurity gcc plugins
+	msg "Adding grsecurity gcc plugins
+	mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+	install -m644 "$srcdir/linux-zen-grsec/tools/gcc/gcc-common.h" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+	install -m644 "$srcdir/linux-zen-grsec/tools/gcc/Makefile" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+	install -m644 "$srcdir/build/tools/gcc/colorize_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+	install -m644 "$srcdir/build/tools/gcc/kernexec_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+	install -m644 "$srcdir/build/tools/gcc/constify_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+	install -m644 "$srcdir/build/tools/gcc/stackleak_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+	install -m644 "$srcdir/build/tools/gcc/initify_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+	install -m644 "$srcdir/build/tools/gcc/structleak_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+	
+	mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
+	install -m644 "$srcdir/linux-zen-grsec/tools/gcc/size_overflow_plugin/Makefile" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin/"
+	install -m644 "$srcdir/build/tools/gcc/size_overflow_plugin/size_overflow_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin/"
 
 	# Now we call depmod...
 	depmod -b "$pkgdir" -F System.map "$_kernver"
