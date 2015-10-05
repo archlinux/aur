@@ -2,7 +2,7 @@
 
 pkgname=python-rosdistro
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to work with rosdistro files"
 url="http://wiki.ros.org/rosdistro"
 depends=('python')
@@ -10,7 +10,7 @@ makedepends=('python')
 license=('BSD, MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/r/rosdistro/rosdistro-$pkgver.tar.gz")
-md5sums=('2d8ac4214796e67c758a1318b6531b4f')
+sha256sums=('a7964d2d5d3eb111c3a5a40a4736bc39100abeb1d2066f67fa76da1376abe2d6')
 conflicts=(python2-rosdistro)
 
 build() {
