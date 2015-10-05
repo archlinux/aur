@@ -6,19 +6,20 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-git
-pkgver=7.2.0.r1.ga0999a2
+pkgver=7.2.2.r0.ge10fe28
 pkgrel=1
 pkgdesc='Prolog environment (latest git stable version)'
 arch=('x86_64' 'i686')
 url='http://www.swi-prolog.org/'
 license=('GPL' 'LGPL')
 depends=('gmp' 'readline' 'openssl' 'libarchive')
-makedepends=('libxft' 'libjpeg' 'unixodbc' 'libxpm' 'libxinerama')
+makedepends=('git' 'libxft' 'libjpeg' 'unixodbc' 'libxpm' 'libxinerama')
 optdepends=('unixodbc: for using the odbc4pl library'
             'libjpeg: for using the pl2xpce library'
             'libxpm: for using the pl2xpce library'
             'libxinerama: for using the pl2xpce library'
-            'libxft: for using the pl2xpce library')
+            'libxft: for using the pl2xpce library'
+            'java-environment: for interfacing java with the jpl package')
 #options=('!makeflags')
 source=("git://github.com/SWI-Prolog/swipl")
 sha256sums=('SKIP')
@@ -43,8 +44,8 @@ build() {
   echo 2 | ./configure --prefix=/usr --with-world
   cd src
   ./configure --enable-readline --prefix=/usr
-  cd ..
-  make
+
+  make -C ..
 }
 
 package() {
