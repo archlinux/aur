@@ -138,7 +138,7 @@ build() {
 }
 
 package_linux-lts314-ck() {
-    pkgdesc='Linux 3.14 with Brain Fuck Scheduler v0.444'
+    pkgdesc='Linux 3.14 with Brain Fuck Scheduler'
     depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
     optdepends=('crda: to set the correct wireless channels of your country' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     backup=("etc/mkinitcpio.d/linux-lts314-ck.preset")
