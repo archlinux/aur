@@ -4,15 +4,16 @@
 pkgname=retroarch
 _pkgname=RetroArch
 pkgver=1.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple frontend for the Libretro API. Stable version."
 
 url="http://www.libretro.com/"
 arch=('i686' 'x86_64')
 
 license=('GPL')
-depends=('ffmpeg' 'jack2' 'libgl' 'libusb' 'libxinerama' 'libxkbcommon'
-	 'libxv' 'mesa' 'nvidia-cg-toolkit' 'openal' 'python' 'sdl2')
+depends=('ffmpeg' 'libgl' 'libusb' 'libxinerama' 'libxkbcommon'
+         'libxv' 'mesa' 'nvidia-cg-toolkit' 'openal' 'python' 'sdl2')
+optdepends=('jack2')
 
 conflicts=('retroarch-git')
 provides=('retroarch-git')
@@ -30,11 +31,9 @@ build() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/etc"
-    mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/usr/share/applications"
-    mkdir -p "${pkgdir}/usr/share/man/man1"
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make install DESTDIR=${pkgdir} || return 1
+
+    mkdir -p "${pkgdir}/usr/share/applications"
     install -m 644 ../../retroarch.desktop "${pkgdir}/usr/share/applications/"
 }
