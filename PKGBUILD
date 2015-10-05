@@ -1,15 +1,16 @@
-# Maintainer: DonVla <donvla@users.sourceforge.net>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: DonVla <donvla@users.sourceforge.net>
 # Contributor: Patrick Leslie Polzer <leslie.polzer@gmx.net>
 # Contributor: Berkus <berkus@madfire.net>
 # Contributor: Daniele Paolella <danielepaolella@email.it>
 pkgname=jack-rack
 pkgver=1.4.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Effects rack for JACK"
 url="http://jack-rack.sourceforge.net"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('jack' 'gtk2' 'libxml2')
+depends=('jack' 'gtk2' 'libxml2' 'ladspa')
 optdepends=('lash: LASH support'
             'raptor1: LRDF support'
             'liblrdf: LRDF support'
