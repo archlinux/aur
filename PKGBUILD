@@ -1,7 +1,7 @@
 # Maintainer: Papajoker <papajoker [at] archlinux [dot] info>
 pkgname=pacman-diffs
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 url=(https://github.com/papajoker/pacman-diffs)
 pkgdesc="finding .pacnew files, compare and archive"
 arch=('any')
@@ -12,6 +12,7 @@ optdepends=('diffuse: graphical editor[community]'
         'gksu: gnome gui for su'
         'kde-cli-tools: kde gui for su')
 source=("$pkgname::git+http://github.com/papajoker/$pkgname#branch=master")
+backup=('etc/pacman.d/pacman-diffs.conf')
 md5sums=('SKIP')
 
 package() {

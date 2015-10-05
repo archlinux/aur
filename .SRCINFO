@@ -1,7 +1,7 @@
 pkgbase = pacman-diffs
 	pkgdesc = finding .pacnew files, compare and archive
 	pkgver = 1.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/papajoker/pacman-diffs
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = pacman-diffs
 	optdepends = kompare: kde editor [extra]
 	optdepends = gksu: gnome gui for su
 	optdepends = kde-cli-tools: kde gui for su
+	backup = etc/pacman.d/pacman-diffs.conf
 	source = pacman-diffs::git+http://github.com/papajoker/pacman-diffs#branch=master
 	md5sums = SKIP
 
