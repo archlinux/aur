@@ -1,10 +1,10 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=shyaml
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='YAML for the command line'
 arch=('x86_64')
-url='https://github.com/0k/$pkgname'
+url="https://github.com/0k/$pkgname"
 license=('BSD')
 depends=('python' 'python-yaml')
 makedepends=()
