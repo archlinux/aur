@@ -1,6 +1,6 @@
 pkgbase = ocaml-bin_prot
 	pkgdesc = A binary protocol generator
-	pkgver = 112.35.00
+	pkgver = 113.00.00
 	pkgrel = 1
 	url = https://github.com/janestreet/bin_prot
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = ocaml-bin_prot
 	depends = camlp4
 	depends = ocaml-type_conv
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/112.35/files/bin_prot-112.35.00.tar.gz
-	md5sums = c6f5f10c475d80eac8b0f3d39b33c6ab
+	source = https://ocaml.janestreet.com/ocaml-core/113.00/files/bin_prot-113.00.00.tar.gz
+	md5sums = 941c9e86e409b74eeeea771a78961157
 
 pkgname = ocaml-bin_prot
 
