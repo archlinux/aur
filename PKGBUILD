@@ -3,7 +3,7 @@
 
 pkgname=qutebrowser
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
 url="http://www.qutebrowser.org/"
