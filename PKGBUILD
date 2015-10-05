@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.2
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,19 +22,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-selinux.preset'
         'change-default-console-loglevel.patch'
-        '0001-make_flush_workqueue_non_gpl.patch'
         '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
         '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
         '0001-fix-bridge-regression.patch')
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            '9d0ab6525eb5f42056e2465267c62fa67efc75c57ad5345b99414b783278e9a3'
+            '8b4578f1e1dcfbef1e39c39b861d4715aa99917af0b7c2dc324622d65884dcb5'
             'SKIP'
             'bc6b31d5ea831d62b82bbf687cc2b5a59f37cc308e59a0a6181961ab70c6b5f3'
             'd0319d35c00a35d92b4e2d6b61382ad8e84260b8898120636062c41846dfb819'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '4e776734e2c2185910a6fbb6f333d967b04f4a72b3196310af286c6a779bd97d'
             '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
             '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
             '0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183')
@@ -53,10 +51,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # fix work_queue symbol to non GPL for nvidia module building
-  # already applied to 4.3 series
-  patch -p1 -i "${srcdir}/0001-make_flush_workqueue_non_gpl.patch"
 
   # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
   # https://lkml.org/lkml/2015/8/18/292
