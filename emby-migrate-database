@@ -52,5 +52,5 @@ else
     esac
   done
   shift $((OPTIND-1))
-  migrate
+  migrate $@
 fi
