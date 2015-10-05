@@ -26,7 +26,8 @@ makedepends=('git')
 install=$pkgname.install 
 conflicts=('fluxlogout'
 	'oblogout'
-	'openboxlogout-gnome')
+	'openboxlogout-gnome'
+	'oblogout-manjaro')
 replaces=('fluxlogout')
 backup=('etc/oblogout.conf')
 source=("$_repo-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz")
