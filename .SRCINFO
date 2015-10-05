@@ -1,6 +1,6 @@
 pkgbase = iceweasel
 	pkgdesc = Debian Browser based on Mozilla Firefox
-	pkgver = 41.0.deb1
+	pkgver = 41.0.1.deb1
 	pkgrel = 1
 	url = https://packages.debian.org/source/experimental/iceweasel
 	install = iceweasel.install
@@ -49,19 +49,19 @@ pkgbase = iceweasel
 	optdepends = upower: Battery API
 	optdepends = iceweasel-extension-archsearch: Iceweasel Arch search engines
 	optdepends = iceweasel-extension-archforumsearch-it: Iceweasel search engines for Arch Linux Italian forum
-	provides = iceweasel=41.0
+	provides = iceweasel=41.0.1
 	options = !emptydirs
 	options = !makeflags
 	options = debug
-	source = http://ftp.debian.org/debian/pool/main/i//iceweasel/iceweasel_41.0.orig.tar.xz
-	source = http://ftp.debian.org/debian/pool/main/i//iceweasel/iceweasel_41.0-1.debian.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/i//iceweasel/iceweasel_41.0.1.orig.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/i//iceweasel/iceweasel_41.0.1-1.debian.tar.xz
 	source = mozconfig
 	source = iceweasel.desktop
 	source = iceweasel-install-dir.patch
 	source = vendor.js
 	source = iceweasel-20.0.1-fixed-loading-icon.png
-	md5sums = 14450ade2ccd2ecf6b1725adaedb4cca
-	md5sums = d2f3cee0c87678cc69ff2aa4664706fc
+	md5sums = fa793e72372a46a2def30313a07f4805
+	md5sums = 63240aa0349015737fce5afff6711438
 	md5sums = 6027291b9963817e46f816d28b64681d
 	md5sums = 7b9e5996dd9fe0b186a43a297db1c6b5
 	md5sums = 1c42509891cf6843660a5f3c69896e80
