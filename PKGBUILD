@@ -1,50 +1,22 @@
 # Maintainer: Jakub Pelikan jakub.pelikan@gmail.com
 pkgname=create_ap-gui
-pkgver=1.2
+pkgver=1.2.2
 pkgrel=1
-epoch=
 pkgdesc="Gui application for easy creating access points. Application allows save configuration for quickly create AP."
 arch=('any')
-url=""
+url="https://github.com/p-eli/create_ap-gui"
 license=('GPL')
-groups=()
 depends=(
 	'python-pip'
 	'create_ap'
-        'python>=3'
-        'net-tools'
+    'python>=3'
+    'net-tools'
 	)
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://pypi.python.org/packages/source/c/create_ap-gui/create_ap-gui-1.2.tar.gz")
-noextract=()
-md5sums=("7ac85f76a173c3709b5a3d8606bfe75a")
-validpgpkeys=()
-
-prepare() {
-	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
-
-build() {
-	cd "$pkgname-$pkgver" 
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	#make -k check
-}
+source=("git+https://github.com/p-eli/create_ap-gui")
+sha256sums=('SKIP')
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	python3 setup.py install --root="${pkgdir}" --optimize=1
 }
 
