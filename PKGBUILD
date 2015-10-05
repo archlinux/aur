@@ -1,13 +1,13 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis
-_commit='6f532df'
-pkgver=0.r531.g6f532df
+_commit='3488bda'
+pkgver=0.r557.g3488bda
 pkgrel=1
 pkgdesc='suckless vim like editor'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/vis.git'
-depends=('ncurses')
+depends=('ncurses' 'libtermkey')
 makedepends=('git' 'markdown')
 license=('custom')
 source=("git://repo.or.cz/vis.git#commit=${_commit}")
