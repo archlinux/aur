@@ -5,3 +5,17 @@
  
 -exec /usr/bin/cli /opt/manager-accounting/ManagerDesktop.exe "$@"
 +exec /usr/bin/mono /usr/lib/manager-accounting/ManagerDesktop.exe "$@"
+
+--- a/usr/share/applications/manager-accounting.desktop
++++ b/usr/share/applications/manager-accounting.desktop
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=Manager Accounting
+ Comment=Accounting software
+-Exec=/opt/manager-accounting/manager-accounting
+-Path=/opt/manager-accounting
++Exec=/usr/lib/manager-accounting/manager-accounting
++Path=/usr/lib/manager-accounting
+ Terminal=false
+ Icon=manager-accounting
+ Type=Application

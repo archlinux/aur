@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Manager Accounting
-Comment=Accounting software
-Exec=/usr/lib/manager-accounting/manager-accounting
-Path=/usr/lib/manager-accounting
-Terminal=false
-Icon=manager-accounting
-Type=Application
-Categories=Office;

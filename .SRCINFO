@@ -1,6 +1,6 @@
 pkgbase = manager-accounting
 	pkgdesc = Manager is free accounting software for small business
-	pkgver = 15.5.68
+	pkgver = 15.5.82
 	pkgrel = 1
 	url = http://www.manager.io/
 	install = manager-accounting.install
@@ -15,10 +15,8 @@ pkgbase = manager-accounting
 	options = !makeflags
 	source = http://download.manager.io/manager-accounting.zip
 	source = fix-path.patch
-	source = manager-accounting.desktop
-	sha256sums = c769f44c8b4ea06c56729807e972e975bd13b35cc23bda39bdb9fc6ca56f6e99
-	sha256sums = 845be6d1c2f90597cac8ec7a35f4661030f067fb91fc7163c98456ffb1776adf
-	sha256sums = a90354b1af982e8bda3adbcfbfb5ac5f83c6e80da402ecf4a54a0200ed9a6195
+	sha256sums = e8d1d8887b5d3ddcb65f3d3d722aa30427f964e58cb70d87928bb235c11f83fc
+	sha256sums = 81e73bbae1a386dc76bd1f8b018868864c802cb242667d18b9d6f005518859f7
 
 pkgname = manager-accounting
 
