@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-zh-cn
 	pkgdesc = Simplified Chinese language pack for SeaMonkey
-	pkgver = 2.35
+	pkgver = 2.38
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.35
-	noextract = seamonkey-2.35.zh-CN.langpack.xpi
-	source = http://releases.mozilla.org/pub/mozilla.org/seamonkey/releases/2.35/langpack/seamonkey-2.35.zh-CN.langpack.xpi
-	md5sums = 851c03fa934bd4bc28826fe62b7642c4
+	depends = seamonkey>=2.38
+	noextract = seamonkey-2.38.zh-CN.langpack.xpi
+	source = http://releases.mozilla.org/pub/mozilla.org/seamonkey/releases/2.38/langpack/seamonkey-2.38.zh-CN.langpack.xpi
+	md5sums = 9faedf1c81a71e55b76044fc32659767
 
 pkgname = seamonkey-i18n-zh-cn
 
