@@ -1,0 +1,27 @@
+From 0ca30230eed89d666bfa76900ae0ff50ba77da25 Mon Sep 17 00:00:00 2001
+From: Peter Hoeg <peter@speartail.com>
+Date: Mon, 5 Oct 2015 11:09:39 +0800
+Subject: [PATCH] fix sed
+
+---
+ version.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/version.sh b/version.sh
+index 00d53fb..d8ccd3d 100755
+--- a/version.sh
++++ b/version.sh
+@@ -29,8 +29,8 @@ fi
+ if [ -f "$1" ]
+ then
+     echo "Modifying $1"
+-	# sed -i .bak -E "s/^(__version__ = )\"([^\"]*)\"/\1\"${version}\"/" $1 || exit 3
+-	sed -i .bak -E "s/^(__commit__ = )(None)$/\1\"${commit}\"/" $1 || exit 3
++    # sed -i.bak -E "s/^(__version__ = )\"([^\"]*)\"/\1\"${version}\"/" $1 || exit 3
++    sed -i.bak -E "s/^(__commit__ = )(None)$/\1\"${commit}\"/" $1 || exit 3
+     rm $1.bak
+ elif [ -z "$1" ]
+ then
+-- 
+2.6.0
+

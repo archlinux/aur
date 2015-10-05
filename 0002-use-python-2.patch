@@ -1,0 +1,22 @@
+From c9308f19b74fb19bc50948acbf668edf85aea6f4 Mon Sep 17 00:00:00 2001
+From: Peter Hoeg <peter@speartail.com>
+Date: Mon, 5 Oct 2015 11:14:13 +0800
+Subject: [PATCH 2/2] use python 2
+
+---
+ muttqt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/muttqt b/muttqt
+index 2a9b9cf..7be9ab2 100755
+--- a/muttqt
++++ b/muttqt
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ """muttqt - Mutt query tool.
+ 
+ Stores sent addresses to a database and queries the database and other sources
+-- 
+2.6.0
+
