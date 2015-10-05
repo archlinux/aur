@@ -1,6 +1,6 @@
 post_install() {
   echo
-  echo "Warning: phar.so must be enabled and date.timezone set in your php.ini"
+  echo "Warning: phar.so must be enabled in your php.ini"
 }
 
 post_upgrade() {
