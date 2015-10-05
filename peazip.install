@@ -1,5 +1,4 @@
 post_install() {
-    rm -fr /opt/peazip-gtk2-portable
     update-desktop-database -q
 }
 
