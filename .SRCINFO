@@ -1,7 +1,7 @@
 pkgbase = paraview-qt5
 	pkgdesc = Parallel Visualization Application using VTK
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.paraview.org
 	install = paraview-qt5.install
 	arch = i686

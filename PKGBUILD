@@ -1,3 +1,5 @@
+# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Contributor: deesy <mail@ogoethel.de>
 # Contributor: George Eleftheriou <eleftg>
 # Contributor: Mathias Anselmann <mathias.anselmann@gmail.com>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
@@ -8,7 +10,7 @@
 pkgname=paraview-qt5
 _PkgName=ParaView
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -67,6 +69,9 @@ build() {
     -DPARAVIEW_USE_QTWEBKIT:BOOL=ON \
     -DPARAVIEW_USE_VISITBRIDGE:BOOL=ON \
     -DPARAVIEW_QT_VERSION=5 \
+    -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
+    -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 \
+    -DPYTHON_LIBRARY:PATH=/usr/lib/libpython2.7.so \
     -DPYTHON_VERSION=2 \
     -DVISIT_BUILD_READER_CGNS:BOOL=ON \
     -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
@@ -74,6 +79,7 @@ build() {
     -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=OpenMP \
     -DVTK_QT_VERSION=5 \
     ../${_PkgName}-v${pkgver}-source
+
 
   make
 }
