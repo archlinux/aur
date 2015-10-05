@@ -1,8 +1,8 @@
-# Maintainer: Sean Baggaley <coffeescripter@gmail.com>
+# Maintainer: Sean Baggaley <coffeescripter at gmail dot com>
 pkgname=doomseeker-hg
 _dsver=1.1
-pkgver=1.1.r1509271217
-pkgrel=2
+pkgver=1.1.r1510041656
+pkgrel=1
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
