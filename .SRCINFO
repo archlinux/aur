@@ -1,0 +1,17 @@
+pkgbase = icestorm-git
+	pkgdesc = Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)
+	pkgver = r63.c6f1e1f
+	pkgrel = 1
+	url = http://www.clifford.at/icestorm/
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = libftdi
+	provides = icestorm
+	conflicts = icestorm
+	source = git+https://github.com/cliffordwolf/icestorm.git
+	md5sums = SKIP
+
+pkgname = icestorm-git
+
