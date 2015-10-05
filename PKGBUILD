@@ -128,6 +128,8 @@ package_linux-zen-grsec() {
 	# add real version for building modules and running depmod from post_install/upgrade
 	mkdir -p "${pkgdir}/usr/lib/modules/extramodules-${_kernver}"
 	echo "${_kernver}" > "${pkgdir}/usr/lib/modules/extramodules-${_kernver}/version"
+	
+	ln -s "${pkgdir}/usr/lib/modules/extramodules-${_kernver}" "${pkgdir}/usr/lib/modules/${_kernver}"
 
 	msg2 "Removing links to source and build directory..."
 	rm "$pkgdir/lib/modules/$_kernver/"{build,source}
