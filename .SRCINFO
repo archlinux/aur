@@ -1,0 +1,14 @@
+pkgbase = fstl
+	pkgdesc = A viewer for .stl files
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://www.mattkeeter.com/projects/fstl/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	source = https://github.com/mkeeter/fstl/archive/v0.9.2.tar.gz
+	sha256sums = b9583db77b5e8a1ac1c57b36ade00b72d98a884c6977ddc48d43589735346cb7
+
+pkgname = fstl
+
