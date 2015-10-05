@@ -5,7 +5,7 @@ cat << EOF
 If you just ran makepkg in this directory then
 to build the documentation you can try:
 
-$ cd src/dolfin-build/build/doc
+$ cd src/dolfin/build/doc
 $ make doc SPHINXBUILD=sphinx-build2
 
 EOF

@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=dolfin-git
 pkgdesc="the C++/Python interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations."
-pkgver=20140909
+pkgver=20151005
 pkgrel=1
 _branch=master
 arch=('i686' 'x86_64')
@@ -17,9 +17,11 @@ conflicts=('dolfin')
 options=(!emptydirs)
 install="dolfin.install"
 source=("dolfin::git+https://bitbucket.org/fenics-project/dolfin.git#branch=${_branch}"
+        "src.patch"
         "${install}")
 md5sums=('SKIP'
-         '0659b73a58b92be0ca70fc0135668809')
+         '3d0750480196e26dced7435a00e70206'
+         '284f97c4471a044dd296572fe7024686')
 
 # to stop /common/timing.cpp.o coming before /common/defines.cpp.o
 export MAKEFLAGS="-j1"
@@ -27,14 +29,14 @@ export MAKEFLAGS="-j1"
 # export CXXFLAGS="$CXXFLAGS -Wall -Wshadow -Wextra -Werror"
 
 pkgver() {
-  cd dolfin
-  git log --format="%cd" --date=short -1 | sed 's/-//g'
+    cd dolfin
+    git log --format="%cd" --date=short -1 | sed 's/-//g'
 }
 
 prepare() {
-  cd dolfin
+    patch -p2 < src.patch
 
-    #patch -Np1 -i "${srcdir}/debug_cxxflags.diff"
+    cd dolfin
 
     find ./ -name "*" -type f -exec \
         sed -i 's|^#!.*python$|#!/usr/bin/python2|' {} \;
@@ -59,20 +61,23 @@ build() {
     local py2_inc="${py2_interp/\/bin\///include/}"
     local py2_lib=`ldd ${py2_interp} | grep python | cut -d " " -f 3 | sed 's/\(.*.so\).*/\1/'`
 
-    cmake .. -DCMAKE_CXX_COMPILER=/usr/bin/g++ \
-	-DCMAKE_INSTALL_PREFIX="${pkg}"/usr \
+    [ -z "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
+    [ -z "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
+
+    cmake .. -DCMAKE_CXX_COMPILER=/usr/bin/g++   \
+	-DCMAKE_INSTALL_PREFIX="${pkg}"/usr      \
         -DPYTHON_EXECUTABLE:PATH="${py2_interp}" \
-        -DPYTHON_INCLUDE_DIR:PATH="${py2_inc}" \
-        -DPYTHON_LIBRARY:FILEPATH="${py2_lib}" \
-	-DDOLFIN_ENABLE_VTK=ON \
-        -DCMAKE_SKIP_BUILD_RPATH=TRUE \
-	-DCMAKE_SKIP_RPATH=TRUE \
+        -DPYTHON_INCLUDE_DIR:PATH="${py2_inc}"   \
+        -DPYTHON_LIBRARY:FILEPATH="${py2_lib}"   \
+	-DDOLFIN_ENABLE_VTK=ON                   \
+        -DCMAKE_SKIP_BUILD_RPATH=TRUE            \
+	-DCMAKE_SKIP_RPATH=TRUE                  \
 	-DCMAKE_BUILD_TYPE="Debug"
 	# -DDOLFIN_ENABLE_TESTING=ON
 
     make
 
-    # Uncomment this line for documentation
+    # Uncomment the line below to build the documentation
     #make SPHINXBUILD=sphinx-build2 doc
 }
 
