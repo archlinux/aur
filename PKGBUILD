@@ -3,7 +3,7 @@
 
 pkgname=grass
 pkgver=7.0.1
-pkgrel=4
+pkgrel=5
 _shortver=${pkgver%.*}
 _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
@@ -39,6 +39,9 @@ build() {
     --with-freetype-includes=/usr/include/freetype2 \
     --with-wxwidgets \
     --with-readline \
+    --with-pthread \
+    --with-netcdf \
+    --with-nls \
     --with-geos \
     --with-postgres
 
