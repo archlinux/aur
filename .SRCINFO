@@ -1,7 +1,7 @@
 pkgbase = python-catkin-pkg
 	pkgdesc = Standalone Python library for the catkin build system
 	pkgver = 0.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/catkin_pkg
 	arch = any
 	license = BSD

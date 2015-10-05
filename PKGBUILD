@@ -3,7 +3,7 @@
 pkgname=python-catkin-pkg
 _name=catkin_pkg
 pkgver=0.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Python library for the catkin build system"
 url="http://wiki.ros.org/catkin_pkg"
 depends=('python')
