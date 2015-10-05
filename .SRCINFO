@@ -1,7 +1,7 @@
 pkgbase = python-pypeg2
 	pkgdesc = An intrinsic PEG Parser-Interpreter for Python
 	pkgver = 2.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fdik.org/pyPEG/
 	arch = any
 	license = GPL2

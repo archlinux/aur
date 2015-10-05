@@ -2,7 +2,7 @@
 
 pkgname=python-pypeg2
 pkgver=2.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An intrinsic PEG Parser-Interpreter for Python"
 arch=(any)
 url="http://fdik.org/pyPEG/"
