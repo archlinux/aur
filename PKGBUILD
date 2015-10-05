@@ -2,7 +2,7 @@
 
 _pkgname=fb-adb
 pkgname=$_pkgname-git
-pkgver=20151001.r300.d485153
+pkgver=20151003.r301.394ca85
 pkgrel=1
 pkgdesc='A better shell to use in place of adb when connecting to Android devices'
 url='https://github.com/facebook/fb-adb'
