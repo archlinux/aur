@@ -1,39 +1,32 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r4510.cc01e74
+pkgver=r4637.21c8437
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
-arch=('any')
+arch=('i686' 'x86_64')
 url='https://github.com/IntelOrca/OpenRCT2'
 license=('GPL3')
-depends=('wine' 'mingw-w64-sdl2' 'gtk-update-icon-cache' 'desktop-file-utils'
-         'mingw-w64-sdl2_ttf')
-makedepends=('git' 'cmake' 'mingw-w64-gcc')
+depends=('gtk-update-icon-cache' 'desktop-file-utils')
+makedepends=('git' 'cmake')
 conflicts=('openrct2')
 provides=('openrct2')
 options=('!buildflags')
 install=openrct2.install
 source=("$pkgname"::'git://github.com/IntelOrca/OpenRCT2.git#branch=develop'
-        'orctlibs.zip::https://download.openrct2.website/dev/lib/mingw'
+        'https://openrct.net/launcher/libs/orctlibs.zip'
         'openrct2'
         'openrct2.desktop')
 sha256sums=('SKIP'
-            '3755e5dfa10e1f7b923915f271258622269017da25af8fb2d807fe3ea5409474'
-            '27db282994fe8e7ae04582704c949d9dab1959409c2905e55573418d409c2646'
+            '0a7b5ea46e9cb4b19000b69690eae0b75929752f7db192c78bd7ffb61d696835'
+            '2cead106464f257d64c74333280ee6bf4056167cc69840371e81a77e64858989'
             'b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d')
 
-# Enable Twitch support. This pulls in lots of mingw-w64-* packages from the AUR
-# which takes a while to build. If you don't need Twitch support, it's probably
-# desirable to set this to 0 before building.
-_enable_twitch=0
-
-_dlls=(SDL2.dll libwinpthread-1.dll SDL2_ttf.dll libfreetype-6.dll libbz2-1.dll)
-
-if [ $_enable_twitch -eq 1 ]; then
-  depends+=('mingw-w64-curl' 'mingw-w64-jansson')
-  _dlls+=(libcurl-4.dll libjansson-4.dll libeay32.dll
-         libgcc_s_sjlj-1.dll libidn-11.dll libssh2-1.dll ssleay32.dll zlib1.dll
-         libiconv-2.dll libintl-8.dll)
+if [ "$CARCH" = "i686" ]; then
+  depends+=('sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp')
+else
+  depends+=('lib32-sdl2' 'lib32-sdl2_ttf' 'lib32-curl' 'lib32-jansson'
+            'lib32-speexdsp')
+  makedepends+=('gcc-multilib')
 fi
 
 pkgver() {
@@ -45,14 +38,12 @@ prepare() {
   cd "$srcdir/$pkgname"
 
   # Copy local libraries into lib.
-  # TODO ideally we'd package everything up in orctlibs.zip/local properly
-  # instead of compiling an embedded copy in this package.
   if [ ! -d lib ]; then
     cp -r "$srcdir/local" lib
   fi
 
   # The ArchLinux jansson header files are directly under
-  # /usr/i686-w64-mingw32/include.
+  # /usr/include.
   find src \( -name '*.c' -or -name '*.h' -or -name '*.cpp' \) \
     -exec sed -i 's@#include <jansson/@#include <@' {} \;
 }
@@ -60,30 +51,20 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
 
-  local opts=''
-  if [ $_enable_twitch -ne 1 ]; then
-    opts+='-DDISABLE_HTTP_TWITCH=1'
-  fi
-
-  cmake -DCMAKE_TOOLCHAIN_FILE=CMakeLists_mingw.txt -DCMAKE_BUILD_TYPE=Debug $opts .
+  cmake -DCMAKE_BUILD_TYPE=Debug .
   make
 
-  # Create g2.dat. See the comment in the package() function for why we need to
-  # symlink the DLLs here. openrct2.exe also seems to return a non-zero exit
-  # code even if it builds the sprites successfully, so we have to ignore its
-  # exit code.
-  for dll in ${_dlls[@]}; do
-    ln -sf /usr/i686-w64-mingw32/bin/$dll
-  done
-  wine openrct2.exe sprite build data/g2.dat resources/g2 || true
+  # openrct2 sprite build segfaults even if it finishes successfully, so we
+  # ignore its return code.
+  ./openrct2 sprite build data/g2.dat resources/g2 || true
 }
 
 package() {
   cd "$srcdir/$pkgname"
 
   # Standard OpenRCT2 distribution files.
-  install -Dm644 openrct2.dll "$pkgdir/usr/share/openrct2/openrct2.dll"
-  install -Dm755 openrct2.exe "$pkgdir/usr/share/openrct2/openrct2.exe"
+  install -Dm755 openrct2 "$pkgdir/usr/share/openrct2/openrct2"
+  install -Dm644 openrct2.exe "$pkgdir/usr/share/openrct2/openrct2.exe"
 
   install -Dm644 data/g2.dat "$pkgdir/usr/share/openrct2/data/g2.dat"
 
@@ -104,13 +85,4 @@ package() {
   install -Dm755 "$srcdir/openrct2" "$pkgdir/usr/bin/openrct2"
   install -Dm644 "$srcdir/openrct2.desktop" "$pkgdir/usr/share/applications/openrct2.desktop"
   install -Dm644 resources/logo/icon_flag.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/openrct2.svg"
-
-  # For Wine to find the SDL2.dll and libwinpthread-1.dll files they need to be
-  # in the same directory as openrct2.exe, so we symlink them in place. We don't
-  # use $CARCH here because on x86_64 OpenRCT2 is compiled with -m32,
-  # therefore we always want to use the i686 DLLs. OpenRCT2 relies on
-  # Wine's WoW64 support to actually run on x86_64 machines.
-  for dll in ${_dlls[@]}; do
-    ln -s /usr/i686-w64-mingw32/bin/$dll "$pkgdir/usr/share/openrct2"
-  done
 }
