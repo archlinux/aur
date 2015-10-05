@@ -6,5 +6,5 @@ Comment=Path of Exile Inventory Management Tool
 Exec=acquisitionplus
 Icon=acquisitionplus
 Terminal=false
-Categories=Games;
+Categories=Application;Game
 StartupNotify=true;
