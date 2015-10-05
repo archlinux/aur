@@ -2,7 +2,7 @@
 
 pkgbase=saldl-git
 pkgname=("$pkgbase")
-pkgver=v20.0.g618f1ae
+pkgver=v25.5.ged58345
 pkgrel=1
 url="https://saldl.github.io"
 pkgdesc="A CLI downloader optimized for speed and early preview, based on libcurl."
