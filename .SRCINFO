@@ -1,6 +1,6 @@
 pkgbase = pasystray-git
 	pkgdesc = PulseAudio system tray (a replacement for padevchooser)
-	pkgver = 0.5.2.r0.g6709fc1
+	pkgver = 0.5.2.r17.gdd927f3
 	pkgrel = 1
 	url = https://github.com/christophgysin/pasystray
 	install = pasystray.install

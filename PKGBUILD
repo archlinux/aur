@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 _pkgname=pasystray
 pkgname=${_pkgname}-git
-pkgver=0.5.2.r0.g6709fc1
+pkgver=0.5.2.r17.gdd927f3
 pkgrel=1
 pkgdesc="PulseAudio system tray (a replacement for padevchooser)"
 arch=('i686' 'x86_64')
@@ -19,15 +19,9 @@ optdepends=(
 )
 provides=('pasystray')
 conflicts=('pasystray')
-backup=()
-options=()
 install='pasystray.install'
 source=(git+https://github.com/christophgysin/pasystray.git)
-noextract=()
 md5sums=('SKIP')
-
-_gitroot=git://github.com/christophgysin/${pkgname%-git}.git
-_gitname=${pkgname%-git}
 
 pkgver() {
     cd $_pkgname
@@ -35,18 +29,7 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir"
-    msg "Connecting to GIT server...."
-    if [[ -d $_gitname ]]; then
-        cd $_gitname
-        git fetch
-        git reset --hard origin/master
-        msg "The local files are updated."
-    else
-        git clone --depth=1 $_gitroot $_gitname
-    fi
-    msg "GIT checkout done or server timeout"
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/$_pkgname"
 
     aclocal
     autoconf
@@ -58,6 +41,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/$_pkgname"
     make DESTDIR="$pkgdir/" install
 }
