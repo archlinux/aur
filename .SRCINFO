@@ -1,6 +1,6 @@
 pkgbase = ocaml-comparelib
 	pkgdesc = OCaml syntax extension for deriving "compare" functions automatically
-	pkgver = 109.60.00
+	pkgver = 113.00.00
 	pkgrel = 1
 	url = https://github.com/janestreet/comparelib
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = ocaml-comparelib
 	depends = camlp4
 	depends = ocaml-type_conv
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/109.60.00/individual/comparelib-109.60.00.tar.gz
-	md5sums = ac3c1279f373304fc661e13affe88cc7
+	source = https://ocaml.janestreet.com/ocaml-core/113.00/files/comparelib-113.00.00.tar.gz
+	md5sums = bdb4f44831e0ba7325a9d0ec2540fa48
 
 pkgname = ocaml-comparelib
 
