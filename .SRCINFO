@@ -1,6 +1,6 @@
 pkgbase = trojita-git
 	pkgdesc = A fast QT IMAP e-mail client
-	pkgver = 4878.d6d8fa5
+	pkgver = 5964.30c3dca
 	pkgrel = 1
 	url = http://trojita.flaska.net
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = trojita-git
 	makedepends = git
 	makedepends = cmake
 	depends = qtwebkit
+	depends = kdepimlibs4
 	provides = trojita
 	conflicts = trojita
 	source = git://anongit.kde.org/trojita.git

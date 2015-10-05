@@ -1,13 +1,13 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=trojita-git
-pkgver=4878.d6d8fa5
+pkgver=5964.30c3dca
 pkgrel=1
 pkgdesc="A fast QT IMAP e-mail client"
 arch=(i686 x86_64)
 url="http://trojita.flaska.net"
 license=('GPL')
-depends=('qtwebkit')
+depends=('qtwebkit' 'kdepimlibs4')
 conflicts=('trojita')
 provides=('trojita')
 makedepends=('git' 'cmake')
