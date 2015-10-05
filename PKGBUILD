@@ -1,14 +1,14 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=omim-git
-pkgver=r12162.8214307
+pkgver=r12174.8b5d38a
 pkgrel=1
 pkgdesc='Offline OpenStreetMap maps'
 arch=(i686 x86_64)
 url='http://maps.me/en/home'
 license=(Apache)
-depends=(boost-libs qt5-base)
-makedepends=(boost cmake)
+depends=(qt5-base)
+makedepends=(boost cmake clang git)
 source=(git://github.com/mapsme/omim)
 sha1sums=('SKIP')
 
