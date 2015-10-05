@@ -1,6 +1,6 @@
 pkgbase = python-pprofile
 	pkgdesc = Line-granularity, thread-aware deterministic and statistic pure-python profiler
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = http://github.com/vpelletier/pprofile
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pprofile
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.python.org/packages/source/p/pprofile/pprofile-1.7.2.tar.gz
-	md5sums = 54c9cebd083e16849727a0fae7ae5508
+	source = https://pypi.python.org/packages/source/p/pprofile/pprofile-1.7.3.tar.gz
+	sha256sums = c3a6b35e331d394968e2cbe3da43b67ab813f9f97edd479dfacc0e90733da08a
 
 pkgname = python-pprofile
 
