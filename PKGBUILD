@@ -1,8 +1,8 @@
 # Maintainer: Nikolaos Bezirgiannis <bezeria@gmail.com>
 # Contributor: Jeffrey Gelens <jgelens@gmail.com>
 pkgname=mod_rpaf
-pkgver=20140903
-pkgrel=2
+pkgver=20150923
+pkgrel=1
 pkgdesc="rpaf is for backend Apache servers what mod_proxy_add_forward is for frontend Apache servers"
 arch=('i686' 'x86_64')
 url=('https://github.com/gnif/mod_rpaf')
@@ -23,7 +23,10 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   apxs -c -n mod_rpaf.so mod_rpaf.c || return 1
-  mkdir -p $pkgdir/usr/lib/httpd/modules
-  apxs -S LIBEXECDIR=$pkgdir/usr/lib/httpd/modules -i -n mod_rpaf.so mod_rpaf.la
 }
 
+package() {
+  cd "$srcdir/$pkgname"
+  mkdir -p ${pkgdir}/usr/lib/httpd/modules
+  apxs -i -S LIBEXECDIR=${pkgdir}/usr/lib/httpd/modules -n mod_rpaf.so mod_rpaf.la
+}

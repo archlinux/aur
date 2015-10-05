@@ -1,7 +1,7 @@
 pkgbase = mod_rpaf
 	pkgdesc = rpaf is for backend Apache servers what mod_proxy_add_forward is for frontend Apache servers
-	pkgver = 20140903
-	pkgrel = 2
+	pkgver = 20150923
+	pkgrel = 1
 	url = https://github.com/gnif/mod_rpaf
 	install = mod_rpaf.install
 	arch = i686
