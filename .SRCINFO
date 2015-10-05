@@ -1,14 +1,14 @@
 pkgbase = owncloud-app-rainloop
 	pkgdesc = RainLoop Webmail for owncloud
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rainloop.net
 	arch = any
 	license = AGPL
 	depends = owncloud
 	options = !strip
 	source = owncloud-app-rainloop-1.9.3.zip::http://repository.rainloop.net/v2/other/owncloud/rainloop.zip
-	md5sums = 43d4e4f5aec201c0cde25f9c34ae5a4e
+	md5sums = 642513023170f28fe0b5e5477ac86d7c
 
 pkgname = owncloud-app-rainloop
 

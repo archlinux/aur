@@ -2,7 +2,7 @@
 
 pkgname=owncloud-app-rainloop
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="RainLoop Webmail for owncloud"
 arch=('any')
 url="http://www.rainloop.net"
@@ -11,7 +11,7 @@ depends=('owncloud')
 makedepends=()
 options=('!strip')
 source=("$pkgname-$pkgver.zip::http://repository.rainloop.net/v2/other/owncloud/rainloop.zip")
-md5sums=('43d4e4f5aec201c0cde25f9c34ae5a4e')
+md5sums=('642513023170f28fe0b5e5477ac86d7c')
 
 package() {
   install -d ${pkgdir}/usr/share/webapps/owncloud/apps
