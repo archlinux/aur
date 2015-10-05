@@ -18,5 +18,5 @@ sha256sums=('SKIP')
 package() {
 	cd "$pkgname"
 	python3 setup.py install --root="${pkgdir}" --optimize=1
-}
+	}
 
