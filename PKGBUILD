@@ -4,7 +4,7 @@
 
 pkgname=lxpolkit-git
 pkgver=0.1.0.r34.g55fc5d4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Simple polkit authentication agent for LXDE"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ prepare() {
   # Don't conflict with MATE and Razor-qt (they have their own polkit agents)
   sed -i '/^NotShowIn/ s/GNOME;KDE;/GNOME;KDE;MATE;Razor;/' data/lxpolkit.desktop.in.in
   sed -e '/AM_INIT_AUTOMAKE/s,-Werror,,' -i configure.ac
-  sed -e '/AM_INSTALLED_VERSION/s,1.11,1.14,' -i autogen.sh
+  sed -e '/AM_INSTALLED_VERSION/s,1.11,1.15,' -i autogen.sh
 }
 
 build() {
