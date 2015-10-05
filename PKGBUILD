@@ -2,13 +2,14 @@
 
 pkgname='xorg-server-systemd'
 pkgver='1.0.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='Systemd template to start an X server on the respective display'
 arch=('any')
 license=('GPL3')
 depends=('xorg-server' 'systemd')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/HOMEINFO/${pkgname}")
+url="https://github.com/HOMEINFO/${pkgname}"
+source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 pkgdir='pkg'
 srcdir='src'
