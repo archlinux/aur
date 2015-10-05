@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Bøe <sebastianbooe at gmail dot com>
 
 pkgname=chisel
-pkgver=2.2.28
+pkgver=2.2.29
 pkgrel=1
 pkgdesc='Constructing Hardware in a Scala Embedded Language'
 arch=('any')
@@ -10,12 +10,11 @@ license=('BSD')
 depends=('java-environment')
 makedepends=('sbt')
 source=(https://github.com/ucb-bar/chisel/archive/v$pkgver.tar.gz)
-md5sums=('4193e0ca258974fa04605e63ae86b905')
-sha256sums=('18bc71bfc4af948af6bea7264cd4efd2f32b6ed7906fe2ed021ee1ad831b891b')
+sha512sums=('e6f951e5e297136a4ba6a1d5c6ec9955c03dfd961d4333e930f3a9d783563da759a6160bbaff78bcbfeff1629bcfb8d89a73903947692f20e55938bf0e643304')
 
 build(){
     cd $srcdir/chisel-$pkgver
-    sbt +publish-local
+    sbt publish-local
 }
 
 package() {
