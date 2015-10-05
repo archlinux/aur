@@ -1,0 +1,12 @@
+pkgbase = xdrfile
+	pkgdesc = Reads/writes compressed trajectory files.
+	pkgver = 1.1.4
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = ftp://ftp.gromacs.org/contrib/xdrfile-1.1.4.tar.gz
+	md5sums = d992901d1bd7305b91d280ab85427c7b
+
+pkgname = xdrfile
+
