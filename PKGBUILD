@@ -146,7 +146,7 @@ package_linux-zen-grsec() {
 		"$pkgdir/etc/mkinitcpio.d/linux-zen.preset"
 		
 	# add grsecurity gcc plugins
-	msg "Adding grsecurity gcc plugins
+	msg "Adding grsecurity gcc plugins..."
 	mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
 	install -m644 "$srcdir/linux-zen-grsec/tools/gcc/gcc-common.h" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
 	install -m644 "$srcdir/linux-zen-grsec/tools/gcc/Makefile" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
