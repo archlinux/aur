@@ -1,25 +1,27 @@
 # Maintainer: Sébastien LEBEAU <sebcbi1 at gmail dot com>
 
 pkgname=transmission-remote-gtk
-pkgver=1.1.1
-pkgrel=1
+pkgver=1.2
+pkgrel=2
 pkgdesc="GTK remote control for the Transmission BitTorrent client"
-url="https://code.google.com/p/transmission-remote-gtk/"
-arch=(any)
+url="https://github.com/ajf8/transmission-remote-gtk"
+arch=('i686' 'x86_64')
 license=(GPL2)
-source=('https://transmission-remote-gtk.googlecode.com/files/transmission-remote-gtk-1.1.1.tar.gz')
-sha1sums=('2fdfe0526a64a2ee5f24f1c31ca55771ea00ac7b')
-depends=('curl' 'libnotify' 'geoip' 'desktop-file-utils' 'gtk3')
-makedepends=('intltool')
+commit=aa4e0c7d836cfcc10d8effd10225abb050343fc8
+source=("https://github.com/ajf8/transmission-remote-gtk/archive/$commit.zip")
+sha1sums=('0de823b0031cd0f98fc28f353a21cb89ec1ed163')
+depends=('curl' 'libnotify' 'geoip' 'desktop-file-utils' 'gtk3' 'json-glib')
+makedepends=('intltool' 'gtk-update-icon-cache')
 
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$commit"
+	./autogen.sh
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$commit"
 	make DESTDIR="$pkgdir/" install
 }
