@@ -45,7 +45,7 @@ pkgbase = linux-lts314-ck
 	sha512sums = 9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd
 
 pkgname = linux-lts314-ck
-	pkgdesc = Linux 3.14 with Brain Fuck Scheduler v0.444
+	pkgdesc = Linux 3.14 with Brain Fuck Scheduler
 	install = linux-lts314-ck.install
 	depends = coreutils
 	depends = linux-firmware
