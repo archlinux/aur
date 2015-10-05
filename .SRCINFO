@@ -1,6 +1,6 @@
 pkgbase = libfreenect-git
 	pkgdesc = Drivers and libraries for the Xbox Kinect device on Linux
-	pkgver = 20140215
+	pkgver = v0.5.2.r8.gdcb2929
 	pkgrel = 1
 	url = http://openkinect.org
 	arch = i686
@@ -19,6 +19,8 @@ pkgbase = libfreenect-git
 	optdepends = python2-matplotlib: support for python demos
 	provides = libfreenect
 	conflicts = libfreenect
+	source = libfreenect-git::git+https://github.com/OpenKinect/libfreenect.git#branch=master
+	md5sums = SKIP
 
 pkgname = libfreenect-git
 
