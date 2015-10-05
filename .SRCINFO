@@ -1,6 +1,6 @@
 pkgbase = wafw00f-git
 	pkgdesc = A set of security tools to identify and fingerprint Web Application Firewall/WAF products protecting a website
-	pkgver = 0.9.3_58ea9c6
+	pkgver = 0.9.3.r102.ge8ad02c
 	pkgrel = 1
 	url = https://github.com/sandrogauci/wafw00f
 	arch = any
