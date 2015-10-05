@@ -1,7 +1,7 @@
 # Maintainer: Stavros Polymenis <sp@orbitalfox.com>
 pkgname=portal
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="A personal portal system"
 arch=(any)
 url="http://orbitalfox.com"
@@ -20,7 +20,7 @@ changelog=
 source=(#"git+https://github.com/orbifx/portal.git"
 	https://github.com/orbifx/portal/releases/download/v0.1-beta/portal-postconf.tar.gz)
 noextract=()
-md5sums=('ea060b28005b3eb2d5f54c9556ff72e9')
+md5sums=('ca4a222928203019be0aab260e342def')
 
 build() {
 #  cd "$pkgname-$pkgver"
