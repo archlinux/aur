@@ -1,0 +1,13 @@
+pkgbase = python-swampy
+	pkgdesc = Companion code for Think Python.
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = http://www.greenteapress.com/thinkpython/swampy/
+	arch = any
+	license = GPL
+	depends = python
+	source = https://pypi.python.org/packages/source/s/swampy/swampy-2.1.7.tar.gz
+	sha256sums = a7046d007ec1a477669be0c8ca8dd300204e7f5fc6b7e72d7ab3e09d4ddcf6c3
+
+pkgname = python-swampy
+
