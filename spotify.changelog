@@ -1,3 +1,9 @@
+6th October 2015 (GMT) AWhetter <(firstname) @ awhetter.co.uk>
+    * 1.0.14.124
+		Updated spotify version (.g4dfabc51)
+		.install is now empty due to lack of {un,}register.sh files
+		32-bit packages are back
+
 22nd May 2015 (GMT) Gadget3000 <gadget3000 at msn dot com>
     * 0.9.17.8
 		Updated spotify version (.gd06432d.31-1)
