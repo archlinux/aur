@@ -1,0 +1,26 @@
+pkgbase = liblwipv6-svn
+	pkgdesc = User level (lightweight) TCP/IP stack with IPv6 support
+	pkgver = r1129
+	pkgrel = 1
+	url = https://sourceforge.net/projects/view-os
+	install = liblwipv6-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = libtool
+	depends = glibc
+	depends = libpcap>=0.8
+	depends = vde2
+	provides = liblwipv6-svn=r1129
+	conflicts = liblwipv6-svn
+	replaces = liblwipv6-svn
+	source = svn+http://svn.code.sf.net/p/view-os/code/trunk/lwipv6
+	source = liblwipv6-svn.install
+	md5sums = SKIP
+	md5sums = b4165e6142a92d65c8e14479486decc4
+
+pkgname = liblwipv6-svn
+
