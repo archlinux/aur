@@ -17,6 +17,7 @@ pkgbase = spotify
 	depends = libxtst
 	depends = libx11
 	depends = libxss
+	depends = libcurl-compat
 	optdepends = desktop-file-utils: Adds URI support to compatible desktop environments
 	optdepends = ffmpeg-compat: Adds support for playback of local files
 	options = !strip

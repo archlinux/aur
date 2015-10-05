@@ -23,7 +23,7 @@ md5sums_x86_64=('d9a0f823712be39f89995faef65f4223')
 source_i686=('http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.14.122.gf29d9be0_i386.deb')
 md5sums_i686=('826b8d9c263b8f99610a0e16c21b0653')
 
-depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss")
+depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libcurl-compat")
 optdepends=('desktop-file-utils: Adds URI support to compatible desktop environments'
             'ffmpeg-compat: Adds support for playback of local files'
 						)
