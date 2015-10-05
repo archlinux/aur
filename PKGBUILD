@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Thumbnailer to show ePub cover previews in KDE file managers."
 arch=('x86_64' 'i686')
 url="http://kde-apps.org/content/show.php/KDE+ePub+Thumbnailer?content=151210"
-depends=('dolphin')
+depends=('kio')
 makedepends=('cmake' 'extra-cmake-modules')
 license=('GPL')
 source=("http://kde-apps.org/CONTENT/content-files/151210-${pkgname}-${pkgver}.tar.gz")
