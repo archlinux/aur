@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=AudioVideo;AudioVideoEditing;
+Comment[zh_CN]=弹幕转换器
+Comment=DanMoKu Converter
+Exec=python3 /usr/share/niconvert/niconvert.pyw tk %U
+GenericName[zh_CN]=Niconvert
+GenericName=Niconvert
+Icon=/usr/share/niconvert/niconvert/assets/logo.svg
+Name[zh_CN]=Niconvert
+Name=Niconvert
+StartupNotify=false
+Terminal=false
+Type=Application

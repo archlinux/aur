@@ -1,0 +1,17 @@
+pkgbase = niconvert-git
+	pkgdesc = Danmaku download and convert tool.
+	pkgver = 86.dbc3bc1
+	pkgrel = 1
+	url = https://github.com/muzuiget/niconvert
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python3
+	depends = tk
+	source = git://github.com/muzuiget/niconvert.git
+	source = niconvert.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = niconvert-git
+
