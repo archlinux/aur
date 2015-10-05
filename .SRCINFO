@@ -1,0 +1,17 @@
+pkgbase = arachne-pnr-git
+	pkgdesc = Place and route tool for FPGAs
+	pkgver = 0.r103.efdb026
+	pkgrel = 1
+	url = https://github.com/cseed/arachne-pnr
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = icestorm
+	provides = arachne-pnr
+	conflicts = arachne-pnr
+	source = git+https://github.com/cseed/arachne-pnr.git
+	md5sums = SKIP
+
+pkgname = arachne-pnr-git
+
