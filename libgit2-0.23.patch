@@ -1,0 +1,12 @@
+diff -Naur old/git-changebar/src/gcb-plugin.c new/git-changebar/src/gcb-plugin.c
+--- old/git-changebar/src/gcb-plugin.c	2015-08-31 09:37:32.343517032 -1000
++++ new/git-changebar/src/gcb-plugin.c	2015-08-31 09:37:56.677041414 -1000
+@@ -656,7 +656,7 @@
+   opts.flags = GIT_DIFF_FORCE_TEXT;
+   
+   ret = git_diff_buffers (old_buf->ptr, old_buf->size, NULL,
+-                          buf, len, NULL, &opts, NULL, hunk_cb, NULL, payload);
++                          buf, len, NULL, &opts, NULL, NULL, hunk_cb, NULL, payload);
+   
+   if (free_buf) {
+     g_free (buf);
