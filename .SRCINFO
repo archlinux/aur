@@ -1,0 +1,23 @@
+pkgbase = gnome-keyring-wo-gpg
+	pkgdesc = GNOME Password Management daemon (without gnupg-agent functionality)
+	pkgver = 3.16.0
+	pkgrel = 1
+	url = http://www.gnome.org
+	install = gnome-keyring.install
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = gcr
+	depends = libcap-ng
+	provides = gnome-keyring=3.16.0-1
+	conflicts = gnome-keyring
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-keyring/3.16/gnome-keyring-3.16.0.tar.xz
+	sha256sums = 15a3bb8c53855a4ff0dbbdfbe4ec3df206c32048f50bdc76a51f8e3e14ece1f5
+
+pkgname = gnome-keyring-wo-gpg
+
