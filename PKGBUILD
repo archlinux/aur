@@ -3,7 +3,7 @@
 
 pkgname=gtk-theme-arc-git
 _pkgname=Arc-theme
-pkgver=283.c3d28d9
+pkgver=286.be882ef
 pkgrel=1
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from Github."
 arch=('any')
