@@ -1,0 +1,16 @@
+pkgbase = perl-cgi-formbuilder
+	pkgdesc = An extremely fast, reliable form generation and processing module
+	pkgver = 3.09
+	pkgrel = 1
+	url = https://metacpan.org/release/CGI-FormBuilder
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-cgi
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/N/NW/NWIGER/CGI-FormBuilder-3.09.tgz
+	md5sums = 11aa9bc8bb64f2c1f6139eb19b77b923
+	sha512sums = 6907131de95ac0188a4a80e380fd81554bd9fb8d2566e961e5ff05a30e4498bccb157ecfdc77bdcd05427ebc5882caaea47b044aaaddae85f48231c0b7eef240
+
+pkgname = perl-cgi-formbuilder
+
