@@ -8,7 +8,7 @@ pkgbase = shark-ml-atlas-svn
 	license = LGPL3
 	makedepends = cmake>=2.8
 	makedepends = svn
-	depends = boost-libs>=1.55
+	depends = boost>=1.55
 	depends = atlas-lapack
 	provides = shark-ml
 	conflicts = shark-ml
