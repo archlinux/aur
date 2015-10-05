@@ -1,0 +1,14 @@
+post_install() {
+  post_remove
+  echo "The emulateapj.cls file was installed in:"
+  kpsewhich emulateapj.cls
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Upgrading package database..."
+  mktexlsr
+}
