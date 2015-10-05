@@ -5,7 +5,7 @@
 
 pkgname=nvidia-zen-grsec
 pkgver=355.11
-_extramodules=extramodules-4.1.7-zenbfs-grsec-bfs-00766-g32876e2-dirty
+_extramodules=$(ls /usr/lib/modules|grep extramodules|grep zen)
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
