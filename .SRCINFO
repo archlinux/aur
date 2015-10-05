@@ -1,12 +1,11 @@
 pkgbase = emacs-popup-el
 	pkgdesc = A visual popup user interface library for Emacs
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/auto-complete/popup-el
 	arch = any
 	license = GPL
 	makedepends = emacs
-	makedepends = cask
 	depends = emacs
 	source = popup-el-0.5.3.tar.gz::https://github.com/auto-complete/popup-el/archive/v0.5.3.tar.gz
 	md5sums = 7dedfb1b46cc2f88a7004391f3f5d314

@@ -2,13 +2,13 @@
 
 pkgname=emacs-popup-el
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A visual popup user interface library for Emacs'
 arch=('any')
 url="https://github.com/auto-complete/popup-el"
 license=('GPL')
 depends=('emacs')
-makedepends=('emacs' 'cask')
+makedepends=('emacs')
 source=(${pkgname#emacs-}-${pkgver}.tar.gz::"https://github.com/auto-complete/popup-el/archive/v0.5.3.tar.gz")
 md5sums=('7dedfb1b46cc2f88a7004391f3f5d314')
 
