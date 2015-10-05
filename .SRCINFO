@@ -1,0 +1,25 @@
+pkgbase = geany-gtk3
+	pkgdesc = Fast and lightweight IDE
+	pkgver = 1.25
+	pkgrel = 1
+	url = http://www.geany.org/
+	install = geany-gtk3.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = perl-xml-parser
+	makedepends = setconf
+	makedepends = intltool
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = geany-plugins-gtk3: various extra features
+	optdepends = vte: terminal support
+	optdepends = python2
+	provides = geany
+	conflicts = geany
+	source = http://download.geany.org/geany-1.25.tar.bz2
+	sha256sums = 8ee41da28cead8c94d433e616d7ababa81727c63e9196ca6758ade3af14a49ef
+
+pkgname = geany-gtk3
+
