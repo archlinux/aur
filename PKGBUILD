@@ -2,28 +2,28 @@
 # Contributor: zhuqin <zhuqin83@gmail.com>
 
 pkgname=terminator-bzr
-pkgver=1658
+pkgver=0.98.r1670
 pkgrel=1
 pkgdesc="A tool for arranging multiple terminals in a single window"
 arch=('i686' 'x86_64')
 url="http://www.tenshu.net/terminator/"
 license=('GPL')
-depends=('hicolor-icon-theme' 'pygtk' 'python2-keybinder2' 'python2-notify'
+depends=('pygtk' 'python2-keybinder2' 'python2-notify'
          'vte' 'xdg-utils' 'python2-psutil')
 makedepends=('bzr' 'desktop-file-utils' 'gettext' 'intltool')
 optdepends=('gnome-python: gnome-terminal profile support')
 provides=('terminator')
 conflicts=('terminator')
 _pkgname=terminator
-source=("${_pkgname}::bzr+http://bazaar.launchpad.net/~gnome-terminator/terminator/trunk/")
+source=("${_pkgname}::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk")
 md5sums=('SKIP')
 
 install=terminator.install
 
-_bzrtrunk=http://bazaar.launchpad.net/~gnome-terminator/terminator/trunk
 
 pkgver() {
-  bzr revno "${srcdir}/${_pkgname}"
+   cd ${srcdir}/${_pkgname}
+   echo $(tail -n 1 terminatorlib/version.py | sed "s|^APP_VERSION = '||" | sed "s|'$||").r$(bzr revno "${srcdir}/${_pkgname}")
 }
 
 build() {

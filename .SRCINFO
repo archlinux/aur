@@ -1,6 +1,6 @@
 pkgbase = terminator-bzr
 	pkgdesc = A tool for arranging multiple terminals in a single window
-	pkgver = 1658
+	pkgver = 0.98.r1670
 	pkgrel = 1
 	url = http://www.tenshu.net/terminator/
 	install = terminator.install
@@ -11,7 +11,6 @@ pkgbase = terminator-bzr
 	makedepends = desktop-file-utils
 	makedepends = gettext
 	makedepends = intltool
-	depends = hicolor-icon-theme
 	depends = pygtk
 	depends = python2-keybinder2
 	depends = python2-notify
@@ -21,7 +20,7 @@ pkgbase = terminator-bzr
 	optdepends = gnome-python: gnome-terminal profile support
 	provides = terminator
 	conflicts = terminator
-	source = terminator::bzr+http://bazaar.launchpad.net/~gnome-terminator/terminator/trunk/
+	source = terminator::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk
 	md5sums = SKIP
 
 pkgname = terminator-bzr
