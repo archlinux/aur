@@ -1,6 +1,6 @@
 pkgbase = eezupnp
 	pkgdesc = UPnP Audio control point
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = http://www.eezupnp.de/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = eezupnp
 	depends = jre8-openjdk
 	depends = gtk2
 	options = !strip
-	source = http://www.eezupnp.de/archives/eezupnp-2.7.0.linux.gtk.x86_64.zip
+	source = http://www.eezupnp.de/archives/eezupnp-2.8.0.linux.gtk.x86_64.zip
 	source = License.txt
-	sha256sums = c283539d1874c87d30cf915fededa71eae37eaae2ebe0413c262c1fe4e3615b9
+	sha256sums = SKIP
 	sha256sums = fc44b250ee98341818d6c76dd8787f02378c61b2d33970555a1fac8511710fb1
 
 pkgname = eezupnp
