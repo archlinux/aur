@@ -1,0 +1,14 @@
+pkgbase = gometalinter
+	pkgdesc = golang meta linter
+	pkgver = 20150930.122_ed67cd1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = gometalinter::git://github.com/alecthomas/gometalinter
+	md5sums = SKIP
+
+pkgname = gometalinter
+
