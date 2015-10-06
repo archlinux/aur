@@ -3,7 +3,7 @@
 
 pkgname=genymotion
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('i686' 'x86_64')
 license="UNKNOWN"
@@ -25,14 +25,13 @@ package(){
   cd $srcdir
 
   install -d $pkgdir/opt
-  chmod +x $pkgname-${pkgver}_$_ARCH.bin
-  yes | ./$pkgname-${pkgver}_$_ARCH.bin -d $pkgdir/opt
+  yes | bash ./$pkgname-${pkgver}_$_ARCH.bin -d $pkgdir/opt
   rm $pkgdir/opt/genymotion/libQt*
 
   install -d $pkgdir/usr/bin
   ln -s /opt/genymotion/genymotion $pkgdir/usr/bin/genymotion
   ln -s /opt/genymotion/genymotion-shell $pkgdir/usr/bin/genymotion-shell
-  ln -s /opt/genymotion/player $pkgdir/usr/bin/player
+  ln -s /opt/genymotion/player $pkgdir/usr/bin/genymotion-player
   install -Dm644 $srcdir/genymotion.desktop $pkgdir/usr/share/applications/genymotion.desktop
   chown -R root:root $pkgdir/opt/genymotion
 }

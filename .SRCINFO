@@ -1,7 +1,7 @@
 pkgbase = genymotion
 	pkgdesc = Complete set of tools that provides a virtual environment for Android.
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.genymotion.com/
 	install = genymotion.install
 	arch = i686
