@@ -2,7 +2,7 @@
 # Mon Mar  2 12:02:33 UTC 2015
 pkgbase = python-numpy-mkl
 	pkgdesc = Scientific tools for Python compiled with intel mkl
-	pkgver = 1.9.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = http://numpy.scipy.org/
 	arch = i686
