@@ -1,6 +1,6 @@
 pkgname='vault-git'
 pkgdesc='A tool for managing secrets'
-pkgver=v0.2.0.r48.g23d4906
+pkgver=v0.3.0.r38.g7c7b21c
 pkgrel=1
 url='https://vaultproject.io/'
 license=('MPL')
@@ -25,18 +25,25 @@ pkgver () {
 	)
 }
 
+
+_srcpath='src/github.com/hashicorp/vault'
 prepare () {
-	mkdir -p "${pkgname}/,build"
+	if [[ ! -r ${_srcpath} ]] ; then
+		mkdir -p "$(dirname "${_srcpath}")"
+		ln -s "$(pwd)/${pkgname}" "${_srcpath}"
+	fi
 }
 
 build () {
-	cd "${pkgname}"
-	godep go build -x -v -o ,build/vault
+	export GOPATH="${srcdir}:$(pwd)"
+	cd "${_srcpath}"
+	go generate ./...
+	godep go build -v -x -o "${srcdir}/vault"
 }
 
 package () {
 	cd "${pkgname}"
-	install -Dm755 ,build/vault "${pkgdir}/usr/bin/vault"
+	install -Dm755 "${srcdir}/vault" "${pkgdir}/usr/bin/vault"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "${srcdir}/vault.hcl" "${pkgdir}/etc/vault.hcl"
 	install -Dm644 "${srcdir}/vault.service" \
