@@ -1,0 +1,17 @@
+pkgbase = cinnxp
+	pkgdesc = XP-like theme for Cinnamon
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://cinnamon-spices.linuxmint.com/themes/view/498
+	arch = any
+	license = unknown
+	optdepends = gtk2
+	optdepends = gtk3
+	optdepends = cinnamon
+	optdepends = metacity
+	options = !strip
+	source = cinnxp.zip::http://cinnamon-spices.linuxmint.com/uploads/themes/KI23-LR3V-1MH4.zip
+	sha512sums = cc9c96fb7f030afe2bf0585fd45eaebaa175460c19cda2e2a9e039c35fef00847e2ca386bc82bb6e11b184291b2c1cfd7e82a7b9fe6629de6384aed1cf52985c
+
+pkgname = cinnxp
+
