@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://repo.or.cz/vis.git'
 depends=('ncurses' 'libtermkey')
 makedepends=('git' 'markdown')
-license=('custom')
+license=('custom:ISC')
 source=("git://repo.or.cz/vis.git#commit=${_commit}")
 sha256sums=('SKIP')
 
