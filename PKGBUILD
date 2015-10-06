@@ -10,9 +10,8 @@ depends=('mono')
 source=("imewlconverter.exe::https://github.com/maz-1/imewlconverter/raw/master/IME%20WL%20Converter/IME%20WL%20Converter/bin/Release/%E6%B7%B1%E8%93%9D%E8%AF%8D%E5%BA%93%E8%BD%AC%E6%8D%A2.exe" 
 		
 	"imewlconverter.desktop")
-md5sums=('ac30bd771cb72bb10c4ac3518d7930f1'
-	
-	'SKIP')
+md5sums=('a070d839126ea409a1a86c9d18354419'
+	'5da2dc22d769bbea260ae8af0b546615')
 
 
 package() {
