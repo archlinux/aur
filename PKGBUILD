@@ -7,7 +7,7 @@ pkgdesc='Front-end FLV extract and mp4/mkv remuxing GUI software.'
 arch=('any')
 url='https://code.google.com/p/flv-extraxct/'
 license=('Other')
-depends=('mono')
+depends=('mono' 'gpac' 'mkvtoolnix-cli')
 source=(
     "https://github.com/maz-1/flv-extraxct/raw/master/bin/Release/FLVExtract.exe"
     "https://github.com/maz-1/flv-extraxct/raw/master/FLVExtractCL/bin/Release/FLVExtractCL.exe"
