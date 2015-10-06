@@ -12,10 +12,6 @@ source_x86_64=("http://www.valentina-db.com/en/studio/download/current/vstudio_x
 sha256sums_i686=('2ffa0b9104b7b96750d7569ceecd49a0bb8ab757438db9b17a9ad87b3b15fd5d')
 sha256sums_x86_64=('4bb0e46e248e3a76b5196310f4dd31a626ef2b838d21c5a98f27745d1b1fb398')
 
-prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-}
-
 build() {
 	cd "$pkgname-$pkgver"
 	rpmextract.sh ../vstudio_x64_5_lin-rpm
