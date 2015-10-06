@@ -23,7 +23,7 @@
  check_function_exists(BLOCKS_RUNTIME_RUNTIME_IN_LIBC _Block_copy)
  if (NOT BLOCKS_RUNTIME_RUNTIME_IN_LIBC)
 -  find_library(BLOCKS_RUNTIME_LIBRARIES "BlocksRuntime")
-+  set(CBLOCKS_LIBRARIES "-l:libobjc.so.4.6")
++  set(BLOCKS_RUNTIME_LIBRARIES "-l:libobjc2.so.4.6")
  endif ()
  
  if (BLOCKS_RUNTIME_LIBRARIES OR BLOCKS_RUNTIME_RUNTIME_IN_LIBC)
