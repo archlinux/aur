@@ -1,6 +1,6 @@
 pkgbase = unified-remote-server
 	pkgdesc = Unified Remote Server
-	pkgver = 3.3.0.724
+	pkgver = 3.3.3.732
 	pkgrel = 1
 	url = http://www.unifiedremote.com/
 	install = unified-remote-server.install
@@ -11,7 +11,7 @@ pkgbase = unified-remote-server
 	depends = bluez-libs
 	optdepends = bluez
 	optdepends = bluez-utils
-	source = http://www.unifiedremote.com/static/builds/server/linux-x64/724/urserver-3.3.0.724.deb
+	source = http://www.unifiedremote.com/static/builds/server/linux-x64/732/urserver-3.3.3.732.deb
 	source = urserver.service
 	sha256sums = d088e2938b2f015932870e116678db2d977f2a7c8452c5ad65af75bac418a9f5
 	sha256sums = ca049fc2e6b08276bf22b262577feca3fb4f83bef95e8f95a95d16b8d59fd107
