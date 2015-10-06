@@ -4,10 +4,10 @@ pkg_base=dogecoin
 pkgname=('dogecoin-daemon')
 pkgver=1.8.3
 _git_branch=1.8-maint
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://dogecoin.com/"
-makedepends=('boost' 'automoc4' 'miniupnpc' 'protobuf')
+makedepends=('boost' 'automoc4' 'protobuf')
 license=('MIT')
 source=(https://github.com/dogecoin/dogecoin/archive/$_git_branch.tar.gz
 	https://raw.github.com/dogecoin/dogecoin/$_git_branch/contrib/debian/examples/bitcoin.conf
@@ -22,13 +22,13 @@ build() {
   cd "$srcdir/$pkg_base-$_git_branch"
   ./autogen.sh
   CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
-  ./configure --prefix=/usr --with-incompatible-bdb
+  ./configure --prefix=/usr --with-gui=no --with-tests=no --without-miniupnpc --with-incompatible-bdb
   make
 }
 
 package_dogecoin-daemon() {
   pkgdesc="Dogecoin is a peer-to-peer network based digital currency - daemon"
-  depends=(boost-libs miniupnpc openssl)
+  depends=(boost-libs openssl)
   cd "$srcdir/$pkg_base-$_git_branch"
   install -Dm755 src/dogecoind "$pkgdir"/usr/bin/dogecoind
   install -Dm644 "$srcdir"/bitcoin.conf \

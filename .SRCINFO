@@ -1,13 +1,12 @@
 pkgbase = dogecoin-daemon
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dogecoin.com/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = boost
 	makedepends = automoc4
-	makedepends = miniupnpc
 	makedepends = protobuf
 	source = https://github.com/dogecoin/dogecoin/archive/1.8-maint.tar.gz
 	source = https://raw.github.com/dogecoin/dogecoin/1.8-maint/contrib/debian/examples/bitcoin.conf
@@ -21,6 +20,5 @@ pkgbase = dogecoin-daemon
 pkgname = dogecoin-daemon
 	pkgdesc = Dogecoin is a peer-to-peer network based digital currency - daemon
 	depends = boost-libs
-	depends = miniupnpc
 	depends = openssl
 
