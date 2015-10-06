@@ -2,10 +2,10 @@
 ## Based on rtorrent [community]
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rtorrent-git
-pkgver=0.9.4.r90.gd4905d5
+pkgver=0.9.4.r91.g62cb5a4
 pkgrel=1
 pkgdesc="A ncurses BitTorrent client written in C++, based on the libTorrent libraries for Unix."
-url="http://libtorrent.rakshasa.no"
+url="https://github.com/rakshasa/rtorrent/"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('curl' 'libtorrent-git' 'xmlrpc-c')
