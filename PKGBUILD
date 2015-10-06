@@ -10,6 +10,7 @@ license=('custom')
 depends=('popt')
 optdepends=('gtk2: Canon maintenance GUI support')
 provides=("cnijfilter-common=$pkgver")
+conflicts=("cnijfilter-common")
 source=(http://gdlp01.c-wss.com/gds/0/0100005170/01/cnijfilter-mx920series-$pkgver-1-deb.tar.gz)
 md5sums=('76e30668391521abf749c21d8a46f5fe')
 
