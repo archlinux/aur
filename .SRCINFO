@@ -1,6 +1,6 @@
 pkgbase = wangle
 	pkgdesc = A full featured, high performance C++ futures implementation
-	pkgver = 0.9.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/facebook/wangle
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = wangle
 	depends = boost-libs
 	options = !emptydirs
 	options = staticlibs
-	source = https://github.com/facebook/wangle/archive/v0.9.0.tar.gz
+	source = https://github.com/facebook/wangle/archive/v0.13.0.tar.gz
 	source = CMakeLists.txt.patch
 	source = ServiceTest.cpp.patch
-	md5sums = 1b9513650968267aebf560c5b94ea3b5
+	md5sums = f6d34eaaf1342384f9f7327c6640e55e
 	md5sums = d5086d808c774339062e8a37e22b5921
 	md5sums = 36ff005a5706ca9c5153e610ea157f37
 

@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=wangle
-pkgver=0.9.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A full featured, high performance C++ futures implementation"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ options=('!emptydirs' 'staticlibs')
 source=("https://github.com/facebook/$pkgname/archive/v${pkgver}.tar.gz"
 CMakeLists.txt.patch
 ServiceTest.cpp.patch)
-md5sums=('1b9513650968267aebf560c5b94ea3b5'
+md5sums=('f6d34eaaf1342384f9f7327c6640e55e'
          'd5086d808c774339062e8a37e22b5921'
          '36ff005a5706ca9c5153e610ea157f37')
 
