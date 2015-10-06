@@ -1,7 +1,7 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=eclipse-pydev
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Python IDE for Eclipse"
 url="http://pydev.org/"
@@ -12,7 +12,7 @@ makedepends=('unzip')
 conflicts=('eclipse-aptana')
 optdepends=('eclipse-pydev-mylyn: Mylyn support for Pydev in Eclipse')
 source=("PyDev_${pkgver}.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%20${pkgver}/PyDev%20${pkgver}.zip")
-md5sums=('583294d54c30bfb731510dd79243bd6d')
+md5sums=('9f63200a22c697e884d1d3871b89f1a2')
 
 package () {
 

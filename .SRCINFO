@@ -1,6 +1,6 @@
 pkgbase = eclipse-pydev
 	pkgdesc = Python IDE for Eclipse
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = http://pydev.org/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = eclipse-pydev
 	depends = eclipse>=3.8
 	optdepends = eclipse-pydev-mylyn: Mylyn support for Pydev in Eclipse
 	conflicts = eclipse-aptana
-	source = PyDev_4.3.0.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%204.3.0/PyDev%204.3.0.zip
-	md5sums = 583294d54c30bfb731510dd79243bd6d
+	source = PyDev_4.4.0.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%204.4.0/PyDev%204.4.0.zip
+	md5sums = 9f63200a22c697e884d1d3871b89f1a2
 
 pkgname = eclipse-pydev
 
