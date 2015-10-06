@@ -4,7 +4,7 @@
 
 pkgname=meanwhile
 pkgver=1.0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Meanwhile libraries"
 arch=('i686' 'x86_64')
 license=('GPL')

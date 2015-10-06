@@ -11,7 +11,7 @@
 +  this to their version.
 +*/
 +#define NEW_FORMAT_SERVER_VER_MAJOR  0x001e
-+#define NEW_FORMAT_SERVER_VER_MINOR  0x213f
++#define NEW_FORMAT_SERVER_VER_MINOR  0x196f
 +
 +#define GUINT(val)     (GPOINTER_TO_UINT((val)))
  
