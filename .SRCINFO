@@ -2,6 +2,7 @@ pkgbase = gometalinter-git
 	pkgdesc = golang meta linter
 	pkgver = 20150930.122_ed67cd1
 	pkgrel = 1
+	install = deps.install
 	arch = i686
 	arch = x86_64
 	license = GPL
