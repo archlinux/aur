@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=hyperrogue
-pkgver=5.5a
-_pkgver=55
+pkgver=6.6
+_pkgver=66
 pkgrel=1
 
 # set to '' (for full music) or '-nomusic' or '-lo' to choose
@@ -13,12 +13,12 @@ url="http://www.roguetemple.com/z/hyper.php"
 license=('GPL2')
 depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa')
 source=("http://www.roguetemple.com/z/hyper/$pkgname-${_pkgver}${_music}.zip")
-md5sums=('5a9ad52896aae63c72d8b819b2cad392')
+md5sums=('0ce287a72461b05a0f2f98bf50bb2c00')
 if [[ "$_music" == "" ]]; then
-    md5sums=('387991578d7b39fd8695f377a91e5c7a')
+    md5sums=('90e3d36695ba9944cd2357f14d0f0dc1')
 fi
 if [[ "$_music"  == "-lo" ]]; then
-    md5sums=('07db33662100ee2508b78c43b0ed7a6f')
+    md5sums=('8476e7b432aa2d6707e3de37e61df2c0')
 fi
 
 build() {
