@@ -13,7 +13,11 @@ sha256sums_i686=('2ffa0b9104b7b96750d7569ceecd49a0bb8ab757438db9b17a9ad87b3b15fd
 sha256sums_x86_64=('4bb0e46e248e3a76b5196310f4dd31a626ef2b838d21c5a98f27745d1b1fb398')
 
 build() {
-	rpmextract.sh ../vstudio_x64_5_lin-rpm
+	if test "$CARCH" == x86_64; then
+		rpmextract.sh ../vstudio_x64_5_lin-rpm
+	else
+		rpmextract.sh ../vstudio_lin_32_rpm
+	fi
 }
 
 package() {
