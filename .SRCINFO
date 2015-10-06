@@ -1,7 +1,7 @@
 pkgbase = python3-aria2jsonrpc
 	pkgdesc = A wrapper class around Aria2's JSON RPC interface.
 	pkgver = 2014
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xyne.archlinux.ca/projects/python3-aria2jsonrpc
 	arch = any
 	license = GPL
