@@ -1,16 +1,17 @@
 pkgbase = sflowtool
 	pkgdesc = CLI utility and scripts for analyzing sFlow data
-	pkgver = 3.35
+	pkgver = 3.37
 	pkgrel = 1
 	url = http://www.inmon.com/technology/sflowTools.php
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = automake
 	optdepends = perl: scripts support
-	source = http://www.inmon.com/bin/sflowtool-3.35.tar.gz
+	source = sflowtool-3.37.tar.gz::https://github.com/sflow/sflowtool/archive/v3.37.tar.gz
 	source = http://www.inmon.com/bin/sflowutils.tar.gz
 	source = LICENSE
-	sha256sums = 65ee9880bcc46014e5d8deb46dd52ef760e6ec4e2034796b9681b2da3d74393a
+	sha256sums = 5435f767e6379bf8994b2260e0c5feba434fc55cbe2ceee5036cd8b07be74385
 	sha256sums = 45f6a0f96bdb6a1780694b9a4ef9bbd2fd719b9f7f3355c6af1427631b311d56
 	sha256sums = 863b86b7a4fc7632cfc3f9ead7e76f6e7751aca8b64030ff97b3b46f991c6482
 
