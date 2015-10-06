@@ -1,24 +1,25 @@
 pkgbase = dbeaver
 	pkgdesc = A free universal database tool for developers and database administrators
-	pkgver = 3.4.5
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = http://dbeaver.jkiss.org/
 	install = dbeaver.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = unzip
 	depends = java-runtime>=1.6
 	depends = gtk2
 	depends = gtk-update-icon-cache
+	noextract = dbeaver-ce-latest-linux.gtk.x86.tar.gz
+	noextract = dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
 	source = dbeaver.desktop
 	source = dbeaver.install
 	sha256sums = cf1e850dcb3544507eeb59b8d2e84b67cd25b546e3eaf03a0ab27ca841361478
 	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
-	source_i686 = http://dbeaver.jkiss.org/files/dbeaver-3.4.5-linux.gtk.x86.zip
-	sha256sums_i686 = 898a62777cfbab8c6f4688f3d343be7dd07b0272f3fba19b20b9ae3c0cb3f617
-	source_x86_64 = http://dbeaver.jkiss.org/files/dbeaver-3.4.5-linux.gtk.x86_64.zip
-	sha256sums_x86_64 = 10d513521b9fc719768d27b0dc224d0c43ca809bee9b82aed60f21bb77c05d84
+	source_i686 = http://dbeaver.jkiss.org/files/dbeaver-ce-latest-linux.gtk.x86.tar.gz
+	sha256sums_i686 = a0605558bc6a6f8fe14c51ec9fa4042b67d864e73c2401143a08cff6eae26642
+	source_x86_64 = http://dbeaver.jkiss.org/files/dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
+	sha256sums_x86_64 = 546c4dbf9abe30bcecf6007c65de280e532e2eb18f146120aa6f34ecd31fb357
 
 pkgname = dbeaver
 
