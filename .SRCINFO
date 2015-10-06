@@ -1,6 +1,6 @@
 pkgbase = spring-tool-suite
 	pkgdesc = The Spring Tool Suite (STS) from SpringSource
-	pkgver = 3.7.0
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = http://www.springsource.com/developer/sts
 	install = spring-tool-suite.install
@@ -13,10 +13,10 @@ pkgbase = spring-tool-suite
 	depends = unzip
 	depends = libwebkit
 	conflicts = springsource-tool-suite
-	source = http://dist.springsource.com/release/STS/3.7.0.RELEASE/dist/e4.5/spring-tool-suite-3.7.0.RELEASE-e4.5-linux-gtk-x86_64.tar.gz
+	source = http://dist.springsource.com/release/STS/3.7.1.RELEASE/dist/e4.5/spring-tool-suite-3.7.1.RELEASE-e4.5.1-linux-gtk-x86_64.tar.gz
 	source = spring-tool-suite.xpm
 	source = spring-tool-suite.desktop
-	md5sums = 8d796bb9bbe3f20c8b16ee577e073c5e
+	md5sums = 533b456d3bf41254c042ce93fe4d6186
 	md5sums = 947d3e62d478ef537f2f2b79dac6a405
 	md5sums = 713d62c23b173881bf74050718ef3d3f
 

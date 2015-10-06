@@ -4,9 +4,9 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tool-suite
-pkgver=3.7.0
+pkgver=3.7.1
 _pkgver_release=$pkgver.RELEASE
-_eclipse_pkgver=e4.5
+_eclipse_pkgver=e4.5.1
 _eclipse_pkgver_short=e4.5
 pkgrel=1
 pkgdesc="The Spring Tool Suite (STS) from SpringSource"
@@ -24,7 +24,7 @@ source=(
     "${pkgname}.desktop"
 )
 
-md5sums=('8d796bb9bbe3f20c8b16ee577e073c5e'
+md5sums=('533b456d3bf41254c042ce93fe4d6186'
          '947d3e62d478ef537f2f2b79dac6a405'
          '713d62c23b173881bf74050718ef3d3f')
 [ "$CARCH" = "i686" ] && source[0]="http://dist.springsource.com/release/STS/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-${_pkgver_release}.RELEASE-${_eclipse_pkgver}-linux-gtk.tar.gz"
