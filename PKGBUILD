@@ -11,10 +11,10 @@ makedepends=('git')
 options=()
 install=
 source=('coz-git::git+https://github.com/plasma-umass/coz.git'
-  'python2.patch' 'no-force-preload.patch')
+  'python2.patch' 'fix-preload-path.patch')
 md5sums=('SKIP'
          'f3ff4dcc098eb00e949b362594918517'
-         'b7926ac1504babe0b2551983d2d5ed25')
+         '273946cb7d19ad5697c68893b312cd64')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -23,8 +23,10 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+  msg2 "Use python2"
   patch -Np1 < "$srcdir/python2.patch"
-  patch -Np1 < "$srcdir/no-force-preload.patch"
+  msg2 "Fix LD_PRELOAD path set by coz wrapper"
+  patch -Np1 < "$srcdir/fix-preload-path.patch"
 }
 
 build() {
@@ -35,7 +37,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 "$srcdir/$pkgname/coz" "$pkgdir/usr/bin/coz"
-  install -Dm644 "$srcdir/$pkgname/libcoz/libcoz.so" "$pkgdir/usr/lib/libcoz.so"
+  install -Dm644 "$srcdir/$pkgname/libcoz/libcoz.so" "$pkgdir/usr/share/coz/libcoz.so"
   install -Dm644 "$srcdir/$pkgname/include/coz.h" "$pkgdir/usr/include/coz.h"
 }
 
