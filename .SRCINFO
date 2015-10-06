@@ -1,12 +1,12 @@
 pkgbase = besiege
 	pkgdesc = A physics based building puzzler (Humble Version).
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = http://besiegethegame.com/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = unrar
+	makedepends = unzip
 	depends = glu
 	source = besiege.desktop
 	source = besiege
