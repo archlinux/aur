@@ -3,7 +3,7 @@
 pkgname=multirust-git
 _pkgname=multirust
 pkgver=0.7.0.r0.gb222fcd
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for managing multiple Rust installations"
 arch=('any')
 url="https://github.com/brson/multirust"
@@ -40,5 +40,5 @@ build() {
 
 package() {
   cd "$_pkgname"
-  ./install.sh --="$pkgdir"
+  ./install.sh --prefix="${pkgdir}/usr/"
 }
