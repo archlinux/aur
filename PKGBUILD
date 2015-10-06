@@ -11,7 +11,7 @@ source=("imewlconverter.exe::https://github.com/maz-1/imewlconverter/raw/master/
 		
 	"imewlconverter.desktop")
 md5sums=('a070d839126ea409a1a86c9d18354419'
-	'5da2dc22d769bbea260ae8af0b546615')
+	'80b261c97f83e33070218840cf1387b5')
 
 
 package() {
