@@ -1,7 +1,7 @@
 # Maintainer: Rob Cornish <jrmcornish AT gmail DOT com>
 pkgname=brscan-skey
 pkgver=0.2.4_1
-pkgrel=10
+pkgrel=11
 pkgdesc='Brother scan-key-tool'
 arch=('i686' 'x86_64')
 url='http://support.brother.com/g/s/id/linux/en'

@@ -1,7 +1,7 @@
 pkgbase = brscan-skey
 	pkgdesc = Brother scan-key-tool
 	pkgver = 0.2.4_1
-	pkgrel = 10
+	pkgrel = 11
 	url = http://support.brother.com/g/s/id/linux/en
 	install = brscan-skey.install
 	arch = i686
