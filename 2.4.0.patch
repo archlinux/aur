@@ -1,0 +1,20 @@
+5c5
+< pkgver=2.3.0
+---
+> pkgver=2.4.0
+23d22
+< 	venom.patch
+30,31d28
+< #	sed -i -e 's/lib64/lib/g' ldscripts/x86_64.ld
+<         patch -p1 < ../venom.patch
+54d50
+< 		--enable-quorum \
+85a82
+> 	mkdir -p ${pkgdir}/etc/qemu/
+114,116c111,112
+< md5sums=('2fab3ea4460de9b57192e5b8b311f221'
+<          'b316a066d2f1bb57d8f5b7ea1d0d1caf'
+<          'b2a8de5a37810d0d32abdb04bdd5ce83')
+---
+> md5sums=('186ee8194140a484a455f8e3c74589f4'
+>          'b316a066d2f1bb57d8f5b7ea1d0d1caf')
