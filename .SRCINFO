@@ -1,0 +1,25 @@
+pkgbase = umview-mod-umlwip-svn
+	pkgdesc = View-OS in user space - LWIPv6 gateway module
+	pkgver = r1129
+	pkgrel = 2
+	url = https://www.sourceforge.net/projects/view-os
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = libtool
+	depends = glibc>=2.4
+	depends = libumlib0-svn
+	depends = liblwipv6-svn
+	provides = umview-mod-umlwip-svn=r1129
+	conflicts = umview-mod-umlwip-svn
+	replaces = umview-mod-umlwip-svn
+	source = svn+http://svn.code.sf.net/p/view-os/code/trunk/xmview-os
+	source = umview-mod-umlwip-svn.diff
+	md5sums = SKIP
+	md5sums = 15fd402dc118bf82c65e4c31d808f530
+
+pkgname = umview-mod-umlwip-svn
+
