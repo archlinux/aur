@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-as
 	pkgdesc = Assamese language pack for Iceweasel
-	pkgver = 41.0.deb1
+	pkgver = 41.0.1.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-as_41.0-1_all.deb
-	sha256sums = 47158ffcf268650fdf1a19979e1708c5eaaa90a2e8b1ab096135747726567352
+	depends = iceweasel>=41.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-as_41.0.1-1_all.deb
+	sha256sums = 6a37c01d96905a5176360b51c7eeafd6201e742a01757a0d394a6f46bc9663ab
 
 pkgname = iceweasel-i18n-as
 
