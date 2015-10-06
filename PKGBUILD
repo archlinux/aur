@@ -3,23 +3,26 @@
 
 set -u
 pkgname='viewvc'
-pkgver='1.1.23'
+#_pkgno='49241' # 1.0.13
+#_pkgno='49392' # 1.1.23
+_pkgno='49471' # 1.1.24
+pkgver='1.1.24'
 pkgrel='1'
-pkgdesc='web-based vcs version control repository browsing'
+pkgdesc='web-based vcs version control repository browsing, formerly viewcvs'
+arch=('i686' 'x86_64')
 url='http://viewvc.tigris.org/'
 license=('custom:ViewVC')
-arch=('i686' 'x86_64')
 depends=('subversion' 'python2' 'diffutils')
 makedepends=('cvs' 'rcs')
 backup=('usr/share/viewvc/viewvc.conf')
 install="${pkgname}.install"
-_verwatch=('http://viewvc.tigris.org/servlets/ProjectDocumentList?folderID=6004' '/files/documents/3330/49392/viewvc-\([0-9\.]\+\)\.tar\.gz' 'l')
-source=("http://viewvc.tigris.org/files/documents/3330/49392/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d14290b23f44e8f5301a7ca9fc946bcd0f8bb8206d9b9c111ac56e19f2588b7d')
+_verwatch=("${url}/servlets/ProjectDocumentList?folderID=6004" "/files/documents/3330/[0-9]\+/${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
+source=("${url}/files/documents/3330/${_pkgno}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('0620f69fa5ba02ac65e000586ba31015a2053a82711bedb30629fd6087003d7e')
 
 package() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   sed -i -e "s@DESTDIR = None@DESTDIR = \"${pkgdir}/\"@g" \
          -e "s@ROOT_DIR = None@ROOT_DIR = \"/usr/share/${pkgname}\"@g" 'viewvc-install'
