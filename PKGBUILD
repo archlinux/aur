@@ -4,9 +4,9 @@
 pkgname=kodi-addon-hts-pvrmanager
 pkgbase=${pkgname}
 _gitname=service.hts.pvrmanager
-pkgver=1.0.5
-_gitver=48fd63361f7fbaf042f2fb620eed6ad0ecb2257b
-pkgrel=2
+pkgver=1.0.6
+_gitver=9393640d0d82b999a50230a31a5e8cbd73c8c406
+pkgrel=1
 pkgdesc='Poweroff management for current active recordings and wakeup procedures for future schedules using the XML-Interface of TVHeadend.'
 arch=('any')
 url="https://github.com/Helly1206/$_gitname"
@@ -15,7 +15,7 @@ groups=('kodi-addons')
 depends=('kodi' 'tvheadend')
 install='install'
 source=("https://github.com/Helly1206/$_gitname/archive/$_gitver.tar.gz")
-md5sums=('883b7674164f0cd406f63f8c627e137e')
+md5sums=('8ace938684153bc3af68f362b9499775')
 
 package() {
   cd "$srcdir/$_gitname-$_gitver/"
