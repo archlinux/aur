@@ -1,0 +1,24 @@
+pkgbase = python2-acme
+	pkgdesc = Parses and generates RFC 3339-compliant timestamps using Python datetime.datetime objects.
+	pkgver = 0.0.0.dev20151006
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/acme
+	arch = any
+	license = apache
+	depends = python2
+	depends = python2-pytz
+	depends = python2-setuptools
+	depends = python2-six
+	depends = python2-werkzeug
+	depends = python2-requests
+	depends = python2-pyRFC3339
+	depends = python2-cryptography
+	depends = python2-pyopenssl
+	depends = python2-mock
+	depends = python2-pyasn1
+	depends = python2-ndg-httpsclient
+	source = acme-0.0.0.dev20151006.tar.gz::https://pypi.python.org/packages/source/a/acme/acme-0.0.0.dev20151006.tar.gz#md5=c08d9d60051e9ec12e23145d1162ba0a
+	md5sums = c08d9d60051e9ec12e23145d1162ba0a
+
+pkgname = python2-acme
+
