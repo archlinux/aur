@@ -1,0 +1,14 @@
+pkgbase = python-pyeda-git
+	pkgdesc = Python library for electronic design automation
+	pkgver = v0.28.0.r9.gf4c64a3
+	pkgrel = 1
+	url = https://github.com/cjdrake/pyeda
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python-setuptools
+	source = pyeda::git+https://github.com/cjdrake/pyeda.git
+	md5sums = SKIP
+
+pkgname = python-pyeda-git
+
