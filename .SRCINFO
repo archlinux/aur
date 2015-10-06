@@ -1,6 +1,6 @@
 pkgbase = peerunity
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.peercoin.net/download-peerunity
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = peerunity
 	depends = boost-libs
 	depends = openssl
 	depends = miniupnpc
+	depends = db4.8
 	source = https://github.com/peerunity/peerunity/archive/v0.1.1.tar.gz
 	source = upnp-1.9.patch
 	source = peerunityd@.service
@@ -29,6 +30,7 @@ pkgname = peerunity-daemon
 	depends = boost-libs
 	depends = openssl
 	depends = miniupnpc
+	depends = db4.8
 
 pkgname = peerunity-qt
 	pkgdesc = Comunity client for Peercoin peer-to-peer network based digital currency (Qt)
@@ -37,4 +39,5 @@ pkgname = peerunity-qt
 	depends = qt4
 	depends = qrencode
 	depends = miniupnpc
+	depends = db4.8
 
