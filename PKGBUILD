@@ -1,7 +1,7 @@
 # Maintainer: speps <speps at aur dot archlinux dot org>
 
 pkgname=python-pygame-hg
-pkgver=r3425.faa5879a7e6b
+pkgver=r3439.d5552c9d653d
 pkgrel=1
 pkgdesc="Python game library"
 arch=(i686 x86_64)

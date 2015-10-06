@@ -1,6 +1,6 @@
 pkgbase = python-pygame-hg
 	pkgdesc = Python game library
-	pkgver = r3425.faa5879a7e6b
+	pkgver = r3439.d5552c9d653d
 	pkgrel = 1
 	url = http://pygame.org/
 	arch = i686
