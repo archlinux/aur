@@ -1,0 +1,13 @@
+pkgname=deadbeef-qt
+
+post_install() {
+
+  cat <<EOF
+==> You can now select Qt Gui Plugin in Edit/Preferences/Interface
+==> and restart DeaDBeeF.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
