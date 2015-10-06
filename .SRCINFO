@@ -1,0 +1,18 @@
+pkgbase = rhythmbox-tray-icon-git
+	pkgdesc = Restores the tray icon functionality from the 0.x series. Please report PKGBUILD bugs at https://github.com/ystein/archlinux-aur-packages.
+	pkgver = 159f882
+	pkgrel = 2
+	url = http://github.com/palfrey/rhythmbox-tray-icon
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = rhythmbox>=2.90
+	depends = python-cairo
+	depends = gnome-icon-theme
+	provides = rhythmbox-tray-icon
+	conflicts = rhythmbox-tray-icon
+	source = rhythmbox-tray-icon-git::git+https://github.com/palfrey/rhythmbox-tray-icon.git
+	md5sums = SKIP
+
+pkgname = rhythmbox-tray-icon-git
+
