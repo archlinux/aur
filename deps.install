@@ -1,0 +1,9 @@
+#!/bin/bash
+
+post_install() {
+    gometalinter --install --update
+}
+
+post_upgrade() {
+    gometalinter --install --update
+}

@@ -16,6 +16,7 @@ md5sums=(
 
 backup=(
 )
+install="deps.install"
 
 pkgver() {
 	cd "$srcdir/$pkgname"
