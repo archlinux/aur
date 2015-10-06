@@ -1,7 +1,7 @@
 # Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=oczclout
-pkgver=4.00.00.551
+pkgver=4.01.00.575
 pkgrel=1
 pkgdesc="A command line interface (CLI) based tool for managing OCZ’s enterprise SSD’s including firmware and BIOS updates."
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ if [ "$CARCH" == i686 ] ; then
   _bits=32
 fi
 
-source=("http://ocz.com/enterprise/download/firmware/clout_v${pkgver//./_}_linux.tar.gz")
-md5sums=('021fa23f32362c8de6354311eb31b346')
-sha512sums=('375e2381c3a738bcecb61988a456de2c19d16349e3fa70e0d4eff97ff49b17005157af9b35b85f2ca020cc2ea2a3c38a22187a26f505aa6583d55b41d0f9e116')
+source=("http://ocz.com/enterprise/download/clout/clout_v${pkgver//./_}_linux.tar.gz")
+sha512sums=('c1b3c5d93d6ee9303bde79b086fde2fd0182dd9aa3ea0caad2c9096b7dff8019ba95048f3236fcc000fd69bad82c9e1132c543f6276c9c8d69b6f9ceec70d160')
+md5sums=('d165c0528c9fdebc7eff7ef808d14487')
 
 package() {
   install -D -m755 "${srcdir}/clout_v${pkgver//./_}_linux/linux${_bits}/clout" "${pkgdir}/usr/bin/clout"
