@@ -4,10 +4,10 @@
 _basename=dao
 
 pkgname=${_basename}-git
-pkgver=1555.916dd74
+pkgver=1603.90d9a82
 pkgrel=1
 # LLVM JIT
-pkgdesc='A very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, bytecode, BNF macros, many advanced modules & bindings and much more!'
+pkgdesc='A very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, bytecode, BNF macros, high-level standard library, advanced modules & bindings and much more!'
 url='http://www.daovm.net/'
 license=('BSD')
 arch=('i686' 'x86_64')
@@ -21,10 +21,12 @@ source=(
   #"$_basename-tools::git+https://github.com/daokoder/$_basename-tools#branch=Compatibility_Clang_3_3"
   "$_basename-modules::git+https://github.com/daokoder/$_basename-modules"
   #"$_basename-modules::git+https://github.com/daokoder/$_basename-modules#branch=Compatibility_Clang_3_3"
+  "DaoCXX::git+https://github.com/daokoder/DaoCXX"
   "DaoGenomeTools::git+https://github.com/daokoder/DaoGenomeTools"
   "DaoGObject::git+https://github.com/daokoder/DaoGObject"
   "DaoGraphics::git+https://github.com/daokoder/DaoGraphics"
   "DaoGSL::git+https://github.com/daokoder/DaoGSL"
+  "DaoJIT::git+https://github.com/daokoder/DaoJIT"
   "DaoOpenGL::git+https://github.com/daokoder/DaoOpenGL"
   "DaoSQL::git+https://github.com/daokoder/DaoSQL"
   "DaoSDL::git+https://github.com/daokoder/DaoSDL"
@@ -35,6 +37,8 @@ sha256sums=(
   #'SKIP'
   'SKIP'
   #'SKIP'
+  'SKIP'
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -102,6 +106,7 @@ replaces=('dao-lang-git')
 build() {
   mv "$_basename-tools/"*   "$_basename/tools/"
   mv "$_basename-modules/"* "$_basename/modules/"
+  mv "DaoCXX/"              "$_basename/modules/"
   # FIXME not getting compiled
   mv "DaoGenomeTools/"      "$_basename/modules/"
   # FIXME not getting compiled
@@ -109,6 +114,7 @@ build() {
   # FIXME not updated to the current Dao
   #mv "DaoGraphics/"         "$_basename/modules/"
   mv "DaoGSL/"              "$_basename/modules/"
+  mv "DaoJIT/"              "$_basename/modules/"
   mv "DaoOpenGL/"           "$_basename/modules/"
   mv "DaoSQL/"              "$_basename/modules/"
   # FIXME see also below `sed -i ...'
@@ -116,6 +122,8 @@ build() {
   #   #include"SDL.h"
   #mv "DaoSDL/"              "$_basename/modules/"
   cd "$_basename"
+  # FIXME https://github.com/daokoder/dao-modules/issues/73
+#  rm -rf modules/clinker/
 
   # order matters when using gcc
   patch -R tools/clangdao/makefile.dao <<\EOF
@@ -330,7 +338,8 @@ package() {
   make install INSTALL="$pkgdir/usr"
 
   # ELF file outside of a valid path
-  rm "$pkgdir/usr/share/dao/demo/modules/clinker/libsample.so"
+  [ -e "$pkgdir/usr/share/dao/demo/modules/clinker/libsample.so" ] &&
+    rm "$pkgdir/usr/share/dao/demo/modules/clinker/libsample.so"
 
   # inst <src> <dst>
   inst() {

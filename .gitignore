@@ -1,7 +1,9 @@
 DaoGObject/
-DaoGSL/
+DaoCXX/
 DaoGenomeTools/
 DaoGraphics/
+DaoGSL/
+DaoJIT/
 DaoOpenGL/
 DaoSDL/
 DaoSQL/
