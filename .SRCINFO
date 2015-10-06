@@ -1,17 +1,15 @@
 pkgbase = ppsearch
 	pkgdesc = A Primitive Polynomial Search Program
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = http://notabs.org/primitivepolynomials/version2/revisionHistory.htm
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = p7zip
-	source = http://notabs.org/primitivepolynomials/version2/2.4/2.4.zip
-	source = http://notabs.org/primitivepolynomials/version2/2.5/factor2n-1.7z
+	source = http://notabs.org/primitivepolynomials/version2/2.6/2.6.7z
 	source = ppsearch.patch
-	md5sums = b1591d0cfb99af193d51a470d16e8abc
-	md5sums = cfb920fe2cb33d3bcb69b6ebfce640ef
+	md5sums = d63dd8bb0fc25165113711aa7830d2d6
 	md5sums = 57eac37e3be0da88601458a38810608e
 
 pkgname = ppsearch
