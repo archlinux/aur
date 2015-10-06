@@ -24,6 +24,8 @@ normally using "systemctl":
 IMPORTANT: Be sure to initialize the Vault backend using "vault init"!
 
 EOF
+
+    setcap cap_ipc_lock=+ep /usr/bin/vault
 }
 
 post_upgrade () {
