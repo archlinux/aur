@@ -1,0 +1,37 @@
+--- psad-2.2/install.pl	2012-04-21 04:43:46.000000000 +0200
++++ psad-2.2/install.pl	2012-10-13 16:05:03.302818330 +0200
+@@ -752,6 +752,8 @@
+         $init_file = 'init-scripts/psad-init.fedora';
+     } elsif ($distro eq 'gentoo') {
+         $init_file = 'init-scripts/psad-init.gentoo';
++    } elsif ($distro eq 'archlinux') {
++        $init_file = 'init-scripts/psad-init.archlinux';
+     } else {
+         $init_file = 'init-scripts/psad-init.generic';
+     }
+@@ -773,13 +775,14 @@
+     if ($preserve_rv) {
+         &logr("\n[+] psad has been installed (with your original config merged).\n");
+     } else {
+-        &logr("\n[+] psad has been installed.\n");
++        &logr("\n[+] psad has been compiled.\n");
++        &logr("\n[+] use pacman -U to install.\n");
+     }
+     if ($installed_init_script) {
+         if ($init_dir) {
+-            &logr("\n[+] To start psad, run \"${init_dir}/psad start\"\n");
++            #&logr("\n[+] To start psad, run \"${init_dir}/psad start\"\n");
+         } else {
+-            &logr("\n[+] To start psad, run ${USRSBIN_DIR}/psad\"\n");
++            #&logr("\n[+] To start psad, run ${USRSBIN_DIR}/psad\"\n");
+         }
+     }
+ 
+@@ -1748,6 +1751,7 @@
+ 
+ sub get_distro() {
+     return 'gentoo' if -e '/etc/gentoo-release';
++    return 'archlinux' if -e '/etc/archlinux-release';
+     if (-e '/etc/issue') {
+         ### Red Hat Linux release 6.2 (Zoot)
+         open ISSUE, '< /etc/issue' or

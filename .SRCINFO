@@ -1,0 +1,27 @@
+pkgbase = psad
+	pkgdesc = A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://cipherdyne.org/psad/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl-bit-vector
+	depends = perl-date-calc
+	depends = perl-iptables-chainmgr
+	depends = perl-iptables-parse
+	depends = perl-net-ipv4addr
+	depends = perl-storable
+	depends = perl-unix-syslog
+	depends = net-tools
+	source = http://cipherdyne.org/psad/download/psad-2.2.3.tar.gz
+	source = responses
+	source = psad-systemdinit.archlinux
+	source = psad.patch1
+	md5sums = 4a944618c270c45df98540727b358859
+	md5sums = 2425986f9eaa44d983128ebea6c8baf4
+	md5sums = 29324f5fb0ccf69b443710c7d4c075fd
+	md5sums = f97cabd3c91e5037faf9a843206ba608
+
+pkgname = psad
+

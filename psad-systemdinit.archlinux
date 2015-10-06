@@ -1,0 +1,12 @@
+[Unit]
+Description=Port scan attack detector
+After=iptables.service
+
+[Service]
+ExecStart=/usr/sbin/psad
+ExecStop=/usr/sbin/psad --Kill
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
