@@ -2,14 +2,15 @@
 
 pkgname=khard-git
 _gitname=khard
-pkgver=0.6.0.r0.ge25c61b
+pkgver=0.6.0.r1.g85760d2
 pkgrel=1
-pkgdesc="Console carddav client"
+pkgdesc="Console CardDAV client"
 license=("GPL3")
 url="https://github.com/scheibler/khard/"
-depends=('python2-configobj' 'python2-vobject' 'python2-caldavclientlibrary-svn')
+depends=('python2-configobj' 'python2-vobject' )
 makedepends=('git')
-optdepends=('python2-vdirsyncer: Synchronization of address books with a CalDAV server.')
+optdepends=('vdirsyncer: Synchronization of address books with a DAV server.'
+  'python2-caldavclientlibrary-svn: Create and remove address books on the DAV server using davcontroller utility.')
 source=("${_gitname}::git+https://github.com/scheibler/khard.git")
 md5sums=('SKIP')
 install="${pkgname}.install"
@@ -30,7 +31,7 @@ build(){
 package() {
   cd "$srcdir/${_gitname}/"
   python2 setup.py install --root=$pkgdir
-  install -Dm 644 khard.conf.example "${pkgdir}/etc/skel/khard.conf"
+  install -Dm 644 khard.conf.example "${pkgdir}/usr/share/doc/khard/khard.conf.example"
   install -Dm 644 AUTHORS "${pkgdir}/usr/share/doc/khard/AUTHORS"
   install -Dm 644 CHANGES "${pkgdir}/usr/share/doc/khard/CHANGES"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/khard/README.md"
