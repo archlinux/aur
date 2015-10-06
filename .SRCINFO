@@ -1,7 +1,7 @@
 pkgbase = ffc-git
 	pkgdesc = A compiler for finite element variational forms.
-	pkgver = 20140522
-	pkgrel = 1
+	pkgver = 20150925
+	pkgrel = 2
 	url = https://bitbucket.org/fenics-project/ffc
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = ffc-git
 	license = LGPL
 	makedepends = git
 	makedepends = python2
+	makedepends = sed
 	depends = python2
 	depends = fiat-git
 	depends = ufl-git
