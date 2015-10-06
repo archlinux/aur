@@ -1,0 +1,40 @@
+post_install() {
+  dkms_install $1
+}
+
+pre_upgrade() {
+  dkms_remove $2
+}
+
+post_upgrade() {
+  dkms_install $1
+}
+
+pre_remove() {
+  dkms_remove $1
+}
+
+dkms_remove() {
+  # In case a different version is installed, use "dkms status broadcom-wl"
+  # to list and remove installed versions.
+
+  if [ -n "$(dkms status -m broadcom-wl-248 -v ${1%%-*})" ]; then
+    dkms remove -m broadcom-wl-248 -v ${1%%-*} --all || return 1
+  fi
+}
+
+dkms_install() {
+  dkms install -m broadcom-wl-248 -v ${1%%-*} || return 1
+
+  cat << EOF || return 1
+
+To load the new module, execute:
+
+  for m in b43 b43legacy ssb bcm43xx brcm80211 brcmfmac brcmsmac bcma wl; do
+    sudo modprobe -r \$m   # "not found" errors are normal
+  done
+  sudo modprobe wl
+
+or just reboot the system.
+EOF
+}
