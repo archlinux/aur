@@ -11,7 +11,7 @@ makedepends=("python" "python2")
 source=("http://stitchpanorama.sourceforge.net/Python/amoeba.py"
         "deepcopy.patch"
         "setup.py")
-md5sums=('0decb0d02e311ffac09cc56f9fe73338'
+md5sums=('7e6a9ad95d8639ec3d1da7c6db0928fb'
          'd741ffab04b35e88f6ca60c3987886ae'
          'c68322a7608767cc03012e62b3baa546')
 
