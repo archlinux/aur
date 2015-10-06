@@ -4,11 +4,12 @@
 
 pkgname=kroc-git
 pkgver=1.6.0.r0.gd975751
-pkgrel=2
+pkgrel=3
 pkgdesc="Kent Retargetable occam Compiler. An occam-pi compiler."
 arch=('i686' 'x86_64')
 url="http://projects.cs.kent.ac.uk/projects/kroc/trac/wiki"
 source=("kroc-git::git://github.com/concurrency/kroc#branch=kroc-1.6")
+md5sums=('SKIP')
 license=('GPL')
 depends=('python2' 'libxslt')
 optdepends=('mariadb' 'libplayer')
@@ -19,18 +20,21 @@ if [ "$CARCH" = "x86_64" ]; then
                 'lib32-sdl_sound'
                 'lib32-freeglut'
                 'lib32-libxmu'
-                'lib32-mesa')
+                'lib32-libgl'
+                'lib32-freeglut'
+                'lib32-glu')
 else
    optdepends+=('libpng'
                 'sdl'
                 'sdl_sound'
                 'freeglut'
                 'libxmu'
-                'mesa')
+                'libgl'
+                'freeglut'
+                'glu')
 fi
 
 makedepends=('git')
-md5sums=('SKIP')
 conflicts=('kroc-devel-git' 'kroc-svn')
 
 pkgver() {
