@@ -1,0 +1,13 @@
+pkgbase = python-gcm-clerk
+	pkgdesc = Python client for Google Cloud Messaging (GCM)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/gcm-clerk
+	arch = any
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/g/gcm-clerk/gcm-clerk-0.1.6.tar.gz
+	md5sums = eba5994930f65525da06257c66b3cdca
+
+pkgname = python-gcm-clerk
+
