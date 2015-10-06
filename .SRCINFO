@@ -1,6 +1,6 @@
 pkgbase = poco
 	pkgdesc = C++ class libraries for network-centric, portable applications, complete edition with debug libraries
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = http://www.pocoproject.org/
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = poco
 	provides = poco-dev
 	conflicts = poco-dev
 	replaces = poco-dev
-	source = http://pocoproject.org/releases/poco-1.6.0/poco-1.6.0-all.tar.bz2
+	source = http://pocoproject.org/releases/poco-1.6.1/poco-1.6.1-all.tar.bz2
 	source = poco-1.6.0-patch-for-libpcre.diff
-	sha256sums = 17506e0f7abc2a6e933ef0f46a6c5ca6f7cb599370b11979f4e61b604ada240f
+	sha256sums = bf5b98a62412dd635910de03ec350825afd3416cd3cc42e12f8e24b69f5c0601
 	sha256sums = 163b7f26425128218128174d0349d3fabe7cb1068e59c20533124e84b46be910
 
 pkgname = poco
