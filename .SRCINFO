@@ -1,0 +1,19 @@
+pkgbase = telepathy-lwqq-git
+	pkgdesc = Telepathy Connection Manager for QQ
+	pkgver = r27.dc12cb7
+	pkgrel = 1
+	url = https://github.com/xiehuc/telepathy-lwqq
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = telepathy-glib
+	depends = lwqq
+	source = git+https://github.com/xiehuc/telepathy-lwqq.git
+	source = telepathy-lwqq.service
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = telepathy-lwqq-git
+
