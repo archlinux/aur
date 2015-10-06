@@ -1,7 +1,7 @@
 pkgbase = python3-tabulator
 	pkgdesc = A table formatter class with support for a variety of outputs.
 	pkgver = 2015
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xyne.archlinux.ca/projects/python3-tabulator
 	arch = any
 	license = GPL
