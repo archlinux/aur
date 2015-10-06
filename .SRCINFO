@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-eu
 	pkgdesc = Basque language pack for Iceweasel
-	pkgver = 41.0.deb1
+	pkgver = 41.0.1.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-eu_41.0-1_all.deb
-	sha256sums = 5616d01722d4262eb0bbf4136db16ee812e98406ad8554a4d6738f946e95f960
+	depends = iceweasel>=41.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-eu_41.0.1-1_all.deb
+	sha256sums = 05981fe2196669def62e301b5eb7a0e0df7cf32df42427b7278a672675d8fd05
 
 pkgname = iceweasel-i18n-eu
 
