@@ -1,36 +1,55 @@
 post_install() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-  mkdir /etc/epoptes
-  openssl req -batch -x509 -nodes -newkey rsa:1024 -days 3652 -keyout /etc/epoptes/server.key -out /etc/epoptes/server.crt
-  chmod 600 /etc/epoptes/server.key
-  if grep -q "epoptes" /etc/group
-  then
-  	"Group 'epoptes' already exists. Skipping group's creation."
-  else
-    groupadd epoptes
-	echo "Group 'epoptes' has been created."
-  fi
-  echo "The installation has finished. Please bare in mind you'll have to do the following before using Epoptes:"
-  echo "1.- You will have to add yourself to the 'epoptes' group."
-  echo "2.- You will have to run as root:"
-  echo "    'systemctl enable epoptes-server' to enable the Epoptes server Daemon."
-  echo "    'systemctl enable epoptes-client' to enable the Epoptes Client Daemon"
-  echo "3. You may need to restart your system for everything to work."
-  echo "4. If you don't want to restart your system, then [after doing all of the above] you will have to run as root:"
-  echo "    'systemctl start epoptes-server' to start the Epoptes server Daemon."
-  echo "    'systemctl start epoptes-client' to start the Epoptes server Daemon."
-  echo "After all this you still have to log out and then log back in and now Epoptes should work without a problem."
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+    if getent group epoptes
+    then
+        "Group 'epoptes' already exists. Skipping group's creation."
+    else
+        groupadd epoptes
+        echo "Group 'epoptes' has been added."
+    fi
+
+    if ! [ -s /etc/epoptes/server.key ] || ! [ -s /etc/epoptes/server.crt ]
+    then
+        mkdir -p /etc/epoptes
+
+        faketime '1970-01-01 00:00:00 UTC' \
+            openssl req -batch -x509 -nodes -newkey rsa:1024 \
+                -days $(($(date --utc +%s) / 86400 + 3652)) \
+                -keyout /etc/epoptes/server.key \
+                -out /etc/epoptes/server.crt
+        chmod 600 /etc/epoptes/server.key
+    fi
+
+    echo "The installation has finished. Please bare in mind you'll have to do the following before using Epoptes:"
+    echo "1.- You will have to add yourself to the 'epoptes' group."
+    echo "2.- You will have to run as root:"
+    echo "    'systemctl enable epoptes' to enable the Epoptes server daemon."
+    echo "3.- You may need to restart your system for everything to work."
+    echo "4.- If you don't want to restart your system, then [after doing all of the above] you will have to run as root:"
+    echo "    'systemctl start epoptes' to start the Epoptes server daemon."
+    echo "After all this you still have to log out and then log back in and now Epoptes should work without a problem."
 }
 
 post_upgrade() {
-  systemctl daemon-reload 
+    systemctl daemon-reload 
+}
+
+pre_remove() {
+    systemctl stop epoptes.service
+    systemctl disable epoptes.service
 }
 
 post_remove() {
-  rm -rf /etc/epoptes
-  rm /etc/default/epoptes-client
-  groupdel epoptes
-  systemctl daemon-reload
-  echo "Epoptes has been removed successfully."
+    rm -rf /etc/epoptes
 
+    if getent group epoptes
+    then
+        groupdel epoptes
+        echo "Group 'epoptes' has been deteled."
+    else
+        echo "Group 'epoptes' doesn't exist. Skipping group's removal."
+    fi
+
+    systemctl daemon-reload
 }

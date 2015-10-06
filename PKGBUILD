@@ -1,36 +1,33 @@
 # Maintainer : Angel_Caido <geussepe at gmail dot com>
 # Contributor : Sam Stuewe <halosghost at archlinux dot info>
 
-_name=epoptes
-pkgname="${_name}-bzr"
-pkgver=0.5.7.426
+pkgname=(epoptes-bzr epoptes-client-bzr)
+pkgbase=epoptes-bzr
+pkgver=0.5.8.442
 pkgrel=1
 pkgdesc='An opensource computer lab management and monitoring tool'
-makedepends=('bzr' 'python2-distutils-extra')
+makedepends=(bzr python2-distutils-extra)
 url='https://code.launchpad.net/~epoptes/epoptes/trunk'
-license=('GPL3')
-depends=('python2-dbus' 'python2-notify' 'python2-pycha-hg' 'hicolor-icon-theme' 'python2-netifaces' 'python2-pyopenssl' 'python2-service-identity' 'python2-twisted' 'socat')
-arch=('any')
-conflicts=("${_name}")
-provides=("${_name}")
+license=(GPL3)
+arch=(any)
+conflicts=(epoptes)
+provides=(epoptes)
 source=('bzr+lp:epoptes'
-  'epoptes-server.service'
-  'epoptes-client.service'
-  'epoptes-client')
+        'epoptes.service'
+        'epoptes-client.service')
 sha256sums=('SKIP'
-	    '0dd8cc5255798a73f8b88ad8f34a4b7c7340f88dbab65d05d2a74843843c9403'
-	    'a7961919235f31a4a2059dda46bf1d0b3b5d20d06d1ce723804634de2443c20f'
-	    '64d27face12b754dd01e6b46b511aca11fa348779471d9b9c025cbaf5176aa4d')
+            'ea47542b6c6e7a1f75a715927f3b7e13ea4ffd47ded7874c61c153e107c3313e'
+	    '97d2ea075e17c83be61dc05be4c410c087ab930c7dd4840a50e9459a8d46f97c')
 
-install="${_name}".install
+install=epoptes.install
 
 pkgver () {
-    cd "${srcdir}/${_name}"
-    printf '%s.%s' "$(bzr tags --sort=time | tail -n1 | cut -d '-' -f1)" "$(bzr revno)"
+    cd "${srcdir}/epoptes"
+    printf '%s.%s' "$(bzr tags --sort=time | awk '{print $1}' | cut -d'-' -f1 | tail -n1)" "$(bzr revno)"
 }
 
 prepare () {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/epoptes"
     sed -e 's/sbin/bin/g' \
         -i setup.py
     for i in 'epoptes/ui/benchmark.py' \
@@ -63,13 +60,83 @@ prepare () {
     done
 }
 
-package () {
-    cd "${srcdir}/${_name}"
+package_epoptes-bzr () {
+    depends=(libfaketime
+             adduser
+	     librsvg
+	     notification-daemon
+	     xfce4-notifyd
+	     openssl
+	     python
+	     python2-pyopenssl
+	     openssl
+             pygtk
+             python2-dbus
+             python2-notify
+             python2-pycha-hg
+             hicolor-icon-theme
+             python2-netifaces
+             python2-pyopenssl
+             python2-service-identity
+             python2-twisted
+             socat
+             x11vnc
+             ssvnc
+             iperf
+             xterm)
+
+    cd "${srcdir}/epoptes"
     python2 setup.py install --root="${pkgdir}/" --optimize=1
-    mkdir "${pkgdir}/usr/lib/systemd"
-    mkdir "${pkgdir}/usr/lib/systemd/system"
-    mkdir "${pkgdir}/etc/default"
-    install -m 644 "${startdir}/epoptes-client.service" "${pkgdir}"/usr/lib/systemd/system/epoptes-client.service
-    install -m 644 "${startdir}/epoptes-server.service" "${pkgdir}"/usr/lib/systemd/system/epoptes-server.service
-    install -m 644 "${startdir}/epoptes-client" "${pkgdir}"/etc/default/epoptes-client
+    mkdir -p "${pkgdir}/etc/default"
+    mkdir -p "${pkgdir}/usr/lib/systemd/system"
+    install -m 644 "${startdir}/epoptes.service" "${pkgdir}"/usr/lib/systemd/system/epoptes.service
+    install -m 644 "${startdir}/src/epoptes/debian/epoptes.default" "${pkgdir}"/etc/default/epoptes
+    rm "${pkgdir}/usr/bin/epoptes-client"
+    rm -r "${pkgdir}/etc/xdg"
+    rm -r "${pkgdir}/usr/share/epoptes-client"
+    rm -r "${pkgdir}/usr/share/ldm"
+    rm -r "${pkgdir}/usr/share/man/man8"
+    cp -dr --no-preserve=ownership "${startdir}/src/epoptes/epoptes" "${pkgdir}"/usr/share/pyshared
+    cp -dr --no-preserve=ownership "${startdir}/src/epoptes/twisted" "${pkgdir}"/usr/share/pyshared
+
+}
+
+package_epoptes-client-bzr () {
+    pkgdesc="An opensource computer lab management and monitoring tool - client side"
+    depends=(iproute2
+             procps-ng
+	     python
+             librsvg
+	     lib32-procps-ng
+             bsdmainutils
+             screen
+             iperf
+             pygtk
+             socat
+             x11vnc
+             ssvnc
+             openssl
+             xterm
+	     ethtool)
+
+    conflicts=(epoptes-client) 
+    provides=(epoptes-client) 
+    install=epoptes-client.install
+
+    cd "${srcdir}/epoptes"
+    python2 setup.py install --root="${pkgdir}/" --optimize=1
+    mkdir -p "${pkgdir}/usr/lib/systemd/system"
+    mkdir -p "${pkgdir}/etc/default"
+    install -m 644 "${startdir}/src/epoptes/debian/epoptes-client.default" "${pkgdir}"/etc/default/epoptes
+    install -m 644 "${startdir}/epoptes-client.service" "${pkgdir}/usr/lib/systemd/system/epoptes-client.service"
+    rm "${pkgdir}/usr/bin/epoptes"
+    rm -r "${pkgdir}/usr/share/epoptes"
+    rm -r "${pkgdir}/usr/lib/python2.7"
+    rm -r "${pkgdir}/usr/share/applications"
+    rm -r "${pkgdir}/usr/share/doc"
+    rm -r "${pkgdir}/usr/share/icons"
+    rm -r "${pkgdir}/usr/share/locale"
+    rm -r "${pkgdir}/usr/share/ltsp"
+    rm -r "${pkgdir}/usr/share/man/man1"
+    mv "${pkgdir}/etc/default/epoptes" "${pkgdir}/etc/default/epoptes-client"
 }

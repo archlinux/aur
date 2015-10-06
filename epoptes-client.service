@@ -1,11 +1,8 @@
 [Unit]
 Description=Epoptes-client system daemon
-Wants=network-online.target
-After=network-online.target
+After=network.target
 
 [Service]
-EnvironmentFile=-/etc/default/epoptes-client
-ExecStartPre=/bin/sh -c "if ! [ -s /etc/epoptes/server.crt ]; then /usr/sbin/epoptes-client -c ${SERVER}; fi"
 ExecStart=/usr/sbin/epoptes-client
 
 [Install]

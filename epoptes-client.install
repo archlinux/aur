@@ -1,0 +1,24 @@
+post_install() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    echo "The installation has finished. Please bare in mind you'll have to do the following before using Epoptes:"
+    echo "1.- You will have to run as root:"
+    echo "    'systemctl enable epoptes-client' to enable the Epoptes client daemon"
+    echo "2.- You may need to restart your system for everything to work."
+    echo "3.- If you don't want to restart your system, then [after doing all of the above] you will have to run as root:"
+    echo "    'systemctl start epoptes-client' to start the Epoptes client daemon."
+    echo "After all this you still have to log out and then log back in and now Epoptes should work without a problem."
+}
+
+post_upgrade() {
+    systemctl daemon-reload 
+}
+
+pre_remove() {
+    systemctl stop epoptes-client.service
+    systemctl disable epoptes-client.service
+}
+
+post_remove() {
+    rm /etc/default/epoptes-client
+    systemctl daemon-reload
+}

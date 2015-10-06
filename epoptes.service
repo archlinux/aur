@@ -1,0 +1,14 @@
+# TODO: If this is an LTSP client, then service only should run if EPOPTES=True in lts.conf
+
+[Unit]
+Description=A twisted-based daemon that manages epoptes-client
+After=syslog.target
+
+[Service]
+Type=forking
+PIDFile=/run/epoptes.pid
+ExecStartPre=/bin/sh -c "if ! [ -s /etc/epoptes/server.key ] || ! [ -s /etc/epoptes/server.crt ]; then faketime '1970-01-01 00:00:00 UTC' openssl req -batch -x509 -nodes -newkey rsa:1024 -days $(($(date --utc +%s) / 86400 + 3652)) -keyout /etc/epoptes/server.key -out /etc/epoptes/server.crt; chmod 600 /etc/epoptes/server.key; fi"
+ExecStart=/usr/bin/twistd --pidfile /run/epoptes.pid --logfile /var/log/epoptes.log epoptes
+
+[Install]
+WantedBy=multi-user.target
