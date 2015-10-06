@@ -1,10 +1,11 @@
 pkgbase = sigrok-firmware-fx2lafw
 	pkgdesc = An open-source firmware for Cypress FX2
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sigrok.org/wiki/Fx2lafw
 	arch = any
 	license = GPL2
+	makedepends = sdcc
 	source = http://sigrok.org/download/source/sigrok-firmware-fx2lafw/sigrok-firmware-fx2lafw-0.1.2.tar.gz
 	sha512sums = b1f90e06227dcd3832bb61267ef8d20a7b4df702228b884c13725e472ed56bd971a46e2b4104bde666abc599edbe20cdbb51e30ee423b07c27ab1093de5953df
 
