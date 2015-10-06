@@ -1,0 +1,30 @@
+pkgbase = python-healpy
+	pkgdesc = Python package to manipulate healpix maps
+	pkgver = 1.8.6.r950.g26997de
+	pkgrel = 1
+	url = http://healpy.readthedocs.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python2-numpy
+	depends = python2-matplotlib
+	depends = python2-pyfits
+	depends = python2
+	depends = cfitsio
+	source = git+https://github.com/healpy/healpy.git
+	md5sums = SKIP
+
+pkgname = python-healpy
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-pyfits
+	depends = python
+	depends = cfitsio
+
+pkgname = python2-healpy
+	depends = python2-numpy
+	depends = python2-matplotlib
+	depends = python2-pyfits
+	depends = python2
+	depends = cfitsio
+
