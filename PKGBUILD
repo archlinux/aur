@@ -1,5 +1,6 @@
-# Submitter: Jochen Schalanda <jochen+aur AT schalanda.aname>
-# Maintainer: McNoggins <gagnon88 AT gmail DOT com>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Jochen Schalanda <jochen+aur AT schalanda.aname>
+# Contributor: McNoggins <gagnon88 AT gmail DOT com>
 pkgname=travis-lint
 pkgver=2.0.0
 pkgrel=1
