@@ -1,7 +1,7 @@
 pkgbase = python3-xynexdg
 	pkgdesc = Implementation of various freedesktop.org standards, for internal use in Xyne's modules.
 	pkgver = 2012.12.24.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://xyne.archlinux.ca/projects/python3-xynexdg
 	arch = any
 	license = GPL
