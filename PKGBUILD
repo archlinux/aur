@@ -3,13 +3,13 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
 pkgver=2.44.1
-pkgrel=3
+pkgrel=4
 arch=(any)
 pkgdesc="Common C routines used by GTK+ and other libs (mingw-w64)"
-depends=(mingw-w64-gettext mingw-w64-zlib mingw-w64-libffi mingw-w64-pcre mingw-w64-freetype)
+depends=(mingw-w64-gettext mingw-w64-zlib mingw-w64-libffi mingw-w64-pcre mingw-w64-freetype2)
 makedepends=(mingw-w64-configure python)
 license=("LGPL")
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !emptydirs)
 url="http://www.gtk.org/"
 source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.tar.xz"
 "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
@@ -51,7 +51,6 @@ prepare() {
   patch -Np1 -i "$srcdir/0027-no_sys_if_nametoindex.patch"
   patch -Np1 -i "$srcdir/0028-inode_directory.patch"
   patch -Np1 -i "${srcdir}/0029-grand.all.patch"
-  
   NOCONFIGURE=1 ./autogen.sh
 }
 
