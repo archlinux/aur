@@ -8,12 +8,12 @@
 pkgname=cutegram
 _pkgname=Cutegram
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A different telegram client from Aseman team"
 arch=('i686' 'x86_64')
 url="http://aseman.co/en/products/cutegram/"
 license=('GPL')
-depends=('qt5-imageformats' 'qt5-webkit>=5.5' 'telegramqml' 'libqtelegram-ae>=2:6.0')
+depends=('qt5-imageformats' 'qt5-webkit>=5.5' 'telegramqml>=0.9' 'libqtelegram-ae>=2:6.0')
 optdepends=('gst-plugins-bad: audio support'
 'gst-plugins-good: audio and notification sound')
 conflicts=('cutegram-git' 'sigram-git' 'sigram' 'cutegram')
