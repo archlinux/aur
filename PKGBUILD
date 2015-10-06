@@ -1,18 +1,19 @@
-# Maintainer: Brent Saner <bts (at) phreewifi (dot) org>
+# Maintainer: Brent Saner <bts (at) square-r00t (dot) net>
 # Special thanks to ejabberd-mod_admin_extra-svn maintainer
 # Damian Nowak <damian.nowak@pacmanvps.com> and contributor
 # Thomas Mudrunka <harvie@@email..cz> for giving me a model
 # to base this on.
 
 pkgname=ejabberd-mod_all-git
-pkgver=r84.a1eb77b
-pkgrel=1
+pkgver=r278.9aa4cd4
+pkgrel=2
 pkgdesc="A package for ALL ejabberd modules"
 arch=('any')
 url="https://www.ejabberd.im/ejabberd-contrib"
 license=('GPL')
-depends=('ejabberd')
-makedepends=('erlang-nox' 'git')
+#depends=('ejabberd')
+depends=('ejabberd-git')
+makedepends=('erlang-nox' 'git' 'ejabberd-git')
 conflicts=('ejabberd-mod_admin_extra-svn' 'ejabberd-mod_archive' 'ejabberd-mod_muc_admin')
 source=('git+git://github.com/processone/ejabberd-contrib.git')
 md5sums=('SKIP')
@@ -32,6 +33,7 @@ package() {
 
   mkdir ${ROOTDIR}/docs
   
+  #for module in $(ls -1d mod_* | sed -re '/^mod_(archive|cron|http_upload|log_chat|mam_mnesia|muc_log_http|openid|profile|rest|statsdx)/d'); # this is pointless; the dep tree's fucked at this point. we need to find out what the hell's going on.
   for module in $(ls -1d mod_*);
   do
     cd ${module}
@@ -43,7 +45,10 @@ package() {
     done
 
     # Hey, thanks, ProcessOne!
-    ./build.sh
+    #./build.sh
+    # Gorram it. they removed this. -_-
+    mkdir ebin
+    erlc -o ebin -I include -I /usr/lib/ejabberd/include -DLAGER -DNO_EXT_LIB src/*erl
 
 
     cd ${ROOTDIR}

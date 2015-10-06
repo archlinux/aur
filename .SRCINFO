@@ -1,13 +1,14 @@
 pkgbase = ejabberd-mod_all-git
 	pkgdesc = A package for ALL ejabberd modules
-	pkgver = r84.a1eb77b
-	pkgrel = 1
+	pkgver = r278.9aa4cd4
+	pkgrel = 2
 	url = https://www.ejabberd.im/ejabberd-contrib
 	arch = any
 	license = GPL
 	makedepends = erlang-nox
 	makedepends = git
-	depends = ejabberd
+	makedepends = ejabberd-git
+	depends = ejabberd-git
 	conflicts = ejabberd-mod_admin_extra-svn
 	conflicts = ejabberd-mod_archive
 	conflicts = ejabberd-mod_muc_admin
