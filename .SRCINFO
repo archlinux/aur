@@ -1,0 +1,11 @@
+pkgbase = alilua-git
+	pkgdesc = epoll/kqueue+lua based web server
+	pkgver = 0.51
+	pkgrel = 1
+	url = https://github.com/oneoo/alilua
+	arch = any
+	license = GPL
+	makedepends = git
+
+pkgname = alilua-git
+
