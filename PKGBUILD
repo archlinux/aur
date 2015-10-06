@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}-git
-pkgver=251
+pkgver=260
 pkgrel=1
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
 arch=('i686' 'x86_64')
@@ -37,6 +37,8 @@ EOF
     git submodule init
     git submodule update
 	python2 setup.py install --root=${pkgdir}
+
+    sed -i '/PySide/d' ${pkgdir}/usr/lib/python2.7/site-packages/yubioath_desktop-2.2.2.dev0-py2.7.egg-info/requires.txt
 
     mkdir -p ${pkgdir}/usr/share/applications/
     install -D -m0644 ${srcdir}/yubioath-desktop/resources/yubioath.desktop ${pkgdir}/usr/share/applications/
