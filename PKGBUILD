@@ -5,15 +5,15 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.7.1"
-pkgrel="2"
+pkgver="1.7.2"
+pkgrel="1"
 pkgdesc="Client Library for OpenStack Identity"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
-makedepends=("python-pbr>=1.3" "python2-pbr>=1.3")
+makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('8457fb65cc88ce009bf757643a27ac00fd5805c7f42d56743d1b6dfc26861e79')
+sha256sums=('d862183e0e53e7d0696a71ad9b6a9ff9f96b7f445564357de722604ca14fd6d2')
 
 prepare() {
     sed -ri '/argparse/d' "${srcdir}/${_name}-${pkgver}"/requirements.txt
