@@ -1,7 +1,7 @@
 # Maintainer: Nikolaos Bezirgiannis <bezeria@gmail.com>
 pkgname=hol
 pkgver=kananaskis.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive proof assistant for higher order logic"
 url='http://hol.sourceforge.net/'
 arch=('i686' 'x86_64')
@@ -10,24 +10,24 @@ source=("http://sourceforge.net/projects/hol/files/hol/${pkgver//./-}/hol-${pkgv
         '0001-fix-holdir.patch'
         '0002-fix-emit.patch'
     )
-depends=('polyml')
-#optdepends=('graphviz')
-conflicts=('mesa-demos' 'hol-git')
 md5sums=('aaf565484d62f1b43423897a2e8517ac'
          'd613c3d825d6f382a24533c0136c5b1e'
          '4a01da11b5bfb917a3e5a08ee8bde856')
+depends=('mosml')
+#optdepends=('graphviz')
+conflicts=('hol-git')
 
 prepare() {
    cd "${srcdir}/${pkgname}-${pkgver//./-}"
    patch -p1 -i "${srcdir}/0001-fix-holdir.patch"
    patch -p1 -i "${srcdir}/0002-fix-emit.patch"
+   #echo "val holdir = \"/opt/hol\";" > tools-poly/poly-includes.ML
+   echo "val mosmldir = \"/usr/bin\";" > config-override
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver//./-}"
-  #echo "val mosmldir = \"/usr/bin\";" > config-override
-  echo "val holdir = \"/opt/hol\"" > tools-poly/poly-includes.ML
-  poly < tools/smart-configure.sml 
+  mosml < tools/smart-configure.sml 
   bin/build -nograph
 }
 
@@ -54,7 +54,6 @@ package() {
   cp -r sigobj "${pkgdir}/opt/${pkgname}"
   cp -r bin "${pkgdir}/opt/${pkgname}"
   cp -r tools "${pkgdir}/opt/${pkgname}"
-  cp -r tools-poly "${pkgdir}/opt/${pkgname}"
   cp -r help "${pkgdir}/opt/${pkgname}"
 
   # install license

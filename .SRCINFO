@@ -1,13 +1,12 @@
 pkgbase = hol
 	pkgdesc = Interactive proof assistant for higher order logic
 	pkgver = kananaskis.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hol.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = polyml
-	conflicts = mesa-demos
+	depends = mosml
 	conflicts = hol-git
 	source = http://sourceforge.net/projects/hol/files/hol/kananaskis-10/hol-kananaskis-10.tar.gz
 	source = 0001-fix-holdir.patch
