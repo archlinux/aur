@@ -19,6 +19,8 @@ build() {
   cd "$srcdir/bobcat-${pkgver}/bobcat"
   CXXFLAGS="$CXXFLAGS --std=c++11 -pthread"
   LDFLAGS="$LDFLAGS -pthread"
+  # Add the -P option not to use precompiled headers, which can be useful since
+  # they require a lot of free space, compared to a normal compilation:
   ./build libraries all
   ./build man
 }
