@@ -1,4 +1,4 @@
-pkgbase = python-healpy
+pkgbase = python-healpy-git
 	pkgdesc = Python package to manipulate healpix maps
 	pkgver = 1.8.6.r950.g26997de
 	pkgrel = 1
@@ -14,14 +14,14 @@ pkgbase = python-healpy
 	source = git+https://github.com/healpy/healpy.git
 	md5sums = SKIP
 
-pkgname = python-healpy
+pkgname = python-healpy-git
 	depends = python-numpy
 	depends = python-matplotlib
 	depends = python-pyfits
 	depends = python
 	depends = cfitsio
 
-pkgname = python2-healpy
+pkgname = python2-healpy-git
 	depends = python2-numpy
 	depends = python2-matplotlib
 	depends = python2-pyfits

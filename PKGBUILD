@@ -1,7 +1,7 @@
 # Old Maintainer: Gero Müller <gero.mueller@physik.rwth-aachen.de>
 # Maintainer: Sandro Vitenti <sandro@isoftware.com.br>
 
-pkgname=(python-healpy python2-healpy)
+pkgname=(python-healpy-git python2-healpy-git)
 pkgver=1.8.6.r950.g26997de
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ pkgver() {
   echo "$(git describe --abbrev=0 --tags | cut -f 2 -d '-').r$(git rev-list --count HEAD).$(git log -1 --format='g%h')"
 }
 
-package_python-healpy() {
+package_python-healpy-git() {
   depends=('python-numpy' 'python-matplotlib' 'python-pyfits' 'python' 'cfitsio')
   cd $_gitname
   git submodule init
@@ -34,7 +34,7 @@ package_python-healpy() {
 }
 
 
-package_python2-healpy() {
+package_python2-healpy-git() {
   depends=('python2-numpy' 'python2-matplotlib' 'python2-pyfits' 'python2' 'cfitsio')
   cd "${_gitname}-py2"
   git submodule init
