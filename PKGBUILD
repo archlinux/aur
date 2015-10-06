@@ -1,45 +1,40 @@
 pkgname=ghdl
-pkgver=0.32rc1
-pkgrel=4
+pkgver=0.33
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator'
 url='http://sourceforge.net/projects/ghdl-updates/'
 license=('GPLv2')
 
-makedepends=('gcc-ada<5.0' 'mercurial')
+makedepends=('gcc-ada' 'mercurial')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-_gccver=4.9.2
+_gccver=4.9.3
 _islver=0.12.2
 _cloogver=0.18.1
 
+# "tag=ghdl-0.33" refers to the 0.33 branch, not a fixed and released version.
 source=(
   #"ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code#tag=ghdl-${pkgver}_release"
-  "ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code#revision=576"
+  "ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code#revision=900"
   "ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
   "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
 )
 md5sums=(
   'SKIP'
-  '4df8ee253b7f3863ad0b86359cd39c43'
+  '6f831b4d251872736e8e9cc09746f327'
   'e039bfcfb6c2ab039b8ee69bf883e824'
   'e34fca0540d840e5d0f6427e98c92252'
 )
 
 prepare() {
-  cd "${srcdir}/ghdl/translate/gcc"
-  # Remove verbose flag in tar
-  sed -i 's@\( tar .*\)v\(h\?f\)@\1\2@' dist.sh
-  ./dist.sh sources
-  mv ghdl-${pkgver}.tar.bz2 "${srcdir}"
-  cd "${srcdir}"
-  tar xf ghdl-${pkgver}.tar.bz2
-  mv ghdl-${pkgver}/vhdl gcc-${_gccver}/gcc
-  rm -rf ghdl ghdl-${pkgver}
+  cd "${srcdir}/ghdl"
+  ./configure --prefix=/usr --with-gcc="${srcdir}/gcc-${_gccver}"
+  make copy-sources
 
-  cd gcc-${_gccver}
+  cd "${srcdir}/gcc-${_gccver}"
   # link isl/cloog for in-tree builds
   ln -s ../isl-${_islver} isl
   ln -s ../cloog-${_cloogver} cloog

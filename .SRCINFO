@@ -1,22 +1,22 @@
 pkgbase = ghdl
 	pkgdesc = VHDL simulator
-	pkgver = 0.32rc1
-	pkgrel = 4
+	pkgver = 0.33
+	pkgrel = 1
 	url = http://sourceforge.net/projects/ghdl-updates/
 	install = ghdl.install
 	arch = i686
 	arch = x86_64
 	license = GPLv2
-	makedepends = gcc-ada<5.0
+	makedepends = gcc-ada
 	makedepends = mercurial
 	options = !emptydirs
 	options = staticlibs
-	source = ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code#revision=576
-	source = ftp://ftp.gnu.org/gnu/gcc/gcc-4.9.2/gcc-4.9.2.tar.bz2
+	source = ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code#revision=900
+	source = ftp://ftp.gnu.org/gnu/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2
 	source = http://isl.gforge.inria.fr/isl-0.12.2.tar.bz2
 	source = http://www.bastoul.net/cloog/pages/download/cloog-0.18.1.tar.gz
 	md5sums = SKIP
-	md5sums = 4df8ee253b7f3863ad0b86359cd39c43
+	md5sums = 6f831b4d251872736e8e9cc09746f327
 	md5sums = e039bfcfb6c2ab039b8ee69bf883e824
 	md5sums = e34fca0540d840e5d0f6427e98c92252
 
