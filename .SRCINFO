@@ -1,14 +1,14 @@
 pkgbase = ttf-computer-modern-fonts
 	pkgdesc = Computer Modern in TTF
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.mozilla.org/projects/mathml/fonts/
 	arch = any
 	license = custom:BakoMa
-	source = http://www.mozilla.org/projects/mathml/fonts/bakoma/texcm-ttf.zip
-	source = http://www.mozilla.org/projects/mathml/fonts/bakoma/license.txt
+	source = http://distfiles.gentoo.org/distfiles/texcm-ttf.zip
+	source = license.txt
 	md5sums = 7bd39b8860b09c8d5e507dae70484b80
-	md5sums = 3ae8d75400a0078db5d7276366c776b0
+	md5sums = 5f5d31d821e847fbeb2f32ea39186d10
 
 pkgname = ttf-computer-modern-fonts
 
