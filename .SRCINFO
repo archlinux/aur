@@ -1,7 +1,7 @@
 pkgbase = telegramqml
 	pkgdesc = Telegram API tools for QtQml and Qml
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/Aseman-Land/TelegramQML
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = telegramqml
 	depends = qt5-imageformats
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols
-	depends = libqtelegram-ae>=2:5.0
-	source = https://github.com/Aseman-Land/TelegramQML/archive/v0.8.0-stable.tar.gz
-	sha256sums = 38d4cd7cc26f6ea6852c94bb0c9b4648fbeef7db281053a99f2a2bd3327082d0
+	depends = libqtelegram-ae>=2:6.0
+	source = https://github.com/Aseman-Land/TelegramQML/archive/v0.9.1-stable.tar.gz
+	sha256sums = 00a52f6212460c2cae1dbd8ec4aa21e226552642cee56220802590fd8c4f61e9
 
 pkgname = telegramqml
 
