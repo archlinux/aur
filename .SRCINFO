@@ -1,0 +1,26 @@
+pkgbase = umview-svn
+	pkgdesc = User-mode implementation of View-OS.
+	pkgver = r1129
+	pkgrel = 1
+	url = https://www.sourceforge.net/projects/view-os
+	install = umview-svn.install
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = libtool
+	depends = glibc>=2.15
+	depends = libumlib0-svn
+	optdepends = umview-mod-umlwip-svn: module for umview networking
+	provides = umview-svn=r1129
+	conflicts = umview-svn
+	replaces = umview-svn
+	source = svn+http://svn.code.sf.net/p/view-os/code/trunk/xmview-os
+	source = umview-svn.install
+	md5sums = SKIP
+	md5sums = b4165e6142a92d65c8e14479486decc4
+
+pkgname = umview-svn
+
