@@ -23,23 +23,18 @@ post_upgrade() {
 	## arg 2:  the old package version
 	oldpkgver=${2%-*}
 	#newpkgver=${1%-*}
-	
-	if [[ $oldpkgver < 1.51 ]]; then
-		echo '--> Please check ~/.config/pulseaudio-ctl/config against the'
-		echo '--> provided /usr/share/pulseaudio-ctl/config.skel to ensure'
-		echo '--> it is current as the script does not do this automatically.'
-	else
-		/bin/true
-	fi
-	
-	if [[ $oldpkgver < 1.46 ]]; then
-		echo '--> Please check ~/.config/pulseaudio-ctl/config against the'
-		echo '--> provided /usr/share/pulseaudio-ctl/config.skel to ensure'
-		echo '--> it is current as the script does not do this automatically.'
-	else
-		/bin/true
-	fi
-	
+
+	for i in 1.62 1.46; do
+		if [[ $oldpkgver < $i ]]; then
+			echo '--> Please check ~/.config/pulseaudio-ctl/config against the'
+			echo '--> provided /usr/share/pulseaudio-ctl/config.skel to ensure'
+			echo '--> it is current as the script does not do this automatically.'
+		else
+			/bin/true
+		fi
+
+	done
+
 	if [[ $oldpkgver < 1.20 ]]; then
 		echo '--> Support for the older three script solution has been removed.'
 		echo '--> You MUST remaps your shortcut keys.'

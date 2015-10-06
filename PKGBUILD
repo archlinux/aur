@@ -1,6 +1,6 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 pkgname=pulseaudio-ctl
-pkgver=1.61
+pkgver=1.62
 pkgrel=1
 pkgdesc='Control pulseaudio volume from the shell or mapped to keyboard shortcuts.'
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('pulseaudio_ctl')
 replaces=('pulseaudio_ctl')
 url=https://github.com/graysky2/pulseaudio-ctl
 source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('e486d8f60cffc26a0923eff84ab86515b9bfac57f20939b96d57c5763d647dd2')
+sha256sums=('5d327d3775ff70a3e650ddded7672bac60f972799cd0ff24d1c6d5d7db13adbb')
 install=readme.install
 
 build() {
