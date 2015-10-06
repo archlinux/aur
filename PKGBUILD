@@ -1,9 +1,8 @@
 # Contributor: Roman Zimbelmann <romanz@lavabit.com>
 # Contributor: nfnty <arch at nfnty dot se>
 # Maintainer: aksr <aksr at t-com dot me>
-_pkgname=ranger
 pkgname=ranger-git
-pkgver=1.6.1.105.g1538e80
+pkgver=1.7.2.36.gf834133
 pkgrel=1
 pkgdesc="A simple, vim-like file manager."
 arch=('any')
@@ -24,16 +23,16 @@ optdepends=('atool: for previews of archives'
             'w3m: for previews of images and html pages')
 provides=('ranger')
 conflicts=('ranger')
-source=("$_pkgname::git+git://git.sv.gnu.org/ranger.git")
+source=("$pkgname::git+https://github.com/hut/ranger")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
   git describe --always | sed -e 's|-|.|g' -e '1s|^.||'
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
   python setup.py -q install --root="$pkgdir" --optimize=1
 }
 

@@ -1,6 +1,6 @@
 pkgbase = ranger-git
 	pkgdesc = A simple, vim-like file manager.
-	pkgver = 1.6.1.105.g1538e80
+	pkgver = 1.7.2.36.gf834133
 	pkgrel = 1
 	url = http://savannah.nongnu.org/projects/ranger
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ranger-git
 	optdepends = w3m: for previews of images and html pages
 	provides = ranger
 	conflicts = ranger
-	source = ranger::git+git://git.sv.gnu.org/ranger.git
+	source = ranger-git::git+https://github.com/hut/ranger
 	md5sums = SKIP
 
 pkgname = ranger-git
