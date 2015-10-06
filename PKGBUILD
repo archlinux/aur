@@ -15,6 +15,8 @@ conflicts=("${_pkgname}")
 provides=("$_pkgname")
 source=("$pkgname"::"git+https://github.com/sahib/${_pkgname}.git")
 md5sums=('SKIP')
+optdepends=('pygobject-devel: for the graphical user interface'
+            'gtk3: for the graphical user interface')
  
 pkgver() {
     cd "${srcdir}/${pkgname}"
