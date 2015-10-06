@@ -1,0 +1,22 @@
+pkgbase = motion-mrdave-git
+	pkgdesc = A software motion detector which grabs images from video4linux devices and/or from webcams - Mr-Dave's fork
+	pkgver = r654.2caced3
+	pkgrel = 1
+	url = http://www.lavrsen.dk/twiki/bin/view/Motion/WebHome
+	install = motion.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libjpeg
+	depends = v4l-utils
+	depends = ffmpeg-compat
+	backup = etc/motion/motion.conf
+	source = git+https://github.com/Mr-Dave/motion.git
+	source = motion.service
+	source = motion.tmpfiles
+	md5sums = SKIP
+	md5sums = b5b589f8f39939b7a1802cbd9dbe2e1a
+	md5sums = f863f8c025f7f025b2178def8418decd
+
+pkgname = motion-mrdave-git
+
