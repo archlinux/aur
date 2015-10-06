@@ -1,7 +1,7 @@
 pkgbase = python3-threaded_servers
 	pkgdesc = Threaded server modules (ThreadedHTTPSServer, ThreadedMulticastServer, Quickserve, Pacserve).
 	pkgver = 2014.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xyne.archlinux.ca/projects/python3-threaded_servers
 	arch = any
 	license = GPL
