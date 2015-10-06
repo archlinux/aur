@@ -1,0 +1,126 @@
+diff -u fwsnort-1.6.3-2/install.pl fwsnort-1.6.3/install.pl
+--- fwsnort-1.6.3-2/install.pl	2012-12-24 21:31:28.597018440 -0700
++++ fwsnort-1.6.3/install.pl	2012-12-24 21:40:38.564569377 -0700
+@@ -45,7 +45,7 @@
+ my $perlCmd = '/usr/bin/perl';
+ my $makeCmd = '/usr/bin/make';
+ my $wgetCmd = '/usr/bin/wget';
+-my $gzipCmd = '/bin/gzip';
++my $gzipCmd = '/usr/bin/gzip';
+ my $tarCmd  = '/bin/tar';
+ #======================= end config ======================
+
+@@ -129,10 +129,6 @@
+ ### make sure the system binaries are where we think they are.
+ &check_commands();
+
+-### check to make sure we are running as root
+-$< == 0 && $> == 0 or die "You need to be root (or equivalent UID 0",
+-    " account) to install/uninstall fwsnort!\n";
+-
+ if ($uninstall) {
+     &uninstall();
+ } else {
+@@ -154,10 +150,10 @@
+         "sources directory." unless -e 'fwsnort' and -e 'fwsnort.conf';
+
+     unless (-d $config{'CONF_DIR'}) {
+-        &full_mkdir($config{'CONF_DIR'}, 0500);
++        &full_mkdir($config{'CONF_DIR'}, 0700);
+     }
+     unless (-d $config{'RULES_DIR'}) {
+-        &full_mkdir($config{'RULES_DIR'}, 0500);
++        &full_mkdir($config{'RULES_DIR'}, 0700);
+     }
+
+     ### install perl modules
+@@ -336,52 +332,11 @@
+
+ sub install_manpage() {
+     my $manpage = 'fwsnort.8';
+-    ### remove old man page
+-    unlink "/usr/local/man/man8/${manpage}" if
+-        (-e "/usr/local/man/man8/${manpage}");
+
+     ### default location to put the fwsnort man page, but check with
+     ### /etc/man.config
+-    my $mpath = '/usr/share/man/man8';
+-    if (-e '/etc/man.config') {
+-        ### prefer to install $manpage in /usr/local/man/man8 if
+-        ### this directory is configured in /etc/man.config
+-        open M, '< /etc/man.config' or
+-            die "[*] Could not open /etc/man.config: $!";
+-        my @lines = <M>;
+-        close M;
+-        ### prefer the path "/usr/share/man"
+-        my $found = 0;
+-        for my $line (@lines) {
+-            chomp $line;
+-            if ($line =~ m|^MANPATH\s+/usr/share/man|) {
+-                $found = 1;
+-                last;
+-            }
+-        }
+-        ### try to find "/usr/local/man" if we didn't find /usr/share/man
+-        unless ($found) {
+-            for my $line (@lines) {
+-                chomp $line;
+-                if ($line =~ m|^MANPATH\s+/usr/local/man|) {
+-                    $mpath = '/usr/local/man/man8';
+-                    $found = 1;
+-                    last;
+-                }
+-            }
+-        }
+-        ### if we still have not found one of the above man paths,
+-        ### just select the first one out of /etc/man.config
+-        unless ($found) {
+-            for my $line (@lines) {
+-                chomp $line;
+-                if ($line =~ m|^MANPATH\s+(\S+)|) {
+-                    $mpath = $1;
+-                    last;
+-                }
+-            }
+-        }
+-    }
++    my $mpath = $config{'INSTALL_ROOT'}.'/usr/share/man/man8';
++
+     &full_mkdir($mpath, 0755);
+     my $mfile = "${mpath}/${manpage}";
+     print "[+] Installing $manpage man page as $mfile\n";
+@@ -532,6 +487,9 @@
+         /bin
+         /usr/bin
+         /usr/local/bin
++        /sbin
++        /usr/sbin
++        /usr/local/sbin
+     );
+     CMD: for my $cmd (keys %cmds) {
+         unless (-x $cmds{$cmd}) {
+diff -u fwsnort-1.6.3-2/fwsnort.conf fwsnort-1.6.3/fwsnort.conf
+--- fwsnort-1.6.3-2/fwsnort.conf	2012-12-24 22:39:21.323178467 -0700
++++ fwsnort-1.6.3/fwsnort.conf	2012-12-24 22:41:52.172194457 -0700
+@@ -103,14 +103,14 @@
+
+ ### system binaries
+ shCmd                   /bin/sh;
+-echoCmd                 /bin/echo;
++echoCmd                 /usr/bin/echo;
+ tarCmd                  /bin/tar;
+ wgetCmd                 /usr/bin/wget;
+ unameCmd                /usr/bin/uname;
+ ifconfigCmd             /sbin/ifconfig;
+-iptablesCmd             /sbin/iptables;
+-iptables-saveCmd        /sbin/iptables-save;
+-iptables-restoreCmd     /sbin/iptables-restore;
+-ip6tablesCmd            /sbin/ip6tables;
+-ip6tables-saveCmd       /sbin/ip6tables-save;
+-ip6tables-restoreCmd    /sbin/ip6tables-restore;
++iptablesCmd             /usr/sbin/iptables;
++iptables-saveCmd        /usr/sbin/iptables-save;
++iptables-restoreCmd     /usr/sbin/iptables-restore;
++ip6tablesCmd            /usr/sbin/ip6tables;
++ip6tables-saveCmd       /usr/sbin/ip6tables-save;
++ip6tables-restoreCmd    /usr/sbin/ip6tables-restore;
