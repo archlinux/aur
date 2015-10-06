@@ -1,7 +1,7 @@
 pkgbase = openxcom
 	pkgdesc = An open-source reimplementation of the famous X-COM game
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openxcom.org/
 	install = openxcom.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = openxcom
 	depends = sdl_gfx
 	depends = sdl_mixer
 	depends = sdl_image
-	depends = yaml-cpp>=0.5
+	depends = yaml-cpp51
 	depends = mesa
 	source = https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz
 	source = openxcom.install
