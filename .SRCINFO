@@ -1,7 +1,7 @@
 pkgbase = python3-gpg_batch_sign
 	pkgdesc = A module and stand-alone script for batch-signing files with GPG.
 	pkgver = 2015
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xyne.archlinux.ca/projects/python3-gpg_batch_sign
 	arch = any
 	license = GPL
