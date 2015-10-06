@@ -1,7 +1,7 @@
 pkgbase = python3-currencyconverter
 	pkgdesc = Module and command-line tool for currency conversion and rate retrieval.
 	pkgver = 2014.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xyne.archlinux.ca/projects/python3-currencyconverter
 	arch = any
 	license = GPL
