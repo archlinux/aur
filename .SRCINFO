@@ -1,7 +1,7 @@
 pkgbase = kroc-git
 	pkgdesc = Kent Retargetable occam Compiler. An occam-pi compiler.
 	pkgver = 1.6.0.r0.gd975751
-	pkgrel = 3
+	pkgrel = 4
 	url = http://projects.cs.kent.ac.uk/projects/kroc/trac/wiki
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = kroc-git
 	optdepends = freeglut
 	optdepends = libxmu
 	optdepends = libgl
-	optdepends = freeglut
 	optdepends = glu
 	conflicts = kroc-devel-git
 	conflicts = kroc-svn

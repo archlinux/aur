@@ -4,7 +4,7 @@
 
 pkgname=kroc-git
 pkgver=1.6.0.r0.gd975751
-pkgrel=3
+pkgrel=4
 pkgdesc="Kent Retargetable occam Compiler. An occam-pi compiler."
 arch=('i686' 'x86_64')
 url="http://projects.cs.kent.ac.uk/projects/kroc/trac/wiki"
@@ -18,7 +18,6 @@ if [ "$CARCH" = "x86_64" ]; then
    optdepends+=('lib32-libpng'
                 'lib32-sdl'
                 'lib32-sdl_sound'
-                'lib32-freeglut'
                 'lib32-libxmu'
                 'lib32-libgl'
                 'lib32-freeglut'
@@ -30,7 +29,6 @@ else
                 'freeglut'
                 'libxmu'
                 'libgl'
-                'freeglut'
                 'glu')
 fi
 
