@@ -14,7 +14,7 @@ conflicts=('libdispatch-svn')
 source=("git://github.com/nickhutchinson/$_gitname.git"
 	'gnustep-blocks.patch')
 md5sums=('SKIP'
-         '6ecc6c24bc53eb9502e5acd3e687523f')
+         '735b9990836df8b24f9c8a64c7f1c344')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
