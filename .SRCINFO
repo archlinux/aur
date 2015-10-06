@@ -102,6 +102,7 @@ pkgbase = sagemath-git
 	md5sums = a83a3b1bc7fcb7cbf752a83a8311fc42
 	md5sums = f333939ea6c41377b66407c81016cee4
 	md5sums = 4eb23a3c7363258bc9ba764d6e5512ba
+	md5sums = 4cee4f96bcd877587e7efc40c20adba7
 
 pkgname = sagemath-git
 
