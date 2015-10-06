@@ -1,6 +1,6 @@
 pkgbase = docker-git
 	pkgdesc = Pack, ship and run any application as a lightweight container
-	pkgver = 1.7.0.dev.14855.c158cdb
+	pkgver = 1.9.0.dev.16580.729c9a9
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dotcloud/docker
