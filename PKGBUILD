@@ -3,7 +3,7 @@
 pkgname=python-mysqlclient
 _libname=${pkgname/python-/}
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of MySQL-python with support for Python 3"
 arch=('i686' 'x86_64')
 url="https://github.com/PyMySQL/mysqlclient-python"
