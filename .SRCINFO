@@ -1,7 +1,7 @@
 pkgbase = mcrl2
 	pkgdesc = A formal specification language with an associated toolset.
 	pkgver = 201409.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mcrl2.org
 	install = mcrl2.install
 	arch = i686
