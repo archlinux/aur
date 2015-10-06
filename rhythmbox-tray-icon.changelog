@@ -1,0 +1,12 @@
+rhythmbox-tray-icon (0.2-1) unstable; urgency=low
+
+  * Add play/not-play icon
+  * Add "Keep tray on window close"
+
+ -- Tom Parker <palfrey@tevp.net>  Thu, 12 Jan 2012 23:45:14 +0000
+
+rhythmbox-tray-icon (0.1-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Tom Parker <palfrey@tevp.net>  Wed, 04 Jan 2012 22:31:07 +0000
