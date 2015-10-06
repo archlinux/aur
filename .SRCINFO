@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-rm
 	pkgdesc = Romansh language pack for Iceweasel
-	pkgver = 41.0.deb1
+	pkgver = 41.0.1.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-rm_41.0-1_all.deb
-	sha256sums = 4e7ec27f5a84fd74566bfdac7eacd646cd2de56ccc4a080827d9d9ed921cdd04
+	depends = iceweasel>=41.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-rm_41.0.1-1_all.deb
+	sha256sums = a199f98191a6a55c1915b657373e70390c882ff1d9ffe9d2a23ccfec92f16482
 
 pkgname = iceweasel-i18n-rm
 
