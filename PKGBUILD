@@ -2,8 +2,8 @@
 # Contributor: nylocx <aur@nyloc.de>
 
 pkgname=telegramqml-git
-pkgver=0.9.0.stable.r2.g52b0f9e
-pkgrel=2
+pkgver=0.9.1.stable.r0.g52b0f9e
+pkgrel=1
 pkgdesc="Telegram API tools for QtQml and Qml"
 arch=('i686' 'x86_64')
 url="https://github.com/Aseman-Land/TelegramQML"
