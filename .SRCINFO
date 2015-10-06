@@ -1,0 +1,15 @@
+pkgbase = imewlconverter
+	pkgdesc = An ime word library converter support more than 20 ime tools.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/studyzy/imewlconverter
+	arch = any
+	license = GPL2
+	depends = mono
+	source = imewlconverter.exe::https://github.com/maz-1/imewlconverter/raw/master/IME%20WL%20Converter/IME%20WL%20Converter/bin/Release/%E6%B7%B1%E8%93%9D%E8%AF%8D%E5%BA%93%E8%BD%AC%E6%8D%A2.exe
+	source = imewlconverter.desktop
+	md5sums = ac30bd771cb72bb10c4ac3518d7930f1
+	md5sums = SKIP
+
+pkgname = imewlconverter
+

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=imewlconverter
+Name[zh_CN]=深蓝词库转换
+Comment=IME word library converter
+Comment[zh_CN]=输入法词库转换器
+Exec=imewlconverter %U
+Type=Application
+Terminal=false
+InitialPreference=1
+NoDisplay=true
+Categories=Utility;
