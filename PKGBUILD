@@ -1,18 +1,18 @@
 # Maintainer: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=xdg-app
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='An application deployment framework for desktop apps'
 arch=('i686' 'x86_64')
 url='http://www.freedesktop.org/software/xdg-app'
 license=('GPL2')
-depends=('ostree' 'libseccomp' 'fuse')
+depends=('ostree' 'libseccomp' 'fuse' 'libxau')
 makedepends=('git' 'docbook-xsl')
 _libglnxrev='d59a63e'
 install='xdg-app.install'
 source=("$url/releases/$pkgname-$pkgver.tar.xz")
-sha256sums=('4493d13842bc03f6038c766d6978acbbba16e23aadeafd7fbbabb634544d3b35')
+sha256sums=('d672bc83ad618c89b10b9234188c166efd58f8e0fa4095bd25a1a732696525a5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
