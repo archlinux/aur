@@ -1,17 +1,17 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Jochen Schalanda <jochen+aur AT schalanda.aname>
 # Contributor: McNoggins <gagnon88 AT gmail DOT com>
-pkgname=travis-lint
-pkgver=2.0.0
+pkgname=travis-yaml
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='travis-lint is a tool that check your .travis.yml for possible issues, deprecations and so on.'
+pkgdesc='Tool that parses, normalizes, validates and serializes your .travis.yml.'
 arch=(any)
-url='https://github.com/travis-ci/travis-lint'
+url='https://github.com/travis-ci/travis-yaml'
 license=("MIT")
 depends=('ruby')
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-sha256sums=('1918261232d278d6c371ab3ace1d43a13408af799ed62fcb62bd866654c2eaea')
+sha256sums=('8e710a4b0bf83d7ddf0a94c07e8ec0e52c07bdd188a286cf29098f3282f9014e')
 
 package() {
   cd "${srcdir}"
