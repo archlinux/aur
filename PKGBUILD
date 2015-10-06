@@ -2,12 +2,12 @@
 # Former maintainer: Oliver Mangold <o.mangold at gmail dot com>
 pkgname=python-alembic
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database Toolkit for Python 3."
 arch=('any')
 url='https://bitbucket.org/zzzeek/alembic'
 license=('MIT')
-depends=('python' 'python-mako' 'python-sqlalchemy', 'python-editor')
+depends=('python' 'python-mako' 'python-sqlalchemy' 'python-editor')
 makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/a/alembic/alembic-${pkgver}.tar.gz
         https://pypi.python.org/packages/source/a/alembic/alembic-${pkgver}.tar.gz.asc)
