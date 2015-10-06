@@ -2,8 +2,8 @@
 
 _pkgname=fuzzywuzzy
 pkgname=python-${_pkgname}
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Fuzzy string matching like a boss"
 arch=("any")
 url="https://pypi.python.org/pypi/${_pkgname}"
@@ -15,7 +15,7 @@ conflicts=("${pkgname}" "${pkgname}-git")
 # install=$pkgname.install
 source=("https://pypi.python.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "LICENSE")
-md5sums=('c1fc05b65898a31e3517dda5fa657006'
+md5sums=('d3161ad2aff88385eabb560c1d0d063e'
          'afa01d831fdc3c0b681836e711f60f88')
 
 build() {
