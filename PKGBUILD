@@ -3,7 +3,7 @@
 
 pkgname=telegramqml-git
 pkgver=0.9.0.stable.r2.g52b0f9e
-pkgrel=1
+pkgrel=2
 pkgdesc="Telegram API tools for QtQml and Qml"
 arch=('i686' 'x86_64')
 url="https://github.com/Aseman-Land/TelegramQML"
@@ -14,7 +14,7 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-quick1'
 makedepends=('git')
 source=("${pkgname}"::"git+https://github.com/Aseman-Land/TelegramQML.git")
 md5sums=('SKIP')
-provides=("telegramqml")
+provides=("telegramqml=$pkgver")
 conflicts=("telegramqml")
 
 pkgver() {
