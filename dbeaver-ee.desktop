@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/opt/dbeaver-ee/dbeaver
+Type=Application
+Terminal=false
+Icon=dbeaver-ee
+Categories=Development;Java;Database;
+
+Name=DBeaver Enterprise Edition
+GenericName=Database Client
+
