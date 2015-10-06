@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-nist
 pkgver=2013.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Modules for accessing and working with data from the National Institute of Standards and Technology (NIST).'
 arch=(any)
 license=(GPL)
