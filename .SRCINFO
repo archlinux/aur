@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-bn-in
 	pkgdesc = Bengali language pack for Iceweasel (India)
-	pkgver = 41.0.deb1
+	pkgver = 41.0.1.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-bn-in_41.0-1_all.deb
-	sha256sums = c88da9d002f600e84a2336e68ca1cd90172f97c7f1ed11c50a266cf7bb2e6b07
+	depends = iceweasel>=41.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-bn-in_41.0.1-1_all.deb
+	sha256sums = 36766b4d09819eed3faee57b90770c885b52ac3554f475458d64bdc883ba3326
 
 pkgname = iceweasel-i18n-bn-in
 
