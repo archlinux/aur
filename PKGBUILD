@@ -7,8 +7,8 @@
 # for more information on packaging from GIT sources.
 
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
-pkgname=alilua-git
-pkgver=0.51
+pkgname=alilua
+pkgver=git # 0.51
 pkgrel=1
 pkgdesc="epoll/kqueue+lua based web server"
 arch=("any")
