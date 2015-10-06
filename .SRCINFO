@@ -1,6 +1,6 @@
 pkgbase = albert
 	pkgdesc = A DE agnostic omnilauncher.
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/ManuelSchneid3r/albert
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = albert
 	depends = muparser
 	depends = qt5-x11extras
 	depends = qt5-svg
-	source = https://github.com/ManuelSchneid3r/albert/archive/v0.7.1.tar.gz
-	md5sums = 39f109c64a7842413f96d1c812c2cb13
+	source = https://github.com/ManuelSchneid3r/albert/archive/v0.7.2.tar.gz
+	md5sums = 1fdf7fe252acb96ce68207f81b74a9a3
 
 pkgname = albert
 
