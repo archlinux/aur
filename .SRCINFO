@@ -1,6 +1,6 @@
 pkgbase = jhbuild
-	pkgdesc = JHBuild allows you to automatically download and compile Gnome "modules" (i.e. source code packages).
-	pkgver = 20140730
+	pkgdesc = Tool to build the whole GNOME desktop from sources
+	pkgver = 3.12.0
 	pkgrel = 1
 	url = https://live.gnome.org/Jhbuild/
 	install = jhbuild.install
@@ -15,9 +15,9 @@ pkgbase = jhbuild
 	makedepends = gnome-doc-utils
 	makedepends = yelp-tools
 	depends = python2
-	source = git://git.gnome.org/jhbuild
+	source = https://git.gnome.org/browse/jhbuild/snapshot/jhbuild-3.12.0.tar.xz
 	source = module_autogenargs.patch
-	sha256sums = SKIP
+	sha256sums = e84676f6a6b327abddc7d606abe103517c25bd4bc017973913bd37c3b5f9d7e1
 	sha256sums = f92dd2735e47d0032f4069fbf1c4d1207c83eabd0a6317ea78f39d6157e854b2
 
 pkgname = jhbuild
