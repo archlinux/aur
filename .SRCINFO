@@ -1,13 +1,13 @@
 pkgbase = keepass-plugin-keechallenge
 	pkgdesc = A plugin that allows to use the yubikey HMAC-SHA1 challenge-response functionality in Keepass.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/keechallenge/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = keepass
-	depends = yubikey-personalization
+	optdepends = yubikey-personalization: For configuring a YubiKey
 	source = http://sourceforge.net/projects/keechallenge/files/KeeChallenge/bin/KeeChallenge_1.4_win.zip
 	md5sums = 7c2f5d8ccbe9549767ca15de0fbf7383
 	sha512sums = a6d329b29e1bb71e6a4e73fa4f65476749bbd2b02ce9350f51f2b396ee76d231614a6149ce2705ca7bea8aa6ff7ca921b58d8995e258eb1eb5be9ae9a38ca285

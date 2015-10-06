@@ -1,13 +1,15 @@
 # Maintainer: Nils B. <aur@theinbox.de>
+# Contributor: David Manouchehri <manouchehri@riseup.net>
 
 pkgname=keepass-plugin-keechallenge
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin that allows to use the yubikey HMAC-SHA1 challenge-response functionality in Keepass."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/keechallenge/"
 license=('GPL2')
-depends=('keepass' 'yubikey-personalization')
+depends=('keepass')
+optdepends=('yubikey-personalization: For configuring a YubiKey')
 _zipname="KeeChallenge_1.4_win"
 source=(http://sourceforge.net/projects/keechallenge/files/KeeChallenge/bin/${_zipname}.zip)
 
