@@ -7,9 +7,7 @@ pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64' 'i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
-install=spotify.install
 url="http://www.spotify.com"
-changelog='spotify.changelog'
 options=('!strip')
 
 source=('spotify'
