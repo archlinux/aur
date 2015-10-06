@@ -2,7 +2,7 @@
 
 pkgname=mcrl2
 pkgver=201409.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A formal specification language with an associated toolset."
 arch=('i686' 'x86_64')
 depends=('boost' 'qt4' 'glu')
@@ -22,6 +22,9 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -P cmake_install.cmake
+
+  mv ${pkgdir}/usr/share/mcrl2/man/ ${pkgdir}/usr/share/man # relocate the manpages 
+  gzip ${pkgdir}/usr/share/man/man1/*.1 # gunzip the manpages
 
   # install license
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
