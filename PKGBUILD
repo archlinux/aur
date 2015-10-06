@@ -2,13 +2,13 @@
 # Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 _lang=pl
-_debver=41.0
+_debver=41.0.1
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i
 
 pkgname=iceweasel-i18n-pl
 pkgver=$_debver.deb$_debrel
-pkgrel=2
+pkgrel=1
 pkgdesc="Polish language package for Iceweasel"
 arch=('any')
 url="http://www.mozilla.com/"
@@ -22,4 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
-sha256sums=('489b4f47a78112586125fd8fe42514040b95368cc76c59b5851f52d599702a7d')
+sha256sums=('e34b001b9604f16e28cb33864bc7bc434488ec485827f543a12a6bab60e17d6b')
