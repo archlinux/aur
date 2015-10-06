@@ -1,0 +1,45 @@
+From b884c25da99429ad6b6390608a4f57f6570fb77a Mon Sep 17 00:00:00 2001
+From: Bardia Daneshvar <bardia.daneshvar@gmail.com>
+Date: Mon, 5 Oct 2015 21:54:01 +0330
+Subject: [PATCH 1/2] Fix build problem
+
+---
+ libqtelegram-ae.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libqtelegram-ae.pro b/libqtelegram-ae.pro
+index 1853c07..814991b 100644
+--- a/libqtelegram-ae.pro
++++ b/libqtelegram-ae.pro
+@@ -24,7 +24,7 @@ linux {
+ }
+ 
+ isEmpty(PREFIX) {
+-    isEmpty(INSTALL_HEADERS_PREFIX): INSTALL_HEADE_PREFIXR = $$[QT_INSTALL_HEADERS]
++    isEmpty(INSTALL_HEADERS_PREFIX): INSTALL_HEADERS_PREFIX = $$[QT_INSTALL_HEADERS]
+     isEmpty(INSTALL_LIBS_PREFIX): INSTALL_LIBS_PREFIX = $$[QT_INSTALL_LIBS]
+ } else {
+     isEmpty(INSTALL_HEADERS_PREFIX): INSTALL_HEADER_PREFIX = $$PREFIX/include
+
+From 0a543096ecbd956a24c64dde997785d6bd887437 Mon Sep 17 00:00:00 2001
+From: Bardia Daneshvar <bardia.daneshvar@gmail.com>
+Date: Mon, 5 Oct 2015 21:55:08 +0330
+Subject: [PATCH 2/2] Fix build problem
+
+---
+ libqtelegram-ae.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libqtelegram-ae.pro b/libqtelegram-ae.pro
+index 814991b..5af7c40 100644
+--- a/libqtelegram-ae.pro
++++ b/libqtelegram-ae.pro
+@@ -27,7 +27,7 @@ isEmpty(PREFIX) {
+     isEmpty(INSTALL_HEADERS_PREFIX): INSTALL_HEADERS_PREFIX = $$[QT_INSTALL_HEADERS]
+     isEmpty(INSTALL_LIBS_PREFIX): INSTALL_LIBS_PREFIX = $$[QT_INSTALL_LIBS]
+ } else {
+-    isEmpty(INSTALL_HEADERS_PREFIX): INSTALL_HEADER_PREFIX = $$PREFIX/include
++    isEmpty(INSTALL_HEADERS_PREFIX): INSTALL_HEADERS_PREFIX = $$PREFIX/include
+     isEmpty(INSTALL_LIBS_PREFIX): INSTALL_LIBS_PREFIX = $$PREFIX/lib/$$LIB_PATH
+ }
+ 
