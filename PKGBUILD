@@ -22,7 +22,7 @@ build() {
   cd "$srcdir/$pkg_base-$_git_branch"
   ./autogen.sh
   CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
-  ./configure --prefix=/usr --with-gui=no --with-tests=no --without-miniupnpc --with-incompatible-bdb
+  ./configure --prefix=/usr --with-gui=no --disable-tests --without-miniupnpc --with-incompatible-bdb
   make
 }
 
