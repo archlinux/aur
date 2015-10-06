@@ -1,6 +1,6 @@
 pkgbase = bisonc++
 	pkgdesc = C++ parser generator
-	pkgver = 4.11.00
+	pkgver = 4.12.03
 	pkgrel = 1
 	url = https://fbb-git.github.io/bisoncpp/
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = bisonc++
 	makedepends = icmake>=7.22.01
 	makedepends = yodl>=3.05.00
 	depends = libbobcat>=4.01.00
-	source = https://github.com/fbb-git/bisoncpp/archive/4.11.00.tar.gz
+	source = https://github.com/fbb-git/bisoncpp/archive/4.12.03.tar.gz
 	source = manual_license.patch
-	md5sums = bf91d34887b0145c8fb2d3914d82cc1d
+	md5sums = 8a72641ef725f1e16922df88521716a0
 	md5sums = bab1f76582bd7518df6debe7265fdd7c
 
 pkgname = bisonc++
