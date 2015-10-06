@@ -1,8 +1,8 @@
 pkgbase = libtorrent-git
 	pkgdesc = A BitTorrent library written in C++.
-	pkgver = 0.13.4.r103.g7b1b126
+	pkgver = 0.13.4.r104.g4791513
 	pkgrel = 1
-	url = http://libtorrent.rakshasa.no
+	url = https://github.com/rakshasa/libtorrent/
 	arch = i686
 	arch = x86_64
 	license = GPL

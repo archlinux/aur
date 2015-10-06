@@ -2,10 +2,10 @@
 ## Based on libtorrent [community]
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=libtorrent-git
-pkgver=0.13.4.r103.g7b1b126
+pkgver=0.13.4.r104.g4791513
 pkgrel=1
 pkgdesc="A BitTorrent library written in C++."
-url="http://libtorrent.rakshasa.no"
+url="https://github.com/rakshasa/libtorrent/"
 license=("GPL")
 arch=("i686" "x86_64")
 depends=("libsigc++" "openssl")
