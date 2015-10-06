@@ -1,7 +1,7 @@
 pkgbase = dockbarx
 	pkgdesc = TaskBar with groupping and group manipulation
 	pkgver = 0.91.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/M7S/dockbarx
 	arch = i686
 	arch = x86_64
