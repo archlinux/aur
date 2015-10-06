@@ -3,7 +3,7 @@
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
 pkgver=2015r24
-pkgrel=3
+pkgrel=4
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -46,4 +46,6 @@ package() {
 	ln -s "/opt/xojo/Read Mes/Third Party Licenses and Notices.txt" "$pkgdir/usr/share/licenses/xojo/Third Party Licenses and Notices.txt"
 #	ln -s "/usr/lib32/libwebkitgtk-1.0.so.0.17.5" "$pkgdir/usr/lib32/libwebkitgtk-1.0.0.so"
 #	ln -s "/usr/lib32/libwebkitgtk-1.0.so.0.17.5" "$pkgdir/usr/lib32/libwebkitgtk-1.0.0.so.0"
+#	Quick Temp Fix for the libncurses 5 error
+	ln -s /usr/lib32/libncursesw.so.6.0 /usr/lib32/libncurses.so.5
 }
