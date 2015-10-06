@@ -1,0 +1,15 @@
+pkgbase = olliolli-hib
+	pkgdesc = 2D skateboard plateformer
+	pkgver = 1414459118
+	pkgrel = 1
+	url = http://www.roll7.co.uk/#!olliolli/c1ic0
+	arch = i686
+	arch = x86_64
+	license = Commercial
+	makedepends = hib-dlagent
+	makedepends = sed
+	source = hib://olliolli_linux_1414459118.tar.bz2
+	md5sums = 8a652f2dba35688b52b5272e90855960
+
+pkgname = olliolli-hib
+
