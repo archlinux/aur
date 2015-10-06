@@ -6,7 +6,7 @@
 
 pkgname=wine-staging-d3dadapter
 _pkgbasename=wine
-pkgver=1.7.51
+pkgver=1.7.52
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -15,10 +15,10 @@ source=(http://ftp.winehq.org/pub/wine/source/1.7/wine-${pkgver}.tar.bz2
         "wine-staging-patches-v${pkgver}.tar.gz"::https://github.com/wine-compholio/wine-staging/archive/v${pkgver}.tar.gz
         30-win32-aliases.conf
 	wine-d3d9-$pkgver.patch)
-sha1sums=('ab034fb73cf8628a9def648e7712d3db75393716'
-          '9bead94e8a5c7e876f06e32f5119cd451ea3a5ad'
+sha1sums=('a323e29090c2f9608d1181e3675948988f6664db'
+          'd97082d7018642cf6542380bbab718211e2d0efa'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-          'ca80253e74ee6d5cb5d1b54b6445f228d376aab4')
+          '56a4a1de4157bff6719a3c573083fca783a75c29')
 
 # Uncomment to verify signature on tarball
 # (disabled by default due to most AUR auto-builders choking on this feature and
@@ -47,6 +47,7 @@ _depends=(
   libsm           lib32-libsm
   gcc-libs        lib32-gcc-libs
   libpcap         lib32-libpcap
+  
   desktop-file-utils
 )
 
@@ -67,8 +68,13 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   v4l-utils       lib32-v4l-utils
   alsa-lib        lib32-alsa-lib
   libxcomposite   lib32-libxcomposite
-  mesa            lib32-mesa
-  mesa-libgl      lib32-mesa-libgl
+  mesa-git        lib32-mesa-git
+  mesa-libgl-git  lib32-mesa-libgl-git
+  llvm-svn        lib32-llvm-svn
+  llvm-libs-svn   lib32-llvm-libs-svn
+  libdrm-git      lib32-libdrm-git 
+  opencl-mesa-git 
+  libclc-git 
   libcl           lib32-libcl
   libxslt         lib32-libxslt
   libpulse        lib32-libpulse
@@ -132,6 +138,10 @@ prepare() {
 }
 build() {
   cd "$srcdir"
+
+# remove once https://bugs.winehq.org/show_bug.cgi?id=38653 is resolved
+  export CFLAGS="${CFLAGS/-O2/} -O0"
+  export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
 
   # Allow ccache to work
   mv $_pkgbasename-$_pkgbasever $_pkgbasename
