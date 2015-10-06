@@ -17,7 +17,7 @@ source=(http://downloads.sourceforge.net/sourceforge/meanwhile/$pkgname-$pkgver.
 sha256sums=('38a8059eaa549cbcb45ca0a5b453e9608ceadab360db2ae14581fb22ddabdf23'
             '9a60e2ca35d902d5dd9647254a20099ceb399a025f1b04c2676f90ffe2d276f0'
             'c3dc0e423f7f4ceee65e4c08c1daebee23c61c608b970185074d118ed0199c47'
-	    '90467c648c18086a3f7989b7bab8f21eb44631c19a7d531121e927a0a1e74e9c')
+	    '04aabfbcda84a8de9369aee330e6663c2237e038b949bb5142e58b4a11540445')
 
 
 build() {
