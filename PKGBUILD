@@ -3,8 +3,8 @@
 
 pkgname=python2-pythondialog
 _pkgname=pythondialog
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Python package for interfacing with dialog"
 url="http://pythondialog.sf.net"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python2' 'dialog')
 makedepends=('binutils')
 conflicts=("${_pkgname}")
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/python2-${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('fc76bfaf29c512778efb75a873b3901b')
+sha256sums=('04e93f24995c43dd90f338d5d865ca72ce3fb5a5358d4daa4965571db35fc3ec')
 
 package() {
   cd "${srcdir}/python2-${_pkgname}-${pkgver}"
