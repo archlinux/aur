@@ -1,0 +1,13 @@
+pkgbase = python-apns-clerk
+	pkgdesc = Python client for Apple Push Notification service (APNs)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/apns-clerk
+	arch = any
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/a/apns-clerk/apns-clerk-0.2.0.tar.gz
+	md5sums = f7c302305552ae6bf134f776dafa139c
+
+pkgname = python-apns-clerk
+
