@@ -3,7 +3,7 @@
 # Contributor: Martin Ellis <ellism88@gmail.com>
 
 pkgname=kroc-devel-git
-pkgver=20150215
+pkgver=20150520
 pkgrel=1
 pkgdesc="Kent Retargetable occam Compiler. An occam-pi compiler."
 arch=('i686' 'x86_64')
@@ -19,14 +19,16 @@ if [ "$CARCH" = "x86_64" ]; then
                 'lib32-sdl_sound'
                 'lib32-freeglut'
                 'lib32-libxmu'
-                'lib32-mesa')
+                'lib32-libgl'
+                'lib32-glu')
 else
    optdepends+=('libpng'
                 'sdl'
                 'sdl_sound'
                 'freeglut'
                 'libxmu'
-                'mesa')
+                'libgl'
+                'glu')
 fi
 
 makedepends=('git')
