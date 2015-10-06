@@ -5,11 +5,11 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=opencbm-git
-pkgver=r1186.f1712e2
+pkgver=r1196.a5a4f06
 pkgrel=1
 epoch=
 pkgdesc="OpenCBM allows access to Commodore (C64) storage devices VIC 1540, 1541, 1570, 1571, or even 1581 floppy drive"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 _pkgname=opencbm
 _pkgver=trunk
 url="http://sourceforge.net/projects/opencbm/"
