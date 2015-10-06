@@ -1,7 +1,7 @@
 pkgbase = xorg-server-systemd
 	pkgdesc = Systemd template to start an X server on the respective display
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/HOMEINFO/xorg-server-systemd
 	arch = any
 	license = GPL3
