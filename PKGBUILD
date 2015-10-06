@@ -10,12 +10,23 @@ depends=('python' 'clang>=3.1')
 makedepends=('git')
 options=()
 install=
-source=('coz-git::git+https://github.com/plasma-umass/coz.git')
-md5sums=('SKIP')
+source=('coz-git::git+https://github.com/plasma-umass/coz.git'
+  'python2.patch' 'no-force-preload.patch' 'tput.patch')
+md5sums=('SKIP'
+         'f3ff4dcc098eb00e949b362594918517'
+         'b7926ac1504babe0b2551983d2d5ed25'
+         'e14ecdc19cbf244388d6af0a55046083')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  patch -Np1 < "$srcdir/python2.patch"
+  patch -Np1 < "$srcdir/no-force-preload.patch"
+  patch -Np1 < "$srcdir/tput.patch"
 }
 
 build() {

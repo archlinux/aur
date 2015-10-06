@@ -9,6 +9,12 @@ pkgbase = coz-git
 	depends = python
 	depends = clang>=3.1
 	source = coz-git::git+https://github.com/plasma-umass/coz.git
+	source = python2.patch
+	source = no-force-preload.patch
+	source = tput.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = coz-git

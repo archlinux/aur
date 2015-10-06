@@ -1,0 +1,13 @@
+diff --git a/coz b/coz
+index 7e9a1ff..6e8b259 100755
+--- a/coz
++++ b/coz
+@@ -39,8 +39,6 @@ def _coz_run(args):
+ 
+   if 'LD_PRELOAD' in env:
+     env['LD_PRELOAD'] += ':' + coz_runtime
+-  else:
+-    env['LD_PRELOAD'] = coz_runtime
+ 
+   if len(args.binary_scope) > 0:
+     env['COZ_BINARY_SCOPE'] = '\t'.join(args.binary_scope)

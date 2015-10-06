@@ -1,0 +1,10 @@
+diff --git a/coz b/coz
+index 7e9a1ff..c42dd06 100755
+--- a/coz
++++ b/coz
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import argparse
+ import copy
