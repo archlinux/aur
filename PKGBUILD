@@ -9,6 +9,7 @@ arch=("i686" "x86_64")
 url="https://github.com/jonsneyers/FLIF"
 license=('GPL3')
 conflicts=('flif')
+depends=('zlib' 'libpng')
 makedepends=('git')
 source=('git+https://github.com/jonsneyers/FLIF.git')
 sha256sums=('SKIP')
