@@ -1,0 +1,21 @@
+pkgbase = salome-aster
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - ASTER Module
+	pkgver = 2015.2
+	pkgrel = 1
+	url = http://www.code-aster.org/V2/spip.php?article295
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = salome-gui>=7.6.0
+	depends = salome-gui<7.7.0
+	depends = aster
+	depends = astk
+	source = https://bitbucket.org/code_aster/salome-codeaster/get/2015.2.tar.gz
+	source = http://www.code-aster.org/FICHIERS/SALOME-MECA-2015.2-LGPL-2.tgz
+	source = salome-aster.profile
+	md5sums = 653acb524798af15345153941365d8d6
+	md5sums = a78eae0b1937f06ced8e7f570b05f94b
+	md5sums = 06386b053b5ab14dceea6532aa4e9bf5
+
+pkgname = salome-aster
+
