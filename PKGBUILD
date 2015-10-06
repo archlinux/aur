@@ -12,10 +12,10 @@ optdepends=('sane: for all default scanning scripts'
             'cuneiform: for default "Scan to OCR" script')
 install=brscan-skey.install
 
-source_i686=("http://www.brother.com/pub/bsc/linux/dlf/${pkgname}-${pkgver/_/-}.i386.rpm")
+source_i686=("http://download.brother.com/welcome/dlf006649/$pkgname-${pkgver/_/-}.i386.rpm")
 sha256sums_i686=('30e236f1256d88431eb6fd8f052165ed976b0616e89cdb18196bf894d06c401a')
 
-source_x86_64=("http://www.brother.com/pub/bsc/linux/dlf/${pkgname}-${pkgver/_/-}.x86_64.rpm")
+source_x86_64=("http://download.brother.com/welcome/dlf006650/$pkgname-${pkgver/_/-}.x86_64.rpm")
 sha256sums_x86_64=('2e034b37e282e44a6f94315d932eb8f34693007e4abd10ca10fb4ec468c9bb3d')
 
 source=('brscan-skey.service' 'brscan-skey-user.service' 'LICENSE.html')
