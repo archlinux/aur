@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/aqemu/"
 license=('GPL2')
 depends=('qemu' 'qt4' 'openssl' 'libvncserver')
-makedepends=('cmake' 'qtchooser')
+makedepends=('cmake' 'qt5-base')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2 aqemu.patch)
 md5sums=('dcec083f566e0a22df7bfe8e7ca4c593' '4f18e403b98b825a7582aab7c5c3e871')
 
