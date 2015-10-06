@@ -1,0 +1,23 @@
+*** Makefile.am	2015-10-06 14:03:17.750805891 +0200
+--- changes	2015-10-06 14:11:47.140424485 +0200
+***************
+*** 4,21 ****
+  
+  SUBDIRS = doc include um_lib um_cmd um_testmodule umdev umdev_testmodules umdevmbr umbinfmt xmview ummisc ummisc_modules um_viewfs umnet umnet_modules umfuse_modules
+  
+- if ENABLE_UMDEVTAP
+- SUBDIRS += umdevtap
+- endif
+- 
+- if ENABLE_UMFUSE
+- SUBDIRS += umfuse
+- endif
+- 
+- if ENABLE_UM_LWIP
+- SUBDIRS += umnetlwipv6
+- endif
+- 
+  tags:
+  	ctags -R .
+  
+--- 4,9 ----

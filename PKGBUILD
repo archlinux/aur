@@ -26,6 +26,11 @@ pkgver() {
    printf "r%s" "${ver//[[:alpha:]]}"
 }
 
+prepare() {
+   cd $srcdir/xmview-os
+   patch -i ../../${pkgname}.diff Makefile.am
+}
+
 build(){
    cd "$srcdir/xmview-os"
    autoreconf -i &> /dev/null
@@ -38,11 +43,6 @@ build(){
 }
 
 package() {
-   #tar -xf data.tar.xz
-   #mkdir -p ${pkgdir}/usr/share/man
-   #cp -r usr/share/doc ${pkgdir}/usr/share
-   #cp -r usr/share/man/man2 ${pkgdir}/usr/share/man
-   #cp -r usr/share/man/man5 ${pkgdir}/usr/share/man
    cd "$srcdir/xmview-os"
    make install
    if [ "$CARCH" == "x86_64" ]; then
