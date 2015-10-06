@@ -1,7 +1,7 @@
 pkgbase = keynav-git
 	pkgdesc = Ingenious and fast way to move the mouse pointer on the screen with keystrokes.
-	pkgver = +.r200.20150729
-	pkgrel = 1
+	pkgver = 0.+r200.20150729
+	pkgrel = 2
 	url = http://www.semicomplete.com/projects/keynav/
 	arch = i686
 	arch = x86_64
