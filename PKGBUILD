@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-tr
-pkgver=2.35
+pkgver=2.38
 pkgrel=1
 _lang=tr
 pkgdesc="Turkish language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('598b5399fb18ef6fcee8e48682f5a70ae9de95b6735601086e1c661bdc72e993')
+sha256sums=('aeae6eb15335ab5f366df2b3929fe002a130ae8b0b6dd0d2dd84cabfedf073b4')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
