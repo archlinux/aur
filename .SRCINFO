@@ -7,9 +7,11 @@ pkgbase = dbeaver-ee
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = java-runtime>=1.7
+	depends = java-runtime>=1.6
 	depends = gtk2
 	depends = gtk-update-icon-cache
+	noextract = dbeaver-ee-3.5.1-linux.gtk.x86.tar.gz
+	noextract = dbeaver-ee-3.5.1-linux.gtk.x86_64.tar.gz
 	source = dbeaver-ee.desktop
 	source = dbeaver-ee.install
 	sha256sums = 453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f
