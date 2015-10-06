@@ -4,7 +4,7 @@
 
 pkgname=jhbuild
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -38,4 +38,6 @@ package() {
     make DESTDIR="$pkgdir" install
     install -d "$pkgdir/usr/share/jhbuild"
     cp -dr modulesets "$pkgdir/usr/share/jhbuild"
+    
+    sed -i "s|${srcdir}|${HOME}/jhbuild|g" "${pkgdir}"/usr/bin/jhbuild
 }

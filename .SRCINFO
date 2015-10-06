@@ -1,7 +1,7 @@
 pkgbase = jhbuild
 	pkgdesc = Tool to build the whole GNOME desktop from sources
 	pkgver = 3.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://live.gnome.org/Jhbuild/
 	install = jhbuild.install
 	arch = i686
