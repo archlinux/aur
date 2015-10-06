@@ -1,0 +1,17 @@
+pkgbase = idris-sdl-git
+	pkgdesc = SDL bindings package for Idris.
+	pkgver = 28.c71dd53
+	pkgrel = 1
+	url = https://github.com/edwinb/SDL-idris
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = idris
+	depends = sdl_gfx
+	provides = idris-sdl
+	conflicts = idris-sdl
+	source = git://github.com/edwinb/SDL-idris.git
+	md5sums = SKIP
+
+pkgname = idris-sdl-git
+
