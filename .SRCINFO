@@ -1,0 +1,18 @@
+pkgbase = vncdotool-git
+	pkgdesc = A command line VNC client
+	pkgver = 0.8.0.r48.g664c318
+	pkgrel = 1
+	url = https://github.com/sibson/vncdotool
+	arch = any
+	license = custom
+	depends = python2-pillow
+	depends = python2-twisted
+	depends = python2-wsgiref
+	depends = python2-zope-interface
+	provides = vncdotool
+	conflicts = vncdotool
+	source = git+https://github.com/sibson/vncdotool.git
+	md5sums = SKIP
+
+pkgname = vncdotool-git
+
