@@ -4,12 +4,12 @@
 
 pkgname=openxcom
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source reimplementation of the famous X-COM game"
 arch=('i686' 'x86_64')
 url="http://openxcom.org/"
 license=('GPL3')
-depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'yaml-cpp>=0.5' 'mesa')
+depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'yaml-cpp51' 'mesa')
 makedepends=('boost' 'glu' 'xmlto' 'docbook-xml' 'docbook-xsl')
 install="${pkgname}.install"
 source=("https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz"
@@ -21,7 +21,7 @@ sha256sums=('45acb280010a01d60506b1c5f2951ae501c012cc6161aac470bd15c1e6981246'
 build() {
   cd "${srcdir}/OpenXcom-1.0"
   ./autogen.sh
-  ./configure --prefix=/usr --without-docs
+  YAML_CFLAGS="-I/opt/yaml-cpp51/include" YAML_LIBS="-Wl,-rpath,/opt/yaml-cpp51/lib -L/opt/yaml-cpp51/lib -lyaml-cpp" ./configure --prefix=/usr --without-docs
   make
 }
 
