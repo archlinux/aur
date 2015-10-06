@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=coz-git
-pkgver=r239.935fc29
+pkgver=r241.3a4fa41
 pkgrel=1
 pkgdesc="a new kind of profiler that measures optimization potential"
 arch=('x86_64')
@@ -11,11 +11,10 @@ makedepends=('git')
 options=()
 install=
 source=('coz-git::git+https://github.com/plasma-umass/coz.git'
-  'python2.patch' 'no-force-preload.patch' 'tput.patch')
+  'python2.patch' 'no-force-preload.patch')
 md5sums=('SKIP'
          'f3ff4dcc098eb00e949b362594918517'
-         'b7926ac1504babe0b2551983d2d5ed25'
-         'e14ecdc19cbf244388d6af0a55046083')
+         'b7926ac1504babe0b2551983d2d5ed25')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -26,7 +25,6 @@ prepare() {
   cd "$srcdir/$pkgname"
   patch -Np1 < "$srcdir/python2.patch"
   patch -Np1 < "$srcdir/no-force-preload.patch"
-  patch -Np1 < "$srcdir/tput.patch"
 }
 
 build() {
