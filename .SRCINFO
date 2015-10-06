@@ -1,7 +1,7 @@
 pkgbase = python-bitarray
 	pkgdesc = Efficient arrays of booleans for Python
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilanschnell/bitarray
 	arch = i686
 	arch = x86_64
