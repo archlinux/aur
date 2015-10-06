@@ -1,15 +1,14 @@
 pkgbase = zerotier-one
 	pkgdesc = Creates virtual Ethernet networks of almost unlimited size.
-	pkgver = 1.0.2
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://www.zerotier.com/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/zerotier/ZeroTierOne/archive/1.0.2.tar.gz
-	sha1sums = e6b8ef6a0afa501de9bc76dc40224965867fbc5f
-	depends_i686 = gcc-libs
-	depends_x86_64 = gcc-libs-multilib
+	depends = gcc-libs
+	source = https://github.com/zerotier/ZeroTierOne/archive/1.0.5.tar.gz
+	sha1sums = de1dfb3ecc3bcbdea38388f51e91ac5927eba2b6
 
 pkgname = zerotier-one
 
