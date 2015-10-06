@@ -1,22 +1,23 @@
 pkgbase = pm2ml
 	pkgdesc = Generate metalinks for downloading Pacman packages and databases.
-	pkgver = 2014.12.31
+	pkgver = 2015
 	pkgrel = 1
 	url = http://xyne.archlinux.ca/projects/pm2ml
 	arch = any
 	license = GPL
 	depends = python3
 	depends = pyalpm
+	depends = python3-xcpf
+	optdepends = aria2: ppl script support.
 	optdepends = reflector: Reflector support
 	optdepends = python3-aur: AUR support
-	optdepends = aria2: ppl script support.
 	backup = etc/ppl.conf
-	source = http://xyne.archlinux.ca/projects/pm2ml/src/pm2ml-2014.12.31.tar.xz
-	source = http://xyne.archlinux.ca/projects/pm2ml/src/pm2ml-2014.12.31.tar.xz.sig
-	md5sums = fcf033c160dce8d5454c2c057e42efb5
-	md5sums = e8ba62fdf580ba59e91f930c174655e4
-	sha512sums = 9d616fff56f2bd49cab6ed446d64cc9d80b486c1735a61a14e475c514fd3097e70689ab4588b3825b1a31164ede76d734914b5bfd13bf1c84646355f927e877d
-	sha512sums = d4e9194557054cbefcd37c63cbbec778d4d3235a1254edfb182445e872282f49d5286988d5b3c2f9d5697c1a98f22fab405c398cf50873f6377ca56ac49120cb
+	source = http://xyne.archlinux.ca/projects/pm2ml/src/pm2ml-2015.tar.xz
+	source = http://xyne.archlinux.ca/projects/pm2ml/src/pm2ml-2015.tar.xz.sig
+	md5sums = bd539b69766524c51e405da7e9ed58d3
+	md5sums = fb3aa1014501e29236fc6fb2b9312af0
+	sha512sums = 4e0156530dbca0445467d9dbe735a212f63270633d55bc4a90fbe178ada1f1fb5bdcca96bd2670e49af5d524857260f2eaddf1e45a2c810341f9936a302d2a65
+	sha512sums = 19e6aa18e4c1b2c1415b9955f7e5fa30eb3dd9bc1ecf6b2471abdac17490c428759a6508c11cfacf685da4a5207508b386d1f66dad1a2441209ae390564b0c80
 
 pkgname = pm2ml
 
