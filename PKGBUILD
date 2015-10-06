@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.r557.g3488bda
-pkgrel=2
+pkgver=0.r561.g505d347
+pkgrel=1
 pkgdesc='suckless vim like editor - git checkout'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/vis.git'
@@ -10,7 +10,7 @@ depends=('ncurses' 'libtermkey')
 conflicts=('vis')
 provides=('vis')
 makedepends=('git' 'markdown')
-license=('custom')
+license=('custom:ISC')
 source=('git://repo.or.cz/vis.git')
 sha256sums=('SKIP')
 
