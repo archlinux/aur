@@ -1,7 +1,7 @@
 # Maintainer: Vivien Maisonneuve <v dot maisonneuve at gmail dot com>
 # Category: system
 pkgname='vncdotool-git'
-pkgver=0.8.0.r48.g664c318
+pkgver=0.9.0.r8.g664c318
 pkgrel=1
 pkgdesc='A command line VNC client'
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/vncdotool"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
