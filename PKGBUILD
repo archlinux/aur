@@ -3,7 +3,7 @@
 _gitname=libdispatch
 pkgname=$_gitname-clang-git
 pkgver=301.4e4b38f
-pkgrel=5
+pkgrel=6
 pkgdesc="Linux port of Apple's open-source concurrency library with blocks support, using Clang"
 arch=('i686' 'x86_64')
 url="http://nickhutchinson.me/libdispatch"
