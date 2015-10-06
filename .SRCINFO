@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-ml
 	pkgdesc = Malayalam language pack for Iceweasel
-	pkgver = 41.0.deb1
+	pkgver = 41.0.1.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ml_41.0-1_all.deb
-	sha256sums = b02b4ad74172eeb8c9e9ba6d7992a8da3db06d1a353d2f32ce47e5dd658277a3
+	depends = iceweasel>=41.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ml_41.0.1-1_all.deb
+	sha256sums = c430fa1862c4e464df6bed9dd28f83c6f39a01c3329b067dc961f50148b3676a
 
 pkgname = iceweasel-i18n-ml
 
