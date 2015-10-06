@@ -7,7 +7,7 @@ pkgbase="python-numpy-mkl"
 pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=( 'python-setuptools' 'python2-setuptools' 'intel-compiler-base' 'in
 source=( http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz 
 	  'site64.cfg' 'site32.cfg' 'intel.py' 'intelccompiler.py' '__init__2.py.patch' '__init__3.py.patch' )
 
-md5sums=( 'a1ed53432dbcd256398898d35bc8e645' 
+md5sums=( '116c65ae392e9b50aad713f42158f32a' 
 	  'e100a52fd644eb4a84217b3b7cce441a' 
 	  '86934d30d5ba2fa6b938f58b284690f0' 
 	  '5c116163f3309d774d183504ea662c67' 
@@ -104,5 +104,5 @@ package_python-numpy-mkl() {
   install -m755 -d "${pkgdir}/usr/share/licenses/python3-numpy"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python3-numpy/"
 
-  patch ${pkgdir}/usr/lib/python3.4/site-packages/numpy/distutils/fcompiler/__init__.py ${srcdir}/__init__3.py.patch
+  patch ${pkgdir}/usr/lib/python3.5/site-packages/numpy/distutils/fcompiler/__init__.py ${srcdir}/__init__3.py.patch
 }
