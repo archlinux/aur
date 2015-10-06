@@ -1,0 +1,16 @@
+pkgbase = android-google-apis-18
+	pkgdesc = Android Google APIs, API-18
+	pkgver = 4.3_r04
+	pkgrel = 1
+	url = http://code.google.com/android/add-ons/google-apis
+	arch = any
+	license = custom
+	depends = android-platform-18
+	options = !strip
+	source = http://dl.google.com/android/repository/google_apis-18_r04.zip
+	source = source.properties
+	sha1sums = 6109603409debdd40854d4d4a92eaf8481462c8b
+	sha1sums = 852c4fabee1c7150969ecd63dad2986a1e261916
+
+pkgname = android-google-apis-18
+
