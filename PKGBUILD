@@ -1,6 +1,6 @@
 # Maintainer: Colin Shea <colin@evaryont.me>
 pkgname=fwsnort
-pkgver=1.6.5
+pkgver=1.6.3
 pkgrel=3
 pkgdesc="application layer IDS/IPS by translating snort rules into iptables"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('perl' 'perl-netaddr-ip' 'perl-iptables-parse' 'iptables' 'net-tools')
 makedepends=('wget')
 source=(http://www.cipherdyne.org/$pkgname/download/$pkgname-$pkgver.tar.bz2
         'install_pl.patch')
-md5sums=('2228925d1cfdc9f326cca487f1bccc7d'
+md5sums=('3e7501e4587a3e33615b604935c75e4e'
          'd7925e3f869ec8decb0e8336801350d6')
 options=(emptydirs)
 
