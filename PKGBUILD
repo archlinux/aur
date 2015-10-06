@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-cactus
 pkgver=2012.12
-pkgrel=4
+pkgrel=5
 pkgdesc='Interface modules for CACTUS (CADD Group Chemoinformatics Tools and User Services).'
 arch=(any)
 license=(GPL)
