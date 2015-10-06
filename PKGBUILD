@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=metamath
-pkgver=0.109
+pkgver=0.118
 pkgrel=1
 epoch=
 pkgdesc="A tiny language that can express theorems in abstract mathematics, accompanied by proofs that can be verified."
@@ -23,12 +23,12 @@ source=("http://us.metamath.org/downloads/$pkgname.tar.gz"
         "echo.install")
 noextract=()
 options=()
-md5sums=('e7497eccb7b2218744c0342f314b1e28'
-         '9e3bb33b1840614bcba783934099dbb7')
-sha1sums=('9de9131eea6e9b3328c232cde9d02106591ba6e4'
-          '679efde646ac3e8335b16f09ae9def9a08ffdf1f')
-sha256sums=('bfe9183bb52151211474dc17190ddd75f9b26b0832bc1f778a82c5ce28a85195'
-            '743d54a6918af23e032238feab19239b95a9ea34a012b6b7ba23ae97729c2f26')
+md5sums=('4e4854a5a6af74a7d48a33ece88e87b8'
+         'd0f457c0a059cc589b214845fa02571a')
+sha1sums=('c5c13fcba2be0747097fcfa3f437c6ff2855f999'
+          '5f1411db226c0d6c11dfc8653afb773ec802c610')
+sha256sums=('6ba559e54396c99443c222a2efdb013c47524c8f9d98a6088992847e4cb273a1'
+            'a4c1862b2644e8c68980eb558e23108362331d3cd25933800b8d506e52d815d6')
 
 build() {
   cd "$srcdir/$pkgname"
@@ -45,7 +45,7 @@ check() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" install
-  install -Dm644 README.TXT  $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 README.TXT $pkgdir/usr/share/doc/$pkgname/README
   install -Dm644 LICENSE.TXT $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
