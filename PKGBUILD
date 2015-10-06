@@ -2,7 +2,7 @@
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 pkgname=python-slugify
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python slugify application that handles unicode"
 arch=(any)
 url="https://github.com/un33k/python-slugify"
