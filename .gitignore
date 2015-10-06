@@ -6,3 +6,4 @@ pkgdir
 *.gz
 *.pkg.*
 iio-sensor-proxy
+*~
