@@ -1,7 +1,7 @@
 pkgbase = qt5-wayland-git
 	pkgdesc = A cross-platform application and UI framework (QtWayland)
 	pkgver = a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://code.qt.io/cgit/qt/qtwayland.git/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = qt5-wayland-git
 	makedepends = git
 	depends = qt5-declarative
 	depends = libxcomposite
+	depends = wayland
 	provides = qt5-wayland
 	conflicts = qt5-wayland
-	source = qt5-wayland::git://code.qt.io/qt/qtwayland.git#branch=5.4.2
+	source = qt5-wayland::git://code.qt.io/qt/qtwayland.git#tag=v5.5.0
 	sha256sums = SKIP
 
 pkgname = qt5-wayland-git
