@@ -3,7 +3,7 @@
 pkgname=cuda65
 _pkgname=cuda
 pkgver=6.5.14
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA's GPU programming toolkit (for compute capability < 2.0)"
 arch=('x86_64')
 url="http://www.nvidia.com/object/cuda_home.html"
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'opencl-nvidia')
 replaces=('cuda-toolkit' 'cuda-sdk')
 conflicts=('cuda-toolkit' 'cuda-sdk' 'cuda')
 provides=('cuda-toolkit' 'cuda-sdk' 'cuda')
-optdepends=('gdb: for cuda-gdb')
+optdepends=('gdb: for cuda-gdb' 'ncurses5-compat-libs: for cuda-gdb')
 options=(!strip staticlibs)
 install=cuda.install
 source=(http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_${pkgver}_linux_64.run

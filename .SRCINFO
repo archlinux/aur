@@ -1,7 +1,7 @@
 pkgbase = cuda65
 	pkgdesc = NVIDIA's GPU programming toolkit (for compute capability < 2.0)
 	pkgver = 6.5.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/object/cuda_home.html
 	install = cuda.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = cuda65
 	depends = gcc-libs
 	depends = opencl-nvidia
 	optdepends = gdb: for cuda-gdb
+	optdepends = ncurses5-compat-libs: for cuda-gdb
 	provides = cuda-toolkit
 	provides = cuda-sdk
 	provides = cuda
