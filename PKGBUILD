@@ -2,11 +2,11 @@
 
 _plug=awarpsharp2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r9.4673b32
+pkgver=v1.1.g6a83bb5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url='https://github.com/dubhater/vapoursynth-awarpsharp2'
+url='http://forum.doom9.org/showthread.php?t=172721'
 license=('GPL2')
 depends=('vapoursynth')
 makedepends=('git')
@@ -17,8 +17,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
