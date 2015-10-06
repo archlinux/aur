@@ -1,5 +1,5 @@
 pkgbase = python2-acme
-	pkgdesc = Parses and generates RFC 3339-compliant timestamps using Python datetime.datetime objects.
+	pkgdesc = ACME protocol implementation for Python
 	pkgver = 0.0.0.dev20151006
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/acme
