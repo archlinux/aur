@@ -9,6 +9,7 @@ pkgbase = iceweasel-i18n-az
 	license = LGPL
 	depends = iceweasel>=41.0.1
 	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-az_41.0.1-1_all.deb
+	sha256sums = cf11618287f53930f84e5b65e7af061b7854935f2ae5c749fd1aeca19689dc33
 
 pkgname = iceweasel-i18n-az
 

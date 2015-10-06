@@ -22,3 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
+sha256sums=('cf11618287f53930f84e5b65e7af061b7854935f2ae5c749fd1aeca19689dc33')
