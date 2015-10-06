@@ -1,9 +1,9 @@
 pkgbase = xc3sprog-svn
 	pkgdesc = Utilities for programming Xilinx FPGAs, CPLDs, and EEPROMs with the Xilinx Parallel Cable and other JTAG adapters
 	pkgver = 0.r758
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xc3sprog.sourceforge.net
-	arch = i686,
+	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake

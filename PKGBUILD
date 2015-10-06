@@ -5,11 +5,11 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
 pkgname=xc3sprog-svn
-pkgver=0.r758
+pkgver=0.r778
 pkgrel=1
 epoch=
 pkgdesc="Utilities for programming Xilinx FPGAs, CPLDs, and EEPROMs with the Xilinx Parallel Cable and other JTAG adapters"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 url="http://xc3sprog.sourceforge.net"
 license=('GPL2')
 groups=()
