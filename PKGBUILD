@@ -2,13 +2,13 @@
 # Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 _lang=gd
-_debver=41.0
+_debver=41.0.1
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i
 
 pkgname=iceweasel-i18n-gd
 pkgver=$_debver.deb$_debrel
-pkgrel=2
+pkgrel=1
 pkgdesc="Scottish Gaelic language package for Iceweasel"
 arch=('any')
 url="http://www.mozilla.com/"
@@ -22,4 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
-sha256sums=('3317c33aa737d91e6d08a31c3f6998d09e95bd0b5a30cac4fb667166334e14d0')
+sha256sums=('fdd785e76d900b5d09474f255a0ddf9ecff1f8fef907a15f47bc16371ee0993f')
