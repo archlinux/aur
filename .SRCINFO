@@ -1,0 +1,48 @@
+pkgbase = linux-garret-git
+	pkgver = 4.3rc4.r15.g4980702
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/mjg59/linux.git
+	source = config
+	source = config.x86_64
+	source = linux-garret-git.preset
+	sha256sums = SKIP
+	sha256sums = e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2
+	sha256sums = db4d602900f21772a06fd55d8210cb743d8180a7a82728c06a46759172c20d33
+	sha256sums = 95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7
+
+pkgname = linux-garret-git
+	pkgdesc = A fork of Linux kernel by Matthew Garrett. Implement a BSD-style securelevel interface
+	install = linux-garret.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-garret-git=4.3rc4.r15.g4980702
+	conflicts = kernel26-garret-git
+	replaces = kernel26-garret-git
+	backup = etc/mkinitcpio.d/linux-garret-git.preset
+
+pkgname = linux-garret-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	provides = kernel26-garret-git-headers=4.3rc4.r15.g4980702
+	conflicts = kernel26-garret-git-headers
+	replaces = kernel26-garret-git-headers
+
+pkgname = linux-garret-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	provides = kernel26-garret-git-docs=4.3rc4.r15.g4980702
+	conflicts = kernel26-garret-git-docs
+	replaces = kernel26-garret-git-docs
+
