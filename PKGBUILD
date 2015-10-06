@@ -5,7 +5,7 @@
 _appname_=vlc
 pkgname=${_appname_}-nightly
 pkgver=3.0.0
-_snapshot_=20150817-0534
+_snapshot_=20150928-0535
 pkgrel=6
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
 arch=("i686" "x86_64")
@@ -104,4 +104,4 @@ package() {
 	done
 }
 
-sha1sums=('da59486b28eaa158991dcf85580915adf48b1ccd')
+sha1sums=('5beef2d58844b6454a5703daedf1786821aac3e8')

@@ -95,8 +95,8 @@ pkgbase = vlc-nightly
 	replaces = vlc-plugin
 	options = !libtool
 	options = !emptydirs
-	source = http://nightlies.videolan.org/build/source/vlc-3.0.0-20150817-0534.tar.xz
-	sha1sums = da59486b28eaa158991dcf85580915adf48b1ccd
+	source = http://nightlies.videolan.org/build/source/vlc-3.0.0-20150928-0535.tar.xz
+	sha1sums = 5beef2d58844b6454a5703daedf1786821aac3e8
 
 pkgname = vlc-nightly
 
