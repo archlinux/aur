@@ -21,7 +21,7 @@ sha256sums_x86_64=('97649720704ccdb4ad5183ab4897945bf07028ff8f5f951456afda04cf56
 
 package() {
   cd $pkgdir
-  mkdir -p opt/
+  mkdir -p opt/dbeaver-ee
   mkdir -p usr/bin
   mkdir -p usr/share/applications
   mkdir -p usr/share/icons/hicolor/48x48/apps
