@@ -1,0 +1,160 @@
+#! /bin/sh
+#
+# Brother Print filter  >>  /usr/lib/cups/filter/brlpdwrapperMFC7460DN
+# Copyright (C) 2005 Brother. Industries, Ltd.
+#                                    Ver1.00
+
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 2 of the License, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+# Place, Suite 330, Boston, MA  02111-1307  USA
+#
+LOGFILE="/dev/null"
+LOGCLEVEL="7"
+DEBUG=0
+NUPENABLE=1
+ENABLECOPY=0
+LOG_LATESTONLY=1
+errorcode=0
+
+set +o noclobber
+if [ "`echo $5 | grep 'debug-noprint=1'`" != '' ]; then
+    DEBUG=1
+fi
+if [ "`echo $5 | grep 'debug-noprint=2'`" != '' ]; then
+    DEBUG=2
+fi
+if [ "`echo $5 | grep 'debug-noprint=3'`" != '' ]; then
+    DEBUG=3
+fi
+if [ $DEBUG != 0 ]; then
+    LOGFILE=/tmp/br_cupsfilter_debug_log
+fi
+
+PRINTER=MFC7460DN
+
+
+if [ "$PPD" = "" ]; then
+    PPD="/usr/share/cups/model/MFC7460DN.ppd"
+fi
+
+
+if [ $LOGFILE != "/dev/null" ]; then
+  if [ $LOG_LATESTONLY == "1" ]; then
+    rm -f $LOGFILE
+    date                                                           >$LOGFILE
+  else
+    if [ -e $LOGFILE ]; then
+	    date                                                        >>$LOGFILE
+    else
+	    date                                                        >$LOGFILE
+    fi
+  fi
+    echo "arg0 = $0"                                           >>$LOGFILE
+    echo "arg1 = $1"                                           >>$LOGFILE
+    echo "arg2 = $2"                                           >>$LOGFILE
+    echo "arg3 = $3"                                           >>$LOGFILE
+    echo "arg4 = $4"                                           >>$LOGFILE
+    echo "arg5 = $5"                                           >>$LOGFILE
+    echo "arg6 = $6"                                           >>$LOGFILE
+    echo "PPD  = $PPD"                                         >>$LOGFILE
+fi
+
+INPUT_TEMP_PS=`mktemp /tmp/br_input_ps.XXXXXX`
+
+nup="cat"
+if [ "`echo $5 | grep 'Nup='`" != '' ] && [ $NUPENABLE != 0 ]; then
+
+	if   [ "`echo $5 | grep 'Nup=64'`" != '' ]; then
+		nup="psnup -64"
+	elif [ "`echo $5 | grep 'Nup=32'`" != '' ]; then
+		nup="psnup -32"
+	elif [ "`echo $5 | grep 'Nup=25'`" != '' ]; then
+		nup="psnup -25"
+	elif [ "`echo $5 | grep 'Nup=16'`" != '' ]; then
+		nup="psnup -16"
+	elif [ "`echo $5 | grep 'Nup=8'`" != '' ]; then
+		nup="psnup -8"
+	elif [ "`echo $5 | grep 'Nup=6'`" != '' ]; then
+		nup="psnup -6"
+	elif [ "`echo $5 | grep 'Nup=4'`" != '' ]; then
+		nup="psnup -4"
+	elif [ "`echo $5 | grep 'Nup=2'`" != '' ]; then
+		nup="psnup -2"
+	elif [ "`echo $5 | grep 'Nup=1'`" != '' ]; then
+		nup="cat"
+	fi
+	echo   "NUP=$nup"                                      >>$LOGFILE
+   if [ -e /usr/bin/psnup ]; then
+       if [ $# -ge 7 ]; then
+	       cat $6  | $nup > $INPUT_TEMP_PS
+       else
+	       cat       | $nup > $INPUT_TEMP_PS
+       fi
+   else
+       if [ $# -ge 7 ]; then
+	       cp $6  $INPUT_TEMP_PS
+       else
+	       cat    > $INPUT_TEMP_PS
+       fi
+   fi
+else
+   if [ $# -ge 7 ]; then
+      cp $6  $INPUT_TEMP_PS
+   else
+      cat    > $INPUT_TEMP_PS
+   fi
+fi
+
+if [ "$ENABLECOPY" != 0 ];then
+  if [ "$4" -ge 2 ];then
+     options="$5"" ""Copies=$4"
+  else
+     options="$5"
+  fi
+else
+  options="$5"
+fi
+
+
+if [ -e "/usr/local/Brother/Printer/$PRINTER/lpd/filter$PRINTER" ]; then
+       :
+else
+    echo "ERROR: /usr/local/Brother/Printer/$PRINTER/lpd/filter$PRINTER does not exist"   >>$LOGFILE
+    errorcode=30
+    exit 
+fi
+
+if [ -e "/usr/local/Brother/Printer/MFC7460DN/cupswrapper/brcupsconfig4" ]; then
+  if [ $DEBUG = 0 ]; then
+     /usr/local/Brother/Printer/MFC7460DN/cupswrapper/brcupsconfig4  $PRINTER  $PPD 0 "$options" >> /dev/null
+  else
+     /usr/local/Brother/Printer/MFC7460DN/cupswrapper/brcupsconfig4  $PRINTER  $PPD $LOGCLEVEL "$options" >>$LOGFILE
+  fi
+fi
+
+
+if [ $DEBUG -le 2 ]; then
+    cat    $INPUT_TEMP_PS | /usr/local/Brother/Printer/$PRINTER/lpd/filter$PRINTER
+fi
+
+if [ $DEBUG -ge 2 ];  then
+	   if [ $LOGFILE != "/dev/null" ]; then
+	     echo ""                                                >>$LOGFILE
+	     echo "    ------PostScript Data-------"                >>$LOGFILE
+	     cat    $INPUT_TEMP_PS                                  >>$LOGFILE
+	   fi
+fi
+rm -f  $INPUT_TEMP_PS
+
+exit $errorcode
+

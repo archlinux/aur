@@ -1,0 +1,279 @@
+*PPD-Adobe: "4.3"
+*%================================================
+*%	Copyright Brother Industries,Ltd 2006-2008
+*%	"Brother MFC7460DN for CUPS"
+*%================================================
+
+*%==== General Information Keywords ========================
+*FormatVersion: "4.3"
+*FileVersion: "1.00"
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*Manufacturer: "Brother"
+*PCFileName: "MFC7460.PPD"
+*Product: "(Brother MFC7460DN series)"
+*cupsVersion:   1.1
+*cupsManualCopies: True
+*cupsModelNumber:       72
+*cupsFilter: "application/vnd.cups-postscript 0 brlpdwrapperMFC7460DN"
+*PSVersion: "(3010.106) 3"
+*ModelName: "MFC7460DN"
+*NickName: "Brother MFC7460DN for CUPS"
+*ShortNickName: "Brother MFC7460DN for CUPS"
+
+*%==== Basic Device Capabilities =============
+*LanguageLevel: "3"
+*TTRasterizer: Type42
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: True
+*?FileSystem:"
+save 
+	/devname (%disk0%) def 
+	/ret false def 
+	0 1 7{ 
+		devname exch 48 add 5 exch put 
+		devname devstatus { 
+			0 ne {/ret true def}if 
+			pop pop pop pop pop pop pop 
+		}if 
+	}for 
+	ret {(True)}{(False)} ifelse = flush 
+restore 
+" 
+*End
+
+*Throughput: "18"
+*FreeVM: "1700000"
+
+
+
+*%==== Media Selection ======================
+
+*OpenUI *PageSize: PickOne
+*OrderDependency: 30 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter/Letter: "                      "
+*PageSize Legal/Legal: "                      "
+*PageSize Executive/Executive: "                      "
+*PageSize A4/A4: "                      "
+*PageSize A5/A5: "                      "
+*PageSize A6/A6: "                      "
+*PageSize Env10/Com-10: "                      "
+*PageSize EnvMonarch/Monarch: "                      "
+*PageSize EnvDL/DL: "                      "
+*PageSize EnvC5/C5: "                      "
+*PageSize EnvISOB5/B5: "                      "
+*PageSize EnvISOB6/B6: "                      "
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 40 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion Letter/Letter: "                      "
+*PageRegion Legal/Legal: "                      "
+*PageRegion Executive/Executive: "                      "
+*PageRegion A4/A4: "                      "
+*PageRegion A5/A5: "                      "
+*PageRegion A6/A6: "                      "
+*PageRegion Env10/Com-10: "                      "
+*PageRegion EnvMonarch/Monarch: "                      "
+*PageRegion EnvDL/DL: "                      "
+*PageRegion EnvC5/C5: "                      "
+*PageRegion EnvISOB5/B5: "                      "
+*PageRegion EnvISOB6/B6: "                      "
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: A4
+*ImageableArea Letter/Letter: "18 12 594 780"
+*ImageableArea Legal/Legal: "18 12 594 996"
+*ImageableArea Executive/Executive: "18 12 504 744"
+*ImageableArea A4/A4: "18 12 577 830"
+*ImageableArea A5/A5: "18 12 403 583"
+*ImageableArea A6/A6: "18 12 279 408"
+*ImageableArea Env10/Com-10: "18 12 279 672"
+*ImageableArea EnvMonarch/Monarch: "18 12 261 528"
+*ImageableArea EnvDL/DL: "18 12 294 612"
+*ImageableArea EnvC5/C5: "18 12 441 637"
+*ImageableArea EnvISOB5/B5: "18 12 463 697"
+*ImageableArea EnvISOB6/B6: "18 12 336 487"
+
+*%==== Information About Media Sizes ========
+
+*DefaultPaperDimension: A4
+*PaperDimension Letter/Letter: "612 792"
+*PaperDimension Legal/Legal: "612 1008"
+*PaperDimension Executive/Executive: "522 756"
+*PaperDimension A4/A4: "595 842"
+*PaperDimension A5/A5: "420 595"
+*PaperDimension A6/A6: "297 420"
+*PaperDimension Env10/Com-10: "297 684"
+*PaperDimension EnvMonarch/Monarch: "279 540"
+*PaperDimension EnvDL/DL: "312 624"
+*PaperDimension EnvC5/C5: "459 649"
+*PaperDimension EnvISOB5/B5: "499 709"
+*PaperDimension EnvISOB6/B6: "354 499"
+
+*%==== 5.13 Media Handling Features ============================
+*OpenUI *BrMediaType/BrMediaType: PickOne
+*OrderDependency: 28 AnySetup *BrMediaType
+*DefaultBrMediaType: PLAIN
+*BrMediaType PLAIN/Plain Paper: "                      "
+*BrMediaType THIN/Thin Paper: "                      "
+*BrMediaType THICK/Thick Paper: "                      "
+*BrMediaType THICKERPAPER2/Thicker Paper: "                      "
+*BrMediaType BOND/Bond Paper: "                      "
+*BrMediaType TRANSPARENCIES/Transparencies: "                      "
+*BrMediaType ENV/Envelopes: "                      "
+*BrMediaType ENVTHICK/Env. Thick: "                      "
+*BrMediaType ENVTHIN/Env. Thin: "                      "
+*CloseUI: *BrMediaType
+
+*OpenUI *InputSlot/InputSlot: PickOne
+*OrderDependency: 29 AnySetup *InputSlot
+*DefaultInputSlot: TRAY1
+*InputSlot MANUAL/Manual Feed: "                      "
+*InputSlot TRAY1/Tray1: "                      "
+*CloseUI: *InputSlot
+
+*RequiresPageRegion All:True
+
+
+*%=== Duplex ================================
+*OpenUI *Duplex: PickOne
+*OrderDependency: 25 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex DuplexTumble: "                      "
+*Duplex DuplexNoTumble: "                      "
+*Duplex None: "                      "
+*CloseUI: *Duplex
+
+*%=== Output Bin =============================
+*% === Collate ==========
+*%==== 5.14 Finishing Features =================================
+*%%%%% Resolution and Appearance Control %%%%%
+*OpenUI *Resolution: PickOne
+*OrderDependency: 11 AnySetup *Resolution
+*DefaultResolution: 600dpi
+*Resolution	600dpi: "                      "
+*Resolution	2400x600dpi/HQ1200dpi: "                    "
+*CloseUI: *Resolution
+
+*OpenUI *TonerSaveMode/Toner Save: PickOne
+*DefaultTonerSaveMode: OFF
+*OrderDependency: 10 AnySetup  *TonerSaveMode
+*TonerSaveMode OFF/Off: "statusdict begin false tonersave end"
+*TonerSaveMode ON/On: "statusdict begin true tonersave end"
+*CloseUI: *TonerSaveMode
+
+*OpenUI *Sleep/Sleep Time [Min.]: PickOne
+*DefaultSleep: PrinterDefault
+*OrderDependency: 10 AnySetup  *Sleep
+*Sleep PrinterDefault/Printer Default: ""
+*Sleep 2minutes/2: "statusdict begin 2 powersavetime end"
+*Sleep 10minutes/10: "statusdict begin 10 powersavetime end"
+*Sleep 30minutes/30: "statusdict begin 30 powersavetime end"
+*CloseUI: *Sleep
+
+*%==== 5.20 Font Related Keywords ==============================
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-Demi: Standard "(001.007S)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(001.007S)" Standard ROM
+*Font Bookman-Demi: Standard "(001.004S)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(001.004S)" Standard ROM
+*Font Bookman-Light: Standard "(001.004S)" Standard ROM
+*Font Bookman-LightItalic: Standard "(001.004S)" Standard ROM
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Courier-Bold: Standard "(002.004S)" Standard ROM
+*Font Courier-BoldOblique: Standard "(002.004S)" Standard ROM
+*Font Courier-Oblique: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Oblique: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(001.009S)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(001.007S)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(001.007S)" Standard ROM
+*Font Palatino-Bold: Standard "(001.005S)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Italic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Roman: Standard "(001.005S)" Standard ROM
+*Font Times-Bold: Standard "(001.007S)" Standard ROM
+*Font Times-BoldItalic: Standard "(001.009S)" Standard ROM
+*Font Times-Italic: Standard "(001.007S)" Standard ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(001.007S)" Standard ROM
+*Font ZapfDingbats: Special "(001.004S)" Special ROM
+*Font Symbol: Special "(001.007S)" Special ROM
+*Font Alaska: Standard "(001.005)" Standard ROM
+*Font AlaskaExtrabold: Standard "(001.005)" Standard ROM
+*Font AntiqueOakland: Standard "(001.005)" Standard ROM
+*Font AntiqueOakland-Bold: Standard "(001.005)" Standard ROM
+*Font AntiqueOakland-Oblique: Standard "(001.005)" Standard ROM
+*Font ClevelandCondensed: Standard "(001.005)" Standard ROM
+*Font Connecticut: Standard "(001.005)" Standard ROM
+*Font Guatemala-Antique: Standard "(001.005)" Standard ROM
+*Font Guatemala-Bold: Standard "(001.005)" Standard ROM
+*Font Guatemala-Italic: Standard "(001.005)" Standard ROM
+*Font Guatemala-BoldItalic: Standard "(001.005)" Standard ROM
+*Font LetterGothic: Standard "(001.005)" Standard ROM
+*Font LetterGothic-Bold: Standard "(001.005)" Standard ROM
+*Font LetterGothic-Oblique: Standard "(001.005)" Standard ROM
+*Font Maryland: Standard "(001.005)" Standard ROM
+*Font Oklahoma: Standard "(001.005)" Standard ROM
+*Font Oklahoma-Bold: Standard "(001.005)" Standard ROM
+*Font Oklahoma-Oblique: Standard "(001.005)" Standard ROM
+*Font Oklahoma-BoldOblique: Standard "(001.005)" Standard ROM
+*Font Utah: Standard "(001.005)" Standard ROM
+*Font Utah-Bold: Standard "(001.005)" Standard ROM
+*Font Utah-Oblique: Standard "(001.005)" Standard ROM
+*Font Utah-BoldOblique: Standard "(001.005)" Standard ROM
+*Font UtahCondensed: Standard "(001.005)" Standard ROM
+*Font UtahCondensed-Bold: Standard "(001.005)" Standard ROM
+*Font UtahCondensed-Oblique: Standard "(001.004)" Standard ROM
+*Font UtahCondensed-BoldOblique: Standard "(001.005)" Standard ROM
+*Font BermudaScript: Standard "(001.005)" Standard ROM
+*Font Germany: Standard "(001.005)" Standard ROM
+*Font SanDiego: Standard "(001.005)" Standard ROM
+*Font US-Roman: Standard "(001.005)" Standard ROM
+*?FontQuery: "
+save
+count 1 gt
+  {exch dup dup
+   =string cvs (/) print print (:) print
+   FontDirectory exch known
+     {pop(Yes)}
+     {(fonts/)AppendName exch pop mark exch
+      {}=string filenameforall counttomark
+      0 gt
+        {cleartomark(Yes)}
+        {cleartomark(No)}ifelse
+     }ifelse
+   =
+  }if
+  (*) = flush
+restore
+"
+*End
+*?FontList: "
+save
+  FontDirectory{pop ==}forall
+  (fonts/*)
+  {dup length 6 sub 6 exch getinterval cvn ==
+  }=string filenameforall
+  (*) = flush
+restore
+"
+*End
+
+*UIConstraints:	*InputSlot MANUAL	*Duplex DuplexTumble
+*UIConstraints:	*InputSlot MANUAL	*Duplex DuplexNoTumble
+
+
