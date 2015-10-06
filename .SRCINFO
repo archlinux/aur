@@ -1,13 +1,13 @@
 pkgbase = greg-git
 	pkgdesc = A command-line podcast aggregator.
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manolomartinez/greg
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = python-feedparser
-	optdepends = python3-stagger-svn: writing metadata
+	optdepends = python-stagger-git: writing metadata
 	optdepends = wget: alternative downloadhandler
 	optdepends = aria2: alternative downloadhandler
 	optdepends = python-beautifulsoup4: convert html to text for tagging
