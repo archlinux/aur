@@ -1,4 +1,4 @@
-pkgbase = gometalinter
+pkgbase = gometalinter-git
 	pkgdesc = golang meta linter
 	pkgver = 20150930.122_ed67cd1
 	pkgrel = 1
@@ -7,8 +7,8 @@ pkgbase = gometalinter
 	license = GPL
 	makedepends = go
 	makedepends = git
-	source = gometalinter::git://github.com/alecthomas/gometalinter
+	source = gometalinter-git::git://github.com/alecthomas/gometalinter
 	md5sums = SKIP
 
-pkgname = gometalinter
+pkgname = gometalinter-git
 
