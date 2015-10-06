@@ -1,7 +1,7 @@
 
 pkgname=dr14_tmeter
 pkgver=1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Compute the dynamic range DR14 value of the givens audio files"
 arch=(any)
 license=('GPL3')
