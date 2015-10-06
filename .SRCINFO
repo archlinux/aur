@@ -2,7 +2,7 @@
 # Fri Feb 27 10:52:19 UTC 2015
 pkgbase = python-scipy-mkl
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering. Compiled with intel MKL
-	pkgver = 0.15.1
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = http://www.scipy.org/
 	arch = i686
