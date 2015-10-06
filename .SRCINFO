@@ -1,5 +1,5 @@
 pkgbase = auto-complete
-	pkgdesc = A plugin for emacs that allows to auto-complete.Auto Complete Mode is the most intelligent auto-completion extension for GNU Emacs.
+	pkgdesc = An intelligent auto-completion extension for Emacs
 	pkgver = 1.5.0
 	pkgrel = 2
 	url = http://auto-complete.org/

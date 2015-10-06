@@ -3,7 +3,7 @@
 pkgname=auto-complete
 pkgver=1.5.0
 pkgrel=2
-pkgdesc="A plugin for emacs that allows to auto-complete.Auto Complete Mode is the most intelligent auto-completion extension for GNU Emacs."
+pkgdesc="An intelligent auto-completion extension for Emacs"
 arch=('any')
 url="http://auto-complete.org/"
 license=('GPL3')
