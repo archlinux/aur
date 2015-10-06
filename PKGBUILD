@@ -1,23 +1,21 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 
 pkgname=chromeos-pepper-flash
-pkgdesc="Google ChromeOS's Pepper Flash plugin for Chromium (stable version)"
+pkgdesc="Google ChromeOS's Pepper Flash plugin (with DRM enabled) for freshplayerplugin"
 _verbld=7077.134.0
 pkgver=18.0.0.223
 pkgrel=1
 epoch=1
-arch=('armv7h' 'i686' 'x86_64')
+arch=('i686' 'x86_64')
 url="http://www.google.com/chrome"
 license=('custom:chrome')
 conflicts=('chromium-pepper-flash-dev' 'chromium-pepper-flash')
 provides=('pepper-flash')
 makedepends=('e2tools')
 source=(${pkgname}-license.html::https://www.google.com/intl/%s/chrome/eula_text.html)
-source_armv7=("https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_${_verbld}_peach-pi_recovery_stable-channel_pi-mp.bin.zip")
-source_i686=("hhttps://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_${_verbld}_x86-zgb_recovery_stable-channel_zgb-mp-v3.bin.zip")
+source_i686=("https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_${_verbld}_x86-zgb_recovery_stable-channel_zgb-mp-v3.bin.zip")
 source_x86_64=("https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_${_verbld}_zako_recovery_stable-channel_mp-v2.bin.zip")
-sha256sums=('b35811bb330576631e64f7885c66720e0be4ca81afb04328b3a0f288a708e37f')
-sha1sums_armv7h=('da253ad6808858e382927e15218224cb8f8c481b')
+sha256sums=('0daf3cd3d7611a30341419fca636e56a9d7f0f1946cd4e5b4e0365e9e4a3f678')
 sha1sums_i686=('db4541d2af770ba1b39efdb2c3ca4a7c58ede16e')
 sha1sums_x86_64=('40161284cea8ecbcda5219fca16cae57750779d9')
 
@@ -29,9 +27,6 @@ build() {
 	if [ $CARCH == "i686" ]
 	then
 		mv "chromeos_${_verbld}_x86-zgb_recovery_stable-channel_zgb-mp-v3.bin" "chromeos.bin"
-	elif [ $CARCH == "armv7h" ]
-	then
-		mv "chromeos_${_verbld}_peach-pi_recovery_stable-channel_pi-mp.bin" "chromeos.bin"
 	else
 		mv "chromeos_${_verbld}_zako_recovery_stable-channel_mp-v2.bin" "chromeos.bin"
 	fi
