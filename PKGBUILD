@@ -2,7 +2,7 @@
 # Contributor: martinjlowm <martin {at} martinjlowm {dot} dk>
 
 pkgname=zuki-themes-git
-pkgver=r53.0b8043c
+pkgver=r52.26875c5
 pkgrel=1
 pkgdesc="A selection of themes for GTK3, gnome-shell and more."
 arch=('any')
@@ -14,9 +14,7 @@ optdepends=('gnome-themes-standard: Required for the GTK3 theme'
             'ttf-droid: Font family for the Gnome Shell theme')
 install='firefox-theme.install'
 
-# TODO: Revert to the upstream repository when/if the GTK+ 3.16 branch is merged
-# source=("${pkgname}::git+${url}")
-source=("${pkgname}::git+https://github.com/leigh123linux/zuki-themes#branch=gtk-316")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
