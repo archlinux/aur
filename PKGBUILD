@@ -10,7 +10,7 @@ depends=('mono')
 source=("imewlconverter.exe::https://github.com/maz-1/imewlconverter/raw/master/IME%20WL%20Converter/IME%20WL%20Converter/bin/Release/%E6%B7%B1%E8%93%9D%E8%AF%8D%E5%BA%93%E8%BD%AC%E6%8D%A2.exe" 
 		
 	"imewlconverter.desktop")
-md5sums=('a070d839126ea409a1a86c9d18354419'
+md5sums=('SKIP'
 	'80b261c97f83e33070218840cf1387b5')
 
 
