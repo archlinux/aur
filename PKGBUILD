@@ -49,7 +49,7 @@ package() {
     cd "$srcdir/${pkgname}/software/libosmosdr/build/"
     make DESTDIR=${pkgdir} install
     mkdir -p "${pkgdir}/etc/udev/rules.d/"
-    cp "$srcdir/${pkgname}/software/libosmosdr/osmosdr.rules" "${pkgdir}/etc/udev/rules.d/99-mirisdr.rules"
+    cp "$srcdir/${pkgname}/software/libosmosdr/osmosdr.rules" "${pkgdir}/etc/udev/rules.d/99-osmosdr.rules"
 }
 
 # vim:set ts=2 sw=2 et:
