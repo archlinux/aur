@@ -1,4 +1,5 @@
-# Maintainer: Jakob Matthes <jakob.matthes@gmail.com>
+# Maintainer: Eugene Yunak <eugene@yunak.eu>
+# Contributor: Jakob Matthes <jakob.matthes@gmail.com>
 
 pkgname=vim-markdown
 pkgver=20150727
