@@ -1,23 +1,13 @@
 pkgbase = qt-color-widgets-common
 	pkgdesc = Common files used by qt4- and qt5-color-widgets packages
-	pkgver = 0.r183.467bda7
+	pkgver = 0.r187.dca8233
 	pkgrel = 1
 	url = https://github.com/mbasaglia/Qt-Color-Widgets
 	arch = any
 	license = LGPL3
 	makedepends = git
 	source = qt-color-widgets-common::git+git://github.com/mbasaglia/Qt-Color-Widgets.git
-	source = ColorDialog
-	source = ColorPreview
-	source = ColorWheel
-	source = GradientSlider
-	source = HueSlider
 	sha256sums = SKIP
-	sha256sums = 04dc1ca12e261b3a357a58d85cf95f0b8371bb8a6c5487a3048cdfffc434dfc1
-	sha256sums = f2122b1a9d359c1545bf207684c7fb4d126c864c60df15cf19257ca83773f954
-	sha256sums = 0ac2d4f596c45a43c77c1f6bf2e8a107124b7b25b9a9a9bc3ebe7662280a205d
-	sha256sums = e6e51386d62866b3b9de3cbd5cf875557948fc823852542287f3fc29c8c710f5
-	sha256sums = caab7b49e4fc696f69ade36b012ceb4abe97552436d2464f9f62fc785ee60f16
 
 pkgname = qt-color-widgets-common
 
