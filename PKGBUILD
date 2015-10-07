@@ -1,6 +1,6 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=apt
-pkgver=1.0.9.10
+pkgver=1.0.10.2
 pkgrel=1
 pkgdesc="commandline package manager"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ options=()
 install=
 changelog=
 source=(http://ftp.debian.org/debian/pool/main/a/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('f6d9ba405326a84cfcc3266e298ad8963e0c13f1fcfe9f269b56fc0460dce461')
+sha256sums=('f48da7f8107a3a4b814c95a20cc2623f9fea30cf26bd23264cfa7a8cef62bf1b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
