@@ -31,8 +31,8 @@ source=("http://gdlp01.c-wss.com/gds/1/0100005171/01/cnijfilter-source-3.90-1.ta
 	"buildfiles.patch"
 	"mychanges.patch")
 sha512sums=('9ec303dc7209f5534a20e533fc18ec810603f4515655ce67f28f0f35d521185181351fd866d2191939eb02c783b168f637e18888a4e6a1eacc9e93b1b656ebcb'
-            'af0de981c5610f4001b5ab4d6fb042f48879995c1e1434fa3819e02d2030ceaf35b183f8cbab530435af6d452bb88c23e522c51d20e9cb5c81a7ff6a4c2df915'
-            '9b1081c964c7894eefa8b4d11b04c7eafda208f629a373a09999fe8fe8f5ce85f6a697bb14e20a3b3ce795d578d46fde5a431b3f29eb4f0ee70e67477bf6f4c2'
+            'b46027090fc03f1b6503b4532881dfb49bf69eff342d4eedca6ed8e39f896de0ff8f8c5ae3dc8e9b5645a3dd1029390668a48737ce01d58d1b01b899fad56b4c'
+            'd827f8725e899cbeeae883141c55c3c1429797ceb3eaa2d11a1ab6602b4221e120f92fdee7d3ffc08cf99692332b73cb9e1da6b8d5631df3a8071dffbfde799e'
             '1cf54862db74f928a3a1ad0316b9940b843dbc4cae95bbb3d93ab317d248788cf844103bc006b4670c27b0f13952301b5907476a6c7d13ebb0cb5c0a942d6182')
 
 prepare() {
@@ -48,6 +48,7 @@ prepare() {
 build() {
   cd ${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}
 
+  # TODO: it looks like the libaries can also be built for 64 bit natively
   export CC="gcc -m32"
   make mx920
 }
@@ -57,8 +58,8 @@ package() {
   make PACKAGEDIR=${pkgdir} installmx920
 
   install -d ${pkgdir}/usr/lib32/bjlib
-  install -m 644 359/database/* ${pkgdir}/usr/lib32/bjlib/
-  install -s -m 755 359/libs_bin/*.so.* ${pkgdir}/usr/lib32/
+  install -m 644 417/database/* ${pkgdir}/usr/lib32/bjlib/
+  install -s -m 755 417/libs_bin32/*.so.* ${pkgdir}/usr/lib32/
 
   install -D LICENSE-cnijfilter-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-cnijfilter-${pkgver}EN.txt
 }

@@ -13,7 +13,7 @@ post_remove() {
 	if [ -x /sbin/ldconfig ]; then
 	  /sbin/ldconfig /usr/lib32
 	fi
-	MODELNUM=359
+	MODELNUM=417
 	for LIBS in "libcnbpcmcm" "libcnbpcnclapi" "libcnbpcnclbjcmd" "libcnbpcnclui" "libcnbpess" "libcnbpo"; do
 	  if [ -h /usr/lib32/${LIBS}${MODELNUM}.so ]; then
 	    rm -f /usr/lib32/${LIBS}${MODELNUM}.so
