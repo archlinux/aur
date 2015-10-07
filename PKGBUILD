@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 241722 2015-07-03 00:28:23Z foutrelis $
+# $Id: PKGBUILD 247954 2015-10-01 06:07:37Z foutrelis $
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-ubuntu
-pkgver=40.0.2
+pkgver=41.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with global menu integration"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://www.mozilla.org/firefox/"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake'
+makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'gst-plugins-base-libs'
              'inetutils')
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -24,14 +24,14 @@ provides=("firefox=${pkgver}")
 conflicts=('firefox')
 install=firefox.install
 options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.bz2
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         mozconfig
         firefox.desktop
         firefox-install-dir.patch
         vendor.js
         firefox-fixed-loading-icon.png
         unity-menubar.patch)
-sha256sums=('057dd75d6fb4fd264cd175788518d458cb7792fd905a6fa450968526305121fd'
+sha256sums=('47b2cfc26b17559c26b95a584ab14b6efba132ca371b8aa30da2e2167e0612c3'
             '4704798b46be00712a87443be8ed6184dfb5d337e8cc74dbe029c0a25a47add6'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -39,6 +39,7 @@ sha256sums=('057dd75d6fb4fd264cd175788518d458cb7792fd905a6fa450968526305121fd'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
             '7c1028460b0ebc15b9dc54af6d7ec8d33b72b9bf095e4117558de5a525a29fc2')
 #validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
+
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
