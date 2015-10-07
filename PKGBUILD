@@ -2,7 +2,7 @@
 pkgname=mingw-w64-exiv2
 pkgver=0.25
 pkgrel=1
-pkgdesc="Exif and Iptc metadata manipulation library and tools (mingw-w64) X86 VERSION"
+pkgdesc="Exif and Iptc metadata manipulation library and tools (mingw-w64)"
 arch=('any')
 url="http://www.exiv2.org"
 license=('GPL')

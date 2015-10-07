@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-exiv2
-	pkgdesc = Exif and Iptc metadata manipulation library and tools (mingw-w64) X86 VERSION
+	pkgdesc = Exif and Iptc metadata manipulation library and tools (mingw-w64)
 	pkgver = 0.25
 	pkgrel = 1
 	url = http://www.exiv2.org
