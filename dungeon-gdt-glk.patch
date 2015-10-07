@@ -1,0 +1,26 @@
+--- dungeon-gdt/Makefile	2009-11-25 21:44:23.000000000 +0200
++++ dungeon-gdt/Makefile	2015-10-07 07:50:06.162619426 +0300
+@@ -9,8 +9,8 @@
+ #GLKLIBDIR = ../cheapglk
+ #GLKMAKEFILE = Make.cheapglk
+ 
+-GLKINCLUDEDIR = ../glkterm
+-GLKLIBDIR = ../glkterm
++GLKINCLUDEDIR = /usr/include
++GLKLIBDIR = /usr/lib
+ GLKMAKEFILE = Make.glkterm
+ 
+ #GLKINCLUDEDIR = ../xglk
+@@ -25,10 +25,10 @@
+ # next line to a directory that suits you, and then copy the "dundat"
+ # file into that directory. Otherwise, the game will look for "dundat"
+ # in the current directory.
+-DATADIR = .
++DATADIR = /usr/share/dungeon
+ 
+ # To include the in-game debugger, uncomment the following line:
+-# GDT_FLAG = -DHAVE_GDT=1
++GDT_FLAG = -DHAVE_GDT=1
+ 
+ OPTIONS = -g -Wall -Wmissing-prototypes -Wstrict-prototypes -Wno-unused
+ 

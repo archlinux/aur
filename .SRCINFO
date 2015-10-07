@@ -1,0 +1,21 @@
+pkgbase = dungeon-gdt-glk
+	pkgdesc = Dungeon is the original Zork text adventure.
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://gunkies.org/wiki/Zork
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = make
+	depends = glkterm
+	provides = dungeon
+	provides = dungeon-glk
+	conflicts = dungeon
+	conflicts = dungeon-glk
+	source = http://www.ifarchive.org/if-archive/games/source/dungeon-gdt-glk.tar.gz
+	source = dungeon-gdt-glk.patch
+	sha256sums = d6587be3f10dda85e152bb6c17966157bc9378f4ad6013b81b9fd285fd122032
+	sha256sums = f43151034031bcb6881802b3a4ee739302adc3ce8c7497f93b20262d13603178
+
+pkgname = dungeon-gdt-glk
+
