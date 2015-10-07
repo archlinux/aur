@@ -8,9 +8,9 @@ pkgbase = valentina-studio
 	license = custom
 	makedepends = rpmextract
 	source_i686 = http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm
-	sha256sums_i686 = 2ffa0b9104b7b96750d7569ceecd49a0bb8ab757438db9b17a9ad87b3b15fd5d
+	sha256sums_i686 = d8a795e635b4ea48ec26373164ae0d285c0772ee1f701640c4ca6ad118853abe
 	source_x86_64 = http://www.valentina-db.com/en/studio/download/current/vstudio_x64_5_lin-rpm
-	sha256sums_x86_64 = 4bb0e46e248e3a76b5196310f4dd31a626ef2b838d21c5a98f27745d1b1fb398
+	sha256sums_x86_64 = 6d96ef503ac92d23a975b2b41455ee59e5213acce10ddb5ae98237203efa57d2
 
 pkgname = valentina-studio
 
