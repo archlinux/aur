@@ -1,0 +1,23 @@
+pkgbase = krislibrary-git
+	pkgdesc = Basic math, geometry, and robotics, and other routines used in projects from Kris Hauser's lab
+	pkgver = r331.c8ff3fe
+	pkgrel = 1
+	url = https://github.com/krishauser/KrisLibrary
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = boost
+	depends = freeglut
+	depends = glpk
+	depends = glui
+	depends = libgl
+	depends = tinyxml
+	depends = assimp
+	source = git+https://github.com/krishauser/KrisLibrary
+	sha256sums = SKIP
+
+pkgname = krislibrary-git
+
