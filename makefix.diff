@@ -1,0 +1,27 @@
+diff --git a/Makefile b/Makefile
+index 0fb6aaa..7ca9545 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,2 +1,20 @@
+-all:
+-	gcc -I/usr/local/include  -std=c99 -shared -O2 -o stereo_widener.so stereo_widener.c -fPIC -Wall -march=native
++CC?=gcc
++OUT=stereo_widener.so
++
++CFLAGS+=-std=c99 -fPIC -Wall
++LDFLAGS+=-shared
++
++SOURCES=stereo_widener.c
++
++OBJECTS=$(SOURCES:.c=.o)
++
++all: $(SOURCES) $(OUT)
++
++$(OUT): $(OBJECTS)
++	$(CC) $(CFLAGS) $(OBJECTS)  $(LDFLAGS) -o $@
++
++.c.o:
++	$(CC) $(CFLAGS) $< -c -o $@
++
++clean:
++	rm $(OBJECTS) $(OUT)

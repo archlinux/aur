@@ -1,0 +1,16 @@
+pkgbase = deadbeef-stereo-widener-git
+	pkgdesc = stereo widener plugin for the DeaDBeeF music player
+	pkgver = 5.d3990d7
+	pkgrel = 1
+	url = https://github.com/Alexey-Yakovenko/stereo-widener
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = deadbeef
+	source = git+https://github.com/Alexey-Yakovenko/stereo-widener.git
+	source = makefix.diff
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = deadbeef-stereo-widener-git
+
