@@ -1,6 +1,6 @@
 # Maintainer: Oleg Plakhotniuk <olegus8@gmail.com>
 pkgname=hinance
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Automated personal bookkeeping for hackers."
 arch=('any')
