@@ -1,6 +1,6 @@
 pkgbase = crate
 	pkgdesc = shared nothing, fully searchable, document oriented cluster datastore.
-	pkgver = 0.50.6
+	pkgver = 0.50.7
 	pkgrel = 1
 	url = http://crate.io
 	install = crate.install
@@ -9,9 +9,9 @@ pkgbase = crate
 	depends = java-runtime
 	backup = etc/crate/crate.yml
 	backup = etc/crate/logging.yml
-	source = https://cdn.crate.io/downloads/releases/crate-0.50.6.tar.gz
+	source = https://cdn.crate.io/downloads/releases/crate-0.50.7.tar.gz
 	source = crate.service
-	md5sums = 47ffe300439743b36cefa509bff4456d
+	md5sums = 67551c502d5c59ce7760e4df19f22e9b
 	md5sums = 9f06bbc1eb35031a09f25b47e7d145eb
 
 pkgname = crate
