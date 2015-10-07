@@ -5,11 +5,11 @@
 pkgname=eclipse-checkstyle
 pkgver=6.11.0
 _buildtime=201510052139
-pkgrel=2
+pkgrel=3
 pkgdesc="Checkstyle plugin for Eclipse IDE"
 arch=('any')
 url="http://eclipse-cs.sourceforge.net/"
-license=('LGPL2')
+license=('LGPL2.1')
 depends=('eclipse>=4.5.0')
 options=('!strip')
 source=("download.zip::http://downloads.sourceforge.net/project/eclipse-cs/Eclipse%20Checkstyle%20Plug-in/${pkgver}/net.sf.eclipsecs-updatesite_${pkgver}.${_buildtime}-bin.zip")
