@@ -1,6 +1,6 @@
 pkgbase = ctrulib-git
 	pkgdesc = C library for writing user mode arm11 code for the 3DS (CTR)
-	pkgver = r686.e7ea04e
+	pkgver = r804.b9e5ddb
 	pkgrel = 1
 	url = https://github.com/smealum/ctrulib
 	arch = i686

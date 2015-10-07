@@ -2,7 +2,7 @@
 
 _pkgbase=ctrulib
 pkgname="$_pkgbase-git"
-pkgver=r686.e7ea04e
+pkgver=r804.b9e5ddb
 pkgrel=1
 pkgdesc="C library for writing user mode arm11 code for the 3DS (CTR)"
 arch=('i686' 'x86_64')
@@ -24,11 +24,6 @@ pkgver() {
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-#prepare() {
-#  cd "$srcdir/$_pkgbase"
-#  git apply /tmp/rmdir.patch
-#}
-
 build() {
   cd "$srcdir/$_pkgbase/libctru"
   unset CFLAGS
@@ -41,15 +36,17 @@ build() {
 
 package() {
   source /etc/profile.d/devkitarm.sh
-  export _DEVKITPRO="$pkgdir/$DEVKITPRO"
+
+  # We need to fake the DEVKITPRO variable for make install to work.
+  export _DEVKITPRO="$DEVKITPRO"
+  export DEVKITPRO="$pkgdir/$_DEVKITPRO"
 
   cd "$srcdir/$_pkgbase"
-  install -dm755 "$_DEVKITPRO/examples"
-  cp -r examples "$_DEVKITPRO/examples/3ds"
+  install -dm755 "$DEVKITPRO/examples"
+  cp -r examples "$DEVKITPRO/examples/3ds"
 
   cd libctru
-  install -dm755 "$_DEVKITPRO/$_libname"
-  cp -r include lib "$_DEVKITPRO/$_libname"
+  make DESTDIR="$pkgdir/" install
 
   # Don’t fail when doxygen isn’t present.
   hash doxygen && (
@@ -59,6 +56,6 @@ package() {
 
   # Make $CTRULIB available system-wide.
   install -dm755 "$pkgdir/etc/profile.d"
-  echo "export CTRULIB='$DEVKITPRO/$_libname'" > "$pkgdir/etc/profile.d/$_pkgbase.sh"
+  echo "export CTRULIB='$_DEVKITPRO/$_libname'" > "$pkgdir/etc/profile.d/$_pkgbase.sh"
   chmod +x "$pkgdir/etc/profile.d/$_pkgbase.sh"
 }
