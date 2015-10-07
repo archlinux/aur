@@ -1,2 +1,4 @@
-*.tar.xz
-*.src.tar.gz
+pkg/
+src/
+eclipse-checkstyle-*-*-any.pkg.tar.xz
+download.zip

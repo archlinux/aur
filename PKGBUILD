@@ -2,21 +2,20 @@
 # Contributor: Alistair Dutton <kelveden at gmail.com>
 
 pkgname=eclipse-checkstyle
-pkgver=6.5.0
-_pkgver_date=201504121610
+pkgver=6.9.0
+_buildtime=201508291549
 pkgrel=1
 pkgdesc="Checkstyle plugin for Eclipse"
 arch=('any')
 url="http://eclipse-cs.sourceforge.net/"
-license=('LGPL')
-depends=('eclipse')
-optdepends=()
-source=("http://sourceforge.net/projects/eclipse-cs/files/Eclipse%20Checkstyle%20Plug-in/${pkgver}/net.sf.eclipsecs-updatesite_${pkgver}.${_pkgver_date}-bin.zip")
+license=('LGPL2')
+depends=('eclipse>=4.5.0')
+options=('!strip')
+source=("download.zip::http://downloads.sourceforge.net/project/eclipse-cs/Eclipse%20Checkstyle%20Plug-in/${pkgver}/net.sf.eclipsecs-updatesite_${pkgver}.${_buildtime}-bin.zip")
 sha256sums=('02abf1680bdac01a27cbb0cab9a72b9c6015baa41d0b683bbc4485d314a72f07')
 
 package() {
-  _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
-
+  _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
   cd ${srcdir}
 
   # Features
@@ -35,3 +34,4 @@ package() {
     install -Dm644 ${_plugin} ${_dest}/${_plugin}
   done
 }
+
