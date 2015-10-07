@@ -1,0 +1,18 @@
+pkgbase = lib32-qtcurve-gtk
+	pkgdesc = The QtCurve style engine for GTK. Customized for Plasma 5.
+	pkgver = 1.8.18.6
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/base/qtcurve
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qtcurve-gtk
+	depends = lib32-gtk2
+	provides = lib32-qtcurve-gtk2
+	conflicts = lib32-qtcurve-gtk2
+	source = git://anongit.kde.org/qtcurve.git
+	sha256sums = SKIP
+
+pkgname = lib32-qtcurve-gtk
+
