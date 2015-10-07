@@ -1,6 +1,6 @@
 pkgbase = octoprint
 	pkgdesc = OctoPrint provides a responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)
-	pkgver = 1.2.4
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/foosel/OctoPrint
 	install = octoprint.install
@@ -26,7 +26,7 @@ pkgbase = octoprint
 	optdepends = v4l-mjpg-stream: stream images from a Video4Linux capable camera
 	provides = octoprint
 	conflicts = octoprint
-	source = octoprint-1.2.4.tar.gz::https://github.com/foosel/OctoPrint/archive/1.2.4.tar.gz
+	source = octoprint-1.2.6.tar.gz::https://github.com/foosel/OctoPrint/archive/1.2.6.tar.gz
 	source = octoprint.run
 	source = octoprint.service
 	md5sums = SKIP

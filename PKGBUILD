@@ -4,7 +4,7 @@
 # Contributor: Thermionix <thermionix@gmail.com>
 
 pkgname=octoprint
-pkgver=1.2.4
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="OctoPrint provides a responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=('i686' 'x86_64' 'armv6' 'armv6h')
