@@ -1,0 +1,62 @@
+From 44c6df308a2e5c331b44797c8537da430bb92df7 Mon Sep 17 00:00:00 2001
+From: Christian Persch <chpe@gnome.org>
+Date: Sat, 19 Sep 2015 16:58:34 +0200
+Subject: [PATCH] window: Exit early from screen-removed handler for now empty
+ notebook
+
+When the notebook is now empty, it's not necessary to change anything else
+since the window will be closed right away. Since GtkNotebook doesn't send
+the switch-page signal when removing the last and only screen in the notebook,
+priv->active_tab will point to an already freed object, which causes a
+crash when the window tries to update itself for the new active tab.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=755240
+(cherry picked from commit c8704ba3fef98d4acd59ec061566ff540b77c528)
+---
+ src/terminal-window.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/src/terminal-window.c b/src/terminal-window.c
+index e065ac1de49d..91279663fb50 100644
+--- a/src/terminal-window.c
++++ b/src/terminal-window.c
+@@ -3468,10 +3468,24 @@ mdi_screen_removed_cb (TerminalMdiContainer *container,
+                                         G_CALLBACK (screen_close_cb),
+                                         window);
+ 
++  /* We already got a switch-page signal whose handler sets the active tab to the
++   * new active tab, unless this screen was the only one in the notebook, so
++   * priv->active_tab is valid here.
++   */
++
++  pages = terminal_mdi_container_get_n_screens (container);
++  if (pages == 0)
++    {
++      priv->active_screen = NULL;
++
++      /* That was the last tab in the window; close it. */
++      gtk_widget_destroy (GTK_WIDGET (window));
++      return;
++    }
++
+   terminal_window_update_tabs_menu_sensitivity (window);
+   terminal_window_update_search_sensitivity (screen, window);
+ 
+-  pages = terminal_mdi_container_get_n_screens (container);
+   if (pages == 1)
+     {
+       TerminalScreen *active_screen = terminal_mdi_container_get_active_screen (container);
+@@ -3479,10 +3493,6 @@ mdi_screen_removed_cb (TerminalMdiContainer *container,
+ 
+       terminal_window_update_size (window);
+     }
+-  else if (pages == 0)
+-    {
+-      gtk_widget_destroy (GTK_WIDGET (window));
+-    }
+ }
+ 
+ gboolean
+-- 
+2.1.0
+

@@ -1,0 +1,43 @@
+From ece6bbee10191c60674669c810915ae741ee6d7c Mon Sep 17 00:00:00 2001
+From: Christian Persch <chpe@gnome.org>
+Date: Sat, 19 Sep 2015 16:56:15 +0200
+Subject: [PATCH] notebook: Don't change show-tabs when going to empty notebook
+
+The window will close anyway, so the change is unnecessary. This fixes
+a crash in terminal-window's show-tabs change handler.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=755240
+(cherry picked from commit 7b7c38d01b198c9e2b32e2e6161472178f7492fa)
+---
+ src/terminal-notebook.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/terminal-notebook.c b/src/terminal-notebook.c
+index d6c9dd101c94..34236f9e7a43 100644
+--- a/src/terminal-notebook.c
++++ b/src/terminal-notebook.c
+@@ -58,14 +58,20 @@ update_tab_visibility (TerminalNotebook *notebook,
+ {
+   TerminalNotebookPrivate *priv = notebook->priv;
+   GtkNotebook *gtk_notebook = GTK_NOTEBOOK (notebook);
++  int new_n_pages;
+   gboolean show_tabs;
+ 
++  new_n_pages = gtk_notebook_get_n_pages (gtk_notebook) + change;
++  /* Don't do anything if we're going to have zero pages (and thus close the window) */
++  if (new_n_pages == 0)
++    return;
++
+   switch (priv->policy) {
+   case GTK_POLICY_ALWAYS:
+     show_tabs = TRUE;
+     break;
+   case GTK_POLICY_AUTOMATIC:
+-    show_tabs = (gtk_notebook_get_n_pages (gtk_notebook) + change) > 1;
++    show_tabs = new_n_pages > 1;
+     break;
+   case GTK_POLICY_NEVER:
+ #if GTK_CHECK_VERSION (3, 16, 0)
+-- 
+2.1.0
+

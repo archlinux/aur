@@ -1,0 +1,27 @@
+From 08405736ab32161a003a891a11efc0820245b4e5 Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@gnome.org>
+Date: Tue, 29 Sep 2015 23:42:53 -0500
+Subject: [PATCH] window: Use a symbolic new tab icon
+
+https://developer.gnome.org/hig/3.18/icons-and-artwork.html.en
+
+https://bugzilla.gnome.org/show_bug.cgi?id=755825
+---
+ src/terminal-window.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/terminal-window.c b/src/terminal-window.c
+index f673e99..6567196 100644
+--- a/src/terminal-window.c
++++ b/src/terminal-window.c
+@@ -2195,7 +2195,7 @@ terminal_window_fill_notebook_action_box (TerminalWindow *window)
+   /* Create the NewTerminal button */
+   action = gtk_action_group_get_action (priv->action_group, "FileNewTab");
+ 
+-  button = terminal_icon_button_new ("list-add");
++  button = terminal_icon_button_new ("list-add-symbolic");
+   gtk_activatable_set_related_action (GTK_ACTIVATABLE (button), action);
+   gtk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+   gtk_widget_show (button);
+-- 
+2.4.3

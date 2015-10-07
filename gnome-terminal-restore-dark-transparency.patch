@@ -1,4 +1,4 @@
-From a63d59c288545a8199334e78f1ed1e99d9c58d57 Mon Sep 17 00:00:00 2001
+From 0a97a742fc4153caa76548e075cb731e96376a67 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/5] Restore transparency
@@ -269,7 +269,7 @@ index e065ac1de49d..a146a62fb098 100644
 2.1.0
 
 
-From 3343f7710e0cdbb6c5b8fbed5316e176becb09e8 Mon Sep 17 00:00:00 2001
+From 9461b958aaf6bf40afa389850fc56cd087320a43 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/5] window: Make the drawing robust across all themes
@@ -331,7 +331,7 @@ index a146a62fb098..5117c06653c0 100644
 2.1.0
 
 
-From 7e4d713503e5105a4bb8149c5e73a444b5726303 Mon Sep 17 00:00:00 2001
+From c1efbc4c8a1d018f3724a2ca494ea5b543130612 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 13:22:11 +0100
 Subject: [PATCH 3/5] Revert "prefs: Remove dark theme pref"
@@ -453,7 +453,7 @@ index e35990d728dc..d4f44d2f538e 100644
 2.1.0
 
 
-From b68a180427249e040ec1ced6461b5ce5dfab5d04 Mon Sep 17 00:00:00 2001
+From 4e92b51530a182aaf87a7b3ca8e1292078c86093 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 13:22:21 +0100
 Subject: [PATCH 4/5] Revert "help: Remove dark theme pref"
@@ -528,7 +528,7 @@ index e3ca62732cf6..4bacc91265de 100644
 2.1.0
 
 
-From 46fee8a5c659a36867cd97c80de9d4a257ed5c6b Mon Sep 17 00:00:00 2001
+From 59a5e9751c868bfedd1ca19994760d3cf3768487 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 5/5] Restore translations for dark terminals and transparency
@@ -580,7 +580,7 @@ Subject: [PATCH 5/5] Restore translations for dark terminals and transparency
  po/ko.po          | 11 +++++++----
  po/ku.po          |  4 ++--
  po/lt.po          | 11 +++++++----
- po/lv.po          |  4 ++--
+ po/lv.po          |  3 +++
  po/mai.po         |  4 ++--
  po/mg.po          |  4 ++--
  po/mk.po          |  4 ++--
@@ -623,7 +623,7 @@ Subject: [PATCH 5/5] Restore translations for dark terminals and transparency
  po/zh_CN.po       | 11 +++++++----
  po/zh_HK.po       |  3 +++
  po/zh_TW.po       | 11 +++++++----
- 89 files changed, 327 insertions(+), 216 deletions(-)
+ 89 files changed, 328 insertions(+), 214 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
 index 27a7e9640668..04a8ad9f36a3 100644
@@ -838,10 +838,10 @@ index 0739e201f83b..8b1ff006857a 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/da.po b/po/da.po
-index 74b7d0beee7d..ec1b391c2a7a 100644
+index f420e1cdbbff..217b176092a9 100644
 --- a/po/da.po
 +++ b/po/da.po
-@@ -2083,11 +2083,11 @@ msgstr "_Luk vindue"
+@@ -2094,11 +2094,11 @@ msgstr "_Luk vindue"
  #~ msgid "Missing command"
  #~ msgstr "Manglende kommando"
  
@@ -857,7 +857,7 @@ index 74b7d0beee7d..ec1b391c2a7a 100644
  
  #~ msgid "COMMAND"
  #~ msgstr "KOMMANDO"
-@@ -2987,8 +2987,8 @@ msgstr "_Luk vindue"
+@@ -2999,8 +2999,8 @@ msgstr "_Luk vindue"
  #~ msgid "_Solid color"
  #~ msgstr "_Ensfarvet"
  
@@ -869,10 +869,10 @@ index 74b7d0beee7d..ec1b391c2a7a 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/de.po b/po/de.po
-index 0d46e223c669..4101ba2c6eef 100644
+index 7fbad63bb009..9d376b53eec9 100644
 --- a/po/de.po
 +++ b/po/de.po
-@@ -2125,11 +2125,11 @@ msgstr "Fenster _schließen"
+@@ -2134,11 +2134,11 @@ msgstr "Fenster _schließen"
  #~ msgid "Missing command"
  #~ msgstr "Fehlender Befehl"
  
@@ -888,7 +888,7 @@ index 0d46e223c669..4101ba2c6eef 100644
  
  #~ msgid "Set the terminal title"
  #~ msgstr "Den Titel des Terminals festlegen"
-@@ -3057,8 +3057,8 @@ msgstr "Fenster _schließen"
+@@ -3066,8 +3066,8 @@ msgstr "Fenster _schließen"
  #~ msgid "Background image _scrolls"
  #~ msgstr "Hintergrundbild _folgt Bildlauf"
  
@@ -915,10 +915,10 @@ index ecb8fd59329c..290934ad3e0f 100644
  #: ../src/profile-preferences.glade.h:78
  #, fuzzy
 diff --git a/po/el.po b/po/el.po
-index b81802c913a5..573a99bb52ef 100644
+index 587527cb7a99..b0dbdd2a60a7 100644
 --- a/po/el.po
 +++ b/po/el.po
-@@ -2121,11 +2121,11 @@ msgstr "Κ_λείσιμο παραθύρου"
+@@ -2128,11 +2128,11 @@ msgstr "Κ_λείσιμο παραθύρου"
  #~ msgid "Missing command"
  #~ msgstr "Λείπει εντολή"
  
@@ -934,7 +934,7 @@ index b81802c913a5..573a99bb52ef 100644
  
  #~ msgid "_Use the system fixed width font"
  #~ msgstr "_Χρήση της γραμματοσειράς σταθερού πλάτους του συστήματος"
-@@ -2289,3 +2289,6 @@ msgstr "Κ_λείσιμο παραθύρου"
+@@ -2296,3 +2296,6 @@ msgstr "Κ_λείσιμο παραθύρου"
  
  #~ msgid "_Input Methods"
  #~ msgstr "_Μέθοδοι εισαγωγής"
@@ -1060,13 +1060,13 @@ index 97bb9762528f..9e32fb740c57 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/fa.po b/po/fa.po
-index 2090863eddaf..b9a05af5c969 100644
+index 882aae98a939..93007dc7450c 100644
 --- a/po/fa.po
 +++ b/po/fa.po
-@@ -2027,3 +2027,6 @@ msgstr "ذخیره به نام..."
- #: ../src/terminal-window.c:3456
- msgid "_Title:"
- msgstr "_عنوان:"
+@@ -2239,3 +2239,6 @@ msgstr "_بستن پنجره"
+ 
+ #~ msgid "_Title:"
+ #~ msgstr "_عنوان:"
 +
 +msgid "Transparent background"
 +msgstr "پس‌زمینه‌ی شفاف"
@@ -1163,10 +1163,10 @@ index 04a76e1de96a..4af1d80ececc 100644
 +msgid "Use _dark theme variant"
 +msgstr "Cleachd tionndadh _dorcha dhen ùrlar"
 diff --git a/po/gl.po b/po/gl.po
-index 1429c66bcaa5..584072278739 100644
+index ad9af1ba5ddc..bdbfa91fcf13 100644
 --- a/po/gl.po
 +++ b/po/gl.po
-@@ -2101,11 +2101,11 @@ msgstr "P_echar a xanela"
+@@ -2106,11 +2106,11 @@ msgstr "P_echar a xanela"
  #~ msgid "Missing command"
  #~ msgstr "Falta a orde"
  
@@ -1182,7 +1182,7 @@ index 1429c66bcaa5..584072278739 100644
  
  #~ msgid "_Use the system fixed width font"
  #~ msgstr "_Usar o tipo de letra de largura fixa do sistema"
-@@ -3055,8 +3055,8 @@ msgstr "P_echar a xanela"
+@@ -3060,8 +3060,8 @@ msgstr "P_echar a xanela"
  #~ msgid "Background image _scrolls"
  #~ msgstr "A imaxe de fondo _desprázase"
  
@@ -1312,35 +1312,35 @@ index 558490157ada..caadbba37c5d 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/id.po b/po/id.po
-index 346b5d815552..244844430503 100644
+index 595a325a574d..99c29b6d855b 100644
 --- a/po/id.po
 +++ b/po/id.po
-@@ -2068,3 +2068,6 @@ msgstr ""
- #: ../src/terminal-window.c:3652
+@@ -2058,3 +2058,6 @@ msgstr ""
+ #: ../src/terminal-window.c:3694
  msgid "C_lose Window"
  msgstr "Tutup Jende_la"
 +
 +msgid "Transparent background"
 +msgstr "Latar belakang transparan"
 diff --git a/po/it.po b/po/it.po
-index 5a1847f3a108..2eb1d621e662 100644
+index 491303dfe349..af13ad9ca310 100644
 --- a/po/it.po
 +++ b/po/it.po
-@@ -2093,3 +2093,6 @@ msgstr ""
- #: ../src/terminal-window.c:3652
- msgid "C_lose Window"
- msgstr "Chiudi _finestra"
+@@ -2105,3 +2105,6 @@ msgstr "Chiudi _finestra"
+ 
+ #~ msgid "_Update login records when command is launched"
+ #~ msgstr "_Aggiornare i record di login quando il comando viene eseguito"
 +
 +msgid "Transparent background"
 +msgstr "Sfondo trasparente"
 diff --git a/po/ja.po b/po/ja.po
-index 4f8f4dec0bb0..ce2ec952ca76 100644
+index f7235d9f4a0b..63d7fd7bb943 100644
 --- a/po/ja.po
 +++ b/po/ja.po
-@@ -1902,3 +1902,6 @@ msgstr "この端末には未だ実行中のプロセスが存在しています
- #: ../src/terminal-window.c:3652
- msgid "C_lose Window"
- msgstr "ウィンドウを閉じる(_L)"
+@@ -1907,3 +1907,6 @@ msgstr "ウィンドウを閉じる(_L)"
+ 
+ #~ msgid "_Update login records when command is launched"
+ #~ msgstr "コマンドを実行した時にログイン記録を更新する(_U)"
 +
 +msgid "Transparent background"
 +msgstr "透過な画像にする"
@@ -1358,10 +1358,10 @@ index 8415e88f94ff..3717b7e75dcd 100644
  
  #: ../src/gnome-terminal.glade2.h:87
 diff --git a/po/kk.po b/po/kk.po
-index dba7503c4286..2961b87f3b2a 100644
+index ed86f1b70460..639411cfce86 100644
 --- a/po/kk.po
 +++ b/po/kk.po
-@@ -2019,14 +2019,17 @@ msgstr "Терезені жа_бу"
+@@ -2024,14 +2024,17 @@ msgstr "Терезені жа_бу"
  #~ msgid "Missing command"
  #~ msgstr "Команда жоқ болып тұр"
  
@@ -1395,10 +1395,10 @@ index c887f88a2c87..e899ef3ca8c1 100644
 +msgid "Transparent background"
 +msgstr "ಪಾರದರ್ಶಕ ಹಿನ್ನಲೆ"
 diff --git a/po/ko.po b/po/ko.po
-index 0700e25f9ec8..32914679e998 100644
+index 57c120389ac9..a41296a7fb0a 100644
 --- a/po/ko.po
 +++ b/po/ko.po
-@@ -2073,8 +2073,11 @@ msgstr "창 닫기(_L)"
+@@ -2079,8 +2079,11 @@ msgstr "창 닫기(_L)"
  #~ msgid "Missing command"
  #~ msgstr "명령어 없음"
  
@@ -1430,10 +1430,10 @@ index 221825b29cd9..96e35811337b 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/lt.po b/po/lt.po
-index c906132e1a9e..dbe03e9abc8d 100644
+index 8c9c9e660d28..71411ab7cf5b 100644
 --- a/po/lt.po
 +++ b/po/lt.po
-@@ -2078,8 +2078,11 @@ msgstr "_Užverti langą"
+@@ -2085,8 +2085,11 @@ msgstr "_Užverti langą"
  #~ msgid "Missing command"
  #~ msgstr "Trūksta komandos"
  
@@ -1450,20 +1450,16 @@ index c906132e1a9e..dbe03e9abc8d 100644
 +msgid "Transparent background"
 +msgstr "Permatomas fonas"
 diff --git a/po/lv.po b/po/lv.po
-index a50f529c31b8..b29541fceb45 100644
+index 80a13ab6cac9..0360452e7b61 100644
 --- a/po/lv.po
 +++ b/po/lv.po
-@@ -3016,8 +3016,8 @@ msgstr "Aizvērt _logu"
- #~ msgid "Background image _scrolls"
- #~ msgstr "Fona attēla ritināšanā_s"
- 
--#~ msgid "_Transparent background"
--#~ msgstr "_Caurspīdīgs fons"
+@@ -2048,3 +2048,6 @@ msgstr ""
+ #: ../src/terminal-window.c:3694
+ msgid "C_lose Window"
+ msgstr "Aizvērt _logu"
++
 +msgid "Transparent background"
 +msgstr "Caurspīdīgs fons"
- 
- #~ msgid "S_hade transparent or image background:"
- #~ msgstr "_Aizēnot caurspīdīgo vai attēla fonu:"
 diff --git a/po/mai.po b/po/mai.po
 index 9b984a068fda..a3c0e178ae67 100644
 --- a/po/mai.po
@@ -1698,10 +1694,10 @@ index 9c95b66e7185..5e5b8ba4f104 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "S/ਸਵਿੱਚ ਚੈਲੰਜ਼ ਜਵਾਬ"
 diff --git a/po/pl.po b/po/pl.po
-index deb91b7d10bc..f7721713a0ca 100644
+index 609ffc36b5a4..f50b535b80fd 100644
 --- a/po/pl.po
 +++ b/po/pl.po
-@@ -2116,3 +2116,6 @@ msgid ""
+@@ -2106,3 +2106,6 @@ msgid ""
  msgstr ""
  "Wartość między 0 a 100, gdzie 0 oznacza nieprzezroczystość, a 100 oznacza "
  "całkowitą przezroczystość."
@@ -1797,11 +1793,11 @@ index 179dd77fd166..f7fc7ae070cf 100644
  #: ../src/profile-preferences.glade.h:78
  msgid "_Underline color:"
 diff --git a/po/ru.po b/po/ru.po
-index cf87d021e781..7db31b8af3f1 100644
+index 1a6fbd95b4ba..4551e12f255b 100644
 --- a/po/ru.po
 +++ b/po/ru.po
-@@ -2056,3 +2056,6 @@ msgstr ""
- #: ../src/terminal-window.c:3656
+@@ -2065,3 +2065,6 @@ msgstr ""
+ #: ../src/terminal-window.c:3694
  msgid "C_lose Window"
  msgstr "_Закрыть окно"
 +
@@ -1863,10 +1859,10 @@ index 3a8ede3b61f4..b9744bc7c14c 100644
 +msgid "Transparent background"
 +msgstr "Priehľadné pozadie"
 diff --git a/po/sl.po b/po/sl.po
-index 782fd76c3563..247b87b021e4 100644
+index 72baf7b1e8ad..d7ff33ccfe8e 100644
 --- a/po/sl.po
 +++ b/po/sl.po
-@@ -2058,11 +2058,11 @@ msgstr "_Zapri okno"
+@@ -2066,11 +2066,11 @@ msgstr "_Zapri okno"
  #~ msgid "Missing command"
  #~ msgstr "Manjka ukaz"
  
@@ -1882,7 +1878,7 @@ index 782fd76c3563..247b87b021e4 100644
  
  #~ msgid "Set the terminal title"
  #~ msgstr "Nastavi naziv terminala"
-@@ -2314,3 +2314,6 @@ msgstr "_Zapri okno"
+@@ -2322,3 +2322,6 @@ msgstr "_Zapri okno"
  
  #~ msgid "_Profile Preferences…"
  #~ msgstr "Možnosti _profila ..."
@@ -1959,7 +1955,7 @@ index c82646ca4451..4ba3d9588643 100644
 +msgid "Transparent background"
 +msgstr "Providna pozadina"
 diff --git a/po/sv.po b/po/sv.po
-index ae8410940fce..eaae659d9ef3 100644
+index 745f7d985494..2cfce8bc6254 100644
 --- a/po/sv.po
 +++ b/po/sv.po
 @@ -2073,5 +2073,8 @@ msgstr "Stän_g fönster"
@@ -2053,11 +2049,11 @@ index f7a8d674657e..b0cc3a6014c2 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/tr.po b/po/tr.po
-index 02a704a93d49..78f26ba59dd7 100644
+index f7c68e62d9da..316587c0a7b2 100644
 --- a/po/tr.po
 +++ b/po/tr.po
-@@ -1968,3 +1968,6 @@ msgstr "Hala bir süreç bu uçbirimde çalışıyor. Uçbirimi kapatmak onu son
- #: ../src/terminal-window.c:3652
+@@ -1963,3 +1963,6 @@ msgstr "Hala bir süreç bu uçbirimde çalışıyor. Uçbirimi kapatmak onu son
+ #: ../src/terminal-window.c:3694
  msgid "C_lose Window"
  msgstr "_Pencereyi Kapat"
 +
@@ -2205,10 +2201,10 @@ index eb0ede77e889..aceb184b2440 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 diff --git a/po/zh_TW.po b/po/zh_TW.po
-index a32a53906a99..5d0ffa77f19f 100644
+index 8326ad3b0171..a9062135a180 100644
 --- a/po/zh_TW.po
 +++ b/po/zh_TW.po
-@@ -2029,11 +2029,11 @@ msgstr "關閉視窗(_L)"
+@@ -2034,11 +2034,11 @@ msgstr "關閉視窗(_L)"
  #~ msgid "Missing command"
  #~ msgstr "遺失指令"
  
@@ -2224,7 +2220,7 @@ index a32a53906a99..5d0ffa77f19f 100644
  
  #~ msgid "_Use the system fixed width font"
  #~ msgstr "使用系統的固定寬度字型(_U)"
-@@ -2379,3 +2379,6 @@ msgstr "關閉視窗(_L)"
+@@ -2383,3 +2383,6 @@ msgstr "關閉視窗(_L)"
  
  #~ msgid "Show session management options"
  #~ msgstr "顯示作業階段管理選項"
