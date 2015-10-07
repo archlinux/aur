@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=coz-git
-pkgver=r241.3a4fa41
+pkgver=r246.479a3c1
 pkgrel=1
 pkgdesc="a new kind of profiler that measures optimization potential"
 arch=('x86_64')
@@ -10,11 +10,8 @@ depends=('python' 'clang>=3.1')
 makedepends=('git')
 options=()
 install=
-source=('coz-git::git+https://github.com/plasma-umass/coz.git'
-  'python2.patch' 'fix-preload-path.patch')
-md5sums=('SKIP'
-         'f3ff4dcc098eb00e949b362594918517'
-         '273946cb7d19ad5697c68893b312cd64')
+source=('coz-git::git+https://github.com/plasma-umass/coz.git' 'fix-preload-path.patch')
+md5sums=('SKIP' '273946cb7d19ad5697c68893b312cd64')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -23,8 +20,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  msg2 "Use python2"
-  patch -Np1 < "$srcdir/python2.patch"
   msg2 "Fix LD_PRELOAD path set by coz wrapper"
   patch -Np1 < "$srcdir/fix-preload-path.patch"
 }
