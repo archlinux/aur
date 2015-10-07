@@ -1,5 +1,7 @@
-# Maintainer: 0xfc <sfc_0@yahoo.com.cn>
+# Maintainer: Yunhui Fu <yhfudev@gmail.com>
+# Contributor: 0xfc <sfc_0@yahoo.com.cn>
 # Modified from rtl-sdr-git PKGBUILD
+
 pkgname=gr-osmosdr-git
 pkgver=0.1.4.48.g86ad584
 pkgrel=1
@@ -12,6 +14,8 @@ depends=(
     'swig'
     'rtl-sdr'
     'libuhd'
+    'libmirisdr-git'
+    'libosmosdr-git'
     'airspy-git'
     )
 makedepends=(
