@@ -1,3 +1,4 @@
+# Maintainer: karronoli <karo+arch at karonori.com>
 pkgname=redpen
 _pkgver=1.4
 pkgver=${_pkgver}.0

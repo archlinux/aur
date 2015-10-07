@@ -1,13 +1,13 @@
 pkgbase = redpen
 	pkgdesc = A document checker. RedPen is a proofreading tool to help writers or programmers.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://redpen.cc/
 	arch = any
 	license = Apache
-	depends = java-runtime
-	source = https://github.com/redpen-cc/redpen/releases/download/v1.3.0/redpen-1.3.0.tar.gz
-	sha256sums = 3e3aa98fb83acb6c4db96dcc5c44e02fee211dc3edf0fad9cecf1eb374df3e8b
+	depends = java-runtime>=8
+	source = https://github.com/redpen-cc/redpen/releases/download/v1.4.0/redpen-1.4.0.tar.gz
+	sha256sums = ad8d81e6dc67990055f4eacb0cb069bf7a17e50a6d45f471c655231f931554f3
 
 pkgname = redpen
 
