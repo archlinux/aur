@@ -1,0 +1,13 @@
+--- glkterm/Makefile	2012-10-14 20:17:28.000000000 +0300
++++ glkterm/Makefile	2015-10-07 07:43:33.724109762 +0300
+@@ -13,8 +13,8 @@
+ CC = gcc -ansi
+ 
+ # You may need to set directories to pick up the ncurses library.
+-#INCLUDEDIRS = -I/usr/5include
+-#LIBDIRS = -L/usr/5lib 
++INCLUDEDIRS = -I/usr/5include
++LIBDIRS = -L/usr/5lib 
+ LIBS = -lncurses
+ 
+ OPTIONS = -O

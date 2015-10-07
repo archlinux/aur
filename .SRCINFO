@@ -1,0 +1,18 @@
+pkgbase = glkterm
+	pkgdesc = An interface standard for interactive fiction.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://eblong.com/zarf/glk/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = make
+	depends = ncurses
+	conflicts = glktermw
+	source = http://eblong.com/zarf/glk/glkterm-104.tar.gz
+	source = glkterm.patch
+	sha256sums = 473d6ef74defdacade2ef0c3f26644383e8f73b4f1b348e37a9bb669a94d927e
+	sha256sums = 2a62925fb1ba073b9996eb8b79fd3d1b47a924423a5b44ba15c6fff3f89f5ad6
+
+pkgname = glkterm
+
