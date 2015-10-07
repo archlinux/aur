@@ -2,7 +2,7 @@
 
 pkgname=yspave
 pkgver=0.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple scrypt-based CLI password manager'
 arch=('any')
 url='https://dev.yaki-syndicate.de'
