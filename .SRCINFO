@@ -1,14 +1,14 @@
 pkgbase = r-cran-expm
 	pkgdesc = Computation of the matrix exponential and related quantities
-	pkgver = 0.99_1
+	pkgver = 0.999_0
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/expm/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = r
-	source = http://cran.r-project.org/src/contrib/expm_0.99-1.tar.gz
-	md5sums = cb03820edb043d1f48d5398b88cfb197
+	source = http://cran.r-project.org/src/contrib/expm_0.999-0.tar.gz
+	md5sums = f2c933fc3994559a4767b26a81c8bf05
 
 pkgname = r-cran-expm
 
