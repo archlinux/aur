@@ -1,0 +1,18 @@
+pkgbase = python-mvpa2-git
+	pkgdesc = Multivariate pattern analysis
+	pkgver = r8734.6042292
+	pkgrel = 1
+	url = http://www.pymvpa.org
+	arch = any
+	license = MIT
+	makedepends = python3
+	makedepends = git
+	makedepends = bash
+	makedepends = swig
+	depends = python
+	depends = python-numpy
+	source = python-mvpa2-git::git+https://github.com/PyMVPA/PyMVPA.git
+	md5sums = SKIP
+
+pkgname = python-mvpa2-git
+
