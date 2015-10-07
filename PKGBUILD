@@ -62,7 +62,6 @@ prepare () {
 
 package_epoptes-bzr () {
     depends=(libfaketime
-             adduser
 	     librsvg
 	     notification-daemon
 	     xfce4-notifyd

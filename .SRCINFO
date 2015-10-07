@@ -19,7 +19,6 @@ pkgbase = epoptes-bzr
 
 pkgname = epoptes-bzr
 	depends = libfaketime
-	depends = adduser
 	depends = librsvg
 	depends = notification-daemon
 	depends = xfce4-notifyd
