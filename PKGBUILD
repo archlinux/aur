@@ -11,7 +11,7 @@ pkgdesc="A caching proxy specialized for package files."
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('zlib' 'bzip2' 'fuse' 'xz' 'gcc-libs')
+depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl')
 makedepends=('cmake')
 source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.orig.tar.xz"
         'acng.conf.patch'
