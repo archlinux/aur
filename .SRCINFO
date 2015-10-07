@@ -1,6 +1,6 @@
 pkgbase = cryptsetup-git
 	pkgdesc = Userspace setup tool for transparent encryption of block devices using dm-crypt
-	pkgver = 1.6.7.r22.g4fb1197
+	pkgver = v1.6.8.r2.ge97048d
 	pkgrel = 1
 	url = https://gitlab.com/cryptsetup/cryptsetup
 	arch = armv6h

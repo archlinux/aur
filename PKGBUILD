@@ -5,7 +5,7 @@ _gitname=cryptsetup
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=cryptsetup
-pkgver=1.6.7.r22.g4fb1197
+pkgver=v1.6.8.r2.ge97048d
 pkgrel=1
 pkgdesc="Userspace setup tool for transparent encryption of block devices using dm-crypt"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
   cd "${srcdir}/${_gitname}"
   (
     set -o pipefail
-    git describe --long 2>/dev/null | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g' ||
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
