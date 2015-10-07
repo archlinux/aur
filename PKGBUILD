@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Vladimir Still <vl.still@gmail.com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Sebastian Nowicki <sebnow@gmail.com>
 # Contributor: Devin Cofer <ranguvar{AT]archlinux[DOT}us>
@@ -9,8 +10,7 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
-pkgname=('llvm' 'llvm-libs' 'llvm-ocaml' 'lldb' 'clang' 'clang-analyzer'
-         'clang-tools-extra')
+pkgname=('llvm-assert' 'llvm-libs-assert' 'llvm-ocaml-assert' 'lldb-assert' 'clang-assert' 'clang-analyzer-assert' 'clang-tools-extra-assert')
 pkgver=3.7.0
 pkgrel=4
 _ocaml_ver=4.02.3
@@ -90,6 +90,7 @@ build() {
 
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DLLVM_ENABLE_ASSERTIONS=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
     -DLLVM_DYLIB_EXPORT_ALL=ON \
@@ -112,7 +113,7 @@ build() {
   sed -i '/compiler-rt\/cmake_install.cmake/d' projects/cmake_install.cmake
 }
 
-package_llvm() {
+package_llvm-assert() {
   pkgdesc="Low Level Virtual Machine"
   depends=("llvm-libs=$pkgver-$pkgrel" 'perl')
 
@@ -144,7 +145,7 @@ package_llvm() {
   install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_llvm-libs() {
+package_llvm-libs-assert() {
   pkgdesc="Low Level Virtual Machine (runtime libraries)"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
 
@@ -163,7 +164,7 @@ package_llvm-libs() {
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_llvm-ocaml() {
+package_llvm-ocaml-assert() {
   pkgdesc="OCaml bindings for LLVM"
   depends=("llvm=$pkgver-$pkgrel" "ocaml=$_ocaml_ver" 'ocaml-ctypes')
 
@@ -176,7 +177,7 @@ package_llvm-ocaml() {
   install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_lldb() {
+package_lldb-assert() {
   pkgdesc="Next generation, high-performance debugger"
   url="http://lldb.llvm.org/"
   depends=('libedit' 'libxml2' 'python2')
@@ -192,7 +193,7 @@ package_lldb() {
   install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_clang() {
+package_clang-assert() {
   pkgdesc="C language family frontend for LLVM"
   url="http://clang.llvm.org/"
   depends=("llvm-libs=$pkgver-$pkgrel" 'gcc')
@@ -221,7 +222,7 @@ package_clang() {
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_clang-analyzer() {
+package_clang-analyzer-assert() {
   pkgdesc="A source code analysis framework"
   url="http://clang-analyzer.llvm.org/"
   depends=("clang=$pkgver-$pkgrel" 'python2')
@@ -256,7 +257,7 @@ package_clang-analyzer() {
   install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_clang-tools-extra() {
+package_clang-tools-extra-assert() {
   pkgdesc="Extra tools built using Clang's tooling APIs"
   url="http://clang.llvm.org/"
   depends=("clang=$pkgver-$pkgrel")

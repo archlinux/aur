@@ -1,4 +1,4 @@
-pkgbase = llvm
+pkgbase = llvm-assert
 	pkgver = 3.7.0
 	pkgrel = 4
 	url = http://llvm.org/
@@ -47,12 +47,12 @@ pkgbase = llvm
 	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
 	makedepends_x86_64 = gcc-multilib
 
-pkgname = llvm
+pkgname = llvm-assert
 	pkgdesc = Low Level Virtual Machine
 	depends = llvm-libs=3.7.0-4
 	depends = perl
 
-pkgname = llvm-libs
+pkgname = llvm-libs-assert
 	pkgdesc = Low Level Virtual Machine (runtime libraries)
 	depends = gcc-libs
 	depends = zlib
@@ -60,33 +60,33 @@ pkgname = llvm-libs
 	depends = libedit
 	depends = ncurses
 
-pkgname = llvm-ocaml
+pkgname = llvm-ocaml-assert
 	pkgdesc = OCaml bindings for LLVM
 	depends = llvm=3.7.0-4
 	depends = ocaml=4.02.3
 	depends = ocaml-ctypes
 
-pkgname = lldb
+pkgname = lldb-assert
 	pkgdesc = Next generation, high-performance debugger
 	url = http://lldb.llvm.org/
 	depends = libedit
 	depends = libxml2
 	depends = python2
 
-pkgname = clang
+pkgname = clang-assert
 	pkgdesc = C language family frontend for LLVM
 	url = http://clang.llvm.org/
 	depends = llvm-libs=3.7.0-4
 	depends = gcc
 	optdepends = python2: for git-clang-format
 
-pkgname = clang-analyzer
+pkgname = clang-analyzer-assert
 	pkgdesc = A source code analysis framework
 	url = http://clang-analyzer.llvm.org/
 	depends = clang=3.7.0-4
 	depends = python2
 
-pkgname = clang-tools-extra
+pkgname = clang-tools-extra-assert
 	pkgdesc = Extra tools built using Clang's tooling APIs
 	url = http://clang.llvm.org/
 	depends = clang=3.7.0-4
