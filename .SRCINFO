@@ -1,0 +1,20 @@
+pkgbase = gccxml-git
+	pkgdesc = GCC-XML generates an XML description of a C++ program from GCC's internal representation
+	pkgver = 20130409
+	pkgrel = 2
+	url = http://www.gccxml.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	provides = gccxml
+	conflicts = gccxml
+	conflicts = gccxml-cvs
+	source = gccxml-git::git+https://github.com/gccxml/gccxml.git
+	source = Copyright.txt
+	sha512sums = SKIP
+	sha512sums = d73327835acd2980108e3ddb4d30ed6734e098737d05567d62bf70efefbdeacf226bda8548203bc2ccbc762b052bfc774b3371aea7b14032a0d7128a76d027b1
+
+pkgname = gccxml-git
+
