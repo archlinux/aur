@@ -1,7 +1,7 @@
 pkgbase = vlc-nightly
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot
 	pkgver = 3.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.videolan.org/vlc/
 	install = vlc-nightly.install
 	arch = i686
