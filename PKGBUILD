@@ -3,7 +3,7 @@
 pkgname=cnijfilter-mx920series
 pkgver=3.90
 pkgrel=1
-pkgdesc="Canon InkJet Printer Driver (MX920 Series)"
+pkgdesc="Canon InkJet printer driver (MX920 series, binary)"
 arch=('i686' 'x86_64')
 url="http://www.usa.canon.com/cusa/support/consumer/printers_multifunction/pixma_mx_series/pixma_mx922"
 license=('custom')
