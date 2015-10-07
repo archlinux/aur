@@ -1,0 +1,14 @@
+pkgbase = antileech
+	pkgdesc = AntiLeech Library for aMule-dlp
+	pkgver = 10.c526f61
+	pkgrel = 1
+	url = https://github.com/persmule/amule-dlp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = amule-dlp
+	source = git+https://github.com/persmule/amule-dlp.antiLeech
+	md5sums = SKIP
+
+pkgname = antileech
+
