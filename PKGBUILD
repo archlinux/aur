@@ -1,12 +1,13 @@
-# Maintainer: Jan Was <janek.jan+arch@gmail.com>
+# Maintainer: dequis <dx@dxzone.com.ar>
+# Contributor: Jan Was <janek.jan+arch@gmail.com>
 # Great Contributor: mainiak <mainiak@gmail.com> (first maintainer)
 # Contributor: spooky <spookyh+arch@gmail.com>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Florent Peterschmitt <florent@peterschmitt.fr>
 
 pkgname=apt-cacher-ng
-pkgver=0.8.5
-pkgrel=3
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="A caching proxy specialized for package files."
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64')
@@ -19,7 +20,7 @@ source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${
         'apt-cacher-ng.conf.patch')
 
 backup=('etc/apt-cacher-ng/acng.conf')
-md5sums=('924e7d68c468d68202609c2cf37039f2'
+md5sums=('5cb18432ab41ff6a051f780bf99fb2d9'
          '180e14417a70642a53c77bcb6a7b7292'
          '815e0727aec1f59bbeda15094446260e'
          '489c6e676c7f143e177f5723526c0129')
