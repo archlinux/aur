@@ -1,7 +1,7 @@
 pkgbase = xdg-app
 	pkgdesc = An application deployment framework for desktop apps
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/software/xdg-app
 	install = xdg-app.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = xdg-app
 	depends = ostree
 	depends = libseccomp
 	depends = fuse
+	depends = libxau
 	source = http://www.freedesktop.org/software/xdg-app/releases/xdg-app-0.4.4.tar.xz
 	sha256sums = d672bc83ad618c89b10b9234188c166efd58f8e0fa4095bd25a1a732696525a5
 
