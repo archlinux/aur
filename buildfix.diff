@@ -1,0 +1,10 @@
+diff --git a/Makefile b/Makefile
+index 792e33d..1d8a169 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,2 +1,4 @@
++CC?=gcc
++CFLAGS?=-I/usr/local/include
+ all:
+-	gcc -I/usr/local/include  -std=c99 -shared -O2 -o jack.so -ljack jack.c -fPIC -Wall -march=native
++	$(CC) $(CFLAGS) -std=c99 -shared -O2 -o jack.so -ljack jack.c -fPIC -Wall $(LDFLAGS)

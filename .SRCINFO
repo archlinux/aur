@@ -1,0 +1,17 @@
+pkgbase = deadbeef-jack-git
+	pkgdesc = bs2b plugin for the DeaDBeeF music player
+	pkgver = 10.62d1e6a
+	pkgrel = 1
+	url = https://github.com/Alexey-Yakovenko/bs2b
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = deadbeef
+	depends = jack
+	source = git+https://github.com/Alexey-Yakovenko/jack.git
+	source = buildfix.diff
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = deadbeef-jack-git
+
