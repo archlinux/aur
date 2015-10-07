@@ -16,17 +16,11 @@ provides=("${_gitname}")
 source=(
 "git://mbm.git.sourceforge.net/gitroot/mbm/${_gitname}/"
 mbm-gpsd.service
-0001-Remove-call-to-g_type_init.patch
 )
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "${srcdir}/${_gitname}"
-	git am "${srcdir}/0001-Remove-call-to-g_type_init.patch"
 }
 
 build() {
@@ -44,5 +38,4 @@ package() {
 	cp "${srcdir}/mbm-gpsd.service" "${pkgdir}/usr/lib/systemd/system/"
 }
 md5sums=('SKIP'
-'1c4fd254cd00834f644ab614a76f5c96'
-'b95c87ed13611f3903ed9bc5e504b947')
+         '1e1d4280d88490d2a14b7e076f29302a')
