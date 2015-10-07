@@ -1,0 +1,18 @@
+pkgbase = python3-xcpf
+	pkgdesc = Xyne's common Pacman functions, for internal use.
+	pkgver = 2015.10.6
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/python3-xcpf
+	arch = any
+	license = GPL
+	depends = python3
+	depends = pyalpm
+	source = http://xyne.archlinux.ca/projects/python3-xcpf/src/python3-xcpf-2015.10.6.tar.xz
+	source = http://xyne.archlinux.ca/projects/python3-xcpf/src/python3-xcpf-2015.10.6.tar.xz.sig
+	md5sums = f438ea980db92cb498d4f61ddec92edb
+	md5sums = 6e32f1eb14163c05035d8ea725b4c6a4
+	sha512sums = ca6e0126451ad8160c9a63c4341783f095d0109ac466b08c3f7a25a0d78d1d653a0e4e9b4d345a210f784cf6d1fd4d115b820af5a40873f2b5e1540f23699922
+	sha512sums = 4d435d86042a27004c40ef112205ffa3f1e6eebf6e6587c07960a723cafc99b7d22d1c152e1888c19c1848feb2b59566aeb33fbfbb7ea19695a27344fcf1b470
+
+pkgname = python3-xcpf
+
