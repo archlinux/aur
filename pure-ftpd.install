@@ -1,0 +1,29 @@
+post_install()
+{
+	if [ ! -f /etc/ssl/private/pure-ftpd-dhparams.pem ]; then
+		echo 
+		openssl dhparam -out /etc/ssl/private/pure-ftpd-dhparams.pem 2048
+		chmod 600 /etc/ssl/private/pure-ftpd-dhparams.pem
+	fi
+
+	if [ ! -f /etc/ssl/private/pure-ftpd.pem ]; then
+		echo
+		openssl req -x509 -nodes -newkey rsa:2048 -sha256 -keyout /etc/ssl/private/pure-ftpd.pem -out /etc/ssl/private/pure-ftpd.pem -days 3650 -subj "/C=US/ST=California/L=San Francisco/O=FD/CN=$(hostname -f)"
+		echo
+		echo "A self-signed TLS certificate has been generated for you."
+		echo
+		echo "You can generate a new one with the following commands (as root):"
+		echo "openssl req -x509 -nodes -newkey rsa:2048 -sha256 -keyout /etc/ssl/private/pure-ftpd.pem -out /etc/ssl/private/pure-ftpd.pem -days 365"
+		echo "chmod 600 /etc/ssl/private/pure-ftpd.pem"
+		echo
+		echo "Note: The Common Name (CN) should be exactly the FQDN of the server."
+		echo "The validity can be extended by increasing the '-days' parameter value."
+		echo
+		echo "Then restart the ftp service: systemctl restart pure-ftpd.service"
+		echo
+	fi
+}
+
+post_upgrade() {
+    post_install
+}

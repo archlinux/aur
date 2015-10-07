@@ -1,4 +1,5 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: kleph
 # Contributor: fila pruda.com
 # Contributor: tuxce <tuxce.net@gmail.com>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
@@ -7,7 +8,7 @@
 
 pkgname=pure-ftpd
 pkgver=1.0.42
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
 url="http://www.pureftpd.org/"
@@ -15,15 +16,14 @@ license=('custom')
 depends=('openssl' 'libmariadbclient')
 conflicts=('pure-ftpd-db')
 backup=('etc/pure-ftpd/pure-ftpd.conf')
+install=pure-ftpd.install
 source=("http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-${pkgver}.tar.bz2"
 	'pure-ftpd.service'
 	'pure-ftpd.logrotate'
 	'welcome.msg'
-	'pure-ftpd.pem'
-	'pure-ftpd-dhparams.pem' )
+	'pure-ftpd.install' )
 
 md5sums=('4022f38939f6a112b18c1a43dee552c1'
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -54,7 +54,6 @@ package() {
 	install -Dm755 configuration-file/pure-config.pl ${pkgdir}/usr/bin/pure-config.pl
 	install -Dm644 -t ${pkgdir}/usr/lib/systemd/system/ ${srcdir}/pure-ftpd.service
 	install -Dm644 ${srcdir}/pure-ftpd.logrotate ${pkgdir}/etc/logrotate.d/pure-ftpd
-	install -Dm640 -t ${pkgdir}/etc/ssl/private/ ${srcdir}/pure-ftpd.pem ${srcdir}/pure-ftpd-dhparams.pem
 	install -Dm644 -t ${pkgdir}/usr/share/doc/${pkgname}/ README* pureftpd-*sql.conf
 	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
