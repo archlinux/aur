@@ -1,4 +1,6 @@
-Reboot the machine when the ESC key is pressed (taken from memtest86_3.5-2).
+Author: Fabian Greffrath <fabian+debian@greffrath.com>
+Description: Reboot the machine when the ESC key is pressed,
+ reboot() taken from memtest86_3.5-2.
 
 --- invaders-1.0.0.orig/game.c
 +++ invaders-1.0.0/game.c
@@ -14,7 +16,7 @@ Reboot the machine when the ESC key is pressed (taken from memtest86_3.5-2).
  
  static bool gameover, winner;
  
-+inline void reboot()
++static inline void reboot()
 +{
 +  /* tell the BIOS to do a warm start */
 +  *((unsigned short *)0x472) = 0x1234;

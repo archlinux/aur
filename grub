@@ -18,7 +18,7 @@ CLASS="--class game"
 if [ -e ${INVADERS_IMAGE} ] && is_path_readable_by_grub ${INVADERS_IMAGE}; then
 	# image exists, create menu entry
 	echo "Found Invaders image: ${INVADERS_IMAGE}" >&2
-	echo "menuentry "Grub Invaders" ${CLASS} {"
+	echo "menuentry \"Grub Invaders\" ${CLASS} {"
 	prepare_grub_to_access_device $(${grub_probe} --target=device ${INVADERS_IMAGE}) | sed -e "s/^/\t/"
 	echo -e "\tmultiboot $(make_system_path_relative_to_its_root ${INVADERS_IMAGE})"
 	echo "}"

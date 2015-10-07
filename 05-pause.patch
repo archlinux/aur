@@ -1,0 +1,49 @@
+Author: Fabian Greffrath <fabian+debian@greffrath.com>
+Description: Use "P" to pause and resume.
+
+--- invaders-1.0.0.orig/game.c
++++ invaders-1.0.0/game.c
+@@ -42,6 +42,21 @@ void changecolors(int c)
+         else if (aliencolor<1) aliencolor=15;
+ }
+ 
++void displaypause()
++{
++  uint8 key;
++  bool pressed;
++
++  video_usecolor(6,1);
++  video_putstring(30,10,"    PAUSE    ");
++  video_putstring(30,11,"  PRESS \'P\'  ");
++  video_update();
++  do{
++    key_decode(&key,&pressed);
++    key_polling();
++  } while (!(pressed&&(key=='p')));
++};
++
+ void resetgame()
+ {
+   gameover=false;
+@@ -167,6 +182,11 @@ void keywork()
+         }
+       }
+       break;
++    case 'p':
++      if (pressed) {
++        displaypause();
++      }
++      break;
+     };
+   };
+ };
+--- invaders-1.0.0.orig/keyboard.c
++++ invaders-1.0.0/keyboard.c
+@@ -42,6 +42,7 @@ void key_decode(uint8 *key, bool *presse
+     if (c==1) *key='@';
+     if (c==0x1c) *key='e';
+     if (c==0x39) *key=' ';
++    if (c==0x19) *key='p';
+   };
+ };
+ 

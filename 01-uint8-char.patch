@@ -1,0 +1,27 @@
+Author: Carl-Daniel Hailfinger <c-d.hailfinger.devel.2006 at gmx.net>
+Origin: http://www.coreboot.org/pipermail/coreboot/2009-April/046558.html
+Description: Use (char *) instead of (uint8 *) to avoid
+ "pointer targets [...] differ in signedness" warnings when passing a string.
+
+--- invaders-1.0.0.orig/video.c
++++ invaders-1.0.0/video.c
+@@ -36,7 +36,7 @@ void video_puthex8(int32 x, int32 y, uin
+   video_putchar(x+1,y,hextab[hex&15]);
+ };
+ 
+-void video_putstring(int32 x, int32 y, uint8 *str)
++void video_putstring(int32 x, int32 y, char *str)
+ {
+   while (*str) video_putchar(x++,y,*(str++));
+ };
+--- invaders-1.0.0.orig/video.h
++++ invaders-1.0.0/video.h
+@@ -8,7 +8,7 @@ void video_usecolor(uint8 fg, uint8 bg);
+ void video_putchar(int32 x, int32 y, uint8 code);
+ void video_fill(int32 x, int32 y, int32 width, int32 height, uint8 code);
+ void video_puthex8(int32 x, int32 y, uint8 hex);
+-void video_putstring(int32 x, int32 y, uint8 *str);
++void video_putstring(int32 x, int32 y, char *str);
+ 
+ // immediate effect
+ void video_update();

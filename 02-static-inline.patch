@@ -1,0 +1,39 @@
+Author: Fabian Greffrath <fabian+debian@greffrath.com>
+Description: Replace "extern inline" with "static inline" in io.h
+ to allow for non-optimized builds.
+
+--- invaders-1.0.0.orig/io.h
++++ invaders-1.0.0/io.h
+@@ -50,7 +50,7 @@
+  * Talk about misusing macros..
+  */
+ #define __OUT1(s,x) \
+-extern inline void out##s(unsigned x value, unsigned short port) {
++static inline void out##s(unsigned x value, unsigned short port) {
+ 
+ #define __OUT2(s,s1,s2) \
+ __asm__ __volatile__ ("out" #s " %" s1 "0,%" s2 "1"
+@@ -60,7 +60,7 @@ __OUT1(s,x) __OUT2(s,s1,"w") : : "a" (va
+ __OUT1(s##_p,x) __OUT2(s,s1,"w") __FULL_SLOW_DOWN_IO : : "a" (value), "Nd" (port));} \
+ 
+ #define __IN1(s) \
+-extern inline RETURN_TYPE in##s(unsigned short port) { RETURN_TYPE _v;
++static inline RETURN_TYPE in##s(unsigned short port) { RETURN_TYPE _v;
+ 
+ #define __IN2(s,s1,s2) \
+ __asm__ __volatile__ ("in" #s " %" s2 "1,%" s1 "0"
+@@ -70,12 +70,12 @@
+ __IN1(s##_p) __IN2(s,s1,"w") __FULL_SLOW_DOWN_IO : "=a" (_v) : "Nd" (port) ,##i ); return _v; } \
+ 
+ #define __INS(s) \
+-extern inline void ins##s(unsigned short port, void * addr, unsigned long count) \
++static inline void ins##s(unsigned short port, void * addr, unsigned long count) \
+ { __asm__ __volatile__ ("rep ; ins" #s \
+ : "=D" (addr), "=c" (count) : "d" (port),"0" (addr),"1" (count)); }
+ 
+ #define __OUTS(s) \
+-extern inline void outs##s(unsigned short port, const void * addr, unsigned long count) \
++static inline void outs##s(unsigned short port, const void * addr, unsigned long count) \
+ { __asm__ __volatile__ ("rep ; outs" #s \
+ : "=S" (addr), "=c" (count) : "d" (port),"0" (addr),"1" (count)); }
+ 

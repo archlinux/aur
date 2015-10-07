@@ -1,0 +1,34 @@
+Author: Robert Millan <rmh@aybabtu.com>
+Author: Stefan Potyra <sistpoty@ubuntu.com>
+Author: Kees Cook <kees@ubuntu.com>
+Author: Carl-Daniel Hailfinger <c-d.hailfinger.devel.2006 at gmx.net>
+Author: Fabian Greffrath <fabian+debian@greffrath.com>
+Origin: http://www.coreboot.org/pipermail/coreboot/2009-April/046558.html
+Description: Support for building on amd64 and others,
+ move -nostdlib to CFLAGS, as it's a compiler flag,
+ use CFLAGS for linking as well (since gcc is used),
+ replace -fno-builtin with -ffreestanding,
+ replace -Werror with -W,
+ and fix an incompatibility with newer gcc and binutils.
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=422364
+
+--- invaders-1.0.0.orig/compile.sh
++++ invaders-1.0.0/compile.sh
+@@ -3,8 +3,8 @@
+ set -e
+ set -v
+ 
+-CFLAGS="-fno-builtin -nostdinc -O2 -I. -Wall -Werror"
+-LDFLAGS="-nostdlib -Wl,-N -Wl,-Ttext -Wl,100000"
++CFLAGS="-ffreestanding -m32 -nostdinc -nostdlib -I. -O2 -W -Wall"
++LDFLAGS="-Wl,-N -Wl,-Ttext -Wl,100000 -Wl,--build-id=none"
+ gcc $CFLAGS -c keyboard.c
+ gcc $CFLAGS -c delay.c
+ gcc $CFLAGS -c common.c
+@@ -14,5 +14,5 @@ gcc $CFLAGS -c kernel.c
+ gcc $CFLAGS -c video.c
+ gcc $CFLAGS -c memory.c
+ gcc $CFLAGS -c boot.S
+-gcc $LDFLAGS -o invaders.exec boot.o kernel.o keyboard.o video.o game.o sound.o delay.o common.o memory.o
++gcc $CFLAGS $LDFLAGS -o invaders.exec boot.o kernel.o keyboard.o video.o game.o sound.o delay.o common.o memory.o
+ objcopy -O binary invaders.exec invaders

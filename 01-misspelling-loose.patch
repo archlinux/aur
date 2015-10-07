@@ -1,0 +1,15 @@
+Author: Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>
+Description: Fix misspelling: "YOU LOOSE" should be "YOU LOSE".
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=478928
+
+--- invaders-1.0.0.orig/game.c
++++ invaders-1.0.0/game.c
+@@ -198,7 +198,7 @@ void displaygameover()
+ 
+   video_usecolor(6,1);
+   video_putstring(30,10,"  GAME OVER  ");
+-  video_putstring(30,11,winner ? "  YOU WIN  " : "  YOU LOOSE  ");
++  video_putstring(30,11,winner ? "   YOU WIN   " : "  YOU LOSE   ");
+   video_putstring(30,12,"  PRESS ESC  ");
+   video_update();
+   do{
