@@ -19,7 +19,7 @@ build() {
 
 package() {
 	cd "$srcdir"/gimp-dds-"$pkgver"
-	install -dm755 "$pkgdir"/usr/share/gimp/2.0/dds
-	cp dds "$pkgdir"/usr/share/gimp/2.0/dds
-	chmod 755 "$pkgdir"/usr/share/gimp/2.0/dds/dds
+	install -dm755 "$pkgdir"/usr/lib/gimp/2.0/plug-ins/
+	cp dds "$pkgdir"/usr/lib/gimp/2.0/plug-ins
+	chmod 755 "$pkgdir"/usr/lib/gimp/2.0/plug-ins/dds
 }
