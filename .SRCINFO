@@ -1,6 +1,6 @@
 pkgbase = weka
 	pkgdesc = A collection of machine learning algorithms for data mining tasks
-	pkgver = 3.7.12
+	pkgver = 3.7.13
 	pkgrel = 1
 	url = http://www.cs.waikato.ac.nz/ml/weka/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = weka
 	makedepends = java-environment
 	makedepends = gif2png
 	depends = java-runtime
-	source = http://downloads.sourceforge.net/sourceforge/weka/weka-3-7-12.zip
+	source = http://downloads.sourceforge.net/sourceforge/weka/weka-3-7-13.zip
 	source = weka.sh
 	source = weka.desktop
-	md5sums = 2c2964d943313575e4ae3107826a0bb4
+	md5sums = 2a0ef94da5711fbd147195e70031fb2b
 	md5sums = 60dc5666b93d98db0900deb7d8b5eae4
 	md5sums = 83a4d47ba64df90a92a38b23a14c6480
 
