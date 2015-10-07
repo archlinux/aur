@@ -2,7 +2,7 @@
 
 pkgname=qlcplus
 pkgver=4.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('i686' 'x86_64')
 url="http://qlcplus.org/"
@@ -17,7 +17,7 @@ md5sums=('6af9c4fc47d63336e5cddabe777985f9')
 
 build() {
   cd "${srcdir}/qlcplus-${pkgver}"
-  qmake-qt4
+  qmake-qt4 QMAKE_CXXFLAGS+=-Wno-error=unused-variable
   make
 }
 
