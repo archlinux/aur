@@ -1,0 +1,18 @@
+pkgbase = lib32-oxygen-gtk3-git
+	pkgdesc = Port of the default KDE widget theme (Oxygen) to GTK3
+	pkgver = 20151007_vgtk3_1.4.1_12_g705b7
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/artwork/oxygen-gtk
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = oxygen-gtk3-git
+	depends = lib32-gtk3
+	provides = lib32-oxygen-gtk3
+	conflicts = lib32-oxygen-gtk3
+	source = git://anongit.kde.org/oxygen-gtk#branch=gtk3
+	md5sums = SKIP
+
+pkgname = lib32-oxygen-gtk3-git
+
