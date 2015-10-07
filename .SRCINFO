@@ -1,11 +1,11 @@
 pkgbase = eclipse-texlipse
-	pkgdesc = A plugin that adds LaTeX support to the Eclipse IDE
+	pkgdesc = LaTeX support plugin for Eclipse IDE
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://texlipse.sourceforge.net/
 	arch = any
 	license = EPL
-	depends = eclipse>=3.5
+	depends = eclipse>=4.5.0
 	depends = texlive-core
 	provides = texlipse
 	conflicts = texlipse

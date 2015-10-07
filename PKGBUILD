@@ -1,14 +1,15 @@
-# Maintainer: Davi da Silva Böger <dsboger@gmail.com>
+# Maintainer: Raimar Bühmann <raimar _at_ buehmann _dot_ de>
+# Contributor: Davi da Silva Böger <dsboger@gmail.com>
 # Contributor: linuxSEAT <--put_my_name_here--@gmail.com>
 # Contributor: Robson R S Peixoto <robsonpeixoto@gmail.com>
 # Contributor: Piotr Beling <qwak@w8.pl>
 
 pkgname=eclipse-texlipse
 pkgver=1.5.0
-pkgrel=1
-pkgdesc="A plugin that adds LaTeX support to the Eclipse IDE"
+pkgrel=2
+pkgdesc="LaTeX support plugin for Eclipse IDE"
 url="http://texlipse.sourceforge.net/"
-depends=('eclipse>=3.5' 'texlive-core')
+depends=('eclipse>=4.5.0' 'texlive-core')
 conflicts=('texlipse')
 provides=('texlipse')
 arch=('any')
@@ -44,4 +45,3 @@ package() {
     install -Dm644 "${_plugin}" "${_dest}/${_plugin}"
   done
 }
-
