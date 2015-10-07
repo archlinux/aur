@@ -1,0 +1,16 @@
+pkgbase = deadbeef-replaygain-scan-git
+	pkgdesc = Replay scan control plugin for DeadBeeF music player.
+	pkgver = 10.154527e
+	pkgrel = 1
+	url = https://bitbucket.org/Lithopsian/deadbeef-opus
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = deadbeef
+	provides = deadbeef-replaygain-scan
+	conflicts = deadbeef-replaygain-scan
+	source = git+https://github.com/Soukyuu/ddb_misc_replaygain_scan.git
+	md5sums = SKIP
+
+pkgname = deadbeef-replaygain-scan-git
+
