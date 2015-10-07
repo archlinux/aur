@@ -1,0 +1,25 @@
+pkgbase = spectacle-git
+	pkgdesc = The new screenshot capture utility, replaces KSnapshot
+	pkgver = r123.26ede97
+	pkgrel = 1
+	url = https://projects.kde.org/projects/spectacle
+	install = spectacle-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kio
+	depends = libkscreen
+	depends = xcb-util-cursor
+	depends = libkipi-git
+	conflicts = spectacle-git
+	conflicts = kscreengenie-git
+	conflicts = kdegraphics-ksnapshot
+	replaces = kscreengenie-git
+	replaces = kdegraphics-ksnapshot
+	source = git://anongit.kde.org/spectacle.git
+	md5sums = SKIP
+
+pkgname = spectacle-git
+
