@@ -1,0 +1,23 @@
+pkgbase = afl-utils-git
+	pkgdesc = Utilities for automated crash sample processing/analysis, easy afl-fuzz job management and corpus optimization
+	pkgver = 1.17a.75.26a05d0
+	pkgrel = 1
+	url = https://github.com/rc0r/afl-utils
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = afl
+	depends = coreutils
+	depends = python
+	optdepends = sqlite: database support
+	optdepends = screen: interactive/screen mode support
+	optdepends = gdb: gdb script execution support
+	optdepends = python-twitter: afl-stat support
+	provides = afl-utils
+	conflicts = afl-utils
+	source = afl-utils-git::git+https://github.com/rc0r/afl-utils
+	sha512sums = SKIP
+
+pkgname = afl-utils-git
+
