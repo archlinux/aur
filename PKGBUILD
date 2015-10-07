@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=1.3.0.r374.975e8d9
+pkgver=2.0.0.r457.25fd067
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -32,7 +32,7 @@ source=("${_gitname}::git+${url}#branch=dev")
 
 ##
 # DEFAULTS
-# _CXX="g++"
+# _CC="g++"
 # _PREFIX="/usr/local"
 # _INCLUDE_BASH_COMPLETION=1
 # _INCLUDE_ZSH_COMPLETION=0
@@ -49,7 +49,7 @@ source=("${_gitname}::git+${url}#branch=dev")
 # _AUTO_POWER_PLAN_BAT="powersave"
 ##
 
-_CXX="g++"
+_CC="gcc"
 _PREFIX="/usr"
 _INCLUDE_BASH_COMPLETION=1
 _INCLUDE_ZSH_COMPLETION=0
@@ -75,7 +75,7 @@ prepare() {
         cd "$srcdir/$_gitname"
         make \
                 DESTDIR="$pkgdir" \
-                CXX="${_CXX}" \
+                CC="${_CC}" \
                 PREFIX="${_PREFIX}" \
                 X86_ENERGY_PERF_POLICY=${_X86_ENERGY_PERF_POLICY} \
                 INCLUDE_BASH_COMPLETION=${_INCLUDE_BASH_COMPLETION} \
@@ -97,7 +97,7 @@ build() {
         cd "$srcdir/$_gitname"
         make \
                 DESTDIR="$pkgdir" \
-                CXX="${_CXX}" \
+                CC="${_CC}" \
                 PREFIX="${_PREFIX}" \
                 X86_ENERGY_PERF_POLICY=${_X86_ENERGY_PERF_POLICY} \
                 INCLUDE_BASH_COMPLETION=${_INCLUDE_BASH_COMPLETION} \
@@ -118,7 +118,7 @@ package() {
         cd "$srcdir/$_gitname"
         make \
                 DESTDIR="$pkgdir" \
-                CXX="${_CXX}" \
+                CC="${_CC}" \
                 PREFIX="${_PREFIX}" \
                 X86_ENERGY_PERF_POLICY=${_X86_ENERGY_PERF_POLICY} \
                 INCLUDE_BASH_COMPLETION=${_INCLUDE_BASH_COMPLETION} \
@@ -135,4 +135,3 @@ package() {
                 AUTO_POWER_PLAN_BAT="\"${_AUTO_POWER_PLAN_BAT}\"" \
                 install
 }
-
