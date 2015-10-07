@@ -1,0 +1,21 @@
+pkgbase = neucoin-git
+	pkgdesc = A proof-of-stake based digital currency (git version)
+	pkgver = 3043.527f0bd
+	pkgrel = 1
+	url = https://github.com/NeuCoin/neucoin
+	arch = i686
+	arch = x86_64
+	license = mit
+	makedepends = git
+	depends = boost
+	depends = db
+	depends = openssl
+	depends = qrencode
+	depends = libpng
+	depends = qt5-base
+	depends = qt5-tools
+	source = git://github.com/NeuCoin/neucoin.git
+	md5sums = SKIP
+
+pkgname = neucoin-git
+
