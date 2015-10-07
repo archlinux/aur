@@ -1,6 +1,6 @@
 pkgbase = wine-staging-d3dadapter
 	pkgdesc = A compatibility layer for running Windows programs, with additional staging patches not yet upstreamed (with d3dadapter patch)
-	pkgver = 1.7.51
+	pkgver = 1.7.52
 	pkgrel = 1
 	url = http://www.wine-staging.com
 	install = wine.install
@@ -46,10 +46,18 @@ pkgbase = wine-staging-d3dadapter
 	makedepends = lib32-alsa-lib
 	makedepends = libxcomposite
 	makedepends = lib32-libxcomposite
-	makedepends = mesa
-	makedepends = lib32-mesa
-	makedepends = mesa-libgl
-	makedepends = lib32-mesa-libgl
+	makedepends = mesa-git
+	makedepends = lib32-mesa-git
+	makedepends = mesa-libgl-git
+	makedepends = lib32-mesa-libgl-git
+	makedepends = llvm-svn
+	makedepends = lib32-llvm-svn
+	makedepends = llvm-libs-svn
+	makedepends = lib32-llvm-libs-svn
+	makedepends = libdrm-git
+	makedepends = lib32-libdrm-git
+	makedepends = opencl-mesa-git
+	makedepends = libclc-git
 	makedepends = libcl
 	makedepends = lib32-libcl
 	makedepends = libxslt
@@ -129,24 +137,24 @@ pkgbase = wine-staging-d3dadapter
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = bin32-wine=1.7.51
-	provides = wine-wow64=1.7.51
-	provides = wine=1.7.51
-	provides = wine-compholio=1.7.51
-	provides = wine-silverlight=1.7.51
+	provides = bin32-wine=1.7.52
+	provides = wine-wow64=1.7.52
+	provides = wine=1.7.52
+	provides = wine-compholio=1.7.52
+	provides = wine-silverlight=1.7.52
 	conflicts = bin32-wine
 	conflicts = wine-wow64
 	conflicts = wine
 	conflicts = wine-staging
 	options = staticlibs
-	source = http://ftp.winehq.org/pub/wine/source/1.7/wine-1.7.51.tar.bz2
-	source = wine-staging-patches-v1.7.51.tar.gz::https://github.com/wine-compholio/wine-staging/archive/v1.7.51.tar.gz
+	source = http://ftp.winehq.org/pub/wine/source/1.7/wine-1.7.52.tar.bz2
+	source = wine-staging-patches-v1.7.52.tar.gz::https://github.com/wine-compholio/wine-staging/archive/v1.7.52.tar.gz
 	source = 30-win32-aliases.conf
-	source = wine-d3d9-1.7.51.patch
-	sha1sums = ab034fb73cf8628a9def648e7712d3db75393716
-	sha1sums = 9bead94e8a5c7e876f06e32f5119cd451ea3a5ad
+	source = wine-d3d9-1.7.52.patch
+	sha1sums = a323e29090c2f9608d1181e3675948988f6664db
+	sha1sums = d97082d7018642cf6542380bbab718211e2d0efa
 	sha1sums = 023a5c901c6a091c56e76b6a62d141d87cce9fdb
-	sha1sums = ca80253e74ee6d5cb5d1b54b6445f228d376aab4
+	sha1sums = 56a4a1de4157bff6719a3c573083fca783a75c29
 
 pkgname = wine-staging-d3dadapter
 	depends = fontconfig
