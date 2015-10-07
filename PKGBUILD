@@ -1,15 +1,18 @@
 # Maintainer: Jason Lenz <Jason at Lenzplace dot org>
+# Contributor: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup"
 _pkgname="burp"
 pkgver=1.4.40
-pkgrel=1
+pkgrel=2
 pkgdesc="A backup and restore program that uses librsync to reduce backup size."
 arch=('i686' 'x86_64')
 license=("AGPL3")
 depends=('librsync' 'acl' 'openssl')
 makedepends=()
 conflicts=('burp-backup-dev' 'burp-backup-git' 'burp-backup14')
+provides=('burp-backup14=1.4.40')
+replaces=('burp-backup14=1.4.40')
 install=$_pkgname.install
 url='http://burp.grke.org/'
 
@@ -37,6 +40,10 @@ backup=(
   "etc/burp/burp.conf"
   "etc/burp/burp-server.conf"
   "etc/burp/CA.cnf"
+  "etc/burp/notify_script"
+  "etc/burp/ssl_extra_checks_script"
+  "etc/burp/summary_script"
+  "etc/burp/timer_script"
   "etc/logrotate.d/burp"
 )
 
