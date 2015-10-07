@@ -2,7 +2,7 @@
 
 pkgname=grubinvaders
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='multi boot compliant game for i386 and compatible x86_64'
 arch=('any')
 url="http://www.erikyyy.de/invaders/"
@@ -25,7 +25,7 @@ sha256sums=('304c8b0f82eaec54b07250b0f39886e1d9fa23c48075213bf87c8f375781a845'
             'eb3414a8b31cd26c5091847a52667903e47056f23ba1a5415ab7568a3f2f6bc5'
             'fcea5bc771589d83441d8df44329aa0aa5ff8a987813f44a76a3314714f3a60e'
             'dc102190cc815aff769bf3b5d56a4304c972bea647feb9e2e64c63661cfd123b'
-            'de564857bd69cb5680aa994bcd8b9119bcdb7d07fade0a4df4db950c871830f5')
+            '056f2967f73549e3bcfdf521875039598eec2507aed707b72dec6f83fb7ae64b')
 
 prepare() {
 	cd ${srcdir}/invaders/
