@@ -1,7 +1,7 @@
 pkgbase = burp-backup
 	pkgdesc = A backup and restore program that uses librsync to reduce backup size.
 	pkgver = 1.4.40
-	pkgrel = 1
+	pkgrel = 2
 	url = http://burp.grke.org/
 	install = burp.install
 	arch = i686
@@ -10,12 +10,18 @@ pkgbase = burp-backup
 	depends = librsync
 	depends = acl
 	depends = openssl
+	provides = burp-backup14=1.4.40
 	conflicts = burp-backup-dev
 	conflicts = burp-backup-git
 	conflicts = burp-backup14
+	replaces = burp-backup14=1.4.40
 	backup = etc/burp/burp.conf
 	backup = etc/burp/burp-server.conf
 	backup = etc/burp/CA.cnf
+	backup = etc/burp/notify_script
+	backup = etc/burp/ssl_extra_checks_script
+	backup = etc/burp/summary_script
+	backup = etc/burp/timer_script
 	backup = etc/logrotate.d/burp
 	source = http://downloads.sourceforge.net/project/burp/burp-1.4.40/burp-1.4.40.tar.bz2
 	source = burp.install
