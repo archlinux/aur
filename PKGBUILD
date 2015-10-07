@@ -33,6 +33,7 @@ package() {
     echo 'exec mkvmerge "$@"' >> $pkgdir/usr/share/flv-extract/mkvmerge.exe
     echo 'exec MP4Box "$@"' >> $pkgdir/usr/share/flv-extract/MP4Box.exe
     chmod +x $pkgdir/usr/share/flv-extract/{mkvmerge,MP4Box}.exe
+    touch $pkgdir/usr/share/flv-extract/js32.dll
 }
 
 
