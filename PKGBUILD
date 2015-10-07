@@ -53,7 +53,7 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.1
 pkgver=4.1.10
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -70,6 +70,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
+'0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch'
 # ck1
 "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
 # gcc
@@ -86,6 +87,7 @@ sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'cc181fe0cfcedcd3bf606d7cce53e07dfb206d6c3549238dc7f4d0d27973d1a4'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'fd5dcb1847fc22f36892673066c801e818dce42d1f709dafa9f12bf8337024f3'
             '87726411f583862e456156fe82ef51b188e5d92e7a4bd944e01a091cd7c46428'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
             'ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975'
@@ -106,6 +108,9 @@ prepare() {
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+	# fix https://bbs.archlinux.org/viewtopic.php?pid=1568197#p1568197
+	patch -Np1 -i "$srcdir/0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch"
 
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
