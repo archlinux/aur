@@ -4,7 +4,7 @@ pkgbase = python2-acme
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/acme
 	arch = any
-	license = apache
+	license = Apache
 	depends = python2
 	depends = python2-pytz
 	depends = python2-setuptools
@@ -17,7 +17,7 @@ pkgbase = python2-acme
 	depends = python2-mock
 	depends = python2-pyasn1
 	depends = python2-ndg-httpsclient
-	source = acme-0.0.0.dev20151006.tar.gz::https://pypi.python.org/packages/source/a/acme/acme-0.0.0.dev20151006.tar.gz#md5=c08d9d60051e9ec12e23145d1162ba0a
+	source = https://pypi.python.org/packages/source/a/acme/acme-0.0.0.dev20151006.tar.gz
 	md5sums = c08d9d60051e9ec12e23145d1162ba0a
 
 pkgname = python2-acme

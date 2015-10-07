@@ -6,18 +6,23 @@ pkgver=0.0.0.dev20151006
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
-license=('apache')
+license=('Apache')
 url="https://pypi.python.org/pypi/${_pkgname}"
 depends=('python2' 'python2-pytz' 'python2-setuptools' 'python2-six' 'python2-werkzeug'
          'python2-requests' 'python2-pyRFC3339' 'python2-cryptography' 'python2-pyopenssl'
          'python2-mock' 'python2-pyasn1' 'python2-ndg-httpsclient')
-source=("${_pkgname}-${pkgver}.tar.gz"::"https://pypi.python.org/packages/source/a/${_pkgname}/${_pkgname}-${pkgver}.tar.gz#md5=c08d9d60051e9ec12e23145d1162ba0a")
+source=("https://pypi.python.org/packages/source/a/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('c08d9d60051e9ec12e23145d1162ba0a')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python2 setup.py build
 }
+
+#check() {
+#    cd "${srcdir}/${_pkgname}-${pkgver}"
+#    python2 setup.py test
+#}
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
