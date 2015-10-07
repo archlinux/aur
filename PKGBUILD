@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
+  sed -i 's:wx-config --cppflags:wx-config-2.8 --cppflags:g' configure.ac
   ./autogen.sh
   ./configure --prefix="${pkgdir}/usr"
   make
