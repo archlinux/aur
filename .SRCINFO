@@ -1,0 +1,16 @@
+pkgbase = ruby-benchmark_suite
+	pkgdesc = A set of enhancements to the standard library benchmark.rb.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/evanphx/benchmark_suite
+	arch = any
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-benchmark-ips
+	noextract = benchmark_suite-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/benchmark_suite-1.0.0.gem
+	sha256sums = 8dddd2129b9b691b3d0af33289a2805505ea4845aa33ac9f586a1cd0bc6d9e6a
+
+pkgname = ruby-benchmark_suite
+
