@@ -1,6 +1,6 @@
 pkgname=starcheat
 epoch=9
-pkgver=0.25
+pkgver=0.26
 pkgrel=1
 pkgdesc="Starbound player save editor and Python library"
 arch=(any)
@@ -12,7 +12,7 @@ source=("https://github.com/wizzomafizzo/starcheat/archive/$pkgver.tar.gz"
 "py-starbound.zip::https://github.com/blixt/py-starbound/archive/3adf5c8e35aa93603cf72dfe115808bc8372ca6a.zip"
 "starcheat.desktop"
 "starcheat.sh")
-md5sums=('188e106a349458bca46b171b3209e0b7'
+md5sums=('85f00a9de6933407af486ab305b8e35c'
          '45951b751eede3762d40ab2c64142a31'
          'ef05183a35e289f6e036068db0d8c30b'
          'b1bdefdf82633ee135ea8980304f5513')
@@ -39,4 +39,5 @@ package() {
 	cd ../starcheat/images/icons
 	find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/starcheat/icons/"{} \;
 	python -m compileall "$pkgdir/usr/share/starcheat"
+  find $pkgdir -type f -exec sed -i "s|${srcdir}||g" {} \;
 } 
