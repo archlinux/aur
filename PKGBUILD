@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=firewalld-git
-pkgver=0.3.12.1.r8.3580db3
+pkgver=0.3.14.2.r50.d762bf8
 pkgrel=1
 pkgdesc='A firewall daemon with D-BUS interface providing a dynamic firewall'
 arch=('any')
@@ -14,7 +14,7 @@ backup=('etc/conf.d/firewalld'
 provides=('firewalld')
 conflicts=('firewalld')
 install='firewalld.install'
-source=('git+http://git.fedorahosted.org/git/firewalld.git'
+source=('git+https://github.com/t-woerner/firewalld.git'
         'firewalld-arch.patch')
 sha256sums=('SKIP'
             '91dbd5c580d3603e77c905880ca99ebddf398cf72f86ad37d0134ff7aa119ced')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd firewalld
 
-  printf "%s" "$(git describe --tags | sed 's/^r//; s/_/./g; s/-/./; s/-/.r/; s/-g/./')"
+  git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./;'
 }
 
 prepare() {
