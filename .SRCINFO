@@ -1,7 +1,7 @@
 pkgbase = yspave
 	pkgdesc = Simple scrypt-based CLI password manager
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 3
 	url = https://dev.yaki-syndicate.de
 	arch = any
 	license = GPL
