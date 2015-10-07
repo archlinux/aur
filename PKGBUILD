@@ -10,7 +10,27 @@ pkgdesc="OctoPrint provides a responsive web interface for controlling a 3D prin
 arch=('i686' 'x86_64' 'armv6' 'armv6h')
 url="https://github.com/foosel/OctoPrint"
 license=('GPL')
-depends=( 'python2-flask' 'python2-numpy' 'python2-pyserial' 'python2-tornado' 'python2-tornadio2' 'python2-yaml' 'python2-flask-login' 'python2-flask-principal' 'python2-netaddr' 'python2-blinker' 'python2-sockjs-tornado-git' )
+depends=(
+    'python2-blinker'
+    'python2-flask'
+    #'python2-flask-assets'
+    'python2-flask-babel'
+    'python2-flask-login'
+    'python2-flask-principal'
+    'python2-netaddr'
+    'python2-numpy'
+    'python2-pkginfo'
+    'python2-pylru'
+    'python2-pyserial'
+    'python2-rsa'
+    'python2-sarge'
+    'python2-sockjs-tornado-git'
+    'python2-tornado'
+    'python2-tornadio2'
+    'python2-webassets'
+    'python2-watchdog'
+    'python2-yaml'
+    )
 makedepends=( 'git' )
 optdepends=( 
     'ffmpeg: timelapse support'
