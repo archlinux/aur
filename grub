@@ -14,29 +14,35 @@ datadir="${datarootdir}"
 
 IPXE_BZIMAGE="/boot/ipxe/ipxe.lkrn"
 case $(uname -m) in
-	x86_64) IPXE_EFI="/usr/lib/ipxe/efi-x86_64.efi";;
-	*) IPXE_EFI="/usr/lib/ipxe/efi-i386.efi";;
+	x86_64)
+		IPXE_EFI="/usr/lib/ipxe/efi-x86_64.efi" ;;
+	*)
+		IPXE_EFI="/usr/lib/ipxe/efi-i386.efi" ;;
 esac
-IPXE_EFI_DEST="/boot/efi/EFI/ipxe/ipxe.efi"
+EFI_MOUNT="$(lsblk -l -o 'MOUNTPOINT,PARTTYPE' -n | grep 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b' | head -n1 | cut -d' ' -f1)"
+IPXE_EFI_DEST="${EFI_MOUNT}/EFI/ipxe/ipxe.efi"
 CLASS="--class ipxe --class gnu --class tool"
 
 if [ -d /sys/firmware/efi ]; then
-	if [ "$(stat -f --printf=%T /boot/efi/)" == "msdos" ] && [ -d /boot/efi/EFI ]; then
+	if [ -n "${EFI_MOUNT}" ]; then
 		# EFI system
+		# This can chainload from EFI system partition only!
 		echo "Setting up iPXE for EFI chainloading" >&2
-		mkdir -p $(dirname ${IPXE_EFI_DEST})
-		cp ${IPXE_EFI} ${IPXE_EFI_DEST}
-		echo "menuentry "iPXE - Open Source Boot Firmware" ${CLASS} {"
+		mkdir -p "$(dirname ${IPXE_EFI_DEST})"
+		cp ${IPXE_EFI} "${IPXE_EFI_DEST}"
+		echo "menuentry \"iPXE - Open Source Boot Firmware\" ${CLASS} {"
 		prepare_grub_to_access_device $(${grub_probe} --target=device ${IPXE_EFI_DEST}) | sed -e "s/^/\t/"
-		echo -e  "\tchainloader $(make_system_path_relative_to_its_root ${IPXE_EFI_DEST})"
+		echo -e "\techo 'Loading iPXE EFI ...'"
+		echo -e "\tchainloader $(make_system_path_relative_to_its_root ${IPXE_EFI_DEST})"
 		echo "}"
 	fi
 else
 	if [ -e ${IPXE_BZIMAGE} ] && is_path_readable_by_grub ${IPXE_BZIMAGE}; then
 		# image exists, create menu entry
 		echo "Found iPXE bzImage: ${IPXE_BZIMAGE}" >&2
-		echo "menuentry "iPXE - Open Source Boot Firmware" ${CLASS} {"
+		echo "menuentry \"iPXE - Open Source Boot Firmware\" ${CLASS} {"
 		prepare_grub_to_access_device $(${grub_probe} --target=device ${IPXE_BZIMAGE}) | sed -e "s/^/\t/"
+		echo -e "\techo 'Loading iPXE ...'"
 		echo -e "\tlinux16 $(make_system_path_relative_to_its_root ${IPXE_BZIMAGE})"
 		echo "}"
 	fi

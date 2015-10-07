@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2056.g3f8da98
+pkgver=1.0.0.r2065.gfb2af44
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -19,7 +19,14 @@ source=('git://git.ipxe.org/ipxe.git'
 	'grub'
 	'chain-default.ipxe'
 	'chain-default-3928.ipxe')
-backup=('etc/grub.d/20_ipxe')
+sha256sums=('SKIP'
+            'a72ebfc3ab294cdf0d2a495597e84e87feba0fb48b618b504c1a8fc277b7366d'
+            'e60a4c6569e426a6ce7298a17c4f062d73391aa00aff5085694fee98a2618c8f'
+            '337fe8b39ba5fd8f921e83f1d6611f3945cd1d8b2f8fd780fcbdc6fffdcc0276'
+            'bbf03ca532be2ec36cd45420acc34815a03e321ebd435950a30ba052e3e7a2cc'
+            'ead8e9b386206bc0e95838a6e074c218e038cd3fa1ca5cff2b73e34b40d5552f'
+            'f7ec78e26671f4df90d89440d8b2a69473c15cb6b25dda32c773023378fec42a'
+            'e26a54b4e99816b34baebcb7a15d99d57c9395c9689ffbae2329cc675248f9b9')
 
 pkgver() {
 	cd ipxe/
@@ -105,7 +112,7 @@ build() {
 package() {
 	cd ipxe/
 
-	install -D -m0755 ${srcdir}/grub ${pkgdir}/etc/grub.d/20_ipxe
+	install -D -m0755 ${srcdir}/grub ${pkgdir}/etc/grub.d/35_ipxe
 
 	install -D -m0644 COPYING ${pkgdir}/usr/share/licenses/ipxe/COPYING
 	install -D -m0644 COPYING.GPLv2 ${pkgdir}/usr/share/licenses/ipxe/COPYING.GPLv2
@@ -136,11 +143,3 @@ package() {
 	install -D -m0644 bin-x86_64-efi/ipxe.efi ${pkgdir}/usr/lib/ipxe/efi-x86_64.efi
 }
 
-sha256sums=('SKIP'
-            'a72ebfc3ab294cdf0d2a495597e84e87feba0fb48b618b504c1a8fc277b7366d'
-            'e60a4c6569e426a6ce7298a17c4f062d73391aa00aff5085694fee98a2618c8f'
-            '337fe8b39ba5fd8f921e83f1d6611f3945cd1d8b2f8fd780fcbdc6fffdcc0276'
-            'bbf03ca532be2ec36cd45420acc34815a03e321ebd435950a30ba052e3e7a2cc'
-            '808ff1b3ea54375d0b653b8dbe0992f7821329ef4b976a85a7ac7e5acc12a514'
-            'f7ec78e26671f4df90d89440d8b2a69473c15cb6b25dda32c773023378fec42a'
-            'e26a54b4e99816b34baebcb7a15d99d57c9395c9689ffbae2329cc675248f9b9')

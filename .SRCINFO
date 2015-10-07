@@ -1,6 +1,6 @@
 pkgbase = ipxe-git
 	pkgdesc = iPXE open source boot firmware - git checkout
-	pkgver = 1.0.0.r2056.g3f8da98
+	pkgver = 1.0.0.r2065.gfb2af44
 	pkgrel = 1
 	url = http://www.ipxe.org/
 	install = ipxe.install
@@ -13,7 +13,6 @@ pkgbase = ipxe-git
 	makedepends = xz
 	provides = ipxe
 	conflicts = ipxe
-	backup = etc/grub.d/20_ipxe
 	source = git://git.ipxe.org/ipxe.git
 	source = 0001-git-version.patch
 	source = 0002-banner.patch
@@ -27,7 +26,7 @@ pkgbase = ipxe-git
 	sha256sums = e60a4c6569e426a6ce7298a17c4f062d73391aa00aff5085694fee98a2618c8f
 	sha256sums = 337fe8b39ba5fd8f921e83f1d6611f3945cd1d8b2f8fd780fcbdc6fffdcc0276
 	sha256sums = bbf03ca532be2ec36cd45420acc34815a03e321ebd435950a30ba052e3e7a2cc
-	sha256sums = 808ff1b3ea54375d0b653b8dbe0992f7821329ef4b976a85a7ac7e5acc12a514
+	sha256sums = ead8e9b386206bc0e95838a6e074c218e038cd3fa1ca5cff2b73e34b40d5552f
 	sha256sums = f7ec78e26671f4df90d89440d8b2a69473c15cb6b25dda32c773023378fec42a
 	sha256sums = e26a54b4e99816b34baebcb7a15d99d57c9395c9689ffbae2329cc675248f9b9
 
