@@ -8,7 +8,7 @@
 pkgname=cutegram
 _pkgname=Cutegram
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A different telegram client from Aseman team"
 arch=('i686' 'x86_64')
 url="http://aseman.co/en/products/cutegram/"
@@ -22,7 +22,7 @@ replaces=('cutegram-cn')
 
 source=("https://github.com/Aseman-Land/Cutegram/archive/v$pkgver-stable.tar.gz")
 
-sha256sums=('67cfbcd66f6a42f6238f5404d224c2ba53b2f92bac0bece2290da8b6111d88f3')
+sha256sums=('5ff195269f2492c625cca4b8eca6134c938e2b5a759019074e486335046c02d9')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-$pkgver-stable"
