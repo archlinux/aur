@@ -1,7 +1,7 @@
 pkgbase = gccxml-git
 	pkgdesc = GCC-XML generates an XML description of a C++ program from GCC's internal representation
-	pkgver = 20130409
-	pkgrel = 2
+	pkgver = 3afa8ba
+	pkgrel = 1
 	url = http://www.gccxml.org/
 	arch = i686
 	arch = x86_64

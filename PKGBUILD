@@ -2,8 +2,8 @@
 # Contributor: Andreas Wagner <andreas.wagner@lowfatcomputing.org>
 # Contributor: Guillem Rieu <guillemr@gmx.net>
 pkgname=gccxml-git
-pkgver=20130409
-pkgrel=2
+pkgver=3afa8ba
+pkgrel=1
 pkgdesc="GCC-XML generates an XML description of a C++ program from GCC's internal representation"
 arch=(i686 x86_64)
 url="http://www.gccxml.org/"
