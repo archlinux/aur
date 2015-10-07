@@ -5,11 +5,11 @@ pkgver=0.9.5
 pkgrel=4
 pkgdesc="A front-end to YDP Collins Dictionary"
 arch=('i686' 'x86_64')
-url="http://fossies.org/linux/privat/kydpdict-0.9.5.tar.gz/kydpdict-0.9.5/contrib/kydpdict.pl.1"
+url="http://fossies.org/linux/privat/old/kydpdict-0.9.5.tar.gz/kydpdict-0.9.5/contrib/kydpdict.pl.1"
 license=('GPL')
 depends=('qt3')
 install=kydpdict.install
-source=(http://fossies.org/linux/privat/$pkgname-$pkgver.tar.bz2 $pkgname.png $pkgname.desktop)
+source=(http://fossies.org/linux/privat/old/$pkgname-$pkgver.tar.bz2 $pkgname.png $pkgname.desktop)
 md5sums=('4da97f41c63666f3d9e151a18c0ef65e'
          'dee4f28a7c681292226d06ab97b39e3e'
          'e42aed4dde1a7f203586220d04737237')
