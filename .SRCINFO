@@ -14,9 +14,11 @@ pkgbase = cnijfilter-mx920
 	depends = cnijfilter-common=4.00
 	source = http://gdlp01.c-wss.com/gds/1/0100005171/01/cnijfilter-source-3.90-1.tar.gz
 	source = cups.patch
+	source = buildfiles.patch
 	source = mychanges.patch
 	sha512sums = 9ec303dc7209f5534a20e533fc18ec810603f4515655ce67f28f0f35d521185181351fd866d2191939eb02c783b168f637e18888a4e6a1eacc9e93b1b656ebcb
 	sha512sums = af0de981c5610f4001b5ab4d6fb042f48879995c1e1434fa3819e02d2030ceaf35b183f8cbab530435af6d452bb88c23e522c51d20e9cb5c81a7ff6a4c2df915
+	sha512sums = 9b1081c964c7894eefa8b4d11b04c7eafda208f629a373a09999fe8fe8f5ce85f6a697bb14e20a3b3ce795d578d46fde5a431b3f29eb4f0ee70e67477bf6f4c2
 	sha512sums = 1cf54862db74f928a3a1ad0316b9940b843dbc4cae95bbb3d93ab317d248788cf844103bc006b4670c27b0f13952301b5907476a6c7d13ebb0cb5c0a942d6182
 	depends_i686 = gtk2
 	depends_i686 = libxml2

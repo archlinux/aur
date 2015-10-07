@@ -1,0 +1,63 @@
+diff -ruN cnijfilter-source-4.00-1.orig/lgmon2/src/Makefile.am cnijfilter-source-4.00-1/lgmon2/src/Makefile.am
+--- cnijfilter-source-4.00-1.orig/lgmon2/src/Makefile.am	2013-07-17 06:03:45.000000000 +0430
++++ cnijfilter-source-4.00-1/lgmon2/src/Makefile.am	2015-08-04 12:35:12.115634249 +0430
+@@ -9,3 +9,4 @@
+ CFLAGS = -O2 -Wall -I/usr/include/libusb-1.0 -I./common @XML2_CFLAGS@
+ 
+ cnijlgmon2_LDADD = -ldl -lusb-1.0 -lcnnet -lxml2
++cnijlgmon2_LDFLAGS = -L../../com/libs_bin32
+diff -ruN cnijfilter-source-4.00-1.orig/Makefile cnijfilter-source-4.00-1/Makefile
+--- cnijfilter-source-4.00-1.orig/Makefile	2013-07-17 06:03:45.000000000 +0430
++++ cnijfilter-source-4.00-1/Makefile	2015-08-04 13:02:47.675636146 +0430
+@@ -14,3 +14,12 @@
+ install :
+ 	target=install; $(scripts)
+ 
++common :
++	for dir in "libs" "bscc2sts" "cnijnpr" "cngpij" "cngpijmnt" "pstocanonij" "backend" "backendnet" "cmdtocanonij" "cnijbe" "lgmon2"; do \
++	  (cd $$dir; ./autogen.sh --prefix=/usr --enable-libpath=/usr/lib32/bjlib --enable-progpath=/usr/bin --libdir=/usr/lib32; make) || exit 1; \
++	done
++
++installcommon :
++	for dir in "libs" "bscc2sts" "cnijnpr" "cngpij" "cngpijmnt" "pstocanonij" "backend" "backendnet" "cmdtocanonij" "cnijbe" "lgmon2"; do \
++	  (cd $$dir; make install DESTDIR=${PACKAGEDIR}) || exit 1; \
++	done
+diff -ruN cnijfilter-source-4.00-1.orig/backendnet/configure.in cnijfilter-source-4.00-1/backendnet/configure.in
+--- cnijfilter-source-4.00-1.orig/backendnet/configure.in	2013-07-17 06:03:45.000000000 +0430
++++ cnijfilter-source-4.00-1/backendnet/configure.in	2015-08-04 16:54:42.385652052 +0430
+@@ -19,7 +19,8 @@
+ AC_DEFINE_UNQUOTED(BJLIB_PATH, "$enable_libpath")
+ AC_SUBST(BJLIB_PATH)
+ 
+-ARC=`getconf LONG_BIT`
++#ARC=`getconf LONG_BIT`
++ARC=32
+ AC_SUBST(ARC)
+ 
+ # Checks for programs.
+diff -ruN cnijfilter-source-4.00-1.orig/cnijfilter/configure.in cnijfilter-source-4.00-1/cnijfilter/configure.in
+--- cnijfilter-source-4.00-1.orig/cnijfilter/configure.in	2013-07-17 06:03:45.000000000 +0430
++++ cnijfilter-source-4.00-1/cnijfilter/configure.in	2015-08-04 16:55:56.955652143 +0430
+@@ -43,7 +43,8 @@
+ esac
+ AC_SUBST(CNCL_LIB_ID)
+ 
+-ARC=`getconf LONG_BIT`
++#ARC=`getconf LONG_BIT`
++ARC=32
+ AC_SUBST(ARC)
+ 
+ AC_PROG_CC
+diff -ruN cnijfilter-source-4.00-1.orig/cnijnpr/configure.in cnijfilter-source-4.00-1/cnijnpr/configure.in
+--- cnijfilter-source-4.00-1.orig/cnijnpr/configure.in	2013-07-17 06:03:45.000000000 +0430
++++ cnijfilter-source-4.00-1/cnijnpr/configure.in	2015-08-04 16:56:07.878985490 +0430
+@@ -37,7 +37,8 @@
+ 
+ CFLAGS="-O2"
+ 
+-ARC=`getconf LONG_BIT`
++#ARC=`getconf LONG_BIT`
++ARC=32
+ AC_SUBST(ARC)
+ 
+ AC_OUTPUT(Makefile
