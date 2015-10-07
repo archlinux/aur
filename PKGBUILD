@@ -2,8 +2,8 @@
 # Contributor: Bitwig GmbH <support at bitwig dot com>
 pkgname=bitwig-studio-demo-rc
 _pkgname=bitwig-studio
-pkgver=1.0.14rc1
-_pkgver=${pkgver/rc/-RC}
+pkgver=1.3.0rc1
+_pkgver=${pkgver/rc/-RC-}
 pkgrel=1
 pkgdesc="Music production system for production, remixing and performance. Release candidate version"
 arch=( 'x86_64' )
@@ -23,26 +23,8 @@ optdepends=(
 provides=('bitwig-studio')
 conflicts=('bitwig-studio-demo')
 options=(!strip)
-source=("http://packs.bitwig.com/downloads/bitwig-studio-${_pkgver}.deb")
-md5sums=('36875f9c965619e8ede81d65e834bd16')
-
-_archive=("bitwig-studio-${_pkgver}.deb")
-_archive_md5="${md5sums[0]}"
-
-build() {
-  cd $srcdir
-
-  if [ ! -f ${_archive} ]
-  then
-     wget -r -np -nd -H "http://packs.bitwig.com/downloads/${_archive}"
-  fi
-
-  if ! echo "${_archive_md5}  ${_archive}" | md5sum -c --quiet
-  then
-    echo "Invalid checksum for ${_archive}"
-    return 1
-  fi
-}
+source=("https://downloads.bitwig.com/release-candidate/1.3/bitwig-studio-${_pkgver}.deb")
+md5sums=('bb8e92b634e36b1c99ed202c2d358eea')
 
 package() {
   cd $srcdir
@@ -60,10 +42,4 @@ package() {
   # Fix launcher category
   sed -i 's:Categories=Multimedia:Categories=Multimedia;AudioVideo;Player;Recorder;:' \
     $pkgdir/usr/share/applications/bitwig-studio.desktop
-
-  # Install icons
-  mkdir -p $pkgdir/usr/share/pixmaps
-  install -m644 $pkgdir/usr/share/icons/gnome/48x48/apps/bitwig-studio.png \
-    $pkgdir/usr/share/pixmaps/
-  mv $pkgdir/usr/share/icons/gnome $pkgdir/usr/share/icons/hicolor
 }
