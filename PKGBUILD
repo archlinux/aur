@@ -12,6 +12,8 @@ optdepends=()
 _dir=KrisLibrary
 source=("git+https://github.com/krishauser/KrisLibrary")
 sha256sums=("SKIP")
+provides=("krislibrary")
+conflicts=("krislibrary")
 
 pkgver() {
   cd "${srcdir}/${_dir}"

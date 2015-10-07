@@ -16,6 +16,8 @@ pkgbase = krislibrary-git
 	depends = libgl
 	depends = tinyxml
 	depends = assimp
+	provides = krislibrary
+	conflicts = krislibrary
 	source = git+https://github.com/krishauser/KrisLibrary
 	sha256sums = SKIP
 
