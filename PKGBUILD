@@ -29,9 +29,18 @@ install=apt-cacher-ng.install
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
+  rm -rf builddir
+  mkdir -p builddir
+  src=$PWD
+
+  cd builddir
+
+  cmake $src -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DEXTRA_LIBS_ACNG=pthread || return 1
+
   make all || return 1
 
   patch -Np0 -i "${srcdir}/acng.conf.patch"
+  cd ..
   patch -Np0 -i "${srcdir}/apt-cacher-ng.service.patch"
   patch -Np0 -i "${srcdir}/apt-cacher-ng.conf.patch"
 }
@@ -39,33 +48,17 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
-  _bins="${pkgdir}/usr/bin"
-  _confs="${pkgdir}/etc/${pkgname}"
-  _docs="${pkgdir}/usr/share/doc/${pkgname}"
+  make -C builddir install DESTDIR=${pkgdir}
 
-
-  mkdir -p $_bins
-  mkdir -p $_confs
-  mkdir -p $_docs
-
-  cp -rf conf/* $_confs/
-  cp -rf doc/{000apt-cacher-ng-proxy,apt-cacher-ng.pdf,html,README} $_docs/
-
-  install -m755 -d ${pkgdir}/usr/share/man/man8
-  install -m644 doc/man/apt-cacher-ng.8 ${pkgdir}/usr/share/man/man8/apt-cacher-ng.8
-  install -m644 doc/man/acngfs.8 ${pkgdir}/usr/share/man/man8/acngfs.8
+  mv ${pkgdir}/usr/sbin/ ${pkgdir}/usr/bin/
+  mv ${pkgdir}/usr/lib/apt-cacher-ng/{acngfs,acngtool,in.acng} ${pkgdir}/usr/bin
 
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  install -m775 build/apt-cacher-ng $_bins/
-  install -m775 build/acngfs $_bins/
-  install -m775 build/in.acng $_bins/
 
   install -D -m644 ${srcdir}/${pkgname}-${pkgver}/systemd/apt-cacher-ng.service ${pkgdir}/usr/lib/systemd/system/apt-cacher-ng.service
   install -D -m644 ${srcdir}/${pkgname}-${pkgver}/systemd/apt-cacher-ng.conf ${pkgdir}/usr/lib/tmpfiles.d/apt-cacher-ng.conf
   mkdir -p ${pkgdir}/var/log/apt-cacher-ng
   mkdir -p ${pkgdir}/var/cache/apt-cacher-ng
-  mkdir -p ${pkgdir}/run/apt-cacher-ng
 }
 
 
