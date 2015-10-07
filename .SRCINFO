@@ -1,0 +1,93 @@
+pkgbase = llvm
+	pkgver = 3.7.0
+	pkgrel = 4
+	url = http://llvm.org/
+	arch = i686
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = cmake
+	makedepends = libffi
+	makedepends = python2
+	makedepends = ocaml=4.02.3
+	makedepends = python-sphinx
+	makedepends = ocaml-ctypes
+	makedepends = ocaml-findlib
+	makedepends = libedit
+	makedepends = swig
+	options = staticlibs
+	source = http://llvm.org/releases/3.7.0/llvm-3.7.0.src.tar.xz
+	source = http://llvm.org/releases/3.7.0/llvm-3.7.0.src.tar.xz.sig
+	source = http://llvm.org/releases/3.7.0/cfe-3.7.0.src.tar.xz
+	source = http://llvm.org/releases/3.7.0/cfe-3.7.0.src.tar.xz.sig
+	source = http://llvm.org/releases/3.7.0/clang-tools-extra-3.7.0.src.tar.xz
+	source = http://llvm.org/releases/3.7.0/clang-tools-extra-3.7.0.src.tar.xz.sig
+	source = http://llvm.org/releases/3.7.0/compiler-rt-3.7.0.src.tar.xz
+	source = http://llvm.org/releases/3.7.0/compiler-rt-3.7.0.src.tar.xz.sig
+	source = http://llvm.org/releases/3.7.0/lldb-3.7.0.src.tar.xz
+	source = http://llvm.org/releases/3.7.0/lldb-3.7.0.src.tar.xz.sig
+	source = llvm-3.7.0-link-tools-against-libLLVM.patch
+	source = llvm-3.7.0-export-more-symbols.patch
+	source = clang-tools-extra-3.7.0-install-clang-query.patch
+	source = lldb-3.7.0-avoid-linking-to-libLLVM.patch
+	source = llvm-Config-llvm-config.h
+	sha256sums = ab45895f9dcdad1e140a3a79fd709f64b05ad7364e308c0e582c5b02e9cc3153
+	sha256sums = SKIP
+	sha256sums = 4ed740c5a91df1c90a4118c5154851d6a475f39a91346bdf268c1c29c13aa1cc
+	sha256sums = SKIP
+	sha256sums = 8ae8a0a3a96b7a700412d67df0af172cb2fc1326beec575fcc0f71d2e72709cd
+	sha256sums = SKIP
+	sha256sums = 227fa998520bc94974a428dc8e7654d9bdf277e5bc70d4064ebc05691bd62b0b
+	sha256sums = SKIP
+	sha256sums = f4d7505bc111044eaa4033af012221e492938405b62522b8e3e354c20c4b71e9
+	sha256sums = SKIP
+	sha256sums = cf9c8b4d70b4547eda162644658c5c203c3139fcea6c75003b6cd7dc11a8cccc
+	sha256sums = a1c9f36b97c639666ab6a1bd647a08a027e93e3d3cfd6f5af9c36e757599ce81
+	sha256sums = 3abf85430c275ecb8dbb526ecb82b1c9f4b4f782a8a43b5a06d040ec0baba7e7
+	sha256sums = 2d53b6ed4c7620eeade87e7761b98093a0434801ddd599056daed7881141fb01
+	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
+	makedepends_x86_64 = gcc-multilib
+
+pkgname = llvm
+	pkgdesc = Low Level Virtual Machine
+	depends = llvm-libs=3.7.0-4
+	depends = perl
+
+pkgname = llvm-libs
+	pkgdesc = Low Level Virtual Machine (runtime libraries)
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = libedit
+	depends = ncurses
+
+pkgname = llvm-ocaml
+	pkgdesc = OCaml bindings for LLVM
+	depends = llvm=3.7.0-4
+	depends = ocaml=4.02.3
+	depends = ocaml-ctypes
+
+pkgname = lldb
+	pkgdesc = Next generation, high-performance debugger
+	url = http://lldb.llvm.org/
+	depends = libedit
+	depends = libxml2
+	depends = python2
+
+pkgname = clang
+	pkgdesc = C language family frontend for LLVM
+	url = http://clang.llvm.org/
+	depends = llvm-libs=3.7.0-4
+	depends = gcc
+	optdepends = python2: for git-clang-format
+
+pkgname = clang-analyzer
+	pkgdesc = A source code analysis framework
+	url = http://clang-analyzer.llvm.org/
+	depends = clang=3.7.0-4
+	depends = python2
+
+pkgname = clang-tools-extra
+	pkgdesc = Extra tools built using Clang's tooling APIs
+	url = http://clang.llvm.org/
+	depends = clang=3.7.0-4
+
