@@ -1,0 +1,25 @@
+pkgbase = klampt
+	pkgdesc = A robot simulation, planning, and control package from Indiana University / Duke University.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://klampt.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = assimp
+	depends = boost
+	depends = freeglut
+	depends = glpk
+	depends = glui
+	depends = libxi
+	depends = libxmu
+	depends = ode
+	depends = python2
+	depends = python2-opengl
+	depends = qt4
+	source = https://github.com/krishauser/Klampt/archive/v0.6.1.tar.gz
+	sha256sums = cccf773afd60554d5347a611f1c24e98545b0dbd3e1c125a9a4cbeb1f778f99a
+
+pkgname = klampt
+
