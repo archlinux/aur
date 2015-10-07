@@ -1,0 +1,20 @@
+pkgbase = deadbeef-plugin-customizabletb-git
+	pkgver = 95.5df8f49
+	pkgrel = 1
+	url = https://github.com/kravich/ddb_customizabletb
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	depends = deadbeef>=0.6
+	source = git+https://github.com/kravich/ddb_customizabletb
+	source = build.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = deadbeef-plugin-customizabletb-gtk2-git
+	pkgdesc = Customizable toolbar plugin for DeadBeeF music player. The GTK2 version.
+
+pkgname = deadbeef-plugin-customizabletb-gtk3-git
+	pkgdesc = Customizable toolbar plugin for DeadBeeF music player. The GTK3 version.
+

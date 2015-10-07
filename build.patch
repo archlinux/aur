@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 2d2dc91..0e944a0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@
+ #
+ 
+ 
+-CC = gcc
++CC ?= gcc
+ 
+ CFLAGS += -std=c99 -fPIC -Wall -Werror -Wfatal-errors -Wno-deprecated-declarations
+ CFLAGS += -Wno-error=deprecated-declarations -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=unused-function
