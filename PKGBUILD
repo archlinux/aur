@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/kravich/ddb_customizabletb"
 license=(GPL2)
 depends=('deadbeef>=0.6')
-makedepends=(mercurial)
+makedepends=(git)
 source=('git+https://github.com/kravich/ddb_customizabletb'
         'build.patch')
 md5sums=('SKIP'

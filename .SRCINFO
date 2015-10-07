@@ -5,7 +5,7 @@ pkgbase = deadbeef-plugin-customizabletb-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = mercurial
+	makedepends = git
 	depends = deadbeef>=0.6
 	source = git+https://github.com/kravich/ddb_customizabletb
 	source = build.patch
