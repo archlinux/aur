@@ -5,25 +5,29 @@
 _name=compiz
 pkgname=compiz-manjaro
 _series=0.9.12
-pkgver=${_series}.1
-pkgrel=5
+pkgver=${_series}.2
+pkgrel=1
 _greybirdver=1.5.3
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/${_name}"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender'
-         'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity>=3.16.0' 'glu' 'libsm' 'dconf')
+depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity>=3.16.0' 'glu' 'libsm' 'dconf')
 makedepends=('cmake' 'intltool')
-#optdepends=()
+optdepends=(
+  'xorg-xprop: grab various window properties for use in window matching rules'
+)
 conflicts=('compiz' 'compiz09-manjaro-test' 'compiz-core-bzr' 'compiz-core-devel' 'compiz-core' 'compiz-gtk-standalone' 'compiz-xfce' 'compiz-mate'
            'compiz-core-mate' 'compiz-fusion-plugins-main' 'compiz-fusion-plugins-extra' 'compiz-fusion-plugins-unsupported' 'compiz-decorator-gtk'
            'compiz-decorator-kde' 'libcompizconfig' 'compizconfig-python' 'compizconfig-backend-gconf' 'compiz-bcop' 'ccsm')
 replaces=('compiz09-manjaro-test')
-provides=("${_name}=${pkgver}" "${_name}-core-devel=${pkgver}")
+provides=("${_name}=${pkgver}")
 source=("${url}/${_series}/${pkgver}/+download/${_name}-${pkgver}.tar.bz2"
-        "set-gwd-default.patch"
         "focus-prevention-disable.patch"
+        "gtk-extents.patch"
+        "xfce4-notifyd-nofade.patch"
+        "c++11.patch"
+        "switcher-background.patch"
         "${pkgname}-defaults.patch"
         "${pkgname}.gschema.override"
         "compiz-gtk-decorator-theme-selector"
@@ -38,45 +42,58 @@ source=("${url}/${_series}/${pkgver}/+download/${_name}-${pkgver}.tar.bz2"
         "${pkgname}-mate-decoratortheme.desktop"
         "greybird-${_greybirdver}.tar.gz::https://github.com/shimmerproject/Greybird/archive/v${_greybirdver}.tar.gz"
         "metacity-3_16.patch")
-sha1sums=('4ccbc1fc3728ded896f14e11db121bf771cec59f'
-          'be585a68eacf93a1064ea914a927623c3e774b95'
-          'b74ab025a89419c23d6f01c41e414281e1a2382f'
-          '1996419be45490410887385975cbbebfa15a539a'
-          'e54a97ebda168c507457feee5e5085bd2ae98546'
-          '45b98fd5e238a595e3a60741106193321bebdf64'
-          'f7e1544f8e6987f86c1b2c3e69b70d2accf95bc9'
-          'b428f171ab8b34b236aed9954867102bdd33f9da'
-          'a790b6556695b06af4eff910e7dc409aab85f9a8'
-          '4b4fa287ea72f8b8eccdf4254dfe2174d9b41b2a'
-          '847d498050e96fbb1a43c29a0f98b70a74319203'
-          '36b8c620e00cfd7d9099c02589cab6906f483e53'
-          '56146a4fc169f46504eaa86ca240de34c4bb1fd8'
-          '8eff3fedffb543960ebfc19b15e95d7f7a90ee50'
-          '890b02696130b8275104aaea110b9beb3a162dce'
-          'ebc447a9c13b6c8563fec789d290354b3d7c8230'
-          '699ca81225749cc9a1b8906f5c5d30fdb649b5ef')
+sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
+            'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
+            '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
+            '273aa79cb0887922e3a73fbbe97596495cee19ca6f4bd716c6c7057f323d8198'
+            'eb8b432050d1eed9cb1d5f33d2645f81e2bdce2bf55d5cc779986bb751373a45'
+            'e3125ed3a7e87a7d4bdaa23f1b6f654a02d0b050ad7a694ce9165fff2c6ff310'
+            'cdc9eeaa213dbde3bceb2d0a73171ed319929b6a5146ff55fcd4f17df7b25d13'
+            '443f85eae424e8aa993f786f3f90dcf92a5454f728f574a5311bb4747ac54288'
+            '4f57ce60785f7b3dd18c7fc29edcfc9004688d2227bbff724ecb4db1200a5ac2'
+            '0faaf9e9df28d2857108ccd0910d50ba631c34c2b1659b8860da8c2b552fc889'
+            'd8205f6a9e69f904d17bce276941c10ad3d4a767be31d875a951ed7ddc26fd62'
+            '8938f927c0f0ee5a9e83489dd66939588ebe4ad65bb59b483a54991421836a53'
+            '1000b69dbbdfbf67d309e14f040e2b74ec6e1e25cd2316406ae15ae839e01f37'
+            '2c225942951642b0afa6ee0ddc2f3bb312bf3c20e135736851f5772378823b11'
+            '4dff6abcf5455c9f91866d031d3c41ed8ae4bd2ca0f4561f3afb8e2605f2176a'
+            'dc7d2f58e1bfab312d056f02008faecc0bcd572f41065f1e09c077c62c3f65ca'
+            '71d8a014695b23807e3c758e96045b2180c4d8d9ef501f1dded54f9232e1e1eb'
+            'a992819fd34c4a9c256519c081e53047ef6527662ae989f4cb0e575fd1592115'
+            '856f092ebd199a2a28346938a3dfe62613135ad886c25bbaeebd3a917de4c962'
+            '27e7c516c22947a28bb1f34ecc63142fc1a6b8178439a04660f7ae0968bdc57c')
 install="${pkgname}.install"
 
 prepare() {
   cd "${_name}-${pkgver}"
-
-  # Set gtk-window-decorator as default in the Window Decoration plugin
-  patch -p1 -i "${srcdir}/set-gwd-default.patch"
+  
+  # Fix decorator start command
+  sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/exec \/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
 
   # Set focus prevention level to off which means that new windows will always get focus
   patch -p1 -i "${srcdir}/focus-prevention-disable.patch"
   
-  # Manjaro defaults
-  patch -p1 -i "${srcdir}/${pkgname}-defaults.patch"
-
+  # Use Python 2
   find -type f \( -name 'CMakeLists.txt' -or -name '*.cmake' \) -exec sed -e 's/COMMAND python/COMMAND python2/g' -i {} \;
   find compizconfig/ccsm -type f -exec sed -e 's|^#!.*python|#!/usr/bin/env python2|g' -i {} \;
   
   # Fix Python build directory with CMake 3.2
   sed -i 's/${PY_BUILD_DIR}/lib/g' compizconfig/ccsm/CMakeLists.txt
   
-  # Metacity 3.16 compatibility
-  patch -Np1 -i "${srcdir}/metacity-3_16.patch"
+  # Fix incorrect extents for GTK+ tooltips, csd etc
+  patch -p1 -i "${srcdir}/gtk-extents.patch"
+
+  # Ensure xfce4 notifications are not 'double faded'
+  patch -p1 -i "${srcdir}/xfce4-notifyd-nofade.patch"
+
+  # Use C++11 (pre-requisite for switcher-background.patch)
+  patch -p1 -i "${srcdir}/c++11.patch"
+
+  # Allow user to change switcher background colour (fixes blank background for Emerald)
+  patch -p1 -i "${srcdir}/switcher-background.patch"
+  
+  # Manjaro defaults
+  patch -p1 -i "${srcdir}/${pkgname}-defaults.patch"
 }
 
 build() {
@@ -90,9 +107,6 @@ build() {
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
-    -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-    -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-    -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
     -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=On \
     -DCOMPIZ_BUILD_WITH_RPATH=Off \
     -DCOMPIZ_PACKAGING_ENABLED=On \
@@ -103,7 +117,8 @@ build() {
     -DUSE_GSETTINGS=On \
     -DCOMPIZ_BUILD_TESTING=Off \
     -DCOMPIZ_WERROR=Off \
-    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,expo,grid,regex,animation,ccp"
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,expo,grid,regex,animation,ccp" \
+    -DCOMPIZ_DISABLE_PLUGIN_DBUS=On
   
   make
 }
