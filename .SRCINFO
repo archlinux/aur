@@ -1,7 +1,7 @@
 pkgbase = neap-hotkey
 	pkgdesc = A simple pager that runs in the notification area / systray with hotkey support
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/10sr/neap
 	install = neap.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = neap-hotkey
 	source = neap-0.8.4.tar.gz::https://github.com/10sr/neap/archive/v0.8.4.tar.gz
 	source = neap.desktop
 	md5sums = 3eb6b00f34debba2a6f2b9a9e1474acf
-	md5sums = bd49e0a8c8b5e84d85401c9ab3b9c2dd
+	md5sums = 1381dc63a794afc83706590bff8a623d
 
 pkgname = neap-hotkey
 

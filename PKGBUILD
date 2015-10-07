@@ -5,7 +5,7 @@
 pkgname=neap-hotkey
 #_pkgname=neap
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple pager that runs in the notification area / systray with hotkey support"
 arch=(any)
 url="https://github.com/10sr/neap"
@@ -19,7 +19,7 @@ source=("neap-$pkgver.tar.gz::https://github.com/10sr/neap/archive/v$pkgver.tar.
 	"neap.desktop")
 
 md5sums=('3eb6b00f34debba2a6f2b9a9e1474acf'
-         'bd49e0a8c8b5e84d85401c9ab3b9c2dd')
+         '1381dc63a794afc83706590bff8a623d')
 
 package() {
 	install -D -m 644 neap.desktop ${pkgdir}/usr/share/applications/$pkgname.desktop
