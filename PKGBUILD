@@ -12,7 +12,7 @@
 
 pkgname=('llvm-assert' 'llvm-libs-assert' 'llvm-ocaml-assert' 'lldb-assert' 'clang-assert' 'clang-analyzer-assert' 'clang-tools-extra-assert')
 pkgver=3.7.0
-pkgrel=4
+pkgrel=1
 _ocaml_ver=4.02.3
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
