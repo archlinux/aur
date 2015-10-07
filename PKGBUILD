@@ -1,11 +1,11 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=coz-git
 pkgver=r246.479a3c1
-pkgrel=1
+pkgrel=2
 pkgdesc="a new kind of profiler that measures optimization potential"
 arch=('x86_64')
 url="https://github.com/plasma-umass/coz"
-license=('GPL2')
+license=('BSD')
 depends=('python' 'clang>=3.1')
 makedepends=('git')
 options=()

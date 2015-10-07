@@ -1,10 +1,10 @@
 pkgbase = coz-git
 	pkgdesc = a new kind of profiler that measures optimization potential
 	pkgver = r246.479a3c1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plasma-umass/coz
 	arch = x86_64
-	license = GPL2
+	license = BSD
 	makedepends = git
 	depends = python
 	depends = clang>=3.1
