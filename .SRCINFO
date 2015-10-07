@@ -6,6 +6,7 @@ pkgbase = libxpresent
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = xorg-util-macros
 	depends = libxext
 	depends = libxfixes
 	depends = libxrandr
