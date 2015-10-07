@@ -3,7 +3,7 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=weka
-pkgver=3.7.12
+pkgver=3.7.13
 _dlver=${pkgver//./-}
 pkgrel=1
 pkgdesc="A collection of machine learning algorithms for data mining tasks"
@@ -15,7 +15,7 @@ makedepends=('java-environment' 'gif2png')
 source=(http://downloads.sourceforge.net/sourceforge/weka/$pkgname-$_dlver.zip
         weka.sh
         weka.desktop)
-md5sums=('2c2964d943313575e4ae3107826a0bb4'
+md5sums=('2a0ef94da5711fbd147195e70031fb2b'
          '60dc5666b93d98db0900deb7d8b5eae4'
          '83a4d47ba64df90a92a38b23a14c6480')
 
