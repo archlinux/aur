@@ -12,6 +12,7 @@ pkgbase = klampt
 	depends = freeglut
 	depends = glpk
 	depends = glui
+	depends = krislibrary
 	depends = libxi
 	depends = libxmu
 	depends = ode

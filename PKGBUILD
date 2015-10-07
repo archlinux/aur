@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
 makedepends=('cmake')
-depends=('assimp' 'boost' 'freeglut' 'glpk' 'glui' 'libxi' 'libxmu' 'ode'
+depends=('assimp' 'boost' 'freeglut' 'glpk' 'glui' 'krislibrary' 'libxi' 'libxmu' 'ode'
          'python2' 'python2-opengl' 'qt4')
 optdepends=()
 _dir=Klampt-${pkgver}
