@@ -1,0 +1,16 @@
+pkgbase = engine_pkcs11
+	pkgdesc = Implementation of a PKCS11 engine for OpenSSL
+	pkgver = 0.1.8
+	pkgrel = 3
+	url = http://www.opensc-project.org/opensc/wiki/engine_pkcs11
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = zlib
+	depends = openssl>=0.9.7d
+	depends = libp11
+	source = http://downloads.sourceforge.net/opensc/engine_pkcs11/engine_pkcs11-0.1.8.tar.gz
+	md5sums = 693b402eafba152666e66431ed4c1b9e
+
+pkgname = engine_pkcs11
+
