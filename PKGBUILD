@@ -5,7 +5,7 @@
 pkgname=openblas-lapack
 _pkgname=OpenBLAS
 pkgver=0.2.14
-pkgrel=4
+pkgrel=5
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('i686' 'x86_64')
 url="http://xianyi.github.com/OpenBLAS/"
@@ -23,11 +23,7 @@ _config="FC=gfortran USE_OPENMP=0 USE_THREAD=1 MAJOR_VERSION=3 NO_LAPACK=0"
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  NPROC=`grep "physical id" /proc/cpuinfo|sort|uniq|wc -l`
-  NCORE4PROC=`grep "cores" /proc/cpuinfo|sort|tail -n 1|sed -e 's/cpu cores.*: //'`
-  let NCORE=NPROC*NCORE4PROC
-
-  make ${_config} NUM_THREADS=${NCORE} libs netlib shared
+  make ${_config} libs netlib shared
 }
 
 check() {
