@@ -1,6 +1,6 @@
 pkgbase = linux-bfs
 	pkgver = 4.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ck-hack.blogspot.de
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = linux-bfs
 	source = change-default-console-loglevel.patch
 	source = config
 	source = config.x86_64
+	source = 0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch
 	sha512sums = 168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0
 	sha512sums = SKIP
 	sha512sums = 3b5cb5c8f494958c39a06a1b416e3e5a075a3c76c44f8bf1ae5a14deec9861407100c2ef59b0720e8fc0729b5c8422b4d819ff59f1f7ec4eed20c5ba8a95d6d5
@@ -39,6 +40,7 @@ pkgbase = linux-bfs
 	sha512sums = d9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8
 	sha512sums = f1b175f9c0c1735ac26fcd9705a1d6fd7253b6d47de89c3537ef886a7957c2ebc0f535b816dfa6922e1830796a7da4ac9cde1dd2a650369c41d766ea4b144d1e
 	sha512sums = c34d13f9ae6564461cc69aad176b4deee98efe9ec5058db2fe34f33387092022da1c59af4e37caff799c71eb2829669295cb0a6fbadeac368be937aaf7f65094
+	sha512sums = bf8045913bc87df289cb6089b9428b2eb685ef3a745c7531b628111ba58ec33fb6e707a74ecdd53b6d59169c4354e02efff585ef16a1645ce5b04e54257f8f50
 
 pkgname = linux-bfs
 	pkgdesc = Linux Kernel and modules with BFS and BFQ schedulers
