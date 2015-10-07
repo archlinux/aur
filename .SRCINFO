@@ -1,7 +1,7 @@
 pkgbase = scanbd
 	pkgdesc = Scanner button daemon looking for scanner button pressed
-	pkgver = 1.4.3
-	pkgrel = 2
+	pkgver = 1.4.4
+	pkgrel = 1
 	url = http://scanbd.sourceforge.net/
 	install = scanbd.install
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = scanbd
 	depends = sane
 	depends = confuse
 	backup = etc/scanbd/scanbd.conf
-	source = http://downloads.sourceforge.net/scanbd/scanbd-1.4.3.tgz
-	sha256sums = 0c7d04a3e2d196021d866390b2c95c7cb00ee2554488e616264a55bcec16b6d8
+	source = http://downloads.sourceforge.net/scanbd/scanbd-1.4.4.tgz
+	sha256sums = 3a61e3bec22c6926c51510408475f2961647cc9dec325a7622108a95a64c451d
 
 pkgname = scanbd
 
