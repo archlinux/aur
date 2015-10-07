@@ -1,10 +1,11 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=borgbackup
-pkgver=0.26.1
+_pkgname=borg
+pkgver=0.27.0
 pkgrel=1
-pkgdesc="A deduplicating backup program for efficient and secure backups"
-url="https://borgbackup.github.io/borgbackup"
+pkgdesc="Deduplicating backup program with compression and authenticated encryption"
+url="https://borgbackup.github.io/borgbackup/"
 license=('BSD')
 arch=('i686' 'x86_64')
 depends=('acl'
@@ -16,7 +17,7 @@ optdepends=('openssh: repositories on remote hosts'
             'python-llfuse: Mounting backups as a FUSE filesystem')
 makedepends=('python-sphinx')
 source=("https://pypi.python.org/packages/source/b/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('13cac77cda51f8c61d47e3c20c439e9ddb1b190d032e7962d1d568a8ae95acfd')
+sha256sums=('2b61e9baea912fa7f120673eaa03ca55053d8669879cd0a7f1dc91a75afc3112')
 
 build() {
   cd "$pkgname-$pkgver/docs"
