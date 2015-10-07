@@ -1,0 +1,17 @@
+pkgbase = libmirisdr-git
+	pkgdesc = Software for the Mirics MSi2500 + MSi001 SDR platform.
+	pkgver = 59ba372
+	pkgrel = 1
+	url = http://cgit.osmocom.org/libmirisdr/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	provides = libmirisdr
+	source = libmirisdr-git::git://git.osmocom.org/libmirisdr
+	md5sums = SKIP
+
+pkgname = libmirisdr-git
+
