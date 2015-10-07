@@ -1,0 +1,18 @@
+pkgbase = pygccxml-svn
+	pkgdesc = Read a generated file and provide a simple framework to navigate C++ declarations in Python.
+	pkgver = 1856
+	pkgrel = 1
+	url = http://www.sourceforge.net/projects/pygccxml
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = boost
+	depends = gccxml-git
+	depends = python2
+	conflicts = pygccxml
+	options = !strip
+	source = pygccxml-svn::svn+http://svn.code.sf.net/p/pygccxml/svn/pygccxml_dev
+	md5sums = SKIP
+
+pkgname = pygccxml-svn
+
