@@ -1,6 +1,6 @@
 pkgbase = peru-git
 	pkgdesc = A tool for fetching code
-	pkgver = 469.4cb0dee
+	pkgver = 478.219ea27
 	pkgrel = 1
 	url = https://github.com/buildinspace/peru
 	arch = any
