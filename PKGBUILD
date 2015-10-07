@@ -1,15 +1,15 @@
 # Maintainer: Boris Timofeev <mashin87@gmail.com>
 pkgname=punes
-pkgver=0.97
+pkgver=0.98
 pkgrel=1
 epoch=
 pkgdesc="Nintendo Entertaiment System emulator"
 arch=('i686' 'x86_64')
 url="http://forums.nesdev.com/viewtopic.php?t=6928"
-license=('unknown')
+license=('GPL2')
 groups=()
-depends=('sdl' 'qt4')
-makedepends=()
+depends=('sdl' 'qt5-base' 'alsa-lib' 'hicolor-icon-theme' 'desktop-file-utils')
+makedepends=('autoconf-archive')
 checkdepends=()
 optdepends=()
 provides=()
@@ -17,24 +17,23 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=$pkgname.install
 changelog=
-source=("http://dl.dropbox.com/u/21595068/punes.32bit.tar.gz" "http://dl.dropbox.com/u/21595068/punes.64bit.tar.gz" "punes.desktop" "punes.png")
+source=("https://github.com/punesemu/puNES/archive/v$pkgver.tar.gz")
 noextract=()
 
-md5sums=('3db39873c671caf54a71a3d1ab48fa1d'
-         '470e305617d78a4b7cd8b608f029fc2a'
-         '3114433444c4a59740b3329937708fc4'
-         '2dedec3df0df318df4df835eb90921e6')
+md5sums=('6d7ba6270f4d19c9422ae8b11ee76080')
+
+build() {
+  cd "$srcdir/puNES-$pkgver"
+  ./autogen.sh
+  ./configure --enable-qt5 --prefix=/usr
+  make
+}
 
 package() {
-	cd "${srcdir}"
-	if [ "$CARCH" = "x86_64" ]; then
-		install -Dm755 punes64 "${pkgdir}/usr/bin/punes"
-	else install -Dm755 punes32 "${pkgdir}/usr/bin/punes"
-	fi
-	install -Dm644 "${srcdir}/punes.desktop" "${pkgdir}/usr/share/applications/punes.desktop"
-	install -Dm644 "${srcdir}/punes.png" "${pkgdir}/usr/share/pixmaps/punes.png"
+  cd "$srcdir/puNES-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
