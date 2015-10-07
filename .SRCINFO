@@ -1,0 +1,30 @@
+pkgbase = amule-dlp
+	pkgdesc = An eMule-like client for ed2k p2p network
+	pkgver = 10871
+	pkgrel = 1
+	url = http://www.amule.org
+	install = amule.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wxgtk
+	depends = wxgtk2.8
+	depends = gd
+	depends = geoip
+	depends = libupnp
+	depends = crypto++
+	depends = libsm
+	optdepends = antileech
+	provides = amule
+	conflicts = amule
+	source = http://amule.sourceforge.net/tarballs/aMule-SVN-r10871.tar.bz2
+	source = amuled.systemd
+	source = amuleweb.systemd
+	source = amule-dlp.patch
+	md5sums = f3c666b6fa518a3e6e2c21670c243292
+	md5sums = 59772c41860e238f1c822feb8ca8d47f
+	md5sums = 05975c5d94bfc41fddb894d98b1115d5
+	md5sums = 8f3bc2d105b6acf2d25b19b01bdfbe30
+
+pkgname = amule-dlp
+
