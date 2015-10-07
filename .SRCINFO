@@ -51,6 +51,7 @@ pkgname = llvm-assert
 	pkgdesc = Low Level Virtual Machine
 	depends = llvm-libs=3.7.0-4
 	depends = perl
+	conflicts = llvm
 
 pkgname = llvm-libs-assert
 	pkgdesc = Low Level Virtual Machine (runtime libraries)
@@ -59,12 +60,14 @@ pkgname = llvm-libs-assert
 	depends = libffi
 	depends = libedit
 	depends = ncurses
+	conflicts = llvm-libs
 
 pkgname = llvm-ocaml-assert
 	pkgdesc = OCaml bindings for LLVM
 	depends = llvm=3.7.0-4
 	depends = ocaml=4.02.3
 	depends = ocaml-ctypes
+	conflicts = llvm-ocaml
 
 pkgname = lldb-assert
 	pkgdesc = Next generation, high-performance debugger
@@ -72,6 +75,7 @@ pkgname = lldb-assert
 	depends = libedit
 	depends = libxml2
 	depends = python2
+	conflicts = lldb
 
 pkgname = clang-assert
 	pkgdesc = C language family frontend for LLVM
@@ -79,15 +83,18 @@ pkgname = clang-assert
 	depends = llvm-libs=3.7.0-4
 	depends = gcc
 	optdepends = python2: for git-clang-format
+	conflicts = clang
 
 pkgname = clang-analyzer-assert
 	pkgdesc = A source code analysis framework
 	url = http://clang-analyzer.llvm.org/
 	depends = clang=3.7.0-4
 	depends = python2
+	conflicts = clang-analyzer
 
 pkgname = clang-tools-extra-assert
 	pkgdesc = Extra tools built using Clang's tooling APIs
 	url = http://clang.llvm.org/
 	depends = clang=3.7.0-4
+	conflicts = clang-tools-extra
 

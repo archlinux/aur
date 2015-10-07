@@ -116,13 +116,14 @@ build() {
 package_llvm-assert() {
   pkgdesc="Low Level Virtual Machine"
   depends=("llvm-libs=$pkgver-$pkgrel" 'perl')
+  conflicts=("llvm")
 
   cd "$srcdir/llvm-$pkgver.src"
 
   make -C build DESTDIR="$pkgdir" install
 
   # Remove documentation sources
-  rm -r "$pkgdir"/usr/share/doc/$pkgname/html/{_sources,.buildinfo}
+  rm -r "$pkgdir"/usr/share/doc/llvm/html/{_sources,.buildinfo}
 
   # The runtime libraries go into llvm-libs
   mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}.so* "$srcdir"
@@ -142,12 +143,13 @@ package_llvm-assert() {
       "$pkgdir/usr/include/llvm/Config/llvm-config.h"
   fi
 
-  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/llvm/LICENSE"
 }
 
 package_llvm-libs-assert() {
   pkgdesc="Low Level Virtual Machine (runtime libraries)"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
+  conflicts=("llvm-libs")
 
   install -d "$pkgdir/usr/lib"
   cp -P \
@@ -161,12 +163,13 @@ package_llvm-libs-assert() {
   ln -s ../LLVMgold.so "$pkgdir/usr/lib/bfd-plugins/LLVMgold.so"
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/llvm/LICENSE"
 }
 
 package_llvm-ocaml-assert() {
   pkgdesc="OCaml bindings for LLVM"
   depends=("llvm=$pkgver-$pkgrel" "ocaml=$_ocaml_ver" 'ocaml-ctypes')
+  conflicts=("llvm-ocaml")
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -174,13 +177,14 @@ package_llvm-ocaml-assert() {
   cp -a "$srcdir/ocaml.lib" "$pkgdir/usr/lib/ocaml"
   cp -a "$srcdir/ocaml.doc" "$pkgdir/usr/share/doc/$pkgname"
 
-  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/llvm-ocaml/LICENSE"
 }
 
 package_lldb-assert() {
   pkgdesc="Next generation, high-performance debugger"
   url="http://lldb.llvm.org/"
   depends=('libedit' 'libxml2' 'python2')
+  conflicts=("lldb")
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -190,7 +194,7 @@ package_lldb-assert() {
   python2 -m compileall "$pkgdir/usr/lib/python2.7/site-packages/lldb"
   python2 -O -m compileall "$pkgdir/usr/lib/python2.7/site-packages/lldb"
 
-  install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir/usr/share/licenses/lldb/LICENSE"
 }
 
 package_clang-assert() {
@@ -198,6 +202,7 @@ package_clang-assert() {
   url="http://clang.llvm.org/"
   depends=("llvm-libs=$pkgver-$pkgrel" 'gcc')
   optdepends=('python2: for git-clang-format')
+  conflicts=("clang")
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -205,7 +210,7 @@ package_clang-assert() {
   make -C build/projects/compiler-rt DESTDIR="$pkgdir" install
 
   # Remove documentation sources
-  rm -r "$pkgdir"/usr/share/doc/$pkgname/html/{_sources,.buildinfo}
+  rm -r "$pkgdir"/usr/share/doc/clang/html/{_sources,.buildinfo}
 
   # Install Python bindings
   install -d "$pkgdir/usr/lib/python2.7/site-packages"
@@ -216,16 +221,17 @@ package_clang-assert() {
   # Use Python 2
   sed -i 's|/usr/bin/env python|&2|' \
     "$pkgdir/usr/bin/git-clang-format" \
-    "$pkgdir/usr/share/$pkgname/clang-format-diff.py"
+    "$pkgdir/usr/share/clang/clang-format-diff.py"
 
   install -Dm644 tools/clang/LICENSE.TXT \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/clang/LICENSE"
 }
 
 package_clang-analyzer-assert() {
   pkgdesc="A source code analysis framework"
   url="http://clang-analyzer.llvm.org/"
   depends=("clang=$pkgver-$pkgrel" 'python2')
+  conflicts=("clang-analyzer")
 
   cd "$srcdir/llvm-$pkgver.src/tools/clang"
 
@@ -254,20 +260,21 @@ package_clang-analyzer-assert() {
   python2 -m compileall "$pkgdir/usr/lib/clang-analyzer"
   python2 -O -m compileall "$pkgdir/usr/lib/clang-analyzer"
 
-  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/clang-analyzer/LICENSE"
 }
 
 package_clang-tools-extra-assert() {
   pkgdesc="Extra tools built using Clang's tooling APIs"
   url="http://clang.llvm.org/"
   depends=("clang=$pkgver-$pkgrel")
+  conflicts=("clang-tools-extra")
 
   cd "$srcdir/llvm-$pkgver.src"
 
   make -C build/tools/clang/tools/extra DESTDIR="$pkgdir" install
 
   install -Dm644 tools/clang/tools/extra/LICENSE.TXT \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/clang-tools-extra/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
