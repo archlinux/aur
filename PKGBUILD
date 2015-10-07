@@ -4,14 +4,14 @@
 
 pkgname=chrome-remote-desktop
 pkgver=45.0.2454.17
-pkgrel=3
+pkgrel=4
 pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
 arch=('i686' 'x86_64')
 license=('BSD')
 install=$pkgname.install
 depends=('python2' 'python2-psutil' 'gconf' 'gtk2' 'nss'
-         'xorg-xdpyinfo' 'xorg-setxkbmap' 'xorg-server-xvfb' 'xorg-xauth')
+         'xorg-xdpyinfo' 'xorg-setxkbmap' 'xorg-server-xvfb' 'xorg-xauth' 'nano')
 
 _arch=i386
 [ "$CARCH" == x86_64 ] && _arch=amd64
@@ -20,7 +20,7 @@ source=("https://dl.google.com/linux/direct/${pkgname}_current_${_arch}.deb"
         "crd")
 md5sums=('SKIP' 
          '6f6083ff37f036f590702c7b1319445b'
-         '73ff65f76f73a5a05746474dabf5ae54')
+         '0e95478a978454695a604e97aecf173f')
 
 pkgver() {
   bsdtar -xf control.tar.gz -O control | grep '^Version: ' | cut -f2 -d' '
