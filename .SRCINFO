@@ -1,7 +1,7 @@
 pkgbase = eclipse-pmd
-	pkgdesc = Plug-in to analyze static Java, Javascript, XML, and XSL source code
-	pkgver = 4.0.7
-	pkgrel = 2
+	pkgdesc = PMD plugin for Eclipse IDE to analyze static Java, Javascript, XML, and XSL source code
+	pkgver = 4.0.8
+	pkgrel = 1
 	url = http://pmd.sourceforge.net/
 	arch = any
 	license = BSD
@@ -9,10 +9,10 @@ pkgbase = eclipse-pmd
 	noextract = feature.jar
 	noextract = plugin.jar
 	options = !strip
-	source = feature.jar::http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site/features/net.sourceforge.pmd.eclipse_4.0.7.v20150522-1709.jar
-	source = plugin.jar::http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site/plugins/net.sourceforge.pmd.eclipse.plugin_4.0.7.v20150522-1709.jar
-	sha256sums = 31e08b5c42f5be1076ac2b156242211e49877ab7220f455b7a45ef097de5f898
-	sha256sums = f5d5ec3d7329aff59cde2cae957d94523984e53386a8d3485b7de190ed4ec154
+	source = feature.jar::http://downloads.sourceforge.net/project/pmd/pmd-eclipse/update-site-latest/features/net.sourceforge.pmd.eclipse_4.0.8.v20151003-1954.jar
+	source = plugin.jar::http://downloads.sourceforge.net/project/pmd/pmd-eclipse/update-site-latest/plugins/net.sourceforge.pmd.eclipse.plugin_4.0.8.v20151003-1954.jar
+	sha256sums = dadd49ecfe5832f91293b20bdb747506aa6d2330a7fbc802819c7049598e4c77
+	sha256sums = a40c8a27d0ba07619b1e0693634ec7465b1c760135b4f9807b7a8a8959f0faf0
 
 pkgname = eclipse-pmd
 
