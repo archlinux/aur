@@ -1,6 +1,6 @@
 pkgbase = ytcc
 	pkgdesc = The YouTube channel checker
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/popeye123/ytcc
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ytcc
 	depends = python-feedparser
 	depends = mpv
 	depends = youtube-dl
-	source = https://github.com/popeye123/ytcc/archive/v1.0.1.tar.gz
-	md5sums = fea0bbe110c9233d166b0675669a4847
+	source = https://github.com/popeye123/ytcc/archive/v1.0.2.tar.gz
+	md5sums = ad0012183d6abc038b2b82d00e8fe213
 
 pkgname = ytcc
 
