@@ -1,7 +1,7 @@
 # Maintainer: Megameneer (Dennis Holierhoek) <dennis.hh@hotmail.com>
 pkgname=gimp-dds
 pkgver=3.0.1
-pkgrel=2
+pkgrel=4
 pkgdesc="A plugin for the GIMP version 2.8. It allows you to load and save images in the Direct Draw Surface (DDS) format"
 arch=('any')
 url=https://code.google.com/p/gimp-dds
