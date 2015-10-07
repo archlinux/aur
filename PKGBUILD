@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-cgi-ex'
-pkgver='2.43'
+pkgver='2.44'
 pkgrel='1'
 pkgdesc="CGI utility suite - makes powerful application writing fun and easy"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-template-alloy>=1.016')
 makedepends=()
 url='https://metacpan.org/release/CGI-Ex'
-source=('http://search.cpan.org/CPAN/authors/id/L/LJ/LJEPSON/CGI-Ex-2.43.tar.gz')
-md5sums=('77f12e63d85305930a0d845d454f9be5')
-sha512sums=('caff23024299f35b14bf292ef725d25857983bade80dd1c24a0878eb8c35b87d85d7eb73db4baab585c748f67dd73d9449b213a1aa4c3c056a0ffa3b0ebbf9c7')
-_distdir="CGI-Ex-2.43"
+source=('http://search.cpan.org/CPAN/authors/id/L/LJ/LJEPSON/CGI-Ex-2.44.tar.gz')
+md5sums=('b6c4723cf7c64606cc43310f7b54e830')
+sha512sums=('8415763c9c271c148ac5faa2ac0d2cf5d2865c16f5fd0bbba1a9c9a9b0b0f3a2afea085fe020981b6a61a40eb760e5e23214f14931085c7f6281b3fff3908a16')
+_distdir="CGI-Ex-2.44"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
