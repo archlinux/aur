@@ -4,6 +4,7 @@ pkgbase = ruby-benchmark_suite
 	pkgrel = 1
 	url = http://github.com/evanphx/benchmark_suite
 	arch = any
+	license = MIT
 	makedepends = rubygems
 	depends = ruby
 	depends = ruby-benchmark-ips

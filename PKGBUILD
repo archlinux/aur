@@ -9,6 +9,7 @@ pkgdesc='A set of enhancements to the standard library benchmark.rb.'
 arch=('any')
 url='http://github.com/evanphx/benchmark_suite'
 options=(!emptydirs)
+license=('MIT')
 noextract=($_gemname-$pkgver.gem)
 depends=('ruby' 'ruby-benchmark-ips')
 makedepends=('rubygems')
