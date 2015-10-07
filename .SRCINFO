@@ -1,12 +1,14 @@
 pkgbase = ccl-svn
 	pkgdesc = The Clozure Common Lisp implementation
-	pkgver = 1.12.dev.r16608
+	pkgver = 1.12.dev.r16617
 	pkgrel = 1
 	url = http://ccl.clozure.com/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = svn
+	depends = bash
+	optdepends = java-environment: for using emaple file jfli.jar
 	provides = common-lisp
 	provides = cl-asdf
 	provides = ccl

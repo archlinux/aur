@@ -2,12 +2,14 @@
 # Contributor: Rogof <rogof /at/ gmx /dot/ com>
 
 pkgname=ccl-svn
-pkgver=1.12.dev.r16608
+pkgver=1.12.dev.r16617
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
 license=('LGPL')
 arch=('i686' 'x86_64')
+depends=('bash')
+optdepends=('java-environment: for using emaple file jfli.jar')
 makedepends=('svn')
 provides=('common-lisp' 'cl-asdf' 'ccl')
 conflicts=('ccl-bin')
