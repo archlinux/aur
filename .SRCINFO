@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-exiv2
+	pkgdesc = Exif and Iptc metadata manipulation library and tools (mingw-w64) X86 VERSION
+	pkgver = 0.25
+	pkgrel = 1
+	url = http://www.exiv2.org
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-cmake
+	makedepends = rsync
+	depends = mingw-w64-crt
+	depends = mingw-w64-zlib
+	depends = mingw-w64-gettext
+	depends = mingw-w64-libiconv
+	depends = mingw-w64-expat
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.exiv2.org/exiv2-0.25.tar.gz
+	md5sums = 258d4831b30f75a01e0234065c6c2806
+
+pkgname = mingw-w64-exiv2
+
