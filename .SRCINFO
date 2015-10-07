@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 4.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
 	arch = x86_64
