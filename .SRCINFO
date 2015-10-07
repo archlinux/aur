@@ -1,6 +1,6 @@
 pkgbase = vim-markdown
 	pkgdesc = Syntax highlighting and matching rules for Markdown.
-	pkgver = 20150727
+	pkgver = 20151007
 	pkgrel = 1
 	url = https://github.com/plasticboy/vim-markdown
 	arch = any
