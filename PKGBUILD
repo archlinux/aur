@@ -15,7 +15,7 @@ sha512sums=('4be7dcfadcc45e23660e5a0c311d29ea9b9ea296b81597d9be25f107734568c00b7
 
 package() {
     install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/Drupal"
-    cp -dr --no-preserve=ownership "${srcdir}/coder/coder_sniffer/Drupal/*" "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/Drupal/"
+    cp -dr --no-preserve=ownership "${srcdir}/coder/coder_sniffer/Drupal/" "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/Drupal/"
     install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/DrupalPractice"
-    cp -dr --no-preserve=ownership "${srcdir}/coder/coder_sniffer/DrupalPractice/*" "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/DrupalPractice/"
+    cp -dr --no-preserve=ownership "${srcdir}/coder/coder_sniffer/DrupalPractice/" "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/DrupalPractice/"
 }
