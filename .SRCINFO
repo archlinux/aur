@@ -1,21 +1,32 @@
 pkgbase = mcp2210-git
 	pkgdesc = A kernel module for Microchip MCP2210 USB-to-SPI bridge
-	pkgver = v0.1.r27.gfc8d532
-	pkgrel = 1
+	pkgver = v0.1.r28.gea416ae
+	pkgrel = 2
 	url = https://github.com/agalakhov/mcp2210-linux
-	install = mcp2210-git.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = GPL
 	makedepends = linux-headers
+	makedepends = dkms
 	depends = linux
 	source = git://github.com/agalakhov/mcp2210-linux.git
-	md5sums = SKIP
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 8f56d80fceeac1ed7fe786e16718c054212fd939dcac54b7976984127305ae53
 
 pkgname = mcp2210-git
+	install = mcp2210-git.install
 	depends = linux>=
 	depends = linux<.1
+	conflicts = mcp2210
+
+pkgname = mcp2210-dkms-git
+	install = mcp2210-dkms-git.install
+	depends = dkms
+	conflicts = mcp2210
+	conflicts = mcp2210-git
 
 pkgname = mcp2210-utils-git
+	conflicts = mcp2210-utils
 
