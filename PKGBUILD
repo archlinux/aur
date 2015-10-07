@@ -40,8 +40,7 @@ source=("${url}/${_series}/${pkgver}/+download/${_name}-${pkgver}.tar.bz2"
         "${pkgname}-decoratortheme.desktop"
         "${pkgname}-mate-decoratortheme"
         "${pkgname}-mate-decoratortheme.desktop"
-        "greybird-${_greybirdver}.tar.gz::https://github.com/shimmerproject/Greybird/archive/v${_greybirdver}.tar.gz"
-        "metacity-3_16.patch")
+        "greybird-${_greybirdver}.tar.gz::https://github.com/shimmerproject/Greybird/archive/v${_greybirdver}.tar.gz")
 sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
@@ -60,8 +59,7 @@ sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             'dc7d2f58e1bfab312d056f02008faecc0bcd572f41065f1e09c077c62c3f65ca'
             '71d8a014695b23807e3c758e96045b2180c4d8d9ef501f1dded54f9232e1e1eb'
             'a992819fd34c4a9c256519c081e53047ef6527662ae989f4cb0e575fd1592115'
-            '856f092ebd199a2a28346938a3dfe62613135ad886c25bbaeebd3a917de4c962'
-            '27e7c516c22947a28bb1f34ecc63142fc1a6b8178439a04660f7ae0968bdc57c')
+            '856f092ebd199a2a28346938a3dfe62613135ad886c25bbaeebd3a917de4c962')
 install="${pkgname}.install"
 
 prepare() {
