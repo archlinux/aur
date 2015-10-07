@@ -1,6 +1,6 @@
 pkgbase = qt4-color-widgets
 	pkgdesc = A user-friendly color dialog and several color-related widgets for Qt
-	pkgver = 0.r183.467bda7
+	pkgver = 0.r187.dca8233
 	pkgrel = 1
 	url = https://github.com/mbasaglia/Qt-Color-Widgets
 	arch = i686
