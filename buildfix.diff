@@ -1,0 +1,44 @@
+diff -r 9b8def6626d0 Makefile
+--- a/Makefile	Fri Jul 08 18:04:05 2011 +0300
++++ b/Makefile	Mon Mar 03 20:16:19 2014 +0100
+@@ -1,12 +1,10 @@
+ PREFIX?=/usr
+ 
+ OUT=ddb_lyrics.so
+-INCLUDE="-I${PREFIX}/include"
+-GTK_INCLUDE?=`pkg-config --cflags gtk+-2.0`
+-GTK_LIBS?=`pkg-config --libs gtk+-2.0`
++GTK2_CFLAGS?=`pkg-config --cflags gtk+-2.0`
++GTK2_LIBS?=`pkg-config --libs gtk+-2.0`
+ CC?=gcc
+-CFLAGS+=-Wall -fPIC -D_GNU_SOURCE ${INCLUDE} ${GTK_INCLUDE}
+-LDFLAGS+=-shared ${GTK_LIBS}
++CFLAGS+=-Wall -fPIC
+ 
+ SOURCES=lyrics.c
+ 
+@@ -15,10 +12,10 @@
+ all: $(SOURCES) $(OUT)
+ 
+ $(OUT): $(OBJECTS)
+-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
++	$(CC) $(CFLAGS) -shared $(OBJECTS) -o $@ $(GTK2_LIBS) $(LDFLAGS)
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $< -c -o $@
++	$(CC) $(CFLAGS) $(GTK2_CFLAGS) $< -c -o $@
+ 
+ clean:
+ 	rm $(OBJECTS) $(OUT)
+diff -r 9b8def6626d0 lyrics.c
+--- a/lyrics.c	Fri Jul 08 18:04:05 2011 +0300
++++ b/lyrics.c	Mon Mar 03 20:16:19 2014 +0100
+@@ -365,7 +365,7 @@
+     .title = "Find lyrics",
+     .name = "lyrics_lookup",
+     .flags = DB_ACTION_SINGLE_TRACK,
+-    .callback = lyrics_action_lookup,
++    .callback = (DB_plugin_action_callback_t)lyrics_action_lookup,
+     .next = NULL
+ };
+ 

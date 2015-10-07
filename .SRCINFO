@@ -1,0 +1,16 @@
+pkgbase = deadbeef-lyrics-hg
+	pkgdesc = Lyrics plugin for the DeaDBeeF music player
+	pkgver = 36
+	pkgrel = 1
+	url = https://bitbucket.org/trollixx/deadbeef-lyrics
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = deadbeef
+	source = hg+https://bitbucket.org/trollixx/deadbeef-lyrics
+	source = buildfix.diff
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = deadbeef-lyrics-hg
+
