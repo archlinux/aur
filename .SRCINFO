@@ -1,6 +1,6 @@
 pkgbase = google-drive-ocamlfuse
 	pkgdesc = FUSE filesystem backed by Google Drive, written in OCaml.
-	pkgver = 0.5.15
+	pkgver = 0.5.18
 	pkgrel = 1
 	url = http://gdfuse.forge.ocamlcore.org/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = google-drive-ocamlfuse
 	depends = gapi-ocaml>=0.2.6
 	depends = ocaml-sqlite3>=1.6.1
 	options = staticlibs
-	source = https://github.com/astrada/google-drive-ocamlfuse/archive/v0.5.15.tar.gz
-	md5sums = be8b34485e82c5db1fd4c4b6f5dfeb25
+	source = https://github.com/astrada/google-drive-ocamlfuse/archive/v0.5.18.tar.gz
+	md5sums = 1db1573157a5c329477a4c38022a82bc
 
 pkgname = google-drive-ocamlfuse
 
