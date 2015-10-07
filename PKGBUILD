@@ -2,7 +2,7 @@
 
 pkgbase=kdbus
 pkgname=('kdbus')
-pkgver=4.1
+pkgver=4.2
 
 _major=`expr $pkgver : '\([0-9]\+\)\.[0-9]\+'`
 _minor=`expr $pkgver : '[0-9]\+\.\([0-9]\+\)'`
@@ -19,7 +19,7 @@ install=$pkgname.install
 source=("git://github.com/systemd/kdbus.git#branch=v$pkgver"
         "$pkgname.install")
 md5sums=('SKIP'
-         '73eb3e891205f53cd017d87e4e58fe6b')
+         '4d17737ff07a19d38c4fb5c07afb0d5d')
 
 pkgver() {
   cd "$pkgname"
@@ -41,7 +41,7 @@ pkgver() {
   #
 
   # fixed version:
-  echo 4.1
+  echo 4.2
 
   # current kernel:
   #echo `expr $(uname -r) : '\([0-9]\+\.[0-9]\+\)'`

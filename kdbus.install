@@ -1,4 +1,4 @@
-EXTRAMODULES=extramodules-4.1-ARCH
+EXTRAMODULES=extramodules-4.2-ARCH
 
 _updatemod() {
   echo "  > Updating module dependencies..."
