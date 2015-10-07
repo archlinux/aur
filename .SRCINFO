@@ -1,7 +1,7 @@
 pkgbase = eclipse-checkstyle
-	pkgdesc = Checkstyle plugin for Eclipse
+	pkgdesc = Checkstyle plugin for Eclipse IDE
 	pkgver = 6.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://eclipse-cs.sourceforge.net/
 	arch = any
 	license = LGPL2
