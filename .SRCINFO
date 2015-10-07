@@ -1,6 +1,6 @@
 pkgbase = netease-musicbox
 	pkgdesc = A sexy command line interface musicbox for NetEase based on Python
-	pkgver = r140.31ff39b
+	pkgver = r244.58cd013
 	pkgrel = 1
 	url = https://github.com/darknessomi/musicbox
 	install = netease-musicbox.install
@@ -12,6 +12,7 @@ pkgbase = netease-musicbox
 	depends = python2-beautifulsoup4
 	depends = python2-requests
 	depends = python2-setuptools
+	depends = python2-crypto
 	options = !emptydirs
 	source = git+https://github.com/darknessomi/musicbox
 	sha256sums = SKIP
