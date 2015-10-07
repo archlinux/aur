@@ -1,6 +1,6 @@
 pkgbase = mlton-git
 	pkgdesc = Whole-program, optimizing Standard ML compiler
-	pkgver = r6666.c611cbb
+	pkgver = r6685.728e2a5
 	pkgrel = 1
 	url = http://www.mlton.org/
 	arch = x86_64
