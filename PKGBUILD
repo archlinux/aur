@@ -3,7 +3,7 @@
 
 pkgname=numix-themes-archblue-git
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A flat and light theme with a modern look using Arch Linux colors (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
@@ -12,11 +12,13 @@ depends=('gtk-engine-murrine')
 makedepends=('git')
 provides=('numix-themes-archblue')
 conflicts=('numix-themes-archblue')
-source=("numix-themes-${pkgver}.tar.gz::https://github.com/shimmerproject/Numix/archive/v${pkgver}.tar.gz")
-md5sums=('4468cb3f2fe0d01e823df7c310778787')
+source=("numix-themes::git+https://github.com/shimmerproject/Numix.git")
+md5sums=('SKIP')
 
 prepare() {
-    cd Numix-${pkgver}
+    cd numix-themes
+
+    rm -rf .git .gitignore CREDITS LICENSE README.md
 
     for FILE in `find -type f`
     do
@@ -33,7 +35,7 @@ prepare() {
 }
 
 package() {
-  cd Numix-${pkgver}
+  cd numix-themes
 
   install -dm 755 "${pkgdir}"/usr/share/themes/Numix-ArchBlue
   rm -rf .git .gitignore CREDITS LICENSE README.md
