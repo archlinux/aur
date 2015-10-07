@@ -13,7 +13,7 @@ depends=()
 makedepends=('make')
 conflicts=('heyu')
 source=("https://github.com/HeyuX10Automation/heyu/archive/v${_pkgver}.tar.gz")
-md5sums=('9871b98bbf2069f6f20144e66e766bf8')
+md5sums=('97f5d0ed8be6bd2931dc796024b1c0bd')
  
 prepare() { true; }
 
