@@ -4,7 +4,7 @@ pkgbase="python-theano"
 pkgname=("python-theano" "python2-theano")
 _pkgname="Theano"
 pkgver="0.7.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='http://www.deeplearning.net/software/theano/'
@@ -38,7 +38,7 @@ build() {
   msg "Building Python 3"
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py build
-  cp -f build/scripts-3.4/* bin/
+  cp -f build/scripts-3.5/* bin/
 }
 
 # Check always fails on non-64 bit platforms.  Check frequently fails if optional dependencies are present
