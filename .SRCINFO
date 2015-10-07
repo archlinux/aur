@@ -1,7 +1,7 @@
 pkgbase = fisoco
 	pkgdesc = a Finding, Sorting and Converting free software
-	pkgver = 0.5
-	pkgrel = 0
+	pkgver = 0.6
+	pkgrel = 1
 	url = https://github.com/Felandral/Fisoco
 	arch = x86_64
 	arch = i686
