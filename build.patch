@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index 1d05e5f..f7228da 100644
+--- a/Makefile
++++ b/Makefile
+@@ -42,8 +42,8 @@ define compile
+ endef
+ 
+ define link
+-	echo $(CC) $(LDFLAGS) $1 $2 $3 -o $@
+-	$(CC) $(LDFLAGS) $1 $2 $3 -o $@
++	echo $(CC) $(CFLAGS) $(LDFLAGS) $1 $2 $3 -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $1 $2 $3 -o $@
+ endef
+ 
+ # Builds both GTK+2 and GTK+3 versions of the plugin.
