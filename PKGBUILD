@@ -2,7 +2,7 @@
 
 pkgname=manager-accounting
 pkgver=15.5.85
-pkgrel=1
+pkgrel=2
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
 license=('custom')
@@ -30,7 +30,7 @@ prepare() {
     chksum=($(sed '15q;d' "${pkgname}_${pkgver}.dsc"))
     filesum=($(sha256sum "${pkgname}_${pkgver}.tar.gz"))
     if [ $chksum != $filesum  ]; then
-        error "The checksums doesn't match'"
+        error "Checksums not matching"
         exit
     fi
 
