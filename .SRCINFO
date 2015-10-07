@@ -1,13 +1,14 @@
 pkgbase = libxpresent
 	pkgdesc = Xlib-compatible API for the Present extension
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cgit.freedesktop.org/xorg/lib/libXpresent/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = xextproto
-	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = libxrandr
 	depends = presentproto
 	source = http://ftp.x.org/pub/individual/lib/libXpresent-1.0.0.tar.bz2
 	source = http://ftp.x.org/pub/individual/lib/libXpresent-1.0.0.tar.bz2.sig
