@@ -1,0 +1,57 @@
+diff --git a/Makefile b/Makefile
+index cf49b21..5919b68 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,2 +1,21 @@
+-all:
+-	gcc -I/usr/local/include  -std=c99 -shared -O2 -o bs2b.so -lbs2b bs2b.c -fPIC -Wall -march=native
++OUT?=ddb_bs2b.so
++
++BS2B_LIBS?=-lbs2b
++CFLAGS+=-std=c99 -fPIC -Wall -shared -lm
++#LDFLAGS+=
++
++SOURCES=bs2b.c
++
++OBJECTS=$(SOURCES:.c=.o)
++
++all: $(SOURCES) $(OUT)
++
++$(OUT): $(OBJECTS)
++	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(BS2B_LIBS) $(LDFLAGS) 
++
++.c.o:
++	$(CC) $(CFLAGS) $< -c -o $@
++
++clean:
++	rm $(OBJECTS) $(OUT)
++
+diff --git a/bs2b.c b/bs2b.c
+index bd9f025..ca5a2c2 100644
+--- a/bs2b.c
++++ b/bs2b.c
+@@ -132,12 +132,13 @@ static const char ddb_bs2b_dialog[] =
+ ;
+ 
+ static DB_dsp_t plugin = {
+-    DB_PLUGIN_SET_API_VERSION
++    .plugin.api_vmajor = 1,
++    .plugin.api_vminor = 0,
+     .plugin.version_major = 0,
+     .plugin.version_minor = 2,
+     .plugin.type = DB_PLUGIN_DSP,
+     .plugin.id = "bs2b",
+-    .plugin.name = "Headphone crossfeed",
++    .plugin.name = "Headphone crossfeed (bs2b)",
+     .plugin.descr = "Headphone crossfeed plugin using libbs2b by Boris Mikhaylov",
+     .plugin.copyright = "Copyright (C) 2010-2011 Steven McDonald <steven.mcdonald@libremail.me>",
+     .plugin.website = "http://gitorious.org/deadbeef-sm-plugins/pages/Home",
+@@ -153,7 +154,7 @@ static DB_dsp_t plugin = {
+ };
+ 
+ DB_plugin_t *
+-bs2b_load (DB_functions_t *api) {
++ddb_bs2b_load (DB_functions_t *api) {
+     deadbeef = api;
+     return DB_PLUGIN (&plugin);
+ }
