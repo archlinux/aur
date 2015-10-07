@@ -1,0 +1,18 @@
+pkgbase = axfrscanner-git
+	pkgdesc = A tool to test if the nameservers of a domain are misconfigured and allow AXFR (dns zone transfers) to anyone.
+	pkgver = r8.3c78829
+	pkgrel = 1
+	url = https://github.com/internetwache/Python-AXFR-Test
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = bash
+	depends = python3
+	depends = python-dnspython
+	provides = axfrscanner-git
+	conflicts = axfrscanner-git
+	source = axfrscanner-git::git+https://github.com/internetwache/Python-AXFR-Test.git
+	md5sums = SKIP
+
+pkgname = axfrscanner-git
+
