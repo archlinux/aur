@@ -1,0 +1,24 @@
+diff --git a/os_dep/linux/rtw_android.c b/os_dep/linux/rtw_android.c
+index a807602..fc2f8d8 100644
+--- a/os_dep/linux/rtw_android.c
++++ b/os_dep/linux/rtw_android.c
+@@ -38,6 +38,10 @@
+ #include <linux/irq.h>
+ #endif
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 0))
++#define strncasecmp strnicmp
++#endif
++
+ extern void macstr2num(u8 *dst, u8 *src);
+ 
+ const char *android_wifi_cmd_str[ANDROID_WIFI_CMD_MAX] = {
+@@ -286,7 +290,7 @@ int rtw_android_cmdstr_to_num(char *cmdstr)
+ {
+ 	int cmd_num;
+ 	for(cmd_num=0 ; cmd_num<ANDROID_WIFI_CMD_MAX; cmd_num++)
+-		if(0 == strnicmp(cmdstr , android_wifi_cmd_str[cmd_num], strlen(android_wifi_cmd_str[cmd_num])) )
++		if(0 == strncasecmp(cmdstr , android_wifi_cmd_str[cmd_num], strlen(android_wifi_cmd_str[cmd_num])) )
+ 			break;
+ 
+ 	return cmd_num;

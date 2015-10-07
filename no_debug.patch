@@ -1,0 +1,16 @@
+diff --git a/include/autoconf.h b/include/autoconf.h
+index 91f3eec..624c6fa 100644
+--- a/include/autoconf.h
++++ b/include/autoconf.h
+@@ -380,9 +380,9 @@
+ /*
+  * Debug Related Config
+  */
+-#define DBG	1
++#define DBG	0
+ 
+-#define CONFIG_DEBUG /* DBG_871X, etc... */
++//#define CONFIG_DEBUG /* DBG_871X, etc... */
+ //#define CONFIG_DEBUG_RTL871X /* RT_TRACE, RT_PRINT_DATA, _func_enter_, _func_exit_ */
+ 
+ #define CONFIG_PROC_DEBUG

@@ -1,0 +1,12 @@
+diff --git a/core/rtw_debug.c b/core/rtw_debug.c
+index ba3cdb2..d41c969 100644
+--- a/core/rtw_debug.c
++++ b/core/rtw_debug.c
+@@ -63,7 +63,6 @@ u32 GlobalDebugLevel = _drv_err_;
+ void dump_drv_version(void *sel)
+ {
+ 	DBG_871X_SEL_NL(sel, "%s %s\n", DRV_NAME, DRIVERVERSION);
+-	DBG_871X_SEL_NL(sel, "build time: %s %s\n", __DATE__, __TIME__);
+ }
+ 
+ void dump_log_level(void *sel)
