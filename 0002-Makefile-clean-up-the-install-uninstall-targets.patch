@@ -1,4 +1,4 @@
-From 59a83a98824e2e321feba161a4cd4a5e6dc1b6af Mon Sep 17 00:00:00 2001
+From 774b2d15236e66cee9c65cd1145c0aa5d6d16cf9 Mon Sep 17 00:00:00 2001
 From: Mike Swanson <mikeonthecomputer@gmail.com>
 Date: Mon, 3 Aug 2015 14:55:23 -0700
 Subject: [PATCH 2/3] Makefile: clean up the install/uninstall targets
@@ -10,22 +10,26 @@ and a non-exitent desktop icon and appdata.
 I added the autotools-like prefix variable to configure the install
 location, defaulting to /usr/local.
 ---
- Makefile | 20 +++++++++++++-------
- 1 file changed, 13 insertions(+), 7 deletions(-)
+ Makefile | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 48fe779..15a6e87 100644
+index d86a888..15a6e87 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -18,15 +18,21 @@ all: git-weave.1
+@@ -18,19 +18,21 @@ all: git-weave.1
  clean:
  	rm -f *~ *.1 *.html *.rpm *.lsm MANIFEST
  
 -install: git-weave.1 uninstall
 -	install -m 0755 -d $(DESTDIR)/usr/bin
--	install -m 0755 -d $(DESTDIR)/usr/share/man/man1
+-	install -m 0755 -d $(DESTDIR)/usr/share/man/man6
+-	install -m 0755 -d $(DESTDIR)//usr/share/applications/
+-	install -m 0755 -d $(DESTDIR)/usr/share/pixmaps/
+-	install -m 0755 -d $(DESTDIR)/usr/share/appdata
 -	install -m 0755 git-weave $(DESTDIR)/usr/bin/
--	install -m 0644 git-weave.1 $(DESTDIR)/usr/share/man/man1/
+-	install -m 0644 git-weave.1 $(DESTDIR)/usr/share/man/man6/
+-	install -m 0644 git-weave.xml $(DESTDIR)/usr/share/appdata/
 +prefix?=/usr/local
 +mandir?=share/man
 +target=$(DESTDIR)$(prefix)

@@ -1,4 +1,4 @@
-From c4c9a8d1dc5cd0ecc59471c789bc0a4555b79afa Mon Sep 17 00:00:00 2001
+From 246cc42ea1c1fcf782ba7d446d65518044fb17c8 Mon Sep 17 00:00:00 2001
 From: Mike Swanson <mikeonthecomputer@gmail.com>
 Date: Wed, 7 Oct 2015 21:04:02 -0700
 Subject: [PATCH 3/3] Properly ravel with empty lines in the commit message.
@@ -22,31 +22,3 @@ index a6c278b..e21e886 100755
                              # Old-school byte stuffing.
                              if line.startswith("."):
                                  line = "." + line
-diff --git a/tests/bs.fi b/tests/bs.fi
-index 36cb2f8..6201a4e 100644
---- a/tests/bs.fi
-+++ b/tests/bs.fi
-@@ -18106,9 +18106,19 @@ Be explicit about releasing to freshmeat.
- from :159
- M 100644 :160 bs.spec
- 
--reset refs/heads/master
-+commit refs/heads/master
-+mark :162
-+author Mike Swanson <mikeonthecomputer@gmail.com> 1444272995 -0700
-+committer Mike Swanson <mikeonthecomputer@gmail.com> 1444272995 -0700
-+data 86
-+Make a commit with a summary line,
-+
-+followed by a descriptor line after two newlines.
- from :161
- 
-+reset refs/heads/master
-+from :162
-+
- tag 2.8
- from :155
- tagger Eric S. Raymond <esr@thyrsus.com> 1287484438 -0400
--- 
-2.6.1
-
