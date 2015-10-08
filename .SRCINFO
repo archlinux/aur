@@ -1,6 +1,6 @@
 pkgbase = python-nikola-git
 	pkgdesc = A modular, fast, simple, static website generator. (git version)
-	pkgver = 7.7.1.r75.g2bc4658
+	pkgver = 7.7.2.r0.gb55cb8c
 	pkgrel = 1
 	url = https://getnikola.com/
 	arch = any
