@@ -10,7 +10,7 @@ depends=('python' 'python-werkzeug' 'python-flask-git' 'python-yaml'
          'python-requests' 'python-docutils' 'python-xdg'
          'python-pymongo' 'python-markdown' 'python-dateutil'
          'python-magic-git' 'uwsgi' 'uwsgi-plugin-python'
-         'python-click')
+         'python-click' 'python-pygments')
 
 makedepends=('python-setuptools' 'git' 'graphicsmagick' 'npm')
 #checkdepends=('tox' 'python-pytest' 'python-pytest-cov')
