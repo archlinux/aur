@@ -1,8 +1,8 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 # Creator: Javier Vasquez <j dot e dot vasquez dot v at gmail dot com>
 pkgname=thunderbird-exchangecalendar
-pkgver=3.4.0.rc2
-_pkgver=3.4.0-rc2
+pkgver=3.4.0
+_pkgver=3.4.0
 pkgrel=1
 pkgdesc="Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)"
 url="https://github.com/Ericsson/exchangecalendar"
@@ -13,8 +13,8 @@ makedepends=('zip')
 options=('!strip' '!libtool' '!staticlibs' '!docs')
 conflicts=('thunderbird-exchangecalendar-git')
 provides=('thunderbird-exchangecalendar')
-source=(https://github.com/Ericsson/exchangecalendar/archive/${_pkgver}.tar.gz)
-sha256sums=('5b441135e36612a1323d00ee67f5c1c1723bd03c8891193dc74acf27ad8a391c')
+source=(https://github.com/Ericsson/exchangecalendar/archive/v${_pkgver}.tar.gz)
+sha256sums=('fc6d9fc1a645cbd32d5b5af565b7bbad7316234301d41d32434c209ba70e432f')
 _name=exchangecalendar
 
 build() {
