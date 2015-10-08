@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/hawaii-desktop"
 license=('GPL', 'LGPL')
 depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg'
-         'greenisland' 'hawaii-icon-themes' 'hawaii-wallpapers' 'pam' 'libpulse'
+         'greenisland' 'hawaii-icon-theme' 'hawaii-wallpapers' 'pam' 'libpulse'
          'kdoctools' 'kdelibs4support' 'krunner' 'kwayland' 'plasma-framework' 'plasma-workspace' 'plasma-nm'
          'ttf-dejavu' 'ttf-droid')
 optdepends=('weston: nested mode support'
