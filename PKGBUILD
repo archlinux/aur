@@ -1,27 +1,30 @@
 pkgbase=aibizhi
 pkgname=aibizhi
-pkgver=r1
+pkgver=20151008
 pkgrel=1
 pkgdesc="爱壁纸"
 arch=('any')
 license=('GPLv3')
-depends=('python-pyside' 'python2-pyside')
+url='https://github.com/zhuzilinuser/aibizhi'
+depends=('python2-pyside' 'python2-shiboken' 'shiboken' 'python-pyside-common')
 makedepends=('git')
-source=(git+https://gitcafe.com/LoveWallpaper/LoveWallpaperHD-Linux.git)
+source=("${pkgname}"::'git+https://github.com/zhuzilinuser/aibizhi.git')
 md5sums=('SKIP')
+conflicts=("aibizhi")
+
 pkgver(){
-cd "$srcdir/LoveWallpaperHD-Linux"
-
-}
-build() {
-   msg "Starting build..."
-   msg "第一次打包,做的不好还请见谅.(≧ω≦)"
-   msg "                                   竹子酱"
- cd "$srcdir/LoveWallpaperHD-Linux"
-chmod +x INSTALL.sh
-
+   cd  "$srcdir/$pkgname/"
+   git log -1 --format="%cd" --date=short | sed 's|-||g'
+   msg "终于搞定了。。。"
 }
 package(){
-cd "$srcdir/LoveWallpaperHD-Linux"
-sudo ./INSTALL.sh
+cd  "$srcdir/$pkgname/"
+mkdir -p "$pkgdir/usr/share/pyshared/"
+mkdir -p "$pkgdir/usr/share/icons/"
+mkdir -p "$pkgdir/usr/share/applications/"
+mkdir -p "$pkgdir/usr/bin/"
+cp -r "lovewallpaper" "$pkgdir/usr/share/pyshared/"
+cp "data/love-wallpaper.png" "$pkgdir/usr/share/icons/"
+cp "data/love-wallpaper.desktop" "$pkgdir/usr/share/applications/"
+cp "love-wallpaper" "$pkgdir/usr/bin/"
 }
