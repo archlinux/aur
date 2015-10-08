@@ -9,7 +9,7 @@ url="https://github.com/hawaii-desktop/hawaii-shell"
 license=('GPL', 'LGPL')
 depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg'
          'greenisland-git' 'pam' 'libpulse' 'libqtxdg' 'glib2' 'networkmanager-qt'
-         'hawaii-icon-themes-git' 'hawaii-wallpapers-git' 'solid'
+         'hawaii-icon-theme-git' 'hawaii-wallpapers-git' 'solid'
          'ttf-dejavu' 'ttf-droid')
 optdepends=('pulseaudio: audio support'
             'networkmanager: networking support')
