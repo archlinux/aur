@@ -5,7 +5,7 @@
 pkgname=oblogout-blurlock
 pkgver=20151008
 pkgrel=1
-pkgdesc="Systemd/OpenRC-compatible logout script for Openbox, Fluxbox and others. Including blurlock"
+pkgdesc="Systemd/OpenRC-compatible logout script for Openbox, Fluxbox and others. Including blurlock and additional new button themes by UgoYak"
 url="https://github.com/oberon2007/oblogout-blurlock"
 
 _repo=oblogout-blurlock
