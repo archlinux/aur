@@ -1,6 +1,6 @@
 pkgbase = clean-chroot-manager
 	pkgdesc = Wrapper scripts for managing clean chroots (64-bit and 32-bit).
-	pkgver = 2.70
+	pkgver = 2.72
 	pkgrel = 1
 	url = https://github.com/graysky2/clean-chroot-manager
 	install = ccm.install
@@ -9,8 +9,8 @@ pkgbase = clean-chroot-manager
 	depends = devtools
 	conflicts = clean_chroot_manager
 	replaces = clean_chroot_manager
-	source = http://repo-ck.com/source/clean-chroot-manager/clean-chroot-manager-2.70.tar.xz
-	sha256sums = 5354461c55b199530b9221db91f0b5d6256850c5d4dd178566a5149626bee5e9
+	source = http://repo-ck.com/source/clean-chroot-manager/clean-chroot-manager-2.72.tar.xz
+	sha256sums = 8de0e5ff04e641034e25234fde53efd80a602a1cdb1f0ba05b9b98acc267c5d6
 
 pkgname = clean-chroot-manager
 
