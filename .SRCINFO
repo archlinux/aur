@@ -1,21 +1,19 @@
 pkgbase = gog-prisonarchitect
 	pkgdesc = Prison construction and management simulation, GOG version
 	pkgver = 2.0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gog.com/game/prison_architect
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = glu
+	depends = gtk2
 	noextract = gog_prison_architext_2.0.0.3.sh
 	options = staticlibs
 	options = !strip
 	source = gog://gog_prison_architect_2.0.0.3.sh
 	md5sums = 6317930754f725f5e363bc1a2d23fe50
 	sha512sums = 39e6cd0acf1a7a3840b9204c9c1b7d1eb2bffedee4fb2de26040a14b953240fa1753a2e07469187426a1940151402eb91ddd8e1183e4c72bfa61f68b30be004d
-	depends_i686 = glu
-	depends_i686 = gtk2
-	depends_x86_64 = lib32-glu
-	depends_x86_64 = gtk2
 
 pkgname = gog-prisonarchitect
 
