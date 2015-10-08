@@ -1,6 +1,6 @@
 pkgbase = gwyddion
 	pkgdesc = A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis
-	pkgver = 2.41
+	pkgver = 2.42
 	pkgrel = 1
 	url = http://gwyddion.net/
 	install = gwyddion.install
@@ -27,8 +27,8 @@ pkgbase = gwyddion
 	optdepends = ruby: development of plug-in
 	optdepends = fpc: development of plug-in
 	optdepends = gtksourceview2: Pygwy console syntax highlighting
-	source = http://downloads.sourceforge.net/sourceforge/gwyddion/gwyddion-2.41.tar.xz
-	sha256sums = dcccba56231d6553ded5ba3613f70e4b71f4365e6482e65c69b4eea8bb4d8afa
+	source = http://downloads.sourceforge.net/sourceforge/gwyddion/gwyddion-2.42.tar.xz
+	sha256sums = fc3f69f09158bf1c5592b9497d41f30f721161d82b917644544d887673eaacae
 
 pkgname = gwyddion
 

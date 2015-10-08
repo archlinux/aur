@@ -2,7 +2,7 @@
 # http://packages.gentoo.org/package/sci-visualization/gwyddion
 
 pkgname=gwyddion
-pkgver=2.41
+pkgver=2.42
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 #A modular program for SPM (scanning probe microscopy) and other 2D (height field) data visualization and analysis"
@@ -23,7 +23,7 @@ optdepends=('libxmu: for alternative "remote control" backend'
             'gtksourceview2: Pygwy console syntax highlighting')
 install=gwyddion.install
 source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
-sha256sums=('dcccba56231d6553ded5ba3613f70e4b71f4365e6482e65c69b4eea8bb4d8afa')
+sha256sums=('fc3f69f09158bf1c5592b9497d41f30f721161d82b917644544d887673eaacae')
 
 
 build() {
