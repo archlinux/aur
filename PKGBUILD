@@ -2,7 +2,7 @@
 # Maintainer: AnAkkk <anakin.cs@gmail.com>
 pkgname=plasma-workspace-units-git
 pkgver=0.01
-pkgrel=2
+pkgrel=3
 arch=("any")
 pkgdesc="systemd user-session units for KDE Frameworks 5 and Plasma 5"
 url="https://github.com/eliasp/plasma-workspace-units"
@@ -15,6 +15,7 @@ md5sums=("SKIP")
 prepare() {
     cd plasma-workspace-units
     sed 's:\/usr\/local:\/usr:' -i systemd.desktop
+    sed 's:\/usr\/lib64\/libexec:\/usr\/lib:' -i systemd/user/kdeconnectd.service
 }
 
 package() {

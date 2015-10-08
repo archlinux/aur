@@ -1,7 +1,7 @@
 pkgbase = plasma-workspace-units-git
 	pkgdesc = systemd user-session units for KDE Frameworks 5 and Plasma 5
 	pkgver = 0.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eliasp/plasma-workspace-units
 	arch = any
 	license = GPL
