@@ -1,7 +1,7 @@
 pkgbase = python-easygui
 	pkgdesc = A module for very simple, very easy GUI programming in Python
 	pkgver = 0.97.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://easygui.sourceforge.net
 	arch = any
 	license = CCPL

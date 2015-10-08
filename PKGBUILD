@@ -3,7 +3,7 @@
 
 pkgname=python-easygui
 pkgver=0.97.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A module for very simple, very easy GUI programming in Python"
 url="http://easygui.sourceforge.net"
 license=('CCPL')
