@@ -5,7 +5,7 @@
 pkgname=kicad-git
 pkgver=r7993.74f00d4
 pkgrel=1
-pkgdesc="Electronic schematic and printed circuit board (PCB) design tools - git source clone"
+pkgdesc="Electronic schematic and printed circuit board (PCB) design tools - git clone of bzr repo (faster download)"
 arch=('i686' 'x86_64')
 url="http://iut-tice.ujf-grenoble.fr/kicad/"
 license=('GPL')
