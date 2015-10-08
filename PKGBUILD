@@ -5,8 +5,8 @@
 
 pkgname=chromium
 pkgver=45.0.2454.101
-pkgrel=1
-_launcher_ver=2
+pkgrel=2
+_launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -28,7 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         0001-Demand-for-newer-POSIX-macro.patch
         chromium-widevine.patch)
 sha256sums=('1b682dcaae9c89b2ebfdb192bb2f73c78c5b30a55103e7198fa3c1e21fed85fb'
-            '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
+            '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'd908939b10161efe658f0f82d2c132bf28dff54e08f02c6fed93815c3656f328'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
@@ -134,6 +134,7 @@ build() {
     -Dusb_ids_path=/usr/share/hwdata/usb.ids
     -Duse_mojo=0
     -Duse_gconf=0
+    -Denable_hangout_services_extension=1
     -Ddisable_fatal_linker_warnings=1
     -Ddisable_glibc=1)
 
