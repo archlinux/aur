@@ -8,7 +8,7 @@
 # Contributor: Florijan Hamzic <florijanh@gmail.com>
 pkgname='sphinx'
 pkgver=2.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Free open-source SQL full-text search engine.'
 arch=('i686' 'x86_64')
 url='http://www.sphinxsearch.com/'

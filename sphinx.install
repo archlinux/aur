@@ -1,7 +1,13 @@
 post_install() {
-  groupadd sphinx
-  useradd -d /var/lib/sphinx -g sphinx sphinx
+  groupadd sphinx &>/dev/null
+  useradd -g sphinx -d /var/lib/sphinx -s /bin/false sphinx &>/dev/null
   chown -R sphinx:sphinx /var/lib/sphinx
+}
+
+post_upgrade(){
+  getent group sphinx >/dev/null 2>&1 || groupadd sphinx &>/dev/null
+  getent passwd sphinx >/dev/null 2>&1 || useradd -g sphinx -d /var/lib/sphinx \
+    -s /bin/false sphinx &>/dev/null
 }
 
 ## arg 1:  the old package version
