@@ -1,6 +1,6 @@
 pkgbase = pam_u2f
 	pkgdesc = Universal 2nd Factor (U2F) PAM authentication module from Yubico
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://developers.yubico.com/pam-u2f/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = pam_u2f
 	license = BSD
 	depends = libu2f-host
 	depends = libu2f-server
-	source = https://developers.yubico.com/pam-u2f/Releases/pam_u2f-1.0.1.tar.gz
-	sha256sums = d77dd150d65836c7b9a12d75d22159484663c11cea5739653bf31c44a3609522
+	source = https://developers.yubico.com/pam-u2f/Releases/pam_u2f-1.0.2.tar.gz
+	sha512sums = edffa19eae3df72816a5dc319ce94aa1d924770e7e62c666b8cb4c583bc4e2aee75200681e7ecfac47938bfaf390c60cca7983783e0e30ec1df30e12fc1d6e60
 
 pkgname = pam_u2f
 

@@ -1,7 +1,8 @@
 # Maintainer: Maxime de Roucy <maxime.deroucy@gmail.com>
+# Contributor: David Manouchehri <manouchehri@riseup.net>
 
 pkgname=pam_u2f
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Universal 2nd Factor (U2F) PAM authentication module from Yubico"
 arch=('i686' 'x86_64')
@@ -10,6 +11,7 @@ license=('BSD')
 depends=('libu2f-host' 'libu2f-server')
 makedepends=()
 source=("https://developers.yubico.com/${pkgname/_/-}/Releases/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('edffa19eae3df72816a5dc319ce94aa1d924770e7e62c666b8cb4c583bc4e2aee75200681e7ecfac47938bfaf390c60cca7983783e0e30ec1df30e12fc1d6e60')
 
 build() {
 	cd ${pkgname}-${pkgver}/
@@ -34,4 +36,5 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 	cp COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-sha256sums=('d77dd150d65836c7b9a12d75d22159484663c11cea5739653bf31c44a3609522')
+
+# vim:set et sw=2 sts=2 tw=80:
