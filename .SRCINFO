@@ -1,0 +1,16 @@
+pkgbase = dout-git
+	pkgdesc = A C++ header library for minimalistic logging
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/slizzered/dout
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake>=3.0.2
+	optdepends = cmake: easily including dout into projects
+	source = dout-git::git://github.com/slizzered/dout.git
+	sha256sums = SKIP
+
+pkgname = dout-git
+
