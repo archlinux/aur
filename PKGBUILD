@@ -1,7 +1,7 @@
 # Contributor: Sven Brauch <svenbrauch@gmail.com>
 
 pkgname=kdevelop-python3-git
-pkgver=2.0
+pkgver=v1.7.1.py3.r184.gcffa9e4
 pkgrel=1
 pkgdesc="Python language plugin for KDevelop - Git build, Python 3 version"
 arch=('i686' 'x86_64')
@@ -26,9 +26,11 @@ build() {
     mkdir -p "$srcdir/kdev-python/build"
     cd "$srcdir/kdev-python/build"
 
-    cmake .. \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake ../ \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLIB_INSTALL_DIR=lib \
+        -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 
     make
 }

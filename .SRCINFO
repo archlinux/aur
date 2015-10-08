@@ -1,6 +1,6 @@
 pkgbase = kdevelop-python3-git
 	pkgdesc = Python language plugin for KDevelop - Git build, Python 3 version
-	pkgver = 2.0
+	pkgver = v1.7.1.py3.r184.gcffa9e4
 	pkgrel = 1
 	url = http://www.kdevelop.org/
 	arch = i686
