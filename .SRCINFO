@@ -1,0 +1,20 @@
+pkgbase = python-stfio-git
+	pkgdesc = Python module for reading and writing data in common electrophysiology formats from Stimfit project.
+	pkgver = v0.13.12macports.r353.g0ebd6e3
+	pkgrel = 1
+	url = http://www.stimfit.org
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPLv2
+	makedepends = python
+	makedepends = git
+	makedepends = boost
+	depends = hdf5
+	depends = python-numpy
+	depends = swig
+	source = stfio::git+https://github.com/neurodroid/stimfit.git
+	md5sums = SKIP
+
+pkgname = python-stfio-git
+
