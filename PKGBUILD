@@ -2,14 +2,14 @@
 
 _pkgname=nutty
 pkgname=$_pkgname-bzr
-pkgver=r46
+pkgver=r52
 pkgrel=1
-pkgdesc="Network utility providing essential information on network related aspects"
+pkgdesc="Network utility providing essential information on network related aspects (nethogs, nmap, traceroute, vnstat, ...)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/nutty"
 license=('GPL3')
 makedepends=('bzr')
-depends=('granite' 'gtk3' 'libgee' 'net-tools' 'nmap' 'traceroute')
+depends=('granite' 'gtk3' 'libgee' 'net-tools' 'nethogs' 'nmap' 'traceroute' 'vnstat')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=($pkgname::bzr+https://code.launchpad.net/nutty/trunk)
