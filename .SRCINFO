@@ -1,6 +1,6 @@
 pkgbase = mozc-ut
 	pkgdesc = Mozc the Japanese Input Method with Mozc UT Dictionary (additional dictionary) and uim-mozc (optional)
-	pkgver = 2.17.2123.102.20150822
+	pkgver = 2.17.2123.102.20151002
 	pkgrel = 1
 	url = http://www.geocities.jp/ep3797/mozc_01.html
 	arch = i686
@@ -18,18 +18,18 @@ pkgbase = mozc-ut
 	depends = qt4
 	depends = zinnia
 	source = mozc::git+https://github.com/google/mozc.git#commit=e398317a086a78c0cf0004505eb8f56586e925b2
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut-20150822.tar.bz2
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-20150822.gz
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut-20151002.tar.bz2
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-20151002.gz
 	source = EDICT_license.html
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201508.zip
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201508.zip
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201509.zip
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201509.zip
 	source = mod-generate-mozc-ut.sh
 	sha1sums = SKIP
-	sha1sums = b039b6f2a418200355e32c58c080c8f4850947a0
-	sha1sums = f2cdb222fa119c75bd45931a55b45213acef7da5
+	sha1sums = ec38640b36ab662cb1c5097d22557a85a1ea0f8e
+	sha1sums = cc1b87e31cde48de716851d0125018226368f908
 	sha1sums = e0ba18e67c1be8e3cfb8ecb30760597b215da255
-	sha1sums = 97627c9e27a273dddf6408d0451855dd5f830eee
-	sha1sums = 927901d45051ec9bfb944e2623c4589456462f03
+	sha1sums = 134bd80b14d87386eec38710e999dc56fc34efc3
+	sha1sums = c3cd5e91ac4878e60c875076d7b3b37f087964d1
 	sha1sums = 6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7
 
 pkgname = mozc-ut
