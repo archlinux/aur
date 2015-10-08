@@ -1,0 +1,26 @@
+diff --git a/include/ClientRendering.py b/include/ClientRendering.py
+index aed4bfd..572664b 100644
+--- a/include/ClientRendering.py
++++ b/include/ClientRendering.py
+@@ -53,7 +53,7 @@ def GenerateHydrusBitmapFromPILImage( pil_image, compressed = True ):
+         format = wx.BitmapBufferFormat_RGB
+         
+     
+-    return HydrusBitmap( pil_image.tostring(), format, pil_image.size, compressed = compressed )
++    return HydrusBitmap( pil_image.tobytes(), format, pil_image.size, compressed = compressed )
+     
+ class RasterContainer( object ):
+     
+diff --git a/include/HydrusImageHandling.py b/include/HydrusImageHandling.py
+index bada4c1..1aedf53 100644
+--- a/include/HydrusImageHandling.py
++++ b/include/HydrusImageHandling.py
+@@ -121,7 +121,7 @@ def GenerateNumPyImageFromPILImage( pil_image ):
+     
+     ( w, h ) = pil_image.size
+     
+-    s = pil_image.tostring()
++    s = pil_image.tobytes()
+     
+     return numpy.fromstring( s, dtype = 'uint8' ).reshape( ( h, w, len( s ) // ( w * h ) ) )
+     
