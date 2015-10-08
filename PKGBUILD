@@ -10,6 +10,7 @@ url="http://github.com/a-sk/node-imapnotify"
 license=(MIT)
 depends=('nodejs')
 optdepends=()
+makedepends=('npm')
 install=$pkgname.install
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz "imapnotify@.service")
 noextract=($_npmname-$pkgver.tgz)

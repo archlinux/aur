@@ -6,6 +6,7 @@ pkgbase = nodejs-imapnotify
 	install = nodejs-imapnotify.install
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
 	noextract = imapnotify-0.1.0.tgz
 	source = http://registry.npmjs.org/imapnotify/-/imapnotify-0.1.0.tgz
