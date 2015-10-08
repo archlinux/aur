@@ -1,7 +1,7 @@
 pkgbase = kicad-git
-	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools - git source clone
-	pkgver = r7993.74f00d4
-	pkgrel = 1
+	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools - git clone of bzr repo (faster download)
+	pkgver = r6255.74f00d4
+	pkgrel = 2
 	url = http://iut-tice.ujf-grenoble.fr/kicad/
 	install = kicad.install
 	arch = i686

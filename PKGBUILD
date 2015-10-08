@@ -3,8 +3,8 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=kicad-git
-pkgver=r7993.74f00d4
-pkgrel=1
+pkgver=r6255.74f00d4
+pkgrel=2
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools - git clone of bzr repo (faster download)"
 arch=('i686' 'x86_64')
 url="http://iut-tice.ujf-grenoble.fr/kicad/"
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list HEAD --count --first-parent)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
