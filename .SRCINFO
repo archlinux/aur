@@ -10,7 +10,7 @@ pkgbase = phpsysinfo
 	backup = etc/webapps/phpsysinfo/phpsysinfo.ini
 	backup = etc/webapps/phpsysinfo/.htaccess
 	source = https://github.com/rk4an/phpsysinfo/archive/v3.2.3.tar.gz
-	md5sums = badf2ebe0c472449d2e2d9d726f55efb
+	md5sums = 280fffa760a77881eff5246dfb14b5b3
 
 pkgname = phpsysinfo
 

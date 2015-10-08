@@ -13,7 +13,7 @@ backup=(etc/webapps/phpsysinfo/phpsysinfo.ini
 depends=('php')
 optdepends=('lm_sensors: for providing temperature')
 source=("https://github.com/rk4an/phpsysinfo/archive/v$pkgver.tar.gz")
-md5sums=('badf2ebe0c472449d2e2d9d726f55efb')
+md5sums=('280fffa760a77881eff5246dfb14b5b3')
 
 package() {
 
