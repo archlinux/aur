@@ -162,10 +162,12 @@ package_linux-zen-grsec() {
 	install -m644 "$srcdir/build/tools/gcc/initify_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
 	install -m644 "$srcdir/build/tools/gcc/structleak_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
 	
-	mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
-	install -m644 "$srcdir/linux-zen-grsec/tools/gcc/size_overflow_plugin/Makefile" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
-	install -m644 "$srcdir/build/tools/gcc/size_overflow_plugin/size_overflow_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
-
+	if [ -f "$srcdir/build/tools/gcc/size_overflow_plugin/size_overflow_plugin.so" ]; then
+		mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
+		install -m644 "$srcdir/linux-zen-grsec/tools/gcc/size_overflow_plugin/Makefile" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
+		install -m644 "$srcdir/build/tools/gcc/size_overflow_plugin/size_overflow_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
+	fi
+	
 	# Now we call depmod...
 	depmod -b "$pkgdir" -F System.map "$_kernver"
 	
