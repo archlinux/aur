@@ -1,21 +1,25 @@
-# Maintainer: Benjamin A. Shelton <zancarius@gmail.com>
-# Source: https://github.com/zancarius/archlinux-pkgbuilds
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+
 pkgname=python-raven
-pkgver=5.5.0
+pkgver=5.7.2
 pkgrel=1
-pkgdesc="Python client for Sentry."
+pkgdesc="Python client for Sentry"
 arch=(any)
-url="http://pypi.python.org/pypi/raven"
-license=(BSD)
-depends=(python)
-makedepends=(python-setuptools)
-source=("https://pypi.python.org/packages/source/r/raven/raven-${pkgver}.tar.gz")
-md5sums=(7e7961562bce6cb6fcf54c3427cf043e)
+url="https://github.com/getsentry/raven-python"
+license=('BSD')
+depends=('python')
+makedepends=('python-setuptools')
+source=("http://pypi.python.org/packages/source/r/raven/raven-$pkgver.tar.gz")
 
-package () {
-
-    cd "${srcdir}/raven-${pkgver}"
-    python setup.py install --root="${pkgdir}/" --optimize=1
-    install -Dm0664 "${srcdir}/raven-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+build() {
+    cd "$srcdir/raven-$pkgver"
+    python setup.py build
 }
+
+package() {
+    cd "$srcdir/raven-$pkgver"
+    python setup.py install -O1 --skip-build --root="$pkgdir"
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+sha256sums=('6ee351577bff691a064d093dfbf54a064a8f1d6e136602c5c45780f8a340b3aa')

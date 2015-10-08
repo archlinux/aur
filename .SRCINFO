@@ -1,14 +1,14 @@
 pkgbase = python-raven
-	pkgdesc = Python client for Sentry.
-	pkgver = 5.5.0
+	pkgdesc = Python client for Sentry
+	pkgver = 5.7.2
 	pkgrel = 1
-	url = http://pypi.python.org/pypi/raven
+	url = https://github.com/getsentry/raven-python
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.python.org/packages/source/r/raven/raven-5.5.0.tar.gz
-	md5sums = 7e7961562bce6cb6fcf54c3427cf043e
+	source = http://pypi.python.org/packages/source/r/raven/raven-5.7.2.tar.gz
+	sha256sums = 6ee351577bff691a064d093dfbf54a064a8f1d6e136602c5c45780f8a340b3aa
 
 pkgname = python-raven
 
