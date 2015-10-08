@@ -7,11 +7,12 @@ pkgname='ros-indigo-srdfdom'
 pkgver='0.3.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cmake-modules
-  ros-indigo-catkin)
+  ros-indigo-catkin
+  ros-indigo-urdfdom-py)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   pkg-config
@@ -20,7 +21,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   tinyxml
   urdfdom-headers)
 
-ros_depends=()
+ros_depends=(ros-indigo-urdfdom-py)
 depends=(${ros_depends[@]}
   boost
   console-bridge
