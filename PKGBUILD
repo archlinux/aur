@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts-knock
 _pkgbasever=4.1-gnu
-_pkgver=4.1.8-gnu
+_pkgver=4.1.10-gnu
 _knockpatchver=4.1_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -63,7 +63,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '1b3a8ef42233467939c9b85ac3151f64676a87d42b0f6bb8b50c2cfa536236f5'
+            '868756d2c78a24216afbf6f73dba779817b72d647ec0dc8b1f032245705a9cc2'
             'SKIP'
             'da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc'
             'SKIP'
@@ -79,7 +79,7 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            '4fed1e0226df8114be7d7021d22e0ded50ed8876e352b043ba34db7bb72f00f6'
+            '940a5abe9eb2928d365f9adacc780320ef1f7bfda0227aa4ef12fa2fbb9969cb'
             'SKIP'
             '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
             '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
@@ -193,7 +193,6 @@ _package() {
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  [ "${CARCH}" = "armv7h" ] && conflicts+=("${_replacesarchkernel}-uimage") && replaces+=("${_replacesarchkernel}-uimage")
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     depends+=('mkinitcpio>=0.7')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -208,13 +207,10 @@ _package() {
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  if [ "${CARCH}" = "armv7h" ]; then
-    mkdir -p "${pkgdir}/boot/dtbs/${pkgbase}"
-  fi
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   if [ "${CARCH}" = "armv7h" ]; then
+    make LOCALVERSION= INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs/${pkgbase}" dtbs_install
     cp arch/$KARCH/boot/zImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-    cp arch/$KARCH/boot/dts/*.dtb "${pkgdir}/boot/dtbs/${pkgbase}"
   elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
   fi
