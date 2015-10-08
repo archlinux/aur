@@ -1,5 +1,5 @@
 pkgbase = linux-libre-lts
-	pkgver = 4.1.8_gnu
+	pkgver = 4.1.10_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = linux-libre-lts
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.8-gnu/patch-4.1-gnu-4.1.8-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.8-gnu/patch-4.1-gnu-4.1.8-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.10-gnu/patch-4.1-gnu-4.1.10-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.10-gnu/patch-4.1-gnu-4.1.10-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -28,8 +28,8 @@ pkgbase = linux-libre-lts
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.8/rcn-libre-4.1.8-armv7-x5.patch
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.8/rcn-libre-4.1.8-armv7-x5.patch.sig
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.10/rcn-libre-4.1.10-armv7-x5.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.10/rcn-libre-4.1.10-armv7-x5.patch.sig
 	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
 	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
 	source = 0003-SMILE-Plug-device-tree-file.patch
@@ -40,7 +40,7 @@ pkgbase = linux-libre-lts
 	source = 0008-USB-armory-support.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = 1b3a8ef42233467939c9b85ac3151f64676a87d42b0f6bb8b50c2cfa536236f5
+	sha256sums = 868756d2c78a24216afbf6f73dba779817b72d647ec0dc8b1f032245705a9cc2
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -54,7 +54,7 @@ pkgbase = linux-libre-lts
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d
-	sha256sums = 4fed1e0226df8114be7d7021d22e0ded50ed8876e352b043ba34db7bb72f00f6
+	sha256sums = 940a5abe9eb2928d365f9adacc780320ef1f7bfda0227aa4ef12fa2fbb9969cb
 	sha256sums = SKIP
 	sha256sums = 203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7
 	sha256sums = 28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c
@@ -73,20 +73,20 @@ pkgname = linux-libre-lts
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-lts=4.1.8
+	provides = linux-lts=4.1.10
 	conflicts = 
 	replaces = linux-lts
 	backup = etc/mkinitcpio.d/linux-libre-lts.preset
 
 pkgname = linux-libre-lts-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-lts kernel
-	provides = linux-lts-headers=4.1.8
+	provides = linux-lts-headers=4.1.10
 	conflicts = 
 	replaces = linux-lts-headers
 
 pkgname = linux-libre-lts-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-lts kernel
-	provides = linux-lts-docs=4.1.8
+	provides = linux-lts-docs=4.1.10
 	conflicts = 
 	replaces = linux-lts-docs
 
