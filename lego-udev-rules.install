@@ -1,0 +1,19 @@
+post_install() {
+    groupadd lego
+
+    # called explicitely as automatic reload ignores our rule because of
+    # nonexistent group 'lego'
+    udevadm control --reload-rules
+
+    echo ">>> To be able to use LEGO Mindstorms NXT without having root "
+    echo ">>> permissions you should add your user to 'lego' group and "
+    echo ">>> relogin."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    groupdel lego
+}
