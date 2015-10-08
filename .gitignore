@@ -1,0 +1,12 @@
+*
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.desktop
+!*.install
+!*.service
+!*.sh
+!*.conf
+!*.png
+!.gitignore
+!install.vars

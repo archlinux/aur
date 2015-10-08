@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Encryptr
+Categories=System;
+Comment=Encryptr
+Exec=/usr/bin/encryptr
+Icon=encryptr
+Hidden=false
+Terminal=false
+Type=Application
