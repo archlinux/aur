@@ -1,7 +1,7 @@
 # Maintainer: Ranuka Perera <random -at- sawrc.com>
 pkgname=wiringpi-git
 _gitname=wiringPi
-pkgver=75.5edd177
+pkgver=94.d795066
 pkgrel=1
 pkgdesc="Arduino wiring-like library written in C for RaspberryPi."
 url="http://wiringpi.com/"
@@ -18,19 +18,16 @@ pkgver() {
 prepare() {
 	cd $_gitname
 	msg2 "Patching build file"
-	sed -i 's|sudo make uninstall||g' build
-	sed -i 's|sudo ||g' build
-	sed -i "s| make| make DESTDIR=\"${pkgdir}/usr\" PREFIX=\"\" |g" build
+	export WIRINGPI_SUDO=''
+	sed -i 's|$sudo make uninstall||g' build
+	sed -i "s| make| make DESTDIR=\"${pkgdir}/usr\" PREFIX=\"\" LDCONFIG=\"\"|g" build
 	msg2 "Patching Makefiles..."
 	cd wiringPi
-	sed -i 's|@ldconfig||' Makefile
-	sed -i "s|@ln -sf \$(DESTDIR)\$(PREFIX)/lib/libwiringPi.so.\$(VERSION)	\$(DESTDIR)/lib/libwiringPi.so|@ln -sf libwiringPi.so.\$(VERSION)	\$(DESTDIR)\$(PREFIX)/lib/libwiringPi.so|g" Makefile
+	sed -i "s|ln -sf \$(DESTDIR)\$(PREFIX)/lib/libwiringPi.so.\$(VERSION)	\$(DESTDIR)/lib/libwiringPi.so|ln -sf libwiringPi.so.\$(VERSION)	\$(DESTDIR)\$(PREFIX)/lib/libwiringPi.so|g" Makefile
 	cd ../devLib
-	sed -i 's|@ldconfig||' Makefile
 	sed -i "s|-I.|-I. -I${pkgdir}/usr/include|g" Makefile
-	sed -i "s|@ln -sf \$(DESTDIR)\$(PREFIX)/lib/libwiringPiDev.so.\$(VERSION)	\$(DESTDIR)/lib/libwiringPiDev.so|@ln -sf libwiringPiDev.so.\$(VERSION)	\$(DESTDIR)\$(PREFIX)/lib/libwiringPiDev.so|g" Makefile
+	sed -i "s|ln -sf \$(DESTDIR)\$(PREFIX)/lib/libwiringPiDev.so.\$(VERSION)	\$(DESTDIR)/lib/libwiringPiDev.so|ln -sf libwiringPiDev.so.\$(VERSION)	\$(DESTDIR)\$(PREFIX)/lib/libwiringPiDev.so|g" Makefile
 	cd ../gpio
-	sed -i 's|@ldconfig||' Makefile
 	sed -i "s|/man/man1|/share/man/man1|g" Makefile
 	#sed -i "s|-I\$(DESTDIR)\$(PREFIX)/include|-I${pkgdir}/usr/include|g" Makefile
 	#sed -i "s|-L\$(DESTDIR)\$(PREFIX)/lib|-L${pkgdir}/usr/lib|g" Makefile
