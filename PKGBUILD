@@ -5,7 +5,7 @@
 
 _gemname=fxruby
 pkgname=ruby-$_gemname
-pkgver=1.6.30
+pkgver=1.6.33
 pkgrel=1
 pkgdesc="The Ruby binding to the FOX GUI toolkit."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=("fox" "ruby")
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=('cd551740d0d12327aeaefc4426159bea3451d21894bb8ef81d1aa78d33ebae8c')
+sha256sums=('930266b92bcb1a083491eb38c8b8c7a84b8d6dad082b8cd722ecb8977c68fae0')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

@@ -1,6 +1,6 @@
 pkgbase = ruby-fxruby
 	pkgdesc = The Ruby binding to the FOX GUI toolkit.
-	pkgver = 1.6.30
+	pkgver = 1.6.33
 	pkgrel = 1
 	url = http://www.fxruby.org/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = ruby-fxruby
 	license = LGPL
 	depends = fox
 	depends = ruby
-	noextract = fxruby-1.6.30.gem
+	noextract = fxruby-1.6.33.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fxruby-1.6.30.gem
-	sha256sums = cd551740d0d12327aeaefc4426159bea3451d21894bb8ef81d1aa78d33ebae8c
+	source = https://rubygems.org/downloads/fxruby-1.6.33.gem
+	sha256sums = 930266b92bcb1a083491eb38c8b8c7a84b8d6dad082b8cd722ecb8977c68fae0
 
 pkgname = ruby-fxruby
 
