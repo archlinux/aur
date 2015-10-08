@@ -16,6 +16,5 @@ build() {
 }
 
 package() {
-	install --directory "$pkgdir"/usr/bin/
-	install qpsnr "$pkgdir"/usr/bin/
+	install -D qpsnr "$pkgdir"/usr/bin/qpsnr
 }
