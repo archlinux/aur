@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='https://developers.yubico.com/pam-u2f/'
 license=('BSD')
 depends=('libu2f-host' 'libu2f-server')
-makedepends=()
+makedepends=('asciidoc')
 source=("https://developers.yubico.com/${pkgname/_/-}/Releases/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('edffa19eae3df72816a5dc319ce94aa1d924770e7e62c666b8cb4c583bc4e2aee75200681e7ecfac47938bfaf390c60cca7983783e0e30ec1df30e12fc1d6e60')
 

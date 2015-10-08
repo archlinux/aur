@@ -6,6 +6,7 @@ pkgbase = pam_u2f
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = asciidoc
 	depends = libu2f-host
 	depends = libu2f-server
 	source = https://developers.yubico.com/pam-u2f/Releases/pam_u2f-1.0.2.tar.gz
