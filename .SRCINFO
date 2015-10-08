@@ -1,7 +1,7 @@
 pkgbase = nodejs-imapnotify-git
 	pkgdesc = Execute scripts on new messages using IDLE imap command
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/a-sk/node-imapnotify
 	install = nodejs-imapnotify-git.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = nodejs-imapnotify-git
 	source = nodejs-imapnotify-git::git://github.com/a-sk/node-imapnotify.git
 	source = imapnotify@.service
 	sha256sums = SKIP
-	sha256sums = ef5d751f86fcff398ddaf3114c3bc90ce685b85739f76e8c6f1f80cea5c1cb27
+	sha256sums = 5644bd4ba49df06c5f0aa529e89bc16bbc696691f7f03cc5f11add7c2f5869b8
 
 pkgname = nodejs-imapnotify-git
 
