@@ -1,0 +1,143 @@
+diff --git a/user/include/sgx-crypto.h b/user/include/sgx-crypto.h
+index 446a29e..b4244d8 100644
+--- a/user/include/sgx-crypto.h
++++ b/user/include/sgx-crypto.h
+@@ -19,7 +19,7 @@
+ 
+ #pragma once
+ 
+-#include <sgx.h>
++#include <sgx/sgx.h>
+ 
+ #define STRING_ECREATE 0x0045544145524345
+ #define STRING_EADD    0x0000000044444145
+diff --git a/user/include/sgx-kern-epc.h b/user/include/sgx-kern-epc.h
+index 7f1abad..a5630c9 100644
+--- a/user/include/sgx-kern-epc.h
++++ b/user/include/sgx-kern-epc.h
+@@ -20,7 +20,7 @@
+ #pragma once
+ 
+ #define SGX_KERNEL
+-#include <sgx.h>
++#include <sgx/sgx.h>
+ 
+ #define EPC_ADDR       0x40008000
+ 
+diff --git a/user/include/sgx-kern.h b/user/include/sgx-kern.h
+index 78406b1..57d93eb 100644
+--- a/user/include/sgx-kern.h
++++ b/user/include/sgx-kern.h
+@@ -19,7 +19,7 @@
+ 
+ #pragma once
+ 
+-#include <sgx.h>
++#include <sgx/sgx.h>
+ 
+ typedef enum {
+     MT_SECS,
+diff --git a/user/include/sgx-lib.h b/user/include/sgx-lib.h
+index 2b0a010..cd0a59e 100644
+--- a/user/include/sgx-lib.h
++++ b/user/include/sgx-lib.h
+@@ -19,10 +19,10 @@
+ 
+ #pragma once
+ 
+-#include <sgx.h>
+-#include <sgx-user.h>
+-#include <sgx-kern.h>
+-#include <sgx-trampoline.h>
++#include <sgx/sgx.h>
++#include <sgx/sgx-user.h>
++#include <sgx/sgx-kern.h>
++#include <sgx/sgx-trampoline.h>
+ #include <stdarg.h>
+ 
+ #include <netinet/in.h>
+diff --git a/user/include/sgx-signature.h b/user/include/sgx-signature.h
+index 884b26a..29c2be5 100644
+--- a/user/include/sgx-signature.h
++++ b/user/include/sgx-signature.h
+@@ -19,7 +19,7 @@
+ 
+ #pragma once
+ 
+-#include <sgx.h>
++#include <sgx/sgx.h>
+ 
+ #define STRING_ECREATE 0x0045544145524345
+ #define STRING_EADD    0x0000000044444145
+diff --git a/user/include/sgx-trampoline.h b/user/include/sgx-trampoline.h
+index 5149fdc..45a39f6 100644
+--- a/user/include/sgx-trampoline.h
++++ b/user/include/sgx-trampoline.h
+@@ -24,7 +24,7 @@
+ #include <inttypes.h>
+ #include <err.h>
+ #include <assert.h>
+-#include <sgx.h>
++#include <sgx/sgx.h>
+ #include <sys/socket.h>
+ 
+ //about a page
+diff --git a/user/include/sgx-user.h b/user/include/sgx-user.h
+index 7033ec1..ee32b1c 100644
+--- a/user/include/sgx-user.h
++++ b/user/include/sgx-user.h
+@@ -19,7 +19,7 @@
+ 
+ #pragma once
+ 
+-#include <sgx.h>
++#include <sgx/sgx.h>
+ 
+ int cur_keid;
+ 
+diff --git a/user/include/sgx-utils.h b/user/include/sgx-utils.h
+index 2b6f28c..1f217b2 100644
+--- a/user/include/sgx-utils.h
++++ b/user/include/sgx-utils.h
+@@ -19,7 +19,7 @@
+ 
+ #pragma once
+ 
+-#include <sgx.h>
++#include <sgx/sgx.h>
+ 
+ //#define NUM_BYTES 8
+ //#define ENCLAVE_OFFSET 0x20004000
+diff --git a/user/include/sgx.h b/user/include/sgx.h
+index 1a5094c..582a8a1 100644
+--- a/user/include/sgx.h
++++ b/user/include/sgx.h
+@@ -24,19 +24,18 @@
+ #include <stdint.h>
+ 
+ // polarssl related headers
+-#include <polarssl/ctr_drbg.h>
+-#include <polarssl/entropy.h>
+-#include <polarssl/rsa.h>
+-#include <polarssl/sha1.h>
+-#include <polarssl/sha256.h>
+-#include <polarssl/aes_cmac128.h>
+-#include <polarssl/dhm.h>
++#include <sgx/polarssl/ctr_drbg.h>
++#include <sgx/polarssl/entropy.h>
++#include <sgx/polarssl/rsa.h>
++#include <sgx/polarssl/sha1.h>
++#include <sgx/polarssl/sha256.h>
++#include <sgx/polarssl/aes_cmac128.h>
++#include <sgx/polarssl/dhm.h>
+ 
+ #define OPENSGX_ABI_VERSION 1
+ #define SGX_USERLIB
+-#include "../../qemu/target-i386/sgx.h"
+-
+-#include "../../qemu/target-i386/crypto.h"
++#include <sgx/qemu/sgx.h>
++#include <sgx/qemu/crypto.h>
+ 
+ typedef struct {
+     uint32_t oeax;

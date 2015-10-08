@@ -1,0 +1,32 @@
+diff --git a/sgx b/sgx
+index 671209b..d88651b 100755
+--- a/sgx
++++ b/sgx
+@@ -1,11 +1,10 @@
+ #!/bin/bash
+ 
+-ROOT=$(dirname "$0")
+-QEMU=$ROOT/qemu/x86_64-linux-user/qemu-x86_64
++QEMU=/usr/share/sgx/qemu
+ 
+ if [[ ! -e "$QEMU" ]]; then
+   echo "can't find qemu image (see $QEMU)"
+   exit 1
+ fi
+ 
+-$QEMU "$@"
+\ No newline at end of file
++$QEMU "$@"
+diff --git a/sgx-dbg b/sgx-dbg
+index 54bc924..a68e446 100755
+--- a/sgx-dbg
++++ b/sgx-dbg
+@@ -1,7 +1,6 @@
+ #!/bin/bash
+ 
+-ROOT=$(dirname "$0")
+-QEMU=$ROOT/qemu/x86_64-linux-user/qemu-x86_64
++QEMU=/usr/share/sgx/qemu
+ DFLAG=-singlestep 
+ 
+ if [[ ! -e "$QEMU" ]]; then

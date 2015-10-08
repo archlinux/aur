@@ -1,0 +1,28 @@
+pkgbase = opensgx-git
+	pkgdesc = an open platform for Intel SGX
+	pkgver = r24.aa9466f
+	pkgrel = 1
+	url = https://github.com/sslab-gatech/opensgx/
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = qemu
+	source = opensgx-git::git+https://github.com/sslab-gatech/opensgx.git
+	source = opensgx-bin-paths.patch
+	source = demo-include-sgx.patch
+	source = opensgx-compile.patch
+	source = sgx-qemu-path.patch
+	source = sgx-h-paths.patch
+	source = test-sh.patch
+	source = sgx-compile
+	md5sums = SKIP
+	md5sums = 58999f0f6a15026bf3f1a6c853f4f723
+	md5sums = 6284157d5a2a1ce6ab44ca3577ab9eb2
+	md5sums = e862b28b09581142af78369c6c65ce66
+	md5sums = 9ac0fa0ddae6d0e70f18992894bd1205
+	md5sums = e65b4d1335c29babacaa0d5dbcbffe3a
+	md5sums = 26415403a05ac7da09e5fc4408328c5b
+	md5sums = 35670fc0b02b2aa3773470587b0d65f4
+
+pkgname = opensgx-git
+

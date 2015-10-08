@@ -1,0 +1,14 @@
+diff --git a/user/test.sh b/user/test.sh
+index 5225ca2..4639671 100755
+--- a/user/test.sh
++++ b/user/test.sh
+@@ -1,7 +1,7 @@
+ #!/bin/bash
+ 
+-SGX=$(dirname "$0")/../sgx
+-PYTHON=python
++SGX=sgx
++PYTHON=python2
+ 
+ print_usage() {
+   cat <<EOF

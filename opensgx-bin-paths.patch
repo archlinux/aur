@@ -1,0 +1,71 @@
+diff --git a/opensgx b/opensgx
+index b467c8b..1f617c3 100755
+--- a/opensgx
++++ b/opensgx
+@@ -1,14 +1,7 @@
+ #! /bin/bash
+-ROOT=$(dirname "$0")
+-SGXTOOL=$ROOT/user/sgx-tool
+-SGX=$ROOT/sgx
+-DEVICEKEY=$ROOT/user/conf/device.key
+-SGXTESTRUNTIME=$ROOT/user/sgx-test-runtime
+-SGXRUNTIME=$ROOT/user/sgx-runtime
+-
+ key_gen() {
+   FILENAME=sign.key
+-  $SGXTOOL -k 3072 > $FILENAME
++  sgx-tool -k 3072 > $FILENAME
+ }
+ 
+ compile_code() {
+@@ -48,7 +41,7 @@ run_enclave() {
+   array=($entry)
+   entry=${array[0]}
+ 
+-  $SGX $SGXRUNTIME $1 $size $offset $code_start $code_end $data_start $data_end $entry $2
++  sgx "$(which sgx-runtime)" $1 $size $offset $code_start $code_end $data_start $data_end $entry $2
+ }
+ 
+ run_enclave_with_icount() {
+@@ -78,7 +71,7 @@ run_enclave_with_icount() {
+   array=($entry)
+   entry=${array[0]}
+ 
+-  $SGX -i $SGXRUNTIME $1 $size $offset $code_start $code_end $data_start $data_end $entry $2
++  sgx -i "$(which sgx-runtime)" $1 $size $offset $code_start $code_end $data_start $data_end $entry $2
+ }
+ 
+ measure() {
+@@ -116,7 +109,7 @@ measure() {
+   DE="--data_end="
+   EN="--entry="
+ 
+-  $SGXTOOL -m $1 $SZ$size $CO$offset $CS$code_start $CE$code_end $DS$data_start $DE$data_end $EN$entry
++  sgx-tool -m $1 $SZ$size $CO$offset $CS$code_start $CE$code_end $DS$data_start $DE$data_end $EN$entry
+ }
+ 
+ sign() {
+@@ -131,10 +124,10 @@ sign() {
+   touch $CONF
+   measure $1 > $MEASURE
+ 
+-  $SGXTOOL -S $MEASURE > $SIG
+-  $SGXTOOL -s $SIG --key=$2 > $CONF
+-  $SGXTOOL -E $CONF > $TOKEN
+-  $SGXTOOL -M $TOKEN --key=$DEVICEKEY >> $CONF
++  sgx-tool -S $MEASURE > $SIG
++  sgx-tool -s $SIG --key=$2 > $CONF
++  sgx-tool -E $CONF > $TOKEN
++  sgx-tool -M $TOKEN --key=conf/device.key >> $CONF
+ 
+   rm $MEASURE $SIG $TOKEN
+ }
+@@ -166,7 +159,7 @@ loading() {
+   array=($entry)
+   entry=${array[0]}
+ 
+-  $SGX $SGXTESTRUNTIME $1 $size $offset $code_start $code_end $data_start $data_end $entry
++  sgx "$(which sgx-test-runtime)" $1 $size $offset $code_start $code_end $data_start $data_end $entry
+ }
+ 
+ case "$1" in

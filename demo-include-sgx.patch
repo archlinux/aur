@@ -1,0 +1,13 @@
+diff --git a/user/demo/hello.c b/user/demo/hello.c
+index 131c2e1..a47241c 100644
+--- a/user/demo/hello.c
++++ b/user/demo/hello.c
+@@ -19,7 +19,7 @@
+ 
+ // hello world
+ 
+-#include <sgx-lib.h>
++#include <sgx.h>
+ 
+ void enclave_main()
+ {

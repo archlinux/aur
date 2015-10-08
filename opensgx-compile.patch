@@ -1,0 +1,19 @@
+diff --git a/opensgx b/opensgx
+index b467c8b..c5a65d6 100755
+--- a/opensgx
++++ b/opensgx
+@@ -12,13 +12,7 @@ key_gen() {
+ }
+ 
+ compile_code() {
+-  BASEDIR=$(dirname $1)
+-  SUBDIR=${BASEDIR#*/}
+-  BASENAME=$(basename $1)
+-  NAME="${BASENAME%.*}"
+-
+-  cd user
+-  make $SUBDIR/$NAME.sgx
++  sgx-compile "$1" -o "${1%.*}.sgx"
+ }
+ 
+ run_enclave() {

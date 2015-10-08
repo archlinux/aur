@@ -1,0 +1,2 @@
+#!/bin/sh
+cc -g -Wall -pedantic -Wno-unused-function -std=gnu1x -fno-stack-protector -fvisibility=hidden -Wl,-T,/usr/lib/sgx/sgx.lds $(find /usr/lib/sgx/ -type f -iname '*.o') $@
