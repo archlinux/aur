@@ -1,5 +1,5 @@
 pkgbase = linux-libre-xen
-	pkgver = 4.1.6_gnu
+	pkgver = 4.2.3_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = linux-libre-xen
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.6-gnu/patch-4.1-gnu-4.1.6-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.6-gnu/patch-4.1-gnu-4.1.6-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.3-gnu/patch-4.2-gnu-4.2.3-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.3-gnu/patch-4.2-gnu-4.2.3-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -23,10 +23,12 @@ pkgbase = linux-libre-xen
 	source = config
 	source = linux.preset
 	source = change-default-console-loglevel.patch
+	source = 0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch
+	source = 0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
-	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
+	sha256sums = 3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49
 	sha256sums = SKIP
-	sha256sums = 335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34
+	sha256sums = 9e452d470bd33ea9cdbab5a285bea8c5b4ac91087ffb154e65c32c360a9a53f1
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -34,10 +36,12 @@ pkgbase = linux-libre-xen
 	sha256sums = SKIP
 	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
 	sha256sums = SKIP
-	sha256sums = 860c234869e472cddb30d583b6ac048cd5be083511a097a2f4db4a31cdaba8c4
+	sha256sums = fe6c2065cbbdef7bed67c1f0493f238f9d27fc21dd1dc19e15f712febce4b0d3
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = 38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d
+	sha256sums = 0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b
+	sha256sums = 6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3
+	sha256sums = 61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc
 
 pkgname = linux-libre-xen
 	pkgdesc = The Linux-libre-xen kernel and modules with Xen guest support
@@ -47,29 +51,20 @@ pkgname = linux-libre-xen
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-xen=4.1.6
-	conflicts = kernel26-xen
-	conflicts = kernel26-libre-xen
+	provides = linux-xen=4.2.3
+	conflicts = 
 	replaces = linux-xen
-	replaces = kernel26-xen
-	replaces = kernel26-libre-xen
 	backup = etc/mkinitcpio.d/linux-libre-xen.preset
 
 pkgname = linux-libre-xen-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-xen kernel
-	provides = linux-xen-headers=4.1.6
-	conflicts = kernel26-xen-headers
-	conflicts = kernel26-libre-xen-headers
+	provides = linux-xen-headers=4.2.3
+	conflicts = 
 	replaces = linux-xen-headers
-	replaces = kernel26-xen-headers
-	replaces = kernel26-libre-xen-headers
 
 pkgname = linux-libre-xen-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-xen kernel
-	provides = linux-xen-docs=4.1.6
-	conflicts = kernel26-xen-docs
-	conflicts = kernel26-libre-xen-docs
+	provides = linux-xen-docs=4.2.3
+	conflicts = 
 	replaces = linux-xen-docs
-	replaces = kernel26-xen-docs
-	replaces = kernel26-libre-xen-docs
 

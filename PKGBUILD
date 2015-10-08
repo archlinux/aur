@@ -8,11 +8,11 @@
 # Based on linux-xen package
 
 pkgbase=linux-libre-xen
-_pkgbasever=4.1-gnu
-_pkgver=4.1.6-gnu
+_pkgbasever=4.2-gnu
+_pkgver=4.2.3-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
-_replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
+_replacesoldkernels=() # '%' gets replaced with _kernelname
 _replacesoldmodules=() # '%' gets replaced with _kernelname
 
 _srcname=linux-${_pkgbasever%-*}
@@ -39,10 +39,12 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
+        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
-sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
+sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
-            '335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34'
+            '9e452d470bd33ea9cdbab5a285bea8c5b4ac91087ffb154e65c32c360a9a53f1'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -50,10 +52,12 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '860c234869e472cddb30d583b6ac048cd5be083511a097a2f4db4a31cdaba8c4'
+            'fe6c2065cbbdef7bed67c1f0493f238f9d27fc21dd1dc19e15f712febce4b0d3'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d')
+            '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
+            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
+            '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
@@ -79,6 +83,15 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
+  # https://lkml.org/lkml/2015/8/18/292
+  patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
+
+  # add not-yet-mainlined patch to fix network unavailability when iptables
+  # rules are applied during startup - happened with Shorewall; journal had
+  # many instances of this error: nf_conntrack: table full, dropping packet
+  patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -86,7 +99,7 @@ prepare() {
 
   # Make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
-  patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
+  patch -p1 -i "${srcdir}/0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch"
 
   cat "${srcdir}/config" > ./.config # simpler
 
@@ -176,7 +189,7 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 _package-headers() {
@@ -296,7 +309,7 @@ _package-headers() {
   done
 
   # remove unneeded architectures
-  find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "x86" -exec rm -rf {} +
+  find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
 }
 
 _package-docs() {
