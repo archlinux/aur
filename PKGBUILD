@@ -1,7 +1,7 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=shadowrunhongkong-gog
-pkgver=2.0.0.1
+pkgver=2.3.0.5
 pkgrel=1
 pkgdesc="Harebrained Schemes' third Shadowrun cRPG"
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ depends_i686+=("bzip2" "expat" "fontconfig" "freetype2" "gcc-libs" "glib2" "glib
 source=("${pkgname}.desktop"
         "gog_shadowrun_hong_kong_${pkgver}.sh::file://gog_shadowrun_hong_kong_${pkgver}.sh")
 sha256sums=("d03de9036e08b1fc74b74e01cc4ec6a716649b730140a361e8a19d3b5b433f18"
-            "8507b8dbe2ad0b376ece47f9719f682dc86f93a8fccadebb700231dc1f867b19")
+            "427901f3effa517c3e7bf0fcec26f2ea192bbe2947d897ef73d741cdcf152e58")
 
 # Disable compression of the package
 PKGEXT='.pkg.tar'
