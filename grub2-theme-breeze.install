@@ -1,0 +1,28 @@
+post_install() {
+  cat << _EOF
+
+==> Installation:
+==> Add theme to your /etc/default/grub: GRUB_THEME="/boot/grub/themes/breeze/theme.txt"
+==> Preferred resolution 1024x768: GRUB_GFXMODE=1024x768
+==> Update grub:# grub-mkconfig -o /boot/grub/grub.cfg
+
+_EOF
+}
+
+pre_upgrade() {
+  checkver=$(pacman -Qs grub2-theme-breeze | head -n 1 | awk '{print $2}')
+  target=/boot/grub/themes/breeze
+
+  if [[ $checkver == "1.0-1" ]]; then
+  cat << _EOF
+
+==> Install target changed to /boot/grub/themes/breeze
+==> No longer needed to copy /usr/share/grub/themes/breeze to /boot/grub/themes/
+
+_EOF
+    # Not working
+    # if [ -d "$target" ]; then
+    #    rm -rf /boot/grub/themes/breeze
+    # fi
+  fi
+}

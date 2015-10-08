@@ -1,0 +1,14 @@
+pkgbase = grub2-theme-breeze
+	pkgdesc = Grub2 gfxmenu theme.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://opendesktop.org/content/show.php?content=171217
+	install = grub2-theme-breeze.install
+	arch = any
+	license = CC-SA-BY
+	depends = grub
+	source = https://github.com/gustawho/grub2-theme-breeze/archive/master.zip
+	md5sums = SKIP
+
+pkgname = grub2-theme-breeze
+
