@@ -1,6 +1,6 @@
 pkgbase = docker-compose
 	pkgdesc = Fast, isolated development environments using Docker
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://www.docker.com/
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = docker-compose
 	depends = python2-dockerpty>=0.3.4
 	depends = docker
 	depends = python2-certifi
-	source = https://github.com/docker/compose/archive/1.4.1.tar.gz
+	source = https://github.com/docker/compose/archive/1.4.2.tar.gz
 	source = remove-requires-upper-bound.patch
-	sha256sums = cc6121ac1ffe50509470bd2122c968ebb6614335bb5312327da190e2f22c35bc
+	sha256sums = cc11f8281f0cf99fcb5502edb6e0d49caca26f4a11570b8ad68943bd3a97dd5c
 	sha256sums = 0d4102403070c290e0817828f634c670b753ab79d80f1e1566b1b0aaf77ee9b9
 
 pkgname = docker-compose
