@@ -1,10 +1,10 @@
 pkgname=mingw-w64-libjpeg-turbo
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
 license=("custom" "GPL")
-depends=(mingw-w64-crt)
+depends=(mingw-w64-crt libjpeg-turbo)
 makedepends=(nasm mingw-w64-cmake)
 provides=(mingw-w64-libjpeg)
 conflicts=(mingw-w64-libjpeg mingw-w64-libjpeg6-turbo)
@@ -13,7 +13,7 @@ url="http://libjpeg-turbo.virtualgl.org"
 source=("http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.tar.gz"
 "0001-header-compat.mingw.patch"
 "libjpeg-turbo-1.3.1-libmng-compatibility.patch")
-sha1sums=('363a149f644211462c45138a19674f38100036d3'
+sha1sums=('2666158ccd5318513f875867bbc4af52f6eb9f0b'
           '204f9a62bb7170f54b1a997059fa77b9b02a71ba'
           '35413e30c3ea18839f4a023283a0bd444136839f')
 
@@ -43,6 +43,7 @@ package() {
 	for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
+    ln -s /usr/include/jpegint.h "$pkgdir/usr/${_arch}/include/jpegint.h"
     find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
