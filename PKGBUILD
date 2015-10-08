@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=apt
 pkgver=1.0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="commandline package manager"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/apt"
@@ -31,7 +31,7 @@ build() {
   sed -i -e 's|-C doc $@|-C doc manpages|' Makefile
   # bash 4.3.33 seems to have problems, use dash instead (sh symlink in Debian)
   sed -i -e 's|#!/bin/sh|#!/bin/dash|' configure
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
   make
 }
 
@@ -56,13 +56,13 @@ package() {
   mkdir -p $pkgdir/usr/lib
   libdir=$pkgdir/usr/lib
   # libapt-inst
-  install bin/libapt-inst.so.1.5.0 $libdir/
-  ln -s -r $libdir/libapt-inst.so.1.5.0 $libdir/libapt-inst.so.1.5
-  ln -s -r $libdir/libapt-inst.so.1.5.0 $libdir/libapt-inst.so
+  install bin/libapt-inst.so.1.7.0 $libdir/
+  ln -s -r $libdir/libapt-inst.so.1.7.0 $libdir/libapt-inst.so.1.7
+  ln -s -r $libdir/libapt-inst.so.1.7.0 $libdir/libapt-inst.so
   # libapt-pkg
-  install bin/libapt-pkg.so.4.12.0 $libdir/
-  ln -s -r $libdir/libapt-pkg.so.4.12.0 $libdir/libapt-pkg.so.4.12
-  ln -s -r $libdir/libapt-pkg.so.4.12.0 $libdir/libapt-pkg.so
+  install bin/libapt-pkg.so.4.16.0 $libdir/
+  ln -s -r $libdir/libapt-pkg.so.4.16.0 $libdir/libapt-pkg.so.4.16
+  ln -s -r $libdir/libapt-pkg.so.4.16.0 $libdir/libapt-pkg.so
   # libapt-private
   install bin/libapt-private.so.0.0.0 $libdir/
   ln -s -r $libdir/libapt-private.so.0.0.0 $libdir/libapt-private.so.0.0
