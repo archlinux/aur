@@ -4,7 +4,7 @@
 
 pkgname=minimetro
 _pkgname=MiniMetro
-pkgver=beta34
+pkgver=gamma6
 pkgrel=1
 pkgdesc='minimalistic subway layout game'
 url="http://dinopoloclub.com/${pkgname}/"
@@ -18,7 +18,7 @@ source=("hib://${_pkgname}-${pkgver}-linux.tar.gz"
         "minimetro.desktop"
         "minimetro.svg"
         "minimetro.png::https://humblebundle-a.akamaihd.net/misc/files/hashed/45825dc5e82cc4626cbae2302de7a182df5d357d.png")
-md5sums=('d16ae731ee2fe1410566fdbaf1fb26e5'
+md5sums=('c27c2e194c61878311e5c94763b33a74'
          '0fe19f989f9606a825b67b9b379c9d6c'
          '6e7915bc03ced67cffb81174f260a742'
          '8e9b34b4e784d4aa306e29cf46194ff8')
