@@ -1,6 +1,6 @@
 pkgbase = cockpit
 	pkgdesc = A systemd web based user interface for Linux servers
-	pkgver = 0.78
+	pkgver = 0.79
 	pkgrel = 1
 	url = http://www.cockpit-project.org/
 	arch = i686
@@ -29,8 +29,8 @@ pkgbase = cockpit
 	optdepends = udisks2
 	optdepends = networkmanager
 	conflicts = cockpit-git
-	source = https://github.com/cockpit-project/cockpit/archive/0.78.tar.gz
-	sha1sums = ecf702a677a2f289e680b3dea166e6a426cc22ae
+	source = https://github.com/cockpit-project/cockpit/archive/0.79.tar.gz
+	sha1sums = 20846b3eba187f178f4ef5d627f0ea07d14486a7
 
 pkgname = cockpit
 
