@@ -3,13 +3,13 @@
 # Contributor: Robert Orzanna <orschiro@googlemail.com>
 
 pkgname=oblogout-blurlock
-pkgver=20151005
+pkgver=20151008
 pkgrel=1
 pkgdesc="Systemd/OpenRC-compatible logout script for Openbox, Fluxbox and others. Including blurlock"
 url="https://github.com/oberon2007/oblogout-blurlock"
 
 _repo=oblogout-blurlock
-_snapshot=18b3e56d0bac6ed8b555d2e743198a41f3c1a9e1
+_snapshot=505ef3b2e6f051051814609f9ec32e86aea716b3
 _forkname=oblogout-fork
 _forkroot="git://github.com/Cloudef/oblogout-fork.git"
 
@@ -31,7 +31,7 @@ conflicts=('fluxlogout'
 replaces=('fluxlogout')
 backup=('etc/oblogout.conf')
 source=("$_repo-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz")
-md5sums=('d60fd250cad6288cdef8d62adb8f40e6')
+md5sums=('b7d8fe3685045ce55f922c36524e45f9')
 
 build() {
   cd "$srcdir"
@@ -55,13 +55,12 @@ package() {
   cd "$srcdir/$_forkname"
   python2 setup.py install --root="$pkgdir/"
 
-  cd "$srcdir/$_repo-$_snapshot/"
-  install -m755 "fluxboxexit" "$pkgdir/usr/bin/"
-  install -m755 "ob_blurlock" "$pkgdir/usr/bin/"
-  install -m755 "oblogout_blur" "$pkgdir/usr/bin/"
-  install -Dm644 "oblogout.conf" "$pkgdir/etc/oblogout-blurlock.conf"
-  mkdir -p "$pkgdir/usr/share/themes/OutMok" \
-	"$pkgdir/usr/share/themes/OutMok-small"
-  cp -r "OutMok/oblogout" "$pkgdir/usr/share/themes/OutMok"
-  cp -r "OutMok-small/oblogout" "$pkgdir/usr/share/themes/OutMok-small"
+  cd $srcdir/$_repo-$_snapshot
+  install -dm755 $pkgdir/usr/share/themes
+  cp -r $srcdir/$_repo-$_snapshot/themes/* $pkgdir/usr/share/themes
+
+  install -m755 fluxboxexit $pkgdir/usr/bin
+  install -m755 ob_blurlock $pkgdir/usr/bin
+  install -m755 oblogout_blur $pkgdir/usr/bin
+  install -Dm644 oblogout.conf $pkgdir/etc/oblogout-manjaro.conf
 }
