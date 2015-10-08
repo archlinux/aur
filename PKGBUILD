@@ -13,6 +13,7 @@
 pkgname=('llvm-assert' 'llvm-libs-assert' 'llvm-ocaml-assert' 'lldb-assert' 'clang-assert' 'clang-analyzer-assert' 'clang-tools-extra-assert')
 pkgver=3.7.0
 pkgrel=1
+_provides_llvm_pkgrel=4
 _ocaml_ver=4.02.3
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
@@ -115,8 +116,9 @@ build() {
 
 package_llvm-assert() {
   pkgdesc="Low Level Virtual Machine"
-  depends=("llvm-libs=$pkgver-$pkgrel" 'perl')
+  depends=("llvm-libs-assert=$pkgver-$pkgrel" 'perl')
   conflicts=("llvm")
+  provides=("llvm=$pkgver-$_provides_llvm_pkgrel")
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -150,6 +152,7 @@ package_llvm-libs-assert() {
   pkgdesc="Low Level Virtual Machine (runtime libraries)"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
   conflicts=("llvm-libs")
+  provides=("llvm-libs=$pkgver-$_provides_llvm_pkgrel")
 
   install -d "$pkgdir/usr/lib"
   cp -P \
@@ -168,8 +171,9 @@ package_llvm-libs-assert() {
 
 package_llvm-ocaml-assert() {
   pkgdesc="OCaml bindings for LLVM"
-  depends=("llvm=$pkgver-$pkgrel" "ocaml=$_ocaml_ver" 'ocaml-ctypes')
+  depends=("llvm-assert=$pkgver-$pkgrel" "ocaml=$_ocaml_ver" 'ocaml-ctypes')
   conflicts=("llvm-ocaml")
+  provides=("llvm-ocaml=$pkgver-$_provides_llvm_pkgrel")
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -185,6 +189,7 @@ package_lldb-assert() {
   url="http://lldb.llvm.org/"
   depends=('libedit' 'libxml2' 'python2')
   conflicts=("lldb")
+  provides=("lldb=$pkgver-$_provides_llvm_pkgrel")
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -200,9 +205,10 @@ package_lldb-assert() {
 package_clang-assert() {
   pkgdesc="C language family frontend for LLVM"
   url="http://clang.llvm.org/"
-  depends=("llvm-libs=$pkgver-$pkgrel" 'gcc')
+  depends=("llvm-libs=$pkgver-$_provides_llvm_pkgrel" 'gcc')
   optdepends=('python2: for git-clang-format')
   conflicts=("clang")
+  provides=("clang=$pkgver-$_provides_llvm_pkgrel")
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -230,8 +236,9 @@ package_clang-assert() {
 package_clang-analyzer-assert() {
   pkgdesc="A source code analysis framework"
   url="http://clang-analyzer.llvm.org/"
-  depends=("clang=$pkgver-$pkgrel" 'python2')
+  depends=("clang-assert=$pkgver-$pkgrel" 'python2')
   conflicts=("clang-analyzer")
+  provides=("clang-analyzer=$pkgver-$_provides_llvm_pkgrel")
 
   cd "$srcdir/llvm-$pkgver.src/tools/clang"
 
@@ -266,8 +273,9 @@ package_clang-analyzer-assert() {
 package_clang-tools-extra-assert() {
   pkgdesc="Extra tools built using Clang's tooling APIs"
   url="http://clang.llvm.org/"
-  depends=("clang=$pkgver-$pkgrel")
+  depends=("clang-assert=$pkgver-$pkgrel")
   conflicts=("clang-tools-extra")
+  provides=("clang-tools-extra=$pkgver-$_provides_llvm_pkgrel")
 
   cd "$srcdir/llvm-$pkgver.src"
 

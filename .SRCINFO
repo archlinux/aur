@@ -1,6 +1,6 @@
 pkgbase = llvm-assert
 	pkgver = 3.7.0
-	pkgrel = 4
+	pkgrel = 1
 	url = http://llvm.org/
 	arch = i686
 	arch = x86_64
@@ -49,8 +49,9 @@ pkgbase = llvm-assert
 
 pkgname = llvm-assert
 	pkgdesc = Low Level Virtual Machine
-	depends = llvm-libs=3.7.0-4
+	depends = llvm-libs-assert=3.7.0-1
 	depends = perl
+	provides = llvm=3.7.0-4
 	conflicts = llvm
 
 pkgname = llvm-libs-assert
@@ -60,13 +61,15 @@ pkgname = llvm-libs-assert
 	depends = libffi
 	depends = libedit
 	depends = ncurses
+	provides = llvm-libs=3.7.0-4
 	conflicts = llvm-libs
 
 pkgname = llvm-ocaml-assert
 	pkgdesc = OCaml bindings for LLVM
-	depends = llvm=3.7.0-4
+	depends = llvm-assert=3.7.0-1
 	depends = ocaml=4.02.3
 	depends = ocaml-ctypes
+	provides = llvm-ocaml=3.7.0-4
 	conflicts = llvm-ocaml
 
 pkgname = lldb-assert
@@ -75,6 +78,7 @@ pkgname = lldb-assert
 	depends = libedit
 	depends = libxml2
 	depends = python2
+	provides = lldb=3.7.0-4
 	conflicts = lldb
 
 pkgname = clang-assert
@@ -83,18 +87,21 @@ pkgname = clang-assert
 	depends = llvm-libs=3.7.0-4
 	depends = gcc
 	optdepends = python2: for git-clang-format
+	provides = clang=3.7.0-4
 	conflicts = clang
 
 pkgname = clang-analyzer-assert
 	pkgdesc = A source code analysis framework
 	url = http://clang-analyzer.llvm.org/
-	depends = clang=3.7.0-4
+	depends = clang-assert=3.7.0-1
 	depends = python2
+	provides = clang-analyzer=3.7.0-4
 	conflicts = clang-analyzer
 
 pkgname = clang-tools-extra-assert
 	pkgdesc = Extra tools built using Clang's tooling APIs
 	url = http://clang.llvm.org/
-	depends = clang=3.7.0-4
+	depends = clang-assert=3.7.0-1
+	provides = clang-tools-extra=3.7.0-4
 	conflicts = clang-tools-extra
 
