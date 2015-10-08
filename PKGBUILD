@@ -12,7 +12,6 @@ depends=('zsh' 'oh-my-zsh-git')
 source=('git+https://github.com/caiogondim/bullet-train-oh-my-zsh-theme.git')
 sha256sums=('SKIP')
 makedepends=('git')
-provides=('bullet-train-oh-my-zsh-theme-git' 'oh-my-zsh-bullet-train-theme-git')
 conflicts=('bullet-train-oh-my-zsh-theme' 'oh-my-zsh-bullet-train-theme')
 
 pkgver() {
