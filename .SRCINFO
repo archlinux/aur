@@ -1,6 +1,6 @@
 pkgbase = tint3
 	pkgdesc = An independant status bar for X11 (works best with bspwm)
-	pkgver = 195
+	pkgver = 200
 	pkgrel = 1
 	url = https://github.com/tmathmeyer/tint3
 	arch = x86_64
