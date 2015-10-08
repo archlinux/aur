@@ -1,7 +1,7 @@
 # Maintainer: Flávio Zavan <flavio dot zavan at gmail dot com>
 pkgname=openbr
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Biometrics"
 arch=('any')
 url="http://openbiometrics.org/"
