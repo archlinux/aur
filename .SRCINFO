@@ -1,10 +1,11 @@
 pkgbase = python2-readlike
 	pkgdesc = GNU Readline-like line editing module
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jangler.info/code/readlike
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python2
 	source = https://pypi.python.org/packages/source/r/readlike/readlike-0.1.1.tar.gz
 	md5sums = 368292c5a247285774c356d6ece83894
