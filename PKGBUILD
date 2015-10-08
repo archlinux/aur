@@ -36,7 +36,7 @@ package() {
     install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     # Install the theme
-    install -D -m644 bullet-train.zsh-theme "${pkgdir}/usr/share/oh-my-zsh/themes/ bullet-train.zsh-theme"
+    install -D -m644 bullet-train.zsh-theme "${pkgdir}/usr/share/oh-my-zsh/themes/bullet-train.zsh-theme"
 }
 
 # vim:set ts=4 sw=4 et:
