@@ -6,6 +6,7 @@ pkgbase = nodejs-imapnotify-git
 	install = nodejs-imapnotify-git.install
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
 	conflicts = nodejs-imapnotify
 	source = nodejs-imapnotify-git::git://github.com/a-sk/node-imapnotify.git
