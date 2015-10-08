@@ -1,5 +1,5 @@
 pkgname=pb-git
-pkgver=r269.61d49ec
+pkgver=r276.e6cc4e6
 pkgrel=1
 pkgdesc="My attempt at a light pastebin"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPLv3')
 depends=('python' 'python-werkzeug' 'python-flask-git' 'python-yaml'
          'python-requests' 'python-docutils' 'python-xdg'
          'python-pymongo' 'python-markdown' 'python-dateutil'
-         'python-magic' 'uwsgi' 'uwsgi-plugin-python')
+         'python-magic-git' 'uwsgi' 'uwsgi-plugin-python')
 
 makedepends=('python-setuptools' 'git' 'graphicsmagick' 'npm')
 #checkdepends=('tox' 'python-pytest' 'python-pytest-cov')
@@ -30,6 +30,12 @@ prepare() {
 
   npm install
   npm install grunt-cli
+
+  # npm and grunt are retarded pieces of shit
+  (
+    cd node_modules/pbs
+    npm install
+  )
 
   node_modules/grunt-cli/bin/grunt
 }
