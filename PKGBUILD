@@ -1,9 +1,9 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
-_debpkgver=3.9.0-24_amd64
-pkgver=3.9.0
-pkgrel=2
+_debpkgver=3.10.0-25_amd64
+pkgver=3.10.0
+pkgrel=1
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2')
 optdepends=('rygel: for network access with upnp' 'minimserver: UPnP Audio server')
 source=("http://www2.signalyst.com/bins/hqplayerd/hqplayerd_$_debpkgver.deb" 'copyright' 'hqplayerd.service' 'start_hqplayerd.sh')
-sha256sums=('6a2b4e567010645f8a9ecabf5c69d9a8fc47f4a30eafcdc463b4d524fbfe3b7f' '3f3295916908afbf195993b163d7dc98696dddbc7b2f6574aab9605046dda2c7' 'ea4ea071b29bbbfce2223a0b8bbe7d62e3ac648af8f57ef49928381000bd82ea'
+sha256sums=('708680d0517dce5b6378c79cd23aaee4a6b46bbffd7875e47cf77d3451ce3f4a' '3f3295916908afbf195993b163d7dc98696dddbc7b2f6574aab9605046dda2c7' 'ea4ea071b29bbbfce2223a0b8bbe7d62e3ac648af8f57ef49928381000bd82ea'
 '2c1a93ea66e59a7eee1b76fc70816bb9f6169b155eb42b390ecddb4b38b31ca5')
 
 package() {
