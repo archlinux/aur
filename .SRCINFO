@@ -1,0 +1,24 @@
+pkgbase = kdevelop-python3-git
+	pkgdesc = Python language plugin for KDevelop - Git build, Python 3 version
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.kdevelop.org/
+	arch = i686
+	arch = x86_64
+	groups = kde
+	groups = kdevelop-plugins
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	makedepends = python=3.5.0
+	depends = kdevplatform-git
+	depends = kdevelop-git
+	depends = python=3.5.0
+	provides = kdevelop-python
+	conflicts = kdevelop-python
+	source = git+git://anongit.kde.org/kdev-python
+	md5sums = SKIP
+
+pkgname = kdevelop-python3-git
+
