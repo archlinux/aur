@@ -1,7 +1,7 @@
-From b8df04930cf5ac8f75db5e5fb1a470686e66e78b Mon Sep 17 00:00:00 2001
+From 08657c24e4dc4b0c4d2ad074968de94efe2226dd Mon Sep 17 00:00:00 2001
 From: Mike Swanson <mikeonthecomputer@gmail.com>
 Date: Mon, 3 Aug 2015 14:44:19 -0700
-Subject: [PATCH 1/2] git-weave uses Python 2 syntax, run it with the python2
+Subject: [PATCH 1/3] git-weave uses Python 2 syntax, run it with the python2
  binary
 
 ---
@@ -19,5 +19,5 @@ index 5293f98..a6c278b 100755
  git-weave - assemble tree sequences into repository histories
  
 -- 
-2.5.0
+2.6.1
 

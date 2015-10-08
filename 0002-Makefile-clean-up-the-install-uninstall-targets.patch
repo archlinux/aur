@@ -1,7 +1,7 @@
-From 77508db9c31234ddecb9bd8bc7b956d4d70b9f65 Mon Sep 17 00:00:00 2001
+From 59a83a98824e2e321feba161a4cd4a5e6dc1b6af Mon Sep 17 00:00:00 2001
 From: Mike Swanson <mikeonthecomputer@gmail.com>
 Date: Mon, 3 Aug 2015 14:55:23 -0700
-Subject: [PATCH 2/2] Makefile: clean up the install/uninstall targets
+Subject: [PATCH 2/3] Makefile: clean up the install/uninstall targets
 
 It referenced directories/files that only make sense for a game,
 including installing the manpage in section 6 (games) rather than 1
@@ -10,26 +10,22 @@ and a non-exitent desktop icon and appdata.
 I added the autotools-like prefix variable to configure the install
 location, defaulting to /usr/local.
 ---
- Makefile | 24 +++++++++++++-----------
- 1 file changed, 13 insertions(+), 11 deletions(-)
+ Makefile | 20 +++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index d86a888..15a6e87 100644
+index 48fe779..15a6e87 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -18,19 +18,21 @@ all: git-weave.1
+@@ -18,15 +18,21 @@ all: git-weave.1
  clean:
  	rm -f *~ *.1 *.html *.rpm *.lsm MANIFEST
  
 -install: git-weave.1 uninstall
 -	install -m 0755 -d $(DESTDIR)/usr/bin
--	install -m 0755 -d $(DESTDIR)/usr/share/man/man6
--	install -m 0755 -d $(DESTDIR)//usr/share/applications/
--	install -m 0755 -d $(DESTDIR)/usr/share/pixmaps/
--	install -m 0755 -d $(DESTDIR)/usr/share/appdata
+-	install -m 0755 -d $(DESTDIR)/usr/share/man/man1
 -	install -m 0755 git-weave $(DESTDIR)/usr/bin/
--	install -m 0644 git-weave.1 $(DESTDIR)/usr/share/man/man6/
--	install -m 0644 git-weave.xml $(DESTDIR)/usr/share/appdata/
+-	install -m 0644 git-weave.1 $(DESTDIR)/usr/share/man/man1/
 +prefix?=/usr/local
 +mandir?=share/man
 +target=$(DESTDIR)$(prefix)
@@ -51,5 +47,5 @@ index d86a888..15a6e87 100644
  PYLINTOPTS = --rcfile=/dev/null --reports=n \
  	--msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" \
 -- 
-2.5.0
+2.6.1
 
