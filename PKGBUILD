@@ -12,7 +12,7 @@
 
 pkgname=('llvm-assert' 'llvm-libs-assert' 'llvm-ocaml-assert' 'lldb-assert' 'clang-assert' 'clang-analyzer-assert' 'clang-tools-extra-assert')
 pkgver=3.7.0
-pkgrel=2
+pkgrel=3
 _provides_llvm_pkgrel=4
 _ocaml_ver=4.02.3
 arch=('i686' 'x86_64')
@@ -205,7 +205,7 @@ package_lldb-assert() {
 package_clang-assert() {
   pkgdesc="C language family frontend for LLVM"
   url="http://clang.llvm.org/"
-  depends=("llvm-libs=$pkgver-$_provides_llvm_pkgrel" 'gcc')
+  depends=("llvm-libs-assert=$pkgver-$pkgrel" 'gcc')
   optdepends=('python2: for git-clang-format')
   conflicts=("clang")
   provides=("clang=$pkgver-$_provides_llvm_pkgrel")
