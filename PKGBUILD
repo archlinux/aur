@@ -3,12 +3,12 @@
 
 pkgname=vmware-patch
 pkgver=12.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/VMware#Configuration"
 license=('GPL')
-depends=('fuse' 'gtkmm' 'linux-headers')
+depends=('fuse' 'gtkmm' 'linux-headers' 'ncurses5-compat-libs')
 options=('!emptydirs')
 install=$pkgname.install
 source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.service' 'vmware-usbarbitrator.service' 'vmware-workstation.service'
