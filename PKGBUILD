@@ -1,8 +1,8 @@
 # Maintainer: Florian Walch <florian+aur@fwalch.com>
 
 pkgname=libtermkey-bzr
-pkgver=0.17.r12
-pkgrel=3
+pkgver=0.18.r0
+pkgrel=1
 pkgdesc='Library for easy processing of keyboard entry from terminal-based programs.'
 arch=('i686' 'x86_64')
 url='http://www.leonerd.org.uk/code/libtermkey'

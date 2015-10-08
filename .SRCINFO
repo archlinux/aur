@@ -1,14 +1,14 @@
 pkgbase = libtermkey-bzr
 	pkgdesc = Library for easy processing of keyboard entry from terminal-based programs.
-	pkgver = 0.17.r12
-	pkgrel = 3
+	pkgver = 0.18.r0
+	pkgrel = 1
 	url = http://www.leonerd.org.uk/code/libtermkey
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = bzr
 	depends = unibilium
-	provides = libtermkey=0.17.r12
+	provides = libtermkey=0.18.r0
 	conflicts = libtermkey
 	options = staticlibs
 	source = libtermkey-bzr::bzr+http://bazaar.leonerd.org.uk/c/libtermkey/
