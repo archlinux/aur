@@ -1,6 +1,6 @@
 pkgbase = google-chrome-beta
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Beta Channel). NOTE: If the md5sums don't match, don't post the makepkg output. Simply flag the package.
-	pkgver = 46.0.2490.52
+	pkgver = 46.0.2490.64
 	pkgrel = 1
 	url = https://www.google.com/chrome/index.html
 	install = google-chrome-beta.install
@@ -36,10 +36,10 @@ pkgbase = google-chrome-beta
 	source = eula_text.html
 	md5sums = ca16d5162eed85b1ba4e6b9fc37f9e35
 	md5sums = b7e752f549b215ac77f284b6486794b6
-	source_i686 = google-chrome-beta_46.0.2490.52_i386.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_i386.deb
-	md5sums_i686 = a3a9ac064c4b589a1521dd6ca21bf6cc
-	source_x86_64 = google-chrome-beta_46.0.2490.52_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
-	md5sums_x86_64 = 3fd6a6db3ab9d3762bc199f9daf6890e
+	source_i686 = google-chrome-beta_46.0.2490.64_i386.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_i386.deb
+	md5sums_i686 = d829ba40dcb95c366dcf1b0cad29f211
+	source_x86_64 = google-chrome-beta_46.0.2490.64_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
+	md5sums_x86_64 = 6b828108b53b8cc83fb56326a81c43f8
 
 pkgname = google-chrome-beta
 

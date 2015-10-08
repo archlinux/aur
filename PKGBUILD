@@ -5,7 +5,7 @@
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
 
 pkgname=google-chrome-beta
-pkgver=46.0.2490.52
+pkgver=46.0.2490.64
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Beta Channel)"
 arch=('i686' 'x86_64')
@@ -26,8 +26,8 @@ source_i686=("google-chrome-${_channel}_${pkgver}_i386.deb::https://dl.google.co
 source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb")
 md5sums=('ca16d5162eed85b1ba4e6b9fc37f9e35'
          'b7e752f549b215ac77f284b6486794b6')
-md5sums_i686=('a3a9ac064c4b589a1521dd6ca21bf6cc')
-md5sums_x86_64=('3fd6a6db3ab9d3762bc199f9daf6890e')
+md5sums_i686=('d829ba40dcb95c366dcf1b0cad29f211')
+md5sums_x86_64=('6b828108b53b8cc83fb56326a81c43f8')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
@@ -50,7 +50,7 @@ package() {
   install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome-$_channel/eula_text.html
 
   msg2 "Fixing Chrome icon resolution..."
-  sed -i "/Exec=/i\StartupWMClass=Google-chrome-$_channel" "$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
+  sed -i "/Exec=/i\StartupWMClass=google-chrome-$_channel" "$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
 
   msg2 "Removing unnecessities (e.g. Debian Cron job)..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome-$_channel/cron/
