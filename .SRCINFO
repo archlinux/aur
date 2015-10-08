@@ -1,6 +1,6 @@
 pkgbase = storaged
 	pkgdesc = LVM DBus add-on for udisks
-	pkgver = 2.1.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/storaged-project/storaged
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = storaged
 	makedepends = libxslt
 	depends = udisks2
 	depends = lvm2
-	source = https://github.com/storaged-project/storaged/releases/download/storaged-2.1.2/storaged-2.1.2.tar.bz2
-	md5sums = c10c2e027d639de75118ff104746d685
+	source = https://github.com/storaged-project/storaged/releases/download/storaged-2.3.0/storaged-2.3.0.tar.bz2
+	md5sums = 910d4c10568c575d0ae5be7b68890126
 
 pkgname = storaged
 
