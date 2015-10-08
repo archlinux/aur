@@ -1,6 +1,6 @@
 pkgbase = mikidown
 	pkgdesc = A note taking application featuring markdown syntax
-	pkgver = 0.3.7
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = http://shadowkyogre.github.io/mikidown/
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = mikidown
 	optdepends = python-asciimathml: for asciimath support
 	optdepends = python-html2text: for converting to markdown (instead of HTML pasting)
 	optdepends = slickpicker: for better color picking in mikidown for the highlighting color scheme
-	source = https://pypi.python.org/packages/source/m/mikidown/mikidown-0.3.7.tar.gz
-	md5sums = 947534adb90db57af846cf196f597c92
+	source = https://pypi.python.org/packages/source/m/mikidown/mikidown-0.3.10.tar.gz
+	md5sums = 3bced7091442d681ba7d681c606a8fd2
 
 pkgname = mikidown
 

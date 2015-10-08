@@ -2,7 +2,7 @@
 # Maintainer: ShadowKyogre <shadowkyogre dot public at gmail dot com>
 
 pkgname=mikidown
-pkgver=0.3.7
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="A note taking application featuring markdown syntax"
 arch=('any')
@@ -22,6 +22,7 @@ source=("https://pypi.python.org/packages/source/m/mikidown/mikidown-$pkgver.tar
 
 package() {
     cd "$srcdir/mikidown-$pkgver"
+    lrelease-qt4 mikidown.pro
     python setup.py install --root="$pkgdir" 
 }
-md5sums=('947534adb90db57af846cf196f597c92')
+md5sums=('3bced7091442d681ba7d681c606a8fd2')
