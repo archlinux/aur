@@ -1,13 +1,12 @@
 pkgbase = trang
 	pkgdesc = Converts between different schema languages for XML
 	pkgver = 20091111
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/jing-trang
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = java-environment
-	depends = java-runtime
+	depends = java-runtime-headless
 	source = http://jing-trang.googlecode.com/files/trang-20091111.zip
 	source = trang
 	md5sums = 9d31799b948c350850eb9dd14e5b832d
