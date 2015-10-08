@@ -1,9 +1,9 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 # Contributor: Tristelune <tristelune@archlinux.info>
 pkgname=pdfstudio
-pkgver=10.0.0
-_pkgver=v10_0_0
-pkgrel=3
+pkgver=10.2.0
+_pkgver=v10_2_0
+pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
 url="http://www.qoppa.com/pdfstudio/"
@@ -19,8 +19,8 @@ install=${pkgname}.install
 sha256sums=('576e81cf3f760370f435060d765b1e58044e594eaa2099dd0dcbba5e92c59958'
             'b82acfb50e1e15a43c54aba7a0712b6c710c10ae74280a26a451343720e965e3'
             '0a3c1c337a22228f3df28412ca65d45d0d8067b508cf7b1cf93810fc17c9b447')
-sha256sums_i686=('3e7a01b0cdf970e744fa9c0798abbb21fe87bb99164a5e6c84278fd879eb85f6')
-sha256sums_x86_64=('b6690292f1b0dc67794f0f17d81541d85edd140ca0714b626bbc885263759198')
+sha256sums_i686=('64dc397187d61485ce63b090c658dcb92f309c098b640d4298c53c5faeabc908')
+sha256sums_x86_64=('7c6fc2dad26aaf530594f3459bbe2af42c2b7b025756d9baecfe479c8b51cdaf')
 source_i686=("http://www.qoppa.com/files/pdfstudio/demo/downloads/version10/PDFStudio_${_pkgver}_linux.deb")
 source_x86_64=("http://www.qoppa.com/files/pdfstudio/demo/downloads/version10/PDFStudio_${_pkgver}_linux64.deb")
 source=(${pkgname}.desktop
