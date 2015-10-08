@@ -2,7 +2,7 @@
 # Original Maintainer: Marcin Tydelski <marcin.tydelski@gmail.com> 
 # Contributor: Jan Lukas Gernert (JeanLuc) <https://launchpad.net/~eviltwin1>
 
-pkgname=feedreader
+pkgname=feedreader-beta
 pkgver=1.4
 pkgrel=1
 pkgdesc='A simple feedreader client for web services like Tiny Tiny RSS and in the future others.'

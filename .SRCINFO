@@ -1,4 +1,4 @@
-pkgbase = feedreader
+pkgbase = feedreader-beta
 	pkgdesc = A simple feedreader client for web services like Tiny Tiny RSS and in the future others.
 	pkgver = 1.4
 	pkgrel = 1
@@ -26,5 +26,5 @@ pkgbase = feedreader
 	source = https://launchpad.net/feedreader/1.4/1.4-beta/+download/FeedReader-1.4-beta.tar.gz
 	sha256sums = 1b6db6d28273e8bd9295ef2773b0a8dcfac6532230bcc3fdef91eccf53690ca5
 
-pkgname = feedreader
+pkgname = feedreader-beta
 
