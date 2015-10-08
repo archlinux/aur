@@ -5,7 +5,7 @@ pkgver=20150924.6c24840
 pkgrel=1
 pkgdesc="Hawaii Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/hawaii-desktop/hawaii-shell"
+url='http://hawaiios.org'
 license=('GPL', 'LGPL')
 depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg'
          'greenisland-git' 'pam' 'libpulse' 'libqtxdg' 'glib2' 'networkmanager-qt'
