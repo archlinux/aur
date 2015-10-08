@@ -1,0 +1,14 @@
+pkgbase = grub2-theme-breeze-git
+	pkgdesc = A minimalistic GRUB theme inspired by Breeze
+	pkgver = r16.e8c4218
+	pkgrel = 1
+	url = https://github.com/gustawho/grub2-theme-breeze
+	install = grub2-theme-breeze-git.install
+	arch = any
+	license = CCPL:by-sa
+	depends = grub
+	source = git+https://github.com/gustawho/grub2-theme-breeze.git
+	sha256sums = SKIP
+
+pkgname = grub2-theme-breeze-git
+
