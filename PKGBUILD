@@ -2,7 +2,7 @@
 
 pkgname=qt-sesam-git
 _gitname=Qt-SESAM
-pkgver=2.0.6.r13.g414e4ca
+pkgver=2.1.0.BETA.r19.g8d0ff19
 pkgrel=1
 pkgdesc="Super Easy & Secure Authentication Manager"
 arch=('i686' 'x86_64')

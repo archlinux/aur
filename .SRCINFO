@@ -1,6 +1,6 @@
 pkgbase = qt-sesam-git
 	pkgdesc = Super Easy & Secure Authentication Manager
-	pkgver = 2.0.6.r13.g414e4ca
+	pkgver = 2.1.0.BETA.r19.g8d0ff19
 	pkgrel = 1
 	url = https://github.com/ola-ct/Qt-SESAM/
 	arch = i686
