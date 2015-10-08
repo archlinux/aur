@@ -1,6 +1,6 @@
 pkgbase = neovim-git
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs.
-	pkgver = 0.r4067.7be75a0
+	pkgver = 0.r4069.cd6b4af
 	pkgrel = 1
 	url = http://neovim.io
 	install = neovim-git.install
@@ -13,7 +13,7 @@ pkgbase = neovim-git
 	makedepends = lua51-messagepack
 	makedepends = lua51-lpeg
 	depends = jemalloc
-	depends = libtermkey>=0.18
+	depends = libtermkey
 	depends = libuv
 	depends = libvterm-bzr
 	depends = msgpack-c
@@ -22,7 +22,7 @@ pkgbase = neovim-git
 	optdepends = python-neovim: for Python 3 plugin support (see :help nvim-python)
 	optdepends = xclip: for clipboard support (or xsel) (see :help nvim-clipboard)
 	optdepends = xsel: for clipboard support (or xclip) (see :help nvim-clipboard)
-	provides = neovim=0.r4067.7be75a0
+	provides = neovim=0.r4069.cd6b4af
 	conflicts = neovim
 	source = neovim-git::git+https://github.com/neovim/neovim.git
 	sha256sums = SKIP
