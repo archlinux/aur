@@ -1,0 +1,27 @@
+pkgbase = lejos-nxj
+	pkgdesc = A firmware replacement and toolchain for programming the Lego NXT in Java
+	pkgver = 0.9.1.beta3
+	pkgrel = 4
+	url = http://lejos.sourceforge.net/
+	install = lejos-nxj.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = APACHE
+	makedepends = apache-ant
+	depends = java-environment
+	depends = java-runtime
+	depends = bluez
+	depends = libusb-compat
+	depends = java-bluecove
+	depends = java-commons-cli
+	depends = java-bcel
+	depends = lego-udev-rules
+	conflicts = lejos-nxj-svn
+	replaces = lejos_nxj
+	source = http://downloads.sourceforge.net/sourceforge/lejos/leJOS_NXJ_0.9.1beta-3.tar.gz
+	md5sums = c1d76a89f075d6404b724ea88137c521
+
+pkgname = lejos-nxj
+

@@ -1,0 +1,4 @@
+post_install() {
+    echo ">>> For samples of usage and documentation please visit "
+    echo ">>> 'http://lejos.sourceforge.net/'."
+}
