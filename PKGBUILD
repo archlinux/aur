@@ -2,13 +2,12 @@
 
 pkgname=gog-prisonarchitect
 pkgver=2.0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Prison construction and management simulation, GOG version"
 url=('https://www.gog.com/game/prison_architect')
 license=('custom')
 arch=('i686' 'x86_64')
-depends_x86_64=('lib32-glu' 'gtk2')
-depends_i686=('glu' 'gtk2')
+depends=('glu' 'gtk2')
 options=('staticlibs' '!strip')
 
 DLAGENTS+=("gog::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a gog:// DLAGENT in /etc/makepkg.conf.")
