@@ -1,6 +1,6 @@
 pkgbase = spim-svn
 	pkgdesc = A MIPS32 simulator (SVN version)
-	pkgver = 673
+	pkgver = 674
 	pkgrel = 1
 	url = http://sourceforge.net/projects/spimsimulator/
 	arch = i686
