@@ -1,12 +1,12 @@
 pkgbase = deadbeef-plugin-infobar-ng-hg
-	pkgver = 180
+	pkgver = 183
 	pkgrel = 1
 	url = https://bitbucket.org/IgnatLoskutov/deadbeef-infobar-ng
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = mercurial
-	depends = deadbeef>=0.6,
+	depends = deadbeef>=0.6
 	depends = libxml2
 	source = hg+https://bitbucket.org/IgnatLoskutov/deadbeef-infobar-ng
 	md5sums = SKIP
