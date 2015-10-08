@@ -8,8 +8,10 @@ pkgdesc="No binaries used. Open source fork of the Songbird Media Player with up
 arch=('i686' 'x86_64')
 url="http://getnightingale.com/"
 license=('GPL2' 'MPL' 'BSD')
-makedepends=('git' 'subversion' 'python' 'unzip' 'libidl2' 'zip' 'glib2')
-depends=('gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good' 'gstreamer' 'gtk2' 'libxt' 'sqlite3' 'taglib')
+makedepends=('git' 'subversion' 'python' 'unzip' 'libidl2' 'zip' 'glib2' 'pkg-config' 'diffutils' 'libgnomeui' 'python2' 'autoconf2.13')
+depends=('gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good' 'gstreamer' 'gtk2' 'libxt' 'sqlite3' 'taglib'
+'gtk2' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss' 'mime-types' 'dbus-glib' 'alsa-lib' 'libevent' 'libnotify>=0.4'
+)
 conflicts=('nightingale')
 provides=('nightingale')
 install="nightingale.install"
