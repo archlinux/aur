@@ -13,21 +13,14 @@ optdepends=(yamado)
 provides=("portal")
 conflicts=()
 replaces=()
-backup=()
+backup=('etc/postfix/'{access,aliases,canonical,generic,header_checks,main.cf,master.cf,relocated,transport,virtual})
 options=()
-install=
+install="portal.install"
 changelog=
 source=(#"git+https://github.com/orbifx/portal.git"
 	https://github.com/orbifx/portal/releases/download/v0.1-beta/portal-postconf.tar.gz)
 noextract=()
 md5sums=('ca4a222928203019be0aab260e342def')
-
-build() {
-#  cd "$pkgname-$pkgver"
-#  ./configure --prefix=/usr
-#  make
-true
-}
 
 package() {
 	install -Dm544 portal-postconf "$pkgdir/usr/bin/portal-postconf"
