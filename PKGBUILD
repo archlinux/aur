@@ -1,6 +1,6 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=e644f90ff7d46a36cb226b969fa4c5c46ed6dae5 # lastest commit 20150806
+_git=88e39e9289a8200bfcfd43ca8c516474bfb1eb94 # lastest commit 20150806
 pkgname=zpm
 pkgver=20150826
 pkgrel=1
@@ -13,7 +13,7 @@ makedepends=('git' 'fakeroot')
 install='zpm.install'
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('6a67fd379c14d730c454140be1c855bff09b4f01d706cccb4cfc5efe0816a6f1')
+sha256sums=('60692029f32b304cf99eba35473678c081c7e5a9ef637ec4a6471bc8a89d3f36')
 
 package() {
     install -d ${pkgdir}/usr/share/zpm
