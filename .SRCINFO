@@ -1,12 +1,13 @@
 pkgbase = python-purplex
 	pkgdesc = Pure Python lexer and parser implementation
 	pkgver = 0.2.4
-	pkgrel = 2
-	url = https://pypi.python.org/pypi/purplex/0.2.4
+	pkgrel = 3
+	url = https://github.com/mtomwing/purplex
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-six
+	depends = python-setuptools
 	source = https://pypi.python.org/packages/source/p/purplex/purplex-0.2.4.tar.gz
 	md5sums = 670539e46f63da364d7fb83aeb86a170
 

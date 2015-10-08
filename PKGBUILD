@@ -3,12 +3,12 @@
 pkgname=python-purplex
 _pkgname=purplex
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Pure Python lexer and parser implementation"
 arch=('any')
-url="https://pypi.python.org/pypi/purplex/0.2.4"
+url="https://github.com/mtomwing/purplex"
 license=('MIT')
-depends=('python' 'python-six')
+depends=('python' 'python-six' 'python-setuptools')
 source=(https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
 md5sums=('670539e46f63da364d7fb83aeb86a170')
 
