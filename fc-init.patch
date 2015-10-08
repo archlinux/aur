@@ -1,0 +1,4 @@
+353a354
+> 	register_archive (FR_TYPE_COMMAND_ZIP);
+368d368
+< 	register_archive (FR_TYPE_COMMAND_ZIP);
