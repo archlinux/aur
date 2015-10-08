@@ -1,0 +1,14 @@
+pkgbase = ink
+	pkgdesc = Command line tool for checking the ink level of printers
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://ink.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libinklevel
+	source = http://downloads.sourceforge.net/ink/ink-0.5.2.tar.gz
+	md5sums = 9dac3e63797d8b0e53fb57b31e648ae8
+
+pkgname = ink
+
