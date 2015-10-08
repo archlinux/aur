@@ -2,7 +2,7 @@
 pkgbase='deadbeef-plugin-infobar-ng-hg'
 _hgname='deadbeef-infobar-ng'
 pkgname=('deadbeef-plugin-infobar-ng-gtk2-hg' 'deadbeef-plugin-infobar-ng-gtk3-hg')
-pkgver=180
+pkgver=183
 pkgrel=1
 _pkgdesc="The Infobar-ng plugin for the DeaDBeeF audio player."
 arch=('i686' 'x86_64')
