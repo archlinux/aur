@@ -1,5 +1,4 @@
 pkgbase = deadbeef-quick-search-git
-	pkgdesc = Quick Search Plugin for the DeaDBeeF Audio Player
 	pkgver = 12.e31f35c
 	pkgrel = 1
 	url = https://github.com/cboxdoerfer/ddb_quick_search
@@ -11,8 +10,8 @@ pkgbase = deadbeef-quick-search-git
 	md5sums = SKIP
 
 pkgname = deadbeef-quick-search-gtk2-git
-	pkgdesc = The GTK2 version.
+	pkgdesc = Quick Search Plugin for the DeaDBeeF Audio Player The GTK2 version.
 
 pkgname = deadbeef-quick-search-gtk3-git
-	pkgdesc = The GTK3 version.
+	pkgdesc = Quick Search Plugin for the DeaDBeeF Audio Player The GTK3 version.
 
