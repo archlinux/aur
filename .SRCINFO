@@ -15,11 +15,11 @@ pkgbase = mozc
 	depends = ibus>=1.4.1
 	depends = zinnia
 	source = mozc::git+https://github.com/google/mozc.git#commit=e398317a086a78c0cf0004505eb8f56586e925b2
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201508.zip
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201508.zip
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201509.zip
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201509.zip
 	sha1sums = SKIP
-	sha1sums = 97627c9e27a273dddf6408d0451855dd5f830eee
-	sha1sums = 927901d45051ec9bfb944e2623c4589456462f03
+	sha1sums = 134bd80b14d87386eec38710e999dc56fc34efc3
+	sha1sums = c3cd5e91ac4878e60c875076d7b3b37f087964d1
 
 pkgname = mozc
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
