@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-knock
 _pkgbasever=4.2-gnu
-_pkgver=4.2.1-gnu
+_pkgver=4.2.3-gnu
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -51,7 +51,6 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch'
         '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
         '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
-        '0001-fix-bridge-regression.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
@@ -66,7 +65,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
-            '2fb0b42c6cac0bd550ceb71072fef4f7ed72976e64542de8e7ad759a9e195237'
+            '9e452d470bd33ea9cdbab5a285bea8c5b4ac91087ffb154e65c32c360a9a53f1'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
@@ -83,9 +82,8 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
             '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
-            '0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183'
             '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            '1d365219ca72ef7290277a47c45a4f406705f27a9f7c177ac860da0e5b994bdb'
+            '4b9ad713f1520c1eedba88e1e504c9c9bf3b832b0a40fd6566d107895fbd6b67'
             'SKIP'
             '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
             '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
@@ -151,10 +149,6 @@ prepare() {
   # many instances of this error: nf_conntrack: table full, dropping packet
   patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
 
-  # add not-yes-mainlined patch to fix bridge code
-  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
-  patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
-
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -209,7 +203,6 @@ _package() {
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  [ "${CARCH}" = "armv7h" ] && conflicts+=("${_replacesarchkernel}-uimage") && replaces+=("${_replacesarchkernel}-uimage")
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     depends+=('mkinitcpio>=0.7')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -224,13 +217,10 @@ _package() {
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  if [ "${CARCH}" = "armv7h" ]; then
-    mkdir -p "${pkgdir}/boot/dtbs/${pkgbase}"
-  fi
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   if [ "${CARCH}" = "armv7h" ]; then
+    make LOCALVERSION= INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs/${pkgbase}" dtbs_install
     cp arch/$KARCH/boot/zImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-    cp arch/$KARCH/boot/dts/*.dtb "${pkgdir}/boot/dtbs/${pkgbase}"
   elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
   fi

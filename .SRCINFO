@@ -1,5 +1,5 @@
 pkgbase = linux-libre-knock
-	pkgver = 4.2.1_gnu
+	pkgver = 4.2.3_gnu
 	pkgrel = 1
 	url = https://gnunet.org/knock
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = linux-libre-knock
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.1-gnu/patch-4.2-gnu-4.2.1-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.1-gnu/patch-4.2-gnu-4.2.1-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.3-gnu/patch-4.2-gnu-4.2.3-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.3-gnu/patch-4.2-gnu-4.2.3-gnu.xz.sign
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.2_2.diff
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.2_2.diff.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
@@ -31,10 +31,9 @@ pkgbase = linux-libre-knock
 	source = change-default-console-loglevel.patch
 	source = 0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch
 	source = 0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch
-	source = 0001-fix-bridge-regression.patch
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.1/rcn-libre-4.2.1-armv7-x2.patch
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.1/rcn-libre-4.2.1-armv7-x2.patch.sig
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.3/rcn-libre-4.2.3-armv7-x2.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.3/rcn-libre-4.2.3-armv7-x2.patch.sig
 	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
 	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
 	source = 0003-SMILE-Plug-device-tree-file.patch
@@ -45,7 +44,7 @@ pkgbase = linux-libre-knock
 	source = 0008-USB-armory-support.patch
 	sha256sums = 3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49
 	sha256sums = SKIP
-	sha256sums = 2fb0b42c6cac0bd550ceb71072fef4f7ed72976e64542de8e7ad759a9e195237
+	sha256sums = 9e452d470bd33ea9cdbab5a285bea8c5b4ac91087ffb154e65c32c360a9a53f1
 	sha256sums = SKIP
 	sha256sums = c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4
 	sha256sums = SKIP
@@ -62,9 +61,8 @@ pkgbase = linux-libre-knock
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b
 	sha256sums = 6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3
-	sha256sums = 0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183
 	sha256sums = 38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d
-	sha256sums = 1d365219ca72ef7290277a47c45a4f406705f27a9f7c177ac860da0e5b994bdb
+	sha256sums = 4b9ad713f1520c1eedba88e1e504c9c9bf3b832b0a40fd6566d107895fbd6b67
 	sha256sums = SKIP
 	sha256sums = 203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7
 	sha256sums = 28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c
@@ -85,20 +83,20 @@ pkgname = linux-libre-knock
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-knock=4.2.1
+	provides = linux-knock=4.2.3
 	conflicts = 
 	replaces = linux-knock
 	backup = etc/mkinitcpio.d/linux-libre-knock.preset
 
 pkgname = linux-libre-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-knock kernel
-	provides = linux-knock-headers=4.2.1
+	provides = linux-knock-headers=4.2.3
 	conflicts = 
 	replaces = linux-knock-headers
 
 pkgname = linux-libre-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-knock kernel
-	provides = linux-knock-docs=4.2.1
+	provides = linux-knock-docs=4.2.3
 	conflicts = 
 	replaces = linux-knock-docs
 
