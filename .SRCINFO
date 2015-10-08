@@ -1,6 +1,6 @@
 pkgbase = ariamaestosa
 	pkgdesc = MIDI editor, player, tracker and composer
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = http://ariamaestosa.sourceforge.net/
 	install = ariamaestosa.install
@@ -18,8 +18,8 @@ pkgbase = ariamaestosa
 	depends = webkitgtk2
 	optdepends = timidity++: for midi playback
 	optdepends = timidity-freepats: for midi playback
-	source = http://downloads.sourceforge.net/ariamaestosa/AriaSrc-1.4.10.tar.bz2
-	sha256sums = 348484d5012d613a63fc2bcf256e0b47155696aceac8596d6401d5a9cc0f52f6
+	source = http://downloads.sourceforge.net/ariamaestosa/AriaSrc-1.4.11.tar.bz2
+	sha256sums = 7e83a7f8eee21d064d063974a39fa32ed15d823405d10bfb52510ef44dfac93d
 
 pkgname = ariamaestosa
 
