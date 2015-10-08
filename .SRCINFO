@@ -1,0 +1,19 @@
+pkgbase = gpcp-patched-jvm
+	pkgdesc = Gardens Point Component Pascal
+	pkgver = 1.3.18rc
+	pkgrel = 1
+	url = https://gpcp.codeplex.com
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = java-runtime
+	conflicts = gpcp-jvm
+	source = git+https://github.com/DeaDDooMER/gpcp-linux.git
+	source = cprun
+	source = j2cps
+	md5sums = SKIP
+	md5sums = 38aee573d8e2dc342f8bfab7abf0a9a2
+	md5sums = 6234ff1df2bdcf514caf0422ea3f10d9
+
+pkgname = gpcp-patched-jvm
+

@@ -1,0 +1,3 @@
+#!/bin/sh
+JRoot=/usr/share/java/gpcp-JVM
+java -DCPSYM=$CPSYM:$JRoot/libs:$JRoot/libs/JvmSystem -cp $JRoot CP.$1.$*
