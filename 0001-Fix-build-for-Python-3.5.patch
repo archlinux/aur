@@ -1,0 +1,51 @@
+From 327f1055e62b4905d6cfa0e2997e35eb358a5c14 Mon Sep 17 00:00:00 2001
+From: Yen Chi Hsuan <yan12125@gmail.com>
+Date: Tue, 6 Oct 2015 12:47:18 +0800
+Subject: [pyalpm][PATCH] Fix build for Python 3.5
+
+Signed-off-by: Yen Chi Hsuan <yan12125@gmail.com>
+---
+ src/db.c          | 1 +
+ src/package.c     | 1 +
+ src/transaction.c | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/src/db.c b/src/db.c
+index 8b9ffd2..fae8edb 100644
+--- a/src/db.c
++++ b/src/db.c
+@@ -20,6 +20,7 @@
+  *
+  */
+ 
++#include <pyconfig.h>
+ #include <alpm.h>
+ #include <Python.h>
+ #include "db.h"
+diff --git a/src/package.c b/src/package.c
+index d4ab941..bd08c25 100644
+--- a/src/package.c
++++ b/src/package.c
+@@ -20,6 +20,7 @@
+  *
+  */
+ 
++#include <pyconfig.h>
+ #include <string.h>
+ #include <alpm.h>
+ #include <Python.h>
+diff --git a/src/transaction.c b/src/transaction.c
+index 9c28c50..8cb7e5b 100644
+--- a/src/transaction.c
++++ b/src/transaction.c
+@@ -20,6 +20,7 @@
+  *
+  */
+ 
++#include <pyconfig.h>
+ #include <string.h>
+ #include <alpm.h>
+ #include <Python.h>
+-- 
+2.6.1
+

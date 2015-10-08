@@ -1,7 +1,7 @@
 pkgbase = pyalpm-git
 	pkgdesc = Libalpm bindings for Python 3 (Git version)
 	pkgver = 0.6.2.r3.g3c4692b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://projects.archlinux.org/users/remy/pyalpm.git/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = pyalpm-git
 	provides = pyalpm=0.6.2.r3.g3c4692b
 	conflicts = pyalpm
 	source = git+https://projects.archlinux.org/git/users/remy/pyalpm.git
+	source = 0001-Fix-build-for-Python-3.5.patch
 	md5sums = SKIP
+	md5sums = d5481d4f9920860518277a78857c25e8
 
 pkgname = pyalpm-git
 
