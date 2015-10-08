@@ -7,7 +7,7 @@ pkgver=20150406.c37acd7
 pkgrel=1
 pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('armv6h' 'armv7h')
-url='https://github.com/greenisland/greenisland.git'
+url='http://hawaiios.org'
 license=('GPL', 'LGPL')
 depends=('qt5-declarative' 'hawaii-qt5-wayland-rpi-git' 'qt5-qpa-rpi-plugin' 'xkeyboard-config')
 [ "$CARCH" == 'armv6h' ] && optdepends=('weston: nested mode support')
