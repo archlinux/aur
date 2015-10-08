@@ -1,0 +1,15 @@
+pkgbase = x11log
+	pkgdesc = An unprivileged userspace keylogger for X11 sessions
+	pkgver = 0.81
+	pkgrel = 1
+	url = https://github.com/esonn/x11log
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	depends = curl
+	source = https://github.com/esonn/x11log/archive/v0.81.tar.gz
+	md5sums = d419127485a2614d1462711475ba1208
+
+pkgname = x11log
+
