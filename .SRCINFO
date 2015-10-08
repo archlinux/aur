@@ -1,7 +1,7 @@
 pkgbase = uncrustify0.60
 	pkgdesc = A source code beautifier, version 0.60
 	pkgver = 0.60
-	pkgrel = 1
+	pkgrel = 2
 	url = http://uncrustify.sourceforge.net/
 	arch = i686
 	arch = x86_64
