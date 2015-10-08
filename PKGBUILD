@@ -1,7 +1,8 @@
 # Contributor: Josh Rickmar <joshua.rickmar@gmail.com>
 # Contributor: Joshua Gonzales <jgonzales6@ucmerced.edu>
 # Contributor: Aliaksiej Artamonaŭ <aliaksiej.artamonau@gmail.com>
-# Maintainer: Titiwu  <matthias.busl@googlemail.com>
+# Contributor: Titiwu  <matthias.busl@googlemail.com>
+# Maintainer: Ian D. Scott <ian@perebruin.com>
 
 pkgname=lejos-nxj
 _betaver=3
