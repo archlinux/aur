@@ -4,7 +4,7 @@
 pkgname=mikidown-git
 _githubuser=ShadowKyogre
 _gitname=mikidown
-pkgver=0.3.7.r0.g3c65f50
+pkgver=0.3.10.r0.gbd33d84
 pkgrel=1
 pkgdesc="A note taking application featuring markdown syntax"
 arch=('any')
@@ -32,5 +32,6 @@ pkgver() {
 
 package(){
     cd "${srcdir}/${_gitname}"
+    lrelease-qt4 mikidown.pro
     python setup.py install --root="$pkgdir"
 }

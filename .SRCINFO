@@ -1,6 +1,6 @@
 pkgbase = mikidown-git
 	pkgdesc = A note taking application featuring markdown syntax
-	pkgver = 0.3.7.r0.g3c65f50
+	pkgver = 0.3.10.r0.gbd33d84
 	pkgrel = 1
 	url = https://shadowkyogre.github.com/mikidown
 	arch = any
