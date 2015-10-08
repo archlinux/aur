@@ -1,0 +1,12 @@
+pkgbase = bitstream
+	pkgdesc = biTStream is a set of C headers allowing a simpler access to binary structures such as specified by MPEG, DVB, IETF, SMPTE, IEEE, SCTE, etc.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.videolan.org/developers/bitstream.html
+	arch = any
+	license = MIT
+	source = https://get.videolan.org/bitstream/1.1/bitstream-1.1.tar.bz2
+	md5sums = 88e6e786242196b4d73a5b6075aeb1a2
+
+pkgname = bitstream
+
