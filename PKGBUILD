@@ -1,7 +1,7 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
 pkgname=sdhcp
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Suckless dhcp client"
 arch=( 'i686' 'x86_64' )
 url="http://git.2f30.org/sdhcp/"
@@ -18,8 +18,12 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make PREFIX=/usr DESTDIR="$pkgdir/" install
-
+  
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # The makefile has 'sbin' hardcoded :(
+  cd "$pkgdir/usr"
+  mv sbin bin
 }
 
-md5sums=('373d165250030441d6225c6b9b324336')
+sha1sums=('7c01074809f54fa5f581b5915b49c1a20dfaa265')
