@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=mkrace
+Exec=mkrace
+Terminal=false
+StartupNotify=false
+
+Name=TeeWorlds mkrace
+GenericName=Arcade Game
+Comment=is a 2D multiplayer arcade
+
+Categories=Game;ArcadeGame;
