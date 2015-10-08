@@ -3,8 +3,8 @@
 
 pkgname='ivideon-server'
 pkgver='3.5.4'
-pkgrel='735'
-_rel='4a7f38a9878d'
+pkgrel='746'
+_rel='823dd867cc14'
 pkgdesc='Ivideon Server (with QT5 GUI)'
 arch=('x86_64')
 url=('https://ivideon.com/')
@@ -12,7 +12,7 @@ license=('freeware')
 depends=('ivideon-server-headless' 'qt5-base' 'qt5-svg' 'qt5-script' 'libsndfile' 'libxcb' 'libsm' 'gksu')
 conflicts=('ivideon-video-server-nogui' 'ivideon-video-server')
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-video-server/ivideon-video-server_${pkgver}-${pkgrel}~${_rel}_amd64.deb")
-sha256sums=("f6851c99d0e49701bdf2120474e8c75b0a456f22faa17e02529280821864a58b")
+sha256sums=("9aca880a8c9971a548a45f9e26f2cb1caf7bc60d516fec517ad7e6850a41082c")
 
 build() {
   cd "$srcdir"
