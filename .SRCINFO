@@ -1,0 +1,14 @@
+pkgbase = ampl-mp
+	pkgdesc = An open-source library for mathematical programming
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://ampl.github.io
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	source = https://github.com/ampl/mp/archive/2.0.3.tar.gz
+	sha256sums = 4ae38da883cfdf077d57c488b03756d9068b1d5b8552db983f6690246edc71a8
+
+pkgname = ampl-mp
+
