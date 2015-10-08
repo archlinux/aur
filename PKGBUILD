@@ -3,7 +3,7 @@
 pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments"
 _srcname=linux-4.2
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -25,8 +25,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'005-intel_fifo_underrun_error_to_debug.patch'
 	'006-microphone_mute_light.patch'
 	'007-fbcondecor.patch'
-	'008-e1000e_fix_tight_loop_implementation_of_systime_read.patch'
-	'009-fix_bridge_regression.patch'
+	#'008-e1000e_fix_tight_loop_implementation_of_systime_read.patch'
+	#'009-fix_bridge_regression.patch'
 	'010-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch'
         # the main kernel config files
         'config' 
@@ -71,11 +71,11 @@ prepare() {
 
   # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
   # https://lkml.org/lkml/2015/8/18/292
-  patch -p1 -i "${srcdir}/008-e1000e_fix_tight_loop_implementation_of_systime_read.patch"
+  #patch -p1 -i "${srcdir}/008-e1000e_fix_tight_loop_implementation_of_systime_read.patch"
 
   # add not-yes-mainlined patch to fix bridge code
   # https://bugzilla.kernel.org/show_bug.cgi?id=104161
-  patch -p1 -i "${srcdir}/009-fix_bridge_regression.patch"
+  #patch -p1 -i "${srcdir}/009-fix_bridge_regression.patch"
 
   # add not-yet-mainlined patch to fix network unavailability when iptables
   # rules are applied during startup - happened with Shorewall; journal had
@@ -324,7 +324,7 @@ for _p in ${pkgname[@]}; do
 done
 
 md5sums=('3d5ea06d767e2f35c999eeadafc76523'
-         '5c032ad548007cb8e28e0163c85dc5f9'
+         '6a7355d968116129c19dc053fb2d557a'
          'df7fceae6ee5d7e7be7b60ecd7f6bb35'
          '43bcd5f7d5d86ad22c1817e282872e2e'
          'be91dd41334c87c68ed0e730846b8192'
@@ -332,9 +332,7 @@ md5sums=('3d5ea06d767e2f35c999eeadafc76523'
          '13d89fa42302dca268a7c9580176c980'
          'c96372203aec1ebc0fd8404bdddcc0b8'
          '8b7ca23aa660578023a0a244ae235888'
-      	 '5eebf645841fdffc62f81a65899361dd'
-	 '20096ff36a623e8eeed2ccb0c9de7d84'
 	 '74e5e48a39bd00c680b189e2f468e192'
       	 'ed1d392d9feb77674e7a71c3eda060e6'
 	 '2a8d43290cca1297a5f421b58b7c4058'
-      	 'eb14dcfd80c00852ef81ded6e826826a')
+	 'eb14dcfd80c00852ef81ded6e826826a')
