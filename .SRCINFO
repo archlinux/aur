@@ -1,0 +1,22 @@
+pkgbase = kencfs-kf5
+	pkgdesc = GUI frontend for encfs. Create, mount, umount and delete your encrypted fs. KF5 version.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/KEncFS?content=134003
+	arch = i686
+	arch = x86_64
+	license = (L)GPL
+	depends = encfs>=1.7.4-8
+	depends = fuse>=2.9.2-1
+	depends = knotifications
+	depends = kconfig
+	depends = kwallet
+	provides = kencfs
+	conflicts = kencfs
+	source = kencfs-1.5.0.tar.gz
+	source = port_to_qt5.patch
+	md5sums = cbcde8d0eb3eb351a6de5f7e706ae424
+	md5sums = 5c2cd7826eae3d249ed7909e0c2f0af3
+
+pkgname = kencfs-kf5
+

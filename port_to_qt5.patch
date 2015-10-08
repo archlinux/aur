@@ -1,0 +1,267 @@
+diff -Naur a/config.cpp b/config.cpp
+--- a/config.cpp	2015-01-23 21:38:47.000000000 +0800
++++ b/config.cpp	2015-10-08 21:33:24.948955692 +0800
+@@ -14,8 +14,8 @@
+ **/
+ 
+ #include "config.h"
+-#include <kconfig.h>
+-#include <kconfiggroup.h>
++#include "KF5/KConfigCore/kconfig.h"
++#include "KF5/KConfigCore/kconfiggroup.h"
+ 
+ extern char *cfgfile;
+ extern bool starthide, browseaftermount,usewallet,wallet_automount;
+diff -Naur a/kencfs.pro b/kencfs.pro
+--- a/kencfs.pro	2015-05-13 22:39:56.000000000 +0800
++++ b/kencfs.pro	2015-10-08 22:20:31.555602603 +0800
+@@ -3,6 +3,7 @@
+ # -------------------------------------------------
+ TARGET = kencfs
+ TEMPLATE = app
++QT += widgets
+ SOURCES += main.cpp \
+     mainwindow.cpp \
+     fsDialog.cpp \
+@@ -22,12 +23,13 @@
+     fsdialog.ui \
+     configdialog.ui
+ OTHER_FILES += 
+-LIBS += -lkdeui -lkdecore -lQtNetwork
++LIBS += -lQt5Network -lKF5Notifications -lKF5ConfigCore -lKF5Wallet 
+ TRANSLATIONS = kencfs_it.ts kencfs_ro.ts kencfs_cs_CZ.ts
+ 
+ #fedora
+-INCLUDEPATH += "/usr/include/kde4"
+-LIBS += -L/usr/lib64/kde4/devel
++INCLUDEPATH += "/usr/include/KF5/KConfigCore"
++INCLUDEPATH += "/usr/include/KF5/KNotifications"
++#LIBS += -L/usr/lib64/kde4/devel
+ 
+ # install
+ target.path = /usr/bin/
+diff -Naur a/mainwindow.cpp b/mainwindow.cpp
+--- a/mainwindow.cpp	2015-05-13 07:00:13.000000000 +0800
++++ b/mainwindow.cpp	2015-10-08 22:18:22.475603505 +0800
+@@ -21,7 +21,14 @@
+ #include <iostream>
+ #include <QMessageBox>
+ #include "configdialog.h"
+-#include <kstatusnotifieritem.h>
++#include <KF5/KNotifications/kstatusnotifieritem.h>
++
++#ifndef FALSE
++#define FALSE (0)
++#endif
++#ifndef TRUE
++#define TRUE (!FALSE)
++#endif
+ 
+ using namespace std;
+ const char *prgname="KEncFS";
+@@ -83,7 +90,7 @@
+     description=tr("Easy manager for encrypted filesystem");
+     a=a+" v"+version+"\n"+description;
+     tray->setTitle(a);
+-    KMenu *menu_File = (KMenu *) ui->menu_File;
++    QMenu *menu_File = (QMenu *) ui->menu_File;
+     tray->setContextMenu(menu_File);
+     
+     
+diff -Naur a/mainwindow.ui b/mainwindow.ui
+--- a/mainwindow.ui	2015-05-13 22:49:07.000000000 +0800
++++ b/mainwindow.ui	2015-10-08 22:23:19.258934764 +0800
+@@ -156,7 +156,7 @@
+      <x>0</x>
+      <y>0</y>
+      <width>642</width>
+-     <height>29</height>
++     <height>27</height>
+     </rect>
+    </property>
+    <widget class="QMenu" name="menu_File">
+diff -Naur a/qtlocalpeer.cpp b/qtlocalpeer.cpp
+--- a/qtlocalpeer.cpp	2015-01-23 21:38:47.000000000 +0800
++++ b/qtlocalpeer.cpp	2015-10-08 21:43:05.138951638 +0800
+@@ -47,6 +47,7 @@
+ 
+ #include "qtlocalpeer.h"
+ #include <QtCore/QCoreApplication>
++#include <QDataStream>
+ #include <QtCore/QTime>
+ 
+ #if defined(Q_OS_WIN)
+diff -Naur a/qtsingleapplication.cpp b/qtsingleapplication.cpp
+--- a/qtsingleapplication.cpp	2015-01-23 21:38:47.000000000 +0800
++++ b/qtsingleapplication.cpp	2015-10-08 21:40:35.208952685 +0800
+@@ -1,11 +1,11 @@
+ /****************************************************************************
++**
++** This file is part of a Qt Solutions component.
+ ** 
+ ** Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+-** All rights reserved.
+-** Contact: Nokia Corporation (qt-info@nokia.com)
+ ** 
+-** This file is part of a Qt Solutions component.
+-**
++** Contact:  Qt Software Information (qt-info@nokia.com)
++** 
+ ** Commercial Usage  
+ ** Licensees holding valid Qt Commercial licenses may use this file in
+ ** accordance with the Qt Solutions Commercial License Agreement provided
+@@ -22,7 +22,7 @@
+ ** 
+ ** In addition, as a special exception, Nokia gives you certain
+ ** additional rights. These rights are described in the Nokia Qt LGPL
+-** Exception version 1.1, included in the file LGPL_EXCEPTION.txt in this
++** Exception version 1.0, included in the file LGPL_EXCEPTION.txt in this
+ ** package.
+ ** 
+ ** GNU General Public License Usage 
+@@ -40,14 +40,14 @@
+ ** Party Software they are using.
+ ** 
+ ** If you are unsure which license is appropriate for your use, please
+-** contact Nokia at qt-info@nokia.com.
++** contact the sales department at qt-sales@nokia.com.
+ ** 
+ ****************************************************************************/
+ 
+ 
+ #include "qtsingleapplication.h"
+ #include "qtlocalpeer.h"
+-#include <QtGui/QWidget>
++#include <QWidget>
+ 
+ 
+ /*!
+@@ -178,59 +178,6 @@
+ 
+ 
+ /*!
+-    Creates a QtSingleApplication object. The application identifier
+-    will be QCoreApplication::applicationFilePath(). \a argc, \a
+-    argv, and \a type are passed on to the QAppliation constructor.
+-*/
+-QtSingleApplication::QtSingleApplication(int &argc, char **argv, Type type)
+-    : QApplication(argc, argv, type)
+-{
+-    sysInit();
+-}
+-
+-
+-#if defined(Q_WS_X11)
+-/*!
+-  Special constructor for X11, ref. the documentation of
+-  QApplication's corresponding constructor. The application identifier
+-  will be QCoreApplication::applicationFilePath(). \a dpy, \a visual,
+-  and \a cmap are passed on to the QApplication constructor.
+-*/
+-QtSingleApplication::QtSingleApplication(Display* dpy, Qt::HANDLE visual, Qt::HANDLE cmap)
+-    : QApplication(dpy, visual, cmap)
+-{
+-    sysInit();
+-}
+-
+-/*!
+-  Special constructor for X11, ref. the documentation of
+-  QApplication's corresponding constructor. The application identifier
+-  will be QCoreApplication::applicationFilePath(). \a dpy, \a argc, \a
+-  argv, \a visual, and \a cmap are passed on to the QApplication
+-  constructor.
+-*/
+-QtSingleApplication::QtSingleApplication(Display *dpy, int &argc, char **argv, Qt::HANDLE visual, Qt::HANDLE cmap)
+-    : QApplication(dpy, argc, argv, visual, cmap)
+-{
+-    sysInit();
+-}
+-
+-/*!
+-  Special constructor for X11, ref. the documentation of
+-  QApplication's corresponding constructor. The application identifier
+-  will be \a appId. \a dpy, \a argc, \a
+-  argv, \a visual, and \a cmap are passed on to the QApplication
+-  constructor.
+-*/
+-QtSingleApplication::QtSingleApplication(Display* dpy, const QString &appId, int argc, char **argv, Qt::HANDLE visual, Qt::HANDLE cmap)
+-    : QApplication(dpy, argc, argv, visual, cmap)
+-{
+-    sysInit(appId);
+-}
+-#endif
+-
+-
+-/*!
+     Returns true if another instance of this application is running;
+     otherwise false.
+ 
+diff -Naur a/qtsingleapplication.h b/qtsingleapplication.h
+--- a/qtsingleapplication.h	2015-01-23 21:38:47.000000000 +0800
++++ b/qtsingleapplication.h	2015-10-08 21:40:46.548952606 +0800
+@@ -1,11 +1,11 @@
+ /****************************************************************************
++**
++** This file is part of a Qt Solutions component.
+ ** 
+ ** Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+-** All rights reserved.
+-** Contact: Nokia Corporation (qt-info@nokia.com)
+ ** 
+-** This file is part of a Qt Solutions component.
+-**
++** Contact:  Qt Software Information (qt-info@nokia.com)
++** 
+ ** Commercial Usage  
+ ** Licensees holding valid Qt Commercial licenses may use this file in
+ ** accordance with the Qt Solutions Commercial License Agreement provided
+@@ -22,7 +22,7 @@
+ ** 
+ ** In addition, as a special exception, Nokia gives you certain
+ ** additional rights. These rights are described in the Nokia Qt LGPL
+-** Exception version 1.1, included in the file LGPL_EXCEPTION.txt in this
++** Exception version 1.0, included in the file LGPL_EXCEPTION.txt in this
+ ** package.
+ ** 
+ ** GNU General Public License Usage 
+@@ -40,16 +40,16 @@
+ ** Party Software they are using.
+ ** 
+ ** If you are unsure which license is appropriate for your use, please
+-** contact Nokia at qt-info@nokia.com.
++** contact the sales department at qt-sales@nokia.com.
+ ** 
+ ****************************************************************************/
+ 
+ 
+-#include <QtGui/QApplication>
++#include <QApplication>
+ 
+ class QtLocalPeer;
+ 
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+ #  if !defined(QT_QTSINGLEAPPLICATION_EXPORT) && !defined(QT_QTSINGLEAPPLICATION_IMPORT)
+ #    define QT_QTSINGLEAPPLICATION_EXPORT
+ #  elif defined(QT_QTSINGLEAPPLICATION_IMPORT)
+@@ -65,6 +65,7 @@
+ #  define QT_QTSINGLEAPPLICATION_EXPORT
+ #endif
+ 
++
+ class QT_QTSINGLEAPPLICATION_EXPORT QtSingleApplication : public QApplication
+ {
+     Q_OBJECT
+@@ -72,12 +73,6 @@
+ public:
+     QtSingleApplication(int &argc, char **argv, bool GUIenabled = true);
+     QtSingleApplication(const QString &id, int &argc, char **argv);
+-    QtSingleApplication(int &argc, char **argv, Type type);
+-#if defined(Q_WS_X11)
+-    QtSingleApplication(Display* dpy, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
+-    QtSingleApplication(Display *dpy, int &argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE cmap= 0);
+-    QtSingleApplication(Display* dpy, const QString &appId, int argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
+-#endif
+ 
+     bool isRunning();
+     QString id() const;
