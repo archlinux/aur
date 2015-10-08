@@ -1,5 +1,5 @@
 pkgbase = notepadqq
-	pkgver = 0.50.1
+	pkgver = 0.50.4
 	pkgrel = 4
 	url = http://notepadqq.altervista.org/wp/
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = notepadqq
 	noextract = notepadqq-common.deb
 	noextract = notepadqq-bin_i686.deb
 	noextract = notepadqq-bin_x86_64.deb
-	source = notepadqq-common.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq-common_0.50.1-0~vivid1_all.deb
-	md5sums = 6d102412b327b90d70e23b3d551963c1
-	source_i686 = notepadqq-bin_i686.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.50.1-0~vivid1_i386.deb
-	md5sums_i686 = 1b1b2efe79c7d3e0789d12e2b87aa21f
-	source_x86_64 = notepadqq-bin_x86_64.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.50.1-0~vivid1_amd64.deb
-	md5sums_x86_64 = 16a04cece23b9dd49746d62189daa97c
+	source = notepadqq-common.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq-common_0.50.4-0~vivid1_all.deb
+	md5sums = 0ed08abd860bf8008dc7376b1df00d46
+	source_i686 = notepadqq-bin_i686.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.50.4-0~vivid1_i386.deb
+	md5sums_i686 = 7e784ddcc49ba34bcdb9f346e947f7c7
+	source_x86_64 = notepadqq-bin_x86_64.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.50.4-0~vivid1_amd64.deb
+	md5sums_x86_64 = d93521e4fe61639e78522b4eb8c499f1
 
 pkgname = notepadqq-bin
 	pkgdesc = A Linux clone of Notepad++
@@ -22,7 +22,7 @@ pkgname = notepadqq-bin
 	license = GPL3
 	depends = qt5-webkit>5.2
 	depends = desktop-file-utils
-	provides = notepadqq=0.50.1
+	provides = notepadqq=0.50.4
 	conflicts = notepadqq-git
 	conflicts = notepadqq
 	options = !strip
