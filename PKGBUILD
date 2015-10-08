@@ -22,7 +22,7 @@ source=(
 install="tracktion.install"
 md5sums=('2aecaad58cb84644e2c1b7ebbf5780d3'
          'd7bac73a1a52d26b337761a1d7ec561d'
-         'a6ef58fb9f98f01bb23a54d7ce97f678')
+         '5f3f8df1af8260db42a1ab4cc313d75a')
 
 package() {
 	tar -x --lzma -f data.tar.lzma -C "${pkgdir}"
