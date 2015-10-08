@@ -1,35 +1,53 @@
-pkgname=pam_u2f-git
-pkgver=1.0.1.r11.gc383c0e
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Contributor: Maxime de Roucy <maxime.deroucy@gmail.com>
+# Contributor: Niccolò Maggioni <nicco.maggioni@gmail.com>
+
+pkgname="pam_u2f-git"
+_gitname='pam-u2f'
+_gitbranch='master'
+_gitauthor='Yubico'
+pkgver=1.0.2.r2.gb5729e8
 pkgrel=1
-pkgdesc="Universal 2nd Factor (U2F) PAM authentication module from Yubico - git checkout"
-arch=('i686' 'x86_64')
+pkgdesc="Universal 2nd Factor (U2F) PAM authentication module from Yubico"
 url='https://developers.yubico.com/pam-u2f/'
 license=('BSD')
+source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
+sha512sums=('SKIP')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('pam' 'libu2f-host' 'libu2f-server')
 makedepends=('git' 'autoconf' 'automake' 'asciidoc' 'libxslt' 'libxml2' 'docbook-xml' 'docbook-xsl')
-provides=('pam_u2f')
 conflicts=('pam_u2f')
-source=("git://github.com/Yubico/pam-u2f.git")
-md5sums=('SKIP')
+provides=('pam_u2f')
 
 pkgver() {
-	cd pam-u2f/
-	git describe --long --tags | sed 's/^pam_u2f.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${_gitname}"
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/pam_u2f-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-	cd pam-u2f/
-	autoreconf -fi
-	./configure --prefix=/ --with-pam-dir=/lib/security/
-	make
+  cd "${srcdir}/${_gitname}"
+  autoreconf --install
+  ./configure \
+    --prefix=/usr \
+    --with-pam-dir=/usr/lib/security
+  make
 }
 
 check() {
-	cd pam-u2f/
-	make check
+  cd "${srcdir}/${_gitname}"
+  make check
 }
 
 package() {
-	cd pam-u2f/
-	make DESTDIR="${pkgdir}/usr" install
+  cd "${srcdir}/${_gitname}"
+  make DESTDIR="${pkgdir}/" install
+
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
+
+# vim:set et sw=2 sts=2 tw=80:
