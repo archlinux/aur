@@ -1,6 +1,6 @@
 pkgbase = bigloo-devel
 	pkgdesc = Fast scheme compiler
-	pkgver = 4.2b_alpha07Oct15
+	pkgver = 4.2b_alpha08Oct15
 	pkgrel = 1
 	epoch = 11
 	url = http://www-sop.inria.fr/mimosa/fp/Bigloo/
@@ -19,7 +19,6 @@ pkgbase = bigloo-devel
 	depends = gstreamer0.10-base
 	depends = mpg123
 	depends = flac
-	depends = libuv
 	optdepends = emacs: for bee
 	optdepends = java-environment: for compiling into jvm
 	provides = bigloo=$pkgver
@@ -27,9 +26,9 @@ pkgbase = bigloo-devel
 	options = !makeflags
 	options = staticlibs
 	options = !strip
-	source = ftp://ftp-sop.inria.fr/indes/fp/Bigloo/bigloo4.2b-alpha07Oct15.tar.gz
+	source = ftp://ftp-sop.inria.fr/indes/fp/Bigloo/bigloo4.2b-alpha08Oct15.tar.gz
 	source = satisfy-ldconfig.sh
-	md5sums = 4ea3f23bb422b0fd9e79372d3dd84c06
+	md5sums = 31ffb23688528b1c7af56e70edd2ecbe
 	md5sums = c253eb5651c81204f6c16b89c3c2cb6a
 
 pkgname = bigloo-devel
