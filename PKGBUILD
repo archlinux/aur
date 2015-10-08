@@ -3,14 +3,14 @@
 
 pkgname=binkplayer
 pkgver=2.5j
-pkgrel=1
+pkgrel=2
 pkgdesc="Bink Video Player"
 url="http://www.radgametools.com/bnkmain.htm"
 arch=('i686' 'x86_64')
 depends_i686=('sdl' 'openal')
 depends_x86_64=('lib32-sdl' 'lib32-openal')
 source=("http://www.radgametools.com/down/Bink/BinkLinuxPlayer.7z")
-sha256sums=('3b27a242218da7cc967b4f1d53f4ab1360bf5cd74a4ffe5d5cfad4f9e795a757')
+sha256sums=('90bb9d2a04c9d3e58e2dd0c501b1e38dd50c9632f01765ba2d1c06d4d412ea12')
 license=('custom')
 
 package() {
