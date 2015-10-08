@@ -1,7 +1,7 @@
 pkgbase = mime-archpkg
 	pkgdesc = mime type for archlinux packages
-	pkgver = 0.3.4.3
-	pkgrel = 2
+	pkgver = 0.3.5.0
+	pkgrel = 1
 	url = http://www.archlinux.org
 	install = mime-archpkg.install
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = mime-archpkg
 	source = archpkg-Faience.svgz
 	source = archpkg-NITRUX.svgz
 	source = archpkg-Numix.svgz
+	source = archpkg-breeze.svgz
 	md5sums = 1ff726f4e5e0dc7115aafb5f1b691455
 	md5sums = ca7ce5e44d24dfd584586ed730c2bd04
 	md5sums = f43f188fba6d3fb87ada25f3b213b0b9
@@ -29,6 +30,7 @@ pkgbase = mime-archpkg
 	md5sums = ce4f6e2ab892776e4a921d88c29a9fc1
 	md5sums = ef7d2bf5094388a7f6400811e56c4ccb
 	md5sums = 1f3b9609f68415f1e7bcad3a144555e1
+	md5sums = ad3ea0380f0ec369fc0db5adc8181c63
 
 pkgname = mime-archpkg
 

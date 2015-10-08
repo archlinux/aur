@@ -1,8 +1,8 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=mime-archpkg
-pkgver=0.3.4.3
-pkgrel=2
+pkgver=0.3.5.0
+pkgrel=1
 pkgdesc="mime type for archlinux packages"
 arch=('any')
 url="http://www.archlinux.org"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('shared-mime-info' 'xdg-utils')
 makedepends=('librsvg')
 install=$pkgname.install
-source=($pkgname archpkg-{hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix}.svgz)
+source=($pkgname archpkg-{hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze}.svgz)
 md5sums=('1ff726f4e5e0dc7115aafb5f1b691455'
          'ca7ce5e44d24dfd584586ed730c2bd04'
          'f43f188fba6d3fb87ada25f3b213b0b9'
@@ -20,7 +20,8 @@ md5sums=('1ff726f4e5e0dc7115aafb5f1b691455'
          'c8bf1a978c2389cca649029167b94e39'
          'ce4f6e2ab892776e4a921d88c29a9fc1'
          'ef7d2bf5094388a7f6400811e56c4ccb'
-         '1f3b9609f68415f1e7bcad3a144555e1')
+         '1f3b9609f68415f1e7bcad3a144555e1'
+         'ad3ea0380f0ec369fc0db5adc8181c63')
 
 
 # comment that variable to install all icons
@@ -34,22 +35,25 @@ package() {
   # function to make things shorter
   put_icons() {
     # args: $1 = icon name(nopref:archpkg, nosuff:.svgz) , $2 = sizes
-    # args: $3 != 1:YxY/folder; = 1:folder/Y , $4 = 1:svg suff, else png
+    # args: $3 != [1,2]:YxY/folder; = 1:folder/Y , 2:special folder
+    # args: $4 = 1:svg suff, else png
     local i iname="application-x-archpkg" ipath="${pkgdir}/usr/share/icons" suff="png"
     if [[ $4 == 1 ]]; then suff="svg"; fi
     if [[ -z ${INSTALLED_ONLY} ]] || [[ -n ${INSTALLED_ONLY} && -f /usr/share/icons/${1}/index.theme ]]; then
       rsvg-convert -o archpkg.svg -f svg archpkg-${1}.svgz
       if [[ $3 == 1 ]]; then
         install -Dm644 archpkg.svg "${ipath}"/$1/mimetypes/scalable/${iname}.svg
-      else
+      elif [[ $3 != 2 ]]; then
         install -Dm644 archpkg.svg "${ipath}"/$1/scalable/mimetypes/${iname}.svg
       fi
       for i in ${2}; do
-        rsvg-convert -w ${i} -h ${i} -f ${suff} -o archpkg.${suff} archpkg-${1}.svgz
+        rsvg-convert -w ${i%:*} -h ${i%:*} -f ${suff} -o archpkg.${suff} archpkg-${1}.svgz
         if [[ $3 == 1 ]]; then
-          install -Dm644 archpkg.${suff} "${ipath}"/$1/mimetypes/${i}/${iname}.${suff}
+          install -Dm644 archpkg.${suff} "${ipath}"/$1/mimetypes/${i%:*}/${iname}.${suff}
+        elif [[ $3 == 2 ]]; then
+          install -Dm644 archpkg.${suff} "${ipath}"/$1/mimetypes/${i#*:}/${iname}.${suff}
         else
-          install -Dm644 archpkg.${suff} "${ipath}"/$1/${i}x${i}/mimetypes/${iname}.${suff}
+          install -Dm644 archpkg.${suff} "${ipath}"/$1/${i%:*}x${i%:*}/mimetypes/${iname}.${suff}
         fi
       done
     fi
@@ -75,6 +79,8 @@ package() {
   put_icons NITRUX '16 22 24 32' 1
   # Numix icons
   put_icons Numix '16 22 24 32 64 128 256' 0 1
+  # breeze icons
+  put_icons breeze '16:file-types-small 32:file-types-32 64:file-types' 2 1
 }
 
 

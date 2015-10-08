@@ -1,5 +1,5 @@
 post_install() {
-  local ICONS="hicolor gnome Tango oxygen nuoveXT2 Faenza Faience NITRUX Numix"
+  local ICONS="hicolor gnome Tango oxygen nuoveXT2 Faenza Faience NITRUX Numix breeze"
   update-mime-database /usr/share/mime &> /dev/null
   for i in $ICONS; do
     if [ -f /usr/share/icons/$i/icon-theme.cache ]; then
