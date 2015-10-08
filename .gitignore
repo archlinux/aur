@@ -1,6 +1,6 @@
 *.pkg.*
 pkg
 src
-zen-config
+zen-config*
 zen-kernel
 linux-zen-grsec
