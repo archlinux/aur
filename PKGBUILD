@@ -1,7 +1,7 @@
 # Maintainer: ulis <fer.obbee at gmail dot com>
 
 pkgname=otf-fira-code-git
-pkgver=0.5.r2.g44d5c4e
+pkgver=0.6.r14.g3f41480
 pkgrel=1
 pkgdesc="Fira Code: monospaced font with programming ligatures."
 arch=('any')
