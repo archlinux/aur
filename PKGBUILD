@@ -5,7 +5,7 @@ pkgver=20150924.114feb0
 pkgrel=1
 pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='https://github.com/greenisland/greenisland.git'
+url='http://hawaiios.org'
 license=('GPL', 'LGPL')
 depends=('systemd' 'libdrm' 'libinput' 'qt5-declarative' 'hawaii-qt5-wayland'
          'xkeyboard-config' 'libxkbcommon' 'fontconfig' 'freetype2')
