@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoin.org"
@@ -21,11 +21,13 @@ makedepends=('autoconf'
              'yasm')
 license=('MIT')
 source=(${pkgname%-core}-$pkgver.tar.gz::https://codeload.github.com/bitcoin/bitcoin/tar.gz/v$pkgver
+        miniupnpc.patch::https://github.com/bitcoin/bitcoin/commit/9f3e48e5219a09b5ddfd6883d1f0498910eff4b6.patch
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
 sha256sums=('2bcd61a4c288e5cc5d7fbe724606c610a20037332b06f7a9e99c1153eef73aef'
+            '0910004577764c2251a33c4868c7358a42da68f94d6462e44bbcb1945cefd748'
             '67c464e4314ab5f7234a091098a05706989394086e4ee21e1d9155b9d1421796'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
@@ -35,6 +37,13 @@ backup=('etc/bitcoin/bitcoin.conf'
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin.install
+
+prepare() {
+  cd "$srcdir/${pkgname%-core}-$pkgver"
+
+  msg2 'Applying patch for miniupnpc 1.9.20150730...'
+  patch -p1 --merge < "$srcdir/miniupnpc.patch"
+}
 
 build() {
   cd "$srcdir/${pkgname%-core}-$pkgver"
