@@ -1,7 +1,7 @@
 pkgbase = gog-prisonarchitect
 	pkgdesc = Prison construction and management simulation, GOG version
 	pkgver = 2.0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/prison_architect
 	arch = i686
 	arch = x86_64

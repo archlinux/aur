@@ -2,7 +2,7 @@
 
 pkgname=gog-prisonarchitect
 pkgver=2.0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Prison construction and management simulation, GOG version"
 url=('https://www.gog.com/game/prison_architect')
 license=('custom')
@@ -25,7 +25,7 @@ prepare(){
   read -p "Press any key to continue... " -n1 -s
   sh ./gog_prison_architect_${pkgver}.sh
   # Set the path names in installer scripts to their final destination
-  sed -i "s|${srcdir}/prisonarchitect|/opt/prisonarchitect|g" "${srcdir}/prisonarchitect/.mojosetup/gog_com-Prison_Architect_1.desktop"
+  sed -i "s|${srcdir}/prisonarchitect|/opt/prisonarchitect|g" "${srcdir}/prisonarchitect/.mojosetup/gog_com-Prison_Architect_"{1,2}.desktop
   sed -i "s|${srcdir}/prisonarchitect|/opt/prisonarchitect|g" "${srcdir}/prisonarchitect/.mojosetup/manifest/Prison Architect."{lua,xml}
   # fix directory permissions
   find "${srcdir}/prisonarchitect" -type d -exec chmod 755 {} \;
@@ -38,5 +38,6 @@ package(){
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   mv "${srcdir}/prisonarchitect" "${pkgdir}/opt/prisonarchitect"
   ln -s "/opt/prisonarchitect/.mojosetup/gog_com-Prison_Architect_1.desktop" "${pkgdir}/usr/share/applications/gog_com-Prison_Architect_1.desktop"
+  ln -s "/opt/prisonarchitect/.mojosetup/gog_com-Prison_Architect_2.desktop" "${pkgdir}/usr/share/applications/gog_com-Prison_Architect_2.desktop"
   ln -s "/opt/prisonarchitect/docs/End User License Agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
