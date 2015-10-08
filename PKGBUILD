@@ -27,7 +27,8 @@ build() {
     cd "$srcdir/kdev-python/build"
 
     cmake .. \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_PREFIX=/usr
 
     make
 }
