@@ -3,9 +3,9 @@
 # Contributor: Joel Goguen <jgoguen (at-sign) jgoguen (period) ca>
 
 pkgname=thunderbird-lightning-bin
-pkgver=4.0.2.1
+pkgver=4.0.3.1
 pkgrel=1
-pkgdesc="A calendar that's fully integrated into Thunderbird."
+pkgdesc="A calendar that's fully integrated into Thunderbird"
 arch=('i686' 'x86_64')
 groups=('office')
 url="https://www.mozilla.org/en-US/projects/calendar/"
@@ -17,8 +17,8 @@ provides=(lightning=${pkgver})
 replaces=("lightning-bin")
 conflicts=("lightning-bin")
 # https://addons.mozilla.org/de/thunderbird/addon/lightning/versions/
-source=(lightning-$pkgver.xpi::https://addons.mozilla.org/thunderbird/downloads/file/352220/lightning-${pkgver}-sm+tb-linux.xpi)
-sha1sums=('a9d185f200d0b12fb140f00e5e8b1ded7f3cac97')
+source=("lightning-$pkgver.xpi::https://addons.mozilla.org/thunderbird/downloads/file/358974/lightning-${pkgver}-sm+tb-linux.xpi")
+sha1sums=('2362bc06b41b670048b627d4f3e41b7b5609e203')
 
 package() {
   mkdir -p ${pkgdir}/usr/lib/thunderbird/extensions/${pkgname}
