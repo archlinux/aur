@@ -1,0 +1,14 @@
+post_install() {
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-Day'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-FriDay'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-MidNight'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-MonDay'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-Night'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-SaturDay'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-SunDay'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-ThursDay'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-TuesDay'
+  gtk-update-icon-cache -f '/usr/share/icons/Xenlism-Wildfire-WednesDay'
+}
+
