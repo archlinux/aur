@@ -1,7 +1,7 @@
 pkgbase = soletta
 	pkgdesc = Soletta project is a framework for making IoT devices.
 	pkgver = 1_beta6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/solettaproject/soletta
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,13 @@ pkgbase = soletta
 	depends = systemd
 	depends = pcre
 	optdepends = gtk3
+	optdepends = libmicrohttpd
+	optdepends = mosquitto
 	conflicts = soletta-git
 	source = https://github.com/solettaproject/soletta/archive/v1_beta6.tar.gz
+	source = https://github.com/solettaproject/duktape-release/archive/v1_beta2.tar.gz
 	md5sums = 8ef846a1e9def168ec90d4dfaa5b2c68
+	md5sums = 69195d623d739158ecb055aeb02fd77b
 
 pkgname = soletta
 

@@ -5,17 +5,19 @@ url="http://github.com/solettaproject/soletta"
 license=('custom:BSD3')
 depends=('python>=3.4' 'python-jsonschema' 'icu' 'curl' 'systemd' 'pcre')
 makedepends=('git' 'python>=3.4' 'python-jsonschema')
-optdepends=('gtk3')
+optdepends=('gtk3' 'libmicrohttpd' 'mosquitto')
 pkgname=soletta
 pkgver=1_beta6
-pkgrel=1
+pkgrel=2
 checkdepends=()
 conflicts=('soletta-git')
-source=("https://github.com/solettaproject/soletta/archive/v$pkgver.tar.gz")
+source=("https://github.com/solettaproject/soletta/archive/v$pkgver.tar.gz"
+        "https://github.com/solettaproject/duktape-release/archive/v1_beta2.tar.gz")
+md5sums=('8ef846a1e9def168ec90d4dfaa5b2c68'
+         '69195d623d739158ecb055aeb02fd77b')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    git submodule init && git submodule update
+    cp -r duktape-release-1_beta2/* "$pkgname-$pkgver"/src/thirdparty/duktape/
 }
 
 build() {
@@ -28,4 +30,3 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('8ef846a1e9def168ec90d4dfaa5b2c68')
