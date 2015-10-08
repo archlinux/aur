@@ -1,11 +1,11 @@
 pkgbase = otf-fira-code-git
 	pkgdesc = Fira Code: monospaced font with programming ligatures.
-	pkgver = 0.5.r2.g44d5c4e
+	pkgver = 0.6.r14.g3f41480
 	pkgrel = 1
 	url = https://github.com/tonsky/FiraCode.git
 	install = otf.install
 	arch = any
-	license = OFL
+	license = custom:OFL
 	makedepends = git
 	depends = fontconfig
 	depends = xorg-font-utils
