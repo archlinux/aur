@@ -4,46 +4,50 @@
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Angel "angvp" Velasquez <angvp[at]archlinux.com.ve> 
 
-_pkgname=numpy
-#pkgbase=python-numpy-openblas
+pkgbase=python-numpy-openblas
 #pkgname=("python2-numpy-openblas" "python-numpy-openblas")
 pkgname=python-numpy-openblas
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
 license=("custom")
 url="http://numpy.scipy.org/"
-source=("http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz"
-        site.cfg
-       ) 
+source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz") 
 
-md5sums=('a1ed53432dbcd256398898d35bc8e645'
-         '6f15bb8fe3d12faa8983a9e18bbea2a9')
+md5sums=('c8693369638ed9bff12a0c90ef8ea7af')
 
-package() {
-  package_python-numpy-openblas
+#package() {
+#  package_python2-numpy-openblas
+#}
+
+prepare() {
+  cp -a numpy{,-py2}-$pkgver
+  cd numpy-py2-$pkgver
+
+  sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+      -e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
+      -i $(find . -name '*.py')
 }
 
 package_python2-numpy-openblas() {
-  depends=("python2" "openblas-lapack")
+  depends=("python2" "cython2" "openblas-lapack")
   options=('staticlibs')
   makedepends=("python2-distribute" "gcc-fortran" "python2-nose")
   optdepends=("python2-nose: testsuite")
   provides=("python2-numpy=${pkgver}")
   conflicts=("python2-numpy")
 
+  _pyver=2.7
+
   export Atlas=None
   export LDFLAGS="$LDFLAGS -shared"
 
-  cd "${srcdir}"
-  cp -a "$_pkgname-$pkgver"{,-py2}
-
   echo "Building Python2"
-  cd "$_pkgname-$pkgver"-py2
-  cp ${startdir}/site.cfg .
+  cd "${srcdir}"/numpy-py2-"$pkgver"
 
-  python2 setup.py config_fc --fcompiler=gnu95 config
+  #python2 setup.py config_fc --fcompiler=gnu95 config
   python2 setup.py config_fc --fcompiler=gnu95 build
 
   python2 setup.py config_fc --fcompiler=gnu95 install \
@@ -55,35 +59,27 @@ package_python2-numpy-openblas() {
   install -m755 -d "${pkgdir}/usr/include/python${_pyver}"
   ln -sf /usr/lib/python${_pyver}/site-packages/numpy/core/include/numpy "${pkgdir}/usr/include/python${_pyver}/numpy"
 
-  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-         -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-         -e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
-             $(find ${pkgdir} -name "*.py")
 }
 
 package_python-numpy-openblas() {
-  depends=("python" "openblas-lapack")
+  depends=("python" "cython" "openblas-lapack")
   options=('staticlibs')
   makedepends=("python-distribute" "gcc-fortran" "python-nose")
   optdepends=("python-nose: testsuite")
   provides=("python3-numpy=${pkgver}" "python-numpy=${pkgver}")
   conflicts=("python3-numpy" "python-numpy")
 
-  _pyver=3.4
-  _pyinc=3.4m
+  _pyver=3.5
+  _pyinc=3.5m
 
   export Atlas=None
   export LDFLAGS="$LDFLAGS -shared"
 
-  cd "$srcdir"
-  cp -a "$_pkgname-$pkgver"{,-py3}
-
   echo "Building Python3"
-  cd "$_pkgname-$pkgver"-py3
-  cp ${startdir}/site.cfg .
+  cd "$srcdir/numpy-$pkgver"
 
-  python2 setup.py config_fc --fcompiler=gnu95 config
-  python2 setup.py config_fc --fcompiler=gnu95 build
+  #python setup.py config_fc --fcompiler=gnu95 config
+  python setup.py config_fc --fcompiler=gnu95 build
 
   python setup.py config_fc --fcompiler=gnu95 install \
     --prefix=/usr --root="${pkgdir}" --optimize=1
