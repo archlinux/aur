@@ -9,7 +9,8 @@ pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('armv6h' 'armv7h')
 url='http://hawaiios.org'
 license=('GPL2', 'LGPL2.1')
-depends=('qt5-declarative' 'hawaii-qt5-wayland-rpi-git' 'qt5-qpa-rpi-plugin' 'xkeyboard-config')
+depends=('systemd' 'libdrm' 'libinput' 'qt5-declarative' 'hawaii-qt5-wayland-rpi-git'
+         'xkeyboard-config' 'libxkbcommon' 'fontconfig' 'freetype2')
 [ "$CARCH" == 'armv6h' ] && optdepends=('weston: nested mode support')
 [ "$CARCH" == 'armv7h' ] && optdepends=('weston-rpi: nested mode support')
 provides=('greenisland-git' 'greenisland')
@@ -42,7 +43,6 @@ build() {
 		-DLIBEXEC_INSTALL_DIR=lib \
 		-DQML_INSTALL_DIR=lib/qt/qml \
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-		-DQtWaylandScanner_EXECUTABLE=/usr/lib/qt/bin/qtwaylandscanner \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo
 	make
 }
