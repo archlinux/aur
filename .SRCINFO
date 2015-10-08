@@ -1,0 +1,14 @@
+pkgbase = pkcs11-game-fix
+	pkgdesc = GNOME Password Management library for Heroes of The Storm
+	pkgver = 3.16.0
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	options = !makeflags
+	source = http://arch.localmsp.org/arch/extra/os/i686/gnome-keyring-3.16.0-1-i686.pkg.tar.xz
+	md5sums = 01db973f0da188977c6e942bcac9e883
+
+pkgname = pkcs11-game-fix
+
