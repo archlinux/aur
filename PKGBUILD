@@ -5,7 +5,7 @@
 
 pkgname=soulseekqt
 pkgver=20150625
-_pkgver=2015-06-25
+_pkgver=2015-6-25
 
 if [[ "$CARCH" == 'x86_64' ]] ; then
    _pkgver=$_pkgver-64bit
@@ -31,7 +31,7 @@ elif [[ "$CARCH" == 'x86_64' ]] ; then
              '256ec24f7ad2d39ac8da0f1c03d3cafe' )
 fi
 
-source=( "http://www.soulseekqt.net/SoulseekQT/Linux/SoulseekQt-$_pkgver.tgz"
+source=( "https://dl.dropboxusercontent.com/u/7226803/SoulseekQt-$_pkgver.tgz"
          $pkgname.desktop 
          $pkgname.png )
 
