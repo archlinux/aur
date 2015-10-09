@@ -7,6 +7,7 @@ pkgdesc="METAmarket"
 arch=('i686' 'x86_64')
 url="https://github.com/metamarcdw/metamarket.git"
 license=('MIT')
+conflicts=('modemmanager')
 #makedepends=('go' 'gmp')
 depends=('python2-simplejson' 'python2-scrypt' 'python2-crypto' 'python2-simple-crypt'
         'python2-pycoin' 'python2-python-bitcoinlib' 'python2')
