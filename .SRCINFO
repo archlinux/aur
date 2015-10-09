@@ -1,7 +1,7 @@
 pkgbase = gnome-encfs-manager
 	pkgdesc = An easy to use manager and mounter for encfs stashes
-	pkgver = 1.8.14
-	pkgrel = 2
+	pkgver = 1.8.15
+	pkgrel = 1
 	url = https://launchpad.net/gencfsm
 	install = gnome-encfs-manager.install
 	changelog = gnome-encfs-manager.changelog
@@ -15,8 +15,8 @@ pkgbase = gnome-encfs-manager
 	depends = gtk3
 	depends = libsm
 	depends = libgnome-keyring
-	source = https://launchpad.net/gencfsm/trunk/1.8/+download/gnome-encfs-manager_1.8.14.tar.gz
-	sha256sums = 95c43db9ca1b356c450447a9f95f208a0ffe9fdff470acb6d51f2d4d102c3953
+	source = https://launchpad.net/gencfsm/trunk/1.8/+download/gnome-encfs-manager_1.8.15.tar.gz
+	sha256sums = bd82d5c61903050d1ccea2180ef38292b7c394634ae6b95421caf0e74ca43ec7
 
 pkgname = gnome-encfs-manager
 
