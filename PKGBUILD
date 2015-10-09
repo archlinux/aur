@@ -10,7 +10,7 @@
 
 pkgname=("python-scipy-openblas" "python2-scipy-openblas")
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
@@ -56,7 +56,7 @@ check() {
   cd ${srcdir}/scipy-${pkgver}
   python3 setup.py config_fc --fcompiler=gnu95 install \
     --prefix=/usr --root=${srcdir}/test --optimize=1
-  export PYTHONPATH=${srcdir}/test/usr/lib/python3.4/site-packages
+  export PYTHONPATH=${srcdir}/test/usr/lib/python3.5/site-packages
   cd ${srcdir}
   python -c "from scipy import test; test('full')"
 

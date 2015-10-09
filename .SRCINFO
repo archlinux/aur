@@ -1,7 +1,7 @@
 pkgbase = python-scipy-openblas
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering.
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scipy.org/
 	arch = i686
 	arch = x86_64
