@@ -7,7 +7,7 @@
 _npmname=bower
 pkgname=nodejs-$_npmname
 pkgver=1.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A package manager for the web'
 provides=('bower')
 conflicts=('bower')
@@ -23,7 +23,7 @@ md5sums=('3a4130a26d21148a6d3230a4f8555704'
          '135697567327f92e904ef0be2082da5e')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
+  npm install -g --user root --prefix "$pkgdir"/usr $_npmname@$pkgver
   rm -r "$pkgdir"/usr/etc
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
