@@ -5,15 +5,15 @@
 # Contributor: Laszlo Papp <djszapi @ gmail at com>
 
 pkgname=vim-auctex
-pkgver=2.2.16
+pkgver=2.2.17
 pkgrel=1
 pkgdesc='Macros for latex.'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=162'
 license=('custom')
 depends=('vim')
-source=("${pkgname}.vim::http://www.vim.org/scripts/download_script.php?src_id=23602")
-md5sums=('18a74f849930edb7c6312c7f3bdf548f')
+source=("${pkgname}.vim::http://www.vim.org/scripts/download_script.php?src_id=23660")
+md5sums=('283f9ba64cefe940fdd9e11f9b1f1659')
 
 package() {
   install -D -m644 ${pkgname}.vim ${pkgdir}/usr/share/vim/vimfiles/ftplugin/tex_auctex.vim
