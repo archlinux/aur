@@ -8,7 +8,7 @@ pkgdesc="A new integrated development environment (IDE) for R (binary version fr
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r>=2.11.1' 'shared-mime-info' 'gstreamer0.10-base')
+depends=('r>=2.11.1' 'shared-mime-info' 'gstreamer0.10-base', 'patchelf')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)

@@ -9,7 +9,8 @@ pkgbase = rstudio-desktop-preview-bin
 	license = GPL
 	depends = r>=2.11.1
 	depends = shared-mime-info
-	depends = gstreamer0.10-base
+	depends = gstreamer0.10-base,
+	depends = patchelf
 	provides = rstudio-desktop-preview=0.99.709
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
