@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-gui-git
 pkgver=v0.11.0.r12.g5c27f12
-pkgrel=2
+pkgrel=3
 pkgdesc='Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="https://bitcoinxt.software/"
@@ -18,6 +18,9 @@ source=('git+https://github.com/bitcoin/bitcoin.git#branch=0.11'
 sha256sums=('SKIP'
             '0910004577764c2251a33c4868c7358a42da68f94d6462e44bbcb1945cefd748'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
+sha512sums=('SKIP'
+            'e9bf98634af791949d0d05951f7f256660d85717922e0037e5a9def40fcdb71922ccfff24774ea448a3a53a1c95a6da1f79fa43e280900a020362c51960de9db'
+            '67383fa1dd2f9576cc3c282f3a9b8c5f2d3eaa13799a6a7eb9eb2969face0ddaf6bb82c286c928b89397d8d2c9ba2efe9a603442f4bf6ed6d89ae9323c169375')
 
 pkgver() {
 	cd "$srcdir/bitcoin"
