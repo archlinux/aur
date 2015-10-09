@@ -13,7 +13,6 @@ optdepends=(yamado)
 provides=("portal")
 conflicts=()
 replaces=()
-backup=('etc/postfix/'{access,aliases,canonical,generic,header_checks,main.cf,master.cf,relocated,transport,virtual})
 options=()
 install="portal.install"
 changelog=
