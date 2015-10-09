@@ -1,0 +1,20 @@
+--- orp.pl.orig	2015-10-09 15:24:50.519283448 +0200
++++ orp.pl	2015-10-09 15:34:05.000000000 +0200
+@@ -447,7 +447,7 @@
+         $obj->{'multipolygon'} = 1; # Mark object as beeing part of a multipolygon
+     }
+ 
+-    if (defined(@$outerways))
++    if (@$outerways)
+     {
+         if (!multipolygon_has_tags($multipolygon))
+         {
+@@ -1203,7 +1203,7 @@
+                 'inkscape:groupmode' => 'layer',
+                 'inkscape:label' => 'Copyright',
+                 'transform' => sprintf('translate(%f,%f)', $documentWidth, $documentHeight));
+-            open(CCLOGO, "cclogo.svg");
++            open(CCLOGO, "/usr/share/orp/orp/cclogo.svg");
+             local $/;
+             $_ = <CCLOGO>;
+             $writer->raw($_);
