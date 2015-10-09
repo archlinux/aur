@@ -1,7 +1,7 @@
 pkgbase = python-flask-restful
 	pkgdesc = A Flask extension for creating REST APIs
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/Flask-RESTful
 	arch = any
 	license = BSD
@@ -15,7 +15,13 @@ pkgbase = python-flask-restful
 
 pkgname = python-flask-restful
 	depends = python-flask>=0.8
+	depends = python-six>=1.3.0
+	depends = python-pytz
+	depends = python-aniso8601>=0.82
 
 pkgname = python2-flask-restful
 	depends = python2-flask>=0.8
+	depends = python2-six>=1.3.0
+	depends = python2-pytz
+	depends = python2-aniso8601>=0.82
 

@@ -4,7 +4,7 @@ pkgbase=python-flask-restful
 pkgname=('python-flask-restful' 'python2-flask-restful')
 _realname=Flask-RESTful
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A Flask extension for creating REST APIs'
 _baseurl='https://pypi.python.org'
 url="${_baseurl}/pypi/${_realname}"
@@ -33,7 +33,7 @@ build() {
 }
 
 package_python-flask-restful() {
-  depends=('python-flask>=0.8')
+  depends=('python-flask>=0.8' 'python-six>=1.3.0' 'python-pytz' 'python-aniso8601>=0.82')
 
   cd "${srcdir}/${_realname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
@@ -43,7 +43,7 @@ package_python-flask-restful() {
 }
 
 package_python2-flask-restful() {
-  depends=('python2-flask>=0.8')
+  depends=('python2-flask>=0.8' 'python2-six>=1.3.0' 'python2-pytz' 'python2-aniso8601>=0.82')
 
   cd "${srcdir}/${_realname}-${pkgver}-python2"
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
