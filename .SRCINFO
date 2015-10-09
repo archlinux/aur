@@ -7,6 +7,11 @@ pkgbase = qprotractor-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = qt4
+	makedepends = qt5-base
+	makedepends = qt5-tools
 	provides = qprotractor-git
 	conflicts = qprotractor-git
 	source = qprotractor-git::git://github.com/kellpossible/qProtractor.git#branch=master
