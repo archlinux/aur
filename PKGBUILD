@@ -3,7 +3,7 @@
 # Contributor: GordonGR <ntheo1979@gmail.com>
 
 pkgname=lib32-gtk3
-pkgver=3.16.7
+pkgver=3.18.1
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (v3)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('gtk3' 'lib32-at-spi2-atk' 'lib32-colord' 'lib32-gdk-pixbuf2'
 makedepends=('gcc-multilib' 'gobject-introspection')
 install='gtk3.install'
 source=("http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz")
-sha256sums=('19689d14de54d182fad538153dbff6d41f53841f940aa871585fdea0306c7fba')
+sha256sums=('bd279cbb19f3fda074c89cf0edf9e7d95eee8b889b6889d16c2f7f0f6bdeba92')
 
 build() {
   cd gtk+-${pkgver}

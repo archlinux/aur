@@ -1,6 +1,6 @@
 pkgbase = lib32-gtk3
 	pkgdesc = GObject-based multi-platform GUI toolkit (v3)
-	pkgver = 3.16.7
+	pkgver = 3.18.1
 	pkgrel = 1
 	url = http://www.gtk.org/
 	install = gtk3.install
@@ -22,8 +22,8 @@ pkgbase = lib32-gtk3
 	depends = lib32-libxrandr
 	depends = lib32-pango
 	depends = lib32-rest
-	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.16/gtk+-3.16.7.tar.xz
-	sha256sums = 19689d14de54d182fad538153dbff6d41f53841f940aa871585fdea0306c7fba
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.18/gtk+-3.18.1.tar.xz
+	sha256sums = bd279cbb19f3fda074c89cf0edf9e7d95eee8b889b6889d16c2f7f0f6bdeba92
 
 pkgname = lib32-gtk3
 
