@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-image-block
+	pkgdesc = FoxyProxy is an advanced proxy management tool that completely replaces Firefox's limited proxying capabilities.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/5613
+	arch = any
+	license = GPL
+	depends = firefox
+	source = https://addons.cdn.mozilla.net/user-media/addons/5613/imageblock-2.1-fx.xpi
+	sha256sums = 2d75151da2aedd81c415c1da439e7bdbe823abab9a85ccd3f578a2828a415765
+
+pkgname = firefox-extension-image-block
+
