@@ -3,7 +3,7 @@
 
 pkgname='grass6'
 pkgver='6.4.5'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="GRASS GIS ${pkgver}: geospatial data management and analysis, image \
 processing, graphics/maps production, spatial modeling and visualization."
 arch=('i686' 'x86_64')
@@ -15,7 +15,8 @@ provides=("$pkgname")
 depends=('zlib' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu' 'libjpeg'
          'libpng' 'libtiff' 'libxmu' 'mesa' 'postgresql' 'proj' 'tcl' 'tk'
          'wxpython2.8' 'wxgtk2.8' 'xorg-server' 'cairo' 'unixodbc' 'bc' 'xml2'
-         'python2' 'python2-numpy' 'python2-matplotlib' 'python2-pillow')
+         'python2' 'python2-numpy' 'python2-matplotlib' 'python2-pillow'
+         'subversion')
 
 makedepends=('doxygen')
 
