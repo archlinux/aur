@@ -6,8 +6,8 @@
 pkgname=libsvm
 pkgver=3.20
 _pkgver=320
-_pyver=3.4
-pkgrel=2
+_pyver=3.5
+pkgrel=3
 pkgdesc="A library for Support Vector Machines classification, include binaries and python bindings."
 arch=(x86_64 i686)
 url="http://www.csie.ntu.edu.tw/~cjlin/libsvm/"
