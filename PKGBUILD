@@ -2,7 +2,7 @@
 
 pkgname=go-ipfs-bin
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Zero knowledge cloud-based password manager"
 url="https://ipfs.io"
 arch=('x86_64' 'i686')
@@ -14,12 +14,6 @@ sha256sums_i686=('7bf5e9473117c5e1ad36aafb8781ab66f58a06b15c5cbc9e961e2e47e987cc
 
 source_x86_64=("https://gobuilder.me/get/github.com/ipfs/go-ipfs/cmd/ipfs/ipfs_v${pkgver}_linux-amd64.zip")
 sha256sums_x86_64=('097d8bec12cfd4df6d173e3bf4aaede3ad5d3167f7f23bba3238be48e82e84e6')
-
-noextract=("ipfs_v${pkgver}_linux-amd64.zip")
-
-prepare() {
-  unzip -q ipfs_v${pkgver}_linux-amd64.zip
-}
 
 package() {
   install -Dm755 "${srcdir}/ipfs/ipfs" "${pkgdir}/usr/bin/ipfs"
