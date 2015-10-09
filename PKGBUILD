@@ -3,12 +3,12 @@
 
 pkgname=rstudio-desktop-preview-bin
 pkgver=0.99.712
-pkgrel=1
+pkgrel=2
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r>=2.11.1' 'shared-mime-info' 'gstreamer0.10-base', 'patchelf')
+depends=('r>=2.11.1' 'shared-mime-info' 'gstreamer0.10-base' 'patchelf')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
