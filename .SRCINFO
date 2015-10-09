@@ -1,0 +1,23 @@
+pkgbase = gnss-sdr-git
+	pkgdesc = GNSS (Global Navigation Satellite System) software receiver
+	pkgver = v0.0.6.23
+	pkgrel = 1
+	url = http://gnss-sdr.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gnuradio
+	depends = gflags
+	depends = google-glog
+	depends = armadillo
+	depends = gtest
+	depends = gnutls-openssl
+	provides = gnss-sdr
+	conflicts = gnss-sdr
+	source = gnss-sdr::git+https://github.com/gnss-sdr/gnss-sdr.git
+	md5sums = SKIP
+
+pkgname = gnss-sdr-git
+
