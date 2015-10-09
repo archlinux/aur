@@ -11,11 +11,11 @@ makedepends=('gtkmm3' 'intltool')
 conflicts=()
 replaces=()
 backup=()
-source=("${pkgname}-${pkgrel}::https://github.com/felandral/Fisoco/archive/${pkgrel}-v${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgrel}-${pkgver}::https://github.com/felandral/Fisoco/archive/v${pkgrel}-${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgrel}
+  cd ${srcdir}/${pkgname}-v${pkgrel}-${pkgver}
   ./bootstrap -g
   ./configure --prefix=/usr
   sleep 1
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgrel}"
+  cd "${srcdir}/${pkgname}-v${pkgrel}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 
