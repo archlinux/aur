@@ -1,7 +1,7 @@
 # Original Maintainer: Antoine Lubineau <antoine@lubignon.info>
 # Current Maintainer: Leopold Bloom <blinxwang@gmail.com>
 pkgname=beignet
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('opencl-intel' 'opencl-headers' 'opencl-headers12')
 conflicts=('opencl-intel' 'opencl-headers' 'opencl-headers12')
 replaces=('opencl-intel' 'opencl-headers' 'opencl-headers12')
 source=("https://01.org/sites/default/files/beignet-$pkgver-source.tar.gz")
-sha256sums=('4afe09ea13cd7f8475b9f6534e97cb4dcd307c602095c6968b0ed22290753386')
+sha256sums=('9bf4c69eb4fbd3c7cc9ef75c1952bca6f05259ffbe753a27e08ed98bb32e1119')
 
 build() {
 	mkdir -p "$srcdir/Beignet-$pkgver-Source/build"
