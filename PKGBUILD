@@ -7,7 +7,7 @@ url="http://jupyter.org/"
 arch=(any)
 license=('BSD')
 depends=('ipython-notebook' 'python-jinja' 'python3-simplepam' 'python-sqlalchemy' 'python-requests' 'nodejs-configurable-http-proxy')
-makedepends=('nodejs-bower' 'npm')
+makedepends=('bower' 'npm')
 source=("https://github.com/jupyter/jupyterhub/archive/${pkgver}.tar.gz")
 md5sums=('3d781022ae234ef7802209895db4fc45')
 
