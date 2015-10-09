@@ -13,7 +13,7 @@ license=('custom')
 depends=('fuse' 'wxgtk>=3.0.0' 'libsm' 'device-mapper')
 makedepends=('nasm')
 install='veracrypt.install'
-source=("$_pkgname-$pkgver::http://sourceforge.net/projects/${pkgname}/files/${_pkgname} ${pkgver}/${pkgname}_${pkgver}_Source.tar.bz2/download"
+source=("${pkgname}_${pkgver}_Source.tar.bz2::http://sourceforge.net/projects/${pkgname}/files/${_pkgname} ${pkgver}/${pkgname}_${pkgver}_Source.tar.bz2/download"
 	"no_makeself.patch"
         "veracrypt.desktop"
         "veracrypt.install")
