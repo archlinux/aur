@@ -3,12 +3,12 @@
 
 pkgname=librabbitmq-c
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A RabbitMQ(amqp) library written in C-language"
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=('popt' 'openssl')
-makedepends=('cmake' 'doxygen' 'xmlto')
+makedepends=('cmake' 'docbook-xsl' 'doxygen' 'xmlto')
 url=https://github.com/alanxz/rabbitmq-c
 source=("${pkgname}-${pkgver}.zip::https://github.com/alanxz/rabbitmq-c/archive/v${pkgver}.zip")
 md5sums=('32fd027ac01c2271615bee3e66afa00e')

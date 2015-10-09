@@ -1,13 +1,14 @@
 pkgbase = librabbitmq-c
 	pkgdesc = A RabbitMQ(amqp) library written in C-language
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alanxz/rabbitmq-c
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = MIT
 	makedepends = cmake
+	makedepends = docbook-xsl
 	makedepends = doxygen
 	makedepends = xmlto
 	depends = popt
