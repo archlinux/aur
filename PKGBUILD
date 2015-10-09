@@ -4,7 +4,7 @@
 pkgname=citebib
 _pkgname=CiteBib
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate a nice Bibtex or Latex bibliography according to the document content"
 arch=('any')
 url="https://github.com/sciunto/CiteBib"

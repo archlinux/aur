@@ -1,7 +1,7 @@
 pkgbase = citebib
 	pkgdesc = Generate a nice Bibtex or Latex bibliography according to the document content
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sciunto/CiteBib
 	arch = any
 	license = GPL3
