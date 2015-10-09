@@ -21,7 +21,7 @@ md5sums=('5b35a2a4187c45f6ea4e74a5f47de0f9')
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
   rm -r "$pkgdir"/usr/etc
-  mkdir -p "$pkgdir/usr/share/licenses/$_npmname"
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   ln -s "../../../lib/node_modules/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
