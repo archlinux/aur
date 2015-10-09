@@ -2,7 +2,7 @@
 
 pkgname=glpi
 pkgver=0.85.5
-pkgrel=2
+pkgrel=3
 pkgdesc="GLPI Inventory Management"
 arch=('any')
 url=('http://www.glpi-project.org')
@@ -18,7 +18,7 @@ backup=(etc/glpi/config_db.php)
 optdepends=('nginx: a more performant webserver'
             'apache: a more performant webserver')
 sha256sums=('6dee0ca3dc01f0aece2b91302c42e790749f02c0a3603d20385da9b663474309'
-            '6bdb13bca4392899f64038f0cea82a3a12289ea177a92c44922d012c2ee04f3d'
+            '6ba1f37a68179b04dfeff44b67c0806a513c1548ebd2cf47232e5f6026f76296'
             'c5ca6a8d1bcc73c71348d5f8a4c3de0fd023c346d1c2bf02c9dd627bcda9bfe8'
             '6b515c1c8cc44ef703fe01e53b64d6aea56ed1c833b3553233482437478d4e77'
             'eea9489db1fa8f4762957eb6299dd22ca43c25f9dc62628c973a53cbcfdbab1f')
