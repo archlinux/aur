@@ -1,0 +1,24 @@
+pkgbase = perl-function-parameters
+	pkgdesc = subroutine definitions with parameter lists
+	pkgver = 1.0605
+	pkgrel = 1
+	url = https://metacpan.org/release/Function-Parameters
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	checkdepends = perl-dir-self>=0
+	checkdepends = perl-constant>=0
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-simple>=0
+	depends = perl>=5.14
+	depends = perl-xsloader>=0
+	depends = perl-carp>=0
+	provides = perl-function-parameters-info=1.0605
+	provides = perl-function-parameters-param=1.0605
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MAUKE/Function-Parameters-1.0605.tar.gz
+	sha256sums = 0ffbf6b19c7c3c51eaa322aec67cf35a5b69fd0f51ba80ed419810907b018d7f
+
+pkgname = perl-function-parameters
+
