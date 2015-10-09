@@ -8,11 +8,10 @@ arch=('i686' 'x86_64' 'armv7h' 'arm')
 conflicts=('')
 license=('GPL')
 depends=('ncurses' 'boost')
-source=(http://www.ant.uni-bremen.de/whomes/rinas/sinfo/download/$pkgname-$pkgver.tar.gz
-	sinfod.service)
+source=(http://www.ant.uni-bremen.de/whomes/rinas/sinfo/download/$pkgname-$pkgver.tar.gz sinfod.service)
 url="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/"
 #
-md5sums=('5e92a5c94ff69a68b64b7b776c75d4bf' '80990359989a9b915b36512a2a2cad2b)
+md5sums=('5e92a5c94ff69a68b64b7b776c75d4bf' '5bf5ea9334d10165dfdc2612b6a84688')
 #
 build() {
   cd ${startdir}/src/$pkgname-$pkgver
