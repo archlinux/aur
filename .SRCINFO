@@ -6,7 +6,7 @@ pkgbase = fisoco
 	arch = x86_64
 	arch = i686
 	license = GPLv3
-	makedepends = gtkmm3
+	depends = gtkmm3
 	makedepends = intltool
 	md5sums = SKIP
 

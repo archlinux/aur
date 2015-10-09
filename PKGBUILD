@@ -3,19 +3,19 @@ pkgname=fisoco
 pkgver=alpha
 pkgrel=0.6
 pkgdesc="a Finding, Sorting and Converting free software"
-url="https://github.com/Felandral/Fisoco"
+url="https://github.com/felandral/Fisoco"
 arch=('any')
 license=('GPLv3')
-depends=()
-makedepends=('gtkmm3' 'intltool')
+depends=('gtkmm3')
+makedepends=('gtkmm3')
 conflicts=()
 replaces=()
 backup=()
-source=("${pkgname}-v${pkgrel}-${pkgver}::https://github.com/felandral/Fisoco/archive/v${pkgrel}-${pkgver}.tar.gz")
+source=("https://github.com/felandral/Fisoco/archive/v${pkgrel}-${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 build() {
-  cd ${srcdir}/${pkgname}-v${pkgrel}-${pkgver}
+  cd ${srcdir}/Fisoco-${pkgrel}-${pkgver}
   ./bootstrap -g
   ./configure --prefix=/usr
   sleep 1
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-v${pkgrel}-${pkgver}"
+  cd "${srcdir}/Fisoco-${pkgrel}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 
