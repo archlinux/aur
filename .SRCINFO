@@ -1,5 +1,5 @@
 pkgbase = linux-lts-ck
-	pkgver = 4.1.9
+	pkgver = 4.1.10
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -11,12 +11,13 @@ pkgbase = linux-lts-ck
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.9.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.9.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.10.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.10.sign
 	source = config.x86_64
 	source = config
 	source = linux-lts-ck.preset
 	source = change-default-console-loglevel.patch
+	source = 0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch
 	source = http://ck.kolivas.org/patches/4.0/4.1/4.1-ck2/patch-4.1-ck2.bz2
 	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.1.patch
@@ -24,12 +25,13 @@ pkgbase = linux-lts-ck
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch
 	sha512sums = 168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0
 	sha512sums = SKIP
-	sha512sums = 79ecd1c4c00fd52b89795f89d07c520c585733f1641a59045de44dea6a913c94de6b9f33fd8f7a146b68c57ade4107dedc2f8790d4bcec96a0f89812dc7f90fa
+	sha512sums = 3b5cb5c8f494958c39a06a1b416e3e5a075a3c76c44f8bf1ae5a14deec9861407100c2ef59b0720e8fc0729b5c8422b4d819ff59f1f7ec4eed20c5ba8a95d6d5
 	sha512sums = SKIP
 	sha512sums = ebcfabb18103802bd607f2a9b1a6750b25e57739eb6d36bad8f15e1f8c31daf9064b4a2398d6d8c9fdfc9d95b0b06fd2cc084506477435ef70f9430158f4f5d4
 	sha512sums = 032296ba49ff77bd70568a4653899a5ce67bd3e9ad11648bbd559553ebdae726a7db5e29c28079b34628fd3f4ed58bccf936dc6450025e4c9aff9a025df827b1
 	sha512sums = d365341656f0acf68f9e0bf62f27b14c3eb8583d332f26cdd6b5290153c5bf04d7ac1495bace54f387959ac5330113466fefd73b83663a28e6fcf20224741ca5
 	sha512sums = d9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8
+	sha512sums = bf8045913bc87df289cb6089b9428b2eb685ef3a745c7531b628111ba58ec33fb6e707a74ecdd53b6d59169c4354e02efff585ef16a1645ce5b04e54257f8f50
 	sha512sums = 356e144f858b6015415b2c3f781ca534e5f77b818302e404c3d3b35c088f4a4163356b67f98bfc95175bd52bd8b3e9a9a3e336cbcd8adf6c2d388700ce630d4d
 	sha512sums = 76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc
 	sha512sums = 383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a
@@ -47,7 +49,7 @@ pkgname = linux-lts-ck
 	optdepends = nvidia-lts-ck: nVidia drivers for linux-lts-ck
 	optdepends = nvidia-340xx-lts-ck: nVidia drivers for linux-lts-ck
 	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-lts-ck=4.1.9
+	provides = linux-lts-ck=4.1.10
 	replaces = kernel26-lts-ck
 	backup = etc/mkinitcpio.d/linux-lts-ck.preset
 
@@ -55,7 +57,7 @@ pkgname = linux-lts-ck-headers
 	pkgdesc = Header files and scripts to build modules for linux-lts-ck.
 	groups = lts-ck-generic
 	depends = linux-lts-ck
-	provides = linux-lts-ck-headers=4.1.9
-	provides = linux-headers=4.1.9
+	provides = linux-lts-ck-headers=4.1.10
+	provides = linux-headers=4.1.10
 	replaces = kernel26-ck-lts-headers
 

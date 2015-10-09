@@ -69,9 +69,9 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 ### Do not edit below this line unless you know what you're doing
 
 pkgname=(linux-lts-ck linux-lts-ck-headers)
-_kernelname=-ck
+_kernelname=-lts-ck
 _srcname=linux-4.1
-pkgver=4.1.9
+pkgver=4.1.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -90,6 +90,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 		'config.x86_64' 'config'
 		'linux-lts-ck.preset'
 		'change-default-console-loglevel.patch'
+		'0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch'
 		# ck1
 		"http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
 		# gcc
@@ -101,12 +102,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            '79ecd1c4c00fd52b89795f89d07c520c585733f1641a59045de44dea6a913c94de6b9f33fd8f7a146b68c57ade4107dedc2f8790d4bcec96a0f89812dc7f90fa'
+            '3b5cb5c8f494958c39a06a1b416e3e5a075a3c76c44f8bf1ae5a14deec9861407100c2ef59b0720e8fc0729b5c8422b4d819ff59f1f7ec4eed20c5ba8a95d6d5'
             'SKIP'
             'ebcfabb18103802bd607f2a9b1a6750b25e57739eb6d36bad8f15e1f8c31daf9064b4a2398d6d8c9fdfc9d95b0b06fd2cc084506477435ef70f9430158f4f5d4'
             '032296ba49ff77bd70568a4653899a5ce67bd3e9ad11648bbd559553ebdae726a7db5e29c28079b34628fd3f4ed58bccf936dc6450025e4c9aff9a025df827b1'
             'd365341656f0acf68f9e0bf62f27b14c3eb8583d332f26cdd6b5290153c5bf04d7ac1495bace54f387959ac5330113466fefd73b83663a28e6fcf20224741ca5'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
+            'bf8045913bc87df289cb6089b9428b2eb685ef3a745c7531b628111ba58ec33fb6e707a74ecdd53b6d59169c4354e02efff585ef16a1645ce5b04e54257f8f50'
             '356e144f858b6015415b2c3f781ca534e5f77b818302e404c3d3b35c088f4a4163356b67f98bfc95175bd52bd8b3e9a9a3e336cbcd8adf6c2d388700ce630d4d'
             '76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc'
             '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
@@ -127,6 +129,9 @@ prepare() {
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+	# fix https://bbs.archlinux.org/viewtopic.php?pid=1568197#p1568197
+	patch -Np1 -i "$srcdir/0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch"
 
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
