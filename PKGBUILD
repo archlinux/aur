@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=yoda
-pkgver=1.4.0
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="A particle physics package for data analysis (specifically histogramming) classes."
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('python2')
 makedepends=('cython2' 'boost' 'autoconf' 'libtool' 'automake')
 source=(http://www.hepforge.org/archive/yoda/YODA-$pkgver.tar.gz)
-md5sums=('78bdc2d876d1c85d4bcae01d2d0f75e8')
+md5sums=('6b814ced099c9a0e7fad7930071146e5')
 
 prepare() {
 	cd "$srcdir/YODA-$pkgver"
