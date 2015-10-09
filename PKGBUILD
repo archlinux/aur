@@ -3,7 +3,7 @@ pkgname=madsonic-beta
 pkgver=5.1.5260
 pkgvera=5.1
 pkgdate=20150831
-pkgrel=1
+pkgrel=2
 pkgdesc="Madsonic Mashup Mod is a fork of the Subsonic 4.8 Server Build 3436 with some Subsonic Data schema modifications! This is the latest Beta 5.1 Build."
 arch=('i686' 'x86_64')
 url="http://madsonic.org/"
@@ -36,6 +36,6 @@ package() {
 
 
 md5sums=('30b90f30469b9b46e5a34e13a42a1fe5'
-	 '009262cf1618ff4827142943659d1800'
+	 '67f335ebe2755d8af0ffa209c7e5b9c4'
 	 '14518e65fbd97825e24f5801a5f723ad'
 	 'c590d9cb9e21a99b9cb29e224365c938'  )
