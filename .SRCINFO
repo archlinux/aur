@@ -8,6 +8,7 @@ pkgbase = keybase-release
 	license = BSD
 	makedepends = go
 	depends = gnupg
+	conflicts = keybase
 	source = git://github.com/keybase/client-beta
 	md5sums = SKIP
 

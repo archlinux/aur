@@ -13,6 +13,7 @@ pkgrel=1
 arch=(i686 x86_64)
 makedepends=(go)
 depends=(gnupg)
+conflicts=(keybase)
 source=('git://github.com/keybase/client-beta')
 md5sums=('SKIP')
 
