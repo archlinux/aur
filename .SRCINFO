@@ -1,0 +1,17 @@
+pkgbase = hamster-shell-extension-git
+	pkgdesc = Shell extension for project hamster - the GNOME time tracker
+	pkgver = 20130209.gfc9e077
+	pkgrel = 1
+	url = https://github.com/projecthamster/shell-extension
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = hamster-time-tracker
+	depends = gnome-shell
+	provides = hamster-shell-extension
+	conflicts = hamster-shell-extension
+	source = git://github.com/projecthamster/shell-extension.git
+	md5sums = SKIP
+
+pkgname = hamster-shell-extension-git
+
