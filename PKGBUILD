@@ -1,7 +1,7 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=mobac-svn
-pkgver=2021
+pkgver=r2274
 pkgrel=1
 pkgdesc="application that creates atlases for the J2ME application TrekBuddy"
 arch=('i686' 'x86_64')
@@ -9,32 +9,27 @@ url="http://mobac.sourceforge.net/"
 license=('GPL')
 depends=('java-runtime')
 makedepends=('apache-ant' 'sed' 'subversion' 'java-environment')
-source=('mobac.desktop' 'directories.ini')
+source=('mobac.desktop' 'directories.ini' 'mobac::svn://svn.code.sf.net/p/mobac/code/trunk')
 md5sums=('78a831bdc101f859138700f7e61ff148'
-         'eacac8afe131dda257e5d3dfff6c6ac5')
+         'eacac8afe131dda257e5d3dfff6c6ac5'
+         'SKIP')
 
 provides=('mobac')
 conflicts=('mobac')
 
-_svntrunk="http://svn.code.sf.net/p/mobac/code/trunk/"
-_svnmod="mobac"
+#_svntrunk="http://svn.code.sf.net/p/mobac/code/trunk/"
+#_svnmod="mobac"
+
+pkgver() {
+ cd "${pkgname%%-svn}"
+ local ver="$(svnversion)"
+ printf "r%s" "${ver//[[:alpha:]]}"
+}
+
 
 build() {
-	cd $srcdir/
-
-	# get the sources
-	msg "Connecting to $_svntrunk ..."
-	if [ -d $_svnmod/.svn ]; then
-		(cd $_svnmod && svn up) || return 1
-	else
-		svn co $_svntrunk $_svnmod || return 1
-	fi
-	msg "SVN checkout done or server timeout"
-
-	cd $_svnmod
-
 	cd $srcdir/mobac/MOBAC
-	ant || /usr/share/java/apache-ant/bin/ant
+	ant #|| /usr/share/java/apache-ant/bin/ant
 }
 
 package() {
