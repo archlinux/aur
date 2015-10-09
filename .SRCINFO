@@ -1,7 +1,7 @@
 pkgbase = go-ipfs-bin
-	pkgdesc = Zero knowledge cloud-based password manager
+	pkgdesc = Global versioned P2P merkledag filesystem
 	pkgver = 0.3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ipfs.io
 	arch = x86_64
 	arch = i686

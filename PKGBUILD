@@ -2,8 +2,8 @@
 
 pkgname=go-ipfs-bin
 pkgver=0.3.7
-pkgrel=2
-pkgdesc="Zero knowledge cloud-based password manager"
+pkgrel=3
+pkgdesc="Global versioned P2P merkledag filesystem"
 url="https://ipfs.io"
 arch=('x86_64' 'i686')
 provides=('ipfs')
