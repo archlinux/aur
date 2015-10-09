@@ -1,15 +1,15 @@
 pkgbase = tagparser
 	pkgdesc = C++ library for reading and writing MP4 (iTunes), ID3, Vorbis and Matroska tags.
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://github.com/Martchus/tagparser
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = qt5-base
 	depends = c++utilities
-	source = tagparser-2.0.2.tar.gz::https://github.com/Martchus/tagparser/archive/v2.0.2.tar.gz
-	sha256sums = 7ab448f305692c9185be3916b00d984507e6c28472d4c320229c48994d1c300c
+	source = tagparser-2.0.3.tar.gz::https://github.com/Martchus/tagparser/archive/v2.0.3.tar.gz
+	sha256sums = cf103babefdf59bbd40bde3c0534838d0692e6596bab490fba48ee2599924e4b
 
 pkgname = tagparser
 
