@@ -1,7 +1,7 @@
 # Contributor: Richard Murri <admin@richardmurri.com> (snapshot version)
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-dvc-bzr
-pkgver=593
+pkgver=595
 pkgrel=1
 pkgdesc="Common Emacs front-end for a number of distributed version control systems (currently arch, bazaar, git, mercurial, monotone)"
 arch=('any')
