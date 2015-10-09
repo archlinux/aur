@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-dash-to-dock
 	pkgdesc = This extension moves the dash out of the overview transforming it in a dock for an easier launching of applications and a faster switching between windows and desktops.
-	pkgver = 47
+	pkgver = 49
 	pkgrel = 1
 	epoch = 1
 	url = https://micheleg.github.io/dash-to-dock/
@@ -11,8 +11,8 @@ pkgbase = gnome-shell-extension-dash-to-dock
 	makedepends = intltool
 	depends = dconf
 	conflicts = gnome-shell-extensions-dash-to-dock-git
-	source = https://github.com/micheleg/dash-to-dock/archive/extensions.gnome.org-v47.tar.gz
-	sha256sums = 04a32135456cd53bd0e5d301955266f3144b815694e99510344620d1d5750c7a
+	source = https://github.com/micheleg/dash-to-dock/archive/extensions.gnome.org-v49.tar.gz
+	sha256sums = 50bd242f3f6e6089137957c175462475d10a2e39f6014184b792248ed7708084
 
 pkgname = gnome-shell-extension-dash-to-dock
 
