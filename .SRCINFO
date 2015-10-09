@@ -1,7 +1,7 @@
 pkgbase = cnijfilter-mg6300
 	pkgdesc = Canon MG6300 printer driver
 	pkgver = 3.80
-	pkgrel = 1
+	pkgrel = 10
 	url = http://support-sg.canon-asia.com/contents/SG/EN/0100468802.html
 	arch = i686
 	arch = x86_64

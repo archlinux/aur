@@ -1,7 +1,7 @@
 pkgname=cnijfilter-mg6300
 _pkgname=cnijfilter-common
 pkgver=3.80
-pkgrel=1
+pkgrel=10
 pkgdesc="Canon MG6300 printer driver"
 arch=('i686' 'x86_64')
 url="http://support-sg.canon-asia.com/contents/SG/EN/0100468802.html"
