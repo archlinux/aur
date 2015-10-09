@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-preview-bin
 	pkgdesc = A new integrated development environment (IDE) for R (binary version from RStudio official website)
-	pkgver = 0.99.709
+	pkgver = 0.99.712
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	install = rstudio-desktop-preview-bin.install
@@ -11,11 +11,11 @@ pkgbase = rstudio-desktop-preview-bin
 	depends = shared-mime-info
 	depends = gstreamer0.10-base,
 	depends = patchelf
-	provides = rstudio-desktop-preview=0.99.709
+	provides = rstudio-desktop-preview=0.99.712
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
-	source = https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.99.709-.deb
+	source = https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.99.712-.deb
 
 pkgname = rstudio-desktop-preview-bin
 
