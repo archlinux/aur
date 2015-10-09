@@ -4,15 +4,15 @@
 _pkgbase=pygobject
 pkgbase=pygobject-patched
 pkgname=(python-gobject-patched python2-gobject-patched)
-pkgver=3.16.2
-pkgrel=2
+pkgver=3.18.0
+pkgrel=1
 arch=(i686 x86_64)
 url="https://live.gnome.org/PyGObject"
 license=(LGPL)
 makedepends=(python python2 python-cairo python2-cairo gobject-introspection gnome-common)
 source=("http://ftp.gnome.org/pub/gnome/sources/${_pkgbase}/${pkgver:0:4}/${_pkgbase}-$pkgver.tar.xz"
 		"01_cairo_region.patch")
-sha256sums=('de620e00fe7ecb788aa2dc0d664e41f71b8e718e728168e8d982cf193a9e7e64'
+sha256sums=('1c3ba1112d3713cd5c86260312bfeb0de1f84f18808e51072c50b29d46156dc9'
             '194fc7946beb01d02a3fba587a214f2f38da56e3b63ecc9b7de37da210488919')
 
 prepare() {
