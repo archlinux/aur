@@ -6,8 +6,18 @@ _update_caches() {
 post_install() {
   _update_caches
   cat <<EOF
-For OpenRCT2 to run you must install a retail copy of RollerCoaster Tycoon 2
-with Wine.
+For OpenRCT2 to run you must install the assets from a retail copy of
+RollerCoaster Tycoon 2. See the following page for more information on
+installing a retail copy of the game on Linux:
+
+  https://github.com/OpenRCT2/OpenRCT2/wiki/Installation-on-Linux
+
+Once installed, set the game_path directive in the [general] section of
+\$HOME/OpenRCT2/config.ini to point to the location of the retail installation.
+For example:
+
+  [general]
+  game_path = "/path/to/RCT2"
 EOF
 }
 
