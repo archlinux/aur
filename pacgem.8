@@ -1,0 +1,58 @@
+.TH pacgem 8  "July 2013" "Version 0.9.12" "Arch Linux"
+.SH NAME
+pacgem \- Install Ruby Gems using the Arch Linux Package Manager (pacman)
+.SH SYNOPSIS
+.B pacgem
+[\fIoptions\fR] \fIgems\fR...
+.SH DESCRIPTION
+Pacgem allows direct installation of ruby gems under Arch Linux. It generates a temporary package build script (PKGBUILD). `makepkg` is used to create a package which is then installed using `sudo pacman`.
+.TP
+\fB\-d\fR, \fB\-\-destdir\fR \fIDIR\fR
+Destination directory for package files
+.TP
+\fB\-c\fR, \fB\-\-create\fR
+Create package only, do not install
+.TP
+\fB\-u\fR, \fB\-\-update\fR
+Update all installed gems
+.TP
+\fB\-t\fR, \fB\-\-test\fR
+Test if there are any gems to update
+.TP
+\fB\-r\fR, \fB\-\-resolveonly\fR
+Resolve the gem depencies and exit
+.TP
+\fB\-n\fR, \fB\-\-noresolve\fR
+Do not resolve any dependencies, this is useful for generating (-create) a single package
+.TP
+\fB\-\-noautodepends\fR
+Disable automatic dependency generation for shared objects (*.so)
+.TP
+\fB\-\-nonamcap\fR
+Disable package checking with namcap
+.TP
+\fB\-\-nocolor\fR
+Disable colored output
+.TP
+\fB\-\-trace\fR
+Show a full traceback on error
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Display help and exit
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Display version and exit
+.SH EXAMPLES
+.TP
+pacgem --create slim       Create ruby-slim package in the directory ./ruby-slim
+.PP
+pacgem slim-1.0            Create temporary ruby-slim package and install it
+.PP
+pacgem 'slim>1.0'          Install ruby-slim version > 1.0
+.PP
+pacgem thin 'slim~>1.0'    Install ruby-thin and ruby-slim with version ~>1.0
+.PP
+.SH AUTHOR
+Daniel Mendler (mail at daniel-mendler.de)
+.SH SEE ALSO
+\fBpacman\fR(8), \fBmakepkg\fR(8), \fBnamcap\fR(1), \fBPKGBUILD\fR(5)
