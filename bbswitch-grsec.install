@@ -1,5 +1,5 @@
 post_install() {
-    EXTRAMODULES='extramodules-4.1.7-grsec'
+    EXTRAMODULES='extramodules-4.2.3-grsec'
     depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 

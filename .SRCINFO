@@ -1,16 +1,16 @@
 pkgbase = bbswitch-grsec
 	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-grsec
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/Bumblebee-Project/bbswitch
 	install = bbswitch-grsec.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = linux-grsec-headers>=4.1
-	makedepends = linux-grsec-headers<4.2
-	depends = linux-grsec>=4.1
-	depends = linux-grsec<4.2
+	makedepends = linux-grsec-headers>=4.2.3
+	makedepends = linux-grsec-headers<4.3
+	depends = linux-grsec>=4.2.3
+	depends = linux-grsec<4.3
 	source = bbswitch-0.8.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
 	md5sums = 5b116b31ace3604ddf9d1fc1f4bc5807
 
