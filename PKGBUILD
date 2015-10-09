@@ -56,7 +56,7 @@ pkgname=linux-lts310-ck
 true && pkgname=(linux-lts310-ck linux-lts310-ck-headers)
 _kernelname=-lts310-ck
 _srcname=linux-3.10
-pkgver=3.10.87
+pkgver=3.10.90
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -87,7 +87,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
-            '50d0f4d247bf619b65b1c0d65944bcd3b7c2f1e0942c82fe3db0726aed9d9093'
+            'dbc5e7fab6d1d0cd44eacd7a69c1802f29a4863f47959c3bdc4b56b9e79b7dbe'
             'SKIP'
             '747d893b69d040dd82650a1a2d509155beace337020619194661049920650ed6'
             'c6c4a9f77683b95c37636b20c4bc8a1f8214c87feef7fc469e58534fcc32fb4a'
@@ -100,7 +100,7 @@ sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             '41fbe09c3d1b22818fbd5f1e24c4d64cf7b7e935eeed0abd721a9b3bf6e337a4'
             'ac0730dc24529970185ae527e98fb03ee427e1bce44ba9360c4c386ff63792ee'
             '3e818d3dec6a960033668e52b471cc8eaf277ad147d2006fbd73453981c18a91'
-            'ff4a95eb63027cc211991b8687c3095c4a0f09ce4a12b9d0dce430d9da2ea51a'
+            'c51f0b5f55b3b4c43247072945d2c336b346a0c0c68c3f853a70739b3997ee92'
             'SKIP')
 
 validpgpkeys=(

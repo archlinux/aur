@@ -1,6 +1,6 @@
 pkgbase = linux-lts310-ck
 	pkgdesc = Arch Linux LTS Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.440.
-	pkgver = 3.10.87
+	pkgver = 3.10.90
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = linux-lts310-ck
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.87.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.87.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.90.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.90.sign
 	source = http://ck.kolivas.org/patches/3.0/3.10/3.10-ck1/patch-3.10-ck1.bz2
 	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+.patch.gz
 	source = enable_haswell_pstate_driver.patch
@@ -25,11 +25,11 @@ pkgbase = linux-lts310-ck
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.10.8+-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.10.8.patch
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.10.8+-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.10.8.patch
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.10.8+-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.10.8+.patch
-	source = 3.10.87+-ck1.patch
-	source = 3.10.87+-ck1.patch.asc
+	source = 3.10.90+-ck1.patch
+	source = 3.10.90+-ck1.patch.asc
 	sha256sums = df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544
 	sha256sums = SKIP
-	sha256sums = 50d0f4d247bf619b65b1c0d65944bcd3b7c2f1e0942c82fe3db0726aed9d9093
+	sha256sums = dbc5e7fab6d1d0cd44eacd7a69c1802f29a4863f47959c3bdc4b56b9e79b7dbe
 	sha256sums = SKIP
 	sha256sums = 747d893b69d040dd82650a1a2d509155beace337020619194661049920650ed6
 	sha256sums = c6c4a9f77683b95c37636b20c4bc8a1f8214c87feef7fc469e58534fcc32fb4a
@@ -42,7 +42,7 @@ pkgbase = linux-lts310-ck
 	sha256sums = 41fbe09c3d1b22818fbd5f1e24c4d64cf7b7e935eeed0abd721a9b3bf6e337a4
 	sha256sums = ac0730dc24529970185ae527e98fb03ee427e1bce44ba9360c4c386ff63792ee
 	sha256sums = 3e818d3dec6a960033668e52b471cc8eaf277ad147d2006fbd73453981c18a91
-	sha256sums = ff4a95eb63027cc211991b8687c3095c4a0f09ce4a12b9d0dce430d9da2ea51a
+	sha256sums = c51f0b5f55b3b4c43247072945d2c336b346a0c0c68c3f853a70739b3997ee92
 	sha256sums = SKIP
 
 pkgname = linux-lts310-ck
@@ -59,6 +59,6 @@ pkgname = linux-lts310-ck
 pkgname = linux-lts310-ck-headers
 	pkgdesc = Header files and scripts to build modules for linux-lts310-ck.
 	depends = linux-lts310-ck
-	provides = linux-lts310-ck-headers=3.10.87
-	provides = linux-headers=3.10.87
+	provides = linux-lts310-ck-headers=3.10.90
+	provides = linux-headers=3.10.90
 
