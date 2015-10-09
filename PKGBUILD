@@ -1,7 +1,7 @@
 # Maintainer: Andrew Krasichkov <buglloc _ at _ yandex _ dot _ru>
 
 pkgname=brick
-pkgver=0.2.4.31
+pkgver=0.2.5.31
 pkgrel=1
 pkgdesc="Bitrix24 messenger"
 arch=('i686' 'x86_64')
@@ -13,11 +13,11 @@ conflicts=("brick-git" "mesa-demos")
 makedepends=("p7zip" "cmake")
 install=${pkgname}.install
 source=("https://github.com/buglloc/brick/archive/v${pkgver}.tar.gz")
-sha256sums=("8e14f23b07b2585bf95a072dc5b5d26a0ce92754badf263a7d088f75627c00f8")
-source_x86_64=("https://github.com/buglloc/cef-builds/raw/68a8676091f1caa9acaf1f66531a272b99846367/libs/cef-x86_64.tar.gz")
-sha256sums_x86_64=("707dbbcf036770cffb163d14d747e4edc4e769e8f813d3cd29c847426e2268ca")
-source_i686=("https://github.com/buglloc/cef-builds/raw/2c8ddaf890b7b9cc9353f7bad745109c4fd2083e/libs/cef-i686.tar.gz")
-sha256sums_i686=("fa20cb5e2dd47097861e90e7b0308bf3c4d01cc8d058ef2109b1109609181876")
+sha256sums=("6492c88d7f8799bb02067d572de94b5469045aeda18b5a254a8e1f4c5df90d2f")
+source_x86_64=("https://github.com/buglloc/cef-builds/raw/a719238c09e3ff3b341650b5f5ca115799560edd/libs/cef-x86_64.tar.gz")
+sha256sums_x86_64=("2d826a502b576da18d5d31f7028d3a2d10d1969b6450175c4ec596cec02d38e7")
+source_i686=("https://github.com/buglloc/cef-builds/raw/f9bef61268792ac8b37bd1f45bbe62840b2682a1/libs/cef-i686.tar.gz")
+sha256sums_i686=("bc8e3338ef6ea73c961a138f325ad613abbb8632fb34d4219fe58c8708c6e2fe")
 noextract=("cef-i686.tar.gz" "cef-x86_64.tar.gz")
 
 prepare() {
