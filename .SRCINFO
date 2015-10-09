@@ -1,6 +1,6 @@
 pkgbase = hime-git
 	pkgdesc = A GTK2+/GTK3+ based universal input method platform
-	pkgver = 1020.5046bf6
+	pkgver = 1040.130aa0b
 	pkgrel = 1
 	url = http://hime-ime.github.io/
 	install = hime-git.install

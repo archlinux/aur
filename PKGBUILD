@@ -2,7 +2,7 @@
 # Contributor: HIME team
 _pkgname=hime
 pkgname=hime-git
-pkgver=1020.5046bf6
+pkgver=1040.130aa0b
 pkgrel=1
 pkgdesc="A GTK2+/GTK3+ based universal input method platform"
 arch=('i686' 'x86_64')
