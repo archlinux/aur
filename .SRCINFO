@@ -1,0 +1,17 @@
+pkgbase = taskjuggler
+	pkgdesc = A project management tool for Linux and UNIX system-based operating systems.
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = http://www.taskjuggler.org
+	arch = any
+	license = GPL
+	depends = ruby
+	depends = ruby-mail
+	depends = ruby-term-ansicolor
+	noextract = taskjuggler-3.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/taskjuggler-3.5.0.gem
+	sha1sums = b4de15c6252bd285a27344b97bc7bd3b337e7943
+
+pkgname = taskjuggler
+
