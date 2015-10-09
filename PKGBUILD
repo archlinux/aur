@@ -33,7 +33,7 @@ package() {
     uuid="multi-monitors-add-on@spin83"
     cd "${srcdir}/${_gitname}"
 ## Apply Gnome 3.18 Patch
-    patch ${srcdir}/${_gitname}/${uuid}/metadata.json < ${srcdir}/gnome3.18.patch
+    patch ${srcdir}/${_gitname}/${uuid}/metadata.json < ${srcdir}/../gnome3.18.patch
 ##
     install -Dm644 "${uuid}/metadata.json" \
       "${pkgdir}/usr/share/gnome-shell/extensions/${uuid}/metadata.json"
