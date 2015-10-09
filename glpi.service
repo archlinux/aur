@@ -1,0 +1,6 @@
+[Unit]
+Description=GLPI
+
+[Service]
+WorkingDirectory=/usr/share/webapps/glpi
+ExecStart=/usr/bin/php -S localhost:8080 

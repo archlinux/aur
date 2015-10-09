@@ -1,0 +1,18 @@
+pkgbase = glpi
+	pkgdesc = GLPI Inventory Management
+	pkgver = 0.85.5
+	pkgrel = 1
+	url = http://www.glpi-project.org
+	arch = any
+	license = GPL
+	depends = nginx
+	depends = mysql
+	depends = php
+	options = !strip
+	source = https://forge.glpi-project.org/attachments/download/2093/glpi-0.85.5.tar.gz
+	source = glpi.service
+	sha256sums = 6dee0ca3dc01f0aece2b91302c42e790749f02c0a3603d20385da9b663474309
+	sha256sums = 2df019c2eada4bf8a31ee3fbb77e25f1e15882129bea19ebaabfbdddce8131b3
+
+pkgname = glpi
+
