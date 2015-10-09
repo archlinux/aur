@@ -1,6 +1,6 @@
 pkgbase = cryptoverif
 	pkgdesc = Cryptographic protocol verifier in the computational model
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = http://prosecco.gforge.inria.fr/personal/bblanche/cryptoverif/
 	arch = i686
