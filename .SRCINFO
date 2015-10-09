@@ -1,0 +1,17 @@
+pkgbase = ruby-mina
+	pkgdesc = Really fast deployer and server automation tool.
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = http://github.com/nadarei/mina
+	arch = any
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-open4
+	depends = ruby-rake
+	noextract = mina-0.3.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mina-0.3.7.gem
+	sha256sums = bd1fa2b56ed1aded882a12f6365a04496f5cf8a14c07f8c4f1f3cfc944ef34f6
+
+pkgname = ruby-mina
+
