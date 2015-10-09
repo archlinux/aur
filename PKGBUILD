@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=easytranscript
-pkgver=2.50.1
-pkgrel=4
+pkgver=2.50.4
+pkgrel=1
 pkgdesc="Easy to use transcription-software with a high feature volume"
 arch=('i686' 'x86_64')
 url="http://e-werkzeug.eu/index.php/en/products/easytranscript"
