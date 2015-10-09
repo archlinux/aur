@@ -1,0 +1,73 @@
+@@ -, +, @@ 
+ src/backends/x11/meta-monitor-manager-xrandr.c | 47 ++++++++++++++++++++++++--
+ 1 file changed, 44 insertions(+), 3 deletions(-)
+--- a/src/backends/x11/meta-monitor-manager-xrandr.c	
++++ a/src/backends/x11/meta-monitor-manager-xrandr.c	
+@@ -1017,6 +1017,41 @@ output_set_underscanning_xrandr (MetaMonitorManagerXrandr *manager_xrandr,
+     }
+ }
+ 
++static int
++output_get_fglrx_kernel_module_loaded()
++{
++  /* Checks if fglrx module has been loaded by parsing /proc/modules.
++   * Returns 1 if the module was found (and thus has been loaded), 0 if the
++   * module was not found and -1 if /proc/modules couldn't be opened.
++   */
++
++  int retval = 0; // defaults to not found
++  
++  FILE* fp;
++  char line[256];
++
++  fp = fopen("/proc/modules", "r");
++  if (!fp)
++    {
++      retval = -1;
++    }
++  else
++    {
++      while (fgets(line, sizeof(line), fp) != NULL)
++        {
++          char *entry = strtok(line, " \n");
++
++          if (strcmp(entry, "fglrx") == 0)
++            {
++              retval = 1;
++              break;
++            }
++        }
++      fclose(fp);
++    }
++  return retval;
++}
++
+ static void
+ meta_monitor_manager_xrandr_apply_configuration (MetaMonitorManager *manager,
+ 						 MetaCRTCInfo       **crtcs,
+@@ -1193,6 +1228,8 @@ meta_monitor_manager_xrandr_apply_configuration (MetaMonitorManager *manager,
+         }
+     }
+ 
++  int fglrx_kernel_module_loaded = output_get_fglrx_kernel_module_loaded();
++
+   for (i = 0; i < n_outputs; i++)
+     {
+       MetaOutputInfo *output_info = outputs[i];
+@@ -1205,9 +1242,13 @@ meta_monitor_manager_xrandr_apply_configuration (MetaMonitorManager *manager,
+                                (XID)output_info->output->winsys_id);
+         }
+ 
+-      output_set_presentation_xrandr (manager_xrandr,
+-                                      output_info->output,
+-                                      output_info->is_presentation);
++      /* Don't call output_set_presentation_xrandr if fglrx/catalyst is used, because that causes a crash. */
++      if (fglrx_kernel_module_loaded != 1)
++        {
++          output_set_presentation_xrandr (manager_xrandr,
++                                          output_info->output,
++                                          output_info->is_presentation);
++        }
+ 
+       if (output_get_supports_underscanning_xrandr (manager_xrandr, output_info->output))
+         output_set_underscanning_xrandr (manager_xrandr,
