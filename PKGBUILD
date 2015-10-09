@@ -5,8 +5,8 @@
 
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
-pkgver=5.0.4
-pkgrel=2
+pkgver=5.0.6
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -21,15 +21,6 @@ build() {
 
   rm -rf dkms/vboxhost/$pkgver/source
   cp -r /var/lib/dkms .
-
-  echo patch vboxhost files
-  # copy this dir to local dir so we can patch it.
-  cp -r -L dkms/vboxhost/$pkgver/source dkms/vboxhost/$pkgver/src
-  rm dkms/vboxhost/$pkgver/source
-  mv dkms/vboxhost/$pkgver/src dkms/vboxhost/$pkgver/source
-
-  patch dkms/vboxhost/$pkgver/source/vboxdrv/linux/SUPDrv-linux.c < ../SUPDrv-linux.patch
-  patch dkms/vboxhost/$pkgver/source/vboxnetadp/linux/VBoxNetAdp-linux.c < ../VBoxNetAdp-linux.patch
 
   echo "dkms_tree='$srcdir/dkms'" > dkms.conf
   
