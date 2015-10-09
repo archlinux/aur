@@ -1,0 +1,17 @@
+pkgbase = useragent-git
+	pkgdesc = Tool to print different useragents. Useful for curl or wget.
+	pkgver = r5.24fcd99
+	pkgrel = 1
+	url = https://github.com/gehaxelt/SH-UserAgent
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = bash
+	depends = bash
+	provides = useragent-git
+	conflicts = useragent-git
+	source = useragent-git::git+https://github.com/gehaxelt/SH-UserAgent.git
+	md5sums = SKIP
+
+pkgname = useragent-git
+
