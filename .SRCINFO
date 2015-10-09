@@ -1,0 +1,19 @@
+pkgbase = kurso_esperanto
+	pkgdesc = A multimedia computer program for teaching yourself Esperanto
+	pkgver = 4.1.2
+	pkgrel = 3
+	url = http://kurso.com.br
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	depends = phonon
+	depends = phonon-qt4-gstreamer
+	depends = libxext
+	source_i686 = http://kurso.com.br/kurso.i386.tar.gz
+	md5sums_i686 = fa580797b4fb2ee34b30dccc79fb4b8d
+	source_x86_64 = http://kurso.com.br/kurso.amd64.tar.gz
+	md5sums_x86_64 = 6ffdff9b6bb742e813093a93678926d5
+
+pkgname = kurso_esperanto
+
