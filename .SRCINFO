@@ -1,6 +1,6 @@
 pkgbase = vicare-scheme-git
 	pkgdesc = R6RS scheme implementation, from github's master branch
-	pkgver = 20150918.52ce5f3
+	pkgver = 20151009.e33534a
 	pkgrel = 1
 	url = http://marcomaggi.github.io/vicare.html
 	install = vicare-scheme.install
