@@ -1,6 +1,6 @@
 pkgbase = xfdashboard
 	pkgdesc = Maybe a Gnome shell like dashboard for Xfce
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://goodies.xfce.org/projects/applications/xfdashboard/start
 	install = xfdashboard.install
@@ -12,8 +12,8 @@ pkgbase = xfdashboard
 	depends = clutter
 	depends = garcon
 	depends = xdg-utils
-	source = http://archive.xfce.org/src/apps/xfdashboard/0.5/xfdashboard-0.5.1.tar.bz2
-	sha256sums = 94a6a55670b72fe757a8d7e98b535eb30df5f23d654ebebaa5bd0f9f6b7d46e2
+	source = http://archive.xfce.org/src/apps/xfdashboard/0.5/xfdashboard-0.5.2.tar.bz2
+	sha256sums = 139052e23bf86f7cc9884aa6a6ce2fd29ca20aa18a81abbaeecfca6c01ebdb8c
 
 pkgname = xfdashboard
 
