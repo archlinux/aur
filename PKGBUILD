@@ -1,6 +1,6 @@
 # Maintainer: Jakub Pelikan jakub.pelikan@gmail.com
 pkgname=create_ap-gui
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Gui application for easy creating access points. Application allows save configuration for quickly create AP."
 arch=('any')
