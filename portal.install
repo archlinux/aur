@@ -1,5 +1,5 @@
 post_install() {
-  portal-postconf -d "$HOST"
+  portal-postconf -d $(hostname)
 }
 
 post_upgrade() {
