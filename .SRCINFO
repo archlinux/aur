@@ -1,0 +1,15 @@
+pkgbase = libpafe
+	pkgdesc = A library for PaSoRi(FeliCa reader) RC-S3* series
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = http://homepage3.nifty.com/slokar/pasori/libpafe.html
+	install = libpafe.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libusb
+	source = http://homepage3.nifty.com/slokar/pasori/libpafe-0.0.8.tar.gz
+	md5sums = 9a148ece50962a0ab741ddbca6db0c8f
+
+pkgname = libpafe
+
