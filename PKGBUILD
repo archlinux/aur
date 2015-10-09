@@ -6,24 +6,20 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.11
-pkgrel=4
+pkgrel=5
+_rev=cbc4db14444c91f4f4b03aa1b228c2d51dacea6b
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python2' 'hicolor-icon-theme' 'farstream'
-             'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
-source=(https://downloads.sourceforge.net/project/$pkgname/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2
-        pidgin-2.10.11-gstreamer1.patch)
-sha256sums=('f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007'
-            '0b083115c4cc05e6da1d1e66fd1b9c33167417a43c12d932f664e6d87dc0afbe')
+             'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager'
+             'mercurial')
+source=(pidgin::hg+https://bitbucket.org/pidgin/main#revision=$_rev)
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Backport support for GStreamer 1.0
-  patch -Np1 -i ../pidgin-2.10.11-gstreamer1.patch
-  autoreconf -vi
+  cd $pkgbase
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
@@ -31,9 +27,9 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgbase
 
-  ./configure \
+  ./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-schemas-install \
@@ -54,7 +50,7 @@ package_pidgin(){
   optdepends=('aspell: for spelling correction')
   install=pidgin.install
 
-  cd "$srcdir/pidgin-$pkgver"
+  cd $pkgbase
 
   # For linking
   make -C libpurple DESTDIR="$pkgdir" install-libLTLIBRARIES
@@ -76,7 +72,7 @@ package_libpurple(){
               'python2-dbus: for purple-remote and purple-url-handler'
               'tk: Tcl/Tk scripting support')
 
-  cd "$srcdir/pidgin-$pkgver"
+  cd $pkgbase
 
   for _dir in libpurple share/sounds share/ca-certs m4macros po; do
     make -C "$_dir" DESTDIR="$pkgdir" install
@@ -87,7 +83,7 @@ package_finch(){
   pkgdesc="A ncurses-based messaging client"
   depends=('libpurple' 'libx11' 'python2')
 
-  cd "$srcdir/pidgin-$pkgver"
+  cd $pkgbase
 
   # For linking
   make -C libpurple DESTDIR="$pkgdir" install-libLTLIBRARIES
