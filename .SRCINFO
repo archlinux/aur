@@ -1,6 +1,6 @@
 pkgbase = popcorntime-git
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
-	pkgver = r5324.f453800
+	pkgver = r5335.da86004
 	pkgrel = 1
 	url = http://popcorntime.io
 	install = popcorntime.install
@@ -9,7 +9,7 @@ pkgbase = popcorntime-git
 	license = GPL3
 	makedepends = git
 	makedepends = nodejs-grunt-cli
-	makedepends = nodejs-bower
+	makedepends = bower
 	makedepends = npm
 	depends = alsa-lib
 	depends = gconf

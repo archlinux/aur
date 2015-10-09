@@ -2,7 +2,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=popcorntime-git
-pkgver=r5324.f453800
+pkgver=r5335.da86004
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://popcorntime.io"
 license=('GPL3')
 depends=('alsa-lib' 'gconf' 'gtk2' 'nss' 'ttf-font' 'libxtst')
 optdepends=('net-tools: vpn.ht client')
-makedepends=('git' 'nodejs-grunt-cli' 'nodejs-bower' 'npm')
+makedepends=('git' 'nodejs-grunt-cli' 'bower' 'npm')
 conflicts=('popcorntime')
 provides=('popcorntime')
 options=('!strip')
