@@ -14,7 +14,6 @@ depends=('libxtst' 'wxgtk' 'webkitgtk2' 'yubikey-personalization' 'xerces-c')
 makedepends=('git' 'zip' 'libxt')
 optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe-git' 'pwsafe' 'pwsafe-gui')
-#source=(http://downloads.sourceforge.net/project/$pkgname/Linux-BETA/$_pkgver/$_pkgname-$pkgver-src.tgz{,.sig})
 source=(https://github.com/pwsafe/pwsafe/releases/download/$pkgver/pwsafe-$pkgver-src.tgz{,.sig})
 
 install='passwordsafe.install'
