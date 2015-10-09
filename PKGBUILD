@@ -7,17 +7,15 @@ url="https://github.com/Felandral/Fisoco"
 arch=('any')
 license=('GPLv3')
 depends=()
-makedepends=('git' 'gtkmm3' 'intltool')
+makedepends=('gtkmm3' 'intltool')
 conflicts=()
 replaces=()
 backup=()
-source=("${pkgname}-${pkgver}::git+http://github.com/Felandral/Fisoco#branch=master")
+source=("${pkgname}-${pkgver}::https://github.com/Felandral/Fisoco/tarball/mastere")
 md5sums=('SKIP')
-pkgver() {
-  cd "$srcdir/$pkgname-$pkgver"
-  # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
+#pkgver() {
+#  cd "$srcdir/$pkgname-$pkgver"
+#}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
