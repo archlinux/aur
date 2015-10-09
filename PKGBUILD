@@ -5,17 +5,18 @@
 pkgname=gnome-terminal-fedora
 _pkgname=gnome-terminal
 pkgver=3.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('vte3-notification' 'gsettings-desktop-schemas' 'dconf' 'libnautilus-extension')
+depends=('vte3-notification' 'gsettings-desktop-schemas' 'dconf')
 makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'desktop-file-utils'
-             'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
+             'libnautilus-extension' 'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
 optdepends=('gconf: settings migration when upgrading from older version')
 options=('!emptydirs')
 url='https://www.gnome.org'
-conflicts=('gnome-terminal')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 install="${pkgname}.install"
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/$_pkgname-${pkgver}.tar.xz"
@@ -57,8 +58,7 @@ prepare () {
 build() {
 	cd "${_pkgname}-${pkgver}"
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-		--libexecdir=/usr/lib/${_pkgname} --disable-static --with-nautilus-extension \
-		--enable-debug
+		--libexecdir=/usr/lib/${_pkgname} --disable-static --with-nautilus-extension
 	make
 }
 
