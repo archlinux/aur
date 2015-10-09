@@ -11,7 +11,7 @@ pkgbase = nion-swift
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
-	source = nion-swift.zip::http://a.nion.com/swift/files/NionSwift_Linux_x64_0.5.1.zip
+	source = nion-swift.zip::http://nion.com/swift/files/NionSwift_Linux_x64_python3.4m_0.5.7.zip
 	md5sums = SKIP
 
 pkgname = nion-swift
