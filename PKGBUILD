@@ -10,13 +10,13 @@ license=('unknown')
 depends=('gnome-shell')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/anduchs/audio-output-switcher#branch=ports2"
-        "gnome-shell-3.16.patch")
+        "gnome-shell-version.patch")
 sha256sums=('SKIP'
-            'bf075f0a396e27af2c71ea9fcdb465504e544ffbcf0e31183f6b76098afdc48d')
+            '544486ebf5f8e882bdda9b842aab1d8d6b0c7edbe0c48c09960da05ff5e53775')
 
 prepare() {
   cd "$pkgname"
-  patch -p0 -i "$srcdir/gnome-shell-3.16.patch"
+  patch -p0 -i "$srcdir/gnome-shell-version.patch"
 }
 
 pkgver() {

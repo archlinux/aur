@@ -9,9 +9,9 @@ pkgbase = gnome-shell-extension-audio-output-switcher-git
 	makedepends = git
 	depends = gnome-shell
 	source = gnome-shell-extension-audio-output-switcher-git::git+https://github.com/anduchs/audio-output-switcher#branch=ports2
-	source = gnome-shell-3.16.patch
+	source = gnome-shell-version.patch
 	sha256sums = SKIP
-	sha256sums = bf075f0a396e27af2c71ea9fcdb465504e544ffbcf0e31183f6b76098afdc48d
+	sha256sums = 544486ebf5f8e882bdda9b842aab1d8d6b0c7edbe0c48c09960da05ff5e53775
 
 pkgname = gnome-shell-extension-audio-output-switcher-git
 
