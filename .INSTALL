@@ -1,3 +1,7 @@
 post_install() {
 	echo "To setup GNUpot: gnupot -n"
 }
+
+post_upgrade() {
+	echo "To update GNUpot you must run the setup again with: gnupot -n"
+}
