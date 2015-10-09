@@ -1,7 +1,7 @@
 pkgbase = veracrypt
 	pkgdesc = Disk encryption with strong security based on TrueCrypt
 	pkgver = 1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://veracrypt.codeplex.com/
 	install = veracrypt.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = veracrypt
 	depends = wxgtk>=3.0.0
 	depends = libsm
 	depends = device-mapper
-	source = http://sourceforge.net/projects/veracrypt/files/VeraCrypt 1.16/veracrypt_1.16_Source.tar.bz2/download
+	source = VeraCrypt-1.16::http://sourceforge.net/projects/veracrypt/files/VeraCrypt 1.16/veracrypt_1.16_Source.tar.bz2/download
 	source = no_makeself.patch
 	source = veracrypt.desktop
 	source = veracrypt.install
