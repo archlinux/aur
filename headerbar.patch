@@ -1,48 +1,7 @@
 diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_window.ui
 --- pamac.orig/resources/manager_window.ui	2015-10-03 19:49:55.000000000 +0200
-+++ pamac.patch/resources/manager_window.ui	2015-10-09 08:46:15.665810513 +0200
-@@ -2,48 +2,9 @@
- <!-- Generated with glade 3.19.0 -->
- <interface>
-   <requires lib="gtk+" version="3.12"/>
--  <object class="GtkMenu" id="main_menu">
--    <property name="visible">True</property>
--    <property name="can_focus">False</property>
--    <child>
--      <object class="GtkMenuItem" id="history_item">
--        <property name="visible">True</property>
--        <property name="can_focus">False</property>
--        <property name="label" translatable="yes">View History</property>
--        <signal name="activate" handler="on_history_item_activate" swapped="no"/>
--      </object>
--    </child>
--    <child>
--      <object class="GtkMenuItem" id="local_item">
--        <property name="visible">True</property>
--        <property name="can_focus">False</property>
--        <property name="label" translatable="yes">Install Local Packages</property>
--        <signal name="activate" handler="on_local_item_activate" swapped="no"/>
--      </object>
--    </child>
--    <child>
--      <object class="GtkMenuItem" id="preferences_item">
--        <property name="visible">True</property>
--        <property name="can_focus">False</property>
--        <property name="label" translatable="yes">_Preferences</property>
--        <property name="use_underline">True</property>
--        <signal name="activate" handler="on_preferences_item_activate" swapped="no"/>
--      </object>
--    </child>
--    <child>
--      <object class="GtkMenuItem" id="about_item">
--        <property name="visible">True</property>
--        <property name="can_focus">False</property>
--        <property name="label" translatable="yes">_About</property>
--        <property name="use_underline">True</property>
--        <signal name="activate" handler="on_about_item_activate" swapped="no"/>
--      </object>
--    </child>
--  </object>
++++ pamac.patch/resources/manager_window.ui	2015-10-09 09:12:17.101992113 +0200
+@@ -43,7 +43,6 @@
    <template class="PamacManagerWindow" parent="GtkApplicationWindow">
      <property name="visible">True</property>
      <property name="can_focus">False</property>
@@ -50,7 +9,7 @@ diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_w
      <property name="window_position">center</property>
      <property name="default_height">600</property>
      <property name="icon_name">system-software-install</property>
-@@ -54,118 +15,6 @@
+@@ -54,118 +53,6 @@
          <property name="orientation">vertical</property>
          <property name="spacing">6</property>
          <child>
@@ -169,7 +128,32 @@ diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_w
            <object class="GtkPaned" id="paned1">
              <property name="visible">True</property>
              <property name="can_focus">True</property>
-@@ -207,8 +56,8 @@
+@@ -179,24 +66,6 @@
+                     <property name="visible">True</property>
+                     <property name="can_focus">False</property>
+                     <property name="orientation">vertical</property>
+-                    <property name="spacing">6</property>
+-                    <child>
+-                      <object class="GtkSearchEntry" id="search_entry">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="has_focus">True</property>
+-                        <property name="receives_default">True</property>
+-                        <property name="caps_lock_warning">False</property>
+-                        <property name="primary_icon_name">edit-find-symbolic</property>
+-                        <signal name="activate" handler="on_search_entry_activate" swapped="no"/>
+-                        <signal name="icon-press" handler="on_search_entry_icon_press" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">0</property>
+-                      </packing>
+-                    </child>
+                     <child>
+                       <object class="GtkBox" id="search_aur_box">
+                         <property name="visible">True</property>
+@@ -207,14 +76,15 @@
                            <object class="GtkLabel" id="search_aur_label">
                              <property name="visible">True</property>
                              <property name="can_focus">False</property>
@@ -179,10 +163,35 @@ diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_w
                              <property name="label" translatable="yes">Search in AUR</property>
                              <property name="xalign">0</property>
                            </object>
-@@ -836,5 +685,158 @@
+                           <packing>
+                             <property name="expand">False</property>
+                             <property name="fill">True</property>
++                            <property name="padding">8</property>
+                             <property name="position">0</property>
+                           </packing>
+                         </child>
+@@ -228,6 +98,7 @@
+                           <packing>
+                             <property name="expand">False</property>
+                             <property name="fill">True</property>
++                            <property name="padding">6</property>
+                             <property name="position">1</property>
+                           </packing>
+                         </child>
+@@ -235,6 +106,7 @@
+                       <packing>
+                         <property name="expand">False</property>
+                         <property name="fill">True</property>
++                        <property name="padding">9</property>
+                         <property name="position">1</property>
+                       </packing>
+                     </child>
+@@ -834,6 +706,132 @@
+             <property name="position">1</property>
+           </packing>
          </child>
-       </object>
-     </child>
++      </object>
++    </child>
 +    <child type="titlebar">
 +      <object class="GtkHeaderBar" id="headerbar1">
 +        <property name="visible">True</property>
@@ -273,6 +282,17 @@ diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_w
 +            </child>
 +          </object>
 +        </child>
++        <child type="title">
++          <object class="GtkSearchEntry" id="search_entry">
++            <property name="visible">True</property>
++            <property name="can_focus">True</property>
++            <property name="receives_default">True</property>
++            <property name="caps_lock_warning">False</property>
++            <property name="primary_icon_name">edit-find-symbolic</property>
++            <signal name="activate" handler="on_search_entry_activate" swapped="no"/>
++            <signal name="icon-press" handler="on_search_entry_icon_press" swapped="no"/>
++          </object>
++        </child>
 +        <child>
 +          <object class="GtkMenuButton" id="menu_button">
 +            <property name="visible">True</property>
@@ -296,46 +316,7 @@ diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_w
 +            <property name="position">1</property>
 +          </packing>
 +        </child>
-+      </object>
-+    </child>
+       </object>
+     </child>
    </template>
-+  <object class="GtkMenu" id="main_menu">
-+    <property name="visible">True</property>
-+    <property name="can_focus">False</property>
-+    <child>
-+      <object class="GtkMenuItem" id="history_item">
-+        <property name="visible">True</property>
-+        <property name="can_focus">False</property>
-+        <property name="label" translatable="yes">View History</property>
-+        <signal name="activate" handler="on_history_item_activate" swapped="no"/>
-+      </object>
-+    </child>
-+    <child>
-+      <object class="GtkMenuItem" id="local_item">
-+        <property name="visible">True</property>
-+        <property name="can_focus">False</property>
-+        <property name="label" translatable="yes">Install Local Packages</property>
-+        <signal name="activate" handler="on_local_item_activate" swapped="no"/>
-+      </object>
-+    </child>
-+    <child>
-+      <object class="GtkMenuItem" id="preferences_item">
-+        <property name="visible">True</property>
-+        <property name="can_focus">False</property>
-+        <property name="label" translatable="yes">_Preferences</property>
-+        <property name="use_underline">True</property>
-+        <signal name="activate" handler="on_preferences_item_activate" swapped="no"/>
-+      </object>
-+    </child>
-+    <child>
-+      <object class="GtkMenuItem" id="about_item">
-+        <property name="visible">True</property>
-+        <property name="can_focus">False</property>
-+        <property name="label" translatable="yes">_About</property>
-+        <property name="use_underline">True</property>
-+        <signal name="activate" handler="on_about_item_activate" swapped="no"/>
-+      </object>
-+    </child>
-+  </object>
- </interface>
 Only in pamac.patch/resources: manager_window.ui~
