@@ -1,6 +1,6 @@
 pkgbase = python2-keepkey
 	pkgdesc = Python library for communicating with KeepKey Hardware Wallet
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/keepkey/python-keepkey
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = python2-keepkey
 	provides = python2-keepkey
 	conflicts = keepkeyctl
 	options = !emptydirs
-	source = python2-keepkey-0.6.5.tar.gz::https://codeload.github.com/keepkey/python-keepkey/tar.gz/v0.6.5
-	md5sums = 2f30040ad6b60b9418e584075b0b4239
-	sha256sums = 035ef8bc8c854ab1e69b2e0f244f7a5c191a99b54b036e8865090011f2a6028d
+	source = python2-keepkey-0.6.6.tar.gz::https://codeload.github.com/keepkey/python-keepkey/tar.gz/v0.6.6
+	md5sums = f6808f9f6197770f67079295bd8ee372
+	sha256sums = ffd7cbda3e97707e0ed80b62268ceb2e505b55bfbd0650f47ef5e0b65a53a8b9
 
 pkgname = python2-keepkey
 
