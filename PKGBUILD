@@ -1,9 +1,9 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=fad7f041cd3813bdac27a735cc4e31f70f2dd927 # lastest commit 20150806
+_git=343c581a9b534cc92a906fb3ffbe43faa5b74fd2 # lastest commit 20150806
 pkgname=zpm
 pkgver=20151009
-pkgrel=1
+pkgrel=2
 pkgdesc="ZPM ( Zsh plugin manager ) is an yet another plugin manager for zsh similar to vim-plug"
 arch=('any')
 url="https://github.com/horosgrisa/${pkgname}"
@@ -13,7 +13,7 @@ makedepends=('git' 'fakeroot')
 install='zpm.install'
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('6813d57b95275f81d55046a8ac2e4111a90780d0b9b8c703c39b13a3bc720a96')
+sha256sums=('b6573b8fe5b0e3e46a6d7b94c049c3c46580ad01ba12432382bd46b2701e6ce9')
 
 package() {
     install -d ${pkgdir}/usr/share/zpm
