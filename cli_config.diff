@@ -1,0 +1,8 @@
+--- a/SQLiteStudio3/sqlitestudiocli/cli_config.cpp	2015-10-06 22:16:58.398177090 -0400
++++ b/SQLiteStudio3/sqlitestudiocli/cli_config.cpp	2015-10-06 22:16:50.034980953 -0400
+@@ -1,4 +1,5 @@
+ #include "cli_config.h"
++#include <QDataStream>
+ 
+ CFG_DEFINE(Cli)
+ 

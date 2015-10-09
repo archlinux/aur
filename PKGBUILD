@@ -5,7 +5,7 @@ pkgname=sqlitestudio
 _pkgname=SQLiteStudio
 pkgver=3.0.6
 _pkgver=3
-pkgrel=3
+pkgrel=4
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
 url='http://sqlitestudio.pl/'
@@ -37,14 +37,23 @@ source=(
 http://sqlitestudio.pl/files/sqlitestudio${_pkgver}/complete/tar/sqlitestudio-$pkgver.tar.gz
 sqlitestudio.desktop
 tclconfig.diff
+utils.diff
+db.diff
+cli_config.diff
 )
 sha256sums=('7b376b0adb3ec2b284d7dbea3115a436f4d567c1e43e28f36cf872355978b3d5'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2'
-            'f63b112d42bc670ab95a264ee1d82acdefad34733c18554b17801fa5c2f56bae')
+            'f63b112d42bc670ab95a264ee1d82acdefad34733c18554b17801fa5c2f56bae'
+            '10f8ed73488b30efbcce563fb8dc6bc8b11a6511f42e5e0f8c7f9cab360dd855'
+            '6e162788b3df1d60145fe982ce7db1a22dd1ac37f5d100736281e4ccb66510f6'
+            '29b7ba8e453ce091f634e5a0a921dd01e5190a34f5a84b670e8ae6c3b820c865')
 
 prepare(){
   cd "$srcdir"
-  patch -p1 -i "$srcdir"/tclconfig.diff
+  patch -p1 -i tclconfig.diff
+  patch -p1 -i utils.diff
+  patch -p1 -i db.diff
+  patch -p1 -i cli_config.diff
 
 }
 build(){

@@ -1,0 +1,10 @@
+--- a/SQLiteStudio3/coreSQLiteStudio/common/utils.cpp	2015-10-06 22:17:20.651145333 -0400
++++ b/SQLiteStudio3/coreSQLiteStudio/common/utils.cpp   2015-10-06 22:16:19.332151242 -0400
+@@ -11,6 +11,7 @@
+ #include <QDebug>
+ #include <QRegularExpression>
+ #include <QDir>
++#include <QDataStream>
+ 
+ #ifdef Q_OS_LINUX
+ #include <sys/utsname.h>

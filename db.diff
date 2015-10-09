@@ -1,0 +1,10 @@
+--- a/SQLiteStudio3/coreSQLiteStudio/db/db.cpp	2015-10-06 22:17:08.918004503 -0400
++++ b/SQLiteStudio3/coreSQLiteStudio/db/db.cpp 	2015-10-06 22:15:58.142498766 -0400
+@@ -1,6 +1,7 @@
+ #include "db.h"
+ #include <QMetaEnum>
+ #include <QDebug>
++#include <QDataStream>
+ 
+ Db::Db()
+ {
