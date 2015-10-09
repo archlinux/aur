@@ -1,6 +1,6 @@
 pkgbase = i3lock-blur
 	pkgdesc = An improved screenlocker based upon XCB and PAM with background blurring filter
-	pkgver = 2.7
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = http://github.com/karulont/i3lock-blur/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = i3lock-blur
 	conflicts = i3lock
 	options = docs
 	backup = etc/pam.d/i3lock
-	source = git+https://github.com/karulont/i3lock-blur/#tag=2.7
+	source = git+https://github.com/karulont/i3lock-blur/#tag=2.7.2
 	sha512sums = SKIP
 
 pkgname = i3lock-blur
