@@ -6,6 +6,7 @@ After=network.target
 ExecStart=/var/madsonic/madsonic.sh
 ExecStop=/bin/kill -15 $MAINPID
 Type=forking
+User=madsonic
  
 [Install]
 WantedBy=multi-user.target

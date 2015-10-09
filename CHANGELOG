@@ -1,5 +1,9 @@
 Madsonic 5.1 (stable) Changelog
 
+Server 5.1.5250 - 2015-08-13 PKGREL 2
+--------------------------------------------
+* New: Madsonic service now runs as madsonic user, rather than root.
+
 Server 5.1.5250 - 2015-08-13
 --------------------------------------------
 + New: Fixed taglib build error

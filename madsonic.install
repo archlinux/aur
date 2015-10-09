@@ -1,4 +1,6 @@
 post_install() {
+  useradd -d /var/madsonic -MrU madsonic
+  chown -R madsonic:madsonic /var/madsonic
   systemctl daemon-reload &> /dev/null
   echo "*************************************************"
   echo "* Edit /etc/madsonic.conf to configure madsonic *"
@@ -7,8 +9,21 @@ post_install() {
 }
 
 post_upgrade(){
+  useradd -d /var/madsonic -MrU madsonic
+  chown -R madsonic:madsonic /var/madsonic
   systemctl daemon-reload &> /dev/null
   echo -e "\033[31;1mIf upgrading from 5.1.5200 or earlier, and you have customized your madsonic.sh, you will need to manually replace \n\t\033[37m /var/madsonic/madsonic.sh \033[31m with \033[37m /var/madsonic/madsonic.sh.pacnew \033[31m \nfor /etc/madsonic.conf to be recognized.\033[0m"
+  echo -e "\nMadsonic now runs under the \033[1mmadsonic\033[0m user. You may need to adjust the permissions of any external music directories to allow madsonic access.\n"
+
+  systemctl is-active madsonic.service >/dev/null && systemctl restart madsonic.service
   
+}
+
+pre_remove(){
+  systemctl stop madsonic
+}
+
+post_remove(){
+  userdel madsonic
 }
 
