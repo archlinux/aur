@@ -29,15 +29,7 @@ build() {
 }
 package() {
 	cd "${srcdir}/${_pkgname}"
-	echo "Packaging.. : [Desktop Shortcut] | Icon | Other Files | Done"
 	make DESTDIR="${pkgdir}/" install
 }
 
-post_install() {
-	glib-compile-schemas /usr/share/glib-2.0/schemas
-	ldconfig
-}
 
-post_upgrade() {
-	post_install $1
-}
