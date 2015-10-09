@@ -1,7 +1,7 @@
 pkgbase = minionpro
 	pkgdesc = Myriad and Minion for LaTeX (the not-xeLaTeX way)
 	pkgver = 2.015
-	pkgrel = 9
+	pkgrel = 10
 	url = http://lglinux.blogspot.com/2007/09/myriad-and-minion-for-latex.html
 	install = minionpro.install
 	arch = any

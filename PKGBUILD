@@ -1,7 +1,7 @@
 # Maintainer:  Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=minionpro
 pkgver=2.015
-pkgrel=9
+pkgrel=10
 pkgdesc="Myriad and Minion for LaTeX (the not-xeLaTeX way)"
 url="http://lglinux.blogspot.com/2007/09/myriad-and-minion-for-latex.html"
 arch=('any')
