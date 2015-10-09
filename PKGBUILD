@@ -1,6 +1,6 @@
 # Maintainer: Fredrick Brennan <admin@8chan.co>
 pkgname=waifu2x-git
-pkgver=r260.2ca9d90
+pkgver=r264.0149e06
 pkgrel=1
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url=""
 license=('MIT')
 groups=()
 depends=('opencl-headers' 'ocl-icd' 'opencv')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'make')
 optdepends=('cuda: Significantly speeds up operations, but only works with NVIDIA GPU')
 provides=('waifu2x' 'waifu2x-converter-cpp')
 conflicts=()
@@ -22,9 +22,7 @@ md5sums=('SKIP') #generate with 'makepkg -g'
 gitreponame="waifu2x-converter-cpp"
 
 prepare() {
-  cd $gitreponame
-
-  patch -Np1 -i ../../arch_use_usr_share_for_models.patch
+  sed -i "s/waifu2x-converter-cpp/waifu2x/g" $gitreponame/CMakeLists.txt
 }
 
 build() {
@@ -32,19 +30,15 @@ build() {
   #
   # BUILD HERE
   #
-  cmake .
+  cmake -DINSTALL_MODELS=on .
   make
 }
 
 package() {
   ## Waifu2x's Makefile has no `install`
   ## Just copy its binary, and some files it require...
-  install -D $gitreponame/$gitreponame $pkgdir/usr/bin/waifu2x
-  install -D $gitreponame/libw2xc.so $pkgdir/usr/lib/libw2xc.so
+  make DESTDIR=$pkgdir install -C$gitreponame
   install -D ../waifu2x.1.gz $pkgdir/usr/share/man/man1/waifu2x.1.gz
-  install -D $gitreponame/src/w2xconv.h $pkgdir/usr/include/w2xconv.h
-  mkdir -p $pkgdir/usr/share/waifu2x || true
-  cp -r $gitreponame/models_rgb $pkgdir/usr/share/waifu2x
 }
 
 # From https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
@@ -54,9 +48,8 @@ pkgver() {
 }
 
 check() {
-  cd $gitreponame
   msg 'Running Waifu2x'\''s test suite. Depending on your processor and GPU, this may take a while.'
-  ./runtest
+  make test ARGS="-V" -C$gitreponame
 }
 
 # vim:set ts=2 sw=2 et:
