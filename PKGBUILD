@@ -25,6 +25,6 @@ md5sums=('3a4130a26d21148a6d3230a4f8555704'
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
   rm -r "$pkgdir"/usr/etc
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_npmname}/LICENSE"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
