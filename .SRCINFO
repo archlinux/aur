@@ -1,6 +1,6 @@
 pkgbase = nion-swift
 	pkgdesc = Program developed by Nion Co. for interfacing with electron microscopes and for data analysis.
-	pkgver = 0.5.1
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = http://nion.com/swift/
 	arch = i686

@@ -1,6 +1,6 @@
 # Maintianer: Jordan Pierce <jordan.pierce.00@gmail.com>
 pkgname=nion-swift
-pkgver=0.5.1
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="Program developed by Nion Co. for interfacing with electron microscopes and for data analysis."
 arch=('i686' 'x86_64')
