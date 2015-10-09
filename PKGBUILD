@@ -2,8 +2,8 @@
 _plugin_name=image-block
 _plugin_version=2.1
 _plugin_id=5613
-pkgdesc="FoxyProxy is an advanced proxy management tool that completely replaces Firefox's limited proxying capabilities."
-license=('GPL')
+pkgdesc="Image Block adds a toggle button that conditionally blocks/allows loading of images on webpages."
+license=('LGPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
