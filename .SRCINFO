@@ -1,12 +1,14 @@
 pkgbase = nodejs-bower
 	pkgdesc = A package manager for the web
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bower.io/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	provides = bower
+	conflicts = bower
 	noextract = bower-1.5.3.tgz
 	source = http://registry.npmjs.org/bower/-/bower-1.5.3.tgz
 	source = LICENSE
