@@ -1,7 +1,7 @@
 pkgbase = brainfpv
-	pkgdesc = Ground control station and firmware for BrainFPV flight controller
+	pkgdesc = Ground control station and firmware for BrainFPV flight controller.
 	pkgver = 20150928
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BrainFPV/TauLabs
 	arch = i686
 	arch = x86_64
