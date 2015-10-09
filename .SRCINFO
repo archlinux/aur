@@ -1,14 +1,14 @@
 pkgbase = mma-songs
 	pkgdesc = Songs archive for Musical MIDI Accompaniment (MMA)
-	pkgver = 15.01
+	pkgver = 15.09
 	pkgrel = 1
 	url = http://www.mellowood.ca/mma/
 	arch = any
 	license = GPL
 	options = !strip
 	options = !zipman
-	source = http://www.mellowood.ca/mma/examples/mma-songs-15.01.tar.gz
-	sha1sums = 1ddc1636b31313f307680a7d89b015a4621afe00
+	source = http://www.mellowood.ca/mma/examples/mma-songs-15.09.tar.gz
+	sha1sums = 5491e26d6c03ec1cfd3afa21a3dccdb30c0d7c18
 
 pkgname = mma-songs
 
