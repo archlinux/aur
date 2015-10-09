@@ -1,0 +1,15 @@
+pkgbase = copy-agent-dark-icons
+	pkgdesc = Copy.com sync agent monochrome dark icons
+	pkgver = 0.1
+	pkgrel = 1
+	url = www.copy.com
+	arch = any
+	license = GPL
+	depends = copy-agent
+	source = copy.svg::https://copy.com/eyykUpEGKdEelWgh
+	source = copy-agent.svg::https://copy.com/beTJ0o7JCa3DUATE
+	sha256sums = 7c4ef6b397218f1bf84e59d011ee8dcf0a55d2b25c3b89cfa3a64d2c97592dd3
+	sha256sums = 1849eae0d9ac5ed57a4bb841f14b3ea56925295bdfc6b01763a4ce54679bfe47
+
+pkgname = copy-agent-dark-icons
+
