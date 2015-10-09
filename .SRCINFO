@@ -1,0 +1,14 @@
+pkgbase = demjson
+	pkgdesc = Encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://deron.meranda.us/python/demjson/
+	arch = any
+	license = LGPL
+	makedepends = python2-distribute
+	depends = python2>=2.6.0
+	source = http://pypi.python.org/packages/source/d/demjson/demjson-2.2.3.tar.gz
+	md5sums = 6e0cba366f6697f51f08263516dcb4b0
+
+pkgname = demjson
+
