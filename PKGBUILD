@@ -18,10 +18,10 @@
 
 pkgname='openonload'
 pkgdesc="A high performance network stack from Solarflare."
-pkgver='201502.u2'
+pkgver='201509'
 if [[ -z "$_kernelver" ]]; then
     #_kernelver="$(uname -r)"                                      # running
-    _kernelver="$(cat /lib/modules/extramodules-3.14-lts/version)" # installed
+    _kernelver="$(cat /lib/modules/extramodules-4.1-lts/version)"  # installed
 fi
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ source=("http://www.openonload.org/download/openonload-${pkgver//\./-}.tgz"
         'openonload-201405-extramodules-and-noinitrc.patch'
         'openonload-201405-extramodules-and-noinitrc2.patch'
 )
-sha512sums=('2f345653f8df621e60ab0e177a165ff72ea4d8bea47adc173e89f1b7b194ca77a452aa6cbb13053f0600171f0aacce677f34ec71eb4ea7ecd5a5d165dd2b1015'
+sha512sums=('012e65107327d52af455e8c6b476b65a360180269d47beb4b99883883af8e5c1c017dfbf13f112c25db5811d3cb92f52316e3311ff4cc4cb138dec2fc8f9d47a'
             'ac464250f2fb96d13e8ae129bac80c03f8cca62e450fdd765f24ccd064e28e9942e4a16ebc693e75c71fc1eb86c3a1b08337b2e39c6c618e129d8ec87d872bdb'
             'b7e4529e37c64f99c660ca9b58f388cdd8f0d2f250ba875eb210f4909bb1f1c985a065aae64c048ca6f824adc6e3176c6eae1f582c049631326db73e939edd7b'
             'd4fda83764e79cff525f578e14b337937d2a6a3e0fc5f3cc5ec07b739f4bcc46b294fa560db595b0efb14bdf70eab44e833c05278e28d8fb947f9f8b77748a78'
@@ -112,7 +112,6 @@ package() {
   install -m644 ChangeLog         "${pkgdir}/usr/share/doc/openonload"
   install -m644 LICENSE           "${pkgdir}/usr/share/doc/openonload"
   install -m644 README            "${pkgdir}/usr/share/doc/openonload"
-  install -m644 README.affinity   "${pkgdir}/usr/share/doc/openonload"
   install -m644 README.ef_vi      "${pkgdir}/usr/share/doc/openonload"
   install -m644 ReleaseNotes      "${pkgdir}/usr/share/doc/openonload"
   install -m644 ReleaseNotes-sfc  "${pkgdir}/usr/share/doc/openonload"
