@@ -1,5 +1,5 @@
 pkgbase = pamac-patched-headerbar
-	pkgdesc = A Gtk3 frontend for libalpm
+	pkgdesc = A Gtk3 frontend for libalpm, patched by me to use GtkHeaderBar to match GNOME
 	pkgver = 2.4.2
 	pkgrel = 2
 	url = https://github.com/manjaro/pamac
