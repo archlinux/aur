@@ -1,18 +1,27 @@
 pkgbase = glpi
 	pkgdesc = GLPI Inventory Management
 	pkgver = 0.85.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.glpi-project.org
+	install = glpi.install
 	arch = any
 	license = GPL
-	depends = nginx
 	depends = mysql
 	depends = php
+	optdepends = nginx: a more performant webserver
+	optdepends = apache: a more performant webserver
 	options = !strip
+	backup = etc/glpi/config_db.php
 	source = https://forge.glpi-project.org/attachments/download/2093/glpi-0.85.5.tar.gz
+	source = glpi.install
 	source = glpi.service
+	source = glpi-cron.service
+	source = glpi-cron.timer
 	sha256sums = 6dee0ca3dc01f0aece2b91302c42e790749f02c0a3603d20385da9b663474309
-	sha256sums = 2df019c2eada4bf8a31ee3fbb77e25f1e15882129bea19ebaabfbdddce8131b3
+	sha256sums = 6bdb13bca4392899f64038f0cea82a3a12289ea177a92c44922d012c2ee04f3d
+	sha256sums = c5ca6a8d1bcc73c71348d5f8a4c3de0fd023c346d1c2bf02c9dd627bcda9bfe8
+	sha256sums = 6b515c1c8cc44ef703fe01e53b64d6aea56ed1c833b3553233482437478d4e77
+	sha256sums = eea9489db1fa8f4762957eb6299dd22ca43c25f9dc62628c973a53cbcfdbab1f
 
 pkgname = glpi
 

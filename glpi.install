@@ -1,0 +1,16 @@
+post_install() {
+  groupadd --system glpi
+  useradd --system \
+    --home-dir /var/lib/glpi \
+    --shell /usr/bin/nologin \
+    --gid glpi \
+    glpi
+
+  chown -R glpi:glpi /var/lib/glpi /etc/glpi
+}
+
+post_remove() {
+  userdel glpi
+}
+
+# vim:set ts=2 sw=2 et:

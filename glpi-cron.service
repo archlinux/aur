@@ -1,0 +1,6 @@
+[Unit]
+Description=Simulate GLPI Cron
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/webapps/glpi/scripts/glpi_cron_curl.sh
