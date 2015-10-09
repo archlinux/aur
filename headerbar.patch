@@ -1,0 +1,341 @@
+diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_window.ui
+--- pamac.orig/resources/manager_window.ui	2015-10-03 19:49:55.000000000 +0200
++++ pamac.patch/resources/manager_window.ui	2015-10-09 08:46:15.665810513 +0200
+@@ -2,48 +2,9 @@
+ <!-- Generated with glade 3.19.0 -->
+ <interface>
+   <requires lib="gtk+" version="3.12"/>
+-  <object class="GtkMenu" id="main_menu">
+-    <property name="visible">True</property>
+-    <property name="can_focus">False</property>
+-    <child>
+-      <object class="GtkMenuItem" id="history_item">
+-        <property name="visible">True</property>
+-        <property name="can_focus">False</property>
+-        <property name="label" translatable="yes">View History</property>
+-        <signal name="activate" handler="on_history_item_activate" swapped="no"/>
+-      </object>
+-    </child>
+-    <child>
+-      <object class="GtkMenuItem" id="local_item">
+-        <property name="visible">True</property>
+-        <property name="can_focus">False</property>
+-        <property name="label" translatable="yes">Install Local Packages</property>
+-        <signal name="activate" handler="on_local_item_activate" swapped="no"/>
+-      </object>
+-    </child>
+-    <child>
+-      <object class="GtkMenuItem" id="preferences_item">
+-        <property name="visible">True</property>
+-        <property name="can_focus">False</property>
+-        <property name="label" translatable="yes">_Preferences</property>
+-        <property name="use_underline">True</property>
+-        <signal name="activate" handler="on_preferences_item_activate" swapped="no"/>
+-      </object>
+-    </child>
+-    <child>
+-      <object class="GtkMenuItem" id="about_item">
+-        <property name="visible">True</property>
+-        <property name="can_focus">False</property>
+-        <property name="label" translatable="yes">_About</property>
+-        <property name="use_underline">True</property>
+-        <signal name="activate" handler="on_about_item_activate" swapped="no"/>
+-      </object>
+-    </child>
+-  </object>
+   <template class="PamacManagerWindow" parent="GtkApplicationWindow">
+     <property name="visible">True</property>
+     <property name="can_focus">False</property>
+-    <property name="title" translatable="yes">Package Manager</property>
+     <property name="window_position">center</property>
+     <property name="default_height">600</property>
+     <property name="icon_name">system-software-install</property>
+@@ -54,118 +15,6 @@
+         <property name="orientation">vertical</property>
+         <property name="spacing">6</property>
+         <child>
+-          <object class="GtkBox" id="box1">
+-            <property name="visible">True</property>
+-            <property name="can_focus">False</property>
+-            <property name="spacing">6</property>
+-            <child>
+-              <object class="GtkButton" id="refresh_button">
+-                <property name="visible">True</property>
+-                <property name="can_focus">True</property>
+-                <property name="receives_default">False</property>
+-                <property name="tooltip_text" translatable="yes">Refresh databases</property>
+-                <signal name="clicked" handler="on_refresh_button_clicked" swapped="no"/>
+-                <child>
+-                  <object class="GtkImage" id="refresh_icon">
+-                    <property name="visible">True</property>
+-                    <property name="can_focus">False</property>
+-                    <property name="icon_name">view-refresh-symbolic</property>
+-                    <property name="icon_size">1</property>
+-                  </object>
+-                </child>
+-                <style>
+-                  <class name="image-button"/>
+-                </style>
+-              </object>
+-              <packing>
+-                <property name="expand">False</property>
+-                <property name="fill">True</property>
+-                <property name="position">0</property>
+-              </packing>
+-            </child>
+-            <child>
+-              <object class="GtkButton" id="valid_button">
+-                <property name="visible">True</property>
+-                <property name="can_focus">True</property>
+-                <property name="receives_default">False</property>
+-                <property name="tooltip_text" translatable="yes">Apply changes</property>
+-                <signal name="clicked" handler="on_valid_button_clicked" swapped="no"/>
+-                <child>
+-                  <object class="GtkImage" id="valid_icon">
+-                    <property name="visible">True</property>
+-                    <property name="can_focus">False</property>
+-                    <property name="icon_name">emblem-ok-symbolic</property>
+-                    <property name="icon_size">1</property>
+-                  </object>
+-                </child>
+-                <style>
+-                  <class name="image-button"/>
+-                </style>
+-              </object>
+-              <packing>
+-                <property name="expand">False</property>
+-                <property name="fill">True</property>
+-                <property name="position">1</property>
+-              </packing>
+-            </child>
+-            <child>
+-              <object class="GtkButton" id="cancel_button">
+-                <property name="visible">True</property>
+-                <property name="can_focus">True</property>
+-                <property name="receives_default">False</property>
+-                <property name="tooltip_text" translatable="yes">Cancel all planned changes</property>
+-                <signal name="clicked" handler="on_cancel_button_clicked" swapped="no"/>
+-                <child>
+-                  <object class="GtkImage" id="cancel_icon">
+-                    <property name="visible">True</property>
+-                    <property name="can_focus">False</property>
+-                    <property name="icon_name">edit-delete-symbolic</property>
+-                    <property name="icon_size">1</property>
+-                  </object>
+-                </child>
+-                <style>
+-                  <class name="image-button"/>
+-                </style>
+-              </object>
+-              <packing>
+-                <property name="expand">False</property>
+-                <property name="fill">True</property>
+-                <property name="position">2</property>
+-              </packing>
+-            </child>
+-            <child>
+-              <object class="GtkMenuButton" id="menu_button">
+-                <property name="visible">True</property>
+-                <property name="can_focus">True</property>
+-                <property name="receives_default">False</property>
+-                <property name="popup">main_menu</property>
+-                <child>
+-                  <object class="GtkImage" id="menu_icon">
+-                    <property name="visible">True</property>
+-                    <property name="can_focus">False</property>
+-                    <property name="icon_name">emblem-system-symbolic</property>
+-                    <property name="icon_size">1</property>
+-                  </object>
+-                </child>
+-                <style>
+-                  <class name="image-button"/>
+-                </style>
+-              </object>
+-              <packing>
+-                <property name="expand">False</property>
+-                <property name="fill">True</property>
+-                <property name="pack_type">end</property>
+-                <property name="position">3</property>
+-              </packing>
+-            </child>
+-          </object>
+-          <packing>
+-            <property name="expand">False</property>
+-            <property name="fill">True</property>
+-            <property name="position">0</property>
+-          </packing>
+-        </child>
+-        <child>
+           <object class="GtkPaned" id="paned1">
+             <property name="visible">True</property>
+             <property name="can_focus">True</property>
+@@ -207,8 +56,8 @@
+                           <object class="GtkLabel" id="search_aur_label">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+-                            <property name="hexpand">True</property>
+                             <property name="margin_start">6</property>
++                            <property name="hexpand">True</property>
+                             <property name="label" translatable="yes">Search in AUR</property>
+                             <property name="xalign">0</property>
+                           </object>
+@@ -836,5 +685,158 @@
+         </child>
+       </object>
+     </child>
++    <child type="titlebar">
++      <object class="GtkHeaderBar" id="headerbar1">
++        <property name="visible">True</property>
++        <property name="can_focus">False</property>
++        <property name="show_close_button">True</property>
++        <child>
++          <object class="GtkBox" id="box1">
++            <property name="visible">True</property>
++            <property name="can_focus">False</property>
++            <property name="spacing">6</property>
++            <child>
++              <object class="GtkButton" id="refresh_button">
++                <property name="visible">True</property>
++                <property name="can_focus">True</property>
++                <property name="receives_default">False</property>
++                <property name="tooltip_text" translatable="yes">Refresh databases</property>
++                <signal name="clicked" handler="on_refresh_button_clicked" swapped="no"/>
++                <child>
++                  <object class="GtkImage" id="refresh_icon">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="icon_name">view-refresh-symbolic</property>
++                    <property name="icon_size">1</property>
++                  </object>
++                </child>
++                <style>
++                  <class name="image-button"/>
++                </style>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="fill">True</property>
++                <property name="position">0</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkButton" id="valid_button">
++                <property name="visible">True</property>
++                <property name="can_focus">True</property>
++                <property name="receives_default">False</property>
++                <property name="tooltip_text" translatable="yes">Apply changes</property>
++                <signal name="clicked" handler="on_valid_button_clicked" swapped="no"/>
++                <child>
++                  <object class="GtkImage" id="valid_icon">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="icon_name">emblem-ok-symbolic</property>
++                    <property name="icon_size">1</property>
++                  </object>
++                </child>
++                <style>
++                  <class name="image-button"/>
++                </style>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="fill">True</property>
++                <property name="position">1</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkButton" id="cancel_button">
++                <property name="visible">True</property>
++                <property name="can_focus">True</property>
++                <property name="receives_default">False</property>
++                <property name="tooltip_text" translatable="yes">Cancel all planned changes</property>
++                <signal name="clicked" handler="on_cancel_button_clicked" swapped="no"/>
++                <child>
++                  <object class="GtkImage" id="cancel_icon">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="icon_name">edit-delete-symbolic</property>
++                    <property name="icon_size">1</property>
++                  </object>
++                </child>
++                <style>
++                  <class name="image-button"/>
++                </style>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="fill">True</property>
++                <property name="position">2</property>
++              </packing>
++            </child>
++            <child>
++              <placeholder/>
++            </child>
++          </object>
++        </child>
++        <child>
++          <object class="GtkMenuButton" id="menu_button">
++            <property name="visible">True</property>
++            <property name="can_focus">True</property>
++            <property name="receives_default">False</property>
++            <property name="popup">main_menu</property>
++            <child>
++              <object class="GtkImage" id="menu_icon">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="icon_name">emblem-system-symbolic</property>
++                <property name="icon_size">1</property>
++              </object>
++            </child>
++            <style>
++              <class name="image-button"/>
++            </style>
++          </object>
++          <packing>
++            <property name="pack_type">end</property>
++            <property name="position">1</property>
++          </packing>
++        </child>
++      </object>
++    </child>
+   </template>
++  <object class="GtkMenu" id="main_menu">
++    <property name="visible">True</property>
++    <property name="can_focus">False</property>
++    <child>
++      <object class="GtkMenuItem" id="history_item">
++        <property name="visible">True</property>
++        <property name="can_focus">False</property>
++        <property name="label" translatable="yes">View History</property>
++        <signal name="activate" handler="on_history_item_activate" swapped="no"/>
++      </object>
++    </child>
++    <child>
++      <object class="GtkMenuItem" id="local_item">
++        <property name="visible">True</property>
++        <property name="can_focus">False</property>
++        <property name="label" translatable="yes">Install Local Packages</property>
++        <signal name="activate" handler="on_local_item_activate" swapped="no"/>
++      </object>
++    </child>
++    <child>
++      <object class="GtkMenuItem" id="preferences_item">
++        <property name="visible">True</property>
++        <property name="can_focus">False</property>
++        <property name="label" translatable="yes">_Preferences</property>
++        <property name="use_underline">True</property>
++        <signal name="activate" handler="on_preferences_item_activate" swapped="no"/>
++      </object>
++    </child>
++    <child>
++      <object class="GtkMenuItem" id="about_item">
++        <property name="visible">True</property>
++        <property name="can_focus">False</property>
++        <property name="label" translatable="yes">_About</property>
++        <property name="use_underline">True</property>
++        <signal name="activate" handler="on_about_item_activate" swapped="no"/>
++      </object>
++    </child>
++  </object>
+ </interface>
+Only in pamac.patch/resources: manager_window.ui~

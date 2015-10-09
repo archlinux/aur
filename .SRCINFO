@@ -1,0 +1,37 @@
+pkgbase = pamac-patched-headerbar
+	pkgdesc = A Gtk3 frontend for libalpm
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/manjaro/pamac
+	install = pamac.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gettext
+	makedepends = itstool
+	makedepends = vala>=0.28
+	depends = glib2>=2.42
+	depends = json-glib
+	depends = libsoup
+	depends = dbus-glib
+	depends = polkit
+	depends = vte3>=0.38
+	depends = gtk3>=3.16
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = pacman>=4.2
+	depends = gnutls>=3.4
+	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
+	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
+	optdepends = yaourt: needed for AUR support
+	provides = pamac
+	conflicts = pamac
+	options = !emptydirs
+	backup = etc/pamac.conf
+	source = pamac-2.4.2.tar.gz::https://github.com/manjaro/pamac/archive/v2.4.2.tar.gz
+	source = headerbar.patch
+	sha256sums = f74f7ac891e88802e9d1eb9b26e41f0d80704c890732b4001913455e7950504d
+	sha256sums = 2574efe4c0ab124c725040d4497faf5250b3509179da6db379810d7dd3d5d6d6
+
+pkgname = pamac-patched-headerbar
+
