@@ -1,25 +1,36 @@
 pkgbase = cnijfilter-mg6300
-	pkgdesc = Canon IJ Printer Driver (for mg6300 series)
+	pkgdesc = Canon MG6300 printer driver
 	pkgver = 3.80
-	pkgrel = 9
-	url = http://fr.canon.ch/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_MG6350.aspx?DLtcmuri=tcm:109-994583&page=1&type=download
+	pkgrel = 1
+	url = http://support-sg.canon-asia.com/contents/SG/EN/0100468802.html
 	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = findutils
-	makedepends = gawk
-	depends = libpng<=1.7.0
-	depends = libtiff
+	license = unknown
+	makedepends = rpmextract
+	depends = atk
+	depends = glibc
+	depends = glib2
+	depends = cairo
+	depends = cups
+	depends = fontconfig
 	depends = gtk2
+	depends = pango
+	depends = libpng12
 	depends = popt
-	source = http://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-3.80-1.tar.gz
-	source = cups.patch
-	source = libpng15.patch
-	source = configures.patch
-	md5sums = b6b92717930021d24bd750d4197bdf3b
-	md5sums = 5d65e4f2a422fc36d12b50ff25eddc1c
-	md5sums = d1984de9df321ee5de075e3ea1208e0e
-	md5sums = 0c5d0bdee566b67464b8c3133a962666
+	depends = libtiff3
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxinerama
+	depends = libxml2
+	depends = libxrandr
+	depends = libxrender
+	depends = cnijfilter-common-mg5400
+	options = emptydirs
+	source = http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNDY4ODAx&cmp=ACB
+	md5sums = 531641498aa929e628c47e918d809571
 
 pkgname = cnijfilter-mg6300
 
