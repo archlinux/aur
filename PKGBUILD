@@ -5,13 +5,13 @@
 
 pkgname=nvidia-grsec
 pkgver=355.11
-_extramodules=extramodules-4.1.7-grsec
-pkgrel=1
+_extramodules=extramodules-4.2.3-grsec
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec>=4.1.7' 'linux-grsec<4.2')
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.1.7' 'linux-grsec-headers<4.2')
+depends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec>=4.2.3' 'linux-grsec<4.3')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.2.3' 'linux-grsec-headers<4.3')
 license=('custom')
 install=nvidia-grsec.install
 options=(!strip)
@@ -59,4 +59,5 @@ package() {
     install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
 
     echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-grsec.conf"
+    sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "${startdir}/${pkgname}.install"
 }
