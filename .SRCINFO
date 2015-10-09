@@ -1,7 +1,7 @@
 pkgbase = scifig
 	pkgdesc = A build tool for (non?)-scientific figures
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scifig.readthedocs.org/
 	arch = any
 	license = GPL3

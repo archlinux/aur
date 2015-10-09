@@ -3,7 +3,7 @@
 
 pkgname=scifig
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A build tool for (non?)-scientific figures"
 arch=('any')
 url="https://scifig.readthedocs.org/"
