@@ -1,7 +1,7 @@
 # Maintainer: Karl Tarbe <karulont@gmail.com>
 
 pkgname=i3lock-blur
-pkgver=2.7
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with background blurring filter"
 arch=('i686' 'x86_64')
