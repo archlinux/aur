@@ -1,2 +1,2 @@
 #!/bin/sh
-mono /opt/fstar/bin/fstar.exe $@
+/opt/fstar/bin/fstar.exe $@

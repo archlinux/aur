@@ -1,16 +1,17 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=fstar-git
-pkgver=20150609
+pkgver=20151009
 pkgrel=1
 pkgdesc='An ML-like language with a type system for program verification'
 url='http://research.microsoft.com/en-us/projects/fstar/'
 license=('Apache')
-depends=('mono' 'fsharp' 'z3')
+depends=('mono>=4.0.3.20' 'z3')
+makedepends=('fsharp' 'ocaml' 'opam')
 provides=('fstar')
 arch=('i686' 'x86_64')
 source="fstar"
-md5sums=('33d49bff387dfe21e4e6a645cc88b231')
+md5sums=('a942264ee14c8645f575e26aad30f0a2')
 
 _gitroot="https://github.com/FStarLang/FStar"
 _gitname="FStar"
@@ -28,7 +29,15 @@ build() {
   msg "GIT checkout done or server timeout"
 
   cd $startdir/src/$_gitname
+
   make -C src
+
+  opam init -n
+  eval $(opam config env)
+  opam install ocamlfind batteries
+
+  make -C src ocaml
+  make -C src/ocaml-output
 }
 
 package() {
