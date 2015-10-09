@@ -3,8 +3,9 @@
 # Contributor: John Radley <jradxl [at] gmail [dot] com>
 
 ##
-## This is a build from source
+## This is an install from Orient's tar.gz, and does not build Java sources
 ##
+
 pkgname=orientdb-community
 
 ## PKGBUILD:pkgver is not allowed to contain colons, hyphens or whitespace
@@ -17,15 +18,13 @@ pkgsuffix=
 pkgver=$pkgversion
 
 pkgtmp=
-pkgrel=1
+pkgrel=2
 #epoch=1
-pkgdesc="The Graph-Document NoSQL - Community Edition"
+pkgdesc="OrientDB Graph-Document NoSQL - Community Edition"
 arch=('any')
 license=('Apache')
 url="http://www.orientdb.org"
-depends=('java-runtime-headless')
-makedepends=('unzip')
-depends=('java-runtime-headless' 'apache-ant')
+depends=('sh' 'java-environment')
 makedepends=('unzip')
 conflicts=('orientdb' 'orientdb-git' 'orientdb-graphed-git' 'orientdb-graphed')
 install=$pkgname.install
@@ -40,29 +39,34 @@ noextract=()
 changelog=""
 
 #
-# Using the github release of source, which has no package name.
+# Using Orient's explict tar.gz download for this version.
+# server2.sh and shutdown2.sh are versions more suited to systemd usage.
 #
-source=("https://github.com/orientechnologies/orientdb/archive/${pkgversion}${pkgsuffix}.tar.gz"
-  'orientdb.service')
+source=(
+  "http://orientdb.com/download.php?email=unknown@unknown.com&file=orientdb-community-${pkgversion}${pkgsuffix}.tar.gz"
+  'orientdb.service'
+  'server2.sh'
+  'shutdown2.sh'
+)
 
-md5sums=('8f5454b58dff94b15c380979e81e9387'
-  '687903eba3737f9733bf1c45c4e68e6d')
+md5sums=(
+  '4c90eec15ae214addd19d8aa8812e99d'
+  '2845ee26c2b4a370fde6ada6815b5eeb'
+  '4a5fe9143276adf167dbb7ae46a4f3f2'
+  'e9482fd3b41fc56af333365c6287b5a6'
+)
 
 #prepare() {}
 
-build() {
-    #
-    #Parse '-community' from pkgname
-    #
-    cd "${srcdir}"/$(echo ${pkgname} | sed s/-community//)-${pkgversion}${pkgsuffix}
-    ant
-}
+#No Build required
+#build() {}
 
 #check() {}
 
-package() {
-  # Build has created a 'releases' dir in the parent.
-  cd ${srcdir}/releases/${pkgname}-${pkgversion}${pkgsuffix}
+package()
+{
+
+  cd "${srcdir}"/${pkgname}-${pkgver}
 
   # Create directories with permissions
   install -dm755 "${pkgdir}"/opt/orientdb
@@ -78,13 +82,19 @@ package() {
   # Recursively copy files
   cp -r . "${pkgdir}"/opt/orientdb
 
+  # Add the improved systemd server management scripts
+  install -m700 "${srcdir}"/server2.sh "${pkgdir}"/opt/orientdb/bin
+  install -m700 "${srcdir}"/shutdown2.sh "${pkgdir}"/opt/orientdb/bin
+
   # Set permissions on the executables
+  # --no World permissions are intended, so namcap errors can be ignored.
   install -m700 bin/*.sh "${pkgdir}"/opt/orientdb/bin/
   install -m755 bin/console.sh "${pkgdir}"/opt/orientdb/bin/
 
   # Remove DOS bat files
   find "${pkgdir}"/opt/orientdb -type f -name "*.bat" -exec rm -f {} \;
 
+  # Empty dirs for Install - namcap errors can be ignored.
   install -d "${pkgdir}"/usr/bin
   install -d "${pkgdir}"/var/log/orientdb
   install -d "${pkgdir}"/usr/lib/systemd/system
@@ -95,6 +105,9 @@ package() {
   sed -i 's|\.\./log|/opt/orientdb/log|' "${pkgdir}"/opt/orientdb/config/orientdb-server-log.properties
   sed -i 's|YOUR_ORIENTDB_INSTALLATION_PATH|/opt/orientdb|' "${pkgdir}"/opt/orientdb/bin/orientdb.sh
   sed -i 's|USER_YOU_WANT_ORIENTDB_RUN_WITH|orient|' "${pkgdir}"/opt/orientdb/bin/orientdb.sh
+
+  #Prevent server.sh being run from root
+  sed -i '/PRG="$0"/a if [[ $(id -u) -eq 0 ]] ; then echo "" ; echo "Please do not try to start Orientdb Server as root." ; exit 1 ; fi' "${pkgdir}"/opt/orientdb/bin/server.sh
 
   install -m644 "${srcdir}"/orientdb.service "${pkgdir}"/usr/lib/systemd/system/
 }

@@ -1,14 +1,19 @@
 #
-# Service config for OrientDB version 1.7-rc1
+# Service config for OrientDB Graph-Document NoSQL
 #
 [Unit]
-Description=OrientDB The Graph-Document NoSQL - Community Edition
+Description=OrientDB Graph-Document NoSQL - Community Edition
+DefaultDependencies=false
 
 [Service]
 Type=simple
-User=orient
-ExecStart=/opt/orientdb/bin/server.sh
-ExecStop=/opt/orientdb/bin/shutdown.sh
+#Both User and Group are significant to the correct running of systemd and orientdb
+User=orientdb
+Group=orientdb
+
+#server2.sh and shutdown2.sh are used as these have modifications for use with systemd
+ExecStart=/opt/orientdb/bin/server2.sh
+ExecStop=/opt/orientdb/bin/shutdown2.sh -w -t
 
 [Install]
 WantedBy=multi-user.target

@@ -1,47 +1,81 @@
 #
-# Install scriptlet for OrientDB version
+# Install scriptlet for OrientDB
 #
-post_install() {
-  groupadd -r orient
-  useradd -r -g orient -d /opt/orientdb -c "OrientDB The Graph-Document NoSQL - Community Edition" orient
 
-  chown -R orient.orient /opt/orientdb
-  chown -R orient.orient /var/log/orientdb
+post_install()
+{
+  groupadd -r orientdb && echo Group orientdb added
+
+  #A home dir is needed as virtualbox writes to dir if su is used.
+  useradd -r -g orientdb -m -d /home/orientdb -c "OrientDB Graph-Document NoSQL - Community Edition" orientdb && echo User orientdb added
+
+  chown -R orientdb.orientdb /opt/orientdb
+  chown -R orientdb.orientdb /var/log/orientdb
 
   ln -sf /opt/orientdb/log /var/log/orientdb
   ln -sf /opt/orientdb/config /etc/orientdb
   ln -sf /opt/orientdb/bin/console.sh /usr/bin/orientdb-console
 
-  echo "==> OrientDB server should be launched from user 'orient'. Please keep that in mind."
+  echo "==> OrientDB has been installed."
+  echo "==> This install is compatible with systemd and orientdb.service is available."
+  echo "==> OrientDB server should be launched from user 'orientdb' or by systemctl start orientdb."
+  echo "==> When started for the first time, a non-encrypted root password will be generated"
+  echo "    automatically and it can be found in /opt/orientdb/config/orientdb-server-config.xml"
+  echo "==> The Studio Console can be accessed by browsing localhost:2480"
+
+  systemctl daemon-reload
 }
 
-post_upgrade() {
-  chown -R orient.orient /opt/orientdb
-  chown -R orient.orient /var/log/orientdb
+post_upgrade()
+{
+  #In case the Group and User are not present after re-installing or an upgrade.
+  groupadd -r orientdb && echo Group orientdb added
+
+  #A homedir is needed as virtualbox writes to dir if su is used.
+  useradd -r -g orientdb -m -d /home/orientdb -c "OrientDB Graph-Document NoSQL - Community Edition" orientdb && echo User orientdb added
+
+  # Remove extra groups and always force User orientdb to have a primary group of orientdb
+  if [ $(groups orientdb | wc -w) -gt 1 ]; then
+	  usermod -G "" orientdb
+      echo "Removed extra groups for User orientdb"
+  fi
+  usermod -g orientdb orientdb
+
+  chown -R orientdb.orientdb /opt/orientdb
+  chown -R orientdb.orientdb /var/log/orientdb
+
+  systemctl daemon-reload
 }
 
-pre_remove() {
+pre_remove()
+{
   # Cannot use echo -n in this context as stdout is not flushed
   # Server may have been started manually, so systemctl will not stop it
-  # Grep only the Server entry, as an orient User session may be present
-  if [ "$(ps aux | grep -e '^orient' | grep -e com.orientechnologies.orient.server)" != "" ]; then
-
-    echo "==> OrientDB server is running. Stopping OrientDB. Wait 60 seconds before using Cntl-C."
-    echo "..........."
-
-    systemctl stop orientdb.service  2>&1
-    echo "..........."
+  # Grep only the Server entry, as an orientdb User session may be present
+  if [ "$( ps aux | grep -e ^orient | grep com.orientechnologies.orient )" != "" ]; then
+    echo "==> OrientDB server is running. Stopping OrientDB. Please wait 60 seconds before using Cntl-C."
+    echo "==> Trying systemctl ..........."
+    systemctl daemon-reload
+    systemctl stop orientdb.service
+	sleep 5
+	echo "==> Testing if systemctl has stopped Server."
+	if [ "$( ps aux | grep -e ^orient | grep com.orientechnologies.orient )" != "" ]; then
+	  echo "==> systemctl did not stop Server. Trying directly. Please wait 60 seconds before using Cntl-C."
+	else
+	  echo "==> systemctl succeeded. Proceeding to remove."
+	fi
+  fi
 
     counter1=0
     counter2=0
-    while [ "$(ps aux | grep -e '^orient' | grep -e com.orientechnologies.orient.server)" != "" ]; do
+    while [ "$( ps aux | grep -e ^orient | grep com.orientechnologies.orient )" != "" ]; do
 
       sleep 1
 
       counter1=`expr $counter1 + 1`
       counter2=`expr $counter2 + 1`
 
-      if [ $counter1 -le 10 ]
+      if [ $counter1 -le 9 ]
       then
         echo -n "."
       else
@@ -49,29 +83,34 @@ pre_remove() {
         counter1=0
       fi
 
-      if [ $counter2 = 30 ]
+      if [ $counter2 = 20 ]
       then
         echo ""
-        echo "Shutting down OrientDB directly."
-        su orient /opt/orientdb/bin/shutdown.sh
+        echo "==> Shutting down OrientDB directly."
+        #It is correct to use shutdown.sh here as systemd is not involved.
+        su -c "/opt/orientdb/bin/shutdown.sh >/dev/null 2>/dev/null" - orientdb
+		echo "    Server has been sent shutdown. Please wait for script to end."
       fi
 
-      if [ $counter2 -gt 60 ]
+      if [ $counter2 -gt 39 ]
       then
+        echo "Server has not stopped. Please resolve manually."
         break
       fi
 
     done
-  fi
+
   echo ""
-  rm -rf /etc/orientdb /usr/bin/orientdb-console /opt/orientdb/log || /bin/true
+  rm -rf /etc/orientdb /usr/bin/orientdb-console /usr/lib/systemd/system/orientdb.service /opt/orientdb/log || /bin/true
 }
 
-post_remove() {
-  userdel orient
-  groupdel orient 2>/dev/null || /bin/true
+post_remove()
+{
+  userdel -r orientdb && echo "User orientdb removed"
+  groupdel orientdb && echo "Group orientdb removed"
 
   if [ -d /opt/orientdb ]; then
+    echo ""
     echo "==> OrientDB directory is not empty and will not be removed."
     echo "    Backup database?"
     echo "    Please check path '/opt/orientdb' and remove directory manually."
@@ -80,5 +119,6 @@ post_remove() {
   if [ -d /var/log/orientdb ]; then
     rm -rf /var/log/orientdb
   fi
-}
 
+  systemctl daemon-reload
+}
