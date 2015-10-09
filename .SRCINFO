@@ -1,0 +1,14 @@
+pkgbase = libpafe-ruby
+	pkgdesc = A library using the libpafe on ruby
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = http://homepage3.nifty.com/slokar/pasori/libpafe-ruby.html
+	arch = any
+	license = GPL2
+	depends = libpafe
+	depends = ruby
+	source = http://homepage3.nifty.com/slokar/pasori/libpafe-ruby-0.0.8.tar.gz
+	sha256sums = 496b5f6299c14b6b11e4bd8fb1f2bd093ed75a6fee23635a1eb257b762e216cc
+
+pkgname = libpafe-ruby
+
