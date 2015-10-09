@@ -3,14 +3,14 @@
 
 pkgname=grass
 pkgver=7.0.1
-pkgrel=5
+pkgrel=6
 _shortver=${pkgver%.*}
 _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
 url='http://grass.osgeo.org/'
 license=('GPL')
-depends=('fftw' 'gdal' 'glu' 'wxpython' 'python2-pillow')
+depends=('fftw' 'gdal' 'glu' 'python2-pillow' 'subversion' 'wxpython')
 makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface')
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
