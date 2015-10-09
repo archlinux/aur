@@ -5,12 +5,12 @@
 
 pkgbase=(virtualbox-zen-modules)
 pkgname=(virtualbox-zen-host-modules virtualbox-zen-guest-modules)
-pkgver=5.0.4
-pkgrel=2
+pkgver=5.0.6
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
-makedepends=('linux-zen-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
+makedepends=("linux-zen-headers" "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
 _extramodules=extramodules-4.2-zen
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"

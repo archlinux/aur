@@ -4,3 +4,4 @@ pkg
 pkgdir
 *.xz
 *.tag.*
+*~
