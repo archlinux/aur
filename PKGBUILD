@@ -5,7 +5,7 @@
 pkgname=nvidia-lts-ck
 pkgver=355.11
 _extramodules=extramodules-4.1-lts-ck
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-lts-ck"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
