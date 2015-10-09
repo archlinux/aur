@@ -1,7 +1,7 @@
 # Maintainer: Chiu-Hsiang Hsu <wdv4758h@gmail.com>
 
 pkgname=igprof-git
-pkgver=v5.9.15.r4.g8a022ad
+pkgver=v5.9.15.r13.gb482572
 pkgrel=1
 pkgdesc="A simple tool for measuring and analysing application memory and performance characteristics"
 arch=('i686' 'x86_64')
