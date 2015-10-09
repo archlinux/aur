@@ -7,7 +7,7 @@
 _npmname=bower
 pkgname=nodejs-$_npmname
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A package manager for the web'
 provides=('bower')
 conflicts=('bower')

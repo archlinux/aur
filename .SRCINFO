@@ -1,7 +1,7 @@
 pkgbase = nodejs-bower
 	pkgdesc = A package manager for the web
 	pkgver = 1.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bower.io/
 	arch = any
 	license = MIT
