@@ -1,7 +1,7 @@
 pkgbase = zpm
 	pkgdesc = ZPM ( Zsh plugin manager ) is an yet another plugin manager for zsh similar to vim-plug
 	pkgver = 20151009
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/horosgrisa/zpm
 	install = zpm.install
 	arch = any
