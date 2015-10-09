@@ -4,7 +4,7 @@
 pkgname=pamac-patched-headerbar
 pkgver=2.4.2
 _pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
 #_gitcommit="d8e9826ab0b84bdb6f4b6c0dcc4ce1461bf04595"
 pkgdesc="A Gtk3 frontend for libalpm, patched by me to use GtkHeaderBar to match GNOME"
@@ -30,7 +30,7 @@ else
 fi
 
 sha256sums=('f74f7ac891e88802e9d1eb9b26e41f0d80704c890732b4001913455e7950504d'
-            '90f117bac7160aeb9972faa2803367a4abce35cc7e356690d641f2123456eed3')
+            'f6a5810c6736a4e55732bd2764012d032a83fabadcd3eca86896c682266fb7af')
 
 prepare() {
   if [ "$_gitcommit" != "" ]; then
