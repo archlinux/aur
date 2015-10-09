@@ -1,0 +1,18 @@
+pkgbase = qprotractor-git
+	pkgdesc = Onscreen Protractor
+	pkgver = v0.0.1
+	pkgrel = 1
+	url = http://http://kibergus.su/en/node/73/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = qprotractor-git
+	conflicts = qprotractor-git
+	source = qprotractor-git::git://github.com/kellpossible/qProtractor.git#branch=master
+	source = qprotractor.desktop
+	sha256sums = SKIP
+	sha256sums = 02e14ccb81f12076c2a480451cf30379034f21d8662923a28ee93a09ea8ad6c8
+
+pkgname = qprotractor-git
+
