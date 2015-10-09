@@ -1,8 +1,8 @@
 # Maintainer: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=15.5.85
-pkgrel=2
+pkgver=15.5.86
+pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
 license=('custom')
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir"
-    ver=$(head -n 1 version.txt) | echo $ver
+    echo $(head -n 1 version.txt)
 }
 
 prepare() {

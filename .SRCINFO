@@ -1,7 +1,7 @@
 pkgbase = manager-accounting
 	pkgdesc = Manager is free accounting software for small business
-	pkgver = 15.5.85
-	pkgrel = 2
+	pkgver = 15.5.86
+	pkgrel = 1
 	url = http://www.manager.io/
 	install = manager-accounting.install
 	arch = i686
