@@ -4,7 +4,7 @@
 
 pkgname=lib32-gtk3
 pkgver=3.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GObject-based multi-platform GUI toolkit (v3)'
 arch=('x86_64')
 license=('LGPL')
@@ -42,7 +42,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
   mv "${pkgdir}"/usr/bin/gtk-query-immodules-3.0{,-32}
-  rm "${pkgdir}"/usr/bin/{broadwayd,gtk-{encode-symbolic-svg,launch,update-icon-cache},gtk3-{demo,demo-application,icon-browser,widget-factory}}
+  rm "${pkgdir}"/usr/bin/{broadwayd,gtk-{builder-tool,encode-symbolic-svg,launch,update-icon-cache},gtk3-{demo,demo-application,icon-browser,widget-factory}}
   rm -rf "${pkgdir}"/{etc,usr/{include,share}}
 }
 

@@ -1,7 +1,7 @@
 pkgbase = lib32-gtk3
 	pkgdesc = GObject-based multi-platform GUI toolkit (v3)
 	pkgver = 3.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gtk.org/
 	install = gtk3.install
 	arch = x86_64
