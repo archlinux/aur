@@ -1,17 +1,17 @@
 pkgbase = nodejs-gulp
 	pkgdesc = The streaming build system
 	pkgver = 3.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gulpjs.com/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	provides = gulp
+	conflicts = gulp
 	noextract = gulp-3.9.0.tgz
 	source = https://registry.npmjs.org/gulp/-/gulp-3.9.0.tgz
-	source = LICENSE
 	md5sums = 5b35a2a4187c45f6ea4e74a5f47de0f9
-	md5sums = 56144547c46601ee8caeafc843fd99a6
 
 pkgname = nodejs-gulp
 
