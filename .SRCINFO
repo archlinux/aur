@@ -1,8 +1,8 @@
 pkgbase = passwordsafe
 	pkgdesc = Simple & Secure Password Management
-	pkgver = 0.96BETA
-	pkgrel = 2
-	url = http://sourceforge.net/projects/passwordsafe/
+	pkgver = 0.97BETA
+	pkgrel = 1
+	url = https://pwsafe.org/
 	install = passwordsafe.install
 	arch = i686
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = passwordsafe
 	conflicts = passwordsafe-git
 	conflicts = pwsafe
 	conflicts = pwsafe-gui
-	source = http://downloads.sourceforge.net/project/passwordsafe/Linux-BETA/0.96/pwsafe-0.96BETA-src.tgz
-	source = http://downloads.sourceforge.net/project/passwordsafe/Linux-BETA/0.96/pwsafe-0.96BETA-src.tgz.sig
-	md5sums = 0da54dd106895e18dcff5ed370843884
-	md5sums = SKIP
+	source = https://github.com/pwsafe/pwsafe/releases/download/0.97BETA/pwsafe-0.97BETA-src.tgz
+	source = https://github.com/pwsafe/pwsafe/releases/download/0.97BETA/pwsafe-0.97BETA-src.tgz.sig
+	sha1sums = ee0d26c0114e4de46a064b2cbcfe4700ddfaa11d
+	sha1sums = SKIP
 
 pkgname = passwordsafe
 

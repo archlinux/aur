@@ -2,24 +2,25 @@
 
 _pkgname=pwsafe
 pkgname=passwordsafe
-_pkgver=0.96
+_pkgver=0.97
 pkgver="$_pkgver"BETA
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple & Secure Password Management"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/passwordsafe/"
+url=("https://pwsafe.org/")
 license=('Artistic2.0')
 #to build without yubikey support, remove ykpers and uncomment NO_YUBI in build()
 depends=('libxtst' 'wxgtk' 'webkitgtk2' 'yubikey-personalization' 'xerces-c')
 makedepends=('git' 'zip' 'libxt')
 optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe-git' 'pwsafe' 'pwsafe-gui')
-source=(http://downloads.sourceforge.net/project/$pkgname/Linux-BETA/$_pkgver/$_pkgname-$pkgver-src.tgz{,.sig})
+#source=(http://downloads.sourceforge.net/project/$pkgname/Linux-BETA/$_pkgver/$_pkgname-$pkgver-src.tgz{,.sig})
+source=(https://github.com/pwsafe/pwsafe/releases/download/$pkgver/pwsafe-$pkgver-src.tgz{,.sig})
 
 install='passwordsafe.install'
 validpgpkeys=('A703C1328EABC7B201753BA3919464515CCF8BB3')  #Rony Shapiro
-md5sums=('0da54dd106895e18dcff5ed370843884'
-         'SKIP')
+sha1sums=('ee0d26c0114e4de46a064b2cbcfe4700ddfaa11d'
+          'SKIP')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
