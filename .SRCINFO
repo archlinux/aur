@@ -1,7 +1,7 @@
 pkgbase = coolreader3-git
 	pkgdesc = E-book reader for Linux
 	pkgver = r4097.1e07d15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/crengine/
 	install = coolreader3-git.install
 	arch = i686
@@ -19,9 +19,11 @@ pkgbase = coolreader3-git
 	source = coolreader3-git::git://git.code.sf.net/p/crengine/crengine
 	source = use_freetype2.patch
 	source = config_saving_fix.patch
+	source = freetype2_path_fix.patch
 	md5sums = SKIP
 	md5sums = 390a7e6a9a1bb7ef2723176e276bd524
 	md5sums = 262b3b926956473d3cbb45602485e897
+	md5sums = d0c80482b6712c8211f9ac4423c37d6a
 
 pkgname = coolreader3-git
 

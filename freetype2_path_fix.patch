@@ -1,0 +1,11 @@
+--- a/crengine/src/lvfntman.cpp
++++ b/crengine/src/lvfntman.cpp
+@@ -53,7 +53,7 @@
+ #else
+ 
+ #ifdef USE_FREETYPE2
+-#include <freetype2/config/ftheader.h>
++#include <freetype2/freetype/config/ftheader.h>
+ #else
+ #include <freetype/config/ftheader.h>
+ #endif
