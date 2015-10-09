@@ -1,0 +1,19 @@
+pkgbase = mesquite
+	pkgdesc = A software package for evolutionary biology, designed to analyze comparative data about organisms
+	pkgver = 3.04
+	pkgrel = 1
+	url = http://www.mesquiteproject.org/
+	arch = any
+	license = LGPL
+	depends = java-runtime
+	source = https://github.com/MesquiteProject/MesquiteCore/releases/download/3.04build725/Mesquite304_Linux.tar.gz
+	source = mesquite.png
+	source = mesquite.desktop
+	source = mesquite.sh
+	md5sums = 432bc66e03d68a7e7f0289510d603ce0
+	md5sums = 8b62ba93f95aab14a8643bf5b939f465
+	md5sums = ef6d47b0a7aa27329165b1185982678e
+	md5sums = 79604254490c2d8bbcbf54719ac99b6a
+
+pkgname = mesquite
+

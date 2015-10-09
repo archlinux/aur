@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Mesquite
+Comment=A software package for evolutionary biology, designed to analyze comparative data about organisms
+Exec=mesquite
+Icon=mesquite
+Terminal=false
+Categories=Java;Education;Science;Biology;
