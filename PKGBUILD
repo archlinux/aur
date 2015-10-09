@@ -41,11 +41,6 @@ prepare() {
   if [ ! -d lib ]; then
     cp -r "$srcdir/local" lib
   fi
-
-  # The ArchLinux jansson header files are directly under
-  # /usr/include.
-  find src \( -name '*.c' -or -name '*.h' -or -name '*.cpp' \) \
-    -exec sed -i 's@#include <jansson/@#include <@' {} \;
 }
 
 build() {
