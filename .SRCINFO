@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-put-window-git
 	pkgdesc = Makes window movement a lot easier. Can be compared with a basic version of the compiz grid plugin.
 	pkgver = r257.07b0dee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/negesti/gnome-shell-extensions-negesti
 	install = gnome-shell-extension-put-window.install
 	arch = i686

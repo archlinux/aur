@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-put-window-git
 pkgver=r257.07b0dee
-pkgrel=1
+pkgrel=2
 pkgdesc="Makes window movement a lot easier. Can be compared with a basic version of the compiz grid plugin."
 arch=('i686' 'x86_64')
 url="https://github.com/negesti/gnome-shell-extensions-negesti"
@@ -16,6 +16,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$pkgname"
+  sed -i 's/"3.16"/\0, "3.18"/' metadata.json
 }
 
 package() {
