@@ -12,7 +12,7 @@ depends=('python2' 'ca-certificates' 'dialog' 'openssl' 'gcc' 'libffi' 'git' 'py
          'python2-cryptography' 'python2-enum34' 'python2-idna' 'python2-ipaddress'
          'python2-mock' 'python2-ndg-httpsclient' 'python2-parsedatetime' 'python2-psutil'
          'python2-pyasn1' 'python2-pycparser' 'python2-service-identity' 'python2-pyopenssl'
-         'python2-pyparsing' 'python2-pyRFC3339' 'python2-pythondialog' 'python2-pytz'
+         'python2-pyparsing' 'python2-pyrfc3339' 'python2-pythondialog' 'python2-pytz'
          'python2-requests' 'python2-setuptools' 'python2-six' 'python2-werkzeug'
          'python2-wheel' 'python2-zope-interface' 'python2-zope-event' 'python2-zope-component')
 conflicts=("${pkgname}-git")
