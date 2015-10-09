@@ -6,24 +6,27 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
-pkgver=3.16.2
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
 license=(GPL)
 url="http://www.gnome.org"
 depends=(plymouth gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-server-xwayland xorg-xhost)
-makedepends=(itstool intltool yelp-tools gobject-introspection python2)
+makedepends=(itstool intltool yelp-tools gobject-introspection)
 checkdepends=('check')
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz
-        0001-Add-Arch-Linux-PAM-config-files.patch)
-sha256sums=('c32ee80745424da10b94b7216efc2ef1257e2ca63d7f003edc1801f1111e1b56'
-            'c4598b38cf92dd47fb06b2125e808ce66dabcc3bbcdf7508b97ba87e1ead0ac5')
+        0001-Add-Arch-Linux-PAM-config-files.patch
+	0002-Xsession-Don-t-start-ssh-agent-by-default.patch)
+sha256sums=('c9fbe7a921a73e2cced219eab35c350f86dfcfd5b7ed7502f9aeb3c262b46a47'
+            'c4598b38cf92dd47fb06b2125e808ce66dabcc3bbcdf7508b97ba87e1ead0ac5'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 prepare() {
   cd $_pkgbase-$pkgver
 
   patch -Np1 -i ../0001-Add-Arch-Linux-PAM-config-files.patch
+  patch -Np1 -i ../0002-Xsession-Don-t-start-ssh-agent-by-default.patch
 
   AUTOPOINT='intltoolize --automake -c' autoreconf -fi
 }
@@ -38,6 +41,8 @@ build() {
     --localstatedir=/var \
     --disable-static \
     --disable-schemas-compile \
+    --enable-gdm-xsession \
+    --enable-ipv6 \
     --with-plymouth \
     --with-at-spi-registryd-directory=/usr/lib/at-spi2-core \
     --with-check-accelerated-directory=/usr/lib/gnome-session \
