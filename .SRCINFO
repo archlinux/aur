@@ -1,0 +1,17 @@
+pkgbase = go-ipfs-bin
+	pkgdesc = Zero knowledge cloud-based password manager
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://ipfs.io
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = ipfs
+	noextract = ipfs_v0.3.7_linux-amd64.zip
+	source_x86_64 = https://gobuilder.me/get/github.com/ipfs/go-ipfs/cmd/ipfs/ipfs_v0.3.7_linux-amd64.zip
+	sha256sums_x86_64 = 097d8bec12cfd4df6d173e3bf4aaede3ad5d3167f7f23bba3238be48e82e84e6
+	source_i686 = https://gobuilder.me/get/github.com/ipfs/go-ipfs/cmd/ipfs/ipfs_v0.3.7_linux-386.zip
+	sha256sums_i686 = 7bf5e9473117c5e1ad36aafb8781ab66f58a06b15c5cbc9e961e2e47e987cc86
+
+pkgname = go-ipfs-bin
+
