@@ -1,6 +1,6 @@
 pkgbase = rivet
 	pkgdesc = A particle physics package for data analysis and validation of Monte Carlo event generators
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://rivet.hepforge.org
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = rivet
 	depends = fastjet
 	depends = gsl
 	depends = hepmc
-	source = http://www.hepforge.org/archive/rivet/Rivet-2.3.0.tar.gz
-	md5sums = 55dd478535ca1bb1158e9dc448f35d4d
+	source = http://www.hepforge.org/archive/rivet/Rivet-2.4.0.tar.gz
+	md5sums = e240079596c1deb289cbb2486be3c8f2
 
 pkgname = rivet
 
