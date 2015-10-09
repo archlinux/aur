@@ -1,7 +1,7 @@
 pkgbase = bitcoin-gui-git
 	pkgdesc = Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet
 	pkgver = v0.11.0.r12.g5c27f12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitcoinxt.software/
 	install = bitcoin-qt.install
 	arch = i686
@@ -27,8 +27,10 @@ pkgbase = bitcoin-gui-git
 	conflicts = bitcoin-qt
 	conflicts = bitcoin-tx
 	source = git+https://github.com/bitcoin/bitcoin.git#branch=0.11
+	source = https://github.com/bitcoin/bitcoin/commit/9f3e48e5219a09b5ddfd6883d1f0498910eff4b6.patch
 	source = bitcoin-qt.install
 	sha256sums = SKIP
+	sha256sums = 0910004577764c2251a33c4868c7358a42da68f94d6462e44bbcb1945cefd748
 	sha256sums = ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c
 
 pkgname = bitcoin-gui-git
