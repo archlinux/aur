@@ -3,17 +3,17 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-applets
-pkgver=3.16.1
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="Small applications for the GNOME panel"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('cpupower' 'gucharmap' 'gstreamer0.10-base-plugins' 'gnome-panel>=3.16.1' 'libgtop' 'upower')
+depends=('cpupower' 'gucharmap' 'gstreamer0.10-base-plugins' 'gnome-panel>=3.18.0' 'libgtop' 'upower')
 makedepends=('gnome-common' 'intltool' 'networkmanager' 'rarian' 'yelp-tools')
 url="https://wiki.gnome.org/Projects/GnomeFlashback"
 install=$pkgname.install
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('c656ecfc0a3af898e80f9c6971400f25e6cc8fe743fa0fd2b6a1a77a40005206')
+sha256sums=('49a752ff805e95b57f5f6d4a298fbe4508f10f042bc24f58f62b84d6390d7df8')
 
 build() {
   cd "$pkgname-$pkgver"
