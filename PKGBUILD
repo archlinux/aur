@@ -2,9 +2,9 @@
 # Maintainer : Claire Farron
 
 pkgname=nvidia-lts310-ck
-pkgver=352.30
+pkgver=355.11
 _extramodules=extramodules-3.10-lts310-ck
-pkgrel=4
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-lts310-ck"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -17,8 +17,8 @@ options=(!strip)
 
 source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('7e59d84eafe2482b2f02df692b9168d5')
-md5sums_x86_64=('135dd90db609cecad8e74bde0054cf6f')
+sha256sums_i686=('94ce6b879581b931b84d83a9111040b9a5aa9306b012b4380cd93f6ffede3066')
+sha256sums_x86_64=('0fcc6a62a05fc11344aff375faaca56b358ee1252f6b2c98c00d628ea3d0f842')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
