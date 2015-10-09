@@ -4,7 +4,7 @@ pkgname=keybase-staging
 pkgdesc='staging build of the Keybase Go client'
 url='https://keybase.io/docs/cli_kbstage'
 license=('BSD')
-pkgver=18.39b5bf0
+pkgver=33.2b4bc5a
 pkgver() {
   cd "$srcdir/client-beta"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -22,8 +22,6 @@ package() {
   mkdir -p src/github.com/keybase
   cp -r client src/github.com/keybase/
   cd src/github.com/keybase/client/go/keybase
-  echo fetching dependencies with go get...
-  go get
   dest="$pkgdir/usr/bin/kbstage"
   mkdir -p "$(dirname "$dest")"
   echo building kbstage binary...
