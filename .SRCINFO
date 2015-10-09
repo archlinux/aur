@@ -1,7 +1,7 @@
 pkgbase = nodejs-gulp
 	pkgdesc = The streaming build system
 	pkgver = 3.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gulpjs.com/
 	arch = any
 	license = MIT

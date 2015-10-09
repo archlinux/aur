@@ -1,0 +1,9 @@
+# packaging artefacts
+src/
+pkg/
+*.pkg.tar.xz
+*.src.tar.gz
+
+# source archives
+*.tgz
+
