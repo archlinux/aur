@@ -1,7 +1,7 @@
 pkgbase = ceti-2-themes
 	pkgdesc = Ceti-2 is a theme for GTK 3, GTK 2 and Gnome-Shell. It supports GTK 3 and GTK 2 based desktop environments like Gnome, Unity, Budgie, Pantheon, etc.
 	pkgver = 20150923
-	pkgrel = 1
+	pkgrel = 2
 	url = http://horst3180.deviantart.com/art/Ceti-2-Theme-489193140
 	arch = any
 	license = GPL3

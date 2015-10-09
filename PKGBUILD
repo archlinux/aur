@@ -3,9 +3,9 @@
 
 pkgname=ceti-2-themes
 pkgver=20150923
-pkgrel=1
+pkgrel=2
 pkgdesc='Ceti-2 is a theme for GTK 3, GTK 2 and Gnome-Shell. It supports GTK 3 and GTK 2 based desktop environments like Gnome, Unity, Budgie, Pantheon, etc.'
-_gnomever=3.16
+_gnomever=3.18
 _releasever=20150923
 arch=('any')
 url='http://horst3180.deviantart.com/art/Ceti-2-Theme-489193140'
