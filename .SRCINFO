@@ -1,10 +1,15 @@
 pkgbase = papirus
-	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE.
-	pkgver = 20151004
+	pkgver = 20151008
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
+	options = !strip
+	source = papirus-pack-kde-20151008.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/3f97691234d1688ad54b94d9b81f9ef181b0d8e9.tar.gz
+	sha256sums = 87e2b1cbb0e08588a231d5c2638926de7ba566c5c0df81f4a897f95b54957f63
+
+pkgname = papirus
+	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE.
 	depends = papirus-plasma-theme
 	depends = papirus-icon-theme
 	depends = papirus-color-scheme
@@ -14,9 +19,40 @@ pkgbase = papirus
 	optdepends = papirus-kmail-theme: Modified and adaptive Paper theme for Kmail
 	optdepends = bomi-skin-papirus: Papirus theme for Bomi
 	optdepends = libreoffice-papirus-theme: Papirus theme for Libreoffice
-	options = !strip
-	source = papirus-pack-kde-20151004.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/3f97691234d1688ad54b94d9b81f9ef181b0d8e9.tar.gz
-	sha256sums = 87e2b1cbb0e08588a231d5c2638926de7ba566c5c0df81f4a897f95b54957f63
 
-pkgname = papirus
+pkgname = bomi-skin-papirus
+	pkgdesc = Papirus theme for Bomi
+	depends = bomi
+
+pkgname = libreoffice-papirus-theme
+	pkgdesc = Libreoffice Papirus theme
+	depends = libreoffice
+
+pkgname = papirus-color-scheme
+	pkgdesc = Modified and adaptive Paper color scheme for KDE
+
+pkgname = papirus-kmail-theme
+	pkgdesc = Modified and adaptive Paper theme for Kmail
+	depends = kmail
+
+pkgname = papirus-plasma-theme
+	pkgdesc = Modified and adaptive Paper plasma theme for KDE
+
+pkgname = papirus-gtk-theme
+	pkgdesc = Modified and adaptive Paper gtk theme
+	depends = gtk-engine-murrine
+
+pkgname = papirus-konsole-colorscheme
+	pkgdesc = Modified and adaptive Paper colorscheme for Konsole
+	depends = konsole
+
+pkgname = papirus-yakuake-theme
+	pkgdesc = Modified and adaptive Paper theme for Yakuake
+	depends = yakuake
+
+pkgname = papirus-aurorae-theme
+	pkgdesc = Modified and adaptive Paper decorations for Kwin
+
+pkgname = papirus-icon-theme
+	pkgdesc = Modified and adaptive Paper icon theme for KDE
 
