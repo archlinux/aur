@@ -1,0 +1,20 @@
+pkgbase = kde-cdemu-manager-kf5
+	pkgdesc = KDE CDEmu Manager is a simple frontend for CDEmu.KF5 version
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://www.kde-apps.org/content/show.php/KDE+CDEmu+Manager?content=99752
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = kdelibs4support
+	depends = cdemu-daemon>=2.0
+	provides = kde-cdemu-manager
+	conflicts = kde-cdemu-manager
+	source = http://www.kde-apps.org/CONTENT/content-files/99752-kde_cdemu-0.5.0.tar.bz2
+	source = port_to_kf5.patch
+	md5sums = c0e56401e2c2f2c4652915a44af128b8
+	md5sums = 4f51fb225789900df4db5d948cdeb71b
+
+pkgname = kde-cdemu-manager-kf5
+

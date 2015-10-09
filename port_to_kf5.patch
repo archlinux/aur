@@ -1,0 +1,93 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2013-01-13 05:04:17.000000000 +0800
++++ b/CMakeLists.txt	2015-10-09 21:54:50.000000000 +0800
+@@ -1,9 +1,17 @@
+ cmake_minimum_required(VERSION 2.6)
+ project(kde_cdemu)
+ 
+-find_package(KDE4 REQUIRED)
+-include(KDE4Defaults)
+-add_definitions(${KDE4_DEFINITIONS})
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets)
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support) #CoreAddons Solid 
++
+ 
+ set(KDE_CDEMU_VERSION "0.5.0")
+ 
+diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt	2010-09-05 06:47:43.000000000 +0800
++++ b/src/CMakeLists.txt	2015-10-09 21:56:47.000000000 +0800
+@@ -3,18 +3,20 @@
+ 
+ configure_file(kdecdemuversion.h.in ${PROJECT_BINARY_DIR}/kdecdemuversion.h)
+ 
+-find_package(KDE4 REQUIRED)
+-include(KDE4Defaults)
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+-add_definitions(${KDE4_DEFINITIONS})
+-include_directories(${KDE4_INCLUDES} ${PROJECT_BINARY_DIR})
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
+ 
+ set(kde_cdemu_SRCS main.cpp kdecdemu.cpp mainwindow.cpp cdemu.cpp messagebox.cpp)
+ 
+ kde4_add_ui_files(kde_cdemu_SRCS mainwindow.ui)
+ kde4_add_executable(kde_cdemu ${kde_cdemu_SRCS})
+ 
+-target_link_libraries(kde_cdemu ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
++target_link_libraries(kde_cdemu KF5::KDELibs4Support KF5::KIOCore Qt5::Widgets)
+ 
+ install(TARGETS kde_cdemu DESTINATION ${BIN_INSTALL_DIR})
+ install(FILES kde_cdemuui.rc DESTINATION  ${DATA_INSTALL_DIR}/kde_cdemu)
+diff -Naur a/src/main.cpp b/src/main.cpp
+--- a/src/main.cpp	2013-01-13 06:16:12.000000000 +0800
++++ b/src/main.cpp	2015-10-09 22:44:50.000000000 +0800
+@@ -21,18 +21,22 @@
+ #include <KAboutData>
+ #include <KCmdLineArgs>
+ #include <KUniqueApplication>
++#include <klocale.h>
++#include <k4aboutdata.h>
+ 
+ #include "kdecdemu.h"
+ #include "kdecdemuversion.h"
+ 
+ int main (int argc, char *argv[])
+ {
+-    KAboutData aboutData("kde_cdemu", "konqueror", ki18n("KDE CDEmu Manager"), KDE_CDEMU_VERSION, ki18n("A KDE Frontend to CDEmu"),
+-            KAboutData::License_GPL_V3, ki18n("Copyright (c) 2009-2013 Marcel Hasler"));
++    K4AboutData aboutData("kde_cdemu", 0, ki18n("KDE CDEmu Manager"), KDE_CDEMU_VERSION, ki18n("A KDE Frontend to CDEmu"), K4AboutData::License_GPL_V3,
++                         ki18n("Copyright (c) 2009-2013 Marcel Hasler"), KLocalizedString(), 
++                          "http://kde-apps.org/content/show.php?content=99752&forumpage=5");
++    
+     aboutData.addAuthor(ki18n("Marcel Hasler"), ki18n("Developer & Maintainer"), "mahasler@gmail.com");
+     aboutData.setProgramIconName("media-optical");
+ 
+-    KLocale::setMainCatalog("kde_cdemu");
++    KLocalizedString::setApplicationDomain("kde_cdemu");
+ 
+     KCmdLineArgs::init(argc, argv, &aboutData);
+ 
+diff -Naur a/src/mainwindow.cpp b/src/mainwindow.cpp
+--- a/src/mainwindow.cpp	2013-01-13 05:14:30.000000000 +0800
++++ b/src/mainwindow.cpp	2015-10-09 22:48:08.000000000 +0800
+@@ -32,6 +32,7 @@
+ #include <KMessageBox>
+ #include <KStandardAction>
+ #include <KStatusBar>
++#include <KUrl>
+ 
+ static QString fileTypes("*.iso *.cue *.toc *.nrg *.mds *.daa *.cif *.b6t *.c2d *.cdi *.ccd");
+ 
