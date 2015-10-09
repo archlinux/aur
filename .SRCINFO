@@ -1,8 +1,8 @@
 pkgbase = openrct2-git
 	pkgdesc = Open source clone of RollerCoaster Tycoon 2
-	pkgver = r4637.21c8437
+	pkgver = r4648.33655af
 	pkgrel = 1
-	url = https://github.com/IntelOrca/OpenRCT2
+	url = https://github.com/OpenRCT2/OpenRCT2
 	install = openrct2.install
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = openrct2-git
 	provides = openrct2
 	conflicts = openrct2
 	options = !buildflags
-	source = openrct2-git::git://github.com/IntelOrca/OpenRCT2.git#branch=develop
+	source = openrct2-git::git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop
 	source = https://openrct.net/launcher/libs/orctlibs.zip
 	source = openrct2
 	source = openrct2.desktop
