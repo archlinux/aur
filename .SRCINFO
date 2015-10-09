@@ -1,7 +1,7 @@
 pkgbase = open-vm-tools-dkms
 	pkgdesc = Open Virtual Machine Tools kernel modules (DKMS)
 	pkgver = 10.0.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 6
 	url = http://open-vm-tools.sourceforge.net/
 	install = open-vm-tools-dkms.install
@@ -18,11 +18,13 @@ pkgbase = open-vm-tools-dkms
 	source = 0001-Fix-vmxnet-module-on-kernels-3.16.patch
 	source = 0004-Support-backing-dev-info-kernel-4.0.patch
 	source = 0005-Remove-new_sync-for-Linux-4.1.patch
+	source = 0006-vmhgfs-support-linux-4.2.x-kernel.patch
 	source = dkms.conf.in
 	sha256sums = 5adef80f43186aff426f4f22b4b31b514d18a1dcc3334d56ed22d2e308803971
 	sha256sums = 6684cf4cd9a492b82b24dff076fbbafef19e59ef969f532ee3da1501136a7c48
 	sha256sums = dac377beb660dc6c143356255346b34db0986511dcb74f051e06f243a0078af8
 	sha256sums = 38e2ae573a849251abde79c82b694d76f32cc75c9ff60878ebcb23f2f8c86928
+	sha256sums = d8191b23b9d5689b321bd0cf20b71a4039fde454d08644de6dc3a6521d574fd0
 	sha256sums = 5255a183cccd80b2bfbbf519b1cc8cec81ae40bbc0b5a88dfddd95532ece84ed
 
 pkgname = open-vm-tools-dkms
