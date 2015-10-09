@@ -3,8 +3,8 @@ Description=Monitoring tool for networked computers - demon
 After=network.target
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/sinfod -Fq
+Type=forking
+ExecStart=/usr/bin/sinfod -q
 
 [Install]
 WantedBy=multi-user.target
