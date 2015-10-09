@@ -1,6 +1,6 @@
 pkgbase = create_ap-gui
 	pkgdesc = Gui application for easy creating access points. Application allows save configuration for quickly create AP.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/p-eli/create_ap-gui
 	arch = any
