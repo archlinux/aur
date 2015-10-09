@@ -2,10 +2,10 @@
 
 pkgname=watsup
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('xdg-utils')
-depends=('gtk3')
+depends=('gtk3' 'gdk-pixbuf2' 'lm_sensors')
 license=('GPL3')
 pkgdesc="Showing some system status informations"
 url="http://www.kornelix.com/watsup"
