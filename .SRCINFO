@@ -1,6 +1,6 @@
 pkgbase = orientdb-community
 	pkgdesc = The Graph-Document NoSQL - Community Edition
-	pkgver = 2.0.11
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = http://www.orientdb.org
 	install = orientdb-community.install
@@ -13,10 +13,9 @@ pkgbase = orientdb-community
 	conflicts = orientdb-git
 	conflicts = orientdb-graphed-git
 	conflicts = orientdb-graphed
-	source = https://github.com/orientechnologies/orientdb/archive/2.0.11.tar.gz
+	source = https://github.com/orientechnologies/orientdb/archive/2.1.3.tar.gz
 	source = orientdb.service
-	md5sums = eef9f697acb44f9ce1d8e4b475e2b84f
+	md5sums = 8f5454b58dff94b15c380979e81e9387
 	md5sums = 687903eba3737f9733bf1c45c4e68e6d
 
 pkgname = orientdb-community
-
