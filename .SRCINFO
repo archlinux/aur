@@ -1,7 +1,7 @@
 pkgbase = mail-notification
 	pkgdesc = Tray icon application that informs you if you have new mail
 	pkgver = 5.4.r69.g9ae8768
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nongnu.org/mailnotify/
 	install = mail-notification.install
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = mail-notification
 	depends = gnome-keyring
 	depends = hicolor-icon-theme
 	depends = libgnome
+	depends = libgnomeui
 	depends = libnotify
 	depends = notification-daemon
 	options = !emptydirs
