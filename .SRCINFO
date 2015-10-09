@@ -1,0 +1,25 @@
+pkgbase = onscripter-jh-hg
+	pkgdesc = onscripter fork with custom improvements.
+	pkgver = 86.dbc3bc1
+	pkgrel = 1
+	url = https://bitbucket.org/jh10001/onscripter-jh
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = smpeg
+	depends = libjpeg-turbo
+	depends = bzip2
+	depends = libvorbis
+	provides = onscripter-jh
+	provides = onscripter
+	conflicts = onscripter-jh
+	conflicts = onscripter
+	source = hg+https://bitbucket.org/jh10001/onscripter-jh
+	md5sums = SKIP
+
+pkgname = onscripter-jh-hg
+
