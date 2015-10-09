@@ -1,0 +1,15 @@
+pkgbase = perl-app-find2perl
+	pkgver = 1.003
+	pkgrel = 1
+	url = https://metacpan.org/release/App-find2perl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-devel-findperl>=0.009
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/App-find2perl-1.003.tar.gz
+	md5sums = 5b4fc19e1f4576ee044c23d2ba7024bd
+	sha512sums = b7153253e07efd5ffbb49f6a5f88a19360b921375fe6d97d58296c69f17c518ed84e2a2f2e742f02537966c3f314ab828cbf24df4d1d9ef8b9ccf822fa673d67
+
+pkgname = perl-app-find2perl
+
