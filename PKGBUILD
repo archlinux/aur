@@ -12,7 +12,7 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'gst-plugins-base-libs'
-             'inetutils')
+             'inetutils' 'freetype2<2.6.1')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'gst-plugins-good: h.264 video'
             'gst-libav: h.264 video'
@@ -29,7 +29,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-fixed-loading-icon.png)
 sha256sums=('8998013821f60fd8d6be61b7eb333c751e731d52612b56bfddfee8623631e6b4'
             'c89abe5ee54637743ee1f54c9e760dc9c35f18a175b46e5dcbb914e06f1b1f2f'
-            'c00fe55ca654813222b835c34de39fd2c15413adc7713a8390b5c64cb00bc8fc'
+            'cf19552d5bbd14c2747aad9b92a2897b88701e9b42990cf28cf40c2d50a41909'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213')
