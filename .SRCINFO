@@ -4,6 +4,7 @@ pkgbase = ruby-mina
 	pkgrel = 1
 	url = http://github.com/nadarei/mina
 	arch = any
+	license = MIT
 	makedepends = rubygems
 	depends = ruby
 	depends = ruby-open4
