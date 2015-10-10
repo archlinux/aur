@@ -1,0 +1,15 @@
+pkgbase = libpo6
+	pkgdesc = libpo6 posix libraries for C++
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/rescrv/po6
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = wget
+	makedepends = gcc
+	source = http://hyperdex.org/src/libpo6-0.8.0.tar.gz
+	md5sums = 8a9eed68227eee7cf1911a3a07d627cc
+
+pkgname = libpo6
+
