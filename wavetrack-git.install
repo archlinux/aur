@@ -8,5 +8,4 @@ post_upgrade() {
 
 post_remove() {
    ldconfig
-   rm -f /usr/include/wavetrack.h
 }

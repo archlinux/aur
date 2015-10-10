@@ -17,14 +17,16 @@ md5sums=("SKIP")
 
 build() {
    cd "$srcdir/$pkgname"
+   autoreconf -i
+   if [ "$CARCH" == "x86_64" ]; then
+      ./configure --prefix=/usr
+   else
+      ./configure --prefix=/usr --libdir=/usr/lib32
+   fi
    make
 }
 
 package() {
    cd "$srcdir/$pkgname"
-   if [ "$CARCH" == "x86_64" ]; then
-      make DESTDIR="$pkgdir" install
-   else
-      make DESTDIR="$pkgdir" LIBPATH="lib32" install
-   fi
+   make DESTDIR="$pkgdir" install
 }
