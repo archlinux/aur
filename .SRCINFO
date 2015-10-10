@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-lzo
+	pkgdesc = Portable lossless data compression library (mingw-w64)
+	pkgver = 2.09
+	pkgrel = 1
+	url = http://www.oberhumer.com/opensource/lzo/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz
+	md5sums = c7ffc9a103afe2d1bba0b015e7aa887f
+
+pkgname = mingw-w64-lzo
+
