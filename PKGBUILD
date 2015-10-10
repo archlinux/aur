@@ -1,10 +1,11 @@
 # Maintainer: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
+# Contributor: Anders Bergh <anders@archlinuxppc.org>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
-# Contributor: Thomas Dziedzic < gostrc at gmail >
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Roberto Alsina <ralsina@kde.org>
+# Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Tomas Lindquist Olsen <tomas@famolsen.dk>
-# Contributor: Anders Bergh <anders@archlinuxppc.org>
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
 pkgbase=llvm-svn
