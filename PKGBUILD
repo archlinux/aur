@@ -1,15 +1,16 @@
 # Maintainer: David Manouchehri <manouchehri@riseup.net>
 # Contributor: Achilleas Pipinellis <axilleas archlinux info>
+# Contributor: Chris Severance aur.severach AatT spamgourmet.com
 
-_gitname='pypcap'
+_gitname='pcapy'
 pkgname="python2-${_gitname}-git"
 _gitbranch='master'
-_gitauthor='pynetwork'
-pkgver=v1.1.3.r4.ga6a2f14
+_gitauthor='CoreSecurity'
+pkgver=0.10.8.r9.g16d2df9
 pkgrel=1
 pkgdesc="A simplified object-oriented Python wrapper for libpcap"
 url="https://github.com/${_gitauthor}/${_gitname}"
-license=('BSD')
+license=('Apache') # Apache Version 1.1 (modified)
 source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
 sha512sums=('SKIP')
 arch=('any')
