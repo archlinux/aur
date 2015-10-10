@@ -8,8 +8,8 @@
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.1
-pkgver=4.1.8
-pkgrel=1
+pkgver=4.1.10
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,16 +22,18 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "$pkgbase.preset"
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        '0001_inet_fix_potential_deadlock_in_reqsk_queue_unlink.diff')
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '4373af2baaae5429be37e5257a22454d468f36b1322f784bb91a608c80ed52a1'
+            '929e210fe6dbd5dd26812c146630be14e979aae6c960a2feb39544babb8e73cb'
             'SKIP'
-            '53141e415a1b66f211510337fea60587a9255b6b0324ee44531441a4a77523ca'
-            'a17e6924fca734dbb473d61d5ab005d73303b1ac6c02b51204111c6b5032489c'
+            'a3a17dec60161aa885c372a5edaa047f5e43044a66a5088e19392986eb8ea1a8'
+            '70842d2c2bc56f4520bc021786e386634cb1b7adbfbdf704d048aefa65d59aa2'
             '4e1fcb722d069ce8bf8c4e720e42a400a91b9aa73304d8a47e34814b5fd210db'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'fd5dcb1847fc22f36892673066c801e818dce42d1f709dafa9f12bf8337024f3')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -46,6 +48,9 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+  # fix network deadlocks; FS#46570
+  patch -p1 -i ${srcdir}/0001_inet_fix_potential_deadlock_in_reqsk_queue_unlink.diff
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -59,7 +64,7 @@ prepare() {
 
   # Enable TOMOYO Linux
   msg "Enabling TOMOYO Linux..."
-  sed -i -e 's:# CONFIG_SECURITY_TOMOYO is not set:CONFIG_SECURITY_TOMOYO=y\nCONFIG_SECURITY_TOMOYO_MAX_ACCEPT_ENTRY=2048\nCONFIG_SECURITY_TOMYO_MAX_AUDIT_LOG=1024\n# CONFIG_SECURITY_TOMOYO_OMIT_USERSPACE_LOADER is not set\nCONFIG_SECURITY_TOMOYO_POLICY_LOADER="/sbin/tomoyo-init"\nCONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER="/sbin/init":' \
+  sed -i -e 's,# CONFIG_SECURITY_TOMOYO is not set,CONFIG_SECURITY_TOMOYO=y\nCONFIG_SECURITY_TOMOYO_MAX_ACCEPT_ENTRY=2048\nCONFIG_SECURITY_TOMYO_MAX_AUDIT_LOG=1024\n# CONFIG_SECURITY_TOMOYO_OMIT_USERSPACE_LOADER is not set\nCONFIG_SECURITY_TOMOYO_POLICY_LOADER="/sbin/tomoyo-init"\nCONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER="/usr/lib/systemd/systemd",' \
       -i -e 's/CONFIG_DEFAULT_SECURITY_DAC=y/# CONFIG_DEFAULT_SECURITY_DAC is not set/' \
       -i -e '/CONFIG_DEFAULT_SECURITY=/ s,"","tomoyo",' ./.config
 

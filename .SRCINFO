@@ -1,6 +1,6 @@
 pkgbase = linux-lts-tomoyo
-	pkgver = 4.1.8
-	pkgrel = 1
+	pkgver = 4.1.10
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -15,20 +15,22 @@ pkgbase = linux-lts-tomoyo
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.8.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.8.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.10.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.10.sign
 	source = config
 	source = config.x86_64
 	source = linux-lts-tomoyo.preset
 	source = change-default-console-loglevel.patch
+	source = 0001_inet_fix_potential_deadlock_in_reqsk_queue_unlink.diff
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
-	sha256sums = 4373af2baaae5429be37e5257a22454d468f36b1322f784bb91a608c80ed52a1
+	sha256sums = 929e210fe6dbd5dd26812c146630be14e979aae6c960a2feb39544babb8e73cb
 	sha256sums = SKIP
-	sha256sums = 53141e415a1b66f211510337fea60587a9255b6b0324ee44531441a4a77523ca
-	sha256sums = a17e6924fca734dbb473d61d5ab005d73303b1ac6c02b51204111c6b5032489c
+	sha256sums = a3a17dec60161aa885c372a5edaa047f5e43044a66a5088e19392986eb8ea1a8
+	sha256sums = 70842d2c2bc56f4520bc021786e386634cb1b7adbfbdf704d048aefa65d59aa2
 	sha256sums = 4e1fcb722d069ce8bf8c4e720e42a400a91b9aa73304d8a47e34814b5fd210db
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = fd5dcb1847fc22f36892673066c801e818dce42d1f709dafa9f12bf8337024f3
 
 pkgname = linux-lts-tomoyo
 	pkgdesc = The Linux-lts-tomoyo kernel and modules
@@ -38,20 +40,20 @@ pkgname = linux-lts-tomoyo
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-lts-tomoyo=4.1.8
+	provides = kernel26-lts-tomoyo=4.1.10
 	conflicts = kernel26-lts-tomoyo
 	replaces = kernel26-lts-tomoyo
 	backup = etc/mkinitcpio.d/linux-lts-tomoyo.preset
 
 pkgname = linux-lts-tomoyo-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts-tomoyo kernel
-	provides = kernel26-lts-tomoyo-headers=4.1.8
+	provides = kernel26-lts-tomoyo-headers=4.1.10
 	conflicts = kernel26-lts-tomoyo-headers
 	replaces = kernel26-lts-tomoyo-headers
 
 pkgname = linux-lts-tomoyo-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts-tomoyo kernel
-	provides = kernel26-lts-tomoyo-docs=4.1.8
+	provides = kernel26-lts-tomoyo-docs=4.1.10
 	conflicts = kernel26-lts-tomoyo-docs
 	replaces = kernel26-lts-tomoyo-docs
 
