@@ -1,6 +1,6 @@
 pkgbase = firefox-gtk3-bin
 	pkgdesc = Standalone web browser from mozilla.org (GTK+ 3)
-	pkgver = 41.0a1.20150603053243
+	pkgver = 44.0a1.20151007171834
 	pkgrel = 1
 	url = https://bugzilla.mozilla.org/show_bug.cgi?id=627699
 	install = firefox-gtk3-bin.install
@@ -18,7 +18,7 @@ pkgbase = firefox-gtk3-bin
 	depends = hunspell
 	provides = firefox-gtk3
 	conflicts = firefox-gtk3
-	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/tinderbox-builds/elm-linux/latest/firefox-41.0a1.en-US.linux-.tar.bz2
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/tinderbox-builds/elm-linux/latest/firefox-44.0a1.en-US.linux-.tar.bz2
 	source = firefox-gtk3.desktop
 	sha512sums = 
 	sha512sums = cdfe2eb4b883760b3e967b025570ddbfeed7376fa0d617e33395ccc6e7c5b0bc241ed335c0655e8ccc78ebfe0890003af11faf1ffe6ff2334af9e77a7424af40
