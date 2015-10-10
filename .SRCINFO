@@ -1,6 +1,6 @@
 pkgbase = audacious-git
 	pkgdesc = Lightweight, advanced audio player focused on audio quality
-	pkgver = 2015.06.09
+	pkgver = 2015.10.10
 	pkgrel = 1
 	url = http://audacious-media-player.org/
 	install = audacious-git.install
@@ -10,7 +10,6 @@ pkgbase = audacious-git
 	makedepends = python2
 	makedepends = git
 	depends = gtk2
-	depends = libguess
 	depends = libsm
 	depends = gnome-icon-theme
 	depends = desktop-file-utils
