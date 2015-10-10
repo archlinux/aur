@@ -1,0 +1,15 @@
+pkgbase = libtreadstone
+	pkgdesc = libtreadstone manipulates JSON and is used by HyperDex
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rescrv/libtreadstone
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = wget
+	makedepends = gcc
+	source = http://hyperdex.org/src/libtreadstone-0.2.0.tar.gz
+	md5sums = 9a8c2906abc6deb60d5f9234bac512c6
+
+pkgname = libtreadstone
+
