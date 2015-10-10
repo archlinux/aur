@@ -162,9 +162,6 @@ function cleanup() {
 	echo "Done"
 }
 
-# Run cleanup on error
-trap cleanup EXIT
-
 # Parse arguments
 while [[ $# > 0 ]]; do
 	arg="$1"
@@ -189,6 +186,9 @@ if [ ! -d "$SRCDIR" ] || [ ! -d "$TRGDIR" ]; then
 	printUsage
 	exit 1
 fi
+
+# Run cleanup on error
+trap cleanup EXIT
 
 # Prepare everything
 NAME=$(basename "$SRCDIR")
