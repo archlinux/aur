@@ -11,6 +11,7 @@ license=('custom')
 depends=('nodejs' 'python2')
 makedepends=('git' 'cmake' 'clang' 'libxml2')
 optdepends=('java-environment: for using clojure')
+optdepends=('gcc-go: for using llvm-go, go may also wor'k)
 conflicts=('emscripten')
 provides=('emscripten')
 source=('git://github.com/kripken/emscripten.git#branch=incoming'

@@ -12,7 +12,7 @@ pkgbase = emscripten-git
 	makedepends = libxml2
 	depends = nodejs
 	depends = python2
-	optdepends = java-environment: for using clojure
+	optdepends = gcc-go: for using llvm-go, go may also work
 	provides = emscripten
 	conflicts = emscripten
 	source = git://github.com/kripken/emscripten.git#branch=incoming
