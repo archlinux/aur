@@ -1,0 +1,22 @@
+MNAME=psmouse-alpsv7
+MVER=20140319
+
+post_install() {
+	echo "Running dkms for install..."
+	dkms add -m ${MNAME} -v ${MVER}
+	dkms build -m ${MNAME} -v ${MVER}
+	dkms install -m ${MNAME} -v ${MVER}
+}
+
+pre_remove() {
+	echo "Running dkms for remove/upgrade..."
+	dkms remove -m ${MNAME} -v ${MVER} --all
+}
+
+pre_upgrade() {
+	pre_remove
+}
+
+post_upgrade() {
+	post_install
+}
