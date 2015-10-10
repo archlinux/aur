@@ -1,0 +1,8 @@
+--- a/setup.py
++++ b/setup.py
+@@ -28,4 +28,5 @@
+         'Programming Language :: Python :: 2',
+         'Topic :: Software Development :: Localization',
+     ],
++    use_2to3 = True,
+ )
