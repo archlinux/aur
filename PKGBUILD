@@ -1,14 +1,13 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo
 pkgver=1.14.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Cairo vector graphics library (mingw-w64)"
 arch=(any)
 url="http://cairographics.org/"
 license=("LGPL" "MPL")
-makedepends=(mingw-w64-configure mingw-w64-librsvg mingw-w64-poppler mingw-w64-lzo)
-depends=(mingw-w64-fontconfig mingw-w64-pixman)
-optdepends=("mingw-w64-glib2: libcairo-gobject")
+makedepends=(mingw-w64-configure mingw-w64-librsvg mingw-w64-poppler)
+depends=(mingw-w64-fontconfig mingw-w64-pixman mingw-w64-lzo mingw-w64-glib2)
 options=(!strip !buildflags staticlibs)
 source=("http://cairographics.org/releases/cairo-${pkgver}.tar.xz"
 "0009-standalone-headers.mingw.patch"
