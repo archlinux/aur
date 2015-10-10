@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -o pipefail
 
 PATH="/usr/lib/archci/node_modules/.bin:$PATH"
 SRCDIR=$(realpath "$1")
