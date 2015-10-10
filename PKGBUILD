@@ -10,9 +10,7 @@ arch=('any')
 url="http://search.cpan.org/~jonallen/a2pdf-1.13/"
 license=('PerlArtistic')
 depends=('perl-switch' 'perl-pdf-api2')
-source=(
-  "http://search.cpan.org/CPAN/authors/id/J/JO/JONALLEN/${pkgname}-${pkgver}.tar.gz"
-)
+source=("http://search.cpan.org/CPAN/authors/id/J/JO/JONALLEN/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('6a5fd513b89ca1ecd765d701ef84a0cc2408abc49601f5c47737c0dc4c9b7b06')
 
 build() {
