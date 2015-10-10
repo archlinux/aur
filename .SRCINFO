@@ -1,6 +1,6 @@
 pkgbase = makemkv-cli
 	pkgdesc = DVD and Blu-ray to MKV converter and network streamer - CLI only
-	pkgver = 1.9.6
+	pkgver = 1.9.7
 	pkgrel = 1
 	url = http://www.makemkv.com
 	install = makemkv.install
@@ -11,12 +11,12 @@ pkgbase = makemkv-cli
 	license = custom
 	depends = ffmpeg
 	conflicts = makemkv
-	source = http://www.makemkv.com/download/makemkv-bin-1.9.6.tar.gz
-	source = http://www.makemkv.com/download/makemkv-oss-1.9.6.tar.gz
+	source = http://www.makemkv.com/download/makemkv-bin-1.9.7.tar.gz
+	source = http://www.makemkv.com/download/makemkv-oss-1.9.7.tar.gz
 	source = makemkvcon.1
 	source = mmdtsdec.1
-	sha256sums = da0eb23d19cc6248ef61535f3e4784ee57c113d68bfbb6e9c29dc713c2c60c0d
-	sha256sums = eddcd73db7b26f8fef0fcfa0cae588a8cfc9fd404fd15caeb33acc79cad6ae2a
+	sha256sums = de6d0fd802c13fbaac4a3d0720e3de15f81b006fde0042a2df42d784b46b33ac
+	sha256sums = 69fd254a2eb63e90f616051fde6cd7188c3ee454033bdf288c63843876a02e99
 	sha256sums = f12c0facf2f0071a9f728b138986f0a4c2b4ff6ace2dfb2e96364e215e9fda6f
 	sha256sums = 2a6237d3d5ce073734c658c7ec5d2141ecd0047e6d3c45d1bd594135c928878f
 
