@@ -1,0 +1,16 @@
+pkgbase = python-gpxpy
+	pkgdesc = Python GPX (GPS eXchange format) parser
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = https://github.com/tkrajina/gpxpy
+	arch = any
+	license = Apache
+	makedepends = python-distribute
+	depends = python>=3.2
+	depends = python-lxml>=3.1.2
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/g/gpxpy/gpxpy-0.8.8.tar.gz
+	md5sums = 2bb43fef121bc700a38ad086235067b6
+
+pkgname = python-gpxpy
+
