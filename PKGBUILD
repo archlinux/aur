@@ -5,7 +5,7 @@ pkgname=sqlitestudio
 _pkgname=SQLiteStudio
 pkgver=3.0.6
 _pkgver=3
-pkgrel=4
+pkgrel=5
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
 url='http://sqlitestudio.pl/'
@@ -23,14 +23,6 @@ qtchooser
 qt5-svg
 qt5-tools
 )
-case $CARCH in
-  i686)
-    depends+=(gcc-libs)
-    ;;
-  x86_64)
-    depends+=(gcc-libs-multilib)
-    ;;
-esac
 install='sqlitestudio.install'
 
 source=(
