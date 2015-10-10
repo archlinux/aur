@@ -2,7 +2,7 @@
 
 pkgname=shinonome-git
 pkgver=HEAD
-pkgrel=1
+pkgrel=2
 pkgdesc='A Linux console-based BMS player using ncurses.'
 arch=(i686 x86_64)
 url='https://github.com/kuroclef/shinonome'
@@ -16,7 +16,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$srcdir"/"${pkgname%-git}"
-    printf %s "$(git log -1 --format=%ci | sed 's/^\(\S*\).*/\1/;s/-/_/g')"
+    printf %s "$(date -I -ud "$(git log -1 --format=%ci)" | sed 's/-/_/g')"
 }
 
 build() {

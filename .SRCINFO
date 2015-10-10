@@ -1,7 +1,7 @@
 pkgbase = shinonome-git
 	pkgdesc = A Linux console-based BMS player using ncurses.
 	pkgver = HEAD
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kuroclef/shinonome
 	arch = i686
 	arch = x86_64
