@@ -2,19 +2,13 @@ pkgbase = psmouse-alpsv7-dkms
 	pkgdesc = psmouse kernel module with support for alpsv7 touchpad
 	pkgver = 20140319
 	pkgrel = 4
-	url = http://permalink.gmane.org/gmane.linux.kernel.input/35013
-	install = INSTALL
+	url = https://github.com/he1per/psmouse-dkms-alpsv7
 	arch = any
 	license = GPL2
 	makedepends = linux-headers
 	depends = dkms
-	options = !strip
-	source = alps-v7.patch
-	source = dkms.conf
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.16.tar.xz
-	md5sums = c3b68160d3cfd329f3806cdc0bdd580d
-	md5sums = 2dec54975446412e7cf5cb621757a493
-	md5sums = 5c569ed649a0c9711879f333e90c5386
+	source = git://github.com/he1per/psmouse-dkms-alpsv7.git
+	md5sums = SKIP
 
 pkgname = psmouse-alpsv7-dkms
 
