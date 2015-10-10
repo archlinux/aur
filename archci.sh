@@ -8,6 +8,7 @@ TRGDIR=$(realpath "$2")
 NAME=$(basename "$1")
 
 AURDIR=$(mktemp -d)
+AURBUILDDIR=$(mktemp -d)
 BUILDDIR=$(mktemp -d)
 
 AUR="$SRCDIR/aur.deps"
@@ -16,8 +17,25 @@ AURBUILD="$SRCDIR/aur.build.deps"
 ARCHBUILD="$SRCDIR/arch.build.deps"
 
 ROOTFS="$SRCDIR/rootfs"
-SCRIPT="$SRCDIR/build"
+PRESCRIPT="$SRCDIR/pre"
+POSTSCRIPT="$SRCDIR/post"
+BUILDSCRIPT="$SRCDIR/build"
 MANIFEST="$SRCDIR/manifest"
+
+function cleanup() {
+	echo
+	echo "Cleaning Up"
+
+	# Clean up
+	sudo rm -rf "$BUILDDIR"
+	sudo rm -rf "$AURDIR"
+	sudo rm -rf "$AURBUILDDIR"
+
+	echo "Done"
+}
+
+# Run cleanup on error
+trap cleanup EXIT
 
 # Validate manifest
 echo "### Validating Package $NAME"
@@ -49,6 +67,11 @@ echo "### Building Package $NAME"
 mkdir -pm 755 "$BUILDDIR/rootfs"
 sudo pacstrap -cdGM "$BUILDDIR/rootfs" filesystem
 
+# Run the pre script
+if [ -f "$PRESCRIPT" ]; then
+	. "$PRESCRIPT" "$BUILDDIR/rootfs"
+fi
+
 # Install Arch build dependencies
 if [ -f "$ARCHBUILD" ]; then
 	sudo pacman --asdeps --noconfirm -r "$BUILDDIR/rootfs" -S $(cat "$ARCHBUILD")
@@ -56,9 +79,8 @@ fi
 
 # Install Aur build dependencies
 if [ -f "$AURBUILD" ]; then
-	PKGDEST="$AURDIR" pacaur --noconfirm --noedit -m $(cat "$AURBUILD")
-	sudo pacman -r "$BUILDDIR/rootfs" --asdeps --noconfirm -U $AURDIR/*
-	rm -rf "$AURDIR"
+	PKGDEST="$AURBUILDDIR" pacaur --noconfirm --noedit -m $(cat "$AURBUILD")
+	sudo pacman -r "$BUILDDIR/rootfs" --asdeps --noconfirm -U $AURBUILDDIR/*
 fi
 
 # Install Repo Dependencies
@@ -70,7 +92,6 @@ fi
 if [ -f "$AUR" ]; then
 	PKGDEST="$AURDIR" pacaur --noconfirm --foreign --noedit -m $(cat "$AUR")
 	sudo pacman -r "$BUILDDIR/rootfs" --noconfirm -U $AURDIR/*
-	rm -rf "$AURDIR"
 fi
 
 # Copy any files from the rootfs over
@@ -79,10 +100,15 @@ if [ -d "$ROOTFS" ]; then
 fi
 
 # Run the install script
-if [ -f "$SCRIPT" ]; then
-	cp "$SCRIPT" "$BUILDDIR/rootfs"
+if [ -f "$BUILDSCRIPT" ]; then
+	cp "$BUILDSCRIPT" "$BUILDDIR/rootfs/build"
 	sudo chroot "$BUILDDIR/rootfs" /build
-	rm "$BUILDDIR/rootfs/build"
+	sudo rm -rf "$BUILDDIR/rootfs/build"
+fi
+
+# Run the post script
+if [ -f "$POSTSCRIPT" ]; then
+	. "$POSTSCRIPT" "$BUILDDIR/rootfs"
 fi
 
 # Resolve possible user-/groupname
@@ -117,10 +143,8 @@ sx -jxpF "$BUILDDIR/manifest" "x.app.group = '$NMGROUP' || '$MGROUP'; x"
 ACI="$TRGDIR/images/$MOS/$MARCH/$MNAME-$MVERSION.aci"
 mkdir -p $(dirname "$ACI")
 
-# Build the aci and clean up
+# Build the aci
 sudo actool build "$BUILDDIR" "$ACI"
-sudo rm -rf "$BUILDDIR"
-sudo rm -rf "$AURDIR"
 
 # Generate Signature
 gpg --armor --output "$ACI.asc" --detach-sig "$ACI"
