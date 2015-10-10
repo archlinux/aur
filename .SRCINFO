@@ -1,0 +1,19 @@
+pkgbase = shinonome-git
+	pkgdesc = A Linux console-based BMS player using ncurses.
+	pkgver = HEAD
+	pkgrel = 1
+	url = https://github.com/kuroclef/shinonome
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = ncurses
+	depends = sdl2
+	depends = sdl2_mixer
+	provides = shinonome
+	conflicts = shinonome
+	source = git://github.com/kuroclef/shinonome.git
+	md5sums = SKIP
+
+pkgname = shinonome-git
+
