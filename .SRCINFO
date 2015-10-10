@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-ghostery
 	pkgdesc = Plugin for Firefox which detects and/or blocks website trackers
 	pkgver = 5.4.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ghostery.com
 	arch = any
 	license = custom
