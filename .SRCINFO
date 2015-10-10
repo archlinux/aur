@@ -1,6 +1,6 @@
 pkgbase = mutt-sidebar-hg
 	pkgdesc = A small but very powerful text-based mail client
-	pkgver = r6486.0d346dc8dccb
+	pkgver = r6518.7aa4e6fc6884
 	pkgrel = 1
 	url = http://www.mutt.org/
 	arch = i686

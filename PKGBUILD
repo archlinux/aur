@@ -3,7 +3,7 @@
 
 _pkgname=mutt
 pkgname="${_pkgname}-sidebar-hg"
-pkgver=r6486.0d346dc8dccb
+pkgver=r6518.7aa4e6fc6884
 pkgrel=1
 pkgdesc="A small but very powerful text-based mail client"
 url="http://www.mutt.org/"
