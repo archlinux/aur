@@ -1,7 +1,7 @@
 pkgbase = pyopl
 	pkgdesc = Python wrapper around DOSBox OPL synth
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/PyOPL
 	arch = i686
 	arch = x86_64
