@@ -1,6 +1,6 @@
 pkgname=mingw-w64-librsvg
 pkgver=2.40.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A SVG viewing library (mingw-w64)"
 arch=(any)
 url="https://live.gnome.org/LibRsvg"
@@ -32,6 +32,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/librsvg-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
     rm -r "$pkgdir/usr/${_arch}/share"
