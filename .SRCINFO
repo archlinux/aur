@@ -1,7 +1,7 @@
 pkgbase = gpgpwd
 	pkgdesc = A command-line password manager based around GnuPG
-	pkgver = 0.6
-	pkgrel = 2
+	pkgver = 0.7
+	pkgrel = 1
 	url = http://random.zerodogg.org/gpgpwd/
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = gpgpwd
 	depends = gnupg
 	optdepends = git: synchronize your passwords between different machines
 	optdepends = xclip: copy passwords to the clipboard
-	source = http://files.zerodogg.org/gpgpwd/gpgpwd-0.6.tar.bz2
-	source = http://files.zerodogg.org/gpgpwd/gpgpwd-0.6.tar.bz2.sig
-	md5sums = eb07197c1c1a104e43e7db1c8ce6537f
+	source = http://files.zerodogg.org/gpgpwd/gpgpwd-0.7.tar.bz2
+	source = http://files.zerodogg.org/gpgpwd/gpgpwd-0.7.tar.bz2.sig
+	md5sums = 734e5dad91d82ab189d56585a2dbe4a7
 	md5sums = SKIP
 
 pkgname = gpgpwd
