@@ -1,24 +1,36 @@
-# Maintainer: Achilleas Pipinellis <axilleas archlinux info>
-# Note: This is a fork fixing numerous bugs. You will not find this version
-# in pypi.
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Contributor: Achilleas Pipinellis <axilleas archlinux info>
 
-pkgname=python2-pypcap
-_pkgname=pypcap
-pkgver=1.1.3
+_gitname='pypcap'
+pkgname="python2-${_gitname}-git"
+_gitbranch='master'
+_gitauthor='pynetwork'
+pkgver=v1.1.3.r4.ga6a2f14
 pkgrel=1
 pkgdesc="A simplified object-oriented Python wrapper for libpcap"
-arch=(any)
-url="https://github.com/pynetwork/pypcap"
+url="https://github.com/${_gitauthor}/${_gitname}"
 license=('BSD')
+source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
+sha512sums=('SKIP')
+arch=('any')
 depends=('python2')
-makedepends=('python2-setuptools')
-source=(https://github.com/pynetwork/$_pkgname/archive/v${pkgver}.zip)
+makedepends=('git' 'python2-setuptools')
+conflicts=("${_gitname}")
+provides=("${_gitname}")
+
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${srcdir}/${_gitname}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
-md5sums=('2bb733983f96509401d23590b9ae745d')
+# vim:set et sw=2 sts=2 tw=80:

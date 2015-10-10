@@ -1,14 +1,17 @@
-pkgbase = python2-pypcap
+pkgbase = python2-pypcap-git
 	pkgdesc = A simplified object-oriented Python wrapper for libpcap
-	pkgver = 1.1.3
+	pkgver = v1.1.3.r4.ga6a2f14
 	pkgrel = 1
 	url = https://github.com/pynetwork/pypcap
 	arch = any
 	license = BSD
+	makedepends = git
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://github.com/pynetwork/pypcap/archive/v1.1.3.zip
-	md5sums = 2bb733983f96509401d23590b9ae745d
+	provides = pypcap
+	conflicts = pypcap
+	source = git://github.com/pynetwork/pypcap#branch=master
+	sha512sums = SKIP
 
-pkgname = python2-pypcap
+pkgname = python2-pypcap-git
 
