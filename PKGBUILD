@@ -10,8 +10,8 @@ _debug=n
 _commit=HEAD
 
 pkgname=rtorrent-pyro-git
-pkgver=20150506
-pkgrel=2
+pkgver=20150908
+pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
 license=('GPL')
