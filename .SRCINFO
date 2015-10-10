@@ -1,6 +1,6 @@
 pkgbase = dhewm3-git
 	pkgdesc = Doom 3 engine with native 64-bit support, SDL, and OpenAL
-	pkgver = r482.61d3efe
+	pkgver = 1.4.0.r1.5a146bf
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dhewm/dhewm3
@@ -16,6 +16,8 @@ pkgbase = dhewm3-git
 	depends = openal
 	depends = sdl
 	optdepends = curl: download support
+	provides = dhewm3
+	conflicts = dhewm3
 	source = git+https://github.com/dhewm/dhewm3
 	source = dhewm3.desktop
 	source = 0001-game_data_location.patch

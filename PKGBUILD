@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=dhewm3-git
-pkgver=r482.61d3efe
+pkgver=1.4.0.r1.5a146bf
 pkgrel=1
 epoch=1
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
@@ -10,6 +10,8 @@ license=('GPL3')
 depends=('doom3-data' 'libjpeg' 'libogg' 'libvorbis' 'openal' 'sdl')
 makedepends=('cmake' 'git')
 optdepends=('curl: download support')
+conflicts=('dhewm3')
+provides=('dhewm3')
 source=("git+$url"
         'dhewm3.desktop'
         '0001-game_data_location.patch')
@@ -20,7 +22,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${pkgname/-git/}"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -37,6 +39,7 @@ prepare() {
 
 build() {
   cd "${pkgname/-git/}/neo"
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DD3XP=1 -DDEDICATED=1 .
   make
 }
@@ -45,6 +48,5 @@ package() {
   cd "${pkgname/-git/}/neo"
 
   make DESTDIR="$pkgdir" libdir="$pkgdir/usr/lib" install
-
   install -Dm644 "$srcdir"/dhewm3.desktop "$pkgdir/usr/share/applications/dhewm3.desktop"
 }
