@@ -1,0 +1,29 @@
+pkgbase = percolator-bin
+	pkgdesc = Software for postprocessing of shotgun proteomics data + format converters + Elude tool
+	pkgver = 2.08.01
+	pkgrel = 1
+	url = http://per-colator.com/
+	arch = x86_64
+	license = Apache
+	depends = gcc-libs
+	provides = percolator
+	conflicts = percolator-git
+	noextract = percolator-2-08-01-amd64.deb
+	noextract = percolator-converters-2-08-01-amd64.deb
+	noextract = elude-2-08-01-amd64.deb
+	source = percolator-2-08-01-amd64.deb::http://sourceforge.net/projects/percolator/files/v2-08-01/percolator-v2-08-01-linux-amd64.deb/download
+	source = percolator-converters-2-08-01-amd64.deb::http://sourceforge.net/projects/percolator/files/v2-08-01/percolator-converters-v2-08-01-linux-amd64.deb/download
+	source = elude-2-08-01-amd64.deb::http://sourceforge.net/projects/percolator/files/v2-08-01/elude-v2-08-01-linux-amd64.deb/download
+	md5sums = 734847fcc956adf81705400ce5dac48d
+	md5sums = 30a19985fbd2fb2962d836aa8c4e7a8c
+	md5sums = 116fa76bc81fddcfef63871516fdf4b1
+
+pkgname = percolator
+	pkgdesc = Percolator and qvality, two post processors for shotgun proteomics data.
+
+pkgname = percolator-converters
+	pkgdesc = Parsers of different database search engines to percolator input format.
+
+pkgname = elude
+	pkgdesc = Software package for prediction of retention times in mass spectorometry experiments.
+
