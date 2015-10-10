@@ -11,7 +11,9 @@ pkgbase = termdown-git
 	depends = python-click
 	depends = python-pyfiglet
 	depends = python-dateutil
-	source = termdown-git::git+https://github.com/trehn/termdown
+	provides = termdown
+	conflicts = termdown
+	source = git+https://github.com/trehn/termdown
 	md5sums = SKIP
 
 pkgname = termdown-git
