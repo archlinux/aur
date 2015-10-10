@@ -1,0 +1,16 @@
+pkgbase = ocaml-dtools
+	pkgdesc = OCaml modules for writing daemons
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-dtools
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	options = !strip
+	source = https://github.com/savonet/ocaml-dtools/releases/download/0.3.2/ocaml-dtools-0.3.2.tar.gz
+	md5sums = 804d89075e50f4db71cbd7d6f3c100e1
+
+pkgname = ocaml-dtools
+
