@@ -1,13 +1,13 @@
 # Maintainer: MobiusHorizons <codemobius@gmail.com>
 pkgname=libtreadstone
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="libtreadstone manipulates JSON and is used by HyperDex" 
 url="https://github.com/rescrv/libtreadstone"
 arch=('x86_64' 'i686')
 license=('BSD')
 depends=()
-makedepends=('wget' 'gcc')
+makedepends=('wget' 'gcc' 'libpo6' 'libe')
 conflicts=()
 replaces=()
 backup=()
