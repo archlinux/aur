@@ -1,0 +1,16 @@
+pkgbase = python-itunes
+	pkgdesc = A simple python wrapper to access iTunes Store API
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ocelma/python-itunes
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/python-itunes/python-itunes.tar.gz
+	sha256sums = a79f1cc287554acb11afc0f2c0a93f6952c43835b53b2e34627a9144dd777277
+
+pkgname = python-itunes
+
+pkgname = python2-itunes
+
