@@ -1,0 +1,28 @@
+pkgbase = kate-git
+	pkgdesc = An advanced editor component which is used in numerous KDE applications requiring a text editing component
+	pkgver = r15216.fcf16e1
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/applications/kate
+	install = kate.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools-git
+	makedepends = python
+	makedepends = plasma-framework-git
+	depends = knewstuff-git
+	depends = ktexteditor-git
+	depends = threadweaver-git
+	depends = kinit-git
+	depends = kded-git
+	provides = kate
+	conflicts = kate
+	conflicts = kdesdk-kate
+	conflicts = kdebase-kwrite
+	source = git://anongit.kde.org/kate.git
+	md5sums = SKIP
+
+pkgname = kate-git
+
