@@ -2,7 +2,7 @@
 post_install() {
   printf "==> To use the controller:\n"
   printf "    sudo systemctl start unifi\n"
-  printf "    Open up https://localhost:8443\n"
+  printf "    Open up https://localhost:8080\n"
   getent group unifi >/dev/null || groupadd -g 113 unifi
   getent passwd unifi >/dev/null || useradd -M -d /opt/unifi -u 113 -g 113 unifi
   :

@@ -3,7 +3,7 @@
 
 pkgname=unifi-controller-beta
 pkgver=4.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Controller for Ubiquiti UniFi accesspoints'
 arch=('any')
 url='http://www.ubnt.com/'
