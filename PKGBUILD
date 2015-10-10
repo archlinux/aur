@@ -3,13 +3,13 @@
 # Contributor: Frikilinux <frikilinux at gmail dot com>
 
 pkgname=gnome-shell-extension-appindicator-git
-pkgver=15.r2.g0c53cfb
-pkgrel=4
+pkgver=16.r0.g86cd3a2
+pkgrel=1
 pkgdesc="Integrates AppIndicators into GNOME Shell."
 arch=('any')
 url="https://github.com/rgcjonas/gnome-shell-extension-appindicator"
 license=('GPL')
-depends=('gnome-shell' 'libappindicator')
+depends=('gnome-shell' 'libappindicator' 'python2')
 makedepends=('git')
 options=('!emptydirs')
 install="gschemas.install"
@@ -45,11 +45,5 @@ package() {
   # Copy extension files into place.
   find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "${_destdir}" '{}' +
   find -maxdepth 2 \( -wholename '*schemas/*.xml' \) -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
-  cd locale
-  for locale in */
-    do
-      install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
-    done
-  cd ..
   cp -r --no-preserve=ownership,mode indicator-test-tool interfaces-xml "${_destdir}"
 }
