@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-waifu2x-w2xc-git
 	pkgdesc = Plugin for Vapoursynth: waifu2x-w2xc (GIT version)
 	pkgver = r2.2.ge79bb45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Waifu2x-w2xc/
 	arch = i686
 	arch = x86_64
