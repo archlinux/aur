@@ -1,0 +1,15 @@
+pkgbase = hyperleveldb
+	pkgdesc = A fork of LevelDB intended to meet the needs of HyperDex while remaining compatible with LevelDB used by HyperDex
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/rescrv/HyperLevelDB
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = wget
+	makedepends = gcc
+	source = http://hyperdex.org/src/hyperleveldb-1.2.2.tar.gz
+	md5sums = 440d22289fa0fd355d01bc8ee04e04ae
+
+pkgname = hyperleveldb
+
