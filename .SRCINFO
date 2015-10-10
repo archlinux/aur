@@ -10,8 +10,8 @@ pkgbase = skf-framework
 	depends = markdown
 	depends = bash>4
 	optdepends = rsync
-	provides = skf
-	conflicts = skf
+	provides = skf-framework
+	conflicts = skf-framework
 	source = git://github.com/moebiuseye/skf.git
 	md5sums = SKIP
 
