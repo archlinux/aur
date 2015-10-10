@@ -1,6 +1,6 @@
 # Maintainer: MobiusHorizons <codemobius@gmail.com>
 pkgname=replicant
-pkgver=1.2.2
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A system for maintaining replicated state machines used for HyperDex"
 url="https://github.com/rescrv/Replicant"
