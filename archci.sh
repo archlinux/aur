@@ -9,7 +9,7 @@ function printUsage() {
 	echo
 	echo 'Usage:'
 	echo
-	echo '  acis.sh SRCDIR TRGTDIR'
+	echo '  acis.sh SRCDIR TRGDIR'
 	echo
 	echo 'Takes a source directory and according to the files living within it creates an app container image. For full information on the format of the source directory, read the README.md'
 	echo
@@ -17,8 +17,6 @@ function printUsage() {
 	echo '  -h|--help'
 	echo '      Show this help'
 	echo
-
-	exit
 }
 
 function validateManifest() {
@@ -183,6 +181,8 @@ done
 
 # Validate Input
 if [ ! -d "$SRCDIR" ] || [ ! -d "$TRGDIR" ]; then
+	echo "Source or Target Directory not found!"
+	echo
 	printUsage
 	exit 1
 fi
