@@ -1,0 +1,17 @@
+pkgbase = ocaml-voaacenc
+	pkgdesc = OCaml bindings for the vo-aacenc AAC encoder
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-voaacenc
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = vo-aacenc
+	options = !strip
+	source = https://github.com/savonet/ocaml-voaacenc/releases/download/0.1.1/ocaml-voaacenc-0.1.1.tar.gz
+	md5sums = 9fc233686c26a0ec96b8a9144dc8d95b
+
+pkgname = ocaml-voaacenc
+
