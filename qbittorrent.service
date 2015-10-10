@@ -5,7 +5,6 @@ After=network.target
 [Service]
 Type=forking
 ExecStart=/usr/bin/qbittorrent-nox --daemon --webui-port=8080
-RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
