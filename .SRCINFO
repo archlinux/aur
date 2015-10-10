@@ -1,13 +1,13 @@
 pkgbase = virtualbox-modules-bfq
-	pkgver = 5.0.4
-	pkgrel = 2
+	pkgver = 5.0.6
+	pkgrel = 1
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = linux-bfq-headers
-	makedepends = virtualbox-host-dkms>=5.0.4
-	makedepends = virtualbox-guest-dkms>=5.0.4
+	makedepends = virtualbox-host-dkms>=5.0.6
+	makedepends = virtualbox-guest-dkms>=5.0.6
 	makedepends = dkms
 
 pkgname = virtualbox-host-modules-bfq
