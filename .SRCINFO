@@ -1,0 +1,24 @@
+pkgbase = hyperdex
+	pkgdesc = HyperDex is a scalable, searchable key-value store
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://hyperdex.org
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = wget
+	makedepends = gcc
+	depends = google-glog
+	depends = popt
+	depends = libpo6
+	depends = libe
+	depends = busybee
+	depends = hyperleveldb
+	depends = replicant
+	depends = libtreadstone
+	depends = libmacaroons
+	source = http://hyperdex.org/src/hyperdex-1.8.1.tar.gz
+	md5sums = a529bb7d1d2e1115805362409d544174
+
+pkgname = hyperdex
+
