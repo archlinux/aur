@@ -3,7 +3,7 @@
 
 _perlmod='App-FatPacker'
 pkgname=perl-app-fatpacker
-pkgver=0.010002
+pkgver=0.010004
 pkgrel=1
 pkgdesc="App::FatPacker - pack your dependencies onto your script file."
 url="http://search.cpan.org/perldoc?App::FatPacker"
@@ -16,7 +16,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/${_perlmod}-${pkgver}.tar.gz")
-md5sums=('f11d3cc7905904a516046aeda344f305')
+md5sums=('892debf2862f09729fba46a5285958d8')
 
 build() {
   cd "${srcdir}/${_perlmod}-${pkgver}"
