@@ -2,7 +2,7 @@
 
 pkgname=kreogist-mu
 pkgver='0.8'
-pkgrel=9
+pkgrel=10
 epoch=1
 pkgdesc="Fantastic cross-platform music manager.based on Qt5"
 changelog="kreogist-mu.changelog"
