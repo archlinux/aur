@@ -1,0 +1,17 @@
+pkgbase = ocaml-ao
+	pkgdesc = OCaml libao bindings
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-ao
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = libao
+	options = !strip
+	source = https://github.com/savonet/ocaml-ao/releases/download/0.2.1/ocaml-ao-0.2.1.tar.gz
+	md5sums = 7f763e8c47e8369274ee400c640532d4
+
+pkgname = ocaml-ao
+
