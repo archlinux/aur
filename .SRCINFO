@@ -1,0 +1,20 @@
+pkgbase = leleleplayer-git
+	pkgdesc = An audio player wich can find similar songs in your library
+	pkgver = 0.1
+	pkgrel = 1
+	install = leleleplayer.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = ffmpeg
+	depends = gtk3
+	optdepends = gst-plugins-bad: Needed for MP3 (and other formats) support
+	optdepends = gst-plugins-ugly: Needed for some audio format support
+	source = git://github.com/Polochon-street/leleleplayer.git
+	md5sums = SKIP
+
+pkgname = leleleplayer-git
+
