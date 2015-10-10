@@ -47,6 +47,7 @@ package() {
   ln -s bash "$pkgdir"/usr/bin/sh
 
   # system-wide configuration files
+  install -dm755 "$pkgdir"/etc/
   install -m644 system.bashrc $pkgdir/etc/bash.bashrc
   install -m644 system.bash_logout "$pkgdir"/etc/bash.bash_logout
 
