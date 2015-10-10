@@ -1,15 +1,13 @@
 pkgbase = python-tzwhere
 	pkgdesc = Library to look up timezone from lat lng offline
-	pkgver = 1.0
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/pegler/pytzwhere
 	arch = any
 	license = MIT
 	depends = python
-	source = python-tzwhere-1.0.tar.gz::https://github.com/pegler/pytzwhere/archive/1.0.tar.gz
-	source = 2to3.patch
-	sha256sums = 4d56b9ca9d6e568c05bcc2201bd4c2366726348606803035fb6366757013d206
-	sha256sums = 8016b6e5de38369869df2c451b75417c1e1dd3bf39ab72c4b98fbd8fd9668fd1
+	source = python-tzwhere-2.2.tar.gz::https://github.com/pegler/pytzwhere/archive/2.2.tar.gz
+	sha256sums = ff7bb018d9f39165190711f1b0505446d922bd5526f3601c23b1258241b7fc21
 
 pkgname = python-tzwhere
 
