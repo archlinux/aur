@@ -1,0 +1,17 @@
+pkgbase = ocaml-taglib
+	pkgdesc = OCaml bindings to taglib
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-taglib
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = taglib
+	options = !strip
+	source = https://github.com/savonet/ocaml-taglib/releases/download/0.3.2/ocaml-taglib-0.3.2.tar.gz
+	md5sums = 67d7274db0626d21f8a2f780d413616b
+
+pkgname = ocaml-taglib
+
