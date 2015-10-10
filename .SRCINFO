@@ -7,7 +7,6 @@ pkgbase = minionpro
 	arch = any
 	license = unknown
 	depends = texlive-core
-	noextract = scripts.zip
 	noextract = enc-2.000.zip
 	noextract = metrics-base.zip
 	noextract = MyriadProAR7.zip

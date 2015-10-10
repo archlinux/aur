@@ -24,7 +24,7 @@ md5sums=('ec2cf45336fe2bdbc63e404c72f4eb6e'
          'a183b5a604e7bc4004de9ed9eaba5ce7'
          '1636037610ee2aa35c5fb736a697b7e0'
          '78e393b25c0dd803684cebc2ffcf588a')
-noextract=('scripts.zip' 'enc-2.000.zip' 'metrics-base.zip' 'MyriadProAR7.zip')
+noextract=('enc-2.000.zip' 'metrics-base.zip' 'MyriadProAR7.zip')
 
 package() {
   install -m755 -d $pkgdir/var/lib/texmf/arch/installedpkgs
