@@ -1,4 +1,5 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer : Yamashita Ren
+# Contributor:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=waifu2x-w2xc
 pkgname=vapoursynth-plugin-${_plug}-git
