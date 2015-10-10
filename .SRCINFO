@@ -1,0 +1,13 @@
+pkgbase = ssocks
+	pkgdesc = Contains a socks5 server, a reverse socks server and client, a netcat like tool and a socks5 relay.
+	pkgver = 0.0.14
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = glibc
+	source = http://netassist.dl.sourceforge.net/project/ssocks/ssocks-0.0.14.tar.gz
+	md5sums = 42d87189271c23fc2174f83331044101
+
+pkgname = ssocks
+
