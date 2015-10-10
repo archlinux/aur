@@ -1,16 +1,16 @@
 # Maintainer: razer <razer[at]neuf[dot]fr>
-pkgname=python-xbee
-pkgver=2.1.0
+pkgname=python-serpent
+pkgver=0.2.0
 pkgrel=2
-pkgdesc='Python tools for working with XBee radios'
-url='https://pypi.python.org/pypi/XBee'
+pkgdesc='Serpent serialization library (Python/.NET/Java)'
+url='https://github.com/irmen/Serpent'
 arch=('any')
 license=('MIT')
-depends=('python' 'python-pyserial')
-source=("https://pypi.python.org/packages/source/X/XBee/XBee-${pkgver}.tar.gz")
-md5sums=('ed3c8c24fd375d980fcef9ce520c53e8')
+depends=('python')
+source=("git://github.com/irmen/Serpent")
+md5sums=('SKIP')
 
 package() {
-  cd XBee-$pkgver
+  cd Serpent
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
