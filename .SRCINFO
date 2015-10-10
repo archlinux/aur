@@ -1,0 +1,14 @@
+pkgbase = perl-module-reader
+	pkgdesc = Read the source of a module like perl does
+	pkgver = 0.002003
+	pkgrel = 1
+	url = http://search.cpan.org/~haarg/Module-Reader-0.002003/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/Module-Reader-0.002003.tar.gz
+	md5sums = 6eec99e9c5df63a536bdc19aeeba23a2
+
+pkgname = perl-module-reader
+
