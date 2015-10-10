@@ -1,0 +1,3 @@
+post_install() {
+    echo "This package always uses the latest sources, rebuild it to update"
+}

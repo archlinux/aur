@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Jitsi
+GenericName=jitsi
+Comment=VoIP and Instant Messaging client
+Icon=/usr/share/pixmaps/jitsiresources/install/debian/jitsi.svg
+Type=Application
+Categories=Network
+Exec=/usr/bin/jitsi
+Terminal=false
