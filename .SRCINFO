@@ -1,0 +1,24 @@
+pkgbase = gperftools-git
+	pkgdesc = Fast, multi-threaded malloc and nifty performance analysis tools
+	pkgver = 2.4.r46.g6627f92
+	pkgrel = 1
+	url = http://code.google.com/p/gperftools/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = perl
+	optdepends = graphviz: pprof graph generation
+	optdepends = gv: pprof postscript generation
+	provides = libtcmalloc.so
+	provides = libprofiler.so
+	provides = libtcmalloc_debug.so
+	provides = libtcmalloc_and_profiler.so
+	provides = libtcmalloc_minimal.so
+	provides = libtcmalloc_minimal_debug.so
+	provides = gperftools
+	conflicts = gperftools
+	source = git+https://github.com/gperftools/gperftools.git
+	md5sums = SKIP
+
+pkgname = gperftools-git
+
