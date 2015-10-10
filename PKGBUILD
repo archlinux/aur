@@ -2,7 +2,7 @@
 
 pkgname=hex2hcd-git
 pkgver=r2.1175dce
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert broadcom hex firmware into hcd format."
 arch=(any)
 url="https://github.com/jessesung/hex2hcd"
@@ -23,6 +23,6 @@ build() {
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
-  install -m644 "${srcdir}/hex2hcd/hex2hcd" "${pkgdir}/usr/bin/hex2hcd"
+  install -m755 "${srcdir}/hex2hcd/hex2hcd" "${pkgdir}/usr/bin/hex2hcd"
 }
 
