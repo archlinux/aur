@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kinit
-pkgver=5.14.0
+pkgver=5.15.0
 pkgrel=1
 pkgdesc='Process launcher to speed up launching KDE applications'
 arch=('i686' 'x86_64')
@@ -11,16 +11,11 @@ license=('LGPL')
 depends=('kio')
 makedepends=('extra-cmake-modules' 'kdoctools')
 groups=('kf5')
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"
-        disable-glib-event-loop.patch)
-md5sums=('18300dc5a57f07e7d81fba87ca55921b'
-         '9cab3a5dac8eb728550ed68678bd3091')
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz")
+md5sums=('1c05dbaead6e59818d0bef640ed05fa3')
 
 prepare() {
   mkdir -p build
-
-  cd "$pkgname-$pkgver"
-  patch -p1 -i ../disable-glib-event-loop.patch
 }
 
 build() {
