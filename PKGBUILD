@@ -6,7 +6,7 @@ pkgdesc="A fork of LevelDB intended to meet the needs of HyperDex while remainin
 url="https://github.com/rescrv/HyperLevelDB"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=()
+depends=('snappy')
 makedepends=('wget' 'gcc')
 conflicts=()
 replaces=()
@@ -16,6 +16,7 @@ md5sums=('440d22289fa0fd355d01bc8ee04e04ae')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's/db_bench_LDADD = libhyperleveldb\.la -lpthread/db_bench_LDADD = libhyperleveldb.la -lpthread $(SNAPPY_LIBS)/' Makefile.in
   ./configure --prefix=/usr
   make
 }

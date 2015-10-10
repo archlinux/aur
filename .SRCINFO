@@ -8,6 +8,7 @@ pkgbase = hyperleveldb
 	license = BSD
 	makedepends = wget
 	makedepends = gcc
+	depends = snappy
 	source = http://hyperdex.org/src/hyperleveldb-1.2.2.tar.gz
 	md5sums = 440d22289fa0fd355d01bc8ee04e04ae
 
