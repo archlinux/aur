@@ -1,0 +1,30 @@
+Otherwise, createInstructionCombiningPass will convert some call to illegal
+instruction in llvm3.7, for example utest compiler_time_stamp and test_load_program_from_spir.
+
+Signed-off-by: Yang Rong <rong.r.yang at intel.com>
+---
+ backend/src/llvm/llvm_to_gen.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/backend/src/llvm/llvm_to_gen.cpp b/backend/src/llvm/llvm_to_gen.cpp
+index 538d1c5..24d4be7 100644
+--- a/backend/src/llvm/llvm_to_gen.cpp
++++ b/backend/src/llvm/llvm_to_gen.cpp
+@@ -110,6 +110,7 @@ namespace gbe
+     MPM.add(createTypeBasedAliasAnalysisPass());
+     MPM.add(createBasicAliasAnalysisPass());
+     MPM.add(createIntrinsicLoweringPass());
++    MPM.add(createStripAttributesPass());     // Strip unsupported attributes and calling conventions.
+     MPM.add(createSamplerFixPass());
+     MPM.add(createGlobalOptimizerPass());     // Optimize out global vars
+ 
+@@ -119,7 +120,6 @@ namespace gbe
+     MPM.add(createInstructionCombiningPass());// Clean up after IPCP & DAE
+     MPM.add(createCFGSimplificationPass());   // Clean up after IPCP & DAE
+     MPM.add(createPruneEHPass());             // Remove dead EH info
+-    MPM.add(createStripAttributesPass());     // Strip unsupported attributes and calling conventions.
+     MPM.add(createBarrierNodupPass(false));   // remove noduplicate fnAttr before inlining.
+     MPM.add(createFunctionInliningPass(20000));
+     MPM.add(createBarrierNodupPass(true));    // restore noduplicate fnAttr after inlining.
+-- 
+1.8.3.2

@@ -1,0 +1,25 @@
+Must explicit use void if function don't have parameter.
+
+Signed-off-by: Yang Rong <rong.r.yang at intel.com>
+---
+ kernels/compiler_function_qualifiers.cl | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kernels/compiler_function_qualifiers.cl b/kernels/compiler_function_qualifiers.cl
+index c904c84..c9f7e5d 100644
+--- a/kernels/compiler_function_qualifiers.cl
++++ b/kernels/compiler_function_qualifiers.cl
+@@ -1,9 +1,9 @@
+ /* test OpenCL 1.1 Function Qualifiers (section 6.7) */
+-kernel void compiler_function_qualifiers()
++kernel void compiler_function_qualifiers(void)
+ __attribute__((vec_type_hint(float)))
+ __attribute__((work_group_size_hint(4,1,1)))
+ __attribute__((reqd_work_group_size(4,1,1)));
+ 
+-kernel void compiler_function_qualifiers()
++kernel void compiler_function_qualifiers(void)
+ {
+ }
+-- 
+1.8.3.2

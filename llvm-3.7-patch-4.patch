@@ -1,0 +1,35 @@
+It can fix datalayout mismatch warning in llvm3.7.
+
+Signed-off-by: Yang Rong <rong.r.yang at intel.com>
+---
+ backend/src/libocl/src/ocl_barrier.ll | 3 +++
+ backend/src/libocl/src/ocl_clz.ll     | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/backend/src/libocl/src/ocl_barrier.ll b/backend/src/libocl/src/ocl_barrier.ll
+index dc3579c..2765a71 100644
+--- a/backend/src/libocl/src/ocl_barrier.ll
++++ b/backend/src/libocl/src/ocl_barrier.ll
+@@ -4,6 +4,9 @@
+ ;#define CLK_LOCAL_MEM_FENCE  (1 << 0)
+ ;#define CLK_GLOBAL_MEM_FENCE (1 << 1)
+ 
++target datalayout = "e-p:32:32-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024"
++target triple = "spir"
++
+ declare i32 @_get_local_mem_fence() nounwind alwaysinline
+ declare i32 @_get_global_mem_fence() nounwind alwaysinline
+ declare void @__gen_ocl_barrier_local() nounwind alwaysinline noduplicate
+diff --git a/backend/src/libocl/src/ocl_clz.ll b/backend/src/libocl/src/ocl_clz.ll
+index a274cde..9522881 100644
+--- a/backend/src/libocl/src/ocl_clz.ll
++++ b/backend/src/libocl/src/ocl_clz.ll
+@@ -1,3 +1,6 @@
++target datalayout = "e-p:32:32-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024"
++target triple = "spir"
++
+ declare i8 @llvm.ctlz.i8(i8, i1)
+ declare i16 @llvm.ctlz.i16(i16, i1)
+ declare i32 @llvm.ctlz.i32(i32, i1)
+-- 
+1.8.3.2

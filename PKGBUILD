@@ -16,6 +16,12 @@ source=("https://01.org/sites/default/files/beignet-$pkgver-source.tar.gz")
 sha256sums=('9bf4c69eb4fbd3c7cc9ef75c1952bca6f05259ffbe753a27e08ed98bb32e1119')
 
 build() {
+	cd "$srcdir/Beignet-$pkgver-Source"
+	patch -Np1 -i ../llvm-3.7-patch-1.patch
+	patch -Np1 -i ../llvm-3.7-patch-2.patch
+	patch -Np1 -i ../llvm-3.7-patch-3.patch
+	patch -Np1 -i ../llvm-3.7-patch-4.patch
+	patch -Np1 -i ../llvm-3.7-patch-5.patch
 	mkdir -p "$srcdir/Beignet-$pkgver-Source/build"
 	cd "$srcdir/Beignet-$pkgver-Source/build"
 	cmake .. \
