@@ -4,6 +4,10 @@ set -e
 # Include the sx if we installed from aur
 PATH="/usr/lib/archci/node_modules/.bin:$PATH"
 
+#Save state of prescript
+PRERUN=false
+POSTRUN=false
+
 function printUsage() {
 	echo
 	echo 'Usage:'
@@ -55,6 +59,7 @@ function bootstrapRootFS() {
 function runPreScript() {
 	if [ -f "$PRESCRIPT" ]; then
 		. "$PRESCRIPT" "$BUILDDIR/rootfs"
+		PRERUN=true
 	fi
 }
 
@@ -101,6 +106,7 @@ function runBuildScript() {
 function runPostScript() {
 	if [ -f "$POSTSCRIPT" ]; then
 		. "$POSTSCRIPT" "$BUILDDIR/rootfs"
+		POSTRUN=true
 	fi
 }
 
@@ -151,7 +157,12 @@ function cleanup() {
 	echo
 	echo "Cleaning Up"
 
-	# Clean up
+	# Clean up pre script if neccessary
+	if [ "$PRERUN" == 'true' ] && [ "$POSTRUN" == 'false' ]; then
+		runPostScript
+	fi
+
+	# Clean up remaining folders
 	sudo rm -rf "$BUILDDIR"
 	sudo rm -rf "$AURDIR"
 	sudo rm -rf "$AURBUILDDIR"
