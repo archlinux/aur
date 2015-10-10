@@ -1,0 +1,17 @@
+pkgbase = ocaml-gavl
+	pkgdesc = OCaml bindings for the Gavl video manipulation library
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-gavl
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = gavl
+	options = !strip
+	source = https://github.com/savonet/ocaml-gavl/releases/download/0.1.6/ocaml-gavl-0.1.6.tar.gz
+	md5sums = 6a95cb233b1929bd9d54431a7c7c4aa1
+
+pkgname = ocaml-gavl
+
