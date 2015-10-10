@@ -14,5 +14,5 @@ md5sums=('SKIP')
 
 package() {
     cd 'psmouse-dkms-alpsv7'
-    ./install.sh
+    sudo ./install.sh
 }
