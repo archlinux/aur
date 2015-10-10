@@ -1,0 +1,16 @@
+pkgbase = ocaml-cry
+	pkgdesc = OCaml native module for icecast/shoutcast source protocol(s)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-cry
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	options = !strip
+	source = https://github.com/savonet/ocaml-cry/releases/download/0.3.0/ocaml-cry-0.3.0.tar.gz
+	md5sums = 5730b72e4be65b657caad27c38c0c103
+
+pkgname = ocaml-cry
+
