@@ -1,0 +1,44 @@
+post_install() {
+  echo
+  echo
+  echo "-----------------------------------------------------------"
+  echo "-                                                         -"
+  echo "-               Please restart CUPS!!!                    -"
+  echo "-                                                         -"
+  echo "-        You need to add your user to the lp group.       -"
+  echo "-                                                         -"
+  echo "-                                                         -"
+  echo "- Please refer to the table at http://foo2zjs.rkkda.com/  -"
+  echo "-                                                         -"
+  echo "-   to choose the appropriate driver for your printer.    -"
+  echo "-                                                         -"
+  echo "-----------------------------------------------------------"
+  echo
+}
+
+post_upgrade() {
+  echo
+  echo
+  echo "-----------------------------------------------------------"
+  echo "-                                                         -"
+  echo "-               Please restart CUPS!!!                    -"
+  echo "-                                                         -"
+  echo "-Remember to check for foomatic-db-foo2zjs updates as well-"
+  echo "-                                                         -"
+  echo "-----------------------------------------------------------"
+  echo
+}
+
+post_remove() {
+  echo
+  echo
+  echo "-----------------------------------------------------------"
+  echo "-                                                         -"
+  echo "-               Please restart CUPS!!!                    -"
+  echo "-                                                         -"
+  echo "-      Remember to replace foomatic-db-foo2zjs  with      -"
+  echo "-                foomatic-db from [extra].                -"
+  echo "-                                                         -"
+  echo "-----------------------------------------------------------"
+  echo
+}

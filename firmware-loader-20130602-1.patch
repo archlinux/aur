@@ -1,0 +1,278 @@
+Maintainer: Nicola Bignami <nicola@kernel-panic.dnsdojo.net>
+Contributor: Muhammed Uluyol <uluyol0@gmail.com>
+Subject: [PATCH] Firmware loader patch
+
+--- a/Makefile
++++ b/Makefile
+@@ -166,6 +166,7 @@ FILES	=	\
+ 		gipddecode.1in \
+ 		hbpldecode.c \
+ 		hbpldecode.1in \
++		foo2zjs-loadfw.in \
+ 		foo2zjs-wrapper.in \
+ 		foo2zjs-wrapper.1in \
+ 		foo2hp2600-wrapper.in \
+@@ -267,7 +266,7 @@ endif
+ SHELLS=		foo2zjs-wrapper foo2oak-wrapper foo2hp2600-wrapper \
+ 		foo2xqx-wrapper foo2lava-wrapper foo2qpdl-wrapper \
+ 		foo2slx-wrapper foo2hiperc-wrapper foo2hbpl2-wrapper
+-SHELLS+=	foo2zjs-pstops
++SHELLS+=	foo2zjs-loadfw foo2zjs-pstops
+ SHELLS+=	printer-profile
+ MANPAGES=	foo2zjs-wrapper.1 foo2zjs.1 zjsdecode.1
+ MANPAGES+=	foo2oak-wrapper.1 foo2oak.1 oakdecode.1
+@@ -476,6 +467,11 @@ foo2slx: foo2slx.o $(LIBJBG)
+ foo2hbpl2: foo2hbpl2.o $(LIBJBG)
+ 	$(CC) $(CFLAGS) -o $@ foo2hbpl2.o $(LIBJBG)
+ 
++foo2zjs-loadfw: foo2zjs-loadfw.in Makefile
++	[ ! -f $@ ] || chmod +w $@
++	sed < $@.in > $@ \
++	    -e 's:@ZJSFWDIR@:$(SHAREZJS)/firmware:' -e 's:@XQXFWDIR@:$(SHAREXQX)/firmware/:' || (rm -f $@ && exit 1)
++	chmod 555 $@
+ 
+ foo2zjs-wrapper: foo2zjs-wrapper.in Makefile
+ 	[ ! -f $@ ] || chmod +w $@
+@@ -953,70 +964,22@@ 	# ... OK!
+ 	#
+ 
+ install-hotplug-prog:
+-	#
+-	#	remove HPLIP (proprietary) files and install our version
+-	#
+-	if [ -d $(UDEVDIR) ]; then \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_1000*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_1005*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_1018*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_1020*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1005*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1006*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1007*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1008*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1505*; \
+-	    rm -f $(UDEVDIR)/*hpmud_support.rules; \
+-	    rm -f $(UDEVDIR)/*hpmud_plugin.rules; \
+-	    rm -f $(LIBUDEVDIR)/*hpmud_support.rules; \
+-	    rm -f $(LIBUDEVDIR)/*hpmud_plugin.rules; \
+-	    rm -f $(LIBUDEVDIR)/*-hplj10xx.rules; \
+-	    if [ -x /sbin/udevd ]; then \
+-		version=`/sbin/udevd --version 2>/dev/null`; \
+-	    elif [ -x /usr/lib/udev/udevd ]; then \
+-		version=`/usr/lib/udev/udevd --version 2>/dev/null`; \
+-	    elif [ -x /usr/lib/systemd/systemd-udevd ]; then \
+-		version=`/usr/lib/systemd/systemd-udevd --version 2>/dev/null`; \
+-	    fi; \
+-	    if [ "$$version" = "" ]; then version=0; fi; \
+-	    echo "*** udev version $$version"; \
+-	    if [ "$$version" -lt 148 ]; then \
+-		$(INSTALL) -c -m 644 $(RULES).old $(UDEVDIR)/11-$(RULES); \
+-	    else \
+-		$(INSTALL) -c -m 644 $(RULES) $(UDEVDIR)/11-$(RULES); \
+-	    fi \
+-	fi
++	install -d -m 755 $(DESTDIR)$(UDEVDIR)
++	$(INSTALL) -c -m 644 $(RULES) $(DESTDIR)$(UDEVDIR)/11-$(RULES); \
+ 	if [ -d $(DEVDDIR) ]; then \
+ 	    $(INSTALL) -c -m 644 hplj10xx.conf $(DEVDDIR)/; \
+ 	fi
+ 	[ -d $(USBDIR) ] || $(INSTALL) -d -m 755 $(USBDIR)/
+-	$(INSTALL) -c -m 755 hplj1000 $(USBDIR)/
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hplj1005
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hplj1018
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hplj1020
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1005
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1006
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1007
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1008
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1505
+-	$(USBDIR)/hplj1000 install-usermap
+-	$(USBDIR)/hplj1005 install-usermap
+-	$(USBDIR)/hplj1018 install-usermap
+-	$(USBDIR)/hplj1020 install-usermap
+-	$(USBDIR)/hpljP1005 install-usermap
+-	$(USBDIR)/hpljP1006 install-usermap
+-	$(USBDIR)/hpljP1007 install-usermap
+-	$(USBDIR)/hpljP1008 install-usermap
+-	$(USBDIR)/hpljP1505 install-usermap
+-	# modprobe usblp
+-	$(USBDIR)/hplj1000 install-usblp
++	$(INSTALL) -d -m 755 $(DESTDIR)/usr/bin
++	$(INSTALL) -c -m 755 foo2zjs-loadfw $(DESTDIR)/usr/bin
+ 
+ install-hotplug-osx:
+ 	cd osx-hotplug; $(MAKE) PREFIX=$(PREFIX) install-hotplug
+ 
+ install-filter:
+ 	if [ "$(CUPS_SERVERBIN)" != "" ]; then \
++	    install -d -m 755 $(CUPS_SERVERBIN)/filter; \
+-	    ln -sf $(BIN)/command2foo2lava-pjl $(CUPS_SERVERBIN)/filter/; \
++	    ln -sf ../../../bin/command2foo2lava-pjl $(CUPS_SERVERBIN)/filter/; \
+ 	fi
+ 
+ CUPSDCONF=/etc/cups/cupsd.conf
+
+--- /dev/null
++++ b/foo2zjs-loadfw.in
+@@ -0,0 +1,162 @@
++#!/bin/sh
++
++#	foo2zjs-loadfw:
++#
++#	Hotplug script for HP1000/1005/1020 USB laser printers. The model number
++#	that this script deals with is determined from the udev env.
++#
++#	Used to download firmware automatically into the printer when it
++#	is powered up or plugged into the USB port.
++#
++#	The inspiration fo this script is from:
++#		Oscar Santacreu. Alicante-Spain (2002)
++#		Mike Morgan (2004)
++#	Modified by Stefan Schweizer (2005) to work as a udev-RUN-script
++
++#
++# Directory to find downloadable HP firmware files sihpMMMM.dl
++#
++ZJSFW=@ZJSFWDIR@
++XQXFW=@XQXFWDIR@
++
++#
++# Program used to determine USB id information
++#
++USBID=/usr/bin/usb_printerid
++
++#
++# Timeout to load firmware
++#
++TIMEOUT=6
++
++#
++#	Figure out how to log our messages
++#
++if [ -t 1 ]; then
++    # Running from a tty...
++    log() {
++	echo "$0: $@"
++    }
++elif [ -x /usr/bin/logger ]; then
++    # Have logger...
++    log() {
++	logger -t "$0" -- "$@"
++    }
++else
++    # No logger...
++    log() {
++	echo "$0: $@" >> /var/log/messages
++    }
++fi
++
++#
++#	Figure out the model number from the name of this script
++#
++case "$1" in
++P1005)
++    MODEL=P1005; FWMODEL=$MODEL
++    MODELNAME="HP LaserJet $MODEL"
++    FWDIR=$XQXFW
++    ;;
++P1006)
++    MODEL=P1006; FWMODEL=$MODEL
++    MODELNAME="HP LaserJet $MODEL"
++    FWDIR=$XQXFW
++    ;;
++P1007)
++    MODEL=P1007; FWMODEL=P1005		# Alias
++    MODELNAME="HP LaserJet $MODEL"
++    FWDIR=$XQXFW
++    ;;
++P1008)
++    MODEL=P1008; FWMODEL=P1006		# Alias
++    MODELNAME="HP LaserJet $MODEL"
++    FWDIR=$XQXFW
++    ;;
++P1505)
++    MODEL=P1505; FWMODEL=$MODEL
++    MODELNAME="HP LaserJet $MODEL"
++    FWDIR=$XQXFW
++    ;;
++P1505n)
++    MODEL=P1505n; FWMODEL=$MODEL
++    MODELNAME="HP LaserJet $MODEL"
++    FWDIR=$XQXFW
++    ;;
++1000)
++    MODEL=1000; FWMODEL=$MODEL
++    MODELNAME="hp LaserJet $MODEL"
++    FWDIR=$ZJSFW
++    ;;
++1005)
++    MODEL=1005; FWMODEL=$MODEL
++    MODELNAME="hp LaserJet $MODEL"
++    FWDIR=$ZJSFW
++    ;;
++1018)
++    MODEL=1018; FWMODEL=$MODEL
++    MODELNAME="HP LaserJet $MODEL"
++    FWDIR=$ZJSFW
++    ;;
++1020)
++    MODEL=1020; FWMODEL=$MODEL
++    MODELNAME="HP LaserJet $MODEL"
++    FWDIR=$ZJSFW
++    ;;
++*)
++    log "Only HP LaserJet 1000, 1005, 1018 and 1020 are supported"
++    log "You need to supply one of these on the cmdline: $0 10**"
++    exit
++    ;;
++esac
++
++if [ -n "$2" ]; then
++    DEVNAME=$2
++elif [ -n "$DEVNAME" ]; then
++    log 'using $DEVNAME'
++else
++    log "You need to either have $DEVNAME set in the environment or supply it on the cmdline, like:"
++    log "$0 10** /dev/usb/lp0"
++    exit 1
++fi
++
++#
++#	Procedure to load a single device with firmware
++#
++load1() {
++    fw="$FWDIR/sihp$FWMODEL.dl"
++    if [ ! -f "$fw" ]; then
++	log "Missing HP LaserJet $MODEL firmware file $fw"
++	log "...read foo2zjs installation instructions and run ./getweb $MODEL"
++	return 1
++    fi
++
++    log "loading HP LaserJet $MODEL firmware $fw to $DEVNAME ..."
++    if cat $fw > $DEVNAME; then
++	sleep $TIMEOUT
++	log "... download successful."
++    else
++	log "... download failed."
++    fi
++    return 0
++}
++
++#
++#	OK, now download firmware to any printers that need it
++#
++if [ -x $USBID ]; then
++	if $USBID $DEVNAME | grep "$MODELNAME" 2> /dev/null; then
++	    # This is a LaserJet 100x
++	    if $USBID $DEVNAME | grep 'FWVER' 2> /dev/null; then
++		log "HP LaserJet $MODEL firmware already loaded into $DEVNAME"
++	    else
++		# Firmware is not yet loaded
++		load1 "$DEVNAME"
++	    fi
++	else
++	    log "No supported printer found."
++	fi
++else
++    log "HP LaserJet $MODEL firmware was not downloaded..."
++    log "...couldn't find $USBID"
++fi

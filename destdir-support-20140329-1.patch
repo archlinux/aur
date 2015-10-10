@@ -1,0 +1,102 @@
+Maintainer: Nicola Bignami <nicola@kernel-panic.dnsdojo.net>
+Contributor: Muhammed Uluyol <uluyol0@gmail.com>
+Subject: [PATCH] Destdir support
+
+--- a/Makefile
++++ b/Makefile
+@@ -18,7 +18,6 @@ VERSION=0.0
+ 
+ # Installation prefix...
+ PREFIX=/usr/local
+-PREFIX=/usr
+ PREFIX=$(DESTDIR)/usr
+ 
+ # Pathnames for this package...
+@@ -38,7 +37,7 @@ INSTALL=install
+ ROOT=root
+ 
+ # Pathnames for referenced packages...
+-FOODB=$(DESTDIR)/usr/share/foomatic/db/source
++FOODB=$(PREFIX)/share/foomatic/db/source
+ 
+ # User ID's
+ LPuid=-oroot
+@@ -249,7 +250,7 @@ # CUPS vars
+ CUPS_SERVERBIN := $(DESTDIR)$(shell cups-config --serverbin 2>/dev/null)
+-CUPS_DEVEL := $(shell grep cupsSideChannelDoRequest /usr/include/cups/sidechannel.h 2>/dev/null)
++CUPS_DEVEL := $(DESTDIR)$(shell grep cupsSideChannelDoRequest /usr/include/cups/sidechannel.h 2>/dev/null)
+-CUPS_GOODAPI := $(shell cups-config --api-version 2>/dev/null | sed "s/1\.[0123].*//")
++CUPS_GOODAPI := $(DESTDIR)$(shell cups-config --api-version | sed "s/1\.[0123].*//" 2>/dev/null)
+ 
+ # hpclj2600n-0.icm km2430_0.icm km2430_1.icm km2430_2.icm samclp300-0.icm
+ # sihp1000.img sihp1005.img sihp1020.img sihp1018.img
+ # sihpP1005.img sihpP1006.img sihpP1505.img
+@@ -654,6 +657,8 @@ install-test:
+ UDEVBIN=$(DESTDIR)/bin/
+ 
+ install-prog:
++	[ -d $(BIN) ] || $(INSTALL) -d -m 755 $(BIN)/
++	[ -d $(DESTDIR)/usr/bin/ ] || $(INSTALL) -d -m 755 $(DESTDIR)/usr/bin/
+ 	#
+ 	# Install driver, wrapper, and development tools
+ 	#
+@@ -661,7 +658,7 @@ install-prog:
+ 	$(INSTALL) -c $(PROGS) $(SHELLS) $(BIN)/
+ 	if [ "$(BINPROGS)" != "" ]; then \
+ 	    $(INSTALL) -d $(UDEVBIN); \
+-	    $(INSTALL) -c $(BINPROGS) $(UDEVBIN); \
++	    $(INSTALL) -c $(BINPROGS) $(DESTDIR)/usr/bin/; \
+ 	fi
+ 	#
+ 	# Install gamma correction files.  These are just templates,
+@@ -715,10 +722,10 @@ install-foo:
+ 	#
+ 	# Clear foomatic cache and rebuild database if needed
+ 	#
+-	rm -rf /var/cache/foomatic/*/*
+-	rm -f /var/cache/foomatic/printconf.pickle
+-	if [ -d /var/cache/foomatic/compiled ]; then \
+-	    cd /var/cache/foomatic/compiled; \
++	rm -rf $(DESTDIR)/var/cache/foomatic/*/*
++	rm -f $(DESTDIR)/var/cache/foomatic/printconf.pickle
++	if [ -d $(DESTDIR)/var/cache/foomatic/compiled ]; then \
++	    cd $(DESTDIR)/var/cache/foomatic/compiled; \
+ 	    foomatic-combo-xml -O >overview.xml; \
+ 	fi
+ 
+@@ -847,10 +854,10 @@ install-extra:
+ 	    fi; \
+ 	done
+ 
+-MODEL=$(DESTDIR)/usr/share/cups/model
++MODEL=$(PREFIX)/share/cups/model
+-LOCALMODEL=$(DESTDIR)/usr/local/share/cups/model
++LOCALMODEL=$(PREFIX)/usr/local/share/cups/model
+ MACMODEL=/Library/Printers/PPDs/Contents/Resources
+-PPD=$(DESTDIR)/usr/share/ppd
++PPD=$(PREFIX)/share/ppd
+ VARPPD=/var/lp/ppd
+ install-ppd:
+ 	#
+@@ -908,9 +908,9 @@ install-ppd:
+ 	    done; \
+ 	fi
+ 
+-APPL=$(DESTDIR)/usr/share/applications
+-OLDAPPL=$(DESTDIR)/usr/share/gnome/apps/System
+-PIXMAPS=$(DESTDIR)/usr/share/pixmaps
++APPL=$(PREFIX)/share/applications
++OLDAPPL=$(PREFIX)/share/gnome/apps/System
++PIXMAPS=$(PREFIX)/share/pixmaps
+ 
+ install-desktop:
+ 	#
+@@ -934,7 +934,7 @@ install-gui:
+ 	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
+ 	
+ 
+-USBDIR=/etc/hotplug/usb
++USBDIR=$(DESTDIR)/etc/hotplug/usb
+ UDEVDIR=/etc/udev/rules.d
+ LIBUDEVDIR=/lib/udev/rules.d
+ RULES=hplj10xx.rules

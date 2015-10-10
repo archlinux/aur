@@ -1,0 +1,66 @@
+Maintainer: Nicola Bignami <nicola@kernel-panic.dnsdojo.net>
+Contributor: Muhammed Uluyol <uluyol0@gmail.com>
+Subject: [PATCH] General fixes patch
+
+--- a/Makefile
++++ b/Makefile
+@@ -381,6 +381,6 @@ # all:
+ #
+ all:	all-test $(PROGS) $(BINPROGS) $(SHELLS) getweb \
+-	all-icc2ps all-osx-hotplug man doc \
++	all-icc2ps man doc \
+ 	all-done
+ 
+ all-test:
+@@ -561,9 +561,4 @@ # all-osx-hotplug:
+ all-icc2ps:
+ 	cd icc2ps; $(MAKE) all
+-
+-all-osx-hotplug:
+-ifeq ($(UNAME),Darwin)
+-	cd osx-hotplug; $(MAKE) all
+-endif
+ 
+ ok: ok.o $(LIBJBG)
+@@ -781,7 +776,7 @@ install-extra:
+ 	    fi; \
+ 	done
+ 	# foo2zjs Firmware files (if any)
+-	$(INSTALL) $(LPuid) $(LPgid) -m 775 -d $(SHAREZJS)/firmware/
++	$(INSTALL) $(LPuid) $(LPgid) -m 755 -d $(SHAREZJS)/firmware/
+ 	for i in sihp1*.img; do \
+ 	    if [ -f $$i ]; then \
+ 		base=`basename $$i .img`; \
+@@ -790,7 +785,7 @@ install-extra:
+ 	    fi; \
+ 	done
+ 	# foo2xqx Firmware files (if any)
+-	$(INSTALL) $(LPuid) $(LPgid) -m 775 -d $(SHAREXQX)/firmware/
++	$(INSTALL) $(LPuid) $(LPgid) -m 755 -d $(SHAREXQX)/firmware/
+ 	for i in sihpP*.img; do \
+ 	    if [ -f $$i ]; then \
+ 		base=`basename $$i .img`; \
+@@ -857,7 +857,7 @@ install-ppd:
+ 	#
+ 	# Install PPD files for CUPS
+ 	#
+ 	export PATH=$$PATH:`pwd`:; \
+-	if [ -x /usr/sbin/ppdmgr -a -s $(VARPPD)/ppdcache ]; then \
++	if [ -x /usr/bin/ppdmgr -a -s $(VARPPD)/ppdcache ]; then \
+ 	    $(INSTALL) $(LPgid) -d $(VARPPD)/user; \
+ 	    cd PPD; \
+@@ -869,14 +864,6 @@ install-ppd:
+ 	    done; \
+ 	    ppdmgr -u; \
+ 	elif [ -d $(PPD) ]; then \
+-	    find $(PPD) -name '*foo2zjs*' | xargs rm -rf; \
+-	    find $(PPD) -name '*foo2hp*' | xargs rm -rf; \
+-	    find $(PPD) -name '*foo2xqx*' | xargs rm -rf; \
+-	    find $(PPD) -name '*foo2lava*' | xargs rm -rf; \
+-	    find $(PPD) -name '*foo2qpdl*' | xargs rm -rf; \
+-	    find $(PPD) -name '*foo2slx*' | xargs rm -rf; \
+-	    find $(PPD) -name '*foo2hiperc*' | xargs rm -rf; \
+-	    find $(PPD) -name '*foo2hbpl*' | xargs rm -rf; \
+ 	    [ -d $(PPD)/foo2zjs ] || mkdir $(PPD)/foo2zjs; \
+ 	    cd PPD; \
+ 	    for ppd in *.ppd; do \

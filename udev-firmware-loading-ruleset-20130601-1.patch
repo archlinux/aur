@@ -1,0 +1,166 @@
+Maintainer: Nicola Bignami <nicola@kernel-panic.dnsdojo.net>
+Contributor: Muhammed Uluyol <uluyol0@gmail.com>
+Subject: [PATCH] udev firmware loading ruleset patch.
+
+--- a/hplj10xx.rules
++++ b/hplj10xx.rules
+@@ -1,39 +1,120 @@
+-#
+-#       hplj10xx.rules.old: udev equal or after 1.30
+-#
+-#Own udev rule for HP Laserjet 1000
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="hp LaserJet 1000", NAME="usb/%k", \
+-	SYMLINK+="hplj1000-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1000" 
+-#Own udev rule for HP Laserjet 1005
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="hp LaserJet 1005 series", NAME="usb/%k", \
+-	SYMLINK+="hplj1005-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1005" 
+-#Own udev rule for HP Laserjet 1018
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet 1018", NAME="usb/%k", \
+-	SYMLINK+="hplj1018-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1018" 
+-#Own udev rule for HP Laserjet 1020
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet 1020", NAME="usb/%k", \
+-	SYMLINK+="hplj1020-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1020" 
+-#Own udev rule for HP Laserjet P1005
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1005", NAME="usb/%k", \
+-	SYMLINK+="hpljP1005-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1005" 
+-#Own udev rule for HP Laserjet P1006
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1006", NAME="usb/%k", \
+-	SYMLINK+="hpljP1006-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1006" 
+-#Own udev rule for HP Laserjet P1007
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1007", NAME="usb/%k", \
+-	SYMLINK+="hpljP1007-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1007" 
+-#Own udev rule for HP Laserjet P1008
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1008", NAME="usb/%k", \
+-	SYMLINK+="hpljP1008-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1008" 
+-#Own udev rule for HP Laserjet P1505
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1505", NAME="usb/%k", \
+-	SYMLINK+="hpljP1505-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1505" 
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="0517", RUN+="/usr/bin/foo2zjs-loadfw 1000 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="0517", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="0517", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="1317", RUN+="/usr/bin/foo2zjs-loadfw 1005 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="1317", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="1317", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4117", RUN+="/usr/bin/foo2zjs-loadfw 1018 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4117", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4117", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="2b17", RUN+="/usr/bin/foo2zjs-loadfw 1020 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="2b17", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="2b17", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="3d17", RUN+="/usr/bin/foo2zjs-loadfw P1005 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3d17", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3d17", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="3e17", RUN+="/usr/bin/foo2zjs-loadfw P1006 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3e17", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3e17", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4817", RUN+="/usr/bin/foo2zjs-loadfw P1007 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4817", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4817", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4917", RUN+="/usr/bin/foo2zjs-loadfw P1008 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4917", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4917", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="3f17", RUN+="/usr/bin/foo2zjs-loadfw P1505 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3f17", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3f17", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4017", RUN+="/usr/bin/foo2zjs-loadfw P1505n $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4017", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4017", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="0517", RUN+="/usr/bin/foo2zjs-loadfw 1000 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="0517", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="0517", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="1317", RUN+="/usr/bin/foo2zjs-loadfw 1005 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="1317", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="1317", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4117", RUN+="/usr/bin/foo2zjs-loadfw 1018 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4117", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4117", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="2b17", RUN+="/usr/bin/foo2zjs-loadfw 1020 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="2b17", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="2b17", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="3d17", RUN+="/usr/bin/foo2zjs-loadfw P1005 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3d17", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3d17", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="3e17", RUN+="/usr/bin/foo2zjs-loadfw P1006 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3e17", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3e17", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4817", RUN+="/usr/bin/foo2zjs-loadfw P1007 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4817", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4817", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4917", RUN+="/usr/bin/foo2zjs-loadfw P1008 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4917", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4917", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="3f17", RUN+="/usr/bin/foo2zjs-loadfw P1505 $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3f17", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="3f17", RUN+="/usr/bin/rmmod usblp"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4017", RUN+="/usr/bin/foo2zjs-loadfw P1505n $tempnode"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4017", RUN+="/usr/bin/sleep 15"
++ACTION=="add", KERNEL=="lp*", SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="03f0",     \
++       ATTRS{idProduct}=="4017", RUN+="/usr/bin/rmmod usblp"
