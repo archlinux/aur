@@ -2,7 +2,7 @@
 # Wed Jun 10 09:04:23 UTC 2015
 pkgbase = systemtap
 	pkgdesc = SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system.
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = http://sourceware.org/systemtap/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = systemtap
 	optdepends = sqlite3
 	optdepends = linux-fedora
 	source = http://sourceware.org/systemtap/ftp/releases/systemtap-2.8.tar.gz
-	sha1sums = 95034e8243e1f9fd33b765afda06546083df1b7f
+	sha1sums = 37ecbc7445ff34db3c8204b1541f25524a0e8024
 
 pkgname = systemtap
 
