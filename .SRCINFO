@@ -1,0 +1,13 @@
+pkgbase = hex2hcd-git
+	pkgdesc = Convert broadcom hex firmware into hcd format.
+	pkgver = 1201550
+	pkgrel = 1
+	url = https://github.com/jessesung/hex2hcd
+	arch = any
+	license = Custom
+	provides = hex2hcd
+	source = hex2hcd::git+https://github.com/jessesung/hex2hcd.git
+	sha256sums = SKIP
+
+pkgname = hex2hcd-git
+
