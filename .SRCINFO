@@ -1,0 +1,17 @@
+pkgbase = ocaml-shine
+	pkgdesc = OCaml binding to the fixed-point mp3 encoding library shine
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-shine
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = shine
+	options = !strip
+	source = https://github.com/savonet/ocaml-shine/releases/download/0.2.1/ocaml-shine-0.2.1.tar.gz
+	md5sums = 0f8921966ac445295425cc52af3a84a6
+
+pkgname = ocaml-shine
+
