@@ -1,6 +1,6 @@
 pkgbase = zbackup
 	pkgdesc = A versatile deduplicating backup tool
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = http://zbackup.org
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = zbackup
 	depends = xz
 	depends = openssl
 	depends = protobuf
-	source = https://github.com/zbackup/zbackup/archive/1.4.3.tar.gz
-	md5sums = 34faaba97084cadd90d4f1c62fa476fd 
+	source = https://github.com/zbackup/zbackup/archive/1.4.4.tar.gz
+	md5sums = 0753ca5d61533f951d6ebb6f087efa0b 
 
 pkgname = zbackup
 
