@@ -1,5 +1,5 @@
 pkgname=pacaur-git
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="A fast workflow AUR helper using cower as backend"
 arch=('any')
