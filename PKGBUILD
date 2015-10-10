@@ -32,4 +32,5 @@ package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "syncthing-relaysrv" "${pkgdir}/usr/bin/syncthing-relaysrv"
     install -Dm644 "etc/linux-systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    install -Dm0644 "${srcdir}/${_pkgname}.tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 }
