@@ -1,0 +1,17 @@
+pkgbase = ocaml-alsa
+	pkgdesc = OCaml ALSA bindings
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-alsa
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = alsa-lib
+	options = !strip
+	source = https://github.com/savonet/ocaml-alsa/releases/download/0.2.2/ocaml-alsa-0.2.2.tar.gz
+	md5sums = 297e9bcee543799f4794e049255c34c1
+
+pkgname = ocaml-alsa
+
