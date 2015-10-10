@@ -11,9 +11,11 @@ arch=('i686' 'x86_64')
 depends=('glibc')
 provides=('syncthing-relaysrv=0.12')
 makedepends=('git' 'go' 'godep' 'inetutils' 'sed')
-source=("${_pkgname}::git+https://github.com/syncthing/relaysrv.git#branch=master")
+source=("${_pkgname}::git+https://github.com/syncthing/relaysrv.git#branch=master"
+        "syncthing-relaysrv.tmpfiles.d")
 install=${_pkgname}.install
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'f899998985f2d374af57f17ef6362c37a305467858195b74d1c1def71d97273f')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"

@@ -15,7 +15,9 @@ pkgbase = syncthing-relaysrv-git
 	depends = glibc
 	provides = syncthing-relaysrv=0.12
 	source = syncthing-relaysrv::git+https://github.com/syncthing/relaysrv.git#branch=master
+	source = syncthing-relaysrv.tmpfiles.d
 	sha256sums = SKIP
+	sha256sums = f899998985f2d374af57f17ef6362c37a305467858195b74d1c1def71d97273f
 
 pkgname = syncthing-relaysrv-git
 
