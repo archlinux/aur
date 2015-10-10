@@ -1,0 +1,13 @@
+pkgbase = chromium-incognito
+	pkgdesc = Provide a start script to start chromium in incognito mode
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.chromium.org/
+	arch = any
+	license = BSD
+	depends = chromium
+	source = chromium-incognito
+	md5sums = b5b90a8ffe62fab2ca2fd9e7d0588e26
+
+pkgname = chromium-incognito
+
