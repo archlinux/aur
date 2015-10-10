@@ -29,7 +29,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
-  sed -i 's#\[\"3.8\", \"3.10\", \"3.12\", \"3.14\"\]#\[\"3.8\", \"3.10\", \"3.12\", \"3.14\", \"3.16\"\]#g' "./metadata.json"
 }
 
 build() {
