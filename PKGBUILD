@@ -3,7 +3,7 @@
 
 pkgname=lua-md5
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic cryptographic facilities for Lua."
 arch=('i686' 'x86_64')
 url="https://github.com/keplerproject/md5"
@@ -14,7 +14,7 @@ source=(https://github.com/keplerproject/md5/archive/v${pkgver}.tar.gz LICENSE)
 build() {
 	cd ${srcdir}/md5-${pkgver}
 	./configure
-	sed -i "s|5.1|5.2|" config
+	sed -i "s|5.1|5.3|" config
 	make || return 1
 }
 
