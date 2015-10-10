@@ -1,23 +1,25 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kpmcore-git
-pkgver=1.2.1.r11.5c04c17
+pkgver=1.9.50.r64.9d77168
 pkgrel=1
-pkgdesc="Library for managing partitions. Common code for KDE Partition Manager and other projects."
+pkgdesc="Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)"
 arch=('i686' 'x86_64')
-url='http://kde.org/applications/system/kdepartitionmanager/'
+url='http://kde.org/applications/system/kdepartitionmanager'
 license=('GPL2')
-depends=('parted' 'kio')
-conflicts=('kmpcore' 'kpmcore')
+depends=('parted'
+         'kio'
+         )
+conflicts=('kpmcore')
 provides=('kpmcore')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
+makedepends=('extra-cmake-modules' 'git' 'python')
 source=('git://anongit.kde.org/kpmcore.git')
 sha1sums=('SKIP')
 
 pkgver() {
   cd kpmcore
-  _ver="$(cat CMakeLists.txt | grep -m3 -e VERSION_MAJOR -e VERSION_MINOR -e VERSION_RELEASE | grep -o "[[:digit:]]*" | xargs)"
-  echo -e "${_ver// /.}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e VERSION_MAJOR -e VERSION_MINOR -e VERSION_RELEASE | cut -d '"' -f2 | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
