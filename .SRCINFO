@@ -1,0 +1,17 @@
+pkgbase = ocaml-faad
+	pkgdesc = OCaml bindings for the libfaad AAC decoder library
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-faad
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = faad2
+	options = !strip
+	source = https://github.com/savonet/ocaml-faad/releases/download/0.3.3/ocaml-faad-0.3.3.tar.gz
+	md5sums = 70b3bea8fc805255ff2a7f9aafe55d8c
+
+pkgname = ocaml-faad
+
