@@ -98,7 +98,6 @@ package() {
   mv "$pkgdir"/opt/firefox/* "$pkgdir"/opt/firefox-beta/
   rm -r "$pkgdir"/opt/firefox
 
- # cp -r "$pkgdir"/opt/firefox/* "$pkgdir"/opt/firefox-beta/
   install -Dm644 ../vendor.js "$pkgdir/opt/firefox-beta/browser/defaults/preferences/vendor.js"
 
   for i in 16 22 24 32 48 256; do
