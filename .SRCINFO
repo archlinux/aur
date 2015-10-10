@@ -1,13 +1,13 @@
 pkgbase = audacious-plugins-git
 	pkgdesc = Plugins for Audacious
-	pkgver = 2015.06.09
+	pkgver = 2015.10.10
 	pkgrel = 1
 	url = http://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
-	makedepends = audacious-git>=2015.06.09
+	makedepends = audacious-git>=2015.10.10
 	makedepends = glib2
 	makedepends = python2
 	makedepends = alsa-lib
@@ -32,7 +32,6 @@ pkgbase = audacious-plugins-git
 	makedepends = neon
 	makedepends = libmms
 	makedepends = libcue
-	makedepends = libbs2b
 	makedepends = git
 	optdepends = alsa-lib: Advanced Linux Sound Arch. output
 	optdepends = pulseaudio: PulseAudio output
@@ -53,7 +52,6 @@ pkgbase = audacious-plugins-git
 	optdepends = lirc: LIRC
 	optdepends = curl: AudioScrobbler Client
 	optdepends = libmtp: Upload to MTP device
-	optdepends = libbs2b: Bauer stereophonic-to-binaural DSP
 	optdepends = neon: neon-based http transport
 	optdepends = libmms: libmms-based mms transport
 	optdepends = libcue: CUE playlist format
