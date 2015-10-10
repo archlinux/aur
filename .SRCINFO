@@ -1,0 +1,17 @@
+pkgbase = ocaml-ladspa
+	pkgdesc = OCaml bindings for LADSPA plugins
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-ladspa
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	makedepends = ladspa
+	depends = ocaml
+	options = !strip
+	source = https://github.com/savonet/ocaml-ladspa/releases/download/0.1.5/ocaml-ladspa-0.1.5.tar.gz
+	md5sums = ae66337eb15dbbf0f432016e79db7267
+
+pkgname = ocaml-ladspa
+
