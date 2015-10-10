@@ -1,15 +1,15 @@
 # Maintainer: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc
-pkgver=5.1
-pkgrel=2
+pkgver=5.2
+pkgrel=1
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
 url="http://www.cprover.org/cbmc/"
 license=('custom')
 makedepends=('subversion')
 depends=('flex' 'bison' 'make' 'patch' 'perl-libwww')
-source=("${pkgname}::svn+http://www.cprover.org/svn/cbmc/releases/cbmc-5.1")
+source=("${pkgname}::svn+http://www.cprover.org/svn/cbmc/releases/cbmc-5.2")
 sha1sums=('SKIP')
 
 provides=('cbmc')
