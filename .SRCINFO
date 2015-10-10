@@ -1,0 +1,26 @@
+pkgbase = perl-carton
+	pkgdesc = Perl module dependency manager (aka Bundler for Perl)
+	pkgver = 1.0.12
+	pkgrel = 2
+	url = http://search.cpan.org/~miyagawa/Carton-v1.0.12/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl-cpan-meta
+	depends = perl-exception-class
+	depends = perl-file-pushd
+	depends = perl-json
+	depends = perl-try-tiny
+	depends = perl-moo
+	depends = perl-path-tiny
+	depends = perl-module-cpanfile
+	depends = perl-module-reader
+	depends = cpanminus
+	depends = perl-app-fatpacker>=0.009018
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Carton-v1.0.12.tar.gz
+	md5sums = c3b753736f62e7094bf1585244b1f4dd
+
+pkgname = perl-carton
+
