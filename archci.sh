@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -o pipefail
 
 # Include the sx if we installed from aur
 PATH="/usr/lib/archci/node_modules/.bin:$PATH"
