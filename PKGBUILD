@@ -1,7 +1,7 @@
 #Mantainer: emnl
-pkgname=ttf-inconsolata-dz-powerline
+pkgname=otf-inconsolata-dz-powerline
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc="Inconsolata-dz-Powerline"
 arch=('any')
@@ -13,6 +13,6 @@ install=$pkgname.install
 
 package()
 {
-    mkdir -p "$pkgdir/usr/share/fonts/TTF"
-    cp "$srcdir/Inconsolata-dz-Powerline.otf" "$pkgdir/usr/share/fonts/TTF"
+    mkdir -p "$pkgdir/usr/share/fonts/OTF"
+    cp "$srcdir/Inconsolata-dz-Powerline.otf" "$pkgdir/usr/share/fonts/OTF"
 }
