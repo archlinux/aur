@@ -1,5 +1,5 @@
 pkgbase = letsencrypt-git
-	pkgdesc = A utility that works alongside Apache and nginx to automatically obtain a certificate and convert a website to HTTPS
+	pkgdesc = A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
 	pkgver = 3123.412e6ac
 	pkgrel = 1
 	url = https://letsencrypt.org/
