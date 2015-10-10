@@ -1,0 +1,13 @@
+post_install() {
+  echo "--------------------------------------------------"
+  echo "NOTE: DansGuardian is NOT free for commercial use."
+  echo "      See http://dansguardian.org for details on"
+  echo "      setup, configuration, and licensing."
+  echo "--------------------------------------------------"
+  echo "NOTE: You must install a proxy server such as"
+  echo "      Squid or Tinyproxy or Polipo in order to use"
+  echo "      DansGuardian. You'll also have to configure"
+  echo "      DansGuardian to use the correct proxy port."
+  echo "--------------------------------------------------"
+  chown -R nobody.nobody /var/log/dansguardian 
+}

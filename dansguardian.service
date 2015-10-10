@@ -1,0 +1,12 @@
+[Unit]
+Description=Versatile Web Content Filter
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/dansguardian.pid
+Environment=LD_LIBRARY_PATH=/opt/pcre-old/lib
+ExecStart=/usr/sbin/dansguardian
+
+[Install]
+WantedBy=multi-user.target
