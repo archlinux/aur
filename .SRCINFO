@@ -1,0 +1,17 @@
+pkgbase = ocaml-lame
+	pkgdesc = OCaml bindings to the LAME mp3 encoder
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-lame
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = lame
+	options = !strip
+	source = https://github.com/savonet/ocaml-lame/releases/download/0.3.3/ocaml-lame-0.3.3.tar.gz
+	md5sums = a1585835f94f8d459157263ed2aaede3
+
+pkgname = ocaml-lame
+
