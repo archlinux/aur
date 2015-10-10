@@ -1,14 +1,15 @@
 pkgbase = slap
 	pkgdesc = Sublime-like terminal-based text editor.
-	pkgver = 0.1.31
+	pkgver = 0.1.42
 	pkgrel = 1
 	url = https://github.com/slap-editor/slap/
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://github.com/slap-editor/slap/archive/v0.1.31.zip
-	sha256sums = f2897e11c3d1db0e8c69a692c4ad2f9f5dab0b00b4f3b74a0fc234b355f66a78
+	depends = python2
+	source = https://github.com/slap-editor/slap/archive/v0.1.42.zip
+	sha256sums = 57f148bac16211a6ac3bcda5cfe6b790fbc23af7264c3d7a589ac858a0c7bf5f
 
 pkgname = slap
 
