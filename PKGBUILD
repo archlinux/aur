@@ -1,9 +1,10 @@
 # Maintainer: Johan PONIN <johan.ponin.pro at gmail dot com>
+# Contributor : Yamashita Ren
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=libbpg
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='BPG Image Encoder and Decoder'
 arch=('x86_64' 'i686')
@@ -29,4 +30,4 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 
-md5sums=('30d1619656955fb3fbba5fe9f9f27f67')
+md5sums=('5f2aefff34342df327196019314d785b')
