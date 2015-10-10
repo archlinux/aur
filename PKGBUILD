@@ -2,7 +2,7 @@
 
 _pkgname=antimicro
 pkgname=${_pkgname}-qt4
-pkgver=2.19.3
+pkgver=2.20
 pkgrel=1
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons (QT4 version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 install="${pkgname}.install"
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Ryochan7/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('723068be04a2214b7d73ae6089d66f64')
+md5sums=('cf6ae291684155605a9b700af9371810')
 
 
 build() {
