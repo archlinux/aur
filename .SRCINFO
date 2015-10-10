@@ -1,0 +1,17 @@
+pkgbase = ocaml-theora
+	pkgdesc = OCaml binding to libtheora
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-theora
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = libtheora
+	options = !strip
+	source = https://github.com/savonet/ocaml-theora/releases/download/0.3.1/ocaml-theora-0.3.1.tar.gz
+	md5sums = 1a5de0e6254178db0da10e96d4d6d13f
+
+pkgname = ocaml-theora
+
