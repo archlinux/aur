@@ -1,5 +1,5 @@
 pkgbase = cnijfilter-mg6300
-	pkgdesc = Canon MG6300 printer driver
+	pkgdesc = Printer drivers for the Canon MG6300 series
 	pkgver = 3.80
 	pkgrel = 10
 	url = http://support-sg.canon-asia.com/contents/SG/EN/0100468802.html
