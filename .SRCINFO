@@ -1,0 +1,19 @@
+pkgbase = ocaml-dssi
+	pkgdesc = OCaml bindings for dssi plugins
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-dssi
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	makedepends = dssi
+	makedepends = ladspa
+	depends = ocaml
+	depends = ocaml-ladspa
+	options = !strip
+	source = https://github.com/savonet/ocaml-dssi/releases/download/0.1.2/ocaml-dssi-0.1.2.tar.gz
+	md5sums = 9fe0b20291e33676e8f33a445e8d3ee8
+
+pkgname = ocaml-dssi
+
