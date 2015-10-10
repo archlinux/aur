@@ -1,0 +1,18 @@
+pkgbase = ocaml-vorbis
+	pkgdesc = OCaml bindings to lbvorbis
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-vorbis
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = libvorbis
+	depends = ocaml-ogg
+	options = !strip
+	source = https://github.com/savonet/ocaml-vorbis/releases/download/0.6.2/ocaml-vorbis-0.6.2.tar.gz
+	md5sums = bb20473496ea5102c5ccd25aa5ef785d
+
+pkgname = ocaml-vorbis
+
