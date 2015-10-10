@@ -1,0 +1,17 @@
+pkgbase = ocaml-bjack
+	pkgdesc = OCaml blocking JACK API
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-bjack
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = jack
+	options = !strip
+	source = https://github.com/savonet/ocaml-bjack/releases/download/0.1.5/ocaml-bjack-0.1.5.tar.gz
+	md5sums = 684b2bac4b55d7ef35c72d42f32eee3f
+
+pkgname = ocaml-bjack
+
