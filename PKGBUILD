@@ -1,8 +1,8 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-freon-git
-pkgver=13.r0.g12ecebd
-pkgrel=2
+pkgver=15.r1.g2dbddc7
+pkgrel=1
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
 url="https://github.com/UshakovVasilii/gnome-shell-extension-freon"
