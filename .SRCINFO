@@ -1,6 +1,6 @@
 pkgbase = groff-git
 	pkgdesc = GNU Troff. Official git trunk.
-	pkgver = 1.22.3.r2775
+	pkgver = 1.22.3.r2802
 	pkgrel = 1
 	url = http://www.gnu.org/software/groff/
 	install = groff-git.install
