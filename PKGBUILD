@@ -1,7 +1,7 @@
 # Maintainer: Eriner <M@tthamilton.com>
 
 pkgrel=1
-pkgver=r1523.9dffc39
+pkgver=r1557.32f3b57
 pkgname=prezto-git
 pkgdesc="Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes."
 url="https://github.com/Eriner/prezto"
@@ -10,6 +10,7 @@ license=('MIT')
 depends=('zsh>=4.3.17')
 makedepends=('git' 'coreutils' 'sed')
 source=('git://github.com/Eriner/prezto.git' 'install')
+options=('!strip')
 install='install'
 md5sums=('SKIP' '95664ce383e88798a4047305dfd44220')
 _gitname='prezto'
@@ -34,6 +35,7 @@ build() {
 
 
 	sed -i 's#\${ZDOTDIR:-\$HOME}/\.zprezto/#/usr/lib/prezto/#g' $srcdir/$_gitname/init.zsh
+	sed -i 's#\${ZDOTDIR:-\$HOME}/\.zprezto#/usr/lib/prezto/#g' $srcdir/$_gitname/modules/debug/functions/trace-prezto
 
 	for entry in ${backup[@]}; do
 		rcfile=$(basename $entry)
