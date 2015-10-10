@@ -8,6 +8,7 @@ pkgdesc='Countdown timer and stopwatch in your terminal'
 url='https://github.com/trehn/termdown'
 license=('GPL3')
 
+makedepends=('git' 'python-setuptools')
 depends=('python' 'python-click' 'python-pyfiglet' 'python-dateutil')
 
 source=("$pkgname::git+$url")

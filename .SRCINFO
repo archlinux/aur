@@ -5,11 +5,13 @@ pkgbase = termdown-git
 	url = https://github.com/trehn/termdown
 	arch = any
 	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-click
 	depends = python-pyfiglet
 	depends = python-dateutil
-	source = git+https://github.com/trehn/termdown
+	source = termdown-git::git+https://github.com/trehn/termdown
 	md5sums = SKIP
 
 pkgname = termdown-git
