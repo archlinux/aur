@@ -1,0 +1,19 @@
+pkgbase = skf-framework
+	pkgdesc = Plugin-based static website generator inspired by Suckless Web Framework
+	pkgver = 89.43094a3
+	pkgrel = 1
+	url = http://skf.jeannedhack.org/
+	arch = any
+	license = GPLv3
+	makedepends = make
+	makedepends = git
+	depends = markdown
+	depends = bash>4
+	optdepends = rsync
+	provides = skf
+	conflicts = skf
+	source = git://github.com/moebiuseye/skf.git
+	md5sums = SKIP
+
+pkgname = skf-framework
+
