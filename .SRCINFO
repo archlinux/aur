@@ -1,0 +1,15 @@
+pkgbase = busybee
+	pkgdesc = BusyBee is a high-performance messaging layer used by HyperDex
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/rescrv/busybee
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = wget
+	makedepends = gcc
+	source = http://hyperdex.org/src/busybee-0.7.0.tar.gz
+	md5sums = b40f89f92478933f9a14334ddfee5af8
+
+pkgname = busybee
+
