@@ -4,8 +4,8 @@
 _pkgname=mutt
 pkgname="${_pkgname}-sidebar-hg"
 pkgver=r6518.7aa4e6fc6884
-pkgrel=1
-pkgdesc="A small but very powerful text-based mail client"
+pkgrel=2
+pkgdesc="Mutt-hg package with sidebar patches"
 url="http://www.mutt.org/"
 arch=('i686' 'x86_64')
 license=('GPL')
