@@ -1,0 +1,22 @@
+pkgbase = ocaml-ocamlsdl
+	pkgdesc = OCaml interface to the SDL (Simple DirectMedia Layer) library
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/ocamlsdl/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = ocaml-lablgl
+	depends = sdl
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_gfx
+	options = !strip
+	source = http://downloads.sourceforge.net/project/ocamlsdl/OCamlSDL/ocamlsdl-0.9.1/ocamlsdl-0.9.1.tar.gz
+	md5sums = c3086423991fcdc1ba468afd52fc112b
+
+pkgname = ocaml-ocamlsdl
+
