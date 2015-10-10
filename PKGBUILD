@@ -10,6 +10,7 @@ license=('GPL')
 source=(https://github.com/Ema0/arch/raw/master/Inconsolata-dz-Powerline.otf)
 sha256sums=('5b4a5cc36eadb68dd05f3f8144fef2e63f4f14d7b768e3d7a506c63d13f4b7f5')
 install=$pkgname.install
+replaces=('ttf-inconsolata-dz-powerline')
 
 package()
 {
