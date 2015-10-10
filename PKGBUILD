@@ -2,7 +2,7 @@
 
 pkgname=syncthing-relaysrv-git
 _pkgname=syncthing-relaysrv
-pkgver=0.12.0.r13.ga62e38c
+pkgver=0.12.0.r17.gba44fe7
 pkgrel=1
 pkgdesc="Relay Server for Syncthing"
 url="http://syncthing.net/"
@@ -20,6 +20,12 @@ sha256sums=('SKIP'
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+    # see: https://github.com/syncthing/relaysrv/pull/11#issuecomment-147088946
+    sed -i "s|/usr/bin/relaysrv|/usr/bin/syncthing-relaysrv|" "etc/linux-systemd/${_pkgname}.service"
 }
 
 build() {
