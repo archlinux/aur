@@ -1,8 +1,8 @@
 pkgbase = xdg-utils-mimeo
 	pkgdesc = Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo
-	pkgver = 1.1.0.git20150715
+	pkgver = 1.1.1
 	pkgrel = 1
-	url = http://cgit.freedesktop.org/xdg/xdg-utils/
+	url = https://wiki.freedesktop.org/www/Software/xdg-utils/
 	arch = any
 	license = MIT
 	makedepends = docbook-xsl
@@ -21,10 +21,12 @@ pkgbase = xdg-utils-mimeo
 	optdepends = perl-file-mimeinfo: for generic support in xdg-open
 	provides = xdg-utils
 	conflicts = xdg-utils
-	source = git://anongit.freedesktop.org/xdg/xdg-utils#commit=3c499bd6d88c9d2b4f824f1e2f9c9158a5b95aa6
+	source = http://portland.freedesktop.org/download/xdg-utils-1.1.1.tar.gz
+	source = http://portland.freedesktop.org/download/xdg-utils-1.1.1.tar.gz.asc
 	source = mimeo-detection.diff
+	md5sums = 2d0aec6037769a5f138ff404b1bb4b15
 	md5sums = SKIP
-	md5sums = 8693c0986515de30872f0ff054539eaf
+	md5sums = 1cedb9e77167a5f1e2ae12506b214883
 
 pkgname = xdg-utils-mimeo
 
