@@ -2,7 +2,7 @@
 # Contributor: Axel Reidemeister[computerkranker] <mail@axelreidemeister.de>
 
 pkgname=libinklevel
-pkgver=0.8.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A library for checking the ink level of your printer"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('libieee1284')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('83464cb23fe46a1d1adbe10f08b247be')
+md5sums=('d9f61d14afc2025da454a624578b2be8')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
