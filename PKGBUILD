@@ -1,13 +1,13 @@
 # Maintainer: MobiusHorizons <codemobius@gmail.com>
 pkgname=libe
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library containing high-performance datastructures and utilities for C++ used by hyperdex"
 url="https://github.com/rescrv/e"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=()
-makedepends=('wget' 'gcc')
+depends=('libpo6')
+makedepends=('wget' 'gcc') 
 conflicts=()
 replaces=()
 backup=()

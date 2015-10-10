@@ -1,13 +1,14 @@
 pkgbase = libe
 	pkgdesc = Library containing high-performance datastructures and utilities for C++ used by hyperdex
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rescrv/e
 	arch = x86_64
 	arch = i686
 	license = BSD
 	makedepends = wget
 	makedepends = gcc
+	depends = libpo6
 	source = http://hyperdex.org/src/libe-0.11.0.tar.gz
 	md5sums = 8ddff754a8478fcd9f2face6c18c5ef6
 
