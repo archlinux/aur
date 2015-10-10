@@ -3,10 +3,10 @@
 # Contributor: Leslie Zhai <xiang.zhai [at] i-soft [dot] com [dot] cn>
 
 pkgname=leap-motion-sdk
-_major=2.2.7
-_build=30199
+_major=2.3.1
+_build=31549
 pkgver=${_major}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Leap Motion Developer SDK"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
@@ -51,6 +51,6 @@ package() {
   install -D -m644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('cc9ffe540a913facc34138b9a87908be'
+md5sums=('d9facdfed290823d3a5358ca5077e883'
 	 'c43a3a834f646efc8f033f75eb80cc7e'
          '78a4f0934b105397d1f7b17d06e4717c')
