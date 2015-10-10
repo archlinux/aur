@@ -2,12 +2,12 @@
 
 pkgname=gnome-settings-daemon-backlight-toshiba
 _pkgname=gnome-settings-daemon
-pkgver=3.16.2
-pkgrel=2
+pkgver=3.18.0
+pkgrel=1
 pkgdesc="The GNOME Settings daemon with compatibility for toshiba backlight"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(dconf gnome-desktop gsettings-desktop-schemas hicolor-icon-theme libcanberra-pulse
+depends=(dconf gnome-desktop gsettings-desktop-schemas libcanberra-pulse
          libnotify libsystemd libwacom pulseaudio pulseaudio-alsa upower librsvg libgweather
          geocode-glib geoclue2 nss libgudev)
 makedepends=(intltool xf86-input-wacom libxslt docbook-xsl python2)
@@ -19,7 +19,7 @@ provides=('gnome-settings-daemon')
 conflicts=('gnome-settings-daemon')
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
 	toshiba.patch)
-sha256sums=('d8d536584ebb8fb1403050eb65e7ee3328eba14b123542369ff1917e727fa69a'
+sha256sums=('8d3ef9c18538831ed89122fee0bdaca68b0e482a18b3c4388c4e672aba1b3cd5'
 
 SKIP)
 
