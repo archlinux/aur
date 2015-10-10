@@ -6,7 +6,7 @@ pkgbase = pacmanager-bin
 	arch = any
 	license = GPL3
 	makedepends = xz
-	depends = perl-crypt-blowfish perl-gnome2-vte perl-expect perl-crypt-rijndael perl-gtk2-ex-simple-list perl-io-stty perl-io-tty perl-net-arp uuid
+	depends = perl-crypt-blowfish perl-gnome2-vte perl-expect perl-crypt-rijndael perl-gtk2-ex-simple-list perl-io-stty perl-io-tty perl-net-arp uuid perl-yaml perl-crypt-cbc perl-gtk2-unique perl-socket6 gconf-perl glade-perl
 	source = https://contini.info/files/pac-4.5.5.5-all.deb
 	md5sums = 68da89f89e3faaf8c70288a675828164
 
