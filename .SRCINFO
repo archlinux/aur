@@ -1,0 +1,11 @@
+pkgbase = ocaml-includepatch
+	pkgdesc = OCAML saves its includefiles in /usr/lib/ocaml/caml. Due to the unusual location for these files which makes compiling certain libraries impossible, this package symlinks this path to /usr/include/caml
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://caml.inria.fr/ocaml/
+	arch = any
+	license = custom
+	depends = ocaml
+
+pkgname = ocaml-includepatch
+
