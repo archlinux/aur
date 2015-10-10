@@ -1,0 +1,15 @@
+pkgbase = replicant
+	pkgdesc = A system for maintaining replicated state machines used for HyperDex
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/rescrv/Replicant
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = wget
+	makedepends = gcc
+	source = http://hyperdex.org/src/replicant-1.2.2.tar.gz
+	md5sums = c7bac99c7813dce22e36fc80c839f7fe
+
+pkgname = replicant
+
