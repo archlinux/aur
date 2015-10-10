@@ -2,12 +2,12 @@
 
 pkgname=ocaml-duppy
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
 pkgdesc=("OCaml asynchronous scheduler and monad for server-oriented programming")
 url="https://github.com/savonet/ocaml-duppy"
-depends=('ocaml' 'ocaml-pcre')
+depends=('ocaml' 'camlp4' 'ocaml-pcre')
 makedepends=('ocaml-findlib')
 source=("https://github.com/savonet/ocaml-duppy/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
