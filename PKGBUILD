@@ -2,7 +2,7 @@
 
 pkgbase=virtualbox-modules-bridge-pl
 pkgname=('virtualbox-host-modules-bridge-pl' 'virtualbox-guest-modules-bridge-pl')
-pkgver=5.0.4
+pkgver=5.0.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
