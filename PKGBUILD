@@ -1,6 +1,6 @@
-# Maintainer: Andrey Mikhaylenko <neithere at gmail dot com>
+# Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 pkgname=python-gpxpy
-pkgver=0.8.8
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Python GPX (GPS eXchange format) parser"
 arch=(any)
@@ -14,8 +14,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=(http://pypi.python.org/packages/source/g/gpxpy/gpxpy-${pkgver}.tar.gz)
-md5sums=('2bb43fef121bc700a38ad086235067b6')
+source=(https://pypi.python.org/packages/source/g/gpxpy/gpxpy-${pkgver}.tar.gz)
+sha256sums=('97fedc72973dc21663868143ae92129d7f2f1505b14a8239ea927684bbdf7001')
 
 package() {
    cd "${srcdir}/gpxpy-${pkgver}"
