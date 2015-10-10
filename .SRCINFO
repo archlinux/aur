@@ -1,0 +1,14 @@
+pkgbase = manul
+	pkgdesc = package vendoring utility for Golang programs
+	pkgver = 20151004.1_b60d9af
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = manul::git://github.com/kovetskiy/manul
+	md5sums = SKIP
+
+pkgname = manul
+
