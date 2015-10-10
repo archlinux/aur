@@ -1,0 +1,17 @@
+pkgbase = ocaml-aacplus
+	pkgdesc = OCaml bindings for libaacplus
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-aacplus
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = libaacplus
+	options = !strip
+	source = https://github.com/savonet/ocaml-aacplus/releases/download/0.2.2/ocaml-aacplus-0.2.2.tar.gz
+	md5sums = 968fe7a5ebebfb6182705271e3920c0a
+
+pkgname = ocaml-aacplus
+
