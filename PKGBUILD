@@ -1,5 +1,5 @@
 pkgname=systemtap
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system."
 url="http://sourceware.org/systemtap/"
@@ -9,7 +9,7 @@ depends=('elfutils' 'nss' 'python2')
 makedepends=('gcc')
 optdepends=('sqlite3' 'linux-fedora')
 source=(http://sourceware.org/systemtap/ftp/releases/$pkgname-$pkgver.tar.gz)
-sha1sums=('95034e8243e1f9fd33b765afda06546083df1b7f')
+sha1sums=('37ecbc7445ff34db3c8204b1541f25524a0e8024')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
