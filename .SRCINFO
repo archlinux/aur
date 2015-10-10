@@ -1,7 +1,7 @@
 pkgbase = opus-tools-git
 	pkgdesc = A collection of tools for working with opus files (git version)
-	pkgver = 0.0
-	pkgrel = 2
+	pkgver = 0.1.9.9.gaa7e018
+	pkgrel = 1
 	url = http://wiki.xiph.org/Opus-tools
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = opus-tools-git
 	depends = libogg
 	provides = opus-tools
 	conflicts = opus-tools
-	source = git://git.xiph.org/opus-tools.git
+	source = git+https://git.xiph.org/opus-tools.git
 	md5sums = SKIP
 
 pkgname = opus-tools-git
