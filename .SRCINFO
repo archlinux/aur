@@ -1,0 +1,17 @@
+pkgbase = ocaml-xmlplaylist
+	pkgdesc = OCaml module to parse various RSS playlist formats
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-xmlplaylist
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = ocaml-xmlm
+	options = !strip
+	source = https://github.com/savonet/ocaml-xmlplaylist/releases/download/0.1.4/ocaml-xmlplaylist-0.1.4.tar.gz
+	md5sums = 99117433dacb84117af7f01bac67df81
+
+pkgname = ocaml-xmlplaylist
+
