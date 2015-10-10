@@ -1,12 +1,12 @@
 # Maintainer: MobiusHorizons <codemobius@gmail.com>
 pkgname=busybee
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BusyBee is a high-performance messaging layer used by HyperDex"
 url="https://github.com/rescrv/busybee"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=()
+depends=('libpo6' 'libe')
 makedepends=('wget' 'gcc')
 conflicts=()
 replaces=()
