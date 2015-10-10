@@ -7,8 +7,9 @@ pkgdesc="A pushbullet systray notification daemon for linux. also a simple clien
 arch=('any')
 url="https://github.com/Boteium/bashbullet"
 license=('GPL')
-depends=(jshon nodejs libnotify yad nodejs-ws xclip)
-optdepends=( 	'surl: url shortener support'
+depends=(jshon nodejs libnotify 'yad>=0.31' nodejs-ws xclip)
+optdepends=( 	'screen: running in background'
+		'surl: url shortener support'
 		'nodejs-atob: nodejs module for encryption support'
 		'nodejs-btoa: nodejs module for encryption support'
 		'nodejs-node-forge: nodejs module for encryption support'
