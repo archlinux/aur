@@ -1,7 +1,7 @@
 pkgbase = dict-foldoc
 	pkgdesc = The Free On-line Dictionary of Computing for dictd et al.
 	pkgver = 20151008_072358
-	pkgrel = 1
+	pkgrel = 2
 	url = http://foldoc.org/
 	install = dict-foldoc.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = dict-foldoc
 	source = http://foldoc.org/Dictionary.txt
 	source = sedfile
 	md5sums = SKIP
-	md5sums = 679901ef6cf0e32fb15031713933d6f3
+	md5sums = 187e91f7b0734a85a81105d8745522c0
 
 pkgname = dict-foldoc
 
