@@ -1,7 +1,7 @@
 pkgbase = dell-drac-kvm-bin
 	pkgdesc = Dell DRAC KVM Launcher (x86_64 binary)
 	pkgver = 36.2ba7251
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PaulMaddox/drac-kvm
 	arch = x86_64
 	license = GPL2
