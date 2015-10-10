@@ -1,8 +1,9 @@
 pkgbase = syncthing-relaysrv-git
 	pkgdesc = Relay Server for Syncthing
-	pkgver = 0.12.0.r8.g215ba72
+	pkgver = 0.12.0.r13.ga62e38c
 	pkgrel = 1
 	url = http://syncthing.net/
+	install = syncthing-relaysrv.install
 	arch = i686
 	arch = x86_64
 	license = MIT

@@ -1,0 +1,10 @@
+post_install(){
+    groupadd -g 8385 syncthing-relaysrv &>/dev/null
+    useradd -u 8385 -g syncthing-relaysrv -d /var/lib/syncthing-relaysrv -s /bin/nologin syncthing-relaysrv &>/dev/null
+}
+
+post_upgrade(){
+    getent group syncthing-relaysrv >/dev/null 2>&1 || groupadd -g 8385 syncthing-relaysrv &>/dev/null
+    getent passwd syncthing-relaysrv >/dev/null 2>&1 || useradd -u 8385 -g syncthing-relaysrv -d /var/lib/syncthing-relaysrv \
+        -s /bin/nologin syncthing-relaysrv &>/dev/null
+}
