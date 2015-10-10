@@ -1,10 +1,10 @@
 # Maintainer: David Manouchehri <david@davidmanouchehri.com>
-# Former Maintainer/Contributor: Matthieu Rakotojaona <matthieu.rakotojaona@gmail.com>
+# Contributor: Matthieu Rakotojaona <matthieu.rakotojaona@gmail.com>
 
 pkgname=python-elasticsearch
 _gitname=elasticsearch-py
 _gitauthor=elasticsearch
-pkgver=1.4.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Python client for Elasticsearch"
 arch=('any')
@@ -20,7 +20,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/$_gitauthor/$_gitname/archive/$pkgver.tar.gz")
-sha512sums=('dbe51362f68d40e95a0cfefde4feb8d9d9c61b4f4795cbf69fd70bf981f290812ebac19a20ae8594cc39ac46a3c35ddfe450ff436fca0fada060736128478cf7')
+sha512sums=('a2e255c2615f6de36760a86e59d9a1798d076e87b6e176efc8a3e4dfb52558c25b8d5ba9b1560bebc8b77687d0451ce45d7faaac21e2ba8d98bc41297021229e')
 
 package() {
   cd "$srcdir/$_gitname-$pkgver"
