@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=1.2.360.r6436.e02451b
+pkgver=1.2.360.r6440.168d319
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -37,20 +37,19 @@ depends=('python2'
          'python2-tmdb3' #AUR#
          'python2-pynzb' #AUR#
          'python2-apscheduler' #AUR#
-         # undocumented in FlexGet.egg-info/requires.txt
+         'python2-flask'
+         'python2-flask-restful' #AUR#
+         'python2-ordereddict'
+         'python2-flask-restplus072'
+         'python2-cherrypy>=3.7.0'
+         'python2-flask-assets>=0.11' #AUR#
+         'python2-cssmin' #AUR#
+         'python2-flask-compress'
+         'python2-flask-login>=0.3.2'
+         'python2-libsass>=0.8.3'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
-            'python2-flask: web interface'
-            'python2-flask'
-            'python2-flask-restful: web interface' #AUR#
-            'python2-ordereddict: web interface'
-            'python2-flask-restplus072: web interface'
-            'python2-cherrypy>=3.7.0: web interface'
-            'python2-flask-assets>=0.11: web interface' #AUR#
-            'python2-cssmin: web interface' #AUR#
-            'python2-flask-compress: web interface'
-            'python2-flask-login>=0.3.2: web interface'
             'python2-rarfile: decompress plugin' #AUR#
             )
 makedepends=('python2-paver'
