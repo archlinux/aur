@@ -39,14 +39,12 @@ source=(
     "${_pkgname}::svn+http://llvm.org/svn/llvm-project/llvm/trunk"
     'clang::svn+http://llvm.org/svn/llvm-project/cfe/trunk'
     'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
-    llvm_tools_shlib_CMakeLists.patch
 )
 
 sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'a1c9f36b97c639666ab6a1bd647a08a027e93e3d3cfd6f5af9c36e757599ce81'
 )
 
 #
@@ -78,9 +76,6 @@ prepare() {
 
     svn export --force "${srcdir}/clang" tools/clang
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
-
-    # https://llvm.org/bugs/show_bug.cgi?id=24157
-    patch -p2 -i "${srcdir}/llvm_tools_shlib_CMakeLists.patch"
 
     mkdir -p "${srcdir}/build"
 }
