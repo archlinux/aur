@@ -6,7 +6,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=audacious-plugins-git
-pkgver=2015.06.09
+pkgver=2015.10.10
 pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=("audacious-git>=$pkgver"
              'alsa-lib' 'pulseaudio' 'jack2' 'lame' 'libvorbis' 'flac' 'mpg123'
              'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth' 'libcdio-paranoia'
              'libsidplayfp' 'wavpack' 'dbus-glib' 'libnotify' 'lirc' 'curl'
-             'libmtp' 'neon' 'libmms' 'libcue' 'libbs2b' 'git')
+             'libmtp' 'neon' 'libmms' 'libcue' 'git') # 'libbs2b')
 
 optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'pulseaudio: PulseAudio output'
@@ -43,7 +43,7 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'lirc: LIRC'
             'curl: AudioScrobbler Client'
             'libmtp: Upload to MTP device'
-            'libbs2b: Bauer stereophonic-to-binaural DSP'
+          # 'libbs2b: Bauer stereophonic-to-binaural DSP'
 
             'neon: neon-based http transport'
             'libmms: libmms-based mms transport'
