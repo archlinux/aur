@@ -1,8 +1,8 @@
 # Maintainer: MobiusHorizons <codemobius@gmail.com>
 pkgname=libpo6
 pkgver=0.8.0
-pkgrel=1
-pkgdesc="libpo6 posix libraries for C++"
+pkgrel=2
+pkgdesc="libpo6 posix libraries for C++ used by HyperDex"
 url="https://github.com/rescrv/po6"
 arch=('x86_64' 'i686')
 license=('BSD')

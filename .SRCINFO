@@ -1,7 +1,7 @@
 pkgbase = libpo6
-	pkgdesc = libpo6 posix libraries for C++
+	pkgdesc = libpo6 posix libraries for C++ used by HyperDex
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rescrv/po6
 	arch = x86_64
 	arch = i686
