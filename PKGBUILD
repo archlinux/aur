@@ -132,8 +132,6 @@ build() {
     cd "${srcdir}/build"
 
     export PKG_CONFIG_PATH='/usr/lib/pkgconfig'
-    _ffi_include_flags=$(pkg-config --cflags-only-I libffi)
-    _ffi_libs_flags=$(pkg-config --libs-only-L libffi)
 
     # LLVM_BUILD_LLVM_DYLIB: Build the dynamic runtime libraries (e.g. libLLVM.so).
     # LLVM_DYLIB_EXPORT_ALL: Export all symbols in the dynamic libs, not just the C API.
@@ -145,8 +143,8 @@ build() {
         -DLLVM_APPEND_VC_REV:BOOL=ON \
         -DLLVM_ENABLE_RTTI:BOOL=ON \
         -DLLVM_ENABLE_FFI:BOOL=ON \
-        -DFFI_INCLUDE_DIR:PATH="${_ffi_include_flags#-I}" \
-        -DFFI_LIBRARY_DIR:PATH="${_ffi_libs_flags#-L}" \
+        -DFFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
+        -DFFI_LIBRARY_DIR:PATH="$(pkg-config --variable=libdir libffi)" \
         -DLLVM_BUILD_DOCS:BOOL=ON \
         -DLLVM_ENABLE_SPHINX:BOOL=ON \
         -DSPHINX_OUTPUT_HTML:BOOL=ON \
