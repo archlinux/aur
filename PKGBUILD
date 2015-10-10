@@ -9,15 +9,9 @@ _debug=n
 #_commit=a7857b2  #0.13.5
 _commit=HEAD
 
-# Add the following to your rtorrent.rc if your
-# filesystem supports the fallocate() function
-# system.file.allocate.set = yes
-[[ $(stat -Lfc %T /home) = @(ext4|xfs|btrfs|ocfs2) ]] &&
-    _falloc='--with-posix-fallocate'
-
 pkgname=libtorrent-pyro-git
-pkgver=20150519
-pkgrel=2
+pkgver=20150908
+pkgrel=1
 pkgdesc='BitTorrent library written in C++ (git version)'
 url='http://libtorrent.rakshasa.no'
 license=('GPL')
@@ -51,8 +45,9 @@ build() {
     #export CC=clang
     #export CXX=clang++
 
-    ./configure $_falloc $_debug \
-        --prefix=/usr
+    ./configure $_debug \
+        --prefix=/usr \
+        --with-posix-fallocate
 
     make
 }
