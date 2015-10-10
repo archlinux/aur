@@ -1,4 +1,4 @@
-pkgbase = htop-solarized-vi
+pkgbase = htop-vim-solarized-git
 	pkgdesc = Interactive process viewer with solarized and vim keybindings patch
 	pkgver = 649.e906c0d
 	pkgrel = 1
@@ -21,5 +21,5 @@ pkgbase = htop-solarized-vi
 	sha256sums = 787042745bab62731ec14734d0bc3ae18e11dbb87cfed189942887a58f2cd6a7
 	sha256sums = f89f25cfd0430595e6a36f4e9c5677ff78dc63e93dc104a8a238a05a8f9e3ca9
 
-pkgname = htop-solarized-vi
+pkgname = htop-vim-solarized-git
 

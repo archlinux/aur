@@ -6,7 +6,7 @@
 # Contributor: Wesley Merkel <ooesili at gmail.com>
 
 _pkgname=htop
-pkgname=htop-solarized-vi
+pkgname=htop-vim-solarized-git
 pkgver=649.e906c0d
 pkgrel=1
 pkgdesc="Interactive process viewer with solarized and vim keybindings patch"
