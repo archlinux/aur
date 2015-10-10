@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
 pkgbase=useragent-git
 pkgname=useragent-git
-pkgver=r5.24fcd99
+pkgver=r7.b390bb8
 pkgrel=1
 pkgdesc="Tool to print different useragents. Useful for curl or wget."
 arch=('any')

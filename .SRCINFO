@@ -1,6 +1,6 @@
 pkgbase = useragent-git
 	pkgdesc = Tool to print different useragents. Useful for curl or wget.
-	pkgver = r5.24fcd99
+	pkgver = r7.b390bb8
 	pkgrel = 1
 	url = https://github.com/gehaxelt/SH-UserAgent
 	arch = any
