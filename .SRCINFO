@@ -19,13 +19,11 @@ pkgbase = llvm-svn
 	source = clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk
 	source = compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk
 	source = llvm-Config-llvm-config.h
-	source = llvm_tools_shlib_CMakeLists.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
-	sha256sums = a1c9f36b97c639666ab6a1bd647a08a027e93e3d3cfd6f5af9c36e757599ce81
 
 pkgname = llvm-svn
 	pkgdesc = The LLVM Compiler Infrastructure

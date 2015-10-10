@@ -46,7 +46,6 @@ source=(
     'clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
     'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
     llvm-Config-llvm-config.h
-    llvm_tools_shlib_CMakeLists.patch
 )
 
 sha256sums=(
@@ -55,7 +54,6 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-    'a1c9f36b97c639666ab6a1bd647a08a027e93e3d3cfd6f5af9c36e757599ce81'
 )
 
 #
@@ -126,9 +124,6 @@ prepare() {
     sed -e 's|^\([[:blank:]]*DESTINATION[[:blank:]]\+\)docs/html|\1share/doc|' \
         -e 's|^\([[:blank:]]*DESTINATION[[:blank:]]\+\)docs/ocaml/html|\1share/doc/ocaml|' \
         -i docs/CMakeLists.txt
-
-    # https://llvm.org/bugs/show_bug.cgi?id=24157
-    patch -p2 -i "${srcdir}/llvm_tools_shlib_CMakeLists.patch"
 
     mkdir -p "${srcdir}/build"
 }
