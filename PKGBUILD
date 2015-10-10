@@ -2,7 +2,7 @@
 # Current Maintainer: Leopold Bloom <blinxwang@gmail.com>
 pkgname=beignet
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
 url='http://cgit.freedesktop.org/beignet/'
