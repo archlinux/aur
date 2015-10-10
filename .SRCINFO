@@ -1,6 +1,6 @@
 pkgbase = valentina-studio
 	pkgdesc = MySQL, MariaDB, PostgreSQL, MS SQL Server, Valentina DB and SQLite GUI Admin Tool
-	pkgver = 6.0.7
+	pkgver = 6.0.8
 	pkgrel = 1
 	url = https://www.valentina-db.com
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = valentina-studio
 	license = custom
 	makedepends = rpmextract
 	source_i686 = http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm
-	sha256sums_i686 = d8a795e635b4ea48ec26373164ae0d285c0772ee1f701640c4ca6ad118853abe
+	sha256sums_i686 = 1f0fc7b2aff2cedabb71c4a0342cb40b44b58139a0937f6a8e9e38b586de9490
 	source_x86_64 = http://www.valentina-db.com/en/studio/download/current/vstudio_x64_5_lin-rpm
-	sha256sums_x86_64 = 6d96ef503ac92d23a975b2b41455ee59e5213acce10ddb5ae98237203efa57d2
+	sha256sums_x86_64 = 7ce2352754e46afce4d4114a9f8cc7cf1939e09f9dbd2d6b8ef8629c4bdb687b
 
 pkgname = valentina-studio
 
