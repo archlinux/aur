@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libcroco
+	pkgdesc = A CSS parsing library (mingw-w64)
+	pkgver = 0.6.8
+	pkgrel = 5
+	url = http://www.gnome.org
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	makedepends = intltool
+	depends = mingw-w64-glib2
+	depends = mingw-w64-libxml2
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://ftp.gnome.org/pub/gnome/sources/libcroco/0.6/libcroco-0.6.8.tar.xz
+	sha256sums = ea6e1b858c55219cefd7109756bff5bc1a774ba7a55f7d3ccd734d6b871b8570
+
+pkgname = mingw-w64-libcroco
+
