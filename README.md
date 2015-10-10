@@ -42,9 +42,17 @@ Like `arch.build.deps` for aur packages.
 #### rootfs
 You may provide a `rootfs` folder. Anything contained within will be copied to the acis rootfs after all packages are installed and before your script will be run.
 
+#### pre
+An optional setup script which will be run straight after the `rootfs` folder is prepared and before any packages are installed into it. It is called with the `rootfs` path as its first argument.
+You can use it to mount or symlinks things etc.
+
 #### build
 An optional setup script/executable may be supplied as `build`. It will be run chrooted into the containers `rootfs` after all package installation and file copying has been completed. You may use it to set up your applications state, generate some random keys, etc.
 Due to the fact that you are chrooted into your new system, you will have to ensure, that any dependencies of your script are installed (including whatever is declared in your shebang). You should use `arch.build.deps` and `aur.build.deps`, so the dependencies will be removed afterwards.
+
+#### post
+An optional teardown script which should be used to undo the things done by the `pre` script.
+It is called after the `build` script is run.
 
 ### Signing
 The Script will use `gpg` to sign your generated images. It will use the current users keyring, so make sure it is configured correctly.
