@@ -25,7 +25,17 @@ pkgbase = beignet
 	replaces = opencl-headers
 	replaces = opencl-headers12
 	source = https://01.org/sites/default/files/beignet-1.1.1-source.tar.gz
+	source = llvm-3.7-patch-1.patch
+	source = llvm-3.7-patch-2.patch
+	source = llvm-3.7-patch-3.patch
+	source = llvm-3.7-patch-4.patch
+	source = llvm-3.7-patch-5.patch
 	sha256sums = 9bf4c69eb4fbd3c7cc9ef75c1952bca6f05259ffbe753a27e08ed98bb32e1119
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = beignet
 

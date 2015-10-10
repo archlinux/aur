@@ -12,8 +12,18 @@ makedepends=('clang' 'cmake' 'python2')
 provides=('opencl-intel' 'opencl-headers' 'opencl-headers12')
 conflicts=('opencl-intel' 'opencl-headers' 'opencl-headers12')
 replaces=('opencl-intel' 'opencl-headers' 'opencl-headers12')
-source=("https://01.org/sites/default/files/beignet-$pkgver-source.tar.gz")
-sha256sums=('9bf4c69eb4fbd3c7cc9ef75c1952bca6f05259ffbe753a27e08ed98bb32e1119')
+source=("https://01.org/sites/default/files/beignet-$pkgver-source.tar.gz"
+	"llvm-3.7-patch-1.patch"
+	"llvm-3.7-patch-2.patch"
+	"llvm-3.7-patch-3.patch"
+	"llvm-3.7-patch-4.patch"
+	"llvm-3.7-patch-5.patch")
+sha256sums=('9bf4c69eb4fbd3c7cc9ef75c1952bca6f05259ffbe753a27e08ed98bb32e1119'
+	    'SKIP'
+	    'SKIP'
+	    'SKIP'
+	    'SKIP'
+	    'SKIP')
 
 build() {
 	cp llvm-3.7-patch-1.patch "$srcdir/Beignet-$pkgver-Source"
