@@ -1,6 +1,6 @@
 # Maintainer: Florian Albertz <flo.albertz@gmail.com>
 pkgname="archci"
-pkgver="1.3.1"
+pkgver="1.3.2"
 pkgrel=1
 pkgdesc='A script to create AppContainer Images from Arch Linux packages(Repo or Aur)'
 arch=('any')
