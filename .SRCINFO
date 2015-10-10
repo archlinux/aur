@@ -1,0 +1,20 @@
+pkgbase = angolmois-git
+	pkgdesc = A BM98-like rhythm game which supports the so-called BMS format for playing.
+	pkgver = HEAD
+	pkgrel = 1
+	url = http://mearie.org/projects/angolmois/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = smpeg2
+	provides = angolmois
+	conflicts = angolmois
+	source = git://github.com/lifthrasiir/angolmois.git
+	md5sums = SKIP
+
+pkgname = angolmois-git
+
