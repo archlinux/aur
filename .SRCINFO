@@ -1,0 +1,17 @@
+pkgbase = ocaml-ogg
+	pkgdesc = OCaml binding to libogg
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-ogg
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = libogg
+	options = !strip
+	source = https://github.com/savonet/ocaml-ogg/releases/download/0.5.0/ocaml-ogg-0.5.0.tar.gz
+	md5sums = 21eaee00d3765b3a78aed78520219a52
+
+pkgname = ocaml-ogg
+
