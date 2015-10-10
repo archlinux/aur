@@ -1,7 +1,7 @@
 pkgbase = crossvc
 	pkgdesc = A graphical interface for the cvs client
 	pkgver = 1.5.2
-	pkgrel = 3
+	pkgrel = 5
 	url = http://www.lincvs.org/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = crossvc
 	source = http://crossvc.com/download/crossvc-1.5.2-0-generic-src.tgz
 	source = crossvc
 	source = crossvc.desktop
+	source = lincvs_updated.pro
 	md5sums = 4fb196e4e5fb5b6c5d901601869308b2
 	md5sums = 55ec40cdf6cacbba591dd95541e50574
 	md5sums = 70506604810792b1740c94b67333073c
+	md5sums = c01681ec367d82815dd42b7d86c77135
 
 pkgname = crossvc
 
