@@ -1,8 +1,8 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname="gnome-shell-extension-easyscreencast-git"
-pkgver=0.9.7.1.r4.gef69b61
-pkgrel=3
+pkgver=0.9.7.2.r9.g192c770
+pkgrel=1
 pkgdesc="Provides a convienent top bar pop-down interface to configure the GNOME Shell Screencast Recording feature."
 arch=('any')
 url="https://github.com/iacopodeenosee/EasyScreenCast"
@@ -43,10 +43,5 @@ package() {
   for locale in */
     do
       install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
-    done
-  cd "${srcdir}/${pkgname}/locale-UI"
-  for locale in */
-    do
-      install -Dm644 -t "${_destdir}/locale-UI/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
     done
 }
