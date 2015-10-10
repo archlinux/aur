@@ -1,7 +1,7 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 
 pkgname=hex2hcd-git
-pkgver=1201550
+pkgver=r2.1175dce
 pkgrel=1
 pkgdesc="Convert broadcom hex firmware into hcd format."
 arch=(any)
@@ -10,6 +10,11 @@ license=("Custom")
 source=('hex2hcd::git+https://github.com/jessesung/hex2hcd.git')
 sha256sums=('SKIP')
 provides=('hex2hcd')
+
+pkgver() {
+  cd "${srcdir}/hex2hcd"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/hex2hcd"
