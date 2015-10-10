@@ -1,0 +1,17 @@
+pkgbase = ocaml-portaudio
+	pkgdesc = OCaml bindings for portaudio
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-portaudio
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = portaudio
+	options = !strip
+	source = https://github.com/savonet/ocaml-portaudio/releases/download/0.2.1/ocaml-portaudio-0.2.1.tar.gz
+	md5sums = c504a0d47c1aa834b774b9c668b65691
+
+pkgname = ocaml-portaudio
+
