@@ -1,6 +1,6 @@
 pkgbase = qca-qt5-git
 	pkgdesc = Qt Cryptographic Architecture. Qt5 Build (GIT Version)
-	pkgver = v2.1.0.23.g7207e62
+	pkgver = v2.1.0.35.g4f966b0
 	pkgrel = 1
 	url = http://delta.affinix.com/qca/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = qca-qt5-git
 	optdepends = libgcrypt: gcrypt plugin
 	provides = qca-qt5
 	conflicts = qca-qt5
-	source = git://anongit.kde.org/qca.git
+	source = git://anongit.kde.org/qca.git#branch=qt5
 	md5sums = SKIP
 
 pkgname = qca-qt5-git

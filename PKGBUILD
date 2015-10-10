@@ -1,8 +1,8 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Tajidin Abd <tajidinabd at archlinux dot us>
 # Contributor: Antonio Rojas
 
 pkgname=qca-qt5-git
-pkgver=v2.1.0.23.g7207e62
+pkgver=v2.1.0.35.g4f966b0
 pkgrel=1
 pkgdesc="Qt Cryptographic Architecture. Qt5 Build (GIT Version)"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('botan-1.10: Botan plugin'
             'libgcrypt: gcrypt plugin')
 conflicts=('qca-qt5')
 provides=('qca-qt5')
-source=("git://anongit.kde.org/qca.git")
+source=("git://anongit.kde.org/qca.git#branch=qt5")
 md5sums=('SKIP')
 
 pkgver() {
