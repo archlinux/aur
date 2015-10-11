@@ -1,6 +1,6 @@
 pkgbase = translate-shell
 	pkgdesc = Google Translate to serve as a command-line tool.
-	pkgver = 0.9.0.7
+	pkgver = 0.9.0.9
 	pkgrel = 1
 	url = http://www.soimort.org/translate-shell
 	install = translate-shell.install
@@ -16,9 +16,9 @@ pkgbase = translate-shell
 	optdepends = espeak: for the Text-to-Speech functionality
 	optdepends = rlwrap: needed for readline-style editing and history in the interactive mode
 	optdepends = emacs: for using the Emacs interface (with the -E flag)
-	source = https://github.com/soimort/translate-shell/archive/v0.9.0.7.tar.gz
-	md5sums = 43c4f39cddfdaa80ffa41835b401ed24
-	sha256sums = aa3aab12acd691b5e0177ac0dac0c246e445c085714e2ff0ad4076af342eb36b
+	source = https://github.com/soimort/translate-shell/archive/v0.9.0.9.tar.gz
+	md5sums = 7a1e090b0e493aa8039498c14a64748c
+	sha256sums = 6444f1df693a89760a2ffa5b7c157aed2d7add5fdad759186a21b7943d91c988
 
 pkgname = translate-shell
 
