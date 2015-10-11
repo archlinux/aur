@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-combmask-git
+	pkgdesc = Plugin for Vapoursynth: combmask (GIT version)
+	pkgver = r18.2ec6679
+	pkgrel = 1
+	url = https://github.com/chikuzen/combmask
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-combmask
+	conflicts = vapoursynth-plugin-combmask
+	source = git+https://github.com/chikuzen/combmask.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-combmask-git
+
