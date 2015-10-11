@@ -10,6 +10,7 @@ pkgbase = mingw-w64-freetype2
 	depends = mingw-w64-zlib
 	depends = mingw-w64-crt
 	provides = mingw-w64-freetype
+	conflicts = mingw-w64-freetype
 	replaces = mingw-w64-freetype
 	options = !strip
 	options = !buildflags

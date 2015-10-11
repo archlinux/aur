@@ -1,6 +1,3 @@
-# Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
-# Contributor: Daniel Kirchner <daniel at ekpyron dot org>
-
 pkgname=mingw-w64-freetype2
 pkgver=2.6
 pkgrel=1
@@ -12,6 +9,7 @@ depends=(mingw-w64-zlib mingw-w64-crt)
 makedepends=(mingw-w64-gcc mingw-w64-configure)
 provides=(mingw-w64-freetype)
 replaces=(mingw-w64-freetype)
+conflicts=(mingw-w64-freetype)
 source=(http://download.savannah.gnu.org/releases/freetype/freetype-$pkgver.tar.gz)
 options=(!strip !buildflags !libtool staticlibs)
 sha512sums=('fd0337b2cdf4e1a3a79fc8bd55a572b7276a7d8b6897cbfe6c04a2c03672fd835f51d7b986e44731edbdda42cb10e69eb56d5b1a32f9acf95224171f6d86259f')
