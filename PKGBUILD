@@ -3,7 +3,7 @@
 # Contributor: lybin
 
 pkgname=chromedriver
-pkgver=2.19
+pkgver=2.20
 pkgrel=4
 pkgdesc="Standalone server which implements WebDriver's wire protocol"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ optdepends=('google-chrome' 'chromium')
 
 if [ "$CARCH" = "i686" ]; then
     _arch='linux32'
-    md5sums=('b1e881182574cd2354c00c384d0949cc')
+    md5sums=('1e8cbdb84c5b70f86030297c4be3a5f9')
 elif [ "$CARCH" = "x86_64" ]; then
     _arch='linux64'
-    md5sums=('9e476aa088baab9bed9c1a5e7007c9c3')
+    md5sums=('245858cc984bd946df6a1e6719c8e6f5')
 fi
 
 source=("${pkgname}_${pkgver}_${_arch}.zip::http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_${_arch}.zip")
