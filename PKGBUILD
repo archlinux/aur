@@ -11,7 +11,7 @@ pkgver=2.9.20151011
 pkgrel=1
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
-url="http://jitsi.org"
+url="https://jitsi.org"
 license=('LGPL')
 provides=(jitsi)
 conflicts=(jitsi jitsi-stable)
@@ -34,14 +34,14 @@ md5sums=(
 install=jitsi-nightly.install
 
 pkgver() {
-  printf "${_pkgvermajor}" date +%Y%m%d
+  printf "${_pkgvermajor}.$(date +%Y%m%d)"
 }
 
 build() {
   cd "${srcdir}/jitsi"
 
   # append the build revision to the jitsi version
-  sed -i "s/BUILD_ID="\"".*"\""/BUILD_ID="\"${pkgver}\""/" src/net/java/sip/communicator/impl/version/NightlyBuildID.java
+  sed -i "s/BUILD_ID="\"".*"\""/BUILD_ID="\"$(date +%Y%m%d)\""/" src/net/java/sip/communicator/impl/version/NightlyBuildID.java
   . /etc/profile.d/apache-ant.sh
   ant rebuild
 }
