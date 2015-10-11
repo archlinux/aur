@@ -1,4 +1,5 @@
-# Maintainer: J0k3r <moebius282 at gmail dot com>
+# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=littleinferno
 pkgver=20130509
