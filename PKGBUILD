@@ -9,7 +9,8 @@ license=('BSD')
 depends=('bash' 'nodejs' 'pacman' 'pacaur' 'coreutils' 'rkt' 'gnupg' 'arch-install-scripts' 'sudo')
 makedepends=('npm')
 source=('archci.sh' 'LICENSE')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('8a7bd6e2f056f76b4a978bd26f76a7f9e1354742a576864d6ddf32299cd75894'
+            'fc49871717e45fb5a32e71dc6e8893b57efe8ace80ee6ab176920ee91482b1bd')
 
 package() {
 	install -Dm 755 archci.sh "$pkgdir/usr/bin/archci"
