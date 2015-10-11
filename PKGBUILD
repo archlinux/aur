@@ -16,6 +16,7 @@ conflicts=("dasom")
 source=("${_pkgname}"::"git+https://github.com/cogniti/${_pkgname}.git")
 md5sums=('SKIP')
 options=(!buildflags)
+install=$pkgname.install
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
