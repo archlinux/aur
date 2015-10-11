@@ -8,7 +8,7 @@ _pkgname=jitsi
 _pkgvermajor=2.9
 # pkgver is determined automatically
 pkgver=2.9.20151011
-pkgrel=1
+pkgrel=2
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
 url="https://jitsi.org"
