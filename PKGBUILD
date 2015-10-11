@@ -1,17 +1,17 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=openmsx-catapult
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
-url="http://openmsx.sourceforge.net"
+url="http://openmsx.org"
 license=('GPL')
 depends=('libxml2' 'wxgtk2.8' 'zlib' 'libjpeg' 'libpng' 'libtiff' "openmsx=${pkgver}")
 makedepends=('python2')
-source=("http://downloads.sourceforge.net/${pkgname/-catapult/}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/openMSX/wxcatapult/archive/RELEASE_${pkgver//./_}.tar.gz")
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver/_/-}"
+  cd "wxcatapult-RELEASE_${pkgver//./_}"
 
   # Catapult requires python2
   sed -i 's@=python@=python2@' build/main.mk
@@ -26,15 +26,15 @@ build() {
   echo 'INSTALL_BINARY_DIR:=/usr/bin' >> build/custom.mk
 
   # Required by version 0.10.0 of catapult
-  sed -i 's@wx-config@wx-config-2.8@g' build/main.mk
-  sed -i 's@wx-config@wx-config-2.8@g' build/probe.mk
+#  sed -i 's@wx-config@wx-config-2.8@g' build/main.mk
+#  sed -i 's@wx-config@wx-config-2.8@g' build/probe.mk
  
   # Compiling
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver/_/-}"
+  cd "wxcatapult-RELEASE_${pkgver//./_}"
 
   mkdir -p "${pkgdir}/usr/share/applications"
   make DESTDIR="${pkgdir}" install
@@ -47,3 +47,4 @@ package() {
 }
 
 md5sums=('f112f679923f13a2e548a647b593c763')
+md5sums=('ea11f459a2d40ad7977a10e783421af5')
