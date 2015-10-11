@@ -4,7 +4,7 @@
 pkgname=k3b-git
 pkgver=2.0.80.r5860.46a237a
 pkgrel=1
-pkgdesc='Feature-rich and easy to handle CD burning application (Git version)'
+pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://k3b.sourceforge.net'
@@ -37,8 +37,8 @@ install=k3b-git.install
 
 pkgver() {
   cd k3b
-  _ver="$(cat CMakeLists.txt | grep -e K3B_VERSION_MAJOR -e K3B_VERSION_MINOR -e K3B_VERSION_RELEASE | head -n3 | sed 's|  ||g' | tr -d ')' | cut -d ' ' -f2)"
-  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_RELEASE | sed 's|K3B|KEB|' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {

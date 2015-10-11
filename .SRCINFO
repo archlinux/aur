@@ -1,5 +1,5 @@
 pkgbase = k3b-git
-	pkgdesc = Feature-rich and easy to handle CD burning application (Git version)
+	pkgdesc = Feature-rich and easy to handle CD burning application. (Git version)
 	pkgver = 2.0.80.r5860.46a237a
 	pkgrel = 1
 	url = http://k3b.sourceforge.net
