@@ -1,13 +1,12 @@
 pkgbase = passwordsafe
 	pkgdesc = Simple & Secure Password Management
 	pkgver = 0.97BETA
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pwsafe.org/
 	install = passwordsafe.install
 	arch = i686
 	arch = x86_64
 	license = Artistic2.0
-	makedepends = git
 	makedepends = zip
 	makedepends = libxt
 	depends = libxtst
