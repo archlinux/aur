@@ -1,0 +1,22 @@
+diff --git a/Action.c b/Action.c
+index 6c387de..667fbb3 100644
+--- a/Action.c
++++ b/Action.c
+@@ -398,7 +398,7 @@ static struct { const char* key; const char* info; } helpRight[] = {
+    { .key = "  Space: ", .info = "tag process" },
+    { .key = "      c: ", .info = "tag process and its children" },
+    { .key = "      U: ", .info = "untag all processes" },
+-   { .key = "   F9 k: ", .info = "kill process/tagged processes" },
++   { .key = "   F9 d: ", .info = "kill process/tagged processes" },
+    { .key = "   F7 ]: ", .info = "higher priority (root only)" },
+    { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
+ #if (HAVE_LIBHWLOC || HAVE_NATIVE_AFFINITY)
+@@ -529,7 +529,7 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['q'] = actionQuit;
+    keys['a'] = actionSetAffinity;
+    keys[KEY_F(9)] = actionKill;
+-   keys['k'] = actionKill;
++   keys['d'] = actionKill;
+    keys[KEY_RECLICK] = actionExpandOrCollapse;
+    keys['+'] = actionExpandOrCollapse;
+    keys['='] = actionExpandOrCollapse;

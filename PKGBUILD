@@ -5,10 +5,23 @@
 # Contributor: Daniel J Griffiths <ghost1227 at archlinux.us>
 # Contributor: Wesley Merkel <ooesili at gmail.com>
 
+##### OPTIONS ###############################################################
+
+# Set the following variable accordingly:
+#    * x if you would like to use x as the kill-process shortcut in htop
+#    * d if you would like to use d as the kill-process shortcut in htop
+# (we need one of these as htop's default shortcut k conflicts with vim
+#  movement keys!)
+
+kill_process_shortcut=x
+#kill_process_shortcut=d
+
+#############################################################################
+
 _pkgname=htop
 pkgname=htop-vim-solarized-git
 pkgver=649.e906c0d
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive process viewer with solarized and vim keybindings patch"
 arch=('i686' 'x86_64')
 url="https://github.com/hishamhm/${_pkgname}"
@@ -22,10 +35,25 @@ conflicts=('htop')
 options=('!emptydirs')
 source=("git+${url}.git"
         'solarized-colors.patch'
-        'vim-keybindings.patch')
-sha256sums=('SKIP'            
+        'vim-keybindings-common.patch'
+        )
+sha256sums=('SKIP'
             '787042745bab62731ec14734d0bc3ae18e11dbb87cfed189942887a58f2cd6a7'
-            'f89f25cfd0430595e6a36f4e9c5677ff78dc63e93dc104a8a238a05a8f9e3ca9')
+            'f85195b2280b660d2e9cbcb46630c66b879f14081f23016a845f4d4a46d2f030'
+            )
+
+
+# See the kill_process_shortcut option at the top of this PKGBUILD
+if [[ "$kill_process_shortcut" == "d" ]]
+then
+    msg2 "Using '$kill_process_shortcut' as the kill-process shortcut in htop"
+    source+=('vim-keybindings-d-for-kill.patch')
+    sha256sums+=('b583caaab3fff1f28bd358f966ad33187a8f9bed607fec08607a030219db70d9')
+else  # default to $kill_process_shortcut = x
+    msg2 "Using 'x' as the kill-process shortcut in htop"
+    source+=('vim-keybindings-x-for-kill.patch')
+    sha256sums+=('dfdcd296508e725572f475308182d9a5d1a4cf7ae8c464f33b9907d92e243a09')
+fi
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"

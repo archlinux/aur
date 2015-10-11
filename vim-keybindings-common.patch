@@ -1,0 +1,49 @@
+diff --git a/Action.c b/Action.c
+index 6c387de..e622a8c 100644
+--- a/Action.c
++++ b/Action.c
+@@ -378,7 +378,7 @@ static Htop_Reaction actionRedraw() {
+ }
+ 
+ static struct { const char* key; const char* info; } helpLeft[] = {
+-   { .key = " Arrows: ", .info = "scroll process list" },
++   { .key = "   hjkl: ", .info = "scroll process list" },
+    { .key = " Digits: ", .info = "incremental PID search" },
+    { .key = "   F3 /: ", .info = "incremental name search" },
+    { .key = "   F4 \\: ",.info = "incremental name filtering" },
+@@ -405,11 +405,11 @@ static struct { const char* key; const char* info; } helpRight[] = {
+    { .key = "      a: ", .info = "set CPU affinity" },
+ #endif
+    { .key = "      i: ", .info = "set IO prority" },
+-   { .key = "      l: ", .info = "list open files with lsof" },
++   { .key = "      L: ", .info = "list open files with lsof" },
+    { .key = "      s: ", .info = "trace syscalls with strace" },
+    { .key = "         ", .info = "" },
+    { .key = "   F2 S: ", .info = "setup" },
+-   { .key = "   F1 h: ", .info = "show this help screen" },
++   { .key = "   F1 ?: ", .info = "show this help screen" },
+    { .key = "  F10 q: ", .info = "quit" },
+    { .key = NULL, .info = NULL }
+ };
+@@ -521,6 +521,7 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['I'] = actionInvertSortOrder;
+    keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
+    keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
++   keys['o'] = actionExpandCollapseOrSortColumn;
+    keys['<'] = actionSetSortColumn;
+    keys[','] = actionSetSortColumn;
+    keys['>'] = actionSetSortColumn;
+@@ -539,12 +540,11 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['S'] = actionSetup;
+    keys['C'] = actionSetup;
+    keys[KEY_F(2)] = actionSetup;
+-   keys['l'] = actionLsof;
++   keys['L'] = actionLsof;
+    keys['s'] = actionStrace;
+    keys[' '] = actionTag;
+    keys['\014'] = actionRedraw; // Ctrl+L
+    keys[KEY_F(1)] = actionHelp;
+-   keys['h'] = actionHelp;
+    keys['?'] = actionHelp;
+    keys['U'] = actionUntagAll;
+    keys['c'] = actionTagAllChildren;
