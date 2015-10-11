@@ -20,6 +20,9 @@ function printUsage() {
 	echo '  -h|--help'
 	echo '      Show this help'
 	echo
+	echo '  -s|--silent'
+	echo '      Print less output'
+	echo
 }
 
 function validateManifest() {
@@ -71,7 +74,7 @@ function installDepsArch() {
 
 function installDepsAur() {
 	if [ -f "$AURBUILD" ]; then
-		PKGDEST="$AURBUILDDIR" pacaur --noconfirm --noedit -m $(cat "$AURBUILD")
+		PKGDEST="$AURBUILDDIR" pacaur $SILENT --noconfirm --noedit --foreign -m $(cat "$AURBUILD")
 		sudo pacman -r "$BUILDDIR/rootfs" --asdeps --noconfirm -U $AURBUILDDIR/*
 	fi
 }
@@ -84,8 +87,8 @@ function installArch() {
 
 function installAur() {
 	if [ -f "$AUR" ]; then
-		PKGDEST="$AURDIR" pacaur --noconfirm --foreign --noedit -m $(cat "$AUR")
-		sudo pacman -r "$BUILDDIR/rootfs" --noconfirm -U $AURDIR/*
+		PKGDEST="$AURDIR" pacaur $SILENT --noconfirm --noedit --foreign -m $(cat "$AUR")
+		sudo pacman -r "$BUILDDIR/rootfs" --asexplicit --noconfirm -U $AURDIR/*
 	fi
 }
 
@@ -178,6 +181,9 @@ while [[ $# > 0 ]]; do
 		-h|--help)
 			printUsage
 			exit 0
+			;;
+		-s|--silent)
+			SILENT='--silent'
 			;;
 		*)
 			SRCDIR=$(realpath "$1")
