@@ -1,6 +1,6 @@
 pkgbase = gnome-settings-daemon-volume-step-patch
 	pkgdesc = The GNOME Settings daemon with an additional patch to allow configuration of volume steps
-	pkgver = 3.16.3
+	pkgver = 3.18.0
 	pkgrel = 1
 	url = http://www.gnome.org
 	install = gnome-settings-daemon.install
@@ -16,7 +16,6 @@ pkgbase = gnome-settings-daemon-volume-step-patch
 	depends = dconf
 	depends = gnome-desktop
 	depends = gsettings-desktop-schemas
-	depends = hicolor-icon-theme
 	depends = libcanberra-pulse
 	depends = libgudev
 	depends = libnotify
@@ -33,9 +32,9 @@ pkgbase = gnome-settings-daemon-volume-step-patch
 	provides = gnome-settings-daemon
 	conflicts = gnome-settings-daemon
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.16/gnome-settings-daemon-3.16.3.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.18/gnome-settings-daemon-3.18.0.tar.xz
 	source = volume-step.patch
-	sha256sums = 8752f79ba2ee76701744b4806140d1b88c665ad7cd44e7ff58b4e78e1063daea
+	sha256sums = 8d3ef9c18538831ed89122fee0bdaca68b0e482a18b3c4388c4e672aba1b3cd5
 	sha256sums = bb1ac714e05d6b7b2c3e8a03180a580f9d8e65356a3fd70c3e8f5ba1d15bbb03
 
 pkgname = gnome-settings-daemon-volume-step-patch
