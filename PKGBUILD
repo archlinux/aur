@@ -1,14 +1,14 @@
 # Maintainer: Thibault Saunier <tsaunier@gnome.org>
 
 pkgname=dssim-git
-pkgrel=1.1
-pkgver=1
+pkgrel=1
+pkgver=165.2f3c156
 pkgdesc=" DSSIM C implementation"
 arch=('x86_64')
 url="https://github.com/pornel/dssim/"
 license=(AGPL)
 depends=()
-makedepends=('ninja')
+makedepends=('ninja' 'meson')
 source=('git+https://github.com/pornel/dssim.git')
 sha256sums=('SKIP')
 
