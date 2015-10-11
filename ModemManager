@@ -1,0 +1,12 @@
+#!/usr/bin/openrc-run
+
+command=/usr/bin/ModemManager
+command_background=yes
+pidfile=/run/NetworkManager/ModemManager.pid
+name="ModemManager daemon"
+
+depend()
+{
+   need dbus net
+}	
+
