@@ -1,0 +1,17 @@
+pkgbase = wordlist-git
+	pkgdesc = Generates all possible permutations of a given charset.
+	pkgver = r90.6ec5142
+	pkgrel = 1
+	url = https://github.com/rexos/wordlist
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = bash
+	depends = python
+	provides = wordlist-git
+	conflicts = wordlist-git
+	source = wordlist-git::git+https://github.com/rexos/wordlist.git
+	md5sums = SKIP
+
+pkgname = wordlist-git
+
