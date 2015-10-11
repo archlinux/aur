@@ -1,3 +1,12 @@
+3.1.1
+-----
+
+ - Bugfix in :py:mod:`pyteomics.auxiliary`.
+
+ - New parameter `show_legend` in :py:func:`pyteomics.pylab_aux.scatter_trend`.
+ 
+ - Performance improvements in :py:mod:`pyteomics.parser`.
+
 3.1
 ---
 
