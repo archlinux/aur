@@ -5,8 +5,8 @@
 # namcap warns that ruby-cri is an unnecessary dependency. This is untrue.
 
 pkgname=nanoc
-pkgver=3.8.0
-pkgrel=2
+pkgver=4.0.0rc3
+pkgrel=1
 pkgdesc='A simple, flexible static site generator written in Ruby.'
 arch=(any)
 url='http://nanoc.ws'
@@ -17,18 +17,24 @@ optdepends=(
   "adsf: Provides 'nanoc view' command."
   "ruby-builder: Provides 'Blogging' helper."
   "ruby-kramdown: Provides filter for Markdown input files."
-  "ruby-listen: Provides 'nanoc watch' command. (Deprecated. Use 'ruby-guard-nanoc' package.)"
   "ruby-nokogiri: Provides 'nanoc check' command."
   "ruby-pry: Provides 'nanoc shell' command."
-  "ruby-rack: Provides 'nanoc autocompile' command. (Deprecated. Use 'ruby-guard-nanoc' package.)"
   "ruby-w3c_validators: Provides 'nanoc check' command."
 )
 provides=(ruby-nanoc3 ruby-nanoc)
 conflicts=(ruby-nanoc3 ruby-nanoc)
 options=(!emptydirs)
-source=("http://rubygems.org/downloads/${pkgname}-${pkgver}.gem")
+source=("https://github.com/nanoc/nanoc/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('382397d761ea1a97537eaee995e37ba416f7f7f093090cc812071a9eb28cea1e')
+sha256sums=('aae576917681001927fec455e0ffb9f0c83229fe2d44c6cccf69be9f14316d29')
+
+build() {
+  # create gem
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  gem build nanoc.gemspec
+  cp "${pkgname}-${pkgver}.gem" "${srcdir}/"
+  cd -
+}
 
 package() {
   # install gem
