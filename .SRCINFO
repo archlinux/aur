@@ -1,0 +1,12 @@
+pkgbase = convox
+	pkgdesc = An open source PAAS that runs in your own AWS account.
+	pkgver = latest
+	pkgrel = 1
+	url = https://convox.com
+	arch = any
+	license = Apache
+	source = https://install.convox.com/linux.zip
+	md5sums = SKIP
+
+pkgname = convox
+
