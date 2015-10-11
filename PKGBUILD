@@ -2,7 +2,7 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.165
+pkgver=0.166
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
@@ -26,7 +26,7 @@ makedepends=('nasm'
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'sdlmame.sh'
         'extras.tar.gz')
-sha1sums=('a941bcd4b91b3d20e4032d22875d7f94d0a2e174'
+sha1sums=('ab2d3320f0e4f9e3d29472b1156338bf9b46a2b8'
           '1ed8016f41edecfca746fadcfb40eab78845a3d6'
           '75732974431844670aa3904d8f9ce3f5c5504827')
 install=sdlmame-wout-toolkits.install
@@ -71,7 +71,6 @@ package() {
   install -Dm755 ../sdlmame.sh "${pkgdir}/usr/bin/sdlmame"
 
   # Install the applications and the UI font in /usr/share
-  [ "${CARCH}" = "i686" ] && _suffix=""
   [ "${CARCH}" = "x86_64" ] && _suffix="64"
   install -Dm755 "mame${_suffix}" "${pkgdir}/usr/share/sdlmame/sdlmame"
 
