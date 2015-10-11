@@ -1,7 +1,7 @@
 pkgbase = linux-zen-grsec
 	pkgdesc = Featureful kernel including grsecurity, new features and optimizations to better suit desk/laptops
 	pkgver = 4.2.3+535345+gec16c53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/damentz/linux-zen-grsec
 	arch = i686
 	arch = x86_64
