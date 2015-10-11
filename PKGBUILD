@@ -2,17 +2,25 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname=gnome-shell-extension-middleclickclose
-_extname='middleclickclose@paolo.tranquilli.gmail.com'
-pkgver=6
-pkgrel=2
+pkgname=gnome-shell-extension-middleclickclose-git
+pkgver=r16
+pkgrel=1
 pkgdesc="Close windows with a button click (the middle one by default) when in overview mode"
 arch=(any)
-url='http://sourceforge.net/projects/buttons-to-panel/'
-license=(unknown)
-source=("${pkgname}.zip::http://sourceforge.net/projects/mt-miscellaneous/files/gnome-extensions/3.16/${_extname}.v6.shell-extension.zip/download")
-md5sums=('e7ea5800d8408ea33496cdac01a058f6')
+url='https://github.com/p91paul/middleclickclose'
+license=(GPL)
 
+makedepends+=('git')
+source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+md5sums+=('SKIP')
+provides+=($_gitname)
+conflicts+=($_gitname)
+pkgver() {
+  cd ${_gitname:-$pkgname}
+  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
+  [ ${PIPESTATUS[0]} -ne 0 ] && \
+printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
   do
