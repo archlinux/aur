@@ -1,0 +1,28 @@
+pkgbase = libao-jack
+	pkgdesc = Cross-platform audio output library and plugins - patched with JACK support
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://xiph.org/ao/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libpulse
+	makedepends = jack
+	depends = alsa-lib
+	provides = libao=1.2.0-1
+	provides = libao-pulse=1.2.0-1
+	conflicts = libao
+	conflicts = libao-pulse
+	noextract = libao-jack-plugin.tgz
+	backup = etc/libao.conf
+	source = http://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
+	source = https://trac.xiph.org/raw-attachment/ticket/2083/libao-jack-plugin.tgz
+	source = https://trac.xiph.org/raw-attachment/ticket/2083/0001-jack-plugin.patch
+	source = libao.conf
+	sha1sums = 6b1d2c6a2e388e3bb6ebea158d51afef18aacc56
+	sha1sums = 9e8436d5aa3c81496a8f315d75c4fba8ea24b3b6
+	sha1sums = 53af33fcf7a7981656ad5519cad38a0575c58afe
+	sha1sums = 603f5e6715e7e50e1c8e8c1935c45a897c46e9af
+
+pkgname = libao-jack
+
