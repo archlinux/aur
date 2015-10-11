@@ -60,7 +60,8 @@ package_uzbl-browser-next-git() {
      $pkgdir/usr/share/uzbl/docs/INSTALL.md \
      $pkgdir/usr/share/uzbl/docs/README.md \
      $pkgdir/usr/share/uzbl/docs/config.h \
-     $pkgdir/usr/bin/uzbl-tabbed
+     $pkgdir/usr/bin/uzbl-tabbed \
+     $pkgdir/usr/share/man/man1/uzbl-core.1 
 }
 
 package_uzbl-tabbed-next-git() {
