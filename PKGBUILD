@@ -1,13 +1,13 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=opensgx-git
-pkgver=r24.aa9466f
+pkgver=r27.d9d2d68
 pkgrel=1
 pkgdesc="an open platform for Intel SGX"
 arch=('x86_64')
 url="https://github.com/sslab-gatech/opensgx/"
 license=('MIT')
 depends=()
-makedepends=('git' 'qemu')
+makedepends=('git')
 options=()
 install=
 source=(
@@ -102,7 +102,7 @@ package() {
   # Libraries
   cd user
   install -d "$pkgdir/usr/lib/sgx"
-  all=$(make -d demo/hello.sgx | awk '{print $2}' | sed "s/'//g" | grep '\.o' | grep -v demo)
+  all=$(make -dn demo/hello.sgx | grep 'Considering target file' | awk '{print $4}' | sed -e "s/'//g" -e 's/\.$//' | grep '\.o' | grep -v demo)
   for f in $all; do
     install -Dm644 "$f" -t "$pkgdir/usr/lib/sgx/$(dirname "$f")"
   done

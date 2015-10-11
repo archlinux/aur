@@ -1,12 +1,11 @@
 pkgbase = opensgx-git
 	pkgdesc = an open platform for Intel SGX
-	pkgver = r24.aa9466f
+	pkgver = r27.d9d2d68
 	pkgrel = 1
 	url = https://github.com/sslab-gatech/opensgx/
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = qemu
 	source = opensgx-git::git+https://github.com/sslab-gatech/opensgx.git
 	source = opensgx-bin-paths.patch
 	source = demo-include-sgx.patch
