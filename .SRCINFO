@@ -1,0 +1,29 @@
+pkgbase = sfml-rpi-git
+	pkgdesc = A simple, fast, cross-platform, and object-oriented multimedia API with modified source for Raspberry Pi
+	pkgver = 2.2.r77.gf797384-1
+	pkgrel = 1
+	url = http://www.sfml-dev.org/
+	arch = armv7h
+	license = zlib
+	makedepends = mesa
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = libsndfile
+	depends = libxrandr
+	depends = libjpeg
+	depends = openal
+	depends = glew
+	depends = freetype2
+	provides = sfml
+	conflicts = sfml
+	conflicts = sfml-git
+	replaces = sfml
+	options = debug
+	source = git+https://github.com/mickelson/SFML.git#branch=rpi
+	source = 0001-fix_cmake_module_install_path.patch
+	sha256sums = SKIP
+	sha256sums = c0be2636b1d342f636f2587e043dbfa8becdd8d9c65044cf7749ab4b2c81eb47
+
+pkgname = sfml-rpi-git
+
