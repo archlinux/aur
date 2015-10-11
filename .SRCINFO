@@ -1,7 +1,7 @@
 pkgbase = python-pyteomics
 	pkgdesc = A framework for proteomics data analysis.
-	pkgver = 3.1
-	pkgrel = 2
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = http://pythonhosted.org/pyteomics
 	changelog = CHANGELOG
 	arch = any
@@ -9,11 +9,12 @@ pkgbase = python-pyteomics
 	depends = python
 	depends = python-setuptools
 	optdepends = python-matplotlib: for pylab_aux module, optional
+	optdepends = python-pandas: for convenient filtering of CSV tables from search engines
 	optdepends = python-lxml: for XML parsing modules, recommended
-	optdepends = python-numpy: for lots of features, highly recommended
+	optdepends = python-numpy: for most of features, highly recommended
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/pyteomics/pyteomics-3.1.tar.gz
-	md5sums = 5e4c8d38f0891e82b8ec30515ce6718f
+	source = https://pypi.python.org/packages/source/p/pyteomics/pyteomics-3.1.1.tar.gz
+	md5sums = e367dc7eb11fd7d589183ec7e9b15650
 
 pkgname = python-pyteomics
 
