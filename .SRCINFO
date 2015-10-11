@@ -1,0 +1,15 @@
+pkgbase = python2-fretwork-git
+	pkgdesc = Shared code for FoFiX and FoF:R
+	pkgver = r10.f7ea800
+	pkgrel = 1
+	url = https://github.com/fofix/fretwork.git
+	arch = any
+	groups = games
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	source = git+https://github.com/fofix/fretwork.git
+	sha256sums = SKIP
+
+pkgname = python2-fretwork-git
+
