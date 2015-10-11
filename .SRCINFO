@@ -1,0 +1,23 @@
+pkgbase = python-cgroupspy-git
+	pkgdesc = Python library for managing cgroups. Development version.
+	pkgver = r29.9186bc6
+	pkgrel = 1
+	url = https://github.com/cloudsigma/cgroupspy
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://github.com/cloudsigma/cgroupspy.git
+	sha512sums = SKIP
+
+pkgname = python-cgroupspy-git
+	depends = python
+	provides = python-cgroupspy
+	conflicts = python-cgroupspy
+
+pkgname = python2-cgroupspy-git
+	depends = python2
+	provides = python2-cgroupspy
+	conflicts = python2-cgroupspy
+
