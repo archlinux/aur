@@ -1,0 +1,23 @@
+pkgbase = pointdownload-git
+	pkgdesc = A downloader supporting http, ftp, bt, magnet and thunder protocol
+	pkgver = r190.6d9f0c7
+	pkgrel = 1
+	url = https://github.com/PointTeam/PointDownload
+	install = pointdownload.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-graphicaleffects
+	provides = pointdownload
+	conflicts = pointdownload
+	source = git://github.com/PointTeam/PointDownload#branch=develop
+	md5sums = SKIP
+
+pkgname = pointdownload-git
+
