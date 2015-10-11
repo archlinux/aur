@@ -1,12 +1,12 @@
 # Maintainer: Marco <mcat95 [at] gmail [dot] com>
 pkgname=aurous-bin
 pkgver=0.1Alpha
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A music player built to serve your needs."
 arch=(i686 x86_64)
 url="https://aurous.me/"
-license=('GPL')
+license=('unknown')
 
 depends=("jre8-openjdk" "java-openjfx" "gksu")
 
