@@ -1,7 +1,7 @@
 pkgbase = duc-git
 	pkgdesc = collection of tools for inspecting and visualizing disk usage (git version)
 	pkgver = 1.3.3.44.g077544e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://duc.zevv.nl/
 	arch = i686
 	arch = x86_64

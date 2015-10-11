@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=duc-git
 pkgver=1.3.3.44.g077544e
-pkgrel=1
+pkgrel=2
 pkgdesc="collection of tools for inspecting and visualizing disk usage (git version)"
 arch=('i686' 'x86_64')
 url="http://duc.zevv.nl/"
@@ -23,12 +23,13 @@ pkgver() {
 prepare() {
   cd "$srcdir"/"$_gitname"
   touch config.h.in
+  sed -i 's+ncursesw/ncurses.h+ncurses.h+' src/duc/cmd-ui.c
 }
 
 build() {
   cd "$srcdir"/"$_gitname"
   aclocal && autoconf && automake -a -f 
-  ./configure --prefix=/usr --with-db-backend=sqlite3 --disable-ui
+  ./configure --prefix=/usr --with-db-backend=sqlite3 
   make
 }
 
