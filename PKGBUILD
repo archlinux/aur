@@ -15,8 +15,8 @@ conflicts=(unarchiver)
 source=("http://unarchiver.c3.cx/downloads/unar${pkgver}_src.zip"
         "native_obj_exceptions.patch")
         
-source_i686=("gnustep-base.tar.xz::https://www.archlinux.org/packages/community/i686/gnustep-base/download/")
-source_x86_64=("gnustep-base.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/")
+source_i686=("gnustep-base_i686.tar.xz::https://www.archlinux.org/packages/community/i686/gnustep-base/download/")
+source_x86_64=("gnustep-base_x86_64.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/")
         
 sha1sums=('SKIP'
           'b8024026607dc2de758479b73d8b01ca6f692b59')

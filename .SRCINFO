@@ -18,11 +18,11 @@ pkgbase = unarchiver-nodep
 	conflicts = unarchiver
 	source = http://unarchiver.c3.cx/downloads/unar1.9.1_src.zip
 	source = native_obj_exceptions.patch
-	sha1sums = 2d42cd9a1fdea2c90054bc72f624c9721fc3440f
+	sha1sums = SKIP
 	sha1sums = b8024026607dc2de758479b73d8b01ca6f692b59
-	source_x86_64 = gnustep-base.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/
+	source_x86_64 = gnustep-base_x86_64.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/
 	sha1sums_x86_64 = SKIP
-	source_i686 = gnustep-base.tar.xz::https://www.archlinux.org/packages/community/i686/gnustep-base/download/
+	source_i686 = gnustep-base_i686.tar.xz::https://www.archlinux.org/packages/community/i686/gnustep-base/download/
 	sha1sums_i686 = SKIP
 
 pkgname = unarchiver-nodep
