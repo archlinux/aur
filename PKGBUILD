@@ -5,7 +5,7 @@ pkgver=0.2.3
 pkgrel=1
 pkgdesc="IPv6 NDP proxy daemon"
 url='https://github.com/DanielAdolfsson/ndppd'
-license=("GPL")
+license=("GPL3")
 arch=('i686' 'x86_64')
 backup=('etc/ndppd.conf')
 
