@@ -2,7 +2,7 @@
 
 pkgname=rtapp
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Realtime application thread priority tuning"
 arch=('any')
 url=("http://www.audio-linux.com")
@@ -12,7 +12,7 @@ optdepends=('linux-rt: The Linux-rt kernel and modules'
             'rt-tests: A collection of latency testing tools for the linux(-rt) kernel')
 install=${pkgname}.install
 source=("http://www.tophifi.it/ftp/packages/$pkgname.tar.gz")
-sha256sums=('c7448ade53b2c8e2cdedb14695aba8501ee50e83de8b5be509abdb06148735f0')
+sha256sums=('6320b7e420b0b60aa8e72a947d84c430ece85f199f998f2a123e1c4f7d6907b1')
 backup=('etc/rtapp/rtapp.conf')
 
 package() {
