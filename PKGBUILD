@@ -3,7 +3,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=ttf-textfonts
-pkgver=20151004
+pkgver=6.00
 pkgrel=1
 pkgdesc="Fonts based on early works by Alexander Wilson, Claude Garamond, Victor Scholderer, Firmin Didot et al."
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = ttf-textfonts
 	pkgdesc = Fonts based on early works by Alexander Wilson, Claude Garamond, Victor Scholderer, Firmin Didot et al.
-	pkgver = 20151004
+	pkgver = 6.00
 	pkgrel = 1
 	url = http://users.teilar.gr/~g1951d/
 	install = ttf-textfonts.install
