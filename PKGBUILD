@@ -2,7 +2,7 @@
 
 pkgname=python2-gnupg-isis
 name=python-gnupg
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='A modified version of python-gnupg, including security patches, extensive documentation, and extra features. The gnupg module allows Python programs to make use of the functionality provided by the GNU Privacy Guard.'
 url='https://github.com/isislovecruft/python-gnupg'
@@ -22,4 +22,5 @@ package() {
   cd $name-$pkgver
   python2 setup.py install --root=${pkgdir} --optimize=1
 }
-md5sums=('492126fac43aa3fe86c4e7c70440b6ac')
+
+md5sums=('b3964a405ae4f28dab1e8d249cbe77dc')
