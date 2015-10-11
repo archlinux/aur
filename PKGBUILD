@@ -3,7 +3,7 @@
 
 pkgname=littleinferno
 pkgver=20130509
-pkgrel=1
+pkgrel=2
 pkgdesc="A game about burning things"
 url="http://tomorrowcorporation.com/littleinferno"
 license=('custom:proprietary')
@@ -53,7 +53,7 @@ package()
 	install -d "${pkgdir}/opt/${pkgname}/"
 	tar --lzma -xf "./instarchive_all" -C "${pkgdir}/opt/${pkgname}/"
 # We don't extract the bundled libraries as we use the shared ones
-	tar --lzma -xf "./instarchive_linux_all" -C "${pkgdir}/opt/${pkgname}/" LittleInferno.bin.x86
+	tar --lzma -xf "./instarchive_linux_all" -C "${pkgdir}/opt/${pkgname}/" LittleInferno.bin.x86 lib/libvorbis.so.0
 
 	find "${pkgdir}/opt/${pkgname}/" -type f -exec chown root:root "{}" \;
 	find "${pkgdir}/opt/${pkgname}/" -type f -exec chmod 0644 "{}" \;
