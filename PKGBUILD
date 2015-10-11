@@ -17,10 +17,10 @@ prepare(){
 
   sed -e 's|vapoursynth.h|VapourSynth.h|g' \
       -e 's|vshelper.h|VSHelper.h|g' \
-      -e 's|vapoursynth.h|<VapourSynth.h>|g' \
+      -e 's|"vapoursynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
       -e 's|reformHelper.cpp|ReformHelper.cpp|g' \
-      -i *.cpp
+      -i *
 
   echo "all:
 	  gcc -c -Os -g0 -std=gnu++11 -I. -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o vcmove.o vcmove.cpp
