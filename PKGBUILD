@@ -15,7 +15,7 @@ install="${pkgname}.install"
 source=("svn+http://svn.code.sf.net/p/view-os/code/trunk/lwipv6"
         "${pkgname}.install")
 md5sums=("SKIP"
-         "b4165e6142a92d65c8e14479486decc4")
+         "b6652a20b64c473886c3372d620ca788")
 
 pkgver() {
    cd "$srcdir/lwipv6"
@@ -27,14 +27,14 @@ build(){
    cd "$srcdir/lwipv6"
    autoreconf -i
    if [ "$CARCH" == "x86_64" ]; then
-      ./configure --prefix="${pkgdir}/usr" --disable-static
+      ./configure --prefix="/usr" --disable-static
    else
-      ./configure --prefix="${pkgdir}/usr" --libdir="${pkgdir}/usr/lib32" --disable-static
+      ./configure --prefix="/usr" --libdir="/usr/lib32" --disable-static
    fi
    make
 }
 
 package() {
    cd "$srcdir/lwipv6"
-   make install
+   make DESTDIR="$pkgdir" install
 }

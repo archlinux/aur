@@ -20,7 +20,7 @@ pkgbase = liblwipv6-svn
 	source = svn+http://svn.code.sf.net/p/view-os/code/trunk/lwipv6
 	source = liblwipv6-svn.install
 	md5sums = SKIP
-	md5sums = b4165e6142a92d65c8e14479486decc4
+	md5sums = b6652a20b64c473886c3372d620ca788
 
 pkgname = liblwipv6-svn
 
