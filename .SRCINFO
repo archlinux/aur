@@ -1,0 +1,16 @@
+pkgbase = ca-certificates-spi
+	pkgdesc = SPI CA root certificate
+	pkgver = 20150513
+	pkgrel = 1
+	url = http://www.spi-inc.org/ca/
+	install = install
+	arch = any
+	license = custom:RDL
+	depends = ca-certificates-utils
+	source = spi-cacert.crt
+	md5sums = fa268b79e0ef3ef5085a9a2303303e59
+	sha1sums = 09862292e3b649d3eb94c4dafd62420918f29836
+	sha256sums = 167d78086e9e96632b774a182dd14588e9dd32e2c7ba2aa5f9500791a0dd64ab
+
+pkgname = ca-certificates-spi
+
