@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-adwaita-icon-theme
-pkgver=3.16.2.2
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="Adwaita icon theme (mingw-w64)"
 arch=(any)
@@ -9,11 +9,13 @@ url="http://www.gnome.org"
 license=('GPL')
 makedepends=(
   'mingw-w64-configure'
-  'intltool')
+  'gtk3'
+  'intltool'
+  'librsvg')
 depends=('mingw-w64-hicolor-icon-theme')
 options=(!strip !buildflags staticlibs)
-source=("https://download.gnome.org/sources/adwaita-icon-theme/${pkgver%.*.*}/adwaita-icon-theme-${pkgver}.tar.xz")
-sha256sums=('3149a815ad165abdd20165891fa72b533b909d7844e3fd41b8d0a0f9d9a99066')
+source=("https://download.gnome.org/sources/adwaita-icon-theme/${pkgver%.*}/adwaita-icon-theme-${pkgver}.tar.xz")
+sha256sums=('5e9ce726001fdd8ee93c394fdc3cdb9e1603bbed5b7c62df453ccf521ec50e58')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -36,7 +38,7 @@ package() {
     find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' -o -name '*.manifest' | xargs -rtl1 rm
     find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
     find "$pkgdir/usr/${_arch}" -name '*.a' | xargs -rtl1 ${_arch}-strip -g
-	find "$pkgdir/usr/${_arch}/locale" -type d -empty -delete
+    find "$pkgdir/usr/${_arch}/share/locale" -type d -empty -delete
     cd ..
   done
 }
