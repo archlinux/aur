@@ -1,0 +1,14 @@
+pkgbase = arch-wiki-markdown-git
+	pkgdesc = Search and read Arch Wiki offline in your terminal
+	pkgver = 9031de0
+	pkgrel = 1
+	url = https://github.com/tsgates/arch-wiki-markdown
+	arch = any
+	license = MIT
+	depends = bash
+	depends = vim
+	source = git+https://github.com/tsgates/arch-wiki-markdown
+	sha1sums = SKIP
+
+pkgname = arch-wiki-markdown-git
+
