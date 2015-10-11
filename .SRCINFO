@@ -1,0 +1,17 @@
+pkgbase = fzy-git
+	pkgdesc = A fuzzy text selector menu for the terminal
+	pkgver = r152.4ad97c8
+	pkgrel = 1
+	url = https://github.com/jhawthorn/fzy
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	depends = glibc
+	provides = fzy
+	conflicts = fzy
+	source = git+https://github.com/jhawthorn/fzy.git
+	md5sums = SKIP
+
+pkgname = fzy-git
+
