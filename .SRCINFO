@@ -1,0 +1,14 @@
+pkgbase = k3b-l10n-bin-git
+	pkgdesc = Language packs for K3B GIT AUR releases
+	pkgver = r2.d922771
+	pkgrel = 1
+	url = https://github.com/FadeMind/k3b-l10n-bin
+	arch = any
+	license = GPL
+	optdepends = k3b-git: K3B GIT version
+	optdepends = k3b-frameworks-git: K3B KF5 Frameworks branch GIT version
+	source = git+https://github.com/FadeMind/k3b-l10n-bin.git
+	sha256sums = SKIP
+
+pkgname = k3b-l10n-bin-git
+
