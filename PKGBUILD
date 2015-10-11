@@ -1,12 +1,12 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=forecast-git
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Query weather forecasts from forecast.io"
 arch=('i686' 'x86_64')
 url="https://github.com/2ion/forecast"
 license=('GPL3')
-depends=('json-c' 'curl' 'libconfig' 'ncurses' 'openssl' 'lz4')
+depends=('json-c' 'curl' 'libconfig' 'ncurses' 'openssl' 'lz4' 'bash-completion')
 makedepends=('autoconf' 'automake' 'make' 'pkg-config')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -21,7 +21,12 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   autoreconf -f -i -s
-  ./configure --prefix=/usr
+
+  # Remove --with-bash-completion-dir if you do not want to install Bash
+  # completion.
+
+  ./configure --prefix=/usr --with-bash-completion-dir
+
   make
 }
 
