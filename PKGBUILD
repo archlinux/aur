@@ -7,7 +7,7 @@
 
 
 pkgname=gtk3-light
-pkgver=3.16.7
+pkgver=3.18.1
 pkgrel=1
 pkgdesc="GTK3 without colord."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ backup=(etc/gtk-3.0/settings.ini)
 license=('LGPL')
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
         settings.ini)
-sha256sums=('19689d14de54d182fad538153dbff6d41f53841f940aa871585fdea0306c7fba'
+sha256sums=('bd279cbb19f3fda074c89cf0edf9e7d95eee8b889b6889d16c2f7f0f6bdeba92'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
 prepare() {
