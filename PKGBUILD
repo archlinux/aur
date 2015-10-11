@@ -9,15 +9,16 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171412'
 license=('GPL')
 depends=('vapoursynth')
-source=("${_plug}-${pkgver}.7z::http://www.avisynth.nl/users/vcmohan/vcmod/vcmod_src.7z")
+source=("${_plug}-${pkgver}.7z::http://www.avisynth.nl/users/vcmohan/${_plug}/${_plug}_src.7z")
 sha1sums=('94869e6821c7b8cdc0d4533000df1f9ed08a491d')
 
 prepare(){
   rm -fr VSHelper.h VapourSynth.h
 
-  sed -e 's|"vapoursynth.h"|<VapourSynth.h>|g' \
-      -e 's|"VSHelper.h"|<VSHelper.h>|g' \
+  sed -e 's|vapoursynth.h|VapourSynth.h|g' \
       -e 's|vshelper.h|VSHelper.h|g' \
+      -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
+      -e 's|"VSHelper.h"|<VSHelper.h>|g' \
       -i *.cpp -i *.cc
 
   echo "all:
