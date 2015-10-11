@@ -1,0 +1,18 @@
+pkgbase = networkmanager-sstp
+	pkgdesc = SSTP support for NetworkManager
+	pkgver = 0.9.10
+	pkgrel = 1
+	url = http://sstp-client.sourceforge.net/#Network_Manager_Plugin
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sstp-client-svn-stable
+	depends = nm-connection-editor
+	depends = libsecret
+	optdepends = ppp>=2.4.7
+	provides = networkmanager-sstp
+	source = http://sourceforge.net/projects/sstp-client/files/network-manager-sstp/0.9.10-1/NetworkManager-sstp-0.9.10.tar.bz2
+	md5sums = SKIP
+
+pkgname = networkmanager-sstp
+
