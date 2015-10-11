@@ -1,4 +1,4 @@
-# Maintainer: Abraham Levine <arcticsn0wdev at gmail dot com>
+# Maintainer: Abraham Levine <arc at plusreed dot com>
 pkgname=pa-applet-git
 pkgver=17.33b413b
 pkgrel=1
