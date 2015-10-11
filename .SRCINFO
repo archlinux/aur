@@ -1,7 +1,7 @@
 pkgbase = kazam
 	pkgdesc = A screencasting program with design in mind
 	pkgver = 1.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/kazam
 	install = kazam.install
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = kazam
 	depends = ffmpeg
 	depends = libmatroska
 	depends = libtheora
+	depends = gnome-desktop
 	optdepends = libkeybinder3: hotkeys support
 	optdepends = libappindicator3: indicator on Unity panel support
 	conflicts = kazam-bzr
