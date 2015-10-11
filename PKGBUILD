@@ -16,7 +16,7 @@ _upstream_pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url='http://www.vim.org'
-makedepends=('gpm' 'python2' 'ruby' 'libxt' 'desktop-file-utils' 'lua' 'mercurial')
+makedepends=('gpm' 'python2' 'ruby' 'libxt' 'desktop-file-utils' 'lua')
 source=("vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz"
         'vimrc'
         'archlinux.vim')
