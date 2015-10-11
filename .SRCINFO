@@ -1,0 +1,18 @@
+pkgbase = aurous-bin
+	pkgdesc = A music player built to serve your needs.
+	pkgver = 0.1Alpha
+	pkgrel = 1
+	url = https://aurous.me/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jre8-openjdk
+	depends = java-openjfx
+	depends = gksu
+	source = Aurous.desktop
+	md5sums = e04b9770f59111250b4e9096d2cc9ecc
+	source_x86_64 = https://aurous.me/downloads/aurous-linux64.zip
+	md5sums_x86_64 = 22b339794d9811b7deda7e43de60759e
+
+pkgname = aurous-bin
+

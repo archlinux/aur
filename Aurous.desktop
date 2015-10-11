@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Aurous
+Comment=Aurous is a music player built to serve your needs.
+Exec=Aurous
+Icon=/opt/Aurous/data/assets/img/logo.png
+StartupNotify=false
+Categories= Audio;Music;Player;P2P;
+Type=Application
