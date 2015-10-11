@@ -1,0 +1,20 @@
+pkgbase = python-cgroupspy
+	pkgdesc = Python library for managing cgroups.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/cgroupspy
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	checkdepends = python2-nose
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/c/cgroupspy/cgroupspy-0.1.2.tar.gz
+	sha512sums = 57b6a0ef2fb9f88a3c8ee65779fcd08f47f661405f21d7e5846b0a30554bd31e520c2dc7896b832c198e601505d1dcb33c6c82e8647c315d6fa45be8a47aa0ba
+
+pkgname = python-cgroupspy
+	depends = python
+
+pkgname = python2-cgroupspy
+	depends = python2
+
