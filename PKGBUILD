@@ -1,7 +1,7 @@
 # Maintainer: Charles Vejnar <ce@vejnar.org>
 
 pkgname=python-momoko
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Asynchronous Psycopg wrapper for Tornado."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python" "python-tornado" "python-psycopg2")
 makedepends=("python-setuptools")
 source=("http://pypi.python.org/packages/source/M/Momoko/Momoko-$pkgver.tar.gz")
-sha1sums=("81b62104a6f5a3f3c7e9b922dae32f3cecbfb328")
+sha1sums=("4bdbad5db652bd05858d0824b38424d3ef88fef2")
 
 build() {
     cd $srcdir/Momoko-$pkgver
