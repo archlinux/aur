@@ -16,7 +16,7 @@ source=("svn+http://svn.code.sf.net/p/view-os/code/trunk/xmview-os"
         "${pkgname}.install"
         "${pkgname}.diff")
 md5sums=("SKIP"
-         "b4165e6142a92d65c8e14479486decc4"
+         "b6652a20b64c473886c3372d620ca788"
          "c3c17eafbb532433d49e37f9cfabbed7")
 
 pkgver() {
@@ -34,14 +34,14 @@ build(){
    cd "$srcdir/xmview-os"
    autoreconf -i
    if [ "$CARCH" == "x86_64" ]; then
-      ./configure --prefix="${pkgdir}/usr" --disable-static
+      ./configure --prefix="/usr" --disable-static
    else
-      ./configure --prefix="${pkgdir}/usr" --libdir="${pkgdir}/usr/lib32" --disable-static
+      ./configure --prefix="/usr" --libdir="/usr/lib32" --disable-static
    fi
    make
 }
 
 package() {
    cd "$srcdir/xmview-os"
-   make install
+   make DESTDIR="$pkgdir" install
 }

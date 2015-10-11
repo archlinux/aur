@@ -19,7 +19,7 @@ pkgbase = libumlib0-svn
 	source = libumlib0-svn.install
 	source = libumlib0-svn.diff
 	md5sums = SKIP
-	md5sums = b4165e6142a92d65c8e14479486decc4
+	md5sums = b6652a20b64c473886c3372d620ca788
 	md5sums = c3c17eafbb532433d49e37f9cfabbed7
 
 pkgname = libumlib0-svn
