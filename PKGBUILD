@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=blender-git
-pkgver=56696.3b95179
+pkgver=61559.3748bbf
 pkgrel=1
 pkgdesc="Development version of Blender"
 arch=('i686' 'x86_64')
@@ -65,7 +65,7 @@ build() {
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_CODEC_FFMPEG=ON \
         -DWITH_PYTHON_INSTALL=OFF \
-        -DPYTHON_VERSION=3.4m \
+        -DPYTHON_VERSION=3.5m \
         -DWITH_MOD_OCEANSIM=ON \
         $_EXTRAOPTS
   make
