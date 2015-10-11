@@ -1,0 +1,31 @@
+pkgbase = krita-git
+	pkgdesc = A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)
+	pkgver = 3.0.89.r38940.fcf9a43
+	pkgrel = 1
+	url = http://www.krita.org/
+	install = krita-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = boost
+	makedepends = vc
+	makedepends = python
+	depends = fftw
+	depends = gsl
+	depends = libkdcraw-frameworks-git
+	depends = opencolorio
+	depends = boost-libs
+	depends = exiv2
+	depends = openexr
+	depends = poppler-qt5
+	depends = kio
+	provides = krita
+	conflicts = krita
+	conflicts = calligra-krita-git
+	source = git://anongit.kde.org/krita.git
+	sha1sums = SKIP
+
+pkgname = krita-git
+
