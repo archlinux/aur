@@ -1,0 +1,12 @@
+pkgbase = qbat
+	pkgdesc = A small tool based on Qt4 to display battery stats in system tray
+	pkgver = 0.2.2
+	pkgrel = 3
+	url = http://www.qt-apps.org/content/show.php/QBat?content=82481
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+
+pkgname = qbat
+
