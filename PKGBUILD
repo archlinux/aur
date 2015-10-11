@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	./autogen.sh
+	./autogen.sh --prefix=/usr
 	make
 }
 package() {
