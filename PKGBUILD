@@ -1,7 +1,4 @@
-# Maintainer:  Vlad M. <vlad@archlinux.net>
-# Contributor: Marcel Huber <marcelhuberfoo at gmail dott com>
-# Contributor: Markus M. May <mmay AT javafreedom DOT org>
-# Contributor: Yahya Mohajer < yaya_2013 At yahoo Dot com >
+# Maintainer: Remy Adriaanse <remy@adriaanse.it>
 
 pkgname=hudson
 pkgver=3.3.0
