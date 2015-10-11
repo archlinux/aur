@@ -1,7 +1,7 @@
 # Maintainer M0Rf30
 
 pkgname=dnschain-git
-pkgver=281.1c76070
+pkgver=344.67c567e
 pkgrel=1
 pkgdesc="A blockchain-based DNS + HTTP server that fixes HTTPS security, and more!"
 arch=(any)
