@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = Development version of Blender
-	pkgver = 56696.3b95179
+	pkgver = 61559.3748bbf
 	pkgrel = 1
 	url = http://blender.org/
 	install = blender.install
