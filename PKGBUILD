@@ -2,13 +2,13 @@
 
 pkgname=mime-archpkg
 pkgver=0.3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="mime type for archlinux packages"
 arch=('any')
 url="http://www.archlinux.org"
 license=('GPL')
 depends=('shared-mime-info' 'xdg-utils')
-makedepends=('librsvg')
+makedepends=('librsvg' 'imagemagick')
 install=$pkgname.install
 source=($pkgname archpkg-{hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze}.svgz)
 md5sums=('1ff726f4e5e0dc7115aafb5f1b691455'
@@ -38,22 +38,24 @@ package() {
     # args: $3 != [1,2]:YxY/folder; = 1:folder/Y , 2:special folder (size:folder_name)
     # args: $4 = 1:svg suff, else png
     local i iname="application-x-archpkg" ipath="${pkgdir}/usr/share/icons" suff="png"
-    if [[ $4 == 1 ]]; then suff="svg"; fi
+    if [[ ${4} == 1 ]]; then suff="svg"; fi
     if [[ -z ${INSTALLED_ONLY} ]] || [[ -n ${INSTALLED_ONLY} && -f /usr/share/icons/${1}/index.theme ]]; then
       rsvg-convert -o archpkg.svg -f svg archpkg-${1}.svgz
-      if [[ $3 == 1 ]]; then
-        install -Dm644 archpkg.svg "${ipath}"/$1/mimetypes/scalable/${iname}.svg
+      if [[ ${3} == 1 ]]; then
+        install -Dm644 archpkg.svg "${ipath}"/${1}/mimetypes/scalable/${iname}.svg
       else
-        install -Dm644 archpkg.svg "${ipath}"/$1/scalable/mimetypes/${iname}.svg
+        install -Dm644 archpkg.svg "${ipath}"/${1}/scalable/mimetypes/${iname}.svg
       fi
       for i in ${2}; do
-        rsvg-convert -w ${i%:*} -h ${i%:*} -f ${suff} -o archpkg.${suff} archpkg-${1}.svgz
-        if [[ $3 == 1 ]]; then
-          install -Dm644 archpkg.${suff} "${ipath}"/$1/mimetypes/${i%:*}/${iname}.${suff}
-        elif [[ $3 == 2 ]]; then
-          install -Dm644 archpkg.${suff} "${ipath}"/$1/mimetypes/${i#*:}/${iname}.${suff}
+        [[ ${3} != 2 ]] && local x=${i} || local x=${i%:*}
+        #rsvg-convert -w ${x} -h ${x} -f ${suff} -o archpkg.${suff} archpkg-${1}.svgz
+        convert -resize ${x}x${x} -background none archpkg-${1}.svgz archpkg.${suff}
+        if [[ ${3} == 1 ]]; then
+          install -Dm644 archpkg.${suff} "${ipath}"/${1}/mimetypes/${x}/${iname}.${suff}
+        elif [[ ${3} == 2 ]]; then
+          install -Dm644 archpkg.${suff} "${ipath}"/${1}/mimetypes/${i#*:}/${iname}.${suff}
         else
-          install -Dm644 archpkg.${suff} "${ipath}"/$1/${i%:*}x${i%:*}/mimetypes/${iname}.${suff}
+          install -Dm644 archpkg.${suff} "${ipath}"/${1}/${x}x${x}/mimetypes/${iname}.${suff}
         fi
       done
     fi
