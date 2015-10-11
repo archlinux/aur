@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="https://aurous.me/"
 license=('unknown')
 
-depends=("jre8-openjdk" "java-openjfx" "gksu")
+depends=("jre8-openjdk" "java-openjfx" "gksu" "libgcrypt15")
 
 source_x86_64=(https://aurous.me/downloads/aurous-linux64.zip)
 source_i386=(https://aurous.me/downloads/aurous-linux32.zip)

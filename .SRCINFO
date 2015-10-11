@@ -9,6 +9,7 @@ pkgbase = aurous-bin
 	depends = jre8-openjdk
 	depends = java-openjfx
 	depends = gksu
+	depends = libgcrypt15
 	source = Aurous.desktop
 	md5sums = e04b9770f59111250b4e9096d2cc9ecc
 	source_x86_64 = https://aurous.me/downloads/aurous-linux64.zip
