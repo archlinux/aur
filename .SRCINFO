@@ -1,0 +1,14 @@
+pkgbase = vapoursynth-plugin-vcmove
+	pkgdesc = Plugin for Vapoursynth: vcmove
+	pkgver = 20141110
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171414
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = vapoursynth
+	source = https://dl.dropboxusercontent.com/u/36232595/vapoursynth/vapoursynth-vcmove-20141110.7z
+	sha1sums = c7a648e92e7c442d87da1620276c4024c57ed76e
+
+pkgname = vapoursynth-plugin-vcmove
+
