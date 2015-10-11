@@ -18,11 +18,16 @@ source=("http://unarchiver.c3.cx/downloads/unar${pkgver}_src.zip"
 source_i686=("gnustep-base.tar.xz::https://www.archlinux.org/packages/community/i686/gnustep-base/download/")
 source_x86_64=("gnustep-base.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/")
         
-sha1sums=('2d42cd9a1fdea2c90054bc72f624c9721fc3440f'
+sha1sums=('SKIP'
           'b8024026607dc2de758479b73d8b01ca6f692b59')
           
 sha1sums_i686=('SKIP')
 sha1sums_x86_64=('SKIP')
+
+pkgver() {
+    curl https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=unarchiver \
+        | grep -oP "(?<=pkgver=)\d+\.\d+\.\d+"
+}
 
 prepare(){
   cd "$srcdir/The Unarchiver"
