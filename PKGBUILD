@@ -12,7 +12,7 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'gst-plugins-base-libs'
-             'inetutils' 'freetype2<2.6.1')
+             'inetutils')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'gst-plugins-good: h.264 video'
             'gst-libav: h.264 video'
@@ -25,12 +25,14 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         mozconfig
         firefox-beta.desktop
         firefox-install-dir.patch
+        freetype2-261.patch
         vendor.js
         firefox-fixed-loading-icon.png)
 sha256sums=('bf019ccaf7faea8f70e59252d773fa786d6d6a614557ad0060f5f4402a722b50'
             'c89abe5ee54637743ee1f54c9e760dc9c35f18a175b46e5dcbb914e06f1b1f2f'
             'cf19552d5bbd14c2747aad9b92a2897b88701e9b42990cf28cf40c2d50a41909'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
+            'c65d7c784d382d24f47b49a86e8ca02158de04b8bfd14b097cf4839bd641fdd5'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
@@ -55,7 +57,8 @@ prepare() {
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
-
+  patch -Np0 --no-backup-if-mismatch -i ../freetype2-261.patch
+  
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
 
