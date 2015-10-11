@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-volume-mixer
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Applet allowing separate configuration of pulseaudio mixers"
 arch=(any)
