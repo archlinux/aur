@@ -47,3 +47,187 @@ index 6c387de..e622a8c 100644
     keys['?'] = actionHelp;
     keys['U'] = actionUntagAll;
     keys['c'] = actionTagAllChildren;
+diff --git a/MainPanel.c b/MainPanel.c
+index 2e91a3c..7a8b2bd 100644
+--- a/MainPanel.c
++++ b/MainPanel.c
+@@ -104,14 +104,14 @@ static HandlerResult MainPanel_eventHandler(Panel* super, int ch) {
+       }
+       switch (ch) {
+       case KEY_LEFT:
+-      case KEY_CTRLB:
++      case 'h':
+          if (super->scrollH > 0) {
+             super->scrollH -= CRT_scrollHAmount;
+             super->needsRedraw = true;
+          }
+          return HANDLED;
+       case KEY_RIGHT:
+-      case KEY_CTRLF:
++      case 'l':
+          super->scrollH += CRT_scrollHAmount;
+          super->needsRedraw = true;
+          return HANDLED;
+diff --git a/Panel.c b/Panel.c
+index 6540970..d213855 100644
+--- a/Panel.c
++++ b/Panel.c
+@@ -86,6 +86,8 @@ struct Panel_ {
+ #define KEY_CTRLP      0020            /* control-p key */
+ #define KEY_CTRLF      0006            /* control-f key */
+ #define KEY_CTRLB      0002            /* control-b key */
++#define KEY_CTRLU      0025            /* control-u key */
++#define KEY_CTRLD      0004            /* control-d key */
+ 
+ PanelClass Panel_class = {
+    .super = {
+@@ -372,14 +374,16 @@ void Panel_draw(Panel* this, bool focus) {
+ 
+ bool Panel_onKey(Panel* this, int key) {
+    assert (this != NULL);
+-   
++
+    int size = Vector_size(this->items);
+    switch (key) {
+    case KEY_DOWN:
++   case 'j':
+    case KEY_CTRLN:
+       this->selected++;
+       break;
+    case KEY_UP:
++   case 'k':
+    case KEY_CTRLP:
+       this->selected--;
+       break;
+@@ -394,23 +398,33 @@ bool Panel_onKey(Panel* this, int key) {
+       break;
+    #endif
+    case KEY_LEFT:
+-   case KEY_CTRLB:
++   case 'h':
+       if (this->scrollH > 0) {
+          this->scrollH -= CRT_scrollHAmount;
+          this->needsRedraw = true;
+       }
+       break;
+    case KEY_RIGHT:
+-   case KEY_CTRLF:
++   case 'l':
+       this->scrollH += CRT_scrollHAmount;
+       this->needsRedraw = true;
+       break;
++   case KEY_CTRLU:
++      this->selected -= (this->h - 1) / 2;
++      this->needsRedraw = true;
++      break;
++   case KEY_CTRLD:
++      this->selected += (this->h - 1) / 2;
++      this->needsRedraw = true;
++      break;
+    case KEY_PPAGE:
++   case KEY_CTRLB:
+       this->selected -= (this->h - 1);
+       this->scrollV -= (this->h - 1);
+       this->needsRedraw = true;
+       break;
+    case KEY_NPAGE:
++   case KEY_CTRLF:
+       this->selected += (this->h - 1);
+       this->scrollV += (this->h - 1);
+       this->needsRedraw = true;
+@@ -431,9 +445,11 @@ bool Panel_onKey(Panel* this, int key) {
+       break;
+    }
+    case KEY_HOME:
++   case 'g':
+       this->selected = 0;
+       break;
+    case KEY_END:
++   case 'G':
+       this->selected = size - 1;
+       break;
+    default:
+diff --git a/Panel.h b/Panel.h
+index 6789770..22a0f3f 100644
+--- a/Panel.h
++++ b/Panel.h
+@@ -74,6 +74,8 @@ struct Panel_ {
+ #define KEY_CTRLP      0020            /* control-p key */
+ #define KEY_CTRLF      0006            /* control-f key */
+ #define KEY_CTRLB      0002            /* control-b key */
++#define KEY_CTRLU      0025            /* control-u key */
++#define KEY_CTRLD      0004            /* control-d key */
+ 
+ extern PanelClass Panel_class;
+ 
+diff --git a/README b/README
+index 3bc17a4..877cf20 100644
+--- a/README
++++ b/README
+@@ -16,6 +16,44 @@ but we also have code for running under FreeBSD and Mac OS X
+ This software has evolved considerably over the years,
+ and is reasonably complete, but there is always room for improvement.
+ 
++Vim keybindings
++----------------
++
++These are the keybindings added in this fork of htop:
++
++```
++    g        to the top (gg in vim)
++
++  <C-b>      up 1 page
++
++  <C-u>      up 1/2 page
++
++    k
++
++h       l    one character
++
++    j
++
++  <C-u>      down 1/2 page
++
++  <C-f>      down 1 page
++
++    G        to the end
++
++--------------------------------------------------
++
++    o        Expand/collapse (like in NERDTree)
++```
++
++In order to accomodate these keybindings, the following changes
++were made to the original keybindings:
++
++* Ctrl+F and Ctrt+B can now longer be used to navigate horizontally
++* 'h' can no longer be used to access the help, leaving Ctrl+F1 & '?'
++* 'k' can no longer be used to kill processes, being replaced with 'x'
++* 'l' can no longer be used to list open files, being replaced with 'L'
++
++
+ Comparison between 'htop' and classic 'top'
+ -------------------------------------------
+ 
+diff --git a/ScreenManager.c b/ScreenManager.c
+index df7431f..68d3953 100644
+--- a/ScreenManager.c
++++ b/ScreenManager.c
+@@ -272,7 +272,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+          continue;
+       }
+       case KEY_LEFT:
+-      case KEY_CTRLB:
++      case 'h':
+          if (!this->allowFocusChange)
+             break;
+          tryLeft:
+@@ -283,7 +283,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+             goto tryLeft;
+          break;
+       case KEY_RIGHT:
+-      case KEY_CTRLF:
++      case 'l':
+       case 9:
+          if (!this->allowFocusChange)
+             break;
