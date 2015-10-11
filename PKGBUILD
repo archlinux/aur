@@ -7,7 +7,7 @@ _pkgname=jitsi
 # pkgvermajor needs manual increment
 _pkgvermajor=2.9
 # pkgver is determined automatically
-pkgver=20151011
+pkgver=2.9
 pkgrel=1
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ md5sums=(
 install=jitsi-nightly.install
 
 pkgver() {
-  date +%Y%m%d
+  printf "${_pkgvermajor}" date +%Y%m%d
 }
 
 build() {
