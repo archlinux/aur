@@ -19,7 +19,7 @@ prepare(){
       -e 's|vshelper.h|VSHelper.h|g' \
       -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -i *.cpp -i *.cc
+      -i *
 
   echo "all:
 	  gcc -c -Os -g0 -std=gnu++11 -I. -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o vcmod.o vcmod.cpp
