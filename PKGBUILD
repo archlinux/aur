@@ -1,13 +1,13 @@
 # Maintainer: Tom < reztho at archlinux dot us >
 pkgname=mate-tweak-git 
-pkgver=3.4.7.r0.2d912fa
+pkgver=3.5.2a.r0.8df794d
 pkgrel=1
 pkgdesc="Mate desktop configuration tool"
 arch=('any')
 url="https://bitbucket.org/ubuntu-mate/mate-tweak"
 license=('GPL')
-depends=('python2' 'wmctrl')
-makedepends=('git' 'python2-setuptools' 'python2-distutils-extra') 
+depends=('python' 'wmctrl' 'python-configobj')
+makedepends=('git' 'python-setuptools' 'python-distutils-extra') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('mate-tweak::git+https://bitbucket.org/ubuntu-mate/mate-tweak.git')
@@ -20,5 +20,8 @@ pkgver() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    /usr/bin/python2 setup.py install --root="$pkgdir/" --optimize=1
+    /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1
+
+    cd "$pkgdir"
+    sed -i 's@/usr/bin/python2@/usr/bin/python@' usr/bin/mate-tweak
 }
