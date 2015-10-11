@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-pkgbuild-mode-git
-pkgver=0.14.1.5.g5036e2d
+pkgver=0.14.1.6.geef2803
 pkgrel=1
 pkgdesc="A major mode for creating packages with emacs"
 arch=('any')
@@ -30,7 +30,7 @@ build() {
 package() {
   install -d $pkgdir/usr/share/emacs/site-lisp
   install -m644 $srcdir/$_gitname/*.el* \
-	  $pkgdir/usr/share/emacs/site-lisp/
+	  $pkgdir/usr/share/emacs/site-lisp/x
   install -Dm755 $srcdir/$_gitname/prepare_4_aur4.sh \
 	  $pkgdir/usr/bin/prepare_4_aur4.sh
 }
