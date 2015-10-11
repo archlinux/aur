@@ -2,7 +2,7 @@
 
 pkgname=namecoin-core
 pkgver=0.3.80
-pkgrel=1
+pkgrel=2
 pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="http://namecoin.info/"
@@ -51,7 +51,7 @@ package() {
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
 
-md5sums=('7302f83d8390184139277255a6c1d484'
+md5sums=('450402d3bcd07fbd3a671336d9cb2e7b'
          '020bfdfe192bd21b84964c1e90ae4450'
          '2ca92d94c329bf54b8df70f22c27ba98'
          '1186c6c80cb488e0809a4977ec92399b'

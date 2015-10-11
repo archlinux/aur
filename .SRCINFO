@@ -1,7 +1,7 @@
 pkgbase = namecoin-core
 	pkgdesc = Namecoin Core headless P2P node
 	pkgver = 0.3.80
-	pkgrel = 1
+	pkgrel = 2
 	url = http://namecoin.info/
 	install = namecoin.install
 	arch = i686
@@ -35,7 +35,7 @@ pkgbase = namecoin-core
 	source = namecoin.logrotate
 	source = namecoin.service
 	source = Makefile
-	md5sums = 7302f83d8390184139277255a6c1d484
+	md5sums = 450402d3bcd07fbd3a671336d9cb2e7b
 	md5sums = 020bfdfe192bd21b84964c1e90ae4450
 	md5sums = 2ca92d94c329bf54b8df70f22c27ba98
 	md5sums = 1186c6c80cb488e0809a4977ec92399b
