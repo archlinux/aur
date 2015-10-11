@@ -1,0 +1,17 @@
+pkgbase = graywolf
+	pkgdesc = An oopensource placement tool
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/rubund/graywolf/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = libx11
+	provides = libycadgraywolf.so
+	options = !makeflags
+	source = https://github.com/rubund/graywolf/archive/0.1.3.zip
+	sha512sums = d9462365bc80f77547b4ee8d9a1bd4b451d451f949fb25cd94271050c82bfa359ac82000bdddac0fbee0bcf7536c980d247adf00a129554e2ba6ecfe288dd3b2
+
+pkgname = graywolf
+
