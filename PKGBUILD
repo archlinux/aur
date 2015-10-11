@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=20459
+pkgver=20460
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -45,6 +45,7 @@ build() {
 package () {
   cd "$srcdir"/$_svnmod/Scribus
   make DESTDIR="$pkgdir" install
+  cp -r resources/iconsets/1_5_0 "$pkgdir"/usr/share/scribus/icons/
   install -Dm644 scribus.desktop \
 	  "$pkgdir"/usr/share/applications/scribus.desktop
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
