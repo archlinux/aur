@@ -187,14 +187,14 @@ package_linux-zen-grsec-headers() {
 	# add grsecurity gcc plugins
 	msg "Adding grsecurity gcc plugins..."
 	mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-	install -m644 "$srcdir/linux-zen-grsec/tools/gcc/gcc-common.h" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-	install -m644 "$srcdir/linux-zen-grsec/tools/gcc/Makefile" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-	install -m644 "$srcdir/build/tools/gcc/colorize_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-	install -m644 "$srcdir/build/tools/gcc/kernexec_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-	install -m644 "$srcdir/build/tools/gcc/constify_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-	install -m644 "$srcdir/build/tools/gcc/stackleak_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-	install -m644 "$srcdir/build/tools/gcc/initify_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-	install -m644 "$srcdir/build/tools/gcc/structleak_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+	[ -f "$srcdir/linux-zen-grsec/tools/gcc/gcc-common.h" ] && install -m644 "$srcdir/linux-zen-grsec/tools/gcc/gcc-common.h" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+	[ -f "$srcdir/linux-zen-grsec/tools/gcc/Makefile" ] && install -m644 "$srcdir/linux-zen-grsec/tools/gcc/Makefile" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+	[ -f "$srcdir/build/tools/gcc/colorize_plugin.so" ] && install -m644 "$srcdir/build/tools/gcc/colorize_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+	[ -f "$srcdir/build/tools/gcc/kernexec_plugin.so" ] && install -m644 "$srcdir/build/tools/gcc/kernexec_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+	[ -f "$srcdir/build/tools/gcc/constify_plugin.so" ] && install -m644 "$srcdir/build/tools/gcc/constify_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+	[ -f "$srcdir/build/tools/gcc/stackleak_plugin.so" ] && install -m644 "$srcdir/build/tools/gcc/stackleak_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+	[ -f "$srcdir/build/tools/gcc/initify_plugin.so" ] && install -m644 "$srcdir/build/tools/gcc/initify_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+	[ -f "$srcdir/build/tools/gcc/structleak_plugin.so" ] && install -m644 "$srcdir/build/tools/gcc/structleak_plugin.so" "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
 	
 	if [ -f "$srcdir/build/tools/gcc/size_overflow_plugin/size_overflow_plugin.so" ]; then
 		mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"

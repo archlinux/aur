@@ -1,4 +1,4 @@
-_kernel_version=4.2.3-zen-grsec-grsec+
+_kernel_version=4.2.3-zen-grsec-grsec-00334-gb170d5c-dirty
 
 _r="\033[00;31m"
 _y="\033[00;33m"
