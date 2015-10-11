@@ -1,0 +1,44 @@
+diff -Naur meh/src/gif.c meh.new/src/gif.c
+--- meh/src/gif.c	2015-09-27 21:35:45.745053456 +0200
++++ meh.new/src/gif.c	2015-10-11 00:35:49.251559414 +0200
+@@ -1,4 +1,3 @@
+-
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -97,14 +96,14 @@
+ void gif_close(struct image *img){
+ 	struct gif_t *g = (struct gif_t *)img;
+ #if defined(GIFLIB_MAJOR) && defined(GIFLIB_MINOR) && (GIFLIB_MAJOR == 5 && GIFLIB_MINOR >= 1)
+-	int ret;
++	int ret, ErrorCode;
+ #endif
+ 
+ #if defined(GIFLIB_MAJOR) && defined(GIFLIB_MINOR) && (GIFLIB_MAJOR == 5 && GIFLIB_MINOR >= 1)
+-	DGifCloseFile(g->gif,&ret);
++	ret = DGifCloseFile(g->gif, &ErrorCode);
+ 	if(ret != GIF_OK) {
+ #if defined(GIFLIB_MAJOR) && GIFLIB_MAJOR >= 5
+-		fprintf(stderr, "GIFLIB: %s\n", GifErrorString(ret));
++		fprintf(stderr, "GIFLIB: %s\n", GifErrorString(ErrorCode));
+ #elif defined(GIFLIB_MAJOR) && defined(GIFLIB_MINOR) && ((GIFLIB_MAJOR == 4 && GIFLIB_MINOR >= 2) || GIFLIB_MAJOR > 4)
+ 		fprintf(stderr, "GIFLIB: %s\n", GifErrorString());
+ #else
+@@ -123,4 +122,3 @@
+ 	gif_read,
+ 	gif_close
+ };
+-
+diff -Naur meh/src/main.c meh.new/src/main.c
+--- meh/src/main.c	2015-09-27 21:35:45.745053456 +0200
++++ meh.new/src/main.c	2015-10-11 00:33:43.315710489 +0200
+@@ -1,4 +1,3 @@
+-
+ #define _GNU_SOURCE
+ #include <unistd.h>
+ 
+@@ -329,4 +328,3 @@
+ 	return 0;
+ }
+ 
+-
