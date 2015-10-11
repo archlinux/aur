@@ -5,7 +5,7 @@
 # Contributor: Olaf Leidinger <leidola@newcon.de>
 
 pkgname=gscan2pdf
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='A GUI with OCR capability to produce PDFs or DjVus from scanned documents'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=('imagemagick' 'perl-config-general' 'perl-goo-canvas' 'perl-gtk2-ex-sim
 	  'perl-try-tiny' 'unpaper')
 optdepends=('djvulibre' 'gocr' 'ocropus' 'xdg-utils' 'tesseract' 'cuneiform' 'perl-gtk2-ex-podviewer' )
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz")
-sha512sums=('85fa18283ee11386ebad69fca11230561bfa80579afbbbfb61ab511c7ab17f19ac8515e1c5d4a48b3411b3132d60542ed3461be75d537be478156250ed5e05a9')
+sha512sums=('7fec145d7ce69b4bbf79912a1eec0a0bbb4cb02608e3f5c957fa9d6e08ca6eff53162fb824b7f7851c388db8c8f8e19632ca4f760afbcf768099c9174f1f43bd')
 
 build() {
 
