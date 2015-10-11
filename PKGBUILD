@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.16.7
+pkgver=3.18.1
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (v3) (mingw-w64)'
 arch=(any)
@@ -18,14 +18,14 @@ depends=(
   'mingw-w64-crt'
   'mingw-w64-adwaita-icon-theme'
   'mingw-w64-atk>=2.15.1'
-  'mingw-w64-cairo>=1.14.0'
+  'mingw-w64-cairo>=1.14.2-3'
   'mingw-w64-gdk-pixbuf2>=2.30.0'
-  'mingw-w64-glib2>=2.43.4'
+  'mingw-w64-glib2>=2.45.8'
   'mingw-w64-libepoxy>=1.0'
-  'mingw-w64-pango>=1.36.7')
+  'mingw-w64-pango>=1.37.3')
 options=(!strip !buildflags staticlibs)
 source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
-sha256sums=('19689d14de54d182fad538153dbff6d41f53841f940aa871585fdea0306c7fba')
+sha256sums=('bd279cbb19f3fda074c89cf0edf9e7d95eee8b889b6889d16c2f7f0f6bdeba92')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
