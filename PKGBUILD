@@ -5,7 +5,7 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=1.2.358
+pkgver=1.2.359
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -34,12 +34,20 @@ depends=('python2'
          'python2-tmdb3' #AUR#
          'python2-pynzb' #AUR#
          'python2-apscheduler' #AUR#
-         # undocumented in FlexGet.egg-info/requires.txt
+         'python2-flask'
+         'python2-flask-restful' #AUR#
+         'python2-ordereddict'
+         'python2-flask-restplus072'
+         'python2-cherrypy>=3.7.0'
+         'python2-flask-assets>=0.11' #AUR#
+         'python2-cssmin' #AUR#
+         'python2-flask-compress'
+         'python2-flask-login>=0.3.2'
+         'python2-libsass>=0.8.3'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
-            'python2-cherrypy: web interface'
-            'python2-flask: web interface'
+            'python2-rarfile: decompress plugin' #AUR#
             )
 makedepends=('python2-paver'
              'python2-setuptools'
@@ -53,10 +61,10 @@ source=("https://pypi.python.org/packages/source/F/FlexGet/${_pkgname}-${pkgver}
 
 changelog=ChangeLog
 
-sha256sums=('ad0925023beb155e77bdafb6cd8e668e02bfc12e5c863c3212d200d457ed40d4'
+sha256sums=('6b7aebbf5d8311df91955585d29423a1118dd43ccbc58b2e43930605d09414f0'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6'
-            '7d65e71ea411f12fd6fb7ed4aa859ab21c83882d68abc78c8a0e8dbd4a96b7b4')
+            'daf5c63bbad7be570a9280e855527ba3a225790592e3026784216ea1b3ed92db')
 
 prepare() {
   cd "${_pkgname}"-"${pkgver}"

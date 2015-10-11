@@ -1,6 +1,6 @@
 pkgbase = flexget
 	pkgdesc = Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more.
-	pkgver = 1.2.358
+	pkgver = 1.2.359
 	pkgrel = 1
 	url = http://flexget.com/
 	changelog = ChangeLog
@@ -27,18 +27,27 @@ pkgbase = flexget
 	depends = python2-tmdb3
 	depends = python2-pynzb
 	depends = python2-apscheduler
+	depends = python2-flask
+	depends = python2-flask-restful
+	depends = python2-ordereddict
+	depends = python2-flask-restplus072
+	depends = python2-cherrypy>=3.7.0
+	depends = python2-flask-assets>=0.11
+	depends = python2-cssmin
+	depends = python2-flask-compress
+	depends = python2-flask-login>=0.3.2
+	depends = python2-libsass>=0.8.3
 	optdepends = python2-guppy: for memusage plugin
 	optdepends = python2-transmissionrpc: Transmission support
-	optdepends = python2-cherrypy: web interface
-	optdepends = python2-flask: web interface
-	source = https://pypi.python.org/packages/source/F/FlexGet/FlexGet-1.2.358.tar.gz
+	optdepends = python2-rarfile: decompress plugin
+	source = https://pypi.python.org/packages/source/F/FlexGet/FlexGet-1.2.359.tar.gz
 	source = flexget.service
 	source = http://download.flexget.com/ChangeLog
 	source = fix_beautifulsoup_4_4_0.patch
-	sha256sums = ad0925023beb155e77bdafb6cd8e668e02bfc12e5c863c3212d200d457ed40d4
+	sha256sums = 6b7aebbf5d8311df91955585d29423a1118dd43ccbc58b2e43930605d09414f0
 	sha256sums = e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa
 	sha256sums = dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6
-	sha256sums = 7d65e71ea411f12fd6fb7ed4aa859ab21c83882d68abc78c8a0e8dbd4a96b7b4
+	sha256sums = daf5c63bbad7be570a9280e855527ba3a225790592e3026784216ea1b3ed92db
 
 pkgname = flexget
 
