@@ -46,7 +46,9 @@ package() {
   install -m755 unar lsar "$pkgdir/usr/lib/unarchiver"
   
   echo '#!/bin/sh' > "$pkgdir/usr/lib/unarchiver/run.sh"
-  echo 'export LD_LIBRARY_PATH=/usr/lib/unarchiver' >> "$pkgdir/usr/lib/unarchiver/run.sh"
+  echo '[[ -z "$LD_LIBRARY_PATH" ]] && \' >> "$pkgdir/usr/lib/unarchiver/run.sh"
+  echo 'export LD_LIBRARY_PATH=/usr/lib/unarchiver || \' >> "$pkgdir/usr/lib/unarchiver/run.sh"
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/unarchiver' >> "$pkgdir/usr/lib/unarchiver/run.sh"
   echo 'exec /usr/lib/unarchiver/`basename "$0"`'  >> "$pkgdir/usr/lib/unarchiver/run.sh"
   chmod +x "$pkgdir/usr/lib/unarchiver/run.sh"
   ln -s /usr/lib/unarchiver/run.sh "$pkgdir/usr/bin/unar"
