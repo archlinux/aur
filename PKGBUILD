@@ -3,7 +3,7 @@
 
 pkgname=fldigi
 pkgver=3.23.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64')
 url="http://w1hkj.com"
@@ -14,7 +14,7 @@ optdepends=('hamlib: rig control through hamlib'
 	'portaudio: PortAudio support'
 	'pulseaudio: pulseaudio support'
 	'xmlrpc-c: XML-RPC control')
-source=(http://w1hkj.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 
 build() {
 	cd "$srcdir"
