@@ -1,7 +1,7 @@
 pkgbase = htop-vim-solarized-git
 	pkgdesc = Interactive process viewer with solarized and vim keybindings patch
 	pkgver = 649.e906c0d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hishamhm/htop
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,12 @@ pkgbase = htop-vim-solarized-git
 	options = !emptydirs
 	source = git+https://github.com/hishamhm/htop.git
 	source = solarized-colors.patch
-	source = vim-keybindings.patch
+	source = vim-keybindings-common.patch
+	source = vim-keybindings-x-for-kill.patch
 	sha256sums = SKIP
 	sha256sums = 787042745bab62731ec14734d0bc3ae18e11dbb87cfed189942887a58f2cd6a7
-	sha256sums = f89f25cfd0430595e6a36f4e9c5677ff78dc63e93dc104a8a238a05a8f9e3ca9
+	sha256sums = f85195b2280b660d2e9cbcb46630c66b879f14081f23016a845f4d4a46d2f030
+	sha256sums = dfdcd296508e725572f475308182d9a5d1a4cf7ae8c464f33b9907d92e243a09
 
 pkgname = htop-vim-solarized-git
 
