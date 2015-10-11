@@ -1,7 +1,7 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=mime-archpkg
-pkgver=0.3.5.0
+pkgver=0.3.5.1
 pkgrel=1
 pkgdesc="mime type for archlinux packages"
 arch=('any')
@@ -35,7 +35,7 @@ package() {
   # function to make things shorter
   put_icons() {
     # args: $1 = icon name(nopref:archpkg, nosuff:.svgz) , $2 = sizes
-    # args: $3 != [1,2]:YxY/folder; = 1:folder/Y , 2:special folder
+    # args: $3 != [1,2]:YxY/folder; = 1:folder/Y , 2:special folder (size:folder_name)
     # args: $4 = 1:svg suff, else png
     local i iname="application-x-archpkg" ipath="${pkgdir}/usr/share/icons" suff="png"
     if [[ $4 == 1 ]]; then suff="svg"; fi
@@ -43,7 +43,7 @@ package() {
       rsvg-convert -o archpkg.svg -f svg archpkg-${1}.svgz
       if [[ $3 == 1 ]]; then
         install -Dm644 archpkg.svg "${ipath}"/$1/mimetypes/scalable/${iname}.svg
-      elif [[ $3 != 2 ]]; then
+      else
         install -Dm644 archpkg.svg "${ipath}"/$1/scalable/mimetypes/${iname}.svg
       fi
       for i in ${2}; do
@@ -61,26 +61,17 @@ package() {
 
   # mime type
   install -Dm644 ${pkgname} "${pkgdir}"/usr/share/mime/packages/archpkg.xml
-  # hicolor icons
+  # icons
   put_icons hicolor '16 22 24 32 48 64 72 96 128 192 256'
-  # gnome icons
   put_icons gnome '16 22 24 32 48 256'
-  # tango icons
   put_icons Tango '16 22 24 32 48 64 96 128 256'
-  # oxygen icons
   put_icons oxygen '16 22 24 32 48 64 128 256'
-  # lxde icons
   put_icons nuoveXT2 '16 22 24 32 36 48 64 72 96 128'
-  # Faenza icons
   put_icons Faenza '16 22 24 32 48 64 96' 1
-  # Faience icons
   put_icons Faience '16 22 24 32 48 64 96' 1
-  # NITRUX icons
   put_icons NITRUX '16 22 24 32' 1
-  # Numix icons
   put_icons Numix '16 22 24 32 64 128 256' 0 1
-  # breeze icons
-  put_icons breeze '16:file-types-small 32:file-types-32 64:file-types' 2 1
+  put_icons breeze '16 22 32 64' 1 1
 }
 
 

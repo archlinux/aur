@@ -1,6 +1,6 @@
 pkgbase = mime-archpkg
 	pkgdesc = mime type for archlinux packages
-	pkgver = 0.3.5.0
+	pkgver = 0.3.5.1
 	pkgrel = 1
 	url = http://www.archlinux.org
 	install = mime-archpkg.install
