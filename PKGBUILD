@@ -15,9 +15,8 @@ sha1sums=('1601689fe7aff24dbddac7da5599c7f40f32607d')
 prepare(){
   rm -fr VSHelper.h VapourSynth.h
 
-  sed -e 's|"vapoursynth.h"|<VapourSynth.h>|g' \
+  sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -e 's|vshelper.h|VSHelper.h|g' \
       -i *.cpp
 
   echo "all:
