@@ -2,15 +2,15 @@
 
 _plug=vcmod
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=201506xx
+pkgver=20151011
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171412'
 license=('GPL')
 depends=('vapoursynth')
-source=("http://www.avisynth.nl/users/vcmohan/vcmod/vcmod_src.7z")
-sha1sums=('8349cf7163e5270687a279f839ebaee660a8ec63')
+source=("${_plug}-${pkgver}.7z::http://www.avisynth.nl/users/vcmohan/vcmod/vcmod_src.7z")
+sha1sums=('94869e6821c7b8cdc0d4533000df1f9ed08a491d')
 
 prepare(){
   rm -fr VSHelper.h VapourSynth.h
