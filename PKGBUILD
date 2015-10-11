@@ -1,7 +1,7 @@
 # Maintainer: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=vidyodesktop
-pkgver=3.5.4.004
+pkgver=3.5.4.010
 pkgrel=3
 pkgdesc="VidyoDesktop(TM) video conferencing client"
 arch=('i686' 'x86_64')
@@ -16,11 +16,11 @@ depends=('alsa-lib' 'libidn' 'libutil-linux' 'libxv' 'libgl' 'glu'
          'gcc-libs' 'zlib' 'libpng' 'qtwebkit' 'zenity')
 optdepends=('flashplugin: Join meetings via web browser')
 
-source_i686=("https://demo.vidyo.com/upload/VidyoDesktopInstaller-ubuntu-TAG_VD_3_5_4_004.deb")
-md5sums_i686=('def5828bd84e1c5cba1058a73801c377')
+source_i686=("https://demo.vidyo.com/upload/VidyoDesktopInstaller-ubuntu-TAG_VD_3_5_4_010.deb")
+md5sums_i686=('e61a868989e4d1bf89f7a440bd8d9cc7')
 
-source_x86_64=("https://demo.vidyo.com/upload/VidyoDesktopInstaller-ubuntu64-TAG_VD_3_5_4_004.deb")
-md5sums_x86_64=('cdabff2965962774ba8b2937d39445bf')
+source_x86_64=("https://demo.vidyo.com/upload/VidyoDesktopInstaller-ubuntu64-TAG_VD_3_5_4_010.deb")
+md5sums_x86_64=('457f6eacbdb20dff7ce59a9ef8215bb4')
 
 prepare() {
   tar -zxf data.tar.gz
