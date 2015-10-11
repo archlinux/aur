@@ -1,0 +1,29 @@
+pkgbase = unarchiver-nodep
+	pkgdesc = unar and lsar that don't depend on gnustep-base. Resolv conflict with darling-git.
+	pkgver = 1.9.1
+	pkgrel = 1
+	epoch = 1
+	url = http://unarchiver.c3.cx/
+	arch = x86_64
+	arch = i686
+	license = LGPL2.1
+	makedepends = gcc-objc
+	depends = gnustep-base
+	depends = openssl
+	depends = bzip2
+	depends = icu
+	depends = gcc-libs
+	depends = zlib
+	provides = unarchiver
+	conflicts = unarchiver
+	source = http://unarchiver.c3.cx/downloads/unar1.9.1_src.zip
+	source = native_obj_exceptions.patch
+	sha1sums = 2d42cd9a1fdea2c90054bc72f624c9721fc3440f
+	sha1sums = b8024026607dc2de758479b73d8b01ca6f692b59
+	source_x86_64 = gnustep-base.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/
+	sha1sums_x86_64 = SKIP
+	source_i686 = gnustep-base.tar.xz::https://www.archlinux.org/packages/community/i686/gnustep-base/download/
+	sha1sums_i686 = SKIP
+
+pkgname = unarchiver-nodep
+
