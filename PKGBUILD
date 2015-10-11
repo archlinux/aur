@@ -5,9 +5,9 @@ url='http://rtv.github.com/Stage'
 
 pkgname='ros-indigo-stage'
 pkgver='4.1.1'
-_pkgver_patch=7
+_pkgver_patch=8
 arch=('any')
-pkgrel=8
+pkgrel=9
 license=('GPL')
 
 ros_makedepends=()

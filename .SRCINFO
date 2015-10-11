@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-stage
 	pkgdesc = ROS - Mobile robot simulator http://rtv.github.com/Stage.
 	pkgver = 4.1.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://rtv.github.com/Stage
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = ros-indigo-stage
 	depends = mesa
 	depends = fltk
 	depends = gtk2
-	source = stage::git+https://github.com/ros-gbp/stage-release.git#tag=release/indigo/stage/4.1.1-7
+	source = stage::git+https://github.com/ros-gbp/stage-release.git#tag=release/indigo/stage/4.1.1-8
 	md5sums = SKIP
 
 pkgname = ros-indigo-stage
