@@ -6,7 +6,7 @@
 
 pkgname=nanoc
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, flexible static site generator written in Ruby.'
 arch=(any)
 url='http://nanoc.ws'
@@ -14,13 +14,14 @@ license=(MIT)
 depends=(ruby-cri)
 makedepends=(rubygems)
 optdepends=(
-    "adsf: Provides 'nanoc view' command."
-    "ruby-builder: Allows generating rss feeds and sitemaps."
-    "ruby-guard-nanoc: Regenerates site on filesystem changes."
-    "ruby-kramdown: Filter for Markdown input files."
-    "ruby-listen: Provides 'nanoc watch' command."
-    "ruby-nokogiri: Provides 'nanoc check' command."
-    "ruby-w3c_validators: Provides 'nanoc check' command."
+  "adsf: Provides 'nanoc view' command."
+  "ruby-builder: Provides 'Blogging' helper."
+  "ruby-kramdown: Provides filter for Markdown input files."
+  "ruby-listen: Provides 'nanoc watch' command. (Deprecated. Use 'ruby-guard-nanoc' package.)"
+  "ruby-nokogiri: Provides 'nanoc check' command."
+  "ruby-pry: Provides 'nanoc shell' command."
+  "ruby-rack: Provides 'nanoc autocompile' command. (Deprecated. Use 'ruby-guard-nanoc' package.)"
+  "ruby-w3c_validators: Provides 'nanoc check' command."
 )
 provides=(ruby-nanoc3 ruby-nanoc)
 conflicts=(ruby-nanoc3 ruby-nanoc)
