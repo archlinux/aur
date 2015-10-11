@@ -1,6 +1,6 @@
 pkgbase = icingaweb2
 	pkgdesc = Icinga Web 2 Interface
-	pkgver = 2.0.0_rc1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://www.icinga.org
 	install = icingaweb2.install
@@ -11,8 +11,8 @@ pkgbase = icingaweb2
 	optdepends = php-intl: support for internationalization
 	optdepends = php-ldap: for LDAP authentication
 	optdepends = php-pgsql: for PostgreSQL backend
-	source = https://github.com/Icinga/icingaweb2/archive/v2.0.0-rc1.tar.gz
-	sha256sums = cfc4eda0b451acf1d348d787823db2422b4d088aa5fea84e6d1e2cf8d132f0c3
+	source = https://github.com/Icinga/icingaweb2/archive/v2.0.0.tar.gz
+	sha256sums = a6a5383049e632108ce19b4b85f16a7fdd2f5acb3a6d2af3935254e2bc7fb2e6
 
 pkgname = icingaweb2
 

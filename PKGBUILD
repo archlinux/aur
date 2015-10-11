@@ -1,8 +1,7 @@
 # Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2
-pkgver=2.0.0_rc1
-_pkgver=2.0.0-rc1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
@@ -13,12 +12,12 @@ optdepends=('php-gd: export data to PDF'
             'php-ldap: for LDAP authentication'
             'php-pgsql: for PostgreSQL backend')
 url="http://www.icinga.org"
-source=("https://github.com/Icinga/${pkgname}/archive/v${_pkgver}.tar.gz")
+source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz")
 install='icingaweb2.install'
-sha256sums=('cfc4eda0b451acf1d348d787823db2422b4d088aa5fea84e6d1e2cf8d132f0c3')
+sha256sums=('a6a5383049e632108ce19b4b85f16a7fdd2f5acb3a6d2af3935254e2bc7fb2e6')
 
 package() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   #mkdir -p "$pkgdir/etc/webapps/icingaweb2"
   mkdir -p "$pkgdir/etc/icingaweb2"
