@@ -17,7 +17,7 @@ prepare(){
 
   sed -e 's|vapoursynth.h|VapourSynth.h|g' \
       -e 's|vshelper.h|VSHelper.h|g' \
-      -e 's|"vapoursynth.h"|<VapourSynth.h>|g' \
+      -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
       -e 's|reformHelper.cpp|ReformHelper.cpp|g' \
       -i *
