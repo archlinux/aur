@@ -1,11 +1,11 @@
 pkgbase = aurous-bin
 	pkgdesc = A music player built to serve your needs.
 	pkgver = 0.1Alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aurous.me/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = unknown
 	depends = jre8-openjdk
 	depends = java-openjfx
 	depends = gksu
