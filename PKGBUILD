@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=opensgx-git
 pkgver=r27.d9d2d68
-pkgrel=1
+pkgrel=2
 pkgdesc="an open platform for Intel SGX"
 arch=('x86_64')
 url="https://github.com/sslab-gatech/opensgx/"
@@ -82,7 +82,7 @@ build() {
 
   cd ..
   msg2 "Make .os needed for .sgx compilation"
-  make $(make -d demo/hello.sgx | awk '{print $2}' | sed "s/'//g" | grep '\.o' | grep -v demo | xargs)
+  make -dn demo/hello.sgx | grep 'Considering target file' | awk '{print $4}' | sed -e "s/'//g" -e 's/\.$//' | grep '\.o' | grep -v demo | xargs make
   make sgx.lds
 
   msg2 "Build userspace utilities"
