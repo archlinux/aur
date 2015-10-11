@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171414'
 license=('GPL')
 depends=('vapoursynth')
-source=("https://dl.dropboxusercontent.com/u/36232595/vapoursynth/vapoursynth-vcmove-${pkgver}.7z")
+source=("${_plug}-${pkgver}.7z::https://dl.dropboxusercontent.com/u/36232595/vapoursynth/vapoursynth-vcmove-${pkgver}.7z")
 sha1sums=('c7a648e92e7c442d87da1620276c4024c57ed76e')
 
 prepare(){
