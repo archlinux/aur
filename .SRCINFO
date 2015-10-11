@@ -1,0 +1,19 @@
+pkgbase = avbin
+	pkgdesc = Cross-platform media decoding library
+	pkgver = 10
+	pkgrel = 1
+	url = http://avbin.github.com/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = yasm
+	depends = bzip2
+	depends = zlib
+	conflicts = avbin7
+	options = !makeflags
+	source = avbin::git+https://github.com/AVbin/AVbin.git
+	sha256sums = SKIP
+
+pkgname = avbin
+
