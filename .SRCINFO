@@ -1,5 +1,5 @@
 pkgbase = k3b-frameworks-git
-	pkgdesc = Feature-rich and easy to handle CD burning application. KF5 Frameworks branch (Git version)
+	pkgdesc = Feature-rich and easy to handle CD burning application. KF5 Frameworks branch. (Git version)
 	pkgver = 2.9.90.r5865.d5b1016
 	pkgrel = 1
 	url = http://k3b.sourceforge.net
@@ -47,6 +47,8 @@ pkgbase = k3b-frameworks-git
 	provides = k3b
 	conflicts = k3b
 	source = git://anongit.kde.org/k3b.git#branch=kf5
+	source = patch.txt
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = k3b-frameworks-git

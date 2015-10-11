@@ -3,10 +3,10 @@
 pkgname=k3b-frameworks-git
 pkgver=2.9.90.r5865.d5b1016
 pkgrel=1
-pkgdesc='Feature-rich and easy to handle CD burning application. KF5 Frameworks branch (Git version)'
+pkgdesc="Feature-rich and easy to handle CD burning application. KF5 Frameworks branch. (Git version)"
 arch=('i686' 'x86_64')
-license=('GPL')
 url='http://k3b.sourceforge.net'
+license=('GPL')
 depends=('qt5-webkit' 'kfilemetadata' 'knotifyconfig' 'kcmutils' 'libkcddb-frameworks-git' 'libsamplerate' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdoctools' 'flac' 'libmpcdec' 'ffmpeg' 'libmad' 'libdvdread' 'musicbrainz' 'libvorbis')
 optdepends=('cdrdao: for CD DAO mode burning support'
@@ -30,21 +30,22 @@ optdepends=('cdrdao: for CD DAO mode burning support'
             'musicbrainz: Provide information about the CD, about the artist or about related information')
 provides=('k3b')
 conflicts=('k3b')
-source=('git://anongit.kde.org/k3b.git#branch=kf5')
-sha1sums=('SKIP')
+source=('git://anongit.kde.org/k3b.git#branch=kf5'
+        'patch.txt')
+sha1sums=('SKIP'
+          'SKIP')
 install=k3b-frameworks-git.install
 
 pkgver() {
   cd k3b
-  _ver="$(cat CMakeLists.txt | grep -e K3B_VERSION_MAJOR -e K3B_VERSION_MINOR -e K3B_VERSION_RELEASE | head -n3 | sed 's|  ||g' | tr -d ')' | cut -d ' ' -f2)"
-  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_RELEASE | sed 's|K3B|KEB|' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   mkdir -p build
 
-  sed '261iinstall( FILES  k3b.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})' -i k3b/src/CMakeLists.txt
-  sed 's|k3b.notifyrc DESTINATION ${DATA_INSTALL_DIR}/k3b|DESTINATION ${KXMLGUI_INSTALL_DIR}/k3b|g' -i k3b/src/CMakeLists.txt
+  patch -d k3b -p0 -i ../patch.txt
 }
 
 build() {
