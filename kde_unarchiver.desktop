@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/x-cd-image;application/vnd.ms-cab-compressed;application/x-rar;application/x-7z-compressed;application/zip;application/x-ms-dos-executable;application/x-msi;
+Actions=UnarchiverExtract
+StartupNotify=false
+X-KDE-StartupNotify=false
+
+[Desktop Action UnarchiverExtract]
+Name=Extract with Unarchiver
+Name[zh_CN]=用Unarchiver解压
+Icon=ark
+Exec=unar %F

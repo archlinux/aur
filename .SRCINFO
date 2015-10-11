@@ -1,0 +1,14 @@
+pkgbase = kde-servicemenus-unarchiver
+	pkgdesc = Use unar from Unarchiver to extract archive files.
+	pkgver = 1,0
+	pkgrel = 1
+	url = http://unarchiver.c3.cx/
+	arch = any
+	license = GPL
+	depends = dolphin
+	depends = unarchiver
+	source = kde_unarchiver.desktop
+	md5sums = 842691abeb658aa65c0713a2e00af74d
+
+pkgname = kde-servicemenus-unarchiver
+
