@@ -1,6 +1,6 @@
 pkgbase = cellprofiler-analyst-git
 	pkgdesc = Analysis software for cellular images
-	pkgver = 2.0.4.r459.g7a96978
+	pkgver = 2.0.4.r464.g3a8646d
 	pkgrel = 1
 	url = http://www.cellprofiler.org/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = cellprofiler-analyst-git
 	depends = python2-bioformats
 	optdepends = cellprofiler: prepare data for CPA
 	provides = cellprofiler-analyst
-	source = cellprofiler-analyst-git::git+https://github.com/CellProfiler/CellProfiler-Analyst#commit=7a96978
+	source = cellprofiler-analyst-git::git+https://github.com/CellProfiler/CellProfiler-Analyst#commit=3a8646d
 	source = cellprofiler-analyst.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP

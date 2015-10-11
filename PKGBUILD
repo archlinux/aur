@@ -2,7 +2,7 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail>
 
 pkgname=cellprofiler-analyst-git
-pkgver=2.0.4.r459.g7a96978
+pkgver=2.0.4.r464.g3a8646d
 pkgrel=1
 pkgdesc="Analysis software for cellular images"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=(
     'python2-bioformats')
 optdepends=('cellprofiler: prepare data for CPA')
 provides=('cellprofiler-analyst')
-source=("$pkgname::git+https://github.com/CellProfiler/CellProfiler-Analyst#commit=7a96978"
+source=("$pkgname::git+https://github.com/CellProfiler/CellProfiler-Analyst#commit=3a8646d"
         "cellprofiler-analyst.desktop")
 sha256sums=('SKIP'
             'SKIP')
