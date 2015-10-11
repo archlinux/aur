@@ -35,16 +35,16 @@ build(){
    cd "$srcdir/xmview-os"
    autoreconf -i &> /dev/null
    if [ "$CARCH" == "x86_64" ]; then
-      ./configure --prefix="${pkgdir}/usr" --disable-static
+      ./configure --prefix="/usr" --disable-static
    else
-      ./configure --prefix="${pkgdir}/usr" --libdir="${pkgdir}/usr/lib32" --disable-static
+      ./configure --prefix="/usr" --libdir="/usr/lib32" --disable-static
    fi
    make
 }
 
 package() {
    cd "$srcdir/xmview-os"
-   make install
+   make DESTDIR="$pkgdir" install
    if [ "$CARCH" == "x86_64" ]; then
       rm -rf ${pkgdir}/usr/lib/libumlib*
    else

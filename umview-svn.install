@@ -1,6 +1,12 @@
 post_install() {
    set -e
-   ldconfig
+   if [ "$CARCH" == "x86_64" ]; then
+      libtool --finish /usr/lib
+      libtool --finish /usr/lib/umview/modules
+   else
+      libtool --finish /usr/lib32
+      libtool --finish /usr/lib32/umview/modules
+   fi
 }
 
 post_remove() {
