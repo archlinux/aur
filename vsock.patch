@@ -1,0 +1,122 @@
+ vsock/linux/{ => }/af_vsock.c     | 23 ++++++++++++++++++++---
+ vsock/linux/{ => }/notify.c       |  4 ++++
+ vsock/linux/{ => }/notifyQState.c |  8 ++++++++
+ 3 files changed, 32 insertions(+), 3 deletions(-)
+
+diff --git a/vsock/linux/af_vsock.c b/vsock/linux/af_vsock.c
+index bde1497..dc810a7 100644
+--- a/vsock/linux/af_vsock.c
++++ b/vsock/linux/af_vsock.c
+@@ -2826,7 +2826,9 @@ __VSockVmciCreate(struct net *net,       // IN: Network namespace
+     * network namespace, and the option to zero the sock was dropped.
+     *
+     */
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++   sk = sk_alloc(net, vsockVmciFamilyOps.family, priority, &vsockVmciProto, 1);
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+    sk = sk_alloc(vsockVmciFamilyOps.family, priority,
+                  vsockVmciProto.slab_obj_size, vsockVmciProto.slab);
+ #elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 24)
+@@ -4302,7 +4304,7 @@ VSockVmciDgramSendmsg(struct kiocb *kiocb,          // UNUSED
+       goto out;
+    }
+ 
+-   memcpy_fromiovec(VMCI_DG_PAYLOAD(dg), msg->msg_iov, len);
++   memcpy_from_msg(VMCI_DG_PAYLOAD(dg), msg, len);
+ 
+    dg->dst = VMCI_MAKE_HANDLE(remoteAddr->svm_cid, remoteAddr->svm_port);
+    dg->src = VMCI_MAKE_HANDLE(vsk->localAddr.svm_cid, vsk->localAddr.svm_port);
+@@ -4662,7 +4664,11 @@ VSockVmciStreamSendmsg(struct kiocb *kiocb,          // UNUSED
+        * able to send.
+        */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+       written = vmci_qpair_enquev(vsk->qpair, msg->msg_iov,
++#else
++      written = vmci_qpair_enquev(vsk->qpair, &msg->msg_iter.iov,
++#endif
+                                   len - totalWritten, 0);
+       if (written < 0) {
+          err = -ENOMEM;
+@@ -4721,6 +4727,7 @@ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
+    VMCIDatagram *dg;
+    size_t payloadLen;
+    struct sk_buff *skb;
++   struct iov_iter to;
+ 
+    sk = sock->sk;
+    noblock = flags & MSG_DONTWAIT;
+@@ -4759,7 +4766,9 @@ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
+    }
+ 
+    /* Place the datagram payload in the user's iovec. */
+-   err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iov, payloadLen);
++   // err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iov, payloadLen);
++   iov_iter_init(&to, READ, (struct iovec *)&msg->msg_iter.iov, 1, payloadLen);
++   err = skb_copy_datagram_iter(skb, 0, &to, payloadLen);
+    if (err) {
+       goto out;
+    }
+@@ -4905,9 +4914,17 @@ VSockVmciStreamRecvmsg(struct kiocb *kiocb,          // UNUSED
+          }
+ 
+          if (flags & MSG_PEEK) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+             read = vmci_qpair_peekv(vsk->qpair, msg->msg_iov, len - copied, 0);
++#else
++            read = vmci_qpair_peekv(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
++#endif
+          } else {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+             read = vmci_qpair_dequev(vsk->qpair, msg->msg_iov, len - copied, 0);
++#else
++            read = vmci_qpair_dequev(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
++#endif
+          }
+ 
+          if (read < 0) {
+diff --git a/vsock/linux/notify.c b/vsock/linux/notify.c
+index 5b1e134..82d8738 100644
+--- a/vsock/linux/notify.c
++++ b/vsock/linux/notify.c
+@@ -516,7 +516,11 @@ VSockVmciHandleWrote(struct sock *sk,            // IN
+    PKT_FIELD(vsk, sentWaitingRead) = FALSE;
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 15, 0)
+    sk->sk_data_ready(sk, 0);
++#else
++   sk->sk_data_ready(sk);
++#endif
+ }
+ 
+ 
+diff --git a/vsock/linux/notifyQState.c b/vsock/linux/notifyQState.c
+index 464454b..7933be7 100644
+--- a/vsock/linux/notifyQState.c
++++ b/vsock/linux/notifyQState.c
+@@ -164,7 +164,11 @@ VSockVmciHandleWrote(struct sock *sk,            // IN
+                      struct sockaddr_vm *dst,    // IN: unused
+                      struct sockaddr_vm *src)    // IN: unused
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 15, 0)
+    sk->sk_data_ready(sk, 0);
++#else
++   sk->sk_data_ready(sk);
++#endif
+ }
+ 
+ 
+@@ -566,7 +570,11 @@ VSockVmciNotifyPktRecvPostDequeue(struct sock *sk,               // IN
+       }
+ 
+       /* See the comment in VSockVmciNotifyPktSendPostEnqueue */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 15, 0)
+       sk->sk_data_ready(sk, 0);
++#else
++      sk->sk_data_ready(sk);
++#endif
+    }
+ 
+    return err;

@@ -1,7 +1,7 @@
 pkgbase = vmware-modules-dkms
 	pkgdesc = VMware Workstation kernel modules (DKMS)
-	pkgver = 271.1
-	pkgrel = 8
+	pkgver = 308.0
+	pkgrel = 1
 	url = http://www.vmware.com/
 	install = vmware-modules-dkms.install
 	arch = i686
@@ -12,12 +12,22 @@ pkgbase = vmware-modules-dkms
 	optdepends = linux-headers: needed to build the module
 	conflicts = open-vm-tools-modules
 	options = !buildflags
-	source = modules.patch
+	source = Makefile
 	source = 60-vmware.rules
 	source = dkms.conf.in
-	sha256sums = 0d74d3a8b5f9e02d1a1c7ae38cbe39597532c8dbcb42cf4ea9d8fb40d329a99b
-	sha256sums = 654a11be0b0a6f0f4f8fdc32f8a92542cec637e0f6c62dd7097d3cf679c06f4d
-	sha256sums = 09d440a0740ebd93da790b3f27de6b224825f6639b6a1066f86ae368d71cdb30
+	source = vmblock.patch
+	source = vmci.patch
+	source = vmmon.patch
+	source = vmnet.patch
+	source = vsock.patch
+	sha256sums = ee3e5cfac51703ac392bce540e3375680c579eaac7aa31990e1e08ada589e89b
+	sha256sums = 7baecdfd979d57aed7dac0db57e0165fc1730b15ed6bf42ed25571e68ec34b52
+	sha256sums = 707596776b0b232f7f5de4a0ddff12262df3bc934180afd956ea2ee45ac4db9e
+	sha256sums = ebe4d463c878b134c37e7382198f0771eb73d5952201ac28ead62242ea11da88
+	sha256sums = f009eba206644a97de7d7cd080a1e4517eb2c452984e3df53e94dbe2c887e4ce
+	sha256sums = 06fc4a6d3c89b147089bca1f6df3b4fc58e819e4a089b76acf0f2463ee0fa215
+	sha256sums = fe0018729d8ee9c2a333e9ab2125ea9e228613a743b4a692ad39a06cda7568c2
+	sha256sums = eb17a0563f8e9e1e5667e73a167c397e626ef7ab65cb7c10f418b421a36cf714
 
 pkgname = vmware-modules-dkms
 

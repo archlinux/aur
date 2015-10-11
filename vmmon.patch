@@ -1,0 +1,43 @@
+ vmmon/linux/{ => }/driver.c   | 2 +-
+ vmmon/linux/{ => }/hostif.c   | 1 +
+ vmmon/linux/{ => }/vmmonInt.h | 2 +-
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/vmmon/linux/driver.c b/vmmon/linux/driver.c
+index 31de1dc..ed459fd 100644
+--- a/vmmon/linux/driver.c
++++ b/vmmon/linux/driver.c
+@@ -1281,7 +1281,7 @@ LinuxDriverReadTSC(void *data,   // OUT: TSC values
+  *-----------------------------------------------------------------------------
+  */
+ 
+-__attribute__((always_inline)) static Bool
++inline static Bool
+ LinuxDriverSyncReadTSCs(uint64 *delta) // OUT: TSC max - TSC min
+ {
+    TSCDelta tscDelta;
+diff --git a/vmmon/linux/hostif.c b/vmmon/linux/hostif.c
+index d1bc8ba..918e8ce 100644
+--- a/vmmon/linux/hostif.c
++++ b/vmmon/linux/hostif.c
+@@ -74,6 +74,7 @@
+ #include <linux/kthread.h>
+ #include <linux/wait.h>
+ 
++#include <asm/apic.h>
+ 
+ #include "vmware.h"
+ #include "x86apic.h"
+diff --git a/vmmon/linux/vmmonInt.h b/vmmon/linux/vmmonInt.h
+index 4dc04e9..993212d 100644
+--- a/vmmon/linux/vmmonInt.h
++++ b/vmmon/linux/vmmonInt.h
+@@ -28,7 +28,7 @@
+  * Hide all kernel compatibility stuff in these macros and functions.
+  */
+ 
+-#ifdef VMW_HAVE_SMP_CALL_3ARG
++#if defined (VMW_HAVE_SMP_CALL_3ARG) || LINUX_VERSION_CODE >= KERNEL_VERSION(3, 0, 0)
+ #define compat_smp_call_function(fn, info, wait) smp_call_function(fn, info, wait)
+ #else
+ #define compat_smp_call_function(fn, info, wait) smp_call_function(fn, info, 1, wait)
