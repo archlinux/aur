@@ -1,4 +1,4 @@
-_kernel_version=4.2.3-zen-grsec-00334-gec16c53-dirty
+_kernel_version=4.2.3-zen-grsec-grsec+
 
 _r="\033[00;31m"
 _y="\033[00;33m"
