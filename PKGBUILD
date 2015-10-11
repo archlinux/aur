@@ -3,11 +3,11 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-remove-dropdown-arrows-git
-pkgver=5.r0.g7d42ad1
+pkgver=6
 pkgrel=1
 pkgdesc="Removes the dropdown arrows from the AppMenu and SystemMenu (AggregateMenu) which were introduced in Gnome 3.10."
 arch=(any)
-url="https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows"
+url="https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows#branch=master"
 license=(GPLv3)
 install=notice.install
 
