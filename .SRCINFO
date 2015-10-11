@@ -11,6 +11,7 @@ pkgbase = mate-tweak-git
 	depends = python
 	depends = wmctrl
 	depends = python-configobj
+	depends = python-gobject
 	provides = mate-tweak
 	conflicts = mate-tweak
 	source = mate-tweak::git+https://bitbucket.org/ubuntu-mate/mate-tweak.git
