@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+notify-send -i "applications-education-language" -u critical "$(xsel -o)" "$(curl -s -X POST -A "Mozilla/5.0" -H "Content-Type: application/x-www-form-urlencoded" -d "client=t" -d "sl=auto" -d "tl=$LANGUAGE" -d "text=$(xsel -o | sed "s/[\"'<>]//g")" 'http://www.google.com/translate_a/t' | sed 's/\[\[\[\"//' | cut -d \" -f 1)"
