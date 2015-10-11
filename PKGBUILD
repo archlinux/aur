@@ -1,9 +1,10 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: sanduhrs <stefan.auditor@erdfisch.de>
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-caffeine-git
-pkgver=r84.f3053b3
+pkgver=r87
 pkgrel=1
 pkgdesc="Fill the cup to inhibit auto suspend and screensaver."
 arch=(any)
