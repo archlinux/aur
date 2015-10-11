@@ -1,0 +1,15 @@
+pkgbase = apparmor-openrc
+	pkgdesc = OpenRC apparmor init script
+	pkgver = 20151010
+	pkgrel = 1
+	url = http://apparmor.net/
+	install = apparmor.install
+	arch = any
+	license = GPL2
+	depends = apparmor
+	depends = openrc-core
+	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-apps/apparmor/files/apparmor-init
+	sha256sums = a920849a089dfb604dcb260fb66dfe3db70e9eb0b04349aeca6e8ce15d9c13e9
+
+pkgname = apparmor-openrc
+
