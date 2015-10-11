@@ -1,6 +1,6 @@
 pkgbase = quisk
 	pkgdesc = Software defined radio (SDR)
-	pkgver = 3.7.6
+	pkgver = 3.7.7
 	pkgrel = 1
 	url = http://james.ahlstrom.name/quisk/
 	arch = i686
@@ -10,18 +10,18 @@ pkgbase = quisk
 	depends = fftw
 	depends = portaudio
 	depends = wxpython
-	source = http://james.ahlstrom.name/quisk/quisk-3.7.6.tar.gz
+	source = http://james.ahlstrom.name/quisk/quisk-3.7.7.tar.gz
 	source = quisk
 	source = quisk.desktop
 	source = quisk.patch
-	md5sums = 0ca31d022b66eaacd6688693ea220125
+	md5sums = 12b6a450d856b5c2421dc5c40723b664
 	md5sums = 8a7445eee98db1f085dda69d606c5205
 	md5sums = 44cddf20e06994ce3abcd4b563567ef3
-	md5sums = 89deb0ad2edbc8579918b88d0baf9a45
-	sha512sums = f4de5a76db2a91b3e2f61933391b69fbe81392373b325288baff0e5a278833316311ac2e2cf58e58bfb2e559dfc3ebbaa71774c425db6d1ad247db8abb88a870
+	md5sums = 17c74b3cbdf22715aad32e2259b013d5
+	sha512sums = 385cac3579a7ebdb3c94082761adbc16d9a41e50feae8b0b49779cd0c5edc39fa2aca962d668426b5ad6144ebaf48f84991d455cd2eec349951f3d567f9cc741
 	sha512sums = 94f09cc0e847e308ca66bf90c8f729924273f66524fed8bc63565c8060113ae8dcae6ed3f14075e03a7168da182059b3279c0315a1d2d00cf4292e4d68cf7871
 	sha512sums = 3ad02f730b4a4033b86a2ce510865c13c2f2e228304283cae0bb389442f7ab49a5d530cd94e32460e19b53da24037abc855027ce34c93fdabcd1faf8a91852b1
-	sha512sums = 70d0b516c42c2de2e59fcc3654f98b4d0165bd451a75f599a61ec2ce22e58a4aa19736ccef46f8b0083583c90c31a7fdfb705613abfa3294a7f089f937555c4c
+	sha512sums = fb487bddbe3449e4afaf62041bb4eaf005f9c4b9da856df6c69b5fbcf4f59b53f72ab3566b49ec663d7ddd3c5af8029267f5fef8440e62695ddfdc21edf0f6fa
 
 pkgname = quisk
 
