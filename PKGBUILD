@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=2.0.0.r457.25fd067
+pkgver=2.0.0.r459.996dc23
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -39,7 +39,7 @@ source=("${_gitname}::git+${url}#branch=dev")
 # _INCLUDE_DOC=1
 # _INCLUDE_SRC=1
 # _INCLUDE_LICENSE=1
-# _INCLUDE_UDEV_RULE=0
+# _INCLUDE_UDEV_RULE=1
 # _INCLUDE_SYSTEMD_UNIT=1
 # _X86_ENERGY_PERF_POLICY=1
 # _PRESET_POWER_PLAN_MAX_PERFORMANCE="100 100 0 performance"
@@ -53,7 +53,7 @@ _CC="gcc"
 _PREFIX="/usr"
 _INCLUDE_BASH_COMPLETION=1
 _INCLUDE_ZSH_COMPLETION=0
-_INCLUDE_UDEV_RULE=0
+_INCLUDE_UDEV_RULE=1
 _INCLUDE_SYSTEMD_UNIT=1
 _INCLUDE_DOC=1
 _INCLUDE_SRC=1
