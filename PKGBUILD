@@ -14,9 +14,11 @@ provides=("$pkgname=$pkgver")
 conflicts=("$pkgname")
 replaces=("$pkgname")
 source=("svn+http://svn.code.sf.net/p/view-os/code/trunk/xmview-os"
-         "${pkgname}.diff")
+         "${pkgname}.diff"
+         "${pkgname}.install")
 md5sums=("SKIP"
-         "15fd402dc118bf82c65e4c31d808f530")
+         "15fd402dc118bf82c65e4c31d808f530"
+         "981ba81585fa1fbadb632c3a05e803a9")
 
 pkgver() {
    cd "$srcdir/xmview-os"
@@ -33,16 +35,16 @@ build(){
    cd "$srcdir/xmview-os"
    autoreconf -i &> /dev/null
    if [ "$CARCH" == "x86_64" ]; then
-      ./configure --prefix="${pkgdir}/usr" --disable-static
+      ./configure --prefix="/usr" --disable-static
    else
-      ./configure --prefix="${pkgdir}/usr" --libdir="${pkgdir}/usr/lib32" --disable-static
+      ./configure --prefix="/usr" --libdir="/usr/lib32" --disable-static
    fi
    make
 }
 
 package() {
    cd "$srcdir/xmview-os"
-   make install
+   make DESTDIR="$pkgdir"  install
    if [ "$CARCH" == "x86_64" ]; then
       rm -rf ${pkgdir}/usr/lib/libumlib*
    else

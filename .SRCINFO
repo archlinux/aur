@@ -18,8 +18,10 @@ pkgbase = umview-mod-umlwip-svn
 	replaces = umview-mod-umlwip-svn
 	source = svn+http://svn.code.sf.net/p/view-os/code/trunk/xmview-os
 	source = umview-mod-umlwip-svn.diff
+	source = umview-mod-umlwip-svn.install
 	md5sums = SKIP
 	md5sums = 15fd402dc118bf82c65e4c31d808f530
+	md5sums = 981ba81585fa1fbadb632c3a05e803a9
 
 pkgname = umview-mod-umlwip-svn
 
