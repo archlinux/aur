@@ -2,8 +2,8 @@
 # code adapted from: Meow < a.li.devtty at gmail dot com >
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=0.99.712
-pkgrel=2
+pkgver=0.99.719
+pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,8 +13,8 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 
-_x86md5=558018bd6634577ca554694335cfbb6a
-_x64md5=8f9ac4ca89f23243970de74e67d41114
+_x86md5=0403f3fb6164fb0d28b74a5d1195028b
+_x64md5=b1c23c66e2dc5db404148d7987a32eac
 
 case "$CARCH" in
 	'i686')
@@ -69,5 +69,13 @@ exec /usr/lib/rstudio/bin/rstudio
   chmod 755 "$pkgdir/usr/bin/rstudio-preview-bin"
 
   sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-preview-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
+
+  # pandoc fix
+   cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
+   mv pandoc pandoc_rstudio
+   ln -sf /usr/bin/pandoc pandoc
+   mv pandoc-citeproc pandoc-citeproc_rstudio
+   ln -sf /usr/bin/pandoc-citeproc pandoc-citeproc
+
 }
 # vim:ft=sh tabstop=2 expandtab
