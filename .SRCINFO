@@ -1,6 +1,6 @@
 pkgbase = trojita-git
 	pkgdesc = A fast QT IMAP e-mail client
-	pkgver = 5964.30c3dca
+	pkgver = 0.5.r105.gaff95e2
 	pkgrel = 1
 	url = http://trojita.flaska.net
 	install = trojita.install

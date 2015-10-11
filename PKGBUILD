@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=trojita-git
-pkgver=5964.30c3dca
+pkgver=0.5.r105.gaff95e2
 pkgrel=1
 pkgdesc="A fast QT IMAP e-mail client"
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/trojita"
-	echo $(git rev-list --count master).$(git rev-parse --short master)
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
