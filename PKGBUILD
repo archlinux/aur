@@ -2,7 +2,7 @@
 pkgname=doomseeker-hg
 _dsver=1.1
 pkgver=1.1.r1510091830
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -27,7 +27,7 @@ pkgver() {
     cd $srcdir/$_bbdir
 
 	IFS=' ' read -a split <<< "$(hg log -r. --template "{date|hgdate}" "$PWD")"
-	echo "$dsver.r$(date -d @${split[0]} '+%y%m%d%H%M')"
+	echo "$_dsver.r$(date -d @${split[0]} '+%y%m%d%H%M')"
 }
 
 build() {
