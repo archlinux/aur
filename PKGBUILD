@@ -7,7 +7,7 @@ _encodings='uni i15'
 pkgname='uw-ttyp0-font'
 pkgdesc='Bitmap monospaced font with unicode support and Powerline symbols'
 pkgver='1.3'
-pkgrel='2'
+pkgrel='3'
 arch='any'
 url='http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0'
 source=("${url}/uw-ttyp0-${pkgver}.tar.gz")
@@ -20,19 +20,27 @@ sha512sums=('193966b826cafa313384f20e225d4a0b0057364ed23c2beaf27a59095fdb9079281
 prepare () {
 	cd "uw-ttyp0-${pkgver}"
 
-	if ${_dotted_zero} ; then
-		echo 'COPYTO Digit0Dotted Digit0'
+	if [[ -f ${SRCDEST}/VARIANTS.dat ]] ; then
+		cp "${SRCDEST}/VARIANTS.dat" .
 	else
-		echo 'COPYTO Digit0Slashed Digit0'
-	fi >> VARIANTS.dat
+		if ${_dotted_zero} ; then
+			echo 'COPYTO Digit0Dotted Digit0'
+		else
+			echo 'COPYTO Digit0Slashed Digit0'
+		fi >> VARIANTS.dat
 
-	if ${_centered_tilde} ; then
-		echo 'COPYTO MTilde AccTildeAscii'
-	fi >> VARIANTS.dat
+		if ${_centered_tilde} ; then
+			echo 'COPYTO MTilde AccTildeAscii'
+		fi >> VARIANTS.dat
+	fi
 
-	if [[ -n ${_encodings} ]] ; then
-		echo "ENCODINGS = ${_encodings}"
-	fi >> ENCODINGS.dat
+	if [[ -f ${SRCDEST}/ENCODINGS.dat ]] ; then
+		cp "${SRCDEST}/ENCODINGS.dat" .
+	else
+		if [[ -n ${_encodings} ]] ; then
+			echo "ENCODINGS = ${_encodings}"
+		fi >> ENCODINGS.dat
+	fi
 }
 
 build () {
