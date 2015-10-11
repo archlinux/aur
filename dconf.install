@@ -1,0 +1,13 @@
+post_install() {
+  gio-querymodules-32 /usr/lib/gio/modules
+}
+
+post_upgrade(){
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:
