@@ -26,8 +26,6 @@ sha256sums_i686=('4f8b70b293ac8cc5c70e571ad5d1878d0f29d133a46fe7869868d9c19b5058
 sha256sums_x86_64=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be')
 
 prepare() {
-  cd "${srcdir}"
-
   sed -i -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" src/wl/sys/wl_linux.c
 
   patch -p1 < 001-null-pointer-fix.patch
@@ -36,8 +34,6 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}"
-
   local dest="${pkgdir}/usr/src/${pkgname/-dkms/}-${pkgver}"
 
   mkdir -p "${dest}"

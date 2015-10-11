@@ -17,6 +17,7 @@ pkgbase = broadcom-wl-dkms
 	source = 001-null-pointer-fix.patch
 	sha256sums = b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283
 	sha256sums = c59c3ccf5238fe93cc671e6fa2f6614c0bfec073dc79bfda4d14e3a5be96eac8
+	sha256sums = 32e505a651fdb9fd5e4870a9d6de21dd703dead768c2b3340a2ca46671a5852f
 	source_i686 = https://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-6_30_223_271.tar.gz
 	sha256sums_i686 = 4f8b70b293ac8cc5c70e571ad5d1878d0f29d133a46fe7869868d9c19b5058cd
 	source_x86_64 = https://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz
