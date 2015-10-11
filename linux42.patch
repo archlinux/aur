@@ -1,0 +1,12 @@
+--- a/src/wl/sys/wl_cfg80211_hybrid.c	2014-06-26 12:42:08.000000000 +0200
++++ b/src/wl/sys/wl_cfg80211_hybrid.c	2015-09-08 14:43:56.271288368 +0200
+@@ -2047,7 +2047,7 @@ wl_notify_connect_status(struct wl_cfg80
+ 		}
+ 		else if ((event == WLC_E_LINK && ~(flags & WLC_EVENT_MSG_LINK)) ||
+ 			event == WLC_E_DEAUTH_IND || event == WLC_E_DISASSOC_IND) {
+-			cfg80211_disconnected(ndev, 0, NULL, 0, GFP_KERNEL);
++			cfg80211_disconnected(ndev, 0, NULL, 0, false, GFP_KERNEL);
+ 			clear_bit(WL_STATUS_CONNECTED, &wl->status);
+ 			wl_link_down(wl);
+ 			wl_init_prof(wl->profile);
+
