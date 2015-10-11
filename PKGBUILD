@@ -17,7 +17,7 @@ install="$pkgname.install"
 source=("svn+http://svn.code.sf.net/p/view-os/code/trunk/xmview-os"
         "${pkgname}.install")
 md5sums=("SKIP"
-         "b4165e6142a92d65c8e14479486decc4")
+         "831c85f2d163424e8a5a2a9191e39056")
 
 
 pkgver() {
