@@ -1,0 +1,13 @@
+pkgbase = ndppd
+	pkgdesc = IPv6 NDP proxy daemon
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/DanielAdolfsson/ndppd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/DanielAdolfsson/ndppd/archive/0.2.3.tar.gz
+	sha256sums = e92292f326cbd5f96f277c753ee4b149b1d30d3f3e3fc4eb370b3704793771a7
+
+pkgname = ndppd
+
