@@ -15,7 +15,7 @@ makedepends=('cmake')
 source=(http://www.kde-apps.org/CONTENT/content-files/99752-kde_cdemu-$pkgver.0.tar.bz2
         port_to_kf5.patch)
 md5sums=('c0e56401e2c2f2c4652915a44af128b8'
-        '4f51fb225789900df4db5d948cdeb71b')
+        '8d6c70628bbfd664efe0f1462708244d')
 
 prepare() {
   cd $srcdir/kde_cdemu

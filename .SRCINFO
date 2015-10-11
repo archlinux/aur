@@ -14,7 +14,7 @@ pkgbase = kde-cdemu-manager-kf5
 	source = http://www.kde-apps.org/CONTENT/content-files/99752-kde_cdemu-0.5.0.tar.bz2
 	source = port_to_kf5.patch
 	md5sums = c0e56401e2c2f2c4652915a44af128b8
-	md5sums = 4f51fb225789900df4db5d948cdeb71b
+	md5sums = 8d6c70628bbfd664efe0f1462708244d
 
 pkgname = kde-cdemu-manager-kf5
 

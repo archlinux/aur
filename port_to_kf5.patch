@@ -1,6 +1,6 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2013-01-13 05:04:17.000000000 +0800
-+++ b/CMakeLists.txt	2015-10-09 21:54:50.000000000 +0800
++++ b/CMakeLists.txt	2015-10-11 14:37:38.701454938 +0800
 @@ -1,9 +1,17 @@
  cmake_minimum_required(VERSION 2.6)
  project(kde_cdemu)
@@ -24,8 +24,8 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
 diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 --- a/src/CMakeLists.txt	2010-09-05 06:47:43.000000000 +0800
-+++ b/src/CMakeLists.txt	2015-10-09 21:56:47.000000000 +0800
-@@ -3,18 +3,20 @@
++++ b/src/CMakeLists.txt	2015-10-11 14:38:05.748120774 +0800
+@@ -3,20 +3,22 @@
  
  configure_file(kdecdemuversion.h.in ${PROJECT_BINARY_DIR}/kdecdemuversion.h)
  
@@ -50,10 +50,13 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 +target_link_libraries(kde_cdemu KF5::KDELibs4Support KF5::KIOCore Qt5::Widgets)
  
  install(TARGETS kde_cdemu DESTINATION ${BIN_INSTALL_DIR})
- install(FILES kde_cdemuui.rc DESTINATION  ${DATA_INSTALL_DIR}/kde_cdemu)
+-install(FILES kde_cdemuui.rc DESTINATION  ${DATA_INSTALL_DIR}/kde_cdemu)
++install(FILES kde_cdemuui.rc DESTINATION  ${KXMLGUI_INSTALL_DIR}/kde_cdemu)
+ install(FILES kde_cdemu_mount.desktop DESTINATION ${SERVICES_INSTALL_DIR}/ServiceMenus)
+ install(FILES kde_cdemu.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 diff -Naur a/src/main.cpp b/src/main.cpp
 --- a/src/main.cpp	2013-01-13 06:16:12.000000000 +0800
-+++ b/src/main.cpp	2015-10-09 22:44:50.000000000 +0800
++++ b/src/main.cpp	2015-10-11 14:37:38.701454938 +0800
 @@ -21,18 +21,22 @@
  #include <KAboutData>
  #include <KCmdLineArgs>
@@ -82,7 +85,7 @@ diff -Naur a/src/main.cpp b/src/main.cpp
  
 diff -Naur a/src/mainwindow.cpp b/src/mainwindow.cpp
 --- a/src/mainwindow.cpp	2013-01-13 05:14:30.000000000 +0800
-+++ b/src/mainwindow.cpp	2015-10-09 22:48:08.000000000 +0800
++++ b/src/mainwindow.cpp	2015-10-11 14:37:38.701454938 +0800
 @@ -32,6 +32,7 @@
  #include <KMessageBox>
  #include <KStandardAction>
