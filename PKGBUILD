@@ -7,10 +7,11 @@ pkgdesc="A fast QT IMAP e-mail client"
 arch=(i686 x86_64)
 url="http://trojita.flaska.net"
 license=('GPL')
-depends=('qtwebkit' 'kdepimlibs4')
+depends=('qt5-webkit' 'qtkeychain-qt5' 'qt5-tools' 'zlib')
 conflicts=('trojita')
 provides=('trojita')
 makedepends=('git' 'cmake')
+install=trojita.install
 
 source=('git://anongit.kde.org/trojita.git')
 md5sums=('SKIP')
@@ -22,7 +23,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/trojita"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
+	cmake -DWITH_QT5=ON \
+	      -DWITH_QTKEYCHAIN_PLUGIN=ON \
+				-DCMAKE_INSTALL_PREFIX=/usr \
+				-DCMAKE_BUILD_TYPE=Release \
+				.
 	make
 }
 
