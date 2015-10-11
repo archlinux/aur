@@ -1,7 +1,7 @@
 post_install() {
   cat <<MSG
-The Doom 3 patch *.pk4 files have been installed to /usr/share/doom3.
-You must still copy the game *.pk4 files from the Doom 3 CDs or an
+The Doom 3 patch *.pk4 files have been installed to /usr/share/games/doom3.
+You _must_ still copy the game *.pk4 files from the Doom 3 CDs or an
 installed copy (eg, from Steam, a Windows install, or otherwise) in
 order to complete the game.
 

@@ -7,7 +7,7 @@
 
 pkgname=doom3-data
 pkgver=1.3.1.1304
-pkgrel=3
+pkgrel=4
 pkgdesc="Doom 3 patch data files; not the full game!"
 url="http://www.idsoftware.com/"
 arch=('any')
