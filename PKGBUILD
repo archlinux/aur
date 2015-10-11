@@ -1,15 +1,15 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=openmsx
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
-url="http://openmsx.sourceforge.net"
+url="http://openmsx.org/"
 license=('custom')
 depends=('libxml2' 'sdl' 'sdl_image' 'sdl_ttf' 'tcl' 'libpng' 'zlib')
 optdepends=('python2' 'jack-audio-connection-kit' 'glew' 'libgl' 'catalyst-utils' 'nvidia-utils' 'nvidia-304xx-utils')
 install=${pkgname}.install
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -36,4 +36,4 @@ package() {
   install -m 644 "${pkgdir}/usr/share/doc/openmsx/cbios.txt" "${pkgdir}/usr/share/licenses/openmsx/"
 }
 
-md5sums=('b6f9c92f3921d9022b89b727c99897f0')
+md5sums=('a167b0923a354b5826b51751811ae580')
