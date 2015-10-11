@@ -1,0 +1,13 @@
+pkgbase = python2-txrestapi
+	pkgdesc = Easing the creation of REST API services in Python
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/iancmcc/txrestapi
+	arch = any
+	license = MIT
+	depends = python2
+	source = https://pypi.python.org/packages/source/t/txrestapi/txrestapi-0.2.tar.gz
+	md5sums = 9fbe99e72444a1d3df52086f0400978c
+
+pkgname = python2-txrestapi
+
