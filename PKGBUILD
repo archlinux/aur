@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-pkgbuild-mode-git
-pkgver=0.14.1.3.gd6a8388
+pkgver=0.14.1.5.g5036e2d
 pkgrel=1
 pkgdesc="A major mode for creating packages with emacs"
 arch=('any')
