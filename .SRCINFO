@@ -1,0 +1,14 @@
+pkgbase = vapoursynth-plugin-vcmod
+	pkgdesc = Plugin for Vapoursynth: vcmod
+	pkgver = r1
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171412
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = vapoursynth
+	source = http://www.avisynth.nl/users/vcmohan/vcmod/vcmod_src.7z
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-vcmod
+
