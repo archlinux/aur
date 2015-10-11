@@ -1,6 +1,6 @@
 pkgbase = ktexteditor-git
 	pkgdesc = KTextEditor framework
-	pkgver = r972.61bf5b0
+	pkgver = r1114.f3f4319
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/ktexteditor
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ktexteditor-git
 	source = git://anongit.kde.org/ktexteditor.git
 	source = pkgbuild-syntax-highlight.patch
 	md5sums = SKIP
-	md5sums = cc66f75c967dd7ac7c97375875772d69
+	md5sums = 3a03efe92f1403991c51f2859ee092f6
 
 pkgname = ktexteditor-git
 

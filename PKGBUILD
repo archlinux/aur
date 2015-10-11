@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ktexteditor-git
-pkgver=r972.61bf5b0
+pkgver=r1114.f3f4319
 pkgrel=1
 pkgdesc='KTextEditor framework'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ provides=(ktexteditor)
 conflicts=(ktexteditor)
 source=('git://anongit.kde.org/ktexteditor.git' "pkgbuild-syntax-highlight.patch")
 md5sums=('SKIP'
-         'cc66f75c967dd7ac7c97375875772d69')
+         '3a03efe92f1403991c51f2859ee092f6')
 
 pkgver() {
   cd ktexteditor
