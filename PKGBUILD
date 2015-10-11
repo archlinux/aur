@@ -9,7 +9,7 @@
 
 _pkgbase=vim
 pkgname=vim-x11
-pkgver=7.4.854
+pkgver=7.4.884
 _versiondir=74
 pkgrel=1
 _upstream_pkgrel=1
