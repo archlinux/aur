@@ -6,17 +6,17 @@
 # Contributor: Andreas Baumann <abaumann at yahoo dot com>
 
 pkgname=cgit-git
-pkgver=0.11.2.r81.g76dc7a3
-pkgrel=3
+pkgver=0.11.2.r85.g143e652
+pkgrel=1
 pkgdesc='A web interface for git written in plain C - git checkout'
 arch=('i686' 'x86_64')
 url='http://git.zx2c4.com/cgit/'
 license=('GPL2')
 depends=('openssl' 'luajit')
 makedepends=('git' 'zlib' 'curl' 'asciidoc')
-optdepends=('python2-pygments: syntax highlighting support'
-	    'mime-types: serve file with correct content-type header'
-	    'python-markdown: about page formated with markdown')
+optdepends=('python-pygments: syntax highlighting support'
+	    'python-markdown: about page formated with markdown'
+	    'mime-types: serve file with correct content-type header')
 conflicts=('cgit')
 provides=('cgit')
 install=cgit.install
