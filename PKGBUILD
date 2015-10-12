@@ -22,8 +22,8 @@ prepare(){
       -i *
 
   echo "all:
-	  gcc -c -Os -g0 -std=gnu++11 -I. -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o vctrans.o vctrans.cpp
-	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so vctrans.o" > Makefile
+	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o vctrans.o vctrans.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so vctrans.o" > Makefile
 }
 
 build() {
