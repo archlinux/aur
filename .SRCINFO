@@ -1,7 +1,7 @@
 pkgbase = pydio
 	pkgdesc = PHP file sharing platform, formerly AjaXplorer.
 	pkgver = 6.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pyd.io/
 	install = pydio.install
 	arch = any

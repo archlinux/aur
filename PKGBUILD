@@ -2,7 +2,7 @@
 
 pkgname=pydio
 pkgver=6.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='PHP file sharing platform, formerly AjaXplorer.'
 arch=('any')
 url='http://pyd.io/'
