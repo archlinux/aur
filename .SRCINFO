@@ -1,0 +1,17 @@
+pkgbase = apk-resigner
+	pkgdesc = A bash script utility that resigns the Android Package (APK) files (Android applications) with different certificates.
+	pkgver = 1
+	pkgrel = 1
+	url = https://code.google.com/p/apk-resigner/
+	install = apk-resigner.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = Apache License 2.0
+	source = signapk.sh
+	source = apk-resigner.install
+	sha512sums = fce7e6fbf9ed702f559772535eb8078756cf1c69c2873e71a1421f8e05d5039d0fa88157cd21d607554720edb72f70774be4589ba08569fbe7c8b42cd91d03d6
+	sha512sums = 94bc7f2874c51c215c4ec60dd6226ce3b12e85669b5104cf9504a9caeb6d506562212b6ac813b0653a71de9dc6acbf340501d8cf5be5174ef0aa274478ce9d37
+
+pkgname = apk-resigner
+
