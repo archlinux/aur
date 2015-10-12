@@ -11,6 +11,7 @@ pkgname=('php7'
 		 'php7-ldap'
 		 'php7-mcrypt'
 		 'php7-odbc'
+		 'php7-pear'
 		 'php7-pgsql'
 		 'php7-pspell'
 		 'php7-snmp'
@@ -18,7 +19,7 @@ pkgname=('php7'
 		 'php7-tidy'
 		 'php7-xsl')
 
-pkgver=7.0.0RC3
+pkgver=7.0.0RC4
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -31,9 +32,9 @@ makedepends=('apache' 'imap' 'postgresql-libs' 'libldap' 'postfix'
 source=("https://downloads.php.net/~ab/php-${pkgver}.tar.xz"
 		'php.ini.patch' 'apache.conf'
 		'php-fpm.service' 'php-fpm.tmpfiles')
-md5sums=('8ee634c37dabd88562e2d3ff978cfbe1'
+md5sums=('4a0af8c5f4f2133eb2eb6cf79d14cf64'
 		 'a75706c1d1d99cb4a34f660e696c7bd1'
-		 '0677a10d2e721472d6fccb470356b322'
+		 '3bdf401291d4de96caa33d053a000e46'
 		 'cc2940f5312ba42e7aa1ddfab74b84c4'
 		 'c60343df74f8e1afb13b084d5c0e47ed')
 validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3')
@@ -59,7 +60,6 @@ build() {
 		--with-config-file-scan-dir=/etc/php/conf.d \
 		--disable-rpath \
 		--mandir=/usr/share/man \
-		--without-pear \
 		--with-kerberos \
 		--with-libedit \
 		"
@@ -138,8 +138,18 @@ build() {
 	cd ${srcdir}/build-php
 	ln -sf ../${_pkgbase}-${pkgver}/configure
 	./configure ${_phpconfig} \
+		--without-pear \
 		--disable-cgi \
 		--enable-pcntl \
+		${_phpextensions}
+	make
+
+	# php-pear
+	# reuse the previous run; this will save us a lot of time
+	cp -a ${srcdir}/build-php ${srcdir}/build-pear
+	cd ${srcdir}/build-pear
+	./configure ${_phpconfig} \
+		--with-pear \
 		${_phpextensions}
 	make
 
@@ -262,6 +272,15 @@ package_php7-embed() {
 	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/usr/include/php/sapi/embed/php_embed.h
 }
 
+package_php7-pear() {
+    pkgdesc='PHP Extension and Application Repository'
+    depends=("php=${pkgver}")
+    backup=('etc/php/pear.conf')
+
+    cd ${srcdir}/build-pear
+    make install-pear INSTALL_ROOT=${pkgdir}
+    rm -rf ${pkgdir}/usr/share/pear/.{channels,depdb,depdblock,filemap,lock,registry}
+}
 
 package_php7-enchant() {
 	pkgdesc='enchant module for PHP'
