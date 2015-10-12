@@ -23,4 +23,5 @@ md5sums=('ca4a222928203019be0aab260e342def')
 
 package() {
 	install -Dm544 portal-postconf "$pkgdir/usr/bin/portal-postconf"
+	install -Dm644 ../portal.sudo "${pkgdir}/etc/sudoers.d/${pkgname}.sudo"
 }
