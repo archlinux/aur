@@ -6,6 +6,7 @@ arch=(any)
 depends=(fontconfig xorg-font-utils)
 source=('git+https://github.com/Gonzih/inconsolata-lgc-for-powerline.git')
 install=$pkgname.install
+md5sums=('SKIP')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/TTF"
