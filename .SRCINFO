@@ -1,0 +1,14 @@
+pkgbase = lib32-xcb-util-image
+	pkgdesc = 32bit xcb-util-image
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://xcb.freedesktop.org/
+	arch = x86_64
+	license = custom
+	depends = lib32-libxcb
+	depends = xcb-util-image
+	source = https://www.archlinux.org/packages/extra/i686/xcb-util-image/download/#xcb-util-image-i686.pkg.tar.xz
+	md5sums = SKIP
+
+pkgname = lib32-xcb-util-image
+
