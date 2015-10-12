@@ -2,7 +2,7 @@
 pkgbase=servefile-git
 pkgname=servefile-git
 pkgver=v0.4.2.r17.g0c781c2
-pkgrel=1
+pkgrel=2
 pkgdesc="Serve or receive files from shell via a small HTTP server"
 arch=('any')
 url="http://seba-geek.de/stuff/servefile/"
@@ -20,6 +20,11 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
+}
+
+prepare() {
+	cd "$srcdir/$pkgname"
+	sed -i -e "s~/usr/bin/python~/usr/bin/python2~g" servefile
 }
 
 package() {
