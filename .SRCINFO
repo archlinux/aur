@@ -10,6 +10,7 @@ pkgbase = edb-debugger-git
 	makedepends = boost>=1.35.0
 	depends = qt5-base
 	depends = capstone
+	depends = qt5-xmlpatterns
 	source = git+https://github.com/eteran/edb-debugger.git
 	source = git+https://github.com/eteran/qhexview.git
 	source = edb.desktop

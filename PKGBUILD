@@ -8,7 +8,7 @@ pkgdesc="EDB (Evan's Debugger) is a binary mode debugger with the goal of having
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
 license=('GPL2')
-depends=('qt5-base' 'capstone')
+depends=('qt5-base' 'capstone' 'qt5-xmlpatterns')
 makedepends=('boost>=1.35.0')
 install=edb.install
 source=("git+https://github.com/eteran/edb-debugger.git"
@@ -38,7 +38,7 @@ build() {
   cd $_pkgname
   sed -i "s:/usr/local:/usr:g" common.pri
   qmake-qt5 -makefile DEFAULT_PLUGIN_PATH="/usr/lib/edb/"
-  make -j4
+  make
 }
 
 package() {
