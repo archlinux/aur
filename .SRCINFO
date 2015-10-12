@@ -1,6 +1,6 @@
 pkgbase = non-daw-git
 	pkgdesc = A modular Digital Audio Workstation system - Git version.
-	pkgver = 0.r1795.60059f4
+	pkgver = 0.r1820.88fe7e7
 	pkgrel = 1
 	url = http://non.tuxfamily.org
 	install = non.install

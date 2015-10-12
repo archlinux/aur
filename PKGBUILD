@@ -5,7 +5,7 @@
 
 pkgname=non-daw-git
 _gitname=non
-pkgver=0.r1795.60059f4
+pkgver=0.r1820.88fe7e7
 pkgrel=1
 pkgdesc="A modular Digital Audio Workstation system - Git version."
 arch=('i686' 'x86_64')
@@ -19,6 +19,8 @@ conflicts=('non-daw' 'non-timeline' 'non-mixer' 'non-session-manager' 'non-seque
 source=('git://git.tuxfamily.org/gitroot/non/non.git')
 md5sums=('SKIP')
 install=non.install
+
+CXXFLAGS="$CXXFLAGS -std=gnu++11"
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
