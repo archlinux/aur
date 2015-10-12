@@ -1,10 +1,12 @@
 pkgbase = libwebsockets-git
 	pkgdesc = A lightweight pure C library built to use minimal CPU and memory resources, and provide fast throughput in both directions.
 	pkgver = 1135.3ae1bad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libwebsockets.org
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
 	license = LGPL
 	makedepends = cmake
 	depends = openssl

@@ -4,9 +4,9 @@
 pkgname=libwebsockets-git
 _gitname=libwebsockets
 pkgver=1135.3ae1bad
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight pure C library built to use minimal CPU and memory resources, and provide fast throughput in both directions."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://libwebsockets.org"
 depends=('openssl' 'make')
 makedepends=('cmake')
@@ -25,10 +25,9 @@ build() {
   mkdir build
   cd build
   if test "$CARCH" == x86_64; then
-    cmake -DLIB_SUFFIX=64 ..
-  fi
-  if test "$CARCH" == i686; then
-    cmake ..
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DLIB_SUFFIX=64 ..
+  else
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
   fi
   make
 }
