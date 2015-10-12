@@ -2,7 +2,7 @@
 
 pkgname=aria2fe
 pkgver=0.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="A GUI for the CLI-based aria2 download utility"
 arch=("i686" "x86_64")
 url="http://sourceforge.net/projects/aria2fe/"

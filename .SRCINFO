@@ -1,7 +1,7 @@
 pkgbase = aria2fe
 	pkgdesc = A GUI for the CLI-based aria2 download utility
 	pkgver = 0.0.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://sourceforge.net/projects/aria2fe/
 	arch = i686
 	arch = x86_64
