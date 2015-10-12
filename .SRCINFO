@@ -1,7 +1,7 @@
 pkgbase = bcompare
 	pkgdesc = Beyond Compare 4: Compare, sync, and merge files and folders
 	pkgver = 4.1.1.20615
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scootersoftware.com
 	install = bcompare.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = bcompare
 	groups = utility
 	license = custom
 	makedepends = sed
+	depends = qt4
 	depends = fontconfig
 	depends = libsm
 	depends = libxcursor

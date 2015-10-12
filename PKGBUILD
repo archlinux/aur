@@ -10,13 +10,13 @@
 
 pkgname=bcompare
 pkgver=4.1.1.20615
-pkgrel=1
+pkgrel=2
 pkgdesc="Beyond Compare 4: Compare, sync, and merge files and folders"
 arch=('i686' 'x86_64')
 url="http://www.scootersoftware.com"
 license=('custom')
 groups=('utility')
-depends=('fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxrandr' 'zlib')
+depends=('qt4' 'fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxrandr' 'zlib')
 makedepends=('sed')
 install=${pkgname}.install
 source=("http://www.scootersoftware.com/${pkgname}-${pkgver}.${CARCH}.tar.gz")
