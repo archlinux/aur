@@ -5,7 +5,7 @@ pkgdesc="32bit xcb-util-keysyms"
 arch=('x86_64')
 url="http://xcb.freedesktop.org/"
 license=('custom')
-depends=('lib32-libxcb' 'lib32-libxdmcp')
+depends=('lib32-libxcb' 'lib32-libxdmcp' 'xcb-util-keysyms')
 source=(https://www.archlinux.org/packages/extra/i686/xcb-util-keysyms/download/#xcb-util-keysyms-i686.pkg.tar.xz)
 md5sums=('SKIP')
 pkgver() {
