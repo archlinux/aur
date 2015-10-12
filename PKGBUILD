@@ -1,5 +1,5 @@
-# Maintainer: danyf90 <daniele.formichelli@gmail.com>
-
+# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Contributor: danyf90 <daniele.formichelli@gmail.com>
 _name=firefox
 _channel=developer
 pkgname="${_name}-${_channel}"
@@ -12,7 +12,7 @@ license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${pkgver}.en-US.linux-${CARCH}"
 _srcurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora"
 source=("${_srcurl}/${_file}.tar.bz2" "firefox-$_channel.desktop" "vendor.js")
-sha512sums=('SKIP'
+sha512sums=('5117992858aa612a3a940debfeaab4a122b7b5a1e1c9e9f940aa0f8e4c6c9b5bf1c7331c19fd3836694c5007dc7ebb14007182a030b8d460cc68c6f3e61883d3'
             '627c98b91e4f11ead1f742e2fda73664ec2b3e4a97b5560b2531ed6730765ab656f9084ad4eb8915fe31d56b6294059339fd9158ef3377aa317404134a770f77'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite3' 'dbus-glib')
