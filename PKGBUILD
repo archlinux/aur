@@ -10,6 +10,6 @@ md5sums=('SKIP')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/TTF"
-  install -m644 "$srcdir/$pkgname/inconsolata-lgc-for-powerline/"*.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 "$srcdir/inconsolata-lgc-for-powerline/"*.ttf "$pkgdir/usr/share/fonts/TTF/"
 }
 
