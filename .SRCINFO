@@ -1,0 +1,22 @@
+pkgbase = can-isotp-git
+	pkgdesc = The CAN ISO-TP Kernel Module (ALPHA)
+	pkgver = r822.856c160
+	pkgrel = 1
+	url = https://github.com/hartkopp/can-isotp-modules
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = linux-headers
+	depends = linux
+	source = git+https://github.com/hartkopp/can-isotp-modules.git
+	md5sums = SKIP
+
+pkgname = can-isotp-modules-git
+	install = can-isotp-modules.install
+	provides = can-isotp-modules
+	conflicts = can-isotp-modules
+
+pkgname = can-isotp-headers-git
+	provides = can-isotp-headers
+	conflicts = can-isotp-headers
+

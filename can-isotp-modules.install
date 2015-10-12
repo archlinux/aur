@@ -1,0 +1,9 @@
+_depmod() {
+    EXTRAMODULES=extramodules-4.2-ARCH
+    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install () {
+    echo ">>> Updating module dependencies. Please wait..."
+    _depmod
+}
