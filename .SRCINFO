@@ -9,7 +9,6 @@ pkgbase = libbpg
 	license = LGPL
 	depends = libpng
 	depends = libjpeg-turbo
-	depends = x265
 	depends = sdl_image
 	options = staticlibs
 	source = http://bellard.org/bpg/libbpg-0.9.6.tar.gz
