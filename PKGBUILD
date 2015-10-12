@@ -19,7 +19,7 @@ source_x86_64=("http://download.brother.com/welcome/dlf006644/${pkgname}-${pkgve
 sha256sums_x86_64=('b462dbded2d0f7ae511057bd3cb6f8379042b75d996eef2675998a4559cc5556')
 
 source=('50-brscan3.rules' 'LICENSE.html')
-sha256sums=('2e73148e0b89e0753d3cbfe99837efd3ebf06d9d9e3b030b4a241fa8fb5b662b'
+sha256sums=('d1bd021be59c4512f0709187d48d193b2417e6d1066b91c0c00f531e1360be5b'
             '3434bca1936d6a5fd6afd810cde7e1876dd4d1496722b09af180278480f464f2')
 
 package() {
