@@ -1,0 +1,6 @@
+post_install() {
+  if ! getent passwd avahi &>/dev/null; then
+    groupadd -r -g 84 avahi
+    useradd -r -u 84 -g avahi -d / -s /bin/nologin -c avahi avahi
+  fi
+}
