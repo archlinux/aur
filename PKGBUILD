@@ -8,12 +8,12 @@ _npmname=yo
 
 pkgname=nodejs-yeoman
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for creating, building, maintaining, and shipping Yeoman projects."
 arch=(any)
 url="http://yeoman.io"
 license=('BSD')
-depends=('curl' 'git' 'ruby-compass' 'libjpeg-turbo' 'optipng' 'nodejs-bower' 'nodejs-grunt-cli')
+depends=('curl' 'git' 'ruby-compass' 'libjpeg-turbo' 'optipng' 'bower' 'nodejs-grunt-cli')
 optdepends=('phantomjs: browser-run test suite' )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)

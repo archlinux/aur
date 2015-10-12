@@ -1,7 +1,7 @@
 pkgbase = nodejs-yeoman
 	pkgdesc = Command line interface for creating, building, maintaining, and shipping Yeoman projects.
 	pkgver = 1.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://yeoman.io
 	arch = any
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = nodejs-yeoman
 	depends = ruby-compass
 	depends = libjpeg-turbo
 	depends = optipng
-	depends = nodejs-bower
+	depends = bower
 	depends = nodejs-grunt-cli
 	optdepends = phantomjs: browser-run test suite
 	noextract = yo-1.4.8.tgz
