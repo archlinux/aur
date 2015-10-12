@@ -95,7 +95,7 @@ package() {
 export QT_PLUGIN_PATH=/usr/lib32/qt5/plugins/
 export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib32/qt5/plugins/platforms
 export QT_QPA_PLATFORM=xcb
-exec /usr/bin/edb32.bin' > ${pkgdir}/usr/bin/edb32
+exec /usr/bin/edb32.bin "$@"' > ${pkgdir}/usr/bin/edb32
   chmod +x ${pkgdir}/usr/bin/edb32
   
   install -D -m 644 src/images/edb48-logo.png ${pkgdir}/usr/share/pixmaps/edb32.png
