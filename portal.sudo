@@ -1,2 +1,1 @@
-%wheel ALL= NOPASSWD: /usr/bin/portal
-%wheel ALL= NOPASSWD: /usr/bin/portal-postconf
+%wheel ALL=(root) NOPASSWD: /usr/bin/portal
