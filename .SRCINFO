@@ -1,0 +1,23 @@
+pkgbase = lemonbar-xft-dynstack-git
+	pkgdesc = A lightweight xcb based bar with ported xft support and dynamic area stack size.
+	pkgver = 218.93294f4
+	pkgrel = 1
+	url = https://github.com/Ferdi265/bar
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxcb
+	depends = libxft
+	depends = libx11
+	provides = bar-aint-recursive
+	provides = lemonbar
+	provides = lemonbar-xft-git
+	conflicts = bar-aint-recursive
+	conflicts = lemonbar
+	conflicts = lemonbar-xft-git
+	source = bar::git+https://github.com/Ferdi265/bar.git#branch=xft-port
+	sha256sums = SKIP
+
+pkgname = lemonbar-xft-dynstack-git
+
