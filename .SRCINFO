@@ -1,12 +1,13 @@
 pkgbase = gr-gsm-git
 	pkgdesc = Gnuradio blocks and tools for receiving GSM transmissions
-	pkgver = 92398cf
+	pkgver = 56b0a67
 	pkgrel = 1
 	url = https://github.com/ptrkrysik/gr-gsm
 	arch = any
 	license = unknown
 	makedepends = cmake
 	depends = gnuradio
+	depends = libosmocore
 	depends = boost
 	depends = swig
 	depends = log4cpp
