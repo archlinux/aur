@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
-pkgbase=percolator-git
-pkgname=('percolator' 'percolator-converters' 'elude')
+pkgbase="percolator-git"
+pkgname=('percolator-git' 'percolator-converters-git' 'elude-git')
 pkgver=2.10.r3.ga08619d
 pkgrel=1
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters + Elude tool"
@@ -23,11 +23,13 @@ prepare() {
 	cd "${srcdir}/source"
 	patch -p1 -i "$srcdir/${pkgname%-git}.patch"
 	cd "$BUILDDIR"
-	mkdir "${pkgname[@]}"
+	for d in "${pkgname[@]}"; do
+		mkdir "${d%-git}"
+	done
 }
 
 build() {
-	cd "$BUILDDIR"/percolator
+	cd "$BUILDDIR/${pkgname[0]%-git}"
 	echo "------------------------"
 	echo "Building percolator ..."
 	echo "------------------------"
@@ -36,20 +38,20 @@ build() {
 	echo "------------------------"
 	echo "Building converters ..."
 	echo "------------------------"
-	cd ../percolator-converters
+	cd "../${pkgname[1]%-git}"
 	cmake -DTARGET_ARCH=amd64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/converters"
 	make
 	echo "------------------------"
 	echo "Building Elude ..."
 	echo "------------------------"
-	cd ../elude
+	cd "../${pkgname[2]%-git}"
 	cmake -DTARGET_ARCH=amd64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/elude_tool"
 	make
 }
 
-package_percolator() {
+package_percolator-git() {
 	pkgdesc="Percolator and qvality, two post processors for shotgun proteomics data."
-	name="${pkgname[0]}"
+	name="${pkgname[0]%-git}"
 	provides=("$name")
 	conflicts=("$name")
 	
@@ -57,9 +59,9 @@ package_percolator() {
 	make DESTDIR="$pkgdir/" install
 }
 
-package_percolator-converters() {
+package_percolator-converters-git() {
 	pkgdesc="Parsers of different database search engines to percolator input format."
-	name="${pkgname[1]}"
+	name="${pkgname[1]%-git}"
 	provides=("$name")
 	conflicts=("$name")
 	
@@ -67,9 +69,9 @@ package_percolator-converters() {
 	make DESTDIR="$pkgdir/" install
 }
 
-package_elude() {
+package_elude-git() {
 	pkgdesc="Software package for prediction of retention times in mass spectorometry experiments."
-	name="${pkgname[2]}"
+	name="${pkgname[2]%-git}"
 	provides=("$name")
 	conflicts=("$name")
 	

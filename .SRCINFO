@@ -17,17 +17,17 @@ pkgbase = percolator-git
 	md5sums = SKIP
 	md5sums = 4e1432640f09fa3dc2f3d9894ec380f4
 
-pkgname = percolator
+pkgname = percolator-git
 	pkgdesc = Percolator and qvality, two post processors for shotgun proteomics data.
 	provides = 
 	conflicts = 
 
-pkgname = percolator-converters
+pkgname = percolator-converters-git
 	pkgdesc = Parsers of different database search engines to percolator input format.
 	provides = 
 	conflicts = 
 
-pkgname = elude
+pkgname = elude-git
 	pkgdesc = Software package for prediction of retention times in mass spectorometry experiments.
 	provides = 
 	conflicts = 
