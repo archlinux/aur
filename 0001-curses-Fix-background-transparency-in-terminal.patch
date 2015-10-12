@@ -1,0 +1,35 @@
+From 03aebf920ea002cda0d1621adea6ea8e71eed1d1 Mon Sep 17 00:00:00 2001
+From: Narthorn <narthorn@gmail.com>
+Date: Mon, 12 Oct 2015 13:24:57 +0200
+Subject: [PATCH] curses: Fix background transparency in terminal
+
+Patch comes from, and closes traviscross/mtr#72.
+---
+ curses.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/curses.c b/curses.c
+index 02b7937..f95f5d1 100644
+--- a/curses.c
++++ b/curses.c
+@@ -700,13 +700,15 @@ void mtr_curses_open(void)
+   initscr();
+   raw();
+   noecho(); 
++  int bg_col = 0;
+   start_color();
+ #ifdef HAVE_USE_DEFAULT_COLORS
+-  use_default_colors();
++  if (use_default_colors() == OK)
++    bg_col = -1;
+ #endif
+   int i;
+   for (i = 0; i < 8; i++)
+-      init_pair(i+1, i, 0);
++      init_pair(i+1, i, bg_col);
+ 
+   mtr_curses_init();
+   mtr_curses_redraw();
+-- 
+2.6.1
+
