@@ -1,0 +1,21 @@
+pkgbase = bin32-edb-debugger-git
+	pkgdesc = EDB (Evan's Debugger) is a binary mode debugger with the goal of having usability on par with OllyDbg - 32 bit version (used to debug 32-bit applications on x86_64 architecture).
+	pkgver = r907.634d182
+	pkgrel = 1
+	url = http://www.codef00.com/projects.php#Debugger
+	install = edb.install
+	arch = x86_64
+	license = GPL2
+	makedepends = boost>=1.35.0
+	depends = lib32-qt5-base
+	depends = lib32-qt5-xmlpatterns
+	depends = lib32-capstone
+	source = git+https://github.com/eteran/edb-debugger.git
+	source = git+https://github.com/eteran/qhexview.git
+	source = edb32.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 4df05c4a3e3ee228510b46076f12e7d3
+
+pkgname = bin32-edb-debugger-git
+

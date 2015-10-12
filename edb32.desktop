@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Evan's Debugger (32-bit version)
+GenericName=Debugger
+Comment=QT4 based binary mode debugger
+TryExec=edb32
+Exec=edb32
+Terminal=false
+Type=Application
+Icon=edb32
+Categories=Application;Development;
+Actions=Debug
+MimeType=application/x-executable
+
+[Desktop Action Debug]
+Exec=edb32 --run %f
+Name=Evan's Debugger 32-bit (debug with)
