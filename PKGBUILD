@@ -6,17 +6,20 @@
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.numpy.org/"
-makedepends=('lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'gcc-fortran' 'python-nose' 'python2-nose' 'cython' 'cython2')
+makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'gcc-fortran'
+	'python-nose' 'python2-nose' 'cython' 'cython2')
 options=('staticlibs')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz")
-md5sums=('c8693369638ed9bff12a0c90ef8ea7af')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz" 'site.cfg')
+md5sums=('c8693369638ed9bff12a0c90ef8ea7af'
+         '6ac5f9dac5d4c0e25a2eba6c98bf5b3c')
 
 prepare() {
+  cp site.cfg numpy-$pkgver
   cp -a numpy-$pkgver numpy-py2-$pkgver
   cd numpy-py2-$pkgver
 
@@ -27,7 +30,6 @@ prepare() {
 }
 
 build() {
-  export ATLAS=None
   export LDFLAGS="$LDFLAGS -shared"
 
   echo "Building Python2"
@@ -40,8 +42,8 @@ build() {
 }
 
 package_python2-numpy() {
-  depends=('lapack' 'python2')
-  optdepends=('python2-nose: testsuite')
+  depends=('lapack' 'python2' 'cblas')
+  optdepends=('python2-nose: testsuite' 'atlas-lapack: for improved performance of some linear algebra operations')
 
   _pyver=2.7
 
@@ -59,8 +61,8 @@ package_python2-numpy() {
 }
 
 package_python-numpy() {
-  depends=('lapack' 'python')
-  optdepends=('python-nose: testsuite')
+  depends=('lapack' 'python' 'cblas')
+  optdepends=('python-nose: testsuite' 'atlas-lapack: for improved performance of some linear algebra operations')
   provides=("python3-numpy=${pkgver}")
   replaces=('python3-numpy')
   conflicts=('python3-numpy')
