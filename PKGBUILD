@@ -7,7 +7,7 @@ pkgdesc="Jconvolver is a Convolution Engine for JACK"
 arch=('any')
 url="http://kokkinizita.linuxaudio.org/linuxaudio"
 license=(GPL)
-depends=('zita-convolver')
+depends=('zita-convolver' 'clthreads' 'jack')
 source=(http://kokkinizita.linuxaudio.org/linuxaudio/downloads/$pkgname-$pkgver.tar.bz2)
 md5sums=('f1a33f0f455961a7b21b56bdb0f725b1')
 
