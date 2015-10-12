@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Aria2FE
+Version=0.0.5
+Icon=aria2fe
+Exec=aria2fe
+Categories=Network;

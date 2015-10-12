@@ -1,0 +1,19 @@
+pkgbase = aria2fe
+	pkgdesc = A GUI for the CLI-based aria2 download utility
+	pkgver = 0.0.5
+	pkgrel = 5
+	url = http://sourceforge.net/projects/aria2fe/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	depends = aria2
+	depends = xterm
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/aria2fe/aria2fe-0.0.5.tar.bz2
+	source = aria2fe.desktop
+	md5sums = caa4ca05dce2702de28fb8afbd34c722
+	md5sums = 36082a7cfd77b33c5b8c8ac968b52b74
+
+pkgname = aria2fe
+
