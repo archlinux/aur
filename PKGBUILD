@@ -4,7 +4,7 @@
 #
 pkgname=lib32-libtinfo
 pkgver=6
-pkgrel=6
+pkgrel=7
 pkgdesc="lib32 symlink to ncurses for use in packages"
 arch=('any')
 url="http://www.gnu.org/software/ncurses/"
@@ -18,6 +18,5 @@ package() {
   ln -s /usr/lib32/libncursesw.so."$_ncurses" "$pkgdir"/usr/lib32/libtinfo.so."$pkgver"
   ln -s /usr/lib32/libtinfo.so."$pkgver" "$pkgdir"/usr/lib32/libtinfo.so
   ln -s /usr/lib32/libtinfo.so."$pkgver" "$pkgdir"/usr/lib32/libtinfo.so.5
-  ln -s /usr/lib32/libncursesw.so."$_ncurses" "$pkgdir"/usr/lib32/libncurses.so.5
 }
 # vim:set ts=2 sw=2
