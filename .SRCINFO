@@ -1,7 +1,7 @@
 pkgbase = bitwig-studio-demo
 	pkgdesc = Music production system for production, remixing and performance
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bitwig.com
 	arch = x86_64
 	license = custom
@@ -9,6 +9,7 @@ pkgbase = bitwig-studio-demo
 	depends = xdg-utils
 	depends = zenity
 	depends = xcb-util-wm
+	depends = libbsd
 	optdepends = alsa-lib
 	optdepends = oss
 	optdepends = libav: MP3 support
