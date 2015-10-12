@@ -2,8 +2,8 @@
 pkgbase=python-husl
 pkgname=('python-husl' 'python2-husl')
 _pyname=husl
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.0.3
+pkgrel=1
 pkgdesc='Human-friendly HSL'
 arch=('any')
 url='http://husl-colors.org/'
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1d121924a4142d124e4c19bb19ee36ef')
+md5sums=('7228a056708ac92a8b1cc20a0ab18639')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
