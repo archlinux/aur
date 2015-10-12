@@ -1,7 +1,7 @@
 # Maintainer: Peter Lamby <peterlamby@web.de>
 pkgname=valama-git
 pkgver=r938.2f8f85b
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation Vala IDE"
 arch=('i686' 'x86_64')
 url="https://github.com/Valama/valama"
@@ -11,8 +11,7 @@ makedepends=("cmake" 'imagemagick')
 options=('!libtool')
 install=valama.install
 source=("${pkgname}"::'git+https://github.com/Valama/valama.git')
-md5sums=('SKIP'
-         '21da7a62bdbea1a6e30552fb18be9d5a')
+md5sums=('SKIP')
 
 pkgver() {
 	  cd "$pkgname"
