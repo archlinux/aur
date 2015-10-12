@@ -1,13 +1,15 @@
 pkgbase = vapoursynth-plugin-mvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: mvsfunc (GIT version)
-	pkgver = r15.6ea23dd
+	pkgver = r18.cbd41b5
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=172564
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = vapoursynth
+	depends = vapoursynth-plugin-fmtconv
+	depends = vapoursynth-plugin-zimg-git
+	depends = vapoursynth-plugin-bm3d-git
 	provides = vapoursynth-plugin-mvsfunc
 	conflicts = vapoursynth-plugin-mvsfunc
 	source = mvsfunc::git+https://github.com/HomeOfVapourSynthEvolution/mvsfunc.git

@@ -2,13 +2,15 @@
 
 _plug=mvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r15.6ea23dd
+pkgver=r18.cbd41b5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=172564'
 license=('GPL')
-depends=('vapoursynth')
+depends=('vapoursynth-plugin-fmtconv'
+         'vapoursynth-plugin-zimg-git'
+         'vapoursynth-plugin-bm3d-git')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
