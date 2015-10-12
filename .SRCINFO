@@ -1,13 +1,14 @@
 pkgbase = zinc-git
 	pkgdesc = Zinc is a stand-alone version of sbt's incremental compiler.
 	pkgver = 0.3.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/typesafehub/zinc
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = java-runtime
+	depends = java-runtime,
+	depends = sbt
 	provides = zinc
 	conflicts = zinc
 	options = !libtool
