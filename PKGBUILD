@@ -1,21 +1,20 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
-_pkgname=numix-themes
 pkgname=numix-themes-green
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shimmerproject/Numix/archive/v${pkgver}.tar.gz")
-sha256sums=('64b0c34c49633879c8b0b9b685da7b927501ab6db265db15fed04705c04f935b')
+md5sums=('4468cb3f2fe0d01e823df7c310778787')
 
 
 prepare() {
    cd Numix-${pkgver}
-   for FILE in gtk-2.0/gtkrc \
+   for f in gtk-2.0/gtkrc \
          gtk-3.0/gtk-dark.css \
          gtk-3.0/gtk-widgets-assets.css \
          gtk-3.0/gtk-widgets.css \
@@ -34,11 +33,13 @@ prepare() {
          openbox-3/themerc \
          xfce-notify-4.0/gtkrc \
          xfwm4/themerc \
+         xfwm4/*.xpm \
+         unity/*.svg \
          index.theme
    do
-      sed -i 's/#fc6f5d/#697740/g' "${FILE}"
-      sed -i 's/#d64937/#697740/g' "${FILE}"
-      sed -i 's/Numix/Numix-Green/' "${FILE}"
+      sed -i 's/#fc6f5d/#697740/Ig' "${f}"
+      sed -i 's/#d64937/#697740/Ig' "${f}"
+      sed -i 's/Numix/Numix-Green/' "${f}"
    done
 }
 
