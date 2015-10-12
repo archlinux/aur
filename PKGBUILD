@@ -1,3 +1,4 @@
+# Maintainer : Ste74 <capitani74atgmaildotcom>
 # Maintainer : lemovice <lemovice-at-ancestris-dot-org>
 # Contributor :  
 
