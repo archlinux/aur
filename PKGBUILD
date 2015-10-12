@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=wiki-git
-pkgver=r2.774203e
+pkgver=r27.2e245e4
 pkgrel=1
 pkgdesc="Command line tool to fetch summaries from mediawiki wikis, like Wikipedia "
 arch=('any')
@@ -25,9 +25,9 @@ build() {
 }
 
 package() {
+  cd "$srcdir/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
   install -p -m755 $srcdir/bin/wiki "$pkgdir/usr/bin"
-  cd "$srcdir/$pkgname"
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
   install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
   mkdir -p $pkgdir/usr/share/man/man1/
