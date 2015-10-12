@@ -1,0 +1,12 @@
+pkgbase = ttf-inconsolata-lgc-for-powerline
+	pkgdesc = Inconosalata LGC for Powerline
+	pkgver = 1.0
+	pkgrel = 1
+	install = ttf-inconsolata-lgc-for-powerline.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = git+https://github.com/Gonzih/inconsolata-lgc-for-powerline.git
+
+pkgname = ttf-inconsolata-lgc-for-powerline
+
