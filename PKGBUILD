@@ -9,7 +9,7 @@ url="https://github.com/Kintaro/wtftw"
 license=('custom')
 depends=('rust'
          'xorg-xmessage')
-makedepends=('cargo' 'git')
+makedepends=('cargo')
 install=wtftw.install
 source=("https://github.com/Kintaro/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('14bcf2a3a324a44ab494aaf3d3d8dd55')

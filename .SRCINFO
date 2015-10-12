@@ -8,7 +8,6 @@ pkgbase = wtftw
 	arch = x86_64
 	license = custom
 	makedepends = cargo
-	makedepends = git
 	depends = rust
 	depends = xorg-xmessage
 	source = https://github.com/Kintaro/wtftw/archive/1.2/wtftw-1.2.tar.gz
