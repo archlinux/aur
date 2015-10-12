@@ -6,6 +6,7 @@ pkgbase = minecraft-overviewer
 	arch = x86_64
 	arch = i686
 	license = GPL
+	makedepends = python2-sphinx
 	depends = python2
 	depends = python-imaging
 	depends = python2-numpy
@@ -13,4 +14,7 @@ pkgbase = minecraft-overviewer
 	sha256sums = ca0599184a0a9f215486801e4f72accb1bfe49de53256babfb979de087d41d81
 
 pkgname = minecraft-overviewer
+
+pkgname = minecraft-overviewer-docs
+	arch = any
 
