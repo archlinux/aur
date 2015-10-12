@@ -1,15 +1,15 @@
 pkgbase = selenium-server-standalone
 	pkgdesc = Test automation server for web applications
-	pkgver = 2.47.1
+	pkgver = 2.48.2
 	pkgrel = 1
 	url = http://seleniumhq.org/
 	arch = any
 	license = APACHE
 	depends = java-runtime>=6
-	noextract = selenium-server-standalone-2.47.1.jar
-	source = http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.1.jar
+	noextract = selenium-server-standalone-2.48.2.jar
+	source = http://selenium-release.storage.googleapis.com/2.48/selenium-server-standalone-2.48.2.jar
 	source = Selenium.desktop
-	md5sums = e6cb10b8f0f353c6ca4a8f62fb5cb472
+	md5sums = b2784fc67c149d3c13c83d2108104689
 	md5sums = b8ae3f1e5d898bdbf00dec9b553472d2
 
 pkgname = selenium-server-standalone

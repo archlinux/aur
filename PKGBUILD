@@ -5,8 +5,8 @@
 # Contributor: Martin Blumenstingl <martin.blumenstingl at googlemail dot com>
 # Contributor: Erik van der Kolk <developer at smerik dot nl>
 pkgname=selenium-server-standalone
-pkgver=2.47.1
-_pkgver=2.47
+pkgver=2.48.2
+_pkgver=2.48
 pkgrel=1
 pkgdesc="Test automation server for web applications"
 arch=('any')
@@ -16,14 +16,12 @@ depends=('java-runtime>=6')
 source=("http://selenium-release.storage.googleapis.com/$_pkgver/$pkgname-$pkgver.jar"
         'Selenium.desktop')
 noextract=("$pkgname-$pkgver.jar")
-md5sums=('e6cb10b8f0f353c6ca4a8f62fb5cb472'
+md5sums=('b2784fc67c149d3c13c83d2108104689'
          'b8ae3f1e5d898bdbf00dec9b553472d2')
 
 package() {
     cd "$srcdir"
-    install -D -m0644 $pkgname-$pkgver.jar \
-        $pkgdir/usr/share/selenium-server/$pkgname.jar
-    install -D -m0644 Selenium.desktop \
-        $pkgdir/etc/xdg/autostart/Selenium.desktop
+    install -D -m0644 $pkgname-$pkgver.jar $pkgdir/usr/share/selenium-server/$pkgname.jar
+    install -D -m0644 Selenium.desktop $pkgdir/etc/xdg/autostart/Selenium.desktop
 }
 
