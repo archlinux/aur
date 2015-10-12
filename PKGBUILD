@@ -9,8 +9,8 @@ license=('custom:MUSIC Group End User License Agreement')
 install=${pkgname}.install
 depends_i686=('libxext' 'alsa-lib' 'freetype2')
 depends_x86_64=('lib32-libxext' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-pcre')
-source=("http://www.behringerdownload.de/X32/X32-EDIT_LINUX_V${pkgver}.tar.gz"
-'http://www.behringer.com/assets/EULA_2012-09-12.pdf')
+source=("http://downloads.music-group.com/software/behringer/X32/X32-EDIT_LINUX_V${pkgver}.tar.gz"
+'http://www.music-group.com/eurocom/assets/EULA_2012-09-12.pdf')
 sha512sums=('bc3c69ff68d677e40dd2dbba9d16063a9577e5daca8b3dcccaa7491af4c8a8a4e11c81ca0a0a3c36fd741892a5fea1e0400610018e35bf38a9e59e7bc821c11a'
             'fe39285768937d82f31844b789d1075de8196495727653595e59f4f1b282f6dbe18a8a8bc51b837f284601dc37c52211d3d494a8636512f5398da31ff3d30284')
 sha256sums=('58ccb5e24f279a58d68c388ec6a38db64c4b9a978b3694ff1e4f4d6cec7430a0'
