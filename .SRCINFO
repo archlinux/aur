@@ -35,7 +35,7 @@ pkgbase = linux-criu
 	sha256sums = 0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183
 
 pkgname = linux-criu
-	pkgdesc = The Linux-criu kernel and modules
+	pkgdesc = Standard arch kernel with modified config for CRIU (Checkpoint/Restore functionality in Userspace)
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
