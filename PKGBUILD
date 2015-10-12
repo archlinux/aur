@@ -1,7 +1,7 @@
 # Maintainer: Marco <mcat95 [at] gmail [dot] com>
 pkgname=aurous-bin
 pkgver=0.1Alpha
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A music player built to serve your needs."
 arch=(i686 x86_64)
@@ -14,8 +14,8 @@ source_x86_64=(https://aurous.me/downloads/aurous-linux64.zip)
 source_i386=(https://aurous.me/downloads/aurous-linux32.zip)
 source=(Aurous.desktop)
 md5sums=(e04b9770f59111250b4e9096d2cc9ecc)
-md5sums_x86_64=(22b339794d9811b7deda7e43de60759e)
-md5sums_i386=(b732c16edcc210af0351f829a85ec94f)
+md5sums_x86_64=(fc6bf92831e18af8c11d272bcbaea777)
+md5sums_i386=(e1deaba23c9b29319b5c55ec2d881d81)
 
 package() {
 	cd "${srcdir}"
