@@ -13,6 +13,7 @@ pkgbase = can-isotp-git
 
 pkgname = can-isotp-modules-git
 	install = can-isotp-modules.install
+	optdepends = can-utils: Userspace utilities for SocketCAN
 	provides = can-isotp-modules
 	conflicts = can-isotp-modules
 

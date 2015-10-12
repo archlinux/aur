@@ -28,6 +28,7 @@ package_can-isotp-modules-git() {
     install="can-isotp-modules.install"
     provides=("can-isotp-modules")
     conflicts=("can-isotp-modules")
+    optdepends=("can-utils: Userspace utilities for SocketCAN")
 
     cd "${srcdir}/${_pkgname}/net/can"
     install -d "${pkgdir}/usr/lib/modules/extramodules-4.2-ARCH"
