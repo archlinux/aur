@@ -1,0 +1,16 @@
+pkgbase = dlt-viewer
+	pkgdesc = Diagnostic Log and Trace client viewer
+	pkgver = 1.14.1alpha
+	pkgrel = 1
+	url = http://projects.genivi.org/diagnostic-log-trace/
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = qt5-base
+	depends = qt5-base
+	optdepends = xdg-utils
+	source = git://git.projects.genivi.org/dlt-viewer.git
+	md5sums = SKIP
+
+pkgname = dlt-viewer
+
