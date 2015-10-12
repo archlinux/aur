@@ -9,8 +9,8 @@ pkgbase = ncurses5-compat-libs
 	depends = glibc
 	depends = gcc-libs
 	depends = sh
-	source = ftp://invisible-island.net/ncurses/ncurses-6.0.tar.gz
-	source = ftp://invisible-island.net/ncurses/ncurses-6.0.tar.gz.asc
+	source = http://invisible-mirror.net/archives/ncurses/ncurses-6.0.tar.gz
+	source = http://invisible-mirror.net/archives/ncurses/ncurses-6.0.tar.gz.asc
 	md5sums = ee13d052e1ead260d7c28071f46eefb1
 	md5sums = SKIP
 

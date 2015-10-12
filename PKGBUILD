@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url='http://invisible-island.net/ncurses/ncurses.html'
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'sh')
-source=(ftp://invisible-island.net/ncurses/ncurses-${pkgver/_/-}.tar.gz{,.asc})
+source=(http://invisible-mirror.net/archives/ncurses/ncurses-${pkgver/_/-}.tar.gz{,.asc})
 md5sums=('ee13d052e1ead260d7c28071f46eefb1'
          'SKIP')
 validpgpkeys=('C52048C0C0748FEE227D47A2702353E0F7E48EDB')  # Thomas Dickey
