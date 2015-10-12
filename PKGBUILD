@@ -7,6 +7,8 @@ url="http://qt-project.org/"
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 depends=('qt5-base' 'lib32-libjpeg-turbo' 'lib32-libdbus' 'lib32-fontconfig' 'lib32-systemd' \
          'lib32-libxrender' 'lib32-libxi' 'lib32-sqlite' 'lib32-icu')
+provides=('lib32-qt5-base-bin')
+conflicts=('lib32-qt5-base-bin')
 source=(https://www.archlinux.org/packages/extra/i686/qt5-base/download/#qt5-base-i686.pkg.tar.xz)
 md5sums=('SKIP')
 pkgver() {

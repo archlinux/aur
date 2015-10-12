@@ -17,6 +17,8 @@ pkgbase = lib32-qt5-base
 	depends = lib32-libxi
 	depends = lib32-sqlite
 	depends = lib32-icu
+	provides = lib32-qt5-base-bin
+	conflicts = lib32-qt5-base-bin
 	source = https://www.archlinux.org/packages/extra/i686/qt5-base/download/#qt5-base-i686.pkg.tar.xz
 	md5sums = SKIP
 
