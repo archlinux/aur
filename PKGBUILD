@@ -1,7 +1,7 @@
 # Contributor: Mladen Pejakovic <pejakm@gmail.com>
 
 pkgname=optimfrog
-pkgver=5.000
+pkgver=5.002
 pkgrel=1
 pkgdesc="A lossless audio compression program."
 url="http://www.losslessaudio.org/"
@@ -9,8 +9,8 @@ license=('custom:OptimFROG')
 arch=('i686' 'x86_64')
 source_i686=(http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x86_${pkgver//./}.zip)
 source_x86_64=(http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x64_${pkgver//./}.zip)
-md5sums_i686=('fb30d687b8e7e01e70b278785017a5a1')
-md5sums_x86_64=('3869232d16fb4641fe066e3aee23535e')
+sha1sums_i686=("$(curl -s http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x86_${pkgver//./}.zip.sha1 | cut -d ' ' -f1)")
+sha1sums_x86_64=("$(curl -s http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x64_${pkgver//./}.zip.sha1 | cut -d ' ' -f1)")
 
 package() {
   [ "${CARCH}" = i686 ] && _arch=x86
@@ -24,5 +24,5 @@ package() {
   (cd SDK/OptimFROG; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/include/OptimFROG/${i}"; done)
   (cd SDK/Examples; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/OptimFROG/${i}"; done)
   (cd SDK/Documentation; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/OptimFROG/doc/${i}"; done)
-  install -Dm644 license.html "${pkgdir}/usr/share/license/${pkgname}/license.html"
+  install -Dm644 license.html "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
 }
