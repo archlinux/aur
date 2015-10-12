@@ -3,7 +3,7 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=eclipse-linuxtools
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Eclipse Linux Tools Project"
 url="http://www.eclipse.org/linuxtools"
@@ -19,22 +19,11 @@ optdepends=(
 )
 makedepends=('java-environment')
 source=("http://www.eclipse.org/downloads/download.php?r=1&file=/linuxtools/linuxtools-${pkgver}.zip")
-sha256sums=('541d4f75911b9f52a81b26ded143deea52d46fc08a994a686b6edb9972a2af72')
+sha256sums=('ea5e28a92085d83df3b60d8b3cb43bbcce97f34c3d9a81536eaac449a25bb8a8')
 
 package() {
-  _dest="${pkgdir}/usr/lib/eclipse/dropins/linuxtools/eclipse"
-
-  cd "${srcdir}"
-
-  # Features
-  for _f in features/*; do
-    _dir="${_dest}/${_f/.jar}"
-    mkdir -p "${_dir}"
-    bsdtar -xf "${_f}" -C "${_dir}"
-  done
-
-  # Plugins
-  for _p in plugins/*; do
-    install -Dm644 "${_p}" "${_dest}/${_p}"
-  done
+  d="$pkgdir/usr/lib/eclipse/dropins/linuxtools/eclipse"
+  install -d "$d"
+  cp -a features "$d"
+  cp -a plugins "$d"
 }
