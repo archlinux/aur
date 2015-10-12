@@ -15,7 +15,7 @@ options=()
 makedepends=()
 provides=('networkmanager-sstp')
 source=(http://sourceforge.net/projects/sstp-client/files/network-manager-sstp/${pkgver}-${pkgrel}/${_pkgname}-${pkgver}.tar.bz2)
-md5sums=('SKIP')
+md5sums=('8d39c54195e428974bfcf87524751fe5')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

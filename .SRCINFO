@@ -12,7 +12,7 @@ pkgbase = networkmanager-sstp
 	optdepends = ppp>=2.4.7
 	provides = networkmanager-sstp
 	source = http://sourceforge.net/projects/sstp-client/files/network-manager-sstp/0.9.10-1/NetworkManager-sstp-0.9.10.tar.bz2
-	md5sums = SKIP
+	md5sums = 8d39c54195e428974bfcf87524751fe5
 
 pkgname = networkmanager-sstp
 
