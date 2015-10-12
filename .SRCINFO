@@ -6,6 +6,7 @@ pkgbase = perl-lexical-sealrequirehints
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-build
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.009.tar.gz
