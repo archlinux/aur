@@ -3,7 +3,7 @@
 
 pkgname=freerdp-git
 pkgdesc='Free RDP client - git checkout'
-pkgver=1.2.0.beta1.r1514.gb7e2430
+pkgver=1.2.0.beta1.android9.r1957.gd277346
 pkgrel=1
 depends=('openssl' 'libxcursor' 'libcups' 'alsa-lib' 'libxext' 'libxdamage'
          'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv')
@@ -20,10 +20,22 @@ pkgver() {
 	cd freerdp/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
+}
+
+prepare() {
+	cd freerdp/
+
+	# fix build aginst recent gstreamer
+	git cherry-pick -n bea27fd9
 }
 
 build() {
