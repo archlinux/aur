@@ -1,8 +1,8 @@
 # Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
 # Contributor: Enrico Bacis <enrico.bacis@gmail.com>
 pkgname=edx-downloader-git
-pkgver=r514.6299a75
-pkgrel=1
+pkgver=r558.053fbc0
+pkgrel=2
 pkgdesc='A simple tool to download video lectures from edx.org.'
 arch=('any')
 url='https://github.com/shk3/edx-downloader'
@@ -11,6 +11,9 @@ makedepends=('git' 'pandoc-bin')
 depends=('python' 'python-beautifulsoup4' 'youtube-dl' 'python-six' 'python-html5lib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+
+source=(req-html5lib.patch)
+sha256sums=('bf4c762d46fe9e7a15402dbba9f0ab617d19f2349b6c801f49f77167fa23414e')
 
 # it downloads 20MB of useless pack files
 #source=("${pkgname%-git}::git://github.com/shk3/edx-downloader.git")
@@ -25,6 +28,11 @@ pkgver() {
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
+}
+
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  patch -p0 -i ../req-html5lib.patch
 }
 
 package() {
