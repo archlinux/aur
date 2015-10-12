@@ -1,0 +1,16 @@
+pkgbase = libbrotli-git
+	pkgdesc = Test
+	pkgver = r38.1606131
+	pkgrel = 1
+	url = https://github.com/google/brotli
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = brotli
+	provides = libbrotli
+	source = libbrotli-git::git+https://github.com/bagder/libbrotli.git
+	md5sums = SKIP
+
+pkgname = libbrotli-git
+
