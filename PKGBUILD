@@ -1,8 +1,8 @@
 # Maintainer: Stavros Polymenis <sp@orbitalfox.com>
 pkgname=portal
-pkgver=0.1.2
-pkgrel=2
-pkgdesc="A personal portal system"
+pkgver=0.1.3
+pkgrel=1
+pkgdesc="A personal portal system. Alpha version, do not install unless you know what you are doing"
 arch=(any)
 url="http://orbitalfox.com"
 license=('LGPL3')
@@ -17,11 +17,12 @@ options=()
 install="portal.install"
 changelog=
 source=(#"git+https://github.com/orbifx/portal.git"
-	https://github.com/orbifx/portal/releases/download/v0.1-beta/portal-postconf.tar.gz)
+	https://github.com/orbifx/portal/releases/download/v0.1-beta/portal.tar.gz)
 noextract=()
-md5sums=('ca4a222928203019be0aab260e342def')
+md5sums=('396e104383ce12e65b3bd1f6cfb9e018')
 
 package() {
+	install -Dm544 portal "$pkgdir/usr/bin/portal"
 	install -Dm544 portal-postconf "$pkgdir/usr/bin/portal-postconf"
-	install -Dm644 ../portal.sudo "${pkgdir}/etc/sudoers.d/${pkgname}.sudo"
+	install -Dm440 ../portal.sudo "${pkgdir}/etc/sudoers.d/${pkgname}.sudo"
 }
