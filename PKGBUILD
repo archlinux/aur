@@ -4,7 +4,7 @@
 pkgbase=libindicator
 pkgname=('libindicator-gtk2' 'libindicator-gtk3')
 pkgver=12.10.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A set of symbols and convenience functions for Ayatana indicators'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libindicator'
@@ -15,6 +15,7 @@ sha256sums=('b2d2e44c10313d5c9cd60db455d520f80b36dc39562df079a3f29495e8f9447f')
 
 prepare() {
   sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i libindicator-${pkgver}/libindicator/Makefile.{am,in}
+  sed 's/LIBINDICATOR_LIBS+="$LIBM"/LIBINDICATOR_LIBS+=" $LIBM"/g' -i libindicator-${pkgver}/configure
   cp -r libindicator-${pkgver} libindicator-gtk2-${pkgver}
 }
 

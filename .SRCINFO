@@ -1,7 +1,7 @@
 pkgbase = libindicator
 	pkgdesc = A set of symbols and convenience functions for Ayatana indicators
 	pkgver = 12.10.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://launchpad.net/libindicator
 	arch = i686
 	arch = x86_64
