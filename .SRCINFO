@@ -1,11 +1,11 @@
 pkgbase = libbrotli-git
 	pkgdesc = meta project to build libraries from the brotli source code
 	pkgver = r38.1606131
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/brotli
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = Apache
 	makedepends = git
 	depends = brotli
 	provides = libbrotli
