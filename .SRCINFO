@@ -1,7 +1,7 @@
 pkgbase = cgit-git
 	pkgdesc = A web interface for git written in plain C - git checkout
-	pkgver = 0.11.2.r12.gda1d4c7
-	pkgrel = 1
+	pkgver = 0.11.2.r81.g76dc7a3
+	pkgrel = 3
 	url = http://git.zx2c4.com/cgit/
 	install = cgit.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = cgit-git
 	depends = luajit
 	optdepends = python2-pygments: syntax highlighting support
 	optdepends = mime-types: serve file with correct content-type header
+	optdepends = python-markdown: about page formated with markdown
 	provides = cgit
 	conflicts = cgit
 	source = git://git.zx2c4.com/cgit.git
