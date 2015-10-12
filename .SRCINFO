@@ -1,0 +1,14 @@
+pkgbase = python2-darkcoin_hash
+	pkgdesc = Binding for Darkcoin X11 proof of work hashing.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/vertoe/darkcoin_hash
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://github.com/vertoe/darkcoin_hash/archive/1.3.tar.gz
+	md5sums = 56bf68eb020d08a603eb0589cd513faf
+
+pkgname = python2-darkcoin_hash
+
