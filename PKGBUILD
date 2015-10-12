@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-theme-copernico-git
 _pkgname=copernico
-pkgver=11.679bb9d
+pkgver=15.73fa7ca
 pkgrel=1
 pkgdesc="A theme for the GNOME Shell which provides a slightly more pleasant visual impression."
 arch=('any')
@@ -10,7 +10,7 @@ url="http://gnome-look.org/content/show.php/Copernico+Theme?content=167439"
 license=('GPL3')
 depends=('gtk3' 'gnome-shell')
 makedepends=('git')
-source=(${_pkgname}::'git+https://bitbucket.org/mgyugcha/copernico-theme.git')
+source=(${_pkgname}::'git+https://github.com/mgyugcha/copernico-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
