@@ -10,12 +10,16 @@ pkgdesc='BPG Image Encoder and Decoder'
 arch=('x86_64' 'i686')
 url='http://bellard.org/bpg/'
 license=('BSD' 'LGPL')
-depends=('libpng' 'libjpeg-turbo' 'x265' 'sdl_image')
+depends=('libpng' 'libjpeg-turbo' 'sdl_image')
 source=("$url$pkgname-$pkgver.tar.gz")
 options=('staticlibs')
 
+prepare() {
+  sed -i 's/$(CMAKE_OPTS)/$(CMAKE_OPTS) -DENABLE_LIBNUMA=OFF/' "$pkgname-$pkgver/Makefile"
+}
+
 build() {
-  make USE_X265=Y -C "$pkgname-$pkgver"
+  make USE_JCTVC=Y -C "$pkgname-$pkgver"
 }
 
 package() {
