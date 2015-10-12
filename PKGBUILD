@@ -1,5 +1,7 @@
 pkgname=dnf-plugins-extras
-pkgver=0.0.9
+_pkgver=0.0.10
+_rpmrel=1
+pkgver=$_pkgver.$_rpmrel
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -11,17 +13,19 @@ checkdepends=('python-nose')
 optdepends=('createrepo_c: for local plugin'
             'snapper: for snapper plugin'
             'tracer:  for tracer plugin')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver-1.tar.gz")
-md5sums=('44d1349a728be5d736994ffc13bbce3a')
+source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
+md5sums=('4d2b3199f6617400c0735193cddc2d68')
 
 prepare() {
-	cd "$pkgname-$pkgname-$pkgver-1"
+	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
+
+	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
 }
 
 build() {
-	cd "$pkgname-$pkgname-$pkgver-1"/build
+	cd "$pkgname-$pkgver"/build
 	cmake -DCMAKE_BUILD_TYPE=Release  \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DPYTHON_DESIRED=3          \
@@ -31,12 +35,12 @@ build() {
 
 # Tests seem to need a minimal RPM database on the system
 #check() {
-#	cd "$pkgname-$pkgname-$pkgver-1"
+#	cd "$pkgname-$pkgver"
 #	PYTHONPATH=./plugins nosetests -s tests
 #}
 
 package() {
-	cd "$pkgname-$pkgname-$pkgver-1"/build
+	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
 	install -D -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
