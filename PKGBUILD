@@ -2,7 +2,7 @@
 
 _perlmod=Travel-Status-DE-DeutscheBahn
 pkgname=perl-travel-status-de-deutschebahn
-pkgver=2.00
+pkgver=2.01
 pkgrel=1
 pkgdesc='Interface to the DeutscheBahn online departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/'
@@ -14,7 +14,7 @@ makedepends=('perl-module-build' 'perl-file-slurp' 'perl-json' 'perl-list-moreut
 options=('!emptydirs')
 validpgpkeys=('781BB7071C6BF648EAEB08A1100D5BFB5166E005')
 source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
-md5sums=('ecdbc10f6781aef9e4bd27017ed9b731' 'ce6492e4ed87fcb217ac120634d0d827')
+md5sums=('6bed5bb9003ff2a3ead29c9fa8e74bc7' '6b60da93dae79b57401353760ff28be2')
 
 build() {
   cd "${srcdir}"/${_perlmod}-${pkgver}

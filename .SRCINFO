@@ -1,6 +1,6 @@
 pkgbase = perl-travel-status-de-deutschebahn
 	pkgdesc = Interface to the DeutscheBahn online departure monitor
-	pkgver = 2.00
+	pkgver = 2.01
 	pkgrel = 1
 	url = http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = perl-travel-status-de-deutschebahn
 	depends = perl-libwww
 	depends = perl-xml-libxml
 	options = !emptydirs
-	source = http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/Travel-Status-DE-DeutscheBahn-2.00.tar.gz
-	source = http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/Travel-Status-DE-DeutscheBahn-2.00.tar.gz.asc
-	md5sums = ecdbc10f6781aef9e4bd27017ed9b731
-	md5sums = ce6492e4ed87fcb217ac120634d0d827
+	source = http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/Travel-Status-DE-DeutscheBahn-2.01.tar.gz
+	source = http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/Travel-Status-DE-DeutscheBahn-2.01.tar.gz.asc
+	md5sums = 6bed5bb9003ff2a3ead29c9fa8e74bc7
+	md5sums = 6b60da93dae79b57401353760ff28be2
 
 pkgname = perl-travel-status-de-deutschebahn
 
