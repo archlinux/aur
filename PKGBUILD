@@ -1,7 +1,7 @@
 # Maintainer: maz_1 <ohmygod19993 at gmail dot com>
 
 pkgname=bin32-edb-debugger-git
-pkgver=r907.634d182
+pkgver=r908.d6e060b
 pkgrel=1
 pkgdesc="EDB (Evan's Debugger) is a binary mode debugger with the goal of having usability on par with OllyDbg - 32 bit version (used to debug 32-bit applications on x86_64 architecture)."
 arch=('x86_64')
@@ -90,7 +90,13 @@ package() {
   make INSTALL_ROOT=${pkgdir} install
 
   mv ${pkgdir}/usr/lib64 ${pkgdir}/usr/lib32
-  mv ${pkgdir}/usr/bin/edb ${pkgdir}/usr/bin/edb32
+  mv ${pkgdir}/usr/bin/edb ${pkgdir}/usr/bin/edb32.bin
+  echo '#!/bin/sh
+export QT_PLUGIN_PATH=/usr/lib32/qt5/plugins/
+export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib32/qt5/plugins/platforms
+export QT_QPA_PLATFORM=xcb
+exec /usr/bin/edb32.bin' > ${pkgdir}/usr/bin/edb32
+  chmod +x ${pkgdir}/usr/bin/edb32
   
   install -D -m 644 src/images/edb48-logo.png ${pkgdir}/usr/share/pixmaps/edb32.png
   install -D -m 644 src/images/edb48-logo.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/edb32.png
