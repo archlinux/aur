@@ -9,10 +9,10 @@
 # Based on linux-grsec package
 
 pkgbase=linux-libre-grsec
-_pkgbasever=4.1-gnu
-_pkgver=4.1.7-gnu
+_pkgbasever=4.2-gnu
+_pkgver=4.2.3-gnu
 _grsecver=3.1
-_timestamp=201509201149
+_timestamp=201510092347
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -22,7 +22,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
 pkgver=${_pkgver//-/_}.${_timestamp}
 pkgrel=1
-rcnrel=armv7-x5
+rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://grsecurity.net/"
 license=('GPL2')
@@ -60,11 +60,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch')
-sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
+sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
-            '4ae674b88d75f2cc95c352de476ebd4c1d8726f2e0e91536d26db1bdc54b523d'
+            '9e452d470bd33ea9cdbab5a285bea8c5b4ac91087ffb154e65c32c360a9a53f1'
             'SKIP'
-            '59d80a636578344ee00e03b953f1eba127bc150ae74a16c35850dc09127f1b0b'
+            '15378dc9ec61970bc3f7937bf0e99c32ea2999beb74053d8322c20ed449242d1'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -72,22 +72,22 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '591f20645c2d5d91edf49af5b934de45866d1d0588b461c5d5963640fc4e1b5d'
-            'a302f37d082cb9c8c03b44a8f1d5fafcd5c73a2f7e32cd62d36009a8421a952a'
-            '6611ed27350615c75f6e8c9755722824cfad206801e6892862e117153b3678af'
+            '9b3dd61032f2c29a86d73c09c301f1eaab795ab26572e8b2e48634dd2e42c7ce'
+            'da3fc8f9b27d7c0102feda49e6f4eaaca320e7cb95705ba887d7839a5beecdbd'
+            '6fef3c434796dbee8e7d9cc523fe75afcda6dbc0ae60f605f2b1d32a59aeba87'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            '9725d57be7bcd8bbf4c5f6641afc88cf8804ce7ac5928611d3f6355674b81128'
+            '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
+            '096ea2c64bc3d2b7079b2acc2029b24fdec81d9686f1adc3a6f280b24b09b478'
             'SKIP'
-            '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
-            '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
-            '39bfd7f6e2df0b87b52488462edb2fbcfaf9e3eb2a974fc7b3bc22147352fece'
-            '59444ed7dce62697f1c35be340b740899e1d71398b334c419ad07cea838c6ed6'
-            '90cff98e43322e79c8d8b1c6456a328650f6af3ebf018086a82ab690a688da5d'
-            'ed6cf79434d3b1c10e0e141ab6bdc2aa9abfe7e7df6bbb24b2097c0e0d62ac17'
-            '2c3df3d9a3d8fe11fefc485167a81c6fc53635b04ba0312bef144505dc0a6ce4'
-            '0f6b0146096ee7a04938d39a013c23cfd8719f3bef0956b5c88a33e7d7ecafdc')
+            '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
+            '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
+            '810697eec07faa60acb59b97df291e5f2e9428e86ae54e5ef90a6e4b2d0844ab'
+            'c743e41975260aab3176b6f473707c8d8371cb89575e1c128bddb3bd74030b8b'
+            'abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0'
+            'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
+            'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
+            'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -192,7 +192,6 @@ _package() {
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  [ "${CARCH}" = "armv7h" ] && conflicts+=("${_replacesarchkernel}-uimage") && replaces+=("${_replacesarchkernel}-uimage")
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     depends+=('mkinitcpio>=0.7')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -207,13 +206,10 @@ _package() {
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  if [ "${CARCH}" = "armv7h" ]; then
-    mkdir -p "${pkgdir}/boot/dtbs/${pkgbase}"
-  fi
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   if [ "${CARCH}" = "armv7h" ]; then
+    make LOCALVERSION= INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs/${pkgbase}" dtbs_install
     cp arch/$KARCH/boot/zImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-    cp arch/$KARCH/boot/dts/*.dtb "${pkgdir}/boot/dtbs/${pkgbase}"
   elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
   fi
@@ -257,16 +253,16 @@ _package() {
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     # add vmlinux
     install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
-
-    # add grsecurity gcc plugins
-    mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-    cp -a tools/gcc/*.h "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
-    cp -a tools/gcc/Makefile "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
-    install -m644 tools/gcc/*.so "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
-    mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
-    install -m644 tools/gcc/size_overflow_plugin/Makefile tools/gcc/size_overflow_plugin/*.so \
-      "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
   fi
+
+  # add grsecurity gcc plugins
+  mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
+  cp -a tools/gcc/*.h "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+  cp -a tools/gcc/Makefile "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+  install -m644 tools/gcc/*.so "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
+  #mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
+  #install -m644 tools/gcc/size_overflow_plugin/Makefile tools/gcc/size_overflow_plugin/*.so \
+    #"$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
 }
 
 _package-headers() {
