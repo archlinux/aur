@@ -23,8 +23,8 @@ prepare(){
       -i *
 
   echo "all:
-	  gcc -c -Os -g0 -std=gnu++11 -I. -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o vcmove.o vcmove.cpp
-	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so vcmove.o" > Makefile
+	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o vcmove.o vcmove.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so vcmove.o" > Makefile
 }
 
 build() {
