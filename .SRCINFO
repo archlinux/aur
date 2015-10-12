@@ -1,12 +1,12 @@
 pkgbase = geolite2-city
-	pkgdesc = MaxMind GeoLite2 GeoIP database
-	pkgver = 20150808
+	pkgdesc = MaxMind GeoLite2 GeoIP database - City version
+	pkgver = 20151012
 	pkgrel = 1
 	url = http://dev.maxmind.com/geoip/geoip2/geolite2/
 	arch = any
 	license = CCPL:cc-by-sa-3.0
 	source = http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz
-	md5sums = 4a74d6cbb9fbc0545bdae21b9d97fdfd
+	md5sums = e42849c85a3081b0aff44b5b5dc63716
 
 pkgname = geolite2-city
 
