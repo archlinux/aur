@@ -1,16 +1,14 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
-pkgbase=('percolator-bin')
+pkgbase='percolator-bin'
 pkgname=('percolator' 'percolator-converters' 'elude')
 pkgver=2.08.01
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters + Elude tool"
 arch=('x86_64')
 url="http://per-colator.com/"
 license=('Apache')
 depends=('gcc-libs')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}-git")
+
 noextract=("${pkgname[0]}-${pkgver//./-}-amd64.deb"
 		   "${pkgname[1]}-${pkgver//./-}-amd64.deb"
 		   "${pkgname[2]}-${pkgver//./-}-amd64.deb")
@@ -24,18 +22,24 @@ md5sums=('734847fcc956adf81705400ce5dac48d'
 
 package_percolator() {
 	pkgdesc="Percolator and qvality, two post processors for shotgun proteomics data."
+	provides=("${pkgname[0]}")
+	conflicts=("${pkgname[0]}")
 	ar x "${srcdir}/${noextract[0]}"
 	tar -xzf "${srcdir}/data.tar.gz" -C "$pkgdir"
 }
 
 package_percolator-converters() {
 	pkgdesc="Parsers of different database search engines to percolator input format."
+	provides=("${pkgname[1]}")
+	conflicts=("${pkgname[1]}")
 	ar x "${srcdir}/${noextract[1]}"
 	tar -xzf "${srcdir}/data.tar.gz" -C "$pkgdir"
 }
 
 package_elude() {
 	pkgdesc="Software package for prediction of retention times in mass spectorometry experiments."
+	provides=("${pkgname[2]}")
+	conflicts=("${pkgname[2]}")
 	ar x "${srcdir}/${noextract[2]}"
 	tar -xzf "${srcdir}/data.tar.gz" -C "$pkgdir"
 }

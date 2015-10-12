@@ -1,13 +1,11 @@
 pkgbase = percolator-bin
 	pkgdesc = Software for postprocessing of shotgun proteomics data + format converters + Elude tool
 	pkgver = 2.08.01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://per-colator.com/
 	arch = x86_64
 	license = Apache
 	depends = gcc-libs
-	provides = percolator
-	conflicts = percolator-git
 	noextract = percolator-2-08-01-amd64.deb
 	noextract = percolator-converters-2-08-01-amd64.deb
 	noextract = elude-2-08-01-amd64.deb
@@ -20,10 +18,16 @@ pkgbase = percolator-bin
 
 pkgname = percolator
 	pkgdesc = Percolator and qvality, two post processors for shotgun proteomics data.
+	provides = percolator
+	conflicts = percolator
 
 pkgname = percolator-converters
 	pkgdesc = Parsers of different database search engines to percolator input format.
+	provides = 
+	conflicts = 
 
 pkgname = elude
 	pkgdesc = Software package for prediction of retention times in mass spectorometry experiments.
+	provides = 
+	conflicts = 
 
