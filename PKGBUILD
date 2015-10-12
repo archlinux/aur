@@ -9,6 +9,7 @@ url="https://github.com/walle/wiki"
 license=('MIT')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
+conflicts=('wiki-git')
 source=("https://github.com/walle/wiki/archive/$pkgver.tar.gz")
 md5sums=('30eca4368084cfe103a97ec2ad257497')
 _gourl=github.com/walle/wiki/cmd/wiki
