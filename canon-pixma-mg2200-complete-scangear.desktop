@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Cannon Scangear (MG2200 series)
+Exec=/usr/bin/scangearmp
+Icon=/usr/share/pixmaps/canon-pixma-mg2200-complete-scangear-icon.png
+Categories=Graphics;2DGraphics;
