@@ -1,0 +1,17 @@
+pkgbase = lib32-qt5-xmlpatterns
+	pkgdesc = 32bit qt5-xmlpatterns
+	pkgver = 5.5.0
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = qt5-xmlpatterns
+	depends = lib32-qt5-base
+	source = https://www.archlinux.org/packages/extra/i686/qt5-xmlpatterns/download/#qt5-xmlpatterns-i686.pkg.tar.xz
+	md5sums = SKIP
+
+pkgname = lib32-qt5-xmlpatterns
+
