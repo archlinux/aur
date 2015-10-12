@@ -1,30 +1,29 @@
 # Maintainer: FadeMind <fademind@gmail.com>
-# Contributor: Boyan Ding <stu_dby@126.com> - Maintainer of bbswitch-ck
+# Contributor: Boyan Ding <stu_dby@126.com>
 
-_realname=bbswitch
-_extramodules=extramodules-4.2-mainline # Don't forget to update 
+_pkgname=bbswitch
+_extramodules=extramodules-4.3-mainline
+_kernver=$(cat /usr/lib/modules/${_extramodules}/version)
 pkgname=bbswitch-mainline
 pkgver=0.8
-pkgrel=6
+pkgrel=7
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-mainline"
 arch=('i686' 'x86_64')
-url=("https://github.com/Bumblebee-Project/bbswitch")
+url=("https://github.com/Bumblebee-Project/${_pkgname}")
 license=('GPL')
-depends=('linux-mainline>=4.2rc1' 'linux-mainline<4.3rc1')
-makedepends=('linux-mainline-headers>=4.2rc1' 'linux-mainline-headers<4.3rc1')
-provides=('bbswitch')
+depends=('linux-mainline>=4.3rc1' 'linux-mainline<4.4rc1')
+makedepends=('linux-mainline-headers>=4.3rc1' 'linux-mainline-headers<4.4rc1')
+provides=${_pkgname}
 install=${pkgname}.install
-source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('5b116b31ace3604ddf9d1fc1f4bc5807')
+source=("v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('76cabd3f734fb4fe6ebfe3ec9814138d0d6f47d47238521ecbd6a986b60d1477')
 
 build() {
-  cd ${srcdir}/${_realname}-${pkgver}
-  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+  cd ${_pkgname}-${pkgver}
   make KDIR=/lib/modules/${_kernver}/build
 }
 
 package() {
-  cd ${srcdir}/${_realname}-${pkgver}
-  install -Dm644 bbswitch.ko "${pkgdir}"/usr/lib/modules/${_extramodules}/bbswitch.ko
-  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/bbswitch.ko"                      
+  install -Dm644 "${_pkgname}-${pkgver}/${_pkgname}.ko" "${pkgdir}/usr/lib/modules/${_extramodules}/${_pkgname}.ko"
+  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/${_pkgname}.ko"                      
 }
