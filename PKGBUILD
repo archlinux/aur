@@ -2,8 +2,8 @@
 
 _pkgname=mtr
 pkgname=$_pkgname-git
-pkgver=v0.86.r25.g4831ee5
-pkgrel=1
+pkgver=v0.86.r27.g8c946c5
+pkgrel=2
 arch=('any')
 pkgdesc='Combines the functionality of traceroute and ping into one tool (CLI version, git)'
 url='http://www.bitwizard.nl/mtr/'
@@ -12,7 +12,7 @@ makedepends=('git' 'ncurses')
 depends=('ncurses')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=('git+https://github.com/traviscross/mtr')
+source=('git://github.com/traviscross/mtr')
 sha256sums=('SKIP')
 
 pkgver() {
