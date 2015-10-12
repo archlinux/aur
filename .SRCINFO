@@ -1,0 +1,13 @@
+pkgbase = lib32-capstone
+	pkgdesc = 32bit capstone
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = http://www.capstone-engine.org/index.html
+	arch = x86_64
+	license = BSD
+	depends = capstone
+	source = https://www.archlinux.org/packages/community/i686/capstone/download/#capstone-i686.pkg.tar.xz
+	md5sums = SKIP
+
+pkgname = lib32-capstone
+
