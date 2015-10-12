@@ -1,0 +1,8 @@
+# Sources
+galib???.tgz
+pngwolf-zopfli
+
+# makepkg stuff
+src
+pkg
+*.pkg.tar*

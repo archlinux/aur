@@ -1,0 +1,20 @@
+pkgbase = pngwolf-zopfli-git
+	pkgdesc = A PNG optimizer using a genetic algorithm to find effective compression parameters
+	pkgver = 0.r51.a62b466
+	pkgrel = 1
+	url = https://github.com/jibsen/pngwolf-zopfli
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libzopfli
+	depends = zlib
+	provides = pngwolf
+	conflicts = pngwolf
+	source = git+https://github.com/jibsen/pngwolf-zopfli.git
+	source = http://lancet.mit.edu/ga/dist/galib247.tgz
+	md5sums = SKIP
+	md5sums = 2b6a28fd06d4c7c4d0bb39c92b2b376c
+
+pkgname = pngwolf-zopfli-git
+
