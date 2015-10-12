@@ -1,7 +1,7 @@
 pkgbase = duperemove
 	pkgdesc = Btrfs extent deduplication utility
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markfasheh/duperemove
 	arch = x86_64
 	arch = i686

@@ -2,7 +2,7 @@
 
 pkgname=duperemove
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Btrfs extent deduplication utility"
 arch=('x86_64' 'i686')
 url="https://github.com/markfasheh/duperemove"
@@ -19,6 +19,5 @@ build() {
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  install -Dm755 ./duperemove $pkgdir/usr/bin/duperemove
-  install -Dm644 ./duperemove.8 $pkgdir/usr/share/man/man8/duperemove.8
+  make PREFIX=/usr SBINDIR=/usr/bin DESTDIR="${pkgdir}" install
 }
