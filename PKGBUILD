@@ -16,14 +16,13 @@ pkgname=firefox-nightly-fr
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (fr)'
 url='https://nightly.mozilla.org/'
 _version=44.0a1
-pkgver=44.0a1.20150927
+pkgver=44.0a1.20151012
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'libxt'
          'nss' 'mime-types')
-optdepends=('gstreamer0.10-ffmpeg: h.264 video'
-            'gstreamer0.10-good: h.264 video'
+optdepends=('ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation')
 _base_src="${_name}-${_version}.${_lang}.linux-${CARCH}"
