@@ -1,12 +1,12 @@
 pkgbase = geolite2-country
 	pkgdesc = MaxMind GeoLite2 GeoIP database - Country version
-	pkgver = 20150808
+	pkgver = 20151012
 	pkgrel = 1
 	url = http://dev.maxmind.com/geoip/geoip2/geolite2/
 	arch = any
 	license = CCPL:cc-by-sa-3.0
 	source = http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz
-	md5sums = eb636a865fc5b4b3ffd3f254554ecf26
+	md5sums = b2f3a0371f534f9a429ddc6205ffcb2b
 
 pkgname = geolite2-country
 
