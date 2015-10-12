@@ -2,7 +2,7 @@
 # Maintainer: Kars Wang <jaklsy g-mail>
 
 pkgname=lantern
-pkgver=2.0.2
+pkgver=2.0.9
 pkgrel=1
 pkgdesc='Lantern is a free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel)'
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source=('lantern.service')
 source_i686=('lantern-installer-32-bit.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-32-bit.deb')
 source_x86_64=('lantern-installer-64-bit.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb')
 sha1sums=('da705ba2fa3608a17258009b933e8bb58b3172a2')
-sha1sums_i686=('c5565de60afb706bd36977e5bab89fa0d19310b3')
-sha1sums_x86_64=('1fe721d81870b1de4a15ed97abe8f2e80955c7f2')
+sha1sums_i686=('014396848a63531145971edd573f2c1afe3697e7')
+sha1sums_x86_64=('6add655d00518794ef7c62f35dff4859ac766164')
 
 package() {
     msg2 'Extracting the data.tar.xz...'
