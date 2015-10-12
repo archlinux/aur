@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 198291 2013-10-30 13:58:19Z allan $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Jingbei Li <i@jingbei.li>
 
 pkgname=libwebsockets-git
 _gitname=libwebsockets
