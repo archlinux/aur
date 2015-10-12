@@ -9,7 +9,8 @@
 # GRASS 6 or 7 Processing and Plugin, Globe Plugin and QGIS Map Server are disabled in cmake by default.
 # Uncomment them in the build() portion if you'd like enabled during the build.
 
-pkgname=qgis
+pkgname=qgis-stable
+_pkgname=qgis
 pkgver=2.10.1
 pkgrel=1
 pkgdesc='QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
@@ -50,8 +51,8 @@ optdepends=('grass: GRASS plugin support'           # Uncomment relevant cmake o
             'fcgi: QGIS Map Server support'         # if you want GRASS, QGIS Map Server
             'osgearth: QGIS Globe plugin support'   # or the Globe Plugin enabled
             'gpsbabel: GPS toolbar support')
-provides=("$pkgname")
-install="$pkgname.install"
+provides=("$_pkgname")
+install="$_pkgname.install"
 source=("https://qgis.org/downloads/qgis-latest.tar.bz2"
         "https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py")
 md5sums=('8d719b6013ba0e2adb9a2dd642e9e9c5'
@@ -62,7 +63,7 @@ pkgver() {
 }
 
 prepare() {
-   cd $pkgname-$pkgver
+   cd $_pkgname-$pkgver
 
    mv "${srcdir}/console.py" python/console/
 
@@ -75,7 +76,7 @@ build() {
   # Fix insecure RPATH is weird, but just works ;)
   # echo "os.system(\"sed -i '/^LFLAGS/s|-Wl,-rpath,.\+ ||g' gui/Makefile core/Makefile\")" >> python/configure.py.in
 
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
 
 # if [ -d build ]; then
 #   rm -rf build
@@ -118,21 +119,21 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver/build
+  cd $_pkgname-$pkgver/build
 
   make DESTDIR="$pkgdir/" install
   
   # install some freedesktop.org compatibility
-  install -Dm755 "$srcdir/$pkgname-$pkgver/debian/qgis.desktop" \
+  install -Dm755 "$srcdir/$_pkgname-$pkgver/debian/qgis.desktop" \
     "$pkgdir/usr/share/applications/qgis.desktop"
 
-  install -Dm755 "$srcdir/$pkgname-$pkgver/debian/qbrowser.desktop" \
+  install -Dm755 "$srcdir/$_pkgname-$pkgver/debian/qbrowser.desktop" \
     "$pkgdir/usr/share/applications/qbrowser.desktop"
 
-  install -Dm644 $srcdir/$pkgname-$pkgver/debian/qgis-icon512x512.png \
+  install -Dm644 $srcdir/$_pkgname-$pkgver/debian/qgis-icon512x512.png \
     "$pkgdir/usr/share/pixmaps/qgis.png"
 
-  install -Dm644 $srcdir/$pkgname-$pkgver/debian/qbrowser-icon512x512.png \
+  install -Dm644 $srcdir/$_pkgname-$pkgver/debian/qbrowser-icon512x512.png \
     "$pkgdir/usr/share/pixmaps/qbrowser.png"
 
   # TODO: these aren't working for some reason, ie, .qgs files are not opened by QGIS...
@@ -140,10 +141,10 @@ package() {
   install -dm755 "$pkgdir/usr/share/pixmaps" \
     "$pkgdir/usr/share/mimelnk/application"
 
-  for mime in "$srcdir/$pkgname-$pkgver/debian/mime/application/"*.desktop
+  for mime in "$srcdir/$_pkgname-$pkgver/debian/mime/application/"*.desktop
     do install -m755 "$mime" "$pkgdir/usr/share/mimelnk/application"
   done
 
-  install -Dm644 "$srcdir/$pkgname-$pkgver/images/icons/qgis-mime-icon.png" \
+  install -Dm644 "$srcdir/$_pkgname-$pkgver/images/icons/qgis-mime-icon.png" \
     "$pkgdir/usr/share/pixmaps/qgis-mime.png"
 }
