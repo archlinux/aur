@@ -1,5 +1,5 @@
 pkgbase = libbrotli-git
-	pkgdesc = Test
+	pkgdesc = meta project to build libraries from the brotli source code
 	pkgver = r38.1606131
 	pkgrel = 1
 	url = https://github.com/google/brotli

@@ -2,7 +2,7 @@
 pkgname=libbrotli-git
 pkgver=r38.1606131
 pkgrel=1
-pkgdesc="Test"
+pkgdesc="meta project to build libraries from the brotli source code"
 arch=('x86_64' 'i686')
 url="https://github.com/google/brotli"
 license=('GPL')
