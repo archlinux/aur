@@ -2,7 +2,7 @@
 
 pkgname=pydio
 pkgver=6.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='PHP file sharing platform, formerly AjaXplorer.'
 arch=('any')
 url='http://pyd.io/'
@@ -43,7 +43,7 @@ md5sums=('e5372adc38d128a11d14cbb19be3983b'
          'e3c4ea819d6790c61c9b81dc48a34e05'
          '4852094d1b423d62fee10bf5fde38b63'
          'be74fee97c60b4ae7e8b194187b553ea'
-         '9303b6e1ea74a2fbcfc8652e78199a99'
+         'ebe3fa7e400a213a57203b67e7602769'
          '837e3fc09a4fcfdc8a20c758083cfb99')
 
 package() {
