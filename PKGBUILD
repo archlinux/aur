@@ -8,7 +8,7 @@ pkgdesc="A new and very fast open source browser based on WebKit core, written i
 arch=('i686' 'x86_64')
 url="http://www.qupzilla.com"
 license=('GPL')
-depends=( 'qt5-base' 'qt5-script' 'qt5-tools' 'qt5-webengine')
+depends=( 'qt5-base' 'qt5-script' 'qt5-tools' 'qt5-webengine' 'qt5-x11extras')
 makedepends=('git')
 provides=('qupzilla')
 conflicts=('qupzilla' 'qupzilla-qt5-git')
@@ -19,7 +19,7 @@ pkgver() {
   cd "$_pkgname"
   ( set -o pipefail
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count qt5.5)" "$(git rev-parse --short qt5.5)"
   )
 }
 
