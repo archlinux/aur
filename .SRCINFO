@@ -31,7 +31,7 @@ pkgbase = gtk3-typeahead
 	depends = rest
 	depends = gtk-update-icon-cache
 	optdepends = libcanberra: gtk3-widget-factory demo
-	provides = gtk3
+	provides = gtk3=3.18.1
 	conflicts = gtk3
 	source = https://download.gnome.org/sources/gtk+/3.18/gtk+-3.18.1.tar.xz
 	source = settings.ini
