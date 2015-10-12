@@ -28,10 +28,10 @@ prepare() {
   rm -fr externalfilters/VSHelper.h externalfilters/VapourSynth.h
 
   echo "all:
-	  gcc -c -Os -g0 -std=gnu++11 -I. -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o IsCombedTIVTCport.o externalfilters/IsCombedTIVTCport.cpp
-	  gcc -c -Os -g0 -std=gnu++11 -I. -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o PlaneDifferenceFromPrevious.o externalfilters/PlaneDifferenceFromPrevious.cpp
-	  gcc -c -Os -g0 -std=gnu++11 -I. -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o PluginInit.o externalfilters/PluginInit.cpp
-	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so IsCombedTIVTCport.o PlaneDifferenceFromPrevious.o PluginInit.o" > Makefile
+	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o IsCombedTIVTCport.o externalfilters/IsCombedTIVTCport.cpp
+	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o PlaneDifferenceFromPrevious.o externalfilters/PlaneDifferenceFromPrevious.cpp
+	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o PluginInit.o externalfilters/PluginInit.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so *.o" > Makefile
 }
 
 build() {
