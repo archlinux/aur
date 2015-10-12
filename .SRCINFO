@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-awarpsharp2-git
 	pkgdesc = Plugin for Vapoursynth: awarpsharp2 (GIT version)
-	pkgver = v1.1.g6a83bb5
+	pkgver = v1.3.ge215425
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=172721
 	arch = i686
