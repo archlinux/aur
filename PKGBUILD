@@ -21,7 +21,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=1
+pkgrel=2
 rcnrel=armv7-x5
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
@@ -72,13 +72,13 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '634f531ddc13b19fd1bdf179631e278b3ab00440777f74a625ef3a59852c4d85'
-            'be040e3358f424ab56baaad6d13caeb3e5fdcbb87cb8b6eb09913364b5c019ca'
-            '650ca309d2fcea64f64aab0e32ebc5b6b073c7359d8624f6a340aec78350dadd'
+            '8ace26ce32289263670854955ef979f7e74a48b747aade9086f81f50944c8ac1'
+            'e08e7c9da8beb7551c3cf9741581df3bcd2483608756d69d82bc7be929f5047f'
+            'b1373f9f952f654df2fe858b65ff1ca1e81d7320f61a38aa58d0af9b67143817'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            '00296b1b7bca80dd088a31228c57a2fba39e15509cf3ac942fa9cdd53620eca5'
+            'becbabe5eb3817701f8199ed6cbfc30d1ab54188cb777d8014d6d06bc7ef375c'
             'SKIP'
             '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
             '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
@@ -193,7 +193,6 @@ _package() {
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  [ "${CARCH}" = "armv7h" ] && conflicts+=("${_replacesarchkernel}-uimage") && replaces+=("${_replacesarchkernel}-uimage")
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     depends+=('mkinitcpio>=0.7')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -208,13 +207,10 @@ _package() {
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  if [ "${CARCH}" = "armv7h" ]; then
-    mkdir -p "${pkgdir}/boot/dtbs/${pkgbase}"
-  fi
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   if [ "${CARCH}" = "armv7h" ]; then
+    make LOCALVERSION= INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs/${pkgbase}" dtbs_install
     cp arch/$KARCH/boot/zImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-    cp arch/$KARCH/boot/dts/*.dtb "${pkgdir}/boot/dtbs/${pkgbase}"
   elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
   fi
