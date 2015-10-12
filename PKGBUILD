@@ -2,14 +2,14 @@
 
 pkgname=zinc-git
 pkgver=0.3.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Zinc is a stand-alone version of sbt's incremental compiler."
 license="GPL"
 url='https://github.com/typesafehub/zinc'
 arch=('i686' 'x86_64')
 provides=('zinc')
 conflicts=('zinc')
-depends=('java-runtime', 'sbt')
+depends=('sbt')
 makedepends=('git')
 options=(!libtool)
 
@@ -40,10 +40,13 @@ package() {
         tar -xvf ${pkgname%-git}-$pkgver.tgz
         cd ${pkgname%-git}-$pkgver
         install -dm755 "$pkgdir/usr/bin"
-        if [[ "$(uname -i)" = "x86_64" ]] ; then
-          install -Dm755 "bin/ng/linux64/ng" "$pkgdir/usr/bin"
+        install -dm755 "$pkgdir/usr/bin/ng"
+        if [[ "$(uname -m)" = "x86_64" ]] ; then
+          install -dm755 "$pkgdir/usr/bin/ng/linux64"
+          install -Dm755 "bin/ng/linux64/ng" "$pkgdir/usr/bin/ng/linux64/"
         else
-          install -Dm755 "bin/ng/linux32/ng" "$pkgdir/usr/bin"
+          install -dm755 "$pkgdir/usr/bin/ng/linux32"
+          install -Dm755 "bin/ng/linux32/ng" "$pkgdir/usr/bin/ng/linux32/"
         fi
         install -dm644 "$pkgdir/usr/lib"
         for i in lib/*; do
