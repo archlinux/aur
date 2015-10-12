@@ -11,9 +11,7 @@ pkgbase = mtr-git
 	provides = mtr
 	conflicts = mtr
 	source = git+https://github.com/traviscross/mtr
-	source = 0001-curses-Fix-background-transparency-in-terminal.patch
 	sha256sums = SKIP
-	sha256sums = 4ff43c424870514568922244b2247a7052c14c15ca7cc649a23112dc3d7e274f
 
 pkgname = mtr-git
 

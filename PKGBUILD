@@ -12,19 +12,12 @@ makedepends=('git' 'ncurses')
 depends=('ncurses')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=('git+https://github.com/traviscross/mtr'
-        '0001-curses-Fix-background-transparency-in-terminal.patch')
-sha256sums=('SKIP'
-			'4ff43c424870514568922244b2247a7052c14c15ca7cc649a23112dc3d7e274f')
+source=('git+https://github.com/traviscross/mtr')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
-}
-
-prepare() {
-	cd $_pkgname
-	git am $srcdir/0001-curses-Fix-background-transparency-in-terminal.patch 
 }
 
 build() {
