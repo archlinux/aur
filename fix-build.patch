@@ -1,0 +1,12 @@
+diff -aur DMagick-ImageMagick_6.9.1/dmagick/DrawingContext.d fix/dmagick/DrawingContext.d
+--- DMagick-ImageMagick_6.9.1/dmagick/DrawingContext.d	2015-05-09 09:46:51.000000000 -0400
++++ fix/dmagick/DrawingContext.d	2015-10-12 16:42:49.638222683 -0400
+@@ -1012,7 +1012,7 @@
+ 
+ 		do
+ 		{
+-			filename = buildPath(tempPath, "DMagick."~to!(string)(Clock.currTime().stdTime));
++			filename = buildPath(tempPath, "DMagick."~std.conv.to!(string)(Clock.currTime().stdTime));
+ 
+ 			if ( image.magick !is null && toLower(image.magick) != "canvas" )
+ 				filename ~= "."~image.magick;
