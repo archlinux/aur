@@ -1,0 +1,14 @@
+pkgbase = perl-psed
+	pkgdesc = A perl stream editor.
+	pkgver = 5.20.3
+	pkgrel = 1
+	url = https://www.perl.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	source = http://cpansearch.perl.org/src/SHAY/perl-5.20.3/x2p/s2p.PL
+	md5sums = f9fa95fcc1da19dc773b820909c0d290
+
+pkgname = perl-psed
+
