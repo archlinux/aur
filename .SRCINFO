@@ -1,0 +1,15 @@
+pkgbase = python-ohmu
+	pkgdesc = View space usage in your terminal.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/paul-nechifor/ohmu
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	provides = python-ohmu
+	conflicts = python-ohmu-git
+	source = https://pypi.python.org/packages/source/o/ohmu/ohmu-0.1.0.tar.gz
+	sha256sums = ee979bd66bc7672ad3c73a5578be3fc9555cd2e08cb70a5af511a9b20ab14a81
+
+pkgname = python-ohmu
+
