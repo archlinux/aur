@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=udev-block-notify
-pkgver=0.7.8
+pkgver=0.7.9
 pkgrel=1
 pkgdesc='Notify about udev block events'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('markdown')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("http://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('896bf0e961bce190ac36dc0c31e6abcb36d962c2ae19260efcd5fbf50225ff29'
+sha256sums=('35dbdfa3d6779ea664ab73529aaa41e30488812d6bd304c6d791116dc37acf9f'
             'SKIP')
 
 build() {
