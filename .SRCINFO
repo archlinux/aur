@@ -35,6 +35,8 @@ pkgbase = gimp-painter-git
 	depends = pygtk
 	depends = dbus-glib
 	depends = gtk-doc
+	depends = gegl
+	depends = babl
 	depends = openexr>=1.6.1
 	depends = cairo>=1.12.2
 	depends = hicolor-icon-theme
