@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-/opt/epsxe/epsxe "$@"
+
+LD_LIBRARY_PATH+=:/opt/epsxe /opt/epsxe/epsxe "$@"

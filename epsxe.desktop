@@ -4,7 +4,7 @@ Name=ePSXe
 GenericName=ePSXe
 Comment=Enhanced PSX emulator
 Icon=/opt/epsxe/pixmaps/epsxe.png
-TryExec=/opt/epsxe/epsxe
-Exec=/opt/epsxe/epsxe
+#TryExec=/opt/epsxe/epsxe
+Exec=LD_LIBRARY_PATH+=:/opt/epsxe /opt/epsxe/epsxe
 Terminal=false
 Categories=Game;
