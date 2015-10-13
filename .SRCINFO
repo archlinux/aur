@@ -6,6 +6,7 @@ pkgbase = xenlism-wildfire-icon-theme-git
 	install = xenlism-wildfire.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = gtk-update-icon-cache
 	provides = xenlism-wildfire-icon-theme
 	conflicts = xenlism-wildfire-icon-theme

@@ -9,6 +9,7 @@ pkgrel=1
 pkgdesc="Minimalism And Realism Mix and match, Meego And iOS icon Style"
 url="https://xenlism.github.io/wildfire"
 depends=('gtk-update-icon-cache')
+makedepends=('git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 replaces=("${_pkgname}")
