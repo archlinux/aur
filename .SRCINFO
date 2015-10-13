@@ -1,5 +1,5 @@
 pkgbase = ucloner
-	pkgdesc = Ucloner
+	pkgdesc = UCloner is a backup/restore/clone tool. Modified for Arch Linux
 	pkgver = 10.10.2
 	pkgrel = 1
 	url = https://code.google.com/p/ucloner
