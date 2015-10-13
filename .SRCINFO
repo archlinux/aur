@@ -1,13 +1,13 @@
 pkgbase = veromix-git
 	pkgdesc = A mixer for the Pulseaudio sound server (both GTK and KDE versions)
 	pkgver = 2.4eeab4c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/veromix-plasmoid/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = kdesdk-dev-scripts
+	makedepends = kde-dev-scripts
 	depends = kdebindings-python
 	depends = kdebase-workspace
 	depends = python2-pyqt4
