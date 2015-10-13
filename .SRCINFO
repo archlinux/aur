@@ -1,0 +1,16 @@
+pkgbase = jdeserialize
+	pkgdesc = jdeserialize is a library that interprets Java serialized objects
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://code.google.com/p/jdeserialize/
+	arch = any
+	license = BSD3
+	depends = java-runtime
+	options = !strip
+	source = https://jdeserialize.googlecode.com/files/jdeserialize-1.2.jar
+	source = jdeserialize
+	md5sums = 41088bf799525826e54a3da3b295e472
+	md5sums = 37536c109f9348e8d9a529d5f8b6f69f
+
+pkgname = jdeserialize
+
