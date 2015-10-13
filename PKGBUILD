@@ -3,7 +3,7 @@
 
 _pkgbasename=gnome-themes-standard
 pkgname=lib32-$_pkgbasename
-pkgver=3.16.2
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="Default themes for the GNOME desktop (32-bit)"
 arch=(x86_64)
@@ -17,7 +17,7 @@ replaces=(lib32-gnome-themes)
 conflicts=(gnome-themes lib32-gnome-themes)
 options=('!emptydirs')
 source=(http://download.gnome.org/sources/$_pkgbasename/${pkgver:0:4}/$_pkgbasename-$pkgver.tar.xz)
-sha256sums=('59eb79a59d44b5cd8daa8de1e7559fb5186503dcd78e47d0b72cb896d8654b9f')
+sha256sums=('e646eb04c225282b7df7fff65741adaad4cf9ed2c12616b7310e7edd27d2bacb')
 
 build() {
   export CC="gcc -m32"
