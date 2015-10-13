@@ -10,7 +10,7 @@ arch=("any")
 license=("MIT")
 depends=("ffmpeg" "lua" "lua-dkjson" "lua-filesystem" "lua-llthreads2" "lua-penlight" "lua-socket" "slnunicode-git")
 optdepends=("chromaprint: Internet tagging")
-source=("https://bitbucket.org/ambrevar/$_pkgname/get/v$pkgver.tar.bz2")
+source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/ambrevar/$_pkgname/get/v$pkgver.tar.bz2")
 sha1sums=("3c9d3a9c666374fbd211c450cbe5ed9394cd3cc3")
 
 package() {
@@ -29,7 +29,5 @@ package() {
 	done
 
 	## Man page
-	install -dm755 "$pkgdir/usr/share/man/man1/"
-	gzip -c "$_pkgname.1" > "$pkgdir/usr/share/man/man1/$_pkgname.1.gz" && \
-		chmod 644 "$pkgdir/usr/share/man/man1/$_pkgname.1.gz"
+	install -Dm644 "$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
 }

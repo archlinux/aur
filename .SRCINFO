@@ -14,7 +14,7 @@ pkgbase = demlo
 	depends = lua-socket
 	depends = slnunicode-git
 	optdepends = chromaprint: Internet tagging
-	source = https://bitbucket.org/ambrevar/demlo/get/v1.7.tar.bz2
+	source = demlo-1.7.tar.bz2::https://bitbucket.org/ambrevar/demlo/get/v1.7.tar.bz2
 	sha1sums = 3c9d3a9c666374fbd211c450cbe5ed9394cd3cc3
 
 pkgname = demlo
