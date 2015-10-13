@@ -1,70 +1,57 @@
 # Maintainer: flu
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
 
-# Select favourite branch uncommenting only one of the following
-vcs_branch="next"
-#vcs_branch="master"
+GTK=3
 
-# Set USE_GDB=1 to build for gdb debugging, otherwise set USE_GDB=0
-USE_GDB=0
-
-_name="spacefm"
-pkgname="$_name-git"
-pkgver=20150309.994
-pkgrel=1
+pkgname="spacefm-git"
+pkgver=20150919
+pkgrel=2
 pkgdesc="A multi-panel tabbed file manager - git branch"
 arch=('i686' 'x86_64')
-url=("http://ignorantguru.github.com/$_name/")
+url=("https://github.com/IgnorantGuru/spacefm")
 license=('GPL3')
+conflicts=("spacefm")
+provides=("spacefm")
+install='spacefm.install'
+[[ USE_GDB = 1 ]] && options=('!strip')
 
 makedepends=('intltool' 'gettext')
-depends=('gtk3' 'shared-mime-info' 'desktop-file-utils' 'udev' 'ffmpegthumbnailer')
-optdepends=(
-            'lsof: device processes'
+depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'udevil' 'ffmpegthumbnailer')
+optdepends=('lsof: device processes'
             'eject: eject media'
             'wget: plugin download'
-            'ktsuss: perform as root functionality'
             'gksu: perform as root functionality'
-            'udevil-git: mount as non-root user and mount networks'
             'pmount: mount as non-root user'
-            'udisks: mount as non-root user'
             'udisks2: mount as non-root user'
             'startup-notification'
-)
-conflicts=("$_name" "$_name-gtk2")
-provides=("$_name")
-source=(git+https://github.com/IgnorantGuru/$_name#branch=$vcs_branch)
-install="install"
-sha512sums=(SKIP)
+            'spacefm-plugin-clamav')
 
-
-if (( USE_GDB == 1 )); then
-  options=('!strip')
+if [[ "$GTK" = 2 ]]; then
+    depends+=('gtk2'); _opts='--with-gtk2'
+else
+    depends+=('gtk3'); _opts='--with-gtk3'
 fi
 
+source=("git+https://github.com/IgnorantGuru/spacefm.git#branch=next")
+sha512sums=(SKIP)
+
 pkgver() {
-  cd   "$srcdir"/"$_name"
-  echo "$(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-list --count master)"
+    cd "$srcdir/spacefm"
+    git log -1 --format="%cd" --date=short |tr -d -
+}
+
+prepare() {
+    cd "$srcdir/spacefm"
+    ./autogen.sh --prefix=/usr $_opts
 }
 
 build() {
-
-  cd "$srcdir/$_name"
-
-
-  if (( USE_GDB == 1 )); then
-    export CFLAGS+="-g"
-  fi
-
-  # NOTE: To add a custom su program (mysu in this example), add:
-  # --with-preferable-sudo="mysu"  to configure line below.
-
-  ./configure --prefix=/usr --with-gtk3
-  make        -s
+    cd "$srcdir/spacefm"
+    make
 
 }
 
 package() {
-  cd   "${srcdir}/$_name"
-  make DESTDIR="${pkgdir}/"  install
+    cd "$srcdir/spacefm"
+    make DESTDIR="$pkgdir" install
 }

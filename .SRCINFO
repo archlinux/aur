@@ -1,33 +1,31 @@
 pkgbase = spacefm-git
 	pkgdesc = A multi-panel tabbed file manager - git branch
-	pkgver = 20150309.994
-	pkgrel = 1
-	url = http://ignorantguru.github.com/spacefm/
-	install = install
+	pkgver = 20150919
+	pkgrel = 2
+	url = https://github.com/IgnorantGuru/spacefm
+	install = spacefm.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
 	makedepends = gettext
-	depends = gtk3
 	depends = shared-mime-info
+	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	depends = udev
+	depends = udevil
 	depends = ffmpegthumbnailer
+	depends = gtk3
 	optdepends = lsof: device processes
 	optdepends = eject: eject media
 	optdepends = wget: plugin download
-	optdepends = ktsuss: perform as root functionality
 	optdepends = gksu: perform as root functionality
-	optdepends = udevil-git: mount as non-root user and mount networks
 	optdepends = pmount: mount as non-root user
-	optdepends = udisks: mount as non-root user
 	optdepends = udisks2: mount as non-root user
 	optdepends = startup-notification
+	optdepends = spacefm-plugin-clamav
 	provides = spacefm
 	conflicts = spacefm
-	conflicts = spacefm-gtk2
-	source = git+https://github.com/IgnorantGuru/spacefm#branch=next
+	source = git+https://github.com/IgnorantGuru/spacefm.git#branch=next
 	sha512sums = SKIP
 
 pkgname = spacefm-git
