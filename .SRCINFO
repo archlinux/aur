@@ -1,0 +1,16 @@
+pkgbase = ttf-oldenglish5
+	pkgdesc = A basic decorative medieval style ttf font by Dieter Steffmann
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.steffmann.de/
+	install = ttf.install
+	arch = any
+	license = Free
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://moorstation.org/typoasis/designers/steffmann/fonts/o/OldEnglFive.zip
+	md5sums = de5c9f9324cf28ffd614693cee6795ec
+
+pkgname = ttf-oldenglish5
+
