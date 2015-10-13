@@ -1,16 +1,16 @@
 pkgbase = ruby-rmonitor
 	pkgdesc = A tool for creating monitor profiles that are easily invoked.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/badeball/rmonitor
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = xorg-xrandr
-	noextract = rmonitor-2.0.0.gem
+	noextract = rmonitor-2.0.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rmonitor-2.0.0.gem
-	sha1sums = 9c660dd0a82cfc159533c1a7f5b369da86043513
+	source = https://rubygems.org/downloads/rmonitor-2.0.1.gem
+	sha1sums = a4b43e8b9d1b5f892efa9aeae172f6f22946815e
 
 pkgname = ruby-rmonitor
 
