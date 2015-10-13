@@ -1,7 +1,24 @@
 diff -Naur a/program/functions.py b/program/functions.py
 --- a/program/functions.py	2010-12-04 17:18:57.000000000 +0000
-+++ b/program/functions.py	2015-10-13 06:12:42.062145855 +0000
-@@ -490,16 +490,16 @@
++++ b/program/functions.py	2015-10-13 07:12:20.605894444 +0000
+@@ -279,7 +279,7 @@
+ def make_system_dirs( target_root ):
+     print _('Making system dirs ...')
+     errors = []
+-    for each in ( '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0' ):
++    for each in ( '/run', '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0' ):
+         tmp = commands.getstatusoutput( 'mkdir -p %s'%(target_root + each)  )
+         if tmp[0] != 0:
+             errors.append( _('Error occurred when mkdir %s , you need to make it manually.')%(target_root + each) )
+@@ -438,6 +438,7 @@
+     defaultExcludes.append( '/proc' )
+     defaultExcludes.append( '/sys' )
+     defaultExcludes.append( '/tmp' )
++    defaultExcludes.append( '/run' )
+     defaultExcludes.append( '/mnt' )
+     defaultExcludes.append( '/media' )
+     
+@@ -490,16 +491,16 @@
                  defaultExcludes.append( '/lib/modules/' + kernelVersion + '/volatile/' + each )
  
      # /var/cache/apt/archives/*.deb
