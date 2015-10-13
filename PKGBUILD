@@ -11,7 +11,7 @@
 #
 
 pkgname=codelite
-pkgver=8.1
+pkgver=9.0
 pkgrel=1
 pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ optdepends=('graphviz: callgraph visualization')
 source=(https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz
 	http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
 
-md5sums=('363ac51e6cf81f77ed9905483d7ecd45'
+md5sums=('9724f3048934544d13febde5140c7ecf'
          '093485fcae62073ca8d0ba6ff3a5cb69')
 
 #if [[ "$CARCH" == 'i686' ]]; then
