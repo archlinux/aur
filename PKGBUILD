@@ -1,4 +1,4 @@
-# Contributor: Cilyan Olowen <gaknar@gmail.com>
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _pkgname=xls2csv
 pkgname=perl-xls2csv
@@ -18,7 +18,8 @@ build() {
   cd "${srcdir}/xls2csv-${pkgver}"
 
   # install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+    perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
