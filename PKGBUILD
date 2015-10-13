@@ -2,7 +2,7 @@
 
 pkgname="indivisible-prototype"
 pkgver="1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Action/RPG prototype"
 arch=('any')
 url="http://indivisiblegame.com"
