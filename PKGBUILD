@@ -1,12 +1,12 @@
 pkgname=flvstreamer
 pkgver=2.1c1
-pkgrel=4
+pkgrel=5
 pkgdesc="Open source command-line RTMP client"
 url="http://savannah.nongnu.org/projects/flvstreamer"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc')
-source=("http://mirrors.zerg.biz/nongnu/flvstreamer/source/$pkgname-$pkgver.tar.gz")
+source=("http://download.savannah.gnu.org/releases/flvstreamer/source/$pkgname-$pkgver.tar.gz")
 md5sums=('4866387328ad89c957af90a2478e5556')
 
 build() {
