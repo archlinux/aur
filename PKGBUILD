@@ -4,13 +4,17 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=4.90.90.r22137.f31f5dd
+pkgver=4.90.90.r22909.b21188a
 pkgrel=1
 pkgdesc="A C/C++ development environment for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
 license=('GPL')
-depends=('qt5-tools' 'kdevplatform-git' 'krunner' 'hicolor-icon-theme')
+depends=('qt5-tools'
+         'kdevplatform-git'
+         'krunner'
+         'hicolor-icon-theme'
+         )
 optdepends=('krunner: For enabling the KDevelop runner'
             'plasma-framework: Plasma libraries for enabling the plasma addons'
             'okteta: hex editor integration'
@@ -22,8 +26,16 @@ optdepends=('krunner: For enabling the KDevelop runner'
             'qt4-doc: qt4 documentation integration'
             'qt5-doc: qt5 documentation integration'
             'cmake: build system'
-            'kdevelop-pg-qt-git: Parser Generator')
-makedepends=('extra-cmake-modules' 'git' 'okteta' 'krunner' 'plasma-framework' 'kdevelop-pg-qt-git')
+            'kdevelop-pg-qt-git: Parser Generator'
+            'clang: LLVM compiler plugin'
+            )
+makedepends=('extra-cmake-modules'
+             'git'
+             'okteta'
+             'krunner'
+             'plasma-framework'
+             'kdevelop-pg-qt-git'
+             'clang')
 conflicts=('kdevelop')
 source=('git://anongit.kde.org/kdevelop.git')
 sha1sums=('SKIP')
