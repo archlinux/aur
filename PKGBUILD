@@ -27,7 +27,7 @@ build() {
 	autoreconf --install
 	export oocairo_cv_lua_name=lua5.1
 	./configure --prefix=/usr
-	make || return 1
+	make
 }
 
 package() {
