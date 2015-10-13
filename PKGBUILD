@@ -4,7 +4,7 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevplatform-git
-pkgver=1.90.90.r12636.92b1c08
+pkgver=4.90.90.r12832.1c43d5e
 pkgrel=1
 pkgdesc="A C/C++ development platform for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=('qt5-quick1'
          'knewstuff'
          'knotifyconfig'
          'grantlee-qt5'
-         'libkomparediff2-git'
+         'libkomparediff2'
          'hicolor-icon-theme'
          )
 optdepends=('kompare-git: difference checking'
