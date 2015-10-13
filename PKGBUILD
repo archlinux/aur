@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-beta-bin
 _pkgname=thunderbird-beta
-pkgver=42.0b1
+pkgver=42.0b2
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -27,8 +27,8 @@ source_x86_64=("https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pk
 md5sums=('fe18423c55d549722870573695b3bd60'
          '7f826c0d64cb62f9fed7e16221cb2f00'
          '5a53179d14ae9631b7afe5e4d0fc0b25')
-md5sums_i686=('d8d566f2b1485d7b05ba40ec453d29aa')
-md5sums_x86_64=('392fc6516bd82ed2f0fa71cd2da50967')
+md5sums_i686=('4225a027e116408e93fec3131d18319e')
+md5sums_x86_64=('4310062fef3ded74d010e17b1cf90852')
 # RC
 if [[ $_build = ? ]]; then
   source_i686=("https://ftp.mozilla.org/pub/mozilla.org/thunderbird/candidates/$_major-candidates/build$_build/linux-i686/en-US/thunderbird-$_major.tar.bz2")
