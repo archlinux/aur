@@ -2,16 +2,16 @@
 
 _pkgname=lua-llthreads2
 pkgname=lua51-llthreads2
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="This is full dropin replacement for llthreads library"
 arch=("i686" "x86_64")
 url="http://github.com/moteus/lua-llthreads2/"
 license=("MIT")
 makedepends=("luarocks5.1")
 depends=("lua51")
-source=("http://github.com/moteus/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=("f20833d7a4c7560895b5d9ad2a3c24ae")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/moteus/$_pkgname/archive/v$pkgver.tar.gz")
+md5sums=('66fdbf59ade16c2b53610dcb02bddfe6')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
