@@ -4,7 +4,7 @@
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
 pkgver=r679.a81f7bc
-pkgrel=1
+pkgrel=2
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
 arch=( 'x86_64' 'i686' )
@@ -35,7 +35,8 @@ build() {
 }
 
 package_vdev-git() {
-	depends=( 'util-linux' 'kmod' 'iproute2' 'sed' 'grep' 'device-mapper' 'lvm2' 'dash' )
+	depends=( 'util-linux' 'kmod' 'iproute2' 'sed' 'grep' 'dash' )
+	optdepends=( 'lvm2' 'device-mapper' )
 	provides=( 'vdev' 'udev' )
 	conflicts=( 'vdev' )
 
