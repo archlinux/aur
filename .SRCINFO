@@ -1,7 +1,7 @@
 pkgbase = indivisible-prototype
 	pkgdesc = Action/RPG prototype
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://indivisiblegame.com
 	arch = any
 	license = custom
