@@ -13,12 +13,12 @@ options=('!emptydirs')
 install=$pkgname.install
 source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.service' 'vmware-usbarbitrator.service' 'vmware-workstation.service'
         # Workstation Pro/Player 12.0.0
-	    'vmci-12.0.0-4.2.patch'
+        'vmci-12.0.0-4.2.patch'
         # Workstation 11.1.2 / Player (Pro) 7.1.2
-	    'vmblock-11.1.2-4.2.patch'
-		'vmmon-11.1.2-4.2.patch'
-	    'vmnet-11.1.2-4.2.patch'
-	    'vsock-11.1.2-4.2.patch'
+        'vmblock-11.1.2-4.2.patch'
+        'vmmon-11.1.2-4.2.patch'
+        'vmnet-11.1.2-4.2.patch'
+        'vsock-11.1.2-4.2.patch'
         # Workstation 11.1.0 / Player (Pro) 7.1.0
         'vmnet-11.1.0-3.19.patch'
         # Workstation 10.0.6 / Player (Plus) 6.0.6
