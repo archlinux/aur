@@ -3,7 +3,7 @@
 _pkgname=xls2csv
 pkgname=perl-xls2csv
 pkgver=1.07
-pkgrel=1
+pkgrel=2
 pkgdesc="script that recodes a spreadsheet's charset and saves as CSV"
 arch=('any')
 url="http://search.cpan.org/~ken/xls2csv/script/xls2csv"

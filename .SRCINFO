@@ -1,7 +1,7 @@
 pkgbase = perl-xls2csv
 	pkgdesc = script that recodes a spreadsheet's charset and saves as CSV
 	pkgver = 1.07
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/~ken/xls2csv/script/xls2csv
 	arch = any
 	license = GPL
