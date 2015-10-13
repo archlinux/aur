@@ -1,6 +1,6 @@
 pkgbase = libkexiv2-frameworks-git
 	pkgdesc = A wrapper around Exiv2 library to manipulate pictures metadata as EXIF IPTC and XMP. KF5 Frameworks branch. (GIT version)
-	pkgver = 5.0.0.r733.bba8e5f
+	pkgver = 5.0.0.r751.335e133
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libkexiv2-frameworks-git
 	makedepends = kdoctools
 	makedepends = git
 	makedepends = python
-	depends = ktextwidgets
+	depends = qt5-base
 	depends = exiv2
 	conflicts = libkexiv2
 	source = git://anongit.kde.org/libkexiv2#branch=frameworks
