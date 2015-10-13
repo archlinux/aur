@@ -3,8 +3,8 @@
 
 _pkgbasename=librsvg
 pkgname=lib32-$_pkgbasename
-pkgver=2.40.9
-pkgrel=5
+pkgver=2.40.11
+pkgrel=1
 #epoch=1
 pkgdesc="A SVG viewing library (32-bit)"
 arch=(x86_64)
@@ -16,12 +16,12 @@ url="https://live.gnome.org/LibRsvg"
 #install=librsvg.install
 source=("http://ftp.gnome.org/pub/gnome/sources/$_pkgbasename/${pkgver:0:4}/$_pkgbasename-$pkgver.tar.xz"
         librsvg-gtk-optional.patch::https://bug712693.bugzilla-attachments.gnome.org/attachment.cgi?id=260258)
-sha256sums=('13964c5d35357552b47d365c34215eee0a63bf0e6059b689f048648c6bf5f43a'
+sha256sums=('611ac0f544debd0c9bf1ef5509c990d218e83dd1d8c83297075c4b29796a2e02'
             '060ad4965c51d334da543970f959022d519bd3e714c1ee22c4cf9081e875c1e3')
 
 prepare() {
   cd $_pkgbasename-$pkgver
-  sed s/configure.in/configure.ac/ <../librsvg-gtk-optional.patch | patch -p1
+  sed -e s/configure.in/configure.ac/ -e s/GTK\ 3.0\:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ /GTK\+\ \$GTK3_REQUIRED\ or\ later\:\ \ \ \ \ \ \ \ \ \ \ / <../librsvg-gtk-optional.patch | patch -p1
   autoconf
   aclocal
   automake

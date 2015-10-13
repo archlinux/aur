@@ -1,7 +1,7 @@
 pkgbase = lib32-librsvg
 	pkgdesc = A SVG viewing library (32-bit)
-	pkgver = 2.40.9
-	pkgrel = 5
+	pkgver = 2.40.11
+	pkgrel = 1
 	url = https://live.gnome.org/LibRsvg
 	arch = x86_64
 	license = LGPL
@@ -15,9 +15,9 @@ pkgbase = lib32-librsvg
 	depends = lib32-libcroco
 	depends = librsvg
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/librsvg/2.40/librsvg-2.40.9.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/librsvg/2.40/librsvg-2.40.11.tar.xz
 	source = librsvg-gtk-optional.patch::https://bug712693.bugzilla-attachments.gnome.org/attachment.cgi?id=260258
-	sha256sums = 13964c5d35357552b47d365c34215eee0a63bf0e6059b689f048648c6bf5f43a
+	sha256sums = 611ac0f544debd0c9bf1ef5509c990d218e83dd1d8c83297075c4b29796a2e02
 	sha256sums = 060ad4965c51d334da543970f959022d519bd3e714c1ee22c4cf9081e875c1e3
 
 pkgname = lib32-librsvg
