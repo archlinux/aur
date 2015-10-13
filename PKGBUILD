@@ -2,7 +2,7 @@
 # Maintainer: Dmitry V. Luciv <dluciv@dluciv.name>
 
 pkgname=sstp-client-svn-stable
-pkgrel=8
+pkgrel=9
 pkgver=1.0.9 # see no need to make pkgver() function now
 pkgdesc="SSTP client tested SVN experimantally stable revision"
 arch=("i686" "x86_64")
@@ -10,8 +10,8 @@ url="http://sstp-client.sourceforge.net/"
 license=('GPL2')
 conflicts=()
 provides=('sstp-client-svn-stable')
-depends=('ppp=2.4.7' 'openssl')
-makedepends=('gcc' 'ppp=2.4.7' 'subversion')
+depends=('ppp=2.4.7' 'openssl' 'libevent')
+makedepends=('gcc' 'ppp=2.4.7' 'subversion' 'libevent')
 optdepends=()
 install=${pkgname}.install
 
@@ -32,7 +32,7 @@ build() {
   cd "$srcdir/$pkgname"
 
   msg "Patching to actual ppp..."
-  patch -p0 -i ../../actual_ppp_version.diff
+  patch -p0 -i ../actual_ppp_version.diff
 
   msg "Begin make..."
   ./configure --prefix=${_pfx} --localstatedir=${_lsd}
