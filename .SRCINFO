@@ -1,0 +1,25 @@
+pkgbase = xtheme
+	pkgdesc = A fork of the atheme IRC services
+	pkgver = 7.3.3
+	pkgrel = 1
+	url = http://www.xtheme.org/Xtheme/
+	install = xtheme.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = bash
+	optdepends = pcre: for pcre support
+	optdepends = perl: for Perl support
+	optdepends = cracklib: cracklib support in NickServ
+	optdepends = libldap: LDAP support
+	conflicts = libmowgli
+	conflicts = atheme
+	backup = etc/xtheme/xtheme.conf
+	backup = etc/xtheme/xtheme.motd
+	source = https://github.com/XthemeOrg/Xtheme/releases/download/7.3.3/Xtheme-7.3.3.tar.bz2
+	source = system.service
+	md5sums = 6a11f4aeac6d730a7001a0647b24f527
+	md5sums = SKIP
+
+pkgname = xtheme
+

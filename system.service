@@ -1,0 +1,12 @@
+[Unit]
+Description=Xtheme IRC services
+
+[Service]
+Type=simple
+User=xtheme
+Group=xtheme
+ExecStart=/usr/bin/xtheme-services -n -p /var/lib/xtheme/pid
+Restart=always
+
+[Install]
+WantedBy=network.target

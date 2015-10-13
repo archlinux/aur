@@ -1,0 +1,20 @@
+create_user() {
+	getent group xtheme &>/dev/null \
+		|| groupadd -g 142 xtheme
+	
+	getent passwd xtheme &>/dev/null \
+		|| useradd  xtheme -u 142 -g 142 \
+			-d /var/lib/xtheme -s /bin/false
+}
+
+post_install() {
+	create_user
+}
+
+post_upgrade() {
+	create_user
+}
+
+post_remove() {
+	getent passwd xtheme &>/dev/null && userdel xtheme
+}
