@@ -2,7 +2,7 @@
 # Based on the munt-git package from Franco Tortoriello
 
 pkgname=munt
-pkgdesc='Software synthesiser emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I'
+pkgdesc='Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I'
 pkgver=1.5.0
 pkgrel=1
 arch=('i686' 'x86_64')

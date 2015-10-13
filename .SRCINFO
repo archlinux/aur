@@ -1,5 +1,5 @@
 pkgbase = munt
-	pkgdesc = Software synthesiser emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I
+	pkgdesc = Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I
 	pkgver = 1.5.0
 	pkgrel = 1
 	url = http://munt.sourceforge.net
