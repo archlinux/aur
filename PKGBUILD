@@ -1,12 +1,12 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=jdeserialize
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='jdeserialize is a library that interprets Java serialized objects'
 arch=('any')
 url="https://code.google.com/p/jdeserialize/"
 license=('BSD3')
-depends=('java-runtime')
+depends=('java-environment')
 options=('!strip')
 source=("https://jdeserialize.googlecode.com/files/${pkgname}-${pkgver}.jar"
         'jdeserialize')
