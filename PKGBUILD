@@ -8,7 +8,7 @@ arch=('any')
 url="http://indivisiblegame.com"
 options=('!strip' 'staticlibs')
 license=("custom")
-#depends=("sdl_image" "libgl" "sdl_mixer" "glu" "curl")
+depends=("sdl_image" "libgl" "sdl_mixer" "glu" "curl")
 source=("http://www.labzerogames.com/indivisible-prototype_linux.tar.gz")
 md5sums=("SKIP")
 
