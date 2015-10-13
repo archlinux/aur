@@ -1,6 +1,6 @@
 pkgbase = skype-desktop-bin
 	pkgdesc = An unofficial client of Skype for Linux, running on top of Node Webkit.
-	pkgver = 664fc5b
+	pkgver = 19.664fc5b
 	pkgrel = 1
 	url = https://github.com/haskellcamargo/skype-unofficial-client
 	arch = i686

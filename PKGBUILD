@@ -1,7 +1,7 @@
 # Maintainer: Trevor <assviolat0r at live dot com>
 # Co-maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=skype-desktop-bin
-pkgver=664fc5b
+pkgver=19.664fc5b
 pkgrel=1
 pkgdesc="An unofficial client of Skype for Linux, running on top of Node Webkit."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ _gitname=skype-unofficial-client
 
 pkgver () {
 	cd $_gitname
-	echo $(git describe --always | sed 's/-/./g')
+	echo $(git rev-list --count HEAD).$(git describe --always | sed 's/-/./g')
 }
 
 package() {
