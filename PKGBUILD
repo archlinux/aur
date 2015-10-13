@@ -7,6 +7,7 @@ arch=(any)
 license=('MIT')
 url="http://www.gnome.org/projects/NetworkManager/"
 depends=('networkmanager' 'ypbind-mt')
+backup=('etc/yp.conf')
 source=("10-ypconf" "LICENSE")
 md5sums=('5f1c1e694d157801b5119d5b6cf44283'
          '69120da70cc3f06557abc2d5575eee41')

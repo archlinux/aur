@@ -7,6 +7,7 @@ pkgbase = networkmanager-dispatcher-ypconf
 	license = MIT
 	depends = networkmanager
 	depends = ypbind-mt
+	backup = etc/yp.conf
 	source = 10-ypconf
 	source = LICENSE
 	md5sums = 5f1c1e694d157801b5119d5b6cf44283
