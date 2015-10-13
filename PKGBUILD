@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('libxkbcommon-x11' 'libxtst' 'qt5-base' 'sdl2')
 makedepends=('cmake' 'gettext' 'itstool' 'qt5-tools')
 install="${pkgname}.install"
-source=("https://github.com/Ryochan7/antimicro/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ryochan7/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('cf6ae291684155605a9b700af9371810')
 
 build() {

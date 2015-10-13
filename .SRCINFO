@@ -15,7 +15,7 @@ pkgbase = antimicro
 	depends = libxtst
 	depends = qt5-base
 	depends = sdl2
-	source = https://github.com/Ryochan7/antimicro/archive/2.20.tar.gz
+	source = antimicro-2.20.tar.gz::https://github.com/Ryochan7/antimicro/archive/2.20.tar.gz
 	md5sums = cf6ae291684155605a9b700af9371810
 
 pkgname = antimicro
