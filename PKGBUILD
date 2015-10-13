@@ -1,10 +1,10 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.18.1
+pkgver=3.18.2
 pkgrel=1
 conflicts=(gtk3)
-provides=('gtk3=3.18.1')
+provides=('gtk3=3.18.2')
 pkgdesc="GTK+ 3 with typeahead feature enabled for the file chooser widget"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
@@ -17,7 +17,7 @@ makedepends=(gobject-introspection libcanberra)
 license=(LGPL)
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
 	settings.ini typeahead.patch)
-sha256sums=('bd279cbb19f3fda074c89cf0edf9e7d95eee8b889b6889d16c2f7f0f6bdeba92'
+sha256sums=('5dbec561c4a00070073bf9cf4cfdd61fab4a14c8ff5b15d700bd378f8185e152'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'aafa56d981ef408f85b103ded3e15920ab96cda74e7501f970184dae38f8f791')
 
