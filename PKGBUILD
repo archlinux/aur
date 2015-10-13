@@ -6,7 +6,7 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.11
-pkgrel=5
+pkgrel=6
 _rev=cbc4db14444c91f4f4b03aa1b228c2d51dacea6b
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
@@ -20,6 +20,13 @@ sha256sums=('SKIP')
 
 prepare() {
   cd $pkgbase
+
+  # Revert change that breaks rejoining multi-user chats
+  # https://developer.pidgin.im/ticket/16724
+  {
+    hg diff -c 136a5e95a1ad
+    hg diff -c 187b51ce9922
+  } | patch -Rp1
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
