@@ -1,6 +1,6 @@
 # Maintainer: K1412 <jonathan@opensides.be>
 pkgname=fusiondirectory-plugin-database-connector
-pkgver=1.0.9
+pkgver=1.0.9.1
 pkgrel=1
 pkgdesc="Plugin that add database-connector for FusionDirectory."
 arch=("any")
@@ -9,7 +9,7 @@ license=("LGPL")
 depends=("fusiondirectory>=$pkgver")
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('7c761f082278bfdcc5e9130e8fa4d3a0' '76f56b46c20dbf474d5d4030554fc6ba')
+md5sums=('9343182b92e3e8a2a14654ec37a16117' '53720c4bef3494d549ac0986f05ccfb1')
 
 prepare() {
   # In srcdir
