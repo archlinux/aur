@@ -1,5 +1,5 @@
 pkgbase = spl-dkms-git
-	pkgver = 0.6.5.2_0_g2fd6834
+	pkgver = 0.6.5.2_r0_g2fd6834
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = i686
@@ -15,7 +15,7 @@ pkgname = spl-dkms-git
 	pkgdesc = Solaris Porting Layer kernel modules.
 	install = spl.install
 	depends = dkms
-	depends = spl-utils-dkms-git=0.6.5.2_0_g2fd6834-1
+	depends = spl-utils-dkms-git=0.6.5.2_r0_g2fd6834-1
 	provides = spl-dkms
 	conflicts = spl-git
 	conflicts = spl-lts

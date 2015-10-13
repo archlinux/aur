@@ -5,7 +5,7 @@
 
 pkgbase="spl-dkms-git"
 pkgname=("spl-dkms-git" "spl-utils-dkms-git")
-pkgver=0.6.5.2_0_g2fd6834
+pkgver=0.6.5.2_r0_g2fd6834
 pkgrel=1
 license=('GPL')
 makedepends=("git")
@@ -18,7 +18,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/spl"
-    git describe --match "spl-*" --long --tags | sed -e 's|spl-||g' -e 's|[-: ]|_|g'
+    git describe --match "spl-*" --long --tags | sed -e 's|spl-||' -e 's|-\([0-9]*-g\)|-r\1|' -e 's|[-: ]|_|g'
 }
 
 build() {
@@ -48,7 +48,7 @@ package_spl-dkms-git() {
     install -d ${pkgdir}/usr/src
     cp -a ${srcdir}/spl ${pkgdir}/usr/src/spl-${pkgver%%_*}
     cd ${pkgdir}/usr/src/spl-${pkgver%%_*}
-    rm -rf .git .gitignore
+    rm -rf .git*
     make clean
 }
 
