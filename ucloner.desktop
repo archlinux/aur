@@ -2,7 +2,7 @@
 Categories=Utility;
 Comment[zh_CN]=Linux系统备份工具
 Comment=Linux系统备份工具
-Exec=ucloner
+Exec=gksu ucloner
 GenericName[zh_CN]=
 GenericName=
 Icon=ucloner.png
