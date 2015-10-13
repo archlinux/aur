@@ -1,6 +1,6 @@
 pkgbase = dnf-plugins-extras
 	pkgdesc = Extras DNF Plugins
-	pkgver = 0.0.10.1
+	pkgver = 0.0.11.1
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf-plugins-extras
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = dnf-plugins-extras
 	optdepends = createrepo_c: for local plugin
 	optdepends = snapper: for snapper plugin
 	optdepends = tracer: for tracer plugin
-	source = https://github.com/rpm-software-management/dnf-plugins-extras/archive/dnf-plugins-extras-0.0.10-1.tar.gz
-	md5sums = 4d2b3199f6617400c0735193cddc2d68
+	source = https://github.com/rpm-software-management/dnf-plugins-extras/archive/dnf-plugins-extras-0.0.11-1.tar.gz
+	md5sums = 6cf1e2b70f91843daeb2be08297be351
 
 pkgname = dnf-plugins-extras
 

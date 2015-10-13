@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-_pkgver=0.0.10
+_pkgver=0.0.11
 _rpmrel=1
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
@@ -14,7 +14,7 @@ optdepends=('createrepo_c: for local plugin'
             'snapper: for snapper plugin'
             'tracer:  for tracer plugin')
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('4d2b3199f6617400c0735193cddc2d68')
+md5sums=('6cf1e2b70f91843daeb2be08297be351')
 
 prepare() {
 	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
