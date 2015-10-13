@@ -6,12 +6,12 @@
 
 pkgname=devscripts
 pkgver=2.15.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('any')
 url="http://packages.qa.debian.org/d/devscripts.html"
 license=('GPL2')
-depends=('dpkg' 'wget' 'sed' 'perl' 'debianutils' 'debhelper')
+depends=('dpkg' 'wget' 'sed' 'perl' 'debianutils' 'debhelper' 'perl-timedate')
 optdepends=('sensible-utils: for sensible alternative selection')
 makedepends=('po4a' 'perl-timedate' 'perl-libwww' 'docbook-xsl' 'perl-file-desktopentry' 'perl-file-basedir' 'perl-parse-debcontrol' 'python-setuptools')
 options=('!makeflags')

@@ -1,7 +1,7 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
 	pkgver = 2.15.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.qa.debian.org/d/devscripts.html
 	install = devscripts.install
 	arch = any
@@ -20,6 +20,7 @@ pkgbase = devscripts
 	depends = perl
 	depends = debianutils
 	depends = debhelper
+	depends = perl-timedate
 	optdepends = sensible-utils: for sensible alternative selection
 	options = !makeflags
 	source = http://ftp.debian.org/debian/pool/main/d/devscripts/devscripts_2.15.8.tar.xz
