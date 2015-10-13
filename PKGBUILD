@@ -6,27 +6,32 @@ pkgdesc="Ucloner"
 arch=('any')
 url="https://code.google.com/p/ucloner"
 license=('GPL')
-depends=('python2' 'vte' 'squashfs-tools' 'zenity' 'gksu')
+depends=('python2' 'vte' 'squashfs-tools' 'zenity')
+optdepends=('jfsutils' 'reiserfsprogs' 'xfsprogs' 'gksu' 'kdesu')
 source=(
     'https://ucloner.googlecode.com/files/UCloner-10.10.2-beta1.tar.gz'
     'ucloner.sh'
     'ucloner.desktop'
     'ucloner.png'
     'modify_path.patch'
+    'fix_package_querying.patch'
 )
 
 md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
-         'd5143c3b0431044beb13f933a3d76ceb'
-         '5ffe4317c280d220416e24317d0f6198'
+         'd0cf77f94dea916577f41952221fafa3'
+         '45bb2de134f1caa4d0f19d975d5274f4'
          '1f913fe9ca34481134bc36e1045e9a20'
-         '3e6d3d3005380a888b7a97d2b79880cf')
+         '3e6d3d3005380a888b7a97d2b79880cf'
+         'c84c4aaba3bf5c7fbb6126190cb341ca')
 
 
 prepare() {
     cd "${srcdir}/UCloner-$pkgver-$rev"
     patch -p1 < "${srcdir}/modify_path.patch"
+    patch -p1 < "${srcdir}/fix_package_querying.patch"
     cd program
     rm *.pyc
+    find -name '*.py' | xargs sed -i 's|#!/usr/bin/python$|#!/usr/bin/env python2|'
     python2 -m compileall .
 }
 

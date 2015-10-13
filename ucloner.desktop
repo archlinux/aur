@@ -1,9 +1,20 @@
 [Desktop Entry]
-Name=UCloner
-Comment=Linux System Backup Utility
-Comment[zh_CN]=Linux系统备份工具
-Exec=gksu ucloner %F
-Icon=ucloner.png
-Type=Application
 Categories=Utility;
+Comment[zh_CN]=Linux系统备份工具
+Comment=Linux系统备份工具
+Exec=ucloner
+GenericName[zh_CN]=
+GenericName=
+Icon=ucloner.png
+MimeType=
+Name[zh_CN]=UCloner
+Name=UCloner
+Path=
+StartupNotify=true
 Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

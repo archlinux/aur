@@ -1,0 +1,13 @@
+diff -Naur a/program/functions.py b/program/functions.py
+--- a/program/functions.py	2010-12-04 17:18:57.000000000 +0000
++++ b/program/functions.py	2015-10-13 09:34:01.093513450 +0000
+@@ -57,7 +57,7 @@
+-    a = commands.getoutput( 'dpkg -l' )
++    a = commands.getoutput( 'pacman -Q' )
+     a = a.split( '\n' )
+     for each in a:
+-        if each[0:2] == 'ii' and each.split()[1] == pkg_name:
++        if each.split()[0] == pkg_name:
+             return True
+             
+     return False
