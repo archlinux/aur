@@ -10,11 +10,12 @@ arch=('i686' 'x86_64')
 url="http://decibel.silent-blade.org/"
 license=('GPL')
 makedepends=('bzr')
-depends=('gstreamer0.10-python' 'mutagen' 'pygtk' 'python2-dbus' 'python2-notify')
+depends=('desktop-file-utils' 'gstreamer0.10-python' 'mutagen' 'pygtk' 'python2-dbus' 'python2-notify')
 #cddb-py
 optdepends=('python2-imaging: to display coverart')
 provides=($_pkgname)
 conflicts=($_pkgname)
+install=$pkgname.install
 source=($pkgname::bzr+https://code.launchpad.net/decibel-audio-player/trunk)
 md5sums=('SKIP')
 
