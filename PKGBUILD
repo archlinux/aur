@@ -1,7 +1,7 @@
 # Maintainer: Guidobelix <guidobelix at hotmail dot it>
 
 pkgname=archlinux-themes-sddm
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Adaptation to SDDM of archlinux-themes-kdm"
 arch=('any')
@@ -10,7 +10,7 @@ license=('CCPL:cc-by-sa')
 depends=('sddm')
 install="$pkgname.install"
 source="https://github.com/Guidobelix/archlinux-themes-sddm/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2"
-md5sums='ef56ca40150945838fd45edfc5513ab5'
+md5sums='4481d85d8635b410b29bae64fbdc7cd9'
 
 package() {
   cd $pkgname-$pkgver

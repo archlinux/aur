@@ -1,6 +1,6 @@
 pkgbase = archlinux-themes-sddm
 	pkgdesc = Adaptation to SDDM of archlinux-themes-kdm
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://www.archlinux.org/
 	install = archlinux-themes-sddm.install
@@ -8,7 +8,7 @@ pkgbase = archlinux-themes-sddm
 	license = CCPL:cc-by-sa
 	depends = sddm
 	source = https://github.com/Guidobelix/archlinux-themes-sddm/releases/download/v1.0/archlinux-themes-sddm-1.0.tar.bz2
-	md5sums = ef56ca40150945838fd45edfc5513ab5
+	md5sums = 4481d85d8635b410b29bae64fbdc7cd9
 
 pkgname = archlinux-themes-sddm
 
