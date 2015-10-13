@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-routes-tiny'
-pkgver='0.11'
+pkgver='0.14'
 pkgrel='1'
 pkgdesc="Routes"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/routes-tiny'
-source=('http://search.cpan.org/CPAN/authors/id/V/VT/VTI/routes-tiny-0.11.tar.gz')
-md5sums=('1c0c6c870840ea0ffeb4ef6db92a0145')
-sha512sums=('49bd4f512b2ba810269fcde540e4cd0697f8d49a4268771b20387656290076bca19c57f446c54be66e8fc7e71ae38b7496da57a43a1a03bbd1267e7a777068b0')
-_distdir="routes-tiny-0.11"
+url='https://metacpan.org/release/Routes-Tiny'
+source=('http://search.cpan.org/CPAN/authors/id/V/VT/VTI/Routes-Tiny-0.14.tar.gz')
+md5sums=('14e06bddb95ddb92dd4245f53a3d4348')
+sha512sums=('be356ab2d88869dd0803b988278bd828ff04f2e70daa3500cacd0a5e866ae7624b7a5c6bec52b292d46334e6d1ea6c517dccaa74e52587a7ea503a36d0e02b0e')
+_distdir="Routes-Tiny-0.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
