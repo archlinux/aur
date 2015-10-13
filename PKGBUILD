@@ -10,12 +10,13 @@
 _npmname=grunt
 pkgname=nodejs-grunt # All lowercase
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The JavaScript Task Runner"
 arch=(any)
 url="http://gruntjs.com/"
 license=(MIT)
 depends=('nodejs')
+makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
