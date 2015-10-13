@@ -1,18 +1,19 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=le-editor-git
-pkgver=604.179ba50
+pkgver=606.86fe1f8
 pkgrel=1
 pkgdesc="A text editor in memorial to Norton Editor with block and binary operations - git version"
 arch=('i686' 'x86_64')
 url="https://directory.fsf.org/wiki/Le_editor"
 license=('GPL3')
-depends=('gcc-libs' 'ncurses')
+depends=('ncurses' 'bash')
 makedepends=('git')
 provides=('le' 'le-editor')
 conflicts=('le' 'le-editor')
 source=(git://git.sv.gnu.org/gnulib le-editor::git://github.com/lavv17/le.git)
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'SKIP')
 _gitname="le-editor"
 
 pkgver() {
