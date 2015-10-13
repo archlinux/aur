@@ -17,7 +17,7 @@ sha256sums=('0502648057fd1345f6755914e5d32bb55230ae63f63cd829298544e9ea5a4b98'
             'c4ea2b1b1cfa585433495e9f4621233461e5d9cd4e26792caa52507b06dafc81')
 
 prepare() {
-  gendesk -f --pkgname virtualdub --pkgdesc 'Video editing software (uses the WIN32 API)' --name VirtualDub --categories 'AudioVideo;Multimedia'
+  gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name VirtualDub --categories 'AudioVideo;Multimedia'
 }
 
 package() {
