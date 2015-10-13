@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 pkgname=libpki
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides an easy-to-use PKI library for PKI enabled application development"
 arch=('i686' 'x86_64')
 url="https://pki.openca.org"
@@ -13,7 +13,7 @@ source=("http://prdownloads.sourceforge.net/project/openca/$pkgname/releases/v$p
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --libdir=/usr/lib
   make
 
 }

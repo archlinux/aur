@@ -1,7 +1,7 @@
 pkgbase = libpki
 	pkgdesc = Provides an easy-to-use PKI library for PKI enabled application development
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pki.openca.org
 	arch = i686
 	arch = x86_64
