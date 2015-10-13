@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoinxt-git
-pkgver=20150815
+pkgver=20151009
 pkgrel=1
 pkgdesc="BitcoinXT headless P2P node"
 arch=('i686' 'x86_64')

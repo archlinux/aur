@@ -1,6 +1,6 @@
 pkgbase = bitcoinxt-git
 	pkgdesc = BitcoinXT headless P2P node
-	pkgver = 20150815
+	pkgver = 20151009
 	pkgrel = 1
 	url = https://bitcoinxt.software
 	install = bitcoin.install
