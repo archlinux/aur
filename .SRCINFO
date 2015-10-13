@@ -1,0 +1,14 @@
+pkgbase = sketch
+	pkgdesc = Small, simple system for producing line drawings of two- or three-dimensional solid objects and scenes
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = http://sketch4latex.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	source = http://sketch4latex.sourceforge.net/sketch-0.3.7.tgz
+	md5sums = c51c6a0ed6c16a95e1a1afe1afd5d70e
+
+pkgname = sketch
+
