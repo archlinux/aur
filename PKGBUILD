@@ -3,8 +3,8 @@
 
 _gemname=rmonitor
 pkgname=ruby-$_gemname
-pkgver=1.0.1
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='A tool for creating monitor profiles that are easily invoked.'
 arch=(any)
 url='https://github.com/badeball/rmonitor'
@@ -13,7 +13,7 @@ depends=(ruby xorg-xrandr)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('9e25e7075621062f4ea3ae7b9251624d4916cd06')
+sha1sums=('9c660dd0a82cfc159533c1a7f5b369da86043513')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
