@@ -23,7 +23,7 @@ pkgbase = ucloner
 	md5sums = 3dac4b28900e7be1068b502b7b848028
 	md5sums = 5cdaafea263be59c57602cd06082c64e
 	md5sums = 1f913fe9ca34481134bc36e1045e9a20
-	md5sums = 3e6d3d3005380a888b7a97d2b79880cf
+	md5sums = 4966de605892a3a5c52d7fdd4b768f0d
 	md5sums = c84c4aaba3bf5c7fbb6126190cb341ca
 
 pkgname = ucloner
