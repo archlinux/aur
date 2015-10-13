@@ -15,6 +15,11 @@ sha256sums=('bb1f259eda90e945a803524eedbc0087283e3fb9ae2ab4c16ded88c8c4e95b15'
             '8d27b9055ec21e7b39e91d6b1996573c8ecb2c5fac5ad424be6cd134626ff21f'
             '1e645c18ce0648f82285da25a5bbbad1e63e282bfe9d5c31329eb9d04c23f21c')
 
+prepare () {
+  cd "${srcdir}/${pkgname}"
+  sed -i "s|halign='middle'|align='center'|g" brainworkshop.pyw
+}
+
 package() {
 
   #Data
