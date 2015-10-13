@@ -1,6 +1,6 @@
 pkgbase = linux-samus4
 	pkgver = 4.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -10,11 +10,11 @@ pkgbase = linux-samus4
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = https://github.com/raphael/linux-samus/archive/v4.2-4.tar.gz
+	source = https://github.com/raphael/linux-samus/archive/v4.2-5.tar.gz
 	source = config
 	source = linux.preset
-	md5sums = 9b529414f09f0213a4510e2cbcfa88db
-	md5sums = b0ed0ec701ee7050873db28b2658b408
+	md5sums = 31e13dd7fd19d33571e3c0a6d7230bc2
+	md5sums = 1531defa62da33c30dc0ffb6414b758d
 	md5sums = 5aae464a8085b2f3adcdcaff29853d04
 
 pkgname = linux-samus4
