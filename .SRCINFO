@@ -1,0 +1,19 @@
+pkgbase = openio-asn1c-git
+	pkgdesc = The ASN.1 to C compiler (openio fork, latest git)
+	pkgver = v0.9.27.1.r0.g9458209
+	pkgrel = 1
+	url = http://github.com/open-io/asn1c.git
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	optdepends = perl: for crfc2asn.pl (extract ASN.1 data from RFC files)
+	provides = asn1c
+	provides = openio-asn1c
+	conflicts = asn1c
+	conflicts = openio-asn1c
+	source = git://github.com/open-io/asn1c.git
+	sha256sums = SKIP
+
+pkgname = openio-asn1c-git
+
