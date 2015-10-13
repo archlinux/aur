@@ -1,0 +1,41 @@
+pkgname=ucloner
+pkgver=10.10.2
+rev=beta1
+pkgrel=1
+pkgdesc="Ucloner"
+arch=('any')
+url="https://code.google.com/p/ucloner"
+license=('GPL')
+depends=('python2' 'vte' 'squashfs-tools' 'zenity' 'gksu')
+source=(
+    'https://ucloner.googlecode.com/files/UCloner-10.10.2-beta1.tar.gz'
+    'ucloner.sh'
+    'ucloner.desktop'
+    'ucloner.png'
+    'modify_path.patch'
+)
+
+md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
+         'cf31f3c5e5c594c49cf49a0a8ef3f39c'
+         'be5a6ad80d91f2125fe753fa466d00aa'
+         '1f913fe9ca34481134bc36e1045e9a20'
+         'a7251a42473bb6827b3b39c3591c2e14')
+
+
+prepare() {
+    cd "${srcdir}/UCloner-$pkgver-$rev"
+    patch -p1 < "${srcdir}/modify_path.patch"
+    cd program
+    rm *.pyc
+    python2 -m compileall .
+}
+
+
+package() {
+  install -dm 755 "$pkgdir/opt"
+  cp -r "${srcdir}/UCloner-$pkgver-$rev/program" "$pkgdir/opt/ucloner"
+  install -Dm 755 "${srcdir}/ucloner.sh" "$pkgdir/usr/bin/ucloner"
+  install -Dm 755 "${srcdir}/ucloner.desktop" "$pkgdir/usr/share/applications/ucloner.desktop"
+  install -Dm 755 "${srcdir}/ucloner.png" "$pkgdir/usr/share/icons/ucloner.png"
+}
+

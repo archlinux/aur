@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=UCloner
+Comment=Linux System Backup Utility
+Comment[zh_CN]=Linux系统备份工具
+Exec=ucloner
+Icon=ucloner.png
+Type=Application
+Categories=Game;
+Terminal=false

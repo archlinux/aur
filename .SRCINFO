@@ -1,0 +1,25 @@
+pkgbase = ucloner
+	pkgdesc = Ucloner
+	pkgver = 10.10.2
+	pkgrel = 1
+	url = https://code.google.com/p/ucloner
+	arch = any
+	license = GPL
+	depends = python2
+	depends = vte
+	depends = squashfs-tools
+	depends = zenity
+	depends = gksu
+	source = https://ucloner.googlecode.com/files/UCloner-10.10.2-beta1.tar.gz
+	source = ucloner.sh
+	source = ucloner.desktop
+	source = ucloner.png
+	source = modify_path.patch
+	md5sums = b7bf49a5516cb9e00943e06e3e73adf2
+	md5sums = cf31f3c5e5c594c49cf49a0a8ef3f39c
+	md5sums = be5a6ad80d91f2125fe753fa466d00aa
+	md5sums = 1f913fe9ca34481134bc36e1045e9a20
+	md5sums = a7251a42473bb6827b3b39c3591c2e14
+
+pkgname = ucloner
+

@@ -1,0 +1,26 @@
+diff -Naur a/program/functions.py b/program/functions.py
+--- a/program/functions.py	2010-12-04 17:18:57.000000000 +0000
++++ b/program/functions.py	2015-10-13 06:12:42.062145855 +0000
+@@ -490,16 +490,16 @@
+                 defaultExcludes.append( '/lib/modules/' + kernelVersion + '/volatile/' + each )
+ 
+     # /var/cache/apt/archives/*.deb
+-    contents = commands.getoutput( 'ls /var/cache/apt/archives | grep ".deb" ' )
++    contents = commands.getoutput( 'ls /var/cache/pacman/pkg ' )
+     if contents:
+         for each in contents.split('\n'):
+-            defaultExcludes.append( '/var/cache/apt/archives/' + each )
++            defaultExcludes.append( '/var/cache/pacman/pkg' + each )
+     
+     # /var/cache/apt/archives/partial/*
+-    contents = commands.getoutput( 'ls /var/cache/apt/archives/partial/' )
+-    if contents:
+-        for each in contents.split('\n'):
+-            defaultExcludes.append( '/var/cache/apt/archives/partial/' + each )
++    #contents = commands.getoutput( 'ls /var/cache/apt/archives/partial/' )
++    #if contents:
++    #    for each in contents.split('\n'):
++    #        defaultExcludes.append( '/var/cache/apt/archives/partial/' + each )
+     
+     return defaultExcludes
+ 
