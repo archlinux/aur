@@ -1,12 +1,12 @@
 pkgbase = aurous-bin
-	pkgdesc = A music player built to serve your needs.
+	pkgdesc = A music player built to serve your needs. NOTE: If md5 fails simply flag the package as outdated
 	pkgver = 0.1Alpha
-	pkgrel = 3
+	pkgrel = 4
 	url = https://aurous.me/
 	arch = i686
 	arch = x86_64
 	license = unknown
-	depends = jre8-openjdk
+	depends = java-runtime=8
 	depends = java-openjfx
 	depends = gksu
 	depends = libgcrypt15

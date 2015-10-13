@@ -1,14 +1,14 @@
 # Maintainer: Marco <mcat95 [at] gmail [dot] com>
 pkgname=aurous-bin
 pkgver=0.1Alpha
-pkgrel=3
+pkgrel=4
 
-pkgdesc="A music player built to serve your needs."
+pkgdesc="A music player built to serve your needs. NOTE: If md5 fails simply flag the package as outdated"
 arch=(i686 x86_64)
 url="https://aurous.me/"
 license=('unknown')
 
-depends=("jre8-openjdk" "java-openjfx" "gksu" "libgcrypt15")
+depends=("java-runtime=8" "java-openjfx" "gksu" "libgcrypt15")
 
 source_x86_64=(https://aurous.me/downloads/aurous-linux64.zip)
 source_i386=(https://aurous.me/downloads/aurous-linux32.zip)
