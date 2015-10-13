@@ -1,15 +1,18 @@
 pkgbase = kconfig-frontends
 	pkgdesc = Out of the Linux source tree, packaging of the kconfig infrastructure, ready for use by third party projects
 	pkgver = 3.12.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ymorin.is-a-geek.org/projects/kconfig-frontends
 	arch = x86_64
 	arch = i686
 	license = GPL
 	makedepends = gperf
 	depends = ncurses
+	depends = perl
 	source = http://ymorin.is-a-geek.org/download/kconfig-frontends/kconfig-frontends-3.12.0.0.tar.xz
+	source = kconfig-config2h
 	md5sums = b939280dcc83f8feabd87a1d5f9b00c2
+	md5sums = 6596064684b8d2bca25e8fec3e265adf
 
 pkgname = kconfig-frontends
 
