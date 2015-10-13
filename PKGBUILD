@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='panther-launcher-git'
 pkgdesc='Fork of Slingshot launcher without Elementary dependencies'
-pkgver=r9.c8cf97a
+pkgver=1.1.2.r1.gbc5b224
 pkgrel=1
 url='https://github.com/rastersoft/panther_launcher'
 license=('GPL3')
@@ -28,8 +28,9 @@ build () {
 	cmake .. \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DGSETTINGS_COMPILE=FALSE \
-		-DHAVE_ZEITGEIST=TRUE
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
+		-DGSETTINGS_COMPILE=OFF \
+		-DHAVE_ZEITGEIST=OFF
 	make
 }
 
