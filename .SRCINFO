@@ -10,6 +10,7 @@ pkgbase = libbpg
 	depends = libpng
 	depends = libjpeg-turbo
 	depends = sdl_image
+	depends = yasm
 	options = staticlibs
 	source = http://bellard.org/bpg/libbpg-0.9.6.tar.gz
 	md5sums = 5f2aefff34342df327196019314d785b

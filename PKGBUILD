@@ -10,7 +10,7 @@ pkgdesc='BPG Image Encoder and Decoder'
 arch=('x86_64' 'i686')
 url='http://bellard.org/bpg/'
 license=('BSD' 'LGPL')
-depends=('libpng' 'libjpeg-turbo' 'sdl_image')
+depends=('libpng' 'libjpeg-turbo' 'sdl_image' 'yasm')
 source=("$url$pkgname-$pkgver.tar.gz")
 options=('staticlibs')
 
