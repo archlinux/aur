@@ -3,20 +3,20 @@
 pkgname=chromium-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
 pkgver=1.4.8.824
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.google.com/chrome'
 license=('custom:chrome')
 options=('!strip')
-_packaged_chrome_ver=45.0.2454.101
+_packaged_chrome_ver=46.0.2490.71
 _current_chrome_ver=$(curl -s https://omahaproxy.appspot.com/linux)
 depends=("chromium>=${_current_chrome_ver%%.*}")
 source=('chrome-eula_text.html::https://www.google.com/chrome/intl/en/eula_text.html')
 source_i686=("google-chrome-stable_${_current_chrome_ver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb")
 source_x86_64=("google-chrome-stable_${_current_chrome_ver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
 sha256sums=('b35811bb330576631e64f7885c66720e0be4ca81afb04328b3a0f288a708e37f')
-sha256sums_i686=('a5f2275d59b9bf49f094c62ce6a60610be5826cf96edf09525679f5e67a588d2')
-sha256sums_x86_64=('f22f41e2ab4af3d0ef4b88f47abcf9fbcd9e9ec5e0a1ecb275cbb673ec688bb3')
+sha256sums_i686=('4e931cedefb37ce905c51075c4a328202bfc97ec06eae37ff3b3fe26c6632aec')
+sha256sums_x86_64=('d70e55812164bf4f35f629af302ee53fc771ee4e00ffd26205e6541f3b6c8a96')
 
 pkgver() {
   bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevine*.so}
