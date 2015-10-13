@@ -5,7 +5,7 @@
 
 pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
-pkgver=0.6.5.2_0_g0b7b4bd
+pkgver=0.6.5.2_r0_g0b7b4bd
 pkgrel=1
 license=('CDDL')
 makedepends=("git")
@@ -22,7 +22,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/zfs"
-    git describe --match "zfs-*" --long --tags | sed -e 's|zfs-||g' -e 's|[-: ]|_|g'
+    git describe --match "zfs-*" --long --tags | sed -e 's|zfs-||' -e 's|-\([0-9]*-g\)|-r\1|' -e 's|[-: ]|_|g'
 }
 
 build() {
@@ -53,7 +53,7 @@ package_zfs-dkms-git() {
     install -d ${pkgdir}/usr/src
     cp -a ${srcdir}/zfs ${pkgdir}/usr/src/zfs-${pkgver%%_*}
     cd ${pkgdir}/usr/src/zfs-${pkgver%%_*}
-    rm -rf .git .gitignore
+    rm -rf .git*
     make clean
 }
 
