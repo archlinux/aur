@@ -16,7 +16,6 @@ package() {
     cd $srcdir
     install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/opt/${pkgname}"
     install -Dm755 Indivisible_Linux.i686-pc-linux-gnu "${pkgdir}/opt/${pkgname}/Indivisible_Linux.i686-pc-linux-gnu"
-    install -Dm644 "README ver. 10-12.txt" "${pkgdir}/opt/${pkgname}/README ver. 10-12.txt"
     install -Dm644 "package.md5" "${pkgdir}/opt/${pkgname}/package.md5"
     cp -dr Salmon/ "${pkgdir}/opt/${pkgname}/Salmon"
     cp -dr lib/ "${pkgdir}/opt/${pkgname}/lib"
