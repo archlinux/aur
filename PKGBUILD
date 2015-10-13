@@ -6,7 +6,7 @@
 pkgname=flexget-git
 _pkgname=Flexget
 pkgver=1.2.362.r6462.6fb1e96
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -60,10 +60,12 @@ conflicts=('flexget')
 
 source=('git+https://github.com/Flexget/Flexget'
         'flexget.service'
+        'flexget@.service'
         )
 
 sha256sums=('SKIP'
-            'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa')
+            'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
+            '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a')
 
 pkgver() {
   cd Flexget
@@ -92,6 +94,8 @@ package() {
 
   # install systemd user unit
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
+  # install systemd system unit
+  install -Dm644 ../flexget@.service "${pkgdir}"/usr/lib/systemd/system/flexget@.service
 }
 
 # vim:set ts=2 sw=2 et:
