@@ -25,6 +25,7 @@ optdepends=('gimp-paint-studio: Extra brushes and accompanying tool presets'
             'ghostscript: for postscript support'
             )
 options=('!libtool' '!makeflags')
+provides=('gimp')
 conflicts=('gimp' 'gimp-painter')
 replaces=()
 backup=()

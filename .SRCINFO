@@ -1,6 +1,6 @@
 pkgbase = gimp-painter-git
 	pkgdesc = Fork of GIMP aiming to add drawing and painting features to GIMP. Git version
-	pkgver = 20151004.g87851f6
+	pkgver = 20151013.g87851f6
 	pkgrel = 1
 	url = http://www.gimp.org
 	install = gimp-painter.install
@@ -30,22 +30,23 @@ pkgbase = gimp-painter-git
 	depends = libpng>=1.2.27
 	depends = fontconfig>=2.2.0
 	depends = desktop-file-utils
+	depends = babl
 	depends = libexif>=0.6.15
 	depends = libart-lgpl>=2.3.19
 	depends = pygtk
 	depends = dbus-glib
 	depends = gtk-doc
-	depends = gegl
-	depends = babl
 	depends = openexr>=1.6.1
 	depends = cairo>=1.12.2
 	depends = hicolor-icon-theme
+	depends = gegl
 	optdepends = gimp-paint-studio: Extra brushes and accompanying tool presets
 	optdepends = gutenprint: for sophisticated printing only as gimp has built-in cups print support
 	optdepends = poppler-glib: for pdf support
 	optdepends = alsa-lib: for MIDI event controller module
 	optdepends = curl: for URI support
 	optdepends = ghostscript: for postscript support
+	provides = gimp
 	conflicts = gimp
 	conflicts = gimp-painter
 	options = !libtool
