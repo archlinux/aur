@@ -1,0 +1,40 @@
+pkgbase = kdebindings-python-frameworks-git
+	pkgver = r18.7679bd2
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdebindings/python/pykde5/repository
+	arch = i686
+	arch = x86_64
+	groups = kdebindings
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = python2-pyqt5
+	makedepends = kdepimlibs
+	makedepends = python-pyqt5
+	makedepends = qscintilla-qt5
+	makedepends = python2-sip
+	makedepends = python-sip
+	makedepends = mesa
+	source = git+git://anongit.kde.org/pykde5
+	sha1sums = SKIP
+
+pkgname = kdebindings-python-frameworks-git
+	pkgdesc = A set of Python 3.x bindings for KDE
+	depends = python-pyqt5
+	depends = kdebindings-python-common-frameworks-git
+	depends = kio-pim
+
+pkgname = kdebindings-python2-frameworks-git
+	pkgdesc = A set of Python 2.x bindings for KDE
+	depends = python2-pyqt5
+	depends = kdebindings-python-common-frameworks-git
+	depends = kio-pim
+	conflicts = kdebindings-python<4.8.1-2
+
+pkgname = kdebindings-python-common-frameworks-git
+	pkgdesc = Common files shared between python2 and python3 kdebindings
+	depends = qscintilla-qt5
+	conflicts = kdebindings-python
+
