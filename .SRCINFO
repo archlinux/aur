@@ -8,6 +8,8 @@ pkgbase = emacs-guess-style-git
 	license = GPL3
 	makedepends = emacs
 	depends = emacs
+	provides = emacs-guess-style
+	conflicts = emacs-guess-style
 	source = git+https://github.com/nschum/guess-style.git
 	md5sums = SKIP
 
