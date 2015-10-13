@@ -1,7 +1,7 @@
 # Maintainer: maz-1 <loveayawaka at gmail dot com>
 
 pkgname=gimp-painter-git
-pkgver=20151004.g87851f6
+pkgver=20151013.g87851f6
 pkgrel=1
 pkgdesc="Fork of GIMP aiming to add drawing and painting features to GIMP. Git version"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL' 'LGPL')
 groups=()
 depends=('lcms2>=2.2' 'libwmf>=0.2.8' 'webkitgtk2>=1.6.1' \
          'libgexiv2' 'librsvg>=2.16.1' 'libpng>=1.2.27' \
-         'fontconfig>=2.2.0' 'desktop-file-utils' \
+         'fontconfig>=2.2.0' 'desktop-file-utils' 'babl' \
          'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'pygtk' 'dbus-glib' 'gtk-doc' \
           'openexr>=1.6.1' 'cairo>=1.12.2' 'hicolor-icon-theme') #'gegl'
 makedepends=('gutenprint>=5.0.0' 'intltool>=0.40.1' \
