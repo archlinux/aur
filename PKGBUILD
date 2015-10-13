@@ -1,4 +1,6 @@
-# Maintainer: Thomas Haider <t.haider@deprecate.de>
+# Maintainers:
+#   Radek Podgorny <radek@podgorny.cz>
+#   Thomas Haider <t.haider@deprecate.de>
 
 pkgname=postsrsd-git
 pkgver=85.90718d7
@@ -13,9 +15,8 @@ backup=('etc/postsrsd/postsrsd.conf')
 url="https://github.com/roehling/postsrsd"
 install=postsrsd.install
 license=(GPL2)
-source=('git+https://github.com/roehling/postsrsd.git' 'postsrsd.service')
-sha1sums=('SKIP'
-          'b30e40b2f012ce45a8b04ede1f1f025facbb44f9')
+source=('git+https://github.com/roehling/postsrsd.git')
+sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/postsrsd"
@@ -25,20 +26,23 @@ pkgver() {
 
 build() {
   cd "$srcdir/postsrsd"
+  ###sed -e 's|${SYSCONF_DIR}/systemd/system|/usr/lib/systemd/system|g' -i postinstall.cmake.in
+  rm -rf build
   mkdir build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DGENERATE_SRS_SECRET=OFF 
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DGENERATE_SRS_SECRET=OFF
   make all
 }
 
 package() {
   cd "$srcdir/postsrsd/build"
   make DESTDIR="$pkgdir/" install
-  
+
   rm -rf $pkgdir/usr/lib
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
   sed -e 's/^\(RUN_AS=\)nobody/#\1postsrsd/;s/\(\/etc\/postsrsd\)\(\.secret\)/\1\/postsrsd\2/' \
 	  -e 's/^\(# is \).*$/\1localhost\.localdomain/'< postsrsd.default > postsrsd.conf
   install -D -m644 "postsrsd.conf" "$pkgdir/etc/postsrsd/postsrsd.conf"
-  install -D -m644 "$srcdir/postsrsd.service" "$pkgdir/usr/lib/systemd/system/postsrsd.service"
+  mkdir -p "$pkgdir/usr/lib/systemd/system"
+  mv "$pkgdir/etc/systemd/system/postsrsd.service" "$pkgdir/usr/lib/systemd/system/"
 }
