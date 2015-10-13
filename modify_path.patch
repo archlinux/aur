@@ -27,7 +27,7 @@ diff -Naur a/program/functions.py b/program/functions.py
      if contents:
          for each in contents.split('\n'):
 -            defaultExcludes.append( '/var/cache/apt/archives/' + each )
-+            defaultExcludes.append( '/var/cache/pacman/pkg' + each )
++            defaultExcludes.append( '/var/cache/pacman/pkg/' + each )
      
      # /var/cache/apt/archives/partial/*
 -    contents = commands.getoutput( 'ls /var/cache/apt/archives/partial/' )
