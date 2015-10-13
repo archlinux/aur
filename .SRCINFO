@@ -1,6 +1,6 @@
 pkgbase = chromium-continuous-bin
 	pkgdesc = The open-source project behind Google Chrome (Continuous, auto-tested Snapshot builds)
-	pkgver = 45.0.2454.0.r338261
+	pkgver = 48.0.2535.0.r353722
 	pkgrel = 1
 	url = https://build.chromium.org
 	install = chromium-continuous-bin.install
@@ -31,6 +31,7 @@ pkgbase = chromium-continuous-bin
 	depends = perl-file-basedir
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
+	depends = gconf
 	optdepends = kdebase-kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kdeutils-kwalletmanager: for storing passwords in KWallet
@@ -43,9 +44,9 @@ pkgbase = chromium-continuous-bin
 	md5sums = 739c9f17f8c470c5b2a605b05b12da4f
 	md5sums = 3f2bfd12b55b7153b60ad904207599dd
 	md5sums = 537e0b52077bf0a616d0a0c8a79bc9d5
-	source_i686 = chrome-linux-r345591.zip::http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux/345591/chrome-linux.zip
+	source_i686 = chrome-linux-r353722.zip::http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux/353722/chrome-linux.zip
 	md5sums_i686 = SKIP
-	source_x86_64 = chrome-linux-r345591.zip::http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux_x64/345591/chrome-linux.zip
+	source_x86_64 = chrome-linux-r353722.zip::http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux_x64/353722/chrome-linux.zip
 	md5sums_x86_64 = SKIP
 
 pkgname = chromium-continuous-bin

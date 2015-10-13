@@ -2,7 +2,7 @@
 # Contributors: Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-continuous-bin
-pkgver=45.0.2454.0.r338261
+pkgver=48.0.2535.0.r353722
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Continuous, auto-tested Snapshot builds)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,8 @@ license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
-         'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
+         'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme'
+		 'gconf')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kdeutils-kwalletmanager: for storing passwords in KWallet'
