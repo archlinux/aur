@@ -1,6 +1,6 @@
 pkgbase = gnome-panel
 	pkgdesc = Legacy GNOME panel
-	pkgver = 3.18.0
+	pkgver = 3.18.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeFlashback
 	install = gnome-panel.install
@@ -20,8 +20,8 @@ pkgbase = gnome-panel
 	depends = telepathy-glib
 	optdepends = gnome-applets: extra applets for the GNOME Panel
 	options = !libtool
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-panel/3.18/gnome-panel-3.18.0.tar.xz
-	sha256sums = e4ccb4e006d1b00494e7c419f86bc93d77eedac435f723caae2ebbab43b34084
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-panel/3.18/gnome-panel-3.18.1.tar.xz
+	sha256sums = c62518031fe86cd36a2385686363a7e5eb0a94f2fc6a8a48cf56d94654540377
 
 pkgname = gnome-panel
 

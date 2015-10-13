@@ -4,7 +4,7 @@
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 
 pkgname=gnome-panel
-pkgver=3.18.0
+pkgver=3.18.1
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -17,7 +17,7 @@ optdepends=('gnome-applets: extra applets for the GNOME Panel')
 install=$pkgname.install
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('e4ccb4e006d1b00494e7c419f86bc93d77eedac435f723caae2ebbab43b34084')
+sha256sums=('c62518031fe86cd36a2385686363a7e5eb0a94f2fc6a8a48cf56d94654540377')
 
 build() {
   cd "$pkgname-$pkgver"
