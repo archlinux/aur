@@ -4,7 +4,7 @@
 # Contributor: Michael Fellinger <mf@rubyists.com>
 
 pkgname=haxe
-pkgver=3.2.0
+pkgver=3.2.1
 _pkgver=${pkgver/rc?/}
 pkgrel=1
 pkgdesc="The Cross-Platform Toolkit"
@@ -25,13 +25,12 @@ source=(
   'haxeserver'
   'haxe.sh'
   'haxe.csh')
-md5sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  '888e2aa9e2583bc9888cc9889b24e3e7'
-  'acf2d50add2ccc19cf4e84d14b4bb5f8'
-  'b4263f4b8a2ed3308cdff93d01b70227')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         '888e2aa9e2583bc9888cc9889b24e3e7'
+         'acf2d50add2ccc19cf4e84d14b4bb5f8'
+         'b4263f4b8a2ed3308cdff93d01b70227')
 
 build() {
   cd "$srcdir/$pkgname-${_pkgver}"

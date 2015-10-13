@@ -1,6 +1,6 @@
 pkgbase = haxe
 	pkgdesc = The Cross-Platform Toolkit
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = http://haxe.org/
 	install = haxe.install
@@ -23,7 +23,7 @@ pkgbase = haxe
 	options = !strip
 	options = emptydirs
 	options = !makeflags
-	source = haxe-3.2.0::git+https://github.com/HaxeFoundation/haxe.git#tag=3.2.0
+	source = haxe-3.2.1::git+https://github.com/HaxeFoundation/haxe.git#tag=3.2.1
 	source = git+https://github.com/HaxeFoundation/haxelib.git
 	source = git+https://github.com/HaxeFoundation/ocamllibs.git
 	source = haxeserver
