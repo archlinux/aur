@@ -1,6 +1,6 @@
 # Contributor: ant32 <antreimer@gmail.com>
 pkgname=mingw-w64-postgresql-libs
-pkgver=9.4.4
+pkgver=9.4.5
 pkgrel=1
 pkgdesc="Libraries for use with PostgreSQL (mingw-w64)"
 arch=(any)
@@ -14,7 +14,7 @@ source=("http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
 "postgresql-9.4.1-pl-perl.patch"
 "postgresql-9.4.1-pl-python.patch"
 "postgresql-9.4.1-pl-tcl.patch")
-sha256sums=('538ed99688d6fdbec6fd166d1779cf4588bf2f16c52304e5ef29f904c43b0013'
+sha256sums=('b87c50c66b6ea42a9712b5f6284794fabad0616e6ae420cf0f10523be6d94a39'
             '0f2b5c7edb48dd106900854c9323ca2d483054595c4cf8a5b796a1d536d22aad'
             '86a12775cdf66cb174def103d6c7add095b473fd7f9038858e09564046d2b091'
             '0aa6c34fa7a34c99ef9135dcee8d3f6de45ee14dd29b6a09106834e32dc6c883'
