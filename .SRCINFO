@@ -46,7 +46,7 @@ pkgbase = gimp-painter-git
 	optdepends = alsa-lib: for MIDI event controller module
 	optdepends = curl: for URI support
 	optdepends = ghostscript: for postscript support
-	provides = gimp
+	provides = gimp=2.8
 	conflicts = gimp
 	conflicts = gimp-painter
 	options = !libtool

@@ -25,7 +25,7 @@ optdepends=('gimp-paint-studio: Extra brushes and accompanying tool presets'
             'ghostscript: for postscript support'
             )
 options=('!libtool' '!makeflags')
-provides=('gimp')
+provides=('gimp=2.8')
 conflicts=('gimp' 'gimp-painter')
 replaces=()
 backup=()
@@ -61,7 +61,7 @@ build() {
     --enable-mp --enable-gimp-console --enable-gimp-remote \
     --enable-python --with-gif-compression=lzw --with-libcurl \
     --without-aa --without-hal --without-gvfs --without-gnomevfs
-  make
+  make -j4
 }
 
 package() {
@@ -74,7 +74,10 @@ package() {
 	
 	GIMPBIN=` ls ${pkgdir}/usr/bin | grep -e 'gimp-2' `
 	GIMPCLIBIN=` ls ${pkgdir}/usr/bin | grep -e 'gimp-console-2' `
+	GIMPTOOL=` ls ${pkgdir}/usr/bin | grep -e 'gimptool-2' `
   [ -f ${pkgdir}/usr/bin/gimp ] || ln -s $GIMPBIN ${pkgdir}/usr/bin/gimp
-  [ -f ${pkgdir}/usr/bin/gimp-console ] || ln -s GIMPCLIBIN ${pkgdir}/usr/bin/gimp-console
+  [ -f ${pkgdir}/usr/bin/gimp-console ] || ln -s $GIMPCLIBIN ${pkgdir}/usr/bin/gimp-console
+  [ -f ${pkgdir}/usr/bin/gimptool ] || ln -s $GIMPTOOL ${pkgdir}/usr/bin/gimptool
+  
 }
 
