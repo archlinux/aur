@@ -26,7 +26,7 @@ build() {
 	cd "$srcdir/$_pkgname"
 	autoreconf --install
 	./configure --prefix=/usr
-	make || return 1
+	make
 }
 
 package() {
