@@ -1,5 +1,5 @@
 pkgname=mingw-w64-pango
-pkgver=1.38.0
+pkgver=1.38.1
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ options=(staticlibs !strip !buildflags)
 source=("http://ftp.gnome.org/pub/gnome/sources/pango/${pkgver:0:4}/pango-${pkgver}.tar.xz"
 "0001-no-unconditional-xft-please.all.patch"
 "0002-msvc-is-impotent-but-not.mingw.patch")
-sha256sums=('1d4e75974bad853ee9ac5fc5caee5e7ab235abbd945d51d01f3806e04e7c226c'
+sha256sums=('1320569f6c6d75d6b66172b2d28e59c56ee864ee9df202b76799c4506a214eb7'
             'eccc044bbd156b252f5a13f7894c3a6cd1efc6ea80eaee57a5865895b192616d'
             '240d21474157c0deabc2660593ac0414565ddf30c304b08b74a09072c910b34d')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -20,8 +20,6 @@ prepare() {
 	cd "$srcdir/pango-$pkgver"
 	patch -p1 -i ${srcdir}/0001-no-unconditional-xft-please.all.patch
   patch -p1 -i ${srcdir}/0002-msvc-is-impotent-but-not.mingw.patch
-  echo 'AM_CONDITIONAL([HAVE_GTK_DOC], [false])' >> configure.ac
-  gtkdocize
   autoreconf -fi
 	sed -i 's/have_libthai=true/have_libthai=false/' configure
 }
