@@ -4,7 +4,7 @@
 pkgname=nvidia-lts310-ck
 pkgver=355.11
 _extramodules=extramodules-3.10-lts310-ck
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux-lts310-ck"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -30,20 +30,13 @@ build() {
   _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
   cd "${_pkg}/kernel"
   make SYSSRC=/usr/lib/modules/${_kernver}/build module
-
-  # Unified memory: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
-  if [[ $CARCH = x86_64 ]]; then
-    cd uvm
-    msg2 "Building Unified memory module..."
-    make SYSSRC=/usr/lib/modules/${_kernver}/build module
-  fi
 }
 
 package() {
   install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
     "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia.ko"
   if [[ $CARCH = x86_64 ]]; then
-    install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+    install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
       "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia-uvm.ko"
   fi
   gzip "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/"*.ko
