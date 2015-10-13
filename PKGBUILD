@@ -16,8 +16,8 @@ source=(
 )
 
 md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
-         'cf31f3c5e5c594c49cf49a0a8ef3f39c'
-         'ed45c76c403bf96ebfa97bb85f2ea6f8'
+         'd5143c3b0431044beb13f933a3d76ceb'
+         '5ffe4317c280d220416e24317d0f6198'
          '1f913fe9ca34481134bc36e1045e9a20'
          'a7251a42473bb6827b3b39c3591c2e14')
 

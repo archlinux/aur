@@ -7,4 +7,4 @@ if [ "$( ps -A | grep ucloner_gui)" ] ; then
 fi
 
 cd /opt/ucloner/
-exec gksu python2 ./ucloner_gui.py &> /dev/null
+exec python2 ./ucloner_gui.py &> /dev/null
