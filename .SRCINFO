@@ -1,0 +1,20 @@
+pkgbase = repraptor-git
+	pkgdesc = A Qt RepRap gcode sender/host controller
+	pkgver = 20150520
+	pkgrel = 1
+	url = https://github.com/NeoTheFox/RepRaptor
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	depends = qt5-base
+	depends = qt5-serialport
+	depends = libxkbcommon-x11
+	provides = repraptor
+	conflicts = repraptor
+	source = git+https://github.com/NeoTheFox/RepRaptor.git
+	md5sums = SKIP
+
+pkgname = repraptor-git
+
