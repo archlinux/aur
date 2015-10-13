@@ -3,7 +3,7 @@
 
 pkgname=keepass-plugin-keechallenge
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A plugin that allows to use the yubikey HMAC-SHA1 challenge-response functionality in Keepass."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/keechallenge/"
