@@ -14,9 +14,7 @@ pkgbase = postsrsd-git
 	conflicts = postsrsd
 	backup = etc/postsrsd/postsrsd.conf
 	source = git+https://github.com/roehling/postsrsd.git
-	source = postsrsd.service
 	sha1sums = SKIP
-	sha1sums = b30e40b2f012ce45a8b04ede1f1f025facbb44f9
 
 pkgname = postsrsd-git
 
