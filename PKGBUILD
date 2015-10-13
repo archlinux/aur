@@ -4,7 +4,7 @@ pkgver=0.21
 pkgrel=1
 pkgdesc="Perl interface to the JavaScript Engine"
 arch=('i686' 'x86_64')
-url="http://search.mcpan.org/~tbusch/JavaScript-SpiderMonkey/SpiderMonkey.pm"
+url="https://metacpan.org/release/JavaScript-SpiderMonkey"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'spidermonkey-1.7')
 options=(!emptydirs)
