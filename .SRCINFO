@@ -1,0 +1,17 @@
+pkgbase = networkmanager-dispatcher-ntpdconf
+	pkgdesc = Dispatcher Script for generating ntpd.conf
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.gnome.org/projects/NetworkManager/
+	arch = any
+	license = MIT
+	depends = networkmanager
+	optdepends = ntp
+	optdepends = openntpd
+	source = 10-ntpdconf
+	source = LICENSE
+	md5sums = b1538967754a2a31e1155710bf00d8cf
+	md5sums = 69120da70cc3f06557abc2d5575eee41
+
+pkgname = networkmanager-dispatcher-ntpdconf
+
