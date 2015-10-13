@@ -9,7 +9,7 @@ url="http://github.com/moteus/lua-llthreads2/"
 license=("MIT")
 makedepends=("luarocks")
 depends=("lua")
-source=("https://github.com/moteus/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/moteus/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=("66fdbf59ade16c2b53610dcb02bddfe6")
 
 build() {
