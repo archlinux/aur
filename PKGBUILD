@@ -18,10 +18,6 @@ pkgver() {
 
 _inst_initd(){
    install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
-
-   sed -e 's|#!/sbin/runscript|#!/usr/bin/openrc-run|' \
-	 -e 's|/var/run|/run|g' \
-	 -i "${pkgdir}/etc/init.d/$1"
 }
 
 package() {
