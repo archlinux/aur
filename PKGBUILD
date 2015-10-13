@@ -7,7 +7,7 @@ pkgrel=4
 pkgdesc="GTK+ audio player"
 arch=('i686' 'x86_64')
 url="http://decibel.silent-blade.org/"
-license=('GPL3')
+license=('GPL')
 depends=('gstreamer0.10-python' 'mutagen' 'pygtk' 'python2-dbus' 'python2-notify')
 #cddb-py
 optdepends=('python2-imaging: to display coverart')
