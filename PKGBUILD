@@ -8,8 +8,7 @@ pkgdesc="A plugin that allows to use the yubikey HMAC-SHA1 challenge-response fu
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/keechallenge/"
 license=('GPL2')
-depends=('keepass')
-optdepends=('yubikey-personalization: For configuring a YubiKey')
+depends=('keepass' 'yubikey-personalization')
 _zipname="KeeChallenge_1.4_win"
 source=(http://sourceforge.net/projects/keechallenge/files/KeeChallenge/bin/${_zipname}.zip)
 
