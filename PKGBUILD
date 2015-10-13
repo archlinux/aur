@@ -16,7 +16,7 @@ md5sums=('e8ebaf819c198ff9951903e7c4056aef')
 
 package() {
   cd $pkgname-$pkgver
-  make CONFIGURE_IN='sed -e "s|prefix|$(prefix)|g;s|^python|python2|"' \
+  make CONFIGURE_IN='sed -e "s|prefix|$(prefix)|g;s|^python |python2 |"' \
        prefix=/usr DESTDIR="$pkgdir/" install
 }
 
