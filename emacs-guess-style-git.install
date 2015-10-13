@@ -1,0 +1,13 @@
+post_install() {
+	cat<<EOF
+==> Add the following code to your .emacs:
+    (autoload 'guess-style-set-variable "guess-style" nil t)
+    (autoload 'guess-style-guess-variable "guess-style")
+    (autoload 'guess-style-guess-all "guess-style" nil t)
+    (setq guess-style-info-mode 1) ; Optional
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
