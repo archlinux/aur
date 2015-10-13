@@ -9,11 +9,12 @@ pkgbase = rmlint-git
 	makedepends = git
 	makedepends = scons
 	makedepends = python-sphinx
+	makedepends = gettext
 	depends = glibc
 	depends = glib2>=2.31
 	depends = libutil-linux
-	depends = elfutils
-	depends = gettext
+	depends = libelf
+	depends = binutils
 	depends = json-glib
 	optdepends = pygobject-devel: for the graphical user interface
 	optdepends = gtk3: for the graphical user interface
