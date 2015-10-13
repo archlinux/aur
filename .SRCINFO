@@ -1,0 +1,22 @@
+pkgbase = python-mahotas
+	pkgdesc = A fast computer vision algorithms (all implemented in C++) operating over numpy arrays
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://luispedro.org/software/mahotas
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = python-scipy
+	checkdepends = python-imread
+	checkdepends = python-nose
+	checkdepends = python-pillow
+	makedepends = python
+	makedepends = python-matplotlib
+	makedepends = gcc
+	depends = python
+	depends = python-numpy
+	source = https://pypi.python.org/packages/source/m/mahotas/mahotas-1.4.0.tar.gz
+	sha256sums = 73c2f13da9eddf959594cacd3e3f7d42bc933a6ae75048cb0360576668f21fc2
+
+pkgname = python-mahotas
+
