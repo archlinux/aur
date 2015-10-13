@@ -18,7 +18,7 @@ build() {
 
 package() {
   cd $srcdir/${_pkgsrcname}-$pkgver
-  python2 setup.py install --prefix=${pkgdir}/usr --root=$pkgdir --optimize=1
+  python2 setup.py install --root=$pkgdir --optimize=1
 }
 
 md5sums=('9fbe99e72444a1d3df52086f0400978c')
