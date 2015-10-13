@@ -6,10 +6,10 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=31.8.0
-_pkgver=31.8.0-gnu1
+pkgver=38.3.0
+_pkgver=38.3.0-gnu1
 _pkgverbase=${pkgver%%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
 arch=(i686 x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -28,35 +28,22 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 install=icecat.install
 source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
 #source=(https://mirrors.kernel.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2      ## Good mirror
-        icecat-CVE-2015-4473-partial.patch
-        icecat-CVE-2015-4482.patch
-        icecat-CVE-2015-4488.patch
-        icecat-CVE-2015-4489.patch
-        icecat-CVE-2015-4491.patch
-        icecat-CVE-2015-4492.patch
-        icecat-CVE-2015-4495.patch
-        mozconfig
+#source=(http://jenkins.trisquel.info/icecat/${pkgname}-${_pkgver}.tar.bz2      ## Official developer (Ruben Rodriguez) site
+		mozconfig
         icecat.desktop
         icecat-safe.desktop
         vendor.js
-        fixing_nullptr_31.7.0.patch
-        freetype26.patch)
+        freetype26.patch
+		0001-Bug-1194520-Add-a-system-header-wrapper-for-freetype.patch)
 
-sha256sums=('370087d0adadf8b1c1e6a9920e26488a8902b9dc461d305f258fddb26a129d87'
+sha256sums=('08fe9724a84aef2182265b230c68fa37a36a5d93ffd5118ec0739718dc71a66e'
             'SKIP'
-            '2c569b073f03450fec0d2c9ea0a735ffb91df5bf7fa0595a3ea55e41935bae5a'
-            'd05621004ec24f72cb14696977e0f75e091bb44203139f089643e055401fa9b4'
-            'f963b4dd4582e0a79aed41cf7c148ccc2dbf65e6e518ba6736e12ba746ff62c5'
-            'eedb11bacc946d0e449883de269b8c19e7fc754037e18ddc72f7c65219f88482'
-            '05be2eb909ea21df6d4be2aec1ac910604953522c00447a78e056f46300c57c6'
-            'c83d604ddedf6ba5da41bd4a2581413df0c5a4ef285b5dbef37a2a1d17e7356b'
-            '28ad5a04c6e0f12ef7b43e6e12c7a1f82f2583282c62128d135b24305626f387'
-            '91a675ffde751aac15c83401dc8842a055df0fe3949b6a0b304882608e6a4de2'
+            '4602066304f0bb10bdaea75405570d500dae3199b77b04a45167d423fdf9bf6f'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            'd57d0e4d5bc66323388e8f3c9999ed443abfd304a28a1696cc6f4518ed0d0f2a'
-            'b9c440406644fde5097da8717f0b5e5e973d11ec4dd6d4a0570ca7094d96dc85')
+            'b9c440406644fde5097da8717f0b5e5e973d11ec4dd6d4a0570ca7094d96dc85'
+            '5371c4e73ef9620c2cf3e922cbf7e6ebecfe5b0d80df03ba0744ad61de7c1a25')
 
 validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
@@ -64,24 +51,14 @@ prepare() {
 
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Patches for version 31.8.0-gnu2
-  patch -Np1 -i ${srcdir}/icecat-CVE-2015-4473-partial.patch
-  patch -Np1 -i ${srcdir}/icecat-CVE-2015-4482.patch
-  patch -Np1 -i ${srcdir}/icecat-CVE-2015-4488.patch
-  patch -Np1 -i ${srcdir}/icecat-CVE-2015-4489.patch
-  patch -Np1 -i ${srcdir}/icecat-CVE-2015-4491.patch
-  patch -Np1 -i ${srcdir}/icecat-CVE-2015-4492.patch
-  patch -Np1 -i ${srcdir}/icecat-CVE-2015-4495.patch
-
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
 
-  # Patch for GCC 5.1
-  patch -Np1 -i ../fixing_nullptr_31.7.0.patch
-
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1143411
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1194520
   patch -Np1 -i ../freetype26.patch
+  patch -Np1 -i ../0001-Bug-1194520-Add-a-system-header-wrapper-for-freetype.patch
 
   msg2 "Starting build..."
 
