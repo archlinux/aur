@@ -3,8 +3,8 @@
 BUILD_SELINUX=false
 
 pkgname=389-ds-base
-pkgver=1.3.4.1
-pkgrel=2
+pkgver=1.3.4.4
+pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
 url="http://port389.org/"
@@ -24,7 +24,7 @@ backup=(etc/default/dirsrv
 options=(!libtool)
 install=${pkgname}.install
 source=("http://www.port389.org/binaries/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('fb160600338d8ed2fe6f0ad0c724ad208347fb684981ce5839b57b1b3d2c42664fa2e803e826f1b1178a881dc0bf557a2c6e5a729e0208a0bb3ede571781bdbf')
+sha512sums=('d57645c255ea0d98af461ce82bb63b4c5c68c637bc42a1b8fcc1a0f06a07cbe85591786be890973ce3e815fcfb4050a544b23fcda9628e5c9d79aa9ddb371a60')
 
 build() {
   cd "${pkgname}-${pkgver}"
