@@ -1,0 +1,14 @@
+pkgbase = python2-txjson-rpc
+	pkgdesc = Code for creating Twisted JSON-RPC servers and clients
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/txJSON-RPC
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-twisted
+	source = https://pypi.python.org/packages/source/t/txJSON-RPC/txJSON-RPC-0.3.1.tar.gz
+	md5sums = b9b9e59d1bad30ef15b38a99aa4b3c6e
+
+pkgname = python2-txjson-rpc
+
