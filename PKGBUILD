@@ -4,8 +4,8 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=deutex-devel
-pkgver=4.4.902.r14.g2e06c95
-pkgrel=2
+pkgver=4.4.902.r15.g1627a78
+pkgrel=1
 pkgdesc="A WAD file composer for Doom, Heretic, Hexen and Strife"
 arch=('i686' 'x86_64')
 url="http://www.teaser.fr/~amajorel/deutex/"
