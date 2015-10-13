@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoinxt
-pkgver=0.11A
+pkgver=0.11C
 pkgrel=1
 pkgdesc="BitcoinXT headless P2P node"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/bitcoinxt/bitcoinxt
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('f6fc1651b3cad90bae6f9d70a5f476ca4cd9b8b38681331bccc6d2651c5e2c89'
+sha256sums=('382dfb69d078bd9c0613b04bad2bf75bb5cf67c3717be0521d91030c8dcbdf09'
             '67c464e4314ab5f7234a091098a05706989394086e4ee21e1d9155b9d1421796'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
