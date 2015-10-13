@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-restartless-restart
+	pkgdesc = add a File -> Restart menu item and a ctrl/cmd + alt + r hotkey to restart Firefox or Seamonkey
+	pkgver = 9.1
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/restartless-restart/
+	arch = any
+	license = MIT
+	depends = firefox
+	source = https://addons.cdn.mozilla.net/user-media/addons/249342/restartless_restart-9-sm+fx+tb+fn.xpi
+	sha256sums = 17ac1ecf8d6d6c2525d866a01ba8cecf78e9ccffb4327a940c9df907cf3ae774
+
+pkgname = firefox-extension-restartless-restart
+
