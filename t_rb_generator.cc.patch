@@ -1,0 +1,28 @@
+--- a/thrift/compiler/generate/t_rb_generator.cc	2015-10-13 08:22:03.487661748 +0100
++++ b/thrift/compiler/generate/t_rb_generator.cc	2015-10-13 08:25:54.874327793 +0100
+@@ -312,7 +312,11 @@
+     //Populate the hash
+     int32_t value = (*c_iter)->get_value();
+ 
+-    first ? first = false : f_types_ << ", ";
++    //first ? first = false : f_types_ << ", ";
++    if (first)
++       first = false;
++    else
++       f_types_ << ", ";
+     f_types_ << value << " => \"" << capitalize((*c_iter)->get_name()) << "\"";
+ 
+   }
+@@ -323,7 +327,11 @@
+   first = true;
+   for (c_iter = constants.begin(); c_iter != constants.end(); ++c_iter) {
+     // Populate the set
+-    first ? first = false: f_types_ << ", ";
++    //first ? first = false: f_types_ << ", ";
++    if (first)
++       first = false;
++     else
++       f_types_ << ", ";
+     f_types_ << capitalize((*c_iter)->get_name());
+   }
+   f_types_ << "]).freeze" << endl;
