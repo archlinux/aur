@@ -6,6 +6,7 @@ pkgbase = networkmanager-sstp
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = intltool
 	depends = sstp-client-svn-stable
 	depends = nm-connection-editor
 	depends = libsecret
