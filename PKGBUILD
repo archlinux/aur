@@ -21,7 +21,7 @@ sha256sums=('3e9439211cb2642c76ef9d0df14d817798383bd305031b2dfb7707feaf1eb251'
             'd8667e149439e4c6f35779a6d04ce5215530049579011eb1db5feb2d6976420e')
 
 build() {
-  cd $srcdir/CrashPlanPRO-install
+  cd $srcdir/crashplan-install
 
   echo ""
   echo "You must review and agree to the EULA before using Crashplan PRO."
@@ -50,7 +50,7 @@ package() {
   mkdir -p $pkgdir/opt/$pkgname
   cd $pkgdir/opt/$pkgname
 
-  cat $srcdir/CrashPlanPRO-install/CrashPlanPRO_$pkgver.cpi | gzip -d -c - | cpio -i --no-preserve-owner
+  cat $srcdir/crashplan-install/CrashPlanPRO_$pkgver.cpi | gzip -d -c - | cpio -i --no-preserve-owner
   chmod 777 $pkgdir/opt/$pkgname/log
   sed -i "s|<manifestPath>manifest</manifestPath>|<manifestPath>/opt/$pkgname/manifest</manifestPath>|g" $pkgdir/opt/$pkgname/conf/default.service.xml
 
@@ -66,16 +66,16 @@ package() {
   # Fix for encoding troubles (CrashPlan ticket 178827)
   # Make sure the daemon is running using the same localization as
   # the (installing) user
-  echo "" >> $srcdir/CrashPlanPRO-install/scripts/run.conf
-  echo "export LC_ALL=$LANG" >> $srcdir/CrashPlanPRO-install/scripts/run.conf
+  echo "" >> $srcdir/crashplan-install/scripts/run.conf
+  echo "export LC_ALL=$LANG" >> $srcdir/crashplan-install/scripts/run.conf
 
-  install -D -m 644 $srcdir/CrashPlanPRO-install/install.vars $pkgdir/opt/$pkgname/install.vars
-  install -D -m 644 $srcdir/CrashPlanPRO-install/EULA.txt $pkgdir/opt/$pkgname/EULA.txt
-  install -D -m 644 $srcdir/CrashPlanPRO-install/EULA.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m 755 $srcdir/CrashPlanPRO-install/scripts/CrashPlanDesktop $pkgdir/opt/$pkgname/bin/CrashPlanDesktop
-  install -D -m 644 $srcdir/CrashPlanPRO-install/scripts/run.conf $pkgdir/opt/$pkgname/bin/run.conf
-  install -D -m 755 $srcdir/CrashPlanPRO-install/scripts/CrashPlanEngine $pkgdir/opt/$pkgname/bin/CrashPlanEngine
-  install -D -m 755 $srcdir/CrashPlanPRO-install/scripts/CrashPlan.desktop $pkgdir/usr/share/applications/crashplan.desktop
+  install -D -m 644 $srcdir/crashplan-install/install.vars $pkgdir/opt/$pkgname/install.vars
+  install -D -m 644 $srcdir/crashplan-install/EULA.txt $pkgdir/opt/$pkgname/EULA.txt
+  install -D -m 644 $srcdir/crashplan-install/EULA.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 755 $srcdir/crashplan-install/scripts/CrashPlanDesktop $pkgdir/opt/$pkgname/bin/CrashPlanDesktop
+  install -D -m 644 $srcdir/crashplan-install/scripts/run.conf $pkgdir/opt/$pkgname/bin/run.conf
+  install -D -m 755 $srcdir/crashplan-install/scripts/CrashPlanEngine $pkgdir/opt/$pkgname/bin/CrashPlanEngine
+  install -D -m 755 $srcdir/crashplan-install/scripts/CrashPlan.desktop $pkgdir/usr/share/applications/crashplan.desktop
 
   # rc.d daemon
   install -D -m 755 $srcdir/crashplan-pro $pkgdir/etc/rc.d/crashplan-pro
