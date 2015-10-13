@@ -45,10 +45,9 @@ build() {
 
 package() {
   cd "$srcdir/The Unarchiver/XADMaster"
-    install -d "$pkgdir/usr/lib/unarchiver"
-    cp "$srcdir/usr/lib/"`ls $srcdir/usr/lib/ | grep -oP 'lib[a-z-]+\.so\.\d+\.\d+\.\d+'` \
-        "$pkgdir/usr/lib/unarchiver"`ldd '$pkgdir/usr/lib/unarchiver' | \
-        grep -oP 'libgnustep-base\.so\.[0-9.]+(?= => )'`
+  install -dm 755 "$pkgdir/usr/lib/"
+  cp -r "$srcdir/usr/lib/" "$pkgdir/usr/lib/unarchiver/"
+  rm -r "$pkgdir/usr/lib/unarchiver/GNUstep"
   install -d "$pkgdir/usr/bin/"
   install -m755 unar lsar "$pkgdir/usr/lib/unarchiver"
   LIBNAME=``
