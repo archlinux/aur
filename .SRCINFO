@@ -1,0 +1,16 @@
+pkgbase = networkmanager-dispatcher-ypconf
+	pkgdesc = Dispatcher Script for generating yp.conf
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.gnome.org/projects/NetworkManager/
+	arch = any
+	license = MIT
+	depends = networkmanager
+	depends = ypbind-mt
+	source = 10-ypconf
+	source = LICENSE
+	md5sums = 5f1c1e694d157801b5119d5b6cf44283
+	md5sums = 69120da70cc3f06557abc2d5575eee41
+
+pkgname = networkmanager-dispatcher-ypconf
+
