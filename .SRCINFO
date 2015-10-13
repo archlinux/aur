@@ -1,7 +1,7 @@
 pkgbase = pavucontrol-gtk2
 	pkgdesc = A GTK volume control tool for PulseAudio
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://freedesktop.org/software/pulseaudio/pavucontrol/
 	arch = i686
 	arch = x86_64

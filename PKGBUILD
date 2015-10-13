@@ -7,7 +7,7 @@
 pkgname=pavucontrol-gtk2
 _name=pavucontrol
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK volume control tool for PulseAudio"
 arch=(i686 x86_64)
 url="http://freedesktop.org/software/pulseaudio/pavucontrol/"
@@ -28,6 +28,8 @@ prepare() {
 
 build() {
   cd $_name-$pkgver
+  # need to specify c++11 std to compile on latest glibmm and co
+  export CXXFLAGS="$CXXFLAGS -std=c++11"
   ./configure --prefix=/usr --disable-gtk3
   make
 }
