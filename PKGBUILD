@@ -13,7 +13,6 @@ license=('GPL3')
 conflicts=("spacefm")
 provides=("spacefm")
 install='spacefm.install'
-[[ USE_GDB = 1 ]] && options=('!strip')
 
 makedepends=('intltool' 'gettext')
 depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'udevil' 'ffmpegthumbnailer')
