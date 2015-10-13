@@ -1,0 +1,19 @@
+pkgbase = space2ctrl-git
+	pkgdesc = Turns the spacebar key to another control key
+	pkgver = 44.4d07080
+	pkgrel = 1
+	url = https://github.com/r0adrunner/Space2Ctrl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxtst
+	depends = libx11
+	depends = xorg-xmodmap
+	provides = space2ctrl
+	conflicts = space2ctrl
+	source = git://github.com/r0adrunner/Space2Ctrl.git
+	md5sums = SKIP
+
+pkgname = space2ctrl-git
+
