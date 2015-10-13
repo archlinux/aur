@@ -1,6 +1,6 @@
 pkgbase = antimicro
 	pkgdesc = Graphical program used to map keyboard keys and mouse controls to gamepad buttons
-	pkgver = 2.18.2
+	pkgver = 2.20
 	pkgrel = 1
 	url = https://github.com/Ryochan7/antimicro
 	install = antimicro.install
@@ -15,8 +15,8 @@ pkgbase = antimicro
 	depends = libxtst
 	depends = qt5-base
 	depends = sdl2
-	source = https://github.com/Ryochan7/antimicro/archive/2.18.2.tar.gz
-	md5sums = 23782c189d73aaff6d67ca60a39a0975
+	source = https://github.com/Ryochan7/antimicro/archive/2.20.tar.gz
+	md5sums = cf6ae291684155605a9b700af9371810
 
 pkgname = antimicro
 
