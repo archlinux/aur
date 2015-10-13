@@ -8,7 +8,7 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
-pkgver=355.11
+pkgver=358.09
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -30,9 +30,9 @@ source=('20-nvidia.conf')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('16d143ccafe99328a2ca8e5a396fd4bc')
-md5sums_x86_64=('30133d89690f4683c4e289ec6c0247dc')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('50b48e69dc8c3b4b9940f662e1c374be')
+md5sums_i686=('644159cc26ec16943857c722dbe2a370')
+md5sums_x86_64=('321e1de2a7c4761ae6d59455bc93aca9')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('d8559178cb4b2e0f923fc99fc56e47c4')
 
 # Auto-detect patches (e.g. nvidia-linux-4.1.patch)
 for _patch in $(ls "$startdir"/*.patch 2>/dev/null); do
@@ -293,13 +293,21 @@ package_nvidia-full-beta-all() {
 
     # Install
     install -Dm644 $_pkg/kernel-$_extramodules/nvidia.ko \
-            "$pkgdir"/$_path/nvidia.ko
+           "$pkgdir"/$_path/nvidia.ko
 
     # Install UVM Module: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
     if [[ $CARCH = x86_64 ]]; then
         install -Dm644 $_pkg/kernel-$_extramodules/nvidia-uvm.ko \
-                "$pkgdir/$_path/nvidia-uvm.ko"
+               "$pkgdir"/$_path/nvidia-uvm.ko
     fi
+
+    # Install Nvidia Modeset module:
+    #
+    # "nvidia-modeset.ko does not provide any new user-visible functionality or interfaces to third party applications.
+    #  However, in a later release, nvidia-modeset.ko will be used as a basis for the modesetting interface provided by
+    #  the kernel's direct rendering manager (DRM)."
+    install -Dm644 $_pkg/kernel-$_extramodules/nvidia-modeset.ko \
+           "$pkgdir"/$_path/nvidia-modeset.ko
 
     # Compress
     gzip "$pkgdir"/$_path/nvidia*.ko
