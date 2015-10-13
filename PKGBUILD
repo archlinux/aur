@@ -2,12 +2,13 @@
 
 pkgname=stackedit
 pkgver=4.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc='In-browser markdown editor'
 arch=('any')
 url='https://stackedit.io/'
 license=('APACHE')
-depends=('nodejs' 'nodejs-gulp' 'nodejs-bower' 'chromium')
+depends=('nodejs' 'chromium')
+makedepends=('bower' 'gulp')
 options=(!strip)
 source=("https://github.com/benweet/$pkgname/archive/v${pkgver}.tar.gz"
 	$pkgname.sh

@@ -1,14 +1,14 @@
 pkgbase = stackedit
 	pkgdesc = In-browser markdown editor
 	pkgver = 4.3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stackedit.io/
 	install = stackedit.install
 	arch = any
 	license = APACHE
+	makedepends = bower
+	makedepends = gulp
 	depends = nodejs
-	depends = nodejs-gulp
-	depends = nodejs-bower
 	depends = chromium
 	options = !strip
 	source = https://github.com/benweet/stackedit/archive/v4.3.11.tar.gz
