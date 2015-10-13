@@ -1,6 +1,6 @@
 pkgbase = wrk2-git
 	pkgdesc = a HTTP benchmarking tool based mostly on wrk
-	pkgver = r76.49fef15
+	pkgver = r82.6a91d32
 	pkgrel = 1
 	url = https://github.com/giltene/wrk2
 	arch = i686

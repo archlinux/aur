@@ -3,7 +3,7 @@
 
 pkgname=wrk2-git
 _pkgname=wrk2
-pkgver=r76.49fef15
+pkgver=r82.6a91d32
 pkgrel=1
 pkgdesc='a HTTP benchmarking tool based mostly on wrk'
 arch=('i686' 'x86_64')
@@ -23,6 +23,7 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
+  sed -i 's/-std=c99/-std=gnu99/' Makefile
 }
 
 build() {
