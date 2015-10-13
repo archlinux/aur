@@ -4,12 +4,12 @@
 
 pkgname=le-editor
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A text editor in memorial to Norton Editor with block and binary operations"
 arch=('i686' 'x86_64')
 url="https://directory.fsf.org/wiki/Le_editor"
 license=('GPL3')
-depends=('gcc-libs' 'ncurses')
+depends=('bash' 'ncurses')
 source=("http://fossies.org/linux/misc/${pkgname%-editor}-$pkgver.tar.xz")
 md5sums=('f5fe85103a6190bcdc51d2fbb4407388')
 
