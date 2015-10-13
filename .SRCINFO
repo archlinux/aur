@@ -1,16 +1,16 @@
 pkgbase = nodejs-azure-cli
 	pkgdesc = Windows Azure Cross Platform Command Line tool
-	pkgver = 0.9.9
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://github.com/Azure/azure-xplat-cli
 	arch = any
 	license = Apache
 	depends = nodejs
 	depends = npm
-	noextract = azure-cli-0.9.9.tgz
+	noextract = azure-cli-0.9.10.tgz
 	options = !strip
-	source = http://registry.npmjs.org/azure-cli/-/azure-cli-0.9.9.tgz
-	sha256sums = 585af418f18a84d0236f13c23f10a44ae2957d06e366ea34b293a0c9a7927866
+	source = http://registry.npmjs.org/azure-cli/-/azure-cli-0.9.10.tgz
+	md5sums = 214a7e713516f847d2e443ed79abda42
 
 pkgname = nodejs-azure-cli
 
