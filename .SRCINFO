@@ -1,6 +1,6 @@
 pkgbase = snowcrash
 	pkgdesc = API Blueprint Parser
-	pkgver = 0.16.1.r28.gd4b6e17
+	pkgver = 1.0.9.r2.gd93978d
 	pkgrel = 1
 	url = https://github.com/apiaryio/snowcrash
 	arch = i686

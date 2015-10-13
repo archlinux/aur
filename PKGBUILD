@@ -1,7 +1,7 @@
 # Maintainer: Lance Chen <cyen0312@gmail.com>
 
 pkgname=snowcrash
-pkgver=0.16.1.r28.gd4b6e17
+pkgver=1.0.9.r2.gd93978d
 pkgrel=1
 pkgdesc="API Blueprint Parser"
 arch=('i686' 'x86_64')
