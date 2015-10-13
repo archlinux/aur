@@ -1,0 +1,16 @@
+pkgbase = pyinputevent
+	pkgdesc = A module for cross-platform control of the mouse and keyboard in python that is simple to install and use.
+	pkgver = 0.1b0.dda5a69
+	pkgrel = 1
+	url = https://github.com/SavinaRoja/PyUserInput
+	arch = any
+	license = GPL3
+	source = git://github.com/rmt/pyinputevent.git
+	source = setup.py
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = python-pyinputevent-git
+
+pkgname = python2-pyinputevent-git
+
