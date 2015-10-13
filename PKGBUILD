@@ -19,7 +19,7 @@ provides=('gnome-settings-daemon')
 conflicts=('gnome-settings-daemon')
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
 	toshiba.patch)
-sha256sums=('8d3ef9c18538831ed89122fee0bdaca68b0e482a18b3c4388c4e672aba1b3cd5'
+sha256sums=('fa621a17f1d132fe60461020b0dad20a9fab6b0e3e651628aaa53a8f6a6df2c0'
 
 SKIP)
 
