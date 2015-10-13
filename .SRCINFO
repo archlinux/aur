@@ -1,0 +1,14 @@
+pkgbase = indivisible-prototype
+	pkgdesc = Action/RPG prototype
+	pkgver = 1
+	pkgrel = 1
+	url = http://indivisiblegame.com
+	arch = any
+	license = custom
+	options = !strip
+	options = staticlibs
+	source = http://www.labzerogames.com/indivisible-prototype_linux.tar.gz
+	md5sums = SKIP
+
+pkgname = indivisible-prototype
+
