@@ -8,7 +8,7 @@ pkgbase = perspector
 	license = MIT
 	depends = gsl
 	depends = gtk3
-	source = https://bitbucket.org/ambrevar/perspector/get/v1.2.tar.bz2
+	source = perspector-1.2.tar.bz2::https://bitbucket.org/ambrevar/perspector/get/v1.2.tar.bz2
 	sha256sums = fccc60320df2a30b44779bc0751c3be324de8cfc3583473ebb71b624306ff05a
 
 pkgname = perspector

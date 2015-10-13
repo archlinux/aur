@@ -9,7 +9,7 @@ arch=("i686" "x86_64")
 url="http://ambrevar.bitbucket.org/$pkgname"
 license=("MIT")
 depends=("gsl" "gtk3")
-source=("https://bitbucket.org/ambrevar/$pkgname/get/v$pkgver.tar.bz2")
+source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/ambrevar/$pkgname/get/v$pkgver.tar.bz2")
 sha256sums=("fccc60320df2a30b44779bc0751c3be324de8cfc3583473ebb71b624306ff05a")
 
 build() {
