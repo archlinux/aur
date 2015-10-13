@@ -1,5 +1,5 @@
 # Maintainer: Marty Plummer (netz) <ntzrmtthihu777 (at) gmail (dot) com
-pkgbase=('pyinputevent')
+pkgbase=('python-pyinputevent')
 pkgname=('python-pyinputevent-git'
          'python2-pyinputevent-git')
 pkgver=0.1b0.dda5a69
@@ -14,7 +14,7 @@ md5sums=('SKIP' 'SKIP')
 _pythons="python2 python"
 
 prepare() {
-  cd "${srcdir}/${pkgbase}"
+  cd "${srcdir}/pyinputevent"
   2to3 -w *.py
   { echo "from __future__ import print_function"; cat uinput.py; } > uinput.py.new
   mv uinput.py{.new,}
@@ -28,7 +28,7 @@ _package-pyinput-git() {
 }
 
 for _py in ${_pythons}; do
-  eval "package_${_py}-${pkgbase}-git() {
+  eval "package_${_py}-pyinputevent-git() {
     _package-pyinput-git $_py
   }"
 done
@@ -36,6 +36,6 @@ done
 pkgver() {
   cd "${srcdir}"
   printf "%s.%s" "$(python setup.py --version)" \
-    "$(cd ${pkgbase} && git rev-parse --short master)"
+    "$(cd pyinputevent && git rev-parse --short master)"
 }
 
