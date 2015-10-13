@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-applets
-pkgver=3.18.0
+pkgver=3.18.1
 pkgrel=1
 pkgdesc="Small applications for the GNOME panel"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('gnome-common' 'intltool' 'networkmanager' 'rarian' 'yelp-tools')
 url="https://wiki.gnome.org/Projects/GnomeFlashback"
 install=$pkgname.install
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('49a752ff805e95b57f5f6d4a298fbe4508f10f042bc24f58f62b84d6390d7df8')
+sha256sums=('e09eb18f55be851da4c75c7d97df40130625ea548b2aa8d9db21e17bb06eefd5')
 
 build() {
   cd "$pkgname-$pkgver"

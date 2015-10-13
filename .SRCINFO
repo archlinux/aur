@@ -1,6 +1,6 @@
 pkgbase = gnome-applets
 	pkgdesc = Small applications for the GNOME panel
-	pkgver = 3.18.0
+	pkgver = 3.18.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeFlashback
 	install = gnome-applets.install
@@ -18,8 +18,8 @@ pkgbase = gnome-applets
 	depends = gnome-panel>=3.18.0
 	depends = libgtop
 	depends = upower
-	source = http://download.gnome.org/sources/gnome-applets/3.18/gnome-applets-3.18.0.tar.xz
-	sha256sums = 49a752ff805e95b57f5f6d4a298fbe4508f10f042bc24f58f62b84d6390d7df8
+	source = http://download.gnome.org/sources/gnome-applets/3.18/gnome-applets-3.18.1.tar.xz
+	sha256sums = e09eb18f55be851da4c75c7d97df40130625ea548b2aa8d9db21e17bb06eefd5
 
 pkgname = gnome-applets
 
