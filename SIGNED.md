@@ -3,19 +3,19 @@
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAABCAAGBQJWHU8jAAoJEHWEtN3AMJGNh3wQAIwIL40P81Fpj06Fg52ASw+q
-OSsq+H6O2+nS36uVFaMI2FwaaT6ENPVhEbzICzrfmpB8/gflg+1lnmLua4+RcKSs
-9SL6uG2h52kdk+EQOQD3TbxfCS6vhZxFlzDiemAiEksmj6NqzvywY2aX3F4neEUe
-Bg5YqFoH0wRNrpm23MM55MR16aOzzTW9pD8j1uc3bWw8nSl4E+fqwmD8Oge9SAOh
-G17K+O8ILxIxND8lgyj/ke0R7dK962k6yTxXBKIjqsaQ8JaybBokBovsyYapIdHq
-4pAkAK1DtSUf2vOv5YoRzox74Y3/aaKxdPYBlVwdI0uWpaxZ7K6SfErYH0rrQD2i
-GMoefu/PHXc80NC78tyxvKDWbVwK3OM+2SfD15a5YkB2DMbmSZzwEDoaqg94RCfk
-98H4chPCcHImU03TiTPek7vWV0nrKVuoPubCFmUeFWdThd3lOBe4dJsMvwba/GHx
-I7JI99ZXWS2dDpZY84s7J1MmCrTnqxTAbUVg/IhSP1jbmr5W4d8mrDpuFEFs9a8t
-L3MjvcgUfrJXtKKguNcQelD91Wm3WslQgprlJNdIrIhLkTljZnHzKQqSUuO8EWGC
-aSxf/oGW8LQTnucy9TMFA73r6IBaj6Ft+Mg/XuPbTeoR3Cd0qspOHzoJ9LBxsQ7x
-tNen4jLVlErBd7mX1FKN
-=ASC1
+iQIcBAABCAAGBQJWHU+eAAoJEHWEtN3AMJGN1AcP/jZeuo7c96Dvm3Wu5YubKj+p
+rn70bcxIvF2AY7nP/N2LcF+DnzGi3qJjIxWUnDFxrgOnGA5O5LyeDZwPEGBrAm86
+s8ccKVkGO5Vb7BSbXmbZMtbbOUhR/2Y4nalVzH3KzoXDbMdq9t0sNxhYAOGgUape
+C5LhrEgafLMMcA0AfzO9p7rkrAfNCxBc+A8pCP1Q3MJUizwHYorZ/f2uXZ6fIVLP
+4eotJ7D/dxIhsTt8qJebmvussB7nB5VzoTS78zFQQ1FW20aN6vHViy275pFdO5s/
+W92RssKPv7jmWy+6zI+LUwBlwmvybNFTX4xfbgQiQAFZtQx+xAaqzD+j/5PBdooX
+zEbtzoQDB77RVnCx5qPibMSGjWKwn72NJpxB+ZqcYbmgl0qKUdD0t7nLKnpgaI5U
+NgdVLG70Vc9O+Rul+0RbBzLdroEHPALjQOU3YlITaMFuGz7ExksvGTDawUPL1qa+
+GeWuex44/QNM/XBQwVqClOnoT1QSSuJhVhqc0n1xZIGSiNi1Gk+YYcpBaegW4cCK
+X2P7DXTLrCWexrJBMTg7XEHvAGr2tCmb7ksKBakrgXP22gWEbFBEu+sXfC1WeGLz
+5Ioabx9+/91YKKJANuhqsG203gdVHukVzWDU1dqro1bcVWEcEiaYklwDnWkMG/wv
+u4c+NmJxGp6xIv1xfJCO
+=gZ9F
 -----END PGP SIGNATURE-----
 
 ```
@@ -30,7 +30,7 @@ tNen4jLVlErBd7mX1FKN
 size  exec  file          contents                                                        
             ./                                                                            
 13            .gitignore  e6c274a19832b39c79b91154c2e637acb68815acf59eb39b9142991328862086
-425           .SRCINFO    bb94717ad29b91b512e506e86526e1826bbbaa27f471fd03f5091d8d78fe5bd9
+373           .SRCINFO    42b364785229c0e2b9e9e0ef4d765e0a2602319f58b029a3a8ded1fa355be5de
 1002          PKGBUILD    76d23f6b1e275c50898f048b70153477dcbfa23d7d34391967a3ae0354d89509
 372           setup.py    684c88d4715555b4b3d982ebb1fd2a07daf1ea4bcd82efa9aaefc9849e650d89
 ```
