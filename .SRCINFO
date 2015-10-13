@@ -1,0 +1,13 @@
+pkgbase = gohufont-powerline
+	pkgdesc = GohuFont with powerline and statusbar symbols.
+	pkgver = 0.1.r1.g0b2a9cf
+	pkgrel = 1
+	url = https://github.com/dnmario/gohufont-powerline
+	arch = any
+	license = WTFPL
+	makedepends = xorg-bdftopcf
+	source = git://github.com/dnmario/gohufont-powerline
+	md5sums = SKIP
+
+pkgname = gohufont-powerline
+
