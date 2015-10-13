@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-mvtools_sf-git
+	pkgdesc = Plugin for Vapoursynth: mvtools_sf (GIT version)
+	pkgver = test12.2.gfb08881
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=172525
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = fftw
+	provides = vapoursynth-plugin-mvtools_sf
+	conflicts = vapoursynth-plugin-mvtools_sf
+	source = mvtools_sf::git+https://github.com/IFeelBloated/MVTools_SF.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-mvtools_sf-git
+
