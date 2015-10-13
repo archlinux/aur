@@ -1,11 +1,11 @@
 # Maintainer: Michele Mocciola <mickele>
 pkgname=aster
 pkgver=12.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Code-Aster"
 url="http://www.code-aster.org/"
 license="GPL"
-depends=('python2' 'astk>=1.13.6' 'metis4' 'med>=3.0.8' 'mumps>=4.10.0-7')
+depends=('python2' 'astk>=1.13.6' 'metis4' 'med>=3.0.8' 'mumps4')
 makedepends=()
 install="${pkgname}.install"
 arch=('i686' 'x86_64')

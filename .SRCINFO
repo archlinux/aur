@@ -1,7 +1,7 @@
 pkgbase = aster
 	pkgdesc = Code-Aster
 	pkgver = 12.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.code-aster.org/
 	install = aster.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = aster
 	depends = astk>=1.13.6
 	depends = metis4
 	depends = med>=3.0.8
-	depends = mumps>=4.10.0-7
+	depends = mumps4
 	options = !strip
 	source = http://www.code-aster.org/FICHIERS/aster-full-src-12.4.0-1.noarch.tar.gz
 	md5sums = 5378bf134ae67ef80e74967b73c3d0e5
