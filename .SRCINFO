@@ -1,6 +1,6 @@
 pkgbase = perl-module-scandeps
 	pkgdesc = Scan file prerequisites
-	pkgver = 1.18
+	pkgver = 1.20
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Module-ScanDeps
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = perl-module-scandeps
 	makedepends = perl-test-requires
 	depends = perl>=5.008
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.18.tar.gz
-	sha512sums = 1c30927454a7e181738eef54767a1845421217e0f6837f8157ec35c604821339238f296a6644e7241f215e66f7ada8ee832a494d9b9f74f8dc3ba219cd616d16
+	source = http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.20.tar.gz
+	sha512sums = 1756c48d8932d50f03e5440e9b1a1c38c4f795c5701d6c9704cef88ac1162efeefb863f003b105b8516bb9cb8113c9c8524e7c6847070450228ef6baeb4d578d
 
 pkgname = perl-module-scandeps
 
