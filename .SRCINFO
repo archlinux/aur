@@ -11,7 +11,7 @@ pkgbase = nvidia-beta-dkms
 	makedepends = pacman>=4.2.0
 	depends = dkms
 	depends = linux>=3.7
-	depends = linux<4.3
+	depends = linux<4.4
 	depends = nvidia-utils-beta>=358.09
 	provides = nvidia=358.09
 	provides = nvidia-dkms
