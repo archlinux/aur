@@ -10,8 +10,8 @@ url="http://github.com/davidm/$_pkgname"
 license=("MIT")
 depends=("lua>=5.1")
 makedepends=("git")
-conflicts=("lua-luainspect")
 provides=("lua-luainspect")
+conflicts=("lua-luainspect")
 source=("git+http://github.com/davidm/$_pkgname.git")
 sha1sums=("SKIP")
 
