@@ -2,8 +2,8 @@
 
 pkgname=openrefine-beta
 _pkgname=openrefine
-pkgver=2.6beta1
-_pkgver=2.6-beta.1
+pkgver=2.6rc2
+_pkgver=2.6-rc.2
 pkgrel=1
 pkgdesc="A free, open source power tool for working with messy data and improving it"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('java-environment' 'bash')
 options=('!strip')
 source=("https://github.com/OpenRefine/OpenRefine/releases/download/${_pkgver}/${_pkgname}-linux-${_pkgver}.tar.gz")
-sha512sums=('b3ec914b735dce24516b4ac101e3b18585844c4584f5908cb86aede2b1698c8b463891392844dd3645caa82ab6f8db157ff2a48c39fd3ddb1b43bc46ca17415a')
+sha512sums=('4f689202eb39a66ab7881f7eba17aa568aa9b07e4227b35f82eee4e37a757299b7572d826b6501a66ea9aa180f33a7800bd79ff1d2b1a806a9e54ba0e3e2cb56')
 
 package()
 {
