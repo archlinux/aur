@@ -12,6 +12,9 @@ _libdir=usr/lib32/DBDesigner4
 source=(http://downloads.mysql.com/DBDesigner4/DBDesigner$pkgver.tar.gz
         dbdesigner.desktop
         dbdesigner)
+md5sums=('3a9bfd9b40fb8b70e24fd2195424cb51'
+         '9ad96f433c24981960066d8f11a819ac'
+         '38a2e78be566b05c6c540cfb033987df')
 
 package() {
   cd "$srcdir/DBDesigner4"  
