@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="http://www.mozilla.org/${_name}/channel"
 depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 
-          'freetype2' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent'
+          'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent'
           'libjpeg' 'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common'
           'nspr' 'nss' 'shared-mime-info' 'sqlite3' 'startup-notification')
 optdepends=('libcanberra: for sound support')
