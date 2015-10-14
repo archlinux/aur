@@ -7,8 +7,8 @@ pkgbase = vapoursynth-plugin-edi_rpow2-git
 	license = custom:WTFPL
 	makedepends = git
 	depends = vapoursynth
-	optdepends = vapoursynth-plugin-nnedi3-git: needed for nnedi3_rpow2
 	optdepends = vapoursynth-plugin-eedi2-git: needed for eedi2_rpow2
+	optdepends = vapoursynth-plugin-nnedi3-git: needed for nnedi3_rpow2
 	source = vapoursynth-plugin-edi_rpow2-git::git://gist.github.com/020c497524e794779d9c.git
 	sha1sums = SKIP
 
