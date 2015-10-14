@@ -1,6 +1,6 @@
-diff -aur k2_old/k2pdfopt_v2.32/willuslib/array.c k2_new/k2pdfopt_v2.32/willuslib/array.c
---- k2_old/k2pdfopt_v2.32/willuslib/array.c	2014-12-01 13:24:25.000000000 -0300
-+++ k2_new/k2pdfopt_v2.32/willuslib/array.c	2015-03-07 09:18:58.602126050 -0300
+diff -aur k2_old/k2pdfopt_v2.33/willuslib/array.c k2_new/k2pdfopt_v2.33/willuslib/array.c
+--- k2_old/k2pdfopt_v2.33/willuslib/array.c	2014-12-01 13:24:25.000000000 -0300
++++ k2_new/k2pdfopt_v2.33/willuslib/array.c	2015-10-13 16:15:48.231007819 -0300
 @@ -1072,7 +1072,7 @@
  void arrayf_sort(float *a,int n)
  
@@ -10,9 +10,9 @@ diff -aur k2_old/k2pdfopt_v2.32/willuslib/array.c k2_new/k2pdfopt_v2.32/willusli
      }
  
  
-diff -aur k2_old/k2pdfopt_v2.32/willuslib/math.c k2_new/k2pdfopt_v2.32/willuslib/math.c
---- k2_old/k2pdfopt_v2.32/willuslib/math.c	2013-08-15 21:33:50.000000000 -0300
-+++ k2_new/k2pdfopt_v2.32/willuslib/math.c	2015-03-07 09:18:58.611126050 -0300
+diff -aur k2_old/k2pdfopt_v2.33/willuslib/math.c k2_new/k2pdfopt_v2.33/willuslib/math.c
+--- k2_old/k2pdfopt_v2.33/willuslib/math.c	2013-08-15 21:33:50.000000000 -0300
++++ k2_new/k2pdfopt_v2.33/willuslib/math.c	2015-10-13 16:15:48.237007819 -0300
 @@ -532,7 +532,7 @@
  
  
@@ -22,9 +22,9 @@ diff -aur k2_old/k2pdfopt_v2.32/willuslib/math.c k2_new/k2pdfopt_v2.32/willuslib
  
      {
      int top,n1;
-diff -aur k2_old/k2pdfopt_v2.32/willuslib/ocrjocr.c k2_new/k2pdfopt_v2.32/willuslib/ocrjocr.c
---- k2_old/k2pdfopt_v2.32/willuslib/ocrjocr.c	2012-11-12 13:09:42.000000000 -0300
-+++ k2_new/k2pdfopt_v2.32/willuslib/ocrjocr.c	2015-03-07 09:18:58.629126048 -0300
+diff -aur k2_old/k2pdfopt_v2.33/willuslib/ocrjocr.c k2_new/k2pdfopt_v2.33/willuslib/ocrjocr.c
+--- k2_old/k2pdfopt_v2.33/willuslib/ocrjocr.c	2012-11-12 13:09:42.000000000 -0300
++++ k2_new/k2pdfopt_v2.33/willuslib/ocrjocr.c	2015-10-13 16:15:48.247007818 -0300
 @@ -29,6 +29,8 @@
  #ifdef HAVE_GOCR_LIB
  #include <gocr.h>
@@ -42,9 +42,9 @@ diff -aur k2_old/k2pdfopt_v2.32/willuslib/ocrjocr.c k2_new/k2pdfopt_v2.32/willus
      job_init(job);
      job_init_image(job);
      // willus_mem_alloc_warn((void **)&job->src.p.p,w*h,funcname,10);
-diff -aur k2_old/k2pdfopt_v2.32/willuslib/string.c k2_new/k2pdfopt_v2.32/willuslib/string.c
---- k2_old/k2pdfopt_v2.32/willuslib/string.c	2014-12-05 11:52:04.000000000 -0300
-+++ k2_new/k2pdfopt_v2.32/willuslib/string.c	2015-03-07 09:18:58.620126049 -0300
+diff -aur k2_old/k2pdfopt_v2.33/willuslib/string.c k2_new/k2pdfopt_v2.33/willuslib/string.c
+--- k2_old/k2pdfopt_v2.33/willuslib/string.c	2014-12-05 11:52:04.000000000 -0300
++++ k2_new/k2pdfopt_v2.33/willuslib/string.c	2015-10-13 16:15:48.242007819 -0300
 @@ -81,7 +81,7 @@
  ** Returns NULL if EOF, otherwise returns pointer to the string.
  **
@@ -54,9 +54,9 @@ diff -aur k2_old/k2pdfopt_v2.32/willuslib/string.c k2_new/k2pdfopt_v2.32/willusl
  
      {
      int     i;
-diff -aur k2_old/k2pdfopt_v2.32/willuslib/willus.h k2_new/k2pdfopt_v2.32/willuslib/willus.h
---- k2_old/k2pdfopt_v2.32/willuslib/willus.h	2015-03-06 09:38:28.000000000 -0300
-+++ k2_new/k2pdfopt_v2.32/willuslib/willus.h	2015-03-07 09:18:58.594126051 -0300
+diff -aur k2_old/k2pdfopt_v2.33/willuslib/willus.h k2_new/k2pdfopt_v2.33/willuslib/willus.h
+--- k2_old/k2pdfopt_v2.33/willuslib/willus.h	2015-09-26 23:26:35.000000000 -0300
++++ k2_new/k2pdfopt_v2.33/willuslib/willus.h	2015-10-13 16:15:48.226007820 -0300
 @@ -227,9 +227,6 @@
  ** CMAKE handles the defines, not this source
  ** (Mod from Dirk Thierbach, 31-Dec-2013)
@@ -76,7 +76,7 @@ diff -aur k2_old/k2pdfopt_v2.32/willuslib/willus.h k2_new/k2pdfopt_v2.32/willusl
  /*
  ** Consistency check
  */
-@@ -551,7 +548,7 @@
+@@ -553,7 +550,7 @@
                        int *n,FILE *err);
  int    readxyz_ex    (char *filename,double **x,double **y,double **z,
                        int *n,FILE *err,int ignore_after_semicolon);
@@ -85,7 +85,7 @@ diff -aur k2_old/k2pdfopt_v2.32/willuslib/willus.h k2_new/k2pdfopt_v2.32/willusl
  void   sortd         (double *x,int n);
  void   sorti         (int *x,int n);
  void   sortxy        (float *x,float *y,int n);
-@@ -620,7 +617,7 @@
+@@ -622,7 +619,7 @@
  /* string.c */
  void   clean_line    (char *buf);
  void   clean_line_end(char *buf);

@@ -1,38 +1,38 @@
 # Maintainer: Facundo Tuesca <facutuesca at gmail dot com>
 
 pkgname=k2pdfopt
-pkgver=2.32
-pkgrel=3
+pkgver=2.33
+pkgrel=1
 pkgdesc="A tool that optimizes PDF files for viewing on mobile readers"
 arch=('i686' 'x86_64')
 url="http://www.willus.com/k2pdfopt/"
 license=('GPL3')
 makedepends=('cmake')
-depends=('mupdf>=1.6'
+depends=('mupdf>=1.7_a'
 	'djvulibre>=3.5.25.3'
 	'netpbm>=10.61.02'
 	'leptonica>=1.69')
-source=("${pkgname}_v${pkgver}_src.zip::https://drive.google.com/uc?export=download&id=0B0iwSdCKGAZYQmZjRGtwX3NaMmc"
-    "http://www.mupdf.com/downloads/archive/mupdf-1.6-source.tar.gz"
+source=("http://www.willus.com/k2pdfopt/src/${pkgname}_v${pkgver}_src.zip"
+    "http://www.mupdf.com/downloads/archive/mupdf-1.7a-source.tar.gz"
 	"http://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz"
 	"http://www-e.uni-magdeburg.de/jschulen/ocr/gocr-0.49.tar.gz"
-    "https://openjpeg.googlecode.com/files/openjpeg-2.0.0.tar.gz"
+    "http://downloads.sourceforge.net/project/openjpeg.mirror/2.1.0/openjpeg-2.1.0.tar.gz"
 	"k2pdfopt.patch"
 	"tesseract.patch")
-md5sums=('facfb12519a0a0b5db63acdac37844d7'
-         '8d69db41ae9e0b6807b76bb6ed70dc2f'
+md5sums=('c2a67f7e8386808c9d5717dffa8860c0'
+         '319fda2cc5301bb3ec2e1d82c3329986'
          '26adc8154f0e815053816825dde246e6'
          '4e527bc4bdd97c2be15fdd818857507f'
-         'd9be274bddc0f47f268e484bdcaaa6c5'
-         '07a0f2d3776733ccd0149845816ad4f5'
+         'f6419fcc233df84f9a81eb36633c6db6'
+         '82d4856430c32fd9a0194401662afd71'
          '0e85e48aed62771dfc090787c079359d')
 
 prepare() {
 	cd "${srcdir}/${pkgname}_v${pkgver}"
 	rm -f "include_mod/gocr.h"
-	cp mupdf_mod/font.c mupdf_mod/string.c "${srcdir}/mupdf-1.6-source/source/fitz/"
-	cp mupdf_mod/pdf-* "${srcdir}/mupdf-1.6-source/source/pdf/"
-	rm -rf ${srcdir}/mupdf-1.6-source/thirdparty/{curl,freetype,jpeg,zlib}
+	cp mupdf_mod/font.c mupdf_mod/string.c mupdf_mod/filter-dct.c mupdf_mod/load-* mupdf_mod/time.c "${srcdir}/mupdf-1.7a-source/source/fitz/"
+	cp mupdf_mod/pdf-* "${srcdir}/mupdf-1.7a-source/source/pdf/"
+	rm -rf ${srcdir}/mupdf-1.7a-source/thirdparty/{curl,freetype,jpeg,zlib,openjpeg}
 	cp tesseract_mod/dawg.cpp "${srcdir}/tesseract-ocr/dict/"
 	cp tesseract_mod/tessdatamanager.cpp "${srcdir}/tesseract-ocr/ccutil/"
 	cp tesseract_mod/tessedit.cpp "${srcdir}/tesseract-ocr/ccmain/"
@@ -45,7 +45,7 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/mupdf-1.6-source/"
+	cd "${srcdir}/mupdf-1.7a-source/"
 	make prefix="${srcdir}/patched_libraries" install
         install -Dm644 build/debug/libmujs.a "${srcdir}/patched_libraries/lib/"
 	cd "${srcdir}/tesseract-ocr/"
@@ -58,7 +58,7 @@ build() {
 	cp include/config.h "${srcdir}/patched_libraries/include"
 	make libs
 	cp src/libPgm2asc.a "${srcdir}/patched_libraries/lib"
-    cd "${srcdir}/openjpeg-2.0.0/"
+    cd "${srcdir}/openjpeg-2.1.0/"
     cmake -D BUILD_SHARED_LIBS:bool=off .
     make openjp2
     cp bin/libopenjp2.a "${srcdir}/patched_libraries/lib"
