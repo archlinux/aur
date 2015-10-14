@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=avahi-git
-pkgver=0.6.32.rc.r0.g4a087c4
+pkgver=0.6.32.rc.r7.g916f65b
 pkgrel=1
 pkgdesc='Multicast DNS-SD / Zeroconf Suite git master'
 url='http://www.avahi.org/'
@@ -19,8 +19,8 @@ optdepends=('gtk3: avahi-discover-standalone, bshell, bssh, bvnc'
             'mono: mono bindings'
             'python2-dbus: avahi-discover'
             'nss-mdns: NSS support for mDNS')
-conflicts=(howl mdnsresponder)
-provides=(howl mdnsresponder)
+conflicts=(howl mdnsresponder avahi)
+provides=(howl mdnsresponder avahi)
 install=avahi.install
 options=(!emptydirs)
 backup=(etc/avahi/{hosts,avahi-daemon.conf,services/{ssh,sftp-ssh}.service}
