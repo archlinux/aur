@@ -1,4 +1,4 @@
-# Amintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Julio Napurí <julionc@gmail.com>
 pkgname=webgrind
 pkgver=1.0
