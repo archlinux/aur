@@ -1,5 +1,5 @@
---- a/usr/lib/python3.4/site-packages/system76driver/actions.py	2014-05-09 23:55:11.090907554 -0400
-+++ b/usr/lib/python3.4/site-packages/system76driver/actions.py	2014-05-10 00:20:19.868672154 -0400
+--- a/usr/lib/python3.5/site-packages/system76driver/actions.py	2014-05-09 23:55:11.090907554 -0400
++++ b/usr/lib/python3.5/site-packages/system76driver/actions.py	2014-05-10 00:20:19.868672154 -0400
 @@ -282,9 +282,16 @@
          return not params.issuperset(self.add)
  

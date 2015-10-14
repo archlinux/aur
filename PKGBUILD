@@ -2,7 +2,7 @@
 
 pkgname=system76-driver
 pkgver=15.04.7
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
 url="https://launchpad.net/system76-driver"
@@ -20,9 +20,9 @@ source=("https://launchpad.net/~system76-dev/+archive/stable/+files/${pkgname}_$
 	'system76.service' 'galu1.patch' 'grub.patch' 'gtk.patch' 'cli.patch')
 sha1sums=('356bb13cef2d41a6ab82d5ec7d5bf722aedbf2d0'
           'cf763432441c3da0563eee041145a02109f2bb3a'
-          '6fb7b26f77098424586424bd35522882412ddd09'
-          'dd95fd7317786c9fc9b0233c248d192832a83fe0'
-          'b276d403153adae45fb71c2e1a7a0340cab27e74'
+          '8567b36332ff4ed0bc1e8516f9247628e0ba55ae'
+          'ea729019c9dbf82b8813fbdace1568242155e386'
+          'c6ad5b9f8079b587719b99c9bcd481f28323ad0a'
           '5175c3a54efefcf4a3526094e33a1281cb59c4eb')
 
 package() {

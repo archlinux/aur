@@ -1,5 +1,5 @@
---- a/usr/lib/python3.4/site-packages/system76driver/gtk.py	2014-05-10 00:19:43.755367421 -0400
-+++ b/usr/lib/python3.4/site-packages/system76driver/gtk.py	2014-05-10 00:19:48.515363743 -0400
+--- a/usr/lib/python3.5/site-packages/system76driver/gtk.py	2014-05-10 00:19:43.755367421 -0400
++++ b/usr/lib/python3.5/site-packages/system76driver/gtk.py	2014-05-10 00:19:48.515363743 -0400
 @@ -100,10 +100,10 @@
              self.details.set_text('\n'.join(lines))
              if self.action_runner.needed:
