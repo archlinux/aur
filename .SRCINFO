@@ -1,7 +1,7 @@
 pkgbase = mongoclock
 	pkgdesc = Just a humongous clock for the terminal
-	pkgver = 2
-	pkgrel = 2
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/maandree/mongoclock
 	arch = any
 	license = custom: GNUAllPermissive
@@ -9,8 +9,8 @@ pkgbase = mongoclock
 	makedepends = general-preprocessor
 	depends = glibc
 	depends = linux
-	source = https://github.com/maandree/mongoclock/archive/2.tar.gz
-	sha256sums = 7182798bf59686360bebdd939f252929755c54d0de52946aaa5a7b6329b469e4
+	source = https://github.com/maandree/mongoclock/archive/2.1.tar.gz
+	sha256sums = 5a4747c320861db61769ff5e98f5c3ad6bcbe9467db7e7ead9893ea7f5c2f52b
 
 pkgname = mongoclock
 
