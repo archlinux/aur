@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex
-pkgver=0.11
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
@@ -20,12 +20,12 @@ makedepends=('autoconf'
              'pkg-config'
              'yasm')
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%-*}/tar.gz/addrindex-$pkgver
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%-*}/tar.gz/v$pkgver-addrindex
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('28a294f5ee8ea23b86e20f7484652c9579cccf2e6a50185c6160539fe4ba39ab'
+sha256sums=('790b32f073f979a252a413c4a2ea5d2d35454007fa8f41e90660b344a9241cf3'
             '8a56413f8946861390a9992411a3730bc085ee02b852c27371cacfa5ec50e939'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
@@ -37,7 +37,7 @@ conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin.install
 
 build() {
-  cd "$srcdir/${pkgname%%-*}-addrindex-$pkgver"
+  cd "$srcdir/${pkgname%%-*}-$pkgver-addrindex"
 
   msg 'Building...'
   ./autogen.sh
@@ -56,7 +56,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%%-*}-addrindex-$pkgver"
+  cd "$srcdir/${pkgname%%-*}-$pkgver-addrindex"
 
   msg 'Installing license...'
   install -Dm 644 COPYING "$pkgdir/usr/share/licenses/${pkgname%%-*}/COPYING"
