@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('vte3-notification' 'gsettings-desktop-schemas' 'dconf')
+depends=('vte3-notification>=0.42.1' 'gsettings-desktop-schemas' 'dconf')
 makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'desktop-file-utils'
              'libnautilus-extension' 'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
 optdepends=('gconf: settings migration when upgrading from older version')

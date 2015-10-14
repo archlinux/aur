@@ -18,7 +18,7 @@ pkgbase = gnome-terminal-fedora
 	makedepends = gconf
 	makedepends = vala
 	makedepends = yelp-tools
-	depends = vte3-notification
+	depends = vte3-notification>=0.42.1
 	depends = gsettings-desktop-schemas
 	depends = dconf
 	optdepends = gconf: settings migration when upgrading from older version
