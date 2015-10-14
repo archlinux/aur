@@ -7,7 +7,7 @@ pkgdesc="A free implementation of System 3.5, a games engine created by Alice So
 arch=(i686 x86_64)
 url="http://8ne.sakura.ne.jp:20008/chika/unitbase/xsys35/"
 license=('GPL')
-depends=(freetype2)
+depends=(freetype2 gtk2 alsa-lib fontconfig libvorbis libpng libjpeg)
 makedepends=(gcc-fortran)
 source=(http://ftp.debian.org/debian/pool/main/x/xsystem35/xsystem35_${pkgver}-${_pkgrev}.orig.tar.gz
         01_change_conflict_define.patch
