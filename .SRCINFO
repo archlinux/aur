@@ -1,6 +1,6 @@
 pkgbase = hawkey
 	pkgdesc = High-level API for the libsolv library
-	pkgver = 0.6.1.1
+	pkgver = 0.6.2.1
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/hawkey
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = hawkey
 	depends = libsolv
 	depends = zlib
 	optdepends = python: for python bindings
-	source = https://github.com/rpm-software-management/hawkey/archive/hawkey-0.6.1-1.tar.gz
-	md5sums = 98fc9807bcabcb68aeb0ae76164989d0
+	source = https://github.com/rpm-software-management/hawkey/archive/hawkey-0.6.2-1.tar.gz
+	md5sums = ceac995a974f585fb3e65817daa80092
 
 pkgname = hawkey
 

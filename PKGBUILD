@@ -1,5 +1,5 @@
 pkgname=hawkey
-_pkgver=0.6.1
+_pkgver=0.6.2
 _rpmrel=1
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
@@ -12,7 +12,7 @@ makedepends=('cmake' 'python' 'python-sphinx' 'rpm-org')
 checkdepends=('check' 'python-nose')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('98fc9807bcabcb68aeb0ae76164989d0')
+md5sums=('ceac995a974f585fb3e65817daa80092')
 
 prepare() {
 	mv  "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
