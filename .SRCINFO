@@ -1,6 +1,6 @@
 pkgbase = fancontrol-kcm-git
 	pkgdesc = KCM for the fancontrol script and systemd service
-	pkgver = 0.1.r146.g0764137
+	pkgver = 0.1.r181.g2eaa157
 	pkgrel = 1
 	url = https://github.com/Maldela/Fancontrol-GUI
 	arch = any
