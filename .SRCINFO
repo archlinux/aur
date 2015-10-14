@@ -1,0 +1,16 @@
+pkgbase = xqilla
+	pkgdesc = An XQuery and XPath 2.0 library, written in C++ and built on top of Xerces-C.
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = http://xqilla.sourceforge.net/
+	arch = any
+	license = GPL3
+	depends = xerces-c
+	provides = xqilla
+	source = http://downloads.sourceforge.net/project/xqilla/XQilla-2.3.2.tar.gz
+	source = https://www.apache.org/dist/xerces/c/3/sources/xerces-c-3.1.2.tar.gz
+	sha256sums = 5ae0aed4091521d5c2f541093e02a81ebe55a9087ba735f80b110068584e217c
+	sha256sums = 743bd0a029bf8de56a587c270d97031e0099fe2b7142cef03e0da16e282655a0
+
+pkgname = xqilla
+
