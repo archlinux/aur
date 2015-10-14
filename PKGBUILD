@@ -10,7 +10,7 @@ url="http://forum.doom9.org/showthread.php?t=172652"
 license=('custom:WTFPL')
 depends=('vapoursynth')
 optdepends=('vapoursynth-plugin-nnedi3-git: needed for nnedi3_rpow2'
-            'vapoursynth-plugin-eedi2-git: needed for eedi3_rpow2')
+            'vapoursynth-plugin-eedi2-git: needed for eedi2_rpow2')
 makedepends=('git')
 source=("$pkgname"::"git://gist.github.com/020c497524e794779d9c.git")
 sha1sums=('SKIP')
