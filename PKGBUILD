@@ -26,13 +26,13 @@ build() {
 	      --libdir=/usr/lib --libexecdir=/usr/lib/dracut \
 	      --systemdsystemunitdir=/usr/lib/systemd/system \
 	      --bashcompletiondir=/usr/share/bash-completion/completions \
-	      --loginstalldir=/var/log/dracut 
+	      --sysconfdir=/etc --loginstalldir=/var/log/dracut 
   make sysconfdir=/etc prefix=/usr \
   	bindir=/usr/bin sbindir=/usr/bin \
   	libdir=/usr/lib libexecdir=/usr/lib/dracut \
 	systemdsystemunitdir=/usr/lib/systemd/system \
 	bashcompletiondir=/usr/share/bash-completion/completions \
-	loginstall=/var/log/dracut
+	sysconfdir=/etc loginstall=/var/log/dracut
 }
 
 package() {
@@ -43,7 +43,7 @@ package() {
 	libdir=/usr/lib libexecdir=/usr/lib/dracut \
 	systemdsystemunitdir=/usr/lib/systemd/system \
 	bashcompletiondir=/usr/share/bash-completion/completions \
-	loginstall=/var/log/dracut install
+	sysconfdir=/etc loginstall=/var/log/dracut install
 }
 
 #I use md5sum because is the default in "makepkg -g", blame Allan McRae
