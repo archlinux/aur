@@ -1,8 +1,8 @@
-# Maintainer: Master Laser <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@tfwno.gf>
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=r2168.5213b8a
+pkgver=r2873.b597d51
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://mgba.io/"
@@ -36,30 +36,41 @@ package_libmgba-git() {
   depends=('zlib' 'libpng' 'libzip' 'libedit' 'ffmpeg' 'imagemagick')
   conflicts=('libmgba')
   provides=('libmgba')
-  install=mgba.install
+
   cmake -DCOMPONENT=libmgba mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
+
+  rm -rf "$pkgdir"/usr/share/icons
   install -Dm644 "$srcdir"/mgba/LICENSE "$pkgdir"/usr/share/licenses/libmgba/LICENSE
 }
 
 package_mgba-sdl-git() {
-  pkgdesc='A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy'
+  pkgdesc='A Nintendo Gameboy Advance Emulator'
   depends=('libmgba-git' 'sdl2')
   conflicts=('mgba-sdl')
   provides=('mgba-sdl')
+
   cmake -DCOMPONENT=mgba-sdl mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
+
   install -d "$pkgdir"/usr/share/licenses/mgba-sdl
   ln -s /usr/share/licenses/libmgba/LICENSE "$pkgdir"/usr/share/licenses/mgba-sdl/LICENSE
 }
 
 package_mgba-qt-git() {
-  pkgdesc='A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy - Qt5 UI'
+  pkgdesc='A Nintendo Gameboy Advance Emulator - Qt5 UI'
   depends=('libmgba-git' 'qt5-base' 'qt5-multimedia' 'sdl2')
   conflicts=('mgba-qt')
   provides=('mgba-qt')
+  install=mgba.install
+
   cmake -DCOMPONENT=mgba-qt mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
+
+  for i in 16 24 32 48 64 96 128 256 512; do
+    install -Dm644 "$srcdir"/mgba/res/mgba-$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x$i/apps/mgba.png
+  done
+
   install -d "$pkgdir"/usr/share/licenses/mgba-qt
   ln -s /usr/share/licenses/libmgba/LICENSE "$pkgdir"/usr/share/licenses/mgba-qt/LICENSE
   desktop-file-install "$srcdir"/mgba/res/mgba-qt.desktop --dir "$pkgdir"/usr/share/applications/
