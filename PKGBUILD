@@ -1,7 +1,6 @@
 # Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 
 pkgname=perspector
-_arcdir=ambrevar-$pkgname-39f116569de2
 pkgver=1.2
 pkgrel=4
 pkgdesc="A control-point-based perspective rectification tool"
@@ -11,6 +10,8 @@ license=("MIT")
 depends=("gsl" "gtk3")
 source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/ambrevar/$pkgname/get/v$pkgver.tar.bz2")
 sha256sums=("fccc60320df2a30b44779bc0751c3be324de8cfc3583473ebb71b624306ff05a")
+
+_arcdir=ambrevar-$pkgname-39f116569de2
 
 build() {
 	cd "$srcdir/$_arcdir"
