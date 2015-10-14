@@ -1,0 +1,16 @@
+pkgbase = dnstwist
+	pkgdesc = simple tool to look for registered domains similar to your own, only distinguished by typos. useful for detection of fraud and fishing attacs
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/elceef/dnstwist
+	arch = any
+	license = unknown
+	depends = python-dnspython
+	depends = python-pygeoip
+	depends = python-requests
+	depends = python-ssdeep
+	source = https://github.com/elceef/dnstwist/archive/v1.00.tar.gz
+	md5sums = b3e0ea47d9527f9e078ae926d13632b7
+
+pkgname = dnstwist
+
