@@ -1,0 +1,18 @@
+pkgbase = dmusic-plugin-baidumusic-git
+	pkgdesc = BaiduMusic Plugin for Deepin Music Player
+	pkgver = 20140318
+	pkgrel = 1
+	url = https://github.com/sumary/dmusic-plugin-baidumusic
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = deepin-music
+	depends = python2-javascriptcore-git
+	depends = python2-pycurl
+	provides = dmusic-plugin-baidumusic
+	conflicts = dmusic-plugin-baidumusic
+	source = dmusic-plugin-baidumusic::git://github.com/sumary/dmusic-plugin-baidumusic.git
+	md5sums = SKIP
+
+pkgname = dmusic-plugin-baidumusic-git
+
