@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Utility;
+Comment[zh_CN]=Hosts编辑器
+Comment=Hosts Editor
+Exec=gksu hoststool
+GenericName[zh_CN]=
+GenericName=
+Icon=hoststool.png
+MimeType=
+Name[zh_CN]=Hosts设置程序
+Name=Hosts Setup Utility
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
