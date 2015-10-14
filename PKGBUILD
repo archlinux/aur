@@ -5,13 +5,13 @@ _name=firefox
 _channel=aurora
 _milestone=43.0a2
 pkgname="${_name}-${_channel}"
-pkgver=43.0a2.20151007004048
+pkgver=43.0a2.20151010004019
 pkgrel=1
 pkgdesc="Firefox Aurora channel - Nightly build"
 url="http://www.mozilla.org/en-US/${_name}/${_channel}/"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib'
+depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib'
 	 'alsa-lib' 'dbus-glib' 'libnotify' 'desktop-file-utils' 'hicolor-icon-theme'
 	 'libvpx' 'libevent' 'nss>=3.14.1' 'hunspell')
 install="${pkgname}.install"
