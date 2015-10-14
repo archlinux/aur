@@ -1,0 +1,16 @@
+pkgbase = sfarkxtc
+	pkgdesc = Basic sfArk decompressor .
+	pkgver = 20150617
+	pkgrel = 1
+	url = https://github.com/raboof/sfarkxtc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = zlib
+	depends = sfarklib
+	source = git+https://github.com/raboof/sfarkxtc.git
+	md5sums = SKIP
+
+pkgname = sfarkxtc
+
