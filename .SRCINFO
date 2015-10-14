@@ -1,7 +1,7 @@
 pkgbase = firefox-developer
 	pkgdesc = Standalone web browser from mozilla.org, developer build
 	pkgver = 43.0a2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mozilla.org/firefox/developer
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = firefox-developer
 	source = https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora/firefox-43.0a2.en-US.linux-.tar.bz2
 	source = firefox-developer.desktop
 	source = vendor.js
-	sha512sums = 3e423035688e713c519ec7719c30ed358ef088ac83456e982ef337e30c425a17e1fc906f65664feeddc3c252cab45ab2da8f5e9e6f01e4a8a4bdc6ba095464e8
+	sha512sums = SKIP
 	sha512sums = 627c98b91e4f11ead1f742e2fda73664ec2b3e4a97b5560b2531ed6730765ab656f9084ad4eb8915fe31d56b6294059339fd9158ef3377aa317404134a770f77
 	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
 
