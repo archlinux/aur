@@ -1,8 +1,8 @@
-# Maintainer: MAntas Mikulėnas <grawity@gmail.com>
+# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=safenet-authentication-client
 pkgver=8.1.0_4
-pkgrel=1
+pkgrel=2
 _pkgroot=SAC_8_1_0_4_Linux_RPM_64
 _rpmname=SafenetAuthenticationClient
 _rpmver=8.1.0-4
@@ -15,6 +15,7 @@ depends=(
   fontconfig
   freetype2
   libice
+  libpng12
   libsm
   libx11
   libxcursor
@@ -24,6 +25,8 @@ depends=(
   libxinerama
   libxrandr
   libxrender
+  # dynamically loaded:
+  libjpeg6-turbo
 )
 arch=(x86_64)
 source=("http://www.ssc.lt/drivers/aladdin/Kitu%20operaciniu%20sistemu%20etoken%20Rakto%20tvarkykles/eToken_PKI_client_Linux%20vartotojams/SAC%208.1%20Linux/x86_64/$_pkgroot.zip"
