@@ -5,11 +5,12 @@ _channel=developer
 pkgname="${_name}-${_channel}"
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=43.0a2
-pkgrel=4
+pkgver=43.0a2_20151014
+_pkgver=43.0a2
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_file="${_name}-${pkgver}.en-US.linux-${CARCH}"
+_file="${_name}-${_pkgver}.en-US.linux-${CARCH}"
 _srcurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora"
 source=("${_srcurl}/${_file}.tar.bz2" "firefox-$_channel.desktop" "vendor.js")
 sha512sums=('SKIP'
@@ -18,7 +19,7 @@ sha512sums=('SKIP'
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite3' 'dbus-glib')
 
 pkgver() {
-  printf "%s (%s)" ${pkgver} `date +%Y%m%d`
+  printf "%s_%s" ${_pkgver} `date +%Y%m%d`
 }
 
 package() {
