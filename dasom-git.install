@@ -1,6 +1,6 @@
 post_install() {
 	echo "Compiling schemas..."
-	sudo /usr/bin/glib-compile-schemas /usr/local/share/glib-2.0/schemas/
+	sudo /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
 	echo "Running ldconfig..."
 	sudo ldconfig
 }
