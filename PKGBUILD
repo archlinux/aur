@@ -30,6 +30,18 @@ prepare() {
   find -name '.git*' -exec rm -rf '{}' +
 }
 
+makedepends+=(rasqal)
+
+sparql() {
+  roqet -e "PREFIX em: <http://www.mozilla.org/2004/em-rdf#> SELECT ?x WHERE { $1 }" \
+    -D "${2:-install.rdf}" -r csv 2>/dev/null | tr -d '\r' | tail -n 1 | head -c -1
+}
+
+# Retrieve current compatibility information from install.rdf.
+query-version() {
+  sparql "[] em:id '$2' ; em:${1}Version ?x" install.rdf
+}
+
 pkgver() {
   cd "$_gitname"
   sed -n 's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
@@ -41,12 +53,6 @@ build() {
   ./make-xpi.py
 }
 
-makedepends+=(rasqal)
-
-sparql() {
-  roqet -e "PREFIX em: <http://www.mozilla.org/2004/em-rdf#> SELECT ?x WHERE { $1 }" \
-    -D "${2:-install.rdf}" -r csv 2>/dev/null | tr -d '\r' | tail -n 1 | head -c -1
-}
 
 prepare_target() {
   local target=${pkgname%%-*}
