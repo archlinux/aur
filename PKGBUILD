@@ -2,12 +2,12 @@
 
 pkgname=x264transcode
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Script for automated backup of DVDs, SD VOB and HD M2TS files. Rips ALL subtitles, ALL audio tracks and chapter info into a MKV container. Video stream is cropped to get rid of black borders."
 arch=(any)
 url="http://www2.warwick.ac.uk/fac/sci/csc/people/computingstaff/jaroslaw_zachwieja/x264transcode"
 license=('GPL3')
-depends=('ogmtools' 'lsdvd' 'mkvtoolnix' 'dbus-python' 'pygobject')
+depends=('ogmtools' 'lsdvd' 'mkvtoolnix-cli' 'dbus-python' 'pygobject')
 optdepends=('crswallow')
 source=(https://github.com/downloads/jzachwieja/$pkgname/$pkgname-$pkgver.tar.gz)
 install=$pkgname.install
