@@ -1,7 +1,7 @@
 pkgbase = xmltv
 	pkgdesc = Set of utilities to download tv listings and format them in xml
 	pkgver = 0.5.67
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xmltv.org/wiki/
 	arch = any
 	license = GPL

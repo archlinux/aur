@@ -5,7 +5,7 @@
 
 pkgname=xmltv
 pkgver=0.5.67
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of utilities to download tv listings and format them in xml"
 arch=('any')
 url="http://xmltv.org/wiki/"
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  yes | perl Makefile.PL PREFIX=/usr INSTALLDIRS=vendor 
+  yes | perl Makefile.PL INSTALL_BASE=/usr INSTALLDIRS=vendor 
 
   make
 }
