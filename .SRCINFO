@@ -1,0 +1,16 @@
+pkgbase = instr2raw
+	pkgdesc = SF2/XI instrument inspection/conversion utilities + looppoint insertiontools for AIFF/WAV..all for loopedinstrument fanatics.
+	pkgver = 20150311
+	pkgrel = 1
+	url = https://github.com/coderofsalvation/instr2raw
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	depends = libsndfile
+	optdepends = sox: used for normalizing samples
+	source = git+https://github.com/coderofsalvation/instr2raw.git
+	md5sums = SKIP
+
+pkgname = instr2raw
+
