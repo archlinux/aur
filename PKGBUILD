@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=45.0.2454.101
-pkgrel=2
+pkgver=46.0.2490.71
+pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -25,12 +25,10 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        0001-Demand-for-newer-POSIX-macro.patch
         chromium-widevine.patch)
-sha256sums=('1b682dcaae9c89b2ebfdb192bb2f73c78c5b30a55103e7198fa3c1e21fed85fb'
+sha256sums=('cd4b18249e64ee267236c9d4578effe810bf8f47567e2d43a5a8a7613787dcb6'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            'd908939b10161efe658f0f82d2c132bf28dff54e08f02c6fed93815c3656f328'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -53,8 +51,8 @@ fi
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Fix BoringSSL build with glibc 2.22 (FS#45965)
-  patch -Np1 -d third_party/boringssl/src < ../0001-Demand-for-newer-POSIX-macro.patch
+  # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
+  touch chrome/test/data/webui/i18n_process_css_test.html
 
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
@@ -112,6 +110,8 @@ build() {
     -Dlinux_use_gold_flags=0
     -Dicu_use_data_file_flag=0
     -Dlogging_like_official_build=1
+    -Dtracing_like_official_build=1
+    -Dfieldtrial_testing_like_official_build=1
     -Drelease_extra_cflags="$CFLAGS"
     -Dlibspeechd_h_prefix=speech-dispatcher/
     -Dffmpeg_branding=Chrome
