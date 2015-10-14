@@ -1,0 +1,18 @@
+pkgbase = python2-javascriptcore-git
+	pkgdesc = Javascript Core for Python
+	pkgver = 20130723
+	pkgrel = 1
+	url = https://github.com/sumary/pyjavascriptcore
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python2-setuptools
+	makedepends = pkg-config
+	depends = python2
+	depends = cython2
+	depends = pywebkitgtk
+	source = git://github.com/sumary/pyjavascriptcore.git
+	sha512sums = SKIP
+
+pkgname = python2-javascriptcore-git
+
