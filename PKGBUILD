@@ -1,5 +1,6 @@
 # vim: ft=PKGBUILD
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
+# Contributor: Eric Vidal
 # % Trigger: 1441370137 %
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
@@ -68,7 +69,7 @@ package_vdev-git() {
 	backup+=( etc/vdev/*.conf )
 
 	# Fix the log path
-	sed -i "s%logfile=/usr/run%logfile=/var/log" etc/vdev/vdevd.conf
+	sed -i "s%logfile=/usr/run%logfile=/var/log%" etc/vdev/vdevd.conf
 
 	# Install the licence
 	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
