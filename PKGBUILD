@@ -5,7 +5,7 @@
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
 pkgver=r679.a81f7bc
-pkgrel=3
+pkgrel=4
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
 arch=( 'x86_64' 'i686' )
@@ -70,6 +70,9 @@ package_vdev-git() {
 
 	# Fix the log path
 	sed -i "s%logfile=/usr/run%logfile=/var/log%" etc/vdev/vdevd.conf
+
+	# Fix the run path
+	sed -i "s%pidfile=/usr/run%pidfile=/run%" etc/vdev/vdevd.conf
 
 	# Install the licence
 	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
