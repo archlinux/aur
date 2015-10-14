@@ -1,0 +1,25 @@
+pkgbase = lib32-kylixlibs
+	pkgdesc = Libraries from Borland's IDE Kylix (32 bit)
+	pkgver = 3.0
+	pkgrel = 2
+	url = http://kylixlibs.sourceforge.net/index.html
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = lib32-libxext
+	depends = lib32-libjpeg6-turbo
+	depends = lib32-libsm
+	depends = lib32-zlib
+	source = http://downloads.sourceforge.net/kylixlibs/kylixlibs3-borqt_3.0-1_i386.deb
+	source = http://downloads.sourceforge.net/kylixlibs/kylixlibs3-borstlcrtl_3.0-1_i386.deb
+	source = http://downloads.sourceforge.net/kylixlibs/kylixlibs3-qt_3.0-1_i386.deb
+	source = http://downloads.sourceforge.net/kylixlibs/kylixlibs3-runtime_3.0-1_i386.deb
+	source = http://downloads.sourceforge.net/kylixlibs/kylixlibs3-unwind_3.0-1_i386.deb
+	md5sums = c0ce0a841dbebb491834ccd3804fab84
+	md5sums = 0948965c4d337f55cd9a1d987775cb12
+	md5sums = 900bc6dce09e29db83a0f1854d9e9dee
+	md5sums = c27428edb5f177969acf52b0dde3ca72
+	md5sums = dd5ef60858d9c3f4524337bbd384d11f
+
+pkgname = lib32-kylixlibs
+
