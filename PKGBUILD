@@ -2,13 +2,13 @@
 # Maintainer: Aaron Ali <t0nedef@causal.ca>
 
 pkgname=klayout
-pkgver=0.24.1
-pkgrel=2
+pkgver=0.24.2
+pkgrel=1
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
 url="http://www.klayout.de/"
 license=('GPL')
-depends=('gcc' 'qt4')
+depends=('qt4' 'ruby')
 source=(
 	http://www.klayout.de/downloads/klayout-${pkgver}.tar.gz
 	klayoutEditor.desktop
@@ -35,6 +35,6 @@ package() {
 	install -D -m 644 klayoutViewer.desktop ${pkgdir}/usr/share/applications/klayoutViewer.desktop
 }
 #
-md5sums=('c7ea258e2a5435c700daa9ab2c8c9682'
+md5sums=('7f4dbb8054e0ebcf38cb2d4a05cc9048'
          '6f4fffcd97759c57c4c7378634f7bfeb'
          '524300704fa165cca800c82a9d6351b0')
