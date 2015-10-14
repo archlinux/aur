@@ -1,0 +1,24 @@
+pkgbase = vivaldi-ffmpeg-codecs
+	pkgdesc = additional support for proprietary codecs for vivaldi
+	pkgver = 45.0.2454.99
+	pkgrel = 1
+	url = https://ffmpeg.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gtk2
+	makedepends = libexif
+	makedepends = libpulse
+	makedepends = libxss
+	makedepends = ninja
+	makedepends = nss
+	makedepends = pciutils
+	makedepends = python2
+	makedepends = xdg-utils
+	depends = glibc
+	options = !strip
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-45.0.2454.99.tar.xz
+	sha256sums = 15d1a31fd0acfca07d614249518192983890507641e09db8d4c91d9ddf7ea340
+
+pkgname = vivaldi-ffmpeg-codecs
+
