@@ -8,7 +8,7 @@ url='https://projects.kde.org/projects/kde/kdebindings/python/pykde5/repository'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
 groups=('kdebindings')
-makedepends=('cmake' 'boost' 'python2-pyqt5' 'kdepimlibs'
+makedepends=('cmake' 'boost' 'python2-pyqt5' 'kio-pim'
              'python-pyqt5' 'qscintilla-qt5' 'python2-sip' 'python-sip' 'mesa')
 source=("git+git://anongit.kde.org/pykde5")
 sha1sums=('SKIP')
