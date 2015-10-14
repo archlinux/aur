@@ -27,7 +27,7 @@ depends=(
   libxrandr
   libxrender
   # dynamically loaded:
-  libjpeg6-turbo
+  libjpeg6
 )
 arch=(x86_64)
 source=("http://www.ssc.lt/drivers/aladdin/Kitu%20operaciniu%20sistemu%20etoken%20Rakto%20tvarkykles/eToken_PKI_client_Linux%20vartotojams/SAC%208.1%20Linux/x86_64/$_pkgroot.zip"
