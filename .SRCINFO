@@ -1,0 +1,18 @@
+pkgbase = docbook2odf
+	pkgdesc = toolkit that automaticaly converts DocBook to OASIS OpenDocument
+	pkgver = 0.244
+	pkgrel = 2
+	url = http://open.comsultia.com/docbook2odf/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libxslt
+	depends = perl-xml-libxslt
+	depends = zip
+	depends = perl-archive-zip
+	provides = docbook2odf
+	source = http://open.comsultia.com/docbook2odf/dwn/docbook2odf-0.244.tar.gz
+	md5sums = 3b285dc4d6298beb12818a350776751f
+
+pkgname = docbook2odf
+
