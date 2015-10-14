@@ -1,42 +1,48 @@
-# Maintainer: Arpan Kapoor
+# Maintainer: Arpan Kapoor <k dot arpan26 at gmail dot com>
 
 pkgname=hostapd-rtl871xdrv
+_pkgname=${pkgname%-*}
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://w1.fi/hostapd/"
 license=('custom')
 depends=('openssl' 'libnl')
 makedepends=('git')
 provides=('hostapd')
 conflicts=('hostapd')
-install=hostapd.install
+install=${_pkgname}.install
 options=(emptydirs)
-source=(http://w1.fi/releases/hostapd-$pkgver.tar.gz
-	git://github.com/arpankapoor/hostapd-rtl871xdrv.git
+source=(http://w1.fi/releases/${_pkgname}-${pkgver}.tar.gz
+	git://github.com/pritambaral/hostapd-rtl871xdrv.git
+	config
 	hostapd.service
 	hostapd-2.3-noscan.patch
 	openvswitch.patch)
 md5sums=('69f9cec3f76d74f402864a43e4f8624f'
          'SKIP'
+         '43c0ec1d8b4d4e46f468bc161bb05c4b'
          '380042b9cf4950e34ed34b3093ab9e7f'
          'eaf8e48a9a63b5902fddadff2b8933fa'
          'a0802a604ed957078da0e14863df74f0')
 
 prepare() {
-  cd hostapd-$pkgver
+  cd ${_pkgname}-$pkgver
   patch -p1 -i $srcdir/hostapd-2.3-noscan.patch
   patch -p1 -i $srcdir/openvswitch.patch
 
   # Realtek patch
   patch -Np1 -i $srcdir/hostapd-rtl871xdrv/rtlxdrv.patch
-  cp $srcdir/hostapd-rtl871xdrv/driver_* src/drivers/
-  cp $srcdir/hostapd-rtl871xdrv/.config hostapd/.config
 }
 
 build() {
-  cd hostapd-$pkgver/hostapd
+  cd ${_pkgname}-$pkgver/hostapd
+  cp ../../config .config
+
+  # Enable the driver
+  echo "CONFIG_DRIVER_RTW=y" >> .config
+
   sed -i 's#/etc/hostapd#/etc/hostapd/hostapd#' hostapd.conf
   export CFLAGS="$CFLAGS $(pkg-config --cflags libnl-3.0)"
   make
@@ -46,10 +52,10 @@ package() {
   # Systemd unit
   install -Dm644 hostapd.service "$pkgdir/usr/lib/systemd/system/hostapd.service"
 
-  cd hostapd-$pkgver
+  cd ${_pkgname}-$pkgver
 
   # License
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/hostapd/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/${_pkgname}/COPYING"
 
   cd hostapd
 
