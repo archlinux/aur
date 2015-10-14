@@ -8,7 +8,9 @@ pkgbase = firefox-theme-nasa-night-launch
 	makedepends = rasqal
 	depends = firefox
 	source = firefox-theme-nasa-night-launch.zip::https://addons.mozilla.org/firefox/downloads/latest/nasa-night-launch/platform:2/
+	source = version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/nasa-night-launch
 	md5sums = 865000b40b8e5924117368837d2f9ce1
+	md5sums = SKIP
 
 pkgname = firefox-theme-nasa-night-launch
 
