@@ -1,6 +1,6 @@
 pkgbase = libjpeg9
 	pkgdesc = JPEG image compression
-	pkgver = 9a
+	pkgver = 9b
 	pkgrel = 1
 	url = http://www.infai.org/jpeg/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = libjpeg9
 	license = custom
 	makedepends = libtool
 	depends = glibc
-	source = http://www.ijg.org/files/jpegsrc.v9a.tar.gz
-	md5sums = 3353992aecaee1805ef4109aadd433e7
+	source = jpegsrc.v09b.tar.gz::http://www.infai.org/jpeg/files?get=jpegsrc.v09b.tar.gz
+	md5sums = 81fd9409f51bb6c2c14647a73db89715
 
 pkgname = libjpeg9
 

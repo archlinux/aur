@@ -1,7 +1,7 @@
 # Maintainer: benklett <b.klettbach@gmail.com>
 
 pkgname=libjpeg9
-pkgver=9a
+pkgver=9b
 pkgrel=1
 pkgdesc="JPEG image compression"
 arch=('i686' 'x86_64')
@@ -9,12 +9,12 @@ url="http://www.infai.org/jpeg/"
 license=('custom')
 depends=('glibc')
 makedepends=('libtool')
-source=("http://www.ijg.org/files/jpegsrc.v$pkgver.tar.gz")
-md5sums=('3353992aecaee1805ef4109aadd433e7')
+source=(jpegsrc.v0$pkgver.tar.gz::"http://www.infai.org/jpeg/files?get=jpegsrc.v0$pkgver.tar.gz")
+md5sums=('81fd9409f51bb6c2c14647a73db89715')
 
 build() {
   cd "$srcdir"
-  bsdtar -xf "jpegsrc.v$pkgver.tar.gz"
+  bsdtar -xf "jpegsrc.v0$pkgver.tar.gz"
   cd "$srcdir/jpeg-$pkgver"
   ./configure --prefix=/usr --enable-shared --enable-static
   make
