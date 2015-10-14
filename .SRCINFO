@@ -1,0 +1,16 @@
+pkgbase = memo-notes-git
+	pkgdesc = memo: A CLI note taking application.
+	pkgver = 1.6.r144
+	pkgrel = 1
+	url = http://www.getmemo.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	source = memo-notes-git::git://github.com/nrosvall/memo.git
+	source = http://www.byteptr.com/fileformat.html
+	sha256sums = SKIP
+	sha256sums = 1447ef9efe397256d913f0146f0979265a1e12fa126bbd5b995e3e332ffefa21
+
+pkgname = memo-notes-git
+
