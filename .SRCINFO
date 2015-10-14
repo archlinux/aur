@@ -8,7 +8,9 @@ pkgbase = firefox-theme-ft-deepdark
 	makedepends = rasqal
 	depends = firefox
 	source = firefox-theme-ft-deepdark.zip::https://addons.mozilla.org/firefox/downloads/latest/ft-deepdark/platform:2/
+	source = version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/ft-deepdark
 	md5sums = 87db273e9552fe011499fe1671aca7de
+	md5sums = SKIP
 
 pkgname = firefox-theme-ft-deepdark
 
