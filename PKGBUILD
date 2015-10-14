@@ -13,9 +13,9 @@ depends=("java-runtime=8" "java-openjfx" "gksu" "libgcrypt15")
 source_x86_64=(https://aurous.me/downloads/aurous-linux64.zip)
 source_i386=(https://aurous.me/downloads/aurous-linux32.zip)
 source=(Aurous.desktop)
-md5sums=(e04b9770f59111250b4e9096d2cc9ecc)
-md5sums_x86_64=(fc6bf92831e18af8c11d272bcbaea777)
-md5sums_i386=(e1deaba23c9b29319b5c55ec2d881d81)
+sha512sums=(45e7b5f870241b81933ef77b0c40a3bca71495ad3dc1dadb2f296c272eda5b49c489e6155b91456184d75ebca27c7abc75e8e3443834aaba830a654594ab5792)
+sha512sums_x86_64=(060b7147a5936ae5b66adc9236188e221eb904c8281f6f4e159f04453ece030008aad43ed295314a31ae05fd1272fef88c2237e281a3b0d0ae84e48d089d8d8a)
+sha512sums_i386=(1aa42f149d1cefe4f74355722478cfdb5b3dc0dc72a4b629b0fe8609ce09bcf0d1e3e3c581b22d7509af0b698872fd1526cfa5792563e1ea487751946a2feaf0)
 
 package() {
 	cd "${srcdir}"
