@@ -12,7 +12,11 @@ md5sums=('1617f371ee8a38ac75ac2fe8bfabde8a')
 
 [ "$arch" ] || arch=('any')
 
-source+=("${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${pkgname#*-*-}/platform:2/")
+source+=(
+  "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${pkgname#*-*-}/platform:2/"
+  "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
+)
+md5sums+=('SKIP')
 
 prepare() {
   rm ${pkgname}.zip
@@ -29,6 +33,11 @@ pkgver() {
   sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
 }
 
+# Retrieve current compatibility information from addons.mozilla.org API.
+query-version() {
+  xmllint version --xpath \
+    "//application[appID='$2']/$1_version/text()"
+}
 version-range() {
   local emid=$(emid $1)
   echo "$1>$(version min $emid)" "$1<$(version max $emid)"
@@ -43,9 +52,7 @@ emid() {
 }
 
 version() {
-  local version;
-  version=$(sparql "[] em:id '$2' ; em:${1}Version ?x" \
-    "$srcdir/install.rdf" )
+  local version="$(query-version $1 $2)"
   if [[ $version =~ ([[:digit:]]+).\* ]]; then
     if [[ $1 = max ]]; then
       echo $(( ${BASH_REMATCH[1]} + 1 ))
