@@ -3,7 +3,7 @@
 pkgname=gst-plugin-libde265
 pkgver=0.1.12
 pkgrel=1
-pkgdesc="Libde265 plugin (an open h.265 video codec implementation) for gstreamer 1.x."
+pkgdesc="Libde265 plugin (an open h.265 video codec implementation) for gstreamer"
 arch=('i686' 'x86_64')
 url="https://github.com/strukturag/gstreamer-libde265"
 license=('LGPL3')
