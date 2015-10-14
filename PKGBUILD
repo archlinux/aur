@@ -16,10 +16,13 @@ pkgver() {
   git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
-build() {
+prepare() {
   cd "$srcdir/rlvm/"
   patch -p1 < "$srcdir/detect_guichan.patch"
+}
 
+build() {
+  cd "$srcdir/rlvm/"
   scons --release
 
 }
