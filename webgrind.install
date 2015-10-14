@@ -1,0 +1,11 @@
+post_install() {
+  echo ""
+  echo " ==> Copy the example configuration file to your httpd configuration directory."
+  echo "    cp /etc/webapps/webgrind/apache.example.conf /etc/httpd/conf/extra/httpd-webgrind.conf"
+  echo ""
+  echo " ==> Add the following lines to /etc/httpd/conf/httpd.conf:"
+  echo "    # webgrind"
+  echo "    Include conf/extra/httpd-webgrind.conf"
+  echo ""
+  /bin/true
+}

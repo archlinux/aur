@@ -1,0 +1,16 @@
+pkgbase = webgrind
+	pkgdesc = Xdebug Profiling Web Frontend in PHP.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://code.google.com/p/webgrind/
+	install = webgrind.install
+	arch = any
+	license = BSD
+	depends = php
+	depends = xdebug
+	depends = php-apache
+	source = http://webgrind.googlecode.com/files/webgrind-release-1.0.zip
+	md5sums = 66ce2840eecd315052aa6d194dccb659
+
+pkgname = webgrind
+
