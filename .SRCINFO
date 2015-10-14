@@ -16,7 +16,7 @@ pkgbase = dracut
 	depends = util-linux
 	depends = systemd>=199
 	depends = bash>=4.0
-	optdepends = cryptsetup: PArt of the Crypto setup
+	optdepends = cryptsetup: Part of the Crypto setup
 	optdepends = dmraid: Part of the Raid setup
 	optdepends = lvm2: Part of the LVM setup
 	optdepends = mdadm: Part of the MDadmin thing

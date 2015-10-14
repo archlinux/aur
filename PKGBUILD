@@ -9,7 +9,7 @@ arch=("i686" "x86_64")
 url="https://dracut.wiki.kernel.org/"
 license=("GPL")
 depends=("cpio" "dash" "kbd" "kmod" "util-linux" "systemd>=199" "bash>=4.0")
-optdepends=("cryptsetup: PArt of the Crypto setup"
+optdepends=("cryptsetup: Part of the Crypto setup"
 	"dmraid: Part of the Raid setup"
 	"lvm2: Part of the LVM setup"
 	"mdadm: Part of the MDadmin thing"
@@ -22,10 +22,10 @@ source=("http://www.kernel.org/pub/linux/utils/boot/$pkgname/$pkgname-$pkgver.ta
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin
-	      --libdir=/usr/lib --libexecdir=/usr/lib/dracut
-	      --systemdsystemunitdir=/usr/lib/systemd/system
-	      --bashcompletiondir=/usr/share/bash-completion/completions
+  ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin \
+	      --libdir=/usr/lib --libexecdir=/usr/lib/dracut \
+	      --systemdsystemunitdir=/usr/lib/systemd/system \
+	      --bashcompletiondir=/usr/share/bash-completion/completions \
 	      --loginstall=/var/log/dracut 
   make sysconfdir=/etc prefix=/usr \
   	bindir=/usr/bin sbindir=/usr/bin \
