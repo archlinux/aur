@@ -1,4 +1,5 @@
 pkgbase = safenet-authentication-client
+	pkgdesc = Aladdin eToken PKCS#11 tools
 	pkgver = 8.1.0_4
 	pkgrel = 2
 	arch = x86_64

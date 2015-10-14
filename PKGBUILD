@@ -3,6 +3,7 @@
 pkgname=safenet-authentication-client
 pkgver=8.1.0_4
 pkgrel=2
+pkgdesc="Aladdin eToken PKCS#11 tools"
 _pkgroot=SAC_8_1_0_4_Linux_RPM_64
 _rpmname=SafenetAuthenticationClient
 _rpmver=8.1.0-4
