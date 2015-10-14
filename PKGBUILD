@@ -1,4 +1,4 @@
-# Mantainer: Pierre Neidhardt <ambrevar@gmail.com>
+# Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 # Contributor: Rogof <rogof /at/ gmx /dot/ com>
 # Contributor: Felix Hanley <felix /at/ seconddrawer /dot/ com /dot/ au>
 
