@@ -1,0 +1,14 @@
+pkgbase = gtans
+	pkgdesc = The Tangram chinese puzzle game
+	pkgver = 1.99.0
+	pkgrel = 1
+	url = http://gtans.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://sourceforge.net/projects/gtans/files/gtans/1.99.0/gtans-1.99.0.tar.gz
+	md5sums = 47c8c6874a94aa1a8377d7e21f3ef254
+
+pkgname = gtans
+
