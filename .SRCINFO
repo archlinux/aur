@@ -1,0 +1,16 @@
+pkgbase = stereogl
+	pkgdesc = StereoGL provides a uniform interface for stereo 3D displays under OpenGL.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://stereogl.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = freeglut
+	source = http://downloads.sourceforge.net/stereogl/stereogl/stereogl-0.2/stereogl-0.2.tgz
+	source = stereogl-0.2-fixes-1.patch
+	md5sums = 1289e80b004bef4ce57fefc35162c6a5
+	md5sums = c9c46caf4ef95540a4184f6ad0ad80f5
+
+pkgname = stereogl
+

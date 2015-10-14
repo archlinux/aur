@@ -1,0 +1,70 @@
+diff -Naur stereogl-0.2.orig/src/Makefile stereogl-0.2/src/Makefile
+--- stereogl-0.2.orig/src/Makefile	2015-10-14 21:43:51.165000514 +0200
++++ stereogl-0.2/src/Makefile	2015-10-14 21:46:38.589548146 +0200
+@@ -2,10 +2,10 @@
+ #Attention: Change this to suit your needs
+ 
+ # For standard GL headers (or NVIDIA headers) use this
+-LIBFLAGS = -fPIC -pg -D STGL_USE_TEX3D
++#LIBFLAGS = -fPIC -pg -D STGL_USE_TEX3D
+ 
+ # For Mesa GL headers use this due to a misdefined glTexImage3D()
+-#LIBFLAGS = -fPIC -pg
++LIBFLAGS = -fPIC -pg
+ 
+ #Don't touch anything beyond this line
+ ###################################################################
+@@ -31,7 +31,7 @@
+ TARGETS = stereo
+ 
+ LIBGL = /usr/lib/libGL.so
+-LDFLAGS = -lglut -lGLU $(LIBGL) -L/usr/X11R6/lib -lXmu -lXext -lX11 -lXi -lXxf86vm -lm -lpthread
++LDFLAGS = -lglut -lGLU $(LIBGL) -L/usr/X11R6/lib -lXmu -lXext -lX11 -lXi -lXxf86vm -lm -lpthread -ldl
+ CC = gcc 
+ MAKE = make
+ SRCS = init.c free.c loader.c wrapped_gl.c wrapped_glx.c wrapped_glut.c anaglyph.c interlace.c abovebelow.c sidebyside.c mono.c parseconfig.c menus.c util.c main.c devices.c
+@@ -90,11 +90,11 @@
+ 	(cd ../utils; $(MAKE) )
+ 
+ install: lib
+-	install libStGL.so.1.0 /usr/local/lib/
+-	install libstgl.a /usr/local/lib/
+-	if !(grep -q "/usr/local/lib" /etc/ld.so.conf); then (echo "/usr/local/lib" >> /etc/ld.so.conf); fi
+-	/sbin/ldconfig
+-	install st /usr/local/bin/
++	install -d $(DESTDIR)/usr/lib
++	install libStGL.so.1.0 $(DESTDIR)/usr/lib/
++	install libstgl.a $(DESTDIR)/usr/lib/
++	install -d $(DESTDIR)/usr/bin
++	install st $(DESTDIR)/usr/bin/
+ 
+ misc: st
+ 	chmod 755 st
+diff -Naur stereogl-0.2.orig/utils/offsetcal.c stereogl-0.2/utils/offsetcal.c
+--- stereogl-0.2.orig/utils/offsetcal.c	2015-10-14 21:43:51.169000504 +0200
++++ stereogl-0.2/utils/offsetcal.c	2015-10-14 21:45:47.119687222 +0200
+@@ -89,15 +89,15 @@
+ 
+ int main(int argc, char *argv[])
+ {
+-    printf("\n
+-This programs determines the difference between a
+-requested window position and a queried window position.
+-Depending on your window manager, these may differ by the
+-size of your window decorations in the upper left corner.\n
+-A window will be displayed. If all goes well, the offset will
+-be automatically detected. If the window instead keeps
+-moving, press arrow keys opposite the direction of movement,
+-until the window is stationary.\n
++    printf("\n\
++This programs determines the difference between a\
++requested window position and a queried window position.\
++Depending on your window manager, these may differ by the\
++size of your window decorations in the upper left corner.\n\
++A window will be displayed. If all goes well, the offset will\
++be automatically detected. If the window instead keeps\
++moving, press arrow keys opposite the direction of movement,\
++until the window is stationary.\n\
+ Press a key to continue.\n");
+    getchar();
+ 
