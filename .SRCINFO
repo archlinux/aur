@@ -1,6 +1,6 @@
 pkgbase = ruby-starscope
 	pkgdesc = Smart code searching and indexing
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/eapache/starscope
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = ruby-starscope
 	provides = ruby-starscope
 	provides = starscope
 	conflicts = starscope
-	noextract = starscope-1.5.0.gem
-	source = https://rubygems.org/downloads/starscope-1.5.0.gem
-	sha256sums = 80ab7a71832064292fcaf234d98ecc23e088d946dd308d5e60fd68866e67281f
+	noextract = starscope-1.5.1.gem
+	source = https://rubygems.org/downloads/starscope-1.5.1.gem
+	sha256sums = 0dcc38df346ab04dbe87d49f370113f34711887dda51c025d8fb301f17b5cd64
 
 pkgname = ruby-starscope
 
