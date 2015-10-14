@@ -8,6 +8,8 @@ url="http://www.elliotglaysher.org/rlvm/"
 license=('GPL')
 depends=('boost-libs>=1.46' glew libmad sdl_mixer sdl_image sdl_ttf guichan)
 makedepends=(scons boost)
+provides=(rlvm)
+conflicts=(rlvm)
 source=('git+https://github.com/eglaysher/rlvm.git' 'detect_guichan.patch')
 md5sums=('SKIP' '357e8680838cf8b27ab3c3eaa73d3107')
 
