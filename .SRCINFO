@@ -1,0 +1,15 @@
+pkgbase = adduser
+	pkgdesc = Interactive front end to /usr/bin/useradd from Slackware Linux
+	pkgver = 1.15
+	pkgrel = 5
+	url = http://www.slackware.com/
+	arch = any
+	license = BSD
+	depends = gawk
+	depends = shadow>=4.1.5.1-3
+	provides = adduser
+	source = http://mirrors.slackware.com/slackware/slackware64-current/source/a/shadow/adduser
+	md5sums = 84514d199d0fce7ad2c2f439ec7a7bea
+
+pkgname = adduser
+
