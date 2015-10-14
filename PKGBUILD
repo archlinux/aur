@@ -3,12 +3,12 @@
 _npmname=cordova
 pkgname=nodejs-$_npmname
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cordova command line interface tool"
 arch=('any')
 url="http://cordova.apache.org/"
 license=('Apache')
-depends=('nodejs')
+depends=('nodejs' 'npm')
 optdepends=('apache-ant: building for Android'
             'android-platform: building for Android'
             'android-sdk-build-tools: building for Android')
