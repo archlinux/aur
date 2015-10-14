@@ -11,9 +11,9 @@ arch=("i686" "x86_64")
 url="https://github.com/awesomeWM/$_pkgname"
 license=("MIT")
 depends=("cairo>=1.8.0" "lua51")
-conflicts=("lua51-oocairo")
-provides=("lua51-oocairo")
 makedepends=("git" "libtool" "pkgconfig")
+provides=("lua51-oocairo")
+conflicts=("lua51-oocairo")
 source=("git+https://github.com/awesomeWM/$_pkgname.git")
 sha1sums=("SKIP")
 
