@@ -1,7 +1,7 @@
 # Maintainer: Marco <mcat95 [at] gmail [dot] com>
 pkgname=aurous-bin
 pkgver=0.1Alpha
-pkgrel=4
+pkgrel=5
 
 pkgdesc="A music player built to serve your needs. NOTE: If md5 fails simply flag the package as outdated"
 arch=(i686 x86_64)
