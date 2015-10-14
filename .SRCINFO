@@ -1,0 +1,19 @@
+pkgbase = flips
+	pkgdesc = Floating IPS - Applies and creates IPS and BPS patches
+	pkgver = 1.31
+	pkgrel = 1
+	url = http://www.smwcentral.net/?p=section&a=details&id=11474
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = gtk3
+	source = http://dl.smwcentral.net/11474/floating.zip
+	source = flips.desktop
+	source = flips.png
+	sha256sums = 8449637fe4ebebc46997bbd6a70ced1bf6ba2370f43c6975a0f506368a59d9f6
+	sha256sums = 73ae77df90611cc73161b1a7b3ad39e701e31fc48a573679a0144bdec041cc65
+	sha256sums = 9b7c04cb5b2ca16b12a00eeb9def35069e8cb39ef26815c8995992ab2ece6008
+
+pkgname = flips
+
