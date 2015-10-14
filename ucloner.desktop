@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Utility;
 Comment[zh_CN]=Linux系统备份工具
-Comment=Linux系统备份工具
+Comment=Linux system backup utility
 Exec=gksu ucloner
 GenericName[zh_CN]=
 GenericName=
