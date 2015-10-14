@@ -1,4 +1,4 @@
-pkgbase = dbdesigner
+pkgbase = dbdesigner4
 	pkgdesc = fabFORCE's visual database design system
 	pkgver = 4.0.5.4
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = dbdesigner
 	source = dbdesigner.desktop
 	source = dbdesigner
 
-pkgname = dbdesigner
+pkgname = dbdesigner4
 

@@ -1,6 +1,6 @@
 # Maintainer: manuel alcocer <m.alcocer1978@gmail.com>
 
-pkgname=dbdesigner
+pkgname=dbdesigner4
 pkgver=4.0.5.4
 pkgrel=1
 pkgdesc="fabFORCE's visual database design system"
