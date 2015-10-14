@@ -1,6 +1,6 @@
 pkgbase = python2-pyo
 	pkgdesc = A Python module written in C to help digital signal processing script creation.
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = http://ajaxsoundstudio.com/software/pyo/
 	arch = i686
@@ -11,14 +11,14 @@ pkgbase = python2-pyo
 	depends = portaudio
 	depends = liblo
 	optdepends = wxpython: wxWidgets GUI
-	provides = pyo=0.7.6
-	provides = python-pyo=0.7.6
+	provides = pyo=0.7.7
+	provides = python-pyo=0.7.7
 	conflicts = pyo
 	conflicts = python-pyo
-	source = http://ajaxsoundstudio.com/downloads/pyo_0.7.6-src.tar.bz2
-	source = http://ajaxsoundstudio.com/downloads/pyo_0.7.6-doc.tar.bz2
-	md5sums = 1b8bcc6ff08a1f06060bfcc3483ab163
-	md5sums = c2b9733970b3872b279010f7e6cb5fca
+	source = http://ajaxsoundstudio.com/downloads/pyo_0.7.7-src.tar.bz2
+	source = http://ajaxsoundstudio.com/downloads/pyo_0.7.7-doc.tar.bz2
+	md5sums = 499760cf6017f6004cc4d6de7fb839a4
+	md5sums = 9db2cc648c37890b3f74369bdf58093a
 
 pkgname = python2-pyo
 
