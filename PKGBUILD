@@ -27,14 +27,14 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 
 install=icecat.install
 source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
-#source=(https://mirrors.kernel.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2      ## Good mirror
-#source=(http://jenkins.trisquel.info/icecat/${pkgname}-${_pkgver}.tar.bz2      ## Official developer (Ruben Rodriguez) site
-		mozconfig
+#source=(https://mirrors.kernel.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}      ## Good mirror
+#source=(http://jenkins.trisquel.info/icecat/${pkgname}-${_pkgver}.tar.bz2{,.sig}      ## Official developer (Ruben Rodriguez) site. Be careful, can contain testing builds.
+	mozconfig
         icecat.desktop
         icecat-safe.desktop
         vendor.js
         freetype26.patch
-		0001-Bug-1194520-Add-a-system-header-wrapper-for-freetype.patch)
+	0001-Bug-1194520-Add-a-system-header-wrapper-for-freetype.patch)
 
 sha256sums=('08fe9724a84aef2182265b230c68fa37a36a5d93ffd5118ec0739718dc71a66e'
             'SKIP'
@@ -80,10 +80,10 @@ build() {
 
   # Default Arch flags
   if [ "${CARCH}" = 'x86_64' ]; then
-    export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
+    export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
     export CXXFLAGS="$CFLAGS"
   elif [ "${CARCH}" = 'i686' ]; then
-    export CFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
+    export CFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector-strong"
     export CXXFLAGS="$CFLAGS"
   fi
 
