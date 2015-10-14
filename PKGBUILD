@@ -8,10 +8,10 @@ pkgdesc="This is full dropin replacement for llthreads library"
 arch=("i686" "x86_64")
 url="http://github.com/moteus/lua-llthreads2/"
 license=("MIT")
-makedepends=("luarocks5.1")
 depends=("lua51")
+makedepends=("luarocks5.1")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/moteus/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('66fdbf59ade16c2b53610dcb02bddfe6')
+md5sums=("66fdbf59ade16c2b53610dcb02bddfe6")
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
