@@ -5,49 +5,37 @@ epoch=1
 pkgver=1.9.1
 pkgrel=1
 pkgdesc="unar and lsar that don't depend on gnustep-base. Resolv conflict with darling-git."
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="http://unarchiver.c3.cx/"
 license=('LGPL2.1')
 depends=('openssl' 'bzip2' 'icu' 'gcc-libs' 'zlib')
-makedepends=('gcc-objc' 'gnustep-base-clang-svn')
+#makedepends=('gcc-objc' 'gnustep-base-clang-svn')
 provides=(unarchiver)
 conflicts=(unarchiver)
-source=("http://unarchiver.c3.cx/downloads/unar${pkgver}_src.zip"
-        "native_obj_exceptions.patch")
-        
-source_i686=("gnustep-base_i686.tar.xz::https://www.archlinux.org/packages/community/i686/gnustep-base/download/")
-source_x86_64=("gnustep-base_x86_64.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/")
-        
-sha1sums=('SKIP'
-          'b8024026607dc2de758479b73d8b01ca6f692b59')
-          
-sha1sums_i686=('SKIP')
-sha1sums_x86_64=('SKIP')
-
-pkgver() {
-    curl https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=unarchiver \
-        | grep -oP "(?<=pkgver=)\d+\.\d+\.\d+"
-}
+source=("gnustep-base_x86_64.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/"
+    "unarchiver-x86_64.tar.xz::http://repo.archlinuxcn.org/x86_64/unarchiver-1%3a1.9.1-1-x86_64.pkg.tar.xz")
+noextract=('gnustep-base_x86_64.tar.xz' 'unarchiver-x86_64.tar.xz')
+sha1sums=('SKIP' 'SKIP')
 
 prepare(){
-  cd "$srcdir/The Unarchiver"
-
-  patch -p1 < ../native_obj_exceptions.patch
-
+  cd "$srcdir"
+  mkdir gnustep-base
+  cd gnustep-base
+  tar xpJf ../gnustep-base_x86_64.tar.xz
+  mkdir ../unarchiver
+  cd  ../unarchiver
+  tar xpJf ../unarchiver-x86_64.tar.xz
 }
 
-build() {
-  cd "$srcdir/The Unarchiver/XADMaster"
 
-  . /usr/share/GNUstep/Makefiles/GNUstep.sh
-  make -f Makefile.linux -j4
-}
 
 package() {
-  cd "$srcdir/The Unarchiver/XADMaster"
+  cd "$srcdir/gnustep-base/usr/lib/"
   install -dm 755 "$pkgdir/usr/lib/"
-  cp -r "$srcdir/usr/lib/" "$pkgdir/usr/lib/unarchiver/"
+  cp -r "$srcdir/gnustep-base/usr/lib/" "$pkgdir/usr/lib/unarchiver/"
   rm -r "$pkgdir/usr/lib/unarchiver/GNUstep"
+  
+  cd "$srcdir/unarchiver/usr/bin"
   install -d "$pkgdir/usr/bin/"
   install -m755 unar lsar "$pkgdir/usr/lib/unarchiver"
   LIBNAME=``
@@ -61,13 +49,13 @@ package() {
   ln -s /usr/lib/unarchiver/run.sh "$pkgdir/usr/bin/unar"
   ln -s /usr/lib/unarchiver/run.sh "$pkgdir/usr/bin/lsar"
   
-  cd "$srcdir/The Unarchiver/Extra"
+  cd "$srcdir/unarchiver/usr/share/man/man1/"
   install -d "$pkgdir/usr/share/man/man1"
-  gzip -c lsar.1 > "$pkgdir/usr/share/man/man1"/lsar.1.gz
-  gzip -c unar.1 > "$pkgdir/usr/share/man/man1"/unar.1.gz
+  install -m644 lsar.1.gz "$pkgdir/usr/share/man/man1"/lsar.1.gz
+  install -m644 unar.1.gz "$pkgdir/usr/share/man/man1"/unar.1.gz
+  cd "$srcdir/unarchiver/usr/share/bash-completion/completions/"
   install -d "$pkgdir/usr/share/bash-completion/completions/"
-  install -m644 unar.bash_completion "$pkgdir/usr/share/bash-completion/completions/unar"
-  install -m644 lsar.bash_completion "$pkgdir/usr/share/bash-completion/completions/lsar"
+  install -m644 unar "$pkgdir/usr/share/bash-completion/completions/unar"
+  install -m644 lsar "$pkgdir/usr/share/bash-completion/completions/lsar"
 }
 
-# vim:set ts=2 sw=2 et:
