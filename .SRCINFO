@@ -1,0 +1,16 @@
+pkgbase = isync-git
+	pkgdesc = IMAP mail synchronizer for offline/batch mail editing
+	pkgver = 20120128
+	pkgrel = 1
+	url = http://isync.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	conflicts = isync
+	replaces = isync
+	source = autogen-fix.patch
+	md5sums = 5bcc624e7765c38ac6d568aeb20d93dc
+
+pkgname = isync-git
+
