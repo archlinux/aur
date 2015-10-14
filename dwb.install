@@ -1,0 +1,14 @@
+post_install() {
+	update-desktop-database -q
+	cat<<EOF
+==> If you are using extensions you should update them with 'dwbem -u' or 'dwbem -Nu'
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}
