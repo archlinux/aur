@@ -1,12 +1,14 @@
-# Maintainer: Stefan Tatschner <stefan@sevenbyte.org>
+# Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
+# Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=pelican
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to generate a static blog, with restructured text (or markdown) input files."
 arch=('any')
 url="http://getpelican.com"
 license=('AGPL3')
+makedepends=('python-sphinx' 'python-blinker')
 depends=('python-jinja' 'python-pygments' 'python-feedgenerator' 'python-pytz'
          'python-docutils' 'python-blinker' 'python-unidecode' 'python-six'
          'python-dateutil')
@@ -21,11 +23,23 @@ optdepends=('python-markdown: Markdown support'
             's3cmd: uploading through S3'
             'ghp-import: uploading through gh-pages'
             'python-typogrify: typographical enhancements')
-source=("http://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('13b9c41ea3342b7eb0fd7f74078b5a8d5035632f05d8680266f50f4c5626c9c2')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/getpelican/pelican/archive/$pkgver.tar.gz")
+sha256sums=('d19bc7df61afc5b68eba028f0cf0832ee2a12a04a01d7fe11bdfdd847ddd417b')
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+build() {
+    cd "$srcdir/$pkgname-$pkgver/docs/"
+    make man
+    make text
 }
 
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+    install -d "$pkgdir/usr/share/man/man1/"
+    install -Dm644 docs/_build/man/*.1 "$pkgdir/usr/share/man/man1/"
+
+    install -d "$pkgdir/usr/share/doc/pelican/"
+    install -Dm644 docs/_build/text/*.txt "$pkgdir/usr/share/doc/pelican/"
+
+    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+}
