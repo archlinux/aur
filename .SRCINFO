@@ -1,0 +1,18 @@
+pkgbase = blackmarket
+	pkgdesc = items search tool for Path of Exile
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://thirdy.github.io/blackmarket
+	arch = any
+	license = GPL2
+	depends = java-runtime>=8
+	depends = java-openjfx
+	source = https://github.com/thirdy/blackmarket/releases/download/v0.4/blackmarket.zip
+	source = https://raw.githubusercontent.com/thirdy/blackmarket/master/blackmarket/src/main/resources/images/icon-48x48.png
+	source = blackmarket.sh
+	sha256sums = 314752b37296f475dffee6c753c24586aac7fffd7dddf61f0cd82d468164e4ac
+	sha256sums = ca332b1084f0d4cdd35ecb91e3cfec4f3b04bb997ceb746743644d6493ada4f8
+	sha256sums = 561b088644527640a135c927f444bdec5284025c213707db7021803156597c76
+
+pkgname = blackmarket
+
