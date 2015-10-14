@@ -1,8 +1,13 @@
+2015-10-15 jakob <grandchild@gmx.net>
+
+	* 0.4-1
+	Upstream update.
+
+
 2015-04-24 jakob <grandchild@gmx.net>
 
 	* 0.1-1 :
 	Initial package.
-	
+
 	* 0.2-1 :
 	Add /etc/autohidewibox.conf.
-	
