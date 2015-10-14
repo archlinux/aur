@@ -1,0 +1,18 @@
+pkgbase = dmusic-plugin-neteasecloudmusic-git
+	pkgdesc = NeteaseCloudMusic Plugin for Deepin Music Player
+	pkgver = 20150920
+	pkgrel = 1
+	url = https://github.com/wu-nerd/dmusic-plugin-NeteaseCloudMusic
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = deepin-music
+	depends = python2-requests
+	depends = python2-crypto
+	provides = dmusic-plugin-neteasecloudmusic
+	conflicts = dmusic-plugin-neteasecloudmusic
+	source = dmusic-plugin-neteasecloudmusic::git://github.com/wu-nerd/dmusic-plugin-NeteaseCloudMusic.git
+	md5sums = SKIP
+
+pkgname = dmusic-plugin-neteasecloudmusic-git
+
