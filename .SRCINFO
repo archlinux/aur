@@ -1,0 +1,21 @@
+pkgbase = xsystem35
+	pkgdesc = A free implementation of System 3.5, a games engine created by Alice Soft.
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = http://8ne.sakura.ne.jp:20008/chika/unitbase/xsys35/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = freetype2
+	source = http://ftp.debian.org/debian/pool/main/x/xsystem35/xsystem35_1.7.3-pre5.orig.tar.gz
+	source = 01_change_conflict_define.patch
+	source = 02_use_utf8.patch
+	source = 03_remove_libltdl.patch
+	md5sums = 853aaa90f1b1c46a7a9eab4672cd9a27
+	md5sums = 2d7987f5cb1216a00591ec50fee3ee9d
+	md5sums = c7a3255d9a79563cb34d8dcb8858417f
+	md5sums = 403075825ae1eae1e389629d1cec2999
+
+pkgname = xsystem35
+

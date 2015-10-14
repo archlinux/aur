@@ -1,0 +1,26 @@
+Description: Modify the conflict #define.
+ __COUNTER__ conflicts with some system headers so it makes this header file
+ unusable. We change this #define to solve the confliction.
+Author: Ying-Chun Liu (PaulLiu) <paulliu@debian.org>
+Last-Update: 2010-08-31
+Index: xsystem35-1.7.3-pre5/src/counter.h
+===================================================================
+--- xsystem35-1.7.3-pre5.orig/src/counter.h	2010-08-26 22:09:35.000000000 +0800
++++ xsystem35-1.7.3-pre5/src/counter.h	2010-08-26 22:10:01.000000000 +0800
+@@ -21,8 +21,8 @@
+ */
+ /* $Id: counter.h,v 1.7 2000/11/25 13:09:03 chikama Exp $ */
+ 
+-#ifndef __COUNTER__
+-#define __COUNTER__
++#ifndef __XSYSTEM35_COUNTER__
++#define __XSYSTEM35_COUNTER__
+ 
+ #define EXTER_HIGHTCOUNTER_NUM 5
+ #define SYSTEMCOUNTER_MP3      (256 + 1)
+@@ -36,4 +36,4 @@
+ extern int  get_high_counter(int num);
+ extern void reset_counter_high(int num, int division, int val);
+ 
+-#endif /* !__COUNTER__ */
++#endif /* !__XSYSTEM35_COUNTER__ */

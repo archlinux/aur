@@ -1,0 +1,123 @@
+Description: Use UTF-8 X calls to work on all locales
+ Traditional X calls doesn't work on recent UTF-8 locale. We patch the
+ program to convert all the internal strings to UTF-8 first and then render.
+Author: Ying-Chun Liu (PaulLiu) <paulliu@debian.org>
+Last-Update: 2010-09-03
+Index: xsystem35-1.7.3-pre5/src/font_x11.c
+===================================================================
+--- xsystem35-1.7.3-pre5.orig/src/font_x11.c	2010-09-03 23:08:49.000000000 +0800
++++ xsystem35-1.7.3-pre5/src/font_x11.c	2010-09-03 23:57:06.000000000 +0800
+@@ -152,22 +152,51 @@
+ 	return dst;
+ }
+ 
++static agsurface_t *get_drawn_glyph_utf8(const char *str, int w) {
++	XImage   *src;
++	agsurface_t *dst;
++	
++	XSetForeground(x11_display, gc_pix_glyph, 0);
++	XFillRectangle(x11_display, pix_glyph, gc_pix_glyph, 0, 0, GLYPH_PIXMAP_WIDTH, GLYPH_PIXMAP_HEIGHT);
++	
++	XSetForeground(x11_display, gc_pix_glyph, 1);
++	Xutf8DrawString(x11_display, pix_glyph, fontset, gc_pix_glyph, 0, font_ascent, str, strlen(str));
++	
++	src = XGetImage(x11_display, pix_glyph, 0, 0, w, font_ascent + font_descent, AllPlanes, ZPixmap);
++
++	dst = g_new(agsurface_t, 1);
++
++	dst->width          = w;
++	dst->height         = font_ascent + font_descent;
++	dst->bytes_per_line = src->bytes_per_line;
++	dst->pixel          = (BYTE *)src->data;
++	dst->bytes_per_pixel = x11_workinfo->cimg.bytes_per_pixel;
++
++	src->data = NULL;
++	XDestroyImage(src);
++	
++	return dst;
++}
++
+ static void *font_x11_get_glyph(unsigned char *str) {
+ 	agsurface_t *dst;
+ 	int w;
+ 	BYTE *conv;
++	gchar *conv_utf8;
+ 	
+ 	/* convert string code from sjis to euc (or LANG) */
+ 	conv = sjis2lang(str);
++	conv_utf8 = g_convert_with_fallback(conv,strlen(conv),"utf-8","euc-jp","?",NULL,NULL,NULL);
+ 	
+-	w = XmbTextEscapement(fontset, conv, strlen(conv)); 
++	w = Xutf8TextEscapement(fontset, conv_utf8, strlen(conv_utf8)); 
+ 	
+ 	if (w == 0) {
+ 		free(conv);
++		g_free(conv_utf8);
+ 		return NULL;
+ 	}
+ 	
+-	dst = get_drawn_glyph(conv, w);
++	dst = get_drawn_glyph_utf8(conv_utf8, w);
+ 	image_get_glyph(dst, &img_glyph);
+ 
+ 	if (this->antialiase_on) {
+@@ -180,26 +209,30 @@
+ 	free(dst->pixel);
+ 	g_free(dst);
+ 	free(conv);
++	g_free(conv_utf8);
+ 	return &img_glyph;
+ }
+ 
+ static int font_x11_draw_glyph(int x, int y, unsigned char *str, int col) {
+ 	int w;
+ 	BYTE *conv;
++	gchar *conv_utf8;
+ 	
+ 	/* convert string code from sjis to euc (or LANG) */
+ 	conv = sjis2lang(str);
++	conv_utf8 = g_convert_with_fallback(conv,strlen(conv),"utf-8","euc-jp","?",NULL,NULL,NULL);
+ 	
+-	w = XmbTextEscapement(fontset, conv, strlen(conv)); 
++	w = Xutf8TextEscapement(fontset, conv_utf8, strlen(conv_utf8)); 
+ 	
+ 	if (w == 0) {
+ 		free(conv);
++		g_free(conv_utf8);
+ 		return 0;
+ 	}
+ 	
+ 	if (!x11_dibinfo->shared) {
+ 		/* 一度 Pixmap に書いてからイメージを取得してDIBへ */
+-		agsurface_t *dst = get_drawn_glyph(conv, w);
++		agsurface_t *dst = get_drawn_glyph_utf8(conv_utf8, w);
+ 		
+ 		if (DIB_DEPTH == dib_depth_candidate) {
+ 			image_getGlyphImage(DIB, dst, x, y, PAL2PIC(col));
+@@ -209,7 +242,7 @@
+ 		g_free(dst);
+ 	} else {
+ 		Xcore_setForeground(col);
+-		XmbDrawString(x11_display, x11_pixmap, fontset, x11_gc_pix, x, y + font_ascent, conv, strlen(conv));
++		Xutf8DrawString(x11_display, x11_pixmap, fontset, x11_gc_pix, x, y + font_ascent, conv_utf8, strlen(conv_utf8));
+ 		x11_needSync = TRUE;
+ 	}
+ 	return w;
+Index: xsystem35-1.7.3-pre5/src/xcore_video.c
+===================================================================
+--- xsystem35-1.7.3-pre5.orig/src/xcore_video.c	2010-09-03 23:38:55.000000000 +0800
++++ xsystem35-1.7.3-pre5/src/xcore_video.c	2010-09-03 23:44:09.000000000 +0800
+@@ -492,8 +492,11 @@
+ 
+ /* name is EUC */
+ void Xcore_setWindowTitle(char *name) {
+-	XmbSetWMProperties (x11_display, x11_window,
+-			    name, name, NULL, 0, NULL, NULL, NULL);
++        gchar *name_utf8=NULL;
++	name_utf8 = g_convert_with_fallback(name,strlen(name),"utf-8","euc-jp","?",NULL,NULL,NULL);
++	Xutf8SetWMProperties (x11_display, x11_window,
++			    name_utf8, name_utf8, NULL, 0, NULL, NULL, NULL);
++	g_free(name_utf8);
+ }
+ 
+ /* offscreen の設定 */

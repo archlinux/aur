@@ -1,0 +1,40 @@
+Description: Use system ltdl library
+ Don't build and link local ltdl library
+Author: Ying-Chun Liu (PaulLiu) <paulliu@debian.org>
+Last-Update: 2011-07-22
+Index: xsystem35-1.7.3-pre5/Makefile.am
+===================================================================
+--- xsystem35-1.7.3-pre5.orig/Makefile.am	2011-07-22 02:12:57.872477003 +0800
++++ xsystem35-1.7.3-pre5/Makefile.am	2011-07-22 02:17:02.230913738 +0800
+@@ -1,7 +1,7 @@
+ ## Makefile.am for xsystem35
+ 
+ #SUBDIRS = m4 po libltdl macros modules src 
+-SUBDIRS = po libltdl macros modules src 
++SUBDIRS = po macros modules src 
+ 
+ ACLOCAL_AMFLAGS = -I macros
+ 
+Index: xsystem35-1.7.3-pre5/configure.ac
+===================================================================
+--- xsystem35-1.7.3-pre5.orig/configure.ac	2011-07-22 02:12:57.840475195 +0800
++++ xsystem35-1.7.3-pre5/configure.ac	2011-07-22 02:30:55.709687630 +0800
+@@ -66,13 +66,13 @@
+ dnl
+ dnl Check for libltdl
+ dnl 
+-AC_CONFIG_SUBDIRS(libltdl)
++dnl AC_CONFIG_SUBDIRS(libltdl)
+ AC_LIBTOOL_DLOPEN
+-AC_LIBLTDL_CONVENIENCE([libltdl])
+-AC_LIB_LTDL
++dnl AC_LIBLTDL_CONVENIENCE([libltdl])
++dnl AC_LIB_LTDL
+ AC_PROG_LIBTOOL
+-AC_SUBST([LTDLINCL])
+-AC_SUBST([LIBLTDL])
++AC_SUBST([LTDLINCL],[-I/usr/include])
++AC_SUBST([LIBLTDL],[-L/usr/lib -lltdl])
+ 
+ dnl AM_PROG_LIBTOOL
+ dnl AC_SUBST(INCLTDL)
