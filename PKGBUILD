@@ -1,5 +1,5 @@
 # Maintainer: maz-1 <ohmygod19993 at gmail dot com>
-pkgname=rlvm
+pkgname=rlvm-git
 pkgver=20150819
 pkgrel=1
 pkgdesc="RealLive clone for Linux and OSX. Git version."

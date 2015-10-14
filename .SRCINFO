@@ -1,4 +1,4 @@
-pkgbase = rlvm
+pkgbase = rlvm-git
 	pkgdesc = RealLive clone for Linux and OSX. Git version.
 	pkgver = 20150819
 	pkgrel = 1
@@ -20,5 +20,5 @@ pkgbase = rlvm
 	md5sums = SKIP
 	md5sums = 357e8680838cf8b27ab3c3eaa73d3107
 
-pkgname = rlvm
+pkgname = rlvm-git
 
