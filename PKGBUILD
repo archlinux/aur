@@ -3,12 +3,12 @@
 
 pkgname=openframeworks
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="openFrameworks is an open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64' 'i686')
 license='MIT'
-depends=('cairo' 'mpg123' 'gst-plugins-ugly' 'freeimage' 'gst-libav' 'python-lxml')
+depends=('gcc' 'pkg-config' 'openal' 'glew' 'freeglut' 'gstreamer' 'cairo' 'mpg123' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'freeimage' 'gst-libav' 'python-lxml')
 optdepends=('codeblocks' 'xterm')
 makedepends=()
 install=openframeworks.install
