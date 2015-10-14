@@ -1,0 +1,12 @@
+pkgbase = multicast-mtools
+	pkgdesc = Tools for multicast testing (msend and mreceive)
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/troglobit/mtools
+	arch = i686
+	arch = x86_64
+	source = git+https://github.com/troglobit/mtools.git#commit=db665a4303c38cee908eba4dac50873c3f1d899c
+	sha256sums = SKIP
+
+pkgname = multicast-mtools
+
