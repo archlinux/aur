@@ -4,8 +4,8 @@
 pkgbase=gtk2-patched-filechooser-icon-view
 pkgname=gtk2-patched-filechooser-icon-view
 pkgver=2.24.28
-_patchver=f0ab92a29508ba7aa410fd25ac8a8b3046741bc8
-pkgrel=2
+_patchver=d60e3f1330f3044aeffad8516adc3c444e751b2f
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch."
 url="https://gist.github.com/ahodesuka/01213036b58e510dc074"
@@ -26,7 +26,7 @@ source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-$pkgver.tar.xz
 sha256sums=('b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656'
             'b77a427df55a14182c10ad7e683b4d662df2846fcd38df2aa8918159d6be3ae2'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
-            'd8c6949d0be64ae01606aa8ae6be87099ce7d88a532808bd30bee679d8ffdc03')
+            '2e15a62578f152d040d716b356411825efe222743f6e813ed7dd1d0c1a12bb50')
 
 prepare() {
     cd gtk+-$pkgver

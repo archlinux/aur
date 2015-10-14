@@ -1,7 +1,7 @@
 pkgbase = gtk2-patched-filechooser-icon-view
 	pkgdesc = GTK2 patched with ahodesuka's filechooser-icon-view patch.
 	pkgver = 2.24.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gist.github.com/ahodesuka/01213036b58e510dc074
 	install = gtk2.install
 	arch = i686
@@ -42,11 +42,11 @@ pkgbase = gtk2-patched-filechooser-icon-view
 	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-2.24.28.tar.xz
 	source = gtkrc
 	source = xid-collision-debug.patch
-	source = https://gist.githubusercontent.com/ahodesuka/01213036b58e510dc074/raw/f0ab92a29508ba7aa410fd25ac8a8b3046741bc8/gtk2-filechooser-icon-view.patch
+	source = https://gist.githubusercontent.com/ahodesuka/01213036b58e510dc074/raw/d60e3f1330f3044aeffad8516adc3c444e751b2f/gtk2-filechooser-icon-view.patch
 	sha256sums = b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656
 	sha256sums = b77a427df55a14182c10ad7e683b4d662df2846fcd38df2aa8918159d6be3ae2
 	sha256sums = d758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558
-	sha256sums = d8c6949d0be64ae01606aa8ae6be87099ce7d88a532808bd30bee679d8ffdc03
+	sha256sums = 2e15a62578f152d040d716b356411825efe222743f6e813ed7dd1d0c1a12bb50
 
 pkgname = gtk2-patched-filechooser-icon-view
 
