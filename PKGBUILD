@@ -33,7 +33,7 @@ if [[ $_build = ? ]]; then
   source_x86_64=("https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
 md5sums=('f7d82a1aac76f0bead4245fc1572eee1'
-         '6616cf32c69b50a126812334c8d65329')
+         'fecf3a4e9018f2a84e231cddbc047523')
 md5sums_i686=('e1b92a1bc33a56cc4e6fd7a060484cc3')
 md5sums_x86_64=('bd96faa2ce28b2373be753847bf4e155')
 
