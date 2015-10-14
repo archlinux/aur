@@ -1,7 +1,7 @@
 pkgbase = yosys-git
 	pkgdesc = A framework for RTL synthesis
-	pkgver = r2435.e51dcc8
-	pkgrel = 2
+	pkgver = r2449.7d3a3a3
+	pkgrel = 1
 	url = http://www.clifford.at/yosys/
 	arch = x86_64
 	arch = i686

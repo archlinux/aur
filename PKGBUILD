@@ -2,7 +2,7 @@
 
 pkgname=yosys-git
 pkgrel=2
-pkgver=r2435.e51dcc8
+pkgver=r2449.7d3a3a3
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
@@ -29,7 +29,7 @@ pkgver() {
 
 package() {
     cd ${srcdir}/yosys
-    make DESTDIR="$pkgdir/usr/" install
+    make PREFIX=$pkgdir/usr/ install
 
     install -D -m 644 \
     "${srcdir}/LICENSE" \
