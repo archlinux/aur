@@ -30,7 +30,7 @@ package() {
   make prefix="$pkgdir/usr" mandir="$pkgdir/usr/share/man" install
   
   install -m644 jpegint.h "$pkgdir/usr/include"
-  install -Dm644 README "$pkgdir/usr/share/licenses/libjpeg7/README"
+  install -Dm644 README "$pkgdir/usr/share/licenses/libjpeg9/README"
   
   cd "$pkgdir"
   
