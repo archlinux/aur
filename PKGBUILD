@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-headless-addrindex
-pkgver=0.11
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P wallet with addrindex"
 arch=('i686' 'x86_64')
@@ -19,13 +19,13 @@ makedepends=('autoconf'
              'pkg-config'
              'yasm')
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%-*}/tar.gz/addrindex-$pkgver)
-sha256sums=('28a294f5ee8ea23b86e20f7484652c9579cccf2e6a50185c6160539fe4ba39ab')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%-*}/tar.gz/v$pkgver-addrindex)
+sha256sums=('790b32f073f979a252a413c4a2ea5d2d35454007fa8f41e90660b344a9241cf3')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 
 build() {
-  cd "$srcdir/${pkgname%%-*}-addrindex-$pkgver"
+  cd "$srcdir/${pkgname%%-*}-$pkgver-addrindex"
 
   msg 'Building...'
   ./autogen.sh
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%%-*}-addrindex-$pkgver"
+  cd "$srcdir/${pkgname%%-*}-$pkgver-addrindex"
 
   msg 'Installing license...'
   install -Dm 644 COPYING "$pkgdir/usr/share/licenses/${pkgname%%-*}/COPYING"
