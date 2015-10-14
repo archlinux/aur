@@ -4,8 +4,8 @@
 
 pkgbase=vte3-notification
 pkgname=(vte3-notification vte-notification-common)
-pkgver=0.42.0
-pkgrel=2
+pkgver=0.42.1
+pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3'
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -19,7 +19,7 @@ source=(
 	'vte291-command-notify.patch'
 )
 sha256sums=(
-	'2168f79d2043cbbe6d4375d01e54cebda71bb6f5d9dc8ad658b9a1dc1052de04'
+	'9e00e2e9e94f4202b979c871f407a8815890bc0f4a8448a08534f76ab0fc9d34'
 	'4379593bdddbe7ebcf6efd808f6334ce86334426d07f7ad777a3aa2d1ee2c50d'
 	'150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
 	'd7dce79b0950b35052f60cacc7ce835a6111a4f3e833a5406590ff141fb41825'
