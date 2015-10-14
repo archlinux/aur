@@ -1,7 +1,8 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=ardoise-git
-pkgver=0.4.0.0.r7.g75fbd0b
+pkgver=0.4.0.0.r8.g03b1ab1
 pkgrel=1
+epoch=1
 pkgdesc="Unlimited drawing surface for quick diagrams and notes"
 arch=('i686' 'x86_64')
 url="http://ardoise.leo-flaventin.com"
