@@ -10,7 +10,7 @@ md5sums=('3249298e9efd2918efe86c5431f54bcd')
 url="https://github.com/DimaSmirnov/Archlinux-downgrader"
 source=($pkgname-$pkgver::"http://www.igus.lv/downgrader/downgrader.tar.xz")
 optdepends=('sudo: for installation via sudo')
-
+  
 # install=$pkgname.install
 
 build() {
