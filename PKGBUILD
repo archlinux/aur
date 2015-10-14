@@ -3,8 +3,8 @@
 pkgname=repo
 # pkgver from https://android.googlesource.com/tools/repo/+/v1.12.20/repo
 pkgver=1.21
-_tag=v1.12.27
-pkgrel=6
+_tag=v1.12.32
+pkgrel=7
 pkgdesc="The Multiple Git Repository Tool from the Android Open Source Project"
 arch=("i686" "x86_64")
 url="http://source.android.com/source/git-repo.html"
