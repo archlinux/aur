@@ -1,20 +1,20 @@
 pkgbase = mingw-w64-kconfig
 	pkgdesc = Configuration system (mingw-w64)
-	pkgver = 5.14.0
+	pkgver = 5.15.0
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kconfig
 	arch = any
 	groups = mingw-w64-kf5
 	license = LGPL
 	makedepends = mingw-w64-cmake
-	makedepends = mingw-w64-extra-cmake-modules=5.14.0
+	makedepends = mingw-w64-extra-cmake-modules=5.15.0
 	makedepends = mingw-w64-qt5-tools
 	depends = mingw-w64-qt5-base
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.14/kconfig-5.14.0.tar.xz
-	md5sums = a4b12b753b855d8fa1240b499bc17135
+	source = http://download.kde.org/stable/frameworks/5.15/kconfig-5.15.0.tar.xz
+	md5sums = f7169075c22857b40d256bd6323d1a10
 
 pkgname = mingw-w64-kconfig
 
