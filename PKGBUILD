@@ -6,14 +6,16 @@ pkgver=r2435.e51dcc8
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
-license=('ISC')
+license=('custom:ISC')
 provides=("yosys")
 conflicts=("yosys")
 depends=('tcl' 'libffi' 'clang' 'python')
 optdepends=('graphviz: Schematics display support')
 makedepends=('git' 'mercurial')
-source=('git+https://github.com/cliffordwolf/yosys.git')
-sha512sums=('SKIP')
+source=('git+https://github.com/cliffordwolf/yosys.git'
+        'LICENSE')
+sha512sums=('SKIP'
+            'a3202289ff7828c55d3ec3e22d23ed78a34fcae165a7c666d71d3cedd9abe06f638a09750d8c2d43dfca5781f1b32a616f439c3713a12265c02473f88c0f426d')
 
 build(){
     cd ${srcdir}/yosys
@@ -28,4 +30,8 @@ pkgver() {
 package() {
     cd ${srcdir}/yosys
     make DESTDIR="$pkgdir/usr/" install
+
+    install -D -m 644 \
+    "${srcdir}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
