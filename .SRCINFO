@@ -11,9 +11,9 @@ pkgbase = aurous-bin
 	depends = gksu
 	depends = libgcrypt15
 	source = Aurous.desktop
-	md5sums = e04b9770f59111250b4e9096d2cc9ecc
+	sha512sums = 45e7b5f870241b81933ef77b0c40a3bca71495ad3dc1dadb2f296c272eda5b49c489e6155b91456184d75ebca27c7abc75e8e3443834aaba830a654594ab5792
 	source_x86_64 = https://aurous.me/downloads/aurous-linux64.zip
-	md5sums_x86_64 = fc6bf92831e18af8c11d272bcbaea777
+	sha512sums_x86_64 = 060b7147a5936ae5b66adc9236188e221eb904c8281f6f4e159f04453ece030008aad43ed295314a31ae05fd1272fef88c2237e281a3b0d0ae84e48d089d8d8a
 
 pkgname = aurous-bin
 
