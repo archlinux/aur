@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+# Starts DBDesigner4
+# This script was adapted from original "startdbd" for Archlinux
+
+# verify existence of application folder
+app_path=/opt/DBDesigner4
+if [ ! -d $app_path ]; then
+  echo -e "Error: DBDesigner4 folder \'$app_path\' not found!"
+  exit 1
+fi
+
+# verify existence of executable
+if [ ! -f $app_path/DBDesigner4 ]; then
+  echo -e "Error: DBDesigner4 executable \'$app_path/DBDesigner4\' not found!"
+  exit 1
+fi
+
+# verify existence of library folder and libraries of DBDesigner4 and Kylixlibs 
+if [ $(uname -m) == x86_64 ]; then
+  app_ld_path=/usr/lib32/DBDesigner4
+  kylix_ld_path=/usr/lib32/kylix3
+else # i686 expected
+  app_ld_path=/usr/lib/DBDesigner4
+  kylix_ld_path=/usr/lib/kylix3
+fi
+if [ ! -f "$app_ld_path/bplrtl.so.6.9.0" ]; then
+    echo -e "Error: DBDesigner4 library folder \'$app_ld_path\' not found!"
+    exit 1
+fi
+if [ ! -f "$kylix_ld_path/libborqt-6.9-qt2.3.so" ]; then
+    echo -e "Error: Kylixlibs folder \'$kylix_ld_path\' not found!"
+    exit 1
+fi
+
+# First check to see if we have an LD_LIBRARY_PATH environment variable
+if [ -n "$LD_LIBRARY_PATH" ]; then
+# we do, so prepend our path first
+  export LD_LIBRARY_PATH="$app_ld_path:$kylix_ld_path:$LD_LIBRARY_PATH"
+else
+  # we do not, so we will create the env var.
+  export LD_LIBRARY_PATH="$app_ld_path:$kylix_ld_path"
+fi
+
+# make sure we have something specified for the LANG environment variable
+if [ -z "$LANG" ]; then
+  # set LANG to an appropriate value
+  export LANG=en_US
+fi
+
+if [ ! -d ~/.DBDesigner4 ]; then
+  mkdir ~/.DBDesigner4
+fi
+
+## Note: These two require old and unavailable libs (Ex: libXft.so.1)
+## 	 around the Internet. Therefore, had to disabilitate even if
+##	 it sacrifices fonts' smoothness.
+##
+#use the original qt files
+#export CLX_USE_LIBQT=yes
+#
+#QT smooth fonts
+#export QT_XFT=true
+
+# now run the application, passing any parameters that where specified.
+echo Starting DBDesigner4 ...
+$app_path/DBDesigner4 $* 2> ~/.DBDesigner4/DBD4.log
