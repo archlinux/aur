@@ -7,8 +7,8 @@ pkgdesc="Emacs major mode for flex"
 arch=("any")
 url="http://www.emacswiki.org/emacs/FlexMode"
 license=("GPL")
-makedepends=("emacs")
 depends=("emacs")
+makedepends=("emacs")
 source=("http://ftp.sunet.se/pub/gnu/emacs-lisp/incoming/flex-mode.el")
 sha1sums=("a63c956e21a42849c1f5277dcdf1538e21846322")
 
