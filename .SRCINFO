@@ -1,6 +1,6 @@
 pkgbase = keybase-release
 	pkgdesc = release build of the Keybase Go client
-	pkgver = 33.2b4bc5a
+	pkgver = 35.5a5d5da
 	pkgrel = 1
 	url = https://keybase.io/docs/cli_kbstage
 	arch = i686

@@ -4,7 +4,7 @@ pkgname=keybase-release
 pkgdesc='release build of the Keybase Go client'
 url='https://keybase.io/docs/cli_kbstage'
 license=('BSD')
-pkgver=33.2b4bc5a
+pkgver=35.5a5d5da
 pkgver() {
   cd "$srcdir/client-beta"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -26,5 +26,5 @@ package() {
   dest="$pkgdir/usr/bin/keybase"
   mkdir -p "$(dirname "$dest")"
   echo building keybase binary...
-  go build -a -tags release -o "$dest"
+  go build -a -tags production -o "$dest"
 }
