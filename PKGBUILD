@@ -3,14 +3,21 @@
 pkgname=networkmanager-strongswan
 _pkgname=NetworkManager-strongswan
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Strongswan NetworkManager plugin"
 arch=('i686' 'x86_64')
 url="http://wiki.strongswan.org/projects/strongswan/wiki/NetworkManager"
 license=('GPL')
 depends=(networkmanager strongswan libgnomeui)
-source=(http://download.strongswan.org/NetworkManager/$_pkgname-$pkgver.tar.gz)
-sha256sums=('8f67bf0e7281ee8dfb1c7fe28ef8d06774744e2135682f4ddae4342fd103d46a')
+source=("http://download.strongswan.org/NetworkManager/$_pkgname-$pkgver.tar.gz"
+        'fix-vbox-parent.patch')
+sha256sums=('8f67bf0e7281ee8dfb1c7fe28ef8d06774744e2135682f4ddae4342fd103d46a'
+            'c9f7f6819753ff2834015ba18ffed39c4b5ae5e0e71c377ee49c105f0d9b1f99')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  patch -p1 -i ../fix-vbox-parent.patch
+}
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

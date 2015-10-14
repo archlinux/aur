@@ -1,7 +1,7 @@
 pkgbase = networkmanager-strongswan
 	pkgdesc = Strongswan NetworkManager plugin
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.strongswan.org/projects/strongswan/wiki/NetworkManager
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = networkmanager-strongswan
 	depends = strongswan
 	depends = libgnomeui
 	source = http://download.strongswan.org/NetworkManager/NetworkManager-strongswan-1.3.1.tar.gz
+	source = fix-vbox-parent.patch
 	sha256sums = 8f67bf0e7281ee8dfb1c7fe28ef8d06774744e2135682f4ddae4342fd103d46a
+	sha256sums = c9f7f6819753ff2834015ba18ffed39c4b5ae5e0e71c377ee49c105f0d9b1f99
 
 pkgname = networkmanager-strongswan
 

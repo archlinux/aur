@@ -1,0 +1,19 @@
+--- NetworkManager-strongswan-1.3.1/properties/nm-strongswan-dialog.ui
+@@ -1,10 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <interface>
+   <!-- interface-requires gtk+ 2.12 -->
+-  <object class="GtkWindow" id="strongswan-widget">
+-    <property name="can_focus">False</property>
+-    <property name="title" translatable="yes">window1</property>
+-    <child>
+       <object class="GtkVBox" id="strongswan-vbox">
+         <property name="visible">True</property>
+         <property name="can_focus">False</property>
+@@ -374,6 +370,4 @@
+           </packing>
+         </child>
+       </object>
+-    </child>
+-  </object>
+ </interface>
