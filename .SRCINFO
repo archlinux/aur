@@ -1,7 +1,7 @@
 pkgbase = aurous-bin
 	pkgdesc = A music player built to serve your needs. NOTE: If md5 fails simply flag the package as outdated
 	pkgver = 0.1Alpha
-	pkgrel = 4
+	pkgrel = 5
 	url = https://aurous.me/
 	arch = i686
 	arch = x86_64
