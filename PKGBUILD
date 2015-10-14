@@ -4,7 +4,7 @@
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
 pkgver=r679.a81f7bc
-pkgrel=2
+pkgrel=3
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
 arch=( 'x86_64' 'i686' )
@@ -61,10 +61,17 @@ package_vdev-git() {
 	# hwdb
 	make DESTDIR="${pkgdir}" PREFIX=/usr -C hwdb install
 
-	# Config files
 	cd "$pkgdir"
+
+	# Config files
 	backup+=( etc/vdev/actions/*.act )
 	backup+=( etc/vdev/*.conf )
+
+	# Fix the log path
+	sed -i "s%logfile=/usr/run%logfile=/var/log" etc/vdev/vdevd.conf
+
+	# Install the licence
+	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_vdevfs-git() {
@@ -78,6 +85,9 @@ package_vdevfs-git() {
 		PREFIX='/usr' \
 		SBINDIR='/usr/bin' \
 	install
+
+	# Install the licence
+	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_vdev-libudev-compat-git() {
@@ -89,6 +99,9 @@ package_vdev-libudev-compat-git() {
 		DESTDIR="$pkgdir" \
 		PREFIX=/usr \
 	install
+
+	# Install the licence
+	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 sha1sums=( 'SKIP' )
