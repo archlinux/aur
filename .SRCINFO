@@ -1,6 +1,6 @@
 pkgbase = dasom-git
 	pkgdesc = Dasom is an input method framework
-	pkgver = 240.eeb0df3
+	pkgver = 241.d0f1031
 	pkgrel = 1
 	url = https://github.com/cogniti/dasom
 	install = dasom-git.install
@@ -23,6 +23,7 @@ pkgbase = dasom-git
 	depends = libhangul
 	depends = xorg-server-utils
 	depends = glib2
+	depends = libappindicator-gtk3
 	optdepends = dconf-editor: For Editing Dasom IM Config
 	conflicts = dasom
 	options = !buildflags
