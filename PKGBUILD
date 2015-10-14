@@ -1,7 +1,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo
 pkgver=1.14.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Cairo vector graphics library (mingw-w64)"
 arch=(any)
 url="http://cairographics.org/"
@@ -39,14 +39,13 @@ build() {
     ${_arch}-configure \
       --enable-win32 \
       --enable-win32-font \
-      --enable-png \
       --enable-gobject \
       --enable-tee \
       --disable-xlib \
       --disable-xcb \
-      --enable-fc \
-      --enable-ft \
-      --disable-silent-rules \
+      --enable-pdf \
+      --enable-ps \
+      --enable-svg \
       ac_cv_prog
     make
     popd
