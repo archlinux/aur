@@ -3,8 +3,8 @@
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 pkgname=eclipse-mylyn
-pkgver=3.16.0
-_reldate=20150609-2039
+pkgver=3.17.0
+_reldate=20150909-1855
 pkgrel=1
 pkgdesc='A task-focused interface for Eclipse.'
 arch=('any')
@@ -13,7 +13,7 @@ license=('EPL')
 depends=('eclipse')
 optdepends=('bugzilla: ticketing support')
 source=("https://www.eclipse.org/downloads/download.php?file=/mylyn/drops/$pkgver/v$_reldate/mylyn-$pkgver.v$_reldate.zip&r=1")
-sha512sums=('c63c978ad5fe984e274cbf67e0f6f5de3a0dc703153bccf591da3808a9a6eec74db9975be81e86fd634649574077d73cbc5e77e6ca29653b64d698115e77dcf2')
+sha512sums=('aa6289046df4c254567010b30706cc9cb0a1355e9634adcb2052127030d2640f399caf20fce10e8b4fab5885da29057ab9117af42472bcc1645dcf9881f84236')
 
 prepare()
 {
@@ -26,7 +26,7 @@ prepare()
 
 package()
 {
-	_dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+	_dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
 
 	# Features
 	find features -type f | while read _feature ; do
