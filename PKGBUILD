@@ -5,7 +5,6 @@ pkgrel=2
 pkgdesc="Powerful packages downgrader for Archlinux. Works with libalpm, ARM and pacman logs"
 arch=('i686' 'x86_64')
 license=("GPL")
-md5sums=('3249298e9efd2918efe86c5431f54bcd')
 
 url="https://github.com/DimaSmirnov/Archlinux-downgrader"
 source=($pkgname-$pkgver::"http://www.igus.lv/downgrader/downgrader.tar.xz")
@@ -22,3 +21,4 @@ package() {
   cd "$srcdir"
   install -D -m755 downgrader "$pkgdir/usr/bin/downgrader"
 } 
+md5sums=('3249298e9efd2918efe86c5431f54bcd')
