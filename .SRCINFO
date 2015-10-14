@@ -1,0 +1,18 @@
+pkgbase = python-plumbum-git
+	pkgdesc = Shell combinators library.
+	pkgver = v1.5.0.r275.gab08669
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/plumbum
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-six
+	provides = python-plumbum
+	conflicts = python-plumbum
+	options = !emptydirs
+	source = git+https://github.com/tomerfiliba/plumbum.git
+	md5sums = SKIP
+
+pkgname = python-plumbum-git
+
