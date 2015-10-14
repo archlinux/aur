@@ -12,6 +12,7 @@ if [ "$CARCH" = "i686" ]; then
 else
 	depends=("lib32-alsa-lib" "lib32-libpng12" "lib32-sdl_mixer" "lib32-smpeg" "lib32-zlib")
 fi
+options=(!strip)
 install="sorr.install"
 source=("http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz"
 	"http://www.soronline.net/downloads/SORRv051_REV030.zip"
@@ -19,13 +20,13 @@ source=("http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz"
 	"sorr-wrapper"
 	"renamelower"
 	"renamelowerrec")
-options=(!strip)
 sha1sums=("5c719296ab1cbc222897fba00453a18e495ee8c4"
 	"35323ee18ef7f010934501f3eae038710959399e"
 	"37e4ce2bfbf9b593d0c9a62c3dfada1b3190a123"
 	"f53dc4b099a5c70020596327e3a572ad0812e34a"
 	"545d34c1885b172afebad77349493025071a87ed"
 	"968775da5d7d296040b53efa4e822270efa460c6")
+
 DLAGENTS=("http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u --referer http://www.soronline.net")
 
 build() {
