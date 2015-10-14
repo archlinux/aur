@@ -1,0 +1,17 @@
+pkgbase = elementary-plus-icon-theme-git
+	pkgdesc = An addition to elementary OS's icon theme.
+	pkgver = 548.1100f81
+	pkgrel = 1
+	url = https://github.com/mank319/elementaryPlus
+	install = elementary-plus-icon-theme-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = elementary-icon-theme
+	provides = elementary-plus-icon-theme-git
+	conflicts = elementary-plus-icon-theme-git
+	source = git+https://github.com/mank319/elementaryPlus.git
+	md5sums = SKIP
+
+pkgname = elementary-plus-icon-theme-git
+
