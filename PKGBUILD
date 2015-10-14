@@ -25,6 +25,18 @@ prepare() {
   find -name '.git*' -exec rm -rf '{}' +
 }
 
+makedepends+=(rasqal)
+
+sparql() {
+  roqet -e "PREFIX em: <http://www.mozilla.org/2004/em-rdf#> SELECT ?x WHERE { $1 }" \
+    -D "${2:-install.rdf}" -r csv 2>/dev/null | tr -d '\r' | tail -n 1 | head -c -1
+}
+
+# Retrieve current compatibility information from install.rdf.
+query-version() {
+  sparql "[] em:id '$2' ; em:${1}Version ?x" install.rdf
+}
+
 pkgver() {
   cd "$_gitname"
   sed -n 's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
@@ -54,13 +66,6 @@ for target in "${optdepends[@]}"; do
 done
 optdepends=()
 
-makedepends+=(rasqal)
-
-sparql() {
-  roqet -e "PREFIX em: <http://www.mozilla.org/2004/em-rdf#> SELECT ?x WHERE { $1 }" \
-    -D "${2:-install.rdf}" -r csv 2>/dev/null | tr -d '\r' | tail -n 1 | head -c -1
-}
-
 version-range() {
   local emid=$(emid $1)
   echo "$1>$(version min $emid)" "$1<$(version max $emid)"
@@ -75,9 +80,7 @@ emid() {
 }
 
 version() {
-  local version;
-  version=$(sparql "[] em:id '$2' ; em:${1}Version ?x" \
-    "$srcdir/install.rdf" )
+  local version="$(query-version $1 $2)"
   if [[ $version =~ ([[:digit:]]+).\* ]]; then
     if [[ $1 = max ]]; then
       echo $(( ${BASH_REMATCH[1]} + 1 ))
