@@ -1,0 +1,15 @@
+pkgbase = m2status
+	pkgdesc = i3 status line generator written in Go
+	pkgver = 16.0ad8780
+	pkgrel = 1
+	url = https://github.com/mutantmonkey/m2status
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/mutantmonkey/m2status.git
+	sha256sums = SKIP
+
+pkgname = m2status
+
