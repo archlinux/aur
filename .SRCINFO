@@ -1,0 +1,19 @@
+pkgbase = qsstv-testing
+	pkgdesc = Radio Slow-Scan TV for qt
+	pkgver = 9.0.7
+	pkgrel = 1
+	url = http://users.telenet.be/on4qz/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = hamlib
+	depends = fftw
+	conflicts = qsstv
+	source = http://users.telenet.be/on4qz/qsstv_9/downloads/qsstv_9.0.7.tar.gz
+	source = qsstv.desktop
+	sha256sums = 4e2415ceca8830f56c958c24d4c3b7e25c98d1889f98e8920a0efef8f234b232
+	sha256sums = 6ec3f693b113f45f99ae889a38cd9518b6cb43dbf7b1855ac07c9b54be41e525
+
+pkgname = qsstv-testing
+
