@@ -1,5 +1,5 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 2e274f6..bbfb330 100755
+index 38e41ce..1e7fa76 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
 @@ -139,7 +139,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
@@ -21,10 +21,10 @@ index 2e274f6..bbfb330 100755
              elif command == 'help_shortcuts': wx.MessageBox( CC.SHORTCUT_HELP )
              elif command == 'import_files': self._ImportFiles()
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index 6d6962d..6657d01 100755
+index f765182..66b7347 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
-@@ -628,7 +628,7 @@ class DialogFirstStart( Dialog ):
+@@ -630,7 +630,7 @@ class DialogFirstStart( Dialog ):
          self._ok.SetForegroundColour( ( 0, 128, 0 ) )
          
          message1 = 'Hi, this looks like the first time you have started the hydrus client. Don\'t forget to check out the'
@@ -55,7 +55,7 @@ index c7cc159..dfb34aa 100644
          response_context = HydrusServerResources.ResponseContext( 200, path = path )
          
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 277f0fa..c0bcc4e 100755
+index b719882..be7cf52 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,9 +3,9 @@ import sys

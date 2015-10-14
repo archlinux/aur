@@ -26,17 +26,15 @@ makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus')
-source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=5ffe0f73ca6eae5fcbd53828b3fb401250423690"
+source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=cfb25c7739e16f2385c9b6adf547163a7712d3cf"
         paths-in-opt.patch
         running-the-server.patch
-        pil-tostring-is-gone.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            'd316105494d07fa0a46483089e707ccd24f157d7b72b6925ae6e1b47085940a5'
+            'ecae339ef65c15ceb8151a05b97eaa3d2090147d24f4d82dc673c900ed65bcd9'
             '8b47161065328dab0c9de293a8a2b4343e5c5fab464eb301f028758fb2666c6d'
-            '69fa2bc03ed4f1a4aee2943ea8144cdf9573f5f8b56bb7f50278d5971f27311e'
             'b2bf66b1068969e9598742d5c128cb04fd609512b0cff0ad5e25ecb6cdd35678'
             '5fd3eb69bb5f9a0b88d7c1b25abdee42aa2b2fc5e1690635f60ed1f47848c46b'
             '9ba3942ac1a37f6b39c98ae6592573402bf08d8376f64554d0696c0fed6fd0e2')
@@ -46,7 +44,6 @@ prepare() {
   cd "$pkgname"
   patch -Np1 -i ../paths-in-opt.patch
   patch -Np1 -i ../running-the-server.patch
-  patch -Np1 -i ../pil-tostring-is-gone.patch
 
   # Fix permissions
   chmod a-x include/*.py
