@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-configure
-pkgver=0
+pkgver=0.1
 pkgrel=1
 arch=(any)
 pkgdesc="configure wrapper for MinGW (mingw-w64)"

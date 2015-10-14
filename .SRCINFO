@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-configure
 	pkgdesc = configure wrapper for MinGW (mingw-w64)
-	pkgver = 0
+	pkgver = 0.1
 	pkgrel = 1
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
