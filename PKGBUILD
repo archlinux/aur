@@ -2,13 +2,13 @@
 
 pkgname=k2pdfopt
 pkgver=2.33
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that optimizes PDF files for viewing on mobile readers"
 arch=('i686' 'x86_64')
 url="http://www.willus.com/k2pdfopt/"
 license=('GPL3')
 makedepends=('cmake')
-depends=('mupdf>=1.7_a'
+depends=('mupdf>=1.7'
 	'djvulibre>=3.5.25.3'
 	'netpbm>=10.61.02'
 	'leptonica>=1.69')

@@ -1,13 +1,13 @@
 pkgbase = k2pdfopt
 	pkgdesc = A tool that optimizes PDF files for viewing on mobile readers
 	pkgver = 2.33
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.willus.com/k2pdfopt/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	depends = mupdf>=1.7_a
+	depends = mupdf>=1.7
 	depends = djvulibre>=3.5.25.3
 	depends = netpbm>=10.61.02
 	depends = leptonica>=1.69
