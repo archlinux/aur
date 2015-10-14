@@ -1,0 +1,14 @@
+diff -Naur a/SConstruct b/SConstruct
+--- a/SConstruct	2015-10-14 00:57:12.750504352 +0000
++++ b/SConstruct	2015-10-14 00:51:18.000000000 +0000
+@@ -180,7 +180,9 @@
+ }
+ """, ".cc")[0]
+   if not ret:
+-    context.env.Replace(LIBS = lastLIBS)
++    # context.env.Replace(LIBS = lastLIBS)
++    #fix for archlinux
++    context.Message('(For some reason guichan is not detected, include anyway.)')
+   context.Result( ret )
+   return ret
+ 
