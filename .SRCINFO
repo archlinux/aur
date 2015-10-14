@@ -1,6 +1,6 @@
 pkgbase = vivaldi-snapshot
 	pkgdesc = An advanced browser made with the power user in mind. (weekly snapshot)
-	pkgver = 1.0.291.18
+	pkgver = 1.0.298.15
 	pkgrel = 1
 	url = https://vivaldi.com
 	install = vivaldi.install
@@ -17,12 +17,16 @@ pkgbase = vivaldi-snapshot
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = alsa-lib
+	optdepends = vivaldi-ffmpeg-codecs: playback of proprietary video/audio
+	optdepends = google-chrome: Widevine DRM Plugin
 	options = !strip
 	options = !zipman
-	source_i686 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.291.18-1.i386.rpm
-	sha256sums_i686 = 6faa82caf153c691be5f94a1483da376f838c0bc5f15d3ed69aceb8d04d904dd
-	source_x86_64 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.291.18-1.x86_64.rpm
-	sha256sums_x86_64 = cbda3e09389414183c47345ddc262b753a1ead3ef751322713aee0fbe0cbe266
+	source = vivaldi-ffmpeg-codecs.patch
+	sha256sums = 690ded55e6fc87a3fc6e1e89324eeedab68d0990d213b0b3362318da3f343379
+	source_i686 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.298.15-1.i386.rpm
+	sha256sums_i686 = 4b5b4b4a3b3d192a4cb8cc351d58534650d5465d3a7ef1707d9edf2d3fcc059b
+	source_x86_64 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.298.15-1.x86_64.rpm
+	sha256sums_x86_64 = f12afe7c2e99db5dc8bc2b4a665e06aa1b46fd8a35e2163106f0a0a1ff2c7d26
 
 pkgname = vivaldi-snapshot
 
