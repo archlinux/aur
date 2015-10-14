@@ -7,11 +7,8 @@ pkgbase = md5deep
 	arch = x86_64
 	license = Public Domain
 	depends = glibc
-	source = https://github.com/jessek/hashdeep/archive/release-4.4.tar.gz
-	md5sums = 9ccfd5ba3e3d9cffddeb118cacad0c27
-	sha1sums = cb4e313352974299c32bc55fe56396adb74517ef
+	source = release-4.4.tar.gz::https://github.com/jessek/hashdeep/archive/release-4.4.tar.gz
 	sha256sums = dbda8ab42a9c788d4566adcae980d022d8c3d52ee732f1cbfa126c551c8fcc46
-	sha512sums = c37ec85ed04d4452f9038f43434c02e064cf9e17c4eaa233867dba0236443922a14ccb8ec76c68820087751c2ca3db014d3f17dd8fcd2c2bde84d620aae50de1
 
 pkgname = md5deep
 
