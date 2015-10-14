@@ -1,0 +1,16 @@
+pkgbase = webgrind-git
+	pkgdesc = Xdebug Profiling Web Frontend in PHP.
+	pkgver = 20110421
+	pkgrel = 1
+	url = https://github.com/jokkedk/webgrind
+	install = webgrind-git.install
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = php
+	depends = xdebug
+	depends = php-apache
+	conflicts = webgrind
+
+pkgname = webgrind-git
+
