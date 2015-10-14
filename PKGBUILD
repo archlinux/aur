@@ -7,8 +7,8 @@ pkgdesc="Generate efficient regexps to match strings in Emacs"
 arch=("any")
 url="http://svn.r-project.org/ESS/"
 license=("GPL")
-makedepends=("emacs")
 depends=("emacs")
+makedepends=("emacs")
 source=("http://svn.r-project.org/ESS/tags/14.09/lisp/make-regexp.el")
 sha1sums=("41b301527c99c47a8aa6a514e3b95324dd319c94")
 
