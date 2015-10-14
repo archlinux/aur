@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=2.0.0.r459.996dc23
+pkgver=2.0.0.r467.35eca51
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -111,7 +111,8 @@ build() {
                 PRESET_POWER_PLAN_PERFORMANCE="\"${_PRESET_POWER_PLAN_PERFORMANCE}\"" \
                 PRESET_POWER_PLAN_POWERSAVE="\"${_PRESET_POWER_PLAN_POWERSAVE}\"" \
                 AUTO_POWER_PLAN_AC="\"${_AUTO_POWER_PLAN_AC}\"" \
-                AUTO_POWER_PLAN_BAT="\"${_AUTO_POWER_PLAN_BAT}\""
+                AUTO_POWER_PLAN_BAT="\"${_AUTO_POWER_PLAN_BAT}\"" \
+                bin
 }
 
 package() {
