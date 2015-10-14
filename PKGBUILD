@@ -56,8 +56,8 @@ _BFQ_enable_=
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
 _srcname=linux-4.1
-pkgver=4.1.8
-pkgrel=1
+pkgver=4.1.10
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -75,6 +75,7 @@ fbcondecor-4.1.patch
 'config.x86_64' 'config'
 'linux-ck-fbcondecor.preset'
 'change-default-console-loglevel.patch'
+'0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch'
 # ck1
 "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
 # gcc
@@ -85,13 +86,14 @@ fbcondecor-4.1.patch
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '4373af2baaae5429be37e5257a22454d468f36b1322f784bb91a608c80ed52a1'
+            '929e210fe6dbd5dd26812c146630be14e979aae6c960a2feb39544babb8e73cb'
             'SKIP'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42'
             '1e1e592503a7e3c7e93e4f65624dfae4f8f3221468b7219e7ccfd8df7e668cbc'
             '14ef2bb50aca50a2e7388012497e70b4cd69eb505b13bba2ffd72f1de975a8ea'
             '2b264754fb155101481e44ea583ff219fdd35a6d88e59bda63b7e854eac7aa7b'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'fd5dcb1847fc22f36892673066c801e818dce42d1f709dafa9f12bf8337024f3'
             '87726411f583862e456156fe82ef51b188e5d92e7a4bd944e01a091cd7c46428'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
             'ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975'
@@ -112,6 +114,9 @@ prepare() {
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+	# fix https://bbs.archlinux.org/viewtopic.php?pid=1568197#p1568197
+	patch -Np1 -i "$srcdir/0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch"
 
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
