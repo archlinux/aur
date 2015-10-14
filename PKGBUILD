@@ -3,7 +3,7 @@
 
 pkgname=dracut
 pkgver=043
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=("i686" "x86_64")
 url="https://dracut.wiki.kernel.org/"
@@ -26,7 +26,7 @@ build() {
 	      --libdir=/usr/lib --libexecdir=/usr/lib/dracut \
 	      --systemdsystemunitdir=/usr/lib/systemd/system \
 	      --bashcompletiondir=/usr/share/bash-completion/completions \
-	      --loginstall=/var/log/dracut 
+	      --loginstalldir=/var/log/dracut 
   make sysconfdir=/etc prefix=/usr \
   	bindir=/usr/bin sbindir=/usr/bin \
   	libdir=/usr/lib libexecdir=/usr/lib/dracut \
