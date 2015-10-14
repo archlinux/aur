@@ -1,6 +1,6 @@
 pkgbase = python-powerlaw-git
 	pkgdesc = A Python Package for Analysis of Heavy-Tailed Distributions
-	pkgver = r1.3.4.60cd80d
+	pkgver = r1.3.5.948d3d3
 	pkgrel = 1
 	url = https://github.com/jeffalstott/powerlaw
 	arch = any
