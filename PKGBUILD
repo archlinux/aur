@@ -3,15 +3,15 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 epoch=
 pkgdesc="A GUI front-end for scrot"
 arch=('any')
 url="https://github.com/thenaterhood/gscreenshot"
 license=('GPL')
 groups=()
-depends=("python3"
+depends=("python"
         "python-pillow"
         "scrot"
         "pygtk"
@@ -31,7 +31,7 @@ install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.zip")
 noextract=("v$pkgver.zip")
-md5sums=('2d2f1722e70313fcf355c310ea6225c8')
+md5sums=('7fd5ee61c5cdf03fadea617c62ae4e53')
 validpgpkeys=()
 
 prepare() {
