@@ -3,12 +3,12 @@
 
 pkgname=friture
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
 url="http://tlecomte.github.com/friture/"
 license=('GPL3')
-depends=('pyqwt' 'python2-scipy' 'python2-psutil' 'python2-pyaudio')
+depends=('pyqwt' 'python2-scipy' 'python2-psutil' 'python2-pyaudio' 'python2-opengl')
 optdepends=('jack: for JACK I/O support')
 makedepends=('cython2')
 source=("http://pypi.python.org/packages/source/f/$pkgname/$pkgname-$pkgver.tar.gz")
