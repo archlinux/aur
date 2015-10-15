@@ -2,15 +2,15 @@
 # Contributor: David Mougey <imapiekindaguy at gmail dot com>
 
 pkgname=sigil-git
-pkgver=0.8.901.r20.ga1205d4
+pkgver=0.8.901.r30.g3959de7
 pkgrel=1
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
 url="https://github.com/Sigil-Ebook/Sigil"
 license=('GPL3')
-depends=('qt5-webkit' 'boost-libs' 'desktop-file-utils' 'minizip'
+depends=('qt5-webkit' 'hunspell' 'desktop-file-utils' 'minizip'
          'gtk-update-icon-cache' 'python-lxml' 'python-six')
-makedepends=('git' 'qt5-multimedia' 'qt5-tools ''qt5-svg ''cmake' 'boost')
+makedepends=('git' 'qt5-tools' 'qt5-svg' 'cmake')
 optdepends=('python-html5lib: recommended for plugins'
             'python-chardet: recommended for plugins'
             'python-cssselect: recommended for plugins'
@@ -33,6 +33,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}/build"
     cmake -G "Unix Makefiles" \
         -DUSE_SYSTEM_LIBS=1 \
+        -DSYSTEM_LIBS_REQUIRED=1 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
