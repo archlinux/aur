@@ -7,7 +7,7 @@
 pkgname=wine-staging-d3dadapter
 _pkgbasename=wine
 pkgver=1.7.52
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
