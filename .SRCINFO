@@ -11,6 +11,7 @@ pkgbase = steamcmd
 	source = steamcmd
 	md5sums = 09e3f75c1ab5a501945c8c8b10c7f50e
 	md5sums = 698e6f1f8a4b6644136c4294b5b40759
+	depends_x86_64 = lib32-gcc-libs
 
 pkgname = steamcmd
 
