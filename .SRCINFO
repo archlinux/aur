@@ -1,0 +1,16 @@
+pkgbase = python-wiring
+	pkgdesc = Architectural foundation for Python applications
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/msiedlarek/wiring
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/w/wiring/wiring-0.2.4.tar.gz
+	md5sums = 0cd3b1d583e4226c610e845a7b61c0d7
+
+pkgname = python-wiring
+
