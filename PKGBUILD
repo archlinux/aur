@@ -1,5 +1,5 @@
 pkgname=naturalscrolling
-pkgver=0.5
+pkgver=0.7
 pkgrel=1
 pkgdesc='Natural Scrolling application'
 arch=('x86_64' 'i686')

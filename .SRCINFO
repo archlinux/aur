@@ -1,6 +1,6 @@
 pkgbase = naturalscrolling
 	pkgdesc = Natural Scrolling application
-	pkgver = 0.5
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/cemmanouilidis/naturalscrolling
 	arch = x86_64
