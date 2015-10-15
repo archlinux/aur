@@ -1,6 +1,6 @@
 pkgbase = miller
 	pkgdesc = Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/johnkerl/miller
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = miller
 	makedepends = ctags
 	makedepends = valgrind
 	makedepends = asciidoc
+	makedepends = autoconf
 	depends = glibc
-	source = miller-2.2.0.tar.gz::https://github.com/johnkerl/miller/archive/v2.2.0.tar.gz
-	sha256sums = 65bebfc393a95ba3677a5d11536540db0c48bda0657b8570b65bda1f4a946c1d
+	source = miller-2.2.1.tar.gz::https://github.com/johnkerl/miller/archive/v2.2.1.tar.gz
+	sha256sums = 816a1822cac06752e6ea703d435e0dff65ab23d393350afadd46eb422448503f
 
 pkgname = miller
 
