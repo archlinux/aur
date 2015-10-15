@@ -1,0 +1,18 @@
+pkgbase = insync-nemo
+	pkgdesc = Nemo integration for insync
+	pkgver = 1.2.8.35316
+	pkgrel = 1
+	url = https://www.insynchq.com/downloads
+	arch = any
+	license = custom:insync
+	makedepends = gtk-doc
+	depends = insync
+	depends = nemo
+	depends = python2-nemo
+	noextract = insync-nemo-1.2.8.35316.deb
+	options = !strip
+	source = insync-nemo-1.2.8.35316.deb::http://s.insynchq.com/builds/insync-nemo_1.2.8.35316-precise_all.deb
+	sha256sums = 6d3223f6428190dfac1fe4966dbeae5af2fb7632bf0a1023d54be8d445df24d8
+
+pkgname = insync-nemo
+
