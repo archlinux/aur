@@ -21,7 +21,7 @@ sha256sums=('65bebfc393a95ba3677a5d11536540db0c48bda0657b8570b65bda1f4a946c1d')
 build() {
   set -u
   cd "${_srcdir}"
-  make -s -j "$(nproc)"
+  make -s -j1 # "$(nproc)" # Makefile not compatible with threaded make
   set +u
 }
 
@@ -35,6 +35,7 @@ package() {
   else
     install -Dpm755 'c/mlr' -t "${pkgdir}/usr/bin/"
     install -Dpm644 'doc/miller.1' -t "${pkgdir}/usr/share/man/man1/"
+    ln -sf 'miller.1.gz' "${pkgdir}/usr/share/man/man1/mlr.1.gz"
   fi
   set +u
 }
