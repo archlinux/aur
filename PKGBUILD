@@ -4,11 +4,11 @@
 pkgname=grib_api
 pkgver=1.14.0
 _attnum=3473437
-pkgrel=2
+pkgrel=3
 pkgdesc="A program interface for encoding and decoding GRIB messages"
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/GRIB/Home"
-license=('LGPL3' 'GPL3')
+license=('Apache')
 depends=('openjpeg' 'libpng' 'python2' 'netcdf')
 optdepends=('libaec: for compression' 'jasper: as an alternative to openjpeg')
 makedepends=('gcc-fortran' 'python2' 'python2-numpy' 'cmake')
