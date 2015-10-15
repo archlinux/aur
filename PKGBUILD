@@ -2,7 +2,7 @@
 
 pkgname=autohidewibox
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Show awesome WM wibox only on ModKey press"
 url=https://github.com/grandchild/${pkgname}
 #install=${pkgname}.install
@@ -16,8 +16,8 @@ source=(
 	"https://raw.githubusercontent.com/grandchild/${pkgname}/${pkgver}/${pkgname}.conf"
 )
 sha1sums=(
-	'87c3aa94779356048b7cae7f4ade12ee43e7ad75'
-	'e6892a5a1952faa2cc48ed6950f91481ddb914ce'
+	'4ff91f6be6afa28fd725dca47742e4d835e65744'
+	'3e62c3fcae9f84e2170928b1f22cc5f104bf61c8'
 )
 
 package() {
