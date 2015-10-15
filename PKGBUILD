@@ -1,16 +1,16 @@
 pkgname=totd
 pkgver=1.5.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Totd (Trick Or Treat Daemon) is DNS-proxy for IPv4/IPv6 translation (DNS-ALG)"
 arch=('x86_64' 'i686')
-url="http://www.dillema.net/software/totd.html"
+url="https://github.com/fwdillema/totd"
 license=('BSD')
 groups=(network)
 depends=('glibc')
 optdepends=(socat)
 backup=(etc/totd.conf)
 install=totd.install
-source=("https://mortzu.de/files/aur/$pkgname/$pkgname-$pkgver.tar.xz"
+source=("http://mortzu.andromeda.hostedinspace.de/aur/$pkgname/$pkgname-$pkgver.tar.xz"
         Makefile.in.patch
         totd.conf
         totd.service
