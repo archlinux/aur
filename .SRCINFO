@@ -1,0 +1,18 @@
+pkgbase = pacli
+	pkgdesc = An interactive pacman interface using pmenu
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Chrysostomus/pacli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = pmenu
+	depends = pacman
+	depends = yaourt
+	depends = downgrade
+	depends = bash
+	source = git://github.com/Chrysostomus/pacli
+	md5sums = SKIP
+
+pkgname = pacli
+
