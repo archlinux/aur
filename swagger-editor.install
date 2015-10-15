@@ -1,6 +1,6 @@
 post_install() {
   _mkuser
-  chown -R swaggereditor:swaggereditor /usr/share/swagger-editor
+  chown -R swaggereditor:swaggereditor /etc/swagger-editor /usr/share/swagger-editor
   printf "%b\n" "$swaggereditor"
 }
 
@@ -10,14 +10,14 @@ post_upgrade() {
 
 post_remove() {
   _rmuser
-  rm -rf /usr/share/swagger-editor
+  rm -rf /etc/swagger-editor /usr/share/swagger-editor
 }
 
 _mkuser() {
   getent passwd swaggereditor &>/dev/null || {
     echo -n "Creating swaggereditor user... "
     grep -E "^swaggereditor:" /etc/group >/dev/null || groupadd swaggereditor
-    useradd -M -g swaggereditor -s /usr/bin/nologin swaggereditor
+    useradd -m -d /etc/swagger-editor -g swaggereditor -s /usr/bin/nologin swaggereditor
     echo "done"
   }
 }

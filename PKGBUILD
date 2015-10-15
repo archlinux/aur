@@ -1,12 +1,12 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=swagger-editor-git
-pkgver=20150904
+pkgver=20151009
 pkgrel=1
 pkgdesc="Swagger Editor"
 arch=('i686' 'x86_64')
 depends=('darkhttpd' 'nodejs')
-makedepends=('git' 'nodejs-bower' 'nodejs-grunt-cli' 'npm')
+makedepends=('bower' 'git' 'nodejs-grunt-cli' 'npm')
 url="https://github.com/swagger-api/swagger-editor"
 license=('Apache')
 source=(git+https://github.com/swagger-api/swagger-editor
