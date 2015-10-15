@@ -4,12 +4,14 @@
 
 pkgname=libnatspec
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of functions for request various charsets and locales for host system and for other 
 system."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://sourceforge.net/projects/natspec/"
 license=('LGPL')
+makedepends=('popt')
+optdepends=('popt: natspec tool')
 source=(
 "http://sourceforge.net/projects/natspec/files/natspec/${pkgver}/libnatspec-${pkgver}.tar.bz2"
 )
