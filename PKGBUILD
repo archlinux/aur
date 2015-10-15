@@ -1,12 +1,12 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=insight-bitcore-git
-pkgver=20141130
+pkgver=20150805
 pkgrel=1
 pkgdesc="Bitcoin blockchain explorer with complete REST and websocket APIs"
 arch=('i686' 'x86_64')
 depends=('leveldb' 'nodejs')
-makedepends=('git' 'nodejs-bower' 'nodejs-grunt-cli' 'npm' 'python2')
+makedepends=('bower' 'git' 'nodejs-grunt-cli' 'npm' 'python2')
 optdepends=('bitcoin-core: Bitcoin core headless P2P node')
 url="https://github.com/bitpay/insight"
 license=('MIT')
