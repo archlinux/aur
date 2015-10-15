@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=47.0.2522.1
+pkgver=47.0.2526.16
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -45,6 +45,7 @@ depends=('desktop-file-utils'
          #'protobuf'
          #'libevent'
          #'libvpx'
+         'ffmpeg'
          )
 makedepends=('libexif'
              'elfutils'
@@ -69,6 +70,8 @@ optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
             'kdialog-frameworks-git: Needed for file dialogs in KF5'
             'kwalletmanager: Needed for storing passwords in KWallet in KF5'
             #
+            'libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)'
+            #
             'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography')
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
@@ -78,10 +81,11 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r7.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r0.patch'
         # Misc Patches
         'enable_vaapi_on_linux-r1.diff'
         # Patch from crbug (chromium bugtracker)
-
+        'https://codereview.chromium.org/download/issue1383303002_20001.diff' ## https://codereview.chromium.org/1383303002
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
           "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
@@ -91,10 +95,11 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           # Patch form Gentoo
           'c24d14029714d2295f3220a7173a5a7362f578a2'
+          '8e828ffd7de532becdd30378cdcc8411575a7b0b'
           # Misc Patches
           '255d71cd9b9e55265e1bfeaa4612bcf60d293204'
           # Patch from crbug (chromium bugtracker)
-
+          '002b0bb9b07d8a823cf32fb399730031e86a49c3'
           )
 options=('!strip')
 install=chromium-dev.install
@@ -144,11 +149,9 @@ fi
 # Build with GTK3?
 if [ "${_use_gtk3}" = "1" ]; then
   depends+=('gtk3')
-  optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
   _launcher_gtk='GTK=3'
 elif [ "${_use_gtk3}" = "0" ]; then
   depends+=('gtk2')
-  optdepends+=('libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)')
 fi
 
 # Need you use ccache?
@@ -218,7 +221,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/devscripts'
            'third_party/dom_distiller_js'
            'third_party/dom_distiller_js/dist/proto_gen/third_party/dom_distiller_js'
-           'third_party/ffmpeg'
            'third_party/fips181'
            'third_party/flot'
            'third_party/google_input_tools'
@@ -300,6 +302,7 @@ _flags=("-Dclang=${_use_clang}"
         '-Denable_webrtc=1'
         '-Denable_widevine=1'
         '-Denable_hotwording=0'
+        '-Denable_hangout_services_extension=1'
         '-Dffmpeg_branding=ChromeOS'
         "-Dgoogle_api_key=${_google_api_key}"
         "-Dgoogle_default_client_id=${_google_default_client_id}"
@@ -368,7 +371,7 @@ fi
 # -Duse_system_libxnvctrl=0  | Because not exist in Arch (and not all users use nvidia)
 # -Duse_system_libvpx=0      | http://crbug.com/494939
 _use_system=('-Duse_system_expat=1'
-             '-Duse_system_ffmpeg=0'
+             '-Duse_system_ffmpeg=1'
              '-Duse_system_flac=1'
              '-Duse_system_fontconfig=1'
              '-Duse_system_harfbuzz=1'
@@ -428,6 +431,7 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo
   patch -p0 -i ../chromium-system-jinja-r7.patch
+  patch -p1 -i ../chromium-system-ffmpeg-r0.patch
 
   # Misc Patches:
   patch -p1 -i ../enable_vaapi_on_linux-r1.diff
@@ -435,6 +439,9 @@ prepare() {
   # Patch from crbug (chromium bugtracker)
   # fix the missing define (if not, fail build) (need upstream fix) (https://crbug.com/473866)
   sed '14i#define WIDEVINE_CDM_VERSION_STRING "The Cake Is a Lie"' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
+
+  # Add support for Kwallet5 in KF5 environment (https://codereview.chromium.org/1383303002)
+  patch -p1 -i ../issue1383303002_20001.diff
 
   # Make it possible to remove third_party/adobe
   echo > "${srcdir}/flapper_version.h"
@@ -508,21 +515,6 @@ build() {
 
   # Changing bundle libraries to system ones
   python2 build/linux/unbundle/replace_gyp_files.py ${_use_system[@]}
-
-  # Re-configure and install headers of bundled ffmpeg
-  msg2 "Configuring and build the bundled FFmpeg"
-  pushd third_party/ffmpeg > /dev/null
-  if [ "${_use_clang}" = "1" ] ; then
-    if [ "${_use_bundled_clang}" = "0" ] ; then
-      _build_ffmpeg_args+=" --cc=clang --cxx=clang++"
-    elif [ "${_use_bundled_clang}" = "1" ] ; then
-      _build_ffmpeg_args+=" --cc=${_bundled_clang_path}/clang --cxx=${_bundled_clang_path}/clang++"
-    fi
-  fi
-  python2 chromium/scripts/build_ffmpeg.py linux ${_target_arch} --branding=ChromeOS -- ${_extended_ffmpeg_flags[@]} ${_build_ffmpeg_args}
-  sh chromium/scripts/copy_config.sh
-  python2 chromium/scripts/generate_gyp.py
-  popd > /dev/null
 
   # update libaddressinput strings
   python2 third_party/libaddressinput/chromium/tools/update-strings.py
