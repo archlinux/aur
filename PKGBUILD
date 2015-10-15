@@ -76,6 +76,13 @@ package_firefox-extension-gnome-theme-tweak-git() {
   conflicts=('firefox-extension-gnome-theme-tweak')
   pkgdesc='Extension for customizing GNOME theme.'
   depends=('firefox-theme-gnome')
+  real_depends
 
   package extension
+}
+
+# Hide the versioned dependncy from mksrcinfo, as the pkgver
+# function has to update the value before it can be properly used.
+real_depends() {
+  depends=("firefox-theme-gnome=$pkgver")
 }
