@@ -7,23 +7,15 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.58.0
+pkgver=1.59.0
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 url='http://www.boost.org/'
 arch=('i686' 'x86_64')
 license=('custom')
-makedepends=('icu>=55.1' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
-source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2
-        boost-1.58.0-Fix-for-bind-void-mf-ambiguous-resolution-error.patch)
-sha1sums=('2fc96c1651ac6fe9859b678b165bd78dc211e881'
-          'f78d9c6a1ca0c073c21a74d01e6f72e3eb1d8d80')
-
-prepare() {
-   cd ${pkgbase}_${_boostver}
-
-   patch -p2 -i ../boost-1.58.0-Fix-for-bind-void-mf-ambiguous-resolution-error.patch
-}
+makedepends=('icu>=55.1' 'python>=3.5' 'python<3.6' 'python2' 'bzip2' 'zlib' 'openmpi')
+source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2)
+sha1sums=('b94de47108b2cdb0f931833a7a9834c2dd3ca46e')
 
 build() {
    export _stagedir="${srcdir}/stagedir"
@@ -39,7 +31,7 @@ build() {
 
    # Add an extra python version. This does not replace anything and python 2.x
    # need to be the default.
-   echo "using python : 3.4 : /usr/bin/python3 : /usr/include/python3.4m : /usr/lib ;" \
+   echo "using python : 3.5 : /usr/bin/python3 : /usr/include/python3.5m : /usr/lib ;" \
       >> project-config.jam
 
    # Support for OpenMPI
