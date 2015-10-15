@@ -1,0 +1,14 @@
+pkgbase = python2-scikits-talkbox
+	pkgdesc = Talkbox, a set of python modules for speech/signal processing.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://scikits.appspot.com/talkbox
+	arch = any
+	license = MIT
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/s/scikits.talkbox/scikits.talkbox-0.2.5.tar.gz
+	sha256sums = 437efb0d0e30e1ecddf218a660c1b3581a2fd90b60d61a8340de2b105185bdfb
+
+pkgname = python2-scikits-talkbox
+
