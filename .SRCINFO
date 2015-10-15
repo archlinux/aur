@@ -1,4 +1,4 @@
-pkgbase = ncurses-5.9
+pkgbase = ncurses5
 	pkgdesc = NCurses 5.9 for backward compatibility (e.g. for Matlab)
 	pkgver = 5.9
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = ncurses-5.9
 	source = http://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz
 	sha256sums = 9046298fb440324c9d4135ecea7879ffed8546dd1b58e59430ea07a4633f563b
 
-pkgname = ncurses-5.9
+pkgname = ncurses5
 
