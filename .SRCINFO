@@ -1,0 +1,14 @@
+pkgbase = posixovl
+	pkgdesc = A FUSE filesystem that provides POSIX functionality
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/posixovl/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = fuse
+	source = http://downloads.sourceforge.net/posixovl/posixovl/1.2/posixovl-1.2.tar.xz
+	md5sums = 02630aba4478f661ec6a247338a3d54e
+
+pkgname = posixovl
+
