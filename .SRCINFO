@@ -1,18 +1,17 @@
 pkgbase = molly-guard
 	pkgdesc = protects machines from accidental shutdowns/reboots (via ssh)
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = http://packages.debian.org/source/sid/molly-guard
 	arch = any
 	license = Artistic2.0
 	makedepends = docbook-xsl
 	depends = openssh
 	depends = run-parts
-	conflicts = systemd-sysvcompat
-	source = http://ftp.de.debian.org/debian/pool/main/m/molly-guard/molly-guard_0.5.1.orig.tar.gz
+	source = http://http.debian.net/debian/pool/main/m/molly-guard/molly-guard_0.6.2.tar.xz
 	source = molly-guard.sh
-	md5sums = 891b8b2762cb658140214acd2e54dc9b
-	md5sums = 836d0faee390abafc18257f987bb9c60
+	md5sums = ab3dcd91c9560acc8864b0ff4549079b
+	md5sums = d3d171f182d45e59591dee11c911a710
 
 pkgname = molly-guard
 
