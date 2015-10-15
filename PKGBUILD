@@ -4,16 +4,15 @@
 
 _pkgname=pithos
 pkgname=$_pkgname-git
-pkgver=485
+pkgver=1.1.1.r27.g81ef2a9
 pkgrel=1
-epoch=1
 pkgdesc='Pandora Internet Radio player for GNOME'
 arch=('any')
-url="http://pithos.github.io/"
+url="https://pithos.github.io/"
 license=('GPL3')
 depends=('python>=3.5' 'gtk3' 'python-gobject'
          'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-base'
-         'python-setuptools' 'python-cairo')
+         'python-cairo')
 optdepends=('libkeybinder3: for media keys plugin'
             'gst-plugins-ugly: MP3 playback support'
             'libappindicator-gtk3: Unity indicator applet support'
@@ -21,7 +20,7 @@ optdepends=('libkeybinder3: for media keys plugin'
             'python-pylast: Last.fm scrobbling support'
             'libnotify: Notification support'
             'python-dbus: MPRIS/Screensaver Pause/Gnome mediakeys support')
-makedepends=('git')
+makedepends=('git' 'automake' 'autoconf' 'intltool')
 provides=("$_pkgname")
 conflicts=("$_pkgname-bzr" "$_pkgname")
 install="$pkgname.install"
@@ -32,10 +31,16 @@ source=("$pkgname.install" "git+https://github.com/pithos/pithos.git")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git rev-list HEAD --count
+  git describe --tags | sed 's/-/.r/; s/-/./'
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
+  ./autogen.sh --prefix=/usr
+  make
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}/"
+  DESTDIR="$pkgdir" make install
 }
