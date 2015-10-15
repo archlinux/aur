@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=rubber-bzr
-pkgver=450
+pkgver=672
 pkgrel=1
 pkgdesc="A wrapper for LaTeX and friends, latest bzr version."
 arch=('any')
@@ -16,7 +16,7 @@ replaces=('rubber-darcs')
 source=('rubber::bzr+http://bazaar.launchpad.net/~rubber-devs/rubber/main/'
         'install.patch')
 sha512sums=('SKIP'
-            '6f7d257e548bbf0e1e176f11a0db4e36fb2f94a42082865d193394b17d700e8ad966370f75a1a49d4c05c8eb5be620094a10cb29eefc1bbc4981cca5faa2ed14')
+            '5ad028b6599ff55d6125f0733934e169216f7aea49a941ca541d899e1fb33b9b5a5135f944666b97d8067f2435dd2f1ad4edb304d4c9688711cb0370517623ba')
 
 pkgver() {
   cd rubber
@@ -40,6 +40,5 @@ package() {
   make DESTDIR="$pkgdir"/ install
   cd "$pkgdir"/usr
   mv info man share/
-  rm share/rubber/modules/etex.rub # fixes http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=592865
 }
 
