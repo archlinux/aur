@@ -42,11 +42,11 @@ prepare() {
 		if [[ "$file" == "config.h" ]]; then
 			# add config.h if present in source array
 			# Note: this supersedes the above sed to config.def.h
-			cp "$SRCDEST/$file" .
+			cp "$srcdir/$file" .
 			continue
 		elif [[ "$file" == *.diff ]]; then
 			# add all patches present in source array
-			patch -Np1 <"$SRCDEST/$file"
+			patch -Np1 <"$srcdir/$file"
 		fi
 	done
 }
