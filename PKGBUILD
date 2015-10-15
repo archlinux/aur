@@ -1,6 +1,6 @@
 pkgname=inetutils-syslogd
 _pkgname=inetutils
-pkgver=1.9.2
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="A small syslogd"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ backup=(etc/syslog.conf)
 source=(http://ftp.gnu.org/gnu/inetutils/${_pkgname}-${pkgver}.tar.gz
         syslog.conf
         inetutils-syslogd.service)
-md5sums=('aa1a9a132259db83e66c1f3265065ba2'
+md5sums=('04852c26c47cc8c6b825f2b74f191f52'
          '71d7027920dd7641653705de65fd0d97'
          'f528a4b680e878a13f745a38f9499e06')
 
