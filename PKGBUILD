@@ -6,7 +6,7 @@
 
 pkgname=laptop-mode-tools
 pkgver=1.68.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Power Savings tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools'
@@ -51,7 +51,7 @@ backup=('etc/laptop-mode/conf.d/ac97-powersave.conf'
     'etc/laptop-mode/lm-profiler.conf')
 
 package() {
-    cd "laptop-mode-tools-debian-${pkgver}"
+    cd "laptop-mode-tools-${pkgver}"
 
     make DESTDIR="${pkgdir}" MAN_D=/usr/share/man LIB_D=/usr/lib PREFIX=/usr INIT_D=false install
     # use /bin instead of /sbin
