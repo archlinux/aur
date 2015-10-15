@@ -1,11 +1,10 @@
 # $Id: PKGBUILD 180812 2013-03-26 12:05:13Z bisson $
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Moritz Kaspar Rudert (mortzu) <me@mortzu.de>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
-
 pkgname=openssh-multiple-bindaddress
 _pkgname=openssh
-pkgver=6.7p1
+pkgver=7.1p1
 pkgrel=1
 pkgdesc='SSH connectivity tools with multiple BindAddress patch'
 url='http://www.openssh.org/portable.html'
@@ -22,7 +21,7 @@ source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgver
         'sshd.socket'
         'sshd.pam'
         'openssh_multiple_bindaddress.patch')
-sha512sums=('2469dfcd289948374843311dd9e5f7e144ce1cebd4bfce0d387d0b75cb59f3e1af1b9ebf96bd4ab6407dfa77a013c5d25742971053e61cae2541054aeaca559d'
+sha512sums=('f1491ca5a0a733eb27ede966590642a412cb7be7178dcb7b9e5844bbdc8383032f4b00435192b95fc0365b6fe74d6c5ac8d6facbe9d51e1532d049e2f784e8f7'
             '95a72fae435d294a89a70a8017b8e625c9fdeea5569999056176a1b8b342f4616e8c6a85e77e02a90d99358dfa990f167507d98464c19c5beff895af75b7105d'
             'd63bfaa08225a4c467945b7b849747ce33f1c10e2e34ed4dbb8f02b31d392ba3a7f3c96377222ba25bfb9eec5beebfe9130358790bfd853c180c63015b4ec249'
             'fbf8ba29eefef98a0596d255e7dab24790d828d466f06f209c63280d31a25950c88cc354296c0da9a5bd085384fa59f296809cad1ab8db6712d8158ac74da343'
