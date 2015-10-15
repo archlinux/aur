@@ -1,14 +1,12 @@
 pkgbase = brother-mfc-9140cdn
 	pkgdesc = LPR and CUPS driver for the Brother MFC-9140CDN
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	install = brother-mfc-9140cdn.install
 	arch = i686
 	arch = x86_64
 	license = unknown
-	depends = deb2targz
-	depends = perl
 	source = http://download.brother.com/welcome/dlf100405/mfc9140cdnlpr-1.1.2-1.i386.deb
 	source = http://download.brother.com/welcome/dlf100407/mfc9140cdncupswrapper-1.1.2-1.i386.deb
 	sha256sums = 90eae54a7201c369ddc6c3999af24c9c8de7b2c72061ba0773e8809da5451df3

@@ -1,14 +1,18 @@
 model="9140cdn"
 pkgname="brother-mfc-$model"
 pkgver="1.1.2"
-pkgrel=1
+pkgrel=2
 _revision=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-9140CDN"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
 license='unknown'
 install="brother-mfc-${model}.install"
-depends=('deb2targz' 'perl')
+if [ "$CARCH" == 'i686' ]; then
+   depends=('deb2targz' 'perl')
+elif [ "$CARCH" == 'x86_64' ]; then
+   depends=('deb2targz' 'perl' 'lib32-libcups')
+fi
 source=("http://download.brother.com/welcome/dlf100405/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
          "http://download.brother.com/welcome/dlf100407/mfc${model}cupswrapper-${pkgver}-${_revision}.i386.deb")
 sha256sums=('90eae54a7201c369ddc6c3999af24c9c8de7b2c72061ba0773e8809da5451df3'
