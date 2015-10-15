@@ -30,6 +30,10 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+
+  # glibmm 2.46 uses C++11 features
+  CXXFLAGS+=' -std=c++11'
+
   ./configure --prefix=/usr boost_cv_rpath_link_ldflag="-L/usr/lib"
   make
 }
