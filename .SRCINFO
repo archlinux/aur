@@ -1,5 +1,5 @@
 pkgbase = hoststool
-	pkgdesc = Original library for SoundFont compression.
+	pkgdesc = Hosts tool.
 	pkgver = 1.9.8
 	pkgrel = 1
 	url = https://code.google.com/p/huhamhire-hosts/
@@ -11,9 +11,9 @@ pkgbase = hoststool
 	source = https://huhamhire-hosts.googlecode.com/git-history/gh-pages/release/HostsTool-x11-gpl-1.9.8-SE.tar.gz
 	source = hoststool.png
 	source = hoststool.desktop
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 982eb0fedc5c3b076326eaf06fc87c23
+	md5sums = b79a5fd9df05c3e384f37b3f68cef92d
+	md5sums = bea986c720b09e18095d022c86b4734d
 
 pkgname = hoststool
 

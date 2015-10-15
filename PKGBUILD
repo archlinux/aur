@@ -2,7 +2,7 @@
 pkgname=hoststool
 pkgver=1.9.8
 pkgrel=1
-pkgdesc="Original library for SoundFont compression."
+pkgdesc="Hosts tool."
 arch=(i686 x86_64)
 url="https://code.google.com/p/huhamhire-hosts/"
 license=('GPL')
