@@ -5,13 +5,13 @@
 
 pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
-pkgver=0.6.5.2_r0_g0b7b4bd
+pkgver=0.6.5.3_r0_g9aaf60b
 pkgrel=1
 license=('CDDL')
 makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.6.5.2"
+source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.6.5.3"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook")
