@@ -7,8 +7,8 @@
 pkgname=compiz
 pkgver=0.9.12.2
 _pkgseries=0.9.12
-pkgrel=5
-pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (release version)"
+pkgrel=6
+pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
 license=('GPL' 'LGPL' 'MIT')
@@ -18,7 +18,7 @@ optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
 conflicts=('compiz-core')
-source=("https://launchpad.net/compiz/${_pkgseries}/${pkgver}/+download/compiz-${pkgver}.tar.bz2"
+source=("https://launchpad.net/${pkgname}/${_pkgseries}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
         "xfce4-notifyd-nofade.patch"
