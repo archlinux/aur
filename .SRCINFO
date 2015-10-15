@@ -1,0 +1,30 @@
+pkgbase = mitsuba-hg
+	pkgdesc = Mitsuba physically based renderer.
+	pkgver = 2135
+	pkgrel = 1
+	url = http://mitsuba-renderer.org/
+	arch = any
+	license = GPL3
+	makedepends = scons
+	makedepends = mercurial
+	depends = python
+	depends = eigen
+	depends = xerces-c
+	depends = glew
+	depends = openexr
+	depends = libpng
+	depends = libjpeg
+	depends = qt4
+	depends = fftw
+	depends = collada-dom-mitsuba
+	depends = boost
+	depends = pcre
+	provides = mitsuba
+	conflicts = mitsuba
+	source = mitsuba::hg+https://www.mitsuba-renderer.org/repos/_10
+	source = fix_boost_include.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mitsuba-hg
+
