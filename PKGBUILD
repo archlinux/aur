@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20150924.9d1c394
+pkgver=20151014.93b643d
 pkgrel=1
 pkgdesc='Divelog program'
 url='http://subsurface-divelog.org/'
@@ -11,7 +11,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake' 'asciidoc')
 depends=('libzip' 'libxml2' 'libxslt' 'sqlite' 'libusb' 'libgit2'
-         'subsurface-marble' 'subsurface-libdc-git'
+         'subsurface-libdc' 'subsurface-marble'
          'qt5-connectivity' 'grantlee-qt5')
 source=('git://git.subsurface-divelog.org/subsurface')
 sha1sums=('SKIP')
