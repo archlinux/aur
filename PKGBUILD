@@ -2,7 +2,7 @@
 # Contributor: Spider.007 <archPackage@spider007.net>
 pkgname=netatop-dkms
 _pkgname=netatop
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Atop network kernel module, enables network statistics in atop"
 url="http://www.atoptool.nl/"
@@ -14,7 +14,7 @@ conflicts=('netatop')
 makedepends=('linux-headers')
 source=("http://atoptool.nl/download/netatop-${pkgver}.tar.gz"
         "netatop-dkms.conf")
-sha256sums=('01ac7d9059714ccb4f1c7daa0c4f07010e05dec06927af22581742249de97d62'
+sha256sums=('d4c5a5d27e38b5a5b54b8e0dc73e6b6f75e8dea9b9279397e6f558a8e9a66987'
             '56e9094e396fcdabadde4db8a9f21945484e4db93359dc22f2fb76436b1b2ea9')
 arch=('x86_64' 'i686')
 
