@@ -1,0 +1,20 @@
+pkgbase = letsencrypt-nginx
+	pkgdesc = Nginx plugin for Let’s Encrypt client
+	pkgver = 0.0.0.dev20151008
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/letsencrypt-nginx
+	arch = any
+	license = Apache
+	depends = letsencrypt=0.0.0.dev20151008
+	depends = python2-acme=0.0.0.dev20151008
+	depends = python2-setuptools
+	depends = python2-mock
+	depends = python2-zope-interface
+	depends = python2-pyparsing
+	depends = python2-pyopenssl
+	conflicts = letsencrypt-git
+	source = https://pypi.python.org/packages/source/l/letsencrypt-nginx/letsencrypt-nginx-0.0.0.dev20151008.tar.gz
+	md5sums = 6246bc79e669f18c8a3aedd49da38b82
+
+pkgname = letsencrypt-nginx
+
