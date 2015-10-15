@@ -1,0 +1,13 @@
+pkgbase = keepass-plugin-traytotp
+	pkgdesc = Plugin adding TOTP to KeePass2 tray menu, entry list and auto-type.
+	pkgver = 2.0.0.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/traytotp-kp2/
+	arch = any
+	license = GPL3
+	depends = keepass
+	source = http://downloads.sourceforge.net/project/traytotp-kp2/Tray%20TOTP%20v.%202.0.0.5/TrayTotp.plgx
+	sha256sums = 6373bb8f91375022c65169c272eb1b262001f0b19e04c459386c65e4ad6263bf
+
+pkgname = keepass-plugin-traytotp
+
