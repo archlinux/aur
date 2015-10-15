@@ -3,17 +3,16 @@
 
 pkgname=gcp-cups-connector
 pkgver=2015.10.05.r9.g3297fab
-pkgrel=2
+pkgrel=3
 pkgdesc="The Google Cloud Print (aka GCP) CUPS Connector shares CUPS printers with users of Google Cloud Print."
 arch=('i686' 'x86_64')
 url="https://github.com/google/cups-connector"
 license=('BSD')
 depends=('cups')
 makedepends=('go' 'net-snmp' 'avahi' 'git' 'bzr')
-source=('gcp-cups-connector::git+https://github.com/google/cups-connector.git'
-        'gcp-cc-service::git+https://github.com/fpnewton/gcp-cups-connector-systemd.git')
-md5sums=('SKIP'
-         'SKIP')
+optdepends=('gcp-cups-connector-systemd')
+source=('gcp-cups-connector::git+https://github.com/google/cups-connector.git')
+md5sums=('SKIP')
 _gourl=github.com/google/cups-connector
 
 pkgver() {
