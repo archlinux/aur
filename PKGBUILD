@@ -4,15 +4,15 @@ _name="docker-py"
 _module="${_name%-py}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.4.0"
-pkgrel="2"
+pkgver="1.5.0"
+pkgrel="1"
 pkgdesc="An API client for docker written in Python"
 arch=("any")
 url="https://github.com/docker/${_name}"
 license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('933bd55ec332adfe69b2825d81e7d238f51d970d5b16f63a14199789cd04c7b8')
+sha256sums=('6924128fac46afef0de16ebdffc30a8c071246312260f289d895129f4e00f8d0')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
