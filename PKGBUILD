@@ -1,5 +1,7 @@
 # Maintainer: Egor Panfilov <multicolor{dot}mood{at}gmail{dot}com>
-pkgname=python-hmmlearn-git
+
+pkgbase=python-hmmlearn
+pkgname=('python2-hmmlearn-git' 'python-hmmlearn-git')
 pkgver=0.1.1.r75.gd6dbe8c
 pkgrel=1
 
@@ -8,22 +10,31 @@ arch=('i686' 'x86_64')
 url="http://hmmlearn.github.io/hmmlearn/"
 license=('Custom: Copyright (c) 2015, hmmlearn authors and contributors')
 
-depends=('python' 'python-numpy>=1.6' 'python-scipy>=0.11' 'python-scikit-learn>=0.15')
 makedepends=('git')
-
-provides=('python-hmmlearn')
-conflicts=('python-hmmlearn')
 
 source=('git://github.com/hmmlearn/hmmlearn')
 md5sums=('SKIP')
 
 pkgver() {
-    cd hmmlearn
+    cd "$srcdir"
     git describe --tags | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
-package() {
-    cd hmmlearn
+package_python2-hmmlearn-git() {
+    depends=('python2' 'python2-numpy>=1.6' 'python2-scipy>=0.11' 'python2-scikit-learn>=0.15')
+    provides=('python2-hmmlearn')
+    conflicts=('python2-hmmlearn')
+
+    cd "$srcdir"/hmmlearn
+    python setup.py install --root="$pkgdir/" --optimize=1
+}
+
+package_python-hmmlearn-git() {
+    depends=('python' 'python-numpy>=1.6' 'python-scipy>=0.11' 'python-scikit-learn>=0.15')
+    provides=('python-hmmlearn')
+    conflicts=('python-hmmlearn')
+
+    cd "$srcdir"/hmmlearn
     python setup.py install --root="$pkgdir/" --optimize=1
 }
 
