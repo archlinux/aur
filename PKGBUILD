@@ -1,13 +1,15 @@
 # Maintainer: Manuel Mendez <mmendez534@gmail.com>
+# github.com/mmlb/pangoterm-bzr
 
 pkgname=pangoterm-bzr
 pkgver=r587
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK/Pango-based terminal that uses libvterm to provide terminal emulation.'
 arch=('i686' 'x86_64')
 url='http://www.leonerd.org.uk/code/pangoterm'
 license=('MIT')
-makedepends=('bzr')
+depends=('libvterm')
+makedepends=('bzr' 'libvterm')
 provides=("${pkgname%-bzr}")
 conflicts=("${pkgname%-bzr}")
 install=('pangoterm.install')
