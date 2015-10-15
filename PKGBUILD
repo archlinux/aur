@@ -4,7 +4,7 @@
 
 pkgname=scilab
 pkgver=5.5.2
-pkgrel=6
+pkgrel=7
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
@@ -24,26 +24,33 @@ makedepends=('java-environment=7' 'apache-ant'
 conflicts=('scilab-git' 'scilab-bin')
 
 source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
-        'scilab-5.5.2-batik-1.8.patch'
-        'scilab-5.5.2-fop-2.0.patch'
-        'scilab-5.5.2-xmlgraphics-common-2.0.patch')
+        "${pkgname}-${pkgver}-batik-1.8.patch"
+        "${pkgname}-${pkgver}-fop-2.0.patch"
+        "${pkgname}-${pkgver}-xmlgraphics-common-2.0.patch"
+        "${pkgname}-${pkgver}-strict-jar.patch")
 sha256sums=('a734519de96d35b8f081768a5584086e46db089ab11c021744897b22ec4d0f5e'
             '4f243e32be0aa2755405e121e7a23a370276c98e00d1b016bd43df56a76782ca'
             'a8e03352cdaa5955414945e3fc8f56a035793869934345eef301cc6124b7ec95'
-            '64de4a044fb7228cae7003e6f86f6f0958ea10049f2fb24a11a07b0087e4ef36')
+            '64de4a044fb7228cae7003e6f86f6f0958ea10049f2fb24a11a07b0087e4ef36'
+            'cda2635f25a56f3c423f7a88791222aae3caad53c086cedc0cfe48011936a5a8')
 
 install=${pkgname}.install
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  patch -p2 < "${srcdir}"/scilab-5.5.2-batik-1.8.patch
-  patch -p2 < "${srcdir}"/scilab-5.5.2-fop-2.0.patch
-  patch -p2 < "${srcdir}"/scilab-5.5.2-xmlgraphics-common-2.0.patch
+  patch -p2 < "${srcdir}"/${pkgname}-${pkgver}-batik-1.8.patch
+  patch -p2 < "${srcdir}"/${pkgname}-${pkgver}-fop-2.0.patch
+  patch -p2 < "${srcdir}"/${pkgname}-${pkgver}-xmlgraphics-common-2.0.patch
+  patch < "${srcdir}"/${pkgname}-${pkgver}-strict-jar.patch
+
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Newer version (>7) of java does not work
+  export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
 
   ./configure \
     --prefix=/usr \
@@ -63,6 +70,13 @@ build() {
   make all
   make doc
 }
+
+# For now, does not work
+#check(){
+  #cd "${srcdir}/${pkgname}-${pkgver}"
+
+  #make check
+#}
 
 package(){
   cd "${srcdir}/${pkgname}-${pkgver}"
