@@ -24,10 +24,10 @@ pkgver() {
 
 prepare(){
   cd "$srcdir"
-  mkdir gnustep-base
+  mkdir -p gnustep-base
   cd gnustep-base
   tar xpJf ../gnustep-base_x86_64.tar.xz
-  mkdir ../unarchiver
+  mkdir -p ../unarchiver
   cd  ../unarchiver
   tar xpJf ../unarchiver-x86_64.tar.xz
 }
@@ -43,8 +43,11 @@ package() {
   cd "$srcdir/unarchiver/usr/bin"
   install -d "$pkgdir/usr/bin/"
   install -m755 unar lsar "$pkgdir/usr/lib/unarchiver"
-  ln -s /usr/lib/libicuuc.so "$pkgdir/usr/lib/unarchiver/libicuuc.so.54"
-  LIBNAME=``
+  #ln -s /usr/lib/libicuuc.so "$pkgdir/usr/lib/unarchiver/libicuuc.so.54"
+  ldd "$pkgdir/usr/lib/unarchiver/lsar" | grep "not found" | grep -oP 'lib\S+?(?= )' | while read line
+  do
+    ln -s /usr/lib/`echo $line | grep -oP 'lib\S+?.so'` "$pkgdir/usr/lib/unarchiver/$line"
+  done
   
   echo '#!/bin/sh' > "$pkgdir/usr/lib/unarchiver/run.sh"
   echo '[[ -z "$LD_LIBRARY_PATH" ]] && \' >> "$pkgdir/usr/lib/unarchiver/run.sh"
