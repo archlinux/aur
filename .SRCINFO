@@ -1,7 +1,7 @@
 pkgbase = python2-pwntools-git
 	pkgdesc = The CTF framework used by Gallopsled in every CTF
-	pkgver = 2.2.r403.g6c9761d
-	pkgrel = 2
+	pkgver = 2.2.r409.ga09d87c
+	pkgrel = 1
 	url = http://pwntools.com/
 	arch = any
 	license = MIT
