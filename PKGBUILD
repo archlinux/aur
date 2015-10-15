@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-x265
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source H265/HEVC video encoder (mingw-w64)'
 arch=('any')
 url='https://bitbucket.org/multicoreware/x265'
@@ -27,9 +27,11 @@ build() {
 
     unset LDFLAGS CPPFLAGS
     ${_arch}-cmake -G "Unix Makefiles" \
-	-DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
-	-DLIB_INSTALL_DIR="lib" \
-	"${srcdir}"/x265_11047/source
+       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
+       -DLIB_INSTALL_DIR="lib" \
+       -DENABLE_SHARED='TRUE' \
+       -DENABLE_CLI='FALSE' \
+       "${srcdir}"/x265_11047/source
     make
   done
 }
@@ -39,7 +41,6 @@ package() {
     cd "${srcdir}"/build-${_arch}
 
     make DESTDIR="$pkgdir" install
-    rm "${pkgdir}"/usr/${_arch}/bin/*.exe
     ${_arch}-strip -x -g "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
