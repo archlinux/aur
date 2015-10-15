@@ -2,13 +2,13 @@
 # Based on PKGBUILD firefox-extension-video-downloadhelper
 
 _plugin_name=nagioschecker
-_plugin_version=0.16
+_plugin_version=0.16.1
 pkgdesc='Plugin for firefox, statusbar indicator of the events from the network monitoring system Nagios.'
 license=('MPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=18
+pkgrel=1
 arch=('any')
 url='https://code.google.com/p/nagioschecker/'
 depends=('firefox>=3.0')
@@ -17,7 +17,7 @@ source=('https://addons.mozilla.org/firefox/downloads/latest/3607/addon-3607-lat
         'tooltip_header_color.patch'
         'limit_0.patch'
         'menupopup.patch')
-md5sums=('6ad71fd4d6fed74a272072f804abb80e'
+md5sums=('40a4a797369bf16a4374b1c00ca4b912'
          'fa6176f083d02d2a282041d0375abb55'
          'a9d606cdec9b939e4ceb1e180939e988'
          '167f82037fab0b9e1ee10125499dd41f')
