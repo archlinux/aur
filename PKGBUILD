@@ -1,16 +1,17 @@
-# Maintainer: Christoph Vigano <mail at cvigano dot de>
+# Maintainer: Moritz Kaspar Rudert (mortzu) <me@mortzu.de>
 pkgname='molly-guard'
-pkgver='0.5.1'
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="protects machines from accidental shutdowns/reboots (via ssh)"
 arch=('any')
 url="http://packages.debian.org/source/sid/molly-guard" # Didn't find anything else
 license=('Artistic2.0')
 depends=('openssh' 'run-parts')
 makedepends=('docbook-xsl')
-source=("http://ftp.de.debian.org/debian/pool/main/m/$pkgname/${pkgname}_${pkgver}.orig.tar.gz" 'molly-guard.sh')
-md5sums=('891b8b2762cb658140214acd2e54dc9b'
-         '836d0faee390abafc18257f987bb9c60')
+source=("http://http.debian.net/debian/pool/main/m/$pkgname/${pkgname}_${pkgver}.tar.xz"
+        'molly-guard.sh')
+md5sums=('ab3dcd91c9560acc8864b0ff4549079b'
+         'd3d171f182d45e59591dee11c911a710')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -27,11 +28,15 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make DEST="$pkgdir" etc_prefix="" prefix="/usr" install
+  make DESTDIR="$pkgdir" bindir="/usr/bin" libdir="/usr/lib" install
 
   # replace occurences of pkgdir in scripts
   for filename in $(find "$pkgdir"/usr -type f); do
     sed -i "s&$pkgdir&&g" $filename
+  done
+
+  for filename in halt poweroff reboot shutdown; do
+    ln -s /usr/lib/molly-guard/molly-guard $pkgdir/usr/lib/molly-guard/${filename}
   done
 
   install -Dm755 "$srcdir/molly-guard.sh" "$pkgdir/etc/profile.d/molly-guard.sh"
