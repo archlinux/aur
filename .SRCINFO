@@ -1,0 +1,16 @@
+pkgbase = morkdown
+	pkgdesc = A beautifully simple editor for Markdown documents
+	pkgver = 2.4.5
+	pkgrel = 1
+	url = https://github.com/rvagg/morkdown
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = chromium
+	noextract = morkdown-2.4.5.tgz
+	source = https://registry.npmjs.org/morkdown/-/morkdown-2.4.5.tgz
+	sha256sums = dc2758888c3b07e2c8291ef9b817821b12e607bdb3b0e361b314fb190b5d92e8
+
+pkgname = morkdown
+
