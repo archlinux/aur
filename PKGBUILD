@@ -8,7 +8,7 @@
 pkgname=cnijfilter-e400series
 pkgver=4.10
 pkgrel=1
-pkgdesc="Canon Printer Driver (E400 series)"
+pkgdesc="Canon IJ Printer Driver (for E400 series)"
 arch=('i686' 'x86_64')
 url="http://www.canon-europe.com/support/consumer_products/products/printers/inkjet/other_pixma/pixma_e404.aspx?type=drivers&language=EN&os=Linux%20(64-bit)"
 license=('custom')
