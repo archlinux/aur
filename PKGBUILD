@@ -2,14 +2,14 @@
 
 pkgname=shaperprobe
 pkgver=12.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Detecting ISP Traffic Rate-Limiting"
 arch=('i686' 'x86_64')
 #url="http://www.cc.gatech.edu/grads/p/partha/diffprobe/shaperprobe.html"
-url="https://code.google.com/p/shaperprobe/"
+url="http://netinfer.net/diffprobe/shaperprobe.html"
 license=('GPL')
 depends=()
-source=(http://distcache.freebsd.org/ports-distfiles/${pkgname}.tgz)
+source=(http://netinfer.net/diffprobe/${pkgname}.tgz)
 md5sums=('d555ace1f2e8d86ce2975457b09b17b7')
 
 build() {
