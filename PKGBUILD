@@ -1,6 +1,6 @@
 # Maintainer: Egor Panfilov <multicolor{dot}mood{at}gmail{dot}com>
 
-pkgbase=python-hmmlearn
+pkgbase=python-hmmlearn-git
 pkgname=('python2-hmmlearn-git' 'python-hmmlearn-git')
 pkgver=0.1.1.r75.gd6dbe8c
 pkgrel=1

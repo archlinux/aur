@@ -1,4 +1,4 @@
-pkgbase = python-hmmlearn
+pkgbase = python-hmmlearn-git
 	pkgdesc = Algorithms for unsupervised learning and inference of Hidden Markov Models for Python.
 	pkgver = 0.1.1.r75.gd6dbe8c
 	pkgrel = 1
