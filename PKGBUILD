@@ -1,17 +1,17 @@
-# Maintainer: Lev Lybin <lev.lybin@gmail.com>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Lev Lybin <lev.lybin@gmail.com>
 # Contributor: Aaditya Bagga <aaditya_gnulinux@zoho.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=laptop-mode-tools
-pkgver=1.68
+pkgver=1.68.1
 pkgrel=1
-_pkgrel=1
 pkgdesc='Power Savings tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools'
-source=(${pkgname}-${pkgver}-${_pkgrel}.tar.gz::https://github.com/rickysarraf/laptop-mode-tools/archive/debian/${pkgver}-${_pkgrel}.tar.gz)
-sha256sums=('c21b43fb9cd3d6c4d7f75fe3b720f25369bceb938ebd9073f4dbcd43ef93738a')
+source=(${pkgname}-${pkgver}-${_pkgrel}.tar.gz::https://github.com/rickysarraf/laptop-mode-tools/archive/${pkgver}.tar.gz)
+sha256sums=('1e84d5fe2658f9c37fced01edc680a460ffd0c0f2ceb0586c2b5baacc6398e30')
 license=('GPL2')
 depends=('bash')
 optdepends=('acpid: ACPI support'
@@ -51,7 +51,7 @@ backup=('etc/laptop-mode/conf.d/ac97-powersave.conf'
     'etc/laptop-mode/lm-profiler.conf')
 
 package() {
-    cd "laptop-mode-tools-debian-${pkgver}-${_pkgrel}"
+    cd "laptop-mode-tools-debian-${pkgver}"
 
     make DESTDIR="${pkgdir}" MAN_D=/usr/share/man LIB_D=/usr/lib PREFIX=/usr INIT_D=false install
     # use /bin instead of /sbin
