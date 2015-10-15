@@ -15,6 +15,8 @@ depends=('python2' 'ca-certificates' 'dialog' 'openssl' 'gcc' 'libffi' 'git' 'py
          'python2-pyparsing' 'python2-pyrfc3339' 'python2-pythondialog' 'python2-pytz'
          'python2-requests' 'python2-setuptools' 'python2-six' 'python2-werkzeug'
          'python2-wheel' 'python2-zope-interface' 'python2-zope-event' 'python2-zope-component')
+optdepends=("letsencrypt-apache: Apache plugin for Let’s Encrypt client"
+            "letsencrypt-nginx: Nginx plugin for Let’s Encrypt client")
 conflicts=("${pkgname}-git")
 source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('c3191f8add4dc1b7f51ff6477b719f5c')
