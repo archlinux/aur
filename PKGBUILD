@@ -1,22 +1,31 @@
 pkgname=amule-git
 pkgver=2.4.0.r10287.34c7d73
-pkgrel=1
+pkgrel=2
 pkgdesc='Client for the eD2k and Kad networks'
 arch=(i686 x86_64)
 url=http://amule.org/
 license=(GPL)
-depends=(crypto++ desktop-file-utils gd geoip libupnp wxgtk2.8)
-makedepends=(git)
+depends=(
+#  boost-libs
+  crypto++
+  gd
+  geoip
+  libupnp
+  wxgtk2.8
+  )
+makedepends=(
+#  boost
+  git
+)
+#makedepends=(boost git)
 provides=(amule)
 conflicts=(amule)
 backup=(usr/share/webapps/amps/index.php
         usr/share/webapps/amps/style.css)
-install=amule.install
 source=(
 git+https://github.com/amule-project/amule.git
 http://svgicons.o7a.net/unofficial/amule.png
 https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/configure_ignore_gdlib-config_garbage.diff
-https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/mime-ed2k-protocol.patch
 https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/use_xdg-open_as_preview_default.diff
 https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/version_check.diff
 https://raw.githubusercontent.com/microcai/gentoo-zh/master/net-p2p/amule-dlp/files/amule-dlp-scanner-header.patch
@@ -26,7 +35,6 @@ https://raw.githubusercontent.com/pld-linux/aMule/master/build.patch
 sha256sums=(SKIP
             737873e5f29dabaca6f9ac96b612eda8cba0236b6618e380107ea7d1d7665b78
             505f70995a56d748f853265fba84a1bbdfbb0291195842b69e76370013239a6e
-            255d99552136712416b3270bb26d2622d1f0d3724891457e4221e67431a0606f
             902f8f719c1c02335880621717f23c683da8edbb31add75d3e1267b190e03b9c
             0904ff6a1dfa298f452332831345feb4aa6575668a8b092b3cc6edfbfed974fe
             04db8bbb57834174148c48da4f02832c413a8911eb5ace0ee11190990b875ff9
@@ -50,7 +58,6 @@ prepare() {
   patch -Np1 < $srcdir/amule-dlp-scanner-header.patch
   patch -Np1 < $srcdir/build.patch
   patch -Np1 < $srcdir/configure_ignore_gdlib-config_garbage.diff
-  patch -Np1 < $srcdir/mime-ed2k-protocol.patch
   patch -Np1 < $srcdir/use_xdg-open_as_preview_default.diff
   patch -Np1 < $srcdir/version_check.diff
 
@@ -80,6 +87,7 @@ build() {
     --enable-webserver
     --enable-xas
     --prefix=/usr
+#    --with-boost
     --with-wx-config=wx-config-2.8
   )
 
