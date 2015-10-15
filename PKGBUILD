@@ -1,13 +1,15 @@
 # Maintainer: Mike Cooper <mythmon@elem.us>
 
+pkgname=cargo-edit-git
 _pkgname=cargo-edit
-pkgname=$_pkgname-git
 pkgver=r80.4443aeb
 pkgrel=1
 pkgdesc="A utility for adding cargo dependencies from the command line"
 url="https://github.com/killercup/cargo-edit"
+conflicts=('cargo-edit')
+provide=('cargo-edit')
 depends=('rust')
-makedepends=('cargo')
+makedepends=('git' 'cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=("git+$url.git")
