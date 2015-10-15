@@ -1,0 +1,31 @@
+pkgbase = qsanguoshav2-git
+	pkgdesc = An open source online version of the famous board game Sanguosha
+	pkgver = 1.bc669c2
+	pkgrel = 1
+	url = https://github.com/Moligaloo/QSanguosha-v2
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	makedepends = swig
+	depends = qt4
+	depends = phonon
+	depends = plib
+	depends = lua
+	depends = fmodex
+	provides = qsanguosha
+	conflicts = qsanguosha
+	options = !strip
+	source = git://github.com/Mogara/QSanguosha-v2.git
+	source = qsanguosha
+	source = qsanguosha.desktop
+	source = sgs.png
+	md5sums = SKIP
+	md5sums = 49ccb51ea1ba979f8c8b469b122f69d6
+	md5sums = c8180a5a852ea23f194f49e60e2b0b02
+	md5sums = c727b12c3a46b56fd0151eae5ef4c6c5
+
+pkgname = qsanguoshav2-git
+
