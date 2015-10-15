@@ -1,12 +1,9 @@
-
 post_install() {
-    ln -sf "/usr/lib64/libudev.so.1" "/usr/lib64/libudev.so.0"
-    ln -sf "/opt/Gitter/linux64/Gitter" "/usr/local/bin/gitter"
-    desktop-file-install /opt/Gitter/linux64/gitter.desktop
+  update-desktop-database
 }
 
-post_remove() {
-    rm /usr/share/applications/gitter.desktop
-    rm /usr/lib64/libudev.so.0
-    rm /usr/local/bin/gitter
+post_upgrade() {
+  update-desktop-database
 }
+
+# vim:set ts=2 sw=2 et:
