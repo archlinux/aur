@@ -3,7 +3,7 @@
 pkgname=nghttp2
 pkgver=1.3.4
 _pkgver=v1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP/2 C Library"
 arch=('i686' 'x86_64')
 url="https://nghttp2.org/"
