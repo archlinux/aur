@@ -2,11 +2,11 @@
 
 pkgname=insight-bitcore
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin blockchain explorer with complete REST and websocket APIs"
 arch=('i686' 'x86_64')
 depends=('leveldb' 'nodejs')
-makedepends=('git' 'nodejs-bower' 'nodejs-grunt-cli' 'npm' 'python2')
+makedepends=('bower' 'git' 'nodejs-grunt-cli' 'npm' 'python2')
 optdepends=('bitcoin-core: Bitcoin core headless P2P node')
 url="https://insight.is"
 license=('MIT')
