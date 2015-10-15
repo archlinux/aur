@@ -1,4 +1,5 @@
 # Maintainer : Anish Bhatt <anish at gatech dot edu>
+# Co-Maintainer: Det <nimetonmaili gmail a-dot com>
 # Contributor: Alucryd <alucryd at gmail dot com>
 # Contributor: Jason Melton <jason dot melton at gmail dot com>
 # Contributor: Youpi <max dot flocard at gmail dot com>
@@ -6,7 +7,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=358.09
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 makedepends=('pacman>=4.2.0')
 arch=('i686' 'x86_64' 'armv7h')
@@ -49,6 +50,8 @@ prepare() {
 DEST_MODULE_LOCATION[0]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[1]="nvidia-uvm"\
 DEST_MODULE_LOCATION[1]="/kernel/drivers/video"\
+BUILT_MODULE_NAME[2]="nvidia-modeset"\
+DEST_MODULE_LOCATION[2]="/kernel/drivers/video"\
 __JOBS=`nproc`' dkms.conf
   sed -i 's/__DKMS_MODULES//' dkms.conf
   popd
