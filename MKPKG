@@ -1,4 +1,4 @@
-pkgname=('pcsxr-svn')
+pkgname=('bin32-pcsxr-svn')
 
 check_svn $packagedir/$pkgname/${pkgname%-*}
 
