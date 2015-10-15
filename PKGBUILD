@@ -1,15 +1,15 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: snafu <regflx@web.de>
 pkgname=genders
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
 pkgdesc="Static cluster configuration database used for cluster configuration management."
 arch=('x86_64' 'i686')
 url='https://computing.llnl.gov/linux/genders.html'
 license=('GPL')
-source=("http://sourceforge.net/projects/genders/files/genders/$pkgver-$pkgrel/$pkgname-$pkgver.tar.gz"
+source=("https://github.com/chaos/${pkgname}/releases/download/${pkgname}-1-22-1/${pkgname}-${pkgver}.tar.gz"
         '624078.patch')
-md5sums=('8915780924dc4fa83432ea1c25907835'
+md5sums=('9ea59a024dcbddb85b0ed25ddca9bc8e'
          '4c5c7b85ee0641a66e885b647fd669fd')
 
 options=('!makeflags')
