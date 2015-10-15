@@ -1,13 +1,15 @@
-# Maintainer: Fraser P. Newton <fpnewton90 [at] gmail [dot] com>
+# Maintainer: grimsock <lord.grimsock at gmail dot com>
+# Contributor: Fraser P. Newton <fpnewton90 [at] gmail [dot] com>
+
 pkgname=gcp-cups-connector
 pkgver=2015.08.24.r53.g6cfa7e0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Google Cloud Print (aka GCP) CUPS Connector shares CUPS printers with users of Google Cloud Print."
 arch=('i686' 'x86_64')
 url="https://github.com/google/cups-connector"
 license=('BSD')
 depends=('cups')
-makedepends=('go')
+makedepends=('go' 'net-snmp' 'avahi' 'git' 'bzr')
 source=('gcp-cups-connector::git+https://github.com/google/cups-connector.git'
         'gcp-cc-service::git+https://github.com/fpnewton/gcp-cups-connector-systemd.git')
 md5sums=('SKIP'
@@ -20,10 +22,8 @@ pkgver() {
 }
 
 build() {
-	GOPATH="$srcdir" go get -fix -v -x ${_gourl}/connector
-	GOPATH="$srcdir" go get -fix -v -x ${_gourl}/connector-init
-	GOPATH="$srcdir" go get -fix -v -x ${_gourl}/connector-monitor
-	GOPATH="$srcdir" go get -fix -v -x ${_gourl}/connector-util
+  GOPATH="$srcdir" go get -fix -v -x ${_gourl}/gcp-cups-connector
+  GOPATH="$srcdir" go get -fix -v -x ${_gourl}/gcp-cups-connector-util
 }
 
 package() {
