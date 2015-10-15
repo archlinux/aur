@@ -4,7 +4,6 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgbase='firefox-theme-adwaita-git'
-_gitname=${pkgbase%-git}
 pkgname=('firefox-theme-gnome-git' 'firefox-extension-gnome-theme-tweak-git')
 pkgver=40.1
 pkgrel=1
@@ -13,8 +12,8 @@ url="https://github.com/gnome-integration-team/firefox-gnome"
 arch=('any')
 license=('MPL')
 depends=("firefox")
-provides=('firefox-theme-gnome')
-conflicts=('firefox-theme-gnome')
+provides=('firefox-theme-adwaita')
+conflicts=('firefox-theme-adwaita')
 makedepends=('unzip' 'zip')
 
 makedepends+=('git')
