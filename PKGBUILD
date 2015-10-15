@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/joeyespo/path-and-address"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools')
 options=(!emptydirs)
 
 makedepends+=('git')

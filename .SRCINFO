@@ -7,7 +7,6 @@ pkgbase = python-path-and-address-git
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
-	makedepends = git
 	depends = python
 	provides = python-path-and-address
 	conflicts = python-path-and-address
