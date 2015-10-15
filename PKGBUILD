@@ -11,7 +11,7 @@ makedepends=(scons boost)
 provides=(rlvm)
 conflicts=(rlvm)
 source=('git+https://github.com/eglaysher/rlvm.git' 'detect_guichan.patch')
-md5sums=('SKIP' '357e8680838cf8b27ab3c3eaa73d3107')
+md5sums=('SKIP' 'c15c493be8806c29b00d517e73617582')
 
 pkgver() {
   cd  "$srcdir/rlvm/"
