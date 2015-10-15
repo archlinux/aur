@@ -8,8 +8,6 @@ pkgbase = paper-gtk-theme-git
 	license = GPL3
 	makedepends = git
 	depends = gtk-engine-murrine
-	optdepends = python: scripts to simplify the rendering process
-	optdepends = inkscape: edit theme assets
 	source = paper-gtk-theme::git+https://github.com/snwh/paper-gtk-theme.git
 	md5sums = SKIP
 

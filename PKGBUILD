@@ -10,8 +10,9 @@ arch=('any')
 url="http://snwh.org/paper/theme/"
 license=('GPL3')
 depends=('gtk-engine-murrine')
-optdepends=("python: scripts to simplify the rendering process"
-            "inkscape: edit theme assets")
+# Optional dependencies for developers
+#optdepends=("python: scripts to simplify the rendering process"
+#            "inkscape: edit theme assets")
 makedepends=('git')
 install=${pkgname}.install
 source=("${_pkgname}"::"git+https://github.com/snwh/${_pkgname}.git")
