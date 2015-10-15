@@ -4,6 +4,7 @@
 pkgname=hardcode-fixer-git
 pkgver=r395.a01f915
 pkgrel=1
+epoch=1
 pkgdesc="Fixes Hardcoded Icons"
 arch=('i686' 'x86_64')
 url="https://github.com/Foggalong/hardcode-fixer"
