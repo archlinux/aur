@@ -3,7 +3,7 @@ post_install() {
   dkms add nvidia/${1%-*}
   dkms install -m nvidia/${1%-*}
   echo "==> To build your modules automatically at startup run:"
-  echo "    # systemctl enable dkms.service"
+  echo "    # systemctl enable dkms"
 }
 
 # arg 1:  the new package version
