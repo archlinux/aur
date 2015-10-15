@@ -1,6 +1,6 @@
 pkgbase = lemonbar-git
 	pkgdesc = A featherweight, lemon-scented, bar based on xcb.
-	pkgver = 172.a9f285f
+	pkgver = v1.1.r12.gb331ee3
 	pkgrel = 1
 	url = https://github.com/LemonBoy/bar
 	arch = i686

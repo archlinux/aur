@@ -2,7 +2,7 @@
 
 pkgname=lemonbar-git
 _pkgname=lemonbar
-pkgver=v1.1.r9.ga390ef6
+pkgver=v1.1.r12.gb331ee3
 pkgrel=1
 pkgdesc="A featherweight, lemon-scented, bar based on xcb."
 arch=('i686' 'x86_64')
