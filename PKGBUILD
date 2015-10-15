@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <adam@adamgoldsmith.name>
 
 pkgname=python2-libpebble2-git
-pkgver=v0.0.7
+pkgver=v0.0.12
 pkgrel=1
 pkgdesc="The library portion of the successor to libpebble, a python library for interacting with Pebble devices."
 arch=('i386' 'x86_64')
