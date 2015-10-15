@@ -12,16 +12,18 @@ pkgdesc="An open source online version of the famous board game Sanguosha"
 arch=('i686' 'x86_64')
 url="https://github.com/Mogara/QSanguosha-v2"
 license=('GPL3')
-depends=('qt4' 'phonon' 'plib' 'lua' 'fmodex')
-makedepends=('gcc' 'make' 'git' 'swig', 'qtchooser')
+depends=('qt5' 'qt5-quick1' 'phonon' 'plib' 'lua' 'fmodex')
+makedepends=('gcc' 'make' 'git' 'swig' 'qtchooser')
 conflicts=(qsanguosha)
 provides=(qsanguosha)
 options=(!strip)
 source=('git://github.com/Mogara/QSanguosha-v2.git' 'qsanguosha' 'qsanguosha.desktop' 'sgs.png')
-md5sums=('SKIP'
-'49ccb51ea1ba979f8c8b469b122f69d6'
-'c8180a5a852ea23f194f49e60e2b0b02'
-'c727b12c3a46b56fd0151eae5ef4c6c5')
+sha224sums=(
+	'SKIP'
+	'4d9aa3479c91b93bb780487191937621d84448a9897bcc0628b73eb1'
+	'8d31f15f9fbf50cfa33e23947855a4f0cdc1af0ab448cdc39bf0a0de'
+	'00a75a779dd66a6c89e42599ef283436aa9ca1df44c73baf41369361'
+)
 
 pkgver() {
   cd $_gitname
@@ -42,4 +44,3 @@ package() {
     install -D -m644 ${srcdir}/../qsanguosha.desktop "${pkgdir}/usr/share/applications/qsanguosha.desktop"
     install -D -m644 ${srcdir}/../sgs.png "${pkgdir}/usr/share/pixmaps/QSanguosha.png"
 }
-

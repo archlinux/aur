@@ -9,9 +9,10 @@ pkgbase = qsanguoshav2-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = git
-	makedepends = swig,
+	makedepends = swig
 	makedepends = qtchooser
-	depends = qt4
+	depends = qt5
+	depends = qt5-quick1
 	depends = phonon
 	depends = plib
 	depends = lua
@@ -23,10 +24,10 @@ pkgbase = qsanguoshav2-git
 	source = qsanguosha
 	source = qsanguosha.desktop
 	source = sgs.png
-	md5sums = SKIP
-	md5sums = 49ccb51ea1ba979f8c8b469b122f69d6
-	md5sums = c8180a5a852ea23f194f49e60e2b0b02
-	md5sums = c727b12c3a46b56fd0151eae5ef4c6c5
+	sha224sums = SKIP
+	sha224sums = 4d9aa3479c91b93bb780487191937621d84448a9897bcc0628b73eb1
+	sha224sums = 8d31f15f9fbf50cfa33e23947855a4f0cdc1af0ab448cdc39bf0a0de
+	sha224sums = 00a75a779dd66a6c89e42599ef283436aa9ca1df44c73baf41369361
 
 pkgname = qsanguoshav2-git
 
