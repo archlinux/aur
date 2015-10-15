@@ -7,7 +7,7 @@
 pkgname=compiz
 pkgver=0.9.12.2
 _pkgseries=0.9.12
-pkgrel=6
+pkgrel=7
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -23,13 +23,15 @@ source=("https://launchpad.net/${pkgname}/${_pkgseries}/${pkgver}/+download/${pk
         "gtk-extents.patch"
         "xfce4-notifyd-nofade.patch"
         "c++11.patch"
-        "switcher-background.patch")
+        "switcher-background.patch"
+        "cmake3.patch")
 sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '273aa79cb0887922e3a73fbbe97596495cee19ca6f4bd716c6c7057f323d8198'
             'eb8b432050d1eed9cb1d5f33d2645f81e2bdce2bf55d5cc779986bb751373a45'
-            'e3125ed3a7e87a7d4bdaa23f1b6f654a02d0b050ad7a694ce9165fff2c6ff310')
+            'e3125ed3a7e87a7d4bdaa23f1b6f654a02d0b050ad7a694ce9165fff2c6ff310'
+            'e5016fd62f9c9659d887eeafd556c18350615cd6d185c8ffa08825465890c5e0')
 install=${pkgname}.install
 
 prepare() {
@@ -59,6 +61,9 @@ prepare() {
 
   # Allow user to change switcher background colour (fixes blank background for Emerald)
   patch -Np1 -i "${srcdir}/switcher-background.patch"
+
+  # Get rid of the cmake policy warning messages
+  patch -Np1 -i "${srcdir}/cmake3.patch"
 }
 
 build() {
