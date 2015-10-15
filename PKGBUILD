@@ -1,7 +1,7 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _plugin_name=live-http-headers
-_plugin_version=0.17
+_plugin_version=0.17.1
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
 pkgrel=1
@@ -11,7 +11,7 @@ arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/live-http-headers/"
 depends=("firefox")
 source=("https://addons.mozilla.org/firefox/downloads/latest/3829/addon-3829-latest.xpi")
-md5sums=('2683d3b32f085901c71566d4649b2626')
+md5sums=('9f8aaddcff2700d7d832a443196474d7')
 
 package() {
   cd $srcdir
