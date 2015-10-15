@@ -1,0 +1,14 @@
+pkgbase = systray-generic
+	pkgdesc = Display system tray icons and run arbitrary programs when an icon is clicked.
+	pkgver = 2015101201
+	pkgrel = 1
+	url = https://gitlab.com/goeb/systray-generic/
+	arch = any
+	license = GPL3
+	makedepends = python-docutils
+	depends = python-pyqt5
+	source = systray-generic::git+https://gitlab.com/goeb/systray-generic.git#tag=2015101201
+	md5sums = SKIP
+
+pkgname = systray-generic
+
