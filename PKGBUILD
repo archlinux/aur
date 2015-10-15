@@ -3,7 +3,7 @@
 
 pkgname=gcp-cups-connector
 pkgver=2015.10.05.r9.g3297fab
-pkgrel=1
+pkgrel=2
 pkgdesc="The Google Cloud Print (aka GCP) CUPS Connector shares CUPS printers with users of Google Cloud Print."
 arch=('i686' 'x86_64')
 url="https://github.com/google/cups-connector"
@@ -30,12 +30,6 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
 
-	mkdir -p "$pkgdir/usr/lib/systemd/system"
-	install -p -m644 "$srcdir/gcp-cc-service/gcp-cups-connector.service" "$pkgdir/usr/lib/systemd/system"
-
-	mkdir -p "$pkgdir/etc/gcp-cups-connector"
-	install -p -m600 "$srcdir/gcp-cc-service/cups-connector.config.json.example" "$pkgdir/etc/gcp-cups-connector"
-
 	for f in LICENSE COPYING LICENSE.* COPYING.*; do
 		if [ -e "$srcdir/src/$_gourl/$f" ]; then
 			install -Dm644 "$srcdir/src/$_gourl/$f" "$pkgdir/usr/share/licenses/$pkgname/$f"
@@ -43,5 +37,5 @@ package() {
 	done
 
 	echo ""
-	echo "Please use connector-init to generate a config json file in /etc/gcp-cups-connector"
+	echo "Please use gcp-cups-connector-util -init to generate a config json file in /etc/gcp-cups-connector"
 }
