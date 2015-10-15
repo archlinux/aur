@@ -1,8 +1,8 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-gui-git
-pkgver=v0.11.0.r12.g5c27f12
-pkgrel=3
+pkgver=v0.11.1.r1.g09a00a1
+pkgrel=1
 pkgdesc='Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="https://bitcoinxt.software/"
@@ -13,13 +13,10 @@ provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
 source=('git+https://github.com/bitcoin/bitcoin.git#branch=0.11'
-				'https://github.com/bitcoin/bitcoin/commit/9f3e48e5219a09b5ddfd6883d1f0498910eff4b6.patch'
 				'bitcoin-qt.install')
 sha256sums=('SKIP'
-            '0910004577764c2251a33c4868c7358a42da68f94d6462e44bbcb1945cefd748'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
 sha512sums=('SKIP'
-            'e9bf98634af791949d0d05951f7f256660d85717922e0037e5a9def40fcdb71922ccfff24774ea448a3a53a1c95a6da1f79fa43e280900a020362c51960de9db'
             '67383fa1dd2f9576cc3c282f3a9b8c5f2d3eaa13799a6a7eb9eb2969face0ddaf6bb82c286c928b89397d8d2c9ba2efe9a603442f4bf6ed6d89ae9323c169375')
 
 pkgver() {
@@ -27,16 +24,11 @@ pkgver() {
 git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/bitcoin"
-  patch -Np1 -i "$srcdir"/9f3e48e5219a09b5ddfd6883d1f0498910eff4b6.patch
-}
-
 build() {
   cd "$srcdir/bitcoin"
 
 	msg2 'Building...'
-  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1 -UUPNPDISCOVER_SUCCESS"
+  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
 	./autogen.sh
 	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt4
   make
