@@ -6,7 +6,8 @@ pkgbase = crand
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = glibc ncurses
+	depends = glibc
+	depends = ncurses
 	source = https://github.com/loctauxphilippe/crand/releases/download/0.4.1/crand-0.4.1.tar.gz
 	md5sums = 52e6d1abc75ff136dcdda9ab125e4305
 
