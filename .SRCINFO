@@ -20,7 +20,7 @@ pkgbase = rlvm-git
 	source = git+https://github.com/eglaysher/rlvm.git
 	source = detect_guichan.patch
 	md5sums = SKIP
-	md5sums = c15c493be8806c29b00d517e73617582
+	md5sums = caf806e9f037ba95a747a0aefde7fd9d
 
 pkgname = rlvm-git
 
