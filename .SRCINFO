@@ -1,15 +1,15 @@
 pkgbase = php-box
 	pkgdesc = An application for building and managing Phars
-	pkgver = 2.5.3
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/box-project/box2
 	install = php-box.install
 	arch = any
 	license = MIT
 	depends = php>=5.3.3
-	source = https://github.com/box-project/box2/releases/download/2.5.3/box-2.5.3.phar
-	source = https://raw.github.com/box-project/box2/2.5.3/LICENSE
-	sha256sums = 95a3098b27c15939cbad9bba72c07cf4d425a760e979117ab3279e7ac209cfeb
+	source = https://github.com/box-project/box2/releases/download/2.6.0/box-2.6.0.phar
+	source = https://raw.github.com/box-project/box2/2.6.0/LICENSE
+	sha256sums = c3601525a88cdb4878d2215e93a13f2186bc0061a438e4834b837e2f6f3d6ace
 	sha256sums = ba2dfc30b9659262549c839894838d9a1fe78ca533d0338cebc2f4f634b3bb12
 
 pkgname = php-box
