@@ -2,19 +2,18 @@
 # Contributor: Cedric Staub <cs+aur {at} cssx.cc>
 
 pkgname=episoder
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="A simple TV show episode reminder"
 arch=('any')
-url="http://code.ott.net/projects/episoder"
+url="https://github.com/cockroach/episoder"
 license=('GPL2')
 depends=('python2-pysqlite'
          'python2-yaml'
-         'python2-beautifulsoup3'
          'python2-sqlalchemy'
          'tvdb_api')
-source=(https://github.com/cockroach/episoder/archive/v0_7_1.tar.gz)
-sha256sums=('4f2dd725ddfcade83ae01d59b1120fd0a191912665eb0182cca3d59c21d09418')
+source=(https://github.com/cockroach/${pkgname}/archive/v${pkgver//./_}.tar.gz)
+sha256sums=('9bc1f5949544b8f28c4c25b9f649aea6ce7c27ab990ca8e17ab250e9a7c80190')
 
 build() {
   cd "$srcdir/$pkgname-${pkgver//./_}"
