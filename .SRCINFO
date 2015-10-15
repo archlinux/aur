@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-gst-plugins-base
+	pkgdesc = GStreamer Multimedia Framework Base Plugins (mingw-w64)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = http://gstreamer.freedesktop.org/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-gstreamer
+	makedepends = bison
+	makedepends = flex
+	makedepends = python2
+	depends = mingw-w64-glib2
+	depends = mingw-w64-libxml2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://gstreamer.freedesktop.org//src/gst-plugins-base/gst-plugins-base-1.6.0.tar.xz
+	sha256sums = SKIP
+
+pkgname = mingw-w64-gst-plugins-base
+
