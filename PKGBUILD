@@ -5,13 +5,13 @@
 
 pkgbase="spl-dkms-git"
 pkgname=("spl-dkms-git" "spl-utils-dkms-git")
-pkgver=0.6.5.2_r0_g2fd6834
+pkgver=0.6.5.3_r0_g7e85f6b
 pkgrel=1
 license=('GPL')
 makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#tag=spl-0.6.5.2"
+source=("git+https://github.com/zfsonlinux/spl.git#tag=spl-0.6.5.3"
         "spl-utils.hostid")
 md5sums=('SKIP'
          'a54f0041a9e15b050f25c463f1db7449')
