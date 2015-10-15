@@ -5,7 +5,7 @@ pkgver=1.6.3
 pkgrel=1
 pkgdesc="Counterparty web wallet"
 arch=('any')
-makedepends=('nodejs-bower' 'nodejs-grunt-cli' 'npm')
+makedepends=('bower' 'nodejs-grunt-cli' 'npm')
 optdepends=('counterblockd: extended API services'
             'openresty: web app server')
 groups=('counterparty')
@@ -19,7 +19,7 @@ install=counterwallet.install
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Configuring counterwallet.conf.json for no Transifex lookups...'
+  msg2 'Configuring counterwallet.conf.json for no Transifex lookups...'
   cp -dpr --no-preserve=ownership counterwallet.conf.json.example counterwallet.conf.json
   sed -i 's@"AVAIL.*@"AVAILABLE_LANGUAGES": ["en"],@' counterwallet.conf.json
 }
@@ -27,23 +27,23 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Fetching Web assets...'
+  msg2 'Fetching Web assets...'
   cd src && bower install --allow-root --config.interactive=false && cd ..
 
-  msg 'Fetching NPM dependencies...'
+  msg2 'Fetching NPM dependencies...'
   npm install
 
-  msg 'Building the static site...'
+  msg2 'Building the static site...'
   grunt build
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   install -dm 755 "$pkgdir/srv/http/counterwallet"
   tar -c . | tar -x -C "$pkgdir/srv/http/counterwallet"
 
-  msg 'Cleaning up pkgdir...'
+  msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
