@@ -1,9 +1,10 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: mar77i <mysatyre at gmail dot com>
+# Past Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Scytrin dai Kinthra <scytrin@gmail.com>
 
 pkgname=st-git
 _pkgname=st
-pkgver=20150603.71fa10f
+pkgver=20151011.f56c58a
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='http://git.suckless.org/st/'
@@ -59,5 +60,4 @@ package() {
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
-	tic -s -o "${pkgdir}/usr/share/terminfo" st.info
 }
