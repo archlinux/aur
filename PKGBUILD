@@ -8,7 +8,7 @@ pkgdesc="HTTP/2 C Library"
 arch=('i686' 'x86_64')
 url="https://nghttp2.org/"
 license=('MIT')
-depends=('openssl' 'libev' 'zlib' 'spdylay' 'libxml2' 'jansson' 'jemalloc')
+depends=('openssl' 'libev' 'zlib' 'libxml2' 'jansson' 'jemalloc')
 source=("https://github.com/tatsuhiro-t/nghttp2/releases/download/${_pkgver}/nghttp2-${pkgver}.tar.gz")
 backup=('etc/nghttpx/nghttpx.conf'
         'etc/logrotate.d/nghttpx')
@@ -19,6 +19,7 @@ build() {
 
   ./configure \
     --prefix=/usr \
+    --with-spdylay=no \
     --disable-examples \
     --disable-python-bindings
   make
