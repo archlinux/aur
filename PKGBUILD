@@ -1,8 +1,8 @@
 # Maintainer: Thomas Gläßle <t_glaessle@gmx.de>
 
 pkgname=setcapslock
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Small utility to set the caps lock state."
 arch=('i686' 'x86_64')
 url="https://github.com/coldfix/setcapslock"
