@@ -1,0 +1,3 @@
+post_install() {
+  echo "see /usr/share/pangoterm/pangoterm.cfg for the configuration file"
+}
