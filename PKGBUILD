@@ -1,5 +1,5 @@
 pkgname=telegram-desktop
-pkgver=0.9.2
+pkgver=0.9.6
 pkgrel=1
 _qtver=5.5.0
 pkgdesc='Official desktop version of Telegram messaging app.'
@@ -10,15 +10,13 @@ depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 	 'libinput' 'libproxy' 'mtdev' 'openal' 'desktop-file-utils'
 	 'gtk-update-icon-cache')
 makedepends=('patch' 'libunity' 'libappindicator-gtk2' 'xorg-server-xvfb')
-source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=d8b421993d55d1eea09d3e3cdc73c2a543db31e0"
+source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=1c28d59ed2f99f74b2ed1bbcd63d42e702591af9"
 	"http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.gz"
-	"disable-custom-scheme-linux.patch"
 	"telegramdesktop.desktop"
 	"tg.protocol")
 sha256sums=('SKIP'
 	    'bf3cfc54696fe7d77f2cf33ade46c2cc28841389e22a72f77bae606622998e82'
-	    'a3c18bc80690d671f51fc5ca789b73e35b7bd8a186e0c0be0bbb22496083e5dd'
-	    '1191625a6b0683eceef7d59158d16fbe580bbbdc011be435068cf5c833049e5b'
+	    '0e936f964fbaa7392a0c58aa919d6ea8c5f931472e1ab59b437523aa1a1d585c'
 	    'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb')
 install="$pkgname.install"
 
@@ -26,7 +24,6 @@ install="$pkgname.install"
 
 prepare() {
 	cd "$srcdir/tdesktop"
-	patch -p1 -i "$srcdir/disable-custom-scheme-linux.patch"
 	
 	if ! [ -d "$srcdir/Libraries" ]; then
 		mkdir "$srcdir/Libraries"
@@ -39,7 +36,10 @@ prepare() {
 	sed -i 's/CUSTOM_API_ID//g' "$srcdir/tdesktop/Telegram/Telegram.pro"
 	sed -i 's,LIBS += /usr/local/lib/libxkbcommon.a,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
 	
-	echo "DEFINES += TDESKTOP_DISABLE_AUTOUPDATE" >> "$srcdir/tdesktop/Telegram/Telegram.pro"
+	(
+		echo "DEFINES += TDESKTOP_DISABLE_AUTOUPDATE"
+		echo "DEFINES += TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
+	) >> "$srcdir/tdesktop/Telegram/Telegram.pro"
 	
 	(
 		echo 'INCLUDEPATH += "/usr/lib/glib-2.0/include"'
