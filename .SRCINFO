@@ -1,0 +1,16 @@
+pkgbase = cnijfilter-e400series
+	pkgdesc = Canon Printer Driver (E400 series)
+	pkgver = 4.10
+	pkgrel = 1
+	url = http://www.canon-europe.com/support/consumer_products/products/printers/inkjet/other_pixma/pixma_e404.aspx?type=drivers&language=EN&os=Linux%20(64-bit)
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	depends = libcups
+	depends = libxml2
+	source = http://gdlp01.c-wss.com/gds/1/0100005881/01/cnijfilter-e400series-4.10-1-deb.tar.gz
+	md5sums = 0b8f335b6298561e67db957528f8ed34
+
+pkgname = cnijfilter-e400series
+
