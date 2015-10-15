@@ -1,14 +1,14 @@
 pkgbase = setcapslock
 	pkgdesc = Small utility to set the caps lock state.
-	pkgver = 0.0.1
-	pkgrel = 1
+	pkgver = 0.0.2
+	pkgrel = 3
 	url = https://github.com/coldfix/setcapslock
 	arch = i686
 	arch = x86_64
 	license = custom:UNLICENSE
 	depends = libx11
-	source = https://github.com/coldfix/setcapslock/archive/0.0.1.tar.gz
-	md5sums = 810a19eb8b4babc3833bc6877b3bebd4
+	source = https://github.com/coldfix/setcapslock/archive/0.0.2.tar.gz
+	md5sums = f69a9771d13d27662adc4c5fcd28f2e6
 
 pkgname = setcapslock
 
