@@ -2,7 +2,7 @@
 
 pkgname=setcapslock
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Small utility to set the caps lock state."
 arch=('i686' 'x86_64')
 url="https://github.com/coldfix/setcapslock"
@@ -19,5 +19,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -D -m 644 UNLICENSE "$pkgdir/usr/share/licenses/$pkgname/UNLICENSE"
-    install -D -m 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+    # for convenience install upper and lower case versions:
+    install -D -m 755 setcapslock "$pkgdir/usr/bin/setcapslock"
+    install -D -m 755 SETCAPSLOCK "$pkgdir/usr/bin/SETCAPSLOCK"
 }
