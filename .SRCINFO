@@ -1,0 +1,12 @@
+pkgbase = gcp-cups-connector-systemd
+	pkgdesc = Systemd startup script for Google CloudPrint CUPS Connector
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = gcp-cups-connector
+	source = gcp-cups-connector.service
+	sha1sums = 7029f0475fbe3a1e6cfa0a556ee8320ecb5d6bd4
+
+pkgname = gcp-cups-connector-systemd
+
