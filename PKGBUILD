@@ -1,6 +1,6 @@
 # Maintainer: Richard Macwan <rich4rd.macwan AT gmail>
 
-pkgname=ncurses-5.9
+pkgname=ncurses5
 pkgver=5.9
 _pkgseries=5.9
 pkgrel=1
