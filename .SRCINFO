@@ -4,12 +4,11 @@ pkgbase = gnome-shell-extension-workspace-grid
 	pkgrel = 1
 	url = https://github.com/zakkak/workspace-grid-gnome-shell-extension
 	install = gnome-shell-extension-workspace-grid.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = unknown
 	makedepends = git
 	depends = gnome-shell
-	source = gnome-shell-extension-workspace-grid::git+https://github.com/zakkak/workspace-grid-gnome-shell-extension.git#tag=v1.3.4
+	source = gnome-shell-extension-workspace-grid::git+https://github.com/zakkak/workspace-grid-gnome-shell-extension.git#tag=v1.3.5
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-workspace-grid
