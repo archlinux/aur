@@ -1,8 +1,8 @@
 # Maintainer: Charles Bos <charlesbos1 AT gmail>
 
 pkgname=gnome-flashback
-pkgver=3.18.0
-pkgrel=2
+pkgver=3.18.1
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc="GNOME Flashback session"
@@ -13,7 +13,7 @@ makedepends=('intltool')
 optdepends=('compiz: required for the GNOME Flashback (Compiz) session')
 install=$pkgname.install
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('46d118a59057c5dbd003b97202cf3947ef2f1af383ddb5d13adf49846a4552aa')
+sha256sums=('30413730ba5216e577d6c76445cfa4fe9efaef43c54f3a42a9879107156641f9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

@@ -1,7 +1,7 @@
 pkgbase = gnome-flashback
 	pkgdesc = GNOME Flashback session
-	pkgver = 3.18.0
-	pkgrel = 2
+	pkgver = 3.18.1
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeFlashback
 	install = gnome-flashback.install
 	arch = i686
@@ -22,8 +22,8 @@ pkgbase = gnome-flashback
 	depends = nautilus
 	depends = notification-daemon
 	optdepends = compiz: required for the GNOME Flashback (Compiz) session
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-flashback/3.18/gnome-flashback-3.18.0.tar.xz
-	sha256sums = 46d118a59057c5dbd003b97202cf3947ef2f1af383ddb5d13adf49846a4552aa
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-flashback/3.18/gnome-flashback-3.18.1.tar.xz
+	sha256sums = 30413730ba5216e577d6c76445cfa4fe9efaef43c54f3a42a9879107156641f9
 
 pkgname = gnome-flashback
 
