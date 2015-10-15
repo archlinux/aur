@@ -1,0 +1,15 @@
+pkgbase = cargo-edit
+	pkgdesc = A utility for adding cargo dependencies from the command line
+	pkgver = r80.4443aeb
+	pkgrel = 1
+	url = https://github.com/killercup/cargo-edit
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = rust
+	source = git+https://github.com/killercup/cargo-edit.git
+	sha256sums = SKIP
+
+pkgname = cargo-edit
+
