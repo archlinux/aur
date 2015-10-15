@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-coloredlogs
-pkgver=1.0.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="Colored stream handler for the logging module"
 arch=('any')
@@ -11,21 +11,21 @@ url="https://github.com/xolox/python-coloredlogs"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/c/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('0808f29e09eb26443ce833fdace0d543')
-sha256sums=('11067ca91532ba4a316fa53b005152a08b3e015dcb1234d393cfc25af88ebc3e')
+md5sums=('b141af3a72e774e488232062145c7222')
+sha256sums=('532198042eac7560f5292961bfb6f844343132fda805575684f67deeb780b2c2')
 provides=('ansi2html' 'python2-coloredlogs')
 conflicts=('ansi2html')
 
 build() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
 
-  msg 'Building...'
+  msg2 'Building...'
   python2 setup.py build
 }
 
 package() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
