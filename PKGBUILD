@@ -15,7 +15,7 @@ build() {
 	cd "$srcdir/$pkgname"
 	
 	./autogen.sh
-	./configure --prefix=/usr
+	./configure --prefix=/usr --sbindir=/usr/bin
 	
 	make
 }
