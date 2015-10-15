@@ -1,6 +1,6 @@
 pkgbase = albert-git
 	pkgdesc = A DE agnostic omnilauncher.
-	pkgver = 0.7.5.r2.g14ec519
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/ManuelSchneid3r/albert
 	arch = i686
