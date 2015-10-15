@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 0.99.632
+	pkgver = 0.99.717
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	install = rstudio-desktop-git.install
@@ -26,7 +26,7 @@ pkgbase = rstudio-desktop-git
 	depends = qt5-webkit
 	depends = hunspell-en
 	depends = mathjax
-	depends = pandoc-bin
+	depends = pandoc
 	optdepends = git: for git support
 	optdepends = subversion: for subversion suuport
 	optdepends = openssh-askpass: for a git ssh access
