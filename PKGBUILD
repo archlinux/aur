@@ -7,7 +7,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=358.09
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.nvidia.com/"
@@ -33,7 +33,6 @@ md5sums_armv7h=('a26aca5a02b087a0bec0714a7ead46e4')
 [[ $CARCH == i686 ]] && _pkg=NVIDIA-Linux-x86-${pkgver}
 [[ $CARCH == x86_64 ]] && _pkg=NVIDIA-Linux-x86_64-${pkgver}-no-compat32
 [[ $CARCH == armv7h ]] && _pkg=NVIDIA-Linux-armv7l-gnueabihf-${pkgver}
-
 
 prepare() {
   # Remove previous builds
