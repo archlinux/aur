@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-textarea-cache
+	pkgdesc = Save automatically the content in Textarea
+	pkgver = 0.9.3.2.1
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/textarea-cache/
+	arch = any
+	license = MPL
+	depends = firefox
+	source = https://addons.mozilla.org/firefox/downloads/file/258470/textarea_cache-0.9.3.2-fx.xpi
+	sha256sums = 4b31d8ae8e3bd79843b43af6619fa4dba7751abb363649696e80b07837267b14
+
+pkgname = firefox-extension-textarea-cache
+
