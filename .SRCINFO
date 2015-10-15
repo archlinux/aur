@@ -10,10 +10,10 @@ pkgbase = qweechat
 	depends = python2-sip
 	depends = python2-setuptools
 	depends = python2-xdg
-	source = http://weechat.org/files/src/qweechat-devel.tar.bz2
+	source = qweechat::git+https://github.com/weechat/qweechat.git
 	source = qweechat.desktop
 	source = xdg-directories.patch
-	md5sums = d56d7f12720c5fe2571590940b5ac01a
+	md5sums = SKIP
 	md5sums = df3ad9d12c1d71199e21ec7136ea6cc5
 	md5sums = d5813c226362e7f3b41a0eaf3041570e
 
