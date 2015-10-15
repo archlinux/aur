@@ -52,12 +52,13 @@ build() {
 	pushd "$GO_PLATFORM_DIR"/web/react
 	npm install
 	npm run build
+	npm run build-libs
 	popd
 
 	msg2 "Building compass stylesheets"
 	pushd "$GO_PLATFORM_DIR"/web/sass-files
 	gem install compass -n "$srcdir"/bin
-	"$srcdir"/bin/compass compile
+	"$srcdir"/bin/compass compile -e production --force
 	popd
 
 	msg2 "Building go libraries"
@@ -84,9 +85,10 @@ package() {
 
 	echo $pkgver > config/build.txt
 	mv web/static/js/bundle{,-$pkgver}.min.js
+	mv web/static/js/libs{,-$pkgver}.min.js
 
 	sed -ri 's/(react-with-addons|jquery|bootstrap|perfect-scrollbar)(-[0-9\.]+)?\.js/\1\2.min.js/g' web/templates/head.html
-	sed -ri "s/bundle.js/bundle-$pkgver.min.js/g" web/templates/head.html
+	sed -ri "s/(bundle|libs)(\.min)?\.js/\1-$pkgver.min.js/g" web/templates/head.html
 
 	sed -e 's@"StorageDirectory": ".*"@"StorageDirectory": "/var/lib/mattermost/"@g' \
 	    -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
