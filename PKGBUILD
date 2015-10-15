@@ -68,13 +68,13 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   v4l-utils       lib32-v4l-utils
   alsa-lib        lib32-alsa-lib
   libxcomposite   lib32-libxcomposite
-  mesa-git        lib32-mesa-git
-  mesa-libgl-git  lib32-mesa-libgl-git
-  llvm-svn        lib32-llvm-svn
-  llvm-libs-svn   lib32-llvm-libs-svn
-  libdrm-git      lib32-libdrm-git 
-  opencl-mesa-git 
-  libclc-git 
+  mesa        lib32-mesa
+  mesa-libgl  lib32-mesa-libgl
+  llvm-svn        lib32-llvm
+  llvm-libs   lib32-llvm-libs
+  libdrm-git      lib32-libdrm 
+  opencl-mesa 
+  libclc 
   libcl           lib32-libcl
   libxslt         lib32-libxslt
   libpulse        lib32-libpulse
@@ -83,6 +83,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   samba
   opencl-headers
   dri2proto
+  dri3proto
 )
   
 optdepends=(
@@ -108,6 +109,7 @@ optdepends=(
   attr            lib32-attr
   cups
   samba           dosbox
+  gtk3            lib32-gtk3
 )
 
 if [[ $CARCH == i686 ]]; then
