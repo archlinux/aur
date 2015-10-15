@@ -2,7 +2,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gbsplay
-pkgver=0.0.92
+pkgver=0.0.93
 pkgrel=1
 pkgdesc="A command line application for playing GameBoy sound files (GBS)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/mmitch/gbsplay'
 license=('GPL')
 depends=('libpulse' 'nas')
 source=("https://github.com/mmitch/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('60e74ed14d871be67bf4edaf2a2bbacc2cf68c07352ae8215cd234d2e6560541c006b645f737491a154884d6d30c701680b2c94ffa43e23afeeb379ebd722638')
+sha512sums=('25ecd55c8bc46be26ebf790db99a2593ad9fbe348efb738e588c36436aea84d30393b3af4be39d57df1ca7bfe89c66b24f5a146dff2ec7712c0ace74f0bba8e9')
 
 build() {
 	cd "$pkgname-$pkgver"
