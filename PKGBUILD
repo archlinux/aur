@@ -5,7 +5,7 @@ _pkgname=papirus-pack-kde
 pkgbase=papirus-git
 pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git'
          'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git')
-pkgver=r220.3f97691
+pkgver=r226.14d06fa
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE"
 arch=('any')
@@ -49,6 +49,15 @@ package_papirus-icon-theme-git() {
     conflicts=('papirus-icon-theme')
     install -d ${pkgdir}/usr/share/icons
     cp -r ${srcdir}/${_pkgname}/icons/papirus* ${pkgdir}/usr/share/icons/
+    for d in 32x32 48x48
+        do
+        cd  ${pkgdir}/usr/share/icons/papirus/$d/apps/
+        for r in base calc draw impress math writer
+            do 
+            ln -s ./libreoffice-$r.svg ./libreoffice5.0-$r.svg
+        done
+            ln -s ./libreoffice-main.svg ./libreoffice5.0-startcenter.svg
+    done
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 }
