@@ -1,0 +1,16 @@
+pkgbase = cups-cloud-print
+	pkgdesc = Google Cloud Print driver for CUPS
+	pkgver = 20140814.3.r94.g3899bd3
+	pkgrel = 1
+	url = https://www.niftiestsoftware.com/cups-cloud-print/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python2-httplib2
+	depends = python2-pycups
+	source = cups-cloud-print::git+https://github.com/simoncadman/CUPS-Cloud-Print.git
+	md5sums = SKIP
+
+pkgname = cups-cloud-print
+
