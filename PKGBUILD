@@ -5,7 +5,7 @@
 
 _pkgname=pcsxr
 pkgname=bin32-pcsxr-svn
-pkgver=1.9.93.r97860M
+pkgver=1.9.93.r97860
 pkgrel=1
 pkgdesc="A Sony PlayStation emulator based on the PCSX-df Project (32-bit)"
 arch=('x86_64')

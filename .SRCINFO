@@ -1,6 +1,6 @@
 pkgbase = bin32-pcsxr-svn
 	pkgdesc = A Sony PlayStation emulator based on the PCSX-df Project (32-bit)
-	pkgver = 1.9.93.r97860M
+	pkgver = 1.9.93.r97860
 	pkgrel = 1
 	url = http://pcsxr.codeplex.com/
 	arch = x86_64
