@@ -4,13 +4,14 @@
 
 pkgname=fzf
 pkgver=0.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line fuzzy finder"
 arch=('armv6h' 'i686' 'x86_64')
-depends=('ncurses' 'tmux')
+depends=('ncurses')
 makedepends=('git' 'go' 'make')
 optdepends=('fish: fish keybindings'
             'fzf-extras: fzf keybindings from junegunn wiki and dotfiles'
+            'tmux: fzf-tmux script for launching fzf in a tmux pane'
             'vim-fzf: vim plugin'
             'zsh: zsh keybindings')
 url="https://github.com/junegunn/fzf"
