@@ -2,12 +2,12 @@
 
 pkgname=cndrvcups-lb-bin
 pkgver=3.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon UFR II/UFR II LT Printer Driver (including Canon imageCLASS MF4720w)"
 url="http://support-asia.canon-asia.com/contents/ASIA/EN/0100270810.html"
 arch=('i686' 'x86_64')
-depends_x86_64=('libxml2')
-depends_i686=('lib32-libxml2' 'lib32-libcups')
+depends_i686=('libxml2' 'libcups')
+depends_x86_64=('lib32-libxml2' 'lib32-libcups')
 replaces=('canon-ufr')
 conflicts=('cndrvcups-lb')
 license=('custom')

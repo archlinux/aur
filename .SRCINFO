@@ -1,7 +1,7 @@
 pkgbase = cndrvcups-lb-bin
 	pkgdesc = Canon UFR II/UFR II LT Printer Driver (including Canon imageCLASS MF4720w)
 	pkgver = 3.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support-asia.canon-asia.com/contents/ASIA/EN/0100270810.html
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = cndrvcups-lb-bin
 	replaces = canon-ufr
 	source = http://gdlp01.c-wss.com/gds/8/0100002708/12/Linux_UFRII_PrinterDriver_V300_uk_EN.tar.gz
 	sha256sums = 3d4210670e5844d118c5350643b046e9126726eadca4d0f5d2b9c904133e956d
-	depends_i686 = lib32-libxml2
-	depends_i686 = lib32-libcups
-	depends_x86_64 = libxml2
+	depends_i686 = libxml2
+	depends_i686 = libcups
+	depends_x86_64 = lib32-libxml2
+	depends_x86_64 = lib32-libcups
 
 pkgname = cndrvcups-lb-bin
 
