@@ -3,7 +3,7 @@
 
 _gemname=ironment
 pkgname=ruby-$_gemname
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Environment populator & command wrapper utility.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-commander')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7ae0936414b197b74456607a70ba722840a33a59')
+sha1sums=('81ff0b37658f0a869560ddc4a073925477ecaecc')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
