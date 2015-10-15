@@ -1,0 +1,27 @@
+pkgbase = bin32-pcsxr-svn
+	pkgdesc = A Sony PlayStation emulator based on the PCSX-df Project (32-bit)
+	pkgver = 1.9.93.r97860M
+	pkgrel = 1
+	url = http://pcsxr.codeplex.com/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	makedepends = intltool
+	makedepends = sdl2
+	makedepends = lib32-mesa
+	makedepends = subversion
+	depends = lib32-gtk3
+	depends = lib32-sdl2
+	depends = lib32-libcdio
+	depends = lib32-libxv
+	optdepends = lib32-libpulse: Pulseaudio support
+	provides = pcsxr
+	conflicts = pcsxr,
+	conflicts = pcsxr
+	conflicts = pcsx-df
+	options = !libtool
+	source = pcsxr::svn+https://pcsxr.svn.codeplex.com/svn/pcsxr
+	sha256sums = SKIP
+
+pkgname = bin32-pcsxr-svn
+
