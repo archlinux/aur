@@ -2,20 +2,25 @@
 
 pkgname=unarchiver-nodep
 epoch=1
-pkgver=1.9.1
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="unar and lsar that don't depend on gnustep-base. Resolv conflict with darling-git."
 arch=('x86_64')
 url="http://unarchiver.c3.cx/"
 license=('LGPL2.1')
 depends=('openssl' 'bzip2' 'icu' 'gcc-libs' 'zlib')
-#makedepends=('gcc-objc' 'gnustep-base-clang-svn')
+makedepends=('curl')
 provides=(unarchiver)
 conflicts=(unarchiver)
+_filename=`curl http://repo.archlinuxcn.org/x86_64/ | grep -oP '(?<==")unarchiver\S+?xz' | head -1`
 source=("gnustep-base_x86_64.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/"
-    "unarchiver-x86_64.tar.xz::http://repo.archlinuxcn.org/x86_64/unarchiver-1%3a1.9.1-1-x86_64.pkg.tar.xz")
+    "unarchiver-x86_64.tar.xz::http://repo.archlinuxcn.org/x86_64/${_filename}")
 noextract=('gnustep-base_x86_64.tar.xz' 'unarchiver-x86_64.tar.xz')
 sha1sums=('SKIP' 'SKIP')
+
+pkgver() {
+    echo ${_filename} | grep -oP "\d+\.\d+\.\d+"
+}
 
 prepare(){
   cd "$srcdir"
@@ -38,6 +43,7 @@ package() {
   cd "$srcdir/unarchiver/usr/bin"
   install -d "$pkgdir/usr/bin/"
   install -m755 unar lsar "$pkgdir/usr/lib/unarchiver"
+  ln -s /usr/lib/libicuuc.so "$pkgdir/usr/lib/unarchiver/libicuuc.so.54"
   LIBNAME=``
   
   echo '#!/bin/sh' > "$pkgdir/usr/lib/unarchiver/run.sh"
