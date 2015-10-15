@@ -2,7 +2,7 @@
 pkgname=haskell-stack
 _pkgname=stack
 pkgver='0.1.6.0'
-pkgrel=2
+pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('x86_64')
 url="https://www.github.com/commercialhaskell/stack"
