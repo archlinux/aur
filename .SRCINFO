@@ -1,0 +1,30 @@
+pkgbase = liri-player-git
+	pkgdesc = A Web player using the QML Material framework from the Papyros Project
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/pierremtb/liri-player
+	install = liri-player-git.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = qt5-base
+	depends = qml-material
+	provides = liri-player
+	provides = liri-player-git
+	conflicts = liri-player
+	source = liri-player-git::git+https://github.com/pierremtb/liri-player.git
+	source = qmlvlc::git+https://github.com/RSATom/QmlVlc.git
+	source = yalibvlcwrapper::git+https://github.com/RSATom/ya-libvlc-wrapper.git
+	source = libvlcsdk::git+https://github.com/RSATom/libvlc-sdk.git
+	source = liri-player.desktop
+	source = liri-player-git.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = liri-player-git
+
