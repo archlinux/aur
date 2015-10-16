@@ -1,22 +1,23 @@
 pkgbase = prometheus
 	pkgdesc = An open-source service monitoring system and time series database.
-	pkgver = 0.15.1
-	pkgrel = 2
+	pkgver = 0.16.1
+	pkgrel = 1
 	url = http://prometheus.io
 	install = prometheus.install
 	arch = i686
 	arch = x86_64
 	license = APACHE
+	makedepends = go
 	depends = glibc
 	backup = etc/prometheus/prometheus.yml
-	source = https://github.com/prometheus/prometheus/archive/0.15.1.tar.gz
+	source = https://github.com/prometheus/prometheus/archive/0.16.1.tar.gz
 	source = prometheus.service
 	source = 01-Do_not_embed_blobs.patch
 	source = 02-Default_settings.patch
-	sha256sums = 72024ca2fa291e78ccca6fc22e0b5aa5033a26436ceac3d9eb3955404d033163
+	sha256sums = b91eb5b8223b08bb42dbfd93b22427bd338be10a12413524c3273666f570f894
 	sha256sums = 8446311e207d42f80844c8628b720dc16003217c79edccd5b0efbd0ae6ff32ca
-	sha256sums = 8c0b16892c156bfd77c1ebc6d53d01253c2e5d7f6bb24df8ae06741722af6bfd
-	sha256sums = 8e1c341b19c2629402c7d8233e57620fff7cb865e08821ddb7cc28fca7384eb9
+	sha256sums = d21de4f7ee5d78152b6aa3673d805d769f229f8558b563c6fcdf9513b5847ec7
+	sha256sums = a971f44220418836c55e1ed83864f5d287517f41b50f0b5648b249092915aa19
 
 pkgname = prometheus
 
