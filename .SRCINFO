@@ -1,7 +1,7 @@
 pkgbase = dualscreen-mouse-utils
 	pkgdesc = Utilities for use with old-school dual head setups.
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://de.mcbf.net/david/dualscreenmouseutils/
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = dualscreen-mouse-utils
 	md5sums = eb95a8830324f0d2d3249f6802b7e666
 	md5sums = 0294b640ae8daf006c209fb14954c282
 	md5sums = e5ebb5eef015695ee3d533bd5de24180
-	md5sums = b2ba6403fa7dfbe2b1a7f4f945030e7d
+	md5sums = af9def435d3b7808a0387f8360d16dda
 	md5sums = 5b2ebb17e8bc7c833d0c772d2d986bc3
 	md5sums = 5f1b6249af6ad454f950d27ff1dcc533
 	md5sums = 4bca9dc0dcf3fdbbff094b8f83cdee08
