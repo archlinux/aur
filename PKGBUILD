@@ -3,8 +3,8 @@
 # the newer, chromium-based Qt WebEngine module (in qt5-webengine package ~100 MB)
 _webviewprovider=qt5-webkit
 pkgname=tageditor
-pkgver=1.1.5
-pkgrel=11
+pkgver=1.2.0
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A tag editor with Qt GUI and command-line interface supporting MP4 (iTunes), ID3, Vorbis and Matroska."
 license=('GPL')
@@ -14,7 +14,7 @@ install=${pkgname}.install
 url="https://github.com/Martchus/tageditor"
 source=("tageditor-${pkgver}.tar.gz::https://github.com/Martchus/tageditor/archive/v${pkgver}.tar.gz")
 _reponame=tageditor
-sha256sums=('bea7177c03e7594a277f8f95bf3d13519b466c9c98f3f234a33923104cb1f11e')
+sha256sums=('42b0c89667069007aec6b2e04f9bd5479c95c601f4d42c0bfd5d8fc5210fb10d')
 
 build() {
     cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
