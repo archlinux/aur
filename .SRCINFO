@@ -1,7 +1,7 @@
 pkgbase = 1pass-hg
 	pkgdesc = 1Password-compatible password management tool for Linux
 	pkgver = r44.2150bce729df
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.icculus.org/1pass/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = 1pass-hg
 	source = hg+http://hg.icculus.org/icculus/1pass/
 	source = 1pass-lua.patch
 	md5sums = SKIP
-	md5sums = a0a4e1790ac53596d0e0ee9ee244944b
+	md5sums = 29a10854b1581cd5dbe667d1967d7c20
 
 pkgname = 1pass-hg
 

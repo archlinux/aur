@@ -21,7 +21,7 @@ diff -ruN 1pass.orig/1pass.lua 1pass/1pass.lua
 +dofile("/usr/share/1pass/dumptable.lua")
  
 -local basedir = "1Password/1Password.agilekeychain/data/default"  -- !!! FIXME
-+local basedir = os.getenv("HOME") .. "1Password/1Password.agilekeychain/data/default"  -- !!! FIXME
++local basedir = os.getenv("HOME") .. "/1Password/1Password.agilekeychain/data/default"  -- !!! FIXME
  local password = argv[2]
  local items = nil
  local faveitems = nil
