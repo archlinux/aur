@@ -62,7 +62,6 @@ build() {
 package() {
   cd "${srcdir}"
   install -d "$pkgdir/usr/bin/"
-  install -d "$pkgdir/usr/local/include/"
   for _pack in "${noextract[@]}"; do
 	_builddir=${_pack%%-*}
   	install -Dm755 "$_builddir/$_builddir" "$pkgdir/usr/bin/"
