@@ -2,20 +2,19 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-stamps-cvs
-pkgver=20101127
-pkgrel=2
+pkgver=20151012
+pkgrel=1
 arch=('any')
 pkgdesc="Additional stamps for Tux Paint, cvs version"
 url="http://www.newbreedsoftware.com/tuxpaint/"
 license=('GPL')
-depends=('tuxpaint')
 provides=('tuxpaint-stamps')
 conflicts=('tuxpaint-stamps')
 makedepends=('cvs')
 _cvsroot=":pserver:anonymous@tuxpaint.cvs.sourceforge.net:/cvsroot/tuxpaint"
 _cvsmod="tuxpaint-stamps"
 
-prepare() {
+pkgver() {
   cd $srcdir
   msg "Connecting to $_cvsmod.sourceforge.net CVS server...."
   if [ -d $_cvsmod/CVS ]; then
@@ -25,9 +24,11 @@ prepare() {
     cvs -z3 -d$_cvsroot co -P $_cvsmod
     cd $_cvsmod
   fi
-          
-  msg "CVS checkout done or server timeout"
-  msg "Starting make..."
+  printf "%s" $(cvs -q log | grep '^date:' | sort | tail -n 1 | cut -d ' ' -f 2 | tr -d '/')
+}
+
+build() {
+  cd $srcdir/$_cvsmod
   make PREFIX=/usr
 }
 
