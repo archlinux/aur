@@ -1,6 +1,6 @@
 pkgbase = write_stylus
 	pkgdesc = Write(orignal name) - A word processor for handwriting
-	pkgver = 203
+	pkgver = 204
 	pkgrel = 1
 	url = http://www.styluslabs.com/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = write_stylus
 	license = unknown
 	depends = qt4
 	depends = libpng12
-	source = http://www.styluslabs.com/write/write203.tar.gz
-	md5sums = f788cbe34258fbef5c8288acbff635ea
+	source = http://www.styluslabs.com/write/write204.tar.gz
+	md5sums = 56e7af77784bdcc006b60ecffed8e938
 
 pkgname = write_stylus
 
