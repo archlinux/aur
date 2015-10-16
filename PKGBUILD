@@ -4,7 +4,7 @@
 
 pkgname='scipoptsuite'
 pkgver='3.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolbox for generating and solving optimization problems."
 arch=('i686' 'x86_64')
 url='http://scip.zib.de'
@@ -15,7 +15,7 @@ makedepends=('chrpath' 'doxygen' 'graphviz')
 provides=('scip=3.2.0' 'soplex=2.2.0' 'zimpl=3.3.3' 'gcg=2.1.0' 'ug=0.8.0')
 options=(staticlibs)
 source=("http://scip.zib.de/download/release/${pkgname}-${pkgver}.tgz")
-sha256sums=('9da1cc6ae131987a5a151df846c0a388fdfe1175ddabebeb3342538fe1e75767')
+sha256sums=('69bf32051c0dc4528dff57cacf8701bae0911186bb1f877cce0370bf699e69ae')
 
 build() {
     # Extract directory names from the $provides array.
