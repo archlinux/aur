@@ -5,14 +5,13 @@
 
 pkgname=copy-agent
 pkgver=3.2.01.0481
-pkgrel=1
+pkgrel=2
 pkgdesc="Copy.com sync agent"
 arch=("i686" "x86_64" "armv6h")
 url="http://www.copy.com"
 license=(custom)
-depends=("fuse" "desktop-file-utils")
-optdepends=("qt4: GUI support"
-            "libindicator-gtk2: indicator support")
+depends=("fuse" "desktop-file-utils" "qt4")
+optdepends=("libindicator-gtk2: indicator support")
 options=('!strip' '!upx')
 install=$pkgname.install
 sha256sums=('f33c0297c2d8f7e90ec481beed88a918446a87507c9ea29f8feae21a4e85f72e'

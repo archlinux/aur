@@ -1,7 +1,7 @@
 pkgbase = copy-agent
 	pkgdesc = Copy.com sync agent
 	pkgver = 3.2.01.0481
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.copy.com
 	install = copy-agent.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = copy-agent
 	license = custom
 	depends = fuse
 	depends = desktop-file-utils
-	optdepends = qt4: GUI support
+	depends = qt4
 	optdepends = libindicator-gtk2: indicator support
 	options = !strip
 	options = !upx
