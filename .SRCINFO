@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-qt5-feedback
+	pkgdesc = Qt Tactile Feedback Add-on Module (mingw-w64)
+	pkgver = 0.0.0.20150918
+	pkgrel = 1
+	url = https://github.com/qtproject/qtfeedback
+	arch = any
+	license = custom
+	license = FDL
+	license = GPL3
+	license = LGPL
+	makedepends = mingw-w64-qt5-base
+	makedepends = git
+	depends = mingw-w64-qt5-declarative
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = git+https://github.com/qtproject/qtfeedback.git#commit=28ca62414901502189ea28ef2efd551386187619
+	sha256sums = SKIP
+
+pkgname = mingw-w64-qt5-feedback
+
