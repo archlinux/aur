@@ -1,7 +1,8 @@
+# Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ncl-highres
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="High-resolution coastlines for NCL, RANGS (Regionally Accessible Nested Global Shorelines) and GSHHS (Global Self-consistent Hierarchical High-resolution Shoreline)"
 arch=('any')
 license=('public domain')
@@ -31,7 +32,7 @@ md5sums=('d50c74655c45329e5fd264f06f070451'
          '5a3903ffd8ccc42c298050362f55b958')
 provides=('ncl-highres')
 
-build() {
+package() {
     mkdir -p $pkgdir/usr/lib/ncarg/database/rangs
     cp *.rim *.cat *.cel $pkgdir/usr/lib/ncarg/database/rangs/
 }

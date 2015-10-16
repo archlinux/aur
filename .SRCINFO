@@ -1,7 +1,7 @@
 pkgbase = ncl-highres
 	pkgdesc = High-resolution coastlines for NCL, RANGS (Regionally Accessible Nested Global Shorelines) and GSHHS (Global Self-consistent Hierarchical High-resolution Shoreline)
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ncl.ucar.edu/Document/Graphics/rangs.shtml
 	arch = any
 	license = public domain
