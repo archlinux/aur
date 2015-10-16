@@ -1,10 +1,10 @@
 # Maintainer: Mohamed Sobh <mohamed.alhusieny@gmail.com>
 pkgname=python-zipline
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A backtester for financial algorithms."
 arch=('any')
-url="www.zipline.io"
+url="http://www.zipline.io"
 license=('APACHE')
 depends=(
   'python>=3.3'
