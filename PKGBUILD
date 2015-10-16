@@ -54,7 +54,7 @@ package() {
   # readme and license
   install -Dm0644 README.txt "$pkgdir"/usr/share/doc/hurrican/README.txt
   install -m0644 Hurrican/readme.txt "$pkgdir"/usr/share/doc/hurrican
-  install -d "$pkgdir"/usr/share/licenses/hurrican
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/share/doc/hurrican/README.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   cd ..
