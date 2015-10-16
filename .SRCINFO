@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-roslib
 	pkgdesc = ROS - Base dependencies and support libraries for ROS.
-	pkgver = 1.11.9
+	pkgver = 1.11.11
 	pkgrel = 1
 	url = http://ros.org/wiki/roslib
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-indigo-roslib
 	depends = ros-indigo-rospack
 	depends = ros-indigo-catkin
 	depends = python2-rospkg
-	source = roslib::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/roslib/1.11.9-0
+	source = roslib::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/roslib/1.11.11-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-roslib
