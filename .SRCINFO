@@ -1,0 +1,22 @@
+pkgbase = xembed-sni-proxy-white-git
+	pkgdesc = Convert XEmbed system tray icons to SNI icons. With white background.
+	pkgver = r69.77d78c3
+	pkgrel = 2
+	url = https://github.com/davidedmundson/xembed-sni-proxy
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = kwindowsystem
+	provides = xembed-sni-proxy
+	provides = xembed-sni-proxy-git
+	conflicts = xembed-sni-proxy
+	conflicts = xembed-sni-proxy-git
+	source = git+https://github.com/davidedmundson/xembed-sni-proxy.git
+	sha256sums = SKIP
+
+pkgname = xembed-sni-proxy-white-git
+
