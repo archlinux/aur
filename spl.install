@@ -1,14 +1,18 @@
 post_install() {
     dkms add spl/${1%%[_-]*}
     check_hostid
+    cat << EOF
+==> To build and install your modules run: dkms install spl/${1%%[_-]*} -k [KERNEL]
+==> To do this automatically at startup run: systemctl enable dkms.service
+EOF
 }
 
 pre_upgrade() {
-    pre_remove ${2%%[_-]*}
+    pre_remove "$2"
 }
 
 post_upgrade() {
-    post_install ${1%%[_-]*}
+    post_install "$1"
 }
 
 pre_remove() {
