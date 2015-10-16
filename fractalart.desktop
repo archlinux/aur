@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FractalArt
+GenericName=Fractal Art
+Comment=Generate Wallpapers
+Exec=FractalArt
+Terminal=false
+Type=Application
+Categories=Graphics

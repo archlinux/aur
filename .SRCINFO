@@ -1,0 +1,19 @@
+pkgbase = fractalart-git
+	pkgdesc = Fractal art desktop wallpaper generator
+	pkgver = r5.30330b1
+	pkgrel = 1
+	url = https://github.com/TomSmeets/FractalArt
+	install = fractalart-git.install
+	arch = any
+	makedepends = git
+	makedepends = zlib
+	makedepends = cabal-install
+	makedepends = ghc
+	provides = fractalart-git
+	source = git+http://github.com/TomSmeets/FractalArt
+	source = fractalart.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = fractalart-git
+

@@ -1,0 +1,32 @@
+#Maintainer: theblazehen <com.theblazehen@post - reverse>
+pkgname=fractalart-git
+pkgver=r5.30330b1
+pkgrel=1
+pkgdesc="Fractal art desktop wallpaper generator"
+arch=('any')
+url="https://github.com/TomSmeets/FractalArt"
+licence=("MIT")
+install=fractalart-git.install
+makedepends=('git' 'zlib' 'cabal-install' 'ghc')
+provides=('fractalart-git')
+source=('git+http://github.com/TomSmeets/FractalArt' 'fractalart.desktop')
+md5sums=('SKIP' 'SKIP')
+pkgver() {
+        cd "FractalArt"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+        cd "FractalArt"
+        cabal update
+        cabal install
+}
+
+package() {
+        cd "FractalArt"
+        install -d -m 755 ${pkgdir}/usr/bin
+        cp dist/build/FractalArt/FractalArt ${pkgdir}/usr/bin/FractalArt
+        cd ..
+        install -d ${pkgdir}/etc/xdg/autostart
+        cp fractalart.desktop ${pkgdir}/etc/xdg/autostart/
+}
