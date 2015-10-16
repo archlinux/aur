@@ -1,6 +1,6 @@
 pkgbase = freerdp-git
 	pkgdesc = Free RDP client - git checkout
-	pkgver = 1.2.0.beta1.android9.r1957.gd277346
+	pkgver = 1.2.0.beta1.android9.r1982.g7aca1e0
 	pkgrel = 1
 	url = http://www.freerdp.com/
 	arch = i686

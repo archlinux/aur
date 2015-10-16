@@ -3,7 +3,7 @@
 
 pkgname=freerdp-git
 pkgdesc='Free RDP client - git checkout'
-pkgver=1.2.0.beta1.android9.r1957.gd277346
+pkgver=1.2.0.beta1.android9.r1982.g7aca1e0
 pkgrel=1
 depends=('openssl' 'libxcursor' 'libcups' 'alsa-lib' 'libxext' 'libxdamage'
          'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv')
@@ -29,13 +29,6 @@ pkgver() {
 			"$(git rev-list --count master)" \
 			"$(git log -1 --format='%h')"
 	fi
-}
-
-prepare() {
-	cd freerdp/
-
-	# fix build aginst recent gstreamer
-	git cherry-pick -n bea27fd9
 }
 
 build() {
