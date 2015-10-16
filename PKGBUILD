@@ -2,7 +2,7 @@
 # Contributor: Idares <idares at seznam dot cz>
 
 pkgname=monitoring-plugins
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Plugins for Icinga, Naemon, Nagios, Shinken, Sensu and other monitoring applications"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ provides=('nagios-plugins')
 conflicts=('nagios-plugins')
 replaces=('nagios-plugins')
 source=(https://www.monitoring-plugins.org/download/$pkgname-$pkgver.tar.gz)
-md5sums=('8e564c03e3fc32f452956892b19abb4d')
+md5sums=('4a210f7db012571ea58e214cef74f612')
 
 build() {
   cd $pkgname-$pkgver
@@ -35,7 +35,10 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 FAQ "$pkgdir"/usr/share/doc/$pkgname/FAQ
-  install -Dm644 README "$pkgdir"/usr/share/doc/$pkgname/README
   install -Dm644 LEGAL "$pkgdir"/usr/share/licenses/$pkgname/LEGAL
+
+  for i in ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS CODING COPYING ChangeLog \
+    FAQ INSTALL LEGAL NEWS NP-VERSION-GEN README REQUIREMENTS SUPPORT THANKS; do
+    install -Dm644 $i "$pkgdir"/usr/share/doc/$pkgname/$i
+  done
 }
