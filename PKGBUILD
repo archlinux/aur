@@ -22,6 +22,7 @@ build() {
 
 package() {
   cd ${pkgname}_$pkgver
+  install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
   make DESTDIR="$pkgdir/" install
 }
 
