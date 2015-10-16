@@ -6,8 +6,8 @@ pkgdesc="Mutes Spotify advertisements."
 arch=("any")
 url="https://github.com/mikar/${pkgname}"
 license=("MIT")
-depends=("pygtk" "libwnck3" "python-dbus" "alsa-utils"
-         "python-setuptools" "gst-python" "pulseaudio")
+depends=("spotify" "pulseaudio" "alsa-utils" "wmctrl" "libwnck3" "pygtk"
+         "gst-python" "python-dbus" "python-setuptools")
 optdepends=("python-docopt")
 source=("https://github.com/mikar/${pkgname}/archive/v${pkgver}.tar.gz")
 
