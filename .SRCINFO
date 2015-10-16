@@ -1,6 +1,6 @@
 pkgbase = python2-alembic
 	pkgdesc = Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database Toolkit for Python 2.
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://bitbucket.org/zzzeek/alembic
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = python2-alembic
 	depends = python2
 	depends = python2-sqlalchemy
 	depends = python2-mako
-	source = https://pypi.python.org/packages/source/a/alembic/alembic-0.8.2.tar.gz
-	source = https://pypi.python.org/packages/source/a/alembic/alembic-0.8.2.tar.gz.asc
-	sha256sums = a69d65a766801c40e921ca24ae358bf081a990f54b867bbdc3e2a73e975550be
+	depends = python2-editor
+	source = https://pypi.python.org/packages/source/a/alembic/alembic-0.8.3.tar.gz
+	source = https://pypi.python.org/packages/source/a/alembic/alembic-0.8.3.tar.gz.asc
+	sha256sums = eeac36589c1bf393e2040de01514a0d101ef17039957300209b0b44f3ddffce9
 	sha256sums = SKIP
 
 pkgname = python2-alembic
