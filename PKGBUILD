@@ -6,7 +6,7 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=10.2.0
+pkgver=10.3.0
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
 depends=('ttf-bitstream-vera')
 source=("file://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('1945ef3bb486b1091371128dd337aa19')
+md5sums=('46f3b4eb9b52a94ff8833f26fedefbb4')
 install='mathematica.install'
 options=('!strip')
 
