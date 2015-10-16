@@ -1,0 +1,15 @@
+pkgbase = mod_authnz_external
+	pkgdesc = Apache External Authentication Modules
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = http://code.google.com/p/mod-auth-external/
+	install = mod_authnz_external.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = apache>=2.4.0
+	source = http://mod-auth-external.googlecode.com/files/mod_authnz_external-3.3.2.tar.gz
+	sha1sums = c3b9b25b0c2043d1fd7ab4572a01a9c58f226fc1
+
+pkgname = mod_authnz_external
+

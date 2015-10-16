@@ -1,0 +1,12 @@
+post_install() {
+  cat << EOM
+
+--> Add the following line to the modules section of your apache config
+       LoadModule authnz_external_module modules/mod_authnz_external.so
+EOM
+  /bin/true
+}
+
+post_upgrade() {
+  post_install $i
+}
