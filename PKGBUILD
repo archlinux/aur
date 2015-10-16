@@ -3,7 +3,7 @@
 
 _srcname=fancontrol-gui
 pkgname=fancontrol-kcm-git
-pkgver=0.1.r181.g2eaa157
+pkgver=v0.1.r0.g0627a90
 pkgrel=1
 pkgdesc="KCM for the fancontrol script and systemd service"
 arch=('any')
