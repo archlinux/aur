@@ -1,0 +1,15 @@
+post_install() {
+  getent group steam >> /dev/null || /usr/sbin/groupadd steam || return 1
+  /bin/cat <<EOF
+==> Please add all users that will be running Steam to the "steam" group
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  getent group steam  &>/dev/null && /usr/sbin/groupdel steam
+}
+

@@ -1,11 +1,12 @@
 pkgbase = steamcontroller-udev
 	pkgdesc = Udev rule for Valve's Steam Controller
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://store.steampowered.com/universe/controller/
+	install = steamcontroller-udev.install
 	arch = any
 	source = 99-steamcontroller.rules
-	md5sums = 1bcb37a4a9f30ac3cc0a307536a8bfba
+	md5sums = 5202bfc89b0ff51f8b18854143db00f4
 
 pkgname = steamcontroller-udev
 

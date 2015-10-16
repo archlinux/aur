@@ -1,1 +1,5 @@
+# This rule is needed for basic functionality of the controller in Steam and keyboard/mouse emulation
 SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", MODE="0666"
+
+# This rule is necessary for gamepad emulation; make sure your user is in the 'steam' group
+KERNEL=="uinput", MODE="0660", GROUP="steam", OPTIONS+="static_node=uinput"
