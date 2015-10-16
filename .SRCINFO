@@ -1,0 +1,16 @@
+pkgbase = yank
+	pkgdesc = Copy terminal output to clipboard
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mptre/yank
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = xsel
+	provides = yank
+	conflicts = yank
+	source = https://github.com/mptre/yank/archive/v0.4.0.tar.gz
+	md5sums = cf5dc3388e4abbc028e19188d57775e6
+
+pkgname = yank
+
