@@ -1,13 +1,12 @@
 # Maintainer: Andreas Bilke <andreas@bilke.org>
 
 pkgname=python-networkit
-pkgrel=1
+pkgrel=2
 pkgver=3.6
 pkgdesc='A toolkit for high-performance network analysis'
 arch=('i686' 'x86_64')
 url='https://networkit.iti.kit.edu/'
-depends=('python')
-optdepends=('python-numpy' 'python-scipy' 'python-matplotlib' 'python-networkx' 'python-tabulate' 'python-powerlaw' 'python-scikit-learn')
+depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-networkx' 'python-tabulate' 'python-powerlaw' 'python-scikit-learn')
 makedepends=('scons')
 license=('MIT')
 md5sums=('0c1defc8796f5a30db8c234dfd43859e')
