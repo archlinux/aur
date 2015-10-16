@@ -1,6 +1,6 @@
 # Maintainer: Fredrick Brennan <admin@8chan.co>
 pkgname=waifu2x-git
-pkgver=r264.0149e06
+pkgver=r295.a5228c5
 pkgrel=1
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks"
 arch=('x86_64')
