@@ -9,7 +9,7 @@
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 pkgver=2.27
-pkgrel=5
+pkgrel=6
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
@@ -70,7 +70,6 @@ package_util-linux-selinux() {
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
            'libsystemd-selinux' 'libutil-linux-selinux')
   optdepends=('python: python bindings to libmount')
-  install=util-linux.install
   backup=(etc/pam.d/chfn
           etc/pam.d/chsh
           etc/pam.d/login

@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.27
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.kernel.org/pub/linux/utils/util-linux/
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,6 @@ pkgbase = util-linux-selinux
 	md5sums = fa85e5cce5d723275b14365ba71a8aad
 
 pkgname = util-linux-selinux
-	install = util-linux.install
 	depends = pam-selinux
 	depends = shadow-selinux
 	depends = coreutils-selinux
