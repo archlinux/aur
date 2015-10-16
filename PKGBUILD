@@ -4,13 +4,14 @@
 
 pkgname=chromedriver
 pkgver=2.20
-pkgrel=4
+pkgrel=2
 pkgdesc="Standalone server which implements WebDriver's wire protocol"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/a/chromium.org/chromedriver/"
 license=('Apache')
+conflicts=('chromium')
 depends=('libpng' 'gconf')
-optdepends=('google-chrome' 'chromium')
+optdepends=('google-chrome')
 
 if [ "$CARCH" = "i686" ]; then
     _arch='linux32'
