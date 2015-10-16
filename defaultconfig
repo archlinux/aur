@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zgrv:config xmlns:zgrv="http://zvtm.sourceforge.net/zgrviewer">
+    <zgrv:directories>
+        <zgrv:tmpDir value="true">/tmp</zgrv:tmpDir>
+        <zgrv:dot>/usr/bin/dot</zgrv:dot>
+        <zgrv:neato>/usr/bin/neato</zgrv:neato>
+        <zgrv:circo>/usr/bin/circo</zgrv:circo>
+        <zgrv:twopi>/usr/bin/twopi</zgrv:twopi>
+        <zgrv:graphvizFontDir>/usr/share/fonts/TTF</zgrv:graphvizFontDir>
+    </zgrv:directories>
+    <zgrv:webBrowser autoDetect="true" options="" path=""/>
+    <zgrv:proxy enable="false" host="" port="80"/>
+    <zgrv:preferences antialiasing="false" cmdL_options=""
+        highlightColor="-65536" magFactor="2.0" saveWindowLayout="false"
+        sdZoom="false" sdZoomFactor="2" silent="true"/>
+    <zgrv:plugins/>
+    <zgrv:commandLines/>
+</zgrv:config>

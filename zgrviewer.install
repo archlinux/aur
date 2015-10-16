@@ -1,0 +1,4 @@
+post_install() {
+  echo "Copy /opt/zgrviewer/defaultconfig into your home directory as .zgrviewer to set"
+  echo "the right graphviz paths."
+}
