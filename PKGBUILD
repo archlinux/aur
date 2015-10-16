@@ -15,7 +15,7 @@ conflicts=("mitsuba")
 source=("${_pkgname}::hg+https://www.mitsuba-renderer.org/repos/_10" "fix_boost_include.patch")
 sha256sums=("SKIP" "SKIP")
 
-_pyver=`python3 --version | grep -oP '(?<= )\d\.\d'`
+#_py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
 
 pkgver() {
   cd $srcdir/${_pkgname}
@@ -26,7 +26,7 @@ prepare() {
     cd "${_pkgname}"
     patch -p1 < ../fix_boost_include.patch
     cp build/config-linux-gcc.py config.py
-    sed -i "s:'/usr/include/collada-dom:'/usr/include/collada-dom2.4:g" config.py
+    #sed -i "s:'/usr/include/collada-dom:'/usr/include/collada-dom2.4:g" config.py
     
 }
 
@@ -65,7 +65,7 @@ package() {
 	install -m644 dist/data/ior/* ${pkgdir}/usr/share/mitsuba/data/ior
 	install -m644 dist/data/microfacet/* ${pkgdir}/usr/share/mitsuba/data/microfacet
 	install -m644 dist/python/2.7/mitsuba.so ${pkgdir}/usr/lib/python2.7/lib-dynload
-	install -m644 dist/python/2.7/mitsuba.so ${pkgdir}/usr/lib/python${_pyver}/lib-dynload
+	#install -m644 dist/python/${_py3ver}/mitsuba.so ${pkgdir}/usr/lib/python${_py3ver}/lib-dynload
 	install -m644 data/linux/mitsuba.desktop ${pkgdir}/usr/share/applications
 	install -m644 src/mtsgui/resources/mitsuba48.png ${pkgdir}/usr/share/pixmaps
 	install -m644 include/mitsuba/*.h ${pkgdir}/usr/include/mitsuba
