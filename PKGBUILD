@@ -15,7 +15,7 @@ package() {
   npm install --user root -g --prefix="${pkgdir}"/usr jscs@${pkgver}
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s ../../../../usr/lib/node_modules/jscs/LICENSE \
+  ln -s ../../../lib/node_modules/jscs/LICENSE \
      "${pkgdir}/usr/share/licenses/${pkgname}"
 
   find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \;
