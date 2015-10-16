@@ -9,6 +9,8 @@ pkgbase = curaengine-git
 	makedepends = cmake
 	makedepends = git
 	depends = libarcus-git
+	provides = curaengine
+	conflicts = curaengine
 	source = git+https://github.com/Ultimaker/CuraEngine.git
 	md5sums = SKIP
 
