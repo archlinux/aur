@@ -3,11 +3,11 @@
 pkgname=jinstall-git
 pkgver=r7.eaaebaf
 pkgrel=1
-pkgdesc="Automated file installer"
+pkgdesc="Terminal-based automated file installer"
 url="https://joel.porquet.org/wiki/hacking/jinstall/"
 arch=('any')
 license=('GPL3')
-depends=('python' 'pdmenu')
+depends=('python' 'python-urwid')
 makedepends=('git')
 
 source=("${pkgname}::git+https://joel.porquet.org/cgit/cgit.cgi/jinstall.git/")
@@ -21,5 +21,5 @@ pkgver() {
 package() {
     cd ${pkgname}
 
-    python setup.py install --root="$pkgdir/"
+    ./setup.py install --root="$pkgdir/"
 }
