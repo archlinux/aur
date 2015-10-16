@@ -38,7 +38,7 @@ package() {
 
 	install -d ${pkgdir}/usr/lib ${pkgdir}/usr/include
 	make prefix=${pkgdir}/usr project=dom install
-	mv ${pkgdir}/usr/include/colladadom ${pkgdir}/usr/include/collada-dom
+	mv ${pkgdir}/usr/include/colladadom ${pkgdir}/usr/include/collada-dom-mitsuba
 
 	install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
