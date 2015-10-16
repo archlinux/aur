@@ -105,7 +105,7 @@ class SystemTrayIcon (QSystemTrayIcon):
          exitAction.triggered.connect (lambda: QApplication.exit (0))
          self.addAction (exitAction)
 
-   def __init__(self, parent = None):
+   def __init__ (self, parent = None):
       super (SystemTrayIcon, self).__init__ (parent)
       self.setContextMenu (SystemTrayIcon.Menu ())
       self.activated.connect (self.onActivated)
