@@ -1,5 +1,5 @@
 post_install() {
-    dkms install zfs/${1%%[-_]*}
+    dkms add zfs/${1%%[-_]*}
 }
 
 pre_upgrade() {
@@ -11,5 +11,5 @@ post_upgrade() {
 }
 
 pre_remove() {
-    dkms remove zfs/${1%%[-_]*} --all
+    [ -n "${1%%[-_]*}" ] && dkms remove zfs/${1%%[-_]*} --all &>/dev/null || true
 }
