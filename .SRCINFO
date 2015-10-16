@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosmake
 	pkgdesc = ROS - rosmake is a ros dependency aware build tool which can be used to build all dependencies in the correct order.
-	pkgver = 1.11.9
+	pkgver = 1.11.11
 	pkgrel = 1
 	url = http://ros.org/wiki/rosmake
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-rosmake
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-catkin
 	depends = python2-rospkg
-	source = rosmake::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/rosmake/1.11.9-0
+	source = rosmake::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/rosmake/1.11.11-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosmake
