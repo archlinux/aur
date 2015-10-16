@@ -29,9 +29,16 @@ check_initramfs() {
             echo '==> The ZFS packages have been removed, but "zfs" remains in the "hooks"'
             echo '==> list in mkinitcpio.conf! You will need to remove "zfs" from the '
             echo '==> "hooks" list and then regenerate the initial ramdisk.'
+        elif grep -v '#' /etc/mkinitcpio.conf | grep dkms >/dev/null; then
+            echo '==> Generating initial ramdisk automatically (mkinitcpio-dkms found)'
+            for preset in /etc/mkinitcpio.d/*.preset; do
+                mkinitcpio -p "$(basename "$preset" .preset)"
+            done
         else
             echo '==> The ZFS packages are installed/updated, you need to (re)generate initial ramdisk yourself'
             echo '==> After modules are built and installed, run: mkinitcpio -p [PRESET]'
+            echo '==> To do it automatically, you can also install mkinitcpio-dkms package'
+            echo '==> and add "dkms" to HOOKSs (before zfs)'
         fi
     fi
 }
