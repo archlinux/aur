@@ -13,7 +13,7 @@ pkgbase = linux-samus4
 	source = https://github.com/raphael/linux-samus/archive/v4.2-5.tar.gz
 	source = config
 	source = linux.preset
-	md5sums = 31e13dd7fd19d33571e3c0a6d7230bc2
+	md5sums = ad2b2718aa9efad72f9a4ed3e30e88c2
 	md5sums = 1531defa62da33c30dc0ffb6414b758d
 	md5sums = 5aae464a8085b2f3adcdcaff29853d04
 
