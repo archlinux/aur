@@ -1,5 +1,5 @@
 post_install() {
-    dkms install spl/${1%%[_-]*}
+    dkms add spl/${1%%[_-]*}
     check_hostid
 }
 
@@ -12,7 +12,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-    dkms remove spl/${1%%[_-]*} --all
+    [ -n "${1%%[_-]*}" ] && dkms remove spl/${1%%[_-]*} --all &> /dev/null || true
 }
 
 check_hostid() {
