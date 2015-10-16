@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosconsole
 	pkgdesc = ROS - ROS console output library.
-	pkgver = 1.11.14
+	pkgver = 1.11.15
 	pkgrel = 1
 	url = http://www.ros.org/wiki/rosconsole
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = ros-indigo-rosconsole
 	depends = apr
 	depends = apr-util
 	depends = log4cxx
-	source = rosconsole::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosconsole/1.11.14-0
+	source = rosconsole::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosconsole/1.11.15-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosconsole
