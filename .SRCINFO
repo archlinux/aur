@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-flt-git
+	pkgdesc = Plugin for Vapoursynth: flt (GIT version)
+	pkgver = r2.0.gc94c091
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=172273
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-flt
+	conflicts = vapoursynth-plugin-flt
+	source = flt::git+https://github.com/IFeelBloated/FLT.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-flt-git
+
