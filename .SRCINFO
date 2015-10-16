@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-ru
 	pkgdesc = Russian language package for Iceweasel
-	pkgver = 41.0.1.deb1
+	pkgver = 41.0.2.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ru_41.0.1-1_all.deb
-	sha256sums = 3787e2715e89fc5480577c2a50799c4bbb1efb39cbf5e826138406b8e305aa17
+	depends = iceweasel>=41.0.2
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ru_41.0.2-1_all.deb
+	sha256sums = 9cc28d41cd1f10bf8176f693b99fa563278ba5a37c9483f7275d744c02e265d9
 
 pkgname = iceweasel-i18n-ru
 
