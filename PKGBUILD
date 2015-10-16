@@ -14,9 +14,10 @@ makedepends=('gtk3' 'intltool' 'curl' 'qt5-base' 'libevent')
 provides=('transmission-cli')
 conflicts=('transmission-cli')
 install=transmission-cli.install
-source=("https://transmission.cachefly.net/transmission-$pkgver.tar.xz" sequential.patch)
+source=("https://transmission.cachefly.net/transmission-$pkgver.tar.xz" "sequential.patch" "upnp-fix.patch")
 md5sums=('411aec1c418c14f6765710d89743ae42'
-         'cbbee2c84c25183d7322babfc8ab11e3')
+         'cbbee2c84c25183d7322babfc8ab11e3'
+         '7a6ccecb24b1d4186b7304a563419f7e')
 
 _inarray() {
   local e
@@ -27,6 +28,7 @@ _inarray() {
 prepare() {
   cd transmission-$pkgver
   patch -Np1 -i $srcdir/sequential.patch
+  patch -Np1 -i $srcdir/upnp-fix.patch
 }
 
 build() {
