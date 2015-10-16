@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ros
 	pkgdesc = ROS - ROS packaging system.
-	pkgver = 1.11.9
+	pkgver = 1.11.11
 	pkgrel = 1
 	url = http://www.ros.org/wiki/ROS
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ros-indigo-ros
 	depends = ros-indigo-roslib
 	depends = ros-indigo-rosbash
 	depends = ros-indigo-mk
-	source = ros::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/ros/1.11.9-0
+	source = ros::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/ros/1.11.11-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ros
