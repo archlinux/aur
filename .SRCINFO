@@ -1,7 +1,7 @@
 pkgbase = waifu2x-git
 	pkgdesc = Image rescaling and noise reduction using the power of convolutional neural networks
 	pkgver = r295.a5228c5
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = MIT
 	makedepends = git
