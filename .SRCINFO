@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-knlmeanscl
 	pkgdesc = Plugin for Vapoursynth: knlmeanscl
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171379
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = vapoursynth-plugin-knlmeanscl
 	makedepends = opencl-headers
 	depends = vapoursynth
 	depends = libcl
-	source = https://github.com/Khanattila/KNLMeansCL/archive/v0.7.0.tar.gz
-	sha1sums = 3c9aba09c52815e835ed310244a7a6601893a159
+	source = https://github.com/Khanattila/KNLMeansCL/archive/v0.7.1.tar.gz
+	sha1sums = 84cb50b48771876dc5773177d6d4c29057354d1a
 
 pkgname = vapoursynth-plugin-knlmeanscl
 
