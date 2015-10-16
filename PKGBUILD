@@ -24,9 +24,12 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
-    patch -p1 < ../fix_boost_include.patch
     cp build/config-linux-gcc.py config.py
     sed -i "s:.*COLLADAINCLUDE.*:COLLADAINCLUDE = \['/usr/include/collada-dom-mitsuba', '/usr/include/collada-dom-mitsuba/1.4'\]:g" config.py
+    #patch -p1 < ../fix_boost_include.patch
+    sed -i "s:boost/spirit/home/phoenix/bind/bind_member_variable.hpp:boost/phoenix/bind/bind_member_variable.hpp:g" src/bsdfs/irawan.h
+    sed -i "s:boost/spirit/home/phoenix/bind/bind_member_function.hpp:boost/phoenix/bind/bind_member_function.hpp:g" src/bsdfs/irawan.h
+    sed -i "s:boost/spirit/home/phoenix/statement/if.hpp:boost/phoenix/statement/if.hpp:g" src/bsdfs/irawan.h
     
 }
 
