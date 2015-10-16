@@ -1,6 +1,6 @@
 pkgbase = docker-registry-git
 	pkgdesc = An implementation of the Docker Registry HTTP API V2 for use with docker 1.6+.
-	pkgver = v2.0.0.205.ge03780c
+	pkgver = v2.1.1.128.gf6d2271
 	pkgrel = 1
 	url = https://github.com/docker/distribution
 	arch = any

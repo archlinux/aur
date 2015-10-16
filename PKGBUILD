@@ -2,7 +2,7 @@
 
 pkgname=docker-registry-git
 _pkgname=docker-registry
-pkgver=v2.0.0.205.ge03780c
+pkgver=v2.1.1.128.gf6d2271
 pkgrel=1
 pkgdesc="An implementation of the Docker Registry HTTP API V2 for use with docker 1.6+."
 arch=('any')
@@ -35,7 +35,7 @@ package() {
     export DISTRIBUTION_DIR="${srcdir}/distribution"
     install -v -D -m644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
     install -v -D -m755 "${DISTRIBUTION_DIR}/bin/registry" "${pkgdir}/usr/lib/${_pkgname}/registry"
-    install -v -D -m644 "${DISTRIBUTION_DIR}/cmd/registry/config.yml" "${pkgdir}/etc/${_pkgname}/config.yml"
+    install -v -D -m644 "${DISTRIBUTION_DIR}/cmd/registry/config-example.yml" "${pkgdir}/etc/${_pkgname}/config.yml"
 }
 
 # vim:set ts=4 sw=4 et:
