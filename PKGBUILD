@@ -2,12 +2,12 @@
 # Many, many thanks to former maintainer and author of original PKGBUILD, ronnie
 pkgname=mullvad
 pkgver=53
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('any')
 license=('unknown')
-depends=('openvpn' 'resolvconf' 'python2' 'python2-appdirs' 'gksu' 'wxpython' 'obfsproxy' 'python2-ipaddr' 'python2-netifaces')
+depends=('openvpn' 'resolvconf' 'python2' 'python2-appdirs' 'gksu' 'wxpython' 'obfsproxy' 'python2-ipaddr' 'python2-netifaces' 'python2-psutil')
 makedepends=()
 conflicts=()
 replaces=()
