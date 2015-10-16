@@ -15,7 +15,8 @@ conflicts=("mitsuba")
 source=("${_pkgname}::hg+https://www.mitsuba-renderer.org/repos/_10" "fix_boost_include.patch")
 sha256sums=("SKIP" "SKIP")
 
-#_py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
+_py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
+_py3include=/usr/include/`ls /usr/include |  grep python3`
 
 pkgver() {
   cd $srcdir/${_pkgname}
@@ -36,8 +37,22 @@ prepare() {
 build() {
     cd "${_pkgname}"
     #export MITSUBA_PYVER=${_pyver}
-    source setpath.sh
     scons --jobs=$[${MAKEFLAGS/-j/} - 1]
+    
+    #build python3 binding
+    _CFLAGS="-DMTS_BUILD_MODULE=MTS_MODULE_PYTHON -DMTS_DEBUG -DMTS_HAS_COHERENT_RT -DMTS_HAS_COLLADA=1 -DMTS_HAS_FFTW=1 -DMTS_HAS_LIBJPEG=1 -DMTS_HAS_LIBPNG=1 -DMTS_HAS_OPENEXR=1 -DMTS_SSE -DPyMitsuba_EXPORTS -DSINGLE_PRECISION -DSPECTRUM_SAMPLES=3 -fvisibility=hidden -pipe -march=nocona -ffast-math -Wall -Winvalid-pch -mfpmath=sse  -fopenmp -O3 -DNDEBUG -fPIC -I/usr/include/eigen3 -I/usr/include/OpenEXR -I../include -I${_py3include}"
+    mkdir -p build-py3
+    cd build-py3
+    [ -f render.cpp.o ] || g++ $_CFLAGS -o render.cpp.o -c ../src/libpython/render.cpp
+    [ -f core.cpp.o ] || g++ $_CFLAGS -o core.cpp.o -c ../src/libpython/core.cpp
+    g++ -fPIC -fvisibility=hidden -pipe -march=nocona -ffast-math \
+    -Wall -Winvalid-pch -mfpmath=sse  -fopenmp -O3 -DNDEBUG  \
+    -shared -Wl,-soname,mitsuba.so -o mitsuba.so render.cpp.o core.cpp.o \
+    -lmitsuba-core -lmitsuba-render \
+    -lz -lpng -ljpeg -lHalf -lIex -lImath -lIlmThread -lpthread -lIlmImf -lboost_thread \
+    -lpthread -lIlmImf -lboost_thread -lboost_filesystem -lboost_system -ldl -lfftw3 \
+    -lfftw3_threads -lrt -lboost_filesystem -lboost_system -lboost_python3 -lpython3 -lxerces-c \
+    -L${srcdir}/mitsuba/build/release/libcore -L${srcdir}/mitsuba/build/release/librender
 }
 
 package() {
@@ -54,7 +69,7 @@ package() {
 		${pkgdir}/usr/share/pixmaps \
 		${pkgdir}/usr/include/mitsuba/{core,hw,render,bidir} \
 		${pkgdir}/usr/lib/python2.7/lib-dynload \
-		${pkgdir}/usr/lib/python${_pyver}/lib-dynload
+		${pkgdir}/usr/lib/python${_py3ver}/lib-dynload
 
 	cd ${_pkgname}
 	install -m755 dist/mitsuba dist/mtsgui dist/mtssrv dist/mtsutil ${pkgdir}/usr/bin
@@ -68,7 +83,7 @@ package() {
 	install -m644 dist/data/ior/* ${pkgdir}/usr/share/mitsuba/data/ior
 	install -m644 dist/data/microfacet/* ${pkgdir}/usr/share/mitsuba/data/microfacet
 	install -m644 dist/python/2.7/mitsuba.so ${pkgdir}/usr/lib/python2.7/lib-dynload
-	#install -m644 dist/python/${_py3ver}/mitsuba.so ${pkgdir}/usr/lib/python${_py3ver}/lib-dynload
+	install -m644 build-py3/mitsuba.so ${pkgdir}/usr/lib/python${_py3ver}/lib-dynload
 	install -m644 data/linux/mitsuba.desktop ${pkgdir}/usr/share/applications
 	install -m644 src/mtsgui/resources/mitsuba48.png ${pkgdir}/usr/share/pixmaps
 	install -m644 include/mitsuba/*.h ${pkgdir}/usr/include/mitsuba
