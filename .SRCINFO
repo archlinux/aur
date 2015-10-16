@@ -1,6 +1,6 @@
 pkgbase = pithos-git
 	pkgdesc = Pandora Internet Radio player for GNOME
-	pkgver = 1.1.1.r27.g81ef2a9
+	pkgver = 1.1.1.r43.gb325db4
 	pkgrel = 1
 	url = https://pithos.github.io/
 	install = pithos-git.install
@@ -10,13 +10,13 @@ pkgbase = pithos-git
 	makedepends = automake
 	makedepends = autoconf
 	makedepends = intltool
-	depends = python>=3.5
 	depends = gtk3
 	depends = python-gobject
+	depends = libsecret
+	depends = python-cairo
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gst-plugins-base
-	depends = python-cairo
 	optdepends = libkeybinder3: for media keys plugin
 	optdepends = gst-plugins-ugly: MP3 playback support
 	optdepends = libappindicator-gtk3: Unity indicator applet support
@@ -29,7 +29,7 @@ pkgbase = pithos-git
 	conflicts = pithos
 	source = pithos-git.install
 	source = git+https://github.com/pithos/pithos.git
-	sha256sums = 961b42a5b1105ff4625b86f87b5fa5d83a59495149cfb74b59f51e910a474ff9
+	sha256sums = 5b3bb0f5a3cfe676eb716f3728ba3ba606e6eaa205b7f2050ba8ab9e6ded98d5
 	sha256sums = SKIP
 
 pkgname = pithos-git
