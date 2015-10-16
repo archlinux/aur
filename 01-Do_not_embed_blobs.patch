@@ -8,7 +8,7 @@
  import (
  	"fmt"
  	"io"
-@@ -27,11 +25,8 @@
+@@ -26,11 +24,8 @@
 
  // GetFile retrieves the content of an embedded file.
  func GetFile(bucket string, name string) ([]byte, error) {
@@ -24,7 +24,7 @@
  // Handler implements http.Handler.
 --- a/web/web.go
 +++ b/web/web.go
-@@ -45,7 +45,6 @@
+@@ -46,7 +46,6 @@
  	"github.com/prometheus/prometheus/version"
  	"github.com/prometheus/prometheus/web/api/legacy"
  	"github.com/prometheus/prometheus/web/api/v1"
@@ -32,7 +32,7 @@
  )
 
  var localhostRepresentations = []string{"127.0.0.1", "localhost"}
-@@ -97,7 +96,7 @@
+@@ -114,7 +113,7 @@
  	ListenAddress        string
  	ExternalURL          *url.URL
  	MetricsPath          string
@@ -41,7 +41,7 @@
  	UserAssetsPath       string
  	ConsoleTemplatesPath string
  	ConsoleLibrariesPath string
-@@ -157,11 +156,7 @@
+@@ -181,11 +180,7 @@
 
  	router.Get("/consoles/*filepath", instrf("consoles", h.consoles))
 
@@ -54,7 +54,7 @@
 
  	if o.UserAssetsPath != "" {
  		router.Get("/user/*filepath", instrf("user", route.FileServe(o.UserAssetsPath)))
-@@ -294,15 +289,7 @@
+@@ -325,15 +320,7 @@
  }
 
  func (h *Handler) getTemplateFile(name string) (string, error) {
@@ -73,7 +73,7 @@
  		return "", err
 --- a/cmd/prometheus/config.go
 +++ b/cmd/prometheus/config.go
-@@ -81,9 +81,10 @@
+@@ -82,9 +83,10 @@
  		&cfg.web.MetricsPath, "web.telemetry-path", "/metrics",
  		"Path under which to expose metrics.",
  	)

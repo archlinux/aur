@@ -5,7 +5,8 @@ After=network.target
 [Service]
 User=prometheus
 Group=prometheus
-ExecStart=/usr/bin/prometheus -storage.local.path=/var/lib/prometheus
+ExecStart=/usr/bin/prometheus
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
