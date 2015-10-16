@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hurrican
+Comment=A jump and shoot game based on the Turrican game series
+Icon=hurrican
+Exec=hurrican
+Categories=Game;ActionGame;
+Terminal=false
+StartupNotify=false
