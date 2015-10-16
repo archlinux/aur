@@ -1,16 +1,16 @@
-# Maintainer: polyzen <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=firefox-extension-refcontrol
 pkgver=0.8.17
-pkgrel=4
+pkgrel=5
 pkgdesc='Control what gets sent as the HTTP Referer on a per-site basis.'
 url=http://www.stardrifter.org/refcontrol/
 arch=('any')
 license=('MPL' 'GPL' 'LGPL')
 depends=('firefox')
-source=("http://www.stardrifter.org/refcontrol/RefControl-$pkgver.xpi")
+source=("https://addons.cdn.mozilla.net/user-media/addons/953/refcontrol-$pkgver-sm+fx.xpi")
 noextract=("${source##*/}")
-sha256sums=('8a5905723acbc92ea1fcb6e524892bf4a64a862bacf666c38baddec042d1531e')
+sha256sums=('a9cbacd40e6884ddfe7d22a546d3c9e504692554be5988dc127db21b69d67f73')
 
 package() {
   install -Dm755 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/{455D905A-D37C-4643-A9E2-F6FEFAA0424A}.xpi

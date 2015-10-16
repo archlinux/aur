@@ -1,16 +1,16 @@
 pkgbase = firefox-extension-refcontrol
 	pkgdesc = Control what gets sent as the HTTP Referer on a per-site basis.
 	pkgver = 0.8.17
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.stardrifter.org/refcontrol/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
 	depends = firefox
-	noextract = RefControl-0.8.17.xpi
-	source = http://www.stardrifter.org/refcontrol/RefControl-0.8.17.xpi
-	sha256sums = 8a5905723acbc92ea1fcb6e524892bf4a64a862bacf666c38baddec042d1531e
+	noextract = refcontrol-0.8.17-sm+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/953/refcontrol-0.8.17-sm+fx.xpi
+	sha256sums = a9cbacd40e6884ddfe7d22a546d3c9e504692554be5988dc127db21b69d67f73
 
 pkgname = firefox-extension-refcontrol
 
