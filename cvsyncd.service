@@ -1,0 +1,12 @@
+[Unit]
+Description=CVSync server daemon
+After=network.target
+
+[Service]
+User=cvsyncd
+Type=simple
+ExecStart=/usr/bin/cvsyncd -f
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

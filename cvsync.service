@@ -1,0 +1,9 @@
+[Unit]
+Description=Synchronize CVS trees
+RefuseManualStart=no
+RefuseManualStop=yes
+ 
+[Service]
+User=cvsync
+Type=oneshot
+ExecStart=/usr/bin/cvsync

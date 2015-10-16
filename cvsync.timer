@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodically synchronize CVS trees
+
+[Timer]
+Persistent=True
+OnUnitActiveSec=1d 
+Unit=cvsync.service
+
+[Install]
+WantedBy=timers.target
