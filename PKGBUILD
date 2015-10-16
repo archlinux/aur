@@ -7,13 +7,13 @@
 pkgname=qsanguoshav2-git
 _gitname=QSanguosha-v2
 pkgver=6017.bc669c2
-pkgrel=4
+pkgrel=5
 pkgdesc="An open source online version of the famous board game Sanguosha"
 arch=('i686' 'x86_64')
 url="https://github.com/Mogara/QSanguosha-v2"
 license=('GPL3')
 depends=('qt5-quick1' 'phonon' 'plib' 'lua' 'fmodex')
-makedepends=('git' 'swig')
+makedepends=('git' 'swig' 'qt5-tools')
 conflicts=(qsanguosha)
 provides=(qsanguosha)
 source=('git://github.com/Mogara/QSanguosha-v2.git' 'qsanguosha' 'qsanguosha.desktop' 'sgs.png')
