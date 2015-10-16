@@ -32,4 +32,6 @@ build() {
 package() {
   install -Dm755 "${srcdir}/build/src/libappmenu-qt5.so" "${pkgdir}/usr/lib/qt/plugins/platformthemes/libappmenu-qt5.so"
   install -Dm755 "${srcdir}/${_pkgname}/data/appmenu-qt5.sh" "${pkgdir}/etc/profile.d/appmenu-qt5.sh"
+  install -dm755 "${pkgdir}/usr/include/dbusmenu-qt5"
+  cp "${srcdir}/${_pkgname}/src/"*.h "${pkgdir}/usr/include/dbusmenu-qt5"
 }
