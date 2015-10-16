@@ -1,6 +1,6 @@
 pkgbase = gandi.cli
 	pkgdesc = Gandi command line interface
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = http://cli.gandi.net
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = gandi.cli
 	makedepends = python-docutils
 	depends = python3
 	depends = python-yaml
-	depends = python-click
+	depends = python-click>=3.1
 	depends = python-requests
 	depends = python-ipy
 	depends = openssl
@@ -21,8 +21,8 @@ pkgbase = gandi.cli
 	depends = git
 	optdepends = docker: gandi docker support
 	options = !emptydirs
-	source = https://github.com/Gandi/gandi.cli/archive/0.15.tar.gz
-	sha256sums = 925bffa69aaf475ba30f1c5979f0af9e336d747eebce6530bfa3984f408b7bf2
+	source = https://github.com/Gandi/gandi.cli/archive/0.16.tar.gz
+	sha256sums = f8560d35a5ca35a3bab428423dff0cccc13a91569f753c4f7a1756977fc7911e
 
 pkgname = gandi.cli
 
