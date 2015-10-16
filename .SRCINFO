@@ -1,17 +1,21 @@
 pkgbase = mailman-suite-git
-	pkgdesc = Provides a complete Mailman3 installation
-	pkgver = 0.1
+	pkgdesc = Provides a django project skeleton for serving postorius and hyperkitty
+	pkgver = r14.627dc30
 	pkgrel = 1
+	url = https://gitlab.com/thelinuxguy/mailman-suite
 	arch = any
-	depends = mailman-core
-	depends = python-mailman-hyperkitty-plugin
-	depends = mailman-django-git
-	depends = python2-whoosh
-	depends = python2-django-postorius-git
-	depends = python2-django-hyperkitty-git
+	license = MIT
+	makedepends = git
+	optdepends = mailman-core: the actual Mailman backend
+	optdepends = python-mailman-hyperkitty-plugin: hyperkitty archiver plugin
+	optdepends = python2-whoosh: search backend for hyperkitty
+	optdepends = python2-django-postorius-git: for list management
+	optdepends = python2-django-hyperkitty-git: for archives
 	provides = mailman-suite
 	conflicts = mailman-suite
 	options = !emptydirs
+	source = git+https://gitlab.com/thelinuxguy/mailman-suite.git
+	sha256sums = SKIP
 
 pkgname = mailman-suite-git
 
