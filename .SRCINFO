@@ -1,13 +1,13 @@
 pkgbase = pick
 	pkgdesc = Fuzzy text selection utility
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/thoughtbot/pick/
 	arch = x86_64
 	license = MIT
-	source = https://github.com/thoughtbot/pick/releases/download/v1.2.0/pick-1.2.0.tar.gz
-	source = https://github.com/thoughtbot/pick/releases/download/v1.2.0/pick-1.2.0.tar.gz.asc
-	sha1sums = acbe6428c422733b8d89f58f64fde031ad3006b8
+	source = https://github.com/thoughtbot/pick/releases/download/v1.2.1/pick-1.2.1.tar.gz
+	source = https://github.com/thoughtbot/pick/releases/download/v1.2.1/pick-1.2.1.tar.gz.asc
+	sha1sums = 36a8fd3c5727bfac69543197cfe91c263053d11d
 	sha1sums = SKIP
 
 pkgname = pick
