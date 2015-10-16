@@ -1,0 +1,48 @@
+diff -aur cnijfilter-source-3.80_old/backend/src/cnij_backend_common.c cnijfilter-source-3.80_new/backend/src/cnij_backend_common.c
+--- cnijfilter-source-3.80_old/backend/src/cnij_backend_common.c	2012-03-29 06:50:27.000000000 +0200
++++ cnijfilter-source-3.80_new/backend/src/cnij_backend_common.c	2013-03-31 19:49:41.335034142 +0200
+@@ -38,6 +38,7 @@
+ // CUPS Header
+ #include <cups/cups.h>
+ #include <cups/ipp.h>
++#include <cups/ppd.h>
+ 
+ // Header file for CANON
+ #include "cnij_backend_common.h"
+diff -aur cnijfilter-source-3.80_old/cngpij/cngpij/bjcups.c cnijfilter-source-3.80_new/cngpij/cngpij/bjcups.c
+--- cnijfilter-source-3.80_old/cngpij/cngpij/bjcups.c	2012-04-17 05:39:20.000000000 +0200
++++ cnijfilter-source-3.80_new/cngpij/cngpij/bjcups.c	2013-03-31 19:46:55.918366202 +0200
+@@ -21,6 +21,7 @@
+ #include	<config.h>
+ #endif	// HAVE_CONFIG_H
+ 
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
+ #include <cups/ppd.h>
+diff -aur cnijfilter-source-3.80_old/cngpijmnt/src/main.c cnijfilter-source-3.80_new/cngpijmnt/src/main.c
+--- cnijfilter-source-3.80_old/cngpijmnt/src/main.c	2012-04-26 11:49:34.000000000 +0200
++++ cnijfilter-source-3.80_new/cngpijmnt/src/main.c	2013-03-31 19:43:50.738364780 +0200
+@@ -21,6 +21,7 @@
+ #include	<config.h>
+ #endif	// HAVE_CONFIG_H
+ 
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
+ #include <cups/ppd.h>
+diff -aur cnijfilter-source-3.80_old/cngpijmon/src/bjcupsmon_cups.c cnijfilter-source-3.80_new/cngpijmon/src/bjcupsmon_cups.c
+--- cnijfilter-source-3.80_old/cngpijmon/src/bjcupsmon_cups.c	2012-05-22 11:49:27.000000000 +0200
++++ cnijfilter-source-3.80_new/cngpijmon/src/bjcupsmon_cups.c	2013-03-31 19:37:24.238361808 +0200
+@@ -18,9 +18,11 @@
+  */
+ 
+ /*** Includes ***/
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/ppd.h>
+ #include <cups/language.h>
++#include <cups/ppd.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <pwd.h>

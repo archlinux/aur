@@ -1,0 +1,185 @@
+diff -Naur cnijfilter-source-3.80_old/backend/configure.in cnijfilter-source-3.80_new/backend/configure.in
+--- cnijfilter-source-3.80_old/backend/configure.in	2012-03-29 06:50:26.000000000 +0200
++++ cnijfilter-source-3.80_new/backend/configure.in	2013-03-30 19:49:17.676110106 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(src/cnij_backend_common.c)
+ AM_INIT_AUTOMAKE(backend, 3.80-1)
+ 
+-AM_CONFIG_HEADER(config.h)
+-
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+    enable_progpath="${ac_default_prefix}/bin"
+diff -Naur cnijfilter-source-3.80_old/backendnet/configure.in cnijfilter-source-3.80_new/backendnet/configure.in
+--- cnijfilter-source-3.80_old/backendnet/configure.in	2012-03-29 06:50:28.000000000 +0200
++++ cnijfilter-source-3.80_new/backendnet/configure.in	2013-03-30 19:49:59.339445829 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(backend/cnijnetlm.c)
+ AM_INIT_AUTOMAKE(backendnet, 3.80-1)
+ 
+-AM_CONFIG_HEADER(config.h)
+-
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+    enable_progpath="${ac_default_prefix}/bin"
+diff -Naur cnijfilter-source-3.80_old/cngpij/configure.in cnijfilter-source-3.80_new/cngpij/configure.in
+--- cnijfilter-source-3.80_old/cngpij/configure.in	2012-03-29 06:50:26.000000000 +0200
++++ cnijfilter-source-3.80_new/cngpij/configure.in	2013-03-30 19:50:31.336114459 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(cngpij/bjcups.c)
+ AM_INIT_AUTOMAKE(cngpij, 3.80-1)
+ 
+-AM_CONFIG_HEADER(config.h)
+-
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+    enable_progpath="${ac_default_prefix}/bin"
+diff -Naur cnijfilter-source-3.80_old/cngpijmnt/configure.in cnijfilter-source-3.80_new/cngpijmnt/configure.in
+--- cnijfilter-source-3.80_old/cngpijmnt/configure.in	2012-03-29 06:50:26.000000000 +0200
++++ cnijfilter-source-3.80_new/cngpijmnt/configure.in	2013-03-30 20:00:17.019449626 +0100
+@@ -1,7 +1,7 @@
+ AC_INIT(src/main.c)
+ AM_INIT_AUTOMAKE(cngpijmnt, 3.80-1)
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(src/config.h)
+ 
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+diff -Naur cnijfilter-source-3.80_old/cngpijmnt/src/config.h.in cnijfilter-source-3.80_new/cngpijmnt/src/config.h.in
+--- cnijfilter-source-3.80_old/cngpijmnt/src/config.h.in	1970-01-01 01:00:00.000000000 +0100
++++ cnijfilter-source-3.80_new/cngpijmnt/src/config.h.in	2013-03-30 20:00:39.726117465 +0100
+@@ -0,0 +1 @@
++/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+diff -Naur cnijfilter-source-3.80_old/cngpijmon/cnijnpr/config.h.in cnijfilter-source-3.80_new/cngpijmon/cnijnpr/config.h.in
+--- cnijfilter-source-3.80_old/cngpijmon/cnijnpr/config.h.in	1970-01-01 01:00:00.000000000 +0100
++++ cnijfilter-source-3.80_new/cngpijmon/cnijnpr/config.h.in	2013-03-30 20:05:33.316118236 +0100
+@@ -0,0 +1 @@
++/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+diff -Naur cnijfilter-source-3.80_old/cngpijmon/cnijnpr/configure.in cnijfilter-source-3.80_new/cngpijmon/cnijnpr/configure.in
+--- cnijfilter-source-3.80_old/cngpijmon/cnijnpr/configure.in	2012-03-27 03:36:03.000000000 +0200
++++ cnijfilter-source-3.80_new/cngpijmon/cnijnpr/configure.in	2013-03-30 20:39:06.969468182 +0100
+@@ -1,7 +1,7 @@
+ AC_INIT(configure.in)
+ AM_INIT_AUTOMAKE(cnijnpr, 3.80-1)
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ 
+ AC_ARG_ENABLE(libpath)
+diff -Naur cnijfilter-source-3.80_old/cngpijmon/configure.in cnijfilter-source-3.80_new/cngpijmon/configure.in
+--- cnijfilter-source-3.80_old/cngpijmon/configure.in	2012-03-27 03:36:01.000000000 +0200
++++ cnijfilter-source-3.80_new/cngpijmon/configure.in	2013-03-30 20:01:29.616118397 +0100
+@@ -18,11 +18,10 @@
+ 
+ 
+ AM_INIT_AUTOMAKE(cngpijmon${program_suffix}, 3.80-1)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(src/config.h)
+ 
+ AC_ISC_POSIX
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ 
+ AM_PATH_GTK_2_0(2.0.0, ,
+diff -Naur cnijfilter-source-3.80_old/cngpijmon/src/config.h.in cnijfilter-source-3.80_new/cngpijmon/src/config.h.in
+--- cnijfilter-source-3.80_old/cngpijmon/src/config.h.in	1970-01-01 01:00:00.000000000 +0100
++++ cnijfilter-source-3.80_new/cngpijmon/src/config.h.in	2013-03-30 20:01:59.622786406 +0100
+@@ -0,0 +1 @@
++/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+diff -Naur cnijfilter-source-3.80_old/cnijfilter/configure.in cnijfilter-source-3.80_new/cnijfilter/configure.in
+--- cnijfilter-source-3.80_old/cnijfilter/configure.in	2012-03-22 02:50:19.000000000 +0100
++++ cnijfilter-source-3.80_new/cnijfilter/configure.in	2013-03-30 20:06:35.126120985 +0100
+@@ -25,7 +25,7 @@
+ 
+ 
+ AM_INIT_AUTOMAKE(cif${program_suffix}, 3.80-1)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(src/config.h)
+ 
+ dnl Checks for programs.
+ AC_ISC_POSIX
+@@ -47,7 +47,6 @@
+ AC_SUBST(ARC)
+ 
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ 
+ dnl Checks for libraries.
+ 
+diff -Naur cnijfilter-source-3.80_old/lgmon/configure.in cnijfilter-source-3.80_new/lgmon/configure.in
+--- cnijfilter-source-3.80_old/lgmon/configure.in	2012-03-27 03:47:22.000000000 +0200
++++ cnijfilter-source-3.80_new/lgmon/configure.in	2013-03-30 20:09:18.259454784 +0100
+@@ -9,7 +9,7 @@
+ fi
+ 
+ AM_INIT_AUTOMAKE(lgmon{program_suffix}, 3.80-1)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(src/config.h)
+ dnl AM_MAINTAINER_MODE
+ 
+ AC_DEFINE_UNQUOTED(PACKAGE_PRINTER_MODEL, "${program_suffix}")
+@@ -41,7 +41,6 @@
+ AC_SUBST(ARC)
+ 
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ AC_PROG_RANLIB
+ 
+diff -Naur cnijfilter-source-3.80_old/lgmon/src/config.h.in cnijfilter-source-3.80_new/lgmon/src/config.h.in
+--- cnijfilter-source-3.80_old/lgmon/src/config.h.in	1970-01-01 01:00:00.000000000 +0100
++++ cnijfilter-source-3.80_new/lgmon/src/config.h.in	2013-03-30 20:09:39.996124099 +0100
+@@ -0,0 +1 @@
++/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+diff -Naur cnijfilter-source-3.80_old/libs/configure.in cnijfilter-source-3.80_new/libs/configure.in
+--- cnijfilter-source-3.80_old/libs/configure.in	2012-03-29 06:50:28.000000000 +0200
++++ cnijfilter-source-3.80_new/libs/configure.in	2013-03-30 20:10:09.992788214 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(paramlist/paramlist.h)
+ AM_INIT_AUTOMAKE(buftool, 1.0.0)
+ 
+-AM_CONFIG_HEADER(config.h)
+-
+ # Checks for programs.
+ AC_PROG_CXX
+ AC_PROG_CC
+diff -Naur cnijfilter-source-3.80_old/maintenance/configure.in cnijfilter-source-3.80_new/maintenance/configure.in
+--- cnijfilter-source-3.80_old/maintenance/configure.in	2012-03-29 09:03:26.000000000 +0200
++++ cnijfilter-source-3.80_new/maintenance/configure.in	2013-03-30 20:13:16.686122979 +0100
+@@ -9,7 +9,7 @@
+ fi
+ 
+ AM_INIT_AUTOMAKE(maintenance${program_suffix}, 3.80-1)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(src/config.h)
+ AM_MAINTAINER_MODE
+ 
+ AC_DEFINE_UNQUOTED(PACKAGE_PRINTER_MODEL, "${program_suffix}")
+@@ -45,7 +45,6 @@
+ 
+ AC_ISC_POSIX
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ 
+ AM_PATH_GTK_2_0(2.6.0, ,
+diff -Naur cnijfilter-source-3.80_old/maintenance/src/config.h.in cnijfilter-source-3.80_new/maintenance/src/config.h.in
+--- cnijfilter-source-3.80_old/maintenance/src/config.h.in	1970-01-01 01:00:00.000000000 +0100
++++ cnijfilter-source-3.80_new/maintenance/src/config.h.in	2013-03-30 20:13:40.726123659 +0100
+@@ -0,0 +1 @@
++/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+diff -Naur cnijfilter-source-3.80_old/pstocanonij/configure.in cnijfilter-source-3.80_new/pstocanonij/configure.in
+--- cnijfilter-source-3.80_old/pstocanonij/configure.in	2012-03-29 06:50:25.000000000 +0200
++++ cnijfilter-source-3.80_new/pstocanonij/configure.in	2013-03-30 20:15:28.832790973 +0100
+@@ -1,8 +1,6 @@
+ AC_INIT(filter/pstocanonij.c)
+ AM_INIT_AUTOMAKE(pstocanonij, 1.0.0)
+ 
+-AM_CONFIG_HEADER(config.h)
+-
+ AC_ARG_ENABLE(progpath)
+ if test "${enable_progpath}" = "" ; then
+    enable_progpath="${ac_default_prefix}/bin"
