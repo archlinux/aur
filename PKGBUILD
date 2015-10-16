@@ -14,6 +14,6 @@ source=("https://github.com/mikar/${pkgname}/archive/v${pkgver}.tar.gz")
 package() {
     cd "$srcdir"/${pkgname}-${pkgver}
 
-    python2 setup.py install --root="${pkgdir}"
+    python setup.py install --root="${pkgdir}"
 }
 sha256sums=('14273cdd5562bd87355980d6a2700fbed830033ce49012a0241d3250c833d728')
