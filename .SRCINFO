@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-mk
 	pkgdesc = ROS - A collection of .mk include files for building ROS architectural elements.
-	pkgver = 1.11.9
+	pkgver = 1.11.11
 	pkgrel = 1
 	url = http://www.ros.org/wiki/ROS
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ros-indigo-mk
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-rosbuild
-	source = mk::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/mk/1.11.9-0
+	source = mk::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/mk/1.11.11-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-mk

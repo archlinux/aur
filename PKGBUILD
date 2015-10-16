@@ -4,7 +4,7 @@ pkgdesc="ROS - A collection of .mk include files for building ROS architectural 
 url='http://www.ros.org/wiki/ROS'
 
 pkgname='ros-indigo-mk'
-pkgver='1.11.9'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
