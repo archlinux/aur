@@ -1,6 +1,6 @@
 pkgbase = wart-git
 	pkgdesc = A small, readable lisp with thorough unit tests and extensible functions/macros.
-	pkgver = 4122.1acb357
+	pkgver = 4123.6d0ad11
 	pkgrel = 1
 	url = https://github.com/akkartik/wart
 	arch = i686
