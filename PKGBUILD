@@ -2,7 +2,7 @@
 
 pkgname=prometheus
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source service monitoring system and time series database."
 depends=('glibc')
 makedepends=('go')
@@ -16,7 +16,7 @@ source=("https://github.com/prometheus/prometheus/archive/$pkgver.tar.gz"
 				'01-Do_not_embed_blobs.patch'
 				'02-Default_settings.patch')
 sha256sums=('b91eb5b8223b08bb42dbfd93b22427bd338be10a12413524c3273666f570f894'
-            '8446311e207d42f80844c8628b720dc16003217c79edccd5b0efbd0ae6ff32ca'
+            '69f4171bae84051c993b9a3964453d0993335aba2b4c89dd7ecf179c47a320ec'
             'd21de4f7ee5d78152b6aa3673d805d769f229f8558b563c6fcdf9513b5847ec7'
             'a971f44220418836c55e1ed83864f5d287517f41b50f0b5648b249092915aa19')
 
