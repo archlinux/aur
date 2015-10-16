@@ -5,6 +5,7 @@ Name=Maple 18
 Type=Application
 Comment=Maple 18
 Exec=/usr/share/maple18/bin/xmaple
+Path=/usr/share/maple18
 Terminal=false
 Icon=/usr/share/maple18/bin/Maple18.png
 GenericName=Maple

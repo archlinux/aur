@@ -1,7 +1,7 @@
 pkgbase = maple18
 	pkgdesc = A commercial computer algebra system developed and sold commercially by Maplesoft. Version 18.
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.maplesoft.com/products/maple/
 	install = maple18.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = maple18
 	depends = ld-lsb
 	options = !strip
 	source = maple18.desktop
-	sha256sums = 31d0faeefa314a609db6282e1c7a6bef42293e73f84c02ef1d2ea222195115f1
+	sha256sums = 96a752f09a60e1a70f1da6a7389ddaf1bb977aab54c5ff955a781ee78c3e22c2
 
 pkgname = maple18
 

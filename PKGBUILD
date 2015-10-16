@@ -4,7 +4,7 @@
 
 pkgname=maple18
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="A commercial computer algebra system developed and sold commercially by Maplesoft.  Version 18."
 url=http://www.maplesoft.com/products/maple/
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 install='maple18.install'
 depends=('ld-lsb')
 source=(maple18.desktop)
-sha256sums=('31d0faeefa314a609db6282e1c7a6bef42293e73f84c02ef1d2ea222195115f1')
+sha256sums=('96a752f09a60e1a70f1da6a7389ddaf1bb977aab54c5ff955a781ee78c3e22c2')
 options=(!strip)
 PKGEXT='.pkg.tar' # XZ is too slow
 
@@ -52,10 +52,7 @@ package () {
   
   ln -s /usr/share/maple18/bin/maple ${pkgdir}/usr/bin/maple
   ln -s /usr/share/maple18/bin/maple.system.type ${pkgdir}/usr/bin/maple.system.type
-  ln -s /usr/share/maple18/bin/mhelp ${pkgdir}/usr/bin/mhelp
   ln -s /usr/share/maple18/bin/mint ${pkgdir}/usr/bin/mint
-  ln -s /usr/share/maple18/bin/TestMaple ${pkgdir}/usr/bin/TestMaple
-  ln -s /usr/share/maple18/bin/xmaple ${pkgdir}/usr/bin/xmaple
   ln -s /usr/share/maple18/EULA.html ${pkgdir}/usr/share/licenses/maple18/LICENSE.html
   
   find ${pkgdir}/ -name "*.log" -delete
