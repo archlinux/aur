@@ -1,5 +1,5 @@
 post_install() {
         echo "FractalArt runs on startup if your DE runs xdg startup files, otherwise you will need to run it manually at login by executing \"FractalArt\""
         echo "The generated image is available at ~/.fractalart/wallpaper.bmp"
-        echo "To set this wallpaper on Gnome run gsettings set org.gnome.desktop.background picture-uri file://$HOME/.fractalart/wallpaper.bmp"
+        echo 'To set this wallpaper on Gnome run "gsettings set org.gnome.desktop.background picture-uri file://$HOME/.fractalart/wallpaper.bmp"'
 }
