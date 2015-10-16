@@ -1,15 +1,15 @@
 pkgbase = nodejs-git-run
 	pkgdesc = A tool for managing multiple git repositories
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/mixu/gr
 	arch = any
 	license = BSD
 	depends = nodejs
 	depends = npm
-	noextract = git-run-0.4.1.tgz
-	source = http://registry.npmjs.org/git-run/-/git-run-0.4.1.tgz
-	sha1sums = 20974028d4bdbfc8f2967ee8caf74874d700fbfc
+	noextract = git-run-0.5.0.tgz
+	source = http://registry.npmjs.org/git-run/-/git-run-0.5.0.tgz
+	sha1sums = 80f51f1bd2e15e64781392cdb9dc6d9dbe4c0df9
 
 pkgname = nodejs-git-run
 
