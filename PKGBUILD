@@ -4,7 +4,7 @@
 
 pkgname=ted
 pkgver=2.23
-pkgrel=5
+pkgrel=6
 pkgdesc="Lightweight RTF text processor"
 arch=('i686' 'x86_64')
 url="http://www.nllgg.nl/Ted/"
@@ -61,12 +61,6 @@ md5sums=('4199df0deb82a90450135ec3f2b7d915'
          'fc92fda9a49aa309fefdf6a682028b2d'
          '4efb63d391b1196983fdcc1bcf751bc7'
          '63b39a2bd36790f2164cf80dfab603aa')
-
-prepare() {
-  cd Ted-$pkgver
-  # Freetype2 include patch: remove leading 'freetype' directory path from #include statement
-  sed -i "s|^\(#[ \t]*include[ \t]*<\)freetype/|\1|" appFrame/appFontConfig.c
-}
 
 build() {
   cd Ted-$pkgver
