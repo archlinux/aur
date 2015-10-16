@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=DbSchema
+Comment=Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.
+Icon=/opt/dbschema/config/appearance/images/icon.png
+Exec=/usr/bin/dbschema
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true
+# Uncomment the following line to create a friendly name for this desktop entry
+# HOWEVER - this will then bork all other XFramePeer like apps. In particular
+# this breaks how SQL Developer and IntelliJ IDEA work together.
+#StartupWMClass=sun-awt-X11-XFramePeer
