@@ -1,15 +1,37 @@
 post_install() {
     dkms add zfs/${1%%[-_]*}
+    cat << EOF
+==> To build and install your modules run: dkms install zfs/${1%%[_-]*} -k [KERNEL]
+==> To do this automatically at startup run: systemctl enable dkms.service
+EOF
+    check_initramfs "install"
 }
 
 pre_upgrade() {
-    pre_remove ${2%%[-_]*}
+    pre_remove "$2"
 }
 
 post_upgrade() {
-    post_install ${1%%[-_]*}
+    post_install "$1"
 }
 
 pre_remove() {
     [ -n "${1%%[-_]*}" ] && dkms remove zfs/${1%%[-_]*} --all &>/dev/null || true
+}
+
+post_remove() {
+    check_initramfs "remove"
+}
+
+check_initramfs() {
+    if grep -v '#' /etc/mkinitcpio.conf | grep zfs >/dev/null; then
+        if [[ $1 == 'remove' ]]; then
+            echo '==> The ZFS packages have been removed, but "zfs" remains in the "hooks"'
+            echo '==> list in mkinitcpio.conf! You will need to remove "zfs" from the '
+            echo '==> "hooks" list and then regenerate the initial ramdisk.'
+        else
+            echo '==> The ZFS packages are installed/updated, you need to (re)generate initial ramdisk yourself'
+            echo '==> After modules are built and installed, run: mkinitcpio -p [PRESET]'
+        fi
+    fi
 }

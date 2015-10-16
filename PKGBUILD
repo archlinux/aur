@@ -6,7 +6,7 @@
 pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
 pkgver=0.6.5.3_r0_g9aaf60b
-pkgrel=1
+pkgrel=2
 license=('CDDL')
 makedepends=("git" "tar")
 arch=("i686" "x86_64")
@@ -58,6 +58,7 @@ package_zfs-dkms-git() {
     cd "${dkmsdir}"
     ./autogen.sh
     scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n zfs
+    chmod g-w,o-w -R .
 }
 
 package_zfs-utils-dkms-git() {
