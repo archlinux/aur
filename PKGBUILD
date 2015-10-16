@@ -4,7 +4,7 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='http://ros.org/wiki/roslaunch'
 
 pkgname='ros-indigo-roslaunch'
-pkgver='1.11.14'
+pkgver='1.11.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
