@@ -9,6 +9,7 @@ pkgbase = python2-dopy
 	depends = python2
 	depends = python2-requests
 	source = https://pypi.python.org/packages/source/d/dopy/dopy-0.3.6.tar.gz
+	md5sums = 85d7ab553b6a3117295fe164e905cf50
 
 pkgname = python2-dopy
 

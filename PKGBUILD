@@ -33,3 +33,4 @@ package() {
   msg 'Installing...'
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
+md5sums=('85d7ab553b6a3117295fe164e905cf50')
