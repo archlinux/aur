@@ -17,6 +17,7 @@ md5sums=('0cd3b1d583e4226c610e845a7b61c0d7')
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
