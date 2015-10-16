@@ -19,7 +19,6 @@ package() {
   cd gitstats
 
   make install PREFIX="$pkgdir/usr"
-  sed -i -e '1s/$/2/' "$pkgdir/usr/bin/gitstats"
 } 
 
 # vim:set ts=2 sw=2 et:
