@@ -1,0 +1,47 @@
+usr=openbazaar-server
+home=/var/lib/openbazaar-server
+dbdata=obdata
+
+post_install() {
+  _mkuser
+  _mkdbfolder
+  _chown
+}
+
+post_upgrade() {
+  _mkuser
+  _chown
+}
+
+## arg 1:  the old package version
+post_remove() {
+  #_rmuser
+  echo "Please remove $home and user $usr manually"
+  echo "WARNING!!!"
+  echo "Be sure to save your db and gpg backup"
+}
+
+_chown() {
+  chown -R $usr:$usr $home $log $home/$dbdata
+}
+
+_mkuser() {
+  getent passwd $usr &>/dev/null || {
+    echo -n "Creating openbazaar-server user... "
+    grep -E "^openbazaar-server:" /etc/group >/dev/null || groupadd $usr
+    useradd -m -d $home -g $usr -s /usr/bin/nologin $usr 2>/dev/null
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing openbazaar user... "
+  userdel -rf $usr 2>/dev/null
+  echo "done"
+}
+
+_mkdbfolder() {
+  echo -n "Creating database folder... "
+  mkdir -p $home/$dbdata
+  echo "done"
+}
