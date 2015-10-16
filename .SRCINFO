@@ -6,6 +6,7 @@ pkgbase = spl-dkms-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = tar
 	source = git+https://github.com/zfsonlinux/spl.git#tag=spl-0.6.5.3
 	source = spl-utils.hostid
 	md5sums = SKIP

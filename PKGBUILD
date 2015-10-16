@@ -8,7 +8,7 @@ pkgname=("spl-dkms-git" "spl-utils-dkms-git")
 pkgver=0.6.5.3_r0_g7e85f6b
 pkgrel=1
 license=('GPL')
-makedepends=("git")
+makedepends=("git" "tar")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git#tag=spl-0.6.5.3"
@@ -24,7 +24,6 @@ pkgver() {
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
-    scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n spl
 
     _at_enable=""
     [ "${CARCH}" == "i686"  ] && _at_enable="--enable-atomic-spinlocks"
@@ -45,11 +44,15 @@ package_spl-dkms-git() {
     conflicts=("spl-git" "spl-lts" "spl-dkms")
     install=spl.install
 
-    install -d ${pkgdir}/usr/src
-    cp -a ${srcdir}/spl ${pkgdir}/usr/src/spl-${pkgver%%_*}
-    cd ${pkgdir}/usr/src/spl-${pkgver%%_*}
-    rm -rf .git*
-    make clean
+    dkmsdir="${pkgdir}/usr/src/spl-${pkgver%%_*}"
+    install -d "${dkmsdir}"
+
+    cd "${srcdir}/spl"
+    git archive --format=tar HEAD | tar -x -C "${dkmsdir}"
+
+    cd "${dkmsdir}"
+    ./autogen.sh
+    scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n spl
 }
 
 package_spl-utils-dkms-git() {
