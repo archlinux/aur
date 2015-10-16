@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-rgvs-git
+	pkgdesc = Plugin for Vapoursynth: rgvs (GIT version)
+	pkgver = r2.0.ge9ac65f
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=172270
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-rgvs
+	conflicts = vapoursynth-plugin-rgvs
+	source = rgvs::git+https://github.com/IFeelBloated/RGVS.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-rgvs-git
+
