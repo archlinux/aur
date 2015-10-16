@@ -26,7 +26,7 @@ prepare() {
     cd "${_pkgname}"
     patch -p1 < ../fix_boost_include.patch
     cp build/config-linux-gcc.py config.py
-    #sed -i "s:'/usr/include/collada-dom:'/usr/include/collada-dom2.4:g" config.py
+    sed -i "s:.*COLLADAINCLUDE.*:COLLADAINCLUDE = \['/usr/include/collada-dom-mitsuba', '/usr/include/collada-dom-mitsuba/1.4'\]:g" config.py
     
 }
 
