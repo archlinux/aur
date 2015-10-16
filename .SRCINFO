@@ -1,0 +1,39 @@
+pkgbase = ryzom-client
+	pkgdesc = Ryzom is a Free to Play MMORPG . This version is for playing on an official
+	pkgver = r6270.84b22d898cac
+	pkgrel = 1
+	url = http://www.ryzom.com/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = mercurial
+	makedepends = cpptest
+	makedepends = cmake
+	makedepends = bison
+	makedepends = mesa
+	depends = curl
+	depends = freealut
+	depends = libvorbis
+	depends = libjpeg
+	depends = rrdtool
+	depends = boost
+	depends = luabind
+	depends = libsquish
+	depends = libxrandr
+	depends = libxcursor
+	depends = hicolor-icon-theme
+	provides = libnel
+	provides = ryzom
+	provides = ryzomcore
+	conflicts = ryzom-client-latest-hg
+	conflicts = ryzom-client-hg
+	source = hg+https://bitbucket.org/ryzom/ryzomcore#branch=compatibility-develop
+	source = hg+http://hg.kervala.net/libwww
+	source = ryzom.sh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = a5ca7dfae7b9073f78cd1b0b7380755f
+
+pkgname = ryzom-client
+
