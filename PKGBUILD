@@ -29,4 +29,4 @@ package(){
 sha1sums=('a5145d0718c0b52e07bc42a40141c388b8f5e08a'
           '8b073fd8d750f92cd5012d9d13c374a978966e2f'
           'd609bda2b0ffd70b011a6b1f9ab51d62dd1f9ad4'
-          '88c7c63c14dd278299e7d5c7d9e0e71e740a2e18')
+          'df167fa32d22d7200f6645fef9b54b14e8ac6815')
