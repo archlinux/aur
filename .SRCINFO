@@ -13,7 +13,7 @@ pkgbase = openbazaar-client-git
 	source = openbazaar-client::git+https://github.com/OpenBazaar/OpenBazaar-Client.git
 	source = openbazaar-client.sh
 	md5sums = SKIP
-	md5sums = 0717c66b7078511c5af8ee11124df20c
+	md5sums = 70ef57608feaeeefd1cc6bb1b73bcc31
 
 pkgname = openbazaar-client-git
 
