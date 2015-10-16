@@ -6,6 +6,7 @@ pkgbase = zfs-dkms-git
 	arch = x86_64
 	license = CDDL
 	makedepends = git
+	makedepends = tar
 	source = git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.6.5.3
 	source = zfs-utils.bash-completion-r1
 	source = zfs-utils.initcpio.install

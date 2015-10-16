@@ -8,7 +8,7 @@ pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
 pkgver=0.6.5.3_r0_g9aaf60b
 pkgrel=1
 license=('CDDL')
-makedepends=("git")
+makedepends=("git" "tar")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.6.5.3"
@@ -28,17 +28,16 @@ pkgver() {
 build() {
     cd "${srcdir}/zfs"
     ./autogen.sh
-    scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n zfs
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --sbindir=/usr/bin \
+                --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib \
                 --datadir=/usr/share \
                 --includedir=/usr/include \
                 --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs \
-                --with-mounthelperdir=/usr/bin \
                 --with-config=user
     make
 }
@@ -50,11 +49,15 @@ package_zfs-dkms-git() {
     conflicts=("zfs-git" "zfs-lts" "zfs-dkms")
     install=zfs.install
 
-    install -d ${pkgdir}/usr/src
-    cp -a ${srcdir}/zfs ${pkgdir}/usr/src/zfs-${pkgver%%_*}
-    cd ${pkgdir}/usr/src/zfs-${pkgver%%_*}
-    rm -rf .git*
-    make clean
+    dkmsdir="${pkgdir}/usr/src/zfs-${pkgver%%_*}"
+    install -d "${dkmsdir}"
+
+    cd "${srcdir}/zfs"
+    git archive --format=tar HEAD | tar -x -C "${dkmsdir}"
+
+    cd "${dkmsdir}"
+    ./autogen.sh
+    scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n zfs
 }
 
 package_zfs-utils-dkms-git() {
