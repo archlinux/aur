@@ -2,15 +2,14 @@
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
 pkgname=insync-nemo
-pkgver=1.2.8.35316
+pkgver=1.2.8.35136
 pkgrel=1
 pkgdesc="Nemo integration for insync"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
 arch=('any')
-
-depends=("insync" "nemo" "python2-nemo")
+depends=("insync" "nemo-python")
 makedepends=('gtk-doc')
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}-precise_all.deb")
 sha256sums=("6d3223f6428190dfac1fe4966dbeae5af2fb7632bf0a1023d54be8d445df24d8")
