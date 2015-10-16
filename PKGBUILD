@@ -37,8 +37,8 @@ package() {
 
   install -Dm644 LEGAL "$pkgdir"/usr/share/licenses/$pkgname/LEGAL
 
-  for i in ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS CODING COPYING ChangeLog \
-    FAQ INSTALL LEGAL NEWS NP-VERSION-GEN README REQUIREMENTS SUPPORT THANKS; do
+  for i in ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS CODING ChangeLog \
+    FAQ NEWS README REQUIREMENTS SUPPORT THANKS; do
     install -Dm644 $i "$pkgdir"/usr/share/doc/$pkgname/$i
   done
 }
