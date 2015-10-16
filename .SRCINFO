@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosbash
 	pkgdesc = ROS - Assorted shell commands for using ros with bash.
-	pkgver = 1.11.9
+	pkgver = 1.11.11
 	pkgrel = 1
 	url = http://www.ros.org/wiki/rosbash
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ros-indigo-rosbash
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-catkin
-	source = rosbash::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/rosbash/1.11.9-0
+	source = rosbash::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/rosbash/1.11.11-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosbash
