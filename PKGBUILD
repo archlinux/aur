@@ -1,6 +1,6 @@
 pkgname=amule-git
-pkgver=2.4.0.r10287.34c7d73
-pkgrel=2
+pkgver=2.4.0.r10288.17e1816
+pkgrel=1
 pkgdesc='Client for the eD2k and Kad networks'
 arch=(i686 x86_64)
 url=http://amule.org/
@@ -12,12 +12,11 @@ depends=(
   geoip
   libupnp
   wxgtk2.8
-  )
+)
 makedepends=(
 #  boost
   git
 )
-#makedepends=(boost git)
 provides=(amule)
 conflicts=(amule)
 backup=(usr/share/webapps/amps/index.php
