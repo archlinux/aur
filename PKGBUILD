@@ -2,10 +2,10 @@
 
 PKGEXT=.pkg.tar
 pkgname=shotcut-bin
-pkgver=150911
-pkgrel=2
+pkgver=151006
+pkgrel=1
 pkgdesc="A free, open source, cross-platform video editor."
-arch=(i686 x86_64)
+arch=(x86_64)
 url="http://www.mltframework.org/bin/view/Shotcut/WebHome"
 license=('GPL3')
 depends=('jack' 'libexif' 'desktop-file-utils' 'gstreamer0.10-base')
@@ -13,12 +13,7 @@ provides=('shotcut')
 install="$pkgname.install"
 source=("https://github.com/mltframework/shotcut/releases/download/v${pkgver::2}.${pkgver:2:2}/shotcut-debian7-x86${CARCH/*86}-$pkgver.tar.bz2"
        "shotcut.png")
-if [[ $CARCH = 'x86_64' ]]
-then
-    md5sums=('d815cb0f72e0b1b6494c64b62d2fceda' '457bc6ae5a299dee017521ec058e833b')
-else
-    md5sums=('cfb589fbcbaed452b15cba659465c147' '457bc6ae5a299dee017521ec058e833b')
-fi
+md5sums=('cbbc83afdbddfe5440795338cda4e8c9' '457bc6ae5a299dee017521ec058e833b')
 
 
 prepare() {
