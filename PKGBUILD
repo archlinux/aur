@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-cvs
-pkgver=20101127
-pkgrel=2
+pkgver=0.9.22.20151015
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Tux Paint is a free drawing program designed for young children."
 url="http://www.newbreedsoftware.com/tuxpaint/"
@@ -12,7 +12,7 @@ depends=('sdl_ttf' 'sdl_mixer' 'sdl_image' 'sdl_pango' 'libpaper' \
   'librsvg' 'python2' 'fribidi' 'fontforge')
 provides=('tuxpaint')
 conflicts=('tuxpaint')
-makedepends=('cvs' 'gperf')
+makedepends=('cvs' 'gperf' 'awk')
 options=('!makeflags')
 _cvsroot=":pserver:anonymous@tuxpaint.cvs.sourceforge.net:/cvsroot/tuxpaint"
 _cvsmod="tuxpaint"
@@ -29,6 +29,7 @@ pkgver() {
     cd $_cvsmod
   fi
   msg2 "Checkout up to date"
+  printf "%s.%s" $(awk '/Version/ {print $2}' $srcdir/$_cvsmod/tuxpaint.spec) $(cvs -q log | grep '^date:' | sort | tail -n 1 | cut -d ' ' -f 2 | tr -d '/')
 }
 
 build() {
