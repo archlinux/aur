@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosboost-cfg
 	pkgdesc = ROS - Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc.
-	pkgver = 1.11.9
+	pkgver = 1.11.11
 	pkgrel = 1
 	url = http://ros.org/wiki/rosboost_cfg
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ros-indigo-rosboost-cfg
 	makedepends = git
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
-	source = rosboost_cfg::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/rosboost_cfg/1.11.9-0
+	source = rosboost_cfg::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/rosboost_cfg/1.11.11-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosboost-cfg
