@@ -1,0 +1,22 @@
+pkgbase = python-zipline
+	pkgdesc = A backtester for financial algorithms.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = www.zipline.io
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python>=3.3
+	depends = python-numpy>=1.6.0
+	depends = python-pandas>=0.9.0
+	depends = python-dateutil>=2.1
+	depends = python-pytz
+	depends = python-logbook
+	depends = python-requests
+	depends = ta-lib
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/z/zipline/zipline-0.7.0.tar.gz
+	md5sums = 62d45c3c0d9a624e787b7e413937f7b4
+
+pkgname = python-zipline
+
