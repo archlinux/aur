@@ -4,8 +4,8 @@
 # Contributor: Sean Greenslade <zootboysean@gmail.com>
 
 pkgname=python2-rospkg
-pkgver=1.0.35
-pkgrel=2
+pkgver=1.0.37
+pkgrel=1
 pkgdesc="ROS - provides basic utilities for querying information about ROS packages, stacks, and distributions."
 url="http://docs.ros.org/independent/api/rospkg/html/"
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("https://pypi.python.org/packages/source/r/rospkg/rospkg-${pkgver}.tar.gz")
-md5sums=('de31059c920121b691f7bbdf6973e8dc')
+sha256sums=('f99ae5bc4d2288caad42d195eb1210103eb23daedce2358fef0173b2c82e3fd7')
 
 build() {
   cd ${srcdir}/rospkg-${pkgver}
