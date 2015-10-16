@@ -8,6 +8,7 @@ pkgbase = n2n-git
 	license = GPL3
 	makedepends = git
 	depends = openssl
+	depends = net-tools
 	source = git+https://github.com/lukablurr/n2n_v2_fork.git
 	source = edge.conf.example
 	source = edge.sh

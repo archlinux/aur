@@ -7,7 +7,7 @@ pkgdesc="Peer-to-Peer VPN."
 arch=(i686 x86_64)
 url="https://github.com/lukablurr/n2n_v2_fork"
 license=('GPL3')
-depends=('openssl')
+depends=('openssl' 'net-tools') #iproute2?
 makedepends=('git')
 source=('git+https://github.com/lukablurr/n2n_v2_fork.git'
         'edge.conf.example'
