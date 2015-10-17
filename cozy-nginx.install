@@ -19,9 +19,9 @@ post_install() {
 	npm install -g coffee-script
 	[ ! -d /usr/share/cozy ] && mkdir /usr/share/cozy
 	msg_blue "Downloading config file for Cozy Indexer"
-	wget -q https://raw.githubusercontent.com/cozy/cozy-debian/master/supervisor-cozy-indexer -O /usr/share/cozy/supervisor-cozy-indexer
+	curl https://raw.githubusercontent.com/cozy/cozy-debian/master/supervisor-cozy-indexer > /usr/share/cozy/supervisor-cozy-indexer
 	msg_blue "Downloading config file for Cozy Controller"
-	wget -q https://raw.githubusercontent.com/cozy/cozy-debian/master/supervisor-cozy-controller -O /usr/share/cozy/supervisor-cozy-controller
+	curl https://raw.githubusercontent.com/cozy/cozy-debian/master/supervisor-cozy-controller > /usr/share/cozy/supervisor-cozy-controller
 
 	COZY_DOMAIN=
 	msg_blue "Choose you Cozy's FQDN (fully-qualified domain name).\nA self-signed certificate will be issued for this domain only."
@@ -154,7 +154,8 @@ post_install() {
 	fi
 	cozy-monitor start proxy
 
-	wget -q https://raw.githubusercontent.com/cozy/cozy-debian/master/cozy-get-instance-param.py -O /usr/share/cozy/cozy-get-instance-param.py
+	msg_blue "Downloading instance configuration script"
+	curl https://raw.githubusercontent.com/cozy/cozy-debian/master/cozy-get-instance-param.py > /usr/share/cozy/cozy-get-instance-param.py
 
 	CURRENT_DOMAIN=$(python2 /usr/share/cozy/cozy-get-instance-param.py domain)
 	if [ "$CURRENT_DOMAIN" = "$COZY_DOMAIN" ]; then
@@ -204,7 +205,7 @@ post_install() {
 
 	if [ -f /etc/nginx/nginx.conf ]; then
 		msg_blue 'Configuring Nginx for '$COZY_DOMAIN
-		wget -q https://raw.githubusercontent.com/cozy/cozy-debian/master/nginx-config -O /usr/share/cozy/nginx-config
+		curl https://raw.githubusercontent.com/cozy/cozy-debian/master/nginx-config > /usr/share/cozy/nginx-config
 		sed -i 's/\%COZY\_DOMAIN\%/'$COZY_DOMAIN'/' /usr/share/cozy/nginx-config
 
 		include=$(cat /etc/nginx/nginx.conf | grep cozy)
