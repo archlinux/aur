@@ -1,7 +1,7 @@
 # Maintainer: TheNiceGuy <gabrielpolloguilbert@gmail.com>
 
 pkgname=vpaint-git
-pkgver=v1.5.r0.g416c2c1
+pkgver=v1.5.r40.g11d2671
 pkgrel=1
 pkgdesc='VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology. (git version)'
 arch=('i686' 'x86_64')
@@ -34,5 +34,5 @@ build() {
 package() {
     mkdir -p "$pkgdir/usr/bin"
 
-    install -Dm755 "$srcdir/$pkgname/build/VPaint" "$pkgdir/usr/bin/vpaint"
+    install -Dm755 "$srcdir/$pkgname/build/Gui/VPaint" "$pkgdir/usr/bin/vpaint"
 }
