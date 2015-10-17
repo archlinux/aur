@@ -5,7 +5,7 @@
 
 pkgname=memo-notes-git
 pkgver=1.6.r144
-pkgrel=1
+pkgrel=2
 pkgdesc="memo: A CLI note taking application."
 arch=('i686' 'x86_64')
 url="http://www.getmemo.org/"
@@ -24,8 +24,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  sed -i -e 's/CFLAGS=/CFLAGS+=/' \
-    -e 's#\(PREFIX=\)/usr/local#&/usr#' \
+  sed -i -e '/^override/d' \
+    -e 's/^\(PREFIX=\/usr\)\/local/\1/' \
+    -e '/^LDFLAGS=/d' \
     Makefile
 }
 
