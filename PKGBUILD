@@ -7,7 +7,7 @@
 pkgname=qsanguoshav2-git
 _gitname=QSanguosha-v2
 pkgver=6017.bc669c2
-pkgrel=6
+pkgrel=7
 pkgdesc="An open source online version of the famous board game Sanguosha"
 arch=('i686' 'x86_64')
 url="https://github.com/Mogara/QSanguosha-v2"
@@ -36,7 +36,7 @@ build() {
 package() {
     cd ${srcdir}/${_gitname}
     mkdir -p ${pkgdir}/opt/qsanguosha
-    cp -R {sanguosha.qm,font,doc,audio,diy,etc,extension-doc,QSanguosha,qt_zh_CN.qm,image,lang,scenarios,lua,skins} ${pkgdir}/opt/qsanguosha/
+    cp -R {sanguosha.qm,font,doc,audio,diy,etc,extension-doc,QSanguosha,qt_zh_CN.qm,image,lang,scenarios,lua,qss,skins,ui-script} ${pkgdir}/opt/qsanguosha/
     install -D -m755 ${srcdir}/qsanguosha "${pkgdir}/usr/bin/qsanguosha"
     install -D -m644 ${srcdir}/qsanguosha.desktop "${pkgdir}/usr/share/applications/qsanguosha.desktop"
     install -D -m644 ${srcdir}/sgs.png "${pkgdir}/usr/share/pixmaps/QSanguosha.png"
