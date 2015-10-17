@@ -9,7 +9,7 @@ url="https://cozy.io/"
 license=('GPL3')
 groups=()
 depends=('ca-certificates' 'couchdb' 'supervisor' 'cozy-indexer' 'bash' 'curl' 'git' 'imagemagick' 'curl'
-	'openssl' 'libxml2' 'libxslt' 'python2' 'python2-setuptools' 'python2-virtualenv' 'sqlite' 'sudo' 
+	'openssl' 'libxml2' 'libxslt' 'python2' 'python2-setuptools' 'python2-virtualenv' 'sqlite' 'libjpeg-turbo' 
 	'nodejs10' 'pwgen' 'pngcrush' 'nginx')
 makedepends=()
 checkdepends=()
