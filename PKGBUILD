@@ -6,7 +6,7 @@
 _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat')
-pkgver=225
+pkgver=227
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -33,7 +33,7 @@ md5sums=('SKIP'
          '1b3aa3a0551b08af9305d33f85b5c2fc'
          '36ee74767ac8734dede1cbd0f4f275d7'
          '9b9f4a58e4c4009bf5290c5b297600c3'
-         '5d7e15f4bd660cba06a7323b53c1e777')
+         '489e79ba87d2ebdd3cb4ef460a21bd00')
 
 prepare() {
   cd "$_pkgbase"
@@ -67,7 +67,6 @@ build() {
       --enable-tcp-stealth \
       --disable-audit \
       --disable-ima \
-      --disable-kdbus \
       --with-sysvinit-path= \
       --with-sysvrcnd-path= \
       --with-ntp-servers="${timeservers[*]}"
@@ -79,8 +78,8 @@ package_systemd-knock() {
   pkgdesc="system and service manager with support for stealth TCP sockets (Parabola rebranded)"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd-knock' 'libidn' 'lz4' 'pam' 'libseccomp' 'util-linux'
-           'xz')
+           'libgcrypt' "libsystemd=$pkgver" 'libidn' 'lz4' 'pam' 'libseccomp'
+           'util-linux' 'xz')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
@@ -149,17 +148,11 @@ package_systemd-knock() {
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
 
-  ### split out manpages for sysvcompat
-  rm -rf "$srcdir/_sysvcompat"
-  install -dm755 "$srcdir"/_sysvcompat/usr/share/man/man8/
-  mv "$pkgdir"/usr/share/man/man8/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
-     "$srcdir"/_sysvcompat/usr/share/man/man8
+  ### manpages shipped with systemd-sysvcompat
+  rm "$pkgdir"/usr/share/man/man8/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
 
-  ### split off runtime libraries
-  rm -rf "$srcdir/_libsystemd"
-  install -dm755 "$srcdir"/_libsystemd/usr/lib
-  cd "$srcdir"/_libsystemd
-  mv "$pkgdir"/usr/lib/lib{systemd,udev}*.so* usr/lib
+  ### runtime libraries shipped with libsystemd
+  rm "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so*
 
   # add example bootctl configuration
   install -Dm644 "$srcdir/parabola.conf" "$pkgdir"/usr/share/systemd/bootctl/parabola.conf
@@ -175,7 +168,7 @@ package_libsystemd-knock() {
             'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so' "libsystemd=$pkgver")
   conflicts=('libsystemd')
 
-  mv "$srcdir/_libsystemd"/* "$pkgdir"
+  make -C "$_pkgbase" DESTDIR="$pkgdir" install-libLTLIBRARIES
 }
 
 package_systemd-knock-sysvcompat() {
@@ -185,7 +178,10 @@ package_systemd-knock-sysvcompat() {
   conflicts=('sysvinit' 'systemd-sysvcompat')
   depends=('systemd-knock')
 
-  mv "$srcdir/_sysvcompat"/* "$pkgdir"
+  install -dm755 "$pkgdir"/usr/share/man/man8
+  cp -d --no-preserve=ownership,timestamp \
+    "$_pkgbase"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
+    "$pkgdir"/usr/share/man/man8
 
   install -dm755 "$pkgdir/usr/bin"
   for tool in runlevel reboot shutdown poweroff halt telinit; do

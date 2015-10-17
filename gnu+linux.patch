@@ -107,8 +107,8 @@ diff -Nur a/man/kernel-install.xml b/man/kernel-install.xml
            the file <filename>initrd</filename> is found next to the
            <filename>linux</filename> file, the initrd will be added to
 diff -Nur a/man/os-release.xml b/man/os-release.xml
---- a/man/os-release.xml	2015-09-11 14:55:47.368340904 -0300
-+++ b/man/os-release.xml	2015-09-11 15:30:35.417171013 -0300
+--- a/man/os-release.xml	2015-09-20 20:12:13.796706013 -0300
++++ b/man/os-release.xml	2015-09-20 20:14:32.399758269 -0300
 @@ -121,8 +121,8 @@
          <listitem><para>A string identifying the operating system,
          without a version component, and suitable for presentation to
@@ -179,16 +179,16 @@ diff -Nur a/man/os-release.xml b/man/os-release.xml
        </varlistentry>
  
        <varlistentry>
-@@ -218,7 +217,7 @@
-         the <ulink url="https://cpe.mitre.org/specification/">Common
+@@ -219,7 +218,7 @@
+         <ulink url="http://scap.nist.gov/specifications/cpe/">Common
          Platform Enumeration Specification</ulink> as proposed by the
-         MITRE Corporation. This field is optional. Example:
+         NIST. This field is optional. Example:
 -        <literal>CPE_NAME="cpe:/o:fedoraproject:fedora:17"</literal>
 +        <literal>CPE_NAME="cpe:/o:blagblagblag:blag:210k"</literal>
          </para></listitem>
        </varlistentry>
  
-@@ -253,8 +252,8 @@
+@@ -254,8 +253,8 @@
          one URL shall be listed in each setting. If multiple resources
          need to be referenced, it is recommended to provide an online
          landing page linking all available resources. Examples:
@@ -199,7 +199,7 @@ diff -Nur a/man/os-release.xml b/man/os-release.xml
        </varlistentry>
  
        <varlistentry>
-@@ -329,21 +328,22 @@
+@@ -330,21 +329,22 @@
      recommended to prefix new fields with an OS specific
      name in order to avoid name clashes. Applications
      reading this file must ignore unknown fields. Example:
@@ -232,18 +232,6 @@ diff -Nur a/man/os-release.xml b/man/os-release.xml
    </refsect1>
  
    <refsect1>
-diff -Nur a/man/sd_bus_error_add_map.xml b/man/sd_bus_error_add_map.xml
---- a/man/sd_bus_error_add_map.xml	2015-09-11 14:55:47.369340911 -0300
-+++ b/man/sd_bus_error_add_map.xml	2015-09-11 15:31:21.081524317 -0300
-@@ -82,7 +82,7 @@
- 
-     <para>The <function>sd_bus_error_add_map()</function> call may be
-     used to register additional mappings for converting D-Bus errors
--    to Linux <varname>errno</varname>-style errors. The mappings
-+    to GNU/Linux <varname>errno</varname>-style errors. The mappings
-     defined with this call are consulted by calls such as
-     <citerefentry><refentrytitle>sd_bus_error_set</refentrytitle><manvolnum>3</manvolnum></citerefentry>
-     or
 diff -Nur a/man/sd-bus-errors.xml b/man/sd-bus-errors.xml
 --- a/man/sd-bus-errors.xml	2015-09-11 14:55:47.368340904 -0300
 +++ b/man/sd-bus-errors.xml	2015-09-11 15:31:32.009608698 -0300
@@ -256,18 +244,6 @@ diff -Nur a/man/sd-bus-errors.xml b/man/sd-bus-errors.xml
      project='man-pages'><refentrytitle>errno</refentrytitle><manvolnum>3</manvolnum></citerefentry>)
      to D-Bus errors and back. For example, the error
      <constant>EUCLEAN</constant> is mapped to
-diff -Nur a/man/sd_is_fifo.xml b/man/sd_is_fifo.xml
---- a/man/sd_is_fifo.xml	2015-09-11 14:55:47.372340932 -0300
-+++ b/man/sd_is_fifo.xml	2015-09-11 15:32:47.346188708 -0300
-@@ -145,7 +145,7 @@
-     the <parameter>path</parameter> parameter is
-     <constant>NULL</constant>. For normal file system
-     <constant>AF_UNIX</constant> sockets, set the
--    <parameter>length</parameter> parameter to 0. For Linux abstract
-+    <parameter>length</parameter> parameter to 0. For GNU/Linux abstract
-     namespace sockets, set the <parameter>length</parameter> to the
-     size of the address, including the initial 0 byte, and set the
-     <parameter>path</parameter> to the initial 0 byte of the socket
 diff -Nur a/man/sd-login.xml b/man/sd-login.xml
 --- a/man/sd-login.xml	2015-09-11 14:55:47.368340904 -0300
 +++ b/man/sd-login.xml	2015-09-11 15:33:41.770605951 -0300
@@ -282,10 +258,34 @@ diff -Nur a/man/sd-login.xml b/man/sd-login.xml
  
      <para>Note that these APIs only allow purely passive access and
      monitoring of seats, sessions and users. To actively make changes
+diff -Nur a/man/sd_bus_error_add_map.xml b/man/sd_bus_error_add_map.xml
+--- a/man/sd_bus_error_add_map.xml	2015-09-11 14:55:47.369340911 -0300
++++ b/man/sd_bus_error_add_map.xml	2015-09-11 15:31:21.081524317 -0300
+@@ -82,7 +82,7 @@
+ 
+     <para>The <function>sd_bus_error_add_map()</function> call may be
+     used to register additional mappings for converting D-Bus errors
+-    to Linux <varname>errno</varname>-style errors. The mappings
++    to GNU/Linux <varname>errno</varname>-style errors. The mappings
+     defined with this call are consulted by calls such as
+     <citerefentry><refentrytitle>sd_bus_error_set</refentrytitle><manvolnum>3</manvolnum></citerefentry>
+     or
+diff -Nur a/man/sd_is_fifo.xml b/man/sd_is_fifo.xml
+--- a/man/sd_is_fifo.xml	2015-09-11 14:55:47.372340932 -0300
++++ b/man/sd_is_fifo.xml	2015-09-11 15:32:47.346188708 -0300
+@@ -145,7 +145,7 @@
+     the <parameter>path</parameter> parameter is
+     <constant>NULL</constant>. For normal file system
+     <constant>AF_UNIX</constant> sockets, set the
+-    <parameter>length</parameter> parameter to 0. For Linux abstract
++    <parameter>length</parameter> parameter to 0. For GNU/Linux abstract
+     namespace sockets, set the <parameter>length</parameter> to the
+     size of the address, including the initial 0 byte, and set the
+     <parameter>path</parameter> to the initial 0 byte of the socket
 diff -Nur a/man/sd_notify.xml b/man/sd_notify.xml
---- a/man/sd_notify.xml	2015-09-11 14:55:47.374340946 -0300
-+++ b/man/sd_notify.xml	2015-09-11 15:34:14.466855938 -0300
-@@ -295,7 +295,7 @@
+--- a/man/sd_notify.xml	2015-10-17 07:04:47.746947733 -0300
++++ b/man/sd_notify.xml	2015-10-17 07:05:10.849133263 -0300
+@@ -316,7 +316,7 @@
      referenced in the <varname>$NOTIFY_SOCKET</varname> environment
      variable. If the first character of
      <varname>$NOTIFY_SOCKET</varname> is <literal>@</literal>, the
@@ -295,8 +295,8 @@ diff -Nur a/man/sd_notify.xml b/man/sd_notify.xml
      service, using SCM_CREDENTIALS.</para>
    </refsect1>
 diff -Nur a/man/systemd-detect-virt.xml b/man/systemd-detect-virt.xml
---- a/man/systemd-detect-virt.xml	2015-09-11 14:55:47.377340967 -0300
-+++ b/man/systemd-detect-virt.xml	2015-09-11 15:43:31.015047569 -0300
+--- a/man/systemd-detect-virt.xml	2015-09-20 20:12:13.803372347 -0300
++++ b/man/systemd-detect-virt.xml	2015-09-20 20:12:54.388005823 -0300
 @@ -104,16 +104,6 @@
            </row>
  
@@ -314,7 +314,7 @@ diff -Nur a/man/systemd-detect-virt.xml b/man/systemd-detect-virt.xml
        <entry><varname>oracle</varname></entry>
        <entry>Oracle VM VirtualBox (historically marketed by innotek and Sun Microsystems)</entry>
            </row>
-@@ -141,12 +131,12 @@
+@@ -146,12 +136,12 @@
  
            <row>
        <entry><varname>lxc</varname></entry>
@@ -342,21 +342,21 @@ diff -Nur a/man/systemd-logind.service.xml b/man/systemd-logind.service.xml
  
      <para>See the <ulink
 diff -Nur a/man/systemd-machine-id-setup.xml b/man/systemd-machine-id-setup.xml
---- a/man/systemd-machine-id-setup.xml	2015-09-11 14:55:47.379340981 -0300
-+++ b/man/systemd-machine-id-setup.xml	2015-09-11 15:46:03.880182303 -0300
-@@ -78,7 +78,7 @@
-     must ensure that the UUID passed is sufficiently unique and is
-     different for every booted instanced of the VM.</para>
+--- a/man/systemd-machine-id-setup.xml	2015-10-17 07:04:47.750280903 -0300
++++ b/man/systemd-machine-id-setup.xml	2015-10-17 07:06:27.455327461 -0300
+@@ -88,7 +88,7 @@
+       and is different for every booted instance of the
+       VM.</para></listitem>
  
--    <para>Similar, if run inside a Linux container environment and a
-+    <para>Similar, if run inside a GNU/Linux container environment and a
-     UUID is set for the container this is used to initialize the
-     machine ID. For details see the documentation of the <ulink
-     url="http://www.freedesktop.org/wiki/Software/systemd/ContainerInterface">Container
+-      <listitem><para>Similar, if run inside a Linux container
++      <listitem><para>Similar, if run inside a GNU/Linux container
+       environment and a UUID is configured for the container this is
+       used to initialize the machine ID. For details see the
+       documentation of the <ulink
 diff -Nur a/man/systemd-nspawn.xml b/man/systemd-nspawn.xml
---- a/man/systemd-nspawn.xml	2015-09-11 14:55:47.379340981 -0300
-+++ b/man/systemd-nspawn.xml	2015-09-11 16:07:48.210766346 -0300
-@@ -91,7 +91,7 @@
+--- a/man/systemd-nspawn.xml	2015-10-17 07:04:47.753614071 -0300
++++ b/man/systemd-nspawn.xml	2015-10-17 07:05:10.849133263 -0300
+@@ -91,14 +91,14 @@
  
      <para>In contrast to
      <citerefentry project='man-pages'><refentrytitle>chroot</refentrytitle><manvolnum>1</manvolnum></citerefentry> <command>systemd-nspawn</command>
@@ -365,8 +365,7 @@ diff -Nur a/man/systemd-nspawn.xml b/man/systemd-nspawn.xml
      container.</para>
  
      <para>Use a tool like
-@@ -99,7 +99,7 @@
-     <citerefentry project='die-net'><refentrytitle>yum</refentrytitle><manvolnum>8</manvolnum></citerefentry>,
+     <citerefentry project='mankier'><refentrytitle>dnf</refentrytitle><manvolnum>8</manvolnum></citerefentry>,
      <citerefentry project='die-net'><refentrytitle>debootstrap</refentrytitle><manvolnum>8</manvolnum></citerefentry>,
      or
 -    <citerefentry project='archlinux'><refentrytitle>pacman</refentrytitle><manvolnum>8</manvolnum></citerefentry>
@@ -374,7 +373,7 @@ diff -Nur a/man/systemd-nspawn.xml b/man/systemd-nspawn.xml
      to set up an OS directory tree suitable as file system hierarchy
      for <command>systemd-nspawn</command> containers.</para>
  
-@@ -783,46 +783,35 @@
+@@ -837,46 +837,35 @@
      <title>Examples</title>
  
      <example>
@@ -433,9 +432,9 @@ diff -Nur a/man/systemd-nspawn.xml b/man/systemd-nspawn.xml
        in a namespace container in it.</para>
      </example>
  
-@@ -860,7 +849,7 @@
+@@ -914,7 +903,7 @@
+       <citerefentry project='man-pages'><refentrytitle>chroot</refentrytitle><manvolnum>1</manvolnum></citerefentry>,
        <citerefentry project='mankier'><refentrytitle>dnf</refentrytitle><manvolnum>8</manvolnum></citerefentry>,
-       <citerefentry project='die-net'><refentrytitle>yum</refentrytitle><manvolnum>8</manvolnum></citerefentry>,
        <citerefentry project='die-net'><refentrytitle>debootstrap</refentrytitle><manvolnum>8</manvolnum></citerefentry>,
 -      <citerefentry project='archlinux'><refentrytitle>pacman</refentrytitle><manvolnum>8</manvolnum></citerefentry>,
 +      <citerefentry project='parabola'><refentrytitle>pacman</refentrytitle><manvolnum>8</manvolnum></citerefentry>,
@@ -467,8 +466,8 @@ diff -Nur a/man/systemd.socket.xml b/man/systemd.socket.xml
          can be inherited between processes.</para></listitem>
        </varlistentry>
 diff -Nur a/man/systemd.xml b/man/systemd.xml
---- a/man/systemd.xml	2015-09-11 14:55:47.386341030 -0300
-+++ b/man/systemd.xml	2015-09-11 16:31:49.069636893 -0300
+--- a/man/systemd.xml	2015-10-17 07:04:47.756947238 -0300
++++ b/man/systemd.xml	2015-10-17 07:05:10.849133263 -0300
 @@ -61,7 +61,7 @@
    <refsect1>
      <title>Description</title>
@@ -478,7 +477,7 @@ diff -Nur a/man/systemd.xml b/man/systemd.xml
      systems. When run as first process on boot (as PID 1), it acts as
      init system that brings up and maintains userspace
      services.</para>
-@@ -826,10 +826,10 @@
+@@ -858,10 +858,10 @@
      <title>Kernel Command Line</title>
  
      <para>When run as system instance systemd parses a number of
