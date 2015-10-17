@@ -1,7 +1,7 @@
 pkgbase = linux-think
 	pkgdesc = Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments
 	pkgver = 4.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = linux-think
 	makedepends = bc
 	optdepends = nvidia-think: nvidia drivers
 	optdepends = bbswitch-think: optimus support
+	optdepends = linux-think-firmware: BRCM bluetooth firmware
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.3.xz
