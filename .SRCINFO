@@ -14,6 +14,7 @@ pkgbase = cozy-apache
 	depends = curl
 	depends = git
 	depends = imagemagick
+	depends = curl
 	depends = openssl
 	depends = libxml2
 	depends = libxslt
