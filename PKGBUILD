@@ -2,7 +2,7 @@
 
 pkgname=python-ipwhois
 _pkgname=ipwhois
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="IP Whois Resolution and Parsing"
 url="https://github.com/secynic/ipwhois"
