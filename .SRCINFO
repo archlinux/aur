@@ -1,0 +1,15 @@
+pkgbase = perl-xml-treepp-xmlpath
+	pkgdesc = Similar to XPath, defines a path as an accessor to nodes of an XML::TreePP parsed XML Document.
+	pkgver = 0.72
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-TreePP-XMLPath
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-xml-treepp
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RG/RGLAUE/XML-TreePP-XMLPath-0.72.tgz
+	md5sums = SKIP
+
+pkgname = perl-xml-treepp-xmlpath
+
