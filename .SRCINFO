@@ -2,7 +2,7 @@ pkgbase = perl-spreadsheet-parsexlsx
 	pkgdesc = parse XLSX files
 	pkgver = 0.18
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Spreadsheet-ParseXLSX
+	url = https://metacpan.org/release/Spreadsheet-ParseXLSX
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -10,10 +10,11 @@ pkgbase = perl-spreadsheet-parsexlsx
 	depends = perl-graphics-colorutils>=0
 	depends = perl-spreadsheet-parseexcel>=0.61
 	depends = perl-xml-twig>=0
+	depends = perl>=5.008
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Spreadsheet-ParseXLSX-0.18.tar.gz
-	md5sums = 86887924266348100b50229037805c61
-	sha512sums = 79d1dbe9de0a3b246511f4a6aa3a5b7e320733030db15aa87ad8a0d8bf3a993ff519d71d6347275fe79cb4b2fdf710c395d6a4f50b42ac23066a883fa5ce6a8a
+	md5sums = 3650e612dbb5b1432e087a10eaaa3f97
+	sha512sums = e5265e731d8c374fa2daea45e507d790c8699fc21e1f6eadbff6c00c5853223f012a6f03fb78f9a53bbdab2713bd6a4006e59393dbdca74cb871f19efee0f046
 
 pkgname = perl-spreadsheet-parsexlsx
 
