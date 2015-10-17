@@ -8,7 +8,7 @@ arch=('x86_64')
 url='http://www.geocities.jp/kosako3/oniguruma/'
 license=('BSD')
 depends=('oniguruma')
-source=("http://www.geocities.jp/kosako3/oniguruma/archive/onig-${pkgver}.tar.gz")
+source=("https://github.com/kkos/oniguruma/releases/download/v5.9.6/onig-$pkgver.tar.gz")
 sha256sums=('d5642010336a6f68b7f2e34b1f1cb14be333e4d95c2ac02b38c162caf44e47a7')
 
 build() {
