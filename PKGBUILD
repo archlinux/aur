@@ -18,16 +18,16 @@ source=(http://downloads.sourceforge.net/project/$pkgname/$_pkgname/$pkgver/$_pk
 md5sums=('e1831b8fc7fbf155659ec7aa8351b57a')
 
 build() {
-  cd $srcdir/$_pkgname-$pkgver/
+  cd "$srcdir"/"$_pkgname-$pkgver"/
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver/
+  cd "$srcdir"/"$_pkgname-$pkgver"/
   make DESTDIR="$pkgdir/" install
-  install -D -m644 LICENSE.TXT $pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT
+  install -D -m644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
 }
 
 # vim:set ts=2 sw=2 et:
