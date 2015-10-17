@@ -14,8 +14,8 @@ _log_path="/var/log/${_pkgname}"
 
 pkgname=nginx-mainline-libressl
 pkgver=1.9.5
-pkgrel=2
-librever=2.2.3
+pkgrel=3
+librever=2.2.4
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
 arch=('i686' 'x86_64')
 
