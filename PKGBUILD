@@ -3,7 +3,7 @@
 
 pkgname=bedup
 pkgver=0.10.0
-pkgrel=5
+pkgrel=1
 pkgdesc="Offline deduplication utility for the BTRFS filesystem"
 arch=('i686' 'x86_64')
 license=('GPL')

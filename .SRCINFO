@@ -1,7 +1,7 @@
 pkgbase = bedup
 	pkgdesc = Offline deduplication utility for the BTRFS filesystem
 	pkgver = 0.10.0
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/g2p/bedup
 	arch = i686
 	arch = x86_64
