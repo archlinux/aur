@@ -8,10 +8,9 @@ arch=('any')
 url="https://cozy.io/"
 license=('GPL3')
 groups=()
-depends=('ca-certificates' 'couchdb' 'supervisor' 'cozy-indexer' 'bash' 'curl' 'git' 'imagemagick' 'autoconf' 'automake' 
-	'openssl' 'libxml2' 'libxslt' 'python2' 'python2-setuptools' 'python2-virtualenv' 'sqlite' 'sudo' 'nodejs10' 'pwgen'
-	'binutils' 'bison' 'fakeroot' 'file' 'findutils' 'flex' 'gawk' 'gcc' 'gettext' 'grep' 'groff' 'gzip' 'libtool' 'm4' 'make'
-	'patch' 'pkg-config' 'sed' 'sudo' 'texinfo' 'util-linux' 'which' 'pngcrush')
+depends=('ca-certificates' 'couchdb' 'supervisor' 'cozy-indexer' 'bash' 'curl' 'git' 'imagemagick' 
+	'openssl' 'libxml2' 'libxslt' 'python2' 'python2-setuptools' 'python2-virtualenv' 'sqlite' 'libjpeg-turbo'
+	'nodejs10' 'pwgen' 'pngcrush')
 makedepends=()
 checkdepends=()
 optdepends=()
