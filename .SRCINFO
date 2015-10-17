@@ -1,7 +1,7 @@
 pkgbase = grafana
 	pkgdesc = A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://grafana.org
 	install = grafana.install
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = grafana
 	license = APACHE
 	makedepends = go
 	makedepends = nodejs-grunt-cli
+	makedepends = phantomjs
+	makedepends = npm
 	depends = phantomjs
 	backup = etc/grafana/grafana.ini
 	source = https://github.com/grafana/grafana/archive/v2.1.3.tar.gz

@@ -3,13 +3,13 @@
 
 pkgname=grafana
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
 arch=('x86_64' 'i686')
 license=('APACHE')
 depends=(phantomjs)
-makedepends=(go nodejs-grunt-cli)
+makedepends=(go nodejs-grunt-cli phantomjs npm)
 install=${pkgname}.install
 backup=("etc/${pkgname}/${pkgname}.ini")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
@@ -20,7 +20,7 @@ md5sums=('4c0a403137d0257a513e7db005666aa8'
          '05508c9c21f4c93ad86944a52d37e925')
 
 prepare () {
-  cd "${pkgname}-${pkgver}"	
+  cd "${pkgname}-${pkgver}"
   patch -p1 -i "${srcdir}"/config.patch
 }
 
@@ -32,7 +32,7 @@ build() {
   godep restore
   mkdir -p "$GOPATH/src/github.com/grafana/grafana/"
   ln -s "$GOPATH/pkg" "$GOPATH/src/github.com/grafana/grafana/"
-  # build less to css for the frontend 
+  # build less to css for the frontend
   npm install
   #grunt
   # build the backend
