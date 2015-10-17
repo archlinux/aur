@@ -19,9 +19,7 @@ source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         nvidia-drm-outputclass.conf
         xvfb-run
         xvfb-run.1
-        0001-systemd-logind-do-not-rely-on-directed-signals.patch
-        0001-glamor-make-current-in-prepare-paths.patch
-        0001-os-make-sure-the-clientsWritable-fd_set-is-initializ.patch)
+        0001-systemd-logind-do-not-rely-on-directed-signals.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
@@ -30,19 +28,13 @@ sha256sums=('d9efaf191f9dd4e84771de507ac00571d2a2f43bfae589fbf1b05706f83bb280'
             'af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c'
-            '793579adbef979088cadc0fd9ce0c24df0455a6936d3de7a9356df537b7d9a81'
-            'efc05c06af2bfdf588ef7a60b44c1d180fb353b1bffdfdf96415d63690b6e394')
+            '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
 
   msg2 "fix VT switching with kdbus; from upstream"
   patch -Np1 -i ../0001-systemd-logind-do-not-rely-on-directed-signals.patch
-
-  msg2 "fix FS#45009, merged upstream"
-  patch -Np1 -i ../0001-glamor-make-current-in-prepare-paths.patch
-  patch -Np1 -i ../0001-os-make-sure-the-clientsWritable-fd_set-is-initializ.patch
 
   msg2 "Starting autoreconf..."
   autoreconf -fvi

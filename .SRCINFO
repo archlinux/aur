@@ -58,16 +58,12 @@ pkgbase = xorg-server-dev
 	source = xvfb-run
 	source = xvfb-run.1
 	source = 0001-systemd-logind-do-not-rely-on-directed-signals.patch
-	source = 0001-glamor-make-current-in-prepare-paths.patch
-	source = 0001-os-make-sure-the-clientsWritable-fd_set-is-initializ.patch
 	sha256sums = d9efaf191f9dd4e84771de507ac00571d2a2f43bfae589fbf1b05706f83bb280
 	sha256sums = SKIP
 	sha256sums = af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
 	sha256sums = 3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c
-	sha256sums = 793579adbef979088cadc0fd9ce0c24df0455a6936d3de7a9356df537b7d9a81
-	sha256sums = efc05c06af2bfdf588ef7a60b44c1d180fb353b1bffdfdf96415d63690b6e394
 
 pkgname = xorg-server-dev
 	pkgdesc = Xorg X server - Bleeding edge version
