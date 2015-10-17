@@ -1,16 +1,18 @@
-# Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
+# Maintainer: Wijnand Modderman-Lenstra <maze@pyth0n.org>
+# Contributor: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: Ruslan Nabioullin <rnabioullin at gmail dot com>
 # Contributor: Gordon JC Pearce <gordon at gjcp dot net>
-pkgname=soundmodem
+pkgname=soundmodem-hamlib
+_pkgname=soundmodem
 pkgver=0.18
-pkgrel=4
+pkgrel=1
 pkgdesc="Multiplatform Soundcard Packet Radio Modem"
 url="http://pv529.ncsrv.de/soundmodem/"
 license=('GPL2')
 source=('soundmodem.conf'
 	'soundmodem_conf.d'
 	'soundmodem_rc.d'
-    http://pv529.ncsrv.de/soundmodem/${pkgname}-${pkgver}.tar.gz
+    http://pv529.ncsrv.de/soundmodem/${_pkgname}-${pkgver}.tar.gz
 	'soundmodem.service'
   '0001-Search-replace-of-extern-inline-static-inline.patch')
 md5sums=('c9d051d31675d5543c86adc0bb52cd56'
@@ -19,14 +21,14 @@ md5sums=('c9d051d31675d5543c86adc0bb52cd56'
          '5058b3cc0397f11f23c3eb519960c47e'
          '84c6e81fcf548e802aa7ee2f6eb7c529'
          'e265cf3d47ca02a8677c5e2dd5ad1f6d')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 backup=('etc/ax25/soundmodem.conf'
         'etc/conf.d/soundmodem')
-depends=('audiofile' 'gtk2')
+depends=('audiofile' 'gtk2' 'hamlib')
 makedepends=('make' 'libxml2' 'alsa-lib' 'gtk2' 'audiofile')
 
 build() {
-  cd $srcdir/${pkgname}-${pkgver}
+  cd $srcdir/${_pkgname}-${pkgver}
 
   echo "Applying patch..."
   patch -p1 <$srcdir/0001-Search-replace-of-extern-inline-static-inline.patch
@@ -37,7 +39,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$_pkgname-$pkgver
   make install DESTDIR=$pkgdir
 
   mkdir -p $pkgdir/etc/ax25
