@@ -28,7 +28,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            '9d0ab6525eb5f42056e2465267c62fa67efc75c57ad5345b99414b783278e9a3'
+            'e0e066f3fc5f310644e9f3f3ede47db7ac040f44782f0a5cf75ce2c940444972'
             'SKIP'
             'e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2'
             'a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7'
@@ -36,10 +36,8 @@ sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'dcbed1ae73c4e1383210bad6f1f446bdd13f8b1c24d89bcf0483acc5e178c379'
             '4909b37856f4b2374e54e44d656971a1f1027900444ac494f4dd1bb113dc9c97'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '4e776734e2c2185910a6fbb6f333d967b04f4a72b3196310af286c6a779bd97d'
             '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
-            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
-            '0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183')
+            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
