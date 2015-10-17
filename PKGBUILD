@@ -2,8 +2,8 @@
 pkgbase=theharvester-git
 pkgname=theharvester-git
 pkgver=r38.d375a26
-pkgrel=1
-pkgdesc="Tool to print different useragents. Useful for curl or wget."
+pkgrel=2
+pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
 arch=('any')
 url="https://github.com/laramies/theHarvester"
 license=('GPL2')
