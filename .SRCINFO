@@ -1,0 +1,19 @@
+pkgbase = theharvester-git
+	pkgdesc = Tool to print different useragents. Useful for curl or wget.
+	pkgver = r38.d375a26
+	pkgrel = 1
+	url = https://github.com/laramies/theHarvester
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = bash
+	depends = bash
+	depends = python2
+	depends = python2-requests
+	provides = theharvester-git
+	conflicts = theharvester-git
+	source = theharvester-git::git+https://github.com/laramies/theHarvester.git
+	md5sums = SKIP
+
+pkgname = theharvester-git
+
