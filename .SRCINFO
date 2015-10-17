@@ -1,0 +1,20 @@
+pkgbase = vcxproj2cmake
+	pkgdesc = Convert Visual studio 2010 project(vcxproj) to CMakeFile.txt
+	pkgver = 20140728
+	pkgrel = 1
+	url = https://github.com/envi/vcxproj2cmake
+	arch = any
+	license = Unknown
+	makedepends = git
+	depends = perl-readonly
+	depends = perl-autobox-core
+	depends = perl-try-tiny
+	depends = perl-xml-treepp
+	depends = perl-xml-treepp-xmlpath
+	depends = perl-text-xslate
+	depends = perl-data-dumper
+	source = git+https://github.com/envi/vcxproj2cmake.git
+	md5sums = SKIP
+
+pkgname = vcxproj2cmake
+
