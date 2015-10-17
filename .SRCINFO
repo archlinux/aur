@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-lij
 	pkgdesc = Ligurian language pack for Iceweasel
-	pkgver = 41.0.1.deb1
+	pkgver = 41.0.2.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-lij_41.0.1-1_all.deb
-	sha256sums = a951d6080c48e57c10b8d60964c9e103b46d283dce851ad61bc74fe0c75e15f9
+	depends = iceweasel>=41.0.2
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-lij_41.0.2-1_all.deb
+	sha256sums = 825f22aeb0ce9268d8c624eef60a96eac93aab8af1cb93c86b97514c7b97fd8c
 
 pkgname = iceweasel-i18n-lij
 
