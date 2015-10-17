@@ -1,0 +1,16 @@
+pkgbase = mtx-svn
+	pkgdesc = Tools used to view information about, and to control, Media Changer devices such as Tape and DVD/CD libraries.
+	pkgver = r200
+	pkgrel = 1
+	url = http://http://sourceforge.net/projects/mtx/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	provides = mtx
+	conflicts = mtx
+	source = mtx-svn::svn+http://svn.code.sf.net/p/mtx/code/trunk
+	md5sums = SKIP
+
+pkgname = mtx-svn
+
