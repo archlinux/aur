@@ -1,0 +1,19 @@
+pkgbase = kde-thumbnailer-apk-kf5
+	pkgdesc = Preview image generator plugin for Android Application Package files. KF5 Ver.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php?content=156421
+	install = kde-thumbnailer-apk-kf5.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = kdelibs4support
+	conflicts = kde-thumbnailer-apk
+	source = kde-thumbnailer-apk-1.0.tar.bz2::http://kde-apps.org/CONTENT/content-files/156421-kde-thumbnailer-apk-1.0.tar.bz2
+	source = port_to_qt5.patch
+	sha256sums = aefb7296a5207e13c4f3624acb6fd3ea359972fbee7f618686f970036067f476
+	sha256sums = SKIP
+
+pkgname = kde-thumbnailer-apk-kf5
+
