@@ -23,3 +23,15 @@
   `vi PKGBUILD`
 * Build and install the package
   `makepkg -srci`
+
+## Update the PKGBUILD
+
+* Update PKGBUILD
+* Update source file hashes
+  `updpkgsums`
+* Update the .SRCINFO
+  `mksrcinfo`
+* Build the package
+  `makepkg -src`
+* Check package
+  `namcap docker-squash-*.pkg.tar.xz`
