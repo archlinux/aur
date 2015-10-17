@@ -14,5 +14,4 @@ package() {
         cp xinitrcsession-helper ${pkgdir}/usr/bin/
         install -d ${pkgdir}/usr/share/xsessions
         cp xinitrc.desktop ${pkgdir}/usr/share/xsessions/
-        cp fractalart.desktop ${pkgdir}/etc/xdg/autostart/
 }
