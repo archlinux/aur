@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 247555 2015-09-28 06:37:29Z tpowa $
+# $Id: PKGBUILD 248964 2015-10-13 05:36:23Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-macbook               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.2
-pkgver=4.2.1
+pkgver=4.2.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,10 +23,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'bluetooth.patch'
         'thunderbolt.patch'
         'change-default-console-loglevel.patch'
-        '0001-make_flush_workqueue_non_gpl.patch'
         '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
-        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
-        '0001-fix-bridge-regression.patch')
+        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch')
+
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
             '9d0ab6525eb5f42056e2465267c62fa67efc75c57ad5345b99414b783278e9a3'
@@ -60,10 +59,6 @@ prepare() {
   patch -p1 -i "${srcdir}/bluetooth.patch"
   patch -p1 -i "${srcdir}/thunderbolt.patch"
 
-  # fix work_queue symbol to non GPL for nvidia module building
-  # already applied to 4.3 series
-  patch -p1 -i "${srcdir}/0001-make_flush_workqueue_non_gpl.patch"
-
   # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
   # https://lkml.org/lkml/2015/8/18/292
   patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
@@ -72,10 +67,6 @@ prepare() {
   # rules are applied during startup - happened with Shorewall; journal had
   # many instances of this error: nf_conntrack: table full, dropping packet
   patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
-
-  # add not-yes-mainlined patch to fix bridge code
-  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
-  patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
   
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
