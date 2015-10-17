@@ -11,18 +11,15 @@ arch=('i686' 'x86_64')
 url="http://www.getmemo.org/"
 license=('custom')
 makedepends=('git')
-source=("$pkgname::git://github.com/nrosvall/memo.git"
-        'http://www.byteptr.com/fileformat.html')
-sha256sums=('SKIP'
-            '1447ef9efe397256d913f0146f0979265a1e12fa126bbd5b995e3e332ffefa21')
+source=("$pkgname::git+https://gitlab.com/Rosvall/memo.git")
+
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
   printf "%s.r%s" \
     "$(git describe --abbrev=0 | sed 's/^v//')" \
     "$(git rev-list --count HEAD)"
-    #"$(git log -1 --format="%cd" --date=short | sed 's/\-//g')" \
-    #"$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -49,5 +46,4 @@ package () {
   install -m644 "$srcdir/$pkgname"/memo.1 "$pkgdir"/usr/share/man/man1
   install -m644 "$srcdir/$pkgname"/README "$pkgdir"/usr/share/doc/"$pkgname"
   install -m644 "$srcdir/$pkgname"/NEWS "$pkgdir"/usr/share/doc/"$pkgname"
-  install -m644 "$srcdir"/fileformat.html "$pkgdir"/usr/share/doc/"$pkgname"
 }
