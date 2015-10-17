@@ -42,7 +42,6 @@ build() {
 
 check() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	sed -i 's|tests/builders.scm||' Makefile
 	make check
 }
 
