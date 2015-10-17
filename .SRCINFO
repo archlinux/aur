@@ -1,0 +1,19 @@
+pkgbase = libdui
+	pkgdesc = the Qt5 UI library from Deepin.
+	pkgver = r136.ad37d73
+	pkgrel = 1
+	url = git://gitcafe.com/Hualet/libdui.git
+	install = libdui.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	depends = qt5-base
+	provides = libdui
+	conflicts = libdui
+	source = git://gitcafe.com/Hualet/libdui.git
+	md5sums = SKIP
+
+pkgname = libdui
+
