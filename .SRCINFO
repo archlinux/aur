@@ -7,6 +7,7 @@ pkgbase = owncloud-news-updater
 	arch = any
 	license = AGPL
 	depends = python
+	depends = python-setuptools
 	options = !strip
 	source = https://github.com/owncloud/news/archive/6.0.4.tar.gz
 	sha512sums = 475f7df7f16787ac1ea200d4eeb6717317ce0ba975819f739f624cf5366bf5dcac5d029151e76d90e6965aa44c010465df0f6135fd62ad04f58760c596a3e288
