@@ -4,13 +4,13 @@
 
 pkgname=dotpac
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Bash script to get rid of *.pac* files."
 arch=(any)
 license=('BSD')
 url="http://wiki.archlinux.org/index.php/dotpac"
 depends=('bash' 'dialog')
-source=('https://raw.githubusercontent.com/AladW/scripts/master/bin/old/dotpac')
+source=('https://raw.githubusercontent.com/AladW/dotpac/master/dotpac')
 md5sums=('7984de79ee51711b5b26eaf4e477b6df')
 
 package() {
