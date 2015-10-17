@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=vm-bzr
-pkgver=1506
+pkgver=8.2.0b1.r1506
 pkgrel=1
 pkgdesc="View Mail for Emacs"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ _bzrmod="vm"
 
 pkgver() {
   cd $srcdir/${_bzrmod}
-  bzr revno
+  printf "%s.r%s" $(head -27 NEWS|tail -1| cut -c4-) $(bzr revno)
 }
 
 build() {

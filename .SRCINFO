@@ -1,6 +1,6 @@
 pkgbase = vm-bzr
 	pkgdesc = View Mail for Emacs
-	pkgver = 1506
+	pkgver = 8.2.0b1.r1506
 	pkgrel = 1
 	url = https://launchpad.net/vm
 	install = vm.install
