@@ -1,0 +1,15 @@
+pkgbase = pcre-ocaml
+	pkgdesc = OCaml bindings to PCRE (Perl Compatibility Regular Expressions)
+	pkgver = 6.2.4
+	pkgrel = 1
+	url = https://github.com/mmottl/pcre-ocaml
+	arch = x86_64
+	license = LGPL
+	depends = pcre
+	source = https://github.com/mmottl/pcre-ocaml/archive/v6.2.4.tar.gz
+	md5sums = b0ae2ce0be8742575996885f3b554ac6
+	sha1sums = 19a07ce8be46b02cb90b65663fb1a2cd744766a4
+	sha256sums = 5206a91a33e5da5f2262fc99d7e94d95aa870f3df5719363d5ea1b8fbbd76fd7
+
+pkgname = pcre-ocaml
+
