@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-uk
 	pkgdesc = Ukrainian language pack for Debian Iceweasel
-	pkgver = 41.0.1.deb1
+	pkgver = 41.0.2.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-uk_41.0.1-1_all.deb
-	sha256sums = 44335e985d5416ea5a3210d10909f545fbaddbd82bf537f45fc59979f178311f
+	depends = iceweasel>=41.0.2
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-uk_41.0.2-1_all.deb
+	sha256sums = 86edcbae2f1343c6399a9e52595354445b7df98456fa750d151672efc4a1f89f
 
 pkgname = iceweasel-i18n-uk
 
