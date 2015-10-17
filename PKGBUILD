@@ -1,11 +1,11 @@
-# Maintainer: Kåre Hampf <khampf@users.sourceforge.net>
+# Maintainer: K. Hampf <k.hampf@gmail.com>
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 
 pkgname=xmltv
 pkgver=0.5.67
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of utilities to download tv listings and format them in xml"
 arch=('any')
 url="http://xmltv.org/wiki/"
@@ -25,23 +25,32 @@ disable-unicode-string.patch)
 md5sums=('7f95c24f91a7ac48cf81c32b21dc0492'
          '2a55fecd366f27373633fdc02f6be237')
 
-prepare() {
-  echo "NOTE: Disabling recommended but optional Unicode::String"
-  echo "      (due to SIGSEGV in build process)"
-  cd "$pkgname-$pkgver"
-  patch -p0 -i $srcdir/disable-unicode-string.patch
-}
+#prepare() {
+#  echo "NOTE: Disabling recommended but optional Unicode::String"
+#  echo "      (due to SIGSEGV in build process)"
+#  cd "$pkgname-$pkgver"
+#  patch -p0 -i $srcdir/disable-unicode-string.patch
+#}
 
 build() {
   cd "$pkgname-$pkgver"
-  yes | perl Makefile.PL INSTALL_BASE=/usr INSTALLDIRS=vendor 
-
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  yes | /usr/bin/perl Makefile.PL PREFIX=/usr INSTALLDIRS=vendor 
   make
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" PREFIX=/usr install
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install DESTDIR="$pkgdir"
 	 
   # remove perllocal.pod and .packlist
   find ${pkgdir} -name perllocal.pod -delete
