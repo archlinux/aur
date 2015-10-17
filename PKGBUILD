@@ -1,14 +1,14 @@
 gitname=moviepy
 pkgname=python-${gitname}-git
 pkgver=247.517bc36
-pkgrel=1
+pkgrel=2
 pkgdesc="Script-based movie editing with python (git version)"
 arch=('any')
 url="http://zulko.github.io/moviepy/"
 license=("MIT")
 makedepends=('git' 'python-setuptools')
 depends=('ffmpeg' 'imagemagick' 'opencv'
-	 'python-decorator' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-scipy' 'python-tqdm')
+	 'python-decorator' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-scipy' 'python-tqdm' 'python-imageio')
 provides=('python-moviepy')
 conflicts=('python-moviepy')
 source=("git+https://github.com/Zulko/${gitname}.git")
