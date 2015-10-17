@@ -1,0 +1,16 @@
+pkgbase = linux-think-firmware
+	pkgdesc = Extra firmwares for linux-think
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/the-darkvoid/BrcmPatchRAM/
+	arch = any
+	makedepends = make
+	makedepends = git
+	makedepends = zlib
+	source = BCM20702A1_001.002.014.1483.1669_v5765.zhx
+	source = git://github.com/jessesung/hex2hcd.git#branch=master
+	md5sums = 21bb923d4445d3ae395d3cc2f5d53190
+	md5sums = SKIP
+
+pkgname = linux-think-firmware
+
