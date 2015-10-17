@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-pa-in
 	pkgdesc = Punjabi language pack for Iceweasel (India)
-	pkgver = 41.0.1.deb1
+	pkgver = 41.0.2.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-pa-in_41.0.1-1_all.deb
-	sha256sums = ee3dfb6fee534dd687f9cfbcad57ae20d030ba18eade4b7be7b02d4a23c38d43
+	depends = iceweasel>=41.0.2
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-pa-in_41.0.2-1_all.deb
+	sha256sums = f6231de08a895a063dd8466a35cc3197a9c823f10851dcbc6d6cecdd9c276c27
 
 pkgname = iceweasel-i18n-pa-in
 
