@@ -14,7 +14,7 @@ pkgbase = openorienteering-mapper-git
 	depends = qt5-base>=5.5.0
 	depends = polyclipping>=6.1.3a
 	depends = proj>=4.8.0
-	provides = openorienteering-mapper=r1927.d08e5c3
+	provides = openorienteering-mapper=0.5.96
 	source = mapper::git://github.com/openorienteering/mapper.git
 	sha256sums = SKIP
 
