@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-fa
 	pkgdesc = Persian language package for Iceweasel
-	pkgver = 41.0.1.deb1
+	pkgver = 41.0.2.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-fa_41.0.1-1_all.deb
-	sha256sums = 7c25b4951b2fdd4b7b80053e81b45945ecbf1bfbaa6eb579c66b2e5baaa7e6db
+	depends = iceweasel>=41.0.2
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-fa_41.0.2-1_all.deb
+	sha256sums = af9ccd871d6aa098e74ccae1a6da5510a17af394bba642ee62d9b32c43dad2c4
 
 pkgname = iceweasel-i18n-fa
 
