@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=pgloader
 pkgver=3.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A data loading tool for PostgreSQL, using the COPY command.'
 arch=('x86_64')
 url="http://pgloader.io/"
