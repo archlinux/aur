@@ -2,8 +2,8 @@
 # Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 pkgname=sayonara-player
-pkgver=0.7.1_r195
-_pkgver=r195
+pkgver=0.7.1_r211
+_pkgver=r211
 pkgrel=1
 pkgdesc="Is a small, clear and fast audio player for Linux written in C++, supported by the Qt framework. It uses Gstreamer as audio backend."
 arch=('any')
@@ -28,4 +28,4 @@ package() {
 	cd build
         make prefix=/usr DESTDIR="$pkgdir/" install
 }
-sha256sums=('50eb60b0bb0282c5ff1368cbc83deb0a1ef26783fb2e42f910181a18d11eb647')
+sha256sums=('8152afdd590fab3862e24de0bedbad539563157fe81d1308ba1587db2c9e98cd')
