@@ -1,5 +1,5 @@
 pkgbase = audio-convert-mod
-	pkgdesc = a simple audio file converter that supporting many formats
+	pkgdesc = a simple audio file converter supporting many formats
 	pkgver = 3.46.0b
 	pkgrel = 1
 	url = http://www.diffingo.com/oss/audio-convert-mod
