@@ -1,41 +1,42 @@
 pkgname=libksane-git
-pkgver=r345.a37669b
+pkgver=r410.de6110a
 pkgrel=1
 pkgdesc='An image scanning library'
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
-depends=('kdelibs' 'sane')
-#depends=('ki18n' 'sane' 'kwallet' 'ktextwidgets' 'kwidgetsaddons')
-makedepends=('git' 'automoc4' 'cmake')
+depends=('qt5-base' 'sane' 'ktextwidgets' 'kwallet')
+makedepends=('git' 'extra-cmake-modules-git')
 conflicts=('libksane')
 provides=('libksane')
 groups=('digikam-git')
 source=('libksane::git+git://anongit.kde.org/libksane')
 md5sums=('SKIP')
-#source=('libksane::git+git://anongit.kde.org/libksane#branch=frameworks')
 
 pkgver() {
-  cd ${srcdir}/libksane
+  cd "${srcdir}/libksane"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  if [[ -d ${srcdir}/build ]]; then
+if [[ -d "${srcdir}/build" ]]; then
       msg "Cleaning the previous build directory..."
-      rm -rf ${srcdir}/build
+      rm -rf "${srcdir}/build"
   fi
-  mkdir ${srcdir}/build
+  mkdir "${srcdir}/build"
 }
 
 build() {
-  cd ${srcdir}/build
-  cmake  ${srcdir}/libksane -DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr
+  cd "${srcdir}/build"
+  cmake "${srcdir}/libksane" -DCMAKE_BUILD_TYPE=Release \
+                -DCMAKE_INSTALL_PREFIX=/usr \
+                -DLIB_INSTALL_DIR=lib \
+                -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+                -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd ${srcdir}/build
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}" install
 }
