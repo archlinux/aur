@@ -1,7 +1,7 @@
 pkgbase = rmilter
 	pkgdesc = Another sendmail milter for different mail checks.
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rspamd.com
 	install = rmilter.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = rmilter
 	depends = openssl
 	depends = pcre
 	depends = libmilter
+	depends = opendkim
 	source = rmilter-1.6.4.tar.gz::https://codeload.github.com/vstakhov/rmilter/tar.gz/1.6.4
 	source = rmilter.service
 	sha256sums = 9980e2e8bfed17489e76d672757eb1928846a9ba3b8ff8592549b5d7b3c59159

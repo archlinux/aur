@@ -1,13 +1,13 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=rmilter
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Another sendmail milter for different mail checks."
 arch=('x86_64' 'i686' 'mips64el')
 url="http://rspamd.com"
 license=('BSD')
-depends=('openssl' 'pcre' 'libmilter')
+depends=('openssl' 'pcre' 'libmilter' 'opendkim')
 makedepends=('cmake' 'pkgconfig' 'bison' 'flex')
 install=rmilter.install
 
