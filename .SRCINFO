@@ -1,0 +1,16 @@
+pkgbase = mopidy-local-sqlite
+	pkgdesc = Mopidy SQLite local library extension
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mopidy/mopidy-local-sqlite
+	arch = any
+	license = Apache
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = mopidy
+	depends = python2-pykka
+	source = https://github.com/mopidy/mopidy-local-sqlite/archive/v1.0.0.tar.gz
+	sha256sums = 67a0a94fd26d0e7b59886f454fd74b6f22aa80796a8c3ed0e33c1d22c79411ae
+
+pkgname = mopidy-local-sqlite
+
