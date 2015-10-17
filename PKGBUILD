@@ -3,8 +3,8 @@
 
 _pkgname=pyradio
 pkgname=$_pkgname-git
-pkgver=0.4.r49.g022d161
-pkgrel=2
+pkgver=0.4.r50.g069a4b5
+pkgrel=1
 pkgdesc="Command line internet radio player"
 arch=('any')
 url="http://www.coderholic.com/pyradio/"
@@ -17,7 +17,7 @@ conflicts=($_pkgname)
 source=($pkgname::git://github.com/coderholic/pyradio.git
         pyradio.1)
 md5sums=('SKIP'
-         'b62b195c4a52b31aba0e8ec30a75edfc')
+         '261fc4e7c4a23aa7a74991068785c89b')
 
 pkgver() {
   cd $pkgname
@@ -29,9 +29,8 @@ package() {
 
   cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
-
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/pyradio/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/pyradio/README.md"
-  #install -Dm644 stations.csv "$pkgdir/usr/share/doc/pyradio/stations.csv"
+  install -Dm644 pyradio/stations.csv "$pkgdir/usr/share/doc/pyradio/stations.csv"
 } 
 
