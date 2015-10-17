@@ -1,0 +1,25 @@
+pkgbase = audio-convert-mod
+	pkgdesc = a simple audio file converter that supporting many formats
+	pkgver = 3.46.0b
+	pkgrel = 1
+	url = http://www.diffingo.com/oss/audio-convert-mod
+	arch = any
+	groups = multimedia
+	license = GPL
+	depends = pygtk
+	depends = mutagen
+	optdepends = lame: MP3 support
+	optdepends = vorbis-tools: Ogg Vorbis support
+	optdepends = musepack-tools: Musepack support
+	optdepends = flac: FLAC support
+	optdepends = mac: Monkeys Audio support
+	optdepends = faac: AAC/M4A/MP4 decoding
+	optdepends = faad: AAC/M4A/MP4 encoding
+	optdepends = wavpack: Wavpack support
+	optdepends = a52dec: Dolby Digital decoding
+	optdepends = ffmpeg: Dolby Digital encoding
+	source = http://www.diffingo.com/downloads/audio-convert-mod/audio-convert-mod-3.46.0b.tar.bz2
+	md5sums = ee500c8cdee8923df6cc15d2ea5e137c
+
+pkgname = audio-convert-mod
+
