@@ -1,0 +1,19 @@
+pkgbase = kde-thumbnailer-blender-kf5
+	pkgdesc = Preview image generator plugin for Android Application Package files. KF5 Ver.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php?content=156421
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = kdelibs4support
+	depends = zlib
+	conflicts = kde-thumbnailer-blender
+	source = http://kde-look.org/CONTENT/content-files/146380-kde-thumbnailer-blender_0.3kayosiii.tar.gz
+	source = port_to_qt5.patch
+	sha256sums = b2162c1ea09103b87b7f6ee69725e8de972a4781fd442c34fd4b3346de878319
+	sha256sums = SKIP
+
+pkgname = kde-thumbnailer-blender-kf5
+

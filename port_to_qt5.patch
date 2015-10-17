@@ -1,0 +1,43 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2011-06-08 01:39:21.000000000 +0800
++++ b/CMakeLists.txt	2015-10-17 17:29:13.632137410 +0800
+@@ -1,13 +1,22 @@
+-FIND_PACKAGE(KDE4 REQUIRED)
+-INCLUDE_DIRECTORIES( ${KDE4_INCLUDES} )
+-# find_package(Qt4 REQUIRED)
++
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets)
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support) #CoreAddons Solid 
++
+ set(blender-thumbnailer-kde_PART_SRCS blendercreator.cpp)
+ set(blender_test_SRCS blendercreator.cpp main.cpp)
+ kde4_add_plugin(blender-thumbnailer-kde ${blender-thumbnailer-kde_PART_SRCS})
+ 
+-target_link_libraries(blender-thumbnailer-kde ${KDE4_KIO_LIBS})
++target_link_libraries(blender-thumbnailer-kde KF5::KDELibs4Support KF5::KIOCore KF5::Archive)
+ add_executable(test_blender_thumbnailer ${blender_test_SRCS})
+-target_link_libraries(test_blender_thumbnailer ${KDE4_KIO_LIBS})
++target_link_libraries(test_blender_thumbnailer KF5::KDELibs4Support KF5::KIOCore KF5::Archive) 
+ install(TARGETS blender-thumbnailer-kde DESTINATION ${PLUGIN_INSTALL_DIR})
+ 
+ install(FILES blender-thumbnailer-kde.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+\ No newline at end of file
+diff -Naur a/blendercreator.cpp b/blendercreator.cpp
+--- a/blendercreator.cpp	2011-11-03 06:28:08.000000000 +0800
++++ b/blendercreator.cpp	2015-10-17 17:28:33.227120178 +0800
+@@ -9,6 +9,7 @@
+ #include <qbuffer.h>
+ #include <KFilterDev>
+ 
++#define 	KDE_EXPORT   __attribute__ ((visibility("default")))
+ 
+ extern "C" {
+   KDE_EXPORT ThumbCreator *new_creator() {
