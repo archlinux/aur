@@ -5,6 +5,7 @@ pkgdesc="OBD-II vehicle diagnostic scanner"
 arch=('i686' 'x86_64')
 url="http://www.scantool.net"
 license=('GPL')
+makedepends=('dos2unix')
 depends=('allegro4')
 source=("http://downloads.sourceforge.net/dzcomm/dzcomm/0.9.9i/dz099i.zip"
         "https://www.scantool.net/scantool/downloads/82/scantool_net121src.zip"

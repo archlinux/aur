@@ -6,6 +6,7 @@ pkgbase = scantool
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = dos2unix
 	depends = allegro4
 	noextract = scantool_net121src.zip
 	source = http://downloads.sourceforge.net/dzcomm/dzcomm/0.9.9i/dz099i.zip
