@@ -1,0 +1,17 @@
+pkgbase = python2-ztag-git
+	pkgdesc = Tagging and annotation framework for scan data
+	pkgver = r6.4cd3107
+	pkgrel = 1
+	url = https://github.com/zmap/ztag
+	arch = any
+	license = Apache License, Version 2.0
+	makedepends = git
+	depends = python2
+	depends = python2-distribute
+	provides = ztag
+	conflicts = ztag
+	source = git://github.com/zmap/ztag#branch=master
+	sha512sums = SKIP
+
+pkgname = python2-ztag-git
+
