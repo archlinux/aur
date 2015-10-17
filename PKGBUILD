@@ -3,7 +3,7 @@
 
 pkgname=nzbget-git
 _gitname=nzbget
-pkgver=r1355.547b430
+pkgver=testing.e81b42f
 pkgrel=1
 epoch=1
 pkgdesc="Download from Usenet using .nzb files"
