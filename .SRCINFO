@@ -1,7 +1,7 @@
 pkgbase = ptask-git
 	pkgdesc = A GTK+ graphical user interface for managing tasks in taskwarrior
-	pkgver = 0.0.9.r3.g81823af
-	pkgrel = 1
+	pkgver = 0.0.9.r9.g2b8b4aa
+	pkgrel = 2
 	url = http://wpitchoune.net/ptask
 	install = ptask-git.install
 	arch = i686

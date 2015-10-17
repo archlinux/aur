@@ -2,8 +2,8 @@
 # Contributor: Robert Orzanna <orschiro@gmail.com>
 
 pkgname=ptask-git
-pkgver=0.0.9.r3.g81823af
-pkgrel=1
+pkgver=0.0.9.r9.g2b8b4aa
+pkgrel=2
 pkgdesc='A GTK+ graphical user interface for managing tasks in taskwarrior'
 arch=('i686'
       'x86_64')
@@ -36,10 +36,17 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
+  aclocal
+  automake
   ./configure \
     --prefix=/usr \
     --sysconfdir=/usr/share
   make clean all
+}
+
+check() {
+  cd "$srcdir/$pkgname"
+  make check
 }
 
 package() {
