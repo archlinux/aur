@@ -3,7 +3,7 @@
 
 pkgname=owncloud-news-updater
 pkgver=6.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A script uses the updater API parallel fetching of RSS feed updates for owncloud-app-news-updater"
 arch=('any')
 url="https://github.com/owncloud/news"
@@ -18,7 +18,7 @@ install=updater.install
 package() {
   cd $srcdir/news-$pkgver/bin/updater/
   mkdir -p $pkgdir/etc/owncloud/news
-  install -D -m0644 example-config.ini $pkgdir/etc/owncloud/news/updater.ini
+  install -D -m0644 example-config.ini $pkgdir/etc/owncloud/news/example-updater.ini
   python3 setup.py install --root=$pkgdir
   install -D -m0644 systemd/owncloud-news-updater.service $pkgdir/usr/lib/systemd/system/owncloud-news-updater.service
 
