@@ -3,13 +3,13 @@
 
 pkgname=hamlib
 pkgver=1.2.15.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Ham radio equipment control libraries"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://hamlib.org"
 license=('GPL' 'LGPL')
-depends=('perl' 'python2' 'tcl' 'libxml2' 'libusb')
-makedepends=('libtool' 'swig')
+depends=('perl' 'python2' 'tcl' 'libxml2' 'libusb-compat' 'perl-opcodes' 'libtool')
+makedepends=('libtool' 'swig' 'pkgconfig')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
 options=('!emptydirs')
 changelog=${pkgname}.ChangeLog.markdown
