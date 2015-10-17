@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-spreadsheet-parsexlsx'
-pkgver='0.17'
+pkgver='0.18'
 pkgrel='1'
 pkgdesc="parse XLSX files"
 arch=('any')
