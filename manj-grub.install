@@ -1,0 +1,30 @@
+post_install() {
+
+  sed -i -e 's,.*GRUB_THEME=.*,GRUB_THEME="/usr/share/grub/themes/Manj-Grub/theme.txt",' /etc/default/grub
+  sed -i -e 's,.*GRUB_GFXMODE=.*,GRUB_GFXMODE=1024x768,' /etc/default/grub
+ 
+  cat << _EOF 
+
+==> Installation: Theme is added to your /etc/default/grub: GRUB_THEME="/usr/share/grub/themes/midna/theme.txt"
+==> Default resolution 1024x768
+==> Update grub: # update-grub
+==> or: # grub-mkconfig -o /boot/grub/grub.cfg
+==> to activate it
+
+_EOF
+}
+
+post_upgrade() {
+        post_install
+}
+
+post_remove() {
+cat << EOF
+
+ IMPORTANT: Edit /boot/grub/grub.cfg , remove
+     set theme="/boot/grub/themes/Manj-Grub/theme.txt"
+     and uncomment an existing one / default!
+     (Maybe without "/boot", depending on PC setup)
+
+EOF
+}
