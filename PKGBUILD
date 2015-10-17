@@ -48,6 +48,11 @@ source=( "nginx.conf"
 		"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$librever.tar.gz"
 )
 
+sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
+            'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
+            '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
+            '48e2787a6b245277e37cb7c5a31b1549a0bbacf288aa4731baacf9eaacdb481b'
+            '6b409859be8654afc3862549494e097017e64c8d167f12584383586306ef9a7e')
 
 build() {
 	local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
@@ -104,9 +109,3 @@ package() {
 	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -D -m644 "man/nginx.8" "${pkgdir}/usr/share/man/man8/nginx.8"
 }
-
-sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
-            'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
-            '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            '48e2787a6b245277e37cb7c5a31b1549a0bbacf288aa4731baacf9eaacdb481b'
-            'a1ccc21adf91d60e99246031b99c930c9af5e1b1b5a61b1bec87beef6f16d882')
