@@ -4,7 +4,7 @@
 # You should check having enough space on your storage.
 
 pkgname=knp
-pkgver=4.12
+pkgver=4.14
 pkgrel=1
 pkgdesc="KN parser (Kurohashi-Nagao parser) which detects dependency of Japanese sentences"
 url="http://nlp.ist.i.kyoto-u.ac.jp/index.php?KNP"
