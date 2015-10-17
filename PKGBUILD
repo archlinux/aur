@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer
-_debpkgver=3.10.0-30_amd64
-pkgver=3.10.0
+_debpkgver=3.11.0-31_amd64
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('alsa-lib' 'glibc' 'flac' 'libx11' 'gcc-libs' 'qt5-base' 'qt5-quick1' 'qt5-script') #qt5-quick1 
 optdepends=('evince: hqplayer manual reading')
 source=("http://www3.signalyst.com/bins/hqplayer_$_debpkgver.deb" 'copyright')
-sha256sums=('68776bdeab3b10e7391e5843c46888bd2b428948834ffe2c7240d9b5e712e7ef' '15fb909211ec2fef1f7fa9af779f22cb236031c1cdab213f9461fa5626f69965')
+sha256sums=('SKIP' '15fb909211ec2fef1f7fa9af779f22cb236031c1cdab213f9461fa5626f69965')
 
 package() {
  cd "$srcdir"
