@@ -2,7 +2,7 @@
 # Sat Oct 17 20:57:25 UTC 2015
 pkgbase = openorienteering-mapper-git
 	pkgdesc = Orienteering mapmaking program
-	pkgver = 0.5.96
+	pkgver = 0.5.99
 	pkgrel = 1
 	url = http://openorienteering.github.io/apps/mapper/
 	install = openorienteering-mapper.install
@@ -14,7 +14,7 @@ pkgbase = openorienteering-mapper-git
 	depends = qt5-base>=5.5.0
 	depends = polyclipping>=6.1.3a
 	depends = proj>=4.8.0
-	provides = openorienteering-mapper=0.5.96
+	provides = openorienteering-mapper=0.5.99
 	source = mapper::git://github.com/openorienteering/mapper.git
 	sha256sums = SKIP
 
