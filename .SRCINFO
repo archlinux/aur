@@ -1,0 +1,18 @@
+pkgbase = siftgpu
+	pkgdesc = Sift Features over GPU using GLSL or CUDA
+	pkgver = 0.5.400
+	pkgrel = 2
+	url = http://cs.unc.edu/~ccwu/siftgpu/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc-libs
+	depends = glew>=1.8
+	depends = freeglut>=2.7
+	depends = devil>=1.7
+	optdepends = cuda>=5.0
+	source = http://wwwx.cs.unc.edu/~ccwu/cgi-bin/siftgpu.cgi
+	sha256sums = 5d3272e02e4b65ad3abf2286529f93954403a22437baa5afbcfe43220640f16c
+
+pkgname = siftgpu
+
