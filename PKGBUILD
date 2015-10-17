@@ -1,14 +1,14 @@
 # Maintainer: Vincent <ippytraxx@installgentoo.com>
 
 pkgname=gnome-twitch-git
-pkgver=r35.9eb52c6
+pkgver=r165.5931851
 pkgrel=1
-pkgdesc="Enjoy Twitch on your GNOME desktop"
+pkgdesc="Enjoy Twitch on your GNU/Linux desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/Ippytraxx/gnome-twitch"
 license=('GPL3')
 makedepends=('git' 'meson')
-depends=('gtk3' 'libsoup' 'json-glib' 'gstreamer' 'gst-libav' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+depends=('gtk3' 'libsoup' 'json-glib' 'gstreamer' 'gst-libav' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'clutter-gst' 'clutter-gtk')
 install=gnome-twitch-git.install
 source=("$pkgname::git+https://github.com/ippytraxx/gnome-twitch.git")
 md5sums=('SKIP')
@@ -31,6 +31,7 @@ build()
 package()
 {
     cd "$pkgname"/build
-    mesonconf -Dprefix=/usr
+    mesonconf -Dprefix=/usr 
+    mesonconf -Dtype=release
     DESTDIR="$pkgdir" ninja install
 }
