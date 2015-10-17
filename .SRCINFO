@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-ko
 	pkgdesc = Korean language package for Iceweasel
-	pkgver = 41.0.1.deb1
+	pkgver = 41.0.2.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ko_41.0.1-1_all.deb
-	sha256sums = d8bd8366d99bf865829a967505ebc0c1e67f88c17541034e199e0de80413af31
+	depends = iceweasel>=41.0.2
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ko_41.0.2-1_all.deb
+	sha256sums = 0b2e8d153af9289f7189e86df6368290ae2bd38943c7b5dda2639d9157a15a55
 
 pkgname = iceweasel-i18n-ko
 
