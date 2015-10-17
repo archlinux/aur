@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-hsb
 	pkgdesc = Upper Sorbian language pack for Iceweasel
-	pkgver = 41.0.1.deb1
+	pkgver = 41.0.2.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.1
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-hsb_41.0.1-1_all.deb
-	sha256sums = 67a9fa309af2de3a76dbeec416073dc785c7c80952d8957371143463d1231c71
+	depends = iceweasel>=41.0.2
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-hsb_41.0.2-1_all.deb
+	sha256sums = 503c52896e7cc50b43b3f2601223166101548192104c752d3e4f5ebaf53f1384
 
 pkgname = iceweasel-i18n-hsb
 
