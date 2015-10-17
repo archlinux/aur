@@ -20,17 +20,8 @@ depends=('perl-archive-zip' 'perl-datetime' 'perl-date-manip'
   'perl-xml-dom' 'perl-xml-libxml' 'perl-xml-libxslt' 'perl-xml-simple'
   'perl-xml-twig' 'perl-xml-writer' 'perl-parse-recdescent' 'perl-cgi'
   'perl-xml-treepp')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
-disable-unicode-string.patch)
-md5sums=('7f95c24f91a7ac48cf81c32b21dc0492'
-         '2a55fecd366f27373633fdc02f6be237')
-
-#prepare() {
-#  echo "NOTE: Disabling recommended but optional Unicode::String"
-#  echo "      (due to SIGSEGV in build process)"
-#  cd "$pkgname-$pkgver"
-#  patch -p0 -i $srcdir/disable-unicode-string.patch
-#}
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('7f95c24f91a7ac48cf81c32b21dc0492')
 
 build() {
   cd "$pkgname-$pkgver"

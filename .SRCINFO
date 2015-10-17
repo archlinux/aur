@@ -1,7 +1,7 @@
 pkgbase = xmltv
 	pkgdesc = Set of utilities to download tv listings and format them in xml
 	pkgver = 0.5.67
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xmltv.org/wiki/
 	arch = any
 	license = GPL
@@ -35,9 +35,7 @@ pkgbase = xmltv
 	depends = perl-cgi
 	depends = perl-xml-treepp
 	source = http://downloads.sourceforge.net/xmltv/xmltv-0.5.67.tar.bz2
-	source = disable-unicode-string.patch
 	md5sums = 7f95c24f91a7ac48cf81c32b21dc0492
-	md5sums = 2a55fecd366f27373633fdc02f6be237
 
 pkgname = xmltv
 
