@@ -3,7 +3,7 @@
 pkgname=emacs-lucid-git
 pkgver=25.0.50.r123034
 pkgrel=1
-pkgdesc="GNU Emacs. Official git trunk."
+pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
