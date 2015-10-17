@@ -23,3 +23,12 @@ package() {
 
     make DESTDIR="${pkgdir}" install
 }
+
+post_install() {
+    update-desktop-database -q
+}
+
+
+post_remove() {
+    update-desktop-database -q
+}
