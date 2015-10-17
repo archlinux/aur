@@ -7,7 +7,7 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=lxc-git
-pkgver=1.1.0.89.g83828d6
+pkgver=1.1.0.377.g2d9ec00
 epoch=1
 _pkgname=lxc
 _gitname=${_pkgname}

@@ -1,6 +1,6 @@
 pkgbase = lxc-git
 	pkgdesc = Linux Containers from git
-	pkgver = 1.1.0.89.g83828d6
+	pkgver = 1.1.0.377.g2d9ec00
 	pkgrel = 1
 	epoch = 1
 	url = http://linuxcontainers.org
