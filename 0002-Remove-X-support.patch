@@ -1,7 +1,7 @@
 From 45ea617f995180bf704a760709efa86401b9394a Mon Sep 17 00:00:00 2001
 From: Olivier Brunel <jjk@jjacky.com>
 Date: Tue, 15 Nov 2011 15:42:46 +0100
-Subject: [PATCH 2/8] Remove X support
+Subject: [PATCH 02/10] Remove X support
 
 Signed-off-by: Olivier Brunel <jjk@jjacky.com>
 ---
@@ -595,5 +595,5 @@ index 3c79581..0000000
 -  return retval;
 -}
 -- 
-2.1.3
+2.6.1
 

@@ -1,0 +1,109 @@
+From fd7c3159988cb56e2cb703be23e8a4302331f338 Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Sat, 17 Oct 2015 12:53:10 +0200
+Subject: [PATCH 10/10] Replace command "shutdown" with "halt" & "poweroff"
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ include/config.h |  1 +
+ include/xlsh.h   |  4 +++-
+ src/xlsh.c       | 21 ++++++++++++++++++---
+ 3 files changed, 22 insertions(+), 4 deletions(-)
+
+diff --git a/include/config.h b/include/config.h
+index 301f09f..1844bd3 100644
+--- a/include/config.h
++++ b/include/config.h
+@@ -17,6 +17,7 @@
+ #define XLSH_PATH      "/bin:/usr/bin:/usr/local/bin"
+ #define XLSH_REBOOT    "/sbin/reboot"
+ #define XLSH_HALT      "/sbin/halt"
++#define XLSH_POWEROFF  "/sbin/poweroff"
+ #define XLSH_XTTY      "/dev/console"
+ #define XLSH_DATEFMT   "%Y-%m-%d"
+ #define XLSH_TIMEFMT   "%H:%M"
+diff --git a/include/xlsh.h b/include/xlsh.h
+index a536996..0a131db 100644
+--- a/include/xlsh.h
++++ b/include/xlsh.h
+@@ -11,6 +11,7 @@ typedef enum xlsh_config_id_e {
+   XLSH_ID_EXEC = 0,
+   XLSH_ID_REBOOT,
+   XLSH_ID_HALT,
++  XLSH_ID_POWEROFF,
+   XLSH_ID_ISSUE,
+   XLSH_ID_DATEFMT,
+   XLSH_ID_TIMEFMT,
+@@ -67,6 +68,7 @@ int xlsh_func_help(int argc, char** argv);
+ int xlsh_func_version(int argc, char** argv);
+ int xlsh_func_login(int argc, char** argv);
+ int xlsh_func_reboot(int argc, char** argv);
+-int xlsh_func_shutdown(int argc, char** argv);
++int xlsh_func_halt(int argc, char** argv);
++int xlsh_func_poweroff(int argc, char** argv);
+ 
+ #endif
+diff --git a/src/xlsh.c b/src/xlsh.c
+index 3fc1711..7a3ceb9 100644
+--- a/src/xlsh.c
++++ b/src/xlsh.c
+@@ -32,6 +32,7 @@ static xlsh_config_item_t xlsh_config[] = {
+   { "XLSH_EXEC", XLSH_EXEC, NULL },
+   { "XLSH_REBOOT", XLSH_REBOOT, NULL },
+   { "XLSH_HALT", XLSH_HALT, NULL },
++  { "XLSH_POWEROFF", XLSH_POWEROFF, NULL },
+   { "XLSH_ISSUE", XLSH_ISSUE, NULL },
+   { "XLSH_DATEFMT", XLSH_DATEFMT, NULL },
+   { "XLSH_TIMEFMT", XLSH_TIMEFMT, NULL },
+@@ -44,7 +45,8 @@ static xlsh_config_item_t xlsh_config[] = {
+ static xlsh_command_t xlsh_commands[] = {
+   { "login", "   : Logins specified user into the system", xlsh_func_login },
+   { "reboot", "  : Reboots the system", xlsh_func_reboot },
+-  { "shutdown", ": Halts the system", xlsh_func_shutdown },
++  { "halt", "    : Halts the system", xlsh_func_halt },
++  { "poweroff", ": Powers off the system", xlsh_func_poweroff },
+   { "exit", "    : Exits (reloads) login shell", xlsh_func_exit },
+   { "help", "    : Prints all available commands", xlsh_func_help },
+   { "version", " : Prints copyright and version information", xlsh_func_version },
+@@ -114,9 +116,9 @@ int xlsh_func_reboot(int argc, char** argv)
+   return XLSH_EDONE;
+ }
+ 
+-int xlsh_func_shutdown(int argc, char** argv)
++int xlsh_func_halt(int argc, char** argv)
+ {
+-  printf("Initiating system shutdown ...\n");
++  printf("Halting system ...\n");
+   if(libxlsh_proc_exec(XLSH_HALT, XLSH_DETACH) == -1) {
+     fprintf(stderr, "Failed to execute: %s\n", XLSH_HALT);
+     return XLSH_ERROR;
+@@ -126,6 +128,18 @@ int xlsh_func_shutdown(int argc, char** argv)
+   return XLSH_EDONE;
+ }
+ 
++int xlsh_func_poweroff(int argc, char** argv)
++{
++  printf("Powering off system ...\n");
++  if(libxlsh_proc_exec(XLSH_POWEROFF, XLSH_DETACH) == -1) {
++    fprintf(stderr, "Failed to execute: %s\n", XLSH_POWEROFF);
++    return XLSH_ERROR;
++  }
++
++  pause();
++  return XLSH_EDONE;
++}
++
+ // Session management helpers
+ static int xlsh_session_conv(int num_msg, const struct pam_message** msg,
+ 			     struct pam_response** resp, void* appdata_ptr)
+@@ -379,6 +393,7 @@ void xlsh_config_init(char* exec_arg)
+ 
+   xlsh_config_set(&xlsh_config[XLSH_ID_REBOOT], NULL);
+   xlsh_config_set(&xlsh_config[XLSH_ID_HALT], NULL);
++  xlsh_config_set(&xlsh_config[XLSH_ID_POWEROFF], NULL);
+   xlsh_config_set(&xlsh_config[XLSH_ID_ISSUE], NULL);
+   xlsh_config_set(&xlsh_config[XLSH_ID_TIMEFMT], NULL);
+   xlsh_config_set(&xlsh_config[XLSH_ID_DATEFMT], NULL);
+-- 
+2.6.1
+

@@ -1,7 +1,7 @@
 From 99969e2f933da2131fc21db94d2792d90072f4b8 Mon Sep 17 00:00:00 2001
 From: Olivier Brunel <jjk@jjacky.com>
 Date: Sun, 16 Nov 2014 18:23:42 +0100
-Subject: [PATCH 8/8] Makefile: Install in $prefix/bin not $prefix/sbin
+Subject: [PATCH 08/10] Makefile: Install in $prefix/bin not $prefix/sbin
 
 Signed-off-by: Olivier Brunel <jjk@jjacky.com>
 ---
@@ -43,5 +43,5 @@ index f4fd67c..12364ef 100644
  clean:
  	rm -f $(PROGRAMS)
 -- 
-2.1.3
+2.6.1
 

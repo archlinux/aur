@@ -1,7 +1,7 @@
 From 9fcf959b7b3634ea7496e7cd141a34db449550d8 Mon Sep 17 00:00:00 2001
 From: Olivier Brunel <jjk@jjacky.com>
 Date: Sun, 16 Nov 2014 18:18:54 +0100
-Subject: [PATCH 7/8] Add .gitignore
+Subject: [PATCH 07/10] Add .gitignore
 
 Signed-off-by: Olivier Brunel <jjk@jjacky.com>
 ---
@@ -21,5 +21,5 @@ index 0000000..542369b
 +*.swp
 +/xlsh
 -- 
-2.1.3
+2.6.1
 

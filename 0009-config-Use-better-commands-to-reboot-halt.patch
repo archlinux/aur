@@ -1,0 +1,32 @@
+From aacb57c775088b29f2331dba835c7d5ea2ec3343 Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Wed, 14 Oct 2015 18:49:11 +0200
+Subject: [PATCH 09/10] config: Use "better" commands to reboot/halt
+
+Those make more sense, also allows easier use with other init system
+that provides those commands. (I especially don't like `shutdown -h` to
+halt.)
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ include/config.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/config.h b/include/config.h
+index 9e00c4a..301f09f 100644
+--- a/include/config.h
++++ b/include/config.h
+@@ -15,8 +15,8 @@
+ #define XLSH_SHELLS    "/etc/shells"
+ #define XLSH_ISSUE     "/etc/issue"
+ #define XLSH_PATH      "/bin:/usr/bin:/usr/local/bin"
+-#define XLSH_REBOOT    "/sbin/shutdown -r now"
+-#define XLSH_HALT      "/sbin/shutdown -h now"
++#define XLSH_REBOOT    "/sbin/reboot"
++#define XLSH_HALT      "/sbin/halt"
+ #define XLSH_XTTY      "/dev/console"
+ #define XLSH_DATEFMT   "%Y-%m-%d"
+ #define XLSH_TIMEFMT   "%H:%M"
+-- 
+2.6.1
+
