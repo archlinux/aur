@@ -1,0 +1,14 @@
+pkgbase = ez100-pcsc-driver
+	pkgdesc = EZ100PU/MINI driver for PCSC
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = http://www.casauto.com.tw/en/in-download-02.aspx?cid=C_00000024&id=P_00000055
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = pcsclite
+	source = http://www.casauto.com.tw/db/pictures/modules/PDT/PDT060207001/2011810151801402.zip
+	sha1sums = 71e711d70a6baa97adee0c011846f3fc17ecbd72
+
+pkgname = ez100-pcsc-driver
+
