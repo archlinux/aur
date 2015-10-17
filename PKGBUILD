@@ -1,8 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
 pkgver=6706
-LANG=C
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/texinfo/"
@@ -24,18 +23,11 @@ pkgver() {
   printf "${ver//[[:alpha:]]}"
 }
 
-prepare() {
- cd "$srcdir"/"${_svnmod}"
-  
- [[ -f build-aux/ltmain.sh ]] && rm build-aux/ltmain.sh
- ln -s /usr/share/libtool/build-aux/ltmain.sh build-aux/ltmain.sh
- [[ -f build-aux/ar-lib ]] && rm build-aux/ar-lib
- ln -s /usr/share/automake-1.15/ar-lib build-aux/ar-lib
-}
-
 build() {
   cd "$srcdir"/"${_svnmod}"
-  ./autogen.sh
+  automake --add-missing
+  autoreconf
+  sed -i 's+build-aux/ar-lib++' Makefile.in
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
