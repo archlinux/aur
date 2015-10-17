@@ -1,0 +1,12 @@
+diff -ur direwolf-1.2.org/kiss.c direwolf-1.2/kiss.c
+--- direwolf-1.2.org/kiss.c	2015-07-27 01:17:23.000000000 +0000
++++ direwolf-1.2/kiss.c	2015-10-17 01:48:10.499999066 +0000
+@@ -177,7 +177,7 @@
+  * Symlink to pseudo terminal name which changes.
+  */
+ 
+-#define TMP_KISSTNC_SYMLINK "/tmp/kisstnc"
++#define TMP_KISSTNC_SYMLINK "/run/direwolf.sock"
+ 
+ #endif
+ 

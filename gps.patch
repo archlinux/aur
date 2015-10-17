@@ -1,0 +1,12 @@
+diff -ur direwolf-1.2.org/dwgps.c direwolf-1.2/dwgps.c
+--- direwolf-1.2.org/dwgps.c	2015-07-27 01:17:23.000000000 +0000
++++ direwolf-1.2/dwgps.c	2015-10-17 01:34:56.099999369 +0000
+@@ -60,7 +60,7 @@
+ #if ENABLE_GPS
+ #include <gps.h>
+ 
+-#if GPSD_API_MAJOR_VERSION != 5
++#if GPSD_API_MAJOR_VERSION != 6
+ #error libgps API version might be incompatible.
+ #endif
+ 

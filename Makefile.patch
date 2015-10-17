@@ -1,0 +1,102 @@
+diff -ur direwolf-1.2.org/Makefile.linux direwolf-1.2/Makefile.linux
+--- direwolf-1.2.org/Makefile.linux	2015-07-27 01:17:23.000000000 +0000
++++ direwolf-1.2/Makefile.linux	2015-10-17 01:39:51.839999256 +0000
+@@ -200,8 +200,8 @@
+ 
+ # Uncomment following lines to enable GPS interface & tracker function.
+ 
+-#CFLAGS += -DENABLE_GPS
+-#LDLIBS += -lgps
++CFLAGS += -DENABLE_GPS
++LDLIBS += -lgps
+ 
+ 
+ # Name of current directory.
+@@ -275,7 +275,7 @@
+ 
+ # This is a step in the right direction but not sufficient to use /usr instead.
+ 
+-INSTALLDIR := /usr/local
++INSTALLDIR := /usr
+ 
+ 
+ # direwolf.desktop was previously handcrafted for the Raspberry Pi.
+@@ -311,42 +311,42 @@
+ 
+ install : direwolf decode_aprs text2tt tt2text ll2utm utm2ll aclients log2gpx gen_packets \
+ 		tocalls.txt symbols-new.txt symbolsX.txt dw-icon.png direwolf.desktop
+-	install direwolf $(INSTALLDIR)/bin
+-	install decode_aprs $(INSTALLDIR)/bin
+-	install text2tt $(INSTALLDIR)/bin
+-	install tt2text $(INSTALLDIR)/bin
+-	install ll2utm $(INSTALLDIR)/bin
+-	install utm2ll $(INSTALLDIR)/bin
+-	install aclients $(INSTALLDIR)/bin
+-	install log2gpx $(INSTALLDIR)/bin
+-	install gen_packets $(INSTALLDIR)/bin
+-	install atest $(INSTALLDIR)/bin
+-	install ttcalc $(INSTALLDIR)/bin
+-	install dwespeak.sh $(INSTALLDIR)/bin
+-	install -D --mode=644 tocalls.txt /usr/share/direwolf/tocalls.txt
+-	install -D --mode=644 symbols-new.txt /usr/share/direwolf/symbols-new.txt
+-	install -D --mode=644 symbolsX.txt /usr/share/direwolf/symbolsX.txt
+-	install -D --mode=644 dw-icon.png /usr/share/direwolf/dw-icon.png
+-	install -D --mode=644 direwolf.desktop /usr/share/applications/direwolf.desktop
+-	install -D --mode=644 CHANGES.txt $(INSTALLDIR)/share/doc/direwolf/CHANGES.txt
+-	install -D --mode=644 LICENSE-dire-wolf.txt $(INSTALLDIR)/share/doc/direwolf/LICENSE-dire-wolf.txt
+-	install -D --mode=644 LICENSE-other.txt $(INSTALLDIR)/share/doc/direwolf/LICENSE-other.txt
+-	install -D --mode=644 User-Guide.pdf $(INSTALLDIR)/share/doc/direwolf/User-Guide.pdf
+-	install -D --mode=644 Raspberry-Pi-APRS.pdf $(INSTALLDIR)/share/doc/direwolf/Raspberry-Pi-APRS.pdf
+-	install -D --mode=644 Raspberry-Pi-APRS-Tracker.pdf $(INSTALLDIR)/share/doc/direwolf/Raspberry-Pi-APRS-Tracker.pdf
+-	install -D --mode=644 APRStt-Implementation-Notes.pdf $(INSTALLDIR)/share/doc/direwolf/APRStt-Implementation-Notes.pdf
+-	install -D --mode=644 A-Better-APRS-Packet-Demodulator-Part-1-1200-baud.pdf $(INSTALLDIR)/share/doc/direwolf/A-Better-APRS-Packet-Demodulator-Part-1-1200-baud.pdf
+-	install -D --mode=644 A-Better-APRS-Packet-Demodulator-Part-2-9600-baud.pdf $(INSTALLDIR)/share/doc/direwolf/A-Better-APRS-Packet-Demodulator-Part-2-9600-baud.pdf
+-	install -D --mode=644 man1/aclients.1 $(INSTALLDIR)/man/man1/aclients.1
+-	install -D --mode=644 man1/atest.1 $(INSTALLDIR)/man/man1/atest.1
+-	install -D --mode=644 man1/decode_aprs.1 $(INSTALLDIR)/man/man1/decode_aprs.1
+-	install -D --mode=644 man1/direwolf.1 $(INSTALLDIR)/man/man1/direwolf.1
+-	install -D --mode=644 man1/gen_packets.1 $(INSTALLDIR)/man/man1/gen_packets.1
+-	install -D --mode=644 man1/ll2utm.1 $(INSTALLDIR)/man/man1/ll2utm.1
+-	install -D --mode=644 man1/log2gpx.1 $(INSTALLDIR)/man/man1/log2gpx.1
+-	install -D --mode=644 man1/text2tt.1 $(INSTALLDIR)/man/man1/text2tt.1
+-	install -D --mode=644 man1/tt2text.1 $(INSTALLDIR)/man/man1/tt2text.1
+-	install -D --mode=644 man1/utm2ll.1 $(INSTALLDIR)/man/man1/utm2ll.1
++	install direwolf $(DESTDIR)$(INSTALLDIR)/bin
++	install decode_aprs $(DESTDIR)$(INSTALLDIR)/bin
++	install text2tt $(DESTDIR)$(INSTALLDIR)/bin
++	install tt2text $(DESTDIR)$(INSTALLDIR)/bin
++	install ll2utm $(DESTDIR)$(INSTALLDIR)/bin
++	install utm2ll $(DESTDIR)$(INSTALLDIR)/bin
++	install aclients $(DESTDIR)$(INSTALLDIR)/bin
++	install log2gpx $(DESTDIR)$(INSTALLDIR)/bin
++	install gen_packets $(DESTDIR)$(INSTALLDIR)/bin
++	install atest $(DESTDIR)$(INSTALLDIR)/bin
++	install ttcalc $(DESTDIR)$(INSTALLDIR)/bin
++	install dwespeak.sh $(DESTDIR)$(INSTALLDIR)/bin
++	install -D --mode=644 tocalls.txt $(DESTDIR)/usr/share/direwolf/tocalls.txt
++	install -D --mode=644 symbols-new.txt $(DESTDIR)/usr/share/direwolf/symbols-new.txt
++	install -D --mode=644 symbolsX.txt $(DESTDIR)/usr/share/direwolf/symbolsX.txt
++	install -D --mode=644 dw-icon.png $(DESTDIR)/usr/share/direwolf/dw-icon.png
++	install -D --mode=644 direwolf.desktop $(DESTDIR)/usr/share/applications/direwolf.desktop
++	install -D --mode=644 CHANGES.txt $(DESTDIR)$(INSTALLDIR)/share/doc/direwolf/CHANGES.txt
++	install -D --mode=644 LICENSE-dire-wolf.txt $(DESTDIR)$(INSTALLDIR)/share/licenses/direwolf/LICENSE-dire-wolf.txt
++	install -D --mode=644 LICENSE-other.txt $(DESTDIR)$(INSTALLDIR)/share/licenses/direwolf/LICENSE-other.txt
++	install -D --mode=644 User-Guide.pdf $(DESTDIR)$(INSTALLDIR)/share/doc/direwolf/User-Guide.pdf
++	install -D --mode=644 Raspberry-Pi-APRS.pdf $(DESTDIR)$(INSTALLDIR)/share/doc/direwolf/Raspberry-Pi-APRS.pdf
++	install -D --mode=644 Raspberry-Pi-APRS-Tracker.pdf $(DESTDIR)$(INSTALLDIR)/share/doc/direwolf/Raspberry-Pi-APRS-Tracker.pdf
++	install -D --mode=644 APRStt-Implementation-Notes.pdf $(DESTDIR)$(INSTALLDIR)/share/doc/direwolf/APRStt-Implementation-Notes.pdf
++	install -D --mode=644 A-Better-APRS-Packet-Demodulator-Part-1-1200-baud.pdf $(DESTDIR)$(INSTALLDIR)/share/doc/direwolf/A-Better-APRS-Packet-Demodulator-Part-1-1200-baud.pdf
++	install -D --mode=644 A-Better-APRS-Packet-Demodulator-Part-2-9600-baud.pdf $(DESTDIR)$(INSTALLDIR)/share/doc/direwolf/A-Better-APRS-Packet-Demodulator-Part-2-9600-baud.pdf
++	install -D --mode=644 man1/aclients.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/aclients.1
++	install -D --mode=644 man1/atest.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/atest.1
++	install -D --mode=644 man1/decode_aprs.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/decode_aprs.1
++	install -D --mode=644 man1/direwolf.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/direwolf.1
++	install -D --mode=644 man1/gen_packets.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/gen_packets.1
++	install -D --mode=644 man1/ll2utm.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/ll2utm.1
++	install -D --mode=644 man1/log2gpx.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/log2gpx.1
++	install -D --mode=644 man1/text2tt.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/text2tt.1
++	install -D --mode=644 man1/tt2text.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/tt2text.1
++	install -D --mode=644 man1/utm2ll.1 $(DESTDIR)$(INSTALLDIR)/share/man/man1/utm2ll.1
+ 	@echo " "
+ 	@echo "If this is your first install, not an upgrade, type this"
+ 	@echo "to put a copy of the sample configuration file in your home directory:"
