@@ -1,0 +1,19 @@
+pkgbase = mod_scgi
+	pkgdesc = Apache module that implements SCGI protocol
+	pkgver = 1.14
+	pkgrel = 5
+	url = http://python.ca/scgi/
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	makedepends = apache
+	source = http://python.ca/scgi/releases/scgi-1.14.tar.gz
+	source = apache24.patch
+	md5sums = 73d942a9ecdf4f20c8234e72ea82c7ee
+	md5sums = bf3d7766a3ac7e2bd44ebfa1e858f4d5
+
+pkgname = mod_scgi
+
