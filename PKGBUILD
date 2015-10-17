@@ -2,7 +2,7 @@
 pkgname=audio-convert-mod
 pkgver=3.46.0b
 pkgrel=1
-pkgdesc="a simple audio file converter that supporting many formats"
+pkgdesc="a simple audio file converter supporting many formats"
 arch=('any')
 url="http://www.diffingo.com/oss/audio-convert-mod"
 license=('GPL')
