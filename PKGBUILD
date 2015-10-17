@@ -1,14 +1,14 @@
 _pkgname=moviepy
 pkgname=python-${_pkgname}
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Script-based movie editing with python"
 arch=('any')
 url="http://zulko.github.io/moviepy/"
 license=("MIT")
 makedepends=('python-setuptools')
 depends=('ffmpeg' 'imagemagick' 'opencv'
-	 'python-decorator' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-scipy' 'python-tqdm')
+	 'python-decorator' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-scipy' 'python-tqdm' 'python-imageio')
 provides=('python-moviepy-git')
 conflicts=('python-moviepy-git')
 source=(https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
