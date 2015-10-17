@@ -5,6 +5,7 @@ pkgbase = sage-data-cremona_ellcurve
 	url = http://www.sagemath.org
 	arch = any
 	license = GPL
+	depends = sagemath
 	source = http://mirrors.mit.edu/sage/spkg/upstream/database_cremona_ellcurve/database_cremona_ellcurve-20150519.tar.bz2
 	md5sums = aac18192545c43e1c2e282169eecfa04
 
