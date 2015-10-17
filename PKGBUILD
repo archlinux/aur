@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 pkgname=sift-bin
 _rname=sift
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A fast and powerful open source alternative to grep - Static binary"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ conflicts=('sift')
 replaces=('sift')
 source_i686=("http://sift-tool.org/downloads/${_rname}/${_rname}_${pkgver}_linux_386.tar.gz")
 source_x86_64=("http://sift-tool.org/downloads/${_rname}/${_rname}_${pkgver}_linux_amd64.tar.gz")
-md5sums_i686=('9d7062ac5ddfe5cf63bd3d33b55e210b')
-md5sums_x86_64=('ffbe9044d263221fd9ecec9b39048dbb')
+sha256sums_i686=('bc7c622066da41df47caf360169d1a8983db4533debb1f2dec3183cc1c21f957')
+sha256sums_x86_64=('44eb25b16df941a74e66cb016c6e6ddece62ceb4be248c570bda669eca87aae5')
 
 [[ "$CARCH" = "i686" ]] && _arch='386'
 [[ "$CARCH" = "x86_64" ]] && _arch='amd64'
