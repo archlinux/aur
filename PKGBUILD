@@ -7,7 +7,7 @@ pkgdesc="Ryzom is a Free to Play MMORPG . This version is for playing on an offi
 arch=('i686' 'x86_64')
 url="http://www.ryzom.com/"
 license=('AGPL3')
-depends=('curl' 'freealut' 'libvorbis' 'libjpeg' 'rrdtool' 'boost'
+depends=('ryzom-data' 'curl' 'freealut' 'libvorbis' 'libjpeg' 'rrdtool' 'boost'
          'luabind' 'libsquish' 'libxrandr' 'libxcursor' 'hicolor-icon-theme')
 conflicts=('ryzom-client-latest-hg' 'ryzom-client-hg') #lua51
 makedepends=('mercurial' 'cpptest' 'cmake' 'bison' 'mesa')
@@ -25,12 +25,6 @@ pkgver() {
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-prepare() {
-    cd $srcdir/$_hg_name/code
-
-
-
-}
 build() {
     cd $srcdir/libwww
     ./autogen.sh || true
