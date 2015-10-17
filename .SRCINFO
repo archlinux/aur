@@ -6,6 +6,7 @@ pkgbase = jpass-web-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = jpass-git
 	depends = python
 	depends = python-bottle
 	depends = python-flipflop

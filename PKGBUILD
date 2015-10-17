@@ -7,7 +7,7 @@ pkgdesc="JPass password manager - web application"
 url="https://joel.porquet.org/wiki/hacking/jpass-web/"
 arch=('any')
 license=('GPL3')
-depends=('python' 'python-bottle' 'python-flipflop')
+depends=('jpass-git' 'python' 'python-bottle' 'python-flipflop')
 makedepends=('git')
 
 backup=('etc/webapps/jpass/jpassrc')
