@@ -9,7 +9,7 @@
 #########################
 
 _use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
-_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , _use_clang need set to 1
+_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
 _use_ccache=0          # Use ccache when build
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
 _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=47.0.2526.16
+pkgver=48.0.2535.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -85,7 +85,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         # Misc Patches
         'enable_vaapi_on_linux-r1.diff'
         # Patch from crbug (chromium bugtracker)
-        'https://codereview.chromium.org/download/issue1383303002_20001.diff' ## https://codereview.chromium.org/1383303002
+
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
           "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
@@ -99,7 +99,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           # Misc Patches
           '255d71cd9b9e55265e1bfeaa4612bcf60d293204'
           # Patch from crbug (chromium bugtracker)
-          '002b0bb9b07d8a823cf32fb399730031e86a49c3'
+
           )
 options=('!strip')
 install=chromium-dev.install
@@ -118,12 +118,10 @@ _google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 
 # 32 or 64 bits?
 if [ "${CARCH}" = "i686" ]; then
-  _build_ffmpeg_args=" --disable-asm"
   _target_arch=ia32
   _build_pnacl=0
   _pnacl_arch=32
 elif  [ "${CARCH}" = "x86_64" ]; then
-  _build_ffmpeg_args=""
   _target_arch=x64
   _build_pnacl=1
   _pnacl_arch=64
@@ -404,10 +402,6 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_zlib=1'
              )
 
-# Add more options to ffmpeg NOTE: in testing
-_extended_ffmpeg_flags=('--enable-vdpau'
-                        '--enable-vaapi'
-                        )
 
 ################################################
 
@@ -440,8 +434,6 @@ prepare() {
   # fix the missing define (if not, fail build) (need upstream fix) (https://crbug.com/473866)
   sed '14i#define WIDEVINE_CDM_VERSION_STRING "The Cake Is a Lie"' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
 
-  # Add support for Kwallet5 in KF5 environment (https://codereview.chromium.org/1383303002)
-  patch -p1 -i ../issue1383303002_20001.diff
 
   # Make it possible to remove third_party/adobe
   echo > "${srcdir}/flapper_version.h"
