@@ -5,11 +5,10 @@ pkgbase = memo-notes
 	url = http://www.getmemo.org/
 	arch = i686
 	arch = x86_64
-	license = GPL3
-	source = memo-notes-1.6.tar.gz::https://github.com/nrosvall/memo/archive/v1.6.tar.gz
-	source = http://www.byteptr.com/fileformat.html
-	sha256sums = f9336524f038c0f11f5a82fe6cf6bf438e959a13f3bff973f064731789da5e62
-	sha256sums = 1447ef9efe397256d913f0146f0979265a1e12fa126bbd5b995e3e332ffefa21
+	license = custom
+	makedepends = git
+	source = memo-notes::git+https://gitlab.com/Rosvall/memo.git#tag=v1.6
+	sha256sums = SKIP
 
 pkgname = memo-notes
 

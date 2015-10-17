@@ -1,6 +1,7 @@
 *~
 pkg/
 src/
+memo-notes
 *.gz
 *.bz2
 *.xz
