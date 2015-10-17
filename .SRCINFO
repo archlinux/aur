@@ -1,0 +1,13 @@
+pkgbase = python-blogofile
+	pkgdesc = A static website compiler and blog engine
+	pkgver = 0.8.3
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/B/Blogofile/Blogofile-0.8.3.tar.gz
+	md5sums = b174c0e58a62a091823e23411061e59c
+
+pkgname = python-blogofile
+
