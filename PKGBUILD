@@ -2,12 +2,12 @@
 
 pkgname=radeon-profile-git
 pkgver=20150905
-pkgrel=1
+pkgrel=2
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('qt4')
+depends=('qt5-base')
 optdepends=('radeon-profile-daemon: system daemon for reading card info'
 	'lm_sensors: to show gpu temperature' 
 	'sudo: start with root privilages without password' 
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 build() {
 mkdir -p build
 cd build
-qmake-qt4 "../radeon-profile/radeon-profile/"
+qmake-qt5 "../radeon-profile/radeon-profile/"
 make
 }
  
