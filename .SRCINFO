@@ -1,0 +1,26 @@
+pkgbase = caffe
+	pkgdesc = Neural network toolkit
+	pkgver = rc2
+	pkgrel = 1
+	url = https://github.com/BVLC/caffe
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = BSD
+	makedepends = git
+	depends = atlas-lapack-base
+	depends = hdf5
+	depends = opencv
+	depends = boost
+	depends = protobuf
+	depends = google-glog
+	depends = gflags
+	depends = leveldb
+	depends = snappy
+	depends = lmdb
+	optdepends = cuda: for GPU support
+	source = https://github.com/BVLC/caffe/archive/rc2.tar.gz
+	md5sums = SKIP
+
+pkgname = caffe
+
