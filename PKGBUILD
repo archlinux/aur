@@ -7,7 +7,7 @@ pkgdesc="System daemon for radeon-profile"
 url="http://github.com/marazmista/radeon-profile-daemon"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('qt4' 'xf86-video-ati' 'radeon-profile')
+depends=('qt5-base' 'xf86-video-ati' 'radeon-profile')
 provides=('radeon-profile-daemon')
 replaces=('radeon-profile-daemon')
 source=('git://github.com/marazmista/radeon-profile-daemon.git')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build() {
 mkdir -p build
 cd build
-qmake-qt4 "../radeon-profile-daemon/radeon-profile-daemon/"
+qmake-qt5 "../radeon-profile-daemon/radeon-profile-daemon/"
 make
 }
  
