@@ -9,7 +9,7 @@ pkgbase = mopidy-local-sqlite
 	makedepends = python2-setuptools
 	depends = mopidy
 	depends = python2-pykka
-	depends = python2-uritools
+	depends = python2-uritools>=1.0
 	source = https://github.com/mopidy/mopidy-local-sqlite/archive/v1.0.0.tar.gz
 	sha256sums = 67a0a94fd26d0e7b59886f454fd74b6f22aa80796a8c3ed0e33c1d22c79411ae
 
