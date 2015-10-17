@@ -1,0 +1,21 @@
+diff --git a/packages/base/include/HsBase.h b/packages/base/include/HsBase.h
+index aa1a7fb..78d5b46 100644
+--- a/packages/base/include/HsBase.h
++++ b/packages/base/include/HsBase.h
+@@ -217,15 +217,7 @@ StgWord64 stg_integerToWord64 (StgInt sa, StgByteArray /* Really: mp_limb_t* */
+    when compiling to native code.
+    -------------------------------------------------------------------------- */
+ 
+-#ifndef INLINE
+-# if defined(_MSC_VER)
+-#  define INLINE extern __inline
+-# elif defined(__GNUC__)
+-#  define INLINE extern inline
+-# else
+-#  define INLINE inline
+-# endif
+-#endif
++#define INLINE inline
+ 
+ INLINE int __hscore_get_errno(void) { return errno; }
+ INLINE void __hscore_set_errno(int e) { errno = e; }

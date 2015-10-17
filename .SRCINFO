@@ -1,0 +1,14 @@
+pkgbase = hugs
+	pkgdesc = A functional programming system based on Haskell 98
+	pkgver = 2006.09
+	pkgrel = 1
+	url = https://www.haskell.org/hugs/index.html
+	arch = any
+	license = BSD
+	source = https://www.haskell.org/hugs/downloads/2006-09/hugs98-plus-Sep2006.tar.gz
+	source = hsbase_inline.patch
+	sha1sums = 1464a80c715bc5f786ea5a4e4257b2ff0dc7e1e9
+	sha1sums = ef1a167c2327b3d1bdf8a284a22635f6a6ed7e8b
+
+pkgname = hugs
+
