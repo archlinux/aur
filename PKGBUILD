@@ -1,30 +1,33 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
-pkgname=openorienteering-mapper
+_orgname=openorienteering
+_pkgname=mapper
+pkgname=${_orgname}-${_pkgname}
 pkgver=0.5.96
-pkgrel=2
-pkgdesc="Orienteering map drawing software"
+pkgrel=3
+pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
-url="http://oorienteering.sourceforge.net/?page_id=103"
+url="http://openorienteering.github.io/apps/mapper/"
 license=('GPL3')
-depends=('qt5-tools>=5.3.2' 'polyclipping>=6.1.3a' 'proj>=4.8.0')
-makedepends=('cmake>=2.8.9')
+depends=('qt5-base>=5.3.2' 'polyclipping>=6.1.3a' 'proj>=4.8.0')
+makedepends=('cmake>=2.8.9' 'qt5-tools>=5.3.2')
+provides=("${pkgname}=${pkgver}")
 install=${pkgname}.install
-source=("http://sourceforge.net/projects/oorienteering/files/Mapper/Source/${pkgname}_${pkgver}-src.tgz"
+source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
         'qt-include.patch')
-sha256sums=('8d76213183bc1b69c9121a649397986eba8fc3a07ece1c5747a4748cdf881e04'
+sha256sums=('0db31cd6814667a4335d76c56443ff84975b6101b4fb231886f1b176f507db26'
             'bb018de5e99a655b132ff43faf3990538126c434953751c6ba7264977758a497')
 
 prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${_pkgname}-${pkgver}
   patch -Np1 < ${srcdir}/qt-include.patch
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${_pkgname}-${pkgver}
 
-  rm -rf ${srcdir}/${pkgname}-${pkgver}/build
-  mkdir -p ${srcdir}/${pkgname}-${pkgver}/build
-  cd ${srcdir}/${pkgname}-${pkgver}/build
+  rm -rf ${srcdir}/${_pkgname}-${pkgver}/build
+  mkdir -p ${srcdir}/${_pkgname}-${pkgver}/build
+  cd ${srcdir}/${_pkgname}-${pkgver}/build
 
   cmake ..                      \
     -DCMAKE_BUILD_TYPE=Release  \
@@ -37,7 +40,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}/build
+  cd ${srcdir}/${_pkgname}-${pkgver}/build
 
   make DESTDIR=${pkgdir}/ install
   rm -fr ${pkgdir}/DEBIAN
