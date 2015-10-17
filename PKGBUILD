@@ -19,7 +19,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=1.1
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
@@ -68,9 +68,9 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'f273495cbe8a9d8d1687c14c9ca95573a493004cb27f5d696a99b54a21e2fc4d'
-            '2aeb11ecb22e958ef987e01389b8d1788084c992982b7babe152c05dee7add79'
-            '785ec31b9745948d9adf18340f18429693fc7599c8f9f2d034d810a71624e08d'
+            '86e9b3323fa37fb64322ec942fe6718ed872dda581a07b57857fb8ee30cf1ede'
+            '4a76deff517b767ea30432454344fb6e506db57ff57b321db44872da158e3be3'
+            'd70238b00be1a70204b5288c9c49898169eff1950c7017a4a7a108b942008342'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
