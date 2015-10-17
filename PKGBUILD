@@ -3,8 +3,8 @@
 pkgname=python2-airspeed
 pkgdesc="Airspeed is a powerful and easy-to-use templating engine for Python that aims for a high level of compatibility with the popular Velocity library for Java."
 pkgver="0.5.4"
-pkgrel=1
-url="https://pypi.python.org/pypi/jira"
+pkgrel=2
+url="https://pypi.python.org/pypi/airspeed/"
 license=('GPL')
 arch=('any')
 depends=('python') 
