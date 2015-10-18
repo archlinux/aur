@@ -1,0 +1,17 @@
+pkgbase = archupgrade
+	pkgdesc = Automatic Arch Linux Upgrade
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Johnny1000/archupgrade.git
+	install = archupgrade.install
+	arch = any
+	license = custom
+	makedepends = gettext
+	depends = python>=3.5
+	depends = pacman
+	depends = sudo
+	source = https://github.com/Johnny1000/archupgrade/archive/v1.0.0.tar.gz
+	md5sums = b8bf53b4cc3c25311bbfc485d11a3639
+
+pkgname = archupgrade
+

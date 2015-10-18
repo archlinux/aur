@@ -1,0 +1,10 @@
+post_upgrade() {
+    #Executing archupgrade puts a __pycache__ directory in /usr/lib/archupgrade/, containing .pyc files for all the modules.
+    #Make sure old .pyc files are removed, when upgrading.
+    rm -rf /usr/lib/archupgrade/__pycache__
+}
+
+post_remove() {
+    #A __pycache__ directory may have prevented /usr/lib/archupgrade from being deleted.
+    rm -rf /usr/lib/archupgrade
+}
