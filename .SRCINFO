@@ -1,0 +1,27 @@
+pkgbase = binutils-hjl-git
+	pkgdesc = A set of programs to assemble and manipulate binary and object files (git master hjl branch)
+	pkgver = 2.25.51.0.4.r85565.81f0851
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	install = binutils.install
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = GPL
+	checkdepends = dejagnu
+	checkdepends = bc
+	makedepends = git
+	depends = glibc>=2.20
+	depends = zlib
+	provides = binutils=2.25.51.0.4.r85565.81f0851
+	conflicts = binutils-multilib
+	conflicts = binutils
+	replaces = binutils-multilib
+	options = staticlibs
+	options = !distcc
+	options = !ccache
+	source = git://sourceware.org/git/binutils-gdb.git#branch=users/hjl/linux/master
+	md5sums = SKIP
+
+pkgname = binutils-hjl-git
+
