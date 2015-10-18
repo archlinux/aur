@@ -7,8 +7,8 @@
 
 _pkgbase=violetland
 pkgname=$_pkgbase-git
-pkgver=0.4.4.r364.g9a15a83
-pkgrel=2
+pkgver=0.5.rc1.r4.g365ac41
+pkgrel=1
 pkgdesc='Open source cross platform game where a girl, Violet, struggles with hordes of monsters (clone of "crimsonland").'
 arch=('i686' 'x86_64')
 url="http://violetland.github.io"
@@ -22,10 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-
-  # as there are no tags, use some black magic to get version...
-  printf "%s.r%s.g%s" "$(grep "VERSION =" src/program.cpp | sed 's|.*VERSION.*"\(.*\)".*|\1|;s/[^0-9\.]*//g')" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

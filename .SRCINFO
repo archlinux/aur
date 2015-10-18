@@ -1,7 +1,7 @@
 pkgbase = violetland-git
 	pkgdesc = Open source cross platform game where a girl, Violet, struggles with hordes of monsters (clone of "crimsonland").
-	pkgver = 0.4.4.r364.g9a15a83
-	pkgrel = 2
+	pkgver = 0.5.rc1.r4.g365ac41
+	pkgrel = 1
 	url = http://violetland.github.io
 	arch = i686
 	arch = x86_64
