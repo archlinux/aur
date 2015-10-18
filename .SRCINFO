@@ -1,0 +1,18 @@
+pkgbase = qt5-sensors-git
+	pkgdesc = Provides access to sensor hardware and motion gesture recognition
+	pkgver = v5.6.0.alpha1.r14.g5efb5da
+	pkgrel = 1
+	url = https://code.qt.io/cgit/qt/qtsensors.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	depends = qt5-declarative-git
+	provides = qt5-sensors
+	conflicts = qt5-sensors
+	source = qt5-sensors::git+https://code.qt.io/qt/qtsensors.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = qt5-sensors-git
+
