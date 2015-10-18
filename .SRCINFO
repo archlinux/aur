@@ -1,0 +1,18 @@
+pkgbase = autenticacao-gov-pt
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://www.cartaodecidadao.pt/
+	install = autenticacao-gov-pt.install
+	arch = any
+	license = custom:EUPL
+	depends = java-runtime
+	depends = pcsclite
+	depends = pcsc-tools
+	depends = ccid
+	source = autenticacao-gov-pt.install
+	source = https://autenticacao.gov.pt/fa/ajuda/software/autenticacao.gov.pt.deb
+	md5sums = 435ec9d005b57c3982afdaedb27dbc5b
+	md5sums = 7f91ec2ebd87733451919fb21ddf2182
+
+pkgname = autenticacao-gov-pt
+

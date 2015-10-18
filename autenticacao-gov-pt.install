@@ -1,0 +1,31 @@
+post_install() {
+	XDG_ICON_RESOURCE="`which xdg-icon-resource 2> /dev/null || true`"
+	if [ ! -x "$XDG_ICON_RESOURCE" ]; then
+		echo "Error: Could not find xdg-icon-resource" >&2
+		exit 0
+	fi
+	for icon in "/usr/share/autenticacao-gov-pt/autenticacao_gov_pt_"*.png; do
+		size="${icon##*/autenticacao_gov_pt_}"
+		"$XDG_ICON_RESOURCE" install --size "${size%.png}" "$icon" "autenticacao-gov-pt"
+	done
+
+	update-desktop-database > /dev/null 2>&1 || true
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+	XDG_ICON_RESOURCE="`which xdg-icon-resource 2> /dev/null || true`"
+	if [ ! -x "$XDG_ICON_RESOURCE" ]; then
+		echo "Error: Could not find xdg-icon-resource" >&2
+		exit 0
+	fi
+	for icon in "/usr/share/autenticacao-gov-pt/autenticacao_gov_pt_"*.png; do
+		size="${icon##*/autenticacao_gov_pt_}"
+		"$XDG_ICON_RESOURCE" uninstall --size "${size%.png}" "$icon" "autenticacao-gov-pt"
+	done
+
+	update-desktop-database > /dev/null 2>&1 || true
+} 
