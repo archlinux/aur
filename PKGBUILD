@@ -31,9 +31,11 @@ package() {
     install -m 0555 *.py "$_instdir/"
 
     install -d "$_instdir/static/css"
+    install -d "$_instdir/static/fonts"
     install -d "$_instdir/static/js"
 
     install -m 0444 static/css/*.css "$_instdir/static/css"
+    install -m 0444 static/fonts/* "$_instdir/static/fonts"
     install -m 0444 static/js/*.js "$_instdir/static/js"
 
     install -d "$_instdir/views"
