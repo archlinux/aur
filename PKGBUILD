@@ -1,70 +1,47 @@
-# Maintainer : Keshav Amburay <(the ddoott ridikulusddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
-# Contributor: Gaetan Bisson <bisson@archlinux.org>
-# Contributor: Robert Orzanna <orschiro@googlemail.com>
-
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.0.170.gc3c7c87
+pkgver=1.0.0.290.gb62f922
 pkgrel=1
-pkgdesc="A C++ rewrite of tablet note-taking software Xournal - GTK3 branch"
-arch=('x86_64' 'i686')
+pkgdesc="C++ re-write of notetaking app Xournal - GIT version"
+arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL3')
-makedepends=('git')
-depends=('gtk3' 'openjpeg2' 'libgnomecanvas>=2.30.1' 'ghostscript' 'shared-mime-info' 'poppler-glib>=0.14.0' 'hicolor-icon-theme' 'desktop-file-utils')
-conflicts=("${_pkgname}" "${_pkgname}-gtk3" 'xournal-gtk3' 'xournal')
-provides=("${_pkgname}=${pkgver}" "${_pkgname}-gtk3=${pkgver}" 'xournal-gtk3' 'xournal')
-options=('!strip' 'zipman' 'docs' '!emptydirs')
-install="${_pkgname}.install"
-
-source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git#branch=gtk3"
-        'xournalpp_fix_libopenjpeg.patch')
-
-sha1sums=('SKIP'
-          'e6a219270d550200331389c8010641c8902e8e84')
+makedepends=('git' 'cmake' 'gettext' 'boost')
+depends=('gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm')
+provides=("xournal=${pkgver}" "xournal-dmgerman=${pkgver} xournalpp=${pkgver}")
+conflicts=('xournal' 'xournalpp' 'xournal-dmgerman' 'xournal-image-patched' 'xournalpp-svn')
+install="xournalpp.install"
+source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git#branch=string_new")
+sha1sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}/"
-	echo "$(git describe --tags)" | sed -e 's|glib-||g' -e 's|-|.|g' -e 's|^v||g'
+  cd "${srcdir}/${_pkgname}/"
+  git describe --tags | sed -e 's|v||g' -e 's|glib.||g' -e 's|-|.|g'
 }
 
 prepare() {
 	
-	rm -rf "${srcdir}/${_pkgname}_build/" || true
-	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}_build"
+	cd "${srcdir}/${_pkgname}/"
 	
-	cd "${srcdir}/${_pkgname}_build/"
+	rm -rf "${srcdir}/${_pkgname}/build" || true
+	mkdir -p "${srcdir}/${_pkgname}/build"
+	cd "${srcdir}/${_pkgname}/build"
 	
-	git clean -x -d -f
-	echo
-	
-	msg "Apply libopenjpeg fixes"
-	## https://github.com/xournalpp/xournalpp/wiki/Arch-20131101
-	patch -Np1 -i "${srcdir}/xournalpp_fix_libopenjpeg.patch"
-	echo
+	cmake ..
 	
 }
 
 build() {
-	
-	cd "${srcdir}/${_pkgname}_build/"
-	
-	libtoolize
-	autoreconf
-	echo
-	
-	./configure --prefix=/usr --enable-mathtex --enable-libopenjpeg
-	echo
-	
+	cd "${srcdir}/${_pkgname}/build"
 	make
 	echo
-	
 }
 
 package() {
+	cd "${srcdir}/${_pkgname}/build"
 	
-	cd "${srcdir}/${_pkgname}_build/"
-	make DESTDIR="${pkgdir}" install desktop-install
-	
+	sed 's|/usr/local|/usr|g' -i "${srcdir}/${_pkgname}/build/cmake_install.cmake" || true
+	make DESTDIR="${pkgdir}/" install
+	echo
 }
