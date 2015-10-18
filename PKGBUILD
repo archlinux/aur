@@ -2,7 +2,7 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.5.99
+pkgver=0.5.96.r1938.6cbb994
 pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
@@ -11,13 +11,16 @@ license=('GPL3')
 depends=('qt5-base>=5.5.0' 'polyclipping>=6.1.3a' 'proj>=4.8.0')
 makedepends=('cmake>=2.8.9' 'qt5-tools>=5.5.0')
 provides=("${pkgname//-git}=${pkgver}")
+conflicts=(${pkgname//-git})
 install=${pkgname//-git}.install
 source=("${_pkgname}::git://github.com/${_orgname}/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  RELEASE="$(git describe --tags $(git rev-list --tags --max-count=1))"
+  REVISION="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "%s.r%s" "${RELEASE#?}" "${REVISION}"
 }
 
 build() {
