@@ -3,7 +3,7 @@
 
 pkgname=lxdm-git
 _gitname=lxdm
-pkgver=0.5.1.r5.g4d34fa7
+pkgver=0.5.2.r0.g1ff8969
 pkgrel=1
 pkgdesc='Lightweight Display Manager (part of LXDE) - git checkout'
 arch=('i686' 'x86_64')
@@ -60,6 +60,7 @@ build() {
     make
 
     sed -i 's/getty@tty1/getty@tty7/g' systemd/lxdm.service
+    sed -i '9aBusName=org.freedesktop.DisplayManager' systemd/lxdm.service
     sed -i 's/sbin/bin/' systemd/lxdm.service
     sed -i 's/sbin/bin/' data/lxdm
 
