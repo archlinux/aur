@@ -8,4 +8,4 @@ pkgbase = qca9565-bluetooth-firmware
 	source = https://launchpad.net/~hanipouspilot/+archive/ubuntu/rtlwifi/+files/linux-firmware_1.144%2Bar3012~vivid.tar.gz
 	md5sums = 5b8524fd1f23985561b4df2a2a5130f7
 
-pkgname = tqca9565-bluetooth-firmware
+pkgname = qca9565-bluetooth-firmware
