@@ -1,6 +1,6 @@
 pkgbase = letsencrypt
 	pkgdesc = A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
-	pkgver = 0.0.0.dev20151008
+	pkgver = 0.0.0.dev20151017
 	pkgrel = 1
 	url = https://letsencrypt.org/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = letsencrypt
 	depends = python2-cffi
 	depends = python2-configargparse
 	depends = python2-configobj
-	depends = python2-acme=0.0.0.dev20151008
+	depends = python2-acme=0.0.0.dev20151017
 	depends = python2-cryptography
 	depends = python2-enum34
 	depends = python2-idna
@@ -44,8 +44,8 @@ pkgbase = letsencrypt
 	optdepends = letsencrypt-apache: Apache plugin for Let’s Encrypt client
 	optdepends = letsencrypt-nginx: Nginx plugin for Let’s Encrypt client
 	conflicts = letsencrypt-git
-	source = https://pypi.python.org/packages/source/l/letsencrypt/letsencrypt-0.0.0.dev20151008.tar.gz
-	md5sums = c3191f8add4dc1b7f51ff6477b719f5c
+	source = https://pypi.python.org/packages/source/l/letsencrypt/letsencrypt-0.0.0.dev20151017.tar.gz
+	md5sums = 0836e416e6acfd795af07f2c45f57153
 
 pkgname = letsencrypt
 

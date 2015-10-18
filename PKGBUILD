@@ -1,7 +1,7 @@
 #  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=letsencrypt
-pkgver=0.0.0.dev20151008
+pkgver=0.0.0.dev20151017
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
@@ -15,11 +15,11 @@ depends=('python2' 'ca-certificates' 'dialog' 'openssl' 'gcc' 'libffi' 'git' 'py
          'python2-pyparsing' 'python2-pyrfc3339' 'python2-pythondialog' 'python2-pytz'
          'python2-requests' 'python2-setuptools' 'python2-six' 'python2-werkzeug'
          'python2-wheel' 'python2-zope-interface' 'python2-zope-event' 'python2-zope-component')
-optdepends=("letsencrypt-apache: Apache plugin for Let’s Encrypt client"
-            "letsencrypt-nginx: Nginx plugin for Let’s Encrypt client")
+optdepends=("letsencrypt-apache=${pkgver}: Apache plugin for Let’s Encrypt client"
+            "letsencrypt-nginx=${pkgver}: Nginx plugin for Let’s Encrypt client")
 conflicts=("${pkgname}-git")
 source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('c3191f8add4dc1b7f51ff6477b719f5c')
+md5sums=('0836e416e6acfd795af07f2c45f57153')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
