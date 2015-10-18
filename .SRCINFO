@@ -1,7 +1,7 @@
 pkgbase = automatic
 	pkgdesc = RSS downloader for Linux based systems, capable of adding downloaded torrents directly to Transmission
 	pkgver = 0.8.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://forum.dsmg600.info/viewtopic.php?id=2291
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = automatic
 	depends = libxml2
 	depends = pcre
 	optdepends = transmission-cli
+	backup = etc/automatic.conf
 	backup = etc/conf.d/automaticd
 	source = https://github.com/1100101/Automatic/archive/v0.8.3.tar.gz
 	source = automaticd.conf

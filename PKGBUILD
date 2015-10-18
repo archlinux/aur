@@ -2,14 +2,14 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=automatic
 pkgver=0.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc="RSS downloader for Linux based systems, capable of adding downloaded torrents directly to Transmission"
 arch=('i686' 'x86_64')
 url="http://forum.dsmg600.info/viewtopic.php?id=2291"
 license=('GPLv2')
 depends=('curl' 'libxml2' 'pcre')
 optdepends=('transmission-cli')
-backup=('etc/conf.d/automaticd')
+backup=('etc/automatic.conf' 'etc/conf.d/automaticd')
 source=(https://github.com/1100101/Automatic/archive/v$pkgver.tar.gz
         automaticd.conf
         automatic.service)
@@ -29,7 +29,7 @@ package () {
   cd "$srcdir/Automatic-$pkgver"
   
   make DESTDIR="$pkgdir/" install
+  install -D -m644 "src/automatic.conf-sample" "$pkgdir/etc/automatic.conf"
   install -D -m644 "$srcdir/automaticd.conf" "$pkgdir/etc/conf.d/automaticd"
   install -D -m644 "$srcdir/automatic.service" "$pkgdir/usr/lib/systemd/system/automatic.service"
 }
-
