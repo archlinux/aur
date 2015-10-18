@@ -1,0 +1,13 @@
+diff --git a/CxImage/CxImageDLL/CxImageCrtDll.cpp b/CxImage/CxImageDLL/CxImageCrtDll.cpp
+index ad468ed..957f232 100644
+--- a/CxImage/CxImageDLL/CxImageCrtDll.cpp
++++ b/CxImage/CxImageDLL/CxImageCrtDll.cpp
+@@ -1,7 +1,7 @@
+ // CxImageCrtDll.cpp : Defines the entry point for the CxImageCrtDll application.
+ //
+ 
+-#include "stdcrt.h"
++#include "StdCrt.h"
+ 
+ BOOL APIENTRY DllMain( HANDLE /*hModule*/, 
+                        DWORD  /*ul_reason_for_call*/, 

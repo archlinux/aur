@@ -1,0 +1,14 @@
+# Package Information for pkg-config
+
+prefix=@PREFIX@
+exec_prefix=@PREFIX@
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: CxImage
+Description: CxImage Image Manipulation Library
+Version: 6.0.0
+Libs: -L${libdir} -lcximage
+Cflags: -I${includedir}/CxImage
+Requires.private: libpng16 zlib
+Libs.private: -lgdi32 -lws2_32 -ltiff -ljasper -ljpeg
