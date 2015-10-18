@@ -1,0 +1,9 @@
+post_install() {
+    echo "
+Add /opt/ti/msp-flasher to your PATH!
+"
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,24 @@
+pkgbase = msp-flasher
+	pkgdesc = Flasher for TI MSP430 processor
+	pkgver = 1.03.07.00
+	pkgrel = 1
+	url = http://www.ti.com/tool/msp430-flasher
+	install = msp-flasher.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = elfutils
+	depends = libmpc
+	depends = zlib
+	options = !strip
+	options = !emptydirs
+	options = !libtool
+	options = staticlibs
+	options = !upx
+	source = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Flasher/1_03_07_00/exports/MSP430Flasher-1_03_07_00-linux-installer.run
+	source = msp-flasher.sh
+	sha1sums = 3701260054be1208716f32f13bae94ef81424396
+	sha1sums = 8b01a45ab7ac219ff00824e53c324126b3c39763
+
+pkgname = msp-flasher
+
