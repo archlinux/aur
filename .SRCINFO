@@ -1,0 +1,18 @@
+pkgbase = doubanfm
+	pkgdesc = Beautiful DoubanFM player based on Qt5
+	pkgver = r34.ceef4c3
+	pkgrel = 1
+	url = https://github.com/sbwtw/doubanFM
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	depends = qt5-base
+	provides = DoubanFM
+	conflicts = DoubanFM
+	source = git+https://github.com/sbwtw/doubanFM.git
+	md5sums = SKIP
+
+pkgname = doubanfm
+
