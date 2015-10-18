@@ -1,16 +1,19 @@
 pkgbase = pyinstaller
 	pkgdesc = An application to convert python scripts into stand-alone binaries
-	pkgver = 2.1
+	pkgver = 3.0
 	pkgrel = 1
 	url = http://www.pyinstaller.org
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	depends = python2
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-crypto: executable encryption support
+	optdepends = upx: executable compression support
+	conflicts = pyinstaller-git
 	options = !strip
-	options = !emptydirs
-	source = https://pypi.python.org/packages/source/P/PyInstaller/PyInstaller-2.1.tar.gz
-	md5sums = 248531f6fc94b0ffb02473321496d6d0
+	source = https://github.com/pyinstaller/pyinstaller/releases/download/3.0/PyInstaller-3.0.tar.gz
+	sha256sums = 8f9f9836ffebe71f9d9ced24001f8b27c0492574ed12a7a97c2c8810fb3fa210
 
 pkgname = pyinstaller
 
