@@ -1,7 +1,7 @@
 pkgname=autenticacao-gov-pt
 pkgver=1.0.6
 pkgrel=1
-pkgdesc=""
+pkgdesc="O Autenticação.gov.pt é o mecanismo que permite utilizar o Cartão de Cidadão eficientemente e em segurança nos navegadores que suportem ou não plugins Java"
 arch=('any')
 url="http://www.cartaodecidadao.pt/"
 license=('custom:EUPL')
