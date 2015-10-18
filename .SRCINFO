@@ -1,7 +1,7 @@
 pkgbase = qca9565-bluetooth-firmware
 	pkgdesc = Qualcomm Atheros QCA9565 bluetooth firmware 
 	pkgver = 1.144
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://launchpad.net/~hanipouspilot/+archive/ubuntu/rtlwifi
 	arch = any
 	license = custom:atheros_firmware 
