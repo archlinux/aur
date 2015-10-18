@@ -1,0 +1,32 @@
+pkgbase = qt5-tools-git
+	pkgdesc = A cross-platform application and UI framework (Development Tools, QtHelp)
+	pkgver = v5.6.0.alpha1.r22.g42632bf
+	pkgrel = 1
+	url = https://code.qt.io/cgit/qt/qttools.git
+	install = qt5-tools.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	depends = qt5-webkit-git
+	depends = desktop-file-utils
+	depends = qt5-translations-git
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	provides = qt5-tools
+	conflicts = qt5-tools
+	options = staticlibs
+	source = qt5-tools::git+https://code.qt.io/qt/qttools.git#branch=dev
+	source = assistant.desktop
+	source = designer.desktop
+	source = linguist.desktop
+	source = qdbusviewer.desktop
+	sha256sums = SKIP
+	sha256sums = a34645c26ccedfd95a1285c316564828dc1a4da00072490d8be419b874286b55
+	sha256sums = 6a0666df1954e3a522b269e8c5278a346c37df6a33b0501a3c11e200e7e8c72e
+	sha256sums = 01378a279f7894b5a86bef08929835366f6c82b10410b41fe87053ba61e074e2
+	sha256sums = 309917aee2c0b0649f4043eb93c5dc1739640e741379214d2c684978e8eab6e9
+
+pkgname = qt5-tools-git
+
