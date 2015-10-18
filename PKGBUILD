@@ -1,9 +1,11 @@
+# Maintainer : Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
 pkgver=1.0.0.290.gb62f922
 pkgrel=1
-pkgdesc="C++ re-write of notetaking app Xournal - GIT version"
+pkgdesc="C++ re-write of tablet notetaking app Xournal - GIT string_new branch"
 arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL3')
@@ -16,12 +18,11 @@ source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git#branch=stri
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}/"
-  git describe --tags | sed -e 's|v||g' -e 's|glib.||g' -e 's|-|.|g'
+	cd "${srcdir}/${_pkgname}/"
+	git describe --tags | sed -e 's|v||g' -e 's|glib.||g' -e 's|-|.|g'
 }
 
 prepare() {
-	
 	cd "${srcdir}/${_pkgname}/"
 	
 	rm -rf "${srcdir}/${_pkgname}/build" || true
@@ -29,11 +30,11 @@ prepare() {
 	cd "${srcdir}/${_pkgname}/build"
 	
 	cmake ..
-	
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}/build"
+	
 	make
 	echo
 }
