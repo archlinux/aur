@@ -1,6 +1,6 @@
 pkgbase = gnome-settings-daemon-120dpi
 	pkgdesc = The GNOME Settings daemon with an additional patch to change GNOME dpi settings from 96 to 120 dpi.
-	pkgver = 3.16.3
+	pkgver = 3.18.1
 	pkgrel = 1
 	url = http://www.gnome.org
 	install = gnome-settings-daemon.install
@@ -16,7 +16,6 @@ pkgbase = gnome-settings-daemon-120dpi
 	depends = dconf
 	depends = gnome-desktop
 	depends = gsettings-desktop-schemas
-	depends = hicolor-icon-theme
 	depends = libcanberra-pulse
 	depends = libnotify
 	depends = libsystemd
@@ -33,9 +32,9 @@ pkgbase = gnome-settings-daemon-120dpi
 	provides = gnome-settings-daemon
 	conflicts = gnome-settings-daemon
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.16/gnome-settings-daemon-3.16.3.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.18/gnome-settings-daemon-3.18.1.tar.xz
 	source = 120dpi.patch
-	sha256sums = 8752f79ba2ee76701744b4806140d1b88c665ad7cd44e7ff58b4e78e1063daea
+	sha256sums = fa621a17f1d132fe60461020b0dad20a9fab6b0e3e651628aaa53a8f6a6df2c0
 	sha256sums = ad32314bb0251298290f4f739be9fe278d498723856248ce4956044b17db4cfa
 
 pkgname = gnome-settings-daemon-120dpi
