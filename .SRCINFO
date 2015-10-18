@@ -1,0 +1,15 @@
+pkgbase = geil-git
+	pkgdesc = A task manager and scheduler for shell commands
+	pkgver = geil.alpha.0.0.1
+	pkgrel = 1
+	url = https://github.com/nukesor/geil
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = geil
+	source = geil-git::git://github.com/nukesor/geil.git
+	sha256sums = SKIP
+
+pkgname = geil-git
+
