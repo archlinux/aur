@@ -3,6 +3,7 @@ pkgbase = doubanfm
 	pkgver = r34.ceef4c3
 	pkgrel = 1
 	url = https://github.com/sbwtw/doubanFM
+	install = doubanfm.install
 	arch = x86_64
 	arch = i686
 	license = GPL3

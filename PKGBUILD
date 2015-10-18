@@ -10,6 +10,7 @@ depends=('gcc-libs' 'qt5-base')
 makedepends=('git')
 conflicts=('DoubanFM')
 provides=('DoubanFM')
+install=${pkgname}.install
 source=('git+https://github.com/sbwtw/doubanFM.git')
 md5sums=('SKIP')
 
