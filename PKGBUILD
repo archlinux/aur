@@ -4,7 +4,7 @@
 _basename=dao
 
 pkgname=${_basename}-git
-pkgver=1603.90d9a82
+pkgver=1608.7be283f
 pkgrel=1
 # LLVM JIT
 pkgdesc='A very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, bytecode, BNF macros, high-level standard library, advanced modules & bindings and much more!'
@@ -106,7 +106,7 @@ replaces=('dao-lang-git')
 build() {
   mv "$_basename-tools/"*   "$_basename/tools/"
   mv "$_basename-modules/"* "$_basename/modules/"
-  mv "DaoCXX/"              "$_basename/modules/"
+  #mv "DaoCXX/"              "$_basename/modules/"
   # FIXME not getting compiled
   mv "DaoGenomeTools/"      "$_basename/modules/"
   # FIXME not getting compiled
@@ -114,7 +114,8 @@ build() {
   # FIXME not updated to the current Dao
   #mv "DaoGraphics/"         "$_basename/modules/"
   mv "DaoGSL/"              "$_basename/modules/"
-  mv "DaoJIT/"              "$_basename/modules/"
+  # FIXME not getting compiled
+  #mv "DaoJIT/"              "$_basename/modules/"
   mv "DaoOpenGL/"           "$_basename/modules/"
   mv "DaoSQL/"              "$_basename/modules/"
   # FIXME see also below `sed -i ...'
@@ -167,26 +168,26 @@ EOF
 EOF
 
   # LLVM 3.6 renamed JIT to MCJIT and added std::unique_ptr<> => wrap pointers
-patch modules/DaoJIT/daoJIT.cpp <<\EOF
-@@ -38,7 +38,7 @@
- #include "llvm/IR/Verifier.h"
- #include "llvm/Analysis/Passes.h"
- #include "llvm/Transforms/Scalar.h"
--#include "llvm/ExecutionEngine/JIT.h"
-+#include "llvm/ExecutionEngine/MCJIT.h"
- #include "llvm/ExecutionEngine/Interpreter.h"
- #include "llvm/ExecutionEngine/GenericValue.h"
- #include "llvm/Support/raw_ostream.h"
-@@ -1137,7 +1137,7 @@
- 	daojit_tan_double = Function::Create( mathft, linkage, "tan", llvm_module );
- 	daojit_tanh_double = Function::Create( mathft, linkage, "tanh", llvm_module );
- 
--	llvm_exe_engine = EngineBuilder( llvm_module ).setEngineKind(EngineKind::JIT).create();
-+	llvm_exe_engine = EngineBuilder( std::unique_ptr<llvm::Module>( llvm_module ) ).setEngineKind(EngineKind::JIT).create();
- #if 0
- 	llvm_exe_engine->addGlobalMapping( daojit_rand_double, (void*) daojit_rand );
- 	llvm_exe_engine->addGlobalMapping( daojit_pow_double, (void*) pow );
-EOF
+#patch modules/DaoJIT/daoJIT.cpp <<\EOF
+#@@ -38,7 +38,7 @@
+# #include "llvm/IR/Verifier.h"
+# #include "llvm/Analysis/Passes.h"
+# #include "llvm/Transforms/Scalar.h"
+#-#include "llvm/ExecutionEngine/JIT.h"
+#+#include "llvm/ExecutionEngine/MCJIT.h"
+# #include "llvm/ExecutionEngine/Interpreter.h"
+# #include "llvm/ExecutionEngine/GenericValue.h"
+# #include "llvm/Support/raw_ostream.h"
+#@@ -1137,7 +1137,7 @@
+# 	daojit_tan_double = Function::Create( mathft, linkage, "tan", llvm_module );
+# 	daojit_tanh_double = Function::Create( mathft, linkage, "tanh", llvm_module );
+# 
+#-	llvm_exe_engine = EngineBuilder( llvm_module ).setEngineKind(EngineKind::JIT).create();
+#+	llvm_exe_engine = EngineBuilder( std::unique_ptr<llvm::Module>( llvm_module ) ).setEngineKind(EngineKind::JIT).create();
+# #if 0
+# 	llvm_exe_engine->addGlobalMapping( daojit_rand_double, (void*) daojit_rand );
+# 	llvm_exe_engine->addGlobalMapping( daojit_pow_double, (void*) pow );
+#EOF
 
   # FIXME https://github.com/daokoder/dao/issues/406
   sed -i -r 's|-Wl,-rpath=|-Wl,--enable-new-dtags,-rpath=|' \
@@ -194,75 +195,75 @@ EOF
 
   # each object file includes symbols from Clang and LLVM (and Clang
   #   object files in turn include symbols from LLVM)
-  sed -i -r "/-lclangSerialization/a\
-    project.AddLinkingFlag( \"-lLLVMOption -lLLVMSupport\" )" \
-    modules/DaoCXX/makefile.dao
-  # LLVM 3.6 renamed JIT to MCJIT and added std::unique_ptr<> => abandon raw pointers
-  patch modules/DaoCXX/daoCXX.cpp <<\EOF
-@@ -31,7 +31,7 @@
- #include <llvm/Support/MemoryBuffer.h>
- #include <llvm/Support/TargetSelect.h>
- #include <llvm/IR/LLVMContext.h>
--#include <llvm/ExecutionEngine/JIT.h>
-+#include <llvm/ExecutionEngine/MCJIT.h>
- #include <llvm/ExecutionEngine/Interpreter.h>
- #include <llvm/ExecutionEngine/GenericValue.h>
- #include <clang/CodeGen/CodeGenAction.h>
-@@ -80,10 +80,10 @@
- 
- static void DaoCXX_AddVirtualFile( const char *name, const char *source )
- {
--	MemoryBuffer* Buffer = llvm::MemoryBuffer::getMemBufferCopy( source, name );
-+	auto Buffer = llvm::MemoryBuffer::getMemBufferCopy( source, name );
- 	const FileEntry* FE = compiler.getFileManager().getVirtualFile( name, 
- 			strlen(Buffer->getBufferStart()), time(NULL) );
--	compiler.getSourceManager().overrideFileContents( FE, Buffer );
-+	compiler.getSourceManager().overrideFileContents( FE, std::move( Buffer ) );
- 	compiler.getFrontendOpts().Inputs.clear();
- 	compiler.getFrontendOpts().Inputs.push_back( FrontendInputFile( name, IK_CXX ) );
- }
-@@ -418,7 +418,7 @@
- 	//action.BeginSourceFile( compiler, FrontendInputFile( name, IK_CXX ) );
- 	if( ! compiler.ExecuteAction( action ) ) return error_compile_failed( out );
- 
--	llvm::Module *module = action.takeModule();
-+	auto module = action.takeModule();
- 	if( module == NULL ) return error_compile_failed( out );
- 
- 	dao_make_anonymous_name( name, NS, VT, "dao_", "" );
-@@ -475,7 +475,7 @@
- 
- 	if( ! compiler.ExecuteAction( action ) ) return error_compile_failed( out );
- 
--	llvm::Module *module = action.takeModule();
-+	auto module = action.takeModule();
- 	if( module == NULL ) return error_compile_failed( out );
- 
- 	sprintf( proto2, "dao_%s", func->routName->chars ); //XXX buffer size
-@@ -553,7 +553,7 @@
- 
- 	if( ! compiler.ExecuteAction( action ) ) return error_compile_failed( out );
- 
--	llvm::Module *module = action.takeModule();
-+	auto module = action.takeModule();
- 	if( module == NULL ) return error_compile_failed( out );
- 
- 	for(i=0; i<funcs->size; i++){
-@@ -701,10 +701,12 @@
- 	DaoCXX_AddVirtualFile( "dummy-main.cpp", "void dummy_main(){}" );
- 
- 	InitializeNativeTarget();
-+	InitializeNativeTargetAsmPrinter();
- 	if( ! compiler.ExecuteAction( action ) ) return 1;
- 
- 	std::string Error;
--	engine = ExecutionEngine::createJIT( action.takeModule(), &Error );
-+	engine = llvm::EngineBuilder( action.takeModule() )
-+		.setErrorStr( &Error ).create();
- 	if( engine == NULL ){
- 		errs() << Error << "\n";
- 		return 1;
-EOF
+#  sed -i -r "/-lclangSerialization/a\
+#    project.AddLinkingFlag( \"-lLLVMOption -lLLVMSupport\" )" \
+#    modules/DaoCXX/makefile.dao
+#  # LLVM 3.6 renamed JIT to MCJIT and added std::unique_ptr<> => abandon raw pointers
+#  patch modules/DaoCXX/daoCXX.cpp <<\EOF
+#@@ -31,7 +31,7 @@
+# #include <llvm/Support/MemoryBuffer.h>
+# #include <llvm/Support/TargetSelect.h>
+# #include <llvm/IR/LLVMContext.h>
+#-#include <llvm/ExecutionEngine/JIT.h>
+#+#include <llvm/ExecutionEngine/MCJIT.h>
+# #include <llvm/ExecutionEngine/Interpreter.h>
+# #include <llvm/ExecutionEngine/GenericValue.h>
+# #include <clang/CodeGen/CodeGenAction.h>
+#@@ -80,10 +80,10 @@
+# 
+# static void DaoCXX_AddVirtualFile( const char *name, const char *source )
+# {
+#-	MemoryBuffer* Buffer = llvm::MemoryBuffer::getMemBufferCopy( source, name );
+#+	auto Buffer = llvm::MemoryBuffer::getMemBufferCopy( source, name );
+# 	const FileEntry* FE = compiler.getFileManager().getVirtualFile( name, 
+# 			strlen(Buffer->getBufferStart()), time(NULL) );
+#-	compiler.getSourceManager().overrideFileContents( FE, Buffer );
+#+	compiler.getSourceManager().overrideFileContents( FE, std::move( Buffer ) );
+# 	compiler.getFrontendOpts().Inputs.clear();
+# 	compiler.getFrontendOpts().Inputs.push_back( FrontendInputFile( name, IK_CXX ) );
+# }
+#@@ -418,7 +418,7 @@
+# 	//action.BeginSourceFile( compiler, FrontendInputFile( name, IK_CXX ) );
+# 	if( ! compiler.ExecuteAction( action ) ) return error_compile_failed( out );
+# 
+#-	llvm::Module *module = action.takeModule();
+#+	auto module = action.takeModule();
+# 	if( module == NULL ) return error_compile_failed( out );
+# 
+# 	dao_make_anonymous_name( name, NS, VT, "dao_", "" );
+#@@ -475,7 +475,7 @@
+# 
+# 	if( ! compiler.ExecuteAction( action ) ) return error_compile_failed( out );
+# 
+#-	llvm::Module *module = action.takeModule();
+#+	auto module = action.takeModule();
+# 	if( module == NULL ) return error_compile_failed( out );
+# 
+# 	sprintf( proto2, "dao_%s", func->routName->chars ); //XXX buffer size
+#@@ -553,7 +553,7 @@
+# 
+# 	if( ! compiler.ExecuteAction( action ) ) return error_compile_failed( out );
+# 
+#-	llvm::Module *module = action.takeModule();
+#+	auto module = action.takeModule();
+# 	if( module == NULL ) return error_compile_failed( out );
+# 
+# 	for(i=0; i<funcs->size; i++){
+#@@ -701,10 +701,12 @@
+# 	DaoCXX_AddVirtualFile( "dummy-main.cpp", "void dummy_main(){}" );
+# 
+# 	InitializeNativeTarget();
+#+	InitializeNativeTargetAsmPrinter();
+# 	if( ! compiler.ExecuteAction( action ) ) return 1;
+# 
+# 	std::string Error;
+#-	engine = ExecutionEngine::createJIT( action.takeModule(), &Error );
+#+	engine = llvm::EngineBuilder( action.takeModule() )
+#+		.setErrorStr( &Error ).create();
+# 	if( engine == NULL ){
+# 		errs() << Error << "\n";
+# 		return 1;
+#EOF
 
   # gl.h is provided by mesa
   sed -i -r 's|(#include) *"gl.h"|\1 <GL/gl.h>|' \
@@ -318,7 +319,7 @@ EOF
 
   # FIXME disable testing
   #sed -i -r -e 's|^(.*DaoMake::SetTestTool)|#\1|' makefile.dao
-  sed -i -r -e '/DaoMake::SetTestTool/s|testcmd|"true"|' makefile.dao
+  #sed -i -r -e '/DaoMake::SetTestTool/s|testcmd|"true"|' makefile.dao
 
   # FIXME disable generation of finders, because they contain
   #   compile-time specific paths
