@@ -4,12 +4,12 @@
 
 pkgname=unvanquished
 pkgver=0.44.0
-pkgrel=1
+pkgrel=2
 
 _gitver="archlinux/${pkgver}-${pkgrel}"
 _gitdir="${pkgname/u/U}-${_gitver/\//-}"
 
-_depver="3"
+_depver="4"
 if test "$CARCH" == "x86_64"; then
 	_depbasename=linux64-${_depver}
 else
@@ -39,7 +39,7 @@ source=("https://github.com/Unvanquished/Unvanquished/archive/${_gitver}.tar.gz"
 build() {
 	cd "${srcdir}/${_gitdir}"
 
-	cp -r "${srcdir}/${_depbasename}" external_deps/
+	cp -r "${srcdir}/${_depbasename}" daemon/external_deps/
 
 	mkdir -p build
 	cd build
@@ -100,10 +100,10 @@ package() {
 	ln -s ../../../../etc/unvanquished/maprotation.cfg .
 }
 
-md5sums=('65c8a23d5b35776d24c7af6abc8931bb'
+md5sums=('54b7d24f5016aede91485d4a4b61bc28'
          'a5246cf3bed53798ddc4d95c6b8c1b37')
 if test "$CARCH" == "x86_64"; then
-	md5sums+=('9f73b3b0b4536b022be5d3e218b48ea1')
+	md5sums+=('2ba12c71625919ddc282172b74fa4887')
 else
-	md5sums+=('64aa86d0d0d469c1f2272377e06322a1')
+	md5sums+=('dd2cb5419bac9a1b81a8a996312e33ff')
 fi
