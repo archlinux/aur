@@ -2,7 +2,7 @@
 
 pkgname=remarkable
 pkgver=1.62
-pkgrel=1
+pkgrel=2
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('i686' 'x86_64')
 url="http://remarkableapp.github.io"
@@ -19,9 +19,11 @@ makedepends=('python')
 options=('!emptydirs' '!strip')
 install="${pkgname}.install"
 source=("${pkgname}_${pkgver}_all.deb::http://remarkableapp.github.io/files/${pkgname}_${pkgver}_all.deb"
-        "${pkgname}.install")
+        "${pkgname}.install"
+        "RemarkableWindow.patch")
 md5sums=('4caa1f953cc05010bf255f34dcce8c1f'
-         '4230de2876e8789bcd5a7cdc84b2a30b')
+         '4230de2876e8789bcd5a7cdc84b2a30b'
+         '9de20a57ddfea4458c8190c101541751')
 
 package() {
     _python_site=$(python -c 'import site; print(site.getsitepackages()[0]);')
@@ -29,6 +31,9 @@ package() {
 
     msg2 "Extracting data.tar.gz..."
     tar -Jxf data.tar.xz -C "${pkgdir}/"
+
+    msg2 "Fixing GtkBuilder error..."
+    patch -d "${pkgdir}" -Np1 <"${srcdir}"/RemarkableWindow.patch
 
     msg2 "Moving parts in place..."
 
