@@ -6,9 +6,9 @@ pkgname=nginx-mainline-modsecurity
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with ModSecurity module'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='http://nginx.org'
 license=('custom')
 depends=('pcre' 'apr-util' 'curl' 'lua51' 'libxml2' 'yajl')
@@ -38,7 +38,8 @@ prepare() {
   cd "$srcdir"/modsecurity-$_modpkver
   ./configure \
     --enable-standalone-module \
-    --disable-mlogc
+    --disable-mlogc \
+    --with-lua=/usr/include/lua5.1/
   make
 }
 
