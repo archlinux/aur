@@ -10,14 +10,14 @@
 
 pkgname=keepassx2-yubikey-git
 pkgver=2.0.beta2.r96.g9429adb
-pkgrel=1
+pkgrel=2
 pkgdesc="KeePassX cross platform password manager with support for the YubiKey challenge-response hardware token."
 arch=('i686' 'x86_64')
 url="https://github.com/kylemanna/keepassx"
 license=('GPL2')
-depends=('libxtst' 'qt4' 'yubico-c' 'yubikey-personalization')
+depends=('libxtst' 'libgcrypt' 'zlib' 'qt5-tools' 'qt5-x11extras' 'yubico-c' 'yubikey-personalization')
 install=keepassx2.install
-makedepends=('git' 'intltool' 'cmake')
+makedepends=('git' 'cmake')
 conflicts=('keepassx-svn' 'keepassx' 'keepassx2', 'keepassx2-git')
 source=("${pkgname}::git+https://github.com/keepassx/keepassx.git#commit=9429adbe55bb0e926daac76fe5a735a917cf006b")
 md5sums=('SKIP')
@@ -44,7 +44,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_BINDIR=/usr/bin -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_VERBOSE_MAKEFILE=ON -DWITH_GUI_TESTS=ON
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_BINDIR=/usr/bin -DCMAKE_INSTALL_LIBDIR=/usr/lib -DWITH_GUI_TESTS=ON
     make
 }
 
