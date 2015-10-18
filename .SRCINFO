@@ -1,0 +1,17 @@
+pkgbase = gr-bitgate-git
+	pkgdesc = Blocks for operations on clocked signal
+	pkgver = aa283bc
+	pkgrel = 1
+	url = https://github.com/viraptor/gr-bitgate
+	arch = any
+	license = unknown
+	makedepends = cmake
+	depends = gnuradio
+	depends = boost
+	depends = swig
+	provides = gr-bitgate
+	source = git+https://github.com/viraptor/gr-bitgate.git
+	sha1sums = SKIP
+
+pkgname = gr-bitgate-git
+
