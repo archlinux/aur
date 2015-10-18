@@ -1,0 +1,50 @@
+--- a/src/lxdm.c	2015-10-18 19:58:05.548666256 -0200
++++ b/src/lxdm.c	2015-10-18 20:10:50.447667243 -0200
+@@ -327,17 +327,10 @@
+ 	s->idle=FALSE;
+ 	sprintf(temp,":%d",s->display);
+ 	setenv("DISPLAY",temp,1);
+-	#ifndef DISABLE_XAUTH
+-	sprintf(temp,"/var/run/lxdm/lxdm-:%d.auth",s->display);
+-	setenv("XAUTHORITY",temp,1);
+-	#endif
+ 	g_message("prepare greeter on %s\n",temp);
+ 	ui_prepare();
+ 	lxsession_set_active(s);
+ 	g_message("start greeter on %s\n",temp);
+-	#ifndef DISABLE_XAUTH
+-	unsetenv("XAUTHORITY");
+-	#endif
+ 	return s;
+ }
+ 
+@@ -493,10 +486,6 @@
+ 	{
+ 		arg[arc++] = g_strdup("-novtswitch");
+ 	}
+-#ifndef DISABLE_XAUTH
+-	arg[arc++] = g_strdup("-auth");
+-	arg[arc++] = g_strdup_printf("/var/run/lxdm/lxdm-:%d.auth",s->display);
+-#endif
+ 	arg[arc] = NULL;
+ 	p=g_strjoinv(" ", arg);
+ 	g_strfreev(arg);
+@@ -705,7 +694,7 @@
+ 
+ 	authfile = g_strdup_printf("/var/run/lxdm/lxdm-:%d.auth",s->display);
+ 
+-	setenv("XAUTHORITY",authfile,1);
++	//setenv("XAUTHORITY",authfile,1);
+ 	remove(authfile);
+ 	xauth_write_file(authfile,s->display,s->mcookie);
+ 	g_free(authfile);
+@@ -1009,9 +998,6 @@
+ 	g_message("%ld: start xserver in %d retry",time(NULL),i);
+ 	if(s->dpy==NULL)
+ 		exit(EXIT_FAILURE);
+-	#ifndef DISABLE_XAUTH
+-	unsetenv("XAUTHORITY");
+-	#endif
+ 	
+ 	if(s->option && g_key_file_has_key(config,s->option,"numlock",NULL))
+ 	{

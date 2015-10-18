@@ -22,21 +22,26 @@ backup=('etc/lxdm/lxdm.conf'
         'etc/lxdm/PostLogout'
         'etc/lxdm/PreReboot'
         'etc/lxdm/PreShutdown')
-depends=('cairo' 'dbus-core' 'gdk-pixbuf2' 'glib2' 'gtk2' 'libx11' 'libxcb' 'pango')
-makedepends=('intltool' 'git')
+depends=('cairo' 'dbus-core' 'gdk-pixbuf2' 'glib2' 'gtk2' 'libx11' 'libxcb' 'pango' 'xorg-server')
+makedepends=('intltool' 'git' 'iso-codes')
+optdepends=('gtk-engines: default GTK+ theme'
+            'iso-codes: show language names in language chooser'
+            'librsvg: display the default background')
 source=('lxdm::git+http://git.lxde.org/git/lxde/lxdm.git'
         'http://dl.dropbox.com/u/4813005/lxdm/lxdm-themes.tar.gz'
-        'Xsession.patch'
-        'lxdm.patch'
-        'lxdm.conf.patch'
-        'lxdm-pam'
+        'Xsession'
+        'lxdm.in.patch'
+        'lxdm.conf.in.patch'
+        'lxdm.c.patch'
+        'lxdm.pam'
         'PostLogout')
 md5sums=('SKIP'
          '1cc5163253149952329671db34ce7907'
-         '9bdf95adb74d81d4b6b6176fb1142090'
-         'baed9055e8825a5511712bc095197519'
-         'e0653feadbcf9c8fcea1600008b32850'
-         '2897b4f8bf09bdfa060e1be52868873f'
+         'de8be632e7daef6787628ebb0dc94ad1'
+         'b40a5e90b95b07c7fc1120da574c3149'
+         '1062f248ce6e7b3868fdc60da0645458'
+         '966499b1900eaa9b9c9021c57073c4df'
+         'c941ef896248bc7c03901b513490425c'
          '5d585acc332056b8d5be3a15d2f20d84')
 
 pkgver() {
@@ -49,37 +54,36 @@ pkgver() {
     fi
 }
 
+prepare() {
+    cd $_gitname
+    
+    patch -Np1 < ../lxdm.in.patch
+    patch -Np1 < ../lxdm.conf.in.patch
+    patch -Np1 < ../lxdm.c.patch
+
+    cp ../Xsession data/Xsession
+    cp ../lxdm.pam pam/lxdm
+}
+
 build() {
     cd $_gitname
     
-    ./autogen.sh    
-    
-    sed -i '/es_VE/d;/frp/d' po/LINGUAS # Fix language compile errors
-    
-    ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib/lxdm --localstatedir=/var --with-pam
+    ./autogen.sh        
+    ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib/lxdm --localstatedir=/var
     make
-
-    sed -i 's/getty@tty1/getty@tty7/g' systemd/lxdm.service
-    sed -i 's/sbin/bin/' systemd/lxdm.service
-    sed -i 's/sbin/bin/' data/lxdm
-
-    patch -Np0 < ${srcdir}/lxdm.patch
-    patch -Np0 < ${srcdir}/lxdm.conf.patch
-    patch -Np0 < ${srcdir}/Xsession.patch
 }
 
 package() {
     cd $_gitname
 
-    make DESTDIR=${pkgdir} sbindir=/usr/bin install
+    make DESTDIR=${pkgdir} install
     chmod 644 "$pkgdir/etc/lxdm/lxdm.conf"
-    install -m644 ${srcdir}/lxdm-pam ${pkgdir}/etc/pam.d/lxdm
     install -m755 ${srcdir}/PostLogout ${pkgdir}/etc/lxdm/PostLogout
 
     # Home directory
-    install -d ${pkgdir}/var/{lib,run}/lxdm    
-    chown -R 121:121 "$pkgdir/var/lib/lxdm"
+    install -dm 755 ${pkgdir}/var/lib/lxdm    
     echo 'GDK_CORE_DEVICE_EVENTS=true' > "$pkgdir"/var/lib/lxdm/.pam_environment
+    chown -R 121:121 "$pkgdir/var/lib/lxdm"
 
     # Custom themes
     cp -r ${srcdir}/lxdm-themes/* ${pkgdir}/usr/share/lxdm/themes
@@ -87,8 +91,5 @@ package() {
     # GNOME Shell extension
     mkdir -p "$pkgdir/usr/share/gnome-shell/extensions"
     cp -r gnome-shell/LXDM_User_Switch@dgod "$pkgdir/usr/share/gnome-shell/extensions"
-
-    # avoid conflict with filesystem>=2012.06
-    rm -r ${pkgdir}/var/run
 }
 
