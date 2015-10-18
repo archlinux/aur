@@ -1,6 +1,6 @@
 pkgbase = python-pyinputevent
 	pkgdesc = Provides a python interface to Linux's input subsystem
-	pkgver = 0.1b0.dda5a69
+	pkgver = 0.1b0.d2075fa
 	pkgrel = 2
 	url = https://github.com/ntzrmtthihu777/pyinputevent
 	arch = any
