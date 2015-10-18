@@ -1,0 +1,16 @@
+pkgbase = bois-git
+	pkgdesc = A task manager and scheduler for shell commands
+	pkgver = 4.0.0.rc.1.r10.g1ff5ce4
+	pkgrel = 1
+	url = https://github.com/Nukesor/bois
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = bois
+	conflicts = bois
+	options = !lto
+	source = bois-git::git+https://github.com/Nukesor/bois.git
+	sha256sums = SKIP
+
+pkgname = bois-git
