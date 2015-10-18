@@ -1,0 +1,19 @@
+pkgbase = gis-weather
+	pkgdesc = Customizable weather widget
+	pkgver = 0.7.8.7
+	pkgrel = 1
+	url = http://sourceforge.net/projects/gis-weather
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = gtk3
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	optdepends = librsvg
+	conflicts = gis-weather-git
+	source = http://sourceforge.net/projects/gis-weather/files/gis-weather/0.7.8.7/gis-weather_0.7.8.7_all.deb/download
+	md5sums = dab6f428201125752c5fef6840866206
+
+pkgname = gis-weather
+
