@@ -1,0 +1,13 @@
+pkgbase = mdmodern-mdm-theme-git
+	pkgdesc = An HTML5 theme for MDM's webkit greeter.
+	pkgver = 20150316.7a4ea5b
+	pkgrel = 1
+	url = https://github.com/philer/MDModern
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = MDModern::git+https://github.com/philer/MDModern.git
+	sha256sums = SKIP
+
+pkgname = mdmodern-mdm-theme-git
+
