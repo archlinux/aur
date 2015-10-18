@@ -52,8 +52,8 @@ pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.1
-_pkgver=4.1.7
-_rtpatchver=rt8
+_pkgver=4.1.10
+_rtpatchver=rt10
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -79,7 +79,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
+        '0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch')
         
 prepare() {
     cd ${_srcname}
@@ -95,7 +96,11 @@ prepare() {
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
         msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
-        patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"  
+        patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
+        
+    ### Fix https://bbs.archlinux.org/viewtopic.php?pid=1568197#p1568197
+        msg "Fix potential deadlock in reqsk_queue_unlink"
+        patch -Np1 -i "$srcdir/0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch"
     
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
@@ -446,9 +451,9 @@ package_linux-rt-bfq-docs() {
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            '3b5af919b94d7f4b2b66702ddb23dc32b15c3029d00d56afce564a317510bfc7ce016394335acc9f29da860fed7cb241edeaa082ec9477a0a4a62a9a238d23b6'
+            '3b5cb5c8f494958c39a06a1b416e3e5a075a3c76c44f8bf1ae5a14deec9861407100c2ef59b0720e8fc0729b5c8422b4d819ff59f1f7ec4eed20c5ba8a95d6d5'
             'SKIP'
-            '9f51e72221ea28ea0ca1b465a99a3fef7cd6880e4fd0b44b3641d1f3b3d3e88e77fbc6bec470c4298c7976c4c8517779f5a508e8cc7fbd9b3bcbfab6f6a515d2'
+            '023cbfcb46b25de9771b1395346559724af216706c06b6299e066534bf821868e258767b4466e94aeb3a19bd6068af003465a2a40161a55cf6f31e73d3af41a2'
             'SKIP'
             '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
             'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
@@ -458,7 +463,8 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '9b00cba261fef37390dc33ba6743e6176d053020207872d7ce18fd1264037a241cc578a19ed5e45e1447e26f24601707bdab5118e5e02abfb58cfabcfe69da74'
             '2679ad01ea2348844079e71b9e4d51d60a2cfe590958342261a5a1316fa929db68f9d4fb34bba7ed6a27101b6c1d12614e79f7d6dd8e7e52633aef0647c8dd48'
-            '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528')
+            '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528'
+            'bf8045913bc87df289cb6089b9428b2eb685ef3a745c7531b628111ba58ec33fb6e707a74ecdd53b6d59169c4354e02efff585ef16a1645ce5b04e54257f8f50')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
