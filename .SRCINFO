@@ -1,0 +1,19 @@
+pkgbase = gis-weather-git
+	pkgdesc = Customizable weather widget
+	pkgver = 0.7.8.13
+	pkgrel = 1
+	url = https://github.com/RingOV/gis-weather
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = gtk3
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	conflicts = gis-weather
+	source = gis-weather-git::git://github.com/RingOV/gis-weather
+	md5sums = SKIP
+
+pkgname = gis-weather-git
+
