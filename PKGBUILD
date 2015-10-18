@@ -60,7 +60,6 @@ build() {
     make
 
     sed -i 's/getty@tty1/getty@tty7/g' systemd/lxdm.service
-    sed -i '9aBusName=org.freedesktop.DisplayManager' systemd/lxdm.service
     sed -i 's/sbin/bin/' systemd/lxdm.service
     sed -i 's/sbin/bin/' data/lxdm
 
