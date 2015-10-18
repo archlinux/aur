@@ -6,7 +6,7 @@ pre_install() {
 
 ## arg 1:  the new package version
 post_install() {
-    note "The executable file is called: DoubanFM"
+    echo "The executable file is called: DoubanFM"
     return 0;
 }
 
