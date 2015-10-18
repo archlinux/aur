@@ -8,10 +8,10 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.1
-_pkgver=4.1.7
-_rtpatchver=rt8
+_pkgver=4.1.10
+_rtpatchver=rt10
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -29,9 +29,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
 
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'bbd57fb48ea8e6971680818ba8722fd38ae419dca6047b852f10d33e5cd2ff6b'
+            '929e210fe6dbd5dd26812c146630be14e979aae6c960a2feb39544babb8e73cb'
             'SKIP'
-            '16b52fdee967160d80ba56b3edee7ca321f9068b7281203f69b47a027f32ae4d'
+            '287314390826d8ac54dff024a277d8fa4917a17d4b13f4dbe9619fa6283fbc79'
             'SKIP'
             'deb34489d21e0a20483f52738622244589051eb698e7924eb3ddfd5f004d5f1f'
             'fd235f5d73d1b8b93653e9fdeee9c0eca318dddfb2570f9b14b70f3540b8d832'
