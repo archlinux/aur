@@ -1,0 +1,18 @@
+pkgbase = qt5-x11extras-git
+	pkgdesc = Provides platform-specific APIs for X11
+	pkgver = v5.5.0.r2.g85654ad
+	pkgrel = 1
+	url = https://code.qt.io/cgit/qt/qtx11extras.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	depends = qt5-base-git
+	provides = qt5-x11extras
+	conflicts = qt5-x11extras
+	source = qt5-x11extras::git+https://code.qt.io/qt/qtx11extras.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = qt5-x11extras-git
+

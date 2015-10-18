@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/*.tar*
+/qt5-x11extras/
+
