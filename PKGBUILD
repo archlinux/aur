@@ -9,8 +9,8 @@
 #
 
 pkgname=keepassx2-yubikey-git
-pkgver=2.0.beta2.r96.g9429adb
-pkgrel=2
+pkgver=2.0.0.r75.g3de1231
+pkgrel=1
 pkgdesc="KeePassX cross platform password manager with support for the YubiKey challenge-response hardware token."
 arch=('i686' 'x86_64')
 url="https://github.com/kylemanna/keepassx"
@@ -19,7 +19,7 @@ depends=('libxtst' 'libgcrypt' 'zlib' 'qt5-tools' 'qt5-x11extras' 'yubico-c' 'yu
 install=keepassx2.install
 makedepends=('git' 'cmake')
 conflicts=('keepassx-svn' 'keepassx' 'keepassx2', 'keepassx2-git')
-source=("${pkgname}::git+https://github.com/keepassx/keepassx.git#commit=9429adbe55bb0e926daac76fe5a735a917cf006b")
+source=("${pkgname}::git+https://github.com/keepassx/keepassx.git#commit=3de123166b3f33af782adb81c242b735ca6affb7")
 md5sums=('SKIP')
 
 _check_repo_added() {
