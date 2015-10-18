@@ -1,7 +1,7 @@
 pkgbase = python-instant-music-git
 	pkgdesc = Instantly download any song (git version)
-	pkgver = 152.7be8812
-	pkgrel = 1
+	pkgver = 157.25ab134
+	pkgrel = 2
 	url = https://github.com/yask123/Instant-Music-Downloader
 	arch = any
 	license = unknown
@@ -10,6 +10,7 @@ pkgbase = python-instant-music-git
 	depends = youtube-dl
 	depends = python-beautifulsoup4
 	depends = python-eyed3
+	depends = python-requests
 	provides = python-instant-music
 	conflicts = python-instant-music
 	source = git+https://github.com/yask123/Instant-Music-Downloader.git

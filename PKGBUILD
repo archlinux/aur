@@ -1,13 +1,13 @@
 gitname=instant-music
 pkgname=python-${gitname}-git
-pkgver=152.7be8812
-pkgrel=1
+pkgver=157.25ab134
+pkgrel=2
 pkgdesc="Instantly download any song (git version)"
 arch=('any')
 url="https://github.com/yask123/Instant-Music-Downloader"
 license=("unknown")
 makedepends=('git' 'python-setuptools')
-depends=('youtube-dl' 'python-beautifulsoup4' 'python-eyed3')
+depends=('youtube-dl' 'python-beautifulsoup4' 'python-eyed3' 'python-requests')
 provides=('python-instant-music')
 conflicts=('python-instant-music')
 source=("git+https://github.com/yask123/Instant-Music-Downloader.git")
