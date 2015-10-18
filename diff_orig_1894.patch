@@ -1,0 +1,394 @@
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/changelog guayadeque-0.3.7/changelog
+--- guayadeque-0.3.7.orig/changelog	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/changelog	2015-10-17 12:26:30.710449696 -0600
+@@ -1,3 +1,6 @@
++  * Fixed some Config constructor calls
++
++2014-02-20 0.3.7
+ 
+   * Removed Flac library dependency. Now flac images are read/writen using taglib
+   * Fixed compilation without external libwxsqlite support
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/po/guayadeque.pot guayadeque-0.3.7/po/guayadeque.pot
+--- guayadeque-0.3.7.orig/po/guayadeque.pot	2014-02-16 15:22:22.000000000 -0700
++++ guayadeque-0.3.7/po/guayadeque.pot	2015-10-17 12:26:30.990449707 -0600
+@@ -8,7 +8,7 @@
+ msgstr ""
+ "Project-Id-Version: PACKAGE VERSION\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2014-01-14 21:46+0000\n"
++"POT-Creation-Date: 2015-01-20 20:54+0000\n"
+ "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/AAListBox.cpp guayadeque-0.3.7/src/AAListBox.cpp
+--- guayadeque-0.3.7.orig/src/AAListBox.cpp	2014-02-16 15:22:19.000000000 -0700
++++ guayadeque-0.3.7/src/AAListBox.cpp	2015-10-17 12:26:28.817116276 -0600
+@@ -267,7 +267,7 @@
+     {
+         index = event.GetId();
+ 
+-        guConfig * Config = ( guConfig * ) Config->Get();
++        guConfig * Config = ( guConfig * ) guConfig::Get();
+         if( Config )
+         {
+             wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/AlListBox.cpp guayadeque-0.3.7/src/AlListBox.cpp
+--- guayadeque-0.3.7.orig/src/AlListBox.cpp	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/AlListBox.cpp	2015-10-17 12:26:30.173783005 -0600
+@@ -406,7 +406,7 @@
+     {
+         index = event.GetId();
+ 
+-        guConfig * Config = ( guConfig * ) Config->Get();
++        guConfig * Config = ( guConfig * ) guConfig::Get();
+         if( Config )
+         {
+             wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/AlbumBrowser.cpp guayadeque-0.3.7/src/AlbumBrowser.cpp
+--- guayadeque-0.3.7.orig/src/AlbumBrowser.cpp	2014-02-16 15:22:19.000000000 -0700
++++ guayadeque-0.3.7/src/AlbumBrowser.cpp	2015-10-17 13:41:49.623985650 -0600
+@@ -1177,7 +1177,7 @@
+     {
+         index = cmdid;
+ 
+-        guConfig * Config = ( guConfig * ) Config->Get();
++        guConfig * Config = ( guConfig * ) guConfig::Get();
+         if( Config )
+         {
+             wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+@@ -1240,7 +1240,7 @@
+     {
+         Index = cmdid;
+ 
+-        guConfig * Config = ( guConfig * ) Config->Get();
++        guConfig * Config = ( guConfig * ) guConfig::Get();
+         if( Config )
+         {
+             wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/ArListBox.cpp guayadeque-0.3.7/src/ArListBox.cpp
+--- guayadeque-0.3.7.orig/src/ArListBox.cpp	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/ArListBox.cpp	2015-10-17 12:26:30.350449679 -0600
+@@ -254,7 +254,7 @@
+     {
+         index = event.GetId();
+ 
+-        guConfig * Config = ( guConfig * ) Config->Get();
++        guConfig * Config = ( guConfig * ) guConfig::Get();
+         if( Config )
+         {
+             wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/AudioScrobble.cpp guayadeque-0.3.7/src/AudioScrobble.cpp
+--- guayadeque-0.3.7.orig/src/AudioScrobble.cpp	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/AudioScrobble.cpp	2015-10-17 12:26:30.177116338 -0600
+@@ -767,7 +767,7 @@
+         {
+             break;
+         }
+-        Sleep( guAS_SUBMIT_RETRY_TIMEOUT ); // Wait 30 Secs between submit attempts
++        Sleep( guAS_SUBMIT_TIMEOUT ); // Wait 30 Secs between submit attempts
+     }
+     return 0;
+ }
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/AudioScrobble.h guayadeque-0.3.7/src/AudioScrobble.h
+--- guayadeque-0.3.7.orig/src/AudioScrobble.h	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/AudioScrobble.h	2015-10-17 12:26:30.687116360 -0600
+@@ -50,7 +50,7 @@
+ #define guAS_MAX_SUBMITTRACKS       50
+ 
+ #define guAS_SUBMIT_RETRY_TIMEOUT   30000
+-#define guAS_SUBMIT_TIMEOUT         120000
++#define guAS_SUBMIT_TIMEOUT         1000
+ 
+ #define guAS_ERROR_NOERROR          0
+ #define guAS_ERROR_BANNED           1
+Only in guayadeque-0.3.7.orig/src: CMakeCache.txt
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/Config.h guayadeque-0.3.7/src/Config.h
+--- guayadeque-0.3.7.orig/src/Config.h	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/Config.h	2015-10-17 12:26:30.177116338 -0600
+@@ -139,6 +139,7 @@
+     wxString RetVal = val;
+     RetVal.Replace( wxT( ":" ), wxT( "_$&" ) );
+     RetVal.Replace( wxT( ";" ), wxT( "_&$" ) );
++    RetVal.Replace( wxT( "," ), wxT( "$_&" ) );
+     return RetVal;
+ }
+ 
+@@ -148,6 +149,7 @@
+     wxString RetVal = val;
+     RetVal.Replace( wxT( "_$&" ), wxT( ":" ) );
+     RetVal.Replace( wxT( "_&$" ), wxT( ";" ) );
++    RetVal.Replace( wxT( "$_&" ), wxT( "," ) );
+     return RetVal;
+ }
+ 
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/DbLibrary.cpp guayadeque-0.3.7/src/DbLibrary.cpp
+--- guayadeque-0.3.7.orig/src/DbLibrary.cpp	2014-02-16 15:22:19.000000000 -0700
++++ guayadeque-0.3.7/src/DbLibrary.cpp	2015-10-17 12:26:28.813782944 -0600
+@@ -4781,8 +4781,8 @@
+       }
+       dbRes.Finalize();
+       query = GU_TRACKS_QUERYSTR + wxString::Format( wxT( "WHERE song_albumid = %i" ), AlbumId );
+-      //query += wxT( " ORDER BY song_number" );
+-      query += GetSongsSortSQL( m_TracksOrder, m_TracksOrderDesc );
++      query += wxT( " ORDER BY song_disk, song_number, song_filename" );
++      //query += GetSongsSortSQL( m_TracksOrder, m_TracksOrderDesc );
+   }
+ 
+   //guLogMessage( wxT( "GetRandomTracks:\n%s" ), query.c_str() );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/FileBrowser.cpp guayadeque-0.3.7/src/FileBrowser.cpp
+--- guayadeque-0.3.7.orig/src/FileBrowser.cpp	2014-02-16 15:22:19.000000000 -0700
++++ guayadeque-0.3.7/src/FileBrowser.cpp	2015-10-17 13:41:49.623985650 -0600
+@@ -2248,7 +2248,7 @@
+     int Count;
+     Index = event.GetId();
+ 
+-    guConfig * Config = ( guConfig * ) Config->Get();
++    guConfig * Config = ( guConfig * ) guConfig::Get();
+     if( Config )
+     {
+         wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+@@ -2286,7 +2286,7 @@
+     int Count;
+     Index = event.GetId();
+ 
+-    guConfig * Config = ( guConfig * ) Config->Get();
++    guConfig * Config = ( guConfig * ) guConfig::Get();
+     if( Config )
+     {
+         wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/LastFM.cpp guayadeque-0.3.7/src/LastFM.cpp
+--- guayadeque-0.3.7.orig/src/LastFM.cpp	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/LastFM.cpp	2015-10-17 12:26:30.697116362 -0600
+@@ -483,6 +483,10 @@
+                                 {
+                                     RetVal.m_ImageLink = XmlNode->GetNodeContent();
+                                 }
++                                else if( ImageSize == wxT( "mega" ) && !XmlNode->GetNodeContent().IsEmpty() )
++                                {
++                                    RetVal.m_ImageLink = XmlNode->GetNodeContent();
++                                }
+                             }
+                             else if( ItemName == wxT( "toptags" ) )
+                             {
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/LastFMPanel.cpp guayadeque-0.3.7/src/LastFMPanel.cpp
+--- guayadeque-0.3.7.orig/src/LastFMPanel.cpp	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/LastFMPanel.cpp	2015-10-17 13:41:49.650652317 -0600
+@@ -265,7 +265,7 @@
+     GetSelectedTracks( &Tracks );
+     if( Tracks.Count() )
+     {
+-        guConfig * Config = ( guConfig * ) Config->Get();
++        guConfig * Config = ( guConfig * ) guConfig::Get();
+         if( m_PlayerPanel && Config )
+         {
+             if( Config->ReadBool( wxT( "DefaultActionEnqueue" ), false, wxT( "general" ) ) )
+@@ -391,7 +391,7 @@
+ {
+     m_Info = NULL;
+ 
+-    guConfig * Config = ( guConfig * ) Config->Get();
++    guConfig * Config = ( guConfig * ) guConfig::Get();
+     m_ShowLongBioText = Config->ReadBool( wxT( "ShowLongBioText" ), false, wxT( "lastfm" )  );
+ 
+     CreateControls( parent );
+@@ -406,7 +406,7 @@
+     if( m_Info )
+         delete m_Info;
+ 
+-    guConfig * Config = ( guConfig * ) Config->Get();
++    guConfig * Config = ( guConfig * ) guConfig::Get();
+     Config->WriteBool( wxT( "ShowLongBioText" ), m_ShowLongBioText, wxT( "lastfm" )  );
+ 
+ 	m_ShowMoreHyperLink->Disconnect( wxEVT_COMMAND_HYPERLINK, wxHyperlinkEventHandler( guArtistInfoCtrl::OnShowMoreLinkClicked ), NULL, this );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/MediaCtrl.cpp guayadeque-0.3.7/src/MediaCtrl.cpp
+--- guayadeque-0.3.7.orig/src/MediaCtrl.cpp	2014-02-16 15:22:19.000000000 -0700
++++ guayadeque-0.3.7/src/MediaCtrl.cpp	2015-10-17 12:26:28.823782943 -0600
+@@ -1372,6 +1372,7 @@
+     m_LastFadeVolume = -1;
+     m_StartOffset = startpos;
+     m_SeekTimerId = 0;
++    m_AddedRecord = false;
+ 
+     guLogDebug( wxT( "guFaderPlayBin::guFaderPlayBin (%i)  %i" ), m_Id, playtype );
+ 
+@@ -2485,11 +2486,18 @@
+ // -------------------------------------------------------------------------------- //
+ void guFaderPlayBin::AddRecordElement( GstPad * pad, bool isblocked )
+ {
++    Lock();
++    guLogMessage( wxT( "AddRecordElement %d %d\n" ), m_AddedRecord, isblocked );
++    if( !m_AddedRecord )
++    {
++        m_AddedRecord = true;
+ 	gst_bin_add( GST_BIN( m_Playbackbin ), m_RecordBin );
+     m_RecordPad = gst_element_get_request_pad( m_Tee, "src%d" );
+ 
+ 	gst_pad_link( m_RecordPad, m_RecordGhostPad );
+ 
++    }
++    Unlock();
+ 	// if we're supposed to be playing, unblock the sink */
+ 	if( isblocked )
+ 	{
+@@ -2508,12 +2516,19 @@
+ // -------------------------------------------------------------------------------- //
+ void guFaderPlayBin::RemoveRecordElement( GstPad * pad, bool isblocked )
+ {
++    Lock();
++    guLogMessage( wxT( "RemoveRecordElement %d %d\n" ), m_AddedRecord, isblocked );
++    if( m_AddedRecord )
++    {
++        m_AddedRecord = false;
+     g_object_ref( m_RecordBin );
+     gst_bin_remove( GST_BIN( m_Playbackbin ), m_RecordBin );
+ 
+     gst_element_set_state( m_RecordBin, GST_STATE_NULL );
+     g_object_unref( m_RecordBin );
+     SetRecordBin( NULL );
++    }
++    Unlock();
+     if( isblocked )
+     {
+         gst_pad_set_blocked_async( pad, false, GstPadBlockCallback( record_unlocked ), NULL );
+@@ -2569,20 +2584,8 @@
+ void guFaderTimeLine::Finished( void )
+ {
+     m_FaderPlayBin->SetFaderVolume( m_VolEnd );
+-    m_FaderPlayBin->EndFade();
+-}
+ 
+-// -------------------------------------------------------------------------------- //
+-static bool TimerUpdated( guFaderTimeLine * timeline )
+-{
+-    timeline->TimerEvent();
+-    return true;
+-}
+-
+-// -------------------------------------------------------------------------------- //
+-int guFaderTimeLine::TimerCreate( void )
+-{
+-    return g_timeout_add( m_UpdateInterval, GSourceFunc( TimerUpdated ), this );
++    m_FaderPlayBin->EndFade();
+ }
+ 
+ 
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/MediaCtrl.h guayadeque-0.3.7/src/MediaCtrl.h
+--- guayadeque-0.3.7.orig/src/MediaCtrl.h	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/MediaCtrl.h	2015-10-17 12:26:30.693783027 -0600
+@@ -209,7 +209,7 @@
+ 
+     virtual void    ValueChanged( float value );
+     virtual void    Finished( void );
+-    virtual int     TimerCreate( void );
++//    virtual int     TimerCreate( void );
+ };
+ 
+ // -------------------------------------------------------------------------------- //
+@@ -253,6 +253,7 @@
+ 
+     int                 m_StartOffset;
+     int                 m_SeekTimerId;
++    bool                m_AddedRecord;
+ 
+     bool                BuildPlaybackBin( void );
+     bool                BuildOutputBin( void );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/OnlineLinks.cpp guayadeque-0.3.7/src/OnlineLinks.cpp
+--- guayadeque-0.3.7.orig/src/OnlineLinks.cpp	2014-02-16 15:22:19.000000000 -0700
++++ guayadeque-0.3.7/src/OnlineLinks.cpp	2015-10-17 12:26:28.817116276 -0600
+@@ -79,7 +79,7 @@
+     int index = linkid - ID_LINKS_BASE;
+     //guLogMessage( wxT( "ExecuteOnlineLink( %i, '%s' )" ), index, text.c_str() );
+ 
+-    guConfig * Config = ( guConfig * ) Config->Get();
++    guConfig * Config = ( guConfig * ) guConfig::Get();
+     wxArrayString Links = Config->ReadAStr( wxT( "Link" ), wxEmptyString, wxT( "searchlinks/links" ) );
+ 
+     if( index >= 0 && ( index < ( int ) Links.Count() ) )
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/PlayList.cpp guayadeque-0.3.7/src/PlayList.cpp
+--- guayadeque-0.3.7.orig/src/PlayList.cpp	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/PlayList.cpp	2015-10-17 12:26:30.690449695 -0600
+@@ -2345,7 +2345,7 @@
+     {
+         index = event.GetId();
+ 
+-        guConfig * Config = ( guConfig * ) Config->Get();
++        guConfig * Config = ( guConfig * ) guConfig::Get();
+         if( Config )
+         {
+             wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/PlayerPanel.cpp guayadeque-0.3.7/src/PlayerPanel.cpp
+--- guayadeque-0.3.7.orig/src/PlayerPanel.cpp	2014-02-16 15:22:19.000000000 -0700
++++ guayadeque-0.3.7/src/PlayerPanel.cpp	2015-10-17 12:26:28.820449611 -0600
+@@ -1596,7 +1596,7 @@
+             !m_NextTrackId &&
+             ( m_MediaSong.m_Type != guTRACK_TYPE_RADIOSTATION ) &&
+             ( CurPos > 0 ) && ( m_LastLength > 0 ) &&
+-            ( ( CurPos + 5000 + ( !m_ForceGapless ? m_FadeOutTime : 0 ) ) >= m_LastLength )
++            ( ( CurPos + 4000 + ( !m_ForceGapless ? m_FadeOutTime : 0 ) ) >= m_LastLength )
+           )
+         {
+             //if( !m_ForceGapless && m_FadeOutTime && !m_MediaSong.m_Offset && ( GetState() == guMEDIASTATE_PLAYING ) )
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/SoListBox.cpp guayadeque-0.3.7/src/SoListBox.cpp
+--- guayadeque-0.3.7.orig/src/SoListBox.cpp	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/SoListBox.cpp	2015-10-17 12:26:30.350449679 -0600
+@@ -713,7 +713,7 @@
+     {
+         index = event.GetId();
+ 
+-        guConfig * Config = ( guConfig * ) Config->Get();
++        guConfig * Config = ( guConfig * ) guConfig::Get();
+         if( Config )
+         {
+             wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/TimeLine.cpp guayadeque-0.3.7/src/TimeLine.cpp
+--- guayadeque-0.3.7.orig/src/TimeLine.cpp	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/TimeLine.cpp	2015-10-17 12:26:30.177116338 -0600
+@@ -109,8 +109,8 @@
+ 
+     if( Ended )
+     {
+-        Finished();
+         Stop();
++        Finished();
+     }
+ }
+ 
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/TreePanel.cpp guayadeque-0.3.7/src/TreePanel.cpp
+--- guayadeque-0.3.7.orig/src/TreePanel.cpp	2014-02-16 15:22:19.000000000 -0700
++++ guayadeque-0.3.7/src/TreePanel.cpp	2015-10-17 12:26:28.817116276 -0600
+@@ -709,7 +709,7 @@
+ 
+     Index = event.GetId();
+ 
+-    guConfig * Config = ( guConfig * ) Config->Get();
++    guConfig * Config = ( guConfig * ) guConfig::Get();
+     if( Config )
+     {
+         wxArrayString Commands = Config->ReadAStr( wxT( "Exec" ), wxEmptyString, wxT( "commands/execs" ) );
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/Utils.cpp guayadeque-0.3.7/src/Utils.cpp
+--- guayadeque-0.3.7.orig/src/Utils.cpp	2014-02-16 15:22:21.000000000 -0700
++++ guayadeque-0.3.7/src/Utils.cpp	2015-10-17 13:41:49.650652317 -0600
+@@ -255,10 +255,7 @@
+     {
+         if( maxwidth != -1 )
+         {
+-            if( maxheight != -1 )
+-                Image->Rescale( maxwidth, maxheight, wxIMAGE_QUALITY_HIGH );
+-            else
+-                Image->Rescale( maxwidth, maxwidth, wxIMAGE_QUALITY_HIGH );
++            guImageResize( Image, maxwidth, ( maxheight != -1 ) ? maxheight : maxwidth );
+         }
+         RetVal = Image->SaveFile( target, imagetype );
+ 
+diff '--exclude=.svn' -r -b -u guayadeque-0.3.7.orig/src/Version.h.in guayadeque-0.3.7/src/Version.h.in
+--- guayadeque-0.3.7.orig/src/Version.h.in	2014-02-19 15:27:03.000000000 -0700
++++ guayadeque-0.3.7/src/Version.h.in	2015-10-17 12:26:30.357116346 -0600
+@@ -21,7 +21,7 @@
+ #ifndef VERSION_H
+ #define VERSION_H
+ 
+-#define ID_GUAYADEQUE_VERSION	"0.3.7"
++#define ID_GUAYADEQUE_VERSION	"0.3.5"
+ #define ID_GUAYADEQUE_REVISION	"${_GUREVISION_}"
+ 
+ #endif

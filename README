@@ -1,14 +1,12 @@
-Guayadeque-wx3 Changelog
+Guayadeque-wx3 README
 =========================
 2015-10-17 - initial release
-Start with snapshot of Guayadeque SVN repositor (rev 1894)
-- resolves segmentation fault
-Extract Trunk as guayadeque-0.3.7 (descard remainder)
+Start with Guayadeque download 2014-02-10
 Apply patches to files in guayadeque-0.3.7
+	update to SVN repositor (rev 1894)
+	- resolves segmentation fault
 	diff_1894_pixbuf_link.diff
 	- add link to libgdk-pixbuf-2.0.so
-	diff_1894_verchg.diff
-	- update Guayadeque version to 3.7
 	diff_1894_wxsqlite3.diff
 	- update internal wxSqlite3 to 3.2.1
 	diff_1894_wx30.diff
@@ -18,4 +16,5 @@ Apply patches to files in guayadeque-0.3.7
 Thank you's to:
 Alessio Treglia <alessio@debian.org> (Debian maintainer)
 Martin Gansser <mgansser@alice.de> (Fedora maintainer)
+Maxime Gauduin <alucryd@archlinux.org> (Arch maintainer)
 for their work and efforts which lead to this package.

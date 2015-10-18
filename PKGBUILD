@@ -13,23 +13,22 @@ optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
 			'gstreamer0.10-bad-plugins: Support for additional file formats'
 			'gstreamer0.10-ugly-plugins: Support for additional file formats'
 			'gvfs: Support for external devices')
-source=("https://www.dropbox.com/s/kmlzvv1kd80wm7t/guayadeque-0.3.7.tar.bz2?dl=0"
+source=("https://downloads.sourceforge.net/project/guayadeque/guayadeque/${pkgver}/guayadeque-${pkgver}.tar.bz2"
+		"diff_orig_1894.patch"
 		"diff_1894_pixbuf_link.diff"
-		"diff_1894_verchg.diff"
 		"diff_1894_wxsqlite3.diff"
 		"diff_1894_wx30.diff")
 
-md5sums=('d0fc2d50b22576139bee99026fb5d5e8'
+md5sums=('3bf7cbb13c4d39c2ca2ee646c540475b'
          '8a5523d991f0c48fc1d11bb8d51e2503'
-         'c090d5dbb45f4e586fd7ae1726d372a5'
+         'e43d08d874ce249b111a71e71fd49a99'
          'e4d5a83d7a1ccd8bca73aa7afff3c62b'
          '8e8661f7274271b885caa8864b169035')
 
 prepare() {
+  patch -p0 -i ../diff_orig_1894.patch
   cd guayadeque-${pkgver}
-
   patch -Np1 -i ../diff_1894_pixbuf_link.diff
-  patch -Np1 -i ../diff_1894_verchg.diff
   patch -Np1 -i ../diff_1894_wxsqlite3.diff
   patch -Np1 -i ../diff_1894_wx30.diff
 }
