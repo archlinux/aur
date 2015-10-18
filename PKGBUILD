@@ -2,7 +2,7 @@
 
 pkgname=python2-acme
 _pkgname=acme
-pkgver=0.0.0.dev20151008
+pkgver=0.0.0.dev20151017
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python2' 'python2-pytz' 'python2-setuptools' 'python2-six' 'python2-we
          'python2-requests' 'python2-pyrfc3339' 'python2-cryptography' 'python2-pyopenssl'
          'python2-mock' 'python2-pyasn1' 'python2-ndg-httpsclient')
 source=("https://pypi.python.org/packages/source/a/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('7c29e39761614fed4d16ee73faff8ee9')
+md5sums=('5a8793afd8b5ac034a5b32c6b44ec77d')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
