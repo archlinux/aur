@@ -3,7 +3,7 @@
 
 pkgname=cedet-git
 _gitname=cedet
-pkgver=9566.ga3759c1
+pkgver=9567.gee7a97e
 pkgrel=1
 pkgdesc="Collection of Emacs Development Enviromnent Tools (Git version)"
 arch=('any')
