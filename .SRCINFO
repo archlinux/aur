@@ -1,16 +1,16 @@
 pkgbase = python-pyinputevent
 	pkgdesc = Provides a python interface to Linux's input subsystem
 	pkgver = 0.1b0.dda5a69
-	pkgrel = 1
-	url = https://github.com/rmt/pyinputevent
+	pkgrel = 2
+	url = https://github.com/ntzrmtthihu777/pyinputevent
 	arch = any
 	license = MIT
-	source = git://github.com/rmt/pyinputevent.git
-	source = setup.py
-	md5sums = SKIP
+	source = git://github.com/ntzrmtthihu777/pyinputevent.git
 	md5sums = SKIP
 
 pkgname = python-pyinputevent-git
+	depends = python
 
 pkgname = python2-pyinputevent-git
+	depends = python2
 
