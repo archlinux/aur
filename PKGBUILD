@@ -18,7 +18,7 @@ optdepends=('sqlite: SQLite support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
 makedepends=('go>=1.2' 'git>=1.7.1' 'patch')
-conflicts=('gogs-bin' 'gogs' 'gogs-git')
+conflicts=('gogs-bin' 'gogs-git' 'gogs-git-dev')
 options=('!strip' '!emptydirs')
 backup=('srv/gogs/conf/app.ini')
 
