@@ -4,7 +4,7 @@ pkgbase = qca9565-bluetooth-firmware
 	pkgrel = 1
 	url = https://launchpad.net/~hanipouspilot/+archive/ubuntu/rtlwifi
 	arch = any
-	license = atheros
+	license = custom:atheros_firmware 
 	source = https://launchpad.net/~hanipouspilot/+archive/ubuntu/rtlwifi/+files/linux-firmware_1.144%2Bar3012~vivid.tar.gz
     sha256sums = a57ffa0ff6d80f10ebaa3878a736b2adcfccd76fb4787477d4096087e2826961	
 
