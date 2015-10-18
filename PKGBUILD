@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.00
-pkgrel=1
+pkgrel=2
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -15,14 +15,14 @@ CPPFLAGS="$CPPFLAGS -O2"
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/linux/CLI/"
-    make
+    make CONF=Release_$CARCH build
     cd "${srcdir}/${pkgname}-${pkgver}/LinuxPBA/"
-    make
+    make CONF=Release_$CARCH build
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
-    install -Dm755 "linux/CLI/dist/Debug_i686/GNU-Linux-x86/sedutil-cli" "${pkgdir}/usr/bin/sedutil-cli"
+    install -Dm755 "linux/CLI/dist/Release_$CARCH/GNU-Linux-x86/sedutil-cli" "${pkgdir}/usr/bin/sedutil-cli"
     install -Dm644 "linux/PSIDRevert_LINUX.txt" "${pkgdir}/usr/share/doc/${pkgname}/PSIDRevert.txt"
-    install -Dm755 "LinuxPBA/dist/Debug/GNU-Linux-x86/linuxpba" "${pkgdir}/usr/bin/linuxpba"
+    install -Dm755 "LinuxPBA/dist/Release_$CARCH/GNU-Linux-x86/linuxpba" "${pkgdir}/usr/bin/linuxpba"
 }

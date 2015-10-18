@@ -1,7 +1,7 @@
 pkgbase = sedutil
 	pkgdesc = TCG OPAL 2.00 SED Management Program
 	pkgver = 1.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Drive-Trust-Alliance/sedutil
 	install = sedutil.install
 	arch = i686
