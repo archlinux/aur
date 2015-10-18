@@ -1,0 +1,12 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 177cb77..c33ab54 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -319,6 +319,7 @@ TARGET_LINK_LIBRARIES( guayadeque
+	${LIBINDICATE07_LIBRARIES}
+	${LIBAPPINDICATOR_LIBRARIES}
+	${LIBWXSQLITE3_LIBRARIES}
++	-lgdk_pixbuf-2.0
+	)
+ 
+ INSTALL( TARGETS guayadeque
