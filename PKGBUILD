@@ -1,5 +1,4 @@
 # Maintainer: basica <aur basica at gmail dot com>
-11
 _pkgname=linux-firmware-1.144+ar3012~vivid
 pkgname=qca9565-bluetooth-firmware
 pkgver=1.144
