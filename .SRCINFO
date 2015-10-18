@@ -1,0 +1,16 @@
+pkgbase = blop-lv2
+	pkgdesc = An LV2 port of the BLOP LADSPA plugins by Mike Rawes.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://drobilla.net/software/blop-lv2/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python2
+	depends = lv2
+	depends = glibc
+	source = http://download.drobilla.net/blop-lv2-1.0.0.tar.bz2
+	md5sums = 3dfd6f7366938a25a47d09d9dd863b8b
+
+pkgname = blop-lv2
+
