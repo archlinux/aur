@@ -1,0 +1,15 @@
+pkgbase = libxxhash
+	pkgdesc = Extremely fast non-cryptographic hash algorithm (library)
+	pkgver = r42
+	pkgrel = 1
+	url = https://cyan4973.github.io/xxHash/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = make
+	source = libxxhash-r42.tar.gz::https://codeload.github.com/Cyan4973/xxHash/tar.gz/r42
+	sha256sums = d21dba3ebf5ea8bf2f587150230189231c8d47e8b63c865c585b08d14c8218b8
+
+pkgname = libxxhash
+
