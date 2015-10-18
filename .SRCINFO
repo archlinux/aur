@@ -1,0 +1,15 @@
+pkgbase = teco-git
+	pkgdesc = Tape Editor And Corrector
+	pkgver = r14.d847c72
+	pkgrel = 1
+	url = https://github.com/matthiasr/teco
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = termcap
+	source = teco-git::git+https://github.com/matthiasr/teco
+	md5sums = SKIP
+
+pkgname = teco-git
+
