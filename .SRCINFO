@@ -1,6 +1,6 @@
 pkgbase = python-smbus
 	pkgdesc = Python wrapper for SMBus access over i2c-dev.
-	pkgver = r6311
+	pkgver = r290.9726bed
 	pkgrel = 1
 	url = http://www.lm-sensors.org/wiki/I2CTools
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = python-smbus
 	arch = armv7h
 	license = GPL
 	makedepends = python
-	makedepends = subversion
+	makedepends = git
 	depends = python
-	depends = i2c-tools-svn
+	depends = i2c-tools-git
 	options = !strip
-	source = python-smbus::svn+http://lm-sensors.org/svn/i2c-tools/trunk
+	source = python-smbus::git+https://github.com/groeck/i2c-tools.git
 	md5sums = SKIP
 
 pkgname = python-smbus

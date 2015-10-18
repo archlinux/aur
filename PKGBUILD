@@ -3,22 +3,27 @@
 # Contributor: DonVla <donvla at users dot sourceforge dot net>
 
 pkgname=python-smbus
-pkgver=r6311
+pkgver=r290.9726bed
 pkgrel=1
 pkgdesc="Python wrapper for SMBus access over i2c-dev."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.lm-sensors.org/wiki/I2CTools"
 license=('GPL')
-depends=('python' 'i2c-tools-svn')
-makedepends=('python' 'subversion')
+#depends=('python' 'i2c-tools-svn')
+depends=('python' 'i2c-tools-git')
+#makedepends=('python' 'subversion')
+makedepends=('python' 'git')
 options=('!strip')
-source=('python-smbus::svn+http://lm-sensors.org/svn/i2c-tools/trunk')
+#source=('python-smbus::svn+http://lm-sensors.org/svn/i2c-tools/trunk')
+source=('python-smbus::git+https://github.com/groeck/i2c-tools.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-  local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
+#  cd "${pkgname}"
+#  local ver="$(svnversion)"
+#  printf "r%s" "${ver//[[:alpha:]]}"
+  cd "${srcdir}/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
