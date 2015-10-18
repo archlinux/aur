@@ -1,8 +1,8 @@
 # Maintainer: Anthony Samartsev <kycok@archlinux.info>
 
 pkgname=populate-git
-pkgver=20.daa13fb
-pkgrel=4
+pkgver=34.13dd0b3
+pkgrel=1
 pkgdesc="A simple game, written in vala"
 arch=('any')
 url="https://github.com/alsoijw/populate"
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/${pkgname}
-	valac `ls *.vala` --pkg gee-0.8 --pkg gtk+-3.0 -X -lm -o populate
+	valac `find src/ -type f` --pkg gee-0.8 --pkg gtk+-3.0 -X -lm -o populate
 }
 
 package() {
