@@ -1,6 +1,6 @@
 pkgbase = crystal-git
 	pkgdesc = The Crystal Programming Language
-	pkgver = 0.9.0.r1.gbc04330
+	pkgver = 0.9.0.r11.g2153edf
 	pkgrel = 1
 	url = http://crystal-lang.org
 	arch = i686
@@ -11,6 +11,8 @@ pkgbase = crystal-git
 	checkdepends = gmp
 	checkdepends = git
 	makedepends = git
+	makedepends = libxml2
+	makedepends = llvm35
 	depends = gc
 	depends = libatomic_ops
 	depends = pcre

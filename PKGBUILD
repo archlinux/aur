@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.9.0.r1.gbc04330
+pkgver=0.9.0.r11.g2153edf
 _last_release="0.9.0-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
@@ -10,13 +10,12 @@ arch=('i686' 'x86_64')
 url="http://crystal-lang.org"
 license=('Apache')
 depends=('gc' 'libatomic_ops' 'pcre' 'libpcl' 'libevent')
-makedepends=('libxml2' 'llvm35')
+makedepends=('git' 'libxml2' 'llvm35')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git')
 optdepends=('shards: To make the crystal deps command work'
             'libyaml: For YAML support'
             'gmp: For BigInt support'
             'libxml2: For XML support')
-makedepends=('git')
 conflicts=('crystal')
 provides=('crystal')
 source=("git://github.com/manastech/crystal.git")
