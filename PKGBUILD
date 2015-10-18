@@ -3,13 +3,13 @@
 # Generator  : CPANPLUS::Dist::Arch 1.19
 
 pkgname='perl-moosex-role-parameterized'
-pkgver='1.08'
-pkgrel='1'
+pkgver=1.08
+pkgrel=2
 pkgdesc="roles with composition parameters"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1')
+depends=('perl>=5.8.1' 'perl-namespace-autoclean')
 makedepends=('perl-moose' 'perl-test-fatal')
 url='http://search.cpan.org/dist/MooseX-Role-Parameterized'
 source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Role-Parameterized-1.08.tar.gz')
