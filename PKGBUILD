@@ -37,11 +37,11 @@ package() {
 
 	msg2 "Extracting compatible curl 7.38"
     mkdir "$pkgdir/curl"
-	bsdtar -zxf curl-7.38.0-1-x86_64.pkg.tar.xz -C "$pkgdir/curl"
+	tar -xf curl-7.38.0-1-x86_64.pkg.tar.xz -C "$pkgdir/curl"
 
 	msg2 "Extracting openssl 1.0.1-l"
     mkdir "$pkgdir/openssl"
-	bsdtar -zxf openssl-1.0.1.l-1-x86_64.pkg.tar.xz -C "$pkgdir/openssl"
+	tar -xf openssl-1.0.1.l-1-x86_64.pkg.tar.xz -C "$pkgdir/openssl"
 
 	msg2 "Moving udev folder from /lib to /usr/lib"
 	mv "$pkgdir"/lib/udev "$pkgdir"/usr/lib
