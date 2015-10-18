@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-thermal-monitor-git
 	pkgdesc = Plasmoid for Plasma 5. Monitors temperature of existing sensors including CPU, GPU and HDD.
-	pkgver = r23.e8a4a6b
+	pkgver = r30.99bc184
 	pkgrel = 1
 	url = https://github.com/kotelnik/plasma-applet-thermal-monitor
 	arch = any
