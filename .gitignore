@@ -1,0 +1,6 @@
+make/*
+pkg/*
+src/*
+*.deb
+*.tar.*
+sieve/*

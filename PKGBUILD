@@ -1,9 +1,9 @@
 # Maintainer: Konstantin Shalygin (k0ste@cn.ru)
 
 _sieve='sieve'
-pkgname=thunderbird-${_sieve}
+pkgname="thunderbird-${_sieve}"
 _pkgver='0.2.3'
-pkgver=${_pkgver}h
+pkgver="${_pkgver}j"
 pkgrel='1'
 pkgdesc='This Extension implements the ManageSieve protocol for securely managing Sieve Script on a remote IMAP server'
 arch=('any')
