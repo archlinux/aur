@@ -1,19 +1,18 @@
 pkgbase = yakuake-frameworks-git
-	pkgdesc = A drop-down terminal emulator based on KDE Konsole technology. KF5 Frameworks branch (GIT version)
-	pkgver = v2.9.9.89.g43a20de
+	pkgdesc = A drop-down terminal emulator based on KDE Konsole technology. KF5 Frameworks branch. (GIT version)
+	pkgver = v2.9.9.97.g4b5445f
 	pkgrel = 1
 	url = https://www.kde.org/applications/system/yakuake
 	install = yakuake-frameworks-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = cmake
-	makedepends = git
 	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
 	depends = knewstuff
 	depends = konsole
 	depends = hicolor-icon-theme
-	provides = yakuake
 	conflicts = yakuake
 	source = git://anongit.kde.org/yakuake.git#branch=frameworks
 	sha1sums = SKIP
