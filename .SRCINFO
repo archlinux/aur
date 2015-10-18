@@ -1,0 +1,22 @@
+pkgbase = cartaodecidadao
+	pkgdesc = Portuguese Citizen Card Application
+	pkgver = 1.26.2
+	pkgrel = 1
+	url = http://www.cartaodecidadao.pt/
+	install = cartaodecidadao.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt4>=4.5.0
+	depends = pcsclite>=1.5.0
+	depends = openssl
+	depends = ccid
+	source = cartaodecidadao.install
+	md5sums = b716ba8fde53cef3376eedb1a6076cac
+	source_i686 = https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu-1.26.2-1414.i586.deb
+	md5sums_i686 = d70efc167675eba20ab8d6467c15374a
+	source_x86_64 = https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu-1.26.2-1414.x86_64.deb
+	md5sums_x86_64 = 06a8e7c60f38f739dd2469c705a48521
+
+pkgname = cartaodecidadao
+
