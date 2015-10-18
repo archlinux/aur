@@ -1,7 +1,7 @@
 # Maintainer:
 
 pkgname=kwave-frameworks-git
-pkgver=0.9.0.r3173.7df055f
+pkgver=0.9.0.r3201.bf08602
 pkgrel=1
 pkgdesc="A sound editor for KDE. KF5 Frameworks. (GIT version)"
 arch=('i686' 'x86_64')
@@ -51,7 +51,6 @@ build() {
 
   cmake ../kwave \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
