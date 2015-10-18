@@ -1,0 +1,20 @@
+pkgbase = busybox-static-musl-git
+	pkgdesc = Combines common UNIX utilities into a single small executable, statically linked with musl libc
+	pkgver = 20151016.13801
+	pkgrel = 1
+	url = http://www.busybox.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = kernel-headers-musl
+	depends = musl
+	provides = busybox
+	conflicts = busybox
+	source = git://git.busybox.net/busybox
+	source = config
+	md5sums = SKIP
+	md5sums = fb3b07db81c75456365414e1f65e6463
+
+pkgname = busybox-static-musl-git
+
