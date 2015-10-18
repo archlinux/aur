@@ -8,7 +8,7 @@
 pkgname=nvidia-rt
 pkgver=355.11
 _extramodules=extramodules-4.1-rt
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-rt"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
