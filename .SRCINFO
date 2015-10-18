@@ -1,0 +1,15 @@
+pkgbase = python-tdl
+	pkgdesc = Pythonic CFFI port of libtcod.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/tdl
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-cffi
+	depends = python-libtcod-cffi
+	source = https://github.com/HexDecimal/python-tdl/archive/v1.5.0.tar.gz
+	md5sums = 8d55084f2bfd8c97a10a11a4f9d731ca
+
+pkgname = python-tdl
+
