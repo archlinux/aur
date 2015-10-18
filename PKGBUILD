@@ -5,9 +5,9 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=45.0.2454.93
+pkgver=46.0.2490.71
 pkgrel=1
-_launcher_ver=2
+_launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -25,7 +25,6 @@ options=('!strip')
 install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        0001-Demand-for-newer-POSIX-macro.patch
         inox.desktop
         chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-autofill-download-manager.patch
@@ -43,15 +42,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-translation-lang-fetch.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-update-pings.patch)
         
-sha256sums=('0652aad95e6135ce03c6bfa13c4b023b1d70d65af9e0a24dc0e9fe45578d2ac7'
-            '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
-            'd908939b10161efe658f0f82d2c132bf28dff54e08f02c6fed93815c3656f328'
+sha256sums=('cd4b18249e64ee267236c9d4578effe810bf8f47567e2d43a5a8a7613787dcb6'
+            '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
             'f36d0212121a4a0751e52bdfbc27c5535b925983b90d342a2d067f4fa7c13711'
             'f28a6d92f2f2ee3a69694468019a59718a8328c28be22c0db23671f376f786f2'
-            '6bb46b2f938b1e6fc8a76e768e05b876862b2713be6f8e4594654f14eda23bac'
-            '306f63e718068fa59c887b24823fd3776094fe3e98b55edcd27a44c2f46607b0'
+            '06a2e21f8ab2dc259d261036ded190aed23ca44a351dd9a66b879a465306f8c4'
+            '5ce34040124a201286f59b8d58559671d542d6994d17dc35287dbff36d5bce23'
             '9ace9483fc37bbf9ab59b4e58a05c18e66078c29e9e40044e36fc9117bd55bfd'
             '2aec3f9a8a3f9f64caf1fdaae797a617199739c8b0ead1e176aba1bcfffcc389'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
@@ -61,7 +59,7 @@ sha256sums=('0652aad95e6135ce03c6bfa13c4b023b1d70d65af9e0a24dc0e9fe45578d2ac7'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
             '5f4ba0846bc38d2fb7c0546974c69fb37f4235bb5a60233a7cb44f515e466a79'
-            '47114808874ced3fdc3782b8f3fc6e41300396632f64c5f1b905fa4c0268c42b')
+            'e94dd87a3c28cdee7fde1c05d0ad2b76dd72a60819dde0401ef66828ac492bf2')
 
 # We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
 # instructions on how to build the toolchain from source don't work that well
@@ -74,9 +72,9 @@ fi
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
-
-   # Fix BoringSSL build with glibc 2.22 (FS#45965)
-   patch -Np1 -d third_party/boringssl/src < ../0001-Demand-for-newer-POSIX-macro.patch
+  
+  # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
+  touch chrome/test/data/webui/i18n_process_css_test.html
   
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
@@ -183,6 +181,8 @@ build() {
     -Denable_speech_input=0
     -Denable_pre_sync_backup=0
     -Denable_print_preview=0
+    -Dtracing_like_official_build=1
+    -Dfieldtrial_testing_like_official_build=1
     )
 
   if (( ! $_build_nacl )); then
