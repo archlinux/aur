@@ -1,6 +1,6 @@
 pkgbase = dao-git
 	pkgdesc = A very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, bytecode, BNF macros, high-level standard library, advanced modules & bindings and much more!
-	pkgver = 1603.90d9a82
+	pkgver = 1608.7be283f
 	pkgrel = 1
 	url = http://www.daovm.net/
 	arch = i686
