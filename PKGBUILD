@@ -3,10 +3,10 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 _eclipse_name=mars
-_eclipse_release=R
+_eclipse_release=1
 pkgname=eclipse-jee
-pkgver=4.5.0
-pkgrel=2
+pkgver=4.5.1
+pkgrel=1
 pkgdesc="Eclipse IDE for Java EE Developers"
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org"
@@ -25,8 +25,8 @@ sha256sums=('9fdf02d827e5f3b44146a0532c463ef44d0bf3aa57d0be4f2acccc38a170915b'
             '4eb2189c96fcfa340886b049b34dc3636d7b2bfa865140dc72edb61455d900c3'
             'efe21d1774a8f8233c73e7aa5e19a93dcfba44ebaba64b63d774a2d373c0d4a1'
             'da103fe3b9d8c6cc1316b2b45347697bf6561230e81286b78cf142b64b1d89a5')
-sha256sums_i686=('33b1de6fc8d0207a7120fba799c45fc4b1308dc41729a73c2b512c2a12128bd2')
-sha256sums_x86_64=('84468e35cf67ee55fbf411d316d0685a691d440ac30fc7b154d9a087852ff126')
+sha256sums_i686=('c5a794015425313565f1172c669963f07f1fccd9532307792e4c55a246b16b61')
+sha256sums_x86_64=('57599e5dbef1b7f443f52277858ce16eb1ecd96a8873322138dd83bed68be821')
 # prevent package compression
 PKGEXT=".pkg.tar"
 
