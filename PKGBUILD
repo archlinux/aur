@@ -5,7 +5,7 @@ _pkgname="efivar"
 pkgname="${_pkgname}-git"
 
 pkgdesc="Tools and library to manipulate EFI variables - GIT master branch"
-pkgver=0.20
+pkgver=0.21.9.g88c3ca8
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/rhinstaller/efivar"
@@ -36,8 +36,14 @@ prepare() {
 	
 	cd "${srcdir}/${_pkgname}_build/"
 	
+	
 	sed 's|-O0|-Os|g' -i "${srcdir}/${_pkgname}_build/Make.defaults" || true
 	sed 's|-rpath=$(TOPDIR)/src/|-rpath=$(libdir)|g' -i "${srcdir}/${_pkgname}_build/src/test/Makefile" || true
+	
+	msg "Disable efivar-static build"
+	sed 's|efivar efivar-static|efivar|g' -i "${srcdir}/${_pkgname}_build/Makefile" || true
+	sed 's|BINTARGETS=efivar efivar-static|BINTARGETS=efivar|g' -i "${srcdir}/${_pkgname}_build/src/Makefile" || true
+	sed 's| $(STATICLIBTARGETS) | |g' -i "${srcdir}/${_pkgname}_build/src/Makefile" || true
 	
 }
 
@@ -56,8 +62,5 @@ package() {
 	
 	make -j1 V=1 DESTDIR="${pkgdir}/" libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" install
 	echo
-	
-	install -d "${pkgdir}/usr/bin"
-	install -D -m0755 "${srcdir}/${_pkgname}_build/src/test/tester" "${pkgdir}/usr/bin/efivar-tester"
 	
 }
