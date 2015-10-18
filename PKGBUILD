@@ -12,7 +12,7 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
          'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme'
-		 'gconf')
+         'gconf')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kdeutils-kwalletmanager: for storing passwords in KWallet'
