@@ -11,6 +11,8 @@ depends=('libmpdclient'
          'pcre'
          'ncurses'
          'taglib')
+provides=('vimpc')
+conflicts=('vimpc')
 makedepends=('git'
              'autoconf'
              'automake'
