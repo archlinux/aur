@@ -1,0 +1,19 @@
+pkgbase = qt5-location-git
+	pkgdesc = Provides access to position, satellite and area monitoring classes
+	pkgver = v5.6.0.alpha1.r31.gf87ba04
+	pkgrel = 1
+	url = https://code.qt.io/cgit/qt/qtlocation.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	depends = qt5-declarative-git
+	depends = geoclue
+	provides = qt5-location
+	conflicts = qt5-location
+	source = qt5-location::git+https://code.qt.io/qt/qtlocation.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = qt5-location-git
+
