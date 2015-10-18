@@ -1,8 +1,8 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
 pkgname=mnemosyne-bzr
-pkgver=2.3.4+r1907
-_lastrelease=2.3.4
+pkgver=2.3.5rc1+r1907
+_lastrelease=2.3.5rc1
 pkgrel=1
 pkgdesc="A flash-card tool with a sophisticated card review algorithm (latest development snapshot)"
 arch=('i686' 'x86_64')
