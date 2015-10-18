@@ -8,10 +8,9 @@ pkgdesc="Combines common UNIX utilities into a single small executable, statical
 arch=('i686' 'x86_64')
 url="http://www.busybox.net/"
 license=('GPL')
-depends=('musl') #musl-git also good
 provides=("$_gitname")
 conflicts=("$_gitname")
-makedepends=('git' 'kernel-headers-musl')
+makedepends=('git' 'musl' 'kernel-headers-musl') #musl-git also good
 source=(git://git.busybox.net/"$_gitname" 'config')
 # 'https://raw.github.com/chneukirchen/sabotage/master/KEEP/busybox.patch'
 md5sums=(SKIP 'fb3b07db81c75456365414e1f65e6463')
