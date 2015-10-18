@@ -6,8 +6,8 @@ pkgbase = pueue-git
 	arch = any
 	license = MIT
 	depends = python
-	source = https://github.com/Nukesor/Pueue/archive/0.3.5.tar.gz
-	sha256sums = c4faab0a7dd92aef92b48b1c58bce7b80aefc8239b64abb4bcf60dacd9fc1fb2
+	source = https://github.com/Nukesor/pueue/archive/0.3.5.tar.gz
+	sha256sums = bd8d387e4619ea2eb4f0696da04a30f80e6f14f9142ff87035e0bb5ecdc63b1c
 
 pkgname = pueue-git
 
