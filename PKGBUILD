@@ -8,8 +8,8 @@ pkgdesc='A collection of plugins extending the KDE graphics and image applicatio
 license=('GPL' 'LGPL' 'FDL')
 arch=('i686' 'x86_64')
 url="http://www.kipi-plugins.org/"
-depends=('libkipi-git' 'libkexiv2-git' 'libkdcraw-git' 'libksane-git')
-makedepends=('git' 'extra-cmake-modules' 'kcalcore' 'libkgeomap-git')
+depends=('libkipi-git' 'libkexiv2-git' 'libkdcraw-git' 'threadweaver')
+makedepends=('git' 'extra-cmake-modules' 'kcalcore' 'libkgeomap-git' 'libksane-git')
 optdepends=('hugin: for expoblending plugin'
 	    'kcalcore: Calendar plugin'
 	    'libkgeomap-git: A tool to geolocalize pictures')
