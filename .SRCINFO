@@ -1,0 +1,11 @@
+pkgbase = qca9565-bluetooth-firmware
+	pkgdesc = Fonts support all languages/characters in Unicode
+	pkgver = 1.144
+	pkgrel = 1
+	url = https://launchpad.net/~hanipouspilot/+archive/ubuntu/rtlwifi
+	arch = any
+	license = atheros
+	source = https://launchpad.net/~hanipouspilot/+archive/ubuntu/rtlwifi/+files/linux-firmware_1.144%2Bar3012~vivid.tar.gz
+	md5sums = 5b8524fd1f23985561b4df2a2a5130f7
+
+pkgname = tqca9565-bluetooth-firmware
