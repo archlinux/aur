@@ -1,0 +1,22 @@
+pkgbase = qt5-multimedia-git
+	pkgdesc = Classes for audio, video, radio and camera functionality
+	pkgver = v5.6.0.alpha1.r29.g318159c
+	pkgrel = 1
+	url = https://code.qt.io/cgit/qt/qtmultimedia.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	depends = qt5-declarative-git
+	depends = libpulse
+	depends = gst-plugins-base-libs
+	depends = openal
+	optdepends = gst-plugins-bad: Qt MediaService plugin
+	provides = qt5-multimedia
+	conflicts = qt5-multimedia
+	source = qt5-multimedia::git+https://code.qt.io/qt/qtmultimedia.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = qt5-multimedia-git
+
