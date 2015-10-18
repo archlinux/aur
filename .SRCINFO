@@ -1,0 +1,27 @@
+pkgbase = lwks-openssl
+	pkgdesc = Lightworks with OpenSSL 1.0.1-l and CURL 7.38 workarounds
+	pkgver = 12.5.0
+	pkgrel = 1
+	url = http://www.lwks.com/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = portaudio
+	depends = libgl
+	depends = glu
+	depends = ffmpeg-compat
+	depends = libedit
+	depends = nvidia-cg-toolkit
+	optdepends = nvidia-utils: only for nVidia users
+	provides = lightworks
+	conflicts = lightworks,
+	conflicts = lwks
+	source = http://www.lwks.com/dmpub/lwks-12.5.0-amd64.deb
+	source = http://seblu.net/a/archive/packages/c/curl/curl-7.38.0-1-x86_64.pkg.tar.xz
+	source = http://seblu.net/a/archive/packages/o/openssl/openssl-1.0.1.l-1-x86_64.pkg.tar.xz
+	sha256sums = d3e65af7b905267c0efe2091a8838df85e6f6611341effff974636ee1834a7b8
+	sha256sums = a7332c682afcf93da0d738e363a35c43e5d0a43e6a6ad80604857be0abac95b5
+	sha256sums = d1666485a04301894c7ddb2130aaa6237b6d971cd5955271bba74596ce178a16
+
+pkgname = lwks-openssl
+
