@@ -7,7 +7,7 @@
 pkgname=wine-staging-d3dadapter
 _pkgbasename=wine
 pkgver=1.7.52
-pkgrel=3
+pkgrel=4
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -83,6 +83,8 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   samba
   opencl-headers
   dri2proto
+  dri3proto
+  xf86driproto
 )
   
 optdepends=(
