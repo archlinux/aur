@@ -1,0 +1,18 @@
+pkgbase = python-libtcod-cffi
+	pkgdesc = Python CFFI port of libtcod.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/libtcod-cffi
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cffi
+	depends = sdl
+	depends = libpng
+	depends = zlib
+	source = https://github.com/HexDecimal/libtcod-cffi/archive/v0.2.3.tar.gz
+	md5sums = c1b9fff53fdffc7c6302bef23fc9f885
+
+pkgname = python-libtcod-cffi
+
