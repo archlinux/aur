@@ -1,12 +1,13 @@
 #
 # Maintainer: Ste74 <capitani74atgmaildotcom>
 # Based on grub theme by Legendary Bibo
+# Thanks to gohlip 
 
 pkgname=manj-grub
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Manjaro grub-theme, based on Journey theme."
-url="http://i61.tinypic.com/2lboxsk.jpg"
+url=""
 arch=('any')
 license=('GPL' 'CC-SA')
 depends=('grub')
@@ -21,5 +22,5 @@ package() {
   
 }
 
-md5sums=('cb4ffcf58eee9988f0b5fa6f88359567'
-         '5cda0468fabf5feb3a0e404e97097b04')
+md5sums=('3aff6f2bc83b04125839b294e54ba574'
+         'e67817c2fdef0d66bedd172e59964612')

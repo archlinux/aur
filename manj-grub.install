@@ -1,15 +1,15 @@
 post_install() {
 
   sed -i -e 's,.*GRUB_THEME=.*,GRUB_THEME="/usr/share/grub/themes/Manj-Grub/theme.txt",' /etc/default/grub
-  sed -i -e 's,.*GRUB_GFXMODE=.*,GRUB_GFXMODE=1024x768,' /etc/default/grub
+  sed -i -e 's,.*GRUB_GFXMODE=.*,GRUB_GFXMODE=auto,' /etc/default/grub
+  grub-mkconfig -o /boot/grub/grub.cfg
  
   cat << _EOF 
 
-==> Installation: Theme is added to your /etc/default/grub: GRUB_THEME="/usr/share/grub/themes/midna/theme.txt"
-==> Default resolution 1024x768
-==> Update grub: # update-grub
-==> or: # grub-mkconfig -o /boot/grub/grub.cfg
-==> to activate it
+==> Installation: Theme is added to your /etc/default/grub: GRUB_THEME="/usr/share/grub/themes/Manj-Grub/theme.txt"
+==> Default resolution "auto"
+==> If an OS icon doesn't appear probably not present in /usr/share/grub/themes/Manj-Grub/icons simply add it or share to me to 
+==> in source .
 
 _EOF
 }
