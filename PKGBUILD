@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=clockr
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="simple curses clock wirtten in python"
 arch=('any')
