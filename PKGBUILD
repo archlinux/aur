@@ -3,7 +3,7 @@
 
 pkgname=cedet-git
 _gitname=cedet
-pkgver=9554.gcf21fa7
+pkgver=9566.ga3759c1
 pkgrel=1
 pkgdesc="Collection of Emacs Development Enviromnent Tools (Git version)"
 arch=('any')
@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd "$srcdir/${_gitname}"
-  make DESTDIR=$pkgdir install
+
   install -d $pkgdir/usr/share/emacs/site-lisp/cedet
   install cedet-devel-load.el cedet-remove-builtin.el $pkgdir/usr/share/emacs/site-lisp/cedet
   cp -a lisp contrib $pkgdir/usr/share/emacs/site-lisp/cedet
