@@ -1,0 +1,49 @@
+diff -aur sixfireusb-0.6.1/fwinst.sh sixfireusb-0.6.1/fwinst.sh
+--- sixfireusb-0.6.1/fwinst.sh	2015-10-16 17:15:26.986916637 +0200
++++ sixfireusb-0.6.1/fwinst.sh	2015-10-18 10:48:10.764352290 +0200
+@@ -19,7 +19,7 @@
+ # (at your option) any later version.
+ #
+
+-export FW_PATH=/lib/firmware
++export FW_PATH=$1/lib/firmware
+ export FW_6FIRE_PATH=$FW_PATH/6fire
+ cleanup() {
+   rm -Rf /tmp/dmx
+@@ -58,7 +58,7 @@
+ step_success
+
+ step_begin "Downloading windows driver"
+-if ! wget "http://ftp.terratec.de/Audio/DMX_6fire_USB/Updates/DMX_6fire_USB_Setup_1.23.0.02_XP_Vista_7.exe" -q -O /tmp/dmx.exe ; then
++if ! wget "http://terratec.ultron.info/Audio/DMX_6fire_USB/Updates/History/Windows/DMX_6fire_USB_Setup_1.23.0.02_XP_Vista_7.exe" -q -O /tmp/dmx.exe ; then
+   step_error "Internet connection alive? Perhaps a new driver version is available.\nIf that is the case, please redownload this script."
+ fi
+ step_success
+@@ -80,15 +80,15 @@
+ step_success
+
+ step_begin "Extracting firmware files"
+-if ! cp '/tmp/dmx/$[153]/$[153]/$[154]_17' /tmp/dmx6fireap.ihx ; then
++if ! cp '/tmp/dmx/$_121_/$_122__17' /tmp/dmx6fireap.ihx ; then
+   step_error "Extraction of file 'dmx6fireap.ihx' failed."
+ fi
+
+-if ! cp '/tmp/dmx/$[153]/$[153]/$[154]_18' /tmp/dmx6firecf.bin >/dev/null 2>&1 ; then
++if ! cp '/tmp/dmx/$_121_/$_122__18' /tmp/dmx6firecf.bin >/dev/null 2>&1 ; then
+   step_error "Extraction of file 'dmx6firecf.bin' failed."
+ fi
+
+-if ! cp '/tmp/dmx/$[153]/$[153]/$[154]_16' /tmp/dmx6firel2.ihx >/dev/null 2>&1 ; then
++if ! cp '/tmp/dmx/$_121_/$_122__16' /tmp/dmx6firel2.ihx >/dev/null 2>&1 ; then
+   step_error "Extraction of file 'dmx6firel2.ihx' failed."
+ fi
+ step_success
+@@ -108,7 +108,7 @@
+ step_success
+
+ step_begin "Installing firmware files"
+-if ! mkdir -p $FW_6FIRE_PATH >/dev/null 2>&1 ; then
++if ! install -dm755 $FW_6FIRE_PATH >/dev/null 2>&1 ; then
+   step_error "Creation of firmware path failed. Are you root?"
+ fi
+
