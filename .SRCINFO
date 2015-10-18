@@ -1,0 +1,18 @@
+pkgbase = qt5-webchannel-git
+	pkgdesc = Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients
+	pkgver = v5.6.0.alpha1.r4.g62ad5cf
+	pkgrel = 1
+	url = https://code.qt.io/cgit/qt/qtwebchannel.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	depends = qt5-declarative-git
+	provides = qt5-webchannel
+	conflicts = qt5-webchannel
+	source = qt5-webchannel::git+https://code.qt.io/qt/qtwebchannel.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = qt5-webchannel-git
+
