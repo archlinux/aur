@@ -2,42 +2,29 @@
 
 pkgname=pyinstaller
 _pyname=PyInstaller
-pkgver=2.1
+pkgver=3.0
 pkgrel=1
 pkgdesc="An application to convert python scripts into stand-alone binaries"
 arch=('i686' 'x86_64')
 url="http://www.pyinstaller.org"
-license=('GPL2')
-depends=('python2')
+license=('GPL')
+conflicts=('pyinstaller-git')
+depends=('python')
+makedepends=('python-setuptools')
+optdepends=(
+    'python-crypto: executable encryption support'
+    'upx: executable compression support'
+)
 source=(
-    "https://pypi.python.org/packages/source/P/PyInstaller/${_pyname}-${pkgver}.tar.gz"
+    "https://github.com/pyinstaller/pyinstaller/releases/download/${pkgver}/${_pyname}-${pkgver}.tar.gz"
 )
-md5sums=(
-    '248531f6fc94b0ffb02473321496d6d0'
+sha256sums=(
+    '8f9f9836ffebe71f9d9ced24001f8b27c0492574ed12a7a97c2c8810fb3fa210'
 )
-options=('!strip' '!emptydirs')
+options=('!strip')
 
 package() {
     cd "${srcdir}/${_pyname}-${pkgver}"
 
-    msg "Removing unneeded stuff ..."
-
-    rm -rf "bootloader" "old" "tests" "PKG-INFO" "setup.py"
-
-    msg "Fixing python interpreter ..."
-
-    grep -RIl '^#!.*python' . | xargs sed -i '/^#!/ s,.*,#! /usr/bin/env python2,'
-
-    msg "Copying files ..."
-
-    install -d -m 755 "${pkgdir}/usr/bin"
-    install -d -m 755 "${pkgdir}/usr/share/doc/pyinstaller"
-    install -d -m 755 "${pkgdir}/usr/share/pyinstaller"
-
-    mv "doc/Manual.pdf" "${pkgdir}/usr/share/doc/pyinstaller" && rm -rf "doc"
-    cp -ra . "${pkgdir}/usr/share/pyinstaller"
-
-    msg "Creating symlinks ..."
-
-    ln -s "/usr/share/pyinstaller/pyinstaller.py" "${pkgdir}/usr/bin/pyinstaller"
+    python setup.py install --root "${pkgdir}"
 }
