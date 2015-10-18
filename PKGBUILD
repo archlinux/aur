@@ -11,7 +11,7 @@ license=('GPL')
 depends=('gnome-shell')
 groups=('gnome-shell-extensions')
 source=("http://adel-dev.abaton.at/repo/topicons/snapshot/topicons-${pkgver}.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('569760b6f62a8b9e40ac3a1b6fa44572bd86416008fff1f0ef8b54215e2ec8a6')
 
 package() {
   uuid='topIcons@adel.gadllah@gmail.com'
