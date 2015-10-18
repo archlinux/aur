@@ -1,0 +1,15 @@
+pkgbase = pari-jupyter
+	pkgdesc = Jupyter kernel for PARI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.sagemath.org
+	arch = any
+	license = GPL
+	makedepends = cython
+	depends = pari-sage
+	depends = jupyter
+	source = http://mirrors.mit.edu/sage/spkg/upstream/pari_jupyter/pari_jupyter-1.0.0.tar.gz
+	md5sums = 902b290a997128e6be949c0bec44ca6e
+
+pkgname = pari-jupyter
+
