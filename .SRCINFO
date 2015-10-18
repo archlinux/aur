@@ -1,7 +1,7 @@
 pkgbase = livestreamer-twitch-gui
 	pkgdesc = A multi platform Twitch.tv browser for Livestreamer
 	pkgver = v0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bastimeyer/livestreamer-twitch-gui
 	install = livestreamer-twitch-gui.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = livestreamer-twitch-gui
 	depends = livestreamer
 	depends = libnotify
 	depends = gconf
+	depends = gtk2
 	provides = livestreamer-twitch-gui
 	options = !strip
 	source_i686 = https://github.com/bastimeyer/livestreamer-twitch-gui/releases/download/v0.11.0/livestreamer-twitch-gui-v0.11.0-linux32.tar.gz

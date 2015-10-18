@@ -1,12 +1,12 @@
 # Maintainer: Ben Fox-Moore <ben.foxmoore@gmail.com>
 pkgname=livestreamer-twitch-gui
 pkgver=v0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi platform Twitch.tv browser for Livestreamer"
 arch=("i686" "x86_64")
 url="https://github.com/bastimeyer/livestreamer-twitch-gui"
 license=("MIT")
-depends=("livestreamer" "libnotify" "gconf")
+depends=("livestreamer" "libnotify" "gconf" "gtk2" )
 provides=("livestreamer-twitch-gui")
 options=(!strip)
 install=$pkgname.install
