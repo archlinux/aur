@@ -15,7 +15,7 @@ __pkgname="refind"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.9.0.383.baa6e09
+pkgver=0.9.2.392.e366a10
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -266,8 +266,6 @@ build() {
 		echo
 	fi
 	
-	cd "${srcdir}/${__pkgname}_build/filesystems/"
-	
 	msg "Unset all compiler FLAGS"
 	unset CFLAGS
 	unset CPPFLAGS
@@ -277,47 +275,26 @@ build() {
 	
 	msg "Compile UEFI FS drivers"
 	if [[ "${_USE_GNU_EFI}" == "1" ]]; then
-		make btrfs_gnuefi
+		make fs_gnuefi
 		echo
-		
-		make ext4_gnuefi
-		echo
-		
-		make ext2_gnuefi
-		echo
-		
-		make hfs_gnuefi
-		echo
-		
-		make iso9660_gnuefi
-		echo
-		
-		make reiserfs_gnuefi
-		echo
-		
-		# make xfs_gnuefi
-		# echo
 	else
-		make btrfs
+		make fs
 		echo
+	fi
+	
+	if [[ "${CARCH}" == "x86_64" ]];then
+		cd "${srcdir}/${__pkgname}_build/net"
 		
-		make ext4
-		echo
+		msg "Unset all compiler FLAGS"
+		unset CFLAGS
+		unset CPPFLAGS
+		unset CXXFLAGS
+		unset LDFLAGS
+		unset MAKEFLAGS
 		
-		make ext2
-		echo
-		
-		make hfs
-		echo
-		
-		make iso9660
-		echo
-		
-		make reiserfs
-		echo
-		
-		# make xfs
-		# echo
+		msg "Compile Network support"
+		make source
+		make netboot
 	fi
 	
 }
@@ -336,6 +313,11 @@ package() {
 	install -d "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}"
 	install -D -m0644 "${srcdir}/${__pkgname}_build/gptsync/gptsync_${_TIANO_S_ARCH}.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/gptsync_${_TIANO_S_ARCH}.efi"
 	
+	if [[ "${CARCH}" == "x86_64" ]]; then
+		install -D -m0644 "${srcdir}/${__pkgname}_build/net/bin/ipxe.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/ipxe_${_TIANO_S_ARCH}.efi"
+		install -D -m0644 "${srcdir}/${__pkgname}_build/net/bin/ipxe_discovery.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/ipxe_discovery_${_TIANO_S_ARCH}.efi"
+	fi
+
 	msg "Install rEFInd helper scripts"
 	install -d "${pkgdir}/usr/bin/"
 	install -D -m0755 "${srcdir}/${__pkgname}_build/install.sh" "${pkgdir}/usr/bin/refind-install"
