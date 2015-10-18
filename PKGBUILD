@@ -5,7 +5,7 @@
 
 pkgname=manj-grub
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manjaro grub-theme, based on Journey theme."
 url=""
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL' 'CC-SA')
 depends=('grub')
 install=manj-grub.install
 source=("https://github.com/Ste74/Aur-binary-repo/releases/download/v1.0/Manj-Grub.zip" "manj-grub.install")
-
+replaces=('manj-grub')
 package() {
   
   cd $srcdir
@@ -22,5 +22,5 @@ package() {
   
 }
 
-md5sums=('cb4ffcf58eee9988f0b5fa6f88359567'
+md5sums=('3aff6f2bc83b04125839b294e54ba574'
          'cec20af2c76c8f3ea2a5e37cc13163bf')
