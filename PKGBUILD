@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-tools-git
-pkgver=r50.aea33a2
+pkgver=r64.694ca5c
 pkgrel=1
 pkgdesc="EasyRPG tools to convert RPG Maker 2000/2003 files (development version)"
 arch=('i686' 'x86_64')
@@ -33,11 +33,11 @@ package () {
   cd ${pkgname#-*}
 
   # executables
-  install -Dm755 lmu2png/lmu2png "$pkgdir"/usr/bin/lmu2png
-  install -Dm755 xyz2png/xyz2png "$pkgdir"/usr/bin/png2xyz
-  install -Dm755 xyz2png/xyz2png "$pkgdir"/usr/bin/xyz2png
-  install -Dm755 lcf2xml/lcf2xml "$pkgdir"/usr/bin/lcf2xml
+  install -Dm0755 lmu2png/lmu2png "$pkgdir"/usr/bin/lmu2png
+  install -Dm0755 png2xyz/png2xyz "$pkgdir"/usr/bin/png2xyz
+  install -Dm0755 xyz2png/xyz2png "$pkgdir"/usr/bin/xyz2png
+  install -Dm0755 lcf2xml/lcf2xml "$pkgdir"/usr/bin/lcf2xml
   # licenses
-  install -Dm644 lmu2png/COPYING "$pkgdir"/usr/share/licenses/$pkgname/lmu2png-COPYING
-  install -Dm644 lcf2xml/COPYING "$pkgdir"/usr/share/licenses/$pkgname/lcf2xml-COPYING
+  install -Dm0644 lmu2png/COPYING "$pkgdir"/usr/share/licenses/$pkgname/lmu2png-COPYING
+  install -Dm0644 lcf2xml/COPYING "$pkgdir"/usr/share/licenses/$pkgname/lcf2xml-COPYING
 }
