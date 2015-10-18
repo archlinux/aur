@@ -1,6 +1,6 @@
 # Maintainer: shi bowen <sbw /at/ sbw.so>
 pkgname=doubanfm
-pkgver=r34.ceef4c3
+pkgver=r35.fa417e2
 pkgrel=1
 pkgdesc="Beautiful DoubanFM player based on Qt5"
 arch=('x86_64' 'i686')
