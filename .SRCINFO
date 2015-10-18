@@ -1,6 +1,6 @@
 pkgbase = skanlite-frameworks-git
 	pkgdesc = A Lite image scanning application. KF5 Frameworks branch (GIT version)
-	pkgver = 1.1.0.r208.b021558
+	pkgver = 1.1.0.r210.0999e40
 	pkgrel = 1
 	url = http://www.kde.org/applications/graphics/skanlite
 	arch = i686
@@ -11,9 +11,8 @@ pkgbase = skanlite-frameworks-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = python
-	depends = libksane-frameworks-git
+	depends = libksane-git
 	depends = kio
-	provides = skanlite
 	conflicts = skanlite
 	source = git://anongit.kde.org/skanlite#branch=frameworks
 	sha1sums = SKIP
