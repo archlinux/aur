@@ -2,13 +2,13 @@
 
 pkgname=simcoupe
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The SAM Coupé Emulator"
 arch=('i686' 'x86_64')
 url="http://www.simcoupe.org/"
 license=('GPL')
 depends=('sdl' 'libsaasound')
-makedepends=('make')
+makedepends=('make' 'imagemagick')
 source=("http://www.simcoupe.org/files/SimCoupe-${pkgver}.tar.gz"
     "simcoupe.desktop")
 
