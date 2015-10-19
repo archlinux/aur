@@ -1,0 +1,19 @@
+pkgbase = python-phidgets
+	pkgdesc = Python Wrapper library for the Phidgets API
+	pkgver = 2.1.8
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/Phidgets
+	arch = any
+	license = custom: Creative Commons Attribution 2.5 Canada License
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/P/Phidgets/Phidgets-2.1.8.tar.gz
+	md5sums = 70abc2edef4578842906b6a46eef9ad9
+
+pkgname = python-phidgets
+	depends = python
+
+pkgname = python2-phidgets
+	depends = python2
+
