@@ -1,0 +1,19 @@
+pkgbase = perl-qtcore4
+	pkgdesc = Perl bindings for the QtCore version 4 library
+	pkgver = 0.99.0
+	pkgrel = 1
+	url = http://search.cpan.org/~cburel/Qt4-0.99.0/qtcore/lib/QtCore4.pm
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = qimageblitz
+	makedepends = qwt5
+	depends = qt4
+	depends = perl>=5.8.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CB/CBUREL/Qt4-0.99.0.tar.bz2
+	md5sums = 5ee2a06d61ea7725e76571807d324f0a
+
+pkgname = perl-qtcore4
+
