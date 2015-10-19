@@ -1,0 +1,13 @@
+pkgbase = gitup
+	pkgdesc = The shell script that makes 'git' easier.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/feskyde/gitup
+	arch = any
+	license = BSD
+	depends = git
+	source = https://github.com/feskyde/gitup/archive/v0.3-1.zip
+	md5sums = SKIP
+
+pkgname = gitup
+
