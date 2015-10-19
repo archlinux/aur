@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code
 	pkgdesc = Editor for building and debugging modern web and cloud applications
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	arch = x86_64
 	arch = i686
@@ -17,16 +17,12 @@ pkgbase = visual-studio-code
 	depends = gcc-libs
 	provides = vscode,visualstudiocode
 	source_x86_64 = https://az764295.vo.msecnd.net/public/0.9.1/VSCode-linux64.zip
-	source_x86_64 = visual-studio-code.png
 	source_x86_64 = visual-studio-code.desktop
 	md5sums_x86_64 = e21d33a8ca835040370bb16c64432311
-	md5sums_x86_64 = 6dfffd3ebb0f173f5cd13b432fcdb2db
 	md5sums_x86_64 = 94c9ab66cc24c2683873e07b2a5aada4
 	source_i686 = https://az764295.vo.msecnd.net/public/0.9.1/VSCode-linux32.zip
-	source_i686 = visual-studio-code.png
 	source_i686 = visual-studio-code.desktop
 	md5sums_i686 = 761809e7285567a3529909029a427b1b
-	md5sums_i686 = 6dfffd3ebb0f173f5cd13b432fcdb2db
 	md5sums_i686 = 94c9ab66cc24c2683873e07b2a5aada4
 
 pkgname = visual-studio-code
