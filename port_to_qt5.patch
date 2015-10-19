@@ -1,7 +1,7 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2015-10-19 18:58:41.354638945 +0800
-+++ b/CMakeLists.txt	2015-10-19 18:47:06.210782022 +0800
-@@ -1,14 +1,23 @@
+--- a/CMakeLists.txt	2010-03-07 02:38:40.000000000 +0800
++++ b/CMakeLists.txt	2015-10-19 19:28:48.185748034 +0800
+@@ -1,31 +1,38 @@
  set(KDE_MIN_VERSION "4.4.0")
 -find_package(KDE4 4.4.0 REQUIRED)
 -include (KDE4Defaults)
@@ -19,8 +19,8 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
  add_definitions(-DKDE_DEFAULT_DEBUG_AREA=7199)
  
- include_directories( ${KDE4_INCLUDES} )
- include_directories( ${KDE4_KIO_INCLUDES} )
+-include_directories( ${KDE4_INCLUDES} )
+-include_directories( ${KDE4_KIO_INCLUDES} )
  
 -macro_optional_add_subdirectory(doc)
 -macro_optional_add_subdirectory(po)
@@ -29,8 +29,20 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
  set(kio_locate_PART_SRCS
     pattern.cpp
-@@ -25,7 +34,7 @@
- kde4_add_plugin(kio_locate ${kio_locate_PART_SRCS} ${kio_locate_PART_RCCS})
+    kio_locate.cpp
+    locater.cpp)
+ 
+-kde4_add_ui_files(kio_locate_PART_SRCS
++qt5_wrap_ui(kio_locate_PART_SRCS
+    klocateconfigfilterwidget.ui
+    klocateconfiglocatewidget.ui
+    klocateconfigwidget.ui)
+ 
+-kde4_add_kcfg_files(kio_locate_PART_SRCS klocateconfig.kcfgc)
++kconfig_add_kcfg_files(kio_locate_PART_SRCS klocateconfig.kcfgc)
+ 
+-kde4_add_plugin(kio_locate ${kio_locate_PART_SRCS} ${kio_locate_PART_RCCS})
++add_library(kio_locate MODULE ${kio_locate_PART_SRCS} ${kio_locate_PART_RCCS})
  
  
 -target_link_libraries(kio_locate ${KDE4_KDE3SUPPORT_LIBS})

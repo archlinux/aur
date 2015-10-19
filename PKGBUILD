@@ -15,7 +15,7 @@ source=("http://kde-apps.org/CONTENT/content-files/120965-$_pkgname-$pkgver.tar.
 "port_to_qt5.patch")
 md5sums=('198b43f6c873863bd02113db0ffe29bb'
          '270660f80c69d3a6b0a39dbdbaf672eb'
-         '28716a4a26b0136215ddb97e3a3ed5f6')
+         'SKIP')
 
          
 prepare() {
@@ -37,4 +37,5 @@ package(){
   make DESTDIR=$pkgdir install
   mv "${pkgdir}/usr/lib64/plugins"/* "${pkgdir}/usr/lib/qt/plugins"
   rm -r "${pkgdir}/usr/lib64"
+  install -Dm644 ../kio_locate.kcfg "${pkgdir}/usr/share/config.kcfg/kio_locate.kcfg"
 }
