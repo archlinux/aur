@@ -17,16 +17,8 @@ main_window() {
     zenity --height 450 --width 300 --list --ok-label="Apply" --cancel-label="Close" --title="Compiz GTK decorator theme" \
     --column="Installed Metacity themes:" "Compiz GWD default" \
     $(
-      for i in /usr/share/themes/*; do
-        if [ -f "$i"/metacity-1/metacity-theme-3.xml ]; then
-          cat "$i"/metacity-1/metacity-theme-3.xml | grep "</name>" | sed 's/^.*<name>//' | sed 's|</name>||' | sed 's/ /-/'
-        fi
-        if [ -f "$i"/metacity-1/metacity-theme-2.xml ] && [ ! -f "$i"/metacity-1/metacity-theme-3.xml ]; then
-          cat "$i"/metacity-1/metacity-theme-2.xml | grep "</name>" | sed 's/^.*<name>//' | sed 's|</name>||' | sed 's/ /-/'
-        fi
-        if [ -f "$i"/metacity-1/metacity-theme-1.xml ] && [ ! -f "$i"/metacity-1/metacity-theme-2.xml ] && [ ! -f "$i"/metacity-1/metacity-theme-3.xml ]; then
-          cat "$i"/metacity-1/metacity-theme-1.xml | grep "</name>" | sed 's/^.*<name>//' | sed 's|</name>||' | sed 's/ /-/'
-        fi
+      for d in /usr/share/themes/*/metacity-1; do
+        echo $d | sed 's:/usr/share/themes/::' | sed 's:/metacity-1::'
       done
     )
   )
