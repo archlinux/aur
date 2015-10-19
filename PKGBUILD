@@ -1,7 +1,7 @@
 # Maintainer: Adrien Sohier <adrien.sohier@art-software.fr>
 
 pkgname=i3lock-lixxia-git
-pkgver=cd615c
+pkgver=ff1273
 pkgrel=2
 pkgdesc="An improved screenlocker based upon XCB and PAM (Lixxia fork)"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ backup=("etc/pam.d/i3lock")
 source=("git://github.com/Lixxia/i3lock.git"
         "24hour.patch")
 md5sums=('SKIP'
-         '2b4a24174ab2335049bfafcf04e9b24e')
+         '03a4b583be31541921d3392984c95cba')
 
 pkgver() {
   cd "${srcdir}/i3lock"

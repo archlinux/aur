@@ -1,6 +1,6 @@
 pkgbase = i3lock-lixxia-git
 	pkgdesc = An improved screenlocker based upon XCB and PAM (Lixxia fork)
-	pkgver = cd615c
+	pkgver = ff1273
 	pkgrel = 2
 	url = https://github.com/Lixxia/i3lock
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = i3lock-lixxia-git
 	source = git://github.com/Lixxia/i3lock.git
 	source = 24hour.patch
 	md5sums = SKIP
-	md5sums = 2b4a24174ab2335049bfafcf04e9b24e
+	md5sums = 03a4b583be31541921d3392984c95cba
 
 pkgname = i3lock-lixxia-git
 
