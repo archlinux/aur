@@ -1,0 +1,16 @@
+pkgbase = ktxutils-git
+	pkgdesc = Utilities for the KTX texture format
+	pkgver = r14.78391f6
+	pkgrel = 1
+	url = http://github.com/ekpyron/ktxutils/
+	arch = any
+	license = MIT
+	makedepends = cmake
+	depends = glfw
+	depends = imagemagick
+	depends = glew
+	source = git+git://github.com/ekpyron/ktxutils
+	md5sums = SKIP
+
+pkgname = ktxutils-git
+
