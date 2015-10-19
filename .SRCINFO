@@ -1,7 +1,7 @@
 pkgbase = php-pdo-cassandra
 	pkgdesc = PDO driver for Cassandra CQL
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/Orange-OpenSource/YACassandraPDO
 	arch = x86_64
 	arch = i686

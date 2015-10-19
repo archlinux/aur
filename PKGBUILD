@@ -1,7 +1,7 @@
 # Maintainer: Skunnyk <skunnyk@archlinux.fr>
 pkgname=php-pdo-cassandra
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PDO driver for Cassandra CQL"
 url="http://github.com/Orange-OpenSource/YACassandraPDO"
 arch=('x86_64' 'i686')
@@ -17,8 +17,9 @@ build() {
 
   phpize
   ./configure --prefix=/usr
-  # We need to sed this generated file to support thrift 0.9.2
-  sed -i "s/apache::thrift::to_string/::apache::thrift::to_string/" gen-cpp/cassandra_types.cpp
+  # We need to sed this generated file to support thrift 0.9.3
+  sed -i "s/apache::thrift::protocol::TInputRecursionTracker/::apache::thrift::protocol::TInputRecursionTracker/" gen-cpp/Cassandra.cpp gen-cpp/cassandra_types.cpp
+  sed -i "s/apache::thrift::protocol::TOutputRecursionTracker/::apache::thrift::protocol::TOutputRecursionTracker/" gen-cpp/Cassandra.cpp gen-cpp/cassandra_types.cpp
   make
 
 }
