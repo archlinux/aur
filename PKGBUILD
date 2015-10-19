@@ -2,12 +2,12 @@
 
 pkgname=bfind
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="find alternative optimised for finding files rather then listing files"
 url="https://github.com/maandree/bfind"
 arch=(any)
 license=(GPL3)
-depends=(bash coreutils)
+depends=(python3)
 makedepends=(make coreutils sed texinfo gzip)
 install=bfind.install
 source=("${url}/archive/${pkgver}.tar.gz")
