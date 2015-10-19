@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/studyzy/imewlconverter"
 license=('GPL2')
 depends=('mono')
-source=("imewlconverter.exe::https://github.com/maz-1/imewlconverter/raw/master/IME%20WL%20Converter/IME%20WL%20Converter/bin/Release/%E6%B7%B1%E8%93%9D%E8%AF%8D%E5%BA%93%E8%BD%AC%E6%8D%A2.exe" 
+source=("imewlconverter.exe::https://github.com/maz-1/imewlconverter/raw/master/IME%20WL%20Converter/IME%20WL%20Converter/bin/Release/ime.exe" 
 		
 	"imewlconverter.desktop")
 md5sums=('SKIP'
