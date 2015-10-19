@@ -1,6 +1,6 @@
 # Maintainer: Adrien Sohier <adrien.sohier@art-software.fr
 
-pkgname=docker-openrc
+pkgname=docker-openrc-git
 pkgver=1.4.1.6992.geaa1fc4
 pkgrel=1
 arch=('any')

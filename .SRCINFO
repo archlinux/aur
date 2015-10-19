@@ -1,4 +1,4 @@
-pkgbase = docker-openrc
+pkgbase = docker-openrc-git
 	pkgver = 1.4.1.6992.geaa1fc4
 	pkgrel = 1
 	url = https://github.com/docker/docker
@@ -10,5 +10,5 @@ pkgbase = docker-openrc
 	source = git+git://github.com/docker/docker
 	md5sums = SKIP
 
-pkgname = docker-openrc
+pkgname = docker-openrc-git
 
