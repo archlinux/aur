@@ -8,7 +8,7 @@ _plugin_version=20130816
 
 pkgname=palemoon-extension-$_plugin_name
 pkgdesc="Mozilla HTML5 implementation of flash for Palemoon"
-pkgver=0.11.607
+pkgver=0.11.617
 pkgrel=1
 arch=('any')
 url="https://mozilla.github.io/shumway/"

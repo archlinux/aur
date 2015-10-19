@@ -1,13 +1,13 @@
 pkgbase = palemoon-extension-shumway
 	pkgdesc = Mozilla HTML5 implementation of flash for Palemoon
-	pkgver = 0.11.607
+	pkgver = 0.11.617
 	pkgrel = 1
 	url = https://mozilla.github.io/shumway/
 	arch = any
 	license = MIT
 	makedepends = unzip
 	depends = palemoon>=18
-	source = palemoon-extension-shumway-0.11.607.xpi::https://mozilla.github.io/shumway/extension/firefox/shumway.xpi
+	source = palemoon-extension-shumway-0.11.617.xpi::https://mozilla.github.io/shumway/extension/firefox/shumway.xpi
 	sha1sums = SKIP
 
 pkgname = palemoon-extension-shumway
