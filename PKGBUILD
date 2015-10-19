@@ -1,7 +1,7 @@
 # Maintainer:  Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=task-git
-pkgver=s2.4.5.r2.g5b675ea
+pkgver=v2.5.0.beta3.r1.g10ebefa
 pkgrel=1
 pkgdesc="A command-line todo list manager"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('bash-completion'
 provides=('task=2.4.4')
 conflicts=('task')
 install="task.install"
-source=("$pkgname"::'git+https://git.tasktools.org/scm/tm/task.git#branch=2.4.5')
+source=("$pkgname"::'git+https://git.tasktools.org/scm/tm/task.git#branch=2.5.0')
 md5sums=('SKIP')
 
 build() {
