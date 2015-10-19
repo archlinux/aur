@@ -22,4 +22,7 @@ package() {
   fi
   cd $pkgdir
   rpmextract.sh $rpmfile
+  mv $pkgdir/usr/lib64 $pkgdir/usr/lib
+  cp -r $pkgdir/usr/local/* $pkgdir/usr/
+  rm -r $pkgdir/usr/local
 }
