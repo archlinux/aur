@@ -1,0 +1,14 @@
+diff --git a/gtk/gtktrayicon-x11.c b/gtk/gtktrayicon-x11.c
+index 94a2d26..f9d1c2a 100644
+--- a/gtk/gtktrayicon-x11.c
++++ b/gtk/gtktrayicon-x11.c
+@@ -508,7 +508,8 @@ gtk_tray_icon_update_manager_window (GtkTrayIcon *icon)
+       gdkwin = gdk_window_lookup_for_display (display,
+                                              icon->priv->manager_window);
+       
+-      gdk_window_add_filter (gdkwin, gtk_tray_icon_manager_filter, icon);
++      if (gdkwin != NULL)
++       gdk_window_add_filter (gdkwin, gtk_tray_icon_manager_filter, icon);
+ 
+       gtk_tray_icon_get_orientation_property (icon);
+       gtk_tray_icon_get_visual_property (icon);

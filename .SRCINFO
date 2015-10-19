@@ -1,0 +1,51 @@
+pkgbase = gtk2-patched-gdkwin-nullcheck
+	pkgdesc = GTK2 patched with NULL-check to prevent use-after-free in gdk_window_add_filter.
+	pkgver = 2.24.28
+	pkgrel = 1
+	url = https://bugzilla.gnome.org/show_bug.cgi?id=747280
+	install = gtk2.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = atk
+	makedepends = pango
+	makedepends = libxcursor
+	makedepends = libxinerama
+	makedepends = libxrandr
+	makedepends = libxi
+	makedepends = libxcomposite
+	makedepends = libxdamage
+	makedepends = shared-mime-info
+	makedepends = cairo
+	makedepends = libcups
+	makedepends = gdk-pixbuf2
+	makedepends = gobject-introspection
+	makedepends = python2
+	depends = atk
+	depends = pango
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxi
+	depends = libxcomposite
+	depends = libxdamage
+	depends = shared-mime-info
+	depends = cairo
+	depends = libcups
+	depends = gtk-update-icon-cache
+	optdepends = gnome-themes-standard: Default widget theme
+	optdepends = gnome-icon-theme: Default icon theme
+	provides = gtk2=2.24.28
+	conflicts = gtk2
+	replaces = gtk2-docs
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-2.24.28.tar.xz
+	source = gtkrc
+	source = xid-collision-debug.patch
+	source = gdkwin-nullcheck.patch
+	sha256sums = b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656
+	sha256sums = b77a427df55a14182c10ad7e683b4d662df2846fcd38df2aa8918159d6be3ae2
+	sha256sums = d758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558
+	sha256sums = a44200b28f7af6a1c84cbc35bc5c91e39a69e36454f8eb345ef29bc1c7e10369
+
+pkgname = gtk2-patched-gdkwin-nullcheck
+
