@@ -23,5 +23,5 @@ package() {
 
     python setup.py install --root="$pkgdir/" --optimize=1
 
-    install -Dm0644 data/jpass.zsh-completion "$pkgdir/usr/share/zsh/site-functions/"
+    install -Dm0644 data/jpass.zsh-completion "$pkgdir/usr/share/zsh/site-functions/_jpass"
 }
