@@ -1,11 +1,9 @@
-# $Id$
-# Maintainer: Daniel Isenmann <daniel@archlinux.org>
-# Contributor: Rashif "Don Ray" Rahman <rayrashif@gmail.com>
+# Maintainer: Adrien Sohier <adrien.sohier@art-software.fr
 
 pkgbase=wicd-git
 pkgname=('wicd-git' 'wicd-gtk-git')
 pkgver=0c205a
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://launchpad.net/wicd/"
 license=('GPL2')
