@@ -3,7 +3,7 @@
 
 _gemname=fluentd
 pkgname=$_gemname
-pkgver=0.10.60
+pkgver=0.10.61
 pkgrel=1
 pkgdesc="A tool to collect events and logs"
 arch=('any')
@@ -19,4 +19,4 @@ package() {
 	rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
 
-md5sums=('1d07f879d7db30cad26afa015850350e')
+sha256sums=('fc139cfe712a2288750553582601159de968d6269a38d46c5e72be573a8c77ad')
