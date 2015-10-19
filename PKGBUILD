@@ -1,10 +1,11 @@
-# Maintainer: Ainola
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Ainola
 # Contributor: Ner0
 # Contributor: quantax
 
 pkgname=ags-git
-pkgver=3.3.4.1.7.geeb96c4
-pkgrel=2
+pkgver=3.3.4.2.4.g5b5613d
+pkgrel=1
 pkgdesc="Adventure Game Studio, a development tool that is primarily used to create graphical adventure games"
 arch=('i686' 'x86_64')
 url="https://github.com/adventuregamestudio/ags"
@@ -30,11 +31,8 @@ prepare() {
 
 build() {
   cd "$srcdir/ags"
-
   make -C Engine
 
-# cd Manual/
-# ./compile_documentation_unix.sh
 }
 
 package() {
@@ -42,8 +40,6 @@ package() {
 
   install -Dm644 "$srcdir/ags/License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-# install -dm755 "$pkgdir/usr/share/doc/$pkgname/html"
-# install -m644 "$srcdir/ags/Manual"/*.htm "$pkgdir/usr/share/doc/$pkgname/html/"
 }
 
 # vim:set ts=2 sw=2 et:
