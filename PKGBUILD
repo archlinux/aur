@@ -1,9 +1,9 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Fabian Melters <melters [at] gmail [dot] com>
 
 pkgname=pyrit
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="WPA/WPA2-PSK attacking with gpu and cluster"
 url="https://code.google.com/p/pyrit"
 arch=('i686' 'x86_64')
@@ -15,12 +15,20 @@ optdepends=(
   'scapy: packet capture analyzation support'
   'python2-sqlalchemy: storage support'
 )
-source=(https://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.gz)
+checkdepends=('python2-sqlalchemy' 'scapy')
+source=(${pkgname}-${pkgver}.tar.gz::https://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.gz)
 sha512sums=('8111b3f6f1a94319f5e146db6c184eb391c03ca554b20ea7227237afbc546a064898835ad16007333bb63aa725079046d413be11dfc3ecb76c77b6ac5096f7e9')
 
 build() {
   cd ${pkgname}-${pkgver}
   python2 setup.py build
+}
+
+check() {
+  cd ${pkgname}-${pkgver}/test
+  local PYTHONVERSION="$(python2 -c 'import sys; print("{}.{}".format(sys.version_info.major, sys.version_info.minor))')"
+  PYTHONPATH="../build/lib.linux-${CARCH}-${PYTHONVERSION}" \
+    python2 test_pyrit.py
 }
 
 package() {

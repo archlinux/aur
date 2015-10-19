@@ -1,11 +1,13 @@
 pkgbase = pyrit
 	pkgdesc = WPA/WPA2-PSK attacking with gpu and cluster
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.google.com/p/pyrit
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	checkdepends = python2-sqlalchemy
+	checkdepends = scapy
 	depends = openssl
 	depends = python2
 	depends = zlib
@@ -14,7 +16,7 @@ pkgbase = pyrit
 	optdepends = cpyrit-opencl: opencl support
 	optdepends = scapy: packet capture analyzation support
 	optdepends = python2-sqlalchemy: storage support
-	source = https://pyrit.googlecode.com/files/pyrit-0.4.0.tar.gz
+	source = pyrit-0.4.0.tar.gz::https://pyrit.googlecode.com/files/pyrit-0.4.0.tar.gz
 	sha512sums = 8111b3f6f1a94319f5e146db6c184eb391c03ca554b20ea7227237afbc546a064898835ad16007333bb63aa725079046d413be11dfc3ecb76c77b6ac5096f7e9
 
 pkgname = pyrit
