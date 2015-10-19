@@ -1,7 +1,7 @@
 # Maintainer: yaroslav <proninyaroslav@mail.ru>
 
 pkgname=android-file-transfer
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Android MTP client with minimalistic UI."
 arch=('i686' 'x86_64')
