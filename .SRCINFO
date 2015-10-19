@@ -1,0 +1,15 @@
+pkgbase = csnobol4
+	pkgdesc = A port of Macro SNOBOL4, supports full SNOBOL4 language plus SPITBOL and other extensions.
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://www.snobol4.org/csnobol4/curr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = ftp://ftp.ultimate.com/snobol/snobol4-1.5.tar.gz
+	md5sums = 54ac3ddd51fb34ec63b1eb0ae7b99794
+	sha1sums = 037a8eeba774b1085cfe8d1a741ec446182e4a9f
+	sha256sums = 9f7ec649f2d700a30091af3bbd68db90b916d728200f915b1ba522bcfd0d7abd
+
+pkgname = csnobol4
+
