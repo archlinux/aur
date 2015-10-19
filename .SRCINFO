@@ -1,11 +1,12 @@
 pkgbase = docker-openrc-git
 	pkgver = 1.4.1.6992.geaa1fc4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/docker/docker
 	arch = any
 	groups = openrc-misc
 	license = APACHE
 	makedepends = git
+	depends = docker
 	depends = openrc-core
 	source = git+git://github.com/docker/docker
 	md5sums = SKIP
