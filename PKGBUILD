@@ -9,19 +9,19 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-_pkgname=NetworkManager
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
-url="http://www.gnome.org/projects/$_pkgname/"
+url="http://www.gnome.org/projects/NetworkManager/"
 depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'consolekit' 
          'wpa_supplicant' 'dhclient' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 
          'libteam' 'libgudev')
 makedepends=('intltool' 'iptables' 'gobject-introspection' 'gtk-doc' 
-             "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala')
+             "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala' 'perl-yaml' 
+             'python2-gobject' 'git')
 optdepends=('modemmanager: for modem management service'
             'dhcpcd: alternative DHCP client; does not support DHCPv6'
             'iptables: connection sharing'
@@ -34,29 +34,31 @@ replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 install=networkmanager.install
-source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
+_commit=ba46efd07777350be737dbdac9df9becb86e8f77
+source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf 
         disable_set_hostname.patch 
         networkmanager.rc
-        0001-Add-Requires.private-glib-2.0.patch
         )
-sha256sums=('38ea002403e3b884ffa9aae25aea431d2a8420f81f4919761c83fb92648254bd'
+sha256sums=('SKIP'
             '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
-            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc'
-            '96fa0ecd0dabf7ba48b0af4220165d5777ac41f2e4cafd9d5c7a8d072ce0c9d7')
+            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
 
 prepare() {
-  cd $_pkgname-$pkgver
+  mkdir path
+  ln -s /usr/bin/python2 path/python
+
+  cd NetworkManager
 
   patch -Np1 -i ../disable_set_hostname.patch
-  patch -Np1 -i ../0001-Add-Requires.private-glib-2.0.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd NetworkManager
 
+  export PATH="$srcdir/path:$PATH"
   AUTOPOINT="intltoolize -f -c --automake" autoreconf -fi
   ./configure \
     --prefix=/usr \
@@ -80,13 +82,14 @@ build() {
     --enable-more-warnings=no \
     --disable-wimax \
     --enable-modify-system \
-    --enable-doc
+    --enable-doc \
+    --enable-gtk-doc
 
   make
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd NetworkManager
   make DESTDIR="${pkgdir}" install
 
   make DESTDIR="$pkgdir" -C libnm uninstall
