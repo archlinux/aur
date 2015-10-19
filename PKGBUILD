@@ -1,8 +1,8 @@
 # Maintainer: Frederic Van Assche <frederic@fredericva.com>
 
 pkgname=caenvmelib
-pkgver=2.41
-pkgrel=2
+pkgver=2.50
+pkgrel=1
 pkgdesc='Interface library for CAEN VME Bridges'
 arch=('i686' 'x86_64')
 url='http://www.caen.it/csite/CaenProd.jsp?idmod=689&parent=38'
@@ -26,4 +26,4 @@ package() {
 	install -D -m644 CAEN_License_Agreement.txt "${pkgdir}/usr/share/licenses/${pkgname}/CAEN_License_Agreement.txt"
 }
 
-sha256sums=('631465e1f4fb6ae2884dd849c04ce50ce68ab30392e62f37c7df588b89805f60')
+sha256sums=('9e521cf36c5ae20ab581b54ee265c5f9f078392b25379a554317f0e633cdfc8b')
