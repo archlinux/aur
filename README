@@ -1,0 +1,4 @@
+This repository contains the PKGBUILD to create the «perl-moosex-aliases»
+package for the Perl module MooseX::Aliases for Arch Linux.
+
+See https://aur.archlinux.org/packages/perl-moosex-aliases/.

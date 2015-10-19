@@ -1,0 +1,17 @@
+pkgbase = perl-moosex-aliases
+	pkgdesc = Easy aliasing of methods and attributes in Moose.
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-Aliases
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-moose
+	checkdepends = perl-test-fatal
+	depends = perl-moose>=2.0000
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOY/MooseX-Aliases-0.11.tar.gz
+	md5sums = 78376310deba54ca644292d44566cefa
+
+pkgname = perl-moosex-aliases
+
