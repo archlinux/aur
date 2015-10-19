@@ -11,6 +11,8 @@ pkgbase = perl-qtcore4
 	makedepends = qwt5
 	depends = qt4
 	depends = perl>=5.8.0
+	optdepends = qimageblitz
+	optdepends = qwt5
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/C/CB/CBUREL/Qt4-0.99.0.tar.bz2
 	md5sums = 5ee2a06d61ea7725e76571807d324f0a

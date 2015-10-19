@@ -9,6 +9,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('qt4' 'perl>=5.8.0')
 makedepends=('qimageblitz' 'qwt5')
+optdepends=('qimageblitz' 'qwt5')
 url='http://search.cpan.org/~cburel/Qt4-0.99.0/qtcore/lib/QtCore4.pm'
 source=('http://search.cpan.org/CPAN/authors/id/C/CB/CBUREL/Qt4-0.99.0.tar.bz2')
 md5sums=('5ee2a06d61ea7725e76571807d324f0a')
