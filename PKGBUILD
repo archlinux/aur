@@ -3,8 +3,8 @@
 # Based on xorg-server-dev: https://aur.archlinux.org/packages/xorg-server-dev/
 
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xdmx-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
-pkgver=1.17.0.158.r14799.gfa12f2c
-pkgrel=3
+pkgver=1.17.99.901.100.r15045.g4513f92
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://cgit.freedesktop.org/xorg/xserver/"
@@ -30,11 +30,15 @@ pkgver() {
   echo $(git describe --long | cut -d "-" -f3-4 | tr - .).r$(git rev-list HEAD --count).$(git describe --long | cut -d "-" -f5)
 }
 
-build() {
+prepare() {
   cd xserver
 
   msg2 "Starting autoreconf..."
-  autoreconf -fi
+  autoreconf -fvi
+}
+
+build() {
+  cd xserver
 
   msg2 "Starting ./configure..."
   ./configure --prefix=/usr \
