@@ -1,0 +1,17 @@
+pkgbase = sparse-git
+	pkgdesc = A semantic parser for C, parsing most of ANSI C as well as many GCC extensions, [also] including a static analyzer.
+	pkgver = 0.5.0.r44.g40791b9
+	pkgrel = 1
+	url = http://sparse.wiki.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = custom:OSL
+	depends = perl
+	depends = libxml2
+	provides = sparse
+	conflicts = sparse
+	source = sparse-git::git+git://git.kernel.org/pub/scm/devel/sparse/sparse.git
+	md5sums = SKIP
+
+pkgname = sparse-git
+
