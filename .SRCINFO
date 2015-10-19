@@ -1,0 +1,18 @@
+pkgbase = ttf-ebgaramond
+	pkgdesc = EB Garamond is an open source project to create a revival of Claude Garamont's famous humanist typeface from the mid-16th century
+	pkgver = 0.016
+	pkgrel = 1
+	url = http://www.georgduffner.at/ebgaramond/
+	install = ttf-ebgaramond.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = otf-ebgaramond
+	source = https://bitbucket.org/georgd/eb-garamond/downloads/EBGaramond-0.016.zip
+	source = OFL.txt
+	sha256sums = a0b77b405f55c10cff078787ef9d2389a9638e7604d53aa80207fe62e104c378
+	sha256sums = ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3
+
+pkgname = ttf-ebgaramond
+
