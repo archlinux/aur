@@ -1,0 +1,15 @@
+pkgbase = anticube2-git
+	pkgdesc = Interactive non-linear puzzle game based on Tesseract
+	pkgver = 5c8fe63
+	pkgrel = 1
+	url = http://quadropolis.us/node/4182
+	arch = i686
+	arch = x86_64
+	license = CC-BY
+	makedepends = git
+	depends = tesseract-game
+	source = git://github.com/Kvaleya/Anticube2.git
+	md5sums = SKIP
+
+pkgname = anticube2-git
+
