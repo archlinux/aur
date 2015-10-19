@@ -1,9 +1,10 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Ordoe ordoe <aur@cach.co>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=20150805
+pkgver=1.0rc2.r51.gd395283
 pkgrel=1
-pkgdesc="Decentralised Consensus-based Deterministic Transaction Resolution Platform"
+pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella, latest unstable git version)"
 arch=('i686' 'x86_64')
 depends=('argtable'
          'boost'
@@ -13,13 +14,11 @@ depends=('argtable'
          'gmp'
          'jsoncpp'
          'leveldb'
-         'libcpuid'
          'libedit'
          'libjson-rpc-cpp'
          'libmicrohttpd'
          'miniupnpc'
          'ncurses'
-         'nodejs'
          'ocl-icd'
          'opencl-headers'
          'openssl'
@@ -31,74 +30,67 @@ depends=('argtable'
          'qt5-webengine'
          'qt5-webkit'
          'readline'
-         'rocksdb'
-         'snappy')
+         'snappy'
+         'llvm'
+         'scons'
+         'gperftools')
 makedepends=('autoconf'
              'automake'
              'cmake'
              'gcc'
-             'git'
              'libtool'
              'v8-3.15'
-             'yasm')
+             'yasm'
+             'git'
+             'clang')
 groups=('ethereum')
-url="https://github.com/ethereum/cpp-ethereum"
+url="https://github.com/ethereum/webthree-umbrella"
 license=('GPL')
-source=(${pkgname%-git}::git+https://github.com/ethereum/cpp-ethereum)
+source=(${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella)
 sha256sums=('SKIP')
-provides=('abi'
+provides=('alethfive'
+          'alethone'
           'alethzero'
-          'cpp-ethereum'
           'eth'
-          'ethconsole'
           'ethkey'
           'ethminer'
           'ethrpctest'
           'ethvm'
-          'ethereum'
+          'exp'
           'lllc'
           'mix'
           'rlp'
-          'sc'
-          'solc')
-conflicts=('abi'
+          'solc'
+          'ethereum'
+          'webthree-umbrella')
+conflicts=('alethfive'
+           'alethone'
            'alethzero'
-           'cpp-ethereum'
-           'elixir'
            'eth'
-           'ethconsole'
            'ethkey'
            'ethminer'
            'ethrpctest'
            'ethvm'
-           'ethereum'
-           'ethereum-serpent'
+           'exp'
            'lllc'
            'mix'
            'rlp'
-           'sc'
-           'secp256k1'
-           'solc')
+           'solc'
+           'ethereum')
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd ${pkgname%-git}
+  git submodule update --init --recursive
 
   msg 'Building...'
   mkdir -p build && pushd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-           -DCMAKE_BUILD_TYPE=Release \
-           -DETHASHCL=1 \
-           -DEVMJIT=0 \
-           -DFATDB=1 \
-           -DROCKSDB=0 \
-           -DUSENPM=1 \
-           -DVMTRACE=0
-  #make -j $(cat /proc/cpuinfo | grep processor | wc -l)
+           -DCMAKE_BUILD_TYPE=Release
   make
   popd
 }
