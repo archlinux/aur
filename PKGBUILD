@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname=blackmarket
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="items search tool for Path of Exile"
 url="http://thirdy.github.io/blackmarket"
@@ -16,7 +16,7 @@ source=("https://github.com/thirdy/${pkgname}/releases/download/v${pkgver}/${pkg
         "icon-48x48.png"
         "blackmarket.sh")
 
-sha256sums=('625718a988827dca764a50633190ec39b7502b47e742a87930f202ffdc21dec4'
+sha256sums=('1bda25862aaaa58fcb20523e2f597067d52da30708f0702319700d5324f7a163'
             'ca332b1084f0d4cdd35ecb91e3cfec4f3b04bb997ceb746743644d6493ada4f8'
             '561b088644527640a135c927f444bdec5284025c213707db7021803156597c76')
 
