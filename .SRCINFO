@@ -1,14 +1,24 @@
 pkgbase = sedutil
 	pkgdesc = TCG OPAL 2.00 SED Management Program
 	pkgver = 1.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Drive-Trust-Alliance/sedutil
 	install = sedutil.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	source = sedutil-1.00.tar.gz::https://github.com/Drive-Trust-Alliance/sedutil/archive/1.00.tar.gz
+	source = extlinux.conf
+	source = mklinuxpba
+	source = linuxpba.conf
+	source = linuxpba.hook
+	source = linuxpba.install
 	sha256sums = 7d9c8b3eb408de8218e8bd29f118a8956157ca6e80fb0d8782074302cc13d2e8
+	sha256sums = 6d528877c70b24367833653f5a7cc004a6b5aad8729b661d8c3fda3f1ee7d4ff
+	sha256sums = 084df0ee2bfc14a4450942b4de4b7f697346fbae9b1c1b7193ce1db66e4dd7e7
+	sha256sums = be7790a69eb4e82a84c690e41cdff04f08a0a61a30a6c28b88df916e3fb59950
+	sha256sums = d9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447
+	sha256sums = 7c32370c3405fc33359c1fc5bb243f387c71ca454e9da88348669fd383f04558
 
 pkgname = sedutil
 
