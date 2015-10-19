@@ -33,6 +33,7 @@ build() {
 
 package(){
   cd $srcdir/$_pkgname-$pkgver/build
+  install -dm755 "${pkgdir}/usr/lib/qt/plugins"
   make DESTDIR=$pkgdir install
   mv "${pkgdir}/usr/lib64/plugins"/* "${pkgdir}/usr/lib/qt/plugins"
   rm -r "${pkgdir}/usr/lib64"
