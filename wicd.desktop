@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Network;
+Encoding=UTF-8
+Exec=/usr/bin/wicd-client
+GenericName=Network Manager
+Icon=wicd-gtk
+Comment=Manage Wired/Wireless Networks
+Name=Wicd
+Terminal=false
+Type=Application
+Version=1.0
