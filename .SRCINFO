@@ -1,0 +1,27 @@
+pkgbase = sickbeard-mcmic
+	pkgdesc = A PVR application that downloads and manages your TV shows. Sickbeard version with working kickass support
+	pkgver = r4997.282f486
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/mcmic/Sick-Beard
+	install = sickbeard.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-cheetah
+	optdepends = sabnzbd: NZB downloader
+	optdepends = python2-notify: desktop notifications
+	conflicts = sickbeard
+	options = !strip
+	source = sickbeard-mcmic::git://github.com/mcmic/Sick-Beard.git
+	source = sickbeard-system.service
+	source = sickbeard-user.service
+	source = sickbeard.tmpfile
+	sha256sums = SKIP
+	sha256sums = aa2b6496bf622d2b235a47b80d950ba84411e879a08bc656d227e224653aeded
+	sha256sums = bf2f9792d3d7e1d703fec9bf61a1562a34b8d08d1dba3d560e6299ea25bd5a72
+	sha256sums = 24f20de2445ff3998aad5d87d94e0fea3b22eb1d0a451ed33ec301ac36a7398d
+
+pkgname = sickbeard-mcmic
+
