@@ -1,0 +1,19 @@
+pkgbase = python-toposort
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/toposort
+	arch = any
+	license = Apache
+	makedepends = python2
+	makedepends = python
+	source = http://pypi.python.org/packages/source/t/toposort/toposort-1.4.tar.gz
+	md5sums = 02433c00de9eaecf494245c4bca5e922
+
+pkgname = python-toposort
+	pkgdesc = A Python3 library for topological sort
+	depends = python
+
+pkgname = python2-toposort
+	pkgdesc = A Python2 library for topological sort
+	depends = python2
+
