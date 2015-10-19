@@ -2,8 +2,8 @@
 # Contributor Artem Klevtsov <a.a.klevtsov at gmail dot com>
 
 pkgname=pandoc-bin
-pkgver=1.15.0.6
-pkgrel=2
+pkgver=1.15.1
+pkgrel=1
 pkgdesc="Universal markup converter (Binary build from official deb)"
 url="http://pandoc.org/"
 license=('GPL2')
@@ -13,7 +13,7 @@ optdepends=('texlive-most: for PDF creation')
 provides=('pandoc' 'pandoc-cabal' 'pandoc-static' 'pandoc-rstudio')
 conflicts=('pandoc' 'pandoc-cabal' 'pandoc-static' 'pandoc-rstudio')
 source_x86_64=("https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-1-amd64.deb")
-md5sums_x86_64=('6af83d0fd197e9427f5735b3684b82af')
+md5sums_x86_64=('2ae31e78304ad08849a4b48cb95b8d72')
 
 package() {
   bsdtar -xf data.tar.gz -C "${pkgdir}/"
