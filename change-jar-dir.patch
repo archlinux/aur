@@ -1,0 +1,11 @@
+--- jvmtop.sh	2015-10-19 13:21:05.439766692 +0800
++++ jvmtop.sh	2015-10-19 13:22:19.534017657 +0800
+@@ -5,7 +5,7 @@
+ # author: Markus Kolb
+ # 
+ 
+-DIR=`cd "\`dirname "$0"\`" && pwd`
++DIR=/usr/share/java/jvmtop
+ 
+ if [ -z "$JAVA_HOME" ] ; then
+         JAVA_HOME=`readlink -f \`which java 2>/dev/null\` 2>/dev/null | \
