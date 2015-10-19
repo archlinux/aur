@@ -1,0 +1,14 @@
+pkgbase = python-wand
+	pkgdesc = Ctypes-based simple MagickWand API binding for Python
+	pkgver = 0.4.1
+	pkgrel = 3
+	url = http://wand-py.org/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	source = https://pypi.python.org/packages/source/W/Wand/Wand-0.4.1.tar.gz
+	md5sums = 61dc0810a7af51b0bb9684e1c1ec390c
+
+pkgname = python-wand
+
