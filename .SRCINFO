@@ -1,5 +1,5 @@
 pkgbase = kde-thumbnailer-blender-kf5
-	pkgdesc = Preview image generator plugin for Android Application Package files. KF5 Ver.
+	pkgdesc = Preview image generator plugin for Blender files. KF5 Ver.
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://kde-apps.org/content/show.php?content=156421

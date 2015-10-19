@@ -4,7 +4,7 @@ _pkgname=kde-thumbnailer-blender
 pkgname=${_pkgname}-kf5
 pkgver=1.0
 pkgrel=1
-pkgdesc="Preview image generator plugin for Android Application Package files. KF5 Ver."                                                                                      
+pkgdesc="Preview image generator plugin for Blender files. KF5 Ver."                                                                                      
 arch=('i686' 'x86_64')                                                                       
 url="http://kde-apps.org/content/show.php?content=156421"                                                  
 license=('GPL')                                                    
