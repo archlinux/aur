@@ -1,8 +1,8 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-namespace-autoclean'
-pkgver='0.26'
+pkgver='0.28'
 pkgrel='1'
 pkgdesc="Keep imports out of your namespace"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl-b-hooks-endofscope>=0.12' 'perl-sub-identify' 'perl-namespace-cle
 makedepends=()
 checkdepends=('perl-test-requires')
 url='https://metacpan.org/release/namespace-autoclean'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/namespace-autoclean-0.26.tar.gz')
-md5sums=('1fb1238dc3164a83b36779b8fb02431f')
-sha512sums=('f9c0a2a4326ff10ee6e0034b157de57648fcac9d98aef1b3494ddb748a2412f6b8121b8f50cd7498fa8e7f66f6e978c3d5dbd9a7b724bb89d8e2d6a5a876dcdf')
-_distdir="namespace-autoclean-0.26"
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/namespace-autoclean-0.28.tar.gz')
+md5sums=('9746a73c34f294d663c583f857b8648f')
+sha512sums=('2541f69862b334fcfe30059d025668175de1b182a5c8ee8f2619bf1d661c316a38fe2014f274bb23e887cd36959f98abb297154ac8ceb600e2e93cbd4a75e28d')
+_distdir="namespace-autoclean-0.28"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,6 +40,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
