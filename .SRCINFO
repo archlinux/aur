@@ -1,8 +1,8 @@
 pkgbase = perl-pithub
 	pkgdesc = Github v3 API
-	pkgver = 0.01028
+	pkgver = 0.01030
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Pithub
+	url = https://metacpan.org/release/Pithub
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -17,9 +17,9 @@ pkgbase = perl-pithub
 	depends = perl-path-tiny>=0.037
 	depends = perl-libwww
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/M/MS/MSCHWERN/Pithub-0.01028.tar.gz
-	md5sums = d823856c606fa03092ed30a253df9edd
-	sha512sums = cccb39999f711bc2d1a9d9c939d2694f9b0c746b51420e515235f1e9c470252907b0b34f2f5d91ab31fa48c9c7224d74b75506d53af07d25a174938dff696663
+	source = http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/Pithub-0.01030.tar.gz
+	md5sums = d2d87bd77797fc24081d20d625a6929a
+	sha512sums = b3db47db87c46fc4113467d08f6514646d9de695240e957dd5cb420f8d639900f7b5a6af2608725ab6aca01dd4c769b871c8cb086b5f1a177638cbd47d3f57aa
 
 pkgname = perl-pithub
 

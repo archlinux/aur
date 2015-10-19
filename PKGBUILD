@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-pithub'
-pkgver='0.01028'
+pkgver='0.01030'
 pkgrel='1'
 pkgdesc="Github v3 API"
 arch=('any')
@@ -11,11 +11,11 @@ options=('!emptydirs')
 depends=('perl-array-iterator' 'perl-cache-lru>=0.04' 'perl-http-message' 'perl-import-into>=1.002004' 'perl-json-maybexs>=1.002000' 'perl-lwp-protocol-https' 'perl-moo>=1.001000' 'perl-path-tiny>=0.037' 'perl-libwww')
 makedepends=()
 checkdepends=('perl-test-most')
-url='http://search.mcpan.org/dist/Pithub'
-source=('http://search.mcpan.org/CPAN/authors/id/M/MS/MSCHWERN/Pithub-0.01028.tar.gz')
-md5sums=('d823856c606fa03092ed30a253df9edd')
-sha512sums=('cccb39999f711bc2d1a9d9c939d2694f9b0c746b51420e515235f1e9c470252907b0b34f2f5d91ab31fa48c9c7224d74b75506d53af07d25a174938dff696663')
-_distdir="Pithub-0.01028"
+url='https://metacpan.org/release/Pithub'
+source=('http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/Pithub-0.01030.tar.gz')
+md5sums=('d2d87bd77797fc24081d20d625a6929a')
+sha512sums=('b3db47db87c46fc4113467d08f6514646d9de695240e957dd5cb420f8d639900f7b5a6af2608725ab6aca01dd4c769b871c8cb086b5f1a177638cbd47d3f57aa')
+_distdir="Pithub-0.01030"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
