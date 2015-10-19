@@ -16,7 +16,7 @@ source=(http://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         jetbrains-webstorm.desktop)
 sha256sums=('f2c6b6fde74513858f204a6fc5d4f39a6b3424edcc1abc435e566ead0929319c'
             '152a0b551a7955837d0e249b24c69d37282633751fc0f5fc68145edcb7c74711'
-            'b1db75ccf467b58741cb48e6ac0d8abb3b46c6b54361a153bc3e955db31c6b47')
+            'ff6de45a3972370ddd70baf4155f6572c45191ec7723990ed56faf67e26feac6')
 
 package() {
   cd "${srcdir}"
