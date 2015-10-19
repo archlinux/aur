@@ -1,0 +1,14 @@
+pkgbase = python-mdx-video
+	pkgdesc = Python-Markdown extension for easy video embedding
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/mdx_video
+	arch = any
+	license = Unknown
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/m/mdx_video/mdx_video-0.1.8.tar.gz
+	md5sums = a7c557bc24d0a3fb0a6e138b049d86e8
+
+pkgname = python-mdx-video
+
