@@ -1,8 +1,8 @@
 pkgbase = gnome-inform7
 	pkgdesc = GNOME port of the Inform 7 IDE for the Inform 7 programming language for interactive fiction
 	pkgver = 6L38
-	pkgrel = 1
-	url = http://sourceforge.net/projects/gnome-inform7
+	pkgrel = 2
+	url = https://github.com/ptomato/gnome-inform7
 	install = gnome-inform7.install
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = gnome-inform7
 	depends = gst-plugins-good
 	options = !libtool
 	source = http://inform7.com/download/content/6L38/I7_6L38_Linux_all.tar.gz
-	source = http://downloads.sourceforge.net/project/gnome-inform7/gnome-inform7/6L38/gnome-inform7-6L38.tar.gz
+	source = https://github.com/ptomato/gnome-inform7/releases/download/6L38/gnome-inform7-6L38.tar.gz
 	md5sums = 4f956c36b30dd0f6588cc21e076c72a0
 	md5sums = de31f900ee9f056a4b35d8b83782315f
 

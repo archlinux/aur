@@ -1,10 +1,10 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=gnome-inform7
 pkgver=6L38
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME port of the Inform 7 IDE for the Inform 7 programming language for interactive fiction"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/gnome-inform7"
+url="https://github.com/ptomato/gnome-inform7"
 license=('GPL3')
 depends=('aspell-en' 'dconf' 'desktop-file-utils' 'goocanvas1' 'gtksourceview2'
          'gtkspell' 'hicolor-icon-theme' 'webkitgtk2' 'gst-plugins-base'
@@ -14,7 +14,7 @@ makedepends=('autoconf>=2.60' 'automake>=1.10' 'graphviz'
 options=('!libtool')
 install="${pkgname}.install"
 source=("http://inform7.com/download/content/${pkgver}/I7_${pkgver}_Linux_all.tar.gz"
-        "http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+        "https://github.com/ptomato/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('4f956c36b30dd0f6588cc21e076c72a0'
          'de31f900ee9f056a4b35d8b83782315f')
 [ "${CARCH}" = "i686" ]   && _arch='i386'
