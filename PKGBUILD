@@ -4,7 +4,7 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.17.99.901  # 1.18.0 RC1: http://lists.x.org/archives/xorg/2015-September/057571.html
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org"
@@ -19,7 +19,8 @@ source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         nvidia-drm-outputclass.conf
         xvfb-run
         xvfb-run.1
-        0001-systemd-logind-do-not-rely-on-directed-signals.patch)
+        0001-systemd-logind-do-not-rely-on-directed-signals.patch
+        0001-linux-Do-not-call-FatalError-from-xf86CloseConsole.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
@@ -28,13 +29,17 @@ sha256sums=('d9efaf191f9dd4e84771de507ac00571d2a2f43bfae589fbf1b05706f83bb280'
             'af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c')
+            '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c'
+            'bdcfc54ce0b64d29848efc56383d850778c6eeecf836c10b67ec2eda03a6160b')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
 
   msg2 "fix VT switching with kdbus; from upstream"
   patch -Np1 -i ../0001-systemd-logind-do-not-rely-on-directed-signals.patch
+
+  msg2 "fix FS#46741, taken from Fedora"
+  patch -Np1 -i ../0001-linux-Do-not-call-FatalError-from-xf86CloseConsole.patch
 
   msg2 "Starting autoreconf..."
   autoreconf -fvi
