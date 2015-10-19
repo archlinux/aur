@@ -1,3 +1,59 @@
+2015-03-02, v0.9
+	* Add Linux syspreps for disabling the IPv6 privacy extensions and for
+	  changing the boot timeout
+	* Add support for syslinux
+	* Add support for outputting to syslog
+	* Fix bugs
+
+2015-02-05, v0.8.1
+	* Fix a bug in the wizard that terminated the program unexpectedly
+
+2015-01-05, v0.8
+	* Support locally mounting the image on the host system
+	* Add option for running user defined scripts in the image's root after
+	  locally mounting it, in the non-interactive version of the program
+	* Fully support OpenBSD and NetBSD images (libguestfs >= 1.29.4)
+	* Allow the user to save the current execution log in the dialog-based
+	  version of the program
+	* Output the server answer in stdout after successfully registering an
+	  image with a synnefo deployment in the non-interactive version of the
+	  program
+	* Add a menu entry after "Register" to show the server's answer in the
+	  dialog-based version of the program after a successful registration
+	* Automatically detect and assign SORTORDER, GUI and KERNEL metadata
+	* Fix bugs
+
+2014-11-04, v0.7.4
+	* Handle cases where qemu-nbd command is missing
+	* Create REMOTE_CONNECTION property. Can be used by cyclades to
+	  determine the way to remotely connect to a VM created by this image
+
+2014-10-21, v0.7.3
+	* Instruct kamaki to ignore the ssl certificates (kamaki >= 0.13rc5).
+
+2014-10-14, v0.7.2
+	* Fix an exception triggered when collecting Ubuntu metadata
+
+2014-10-06, v0.7.1
+	* Fix a bug in host bundling operation where the file system UUIDs and
+	  Labels where not preserved
+	* Fix a few bugs in the Windows deployment code
+	* Successfully detect Lubuntu and Xubuntu systems
+	* Update the documentation
+
+2014-09-26, v0.7
+	* Support all QEMU supported disk image formats as input media
+	* Detect if a Windows input media is sysprepped
+	* Support VirtIO driver installation in Windows
+	* Do a major code cleanup
+	* Fix bugs
+
+2014-06-10, v0.6.2
+	* Add support for Ubuntu 14.04
+	* Fix a bug in Windows image creation
+	* Add .kamaki.log in the user's personal data to be removed
+	* Fix minor issues in the documentation
+
 2014-01-10, v0.6.1
 	* Comply with the AstakosClient changes made in kamaki 0.12
 

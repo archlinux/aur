@@ -2,14 +2,14 @@
 
 _pkgname=snf_image_creator
 pkgname=snf-image-creator
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Command line tool for creating images"
-url="http://docs.dev.grnet.gr/snf-image-creator/latest/"
+url="https://github.com/grnet/snf-image-creator"
 arch=('any')
-license=('BSD')
+license=('GPL3')
 changelog=ChangeLog
-depends=('python2' 'rsync' 'libguestfs' 'python2-dialog' 'python2-sendfile'
+depends=('python2' 'rsync' 'libguestfs' 'python2-pythondialog' 'python2-sendfile'
 'python2-progress' 'python2-ansicolors' 'kamaki'  'python2-sh' 'python2-pyparted')
 makedepends=('python2-distribute' 'python2-sphinx')
 optdepends=('winexe: support for Windows images',
@@ -34,4 +34,4 @@ package() {
 
 }
 
-md5sums=('2f7d4c2efd1b94a4fbd496ce796658b8')
+md5sums=('13be21e7beebac5b81a3db5e5c0c7f38')
