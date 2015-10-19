@@ -6,6 +6,7 @@ pkgbase = pueue-git
 	arch = any
 	license = MIT
 	depends = python
+	depends = python-setuptools
 	source = https://github.com/Nukesor/pueue/archive/0.3.5.tar.gz
 	sha256sums = bd8d387e4619ea2eb4f0696da04a30f80e6f14f9142ff87035e0bb5ecdc63b1c
 
