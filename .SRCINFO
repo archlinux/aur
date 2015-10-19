@@ -1,6 +1,6 @@
 pkgbase = python2-netcdf4
 	pkgdesc = Python/numpy interface to the netCDF version 4 library.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://unidata.github.io/netcdf4-python/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = python2-netcdf4
 	depends = curl
 	depends = zlib
 	optdepends = python-netcdf4: python 3 version
-	source = https://github.com/Unidata/netcdf4-python/archive/v1.2.0rel.tar.gz
-	md5sums = c8fa3df0ede4f6d1506fb9663705cbe4
+	source = https://github.com/Unidata/netcdf4-python/archive/v1.2.1rel.tar.gz
+	md5sums = b8704bde1039a6388d18b063c2f16319
 
 pkgname = python2-netcdf4
 
