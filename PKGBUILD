@@ -5,7 +5,7 @@
 # AUR Category: devel
 
 pkgname=tortoisehg
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="Graphical tools for Mercurial"
 url="http://tortoisehg.bitbucket.org/"
@@ -26,4 +26,4 @@ package() {
 	install -Dm 644 "icons/svg/thg_logo.svg" "${pkgdir}/usr/share/pixmaps/thg_logo.svg"
 }
 
-sha256sums=('49ce7b492f38b54b0095d79b8122fb4f4d60947e2d5ac68072a70526ef0a6450')
+sha256sums=('f5d36d8f19b508dd00a7ac720af3889defd40e99fcb60d907a0fefb9c867dd63')
