@@ -3,7 +3,7 @@
 _pkgname=snf_image_creator
 pkgname=snf-image-creator
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for creating images"
 url="https://github.com/grnet/snf-image-creator"
 arch=('any')
@@ -20,7 +20,6 @@ package() {
 
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir" -O1
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 ChangeLog "$pkgdir/usr/share/$pkgname/ChangeLog"
 
   # Build documentation and man page

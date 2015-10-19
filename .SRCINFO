@@ -1,7 +1,7 @@
 pkgbase = snf-image-creator
 	pkgdesc = Command line tool for creating images
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grnet/snf-image-creator
 	changelog = ChangeLog
 	arch = any
