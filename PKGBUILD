@@ -1,7 +1,7 @@
 #Maintainer: smcdougall <smcdougall.mot at gmail dot com>
 
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
-pkgver=20151019
+pkgver=20151019-1
 pkgrel=1
 pkgdesc="Extension inspired by https://github.com/darkxst/multiple-monitor-panels and rewritten from scratch for gnome-shell version 3.10.4. Adds panels and thumbnails for additional monitors. Settings changes are applied in dynamic fashion, no restart needed."
 arch=('any')
@@ -42,6 +42,8 @@ package() {
       "${pkgdir}/usr/share/gnome-shell/extensions/${uuid}/prefs.js"
     install -m644 "${uuid}/indicator.js" \
       "${pkgdir}/usr/share/gnome-shell/extensions/${uuid}/indicator.js"
+    install -m644 "${uuid}/mmlayout.js" \
+      "${pkgdir}/usr/share/gnome-shell/extensions/${uuid}/mmlayout.js"
     install -m644 "${uuid}/mmoverview.js" \
       "${pkgdir}/usr/share/gnome-shell/extensions/${uuid}/mmoverview.js"
     install -m644 "${uuid}/mmpanel.js" \
