@@ -1,0 +1,128 @@
+_opt_TeamViewerQS=0
+
+_killemall() {
+  if killall -9 'TVGuiSlave.32' 2>/dev/null; then
+    echo 'Killing TVGuiSlave.32'
+    sleep 1
+  fi
+  if killall -9 'TVGuiSlave.64' 2>/dev/null; then
+    echo 'Killing TVGuiSlave.64'
+    sleep 1
+  fi
+  #if killall -9 'TVGuiDelegate' 2>/dev/null; then
+  #  echo 'Killing '
+  #  sleep 1
+  #fi
+  if killall 'teamviewerd' 2>/dev/null; then
+    echo 'Killing teamviewerd'
+    sleep 1
+  fi
+}
+
+post_install() {
+  set -u
+  if [ "${_opt_TeamViewerQS}" -ne 0 ]; then
+    # setfacl is unnecessary in config. The QS scripts prroperly manage multiple user folderse.
+    # It works good in the logfiles.
+    local _fd
+    for _fd in 'logfiles'; do # 'config'
+      if [ -d "/opt/teamviewer10/${_fd}" ]; then
+        setfacl -Rm 'g:users:rwX,d:g:users:rwX' "/opt/teamviewer10/${_fd}"
+      fi
+    done
+  else
+    local _opt_MajorVersion="$(sed -n -e 's:^#_opt_MajorVersion=\([0-9]\+\) .*$:\1:p' '/usr/bin/teamviewer')"
+    systemctl daemon-reload
+    if systemctl -q is-enabled 'teamviewerd.service'; then
+      systemctl start 'teamviewerd.service'
+      #if [ "${_opt_MajorVersion}" -eq 10 ]; then
+      #  echo 'Please disable the TeamViewer service until further notice'
+      #  echo '  sudo systemctl stop teamviewerd.service'
+      #  echo '  sudo systemctl disable teamviewerd.service'
+      #  echo
+      #fi
+    else
+      if [ "${_opt_MajorVersion}" -eq 8 ]; then
+        echo 'The TeamViewer daemon must be running for TeamViewer to work.'
+        echo '  sudo systemctl enable teamviewerd.service'
+        echo '  sudo systemctl start teamviewerd.service'
+      else # if [ "${_opt_MajorVersion}" -ne 10 ]; then
+        echo 'For maximum functionality the TeamViewer daemon must be running.'
+        echo '  sudo systemctl enable teamviewerd.service'
+        echo '  sudo systemctl start teamviewerd.service'
+      fi
+      echo
+    fi
+    #if [ "${_opt_MajorVersion}" -eq 10 ]; then
+    #  echo 'Somewhere before 2015-06-15 the service stopped accepting incoming connections'
+    #  echo 'and cant be set to self start in the system tray. Until this is fixed'
+    #  echo '*** DO NOT ENABLE THE TEAMVIEWER SERVICE ***'
+    #  echo 'If you need this functionality you can run TeamViewer 9 where the service works.'
+    #  echo
+    #  echo 'The service does work in the Debian live CD. Patches are welcome if you can fix.'
+    #fi
+    # I'm trying to find a way to seamlessly switch global.conf from daemon vs non daemon mode.
+    #local _opt_TVBINDIR="$(sed -n -e 's:^_opt_TVBINDIR=\(.*)$:\1:p' '/usr/bin/teamviewer')"
+    #touch "${opt_TVBINDIR}/../config/global.conf"
+    #chmod 666 "${opt_TVBINDIR}/../config/global.conf"
+  fi
+  set +u
+}
+
+_stopsvc() {
+  if [ "${_opt_TeamViewerQS}" -eq 0 ] && { systemctl -q is-enabled 'teamviewerd.service' || systemctl -q is-active 'teamviewerd.service'; }; then
+    systemctl stop 'teamviewerd.service'
+  fi
+  _killemall
+}
+
+pre_remove() {
+  set -u
+  _stopsvc
+  sed -n -e 's:^#_opt_TVDIR=\(.*\)$:\1:p' '/usr/bin/teamviewer' > "/tmp/TeamViewer.uninstall$$"
+  chmod 700 "/tmp/TeamViewer.uninstall$$"
+  mv "/tmp/TeamViewer.uninstall$$" '/tmp/TeamViewer.uninstall'
+  set +u
+}
+
+pre_upgrade() {
+  set -u
+  _stopsvc
+  if [ "$1" != "$2" ]; then
+    local _opt_TVDIR="$(sed -n -e 's:^#_opt_TVDIR=\(.*\)$:\1:p' '/usr/bin/teamviewer')"
+    if [ "${_opt_TeamViewerQS}" -eq 0 ]; then
+      # We don't erase the config folder on upgrade so the TeamViewer upgrader can detect the old settings
+      rm -rf "/opt/${_opt_TVDIR}/logfiles"
+    else
+      rm -rf "/opt/${_opt_TVDIR}"/{logfiles,config}
+    fi
+  fi
+  set +u
+}
+
+post_upgrade() {
+  set -u
+  _killemall
+  post_install
+  if [ "$1" != "$2" ]; then
+    echo 'To clean:'
+    echo 'Remove old ~/.config/teamviewer folders from user home dirs'
+    echo 'Remove old /opt/teamviewer* folders'
+  fi
+  set +u
+}
+
+post_remove() {
+  set -u
+  rm -rf "/opt/$(cat '/tmp/TeamViewer.uninstall')"
+  rm -f '/tmp/TeamViewer.uninstall'
+  if [ "${_opt_TeamViewerQS}" -eq 0 ]; then
+    systemctl daemon-reload
+  fi
+  echo 'To clean:'
+  echo 'Remove ~/.config/teamviewer folders from user home dirs'
+  echo 'Remove /opt/teamviewer* folders'
+  set +u
+}
+
+# vim: ts=2 sw=2 et:
