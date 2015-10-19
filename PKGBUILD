@@ -6,7 +6,7 @@ pkgdesc="OAuth plugin for httpie"
 license=('BSD')
 url="https://github.com/jkbrzt/httpie-oauth"
 pkgver=5.6cf6ed4
-pkgrel=1
+pkgrel=2
 
 source=("$pkgname::git://github.com/jkbrzt/httpie-oauth.git")
 md5sums=('SKIP')
