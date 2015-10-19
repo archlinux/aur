@@ -2,7 +2,7 @@
 
 pkgname=docker-openrc-git
 pkgver=1.4.1.6992.geaa1fc4
-pkgrel=2
+pkgrel=3
 description="Docker init scripts for OpenRC"
 arch=('any')
 url="https://github.com/docker/docker"
@@ -10,7 +10,7 @@ license=('APACHE')
 groups=('openrc-misc')
 source=(git+git://github.com/docker/docker)
 md5sums=('SKIP')
-depends=('docker' 'openrc-core')
+depends=('docker' 'openrc')
 makedepends=('git')
 
 pkgver() {
