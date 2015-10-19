@@ -1,7 +1,7 @@
 pkgbase = gimp-elsamuko-plugins
 	pkgdesc = Varoius Gimp plugins made by elsamuko
 	pkgver = 0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sites.google.com/site/elsamuko/gimp
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = gimp-elsamuko-plugins
 	source = https://sites.google.com/site/elsamuko/forensics/lab-analysis/elsamuko-lab-analysis.tar.gz
 	source = cimg.patch
 	sha256sums = 37081258b6401bcc095d86b3a313b8fc4691f2f70b75e60d6f96be26ab1eb963
-	sha256sums = 70c9ef3ab10a5fdbf389266e2bcd30047191ac520740b196da93caefa4621be8
+	sha256sums = f93871dbc6c05a00c5232412422bed81021b9a9cd5b2969f7b9f5f3740c98611
 	sha256sums = 2cfa1516ab49d1f8d94168c694219be940c2154f4128e3b3e77a8a24e8940312
 	sha256sums = 890e94b870278f49c1291eeb56efdcb6bffdfd8a5e6cba210dc7b47947f5bf2a
 	sha256sums = 20c8ec08587d61d87e91989a9655d693904eb56f402c1eb574c5e4c3a13d4ad1

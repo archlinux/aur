@@ -18,7 +18,7 @@ true && pkgname=(
   gimp-plugin-lab-analysis
 )
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 arch=(i686 x86_64)
 url='https://sites.google.com/site/elsamuko/gimp'
 pkgdesc='Varoius Gimp plugins made by elsamuko'
@@ -50,7 +50,7 @@ https://sites.google.com/site/elsamuko/forensics/lab-analysis/elsamuko-lab-analy
 cimg.patch
 )
 sha256sums=('37081258b6401bcc095d86b3a313b8fc4691f2f70b75e60d6f96be26ab1eb963'
-            '70c9ef3ab10a5fdbf389266e2bcd30047191ac520740b196da93caefa4621be8'
+            'f93871dbc6c05a00c5232412422bed81021b9a9cd5b2969f7b9f5f3740c98611'
             '2cfa1516ab49d1f8d94168c694219be940c2154f4128e3b3e77a8a24e8940312'
             '890e94b870278f49c1291eeb56efdcb6bffdfd8a5e6cba210dc7b47947f5bf2a'
             '20c8ec08587d61d87e91989a9655d693904eb56f402c1eb574c5e4c3a13d4ad1'
@@ -72,11 +72,13 @@ _pluginsdir_eval='_pluginsdir="$pkgdir"/usr/lib/gimp/2.0/plug-ins'
 _curvesdir_eval='_curvesdir="$pkgdir"/usr/share/$pkgname/examples/curves'
 prepare() {
   cd "$srcdir"
-  patch -Np1 -i "$srcdir"/eaw-sharpen.patch
-  patch -Np1 -i "$srcdir"/depthmap-cv.patch
-  patch -Np1 -i "$srcdir"/face-detect-cv.patch
-  cd $srcdir/elsamuko-lab-analysis
-  patch -Np1 -i $srcdir/cimg.patch
+  patch -Np1 -i eaw-sharpen.patch
+  patch -Np1 -i depthmap-cv.patch
+  patch -Np1 -i face-detect-cv.patch
+  cd "$srcdir"/elsamuko-lab-analysis
+  patch -Np1 -i "$srcdir"/cimg.patch
+#   cd "$srcdir"/elsamuko-depthmap-cv
+#   sed '16 s/^/#/' -i Makefile
 }
 build() {
   cd "$srcdir"
@@ -103,8 +105,8 @@ build() {
   make
   # depthmap-cv
   msg2 "Building depthmap-cv plugin"
-  gimptool --build elsamuko-depthmap.c
   cd "$srcdir"/elsamuko-depthmap-cv
+  gimptool --build elsamuko-depthmap-cv.c
   make
   # face-detect-cv
   msg2 "Building face-detect-cv plugin"
