@@ -3,7 +3,7 @@
 _git=6da62d5c5204a5410f70658646d34eb6441b137c
 _repo=papirus-pack-kde
 pkgbase=papirus
-pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-papirus-theme' 'papirus-color-scheme' 'papirus-kmail-theme' 'papirus-plasma-theme' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'papirus-yakuake-theme' 'yakuake-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' )
+pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-papirus-theme' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'papirus-plasma-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'papirus-yakuake-theme' 'yakuake-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' )
 pkgver=20151017
 pkgrel=2
 arch=('any')
@@ -16,12 +16,12 @@ sha256sums=('f94fe8ca80c43e580345010505de1e9d922ab5bf5b3bb6520771abd249c9abf5')
 
 package_papirus() {
 	pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
-	depends=('papirus-plasma-theme' 'papirus-icon-theme' 'papirus-color-scheme' 'papirus-gtk-theme')
+	depends=('plasma-theme-papirus' 'papirus-icon-theme' 'papirus-color-scheme' 'papirus-gtk-theme')
 	optdepends=('yakuake-skin-papirus: Modified and adaptive Paper skin for Yakuake'
 				'papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole'
 				'papirus-kmail-theme: Modified and adaptive Paper theme for Kmail'
 				'bomi-skin-papirus: Papirus theme for Bomi'
-				'libreoffice-papirus-theme: Papirus theme for Libreoffice')
+				'libreoffice-style-papirus: Papirus theme for Libreoffice')
    install -d ${pkgdir}/usr/share/plasma/look-and-feel
    cp -r ${srcdir}/${_repo}-${_git}/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
    install -D -m644  ${srcdir}/${_repo}-${_git}/plasma-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
@@ -40,6 +40,16 @@ package_bomi-skin-papirus() {
 } 
 
 package_libreoffice-papirus-theme() {
+	pkgdesc="Libreoffice Papirus theme "
+	depends=('libreoffice')
+    install -d ${pkgdir}/usr/lib/libreoffice/share/config
+    cp -r ${srcdir}/${_repo}-${_git}/libreoffice-icons/images_papirus.zip ${pkgdir}/usr/lib/libreoffice/share/config
+    install -D -m644  ${srcdir}/${_repo}-${_git}/libreoffice-icons/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+} 
+
+package_libreoffice-style-papirus() {
 	pkgdesc="Libreoffice Papirus theme "
 	depends=('libreoffice')
     install -d ${pkgdir}/usr/lib/libreoffice/share/config
@@ -124,6 +134,15 @@ package_papirus-plasma-theme() {
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 } 
 
+package_plasma-theme-papirus() {
+	pkgdesc="Modified and adaptive Paper plasma theme for KDE"
+	replaces=('papirus-plasma-theme')
+    install -d ${pkgdir}/usr/share/plasma/desktoptheme
+    cp -r ${srcdir}/${_repo}-${_git}/plasma-themes/papirus* ${pkgdir}/usr/share/plasma/desktoptheme/
+    install -D -m644  ${srcdir}/${_repo}-${_git}/plasma-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+} 
 
 package_papirus-yakuake-theme() {
 	pkgdesc="Modified and adaptive Paper theme for Yakuake"

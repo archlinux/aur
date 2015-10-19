@@ -10,7 +10,7 @@ pkgbase = papirus
 
 pkgname = papirus
 	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE.
-	depends = papirus-plasma-theme
+	depends = plasma-theme-papirus
 	depends = papirus-icon-theme
 	depends = papirus-color-scheme
 	depends = papirus-gtk-theme
@@ -18,13 +18,17 @@ pkgname = papirus
 	optdepends = papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole
 	optdepends = papirus-kmail-theme: Modified and adaptive Paper theme for Kmail
 	optdepends = bomi-skin-papirus: Papirus theme for Bomi
-	optdepends = libreoffice-papirus-theme: Papirus theme for Libreoffice
+	optdepends = libreoffice-style-papirus: Papirus theme for Libreoffice
 
 pkgname = bomi-skin-papirus
 	pkgdesc = Papirus theme for Bomi
 	depends = bomi
 
 pkgname = libreoffice-papirus-theme
+	pkgdesc = Libreoffice Papirus theme
+	depends = libreoffice
+
+pkgname = libreoffice-style-papirus
 	pkgdesc = Libreoffice Papirus theme
 	depends = libreoffice
 
@@ -37,6 +41,10 @@ pkgname = papirus-kmail-theme
 
 pkgname = papirus-plasma-theme
 	pkgdesc = Modified and adaptive Paper plasma theme for KDE
+
+pkgname = plasma-theme-papirus
+	pkgdesc = Modified and adaptive Paper plasma theme for KDE
+	replaces = papirus-plasma-theme
 
 pkgname = papirus-gtk-theme
 	pkgdesc = Modified and adaptive Paper gtk theme
