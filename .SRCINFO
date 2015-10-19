@@ -1,7 +1,7 @@
 pkgbase = pep257
 	pkgdesc = PEP 257 docstring style checker.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GreenSteam/pep257
 	arch = any
 	license = MIT
