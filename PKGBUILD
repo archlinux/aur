@@ -1,16 +1,16 @@
 # Maintainer: Frederic Van Assche <frederic@fredericva.com>
 
 pkgname=caenhvwrapper
-pkgver=5.61
+pkgver=5.77
 pkgrel=1
 pkgdesc='Library for CAEN Power Supply Control'
 arch=('i686' 'x86_64')
 url='http://www.caen.it/jsp/Template2/CaenProd.jsp?parent=42&idmod=835'
 license=('custom')
-source=("file://CAENHVWrapper-${pkgver}.tgz")
+source=("file://CAENHVWrapper-${pkgver}.tar.gz")
 depends=('glibc>2.9')
 
-sha256sums=('d01b82098de1943663040eca26a8bbc75aaf4cd2a152e18d78c432fb842e059f')
+sha256sums=('9d0a29eed7a13e2b45820dc99dbc8617581881191000861511fb624c660e6346')
 
 package() {
 	cd "${srcdir}/Linux"
