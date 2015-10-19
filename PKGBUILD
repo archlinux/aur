@@ -8,7 +8,7 @@ pkgdesc="A set of tools for X windows manipulation."
 url="https://github.com/wmutils/core"
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=('libxcb')
+depends=('libxcb' 'xcb-util-wm')
 conflicts=('wmutils')
 source=("$pkgname::git+https://github.com/wmutils/core.git"
         'git+https://github.com/wmutils/opt.git'
