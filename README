@@ -1,0 +1,4 @@
+This repository contains the PKGBUILD to create the «perl-data-simplepath»
+package for the Perl module Data::SimplePath for Arch Linux.
+
+See https://aur.archlinux.org/packages/perl-data-simplepath/.

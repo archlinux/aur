@@ -1,0 +1,17 @@
+pkgbase = perl-data-simplepath
+	pkgdesc = Path-like access to complex data structures.
+	pkgver = 0.005
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-SimplePath
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-nowarnings
+	checkdepends = perl-test-warn
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/ST/STG/Data-SimplePath-0.005.tar.gz
+	md5sums = 2c6fbdb436632d7476828b168f7405ed
+
+pkgname = perl-data-simplepath
+
