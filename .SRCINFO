@@ -1,0 +1,17 @@
+pkgbase = git-phab-git
+	pkgdesc = Git subcommand to integrate with phabricator
+	pkgver = r2.1c3ca45
+	pkgrel = 1
+	url = https://phabricator.freedesktop.org/project/profile/60/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python-gitpython
+	depends = arcanist
+	provides = git-phab
+	conflicts = git-phab
+	source = git://anongit.freedesktop.org/git/git-phab
+	md5sums = SKIP
+
+pkgname = git-phab-git
+
