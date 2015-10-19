@@ -1,6 +1,6 @@
 pkgbase = perl-dist-zilla
 	pkgdesc = distribution builder; installer not included!
-	pkgver = 5.039
+	pkgver = 5.040
 	pkgrel = 1
 	url = https://metacpan.org/release/Dist-Zilla
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = perl-dist-zilla
 	checkdepends = perl-test-fatal
 	checkdepends = perl-test-file-sharedir
 	depends = perl-app-cmd
-	depends = perl-cpan-meta-check>=0.007
+	depends = perl-cpan-meta-check>=0.011
 	depends = perl-cpan-uploader>=0.103004
 	depends = perl-class-load>=0.17
 	depends = perl-config-ini
@@ -56,13 +56,11 @@ pkgbase = perl-dist-zilla
 	depends = perl-try-tiny
 	depends = perl-yaml-tiny
 	depends = perl-namespace-autoclean
-	optdepends = perl-term-readline-gnu: GNU Readline Support
-	optdepends = perl-archive-tar-wrapper: Suggested Archive::Tar wrapper
-	optdepends = perl-ppi-xs: PPI XS Support
+	depends = perl>=5.8.5
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-5.039.tar.gz
-	md5sums = 77ffe60ba6af9ff521d51b3ee6f85caf
-	sha512sums = 4c143d8c23d4645a12bc7042202e3a11c664d3619e50004b8d9ea16fe1e3ae28e3761864349492e528052aec64f95061f74fb2315e5d0f8cfb3ee3f721f6c62c
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-5.040.tar.gz
+	md5sums = e368de696fcf5fe1974e1d5bdc386847
+	sha512sums = 6555cba713d8a33a9f54715d79b9a42fc8ed60a77844ff1cfa7505a144392944349810e9067ea3b201de929fbe73458994fdf4bcac1db418acfd61f91b3030b5
 
 pkgname = perl-dist-zilla
 
