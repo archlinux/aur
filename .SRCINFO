@@ -1,13 +1,14 @@
 pkgbase = perl-extutils-xspp
 	pkgdesc = ExtUtils::XSpp - XS for C++
 	pkgver = 0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/ExtUtils-XSpp/
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	checkdepends = perl-test-base
 	checkdepends = perl-test-differences
+	makedepends = perl-module-build
 	depends = perl
 	provides = perl-extutils-xspp-cmd
 	provides = perl-extutils-xspp-driver
