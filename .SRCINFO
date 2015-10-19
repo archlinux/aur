@@ -1,6 +1,6 @@
 pkgbase = influxdb
 	pkgdesc = Scalable datastore for metrics, events, and real-time analytics
-	pkgver = 0.9.4.1
+	pkgver = 0.9.4.2
 	pkgrel = 1
 	url = http://influxdb.org/
 	install = influxdb.install
@@ -18,12 +18,12 @@ pkgbase = influxdb
 	makedepends = git
 	makedepends = collectd
 	provides = influxdb
-	noextract = v0.9.4.1.tar.gz
+	noextract = v0.9.4.2.tar.gz
 	backup = etc/influxdb.conf
-	source = https://github.com/influxdb/influxdb/archive/v0.9.4.1.tar.gz
+	source = https://github.com/influxdb/influxdb/archive/v0.9.4.2.tar.gz
 	source = influxdb.service
 	source = influxdb.install
-	md5sums = 9847a4318ab212245a37ff591972e858
+	md5sums = bbc1de589558e2a53e71c7d871c25e31
 	md5sums = SKIP
 	md5sums = SKIP
 
