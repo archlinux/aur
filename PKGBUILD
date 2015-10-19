@@ -4,19 +4,19 @@
 # Contributor: V1 <info@3rd-Eden.com>
 
 _npmname=ws
-_npmver=0.4.30
+_npmver=0.8.0
 pkgname=nodejs-ws # All lowercase
-pkgver=0.4.30
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="simple to use, blazing fast and thoroughly tested websocket client, server and console for node.js, up-to-date against RFC-6455"
 arch=(any)
 url="http://github.com/einaros/ws"
 license=( "MIT" )
-depends=('nodejs' )
+depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('5e2c18b7bb7ee0f9c9fcc3d3ec50f513ba5f99e8')
+sha1sums=('ac60ebad312121d01e16cc3383d7ec67ad0f0f1f')
 
 package() {
   cd "$srcdir"
