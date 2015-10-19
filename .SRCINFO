@@ -1,6 +1,6 @@
 pkgbase = papirus
 	pkgver = 20151017
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
@@ -31,6 +31,7 @@ pkgname = libreoffice-papirus-theme
 pkgname = libreoffice-style-papirus
 	pkgdesc = Libreoffice Papirus theme
 	depends = libreoffice
+	replaces = libreoffice-papirus-theme
 
 pkgname = papirus-color-scheme
 	pkgdesc = Modified and adaptive Paper color scheme for KDE

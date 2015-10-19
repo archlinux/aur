@@ -5,7 +5,7 @@ _repo=papirus-pack-kde
 pkgbase=papirus
 pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-papirus-theme' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'papirus-plasma-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'papirus-yakuake-theme' 'yakuake-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' )
 pkgver=20151017
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
@@ -52,6 +52,7 @@ package_libreoffice-papirus-theme() {
 package_libreoffice-style-papirus() {
 	pkgdesc="Libreoffice Papirus theme "
 	depends=('libreoffice')
+	replaces=('libreoffice-papirus-theme')
     install -d ${pkgdir}/usr/lib/libreoffice/share/config
     cp -r ${srcdir}/${_repo}-${_git}/libreoffice-icons/images_papirus.zip ${pkgdir}/usr/lib/libreoffice/share/config
     install -D -m644  ${srcdir}/${_repo}-${_git}/libreoffice-icons/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
