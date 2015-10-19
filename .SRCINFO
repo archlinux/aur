@@ -1,0 +1,14 @@
+pkgbase = meryllete
+	pkgdesc = Your AUR4 updates, easiest.
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/feskyde/meryllete
+	arch = any
+	license = BSD
+	depends = git
+	depends = pkgbuild-introspection
+	source = https://github.com/feskyde/meryllete/archive/v0.1-2.zip
+	md5sums = SKIP
+
+pkgname = meryllete
+
