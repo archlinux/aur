@@ -1,0 +1,15 @@
+pkgbase = onionlink
+	pkgdesc = Very simple peer-to-peer file sharing using Onion services
+	pkgver = 4.c26f0c0
+	pkgrel = 1
+	url = https://github.com/mutantmonkey/onionlink
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/mutantmonkey/onionlink.git
+	sha256sums = SKIP
+
+pkgname = onionlink
+
