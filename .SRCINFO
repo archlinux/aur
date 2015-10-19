@@ -1,7 +1,7 @@
 pkgbase = wine-staging-d3dadapter
 	pkgdesc = A compatibility layer for running Windows programs, with additional staging patches not yet upstreamed (with d3dadapter patch)
-	pkgver = 1.7.52
-	pkgrel = 3
+	pkgver = 1.7.53
+	pkgrel = 1
 	url = http://www.wine-staging.com
 	install = wine.install
 	arch = i686
@@ -71,6 +71,8 @@ pkgbase = wine-staging-d3dadapter
 	makedepends = samba
 	makedepends = opencl-headers
 	makedepends = dri2proto
+	makedepends = dri3proto
+	makedepends = xf86driproto
 	makedepends = fontconfig
 	makedepends = lib32-fontconfig
 	makedepends = libxcursor
@@ -139,24 +141,24 @@ pkgbase = wine-staging-d3dadapter
 	optdepends = dosbox
 	optdepends = gtk3
 	optdepends = lib32-gtk3
-	provides = bin32-wine=1.7.52
-	provides = wine-wow64=1.7.52
-	provides = wine=1.7.52
-	provides = wine-compholio=1.7.52
-	provides = wine-silverlight=1.7.52
+	provides = bin32-wine=1.7.53
+	provides = wine-wow64=1.7.53
+	provides = wine=1.7.53
+	provides = wine-compholio=1.7.53
+	provides = wine-silverlight=1.7.53
 	conflicts = bin32-wine
 	conflicts = wine-wow64
 	conflicts = wine
 	conflicts = wine-staging
 	options = staticlibs
-	source = http://ftp.winehq.org/pub/wine/source/1.7/wine-1.7.52.tar.bz2
-	source = wine-staging-patches-v1.7.52.tar.gz::https://github.com/wine-compholio/wine-staging/archive/v1.7.52.tar.gz
+	source = http://ftp.winehq.org/pub/wine/source/1.7/wine-1.7.53.tar.bz2
+	source = wine-staging-patches-v1.7.53.tar.gz::https://github.com/wine-compholio/wine-staging/archive/v1.7.53.tar.gz
 	source = 30-win32-aliases.conf
-	source = wine-d3d9-1.7.52.patch
-	sha1sums = a323e29090c2f9608d1181e3675948988f6664db
-	sha1sums = d97082d7018642cf6542380bbab718211e2d0efa
+	source = wine-d3d9-1.7.53.patch
+	sha1sums = d13fa9152e23f0ab2a31bef70c5d381e795013a2
+	sha1sums = ac7f0ad09213f26b17d086f8c784c055de00a739
 	sha1sums = 023a5c901c6a091c56e76b6a62d141d87cce9fdb
-	sha1sums = 56a4a1de4157bff6719a3c573083fca783a75c29
+	sha1sums = 83d666e677b9ae3caed648de7c6107dfc080f9ec
 
 pkgname = wine-staging-d3dadapter
 	depends = fontconfig
