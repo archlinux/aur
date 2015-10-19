@@ -23,6 +23,6 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/$(kpsewhich -var-value=TEXMFDIST)" install
 }
 
