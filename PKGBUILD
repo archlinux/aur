@@ -1,4 +1,5 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Attila Bukor <r1pp3rj4ck[at]w4it[dot]eu>
 # Contributor: D. Can Celasun <dcelasun[at]gmail[dot]com>
 # Contributor: Slava Volkov <sv99sv[at]gmail[dot]com>
@@ -7,7 +8,7 @@ pkgname=phpstorm
 _pkgname=PhpStorm
 _pkgbuild=141.2462
 pkgver=9.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('i686' 'x86_64')
 options=(!strip)
