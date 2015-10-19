@@ -4,7 +4,7 @@
 # Contributor: Felix Yan <felixonmars [AT] gmail.com>
 
 pkgname=fcitx-sogoupinyin
-pkgver=1.2.0.0056
+pkgver=2.0.0.0066
 pkgrel=1
 pkgdesc="Sogou Pinyin for Linux"
 arch=('x86_64' 'i686')
@@ -15,18 +15,18 @@ depends=('fcitx' 'opencc' 'libidn' 'fcitx-qt4' 'lsb-release' 'xorg-xprop')
 if [ "${CARCH}" = "i686" ]; then
     _LIB_DIR=i386-linux-gnu
     _ARCH=i386
-    _time=1432524151
-    md5sums=('2b096a3440b55b2a018c166013774422'
+    _time=1445001029
+    md5sums=('1bfded4d26fc95672236dab744482d8c'
              '60b1dcd637c932cf4f3bfaed797f5401')
 else
     _LIB_DIR=x86_64-linux-gnu
     _ARCH=amd64
-    _time=1432523940
-    md5sums=('47cd879b6b340391705f9a4e389045d9'
+    _time=1445002254
+    md5sums=('cb3662b999bbded58178ecc0f45369c9'
              '60b1dcd637c932cf4f3bfaed797f5401')
 fi
 
-source=("http://download.ime.sogou.com/${_time}/sogoupinyin_${pkgver}_${_ARCH}.deb"
+source=("http://cdn2.ime.sogou.com/dl/index/${_time}/sogoupinyin_${pkgver}_${_ARCH}.deb"
         "sogou-autostart")
 
 package(){
