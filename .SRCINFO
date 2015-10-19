@@ -1,0 +1,19 @@
+pkgbase = openglide-cvs
+	pkgdesc = Glide wrapper, useful for DOSBox with Glide support
+	pkgver = 20130713
+	pkgrel = 1
+	url = http://openglide.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cvs
+	depends = mesa
+	depends = sdl
+	depends = glu
+	depends = libsm
+	options = !libtool
+	source = glide-highres.patch::http://www.vogons.org/download/file.php?id=8212
+	md5sums = 13e7e2c25aee886705585a4ac7ac763d
+
+pkgname = openglide-cvs
+
