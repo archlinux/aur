@@ -2,7 +2,7 @@
 
 pkgbase=unicorn-git
 pkgname=('unicorn-git')
-pkgver=0.9.565.22ae47a
+pkgver=0.9.569.b0a1131
 pkgrel=1
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
@@ -26,7 +26,6 @@ prepare() {
   cd ${pkgbase}
   sed 's|libdir=$(LIBDIR)|libdir=$(PREFIX)/$(LIBDIRARCH)|g' -i Makefile
   sed 's|includedir=$(INCDIR)|includedir=$(PREFIX)/include|g' -i Makefile
-  sed 's|ifeq ($(UNICORN_DEBUG),yes)|ifneq ($(UNICORN_DEBUG),yes)|g' -i Makefile
   sed 's|-O3|-O2|g' -i Makefile qemu/configure
   sed 's|-g ||g' -i qemu/configure
   sed 's|UNICORN_DEBUG ?= yes|UNICORN_DEBUG ?= no|g' -i config.mk
