@@ -11,7 +11,7 @@ depends=("xsel")
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/mptre/yank/archive/v$pkgver.tar.gz")
-md5sums=('cf5dc3388e4abbc028e19188d57775e6')
+md5sums=('4d39ceb21d7e137f1d099b0bd32417cb')
 
 build() {
   cd  "$pkgname-$pkgver"
