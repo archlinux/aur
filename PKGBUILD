@@ -1,43 +1,42 @@
-# Contributor: xRemaLx <anton.komolov@gmail.com>
+# Maintainer: xRemaLx <anton.komolov@gmail.com>
 
 pkgname='perl-moosex-daemonize'
-_pkgname='MooseX-Daemonize'
-pkgver='0.18'
+pkgver='0.20'
 pkgrel='1'
 pkgdesc="Role for daemonizing your Moose based application"
+_dist='MooseX-Daemonize'
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-moose>=0.33' 'perl-moosex-getopt>=0.07' 'perl-moosex-types-path-class')
-makedepends=('perl-extutils-makemaker>=6.36')
 url="http://search.cpan.org/dist/MooseX-Daemonize"
-source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('4fc8cbe0a2d43ec99726fb94a31c2112')
-sha512sums=('27b0debc7a74ab4b49191ca3844753bf43df4a1db6c195242d3b3772b0675c8424df980c15e2dff8ed605cc459c4343be232a3e57c549990b7c8c7fccf6fe737')
+license=('GPL' 'PerlArtistic')
+depends=('perl>=5.008' 'perl-moose>=0.33' 'perl-moosex-getopt>=0.07' 'perl-moosex-types-path-class')
+options=('!emptydirs' purge)
+makedepends=('perl-module-build-tiny>=0.007' 'perl-devel-checkos>=1.63')
+checkdepends=('perl-test-fatal')
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/${_dist}-${pkgver}.tar.gz")
+sha512sums=('0152be535b4d01a789af27c34ebccf3a1d48428e935338ffeab0b8fe3e4b76b4e0584f605e3bc2c0445cd6a65496f8929568cbe1eaa36d638e65c428b685f503')
+
+sanitize() {
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+}
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "${srcdir}/${_dist}-${pkgver}"
+  sanitize
+  perl Build.PL --installdirs vendor --destdir "$pkgdir"
+  perl Build
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/${_dist}-${pkgver}"
+  sanitize
+  perl Build test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
+  cd "${srcdir}/${_dist}-${pkgver}"
+  sanitize
+  perl Build install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
