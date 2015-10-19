@@ -2,7 +2,7 @@
 
 pkgname=slack-desktop
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('i686' 'x86_64')
 url="https://slack.com/apps"
@@ -24,8 +24,14 @@ package() {
 
     # Remove all unnecessary stuff
     rm -rf "${pkgdir}/etc"
+    rm -rf "${pkgdir}/usr/share/lintian"
+    rm -rf "${pkgdir}/usr/share/doc"
     rm -rf "${pkgdir}/usr/share/slack/resources/app.asar.unpacked/static/plugins/darwin"
     rm -rf "${pkgdir}/usr/share/slack/resources/app.asar.unpacked/static/plugins/win32"
     find "${pkgdir}" -type f -iname \*.dll -delete
     find "${pkgdir}" -type f -iname \*.exe -delete
+
+    # Move license
+    install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
+    mv ${pkgdir}/usr/share/slack/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
 }
