@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=yubikey-neo-manager-git
-pkgver=1.3.0.r0.gffd2fac
+pkgver=1.3.0.r30.gccc3594
 pkgrel=1
 pkgdesc="Cross platform personalization tool for the YubiKey NEO - git checkout"
 arch=('i686' 'x86_64')
@@ -12,17 +12,31 @@ makedepends=('git' 'python2-setuptools' 'python2-pyside-tools' 'imagemagick')
 provides=('yubikey-neo-manager')
 conflicts=('yubikey-neo-manager')
 install=yubikey-neo-manager.install
-source=('git://github.com/Yubico/yubikey-neo-manager.git')
-sha256sums=('SKIP')
+source=('git://github.com/Yubico/yubikey-neo-manager.git'
+	'git://github.com/Yubico/python-yubicommon.git')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd yubikey-neo-manager/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
+}
+
+prepare() {
+	cd yubikey-neo-manager/
+
+	git config --file=.gitmodules submodule.vendor/yubicommon.url ../python-yubicommon/
+	git submodule init
+	git submodule update
 }
 
 package() {
@@ -31,10 +45,10 @@ package() {
 	python2 setup.py qt_resources
 	python2 setup.py install --root="${pkgdir}/" --optimize=1
 
-	install -D -m0644 resources/neoman-large.png "${pkgdir}/usr/share/icons/hicolor/128x128/neoman.png"
+	install -D -m0644 resources/yubikey-neo-manager.png "${pkgdir}/usr/share/icons/hicolor/128x128/neoman.png"
 	for SIZE in 16 24 32 48 64 96; do
 		convert -scale ${SIZE} \
-			resources/neoman-large.png \
+			resources/yubikey-neo-manager.png \
 			${srcdir}/neoman.png
 		install -D -m0644 ${srcdir}/neoman.png "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/neoman.png"
 	done
