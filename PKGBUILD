@@ -13,7 +13,7 @@ depends=('java-runtime')
 makedepends=('git')
 options=(!libtool)
 
-_gitroot="git://github.com/flatland/drip.git"
+_gitroot="git://github.com/ninjudd/drip.git"
 _gitname="drip"
 
 build() {
