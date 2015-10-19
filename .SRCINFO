@@ -1,0 +1,17 @@
+pkgbase = silver-searcher-git
+	pkgdesc = The Silver Searcher: An attempt to make something better than ack, which itself is better than grep.
+	pkgver = 0.22.0.r1182.9303d2b
+	pkgrel = 1
+	url = https://github.com/ggreer/the_silver_searcher
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	provides = the_silver_searcher=0.22.0.r1182.9303d2b
+	conflicts = the_silver_searcher
+	source = git://github.com/ggreer/the_silver_searcher.git
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = silver-searcher-git
+
