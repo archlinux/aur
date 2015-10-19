@@ -1,0 +1,14 @@
+pkgbase = git-latexdiff
+	pkgdesc = Simple but very convenient wrapper around Git and latexdiff
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://gitlab.com/git-latexdiff/git-latexdiff
+	arch = any
+	license = GPL
+	depends = texlive-core
+	depends = git
+	source = v1.1.2.tar.gz::https://gitlab.com/git-latexdiff/git-latexdiff/repository/archive.tar.gz?ref=v1.1.2
+	sha256sums = cc82452c29c7509fb5ec3d8e781e66c4d5c6783e5451956c14bcfde5b29959a7
+
+pkgname = git-latexdiff
+
