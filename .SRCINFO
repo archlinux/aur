@@ -1,0 +1,19 @@
+pkgbase = python-yoctopuce
+	pkgdesc = Yoctopuce Python API
+	pkgver = 1.10.21816
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/yoctopuce
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/y/yoctopuce/yoctopuce-1.10.21816.tar.gz
+	md5sums = ff246bacbc10f672e6b23f342d282326
+
+pkgname = python-yoctopuce
+	depends = python
+
+pkgname = python2-yoctopuce
+	depends = python2
+
