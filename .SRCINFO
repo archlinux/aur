@@ -1,0 +1,14 @@
+pkgbase = ruby-scoobydoo
+	pkgdesc = Cross-platform which for Ruby
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://mjwhitta.github.io/scoobydoo
+	arch = any
+	license = GPL3
+	depends = ruby
+	noextract = scoobydoo-0.1.1.gem
+	source = https://rubygems.org/downloads/scoobydoo-0.1.1.gem
+	sha256sums = f2e29d3c30e83bb7efc09b307fb6d6258386168b8366884f45c0e93b00c090bc
+
+pkgname = ruby-scoobydoo
+
