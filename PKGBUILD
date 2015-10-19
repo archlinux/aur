@@ -6,8 +6,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=226
-pkgrel=3
+pkgver=227
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -55,7 +55,6 @@ build() {
       --enable-gnuefi \
       --enable-selinux \
       --disable-ima \
-      --disable-kdbus \
       --with-sysvinit-path= \
       --with-sysvrcnd-path= \
       --with-ntp-servers="${timeservers[*]}"
