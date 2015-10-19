@@ -1,16 +1,16 @@
 pkgbase = ruby-ironment
 	pkgdesc = Environment populator & command wrapper utility.
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/badeball/ironment
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-commander
-	noextract = ironment-0.0.5.gem
+	noextract = ironment-0.0.6.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ironment-0.0.5.gem
-	sha1sums = 81ff0b37658f0a869560ddc4a073925477ecaecc
+	source = https://rubygems.org/downloads/ironment-0.0.6.gem
+	sha1sums = 4847f4f7e118d82b9b18f9998b3cf8a7dea7f428
 
 pkgname = ruby-ironment
 
