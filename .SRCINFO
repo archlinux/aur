@@ -1,0 +1,14 @@
+pkgbase = conkyclementine-bzr
+	pkgdesc = Provides Clementine info, for use in Conky.
+	pkgver = 7
+	pkgrel = 1
+	url = https://code.launchpad.net/~conky-companions/+junk/conkyclementine
+	install = conkyclementine-bzr.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	depends = python2
+
+pkgname = conkyclementine-bzr
+
