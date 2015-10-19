@@ -1,10 +1,11 @@
-# Maintainer: Valsu [arch(at)hylia.de]
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com> 
+# Contributor: Valsu [arch(at)hylia.de]
 
 pkgname=eureka
 pkgver=1.07
-pkgrel=2
+pkgrel=3
 pkgdesc="A map editor for the classic DOOM games"
-url="http://${pkgname}.sourceforge.net/"
+url="http://eureka-editor.sourceforge.net/"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('fltk' 'libjpeg-turbo')

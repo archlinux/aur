@@ -1,8 +1,8 @@
 pkgbase = eureka
 	pkgdesc = A map editor for the classic DOOM games
 	pkgver = 1.07
-	pkgrel = 2
-	url = http://eureka.sourceforge.net/
+	pkgrel = 3
+	url = http://eureka-editor.sourceforge.net/
 	arch = x86_64
 	arch = i686
 	license = GPL2
