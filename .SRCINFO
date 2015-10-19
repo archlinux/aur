@@ -1,6 +1,6 @@
 pkgbase = gtg-git
 	pkgdesc = Personal GTD like organizer for the GNOME desktop environment. Git version.
-	pkgver = r5170.a795d66
+	pkgver = r5172.8415e62
 	pkgrel = 1
 	url = http://gtgnome.net/
 	install = gtg-git.install
