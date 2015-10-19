@@ -9,8 +9,8 @@
 # https://github.com/flyingrub/scdl GPL v2
 # no copyright, just copyleft for my work
 #
-
-ytplver=7.3
+set -x
+ytplver=7.4
 confver=1
 
 ### TODO ChangeLog ###
@@ -41,6 +41,7 @@ rdchnge=false
 ytlogin=false
 ytmainlnk="https://www.youtube.com/watch?v="
 sndcldcnt=0
+SndCloudID="95a4c0ef214f2a4a0852142807b54b35"
 sndcldfl=false
 declare -a addlnks=()
 
@@ -64,7 +65,7 @@ chgfile=$HOME/.local/share/YTPLMP3/changelog-ytplmp3.html
 if [ -e $confile ]; then
 	source $confile
 	[ "$versconf" != "$confver" ] && { rm $confile; logdate=$(echo "`date +%Y-%m-%d`"); versconf=$confver; lastdir=$HOME; lastdat=$(echo "`date +%Y-%m-%d`"); \
-					lasturl=""; lastnum="FALSE"; lastid3="TRUE"; preview="TRUE"; rdchnge=false;}
+					lasturl=""; lastnum="FALSE"; lastid3="TRUE"; preview="TRUE"; rdchnge=false; SndCloudID="95a4c0ef214f2a4a0852142807b54b35";}
 else
 	touch $confile
 	versconf=$confver
@@ -76,6 +77,7 @@ else
 	lastid3="TRUE"
 	preview="TRUE"
 	rdchnge=false
+	SndCloudID="95a4c0ef214f2a4a0852142807b54b35"
 fi
 # remove old config
 [ -e "$HOME/.config/YTPLMP3" ] && { rm -rf $HOME/.config/YTPLMP3/; rm -rf $HOME/.config/YTPLMP3;}
@@ -153,6 +155,13 @@ yad --plug=23 --tabnum=1 --form --separator="," \
 		--field="use Preview (only works in conjunction with edit ID3-Tag):CHK" \
 		"$lastdir" "" "!$lasturl" "" "$lastnum" "FALSE" "$lastdat" "1!1..200" "0!0..200" "" "$lastid3" "$preview" &> /tmp/yttb1  2>/dev/null &
 
+yad --plug=23 --tabnum=4 --form --separator="," \
+		--text="Soundcloud ClientID" \
+		--field="ClientID:CBE" \
+		--field="If Soundcloud download is not working, change the ClientID. Use your own or find one on the internet!\nHere's how-to for obtaining a ClientId\n\nhttps://auth0.com/docs/connections/social/soundcloud:LBL" \
+		"$SndCloudID" &> /tmp/yttb4 2>/dev/null &
+
+
 yad --plug=23 --tabnum=3  --form --separator="," \
 		--text="Change or Add the Genres" \
 		--field="Use 1 Genre per Line:TXT" \
@@ -164,7 +173,7 @@ yad --plug=23 --tabnum=2  --form --separator="," \
 		--field="Password:H" \
 		--field="To download private videos (videos where you have to be signed in) it is crucial that the link to this video is entered in the \"Options\" Tab. Otherwise it will not work\!:LBL" &> /tmp/yttb3 2>/dev/null &
 
-yad --notebook --key=23 --tab="Options" --tab="Youtube Account" --tab="Edit Genres" --width 405 --height 450 --on-top --title="$ytpltitle"  --center \
+yad --notebook --key=23 --tab="Options" --tab="Youtube Account" --tab="Edit Genres" --tab="Soundcloud" --width 405 --height 450 --on-top --title="$ytpltitle"  --center \
 		--separator="," --window-icon="multimedia-player-symbolic" \
 		--button="Add More:2" \
 		--button="gtk-cancel:1" \
@@ -180,6 +189,7 @@ case "$?" in
 		rm -f /tmp/yttb1
 		rm -f /tmp/yttb2
 		rm -f /tmp/yttb3
+		rm -f /tmp/yttb4
 		exit		
 	;;
 esac
@@ -215,6 +225,7 @@ rm -f /tmp/yttb1
 			rm -f /tmp/yttb1
 			rm -f /tmp/yttb2
 			rm -f /tmp/yttb3
+			rm -f /tmp/yttb4
 			exit
 		fi
 	fi
@@ -242,6 +253,11 @@ rm -f /tmp/yttb3
 	ytpasswrd=$(echo "$yadlogin" | cut -d, -f2)
 	if [ -n "$ytaccount" ] && [ -n "$ytpasswrd" ] ; then ytlogin=true; fi
 	[ $ytlogin = true ] && logininfo="\nusing YouTube-Account: $ytaccount"
+
+yadsndid=$(cat /tmp/yttb4)
+rm -f /tmp/yttb4
+	SndID=$(echo "$yadsndid" | cut -d, -f1)
+	echo "SndCloudID=$SndID" >> $confile
 
 ### Counting links
 multic=0
@@ -628,8 +644,7 @@ function sndclddl() {
 	fi
 }
 #### Soundcloud Integration ####
-clientID="95a4c0ef214f2a4a0852142807b54b35"
-#clientID="b45b1aa10f1ac2941910a7f0d10f8e28"
+clientID=$SndCloudID
 curlinstalled=`command -V curl &>/dev/null`
 
 if ! $curlinstalled; then
@@ -929,6 +944,7 @@ unset ytpasswrd
 rm -f /tmp/yttb1
 rm -f /tmp/yttb2
 rm -f /tmp/yttb3
+rm -f /tmp/yttb4
 rm -rf $tmppic
 rm -rf $tmpjsn
 rm -rf $tmpdir

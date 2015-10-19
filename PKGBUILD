@@ -1,8 +1,8 @@
 # Maintainer: agnotek <agnostic [dot] sn [at] gmail [dot] com>
 
 pkgname=ytplmp4
-pkgver=7.3
-pkgrel=2
+pkgver=7.4
+pkgrel=1
 pkgdesc="YTPLMP4 - YouTube Playlist to MP3. Download single songs or playlists from Youtube and Soundcloud."
 arch=('any')
 url="http://youtube.com/"
@@ -11,7 +11,7 @@ makedepends=('')
 depends=('id3v2' 'python2-eyed3' 'youtube-dl' 'yad' 'curl' 'feh' 'recode' 'smplayer' 'ffmpeg' 'perl-image-exiftool' 'lame')
 options=('!strip')
 install="ytplmp4.install"
-md5sums=('7c94947851ec3b392da5ea9218b2f6ec'
+md5sums=('66f745e97bab03b8d3c259dbf67a13f3'
          '9347b695d57d40c8756fcb593f28158c'
          'ceae8591b64a369118d4928042cfb403')
 
