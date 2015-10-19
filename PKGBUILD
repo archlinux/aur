@@ -5,19 +5,20 @@
 
 pkgname=fmodex4.26.36
 pkgver=4.26.36
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced audio engine (version 4.26.36)"
 arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
 license=('custom')
-sha256sums=('80a25118bd7cbf38ec71a79ef9cd276abe21767c6617046c41d00de139d73994')
+sha256sums=('b3a9bc8f385f69510df895eda68e8d7a7a8a4fa9eae040b880880a4ceea7f7ab')
 [ "$CARCH" = "x86_64" ] && {
 	_pkgarch=64
-	sha256sums=('cad0064bd9904addfb63b82466acdb83d99adb273d5e63b8ac1f78100d4d75c0')
 }
-source=("http://www.fmod.org/download/fmodex/api/Linux/fmodapi${pkgver//./}linux${_pkgarch}.tar.gz")
+source=("ftp://ftp.gwdg.de/pub/linux/misc/suser-jengelh/openSUSE_13.2/src/libfmodex426-4.26.36-2.2.src.rpm")
 
 package() {
+  bsdtar -xf fmodapi${pkgver//./}linux${_pkgarch}.tar.xz
+
   cd fmodapi${pkgver//./}linux${_pkgarch}
 
   mkdir -p ${pkgdir}/usr/lib
