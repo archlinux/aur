@@ -1,80 +1,103 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Ordoe ordoe <aur@cach.co>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum
-pkgver=poc.8
+pkgver=1.0rc2
 pkgrel=1
-pkgdesc="Decentralised Consensus-based Deterministic Transaction Resolution Platform"
+pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)"
 arch=('i686' 'x86_64')
-depends=('boost'
+depends=('argtable'
+         'boost'
          'boost-libs'
          'curl'
          'crypto++'
          'gmp'
          'jsoncpp'
          'leveldb'
-         'libjson-rpc-cpp-git'
+         'libedit'
+         'libjson-rpc-cpp'
          'libmicrohttpd'
          'miniupnpc'
          'ncurses'
-         'nodejs'
+         'ocl-icd'
+         'opencl-headers'
          'openssl'
          'python2'
          'qt5-base'
          'qt5-declarative'
          'qt5-quick1'
          'qt5-quickcontrols'
+         'qt5-webengine'
          'qt5-webkit'
          'readline'
-         'snappy')
+         'snappy'
+         'llvm'
+         'scons'
+         'gperftools')
 makedepends=('autoconf'
              'automake'
              'cmake'
              'gcc'
              'libtool'
-             'yasm')
+             'v8-3.15'
+             'yasm'
+             'git'
+             'clang')
 groups=('ethereum')
-url="https://code.ethereum.org"
+url="https://github.com/ethereum/webthree-umbrella"
 license=('GPL')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ethereum/cpp-$pkgname/tar.gz/poc-8-tag)
-sha256sums=('0d031e90e399d9c59bdc279bfddac2f6a4887f753ba6eb317892669a1825c119')
-provides=('alethzero'
-          'cpp-ethereum'
+source=(${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella)
+sha256sums=('SKIP')
+provides=('alethfive'
+          'alethone'
+          'alethzero'
           'eth'
-          'ethereum'
+          'ethkey'
+          'ethminer'
+          'ethrpctest'
+          'ethvm'
+          'exp'
           'lllc'
           'mix'
-          'neth'
-          'sc'
+          'rlp'
           'solc'
-          'third')
-conflicts=('alethzero'
-           'cpp-ethereum'
-           'elixir'
+          'ethereum'
+          'webthree-umbrella')
+conflicts=('alethfive'
+           'alethone'
+           'alethzero'
            'eth'
-           'ethereum-serpent'
+           'ethkey'
+           'ethminer'
+           'ethrpctest'
+           'ethvm'
+           'exp'
            'lllc'
            'mix'
-           'neth'
-           'sc'
-           'secp256k1'
+           'rlp'
            'solc'
-           'third')
+           'ethereum-git')
 
 build() {
-  cd "$srcdir/cpp-$pkgname-poc-8-tag"
+  cd ${pkgname%-git}
+  git checkout $pkgver
+  git submodule update --init --recursive
+
+  # Fix miniupnpc issue in submodule
+  pushd libweb3core
+  git cherry-pick 3ae4d8a
+  popd
 
   msg 'Building...'
   mkdir -p build && pushd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-           -DCMAKE_BUILD_TYPE=Release \
-           -DVMTRACE=0 \
-           -DEVMJIT=0 # EVMJIT does not compile
+           -DCMAKE_BUILD_TYPE=Release
   make
   popd
 }
 
 package() {
-  cd "$srcdir/cpp-$pkgname-poc-8-tag"
+  cd ${pkgname%-git}
 
   msg 'Installing...'
   make DESTDIR="$pkgdir" install -C build
