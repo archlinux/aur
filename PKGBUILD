@@ -1,9 +1,9 @@
-# Contributor: Jed Brown <jed@59A2.org>
-# Maintainer: George Eleftheriou <eleftg>
+# Maintainer: Jed Brown <jed@59A2.org>
+# Contributor: George Eleftheriou <eleftg>
 
 pkgname=parmetis
-pkgver=4.0.3.p1
-_pkgver=4.0.3-p1
+pkgver=4.0.3.p2
+_pkgver=4.0.3-p2
 _prefix=/usr
 pkgrel=1
 pkgdesc="A parallel graph partitioning library"
@@ -13,7 +13,7 @@ license="custom"
 depends=(metis openmpi)
 makedepends=(cmake)
 source=(http://ftp.mcs.anl.gov/pub/petsc/externalpackages/parmetis-${_pkgver}.tar.gz)
-sha256sums=('e1a20ff927649c4060f22f11c2eab5bb54940b88e57e58bf2e84e28b429606bf')
+sha256sums=('3b55b2932f694b4270fab0f65e5ae36f93ca9e899b06bf9825a647653787bcd5')
 # "Upstream" is unmaintained and does not reply or apply to critical patches
 #source=(http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/parmetis-$pkgver.tar.gz)
 
