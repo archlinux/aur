@@ -1,7 +1,7 @@
 pkgbase = popcorntime-bin
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
 	pkgver = 0.3.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://popcorntime.io/
 	install = popcorntime.install
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = popcorntime-bin
 	source = http://get.popcorntime.io/build/Popcorn-Time-0.3.8-5-Linux-64.tar.xz
 	source = popcorntime.install
 	source = popcorntime.desktop
-	sha1sums = c9e40d39a8953c7a61543332f82bac9e0b6d50e4
+	sha1sums = fcd6044861cfb78587d9b6e9590c0872144045c6
 	sha1sums = d2e56426a321faabd316ea0bc89b2fa2fb0dfa48
 	sha1sums = 98cba5c0c979d37e601cc33cf3b562f106427d36
 
