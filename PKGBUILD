@@ -1,10 +1,12 @@
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Pablo Vilas <pablovilas89 at gmail dot com>
 # Contributor: Testuser_01 <arch@nico-siebler.de>
-# Maintainer: Pablo Vilas <pablovilas89 at gmail dot com>
+
 pkgname=webstorm
 _pkgname=WebStorm
 pkgver=10.0.4
 _pkgver=141.1550
-pkgrel=2
+pkgrel=3
 pkgdesc="JavaScript IDE and HTML editor."
 arch=('i686' 'x86_64')
 options=('!strip')
