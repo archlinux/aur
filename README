@@ -1,0 +1,4 @@
+This repository contains the PKGBUILD to create the «perl-data-rmap»
+package for the Perl module Data::Rmap for Arch Linux.
+
+See https://aur.archlinux.org/packages/perl-data-rmap/.

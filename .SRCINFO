@@ -1,0 +1,16 @@
+pkgbase = perl-data-rmap
+	pkgdesc = Recursive map, apply a block to a data structure.
+	pkgver = 0.64
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-Rmap
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOWMANBS/Data-Rmap-0.64.tar.gz
+	md5sums = 112c9e8b813259a4700815ca66342a78
+
+pkgname = perl-data-rmap
+
