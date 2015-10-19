@@ -1,6 +1,6 @@
 pkgbase = wicd-git
 	pkgver = 0c205a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/wicd/
 	install = wicd.install
 	arch = any
