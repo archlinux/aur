@@ -11,7 +11,7 @@ depends=('qt5-base' 'fuse' 'libxkbcommon-x11')
 makedepends=('cmake')
 conflicts=('android-file-transfer-linux-git')
 source=("https://github.com/whoozle/android-file-transfer-linux/archive/v${pkgver}.tar.gz")
-md5sums=('42cb2ff57ec6525cd2040f8e1989e504')
+sha256sums=('ce51656babd15d6742af86de97fe1566311860e1e4a99763c59f1cd99d028314')
 
 build() {
   cd "${srcdir}/${pkgname}-linux-${pkgver}"
