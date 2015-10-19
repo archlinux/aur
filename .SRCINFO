@@ -1,6 +1,6 @@
 pkgbase = papirus
 	pkgver = 20151017
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
