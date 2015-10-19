@@ -1,9 +1,10 @@
 [Desktop Entry]
-Name=PhpStorm
-Comment=Lightweight and Smart PHP IDE
-Exec="phpstorm.sh" %u
-Icon=phpstorm
-Terminal=false
+Version=1.0
 Type=Application
-Categories=Development;IDE;PHP;
+Name=PhpStorm
+Icon=/usr/share/phpstorm/bin/webide.png
+Exec="/usr/share/phpstorm/bin/phpstorm.sh" %f
+Comment=Develop with pleasure!
+Categories=Development;IDE;
+Terminal=false
 StartupWMClass=jetbrains-phpstorm
