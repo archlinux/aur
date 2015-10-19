@@ -1,7 +1,7 @@
 # Maintainer: Antergos Developers <dev@antergos.com>
 
 pkgname=lightdm-webkit2-greeter
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A webkit2 greeter for LightDM"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=(!libtool)
 install=greeter.install
 backup=("etc/lightdm/${pkgname}.conf")
 makedepends=('gnome-doc-utils' 'gobject-introspection' 'intltool' 'gnome-common')
-sha256sums=('d2cb9159a434a0f9e4ccbce68aeecf2240c727a03ad98cd5440ed56ab7a26a1d')
+sha256sums=('529150d1b05247209f18227991f58330cc620f96dd92f20145babeb3669e1912')
 
 build() {
   cd $srcdir/${pkgname}-${pkgver}
