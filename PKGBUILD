@@ -3,7 +3,7 @@
 _git=6da62d5c5204a5410f70658646d34eb6441b137c
 _repo=papirus-pack-kde
 pkgbase=papirus
-pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-papirus-theme' 'papirus-color-scheme' 'papirus-kmail-theme' 'papirus-plasma-theme' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'papirus-yakuake-theme' 'papirus-aurorae-theme' 'papirus-icon-theme' )
+pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-papirus-theme' 'papirus-color-scheme' 'papirus-kmail-theme' 'papirus-plasma-theme' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'papirus-yakuake-theme' 'yakuake-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' )
 pkgver=20151017
 pkgrel=1
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('f94fe8ca80c43e580345010505de1e9d922ab5bf5b3bb6520771abd249c9abf5')
 package_papirus() {
 	pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
 	depends=('papirus-plasma-theme' 'papirus-icon-theme' 'papirus-color-scheme' 'papirus-gtk-theme')
-	optdepends=('papirus-yakuake-theme: Modified and adaptive Paper theme for Yakuake'
+	optdepends=('yakuake-skin-papirus: Modified and adaptive Paper skin for Yakuake'
 				'papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole'
 				'papirus-kmail-theme: Modified and adaptive Paper theme for Kmail'
 				'bomi-skin-papirus: Papirus theme for Bomi'
@@ -128,6 +128,20 @@ package_papirus-plasma-theme() {
 package_papirus-yakuake-theme() {
 	pkgdesc="Modified and adaptive Paper theme for Yakuake"
 	depends=('yakuake')
+    install -d ${pkgdir}/usr/share/apps/yakuake/skins
+    install -d ${pkgdir}/usr/share/yakuake/skins
+    echo ${srcdir}/${_repo}-${_git}/yakuake-skins/papirus*
+    cp -r ${srcdir}/${_repo}-${_git}/yakuake-skins/papirus* ${pkgdir}/usr/share/apps/yakuake/skins/
+    cp -r ${srcdir}/${_repo}-${_git}/yakuake-skins/papirus* ${pkgdir}/usr/share/yakuake/skins/
+    install -D -m644  ${srcdir}/${_repo}-${_git}/yakuake-skins/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+} 
+
+package_yakuake-skin-papirus() {
+	pkgdesc="Modified and adaptive Paper skin for Yakuake"
+	depends=('yakuake')
+	replaces=('papirus-yakuake-theme')
     install -d ${pkgdir}/usr/share/apps/yakuake/skins
     install -d ${pkgdir}/usr/share/yakuake/skins
     echo ${srcdir}/${_repo}-${_git}/yakuake-skins/papirus*

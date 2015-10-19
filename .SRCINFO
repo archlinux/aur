@@ -14,7 +14,7 @@ pkgname = papirus
 	depends = papirus-icon-theme
 	depends = papirus-color-scheme
 	depends = papirus-gtk-theme
-	optdepends = papirus-yakuake-theme: Modified and adaptive Paper theme for Yakuake
+	optdepends = yakuake-skin-papirus: Modified and adaptive Paper skin for Yakuake
 	optdepends = papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole
 	optdepends = papirus-kmail-theme: Modified and adaptive Paper theme for Kmail
 	optdepends = bomi-skin-papirus: Papirus theme for Bomi
@@ -49,6 +49,11 @@ pkgname = papirus-konsole-colorscheme
 pkgname = papirus-yakuake-theme
 	pkgdesc = Modified and adaptive Paper theme for Yakuake
 	depends = yakuake
+
+pkgname = yakuake-skin-papirus
+	pkgdesc = Modified and adaptive Paper skin for Yakuake
+	depends = yakuake
+	replaces = papirus-yakuake-theme
 
 pkgname = papirus-aurorae-theme
 	pkgdesc = Modified and adaptive Paper decorations for Kwin
