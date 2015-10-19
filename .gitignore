@@ -1,0 +1,5 @@
+pkg/
+src/
+pbkdf2-*.tar.gz
+python-pbkdf2-*.tar.xz
+.AURINFO

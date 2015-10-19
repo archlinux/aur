@@ -1,0 +1,17 @@
+pkgbase = python-pbkdf2
+	pkgdesc = A module that implements the password-based key derivation function PBKDF2.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.dlitz.net/software/python-pbkdf2/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-crypto: to make use of PyCrypto`s HMAC and SHA
+	source = http://pypi.python.org/packages/source/p/pbkdf2/pbkdf2-1.3.tar.gz
+	source = LICENSE
+	md5sums = 40cda566f61420490206597243dd869f
+	md5sums = 180c44cc3999239185d0523570c61fa8
+
+pkgname = python-pbkdf2
+
