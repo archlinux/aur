@@ -1,6 +1,6 @@
 pkgbase = ryzom-client
-	pkgdesc = Ryzom is a Free to Play MMORPG . This version is for playing on an official
-	pkgver = r6270.84b22d898cac
+	pkgdesc = Ryzom is a Free to Play MMORPG .This version is for playing on an official server
+	pkgver = 0.12.0.r6270
 	pkgrel = 1
 	url = http://www.ryzom.com/
 	install = install
@@ -12,6 +12,7 @@ pkgbase = ryzom-client
 	makedepends = cmake
 	makedepends = bison
 	makedepends = mesa
+	depends = ryzom-data
 	depends = curl
 	depends = freealut
 	depends = libvorbis

@@ -1,9 +1,9 @@
 # Maintainer: PitBall
 
 pkgname=ryzom-client
-pkgver=r6270.84b22d898cac
+pkgver=0.12.0.r6270
 pkgrel=1
-pkgdesc="Ryzom is a Free to Play MMORPG . This version is for playing on an official"
+pkgdesc="Ryzom is a Free to Play MMORPG .This version is for playing on an official server"
 arch=('i686' 'x86_64')
 url="http://www.ryzom.com/"
 license=('AGPL3')
@@ -22,7 +22,14 @@ md5sums=('SKIP' 'SKIP' 'a5ca7dfae7b9073f78cd1b0b7380755f')
 
 pkgver() {
   cd "$_hg_name"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "%s.%s.%s.r%s" \
+  "$(grep -o -P "NL_VERSION_MAJOR [0-9]+" code/CMakeLists.txt | \
+                  awk '{print $2}' | head -n 1)" \
+  "$(grep -o -P "NL_VERSION_MINOR [0-9]+" code/CMakeLists.txt | \
+                  awk '{print $2}' | head -n 1)" \
+  "$(grep -o -P "NL_VERSION_PATCH [0-9]+" code/CMakeLists.txt | \
+                  awk '{print $2}' | head -n 1)" \
+  "$(hg identify -n)"
 }
 
 build() {
