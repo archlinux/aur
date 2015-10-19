@@ -1,12 +1,14 @@
 pkgbase = mingw-w64-asio
-	pkgdesc = Cross-platform C++ library for ASynchronous network I/O (mingw-w64 symlinks)
-	pkgver = 1
+	pkgdesc = Cross-platform C++ library for ASynchronous network I/O (mingw-w64)
+	pkgver = 1.10.6
 	pkgrel = 1
 	url = http://asio.sourceforge.net/
 	arch = any
 	license = custom
-	depends = mingw-w64-crt
-	depends = asio
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-boost
+	source = http://downloads.sourceforge.net/asio/asio-1.10.6.tar.bz2
+	md5sums = 85d014a356a6e004cd30ccd4c9b6a5c2
 
 pkgname = mingw-w64-asio
 
