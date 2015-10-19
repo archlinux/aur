@@ -2,7 +2,7 @@
 
 _pkgname="mitsuba"
 pkgname="${_pkgname}-hg"
-pkgver=2135
+pkgver=2136
 pkgrel=1
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
@@ -12,11 +12,12 @@ depends=("python" "xerces-c" "glew" "openexr" "libpng" "libjpeg" "qt4" "fftw" "c
 makedepends=("eigen" "scons" "mercurial")
 provides=("mitsuba")
 conflicts=("mitsuba")
-source=("${_pkgname}::hg+https://www.mitsuba-renderer.org/repos/_10" "fix_boost_include.patch")
-sha256sums=("SKIP" "SKIP")
+source=("${_pkgname}::hg+https://www.mitsuba-renderer.org/repos/_10"
+        "fix_boost_include.patch"
+        "py3binding.sh")
+sha256sums=("SKIP" "SKIP" "SKIP")
 
 _py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
-_py3include=/usr/include/`ls /usr/include |  grep python3`
 
 pkgver() {
   cd $srcdir/${_pkgname}
@@ -40,19 +41,9 @@ build() {
     scons --jobs=$[${MAKEFLAGS/-j/} - 1]
     
     #build python3 binding
-    _CFLAGS="-DMTS_BUILD_MODULE=MTS_MODULE_PYTHON -DMTS_DEBUG -DMTS_HAS_COHERENT_RT -DMTS_HAS_COLLADA=1 -DMTS_HAS_FFTW=1 -DMTS_HAS_LIBJPEG=1 -DMTS_HAS_LIBPNG=1 -DMTS_HAS_OPENEXR=1 -DMTS_SSE -DPyMitsuba_EXPORTS -DSINGLE_PRECISION -DSPECTRUM_SAMPLES=3 -fvisibility=hidden -pipe -march=nocona -ffast-math -Wall -Winvalid-pch -mfpmath=sse  -fopenmp -O3 -DNDEBUG -fPIC -I/usr/include/eigen3 -I/usr/include/OpenEXR -I../include -I${_py3include}"
     mkdir -p build-py3
     cd build-py3
-    [ -f render.cpp.o ] || g++ $_CFLAGS -o render.cpp.o -c ../src/libpython/render.cpp
-    [ -f core.cpp.o ] || g++ $_CFLAGS -o core.cpp.o -c ../src/libpython/core.cpp
-    g++ -fPIC -fvisibility=hidden -pipe -march=nocona -ffast-math \
-    -Wall -Winvalid-pch -mfpmath=sse  -fopenmp -O3 -DNDEBUG  \
-    -shared -Wl,-soname,mitsuba.so -o mitsuba.so render.cpp.o core.cpp.o \
-    -lmitsuba-core -lmitsuba-render \
-    -lz -lpng -ljpeg -lHalf -lIex -lImath -lIlmThread -lpthread -lIlmImf -lboost_thread \
-    -lpthread -lIlmImf -lboost_thread -lboost_filesystem -lboost_system -ldl -lfftw3 \
-    -lfftw3_threads -lrt -lboost_filesystem -lboost_system -lboost_python3 -lpython3 -lxerces-c \
-    -L${srcdir}/mitsuba/build/release/libcore -L${srcdir}/mitsuba/build/release/librender
+    sh ${srcdir}/py3binding.sh ${srcdir}
 }
 
 package() {

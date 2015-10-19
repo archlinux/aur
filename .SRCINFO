@@ -1,6 +1,6 @@
 pkgbase = mitsuba-hg
 	pkgdesc = Mitsuba physically based renderer.
-	pkgver = 2135
+	pkgver = 2136
 	pkgrel = 1
 	url = http://mitsuba-renderer.org/
 	arch = i686
@@ -24,6 +24,8 @@ pkgbase = mitsuba-hg
 	conflicts = mitsuba
 	source = mitsuba::hg+https://www.mitsuba-renderer.org/repos/_10
 	source = fix_boost_include.patch
+	source = py3binding.sh
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
