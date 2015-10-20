@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 82286 2013-01-14 10:03:34Z spupykin $
 # Maintainer: Arthur Borsboom <arthurborsboom@gmail.com>
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=1.2.11.5.gc5a5491
+pkgver=1.2.20.121.g6222a6f
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
