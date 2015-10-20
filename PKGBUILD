@@ -1,7 +1,7 @@
 # Maintainer: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-beta
-pkgver=42.0b7
+pkgver=42.0b8
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
 arch=('i686' 'x86_64')
@@ -28,8 +28,8 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         freetype2-261.patch
         vendor.js
         firefox-fixed-loading-icon.png)
-sha256sums=('092cb65a84c30c4b9d467644d5e1476bf5131fecbacb0faa0b412dfb775aa920'
-            'c89abe5ee54637743ee1f54c9e760dc9c35f18a175b46e5dcbb914e06f1b1f2f'
+sha256sums=('f813958903af24e0dd29c0647ff90e18596283b60fa10ea27f3b9c7fa1f10e82'
+            'ecd3a5982e52f789ca15216fcbda79bf6b47db8be9e9ab495665c934b40641ff'
             'cf19552d5bbd14c2747aad9b92a2897b88701e9b42990cf28cf40c2d50a41909'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'c65d7c784d382d24f47b49a86e8ca02158de04b8bfd14b097cf4839bd641fdd5'
