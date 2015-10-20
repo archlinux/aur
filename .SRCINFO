@@ -1,0 +1,16 @@
+pkgbase = arora
+	pkgdesc = Lightweight cross-platform Web browser
+	pkgver = 0.11.0
+	pkgrel = 4
+	url = http://code.google.com/p/arora/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qtwebkit
+	depends = desktop-file-utils
+	source = http://arora.googlecode.com/files/arora-0.11.0.tar.gz
+	sha1sums = 480cfd7482cccbb7ece866fa10afe9acace29b31
+
+pkgname = arora
+
