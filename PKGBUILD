@@ -2,7 +2,7 @@
 
 pkgname=tikzit
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows the creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
 url="http://tikzit.github.io"
@@ -20,7 +20,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver/tikzit"
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-  make || return 1
+  make -j1 || return 1
 }
 
 package() {
