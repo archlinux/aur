@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201401w
+	pkgdesc = Epson printer driver (L series)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = https://download3.ebz.epson.net/dsc/f/03/00/03/45/41/92e9c9254f0ee4230a069545ba27ec2858a2c457/epson-inkjet-printer-201401w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 2bfcf5613393a06a0a2ab6e2280e67beaf72e94d98a313a29170a3597d95dc8a
+
+pkgname = epson-inkjet-printer-201401w
+
