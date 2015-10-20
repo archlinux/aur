@@ -1,7 +1,7 @@
 pkgbase = python2-docker-py
 	pkgdesc = Python client for Docker.
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/dotcloud/docker-py
 	arch = any
 	license = Apache2
@@ -9,8 +9,8 @@ pkgbase = python2-docker-py
 	depends = python2-requests
 	depends = python2-six
 	depends = python2-websocket-client>=0.32.0
-	source = https://pypi.python.org/packages/source/d/docker-py/docker-py-1.4.0.tar.gz
-	md5sums = 3b9fbbd6f973499713932e074a2de879
+	source = https://pypi.python.org/packages/source/d/docker-py/docker-py-1.5.0.tar.gz
+	sha256sums = 6924128fac46afef0de16ebdffc30a8c071246312260f289d895129f4e00f8d0
 
 pkgname = python2-docker-py
 
