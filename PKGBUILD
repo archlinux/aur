@@ -41,7 +41,7 @@ package() {
   install -Dm644 "videoserverd.service" "${pkgdir}/usr/lib/systemd/system/videoserverd.service"
   install -Dm644 "videoserverd.conf" "${pkgdir}/etc/videoserverd.conf"
   install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/videoserverd.conf"
-  install -Dm644 "videoservertmp.conf" "${pkgdir}/usr/lib//usr/lib/tmpfiles.d/videoserverd.conf"
+  install -Dm644 "videoservertmp.conf" "${pkgdir}/usr/lib/tmpfiles.d/videoserverd.conf"
   install -Dm644 -o 176 -g 176 "schedule.json" "${pkgdir}/var/lib/videoserverd/schedule.json"
   install -dm755 -o 176 -g 176 "${pkgdir}/run/videoserverd"
   install -dm775 -o 176 -g 176 "${pkgdir}/var/log/videoserverd"
