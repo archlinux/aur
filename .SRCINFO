@@ -1,0 +1,17 @@
+pkgbase = karia2-svn
+	pkgdesc = QT4 interface for aria2 download mananger
+	pkgver = r363
+	pkgrel = 1
+	url = http://sourceforge.net/projects/karia2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = qt4
+	depends = aria2
+	depends = libxtst
+	source = svn+https://svn.code.sf.net/p/karia2/code/trunk
+	md5sums = SKIP
+
+pkgname = karia2-svn
+
