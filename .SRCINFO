@@ -1,0 +1,16 @@
+pkgbase = ruby-benchmark-ips
+	pkgdesc = A iterations per second enhancement to Benchmark.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/evanphx/benchmark-ips
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = benchmark-ips-2.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/benchmark-ips-2.3.0.gem
+	sha256sums = 12443aa327d3129aa965244f79d7d5cb0f692f0f92ba7db76fba61526a40062e
+
+pkgname = ruby-benchmark-ips
+
