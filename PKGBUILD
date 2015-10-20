@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=uenv-git
-pkgver=0.1.r1.gd915eb9
+pkgver=0.1.r2.gfc3a992
 _basename=uenv
 pkgrel=1
 pkgdesc="Useful scripts, systemd timer/service units and their configuration"
@@ -53,8 +53,6 @@ package() {
   cd "$srcdir/$_basename"
   install -d ${pkgdir}/usr/lib/systemd/scripts/
   install -Dm 755 scripts/* ${pkgdir}/usr/lib/systemd/scripts/
-  install -d ${pkgdir}/usr/lib/systemd/system/user@.service.d/
-  install -Dm 644 system/user@.service.d/dbus.conf ${pkgdir}/usr/lib/systemd/system/user@.service.d/
   install -d ${pkgdir}/usr/lib/systemd/system/
   install -Dm 644 system/{autotunnel@,cpupower-rt,rtorrent@,update-mirrorlist}.* ${pkgdir}/usr/lib/systemd/system/
   install -d ${pkgdir}/usr/lib/systemd/user/
