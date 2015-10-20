@@ -1,7 +1,7 @@
 pkgbase = nginx-lua-http-auth-digest
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with lua and digest authentication module
 	pkgver = 1.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nginx.org
 	install = nginx.install
 	arch = i686
@@ -31,11 +31,13 @@ pkgbase = nginx-lua-http-auth-digest
 	source = http://nginx.org/download/nginx-1.9.5.tar.gz
 	source = service
 	source = logrotate
+	source = nginx-http-auth-digest.patch
 	source = git+http://github.com/samizdatco/nginx-http-auth-digest
 	source = git+http://github.com/chaoslawful/lua-nginx-module#tag=v0.9.16
 	md5sums = 2562320f1535e3e31d165e337ae94f21
 	md5sums = ce9a06bcaf66ec4a3c4eb59b636e0dfd
 	md5sums = 3441ce77cdd1aab6f0ab7e212698a8a7
+	md5sums = 44f7c65e68e438e1dd7b20b636c2bc2c
 	md5sums = SKIP
 	md5sums = SKIP
 
