@@ -1,0 +1,24 @@
+pkgbase = qllauncher-next-git
+	pkgdesc = Third party standalone launcher for Quake Live (next branch)
+	pkgver = beta.82.gd3cfdac
+	pkgrel = 2
+	url = https://bitbucket.org/fx_/quakelivelauncher
+	install = qllauncher-next-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-base<=5.5
+	makedepends = qt5-declarative
+	depends = wine
+	depends = libfxqllauncher
+	depends = libfxqmlcontrols
+	depends = libfxqmlhelpers
+	depends = qt5-svg
+	provides = qllauncher
+	conflicts = qllauncher-git
+	source = qllauncher-next-git::git+https://bitbucket.org/fx_/quakelivelauncher.git#branch=next
+	sha256sums = SKIP
+
+pkgname = qllauncher-next-git
+
