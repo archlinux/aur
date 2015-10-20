@@ -1,0 +1,13 @@
+pkgbase = check50
+	pkgdesc = Code check tool for CS50 / CS50x (Harvard College's Introduction to Computer Science I)
+	pkgver = 1.19
+	pkgrel = 1
+	url = https://github.com/jthurner/check50
+	arch = any
+	license = CCPL
+	depends = nodejs
+	source = check50::git://github.com/jthurner/check50.git#commit=a41738d664ad9a04f6da645bb1069d2abff8ce65
+	md5sums = SKIP
+
+pkgname = check50
+
