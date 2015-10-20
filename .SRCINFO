@@ -11,6 +11,7 @@ pkgbase = ivideon-server-headless
 	depends = gstreamer0.10
 	depends = gstreamer0.10-base-plugins
 	depends = gstreamer0.10-good-plugins
+	depends = systemd
 	conflicts = ivideon-video-server-nogui
 	backup = etc/videoserverd.conf
 	backup = var/lib/videoserverd/schedule.json
