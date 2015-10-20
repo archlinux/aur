@@ -1,7 +1,7 @@
 pkgbase = adcli
 	pkgdesc = Active Directory account management tool
-	pkgver = 0.7.5
-	pkgrel = 2
+	pkgver = 0.7.6
+	pkgrel = 1
 	url = http://freedesktop.org/software/realmd/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = adcli
 	makedepends = xmlto
 	depends = krb5
 	depends = openldap
-	source = http://www.freedesktop.org/software/realmd/releases/adcli-0.7.5.tar.gz
-	source = http://www.freedesktop.org/software/realmd/releases/adcli-0.7.5.tar.gz.sig
-	sha256sums = fc4a0e3a515b3a2cb3ce670a180f0215f252efb3d6c762dc8fa7204485a686c7
+	source = http://www.freedesktop.org/software/realmd/releases/adcli-0.7.6.tar.gz
+	source = http://www.freedesktop.org/software/realmd/releases/adcli-0.7.6.tar.gz.sig
+	sha256sums = 5ed832681b878b9fa81f1bc355cd6711526e84865465c37c368e77ed06bb3e1f
 	sha256sums = SKIP
 
 pkgname = adcli

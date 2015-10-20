@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=adcli
-pkgver=0.7.5
-pkgrel=2
+pkgver=0.7.6
+pkgrel=1
 pkgdesc="Active Directory account management tool"
 arch=(i686 x86_64)
 url="http://freedesktop.org/software/realmd/"
@@ -10,7 +10,7 @@ depends=(krb5 openldap)
 makedepends=(docbook-xsl intltool xmlto)
 source=("http://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz"
         "http://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz.sig")
-sha256sums=('fc4a0e3a515b3a2cb3ce670a180f0215f252efb3d6c762dc8fa7204485a686c7'
+sha256sums=('5ed832681b878b9fa81f1bc355cd6711526e84865465c37c368e77ed06bb3e1f'
             'SKIP')
 validpgpkeys=('C0F67099B808FB063E2C81117BFB1108D92765AF')
 
