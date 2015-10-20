@@ -2,7 +2,7 @@
 pkgname='python-pyvidia'
 _pipname=pyvidia
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='NVIDIA driver version detector for Linux'
 url='https://github.com/ntpeters/pyvidia'
 arch=('any')
