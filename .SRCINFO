@@ -1,0 +1,16 @@
+pkgbase = libgpuarray-git
+	pkgdesc = Library to manipulate tensors on the GPU
+	pkgver = r1226.2d21cc2
+	pkgrel = 1
+	url = https://github.com/Theano/libgpuarray
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = libgpuarray
+	conflicts = libgpuarray
+	source = git+https://github.com/Theano/libgpuarray.git
+	md5sums = SKIP
+
+pkgname = libgpuarray-git
+
