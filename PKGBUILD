@@ -1,7 +1,7 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
 pkgname=douban.fm
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="a tiny and smart cli player of douban.fm based on Python"
 url="https://github.com/taizilongxu/douban.fm"
@@ -11,7 +11,7 @@ optdepends=('libnotify: for desktop notification')
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/d/douban.fm/douban.fm-${pkgver}.tar.gz")
-md5sums=('5e8345cc2a107537e15a1f4dea55f475')
+md5sums=('47b3a22e240c12655b6ba9a1170770a6')
 
 package() {
     cd "${srcdir}/douban.fm-${pkgver}"
