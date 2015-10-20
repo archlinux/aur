@@ -1,0 +1,15 @@
+pkgbase = library50-c
+	pkgdesc = CS50 / CS50x Library for C (Harvard College's Introduction to Computer Science I)
+	pkgver = 6
+	pkgrel = 1
+	url = https://github.com/cs50/library50-c
+	install = library50-c.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = http://mirror.cs50.net/library50/c/library50-c-6.zip
+	md5sums = 46c6c962f678cb43797030270a4bae18
+
+pkgname = library50-c
+

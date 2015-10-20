@@ -1,0 +1,7 @@
+post_install() {
+	echo -e '\nInstead of using a makefile, you can add the following alias to your ~/.bashrc:'
+	echo -e  "    "alias make50="'"'make CC=clang CFLAGS="-ggdb3 -O0 -std=c99 -Wall -Werror" LDLIBS="-lcs50 -lm"'"'"'\n'
+}
+
+
+
