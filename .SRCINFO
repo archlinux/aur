@@ -1,9 +1,10 @@
 pkgbase = meteor-build-client
-	pkgdesc = A bundles the client part of a Meteor app.
+	pkgdesc = A tool to bundle the client part of a Meteor app.
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frozeman/meteor-build-client#readme
 	arch = any
+	depends = meteor-js
 	depends = nodejs
 	depends = npm
 	noextract = meteor-build-client-0.1.9.tgz
