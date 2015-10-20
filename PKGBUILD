@@ -3,7 +3,7 @@
 # Contributor: Graham Edgecombe <graham@grahamedgecombe.com>
 
 pkgname=linode-cli
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc='A simple command-line interface to the Linode platform'
 url='https://github.com/linode/cli'

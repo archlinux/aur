@@ -1,6 +1,6 @@
 pkgbase = linode-cli
 	pkgdesc = A simple command-line interface to the Linode platform
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/linode/cli
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = linode-cli
 	depends = perl-crypt-ssleay
 	depends = perl-mozilla-ca
 	depends = perl-webservice-linode
-	source = linode-cli::git+https://github.com/linode/cli.git#tag=v1.4.6
+	source = linode-cli::git+https://github.com/linode/cli.git#tag=v1.4.7
 	sha256sums = SKIP
 
 pkgname = linode-cli
