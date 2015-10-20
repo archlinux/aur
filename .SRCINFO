@@ -1,6 +1,6 @@
 pkgbase = x-selection-pipe-git
 	pkgdesc = A simple clipboard-monitor intended as a data source in shell pipelines
-	pkgver = r1.4b8c206
+	pkgver = 0.1.0.0.r0.g01e1cb7
 	pkgrel = 1
 	url = https://github.com/eigengrau/x-selection-pipe
 	arch = any
