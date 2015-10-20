@@ -2,7 +2,7 @@
 
 _pkgname=fb-adb
 pkgname=$_pkgname-git
-pkgver=20151009.r310.3494b1e
+pkgver=20151019.r321.930ba5f
 pkgrel=1
 pkgdesc='A better shell to use in place of adb when connecting to Android devices'
 url='https://github.com/facebook/fb-adb'
@@ -12,7 +12,7 @@ depends=('android-tools')
 makedepends=('git' 'prelink' 'zip' 'vim')
 options=('!strip' '!buildflags')
 install=$pkgname.install
-_ndkver=10d
+_ndkver=10e
 source=("git+$url.git")
 sha512sums=('SKIP')
 sha512sums=('SKIP')
@@ -51,5 +51,6 @@ build() {
 package() {
   install -Dm755 $_pkgname/build/$_pkgname "$pkgdir/usr/bin/$_pkgname"
   install -Dm755 $_pkgname/build/stub-arm/$_pkgname-android-arm.zip "$pkgdir/usr/share/$_pkgname/$_pkgname-android-arm-$pkgver.zip"
-  printf '%s\n' "Extract '$_pkgname-android-arm-${pkgver}.zip' and copy 'fb-adb' to '/system/bin/fb-adb' on your Android device" > "$pkgdir/usr/share/$_pkgname/README"
+  printf '%s\n' "Extract '$_pkgname-android-arm-$pkgver.zip' and copy 'fb-adb' to '/system/bin/fb-adb' on your Android device" \
+    > "$pkgdir/usr/share/$_pkgname/README"
 }
