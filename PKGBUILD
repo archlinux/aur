@@ -1,7 +1,7 @@
 # Maintainer: Niels Poulsen <apakoh@apakoh.dk>
 pkgname=ctodo
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple ncurses-based task manager."
 url="http://ctodo.apakoh.dk"
 arch=('x86_64' 'i686')

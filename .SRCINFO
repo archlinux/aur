@@ -1,7 +1,7 @@
 pkgbase = ctodo
 	pkgdesc = A simple ncurses-based task manager.
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ctodo.apakoh.dk
 	arch = x86_64
 	arch = i686
