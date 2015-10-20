@@ -14,6 +14,7 @@ depends=('boost-libs' 'gcc-libs')
 install=
 
 source=("fof++-git::git+https://github.com/Salamandar/$_gitname")
+sha256sums=('SKIP')
 
 
 pkgver() {

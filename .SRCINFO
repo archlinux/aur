@@ -10,6 +10,7 @@ pkgbase = fof++-git
 	depends = boost-libs
 	depends = gcc-libs
 	source = fof++-git::git+https://github.com/Salamandar/FoF-
+	sha256sums = SKIP
 
 pkgname = fof++-git
 
