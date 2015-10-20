@@ -1,0 +1,10 @@
+--- bin/frontendlauncher	2015-10-20 16:34:18.370897585 +0200
++++ bin/frontendlauncher.new	2015-10-20 16:35:00.551029962 +0200
+@@ -153,6 +153,7 @@
+     exec "$visitpython" $frontendlauncherpy $0 ${1+"$@"}
+ else
+     #echo "System python $frontendlauncherpy $0 ${1+"$@"}"
++    export LD_LIBRARY_PATH=/opt/vtk-6.1.0/lib:${LD_LIBRARY_PATH}
+     exec python2 $frontendlauncherpy $0 ${1+"$@"}
+ fi
+ $0 = shift @ARGV;

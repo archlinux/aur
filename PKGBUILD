@@ -4,7 +4,7 @@
 pkgname=visit
 pkgver=2.9.2
 _pkgver=2_9_2
-pkgrel=4
+pkgrel=5
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
@@ -12,16 +12,17 @@ license=('BSD' 'custom')
 makedepends=('cmake' 'java-runtime' 'gcc-fortran')
 depends=('qtwebkit' 'python2-numpy'
          'gperftools' 'icet' 'java-environment'
-         'vtk=6.1.0' 'silo' 'cgns')
+         'vtk-visit'
+         'gdal' 'silo' 'cgns' 'hdf5' 'zlib')
 conflicts=('visit-bin' 'visit-build')
 source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar.gz"
         "visit.sh"
-        "visit_FindIceT.patch")
-
+        "visit_FindIceT.patch"
+        "vtk-visit-libs.patch")
 sha256sums=('97d19e2609fbba655772feb055919b925214ab68c95ff46481572bd7e9c9ea31'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
-            '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a')
-
+            '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a'
+            '870e64a097f20a17c23eaba861ed5ec3ee9aa529f15a1847a02a97991a46319f')
 options=(!emptydirs)
 
 prepare(){
@@ -30,7 +31,7 @@ prepare(){
   # Use python2
   sed -i 's_python\*_python2.7_' CMake/FindVisItVTK.cmake
   sed -i 's/python2.7\//python2.7/g' CMake/FindVisItVTK.cmake
-  sed -i 's/python/python2/g' bin/frontendlauncher
+  sed -i 's/exec python/exec python2/g' bin/frontendlauncher
   sed -i 's/env python/env python2/' $(grep -rl "env python" ../* | xargs)
 
   # VTK use system libs
@@ -59,6 +60,9 @@ prepare(){
   sed -i 's/vtkRenderingFreeTypeOpenGL/vtkRenderingFreeTypeOpenGL vtkIOMPIImage vtkRenderingMatplotlib vtkRenderingFreeTypeFontConfig/g' \
     avt/Plotter/CMakeLists.txt
 
+  # For VTK use the libs in /opt/vtk-${_vtk_ver}/lib
+  patch bin/frontendlauncher "${srcdir}/vtk-visit-libs.patch"
+
   # IceT, use the IceTConfig.cmake provided by IceT
   patch CMake/FindIceT.cmake "${srcdir}/visit_FindIceT.patch"
 
@@ -82,6 +86,8 @@ prepare(){
 build() {
   cd "${srcdir}/build"
 
+  _vtk_ver=$(pacman -Qi 'vtk-visit' | grep Version | cut -d: -f2 | cut -d- -f1 | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
   cmake "${srcdir}/${pkgname}${pkgver}/src" \
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DCMAKE_INSTALL_PREFIX:PATH=/opt/${pkgname} \
@@ -98,7 +104,7 @@ build() {
     -DVISIT_SILO_DIR:PATH=/usr \
     -DVISIT_THREAD:BOOL=ON \
     -DVISIT_TCMALLOC_DIR:PATH=/usr \
-    -DVISIT_VTK_DIR:PATH=/usr -DVISIT_VTK_SKIP_INSTALL:BOOL=ON \
+    -DVISIT_VTK_DIR:PATH=/opt/vtk-${_vtk_ver} -DVISIT_VTK_SKIP_INSTALL:BOOL=ON -DVISIT_VTK_VERSION:STRING=${_vtk_ver}\
     -DVISIT_ZLIB_DIR:PATH=/usr
 
   # For Qt5 (for now, it's failing with:
