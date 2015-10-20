@@ -3,7 +3,7 @@
 
 pkgname=pelican
 pkgver=3.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to generate a static blog, with restructured text (or markdown) input files."
 arch=('any')
 url="http://getpelican.com"
@@ -22,7 +22,8 @@ optdepends=('python-markdown: Markdown support'
             'lftp: uploading through FTP'
             's3cmd: uploading through S3'
             'ghp-import: uploading through gh-pages'
-            'python-typogrify: typographical enhancements')
+            'python-typogrify: typographical enhancements'
+            'python-mdx-video: easier embedding of youtube videos in markdown')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/getpelican/pelican/archive/$pkgver.tar.gz")
 sha256sums=('d19bc7df61afc5b68eba028f0cf0832ee2a12a04a01d7fe11bdfdd847ddd417b')
 
