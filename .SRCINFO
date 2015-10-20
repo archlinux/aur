@@ -1,0 +1,24 @@
+pkgbase = libgccjit
+	pkgdesc = Just-In-Time Compilation using GCC.
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://gcc.gnu.org/wiki/JIT
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = dejagnu
+	makedepends = binutils
+	makedepends = gcc-ada
+	makedepends = libmpc>=0.8.1
+	makedepends = gmp>=4.3.2
+	makedepends = mpfr>=2.4.2
+	depends = glibc
+	depends = libmpc
+	depends = zlib
+	options = !emptydirs
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.2.0/gcc-5.2.0.tar.bz2
+	md5sums = a51bcfeb3da7dd4c623e27207ed43467
+	sha512sums = 844120349ec04465dcea52d8ec747f1cbbc9d76a39fe3d8ef5e6b93614e63d718862d60d0a1c1cbf59ffc7815562287d0a2e536a6b220cebcd0b8de4ba35e715
+
+pkgname = libgccjit
+
