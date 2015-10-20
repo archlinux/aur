@@ -14,17 +14,17 @@ depends=('boost-libs' 'gcc-libs')
 install=
 
 source=("fof++-git::git+https://github.com/Salamandar/$_gitname")
-sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "$srcdir$pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    cd "$srcdir/$_gitname"
+    printf "%s.%s" "$( set -o pipefail
+        git describe --long --tags 2>/dev/null \
+            | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+            | sed -r 's/.([0-9,a-g,A-G]{7}.*)//' ||
+        printf "r%s" "$(git rev-list --count HEAD)"
+    )" "$(git rev-parse --short HEAD)"
 }
-
 package() {
     install -d $pkgdir/usr/
     install -d $pkgdir/usr/share/
