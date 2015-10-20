@@ -5,7 +5,7 @@
 # Contributor: menta
 
 pkgname=retext
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="A simple editor for Markdown and ReStructuredText markup languages"
 arch=('any')
@@ -23,7 +23,7 @@ source=("https://github.com/retext-project/${pkgname}/archive/${pkgver}.tar.gz"
         "x-retext-markdown.xml"
         "x-retext-rst.xml")
 install="${pkgname}".install
-sha256sums=('b42c027205d1c5c3d322892b400663f858ac7d3e9953027411c8c11cf51ca362'
+sha256sums=('a1ec52bedf65332d817623f8552204a00adb8b7ce54d59359f07a18f821909a1'
             '7782f4402fe62e48335c1bdd5c1fd5cbb48c408fabaf4f018a074f8b3eef838e'
             'b51611479d3224eec2b58264ed91ace3eccb502b7b806dae3e7a3ab4aab8c4b8'
             '6fef80cccb14813d9cc74810c397a6cd7831d1ca243536759a47c6e8b6cc977a')
