@@ -7,7 +7,7 @@
 
 pkgname=mathematica
 pkgver=10.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
 url="http://www.wolfram.com/mathematica/"
