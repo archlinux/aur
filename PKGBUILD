@@ -1,0 +1,17 @@
+# Maintainer: Ingo Bürk <admin at airblader dot de>
+pkgname=vim-gruvbox-git
+pkgver=latest
+pkgrel=1
+pkgdesc="gruvbox color scheme for vim"
+arch=('i686' 'x86_64')
+url="https://github.com/morhetz/gruvbox"
+license=('MIT')
+depends=('vim')
+makedepends=('git')
+groups=('vim-plugins')
+source=("$pkgname::git+https://github.com/morhetz/gruvbox.git")
+md5sums=('SKIP')
+
+package() {
+    install -Dm755 ${srcdir}/${pkgname}/colors/gruvbox.vim ${pkgdir}/usr/share/vim/vimfiles/colors/gruvbox.vim
+}
