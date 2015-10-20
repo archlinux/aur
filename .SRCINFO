@@ -1,7 +1,7 @@
 pkgbase = nginx-http-auth-digest
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with digest authentication module
 	pkgver = 1.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nginx.org
 	install = nginx.install
 	arch = i686
@@ -30,10 +30,12 @@ pkgbase = nginx-http-auth-digest
 	source = http://nginx.org/download/nginx-1.9.5.tar.gz
 	source = service
 	source = logrotate
+	source = nginx-http-auth-digest.patch
 	source = git+http://github.com/samizdatco/nginx-http-auth-digest
 	md5sums = 2562320f1535e3e31d165e337ae94f21
 	md5sums = ce9a06bcaf66ec4a3c4eb59b636e0dfd
 	md5sums = 3441ce77cdd1aab6f0ab7e212698a8a7
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = nginx-http-auth-digest
