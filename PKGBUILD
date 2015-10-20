@@ -1,19 +1,22 @@
-    # Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: scan
 
+_gitname=167239-EleganZe
 _pkgname=EleganZe
 pkgname=gnome-shell-theme-eleganze
 pkgver=0.2.1
-pkgrel=1
-pkgdesc="EleganZe GNOME Shell theme for GNOME 3.16"
+pkgrel=2
+pkgdesc="EleganZe GNOME Shell theme for GNOME 3.16/3.18"
 arch=('any')
 url="http://opendesktop.org/content/show.php?content=167239"
 license=('GPL3')
 depends=('gnome-shell')
 optdepends=('gnome-tweak-tool: A tool to customize advanced GNOME 3 options.')
-source=("${_pkgname}.tar.lzma::https://copy.com/iJ066JteRTAKSJ6r/${_pkgname}.tar.lzma?download=1")
-sha256sums=('c0972f19dd5c205521b2de5d38cf1676f7c676307d18b45f2f38a5d25b238f0d')
+source=("EleganZe.tar.gz::http://opendesktop.org/CONTENT/content-files/${_gitname}.tar.gz")
+md5sums=('c27ef9da8324df07d9cd7bee16358808')
 
 package() {
-    install -dm755 "${pkgdir}/usr/share/themes"
-    cp -rf "${_pkgname}" "${pkgdir}/usr/share/themes"
-} 
+	install -d ${pkgdir}/usr/share/themes
+	cp -r EleganZe\ 3.16 ${pkgdir}/usr/share/themes/${_pkgname}
+	find ${pkgdir} -type f -exec chmod 644 {} \;
+	find ${pkgdir} -type d -exec chmod 755 {} \;
+}
