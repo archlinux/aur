@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-pod-perldoc'
-pkgver='3.23'
+pkgver='3.25'
 pkgrel='1'
 pkgdesc="Look up Perl documentation in Pod format."
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.mcpan.org/dist/Pod-Perldoc'
-source=('http://search.mcpan.org/CPAN/authors/id/M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz')
-md5sums=('86bf97d373c4fc2c85199bce8cc1ce43')
-sha512sums=('9b6c6f89dd16f5a953e4891e2c464162d11da848712fcf0a904e9e823b7a7f3ba834c1a0db5b1f72dcfe95e2e9b9055359b6494de0a8138252aa07fe0b4a30d0')
-_distdir="Pod-Perldoc-3.23"
+url='https://metacpan.org/release/Pod-Perldoc'
+source=('http://search.cpan.org/CPAN/authors/id/M/MA/MALLEN/Pod-Perldoc-3.25.tar.gz')
+md5sums=('4991ce24fab9900312f11d9c8ab7576f')
+sha512sums=('9374c3cfb79ed2e0c77607435559d9a11756eee9bbc638f5c570d20f5ee1278d92dc656b33d6699b8f001eae268ba76afc8524dcec3eb62abb77f4819ac0ba9b')
+_distdir="Pod-Perldoc-3.25"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
