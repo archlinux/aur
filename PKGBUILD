@@ -1,7 +1,7 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname=plexwatch
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Notify and Log 'Now Playing' and 'Watched' content from a Plex Media Server + 'Recently Added' (...and more)"
 arch=('any')
 url="https://github.com/ljunkie/plexWatch"

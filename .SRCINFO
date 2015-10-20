@@ -1,7 +1,7 @@
 pkgbase = plexwatch
 	pkgdesc = Notify and Log 'Now Playing' and 'Watched' content from a Plex Media Server + 'Recently Added' (...and more)
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ljunkie/plexWatch
 	arch = any
 	license = unknown
