@@ -1,0 +1,16 @@
+pkgbase = python-jupyter_qtconsole_colorschemes
+	pkgdesc = Color Schemes for Jupyter Qt Console
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/jupyter_qtconsole_colorschemes
+	install = python-jupyter_qtconsole_colorschemes.install
+	arch = any
+	license = MIT
+	depends = jupyter
+	source = https://pypi.python.org/packages/source/j/jupyter_qtconsole_colorschemes/jupyter_qtconsole_colorschemes-0.5.2.zip
+	source = LICENSE
+	md5sums = 47f79e2416c1ed6813fd7cbdd7b1847b
+	md5sums = 1a4308c28090d8b6099856d3dfb7ab54
+
+pkgname = python-jupyter_qtconsole_colorschemes
+

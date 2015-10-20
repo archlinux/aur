@@ -1,0 +1,14 @@
+post_install() {
+    echo '
+In ~/.jupyter/jupyter_qtconsole_config.py, add the following with the color
+scheme name you want to use (the example shown with zenburn):
+
+import pkg_resources
+c.JupyterQtConsoleApp.stylesheet = pkg_resources.resource_filename(
+    "jupyter_qtconsole_colorschemes", "zenburn.css")
+c.JupyterWidget.syntax_style = "zenburn"'
+}
+
+post_upgrade() {
+  post_install
+}
