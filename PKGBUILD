@@ -1,43 +1,45 @@
 pkgname=digikam-git
-pkgver=r30759.aa59cf9
+pkgver=r33193.04d0ae6
 pkgrel=1
 pkgdesc='Digital photo management application for KDE'
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-depends=('kdebase-runtime' 'kdepimlibs' 'libgphoto2' 'opencv' 'liblqr'
-         'libkipi-git' 'libkexiv2-git' 'libkdcraw-git' 'libkface-git' 'libkgeomap-git' 'lensfun' 
-	 'libpgf' 'libbaloo4')
-optdepends=('kipi-plugins: more tools and plugins' 'kdebase-workspace: Theme configuration dialog')
+depends=('libkipi-git' 'libkexiv2-git' 'libkdcraw-git' 'libkface-git' 'libkgeomap-git' \
+	 'lensfun' 'libpgf' 'knotifyconfig' 'kfilemetadata' 'libgphoto2' 'liblqr' 'lensfun' \
+	 'qt5-multimedia' 'akonadi-contact' 'libksane-git')
+makedepends=('git' 'extra-cmake-modules-git' 'eigen' 'doxygen' 'boost' 'mariadb')
+optdepends=('kipi-plugins: more tools and plugins')
 conflicts=('digikam')
 provides=('digikam')
 install=digikam-git.install
-source=('git://anongit.kde.org/digikam.git')
+source=('digikam::git+git://anongit.kde.org/digikam')
 md5sums=('SKIP')
 
 pkgver() {
-  cd digikam
+  cd "${srcdir}/digikam"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-if [[ -d ${srcdir}/build ]]; then
+if [[ -d "${srcdir}/build" ]]; then
       msg "Cleaning the previous build directory..."
-      rm -rf ${srcdir}/build
+      rm -rf "${srcdir}/build"
   fi
-  mkdir ${srcdir}/build
+  mkdir "${srcdir}/build"
 }
 
 build() {
-  cd ${srcdir}/build
-  cmake  ../digikam -DCMAKE_BUILD_TYPE=Release \
-		-DKDE4_BUILD_TESTS=OFF \
+  cd "${srcdir}/build"
+  cmake "${srcdir}/digikam" -DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
-		-DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=ON
+		-DLIB_INSTALL_DIR=lib \
+		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+		-DBUILD_TESTING=OFF -DENABLE_AKONADICONTACTSUPPORT=ON -DENABLE_KFILEMETADATASUPPORT=ON -DENABLE_MYSQLSUPPORT=ON -DENABLE_INTERNALMYSQL=ON -DENABLE_KINOTIFY=ON  -DENABLE_MEDIAPLAYER=ON
+  make
 }
 
 package() {
-  cd ${srcdir}/build
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}" install
 }
