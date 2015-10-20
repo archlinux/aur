@@ -1,7 +1,7 @@
 pkgbase = ivideon-server-headless
 	pkgdesc = Ivideon-server daemon
 	pkgver = 3.5.4
-	pkgrel = 770
+	pkgrel = 774
 	url = http://ivideon.com/
 	install = videoserverd.install
 	arch = x86_64
@@ -14,16 +14,18 @@ pkgbase = ivideon-server-headless
 	conflicts = ivideon-video-server-nogui
 	backup = etc/videoserverd.conf
 	backup = var/lib/videoserverd/schedule.json
-	source = https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-server-headless/ivideon-server-headless_3.5.4-770~d86ed9403d76_amd64.deb
+	source = https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-server-headless/ivideon-server-headless_3.5.4-774~9e813ba48cdf_amd64.deb
 	source = videoserverd.service
 	source = videoserverd.conf
 	source = sysusers.conf
 	source = schedule.json
-	sha256sums = 5e6d7bf1cc92be22c8c5e163f0c97a13d1148175fcd52cdaf65d940113e037f8
+	source = videoservertmp.conf
+	sha256sums = 7eb2a78c6217e6d6260eec4165f89fe4af62c641f2be05ee0dda838373d4259c
 	sha256sums = 48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071
 	sha256sums = f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012
 	sha256sums = 91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81
 	sha256sums = d02f782328766ee982584c46c2d15180c441468d2ef27532142e7d6b951b830a
+	sha256sums = ad8029bf201260608daf7ed4d109731bbf247e8597e36cc1dea915fceae51b56
 
 pkgname = ivideon-server-headless
 
