@@ -1,14 +1,16 @@
 pkgbase = android-support
 	pkgdesc = Android Support Package
-	pkgver = r23.0.1
+	pkgver = r23.1
 	pkgrel = 1
 	url = https://developer.android.com/sdk/compatibility-library.html
 	arch = any
 	license = custom
 	depends = android-sdk
 	options = !strip
-	source = http://dl-ssl.google.com/android/repository/support_r23.0.1.zip
-	sha1sums = fbe529716943053d0ce0d7f058d79f1a848cdff9
+	source = http://dl-ssl.google.com/android/repository/support_r23.1.zip
+	source = source.properties
+	sha1sums = c43a56fcd1c2aa620f6178a0ef529623ed77b3c7
+	sha1sums = baca739b50cc7242003218fe5a53604bf9e3f131
 
 pkgname = android-support
 
