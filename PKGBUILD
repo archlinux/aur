@@ -2,7 +2,7 @@
 # Contributor: Raansu <gero3977@gmail.com>
 
 pkgname=acd_cli
-pkgver=0.3.0a6
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="a command line interface to
 Amazon Cloud Drive and allows mounting your cloud drive
@@ -15,7 +15,7 @@ depends=('python-appdirs' 'python-requests>=2.1.0'
 'python-requests-toolbelt')
 makedepends=('python' 'python-setuptools')
 source=("https://github.com/yadayada/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('bb85fc9df4536a5ba1b7f54d9353e3e3f919c4d2e622a1b2294ced34b65b93f6')
+sha256sums=('2d4f68e9345174b4d5b292bcf69aadc36914ddd49eeb9eb7b798b240d00884ed')
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
