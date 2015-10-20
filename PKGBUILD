@@ -1,13 +1,13 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname=nocache-git
-pkgver=92.605fb47
+pkgver=100.a56cbb4
 pkgrel=1
 pkgdesc="minimize caching effects"
 arch=('i686' 'x86_64')
 url="https://github.com/Feh/nocache"
 license=('FreeBSD License')
-makedepends=('git')
+makedepends=('git' 'gcc' 'make')
 conflicts=('nocache')
 source=("$pkgname"::'git://github.com/Feh/nocache.git')
 sha1sums=('SKIP')
