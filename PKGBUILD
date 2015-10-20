@@ -34,6 +34,6 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -m755 flif "${pkgdir}/usr/bin" 
   install -m755 viewflif "${pkgdir}/usr/bin" 
-  install -m644 libflif.so "${pkgdir}/usr/lib/" 
+  install -m755 libflif.so "${pkgdir}/usr/lib/" 
   install -m644 flif.h "${pkgdir}/usr/include/${_pkgname}" 
 }
