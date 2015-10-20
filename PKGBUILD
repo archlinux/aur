@@ -58,8 +58,11 @@ package() {
 
     cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
 
+    sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' wolfram-mathematica10.desktop
+    sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' wolfram-mathematica10.desktop
     cp wolfram-mathematica10.desktop ${pkgdir}/usr/share/applications/wolfram-mathematica10.desktop
-    echo '        Categories=Science;Math;NumericalAnalysis;DataVisualization;' >> ${pkgdir}/usr/share/applications/wolfram-mathematica10.desktop
+    echo -e '\t\tCategories=Science;Math;NumericalAnalysis;DataVisualization;' >> ${pkgdir}/usr/share/applications/wolfram-mathematica10.desktop
+    
     cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
     cp *.xml ${pkgdir}/usr/share/mime/packages/
 
