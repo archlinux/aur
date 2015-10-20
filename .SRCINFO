@@ -1,0 +1,16 @@
+pkgbase = cnijfilter-mx530series
+	pkgdesc = Canon IJ Printer Driver (for MX530 series)
+	pkgver = 4.10
+	pkgrel = 1
+	url = http://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/pixma_mx535.aspx?type=drivers&language=&os=Linux%20%2832-bit%29
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	depends = libcups
+	depends = libxml2
+	source = http://gdlp01.c-wss.com/gds/7/0100005877/01/cnijfilter-mx530series-4.10-1-deb.tar.gz
+	md5sums = 3fcdd66493ce9082ad0456fdaa700b15
+
+pkgname = cnijfilter-mx530series
+
