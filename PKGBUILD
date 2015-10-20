@@ -1,14 +1,13 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname=sslscan-git
-pkgver=325.2c15207
+pkgver=328.662b704
 pkgrel=1
 pkgdesc="sslscan tests SSL/TLS enabled services to discover supported cipher suites"
 arch=('i686' 'x86_64')
 url="https://github.com/rbsec/sslscan"
 license=('GPL3')
-depends=('openssl')
-makedepends=('git')
+makedepends=('git' 'gcc' 'make')
 conflicts=('sslscan')
 source=("$pkgname"::'git://github.com/rbsec/sslscan.git')
 sha1sums=('SKIP')
@@ -20,7 +19,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	make
+	make static
 }
 
 package() {
