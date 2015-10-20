@@ -1,0 +1,20 @@
+pkgbase = libmemcached-old
+	pkgdesc = C and C++ client library to the memcached server, old version
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = http://libmemcached.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl
+	makedepends = memcached
+	makedepends = python-sphinx
+	depends = glibc
+	depends = libsasl
+	depends = libevent
+	conflicts = libmemcache
+	source = http://launchpad.net/libmemcached/1.0/1.0.8/+download/libmemcached-1.0.8.tar.gz
+	sha256sums = 03f4eb91634f1434a93d4709eccd0c4cce3eb296b54f2b1998ca4a9ce1661ca5
+
+pkgname = libmemcached-old
+
