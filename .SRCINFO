@@ -1,4 +1,4 @@
-pkgbase = nodejs-meteor-build-client
+pkgbase = meteor-build-client
 	pkgdesc = A bundles the client part of a Meteor app.
 	pkgver = 0.1.9
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = nodejs-meteor-build-client
 	source = http://registry.npmjs.org/meteor-build-client/-/meteor-build-client-0.1.9.tgz
 	sha1sums = eb172750acf28fd109ac23bf2a5965bbdb9500bd
 
-pkgname = nodejs-meteor-build-client
+pkgname = meteor-build-client
 

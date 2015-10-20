@@ -2,7 +2,7 @@
 
 _npmname=meteor-build-client
 _npmver=0.1.9
-pkgname=nodejs-meteor-build-client # All lowercase
+pkgname=meteor-build-client
 pkgver=0.1.9
 pkgrel=1
 pkgdesc="A bundles the client part of a Meteor app."
