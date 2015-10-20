@@ -4,7 +4,7 @@ pkgname=nginx-http-auth-digest
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with digest authentication module'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='http://nginx.org'
@@ -96,4 +96,6 @@ package() {
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+
+  rmdir "$pkgdir"/run
 }
