@@ -1,9 +1,9 @@
 # Maintainer: Niels Sonnich Poulsen <niels@nielssp.dk>
 pkgname=colorgrab
 pkgver=0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform color picker."
-url="https://github.com/Acolarh/colorgrab"
+url="https://github.com/nielssp/colorgrab"
 arch=('x86_64' 'i686')
 license=('MIT')
 depends=('wxgtk' 'desktop-file-utils' 'gtk-update-icon-cache')
@@ -13,7 +13,7 @@ replaces=()
 backup=()
 install="${pkgname}.install"
 source=(
-  "https://github.com/Acolarh/${pkgname}/archive/v${pkgver}.tar.gz"
+  "https://github.com/nielssp/${pkgname}/archive/v${pkgver}.tar.gz"
   "colorgrab.desktop"
 )
 md5sums=(
