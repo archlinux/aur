@@ -7,6 +7,7 @@ pkgbase = enpass-rc-bin
 	arch = x86_64
 	license = custom
 	depends = libxss
+        conflicts = enpass-bin
 	source = https://s3-us-west-2.amazonaws.com/sinewbetas/Enpass+RC/Enpass_5.0_RC_Linux.zip
 
 pkgname = enpass-rc-bin
