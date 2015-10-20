@@ -10,17 +10,17 @@ license=('MIT')
 depends=('prezto-git')
 provides=(prompt-rumpelsepp-setup)
 conflicts=(prompt-rumpelsepp-setup)
-source=("${pkgname}::git+https://gitlab.sevenbyte.org/rumpelsepp/prezto-prompt-rumpelsepp.git")
+source=("${pkgname}::git+https://github.com/rumpelsepp/prezto-prompts.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  #git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$pkgname"
+    #git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package(){
-  cd "$srcdir/$pkgname"
-  mkdir -p ${pkgdir}/usr/lib/prezto/modules/prompt/functions/
-  cp -ra "$srcdir/$pkgname"/prompt_rumpelsepp_setup ${pkgdir}/usr/lib/prezto/modules/prompt/functions/
+    cd "$srcdir/$pkgname"
+    mkdir -p ${pkgdir}/usr/lib/prezto/modules/prompt/functions/
+    cp -ra "$srcdir/$pkgname"/prompt_rumpelsepp_setup ${pkgdir}/usr/lib/prezto/modules/prompt/functions/
 }

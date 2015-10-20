@@ -8,7 +8,7 @@ pkgbase = prezto-prompt-rumpelsepp-git
 	depends = prezto-git
 	provides = prompt-rumpelsepp-setup
 	conflicts = prompt-rumpelsepp-setup
-	source = prezto-prompt-rumpelsepp-git::git+https://gitlab.sevenbyte.org/rumpelsepp/prezto-prompt-rumpelsepp.git
+	source = prezto-prompt-rumpelsepp-git::git+https://github.com/rumpelsepp/prezto-prompts.git
 	md5sums = SKIP
 
 pkgname = prezto-prompt-rumpelsepp-git
