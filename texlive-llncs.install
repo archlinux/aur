@@ -1,0 +1,14 @@
+post_install() {
+  post_remove
+  echo "The files were installed in:"
+  kpsewhich llncs.cls
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Upgrading package database..."
+  mktexlsr
+}

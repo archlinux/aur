@@ -1,0 +1,15 @@
+pkgbase = texlive-llncs
+	pkgdesc = LaTeX2e package for Lecture Notes in Computer Science (LNCS) of Springer-Verlag
+	pkgver = 2.19
+	pkgrel = 1
+	url = ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e/
+	install = texlive-llncs.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	depends = texlive-latexextra
+	source = ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e/llncs2e.zip
+	sha256sums = a4b7ee847198305fa45f1e2bdc59c9360590d62c7dd2db4afb5104e7d7dd3f58
+
+pkgname = texlive-llncs
+
