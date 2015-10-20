@@ -10,7 +10,7 @@ depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 	 'libinput' 'libproxy' 'mtdev' 'openal' 'desktop-file-utils'
 	 'gtk-update-icon-cache')
 makedepends=('patch' 'libunity' 'libappindicator-gtk2' 'xorg-server-xvfb')
-source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=1c28d59ed2f99f74b2ed1bbcd63d42e702591af9"
+source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
 	"http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.gz"
 	"telegramdesktop.desktop"
 	"tg.protocol")
