@@ -1,0 +1,42 @@
+# Maintainer: Danilo Bargen <aur at dbrgn dot ch>
+pkgname=librepcb-git
+_fullname=LibrePCB
+pkgver=r549.95b8d1a
+pkgrel=1
+pkgdesc="LibrePCB is a free EDA software to develop printed circuit boards."
+arch=('x86_64' 'i686')
+url="http://librepcb.org/"
+license=('GPL')
+depends=('qt5-base' 'qt5-webkit' 'glu')
+makedepends=('git' 'qconf')
+provides=('librepcb')
+conflicts=('librepcb')
+source=('git+https://github.com/LibrePCB/LibrePCB')
+md5sums=('SKIP')
+
+build() {
+  # Temporary build dir
+  rm -rf "$srcdir/$_fullname-build"
+  git clone "$srcdir/$_fullname" "$srcdir/$_fullname-build"
+  cd "$srcdir/$_fullname-build"
+
+  # Prepare
+  cd "$srcdir/$_fullname-build"
+  mkdir build && cd build
+  qmake -r ../librepcb.pro PREFIX=${pkgdir}/usr
+
+  # Compile
+  make
+}
+
+package() {
+  cd "$srcdir/$_fullname-build/build"
+  make install
+}
+
+pkgver() {
+  cd "$srcdir/$_fullname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+# vim:set ts=2 sw=2 et:
