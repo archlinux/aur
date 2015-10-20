@@ -1,7 +1,7 @@
 pkgbase = conky-manager
 	pkgdesc = GUI for managing Conky config files with options to browse and edit themes
-	pkgver = 2.3.3
-	pkgrel = 2
+	pkgver = 2.3.4
+	pkgrel = 1
 	url = https://launchpad.net/conky-manager
 	install = conky-manager.install
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = conky-manager
 	depends = gtk3
 	depends = imagemagick
 	depends = json-glib
-	depends = libgee06
+	depends = libgee
 	depends = libsoup
 	depends = p7zip
 	depends = rsync
 	options = !emptydirs
-	source = https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+files/conky-manager_2.3.3~132~ubuntu15.04.1.tar.xz
-	sha512sums = b8470de6bf029911c7e4d610a8025c004831b88fb7dd15b4541161462b19987521b30a86c4e69305ae95527486ed6d08f491f31a82c8345c2d4e81a444292b94
+	source = conky-manager_2.3.4.tar.xz::https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+files/conky-manager_2.3.4~134~ubuntu15.10.1.tar.xz
+	sha512sums = c230ff9f1ef952a7534918a6f9934baf557003fbcc98936a814214e4bb75e63617ad4c65f8c4f432eff2bcf22342f70bc0702134f58ca847ec0c7fb3253651d5
 
 pkgname = conky-manager
 
