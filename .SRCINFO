@@ -1,0 +1,17 @@
+pkgbase = skod-git
+	pkgdesc = FTP client for humans.
+	pkgver = 24.1d38abe
+	pkgrel = 1
+	url = https://github.com/Hypsurus/skod
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	conflicts = skod
+	source = skod-git::git://github.com/Hypsurus/skod.git
+	sha1sums = SKIP
+
+pkgname = skod-git
+
