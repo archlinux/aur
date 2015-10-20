@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-http-browserdetect'
-pkgver='1.70'
+pkgver='2.05'
 pkgrel='1'
 pkgdesc="Determine Web browser, version, and platform from an HTTP user agent string"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-slurp')
+depends=('perl-module-build>=0.28' 'perl-path-tiny' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-failwarnings' 'perl-test-most' 'perl-test-nowarnings')
-url='http://search.mcpan.org/dist/HTTP-BrowserDetect'
-source=('http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/HTTP-BrowserDetect-1.70.tar.gz')
-md5sums=('2265d35090604ffd2eff5e3c7c3aca0c')
-sha512sums=('f814e1daec39e8bebce567ab8c50943b61781eda7b2d6a391b9267b5bdc0a2c68906531e915a5eead497ba1e7e37b39db1f5865dd3d0ff7794a3013db0e1fa44')
-_distdir="HTTP-BrowserDetect-1.70"
+url='https://metacpan.org/release/HTTP-BrowserDetect'
+source=('http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/HTTP-BrowserDetect-2.05.tar.gz')
+md5sums=('979e27db7b46919a3a909b2728e1d118')
+sha512sums=('9b044a25d194b87aa7d45c55ac9f387475e3dcb83286771653f35b6420ef28655862ee151081ce3ffe567919ccb84f042e0b6057e34ab1b44dabbee30ce4c7fc')
+_distdir="HTTP-BrowserDetect-2.05"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
