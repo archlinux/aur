@@ -3,14 +3,14 @@
 
 _pkgname=pmus
 pkgname=$_pkgname-git
-pkgver=0.42.r297.g3e476e9
+pkgver=0.42.r298.gd5a51ca
 pkgrel=1
 pkgdesc="Practical Music Search is a highly configurable, ncurses-based client for MPD"
 arch=('i686' 'x86_64')
 url="https://ambientsound.github.io/pms/"
 license=('GPL')
 
-# boost_regex
+# Enable boost_regex
 #makedepends=('boost')
 #depends=('boost-libs' 'intltool' 'libmpdclient' 'ncurses')
 
@@ -28,7 +28,7 @@ pkgver() {
 prepare() {
   cd $pkgname
 
-  # boost_regex
+  # Enable boost_regex
   #sed -i 's|^./configure[ ]*$|./configure --enable-regex --prefix=/usr|' rebuild.sh
 
   sed -i 's|^./configure[ ]*$|./configure --prefix=/usr|' rebuild.sh
