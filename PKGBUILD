@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moosex-types-datetime-morecoercions'
-pkgver='0.11'
+pkgver='0.15'
 pkgrel='1'
-pkgdesc="Extensions to L<MooseX::Types::DateTime>"
+pkgdesc="Extensions to MooseX::Types::DateTime"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.3' 'perl-datetime>=0.4302' 'perl-datetimex-easy>=0.085' 'perl-moose>=0.41' 'perl-moosex-types>=0.04' 'perl-moosex-types-datetime>=0.07' 'perl-namespace-clean>=0.08' 'perl-time-duration-parse>=0.06')
-makedepends=('perl-test-exception>=0.27' 'perl-test-use-ok>=0.02')
-url='http://search.cpan.org/dist/MooseX-Types-DateTime-MoreCoercions'
-source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/MooseX-Types-DateTime-MoreCoercions-0.11.tar.gz')
-md5sums=('3e44c704976382c74d1f7bd6a7673c25')
-sha512sums=('4a3220e62b92affa0f3eb5121ca53613aefe28b2d4e5a5ef8be7ca24e5be583a4e6ffc69ca751fc7474bc4f51fc7c3479e9fcda4c5e3888dbaacc31de67815c9')
-_distdir="MooseX-Types-DateTime-MoreCoercions-0.11"
+depends=('perl-datetime>=0.4302' 'perl-datetimex-easy>=0.085' 'perl-moose>=0.41' 'perl-moosex-types>=0.04' 'perl-moosex-types-datetime>=0.07' 'perl-time-duration-parse>=0.06' 'perl-namespace-clean>=0.19' 'perl>=5.006')
+makedepends=()
+checkdepends=('perl-test-fatal')
+url='https://metacpan.org/release/MooseX-Types-DateTime-MoreCoercions'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-DateTime-MoreCoercions-0.15.tar.gz')
+md5sums=('fe679ed09baf96dff62092538fc9466a')
+sha512sums=('c0e3e1d1d4969d674d0c5d88b99aa401049b8ca7a61c3ec139a8e7c39d44e8a12ee2a8151029d24b1ef0063af3de6ec235c81c576ef21d6ab0b680f0a94cc020')
+_distdir="MooseX-Types-DateTime-MoreCoercions-0.15"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
