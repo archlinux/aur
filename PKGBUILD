@@ -2,7 +2,7 @@
 
 pkgname=rtl8812au-dkms-git
 _pkgbase=rtl8812au
-pkgver=8283c82
+pkgver=r47.2a9bbb7
 pkgrel=1
 pkgdesc="A kernel module for Realtek 8812au network cards with dkms support"
 url="https://github.com/gnab/rtl8812au"
@@ -14,11 +14,11 @@ source=("git+https://github.com/gnab/rtl8812au.git"
 install="${pkgname}.install"
 sha256sums=('SKIP'
             '6d4ea7322b1ccdcd9351232e2e49f10ef93b93bfc2034f494cdd256d0b3bd8c0')
-
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
-	git describe --always | sed 's|-|.|g' | cut -f2 -d"v"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 package() {
 	cd ${srcdir}/${_pkgbase}
 	mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
