@@ -1,0 +1,13 @@
+pkgbase = python-pygments-markdown-lexer
+	pkgdesc = A Markdown lexer for Pygments to highlight Markdown code snippets
+	pkgver = 0.1.0.dev39
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pygments-markdown-lexer
+	arch = any
+	license = Apache
+	depends = python-pygments
+	source = https://pypi.python.org/packages/source/p/pygments-markdown-lexer/pygments-markdown-lexer-0.1.0.dev39.zip
+	md5sums = 6360fe0f6d1f896e35b7a0142ce6459c
+
+pkgname = python-pygments-markdown-lexer
+
