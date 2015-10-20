@@ -10,7 +10,7 @@
 pkgname=paraview-qt5
 _PkgName=ParaView
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -64,7 +64,7 @@ build() {
     -DPARAVIEW_ENABLE_CGNS:BOOL=ON \
     -DPARAVIEW_ENABLE_FFMPEG:BOOL=ON \
     -DPARAVIEW_ENABLE_PYTHON:BOOL=ON \
-    -DPARAVIEW_ENABLE_XDMF3:BOOL=ON \
+    -DPARAVIEW_ENABLE_XDMF3:BOOL=OFF \
     -DPARAVIEW_USE_MPI:BOOL=ON \
     -DPARAVIEW_USE_QTWEBKIT:BOOL=ON \
     -DPARAVIEW_USE_VISITBRIDGE:BOOL=ON \
@@ -88,9 +88,6 @@ package() {
   cd "${srcdir}/build"
 
   make DESTDIR="${pkgdir}" install
-
-  # Remove unneeded file
-  rm "${pkgdir}/usr/XdmfConfig.cmake"
 
   # Install license
   install -Dm644 "${srcdir}/${_PkgName}-v${pkgver}-source/License_v1.2.txt" \
