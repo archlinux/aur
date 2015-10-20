@@ -1,0 +1,14 @@
+pkgbase = keepass-plugin-kpgooglesync
+	pkgdesc = Synchronize KeePass database with Google Drive using Google API.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/kp-googlesync
+	arch = any
+	license = GPLv3
+	makedepends = unzip
+	depends = keepass
+	source = http://downloads.sourceforge.net/project/kp-googlesync/GoogleSyncPlugin-2.x/GoogleSyncPlugin-2.1.2.zip
+	md5sums = c17982149016ba10d16c48b6a85ff955
+
+pkgname = keepass-plugin-kpgooglesync
+
