@@ -1,0 +1,11 @@
+--- a/Rendering/OpenGL/vtkXOpenGLRenderWindow.cxx.orig	2014-11-23 22:16:50.000000000 +0100
++++ b/Rendering/OpenGL/vtkXOpenGLRenderWindow.cxx	2014-11-23 22:16:59.000000000 +0100
+@@ -27,7 +27,7 @@
+ 
+ // define GLX_GLXEXT_LEGACY to prevent glx.h to include glxext.h provided by
+ // the system
+-//#define GLX_GLXEXT_LEGACY
++#define GLX_GLXEXT_LEGACY
+ #include "GL/glx.h"
+ 
+ #include "vtkgl.h"

@@ -1,0 +1,11 @@
+--- a/ThirdParty/netcdf/vtknetcdf/CMakeLists.txt.orig	2014-11-24 19:29:00.084619157 +0100
++++ b/ThirdParty/netcdf/vtknetcdf/CMakeLists.txt	2014-11-24 19:29:22.824443117 +0100
+@@ -233,7 +233,7 @@
+ if (NOT VTK_USE_SYSTEM_HDF5)
+   # using VTK's HDF5, we always build that with HL support.
+   set (USE_NETCDF4 ON)
+-elseif(HDF5_HL_LIBRARY OR HDF5_hdf5_hl_LIBRARY)
++elseif(HDF5_HL_LIBRARY OR HDF5_hdf5_hl_LIBRARY OR HDF5_hdf5_hl_LIBRARY_RELEASE)
+   set (USE_NETCDF4 ON)
+ else()
+   message(STATUS "Disabling NETCDF4 support since HDF5_HL or HDF5_hdf5_hl is missing.")
