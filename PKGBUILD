@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url='http://solvespace.com/'
 license=('GPL3')
 depends=('fltk>=1.3.0' 'libpng')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=('solvespace-git::git+https://github.com/jwesthues/solvespace.git')
 sha256sums=('SKIP')
 
