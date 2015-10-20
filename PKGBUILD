@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-pquery'
-pkgver='0.15'
+pkgver='0.23'
 pkgrel='1'
 pkgdesc="A port of jQuery.js to Perl"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-html-tree')
 makedepends=()
-url='http://search.mcpan.org/dist/pQuery'
-source=('http://search.mcpan.org/CPAN/authors/id/I/IN/INGY/pQuery-0.15.tar.gz')
-md5sums=('1276117144dd7aa0de6ba0790cd9aef6')
-sha512sums=('277f22cfbc296d0cea6388630e3d223b895465b05fd1c7b143e1cfb7db54479279f216085fddca2a40306774e804751befb5d9d294adb3d755ed74103a1572af')
-_distdir="pQuery-0.15"
+url='https://metacpan.org/release/pQuery'
+source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/pQuery-0.23.tar.gz')
+md5sums=('8c7e4d1fcaadc6f07c57cf3ec3255421')
+sha512sums=('92e8889026eb4dffa2c68fb7bf8dd165f423bd98aa23258a71b6a50ebe29258822ada454ee4545f6ddcfdefe0447efdeaa8a4e4e7d2501d000c27ad1ca0b2305')
+_distdir="pQuery-0.23"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
