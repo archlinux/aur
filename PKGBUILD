@@ -11,6 +11,7 @@ arch=(i686 x86_64)
 url=http://lpg.ticalc.org/prj_tilp/
 license=(GPL2)
 options=(!libtool)
+depends=(libusb glib2)
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/project/tilp/tilp2-linux/tilp2-1.17/${pkgname}2-$pkgver.tar.bz2
     69-$pkgname.rules)
