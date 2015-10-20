@@ -6,7 +6,7 @@ post_install() {
 post_upgrade() {
   echo ">>> Qtile Example Config at"
   echo ">>> /usr/share/doc/qtile/default_config.py"
-  echo ">>> Since qtile 0.9 qtile.spawn() doesn't use a shell anymore so redirects like > don't work"
+  echo ">>> WARNING: Some config breakage on 0.10.2, look at changelog https://github.com/qtile/qtile/blob/v0.10.2/CHANGELOG#L27"
 }
 
 # vim:set ts=2 sw=2 et:
