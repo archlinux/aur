@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=yrd
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A cjdns config tool for humans and cyborgs'
 url='https://github.com/kpcyrd/yrd'
@@ -15,7 +15,7 @@ source=(
   "$pkgname.tmpfiles.conf"
 )
 sha512sums=(
-  '681937852ecd08fcc587ee98dfa32f7e7e65c2c57250b14e4be4e60dab2d3acd376e6688be863d02d40f719b44b0f7ddc22fc9f9265211a3d41337d38531e47c'
+  'e4309fd3d8c574dd3a97ab65aeb6e5b6a37107fe384ad93ebaa7ee5e9d6f9126d25f402ef931c57da9279ec9b4ac6f2702708706e6dbc23a0329632df2b3fac3'
   '191fdf5687886357c01b72b2b9037045ca24d0ee888dc2bf6b2748a769eeb9a481eb01a9807f8f32b783d0970229f18d1264e937c2dd44b282ac764c49450cca'
 )
 
