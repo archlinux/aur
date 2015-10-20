@@ -1,6 +1,6 @@
 pkgbase = deskcon-desktop-git
 	pkgdesc = Integrates your Smartphone in your Desktop
-	pkgver = 20150501.r93.ca6fcf4
+	pkgver = 20151019.r97.78acbe8
 	pkgrel = 1
 	url = https://github.com/MK-42/deskcon-desktop
 	install = deskcon-desktop.install

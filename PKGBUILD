@@ -2,7 +2,7 @@
 
 _pkgname=deskcon-desktop
 pkgname=$_pkgname-git
-pkgver=20150501.r93.ca6fcf4
+pkgver=20151019.r97.78acbe8
 pkgrel=1
 pkgdesc='Integrates your Smartphone in your Desktop'
 url='https://github.com/MK-42/deskcon-desktop'
@@ -13,10 +13,14 @@ optdepends=('gnome-shell: for use of the included Gnome 3 desktop extension')
 makedepends=('git')
 options=('!strip')
 install=$_pkgname.install
-source=("git+$url"
-        'deskcon.1')
-sha512sums=('SKIP'
-            '144e9a15a01fc63694fa5d26c819ca2474a6cdad802ec1ab984a049b474c4db2419b25ad52f03eb4c2e702524bb0ef6c746fd0436014d8291a83e1e2f4836d2f')
+source=(
+  "git+$url"
+  'deskcon.1'
+)
+sha512sums=(
+  'SKIP'
+  '144e9a15a01fc63694fa5d26c819ca2474a6cdad802ec1ab984a049b474c4db2419b25ad52f03eb4c2e702524bb0ef6c746fd0436014d8291a83e1e2f4836d2f'
+)
 
 pkgver() {
   cd $_pkgname
