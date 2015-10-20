@@ -2,7 +2,7 @@
 # Contributor: Ian Naval <ianonavy@gmail.com>
 
 pkgname=go-ipfs
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="global versioned p2p merkledag file system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('fuse: for mounting/advanced use')
 conflicts=("$pkgname-git")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('1c464e409f0d07f8a7c5510defbb0d602ea3049534cfc15dd4f69ed91bcd37a5f5ecce113921c66b416ad3c4372b986b6261438dad9eb795a502cbce8f728359')
+sha512sums=('d991714e8a0ed6111ed5585a59a964f4d16679b0c4d2af335592c742490c420f66ad2454e622dab952230675d336020a0f4747676a463ce2a9cff4dea5827e6b')
 
 build() {
   # Required for go get
