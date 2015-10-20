@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=48.0.2535.0
+pkgver=48.0.2540.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -70,8 +70,6 @@ optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
             'kdialog-frameworks-git: Needed for file dialogs in KF5'
             'kwalletmanager: Needed for storing passwords in KWallet in KF5'
             #
-            'libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)'
-            #
             'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography')
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
@@ -85,7 +83,8 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         # Misc Patches
         'enable_vaapi_on_linux-r1.diff'
         # Patch from crbug (chromium bugtracker)
-
+        'https://codereview.chromium.org/download/issue1411863003_20001.diff'
+        'https://codereview.chromium.org/download/issue1409243004_1.diff'
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
           "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
@@ -99,7 +98,8 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           # Misc Patches
           '255d71cd9b9e55265e1bfeaa4612bcf60d293204'
           # Patch from crbug (chromium bugtracker)
-
+          'ddcd48080cdebdda868fb7b846ee902f8c242038'
+          '9a3b40cacbc9ffdc23cb025eaec24a8d4cda25cf'
           )
 options=('!strip')
 install=chromium-dev.install
@@ -148,8 +148,10 @@ fi
 if [ "${_use_gtk3}" = "1" ]; then
   depends+=('gtk3')
   _launcher_gtk='GTK=3'
+  optdepends=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
 elif [ "${_use_gtk3}" = "0" ]; then
   depends+=('gtk2')
+  optdepends=('libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)')
 fi
 
 # Need you use ccache?
@@ -431,9 +433,15 @@ prepare() {
   patch -p1 -i ../enable_vaapi_on_linux-r1.diff
 
   # Patch from crbug (chromium bugtracker)
-  # fix the missing define (if not, fail build) (need upstream fix) (https://crbug.com/473866)
+  # fix the missing define (if not, fail build) (need upstream fix) # https://crbug.com/473866
   sed '14i#define WIDEVINE_CDM_VERSION_STRING "The Cake Is a Lie"' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
 
+  # use correct libappindicator when use GTK2 or GTK3 build # https://crbug.com/543219
+  patch -p1 -i ../issue1411863003_20001.diff
+  # Fix https://bugs.archlinux.org/task/46756 # https://crbug.com/505226
+  patch -d third_party/pdfium -p1 -i ../../../issue1409243004_1.diff
+
+  ##
 
   # Make it possible to remove third_party/adobe
   echo > "${srcdir}/flapper_version.h"
