@@ -4,7 +4,7 @@ pkgname=nginx-lua-http-auth-digest
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with lua and digest authentication module'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='http://nginx.org'
@@ -31,7 +31,7 @@ source=($url/download/nginx-$pkgver.tar.gz
 md5sums=('2562320f1535e3e31d165e337ae94f21'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
-         '44f7c65e68e438e1dd7b20b636c2bc2c'
+         'ad0f0e10c44877a065ebaea9c3f05e5c'
          'SKIP'
          'SKIP'
          )

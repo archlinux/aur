@@ -1,17 +1,19 @@
 diff --git a/ngx_http_auth_digest_module.c b/ngx_http_auth_digest_module.c
-index 28eb587..2b1fed7 100644
+index 28eb587..f5f4d0d 100644
 --- a/ngx_http_auth_digest_module.c
 +++ b/ngx_http_auth_digest_module.c
-@@ -542,7 +542,7 @@ ngx_http_auth_digest_send_challenge(ngx_http_request_t *r, ngx_str_t *realm, ngx
+@@ -542,8 +542,8 @@ ngx_http_auth_digest_send_challenge(ngx_http_request_t *r, ngx_str_t *realm, ngx
      r->headers_out.www_authenticate->hash = 1;
      ngx_str_set(&r->headers_out.www_authenticate->key, "WWW-Authenticate");
      
 -    challenge.len = sizeof("Digest algorithm=\"MD5\", qop=\"auth\", realm=\"\", nonce=\"\"") - 1 + realm->len + 16;
+-    if (is_stale) challenge.len += sizeof(", stale=\"true\"") - 1;
 +    challenge.len = sizeof("Digest algorithm=MD5, qop=\"auth\", realm=\"\", nonce=\"\"") - 1 + realm->len + 16;
-     if (is_stale) challenge.len += sizeof(", stale=\"true\"") - 1;
++    if (is_stale) challenge.len += sizeof(", stale=true") - 1;
      challenge.data = ngx_pnalloc(r->pool, challenge.len);
      if (challenge.data == NULL) {
-@@ -556,7 +556,7 @@ ngx_http_auth_digest_send_challenge(ngx_http_request_t *r, ngx_str_t *realm, ngx
+       return NGX_HTTP_INTERNAL_SERVER_ERROR;
+@@ -556,13 +556,13 @@ ngx_http_auth_digest_send_challenge(ngx_http_request_t *r, ngx_str_t *realm, ngx
        return NGX_HTTP_SERVICE_UNAVAILABLE;
      }
      
@@ -20,3 +22,10 @@ index 28eb587..2b1fed7 100644
      p = ngx_cpymem(p, realm->data, realm->len);
      p = ngx_cpymem(p, "\", nonce=\"", sizeof("\", nonce=\"") - 1);
      p = ngx_sprintf(p, "%08xl%08xl", nonce.rnd,nonce.t);
+                           
+     if (is_stale){
+-      p = ngx_cpymem(p, "\", stale=\"true\"", sizeof("\", stale=\"true\""));
++      p = ngx_cpymem(p, "\", stale=true", sizeof("\", stale=true"));
+     }else{
+       p = ngx_cpymem(p, "\"", sizeof("\""));
+     }
