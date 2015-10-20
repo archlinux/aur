@@ -1,0 +1,15 @@
+pkgbase = libfxqmlhelpers
+	pkgdesc = QML Controls library from FX
+	pkgver = 0.1.0.46aa9d6
+	pkgrel = 2
+	url = https://bitbucket.org/fx_/fx-qml-helpers
+	install = libfxqmlhelpers.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	source = libfxqmlhelpers::git+https://bitbucket.org/fx_/fx-qml-helpers.git
+	sha256sums = SKIP
+
+pkgname = libfxqmlhelpers
+
