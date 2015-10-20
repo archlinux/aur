@@ -1,8 +1,9 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: erm67
 # Contributor: Stefan Husmann <Stefan-Husmann@t-online.de>
 pkgname=xpaint
-pkgver=2.9.10.2
-pkgrel=4
+pkgver=2.9.10.3
+pkgrel=1
 pkgdesc="A color image editing tool which features most standard \
 paint program options."
 arch=('i686' 'x86_64')
@@ -11,7 +12,9 @@ license=('GPL')
 depends=('libxaw3dxft' 'libpgf' 'libpng' 'libtiff' 'libxft' 'libxpm' 'openjpeg')
 optdepends=('gv: external viewer for PostScript output' 'imagemagick: external viewer for pixel graphics')
 source=(http://downloads.sourceforge.net/sourceforge/sf-$pkgname/$pkgname-$pkgver.tar.bz2 git+https://gist.github.com/10018613.git X11app.patch)
-md5sums=('68059359a756fea5914bcc541899bc5b' 'SKIP' '10b3d1053a8a9f8d1707fd45b7154b68')
+md5sums=('75bf66eb1d547f223bb87b166f2f0ab4'
+         'SKIP'
+         '10b3d1053a8a9f8d1707fd45b7154b68')
 options=('!makeflags')
 
 prepare() {
