@@ -1,16 +1,16 @@
 pkgbase = perl-file-chmod
 	pkgdesc = Implements symbolic and ls chmod modes
-	pkgver = 0.40
+	pkgver = 0.42
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/File-chmod
+	url = https://metacpan.org/release/File-chmod
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl
+	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/X/XE/XENO/File-chmod-0.40.tar.gz
-	md5sums = dd0c2034bcb13fb7031bc1e6b416d7a7
-	sha512sums = cf477fd3128eebabc8a90ef8844555c9e7e31b827337a7fa2050043286cefb662e7ba75bee4750907b5bb6bd0fcc006796cb3a6aedd299b9566629a896a03693
+	source = http://search.cpan.org/CPAN/authors/id/X/XE/XENO/File-chmod-0.42.tar.gz
+	md5sums = b94807f4bef13506ee529a214524f9de
+	sha512sums = 1b6bc41c43434914c0cb160a063f4cc6cbdfef85233b962c5a6885a23aebd7cafe05eb2d59253c7dc7f1cd323cdd3888d82a6ce19a9b7a00aaa8212d40c064d8
 
 pkgname = perl-file-chmod
 
