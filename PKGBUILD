@@ -2,19 +2,19 @@
 
 pkgname=firefox-extension-ublock-origin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An efficient blocker add-on for your browser. Fast, potent, and lean.'
 url=https://github.com/gorhill/uBlock
 arch=('any')
 license=('GPL3')
 depends=('firefox')
 conflicts=('firefox-extension-ublock')
-source=("uBlock0-$pkgver.xpi::https://github.com/gorhill/uBlock/releases/download/$pkgver/uBlock0.firefox.xpi")
-noextract=("${source%%::*}")
-sha256sums=('4851deead2c664ecfe7a46440714d7d1850f579514704daa2ced3f7ca003fc47')
+source=("https://addons.cdn.mozilla.net/user-media/addons/607454/ublock_origin-$pkgver-sm+tb+fx+an.xpi")
+noextract=("${source##*/}")
+sha256sums=('848411374aae0069225b4370aec29c2e45150cbda3a3c76f6728124ebd42d726')
 
 package() {
-  install -Dm755 "${source%%::*}" "$pkgdir"/usr/lib/firefox/browser/extensions/uBlock0@raymondhill.net.xpi
+  install -Dm755 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/uBlock0@raymondhill.net.xpi
 }
 
 # vim:set ts=2 sw=2 et:
