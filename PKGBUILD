@@ -32,7 +32,6 @@ source=('lxdm::git+http://git.lxde.org/git/lxde/lxdm.git'
         'Xsession'
         'lxdm.in.patch'
         'lxdm.conf.in.patch'
-        'lxdm.c.patch'
         'lxdm.pam'
         'PostLogout')
 md5sums=('SKIP'
@@ -40,7 +39,6 @@ md5sums=('SKIP'
          'de8be632e7daef6787628ebb0dc94ad1'
          'b40a5e90b95b07c7fc1120da574c3149'
          '1062f248ce6e7b3868fdc60da0645458'
-         '966499b1900eaa9b9c9021c57073c4df'
          'c941ef896248bc7c03901b513490425c'
          '5d585acc332056b8d5be3a15d2f20d84')
 
@@ -59,7 +57,6 @@ prepare() {
     
     patch -Np1 < ../lxdm.in.patch
     patch -Np1 < ../lxdm.conf.in.patch
-    patch -Np1 < ../lxdm.c.patch
 
     cp ../Xsession data/Xsession
     cp ../lxdm.pam pam/lxdm
@@ -69,7 +66,8 @@ build() {
     cd $_gitname
     
     ./autogen.sh        
-    ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib/lxdm --localstatedir=/var
+    ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --sysconfdir=/etc \
+    	    --libexecdir=/usr/lib/lxdm --localstatedir=/var
     make
 }
 
@@ -83,7 +81,6 @@ package() {
     # Home directory
     install -dm 755 ${pkgdir}/var/lib/lxdm    
     echo 'GDK_CORE_DEVICE_EVENTS=true' > "$pkgdir"/var/lib/lxdm/.pam_environment
-    chown -R 121:121 "$pkgdir/var/lib/lxdm"
 
     # Custom themes
     cp -r ${srcdir}/lxdm-themes/* ${pkgdir}/usr/share/lxdm/themes
