@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 pkgname='aur-updater-git'
 _gitname='aur-updater'
-pkgver=r4.9b7112f
+pkgver=r5.f9f88f9
 pkgrel=1
 pkgdesc="Easy tool to update your PKGBUILDS and update the AUR database automatically"
 arch=('any')
@@ -26,8 +26,11 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_gitname"
-    chmod +x ./aur-updater.sh
 
     install -d $pkgdir/usr/bin/
-    cp ./aur-updater.sh "$pkgdir/usr/bin"
+    chmod +x ./aur-updater.sh
+    cp ./aur-updater.sh     "$pkgdir/usr/bin"
+
+    install -d $pkgdir/etc
+    cp ./aur-updater.conf   "$pkgdir/etc"
 }
