@@ -1,6 +1,6 @@
 pkgbase = aur-updater-git
 	pkgdesc = Easy tool to update your PKGBUILDS and update the AUR database automatically
-	pkgver = r2.303470e
+	pkgver = r4.9b7112f
 	pkgrel = 1
 	url = https://github.com/Salamandar/aur-updater.git
 	arch = any

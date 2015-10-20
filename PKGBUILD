@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 pkgname='aur-updater-git'
 _gitname='aur-updater'
-pkgver=r2.303470e
+pkgver=r4.9b7112f
 pkgrel=1
 pkgdesc="Easy tool to update your PKGBUILDS and update the AUR database automatically"
 arch=('any')
