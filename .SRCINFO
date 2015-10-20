@@ -1,0 +1,13 @@
+pkgbase = netbench
+	pkgdesc = Easy-to-use network-speed testing
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://bitbucket.org/Morosko/netbench/downloads
+	arch = any
+	license = GPL2
+	depends = java-environment=8
+	source = netbench.tar.gz::https://bitbucket.org/Morosko/netbench/downloads/netbench-v1.0.0.tar.gz
+	md5sums = 90c312c4567e5c84785fedba8889ab3b
+
+pkgname = netbench
+
