@@ -12,7 +12,7 @@ pkgbase = libmemcached-old
 	depends = glibc
 	depends = libsasl
 	depends = libevent
-	conflicts = libmemcache
+	conflicts = libmemcached
 	source = http://launchpad.net/libmemcached/1.0/1.0.8/+download/libmemcached-1.0.8.tar.gz
 	sha256sums = 03f4eb91634f1434a93d4709eccd0c4cce3eb296b54f2b1998ca4a9ce1661ca5
 
