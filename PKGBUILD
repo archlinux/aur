@@ -9,13 +9,22 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.59.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 url='http://www.boost.org/'
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('icu>=55.1' 'python>=3.5' 'python<3.6' 'python2' 'bzip2' 'zlib' 'openmpi')
-source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2)
-sha1sums=('b94de47108b2cdb0f931833a7a9834c2dd3ca46e')
+source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2
+        0001-Python-Fix-condition-for-make_setter-overload.patch)
+sha1sums=('b94de47108b2cdb0f931833a7a9834c2dd3ca46e'
+          'bd76d969b6f8fbe95f05fba13b57a001764c216c')
+
+prepare() {
+   cd ${pkgbase}_${_boostver}
+
+   # https://github.com/boostorg/python/issues/39
+   patch -Np2 -i ../0001-Python-Fix-condition-for-make_setter-overload.patch
+}
 
 build() {
    export _stagedir="${srcdir}/stagedir"
