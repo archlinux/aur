@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-tempdir'
-pkgver='0.08'
+pkgver='0.10'
 pkgrel='1'
-pkgdesc="Temporary files support for testing."
+pkgdesc="(DEPRECATED) Temporary files support for testing"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-nfslock' 'perl-moose' 'perl-moosex-types-path-class' 'perl-path-class' 'perl-sub-exporter' 'perl-test-checkdeps>=0.007' 'perl-test-requires' 'perl-test-use-ok' 'perl-namespace-autoclean>=0.08' 'perl-directory-scratch')
+depends=('perl-file-nfslock' 'perl-moose' 'perl-moosex-types-path-class' 'perl-path-class' 'perl-sub-exporter' 'perl-test-requires' 'perl-namespace-autoclean>=0.08' 'perl>=5.006')
 makedepends=()
-url='http://search.mcpan.org/dist/Test-TempDir'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-TempDir-0.08.tar.gz')
-md5sums=('81542818c02d82caecfdfe14ccb4d281')
-sha512sums=('83bd17bfccb7ff4b7e1a52246852948175a7ea3d03d35e37237da6ba4e28239b2d2ecb157774d80778921606d283ca73069d642424abcd482bfba6a11b0de711')
-_distdir="Test-TempDir-0.08"
+url='https://metacpan.org/release/Test-TempDir'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-TempDir-0.10.tar.gz')
+md5sums=('0042d43cbefe61a40a8701eb7ae3ca5d')
+sha512sums=('89611be65e201cf83229fe6ca3ab3af5c716ceffc699a56ca804901edbfce2ad671f43c9afc84d9affb34345852213ed551b24d5a2fd054278e9c7bc5fb7a820')
+_distdir="Test-TempDir-0.10"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -31,9 +31,8 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  # Make test fails due to CORE module: CPAN::Meta::Prereqs version too low.
-  # Skipping make test until core/perl next upgrade
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
   )
 }
 

@@ -1,8 +1,8 @@
 pkgbase = perl-test-tempdir
-	pkgdesc = Temporary files support for testing.
-	pkgver = 0.08
+	pkgdesc = (DEPRECATED) Temporary files support for testing
+	pkgver = 0.10
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Test-TempDir
+	url = https://metacpan.org/release/Test-TempDir
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -11,15 +11,13 @@ pkgbase = perl-test-tempdir
 	depends = perl-moosex-types-path-class
 	depends = perl-path-class
 	depends = perl-sub-exporter
-	depends = perl-test-checkdeps>=0.007
 	depends = perl-test-requires
-	depends = perl-test-use-ok
 	depends = perl-namespace-autoclean>=0.08
-	depends = perl-directory-scratch
+	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-TempDir-0.08.tar.gz
-	md5sums = 81542818c02d82caecfdfe14ccb4d281
-	sha512sums = 83bd17bfccb7ff4b7e1a52246852948175a7ea3d03d35e37237da6ba4e28239b2d2ecb157774d80778921606d283ca73069d642424abcd482bfba6a11b0de711
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-TempDir-0.10.tar.gz
+	md5sums = 0042d43cbefe61a40a8701eb7ae3ca5d
+	sha512sums = 89611be65e201cf83229fe6ca3ab3af5c716ceffc699a56ca804901edbfce2ad671f43c9afc84d9affb34345852213ed551b24d5a2fd054278e9c7bc5fb7a820
 
 pkgname = perl-test-tempdir
 
