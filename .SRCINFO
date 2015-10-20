@@ -8,7 +8,7 @@ pkgbase = ctodo
 	license = MIT
 	makedepends = cmake
 	depends = ncurses
-	source = https://github.com/downloads/Acolarh/ctodo/ctodo-1.1.tar.gz
+	source = https://github.com/downloads/nielssp/ctodo/ctodo-1.1.tar.gz
 	md5sums = 1896cdce31984d82f985ca7a4036cd12
 
 pkgname = ctodo

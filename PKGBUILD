@@ -12,7 +12,7 @@ conflicts=()
 replaces=()
 backup=()
 install=
-source=("https://github.com/downloads/Acolarh/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/downloads/nielssp/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('1896cdce31984d82f985ca7a4036cd12')
 
 build() {
