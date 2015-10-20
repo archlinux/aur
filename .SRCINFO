@@ -1,0 +1,17 @@
+pkgbase = aur-updater-git
+	pkgdesc = Easy tool to update your PKGBUILDS and update the AUR database automatically
+	pkgver = r2.303470e
+	pkgrel = 1
+	url = https://github.com/Salamandar/aur-updater.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = pkgbuild-introspection
+	depends = pacman
+	depends = namcap
+	source = git+https://github.com/Salamandar/aur-updater.git
+	sha256sums = SKIP
+
+pkgname = aur-updater-git
+
