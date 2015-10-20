@@ -1,7 +1,7 @@
 # Maintainer: Tommaso Sardelli <lacapannadelloziotom [at] gmail [dot] com>
 pkgname=gmusicbrowser-shimmer
-pkgver=1.1.14
-pkgrel=2
+pkgver=1.1.15
+pkgrel=1
 pkgdesc="An open-source jukebox for large collections of mp3/ogg/flac/mpc/ape files, written in perl with Shimmer layout"
 arch=('any')
 url="http://shimmerproject.org/our-projects/shimmer-for-gmusicbrowser/"
@@ -35,8 +35,8 @@ conflicts=('gmusicbrowser' 'gmusicbrowser-devel' 'gmusicbrowser-development' 'gm
 install=$pkgname.install
 source=("https://github.com/squentin/gmusicbrowser/archive/v$pkgver.tar.gz"
         "shimmer.patch")
-sha256sums=('ff83d1b2ac93b327000ebd21f583db7df68cfb55d5119159890c7b28c330be5d'
-            'a63cb6c96a450c922e4147bf153d019c3cc3fa3e23d23832b2d48f7360f6462a')
+sha256sums=('c6c7101fe1f32cabe73f1093b023a30a4eb71bdb46a5f18f2b74c6817060e057'
+            '30a4451be1c86552a783473f7a7007892daac0a64c632756ccbc762401ce71a6')
 
 prepare() {
 
@@ -51,6 +51,6 @@ package() {
    # put some images in sane locations
    install -Dm644 pix/trayicon.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/gmusicbrowser.png
    install -Dm644 pix/gmusicbrowser32x32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/gmusicbrowser.png
-   install -Dm644 pix/gmusicbrowser.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/gmusicbrowser.png
-   install -Dm644 pix/gmusicbrowser.png "$pkgdir"/usr/share/pixmaps/gmusicbrowser.png
+   install -Dm644 pix/gmusicbrowser48x48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/gmusicbrowser.png
+   install -Dm644 pix/gmusicbrowser48x48.png "$pkgdir"/usr/share/pixmaps/gmusicbrowser.png
 }

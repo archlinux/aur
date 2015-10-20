@@ -38,7 +38,7 @@ Index: gmusicbrowser/gmusicbrowser.pl
 ===================================================================
 --- gmusicbrowser.orig/gmusicbrowser.pl
 +++ gmusicbrowser/gmusicbrowser.pl
-@@ -616,9 +616,9 @@ our @cMenuAA=
+@@ -626,9 +626,9 @@ our @cMenuAA=
  (	{ label => _"Lock",	code => sub { ToggleLock($_[0]{lockfield}); }, check => sub { $::TogLock && $::TogLock eq $_[0]{lockfield}}, mode => 'P',
  	  test	=> sub { $_[0]{field} eq $_[0]{lockfield} || $_[0]{gid} == Songs::Get_gid($::SongID,$_[0]{lockfield}); },
  	},
@@ -63,7 +63,7 @@ Index: gmusicbrowser/gmusicbrowser_layout.pm
  
  package Layout;
  
-@@ -256,6 +257,7 @@ our %Widgets=
+@@ -260,6 +261,7 @@ our %Widgets=
  	{	class	=> 'Layout::Label',
  		group	=> 'Play',
  		minsize	=> 20,
@@ -71,7 +71,7 @@ Index: gmusicbrowser/gmusicbrowser_layout.pm
  		markup	=> '<b><big>%S</big></b>%V',
  		markup_empty => '<b><big>&lt;'._("Playlist Empty").'&gt;</big></b>',
  		click1	=> \&PopupSongsFromAlbum,
-@@ -279,6 +281,10 @@ our %Widgets=
+@@ -283,6 +285,10 @@ our %Widgets=
  		dragsrc => [::DRAG_ARTIST,\&DragCurrentArtist],
  		cursor	=> 'hand2',
  	},
@@ -82,7 +82,7 @@ Index: gmusicbrowser/gmusicbrowser_layout.pm
  	Album =>
  	{	class	=> 'Layout::Label',
  		group	=> 'Play',
-@@ -289,6 +295,10 @@ our %Widgets=
+@@ -293,6 +299,10 @@ our %Widgets=
  		dragsrc => [::DRAG_ALBUM,\&DragCurrentAlbum],
  		cursor	=> 'hand2',
  	},
@@ -93,7 +93,7 @@ Index: gmusicbrowser/gmusicbrowser_layout.pm
  	Year =>
  	{	class	=> 'Layout::Label',
  		group	=> 'Play',
-@@ -383,6 +393,7 @@ our %Widgets=
+@@ -387,6 +397,7 @@ our %Widgets=
  		group	=> 'Play',
  		aa	=> 'album',
  		oldopt1 => 'maxsize',
@@ -101,7 +101,7 @@ Index: gmusicbrowser/gmusicbrowser_layout.pm
  		schange	=> sub { my $key=(defined $_[1])? Songs::Get_gid($_[1],'album') : undef ; $_[0]->set($key); },
  		click1	=> \&PopupSongsFromAlbum,
  		click3	=> sub { my $ID=::GetSelID($_[0]); ::PopupAAContextMenu({self =>$_[0], field=>'album', ID=>$ID, gid=>Songs::Get_gid($ID,'album'), mode => 'P'}) if defined $ID; },
-@@ -399,6 +410,7 @@ our %Widgets=
+@@ -403,6 +414,7 @@ our %Widgets=
  		oldopt1 => 'maxsize',
  		schange	=> sub { my $key=(defined $_[1])? Songs::Get_gid($_[1],'artists') : undef ;$_[0]->set($key); },
  		click1	=> sub { ::PopupAA('artist'); },
@@ -109,7 +109,7 @@ Index: gmusicbrowser/gmusicbrowser_layout.pm
  		event	=> 'Picture_artist',
  		update	=> \&Layout::AAPicture::Changed,
  		noinit	=> 1,
-@@ -1663,7 +1675,7 @@ use base 'Gtk2::Window';
+@@ -1670,7 +1682,7 @@ use base 'Gtk2::Window';
  sub new
  {	my ($class,$layout,%options)=@_;
  	my @original_args=@_;
@@ -122,7 +122,7 @@ Index: gmusicbrowser/gmusicbrowser_list.pm
 ===================================================================
 --- gmusicbrowser.orig/gmusicbrowser_list.pm
 +++ gmusicbrowser/gmusicbrowser_list.pm
-@@ -195,8 +195,8 @@ sub Update
+@@ -196,8 +196,8 @@ sub Update
  	if (!$array)	{ $tip=$text=_"error"; }
  	else		{ $text.= ::CalcListLength($array,$self->{format}); }
  	my $format= $self->{size} ? '<span size="'.$self->{size}.'">%s</span>' : '%s';
@@ -133,7 +133,7 @@ Index: gmusicbrowser/gmusicbrowser_list.pm
  	$self->{needupdate}=0;
  }
  
-@@ -223,7 +223,7 @@ sub filter_Update
+@@ -225,7 +225,7 @@ sub filter_Update
  {	my $self=shift;
  	my $filter=::GetFilter($self);
  	my $array=$filter->filter;
@@ -142,7 +142,7 @@ Index: gmusicbrowser/gmusicbrowser_list.pm
  }
  
  ### list functions
-@@ -242,7 +242,7 @@ sub list_SongArray_changed
+@@ -244,7 +244,7 @@ sub list_SongArray_changed
  sub list_Update
  {	my $self=shift;
  	my $array=::GetSongArray($self) || return;
@@ -151,7 +151,7 @@ Index: gmusicbrowser/gmusicbrowser_list.pm
  }
  
  ### selected functions
-@@ -1584,6 +1584,7 @@ our %Pages=
+@@ -1593,6 +1593,7 @@ our %Pages=
  our @MenuMarkupOptions=
  (	"%a",
  	"<b>%a</b>%Y\n<small>%s <small>%l</small></small>",
@@ -159,15 +159,15 @@ Index: gmusicbrowser/gmusicbrowser_list.pm
  	"<b>%a</b>%Y\n<small>%b</small>",
  	"<b>%a</b>%Y\n<small>%b</small>\n<small>%s <small>%l</small></small>",
  	"<b>%y %a</b>",
-@@ -1600,6 +1601,7 @@ my @mpicsize_menu=
+@@ -1609,6 +1610,7 @@ my @mpicsize_menu=
  	_("medium size")	=> 64,
  	_("big size")		=> 96,
  	_("huge size")		=> 128,
 +	_("giant size")		=> 256,
  );
- my @buttstats_menu=
+ my @cloudstats_menu=
  (	_("number of songs")	=> 'count',
-@@ -3350,7 +3352,7 @@ sub new
+@@ -3360,7 +3362,7 @@ sub new
  		my $BAlblist=::NewIconButton('gmb-playlist',undef,undef,'none');
  		$BAlblist->signal_connect(button_press_event => \&AlbumListButton_press_cb);
  		$BAlblist->set_tooltip_text(_"Choose Album From this Artist");
@@ -176,7 +176,7 @@ Index: gmusicbrowser/gmusicbrowser_list.pm
  	}
  
  	my $drgsrc=$aa eq 'album' ? ::DRAG_ALBUM : ::DRAG_ARTIST;
-@@ -4690,6 +4692,16 @@ sub button_press_cb
+@@ -4701,6 +4703,16 @@ sub button_press_cb
  		else	{ $self->{pressed}=1; }
  		return 0;
  	}
@@ -193,7 +193,7 @@ Index: gmusicbrowser/gmusicbrowser_list.pm
  	if ($but==3)
  	{	my ($i,$j,$key)=$self->coord_to_index($event->get_coords);
  		if (defined $key && !exists $self->{selected}{$key})
-@@ -5613,7 +5625,7 @@ sub new
+@@ -5624,7 +5636,7 @@ sub new
  	my $default= $::Options{"DefaultOptions_$name"} || {};
  
  	%$opt=( @DefaultOptions, %$default, %$opt );
@@ -202,7 +202,7 @@ Index: gmusicbrowser/gmusicbrowser_list.pm
  
  	#create widgets used to draw the songtree as a treeview, would be nice to do without but it's not possible currently
  	$self->{stylewidget}=Gtk2::TreeView->new;
-@@ -5676,6 +5688,16 @@ sub new
+@@ -5687,6 +5699,16 @@ sub new
  	$self->AddColumn($_) for split / +/,$opt->{cols};
  	unless ($self->{cells}) { $self->AddColumn('title'); } #to ensure there is at least 1 column
  
@@ -314,7 +314,7 @@ Index: gmusicbrowser/plugins/fetch_cover.pm
 ===================================================================
 --- gmusicbrowser.orig/plugins/fetch_cover.pm
 +++ gmusicbrowser/plugins/fetch_cover.pm
-@@ -46,15 +46,17 @@ my %Sites=
+@@ -48,15 +48,17 @@ my %Sites=
  );
  
  my %menuitem=
