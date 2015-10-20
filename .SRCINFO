@@ -13,6 +13,7 @@ pkgbase = plexwatch
 	depends = perl-time-modules
 	depends = perl-json
 	depends = perl-dbd-sqlite
+	depends = perl-io-socket-ssl
 	optdepends = perl-net-twitter: Required ONLY if you use twitter
 	optdepends = perl-net-oauth: Required ONLY if you use twitter
 	optdepends = perl-growl-gntp: Required ONLY if you use GNTP
