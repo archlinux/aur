@@ -1,0 +1,104 @@
+# Maintainer: orumin <dev@orum.in>
+
+pkgname=nginx-lua-http-auth-digest
+provides=('nginx')
+conflicts=('nginx')
+pkgver=1.9.5
+pkgrel=1
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with lua and digest authentication module'
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+url='http://nginx.org'
+license=('custom')
+depends=('pcre' 'apr-util' 'curl' 'libxml2' 'yajl' 'lua51')
+makedepends=('apache')
+backup=('etc/nginx/fastcgi.conf'
+        'etc/nginx/fastcgi_params'
+        'etc/nginx/koi-win'
+        'etc/nginx/koi-utf'
+        'etc/nginx/mime.types'
+        'etc/nginx/nginx.conf'
+        'etc/nginx/scgi_params'
+        'etc/nginx/uwsgi_params'
+        'etc/nginx/win-utf'
+        'etc/logrotate.d/nginx')
+install=nginx.install
+source=($url/download/nginx-$pkgver.tar.gz
+        service
+        logrotate
+        git+http://github.com/samizdatco/nginx-http-auth-digest
+        git+http://github.com/chaoslawful/lua-nginx-module#tag=v0.9.16)
+md5sums=('2562320f1535e3e31d165e337ae94f21'
+         'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
+         '3441ce77cdd1aab6f0ab7e212698a8a7'
+         'SKIP'
+         'SKIP'
+         )
+
+build() {
+  cd "$srcdir"/$provides-$pkgver
+  ./configure \
+    --prefix=/etc/nginx \
+    --conf-path=/etc/nginx/nginx.conf \
+    --sbin-path=/usr/bin/nginx \
+    --pid-path=/run/nginx.pid \
+    --lock-path=/run/lock/nginx.lock \
+    --user=http \
+    --group=http \
+    --http-log-path=/var/log/nginx/access.log \
+    --error-log-path=stderr \
+    --http-client-body-temp-path=/var/lib/nginx/client-body \
+    --http-proxy-temp-path=/var/lib/nginx/proxy \
+    --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
+    --http-scgi-temp-path=/var/lib/nginx/scgi \
+    --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+    --with-mail \
+    --with-mail_ssl_module \
+    --with-ipv6 \
+    --with-pcre-jit \
+    --with-file-aio \
+    --with-http_dav_module \
+    --with-http_gunzip_module \
+    --with-http_gzip_static_module \
+    --with-http_realip_module \
+    --with-http_v2_module \
+    --with-http_ssl_module \
+    --with-http_stub_status_module \
+    --with-http_addition_module \
+    --with-http_degradation_module \
+    --with-http_flv_module \
+    --with-http_mp4_module \
+    --with-http_secure_link_module \
+    --with-http_sub_module \
+    --with-threads \
+    --with-stream \
+    --add-module=../nginx-http-auth-digest \
+    --add-module=../lua-nginx-module
+  make
+}
+
+package() {
+  cd $provides-$pkgver
+  make DESTDIR="$pkgdir" install
+
+  sed -e 's|\<user\s\+\w\+;|user html;|g' \
+    -e '44s|html|/usr/share/nginx/html|' \
+    -e '54s|html|/usr/share/nginx/html|' \
+    -i "$pkgdir"/etc/nginx/nginx.conf
+
+  rm "$pkgdir"/etc/nginx/*.default
+
+  install -d "$pkgdir"/var/lib/nginx
+  install -dm700 "$pkgdir"/var/lib/nginx/proxy
+
+  chmod 750 "$pkgdir"/var/log/nginx
+  chown http:log "$pkgdir"/var/log/nginx
+
+  install -d "$pkgdir"/usr/share/nginx
+  mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
+
+  install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
+  install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+
+  rmdir "$pkgdir"/run
+}
