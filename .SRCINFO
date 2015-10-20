@@ -1,0 +1,13 @@
+pkgbase = defragfs
+	pkgdesc = A user space file defragger
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/defragfs
+	arch = any
+	license = GPL
+	depends = perl
+	source = defragfs-1.1.1.gz::https://sourceforge.net/projects/defragfs/files/defragfs/defragfs-1.1/defragfs-1.1.1.gz/download
+	sha1sums = 0e248e5dfc74ba3ec3e73f473df248c2c219686d
+
+pkgname = defragfs
+
