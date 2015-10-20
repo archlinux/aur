@@ -2,7 +2,7 @@
 pkgname=librepcb-git
 _fullname=LibrePCB
 pkgver=r549.95b8d1a
-pkgrel=1
+pkgrel=3
 pkgdesc="LibrePCB is a free EDA software to develop printed circuit boards."
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
@@ -11,6 +11,7 @@ depends=('qt5-base' 'qt5-webkit' 'glu')
 makedepends=('git' 'qconf')
 provides=('librepcb')
 conflicts=('librepcb')
+install=${pkgname}.install
 source=('git+https://github.com/LibrePCB/LibrePCB')
 md5sums=('SKIP')
 
