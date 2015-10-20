@@ -1,0 +1,13 @@
+pkgbase = enpass-rc-bin
+	pkgdesc = A multiplatform password manager - RC version
+	pkgver = 5.0.0_RC
+	pkgrel = 1
+	url = http://enpass.io/
+	install = enpass-bin.install
+	arch = x86_64
+	license = custom
+	depends = libxss
+	source = https://s3-us-west-2.amazonaws.com/sinewbetas/Enpass+RC/Enpass_5.0_RC_Linux.zip
+
+pkgname = enpass-rc-bin
+
