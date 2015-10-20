@@ -2,7 +2,7 @@
 # Developer: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicro
-pkgver=2.20
+pkgver=2.20.2
 pkgrel=1
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libxkbcommon-x11' 'libxtst' 'qt5-base' 'sdl2')
 makedepends=('cmake' 'gettext' 'itstool' 'qt5-tools')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ryochan7/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('cf6ae291684155605a9b700af9371810')
+md5sums=('b2266f72ce24c6601224f07fa4cb1be6')
 
 build() {
   cd ${pkgname}-${pkgver}
