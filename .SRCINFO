@@ -1,0 +1,12 @@
+pkgbase = discord
+	pkgdesc = Discord linux App
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/XNBlank/discord-linux
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/XNBlank/discord-linux/archive/-0.1.1.tar.gz
+
+pkgname = discord
+
