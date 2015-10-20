@@ -1,8 +1,8 @@
 pkgbase = utox-git
 	pkgdesc = Lightweight Tox client
-	pkgver = 0.3.2.r41.gd16f539
-	pkgrel = 2
-	url = https://github.com/notsecure/uTox
+	pkgver = 0.3.2.r155.g42a8193
+	pkgrel = 1
+	url = https://github.com/GrayHatter/uTox
 	install = utox-git.install
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = utox-git
 	optdepends = gtk2: GTK file picker
 	provides = utox
 	conflicts = utox
-	source = utox-git::git+https://github.com/notsecure/uTox
+	source = utox-git::git+https://github.com/GrayHatter/uTox
 	md5sums = SKIP
 
 pkgname = utox-git

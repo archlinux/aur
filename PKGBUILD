@@ -4,11 +4,11 @@
 
 _pkgname=utox
 pkgname=utox-git
-pkgver=0.3.2.r41.gd16f539
-pkgrel=2
+pkgver=0.3.2.r155.g42a8193
+pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url='https://github.com/notsecure/uTox'
+url='https://github.com/GrayHatter/uTox'
 license=('GPL3')
 depends=('desktop-file-utils'
          'fontconfig'
@@ -22,23 +22,23 @@ depends=('desktop-file-utils'
          'v4l-utils')
 makedepends=('git')
 optdepends=('gtk2: GTK file picker')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${pkgname}::git+https://github.com/notsecure/uTox")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname::git+https://github.com/GrayHatter/uTox")
 md5sums=('SKIP')
-install="${pkgname}.install"
+install="$pkgname.install"
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "$pkgname"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  cd "$pkgname"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
