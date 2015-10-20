@@ -7,7 +7,7 @@ pkgname=openfoam2.4-git
 _distpkgname=OpenFOAM
 _distpkgver=2.4.x
 _gitname=$_distpkgname-$_distpkgver
-pkgver=20150717.a6f90b1
+pkgver=20151015.277a709
 pkgrel=1
 pkgdesc="The open source CFD toolbox"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ noextract=()
 install=openfoam.install
 md5sums=('SKIP'
          '98fd4f7bb2fd43a0854a583b41d47349'
-         '4e6fdb19fd35f221ea98ede05a65476e'
+         'aee1dc4516470918b70df58934c37800'
          'f0aa8f083d67cddeea684cd3b4fec1e0'
          'SKIP'
          'SKIP')
