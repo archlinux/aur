@@ -1,0 +1,20 @@
+pkgbase = pygpu-git
+	pkgdesc = Python bindings for libgpuarray
+	pkgver = r1226.2d21cc2
+	pkgrel = 1
+	url = https://github.com/Theano/libgpuarray
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = libgpuarray
+	depends = python2
+	depends = python2-mako
+	depends = cython2
+	optdepends = python2-nose: for pygpu.test()
+	provides = pygpu
+	conflicts = pygpu
+	source = git+https://github.com/Theano/libgpuarray.git
+	md5sums = SKIP
+
+pkgname = pygpu-git
+
