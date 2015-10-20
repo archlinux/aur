@@ -1,8 +1,8 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
-pkgname=pygpu-git
+pkgname=pygpu2-git
 pkgver=r1226.2d21cc2
 pkgrel=1
-pkgdesc="Python bindings for libgpuarray"
+pkgdesc="Python2 bindings for libgpuarray"
 arch=('any')
 url="https://github.com/Theano/libgpuarray"
 license=('MIT')
