@@ -1,0 +1,20 @@
+pkgbase = libfxqllauncher
+	pkgdesc = QuakeLive Launcher C++ Library and QML Plugin
+	pkgver = 0.1.0.6765890
+	pkgrel = 2
+	url = https://bitbucket.org/fx_/fx-qllauncher
+	install = libfxqllauncher.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-declarative
+	depends = boost>=1.55
+	depends = qt5-base<5.5
+	depends = quazip-qt5
+	depends = qxmpp
+	source = libfxqllauncher::git+https://bitbucket.org/fx_/fx-qllauncher.git
+	sha256sums = SKIP
+
+pkgname = libfxqllauncher
+
