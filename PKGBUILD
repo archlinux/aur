@@ -14,8 +14,12 @@ provides=("$_pkgname" "$pkgname")
 conflicts=("$_pkgname")
 install=$pkgname.install
 source=("$pkgname::git+https://github.com/liri-browser/liri-browser.git"
+        "liriplayer::git+https://github.com/pierremtb/liri-player.git"
+        "qmlvlc::git+https://github.com/RSATom/QmlVlc.git"
+        "yalibvlcwrapper::git+https://github.com/RSATom/ya-libvlc-wrapper.git"
+        "libvlcsdk::git+https://github.com/RSATom/libvlc-sdk.git"
         "liri-browser.sh" "liri-browser.desktop" "$pkgname.install")
-sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
     cd "$pkgname"
@@ -24,6 +28,29 @@ pkgver() {
 }
 
 build() {
+  pushd $(pwd) >> /dev/null
+
+  cd "$srcdir/$pkgname"
+  git submodule init
+  git config submodule.dependencies/liri-player.url "$srcdir/liriplayer"
+  git submodule update
+
+  cd "dependencies/liri-player"
+  git submodule init
+  git config submodule.dependencies/QmlVlc.url "$srcdir/qmlvlc"
+  git submodule update
+
+  cd "dependencies/QmlVlc"
+  git submodule init
+  git config submodule.libvlc_wrapper.url "$srcdir/yalibvlcwrapper"
+  git submodule update
+
+  cd "libvlc_wrapper"
+  git submodule init
+  git config submodule.libvlc-sdk.url "$srcdir/libvlcsdk"
+  git submodule update
+
+  popd >> /dev/null
 	mkdir -p build
 	cd build
 	qmake "$srcdir/$pkgname"
