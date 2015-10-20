@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-hackers
+	pkgdesc = Quotes from the movie Hackers fortune cookie file
+	pkgver = 1
+	pkgrel = 0
+	url = https://github.com/free-city-of-ulm
+	arch = any
+	groups = fortune-mod
+	license = GPL
+	depends = fortune-mod
+	source = hackers
+	sha256sums = c4c9829da62777860051005acc612cd722d3a7e260f948929ce4ab8b4f1b018c
+
+pkgname = fortune-mod-hackers
+
