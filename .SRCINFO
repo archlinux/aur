@@ -15,7 +15,6 @@ pkgbase = conky-manager
 	depends = imagemagick
 	depends = json-glib
 	depends = libgee
-	depends = libsoup
 	depends = p7zip
 	depends = rsync
 	options = !emptydirs

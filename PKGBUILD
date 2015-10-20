@@ -4,12 +4,12 @@
 pkgname=conky-manager
 pkgver=2.3.4
 _ubuntu=~134~ubuntu15.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing Conky config files with options to browse and edit themes"
 url="https://launchpad.net/conky-manager"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('cairo' 'conky' 'desktop-file-utils' 'gtk3' 'imagemagick' 'json-glib' 'libgee' 'libsoup' 'p7zip' 'rsync')
+depends=('cairo' 'conky' 'desktop-file-utils' 'gtk3' 'imagemagick' 'json-glib' 'libgee' 'p7zip' 'rsync')
 makedepends=('vala')
 options=('!emptydirs')
 install=conky-manager.install
@@ -24,6 +24,7 @@ prepare() {
   sed -r 's|0755 (\$\{app_name\}.appdata.xml)|644 \1|g' -i src/makefile
   sed -r 's|(recursive) 0755|\1 644|g' -i src/makefile
   sed -r "s|(.*chmod --recursive.*)|\\1\n\tfind \$(DESTDIR)\$(sharedir)/\${app_name} -type d -exec chmod +x '{}' +|g" -i src/makefile
+  sed 's|-X -Wl,-rpath,/usr/share/${app_name}/libs||g' -i src/makefile
 }
 
 build() {
