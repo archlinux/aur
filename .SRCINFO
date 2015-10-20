@@ -1,0 +1,14 @@
+pkgbase = redo-c-git
+	pkgdesc = An implementation of the redo build system in portable C with zero dependencies.
+	pkgver = r50.eeb9498
+	pkgrel = 1
+	url = https://github.com/chneukirchen/redo-c
+	arch = i686
+	arch = x86_64
+	license = publicdomain
+	makedepends = git
+	source = redo-c-git::git+https://github.com/chneukirchen/redo-c
+	md5sums = SKIP
+
+pkgname = redo-c-git
+
