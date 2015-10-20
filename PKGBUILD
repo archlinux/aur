@@ -6,7 +6,7 @@ pkgdesc="Simple but very convenient wrapper around Git and latexdiff"
 arch=('any')
 url="https://gitlab.com/git-latexdiff/git-latexdiff"
 license=('GPL')
-depends=('texlive-core' 'git')
+depends=('texlive-core' 'texlive-bin' 'git')
 source=("v${pkgver}.tar.gz"::"https://gitlab.com/${pkgname}/${pkgname}/repository/archive.tar.gz?ref=v${pkgver}")
 sha256sums=("cc82452c29c7509fb5ec3d8e781e66c4d5c6783e5451956c14bcfde5b29959a7")
 
