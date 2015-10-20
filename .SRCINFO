@@ -1,0 +1,13 @@
+pkgbase = xhtml-docs
+	pkgdesc = Set of HTML documentation for XHTML 1.0 & 1.1
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://www.w3.org/TR/xhtml11/
+	arch = any
+	license = GPL
+	options = docs
+	source = http://www.w3.org/TR/xhtml11/xhtml11.tgz
+	md5sums = 56366fb9ff58b79a2de71f127b9baf76
+
+pkgname = xhtml-docs
+

@@ -1,0 +1,30 @@
+pkgname=xhtml-docs
+
+post_install() {
+  xhtml1_dir="/usr/share/doc/xhtml/DTD"
+  xmlcatalog --noout -add public '-//W3C//DTD XHTML 1.0 Strict//EN' "$xhtml1_dir/xhtml1-strict.dtd" /etc/xml/catalog
+  xmlcatalog --noout -add public '-//W3C//DTD XHTML 1.0 Transitional//EN' "$xhtml1_dir/xhtml1-transitional.dtd" /etc/xml/catalog
+  xmlcatalog --noout -add public '-//W3C//DTD XHTML 1.0 Frameset//EN' "$xhtml1_dir/xhtml1-frameset.dtd" /etc/xml/catalog
+  xmlcatalog --noout -add public '-//W3C//ENTITIES Latin 1 for XHTML//EN' "$xhtml1_dir/xhtml-lat1.ent" /etc/xml/catalog
+  xmlcatalog --noout -add public '-//W3C//ENTITIES Special for XHTML//EN' "$xhtml1_dir/xhtml-special.ent" /etc/xml/catalog
+  xmlcatalog --noout -add public '-//W3C//ENTITIES Symbols for XHTML//EN' "$xhtml1_dir/xhtml-symbol.ent" /etc/xml/catalog
+  xmlcatalog --noout -add rewriteSystem 'http://www.w3.org/TR/xhtml1/DTD/' "$xhtml1_dir/" /etc/xml/catalog
+  xmlcatalog --noout -add rewriteSystem 'http://www.w3.org/TR/2002/REC-xhtml1-20020801/DTD/' "$xhtml1_dir/" /etc/xml/catalog
+  xmlcatalog --noout -add rewriteURI 'http://www.w3.org/TR/xhtml1/DTD/' "$xhtml1_dir/" /etc/xml/catalog
+  xmlcatalog --noout -add rewriteURI 'http://www.w3.org/TR/2002/REC-xhtml1-20020801/DTD/' "$xhtml1_dir/" /etc/xml/catalog
+}
+
+pre_remove() {
+  xhtml1_dir="/usr/share/doc/xhtml/DTD"
+  xmlcatalog --noout -del '-//W3C//DTD XHTML 1.0 Strict//EN' /etc/xml/catalog
+  xmlcatalog --noout -del '-//W3C//DTD XHTML 1.0 Transitional//EN' /etc/xml/catalog
+  xmlcatalog --noout -del '-//W3C//DTD XHTML 1.0 Frameset//EN' /etc/xml/catalog
+  xmlcatalog --noout -del '-//W3C//ENTITIES Latin 1 for XHTML//EN' /etc/xml/catalog
+  xmlcatalog --noout -del '-//W3C//ENTITIES Special for XHTML//EN' /etc/xml/catalog
+  xmlcatalog --noout -del '-//W3C//ENTITIES Symbols for XHTML//EN' /etc/xml/catalog
+  xmlcatalog --noout -del 'http://www.w3.org/TR/xhtml1/DTD/' /etc/xml/catalog
+  xmlcatalog --noout -del 'http://www.w3.org/TR/2002/REC-xhtml1-20020801/DTD/' /etc/xml/catalog
+  xmlcatalog --noout -del 'http://www.w3.org/TR/xhtml1/DTD/' /etc/xml/catalog
+  xmlcatalog --noout -del 'http://www.w3.org/TR/2002/REC-xhtml1-20020801/DTD/' /etc/xml/catalog
+} >/dev/null 2>&1
+
