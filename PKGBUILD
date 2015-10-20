@@ -1,14 +1,14 @@
 # Maintainer: Luc J. Bourhis <https://aur.archlinux.org/account/ljbo>
 
 pkgname=texlive-mtheme
-pkgver=r309.0a18f19
+pkgver=r310.eb5a7d7
 pkgrel=1
 license=('CCPL/cc-by-sa')
 depends=('texlive-core' 'texlive-latexextra' 'ttf-fira-sans' 'ttf-fira-mono')
 pkgdesc='A modern LaTeX Beamer theme'
 url='http://bloerg.net/2014/09/20/a-modern-beamer-theme.html'
 arch=('any')
-source=('texlive-mtheme::git+http://github.com/luc-j-bourhis/mtheme.git#commit=0a18f1979cdb065c4792126d6f91444e9429f192')
+source=('texlive-mtheme::git+http://github.com/matze/mtheme.git#commit=eb5a7d7c9d64eeccf1913baa3234ac51ca7da139')
 md5sums=('SKIP')
 
 pkgver() {
