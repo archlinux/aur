@@ -1,0 +1,13 @@
+pkgbase = retro-plugins-snes
+	pkgdesc = SNES plugin for RetroGobject
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/Kekun/retro-plugins-snes
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/Kekun/retro-plugins-snes/releases/download/0.4/retro-plugins-snes-0.4.tar.gz
+	sha256sums = 7f56f48a4db567edd0a573ef0ee68c30dc6f051c958895c9f258b352fcea3164
+
+pkgname = retro-plugins-snes
+
