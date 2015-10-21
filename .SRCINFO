@@ -1,0 +1,12 @@
+pkgbase = easyterm
+	pkgdesc = Serial Port Terminal Emulator
+	pkgver = 0.9
+	pkgrel = 6
+	url = http://sourceforge.net/projects/easyterm/
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = git
+
+pkgname = easyterm
+
