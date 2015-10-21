@@ -9,8 +9,8 @@ pkgname='vtk-visit'
 _pkgname=vtk
 _PKGNAME=VTK
 pkgver=6.1.0
-pkgrel=1
-pkgdesc='A software system for 3D computer graphics, image processing, and visualization (legacy version fo VisIt).'
+pkgrel=2
+pkgdesc='A software system for 3D computer graphics, image processing, and visualization (legacy version for VisIt).'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
 license=('BSD')
@@ -19,7 +19,7 @@ makedepends=('boost' 'cmake' 'java-environment' 'doxygen' 'gnuplot'
              'tk' 'wget'
              'python2-matplotlib' 'python2-twisted' 'python2-mpi4py' 'python2-autobahn'
              'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' 'gl2ps'
-             'ffmpeg' 'lesstif' 'qtwebkit' 'jsoncpp')
+             'ffmpeg' 'lesstif' 'qt5-webkit' 'jsoncpp')
 optdepends=('python2: python bindings'
             'java-runtime: java bindings'
             'tk: tcl bindings'
@@ -88,7 +88,7 @@ build() {
     -DVTK_BUILD_ALL_MODULES:BOOL=ON \
     -DVTK_USE_FFMPEG_ENCODER:BOOL=ON \
     ${vtk_system_flags} \
-    -DVTK_QT_VERSION:STRING=4 \
+    -DVTK_QT_VERSION:STRING=5 \
     -DVTK_WRAP_JAVA:BOOL=ON \
     -DVTK_WRAP_PYTHON:BOOL=ON \
     -DVTK_WRAP_TCL:BOOL=ON \
