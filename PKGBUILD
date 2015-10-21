@@ -1,4 +1,4 @@
-# Maintainer: Joschka Thurner <mail@joschkathurner.de>
+# Maintainer: Peter Lamby <peterlamby@web.de>
 pkgname=check50
 pkgver=1.19
 pkgrel=1
