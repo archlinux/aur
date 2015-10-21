@@ -1,0 +1,4 @@
+post_install() {
+  echo "-- Edit config.h in dwm-xft's PKGBUILD directory"
+  echo "-- and rebuild package if you want to change settings."
+}

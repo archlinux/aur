@@ -1,0 +1,26 @@
+pkgbase = dwm-xft
+	pkgdesc = A dynamic window manager for X with Xft support
+	pkgver = 6.0
+	pkgrel = 2
+	url = http://dwm.suckless.org
+	install = dwm.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	provides = dwm
+	conflicts = dwm
+	options = zipman
+	source = http://dl.suckless.org/dwm/dwm-6.0.tar.gz
+	source = config.h
+	source = dwm.desktop
+	source = dwm-6.0-xft.diff
+	md5sums = 8bb00d4142259beb11e13473b81c0857
+	md5sums = 61caf25a4c1a3d264c150bb14c746f46
+	md5sums = 939f403a71b6e85261d09fc3412269ee
+	md5sums = 01d898c9759c702245a4359916810862
+
+pkgname = dwm-xft
+
