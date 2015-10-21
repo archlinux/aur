@@ -1,0 +1,22 @@
+pkgbase = jsk-git
+	pkgdesc = Joystick Management Library
+	pkgver = 6c5143b
+	pkgrel = 1
+	url = https://github.com/Kekun/jsk
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = vala
+	makedepends = gobject-introspection
+	depends = glib2
+	provides = jsk
+	conflicts = jsk
+	source = git+https://github.com/Kekun/jsk.git
+	sha256sums = SKIP
+
+pkgname = jsk-git
+
