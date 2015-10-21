@@ -1,7 +1,7 @@
 #  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=letsencrypt
-pkgver=0.0.0.dev20151020
+pkgver=0.0.0.dev20151021
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=("letsencrypt-apache=${pkgver}: Apache plugin for Let’s Encrypt cli
             "letsencrypt-nginx=${pkgver}: Nginx plugin for Let’s Encrypt client")
 conflicts=("${pkgname}-git")
 source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('0836e416e6acfd795af07f2c45f57153')
+md5sums=('14cc485de72856a2413639674406d7f8')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
