@@ -50,6 +50,7 @@ build() {
     cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
           -DCMAKE_INSTALL_PREFIX="/usr" \
           -DSTORAGE_ORDER="ColMajor" \
+          -DCMAKE_INSTALL_LIBDIR="lib" \
           "${srcdir}/${_gitname}"
 
     # Compile the library
