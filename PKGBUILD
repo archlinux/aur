@@ -1,7 +1,7 @@
 # Maintainer: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=15.5.86
+pkgver=15.6.3
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
@@ -11,12 +11,14 @@ depends=('mono' 'gtk2' 'gtk-sharp-2' 'webkit-sharp')
 makedepends=('unzip')
 install=manager-accounting.install
 options=('!makeflags')
-source=("http://download.manager.io/version.txt"
-        "http://download.manager.io/$pkgname.zip"
-        "fix-path.patch")
-sha256sums=('SKIP'
+source=("LICENSE"
+        "fix-path.patch"
+        "http://download.manager.io/version.txt"
+        "http://download.manager.io/$pkgname.zip")
+sha256sums=('bd144763506372341487683b0f28ad627e7e8923ea8ef8569541b55f4b987061'
+            '81e73bbae1a386dc76bd1f8b018868864c802cb242667d18b9d6f005518859f7'
             'SKIP'
-            '81e73bbae1a386dc76bd1f8b018868864c802cb242667d18b9d6f005518859f7')
+            'SKIP')
 
 pkgver() {
     cd "$srcdir"
@@ -45,4 +47,5 @@ package() {
     cp -r usr/share/icons/* $pkgdir/usr/share/icons/
     ln -s /usr/lib/manager-accounting/manager-accounting $pkgdir/usr/bin/manager-accounting
     install -m644 usr/share/applications/$pkgname.desktop $pkgdir/usr/share/applications/
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
