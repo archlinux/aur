@@ -9,8 +9,9 @@ pkgbase = perl-extract-url-git
 	depends = perl-mime-tools
 	depends = perl-html-parser
 	optdepends = perl-curses-ui: allows it to fully replace urlview
+	conflicts = extracturl-git
 	replaces = extracturl-git
-	source = git://github.com/m3m0ryh0l3/extracturl.git
+	source = git+https://github.com/m3m0ryh0l3/extracturl.git
 	sha256sums = SKIP
 
 pkgname = perl-extract-url-git
