@@ -5,7 +5,7 @@
 pkgname=cairo-compmgr-git
 epoch=1
 pkgver=0.3.1.57.g416ae1a
-pkgrel=2
+pkgrel=3
 pkgdesc="Cairo based composite manager - Git version"
 arch=(i686 x86_64)
 url="http://cairo-compmgr.tuxfamily.org/"
