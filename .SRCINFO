@@ -1,0 +1,51 @@
+pkgbase = linux-ltofast-git
+	pkgver = 4.0rc7.r93.g6842019
+	pkgrel = 1
+	url = http://www.kernel.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = binutils-hjl-git
+	options = !strip
+	source = git+https://github.com/andikleen/linux-misc.git#branch=lto-4.0
+	source = git+https://github.com/graysky2/kernel_gcc_patch.git
+	source = config
+	source = config.x86_64
+	source = linux-ltofast-git.preset
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2
+	sha256sums = db4d602900f21772a06fd55d8210cb743d8180a7a82728c06a46759172c20d33
+	sha256sums = de452ef564907a96bdccf9b1f68dddee152f2fe8c7095e017ddec131bedef9a1
+
+pkgname = linux-ltofast-git
+	pkgdesc = A non-portable Linux kernel with experimental compilation optimizations: LTO, -Ofast, -march=native, localyesconfig (git version)
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-ltofast-git=4.0rc7.r93.g6842019
+	conflicts = kernel26-ltofast-git
+	replaces = kernel26-ltofast-git
+	backup = etc/mkinitcpio.d/linux-ltofast-git.preset
+
+pkgname = linux-ltofast-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	provides = kernel26-ltofast-git-headers=4.0rc7.r93.g6842019
+	conflicts = kernel26-ltofast-git-headers
+	replaces = kernel26-ltofast-git-headers
+
+pkgname = linux-ltofast-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	provides = kernel26-ltofast-git-docs=4.0rc7.r93.g6842019
+	conflicts = kernel26-ltofast-git-docs
+	replaces = kernel26-ltofast-git-docs
+
