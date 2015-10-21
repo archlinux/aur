@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url='https://github.com/Kekun/retro-gobject'
 depends=('glib2')
+optdepends=('retro-plugins-snes')
 makedepends=('intltool' 'libtool' 'gobject-introspection')
 source=("https://github.com/Kekun/retro-gobject/releases/download/${pkgver}/retro-gobject-${pkgver}.tar.gz")
 sha256sums=('0f5f1abbe63f17537f8d07061150680dbe169e703a8e0701a248a6006909f0ec')
