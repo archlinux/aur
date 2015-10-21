@@ -4,8 +4,8 @@
 
 pkgname=jre
 _major=8
-_minor=60
-_build=b27
+_minor=66
+_build=b17
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Runtime Environment"
@@ -49,8 +49,8 @@ source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$pkgna
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$pkgname-$pkgver-linux-x64.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '762729fa0faba8ff2b5a29c249c95079')
-md5sums_i686=('51512cfe055125570b5215a48a553d83')
-md5sums_x86_64=('e6e44f44b67c1a412f06694c9c30b77f')
+md5sums_i686=('4656044616b97e4f578680d1ef5d55c0')
+md5sums_x86_64=('af82cfb37e139458ae6297ae1bfc4f5e')
 ## Alternative mirror, if your local one is throttled:
 #source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$pkgname-$pkgver-linux-x64.gz")
 
@@ -64,9 +64,9 @@ package() {
     install -d "$pkgdir"/usr/share/licenses/java$_major-$pkgname
 
     msg2 "Removing redundancies..."
-    rm -r lib/desktop/icons/HighContrast
-    rm -r lib/desktop/icons/HighContrastInverse
-    rm -r lib/desktop/icons/LowContrast
+    rm -r lib/desktop/icons/HighContrast/
+    rm -r lib/desktop/icons/HighContrastInverse/
+    rm -r lib/desktop/icons/LowContrast/
     rm    lib/fontconfig.*.bfc
     rm    lib/fontconfig.*.properties.src
     rm    man/ja

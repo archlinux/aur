@@ -1,6 +1,6 @@
 pkgbase = jre
 	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 8u60
+	pkgver = 8u66
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre.install
@@ -44,10 +44,10 @@ pkgbase = jre
 	source = policytool-jre8.desktop
 	md5sums = b3c7031bc65c28c2340302065e7d00d3
 	md5sums = 762729fa0faba8ff2b5a29c249c95079
-	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jre-8u60-linux-i586.tar.gz
-	md5sums_i686 = 51512cfe055125570b5215a48a553d83
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jre-8u60-linux-x64.tar.gz
-	md5sums_x86_64 = e6e44f44b67c1a412f06694c9c30b77f
+	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u66-b17/jre-8u66-linux-i586.tar.gz
+	md5sums_i686 = 4656044616b97e4f578680d1ef5d55c0
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u66-b17/jre-8u66-linux-x64.tar.gz
+	md5sums_x86_64 = af82cfb37e139458ae6297ae1bfc4f5e
 
 pkgname = jre
 
