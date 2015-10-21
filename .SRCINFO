@@ -1,6 +1,6 @@
 pkgbase = plasma5-applet-awesome-widgets
 	pkgdesc = Collection of minimalistic Plasmoids which look like Awesome WM widgets (ex-PyTextMonitor)
-	pkgver = 2.4.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://arcanis.name/projects/awesome-widgets
 	install = plasma5-applet-awesome-widgets.install
@@ -16,8 +16,8 @@ pkgbase = plasma5-applet-awesome-widgets
 	optdepends = mpd: for music player monitor
 	optdepends = nvidia-utils: for GPU monitor
 	backup = etc/xdg/plasma-dataengine-extsysmon.conf
-	source = https://github.com/arcan1s/awesome-widgets/releases/download/V.2.4.0/awesome-widgets-2.4.0-src.tar.xz
-	md5sums = 9b870da6ecefef584f11b6ba6bf9a397
+	source = https://github.com/arcan1s/awesome-widgets/releases/download/V.3.0.0/awesome-widgets-3.0.0-src.tar.xz
+	md5sums = 4878899f092ee12ad8f935f0551ef6b2
 
 pkgname = plasma5-applet-awesome-widgets
 
