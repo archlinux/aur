@@ -2,8 +2,8 @@
 # Original script by: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.0.6
-_build=103037
+pkgver=5.0.8
+_build=103449
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ source=(
 )
 
 
-md5sums=('9d67e2df72630dc2ac5983c7cdb1cf5f'
+md5sums=('d4fcaf6034b3a14f7588d00d9259e690'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
@@ -67,13 +67,6 @@ package() {
     ln -sf "$_installdir/$_lib" "components/$_lib"
   done
   chmod go-w .
-
-  # Replace VirtualBox built-in Qt by system Qt libraries (disabled as of
-  # 2010-03-26, 3.1.6-1)
-  #for _lib in libQt{Core,Gui,Network,OpenGL}; do
-  #  rm "${_lib}VBox.so.4"
-  #  ln -s "/usr/lib/${_lib}.so.4" "${_lib}VBox.so.4"
-  #done
 
   # Install the SDK
   pushd 'sdk/installer'
