@@ -1,7 +1,7 @@
 #  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=letsencrypt-nginx
-pkgver=0.0.0.dev20151017
+pkgver=0.0.0.dev20151020
 pkgrel=1
 pkgdesc="Nginx plugin for Let’s Encrypt client"
 arch=('any')
