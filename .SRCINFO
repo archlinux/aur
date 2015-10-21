@@ -8,13 +8,11 @@ pkgbase = ghdl-mcode-hg
 	license = GPLv2
 	makedepends = gcc-ada-multilib
 	makedepends = mercurial
-	makedepends = lib32-glibc
-	makedepends = lib32-zlib
+	depends = lib32-glibc
+	depends = lib32-zlib
 	provides = ghdl
 	conflicts = ghdl
 	conflicts = ghdl-hg
-	options = !emptydirs
-	options = staticlibs
 	source = ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code
 	md5sums = SKIP
 

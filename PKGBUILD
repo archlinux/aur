@@ -10,8 +10,8 @@ license=('GPLv2')
 
 provides=('ghdl')
 conflicts=('ghdl' 'ghdl-hg')
-makedepends=('gcc-ada-multilib' 'mercurial' 'lib32-glibc' 'lib32-zlib')
-options=(!emptydirs staticlibs)
+makedepends=('gcc-ada-multilib' 'mercurial')
+depends=('lib32-glibc' 'lib32-zlib')
 
 source=(
 	"ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code"
