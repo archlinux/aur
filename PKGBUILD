@@ -7,6 +7,7 @@ pkgdesc="Emacs environment to hack in Scheme, version from git"
 arch=('any')
 url=http://www.nongnu.org/geiser/
 license=('custom:BSD')
+depends=('bash' 'emacs')
 makedepends=('git')
 provides=('geiser')
 conflicts=('geiser')
