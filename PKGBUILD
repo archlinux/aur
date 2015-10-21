@@ -1,4 +1,4 @@
-# Maintainer: Joschka Thurner <mail@joschkathurner.de>
+# Maintainer: Peter Lamby <peterlamby@web.de>
 pkgname=library50-c
 pkgver=6
 pkgrel=1
