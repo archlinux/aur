@@ -1,13 +1,14 @@
 pkgbase = stepmania-git
 	pkgdesc = Advanced cross-platform rhythm game designed for home and arcade use
-	pkgver = v5.0.9.r10.g398fb88
-	pkgrel = 2
+	pkgver = v5.0.9.r221.g799eeaf
+	pkgrel = 1
 	url = http://www.stepmania.com/
 	install = stepmania-git.install
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = cmake
 	depends = gtk2
 	depends = libmad
 	depends = ffmpeg
