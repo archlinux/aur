@@ -1,7 +1,7 @@
 pkgbase = pamac-patched-headerbar
 	pkgdesc = A Gtk3 frontend for libalpm, patched by me to use GtkHeaderBar to match GNOME
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manjaro/pamac
 	install = pamac.install
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = pamac-patched-headerbar
 	source = pamac-2.4.3.tar.gz::https://github.com/manjaro/pamac/archive/v2.4.3.tar.gz
 	source = headerbar.patch
 	sha256sums = 35f4df14bcfb279cdccf8f080b8792d772e1407f296941aafc988d60f4a031de
-	sha256sums = 97fa94b9347e93d738c15ea0e37097e9469242b6e950f4ceec034b215c498882
+	sha256sums = 4807a48479fcd356a48cb611ffdac2e78779bab5782fb1ea310ffd8dbeae93b7
 
 pkgname = pamac-patched-headerbar
 
