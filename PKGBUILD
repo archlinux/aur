@@ -13,7 +13,7 @@
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde' 'bcompare-gnome' 'bcompare-xfce')
 pkgver=4.1.1.20615
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.scootersoftware.com"
 license=('custom')
@@ -75,7 +75,7 @@ package_bcompare() {
   mv bin lib usr/
 
   # Fix wrong paths
-  sed -i "s|"${pkgdir}"|/usr|g" usr/bin/bcompare
+  sed -i "s|"${_install_dir}"|/usr|g" usr/bin/bcompare
 
   # Remove KDE, Gnome and Xfce files
   rm -rf "${pkgdir}/usr/share/kde4"

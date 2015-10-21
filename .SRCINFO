@@ -1,6 +1,6 @@
 pkgbase = bcompare
 	pkgver = 4.1.1.20615
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.scootersoftware.com
 	arch = i686
 	arch = x86_64
