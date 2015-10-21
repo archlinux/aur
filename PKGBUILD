@@ -54,7 +54,11 @@ package() {
   install -D -m755 $srcdir/tremded.sh    $pkgdir/usr/bin/tremded-gpp
 
   # Install desktop files
-  install -D -m644 $srcdir/tremulous.desktop            $pkgdir/usr/share/applications/tremulous-gpp.desktop
-  install -D -m644 $srcdir/$pkgname/misc/tremulous.xpm  $pkgdir/usr/share/pixmaps/tremulous-gpp.xpm
-  install -D -m644 $srcdir/$pkgname/misc/manual.lyx     $pkgdir/usr/share/tremulous/manual.lyx
+  install -Dm644 $srcdir/tremulous.desktop            $pkgdir/usr/share/applications/tremulous-gpp.desktop
+  install -Dm644 $srcdir/$pkgname/misc/tremulous.xpm  $pkgdir/usr/share/pixmaps/tremulous-gpp.xpm
+  install -Dm644 $srcdir/$pkgname/misc/manual.lyx     $pkgdir/usr/share/tremulous/manual.lyx
+
+  # Install license
+  install -Dm644 $srcdir/$pkgname/GPL  ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 $srcdir/$pkgname/CC   ${pkgdir}/usr/share/licenses/$pkgname/LICENSE-CC
 }
