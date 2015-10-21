@@ -1,6 +1,6 @@
 pkgbase = gvim-hg
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor with GTK2 GUI, no interpreters embedded
-	pkgver = 20131113
+	pkgver = 20151021
 	pkgrel = 1
 	url = http://www.vim.org/
 	arch = i686
