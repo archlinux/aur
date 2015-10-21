@@ -1,7 +1,7 @@
 pkgbase = conky-manager
 	pkgdesc = GUI for managing Conky config files with options to browse and edit themes
 	pkgver = 2.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/conky-manager
 	install = conky-manager.install
 	arch = i686
