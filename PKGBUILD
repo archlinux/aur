@@ -10,8 +10,8 @@ depends=('desktop-file-utils'
          'libnotify'
          'toxcore')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url=('http://tox.chat')
-source=("https://github.com/Tox/$pkgname/archive/v$pkgver.tar.gz")
+url=('https://github.com/JFreegman/toxic')
+source=("https://github.com/JFreegman/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('eac982bc65779d283af40ae185e7830e93822b0ec1dabd03b2cbd58e58474be8')
 install="$pkgname.install"
 

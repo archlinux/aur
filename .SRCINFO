@@ -2,7 +2,7 @@ pkgbase = toxic
 	pkgdesc = CLI Tox client
 	pkgver = 0.6.1
 	pkgrel = 1
-	url = http://tox.chat
+	url = https://github.com/JFreegman/toxic
 	install = toxic.install
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = toxic
 	depends = freealut
 	depends = libnotify
 	depends = toxcore
-	source = https://github.com/Tox/toxic/archive/v0.6.1.tar.gz
+	source = https://github.com/JFreegman/toxic/archive/v0.6.1/toxic-0.6.1.tar.gz
 	sha256sums = eac982bc65779d283af40ae185e7830e93822b0ec1dabd03b2cbd58e58474be8
 
 pkgname = toxic
