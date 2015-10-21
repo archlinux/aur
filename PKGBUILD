@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=owncloud-app-mail
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="An email app for ownCloud"
 arch=('any')
@@ -34,7 +34,7 @@ depends=('owncloud')
 options=('!strip')
 source=("https://github.com/owncloud/mail/archive/v${pkgver}.tar.gz"
 	"autoload.php")
-sha512sums=("d464f27ab2a34b5c294c4ce7f04a7b053ea1045c1351fd686d3fe4ecbe883581cf3bcf66e2758804e57502cb0e548808edb5f3fbd3b21bf6b2963d19ca19a284"
+sha512sums=("38049f3a0b64851849eff54be7ee4eb6e363424495a054b6063f4cf34fa8ea5dda11b341367fe2248e653306ea49df095828d6f90ea7726e752182df6c94edfb"
 	    "78f210d657042a9249e7297d871348d035a03e833dda617d4a04b15fe26782d9876f462a61d28272c2f15f088e750eab3d1d1992606967207f0eb980db70e2fa")
 
 package() {
