@@ -6,7 +6,7 @@
 _pkgbase="doublecmd"
 pkgbase="${_pkgbase}-svn"
 pkgname=('doublecmd-gtk2-svn' 'doublecmd-qt-svn')
-pkgver=6315
+pkgver=r6335
 pkgrel=1
 url="http://doublecmd.sourceforge.net/"
 arch=('i686' 'x86_64')
@@ -30,15 +30,14 @@ sha256sums=(
     '16560ad7403ffbee1800384768828e1fad924d03068c6248b68a78c393fc4e20'
 )
 
-# pkgver autobump
+
 pkgver() {
-    cd "$SRCDEST/${_svnmod}"
-    svnversion
+    cd "${srcdir}/${_svnmod}/"
+    local ver="$(svnversion)"
+    printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 prepare() {
-    # Allow doublecmd to get subversion revision number while it is built
-
     cd "${srcdir}/${_svnmod}/"
     sed -e 's/LIB_SUFFIX=.*/LIB_SUFFIX=/g' -i install/linux/install.sh
 
