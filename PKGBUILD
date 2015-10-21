@@ -2,13 +2,13 @@
 pkgname=python2-ethtool
 _pkgname=python-ethtool
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="python bindings for the ethtool kernel interface"
 arch=('i686' 'x86_64')
 url="https://fedorahosted.org/python-ethtool/"
 license=('GPL2')
 groups=()
-depends=('python2' 'libnl')
+depends=('python2' 'libnl>=3.2.26')
 makedepends=('asciidoc')
 provides=()
 conflicts=()
@@ -16,8 +16,13 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=(https://fedorahosted.org/releases/p/y/$_pkgname/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('686756e4b2b239319e8513025debcc0d97103815b0879f94d8234cbbca6ada24')
+source=(https://fedorahosted.org/releases/p/y/$_pkgname/$_pkgname-$pkgver.tar.bz2 libnl3.2.26_net_if.patch)
+sha256sums=('686756e4b2b239319e8513025debcc0d97103815b0879f94d8234cbbca6ada24'
+            '15a748723cd361112de59d843ee0b4e4230e495ba89dcafcfdb578d039083001')
+prepare() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  patch -p1 < ../libnl3.2.26_net_if.patch
+}
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
