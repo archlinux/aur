@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-network-monitor-git
 _pkgname=plasma5-applets-network-monitor
 _gitpkgname=plasma-applet-network-monitor
-pkgver=r33.f788fda
+pkgver=r34.60652d3
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Shows network speed of currently active connections."
 arch=('any')
