@@ -2,13 +2,13 @@
 
 pkgname=yrd
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cjdns config tool for humans and cyborgs'
 url='https://github.com/kpcyrd/yrd'
 license=('GPL3')
 arch=('any')
 depends=('python-argh' 'python-requests' 'cjdns' 'systemd')
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools')
 install=$pkgname.install
 source=(
   "$url/archive/v$pkgver.tar.gz"
@@ -29,6 +29,9 @@ package() {
 
   # Install the systemd service
   install -Dm644 init/$pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+
+  # Install the man page
+  install -Dm644 doc/$pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
 
   # Install the README.md to the shared docs folder
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
