@@ -1,10 +1,11 @@
---- bin/frontendlauncher	2015-10-20 16:34:18.370897585 +0200
-+++ bin/frontendlauncher.new	2015-10-20 16:35:00.551029962 +0200
-@@ -153,6 +153,7 @@
+--- frontendlauncher	2015-10-21 15:28:16.978932425 +0200
++++ frontendlauncher.new	2015-10-21 15:29:21.779135794 +0200
+@@ -153,6 +153,8 @@
      exec "$visitpython" $frontendlauncherpy $0 ${1+"$@"}
  else
      #echo "System python $frontendlauncherpy $0 ${1+"$@"}"
 +    export LD_LIBRARY_PATH=/opt/vtk-6.1.0/lib:${LD_LIBRARY_PATH}
++    export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins
      exec python2 $frontendlauncherpy $0 ${1+"$@"}
  fi
  $0 = shift @ARGV;

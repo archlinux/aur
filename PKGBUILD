@@ -2,15 +2,15 @@
 # Contributor: Filippo Squillace <sqoox85@gmail.com>
 
 pkgname=visit
-pkgver=2.9.2
-_pkgver=2_9_2
-pkgrel=5
+pkgver=2.10.0
+_pkgver=2_10_0
+pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
 license=('BSD' 'custom')
 makedepends=('cmake' 'java-runtime' 'gcc-fortran')
-depends=('qtwebkit' 'python2-numpy'
+depends=('qt5-webkit' 'python2-numpy'
          'gperftools' 'icet' 'java-environment'
          'vtk-visit'
          'gdal' 'silo' 'cgns' 'hdf5' 'zlib')
@@ -18,11 +18,11 @@ conflicts=('visit-bin' 'visit-build')
 source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar.gz"
         "visit.sh"
         "visit_FindIceT.patch"
-        "vtk-visit-libs.patch")
-sha256sums=('97d19e2609fbba655772feb055919b925214ab68c95ff46481572bd7e9c9ea31'
+        "visit_frontendlauncher.patch")
+sha256sums=('ed3d514bc90eaf9c79d00b3f75fbe73437c16296a89451db531d0707c6d806bc'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a'
-            '870e64a097f20a17c23eaba861ed5ec3ee9aa529f15a1847a02a97991a46319f')
+            '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f')
 options=(!emptydirs)
 
 prepare(){
@@ -60,8 +60,8 @@ prepare(){
   sed -i 's/vtkRenderingFreeTypeOpenGL/vtkRenderingFreeTypeOpenGL vtkIOMPIImage vtkRenderingMatplotlib vtkRenderingFreeTypeFontConfig/g' \
     avt/Plotter/CMakeLists.txt
 
-  # For VTK use the libs in /opt/vtk-${_vtk_ver}/lib
-  patch bin/frontendlauncher "${srcdir}/vtk-visit-libs.patch"
+  # For VTK use the libs in /opt/vtk-${_vtk_ver}/lib and fix Qt5 path
+  patch bin/frontendlauncher "${srcdir}/visit_frontendlauncher.patch"
 
   # IceT, use the IceTConfig.cmake provided by IceT
   patch CMake/FindIceT.cmake "${srcdir}/visit_FindIceT.patch"
@@ -100,16 +100,12 @@ build() {
     -DVISIT_ICET_DIR:PATH=/usr \
     -DVISIT_JAVA:BOOL=ON \
     -DVISIT_PYTHON_DIR:PATH=/usr -DVISIT_PYTHON_SKIP_INSTALL:BOOL=ON \
-    -DVISIT_QT_BIN:PATH=/usr/lib/qt4/bin -DVISIT_VISIT_QT_SKIP_INSTALL:BOOL=ON \
+    -DVISIT_QT5:BOOL=ON -DVISIT_QT_DIR:PATH=/usr/lib/qt -DVISIT_VISIT_QT_SKIP_INSTALL:BOOL=ON \
     -DVISIT_SILO_DIR:PATH=/usr \
     -DVISIT_THREAD:BOOL=ON \
     -DVISIT_TCMALLOC_DIR:PATH=/usr \
     -DVISIT_VTK_DIR:PATH=/opt/vtk-${_vtk_ver} -DVISIT_VTK_SKIP_INSTALL:BOOL=ON -DVISIT_VTK_VERSION:STRING=${_vtk_ver}\
     -DVISIT_ZLIB_DIR:PATH=/usr
-
-  # For Qt5 (for now, it's failing with:
-  # This application failed to start because it could not find or load the Qt platform plugin "xcb")
-  #-VISIT_QT5:BOOL=ON -DVISIT_QT_DIR:PATH=/usr/lib/qt -DVISIT_VISIT_QT_SKIP_INSTALL:BOOL=ON \
 
   # Does not compile for now
   #-DVISIT_NETCDF_DIR=/usr \

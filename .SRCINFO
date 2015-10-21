@@ -1,7 +1,7 @@
 pkgbase = visit
 	pkgdesc = Interactive parallel visualization and graphical analysis tool.
-	pkgver = 2.9.2
-	pkgrel = 5
+	pkgver = 2.10.0
+	pkgrel = 1
 	url = https://wci.llnl.gov/simulation/computer-codes/visit
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = visit
 	makedepends = cmake
 	makedepends = java-runtime
 	makedepends = gcc-fortran
-	depends = qtwebkit
+	depends = qt5-webkit
 	depends = python2-numpy
 	depends = gperftools
 	depends = icet
@@ -24,14 +24,14 @@ pkgbase = visit
 	conflicts = visit-bin
 	conflicts = visit-build
 	options = !emptydirs
-	source = https://portal.nersc.gov/svn/visit/trunk/releases/2.9.2/visit2.9.2.tar.gz
+	source = https://portal.nersc.gov/svn/visit/trunk/releases/2.10.0/visit2.10.0.tar.gz
 	source = visit.sh
 	source = visit_FindIceT.patch
-	source = vtk-visit-libs.patch
-	sha256sums = 97d19e2609fbba655772feb055919b925214ab68c95ff46481572bd7e9c9ea31
+	source = visit_frontendlauncher.patch
+	sha256sums = ed3d514bc90eaf9c79d00b3f75fbe73437c16296a89451db531d0707c6d806bc
 	sha256sums = d07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da
 	sha256sums = 2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a
-	sha256sums = 870e64a097f20a17c23eaba861ed5ec3ee9aa529f15a1847a02a97991a46319f
+	sha256sums = 75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f
 
 pkgname = visit
 
