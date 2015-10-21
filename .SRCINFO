@@ -1,0 +1,22 @@
+pkgbase = ruby-typed-array
+	pkgdesc = Provides methods for creating type-enforced Arrays
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://github.com/yaauie/typed-array
+	arch = any
+	groups = pacgem
+	license = MIT
+	makedepends = ruby
+	makedepends = binutils
+	depends = ruby
+	optdepends = ruby-rspec: rspec-2.3.0 (Development dependency)
+	optdepends = ruby-bundler: The best way to manage your application's dependencies (Development dependency)
+	optdepends = ruby-jeweler: Opinionated tool for creating and managing RubyGem projects (Development dependency)
+	optdepends = ruby-rcov: Code coverage analysis tool for Ruby (Development dependency)
+	noextract = typed-array-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/typed-array-0.1.2.gem
+	sha256sums = 891fa1de2cdccad5f9e03936569c3c15d413d8c6658e2edfe439d9386d169b62
+
+pkgname = ruby-typed-array
+
