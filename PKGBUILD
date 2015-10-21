@@ -3,7 +3,7 @@
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
 pkgver=2015r3
-pkgrel=2
+pkgrel=3
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -33,6 +33,7 @@ package() {
     xargs -rtl1 -I {} rm -r {}
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/usr/share/licenses/xojo" "$pkgdir/usr/lib32"
 	cp -r "xojo$pkgver" "$pkgdir/opt/xojo"
+	chmod +x "$pkgdir/opt/xojo/Xojo Resources/Linux/HoudiniAssistant"
 	ln -s "/opt/xojo/Xojo" "$pkgdir/usr/bin/Xojo"
 	ln -s "/opt/xojo/Extras/Lingua/Lingua Linux" "$pkgdir/usr/bin/Lingua"
 	ln -s "/opt/xojo/Extras/Remote Debugger Desktop/Linux/Remote Debugger Desktop" "$pkgdir/usr/bin/RemoteDebuggerDesktop"
@@ -48,5 +49,5 @@ package() {
 #	ln -s "/usr/lib32/libwebkitgtk-1.0.so.0.17.5" "$pkgdir/usr/lib32/libwebkitgtk-1.0.0.so"
 #	ln -s "/usr/lib32/libwebkitgtk-1.0.so.0.17.5" "$pkgdir/usr/lib32/libwebkitgtk-1.0.0.so.0"
 #	Quick Temp Fix for the libncurses 5 error
-	ln -s "/usr/lib32/libncursesw.so.6.0" "$pkgdir/usr/lib32/libncurses.so.5"
+#	ln -s "/usr/lib32/libncursesw.so.6.0" "$pkgdir/usr/lib32/libncurses.so.5"
 }
