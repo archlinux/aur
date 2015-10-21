@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar /opt/style50/style50.jar "$@"
