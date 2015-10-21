@@ -4,8 +4,8 @@
 _pkgname=jdk
 pkgname=bin32-jdk
 _major=8
-_minor=60
-_build=b27
+_minor=66
+_build=b17
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (32-bit)"
@@ -56,7 +56,7 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '9dfed511010a54eb377b692638d17585'
          '915f23fd70bb5a6bbfbd7160a35ab035'
          '65d3a4147634b7cf0923caafed7edda4')
-md5sums_x86_64=('a46d706babbd63f459d7ca6d4057d80f')
+md5sums_x86_64=('8a1f36b29152856a5dd2c3953a4c24a1')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
@@ -69,9 +69,9 @@ package() {
 
     msg2 "Removing redundancies..."
     rm    db/bin/*.bat
-    rm -r jre/lib/desktop/icons/HighContrast
-    rm -r jre/lib/desktop/icons/HighContrastInverse
-    rm -r jre/lib/desktop/icons/LowContrast
+    rm -r jre/lib/desktop/icons/HighContrast/
+    rm -r jre/lib/desktop/icons/HighContrastInverse/
+    rm -r jre/lib/desktop/icons/LowContrast/
     rm    jre/lib/fontconfig.*.bfc
     rm    jre/lib/fontconfig.*.properties.src
     rm -r jre/plugin/
