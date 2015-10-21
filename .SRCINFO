@@ -1,7 +1,7 @@
 pkgbase = farragone
 	pkgdesc = Batch file renamer for programmers
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ikn.org.uk/Farragone
 	arch = any
 	license = GPL3

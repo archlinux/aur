@@ -1,7 +1,7 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=farragone
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Batch file renamer for programmers"
 arch=(any)
 url=http://ikn.org.uk/Farragone
