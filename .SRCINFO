@@ -1,6 +1,6 @@
 pkgbase = python2-acme
 	pkgdesc = ACME protocol implementation for Python
-	pkgver = 0.0.0.dev20151017
+	pkgver = 0.0.0.dev20151020
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/acme
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python2-acme
 	depends = python2-mock
 	depends = python2-pyasn1
 	depends = python2-ndg-httpsclient
-	source = https://pypi.python.org/packages/source/a/acme/acme-0.0.0.dev20151017.tar.gz
-	md5sums = 5a8793afd8b5ac034a5b32c6b44ec77d
+	source = https://pypi.python.org/packages/source/a/acme/acme-0.0.0.dev20151020.tar.gz
+	md5sums = 4dff6b96cf5a188f0cc5a1f885bc2553
 
 pkgname = python2-acme
 

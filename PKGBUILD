@@ -2,7 +2,7 @@
 
 pkgname=python2-acme
 _pkgname=acme
-pkgver=0.0.0.dev20151017
+pkgver=0.0.0.dev20151020
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
