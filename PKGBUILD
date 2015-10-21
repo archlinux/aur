@@ -4,7 +4,7 @@
 pkgname=mikutter-git
 _gitroot=mikutter
 pkgver=3.2.9.r0.g29ba42d
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client (Upstream version)"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 package() {
-  mkdir "$_gitroot/opt"
+  mkdir "$pkgdir/opt"
   cp -r "$srcdir/$_gitroot" "$pkgdir/opt"
 
   mkdir -p "$pkgdir/usr/bin"
