@@ -2,8 +2,8 @@
 
 pkgbase=wicd-git
 pkgname=('wicd-git' 'wicd-gtk-git')
-pkgver=0c205a
-pkgrel=2
+pkgver=6f801a
+pkgrel=1
 arch=(any)
 url="https://launchpad.net/wicd/"
 license=('GPL2')
@@ -80,6 +80,7 @@ package_wicd-git() {
   rm -f "$pkgdir"/usr/bin/{wicd-client,wicd-gtk}
   rm -rf "$pkgdir"/usr/share/{applications,icons,pixmaps}
   rm -rf "$pkgdir"/usr/share/wicd/{gtk,icons}  
+  rm -rf "$pkgdir"/opt/kde/share/autostart/wicd-tray.desktop
 }
 
 package_wicd-gtk-git() {
