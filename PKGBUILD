@@ -4,12 +4,12 @@
 pkgname=jdk-arm
 _pkgname=jdk
 _major=8
-_minor=60
-_build=b27
+_minor=66
+_build=b17
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (v8) for armv7h and armv6h"
-arch=('armv7h' 'armv6h')
+arch=('armv6h' 'armv7h' 'armv8h')
 _carch=arm
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
 license=('custom')
@@ -39,18 +39,33 @@ backup=("etc/java-$_jname/$_carch/jvm.cfg"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$_pkgname.install
+
+if [ $arch = 'armv8h' ]; then
+	osarch=arm64
+else
+	osarch=arm32
+fi
+
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
-		"http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
+		"http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-$osarch-vfp-hflt.tar.gz")
+
+md5sums_armv8h=('b3c7031bc65c28c2340302065e7d00d3'
+		 		'b4f0da18e03f7a9623cb073b65dde6c1'
+		 		'8f0ebcead2aecad67fbd12ef8ced1503'
+		 		'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
+				'98245ddb13914a74f0cc5a028fffddca'
+		 		'400781c8919efc64be3c9749eee0588d')
+
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         'b4f0da18e03f7a9623cb073b65dde6c1'
-         '8f0ebcead2aecad67fbd12ef8ced1503'
-         'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
-         '98245ddb13914a74f0cc5a028fffddca'
-		 'cb2e24899fd03551acdef9a33193b758')
+		 'b4f0da18e03f7a9623cb073b65dde6c1'
+		 '8f0ebcead2aecad67fbd12ef8ced1503'
+		 'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
+		 '98245ddb13914a74f0cc5a028fffddca'
+		 '841b00797123f309738fece4b6440fa1')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
