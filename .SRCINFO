@@ -1,0 +1,17 @@
+pkgbase = retro-gobject
+	pkgdesc = A GObject based Libretro wrapper for frontends
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/Kekun/retro-gobject
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = gobject-introspection
+	depends = glib2
+	source = https://github.com/Kekun/retro-gobject/releases/download/0.4/retro-gobject-0.4.tar.gz
+	sha256sums = 0f5f1abbe63f17537f8d07061150680dbe169e703a8e0701a248a6006909f0ec
+
+pkgname = retro-gobject
+
