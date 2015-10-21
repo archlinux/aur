@@ -1,5 +1,5 @@
 pkgbase = gtk-theme-elementary-bzr
-	pkgver = r447
+	pkgver = r550
 	pkgrel = 1
 	url = https://launchpad.net/egtk
 	arch = any

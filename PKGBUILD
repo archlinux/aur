@@ -4,7 +4,7 @@
 
 pkgbase=gtk-theme-elementary-bzr
 pkgname=('gtk-theme-elementary-bzr' 'plank-theme-pantheon-bzr')
-pkgver=r447
+pkgver=r550
 pkgrel=1
 arch=('any')
 url='https://launchpad.net/egtk'
@@ -30,7 +30,7 @@ package_gtk-theme-elementary-bzr() {
   cd gtk-theme-elementary
 
   mkdir -p "${pkgdir}"/usr/share/themes/elementary
-  cp -dr --no-preserve='ownership' gtk-2.0 gtk-3.0 metacity-1 index.theme "${pkgdir}"/usr/share/themes/elementary/
+  cp -dr --no-preserve='ownership' gtk-2.0 gtk-3.0 index.theme "${pkgdir}"/usr/share/themes/elementary/
 
 # Fix permissions
   find "${pkgdir}" -type d -exec chmod 755 {} +
