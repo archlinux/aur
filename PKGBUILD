@@ -2,7 +2,7 @@
 # Contributor: Daenyth, Jonas Jelten
 pkgname=tremulous-gpp
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tremulous 1.2 beta - Gameplay Preview (gpp)"
 arch=(i686 x86_64)
 url="http://tremulous.net"
@@ -42,12 +42,19 @@ package() {
   install -m755 build/$_maketarget-linux-$_arch/*.$_arch  $pkgdir/opt/tremulous
   for bin in $pkgdir/opt/tremulous/*.$_arch; do mv $bin ${bin/./-gpp.}; done
 
+  # Install data files
+  install -d -m755 $pkgdir/opt/tremulous/gpp
+  cd $srcdir/$pkgname/assets; zip -r $srcdir/data-gpp1.pk3 *
+  install -m644 $srcdir/data-gpp1.pk3  $pkgdir/opt/tremulous/gpp/
+  cd $srcdir/$pkgname/build/$_maketarget-linux-$_arch/gpp; zip $srcdir/vms-gpp1.pk3 vm/*
+  install -m644 $srcdir/vms-gpp1.pk3   $pkgdir/opt/tremulous/gpp/
+
   # Install client & server launchers
-  install -D -m755 $srcdir/tremulous.sh $pkgdir/usr/bin/tremulous-gpp
-  install -D -m755 $srcdir/tremded.sh   $pkgdir/usr/bin/tremded-gpp
+  install -D -m755 $srcdir/tremulous.sh  $pkgdir/usr/bin/tremulous-gpp
+  install -D -m755 $srcdir/tremded.sh    $pkgdir/usr/bin/tremded-gpp
 
   # Install desktop files
-  install -D -m644 $srcdir/tremulous.desktop $pkgdir/usr/share/applications/tremulous-gpp.desktop
-  install -D -m644 misc/tremulous.xpm        $pkgdir/usr/share/pixmaps/tremulous-gpp.xpm
-  install -D -m644 misc/manual.lyx           $pkgdir/usr/share/tremulous/manual.lyx
+  install -D -m644 $srcdir/tremulous.desktop            $pkgdir/usr/share/applications/tremulous-gpp.desktop
+  install -D -m644 $srcdir/$pkgname/misc/tremulous.xpm  $pkgdir/usr/share/pixmaps/tremulous-gpp.xpm
+  install -D -m644 $srcdir/$pkgname/misc/manual.lyx     $pkgdir/usr/share/tremulous/manual.lyx
 }

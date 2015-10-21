@@ -1,7 +1,7 @@
 pkgbase = tremulous-gpp
 	pkgdesc = Tremulous 1.2 beta - Gameplay Preview (gpp)
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tremulous.net
 	arch = i686
 	arch = x86_64
