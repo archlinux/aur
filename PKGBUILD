@@ -2,7 +2,7 @@
 
 pkgbase=python-hmmlearn-git
 pkgname=('python2-hmmlearn-git' 'python-hmmlearn-git')
-pkgver=0.1.1.r75.gd6dbe8c
+pkgver=0.1.1.r77.g97ec087
 pkgrel=1
 
 pkgdesc="Algorithms for unsupervised learning and inference of Hidden Markov Models for Python."
@@ -16,8 +16,8 @@ source=('git://github.com/hmmlearn/hmmlearn')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir"
-    git describe --tags | sed 's/^v//; s/-/.r/; s/-/./'
+    cd "$srcdir/hmmlearn"
+    printf "%s" "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-/./')"
 }
 
 package_python2-hmmlearn-git() {
@@ -25,7 +25,7 @@ package_python2-hmmlearn-git() {
     provides=('python2-hmmlearn')
     conflicts=('python2-hmmlearn')
 
-    cd "$srcdir"/hmmlearn
+    cd "$srcdir/hmmlearn"
     python setup.py install --root="$pkgdir/" --optimize=1
 }
 
@@ -34,7 +34,7 @@ package_python-hmmlearn-git() {
     provides=('python-hmmlearn')
     conflicts=('python-hmmlearn')
 
-    cd "$srcdir"/hmmlearn
+    cd "$srcdir/hmmlearn"
     python setup.py install --root="$pkgdir/" --optimize=1
 }
 
