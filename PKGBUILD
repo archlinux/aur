@@ -1,13 +1,13 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F RÃ¸dseth <xyproto@archlinux.org>
 
 pkgname=getver
-pkgver=0.35
+pkgver=0.4
 pkgrel=1
 pkgdesc='Find the latest version number for a given URL'
 arch=('x86_64' 'i686')
 url='https://github.com/xyproto/getver/'
 license=('MIT')
-makedepends=('git' 'go')
+makedepends=('git' 'gcc-go')
 depends=('setconf')
 source=("git://github.com/xyproto/getver.git#tag=$pkgver")
 md5sums=('SKIP')
@@ -30,5 +30,5 @@ package() {
   install -m755 "scripts/geturlver.sh" "$pkgdir/usr/bin/geturlver"
 }
 
-# getver: -u 4 github.com/xyproto/getver
+# getver: -u 4 raw.githubusercontent.com/xyproto/getver/master/README.md
 # vim:set ts=2 sw=2 et:
