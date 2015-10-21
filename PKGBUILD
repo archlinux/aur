@@ -1,6 +1,7 @@
 # Maintainer: David Manouchehri <manouchehri@riseup.net>
 # Contributor: Simon Hollingshead <me at [firstnamelastname] dot com>
 # Contributor: Matthias Blaicher <matthias at blaicher dot com>
+# Contributor: cyrozap <cyrozap@gmail.com>
 #
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 # NOTE: Altera has dramatically changed their packing in regards to version 12. This
@@ -16,7 +17,6 @@ arch=('i686' 'x86_64')
 url="http://www.altera.com/products/software/quartus-ii/web-edition"
 license=('custom')
 provides=("${_basename}")
-replaces=("${_basename}")
 conflicts=("${_basename}")
 
 _alteradir="/opt/altera"
