@@ -1,6 +1,6 @@
 pkgbase = mediaelch
 	pkgdesc = a Media Manager for handling Movies, TV Shows and Concerts/Music Videos in XBMC.
-	pkgver = 2.2.2
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = http://www.mediaelch.de/
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = mediaelch
 	depends = libmediainfo
 	depends = qt5-multimedia
 	depends = qt5-script
-	depends = quazip-qt5
-	source = http://www.kvibes.de/releases/mediaelch/2.2.2/mediaelch-2.2.2.tar.gz
-	sha256sums = 2af679adbb0e1fdf12e4d9ea128744f6b648730fb917aebe4a86918bee383983
+	source = http://www.kvibes.de/releases/mediaelch/2.3.2/mediaelch-2.3.2.tar.gz
+	sha256sums = f4606de782953aac3269fd5e3e68a8bf20134eee71769b5aedcb4ddca481bcf8
 
 pkgname = mediaelch
 
