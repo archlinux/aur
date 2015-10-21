@@ -1,0 +1,14 @@
+pkgbase = rs-git
+	pkgdesc = Reshape a data array from OpenBSD that compiles on Linux.
+	pkgver = 1.22.r0.g716edb0
+	pkgrel = 1
+	url = https://github.com/chneukirchen/rs
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	source = rs-git::git+https://github.com/chneukirchen/rs
+	md5sums = SKIP
+
+pkgname = rs-git
+
