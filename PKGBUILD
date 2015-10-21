@@ -2,18 +2,18 @@
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=libreswan
 pkgver=3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="IPsec implementation with IKEv1 and IKEv2 keying protocols"
 arch=('i686' 'x86_64')
 url="https://libreswan.org/"
 license=('GPLv2')
 groups=()
 depends=(unbound nss libcap-ng curl)
-makedepends=()
+makedepends=('docbook-xsl' 'xmlto')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=('freeswan' 'openswan' 'ipsec-tools')
+conflicts=('freeswan' 'openswan' 'strongswan' 'ipsec-tools')
 replaces=()
 backup=('etc/ipsec.conf' 'etc/pam.d/pluto')
 options=()
