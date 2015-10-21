@@ -1,5 +1,5 @@
 pkgbase = epson-inkjet-printer-201401w
-	pkgdesc = Epson printer driver (L series)
+	pkgdesc = Epson printer driver (L456, L455, L366, L365, L362, L360, L312, L310, L222, L220, L132, L130)
 	pkgver = 1.0.0
 	pkgrel = 8
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
