@@ -1,8 +1,13 @@
 post_install() {
 	echo "Compiling schemas..."
-	sudo /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+	/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
 	echo "Running ldconfig..."
-	sudo ldconfig
+	ldconfig
+	echo "Updating GTK icon cache..."
+	gtk-update-icon-cache 
+	echo "Updating immodules cache..."
+	gtk-query-immodules-3.0 --update-cache
+	gtk-query-immodules-2.0 --update-cache
 }
 
 post_upgrade() {
