@@ -1,0 +1,11 @@
+[Unit]
+Description=D-Bus User Message Bus Socket
+Requires=dbus-setenv.service
+After=dbus-setenv.service
+
+[Socket]
+ListenStream=%t/bus
+
+[Install]
+WantedBy=sockets.target
+Also=dbus.service
