@@ -1,4 +1,5 @@
-# Maintainer: Jimmy Stelze <jimmy.stelzer@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.com>
+# Contributor: Jimmy Stelze <jimmy.stelzer@gmail.com>
 # Contributor: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: Florian Pritz <flo@xinu.at>
 # Contributor: Adam Hani Schakaki (krzd) <krzd@krzd.net>
@@ -10,7 +11,7 @@
 
 pkgname=cairo-compmgr
 pkgver=0.3.1
-pkgrel=12
+pkgrel=13
 epoch=2
 pkgdesc="A Cairo based composite manager"
 arch=(i686 x86_64)
