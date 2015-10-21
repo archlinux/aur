@@ -5,14 +5,15 @@
 # Contributor: Jens Kapitza <j dot kapitza at schwarze-allianz dot de>
 # Contributor: Olli <olli at coderkun dot de>
 
-# To test this package see demos in jdk8 tarball: jdk1.8.0_45/demo/javafx_samples
+# Demos available in `java-openjfx/src/openjfx/apps/samples`
+# To build them: `ant -Dplatforms.JDK_1.8.home=/usr/lib/jvm/default jar`
 
 _libname=openjfx
 pkgbase=java-${_libname}
 pkgname=('java-openjfx' 'java-openjfx-doc' 'java-openjfx-src')
 _java_ver=8
-_jdk_update=45
-_build_ver=13
+_jdk_update=65
+_build_ver=17
 _hgtag=${_java_ver}u${_jdk_update}-b${_build_ver}
 pkgver=${_java_ver}.u${_jdk_update}
 pkgrel=1
@@ -22,10 +23,11 @@ url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
 license=('GPL')
 depends=('java-runtime-openjdk=8' 'gstreamer' 'libxtst' 'webkitgtk2' 'ffmpeg' 'qt5-base')
 makedepends=('java-environment-openjdk=8' 'mercurial' 'bison' 'gperf' 'qtchooser' 'gtk2'
-             'libxtst' 'ffmpeg' 'python' 'qt5-base' 'webkitgtk2')
+             'libxtst' 'ffmpeg' 'python' 'qt5-base' 'webkitgtk2' 'ruby')
 source=(openjfx::hg+http://hg.openjdk.java.net/openjfx/8u-dev/rt#tag=${_hgtag}
         gradle.properties
         https://services.gradle.org/distributions/gradle-1.8-bin.zip)
+
 sha256sums=('SKIP'
             '1d09385ac23d755aec079954247365de3875507641f5ecd7bd3511ebf3fa9e3c'
             'a342bbfa15fd18e2482287da4959588f45a41b60910970a16e6d97959aea5703')
@@ -95,4 +97,3 @@ package_java-openjfx-src() {
   install -d "${pkgdir}${_openjdk8dir}"
   install -m644 "${_builddir}/javafx-src.zip" "${pkgdir}${_openjdk8dir}"
 }
-
