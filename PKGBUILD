@@ -7,14 +7,14 @@
 # Contributor: Stefan Lohmaier <noneuss at gmail dot com>
 pkgname=stepmania-git
 _shortname=stepmania
-pkgver=v5.0.9.r10.g398fb88
-pkgrel=2
+pkgver=v5.0.9.r221.g799eeaf
+pkgrel=1
 pkgdesc="Advanced cross-platform rhythm game designed for home and arcade use"
 arch=('i686' 'x86_64')
 url="http://www.stepmania.com/"
 license=('MIT')
 depends=('gtk2' 'libmad' 'ffmpeg' 'glew' 'jack')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=('stepmania=5')
 conflicts=('stepmania')
 replaces=('sm-ssc-hg')
@@ -36,9 +36,8 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_shortname"
-  autoreconf -if
-  ./configure --with-jack --with-system-ffmpeg
+  cd "$srcdir/$_shortname/Build"
+  cmake -D WITH_SYSTEM_FFMPEG=ON ..
   make
 }
 
@@ -47,7 +46,7 @@ package() {
 
   # Install program
   install -d "$pkgdir/opt/$_shortname"/{RandomMovies,Packages}
-  install -t "$pkgdir/opt/$_shortname/" src/stepmania src/GtkModule.so
+  install -t "$pkgdir/opt/$_shortname/" stepmania GtkModule.so
   install -D "$srcdir/$_shortname.sh" "$pkgdir/usr/bin/$_shortname"
 
   # Install miscellaneous directories
