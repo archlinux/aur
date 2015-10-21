@@ -1,19 +1,21 @@
-# Maintainer: Callum Moffat <callum90ish@gmail.com>
+# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: David Avedissian <avedissian.david@gmail.com>
+# Contributor: Callum Moffat <callum90ish@gmail.com>
 # Modified by redneckdrow 12/6/14 3:17 PM EST
 # Modified by SerialVelocity 12/9/15 9:52 AM BST
+
 pkgname=mint-cinnamon-themes
-pkgver=2015.06.14
+_pkgname=cinnamon-themes
+pkgver=2015.10.21
 pkgrel=1
-pkgdesc="Linux Mint Cinnamon Themes"
-arch=("any")
-url="http://packages.linuxmint.com/pool/main/c/cinnamon-themes/"
-license=('unknown')
-source=("http://packages.linuxmint.com/pool/main/c/cinnamon-themes/cinnamon-themes_$pkgver.tar.gz")
-md5sums=('8a64156705fef1721803532a37b693b3')
+pkgdesc='A collection of the best themes available for Cinnamon.'
+arch=('any')
+license=('GPL')
+url='http://linuxmint.com'
+source=("https://ftp.fau.de/mint/packages/pool/main/c/${_pkgname}/${_pkgname}_${pkgver}.tar.gz")
+sha256sums=('d555d0f98698951b2386226a3735dbb9493268a6ced9f5601b0f7964e674585d')
  
 package() {
-   cd "$srcdir/cinnamon-themes"
-   cp -r usr/ $pkgdir/
-   chmod 755 $pkgdir/usr/share/themes/
-   chmod 755 $pkgdir/usr/share/themes/*
+	cd "${srcdir}/${_pkgname}"
+	cp -dr --no-preserve=ownership "./usr" "${pkgdir}/"
 }

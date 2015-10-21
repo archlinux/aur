@@ -1,12 +1,12 @@
 pkgbase = mint-cinnamon-themes
-	pkgdesc = Linux Mint Cinnamon Themes
-	pkgver = 2015.06.14
+	pkgdesc = A collection of the best themes available for Cinnamon.
+	pkgver = 2015.10.21
 	pkgrel = 1
-	url = http://packages.linuxmint.com/pool/main/c/cinnamon-themes/
+	url = http://linuxmint.com
 	arch = any
-	license = unknown
-	source = http://packages.linuxmint.com/pool/main/c/cinnamon-themes/cinnamon-themes_2015.06.14.tar.gz
-	md5sums = 8a64156705fef1721803532a37b693b3
+	license = GPL
+	source = https://ftp.fau.de/mint/packages/pool/main/c/cinnamon-themes/cinnamon-themes_2015.10.21.tar.gz
+	sha256sums = d555d0f98698951b2386226a3735dbb9493268a6ced9f5601b0f7964e674585d
 
 pkgname = mint-cinnamon-themes
 
