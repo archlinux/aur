@@ -1,0 +1,19 @@
+_do_depmod() {
+  depmod -A
+}
+
+post_install() {
+  _do_depmod
+  echo
+  echo "A sample tuner configuration file was installed into /etc/dvbhdhomerun."
+  echo "You should now edit that file and run 'sudo modprobe dvb_hdhomerun'"
+  echo
+}
+
+post_upgrade() {
+  _do_depmod
+}
+
+post_remove() {
+  _do_depmod
+}
