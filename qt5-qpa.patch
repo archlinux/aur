@@ -1,0 +1,10 @@
+--- frontendlauncher	2015-10-21 10:18:28.317260465 +0200
++++ frontendlauncher.new	2015-10-21 11:39:07.079113095 +0200
+@@ -153,6 +153,7 @@
+     exec "$visitpython" $frontendlauncherpy $0 ${1+"$@"}
+ else
+     #echo "System python $frontendlauncherpy $0 ${1+"$@"}"
++    export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins
+     exec python2 $frontendlauncherpy $0 ${1+"$@"}
+ fi
+ $0 = shift @ARGV;
