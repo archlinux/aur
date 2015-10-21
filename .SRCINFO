@@ -16,6 +16,7 @@ pkgbase = dasom-git
 	makedepends = glib2
 	makedepends = libappindicator-gtk3
 	makedepends = git
+	makedepends = librsvg
 	depends = gtk2
 	depends = gtk3
 	depends = qt4
