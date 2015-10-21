@@ -4,14 +4,13 @@ pkgname=ghdl-llvm-hg
 pkgver=0.33.hg900
 pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc='VHDL simulator - mcode version'
+pkgdesc='VHDL simulator - LLVM version'
 url='http://sourceforge.net/projects/ghdl-updates/'
 license=('GPLv2')
 
 provides=('ghdl')
 conflicts=('ghdl' 'ghdl-hg' 'ghdl-mcode-hg')
 makedepends=('gcc-ada' 'mercurial' 'llvm35' 'clang35')
-options=(!emptydirs staticlibs)
 
 source=(
 	"ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code"
@@ -34,7 +33,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/ghdl"
 
-	./configure --with-llvm=/usr/
+	./configure --prefix=/usr/ --with-llvm=/usr/
 
 	make
 
