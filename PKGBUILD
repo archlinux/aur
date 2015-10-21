@@ -4,7 +4,7 @@
 pkgbase=mint-artwork-common
 pkgname=mint-sounds
 pkgver=1.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Common artwork used in Linux Mint.'
 arch=('any')
 license=('GPL')
@@ -19,7 +19,7 @@ package_mint-sounds() {
 	install="${pkgname}.install"
 
 	cd "${srcdir}/${pkgbase}-${pkgver}"
-	install -d "${pkgdir}/usr/share/sounds/LinuxMint"
-	find "./usr/share/sounds/LinuxMint" -type f -exec install -Dm644 {} "${pkgdir}/usr/share/sounds/LinuxMint/" \;
+	install -d "${pkgdir}/usr/share/sounds"
+	cp -dr --no-preserve=ownership "./usr/share/sounds/LinuxMint" "${pkgdir}/usr/share/sounds/"
 	install -Dm644 "../${pkgname}.gschema.override" "${pkgdir}/usr/share/glib-2.0/schemas/${pkgname}.gschema.override"
 }

@@ -1,7 +1,7 @@
 pkgbase = mint-artwork-common
 	pkgdesc = Common artwork used in Linux Mint.
 	pkgver = 1.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linuxmint.com
 	arch = any
 	license = GPL
