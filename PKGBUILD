@@ -4,8 +4,8 @@
 _pkgname=jre
 pkgname=bin32-jre
 _major=8
-_minor=60
-_build=b27
+_minor=66
+_build=b17
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Runtime Enviroment (32-bit)"
@@ -48,7 +48,7 @@ source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '271b97a9b95d809a99999ec5fb74313c')
-md5sums_x86_64=('51512cfe055125570b5215a48a553d83')
+md5sums_x86_64=('4656044616b97e4f578680d1ef5d55c0')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
@@ -60,9 +60,9 @@ package() {
     install -d "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32
 
     msg2 "Removing redundancies..."
-    rm -r lib/desktop/icons/HighContrast
-    rm -r lib/desktop/icons/HighContrastInverse
-    rm -r lib/desktop/icons/LowContrast
+    rm -r lib/desktop/icons/HighContrast/
+    rm -r lib/desktop/icons/HighContrastInverse/
+    rm -r lib/desktop/icons/LowContrast/
     rm    lib/fontconfig.*.bfc
     rm    lib/fontconfig.*.properties.src
     rm    man/ja
