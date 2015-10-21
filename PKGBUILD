@@ -4,7 +4,7 @@
 
 pkgname=remmina-gtk2
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Remmina is a remote desktop client written in GTK+. "
 arch=(i686 x86_64)
 url="http://remmina.sourceforge.net/"
