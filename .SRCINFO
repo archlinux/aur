@@ -1,0 +1,12 @@
+pkgbase = sm5-simply-love
+	pkgdesc = Port of OpenITG Simply Love theme to StepMania 5
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/dguzek/Simply-Love-SM5
+	arch = any
+	license = custom
+	source = https://github.com/dguzek/Simply-Love-SM5/archive/2.0.tar.gz
+	sha256sums = 9ab28e2cad046e3634f37dd7c83519cd69c0a74938aab17b11d9a48bac79d9e4
+
+pkgname = sm5-simply-love
+
