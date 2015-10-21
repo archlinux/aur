@@ -1,0 +1,17 @@
+pkgbase = antlr3
+	pkgdesc = Parser generator for reading, processing, executing, or translating structured text or binary files. Version 3.
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = http://www.antlr3.org/index.html
+	arch = any
+	license = BSD
+	depends = java-environment>=6
+	provides = antlr=3.5.2
+	noextract = antlr-3.5.2-complete.jar
+	source = http://www.antlr3.org/download/antlr-3.5.2-complete.jar
+	source = antlr3
+	md5sums = acfa69f928a0f1653555bda73091efca
+	md5sums = a0fab9317be2f6965bd40c4424368d59
+
+pkgname = antlr3
+
