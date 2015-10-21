@@ -30,7 +30,7 @@ else
 fi
 
 sha256sums=('35f4df14bcfb279cdccf8f080b8792d772e1407f296941aafc988d60f4a031de'
-            'f6a5810c6736a4e55732bd2764012d032a83fabadcd3eca86896c682266fb7af')
+            '97fa94b9347e93d738c15ea0e37097e9469242b6e950f4ceec034b215c498882')
 
 prepare() {
   if [ "$_gitcommit" != "" ]; then
