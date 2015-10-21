@@ -1,7 +1,7 @@
 pkgbase = nautilus-megasync
 	pkgdesc = Upload your files to your Mega account from nautilus.
-	pkgver = 2.1.0
-	pkgrel = 1
+	pkgver = 2.1.1
+	pkgrel = 2
 	url = https://mega.co.nz/#sync
 	install = nautilus-megasync.install
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = nautilus-megasync
 	depends = libnautilus-extension
 	depends = megasync
 	provides = nautilus-megasync
-	source_i686 = https://mega.co.nz/linux/MEGAsync/Debian_8.0/i386/nautilus-megasync_2.1.0_i386.deb
+	source_i686 = https://mega.nz/linux/MEGAsync/Debian_8.0/i386/nautilus-megasync_2.1.1_i386.deb
 	sha256sums_i686 = 12094a1b0bdccdf2bf6a75c1d80c162ba6b5c344e439ca2d82cfe6befe80ee28
-	source_x86_64 = https://mega.co.nz/linux/MEGAsync/Debian_8.0/amd64/nautilus-megasync_2.1.0_amd64.deb
+	source_x86_64 = https://mega.nz/linux/MEGAsync/Debian_8.0/amd64/nautilus-megasync_2.1.1_amd64.deb
 	sha256sums_x86_64 = 06470c7e342c474d9a87afa1a7cdef2d14fc5e2bcd18d61438edb23718c0dbe1
 
 pkgname = nautilus-megasync
