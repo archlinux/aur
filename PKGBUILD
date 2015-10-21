@@ -3,7 +3,7 @@
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
 pkgver=2015r3
-pkgrel=3
+pkgrel=4
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -33,7 +33,9 @@ package() {
     xargs -rtl1 -I {} rm -r {}
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/usr/share/licenses/xojo" "$pkgdir/usr/lib32"
 	cp -r "xojo$pkgver" "$pkgdir/opt/xojo"
+	# Reparieren der Dateirechte	
 	chmod +x "$pkgdir/opt/xojo/Xojo Resources/Linux/HoudiniAssistant"
+	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/SDKStubs/linux-arm/libgcc_s.so.1"
 	ln -s "/opt/xojo/Xojo" "$pkgdir/usr/bin/Xojo"
 	ln -s "/opt/xojo/Extras/Lingua/Lingua Linux" "$pkgdir/usr/bin/Lingua"
 	ln -s "/opt/xojo/Extras/Remote Debugger Desktop/Linux/Remote Debugger Desktop" "$pkgdir/usr/bin/RemoteDebuggerDesktop"
