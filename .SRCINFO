@@ -12,7 +12,7 @@ pkgbase = nodejs-imapnotify
 	source = http://registry.npmjs.org/imapnotify/-/imapnotify-0.1.0.tgz
 	source = imapnotify@.service
 	sha1sums = 33be4a48d86b7aec069d4f7243bf66b980583e5b
-	sha1sums = efa2e526c4ba592af7eb5060493d7fbc7d4340e7
+	sha1sums = 1e82f19dffcfc2db30047f6788a91a1f9a138a65
 
 pkgname = nodejs-imapnotify
 

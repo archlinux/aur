@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/imapnotify -c ~/.config/imapnotify/%I.json
+ExecStart=/usr/bin/imapnotify -c %h/.config/imapnotify/%I
 Restart=on-failure
 RestartSec=20
 

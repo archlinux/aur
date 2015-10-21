@@ -3,7 +3,7 @@
 _npmname=imapnotify
 pkgname=nodejs-imapnotify # All lowercase
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Execute scripts on new messages using IDLE imap command"
 arch=(any)
 url="http://github.com/a-sk/node-imapnotify"
@@ -15,7 +15,7 @@ install=$pkgname.install
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz "imapnotify@.service")
 noextract=($_npmname-$pkgver.tgz)
 sha1sums=(33be4a48d86b7aec069d4f7243bf66b980583e5b
-          efa2e526c4ba592af7eb5060493d7fbc7d4340e7)
+          1e82f19dffcfc2db30047f6788a91a1f9a138a65)
 
 package() {
   cd $srcdir
