@@ -2,7 +2,7 @@
 
 pkgname=easyterm
 pkgver=0.9
-pkgrel=6
+pkgrel=1
 pkgdesc='Serial Port Terminal Emulator'
 arch=('x86_64' 'i686')
 url='http://sourceforge.net/projects/easyterm/'
@@ -31,7 +31,7 @@ build() {
         git clone ${_gitroot}
     fi
   
-  cd ${_gitname}
+  cd "$srcdir/$_gitname"
     
   
   qmake .
@@ -39,8 +39,9 @@ build() {
 }
 
 package() {
-  cd "easyterm-code"
-
+	echo "$srcdir/$_gitname"
+	mkdir -p "$pkgdir/usr/local/bin"
+	cp "$srcdir/$_gitname/release/EasyTerm" "$pkgdir/usr/local/bin"
 }
 
 # vim:set ts=2 sw=2 et:
