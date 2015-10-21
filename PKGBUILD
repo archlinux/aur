@@ -9,8 +9,8 @@ _basedir=/usr
 _boost=boost${_ext}
 
 pkgname=${_pkgname}${_ext}
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 pkgdesc="A library that provides application layer protocol support using modern C++ techniques"
 arch=('i686' 'x86_64')
 url="http://cpp-netlib.github.com/"
@@ -20,10 +20,10 @@ optdepends=('openssl: for https')
 makedepends=("cmake>=2.8.10")
 #options=(staticlibs)
 source=(
-         http://commondatastorage.googleapis.com/$_pkgname-downloads/$pkgver/$_pkgname-$pkgver-final.tar.gz
+         http://downloads.cpp-netlib.org/$pkgver/$_pkgname-$pkgver-final.tar.gz
          )
 sha256sums=(
-         'bd9b081686f1042fa53af7627d4552e039130ada0937ea081097439e3c015eec'
+         '71953379c5a6fab618cbda9ac6639d87b35cab0600a4450a7392bc08c930f2b1'
          )
 
 build() {
@@ -38,6 +38,7 @@ package() {
   cd $srcdir/build
   make install
 
+  install -d ${pkgdir}${_basedir}/lib
   if test "$CARCH" == x86_64; then
     mv ${pkgdir}${_basedir}/lib64/* ${pkgdir}${_basedir}/lib
     rmdir ${pkgdir}${_basedir}/lib64
@@ -53,4 +54,3 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver-final"
   install -Dm644 LICENSE_1_0.txt ${pkgdir}/usr/share/licenses/$pkgname/LICENSE_1_0.txt
 }
-
