@@ -1,0 +1,19 @@
+pkgbase = ruby-delayer
+	pkgdesc = Delay the processing
+	pkgver = 0.0.2
+	pkgrel = 1
+	arch = any
+	groups = pacgem
+	license = MIT
+	makedepends = ruby
+	makedepends = binutils
+	depends = ruby
+	optdepends = ruby-bundler: The best way to manage your application's dependencies (Development dependency)
+	optdepends = ruby-rake: Rake is a Make-like program implemented in Ruby (Development dependency)
+	noextract = delayer-0.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/delayer-0.0.2.gem
+	sha256sums = 39ece17be3e4528d562a88aef7cb25143ef4ce77df2925a7534f8a163af1db94
+
+pkgname = ruby-delayer
+
