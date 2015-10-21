@@ -8,7 +8,7 @@ arch=('any')
 url="http://gnomefiles.org/content/show.php/Gmediafinder?content=138588"
 license=('GPL2')
 depends=('gnome-icon-theme' 'gstreamer0.10-ffmpeg' 'gstreamer0.10-good-plugins' 'gstreamer0.10-python' 'libvisual-plugins' 'python2-beautifulsoup4' \
-         'python2-configobj' 'python2-distutils-extra' 'python2-gdata' 'python2-html5lib' 'python2-lxml' 'python2-mechanize' 'python-virtkey' 'python2-xlib' 'pywebkitgtk')
+         'python2-configobj' 'python2-distutils-extra' 'python2-gdata' 'python2-html5lib' 'python2-lxml' 'python2-mechanize' 'pywebkitgtk')
 makedepends=('git' 'python2-distribute')
 install=gmediafinder.install
 source=('git+https://github.com/smolleyes/gmediafinder2.git')
