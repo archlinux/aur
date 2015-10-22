@@ -1,8 +1,8 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index bbfb330..f7a5aa7 100755
+index eede814..f7eea18 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -245,27 +245,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -246,27 +246,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
                      
                      HydrusData.ShowText( u'Starting server\u2026' )
                      
