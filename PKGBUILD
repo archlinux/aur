@@ -1,7 +1,7 @@
 # Maintainer: Colin Keenan <colinnkeenan at gmail dot com>
 
 pkgname=silentcast
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Silent Screencast: video record your screen and make it into an animated gif"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'ffmpeg' 'imagemagick' 'xdotool' 'xorg-xrandr' 'xorg-xwininfo' '
 install=${pkgname}.install
 
 source=($url"/archive/v"$pkgver".tar.gz")
-md5sums=('3111a345a90e23752ec82b28e55dbbfc')
+md5sums=('25b8bfd2887e9975957efdf16c667bce')
 
 package() {
   cd "$pkgname-$pkgver"
@@ -26,4 +26,7 @@ package() {
   install -D -m644 README.md "$pkgdir/usr/share/doc/silentcast/README.md"
   install -m644 *png "$pkgdir/usr/share/doc/silentcast"
   install -m644 *gif "$pkgdir/usr/share/doc/silentcast"
+  install manpages/silentcast.1 /usr/local/share/man/man1/
+  install manpages/genffcom.1 /usr/local/share/man/man1/
+  install manpages/temptoanim.1 /usr/local/share/man/man1/
 }
