@@ -1,7 +1,7 @@
 # Maintainer: Johan Förberg <johan@forberg.se>
 pkgname=zstd
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and efficient compression algorithm.'
 arch=('i686' 'x86_64')
 url='https://github.com/Cyan4973/zstd'
@@ -20,7 +20,7 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install
+    make PREFIX="/usr" DESTDIR="$pkgdir/" install
     install -D -m644 lib/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
