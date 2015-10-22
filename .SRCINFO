@@ -1,0 +1,31 @@
+pkgbase = matlab-r2013a
+	pkgdesc = A high-level language for numerical computation and visualization
+	pkgver = 08.01.00
+	pkgrel = 1
+	url = http://www.mathworks.com
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	depends = curl
+	depends = gconf
+	depends = glu
+	depends = gstreamer0.10-base
+	depends = gtk2
+	depends = libunwind
+	depends = libxmu
+	depends = libxp
+	depends = libxpm
+	depends = libxtst
+	depends = ncurses5-compat-libs
+	depends = nss
+	depends = portaudio
+	optdepends = xorg-fonts-100dpi: For adjustable font sizes in figures on a local xserver
+	optdepends = gcc44: For MEX support
+	optdepends = gcc43-fortran: For MEX support
+	source = file://matlab-r2013a.iso
+	source = file://matlab-r2013a.fik
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = matlab-r2013a
+
