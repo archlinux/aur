@@ -2,7 +2,7 @@
 
 pkgname=flif-git
 _pkgname=FLIF
-pkgver=r192.dad0e3f
+pkgver=r200.e028196
 pkgrel=1
 pkgdesc="Free Lossless Image Format"
 arch=("i686" "x86_64")
@@ -22,8 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-  make
-  make viewflif
+  make all
 }
 
 package() {
