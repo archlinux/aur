@@ -1,0 +1,14 @@
+pkgbase = libreoffice-extension-romanian-dictionary-pack
+	pkgdesc = LibreOffice extension that provides Romanian Dictionary Pack (spell checker, hyphenation, thesaurus)
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://extensions.openoffice.org/en/project/romanian-dictionary-pack-spell-checker-hyphenation-thesaurus
+	arch = any
+	groups = libreoffice-extensions
+	license = LGPL
+	makedepends = unzip
+	source = http://heanet.dl.sourceforge.net/project/aoo-extensions/1392/10/dict-ro.1.7.oxt
+	md5sums = c7e22272fd8de1d50fe3b077153be274
+
+pkgname = libreoffice-extension-romanian-dictionary-pack
+
