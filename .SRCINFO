@@ -1,6 +1,6 @@
 pkgbase = geiser-git
 	pkgdesc = Emacs environment to hack in Scheme, version from git
-	pkgver = 0.8.1r1098.c6f17b2
+	pkgver = 0.8.1r1100.d44d5cb
 	pkgrel = 1
 	url = http://www.nongnu.org/geiser/
 	install = geiser.install
