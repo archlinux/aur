@@ -6,17 +6,16 @@
 
 pkgname=pyrit-svn
 pkgver=308
-pkgrel=7
-pkgdesc="GPU-accelerated attack against WPA-PSK authentication, (SVN version)"
+pkgrel=8
+pkgdesc="GPU-accelerated attack against WPA-PSK authentication (SVN version)"
 url="http://code.google.com/p/pyrit/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 provides=('pyrit')
 conflicts=('pyrit')
 depends=('python2' 'libpcap')
-makedepend=('svn')
-optdepends=('cpyrit-calpp-svn: CAL++ backend'
-            'cpyrit-cuda-svn: CUDA backend'
+makedepends=('svn')
+optdepends=('cpyrit-cuda-svn: CUDA backend'
             'cpyrit-opencl-svn: OpenCL backend')
 
 source=("svn+http://pyrit.googlecode.com/svn/trunk/pyrit")
