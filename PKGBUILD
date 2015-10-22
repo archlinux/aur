@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 _pkgname=autopep8
 pkgname=python-autopep8
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Automatically formats Python code to conform to the PEP 8 style guide."
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://pypi.python.org/packages/source/a/${_pkgname}/${_pkgname}-$pkgver.tar.gz")
-md5sums=('e52f1a9a3df04d7706451a80345cf3ec')
+md5sums=('4167555f521ddd69b66f13819604f3db')
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"
