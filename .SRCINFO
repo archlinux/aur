@@ -1,0 +1,14 @@
+pkgbase = python-simplepam
+	pkgdesc = Pure Python interface to the Pluggable Authentication Modules system on Linux
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/leonnnn/python3-simplepam
+	arch = any
+	license = MIT
+	depends = pam
+	depends = python
+	source = https://github.com/leonnnn/python3-simplepam/archive/0.1.5.tar.gz
+	md5sums = d2213c1b2d28e1c67d77af29b05ddc69
+
+pkgname = python-simplepam
+
