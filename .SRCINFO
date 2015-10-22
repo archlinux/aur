@@ -1,0 +1,84 @@
+pkgbase = scaleio
+	pkgdesc = ScaleIO
+	pkgver = 1.32.2
+	pkgrel = 2
+	url = http://github.com/odeke-em/drive
+	install = scaleio-gui.install
+	arch = x86_64
+	license = Custom
+	makedepends = unzip
+	makedepends = rpmextract
+	depends = libaio
+	depends = numactl
+	depends = mutt
+	depends = bash-completion
+	depends = python2
+	options = !strip
+	options = !emptydirs
+	source = http://downloads.emc.com/emc-com/usa/ScaleIO/ScaleIO_1.32.2_Linux_SW_Download.zip
+	sha256sums = SKIP
+
+pkgname = scaleio-gui
+	pkgdesc = ScaleIO GUI
+	depends = 
+	provides = 
+	conflicts = 
+	options = !emptydirs
+	options = !strip
+
+pkgname = scaleio-gateway
+	pkgdesc = ScaleIO Gateway
+	depends = 
+	provides = 
+	conflicts = 
+	options = !emptydirs
+	options = !strip
+
+pkgname = scaleio-sdc
+	pkgdesc = ScaleIO sdc
+	depends = 
+	provides = 
+	conflicts = 
+	options = !emptydirs
+	options = !strip
+
+pkgname = scaleio-sds
+	pkgdesc = ScaleIO sds
+	depends = 
+	provides = 
+	conflicts = 
+	options = !emptydirs
+	options = !strip
+
+pkgname = scaleio-mdm
+	pkgdesc = ScaleIO mdm
+	depends = 
+	provides = 
+	conflicts = 
+	options = !emptydirs
+	options = !strip
+
+pkgname = scaleio-callhome
+	pkgdesc = ScaleIO callhome
+	depends = 
+	provides = 
+	conflicts = 
+	options = !emptydirs
+	options = !strip
+
+pkgname = scaleio-lia
+	pkgdesc = ScaleIO callhome
+	depends = 
+	provides = 
+	conflicts = 
+	options = !emptydirs
+	options = !strip
+
+pkgname = scaleio-tb
+	pkgdesc = ScaleIO tb
+	depends = 
+	provides = 
+	conflicts = 
+	options = !emptydirs
+	options = !strip
+
