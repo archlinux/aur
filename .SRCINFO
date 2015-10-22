@@ -1,0 +1,19 @@
+pkgbase = python-pyqtgraph-git
+	pkgdesc = Scientific Graphics and GUI Library for Python
+	pkgver = 0.9.10.r953.g1036edf
+	pkgrel = 1
+	url = https://github.com/pyqtgraph/pyqtgraph
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	depends = python-numpy
+	optdepends = python-opengl
+	provides = python-pyqtgraph
+	conflicts = python-pyqtgraph
+	source = python-pyqtgraph-git::git+https://github.com/pyqtgraph/pyqtgraph.git
+	sha256sums = SKIP
+
+pkgname = python-pyqtgraph-git
+
