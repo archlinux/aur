@@ -2,7 +2,7 @@
 # Maintainer: Danilo Bargen <mail at dbrgn dot ch>
 pkgname=siftgpu
 pkgver=0.5.400
-pkgrel=2
+pkgrel=3
 pkgdesc="Sift Features over GPU using GLSL or CUDA"
 arch=('i686' 'x86_64')
 url="http://cs.unc.edu/~ccwu/siftgpu/"
@@ -24,7 +24,7 @@ folder=SiftGPU
 build() {
   cd "$srcdir/$folder"
   sed -i "s/^CUDA_INSTALL_PATH = .*$/CUDA_INSTALL_PATH = \/opt\/cuda/" makefile
-  make
+  make -j1
 }
 
 package ()

@@ -1,7 +1,7 @@
 pkgbase = siftgpu
 	pkgdesc = Sift Features over GPU using GLSL or CUDA
 	pkgver = 0.5.400
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cs.unc.edu/~ccwu/siftgpu/
 	arch = i686
 	arch = x86_64
