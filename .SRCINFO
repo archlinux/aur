@@ -1,6 +1,6 @@
 pkgbase = libbuddy-git
 	pkgdesc = Simple library for managing iBuddy and Blync devices
-	pkgver = 0.3.1.8.g75f323f
+	pkgver = 0.3.1.r8.g75f323f
 	pkgrel = 1
 	url = https://github.com/zrax/libbuddy
 	arch = i686

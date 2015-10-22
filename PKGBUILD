@@ -2,7 +2,7 @@
 
 _pkgname=libbuddy
 pkgname=$_pkgname-git
-pkgver=0.3.1.8.g75f323f
+pkgver=0.3.1.r8.g75f323f
 pkgrel=1
 pkgdesc="Simple library for managing iBuddy and Blync devices"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --tags | sed 's/-/./g'
+    git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
