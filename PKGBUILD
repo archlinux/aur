@@ -1,7 +1,8 @@
 # Maintainer: Xentec <xentec at aix0 dot eu>
 
-pkgname=cppformat-git
-pkgver=1.1.0.r392.g869ed1e
+_name=cppformat
+pkgname=${_name}-git
+pkgver=1.1.0.r393.gb64913b
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
@@ -56,7 +57,7 @@ check() {
 package() {
 	cd "$pkgname"
 
-	install -D -m644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 LICENSE.rst "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 
 	cd build
 	DESTDIR="$pkgdir" make install
