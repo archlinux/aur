@@ -1,6 +1,6 @@
 pkgbase = openssh-multiple-bindaddress
 	pkgdesc = SSH connectivity tools with multiple BindAddress patch
-	pkgver = 6.7p1
+	pkgver = 7.1p1
 	pkgrel = 1
 	url = http://www.openssh.org/portable.html
 	install = install
@@ -19,20 +19,20 @@ pkgbase = openssh-multiple-bindaddress
 	backup = etc/ssh/ssh_config
 	backup = etc/ssh/sshd_config
 	backup = etc/pam.d/sshd
-	source = ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.7p1.tar.gz
+	source = ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p1.tar.gz
 	source = sshdgenkeys.service
 	source = sshd@.service
 	source = sshd.service
 	source = sshd.socket
 	source = sshd.pam
 	source = openssh_multiple_bindaddress.patch
-	sha512sums = 2469dfcd289948374843311dd9e5f7e144ce1cebd4bfce0d387d0b75cb59f3e1af1b9ebf96bd4ab6407dfa77a013c5d25742971053e61cae2541054aeaca559d
+	sha512sums = f1491ca5a0a733eb27ede966590642a412cb7be7178dcb7b9e5844bbdc8383032f4b00435192b95fc0365b6fe74d6c5ac8d6facbe9d51e1532d049e2f784e8f7
 	sha512sums = 95a72fae435d294a89a70a8017b8e625c9fdeea5569999056176a1b8b342f4616e8c6a85e77e02a90d99358dfa990f167507d98464c19c5beff895af75b7105d
 	sha512sums = d63bfaa08225a4c467945b7b849747ce33f1c10e2e34ed4dbb8f02b31d392ba3a7f3c96377222ba25bfb9eec5beebfe9130358790bfd853c180c63015b4ec249
 	sha512sums = fbf8ba29eefef98a0596d255e7dab24790d828d466f06f209c63280d31a25950c88cc354296c0da9a5bd085384fa59f296809cad1ab8db6712d8158ac74da343
 	sha512sums = ea1d31d84ca30fffa60b6eb06d1f532c75ff5a8acec893479cbe0f3669c62e5da9ee81be8549bae75d63e4b6fe69a4ffe6dfd4e3008e731e320d6da4bc4beae9
 	sha512sums = 298e47a21c337101974fa5237b3110aa3c7638b5fa53bd07661413236c8ed3212b431abaeffd875af6c9a72b4f8e1c8512e1e1960cbfff15bfee62b32d305fc3
-	sha512sums = 9801d6db7f7bac0ccbccf12e24bf37f97304eba02e69298b2000bfbc30904f1eb2365687db43e40429ba53f39b8f9581babba292b8552a8ac2654452e5b92b44
+	sha512sums = 2ca5430e521039b6b92b1bd653f5f67bca93758c0dc33c1b8f62d7eb14cf91dcab81c2d30bd1c4302f40b220476655f84f4c9b1bebea1d6b4600b7ffcb1b07c6
 
 pkgname = openssh-multiple-bindaddress
 
