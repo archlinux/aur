@@ -1,5 +1,5 @@
 pkgbase = atom-editor-beta-bin
-	pkgdesc = Chrome-based text editor from Github - Precompiled binary from official repository
+	pkgdesc = Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository
 	pkgver = 1.1.0.beta1
 	pkgrel = 1
 	url = https://github.com/atom/atom
