@@ -3,7 +3,7 @@
 #Contributor: Ramon Arriaga <ramon.arriaga@gmail.com>
 
 pkgname=gnome-shell-frippery
-pkgver=0.10.2
+pkgver=3.18.1
 pkgrel=1
 pkgdesc="An unofficial extension pack providing GNOME2 like features for GNOME3."
 arch=('any')
@@ -11,7 +11,7 @@ url="http://intgat.tigress.co.uk/rmy/extensions/index.html"
 license=('GPL2')
 depends=('gnome-shell')
 source=(http://frippery.org/extensions/$pkgname-$pkgver.tgz)
-sha256sums=('26f9f89a1ee02204918280a5d12a955c5b26bdd9f3ea8d3ac081cd4882d61ec6')
+sha256sums=('b892ab6bfd4e727ee40ad5cfd41d4300e905fa948f1ba59f39e121d2c95f852f')
 
 package() {
 cd "$srcdir/"
