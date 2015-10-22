@@ -1,7 +1,7 @@
 # Maintainer: Jörg Behrmann <behrmann@physik.fu-berlin.de>
 # Contributor: Max Schlemmer <max.schlemmer@gmail.com>
 pkgname=python2-kwant
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Python package for numerical calculations on tight-binding models with a strong focus on quantum transport"
 arch=('any')
@@ -17,7 +17,7 @@ source=(
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz.asc
 )
-sha1sums=('a18131c57ebeb2b0052ddba6ffcd72f65913a1bf'
+sha1sums=('c6a76fc7e791f93632216ce40758d8622e5335f5'
           'SKIP')
 validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 
