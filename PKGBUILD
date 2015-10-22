@@ -4,8 +4,8 @@
 # Contributor: miles g <miles@milesgroman.com>
 # Contributor: Pierre Bourdon <delroth@gmail.com>
 pkgname=python-lockfile
-pkgver=0.10.2
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc='Platform-independent file locking module'
 license=('MIT')
 url="https://pypi.python.org/pypi/lockfile"
@@ -14,17 +14,16 @@ makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/l/lockfile/lockfile-${pkgver}.tar.gz")
 arch=('any')
 options=(!emptydirs)
-md5sums=('1aa6175a6d57f082cd12e7ac6102ab15')
-sha256sums=('9e42252f17d1dd89ee31745e0c4fbe58862c25147eb0ef5295c9cd9bcb4ea2c1')
+md5sums=('494b449935f95f0f62e621b5f52640f8')
+sha256sums=('eed7e0c829135aaaf2a9df83652bc6e2cc50175d933741c25aac0394674e7fd3')
 
 prepare() {
   cd "${srcdir}/lockfile-${pkgver}"
-  2to3 -w lockfile/*.py
+  2to3 --no-diffs -w lockfile/*.py
 }
 
 package() {
   cd "${srcdir}/lockfile-${pkgver}"
-  python setup.py install --root=${pkgdir} --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
