@@ -1,0 +1,37 @@
+--- a/usr/bin/atom-beta
++++ b/usr/bin/atom-beta
+@@ -1,5 +1,8 @@
+ #!/bin/bash
+
++export PYTHON=python2
++unset GTK_IM_MODULE QT_IM_MODULE XMODIFIERS
++
+ if [ "$(uname)" == 'Darwin' ]; then
+   OS='Mac'
+ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+
+
+--- a/usr/share/applications/atom-beta.desktop
++++ b/usr/share/applications/atom-beta.desktop
+@@ -2,7 +2,7 @@
+ Name=Atom Beta
+ Comment=A hackable text editor for the 21st Century.
+ GenericName=Text Editor
+-Exec=/usr/share/atom-beta/atom %U
++Exec=env PYTHON=python2 GTK_IM_MODULE= QT_IM_MODULE= XMODIFIERS= /usr/share/atom-beta/atom %U
+ Icon=atom-beta
+ Type=Application
+ StartupNotify=true
+
+
+--- a/usr/share/atom-beta/resources/app/apm/bin/apm
++++ b/usr/share/atom-beta/resources/app/apm/bin/apm
+@@ -2,6 +2,8 @@
+
+ set -e
+
++export PYTHON=python2
++
+ initialCwd=`pwd -P`
+
+ apmPath=$0
