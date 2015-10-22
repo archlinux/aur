@@ -1,7 +1,7 @@
  
 pkgname=sox-dsd-git
-pkgver=sox.14.4.2.r12.gc05c760
-pkgrel=1
+pkgver=14.4.2.r12.gc05c760
+pkgrel=2
 pkgdesc="SoX Resampler library dsd branch"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^sox.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
