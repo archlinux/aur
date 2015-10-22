@@ -2,15 +2,15 @@
 
 pkgname=retro-gtk
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolkit to write Gtk+ 3 based libretro frontends'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='https://github.com/Kekun/retro-gtk'
-depends=('gtk3' 'retro-gobject' 'libpulse' 'clutter-gtk' 'jsk')
+depends=('gtk3' 'retro-gobject' 'libpulse' 'clutter-gtk')
 makedepends=('intltool' 'libtool' 'gobject-introspection')
-source=("https://github.com/Kekun/retro-gtk/releases/download/${pkgver}/retro-gtk-${pkgver}.tar.gz")
-sha256sums=('c1b2093129fe7067676dc50e16b1ad57f22627e64f4bbd245d0d5803e3183138')
+source=("https://github.com/Kekun/retro-gtk/releases/download/${pkgver}/retro-gtk-${pkgver}-fixed.tar.gz")
+sha256sums=('9b3d25490972278ed95cbd9913aaaea6450747aab42c0c89720748f34c9a4b7f')
 
 build() {
 	cd "$pkgname-$pkgver"
