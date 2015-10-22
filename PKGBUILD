@@ -26,7 +26,7 @@ package() {
   install -D -m644 README.md "$pkgdir/usr/share/doc/silentcast/README.md"
   install -m644 *png "$pkgdir/usr/share/doc/silentcast"
   install -m644 *gif "$pkgdir/usr/share/doc/silentcast"
-  install manpages/silentcast.1 /usr/local/share/man/man1/
-  install manpages/genffcom.1 /usr/local/share/man/man1/
-  install manpages/temptoanim.1 /usr/local/share/man/man1/
+  install manpages/silentcast.1 /usr/share/man/man1/
+  install manpages/genffcom.1 /usr/share/man/man1/
+  install manpages/temptoanim.1 /usr/share/man/man1/
 }
