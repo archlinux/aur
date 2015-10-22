@@ -8,9 +8,9 @@ arch=('x86_64' 'i686')
 url='http://sourceforge.net/projects/easyterm/'
 
 license=('GPLv3')
-depends=('qt5' 'qt5-serialport')
+depends=('qt5')
 depends=()
-makedepends=('git')
+makedepends=('git' 'qt5-serialport')
 optdepends=()
 provides=()
 conflicts=()
