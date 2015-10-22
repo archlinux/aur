@@ -1,0 +1,27 @@
+pkgbase = matlab-r2010b-sp2
+	pkgdesc = A high-level language for numerical computation and visualization
+	pkgver = 07.11.02
+	pkgrel = 1
+	url = http://www.mathworks.com
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	depends = glu
+	depends = gstreamer0.10-base
+	depends = libxmu
+	depends = libxp
+	depends = libxpm
+	depends = libxrandr
+	depends = libxtst
+	depends = ncurses5-compat-libs
+	depends = portaudio
+	optdepends = xorg-fonts-100dpi: For adjustable font sizes in figures on a local xserver
+	optdepends = gcc43: For MEX support
+	optdepends = g95: For MEX support
+	source = file://matlab-r2010b-sp2.iso
+	source = file://matlab-r2010b-sp2.fik
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = matlab-r2010b-sp2
+
