@@ -1,6 +1,6 @@
 pkgbase = python2-humanfriendly
 	pkgdesc = Human friendly output for text interfaces using Python
-	pkgver = 1.36
+	pkgver = 1.38
 	pkgrel = 1
 	url = https://humanfriendly.readthedocs.org
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python2-humanfriendly
 	provides = python2-humanfriendly
 	conflicts = humanfriendly
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/h/humanfriendly/humanfriendly-1.36.tar.gz
-	md5sums = b4f4ad3f906b9ff66ac72ba38d479680
-	sha256sums = eabb02c7cd003e5524accb861de38f738a38857b446d3c07ae271ab5fb0857e4
+	source = https://pypi.python.org/packages/source/h/humanfriendly/humanfriendly-1.38.tar.gz
+	md5sums = 22e57255d8fbd06b15ae616e907b6d49
+	sha256sums = 1706a6e72c28d4001d2f2c963e74d120d36b9b9047e4026c0909f37b3da5e558
 
 pkgname = python2-humanfriendly
 
