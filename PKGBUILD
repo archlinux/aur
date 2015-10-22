@@ -12,6 +12,7 @@ license=('BSD')
 conflicts=('cppformat')
 depends=('gcc-libs')
 makedepends=('cmake' 'git' 'doxygen' 'nodejs-less' 'python-virtualenv')
+checkdepends=('gmock')
 
 source=("$pkgname"::'git+https://github.com/cppformat/cppformat')
 sha256sums=('SKIP')
@@ -51,6 +52,7 @@ check() {
 		-Wno-dev \
 		..
 
+	make
 	make test
 }
 

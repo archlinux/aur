@@ -6,6 +6,7 @@ pkgbase = cppformat-git
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = gmock
 	makedepends = cmake
 	makedepends = git
 	makedepends = doxygen
