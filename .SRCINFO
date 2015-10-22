@@ -1,7 +1,7 @@
 pkgbase = doubanfm
 	pkgdesc = Beautiful DoubanFM player based on Qt5
 	pkgver = r35.fa417e2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sbwtw/doubanFM
 	install = doubanfm.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = doubanfm
 	makedepends = git
 	depends = gcc-libs
 	depends = qt5-base
+	depends = qt5-multimedia
 	provides = DoubanFM
 	conflicts = DoubanFM
 	source = git+https://github.com/sbwtw/doubanFM.git

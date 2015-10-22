@@ -1,12 +1,12 @@
 # Maintainer: shi bowen <sbw /at/ sbw.so>
 pkgname=doubanfm
 pkgver=r35.fa417e2
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful DoubanFM player based on Qt5"
 arch=('x86_64' 'i686')
 url="https://github.com/sbwtw/doubanFM"
 license=('GPL3')
-depends=('gcc-libs' 'qt5-base')
+depends=('gcc-libs' 'qt5-base' 'qt5-multimedia')
 makedepends=('git')
 conflicts=('DoubanFM')
 provides=('DoubanFM')
