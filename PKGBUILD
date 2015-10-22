@@ -2,7 +2,7 @@
 
 _pkgname=sidef
 pkgname=sidef-git
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="A modern object-oriented programming language. (-git version)"
 arch=('any')
@@ -29,4 +29,10 @@ package() {
     ./Build
     ./Build test
     ./Build install --install_path script=/usr/bin
+
+    cd "share/sidef"
+    for i in *
+    do
+        install -Dm644 "$i" "$pkgdir/usr/share/$_pkgname/$i"
+    done
 }
