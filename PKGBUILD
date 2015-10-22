@@ -8,7 +8,7 @@ url='https://github.com/Polymer/vulcanize#readme'
 license=()
 depends=('nodejs')
 makedepends=('npm')
-source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
+source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver.tgz")
 sha1sums=('94da4765df53c0ce181ba4ce32330312825290b8')
 
