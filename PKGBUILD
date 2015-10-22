@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=14.11.9
+pkgver=15.08.2
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ md5sums=('51e4ae2c51edf7c145d1b87bec4c344e'
          '31899d7a4caaa7bdb8b987afae191b56'
          '72a4cddcef47bdc989d49d02ee698e55'
          'cd89bfa37d6b3108fc17c531a27183a0'
-         'a6e12b6b984f229eda9988bd0419fb01')
+         '898f750b0266e276559fa7e52173031b')
 
 
 build() {
