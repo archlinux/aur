@@ -27,8 +27,8 @@ build() {
     -DRDK_INSTALL_INTREE=0 \
     -DRDK_BUILD_THREADSAFE_SSS=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_LIBRARY=/usr/lib/python3.4/config-3.4m/libpython3.4m.so \
-    -DPYTHON_INCLUDE_DIR=/usr/include/python3.4m/ \
+    -DPYTHON_LIBRARY=/usr/lib/python3.5/config-3.5m/libpython3.5m.so \
+    -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m/ \
     -DPYTHON_EXECUTABLE=/usr/bin/python
   make
 }
