@@ -1,0 +1,12 @@
+pkgbase = playbox
+	pkgdesc = A growing collection of board games.
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/playbox/
+	arch = x86_64
+	license = Eclipse Public License
+	makedepends = unzip
+	depends = gtk3
+
+pkgname = playbox
+
