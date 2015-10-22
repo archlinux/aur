@@ -1,0 +1,24 @@
+build:
+    image: crossdev/package-builder
+    commands:
+        - pacman -Sy
+        - chown -R builder:builder .
+        - sudo -u builder makepkg -s --noconfirm
+        - mkdir output
+        - mv *.tar.xz output/
+        - cd output
+        - repo-add local.db.tar.gz *.tar.xz
+        - unlink local.db
+        - tar xvf local.db.tar.gz
+        - rm local.db.tar.gz
+
+publish:
+    s3:
+        acl: public-read
+        region: "eu-west-1"
+        bucket: "crossdev"
+        access_key: $$ACCESS_KEY
+        secret_key: $$SECRET_KEY
+        source: output
+        target: /crossdev/os/x86_64/
+        recursive: true
