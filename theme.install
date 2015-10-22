@@ -1,0 +1,9 @@
+post_install() {
+  echo '************************************************************************'
+  echo 'In order to use this theme, you can use you prefered method for tweaking'
+  echo 'gnome, or simply change/put the following line inside `~/.gtkrc-2.0`:'
+  echo ''
+  echo 'gtk-theme-name="Adwaita-dark-gtk2"'
+  echo ''
+  echo '************************************************************************'
+}

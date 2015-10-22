@@ -3,6 +3,7 @@ pkgbase = adwaita-dark-gtk2-git
 	pkgver = r16.dc00e7d
 	pkgrel = 1
 	url = https://github.com/nickurak/Adwaita-dark-gtk2
+	install = theme.install
 	changelog = ChangeLog
 	arch = any
 	license = GPL

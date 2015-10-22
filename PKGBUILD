@@ -13,6 +13,7 @@ depends=('gnome-themes-standard')
 provides=("${_pkgname,,}")
 conflicts=("${_pkgname,,}")
 changelog="ChangeLog"
+install="theme.install"
 source=("${_pkgname}::git+https://github.com/nickurak/${_pkgname}.git")
 md5sums=('SKIP')
 
