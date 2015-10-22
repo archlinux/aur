@@ -1,7 +1,7 @@
 pkgbase = shellnoob
 	pkgdesc = A toolkit that eases the writing and debugging of shellcode
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reyammer/shellnoob
 	arch = any
 	license = MIT

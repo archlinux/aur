@@ -2,7 +2,7 @@
 
 pkgname=shellnoob
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit that eases the writing and debugging of shellcode"
 url="https://github.com/reyammer/shellnoob"
 arch=('any')
@@ -18,15 +18,10 @@ prepare() {
 
 package() {
   cd ${pkgname}-${pkgver}
-
-  install -Dm 755 shellnoob.py "${pkgdir}/usr/lib/python3.4/site-packages/shellnoob.py"
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/python3.4/site-packages/shellnoob.py" "${pkgdir}/usr/bin/snoob"
-
+  install -Dm 755 shellnoob.py "${pkgdir}/usr/bin/snoob"
   install -Dm 644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -d "${pkgdir}/usr/share/doc/${pkgname}/samples/x86-linux"
-  install -Dm 644 samples/x86-linux/* "${pkgdir}/usr/share/doc/${pkgname}/samples/x86-linux"
+  install -Dm 644 samples/x86-linux/* -t "${pkgdir}/usr/share/doc/${pkgname}/samples/x86-linux"
 }
 
 # vim: ts=2 sw=2 et:
