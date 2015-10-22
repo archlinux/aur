@@ -1,0 +1,36 @@
+pkgbase = sox-dsd-git
+	pkgdesc = SoX Resampler library dsd branch
+	pkgver = sox.14.4.2.r12.gc05c760
+	pkgrel = 1
+	url = http://sox.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = libao
+	makedepends = libmad
+	makedepends = libid3tag
+	makedepends = wavpack
+	makedepends = libpulse
+	makedepends = opusfile
+	makedepends = autoconf
+	depends = libltdl
+	depends = file
+	depends = libsndfile
+	depends = libpng
+	depends = lame
+	depends = opencore-amr
+	depends = gsm
+	optdepends = libao: for ao plugin
+	optdepends = libmad: for mp3 plugin
+	optdepends = libid3tag: for mp3 plugin
+	optdepends = wavpack: for wavpack plugin
+	optdepends = libpulse: for pulse plugin
+	optdepends = opusfile: for opus plugin
+	provides = sox
+	conflicts = sox
+	source = sox-dsd-git::git://github.com/mansr/sox
+	sha256sums = SKIP
+
+pkgname = sox-dsd-git
+
