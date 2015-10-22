@@ -1,53 +1,69 @@
-From 510ee02f90b5c56d1abeafbbdb9fc7d21d173224 Mon Sep 17 00:00:00 2001
-Message-Id: <510ee02f90b5c56d1abeafbbdb9fc7d21d173224.1420755946.git.mschiffer@universe-factory.net>
+From e93d805c6b39fe733b6ff223ce655a5b71ccdbf4 Mon Sep 17 00:00:00 2001
+Message-Id: <e93d805c6b39fe733b6ff223ce655a5b71ccdbf4.1445475563.git.mschiffer@universe-factory.net>
 From: Matthias Schiffer <mschiffer@universe-factory.net>
-Date: Thu, 8 Jan 2015 22:19:36 +0100
-Subject: [PATCH] multibind patch
+Date: Thu, 22 Oct 2015 02:59:14 +0200
+Subject: [PATCH] Allow specifying multiple bind addresses
 
 ---
- readconf.c   |  8 ++++--
+ readconf.c   | 10 ++++---
  readconf.h   | 12 +++++++-
  ssh.c        |  3 +-
  ssh_config   |  5 ++++
  ssh_config.5 |  7 +++--
  sshconnect.c | 89 +++++++++++++++++++++++++++++++++++-------------------------
- 6 files changed, 80 insertions(+), 44 deletions(-)
+ 6 files changed, 81 insertions(+), 45 deletions(-)
 
 diff --git a/readconf.c b/readconf.c
-index 7948ce1..95f9289 100644
+index 1d03bdf..a78ff2f 100644
 --- a/readconf.c
 +++ b/readconf.c
-@@ -1001,8 +1001,10 @@ parse_char_array:
+@@ -1031,8 +1031,10 @@ parse_char_array:
  		goto parse_string;
  
  	case oBindAddress:
 -		charptr = &options->bind_address;
 -		goto parse_string;
 +		cpptr = (char**)&options->bind_addresses;
-+		uintptr = &options->num_bind_address;
++		uintptr = &options->num_bind_addresses;
 +		max_entries = SSH_MAX_BIND_ADDRESSES;
 +		goto parse_char_array;
  
  	case oPKCS11Provider:
  		charptr = &options->pkcs11_provider;
-@@ -1576,7 +1578,7 @@ initialize_options(Options * options)
+@@ -1639,7 +1641,7 @@ initialize_options(Options * options)
  	options->clear_forwardings = -1;
  	options->log_level = SYSLOG_LEVEL_NOT_SET;
  	options->preferred_authentications = NULL;
 -	options->bind_address = NULL;
-+	options->num_bind_address = 0;
++	options->num_bind_addresses = 0;
  	options->pkcs11_provider = NULL;
  	options->enable_ssh_keysign = - 1;
  	options->no_host_authentication_for_localhost = - 1;
+@@ -2300,7 +2302,6 @@ dump_client_config(Options *o, const char *host)
+ 	dump_cfg_int(oServerAliveInterval, o->server_alive_interval);
+ 
+ 	/* String options */
+-	dump_cfg_string(oBindAddress, o->bind_address);
+ 	dump_cfg_string(oCiphers, o->ciphers ? o->ciphers : KEX_CLIENT_ENCRYPT);
+ 	dump_cfg_string(oControlPath, o->control_path);
+ 	dump_cfg_string(oHostKeyAlgorithms, o->hostkeyalgorithms ? o->hostkeyalgorithms : KEX_DEFAULT_PK_ALG);
+@@ -2324,6 +2325,7 @@ dump_client_config(Options *o, const char *host)
+ 
+ 	/* String array options */
+ 	dump_cfg_strarray(oIdentityFile, o->num_identity_files, o->identity_files);
++	dump_cfg_strarray_oneline(oBindAddress, o->num_bind_addresses, o->bind_addresses);
+ 	dump_cfg_strarray_oneline(oCanonicalDomains, o->num_canonical_domains, o->canonical_domains);
+ 	dump_cfg_strarray_oneline(oGlobalKnownHostsFile, o->num_system_hostfiles, o->system_hostfiles);
+ 	dump_cfg_strarray_oneline(oUserKnownHostsFile, o->num_user_hostfiles, o->user_hostfiles);
 diff --git a/readconf.h b/readconf.h
-index 0b9cb77..9299c4b 100644
+index bb2d552..9750fe5 100644
 --- a/readconf.h
 +++ b/readconf.h
 @@ -27,6 +27,11 @@ struct allowed_cname {
  	char *source_list;
  	char *target_list;
  };
-+#define SSH_MAX_BIND_ADDRESSES	8	/* 16 addresses, should be enough */
++#define SSH_MAX_BIND_ADDRESSES	8	/* 8 addresses should be enough */
 +
 +#define SSH_BIND_ADDRESS_ANY	"any"	/* any address mark, used in
 +					 * configuration file */
@@ -64,22 +80,22 @@ index 0b9cb77..9299c4b 100644
 +	char   *bind_addresses[SSH_MAX_BIND_ADDRESSES];	/* local socket
 +							 * address list for connection to sshd, main reason for this is ipv4 and
 +							 * ipv6 only hosts, when using global host match */
-+	u_int   num_bind_address;			/* count of bind_addresses */
++	u_int   num_bind_addresses;			/* count of bind_addresses */
 +
  	char   *pkcs11_provider; /* PKCS#11 provider */
  	int	verify_host_key_dns;	/* Verify host key using DNS */
  
 diff --git a/ssh.c b/ssh.c
-index 26e9681..be59241 100644
+index 59c1f93..47e6fdb 100644
 --- a/ssh.c
 +++ b/ssh.c
-@@ -803,7 +803,8 @@ main(int ac, char **av)
+@@ -902,7 +902,8 @@ main(int ac, char **av)
  			options.control_path = xstrdup(optarg);
  			break;
  		case 'b':
 -			options.bind_address = optarg;
 +			options.bind_addresses[0]  = optarg;
-+			options.num_bind_address = 1;
++			options.num_bind_addresses = 1;
  			break;
  		case 'F':
  			config = optarg;
@@ -97,10 +113,10 @@ index 03a228f..c1b653b 100644
 +#   This means, that ssh tries 192.168.0.1 if fail to bind, next address willbe 3004:aaaa::beef and if it fails,
 +#    uses default bind strategy, bind on any address
 diff --git a/ssh_config.5 b/ssh_config.5
-index f9ede7a..f138d17 100644
+index a47f3ca..b9aaf2f 100644
 --- a/ssh_config.5
 +++ b/ssh_config.5
-@@ -214,8 +214,11 @@ or
+@@ -242,8 +242,11 @@ or
  The default is
  .Dq no .
  .It Cm BindAddress
@@ -115,15 +131,15 @@ index f9ede7a..f138d17 100644
  Note that this option does not work if
  .Cm UsePrivilegedPort
 diff --git a/sshconnect.c b/sshconnect.c
-index ac09eae..5ba4959 100644
+index 17fbe39..777b715 100644
 --- a/sshconnect.c
 +++ b/sshconnect.c
-@@ -280,49 +280,64 @@ ssh_create_socket(int privileged, struct addrinfo *ai)
+@@ -283,49 +283,64 @@ ssh_create_socket(int privileged, struct addrinfo *ai)
  	fcntl(sock, F_SETFD, FD_CLOEXEC);
  
  	/* Bind the socket to an alternative local IP address */
 -	if (options.bind_address == NULL && !privileged)
-+	if (options.num_bind_address == 0 && !privileged)
++	if (options.num_bind_addresses == 0 && !privileged)
  		return sock;
  
 -	if (options.bind_address) {
@@ -138,13 +154,13 @@ index ac09eae..5ba4959 100644
 -			    ssh_gai_strerror(gaierr));
 -			close(sock);
 -			return -1;
-+	verbose("Trying %d addresses to connect", options.num_bind_address);
++	verbose("Trying %d addresses to connect", options.num_bind_addresses);
 +	uint i;
-+	for (i = 0; i < options.num_bind_address || i == 0; i++) {
-+		if (options.num_bind_address > 0)
++	for (i = 0; i < options.num_bind_addresses || i == 0; i++) {
++		if (options.num_bind_addresses > 0)
 +		    verbose("Trying bind address: %s", options.bind_addresses[i]);
 +
-+		if (options.num_bind_address > 0 && strncmp(options.bind_addresses[i], SSH_BIND_ADDRESS_ANY, SSH_BIND_ADDRESS_ANYlen) != 0) {
++		if (options.num_bind_addresses > 0 && strncmp(options.bind_addresses[i], SSH_BIND_ADDRESS_ANY, SSH_BIND_ADDRESS_ANYlen) != 0) {
 +			memset(&hints, 0, sizeof(hints));
 +			hints.ai_family = ai->ai_family;
 +			hints.ai_socktype = ai->ai_socktype;
@@ -221,4 +237,5 @@ index ac09eae..5ba4959 100644
  
  static int
 -- 
-2.2.1
+2.6.2
+
