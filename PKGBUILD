@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.35.0.3.g56c5055
+pkgver=1.35.2.14.g15d592f
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ pkgver() {
 prepare() {
   # fix an upstream typo 
   sed -i 's+intinsics_gen+intrinsics_gen+' \
-      $srcdir/emscripten-fastcomp/lib/Bitcode/NaCl/Writer/CMakeLists.txt
+      $srcdir/emscripten-fastcomp/lib/Bitcode/Writer/CMakeLists.txt
 
   cd $srcdir/emscripten
   
