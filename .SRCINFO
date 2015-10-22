@@ -1,0 +1,14 @@
+pkgbase = texlive-ieeetran
+	pkgdesc = LaTeX class for authors of the Institute of Electrical and Electronics Engineers (IEEE) transactions journals and conferences.
+	pkgver = 1.8b
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+	install = texlive-ieeetran.install
+	arch = any
+	license = LPPL
+	depends = texlive-bin
+	source = http://mirrors.ctan.org/macros/latex/contrib/IEEEtran.zip
+	sha1sums = 85928c0c8d286ff3dbed07c29ca6fb7d124e7c3e
+
+pkgname = texlive-ieeetran
+
