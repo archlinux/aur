@@ -6,10 +6,12 @@ pkgbase = imewlconverter
 	arch = any
 	license = GPL2
 	depends = mono
-	source = imewlconverter.exe::https://github.com/maz-1/imewlconverter/raw/master/IME%20WL%20Converter/IME%20WL%20Converter/bin/Release/%E6%B7%B1%E8%93%9D%E8%AF%8D%E5%BA%93%E8%BD%AC%E6%8D%A2.exe
+	source = imewlconverter.exe::https://github.com/maz-1/imewlconverter/raw/master/IME%20WL%20Converter/IME%20WL%20Converter/bin/Release/ime.exe
 	source = imewlconverter.desktop
-	md5sums = SKIP
-	md5sums = 80b261c97f83e33070218840cf1387b5
+	source = imewlconverter.png
+	md5sums = 3dacc38b3639c46a3d38a53a6ead7229
+	md5sums = 62a3f04c61d0466b8f82fb40257ed40f
+	md5sums = c337edefb46e2f5124748cc9c0078872
 
 pkgname = imewlconverter
 
