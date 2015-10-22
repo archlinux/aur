@@ -3,8 +3,8 @@
 # Contributors: Ner0, Sevenseven
 
 pkgname=qbittorrent-git
-pkgver=3.2.3.r0.g56beb0d
-pkgrel=1
+pkgver=3.2.4.r2.g522ff3b
+pkgrel=2
 pkgdesc="A bittorrent client written in C++ / Qt4 using the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
