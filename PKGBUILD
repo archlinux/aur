@@ -1,14 +1,14 @@
 # Maintainer: Stefano Angeleri <weltall2 AT gmail DOT com>
 # Contributor: Boris Shomodjvarac <spam AT shomodj DOT com>
 pkgname=vmtouch
-pkgver=0.8.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Portable file system cache diagnostics and control"
 arch=('i686' 'x86_64')
 url="https://github.com/hoytech/vmtouch"
 license=('BSD')
 source=("https://github.com/hoytech/vmtouch/tarball/$pkgname-$pkgver")
-md5sums=('e0b874b5685538bbbb86251cbfead2e3')
+md5sums=('ee7abf6103882d349281f5e166d11f77')
 depends=('glibc')
 
 build() {
