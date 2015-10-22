@@ -1,6 +1,6 @@
 pkgbase = i3-kde
 	pkgdesc = An improved dynamic tiling window manager (with KDE patches)
-	pkgver = 4.10.2
+	pkgver = 4.11
 	pkgrel = 1
 	url = http://i3wm.org/
 	arch = i686
