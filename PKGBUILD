@@ -1,4 +1,5 @@
 # Maintainer: Daniel E. Shub <daniel.e.shub@gmail.com>
+# Maintainer: Ido Rosen <ido@kernel.org>
 
 ## This PKGBUILD creates an Arch Linux package for the proprietary MATLAB application. A license from The MathWorks is needed in order to both build the package and to run MATLAB once the package is installed. In order to build the package the user must supply a plain text file installation key and the software. For network installations, in addition to the file installation key, a license file needs to be used for the installation. The ISO file can be downloaded from The MathWorks, generated from the official DVD, or created by using the interactive installer to download the toolboxes (installation can be made to a temporary directory and canceled once the toolboxes are downloaded). The contents of the ISO file must include: ./archives/ ./bin/ ./etc/ ./help/ ./java/ /sys ./activate.ini ./install ./installer_input.txt
 
