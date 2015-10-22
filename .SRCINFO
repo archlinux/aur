@@ -1,7 +1,7 @@
 pkgbase = angolmois-git
 	pkgdesc = A BM98-like rhythm game which supports the so-called BMS format for playing.
 	pkgver = HEAD
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mearie.org/projects/angolmois/
 	arch = i686
 	arch = x86_64

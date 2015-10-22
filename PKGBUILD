@@ -1,8 +1,8 @@
-# Maintainer : kuroclef / Kazumi M. <kuroclef@gmail.com>
+# Maintainer : Kazumi M. <kuroclef@gmail.com>
 
 pkgname=angolmois-git
 pkgver=HEAD
-pkgrel=1
+pkgrel=2
 pkgdesc='A BM98-like rhythm game which supports the so-called BMS format for playing.'
 arch=(i686 x86_64)
 url='http://mearie.org/projects/angolmois/'
