@@ -8,15 +8,14 @@
 
 pkgname=botan-stable
 pkgver=1.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Crypto library written in C++'
 license=('BSD')
 arch=('x86_64' 'i686')
 url='http://botan.randombit.net/'
 depends=('gcc-libs' 'sh' 'asio')
 makedepends=('python2' 'asio' 'git')
-provides=('botan')
-conflicts=('botan')
+provides=('botan-stable')
 validpgpkeys=('621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC')
 source=("http://botan.randombit.net/releases/Botan-${pkgver}.tgz"{,.asc})
 sha256sums+=('6b67b14746410461fe4a8ce6a625e7eef789243454fe30eab7329d5984be4163'
