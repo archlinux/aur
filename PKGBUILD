@@ -2,7 +2,7 @@
 # Maintainer: Daniel Selinger <daniel@slite.org>
 
 pkgname=i3-kde
-pkgver=4.10.2
+pkgver=4.11
 pkgrel=1
 pkgdesc='An improved dynamic tiling window manager (with KDE patches)'
 arch=('i686' 'x86_64')
