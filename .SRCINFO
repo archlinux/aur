@@ -1,0 +1,32 @@
+pkgbase = matlab-r2015a
+	pkgdesc = A high-level language for numerical computation and visualization
+	pkgver = 08.05.00
+	pkgrel = 1
+	url = http://www.mathworks.com
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	depends = gconf
+	depends = glu
+	depends = gstreamer0.10-base
+	depends = gtk2
+	depends = libunwind
+	depends = libxp
+	depends = libxpm
+	depends = libxslt
+	depends = libxtst
+	depends = ncurses5-compat-libs
+	depends = nss
+	depends = portaudio
+	depends = python2
+	depends = qtwebkit
+	depends = xerces-c
+	optdepends = gcc47: For MEX support
+	optdepends = gcc47-fortran: For MEX support
+	source = file://matlab-r2015a.iso
+	source = file://matlab-r2015a.fik
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = matlab-r2015a
+
