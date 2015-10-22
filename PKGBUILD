@@ -1,5 +1,5 @@
 # Maintainer: Samo Turk <samo.turk@gmail.com> 
-pkgname=rdkit-git
+pkgname=rdkit-git-python3
 _pkgname=RDKit
 gitname=rdkit
 pkgver=20150928
