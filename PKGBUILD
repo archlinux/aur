@@ -40,8 +40,14 @@ build() {
 
 package() {
 	echo "$srcdir/$_gitname"
-	mkdir -p "$pkgdir/usr/local/bin"
-	cp "$srcdir/$_gitname/release/EasyTerm" "$pkgdir/usr/local/bin"
+	
+	mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/share/icons/hicolor/48x48/apps"
+	mkdir -p "$pkgdir/usr/share/applications"
+	
+	cp "$srcdir/$_gitname/release/EasyTerm" "$pkgdir/usr/bin"
+	cp "$srcdir/$_gitname/resources/easyterm.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps"
+	cp "$srcdir/$_gitname/easyterm.desktop" "$pkgdir/usr/share/applications/"
 }
 
 # vim:set ts=2 sw=2 et:
