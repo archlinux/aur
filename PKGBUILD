@@ -18,6 +18,14 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
+prepare() {
+  cd "$srcdir/$_gitname"
+  sed -i 's/CFLAGS ?=/CFLAGS +=/' Makefile
+  sed -i 's/LDFLAGS ?=/LDFLAGS +=/' Makefile
+  sed -i 's/LDFLAGS ?=/LDFLAGS +=/' Makefile
+  sed -i 's/${SRC} -o/${SRC} -lncurses -o/' Makefile
+}
+
 build() {
   cd "$srcdir/$_gitname"
   make
