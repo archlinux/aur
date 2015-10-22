@@ -1,6 +1,6 @@
 # Maintainer: Dennis Stengele <d.stengele (at) derintendant (dot) de>
 pkgname=tuptime
-pkgver=3.0.00
+pkgver=3.2.01
 pkgrel=1
 pkgdesc="Report the historical and statistical running time of system"
 arch=('any')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("	$pkgname-$pkgver.tar.gz::https://github.com/rfrail3/tuptime/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('8c3a2bc21e1fa1d30cd6f0e61aaeb6fa20461bfda2e13bfc77f67d302af70a08')
+sha256sums=('330fbb7f9163fd1ec1c139a3e7652f86ddd2987f3e94e3b481f1a3f3e3da64c2')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
