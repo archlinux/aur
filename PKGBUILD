@@ -1,7 +1,8 @@
 # Maintainer: Xentec <xentec at aix0 dot eu>
 
-pkgname=glbinding-git
-pkgver=1.1.0.r34.gf7d082c
+_name=glbinding
+pkgname=${_name}-git
+pkgver=1.1.0.r88.g3738d58
 pkgrel=1
 pkgdesc="A generated C++ binding for the OpenGL API, generated using the gl.xml specification"
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ license=('MIT')
 
 depends=('libgl')
 makedepends=('cmake' 'git')
-checkdepends=('gmock' 'gtest')
+checkdepends=('gmock')
 conflicts=('glbinding')
 
 source=("$pkgname"::'git+https://github.com/cginternals/glbinding.git')
@@ -29,8 +30,6 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DOPTION_BUILD_TESTS=0 \
-		-DOPTION_BUILD_STATIC=0 \
-		-DOPTION_GL_BY_STRINGS=1 \
 		-Wno-dev \
 		..
 
@@ -50,14 +49,15 @@ check() {
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname/build"
 
-	install -D -m644 glbinding-config.cmake "${pkgdir}/usr/lib/cmake/${pkgname}/glbinding-config.cmake"
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	make DESTDIR="$pkgdir" install
 
-	cd build
-	DESTDIR="$pkgdir" make install
+	cd ..
+	install -D -m644 glbinding-config.cmake "${pkgdir}/usr/lib/cmake/${_name}/glbinding-config.cmake"
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 
+	# clean up
 	rm -r "${pkgdir}/usr/share/glbinding"
 }
 
