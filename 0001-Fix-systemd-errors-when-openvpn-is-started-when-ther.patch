@@ -1,0 +1,88 @@
+From 62b1b34a1230885a37e6108d1c988aff56350c2c Mon Sep 17 00:00:00 2001
+From: David Sommerseth <davids@redhat.com>
+Date: Tue, 13 Oct 2015 11:57:59 +0200
+Subject: [PATCH] Fix systemd errors when openvpn is started when there is no
+ tty available
+
+It was discovered that starting openvpn during boot on systemd enabled
+systems after commit b131c7b974d9d4d did not work as expected.  This is
+due to that there is no tty available at that point.
+
+This patch adds an extra check considering if systemd is available or not.
+
+Trac: #618
+Reported-by: Ismail Donmez <idonmez@suse.com>
+Signed-off-by: David Sommerseth <davids@redhat.com>
+---
+ src/openvpn/console.c | 11 +++++++----
+ src/openvpn/console.h |  3 +++
+ src/openvpn/misc.c    |  2 +-
+ 3 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/src/openvpn/console.c b/src/openvpn/console.c
+index d66d408..b0fa417 100644
+--- a/src/openvpn/console.c
++++ b/src/openvpn/console.c
+@@ -138,15 +138,14 @@ close_tty (FILE *fp)
+ 
+ #endif
+ 
+-#ifdef ENABLE_SYSTEMD
+-
+ /*
+  * is systemd running
+  */
+ 
+-static bool
++bool
+ check_systemd_running ()
+ {
++#ifdef ENABLE_SYSTEMD
+   struct stat c;
+ 
+   /* We simply test whether the systemd cgroup hierarchy is
+@@ -155,9 +154,13 @@ check_systemd_running ()
+ 
+   return (sd_booted() > 0)
+ 	  && (stat(SYSTEMD_ASK_PASSWORD_PATH, &c) == 0);
+-
++#else
++  return false;
++#endif
+ }
+ 
++#ifdef ENABLE_SYSTEMD
++
+ static bool
+ get_console_input_systemd (const char *prompt, const bool echo, char *input, const int capacity)
+ {
+diff --git a/src/openvpn/console.h b/src/openvpn/console.h
+index 268f3fe..e29dd2e 100644
+--- a/src/openvpn/console.h
++++ b/src/openvpn/console.h
+@@ -28,6 +28,9 @@
+ #include "basic.h"
+ 
+ bool
++check_systemd_running ();
++
++bool
+ get_console_input (const char *prompt, const bool echo, char *input, const int capacity);
+ 
+ #endif
+diff --git a/src/openvpn/misc.c b/src/openvpn/misc.c
+index fd1930a..6c85677 100644
+--- a/src/openvpn/misc.c
++++ b/src/openvpn/misc.c
+@@ -1058,7 +1058,7 @@ get_user_pass_cr (struct user_pass *up,
+ 	{
+ #ifndef WIN32
+ 	  /* did we --daemon'ize before asking for passwords? */
+-	  if ( !isatty(0) && !isatty(2) )
++	  if ( !isatty(0) && !isatty(2) && !check_systemd_running() )
+ 	    { msg(M_FATAL, "neither stdin nor stderr are a tty device, can't ask for %s password.  If you used --daemon, you need to use --askpass to make passphrase-protected keys work, and you can not use --auth-nocache.", prefix ); }
+ #endif
+ 
+-- 
+1.8.3.1
+
