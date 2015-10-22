@@ -7,7 +7,7 @@ pkgbase=linux-bld       # Build kernel with a different name
 _srcname=linux-4.2
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.2.2
+pkgver=4.2.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -31,13 +31,11 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"${_bfqpath}/0002-block-introduce-the-BFQ-v7r9-I-O-sched-for-4.2.patch"
 	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r9-for-4.2.0.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
-        '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
-        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
         )
 
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            '8b4578f1e1dcfbef1e39c39b861d4715aa99917af0b7c2dc324622d65884dcb5'
+            '104ba869111c7ce037fc92646f9da7352412a73e84cde7467f29cd4b973d6e78'
             'SKIP'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
             'e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2'
@@ -47,9 +45,7 @@ sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             '7379bb700a121c8790c1690646b1a8dfdf0199254a4bc660e76c0bf90a7828a5'
             '743ecc34ab048581e9998c53b1eb81c1c31d3ac9ee72d04e1e00b2bafeedbddc'
             '8d9cc296721fc4d6273ee9c7609b7d815e4061c360231eb68d060b4b7e7b7f81'
-            '40c76861b95b8fc69daf48d69dbd5abb8c0be23c9c2ac1e208c4303e6f03f016'
-            '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
-            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3')
+            '40c76861b95b8fc69daf48d69dbd5abb8c0be23c9c2ac1e208c4303e6f03f016')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -99,15 +95,7 @@ prepare() {
       patch -Np1 -i "$p"
   done
 
-  msg2 "Patches from Archlinux"
-  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
-  # https://lkml.org/lkml/2015/8/18/292
-  patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
-
-  # add not-yet-mainlined patch to fix network unavailability when iptables
-  # rules are applied during startup - happened with Shorewall; journal had
-  # many instances of this error: nf_conntrack: table full, dropping packet
-  patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
+#  msg2 "Patches from Archlinux"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
