@@ -1,10 +1,9 @@
 # Maintainer: Sebastian Lau <archlinux _at_ slau _dot_ info>
-# Contributor: Arno K <arnok at users dot noreply dot github dot com>
 
-_mintrel=rafaela
+_mintrel=rosa
 pkgname=nemo-compare
-pkgver=2.6.0
-pkgrel=3
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="Context menu comparison extension for Nemo file manager"
 arch=("any")
 url="https://github.com/linuxmint/nemo-extensions"
@@ -16,7 +15,7 @@ optdepends=('kdiff3: Additional comparison options (preferred diff, three-way, m
 	   'fldiff: Additional comparison options (preferred diff, three-way, multi-compare)')
 install=${pkgname}.install
 source=("http://packages.linuxmint.com/pool/main/n/${pkgname}/${pkgname}_${pkgver}%2b${_mintrel}.tar.gz")
-sha256sums=('92a8e7861218f572a1091a14d0d0e9f7b95b82e914948847e61c25f53f57d904')
+sha256sums=('fc50805d5912e9916a37763d6bb5be8ef2ff5f4257b71ca4bc2a64d9021f9398')
 
 
 package() {
