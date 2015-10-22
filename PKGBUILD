@@ -10,7 +10,7 @@ arch=('any')
 url='http://qt-project.org/'
 license=('LGPL')
 makedepends=()
-depends=("qt5-base" "qt5-tools" "qt5-doc=${pkgver}")
+depends=("qt5-base" "qt5-tools" "qt5-doc>=${_qtver}")
 
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("http://download.qt.io/official_releases/qt/${_qtver}/${pkgver}/single/${_pkgfqn}.tar.xz")
