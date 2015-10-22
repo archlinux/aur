@@ -55,11 +55,11 @@ check() {
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname"/build
+	
+	make DESTDIR="$pkgdir" install
+	install -D -m644 ../LICENSE.rst ${pkgdir}/usr/share/licenses/${_name}/LICENSE
 
-	install -D -m644 LICENSE.rst "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
-
-	cd build
-	DESTDIR="$pkgdir" make install
+	# clean up
+	rm -rf ${pkgdir}/usr/share/doc/${_name}/html/{.buildinfo,.doctrees,_sources}
 }
-
