@@ -10,7 +10,7 @@ source=(https://github.com/leonnnn/python3-simplepam/archive/$pkgver.tar.gz)
 md5sums=('d2213c1b2d28e1c67d77af29b05ddc69')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/python3-simplepam-$pkgver"
   python setup.py install --prefix=/usr --root="$pkgdir" || return 1
 }
 
