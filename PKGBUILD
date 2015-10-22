@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url='https://wiki.gnome.org/Apps/Games'
 install='gnome-games.install'
-provides=('gnome-games')
-conflicts=('gnome-games')
+# Arch has a group named gnome-games.. rather unfortunate naming
+#provides=('gnome-games')
+#conflicts=('gnome-games')
 depends=('retro-gtk' 'libarchive' 'libtracker-sparql')
 makedepends=('git' 'intltool' 'automake' 'autoconf' 'vala')
 source=('git+https://github.com/Kekun/gnome-games.git')

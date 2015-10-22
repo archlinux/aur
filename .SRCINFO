@@ -15,8 +15,6 @@ pkgbase = gnome-games-git
 	depends = retro-gtk
 	depends = libarchive
 	depends = libtracker-sparql
-	provides = gnome-games
-	conflicts = gnome-games
 	source = git+https://github.com/Kekun/gnome-games.git
 	sha256sums = SKIP
 
