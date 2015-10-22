@@ -3,15 +3,15 @@
 
 pkgname=oclint-git
 _pkgname=oclint
-pkgver=0.9.r728.02251e4
-_pkgver=0.9
+pkgver=0.10.1.r747.1148765
+_pkgver=0.10.1
 pkgrel=1
 pkgdesc="static code analysis tool for improving quality and reducing defects"
 arch=('i686' 'x86_64')
 url="http://oclint.org/"
 license=('BSD')
 dependencies=('clang' 'clang-analyzer' 'llvm' 'llvm-libs')
-makedepends=('cmake' 'subversion' 'python2' 'libxml2')
+makedepends=('cmake' 'subversion' 'python2' 'libxml2' 'git' 'python')
 provides=('oclint')
 conflicts=('oclint')
 source=("git+http://github.com/oclint/oclint.git"
