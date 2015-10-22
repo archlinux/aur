@@ -13,7 +13,7 @@ depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('git' 'extra-cmake-modules')
 conflicts=("${_pkgname-*}" 'plasma-applet-network-monitor-git')
 provides=("${_pkgname-*}")
-source=("git://github.com/kotelnik/$_gitpkgname.git")
+source=("git+https://github.com/kotelnik/$_gitpkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
