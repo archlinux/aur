@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgbase=micropython
 pkgname=(micropython micropython-lib)
-pkgver=1.4.5
+pkgver=1.5
 _libver=0.5
 pkgrel=1
 pkgdesc="Python3 for microcontrollers, with stdlib.  (unix version)"
@@ -13,7 +13,7 @@ makedepends=('python')
 options=('!emptydirs')
 source=("https://github.com/micropython/micropython/archive/v$pkgver.tar.gz"
         "https://github.com/micropython/micropython-lib/archive/v$_libver.tar.gz")
-md5sums=('90fed884e60693770b6a1c6b66005444'
+md5sums=('d2d0cfdcb6b5978e37f35b5b0ab39743'
          '35e72a1885b61daf391279fd1dc3c7a8')
 
 # todo:
