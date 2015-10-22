@@ -1,7 +1,7 @@
 pkgbase = sentry
 	pkgdesc = Python-based realtime logging and aggregation server.
-	pkgver = 7.7.0
-	pkgrel = 2
+	pkgver = 7.7.1
+	pkgrel = 1
 	url = http://pypi.python.org/pypi/sentry
 	install = sentry.install
 	arch = any
