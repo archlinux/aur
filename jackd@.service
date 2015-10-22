@@ -1,0 +1,13 @@
+[Unit]
+Description=JACK net
+After=sound.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/jackd.conf
+LimitRTPRIO=infinity
+LimitMEMLOCK=infinity
+User=%I
+ExecStart=/usr/bin/jackd $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

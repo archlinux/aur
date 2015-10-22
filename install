@@ -1,0 +1,21 @@
+post_install() {
+  if ! getent group jackd >/dev/null; then
+    groupadd --system jackd 
+  fi
+  if ! getent passwd jackd >/dev/null; then
+    useradd --system -c 'jackd daemon user' -g jackd -G audio -d / -s /bin/nologin jackd 
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  if getent passwd jackd >/dev/null; then
+    userdel jackd
+  fi
+  if getent group jackd >/dev/null; then
+    groupdel jackd
+  fi
+}
