@@ -1,6 +1,6 @@
 pkgbase = acestream-proxy-player
-	pkgdesc = AceProxy Player allows you to open Ace Stream links with VLC Media Player
-	pkgver = 0.2.0
+	pkgdesc = Aceproxy Player allows you to open Ace Stream links with a Media Player of your choice
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/jonian/acestream-proxy-player
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = acestream-proxy-player
 	depends = python2-psutil
 	depends = python2-urllib3
 	depends = acestream-proxy
-	depends = vlc
+	optdepends = vlc
 	provides = acestream-proxy-player
-	source = https://github.com/jonian/acestream-proxy-player/archive/v0.2.0.tar.gz
+	source = https://github.com/jonian/acestream-proxy-player/archive/v0.2.1.tar.gz
 	md5sums = SKIP
 
 pkgname = acestream-proxy-player
