@@ -1,21 +1,21 @@
 pkgbase = chromium-widevine-dev
 	pkgdesc = The Widevine Media Optimizer is a browser plugin designed for the viewing of premium video content (only for chromium-dev)
-	pkgver = 1.4.8.824
+	pkgver = 1.4.8.854
 	pkgrel = 1
 	url = http://www.google.com/chrome
 	arch = i686
 	arch = x86_64
 	license = custom:chrome
 	depends = gcc-libs
-	noextract = google-chrome-unstable-45.0.2427.7-1.i386.rpm
-	noextract = google-chrome-unstable-45.0.2427.7-1.x86_64.rpm
+	noextract = google-chrome-unstable-48.0.2541.0-1.i386.rpm
+	noextract = google-chrome-unstable-48.0.2541.0-1.x86_64.rpm
 	options = !strip
 	source = https://www.google.com/chrome/intl/en/eula_text.html
 	sha1sums = 1ffba5152cb749300a016efec909b828eba9a64a
-	source_i686 = http://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-unstable-45.0.2427.7-1.i386.rpm
-	sha1sums_i686 = f5a31ca05342ca3ecd175c40937225df375eb3eb
-	source_x86_64 = http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-45.0.2427.7-1.x86_64.rpm
-	sha1sums_x86_64 = f4d3942dc7f6bd5cd7b0758b764a69c5f0edda20
+	source_i686 = http://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-unstable-48.0.2541.0-1.i386.rpm
+	sha1sums_i686 = 1fcf99162e6e4da7c6808c171a69621ce6854a0b
+	source_x86_64 = http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-48.0.2541.0-1.x86_64.rpm
+	sha1sums_x86_64 = fefd04d7b364082685ab5b626f71a1841816c18f
 
 pkgname = chromium-widevine-dev
 
