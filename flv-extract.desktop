@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
 Encoding=UTF-8
@@ -6,6 +7,6 @@ Comment=FLV extract and mp4/mkv remuxing
 Exec=FLVExtract
 Terminal=false
 Type=Application
-Icon=vlc
+Icon=flv-extract
 Categories=AudioVideo;
 StartupNotify=false

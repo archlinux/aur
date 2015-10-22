@@ -11,9 +11,11 @@ pkgbase = flv-extract
 	source = https://github.com/maz-1/flv-extraxct/raw/master/bin/Release/FLVExtract.exe
 	source = https://github.com/maz-1/flv-extraxct/raw/master/FLVExtractCL/bin/Release/FLVExtractCL.exe
 	source = flv-extract.desktop
+	source = Rewrite.png
 	md5sums = 30de5eb15c89bb7a28a363236efc2bf5
 	md5sums = 132f4cf02d9a4cce3935eda733721c1c
-	md5sums = 8c5dd0ac900214f3e4900d1fb3af1394
+	md5sums = 1154329f0dda79902f722f6991d13be8
+	md5sums = ed0bd9b9898b78bf0e0e98ddff70a3c2
 
 pkgname = flv-extract
 

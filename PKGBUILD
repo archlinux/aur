@@ -13,10 +13,12 @@ source=(
     "https://github.com/maz-1/flv-extraxct/raw/master/bin/Release/FLVExtract.exe"
     "https://github.com/maz-1/flv-extraxct/raw/master/FLVExtractCL/bin/Release/FLVExtractCL.exe"
     "flv-extract.desktop"
+    "Rewrite.png"
 )
 md5sums=('30de5eb15c89bb7a28a363236efc2bf5'
          '132f4cf02d9a4cce3935eda733721c1c'
-         '8c5dd0ac900214f3e4900d1fb3af1394')
+         '1154329f0dda79902f722f6991d13be8'
+         'ed0bd9b9898b78bf0e0e98ddff70a3c2')
 
 package() {
     cd "${srcdir}"
@@ -24,6 +26,7 @@ package() {
     install -Dm644 FLVExtract.exe   $pkgdir/usr/share/flv-extract/FLVExtract.exe
     install -Dm644 FLVExtractCL.exe $pkgdir/usr/share/flv-extract/FLVExtractCL.exe
     install -Dm755 flv-extract.desktop $pkgdir/usr/share/applications/flv-extract.desktop
+    install -Dm644 Rewrite.png $pkgdir/usr/share/pixmaps/flv-extract.png
     echo '#!/bin/sh' | tee $pkgdir/usr/bin/{FLVExtract,FLVExtractCL} 
     echo 'mono /usr/share/flv-extract/FLVExtract.exe "$@"' >> $pkgdir/usr/bin/FLVExtract
     echo 'mono /usr/share/flv-extract/FLVExtractCL.exe "$@"' >> $pkgdir/usr/bin/FLVExtractCL
