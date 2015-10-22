@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-taskbar
 	pkgdesc = GNOME Shell Extension TaskBar
-	pkgver = 44 
+	pkgver = 44.dff5ef4 
 	pkgrel = 1
 	url = https://github.com/zpydr/gnome-shell-extension-taskbar
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = gnome-shell-extension-taskbar
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-taskbar
-
