@@ -1,7 +1,7 @@
 # Maintainer: Xentec <xentec at aix0 dot eu>
 
 pkgname=cppformat-git
-pkgver=1.1.0.r302.gd48047e
+pkgver=1.1.0.r392.g869ed1e
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
@@ -10,7 +10,8 @@ license=('BSD')
 
 conflicts=('cppformat')
 depends=('gcc-libs')
-makedepends=('cmake' 'git' 'doxygen' 'nodejs-less' 'npm' 'python-virtualenv')
+makedepends=('cmake' 'git' 'doxygen' 'nodejs-less' 'python-virtualenv')
+
 source=("$pkgname"::'git+https://github.com/cppformat/cppformat')
 sha256sums=('SKIP')
 
@@ -22,8 +23,7 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 
-	sed -i "/'-b', 'html', doc_dir, 'html'])/a\  check_call(['npm', 'install', 'less-plugin-clean-css'])" doc/build.py
-	sed -i "s/--clean-css/--plugin=..\/node_modules\/less-plugin-clean-css/" doc/build.py
+	sed -i  "s/'--clean-css',//" doc/build.py
 }
 
 build() {
@@ -43,8 +43,7 @@ build() {
 }
 
 check() {
-	cd "$pkgname"
-	cd build
+	cd "$pkgname"/build
 
 	cmake \
 		-DFMT_TEST=1 \
