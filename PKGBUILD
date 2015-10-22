@@ -1,7 +1,7 @@
 #Maintainer: zpydr <zpydr at openmailbox dot org>
 pkgname=gnome-shell-extension-taskbar
-pkgver=44
-pkgrel=3
+pkgver=44.1
+pkgrel=1
 _gitname=gnome-shell-extension-taskbar
 pkgdesc="GNOME Shell Extension TaskBar"
 arch=('any')
