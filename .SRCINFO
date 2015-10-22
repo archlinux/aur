@@ -1,21 +1,22 @@
 pkgbase = thunderbird-exchangecalendar
 	pkgdesc = Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)
 	pkgver = 3.4.0
-	pkgrel = 2
+	pkgrel = 7
 	url = https://github.com/Ericsson/exchangecalendar
 	arch = any
+	groups = office
 	license = GPL3
 	makedepends = zip
 	depends = thunderbird
 	depends = thunderbird-lightning-bin
-	provides = thunderbird-exchangecalendar
+	provides = exchangecalendar=3.4.0
 	conflicts = thunderbird-exchangecalendar-git
 	options = !strip
 	options = !libtool
 	options = !staticlibs
 	options = !docs
-	source = https://github.com/Ericsson/exchangecalendar/archive/v3.4.0.tar.gz
-	sha256sums = fc6d9fc1a645cbd32d5b5af565b7bbad7316234301d41d32434c209ba70e432f
+	source = thunderbird-exchangecalendar-3.4.0.xpi::https://github.com/Ericsson/exchangecalendar/releases/download/v3.4.0/exchangecalendar-v3.4.0.xpi
+	sha256sums = 086025910cf507aa72b4ff8d8a7811935f79d4b75f42d686b08c71a2f6d2ff9f
 
 pkgname = thunderbird-exchangecalendar
 
