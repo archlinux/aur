@@ -1,7 +1,7 @@
 pkgbase = retro-gtk
 	pkgdesc = Toolkit to write Gtk+ 3 based libretro frontends
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Kekun/retro-gtk
 	arch = i686
 	arch = x86_64
