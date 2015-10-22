@@ -1,0 +1,17 @@
+post_install() {
+   echo '==> It may be necessary to run `ghc-pkg recache` as root.'
+   # or this error might occur when trying to use GHC(I):
+   #/usr/lib/ghc/package.conf.d/package.cache: openBinaryFile: does not exist (No such file or directory)
+   #(solution from http://jonathan.bergknoff.com/journal/installing-ghc-haskell-slitaz)
+}
+
+pre_upgrade() {
+   echo '==> Unregistering cabalized packages...'
+   [[ -d /usr/share/haskell ]] && find /usr/share/haskell -maxdepth 2 -name 'unregister.sh' -exec {} \;
+   echo '==> Done.'
+}
+
+post_upgrade() {
+   echo '==> All cabalized packages need to be reinstalled now.'
+   echo '==> See /usr/share/haskell/ for a tentative list of affected packages.'
+}
