@@ -1,0 +1,17 @@
+pkgbase = adwaita-dark-gtk2-git
+	pkgdesc = Clone of Gnome3 Adwaita dark theme for GTK2.
+	pkgver = r16.dc00e7d
+	pkgrel = 1
+	url = https://github.com/nickurak/Adwaita-dark-gtk2
+	changelog = ChangeLog
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gnome-themes-standard
+	provides = adwaita-dark-gtk2
+	conflicts = adwaita-dark-gtk2
+	source = Adwaita-dark-gtk2::git+https://github.com/nickurak/Adwaita-dark-gtk2.git
+	md5sums = SKIP
+
+pkgname = adwaita-dark-gtk2-git
+
