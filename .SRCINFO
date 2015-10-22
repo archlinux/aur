@@ -1,0 +1,15 @@
+pkgbase = pycraft-git
+	pkgdesc = A Minecraft-inspired game for the terminal
+	pkgver = 20150909.89f9d57
+	pkgrel = 1
+	url = https://github.com/itsapi/pycraft
+	arch = i686
+	arch = x86_64
+	license = GPL V2
+	makedepends = git
+	depends = python
+	source = pycraft::git+https://github.com/itsapi/pycraft.git
+	sha1sums = SKIP
+
+pkgname = pycraft-git
+
