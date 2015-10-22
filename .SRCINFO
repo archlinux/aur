@@ -1,8 +1,8 @@
 pkgbase = tint3
 	pkgdesc = An independant status bar for X11 (works best with bspwm)
-	pkgver = 200
+	pkgver = 201
 	pkgrel = 1
-	url = https://github.com/tmathmeyer/tint3
+	url = https://github.com/tmathmeyer/
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -11,10 +11,9 @@ pkgbase = tint3
 	depends = libxft
 	depends = xcb-util-wm
 	depends = libxinerama
-	provides = tint3
-	conflicts = tint3
-	conflicts = tint3-cpp-git
-	source = git://github.com/tmathmeyer/tint3.git
+	conflicts = 
+	conflicts = tint3-git
+	source = git://github.com/tmathmeyer/.git
 	md5sums = SKIP
 
 pkgname = tint3
