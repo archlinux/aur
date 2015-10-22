@@ -1,3 +1,4 @@
+# Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
  
 pkgname=sox-dsd-git
 pkgver=14.4.2.r12.gc05c760
