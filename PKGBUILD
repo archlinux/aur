@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 depends=('libcryptui' 'nemo' 'gcr>=3.4.0' 'gpgme>=1.2.0' )
-makedepends=('intltool' 'gnupg' 'gnome-common' 'gnome-keyring' 'gpgme>=1.2.0')
+makedepends=('intltool' 'gnupg' 'gnome-common' 'gnome-keyring')
 groups=('nemo-extensions')
 conflicts=('nemo-seahorse' 'seahorse-nautilus' 'nemo-seahorse-git')
 optdepends=('seahorse: For seahorse support')

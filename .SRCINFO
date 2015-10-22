@@ -12,7 +12,6 @@ pkgbase = nemo-seahorse-nonautilus
 	makedepends = gnupg
 	makedepends = gnome-common
 	makedepends = gnome-keyring
-	makedepends = gpgme>=1.2.0
 	depends = libcryptui
 	depends = nemo
 	depends = gcr>=3.4.0
