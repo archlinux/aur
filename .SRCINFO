@@ -1,7 +1,7 @@
 pkgbase = canon-pixma-mx450-complete
 	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MX450 series
 	pkgver = 3.90
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.canon.de/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MX_series/MX455.aspx
 	arch = i686
 	arch = x86_64

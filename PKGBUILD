@@ -2,7 +2,7 @@
 
 pkgname=canon-pixma-mx450-complete
 pkgver=3.90
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MX450 series"
 url=('http://www.canon.de/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MX_series/MX455.aspx')
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=('http://gdlp01.c-wss.com/gds/3/0100005153/01/cnijfilter-mx450series-3.90
 md5sums=('09707c1d807b8a4008ddf24d61f1af05'
 	'48eec5bb9d80cf4790bf096f7d9c3fd1')
 
-build(){
+package(){
   cd ${srcdir}/cnijfilter-mx450series-3.90-1-deb/packages/
   install cnijfilter-common_3.90-1_i386.deb ${pkgdir}
   install cnijfilter-mx450series_3.90-1_i386.deb ${pkgdir}
