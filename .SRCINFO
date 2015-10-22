@@ -1,14 +1,15 @@
 pkgbase = joomla
 	pkgdesc = a php Content Management System (CMS) which enables you to build websites and powerful online applications.
-	pkgver = 3.4.4
+	pkgver = 3.4.5
 	pkgrel = 1
 	url = http://www.joomla.org/
 	install = joomla.install
 	arch = any
 	license = GPL
 	depends = php
-	source = https://github.com/joomla/joomla-cms/releases/download/3.4.4/Joomla_3.4.4-Stable-Full_Package.tar.bz2
-	sha256sums = 5825b7b816492104b4d2a764f1fab09b423b64fa715da08fc54cdada4d387de7
+	options = !strip
+	source = https://github.com/joomla/joomla-cms/releases/download/3.4.5/Joomla_3.4.5-Stable-Full_Package.tar.bz2
+	sha256sums = 843086d4a1069872bbb47c43e5f7772542c9ad9ef016c649d60b456899940497
 
 pkgname = joomla
 
