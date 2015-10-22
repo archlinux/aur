@@ -3,12 +3,12 @@
 
 pkgname=ethereum
 pkgver=1.0rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)"
 arch=('i686' 'x86_64')
 depends=('argtable'
-         'boost'
-         'boost-libs'
+         'boost<=1.58'
+         'boost-libs<=1.58'
          'curl'
          'crypto++'
          'gmp'
@@ -29,6 +29,7 @@ depends=('argtable'
          'qt5-quickcontrols'
          'qt5-webengine'
          'qt5-webkit'
+         'qt5-graphicaleffects'
          'readline'
          'snappy'
          'llvm'
