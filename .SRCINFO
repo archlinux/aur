@@ -1,11 +1,13 @@
 pkgbase = pdb-clone
 	pkgdesc = Clone of pdb, fast and with the remote debugging and attach features
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.google.com/p/pdb-clone
 	arch = any
 	license = GPL2
-	source = https://pypi.python.org/packages/source/p/pdb-clone/pdb-clone-1.10.tar.gz
+	makedepends = python
+	makedepends = python2
+	source = pdb-clone-1.10.tar.gz::https://pypi.python.org/packages/source/p/pdb-clone/pdb-clone-1.10.tar.gz
 	sha512sums = 22b091368750c12e3d766434c5bf21722b99f1dcb3588d6085edb320a6c3f4f35d8297d2b8a90fbd1e9d1abf9858448a45e1fa07e247978da4f42b176d50f460
 
 pkgname = python-pdb-clone

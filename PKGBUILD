@@ -3,12 +3,13 @@
 pkgbase=pdb-clone
 pkgname=('python-pdb-clone' 'python2-pdb-clone')
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Clone of pdb, fast and with the remote debugging and attach features"
 url="https://code.google.com/p/pdb-clone"
 arch=('any')
 license=('GPL2')
-source=(https://pypi.python.org/packages/source/p/${pkgbase}/${pkgbase}-${pkgver}.tar.gz)
+makedepends=('python' 'python2')
+source=(${pkgbase}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/p/${pkgbase}/${pkgbase}-${pkgver}.tar.gz)
 sha512sums=('22b091368750c12e3d766434c5bf21722b99f1dcb3588d6085edb320a6c3f4f35d8297d2b8a90fbd1e9d1abf9858448a45e1fa07e247978da4f42b176d50f460')
 
 package_python-pdb-clone() {
