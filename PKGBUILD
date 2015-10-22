@@ -2,13 +2,13 @@
 
 pkgname='ivideon-server-headless'
 pkgver='3.5.4'
-pkgrel='774'
-_rel='9e813ba48cdf'
+pkgrel='792'
+_rel='1b0c7dd7abca'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
 url=('http://ivideon.com/')
 license=('freeware')
-depends=('portaudio' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins' 'systemd')
+depends=('portaudio' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins')
 makedepends=('libarchive')
 conflicts=('ivideon-video-server-nogui')
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname}_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
@@ -17,7 +17,7 @@ source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgnam
 	"sysusers.conf"
 	"schedule.json"
 	"videoservertmp.conf")
-sha256sums=(	"7eb2a78c6217e6d6260eec4165f89fe4af62c641f2be05ee0dda838373d4259c"
+sha256sums=(	"5fd6a114d0000df0b4dfaf9534ee1cd0dda1f37edbe110c1ad549cd22af9e666"
 		"48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071"
 		"f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012"
 		"91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81"
