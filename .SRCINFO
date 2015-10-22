@@ -1,0 +1,19 @@
+pkgbase = kvirustotal
+	pkgdesc = Online antivirus and anti-phishing tool
+	pkgver = 0.30.0
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php?content=139065
+	arch = i686
+	arch = x86_64
+	groups = kde
+	groups = security
+	license = GPL3
+	makedepends = cmake
+	makedepends = automoc4
+	depends = qjson
+	depends = kdelibs
+	source = http://kde-apps.org/CONTENT/content-files/139065-kvirustotal-0.30.0.tar.bz2
+	sha256sums = 3ed9e4f0900f717803efa46d3e578f66ecfaa12593f8c6ae682ff1087ec17794
+
+pkgname = kvirustotal
+
