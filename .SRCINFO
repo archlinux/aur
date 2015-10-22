@@ -1,4 +1,4 @@
-pkgbase = rdkit-git
+pkgbase = rdkit-git-python3
 	pkgdesc = RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python.
 	pkgver = 20150928
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = rdkit-git
 	depends = python-numpy
 	provides = rdkit
 
-pkgname = rdkit-git
+pkgname = rdkit-git-python3
 
