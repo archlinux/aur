@@ -1,7 +1,7 @@
 pkgbase = colobot-gold
 	pkgdesc = Colobot GOLD is a real-time strategy game with programmable bots.
 	pkgver = 0.1.6_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = http://colobot.info
 	install = colobot.install
 	arch = i686
