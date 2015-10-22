@@ -1,9 +1,9 @@
-# Contributor: Musikolo <musikolo {at} hotmail [dot] com>
+# Maintainer Musikolo <musikolo {at} hotmail [dot] com>
 
 pkgname=kvirustotal
 pkgver=0.30.0
 pkgdesc="Online antivirus and anti-phishing tool"
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://kde-apps.org/content/show.php?content=139065"
 license=(GPL3)
@@ -22,11 +22,11 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
   _licenses_dir="${pkgdir}`kde4-config --prefix`/share/licenses/${pkgname}"
-  install -D AUTHORS ${_licenses_dir}/AUTHORS
-  install -D ChangeLog ${_licenses_dir}/ChangeLog
-  install -D COPYING ${_licenses_dir}/COPYING
-  install -D TODO ${_licenses_dir}/TODO
+  install -D AUTHORS "${_licenses_dir}/AUTHORS"
+  install -D ChangeLog "${_licenses_dir}/ChangeLog"
+  install -D COPYING "${_licenses_dir}/COPYING"
+  install -D TODO "${_licenses_dir}/TODO"
 }

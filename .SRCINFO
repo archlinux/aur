@@ -1,7 +1,7 @@
 pkgbase = kvirustotal
 	pkgdesc = Online antivirus and anti-phishing tool
 	pkgver = 0.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kde-apps.org/content/show.php?content=139065
 	arch = i686
 	arch = x86_64
