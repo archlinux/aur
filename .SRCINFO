@@ -1,6 +1,6 @@
 pkgbase = python2-kwant
 	pkgdesc = Python package for numerical calculations on tight-binding models with a strong focus on quantum transport
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://kwant-project.org/
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = python2-kwant
 	depends = python2-tinyarray
 	optdepends = python2-matplotlib: needed for plotting support and the tutorial
 	optdepends = mumps: a sparse linear algebra library for speed up and memory usage reduction
-	source = http://downloads.kwant-project.org/kwant/kwant-1.0.4.tar.gz
-	source = http://downloads.kwant-project.org/kwant/kwant-1.0.4.tar.gz.asc
-	md5sums = 78c7c84c2d5fde2f8f24212b00447b78
-	md5sums = SKIP
+	source = http://downloads.kwant-project.org/kwant/kwant-1.1.0.tar.gz
+	source = http://downloads.kwant-project.org/kwant/kwant-1.1.0.tar.gz.asc
+	sha1sums = a18131c57ebeb2b0052ddba6ffcd72f65913a1bf
+	sha1sums = SKIP
 
 pkgname = python2-kwant
 
