@@ -1,5 +1,5 @@
 pkgbase = cpyrit-opencl
-	pkgdesc = Pyrit support for Nvidia-CUDA.
+	pkgdesc = OpenCL backend for accelerated attack against WPA-PSK authentication.
 	pkgver = 0.4.0
 	pkgrel = 2
 	url = http://code.google.com/p/pyrit/

@@ -3,7 +3,7 @@
 pkgname=cpyrit-opencl
 pkgver=0.4.0
 pkgrel=2
-pkgdesc="Pyrit support for Nvidia-CUDA."
+pkgdesc="OpenCL backend for accelerated attack against WPA-PSK authentication."
 url="http://code.google.com/p/pyrit/"
 license=('GPL3')
 arch=('i686' 'x86_64')
