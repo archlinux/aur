@@ -1,0 +1,28 @@
+pkgbase = matlab-r2011b
+	pkgdesc = A high-level language for numerical computation and visualization
+	pkgver = 07.13.00
+	pkgrel = 1
+	url = http://www.mathworks.com
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	depends = fftw
+	depends = glu
+	depends = gstreamer0.10-base
+	depends = libxmu
+	depends = libxp
+	depends = libxpm
+	depends = libxrandr
+	depends = libxtst
+	depends = ncurses5-compat-libs
+	depends = portaudio
+	optdepends = xorg-fonts-100dpi: For adjustable font sizes in figures on a local xserver
+	optdepends = gcc43: For MEX support
+	optdepends = gcc43-fortran: For MEX support
+	source = file://matlab-r2011b.iso
+	source = file://matlab-r2011b.fik
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = matlab-r2011b
+
