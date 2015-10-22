@@ -1,8 +1,9 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
+# Contributor: farwayer <farwayer@gmail.com>
 
 pkgname=jack2-no-dbus-git
 pkgver=1.9.10.151.g22e843f
-pkgrel=1
+pkgrel=2
 pkgdesc='Classic jack2 without dbus enabled. For starting as daemon with systemd.'
 arch=('x86_64' 'i686')
 url='http://jackaudio.org/'

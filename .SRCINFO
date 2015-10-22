@@ -1,7 +1,7 @@
 pkgbase = jack2-no-dbus-git
 	pkgdesc = Classic jack2 without dbus enabled. For starting as daemon with systemd.
 	pkgver = 1.9.10.151.g22e843f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jackaudio.org/
 	install = install
 	arch = x86_64
