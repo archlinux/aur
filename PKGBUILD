@@ -1,8 +1,8 @@
-# Maintainer : kuroclef / Kazumi M. <kuroclef@gmail.com>
+# Maintainer : Kazumi M. <kuroclef@gmail.com>
 
 pkgname=shinonome-git
 pkgver=HEAD
-pkgrel=2
+pkgrel=3
 pkgdesc='A Linux console-based BMS player using ncurses.'
 arch=(i686 x86_64)
 url='https://github.com/kuroclef/shinonome'
