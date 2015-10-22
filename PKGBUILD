@@ -1,11 +1,11 @@
 pkgname='vault-git'
 pkgdesc='A tool for managing secrets'
-pkgver=v0.3.0.r38.g7c7b21c
-pkgrel=2
+pkgver=v0.3.1.r61.g5b5e185
+pkgrel=1
 url='https://vaultproject.io/'
 license=('MPL')
 arch=('i686' 'x86_64')
-makedepends=('godep')
+makedepends=('godep' 'go')
 depends=('glibc' 'libcap')
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
