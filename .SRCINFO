@@ -1,4 +1,4 @@
-pkgbase = pycraft-git
+pkgbase = pycraft
 	pkgdesc = A Minecraft-inspired game for the terminal
 	pkgver = 20150909.89f9d57
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = pycraft-git
 	source = pycraft::git+https://github.com/itsapi/pycraft.git
 	sha1sums = SKIP
 
-pkgname = pycraft-git
+pkgname = pycraft
 

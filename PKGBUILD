@@ -1,6 +1,6 @@
 # Maintainer: Stephen Bell <theredbaron1834 @ yahoo.com>
 
-pkgname=pycraft-git
+pkgname=pycraft
 pkgver=20150909.89f9d57
 pkgrel=1
 pkgdesc='A Minecraft-inspired game for the terminal '
