@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/ncurses/"
 license=('GPL' 'LGPL' 'MIT')
 depends=()
+conflicts=(ncurses5-compat-libs)
 makedepends=('make' 'intltool')
 source=("http://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz")
 sha256sums=('9046298fb440324c9d4135ecea7879ffed8546dd1b58e59430ea07a4633f563b')
