@@ -5,7 +5,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-headless
-pkgver=2.7
+pkgver=2.8.1
 pkgrel=1
 epoch=1
 pkgdesc='The FFmpeg media toolkit optimised for server (headless) systems'
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=('yasm' 'hardening-wrapper')
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2)
-md5sums=('5a16425b0bde1b952f58cff71b569a45')
+md5sums=('63b2cfeea930e942ff7579fd0064c5be')
 
 build() {
   cd ffmpeg-$pkgver
