@@ -2,7 +2,7 @@
 pkgname=ghc-raspbian-bin
 pkgver=7.8.4
 pkgrel=9
-pkgdesc="OpenRC apparmor init script"
+pkgdesc="GHC binaries for Raspberry Pi from Raspian repositories"
 arch=('armv6h')
 url="https://www.haskell.org/ghc/"
 license=('custom')
