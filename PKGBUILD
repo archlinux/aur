@@ -2,7 +2,7 @@
 # Contributor: Valère Monseur <valere DOT monseur AT ymail·com>
 
 pkgname=eid-viewer
-pkgver=4.1.4
+pkgver=4.1.9
 pkgrel=1
 
 pkgdesc="Viewer for Belgian Electronic Identity Card"
@@ -12,11 +12,8 @@ license=('LGPL3')
 
 depends=('java-runtime' 'gsettings-desktop-schemas' 'eid-mw')
 source=("https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v$pkgver.src.tar.gz")
-sha256sums=('64a42f9e2276f3bcb9db0fedebe58a92fca715fba304bff0de7cb0e30b516d1a')
+sha256sums=('8ff4e0a1c435efa63e08e5dd5d3e10c442ccc36299910f5d03f2243a0995092f')
 install=eid-viewer.install
-
-# SSL cert expired on July 29th; temporalily use --insecure
-DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u --insecure')
 
 build() {
   cd "$pkgname-$pkgver"
