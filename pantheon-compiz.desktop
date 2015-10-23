@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Pantheon 3D
+Comment=This session provides elementary-3d experience
+Exec=/usr/bin/pantheon-session 3d
+TryExec=compiz
+Icon=/usr/share/compiz/icon.png
+Type=Application
