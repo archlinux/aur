@@ -4,7 +4,7 @@
 
 pkgname=rkt
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
@@ -26,11 +26,11 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
+  ./autogen.sh
   ./configure --prefix=/usr \
-    --with-stage1=src \
-    --with-stage1-image-path=/usr/share/rkt/stage1.aci \
-    --enable-functional-tests
-  make -s
+    --with-stage1=coreos \
+    --with-stage1-image-path=/usr/share/rkt/stage1.aci
+  make
 }
 
 package() {
@@ -45,7 +45,7 @@ package() {
   cd "build-${pkgname}-${pkgver}"
   install -Dm755 bin/rkt "$pkgdir/usr/bin/rkt"
   install -Dm755 bin/actool "$pkgdir/usr/bin/actool"
-  install -Dm644 bin/stage1-src.aci "$pkgdir/usr/share/rkt/stage1.aci"
+  install -Dm644 bin/stage1-coreos.aci "$pkgdir/usr/share/rkt/stage1.aci"
 }
 
 # vim:set ts=2 sw=2 et:
