@@ -32,7 +32,7 @@ source=("git+https://github.com/docker/docker.git"
         docker.conf
         )
 md5sums=('SKIP'
-         '3f7ccab915fb1942f06e18946c2811d2'
+         'f95610c9cb86cb617371040dad5b95d3'
          '1a8e60447794b3c4f87a2272cc9f144f'
          '9bce988683771fb8262197f2d8196202')
 install='docker.install'
