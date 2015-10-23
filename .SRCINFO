@@ -6,6 +6,7 @@ pkgbase = muon-git
 	install = muon-git.install
 	arch = i686
 	arch = x86_64
+	groups = plasma
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = git
