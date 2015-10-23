@@ -2,7 +2,7 @@
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=drive-git
-pkgver=r369.a4cfe9a
+pkgver=r587.6cb2970
 pkgrel=1
 pkgdesc="Drive is a tiny program to pull or push Google Drive files. You need go1.2 installed in order to build the program."
 arch=('any')
@@ -26,11 +26,16 @@ build() {
   go get $_gourl
   cd $srcdir/bin/
   ./drive-gen
+  go get github.com/odeke-em/rsc/qr
+  go get github.com/martini-contrib/binding
+  cd $srcdir/$pkgname/drive-server
+  go build -o drive-server
 }
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
   install -p -m755 $srcdir/bin/drive "$pkgdir/usr/bin"
+  install -p -m755 $srcdir/$pkgname/drive-server/drive-server "$pkgdir/usr/bin"
   
   cd "$srcdir/$pkgname"
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
