@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-random-numbers
 	pkgdesc = ROS - This library contains wrappers for generating floating point values, integers, quaternions using boost libraries.
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ros.org/wiki/random_numbers
 	arch = any
 	license = BSD
