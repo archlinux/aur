@@ -3,10 +3,10 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 pkgname=fastforward
 pkgver=0.51
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="fastforward handles qmail forwarding according to a cdb database"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 url="http://cr.yp.to/fastforward.html"
 license=('unknown')
 groups=()
