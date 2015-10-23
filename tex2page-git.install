@@ -1,0 +1,11 @@
+post_install() {
+  texconfig-sys rehash
+}
+
+post_upgrade() {
+  texconfig-sys rehash
+}
+
+post_remove() {
+  texconfig-sys rehash
+}
