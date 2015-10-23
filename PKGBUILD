@@ -9,7 +9,7 @@ conflicts=('jdownloader')
 replaces=('jdownloader')
 url='http://jdownloader.org/'
 license=('GPL')
-depends=('java-runtime-common' 'wget' 'bash' 'hicolor-icon-theme' 'unzip' 'shared-mime-info' 'desktop-file-utils' 'fontconfig' 'ttf-dejavu')
+depends=('java-runtime-headless' 'wget' 'bash' 'hicolor-icon-theme' 'unzip' 'shared-mime-info' 'desktop-file-utils' 'fontconfig' 'ttf-dejavu')
 install='jdownloader.install'
 source=('JDownloader'
         'JDownloaderHeadless'

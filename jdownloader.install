@@ -8,7 +8,7 @@ post_install() {
     xdg-icon-resource forceupdate --theme hicolor &>/dev/null
     update-desktop-database -q
         update-mime-database /usr/share/mime
-    echo "Don't forget: You have to run 'JDownloaderHeadless' once before using it in systemd to configure my.Jdownloader settings"
+    echo "Don't forget: You have to run 'JDownloaderHeadless' multiple times manually until you've configured MyJdownloader settings"
 }
 
 post_upgrade() {
