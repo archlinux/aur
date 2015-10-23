@@ -6,7 +6,7 @@
 _numixicons=
 
 pkgname=jabref-git
-pkgver=2.11b3.635.gf69e933
+pkgver=2.11b4.914.gca4e829
 _pkgver=2.80dev
 _gitname="jabref"
 pkgrel=1
