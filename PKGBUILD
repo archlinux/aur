@@ -1,18 +1,16 @@
 # Maintainer: Nikola Milinković <nikmil@gmail.com>
 
-pkgname=python2-guessit-git
-pkgver=0.10.3.r29.gad6be75
-pkgrel=1
+pkgbase=python2-guessit-git
+pkgname=('python2-guessit-git' 'python-guessit-git')
+pkgver=0.11.0.r6.gded3ba7
+pkgrel=2
 _gitname="guessit"
 _gitroot="git+https://github.com/wackou/guessit"
 pkgdesc="A library for guessing information from video files."
 arch=(any)
 url="https://github.com/wackou/guessit"
-license=(LGPL)
-depends=('python2' 'python2-babelfish' 'python2-stevedore')
-makedepends=('python2-distribute')
-conflicts=('python2-guessit')
-provides=('python2-guessit=${pkgver}')
+license=('LGPL3')
+makedepends=('python2-setuptools' 'python-setuptools')
 source=("${_gitname}::${_gitroot}")
 md5sums=('SKIP')
 
@@ -21,7 +19,27 @@ pkgver () {
   git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-package() {
+package_python2-guessit-git() {
+  depends=(
+    'python2-babelfish>=0.5.4' 'python2-stevedore>=1.0.0'
+    'python2-requests>=2.0' 'python2-dateutil>=2.1'
+  )
+  conflicts=('python2-guessit')
+  provides=('python2-guessit=${pkgver}')
   cd "${srcdir}/${_gitname}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
+  mv "${pkgdir}/usr/bin/guessit" "${pkgdir}/usr/bin/guessit2"
+}
+
+package_python-guessit-git() {
+  depends=(
+    'python-babelfish>=0.5.4' 'python-stevedore>=1.0.0'
+    'python-requests>=2.0' 'python-dateutil>=2.1'
+  )
+  conflicts=('python-guessit')
+  provides=('python-guessit=${pkgver}')
+  cd "${srcdir}/${_gitname}"
+  python3 setup.py install --root="$pkgdir/" --optimize=1
+  mv "${pkgdir}/usr/bin/guessit" "${pkgdir}/usr/bin/guessit3"
+  ln -s "${pkgdir}/usr/bin/guessit3" "${pkgdir}/usr/bin/guessit"
 }
