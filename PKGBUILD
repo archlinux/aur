@@ -1,6 +1,6 @@
 # Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
 pkgname=python-regex-hg
-pkgver=170.72f05ba8c50a
+pkgver=182.7dd7e9a48804
 pkgrel=1
 pkgdesc="Alternative regular expression module, to replace re."
 arch=('i686' 'x86_64')
@@ -9,8 +9,10 @@ license=('custom')
 depends=('python')
 makedepends=('mercurial')
 _hgname='mrab-regex'
-source=("hg+https://bitbucket.org/mrabarnett/mrab-regex/$_hgname")
+source=("hg+https://bitbucket.org/mrabarnett/$_hgname")
 md5sums=(SKIP)
+provides=(python-regex)
+conflicts=(python-regex)
 
 _dist=Python3
 _regex=regex_3
