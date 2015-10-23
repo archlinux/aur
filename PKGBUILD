@@ -6,7 +6,7 @@
 pkgname=w3m-mouse
 _w3m_pkgname=w3m
 pkgver=0.5.3
-pkgrel=6
+pkgrel=7
 pkgdesc='Text-based Web browser, as well as pager (mouse enabled)'
 url='http://w3m.sourceforge.net/'
 license=('custom')
@@ -21,13 +21,15 @@ source=("http://downloads.sourceforge.net/project/${_w3m_pkgname}/${_w3m_pkgname
         'file_handle.patch'
         'https.patch'
         'perl.patch'
-        'gc72.patch')
+        'gc72.patch'
+        'w3m_rgba.patch')
 sha256sums=('e994d263f2fd2c22febfbe45103526e00145a7674a0fda79c822b97c2770a9e3'
             '7d2f4ff43eeb1b81fb6126063cf091902205c375fdcdffe0998ff51e73ff9d27'
             'dbf746808b64cd163dbcc6d299d80abdbbb7b5eff633d39c3f73dd42370633bc'
             'ab8f2b6c7e1cf2d8485fa9928784c8dbd2f0d8cd26a5c32384543eea173de986'
             '5ea04eab7b4f573ceca5092addd58b3feaa80fe5e3fd925ebfc6231dd3e9f27f'
-            '1e0e573e5fc6c0938b1941a81cffdd604a0167f7cf46e1a8479e2e10969e1d04')
+            '1e0e573e5fc6c0938b1941a81cffdd604a0167f7cf46e1a8479e2e10969e1d04'
+            '019d2a999999dc0fdc6e654b712484be33d1cbe0e9c69fa8f72a08f3cd0d17b6')
 
 prepare() {
   cd "${srcdir}/${_w3m_pkgname}-${pkgver}"
