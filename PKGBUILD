@@ -9,7 +9,7 @@
 pkgname=emacs24-git
 pkgver=24.5.50.r116792
 pkgrel=1
-pkgdesc="GNU Emacs. Official git stable branch."
+pkgdesc="GNU Emacs. Official git stable 24 branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
