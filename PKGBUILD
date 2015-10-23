@@ -6,10 +6,10 @@
 #
 pkgname=bosh
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Browsable Output SHell"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 url="http://bosh.sourceforge.net/"
 license=('unknown')
 groups=()
