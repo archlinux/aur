@@ -1,0 +1,34 @@
+pkgbase = gnome-settings-daemon-compat
+	pkgdesc = Compatibility package that provides the background, media keys and mount helpers from GNOME Settings Daemon 3.6
+	pkgver = 3.6.4
+	pkgrel = 9
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = docbook-xsl
+	makedepends = intltool
+	makedepends = xf86-input-wacom
+	makedepends = ibus
+	depends = gnome-settings-daemon
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.6/gnome-settings-daemon-3.6.4.tar.xz
+	source = standalone-background-helper.patch
+	source = standalone-media-keys-helper.patch
+	source = draw-background-unconditionally.patch
+	source = sessionisactive-port.patch
+	source = revert-input-sources.patch
+	source = xinput.patch
+	source = remove-libgsd-dependency.patch
+	source = move-desktop-file.patch
+	sha256sums = 3db993f2dbabc0c9d06a309bb12c9a7104b9cdda414ac4b1c301f5114a441c15
+	sha256sums = 2e7e40175533556493bb58795a2c1b4e53b4baba35d151e632b933c6077456d9
+	sha256sums = ddc4dfaa8083ff24a7d2fb6138b8c3fee5d4e6c60c24b4e80a39392d0c8f2162
+	sha256sums = 1b6b8216434b766e1389e876cba5d6ab61498c5824f6d2cc5d67dcf58a07842a
+	sha256sums = 0821f469cd168f3a131da513a5f9dd352c06f9bc31d57d79de4dc063fa2de915
+	sha256sums = 02da2467e287620c3b717c7ff5ffea7403cce714d5aa32e27d051b6571451e2a
+	sha256sums = fe8cafee074e36a7a393c9ae7f65db1c13a0959213aaae94ab8a3543bf20a25d
+	sha256sums = 730f11d5689892fbab9aa2896f3720e813d17e2455f34fd3a0751e49f5b4c26c
+	sha256sums = c58ace67581a1e14dc21efc8d22dd1f385cd05483d67e8a385b0767a8daf9fb4
+
+pkgname = gnome-settings-daemon-compat
+
