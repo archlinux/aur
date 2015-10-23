@@ -1,0 +1,16 @@
+pkgbase = ruby-delayer-deferred
+	pkgdesc = Deferred for Delayer
+	pkgver = 1.0.3
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-delayer>=0.0.2
+	depends = ruby-delayer<0.1
+	noextract = delayer-deferred-1.0.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/delayer-deferred-1.0.3.gem
+	sha1sums = 286cfa0ea981c093ce6a9c120fbf3ab580973b5b
+
+pkgname = ruby-delayer-deferred
+
