@@ -1,0 +1,11 @@
+--- fs-uae-launcher.orig	2015-10-23 11:52:26.586256352 +0200
++++ fs-uae-launcher	2015-10-23 11:51:29.568761923 +0200
+@@ -5,6 +5,8 @@
+ 
+ if os.environ.get("FSGS_PYTHONPATH", ""):
+     sys.path.insert(0, os.environ.get("FSGS_PYTHONPATH"))
++else:
++    sys.path.insert(0, "/usr/share/fs-uae-launcher")
+ 
+ from fs_uae_launcher.main import main
+ main()

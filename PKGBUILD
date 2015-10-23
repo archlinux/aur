@@ -5,8 +5,8 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
 pkgname=fs-uae-launcher
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.6.1
+pkgrel=1
 epoch=
 pkgdesc=""
 arch=('any')
@@ -18,7 +18,8 @@ _pkgurl="http://fs-uae.net/fs-uae/stable/${_pkgver}/${_pkgname}-${_pkgver}.tar.g
 license=('GPL2')
 groups=()
 license=("GPL2")
-depends=("fs-uae" "python2-pyqt4" "python2-setuptools" "python2-six" "hicolor-icon-theme" "xdg-utils")
+#depends=("fs-uae" "python2-pyqt4" "python2-setuptools" "python2-six" "hicolor-icon-theme" "xdg-utils")
+depends=("fs-uae" "python-pyqt5" "python-setuptools" "python-six" "hicolor-icon-theme" "xdg-utils")
 makedepends=()
 checkdepends=()
 optdepends=("p7zip: for .7z zip support")
@@ -29,19 +30,15 @@ backup=()
 options=()
 install=
 changelog=
-source=("${_pkgurl}" "remove_inbuilt_six.patch")
+#source=("${_pkgurl}" "remove_inbuilt_six.patch")
+source=("${_pkgurl}")
 noextract=()
 
-md5sums=('8c15b5198acdf6d539743b213b02eb66'
-         '0360a6f6e361e7f0005031a2c5ad4e3d')
-sha1sums=('caf97536b75b38ee545faf69c78418ff85cae094'
-          'b41845cf265b9492ce3015e0e3d6e723902eb1bc')
-sha256sums=('77a22a7a2dee7eef42fc5eb735624bf5760488df1628431e4fbc05da90ee04dd'
-            '5d24b030e463fa0af42daef09bd060d8d4cf3828a248acecfcbbdd940360764f')
-sha384sums=('8949e67dd62041e2c9383a494b6c7e2676b50e0d442e5af128c1ae943a6c50b6399f6958e65ab8b850ef0d60596f84a8'
-            '2e1e4bcbb7c2f593e00bf2fe81e8dfc463c78efc0aa7517b11ce10d61ace96092a95b9daae34df2e71554c731a4ccb2c')
-sha512sums=('b668416f3b365555fdd50ae8e4cb68335153ebe0ad96a330c8c8197344d0b79bae0eb2ecdf6da32a557ab6dafd07e7e45377ef234a509db85d370a381fb3b0d1'
-            '0226114ab8ae758a15176b28a053181cda8a3f6cd23b618e86da3f58d98a733219303c02e5431bb4634592ada5a97e19ae7c0abaa84b3a24eccd16682da2b5a7')
+md5sums=('aeb532082306c6887a7e4d0e7fceca7e')
+sha1sums=('c962ae11e1ca7a4c6069a074d759ab4db69e42ab')
+sha256sums=('47cdfe7a3cb1e8ae667c28e697d05c3a797b38a7e86759c789a2e9a3765ed470')
+sha384sums=('801f05c42f5b424d11cde5db346b7760f8ce39ad57bb43fe9fbb93e49be58e8d07e104fbddbbe0491ef418864bc618ab')
+sha512sums=('e4ea70afccb88efc33ac0d2527827db1f17921d86c5ca7691b11440ad78bb993f9a0d172650dd0b995cbdfb025dddbc101223016a899b27ea4a704702f167178')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgver}/${_pkgsrcdir}"
@@ -50,7 +47,8 @@ prepare() {
 build() {
   # Patch to remove the packaged version of python-six
   cd "${srcdir}/${_pkgname}-${_pkgver}/${_pkgsrcdir}"
-  patch -N -i ../../remove_inbuilt_six.patch
+  #patch -N -i ../../remove_inbuilt_six.patch
+  patch -N -i ../../fs-uae-launcher.patch
   make all
 }
 
@@ -61,7 +59,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${_pkgver}/${_pkgsrcdir}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  python3 setup.py install --root="${pkgdir}/" --install-lib=/usr/share/fs-uae-launcher --optimize=1
 }
 
 # EOF
