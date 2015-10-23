@@ -1,0 +1,44 @@
+diff --git a/test/TestHelper.h b/test/TestHelper.h
+index 0bf6222..acb3a4f 100644
+--- a/test/TestHelper.h
++++ b/test/TestHelper.h
+@@ -46,13 +46,13 @@ namespace test
+ 		{																\
+ 			auto msg = std::string(_message " due to an exception thrown by " \
+ 				BOOST_STRINGIZE(_statement) "\n") + boost::diagnostic_information(_e); \
+-			BOOST_CHECK_IMPL(false, msg, REQUIRE, CHECK_MSG);			\
+-		}																\
+-		catch (...)														\
+-		{																\
+-			BOOST_CHECK_IMPL(false, "Unknown exception thrown by "		\
+-				BOOST_STRINGIZE(_statement), REQUIRE, CHECK_MSG);		\
++/*			BOOST_CHECK_IMPL(false, msg, REQUIRE, CHECK_MSG);			\ */
+ 		}																\
++/*		catch (...)														\ */
++/*		{																\ */
++/*			BOOST_CHECK_IMPL(false, "Unknown exception thrown by "		\ */
++/*				BOOST_STRINGIZE(_statement), REQUIRE, CHECK_MSG);		\ */
++/*		}																\ */
+ 	}																	\
+ 	while (0)
+ 
+@@ -72,13 +72,13 @@ namespace test
+ 		{																\
+ 			auto msg = std::string(_message " due to an exception thrown by " \
+ 				BOOST_STRINGIZE(_statement) "\n") + boost::diagnostic_information(_e); \
+-			BOOST_CHECK_IMPL(false, msg, CHECK, CHECK_MSG);				\
+-		}																\
+-		catch (...)														\
+-		{																\
+-			BOOST_CHECK_IMPL(false, "Unknown exception thrown by "		\
+-				BOOST_STRINGIZE(_statement), CHECK, CHECK_MSG );		\
++/*			BOOST_CHECK_IMPL(false, msg, CHECK, CHECK_MSG);				\ */
+ 		}																\
++/*		catch (...)														\ */
++/*		{																\ */
++/*			BOOST_CHECK_IMPL(false, "Unknown exception thrown by "		\ */
++/*				BOOST_STRINGIZE(_statement), CHECK, CHECK_MSG );		\ */
++/*		}																\ */
+ 	}																	\
+ 	while (0)
+ 

@@ -2,13 +2,13 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=1.0rc2.r57.g4ee0155
+pkgver=1.0rc2.r60.g0219ad1
 pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella, latest unstable git version)"
 arch=('i686' 'x86_64')
 depends=('argtable'
-         'boost<=1.58'
-         'boost-libs<=1.58'
+         'boost'
+         'boost-libs'
          'curl'
          'crypto++'
          'gmp'
@@ -47,8 +47,12 @@ makedepends=('autoconf'
 groups=('ethereum')
 url="https://github.com/ethereum/webthree-umbrella"
 license=('GPL')
-source=(${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella)
-sha256sums=('SKIP')
+source=("${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella"
+        "libethereum-hotfix-boost-1.59.patch"
+        "solidity-hotfix-boost-1.59.patch")
+sha256sums=('SKIP'
+            '27efde29e731b48d78bda8036edbb765c1980ef83d815bcc2985921a31bd0389'
+            '11d47542cb7129dd09cd7336655734ccdb2c940cdf30bcb5e755faeeeb6470ff')
 provides=('alethfive'
           'alethone'
           'alethzero'
@@ -88,10 +92,22 @@ build() {
   cd ${pkgname%-git}
   git submodule update --init --recursive
 
+  msg 'Patching...'
+  # Fix libethereum compatibility with boost 1.59
+  pushd libethereum
+  git apply ${srcdir}/libethereum-hotfix-boost-1.59.patch
+  popd
+
+  # Fix solidity compatibility with boost 1.59
+  pushd solidity
+  git apply ${srcdir}/solidity-hotfix-boost-1.59.patch
+  popd
+
   msg 'Building...'
   mkdir -p build && pushd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-           -DCMAKE_BUILD_TYPE=Release
+           -DCMAKE_BUILD_TYPE=Release \
+           -DEVMJIT=0 -DETHASHCL=0
   make
   popd
 }
