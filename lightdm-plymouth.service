@@ -2,6 +2,7 @@
 Description=Light Display Manager
 Conflicts=getty@tty1.service plymouth-quit.service
 After=systemd-user-sessions.service getty@tty1.service plymouth-quit.service
+Wants=plymouth-quit.service
 
 [Service]
 ExecStart=/usr/bin/lightdm
