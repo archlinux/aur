@@ -5,11 +5,11 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=tass64
-pkgver=1.51.675
+pkgver=1.51.992
 pkgrel=1
 epoch=
 pkgdesc="tass64 is cross (turbo) assembler targeting the MOS 65xx series of micro processors (6502/65C02/R65C02/W65C02/65CE02/65816/DTV/65EL02)"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 url="http://tass64.sourceforge.net/"
 license=('GPLv2')
 _pkgname=64tass
@@ -28,7 +28,8 @@ install=
 changelog=
 source=("http://sourceforge.net/projects/tass64/files/source/${_pkgname}-${pkgver}-src.zip")
 noextract=()
-md5sums=('efde2926572e0c4894c637ce7abe010a')
+md5sums=('20c86623d00aebd3499f2d866151a977')
+
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver-src"
