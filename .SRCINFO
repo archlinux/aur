@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-camera-calibration-parsers
 	pkgdesc = ROS - camera_calibration_parsers contains routines for reading and writing camera calibration parameters.
 	pkgver = 1.11.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/camera_calibration_parsers
 	arch = any
 	license = BSD
