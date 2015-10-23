@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Openbox Session Settings
+Exec=obsession
+Icon=openbox
+NoDisplay=true
+# name we put on the WM spec check window
+X-GNOME-WMName=Openbox
+# gnome-session autostart
+X-GNOME-Autostart-Phase=WindowManager

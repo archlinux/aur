@@ -1,0 +1,5 @@
+#!/bin/bash
+#An additional script for setting certain options; not necessarily limited to openbox sessions
+
+#Default, empty background comes out gray. Black is cooler.
+hsetroot -solid "#000000"

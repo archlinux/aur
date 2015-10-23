@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Pantheon Lite
+Comment=This session provides elementary-lite experience
+Exec=/usr/bin/pantheon-session lite
+TryExec=openbox
+Icon=/usr/share/pixmaps/openbox.png
+Type=Application
