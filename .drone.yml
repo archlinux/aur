@@ -20,5 +20,5 @@ publish:
         access_key: $$ACCESS_KEY
         secret_key: $$SECRET_KEY
         source: output
-        target: /crossdev/os/x86_64/
+        target: /tools/os/x86_64/
         recursive: true
