@@ -1,7 +1,7 @@
 # Maintainer: Michael Herold <arch@michaeljherold.com>
 
 pkgname=scudcloud
-pkgver=1.0.84
+pkgver=1.0.85
 pkgrel=1
 pkgdesc="A Linux client for Slack"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-dbus' 'python-pyqt4')
 install=${pkgname}.install
 source=("https://github.com/raelgc/scudcloud/archive/v${pkgver}.tar.gz")
-sha256sums=('628ea707e7f5bb32d8993525b62f83766a4c5ba4dc8b035faacaffacff4e76a6')
+sha256sums=('aa14eb6ed0080f479f70feffc75f7150db59cb511563c95baf6119d39de7041b')
 
 package() {
   cd "${pkgname}-${pkgver}/scudcloud-1.0"
