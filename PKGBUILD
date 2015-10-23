@@ -3,8 +3,8 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=digikam
-pkgname=('digikam' 'kipi-plugins' 'libmediawiki')
-pkgver=4.13.0
+pkgname=('digikam' 'kipi-plugins')
+pkgver=4.14.0
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs4' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt4-gstreamer' 'imagemagick' 'eigen' 
-	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap')
+	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap' 'libmediawiki')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('d696ac88dcb3bcbd3a5da83b0fbe5e7315a43f92')
+sha1sums=('08bbded5433e442dce8ac00eb301606ef0924e8c')
 
 build() {
   mkdir build
@@ -24,8 +24,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
-    -DBUILD_tests=OFF \
-    -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON 
+    -DBUILD_tests=OFF
   make
 }
 
@@ -51,14 +50,6 @@ package_digikam() {
   #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap*.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
-}
-
-package_libmediawiki() {
-  pkgdesc="A KDE C++ interface for MediaWiki based web service as wikipedia.org"
-  depends=('kdelibs')
-
-  cd build/extra/libmediawiki
-  make DESTDIR="${pkgdir}" install
 }
 
 package_kipi-plugins() {
