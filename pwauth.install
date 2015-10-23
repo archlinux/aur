@@ -1,0 +1,13 @@
+post_install() {
+  getent group pwauth &>/dev/null || groupadd pwauth >/dev/null
+}
+
+post_upgrade() {
+        post_install
+}
+
+pre_remove() {
+  getent group pwauth &>/dev/null && groupdel pwauth >/dev/null
+}
+
+# vim:set ts=2 sw=2 et:
