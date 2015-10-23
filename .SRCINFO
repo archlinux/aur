@@ -17,7 +17,7 @@ pkgbase = plasma5-applet-awesome-widgets
 	optdepends = nvidia-utils: for GPU monitor
 	backup = etc/xdg/plasma-dataengine-extsysmon.conf
 	source = https://github.com/arcan1s/awesome-widgets/releases/download/V.3.0.1/awesome-widgets-3.0.1-src.tar.xz
-	md5sums = 71f5b358d443075540377284ee868a93
+	md5sums = 6e17215102a4965b0167c5de0c9a5222
 
 pkgname = plasma5-applet-awesome-widgets
 
