@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-actionlib-tutorials
 	pkgdesc = ROS - The actionlib_tutorials package.
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/actionlib/Tutorials
 	arch = any
 	license = BSD

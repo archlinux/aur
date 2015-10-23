@@ -7,7 +7,7 @@ pkgname='ros-indigo-actionlib-tutorials'
 pkgver='0.1.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
