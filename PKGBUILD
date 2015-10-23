@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-jabber-git
-pkgver=0.8.92.108.g1f858cc
+pkgver=0.8.92.109.ga1835de
 pkgrel=1
 pkgdesc="A Jabber client written in emacs lisp"
 arch=('any')
