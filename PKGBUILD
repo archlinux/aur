@@ -51,8 +51,8 @@ source=("${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella"
         "libethereum-hotfix-boost-1.59.patch"
         "solidity-hotfix-boost-1.59.patch")
 sha256sums=('SKIP'
-            '27efde29e731b48d78bda8036edbb765c1980ef83d815bcc2985921a31bd0389'
-            '11d47542cb7129dd09cd7336655734ccdb2c940cdf30bcb5e755faeeeb6470ff')
+            '6c89b82a5b674bb53401a3d87079c415d4d2c28accceb239beeedb940cf213a0'
+            '3d1e45a59c1f9c22564bb04d0aebacb74bffa3c7d72dc475429afb827c8be4f2')
 provides=('alethfive'
           'alethone'
           'alethzero'
@@ -89,6 +89,7 @@ pkgver() {
 }
 
 build() {
+  msg 'Updating...'
   cd ${pkgname%-git}
   git submodule update --init --recursive
 
@@ -105,9 +106,7 @@ build() {
 
   msg 'Building...'
   mkdir -p build && pushd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-           -DCMAKE_BUILD_TYPE=Release \
-           -DEVMJIT=0 -DETHASHCL=0
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
   popd
 }
