@@ -5,7 +5,7 @@
 
 _gemname=faraday
 pkgname=ruby-$_gemname
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='HTTP/REST API client library.'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(ruby ruby-multipart-post)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('69ada503e771e4c258df786aaab9599ac38bedf2')
+sha1sums=('8b326e410e8caecb41c5c20f701caeb788f7925b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
