@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-turtle-actionlib
 	pkgdesc = ROS - turtle_actionlib demonstrates how to write an action server and client with the turtlesim.
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/turtle_actionlib
 	arch = any
 	license = BSD
