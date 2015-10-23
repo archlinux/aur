@@ -5,7 +5,7 @@
 #
 
 pkgname=nvc-git
-pkgver=r2798.e2bdf92
+pkgver=r2975.584ae88
 pkgrel=1
 pkgdesc="VHDL compiler and simulator"
 arch=('i686' 'x86_64')
