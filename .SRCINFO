@@ -1,0 +1,22 @@
+pkgbase = gstreamer-properties
+	pkgdesc = GStreamer 0.10 configuration tool for GNOME (part of gnome-media)
+	pkgver = 3.4.0
+	pkgrel = 2
+	url = https://git.gnome.org/browse/gnome-media
+	install = gstreamer-properties.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	depends = gtk3
+	depends = gstreamer0.10-base-plugins
+	depends = gstreamer0.10-good-plugins
+	conflicts = gnome-media
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-media/3.4/gnome-media-3.4.0.tar.xz
+	source = fix-ui.patch
+	sha256sums = a76fac286f24d3836137ddbaab66f05e19eb5fb83cca6e375dbef040765a1d1f
+	sha256sums = c37aa39d309c9b8e2322b63499504ebf401dc3592e01c85feef5fb5e79d0e93e
+
+pkgname = gstreamer-properties
+

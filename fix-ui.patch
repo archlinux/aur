@@ -1,0 +1,19 @@
+diff -Naur gnome-media-3.4.0.orig/gstreamer-properties/gstreamer-properties.ui gnome-media-3.4.0/gstreamer-properties/gstreamer-properties.ui
+--- gnome-media-3.4.0.orig/gstreamer-properties/gstreamer-properties.ui	2012-03-28 12:50:00.000000000 +0200
++++ gnome-media-3.4.0/gstreamer-properties/gstreamer-properties.ui	2014-12-27 14:58:08.837739535 +0100
+@@ -9,7 +9,6 @@
+     <property name="resizable">False</property>
+     <property name="window_position">center</property>
+     <property name="type_hint">dialog</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="gst_properties_vbox">
+         <property name="visible">True</property>
+@@ -880,7 +879,6 @@
+     <property name="resizable">False</property>
+     <property name="destroy_with_parent">True</property>
+     <property name="type_hint">dialog</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="test_pipeline_vbox">
+         <property name="visible">True</property>
