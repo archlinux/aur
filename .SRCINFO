@@ -1,6 +1,6 @@
 pkgbase = qlcplus-qt5
 	pkgdesc = Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures.
-	pkgver = 4.10.0
+	pkgver = 4.10.1
 	pkgrel = 1
 	url = http://qlcplus.org/
 	install = qlcplus.install
@@ -15,12 +15,12 @@ pkgbase = qlcplus-qt5
 	depends = shared-mime-info
 	depends = fftw
 	optdepends = ola: Open Lighting Architecture plugin
-	provides = qlcplus=4.10.0
+	provides = qlcplus=4.10.1
 	conflicts = qlcplus
 	conflicts = qlc
 	conflicts = qlc-svn
-	source = http://www.qlcplus.org/downloads/4.10.0/qlcplus_4.10.0.tar.gz
-	md5sums = a9120c5a3c76c8d975371a0ba592fa6f
+	source = http://www.qlcplus.org/downloads/4.10.1/qlcplus_4.10.1.tar.gz
+	md5sums = 8eb02af17783037affa329d854fe366b
 
 pkgname = qlcplus-qt5
 

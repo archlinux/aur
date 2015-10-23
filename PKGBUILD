@@ -2,7 +2,7 @@
 
 pkgname=qlcplus-qt5
 _pkgname=qlcplus
-pkgver=4.10.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=('qlcplus' 'qlc' 'qlc-svn')
 install=${_pkgname}.install
 source=("http://www.qlcplus.org/downloads/${pkgver}/qlcplus_${pkgver}.tar.gz")
-md5sums=('a9120c5a3c76c8d975371a0ba592fa6f')
+md5sums=('8eb02af17783037affa329d854fe366b')
 
 build() {
   cd "${srcdir}/qlcplus-${pkgver}"
