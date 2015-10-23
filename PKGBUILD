@@ -7,7 +7,7 @@ pkgname='ros-indigo-rospack'
 pkgver='2.2.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cmake-modules

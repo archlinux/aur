@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rospack
 	pkgdesc = ROS - ROS Package Tool.
 	pkgver = 2.2.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://wiki.ros.org/rospack
 	arch = any
 	license = BSD
