@@ -1,6 +1,6 @@
 pkgbase = moc-lyrics-git
 	pkgdesc = An ncurses console audio player (with lyrics patch)
-	pkgver = 1
+	pkgver = 7c57de0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/christophgysin/moc
@@ -28,6 +28,7 @@ pkgbase = moc-lyrics-git
 	optdepends = faad2: for using the aac plugin
 	optdepends = libmodplug: for using the modplug plugin
 	provides = moc
+	conflicts = moc
 	source = git+https://github.com/christophgysin/moc#branch=lyrics
 	sha1sums = SKIP
 
