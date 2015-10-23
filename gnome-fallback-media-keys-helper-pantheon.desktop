@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Media keys
+Exec=/usr/lib/gnome-settings-daemon/gnome-fallback-media-keys-helper
+Icon=multimedia
+Terminal=false
+Type=Application
+Categories=
+NoDisplay=true
+OnlyShowIn=Pantheon;
+X-GNOME-Autostart-Notify=true
