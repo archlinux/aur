@@ -1,0 +1,29 @@
+pkgbase = krdc-git
+	pkgdesc = Remote Desktop Client
+	pkgver = r1196.088d7b9
+	pkgrel = 1
+	url = http://kde.org/applications/internet/krdc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = freerdp
+	makedepends = kdoctools
+	makedepends = kdelibs4support
+	depends = telepathy-qt5
+	depends = kcmutils
+	depends = kdnssd
+	depends = knotifyconfig
+	depends = libvncserver
+	optdepends = freerdp: RDP support
+	optdepends = keditbookmarks: to edit bookmarks
+	provides = kdenetwork-krdc
+	conflicts = kdenetwork-krdc
+	source = git://anongit.kde.org/krdc.git#branch=frameworks
+	md5sums = SKIP
+
+pkgname = krdc-git
+
