@@ -1,6 +1,6 @@
 # Maintainer: Justin Milam <jsmilam at gmail dot com>
 pkgname=sngrep
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A tool for displaying SIP call message flows from a terminal"
 arch=('x86_64' 'i386')
@@ -11,7 +11,7 @@ makedepends=('git' 'sed')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
 install=
-source=("${pkgname%}::git+https://github.com/irontec/sngrep.git#tag=v0.4.0")
+source=("${pkgname%}::git+https://github.com/irontec/sngrep.git#tag=v${pkgver%}")
 md5sums=('SKIP')
 
 build() {
