@@ -2,7 +2,7 @@
 
 _py="python2"
 pkgname=netzob-git
-pkgver=1.0
+pkgver=r3667.46ff809
 pkgrel=1
 pkgdesc="Netzob is an opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols. This package pulls the current version from master branch containing the current version."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ provides=('netzob')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "netzob"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
