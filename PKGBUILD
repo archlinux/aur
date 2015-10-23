@@ -2,7 +2,7 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr
-pkgver=3.2.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='a nondeterministic debugger'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=('custom')
 depends=('libpfm4' 'libdisasm' 'python2-pexpect')
 makedepends=('git' 'cmake')
 source=(https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz)
-sha1sums=('59ae73f4402aa522b1c46a30788982179b68222d')
+sha1sums=('e0a172121f82224bd2b8c96327eaa72816a640b2')
 
 prepare() {
 	cd $pkgname-$pkgver
