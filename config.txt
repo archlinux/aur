@@ -1,0 +1,168 @@
+# default config filename is config.txt in ~/.rssdler
+# lines (like this one) starting with # are comments and
+# will be ignored by the config parser
+# the only required section (though the program won't do much without others)
+# sections are denoted by a line starting with [
+# then the name of the section, then ending with ]
+# so this is the global section
+[global]
+# download files to this directory. Defaults to the working directory.
+downloadDir = /home/user/downloads
+
+# makes this the 'working directory' of RSSDler. anytime you specify a filename
+# without an absolute path, it will be relative to this, this s the default:
+workingDir = /home/user/.rssdler
+
+# if a file is smaller than this, it will not be downloaded.
+# if filesize cannot be determined, this is ignored.
+# Specified in MB. Remember 1024 MB == 1GB
+# 0 means no minimum, as does "None" (w/o the quotes)
+minSize = 10
+
+# if a file is larger than this, it will not be downloaded.  Default is None
+# though this line is ignored because it starts with a #
+# maxSize = None
+
+# write messages to a log file. 0 is off, 1 is just error messages,
+# 3 tells you when yo download something, 5 is very, very wordy. (default = 0)
+log = 0
+# where to write those log messages (default 'downloads.log')
+logFile = downloads.log
+
+# like log, only prints to the screen (errors to stderr, other to stdout)
+# default 3
+verbose = 3
+
+# the place where a cookie file can be found. Default None.
+cookieFile = /home/user/.mozilla/firefox/user/cookies.txt
+
+# type of cookie file to be found at above location. default MozillaCookieJar
+cookieType = MozillaCookieJar
+# other possible types are:
+# LWPCookieJar, Safari, Firefox3, KDE
+# only works if urllib = False and mechanize is installed
+# cookieType = MSIECookieJar
+
+#how long to wait between checking feeds (in minutes). Default 15.
+scanMins = 10
+
+# how long to wait between http requests (in seconds). Default 0
+sleepTime = 2
+
+# to exit after scanning all the feeds, or to keep looping. Default False.
+runOnce = True
+
+# set to true to avoid having to install mechanize.
+# side effects described in help. Default False.
+# will fallback to a sane value if mechanize is not installed
+urllib = True
+
+# the rest of the global options are described in the help,
+# let's move on to a thread
+
+###################
+# each section represents a feed, except for the one called global.
+# this is the thread: somesite
+###################
+[somesite]
+# just link to the feed
+link = http://somesite.com/rss.xml
+
+# Default None, defers to maxSize in global, otherwise,
+# files larger than this size (in MB) will not be downloaded
+# only applies to the specific thread
+# if set to 0, means no maximum and overrides global option
+maxSize = 2048
+
+# like maxSize, only file smaller than this will not be downloaded
+# if set to 0, means no minimum, like maxSize. in MB.
+minSize = 10
+
+# if specified, will download files in this thread to this directory
+directory = /home/user/someotherfiles
+
+# if you do not know what regular expressions are, stop now, do not pass go,
+# do not collect USD200 (CAN195)
+# google "regular expressions tutorial" and find one that suits your needs
+# one with an emphasis on Python may be to your advantage
+
+# Now, without any of the download<x> or regEx options (detailed below)
+# every item in the rss feed will be downloaded,
+# provided that it has not previously been downloaded
+# all the regular expression should be specified in lower case
+# (except for character classes and other special regular expression characters,
+#  if you know what that means)
+# as the string that it is searched against is set to lower case.
+# Starting with regExTrue (RET)
+# let's say we want to make sure there are two numbers,
+# separated by something not a number
+# for everything we download in this thread.
+regExTrue = \d[^\d]+\d
+# the default value, None, makes RET ignored
+# regExTrue = None
+
+# but we want to make sure we don't get anything with nrg or ccd in the name
+# because those are undesirable formats, but we want to make sure to not match
+# a name that may have those as a substring e.g. enrgy
+# (ok, not a great example, come up with something better and I'll include it)
+# REF from now on (# indicates a word boundary)
+regExFalse = (\\bnrg\\b|\\bccd\\b)
+# the default value, which means it will be ignored
+# regExFalse = None
+
+# at this point, as long as the file gets a positive hit in RET
+# and no hit in REF, the file will be downloaded
+# equivalently said, RET and REF are necessary and sufficient conditions.
+# lengthy expressions can be constructed
+# to deal with every combination of things you want, but there is
+# a looping facility to allow us to get more fine grained control
+#  over the items we want to grab without having to have hundreds
+# of characters on a single line, which of course gets rather unreadable
+
+# making use of this looping facility makes RET and REF neccessary
+# (though that can be bypassed too, more later) conditions
+# however, they are no longer sufficient....
+# download<x> is like regExTrue, but begins the definition of an 'item' and
+# we can associate further actions with it if we so choose
+# put a non-negative integer where <x> goes
+download1 = ubuntu
+# but say we love ubuntu, and want to always grab everything that mentions it
+# so we want to ignore regExTrue, this 'bypasses' RET when set to False.
+# Default True.
+download1True = False
+
+# we could also bypass REF. but we really don't like nrg,
+# but we'll deal with ccd's, just for ubuntu
+# to be clear, download<x>False is a mixed type option,
+# taking both True, False for dealing with the global REF
+# or a string (like here) to specify what amounts to a 'localized REF',
+# which effectively says False to the global REF
+# while at the same time specifying the local REF
+download1False = \\bnrg\\b
+
+# with %()s interpolation, we can effectively add on to REF in a basic manner
+# say for Ubuntu, we don't want want the 'hoary version,
+download1False = hoary.*%(regExFalse)s
+# this will insert the value for regExFalse in place of the %()s expression
+# resulting in: hoarsy.*(#nrg#|#ccd#)
+# note the parantheses are there b/c they are in the original REF
+
+# we don't want to download things like howto, md5 files, etc,
+# so we can set a minSize (MB)
+# this overrides the global/thread minSize when not set to None
+# Default None. works like thread-based minSize.
+# a maxSize option is also available
+download1MinSize = 10
+download1MaxSize = 750
+
+# and finally, we can put our ubuntu stuff in a special folder, if we choose
+download1Dir = /home/user/ubuntustuff
+
+# note that the numbers are not important
+# as long as the options correspond to each other
+# there is no download2, and that is ok.
+download3 = fedora
+
+# you have to have the base setting to have the other options
+# this will not work b/c download4 is not specified
+# download4Dir = /home/user/something

@@ -1,0 +1,53 @@
+--- rssdler.py	2009-10-01 14:04:26.000000000 +0000
++++ rssdler.py.new	2011-06-04 18:10:24.922457392 +0000
+@@ -54,6 +54,8 @@
+ try: import mechanize
+ except ImportError: mechanize = None
+ 
++socket.setdefaulttimeout(10)
++
+ # # # # #
+ # == Globals ==
+ # # # # #
+@@ -189,8 +191,8 @@
+ # because those are undesirable formats, but we want to make sure to not match
+ # a name that may have those as a substring e.g. enrgy 
+ # (ok, not a great example, come up with something better and I'll include it)
+-# REF from now on (\b indicates a word boundary)
+-regExFalse = (\bnrg\b|\bccd\b)
++# REF from now on (\\b indicates a word boundary)
++regExFalse = (\\bnrg\\b|\\bccd\\b)
+ # the default value, which means it will be ignored
+ # regExFalse = None
+ 
+@@ -228,7 +230,7 @@
+ # say for Ubuntu, we don't want want the 'hoary version, 
+ download1False = hoary.*%(regExFalse)s
+ # this will insert the value for regExFalse in place of the %()s expression
+-# resulting in: hoarsy.*(\bnrg\b|\bccd\b)
++# resulting in: hoarsy.*(\\bnrg\\b|\\bccd\\b)
+ # note the parantheses are there b/c they are in the original REF
+ 
+ # we don't want to download things like howto, md5 files, etc, 
+@@ -781,7 +783,11 @@
+         return False
+     filename = getFilenameFromHTTP(data.info(), link)
+     if not filename: return False
+-    size, data2 = getFileSize(data.info(), data)
++    try: size, data2 = getFileSize(data.info(), data)
++    except Exception, m:
++        logging.critical(''.join((traceback.format_exc(), os.linesep,
++          u'error determining size of file %s' % filename)))
++        return False
+     if size and not checkFileSize(size, threadName, downItemConfig): 
+         del data, data2
+         return None
+@@ -2037,6 +2043,8 @@
+             logging.info(u"  Attempting to download %s" % getSaved().failedDown[i]['link'])
+             if downloadFile( **getSaved().failedDown[i] ):
+                 logging.info(u"Success!")
++                logging.debug(u"adding to saved downloads: %s" % getSaved().failedDown[i]['link'])
++                getSaved().downloads.append(getSaved().failedDown[i]['link'])
+                 del getSaved().failedDown[ i ]
+                 getSaved().save()
+             else:
