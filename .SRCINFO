@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-pluginlib-tutorials
 	pkgdesc = ROS - The pluginlib_tutorials package.
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/pluginlib/Tutorials
 	arch = any
 	license = BSD
