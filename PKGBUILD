@@ -13,7 +13,7 @@ makedepends=()
 backup=()
 install=''
 source=("https://release.gitkraken.com/linux/gitkraken-amd64.tar.gz")
-md5sums=('6c15078d83302c74fb121ca2274730bf')
+md5sums=('eaf341d5dc59856158905c28eb858dfc')
 
 package() {
 	install -d "$pkgdir"/opt
