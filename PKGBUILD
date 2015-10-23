@@ -4,18 +4,17 @@ pkgname=scid
 _pkgname=Scid
 pkgver=4.6.2
 _pkgver=4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free Chess Database Application"
 url="http://scid.sourceforge.net"
 arch=('x86_64' 'i686')
 license=('GPL')
 # namcap says 'tk' is not needed. tlc is needed but tk has it as a dependency.
-depends=('python' 'tk')
+depends=('python' 'tk' 'desktop-file-utils')
 optdepends=('snack: for sound support'
             'tkimg: for using some alternate sets of pieces')
-
 options=('!emptydirs')
-
+install="${pkgname}.install"
 source=("http://sourceforge.net/projects/${pkgname}/files/${_pkgname}/${_pkgname}%20${_pkgver}/${pkgname}-${pkgver}.zip")
 md5sums=('9b850365ffd91264914995cf0b32a0bf')
 
@@ -30,18 +29,19 @@ package () {
   make DESTDIR=$pkgdir install
   msg "Creating Desktop file"
   install -Dm644 $srcdir/$pkgname-src/svg/scid.ico $pkgdir/usr/share/scid/scid.ico
-  echo "
+  cat > $srcdir/$pkgname.desktop <<EOF
 [Desktop Entry]
 Version=1.0
 Name=${_pkgname}
 Comment=${pkgdesc}
-Exec=${pkgname}
+Exec=${pkgname} %F
+MimeType=application/x-chess-pgn
 Icon=/usr/share/${pkgname}/${pkgname}.ico
 Categories=Game;BoardGame;
 Type=Application
 Terminal=false
 StartupNotify=false
-" > $srcdir/$pkgname.desktop
+EOF
 
   install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
