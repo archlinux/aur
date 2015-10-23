@@ -20,7 +20,6 @@ sha256sums=('SKIP'
 	    'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb')
 install="$pkgname.install"
 
-# Based on PKGBUILD for telegram-desktop-git
 
 prepare() {
 	cd "$srcdir/tdesktop"
@@ -46,14 +45,10 @@ prepare() {
 		echo 'INCLUDEPATH += "/usr/lib/gtk-2.0/include"'
 		echo 'INCLUDEPATH += "/usr/include/opus"'
 	) >> "$srcdir/tdesktop/Telegram/Telegram.pro"
-	
-	# FIXME qmake (for Telegram.pro) does not generate the correct paths if the files does not exists
-	#mkdir -p "$srcdir"/tdesktop/Telegram/GeneratedFiles
-	#awk -v srcdir="$srcdir" '$1 == "PRE_TARGETDEPS" { for (i=3; i <= NF; i++) print "touch -t 197001010000", srcdir "/tdesktop/Telegram/" $i }' "$srcdir"/tdesktop/Telegram/Telegram.pro | sh -s
 }
 
 build() {
-	# Building patched Qt
+	# Build patched Qt
 	cd "$srcdir/Libraries/QtStatic"
 	./configure -prefix "$srcdir/qt" -release -opensource -confirm-license -qt-xcb -no-opengl -static -nomake examples -nomake tests -skip qtquick1 -skip qtdeclarative
 	make module-qtbase module-qtimageformats
@@ -61,26 +56,28 @@ build() {
 	
 	export PATH="$srcdir/qt/bin:$PATH"
 	
-	mkdir -p "$srcdir/tdesktop/Linux/"{Debug,Release}Intermediate{Style,Emoji,Lang,Updater,}
+	# Build MetaStyle
+	mkdir -p "$srcdir/tdesktop/Linux/DebugIntermediateStyle"
+	cd "$srcdir/tdesktop/Linux/DebugIntermediateStyle"
+	qmake CONFIG+=debug "../../Telegram/MetaStyle.pro"
+	make
 	
-	local build_type x
-	for build_type in debug release; do
-		for x in Style Lang; do
-			cd "$srcdir/tdesktop/Linux/${build_type^}Intermediate$x"
-			qmake CONFIG+="${build_type}" "../../Telegram/Meta$x.pro"
-			make
-		done
-		
-		cd "$srcdir/tdesktop/Linux/${build_type^}Intermediate"
-		# FIXME: upstream likes broken things
-		if ! [ -d "$srcdir/tdesktop/Telegram/GeneratedFiles" ]; then
-			qmake CONFIG+="${build_type}" "../../Telegram/Telegram.pro"
-			awk '$1 == "PRE_TARGETDEPS" { $1=$2="" ; print }' "$srcdir/tdesktop/Telegram/Telegram.pro" | xargs xvfb-run -a make
-		fi
-		
-		qmake CONFIG+="${build_type}" "../../Telegram/Telegram.pro"
-		xvfb-run -a make
-	done
+	# Build MetaLang
+	mkdir -p "$srcdir/tdesktop/Linux/DebugIntermediateLang"
+	cd "$srcdir/tdesktop/Linux/DebugIntermediateLang"
+	qmake CONFIG+=debug "../../Telegram/MetaLang.pro"
+	make
+	
+	# Build Telegram Desktop
+	mkdir -p "$srcdir/tdesktop/Linux/ReleaseIntermediate"
+	cd "$srcdir/tdesktop/Linux/ReleaseIntermediate"
+	
+	qmake CONFIG+=release "../../Telegram/Telegram.pro"
+	local pattern="^PRE_TARGETDEPS +\?="
+	grep "$pattern" "$srcdir/tdesktop/Telegram/Telegram.pro" | sed "s/$pattern//g" | xargs xvfb-run -a make
+	
+	qmake CONFIG+=release "../../Telegram/Telegram.pro"
+	xvfb-run -a make
 }
 
 package() {
