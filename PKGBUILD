@@ -2,7 +2,7 @@
 # code adapted from: Meow < a.li.devtty at gmail dot com >
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=0.99.724
+pkgver=0.99.732
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 
-_x86md5=df94f4eca8fda0956bd8106c1faaebb6
-_x64md5=055a743d76160ea5d46471930773cd4d
+_x86md5=4b2f1edf1a077b8651a78df5d138282e
+_x64md5=e183e48fe61ebb5b1c3ece7b3027c8cb
 
 case "$CARCH" in
 	'i686')
@@ -71,11 +71,14 @@ exec /usr/lib/rstudio/bin/rstudio
   sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-preview-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
 
   # pandoc fix
+  SYS_PANDOC=`which pandoc`
+  SYS_PANDOC_CITEPROC=`which pandoc-citeproc`
    cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
    mv pandoc pandoc_rstudio
-   ln -sf /usr/bin/pandoc pandoc
+   # ln -sf /usr/bin/pandoc pandoc
+   ln -s $SYS_PANDOC /usr/lib/rstudio/bin/pandoc/pandoc
    mv pandoc-citeproc pandoc-citeproc_rstudio
-   ln -sf /usr/bin/pandoc-citeproc pandoc-citeproc
-
+   # ln -sf /usr/bin/pandoc-citeproc pandoc-citeproc
+   ln -s $SYS_PANDOC_CITEPROC /usr/lib/rstudio/bin/pandoc/pandoc-citeproc
 }
 # vim:ft=sh tabstop=2 expandtab
