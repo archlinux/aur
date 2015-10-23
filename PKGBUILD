@@ -1,6 +1,6 @@
 # Maintainer: Antoine Carpentier <antoine.carpentier.info@gmail.com>
 pkgname=pointcarrefs
-pkgver=r4.226c5bb
+pkgver=r10.0b9c56d
 pkgrel=1
 pkgdesc="Mount pointcarre.vub.ac.be with fuse"
 arch=('any')
