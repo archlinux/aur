@@ -1,0 +1,15 @@
+post_install() {
+    echo "==> to enable you must regenerate depmod and initcpio, ex:"
+    echo "==> $ depmod -a"
+    echo "==> $ mkinitcpio -p linux"
+    echo "==> you need to regenerate them again on every kernel update"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+op=$1
+shift
+$op $*
+
