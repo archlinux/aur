@@ -1,6 +1,6 @@
 pkgbase = wlc-git
 	pkgdesc = Wayland compositor library.
-	pkgver = r789.c8e2f3e
+	pkgver = r800.1852992
 	pkgrel = 1
 	url = https://github.com/Cloudef/wlc
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = wlc-git
 	optdepends = xcb-util-image: Needed for xwayland support.
 	provides = wlc
 	conflicts = wlc
-	options = debug
+	options = !debug
 	options = !strip
 	source = git://github.com/Cloudef/wlc
 	source = git://github.com/Cloudef/chck

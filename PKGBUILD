@@ -1,5 +1,5 @@
 pkgname=wlc-git
-pkgver=r789.c8e2f3e
+pkgver=r800.1852992
 pkgrel=1
 
 pkgdesc='Wayland compositor library.'
@@ -24,7 +24,7 @@ source=('git://github.com/Cloudef/wlc'
 
 md5sums=('SKIP' 'SKIP')
 
-options=('debug' '!strip')
+options=('!debug' '!strip')
 
 pkgver() {
     cd wlc
@@ -34,7 +34,7 @@ pkgver() {
 prepare() {
     cd wlc
     git submodule init
-    git config submodule.chck.url "$srcdir"/chck
+    git config submodule.lib/chck.url "$srcdir"/chck
     git submodule update lib/chck
 }
 
