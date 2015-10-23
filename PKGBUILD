@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=evince-browser-plugin
-pkgver=3.18.0
+pkgver=3.18.1
 pkgrel=1
 pkgdesc='Document viewer - browser plugin'
 url='https://wiki.gnome.org/Apps/Evince'
@@ -11,7 +11,7 @@ depends=(evince gst-plugins-base-libs)
 makedepends=(itstool libnautilus-extension texlive-bin intltool gobject-introspection docbook-xsl python)
 groups=(gnome)
 source=("http://ftp.gnome.org/pub/gnome/sources/evince/${pkgver:0:4}/evince-${pkgver}.tar.xz")
-sha256sums=('96e8351f6a6fc5823bb8f51178cde1182bd66481af6fb09bf58a18b673cafa70')
+sha256sums=('7b5023765e6d6fb98da582fe3adc4f268f87b2f35110634e12cdac40f7aa8c31')
 
 build() {
   cd "${srcdir}/evince-${pkgver}"
