@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.2
-pkgver=4.2.3
+pkgver=4.2.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -19,20 +19,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
-        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch')
+        'change-default-console-loglevel.patch')
 
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            'e0e066f3fc5f310644e9f3f3ede47db7ac040f44782f0a5cf75ce2c940444972'
+            '104ba869111c7ce037fc92646f9da7352412a73e84cde7467f29cd4b973d6e78'
             'SKIP'
             '6921399a0e304f6c64cff17226ce3f20ebe8194f14ebcd318989f2515d8248ad'
             'c3be602e0ce609b5fe5af2e631b01c8fba376a0c434206deca3d101b62685262'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
-            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -48,15 +44,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
-  # https://lkml.org/lkml/2015/8/18/292
-  patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
-
-  # add not-yet-mainlined patch to fix network unavailability when iptables
-  # rules are applied during startup - happened with Shorewall; journal had
-  # many instances of this error: nf_conntrack: table full, dropping packet
-  patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
   
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
