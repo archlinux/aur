@@ -69,7 +69,5 @@ package() {
   
   cd "${srcdir}/apngasm-${_apngasm_pkgver}/build"
   make DESTDIR="${pkgdir}" install
-  
-  rm -r $pkgdir/usr/local
 }
 
