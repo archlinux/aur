@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=console-bridge
 pkgver=0.2.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages."
 arch=('any')
 url="http://www.ros.org/"
