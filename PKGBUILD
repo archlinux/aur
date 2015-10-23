@@ -25,6 +25,11 @@ pkgver() {
 }
 
 package() {
+    mkdir ~/.pointcarrefs
+    echo "NETID=''" >> ~/.pointcarrefs/local_config.py
+    echo "PASSWORD=''" >> ~/.pointcarrefs/local_config.py
+    echo "Fill in your netid and password in ~/.pointcarrefs/local_config.py"
 	cd "$srcdir/$pkgname"
 	python2 setup.py install --root="$pkgdir/" --optimize=1
+    install -m 644 pointcarrefs.service /etc/systemd/system/
 }
