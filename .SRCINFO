@@ -1,7 +1,7 @@
 pkgbase = iselect
 	pkgdesc = Interactive Terminal Selection
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 2
 	url = http://www.ossp.org/pkg/tool/iselect/
 	arch = i686
 	arch = x86_64

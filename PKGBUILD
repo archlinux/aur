@@ -6,7 +6,7 @@
 #
 pkgname=iselect
 pkgver=1.4.0
-pkgrel=3
+pkgrel=2
 epoch=
 pkgdesc="Interactive Terminal Selection"
 arch=('i686' 'x86_64')
