@@ -1,6 +1,6 @@
 pkgbase = fldigi
 	pkgdesc = Digital Modem Program for Amateur Radio
-	pkgver = 3.23.03
+	pkgver = 3.23.04
 	pkgrel = 2
 	url = http://w1hkj.com
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = fldigi
 	optdepends = portaudio: PortAudio support
 	optdepends = pulseaudio: pulseaudio support
 	optdepends = xmlrpc-c: XML-RPC control
-	source = http://downloads.sourceforge.net/fldigi/fldigi-3.23.03.tar.gz
-	md5sums = 6fd93845659ae2bb2f3432470fefccb5
-	sha512sums = fde20fd72bc86a5f61a1bf4becad645ac23b672cf801731004909fd2a77c1f2bb409e562a77ba5ca6a6fdc9cf954e958125a59b66fb5ea7d7344a142eea1c338
+	source = http://downloads.sourceforge.net/fldigi/fldigi-3.23.04.tar.gz
+	md5sums = 6d47545ca950e632168f54d84b595802
+	sha512sums = af332e0da86300e5a18adec8841dabad3ceaea8cf0352b49a88a3387bf53422b4d19e73894352eb0f454f47f6612f37a5476f32dd25ddc49a80f287e345aeb3b
 
 pkgname = fldigi
 
