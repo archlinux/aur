@@ -1,7 +1,7 @@
 pkgbase = etherpad-lite
 	pkgdesc = Lightweight fork of etherpad based on javascript
 	pkgver = 1.5.7
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://etherpad.org
 	install = etherpad-lite.install
@@ -10,7 +10,7 @@ pkgbase = etherpad-lite
 	depends = curl
 	depends = python2
 	depends = openssl
-	depends = nodejs<0.13.0
+	depends = nodejs<5
 	depends = git
 	depends = npm
 	optdepends = sqlite: to use sqlite as databse
@@ -21,8 +21,10 @@ pkgbase = etherpad-lite
 	backup = etc/webapps/etherpad-lite/settings.json
 	source = etherpad-lite-1.5.7.tar.gz::https://github.com/ether/etherpad-lite/archive/1.5.7.tar.gz
 	source = etherpad-lite.service
+	source = fix-v4.x-nodejs.patch
 	sha512sums = 688205194347f0e4e6f78deb0b189ceaa4f2255efcbaa503d0b6459de8505dd475aa9151399dd818b6cac232bc0b71e5a0fbd6d43f56cb5ce1f9eafcccb3925b
 	sha512sums = 7b775171da97a3e7ad44a2b1b319970fd307a88e90a171c49bf70d2382767175e98bb21c7054e38ee6c066bd2dfadf94d28a9ff31d4f21145ec4441caa13c4d7
+	sha512sums = f52a204b2879369e230190edb59b3704ae7f7ed8ff41ebfe8e8ffd42c3686148716ee9e04c0ffc417498c44a4a8753f621f7cc2fbfce99171d20c5fe1a0cfc27
 
 pkgname = etherpad-lite
 
