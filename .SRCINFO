@@ -1,0 +1,18 @@
+pkgbase = libfusion-git
+	pkgdesc = A game management library used by the Fusion Launcher
+	pkgver = 20151023.633cb0e
+	pkgrel = 1
+	url = https://github.com/FusionLauncher/LibFusion
+	arch = i386
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt5-base
+	provides = libfusion
+	conflicts = libfusion
+	options = !emptydirs
+	source = libfusion::git+https://github.com/FusionLauncher/LibFusion
+	md5sums = SKIP
+
+pkgname = libfusion-git
+
