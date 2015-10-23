@@ -1,4 +1,4 @@
-pkgbase = systemd
+pkgbase = systemd-git
 	pkgver = 227.r255.g931c7fe
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
@@ -28,7 +28,7 @@ pkgbase = systemd
 	makedepends = git
 	options = strip
 	options = debug
-	source = git://github.com/systemd/systemd.git#branch=master
+	source = systemd-git::git://github.com/systemd/systemd.git#branch=master
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
