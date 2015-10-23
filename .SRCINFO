@@ -1,6 +1,6 @@
 pkgbase = scheme48-hg
 	pkgdesc = Scheme interpreter for experimentation from mercurial repo
-	pkgver = 1.9.2r1634.a44624256297
+	pkgver = 1.9T1634.a44624256297
 	pkgrel = 1
 	url = http://s48.org/
 	arch = i686
