@@ -4,7 +4,7 @@ _gitroot="https://github.com/Diaoul/babelfish"
 _gitname="babelfish"
 pkgbase=python2-babelfish-git
 pkgname=('python2-babelfish-git' 'python-babelfish-git')
-pkgver=0.5.3.r7.g3a177fb
+pkgver=0.5.5.90.3a177fb
 pkgrel=1
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
 arch=(any)
@@ -16,7 +16,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  echo 0.5.5.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  #git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package_python2-babelfish-git() {
