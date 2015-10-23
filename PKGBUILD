@@ -3,7 +3,7 @@
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
 pkgver=2015r3
-pkgrel=5
+pkgrel=6
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -37,6 +37,7 @@ package() {
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/Linux/HoudiniAssistant"
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/Linux/libc++.so.1"
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/SDKStubs/linux-arm/libgcc_s.so.1"
+	ln -s "/opt/xojo/Xojo Resources/Linux/libc++.so.1" "$pkgdir/usr/lib32/libc++.so.1"
 	ln -s "/opt/xojo/Xojo" "$pkgdir/usr/bin/Xojo"
 	ln -s "/opt/xojo/Extras/Lingua/Lingua Linux" "$pkgdir/usr/bin/Lingua"
 	ln -s "/opt/xojo/Extras/Remote Debugger Desktop/Linux/Remote Debugger Desktop" "$pkgdir/usr/bin/RemoteDebuggerDesktop"
