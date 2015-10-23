@@ -1,7 +1,7 @@
 pkgbase = acestream-proxy-player
 	pkgdesc = Aceproxy Player allows you to open Ace Stream links with a Media Player of your choice
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonian/acestream-proxy-player
 	arch = any
 	license = GPL

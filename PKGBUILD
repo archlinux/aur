@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=acestream-proxy-player
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Aceproxy Player allows you to open Ace Stream links with a Media Player of your choice"
 arch=('any')
 url="https://github.com/jonian/acestream-proxy-player"
@@ -28,7 +28,7 @@ package() {
 
   cp -a "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/aceproxy-player"
 
-  update-desktop-database "$pkgdir/opt/aceproxy-player"
+  sudo update-desktop-database "$pkgdir/opt/aceproxy-player"
 
   ln -s "/opt/aceproxy-player/aceproxy-player.py" "$pkgdir/usr/bin/aceproxy-player"
   mv "$pkgdir/opt/aceproxy-player/aceproxy-player.desktop" "$pkgdir/usr/share/applications/aceproxy-player.desktop"
