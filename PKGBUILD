@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum
-pkgver=1.0rc2
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)"
 arch=('i686' 'x86_64')
 depends=('argtable'
@@ -51,8 +51,8 @@ source=("${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella"
         "libethereum-hotfix-boost-1.59.patch"
         "solidity-hotfix-boost-1.59.patch")
 sha256sums=('SKIP'
-            '27efde29e731b48d78bda8036edbb765c1980ef83d815bcc2985921a31bd0389'
-            '11d47542cb7129dd09cd7336655734ccdb2c940cdf30bcb5e755faeeeb6470ff')
+            '6c89b82a5b674bb53401a3d87079c415d4d2c28accceb239beeedb940cf213a0'
+            '3d1e45a59c1f9c22564bb04d0aebacb74bffa3c7d72dc475429afb827c8be4f2')
 provides=('alethfive'
           'alethone'
           'alethzero'
@@ -84,16 +84,12 @@ conflicts=('alethfive'
            'ethereum-git')
 
 build() {
+
+  msg 'Updating...'
   cd ${pkgname%-git}
   git checkout release
   git checkout $pkgver
   git submodule update --init --recursive
-
-  msg 'Patching...'
-  # Fix libweb3core compatibility with latest miniupnpc
-  pushd libweb3core
-  git cherry-pick 3ae4d8a
-  popd
 
   # Fix libethereum compatibility with boost 1.59
   pushd libethereum
@@ -118,4 +114,8 @@ package() {
 
   msg 'Installing...'
   make DESTDIR="$pkgdir" install -C build
+
+  msg 'Cleaning up pkgdir...'
+  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
