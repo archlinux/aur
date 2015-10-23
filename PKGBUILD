@@ -1,11 +1,11 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Peter Wu <peter@lekensteyn.nl>
 # Contributor: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: s1gma <s1gma@mindslicer.com>
 
 pkgname=binwalk-git
 _gitname=binwalk
-pkgver=2.1.0.688.02dd825
+pkgver=2.1.0.748.e3d1a55
 pkgrel=1
 pkgdesc="A tool for searching a given binary image for embedded files"
 url="http://binwalk.org"
@@ -25,9 +25,11 @@ optdepends=(
   'p7zip: ZIP, LZMA and ISO decompression support'
   'squashfs-tools: squashfs support'
   'tar: TAR archive support'
+  'bzip2: BZIP2 archive support'
   'unrar: RAR decompression support'
   'xz: XZ decompression support'
   'firmware-mod-kit: cramfs support'
+  'lhasa: LHA support'
 )
 makedepends=('git')
 provides=('binwalk')
@@ -48,8 +50,7 @@ build() {
 package() {
   cd ${pkgname}
   python setup.py install -O1 --prefix="${pkgdir}/usr"
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 *.md "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
