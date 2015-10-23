@@ -6,30 +6,29 @@ pkgrel=3
 pkgdesc="rtbth Kernel module sources for Ralink RT3290 bluetooth"
 arch=('i686' 'x86_64')
 url='http://www.mediatek.com/'
-license=('mixed') # I haven't been able to discover where this driver popped out from, I 
-# haven't found it in the official MediaTek website
-# i assumed it was GPL all driver's for linux i found on the Mediatek website were GPL
+license=('mixed')
 depends=('dkms')
 optdepends=('bluez: Canonical implementation of bluetooth protocol'
 'bluez-utils: Utilities for Bluez')
 provides=('rtbth')
 install='rtbth-dkms.install'
 source=("https://github.com/f1u77y/rtbth-dkms-aur/archive/${pkgver}.tar.gz")
-sha256sums=('511792b08e2b7386a45e1942014d2ea7d01be48144ba154a45d33484f198eda1')
+sha256sums=('90224da440e15308d9ef25dcb765400b1471c75c5bb4905e8e6665dd81a571da')
 
 prepare() {
-  cd ${srcdir} 
-  tar -xf "${pkgver}".tar.gz
-  cd "${pkgname}-aur-${pkgver}" 
+cd ${srcdir}
+tar -xf "${pkgver}".tar.gz
+cd "${provides}-${pkgver}"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-aur-${pkgver}"
-  mkdir -p "${pkgdir}"/usr/bin
-  mkdir -p "${pkgdir}"/usr/src
-  mkdir -p "${pkgdir}"/etc/modprobe.d/
-  cp -r ./ "${pkgdir}/usr/src/rtbth-${pkgver}"
-  cp  tools/rtbt "${pkgdir}"/usr/bin/rtbt
-  cp  tools/ralink-bt.conf "${pkgdir}"/etc/modprobe.d/ralink-bt.conf 
+cd "${srcdir}/${provides}-${pkgver}"
+mkdir -p "${pkgdir}"/usr/bin
+mkdir -p "${pkgdir}"/usr/src
+mkdir -p "${pkgdir}"/etc/modprobe.d/
+cp -r ./ "${pkgdir}/usr/src/${provides}-${pkgver}"
+cp tools/rtbt "${pkgdir}"/usr/bin/rtbt
+cp tools/ralink-bt.conf "${pkgdir}"/etc/modprobe.d/ralink-bt.conf
 }
+
 
