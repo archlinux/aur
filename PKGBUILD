@@ -36,8 +36,6 @@ pkgver() {
 }
 
 prepare() {
-	echo "waiting"
-	read
 	cd "$_pkgname"
 	rm -rf ./build
 	mkdir build
