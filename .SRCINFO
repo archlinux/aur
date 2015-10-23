@@ -1,6 +1,6 @@
 pkgbase = compton-git
 	pkgdesc = X Compositor (a fork of xcompmgr-dana) (git-version)
-	pkgver = 0.1_beta2.68.gb1889c1
+	pkgver = 0.1_beta2.82.gd7f95b5
 	pkgrel = 1
 	url = https://github.com/chjj/compton
 	install = compton-git.install
