@@ -2,7 +2,7 @@
 # Contributor: xjpvictor Huang <ke [AT] xjpvictor [DOT] info>
 # Contributor: uuwe
 pkgname=openswan
-pkgver=2.6.45
+pkgver=2.6.43.1
 pkgrel=1
 pkgdesc='Open Source implementation of IPsec for the Linux operating system'
 url='https://www.openswan.org'
@@ -57,5 +57,5 @@ package() {
   # fix python2
   sed -i '1s|python|python2|' "$pkgdir/usr/lib/openswan/verify"
 }
-md5sums=('077346ed785be3415234ca8ba6c6a758'
+md5sums=('dafa77db8be28d7ae32c5ac2a45966eb'
          'd8b465c10838c72e31329d65011002b6')
