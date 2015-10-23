@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-grsec"
-pkgver=4.2.3+535345+g65474bd
+pkgver=4.2.4+535606+g196a448
 pkgdesc="Featureful kernel including grsecurity, new features and optimizations to better suit desk/laptops"
 url="https://github.com/damentz/linux-zen-grsec"
 license=("GPL2")
