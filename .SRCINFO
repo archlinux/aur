@@ -1,6 +1,6 @@
 pkgbase = mypy-git
 	pkgdesc = Optional static typing for Python
-	pkgver = v0.2.0.r600.g0b7ee88
+	pkgver = v0.2.0.r742.g0a7b547
 	pkgrel = 1
 	url = http://www.mypy-lang.org
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = mypy-git
 	provides = mypy
 	conflicts = mypy
 	source = git+https://github.com/JukkaL/mypy
+	source = git+https://github.com/python/typeshed
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = mypy-git

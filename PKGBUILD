@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=mypy-git
 _gitname=mypy
-pkgver=v0.2.0.r600.g0b7ee88
+pkgver=v0.2.0.r742.g0a7b547
 pkgrel=1
 pkgdesc="Optional static typing for Python"
 arch=(any)
@@ -11,14 +11,24 @@ depends=(python)
 makedepends=(git)
 provides=(mypy)
 conflicts=(mypy)
-source=(git+https://github.com/JukkaL/mypy)
-md5sums=(SKIP)
+source=(
+    git+https://github.com/JukkaL/mypy
+    git+https://github.com/python/typeshed
+)
+md5sums=(SKIP SKIP)
 
 
 pkgver() {
     cd "$_gitname"
     git describe --long --tags | \
         sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$_gitname"
+    git submodule init
+    git config submodule.typeshed.url "$srcdir"/typeshed
+    git submodule update
 }
 
 package() {
