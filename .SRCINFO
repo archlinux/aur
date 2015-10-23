@@ -1,5 +1,5 @@
 pkgbase = python2-babelfish-git
-	pkgdesc = Python library and CLI tool for searching and downloading subtitles.
+	pkgdesc = A module to work with countries and languages.
 	pkgver = 0.5.5.90.3a177fb
 	pkgrel = 1
 	url = https://github.com/Diaoul/babelfish
