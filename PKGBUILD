@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=ooc
-pkgver=1.3a
+pkgver=1.3b
 pkgrel=1
 pkgdesc="A kit to program in C in an object-oriented manner."
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ url="http://ooc-coding.sourceforge.net/"
 license=('LGPL')
 source=(http://downloads.sourceforge.net/project/ooc-coding/source//${pkgname}-${pkgver}.tar.gz)
 options=(staticlibs)
-md5sums=('30019cbed04a410cb3c48228086e7af0')
-sha256sums=('307d103de350e1038c4c915a423e313123e9b1b9a48d92e53ceca915a7b4923d')
-sha384sums=('ed6279aa7f560c9749cce12573d17804e3941db9dccaf285881f86338b63d73038238e375ada61878fbc5ecb60676a18')
-sha512sums=('76473b70fe2641a3a9cb478c392fa7674bc67800e6ffd5ae67760302a7f1af4d4a6b47ebd9c674a7998b9431b1d38f93caa66e136c7c9ac88ae20795e4955467')
+md5sums=('078cd557a1a92605d3e8faa3aec4d9c1')
+sha256sums=('b9dded349b33975f705d34cbe14aed6d869f29e62532c4c9465006e238f15e1e')
+sha384sums=('f37eb57fdcc4a5d2d596654242621e735eed4f65526b7c9110f8cd5c248b5b2c9ec16a512881f0a451563be54f4fcfcc')
+sha512sums=('7644868468b787a4de4e728aa990ad244bbcc6b59ad8e624674a971b0ebea56bb5024b239f5d99f7cacdfc352640aa3d6623b81a1ab7ef6dc5285b8f3c3df257')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
