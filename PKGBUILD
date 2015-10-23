@@ -9,10 +9,8 @@ url='https://github.com/np1/mps'
 arch=('any')
 license=('GPL3')
 
-depends=('python' 'python-setuptools' 'python-pafy')
-optdepends=('mpv: Alternative to mplayer for playback'
-            'mplayer: Alternative to mpv for playback'
-            'xclip: for copying content to the clipboard')
+depends=('python' 'python-setuptools' 'python-pafy' 'mplayer')
+optdepends=('xclip: for copying content to the clipboard')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/np1/$pkgname/archive/v$pkgver.tar.gz")
 
