@@ -1,6 +1,6 @@
 pkgname=git-lfs-test-server-git
-pkgver=v0.2.1.r1.g90efc5f
-pkgrel=1
+pkgver=v0.3.0.r0.ge76e479
+pkgrel=2
 pkgdesc="Standalone Git LFS server"
 url="https://github.com/github/lfs-test-server"
 license=('custom')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   mkdir -p "$srcdir/bin"
-  GOBIN="$srcdir/bin" GOPATH="$srcdir" go get -v -x -fix ./lfs-test-server/...
+  GOBIN="$srcdir/bin" GOPATH="$srcdir" go get -v -x ./lfs-test-server/
 }
 
 package() {
