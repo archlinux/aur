@@ -1,6 +1,6 @@
 pkgbase = rk-server-basic
 	pkgdesc = Metapackage that installs basic server tools. Enables the following services: cronie preload ntpd haveged
-	pkgver = 2015.08.23
+	pkgver = 2015.10.23
 	pkgrel = 1
 	url = http://notyetthere.com
 	install = rk-server-basic.install
@@ -64,6 +64,7 @@ pkgbase = rk-server-basic
 	depends = unzip
 	depends = dhclient
 	depends = vim
+	depends = atop
 	optdepends = rk-print: Everything for printer
 	optdepends = rk-bluetooth: Everything for bluetooth
 	provides = rk-basic-system-tools
