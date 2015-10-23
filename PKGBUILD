@@ -1,8 +1,8 @@
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
 pkgname=notify-desktop-git
 _gitname=notify-desktop
-pkgver=r16.90a4043
-pkgrel=1
+pkgver=r21.aa0b446
+pkgrel=3
 pkgdesc="A replacement for notify-send with replaces-id support and less dependencies"
 arch=(x86_64 i686)
 url="https://github.com/nowrep/$_gitname"
