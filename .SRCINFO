@@ -1,9 +1,9 @@
 pkgbase = mess822
 	pkgdesc = mess822 is a library for parsing Internet mail messages works wellwith qmail
 	pkgver = 0.58
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cr.yp.to/mess822.html
-	arch = i686,
+	arch = i686
 	arch = x86_64
 	license = unknown
 	source = http://cr.yp.to/software/mess822-0.58.tar.gz

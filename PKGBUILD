@@ -3,10 +3,10 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 pkgname=mess822
 pkgver=0.58
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="mess822 is a library for parsing Internet mail messages works wellwith qmail"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 url="http://cr.yp.to/mess822.html"
 license=('unknown')
 groups=()
