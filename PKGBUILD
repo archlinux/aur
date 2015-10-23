@@ -2,11 +2,11 @@
 
 pkgname=tex2page-git
 pkgver=r74.4edbbe7
-pkgrel=1
+pkgrel=2
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
 url="https://github.com/ds26gte/tex2page"
-license=('GPL')
+license=('custom')
 depends=('bash' 'guile')
 makedepends=('git' 'texlive-formatsextra') # texlive-formatsextra only for docs
 source=("git+https://github.com/ds26gte/tex2page" end)
@@ -49,6 +49,7 @@ package() {
   # bibtex file 
   install -Dm644 "$_gitname".bib \
 	  $pkgdir/usr/share/texmf/bibtex/bib/"$_gitname"/"$_gitname".bib
+  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
   # installing documentation other than manpage 
   for _i in index*
   do
