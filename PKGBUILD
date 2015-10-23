@@ -7,7 +7,7 @@ pkgname='ros-indigo-joy'
 pkgver='1.10.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin
