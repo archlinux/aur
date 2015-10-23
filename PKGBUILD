@@ -2,7 +2,7 @@
 
 pkgname=sni-qt-eplus-bzr
 _pkgname=sni-qt-eplus
-pkgver=98
+pkgver=101
 pkgrel=1
 pkgdesc='Qt4 plugin which turns all QSystemTrayIcon into StatusNotifierItems. Elementary+ version, from bzr.'
 arch=('i686' 'x86_64')
