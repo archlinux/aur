@@ -67,11 +67,11 @@ package_systemd-git() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libseccomp'
+           'libgcrypt' 'libsystemd-git' 'libidn' 'lz4' 'pam' 'libseccomp'
            'util-linux' 'xz')
   provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" )
-  replaces=('nss-myhostname' 'systemd-tools' 'udev' systemd)
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev' systemd)
+  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
@@ -173,7 +173,7 @@ package_systemd-sysvcompat-git() {
   license=('GPL2')
   groups=('base')
   conflicts=('sysvinit' 'systemd-sysvcompat')
-  depends=('systemd')
+  depends=('systemd-git')
   replaces=('systemd-sysvcompat')
   conflicts=('systemd-sysvcompat')
 
