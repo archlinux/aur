@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-roscpp-tutorials
 	pkgdesc = ROS - This package attempts to show the features of ROS step-by-step, including using messages, servers, parameters, etc.
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/roscpp_tutorials
 	arch = any
 	license = BSD
