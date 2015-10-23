@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-turtle-tf2
 	pkgdesc = ROS - turtle_tf2 demonstrates how to write a tf2 broadcaster and listener with the turtlesim.
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
