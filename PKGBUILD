@@ -1,7 +1,7 @@
 # Maintainer: Carsten Feuls <archlinux dot carstenfeuls dot de>
 
 pkgname=piwik
-pkgver=2.14.3
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Piwik is a real time web analytics software program, written in PHP"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('mariadb: Database server'
 install=$pkgname.install
 source=(http://builds.piwik.org/$pkgname-$pkgver.tar.gz{,.asc})
 backup=('etc/webapps/piwik/config.ini.php')
-sha512sums=('7df7e07910c8d8a243a7b1d62ff27898bb05bea74b42fcfd9504ebc6548c8127d1cef41d47f17e1ece573ddfee9a03cec0dd51f92c3821463fcd292e25df41fb'
+sha512sums=('5f9ea4c47de7c227a152e9614957f2271324e86f7b3c7c273173a42ea8de6bac2dbc7eba1c00a92e6a57112372acd7e0e411304259b9c589d6372812ee112fd4'
             'SKIP')
 validpgpkeys=('814E346FA01A20DBB04B6807B5DBD5925590A237')
 
