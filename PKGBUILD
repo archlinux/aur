@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-pkgver=5.1.7
+pkgver=5.1.8
 pkgrel=1
 _pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
@@ -14,8 +14,8 @@ source_x86_64=("http://wingware.com/pub/$pkgname/$pkgver/$pkgname-$pkgver-$_pkgr
 source_i686=("http://wingware.com/pub/$pkgname/$pkgver/$pkgname-$pkgver-$_pkgrel-i386-linux.tar.gz")
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums_i686=('7400cdffe77c5d0ff34a4d2c9892396a')
-md5sums_x86_64=('45e3b20f1614a9feb3c816f4945ac89f')
+md5sums_i686=('a8960c2099f86e4385985e49ca05dfcf')
+md5sums_x86_64=('7038e5dc3e73fe30aa1098622a1a3616')
 install=${pkgname}.install
 
 prepare() {
