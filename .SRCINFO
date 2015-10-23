@@ -1,9 +1,9 @@
 pkgbase = dot-forward
 	pkgdesc = dot-forward reads sendmail's .forward files under qmail
 	pkgver = 0.71
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cr.yp.to/dot-forward.html
-	arch = i686,
+	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = glibc

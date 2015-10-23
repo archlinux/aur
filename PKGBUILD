@@ -2,10 +2,10 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 pkgname=dot-forward
 pkgver=0.71
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="dot-forward reads sendmail's .forward files under qmail"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 url="http://cr.yp.to/dot-forward.html"
 license=('unknown')
 groups=()
