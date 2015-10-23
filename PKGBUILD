@@ -15,6 +15,8 @@ _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
+
+	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
 
 
@@ -23,11 +25,14 @@ build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 	
 	./configure \
-		--prefix=${_sysroot} \
-		--bindir=/usr/bin --program-prefix=${_target}- \
-		--with-sysroot=${_sysroot} \
-		--target=${_target}
-
+		"--prefix=${_sysroot}" \
+		"--bindir=/usr/bin" "--program-prefix=${_target}-" \
+		"--with-sysroot=${_sysroot}" \
+		"--target=${_target}" "--build=$CHOST" "--host=$CHOST" \
+		--disable-werror \
+		"--disable-nls" \
+		--with-gcc --with-gnu-as --with-gnu-ld \
+		--without-included-gettext
 	make
 }
 
