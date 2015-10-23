@@ -1,7 +1,7 @@
 pkgbase = referencer
 	pkgdesc = a Gnome application to organise documents or references, and ultimately generate a BibTeX bibliography file
 	pkgver = 1.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/referencer/
 	install = referencer.install
 	arch = i686

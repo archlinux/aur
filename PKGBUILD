@@ -2,7 +2,7 @@
 
 pkgname=referencer
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="a Gnome application to organise documents or references, and ultimately generate a BibTeX bibliography file"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/referencer/"
@@ -18,6 +18,8 @@ depends=(       'boost-libs'
                 'yelp' )
 source=("https://launchpad.net/$pkgname/1./$pkgver/+download/$pkgname-$pkgver.tar.gz")
 install=${pkgname}.install
+
+CXXFLAGS="$CXXFLAGS -std=gnu++11"
 
 build() {
   export PYTHON=/usr/bin/python2
