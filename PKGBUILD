@@ -3,7 +3,7 @@
 
 pkgname=liferea-git
 _gitname=liferea
-pkgver=1.11.r5344.g1e68e2a
+pkgver=v1.11.6.r0.g3443276
 pkgrel=1
 pkgdesc="A news aggregator for GTK, git version."
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd liferea
-	echo "1.11.r$(git rev-list --count master).g$(git log -1 --format="%h")" 
+        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
