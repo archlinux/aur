@@ -1,0 +1,14 @@
+pkgbase = python-bleach
+	pkgdesc = An easy whitelist-based HTML-sanitizing tool
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/bleach
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-html5lib
+	source = http://pypi.python.org/packages/source/b/bleach/bleach-1.4.2.tar.gz
+	sha256sums = 56018a17d1488eb1a1e18e7cdddcaea24d3c7b3704172e356f6916c577f4fd9e
+
+pkgname = python-bleach
+

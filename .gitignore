@@ -1,0 +1,7 @@
+pkg
+src
+bleach-*.tar.gz
+python-bleach-*.pkg.tar.xz
+python-bleach-*.src.tar.gz
+.AURINFO
+
