@@ -1,7 +1,7 @@
 pkgbase = sdformat
 	pkgdesc = SDF Converter for gazebo
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sdformat.org/
 	arch = i686
 	arch = x86_64
