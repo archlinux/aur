@@ -24,6 +24,6 @@ md5sums=('0dbb12b1ff479f33765fb4bb91ccae7a')
 package() {
 	install -Dm544 portal "$pkgdir/usr/bin/portal"
 	install -Dm544 portal-postconf "$pkgdir/usr/bin/portal-postconf"
-	install -Dm544 portal-dovecont "$pkgdir/usr/bin/portal-doveconf"
+	install -Dm544 portal-doveconf "$pkgdir/usr/bin/portal-doveconf"
 	install -Dm440 ../portal.sudo "${pkgdir}/etc/sudoers.d/${pkgname}"
 }
