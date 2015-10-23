@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-transmission-interface
 	pkgdesc = ROS - Transmission Interface.
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-controls/ros_control/wiki
 	arch = any
 	license = Modified BSD
