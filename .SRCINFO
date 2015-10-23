@@ -1,6 +1,6 @@
 pkgbase = shards-git
 	pkgdesc = The package manager for the Crystal language (git version)
-	pkgver = v0.5.0.r0.ga501f92
+	pkgver = v0.5.3.r0.geaaced6
 	pkgrel = 1
 	url = https://github.com/ysbaddaden/shards
 	arch = i686

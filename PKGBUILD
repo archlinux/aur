@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=shards-git
-pkgver=v0.5.0.r0.ga501f92
+pkgver=v0.5.3.r0.geaaced6
 pkgrel=1
 pkgdesc="The package manager for the Crystal language (git version)"
 arch=('i686' 'x86_64')
@@ -29,13 +29,15 @@ build() {
 check() {
   cd "${pkgname/-git/}"
   ./bin/shards install
-  make -j1 test
+  make test
 }
 
 package() {
   cd "${pkgname/-git/}"
 
   install -Dm755 bin/shards "$pkgdir/usr/bin/shards"
+  install -Dm644 src/man/shards.1 "$pkgdir/usr/share/man/man1/shards.1"
+  install -Dm644 src/man/shard.yml.5 "$pkgdir/usr/share/man/man5/shard.yml.5"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 sha256sums=('SKIP')
