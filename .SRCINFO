@@ -1,5 +1,5 @@
 pkgbase = python2-enzyme-git
-	pkgdesc = Python library and CLI tool for searching and downloading subtitles.
+	pkgdesc = Python module to parse metadata in video files.
 	pkgver = 0.4.2.21.9572bea
 	pkgrel = 1
 	url = https://github.com/Diaoul/enzyme
