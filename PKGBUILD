@@ -11,13 +11,13 @@ depends=('bash' 'ffmpeg' 'imagemagick' 'xdotool' 'xorg-xrandr' 'xorg-xwininfo' '
 install=${pkgname}.install
 
 source=($url"/archive/v"$pkgver".tar.gz")
-md5sums=('25b8bfd2887e9975957efdf16c667bce')
+md5sums=('9a120604d4ad487b89cc1df4c4796b80')
 
 package() {
   cd "$pkgname-$pkgver"
   install -D -m755 silentcast "$pkgdir/usr/bin/silentcast"
-  install -D -m755 genffcom "$pkgdir/usr/bin/genffcom"
-  install -D -m755 temptoanim "$pkgdir/usr/bin/temptoanim"
+  install -m755 genffcom "$pkgdir/usr/bin"
+  install -m755 temptoanim "$pkgdir/usr/bin"
   install -D -m755 transparent_window.py "$pkgdir/usr/share/silentcast/transparent_window.py"
   install -m755 unity_indicator.py "$pkgdir/usr/share/silentcast"
   install -m644 stop?.png "$pkgdir/usr/share/silentcast"
@@ -26,7 +26,7 @@ package() {
   install -D -m644 README.md "$pkgdir/usr/share/doc/silentcast/README.md"
   install -m644 *png "$pkgdir/usr/share/doc/silentcast"
   install -m644 *gif "$pkgdir/usr/share/doc/silentcast"
-  install manpages/silentcast.1 "$pkgdir/usr/share/man/man1/"
-  install manpages/genffcom.1 "$pkgdir/usr/share/man/man1/"
-  install manpages/temptoanim.1 "$pkgdir/usr/share/man/man1/"
+  install -D -m755 manpages/silentcast.1 "$pkgdir/usr/share/man/man1/silentcast.1"
+  install -m755 manpages/genffcom.1 "$pkgdir/usr/share/man/man1/"
+  install -m755 manpages/temptoanim.1 "$pkgdir/usr/share/man/man1/"
 }

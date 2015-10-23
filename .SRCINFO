@@ -18,7 +18,7 @@ pkgbase = silentcast
 	depends = xdg-utils
 	depends = yad
 	source = https://github.com/colinkeenan/silentcast/archive/v2.2.tar.gz
-	md5sums = 25b8bfd2887e9975957efdf16c667bce
+	md5sums = 9a120604d4ad487b89cc1df4c4796b80
 
 pkgname = silentcast
 
