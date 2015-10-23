@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-openni2-camera
 	pkgdesc = ROS - Drivers for the Asus Xtion and Primesense Devices.
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
