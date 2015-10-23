@@ -2,14 +2,14 @@
 
 pkgname=mps
 pkgver=0.20.16
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Terminal based jukebox with playlist management"
 url='https://github.com/np1/mps'
 arch=('any')
 license=('GPL3')
 
-depends=('python' 'python-setuptools' 'python-pafy' 'mplayer')
+depends=('python' 'python-setuptools' 'mplayer')
 optdepends=('xclip: for copying content to the clipboard')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/np1/$pkgname/archive/v$pkgver.tar.gz")
