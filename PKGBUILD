@@ -6,10 +6,10 @@
 #
 pkgname=adflib
 pkgver=0.7.12
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A free, portable and open implementation of the Amiga filesystem"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 _pkgname=ADFlib
 url="http://lclevy.free.fr/adflib/unadf.html"
 license=('GPL')
