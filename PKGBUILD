@@ -1,7 +1,7 @@
 # Maintainer: naelstrof <naelstrof@gmail.com>
 pkgname=slop-git
 _realname=slop
-pkgver=v4.2.19.r0.ga8f1e5c
+pkgver=v4.3.20.r0.ga0356fb
 pkgrel=1
 conflicts=( 'slop' )
 pkgdesc="slop (Select Operation) is an application that queries for a selection from the user and prints the region to stdout."
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_realname"
-    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_OPENGL_SUPPORT=true ./
+    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DINSTALL_PREFIX="/usr" -DCMAKE_OPENGL_SUPPORT=true ./
     make
 }
 
