@@ -1,0 +1,19 @@
+pkgbase = shark-ml-atlas-git
+	pkgdesc = Shark C++ machine learning library
+	pkgver = r2995
+	pkgrel = 1
+	url = image.diku.dk/shark
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake>=2.8
+	makedepends = git
+	depends = boost>=1.55
+	depends = atlas-lapack
+	provides = shark-ml
+	conflicts = shark-ml
+	source = git+https://github.com/Shark-ML/Shark
+	md5sums = SKIP
+
+pkgname = shark-ml-atlas-git
+
