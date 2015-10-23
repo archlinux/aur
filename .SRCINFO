@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-control-toolbox
 	pkgdesc = ROS - The control toolbox contains modules that are useful across all controllers.
 	pkgver = 1.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/control_toolbox
 	arch = any
 	license = BSD
