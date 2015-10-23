@@ -1,6 +1,6 @@
-pkgbase = python-paho-mqtt
+pkgbase = paho-mqtt
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eclipse.org/paho/clients/python
 	arch = any
 	license = EPL
@@ -10,8 +10,6 @@ pkgbase = python-paho-mqtt
 pkgname = python-paho-mqtt
 	pkgdesc = Python client library for MQTT v3.1 and v3.1.1
 	depends = python
-	provides = paho-mqtt
-	conflicts = paho-mqtt
 
 pkgname = python2-paho-mqtt
 	pkgdesc = Python 2 client library for MQTT v3.1 and v3.1.1
