@@ -2,14 +2,14 @@
 
 _gitname=kpimtextedit
 pkgname=$_gitname-git
-pkgver=r415.6a7d6fb
+pkgver=r486.c9727c0
 pkgrel=1
 pkgdesc="A textedit with PIM-specific features"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://projects.kde.org/projects/kde/pim/$_gitname"
-license=('LGPL')
-depends=('kdelibs4support')
-makedepends=('extra-cmake-modules-git' 'git' 'python' 'kdoctools')
+license=(LGPL)
+depends=(kdelibs4support grantlee-qt5)
+makedepends=(extra-cmake-modules-git git python kdoctools)
 conflicts=("$_gitname")
 provides=("$_gitname")
 source=("git://anongit.kde.org/$_gitname.git")
