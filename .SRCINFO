@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-tf2-kdl
+	pkgdesc = ROS - KDL binding for tf2.
+	pkgver = 0.5.12
+	pkgrel = 1
+	url = http://ros.org/wiki/tf2
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-tf2
+	makedepends = ros-indigo-orocos-kdl
+	makedepends = ros-indigo-tf2-ros
+	makedepends = eigen3
+	depends = ros-indigo-cmake-modules
+	depends = ros-indigo-tf2
+	depends = ros-indigo-orocos-kdl
+	depends = ros-indigo-tf2-ros
+	depends = eigen3
+	source = tf2_kdl::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2_kdl/0.5.12-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-tf2-kdl
+
