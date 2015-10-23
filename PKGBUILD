@@ -7,7 +7,7 @@ pkgname='ros-indigo-laser-filters'
 pkgver='1.7.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
