@@ -1,9 +1,9 @@
 pkgbase = bosh
 	pkgdesc = Browsable Output SHell
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bosh.sourceforge.net/
-	arch = i686,
+	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = ncurses
