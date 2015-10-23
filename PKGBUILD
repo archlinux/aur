@@ -1,6 +1,6 @@
 # Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
 pkgname=all-repository-fonts
-pkgver=20151017
+pkgver=20151023
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -25,6 +25,7 @@ depends=('adobe-source-code-pro-fonts'
          'gsfonts'
          'noto-fonts'
          'noto-fonts-cjk'
+         'noto-fonts-emoji'
          'opendesktop-fonts'
          'otf-fira-mono'
          'otf-fira-sans'

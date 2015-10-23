@@ -1,6 +1,6 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
-	pkgver = 20151017
+	pkgver = 20151023
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = all-repository-fonts
 	depends = gsfonts
 	depends = noto-fonts
 	depends = noto-fonts-cjk
+	depends = noto-fonts-emoji
 	depends = opendesktop-fonts
 	depends = otf-fira-mono
 	depends = otf-fira-sans
