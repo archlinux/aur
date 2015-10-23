@@ -6,10 +6,10 @@
 #
 pkgname=iselect
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Interactive Terminal Selection"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 url="http://www.ossp.org/pkg/tool/iselect/"
 license=('unknown')
 groups=()
