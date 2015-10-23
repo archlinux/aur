@@ -1,0 +1,15 @@
+pkgbase = qmodbus-git
+	pkgdesc = QModBus is a free Qt-based implementation of a ModBus master application. A graphical user interface allows easy communication with ModBus slaves over serial line interface. QModBus also includes a bus monitor for examining all traffic on the bus.
+	pkgver = r125.2186db8
+	pkgrel = 1
+	url = http://qmodbus.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = git
+	depends = qt4
+	source = git+https://github.com/ed-chemnitz/qmodbus.git
+	md5sums = SKIP
+
+pkgname = qmodbus-git
+
