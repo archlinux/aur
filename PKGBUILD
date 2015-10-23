@@ -1,13 +1,13 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=frameworkintegration-git
-pkgver=r167.805ad18
+pkgver=r234.3ebe689
 pkgrel=1
 pkgdesc='Framework providing components to allow applications to integrate with a KDE Workspace'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/frameworkintegration'
 license=('LGPL')
-depends=('kio-git' 'ttf-oxygen' 'libxcursor')
+depends=('kio-git' 'noto-fonts' 'libxcursor')
 makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(frameworkintegration)
