@@ -1,19 +1,18 @@
-# Maintainer: Jesus Alvarez
+# Contributor: Jesus Alvarez
+# Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=python-baker
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy, powerful access to Python functions from the command line."
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://bitbucket.org/mchaput/baker/wiki/Home"
 license=('Apache License 2.0')
 depends=('python')
-makedepends=('python-distribute')
 source=("http://pypi.python.org/packages/source/B/Baker/Baker-${pkgver}.tar.gz")
 md5sums=('e628d935accf915abf6cdef77b81d8d3')
 
 package() {
   cd "$srcdir/Baker-$pkgver"
-  # sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" setup.py
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
