@@ -1,6 +1,6 @@
 pkgbase = multimc5-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 0.4.7
+	pkgver = 0.4.7.r135.g8a4fd8c
 	pkgrel = 1
 	url = http://multimc.org/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = multimc5-git
 	depends = java-runtime
 	depends = qt5-svg
 	conflicts = multimc5
-	source = multimc5-git::git://github.com/MultiMC/MultiMC5.git#tag=0.4.7
+	source = multimc5-git::git://github.com/MultiMC/MultiMC5.git
 	source = multimc5.sh
 	source = multimc5.desktop
 	sha512sums = SKIP
