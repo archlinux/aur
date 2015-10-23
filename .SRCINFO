@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-laser-assembler
 	pkgdesc = ROS - Provides nodes to assemble point clouds from either LaserScan or PointCloud messages.
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/laser_assembler
 	arch = any
 	license = BSD
