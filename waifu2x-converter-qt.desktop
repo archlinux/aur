@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Graphics;2DGraphics;Qt;
+Name=Waifu2x Converter Qt
+Comment=Waifu2x re-implementation in C++ using OpenCV
+Exec=waifu2x-converter-qt %U
+Icon=waifu2x
+Type=Application
+Terminal=false
+X-KDE-StartupNotify=true

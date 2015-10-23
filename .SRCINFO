@@ -1,0 +1,22 @@
+pkgbase = waifu2x-converter-qt-git
+	pkgdesc = Qt frontend of waifu2x.
+	pkgver = 26.8707e34
+	pkgrel = 1
+	url = https://github.com/khws4v1/waifu2x-converter-qt
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = waifu2x
+	depends = qt5-base
+	provides = waifu2x-converter-qt
+	conflicts = waifu2x-converter-qt
+	source = git+https://github.com/khws4v1/waifu2x-converter-qt.git
+	source = waifu2x.png
+	source = waifu2x-converter-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 08f2ccd67e567d0fa9feb53c15b9de46
+	sha256sums = 9fb5356615674e93caa8520e6f3717f5
+
+pkgname = waifu2x-converter-qt-git
+
