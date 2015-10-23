@@ -1,0 +1,14 @@
+pkgbase = ruby-instance_storage
+	pkgdesc = Manage class instances with dictionary
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = instance_storage-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/instance_storage-1.0.0.gem
+	sha1sums = 84fc7da9d362ecf6e806b2eb785fa19d75eff9e9
+
+pkgname = ruby-instance_storage
+
