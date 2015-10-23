@@ -4,19 +4,20 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='http://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-indigo-robot-state-publisher'
-pkgver='1.10.4'
+pkgver='1.11.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-kdl-parser
+  ros-indigo-tf2-ros
   ros-indigo-roscpp
-  ros-indigo-tf-conversions
   ros-indigo-rostime
   ros-indigo-orocos-kdl
   ros-indigo-catkin
   ros-indigo-rosconsole
+  ros-indigo-tf2-kdl
   ros-indigo-sensor-msgs
   ros-indigo-cmake-modules
   ros-indigo-tf)
@@ -25,12 +26,13 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   eigen3)
 
 ros_depends=(ros-indigo-kdl-parser
+  ros-indigo-tf2-ros
   ros-indigo-roscpp
-  ros-indigo-tf-conversions
   ros-indigo-rostime
   ros-indigo-orocos-kdl
   ros-indigo-catkin
   ros-indigo-rosconsole
+  ros-indigo-tf2-kdl
   ros-indigo-sensor-msgs
   ros-indigo-tf)
 depends=(${ros_depends[@]}
