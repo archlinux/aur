@@ -1,14 +1,14 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=pypi-cli
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A command-line interface to the Python Package Index (PyPI)."
 arch=('any')
 url="https://github.com/sloria/pypi-cli"
 license=('MIT')
 depends=('python' 'python-requests' 'python-dateutil' 'python-click')
 source=("https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('e7d00f1178e4908f68d30ce8bd0135c3')
+md5sums=('b2e91b019a60f7e01726778c92264819')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
