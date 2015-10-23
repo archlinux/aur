@@ -3,12 +3,12 @@
 
 pkgname=ethereum
 pkgver=1.0rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)"
 arch=('i686' 'x86_64')
 depends=('argtable'
-         'boost<=1.58'
-         'boost-libs<=1.58'
+         'boost'
+         'boost-libs'
          'curl'
          'crypto++'
          'gmp'
@@ -47,8 +47,12 @@ makedepends=('autoconf'
 groups=('ethereum')
 url="https://github.com/ethereum/webthree-umbrella"
 license=('GPL')
-source=(${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella)
-sha256sums=('SKIP')
+source=("${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella"
+        "libethereum-hotfix-boost-1.59.patch"
+        "solidity-hotfix-boost-1.59.patch")
+sha256sums=('SKIP'
+            '27efde29e731b48d78bda8036edbb765c1980ef83d815bcc2985921a31bd0389'
+            '11d47542cb7129dd09cd7336655734ccdb2c940cdf30bcb5e755faeeeb6470ff')
 provides=('alethfive'
           'alethone'
           'alethzero'
@@ -81,12 +85,24 @@ conflicts=('alethfive'
 
 build() {
   cd ${pkgname%-git}
+  git checkout release
   git checkout $pkgver
   git submodule update --init --recursive
 
-  # Fix miniupnpc issue in submodule
+  msg 'Patching...'
+  # Fix libweb3core compatibility with latest miniupnpc
   pushd libweb3core
   git cherry-pick 3ae4d8a
+  popd
+
+  # Fix libethereum compatibility with boost 1.59
+  pushd libethereum
+  git apply ${srcdir}/libethereum-hotfix-boost-1.59.patch
+  popd
+
+  # Fix solidity compatibility with boost 1.59
+  pushd solidity
+  git apply ${srcdir}/solidity-hotfix-boost-1.59.patch
   popd
 
   msg 'Building...'

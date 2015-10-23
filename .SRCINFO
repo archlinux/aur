@@ -1,7 +1,7 @@
 pkgbase = ethereum
 	pkgdesc = Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)
 	pkgver = 1.0rc2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ethereum/webthree-umbrella
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = ethereum
 	makedepends = git
 	makedepends = clang
 	depends = argtable
-	depends = boost<=1.58
-	depends = boost-libs<=1.58
+	depends = boost
+	depends = boost-libs
 	depends = curl
 	depends = crypto++
 	depends = gmp
@@ -75,7 +75,11 @@ pkgbase = ethereum
 	conflicts = solc
 	conflicts = ethereum-git
 	source = ethereum::git+https://github.com/ethereum/webthree-umbrella
+	source = libethereum-hotfix-boost-1.59.patch
+	source = solidity-hotfix-boost-1.59.patch
 	sha256sums = SKIP
+	sha256sums = 27efde29e731b48d78bda8036edbb765c1980ef83d815bcc2985921a31bd0389
+	sha256sums = 11d47542cb7129dd09cd7336655734ccdb2c940cdf30bcb5e755faeeeb6470ff
 
 pkgname = ethereum
 

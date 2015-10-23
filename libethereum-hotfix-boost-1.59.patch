@@ -1,0 +1,23 @@
+diff --git a/test/boostTest.cpp b/test/boostTest.cpp
+index 7c2b068..a883d85 100644
+--- a/test/boostTest.cpp
++++ b/test/boostTest.cpp
+@@ -78,12 +78,12 @@ int main( int argc, char* argv[] )
+ 	{
+ 		framework::init(init_func, argc, argv);
+ 
+-		if( !runtime_config::test_to_run().is_empty() )
+-		{
+-			test_case_filter filter(runtime_config::test_to_run());
+-
+-			traverse_test_tree(framework::master_test_suite().p_id, filter);
+-		}
++//		if( !runtime_config::test_to_run().is_empty() )
++//		{
++//			test_case_filter filter(runtime_config::test_to_run());
++//
++//			traverse_test_tree(framework::master_test_suite().p_id, filter);
++//		}
+ 
+ 		framework::run();
+ 
