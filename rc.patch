@@ -1,0 +1,8 @@
+diff -ur a/etc/lightscribe.rc b/etc/lightscribe.rc
+--- a/etc/lightscribe.rc	2009-03-09 10:39:26.000000000 +0200
++++ b/etc/lightscribe.rc	2009-03-09 10:40:18.000000000 +0200
+@@ -1,2 +1,2 @@
+ ResourceDir=/usr/lib/lightscribe/res;
+-UpdateScriptDir=/usr/lib/lightscribe/update;
++UpdateScriptDir=/usr/lib/lightscribe/updates;
+Только в b/etc: lightscribe.rc~
