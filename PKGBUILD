@@ -19,7 +19,7 @@ _hgrepo="s48"
 
 pkgver() {
   cd "$_hgrepo"
-  printf "1.9.2r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "1.9T%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
