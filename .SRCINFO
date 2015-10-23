@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-stage-ros
 	pkgdesc = ROS - This package provides ROS specific hooks for stage.
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/stage_ros
 	arch = any
 	license = BSD
