@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rviz-animated-view-controller
 	pkgdesc = ROS - A rviz view controller featuring smooth transitions.
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/rviz_animated_view_controller
 	arch = any
 	license = BSD
