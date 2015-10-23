@@ -4,7 +4,7 @@
 
 pkgname=rkt
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
@@ -26,11 +26,10 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./autogen.sh
   ./configure --prefix=/usr \
     --with-stage1=coreos \
     --with-stage1-image-path=/usr/share/rkt/stage1.aci
-  make
+  make -s
 }
 
 package() {
