@@ -1,6 +1,6 @@
 pkgbase = lib32-sni-qt-eplus-bzr
 	pkgdesc = Qt4 plugin which turns all QSystemTrayIcon into StatusNotifierItems. Elementary+ version, from bzr.
-	pkgver = 98
+	pkgver = 101
 	pkgrel = 1
 	url = https://launchpad.net/~cybre/+archive/ubuntu/sni-qt-eplus
 	arch = x86_64
