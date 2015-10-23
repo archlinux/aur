@@ -1,0 +1,21 @@
+pkgbase = wmfs-git
+	pkgdesc = A lightweight and highly configurable tiling window manager for X.
+	pkgver = r442.3c701a9
+	pkgrel = 1
+	url = http://www.wmfs.info/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libxft
+	depends = imlib2
+	depends = libxinerama
+	depends = libxrandr
+	provides = wmfs
+	conflicts = wmfs
+	conflicts = wmfs2-git
+	source = wmfs-git::git+https://github.com/xorg62/wmfs.git
+	md5sums = SKIP
+
+pkgname = wmfs-git
+
