@@ -1,6 +1,6 @@
 pkgbase = varrick-git
 	pkgdesc = A convenient template engine to just 'Do the thing!'
-	pkgver = 0.2.0.r0.g20ffcc1
+	pkgver = 0.2.0.r10.g9934958
 	pkgrel = 1
 	url = https://github.com/ztombol/varrick
 	arch = any

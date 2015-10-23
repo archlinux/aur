@@ -1,7 +1,7 @@
 # Maintainer: Zoltan Tombol <zoltan (dot) tombol (plus) aur (at) gmail (dot) com>
 
 pkgname=varrick-git
-pkgver=0.2.0.r0.g20ffcc1
+pkgver=0.2.0.r10.g9934958
 pkgrel=1
 pkgdesc="A convenient template engine to just 'Do the thing!'"
 arch=(any)
@@ -16,25 +16,25 @@ source=("${pkgname%-git}::git+https://github.com/ztombol/${pkgname%-git}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}"
   printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}"
   make build
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}"
   make -k check
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  make DESTDIR="$pkgdir/" \
-       PREFIX='/usr' \
-       LIBEXECDIR='/usr/lib' \
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR="$pkgdir" \
+       prefix='/usr' \
+       libexecdir='/usr/lib' \
        install
 }
 
