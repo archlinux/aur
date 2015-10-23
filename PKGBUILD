@@ -6,10 +6,10 @@
 #
 pkgname=librevisa
 pkgver=0.0.20130412
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Compliant implementation of the VISA standard in a free software library"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 url="http://www.librevisa.org"
 license=('GPL3')
 groups=()

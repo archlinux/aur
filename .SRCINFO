@@ -1,9 +1,9 @@
 pkgbase = librevisa
 	pkgdesc = Compliant implementation of the VISA standard in a free software library
 	pkgver = 0.0.20130412
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.librevisa.org
-	arch = i686,
+	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = libusb
