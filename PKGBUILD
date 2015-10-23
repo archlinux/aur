@@ -5,7 +5,7 @@
 
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
-pkgver=5.0.6
+pkgver=5.0.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
