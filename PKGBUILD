@@ -7,7 +7,7 @@ pkgname='ros-indigo-rviz-fixed-view-controller'
 pkgver='0.0.2'
 _pkgver_patch=1
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cmake-modules

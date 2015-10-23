@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rviz-fixed-view-controller
 	pkgdesc = ROS - A simple rviz view controller that follows a TF frame.
 	pkgver = 0.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ros.org/wiki/rviz_fixed_view_controller
 	arch = any
 	license = BSD
