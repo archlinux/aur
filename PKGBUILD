@@ -3,11 +3,11 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 pkgname=cdls
 pkgver=4.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A curses based file manager for system managers"
-arch=('i686', 'x86_64')
-url="ftp://pd7w.fs2a.eu/cdls-4.2.tar.gz"
+arch=('i686' 'x86_64')
+url=("ftp://zml12.dyndns.org/cdls-4.2.tar.gz" "ftp://vps337.directvps.nl/cdls-4.2.tar.gz")
 license=('public domain')
 groups=()
 depends=('ncurses')
@@ -21,7 +21,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(ftp://pd7w.fs2a.eu/$pkgname-$pkgver.tar.gz)
+#source=("ftp://pd7w.fs2a.eu/$pkgname-$pkgver.tar.gz")
+source=("ftp://zml12.dyndns.org/cdls-4.2.tar.gz")
+#source=("ftp://vps337.directvps.nl/cdls-4.2.tar.gz")
 noextract=()
 md5sums=('4ed5f945ebb53838f7a60c0c4f634d0b')
 
