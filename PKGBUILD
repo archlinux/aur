@@ -10,13 +10,14 @@ pkgdesc="X Compositor (a fork of xcompmgr-dana) (git-version)"
 arch=(i686 x86_64)
 url="https://github.com/chjj/compton"
 license=('MIT')
-depends=('libgl' 'libdbus' 'libxcomposite' 'libxdamage' 'libxrandr' 'pcre' 'libconfig' 'libxinerama')
+depends=('libgl' 'libdbus' 'libxcomposite' 'libxdamage' 'libxrandr' 'pcre' 'libconfig' 'libxinerama' 'hicolor-icon-theme')
 makedepends=('git' 'asciidoc' 'mesa')
 optdepends=('dbus:          To control compton via D-Bus'
             'xorg-xwininfo: For compton-trans'
             'xorg-xprop:    For compton-trans')
 provides=('compton')
 conflicts=('compton')
+install='compton-git.install'
 source=("git://github.com/chjj/compton.git")
 md5sums=("SKIP")
 
