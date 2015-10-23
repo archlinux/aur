@@ -1,0 +1,16 @@
+pkgbase = libespm-git
+	pkgdesc = Library for reading and writing .esp and .esm plugin files.
+	pkgver = r207.fe6b7b8
+	pkgrel = 1
+	url = https://github.com/WrinklyNinja/libespm
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = boost-libs
+	provides = libespm
+	conflicts = libespm
+	source = git+https://github.com/WrinklyNinja/libespm.git
+	md5sums = SKIP
+
+pkgname = libespm-git
+
