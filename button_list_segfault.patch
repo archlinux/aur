@@ -1,0 +1,13 @@
+Index: joy2key-1.6.3/joy2key.c
+===================================================================
+--- joy2key-1.6.3.orig/joy2key.c	2009-12-06 15:17:43.000000000 -0500
++++ joy2key-1.6.3/joy2key.c	2009-12-06 15:29:10.000000000 -0500
+@@ -576,7 +576,7 @@
+ 				exit(1);
+ 			}
+ 			button_act_counter=0;
+-			while((i+1)<=argc && (argv[i+1][0]!='-' || 
++			while((i+1)<argc && (argv[i+1][0]!='-' || 
+ 								 (argv[i+1][0]=='-' && !argv[i+1][1])))
+ 			{
+ 				button_actions[button_act_counter]=argtokey(argv[++i]);
