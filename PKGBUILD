@@ -2,7 +2,7 @@
 # Maintainer: Danilo <aur at dbrgn dot ch>
 
 pkgname=spatialindex
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc='An extensible framework that supports robust spatial indexing methods and sophisticated spatial queries.'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ provides=(spatialindex)
 conflicts=(libspatialindex-git)
 source=("http://download.osgeo.org/libspatialindex/$pkgname-src-$pkgver.tar.gz"
         'LICENSE')
-md5sums=('b17f86d9a49f284fe403c19b36fb5d89'
-         '6a9a7d8158edbf1529ca46aae5a76752')
+sha256sums=('7caa46a2cb9b40960f7bc82c3de60fa14f8f3e000b02561b36cbf2cfe6a9bfef'
+            '170961cdd7754bed14e465eff7d4f22c5df11d8d104310a56a7ee3ab201bc279')
 
 build() {
   cd "$srcdir/$pkgname-src-$pkgver/"
