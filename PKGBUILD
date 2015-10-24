@@ -6,7 +6,9 @@ arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
 license=('custom')
 depends=('qt4>=4.5.0' 'pcsclite>=1.5.0' 'openssl' 'ccid')
-optdepends=('autenticacao-gov-pt: Necessário para autenticações online')
+optdepends=('autenticacao-gov-pt: Necessário para autenticações online'
+			'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
+			'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
 
 source=("cartaodecidadao.install")
 source_x86_64=("https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu-${pkgver}-1414.x86_64.deb")
