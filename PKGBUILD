@@ -1,6 +1,6 @@
 # Maintainer: Maurício CA <mauricio.antunes@gmail.com>
 pkgname=foo2zjs-utils
-pkgver=20150704
+pkgver=20151011
 pkgrel=1
 epoch=
 pkgdesc="Linux printer driver for ZjStream protocol"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/foo2zjs.tar.gz")
 noextract=()
-sha256sums=('6ba509fd20e70ec511f48e7627ffa1bb14d8cbe390a71923e00c10e649000e8b')
+sha256sums=('41ac200b17b547f3aa2d2aea8c220677273dcb7ecfbfec3c64cee2156898ea4c')
 build() {
   cd "$srcdir/foo2zjs"
   make
