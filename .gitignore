@@ -1,0 +1,7 @@
+.MTREE
+.PKGINFO
+*.gem
+*.src.tar*
+*.pkg.tar*
+_z
+README.md

@@ -1,0 +1,29 @@
+pkgbase = ruby-zoom
+	pkgdesc = Quickly open CLI search results in your favorite editor
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://mjwhitta.github.io/zoom/
+	arch = any
+	license = GPL3
+	depends = findutils
+	depends = ruby
+	depends = ruby-scoobydoo
+	depends = sed
+	optdepends = ack: as search backend
+	optdepends = grep: as search backend
+	optdepends = the_platinum_searcher: as search backend
+	optdepends = the_silver_searcher: as search backend
+	optdepends = vim: for opening search result in default editor
+	provides = zoom-git
+	conflicts = zoom-git
+	replaces = zoom-git
+	noextract = ruby-zoom-3.3.0.gem
+	source = https://rubygems.org/downloads/ruby-zoom-3.3.0.gem
+	source = https://gitlab.com/mjwhitta/zoom/raw/master/completions/_z
+	source = https://gitlab.com/mjwhitta/zoom/raw/master/README.md
+	sha256sums = f99305cc8a4f298aff628eb7541894e5adcc11a4411b86712e089340eb602a21
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ruby-zoom
+
