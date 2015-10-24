@@ -2,7 +2,7 @@
  
 pkgname=foomatic-db-foo2zjs
 arch=('i686' 'x86_64')
-_snapdate=20141011
+_snapdate=20150904
 pkgver=${_snapdate}
 pkgrel=1
 epoch=3
