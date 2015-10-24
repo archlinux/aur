@@ -1,8 +1,9 @@
-# Maintainer:  Gordin <9ordin @t gmail>
+# Maintainer: Vlad M. <vlad@archlinex.net>
+# Contributor: Gordin <9ordin @t gmail>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.17.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
@@ -10,25 +11,25 @@ depends=('elfutils')
 makedepends=('ocaml')
 url="http://flowtype.org"
 license=('BSD')
-source=($pkgname-$pkgver.tar.gz::https://github.com/facebook/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('282ead8e8a344e44b825b2f8727520fb420e79f76ed1c26fa3a137c8a0172b35')
+source=("https://github.com/facebook/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('6634a92cfe75d344060d856b4de69d345aa9fde1b39a1f7988e74e59e1d6b9e8')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   msg 'Building...'
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   msg 'Checking...'
   make test
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   msg 'Installing license...'
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
