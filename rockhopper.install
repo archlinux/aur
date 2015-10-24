@@ -1,0 +1,94 @@
+setup_rhpmain_dirs() {
+	main_hdir=/var/lib/rhpmain
+
+	mkdir -p $main_hdir/config
+	mkdir -p $main_hdir/www/tmp
+	mkdir -p $main_hdir/log
+	mkdir -p $main_hdir/script
+	mkdir -p $main_hdir/restore
+	mkdir -p $main_hdir/tmp
+	mkdir -p $main_hdir/certs
+
+	chmod -R 0700 $main_hdir
+	chown -R rhpmain:rhpenguin $main_hdir
+
+	chmod -R 0700 $main_hdir/www/tmp
+}
+
+setup_rhpprotected_dirs() {
+	protected_hdir=/var/lib/rhpprotected
+
+	mkdir -p $protected_hdir/config
+	mkdir -p $protected_hdir/certs
+	mkdir -p $protected_hdir/script
+	mkdir -p $protected_hdir/rhptrace
+	mkdir -p $protected_hdir/restore
+	mkdir -p $protected_hdir/tmp
+
+	chmod -R 0700 $protected_hdir
+	chown -R rhpprotected:rhpenguin $main_hdir
+}
+
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install(){
+	groupadd -g 1006 rhpenguin &> /dev/null
+	useradd -g 1006 -d /var/lib/rhpmain -s /bin/false rhpmain &> /dev/null
+	useradd -g 1006 -d /var/lib/rhpprotected -s /bin/false rhpprotected &> /dev/null
+
+	setup_rhpmain_dirs
+
+	setup_rhpprotected_dirs
+
+	#setcap
+	setcap cap_net_admin,cap_net_raw=eip /var/lib/rhpprotected/script/rhp_netmng
+
+	note "[NOTICE]";
+	msg_blue " - Default administrator's information for management";
+	msg_blue "   tools (Web console and rockhopper command):";
+	msg_blue "     Name    : admin";
+	msg_blue "     Password: secret";
+	msg_blue "   Please change the default password immediately!";
+	msg_blue " - A default HTTP URL for Web Management Service:";
+	msg_blue "     URL: http://127.0.0.1:32501/";
+	msg_blue "         (http://localhost:32501/)";
+	msg_blue "   Web console has been tested only on Firefox and";
+	msg_blue "   Google Chrome.";
+	msg_blue "Rockhopper was successfully installed.";
+	msg_blue "Enjoy,                    --- Rockhopper VPN Project";
+}
+
+
+post_update() {
+	setup_rhpmain_dirs
+
+	setup_rhpprotected_dirs
+
+	#setcap
+	setcap cap_net_admin,cap_net_raw=eip /var/lib/rhpprotected/script/rhp_netmng
+
+	note "[NOTICE]";
+	msg_blue " - Default administrator's information for management";
+	msg_blue "   tools (Web console and rockhopper command):";
+	msg_blue "     Name    : admin";
+	msg_blue "     Password: secret";
+	msg_blue "   Please change the default password immediately!";
+	msg_blue " - A default HTTP URL for Web Management Service:";
+	msg_blue "     URL: http://127.0.0.1:32501/";
+	msg_blue "         (http://localhost:32501/)";
+	msg_blue "   Web console has been tested only on Firefox and";
+	msg_blue "   Google Chrome.";
+	msg_blue "Rockhopper was successfully installed.";
+	msg_blue "Enjoy,                    --- Rockhopper VPN Project";
+}

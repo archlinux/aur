@@ -1,0 +1,26 @@
+pkgbase = rockhopper
+	pkgdesc = IPsec/IKEv2-based VPN software for Linux
+	pkgver = 0.2.b1
+	pkgrel = 020
+	url = http://rockhoppervpn.sourceforge.net/
+	install = rockhopper.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gcc
+	depends = libcap
+	depends = openssl
+	depends = libxml2
+	depends = sqlite
+	depends = perl-xml-libxml
+	depends = perl-libwww
+	depends = perl-switch
+	depends = gtk2-perl
+	source = rockhopper.service
+	source = http://sourceforge.net/projects/rockhoppervpn/files/rockhopper-0.2.b1-020.tgz
+	sha256sums = 6631265db9c1709347423f550847488adea59a1f7f371d7b9a8378563520a4fd
+	sha256sums = fb70c194483adacf3f431f28948d7564e5e1769098d39a01739d5f0c5e1eb382
+	sha256sums = eb24d740983624a982af313551ac9ba240b024edb6d7f40c94e972a5a4f08447
+
+pkgname = rockhopper
+

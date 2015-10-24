@@ -1,0 +1,19 @@
+#
+# Copyright (C) 2014 - 2015 TETSUHARU HANADA <rhpenguine@gmail.com>
+# All rights reserved.
+#
+
+[Unit]
+Description=Rockhopper VPN (IPsec)
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=/var/lib/rhpprotected/script/rhp_systemd_env
+ExecStartPre=/var/lib/rhpprotected/script/rhp_systemd_ext init dont_invoke_trace
+ExecStart=/usr/sbin/rockhopperd -m /var/lib/rhpmain/config/main.xml -p /var/lib/rhpprotected/config/protected.xml -u rhpmain -s rhpprotected -i /var/run/rockhopper
+ExecStopPost=/var/lib/rhpprotected/script/rhp_systemd_ext cleanup
+TimeoutStopSec=60
+
+[Install]
+WantedBy=multi-user.target

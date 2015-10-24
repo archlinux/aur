@@ -1,0 +1,22 @@
+#
+# Copyright (C) 2014 - 2015 TETSUHARU HANADA <rhpenguine@gmail.com>
+# All rights reserved.
+#
+
+[Unit]
+Description=Rockhopper VPN (Debug Trace Service)
+After=network.target
+Before=rockhopper.service
+
+[Service]
+EnvironmentFile=/var/lib/rhpprotected/script/rhp_systemd_env
+ExecStartPre=/var/lib/rhpprotected/script/rhp_systemd_ext init 
+ExecStart=/var/lib/rhpprotected/rhptrace/rhp_trace_helper
+ExecStartPost=/usr/local/sbin/rhp_trace -e 1 ; /usr/local/sbin/rhp_trace -e 2 ; /usr/local/sbin/rhp_trace -e 3 ; /usr/local/sbin/rhp_trace -e 4 ; /usr/local/sbin/rhp_trace -e 5 ; /usr/local/sbin/rhp_trace -e 6 ; /usr/local/sbin/rhp_trace -e 7 ; /usr/local/sbin/rhp_trace -e 8 ; /usr/local/sbin/rhp_trace -z 10000000
+ExecStopPost=/var/lib/rhpprotected/script/rhp_systemd_ext cleanup
+TimeoutStopSec=60
+
+[Install]
+WantedBy=multi-user.target
+
+
