@@ -1,0 +1,12 @@
+--- a/heimdall/source/BridgeManager.cpp	2015-03-15 18:28:01.469153580 -0500
++++ b/heimdall/source/BridgeManager.cpp	2015-03-15 18:30:00.234516719 -0500
+@@ -231,7 +231,8 @@
+ {
+ 	Interface::Print("Claiming interface...\n");
+ 
+-	int result = libusb_claim_interface(deviceHandle, interfaceIndex);
++    int result = libusb_detach_kernel_driver(deviceHandle, interfaceIndex);
++    result = libusb_claim_interface(deviceHandle, interfaceIndex);
+ 
+ #ifdef OS_LINUX
+ 
