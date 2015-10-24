@@ -1,7 +1,7 @@
 # Maintainer: PitBall
 
 pkgname=ryzom-client
-pkgver=0.12.0.r6270
+pkgver=0.12.0.r6274
 pkgrel=1
 pkgdesc="Ryzom is a Free to Play MMORPG .This version is for playing on an official server"
 arch=('i686' 'x86_64')
@@ -65,4 +65,9 @@ package() {
   sed 's/\/usr\/bin\/ryzom_client/ryzom/' \
   -i ${pkgdir}/usr/share/applications/ryzom_client.desktop
   install -Dm755  ${srcdir}/ryzom.sh  ${pkgdir}/usr/bin/ryzom
+  #correct config file
+  sed -r -e 's|^(PatchServer\s*=\s*).*|\1"";|' \
+         -e '/PatchServer/aPatchWanted = 0;' \
+         -e 's|^(PatchletUrl\s*=\s*).*|\1"";|' \
+         -i ${pkgdir}/etc/ryzom/client_default.cfg
 }
