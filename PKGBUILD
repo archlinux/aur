@@ -2,7 +2,7 @@
 
 pkgname=xkb-switch-git
 pkgver=20150826
-pkgrel=2
+pkgrel=3
 pkgdesc='Program that allows to query and change the XKB layout state'
 arch=('i686' 'x86_64')
 url='https://github.com/ierton/xkb-switch'
@@ -21,4 +21,7 @@ build() {
 package() {
 	cd xkb-switch
 	make DESTDIR="$pkgdir/" install
+
+	mkdir "$pkgdir/usr/bin"
+	ln -st "$pkgdir/usr/bin" "$pkgdir/usr/local/bin/xkb-switch"
 }
