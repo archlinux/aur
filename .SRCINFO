@@ -1,0 +1,17 @@
+pkgbase = xfpanel-switch
+	pkgdesc = Simple application to manage Xfce panel layouts
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://launchpad.net/xfpanel-switch
+	install = xfpanel-switch.install
+	arch = any
+	license = GPL3
+	makedepends = intltool
+	depends = python
+	depends = python-gobject>=3.18
+	depends = python-gobject<3.20
+	source = https://launchpad.net/{xfpanel-switch}/1.0/1.0.3/+download/xfpanel-switch-1.0.3.tar.bz2
+	md5sums = 33fab00590db4e81f12f9b43383e8953
+
+pkgname = xfpanel-switch
+
