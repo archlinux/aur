@@ -13,10 +13,10 @@ optdepends=('binfmt-support: to allow handling foreign ELF binaries and executin
 conflicts=()
 _arch=i386
 [ "$CARCH" = 'x86_64' ] && _arch=amd64
-_debsrc=${pkgname}_${pkgver}+dfsg-3_${_arch}.deb
+_debsrc=${pkgname}_${pkgver}+dfsg-4_${_arch}.deb
 source=(http://ftp.debian.org/debian/pool/main/q/qemu/${_debsrc})
-sha1sums=('84d83a16c60c82b6c579f2f750b04a3ac26c249b')
-[ "$CARCH" = 'i686' ] && sha1sums=('d7622ac3ab0b49a0bef007effc856ed5ee8c3b16')
+sha1sums=('b57637bb2d78ce21f7ed1b62e89617bee3681ba8')
+[ "$CARCH" = 'i686' ] && sha1sums=('74846b3f7a7bd3f45ea7fb6ec61fcad45b351374')
 
 prepare() {
   cd "$srcdir"

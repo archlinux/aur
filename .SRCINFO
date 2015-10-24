@@ -8,8 +8,8 @@ pkgbase = qemu-user-static
 	license = GPL2
 	license = LGPL2.1
 	optdepends = binfmt-support: to allow handling foreign ELF binaries and executing them via qemu
-	source = http://ftp.debian.org/debian/pool/main/q/qemu/qemu-user-static_2.4+dfsg-3_i386.deb
-	sha1sums = 84d83a16c60c82b6c579f2f750b04a3ac26c249b
+	source = http://ftp.debian.org/debian/pool/main/q/qemu/qemu-user-static_2.4+dfsg-4_i386.deb
+	sha1sums = b57637bb2d78ce21f7ed1b62e89617bee3681ba8
 
 pkgname = qemu-user-static
 
