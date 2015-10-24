@@ -1,7 +1,7 @@
 # Maintainer: Duncan <duncan@vtllf.org>
 
 pkgname=terraform
-pkgver=0.6.4
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
@@ -19,7 +19,8 @@ prepare() {
   mv -f "${pkgname}" "${srcdir}/src/${_gourl}/${pkgname}"
   msg2 "Fetching dependencies"
   cd "${srcdir}/src/${_gourl}/${pkgname}"
-  GOPATH="${srcdir}" make updatedeps
+  GOPATH="${srcdir}" go get -u github.com/mitchellh/gox
+  GOPATH="${srcdir}" go get -u golang.org/x/tools/cmd/stringer
   mkdir Godeps
   cp deps/v$(echo ${pkgver} | sed 's/\./-/g').json Godeps/Godeps.json
   GOPATH="${srcdir}" godep restore
