@@ -1,6 +1,6 @@
 pkgname=systemtap
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system."
 url="http://sourceware.org/systemtap/"
 arch=('i686' 'x86_64' 'armv7h')
