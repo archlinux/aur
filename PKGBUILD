@@ -15,6 +15,6 @@ sha512sums=('6e79599426ca40bb9ce9c199afad46c5ec5d7d612f0df1af6aa1f82876546926c4e
 install=ecce-gov-pt-certificates.install
 
 package() {
-	mkdir -p ${pkgdir}/etc/ca-certificates/extracted/cadir/
-	install ${srcdir}/*.crt ${pkgdir}/etc/ca-certificates/extracted/cadir/
+	mkdir -p ${pkgdir}/etc/ca-certificates/trust-source/anchors
+	install ${srcdir}/*.crt ${pkgdir}/etc/ca-certificates/trust-source/anchors/
 }
