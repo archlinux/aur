@@ -1,7 +1,7 @@
 # Maintainer: Stavros Polymenis <sp@orbitalfox.com>
 pkgname=portal
 pkgver=0.1.5
-pkgrel=0
+pkgrel=1
 pkgdesc="A personal portal system. Alpha version, do not install unless you know what you are doing"
 arch=(any)
 url="http://orbitalfox.com"
@@ -26,4 +26,6 @@ package() {
 	install -Dm544 portal-postconf "$pkgdir/usr/bin/portal-postconf"
 	install -Dm544 portal-doveconf "$pkgdir/usr/bin/portal-doveconf"
 	install -Dm440 ../portal.sudo "${pkgdir}/etc/sudoers.d/${pkgname}"
+	install -Dm544 ../master.cf "$pkgdir/usr/share/portal/master.cf"
+	install -Dm544 ../master.cf "$pkgdir/etc/postfix/master.cf"
 }
