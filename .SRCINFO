@@ -1,0 +1,20 @@
+pkgbase = t2n
+	pkgdesc = A Tool for communication between PC and Lego NXT over usb
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://www-verimag.imag.fr/~raymond/edu/lego/t2n/
+	arch = i686
+	license = LGPL
+	makedepends = automake
+	makedepends = autoconf
+	depends = libusb-compat
+	depends = lego-udev-rules
+	source = http://www-verimag.imag.fr/~raymond/edu/lego/t2n/t2n-0.5.src.tgz
+	source = Makefile.am
+	source = configure.ac
+	md5sums = 378020803c8657a2ee03570fad2ee804
+	md5sums = c10f2eb53db8d5304138bae316c3194b
+	md5sums = 3158f44e4feb65ad916ddb81427fece8
+
+pkgname = t2n
+
