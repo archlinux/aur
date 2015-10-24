@@ -2,8 +2,8 @@
 #Contributor:	Jussi Timperi	<gmail.com: jussi.timperi>
 
 pkgname=libvoikko
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.8
+pkgrel=1
 pkgdesc="A library of free Finnish language tools using Malaga"
 arch=('i686' 'x86_64')
 url="http://voikko.sourceforge.net"
@@ -12,6 +12,7 @@ depends=('hfstospell>=0.2.2' 'suomi-malaga-voikko')
 makedepends=('python2')
 options=(!libtool)
 source=(http://www.puimula.org/voikko-sources/libvoikko/${pkgname}-${pkgver}.tar.gz)
+md5sums=('5c6bbaf9e9a6ebc9e6e538ed3d62f0b0')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -39,4 +40,3 @@ package() {
   make DESTDIR="${pkgdir}/" install
 }
 
-md5sums=('857a09866dacddd9b6370e719c3e81b8')
