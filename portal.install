@@ -1,5 +1,6 @@
 post_install() {
   portal-postconf -d $(hostname)
+  portal-doveconf
 }
 
 post_upgrade() {

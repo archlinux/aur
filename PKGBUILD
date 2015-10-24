@@ -27,4 +27,5 @@ package() {
 	install -Dm544 portal-doveconf "$pkgdir/usr/bin/portal-doveconf"
 	install -Dm440 ../portal.sudo "${pkgdir}/etc/sudoers.d/${pkgname}"
 	install -Dm544 ../master.cf "$pkgdir/usr/share/portal/master.cf"
+	install -Dm544 ../10-master.conf "$pkgdir/usr/share/portal/10-master.conf"
 }
