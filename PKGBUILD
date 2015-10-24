@@ -2,7 +2,7 @@
 
 pkgname=python2-gtts
 _pypiname=gTTS
-pkgver=1.0.2
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="A Python interface to Google's Text to Speech API."
 arch=('any')
