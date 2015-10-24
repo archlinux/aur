@@ -2,8 +2,8 @@
 
 pkgname="adwaita-dark-gtk2-git"
 _pkgname="Adwaita-dark-gtk2"
-pkgver="r16.dc00e7d"
-pkgrel="1"
+pkgver=r6.2bc1b2a
+pkgrel=1
 pkgdesc="Clone of Gnome3 Adwaita dark theme for GTK2."
 url="https://github.com/nickurak/Adwaita-dark-gtk2"
 license=('GPL')
