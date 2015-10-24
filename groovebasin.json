@@ -9,8 +9,23 @@
     "mpdPort": 6600,
     "acoustidAppKey": "bgFvC4vW",
     "encodeQueueDuration": 8,
-    "sslKey": "certs/self-signed-key.pem",
-    "sslCert": "certs/self-signed-cert.pem",
+    "sslKey": null,
+    "sslCert": null,
     "sslCaDir": null,
-    "googleApiKey": "AIzaSyDdTDD8-gu_kp7dXtT-53xKcVbrboNAkpM"
+    "googleApiKey": "AIzaSyDdTDD8-gu_kp7dXtT-53xKcVbrboNAkpM",
+    "encodeBitRate": 256,
+    "ignoreExtensions": [
+        ".jpg",
+        ".jpeg",
+        ".txt",
+        ".png",
+        ".log",
+        ".cue",
+        ".pdf",
+        ".m3u",
+        ".nfo",
+        ".ini",
+        ".xml",
+        ".zip"
+    ]
 }

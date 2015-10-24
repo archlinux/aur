@@ -1,6 +1,6 @@
 pkgbase = nodejs-groovebasin-git
 	pkgdesc = Music player server with a web-based user interface inspired by Amarok 1.4
-	pkgver = 1.5.0.7.ga3b9b1e
+	pkgver = 1.5.1.43.ge165f9a
 	pkgrel = 1
 	url = http://groovebasin.com/
 	install = groovebasin.install
@@ -9,18 +9,22 @@ pkgbase = nodejs-groovebasin-git
 	license = MIT
 	makedepends = python2
 	depends = nodejs
-	depends = libgroove
+	depends = libgroove-git
 	provides = nodejs-groovebasin
 	conflicts = nodejs-groovebasin
 	backup = etc/groovebasin.json
-	source = groovebasin::git+https://github.com/andrewrk/groovebasin
+	source = groovebasin::git+https://github.com/andrewrk/groovebasin#branch=libgroove-master
 	source = groovebasin.sh
 	source = groovebasin.json
 	source = groovebasin.service
+	source = groovebasin-groove-git.patch
+	source = groovebasin-leveldown.patch
 	sha256sums = SKIP
 	sha256sums = 5169f64bbe305959d6c2c76f73b10c3a604586cb884c78e9b620e476f45132df
-	sha256sums = d4e6f06b601b16304199f61bce662ccc8e34842ddb0f8f688eae6e0be150e8df
+	sha256sums = 55ec9f96e6ad4d8cf478f34a48a5ce98cf6150374b82cbc46cb07696370ee33d
 	sha256sums = fca2b5d94cef9e5b70936bdb47c4a69724050d657fe72f471f989dce933a1caa
+	sha256sums = 31ef3c14378232b5e6c191625641b0b936fcfa7280817a5bf5fe9187235a0be9
+	sha256sums = 58cc0446f16b488dbd054f4a5c918f4f08b3ef6f530a611c6fe6a95693e6955b
 
 pkgname = nodejs-groovebasin-git
 

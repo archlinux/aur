@@ -8,30 +8,42 @@
 
 pkgname=nodejs-groovebasin-git
 _pkgname=groovebasin
-pkgver=1.5.0.7.ga3b9b1e
+pkgver=1.5.1.43.ge165f9a
 pkgrel=1
 pkgdesc='Music player server with a web-based user interface inspired by Amarok 1.4'
 arch=('i686' 'x86_64')
 url='http://groovebasin.com/'
 license=(MIT)
-depends=(nodejs libgroove)
+depends=(nodejs libgroove-git)
 makedepends=(python2)
 provides=nodejs-groovebasin
 conflicts=nodejs-groovebasin
 backup='etc/groovebasin.json'
 install=groovebasin.install
-source=("$_pkgname"::"git+https://github.com/andrewrk/${_pkgname}"
+source=("$_pkgname"::"git+https://github.com/andrewrk/${_pkgname}#branch=libgroove-master"
         groovebasin.sh
         groovebasin.json
-        groovebasin.service)
+        groovebasin.service
+        groovebasin-groove-git.patch
+        groovebasin-leveldown.patch)
 sha256sums=('SKIP'
             '5169f64bbe305959d6c2c76f73b10c3a604586cb884c78e9b620e476f45132df'
-            'd4e6f06b601b16304199f61bce662ccc8e34842ddb0f8f688eae6e0be150e8df'
-            'fca2b5d94cef9e5b70936bdb47c4a69724050d657fe72f471f989dce933a1caa')
-pkgver() {
+            '55ec9f96e6ad4d8cf478f34a48a5ce98cf6150374b82cbc46cb07696370ee33d'
+            'fca2b5d94cef9e5b70936bdb47c4a69724050d657fe72f471f989dce933a1caa'
+            '31ef3c14378232b5e6c191625641b0b936fcfa7280817a5bf5fe9187235a0be9'
+            '58cc0446f16b488dbd054f4a5c918f4f08b3ef6f530a611c6fe6a95693e6955b')
+
+
+kgver() {
   cd "${srcdir}/${_pkgname}"
   local ver="$(git describe --long)"
   printf "%s" "${ver//-/.}"
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  patch -fNp1 -i ../groovebasin-groove-git.patch
+  patch -fNp1 -i ../groovebasin-leveldown.patch
 }
 
 build() {
@@ -50,6 +62,15 @@ package() {
     --prefix "${pkgdir}/usr" \
     "${srcdir}/${_pkgname}"
 
+  # music dir
+  install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # bindings
+  install -Dm644 \
+    "${srcdir}/${_pkgname}/node_modules/groove/build/Release/groove.node" \
+    "${pkgdir}/usr/lib/node_modules/groovebasin/node_modules/groove/build/groove.node"
+
+
   install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -57,12 +78,6 @@ package() {
   install -d -g 49 -o 49 "${pkgdir}/var/lib/${_pkgname}"
   install -Dm644 "${srcdir}/${_pkgname}.json" "${pkgdir}/etc/${_pkgname}.json"
   ln -sf "/etc/${_pkgname}.json" "${pkgdir}/var/lib/${_pkgname}/config.json"
-
-  install -d -g 49 -o 49 "${pkgdir}"/var/lib/groovebasin/certs
-  ln -sf /usr/lib/node_modules/groovebasin/certs/self-signed-key.pem \
-    "${pkgdir}"/var/lib/groovebasin/certs
-  ln -sf /usr/lib/node_modules/groovebasin/certs/self-signed-cert.pem \
-    "${pkgdir}"/var/lib/groovebasin/certs
 
   install -Dm644 "${srcdir}"/groovebasin.service \
     "${pkgdir}"/usr/lib/systemd/system/groovebasin.service
