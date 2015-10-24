@@ -27,12 +27,12 @@ prepare() {
 build() {
 	cd "${srcdir}/root"
 	export GOPATH="${srcdir}/root"
-	go build "github.com/joushou/serve2d-${pkgver}"
+	go build "github.com/joushou/serve2d"
 }
 
 package() {
 	mkdir -p ${pkgdir}/etc/serve2d
-	install -Dm755 "root/serve2d-${pkgver}" "${pkgdir}/usr/bin/serve2d"
-	install -Dm644 "root/src/github.com/joushou/serve2d-${pkgver}/example_conf.json" "${pkgdir}/etc/serve2d/"
+	install -Dm755 "root/serve2d" "${pkgdir}/usr/bin/serve2d"
+	install -Dm644 "root/src/github.com/joushou/serve2d/example_conf.json" "${pkgdir}/etc/serve2d/"
 	install -Dm644 "${srcdir}/serve2d@.service" "${pkgdir}/usr/lib/systemd/system/serve2d@.service"
 }
