@@ -1,7 +1,8 @@
 # Maintainer: Christopher Hamilton <marker5a@gmail.com>
 
 pkgname=easyterm
-pkgver=0.9
+_gitname=easyterm
+pkgver=0
 pkgrel=1
 pkgdesc='Serial Port Terminal Emulator'
 arch=('x86_64' 'i686')
@@ -9,37 +10,27 @@ url='http://sourceforge.net/projects/easyterm/'
 
 license=('GPLv3')
 depends=('qt5')
-depends=()
 makedepends=('git' 'qt5-serialport')
 optdepends=()
 provides=()
 conflicts=()
-source=()
-md5sums=()
-_gitroot="http://git.code.sf.net/p/easyterm/code easyterm"
-_gitname="easyterm"
+
+source=('git+https://git.code.sf.net/p/easyterm/code')
+md5sums=('SKIP')
+pkgver() {
+  cd "$srcdir/$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd ${srcdir}/
-  
-  msg "Connecting to the GIT server...."
-    if [[ -d ${srcdir}/${_gitname} ]] ; then
-        cd ${_gitname}
-        git pull origin
-        msg "The local files are updated..."
-    else
-        git clone ${_gitroot}
-    fi
-  
   cd "$srcdir/$_gitname"
-    
-  
-  qmake .
+
+  qmake-qt5 .
   make
 }
 
 package() {
-	echo "$srcdir/$_gitname"
+
 	
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/icons/hicolor/48x48/apps"
@@ -48,6 +39,7 @@ package() {
 	cp "$srcdir/$_gitname/release/EasyTerm" "$pkgdir/usr/bin"
 	cp "$srcdir/$_gitname/resources/easyterm.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps"
 	cp "$srcdir/$_gitname/easyterm.desktop" "$pkgdir/usr/share/applications/"
+	
 }
 
 # vim:set ts=2 sw=2 et:
