@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand Bachmann <theferdi265@gmail.com>
 pkgname=lemonbar-xft-dynstack-git
 _pkgname=bar
-pkgver=218.93294f4
+pkgver=228.5788824
 pkgrel=1
 pkgdesc="A lightweight xcb based bar with ported xft support and dynamic area stack size."
 arch=('i686' 'x86_64')
