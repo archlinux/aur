@@ -1,6 +1,6 @@
 pkgbase = libgroove-git
 	pkgdesc = Library that provides decoding and encoding of audio on a playlist.
-	pkgver = 4.3.0.1.gd56306e
+	pkgver = 4.3.0.59.g4f0fa80
 	pkgrel = 1
 	url = https://github.com/andrewrk/libgroove
 	arch = i686

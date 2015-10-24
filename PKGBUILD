@@ -4,7 +4,7 @@
 
 pkgname=libgroove-git
 _pkgname=libgroove
-pkgver=4.3.0.1.gd56306e
+pkgver=4.3.0.59.g4f0fa80
 pkgrel=1
 pkgdesc='Library that provides decoding and encoding of audio on a playlist.'
 arch=(i686 x86_64)
@@ -39,8 +39,10 @@ build() {
   mkdir -p "${srcdir}/${_pkgname}/build"
   cd "${srcdir}/${_pkgname}/build"
   cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D BUILD_EXAMPLE_PROGRAMS=OFF \
+    -D BUILD_STATIC_LIBS=OFF \
     ..
   make
 }
