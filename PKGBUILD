@@ -2,27 +2,29 @@
 #Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
 
 pkgname=krita-git
-pkgver=3.0.89.r38940.fcf9a43
+pkgver=3.0.89.r39061.0c8df96
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)"
 arch=('i686' 'x86_64')
-url="http://www.krita.org/"
+url='http://www.krita.org'
 license=('GPL2')
 depends=('fftw'
          'gsl'
-         'libkdcraw-frameworks-git'
+         'libraw'
          'opencolorio'
          'boost-libs'
          'exiv2'
          'openexr'
          'poppler-qt5'
          'kio'
+         'hicolor-icon-theme'
          )
 makedepends=('extra-cmake-modules'
              'git'
              'boost'
              'vc'
              'python'
+             'eigen'
              )
 provides=('krita')
 conflicts=('krita' 'calligra-krita-git')
