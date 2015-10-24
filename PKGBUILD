@@ -3,7 +3,7 @@
 
 _pkgname=libsoundio
 pkgname=${_pkgname}-git
-pkgver=1.0.2.1.g0a0715e
+pkgver=1.0.3.0.g581c5a4
 pkgrel=1
 pkgdesc='A C99 library providing cross-platform audio input and output'
 arch=('x86_64')
@@ -28,6 +28,9 @@ build() {
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D CMAKE_INSTALL_LIBDIR=lib \
+        -D BUILD_EXAMPLE_PROGRAMS=OFF \
+        -D BUILD_TESTS=OFF \
+        -D BUILD_STATIC_LIBS=OFF \
         -D ENABLE_JACK=OFF \
         ${srcdir}/${_pkgname}
     make

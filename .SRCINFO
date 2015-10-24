@@ -1,6 +1,6 @@
 pkgbase = libsoundio-git
 	pkgdesc = A C99 library providing cross-platform audio input and output
-	pkgver = 1.0.2.1.g0a0715e
+	pkgver = 1.0.3.0.g581c5a4
 	pkgrel = 1
 	url = http://www.github.com/andrewrk/libsoundio
 	arch = x86_64
