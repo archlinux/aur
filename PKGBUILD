@@ -25,9 +25,10 @@ build() {
     mkdir -p build
     cd build
     cmake \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DENABLE_JACK=OFF \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_INSTALL_LIBDIR=lib \
+        -D ENABLE_JACK=OFF \
         ${srcdir}/${_pkgname}
     make
 }
