@@ -2,7 +2,7 @@
 
 pkgname=qmodbus-git
 _gitname=qmodbus
-pkgver=0
+pkgver=r125.2186db8
 pkgrel=1
 pkgdesc='QModBus is a free Qt-based implementation of a ModBus master application. A graphical user interface allows easy communication with ModBus slaves over serial line interface. QModBus also includes a bus monitor for examining all traffic on the bus.'
 arch=('x86_64' 'i686')
