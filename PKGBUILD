@@ -8,7 +8,7 @@ pkgdesc="Plasma 5 applet that monitors network speed of currently active connect
 arch=(any)
 url="http://kde-apps.org/content/show.php/Network+Monitor?content=169377"
 license=(GPL)
-depends=(plasma-nm qt5-graphicaleffects)
+depends=(plasma-workspace qt5-graphicaleffects)
 makedepends=(extra-cmake-modules)
 source=("https://github.com/kotelnik/plasma-applet-network-monitor/archive/v$pkgver.tar.gz")
 md5sums=('9edc87472b4b161bf6a9074039494a74')
