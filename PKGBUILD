@@ -2,12 +2,12 @@
 
 pkgname=getver
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Find the latest version number for a given URL'
 arch=('x86_64' 'i686')
 url='https://github.com/xyproto/getver/'
 license=('MIT')
-makedepends=('git' 'gcc-go')
+makedepends=('git' 'go')
 depends=('setconf')
 source=("git://github.com/xyproto/getver.git#tag=$pkgver")
 md5sums=('SKIP')
