@@ -1,0 +1,24 @@
+pkgbase = weston-rbp
+	pkgdesc = Reference implementation of a Wayland compositor for rbp
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = http://wayland.freedesktop.org
+	arch = armv7h
+	arch = armv6h
+	license = MIT
+	depends = libxkbcommon
+	depends = libinput
+	depends = libunwind
+	depends = poppler-glib
+	depends = mtdev
+	depends = libxcursor
+	depends = glu
+	depends = pango
+	depends = colord
+	provides = weston
+	replaces = weston
+	source = http://wayland.freedesktop.org/releases/weston-rbp-1.9.0.tar.xz
+	sha1sums = 94b70baca9a6ba007c696b740a711586f9dc274f
+
+pkgname = weston-rbp
+
