@@ -6,9 +6,9 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 depends=('libkipi-git' 'libkexiv2-git' 'libkdcraw-git' 'libkface-git' 'libkgeomap-git' \
-	 'lensfun' 'libpgf' 'knotifyconfig' 'kfilemetadata' 'libgphoto2' 'liblqr' 'lensfun' \
+	 'libpgf' 'knotifyconfig' 'kfilemetadata' 'libgphoto2' 'liblqr' 'lensfun' \
 	 'qt5-multimedia' 'akonadi-contact' 'libksane-git')
-makedepends=('git' 'extra-cmake-modules-git' 'eigen' 'doxygen' 'boost' 'mariadb')
+makedepends=('git' 'extra-cmake-modules-git' 'eigen' 'doxygen' 'boost' 'mariadb' 'kdoctools')
 optdepends=('kipi-plugins: more tools and plugins')
 conflicts=('digikam')
 provides=('digikam')
