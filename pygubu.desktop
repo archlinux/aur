@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pygubu (Python2)
+GenericName=Interface Designer (TkInter)
+Comment=Create or open user interface designs for Python2 TkInter applications.
+Exec=pygubu-designer-py2 %F
+Terminal=false
+StartupNotify=true
+Type=Application
+Icon=pygubu-py2.svg
+Categories=Development;GUIDesigner;
