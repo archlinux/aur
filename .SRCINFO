@@ -1,6 +1,6 @@
 pkgbase = easyterm
 	pkgdesc = Serial Port Terminal Emulator
-	pkgver = 0
+	pkgver = r104.8622171
 	pkgrel = 1
 	url = http://sourceforge.net/projects/easyterm/
 	arch = x86_64
