@@ -1,0 +1,14 @@
+pkgbase = ivy-git
+	pkgdesc = An APL-like calculator.
+	pkgver = r252.44d9ad3
+	pkgrel = 1
+	url = https://github.com/robpike/ivy
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go>=1.5
+	conflicts = ivy
+
+pkgname = ivy-git
+
