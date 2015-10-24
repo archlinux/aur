@@ -1,0 +1,18 @@
+pkgbase = biogeme
+	pkgdesc = an open source freeware designed for the estimation of discrete choice models
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://biogeme.epfl.ch/
+	arch = i686
+	arch = x86_64
+	license = custom:"BIOGEME"
+	makedepends = gcc
+	makedepends = make
+	makedepends = fakeroot
+	depends = bison
+	depends = python
+	source = http://biogeme.epfl.ch/v23/biogeme-2.3.tar.gz
+	md5sums = 54c41126745b7752b54a578655e1e7da
+
+pkgname = biogeme
+
