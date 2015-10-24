@@ -1,18 +1,23 @@
 pkgbase = cronopete
-	pkgdesc = An Apple's Time Machine clone
-	pkgver = 3.16.0
+	pkgdesc = A graphical backup utility based on Apple Time Machine idea.
+	pkgver = 3.20.0
 	pkgrel = 1
 	url = http://www.rastersoft.com/programas/cronopete.html
 	install = cronopete.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = vala
+	makedepends = glib2
+	makedepends = cmake
+	makedepends = intltool
+	depends = glib2
 	depends = gtk3
-	depends = vala
-	depends = gsl
+	depends = pango
 	depends = libgee
-	source = https://github.com/rastersoft/cronopete/archive/v3.16.0.tar.gz
-	md5sums = 1f8200dcf187606554e637bf213c2f80
+	depends = libx11
+	source = https://github.com/rastersoft/cronopete/archive/3.20.0.tar.gz
+	md5sums = 8b28d087add27c92540469a4623c15af
 
 pkgname = cronopete
 
