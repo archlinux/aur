@@ -4,12 +4,17 @@
 
 pkgname=telegram-desktop-bin
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org"
 license=('GPL3')
 depends=('libx11' 'libgcrypt' 'libasyncns' 'libsndfile' 'libsystemd' 'libdbus' 'openal' 'libogg' 'opus' 'opusfile' 'portaudio' 'openssl' 'zlib' 'libexif' 'xz')
+optdepends=(
+			'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
+			'libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)'
+			'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
+			)
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 replaces=('telegram-bin')
