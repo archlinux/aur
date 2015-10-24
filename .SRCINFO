@@ -1,14 +1,14 @@
 pkgbase = insight-bitcore
 	pkgdesc = Bitcoin blockchain explorer with complete REST and websocket APIs
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://insight.is
 	install = insight.install
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = bower
 	makedepends = git
-	makedepends = nodejs-bower
 	makedepends = nodejs-grunt-cli
 	makedepends = npm
 	makedepends = python2
