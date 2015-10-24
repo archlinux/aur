@@ -1,0 +1,13 @@
+pkgbase = aquila-git
+	pkgdesc = Digital Signal Processing library
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://aquila-dsp.org/
+	arch = any
+	makedepends = cmake
+	makedepends = gcc
+	source = git+https://github.com/zsiciarz/aquila/
+	md5sums = SKIP
+
+pkgname = aquila-git
+
