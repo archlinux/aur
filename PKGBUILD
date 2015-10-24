@@ -1,23 +1,24 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoinxt-git
-pkgver=20151009
+pkgver=20151014
 pkgrel=1
 pkgdesc="BitcoinXT headless P2P node"
 arch=('i686' 'x86_64')
-url="https://bitcoinxt.software"
-depends=('boost'
-         'boost-libs'
-         'miniupnpc'
-         'openssl')
+url="https://github.com/bitcoinxt/bitcoinxt"
 makedepends=('autoconf'
              'automake'
              'binutils'
+             'boost'
+             'boost-libs'
+             'curl'
              'expect'
              'gcc'
              'git'
              'libtool'
              'make'
+             'miniupnpc'
+             'openssl'
              'pkg-config'
              'yasm')
 license=('MIT')
