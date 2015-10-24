@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 pkgname=surface-evolver
 pkgver=2.70
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive program for the modelling of liquid surfaces shaped by various forces and constraints"
 arch=('i686' 'x86_64')
 url="http://www.susqu.edu/brakke/evolver/evolver.html"
@@ -10,11 +10,11 @@ license=('custom')
 groups=()
 depends=("readline" "ncurses" "freeglut")
 makedepends=()
-source=("http://www.susqu.edu/brakke/aux/downloads/evolver-$pkgver.tar.gz"
+source=("http://facstaff.susqu.edu/brakke/evolver/downloads/evolver-$pkgver.tar.gz"
         'rl_mid.h'
         'rl_head.h'
         'readline.c')
-md5sums=('78f85ab07d5e79dbf69c99760570fb02'
+md5sums=('3d41f1536f93df6a54925130400c1a89'
          'b529d62f8c69e54ceb50782721953898'
          '4fd7e25cbc867c019098aeada64b7ec7'
          '573aaa9d13d953bd96e22bc6bcccf155')
