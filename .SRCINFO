@@ -1,0 +1,14 @@
+pkgbase = iscan-plugin-perfection-v550
+	pkgdesc = iscan plugin for Epson Perfection v550 Photo
+	pkgver = 1.0.0_2
+	pkgrel = 1
+	url = http://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=PT&CN2=&DSCMI=25084&DSCCHK=97cffbf4e3af4b5bb83d49b071b187237836f629
+	install = perfection-v550.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = iscan
+
+pkgname = iscan-plugin-perfection-v550
+

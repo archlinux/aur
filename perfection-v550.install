@@ -1,0 +1,10 @@
+post_install() {
+  echo "Running iscan-registry to register plugins and firmware with iscan"
+  iscan-registry --add interpreter usb 0x04b8 0x013b /usr/lib/iscan/libiscan-plugin-perfection-v550 /usr/share/iscan/esfweb.bin
+
+}
+
+pre_remove() {
+  echo "Unregistering v-550 plugins/firmware"
+  iscan-registry --remove interpreter usb 0x04b8 0x013b /usr/lib/iscan/libiscan-plugin-perfection-v550 /usr/share/iscan/esfweb.bin
+}
