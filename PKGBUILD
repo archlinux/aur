@@ -1,0 +1,53 @@
+# $Id: PKGBUILD 71115 2012-05-24 13:42:42Z bisson $
+# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Hisato Tatekura <hisato_tatekura@excentrics.net>
+# Contributor: Massimiliano Torromeo <massimiliano DOT torromeo AT google mail service>
+
+pkgname=python2-unbound
+pkgver=1.5.6
+pkgrel=1
+pkgdesc='Validating, recursive, and caching DNS resolver: python2 binding'
+url='http://unbound.net/'
+license=('custom:BSD')
+arch=('i686' 'x86_64')
+options=('!libtool')
+depends=('python2' 'unbound' 'openssl')
+makedepends=('expat' 'swig' 'openssl')
+optdepends=('expat: unbound-anchor')
+_basename='unbound'
+validpgpkeys=('EDFAA3F2CA4E6EB05681AF8E9F6F1C2D7E045F8D')
+source=("http://unbound.net/downloads/${_basename}-${pkgver}.tar.gz"{,.asc})
+sha1sums=('b1e521669d6e5a3c1baf8b71dad070e38887162b' 'SKIP')
+
+build() {
+	cd "${srcdir}/${_basename}-${pkgver}"
+
+	PYTHON=/usr/bin/python2 ./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--enable-static=no \
+		--disable-rpath \
+		--with-conf-file=/etc/unbound/unbound.conf \
+		--with-pidfile=/var/run/unbound.pid \
+        --with-pyunbound
+
+	make
+}
+
+package() {
+	cd "${srcdir}/${_basename}-${pkgver}"
+
+	make DESTDIR="${pkgdir}" install
+
+    rm -r "${pkgdir}/etc"
+    rm -r "${pkgdir}/usr/sbin"
+    rm -r "${pkgdir}/usr/include"
+    rm -r "${pkgdir}/usr/share"
+    rm -r "${pkgdir}/usr/lib/libunbound.la"
+    rm -r "${pkgdir}/usr/lib/libunbound.so"
+    rm -r "${pkgdir}/usr/lib/libunbound.so.2"
+    rm -r "${pkgdir}/usr/lib/libunbound.so.2.1.1"
+
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
