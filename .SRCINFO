@@ -1,7 +1,7 @@
 pkgbase = fusionclient-git
 	pkgdesc = Project Fusion is a cross-platform, open source multi-functional game launcher.
 	pkgver = 20151023.d5f67ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FusionLauncher/FusionClient
 	arch = i386
 	arch = x86_64
