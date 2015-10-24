@@ -19,7 +19,7 @@ changelog=
 source=(#"git+https://github.com/orbifx/portal.git"
 	https://github.com/orbifx/portal/releases/download/v0.1-beta/portal.tar.gz)
 noextract=()
-md5sums=('84da857472896bda76f8c6348e174bff')
+md5sums=('4dda94de96f9840bdc32e6471499a360')
 
 package() {
 	install -Dm544 portal "$pkgdir/usr/bin/portal"
