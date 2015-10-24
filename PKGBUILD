@@ -7,7 +7,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=6.9.rc0.r0.g2f7c727
+pkgver=6.10.beta1.r0.g3152b5c
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -37,12 +37,12 @@ md5sums=('SKIP'
          '9ba81f717ffd4e20b8b2f2a318307488'
          '5ebdb6e6ac541f040a39f8d3fd9c8ee1'
          'fd8e3e07f5b7318e6a7200a3c64f5bc2'
-         '23e972753be1e5d0f761a7f82a95cebf'
+         '6d9ae0978ce6a05a0da2cafdfb178a09'
          '5947a420a0b1483f0cbc74c76895789b'
          'a83a3b1bc7fcb7cbf752a83a8311fc42'
          'f333939ea6c41377b66407c81016cee4'
          '4eb23a3c7363258bc9ba764d6e5512ba'
-         '4cee4f96bcd877587e7efc40c20adba7')
+         '16b529194c6105c3364127bd8f1efa83')
 
 pkgver() {
   cd sage
