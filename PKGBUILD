@@ -66,8 +66,8 @@ pkgbase=linux-bfs
 pkgname=('linux-bfs' 'linux-bfs-headers' 'linux-bfs-docs')
 _kernelname=-bfs
 _srcname=linux-4.1
-pkgver=4.1.10
-pkgrel=2
+pkgver=4.1.11
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://ck-hack.blogspot.de"
 license=('GPL2')
@@ -93,8 +93,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfs.preset'
         'change-default-console-loglevel.patch'
-        'config' 'config.x86_64'
-        '0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch')
+        'config' 'config.x86_64')
         
 prepare() {
     cd ${_srcname}
@@ -102,10 +101,6 @@ prepare() {
      ### Add upstream patch
          msg "Add upstream patch"
          patch -Np1 -i "${srcdir}/patch-${pkgver}"
-     
-     ### Fix https://bbs.archlinux.org/viewtopic.php?pid=1568197#p1568197
-         msg "Fix potential deadlock in reqsk_queue_unlink"
-	 patch -Np1 -i "$srcdir/0000-fix_potential_deadlock_in_reqsk_queue_unlink.patch"
          
      ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
      # remove this when a Kconfig knob is made available by upstream
@@ -478,7 +473,7 @@ package_linux-bfs-docs() {
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            '3b5cb5c8f494958c39a06a1b416e3e5a075a3c76c44f8bf1ae5a14deec9861407100c2ef59b0720e8fc0729b5c8422b4d819ff59f1f7ec4eed20c5ba8a95d6d5'
+            'ebd9f9ed7a4921795a0aee43440f6c73bf2ba058a690eb96031b978e61e390ef4d3b64e818a7cce7fe520adb20b93e4b7dd485b50d32c2dcf3012db3477a852c'
             'SKIP'
             '9ff7279db6a976c495ba1e09466d688d84f0ef9cca2912e8aeb12f68070e9af012a3c3558e25daf9459fce7d27dc9a82f8fe58f3499164d42ea4561ea62391b5'
             '205059a0ac0fff34298695685a2de8806193b45a270e5818dd942d7c2d07f1d116eacf69dbaf4c99fe342d56b4f43ee4d2b3675a706724ed18cbc39618865d26'
@@ -490,9 +485,8 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             '84a7c3b96959cb2dd7687b968ba4522b62919529e2c0e166c0369e6cf77ff0e7ee387ca22a0980fc37dd100812205ab2c17b6c4d5dda51958ac1e66693f22925'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             'f1b175f9c0c1735ac26fcd9705a1d6fd7253b6d47de89c3537ef886a7957c2ebc0f535b816dfa6922e1830796a7da4ac9cde1dd2a650369c41d766ea4b144d1e'
-            'c34d13f9ae6564461cc69aad176b4deee98efe9ec5058db2fe34f33387092022da1c59af4e37caff799c71eb2829669295cb0a6fbadeac368be937aaf7f65094'
-            'bf8045913bc87df289cb6089b9428b2eb685ef3a745c7531b628111ba58ec33fb6e707a74ecdd53b6d59169c4354e02efff585ef16a1645ce5b04e54257f8f50')
-            
+            'c34d13f9ae6564461cc69aad176b4deee98efe9ec5058db2fe34f33387092022da1c59af4e37caff799c71eb2829669295cb0a6fbadeac368be937aaf7f65094')
+
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
