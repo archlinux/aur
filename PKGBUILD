@@ -1,0 +1,60 @@
+pkgname=cartaodecidadao-pki
+pkgver=1.0
+pkgrel=1
+pkgdesc="PKI Certificates for Cartao de Cidadao (Portugal eID)"
+arch=('any')
+license=('custom')
+url="https://pki.cartaodecidadao.pt/"
+depends=('')
+source=("https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20001.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20002.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20003.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200001.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200002.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200003.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200004.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200005.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200006.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200007.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200008.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200009.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200010.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200001.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200002.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200003.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200004.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200005.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200006.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200007.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200008.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200009.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200010.cer")
+sha512sums=('0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dcc0df5fbecd5490b8cdbb546fd736e937abc3bbef5280ff4eb6dc852338ed1'
+            '69f06ef7bc70dfce8fd11ca2335c51c3185f5b97d0778183142527d818f131939e27c002f9a52a06b7992a319e3ab04fd954caf7d6cde3dd08e1e782be9a19cd'
+            '9569371e5a455923570ea77085e3b09a27d4c7353d4bfc8e0af0a3a30e9321c04c74bbb88c0f221b12efd2cbaa88c04c45e82f893844a5ce6a71ac4324f4eeb7'
+            'aa20ed1148e31912e0b8e209ccb042a80175aeefd1ced3bab3981651f173f5873937861c48b6912dda931f029c19f9bc190357894f8a48c68184f4337ea0d29a'
+            '8a9547becb7ad9a809b2827f85e7c3e4a9829073ff72ae32b43450f03db0aef2ce921cc3d26333e093d7ce7ae850c809f3d9bd368a5dd58fbae05a181d4b7e8e'
+            '8a3a96d43dc1d75449836fd267af305543eac0b82e545ccbb406300930a3bdb83b5ce38c59a645081b1bf2b6800141f36576ad8ea0e7ad31cdd8f60ccda31475'
+            '64c959955cfbb2651aba2a6398f4ed8b7c739bfee1d07d4db4a3b97e2197099225fd600354dd4bc74f9bce7cc5ab5ee899223c1b63c721fc175510e4a6891b5d'
+            '6f6d504428b9fa87f4a7122e97780ed0d76cb4c13953f008737bed27fea7927d855b06896ff7975fc19f277d103024223ebf935b7c4035ed5ed0cdf8e265e887'
+            'dcb7294d162dd143ba77bf75e2cd9e9236b905f51ebef4b1f8de50e3572002a5d1065bb6d5cc03b6757f161eb010b00d628b00837556406b5f7d0f267a58961d'
+            'd2e2e4155bc616e718ad830120b7b7410c580199ca1f071a9dc33238a349c48ab88f7da6647da520ffeb02dee411253e97d4f296f73fac179771cc536744a256'
+            'fcbe6bf03c933c43a7e3e003641a8e43bc0389a69c93e227b3e3503bd753be5ec38e85b22de745dd7acb68328d5680e7e0d53011ca58e1093049ff67decc4b16'
+            'e43f600020a9649295854c24d71b374791439db150e928fffcd6c1bfbe2f4421c07fd284004becc172ce154e127caa5638ce67f08bdc5b374f6f443ad8c66d31'
+            '2fc6cdbfe02080048f619ba31a7a02f1eccc56d0ee9367221793c78a7c3bf2be6493a8ede5fe80e8b87e666842952d853a5fd4304f69add1cf1d8db7dcb818c0'
+            '07d19fc9041e639577dd1da30937ebf89aaadf6ba4a5a05f9262f9b5f3e12614ab1bb2ad76aea87c810faffa7c65ecd4205e5151b1b965f570765759b26701a1'
+            '0f6fa5e33fabcd3f5d33a9984c90dcdac6baa646c8477716101eaa58ed11a6ad91d68c835f947920d4f5133c8139e0747646bb94d28b8051e095a36e51d766a4'
+            '1f0a8e2282fbe846119b4a187c87df8ef4c9978f80bb4acc58ec1d5cc35dc9b720479d5061d84ef37af205868f0f322829e9532a559c16f545a1ed422b4bcb2f'
+            '96dfb35a8dd2058fb74d27d4630da1c239976d2d92e7fb2cdbf0c229d8081305102ad94b96bf5415ac8adfd560e915be4c3dc6de5843d683af9fc6efe7475bc9'
+            'a3c842f67ec60ae0399e7e63aa64fb60b34904b880a7bd9619ce0369d6bcf00523738f4838eaafeefaf70558f244330313fc7df845e7296f4409367049738ae1'
+            'ed8158211b133e89e9c26f7378b6828de810ec1ddc314baa7dac691abcb406564edaf06af2f9647e470d6df5d95c90c8aea648fb02ad5b362b1f58410445cc00'
+            '5b6bfd3da7a3e0be2dfb00cfe2d2edebb58dfbc4e03b9c81ea45d406fc41d2402fb879de0d52d82fa5679de43d55d46045465f9de4da712ead5a700aed9e1db4'
+            '082c4bd7457f6dc0836ff693c5e5dba1406d4f0faeb9e3af67b539cd2f4ec6cf304c38fca2e32f77b6991a04a2ece6ed08bb586521c0b963e9aa7a35e6510dd7'
+            '711eec3f5bbe58f73c9b454356f62bc9c8703dc7d4dde4e55c00d8f0b4b88cb7778c2ad532f3ac4b402cbe83c2b51a48aa2ff4ee6572ef2117760bc6a3f9665f'
+            '48a0d90074e36c27db8b6091000baa5d51871adac5bce1ac7f696a906bfc493d602c91a7778e2f826753924da8437ac6715ba7986240c67e01563670ec6e2472')
+install=cartaodecidadao-pki.install
+
+package() {
+	mkdir -p ${pkgdir}/etc/ca-certificates/extracted/cadir/
+	install ${srcdir}/*.cer ${pkgdir}/etc/ca-certificates/extracted/cadir/
+}
