@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0.20515.76f67400649e
+pkgver=4.1.0.20653.c16947991354
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -22,8 +22,8 @@ install=octave.install
 options=('!emptydirs' '!makeflags')
 _appver="4.1.0"
 provides=("octave=$_appver")
-_hgrepo=octave
 _hgroot=http://hg.savannah.gnu.org/hgweb/
+_hgrepo=octave
 
 pkgver() {
   cd "$srcdir/$_hgrepo"
