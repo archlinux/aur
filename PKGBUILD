@@ -20,7 +20,6 @@ options=()
 changelog=
 install=
 noextract=()
-#_gourl=github.com/robpike/ivy
 _gourl=robpike.io/ivy
 
 pkgver() {
@@ -39,7 +38,9 @@ check() {
 package() {
   cd "$srcdir"
   install -Dm755 bin/ivy "$pkgdir/usr/bin/ivy"
-  install -Dm644 src/${_gourl}/README.md $pkgdir/usr/share/doc/$pkgname/README
   install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+  sed '7,285!d' $srcdir/src/${_gourl}/doc.go > README
+  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
 }
 
