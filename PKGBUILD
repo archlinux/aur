@@ -6,7 +6,7 @@
 pkgbase=linux-pae
 #pkgbase=linux-pae
 _srcname=linux-4.2
-pkgver=4.2.1
+pkgver=4.2.4
 pkgrel=1
 arch=(i686)
 url="http://www.kernel.org/"
@@ -21,22 +21,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        '0001-make_flush_workqueue_non_gpl.patch'
-        '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
-        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
-        '0001-fix-bridge-regression.patch')
+        'change-default-console-loglevel.patch')
+
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            '9d0ab6525eb5f42056e2465267c62fa67efc75c57ad5345b99414b783278e9a3'
+            '104ba869111c7ce037fc92646f9da7352412a73e84cde7467f29cd4b973d6e78'
             'SKIP'
-            '6930487e2053196561ad83817427353fa2a296e5b6c551d8aa347890c6adfc8e'
+            'b4b5b3852a8e76187e24231c22b53cee09c3327774e4130e927359e55fae6c1b'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '4e776734e2c2185910a6fbb6f333d967b04f4a72b3196310af286c6a779bd97d'
-            '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
-            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
-            '0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -52,23 +45,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # fix work_queue symbol to non GPL for nvidia module building
-  # already applied to 4.3 series
-  patch -p1 -i "${srcdir}/0001-make_flush_workqueue_non_gpl.patch"
-
-  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
-  # https://lkml.org/lkml/2015/8/18/292
-  patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
-
-  # add not-yet-mainlined patch to fix network unavailability when iptables
-  # rules are applied during startup - happened with Shorewall; journal had
-  # many instances of this error: nf_conntrack: table full, dropping packet
-  patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
-
-  # add not-yes-mainlined patch to fix bridge code
-  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
-  patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
   
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
