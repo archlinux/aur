@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A simple GUI designer for the python tkinter module. For python2."
 url="http://numba.pydata.org/"
 arch=('i686' 'x86_64')
-license=('BSD')
+license=('GPL')
 depends=('python2' 'tk' 'python2-appdirs')
 source=("https://github.com/alejandroautalan/pygubu/archive/v${pkgver}.tar.gz"
         "tk-logo.svg"
