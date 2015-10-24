@@ -17,6 +17,7 @@ md5sums=('902b290a997128e6be949c0bec44ca6e'
 prepare() {
   cd pari_jupyter-$pkgver
   patch -p0 -i ../jupyter-path.patch
+  sed -e 's|python|python2|' -i spec/kernel.json
 }
 
 build() {
