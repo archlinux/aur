@@ -1,27 +1,27 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-qt-addrindex-git
-pkgver=20150710
+pkgver=20151014
 pkgrel=1
 pkgdesc="Bitcoin Core GUI P2P wallet with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
-depends=('boost'
-         'boost-libs'
-         'gettext'
-         'miniupnpc'
-         'openssl'
-         'protobuf'
-         'qrencode'
-         'qt4')
 makedepends=('autoconf'
              'automake'
              'binutils'
+             'boost'
+             'boost-libs'
              'gcc'
+             'gettext'
              'git'
              'libtool'
              'make'
+             'miniupnpc'
+             'openssl'
              'pkg-config'
+             'protobuf'
+             'qrencode'
+             'qt4'
              'yasm')
 license=('MIT')
 source=(${pkgname%%-*}::git+https://github.com/btcdrak/bitcoin#branch=addrindex-0.11)
