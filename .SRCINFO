@@ -1,20 +1,20 @@
 pkgbase = letsencrypt-apache
 	pkgdesc = Apache plugin for Let’s Encrypt client
-	pkgver = 0.0.0.dev20151021
+	pkgver = 0.0.0.dev20151024
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/letsencrypt-apache
 	arch = any
 	license = Apache
-	depends = letsencrypt=0.0.0.dev20151021
-	depends = python2-acme=0.0.0.dev20151021
+	depends = letsencrypt
+	depends = python2-acme
 	depends = python2-setuptools
 	depends = python2-mock
 	depends = python2-zope-interface
 	depends = python2-augeas
 	depends = python2-zope-component
 	conflicts = letsencrypt-git
-	source = https://pypi.python.org/packages/source/l/letsencrypt-apache/letsencrypt-apache-0.0.0.dev20151021.tar.gz
-	md5sums = c3521175f0ab03e00ed470c364368042
+	source = https://pypi.python.org/packages/source/l/letsencrypt-apache/letsencrypt-apache-0.0.0.dev20151024.tar.gz
+	md5sums = 5fca12cb529a3d96f3d5df1389a65372
 
 pkgname = letsencrypt-apache
 

@@ -1,17 +1,19 @@
 #  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=letsencrypt-apache
-pkgver=0.0.0.dev20151021
+pkgver=0.0.0.dev20151024
 pkgrel=1
 pkgdesc="Apache plugin for Let’s Encrypt client"
 arch=('any')
 license=('Apache')
 url="https://pypi.python.org/pypi/${pkgname}"
-depends=("letsencrypt=${pkgver}" "python2-acme=${pkgver}" 'python2-setuptools'
+depends=('letsencrypt' 'python2-acme' 'python2-setuptools'
          'python2-mock' 'python2-zope-interface' 'python2-augeas' 'python2-zope-component')
+# To be precise: This package, letsencrypt and python2-acme shell all be at the same version,
+# though for easier package management, it is omitted in this PKGBUILD
 conflicts=("letsencrypt-git")
 source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('c3521175f0ab03e00ed470c364368042')
+md5sums=('5fca12cb529a3d96f3d5df1389a65372')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
