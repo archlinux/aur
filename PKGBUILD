@@ -6,7 +6,7 @@
 
 pkgname=firefox-nightly-pl
 pkgdesc='Standalone web browser from mozilla.org, nightly build, Polish l10n'
-pkgver=43.0a1
+pkgver=44.0a1
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
