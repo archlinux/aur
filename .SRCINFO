@@ -1,0 +1,26 @@
+pkgbase = librepilot
+	pkgdesc = A ground control station and firmware for UAV flight controllers
+	pkgver = 15.09
+	pkgrel = 1
+	url = http://www.librepilot.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	makedepends = qt5-tools
+	makedepends = qt5-quick1
+	depends = qt5-svg
+	depends = qt5-serialport
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols
+	depends = sdl
+	depends = libusb
+	conflicts = librepilot-git
+	replaces = openpilot
+	source = http://download.librepilot.org/source/LibrePilot-15.09.tar.gz
+	source = http://download.librepilot.org/firmware/LibrePilot-15.09_firmware.tar.gz
+	md5sums = 2fd8aa64218cd3bbb3adbb3233f86618
+	md5sums = baf4e96ae060c93ca9c057ee6ff0c835
+
+pkgname = librepilot
+
