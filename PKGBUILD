@@ -2,7 +2,7 @@
 # Contributor: Sandro Munda <munda.sandro@gmail.com>
 
 pkgname=ghi-git
-pkgver=0.9.3.7.g5c628a1
+pkgver=1.0.3.1.gb8dad32
 pkgrel=1
 pkgdesc="GitHub Issues on the command line."
 arch=(any)
@@ -27,9 +27,6 @@ package() {
   install -Dm755 ghi ${pkgdir}/usr/bin/ghi
   install -Dm644 man/ghi.1 \
     ${pkgdir}/usr/share/man/man1/ghi.1
-
-  # LICENSE file is not provided, extract it from the README first
-  awk '/MIT License/,0' README.markdown > LICENSE
   install -Dm644 LICENSE \
     ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

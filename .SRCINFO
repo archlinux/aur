@@ -1,6 +1,6 @@
 pkgbase = ghi-git
 	pkgdesc = GitHub Issues on the command line.
-	pkgver = 0.9.3.7.g5c628a1
+	pkgver = 1.0.3.1.gb8dad32
 	pkgrel = 1
 	url = http://github.com/stephencelis/ghi
 	arch = any
