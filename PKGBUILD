@@ -1,6 +1,6 @@
 # Maintainer: Miika-Petteri Matikainen <miikapetteri@gmail.com>
 pkgname=pidgin-leftify-tabs
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Pidgin plugin to move conversation tabs to left whenever a message arrives"
 url="https://github.com/nablaa/pidgin-leftify-tabs-plugin"
