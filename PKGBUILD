@@ -1,7 +1,6 @@
 # Maintainer: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=ifcopenshell
-pkgver=0.4.0rc2
-_pkgsrcver=0.4.0-rc2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine."
 url="http://ifcopenshell.org/"
@@ -13,10 +12,10 @@ makedepends=('cmake' 'boost>=1.58.0' 'swig')
 conflicts=()
 replaces=()
 backup=()
-source=("https://github.com/aothms/IfcOpenShell/archive/v${_pkgsrcver}.tar.gz" "boost-1.58.patch")
+source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/v${pkgver}.tar.gz" "boost-1.58.patch")
 
 prepare(){
-  cd "${srcdir}/IfcOpenShell-${_pkgsrcver}"
+  cd "${srcdir}/IfcOpenShell-${pkgver}"
 
   patch -Np1 -i "${srcdir}/boost-1.58.patch"
 
@@ -26,7 +25,7 @@ prepare(){
 }
 
 build() {
-  cd "${srcdir}/IfcOpenShell-${_pkgsrcver}/cmake"
+  cd "${srcdir}/IfcOpenShell-${pkgver}/cmake"
   
   local _pythonver=$(python2 --version 2>&1)
   
@@ -43,12 +42,12 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/IfcOpenShell-${_pkgsrcver}/cmake"
+  cd "${srcdir}/IfcOpenShell-${pkgver}/cmake"
   
   make DESTDIR="${pkgdir}" install
   
   install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-md5sums=('bc6cfcc290e66cfcd96dae45c0e55ceb'
+md5sums=('12bbb9726d8012cf88222f5921a767c3'
          '9628e73de9049ae183774aa2363b6fda')
