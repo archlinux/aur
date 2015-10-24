@@ -6,7 +6,7 @@
 # Contributor: Gatekeeper <cool_work@yahoo.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mlterm
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Multi Lingual TERMinal emulator on X"
 url="http://mlterm.sourceforge.net/"
@@ -16,6 +16,12 @@ depends=('gtk2' 'gtk3' 'm17n-lib' 'libutempter')
 makedepends=('intltool' 'librsvg' 'ncurses')
 options=(!libtool)
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz $pkgname.desktop)
+md5sums=('f87f1051d36a13eca291d27dfd2d5a2c'
+         'd019c571f28c7b765610e219d9e52e35')
+sha1sums=('a71fd2643e19e96bba9b452620c6ae80bdcce4df'
+          '6a2c46265b0751ccf016e7521fdf48d1f9ac459f')
+sha256sums=('b6b08e3ce3c2136ed091776f0bb3b9ad0b7070bc2d845c9debe6e2cdc34cec05'
+            'b254755e320a94a05d3d745cd582a5b91f5ed33fd69396feca0511cf5c6b3ce0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -57,11 +63,4 @@ package() {
   rsvg-convert -w 48 -h 38 -f png -o mlterm.png mlterm.svg
   rsvg-convert -w 48 -h 38 -f png -o mlclient.png mlclient.svg
 }
-
-md5sums=('515293c243bacd0bd7e6f7494d16fa22'
-         'd019c571f28c7b765610e219d9e52e35')
-sha1sums=('03ce3058ae85d3e6e59ba7e9d7fe3a43cf7bf942'
-          '6a2c46265b0751ccf016e7521fdf48d1f9ac459f')
-sha256sums=('40eaf06b946a6848559a43ffb625a20f7679c44f19e36b8e155a4820be2990bb'
-            'b254755e320a94a05d3d745cd582a5b91f5ed33fd69396feca0511cf5c6b3ce0')
 

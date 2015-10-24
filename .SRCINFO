@@ -1,6 +1,6 @@
 pkgbase = mlterm
 	pkgdesc = Multi Lingual TERMinal emulator on X
-	pkgver = 3.5.1
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = http://mlterm.sourceforge.net/
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = mlterm
 	depends = m17n-lib
 	depends = libutempter
 	options = !libtool
-	source = http://downloads.sourceforge.net/mlterm/mlterm-3.5.1.tar.gz
+	source = http://downloads.sourceforge.net/mlterm/mlterm-3.6.0.tar.gz
 	source = mlterm.desktop
-	md5sums = 515293c243bacd0bd7e6f7494d16fa22
+	md5sums = f87f1051d36a13eca291d27dfd2d5a2c
 	md5sums = d019c571f28c7b765610e219d9e52e35
-	sha1sums = 03ce3058ae85d3e6e59ba7e9d7fe3a43cf7bf942
+	sha1sums = a71fd2643e19e96bba9b452620c6ae80bdcce4df
 	sha1sums = 6a2c46265b0751ccf016e7521fdf48d1f9ac459f
-	sha256sums = 40eaf06b946a6848559a43ffb625a20f7679c44f19e36b8e155a4820be2990bb
+	sha256sums = b6b08e3ce3c2136ed091776f0bb3b9ad0b7070bc2d845c9debe6e2cdc34cec05
 	sha256sums = b254755e320a94a05d3d745cd582a5b91f5ed33fd69396feca0511cf5c6b3ce0
 
 pkgname = mlterm
