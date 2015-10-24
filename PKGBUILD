@@ -3,7 +3,7 @@
 
 _pkgname=xf86-input-mtrack
 pkgname="$_pkgname-git"
-pkgver=0.3.1.r1.g56f9831
+pkgver=0.4.0.r0.gb9f274d
 pkgrel=1
 pkgdesc="A multitouch X driver using the kernel MT protocol"
 arch=('i686' 'x86_64')
