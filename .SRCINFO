@@ -1,14 +1,14 @@
 pkgbase = insight-bitcore-git
 	pkgdesc = Bitcoin blockchain explorer with complete REST and websocket APIs
-	pkgver = 20141130
+	pkgver = 20150805
 	pkgrel = 1
 	url = https://github.com/bitpay/insight
 	install = insight.install
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = bower
 	makedepends = git
-	makedepends = nodejs-bower
 	makedepends = nodejs-grunt-cli
 	makedepends = npm
 	makedepends = python2
