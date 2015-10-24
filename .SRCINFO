@@ -1,0 +1,16 @@
+pkgbase = breeze-gtk-git
+	pkgdesc = Breeze port for GTK. (GIT version)
+	pkgver = r58.32d6ad5
+	pkgrel = 1
+	url = https://quickgit.kde.org/?p=breeze-gtk.git
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	optdepends = gtk2: GTK+2 theme
+	optdepends = gtk3: GTK+3 theme
+	source = git://anongit.kde.org/breeze-gtk.git
+	sha1sums = SKIP
+
+pkgname = breeze-gtk-git
+
