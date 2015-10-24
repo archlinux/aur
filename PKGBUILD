@@ -9,7 +9,7 @@
 #pkgver=${_pkgver}_rc${_rc}
 
 pkgname=puppetdb
-pkgver=2.3.4
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="Puppet data warehouse; it manages storage and retrieval of all platform-generated data"
 arch=("any")
@@ -23,10 +23,10 @@ source=("http://downloads.puppetlabs.com/puppetdb/$pkgname-${pkgver//_/-}.tar.gz
         "puppetdb.service"
         "puppetdb-sysconfig"
         "build_defaults.yaml")
-md5sums=('c3873bead77b62b9c2edffbaa886a090'
-         'cc44a56414dc70fc01343c5ca4089038'
-         '9407eb01415b37e2dcb52129ba41468b'
-         'ddbe92f96248a11877877b168f56ae9a')
+sha512sums=('06133934c1496693ab239b1fdf17b8bc292f746efc08741d0172e7889d2b9908f8142777bda415c2ade9f65f58c5573abb35db5cbf15b22ad70a56d4233159fd'
+            'ab12b3da8420b582a018b6ec61de14eed0987159af6a799f102a62839a32f5e457850cc80183c42db1fbe123747c34ac44af7a055983faa59e440494de3907a1'
+            '378b85c4b5895d2d05ff2701a4fba0967bfa45dd937512c4125f7f8bbb29f210d1ca5945e75fce3e344231d124df1eda900e8151de9a11d6f5ede5d01f8e003b'
+            'adee2b426f943573b004a62c488950a87c16bc2c44fd786f8bc8e6fefc30355d078a41494570bf34c6b9c6d6124499ffa29c511b611ff562b45586b6f670438f')
 recommends=('postgresql-server')
 package () {
   cd "${srcdir}/${pkgname}-${pkgver//_/-}"
@@ -34,12 +34,12 @@ package () {
   export LANG=en_US.UTF-8
 
   # Fix package bootstrap on archlinux
-  cp ${startdir}/build_defaults.yaml $srcdir/${pkgname}-${pkgver//_/-}/ext/build_defaults.yaml 
+  cp ${startdir}/build_defaults.yaml $srcdir/${pkgname}-${pkgver//_/-}/ext/build_defaults.yaml
 
   # clean wrong ext/files/ and pkg dir
   rake clean
   # recreate ext/files and pkg dir
-  rake package:bootstrap
+  rake package:bootstrap --trace
   # install puppetdb 
   rake install PARAMS_FILE= DESTDIR=${pkgdir}
 
