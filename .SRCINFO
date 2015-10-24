@@ -1,0 +1,20 @@
+pkgbase = hfstospell-svn
+	pkgdesc = Helsinki Finite-State Transducer Technology (HFST) tools
+	pkgver = 0.3.1.r4502
+	pkgrel = 1
+	url = http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = svn
+	depends = libxml++
+	depends = libarchive
+	depends = icu
+	provides = hfstospell=0.3.1.r4502
+	conflicts = hfstospell
+	options = !libtool
+	source = hfstospell-svn::svn+http://svn.code.sf.net/p/hfst/code/trunk/hfst-ospell
+	md5sums = SKIP
+
+pkgname = hfstospell-svn
+
