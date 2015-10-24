@@ -1,0 +1,7 @@
+pkg
+src
+pyliblo-*.tar.gz
+python2-pyliblo-*.pkg.tar.xz
+python2-pyliblo-*.src.tar.gz
+.AURINFO
+
