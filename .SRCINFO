@@ -1,6 +1,6 @@
 pkgbase = python2-coloredlogs
 	pkgdesc = Colored stream handler for the logging module
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/xolox/python-coloredlogs
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = python2-coloredlogs
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-humanfriendly
-	provides = ansi2html
+	provides = coloredlogs
 	provides = python2-coloredlogs
-	conflicts = ansi2html
+	conflicts = coloredlogs
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/c/coloredlogs/coloredlogs-3.1.1.tar.gz
-	md5sums = 9c90d6ef8d62925778e7709b829f247d
-	sha256sums = 77fa21dec1a91a0ffb21c4d55a04128c0ae611b86bad01ff22110f792b13dd62
+	source = https://pypi.python.org/packages/source/c/coloredlogs/coloredlogs-3.1.2.tar.gz
+	md5sums = 9b350787e1f7e63ef73a810856695170
+	sha256sums = ad559e2f2e08eadfb63a210344acf0d00855ba0896fc5662e8d57e1a488e3209
 
 pkgname = python2-coloredlogs
 
