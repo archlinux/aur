@@ -17,6 +17,8 @@ pkgbase = xournalpp-git
 	depends = libglade
 	depends = poppler-glib
 	depends = glibmm
+	depends = texlive-bin
+	depends = desktop-file-utils
 	provides = xournal=1.0.0.290.gb62f922
 	provides = xournal-dmgerman=1.0.0.290.gb62f922 xournalpp=1.0.0.290.gb62f922
 	conflicts = xournal
