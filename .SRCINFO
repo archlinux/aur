@@ -5,11 +5,13 @@ pkgbase = pari-jupyter
 	url = http://www.sagemath.org
 	arch = any
 	license = GPL
-	makedepends = cython
+	makedepends = cython2
 	depends = pari-sage
 	depends = jupyter
 	source = http://mirrors.mit.edu/sage/spkg/upstream/pari_jupyter/pari_jupyter-1.0.0.tar.gz
+	source = jupyter-path.patch
 	md5sums = 902b290a997128e6be949c0bec44ca6e
+	md5sums = ca21ca5bb3d7c7c2465281cb996a4930
 
 pkgname = pari-jupyter
 
