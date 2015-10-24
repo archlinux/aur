@@ -3,7 +3,7 @@
 pkgname=tvheadend
 
 pkgver=4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://tvheadend.org/projects/tvheadend"
@@ -34,6 +34,6 @@ build() {
 package() {
     cd ${srcdir}/${pkgname}-${pkgver}
     make DESTDIR="$pkgdir/" install
-    chmod 0644 ${pkgdir}/usr/share/man/man1/tvheadend.1.gz
+    chmod 0644 ${pkgdir}/usr/share/man/man1/tvheadend.1
     install -D -m 644 "$srcdir/tvheadend.service" "$pkgdir/usr/lib/systemd/system/tvheadend.service"
 }
