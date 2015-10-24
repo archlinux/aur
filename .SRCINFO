@@ -36,7 +36,9 @@ pkgbase = firefox-beta-bin
 	md5sums = f7d82a1aac76f0bead4245fc1572eee1
 	md5sums = fecf3a4e9018f2a84e231cddbc047523
 	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/42.0b9/linux-i686/en-US/firefox-42.0b9.tar.bz2
+	md5sums_i686 = a50f21b926526d9ca35e6653fc05e495
 	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/42.0b9/linux-x86_64/en-US/firefox-42.0b9.tar.bz2
+	md5sums_x86_64 = ed8d170efcd01013b3d8d2b8435b2163
 
 pkgname = firefox-beta-bin
 

@@ -34,8 +34,8 @@ if [[ $_build = ? ]]; then
 fi
 md5sums=('f7d82a1aac76f0bead4245fc1572eee1'
          'fecf3a4e9018f2a84e231cddbc047523')
-md5sums_i686=('')
-md5sums_x86_64=('')
+md5sums_i686=('a50f21b926526d9ca35e6653fc05e495')
+md5sums_x86_64=('ed8d170efcd01013b3d8d2b8435b2163')
 
 package() {
   # Create directories
