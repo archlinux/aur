@@ -1,0 +1,17 @@
+pkgbase = googlecl-git
+	pkgdesc = Command line utility to use google services
+	pkgver = 0.9.15
+	pkgrel = 1
+	url = https://github.com/vinitkumar/googlecl
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = python
+	depends = python2
+	provides = googlecl
+	conflicts = googlecl
+	source = googlecl-git::git+https://github.com/vinitkumar/googlecl.git
+	md5sums = SKIP
+
+pkgname = googlecl-git
+
