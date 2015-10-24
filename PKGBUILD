@@ -55,6 +55,6 @@ sha512sums=('0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dc
 install=cartaodecidadao-pki.install
 
 package() {
-	mkdir -p ${pkgdir}/etc/ca-certificates/extracted/cadir/
-	install ${srcdir}/*.cer ${pkgdir}/etc/ca-certificates/extracted/cadir/
+	mkdir -p ${pkgdir}/etc/ca-certificates/trust-source/anchors
+	install ${srcdir}/*.cer ${pkgdir}/etc/ca-certificates/trust-source/anchors/
 }
