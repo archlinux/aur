@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 118896 2014-09-13 07:12:02Z arcanis $
 # Maintainer: Evgeniy Alekseev <arcanis.arch at gmail dot com>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
@@ -14,35 +13,24 @@ pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mat
 arch=(i686 x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
-depends=(ipython2 ppl glpk mpfi palp brial singular libcliquer maxima-ecl gfan sympow tachyon python2-rpy2
-  python2-cvxopt python2-matplotlib python2-scipy python2-sympy python2-networkx libgap gap flintqs lcalc lrcalc
-  eclib gmp-ecm zn_poly gd pynac linbox gsl rubiks pari-galdata pari-seadata-small planarity rankwidth
+depends=(ipython2 atlas-lapack ppl mpfi palp brial singular libcliquer maxima-ecl gfan sympow tachyon python2-rpy2
+  python2-matplotlib python2-scipy python2-sympy python2-networkx python2-igraph libgap gap flintqs lcalc lrcalc lrs
+  eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox gsl rubiks pari-galdata pari-seadata-small planarity rankwidth
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
-optdepends=('cython2: to compile cython code'
-	'jmol: 3D plots'
-	'sage-notebook: Browser-based (flask) notebook interface'
-	'sagemath-doc: Documentation and inline help'
-	'ipython2-notebook: Jupyter notebook interface'
-	'mathjax: Jupyter notebook interface'
-	'coin-or-cbc: COIN backend for numerical computations'
-	'nauty: for generating some classes of graphs'
-	'buckygen: for generating fullerene graphs'
-	'plantri: for generating some classes of graphs'
-	'benzene: for generating fusenes and benzenoids'
-	'modular_decomposition: modular decomposition of graphs'
-	'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes' 
-	'imagemagick: to show animations'
-	'coxeter3: Coxeter groups implementation'
-	'cryptominisat: SAT solver'
-	'arb: floating-point ball arithmetic')
+optdepends=('cython2: to compile cython code' 'jmol: 3D plots' 'sage-notebook: Browser-based (flask) notebook interface'
+  'sagemath-doc: Documentation and inline help' 'ipython2-notebook: Jupyter notebook interface' 'mathjax: Jupyter notebook interface'
+  'coin-or-cbc: COIN backend for numerical computations' 'nauty: for generating some classes of graphs'
+  'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
+  'modular_decomposition: modular decomposition of graphs' 'ffmpeg: to export animations to video' 'imagemagick: to show animations'
+  'coxeter3: Coxeter groups implementation' 'cryptominisat: SAT solver' 'arb: floating-point ball arithmetic')
 makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-or-cbc
-  mcqd coxeter3 cryptominisat arb modular_decomposition bliss-graphs)
+  mcqd coxeter3 cryptominisat arb modular_decomposition bliss-graphs) # libfes
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-"http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2" anal.h
-package.patch env.patch paths.patch clean.patch skip-check.patch 
-pexpect-env.patch pexpect-del.patch disable-fes.patch kernel.json)
+        "http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2"
+        'anal.h' 'package.patch' 'env.patch' 'paths.patch' 'clean.patch' 'skip-check.patch' 
+        'pexpect-env.patch' 'pexpect-del.patch' 'disable-fes.patch' 'jupyter-path.patch')
 md5sums=('SKIP'
          'd9a3e113ed147dcee8f89962a8dccd43'
          'a906a180d198186a39820b0a2f9a9c63'
@@ -67,21 +55,19 @@ prepare(){
 
 # Arch-specific patches
 # assume all optional packages are installed
-  patch -p0 -i "$srcdir"/package.patch
+  patch -p0 -i ../package.patch
 # find L.h header
   sed -e 's|libLfunction|Lfunction|' -i src/sage/libs/lcalc/lcalc_sage.h
 # don't try to link against libpng 1.2
   sed -e 's|png12|png|' -i src/module_list.py
 # set env variables
-  patch -p0 -i "$srcdir"/env.patch
+  patch -p0 -i ../env.patch
 # fix paths in python imports
-  patch -p0 -i "$srcdir"/paths.patch
-# fix cython linking
-  sed -e "s| atlas(),||" -i src/sage/misc/cython.py
+  patch -p0 -i ../paths.patch
 # don't try to remove installed files
-  patch -p0 -i "$srcdir"/clean.patch
+  patch -p0 -i ../clean.patch
 # skip checking build status
-  patch -p0 -i "$srcdir"/skip-check.patch
+  patch -p0 -i ../skip-check.patch
 # supress warning about GAP install dir
   sed -e "s|gapdir = os.path.join(SAGE_LOCAL, 'gap', 'latest')|gapdir = '/usr/lib/gap'|" -i src/sage/libs/gap/util.pyx 
 # fix Cremona database detection
@@ -92,7 +78,7 @@ prepare(){
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
-#  patch -p0 -i "$srcdir"/fes02.patch
+#  patch -p0 -i ../fes02.patch
 # disable fes module, fails to compile
   patch -p0 -i ../disable-fes.patch 
 
@@ -112,9 +98,9 @@ prepare(){
 
   cd "$srcdir"/pexpect-2.0
 # fix env in pexpect
-  patch -p1 -i "$srcdir"/pexpect-env.patch
+  patch -p1 -i ../pexpect-env.patch
 # hide exceptions in pexpect
-  patch -p1 -i "$srcdir"/pexpect-del.patch
+  patch -p1 -i ../pexpect-del.patch
 }
 
 
@@ -143,8 +129,9 @@ package() {
   export SAGE_ROOT="/usr"
   export SAGE_LOCAL="$SAGE_ROOT"
   export SAGE_SRC="$PWD"
+  export JUPYTER_PATH="$pkgdir"/usr/share/jupyter
 
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   mkdir -p "$pkgdir"/usr/bin
   cp bin/sage "$pkgdir"/usr/bin
@@ -160,21 +147,11 @@ package() {
   cp -r ext "$pkgdir"/usr/share/sage
   
 # Create SAGE_SRC, needed for the notebook
-  mkdir "$pkgdir"/usr/share/sage/src
+  mkdir "$pkgdir"/usr/share/sage/source
 
 # Install Sage's own pexpect
   cd "$srcdir"/pexpect-2.0
   python2 setup.py install --root="$pkgdir" --optimize=1
   mkdir -p "$pkgdir"/usr/lib/sage/site-packages/
   mv "$pkgdir"/usr/lib/python2.7/site-packages/pexpect* "$pkgdir"/usr/lib/sage/site-packages/
-
-# Install Jupyter kernel
-  install -Dm644 "$srcdir"/kernel.json "$pkgdir"/usr/share/jupyter/kernels/sagemath/kernel.json
-  cd "$pkgdir"/usr/share/jupyter/kernels/sagemath
-  ln -s /usr/share/doc/sage/output/html/en doc
-  ln -s /usr/share/sage/ext/notebook-ipython/logo.svg .
-  ln -s /usr/share/sage/ext/notebook-ipython/logo-64x64.png .
-
-  mkdir "$pkgdir"/usr/share/jupyter/nbextensions
-  ln -s /usr/share/{jsmol,mathjax} "$pkgdir"/usr/share/jupyter/nbextensions
 }
