@@ -2,8 +2,8 @@
 # Maintainer: Patryk Kowalczyk <patryk at kowalczyk dot ws>
 pkgname=qemu-spice
 _pkgname=qemu
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.0.1
+pkgrel=1
 #rc=-rc3
 pkgdesc="Latest stable QEMU with KVM spice usbredir virtfs smartcard seccomp iscsi tpm glusterfs fdt and RDMA live migration"
 arch=(i686 x86_64 armv7h)
@@ -108,5 +108,5 @@ fi
 	rm "${pkgdir}/usr/share/qemu/vgabios-vmware.bin"
 	rmdir "${pkgdir}/var/run"
 }
-md5sums=('186ee8194140a484a455f8e3c74589f4'
+md5sums=('c99445164e77184a9ba2e7dbf7ed5c29'
          'b316a066d2f1bb57d8f5b7ea1d0d1caf')
