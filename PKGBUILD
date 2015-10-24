@@ -1,7 +1,7 @@
-# Maintainer: Thomas Weißschuh <thomas t-8ch.de>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=ghi
-pkgver=0.9.3
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='GitHub Issues on the command line'
 arch=('any')
@@ -20,4 +20,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   PREFIX="${pkgdir}/usr/" rake install
 }
-sha256sums=('1b58c7ec6e9339c44175808719694d7ee21cbd254d3a2e6d31a70d31027e9bea')
+
+sha256sums=('98ddf904bfd78d7363986b75ecea294933c8b98d9c1d2828419fddcaeadc0fdd')

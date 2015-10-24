@@ -1,14 +1,14 @@
 pkgbase = ghi
 	pkgdesc = GitHub Issues on the command line
-	pkgver = 0.9.3
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/stephencelis/ghi
 	arch = any
 	license = MIT
 	depends = ruby
 	optdepends = ruby-ronn: for building the man-pages yourself
-	source = https://github.com/stephencelis/ghi/archive/0.9.3.tar.gz
-	sha256sums = 1b58c7ec6e9339c44175808719694d7ee21cbd254d3a2e6d31a70d31027e9bea
+	source = https://github.com/stephencelis/ghi/archive/1.0.3.tar.gz
+	sha256sums = 98ddf904bfd78d7363986b75ecea294933c8b98d9c1d2828419fddcaeadc0fdd
 
 pkgname = ghi
 
