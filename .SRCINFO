@@ -1,0 +1,14 @@
+pkgbase = danmu2ass
+	pkgdesc = Convert xml/json danmaku to ass subtitle.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://danmu2ass.codeplex.com/
+	arch = any
+	license = GPL2
+	depends = mono
+	noextract = Danmu2Ass1.1.zip
+	source = Danmu2Ass1.1.zip::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=danmu2ass&DownloadId=838758&FileTime=130441118278200000&Build=21031
+	md5sums = 75213f0147f708e617c79dca84d31aab
+
+pkgname = danmu2ass
+
