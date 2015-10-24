@@ -8,8 +8,8 @@ pkgbase = easyterm
 	license = GPLv3
 	makedepends = git
 	makedepends = qt5-serialport
-	depends = qt5
-	source = git+https://git.code.sf.net/p/easyterm/code
+	makedepends = qt5-base
+	source = easyterm::git+http://git.code.sf.net/p/easyterm/code
 	md5sums = SKIP
 
 pkgname = easyterm

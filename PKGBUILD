@@ -9,13 +9,13 @@ arch=('x86_64' 'i686')
 url='http://sourceforge.net/projects/easyterm/'
 
 license=('GPLv3')
-depends=('qt5')
-makedepends=('git' 'qt5-serialport')
+depends=()
+makedepends=('git' 'qt5-serialport' 'qt5-base')
 optdepends=()
 provides=()
 conflicts=()
 
-source=('git+https://git.code.sf.net/p/easyterm/code')
+source=('easyterm::git+http://git.code.sf.net/p/easyterm/code')
 md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -30,7 +30,6 @@ build() {
 }
 
 package() {
-
 	
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/icons/hicolor/48x48/apps"
