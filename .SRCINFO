@@ -11,7 +11,7 @@ pkgbase = adwaita-dark-gtk2-git
 	depends = gnome-themes-standard
 	provides = adwaita-dark-gtk2
 	conflicts = adwaita-dark-gtk2
-	source = Adwaita-dark-gtk2::git+https://github.com/nickurak/Adwaita-dark-gtk2.git
+	source = Adwaita-dark-gtk2::git+https://github.com/axxapy/Adwaita-dark-gtk2.git
 	md5sums = SKIP
 
 pkgname = adwaita-dark-gtk2-git
