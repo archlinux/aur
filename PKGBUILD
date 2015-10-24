@@ -62,6 +62,11 @@ package() {
     --prefix "${pkgdir}/usr" \
     "${srcdir}/${_pkgname}"
 
+  # fix directory permissions
+  chmod 0755 \
+    "${pkgdir}/usr" \
+    "${pkgdir}/usr/lib/node_modules"
+
   # music dir
   install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
