@@ -4,15 +4,15 @@ _name="keystoneauth1"
 _module="${_name%1}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.1.0"
-pkgrel="2"
+pkgver="1.2.0"
+pkgrel="1"
 pkgdesc="Authentication Library for OpenStack Identity"
 arch=("any")
 url="https://github.com/openstack/${_module}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('280442dd3db6ff846d2daeb9a66034e0f05c8fd304c92da32854d5727537cc15')
+sha256sums=('e8386dc8b0f17d439e1f2f4e6a8ef64fe0f2b81938b2f0b13f80042bb98e2b85')
 
 prepare() {
     sed -ri '/argparse/d' "${srcdir}/${_name}-${pkgver}"/requirements.txt
