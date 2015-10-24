@@ -4,6 +4,8 @@ post_install() {
   chown arangodb:arangodb /var/lib/arangodb-apps &> /dev/null
   chown arangodb:arangodb /var/log/arangodb &> /dev/null
   /usr/bin/install -g arangodb -o arangodb -d /var/run/arangodb
+  echo "d /var/run/arangodb 0755 arangodb arangodb -" > /lib/tmpfiles.d/arangodb.conf
+  systemd-tmpfiles --create arangodb.conf
 
   echo ">> If you have database from previous version of ArangoDB"
   echo "   make sure to run the server first with --upgrade option, e.g:"
@@ -33,5 +35,6 @@ post_upgrade() {
 }
 
 pre_remove() {
+  rm /lib/tmpfiles.d/arangodb.conf
   userdel arangodb &> /dev/null
 }
