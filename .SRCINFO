@@ -1,0 +1,14 @@
+pkgbase = watch-git
+	pkgdesc = Watches for changes in a directory tree and reruns a command in an acme win or just on the terminal.
+	pkgver = r48.0c9b18a
+	pkgrel = 1
+	url = https://github.com/eaburns/Watch
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = go
+	conflicts = watch
+
+pkgname = watch-git
+
