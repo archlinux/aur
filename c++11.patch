@@ -1,0 +1,240 @@
+diff -Nur original/desktop/src/xmlmap.cc modified/desktop/src/xmlmap.cc
+--- original/desktop/src/xmlmap.cc	2013-04-05 07:49:43.000000000 +0100
++++ modified/desktop/src/xmlmap.cc	2015-10-24 17:02:59.792298395 +0100
+@@ -540,14 +540,14 @@
+ 		np.SortBySummary();
+ 		cout << "\n\nCute summary:\n";
+ 		for_each(np.begin(), np.priority_end(),
+-			bind( mem_fn(&XmlNodeMapping::DumpSummaries),
+-				_1, ref(cout)));
++			std::bind( std::mem_fn(&XmlNodeMapping::DumpSummaries),
++				_1, std::ref(cout)));
+ 
+ 		np.SortByPath();
+ 		cout << "\n\nCute summary:\n";
+ 		for_each(np.begin(), np.priority_end(),
+-			bind( mem_fn(&XmlNodeMapping::DumpSummaries),
+-				_1, ref(cout)));
++			std::bind( std::mem_fn(&XmlNodeMapping::DumpSummaries),
++				_1, std::ref(cout)));
+ 	}
+ 	catch( Glib::ConvertError &e ) {
+ 		cerr << e.what() << endl;
+diff -Nur original/tools/bio.cc modified/tools/bio.cc
+--- original/tools/bio.cc	2013-04-05 07:49:43.000000000 +0100
++++ modified/tools/bio.cc	2015-10-24 16:50:04.487574052 +0100
+@@ -869,7 +869,7 @@
+ class App
+ {
+ public:
+-	typedef shared_ptr<OutputBase> OutputPtr;
++	typedef std::shared_ptr<OutputBase> OutputPtr;
+ 	typedef vector<OutputPtr> OutputsType;
+ 
+ private:
+diff -Nur original/tools/btool.cc modified/tools/btool.cc
+--- original/tools/btool.cc	2013-04-05 07:49:43.000000000 +0100
++++ modified/tools/btool.cc	2015-10-24 16:50:04.487574052 +0100
+@@ -284,7 +284,7 @@
+ 	}
+ };
+ 
+-shared_ptr<Parser> GetParser(const string &name,
++std::shared_ptr<Parser> GetParser(const string &name,
+ 			const string &filename,
+ 			bool null_parser,
+ 			bool immediate_display,
+@@ -296,139 +296,139 @@
+ 
+ 	if( null_parser ) {
+ 		// use null parser
+-		return shared_ptr<Parser>( new Barry::HexDumpParser(cout) );
++		return std::shared_ptr<Parser>( new Barry::HexDumpParser(cout) );
+ 	}
+ 	else if( bbackup_mode ) {
+ #ifdef __BARRY_BACKUP_MODE__
+ 		// Only one backup file per run
+-		static shared_ptr<Parser> backup;
++		static std::shared_ptr<Parser> backup;
+ 		if( !backup.get() ) {
+ 			backup.reset( new Backup(filename) );
+ 		}
+ 		return backup;
+ #else
+-		return shared_ptr<Parser>( new Barry::HexDumpParser(cout) );
++		return std::shared_ptr<Parser>( new Barry::HexDumpParser(cout) );
+ #endif
+ 	}
+ 	// check for recognized database names
+ 	else if( name == Contact::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<Contact, Store<Contact> > (
+ 				new Store<Contact>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == Message::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<Message, Store<Message> > (
+ 				new Store<Message>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == Calendar::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<Calendar, Store<Calendar> > (
+ 				new Store<Calendar>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == CalendarAll::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<CalendarAll, Store<CalendarAll> > (
+ 				new Store<CalendarAll>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == CallLog::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<CallLog, Store<CallLog> > (
+ 				new Store<CallLog>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == Bookmark::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<Bookmark, Store<Bookmark> > (
+ 				new Store<Bookmark>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == ServiceBook::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<ServiceBook, Store<ServiceBook> > (
+ 				new Store<ServiceBook>(filename, false, dnow, vmode)));
+ 	}
+ 
+ 	else if( name == Memo::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<Memo, Store<Memo> > (
+ 				new Store<Memo>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == Task::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<Task, Store<Task> > (
+ 				new Store<Task>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == PINMessage::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<PINMessage, Store<PINMessage> > (
+ 				new Store<PINMessage>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == SavedMessage::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<SavedMessage, Store<SavedMessage> > (
+ 				new Store<SavedMessage>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == Sms::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<Sms, Store<Sms> > (
+ 				new Store<Sms>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == Folder::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<Folder, Store<Folder> > (
+ 				new Store<Folder>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == TimeZone::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<TimeZone, Store<TimeZone> > (
+ 				new Store<TimeZone>(filename, false, dnow, vmode)));
+ 	}
+ 	else if( name == HandheldAgent::GetDBName() ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<HandheldAgent, Store<HandheldAgent> > (
+ 				new Store<HandheldAgent>(filename, false, dnow, vmode)));
+ 	}
+ 	else {
+ 		// unknown database, use null parser
+-		return shared_ptr<Parser>( new Barry::HexDumpParser(cout) );
++		return std::shared_ptr<Parser>( new Barry::HexDumpParser(cout) );
+ 	}
+ }
+ 
+-shared_ptr<Builder> GetBuilder(const string &name, const string &filename)
++std::shared_ptr<Builder> GetBuilder(const string &name, const string &filename)
+ {
+ 	// check for recognized database names
+ 	if( name == Contact::GetDBName() ) {
+-		return shared_ptr<Builder>(
++		return std::shared_ptr<Builder>(
+ 			new RecordBuilder<Contact, Store<Contact> > (
+ 				new Store<Contact>(filename, true, true, false)));
+ 	}
+ 	else if( name == Calendar::GetDBName() ) {
+-		return shared_ptr<Builder>(
++		return std::shared_ptr<Builder>(
+ 			new RecordBuilder<Calendar, Store<Calendar> > (
+ 				new Store<Calendar>(filename, true, true, false)));
+ 	}
+ 	else if( name == CalendarAll::GetDBName() ) {
+-		return shared_ptr<Builder>(
++		return std::shared_ptr<Builder>(
+ 			new RecordBuilder<CalendarAll, Store<CalendarAll> > (
+ 				new Store<CalendarAll>(filename, true, true, false)));
+ 	}
+ 	else if( name == Memo::GetDBName() ) {
+-		return shared_ptr<Builder>(
++		return std::shared_ptr<Builder>(
+ 			new RecordBuilder<Memo, Store<Memo> > (
+ 				new Store<Memo>(filename, true, true, false)));
+ 	}
+ 	else if( name == Task::GetDBName() ) {
+-		return shared_ptr<Builder>(
++		return std::shared_ptr<Builder>(
+ 			new RecordBuilder<Task, Store<Task> > (
+ 				new Store<Task>(filename, true, true, false)));
+ 	}
+ /*
+ 	else if( name == "Messages" ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<Message, Store<Message> > (
+ 				new Store<Message>(filename, true, true, false)));
+ 	}
+ 	else if( name == "Service Book" ) {
+-		return shared_ptr<Parser>(
++		return std::shared_ptr<Parser>(
+ 			new RecordParser<ServiceBook, Store<ServiceBook> > (
+ 				new Store<ServiceBook>(filename, true, true, false)));
+ 	}
+@@ -942,7 +942,7 @@
+ 			}
+ 
+ 			unsigned int id = desktop.GetDBID(dbNames[0]);
+-			shared_ptr<Parser> parse = GetParser(dbNames[0],filename,
++			std::shared_ptr<Parser> parse = GetParser(dbNames[0],filename,
+ 				null_parser, true, vformat_mode, bbackup_mode);
+ 
+ 			for( unsigned int i = 0; i < stCommands.size(); i++ ) {
+@@ -968,7 +968,7 @@
+ 			vector<string>::iterator b = dbNames.begin();
+ 
+ 			for( ; b != dbNames.end(); b++ ) {
+-				shared_ptr<Parser> parse = GetParser(*b,
++				std::shared_ptr<Parser> parse = GetParser(*b,
+ 					filename, null_parser, !sort_records,
+ 					vformat_mode, bbackup_mode);
+ 				unsigned int id = desktop.GetDBID(*b);
+@@ -1000,7 +1000,7 @@
+ 			vector<string>::iterator b = saveDbNames.begin();
+ 
+ 			for( ; b != saveDbNames.end(); b++ ) {
+-				shared_ptr<Builder> build = GetBuilder(*b,
++				std::shared_ptr<Builder> build = GetBuilder(*b,
+ 					filename);
+ 				unsigned int id = desktop.GetDBID(*b);
+ 				desktop.SaveDatabase(id, *build);
