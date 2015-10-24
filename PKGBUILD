@@ -2,19 +2,19 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname="t2n"
-pkgver=0.5
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc="A Tool for communication between PC and Lego NXT over usb"
 arch=('i686' )
 url="http://www-verimag.imag.fr/~raymond/edu/lego/t2n/"
 license=('LGPL')
 makedepends=("automake" "autoconf")
 depends=("libusb-compat" "lego-udev-rules")
-source=("http://www-verimag.imag.fr/~raymond/edu/lego/t2n/${pkgname}-${pkgver}.src.tgz" \
+source=("http://www-verimag.imag.fr/~raymond/edu/lego/t2n/files/${pkgname}-${pkgver}.src.tgz" \
 	"Makefile.am"
 	"configure.ac")
 
-md5sums=('378020803c8657a2ee03570fad2ee804'
+md5sums=('7be45fa0cd5672812ab596b7d8cb84a6'
 	'c10f2eb53db8d5304138bae316c3194b'
 	'3158f44e4feb65ad916ddb81427fece8')
 
