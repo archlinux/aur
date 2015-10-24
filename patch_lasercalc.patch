@@ -1,0 +1,17 @@
+diff --git a/LaserCalc/src/Makefile.am b/LaserCalc/src/Makefile.am
+index cbe7359..98abe50 100644
+--- a/LaserCalc/src/Makefile.am
++++ b/LaserCalc/src/Makefile.am
+@@ -142,9 +142,9 @@ EXTRA_lasercalc_SOURCES= \
+ 	resources.rc
+ 
+ lasercalc_LDADD=\
+-	/usr/local/lib/libsaf.la \
+-	/usr/local/lib/libproperties.la \
+-	/usr/local/lib/libplot.la
++	-lsaf \
++	-lproperties \
++	-lplot
+ 
+ if WINDOWS
+ lasercalc_LDADD+=resources.o

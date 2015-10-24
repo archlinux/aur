@@ -1,0 +1,7 @@
+code
+*.pkg.tar.xz
+libplot
+libproperties
+libsaf
+pkg
+src

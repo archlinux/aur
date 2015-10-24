@@ -1,0 +1,29 @@
+diff --git a/plot/Makefile.am b/plot/Makefile.am
+index 9d18475..c9fb5af 100644
+--- a/plot/Makefile.am
++++ b/plot/Makefile.am
+@@ -1,2 +1,2 @@
+-ACLOCAL_AMFLAGS = -I m4 -I /usr/local/share/aclocal
++ACLOCAL_AMFLAGS = -I m4 -I /usr/share/aclocal
+ SUBDIRS=src include
+diff --git a/plot/configure.ac b/plot/configure.ac
+index 1392b6e..186d4fa 100644
+--- a/plot/configure.ac
++++ b/plot/configure.ac
+@@ -2,6 +2,7 @@ AC_PREREQ([2.68])
+ AC_INIT([plot],[0.6],[udo.eisenbarth@arcor.de],[],[http://lasercalc.sourceforge.net])
+ AM_INIT_AUTOMAKE([-Wall -Werror])
+ LT_PREREQ([2.4.2])
++AM_PROG_AR
+ LT_INIT([dlopen])
+ AC_CONFIG_SRCDIR([src/Vector3D.cpp])
+ AC_CONFIG_MACRO_DIR([m4])
+@@ -24,7 +25,7 @@ if test "$wxWin" != 1; then
+ 		wxWidgets version is $reqwx or above.
+ 		])
+ fi
+-CPPFLAGS="-D__GXX_EXPERIMENTAL_CXX0X__ $WX_CPPFLAGS -I/usr/local/include"
++CPPFLAGS="$WX_CPPFLAGS $CPPFLAGS"
+ AC_ARG_ENABLE(debug,
+ [[  --enable-debug   use debug configuration]],
+ [

@@ -1,0 +1,22 @@
+diff --git a/SAF/Makefile.am b/SAF/Makefile.am
+index cd3de0c..3e54216 100644
+--- a/SAF/Makefile.am
++++ b/SAF/Makefile.am
+@@ -1,2 +1,2 @@
+-ACLOCAL_AMFLAGS = -I m4 -I /usr/local/share/aclocal
+-SUBDIRS = include src demo
++ACLOCAL_AMFLAGS = -I m4 -I /usr/share/aclocal
++SUBDIRS = include src
+diff --git a/SAF/configure.ac b/SAF/configure.ac
+index 4b4260b..0d46efa 100644
+--- a/SAF/configure.ac
++++ b/SAF/configure.ac
+@@ -36,7 +36,7 @@ AC_ARG_ENABLE(debug,
+ [	
+ 	CXXCONF="-O3 -DNDEBUG"
+ ])
+-CPPFLAGS="$CPPFLAGS -D__GXX_EXPERIMENTAL_CXX0X__ $WX_CPPFLAGS -I/usr/local/include"
++CPPFLAGS="$WX_CPPFLAGS $CPPFLAGS"
+ CXXFLAGS="-std=c++0x -Wall -Wextra -pedantic $CXXCONF $WX_CXXFLAGS_ONLY"
+ LIBS="$LIBS $WX_LIBS"
+ AC_CONFIG_FILES(Makefile 
