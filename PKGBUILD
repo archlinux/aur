@@ -30,6 +30,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
   make INSTALL_ROOT="$pkgdir/" install
   install -Dm 644 -p dbUpdate "$pkgdir/usr/share/Fusion/dbUpdate"
+  ln -s "$pkgdir/usr/bin/FusionClient" "$pkgdir/usr/bin/fusionclient"
 }
 
 # vim:set ts=2 sw=2 et:
