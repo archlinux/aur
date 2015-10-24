@@ -1,7 +1,7 @@
 pkgbase = systemtap
 	pkgdesc = SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system.
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceware.org/systemtap/
 	arch = i686
 	arch = x86_64
