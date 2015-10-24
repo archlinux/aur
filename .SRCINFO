@@ -1,0 +1,20 @@
+pkgbase = directfb-rbp
+	pkgdesc = A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device
+	pkgver = 1.7.7
+	pkgrel = 1
+	url = http://www.directfb.org
+	arch = armv6h
+	arch = armv7h
+	license = LGPL
+	depends = gcc-libs
+	depends = libjpeg
+	depends = sdl
+	depends = libpng
+	depends = freetype2
+	provides = directfb
+	replaces = directfb
+	source = http://sources.buildroot.net/DirectFB-1.7.7.tar.gz
+	sha1sums = 205d824906906303db9b096cc2d3bea0662e8860
+
+pkgname = directfb-rbp
+
