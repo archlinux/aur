@@ -1,23 +1,23 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20150711
+pkgver=20151023
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
-url="https://bitcoin.org"
-depends=('boost'
-         'boost-libs'
-         'miniupnpc'
-         'openssl')
+url="https://github.com/bitcoin/bitcoin"
 makedepends=('autoconf'
              'automake'
              'binutils'
+             'boost'
+             'boost-libs'
              'expect'
              'gcc'
              'git'
              'libtool'
              'make'
+             'miniupnpc'
+             'openssl'
              'pkg-config'
              'yasm')
 license=('MIT')
