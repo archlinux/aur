@@ -1,6 +1,7 @@
-# Maintainer  : Jan Was < janek.jan@gmail.com >
-# Contributor : Dan Vratil <dan@progdan.cz>
-# Contributor  : andy123 < ajs AT online DOT de >
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Jan Was < janek.jan@gmail.com >
+# Contributor: Dan Vratil <dan@progdan.cz>
+# Contributor: andy123 < ajs AT online DOT de >
 pkgname=lib32-boost-libs
 pkgver=1.59.0
 _boostver=${pkgver//./_}
