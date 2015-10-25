@@ -1,0 +1,17 @@
+pkgbase = csstidy-cpp-git
+	pkgdesc = Fork of the C++ version of CSSTidy
+	pkgver = r43.8a5e5d4
+	pkgrel = 1
+	url = https://github.com/dmitryleskov/csstidy-cpp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	depends = gcc-libs
+	provides = csstidy
+	conflicts = csstidy
+	source = git://github.com/dmitryleskov/csstidy-cpp.git
+	md5sums = SKIP
+
+pkgname = csstidy-cpp-git
+
