@@ -1,6 +1,6 @@
 # Maintainer: DeaDDooMER <deaddoomer@deadsoftware.ru>
 pkgname=i3bar-icons
-pkgver=4.10.3
+pkgver=4.11
 pkgrel=1
 pkgdesc="A version of i3bar which can display xbm icons"
 url="https://github.com/ashinkarov/i3-extras"
@@ -12,10 +12,10 @@ conflicts=()
 replaces=()
 backup=()
 install=i3bar-icons.install
-source=("i3bar-xbm-icons.patch"
+source=("https://raw.githubusercontent.com/ashinkarov/i3-extras/master/i3bar-xbm-icons.patch"
 	"http://i3wm.org/downloads/i3-$pkgver.tar.bz2")
-md5sums=('474535eb096e272be9df4820e4463f74'
-	 '95ef0340c824a3e0b9e35013cc605fcf')
+md5sums=('SKIP'
+	 '6b003955333a90cb831516f8dbf6e57d')
 build() {
   cd i3-$pkgver
   patch -Np1 -i ../i3bar-xbm-icons.patch || return 1
