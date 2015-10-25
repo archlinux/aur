@@ -1,20 +1,22 @@
 pkgbase = python2-enzyme-git
 	pkgdesc = Python module to parse metadata in video files.
-	pkgver = 0.4.2.21.9572bea
+	pkgver = 0.4.2.r21.9572bea
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/Diaoul/enzyme
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = python2-setuptools
 	makedepends = python-setuptools
 	source = enzyme::git+https://github.com/Diaoul/enzyme.git
 	md5sums = SKIP
 
 pkgname = python2-enzyme-git
-	provides = python2-enzyme=0.4.2.21.9572bea
+	provides = python2-enzyme=0.4.2.r21.9572bea
 	conflicts = python2-enzyme
 
 pkgname = python-enzyme-git
-	provides = python-enzyme=0.4.2.21.9572bea
+	provides = python-enzyme=0.4.2.r21.9572bea
 	conflicts = python-enzyme
 

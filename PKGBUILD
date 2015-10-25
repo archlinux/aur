@@ -4,20 +4,20 @@ _gitroot="https://github.com/Diaoul/enzyme"
 _gitname="enzyme"
 pkgbase=python2-enzyme-git
 pkgname=('python2-enzyme-git' 'python-enzyme-git')
-pkgver=0.4.2.21.9572bea
+pkgver=0.4.2.r21.9572bea
 pkgrel=1
+epoch=1
 pkgdesc="Python module to parse metadata in video files."
 arch=(any)
 url="https://github.com/Diaoul/enzyme"
 license=('Apache')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('git' 'python2-setuptools' 'python-setuptools')
 source=("${_gitname}::git+${_gitroot}.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  echo 0.4.2.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-  #git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "0.4.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_python2-enzyme-git() {
