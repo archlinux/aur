@@ -1,5 +1,5 @@
 pkgbase = odf-converter
-	pkgdesc = Binary(doc,xls,ppt) to OpenXML Translator
+	pkgdesc = Convert ODF to OpenXML(docx, xlsx, pptx)
 	pkgver = 4.0.5309
 	pkgrel = 1
 	url = https://sourceforge.net/p/odf-converter
