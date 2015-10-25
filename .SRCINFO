@@ -13,7 +13,6 @@ pkgbase = python2-ifcopenshell
 	depends = opencollada
 	depends = boost-libs>=1.58.0
 	depends = python2
-	depends = python
 	source = https://github.com/IfcOpenShell/IfcOpenShell/archive/v0.4.0.tar.gz
 	source = boost-1.58.patch
 	md5sums = 12bbb9726d8012cf88222f5921a767c3

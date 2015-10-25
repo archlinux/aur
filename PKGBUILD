@@ -6,7 +6,7 @@ pkgdesc="Open source IFC library and geometry engine. Provides only wrapper for 
 url="http://ifcopenshell.org/"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('opencascade' 'opencollada' 'boost-libs>=1.58.0' 'python2' 'python')
+depends=('opencascade' 'opencollada' 'boost-libs>=1.58.0' 'python2')
 optdepends=()
 makedepends=('cmake' 'boost>=1.58.0' 'swig')
 conflicts=()
