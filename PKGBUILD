@@ -4,7 +4,7 @@ pkgname=nginx-http-auth-digest
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with digest authentication module'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='http://nginx.org'
@@ -34,10 +34,10 @@ md5sums=('2562320f1535e3e31d165e337ae94f21'
          'SKIP'
          )
 
-#prepare() {
-#    cd "$srcdir"/nginx-http-auth-digest
-#    patch -p1 < ../nginx-http-auth-digest.patch
-#}
+prepare() {
+    cd "$srcdir"/nginx-http-auth-digest
+    patch -p1 < ../nginx-http-auth-digest.patch
+}
 
 build() {
   cd "$srcdir"/$provides-$pkgver
