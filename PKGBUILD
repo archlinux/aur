@@ -3,9 +3,9 @@
 
 pkgname="t2n"
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Tool for communication between PC and Lego NXT over usb"
-arch=('i686' )
+arch=('i686' 'x86_64')
 url="http://www-verimag.imag.fr/~raymond/edu/lego/t2n/"
 license=('LGPL')
 makedepends=("automake" "autoconf")

@@ -1,9 +1,10 @@
 pkgbase = t2n
 	pkgdesc = A Tool for communication between PC and Lego NXT over usb
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www-verimag.imag.fr/~raymond/edu/lego/t2n/
 	arch = i686
+	arch = x86_64
 	license = LGPL
 	makedepends = automake
 	makedepends = autoconf
