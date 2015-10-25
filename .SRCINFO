@@ -1,0 +1,20 @@
+pkgbase = python-user_agent
+	pkgdesc = User-Agent generator
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/user_agent
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	source = https://pypi.python.org/packages/source/u/user_agent/user_agent-0.1.0.tar.gz
+	sha256sums = 486dcba313f2ef1b25e264cf550cad689a761169b912b0181ac71e0f2c3a0b88
+
+pkgname = python-user_agent
+	depends = python
+	depends = python-six
+
+pkgname = python2-user_agent
+	depends = python2
+	depends = python2-six
+
