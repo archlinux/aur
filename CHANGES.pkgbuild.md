@@ -1,3 +1,9 @@
+## 1.9.5-2
+* naxsi-0.54
+* pushmodule-0.731
+* headers_more-0.261
+* psol-1.9.32.10-beta
+
 ## 1.9.5
 * ngx_http_auth_pam_module-1.4
 * pagespeed-1.9.32.6-beta

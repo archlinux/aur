@@ -5,28 +5,27 @@
 pkgname=nginx-devel
 _pkgname=nginx
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
 arch=(i686 x86_64 armv6h)
 # for modules' URL
 declare -A _modulesURL
 #{{{ Third party modules and patches
-_add2source() { #{{{2
+_add2source() {
   local key=$1 url=$2
   if [ $# -ne 2 ]; then
     return 1
   fi
   _modulesURL+=([$key]="${url}")
-} #}}}2
+}
 # naxsi: Application firewall {{{2
 # @link http://code.google.com/p/naxsi/
 # @link https://github.com/nbs-system/naxsi/tags
-_naxsi_ver=0.53-2
+_naxsi_ver=0.54
 #_naxsi_url="http://naxsi.googlecode.com/files/naxsi-core-${_naxsi_ver}.tgz"
 _naxsi_url="naxsi-${_naxsi_ver}.tar.gz::https://github.com/nbs-system/naxsi/archive/${_naxsi_ver}.tar.gz"
 _add2source naxsi $_naxsi_url
-
 # systemd socket activation support {{{2
 # @link http://trac.nginx.org/nginx/ticket/237
 # _add2source socket socket.patch::http://trac.nginx.org/nginx/raw-attachment/ticket/237/0001-Socket-activation-support-for-systemd.patch
@@ -34,7 +33,7 @@ _add2source socket socket.patch::https://lynthium.com/socket.patch
 
 # http push module: This module turns Nginx into an adept HTTP Push and Comet server {{{2
 # @link http://pushmodule.slact.net/
-_push_ver=0.73
+_push_ver=0.731
 _push_url="https://github.com/slact/nginx_http_push_module/archive/v${_push_ver}.tar.gz"
 _add2source push $_push_url
 
@@ -66,7 +65,8 @@ _add2source http_auth_pam $_http_auth_pam_url
 
 # ngx_headers_more: Set and clear input and output headers...more than "add"! {{{2
 # @link http://wiki.nginx.org/HttpHeadersMoreModule
-_headers_more_ver=0.25
+# @link https://github.com/openresty/headers-more-nginx-module/releases
+_headers_more_ver=0.261
 _headers_more_url="headers_more-${_headers_more_ver}.tar.gz::https://github.com/agentzh/headers-more-nginx-module/archive/v${_headers_more_ver}.tar.gz"
 _add2source headers_more $_headers_more_url
 
@@ -78,7 +78,8 @@ _add2source modsecurity $_modsecurity_url
 
 # PageSpeed {{{2
 # @link https://developers.google.com/speed/pagespeed/module/build_ngx_pagespeed_from_source
-_psol_ver=1.9.32.6-beta
+# @link https://github.com/pagespeed/ngx_pagespeed/releases
+_psol_ver=1.9.32.10-beta
 _psol_url="https://github.com/pagespeed/ngx_pagespeed/archive/release-${_psol_ver}.zip"
 _add2source psol $_psol_url
 _psol_name="ngx_pagespeed-release-${_psol_ver}"
@@ -88,14 +89,14 @@ _psol_name="ngx_pagespeed-release-${_psol_ver}"
 #}}}2
 # end of Third party modules and patches }}}
 # PKGBUILD metadata {{{
-depends=( #{{{2
+depends=(
 gd
 geoip
 gperftools
 libatomic_ops
 libxslt
 )
-makedepends=( #{{{2
+makedepends=(
 # passenger
 psol
 geoip
@@ -103,12 +104,12 @@ gperftools
 libatomic_ops
 subversion
 )
-optdepends=( #{{{2
+optdepends=(
 "sflowtool: analyzing sFlow data"
 )
 license=('custom')
 install='nginx.install'
-backup=( #{{{2
+backup=(
 etc/nginx/fastcgi.conf
 etc/nginx/fastcgi_params
 etc/nginx/koi-win
@@ -125,16 +126,16 @@ etc/logrotate.d/nginx
 changelog='CHANGES.pkgbuild.md'
 # Changes for nginx
 # @link http://nginx.org/en/CHANGES
-conflicts=( #{{{2
+conflicts=(
 nginx
 nginx-unstable
 nginx-svn
 nginx-socket
 nginx-development-extra
 nginx-spdy
-) #}}}2
+)
 provides=('nginx')
-source=( #{{{2
+source=(
 http://nginx.org/download/${_pkgname}-${pkgver}.tar.gz
 # http://nginx.org/download/${_pkgname}-${pkgver}.tar.gz.asc
 nginx.service
@@ -144,29 +145,26 @@ nginx.conf.example
 nginx.socket
 ${_modulesURL[*]}
 )
-validpgpkeys=() #
-#}}}2
-# shasums {{{2
+validpgpkeys=(
+)
 sha256sums=('48e2787a6b245277e37cb7c5a31b1549a0bbacf288aa4731baacf9eaacdb481b'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
             'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
             '9174cfea524ed4839062dc267d1b561db9f512407682982be42979f98cbdfff7'
             '989b76a9157b7d24788f6b56027d1883d69a744e91d517bca290a88919864b63'
-            '3eadff1d91995beae41b92733ade28091c2075a24ae37058f4d6aa90b0f4b660'
-            'a2a5b53a847493abef89c27360460997bea2b01d1394a7a612f1e13e4cfbb98a'
-            '1473f96f59dcec9d83ce65d691559993c1f80da8c0a4c0c0a30dae9f969eeabf'
-            '7268b506fa2371b8082f1fba288a6ac51da527d0083bcad66004cb39c72391f9'
+            '9cc2c09405bc71f78ef26a8b6d70afcea3fccbe8125df70cb0cfc480133daba5'
+            'dd0c893fcf5af90a4f3c76a5750df9c39cba486ecb93cf76624af29f809ec345'
+            '03d1f5fbecba8565f247d87a38f5e4b6440b0a56d752bdd2b29af2f1c4aea480'
+            '7c3fac8c506bbf8b9c381e995af3fc4e1460363ad24dbfd5ead900b68dfcf6b2'
             '1b7d69a9210cf434804eb574618869fba2ddc95d3b0aea7c57205f7a15e920a4'
             'fd9ba6ede6f993d0b09799aed8979ef29be6f80620737d8900d7f2bdad4c3e91'
             'e2bbf789966c1f80094d88d9085a81bde082b2054f8e38e0db571ca49208f434'
             '3b27e9eb0478cbba65ba0beb844c5361e2e2f9c21e5bee8803ea9e707f4bbb47')
-#}}}2
-# }}}
 # Additional functions, from nginx-development-extra, thx {{{
 # build variables
 _configure_params=()
-add_module() { #{{{2
+add_module() {
   local module=$1 && shift
   local src=$1 && shift
 
@@ -186,7 +184,7 @@ add_module() { #{{{2
     _configure_params+=(--add-module=$src)
   fi
 }
-_add_external_module() { #{{{2
+_add_external_module() {
   local module=$1
   local src=$2
 
@@ -194,7 +192,7 @@ _add_external_module() { #{{{2
 
   echo "$(cd "$module" && pwd)"
 }
-_add_github_module() { #{{{2
+_add_github_module() {
   local module=$1
   local github_user=$2
   local branch=$3
@@ -204,7 +202,7 @@ _add_github_module() { #{{{2
 
   echo "$(cd "$module" && pwd)"
 }
-_add_git_module() { #{{{2
+_add_git_module() {
   local module=$1
   local src=$2
   local branch=$3
@@ -213,7 +211,7 @@ _add_git_module() { #{{{2
   [ -n "$branch" ] && (cd $module && git checkout -q $branch)
   echo "$(cd "$module" && pwd)"
 }
-_add_svn_module() { #{{{2
+_add_svn_module() {
   local module=$1
   local src=$2
   local name=$3
@@ -227,13 +225,13 @@ _add_svn_module() { #{{{2
   else
     echo "$(cd "$module" && pwd)"
   fi
-} #}}}2
+}
 #}}}
 # nginx env, commons for build and package
 _cfgdir=/etc/nginx
 _tmpdir=/var/lib/nginx
 _logdir=/var/log/nginx
-build() { #{{{
+build() {
   # nginx env
   _piddir=/run
   _lockdir=/var/lock
@@ -367,7 +365,7 @@ build() { #{{{
       ${_configure_params[*]}
   make
 } # end of build }}}
-package() { #{{{
+package() {
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 
@@ -402,4 +400,3 @@ package() { #{{{
 
   install -Dm644 "$srcdir"/nginx.conf.example "$pkgdir"/${_cfgdir}/nginx.conf.example
 } # end of package }}}
-# vi: foldmethod=marker
