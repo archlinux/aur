@@ -1,13 +1,13 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=x-selection-pipe-git
 _gitname=x-selection-pipe
-pkgver=0.1.0.0.r0.g01e1cb7
+pkgver=0.1.0.0.r4.g8ddd639
 pkgrel=1
 pkgdesc="A simple clipboard-monitor intended as a data source in shell pipelines"
 arch=(any)
 url=https://github.com/eigengrau/x-selection-pipe
 license=(GPL)
-depends=(python-gobject)
+depends=(python-gobject gtk3)
 makedepends=(git)
 provides=(x-selection-pipe)
 conflicts=(x-selection-pipe)
