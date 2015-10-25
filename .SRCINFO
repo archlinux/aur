@@ -1,0 +1,17 @@
+pkgbase = btrbackup
+	pkgdesc = A tcl script for backups from one btrfs filesystem to another using snapshots
+	pkgver = 0.6
+	pkgrel = 2
+	url = https://github.com/TestudoAquatilis/btrbackup
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = tcl
+	depends = btrfs-progs
+	depends = rsync
+	backup = etc/btrbackupconfig.tcl
+	source = git+https://github.com/TestudoAquatilis/btrbackup.git
+	md5sums = SKIP
+
+pkgname = btrbackup
+
