@@ -2,7 +2,7 @@
 # Author: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kaccounts-providers-git
-pkgver=r65.69bdaa6
+pkgver=r150.7a25949
 pkgrel=1
 pkgdesc='Small system to administer web accounts for the sites and services across the KDE desktop, including: Google, Facebook, Owncloud, IMAP, 
 Jabber and others'
@@ -37,4 +37,10 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
+
+  # On Arch we install everything to /usr/lib instead of /usr/lib64
+  if [ -d $pkgdir/usr/lib64 ]
+  then
+    mv $pkgdir/usr/lib64 $pkgdir/usr/lib
+  fi
 }
