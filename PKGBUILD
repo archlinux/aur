@@ -2,7 +2,7 @@
 pkgname=python2-ifcopenshell-git
 pkgver=0.r355.gc6a265a
 pkgrel=1
-pkgdesc="Open source IFC library and geometry engine. GIT version for python2."
+pkgdesc="Open source IFC library and geometry engine. Provides only wrapper for python2. GIT version."
 url="http://ifcopenshell.org/"
 arch=('x86_64' 'i686')
 license=('GPL3')
