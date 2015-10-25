@@ -1,18 +1,14 @@
 pkgbase = subliminal-git
 	pkgdesc = Python library and CLI tool for searching and downloading subtitles.
-	pkgver = 1.0.1.692.e0788be
+	pkgver = 1.0.2.r733.769b16d
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/Diaoul/subliminal
 	arch = any
 	license = MIT
-	makedepends = python2-setuptools
+	makedepends = git
 	makedepends = python-setuptools
-	conflicts = subliminal
-	source = subliminal::git+https://github.com/Diaoul/subliminal.git
-	md5sums = SKIP
-
-pkgname = python-subliminal-git
+	makedepends = gettext
 	depends = python-beautifulsoup4>=4.2.0
 	depends = python-guessit>=0.9.1
 	depends = python-requests>=2.0
@@ -24,19 +20,17 @@ pkgname = python-subliminal-git
 	depends = python-babelfish>=0.5.2
 	depends = python-chardet>=2.3.0
 	depends = python-stevedore>=1.0.0
-	provides = subliminal-git
-	replaces = subliminal-git
+	provides = subliminal
+	provides = python-subliminal-git
+	conflicts = subliminal
+	conflicts = python-subliminal-git
+	source = subliminal::git+https://github.com/Diaoul/subliminal.git#branch=develop
+	md5sums = SKIP
 
-pkgname = python2-subliminal-git
-	depends = python2-beautifulsoup4>=4.2.0
-	depends = python2-guessit>=0.9.1
-	depends = python2-requests>=2.0
-	depends = python2-enzyme>=0.4.1
-	depends = python2-dogpile.cache>=0.5.4
-	depends = python2-click>=4.0
-	depends = python2-pysrt>=1.0.1
-	depends = python2-six>=1.9.0
-	depends = python2-babelfish>=0.5.2
-	depends = python2-chardet>=2.3.0
-	depends = python2-stevedore>=1.0.0
+pkgname = subliminal-git
+
+pkgname = nautilus-subliminal-git
+	pkgdesc = An extension for Nautilus to download subtitles.
+	depends = subliminal-git
+	depends = python-nautilus
 
