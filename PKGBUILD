@@ -2,7 +2,7 @@
 
 pkgname=linux-source
 _pkgname=linux
-pkgver=4.1.4
+pkgver=4.2.4
 pkgrel=1
 pkgdesc='Source files for the Linux Kernel'
 arch=('i686' 'x86_64')
