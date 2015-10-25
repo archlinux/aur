@@ -8,7 +8,6 @@ export WINEPREFIX="$CONFIG_DIR/kerio-firewall-admin"
 export WINEDLLOVERRIDES="mscoree,mshtml,winemp3.acm="
 export WINEBASE="/usr/lib/kerio-firewall-admin/wine"
 export WINESERVER="$WINEBASE/bin/wineserver"
-export WINEDEBUG=-all
 
 if [ ! -d "$WINEPREFIX" ] ; then
   mkdir -p "$WINEPREFIX/drive_c/Kerio" || exit 1

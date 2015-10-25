@@ -40,4 +40,5 @@ Comment[sk]=Administračný program pre Kerio Firewall
 Comment[sv]=Hanteringskonsol för Kerio Firewall
 Comment[zh]=Kerio Firewall 的管理控制台
 Keywords=Kerio;Firewall;Administration;Console;Winroute
-StartupWMClass=kadmin.exe
+StartupWMClass=wradmin60701.exe
+NoDisplay=true
