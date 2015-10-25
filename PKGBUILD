@@ -1,0 +1,30 @@
+# Maintainer: Ilias Stamatis <stamatis.iliass at gmail dot com>
+# Contributor: Panagiotis Mavrogiorgos (pmav99) <> (gmail)
+
+pkgname=ffmulticonverter-mod
+pkgver=1.7.1.r23.gb22691c
+pkgrel=1
+pkgdesc="Convert audio, video, image and document files between all popular formats. My mod"
+arch=(any)
+url="https://sites.google.com/site/ffmulticonverter/"
+license=('GPL3')
+depends=('python-pyqt4')
+optdepends=('ffmpeg: for video conversions'
+            'imagemagick: for image conversions'
+            'unoconv: for document conversions'
+            'calligra-extras: alternative method for document conversions')
+makedepends=('git')
+conflicts=('ffmulticonverter')
+source=("${pkgname}::git+https://github.com/maz-1/FF-Multi-Converter.git#branch=merge")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+  cd "$pkgname"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+}

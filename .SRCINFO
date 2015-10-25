@@ -1,0 +1,19 @@
+pkgbase = ffmulticonverter-mod
+	pkgdesc = Convert audio, video, image and document files between all popular formats. My mod
+	pkgver = 1.7.1.r23.gb22691c
+	pkgrel = 1
+	url = https://sites.google.com/site/ffmulticonverter/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pyqt4
+	optdepends = ffmpeg: for video conversions
+	optdepends = imagemagick: for image conversions
+	optdepends = unoconv: for document conversions
+	optdepends = calligra-extras: alternative method for document conversions
+	conflicts = ffmulticonverter
+	source = ffmulticonverter-mod::git+https://github.com/maz-1/FF-Multi-Converter.git#branch=merge
+	sha256sums = SKIP
+
+pkgname = ffmulticonverter-mod
+
