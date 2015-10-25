@@ -1,6 +1,6 @@
 # Maintainer: Stefan Richter (sealor) <jdevsr3 googlemail com>
 pkgname=plusberrypi-shutdown
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=3
 pkgdesc="A systemd service for shutting down your PlusberryPi with the power button."
 arch=('armv6h' 'armv7h')
