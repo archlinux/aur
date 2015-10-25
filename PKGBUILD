@@ -76,7 +76,7 @@ _package() {
   backup=('boot/config.txt' 'boot/cmdline.txt')
   replaces=('linux-raspberrypi-latest')
 
-  cd "${srcdir}/${_srcname}"
+  cd linux
 
   KARCH=arm
 
@@ -87,7 +87,7 @@ _package() {
   make INSTALL_MOD_PATH="${pkgdir}" modules_install
   make INSTALL_DTBS_PATH="${pkgdir}/boot" dtbs_install
 
-  [[ $CARCH == "armv7h" ]] && perl scripts/mkknlimg --dtok arch/$KARCH/boot/zImage "${pkgdir}/boot/kernel7.img"
+  perl scripts/mkknlimg --dtok arch/$KARCH/boot/zImage "${pkgdir}/boot/kernel7.img"
   cp arch/$KARCH/boot/dts/overlays/README "${pkgdir}/boot/overlays"
 
   # set correct depmod command for install
@@ -142,8 +142,7 @@ _package-headers() {
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
-  [[ $CARCH == "armv6h" ]] && MACH="mach-bcm2708"
-  [[ $CARCH == "armv7h" ]] && MACH="mach-bcm2709"
+  MACH="mach-bcm2709"
 
   # copy arch includes for external modules
   mkdir -p ${pkgdir}/usr/lib/modules/${_kernver}/build/arch/$KARCH
