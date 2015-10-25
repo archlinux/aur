@@ -1,0 +1,19 @@
+pkgbase = ngraph-gtk
+	pkgdesc = A tool for creating scientific 2-dimensional graphs
+	pkgver = 6.06.14
+	pkgrel = 1
+	url = http://homepage3.nifty.com/slokar/ngraph/ngraph-gtk.html
+	install = ngraph-gtk.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = desktop-file-utils
+	depends = gsl
+	depends = gtk3
+	depends = ruby
+	optdepends = ttf-liberation: alternative to Times, Arial, and Courier
+	source = http://jaist.dl.sourceforge.net/project/ngraph-gtk/6.06.14/ngraph-gtk-6.06.14.tar.gz
+	md5sums = 6e55739e069cc26e8eb89d61bc2526d2
+
+pkgname = ngraph-gtk
+
