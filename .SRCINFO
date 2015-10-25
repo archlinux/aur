@@ -1,6 +1,6 @@
 pkgbase = knightos-sdk
 	pkgdesc = The KnightOS developer SDK
-	pkgver = 1.9.4
+	pkgver = 1.9.8
 	pkgrel = 1
 	url = https://github.com/KnightOS/sdk
 	arch = i386
@@ -20,8 +20,8 @@ pkgbase = knightos-sdk
 	depends = scas
 	optdepends = git: version control support
 	optdepends = mercurial: version control support
-	source = https://github.com/KnightOS/sdk/archive/1.9.4.tar.gz
-	sha1sums = 1838da3109c442f7ea9fd7cfd528f0a67f380ccd
+	source = https://github.com/KnightOS/sdk/archive/1.9.8.tar.gz
+	sha1sums = cd91f864ae68dade170a685742d49b6d46b5e0af
 
 pkgname = knightos-sdk
 
