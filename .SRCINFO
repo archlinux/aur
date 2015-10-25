@@ -1,0 +1,18 @@
+pkgbase = plasma5-applets-rssnow-git
+	pkgdesc = Show news from various sources
+	pkgver = 1.0.r27.3b4bb77
+	pkgrel = 1
+	url = https://github.com/Misenko/rssnow-plasma5-applet
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	provides = plasma5-applets-rssnow
+	conflicts = plasma5-applets-rssnow
+	source = plasma5-applets-rssnow-git::git+https://github.com/Misenko/rssnow-plasma5-applet.git
+	sha1sums = SKIP
+
+pkgname = plasma5-applets-rssnow-git
+
