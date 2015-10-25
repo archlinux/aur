@@ -1,0 +1,20 @@
+pkgbase = virtualgl-git
+	pkgdesc = Redirects 3D commands from an OpenGL application onto a server-side 3D graphics card
+	pkgver = 2.4.r54.ga22ca6c
+	pkgrel = 1
+	url = http://www.virtualgl.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = libxv
+	depends = glu
+	depends = libjpeg-turbo
+	depends = xcb-util-keysyms
+	provides = virtualgl
+	conflicts = virtualgl
+	source = virtualgl::git+https://github.com/VirtualGL/virtualgl.git
+	sha256sums = SKIP
+
+pkgname = virtualgl-git
+
