@@ -26,10 +26,8 @@ pkgbase = mesa-rbp
 	makedepends = libclc
 	makedepends = clang
 	source = ftp://ftp.freedesktop.org/pub/mesa/11.0.3/mesa-11.0.3.tar.xz
-	source = ftp://ftp.freedesktop.org/pub/mesa/11.0.3/mesa-11.0.3.tar.xz.sig
 	source = LICENSE
 	sha256sums = ab2992eece21adc23c398720ef8c6933cb69ea42e1b2611dc09d031e17e033d6
-	sha256sums = SKIP
 	sha256sums = 7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2
 
 pkgname = libva-mesa-driver-rbp
