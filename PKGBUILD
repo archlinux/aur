@@ -3,7 +3,7 @@
 
 pkgbase=python-weblib
 pkgname=('python-weblib' 'python2-weblib')
-pkgver=0.1.15
+pkgver=0.1.20
 pkgrel=1 
 pkgdesc="Set of tools for web scraping projects"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://pypi.python.org/pypi/weblib"
 license=('MIT')
 makedepends=('python' 'python2')
 source=(https://pypi.python.org/packages/source/w/weblib/weblib-${pkgver}.tar.gz)
-sha256sums=('f62e84fe1b378274ff06e518f42bc79c53182ab00581b891482f301e7206a86c')
+sha256sums=('d49687b97ecb61cb7ab4df947f1f0b084a3514476fa910a9d3b554876e05bdbb')
 
 build() {
   cd $srcdir
