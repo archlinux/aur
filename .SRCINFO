@@ -1,6 +1,6 @@
 pkgbase = cartaodecidadao
 	pkgdesc = Portuguese Citizen Card Application
-	pkgver = 1.26.2
+	pkgver = 1.60.0
 	pkgrel = 2
 	url = http://www.cartaodecidadao.pt/
 	install = cartaodecidadao.install
@@ -16,10 +16,10 @@ pkgbase = cartaodecidadao
 	optdepends = ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)
 	source = cartaodecidadao.install
 	md5sums = b716ba8fde53cef3376eedb1a6076cac
-	source_i686 = https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu-1.26.2-1414.i586.deb
-	md5sums_i686 = d70efc167675eba20ab8d6467c15374a
-	source_x86_64 = https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu-1.26.2-1414.x86_64.deb
-	md5sums_x86_64 = 06a8e7c60f38f739dd2469c705a48521
+	source_i686 = https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu-1.60.0-1608.i386.deb
+	md5sums_i686 = 580fd331e29804b1d70e3d362bd79a75
+	source_x86_64 = https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu-1.60.0-1608.x86_64.deb
+	md5sums_x86_64 = bce40ed0c39d062afdf9770209f0c37f
 
 pkgname = cartaodecidadao
 
