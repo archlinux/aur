@@ -1,7 +1,7 @@
 # Maintainer: Haron Prime (Haron_Prime) <haron.prime@gmx.com>
 
 pkgname=gis-weather
-pkgver=0.7.8.7
+pkgver=0.7.9
 pkgrel=1
 pkgdesc="Customizable weather widget"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=()
 conflicts=('gis-weather-git')
 
 source=(${url}/files/gis-weather/${pkgver}/gis-weather_${pkgver}_all.deb/download)
-md5sums=('dab6f428201125752c5fef6840866206')
+md5sums=('a47169f7820eba68e8b41fe448584001')
 
 package() {
   cd "$srcdir"
