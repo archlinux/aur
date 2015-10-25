@@ -1,0 +1,8 @@
+[Unit]
+Description=This service watches GPIO 24 for Plusberry shutdown.
+
+[Service]
+ExecStart=/usr/bin/plusberrypi-shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
