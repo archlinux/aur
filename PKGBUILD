@@ -9,6 +9,7 @@ pkgver=1.9.0
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor for rbp'
 arch=('armv7h' 'armv6h')
+conflicts=('weston')
 provides=('weston')
 replaces=('weston')
 url='http://wayland.freedesktop.org'
