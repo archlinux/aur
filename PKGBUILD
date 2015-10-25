@@ -3,7 +3,7 @@
 
 # Set to 'y' to enable Numix-like theme for JabRef
 # DOESN'T WORK FOR NOW, ENABLING WILL RESULT IN A BROKEN BUILD
-_numixicons=y
+_numixicons=
 
 pkgname=jabref-git
 pkgver=2.80.r5204.e804630
