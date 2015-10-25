@@ -14,7 +14,7 @@ install=${pkgname}.install
 source=('git+https://github.com/sbwtw/DoubanFM.git')
 md5sums=('SKIP')
 
-_dirname=doubanFM
+_dirname=DoubanFM
 
 pkgver() {
     cd ${srcdir}/${_dirname}
