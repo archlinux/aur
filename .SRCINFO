@@ -1,11 +1,12 @@
 pkgbase = 4kstogram
 	pkgdesc = Download and backup Instagram photos shared by any user.
 	pkgver = 1.9.4.944
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.4kdownload.com/products/product-stogram
 	arch = i686
 	arch = x86_64
 	license = custom:eula
+	depends = qt5-script
 	depends = qt5-quickcontrols
 	depends = libexif
 	source = 4kstogram.desktop
