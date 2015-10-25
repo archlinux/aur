@@ -2,7 +2,7 @@
 pkgname=python2-ifcopenshell
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="Open source IFC library and geometry engine. Python-2 version."
+pkgdesc="Open source IFC library and geometry engine. Provides only wrapper for python2."
 url="http://ifcopenshell.org/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -16,15 +16,14 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/v${pkgver}.tar.gz"
 
 prepare(){
   cd "${srcdir}/IfcOpenShell-${pkgver}"
-
   patch -Np1 -i "${srcdir}/boost-1.58.patch"
+  for _FILE in `grep -Rl "COMMAND python" *`; do
+    sed -e "s|COMMAND python|COMMAND python2|" -i ${_FILE}
+  done
 }
 
 build() {
   cd "${srcdir}/IfcOpenShell-${pkgver}"
-  for _FILE in `grep -Rl "COMMAND python" *`; do
-    sed -e "s|COMMAND python|COMMAND python2|" -i ${_FILE}
-  done
   mkdir -p build
   cd "${srcdir}/IfcOpenShell-${pkgver}/build"
   local _pythonver=$(python2 --version 2>&1)
