@@ -1,0 +1,28 @@
+From d774442e8d65dc8ef1ad3d9a677fd0da623ff174 Mon Sep 17 00:00:00 2001
+From: Dmitry Timoshkov <dmitry@baikal.ru>
+Date: Tue, 20 Oct 2015 12:25:54 +0800
+Subject: [PATCH] gdi32: Fix heap corruption.
+
+Signed-off-by: Dmitry Timoshkov <dmitry@baikal.ru>
+Signed-off-by: Nikolay Sivov <nsivov@codeweavers.com>
+Signed-off-by: Alexandre Julliard <julliard@winehq.org>
+---
+ dlls/gdi32/freetype.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dlls/gdi32/freetype.c b/dlls/gdi32/freetype.c
+index 95df22a..9f2a9fb 100644
+--- a/dlls/gdi32/freetype.c
++++ b/dlls/gdi32/freetype.c
+@@ -5189,7 +5189,7 @@ static void fill_fileinfo_from_face( GdiFont *font, Face *face )
+         strcpyW(font->fileinfo->path, face->file);
+     }
+     else
+-        memset(&font->fileinfo, 0, sizeof(*font->fileinfo) + len * sizeof(WCHAR));
++        memset(font->fileinfo, 0, sizeof(*font->fileinfo) + len * sizeof(WCHAR));
+ }
+ 
+ /*************************************************************
+-- 
+1.9.1
+

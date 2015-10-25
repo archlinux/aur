@@ -1,36 +1,35 @@
-# Maintainer: Pierre Franco <pierre dot franco at ensimag dot grenoble dash inp dot fr>
-# Based on wine-staging PKGBUILD
-
-#Additional patches:
-# -Raw input fix
-# -Mip-Map fix (see https://bugs.winehq.org/show_bug.cgi?id=34480 )
-# -Keybind patch reversion
-# -Heap allocation perfomance improvement patch
-# -Wbemprox videocontroller query fix (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
+# $Id$
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Contributor: Eduardo Romero <eduardo@archlinux.org>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-gaming-nine
-pkgver=1.7.52
+pkgver=1.7.53
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$pkgver"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$pkgver.tar.gz"
+        30-win32-aliases.conf
+        gdi32-heap-corruption.patch
         keybindings.patch
         raw.patch
         mipmap.patch
-        nine-1.7.52.patch
         heap_perf.patch
         wbemprox_query.patch
-        30-win32-aliases.conf)
-sha1sums=('843245d4736db4ad1449f00d747a2f7912680c59'
+        nine-1.7.53.patch)
+sha1sums=('07889b58bda0755f53310a19bb6a8e62c704658f'
+          '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
+          'f02a126e46db4283440caf04d618af39747bd284'
           'f3febb8836f38320742a546c667106608d4c4395'
           '57aa524e4e760c907c2acef287f5569e78ea85b0'
           'c3096fccbac23e520d03f592db7f23350cbbc0bc'
-          '14c63750628866e2f3b29a6d5a4ed11efb67b442'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           '20da841265d5b16dba02246f158ad4f54f13b775'
-          '023a5c901c6a091c56e76b6a62d141d87cce9fdb')
+          '83d666e677b9ae3caed648de7c6107dfc080f9ec')
 
 pkgdesc="Based off wine-staging, including the gallium-nine patches and some more hacks"
 url="http://www.wine-staging.com"
@@ -40,71 +39,72 @@ license=(LGPL)
 install=wine.install
 
 _depends=(
-    attr            lib32-attr
-    fontconfig      lib32-fontconfig
-    lcms2           lib32-lcms2
-    libxml2         lib32-libxml2
-    libxcursor      lib32-libxcursor
-    libxrandr       lib32-libxrandr
-    libxdamage      lib32-libxdamage
-    libxi           lib32-libxi
-    gettext         lib32-gettext
-    freetype2       lib32-freetype2
-    glu             lib32-glu
-    libsm           lib32-libsm
-    gcc-libs        lib32-gcc-libs
-    libpcap         lib32-libpcap
-    desktop-file-utils
+  attr            lib32-attr
+  fontconfig      lib32-fontconfig
+  lcms2           lib32-lcms2
+  libxml2         lib32-libxml2
+  libxcursor      lib32-libxcursor
+  libxrandr       lib32-libxrandr
+  libxdamage      lib32-libxdamage
+  libxi           lib32-libxi
+  gettext         lib32-gettext
+  freetype2       lib32-freetype2
+  glu             lib32-glu
+  libsm           lib32-libsm
+  gcc-libs        lib32-gcc-libs
+  libpcap         lib32-libpcap
+  desktop-file-utils
 )
 
 makedepends=(autoconf ncurses bison perl fontforge flex prelink
-    'gcc>=4.5.0-2'  'gcc-multilib>=4.5.0-2'
-    giflib          lib32-giflib
-    libpng          lib32-libpng
-    gnutls          lib32-gnutls
-    libxinerama     lib32-libxinerama
-    libxcomposite   lib32-libxcomposite
-    libxmu          lib32-libxmu
-    libxxf86vm      lib32-libxxf86vm
-    libldap         lib32-libldap
-    mpg123          lib32-mpg123
-    openal          lib32-openal
-    v4l-utils       lib32-v4l-utils
-    alsa-lib        lib32-alsa-lib
-    libxcomposite   lib32-libxcomposite
-    mesa            lib32-mesa
-    libgl           lib32-libgl
-    libcl           lib32-libcl
-    libxslt         lib32-libxslt
-    libpulse        lib32-libpulse
-    libva           lib32-libva
-    samba
-    opencl-headers
+  'gcc>=4.5.0-2'  'gcc-multilib>=4.5.0-2'
+  giflib          lib32-giflib
+  libpng          lib32-libpng
+  gnutls          lib32-gnutls
+  libxinerama     lib32-libxinerama
+  libxcomposite   lib32-libxcomposite
+  libxmu          lib32-libxmu
+  libxxf86vm      lib32-libxxf86vm
+  libldap         lib32-libldap
+  mpg123          lib32-mpg123
+  openal          lib32-openal
+  v4l-utils       lib32-v4l-utils
+  alsa-lib        lib32-alsa-lib
+  libxcomposite   lib32-libxcomposite
+  mesa            lib32-mesa
+  #mesa-libgl      lib32-mesa-libgl
+  libgl           lib32-libgl
+  libcl           lib32-libcl
+  libxslt         lib32-libxslt
+  libpulse        lib32-libpulse
+  libva           lib32-libva
+  gtk3            lib32-gtk3
+  samba
+  opencl-headers
 )
-# gtk3            lib32-gtk3
   
 optdepends=(
-    giflib          lib32-giflib
-    libpng          lib32-libpng
-    libldap         lib32-libldap
-    gnutls          lib32-gnutls
-    mpg123          lib32-mpg123
-    openal          lib32-openal
-    v4l-utils       lib32-v4l-utils
-    libpulse        lib32-libpulse
-    alsa-plugins    lib32-alsa-plugins
-    alsa-lib        lib32-alsa-lib
-    libjpeg-turbo   lib32-libjpeg-turbo
-    libxcomposite   lib32-libxcomposite
-    libxinerama     lib32-libxinerama
-    ncurses         lib32-ncurses
-    libcl           lib32-libcl
-    libxslt         lib32-libxslt
-    libva           lib32-libva
-    cups
-    samba           dosbox
+  giflib          lib32-giflib
+  libpng          lib32-libpng
+  libldap         lib32-libldap
+  gnutls          lib32-gnutls
+  mpg123          lib32-mpg123
+  openal          lib32-openal
+  v4l-utils       lib32-v4l-utils
+  libpulse        lib32-libpulse
+  alsa-plugins    lib32-alsa-plugins
+  alsa-lib        lib32-alsa-lib
+  libjpeg-turbo   lib32-libjpeg-turbo
+  libxcomposite   lib32-libxcomposite
+  libxinerama     lib32-libxinerama
+  ncurses         lib32-ncurses
+  libcl           lib32-libcl
+  libxslt         lib32-libxslt
+  libva           lib32-libva
+  gtk3            lib32-gtk3
+  cups
+  samba           dosbox
 )
-# gtk3            lib32-gtk3
 
 if [[ $CARCH == i686 ]]; then
     # Strip lib32 etc. on i686
@@ -117,26 +117,24 @@ if [[ $CARCH == i686 ]]; then
 else
     makedepends=(${makedepends[@]} ${_depends[@]})
     provides=("bin32-wine=$pkgver" "wine=$pkgver" "wine-wow64=$pkgver")
-    conflicts=('bin32-wine' 'wine' 'wine-wow64')
+    conflicts=('wine' 'wine-wow64')
 fi
 
-prepare()
-{
+prepare() {
     cd wine-patched-staging-$pkgver
+
+    # FS#46819
     
-    patch -p1 < ../nine-1.7.52.patch
+    patch -p1 < ../gdi32-heap-corruption.patch
+    patch -p1 < ../nine-1.7.53.patch
     patch -p1 < ../raw.patch
     patch -p1 < ../mipmap.patch
     patch -p1 < ../heap_perf.patch
     patch -p1 < ../wbemprox_query.patch
-    
+
     patch -p1 -R < ../keybindings.patch
 
-    #OpenCL fix
-    cp configure configure_old
-    cp configure.ac configure.ac_old
-    sed 's|OpenCL/opencl.h|CL/opencl.h|g' configure_old > configure
-    sed 's|OpenCL/opencl.h|CL/opencl.h|g' configure.ac_old > configure.ac
+    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 }
 
 build()
@@ -193,7 +191,8 @@ build()
     make CFLAGS+="-mstackrealign -mincoming-stack-boundary=2" CXXFLAGS+="-mstackrealign -mincoming-stack-boundary=2"
 }
 
-package() {
+package()
+{
     depends=(${_depends[@]})
 
     msg2 "Packaging Wine-32..."
@@ -203,14 +202,14 @@ package() {
         make prefix="$pkgdir/usr" install
     else
         make prefix="$pkgdir/usr" \
-        libdir="$pkgdir/usr/lib32" \
-        dlldir="$pkgdir/usr/lib32/wine" install
+            libdir="$pkgdir/usr/lib32" \
+            dlldir="$pkgdir/usr/lib32/wine" install
 
         msg2 "Packaging Wine-64..."
         cd "$srcdir/$pkgname-64-build"
         make prefix="$pkgdir/usr" \
-        libdir="$pkgdir/usr/lib" \
-        dlldir="$pkgdir/usr/lib/wine" install
+            libdir="$pkgdir/usr/lib" \
+            dlldir="$pkgdir/usr/lib/wine" install
     fi
 
     # Font aliasing settings for Win32 applications
@@ -218,3 +217,5 @@ package() {
     install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/etc/fonts/conf.avail"
     ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/etc/fonts/conf.d/30-win32-aliases.conf"
 }
+
+# vim:set ts=8 sts=2 sw=2 et:

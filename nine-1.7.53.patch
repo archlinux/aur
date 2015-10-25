@@ -1,5 +1,5 @@
 diff --git a/configure.ac b/configure.ac
-index c37c491..cbac8ad 100644
+index de8cde5..43eaaad 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -65,6 +65,8 @@ AC_ARG_WITH(openal,    AS_HELP_STRING([--without-openal],[do not use OpenAL]),
@@ -204,7 +204,7 @@ index 0afdc04..eb5665d 100644
   *              D3DPERF_BeginEvent (D3D9.@)
   */
 diff --git a/dlls/d3d9/d3d9_private.h b/dlls/d3d9/d3d9_private.h
-index d12805f..cdc1f07 100644
+index 6e84faf..762eddb 100644
 --- a/dlls/d3d9/d3d9_private.h
 +++ b/dlls/d3d9/d3d9_private.h
 @@ -39,6 +39,9 @@
@@ -1289,10 +1289,10 @@ index 34b3de6..90982b3 100644
  };
  
 diff --git a/dlls/gdi32/freetype.c b/dlls/gdi32/freetype.c
-index de40d9f..47eb57c 100644
+index 95df22a..a663c97 100644
 --- a/dlls/gdi32/freetype.c
 +++ b/dlls/gdi32/freetype.c
-@@ -8639,6 +8639,7 @@ static const struct gdi_dc_funcs freetype_funcs =
+@@ -8703,6 +8703,7 @@ static const struct gdi_dc_funcs freetype_funcs =
      NULL,                               /* pUnrealizePalette */
      NULL,                               /* pWidenPath */
      NULL,                               /* wine_get_wgl_driver */
@@ -1301,10 +1301,10 @@ index de40d9f..47eb57c 100644
  };
  
 diff --git a/dlls/gdi32/gdi32.spec b/dlls/gdi32/gdi32.spec
-index 8bba686..c248d5b 100644
+index 7d837f6..6329c26 100644
 --- a/dlls/gdi32/gdi32.spec
 +++ b/dlls/gdi32/gdi32.spec
-@@ -521,3 +521,6 @@
+@@ -522,3 +522,6 @@
  
  # OpenGL
  @ cdecl __wine_get_wgl_driver(long long)
@@ -1381,7 +1381,7 @@ index 463eefd..65d32ed 100644
  	ime.c \
 diff --git a/dlls/winex11.drv/d3dadapter.c b/dlls/winex11.drv/d3dadapter.c
 new file mode 100644
-index 0000000..2296155
+index 0000000..2b6cfa4
 --- /dev/null
 +++ b/dlls/winex11.drv/d3dadapter.c
 @@ -0,0 +1,1189 @@
@@ -1483,9 +1483,9 @@ index 0000000..2296155
 +
 +static HRESULT dri3_present_unregister_window_hook( struct DRI3Present *This );
 +static HRESULT dri3_present_register_window_hook( struct DRI3Present *This );
-+#endif
 +
 +static struct d3d_wnd_hooks d3d_hooks;
++#endif
 +
 +struct DRI3Present
 +{
@@ -4078,7 +4078,7 @@ index 6bc4fb3..ddb6c15 100644
  };
  
 diff --git a/dlls/winex11.drv/window.c b/dlls/winex11.drv/window.c
-index b7ec06e..353412e 100644
+index b763677..3a0b737 100644
 --- a/dlls/winex11.drv/window.c
 +++ b/dlls/winex11.drv/window.c
 @@ -1658,6 +1658,7 @@ void CDECL X11DRV_DestroyWindow( HWND hwnd )
@@ -4090,7 +4090,7 @@ index b7ec06e..353412e 100644
      if (!(data = get_win_data( hwnd ))) return;
  
 diff --git a/dlls/winex11.drv/x11drv.h b/dlls/winex11.drv/x11drv.h
-index cb4b0bb..322f457 100644
+index 2694d23..e540ca1 100644
 --- a/dlls/winex11.drv/x11drv.h
 +++ b/dlls/winex11.drv/x11drv.h
 @@ -220,6 +220,7 @@ extern BOOL shape_layered_windows DECLSPEC_HIDDEN;
@@ -4117,7 +4117,7 @@ index cb4b0bb..322f457 100644
  extern BOOL managed_mode DECLSPEC_HIDDEN;
  extern BOOL decorated_mode DECLSPEC_HIDDEN;
  extern BOOL private_color_map DECLSPEC_HIDDEN;
-@@ -573,6 +576,8 @@ extern void sync_gl_drawable( HWND hwnd, const RECT *visible_rect, const RECT *c
+@@ -574,6 +577,8 @@ extern void sync_gl_drawable( HWND hwnd, const RECT *visible_rect, const RECT *c
  extern void set_gl_drawable_parent( HWND hwnd, HWND parent ) DECLSPEC_HIDDEN;
  extern void destroy_gl_drawable( HWND hwnd ) DECLSPEC_HIDDEN;
  
@@ -4127,7 +4127,7 @@ index cb4b0bb..322f457 100644
  extern Window init_clip_window(void) DECLSPEC_HIDDEN;
  extern void update_user_time( Time time ) DECLSPEC_HIDDEN;
 diff --git a/dlls/winex11.drv/x11drv_main.c b/dlls/winex11.drv/x11drv_main.c
-index 85c69bf..3a8c3a1 100644
+index d4f5c84..4416edf 100644
 --- a/dlls/winex11.drv/x11drv_main.c
 +++ b/dlls/winex11.drv/x11drv_main.c
 @@ -48,6 +48,7 @@
@@ -4146,7 +4146,7 @@ index 85c69bf..3a8c3a1 100644
  BOOL use_xkb = TRUE;
  BOOL use_take_focus = TRUE;
  BOOL use_primary_selection = FALSE;
-@@ -476,6 +478,54 @@ sym_not_found:
+@@ -477,6 +479,54 @@ sym_not_found:
  }
  #endif /* defined(SONAME_LIBXCOMPOSITE) */
  
@@ -4201,7 +4201,7 @@ index 85c69bf..3a8c3a1 100644
  static void init_visuals( Display *display, int screen )
  {
      int count;
-@@ -582,6 +632,9 @@ static BOOL process_attach(void)
+@@ -583,6 +633,9 @@ static BOOL process_attach(void)
  #ifdef SONAME_LIBXCOMPOSITE
      X11DRV_XComposite_Init();
  #endif
