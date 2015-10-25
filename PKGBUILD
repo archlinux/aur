@@ -1,15 +1,4 @@
-# Maintainer: Lone_Wolf <lonewolf at xs4all dot nl>
-# Contributor: Armin K. <krejzi at email dot com>
-# Contributor: Kristian Klausen <klausenbusk@hotmail.com>
-# Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
-# Contributor: Tavian Barnes <tavianator@gmail.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Andreas Radke <andyrtr@archlinux.org>
-# Contributor: Thomas Dziedzic < gostrc at gmail >
-# Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
-# Contributor: Diego Jose <diegoxter1006@gmail.com>
-
-# Modified for raspberry pi by Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer Grey Christoforo <first name [at] last name [dot] net>
 
 pkgbase=mesa-git-rbp
 pkgname=('libva-mesa-driver-git-rbp' 'mesa-git-rbp' 'mesa-libgl-git-rbp')
@@ -29,8 +18,8 @@ md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a')
 
 pkgver() {
-    cd "${srcdir}/mesa"
-    echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd mesa
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
