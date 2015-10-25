@@ -1,0 +1,12 @@
+diff -ru src~/csstidy/misc.cpp src/csstidy/misc.cpp
+--- src~/csstidy/misc.cpp	2010-07-05 18:37:05.515600279 +0300
++++ src/csstidy/misc.cpp	2010-07-05 18:38:13.458970488 +0300
+@@ -16,6 +16,7 @@
+  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+  */
+  
++#include <cstring>
+ #include "csspp_globals.hpp"
+ 
+ bool escaped(const string &istring, const int pos) 
+Binary files src~/.sconsign.dblite and src/.sconsign.dblite differ
