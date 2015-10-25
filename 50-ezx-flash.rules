@@ -1,0 +1,7 @@
+SUBSYSTEM!="usb_device", ACTION!="add", GOTO="ezx_flash_end"
+
+SYSFS{idVendor}=="22b8", SYSFS{idProduct}=="6023", MODE="664", GROUP="users"
+SYSFS{idVendor}=="22b8", SYSFS{idProduct}=="4903", MODE="664", GROUP="users"
+SYSFS{idVendor}=="22b8", SYSFS{idProduct}=="beef", MODE="664", GROUP="users"
+
+LABEL="ezx_flash_end"

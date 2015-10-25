@@ -1,0 +1,25 @@
+pkgbase = putusb-git
+	pkgdesc = Utility for communication with firmware of some Motorola smartphones and Tegra devices
+	pkgver = r81.65b7f9d
+	pkgrel = 1
+	url = https://github.com/muromec/putusb
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2-pyusb
+	optdepends = python2-pyqt4: For using qputusb
+	provides = putusb
+	provides = qputusb
+	conflicts = putusb
+	conflicts = qputusb
+	replaces = putusb
+	replaces = qputusb
+	source = putusb-git::git+https://github.com/muromec/putusb.git
+	source = setup.py
+	source = 50-ezx-flash.rules
+	md5sums = SKIP
+	md5sums = 3db8e59bf1f4424882d9c1e5c0ec076c
+	md5sums = 39cb4ed67ee89d57e97f9f1e6ca26eb6
+
+pkgname = putusb-git
+
