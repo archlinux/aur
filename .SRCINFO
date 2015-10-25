@@ -1,0 +1,14 @@
+pkgbase = python-wire
+	pkgdesc = A convenience wrapper around the built-in SQLite3 module in python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/djmattyg007/python-wire
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/djmattyg007/python-wire/archive/1.0.0.zip
+	sha256sums = 0aaf5e3c280756fd723bf1b0fd68430da6f228d4b21a7eb9f9b18c33660bf978
+
+pkgname = python-wire
+
