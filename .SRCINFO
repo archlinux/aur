@@ -1,0 +1,15 @@
+pkgbase = autotalent
+	pkgdesc = A real-time pitch correction LADSPA plugin
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://tombaran.info/autotalent.html
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = GPL2
+	depends = ladspa
+	source = http://tombaran.info/autotalent-0.2.tar.gz
+	md5sums = f59443efc6ce0f4b46be86933db33acd
+
+pkgname = autotalent
+
