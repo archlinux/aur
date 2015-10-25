@@ -1,7 +1,7 @@
 # Maintainer: Stavros Polymenis <sp@orbitalfox.com>
 pkgname=portal
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal portal system. Alpha version, do not install unless you know what you are doing"
 arch=(any)
 url="http://orbitalfox.com"
@@ -19,7 +19,7 @@ changelog=
 source=(#"git+https://github.com/orbifx/portal.git"
   https://github.com/orbifx/portal/releases/download/v0.3-alpha/portal.tar.gz)
 noextract=()
-md5sums=('63e676bea34353aa3745fad5993a295e')
+md5sums=('ff3343d24e2ec014d0e62d3cbb37cef6')
 
 package() {
 	install -Dm544 portal "$pkgdir/usr/bin/portal"
