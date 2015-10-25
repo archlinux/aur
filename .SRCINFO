@@ -1,6 +1,6 @@
 pkgbase = cargo-bin
 	pkgdesc = Cargo downloads your Rust project's dependencies and compiles your project.
-	pkgver = 20151023
+	pkgver = 20151025
 	pkgrel = 1
 	url = http://crates.io/
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = cargo-bin
 	depends = zlib
 	optdepends = rust: for rustc
 	provides = cargo
-	conflicts = cargo-git
-	replaces = cargo-git
+	conflicts = cargo
 	source = https://static.rust-lang.org/cargo-dist/cargo-nightly--unknown-linux-gnu.tar.gz
 	md5sums = SKIP
 

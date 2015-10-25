@@ -5,7 +5,7 @@
 
 pkgname=cargo-bin
 pkgrel=1
-pkgver=20151023
+pkgver=20151025
 pkgdesc="Cargo downloads your Rust project's dependencies and compiles your project."
 url="http://crates.io/"
 conflicts=('cargo')
@@ -15,8 +15,6 @@ license=('APACHE' 'MIT')
 depends=('gcc-libs' 'zlib')
 optdepends=('rust: for rustc')
 makedepends=()
-conflicts=('cargo-git')
-replaces=('cargo-git')
 backup=()
 install=''
 source=("https://static.rust-lang.org/cargo-dist/cargo-nightly-${CARCH}-unknown-linux-gnu.tar.gz")
