@@ -1,0 +1,24 @@
+pkgbase = linux-git-rbp
+	pkgver = r546536.3eab9fe
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = armv7h
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	options = !strip
+	source = git+http://github.com/anholt/linux.git#branch=vc4-kms-v3d
+	source = config.txt
+	source = cmdline.txt
+	md5sums = SKIP
+	md5sums = 9a3c82da627b317ec79c37fd6afba569
+	md5sums = 60bc3624123c183305677097bcd56212
+
+pkgname = linux-git-rbp
+
+pkgname = linux-git-rbp-headers
+
