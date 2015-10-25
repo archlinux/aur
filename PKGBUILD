@@ -9,7 +9,7 @@ license=('GPL')
 depends=('systemd' 'bash')
 source=('plusberrypi-shutdown.service' 'plusberrypi-shutdown.sh')
 md5sums=('3b61dc69b028543e40ca60ff4b0833e9'
-         'b531ced76846544496701af6983062ad')
+         '2bdfcf3411f48b2b6ba4224e6ddeeb12')
 
 package() {
   install -m 644 -D -t $pkgdir/etc/systemd/system/ $srcdir/plusberrypi-shutdown.service
