@@ -53,4 +53,7 @@ package_kqoauth-qt5-git() {
 
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
   find "${pkgdir}/usr/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+  # Fix pkgconfig file
+  sed 's|QtCore QtNetwork|Qt5Core Qt5Network|g' -i "${pkgdir}/usr/lib/pkgconfig/kqoauth.pc"
 }
