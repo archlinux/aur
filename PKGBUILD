@@ -3,7 +3,7 @@
 pkgname=heyu
 pkgver=2.11_rc2
 _pkgver=2.11-rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="X10 Automation for Linux, Unix, and Mac OS X"
 arch=(i686 x86_64)
 url="http://www.heyu.org/"
@@ -19,7 +19,7 @@ prepare() { true; }
 
 build() {
   cd $srcdir/$pkgname-$_pkgver
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc
   make || return 1
 }
 
