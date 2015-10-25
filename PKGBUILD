@@ -4,20 +4,20 @@ _gitroot="https://github.com/Diaoul/babelfish"
 _gitname="babelfish"
 pkgbase=python2-babelfish-git
 pkgname=('python2-babelfish-git' 'python-babelfish-git')
-pkgver=0.5.5.90.3a177fb
+pkgver=0.5.5.r90.3a177fb
 pkgrel=1
+epoch=1
 pkgdesc="A module to work with countries and languages."
 arch=(any)
 url="https://github.com/Diaoul/babelfish"
 license=('custom')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('git' 'python2-setuptools' 'python-setuptools')
 source=("${_gitname}::git+${_gitroot}.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  echo 0.5.5.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-  #git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "0.5.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_python2-babelfish-git() {
