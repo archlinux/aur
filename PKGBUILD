@@ -75,6 +75,8 @@ prepare(){
    -i src/sage/databases/cremona.py
 # find bliss headers
   sed -e 's|graph.hh|bliss/graph.hh|' -i src/sage/graphs/bliss.pyx
+# fix jupyter path
+  patch -p0 -i ../jupyter-path.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -129,6 +131,7 @@ package() {
   export SAGE_ROOT="/usr"
   export SAGE_LOCAL="$SAGE_ROOT"
   export SAGE_SRC="$PWD"
+  export CC=gcc
   export JUPYTER_PATH="$pkgdir"/usr/share/jupyter
 
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
