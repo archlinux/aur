@@ -25,7 +25,7 @@ md5sums=('8db192b30309e789763ef371c37941ef')
 
 package() {
   install -D -m 755 "$srcdir/$pkgname-$pkgver/autotags" \
-                    "$pkgdir/usr/bin"
+                    "$pkgdir/usr/bin/autotags"
   install -D -m644 "$srcdir/$pkgname-$pkgver/LICENSE" \
                    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
