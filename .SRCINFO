@@ -1,0 +1,26 @@
+pkgbase = endless-sky-git
+	pkgdesc = A space exploration and combat game similar to Escape Velocity
+	pkgver = 0.8.4.r4.ga1ed871
+	pkgrel = 1
+	url = http://endless-sky.github.io/
+	install = endless-sky.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = CCPL
+	license = custom:public domain
+	makedepends = git
+	makedepends = scons
+	depends = sdl2
+	depends = libjpeg-turbo
+	depends = glew
+	depends = openal
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	source = endless-sky::git+https://github.com/endless-sky/endless-sky.git#branch=master
+	source = endless-sky.install
+	md5sums = SKIP
+	md5sums = 35480c7b8a09c11ddce957f9e279637c
+
+pkgname = endless-sky-git
+
