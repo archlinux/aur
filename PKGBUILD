@@ -47,7 +47,7 @@ build() {
                --with-gallium-drivers=vc4 \
                --enable-gles1 \
                --enable-gles2 \
-               --with-egl-platforms=x11,drm
+               --with-egl-platforms=x11,drm,wayland \
                --with-clang-libdir=/usr/lib
 
 
