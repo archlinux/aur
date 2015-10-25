@@ -1,0 +1,16 @@
+pkgbase = chm-to-pdf
+	pkgdesc = Convert CHM files to PDF documents
+	pkgver = 0.01
+	pkgrel = 2
+	url = http://code.google.com/p/trizen/downloads/detail?name=chm-to-pdf-0.01.tar.gz
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-text-chm
+	depends = perl-uri
+	depends = wkhtmltopdf-static
+	source = http://trizen.googlecode.com/files/chm-to-pdf-0.01.tar.gz
+	sha256sums = 836a02255f9cc4d9b0e64fb418042301703f2829ade44d43e2bc41dda40bc3a9
+
+pkgname = chm-to-pdf
+
