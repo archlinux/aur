@@ -26,7 +26,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate
         nginx-http-auth-digest.patch
-        git+http://github.com/samizdatco/nginx-http-auth-digest)
+        git+http://github.com/jrkettle/nginx-http-auth-digest)
 md5sums=('2562320f1535e3e31d165e337ae94f21'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
@@ -34,10 +34,10 @@ md5sums=('2562320f1535e3e31d165e337ae94f21'
          'SKIP'
          )
 
-prepare() {
-    cd "$srcdir"/nginx-http-auth-digest
-    patch -p1 < ../nginx-http-auth-digest.patch
-}
+#prepare() {
+#    cd "$srcdir"/nginx-http-auth-digest
+#    patch -p1 < ../nginx-http-auth-digest.patch
+#}
 
 build() {
   cd "$srcdir"/$provides-$pkgver
