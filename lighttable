@@ -1,5 +1,5 @@
 #!/bin/sh
-BIN=ltbin
+BIN=light
 LT_HOME=/opt/LightTable
 
 ARGS="$@"

@@ -8,7 +8,7 @@
 # Contributor: Eugenio Ferreira <eugfcl@gmail.com>
 
 pkgname=lighttable
-pkgver=0.7.2
+pkgver=0.8.0_alpha
 pkgrel=1
 pkgdesc="New interactive IDE that lets you modify running programs and embed anything from websites to games."
 url="http://www.lighttable.com/"
@@ -19,21 +19,16 @@ arch=('i686' 'x86_64')
 install=$pkgname.install
 
 source=(lighttable
-        $pkgname-$pkgver-$CARCH.tar.gz::http://d35ac8ww5dfjyg.cloudfront.net/playground/bins/$pkgver/LightTableLinux64.tar.gz
+        $pkgname-${pkgver//_/-}.tar.gz::https://github.com/LightTable/LightTable/releases/download/${pkgver//_/-}/lighttable-${pkgver//_/-}-linux.tar.gz
         lighttable.desktop
         lighttable.png
         LICENSE)
-md5sums=('e772b3547fdc3a6e32f81e7303422fd1'
-         'e49c9c57d1dec787a58094cc7e6d3f63'
+md5sums=('cad9cb77799f087aef08f0436b853412'
+         'f8eed30abad6aef0e06678968031cbf9'
          '04a62702b59810a36bca7623bf9e932c'
          'f8c055be2f047ff4aaffdd028f62f027'
          '8870b5e12f58e6a19a53f4fa938755e8')
 PKGEXT=".pkg.tar"
-
-if [[ "$CARCH" == "i686" ]]; then
-  source[1]=$pkgname-$pkgver-$CARCH.tar.gz::http://d35ac8ww5dfjyg.cloudfront.net/playground/bins/$pkgver/LightTableLinux.tar.gz
-  md5sums[1]='999ca3e734ea1cf7b5f3dc190e914ad9'
-fi
 
 package() {
   install -Dm 755 "$srcdir/lighttable" "$pkgdir/usr/bin/lighttable"
@@ -44,10 +39,8 @@ package() {
   _destdir="$pkgdir/opt/LightTable"
 
   install -dm755 $_destdir
-  mv $srcdir/LightTable/* $_destdir
+  mv $srcdir/lighttable-${pkgver//_/-}-linux/* $_destdir
 
   install -Dm 644 "$srcdir/lighttable.desktop" "$pkgdir/usr/share/applications/lighttable.desktop"
   install -Dm 644 "$srcdir/lighttable.png" "$pkgdir/usr/share/pixmaps/lighttable.png"
-  install -Dm 644 "$pkgdir/opt/LightTable/core/node_modules/marked/man/marked.1" "$pkgdir/usr/share/man/man1/marked.1"
-  rm "$pkgdir/opt/LightTable/core/node_modules/marked/man/marked.1"
 }
