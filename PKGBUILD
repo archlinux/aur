@@ -3,8 +3,8 @@
 # Contributor: George Brooke <george+arch.aur@george-brooke.co.uk>
 
 pkgname=telepathy-kde-git-meta
-pkgver=16
-pkgrel=3
+pkgver=17
+pkgrel=1
 pkgdesc="Metapackage for the development version of all kde-telepathy components."
 arch=('any')
 url="https://projects.kde.org/projects/playground/network/telepathy"
@@ -21,10 +21,12 @@ depends=('telepathy-kde-accounts-kcm-git'
 #        'telepathy-kde-kipi-plugin-git' # unmaintained, non-qt5
          'telepathy-kde-send-file-git'
          'telepathy-kde-text-ui-git'
-         'signon-ui-qt5'
-         'signon-plugin-oauth2-qt5'
-         'signon-kwallet-extension-frameworks-git'
-         'kaccounts-providers-git')
+         'signon-ui'
+         'signon-plugin-oauth2'
+         'signon-kwallet-extension'
+         'kaccounts-providers-git'
+         'libsignon-glib'
+         'telepathy-accounts-signon')
 
 package() {
     return 0

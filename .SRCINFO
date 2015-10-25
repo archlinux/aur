@@ -1,7 +1,7 @@
 pkgbase = telepathy-kde-git-meta
 	pkgdesc = Metapackage for the development version of all kde-telepathy components.
-	pkgver = 16
-	pkgrel = 3
+	pkgver = 17
+	pkgrel = 1
 	url = https://projects.kde.org/projects/playground/network/telepathy
 	arch = any
 	license = GPL
@@ -15,10 +15,12 @@ pkgbase = telepathy-kde-git-meta
 	depends = telepathy-kde-integration-module-git
 	depends = telepathy-kde-send-file-git
 	depends = telepathy-kde-text-ui-git
-	depends = signon-ui-qt5
-	depends = signon-plugin-oauth2-qt5
-	depends = signon-kwallet-extension-frameworks-git
+	depends = signon-ui
+	depends = signon-plugin-oauth2
+	depends = signon-kwallet-extension
 	depends = kaccounts-providers-git
+	depends = libsignon-glib
+	depends = telepathy-accounts-signon
 
 pkgname = telepathy-kde-git-meta
 
