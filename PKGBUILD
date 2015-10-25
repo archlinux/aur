@@ -33,11 +33,6 @@ pkgver() {
     echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-_mesaver() {
-    path="${srcdir}/mesa/VERSION"
-    [ -f $path ] && cat "$path"
-}
-
 build() {
   cd ${srcdir}/mesa
 
@@ -62,11 +57,11 @@ build() {
 package_libva-mesa-driver-git-rbp() {
   pkgdesc="VA-API implementation for gallium"
   depends=('nettle' 'libdrm' 'libx11' 'llvm-libs' 'expat' 'elfutils' "mesa=${pkgver}")
-  provides=("libva-mesa-driver=$(_mesaver)")
+  provides=("libva-mesa-driver=${pkgver}")
   conflicts=('libva-mesa-driver')
 
   install -m755 -d ${pkgdir}/usr/lib
-  mv -v ${srcdir}/fakeinstall/usr/lib/dri ${pkgdir}/usr/lib
+  cp -a ${srcdir}/fakeinstall/usr/lib/dri ${pkgdir}/usr/lib
    
   install -m755 -d "${pkgdir}/usr/share/licenses/libva-mesa-driver"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver/"
@@ -80,14 +75,14 @@ package_mesa-git-rbp() {
 	      'opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau: for accelerated video playback'
               'libva-mesa-driver: for accelerated video playback')
-  provides=("mesa=$(_mesaver)" 'libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
+  provides=("mesa=${pkgver}" 'libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
             'mesa-dri')
   conflicts=('mesa' 'libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
              'mesa-dri')
   replaces=('mesa' 'libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
             'mesa-dri')
             
-  mv -v ${srcdir}/fakeinstall/* ${pkgdir}/.
+  cp -a ${srcdir}/fakeinstall/* ${pkgdir}/.
 
   #install -m755 -d ${pkgdir}/etc
   #mv -v ${srcdir}/fakeinstall/etc/drirc ${pkgdir}/etc
@@ -101,11 +96,11 @@ package_mesa-git-rbp() {
   #mv -v ${srcdir}/fakeinstall/usr/include ${pkgdir}/usr
   #mv -v ${srcdir}/fakeinstall/usr/lib/pkgconfig ${pkgdir}/usr/lib/
   
-  #install -m755 -d ${pkgdir}/usr/lib/mesa
+  install -m755 -d ${pkgdir}/usr/lib/mesa
   # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
-  #mv -v ${pkgdir}/usr/lib/libGL.so* 	${pkgdir}/usr/lib/mesa/
-  #mv -v ${pkgdir}/usr/lib/libEGL.so* 	${pkgdir}/usr/lib/mesa/
-  #mv -v ${pkgdir}/usr/lib/libGLES*.so*	${pkgdir}/usr/lib/mesa/
+  mv -v ${pkgdir}/usr/lib/libGL.so* 	${pkgdir}/usr/lib/mesa/
+  mv -v ${pkgdir}/usr/lib/libEGL.so* 	${pkgdir}/usr/lib/mesa/
+  mv -v ${pkgdir}/usr/lib/libGLES*.so*	${pkgdir}/usr/lib/mesa/
 
   install -m755 -d "${pkgdir}/usr/share/licenses/mesa"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa/"
@@ -113,8 +108,8 @@ package_mesa-git-rbp() {
 
 package_mesa-libgl-git-rbp() {
   pkgdesc="Mesa 3-D graphics library"
-  depends=('mesa=${pkgver}')
-  provides=("mesa-libgl=$(_mesaver)" "libgl=$(_mesaver)")
+  depends=("mesa=${pkgver}")
+  provides=("mesa-libgl=${pkgver}" "libgl=${pkgver}")
   replaces=('mesa-libgl')
  
   # See FS#26284
