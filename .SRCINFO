@@ -1,0 +1,16 @@
+pkgbase = perl-text-chm
+	pkgdesc = Perl Text::CHM - Extension for handling MS Compiled HtmlHelp Files
+	pkgver = 0.01
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Text-CHM
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	depends = perl
+	depends = chmlib
+	options = !emptydirs
+	source = http://cpan.org/modules/by-module/Text/Text-CHM-0.01.tar.gz
+	sha256sums = 9685ce7481baf0cb5ff1e694c2ae5ba6ae5e251dbb3dcf1300150fd08be6c3ac
+
+pkgname = perl-text-chm
+
