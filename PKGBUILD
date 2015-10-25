@@ -2,7 +2,7 @@
 pkgname=ifcopenshell
 pkgver=0.4.0
 pkgrel=2
-pkgdesc="Open source IFC library and geometry engine."
+pkgdesc="Open source IFC library and geometry engine. Provides static library and python3 wrapper."
 url="http://ifcopenshell.org/"
 arch=('x86_64' 'i686')
 license=('GPL3')

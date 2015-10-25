@@ -1,5 +1,5 @@
 pkgbase = ifcopenshell
-	pkgdesc = Open source IFC library and geometry engine.
+	pkgdesc = Open source IFC library and geometry engine. Provides static library and python3 wrapper.
 	pkgver = 0.4.0
 	pkgrel = 2
 	url = http://ifcopenshell.org/
