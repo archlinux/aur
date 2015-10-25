@@ -1,0 +1,24 @@
+pkgbase = odf-converter
+	pkgdesc = Binary(doc,xls,ppt) to OpenXML Translator
+	pkgver = 4.0.5309
+	pkgrel = 1
+	url = https://sourceforge.net/p/odf-converter
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = svn
+	makedepends = dos2unix
+	depends = mono
+	noextract = CommandLineTool_4.0.5309.zip
+	options = !strip
+	options = emptydirs
+	options = libtool
+	source = http://downloads.sourceforge.net/project/odf-converter/ODF%20Translator%20CommandLine/Release%204.0/CommandLineTool_4.0.5309.zip
+	source = zlib123::svn+svn://svn.code.sf.net/p/odf-converter/code/trunk/
+	source = zlibwapi.patch
+	md5sums = 84dbd341396dacdd8dbd70d745728e3c
+	md5sums = SKIP
+	md5sums = 80f91da40ed073f8ce50522189a09a33
+
+pkgname = odf-converter
+

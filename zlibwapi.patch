@@ -1,0 +1,12 @@
+diff -Naur a/contrib/minizip/Makefile b/contrib/minizip/Makefile
+--- a/contrib/minizip/Makefile	2015-10-25 15:10:47.000000000 +0800
++++ b/contrib/minizip/Makefile	2015-10-25 15:14:49.228244982 +0800
+@@ -34,7 +34,7 @@
+ 	$(CC) -dynamiclib -single_module -install_name '@executable_path/$@' -lz -fPIC $(DEBUG) $(CFLAGS) \
+ 	    -o libzlibwapi.$(DLLEXT) $(SOURCE)
+ else
+-	$(CC) -lz -shared -fPIC $(DEBUG) $(CFLAGS) \
++	$(CC) -Wl,--no-as-needed -lz -shared -fPIC $(DEBUG) $(CFLAGS) \
+ 	    -o libzlibwapi.$(DLLEXT) $(SOURCE)
+ endif
+ 
