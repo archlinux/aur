@@ -1,7 +1,7 @@
 pkgbase = server-jre
 	pkgdesc = Oracle Server Java Runtime Environment
 	pkgver = 8u66
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = server-jre.install
 	arch = x86_64

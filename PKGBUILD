@@ -6,7 +6,7 @@ _major=8
 _minor=66
 _build=b17
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Server Java Runtime Environment"
 arch=('x86_64')
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -38,8 +38,10 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
 options=()
 install=$pkgname.install
 changelog=
-source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$pkgname-$pkgver-linux-x64.tar.gz")
-sha256sums=('073f2bdcb3b993f756772f4225bf05b6006516bf1d7d1672fb2ec2aff4e83736')
+source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
+        "http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$pkgname-$pkgver-linux-x64.tar.gz")
+sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
+            '073f2bdcb3b993f756772f4225bf05b6006516bf1d7d1672fb2ec2aff4e83736')
 
 package() {
     cd jdk1.${_major}.0_${_minor}
@@ -85,4 +87,14 @@ package() {
    # Move/link licenses
     mv COPYRIGHT LICENSE jre/README *.txt "$pkgdir"/usr/share/licenses/java$_major-$pkgname/
     ln -sf /usr/share/licenses/java$_major-$pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
+
+    msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."
+    # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
+    # things like 256-bit AES. Enabled by default in OpenJDK:
+    # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
+    # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
+    install -m644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/*.jar jre/lib/security/
+    install -Dm644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/README.txt \
+                   "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
+
 }
