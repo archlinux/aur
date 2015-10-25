@@ -4,7 +4,7 @@
 pkgname=gogs
 _pkgname=${pkgname}
 pkgver=0.6.15
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,7 +16,8 @@ optdepends=('sqlite: SQLite support'
             'postgresql: PostgreSQL support'
             'redis: Redis support'
             'memcached: MemCached support'
-            'openssh: GIT over SSH support')
+            'openssh: GIT over SSH support'
+            'tidb-git: TiDB support')
 makedepends=('go>=1.2' 'git>=1.7.1' 'patch')
 conflicts=('gogs-bin' 'gogs-git' 'gogs-git-dev')
 options=('!strip' '!emptydirs')
@@ -30,7 +31,7 @@ source=('gogs.service'
         'helper.sh'
         "$_pkgname::git+https://${_gourl}.git#tag=v${pkgver}")
 
-sha512sums=(2b4303f850e3b13b2fc3c9f0bc5820dae431d228002b35f01be0d4bfbcf05de8dcec2a559a85e318b609e4a4d492d44306eadf5f6508fd72333b198661bb0bb7
+sha512sums=(c7abbe4af438a8a1db44537a16dbd40b82d50c921d53002c083071c4cd16644769e9d5dabbccedc1bd4ba563324186da4b4378365e098cc45df76402a657be90
             cd00b1f29c0ab2eaf70647b51a7fe135aa00906dcda1b1d99c56ea3371fc6540f82bf77999018078b43294614317df253fb4217c2d84f873398c4a69ae2bfaa5
             e746dbdafc4c8d0b15a224dba95ae3151611ba9ff468ee6f0b1789e489955e4d7eaac0dbdf28a22e5b8211559af5950726f4a37d699a2490fd349f034401028c
             'SKIP')
