@@ -1,0 +1,23 @@
+post_install() {
+	systemctl daemon-reload
+	systemctl enable plusberrypi-shutdown
+	systemctl start plusberrypi-shutdown
+}
+
+pre_upgrade() {
+	systemctl stop plusberrypi-shutdown
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+	systemctl start plusberrypi-shutdown
+}
+
+pre_remove() {
+	systemctl stop plusberrypi-shutdown
+	systemctl disable plusberrypi-shutdown
+}
+
+post_remove() {
+	systemctl reset-failed plusberrypi-shutdown
+}
