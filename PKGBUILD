@@ -5,13 +5,13 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=aria2-fast
-pkgver=1.19.1
+pkgver=1.19.2
 pkgrel=1
-pkgdesc='Aria2 Download utility with little patch to maximize aria2 download connections'
+pkgdesc='Aria2 Download utility with little patch to maximize aria2 download speed'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://aria2.sourceforge.net/'
 license=('GPL')
-depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates')
+depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2')
 checkdepends=('cppunit')
 provides=('aria2')
 conflicts=('aria2')
@@ -31,7 +31,6 @@ build() {
 
 check() {
   cd aria2-${pkgver}
-
   make check
 }
 
@@ -46,5 +45,5 @@ package() {
     ${pkgdir}/usr/share/bash-completion/completions
   rm -rf ${pkgdir}/usr/share/doc/aria2/bash_completion
 }
-md5sums=('b8b72b951f3943285a4b445364b6348c'
+md5sums=('b435162c17a886a0ef88d58d054ec21d'
          '5bfc37a15ce74bbdfbfa77fb871cc2e7')
