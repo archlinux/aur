@@ -1,11 +1,12 @@
 pkgbase = jabref-git
 	pkgdesc = GUI frontend for BibTeX, written in Java -- built from git
-	pkgver = 2.11b4.914.gca4e829
+	pkgver = 2.80.r5204.e804630
 	pkgrel = 1
 	url = http://jabref.sourceforge.net/
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = java-environment=8
 	depends = java-environment=8
 	provides = jabref
 	conflicts = jabref

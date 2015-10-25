@@ -3,10 +3,10 @@
 
 # Set to 'y' to enable Numix-like theme for JabRef
 # DOESN'T WORK FOR NOW, ENABLING WILL RESULT IN A BROKEN BUILD
-_numixicons=
+_numixicons=y
 
 pkgname=jabref-git
-pkgver=2.11b4.914.gca4e829
+pkgver=2.80.r5204.e804630
 _pkgver=2.80dev
 _gitname="jabref"
 pkgrel=1
@@ -15,7 +15,7 @@ arch=('any')
 url="http://jabref.sourceforge.net/"
 license=('GPL')
 depends=('java-environment=8')
-makedepends=('git')
+makedepends=('git' 'java-environment=8')
 provides=('jabref')
 conflicts=('jabref')
 source=('jabref::git+https://github.com/JabRef/jabref.git'
@@ -29,7 +29,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $_gitname
-  git describe --tags|sed 's/-/./g'| cut -c3-
+  printf "2.80.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
