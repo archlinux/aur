@@ -1,7 +1,7 @@
 pkgbase = gnome-twitch-git
 	pkgdesc = Enjoy Twitch on your GNU/Linux desktop
-	pkgver = r165.5931851
-	pkgrel = 2
+	pkgver = r184.0cc8ae0
+	pkgrel = 1
 	url = https://github.com/Ippytraxx/gnome-twitch
 	install = gnome-twitch-git.install
 	arch = i686

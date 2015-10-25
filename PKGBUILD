@@ -1,8 +1,8 @@
 # Maintainer: Vincent <ippytraxx@installgentoo.com>
 
 pkgname=gnome-twitch-git
-pkgver=r165.5931851
-pkgrel=2
+pkgver=r184.0cc8ae0
+pkgrel=1
 pkgdesc="Enjoy Twitch on your GNU/Linux desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/Ippytraxx/gnome-twitch"
@@ -23,16 +23,16 @@ pkgver()
 build()
 {
     cd "$pkgname"
+    rm -rf build
     mkdir build
-    meson . build
     cd build
+    meson --prefix /usr --buildtype release
+    mesonconf -Ddo-post-install=false
     ninja
 }
 
 package()
 {
     cd "$pkgname"/build
-    mesonconf -Dprefix=/usr 
-    mesonconf -Dtype=release
     DESTDIR="$pkgdir" ninja install
 }
