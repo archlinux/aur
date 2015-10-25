@@ -1,6 +1,6 @@
 pkgbase = evince-no-gnome
 	pkgdesc = GTK3 document viewer, complete features, no gnome
-	pkgver = 3.18.0
+	pkgver = 3.18.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evince
 	install = evince-no-gnome.install
@@ -23,8 +23,8 @@ pkgbase = evince-no-gnome
 	depends = gvfs
 	conflicts = evince
 	conflicts = evince-light
-	source = http://ftp.gnome.org/pub/GNOME/sources/evince/3.18/evince-3.18.0.tar.xz
-	md5sums = 9f857c73be31ad053bc3b6e4ac10c428
+	source = http://ftp.gnome.org/pub/GNOME/sources/evince/3.18/evince-3.18.1.tar.xz
+	md5sums = 388a813d7d30f1f778f7993efd7f3a40
 
 pkgname = evince-no-gnome
 
