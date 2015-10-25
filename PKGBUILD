@@ -3,8 +3,8 @@
 
 pkgname=server-jre
 _major=8
-_minor=60
-_build=b27
+_minor=66
+_build=b17
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Server Java Runtime Environment"
@@ -39,7 +39,7 @@ options=()
 install=$pkgname.install
 changelog=
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$pkgname-$pkgver-linux-x64.tar.gz")
-sha256sums=('899d9f09d7c1621a5cce184444b0ba97a8b0391bd85b624ea29f81a759764c55')
+sha256sums=('073f2bdcb3b993f756772f4225bf05b6006516bf1d7d1672fb2ec2aff4e83736')
 
 package() {
     cd jdk1.${_major}.0_${_minor}

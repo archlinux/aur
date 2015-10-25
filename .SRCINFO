@@ -1,6 +1,6 @@
 pkgbase = server-jre
 	pkgdesc = Oracle Server Java Runtime Environment
-	pkgver = 8u60
+	pkgver = 8u66
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = server-jre.install
@@ -27,8 +27,8 @@ pkgbase = server-jre
 	backup = etc/java-server-jre8/psfont.properties.ja
 	backup = etc/java-server-jre8/psfontj2d.properties
 	backup = etc/java-server-jre8/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/8u60-b27/server-jre-8u60-linux-x64.tar.gz
-	sha256sums = 899d9f09d7c1621a5cce184444b0ba97a8b0391bd85b624ea29f81a759764c55
+	source = http://download.oracle.com/otn-pub/java/jdk/8u66-b17/server-jre-8u66-linux-x64.tar.gz
+	sha256sums = 073f2bdcb3b993f756772f4225bf05b6006516bf1d7d1672fb2ec2aff4e83736
 
 pkgname = server-jre
 
