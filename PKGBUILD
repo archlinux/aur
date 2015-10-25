@@ -35,7 +35,7 @@ build() {
   git config submodule.dependencies/liri-player.url "$srcdir/liriplayer"
   git submodule update
 
-  cd "dependencies/liri-player"
+  cd "dependencies/liriplayer"
   git submodule init
   git config submodule.dependencies/QmlVlc.url "$srcdir/qmlvlc"
   git submodule update
