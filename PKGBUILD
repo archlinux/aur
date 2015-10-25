@@ -61,7 +61,7 @@ build() {
 
 package_libva-mesa-driver-git-rbp() {
   pkgdesc="VA-API implementation for gallium"
-  depends=('nettle' 'libdrm' 'libx11' 'llvm-libs' 'expat' 'elfutils' "mesa-git-rbp=${pkgve}")
+  depends=('nettle' 'libdrm' 'libx11' 'llvm-libs' 'expat' 'elfutils' "mesa=${pkgver}")
   provides=("libva-mesa-driver=$(_mesaver)")
   conflicts=('libva-mesa-driver')
 
@@ -113,7 +113,7 @@ package_mesa-git-rbp() {
 
 package_mesa-libgl-git-rbp() {
   pkgdesc="Mesa 3-D graphics library"
-  depends=('mesa-git-rbp=${pkgver}')
+  depends=('mesa=${pkgver}')
   provides=("mesa-libgl=$(_mesaver)" "libgl=$(_mesaver)")
   replaces=('mesa-libgl')
  
