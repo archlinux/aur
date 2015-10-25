@@ -4,12 +4,12 @@
 
 pkgname=python-guessit
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for guessing information from video files."
 arch=(any)
 url="http://pypi.python.org/pypi/guessit"
 license=(LGPL)
-depends=(python python-babelfish python-stevedore)
+depends=(python python-babelfish python-stevedore python-requests python-dateutil)
 makedepends=(python-distribute)
 conflicts=(${pkgname}-git)
 source=(http://pypi.python.org/packages/source/g/guessit/guessit-${pkgver}.tar.gz)
