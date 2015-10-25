@@ -1,0 +1,18 @@
+# Original Author: Niels Abspoel <aboe76 (at) Gmail (dot) com>
+# Maintainer: Tim Meusel <tim@bastelfreak.de>
+
+post_install() {
+  echo ""
+  echo "========================================"
+  echo ""
+  echo "This will only install puppetboard read:"
+  echo "https://github.com/nedap/puppetboard"
+  echo "on how to configure"
+  echo ""
+  echo "========================================"
+}
+
+post_upgrade () {
+  post_install
+}
+# vim:set ts=2 sw=2 et:
