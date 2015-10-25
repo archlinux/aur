@@ -1,7 +1,7 @@
 # Maintainer: Vincent <ippytraxx@installgentoo.com>
 
 pkgname=gnome-twitch-git
-pkgver=r185.68e85eb
+pkgver=r186.20b50ad
 pkgrel=1
 pkgdesc="Enjoy Twitch on your GNU/Linux desktop"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build()
     rm -rf build
     mkdir build
     cd build
-    meson --prefix /usr --buildtype release ..
+    meson --prefix /usr --buildtype release -Ddo-post-install=false ..
     ninja
 }
 
