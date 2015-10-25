@@ -1,15 +1,15 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=libsrsirc
-pkgver=0.0.2
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="A lightweight IRC library (includes icat)"
 arch=('i686' 'x86_64')
-url="https://github.com/srsbsns/libsrsirc"
+url="https://github.com/fstd/libsrsirc"
 license=('BSD')
 depends=(glibc)
 options=(!libtool)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/srsbsns/libsrsirc/raw/tar/libsrsirc-0.0.2.tar.gz?raw=true")
-sha256sums=('1f2148f9c12fdb8e157c896e5ee7d9b829f1a55952eca853a8117326f92b7926')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fstd/libsrsirc/raw/tar/libsrsirc-$pkgver.tar.gz?raw=true")
+sha256sums=('39c172ff7e0ce98a6711e1008277cbeab68e378552ec992f85b1488fd8503fad')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
