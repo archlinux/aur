@@ -1,6 +1,6 @@
 pkgbase = profile-sync-daemon-git
 	pkgdesc = Syncs browser profiles to tmpfs. Unstable git version!
-	pkgver = 6.02.r2.g5ebb90a.unstable
+	pkgver = 6.12.r2.gf49c743.unstable
 	pkgrel = 1
 	url = https://github.com/graysky2/profile-sync-daemon
 	install = psd.install

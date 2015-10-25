@@ -2,7 +2,7 @@
 
 pkgname='profile-sync-daemon-git'
 _pkgname='profile-sync-daemon'
-pkgver=6.02.r2.g5ebb90a.unstable
+pkgver=6.12.r2.gf49c743.unstable
 pkgrel=1
 pkgdesc='Syncs browser profiles to tmpfs. Unstable git version!'
 arch=('any')
