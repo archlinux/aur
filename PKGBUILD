@@ -10,7 +10,7 @@
 
 pkgname=flashplugin-focusfix
 _licensefile='PlatformClients_PC_WWEULA_Combined_20100108_1657.pdf'
-pkgver=11.2.202.550
+pkgver=11.2.202.540
 pkgrel=1
 pkgdesc='Adobe Flash Player with multi-monitor full-screen fix'
 url='http://get.adobe.com/flashplayer'
