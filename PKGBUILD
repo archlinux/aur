@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=r74.4edbbe7
-pkgrel=2
+pkgver=20151001
+pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
 url="https://github.com/ds26gte/tex2page"
@@ -17,7 +17,7 @@ _gitname="tex2page"
 
 pkgver() {
   cd "$_gitname"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
 }
 
 build() {
