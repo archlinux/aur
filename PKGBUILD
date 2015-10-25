@@ -41,16 +41,6 @@ _mesaver() {
 build() {
   cd ${srcdir}/mesa
   
-  sudo apt-get build-dep libgl1-mesa-dri
-git clone git://anongit.freedesktop.org/mesa/mesa
-./autogen.sh \
- --prefix=$HOME/prefix \
- --with-gallium-drivers=vc4 \
- --enable-gles1 \
- --enable-gles2 \
- --with-egl-platforms=x11,drm
-
-
   ./autogen.sh --prefix=/usr \
                --sysconfdir=/etc \
                --with-dri-driverdir=/usr/lib/xorg/modules/dri \
