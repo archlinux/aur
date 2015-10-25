@@ -1,6 +1,6 @@
 # Maintainer: Janosch Dobler <janosch.dobler@gmx.de>
 pkgname=pac_manage
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="pacman/yaourt helper - manage packages in a single file"
 arch=('x86_64')

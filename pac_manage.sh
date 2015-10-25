@@ -22,7 +22,7 @@ redrawProgressBar() { # int barsize, int base, int i, int top
     echo -n "] $(( $current )) / $top " $'\r'
 }
 addSection() {
-    local list=$1
+    local list=($1)
     local section=$2
     local comment=$3
     if [ -z "$comment" ]; then
@@ -30,8 +30,13 @@ addSection() {
     else
         echo "${section}=( # $comment" >> $LIST_FILE
     fi
-    for val in $list; do
-        echo $val >> $LIST_FILE
+    for i in "${!list[@]}"; do
+        redrawProgressBar 50 0 $i ${#list[@]}
+        local package=${list[i]}
+        local info=$(yaourt -Qe $package)
+        local repository=$(echo $info | cut -d' ' -f1 | cut -d/ -f1)
+        local group=$(echo $info | cut -d' ' -f3)
+        printf "%-30s # %-30s\n" "$package" "$repository $group" >> $LIST_FILE
     done
     echo ")" >> $LIST_FILE
 }
@@ -40,9 +45,9 @@ createInitialPackageList() {
     echo "# package-list for $0" > $LIST_FILE
     addSection "" "NEW_PACKAGES" "new packages will be added here"
     addSection "$(pacman -Qqen)" "NATIVE_PACKAGES"
-    addSection "$(yaourt -Qma | grep -v ^local | cut -d' ' -f1 | cut -d/ -f2)"\
+    addSection "$(yaourt -Qema | grep -v ^local | cut -d' ' -f1 | cut -d/ -f2)"\
         "AUR_PACKAGES"
-    addSection "$(yaourt -Qma | grep ^local | cut -d' ' -f1 | cut -d/ -f2)"\
+    addSection "$(yaourt -Qema | grep ^local | cut -d' ' -f1 | cut -d/ -f2)"\
         "LOCAL_PACKAGES" "true local packages, not from aur"
     echo " # vim: foldmethod=marker foldmarker=\=(,):" >> $LIST_FILE
 }
@@ -57,9 +62,11 @@ updatePackageList() {
 }
 filterList() {
     local comments='/^\s*#.*/d'
+    local inlinecomments='s/#.*$//'
     local syntax='/=(\|)/d'
-    for key in $(sed "$comments" $LIST_FILE | sed "$syntax"); do
-        echo $key
+    for package in $(sed -e "$comments" -e "$inlinecomments" -e "$syntax" \
+            $LIST_FILE); do
+        echo $package
     done
 }
 installMissing() {
