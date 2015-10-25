@@ -6,6 +6,7 @@ pkgbase = todotxt-git
 	arch = any
 	license = GPL
 	depends = bash
+	conflicts = todotxt
 	source = todotxt-git::git+https://github.com/albfan/todo.txt-cli
 	md5sums = SKIP
 
