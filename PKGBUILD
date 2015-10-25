@@ -50,7 +50,7 @@ build() {
   make
 
   # fake installation
-  mkdir $srcdir/fakeinstall
+  mkdir -p $srcdir/fakeinstall
   make DESTDIR=${srcdir}/fakeinstall install
 }
 
@@ -83,6 +83,7 @@ package_mesa-git-rbp() {
             'mesa-dri')
             
   cp -a ${srcdir}/fakeinstall/* ${pkgdir}/.
+  rm -rf ${pkgdir}/usr/lib/dri
 
   #install -m755 -d ${pkgdir}/etc
   #mv -v ${srcdir}/fakeinstall/etc/drirc ${pkgdir}/etc
@@ -111,6 +112,7 @@ package_mesa-libgl-git-rbp() {
   depends=("mesa=${pkgver}")
   provides=("mesa-libgl=${pkgver}" "libgl=${pkgver}")
   replaces=('mesa-libgl')
+  conflicts=('mesa-libgl')
  
   # See FS#26284
   install -m755 -d "${pkgdir}/usr/lib/xorg/modules/extensions"
