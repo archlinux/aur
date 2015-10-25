@@ -1,8 +1,8 @@
 # Maintainer: Alex Amadori <tacchinotacchi@gmail.com>
 
 pkgname=rtbth-dkms
-pkgver=3.9.4
-pkgrel=3
+pkgver=3.9.4.1
+pkgrel=1
 pkgdesc="rtbth Kernel module sources for Ralink RT3290 bluetooth"
 arch=('i686' 'x86_64')
 url='http://www.mediatek.com/'
@@ -13,7 +13,7 @@ optdepends=('bluez: Canonical implementation of bluetooth protocol'
 provides=('rtbth')
 install='rtbth-dkms.install'
 source=("https://github.com/f1u77y/rtbth-dkms-aur/archive/${pkgver}.tar.gz")
-sha256sums=('90224da440e15308d9ef25dcb765400b1471c75c5bb4905e8e6665dd81a571da')
+md5sums=('740a7aed7439cc4a94f8132bbd6e49eb')
 
 prepare() {
 cd ${srcdir}
