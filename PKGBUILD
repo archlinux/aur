@@ -13,7 +13,7 @@ pkgname=linux-lts310
 true && pkgname=(linux-lts310 linux-lts310-headers)
 _kernelname=-lts310
 _srcname=linux-3.10
-pkgver=3.10.90
+pkgver=3.10.91
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org"
@@ -31,7 +31,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'criu-no-expert.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
-            'dbc5e7fab6d1d0cd44eacd7a69c1802f29a4863f47959c3bdc4b56b9e79b7dbe'
+            '1609879037b337b42f8ab675246f2cc4a43238956cebfb09fe21be4398df1f24'
             'SKIP'
             'd7fada52453d12a24af9634024c36792697f97ce0bc6552939cd7b2344d00cd9'
             'abd98bed3e743ba60809fe54a1a5c6b46b9f401844b0beef8da1708b1fe8196b'
@@ -120,6 +120,7 @@ package_linux-lts310() {
   optdepends=('crda: to set the correct wireless channels of your country' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
   backup=("etc/mkinitcpio.d/linux-lts310.preset")
   install=linux-lts310.install
+  groups=('lts-31x')
 
   cd "${_srcname}"
 
@@ -180,6 +181,7 @@ package_linux-lts310-headers() {
   #_Hpkgdesc='Header files and scripts to build modules for linux-lts310.'
   #pkgdesc="${_Hpkgdesc}"
   depends=('linux-lts310') # added to keep kernel and headers packages matched
+  groups=('lts-31x')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
