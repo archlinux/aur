@@ -1,0 +1,15 @@
+diff -u -r a/macrofusion.py b/macrofusion.py
+--- a/macrofusion.py	2015-10-25 12:50:10.678720912 +0100
++++ b/macrofusion.py	2015-10-25 12:50:56.232888991 +0100
+@@ -17,6 +17,11 @@
+     import operator
+     import cairo
+     import random
++    
++    import gi
++    gi.require_version('Gdk', '3.0')
++    gi.require_version('Gtk', '3.0')
++    gi.require_version('GExiv2', '0.10')
+     from gi.repository import Gdk, Gtk, GObject, GdkPixbuf, GExiv2
+ except:    
+     print('An error occured. Python or one of its sub modules is absent...\nIt would be wise to check your python installation.')

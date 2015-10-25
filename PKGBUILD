@@ -7,15 +7,32 @@
 
 pkgname=macrofusion
 pkgver=0.7.4
-pkgrel=4
+pkgrel=5
 pkgdesc="GUI to combine photos to get deeper DOF or HDR"
 url="http://sourceforge.net/projects/macrofusion/"
 depends=('python-cairo' 'python-gobject' 'python-pillow' 'perl-image-exiftool' 'enblend-enfuse' 'hugin' 'libgexiv2')
 arch=('any')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}_${pkgver}.orig.tar.gz")
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}_${pkgver}.orig.tar.gz"
+        "01-specify-gi-versions.patch"
+        "02-use-frombytes.patch")
 license=('GPL')
 install=$pkgname.install
-sha256sums=('2d061f0a2e858c86ae700351cf9785bc7058938e02ce6fcf40b192fbb0b60b11')
+sha256sums=('2d061f0a2e858c86ae700351cf9785bc7058938e02ce6fcf40b192fbb0b60b11'
+            '7eb5ef4c3c3a86a5457d0b5aaef31318ab4101f720b7c79f4cdba770634db934'
+            '73b11f7dee7f7002f6cf6bbd4c94e39ee255dbbbdaf29850d522347e28f79e6f')
+
+prepare() {
+    cd ${srcdir}/${pkgname}-${pkgver}
+
+    # Add version specification to certain gi modules. When they are missing
+    # this leads to warnings, or in some cases even to import errors.
+    patch -p1 < ${srcdir}/01-specify-gi-versions.patch
+
+    # Replace Image.fromstring with Image.frombytes to work with newer versions
+    # of python-pillow. fromstring was deprecated for a long time and was only
+    # an alias for fromstring anyway.
+    patch -p1 < ${srcdir}/02-use-frombytes.patch
+}
 
 package() {
     # Installation is a bit tricky. See README and parts of the python script to see
