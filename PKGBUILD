@@ -17,6 +17,6 @@ license="GPL"
 package() {
   cd $srcdir/$pkgname
   make
-  make install CONFIG_DIR=$pkgdir/etc INSTALL_DIR=$pkgdir/usr/bin BASH_COMPLETION_DIR=/usr/share/bash-completion/completions
+  make install CONFIG_DIR=$pkgdir/etc INSTALL_DIR=$pkgdir/usr/bin BASH_COMPLETION_DIR=$pkgdir/usr/share/bash-completion/completions
   make test
 }
