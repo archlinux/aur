@@ -5,7 +5,7 @@ pkgname=gogs-git-dev
 _pkgname=gogs
 _branch=develop
 pkgver=2959.379629d
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -17,7 +17,8 @@ optdepends=('sqlite: SQLite support'
             'postgresql: PostgreSQL support'
             'redis: Redis support'
             'memcached: MemCached support'
-            'openssh: GIT over SSH support')
+            'openssh: GIT over SSH support'
+            'tidb-git: TiDB support')
 makedepends=('go>=1.2' 'git>=1.7.1' 'patch')
 conflicts=('gogs-bin' 'gogs' 'gogs-git')
 options=('!strip' '!emptydirs')
