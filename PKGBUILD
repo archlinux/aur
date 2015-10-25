@@ -4,7 +4,7 @@
 
 pkgdesc="Standalone systemd libs (including -compat)"
 pkgname=( 'libsystemd-standalone' 'libsystemd-login' 'libsystemd-journal' 'libsystemd-id128' 'libsystemd-daemon' 'libsystemd-udev' )
-pkgver=226
+pkgver=227
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -30,7 +30,7 @@ package_libsystemd-standalone() {
 
   cd "$srcdir/systemd-${pkgver}"
   install -Dm644 .libs/libsystemd.so.0.11.0 "${pkgdir}/usr/lib/libsystemd.so.0.8.0"
-  ln -s libsystemd.so.0.10.1 "${pkgdir}/usr/lib/libsystemd.so"
+  ln -s libsystemd.so.0.11.0 "${pkgdir}/usr/lib/libsystemd.so"
 
   # Headers
   install -Dm644 src/systemd/_sd-common.h "${pkgdir}/usr/include/systemd/_sd-common.h"
