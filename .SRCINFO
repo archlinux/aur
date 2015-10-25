@@ -17,7 +17,7 @@ pkgbase = weston-rbp
 	depends = colord
 	provides = weston
 	replaces = weston
-	source = http://wayland.freedesktop.org/releases/weston-rbp-1.9.0.tar.xz
+	source = http://wayland.freedesktop.org/releases/weston-1.9.0.tar.xz
 	sha1sums = 94b70baca9a6ba007c696b740a711586f9dc274f
 
 pkgname = weston-rbp

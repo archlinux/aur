@@ -14,10 +14,11 @@ replaces=('weston')
 url='http://wayland.freedesktop.org'
 license=('MIT')
 depends=('libxkbcommon' 'libinput' 'libunwind' 'poppler-glib' 'mtdev' 'libxcursor' 'glu' 'pango' 'colord')
-source=("http://wayland.freedesktop.org/releases/$pkgname-$pkgver.tar.xz")
+source=("http://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz")
 sha1sums=('94b70baca9a6ba007c696b740a711586f9dc274f')
 
 build() {
+	cd weston-$pkgver
 	export RPI_BCM_HOST_LIBS="-L/opt/vc/lib"
 	export RPI_BCM_HOST_CFLAGS="-I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux"
 	export WESTON_NATIVE_BACKEND="rpi-backend.so"
@@ -33,8 +34,8 @@ build() {
 }
 
 package() {
-	cd $pkgname-$pkgver
+	cd weston-$pkgver
 	make DESTDIR="$pkgdir" install
 	# license
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/weston/COPYING"
 }
