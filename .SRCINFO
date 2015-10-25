@@ -1,0 +1,19 @@
+pkgbase = eltclsh
+	pkgdesc = eltclsh (editline tcl shell) is an interactive shell for the TCL programming language
+	pkgver = 1.15
+	pkgrel = 1
+	url = http://homepages.laas.fr/mallet/soft/shell/eltclsh
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = make
+	makedepends = gcc
+	depends = tcl
+	depends = tk
+	depends = libedit
+	source = http://distfiles.openrobots.org/eltclsh/eltclsh-1.15.tar.gz
+	md5sums = 17f1f16ac44dff76a451fe62d8f4f8fd
+
+pkgname = eltclsh
+
