@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-preview-bin
 pkgver=0.99.732
-pkgrel=1
+pkgrel=2
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -76,9 +76,11 @@ exec /usr/lib/rstudio/bin/rstudio
    cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
    mv pandoc pandoc_rstudio
    # ln -sf /usr/bin/pandoc pandoc
-   ln -s $SYS_PANDOC /usr/lib/rstudio/bin/pandoc/pandoc
+   # ln -sf $SYS_PANDOC pandoc
+   ln -sf $SYS_PANDOC $pkgdir/usr/lib/rstudio/bin/pandoc/pandoc
    mv pandoc-citeproc pandoc-citeproc_rstudio
    # ln -sf /usr/bin/pandoc-citeproc pandoc-citeproc
-   ln -s $SYS_PANDOC_CITEPROC /usr/lib/rstudio/bin/pandoc/pandoc-citeproc
+   # ln -sf $SYS_PANDOC_CITEPROC pandoc-citeproc
+   ln -sf $SYS_PANDOC_CITEPROC $pkgdir/usr/lib/rstudio/bin/pandoc/pandoc-citeproc
 }
 # vim:ft=sh tabstop=2 expandtab
