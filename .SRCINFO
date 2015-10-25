@@ -1,14 +1,14 @@
 pkgbase = qsp-bin
 	pkgdesc = Quest Soft Player is another interactive fiction player (only for qsp format)
 	pkgver = 5.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://qsp.su/
 	install = qsp-gui.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	depends = libjpeg6
+	depends = libjpeg6-turbo
 	depends = libpng12
 	depends = gtk2
 	depends = cairo
@@ -18,11 +18,11 @@ pkgbase = qsp-bin
 	source = qsp-qui.sh
 	source = qsp-gui.desktop
 	source = qsp.mime
-	sha256sums = fabd48411d59d18b9c663a96490316634c5ef9bdf4208f559c952f9581299dda
+	sha256sums = 0d1f22209fd0ab39c64b8834634f599de16ac96cb03b30ab385ce57a5eb6022f
 	sha256sums = 12de4d6a91bdc09d334585b04dbb3d2e9ae7277f0274090b9f73c812d414e5dc
 	sha256sums = ce1ebd984d333cf6ea052875c3c7573ad3837474859eb8a58c29466c9f549255
 	sha256sums = d2a84ebbc0d2c40200781791f2a8a10d126bf93b053532377b872c3d723bc130
-	sha256sums = b68fd7e3cfb840a5ba6958a691cd5f360b3d9181995e27ded46182d63343c1f3
+	sha256sums = 02fe02b6464e7eb116bc81faba2db365d928cffd34fb4803e38b02b73407ad77
 
 pkgname = qsp-bin
 

@@ -1,12 +1,12 @@
 # Maintainer: 3ED <krzysztof1987@gmail.com>
 pkgname=qsp-bin
 pkgver=5.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Quest Soft Player is another interactive fiction player (only for qsp format)"
 arch=('i686' 'x86_64')
 url="http://qsp.su/"
 license=('GPL' 'LGPL')
-depends=('libjpeg6' 'libpng12' 'gtk2' 'cairo' 'libsm')
+depends=('libjpeg6-turbo' 'libpng12' 'gtk2' 'cairo' 'libsm')
 install=qsp-gui.install
 _tarname="qsp${pkgver//\./}"
 
@@ -17,11 +17,11 @@ source=("http://qsp.su/attachments/${_tarname}.tar.bz2"
         "qsp-qui.sh"
         "qsp-gui.desktop"
         "qsp.mime")
-sha256sums=('fabd48411d59d18b9c663a96490316634c5ef9bdf4208f559c952f9581299dda'
+sha256sums=('0d1f22209fd0ab39c64b8834634f599de16ac96cb03b30ab385ce57a5eb6022f'
             '12de4d6a91bdc09d334585b04dbb3d2e9ae7277f0274090b9f73c812d414e5dc'
             'ce1ebd984d333cf6ea052875c3c7573ad3837474859eb8a58c29466c9f549255'
             'd2a84ebbc0d2c40200781791f2a8a10d126bf93b053532377b872c3d723bc130'
-            'b68fd7e3cfb840a5ba6958a691cd5f360b3d9181995e27ded46182d63343c1f3')
+            '02fe02b6464e7eb116bc81faba2db365d928cffd34fb4803e38b02b73407ad77')
 
 [ "$CARCH" = "x86_64" ] && sha256sums[0]='0d1f22209fd0ab39c64b8834634f599de16ac96cb03b30ab385ce57a5eb6022f'
 
