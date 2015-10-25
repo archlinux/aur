@@ -1,7 +1,7 @@
 # Maintainer: Kristóf Jakab <jaksi@jaksi.io>
 pkgname=libzorpll
 pkgver=6.0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Low level library functions for Zorp"
 arch=('x86_64')
 url="https://github.com/balabit/libzorpll"
@@ -12,7 +12,7 @@ md5sums=('6a382bf03ed3b6a88651e184031918c0')
 
 build() {
 	cd "$srcdir/libzorpll-6.0.6.0"
-	autoreconf -i
+	./autogen.sh
 	./configure --prefix=/usr --libexecdir=/usr/lib/libzorpll
 	make
 }
