@@ -2,7 +2,7 @@
 # Contributor: Martin Kostolný <clearmartin at zoho dot com>
 
 pkgname=plasma5-applets-weather-widget
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Plasma 5 applet for displaying weather information from yr.no server"
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(plasma-workspace qt5-graphicaleffects)
 makedepends=(extra-cmake-modules)
 source=("https://github.com/kotelnik/plasma-applet-weather-widget/archive/v$pkgver.tar.gz")
-md5sums=('aa37bea0f2bf2131174675d4e1b04418')
+md5sums=('4f13a6c37297b58c42e23117eec49c84')
 
 prepare() {
   mkdir -p build

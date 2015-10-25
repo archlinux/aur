@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-weather-widget
 	pkgdesc = Plasma 5 applet for displaying weather information from yr.no server
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = http://kde-apps.org/content/show.php/Weather+Widget?content=169572
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = plasma5-applets-weather-widget
 	makedepends = extra-cmake-modules
 	depends = plasma-workspace
 	depends = qt5-graphicaleffects
-	source = https://github.com/kotelnik/plasma-applet-weather-widget/archive/v1.5.0.tar.gz
-	md5sums = aa37bea0f2bf2131174675d4e1b04418
+	source = https://github.com/kotelnik/plasma-applet-weather-widget/archive/v1.5.1.tar.gz
+	md5sums = 4f13a6c37297b58c42e23117eec49c84
 
 pkgname = plasma5-applets-weather-widget
 
