@@ -17,7 +17,6 @@ md5sums=('SKIP')
 pkgver () {
   cd ${_gitname}
   printf "0.11.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
- #git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package_python2-guessit-git() {
