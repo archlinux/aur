@@ -1,13 +1,13 @@
 # Contributor: Anton Leontiev <unsector /at/ km.ru>
 pkgname=lasercalc-git
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to calculate optical paths and resonators based on Gaussian beam matrix optics'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/apps/phpwebsite/lasercalc/'
 license=('GPL3')
-depends=('wxgtk')
-makedepends=('wxgtk')
+depends=('wxgtk' 'webkitgtk2')
+makedepends=('wxgtk' 'webkitgtk2')
 conflicts=('lasercalc')
 install=$pkgname.install
 source=("git+git://git.code.sf.net/p/lasercalc/code"
