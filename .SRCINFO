@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-libuecc
+	pkgdesc = Very small Elliptic Curve Cryptography library (mingw-w64)
+	pkgver = 4
+	pkgrel = 1
+	url = http://git.universe-factory.net/libuecc
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://git.universe-factory.net/libuecc/snapshot/libuecc-4.tar
+	md5sums = 81aa8c98442c3d93758fd62c8a9368b3
+
+pkgname = mingw-w64-libuecc
+
