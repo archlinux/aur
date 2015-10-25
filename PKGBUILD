@@ -2,7 +2,7 @@
 _name=schedule
 pkgname=python-schedule
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python job scheduling for humans.'
 arch=('any')
 url="https://github.com/dbader/$_name"
