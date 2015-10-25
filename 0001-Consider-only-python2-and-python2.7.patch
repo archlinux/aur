@@ -1,0 +1,25 @@
+From dfeff2f829ce268d9b234c14c8b1bead8d746d18 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Krist=C3=B3f=20Jakab?= <jaksi@jaksi.io>
+Date: Mon, 21 Sep 2015 15:46:09 +0200
+Subject: [PATCH] Consider only python2 and python2.7
+
+---
+ configure.ac | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 73a5fb5..a529ed2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,6 +32,8 @@ OPENSSL_MIN_VERSION="1.0.1"
+ PYTHON_MIN_VERSION="2.7"
+ PYTHON_MAX_VERSION="2.8"
+ 
++m4_define_default([_AM_PYTHON_INTERPRETER_LIST], [python2 python2.7])
++
+ dnl ***************************************************************************
+ dnl Initial setup
+ 
+-- 
+2.5.3
+

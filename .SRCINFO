@@ -1,0 +1,17 @@
+pkgbase = zorp
+	pkgdesc = A new generation proxy firewall suite
+	pkgver = 6.0.7
+	pkgrel = 1
+	url = https://github.com/balabit/zorp
+	arch = x86_64
+	license = GPL2
+	makedepends = gperf
+	depends = libzorpll
+	depends = python2
+	source = https://github.com/balabit/zorp/archive/v6.0.7.tar.gz
+	source = 0001-Consider-only-python2-and-python2.7.patch
+	md5sums = 0f1a27596935244efc6d43cd1285fb8c
+	md5sums = f9b828ed00f5c2e8e71ae9f965736e2b
+
+pkgname = zorp
+
