@@ -53,7 +53,7 @@ pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.2
 pkgver=4.2.4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -440,8 +440,8 @@ sha512sums=('a87bbce3c0c6d810a41bbba1c0dcaae80dc38dded9f8571e97fa4ee5a468d655daf
             '76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc'
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            'f8fedf212f655b4241c9aa4b1161b55ef8f67754b278b46714767819206286d6cee3425268df92aa05cd699b01cc4df72266cc7ba5af7da2986bbdef91c90993'
-            'b778ce82f1a8b99b883e802136dc8d3248197198f777e4f96cb1e1ea0990250d88141771f6e6e0139e034e63856f0ae82ef5e470eab64e368278e54fb6e62930')
+            '6742ccd51c5e87d4b36143c5df62f02e069a4810827d7cc830aea355cf377ba9e24a3e07e875acfd1c0e01171dc8119eed0c4e5c3b51cb82f0ac9aaaccdee69a'
+            '7fdfca5c0fe0901fe285f5da124851ddf4d6eb188128bda56269afb2e26bb7ee329bfc8606d3684fc1a7c6a9a60136bb98e7e86bdd41aaed8b483f98abcaf7d9')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
