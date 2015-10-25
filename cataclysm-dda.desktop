@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cataclysm: Dark Days Ahead
+Keywords=zombie;rogue;roguelike;tiles;dda;
+Exec=cataclysm-tiles
+Icon=cataclysm-dda
+Type=Application
+Categories=Game;
+
