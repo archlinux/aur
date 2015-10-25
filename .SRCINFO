@@ -1,9 +1,8 @@
 pkgbase = gnome-xcf-thumbnailer
 	pkgdesc = GNOME thumbnailer for GIMP XCF files.
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://packages.debian.org/sid/gnome-xcf-thumbnailer
-	install = gnome-xcf-thumbnailer.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
