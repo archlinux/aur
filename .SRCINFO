@@ -1,0 +1,31 @@
+pkgbase = butter-git
+	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
+	pkgver = r5479.150b1b9
+	pkgrel = 1
+	url = https://butterproject.github.io/
+	install = butter.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs-grunt-cli
+	makedepends = bower
+	makedepends = npm
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = nss
+	depends = ttf-font
+	depends = libxtst
+	provides = butter
+	conflicts = butter
+	options = !strip
+	source = butter.install
+	source = git+https://github.com/butterproject/butter.git
+	source = butter.desktop
+	md5sums = 78dc3a0a3bd1dc75ea5bd8704ab1068d
+	md5sums = SKIP
+	md5sums = 280e34e43de9356edf68cc7d17aab99b
+
+pkgname = butter-git
+

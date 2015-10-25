@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Butter
+Comment=Watch Movies and TV Shows instantly
+Exec=butter %U
+Icon=butter
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+StartupNotify=false
+Categories=AudioVideo;Video;Network;Player;P2P;
+Type=Application
