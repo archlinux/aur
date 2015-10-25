@@ -23,7 +23,7 @@ install="butter.install"
 source=("butter.install"
         "git+https://github.com/butterproject/butter.git"
         "butter.desktop")
-md5sums=('78dc3a0a3bd1dc75ea5bd8704ab1068d'
+md5sums=('81fa4aa5add54d77c1819f6493fec64a'
          'SKIP'
          'a16045882b270fb726de5d03c24626b4')
 
