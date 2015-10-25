@@ -3,7 +3,7 @@
 echo 24 > /sys/class/gpio/export
 echo in > /sys/class/gpio/gpio24/direction
 
-trap "{ echo 24 > /sys/class/gpio/unexport; exit 0; }" TERM
+trap "{ echo 24 > /sys/class/gpio/unexport; exit 0; }" TERM EXIT
 
 while [ true ]
 do
