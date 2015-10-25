@@ -57,7 +57,7 @@ package() {
 
   # Program
   install -Dm755 "$_bpath/Butter" "$pkgdir/usr/lib/butter/"
-  install -Dm644 "$_bpath/{nw.pak,libffmpegsumo.so,icudtl.dat}" "$pkgdir/usr/lib/butter/"
+  install -Dm644 "$_bpath/"{nw.pak,libffmpegsumo.so,icudtl.dat} "$pkgdir/usr/lib/butter/"
 
   # Link to program
   mkdir -p "$pkgdir/usr/bin"
