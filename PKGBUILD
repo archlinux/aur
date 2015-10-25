@@ -9,6 +9,7 @@ pkgdesc="lifehacker.com's todo.sh script for maintaining a todo.txt file"
 url="http://ginatrapani.github.com/todo.txt-cli/"
 depends=('bash')
 conflicts=('todotxt')
+install=todotxt.install
 source=("${pkgname}"::git+https://github.com/albfan/todo.txt-cli)
 md5sums=('SKIP')
 arch=('any')

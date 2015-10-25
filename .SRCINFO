@@ -3,6 +3,7 @@ pkgbase = todotxt-git
 	pkgver = 2.10
 	pkgrel = 2
 	url = http://ginatrapani.github.com/todo.txt-cli/
+	install = todotxt.install
 	arch = any
 	license = GPL
 	depends = bash

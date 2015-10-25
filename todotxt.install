@@ -1,0 +1,18 @@
+suggestion() {
+   cat <<-EOF
+
+		Suggestion: Add this to your rc config
+
+		   alias todo=todo.sh
+		   complete -F _todo todo
+
+	EOF
+}
+
+post_install() {
+   suggestion
+}
+
+post_upgrade() {
+   suggestion
+}
