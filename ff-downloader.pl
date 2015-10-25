@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# ff-downloader v0.6.0.0
+# ff-downloader v0.6.0.1
 ## Copyright 2011-15 Simone Sclavi 'Ito'
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ use Switch 'Perl6';
 use feature 'say';
 use Getopt::Long qw(:config no_ignore_case);
 use LWP;
-use Digest::MD5;
+use Digest::SHA;
 use File::Slurp;
 use Env 'HOME';
 
@@ -287,29 +287,29 @@ $ff_cdn_url->path($ff_path);
 ##Downloading firefox##
 get_url( $ff_cdn_url, $ff_bz2 ) or die qq(:: ERROR - can't download $ff_bz2\n);
 
-##downloading md5sums##
-$ff_url->path("${ff_basepath}/MD5SUMS");
-get_url( $ff_url, 'MD5SUMS' ) or die qq(:: ERROR - can't download MD5SUMS\n);
+##downloading sha512sums##
+$ff_url->path("${ff_basepath}/SHA512SUMS");
+get_url( $ff_url, 'SHA512SUMS' ) or die qq(:: ERROR - can't download SHA512SUMS\n);
 
-## calculating & comparing md5 digest
-print ':: verifying MD5 checksum ... ';
+## calculating & comparing sha512 digest
+print ':: verifying sha512 checksum ... ';
 
-my @md5_file = read_file('MD5SUMS');
+my @sha512_file = read_file('SHA512SUMS');
 my $search_string = "linux-${ARCH}/${LANG}/${ff_bz2}";
-my $md5s;
-for (@md5_file)
+my $sha512s;
+for (@sha512_file)
 {
     if ($_ =~ /([a-z0-9]+)\s{2}[\.\/]*$search_string/)
     {
-        $md5s= $1;
+        $sha512s= $1;
         last;
     }
 }
-die qq{:: ERROR - can't find a valid MD5 checksum in file 'MD5SUMS'!\n} unless $md5s;
+die qq{:: ERROR - can't find a valid SHA512 checksum in file 'SHA512SUMS'!\n} unless $sha512s;
 
 open(FILE, $ff_bz2) or die qq{:: ERROR - can't open "$ff_bz2": $!};
 binmode(FILE);
-my $digest = Digest::MD5->new->addfile(*FILE)->hexdigest;
+my $digest = Digest::SHA->new(512)->addfile(*FILE)->hexdigest;
 close(FILE);
 
-( $digest eq $md5s ) ? say 'DONE' : do {say 'FAILED'; exit 1};
+( $digest eq $sha512s ) ? say 'DONE' : do {say 'FAILED'; exit 1};
