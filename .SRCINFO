@@ -1,0 +1,17 @@
+pkgbase = xrq-git
+	pkgdesc = Queries the X Resource Database
+	pkgver = 8
+	pkgrel = 1
+	url = https://github.com/arianon/xrq
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = libx11
+	provides = xrq
+	conflicts = xrq
+	source = git+https://github.com/arianon/xrq.git
+	md5sums = SKIP
+
+pkgname = xrq-git
+
