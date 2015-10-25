@@ -2,7 +2,7 @@
 # Contributor: Lukas Grossar <lukas dot grossar at gmail dot com>
 
 pkgname=moneydance
-pkgver=2015.1225
+pkgver=2015.1299
 pkgrel=1
 epoch=
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
@@ -28,9 +28,9 @@ source_i686+=(http://infinitekind.com/stabledl/2015/Moneydance_linux_x86.tar.gz)
 source_x86_64+=(http://infinitekind.com/stabledl/2015/Moneydance_linux_amd64.tar.gz)
 sha256sums=('9c45324e6929c3ef52d195cfbbc6014e666b2f34a1be03c0bd81cd50b44cd89a'
             '4e48af0efb968910304767fe0bbab733aaa7b15f4d05b6a82c9fdac78351776f'
-            'f39131137deca1d07d773c60691a7cd2364032abb72d43a35eaaf92ed7032962')
-sha256sums_i686=('e18866d3095edd311514794e14245ac2b1e2445deeaeff14db0dca3874d98af3')
-sha256sums_x86_64=('d879cfc4d0867e165ecc9273d1ce17efa0a83b7c96c972c7d738812b2bb09ef3')
+            'c89b4a16381b42a036aca634c38e21f83558730dbce9a166b355bbb5f6aef3c3')
+sha256sums_i686=('b7f5b8463096b5a014a668259b303bd60ca0096328623eae4cc3515b9ceaabc8')
+sha256sums_x86_64=('9a605834621cac00042e53a800747aa8d586464357cf40f2dd462f8553eee625')
 
 package() {
   # generate directories in $pkgdir
