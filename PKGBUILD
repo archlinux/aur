@@ -6,7 +6,7 @@ _numixicons=
 pkgname=octopi-git
 _pkgname=octopi
 pkgver=0.8.0.r993.28ce670
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
 arch=('i686' 'x86_64')
@@ -35,11 +35,13 @@ source=("$_gitname::$_gitroot"
         octopi_green_numix.png
         octopi_red_numix.png
         octopi_yellow_numix.png
+	octopi_transparent_numix.png
         winicon.patch)
 md5sums=('SKIP'
-         'e74aecc0a53fc0ea5d631df36f87bae3'
-         '0bb05ef48589ac17b612256d8269f186'
-         '0b933fe68011964a6e02e071f73d6868'
+         '722f6b5f44661a1c97070b7775311fed'
+         '96e3d342c19515b752b10322737f249f'
+         'a0e53f3ee4bd1830a46cc305b720200b'
+         'c71b9f9d80333d359f5a11e22446c5d0'
          '84388e82f3088ccbca0b5392f864ea90')
 
 pkgver() {
@@ -54,6 +56,7 @@ prepare() {
       cp -f ${srcdir}/octopi_green_numix.png ${srcdir}/$_gitname/resources/images/octopi_green.png
       cp -f ${srcdir}/octopi_red_numix.png ${srcdir}/$_gitname/resources/images/octopi_red.png
       cp -f ${srcdir}/octopi_yellow_numix.png ${srcdir}/$_gitname/resources/images/octopi_yellow.png
+      cp -f ${srcdir}/octopi_transparent_numix.png ${srcdir}/$_gitname/resources/images/octopi_transparent.png
   fi
 }
 
