@@ -1,8 +1,8 @@
-# Maintainer:   Nascher <kevin at nascher dot org>
+# Maintainer:   Nascher <kevin@nascher.org>
 # Contributor:  Menche <menche_mt at yahoo dot com>
 
 pkgname=voxelands
-pkgver=1508.01
+pkgver=1510.00
 pkgrel=1
 pkgdesc="A fork of Minetest, an Infiniminer/Minecraft inspired game"
 url="http://voxelands.com"
@@ -17,16 +17,17 @@ install="${pkgname}.install"
 
 source=("http://voxelands.com/downloads/${pkgname}-${pkgver}-src.tar.bz2")
 
-sha256sums=('d930098b0f0dc50aa6a36b274d8a9b9c0538e4e91a441b785882956eed8a969e')
+sha256sums=('4240d82cc76a39f8524e1a64c3f5dd701ff3f5d62b33e4e773f03f3bb35727de')
 
 build() {
-	cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS_RELEASE=-DNDEBUG -DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG	
-	make
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+          -DRUN_IN_PLACE=0
+  make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
