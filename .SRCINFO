@@ -1,16 +1,15 @@
 pkgbase = emacs-dash
 	pkgdesc = A modern list API for Emacs
-	pkgver = 2.10.0
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://github.com/magnars/dash.el
+	install = emacs-dash.install
 	arch = any
 	license = GPL
 	makedepends = emacs
 	depends = emacs
-	source = https://github.com/magnars/dash.el/archive/2.10.0.tar.gz
-	source = https://github.com/magnars/dash.el/commit/dab0d1c.patch
-	sha256sums = cf94c9b8b4ef951aebf068172f139d511d71520569c361db73877808981f05fe
-	sha256sums = e5845b5025e7d7b4d6dfd4619ff3d76c8ec01424b90ab86743baf168d93ec239
+	source = emacs-dash-2.12.1.tar.gz::https://github.com/magnars/dash.el/archive/2.12.1.tar.gz
+	sha256sums = 41460193aa74787b247b09ad7cae696016110abba2a922ef1a067472eba15220
 
 pkgname = emacs-dash
 
