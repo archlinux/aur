@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=arm-frc-linux-gnueabi-wpilib-git
-pkgver=1099.f0e3bb5
+pkgver=1175.97a7716
 pkgrel=1
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
@@ -12,12 +12,19 @@ groups=('frc-2015')
 depends=('arm-frc-linux-gnueabi-gcc')
 makedepends=('git' 'java-environment' 'doxygen')
 options=('!strip' 'libtool' 'staticlibs' '!emptydirs')
-source=("git+https://usfirst.collab.net/gerrit/allwpilib")
-sha512sums=('SKIP')
+source=("git+https://usfirst.collab.net/gerrit/allwpilib"
+        "git+git://github.com/PeterJohnson/ntcore")
+sha512sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd allwpilib
   echo $(git rev-list --count master).$(git rev-parse --short master)
+}
+
+prepare() {
+  cd "$srcdir/allwpilib"
+  git submodule update --init --recursive
 }
 
 build() {
