@@ -2,17 +2,19 @@
 pkgname=ifcopenshell
 pkgver=0.4.0
 pkgrel=2
-pkgdesc="Open source IFC library and geometry engine. Provides static library and python3 wrapper."
+pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 url="http://ifcopenshell.org/"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('opencascade' 'opencollada' 'boost-libs>=1.58.0' 'python2' 'python')
+depends=('opencascade' 'opencollada' 'boost-libs>=1.58.0' 'python')
 optdepends=()
 makedepends=('cmake' 'boost>=1.58.0' 'swig')
 conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/v${pkgver}.tar.gz" "boost-1.58.patch")
+
+_blenderver=2.76
 
 prepare(){
   cd "${srcdir}/IfcOpenShell-${pkgver}"
@@ -41,6 +43,10 @@ package() {
 
   cd "${srcdir}/IfcOpenShell-${pkgver}"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+
+  mkdir -p "${pkgdir}"/usr/share/blender/${_blenderver}/scripts/addons_contrib
+  cp -rf "${srcdir}"/IfcOpenShell-${pkgver}/src/ifcblender/* "${pkgdir}"/usr/share/blender/${_blenderver}/scripts/addons_contrib
+  cp -f "${srcdir}"/IfcOpenShell-${pkgver}/build/ifcwrap/*IfcImport* "${pkgdir}"/usr/share/blender/${_blenderver}/scripts/addons_contrib/io_import_scene_ifc/
 }
 
 md5sums=('12bbb9726d8012cf88222f5921a767c3'

@@ -1,5 +1,5 @@
 pkgbase = ifcopenshell
-	pkgdesc = Open source IFC library and geometry engine. Provides static library and python3 wrapper.
+	pkgdesc = Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon.
 	pkgver = 0.4.0
 	pkgrel = 2
 	url = http://ifcopenshell.org/
@@ -12,7 +12,6 @@ pkgbase = ifcopenshell
 	depends = opencascade
 	depends = opencollada
 	depends = boost-libs>=1.58.0
-	depends = python2
 	depends = python
 	source = https://github.com/IfcOpenShell/IfcOpenShell/archive/v0.4.0.tar.gz
 	source = boost-1.58.patch
