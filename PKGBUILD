@@ -1,14 +1,16 @@
-# Maintainer: Bastien Dejean <baskerville@lavabit.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.com>
+# Contributor: Bastien Dejean <baskerville@lavabit.com>
 
 _pkgname=sutils
 pkgname=${_pkgname}-git
-pkgver=25
+pkgver=27
 pkgrel=1
 pkgdesc='Small command-line utilities'
 arch=('i686' 'x86_64')
 url="https://github.com/baskerville/${_pkgname}"
 license=('custom:Unlicense')
 makedepends=('git')
+optdepends=('alsa-lib: for volume utility')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git://github.com/baskerville/${_pkgname}.git")
