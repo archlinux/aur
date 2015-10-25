@@ -1,0 +1,11 @@
+*
+!.gitignore
+!app_ini.patch
+!app_old.ini
+!gogs.changelog
+!gogs.install
+!gogs.service
+!helper.sh
+!PKGBUILD
+!README.md
+!.SRCINFO
