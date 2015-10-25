@@ -1,13 +1,13 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=x-highlight-region-git
 _gitname=x-highlight-region
-pkgver=0.1.0.0.r0.gf8666c3
+pkgver=0.1.0.0.r2.gd6e3221
 pkgrel=1
 pkgdesc="Dims everything but a selected region of the screen."
 arch=(any)
 url=https://github.com/eigengrau/x-highlight-region
 license=(GPL)
-depends=(python-gobject python3-keybinder gtk3)
+depends=(python-gobject python3-keybinder gtk3 python-cairo)
 makedepends=(git)
 provides=(x-highlight-region)
 conflicts=(x-highlight-region)
