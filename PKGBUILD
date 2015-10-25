@@ -4,7 +4,7 @@
 _pkgbase=pygobject
 pkgbase=pygobject-patched
 pkgname=(python-gobject-patched python2-gobject-patched)
-pkgver=3.18.0
+pkgver=3.18.2
 pkgrel=1
 arch=(i686 x86_64)
 url="https://live.gnome.org/PyGObject"
@@ -12,13 +12,12 @@ license=(LGPL)
 makedepends=(python python2 python-cairo python2-cairo gobject-introspection gnome-common)
 source=("http://ftp.gnome.org/pub/gnome/sources/${_pkgbase}/${pkgver:0:4}/${_pkgbase}-$pkgver.tar.xz"
 		"01_cairo_region.patch")
-sha256sums=('1c3ba1112d3713cd5c86260312bfeb0de1f84f18808e51072c50b29d46156dc9'
+sha256sums=('2a3cad1517916b74e131e6002c3824361aee0671ffb0d55ded119477fc1c2c5f'
             '194fc7946beb01d02a3fba587a214f2f38da56e3b63ecc9b7de37da210488919')
 
 prepare() {
   mkdir -p build-py2 build-py3
   cd ${_pkgbase}-${pkgver}
-  sed -i '/Werror=format/d' configure # gcc 4.8
   patch -Np1 -i "$srcdir/01_cairo_region.patch"
 }
 
@@ -28,7 +27,7 @@ build() {
   make
 
   cd ../build-py3
-  ../${_pkgbase}-${pkgver}/configure --prefix=/usr
+  ../${_pkgbase}-${pkgver}/configure --prefix=/usr --with-python=/usr/bin/python
   make
 }
 

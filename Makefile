@@ -1,4 +1,4 @@
-VERSION = 3.18.0
+VERSION = 3.18.2
 RELEASE = 1
 
 .PHONY: all
