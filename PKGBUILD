@@ -3,7 +3,7 @@
 
 pkgname=samtools
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
 url="http://www.htslib.org/"
