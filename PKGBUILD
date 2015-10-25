@@ -25,7 +25,7 @@ source=("butter.install"
         "butter.desktop")
 md5sums=('78dc3a0a3bd1dc75ea5bd8704ab1068d'
          'SKIP'
-         '280e34e43de9356edf68cc7d17aab99b')
+         'a16045882b270fb726de5d03c24626b4')
 
 pkgver() {
   cd "$_pkgname"
