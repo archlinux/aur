@@ -1,0 +1,52 @@
+From 7e4a8770a8a0b011f99dd7d4228915f98f65efba Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sat, 24 Oct 2015 20:16:52 -0400
+Subject: [PATCH] Set environment variable for Sigil dictionaries.
+
+Needed to teach Sigil where the system dictionaries are located when not
+using vendored copies. Upstream apparently does NOT want the build
+system to be capable of setting this automatically.
+
+See: https://github.com/Sigil-Ebook/Sigil/pull/139 where I tried to
+rework things to teach Sigil to use the system dictionaries -- and in
+the process have the install script configured *automatically*.
+
+But environment variables are apparently preferred (while keeping the
+vendored location built into the executable).
+The build script was at least taught to stop installing the dictionaries
+via an option (separate from USE_SYSTEM_LIBS) but the aspect of my PR
+which configured the launch script automatically (because the plugin
+launcher *definitely* needs the env var) was not utilized at all.
+
+Per: https://github.com/Sigil-Ebook/Sigil/commit/ce862ebb236721e21a5620eef2e815e70cff9d35
+"They are commonly set by manually editing Sigil's launch script [...]"
+
+I guess this patch will have to do instead.
+---
+ src/Resource_Files/bash/sigil-sh_install | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/Resource_Files/bash/sigil-sh_install b/src/Resource_Files/bash/sigil-sh_install
+index 08fd266..1720dfe 100755
+--- a/src/Resource_Files/bash/sigil-sh_install
++++ b/src/Resource_Files/bash/sigil-sh_install
+@@ -18,6 +18,11 @@ if [ -z "$SIGIL_SHARE_PREFIX" ]; then
+   export SIGIL_SHARE_PREFIX
+ fi
+ 
++# Create an environment var for the Sigil share directory location.
++if [ -z "$SIGIL_DICTIONARIES" ]; then
++  export SIGIL_DICTIONARIES="/usr/share/hunspell:/usr/share/hyphen"
++fi
++
+ # Not really needed anymore but left in for fringe cases
+ #if [ -z "$SIGIL_EXTRA_ROOT" ]; then
+ #  SIGIL_EXTRA_ROOT="${SIGIL_SHARE_ROOT}"
+@@ -27,4 +32,3 @@ fi
+ export LD_LIBRARY_PATH
+ 
+ exec ${CMAKE_INSTALL_PREFIX}/lib/sigil/sigil "$@"
+-
+-- 
+2.6.2
+

@@ -1,6 +1,6 @@
 pkgbase = sigil-git
 	pkgdesc = A WYSIWYG ebook editor
-	pkgver = 0.8.901.r30.g3959de7
+	pkgver = 0.8.901.r43.g2570281
 	pkgrel = 1
 	url = https://github.com/Sigil-Ebook/Sigil
 	install = sigil.install
@@ -18,6 +18,8 @@ pkgbase = sigil-git
 	depends = gtk-update-icon-cache
 	depends = python-lxml
 	depends = python-six
+	optdepends = hunspell-en: for English dictionary support
+	optdepends = hyphen-en: for English hyphenation support in plugins
 	optdepends = python-html5lib: recommended for plugins
 	optdepends = python-chardet: recommended for plugins
 	optdepends = python-cssselect: recommended for plugins
@@ -27,7 +29,9 @@ pkgbase = sigil-git
 	provides = sigil
 	conflicts = sigil
 	source = sigil::git+https://github.com/Sigil-Ebook/Sigil
-	md5sums = SKIP
+	source = 0001-Set-environment-variable-for-Sigil-dictionaries.patch
+	sha256sums = SKIP
+	sha256sums = 94bc03892a30506308c67bba11dc7e9e375447fa1b42f328850771dd80d4df36
 
 pkgname = sigil-git
 

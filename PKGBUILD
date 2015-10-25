@@ -2,7 +2,7 @@
 # Contributor: David Mougey <imapiekindaguy at gmail dot com>
 
 pkgname=sigil-git
-pkgver=0.8.901.r30.g3959de7
+pkgver=0.8.901.r43.g2570281
 pkgrel=1
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
@@ -11,7 +11,9 @@ license=('GPL3')
 depends=('qt5-webkit' 'hunspell' 'desktop-file-utils' 'minizip'
          'gtk-update-icon-cache' 'python-lxml' 'python-six')
 makedepends=('git' 'qt5-tools' 'qt5-svg' 'cmake')
-optdepends=('python-html5lib: recommended for plugins'
+optdepends=('hunspell-en: for English dictionary support'
+            'hyphen-en: for English hyphenation support in plugins'
+            'python-html5lib: recommended for plugins'
             'python-chardet: recommended for plugins'
             'python-cssselect: recommended for plugins'
             'python-cssutils: recommended for plugins'
@@ -20,8 +22,18 @@ optdepends=('python-html5lib: recommended for plugins'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=sigil.install
-source=("${pkgname%-git}"::"git+${url}")
-md5sums=('SKIP')
+source=("${pkgname%-git}"::"git+${url}"
+        "0001-Set-environment-variable-for-Sigil-dictionaries.patch")
+sha256sums=('SKIP'
+            '94bc03892a30506308c67bba11dc7e9e375447fa1b42f328850771dd80d4df36')
+
+prepare() {
+    cd "${srcdir}/${pkgname%-git}"
+
+    # Upstream would prefer we *manually* set this env var when using the
+    # build option "-DINSTALL_BUNDLED_DICTS=0"
+    patch -p1 < ../0001-Set-environment-variable-for-Sigil-dictionaries.patch
+}
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
@@ -34,6 +46,7 @@ build() {
     cmake -G "Unix Makefiles" \
         -DUSE_SYSTEM_LIBS=1 \
         -DSYSTEM_LIBS_REQUIRED=1 \
+        -DINSTALL_BUNDLED_DICTS=0 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
