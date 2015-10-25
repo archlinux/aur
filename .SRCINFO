@@ -1,6 +1,6 @@
 pkgbase = foo2zjs-utils
 	pkgdesc = Linux printer driver for ZjStream protocol
-	pkgver = 20151011
+	pkgver = 20151024
 	pkgrel = 1
 	url = http://foo2zjs.rkkda.com
 	arch = i686

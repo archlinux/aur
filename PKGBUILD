@@ -1,6 +1,6 @@
 # Maintainer: Maurício CA <mauricio.antunes@gmail.com>
 pkgname=foo2zjs-utils
-pkgver=20151011
+pkgver=20151024
 pkgrel=1
 epoch=
 pkgdesc="Linux printer driver for ZjStream protocol"
