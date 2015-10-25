@@ -1,10 +1,11 @@
 pkgbase = python2-guessit-git
 	pkgdesc = A library for guessing information from video files.
-	pkgver = 0.11.0.r6.gded3ba7
-	pkgrel = 2
+	pkgver = 0.11.1.r930.ded3ba7
+	pkgrel = 1
 	url = https://github.com/wackou/guessit
 	arch = any
 	license = LGPL3
+	makedepends = git
 	makedepends = python2-setuptools
 	makedepends = python-setuptools
 	source = guessit::git+https://github.com/wackou/guessit

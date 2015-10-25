@@ -2,21 +2,22 @@
 
 pkgbase=python2-guessit-git
 pkgname=('python2-guessit-git' 'python-guessit-git')
-pkgver=0.11.0.r6.gded3ba7
-pkgrel=2
+pkgver=0.11.1.r930.ded3ba7
+pkgrel=1
 _gitname="guessit"
 _gitroot="git+https://github.com/wackou/guessit"
 pkgdesc="A library for guessing information from video files."
 arch=(any)
 url="https://github.com/wackou/guessit"
 license=('LGPL3')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('git' 'python2-setuptools' 'python-setuptools')
 source=("${_gitname}::${_gitroot}")
 md5sums=('SKIP')
 
 pkgver () {
   cd ${_gitname}
-  git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "0.11.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+ #git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package_python2-guessit-git() {
