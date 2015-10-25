@@ -24,7 +24,6 @@ build() {
 	export WESTON_NATIVE_BACKEND="rpi-backend.so"
 	export RPI_COMPOSITOR_LIBS="-ludev -lmtdev -lbcm_host"
 	CONFIG='--disable-egl'
-	cd $pkgname-$pkgver
 	./configure \
 		--prefix=/usr \
 		--libexecdir=/usr/lib/weston \
