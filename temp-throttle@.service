@@ -1,0 +1,9 @@
+[Unit]
+Description=Throttle system CPU frequency based on a maximum temperature
+
+[Service]
+ExecStart=/usr/bin/temp-throttle %i
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
