@@ -1,0 +1,19 @@
+pkgbase = gnome-xcf-thumbnailer
+	pkgdesc = GNOME thumbnailer for GIMP XCF files.
+	pkgver = 1.0
+	pkgrel = 5
+	url = http://packages.debian.org/sid/gnome-xcf-thumbnailer
+	install = gnome-xcf-thumbnailer.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glib2
+	depends = libpng12>=1.2.13
+	optdepends = gimp: Required to create thumbnails
+	source = http://ftp.acc.umu.se/pub/gnome/sources/gnome-xcf-thumbnailer/1.0/gnome-xcf-thumbnailer-1.0.tar.bz2
+	source = gnome-xcf-thumbnailer.thumbnailer
+	sha256sums = d0489a00a493242f65db22e2861d37f59c540055dd1aa573bb09886180ab4bd0
+	sha256sums = 401c9d7eb3a47a223110599c54af0b9feddc8026a1fc812df866ff19e7e33ac0
+
+pkgname = gnome-xcf-thumbnailer
+

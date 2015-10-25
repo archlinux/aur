@@ -1,0 +1,9 @@
+pkgname=gnome-xcf-thumbnailer
+
+post_install() {
+  echo "*** Note: In order to generate thumbnails .xcf files, you need to open them at least once with GIMP. ***"
+}
+
+post_upgrade() {
+  post_install
+}

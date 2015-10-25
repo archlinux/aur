@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=gnome-xcf-thumbnailer
+Exec=gnome-xcf-thumbnailer %i %o
+MimeType=image/x-xcf;
