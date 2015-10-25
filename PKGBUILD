@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/foo2zjs.tar.gz")
 noextract=()
-sha256sums=('41ac200b17b547f3aa2d2aea8c220677273dcb7ecfbfec3c64cee2156898ea4c')
+sha256sums=('78247fda3daf531be1dc07830b6f96f59c6c3461a14220f1a5faeee933c84fa1')
 build() {
   cd "$srcdir/foo2zjs"
   make
