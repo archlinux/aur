@@ -1,11 +1,12 @@
 pkgbase = 4kvideotomp3
 	pkgdesc = Extract audio in high-quality MP3 from any video.
 	pkgver = 2.2.1.810
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.4kdownload.com/products/product-videotomp3
 	arch = i686
 	arch = x86_64
 	license = custom:eula
+	depends = qt5-script
 	depends = qt5-quickcontrols
 	depends = portaudio
 	depends = ffmpeg-compat
@@ -15,9 +16,9 @@ pkgbase = 4kvideotomp3
 	sha256sums = a53e776426f30fd1d35b5d78df95f3608f25a8637a7c5f0c731ff538226c2185
 	sha256sums = 3aa5efcf8111c63fde7397f491d2b85ff47d50fd531f7792842d94016b814a4c
 	source_i686 = http://downloads.4kdownload.com/app/4kvideotomp3_2.2_i386.tar.bz2
-	sha256sums_i686 = 2a1a7df4bc904bffc17641af20b9c1fdfc8844923c3b2504df351471418a5e5e
+	sha256sums_i686 = 930827c6fb48aa32f4adaea00cac66a478548e2912dba5c26baa7d7675b90c97
 	source_x86_64 = http://downloads.4kdownload.com/app/4kvideotomp3_2.2_amd64.tar.bz2
-	sha256sums_x86_64 = 9d5161785314e87431e4066f082749772ec414bf36f21652f9009475a48739c1
+	sha256sums_x86_64 = f8a8e998b362e4568c45cd0c4d26465f6948c16f88a45c4b7cba17c8e5eb4c2e
 
 pkgname = 4kvideotomp3
 
