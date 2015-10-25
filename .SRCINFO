@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libuecc
 	pkgdesc = Very small Elliptic Curve Cryptography library (mingw-w64)
-	pkgver = 4
+	pkgver = 6
 	pkgrel = 1
 	url = http://git.universe-factory.net/libuecc
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-libuecc
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://git.universe-factory.net/libuecc/snapshot/libuecc-4.tar
-	md5sums = 81aa8c98442c3d93758fd62c8a9368b3
+	source = http://git.universe-factory.net/libuecc/snapshot/libuecc-6.tar
+	md5sums = d3d126e293db0d5262d2985bd911665f
 
 pkgname = mingw-w64-libuecc
 

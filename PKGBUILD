@@ -1,7 +1,5 @@
-# Maintainer: xantares <xantares09 at hotmail dot com>
-
 pkgname=mingw-w64-libuecc
-pkgver=4
+pkgver=6
 pkgrel=1
 arch=(any)
 pkgdesc="Very small Elliptic Curve Cryptography library (mingw-w64)"
@@ -11,7 +9,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 license=("BSD")
 url="http://git.universe-factory.net/libuecc"
 source=("http://git.universe-factory.net/libuecc/snapshot/libuecc-${pkgver}.tar")
-md5sums=('81aa8c98442c3d93758fd62c8a9368b3')
+md5sums=('d3d126e293db0d5262d2985bd911665f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
