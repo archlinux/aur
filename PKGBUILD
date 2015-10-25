@@ -40,17 +40,18 @@ _mesaver() {
 
 build() {
   cd ${srcdir}/mesa
-  
+
   ./autogen.sh --prefix=/usr \
-               --sysconfdir=/etc \
-               --with-dri-driverdir=/usr/lib/xorg/modules/dri \
-               --with-gallium-drivers=vc4 \
-               --enable-gles1 \
-               --enable-gles2 \
-               --with-egl-platforms=x11,drm,wayland \
-               --with-clang-libdir=/usr/lib
-
-
+	--sysconfdir=/etc \
+	--with-dri-driverdir=/usr/lib/xorg/modules/dri \
+	--with-dri-drivers= \
+	--with-gallium-drivers=vc4 \
+	--disable-xvmc \
+	--enable-gles1 \
+	--enable-gles2 \
+	--with-egl-platforms=x11,drm,wayland \
+	--with-clang-libdir=/usr/lib
+  
   make
 
   # fake installation
