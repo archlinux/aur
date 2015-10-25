@@ -1,5 +1,5 @@
---- /opt/vivaldi-snapshot/vivaldi-snapshot.orig	2015-10-09 14:26:29.000000000 +0200
-+++ /opt/vivaldi-snapshot/vivaldi-snapshot	2015-10-14 22:57:07.503932016 +0200
+--- a/vivaldi-snapshot	2015-10-09 14:26:29.000000000 +0200
++++ b/vivaldi-snapshot	2015-10-14 22:57:07.503932016 +0200
 @@ -45,13 +45,9 @@
  fi
  

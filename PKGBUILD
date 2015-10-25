@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.0.303.27
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
 install=vivaldi.install
@@ -18,7 +18,7 @@ optdepends=(
 source=('vivaldi-ffmpeg-codecs.patch')
 source_i686=("https://vivaldi.com/download/snapshot/vivaldi-snapshot-${pkgver}-1.i386.rpm")
 source_x86_64=("https://vivaldi.com/download/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
-sha256sums=('690ded55e6fc87a3fc6e1e89324eeedab68d0990d213b0b3362318da3f343379')
+sha256sums=('3eb1fd4111377350a8eee75301a5fe44a037a297572fe3f6b743c6db1ab19b1b')
 sha256sums_i686=('b4255f0a8fa172399818f3a03ab766cd9a2512c1af1d9c18c17f79284c37bed9')
 sha256sums_x86_64=('34a18c5bedc350c42eaf73f780cd4821dd5ca7ee8d58a7838047577ccefb80e0')
 
@@ -35,7 +35,7 @@ package() {
     done
 
     # allow playback of proprietary video/audio when alternative ffmpeg.so is installed
-    cd "$pkgdir"
+    cd "$pkgdir/opt/vivaldi-snapshot"
     patch -p1 -i "$srcdir/vivaldi-ffmpeg-codecs.patch"
 }
 
