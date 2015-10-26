@@ -1,0 +1,12 @@
+diff -Naur a/program/sh/install_grub.sh b/program/sh/install_grub.sh
+--- a/program/sh/install_grub.sh	2010-07-14 12:53:44.000000000 +0800
++++ b/program/sh/install_grub.sh	2015-10-26 14:15:50.935032106 +0800
+@@ -79,7 +79,7 @@
+ 
+ 
+ echo "Generating grub.cfg ..."
+-target_cmd "$target_dir" update-grub
++target_cmd "$target_dir" grub-mkconfig -o /boot/grub/grub.cfg
+ 
+ 
+ if [ $? -eq 0 ] ; then

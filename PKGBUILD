@@ -16,6 +16,7 @@ source=(
     'ucloner.png'
     'modify_path.patch'
     'fix_package_querying.patch'
+    'fix_grub_install.patch'
 )
 
 md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
@@ -24,13 +25,15 @@ md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
          '32a9a04b595890e50fa10fe51823469a'
          '1f913fe9ca34481134bc36e1045e9a20'
          '4966de605892a3a5c52d7fdd4b768f0d'
-         'c84c4aaba3bf5c7fbb6126190cb341ca')
+         'c84c4aaba3bf5c7fbb6126190cb341ca'
+         '1ce4d37e5531797196104c08825db0f7')
 
 
 prepare() {
     cd "${srcdir}/UCloner-$pkgver-$rev"
     patch -p1 < "${srcdir}/modify_path.patch"
     patch -p1 < "${srcdir}/fix_package_querying.patch"
+    patch -p1 < "${srcdir}/fix_grub_install.patch"
     cd program
     rm *.pyc
     find -name '*.py' | xargs sed -i 's|#!/usr/bin/python$|#!/usr/bin/env python2|'
