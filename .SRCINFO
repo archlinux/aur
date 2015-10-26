@@ -1,14 +1,14 @@
 pkgbase = spark-rc
 	pkgdesc = A simple rc script
-	pkgver = 1.8.4
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = https://github.com/fbt/spark-rc
 	arch = any
 	license = BSD
 	conflicts = sysvinit-tools-adds
 	backup = etc/rc.conf
-	source = https://github.com/fbt/spark-rc/archive/1.8.4.tar.gz
-	sha1sums = 436ee3ceb8af163765086e151f9220a6de8eb265
+	source = https://github.com/fbt/spark-rc/archive/1.8.5.tar.gz
+	sha1sums = 4d1afbe7b272039309a0a6010540563aa534b5a3
 
 pkgname = spark-rc
 
