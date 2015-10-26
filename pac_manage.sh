@@ -35,7 +35,7 @@ addSection() {
         local package=${list[i]}
         local info=$(yaourt -Qe $package)
         local repository=$(echo $info | cut -d' ' -f1 | cut -d/ -f1)
-        local group=$(echo $info | cut -d' ' -f3)
+        local group=$(echo $info | cut -d' ' -f3-)
         local extrainfo="$repository $group"
         if [ ${#package} -ge 30 ] || [ ${#extrainfo} -ge 50 ]; then
             echo "$package" >> $LIST_FILE

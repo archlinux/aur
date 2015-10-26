@@ -1,6 +1,6 @@
 pkgbase = pac_manage
 	pkgdesc = pacman/yaourt helper - manage packages in a single file
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/jandob/pac_manage
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pac_manage
 	depends = bash
 	depends = sed
 	source = pac_manage.sh
-	md5sums = 49b383f95dfb856d84cce3ce146ed61e
+	md5sums = 1d6512d6a514eef4d31e7734eb92eabe
 
 pkgname = pac_manage
 
