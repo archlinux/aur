@@ -14,6 +14,7 @@ optdepends=('glew: Used for render-to-texture support'
     'vorbis-tools: Used to import Guitar Hero files')
 [ "$CARCH" = "i686" ] && optdepends[3]='psyco: Used for speed optimization'
 makedepends=('subversion')
+provides=('fretsonfire')
 conflicts=('fretsonfire')
 
 svntrunk=https://fretsonfire.svn.sourceforge.net/svnroot/fretsonfire/trunk
