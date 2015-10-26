@@ -1,0 +1,16 @@
+pkgbase = libcue-git
+	pkgdesc = CUE Sheet Parser Library
+	pkgver = v1.4.0.r8.62a4b71
+	pkgrel = 1
+	url = https://github.com/lipnitsk/libcue
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	provides = libcue
+	conflicts = libcue
+	source = libcue::git+https://github.com/lipnitsk/libcue.git#commit=62a4b71
+	md5sums = SKIP
+
+pkgname = libcue-git
+
