@@ -1,7 +1,7 @@
 pkgbase = openssh-gssapi
 	pkgdesc = Free version of the SSH connectivity tools
 	pkgver = 7.1p1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openssh.org/portable.html
 	install = install
 	arch = i686
@@ -16,7 +16,6 @@ pkgbase = openssh-gssapi
 	optdepends = x11-ssh-askpass: input passphrase in X
 	provides = openssh-7.1p1
 	conflicts = openssh
-	replaces = openssho
 	backup = etc/ssh/ssh_config
 	backup = etc/ssh/sshd_config
 	backup = etc/pam.d/sshd

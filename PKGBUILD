@@ -6,13 +6,12 @@
 pkgname=openssh-gssapi
 _pkgname=openssh
 pkgver=7.1p1
-pkgrel=1
+pkgrel=2
 pkgdesc='Free version of the SSH connectivity tools'
 url='http://www.openssh.org/portable.html'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
 makedepends=('linux-headers')
-replaces=('openssho')
 conflicts=(${_pkgname})
 provides=(${_pkgname}-${pkgver})
 depends=('krb5' 'openssl' 'libedit' 'ldns')
