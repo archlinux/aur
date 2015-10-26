@@ -38,19 +38,12 @@ prepare() {
                 mv $i ./
         done
         rm -rf ./ScaleIO_1.32.2_RHEL7_Download/
-
-        #for i in ./*rpm; do
-        #        rpmextract.sh $i
-        #done
-        #rm ./*.rpm
 }
-
-#package() {echo}
 
 package_scaleio-gui()
 {
         pkgdesc="ScaleIO GUI"
-        depends=()
+        depends=('java-runtime')
         provides=()
         conflicts=()
         options=('!emptydirs' '!strip')
@@ -62,6 +55,10 @@ package_scaleio-gui()
         rpmextract.sh ./*rpm
         rm ./*rpm
         rsync -a ./ ${pkgdir}/
+        mkdir ${pkgdir}/bin/
+        echo '#!/bin/bash'                 >  ${pkgdir}/bin/scaleio-gui
+        echo '/opt/emc/scaleio/gui/run.sh' >> ${pkgdir}/bin/scaleio-gui
+        chmod +x ${pkgdir}/bin/scaleio-gui
         rm -rf ../scaleio-gui
 }
 
