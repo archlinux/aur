@@ -1,0 +1,16 @@
+pkgbase = keratin-git
+	pkgdesc = a fork of clipmenu, a simple clipboard manager using dmenu and xsel/xclip
+	pkgver = 1.0.0.r20.g9f96e94
+	pkgrel = 1
+	url = https://github.com/llybin/keratin
+	arch = any
+	license = ISC
+	depends = dmenu
+	depends = xsel
+	conflicts = clipmenu-git,
+	conflicts = clipmenu
+	source = git+https://github.com/llybin/keratin.git
+	md5sums = SKIP
+
+pkgname = keratin-git
+
