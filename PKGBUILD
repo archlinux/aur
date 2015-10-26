@@ -47,7 +47,8 @@ build() {
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
-  make bcm2709_defconfig # using RPi defconfig
+  cp arch/arm/configs/bcm2709_defconfig .config
+  make olddefconfig # using RPi defconfig
   # ... or manually edit .config
 
   # Copy back our configuration (use with new kernel version)
