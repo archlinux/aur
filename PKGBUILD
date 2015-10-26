@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-audit
 _pkgbasever=4.2-gnu
-_pkgver=4.2.3-gnu
+_pkgver=4.2.4-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -19,7 +19,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1.1
+pkgrel=1
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
@@ -44,8 +44,6 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
-        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
@@ -60,7 +58,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
-            '9e452d470bd33ea9cdbab5a285bea8c5b4ac91087ffb154e65c32c360a9a53f1'
+            'dc3df5f547a9ef51695dc6de7c40149e4d514777b4a3943557f01d8487bb2120'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -68,15 +66,13 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '86e9b3323fa37fb64322ec942fe6718ed872dda581a07b57857fb8ee30cf1ede'
-            '4a76deff517b767ea30432454344fb6e506db57ff57b321db44872da158e3be3'
+            '0c93653e22b89ce77b581da985ea41cabcb16841852130fe823415c2d449d325'
+            '7bcbdc0600a123e0404044cb1422ad98e080801a9217ada34fbb6ad2901b054f'
             'd70238b00be1a70204b5288c9c49898169eff1950c7017a4a7a108b942008342'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
-            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
             '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            '4b9ad713f1520c1eedba88e1e504c9c9bf3b832b0a40fd6566d107895fbd6b67'
+            'f5e547cb33a81a5ee711980a3378d14516e9159ec77d1101d53479cb291a2afd'
             'SKIP'
             '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
             '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
@@ -131,15 +127,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
-  # https://lkml.org/lkml/2015/8/18/292
-  patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
-
-  # add not-yet-mainlined patch to fix network unavailability when iptables
-  # rules are applied during startup - happened with Shorewall; journal had
-  # many instances of this error: nf_conntrack: table full, dropping packet
-  patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream

@@ -1,6 +1,6 @@
 pkgbase = linux-libre-audit
-	pkgver = 4.2.3_gnu
-	pkgrel = 1.1
+	pkgver = 4.2.4_gnu
+	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = linux-libre-audit
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.3-gnu/patch-4.2-gnu-4.2.3-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.3-gnu/patch-4.2-gnu-4.2.3-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.4-gnu/patch-4.2-gnu-4.2.4-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.4-gnu/patch-4.2-gnu-4.2.4-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -27,11 +27,9 @@ pkgbase = linux-libre-audit
 	source = config.armv7h
 	source = linux.preset
 	source = change-default-console-loglevel.patch
-	source = 0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch
-	source = 0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.3/rcn-libre-4.2.3-armv7-x2.patch
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.3/rcn-libre-4.2.3-armv7-x2.patch.sig
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.4/rcn-libre-4.2.4-armv7-x2.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.4/rcn-libre-4.2.4-armv7-x2.patch.sig
 	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
 	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
 	source = 0003-SMILE-Plug-device-tree-file.patch
@@ -42,7 +40,7 @@ pkgbase = linux-libre-audit
 	source = 0008-USB-armory-support.patch
 	sha256sums = 3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49
 	sha256sums = SKIP
-	sha256sums = 9e452d470bd33ea9cdbab5a285bea8c5b4ac91087ffb154e65c32c360a9a53f1
+	sha256sums = dc3df5f547a9ef51695dc6de7c40149e4d514777b4a3943557f01d8487bb2120
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -50,15 +48,13 @@ pkgbase = linux-libre-audit
 	sha256sums = SKIP
 	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
 	sha256sums = SKIP
-	sha256sums = 86e9b3323fa37fb64322ec942fe6718ed872dda581a07b57857fb8ee30cf1ede
-	sha256sums = 4a76deff517b767ea30432454344fb6e506db57ff57b321db44872da158e3be3
+	sha256sums = 0c93653e22b89ce77b581da985ea41cabcb16841852130fe823415c2d449d325
+	sha256sums = 7bcbdc0600a123e0404044cb1422ad98e080801a9217ada34fbb6ad2901b054f
 	sha256sums = d70238b00be1a70204b5288c9c49898169eff1950c7017a4a7a108b942008342
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = 0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b
-	sha256sums = 6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3
 	sha256sums = 38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d
-	sha256sums = 4b9ad713f1520c1eedba88e1e504c9c9bf3b832b0a40fd6566d107895fbd6b67
+	sha256sums = f5e547cb33a81a5ee711980a3378d14516e9159ec77d1101d53479cb291a2afd
 	sha256sums = SKIP
 	sha256sums = 203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7
 	sha256sums = 28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c
@@ -77,20 +73,20 @@ pkgname = linux-libre-audit
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-audit=4.2.3
+	provides = linux-audit=4.2.4
 	conflicts = 
 	replaces = linux-audit
 	backup = etc/mkinitcpio.d/linux-libre-audit.preset
 
 pkgname = linux-libre-audit-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-audit kernel
-	provides = linux-audit-headers=4.2.3
+	provides = linux-audit-headers=4.2.4
 	conflicts = 
 	replaces = linux-audit-headers
 
 pkgname = linux-libre-audit-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-audit kernel
-	provides = linux-audit-docs=4.2.3
+	provides = linux-audit-docs=4.2.4
 	conflicts = 
 	replaces = linux-audit-docs
 
