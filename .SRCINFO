@@ -1,13 +1,15 @@
 pkgbase = leo
 	pkgdesc = Literate programmer's editor, outliner, and project manager
 	pkgver = 5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://leoeditor.com/
 	install = leo.install
 	arch = any
 	license = custom
-	depends = python-pyqt4
+	depends = python-pyqt5
 	depends = shared-mime-info
+	depends = desktop-file-utils
+	depends = python-setuptools
 	optdepends = python-pyenchant: spellchecking support
 	optdepends = python-docutils: viewrendered support
 	optdepends = python-sphinx: documentation support
