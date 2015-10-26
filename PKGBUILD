@@ -2,7 +2,7 @@
 
 pkgname=lxdm-themes
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Archlinux, ArchlinuxFull, ArchlinuxTop, Arch-Dark, Arch-Stripes and IndustrialArch lxdm themes"
 arch=(any)
 url="https://wiki.archlinux.org/index.php/LXDM#Themes"
@@ -11,11 +11,13 @@ depends=('lxdm')
 conflicts=('archlinux-lxdm-theme' 'archlinux-lxdm-theme-full'
            'archlinux-lxdm-theme-top' 'industrial-arch-lxdm')
 install=lxdm-themes.install
-source=('http://allanmcrae.com/files/lxdm-theme.tar.gz'            # Archlinux
-        'greeter.ui.ArchlinuxFull'                                 # ArchlinuxFull
-        'http://xdsl.hi2.ro/work/archlinux-lxdm.tar.gz'            # ArchlinuxTop
-        'git+https://github.com/M4rQu1Nh0S/industrial-arch.git'    # IndustrialArch
-	'http://dl.dropbox.com/u/4813005/lxdm/lxdm-themes.tar.gz') # Arch-Dark, Arch-Stripes
+source=('http://allanmcrae.com/files/lxdm-theme.tar.gz'                # Archlinux
+        'greeter.ui.ArchlinuxFull'                                     # ArchlinuxFull
+        'http://xdsl.hi2.ro/work/archlinux-lxdm.tar.gz'                # ArchlinuxTop
+        'git+https://github.com/M4rQu1Nh0S/industrial-arch.git'        # IndustrialArch
+        #'http://dl.dropbox.com/u/4813005/lxdm/lxdm-themes.tar.gz'     # old dropbox link for Arch-Dark, Arch-Stripes
+        'https://www.dropbox.com/s/55yz4pforijf9ma/lxdm-themes.tar.gz' # Arch-Dark, Arch-Stripes
+        )
 noextract=('lxdm-theme.tar.gz' 'archlinux-lxdm.tar.gz')
 sha256sums=('1eeaee69da8dd0ab28fc6967b06d4594980808bed83e822858a31b46926acbe7'
             '09c66ccc6de32c6685b4f27cbfd2f2a2a679d4e961eebcbc80c294eb8d0f47d3'
