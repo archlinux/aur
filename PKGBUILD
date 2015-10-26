@@ -6,7 +6,7 @@ pkgname=( 'scaleio-gui' 'scaleio-gateway'
           'scaleio-mdm' 'scaleio-callhome'
           'scaleio-lia' 'scaleio-tb')
 pkgver=1.32.2
-pkgrel=2
+pkgrel=3
 pkgdesc="ScaleIO"
 arch=('x86_64')
 url="http://github.com/odeke-em/drive"
@@ -55,9 +55,9 @@ package_scaleio-gui()
         rpmextract.sh ./*rpm
         rm ./*rpm
         rsync -a ./ ${pkgdir}/
-        mkdir ${pkgdir}/bin/
-        echo '#!/bin/bash'                 >  ${pkgdir}/bin/scaleio-gui
-        echo '/opt/emc/scaleio/gui/run.sh' >> ${pkgdir}/bin/scaleio-gui
+        mkdir -p ${pkgdir}/usr/bin/
+        echo '#!/bin/bash'                 >  ${pkgdir}/usr/bin/scaleio-gui
+        echo '/opt/emc/scaleio/gui/run.sh' >> ${pkgdir}/usr/bin/scaleio-gui
         chmod +x ${pkgdir}/bin/scaleio-gui
         rm -rf ../scaleio-gui
 }
