@@ -7,8 +7,6 @@ pkgbase = keratin-git
 	license = ISC
 	depends = dmenu
 	depends = xsel
-	conflicts = clipmenu-git
-	conflicts = clipmenu
 	source = git+https://github.com/llybin/keratin.git
 	md5sums = SKIP
 
