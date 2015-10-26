@@ -20,7 +20,7 @@ _jomol=0.0.3c
 _robover=20150625
 _droidver=20140815
 _sarabun=1.3.2
-pkgrel=8
+pkgrel=9
 depends=("fontconfig" "xorg-font-utils")
 optdepends=("ttf-chromeos-fonts: Part of the Chromium OS fonts suite"
 	"otf-ipafont: Part of the Chromium OS fonts suite, IPA support"
@@ -59,7 +59,7 @@ pkgdesc="Caladea font for ChromeOS by Huerta Tipografia"
 	install -m 644 "${srcdir}/crosextrafonts-${_crosextraver}/"*.ttf "${pkgdir}/usr/share/fonts/TTF/"
 }
 package_ttf-lohit-font(){
-pkgver=${_lohitve}
+pkgver=${_lohitver}
 conflicts=("lohit-fonts")
 license=("custom:OFL-1.1")
 pkgdesc="6 Lohit fonts for Indic scripts"
@@ -94,7 +94,7 @@ url="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=padauk"
 }
 
 package_ttf-ko-nanum-font(){
-pkgver=${_knamum}
+pkgver=${_knanum}
 conflicts=("ttf-nanum-fonts")
 license=("custom:OFL-1.1")
 pkgdesc="Korean fonts released by Naver Inc. under OFL : NanumGothic (regular, bold), NanumMyeongjo (regular, bold)"
