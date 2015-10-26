@@ -4,7 +4,7 @@
 
 pkgname=mysql-proxy
 pkgver=0.8.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Monitors, analyzes and transformations communication between the MySQL client and server'
 arch=('i686' 'x86_64')
 url='http://dev.mysql.com/downloads/mysql-proxy/'
@@ -13,8 +13,7 @@ depends=('lua51' 'glib2' 'libevent')
 makedepends=('libmysqlclient')
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 backup=('etc/mysql/proxy.cnf')
-source=("http://dev.mysql.com/get/Downloads/MySQL-Proxy/${pkgname}-${pkgver}.tar.gz"
-	"${pkgname}-${pkgver}.tar.gz.asc"
+source=("http://cdn.mysql.com/Downloads/MySQL-Proxy/${pkgname}-${pkgver}.tar.gz"{,.asc}
 	'mysql-proxy.service'
 	'proxy.cnf')
 sha256sums=('e5bac3df8bca2eed41cdbf09439264b34c77339cfe1eda506b0d76eaa2d2b2d5'
