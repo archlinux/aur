@@ -1,8 +1,8 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=quine-relay
-pkgver=50
-pkgrel=1
+pkgver=73e4544
+pkgrel=2
 pkgdesc='Uroboros program with 50 programming languages'
 arch=('x86_64' 'i686')
 url='http://github.com/mame/quine-relay'
@@ -11,10 +11,11 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'gcc-fortran' 'ghc' 'go' 'groovy' 'llvm' 'make' 'mono' 'nodejs' 'ocaml'
          'octave' 'parrot' 'perl' 'php' 'python' 'r' 'ruby' 'scala' 'tcl'
          'ucblogo' 'vala' 'c-intercal' 'coffee-script' 'f2c' 'gforth' 'icon'
-         'iverilog' 'open-cobol' 'pike' 'regina-rexx-das' 'swi-prolog'
-         'smalltalk' 'beef' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
-         'spl' 'maxima' 'slang' 'npiet' 'neko' 'nickle' 'pari' 'bsd-games'
-         'ratfor' 'wspace')
+         'iverilog' 'gnu-cobol' 'pike' 'regina-rexx-das' 'swi-prolog'
+         'smalltalk' 'beef' 'jasmin' 'gcc-objc' 'gcc-ada' 'lci-git'
+         'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
+         'ratfor')
+         # wspace, scilab
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
 source=('quine-relay::git://github.com/mame/quine-relay.git#branch=50'
