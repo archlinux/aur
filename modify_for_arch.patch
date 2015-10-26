@@ -23,6 +23,15 @@ diff -Naur a/program/functions.py b/program/functions.py
          tmp = commands.getstatusoutput( 'mkdir -p %s'%(target_root + each)  )
          if tmp[0] != 0:
              errors.append( _('Error occurred when mkdir %s , you need to make it manually.')%(target_root + each) )
+@@ -326,7 +326,7 @@
+ # devices that works even if disks are added and removed. See fstab(5).
+ #
+ # <file system> <mount point>   <type>  <options>       <dump>  <pass>
+-proc            /proc           proc    nodev,noexec,nosuid 0       0
++# proc            /proc           proc    nodev,noexec,nosuid 0       0
+ '''
+     MPs = mp_config.keys()
+     MPs.sort()
 @@ -438,6 +438,7 @@
      defaultExcludes.append( '/proc' )
      defaultExcludes.append( '/sys' )
@@ -31,6 +40,14 @@ diff -Naur a/program/functions.py b/program/functions.py
      defaultExcludes.append( '/mnt' )
      defaultExcludes.append( '/media' )
      
+@@ -444,7 +444,6 @@
+     
+     defaultExcludes.append( '/boot/grub' )
+     defaultExcludes.append( '/etc/fstab' )
+-    defaultExcludes.append( '/etc/mtab' )
+     defaultExcludes.append( '/etc/blkid.tab' )
+     defaultExcludes.append( '/etc/udev/rules.d/70-persistent-net.rules' )
+ 
 @@ -490,16 +491,16 @@
                  defaultExcludes.append( '/lib/modules/' + kernelVersion + '/volatile/' + each )
  
