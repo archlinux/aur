@@ -6,8 +6,8 @@ pkgdesc="UCloner is a backup/restore/clone tool. Modified for Arch Linux"
 arch=('any')
 url="https://code.google.com/p/ucloner"
 license=('GPL')
-depends=('pygtk' 'vte' 'squashfs-tools' 'zenity' 'rsync' 'gksu')
-optdepends=('jfsutils' 'reiserfsprogs' 'xfsprogs')
+depends=('pygtk' 'vte' 'squashfs-tools' 'zenity' 'rsync')
+optdepends=('jfsutils' 'reiserfsprogs' 'xfsprogs' 'gksu')
 source=(
     'https://ucloner.googlecode.com/files/UCloner-10.10.2-beta1.tar.gz'
     'ucloner.sh'

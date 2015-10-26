@@ -10,10 +10,10 @@ pkgbase = ucloner
 	depends = squashfs-tools
 	depends = zenity
 	depends = rsync
-	depends = gksu
 	optdepends = jfsutils
 	optdepends = reiserfsprogs
 	optdepends = xfsprogs
+	optdepends = gksu
 	source = https://ucloner.googlecode.com/files/UCloner-10.10.2-beta1.tar.gz
 	source = ucloner.sh
 	source = ucloner-cmd.sh
@@ -25,7 +25,7 @@ pkgbase = ucloner
 	md5sums = 15efc60875b77125f8d5399797306955
 	md5sums = 32a9a04b595890e50fa10fe51823469a
 	md5sums = 1f913fe9ca34481134bc36e1045e9a20
-	md5sums = 712877e08bd19434501221d3f82e769f
+	md5sums = af4f56df7ad0fea080204b35ff206660
 
 pkgname = ucloner
 
