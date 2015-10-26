@@ -1,5 +1,5 @@
 pkgbase = linux-git-rbp
-	pkgver = r546536.3eab9fe
+	pkgver = 1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = armv7h
@@ -11,7 +11,7 @@ pkgbase = linux-git-rbp
 	makedepends = bc
 	makedepends = git
 	options = !strip
-	source = git+http://github.com/anholt/linux.git#branch=vc4-kms-v3d
+	source = git+http://github.com/anholt/linux.git#branch=vc4-kms-v3d-rpi2
 	source = config.txt
 	source = cmdline.txt
 	md5sums = SKIP

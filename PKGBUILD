@@ -1,12 +1,10 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgbase=linux-git-rbp
-_commit=e9c356a2c18787d356567f24e7879875d7337efc
-_srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi2 VC4 devel"
 _branch="vc4-kms-v3d-rpi2"
-pkgver=r546536.3eab9fe
+pkgver=1
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
@@ -128,7 +126,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/${_srcname}"
+  cd linux
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
