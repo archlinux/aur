@@ -1,6 +1,6 @@
 pkgbase = gnome-mpv-git
 	pkgdesc = GNOME frontend for MPV
-	pkgver = 0.5.r35.g146c107
+	pkgver = 0.6.r2.g98b5f4d
 	pkgrel = 1
 	url = https://github.com/gnome-mpv/gnome-mpv
 	install = gnome-mpv.install

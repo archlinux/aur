@@ -1,7 +1,8 @@
-# Maintainer: Suhaimi Ghazali <serdotlinecho@gmail.com>
+# Maintainer: Simon Brulhart <simon@brulhart.me>
+# Contributor: Suhaimi Ghazali <serdotlinecho@gmail.com>
 
 pkgname=gnome-mpv-git
-pkgver=0.5.r35.g146c107
+pkgver=0.6.r2.g98b5f4d
 pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
