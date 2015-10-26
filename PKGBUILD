@@ -16,6 +16,7 @@ optdepends=('pulseaudio: for support Pulseaudio'
 	
 source=('zesarux-code::git+git://git.code.sf.net/p/zesarux/code')
 md5sums=('SKIP')
+install="zesarux.install"
 
 pkgver() {
   	cd "$srcdir/zesarux-code"
@@ -37,11 +38,13 @@ package(){
 	fi
 	cd ${srcdir}/zesarux-code
 	cp zesarux "${pkgdir}/usr/bin/"
-	cp *.rom zxuno.flash ${pkgdir}/usr/share/zesarux/
-	cp mantransfev3.bin macos_say_filter.sh ${pkgdir}/usr/share/zesarux/
+	cp *.rom zxuno.flash *.mmc ${pkgdir}/usr/share/zesarux/
+	cp mantransfev3.bin ${pkgdir}/usr/share/zesarux/
 	
-	cp -r tapes ${pkgdir}/usr/share/zesarux/
-	cp ACKNOWLEDGEMENTS Changelog HISTORY LICENSE README FEATURES INSTALL INSTALLWINDOWS ALTERNATEROMS INCLUDEDTAPES FAQ ${pkgdir}/usr/share/zesarux/
+	#cp -r festival_speech_filters ${pkgdir}/usr/share/zesarux/
+	cp -r tapes_snaps_eproms ${pkgdir}/usr/share/zesarux/
+	cp ACKNOWLEDGEMENTS Changelog HISTORY LICENSE README FEATURES ALTERNATEROMS INCLUDEDTAPES FAQ ${pkgdir}/usr/share/zesarux/
 	find ${pkgdir}/usr/share/zesarux/ -type f -print0| xargs -0 chmod 444
-	chmod +x ${pkgdir}/usr/share/zesarux/macos_say_filter.sh
+	#chmod +x ${pkgdir}/usr/share/zesarux/macos_say_filter.sh
+	#chmod +x ${pkgdir}/usr/share/zesarux/festival_speech_filters/*
 }

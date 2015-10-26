@@ -3,6 +3,7 @@ pkgbase = zesarux-git
 	pkgver = r2603.eefcb12
 	pkgrel = 1
 	url = http://sourceforge.net/projects/zesarux/
+	install = zesarux.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
