@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=gnome-mpv
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'mpv')
 makedepends=('intltool')
 conflicts=('gnome-mpv-git')
 source=("https://github.com/gnome-mpv/gnome-mpv/archive/v${pkgver}.tar.gz")
-sha256sums=('56064c16fb9a8b4e79cdd338800dd989588bed11574e4993a36308707e304cf3')
+sha256sums=('e1544c5b2055cc0a92af625b87f53422e05dbe39043c5d5b3d6db1a75e3435c0')
 install=('gnome-mpv.install')
 
 build() {
