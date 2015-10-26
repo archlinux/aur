@@ -6,10 +6,10 @@
 
 pkgname=broadcom-wl
 pkgver=6.30.223.271
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver'
-url='http://www.broadcom.com/support/802.11/linux_sta.php'
+url='http://www.broadcom.com/support/802.11'
 arch=('i686' 'x86_64')
 license=('custom')
 
@@ -19,9 +19,6 @@ makedepends=('linux-headers')
 source=('modprobe.d'
         'license.patch'
 	'wl_linux.c.patch'
-#        'linux-recent.patch'
-#        'linux42.patch'
-#        'gcc.patch'
 )
 source_i686=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
 source_x86_64=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
@@ -38,9 +35,6 @@ _kernver="$(</usr/lib/modules/extramodules-"$_kernmajor"-ARCH/version)"
 
 prepare() {
   patch -p1 -i license.patch
-#  patch -p1 -i linux-recent.patch
-#  patch -p1 -i linux42.patch
-#  patch -p1 -i gcc.patch
   patch -p1 -i wl_linux.c.patch
 
   sed -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" \

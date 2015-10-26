@@ -1,8 +1,8 @@
 pkgbase = broadcom-wl
 	pkgdesc = Broadcom 802.11abgn hybrid Linux networking device driver
 	pkgver = 6.30.223.271
-	pkgrel = 1
-	url = http://www.broadcom.com/support/802.11/linux_sta.php
+	pkgrel = 2
+	url = http://www.broadcom.com/support/802.11
 	install = install
 	arch = i686
 	arch = x86_64
