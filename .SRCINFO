@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-resources-monitor-git
 	pkgdesc = Plasmoid for Plasma 5. Shows information about CPU and RAM.
-	pkgver = r9.8904dbc
+	pkgver = r15.4f687d6
 	pkgrel = 1
 	url = https://github.com/kotelnik/plasma-applet-resources-monitor
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = plasma5-applets-resources-monitor-git
 	provides = plasma5-applets-resources-monitor
 	conflicts = plasma5-applets-resources-monitor
 	conflicts = plasma-applet-resources-monitor-git
-	source = git://github.com/kotelnik/plasma-applet-resources-monitor.git
+	source = git+https://github.com/kotelnik/plasma-applet-resources-monitor.git
 	md5sums = SKIP
 
 pkgname = plasma5-applets-resources-monitor-git
