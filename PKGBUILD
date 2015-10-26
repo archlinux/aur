@@ -2,11 +2,11 @@
 # Git: https://github.com/nogo/archlinux-pkgbuild
 
 # Uncomment, if you want tha last release
-_version=2.0.1
+_version=2.0.2
 
 pkgname=owncloud-client-git
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="ownCloud client based on mirall"
 arch=('i686' 'x86_64')
 url="http://owncloud.org/"
@@ -24,7 +24,7 @@ source=("${_client}::git+https://github.com/owncloud/client.git")
 md5sums=('SKIP')
 
 pkgver() {
-  if [[ -z "${_version}" ]]; then  
+  if [[ -z "${_version}" ]]; then
     cd ${srcdir}/${_client}
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
   else
@@ -48,7 +48,7 @@ build() {
         -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc/${pkgname} \
         -DWITH_DOC=FALSE \
-        -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qtkeychain/ \
+        -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
         ../${_client}
   make
 }
