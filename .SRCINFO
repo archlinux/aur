@@ -1,6 +1,6 @@
 pkgbase = python2-mpop
 	pkgdesc = Meteorological Post-Processing Package (MPoP)
-	pkgver = v0.11.0.781.gbfc4a9b
+	pkgver = v0.11.0.855.ge9a270d
 	pkgrel = 1
 	url = https://mpop.readthedocs.org/
 	arch = any
