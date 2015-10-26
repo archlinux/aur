@@ -27,7 +27,7 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   
   ./configure --prefix=/usr \
-              --libdir=/usr/lib32
+              --libdir=/usr/lib32 \
               --enable-animation
   make
 }
