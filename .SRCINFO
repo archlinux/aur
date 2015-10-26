@@ -1,6 +1,6 @@
 pkgbase = supercollider-git
 	pkgdesc = An environment and programming language for real time audio synthesis and algorithmic composition.
-	pkgver = 3.7.0.alpha1.r182.ge271d31
+	pkgver = 3.7.0.alpha1.r373.g12eb92f
 	pkgrel = 1
 	url = http://supercollider.sourceforge.net/
 	install = supercollider.install
@@ -35,7 +35,9 @@ pkgbase = supercollider-git
 	provides = supercollider
 	conflicts = supercollider
 	source = supercollider::git+https://github.com/supercollider/supercollider
+	source = libatomic.patch
 	md5sums = SKIP
+	md5sums = 2956e6172cafcc9a38bdfdd2bc33e87b
 
 pkgname = supercollider-git
 
