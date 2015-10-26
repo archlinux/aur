@@ -17,7 +17,7 @@ source=("git+http://github.com/anholt/linux.git#branch=$_branch"
 md5sums=('SKIP'
          '9a3c82da627b317ec79c37fd6afba569'
          '60bc3624123c183305677097bcd56212')
-         
+
 pkgver() {
   cd linux
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -45,8 +45,8 @@ build() {
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
-  cp arch/arm/configs/bcm2709_defconfig .config
-  make olddefconfig # using RPi defconfig
+  cp arch/arm/configs/bcm2835_defconfig .config
+  make olddefconfig
   # ... or manually edit .config
 
   # Copy back our configuration (use with new kernel version)
