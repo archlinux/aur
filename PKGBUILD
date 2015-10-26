@@ -1,21 +1,33 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 # Contributor: Rickard Gustafsson <rickard@allyourbase.se>
 # Contributor: Nathan Owe <ndowens04 at gmail>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Alexej Magura <agm2819*gmail*>
+# Contributor: Joel Klinghed <the_jk@yahoo.com>
 
 pkgname=pike
 pkgver=7.8.866
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic programming language with a syntax similar to Java and C'
 arch=('x86_64' 'i686')
 url='http://pike.lysator.liu.se/'
 license=('GPL2' 'LGPL' 'MPL')
 depends=('gtksourceview2' 'sane' 'libzip' 'libmysqlclient' 'gtkglarea' 'nettle')
 makdepends=('nettle')
-source=("http://${pkgname}.ida.liu.se/pub/$pkgname/latest-stable/Pike-v${pkgver}.tar.gz")
-sha256sums=('0b12e1a99bd8bdd9c8a2daa46e623ac718bc0737290236a0c8474091359b594e')
+source=("http://pike.lysator.liu.se/pub/pike/latest-stable/Pike-v$pkgver.tar.gz"
+        'http://www.spawned.biz/the_jk/pike-add_static_memcmp-0.patch'
+        'http://www.spawned.biz/the_jk/pike-disable_libdir_reset-0.patch')
+sha256sums=('0b12e1a99bd8bdd9c8a2daa46e623ac718bc0737290236a0c8474091359b594e'
+            '458fb74f8c28a0a51caef392f5905c0a5803e7579eb281735029a43150cd1140'
+            '0aaa97a2f19b48cd66832ed421eaaf19364a6b374e413bd0015f57dac5660b26')
+
+prepare() {
+  cd "Pike-v$pkgver"
+
+  patch -p1 -i ../pike-add_static_memcmp-0.patch
+  patch -p1 -i ../pike-disable_libdir_reset-0.patch
+}
 
 build() {
   cd "Pike-v$pkgver"
