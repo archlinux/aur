@@ -8,8 +8,8 @@ pkgdesc='a fork of clipmenu, a simple clipboard manager using dmenu and xsel/xcl
 url='https://github.com/llybin/keratin'
 arch=('any')
 license=('ISC')
-depends=(dmenu xsel)
-conflicts=(clipmenu-git, clipmenu)
+depends=('dmenu' 'xsel')
+conflicts=('clipmenu-git' 'clipmenu')
 
 source=(git+https://github.com/llybin/keratin.git)
 md5sums=(SKIP)
