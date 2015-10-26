@@ -10,7 +10,7 @@ license=('BSD')
 depends=('php' 'xdebug' 'php-apache')
 install="${pkgname}.install"
 source=("http://webgrind.googlecode.com/files/webgrind-release-${pkgver}.zip")
-md5sums=('66ce2840eecd315052aa6d194dccb659')
+sha512sums=('c1b6e286d613d98d1aa4531aff303ce7464882bc785ce561f6e7a396c321d2cdb15e168a1319473f66962fe1c5a3f6c684e25b0156ee3af1bbf90c4dce7c5d53')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/webapps/webgrind"
