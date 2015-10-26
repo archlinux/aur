@@ -3,13 +3,14 @@
 
 pkgname=gtk-theme-equinox
 pkgver=1.50
-pkgrel=1
+pkgrel=2
 pkgdesc="Gtk theme for equinox engine"
 url="http://gnome-look.org/content/show.php?content=140449"
 license=('GPL2')
 arch=('any')
 depends=('gtk-engine-equinox')
-optdepends=('faenza-icon-theme: icons designed for this theme')
+optdepends=('faenza-icon-theme: icons designed for this theme'
+            'lib32-gtk-engine-equinox: for 32 bits applications')
 source=("http://gnome-look.org/CONTENT/content-files/140449-equinox-themes-${pkgver}.tar.gz")
 sha256sums=('32b3cedfbc27e466289aa8a0b6d1f3f964a553956d94bf267bd42c749691823c')
 noextract=("140449-equinox-themes-${pkgver}.tar.gz")
