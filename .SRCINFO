@@ -1,0 +1,17 @@
+pkgbase = mysql-router
+	pkgdesc = Lightweight middleware that provides transparent routing between your application and any backend MySQL Servers
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://dev.mysql.com/downloads/router/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	source = http://cdn.mysql.com/Downloads/MySQL-Router/mysql-router-2.0.2.tar.gz
+	source = http://cdn.mysql.com/Downloads/MySQL-Router/mysql-router-2.0.2.tar.gz.asc
+	sha256sums = 7bfe805e740a843e2cb38b8449345b03d9a08a35854923a86bdc8ff6be8a7c68
+	sha256sums = SKIP
+
+pkgname = mysql-router
+
