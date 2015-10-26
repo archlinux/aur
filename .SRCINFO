@@ -1,7 +1,7 @@
 pkgbase = chromeos-extra-fonts
 	pkgdesc = Extra fonts from Chromium OS fonts suite by various author
 	pkgver = 2013.02.14
-	pkgrel = 7
+	pkgrel = 8
 	url = http://git.chromium.org/gitweb/00
 	install = chromeos-extra-fonts.install
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = chromeos-extra-fonts
 	source = http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/tibt-jomolhari-0.0.3c.tar.gz
 	source = http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/robotofonts-20150625.tar.bz2
 	source = http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/droidfonts-cros-20140815.tar.gz
+	source = http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/th-sarabun-fonts-1.3.2.tar.gz
 	md5sums = 368f114c078f94214a308a74c7e991bc
 	md5sums = 2626c1d45edbff72ec2667bc81c801eb
 	md5sums = 85a7927441264d3845f8aea874e2df98
@@ -32,6 +33,7 @@ pkgbase = chromeos-extra-fonts
 	md5sums = 715d38f358da74afbb6117492f3ae1b9
 	md5sums = 0d0724d422efdec32deb1e932a945c9d
 	md5sums = cc62e181e017c9259b985dc6839160e9
+	md5sums = 1bd3b17c213f6a2858a38efca44b2d3e
 
 pkgname = ttf-chromeosextra-font
 	pkgdesc = Caladea font for ChromeOS by Huerta Tipografia
@@ -74,5 +76,9 @@ pkgname = ttf-roboto-font
 
 pkgname = ttf-droid-font
 	pkgdesc = DroidSansFallback and DroidSansMono
+	license = Apache
+
+pkgname = ttf-th-sarabun-font
+	pkgdesc = Sara bun font for Thai writting system
 	license = Apache
 

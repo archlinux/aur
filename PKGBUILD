@@ -8,7 +8,8 @@ pkgname=("ttf-chromeosextra-font"
 	"ttf-ko-nanum-font"
 	"ttf-tbt-jomolhari"
 	"ttf-roboto-font"
-	"ttf-droid-font")
+	"ttf-droid-font"
+	"ttf-th-sarabun-font")
 pkgver=2013.02.14
 _crosextraver=20130214
 _lohitver=2.5.0
@@ -18,7 +19,8 @@ _knanum=3.10.0
 _jomol=0.0.3c
 _robover=20150625
 _droidver=20140815
-pkgrel=7
+_sarabun=1.3.2
+pkgrel=8
 depends=("fontconfig" "xorg-font-utils")
 optdepends=("ttf-chromeos-fonts: Part of the Chromium OS fonts suite"
 	"otf-ipafont: Part of the Chromium OS fonts suite, IPA support"
@@ -41,7 +43,8 @@ source=("http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/
 	"http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/ko-nanumfonts-${_knanum}.tar.gz"
 	"http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/tibt-jomolhari-${_jomol}.tar.gz"
 	"http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/robotofonts-${_robover}.tar.bz2"
-	"http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/droidfonts-cros-${_droidver}.tar.gz")
+	"http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/droidfonts-cros-${_droidver}.tar.gz"
+	"http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/th-sarabun-fonts-${_sarabun}.tar.gz")
 
 install="chromeos-extra-fonts.install"
 
@@ -131,6 +134,17 @@ pkgdesc="DroidSansFallback and DroidSansMono"
         install -m 644 "${srcdir}/droidfonts-cros-$_droidver/"*.ttf "${pkgdir}/usr/share/fonts/TTF/"
         install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}/droidfonts-cros"
 }
+
+package_ttf-th-sarabun-font(){
+pkgver=${_sarabun}
+
+license=("Apache")
+pkgdesc="Sara bun font for Thai writting system"
+	install -d -m 755 "${pkgdir}/usr/share/fonts/TTF"
+	install -m 644 "${srcdir}/th-sarabun-fonts-${_sarabun}/"*.ttf "${pkgdir}/usr/share/fonts/TTF/"
+	install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}/th-sarabun-fonts"
+}
+
 # Md5? is the default in pacman -g blame Allan
 md5sums=('368f114c078f94214a308a74c7e991bc'
          '2626c1d45edbff72ec2667bc81c801eb'
@@ -139,4 +153,5 @@ md5sums=('368f114c078f94214a308a74c7e991bc'
          'ae8f913acbff9c0106d75c1a6106d443'
          '715d38f358da74afbb6117492f3ae1b9'
          '0d0724d422efdec32deb1e932a945c9d'
-         'cc62e181e017c9259b985dc6839160e9')
+         'cc62e181e017c9259b985dc6839160e9'
+         '1bd3b17c213f6a2858a38efca44b2d3e')
