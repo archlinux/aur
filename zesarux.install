@@ -1,0 +1,4 @@
+pre_remove() {
+	# do something here
+	rm -r /usr/share/zesarux/tapes
+}

@@ -1,16 +1,17 @@
 pkgbase = zesarux
 	pkgdesc = A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support
-	pkgver = 3.0
-	pkgrel = 2
+	pkgver = 3.1
+	pkgrel = 1
 	url = http://sourceforge.net/projects/zesarux/
+	install = zesarux.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	optdepends = pulseaudio: for support Pulseaudio
 	optdepends = openssl: for enable SSL functions
 	conflicts = zesarux-git
-	source = http://sourceforge.net/projects/zesarux/files/ZEsarUX-3.0/ZEsarUX_src-3.0.tar.gz
-	md5sums = 6a670e31af81d4482e0675d4fdfd2e2d
+	source = http://sourceforge.net/projects/zesarux/files/ZEsarUX-3.1/ZEsarUX_src-3.1.tar.gz
+	md5sums = 7bc53b79b035693d76514ee79a2b80a3
 
 pkgname = zesarux
 
