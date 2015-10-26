@@ -72,10 +72,10 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'module-init-tools>=3.16')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('kernel26' "linux=${pkgver}" 'aufs_friendly')
-  conflicts=('kernel26' 'linux')
+  conflicts=('kernel26' 'linux' 'linux-raspberrypi')
   install=${pkgname}.install
   backup=('boot/config.txt' 'boot/cmdline.txt')
-  replaces=('linux-raspberrypi-latest')
+  replaces=('linux-raspberrypi-latest' 'linux-raspberrypi')
 
   cd linux
 
@@ -123,8 +123,8 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel - ${_desc}"
   provides=("linux-headers=${pkgver}")
-  conflicts=('linux-headers')
-  replaces=('linux-raspberrypi-latest-headers')
+  conflicts=('linux-headers' 'linux-raspberrypi-headers')
+  replaces=('linux-raspberrypi-latest-headers' 'linux-raspberrypi-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
