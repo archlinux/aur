@@ -1,7 +1,7 @@
 pkgbase = go-ipfs
 	pkgdesc = global versioned p2p merkledag file system
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipfs/$pkgname
 	arch = i686
 	arch = x86_64
