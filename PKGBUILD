@@ -2,7 +2,7 @@
 # Contributor: Panagiotis Mavrogiorgos (pmav99) <> (gmail)
 
 pkgname=ffmulticonverter-mod
-pkgver=1.7.1.r23.gb22691c
+pkgver=1.7.1.r20.gbe36278
 pkgrel=1
 pkgdesc="Convert audio, video, image and document files between all popular formats. My mod"
 arch=(any)
@@ -25,6 +25,9 @@ pkgver() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname/locale/"
+  lrelease-qt4 ffmulticonverter.pro
+  cd ..
+  pyrcc4 -py3 -o ./ffmulticonverter/qrc_resources.py resources.qrc
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
