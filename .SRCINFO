@@ -1,0 +1,22 @@
+pkgbase = cockatrice-client-git
+	pkgdesc = A cross-platform virtual tabletop for multiplayer card games (Client)
+	pkgver = 20150924.1
+	pkgrel = 1
+	url = http://www.woogerworks.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = protobuf
+	depends = zlib
+	conflicts = cockatrice-client
+	source = git+https://github.com/Cockatrice/Cockatrice.git
+	md5sums = SKIP
+
+pkgname = cockatrice-client-git
+
