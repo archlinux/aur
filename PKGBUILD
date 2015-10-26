@@ -9,6 +9,7 @@ arch=('any')
 license=('custom:MIT')
 url="https://pypi.python.org/pypi/${_pkgname}"
 depends=('python2' 'python2-pytz')
+makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('5e0f7e40e363812180fffaae52daf2e6')
 
