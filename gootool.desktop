@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=gootool
+Comment=World of Goo mod manager
+Type=Application
+Categories=Game;Utility;
+MimeType=application/x-goomod;
+Exec=gootool %F
+TryExec=gootool

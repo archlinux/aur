@@ -1,0 +1,20 @@
+pkgbase = worldofgoo-gootool
+	pkgdesc = World of Goo level creator and installer
+	pkgver = 1.0.3.441
+	pkgrel = 2
+	url = http://goofans.com/download/utility/gootool
+	install = worldofgoo-gootool.install
+	arch = any
+	license = custom
+	depends = java-runtime
+	optdepends = worldofgoo
+	conflicts = gootool
+	source = http://goofans.com/download/145/1255/gootool_1.0.3.441-1_all.deb
+	source = application-x-goomod.xml
+	source = gootool.desktop
+	md5sums = 31579d7bc2526e6bad07e36950b93d11
+	md5sums = a2d4a46c158e5c80bf4ac10b43b4100d
+	md5sums = 0461706a2a607fe39b701d3ccbc67b0f
+
+pkgname = worldofgoo-gootool
+

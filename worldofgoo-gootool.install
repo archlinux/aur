@@ -1,0 +1,33 @@
+post_install() {
+
+cat <<-EndOfMessage
+
+==> Gootool may not be able to detect where you World of Goo program is.
+==> Direct it to:
+==>
+==> /usr/share/worldofgoo/WorldOfGoo
+==>
+==> And then choose the binary for you architecture.
+==>
+==> Fan created levels,mods... can be found at:
+==>
+==> http://goofans.com/
+==>
+==> Some levels will crash if you have a custom resolutions set (mainly this is
+==> because some levels do not have widescreen support).  If you have set up
+==> World of Goo with a custom resolution, it is recommended you setup your
+==> ~/.WorldOfGoo/config.txt to allow either 800x600 or 1024x768 monitor sizes.
+==> http://goofans.com/forum/gootool/suggestions-and-bug-reports/805
+
+EndOfMessage
+
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  update-desktop-database -q
+}
