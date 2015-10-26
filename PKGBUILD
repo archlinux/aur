@@ -50,5 +50,5 @@ package() {
 
 	install -Dm644 'steam-runtime.desktop' "${pkgdir}/usr/share/applications/steam-runtime.desktop"
 	install -Dm644 '51-steam.rules' "${pkgdir}/etc/polkit-1/rules.d/51-steam.rules"
-	chmod 0700 "${pkgdir}/etc/polkit-1/rules.d" # fix permission warning
+	chmod -f 750 "${pkgdir}/etc/polkit-1/rules.d" # fix permission warning
 }
