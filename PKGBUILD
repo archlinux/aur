@@ -3,8 +3,8 @@
 # Contributor: Josh Klar <j@iv597.com>
 
 pkgname=budgie-desktop
-pkgver=8.2
-pkgrel=2
+pkgver=8.3
+pkgrel=1
 pkgdesc="Simple GTK3 desktop experience from Solus Project"
 arch=('i686' 'x86_64')
 url="http://solus-project.com/"
