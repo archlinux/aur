@@ -1,0 +1,84 @@
+From d8d034f24154d08dfe558feccddfbed312d727d4 Mon Sep 17 00:00:00 2001
+From: Alexey Korop <avkorop@i.ua>
+Date: Sat, 24 Oct 2015 11:55:30 +0300
+Subject: Mouse transparency fix
+
+
+diff --git a/src/conky.cc b/src/conky.cc
+index b48fd7c..025ed20 100644
+--- a/src/conky.cc
++++ b/src/conky.cc
+@@ -60,6 +60,9 @@
+ #ifdef BUILD_IMLIB2
+ #include "imlib2.h"
+ #endif /* BUILD_IMLIB2 */
++#ifdef BUILD_XSHAPE
++#include <X11/extensions/shape.h>
++#endif /* BUILD_XSHAPE */
+ #endif /* BUILD_X11 */
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -2042,6 +2045,21 @@ static void main_loop(void)
+ 	sigaddset(&newmask, SIGUSR1);
+ #endif
+ 
++#ifdef BUILD_XSHAPE
++	/* allow only decorated windows to be given mouse input */
++	int major_version, minor_version;
++	if (!XShapeQueryVersion(display, &major_version, &minor_version)) {
++		NORM_ERR("Input shapes are not supported");
++	} else {
++		if (own_window.get(*state) &&
++		    (own_window_type.get(*state) != TYPE_NORMAL ||
++		     (TEST_HINT(own_window_hints.get(*state), HINT_UNDECORATED)))) {
++			XShapeCombineRectangles(display, window.window, ShapeInput, 0, 0,
++			   NULL, 0, ShapeSet, Unsorted);
++		}
++	}
++#endif /* BUILD_XSHAPE */
++
+ 	last_update_time = 0.0;
+ 	next_update_time = get_time();
+ 	info.looped = 0;
+diff --git a/src/x11.cc b/src/x11.cc
+index 48f5197..15db872 100644
+--- a/src/x11.cc
++++ b/src/x11.cc
+@@ -47,10 +47,6 @@
+ #ifdef BUILD_XFT
+ #include <X11/Xft/Xft.h>
+ #endif
+-#ifdef BUILD_XSHAPE
+-#include <X11/extensions/shape.h>
+-#include <X11/extensions/shapeconst.h>
+-#endif
+ 
+ #ifdef BUILD_ARGB
+ bool have_argb_visual;
+@@ -716,26 +712,6 @@ static void init_window(lua::state &l __attribute__((unused)), bool own)
+ 
+ 			wmHint.flags = InputHint | StateHint;
+ 			/* allow decorated windows to be given input focus by WM */
+-			wmHint.input =
+-				TEST_HINT(hints, HINT_UNDECORATED) ? False : True;
+-#ifdef BUILD_XSHAPE
+-			if (!wmHint.input) {
+-				int event_base, error_base;
+-				if (XShapeQueryExtension(display, &event_base, &error_base)) {
+-					int major_version = 0, minor_version = 0;
+-					XShapeQueryVersion(display, &major_version, &minor_version);
+-					if ((major_version > 1) || ((major_version == 1) && (minor_version >=1))) {
+-						Region empty_region = XCreateRegion();
+-						XShapeCombineRegion(display, window.window, ShapeInput, 0, 0, empty_region, ShapeSet);
+-						XDestroyRegion(empty_region);
+-					} else {
+-						NORM_ERR("Input shapes are not supported");
+-					}
+-				} else {
+-					NORM_ERR("No shape extension found");
+-				}
+-			}
+-#endif
+ 			if (own_window_type.get(l) == TYPE_DOCK || own_window_type.get(l) == TYPE_PANEL) {
+ 				wmHint.initial_state = WithdrawnState;
+ 			} else {

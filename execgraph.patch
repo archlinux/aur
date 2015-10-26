@@ -1,0 +1,13 @@
+diff --git a/src/exec.cc b/src/exec.cc
+index 10f47d8..2eaf6fd 100644
+--- a/src/exec.cc
++++ b/src/exec.cc
+@@ -220,7 +220,7 @@ void scan_execi_gauge_arg(struct text_object *obj, const char *arg)
+ 		return;
+ 	}
+ 	ed->cmd = buf;
+-	obj->data.opaque = ed;
++	obj->data.s = strndup(arg ? arg : "", text_buffer_size.get(*state));
+ }
+ #endif /* BUILD_X11 */
+ 
