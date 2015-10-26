@@ -1,14 +1,14 @@
 pkgbase = elgeneral-icon-theme
 	pkgdesc = An icon theme for Plasma Desktop
-	pkgver = 1.2.0.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/fabianalexisinostroza/El-General
 	arch = any
 	license = GPL3
 	conflicts = elgeneral-icon-theme-git
 	options = !strip
-	source = v1.2.0.1.tar.gz::https://github.com/fabianalexisinostroza/El-General/archive/v1.2.0.1.tar.gz
-	sha256sums = 4105182c2bf8b3f900b50df091fad7229bae5156f003da2407756f15824a0c4f
+	source = v1.2.1.tar.gz::https://github.com/fabianalexisinostroza/El-General/archive/v1.2.1.tar.gz
+	sha256sums = d445c5605e2ecffe2d79cf43978ca808f4a1f45370ea9456f671f1bb34e7f40d
 
 pkgname = elgeneral-icon-theme
 
