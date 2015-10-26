@@ -4,7 +4,7 @@
 pkgname=grib_api
 pkgver=1.14.2
 _attnum=3473437
-pkgrel=3
+pkgrel=1
 pkgdesc="A program interface for encoding and decoding GRIB messages"
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/GRIB/Home"
