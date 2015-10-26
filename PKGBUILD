@@ -6,7 +6,7 @@ pkgdesc="CUE Sheet Parser Library"
 arch=('i686' 'x86_64')
 url="https://github.com/lipnitsk/libcue"
 license=('GPL2')
-makedepends=('git')
+makedepends=('git' 'cmake' 'flex' 'bison')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('libcue::git+https://github.com/lipnitsk/libcue.git#commit=62a4b71')

@@ -7,6 +7,9 @@ pkgbase = libcue-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = cmake
+	makedepends = flex
+	makedepends = bison
 	provides = libcue
 	conflicts = libcue
 	source = libcue::git+https://github.com/lipnitsk/libcue.git#commit=62a4b71
