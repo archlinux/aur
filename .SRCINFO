@@ -1,6 +1,6 @@
 pkgbase = pyresample
 	pkgdesc = Geospatial image resampling in Python
-	pkgver = 1.1.3
+	pkgver = v1.1.5
 	pkgrel = 1
 	url = http://pyresample.readthedocs.org
 	arch = any
