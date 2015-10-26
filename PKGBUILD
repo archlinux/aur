@@ -30,6 +30,7 @@ build() {
 	--with-dri-driverdir=/usr/lib/xorg/modules/dri \
 	--with-dri-drivers= \
 	--with-gallium-drivers=vc4 \
+	--enable-glx-tls \
 	--disable-xvmc \
 	--enable-gles1 \
 	--enable-gles2 \
