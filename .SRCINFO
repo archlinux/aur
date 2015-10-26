@@ -1,0 +1,23 @@
+pkgbase = rtags-git
+	pkgdesc = RTags is a client/server application that indexes C/C++ code.
+	pkgver = v2.0.r699.g737b04e
+	pkgrel = 1
+	url = https://github.com/Andersbakken/rtags
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = llvm
+	makedepends = zlib
+	depends = bash
+	depends = clang
+	optdepends = bash-completion: for bash completion
+	optdepends = zlib
+	provides = rtags
+	conflicts = rtags
+	source = git+https://github.com/Andersbakken/rtags.git
+	sha256sums = SKIP
+
+pkgname = rtags-git
+
