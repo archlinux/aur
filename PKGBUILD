@@ -1,7 +1,7 @@
 # Maintainer: Lukky513 <lukky513 (a t) gmail (d o t) com>
 pkgname=zatikon
 pkgver=1.003
-pkgrel=1
+pkgrel=2
 pkgdesc='Turn-based board strategy game inspired by chess, made by Chronic Logic'
 arch=('any')
 url="http://www.zatikon.com"
@@ -10,7 +10,7 @@ depends=('java-environment'
          'hicolor-icon-theme'
          'sh')
 install=('zatikon.install')
-source=('http://s159260531.onlinehome.us/demos/zatikon-jars.tar.xz')
+source=('https://dl.dropboxusercontent.com/s/ww6ibq603fmvck1/zatikon-jars.tar.xz')
 
 package() {
     _gamedir=${pkgdir}/opt/${pkgname}
