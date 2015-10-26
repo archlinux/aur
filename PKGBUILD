@@ -3,7 +3,7 @@
 
 _pkgname=git-flow-completion
 pkgname=gitflow-zshcompletion-avh
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="ZSH completion support for gitflow (AVH-Edition)."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('zsh' 'git' 'gitflow')
 conflicts=('zsh-completions')
 source=("https://github.com/petervanderdoes/git-flow-completion/archive/${pkgver}.tar.gz")
-md5sums=('e4cc40aaf00a0e99e4e4b927c0dd49ee')
+sha512sums=('500cb6163ebb2bf9b996dd5bcac00efa857badfc95ee1d633f2b16803c6baae7315a96c713107645e0971be4736fe1eef747dc773eb50da138551be4838c21b3')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"

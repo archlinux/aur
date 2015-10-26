@@ -1,6 +1,6 @@
 pkgbase = gitflow-zshcompletion-avh
 	pkgdesc = ZSH completion support for gitflow (AVH-Edition).
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/petervanderdoes/git-flow-completion
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gitflow-zshcompletion-avh
 	depends = git
 	depends = gitflow
 	conflicts = zsh-completions
-	source = https://github.com/petervanderdoes/git-flow-completion/archive/0.5.1.tar.gz
-	md5sums = e4cc40aaf00a0e99e4e4b927c0dd49ee
+	source = https://github.com/petervanderdoes/git-flow-completion/archive/0.5.2.tar.gz
+	sha512sums = 500cb6163ebb2bf9b996dd5bcac00efa857badfc95ee1d633f2b16803c6baae7315a96c713107645e0971be4736fe1eef747dc773eb50da138551be4838c21b3
 
 pkgname = gitflow-zshcompletion-avh
 
