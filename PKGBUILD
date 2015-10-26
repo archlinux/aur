@@ -4,7 +4,7 @@ pkgname=keybase-staging
 pkgdesc='staging build of the Keybase Go client'
 url='https://keybase.io/docs/cli_kbstage'
 license=('BSD')
-pkgver=33.2b4bc5a
+pkgver=39.7f3132e
 pkgver() {
   cd "$srcdir/client-beta"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -19,6 +19,7 @@ md5sums=('SKIP')
 package() {
   cd "$srcdir/client-beta"
   export GOPATH=`pwd`
+  export GO15VENDOREXPERIMENT=1
   mkdir -p src/github.com/keybase
   cp -r client src/github.com/keybase/
   cd src/github.com/keybase/client/go/keybase
