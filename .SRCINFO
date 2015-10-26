@@ -1,7 +1,7 @@
 pkgbase = steam-native
 	pkgdesc = Sets a native runtime environment for Steam by default, adds a Steam runtime launcher for compatibility.
 	pkgver = 1.0.0.50
-	pkgrel = 15
+	pkgrel = 16
 	url = http://steampowered.com/
 	install = steam-native.install
 	arch = i686
@@ -67,6 +67,7 @@ pkgbase = steam-native
 	optdepends_x86_64 = lib32-speex: game dependency
 	optdepends_x86_64 = lib32-gperftools: game dependency
 	optdepends_x86_64 = lib32-libcurl-gnutls: game dependency
+	optdepends_x86_64 = lib32-glew1.10: gmae dependency
 	sha256sums_x86_64 = b56b9da85e5647ef2b8013d14378b30917d7701cd61b27ba6a39045ab5ecc529
 
 pkgname = steam-native

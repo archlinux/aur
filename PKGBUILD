@@ -4,7 +4,7 @@
 
 pkgname=steam-native
 pkgver=1.0.0.50
-pkgrel=15
+pkgrel=16
 pkgdesc="Sets a native runtime environment for Steam by default, adds a Steam runtime launcher for compatibility."
 arch=('i686' 'x86_64')
 url='http://steampowered.com/'
@@ -28,7 +28,7 @@ depends_x86_64=('lib32-openal' 'lib32-gtk2' 'lib32-libgcrypt15' 'lib32-libnl' 'l
 
 optdepends=('mono: game dependency' 'mono-addins: game dependency')
 optdepends_i686=('libappindicator-gtk2: needed if tray icon not working (Gnome)' 'libappindicator-gtk3: needed if tray icon not working (Gnome)' 'sdl: game dependency' 'sdl_image: game dependency' 'sdl_mixer: game dependency' 'sdl2: game dependency' 'sdl2_image: game dependency' 'tcp_wrappers-libs: game dependency' 'speex: game dependency' 'gperftools: game dependency' 'libcurl-gnutls: game dependency')
-optdepends_x86_64=('lib32-libappindicator-gtk2: needed if tray icon not working (Gnome)' 'lib32-libappindicator-gtk3: needed if tray icon not working (Gnome)' 'lib32-sdl: game dependency' 'lib32-sdl_image: game dependency' 'lib32-sdl_mixer: game dependency' 'lib32-sdl2: game dependency' 'lib32-sdl2_image: game dependency' 'lib32-tcp_wrappers-libs: game dependency' 'lib32-speex: game dependency' 'lib32-gperftools: game dependency' 'lib32-libcurl-gnutls: game dependency')
+optdepends_x86_64=('lib32-libappindicator-gtk2: needed if tray icon not working (Gnome)' 'lib32-libappindicator-gtk3: needed if tray icon not working (Gnome)' 'lib32-sdl: game dependency' 'lib32-sdl_image: game dependency' 'lib32-sdl_mixer: game dependency' 'lib32-sdl2: game dependency' 'lib32-sdl2_image: game dependency' 'lib32-tcp_wrappers-libs: game dependency' 'lib32-speex: game dependency' 'lib32-gperftools: game dependency' 'lib32-libcurl-gnutls: game dependency' 'lib32-glew1.10: gmae dependency')
 
 provides=('libudev.so.0')
 provides_x86_64=('lib32-libudev.so.0' 'lib32-networkmanager=0.9.8.10' 'lib32-libnm-glib=0.9.8.10')
