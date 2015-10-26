@@ -10,10 +10,10 @@ pkgname=firefox-always-nightly
 pkgdesc='Standalone web browser from mozilla.org, nightly build, always updating'
 url='https://nightly.mozilla.org'
 pkgver=99.0a1
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_srcurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk"
+_srcurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-trunk"
 _version="$(curl -s "${_srcurl}/" | grep -Eo firefox-.+tar.bz2 | cut -d- -f2 | cut -d. -f1-2 | tail -n1)"
 _file="firefox-${_version}.en-US.linux-${CARCH}"
 curl -so {,${_srcurl}/}${_file}.checksums
@@ -45,7 +45,6 @@ pkgver() {
 }
 
 package() {
-  
   # Use VERIFY_GPG=1 to enable GnuPG signature verification.
   # You'll need Firefox's GnuPG release key.
   # Their current fingerprint is
@@ -54,11 +53,9 @@ package() {
   if [[ $VERIFY_GPG -eq 1 ]]; then
     msg "Verifying GnuPG signature..."
     FX_GPG="${_file}.checksums.asc"
-    FX_GPG_URI="${_srcurl}/${FX_GPG}"
-    FX_CHKSUM_URI="${_srcurl}/${_file}.checksums"
-    curl -OR ${FX_CHKSUM_URI}
-    curl -OR ${FX_GPG_URI} 
-    gpg --verify ${FX_GPG} 
+    curl -OR "${_srcurl}/${_file}.checksums"
+    curl -OR "${_srcurl}/${FX_GPG}"
+    gpg --verify ${FX_GPG}
   fi
 
   #  uncomment this line to remove these
