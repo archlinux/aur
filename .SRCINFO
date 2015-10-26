@@ -1,7 +1,7 @@
 pkgbase = lxdm-themes
 	pkgdesc = Archlinux, ArchlinuxFull, ArchlinuxTop, Arch-Dark, Arch-Stripes and IndustrialArch lxdm themes
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.archlinux.org/index.php/LXDM#Themes
 	install = lxdm-themes.install
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = lxdm-themes
 	source = greeter.ui.ArchlinuxFull
 	source = http://xdsl.hi2.ro/work/archlinux-lxdm.tar.gz
 	source = git+https://github.com/M4rQu1Nh0S/industrial-arch.git
-	source = https://www.dropbox.com/s/55yz4pforijf9ma/lxdm-themes.tar.gz
+	source = https://dl.dropboxusercontent.com/u/33870708/lxdm-themes.tar.gz
 	sha256sums = 1eeaee69da8dd0ab28fc6967b06d4594980808bed83e822858a31b46926acbe7
 	sha256sums = 09c66ccc6de32c6685b4f27cbfd2f2a2a679d4e961eebcbc80c294eb8d0f47d3
 	sha256sums = ad98f832de33909f321e87b10e0af2da156b91e0abf4b7e877e506dbed2fdd6e
