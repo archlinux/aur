@@ -91,7 +91,7 @@ diff -Naur a/program/ucloner_cmd.py b/program/ucloner_cmd.py
          
      # 生成 mtab
 -    tmp = commands.getstatusoutput( 'touch ' + target_dir+'/etc/mtab' )
-+    tmp = commands.getstatusoutput( 'ln -s /proc/self/mounts ' + target_dir+'/etc/mtab' )
++    tmp = commands.getstatusoutput( '[ -f '+target_dir+'/etc/mtabs ] || ln -s /proc/self/mounts '+target_dir+'/etc/mtab' )
      
      # 修复休眠功能
      ret = functions.fix_resume( target_dir, swappart )
