@@ -1,7 +1,7 @@
 # Contributor: vit01 (vitirk) <me@ii-net.tk>
 
 pkgname='iicli-modular'
-pkgver='0.2'
+pkgver='0.3'
 pkgdesc="simple gui client for ii network"
 pkgrel=1
 arch=('any')
