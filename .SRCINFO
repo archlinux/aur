@@ -1,6 +1,6 @@
 pkgbase = rawtherapee-git
-	pkgdesc = RAW photo editor
-	pkgver = 2971.11d382d
+	pkgdesc = Raw photo editor
+	pkgver = 3074.26d182d
 	pkgrel = 1
 	url = http://www.rawtherapee.com/
 	install = rawtherapee.install
@@ -16,6 +16,7 @@ pkgbase = rawtherapee-git
 	depends = lcms2
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
+	optdepends = gtk-engines: workaround theme bug under GNOME
 	provides = rawtherapee
 	conflicts = rawtherapee
 	source = rawtherapee::git+https://github.com/Beep6581/RawTherapee.git
