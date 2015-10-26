@@ -10,6 +10,7 @@ pkgbase = go-ipfs-git
 	makedepends = git
 	makedepends = go
 	optdepends = fuse: for mounting/advanced use
+	optdepends = bash-completion: bash completion support
 	provides = go-ipfs
 	conflicts = go-ipfs
 	source = git+https://github.com/ipfs/go-ipfs.git

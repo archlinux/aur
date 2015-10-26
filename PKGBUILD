@@ -1,16 +1,18 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: kpcyrd <git@rxv.cc>
 # Contributor: Ian Naval <ianonavy@gmail.com>
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=0.3.7.r2.gb30d9d4
 pkgrel=1
-pkgdesc="global versioned p2p merkledag file system"
-arch=('i686' 'x86_64' 'armv7h')
+pkgdesc='global versioned p2p merkledag file system'
 url="https://github.com/ipfs/$_pkgname"
+arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 makedepends=('git' 'go')
-optdepends=('fuse: for mounting/advanced use')
+optdepends=('fuse: for mounting/advanced use'
+            'bash-completion: bash completion support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+${url}.git")
@@ -21,15 +23,16 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  mkdir -p "$srcdir"/src/github.com/ipfs
+  ln -s "$srcdir/$_pkgname" "$srcdir"/src/github.com/ipfs/go-ipfs
+}
+
 build() {
   # Required for go get
   export GOPATH="$srcdir"
 
-  # Make src directory for $GOPATH
-  mkdir -p "$GOPATH/src"
-
-  mv "$srcdir/$_pkgname" "$GOPATH/src"
-  cd "$GOPATH/src/$_pkgname/cmd/ipfs"
+  cd "$srcdir"/src/github.com/ipfs/go-ipfs/cmd/ipfs
 
   msg2 'Installing dependencies...'
   go get -v ./...
@@ -39,8 +42,14 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+  msg2 'Packaging binary...'
+  install -Dm 755 bin/ipfs "${pkgdir}/usr/bin/ipfs"
 
-  install -dm755 "$pkgdir/usr/bin"
-  install -m755 "$srcdir/bin/ipfs" "$pkgdir/usr/bin/ipfs"
+  msg2 'Packaging auxiliary files...'
+  cd "$_pkgname"
+  install -Dm 644 misc/completion/ipfs-completion.bash "${pkgdir}/etc/bash_completion.d/ipfs"
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+    README.md \
+    CHANGELOG.md
 }
