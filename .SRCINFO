@@ -1,0 +1,22 @@
+pkgbase = cogs
+	pkgdesc = A game in which you build machines from sliding tiles
+	pkgver = 4
+	pkgrel = 2
+	url = http://www.cogsgame.com/
+	arch = i686
+	arch = x86_64
+	groups = humblebundle3
+	groups = humblebundle4
+	groups = humblebundles
+	license = unknown
+	makedepends = imagemagick
+	depends = gcc-libs
+	depends = sdl<1.3
+	depends = openal
+	source = hib://cogs-installer-build4
+	source = cogs.desktop
+	md5sums = dbfb640b494ccaddd0d3553390720ad9
+	md5sums = a35a1fc9e81e3ab180cc2fe523e5ad43
+
+pkgname = cogs
+

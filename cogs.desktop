@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cogs
+Exec=/opt/cogs/Cogs
+Icon=cogs
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;
