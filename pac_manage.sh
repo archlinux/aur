@@ -26,9 +26,9 @@ addSection() {
     local section=$2
     local comment=$3
     if [ -z "$comment" ]; then
-        echo "${section}=(" >> $LIST_FILE
+        echo "${section}=( # {{{" >> $LIST_FILE
     else
-        echo "${section}=( # $comment" >> $LIST_FILE
+        echo "${section}=( # {{{ $comment" >> $LIST_FILE
     fi
     for i in "${!list[@]}"; do
         redrawProgressBar 50 0 $i ${#list[@]}
@@ -36,9 +36,15 @@ addSection() {
         local info=$(yaourt -Qe $package)
         local repository=$(echo $info | cut -d' ' -f1 | cut -d/ -f1)
         local group=$(echo $info | cut -d' ' -f3)
-        printf "%-30s # %-30s\n" "$package" "$repository $group" >> $LIST_FILE
+        local extrainfo="$repository $group"
+        if [ ${#package} -ge 30 ] || [ ${#extrainfo} -ge 50 ]; then
+            echo "$package" >> $LIST_FILE
+        else
+            printf "%-30s # %-50s\n" "$package" "$repository $group"\
+                >> $LIST_FILE
+        fi
     done
-    echo ")" >> $LIST_FILE
+    echo ") # }}}" >> $LIST_FILE
 }
 createInitialPackageList() {
     # write package-list
@@ -49,7 +55,9 @@ createInitialPackageList() {
         "AUR_PACKAGES"
     addSection "$(yaourt -Qema | grep ^local | cut -d' ' -f1 | cut -d/ -f2)"\
         "LOCAL_PACKAGES" "true local packages, not from aur"
-    echo " # vim: foldmethod=marker foldmarker=\=(,):" >> $LIST_FILE
+    echo "# vim: foldmethod=marker foldmarker={{{,}}}" >> $LIST_FILE
+    echo ""
+    echo "You can now edit your package list!"
 }
 updatePackageList() {
     for package in $(yaourt -Qqe); do
