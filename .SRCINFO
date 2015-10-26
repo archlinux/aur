@@ -25,6 +25,7 @@ pkgbase = kdevplatform-git
 	depends = hicolor-icon-theme
 	optdepends = kompare-git: difference checking
 	optdepends = subversion: Subversion plugin
+	provides = kdevplatform
 	conflicts = kdevplatform
 	source = git://anongit.kde.org/kdevplatform
 	sha1sums = SKIP

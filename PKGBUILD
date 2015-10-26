@@ -31,6 +31,7 @@ makedepends=('cmake'
              'subversion'
              )
 conflicts=('kdevplatform')
+provides=('kdevplatform')
 source=('git://anongit.kde.org/kdevplatform')
 sha1sums=('SKIP')
 install=kdevplatform-git.install
