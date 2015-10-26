@@ -1,7 +1,7 @@
 pkgname=cgal-ipelets
 pkgver=4.6
-pkgrel=2
-ipever=7.1.8           # too bad no way to determine this automatically
+pkgrel=3
+ipever=7.1.9           # too bad no way to determine this automatically
 _pkgid=34705
 pkgdesc="Ipelets from CGAL"
 arch=('i686' 'x86_64')
