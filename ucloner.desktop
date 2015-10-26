@@ -2,7 +2,7 @@
 Categories=Utility;
 Comment[zh_CN]=Linux系统备份工具
 Comment=Linux system backup utility
-Exec=gksu ucloner
+Exec=[ -f /usr/bin/gksu ] && exec gksu ucloner || exec kdesu ucloner
 GenericName[zh_CN]=
 GenericName=
 Icon=ucloner
@@ -14,7 +14,4 @@ StartupNotify=true
 Terminal=false
 TerminalOptions=
 Type=Application
-X-DBUS-ServiceName=
-X-DBUS-StartupType=
-X-KDE-SubstituteUID=false
-X-KDE-Username=
+

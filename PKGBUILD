@@ -7,7 +7,11 @@ arch=('any')
 url="https://code.google.com/p/ucloner"
 license=('GPL')
 depends=('pygtk' 'vte' 'squashfs-tools' 'zenity' 'rsync')
-optdepends=('jfsutils' 'reiserfsprogs' 'xfsprogs' 'gksu')
+optdepends=('jfsutils: Create jfs file system in ucloner.'
+            'reiserfsprogs: Create reiserfs file system in ucloner.'
+            'xfsprogs: Create xfs file system in ucloner.'
+            'gksu: Access ucloner from application menu under GTK-base DE'
+            'kdesu: Access ucloner from application menu under KDE')
 source=(
     'https://ucloner.googlecode.com/files/UCloner-10.10.2-beta1.tar.gz'
     'ucloner.sh'
@@ -20,7 +24,7 @@ source=(
 md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
          '3dac4b28900e7be1068b502b7b848028'
          '15efc60875b77125f8d5399797306955'
-         '32a9a04b595890e50fa10fe51823469a'
+         '422ffbdfb1fc79dddf46f868e890e435'
          '1f913fe9ca34481134bc36e1045e9a20'
          'af4f56df7ad0fea080204b35ff206660')
 
