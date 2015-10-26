@@ -36,17 +36,13 @@ prepare() {
 build() {
   cd linux
 
-  # get kernel version
-  make prepare
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
+  # copy in the baseline config
   cp arch/arm/configs/bcm2835_defconfig .config
+  
+  # brush it up
   make olddefconfig
+  
+  # add in vc4 special sauce
   cat > vc4.cfg <<EOF
 CONFIG_DRM=y
 CONFIG_DRM_VC4=y
@@ -55,10 +51,6 @@ CONFIG_CMA_SIZE_MBYTES=128
 # CONFIG_FB_BCM2708 is not set
 EOF
   scripts/kconfig/merge_config.sh -r .config vc4.cfg
-  # ... or manually edit .config
-
-  # Copy back our configuration (use with new kernel version)
-  #cp ./.config ../${pkgver}.config
 
   ####################
   # stop here
@@ -67,8 +59,7 @@ EOF
   #return 1
   ####################
 
-  #yes "" | make config
-
+  make prepare
   msg "Building!"
   make ${MAKEFLAGS} zImage modules dtbs
 }
