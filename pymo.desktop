@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=pymo
+GenericName=pymo
+Comment=An AVG game engine for mobile devices.
+Icon=pymo
+Exec=pymo
+Categories=Game;AdventureGame;

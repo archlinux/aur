@@ -9,6 +9,10 @@ pkgbase = pymo
 	depends = python2
 	depends = python2-pygame
 	source = git+https://github.com/pymo/pymo.git
+	source = pymo.desktop
+	source = pymo.png
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = pymo
