@@ -46,7 +46,7 @@ package() {
     rm -rf win32/ launcher* Makefile *.svg songs/tutorial/*.svg \
         mods/Chilly/*.svg mods/LightGraphics/*.svg 
     find $pkgdir/usr/share/$pkgname -type f -exec chmod 664 {} + 
-    find $pkgdir/usr/share/$pkgname -type d -exec chmod 775 {} + 
+    find $pkgdir/usr/share/$pkgname -type d -exec chmod 755 {} + 
 
     # Installing .desktop, icon and bin
     install -Dm 644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
