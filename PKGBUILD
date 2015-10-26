@@ -4,17 +4,17 @@
 # Contributor: Joshua Stiefer <facedelajunk@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wordgrinder
-pkgver=0.5.2.1
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc="A word processor for processing words."
 url="http://wordgrinder.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('lua52' 'lua52-filesystem' 'zlib')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2")
-md5sums=('5410114f6617da254481a52cfb1dca95')
-sha1sums=('161702ccbe22ccc4d1b39e966e6ae1e0cc8f2255')
-sha256sums=('7e0d5345e996a6d0dec33cd485577cf86b33b21845477e901705d971bda442f5')
+source=("https://github.com/davidgiven/$pkgname/archive/${pkgver}.tar.gz")
+md5sums=('f766ed92430073a12494f626476b5488')
+sha1sums=('f2bc7d7f1b32a2b1a68978086e046564420df78a')
+sha256sums=('3459cab32ca89d8585aa96ef0b9db2ac3802773223786991e48b3c62e2ee7eed')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
