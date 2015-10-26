@@ -15,7 +15,7 @@ source=("git+http://github.com/anholt/linux.git#branch=$_branch"
         'config.txt'
         'cmdline.txt')
 md5sums=('SKIP'
-         '90ce3ff13ea99152a719b98f2fe0e948'
+         '6a7215bbdea706ce302acd29448b7154'
          '60bc3624123c183305677097bcd56212')
 
 pkgver() {

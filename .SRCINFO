@@ -15,7 +15,7 @@ pkgbase = linux-git-rbp
 	source = config.txt
 	source = cmdline.txt
 	md5sums = SKIP
-	md5sums = 90ce3ff13ea99152a719b98f2fe0e948
+	md5sums = 6a7215bbdea706ce302acd29448b7154
 	md5sums = 60bc3624123c183305677097bcd56212
 
 pkgname = linux-git-rbp
