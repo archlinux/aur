@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ScaleIO GUI
+Comment=ScaleIO GUI client
+Exec=/usr/bin/scaleio-gui
+Icon=scaleio
+Terminal=false
+Type=Application
+StartupNotify=true
