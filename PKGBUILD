@@ -6,7 +6,8 @@ pkgdesc="Literate programmer's editor, outliner, and project manager"
 arch=('any')
 url="http://leoeditor.com/"
 license=('custom')
-depends=('python-pyqt5' 'shared-mime-info' 'python-setuptools')
+depends=('python-pyqt5' 'shared-mime-info' 'desktop-file-utils'  
+         'python-setuptools')
 optdepends=('python-pyenchant: spellchecking support'
             'python-docutils: viewrendered support' 
             'python-sphinx: documentation support')
