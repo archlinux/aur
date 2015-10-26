@@ -1,6 +1,6 @@
 pkgbase = avogadro2-git
 	pkgdesc = Avogadro 2: graphical application
-	pkgver = 0.8.0.r969.2d2f8d3
+	pkgver = 0.8.0.r306.83a3654
 	pkgrel = 1
 	url = http://openchemistry.org/projects/avogadro2
 	install = avogadro2.install
@@ -18,7 +18,7 @@ pkgbase = avogadro2-git
 	depends = avogadrolibs
 	provides = avogadro2
 	conflicts = avogadro2
-	source = git://github.com/OpenChemistry/avogadroapp.git
+	source = avogadro2::git://github.com/OpenChemistry/avogadroapp.git
 	sha256sums = SKIP
 
 pkgname = avogadro2-git
