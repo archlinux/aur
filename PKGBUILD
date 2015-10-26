@@ -1,0 +1,20 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+
+pkgname=dg
+pkgver=1.1.0.20151005
+_commit=8a2f9210352216855d0da04fdbb60e8080820bd6
+pkgrel=1
+pkgdesc="A simple language that compiles to CPython bytecode"
+arch=('any')
+url="https://pyos.github.io/dg"
+license=('MIT')
+depends=('python')
+makedepends=('git')
+source=("git://github.com/pyos/dg.git#commit=$_commit")
+md5sums=('SKIP')
+
+package() {
+  cd dg
+  python setup.py install --root="${pkgdir}/" --optimize=1
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
