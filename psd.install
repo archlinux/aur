@@ -1,9 +1,13 @@
 ## arg 1:  the new package version
 ## arg 2:  the old package version
+users=$(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba;s/\n/ /g')
 
 post_install() {
 	echo '--> WARNING! DEVELOPMENT VERSION!'
 	echo '--> ALWAYS backup your profile data before using utils like psd!'
+	for i in $users; do
+		su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
+	done
 }
 
 pre_upgrade() {
@@ -30,23 +34,22 @@ pre_upgrade() {
 	fi
 
 	# in general stop and restart always when using dev version
-	for i in $(users); do
+	for i in $users; do
 		running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 		if [[ "$running" = "active" ]]; then
 			su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
 			echo '-> Dev version of psd so ALWAYS a good idea to stop running psd before updating.'
 		fi
-			su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
 	done
 }
 
 pre_remove() {
-	for i in $(users); do
+	for i in $users; do
 		running="$(su $i -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 		if [[ "$running" = "active" ]]; then
+			su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
 			echo "--> In order to preserve your profiles, pacman will now stop your psd service."
 			echo "--> Any running and managed browsers will be exited."
-			su $i -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
 		fi
 	done
 }
