@@ -4,7 +4,7 @@
 # Contributor: Vinay Shastry <vinayshastry@gmail.com>
 
 pkgname=aqua-data-studio
-pkgver=16.0.5
+pkgver=16.0.9
 pkgrel=1
 pkgdesc="An universal database query tool and administration tool"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('java-runtime' 'libgl')
 options=('!strip')
 source=(http://dd1.aquafold.com/download/v16.0.0/linux/ads-linux-novm-$pkgver.tar.gz
         datastudio.sh)
-sha256sums=('fab5f2e8dbbd627e64053274bb5d3236a73bde3f1ba25260328d2c6a3c6e9f8c'
+sha256sums=('49baad924e60a7a5dec77007462e9566a2118802695b24ff118713bf9f0fb0b4'
             '6f52bcac1d29fd7ee33bba4475bfaae575a7a971fd1f8084ff6449fcc890e3e5')
 
 package() {
