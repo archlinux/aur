@@ -15,7 +15,7 @@ source=("git+http://github.com/anholt/linux.git#branch=$_branch"
         'config.txt'
         'cmdline.txt')
 md5sums=('SKIP'
-         '9a3c82da627b317ec79c37fd6afba569'
+         '90ce3ff13ea99152a719b98f2fe0e948'
          '60bc3624123c183305677097bcd56212')
 
 pkgver() {
@@ -52,6 +52,7 @@ CONFIG_DRM=y
 CONFIG_DRM_VC4=y
 CONFIG_I2C_BCM2835=y
 CONFIG_CMA_SIZE_MBYTES=128
+# CONFIG_FB_BCM2708 is not set
 EOF
   scripts/kconfig/merge_config.sh -r .config vc4.cfg
   # ... or manually edit .config
