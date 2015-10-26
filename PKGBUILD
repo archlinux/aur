@@ -2,7 +2,7 @@
 
 pkgname=supercollider-git
 _name="supercollider"
-pkgver=3.7.0.alpha1.r224.g4bdc1d7
+pkgver=3.7.0.alpha1.r373.g12eb92f
 pkgrel=1
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition."
 url="http://supercollider.sourceforge.net/"
