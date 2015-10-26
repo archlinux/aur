@@ -1,0 +1,17 @@
+pkgbase = digilent.adept.utilities
+	pkgdesc = The Adept configuration tools
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://www.digilentinc.com/Products/Detail.cfm?Prod=ADEPT2
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = digilent.adept.runtime
+	options = !strip
+	source_x86_64 = http://www.digilentinc.com/Data/Products/ADEPT2/digilent.adept.utilities_2.2.1-amd64.deb
+	md5sums_x86_64 = cca4cfc00fa8134b7402b28d2c9db115
+	source_i686 = http://www.digilentinc.com/Data/Products/ADEPT2/digilent.adept.utilities_2.2.1-i386.deb
+	md5sums_i686 = a882a81ece4e1e384dc99c970c237c6d
+
+pkgname = digilent.adept.utilities
+
