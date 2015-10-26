@@ -1,0 +1,18 @@
+pkgbase = qfsm
+	pkgdesc = A graphical tool for designing finite state machines
+	pkgver = 0.54.0
+	pkgrel = 1
+	url = http://qfsm.sourceforge.net/index.html
+	install = qfsm.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = qtchooser
+	depends = qt4
+	depends = graphviz
+	source = http://sourceforge.net/projects/qfsm/files/qfsm/qfsm-0.54/qfsm-0.54.0-Source.tar.bz2
+	sha256sums = 2b53b7e54e42d4c188f62220aaae3d3fb5e8239b8ac8e88f793689cc0a5b8766
+
+pkgname = qfsm
+
