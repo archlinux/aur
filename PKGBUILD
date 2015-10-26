@@ -3,7 +3,7 @@
 pkgname=heyu
 pkgver=2.11_rc2
 _pkgver=2.11-rc2
-pkgrel=3
+pkgrel=4
 pkgdesc="X10 Automation for Linux, Unix, and Mac OS X"
 arch=(i686 x86_64)
 url="http://www.heyu.org/"
@@ -19,7 +19,7 @@ prepare() { true; }
 
 build() {
   cd $srcdir/$pkgname-$_pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc
+  ./configure --localstatedir=/var --mandir=/usr/share/man --enable-postinst=./post-install.sh --sysconfdir=/etc --prefix=/usr
   make || return 1
 }
 
