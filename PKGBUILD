@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.2-gnu
-_pkgver=4.2.3-gnu
+_pkgver=4.2.4-gnu
 _grsecver=3.1
-_timestamp=201510092347
+_timestamp=201510240907
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -67,9 +67,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
-            '9e452d470bd33ea9cdbab5a285bea8c5b4ac91087ffb154e65c32c360a9a53f1'
+            'dc3df5f547a9ef51695dc6de7c40149e4d514777b4a3943557f01d8487bb2120'
             'SKIP'
-            '15378dc9ec61970bc3f7937bf0e99c32ea2999beb74053d8322c20ed449242d1'
+            '114a6a7ac2d36c3e8a6904b5be10fadb58c0742154230171eb63aae4681f3b36'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
@@ -79,13 +79,13 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'e1e5c04ff9260fd1fe23cfd734e7e5f1bede1238d73e91f3a9059c4491996122'
-            '6d45749529e4cda48d723659d14a2cbbfa3a6cc499a08e1d6348418db282b7f8'
-            '0e4d84a2d164efc39146ec871cdaed8c0a76fc3a111b3218038789344e4815ea'
+            'c4acdaba08c2f7176e1392ae06ffdd5978da4a880a0f88b82f794bd55084bc5a'
+            '15adc97c3f4a050dcccbfa8ec7e85c607437b7db8192bff1d9fb75fcea57a1ae'
+            '34016494b7f80314c62fff307b0cb8a35611cfc4f0aaa4d96f17ff77acc0292e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
-            '096ea2c64bc3d2b7079b2acc2029b24fdec81d9686f1adc3a6f280b24b09b478'
+            '1502d1bbb6d29740f2a32a85666925361bede5900b38c4d25d0b33601ff9dc39'
             'SKIP'
             '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
             '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
@@ -273,9 +273,9 @@ _package() {
   cp -a tools/gcc/*.h "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
   cp -a tools/gcc/Makefile "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
   install -m644 tools/gcc/*.so "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
-  #mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
-  #install -m644 tools/gcc/size_overflow_plugin/Makefile tools/gcc/size_overflow_plugin/*.so \
-    #"$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
+  mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
+  install -m644 tools/gcc/size_overflow_plugin/Makefile tools/gcc/size_overflow_plugin/*.so \
+    "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
 }
 
 _package-headers() {
