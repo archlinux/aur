@@ -1,13 +1,14 @@
 pkgbase = ginkgocadx-bin
 	pkgdesc = Complete DICOM viewer solution.
 	pkgver = 3.7.1.1573.46
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ginkgo-cadx.com/
 	install = ginkgocadx-bin.install
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	depends = libjpeg6
+	depends = libpng12
 	options = !strip
 	source = http://ufpr.dl.sourceforge.net/project/ginkgocadx/3.7.1/Ginkgo_CADx-3.7.1.1573.46_linux_x86_64.tgz
 	source = ginkgocadx.desktop
