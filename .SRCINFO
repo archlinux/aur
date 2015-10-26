@@ -31,6 +31,7 @@ pkgbase = kdevelop-git
 	optdepends = cmake: build system
 	optdepends = kdevelop-pg-qt-git: Parser Generator
 	optdepends = clang: LLVM compiler plugin
+	provides = kdevelop
 	conflicts = kdevelop
 	source = git://anongit.kde.org/kdevelop.git
 	sha1sums = SKIP

@@ -37,6 +37,7 @@ makedepends=('extra-cmake-modules'
              'kdevelop-pg-qt-git'
              'clang')
 conflicts=('kdevelop')
+provides=('kdevelop')
 source=('git://anongit.kde.org/kdevelop.git')
 sha1sums=('SKIP')
 install=kdevelop-git.install
