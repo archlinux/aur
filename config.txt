@@ -126,7 +126,8 @@
 #sdram_freq=500
 #over_voltage=6
 
-gpu_mem=64
-
-mask_gpu_interrupt0=0x400   # VPU shouldn't handle V3D interrupts
-avoid_warnings=2            # VPU shouldn't smash our display setup.
+# added for vc4 driver
+mask_gpu_interrupt0=0x400
+avoid_warnings=2
+disable_overscan=1
+dtparam=spi=on
