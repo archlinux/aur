@@ -1,19 +1,17 @@
 # Maintainer: Samuel Damashek <samuel dot damashek at gmail dot com>
 pkgname=huggle
-pkgver=3.1.12
-pkgrel=2
+pkgver=3.1.18
+pkgrel=1
 pkgdesc="Huggle Anti-Vandalism tool for Wikipedia"
 arch=('i686' 'x86_64')
 url="https://en.wikipedia.org/wiki/Wikipedia:Huggle"
 license=('GPL')
-makedepends=('qconf' 'cmake' 'qtwebkit' 'qt4')
+makedepends=('qconf' 'cmake' 'qtwebkit' 'qt5-base')
 groups=('base-devel')
 source=("https://github.com/huggle/huggle3-qt-lx/archive/${pkgver}.tar.gz")
-md5sums=('839c74bf5903846d535be0affa08022f')
+md5sums=('33dc2147cee192e1209d0ca1e81dcf3d')
 
 build() {
-    #cd "$srcdir"
-    #tar -xf "$pkgver.tar.gz"
     cd "$srcdir/huggle3-qt-lx-$pkgver/huggle"
 
     cmake . -DCMAKE_INSTALL_PREFIX=/usr
