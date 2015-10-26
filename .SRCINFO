@@ -1,6 +1,6 @@
 pkgbase = tixati
 	pkgdesc = A simple P2P client that is compatible with the BitTorrent protocol
-	pkgver = 2.23
+	pkgver = 2.24
 	pkgrel = 1
 	url = http://www.tixati.com/
 	install = tixati.install
@@ -12,10 +12,10 @@ pkgbase = tixati
 	optdepends = gconf: for shell integration
 	source = LICENSE
 	sha1sums = 35d7f63a3b0dbf3f8f2bd0a45a7f3c96b453e86b
-	source_i686 = http://tixati.com/download/tixati-2.23-1.i686.manualinstall.tar.gz
-	sha1sums_i686 = 29fc2b1bb8b5c192320360fae912a8c3de623844
-	source_x86_64 = http://tixati.com/download/tixati-2.23-1.x86_64.manualinstall.tar.gz
-	sha1sums_x86_64 = 7e868aee5b09acac14843037513054e8f0143f04
+	source_i686 = http://tixati.com/download/tixati-2.24-1.i686.manualinstall.tar.gz
+	sha1sums_i686 = 55d8746d1127b813138037716d8d07617c80aeed
+	source_x86_64 = http://tixati.com/download/tixati-2.24-1.x86_64.manualinstall.tar.gz
+	sha1sums_x86_64 = adff29d4023efd4db600d369c9539751cd5afb5f
 
 pkgname = tixati
 
