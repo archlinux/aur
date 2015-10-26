@@ -1,6 +1,6 @@
 pkgbase = yubikey-personalization-git
 	pkgdesc = Yubico YubiKey Personalization library and tool - git checkout
-	pkgver = 1.17.1.r0.g717a772
+	pkgver = 1.17.2.r26.g71b248e
 	pkgrel = 1
 	url = https://github.com/Yubico/yubikey-personalization
 	install = yubikey-personalization.install
@@ -8,6 +8,7 @@ pkgbase = yubikey-personalization-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = asciidoc
 	depends = libusb
 	depends = yubico-c-client
 	provides = ykpers
