@@ -1,0 +1,15 @@
+pkgbase = pymo
+	pkgdesc = An AVG game engine for mobile devices
+	pkgver = 20151026
+	pkgrel = 1
+	url = http://pymo.github.io/
+	install = pymo.install
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-pygame
+	source = git+https://github.com/pymo/pymo.git
+	md5sums = SKIP
+
+pkgname = pymo
+
