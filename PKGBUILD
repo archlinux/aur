@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname=perl-net-sslglue
-pkgver=1.054
+pkgver=1.055
 pkgrel="1"
 pkgdesc="Adds/extends SSL support for common Perl modules"
 arch=(any)
@@ -10,8 +10,8 @@ url="http://search.cpan.org/dist/Net-SSLGlue/"
 depends=('perl-io-socket-ssl>=1.19')
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/Net-SSLGlue-${pkgver}.tar.gz)
-md5sums=('24d2a830169f2bab7dad08daa0f1922f')
-sha512sums=('33f4920a623ba8af8ed181cf8b2c80c2a7f27dcbc6899ea3f243536b152d36dcf21b91bfba1b4bea079e2c064ad793d2d8a6d5d360c734a635b8a081f36b5668')
+md5sums=('7436f07926c7357e1437dbe5d1251bc2')
+sha512sums=('18a495cf4ccc34c69d81e59c1e03a5d5a55d7626ed140af76d3082e71b3eef2a97657afe2aab09d838d41004a65639d42a5ef2411f46866208af8c8eb4b01d4c')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
