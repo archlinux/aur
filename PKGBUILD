@@ -2,8 +2,8 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=0.8.0.r969.2d2f8d3
-pkgrel=1
+pkgver=0.8.0.r1006.cbc0dfc
+pkgrel=2
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  _parent_ver=$(git log --tags --simplify-by-decoration --pretty="format:%d" | head -n 1 | cut -d " " -f 6 | tr -d ",")
+  _parent_ver=$(git log --tags --simplify-by-decoration --pretty="format:%d" | head -n 1 | cut -d " " -f 3 | tr -d ")")
   printf "%s.r%s.%s" \
          "${_parent_ver}" \
          "$(git rev-list --count HEAD)" \
