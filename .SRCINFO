@@ -1,0 +1,15 @@
+pkgbase = ejabberd-mod_filter
+	pkgdesc = mod_filer for ejabberd
+	pkgver = r5.8bfe665
+	pkgrel = 1
+	url = http://www.ejabberd.im/ejabberd-modules
+	arch = any
+	license = GPL
+	makedepends = erlang-nox
+	makedepends = git
+	depends = ejabberd
+	source = git://github.com/knobo/mod_filter.git
+	sha1sums = SKIP
+
+pkgname = ejabberd-mod_filter
+
