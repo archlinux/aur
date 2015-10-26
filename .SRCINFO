@@ -1,6 +1,6 @@
 pkgbase = breeze-gtk-git
 	pkgdesc = Breeze port for GTK. (GIT version)
-	pkgver = r58.32d6ad5
+	pkgver = 5.4.90.r60.46b26f5
 	pkgrel = 1
 	url = https://quickgit.kde.org/?p=breeze-gtk.git
 	arch = any

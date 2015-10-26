@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=breeze-gtk-git
-pkgver=r58.32d6ad5
+pkgver=5.4.90.r60.46b26f5
 pkgrel=1
 pkgdesc="Breeze port for GTK. (GIT version)"
 arch=('any')
@@ -16,7 +16,8 @@ sha1sums=('SKIP')
 
 pkgver(){
   cd breeze-gtk
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m1 -e PROJECT_VERSION | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare(){
