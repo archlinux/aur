@@ -1,6 +1,6 @@
 pkgbase = firefox-aurora
 	pkgdesc = Firefox Aurora channel - Nightly build
-	pkgver = 43.0a2.20151024004043
+	pkgver = 43.0a2.20151025004028
 	pkgrel = 1
 	url = http://www.mozilla.org/en-US/firefox/aurora/
 	install = firefox-aurora.install
