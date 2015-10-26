@@ -1,0 +1,34 @@
+pkgbase = snowmix
+	pkgdesc = Dynamic audio and video feed mixer
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://snowmix.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = awk
+	depends = openbsd-netcat
+	depends = cairo
+	depends = pango
+	depends = gst-libav
+	depends = sdl
+	depends = freeglut
+	depends = libpng
+	depends = tcl
+	depends = bwidget
+	depends = glu
+	source = http://sourceforge.net/projects/snowmix/files/Snowmix-0.5.0.tar.gz
+	source = snowmix.sh
+	source = fix-tcldir.patch
+	source = fix-ini-data.patch
+	md5sums = 2e474171e84dda413f3587dfa1cf61f9
+	md5sums = 89a14ff28c05f5261910ac7b06d4055b
+	md5sums = 9cb3b2a30c6b2084536636340b1da92a
+	md5sums = 84e31e0ab2b298ddfd4ffaca3d57e3a0
+
+pkgname = snowmix
+
