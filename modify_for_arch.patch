@@ -1,6 +1,19 @@
 diff -Naur a/program/functions.py b/program/functions.py
---- a/program/functions.py	2010-12-04 17:18:57.000000000 +0000
-+++ b/program/functions.py	2015-10-13 07:12:20.605894444 +0000
+--- a/program/functions.py	2010-12-05 01:18:57.000000000 +0800
++++ b/program/functions.py	2015-10-26 14:47:11.167286057 +0800
+@@ -54,10 +54,10 @@
+ 
+ 
+ def check_package_install( pkg_name ):
+-    a = commands.getoutput( 'dpkg -l' )
++    a = commands.getoutput( 'pacman -Q' )
+     a = a.split( '\n' )
+     for each in a:
+-        if each[0:2] == 'ii' and each.split()[1] == pkg_name:
++        if each.split()[0] == pkg_name:
+             return True
+             
+     return False
 @@ -279,7 +279,7 @@
  def make_system_dirs( target_root ):
      print _('Making system dirs ...')
@@ -41,3 +54,27 @@ diff -Naur a/program/functions.py b/program/functions.py
      
      return defaultExcludes
  
+diff -Naur a/program/sh/install_grub.sh b/program/sh/install_grub.sh
+--- a/program/sh/install_grub.sh	2010-07-14 12:53:44.000000000 +0800
++++ b/program/sh/install_grub.sh	2015-10-26 14:46:53.829725481 +0800
+@@ -79,7 +79,7 @@
+ 
+ 
+ echo "Generating grub.cfg ..."
+-target_cmd "$target_dir" update-grub
++target_cmd "$target_dir" grub-mkconfig -o /boot/grub/grub.cfg
+ 
+ 
+ if [ $? -eq 0 ] ; then
+diff -Naur a/program/ucloner_cmd.py b/program/ucloner_cmd.py
+--- a/program/ucloner_cmd.py	2010-12-05 01:25:02.000000000 +0800
++++ b/program/ucloner_cmd.py	2015-10-26 14:48:39.320636280 +0800
+@@ -130,7 +130,7 @@
+         print 'functions.generate_fstab() done.'
+         
+     # 生成 mtab
+-    tmp = commands.getstatusoutput( 'touch ' + target_dir+'/etc/mtab' )
++    tmp = commands.getstatusoutput( 'ln -s /proc/self/mounts ' + target_dir+'/etc/mtab' )
+     
+     # 修复休眠功能
+     ret = functions.fix_resume( target_dir, swappart )

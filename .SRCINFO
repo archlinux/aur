@@ -19,17 +19,13 @@ pkgbase = ucloner
 	source = ucloner-cmd.sh
 	source = ucloner.desktop
 	source = ucloner.png
-	source = modify_path.patch
-	source = fix_package_querying.patch
-	source = fix_grub_install.patch
+	source = modify_for_arch.patch
 	md5sums = b7bf49a5516cb9e00943e06e3e73adf2
 	md5sums = 3dac4b28900e7be1068b502b7b848028
 	md5sums = 15efc60875b77125f8d5399797306955
 	md5sums = 32a9a04b595890e50fa10fe51823469a
 	md5sums = 1f913fe9ca34481134bc36e1045e9a20
-	md5sums = 4966de605892a3a5c52d7fdd4b768f0d
-	md5sums = c84c4aaba3bf5c7fbb6126190cb341ca
-	md5sums = 1ce4d37e5531797196104c08825db0f7
+	md5sums = 712877e08bd19434501221d3f82e769f
 
 pkgname = ucloner
 
