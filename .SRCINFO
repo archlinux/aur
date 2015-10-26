@@ -9,6 +9,7 @@ pkgbase = ucloner
 	depends = vte
 	depends = squashfs-tools
 	depends = zenity
+	depends = rsync
 	depends = gksu
 	optdepends = jfsutils
 	optdepends = reiserfsprogs
