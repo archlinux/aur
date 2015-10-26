@@ -1,15 +1,14 @@
 pkgbase = python2-cli53
 	pkgdesc = Command line script to administer the Amazon Route 53 DNS service
 	pkgver = 0.5.0
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/cli53
+	pkgrel = 2
+	url = https://github.com/barnybug/cli53
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-boto
 	depends = python2-dnspython
-	depends = python2-argparse
 	source = https://pypi.python.org/packages/source/c/cli53/cli53-0.5.0.tar.gz
 	md5sums = 9ff8a47279b62e44bbe4ed2129705c99
 
