@@ -1,7 +1,7 @@
 pkgbase = huggle
 	pkgdesc = Huggle Anti-Vandalism tool for Wikipedia
 	pkgver = 3.1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://en.wikipedia.org/wiki/Wikipedia:Huggle
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = huggle
 	makedepends = qconf
 	makedepends = cmake
 	makedepends = qtwebkit
-	makedepends = qt5-base
+	makedepends = qt4
 	source = https://github.com/huggle/huggle3-qt-lx/archive/3.1.18.tar.gz
 	md5sums = 33dc2147cee192e1209d0ca1e81dcf3d
 
