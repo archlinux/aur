@@ -2,7 +2,7 @@
 # Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
 
 pkgname=spotcommander
-pkgver=12.4
+pkgver=12.5
 pkgrel=1
 pkgdesc="A remote control for Spotify for Linux, optimized for mobile devices."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('spotify: The application to remote control')
 conflicts=('spotcommander-xampp')
 install=$pkgname.install
 source=($url/files/$pkgname-$pkgver.tar.bz2)
-md5sums=('7dea4e8a0113e75ba1ebade5bd90e4c8')
+md5sums=('d51fd04ae5d472242665c046b04399a6')
 
 package()
 {
