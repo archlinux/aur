@@ -19,7 +19,7 @@ makedepends=('git' 'python2' 'vala' 'gobject-introspection')
 install=budgie-desktop.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solus-project/budgie-desktop/archive/v${pkgver}.tar.gz"
         'git+https://git.gnome.org/browse/libgnome-volume-control#commit=e14dbe8')
-sha256sums=('039e15e26f17ad210feb9b69ad2a15ed330ffa231013ff734b31f80e9b219645'
+sha256sums=('b9415699c57804b008d39f7128c29e392bc659bb2d64fbbd30e359b2bfb74925'
             'SKIP')
 
 prepare() {
