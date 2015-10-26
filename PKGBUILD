@@ -1,6 +1,6 @@
 # Maintainer: James Clark <s1127853@sms.ed.ac.uk>
 pkgname=opencoarrays
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A transport layer for coarray Fortran compilers."
 url="http://www.opencoarrays.org/"
@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 license=('BSD')
 depends=('openmpi' 'gcc-fortran')
 source=("https://github.com/sourceryinstitute/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('a936a79e45e796d88ca98366ac8785f0')
+md5sums=('b70e8d89ab0e55be50902fdab32c25f9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
