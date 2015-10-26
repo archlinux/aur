@@ -1,6 +1,6 @@
 pkgbase = linux-libre-rt
-	pkgver = 4.1.7_gnu.rt8
-	pkgrel = 2
+	pkgver = 4.1.10_gnu.rt10
+	pkgrel = 1
 	url = https://rt.wiki.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = linux-libre-rt
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.7-gnu/patch-4.1-gnu-4.1.7-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.7-gnu/patch-4.1-gnu-4.1.7-gnu.xz.sign
-	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.7-rt8.patch.xz
-	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.7-rt8.patch.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.10-gnu/patch-4.1-gnu-4.1.10-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.10-gnu/patch-4.1-gnu-4.1.10-gnu.xz.sign
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.10-rt10.patch.xz
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.10-rt10.patch.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -30,8 +30,8 @@ pkgbase = linux-libre-rt
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.7/rcn-libre-4.1.7-armv7-x5.patch
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.7/rcn-libre-4.1.7-armv7-x5.patch.sig
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.10/rcn-libre-4.1.10-armv7-x5.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.1.10/rcn-libre-4.1.10-armv7-x5.patch.sig
 	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
 	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
 	source = 0003-SMILE-Plug-device-tree-file.patch
@@ -42,9 +42,9 @@ pkgbase = linux-libre-rt
 	source = 0008-USB-armory-support.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = 4ae674b88d75f2cc95c352de476ebd4c1d8726f2e0e91536d26db1bdc54b523d
+	sha256sums = 868756d2c78a24216afbf6f73dba779817b72d647ec0dc8b1f032245705a9cc2
 	sha256sums = SKIP
-	sha256sums = 16b52fdee967160d80ba56b3edee7ca321f9068b7281203f69b47a027f32ae4d
+	sha256sums = 287314390826d8ac54dff024a277d8fa4917a17d4b13f4dbe9619fa6283fbc79
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -58,7 +58,7 @@ pkgbase = linux-libre-rt
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d
-	sha256sums = becbabe5eb3817701f8199ed6cbfc30d1ab54188cb777d8014d6d06bc7ef375c
+	sha256sums = 940a5abe9eb2928d365f9adacc780320ef1f7bfda0227aa4ef12fa2fbb9969cb
 	sha256sums = SKIP
 	sha256sums = 203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7
 	sha256sums = 28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c
@@ -77,20 +77,20 @@ pkgname = linux-libre-rt
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-rt=4.1.7_rt8
+	provides = linux-rt=4.1.10_rt10
 	conflicts = 
 	replaces = linux-rt
 	backup = etc/mkinitcpio.d/linux-libre-rt.preset
 
 pkgname = linux-libre-rt-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-rt kernel
-	provides = linux-rt-headers=4.1.7_rt8
+	provides = linux-rt-headers=4.1.10_rt10
 	conflicts = 
 	replaces = linux-rt-headers
 
 pkgname = linux-libre-rt-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-rt kernel
-	provides = linux-rt-docs=4.1.7_rt8
+	provides = linux-rt-docs=4.1.10_rt10
 	conflicts = 
 	replaces = linux-rt-docs
 

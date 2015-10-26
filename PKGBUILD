@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.1-gnu
-_pkgver=4.1.7-gnu
+_pkgver=4.1.10-gnu
 _rtbasever=4.1
-_rtpatchver=rt8
+_rtpatchver=rt10
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -21,7 +21,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=2
+pkgrel=1
 rcnrel=armv7-x5
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
@@ -62,9 +62,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '4ae674b88d75f2cc95c352de476ebd4c1d8726f2e0e91536d26db1bdc54b523d'
+            '868756d2c78a24216afbf6f73dba779817b72d647ec0dc8b1f032245705a9cc2'
             'SKIP'
-            '16b52fdee967160d80ba56b3edee7ca321f9068b7281203f69b47a027f32ae4d'
+            '287314390826d8ac54dff024a277d8fa4917a17d4b13f4dbe9619fa6283fbc79'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -78,7 +78,7 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            'becbabe5eb3817701f8199ed6cbfc30d1ab54188cb777d8014d6d06bc7ef375c'
+            '940a5abe9eb2928d365f9adacc780320ef1f7bfda0227aa4ef12fa2fbb9969cb'
             'SKIP'
             '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
             '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
