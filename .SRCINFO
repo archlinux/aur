@@ -14,6 +14,7 @@ pkgbase = fretsonfire-svn
 	optdepends = glew: Used for render-to-texture support
 	optdepends = pyogg: Used for streaming OGG files from the disk
 	optdepends = vorbis-tools: Used to import Guitar Hero files
+	provides = fretsonfire
 	conflicts = fretsonfire
 	source = fretsonfire.desktop
 	source = fretsonfire.sh
