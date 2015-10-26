@@ -1,6 +1,6 @@
 pkgbase = autotags
 	pkgdesc = A little tool that watches your source code and generates ctags.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/beraboris/autotags
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = autotags
 	depends = bash
 	depends = ctags
 	depends = inotify-tools
-	source = https://github.com/beraboris/autotags/archive/v0.1.0.tar.gz
+	source = https://github.com/beraboris/autotags/archive/v0.2.0.tar.gz
 	md5sums = 8db192b30309e789763ef371c37941ef
 
 pkgname = autotags

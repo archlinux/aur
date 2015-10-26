@@ -1,6 +1,6 @@
 # Maintainer: Boris Bera <bboris at rsoft dot ca>
 pkgname=autotags
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A little tool that watches your source code and generates ctags."
 arch=('any')
@@ -21,7 +21,7 @@ source=(
   "https://github.com/beraboris/autotags/archive/v$pkgver.tar.gz"
 )
 noextract=()
-md5sums=('8db192b30309e789763ef371c37941ef')
+md5sums=('bd6453fd58e01815f68f27d298f0e6d5')
 
 package() {
   install -D -m 755 "$srcdir/$pkgname-$pkgver/autotags" \
