@@ -47,6 +47,13 @@ build() {
   #make oldconfig # using old config from previous kernel version
   cp arch/arm/configs/bcm2835_defconfig .config
   make olddefconfig
+  cat > vc4.cfg <<EOF
+CONFIG_DRM=y
+CONFIG_DRM_VC4=y
+CONFIG_I2C_BCM2835=y
+CONFIG_CMA_SIZE_MBYTES=128
+EOF
+  scripts/kconfig/merge_config.sh -r .config vc4.cfg
   # ... or manually edit .config
 
   # Copy back our configuration (use with new kernel version)
