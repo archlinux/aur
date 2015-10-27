@@ -1,8 +1,9 @@
 # Maintainer: Victor Häggqvist <aur@snilius.com>
+# Contributor: Stean Auditor <stefan.auditor@erdfisch.de>
 
 _pkgname=drupalconsole
 pkgname=drupalconsole-git
-pkgver=0.7.15.r81.g4e2a2b8
+pkgver=0.9.4.r69.g671223d
 pkgrel=1
 pkgdesc="The Drupal Console is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation."
 url="http://drupalconsole.com/"
@@ -29,8 +30,7 @@ package() {
   install -dm755 "$pkgdir/opt/$_pkgname/"
   cp -a "$srcdir/$pkgname/." "$pkgdir/opt/$_pkgname"
   install -dm755 "$pkgdir/usr/bin"
-  ln -s "$pkgdir/opt/$_pkgname/bin/console" "$pkgdir/usr/bin/drupal"
-
+  ln -s "/opt/$_pkgname/bin/console" "$pkgdir/usr/bin/drupal"
 }
 
 #package() {
