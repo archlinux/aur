@@ -1,0 +1,16 @@
+pkgbase = gimp-voronoi
+	pkgdesc = A GIMP plug-in to create Voronoi patterns
+	pkgver = 2.2
+	pkgrel = 5
+	url = http://trific.ath.cx/software/gimp-plugins/voronoi/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gimp>=2.0
+	source = voronoi-2.2.tar.bz2::http://storage.live.com/items/EED7455B8FCA288F%211031?a.tar.bz2
+	source = x86_64.patch
+	md5sums = e18c9d719ce84ae198c582d2dfa8229f
+	md5sums = 1e8f4253a27a15ce5d0d903e8c6872ec
+
+pkgname = gimp-voronoi
+

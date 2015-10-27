@@ -1,0 +1,11 @@
+--- Makefile.old 2008-03-08 20:12:17.000000000 -0800
++++ Makefile 2008-03-08 20:23:54.000000000 -0800
+@@ -8,7 +8,7 @@
+
+ GIMP_LDFLAGS = `$(GIMPTOOL) --libs`
+ GIMP_CFLAGS = `$(GIMPTOOL) --cflags`
+-EXTRA_CFLAGS = -DLOCALEDIR=\"`$(GIMPTOOL) --prefix`/share/locale\" -DVERSION=\"$(VERSION)\" -Wall -O2 -march=`uname -m`
++EXTRA_CFLAGS = -DLOCALEDIR=\"`$(GIMPTOOL) --prefix`/share/locale\" -DVERSION=\"$(VERSION)\" -Wall -O2
+
+ CFLAGS = $(GIMP_CFLAGS) $(EXTRA_CFLAGS)
+ LDFLAGS = $(GIMP_LDFLAGS) -lm
