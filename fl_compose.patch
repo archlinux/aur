@@ -1,0 +1,10 @@
+--- fl-core/src/fl_compose.cc	2011-02-07 03:09:03.000000000 +0800
++++ fl-core/src/fl_compose.cc.new	2015-10-18 20:33:16.251956462 +0800
+@@ -18,6 +18,7 @@
+ *        along with fl-core.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include <unistd.h>
+ #include <octave/oct.h>
+ #include <octave/parse.h>
+ #include <pthread.h>    
