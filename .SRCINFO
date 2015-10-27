@@ -1,0 +1,16 @@
+pkgbase = octave-lssa
+	pkgdesc = A package implementing tools to compute spectral decompositions of irregularly-spaced time series. Currently includes functions based off the Lomb-Scargle periodogram and Adolf Mathias' implementation for R and C (see URLs).
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://octave.sourceforge.net/lssa/
+	install = octave-lssa.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=3.6.0
+	noextract = lssa-0.1.2.tar.gz
+	source = http://downloads.sourceforge.net/octave/lssa-0.1.2.tar.gz
+	md5sums = 386aaded5831f28975a3166799a02409
+
+pkgname = octave-lssa
+
