@@ -22,7 +22,7 @@ md5sums=('SKIP'
          '53a8ec6a5b3a67f73fe876dbe2384b95'
          'cbdfd0fcc3b6ca0bec6cc28c0ec66aa8'
          'bf26dc4c10d4bbfbd0c7a052a00c3cdf'
-         '14c6aa8ae50bb3b1d926b9cb5cd97e3b')
+         'f24dc703585569ba11ba0b94625ee8e0')
 pkgver() {
   cd  "$srcdir/$pkgname/"
   git log -1 --format="%cd" --date=short | sed 's|-||g'
@@ -38,7 +38,7 @@ build() {
   fi
   
   cp $srcdir/Makefile.local .
-  make release -j4
+  make release
 }
 
 package() {
