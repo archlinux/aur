@@ -21,8 +21,9 @@ prepare() {
 
   ln -sf "$(which python2)" python
 
-  sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -name "*.py")
+  sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
   sed -i '/os\.environ.*GRASS_PYTHON/ s/"python"/"python2"/' lib/init/grass.py
+  sed -i '/^\s*INSTDIR/ s/".*"//' configure
   sed -i "/^Exec/ s/=.*/=grass$_shortver/" gui/icons/grass.desktop
 }
 
@@ -53,13 +54,17 @@ package() {
 
   make exec_prefix="$pkgdir/usr" INST_DIR="$pkgdir/opt/$pkgname" install
 
-  sed -i "s|$pkgdir||g" "$pkgdir/opt/grass/demolocation/.grassrc$_shortver" "$pkgdir/usr/bin/grass$_shortver"
-  sed -i "s|$srcdir||g" "$pkgdir/opt/grass/docs/html/t.connect.html"
-
   # This is needed for qgis to find grass
   install -d "$pkgdir/etc/ld.so.conf.d/"
   echo "/opt/$pkgname/lib" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 
   install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/pixmaps/grass.png"
   install -Dm644 gui/icons/grass.desktop "$pkgdir/usr/share/applications/grass.desktop"
+
+  cd "$pkgdir/opt/$pkgname"
+  sed -i "s|$pkgdir||g" demolocation/.grassrc$_shortver \
+                        include/Make/{Platform,Grass}.make \
+                        etc/fontcap \
+                        "$pkgdir/usr/bin/grass$_shortver"
+  sed -i "s|$srcdir||g" docs/html/t.connect.html
 }
