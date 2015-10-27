@@ -1,0 +1,16 @@
+pkgbase = octave-ga
+	pkgdesc = Genetic optimization code
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://octave.sourceforge.net/ga/
+	install = octave-ga.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	depends = octave>=3.4.0
+	noextract = ga-0.10.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/ga-0.10.0.tar.gz
+	md5sums = ecf6582ff0f5c81d0c166f3fc9ccfc25
+
+pkgname = octave-ga
+
