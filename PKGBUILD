@@ -2,7 +2,7 @@
 # Maintainer: Zdenek Obst <zdenek dot obst at gmail dot com>
 
 pkgname=wildfly
-pkgver=9.0.1.Final
+pkgver=9.0.2.Final
 pkgrel=1
 
 pkgdesc='Wildfly Application Server'
@@ -39,11 +39,11 @@ source=(http://download.jboss.org/wildfly/${pkgver}/wildfly-${pkgver}.tar.gz
         ${pkgname}.sh
         ${pkgname}.install
 	systemd-wrapper.sh)
-sha256sums=('8f570f978dff65a006c1c6cb58c26a3856b19f01dad5b2a3ef9e463c8dee2a54'
-           '65e4b22b106aa16413e5c95686969b3f16974235451d8445ce4c562299325412'
-           '3b2d059fcecb799ea8134b23ee0b77b4bc53dd99c7bd541679c4c139638b323a'
-           'a360ddb4beb9c704257bd78e08e8eea69c43b410a9c93d346541158c3b9d4330'
-           '922035fcf68a66ed4b36a89370d2335941cb64ef8561e81fa6f59b5784f659e1')
+sha256sums=('74689569d6e04402abb7d94921c558940725d8065dce21a2d7194fa354249bb6'
+            '65e4b22b106aa16413e5c95686969b3f16974235451d8445ce4c562299325412'
+            '3b2d059fcecb799ea8134b23ee0b77b4bc53dd99c7bd541679c4c139638b323a'
+            'a360ddb4beb9c704257bd78e08e8eea69c43b410a9c93d346541158c3b9d4330'
+            '922035fcf68a66ed4b36a89370d2335941cb64ef8561e81fa6f59b5784f659e1')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
