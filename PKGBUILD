@@ -1,36 +1,33 @@
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Contributor: Matthias Blaicher <matthias /at/ blaicher.com>
 pkgname=gaussianbeam-svn
-pkgver=137
+pkgver=r140
 pkgrel=1
 pkgdesc="Gaussian optics simulator"
 arch=('i686' 'x86_64')
-url="http://gaussianbeam.sourceforge.net/"
+url='http://gaussianbeam.sourceforge.net/'
 license=('GPL')
 depends=('qt4>=4.4')
 makedepends=('subversion')
 provides=('gaussianbeam')
 conflicts=('gaussianbeam')
+source=("${pkgname}::svn+svn://svn.code.sf.net/p/gaussianbeam/code/")
+sha512sums=('SKIP')
 
-_svntrunk=https://gaussianbeam.svn.sourceforge.net/svnroot/gaussianbeam
-_svnmod=gaussianbeam
+pkgver() {
+	cd $pkgname
+	local ver="$(svnversion)"
+	printf "r%s" "${ver//[[:alpha:]]}"
+}
 
 build() {
-  cd $srcdir
+	mkdir -p $pkgname-build
+	cd $pkgname-build
 
-  if [ -d $_svnmod/.svn ]; then
-    (cd $_svnmod && svn up -r $pkgver)
-  else
-    svn co $_svntrunk --config-dir ./ -r $pkgver $_svnmod
-  fi
+	cmake ../$pkgname
+	make
+}
 
-  msg "SVN checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf $srcdir/$_svnmod-build
-  cp -r $srcdir/$_svnmod $srcdir/$_svnmod-build
-  cd $srcdir/$_svnmod-build
-
-  cmake .
-  make
-  install -D -m755 gaussianbeam $pkgdir/usr/bin/gaussianbeam
+package() {
+	install -D -m755 $pkgname-build/gaussianbeam "$pkgdir/usr/bin/gaussianbeam"
 }
