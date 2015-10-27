@@ -16,6 +16,7 @@ pkgbase = pdfpc-git
 	depends = gstreamer
 	depends = gst-plugins-base
 	optdepends = gst-plugins-good: more codecs for video playback support
+	provides = pdfpc=v4.0.0.r0.g0043a4b
 	conflicts = pdfpc
 	source = pdfpc-git::git+https://github.com/pdfpc/pdfpc.git
 	md5sums = SKIP

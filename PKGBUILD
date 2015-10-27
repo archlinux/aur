@@ -10,6 +10,7 @@ url='https://github.com/pdfpc/pdfpc.git'
 depends=('gtk3' 'poppler-glib' 'libgee' 'gstreamer' 'gst-plugins-base')
 optdepends=('gst-plugins-good: more codecs for video playback support')
 makedepends=('git' 'sed' 'cmake' 'vala')
+provides=("pdfpc=$pkgver")
 conflicts=('pdfpc')
 md5sums=('SKIP')
 
