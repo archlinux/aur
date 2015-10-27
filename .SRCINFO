@@ -1,6 +1,6 @@
 pkgbase = mozilla-extension-gnotifier-git
 	pkgdesc = Add-on for Firefox and Thunderbird to enable integration with GNOME native notification system.
-	pkgver = 1.9.1.r130
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/mkiol/GNotifier
 	arch = any
@@ -16,13 +16,13 @@ pkgbase = mozilla-extension-gnotifier-git
 pkgname = mozilla-extension-gnotifier-git
 
 pkgname = firefox-extension-gnotifier-git
-	depends = mozilla-extension-gnotifier-git=1.9.1.r130
+	depends = mozilla-extension-gnotifier-git=1.9.1
 	depends = firefox
 	provides = firefox-extension-gnotifier
 	conflicts = firefox-extension-gnotifier
 
 pkgname = thunderbird-extension-gnotifier-git
-	depends = mozilla-extension-gnotifier-git=1.9.1.r130
+	depends = mozilla-extension-gnotifier-git=1.9.1
 	depends = thunderbird
 	provides = thunderbird-extension-gnotifier
 	conflicts = thunderbird-extension-gnotifier
