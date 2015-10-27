@@ -1,8 +1,8 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=arm-frc-linux-gnueabi-frcmake-hg
-pkgver=r66.eec4367471da
-pkgrel=2
+pkgver=r97.5de14e5bbf2c
+pkgrel=1
 pkgdesc="Wrapper scripts for using CMake with the FRC toolchain"
 arch=('any')
 url="https://bitbucket.org/byteit101/toolchain-builder/"
@@ -12,7 +12,7 @@ provides=('arm-frc-linux-gnueabi-frcmake')
 groups=('frc-2015')
 depends=('cmake')
 _hgrepo='toolchain-builder'
-source=(hg+https://bitbucket.org/byteit101/toolchain-builder/"$_hgrepo")
+source=(hg+https://bitbucket.org/byteit101/"$_hgrepo")
 sha512sums=('SKIP')
 
 pkgver() {
