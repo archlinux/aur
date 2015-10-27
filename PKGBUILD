@@ -1,17 +1,18 @@
 # Maintainer: pzl <alsoelp@gmail.com>
 
 pkgname=jlink
-_pkgver="502e"
-pkgver="5.02e"
+_pkgver="502g"
+pkgver="5.02g"
 pkgrel=1
 pkgdesc="ARM Embedded debugger and flashing software from Segger"
 arch=('i686' 'x86_64')
 url="https://www.segger.com/jlink-software.html"
 license=('custom') #https://www.segger.com/cms/admin/uploads/userfiles/file/J-Link/license_agreement.txt
 depends=('glibc')
-source=() #fetching the source requires a POST request, so we must do this in prepare()
-_md5sums_64=("41ec4f497192c3c5f6fe267a5adf0dbd") #underscored because real md5sums must match source array, ours is empty
-_md5sums_32=("bccfa536cebee49ffd10450b0c9b1ced")
+source=('udev_fix.patch') #fetching the pkg source requires a POST request, so we must do this in prepare()
+md5sums=('8134047402c9ac6dc7c3bc24dfcf51b5')
+_md5sums_64=("be4f8cd333a7b5dcd5bd7a6f8931524a") #underscored because real md5sums must match source array length, ours is missing package URL
+_md5sums_32=("1d443d9e1c5cf8b914bc41ef7664aed3")
 
 
 prepare() {
@@ -37,10 +38,16 @@ prepare() {
     tar -xzvf "${pkgname}.tgz"
 }
 
+build() {
+    #remove `BUS!="usb"` from udev rules. BUS isn't valid anymore
+    cd "${srcdir}"/JLink_Linux_V*
+    patch -uN 99-jlink.rules ../udev_fix.patch
+}
+
 package() {
     cd "${srcdir}"/JLink_Linux_V*
     #documentation and licenses
-    install -d "${pkgdir}/usr/share/doc/${pkgname}" "${pkgdir}/usr/lib" "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/doc/${pkgname}" "${pkgdir}/usr/lib" "${pkgdir}/usr/bin" "${pkgdir}/etc/udev/rules.d"
     install -Dm644 Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 Doc/*_JLink.pdf "${pkgdir}/usr/share/doc/${pkgname}/"
     cp -r Samples/JLink/*          "${pkgdir}/usr/share/doc/${pkgname}/"
