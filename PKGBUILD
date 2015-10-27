@@ -8,7 +8,7 @@
 
 pkgname=openocd-git
 _gitname=openocd-git
-pkgver=70a14db
+pkgver=0.9.0.r44.g3edb157
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm')
@@ -71,11 +71,16 @@ _features=(
     #zy1000-master
     )
 
-pkgver_git() {
+pkgver_git_bak() {
     cd "${srcdir}/${pkgname}"
     local ver="$(git show | grep commit | awk '{print $2}' )"
     #printf "r%s" "${ver//[[:alpha:]]}"
     echo ${ver:0:7}
+}
+
+pkgver_git() {
+    cd "${srcdir}/${pkgname}"
+    git describe --tags --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 pkgver_svn() {
