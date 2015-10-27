@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Pulsar Timing Software"
 arch=('i686' 'x86_64')
 url="http://www.atnf.csiro.au/research/pulsar/tempo2"
-license=('custom:Academic Free License 2.1')
+license=('custom:AFL-2.1')
 depends=('fftw' 'pgplot' 'atlas-lapack-base')
 makedepends=('cvs') 
 install=${pkgname}.install
@@ -35,6 +35,9 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-cvs}"
 	make DESTDIR="$pkgdir/" install
+
 	mkdir -pv "$pkgdir/opt/tempo2/T2runtime"
 	cp -rv "$srcdir/tempo2/T2runtime" "$pkgdir/opt/tempo2/T2runtime"
+
+	install -D -m644 AFL-2.1 "$pkgdir/usr/share/licnese/${pkgname}/AFL-2.1"
 }
