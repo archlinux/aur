@@ -1,0 +1,3 @@
+post_install() {
+	echo "Please run: echo 'export \"TEMPO2=/usr/share/tempo2/T2runtime\"' >> ~/.bashrc"
+}

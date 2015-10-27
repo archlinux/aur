@@ -1,0 +1,16 @@
+pkgbase = tempo2-cvs
+	pkgdesc = Pulsar Timing Software
+	pkgver = 2014.11.1
+	pkgrel = 1
+	url = http://www.atnf.csiro.au/research/pulsar/tempo2
+	install = tempo2-cvs.install
+	arch = i686
+	arch = x86_64
+	license = AFL
+	makedepends = cvs
+	depends = fftw
+	depends = pgplot
+	provides = tempo2
+
+pkgname = tempo2-cvs
+
