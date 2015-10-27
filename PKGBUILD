@@ -2,11 +2,11 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 
 pkgname=neovim-git
-pkgver=0.r4069.cd6b4af
+pkgver=0.r4306.68e5968
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64')
-url='http://neovim.io'
+url='https://neovim.io'
 license=('custom:neovim')
 depends=('jemalloc' 'libtermkey' 'libuv' 'libvterm-bzr' 'msgpack-c' 'unibilium')
 makedepends=('cmake' 'git' 'luajit' 'lua51-messagepack' 'lua51-lpeg')
@@ -28,8 +28,11 @@ pkgver() {
 build() {
   mkdir -p "${pkgname}/build"
   cd "${pkgname}/build"
-  cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -G 'Unix Makefiles' \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DENABLE_JEMALLOC=ON \
+        ..
   make
 }
 
