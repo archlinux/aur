@@ -6,10 +6,11 @@ pkgbase = tempo2-cvs
 	install = tempo2-cvs.install
 	arch = i686
 	arch = x86_64
-	license = AFL
+	license = custom:AFL-2.1
 	makedepends = cvs
 	depends = fftw
 	depends = pgplot
+	depends = atlas-lapack-base
 	provides = tempo2
 
 pkgname = tempo2-cvs
