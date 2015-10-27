@@ -1,0 +1,16 @@
+pkgbase = perl-archive-rgssad
+	pkgdesc = Provide an interface to RGSS (ruby game scripting system) archive files.
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/~watashi/Archive-Rgssad-0.11/script/rgssad
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-io-string
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/W/WA/WATASHI/Archive-Rgssad-0.11.tar.gz
+	md5sums = 4c3c9142dd7c66e290e476ce9dc5e8a5
+
+pkgname = perl-archive-rgssad
+
