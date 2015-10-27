@@ -1,7 +1,7 @@
 # Maintainer: Dominik Heidler <dominik@heidler.eu>
 
 pkgname=pymultimonaprs
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="RF2APRS-IG Gateway"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python2' 'multimon-ng-git' 'rtl-sdr' 'python2-setuptools')
 backup=('etc/pymultimonaprs.json')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/asdil12/pymultimonaprs/tar.gz/$pkgver")
-sha1sums=('a4b767ae52d42238648bde15b260b3aae9bf5e36')
+sha1sums=('8409852e80257e68f9ea31f1774538dc3d40dbf5')
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
