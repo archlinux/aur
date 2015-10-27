@@ -1,9 +1,9 @@
-# Maintainer: Duck Hunt <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@tfwno.gf>
 
 pkgname=libretro-mgba-git
-pkgver=r1859.3439249
+pkgver=r2918.b8b7ec0
 pkgrel=1
-pkgdesc='A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy - Libretro Core'
+pkgdesc='A Nintendo Gameboy Advance Emulator - Libretro Core'
 arch=('i686' 'x86_64')
 url="https://endrift.com/mgba/"
 license=('custom:MPL2')
@@ -13,7 +13,7 @@ provides=('libretro-mgba')
 source=("git+https://github.com/mgba-emu/mgba.git"
         "https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/mgba_libretro.info")
 sha1sums=('SKIP'
-          '1c0dfc2fe9b269ea567c0a5332a043eb3f5b5d17')
+          '073ea68fe979aaa13cf0b65ff7460dd16c13bbcf')
 pkgver() {
   cd mgba
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
