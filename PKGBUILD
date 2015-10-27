@@ -33,9 +33,4 @@ package() {
   ln -s "/opt/$_pkgname/bin/console" "$pkgdir/usr/bin/drupal"
 }
 
-#package() {
-#j  cd "$srcdir/rainbowstream-${pkgver}/"
- # python setup.py install --root="$pkgdir/" --optimize=1
-#}
-
 # vim: ts=2 sts=2 sw=2 et ft=sh
