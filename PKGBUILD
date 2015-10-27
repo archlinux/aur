@@ -1,17 +1,18 @@
-# Maintainer : Kaan Genç <aur@kaangenc.me>
+# Maintainer : Sameed Pervaiz <greenbagels@teknik.io>
+# Contributor: Kaan Genç <aur@kaangenc.me>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-grsec
 pkgver=355.11
-_extramodules=extramodules-4.2.3-grsec
-pkgrel=2
+_extramodules=extramodules-4.2.4-grsec
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec>=4.2.3' 'linux-grsec<4.3')
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.2.3' 'linux-grsec-headers<4.3')
+depends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec>=4.2.4' 'linux-grsec<4.3')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.2.4' 'linux-grsec-headers<4.3')
 license=('custom')
 install=nvidia-grsec.install
 options=(!strip)
