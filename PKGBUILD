@@ -6,7 +6,7 @@
 
 pkgname=qbs
 pkgver=1.4.3
-pkgrel=0
+pkgrel=1
 pkgdesc='Qt Build Suite: Build tool that helps simplify the build process for developing projects across multiple platforms.'
 arch=('x86_64' 'i686')
 url='https://code.qt.io/qt-labs/qbs.git'

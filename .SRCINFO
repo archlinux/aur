@@ -1,7 +1,7 @@
 pkgbase = qbs
 	pkgdesc = Qt Build Suite: Build tool that helps simplify the build process for developing projects across multiple platforms.
 	pkgver = 1.4.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://code.qt.io/qt-labs/qbs.git
 	arch = x86_64
 	arch = i686
