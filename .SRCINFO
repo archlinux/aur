@@ -12,6 +12,8 @@ pkgbase = tempo2-cvs
 	depends = pgplot
 	depends = atlas-lapack-base
 	provides = tempo2
+	source = AFL-2.1
+	md5sums = SKIP
 
 pkgname = tempo2-cvs
 
