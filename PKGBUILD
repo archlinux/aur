@@ -10,7 +10,8 @@ depends=('fftw' 'pgplot' 'atlas-lapack-base')
 makedepends=('cvs') 
 install=${pkgname}.install
 provides=("${pkgname%-cvs}")
-
+source=("AFL-2.1")
+md5sums=('SKIP')
 pkgver() {
 	cvs history -c -a | cut -d' ' -f2 | sort -u | tail -n 1 | sed 's|-||g'	
 }
@@ -39,5 +40,6 @@ package() {
 	mkdir -pv "$pkgdir/opt/tempo2/T2runtime"
 	cp -rv "$srcdir/tempo2/T2runtime" "$pkgdir/opt/tempo2/T2runtime"
 
-	install -D -m644 AFL-2.1 "$pkgdir/usr/share/license/${pkgname}/AFL-2.1"
+	mkdir -pv "$pkgdir/usr/share/licenses/$pkgname"
+	install -D -m644 "$srcdir/AFL-2.1" "$pkgdir/usr/share/licenses/${pkgname}/"
 }
