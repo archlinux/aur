@@ -1,0 +1,25 @@
+pkgbase = giada
+	pkgdesc = A looper, drum machine, sequencer, live sampler and plugin host
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = http://loopauditioneer.sourceforge.net/
+	install = giada.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = fltk
+	depends = jack
+	depends = libpulse
+	depends = libxpm
+	depends = rtmidi
+	source = giada-0.10.2-src.tar.gz::http://www.giadamusic.com/download/grab/source
+	source = http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip
+	source = giada.desktop
+	source = giada.png
+	md5sums = 90f15313393b3bd11b6fe958665aed93
+	md5sums = 1ac422ebb4aa2e86061278412c347b55
+	md5sums = 06238158680470ab01fbbeb33353e58e
+	md5sums = f9b6e4233890720af50c536c4b2c92c0
+
+pkgname = giada
+
