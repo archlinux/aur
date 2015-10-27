@@ -1,0 +1,95 @@
+pkgbase = linux-libre-librem
+	pkgver = 4.2.4_gnu
+	pkgrel = 1
+	url = http://linux-libre.fsfla.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.4-gnu/patch-4.2-gnu-4.2.4-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.4-gnu/patch-4.2-gnu-4.2.4-gnu.xz.sign
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
+	source = config.i686
+	source = config.x86_64
+	source = config.armv7h
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.4/rcn-libre-4.2.4-armv7-x2.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.2.4/rcn-libre-4.2.4-armv7-x2.patch.sig
+	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
+	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
+	source = 0003-SMILE-Plug-device-tree-file.patch
+	source = 0004-fix-mvsdio-eMMC-timing.patch
+	source = 0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+	source = 0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch
+	source = 0007-set-default-cubietruck-led-triggers.patch
+	source = 0008-USB-armory-support.patch
+	source = https://github.com/purism/linux-librem/compare/master...purism:byd.patch
+	sha256sums = 3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49
+	sha256sums = SKIP
+	sha256sums = dc3df5f547a9ef51695dc6de7c40149e4d514777b4a3943557f01d8487bb2120
+	sha256sums = SKIP
+	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
+	sha256sums = SKIP
+	sha256sums = 13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74
+	sha256sums = SKIP
+	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
+	sha256sums = SKIP
+	sha256sums = c4e300756c7f4eb95fae94ea6ee4dbd8db17250b82de828d0b5b1d1e3c5d4ba7
+	sha256sums = 4e03a948f571ccb78ae89d8f97770713212ccf81f42319f2fe7826b29c3f3dee
+	sha256sums = 56e3990839578cc8de71f2bb8bdb4b3d3adc2a62cb1bceb1455708aeea34ab50
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc
+	sha256sums = f5e547cb33a81a5ee711980a3378d14516e9159ec77d1101d53479cb291a2afd
+	sha256sums = SKIP
+	sha256sums = 2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d
+	sha256sums = 842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe
+	sha256sums = 810697eec07faa60acb59b97df291e5f2e9428e86ae54e5ef90a6e4b2d0844ab
+	sha256sums = c743e41975260aab3176b6f473707c8d8371cb89575e1c128bddb3bd74030b8b
+	sha256sums = abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0
+	sha256sums = d068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7
+	sha256sums = ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c
+	sha256sums = c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a
+	sha256sums = 86aad1bc36f239a26ae08236d33f94ef28ece8df6717e76ec2b7f3693347c31f
+	sha256sums = SKIP
+
+pkgname = linux-libre-librem
+	pkgdesc = The Linux-libre-librem kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-libre-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux-librem=4.2.4
+	conflicts = linux-librem
+	replaces = linux-librem
+	backup = etc/mkinitcpio.d/linux-libre-librem.preset
+
+pkgname = linux-libre-librem-headers
+	pkgdesc = Header files and scripts for building modules for Linux-libre-librem kernel
+	provides = linux-librem-headers=4.2.4
+	conflicts = linux-librem-headers
+	replaces = linux-librem-headers
+
+pkgname = linux-libre-librem-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-librem kernel
+	provides = linux-librem-docs=4.2.4
+	conflicts = linux-librem-docs
+	replaces = linux-librem-docs
+

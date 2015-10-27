@@ -1,0 +1,77 @@
+From e479cd018fcd7f32714e5172265f8d1e7c4d9f0d Mon Sep 17 00:00:00 2001
+From: Jason Self <j@jxself.org>
+Date: Sun, 30 Aug 2015 14:27:44 -0700
+Subject: [PATCH 1/1] [PATCH] drm/radeon: Make the driver load without the
+ firmwares.
+
+---
+ drivers/gpu/drm/radeon/r600.c    | 8 ++++----
+ drivers/gpu/drm/radeon/r600_cp.c | 5 ++++-
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/radeon/r600.c b/drivers/gpu/drm/radeon/r600.c
+index 103f5d0..98f923b4 100644
+--- a/drivers/gpu/drm/radeon/r600.c
++++ b/drivers/gpu/drm/radeon/r600.c
+@@ -2489,7 +2489,7 @@ int r600_init_microcode(struct radeon_device *rdev)
+ 	}
+ 
+ 	DRM_INFO("Loading %s Microcode\n", chip_name);
+-
++#if 0
+ 	snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+ 	err = reject_firmware(&rdev->pfp_fw, fw_name, rdev->dev);
+ 	if (err)
+@@ -2541,7 +2541,7 @@ int r600_init_microcode(struct radeon_device *rdev)
+ 			err = -EINVAL;
+ 		}
+ 	}
+-
++#endif
+ out:
+ 	if (err) {
+ 		if (err != -EINVAL)
+@@ -3201,7 +3201,7 @@ int r600_init(struct radeon_device *rdev)
+ 	r = radeon_bo_init(rdev);
+ 	if (r)
+ 		return r;
+-
++#if 0
+ 	if (!rdev->me_fw || !rdev->pfp_fw || !rdev->rlc_fw) {
+ 		r = r600_init_microcode(rdev);
+ 		if (r) {
+@@ -3209,7 +3209,7 @@ int r600_init(struct radeon_device *rdev)
+ 			return r;
+ 		}
+ 	}
+-
++#endif
+ 	/* Initialize power management */
+ 	radeon_pm_init(rdev);
+ 
+diff --git a/drivers/gpu/drm/radeon/r600_cp.c b/drivers/gpu/drm/radeon/r600_cp.c
+index cd3f6ac..b09af51 100644
+--- a/drivers/gpu/drm/radeon/r600_cp.c
++++ b/drivers/gpu/drm/radeon/r600_cp.c
+@@ -2241,7 +2241,7 @@ int r600_do_init_cp(struct drm_device *dev, drm_radeon_init_t *init,
+ 		else
+ 			r600_vm_init(dev);
+ 	}
+-
++#if 0
+ 	if (!dev_priv->me_fw || !dev_priv->pfp_fw) {
+ 		int err = r600_cp_init_microcode(dev_priv);
+ 		if (err) {
+@@ -2250,6 +2250,9 @@ int r600_do_init_cp(struct drm_device *dev, drm_radeon_init_t *init,
+ 			return err;
+ 		}
+ 	}
++#endif
++	printk("Skipping firmware loading\n");
++#endif
+ 	if (((dev_priv->flags & RADEON_FAMILY_MASK) >= CHIP_RV770))
+ 		r700_cp_load_microcode(dev_priv);
+ 	else
+-- 
+1.9.1
+
