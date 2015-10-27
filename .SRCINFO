@@ -1,0 +1,13 @@
+pkgbase = openresty-lua-libcjson
+	pkgver = 20150928.64.87ff5da
+	pkgrel = 1
+	url = https://github.com/bungle/lua-resty-libcjson
+	arch = any
+	license = BSD
+	depends = openresty
+	depends = cjson-git
+	source = openresty-lua-libcjson::git+https://github.com/bungle/lua-resty-libcjson
+	sha512sums = SKIP
+
+pkgname = openresty-lua-libcjson
+
