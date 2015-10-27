@@ -3,9 +3,8 @@
 
 pkgname=grass
 pkgver=7.0.1
-pkgrel=6
-_shortver=${pkgver%.*}
-_shortver=${_shortver/./}
+pkgrel=7
+_shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
 url='http://grass.osgeo.org/'
@@ -19,10 +18,9 @@ md5sums=('bda8f612443a935b9da78dba85733db4')
 prepare() {
   cd $pkgname-$pkgver
 
-  ln -sf "$(which python2)" python
-
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
   sed -i '/os\.environ.*GRASS_PYTHON/ s/"python"/"python2"/' lib/init/grass.py
+  sed -i '/^PYTHON/ s/python$/&2/' include/Make/Platform.make.in
   sed -i '/^\s*INSTDIR/ s/".*"//' configure
   sed -i "/^Exec/ s/=.*/=grass$_shortver/" gui/icons/grass.desktop
 }
@@ -30,7 +28,6 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
-  export PATH="$srcdir/$pkgname-$pkgver:$PATH"
   export CFLAGS="$CPPFLAGS $CFLAGS"
   export CXXFLAGS="$CPPFLAGS $CXXFLAGS"
   unset CPPFLAGS
