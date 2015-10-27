@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=The Witch's House
+Comment=The Witch's House
+Exec=majonoie-en
+Icon=majonoie-en
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;

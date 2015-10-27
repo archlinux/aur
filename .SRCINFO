@@ -1,0 +1,26 @@
+pkgbase = majonoie-en
+	pkgdesc = The game "The Witch's House" also known as "Majo No Ie". English ver.
+	pkgver = 1.07
+	pkgrel = 1
+	url = http://majonoie.karou.jp
+	arch = any
+	license = custom
+	makedepends = p7zip
+	depends = mkxp-git
+	depends = rpgvx-rtp
+	noextract = TheWitchsHouse107.zip
+	source = http://vgperson.com/games/TheWitchsHouse107.zip
+	source = LICENSE
+	source = mkxp.conf
+	source = majonoie-en.desktop
+	source = majonoie-en.png
+	source = majonoie-en.sh
+	md5sums = c11fc643fc105ed925cbeaa2eff1c23d
+	md5sums = e1ee4d59be2f6200828470a1ebc7bcf7
+	md5sums = 461180ee21f3d882bfed9c4c3c3b24c8
+	md5sums = 58c8cf9cdf2a1cefd2fd0b198f22e95f
+	md5sums = dee931ca691fcdfcc937eedb30fe9d00
+	md5sums = d81ac9dea4008515d8ae636b725fa32f
+
+pkgname = majonoie-en
+
