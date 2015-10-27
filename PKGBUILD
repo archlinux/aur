@@ -2,7 +2,7 @@
 
 pkgname='profile-sync-daemon-git'
 _pkgname='profile-sync-daemon'
-pkgver=6.12.r7.gd103baf.unstable
+pkgver=r603.d103baf
 pkgrel=1
 pkgdesc='Syncs browser profiles to tmpfs. Unstable git version!'
 arch=('any')
@@ -21,7 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	echo $(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g').$_branch
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	#echo $(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g').$_branch
 }
 
 prepare() {
