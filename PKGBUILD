@@ -1,8 +1,8 @@
 # Maintainer: Oscar Garcia Amor <ogarcia(at)connectical(dot)com>
 
 pkgname=slack-desktop
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.5
+pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('i686' 'x86_64')
 url="https://slack.com/apps"
@@ -13,8 +13,8 @@ optdepends=('gnome-keyring')
 source_x86_64=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-amd64.deb")
 source_i686=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-i386.deb")
 
-md5sums_i686=('5c66910fa1e5ebc63994d7008835d7f1')
-md5sums_x86_64=('8024d5dac7a777563f32c2364b46e743')
+sha256sums_x86_64=('2368e2449f08272d8ce38a423f44ed0cd35c1e77ca3c0525f069d0790b6ec58f')
+sha256sums_i686=('4fc65a3a24a65c4e4ace23ed527bc73087234da75c5a9d9cdfd7924699a96aac')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
