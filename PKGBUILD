@@ -42,4 +42,5 @@ package() {
 
 	mkdir -pv "$pkgdir/usr/share/licenses/$pkgname"
 	install -D -m644 "$srcdir/AFL-2.1" "$pkgdir/usr/share/licenses/${pkgname}/"
+	install -D -m644 "$srcdir/${pkgname%-cvs}/COPYING" "$pkgdir/usr/share/licenses/${pkgname}/"
 }
