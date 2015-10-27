@@ -1,10 +1,10 @@
 # $1: new package version
 post_install() {
   echo ":: The Neovim executable is called 'nvim'."
-  echo ":: To use your existing Vim configuration:"
-  echo "   ln -s ~/.vimrc ~/.nvimrc"
-  echo "   ln -s ~/.vim ~/.nvim"
-  echo ":: See ':help nvim' for more information on Neovim."
+  echo ":: If you are already familiar with Vim, see ':help nvim-from-vim'"
+  echo "   to get started."
+  echo ":: If you have any questions, check the following page first:"
+  echo "   https://github.com/neovim/neovim/wiki/FAQ"
 }
 
 # $1: new package version
