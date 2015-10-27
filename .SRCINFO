@@ -1,0 +1,17 @@
+pkgbase = octave-econometrics
+	pkgdesc = Econometrics functions including MLE and GMM based techniques.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://octave.sourceforge.net/econometrics/
+	install = octave-econometrics.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=2.9.7
+	depends = octave-optim
+	noextract = econometrics-1.1.1.tar.gz
+	source = http://downloads.sourceforge.net/octave/econometrics-1.1.1.tar.gz
+	md5sums = 132e64c97c21dd2841f3f1957b3ffc16
+
+pkgname = octave-econometrics
+
