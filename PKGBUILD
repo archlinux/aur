@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=4.2.3+535360+g26f1b20
+pkgver=4.2.5+535680+g1f76d42
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
 license=("GPL2")
