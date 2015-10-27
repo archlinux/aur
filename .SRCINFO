@@ -1,0 +1,23 @@
+pkgbase = n1
+	pkgdesc = N1 is a new mail client for Mac, Linux and Windows, built on the modern web and designed to be extended.
+	pkgver = 0.3.19
+	pkgrel = 1
+	url = https://nylas.com/N1/
+	install = n1.install
+	arch = x86_64
+	license = MIT
+	depends = gtk2
+	depends = libgnome-keyring
+	depends = desktop-file-utils
+	depends = python2
+	depends = gconf
+	depends = nodejs
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = alsa-lib
+	source = http://edgehill.s3-us-west-2.amazonaws.com/0.3.19-de7d1bb/linux/x64/N1.deb
+	md5sums = d7b250a51a69256989c12f894cbc847a
+
+pkgname = n1
+

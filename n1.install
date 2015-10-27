@@ -1,0 +1,10 @@
+post_install() {
+	gtk-update-icon-cache /usr/share/icons/hicolor > /dev/null 2>&1
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	gtk-update-icon-cache /usr/share/icons/hicolor > /dev/null 2>&1
+	update-desktop-database -q
+}
+
