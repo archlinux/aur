@@ -3,7 +3,7 @@
 
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
-pkgver=3.0.28
+pkgver=3.0.29
 pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
@@ -15,15 +15,10 @@ checkdepends=('python-redis' 'python2-redis' 'python-yaml' 'python2-yaml' 'pytho
               'python-boto' 'python2-boto' 'python-pycurl' 'python2-pycurl' 'python-nose' 'python2-nose'
               'python-amqp' 'python2-amqp' 'python-mock' 'python2-mock' 'python-pymongo' 'python2-pymongo'
               'python2-librabbitmq' 'python-couchdb' 'python2-couchdb' 'python-sqlalchemy' 'python2-sqlalchemy')
-source=("git+https://github.com/celery/kombu.git#tag=v$pkgver"
-        fix-test-sqs.patch)
-sha256sums=('SKIP'
-            'f95a2342227117d0b695dac320654909ba5e29fb23005979c34bb5fb404a3a81')
+source=("git+https://github.com/celery/kombu.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
-  # https://github.com/celery/kombu/pull/525
-  (cd kombu; patch -p1 -i ../fix-test-sqs.patch)
-
   cp -a kombu{,-py2}
 }
 
