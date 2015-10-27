@@ -1,0 +1,63 @@
+diff -ur secs2d-0.0.8/src/Ucompconst.cc secs2d/src/Ucompconst.cc
+--- secs2d-0.0.8/src/Ucompconst.cc	2009-05-08 21:16:47.000000000 +0800
++++ secs2d/src/Ucompconst.cc	2015-10-19 13:18:38.768222194 +0800
+@@ -34,7 +34,7 @@
+ ////////////////////////////////////////////
+ 
+ 
+-int Ucompconst(const Octave_map &mesh, 
++int Ucompconst(const octave_map &mesh, 
+                        const ColumnVector &acoeff,
+                        const ColumnVector &bcoeff,
+                        ColumnVector &SG )
+@@ -99,7 +99,7 @@
+ 
+ ColumnVector acoeff=ColumnVector(args(1).vector_value());
+ ColumnVector bcoeff=ColumnVector(args(2).vector_value());
+-Octave_map mesh = args(0).map_value();
++octave_map mesh = args(0).map_value();
+ 
+ ColumnVector SG;
+                 
+diff -ur secs2d-0.0.8/src/Ucomplap.cc secs2d/src/Ucomplap.cc
+--- secs2d-0.0.8/src/Ucomplap.cc	2009-05-08 21:16:47.000000000 +0800
++++ secs2d/src/Ucomplap.cc	2015-10-19 13:19:24.348460203 +0800
+@@ -34,7 +34,7 @@
+ ////////////////////////////////////////////
+ 
+ 
+-int Ucomplap(const Octave_map &mesh, 
++int Ucomplap(const octave_map &mesh, 
+                        const ColumnVector &acoeff, 
+                        SparseMatrix &SG )
+ {
+@@ -125,7 +125,7 @@
+ ColumnVector acoeff=ColumnVector(args(1).vector_value());
+ 
+ 
+-Octave_map mesh = args(0).map_value();
++octave_map mesh = args(0).map_value();
+ 
+ SparseMatrix SG;
+                 
+diff -ur secs2d-0.0.8/src/Uscharfettergummel.cc secs2d/src/Uscharfettergummel.cc
+--- secs2d-0.0.8/src/Uscharfettergummel.cc	2009-05-08 21:16:47.000000000 +0800
++++ secs2d/src/Uscharfettergummel.cc	2015-10-19 13:19:38.038534422 +0800
+@@ -36,7 +36,7 @@
+ 
+ 
+ 
+-int Uscharfettergummel(const Octave_map &mesh, 
++int Uscharfettergummel(const octave_map &mesh, 
+                        const ColumnVector &v, 
+                        const ColumnVector &acoeff, 
+                        SparseMatrix &SG )
+@@ -173,7 +173,7 @@
+     acoeff=ColumnVector(args(2).vector_value());
+ 
+ 
+-  Octave_map mesh = args(0).map_value();
++  octave_map mesh = args(0).map_value();
+ 
+   SparseMatrix SG;
+ 

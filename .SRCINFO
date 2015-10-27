@@ -1,0 +1,18 @@
+pkgbase = octave-secs2d
+	pkgdesc = A Drift-Diffusion simulator for 2d semiconductor devices
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = http://octave.sourceforge.net/secs2d/
+	install = octave-secs2d.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	depends = octave>=2.9.17
+	noextract = secs2d-0.0.8.tar.gz
+	source = http://downloads.sourceforge.net/octave/secs2d-0.0.8.tar.gz
+	source = octave_map.patch
+	md5sums = fd4d93f4d4ebed9ceae0d7aed88c18bf
+	md5sums = c9cfc1bcf2a7fa1f0c5c582d0f8c7445
+
+pkgname = octave-secs2d
+
