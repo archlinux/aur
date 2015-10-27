@@ -1,0 +1,13 @@
+pkgbase = ugene-external-tools
+	pkgdesc = Third-party executables that can be used as external tools in UGENE
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://ugene.unipro.ru
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ugene
+	source = http://ugene.unipro.ru/downloads/.tar.gz
+
+pkgname = ugene-external-tools
+
