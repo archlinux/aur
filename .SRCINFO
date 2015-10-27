@@ -1,0 +1,16 @@
+pkgbase = octave-mvn
+	pkgdesc = Multivariate normal distribution clustering and utility functions.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://octave.sourceforge.net/mvn/
+	install = octave-mvn.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=3.6.0
+	noextract = mvn-1.1.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/mvn-1.1.0.tar.gz
+	md5sums = 13039ee507519eda19bc2952ea33c535
+
+pkgname = octave-mvn
+
