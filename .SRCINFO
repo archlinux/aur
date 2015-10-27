@@ -2,6 +2,7 @@ pkgbase = libclassicclient
 	pkgdesc = Gemalto & LuxTrust PKCS#11 middleware
 	pkgver = 7.0.0_b08
 	pkgrel = 1
+	url = https://www.luxtrust.lu/en/simple/225
 	arch = i686
 	arch = x86_64
 	depends = gcc-libs
