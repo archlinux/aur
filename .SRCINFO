@@ -1,7 +1,7 @@
 pkgbase = profile-sync-daemon
 	pkgdesc = Syncs browser profiles to tmpfs reducing SSD/HDD calls and speeding-up browsers.
-	pkgver = 6.12
-	pkgrel = 2
+	pkgver = 6.14
+	pkgrel = 1
 	url = https://github.com/graysky2/profile-sync-daemon
 	install = psd.install
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = profile-sync-daemon
 	conflicts = tmpfs-store
 	conflicts = tmpfs-sync
 	conflicts = user-profile-sync-daemon
-	source = http://repo-ck.com/source/profile-sync-daemon/profile-sync-daemon-6.12.tar.xz
-	sha256sums = 5bf0aea0e532970ead4bc634cfcc076d223f00c1b45519864979ca9e588871cc
+	source = http://repo-ck.com/source/profile-sync-daemon/profile-sync-daemon-6.14.tar.xz
+	sha256sums = 122967a0687bb29d7fa0dab25debd3869965111ac21dfdac62c648f18b486c4d
 
 pkgname = profile-sync-daemon
 

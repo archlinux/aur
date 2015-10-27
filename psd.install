@@ -1,6 +1,8 @@
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 
+users=$(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba;s/\n/ /g')
+
 pre_upgrade() {
 	# version 6.00 is a major rebuild
 	# yes, I realize that pacman should not stop services but in this case it
@@ -25,7 +27,7 @@ pre_upgrade() {
 	# version 6.01 redefines the location of tmpfs for the software so it is
 	# required that pacman stop the user service here if running
 	if [ $(vercmp $2 6.01) -lt 0 ]; then
-		for i in $(users); do
+		for i in "$users"; do
 			running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 			if [[ "$running" = "active" ]]; then
 				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
@@ -36,7 +38,7 @@ pre_upgrade() {
 	fi
 
 	if [ $(vercmp $2 6.03) -lt 0 ]; then
-		for i in $(users); do
+		for i in "$users"; do
 			HOMEDIR="$(getent passwd $i | cut -d: -f6)"
 			if [[ -d "$HOMEDIR"/.psd ]]; then
 				echo '-> The use of $HOME/.psd is deprecated.'
@@ -47,7 +49,7 @@ pre_upgrade() {
 		# version 6.05 impliments changes to both the service and the way overlayfs is mounted/umount
 		# so it is required that pacman stop the user service here if running
 		if [ $(vercmp $2 6.05) -lt 0 ]; then
-			for i in $(users); do
+			for i in "$users"; do
 				running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 				if [[ "$running" = "active" ]]; then
 					su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
@@ -65,7 +67,18 @@ pre_upgrade() {
 
 	# version 6.10 relocates pid file
 	if [ $(vercmp $2 6.10) -lt 0 ]; then
-		for i in $(users); do
+		for i in "$users"; do
+			running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
+			if [[ "$running" = "active" ]]; then
+				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
+				echo '-> Internal changes to psd require it to be stopped now before updating.'
+			fi
+		done
+	fi
+
+	# version 6.14 changes the way overlayfs works
+	if [ $(vercmp $2 6.14) -lt 0 ]; then
+		for i in "$users"; do
 			running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 			if [[ "$running" = "active" ]]; then
 				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
@@ -98,10 +111,14 @@ post_upgrade() {
 		_daemon_refresh
 	fi
 
+	# version 6.14 modified services
+	if [ $(vercmp $2 6.14) -lt 0 ]; then
+		_daemon_refresh
+	fi
 }
 
 pre_remove() {
-	for i in $(users); do
+	for i in "$users"; do
 		running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 		if [[ "$running" = "active" ]]; then
 			echo "--> In order to preserve your profiles, pacman will now stop your psd service."
@@ -112,10 +129,7 @@ pre_remove() {
 }
 
 _daemon_refresh() {
-	for i in $(users); do
-		running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
-		if [[ "$running" = "active" ]]; then
-			su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
-		fi
+	for i in "$users"; do
+		su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
 	done
 }
