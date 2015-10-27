@@ -27,6 +27,10 @@ build() {
 
 package() {
   	cd "ncurses-${pkgver}"
-  	make DESTDIR="${pkgdir}" install
+  	#make DESTDIR="${pkgdir}" install
   	#install -m644 "${pkgdir}"/usr/lib/libcurses.a /usr/lib/libcurses.so.5
+	mkdir -p "${pkgdir}"/usr/lib
+	cp lib/libncurses.so.5.9 "${pkgdir}"/usr/lib
+	cd "${pkgdir}"/usr/lib
+	ln -s libncurses.so.5.9 libncurses.so.5
 }
