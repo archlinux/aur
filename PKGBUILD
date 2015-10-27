@@ -40,7 +40,7 @@ build4git() {
     cd "${srcdir}/${pkgname}"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr/ ..
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr/ ..
     make
 }
 
@@ -48,7 +48,7 @@ build4release() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr/ ..
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr/ ..
     make
 }
 
@@ -65,7 +65,7 @@ package4git() {
 package4release() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cd build
-    make install
+    DESTDIR="${pkgdir}" make install
 }
 
 package() {
