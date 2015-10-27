@@ -7,7 +7,7 @@ pkgbase = python-werkzeug-git
 	license = custom:BSD
 	makedepends = git
 	depends = python
-	provides = python-werkzeug
+	provides = python-werkzeug=2722.2b752ef
 	conflicts = python-werkzeug
 	source = git+https://github.com/mitsuhiko/werkzeug.git
 	md5sums = SKIP

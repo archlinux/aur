@@ -8,8 +8,8 @@ url='http://werkzeug.pocoo.org/'
 license=('custom:BSD')
 depends=('python')
 makedepends=('git')
+provides=("python-werkzeug=$pkgver")
 conflicts=('python-werkzeug')
-provides=('python-werkzeug')
 source=('git+https://github.com/mitsuhiko/werkzeug.git')
 md5sums=('SKIP')
 
