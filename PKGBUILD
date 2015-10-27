@@ -1,9 +1,10 @@
 # Maintainer: Yauhen Kirylau <yawghen AT gmail.com>
 # Upstream URL: https://wickr.com/
 
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 pkgname=wickr-bin
 pkgver=2.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Wickr messenger"
 PKGEXT='.pkg.tar'
 arch=('x86_64')

@@ -1,7 +1,7 @@
 pkgbase = wickr-bin
 	pkgdesc = Wickr messenger
 	pkgver = 2.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wickr.com
 	arch = x86_64
 	license = Proprietary
