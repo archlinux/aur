@@ -47,7 +47,7 @@ package() {
     install -v -Dm755 ./agent/x64/newrelic-$_libver.so $pkgdir/usr/lib/php/modules/newrelic-$_libver.so
   fi
 
-  install -v -Dm644 ./README ./LICENSE $pkgdir/usr/share/doc/newrelic-php53/
+  install -v -Dm644 ./README.txt ./LICENSE.txt $pkgdir/usr/share/doc/newrelic-php53/
   
   install -v -Dm644 ./scripts/newrelic.ini.template $pkgdir/etc/php/conf.d/newrelic.ini
   install -v -Dm644 ./scripts/newrelic.ini.template $pkgdir/etc/php/conf.d/newrelic.ini.template
