@@ -10,6 +10,7 @@ pkgbase = ivideon-client
 	depends = qt5-base
 	depends = qt5-script
 	depends = qt5-svg
+	depends = qt5-multimedia
 	depends = openssl
 	depends = wget
 	depends = vlc
