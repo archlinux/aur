@@ -6,8 +6,8 @@ pkgbase = geoip-citydata
 	arch = any
 	license = CCPL
 	depends = geoip
-	source = http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.xz
-	source = http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
+	source = https://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.xz
+	source = https://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
 	md5sums = SKIP
 	md5sums = SKIP
 
