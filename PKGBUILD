@@ -17,7 +17,7 @@ source=('bzr+lp:epoptes'
         'epoptes-client.service')
 sha256sums=('SKIP'
             'ea47542b6c6e7a1f75a715927f3b7e13ea4ffd47ded7874c61c153e107c3313e'
-	    '97d2ea075e17c83be61dc05be4c410c087ab930c7dd4840a50e9459a8d46f97c')
+	    'ed716d6b74e3cfb3f0d08390108e948125fbe22b761f519f8afb16a1c8839611')
 
 install=epoptes.install
 
