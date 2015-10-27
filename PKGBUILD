@@ -84,8 +84,7 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
             'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
             'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a'
-            '86aad1bc36f239a26ae08236d33f94ef28ece8df6717e76ec2b7f3693347c31f'
-            'SKIP')
+            'e3ffaa97b7b58943c03a8f21e201181617bec88b988b7999e7c6da0152106056')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
