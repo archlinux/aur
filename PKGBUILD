@@ -4,7 +4,7 @@
 _pkgbase=r8101
 pkgname=r8101-dkms
 pkgver=1.027.00
-pkgrel=1
+pkgrel=2
 pkgdesc="r8101 realtek lan drivers (DKMS)"
 arch=('i686' 'x86_64')
 url="http://realtek.com.tw/"
@@ -15,13 +15,7 @@ provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 install=${pkgname}.install
 
-# To retrieve the source file, you must first visit the following URL, click
-# the link to the right of the LINUX driver, and finally place the file in the
-# directory containing this PKGBUILD. Make sure the version matches pkgver.
-# http://www.realtek.com.tw/Downloads/downloadsView.aspx?Langid=1&PNid=14&PFid=7&Level=5&Conn=4&DownTypeID=3&GetDown=false
-
-# The source link below is only a placeholder.
-source=("ftp://WebUser:Lc9FuH5r@208.70.202.219/cn/nic/0002-r8101-1.027.00.tar.bz2"
+source=("http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0002-${_pkgbase}-${pkgver}.tar.bz2"
         'dkms.conf')
 
 package() {
