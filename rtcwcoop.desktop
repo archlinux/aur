@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Return To Castle Wolfenstein
+Comment=Return To Castle Wolfenstein
+Exec=/usr/bin/rtcwcoop
+Icon=rtcwcoop
+Terminal=false
+Categories=Game
+
