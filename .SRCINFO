@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-persian-calendar
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gnome-shell
+	depends = gnome-shell>=3.18
 	source = gnome-shell-extension-persian-calendar::git+https://github.com/omid/Persian-Calendar-for-Gnome-Shell
 	sha256sums = SKIP
 
