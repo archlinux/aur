@@ -1,5 +1,5 @@
---- include/freetype.orig	2013-12-21 22:58:05.639880352 -0600
-+++ include/freetype.h	2013-12-21 22:57:36.886881072 -0600
+--- include/freetype/freetype.orig	2013-12-21 22:58:05.639880352 -0600
++++ include/freetype/freetype.h	2013-12-21 22:57:36.886881072 -0600
 @@ -2592,7 +2592,7 @@
  #define FT_LOAD_RENDER                       ( 1L << 2 )
  #define FT_LOAD_NO_BITMAP                    ( 1L << 3 )
