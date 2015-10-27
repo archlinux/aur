@@ -1,0 +1,14 @@
+pkgbase = ksm_preload-git
+	pkgver = 0.10.4.r254cc3b
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	optdepends = sh: ksm-wrapper script
+	source = git+https://github.com/unbrice/ksm_preload.git
+	source = ksm-wrapper
+	sha256sums = SKIP
+	sha256sums = c58dd36fd3a58d4e94da75472b3dd864ce865bb35e23fb422abda446ddc4afc4
+
+pkgname = ksm_preload-git
+

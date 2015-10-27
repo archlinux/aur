@@ -1,0 +1,8 @@
+#!/bin/sh
+# Rewrite of ksm-wrapper to work in /usr/bin
+case " $LD_PRELOAD " in
+    (*" ksm_preload.so "*) ;;
+    (*) LD_PRELOAD="${LD_PRELOAD:+$LD_PRELOAD }ksm_preload.so"
+        export LD_PRELOAD;;
+esac
+exec "$@"
