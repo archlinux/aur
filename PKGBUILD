@@ -8,7 +8,7 @@
 # Contributor: David Fuhr <david.fuhr@web.de>
 
 pkgname=oracle-sqldeveloper
-pkgver=4.1.1.19.59
+pkgver=4.1.2.20.64
 pkgrel=1
 pkgdesc="A graphical tool for database development"
 arch=('any')
@@ -24,7 +24,7 @@ source=(manual://sqldeveloper-$pkgver-no-jre.zip
         LICENSE
         java_home.patch)
 DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable.;/usr/bin/echo Please visit http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html.; exit 1;')
-md5sums=('5a8c3bde77b10bcb0d4ec29aa65a3255'
+md5sums=('5ea360501607343e4332a0f99174f238'
          '59783d9d8c5f9da8256fa14d0e61a35e'
          '8ca370df27d00e5d3368e988bc0c5960'
          '26c1dc933a9ab58a4245f4f351717645'
