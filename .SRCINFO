@@ -1,0 +1,14 @@
+pkgbase = vim-smarttabs-git
+	pkgdesc = VIM plugin that implements smart tabs
+	pkgver = r4.9de63c0
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=231
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = vim
+	source = git+https://github.com/dpc/vim-smarttabs
+	md5sums = SKIP
+
+pkgname = vim-smarttabs-git
+
