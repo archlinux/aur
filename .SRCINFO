@@ -1,6 +1,6 @@
 pkgbase = tlsdate-git
 	pkgdesc = A secure rdate replacement to update local time over HTTPS, git version
-	pkgver = 704.fd04f48
+	pkgver = 707.ae396da
 	pkgrel = 1
 	url = https://github.com/ioerror/tlsdate
 	install = tlsdate.install

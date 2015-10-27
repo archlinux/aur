@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 # Contributor: skydrome <skydrome@tormail.org>
 pkgname=tlsdate-git
-pkgver=704.fd04f48
+pkgver=707.ae396da
 pkgrel=1
 pkgdesc="A secure rdate replacement to update local time over HTTPS, git version"
 arch=('i686' 'x86_64' 'armv6l' 'armv6h' 'arm7l' 'arm7h')
