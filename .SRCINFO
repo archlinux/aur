@@ -1,0 +1,16 @@
+pkgbase = octave-level-set
+	pkgdesc = Routines for calculating the time-evolution of the level-set equation and extracting geometric information from the level-set function.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://octave.sourceforge.net/level-set/
+	install = octave-level-set.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=3.6.0
+	noextract = level-set-0.2.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/level-set-0.2.0.tar.gz
+	md5sums = b9d56845f41f13cee4b92f7d679e80bc
+
+pkgname = octave-level-set
+
