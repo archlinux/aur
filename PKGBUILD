@@ -9,7 +9,7 @@ source=("git+https://github.com/unbrice/$_pkgname.git"
         ksm-wrapper)
 optdepends=('sh: ksm-wrapper script')
 sha256sums=('SKIP'
-            'c58dd36fd3a58d4e94da75472b3dd864ce865bb35e23fb422abda446ddc4afc4')
+            '348c6c707eef3f6efed5896492faa6482ad8fe964a0eab8eec8fec1217069610')
 
 cdgit() { cd -- "$_pkgname"; }
 
