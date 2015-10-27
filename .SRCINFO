@@ -1,0 +1,19 @@
+pkgbase = stoken
+	pkgdesc = RSA SecurID-compatible software token for Linux/UNIX systems
+	pkgver = 0.90
+	pkgrel = 1
+	url = https://github.com/cernekee/stoken
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = nettle
+	depends = libxml2
+	optdepends = gtk3: required for stoken-gui
+	conflicts = stoken-git
+	source = http://downloads.sourceforge.net/stoken/stoken-0.90.tar.gz
+	source = http://downloads.sourceforge.net/stoken/stoken-0.90.tar.gz.asc
+	md5sums = 3c74bb0599085b5de9aa600fa3270ae3
+	md5sums = f064bc11a4e825ec7ddffc3eaf1fe247
+
+pkgname = stoken
+
