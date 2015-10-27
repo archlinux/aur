@@ -1,0 +1,18 @@
+pkgbase = cleps-video-player
+	pkgdesc = Cleps Video Player is a lightweight media player
+	pkgver = 0.21.3
+	pkgrel = 1
+	url = https://github.com/yungtrizzle/cleps-video-player
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = automoc4
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-multimedia
+	optdepends = gstreamer0.10-plugins: plugins to play different video formats
+	source = https://github.com/yungtrizzle/cleps-video-player/archive/0.21.3.tar.gz
+	md5sums = d248a9c65c4f3a185c29bb4e3d95deab
+
+pkgname = cleps-video-player
+
