@@ -1,0 +1,16 @@
+pkgbase = octave-dataframe
+	pkgdesc = Data manipulation toolbox similar to R data.frame
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = http://octave.sourceforge.net/dataframe/
+	install = octave-dataframe.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=3.4.0
+	noextract = dataframe-1.1.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/dataframe-1.1.0.tar.gz
+	md5sums = 7357ec2162d1dd47a0d0fbc0e90d3f97
+
+pkgname = octave-dataframe
+
