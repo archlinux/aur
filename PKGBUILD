@@ -35,6 +35,6 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-cvs}"
 	make DESTDIR="$pkgdir/" install
-	mkdir -pv "$pkgdir/share/tempo2/T2runtime"
-	cp -rv "$srcdir/tempo2/T2runtime" "$pkgdir/share/tempo2/T2runtime"
+	mkdir -pv "$pkgdir/opt/tempo2/T2runtime"
+	cp -rv "$srcdir/tempo2/T2runtime" "$pkgdir/opt/tempo2/T2runtime"
 }
