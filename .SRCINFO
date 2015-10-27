@@ -1,0 +1,21 @@
+pkgbase = octave-vrml
+	pkgdesc = 3D graphics using VRML
+	pkgver = 1.0.13
+	pkgrel = 1
+	url = http://octave.sourceforge.net/vrml/
+	install = octave-vrml.install
+	arch = any
+	groups = octave-forge
+	license = custom
+	makedepends = freewrl
+	depends = octave>=2.9.7
+	depends = octave-linear-algebra
+	depends = octave-miscellaneous
+	depends = octave-struct
+	depends = octave-statistics
+	noextract = vrml-1.0.13.tar.gz
+	source = http://downloads.sourceforge.net/octave/vrml-1.0.13.tar.gz
+	md5sums = 79df290cea3f45e49eb58bfc664679b1
+
+pkgname = octave-vrml
+
