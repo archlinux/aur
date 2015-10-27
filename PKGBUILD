@@ -1,7 +1,6 @@
 # Maintainer: Yauhen Kirylau <yawghen AT gmail.com>
 # Upstream URL: https://wickr.com/
 
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 pkgname=wickr-bin
 pkgver=2.3.5
 pkgrel=2
@@ -18,6 +17,7 @@ depends=( 'libutil-linux' 'glibc' 'gcc-libs' 'glib2' 'zlib' 'lz4' 'xz'
 'libxext' 'libxdamage' 'libxfixes' 'libxshmfence' 'libxxf86vm' 'libasyncns'
 'orc' 'libxau' 'libxdmcp' 'libcap' 'libgcrypt' 'libgpg-error' 'attr' 'libx264')
 sha256sums=('0f5e4ffc1082f735681ecada99e150020850400d7a9107e4d1a10e80a799bf81')
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 source=("https://mywickr.info/download.php?p=364")
 package() {
   bsdtar xf data.tar.xz
