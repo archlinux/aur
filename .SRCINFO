@@ -1,0 +1,16 @@
+pkgbase = octave-mapping
+	pkgdesc = Simple Mapping and GIS .shp file functions.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://octave.sourceforge.net/mapping/
+	install = octave-mapping.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=3.8.0
+	noextract = mapping-1.2.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/mapping-1.2.0.tar.gz
+	md5sums = b4545c37b2191d6c397348e77a8db1c5
+
+pkgname = octave-mapping
+
