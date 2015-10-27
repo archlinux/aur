@@ -3,7 +3,7 @@
 
 _pkgname=xembed-sni-proxy
 pkgname=${_pkgname}-git
-pkgver=r100.392f323
+pkgver=r104.b7c1f8d
 pkgrel=1
 pkgdesc="Convert XEmbed system tray icons to SNI icons"
 arch=('i686' 'x86_64')
