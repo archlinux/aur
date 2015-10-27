@@ -1,0 +1,29 @@
+pkgbase = majonoie-jp
+	pkgdesc = The game "The Witch's House" also known as "Majo No Ie". Japanese ver.
+	pkgver = 1.07
+	pkgrel = 1
+	url = http://majonoie.karou.jp
+	arch = any
+	license = custom
+	makedepends = p7zip
+	makedepends = convmv
+	depends = mkxp-git
+	depends = rpgvx-rtp
+	noextract = majo_1.07.exe
+	source = http://dl3.fgamearchives.com/archives/win/2351/majo_1.07.exe
+	source = LICENSE
+	source = mkxp.conf
+	source = Game.ini
+	source = majonoie-jp.desktop
+	source = majonoie-jp.png
+	source = majonoie-jp.sh
+	md5sums = bc60de550adb1fc7c50c4b095057b950
+	md5sums = e1ee4d59be2f6200828470a1ebc7bcf7
+	md5sums = 939283359891ea78140ac960c19cbc3e
+	md5sums = 88982d07f8afa4f77b21666bb0adc570
+	md5sums = 98655ade1e74c70378063f1ce9f49337
+	md5sums = dee931ca691fcdfcc937eedb30fe9d00
+	md5sums = 07d9b0eb34a0bf0085c8c7869780dbc3
+
+pkgname = majonoie-jp
+
