@@ -1,0 +1,12 @@
+pkgbase = openresty-lua-cookie
+	pkgver = 20151001.23.8b9e467
+	pkgrel = 1
+	url = https://github.com/cloudflare/lua-resty-cookie
+	arch = any
+	license = BSD
+	depends = openresty
+	source = openresty-lua-cookie::git+https://github.com/cloudflare/lua-resty-cookie
+	sha512sums = SKIP
+
+pkgname = openresty-lua-cookie
+
