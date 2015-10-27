@@ -1,4 +1,5 @@
-# Maintainer: talavis <aur talavis eu>
+# Maintainer: 
+# Contributor: talavis <aur talavis eu>
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 pkgname=ugene
 pkgver=1.18.0
