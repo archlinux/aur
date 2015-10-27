@@ -2,7 +2,7 @@
 
 _perlmod=ora2pg
 pkgname=perl-ora2pg
-pkgver=15.3
+pkgver=16.0
 pkgrel=1
 pkgdesc="Moves Oracle databases to PostgreSQL"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('perl-dbd-oracle')
 makedepends=()
 options=('!emptydirs')
 source=("http://downloads.sourceforge.net/${_perlmod}/${_perlmod}-${pkgver}.tar.bz2" "destdir.patch")
-md5sums=('8a63f41208015fec62675dac77e1d8ff'
+md5sums=('2b6c87b84086580f35c788174a32ecb3'
          '7fc24b5df9de34bb8ff3d05a03124488')
 
 build() {
