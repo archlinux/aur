@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-persian-calendar
+	pkgdesc = A Persian calendar for Gnome Shell.
+	pkgver = 20151020
+	pkgrel = 1
+	url = https://github.com/omid/Persian-Calendar-for-Gnome-Shell
+	install = gnome-shell-extension.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	source = gnome-shell-extension-persian-calendar::git+https://github.com/omid/Persian-Calendar-for-Gnome-Shell
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-persian-calendar
+
