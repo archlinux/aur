@@ -11,6 +11,7 @@ arch=(i686 x86_64)
 url="https://launchpad.net/pocl"
 license=('GPL')
 depends=('clang' 'libcl' 'hwloc' 'libltdl' 'opencl-headers')
+conflicts=('clang-svn')
 source=("http://pocl.sourceforge.net/downloads/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('e197ba3aa01a35f40581c48e053330dd')
 options=(debug strip !staticlibs !libtool)

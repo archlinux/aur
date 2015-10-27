@@ -13,6 +13,7 @@ pkgbase = pocl
 	depends = hwloc
 	depends = libltdl
 	depends = opencl-headers
+	conflicts = clang-svn
 	options = debug
 	options = strip
 	options = !staticlibs
