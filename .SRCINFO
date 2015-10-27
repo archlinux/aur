@@ -1,0 +1,17 @@
+pkgbase = octave-ocs
+	pkgdesc = Package for solving DC and transient electrical circuit equations
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = http://octave.sourceforge.net/ocs/
+	install = octave-ocs.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	depends = octave>=3.0.0
+	depends = octave-odepkg
+	noextract = ocs-0.1.5.tar.gz
+	source = http://downloads.sourceforge.net/octave/ocs-0.1.5.tar.gz
+	md5sums = 9a8b2b01f837ac20b876a7442516add1
+
+pkgname = octave-ocs
+
