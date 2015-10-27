@@ -3,7 +3,7 @@
 pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
 _pkgname=${pkgname[0]/-git/}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=2.2.0.r92.5d6ac0a
+pkgver=2.2.0.r114.ea37ca0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
@@ -48,7 +48,7 @@ package_chocolate-common-git() {
   rm -f chocolate-{doom,heretic,hexen,strife}{,-setup}
 
   cd "${pkgdir}"/usr/share
-  rm -rf doc man/man5
+  rm -rf bash-completion doc man/man5
   rm -rf applications/chocolate-{doom,heretic,hexen,strife}.desktop \
      applications/screensavers
   rm -rf appdata
@@ -74,7 +74,8 @@ package_chocolate-doom-git() {
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{heretic,hexen,strife}
   rm -rf applications/chocolate-{setup,heretic,hexen,strife}.desktop icons
-  rm -f appdata/chocolate-{heretic,hexen,strife}.appdata.xml
+  rm -f appdata/chocolate-{heretic,hexen,strife}.appdata.xml \
+     bash-completion/completions/chocolate-{heretic,hexen,strife}
   rm -f man/man?/chocolate-{heretic,hexen,strife,setup,server}* \
      man/man5/{heretic,hexen,strife}.cfg*
 }
@@ -96,7 +97,8 @@ package_chocolate-heretic-git() {
   rm -rf doc/chocolate-{doom,hexen,strife}
   rm -rf applications/chocolate-{setup,doom,hexen,strife}.desktop \
      applications/screensavers icons
-  rm -f appdata/chocolate-{doom,hexen,strife}.appdata.xml
+  rm -f appdata/chocolate-{doom,hexen,strife}.appdata.xml \
+     bash-completion/completions/chocolate-{doom,hexen,strife}
   rm -f man/man?/chocolate-{doom,hexen,strife,setup,server}* \
      man/man5/{default,hexen,strife}.cfg*
 }
@@ -117,7 +119,8 @@ package_chocolate-hexen-git() {
   rm -rf doc/chocolate-{doom,heretic,strife}
   rm -rf applications/chocolate-{setup,doom,heretic,strife}.desktop \
      applications/screensavers icons
-  rm -f appdata/chocolate-{doom,heretic,strife}.appdata.xml
+  rm -f appdata/chocolate-{doom,heretic,strife}.appdata.xml \
+     bash-completion/completions/chocolate-{doom,heretic,strife}
   rm -f man/man?/chocolate-{doom,heretic,strife,setup,server}* \
      man/man5/{default,heretic,strife}.cfg*
 }
@@ -138,7 +141,8 @@ package_chocolate-strife-git() {
   rm -rf doc/chocolate-{doom,heretic,hexen}
   rm -rf applications/chocolate-{setup,doom,heretic,hexen}.desktop \
      applications/screensavers icons
-  rm -f appdata/chocolate-{doom,heretic,hexen}.appdata.xml
+  rm -f appdata/chocolate-{doom,heretic,hexen}.appdata.xml \
+     bash-completion/completions/chocolate-{doom,heretic,hexen}
   rm -f man/man?/chocolate-{doom,heretic,hexen,setup,server}* \
      man/man5/{default,heretic,hexen}.cfg*
 }
