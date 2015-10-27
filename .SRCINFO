@@ -1,7 +1,7 @@
 pkgbase = octave-image-acquisition
 	pkgdesc = The Octave-forge Image Aquisition package provides functions to capture images from connected devices. Currently only v4l2 is supported.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://octave.sourceforge.net/image-acquisition/
 	install = octave-image-acquisition.install
 	arch = any
