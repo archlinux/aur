@@ -66,6 +66,7 @@ build() {
     --with-table-sqlite \
     --with-scheduler-ram \
     --with-scheduler-python
+  make
 }
 
 check() {
