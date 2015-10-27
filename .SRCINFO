@@ -17,6 +17,7 @@ pkgbase = gtox-git
 	depends = gstreamermm
 	depends = flatbuffers
 	depends = toxcore
+	depends = util-linux
 	conflicts = gtox
 	source = gtox::git+https://github.com/KoKuToru/gTox.git#branch=AUR
 	md5sums = SKIP
