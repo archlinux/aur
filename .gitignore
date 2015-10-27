@@ -1,0 +1,6 @@
+src/
+pkg/
+oxefmsynth-*.tar.xz
+oxefmsynth-*.src.tar.gz
+v*.zip
+.AURINFO
