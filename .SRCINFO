@@ -1,7 +1,7 @@
 pkgbase = octave-mvn
 	pkgdesc = Multivariate normal distribution clustering and utility functions.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://octave.sourceforge.net/mvn/
 	install = octave-mvn.install
 	arch = any
