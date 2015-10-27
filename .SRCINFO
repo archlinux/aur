@@ -1,0 +1,17 @@
+pkgbase = octave-secs1d
+	pkgdesc = A Drift-Diffusion simulator for 1d semiconductor devices
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = http://octave.sourceforge.net/secs1d/
+	install = octave-secs1d.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	depends = octave>=3.0
+	depends = octave-bim
+	noextract = secs1d-0.0.9.tar.gz
+	source = http://downloads.sourceforge.net/octave/secs1d-0.0.9.tar.gz
+	md5sums = 1dffa0c6ee88144bd4ecadb45618318d
+
+pkgname = octave-secs1d
+
