@@ -22,7 +22,7 @@ md5sums=('bc60de550adb1fc7c50c4b095057b950'
          '88982d07f8afa4f77b21666bb0adc570'
          '98655ade1e74c70378063f1ce9f49337'
          'dee931ca691fcdfcc937eedb30fe9d00'
-         '07d9b0eb34a0bf0085c8c7869780dbc3')
+         'd81ac9dea4008515d8ae636b725fa32f')
 noextract=majo_$pkgver.exe
 
 package() {

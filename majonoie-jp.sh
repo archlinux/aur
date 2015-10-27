@@ -6,10 +6,10 @@ VER=`pacman -Q $NAME | sed "s:$NAME ::g"`
 mkdir -p ~/.$NAME
 cd ~/.$NAME
 
-[ -f ~/.$NAME/mkxp.ver ] || echo $VER > ~/.$NAME/mkxp.ver
 [ "z"`cat ~/.$NAME/mkxp.ver` = "z"$VER ] && exec mkxp || find -type l | while read line
     do rm $line;done
-
+echo $VER > ~/.$NAME/mkxp.ver
+    
 [ -f ~/.$NAME/mkxp.conf ] || cp /opt/$NAME/mkxp.conf ~/.$NAME/
 cd /opt/$NAME
 find . -type d | while read line;do mkdir -p ~/.$NAME/$line;done
