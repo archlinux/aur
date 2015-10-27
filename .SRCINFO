@@ -1,7 +1,7 @@
 pkgbase = opensgx-git
 	pkgdesc = an open platform for Intel SGX
 	pkgver = r31.62fb20f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sslab-gatech/opensgx/
 	arch = x86_64
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = opensgx-git
 	md5sums = 9ac0fa0ddae6d0e70f18992894bd1205
 	md5sums = e65b4d1335c29babacaa0d5dbcbffe3a
 	md5sums = 48523504a8c9c6b4fc9175d143d87bf1
-	md5sums = 62865bda5775b6a7d633c10d10ec5415
+	md5sums = 2a5dd594a15d21ef549f3efe2b3ae406
 
 pkgname = opensgx-git
 

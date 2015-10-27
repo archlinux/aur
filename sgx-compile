@@ -44,5 +44,5 @@ done
 
 sed -i -e '/O_TEXT_SEGMENTS/d' -e '/O_DATA_SEGMENTS/d' "$loader"
 
-find /usr/lib/sgx/ -type f -iname '*.o' -print0 | xargs -0 --replace '{}' cc -g -Wall -pedantic -Wno-unused-function -std=gnu1x -fno-stack-protector -fvisibility=hidden "-Wl,-T,$loader" '{}' "${args[@]}"
+find /usr/lib/sgx/ -type f -iname '*.o' -print0 | xargs -0 cc -g -Wall -pedantic -Wno-unused-function -std=gnu1x -fno-stack-protector -fvisibility=hidden "-Wl,-T,$loader" "${args[@]}"
 rm "$loader"

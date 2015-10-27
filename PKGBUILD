@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=opensgx-git
 pkgver=r31.62fb20f
-pkgrel=1
+pkgrel=2
 pkgdesc="an open platform for Intel SGX"
 arch=('x86_64')
 url="https://github.com/sslab-gatech/opensgx/"
@@ -27,7 +27,7 @@ md5sums=('SKIP'
          '9ac0fa0ddae6d0e70f18992894bd1205'
          'e65b4d1335c29babacaa0d5dbcbffe3a'
          '48523504a8c9c6b4fc9175d143d87bf1'
-         '62865bda5775b6a7d633c10d10ec5415')
+         '2a5dd594a15d21ef549f3efe2b3ae406')
 
 pkgver() {
   cd "$srcdir/$pkgname"
