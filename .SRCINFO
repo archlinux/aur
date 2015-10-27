@@ -1,0 +1,16 @@
+pkgbase = octave-cgi
+	pkgdesc = Common Gatway Interface for Octave
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://octave.sourceforge.net/cgi/
+	install = octave-cgi.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	depends = octave>=3.8.0
+	noextract = cgi-0.1.1.tar.gz
+	source = http://downloads.sourceforge.net/octave/cgi-0.1.1.tar.gz
+	md5sums = 87b9726bd1e4804896521fc0f75ee5b7
+
+pkgname = octave-cgi
+
