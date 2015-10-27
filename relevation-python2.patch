@@ -1,0 +1,46 @@
+--- relevation-1.3/GNUmakefile.bak	2015-10-23 13:04:23.580801901 +0100
++++ relevation-1.3/GNUmakefile	2015-10-23 13:47:30.214234538 +0100
+@@ -17,8 +17,8 @@
+ INSTALLROOT=$(DESTDIR)$(prefix)
+ MANROOT=$(INSTALLROOT)/share/man
+ # Where to install additional packages
+-PYTHONROOT=$(DESTDIR)$(shell python -c "import sys;from distutils import sysconfig; print sysconfig.get_python_lib(0,0,prefix='$(prefix)')")
+-DUSETUP=python setup.py # Distutils' setup
++PYTHONROOT=$(DESTDIR)$(shell python2 -c "import sys;from distutils import sysconfig; print sysconfig.get_python_lib(0,0,prefix='$(prefix)')")
++DUSETUP=python2 setup.py # Distutils' setup
+ # Debian derived systems need special treatment for clean uninstalls
+ # since it uses different than standard directories
+ INSTALL_LAYOUT=
+@@ -58,7 +58,7 @@
+ 	@echo INSTALL_LAYOUT=$(INSTALL_LAYOUT)
+ 
+ test_min_python: pyqver2.py
+-	python pyqver2.py -v -m 2.4 src/$(PKG).py src/$(PKG)/*.py
++	python2 pyqver2.py -v -m 2.4 src/$(PKG).py src/$(PKG)/*.py
+ 
+ install: setup.py
+ 	$(DUSETUP) install --prefix=$(DESTDIR)$(prefix) $(INSTALL_LAYOUT)
+--- relevation-1.3/src/relevation.py.bak	2015-10-23 13:48:17.049070526 +0100
++++ relevation-1.3/src/relevation.py	2015-10-23 13:49:02.400525749 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: UTF-8 -*-
+ 
+ """
+--- relevation-1.3/src/relevation/PBKDF2.py.bak	2015-10-23 13:57:27.250307970 +0100
++++ relevation-1.3/src/relevation/PBKDF2.py	2015-10-23 13:57:36.087274759 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # -*- coding: ascii -*-
+ ###########################################################################
+ # pbkdf2 - PKCS#5 v2.0 Password-Based Key Derivation
+--- relevation-1.3/src/gui.py.bak	2015-10-23 13:59:00.340134738 +0100
++++ relevation-1.3/src/gui.py	2015-10-23 13:59:11.243838009 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: UTF-8 -*-
+ 
+ """
