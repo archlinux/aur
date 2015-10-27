@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-intel-tbb
-pkgver=4.3_20150611
+pkgver=4.4_20150728
 pkgrel=1
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -10,7 +10,7 @@ arch=('any')
 url='http://www.threadingbuildingblocks.org/'
 license=('GPL')
 source=("http://threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb${pkgver/\./}oss_src.tgz")
-sha1sums=('5457cd15ad13625442283e67844199a79e88a3a4')
+sha1sums=('9d8587f743a3ee3961305457a9285f71bb4168ea')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
