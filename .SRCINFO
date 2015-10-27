@@ -1,0 +1,17 @@
+pkgbase = octave-netcdf
+	pkgdesc = A MATLAB compatible NetCDF interface for Octave
+	pkgver = 1.0.7
+	pkgrel = 2
+	url = http://octave.sourceforge.net/netcdf/
+	install = octave-netcdf.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	makedepends = netcdf
+	depends = octave>=3.4.0
+	noextract = netcdf-1.0.7.tar.gz
+	source = http://downloads.sourceforge.net/octave/netcdf-1.0.7.tar.gz
+	md5sums = 5b3dbcdfe994c08358b440fa5354ab78
+
+pkgname = octave-netcdf
+
