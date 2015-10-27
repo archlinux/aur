@@ -2,8 +2,8 @@
 
 pkgname=ttf-overpass
 pkgver=2.0
-pkgrel=1
-pkgdesc="An open source font family inpired by Highway Gothic esp. suited for signs, lettering and web sites (true type format)."
+pkgrel=2
+pkgdesc="An open source font family inspired by Highway Gothic esp. suited for signs, lettering and web sites (true type format)."
 arch=('any')
 license=('custom:SIL Open Font License 1.1')
 url="http://overpassfont.org/"
