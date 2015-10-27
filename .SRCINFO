@@ -1,7 +1,7 @@
 pkgbase = tinc-pre
 	pkgdesc = VPN (Virtual Private Network) daemon (Pre-release)
 	pkgver = 1.1pre11
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.tinc-vpn.org/
 	install = tinc-pre.install
 	arch = i686
@@ -11,9 +11,15 @@ pkgbase = tinc-pre
 	depends = openssl
 	optdepends = wxpython: gui support
 	provides = tinc-pre
+	provides = tinc-pre-systemd
 	conflicts = tinc
+	conflicts = tinc-pre-systemd
 	source = http://www.tinc-vpn.org/packages/tinc-1.1pre11.tar.gz
+	source = tincd.service
+	source = tincd@.service
 	sha256sums = 942594563d3aef926a2d04e9ece90c16daf1c700e99e3b91ff749e8377fbf757
+	sha256sums = 35d76d63e0403550bf68632603cf6e51352f6b85f0269853af875f6b434fb9e1
+	sha256sums = 4783faab2589ba67dc6fceb2e37a736914cc5afc2f741aadf990e027f0b957f2
 
 pkgname = tinc-pre
 
