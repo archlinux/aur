@@ -10,7 +10,7 @@
 _pack=doctest
 pkgname=octave-$_pack
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Octave-Forge Doctest package finds specially-formatted blocks of example code within documentation files.  It then executes the code and confirms the output is correct.  This can be useful as part of a testing framework or simply to ensure that  [...]"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -27,6 +27,10 @@ source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
 md5sums=('3c9252381e46745bc760f53960710d87')
 
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
+
 _install_dir() {
 	src=$1
 	dst=$2
@@ -39,7 +43,7 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave-cli -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
 		pkg install -verbose -nodeps $_archive;
