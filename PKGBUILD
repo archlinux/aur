@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-persian-calendar
 pkgver=20151020
 pkgrel=1
-pkgdesc="A Persian calendar for Gnome Shell."
+pkgdesc="Persian calendar for Gnome Shell."
 arch=(any)
 url="https://github.com/omid/Persian-Calendar-for-Gnome-Shell"
 license=(GPL3)
