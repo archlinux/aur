@@ -1,12 +1,13 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=breeze-gtk-git
-pkgver=5.4.90.r60.46b26f5
+pkgver=5.4.90.r61.0551df0
 pkgrel=1
 pkgdesc="Breeze port for GTK. (GIT version)"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://quickgit.kde.org/?p=breeze-gtk.git"
 license=('LGPL')
+depends=('qt5-base')
 optdepends=("gtk2: GTK+2 theme"
             "gtk3: GTK+3 theme")
 makedepends=('git'
@@ -28,7 +29,8 @@ build(){
   cd build
   cmake ../breeze-gtk \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib
 
   make
 }
