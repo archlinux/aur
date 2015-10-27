@@ -1,0 +1,17 @@
+pkgbase = octave-tisean
+	pkgdesc = Port of TISEAN 3.0.1
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://octave.sourceforge.net/tisean/
+	install = octave-tisean.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=4.0.0
+	depends = octave-signal>=1.3.0
+	noextract = tisean-0.2.3.tar.gz
+	source = http://downloads.sourceforge.net/octave/tisean-0.2.3.tar.gz
+	md5sums = 91a29df436249255177e4493c87f3cf9
+
+pkgname = octave-tisean
+
