@@ -1,7 +1,7 @@
 pkgbase = space-bg
 	pkgdesc = A background image setting program that grabs the daily astronomy image (http://apod.nasa.gov/apod/astropix.html)
 	pkgver = 2.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/t0nedef/space-bg
 	arch = any
 	license = GPL

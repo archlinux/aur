@@ -1,7 +1,7 @@
 # Maintainer: Aaron Ali <t0nedef@causal.ca>
 pkgname=space-bg
 pkgver=2.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A background image setting program that grabs the daily astronomy image (http://apod.nasa.gov/apod/astropix.html)"
 arch=('any')
 license=('GPL')
@@ -14,7 +14,7 @@ package()
 	cd ${srcdir}/${pkgname}-${pkgver}
 	install -Dm755 spacesetbg ${pkgdir}/usr/bin/spacesetbg
 	install -Dm755 spacevideo.sh ${pkgdir}/usr/bin/spacevideo.sh
-	install -Dm644 spaceimg.py ${pkgdir}/usr/lib/python3.4/site-packages/spaceimg.py
+	install -Dm644 spaceimg.py ${pkgdir}/usr/lib/python3.5/site-packages/spaceimg.py
 }
 #
 md5sums=('0d93963b0d0e1a7ce04eec1a64021bf2')
