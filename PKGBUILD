@@ -39,5 +39,5 @@ package() {
 	mkdir -pv "$pkgdir/opt/tempo2/T2runtime"
 	cp -rv "$srcdir/tempo2/T2runtime" "$pkgdir/opt/tempo2/T2runtime"
 
-	install -D -m644 AFL-2.1 "$pkgdir/usr/share/licnese/${pkgname}/AFL-2.1"
+	install -D -m644 AFL-2.1 "$pkgdir/usr/share/license/${pkgname}/AFL-2.1"
 }
