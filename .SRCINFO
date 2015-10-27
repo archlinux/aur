@@ -1,6 +1,6 @@
 pkgbase = john-git
 	pkgdesc = fast password cracker (using the git repository of the jumbo patch)
-	pkgver = r10973.c0560a4
+	pkgver = r11924.53acc74
 	pkgrel = 1
 	url = http://www.openwall.com/john/
 	install = john.install

@@ -3,7 +3,7 @@
 
 _pkgname=john
 pkgname=john-git
-pkgver=r10973.c0560a4
+pkgver=r11924.53acc74
 pkgrel=1
 pkgdesc="fast password cracker (using the git repository of the jumbo patch)"
 arch=('i686' 'x86_64')
@@ -67,7 +67,7 @@ package() {
 	install -m644 ${srcdir}/$_pkgname/run/stats ${pkgdir}/usr/share/john/
 	install -m644 ${srcdir}/$_pkgname/run/*.chr \
 			${pkgdir}/usr/share/john/
-	install -m644 ${srcdir}/$_pkgname/run/{dumb16,dumb32,dynamic,dynamic_flat_sse_formats,korelogic,regex_alphabets,repeats16,repeats32}.conf \
+	install -m644 ${srcdir}/$_pkgname/run/{best64,dumb16,dumb32,dynamic,dynamic_flat_sse_formats,korelogic,regex_alphabets,repeats16,repeats32}.conf \
 			${pkgdir}/usr/share/john/
 	install -d ${pkgdir}/usr/share/john/kernels/
 	install -m644 ${srcdir}/$_pkgname/run/kernels/* ${pkgdir}/usr/share/john/kernels/
