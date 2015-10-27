@@ -1,7 +1,7 @@
 pkgbase = gromacs-5.0-complete
 	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.
 	pkgver = 5.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gromacs.org/
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 
 pkgname=gromacs-5.0-complete
 pkgver=5.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -26,7 +26,7 @@ build() {
   msg2 "Building the double precision files"
   cd ${srcdir}/double	
   cmake ../gromacs-${pkgver}/ \
-        -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-5.0.6/ \
+        -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-${pkgver}/ \
         -DBUILD_SHARED_LIBS=ON \
         -DGMX_X11=ON \
         -DCMAKE_INSTALL_LIBDIR=lib \
@@ -38,7 +38,7 @@ build() {
   msg2 "Building the single precision files"
   cd ${srcdir}/single
   cmake ../gromacs-${pkgver}/ \
-        -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-5.0.6/ \
+        -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-${pkgver}/ \
         -DBUILD_SHARED_LIBS=ON \
         -DGMX_X11=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON \
