@@ -1,7 +1,7 @@
 pkgbase = octave-ocs
 	pkgdesc = Package for solving DC and transient electrical circuit equations
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://octave.sourceforge.net/ocs/
 	install = octave-ocs.install
 	arch = any
