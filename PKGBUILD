@@ -1,13 +1,13 @@
 # Maintainer: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=stoken-git
 pkgver=v0.90.r0.4592a11
-pkgrel=1
+pkgrel=2
 pkgdesc="RSA SecurID-compatible software token for Linux/UNIX systems"
 arch=('i686' 'x86_64')
 url="https://github.com/cernekee/${pkgname%-git}"
 license=('LGPL2.1')
 depends=('nettle' 'libxml2')
-makedepends=('git' 'autoconf' 'automake' 'libtool')
+makedepends=('git')
 optdepends=('gtk3: required for stoken-gui')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
