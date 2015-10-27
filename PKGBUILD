@@ -2,7 +2,7 @@
 
 pkgname=ganglia
 pkgver=3.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A scalable distributed monitoring system for high-performance computing systems such as clusters and Grids."
 arch=('i686' 'x86_64' 'armv6h')
 url="http://${pkgname}.sourceforge.net/"
@@ -63,7 +63,7 @@ package() {
   msg2 "Generating default gmond.conf"
   ./gmond/gmond --default_config > "$pkgdir/etc/$pkgname/gmond.conf"
 
-  install -Dm755 -d /var/lib/ganglia{,/rrds}
+  install -Dm755 -d      "$pkgdir/var/lib/ganglia/rrds"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
 
   # See man page for sysusers.d(5)

@@ -1,7 +1,7 @@
 pkgbase = ganglia
 	pkgdesc = A scalable distributed monitoring system for high-performance computing systems such as clusters and Grids.
 	pkgver = 3.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ganglia.sourceforge.net/
 	install = ganglia.install
 	arch = i686
