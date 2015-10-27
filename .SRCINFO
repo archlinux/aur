@@ -1,6 +1,6 @@
 pkgbase = metapod-git
 	pkgdesc = META-Programming Optimized Dynamics library that provides robot dynamics algorithms.
-	pkgver = 1.0.8.r16.gc72f04f
+	pkgver = 1.0.8.r17.gdd736a9
 	pkgrel = 1
 	url = http://gazebosim.org/
 	arch = i686

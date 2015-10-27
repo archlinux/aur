@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=metapod-git
-pkgver=1.0.8.r16.gc72f04f
+pkgver=1.0.8.r17.gdd736a9
 pkgrel=1
 pkgdesc="META-Programming Optimized Dynamics library that provides robot dynamics algorithms."
 arch=('i686' 'x86_64')
