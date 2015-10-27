@@ -1,13 +1,12 @@
-# Contributor: Anton Leontiev <unsector /at/ km.ru>
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=lasercalc
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to calculate optical paths and resonators based on Gaussian beam matrix optics'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/apps/phpwebsite/lasercalc/'
 license=('GPL3')
-depends=('wxgtk2.9')
-makedepends=('wxgtk2.9')
+depends=('wxgtk')
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${pkgname}_$pkgver-1.tar.gz
 	http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/libproperties-0.1.tar.gz
@@ -30,32 +29,32 @@ md5sums=('ece7d77db1d95a07259a79172f80b250'
          '587c7381386cbd3efde97e87d376d101')
 
 build() {
-	patch -p0 -i "$srcdir/$pkgname-$pkgver-libproperties.patch"
-	patch -p0 -i "$srcdir/$pkgname-$pkgver-libsaf.patch"
-	patch -p0 -i "$srcdir/$pkgname-$pkgver-libplot.patch"
-	patch -p0 -i "$srcdir/$pkgname-$pkgver-build.patch"
+	patch -p0 -i $pkgname-$pkgver-libproperties.patch
+	patch -p0 -i $pkgname-$pkgver-libsaf.patch
+	patch -p0 -i $pkgname-$pkgver-libplot.patch
+	patch -p0 -i $pkgname-$pkgver-build.patch
 
 	export CPPFLAGS="-I$srcdir/libs/include"
 	export LDFLAGS="-L$srcdir/libs/lib"
 
 	cd "$srcdir/properties-0.1"
 	rm missing; autoreconf -i
-	./configure --prefix="$srcdir/libs" --with-wx-config=wx-config-2.9 --disable-shared
+	./configure --prefix="$srcdir/libs" --disable-shared
 	make install
 
 	cd "$srcdir/saf-0.1"
 	rm missing; autoreconf -i
-	./configure --prefix="$srcdir/libs" --with-wx-config=wx-config-2.9 --disable-shared
+	./configure --prefix="$srcdir/libs" --disable-shared
 	make install
 
 	cd "$srcdir/plot-0.6"
 	rm missing; autoreconf -i
-	./configure --prefix="$srcdir/libs" --with-wx-config=wx-config-2.9 --disable-shared
+	./configure --prefix="$srcdir/libs" --disable-shared
 	make install
 
 	cd "$srcdir/LaserCalc"
 	rm missing; autoreconf -i
-	./configure --prefix=/usr --with-wx-config=wx-config-2.9
+	./configure --prefix=/usr
 	make
 }
 
