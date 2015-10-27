@@ -1,0 +1,13 @@
+_pack=optics
+
+post_install() {
+	octave-cli -q -f --eval "pkg rebuild -global $_pack"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	octave-cli -q -f --eval "pkg rebuild -global"
+}
