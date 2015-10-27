@@ -1,11 +1,11 @@
 pkgname=enpass-rc-bin
 pkgver=5.0.0_RC
-pkgrel=3
+pkgrel=4
 pkgdesc="A multiplatform password manager - RC version. Based on enpass-bin AUR package by Tadly."
 arch=('x86_64')
 url="http://enpass.io/"
 license=('custom')
-depends=('libxss')
+depends=('libxss', 'libappindicator-gtk3')
 conflicts=('enpass-bin')
 install=enpass-bin.install
 sha256sums=('d66f9eb79cc0308abe38e4822423f73b50827206b65808e4b6b5acf5e2360c99')
