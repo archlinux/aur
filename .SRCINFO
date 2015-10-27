@@ -9,7 +9,6 @@ pkgbase = quartus-free-130
 	makedepends = bash
 	provides = quartus-free
 	conflicts = quartus-free
-	replaces = quartus-free
 	options = !strip
 	options = !upx
 	source = Quartus-web-13.0.1.232-linux.tar::http://download.altera.com/akdlm/software/acdsinst/13.0sp1/232/ib_tar/Quartus-web-13.0.1.232-linux.tar
