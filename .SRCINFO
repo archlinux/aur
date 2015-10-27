@@ -1,0 +1,33 @@
+pkgbase = opensmtpd-extras
+	pkgdesc = Additional filters, tables, queues, etc. for OpenSMTPd
+	pkgver = 5.7.1
+	pkgrel = 1
+	url = https://opensmtpd.org
+	arch = i686
+	arch = x86_64
+	license = custom:opensmtpd
+	makedepends = python2
+	makedepends = lua
+	makedepends = perl
+	makedepends = libmariadbclient
+	makedepends = postgresql-libs
+	makedepends = hiredis
+	makedepends = sqlite
+	makedepends = libasr
+	makedepends = openssl
+	depends = opensmtpd
+	optdepends = python2: python support for filters, tables, scheduler, and queues
+	optdepends = clamav: clamav filters
+	optdepends = lua: lua support for filters
+	optdepends = perl: perl support for filters
+	optdepends = spamassassin: spamassassin filters
+	optdepends = libmariadbclient: mysql support for tables
+	optdepends = postgresql-libs: postgresql support for tables
+	optdepends = hiredis: redis support for tables
+	optdepends = sqlite: sqlite support for tables
+	backup = etc/smptd/filter-regex.conf
+	source = https://www.opensmtpd.org/archives/opensmtpd-extras-5.7.1.tar.gz
+	sha256sums = b56dc24427afe7d6156c85232427fe33a260aca8873eb118d0229dff3a248dce
+
+pkgname = opensmtpd-extras
+
