@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/jeffalstott/powerlaw'
 depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib')
 optdepends=('python-mpmath: support for gamma function fitting')
+provides=("python-powerlaw=$pkgver")
 conflicts=('python-powerlaw')
 makedepends=('git' 'awk' 'sed')
 license=('MIT')
