@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=2.0.1.r507.2ec16cf
+pkgver=2.0.1.r509.58b19d0
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -73,8 +73,9 @@ pkgver() {
 
 prepare() {
         cd "$srcdir/$_gitname"
+        make DESTDIR="${pkgdir}" clean
         make \
-                DESTDIR="$pkgdir" \
+                DESTDIR="${pkgdir}" \
                 CC="${_CC}" \
                 PREFIX="${_PREFIX}" \
                 X86_ENERGY_PERF_POLICY=${_X86_ENERGY_PERF_POLICY} \
@@ -96,7 +97,7 @@ prepare() {
 build() {
         cd "$srcdir/$_gitname"
         make \
-                DESTDIR="$pkgdir" \
+                DESTDIR="${pkgdir}" \
                 CC="${_CC}" \
                 PREFIX="${_PREFIX}" \
                 X86_ENERGY_PERF_POLICY=${_X86_ENERGY_PERF_POLICY} \
@@ -118,7 +119,7 @@ build() {
 package() {
         cd "$srcdir/$_gitname"
         make \
-                DESTDIR="$pkgdir" \
+                DESTDIR="${pkgdir}" \
                 CC="${_CC}" \
                 PREFIX="${_PREFIX}" \
                 X86_ENERGY_PERF_POLICY=${_X86_ENERGY_PERF_POLICY} \
