@@ -1,0 +1,23 @@
+pkgbase = cartao-cidadao-svn
+	pkgdesc = Cartao de Cidadaozadas
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://svn.gov.pt/projects/ccidadao
+	install = cartao-cidadao-svn.install
+	arch = any
+	license = GPL
+	depends = qtchooser
+	depends = svn
+	depends = qt4
+	depends = pcsclite>=1.5.0
+	depends = jasper
+	depends = openssl
+	depends = xerces-c
+	depends = ccid
+	depends = pcsclite
+	conflicts = cartao-cidadao
+	source = svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/trunk/_src/
+	md5sums = SKIP
+
+pkgname = cartao-cidadao-svn
+
