@@ -1,6 +1,6 @@
 pkgbase = bsnes-plus-git
 	pkgdesc = debug-oriented fork of bsnes v073
-	pkgver = 0.73r127.a3d2120
+	pkgver = 0.73r163.a55717a
 	pkgrel = 1
 	url = https://github.com/devinacker/bsnes-plus
 	arch = i686
@@ -13,14 +13,14 @@ pkgbase = bsnes-plus-git
 	depends = openal
 	depends = qt4
 	depends = sdl
-	depends = xdialog
+	depends = zenity
 	provides = bsnes-plus
 	conflicts = bsnes-plus
 	conflicts = bsnes-classic
 	source = git+https://github.com/devinacker/bsnes-plus.git
 	source = bsnes
 	sha1sums = SKIP
-	sha1sums = 8ee7fedf0a2aa081f57044eeaf52ba53806f7af6
+	sha1sums = 102a1295bfa6389a989f65d3037537f7d537e68b
 
 pkgname = bsnes-plus-git
 

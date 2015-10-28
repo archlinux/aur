@@ -1,18 +1,18 @@
-# Maintainer: Duck Hunt <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@tfwno.gf>
 
 pkgname=bsnes-plus-git
-pkgver=0.73r127.a3d2120
+pkgver=0.73r163.a55717a
 pkgrel=1
 pkgdesc='debug-oriented fork of bsnes v073'
 arch=('i686' 'x86_64')
 url='https://github.com/devinacker/bsnes-plus'
 license=('GPL3')
-depends=('libao' 'libpulse' 'openal' 'qt4' 'sdl' 'xdialog')
+depends=('libao' 'libpulse' 'openal' 'qt4' 'sdl' 'zenity')
 makedepends=('mesa' 'git')
 source=("git+${url}.git"
         'bsnes')
 sha1sums=('SKIP'
-          '8ee7fedf0a2aa081f57044eeaf52ba53806f7af6')
+          '102a1295bfa6389a989f65d3037537f7d537e68b')
 conflicts=('bsnes-plus' 'bsnes-classic')
 provides=('bsnes-plus')
 
