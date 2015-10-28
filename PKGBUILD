@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 LANG=C
 pkgname=inkscape-gtk3-bzr
-pkgver=r14430
+pkgver=r14434
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled"
 url="https://launchpad.net/inkscape"
@@ -11,7 +11,7 @@ license=('GPL' 'LGPL')
 depends=('aspell' 'gc' 'poppler-glib' 'libxslt' 'gsl' 'imagemagick'
 	 'desktop-file-utils' 'gdl>=3.8.0.25' 'gtkmm3' 'python2'
 	 'popt' 'dbus-glib' 'libcdr' 'libvisio' 'python2' 'gdk-pixbuf2'
-	 'hicolor-icon-theme')
+	 'hicolor-icon-theme' 'libexif' )
 optdepends=('python2-numpy: some extensions'
             'python2-lxml: some extensions and filters'
             'uniconvertor: reading/writing to some proprietary formats'
@@ -20,7 +20,7 @@ optdepends=('python2-numpy: some extensions'
 makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
-options=('!libtool' '!buildflags')
+options=('!libtool' '!makeflags')
 source=('inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/')
 md5sums=('SKIP')
 install=inkscape-bzr.install
@@ -47,9 +47,9 @@ prepare() {
 
 build() {
   cd "$srcdir/$_bzrmod"
+  export CXXFLAGS+=" `pkg-config --cflags glib` -fPIC -std=c++11"
   ./autogen.sh
   sed -i 's|python -c|python2 -c|g' configure 
-  CXXFLAGS=" -std=c++11"
   ./configure LIBS='-lpangoft2-1.0 -lfontconfig' \
     --prefix=/usr \
     --without-gnome-vfs \
