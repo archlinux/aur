@@ -1,6 +1,6 @@
 pkgbase = elog
 	pkgdesc = Electronic logbook w/ attached file support, doesn't use a database.
-	pkgver = 2.9.2.1
+	pkgver = 3.1.1.1
 	pkgrel = 1
 	url = http://midas.psi.ch/elog/
 	install = elog.install
@@ -11,9 +11,9 @@ pkgbase = elog
 	optdepends = imagemagick: inline thumbnail support
 	optdepends = ghostscript: inline thumbnail support
 	backup = etc/elog/elogd.cfg
-	source = https://midas.psi.ch/elog/download/tar/elog-2.9.2-1.tar.gz
+	source = https://midas.psi.ch/elog/download/tar/elog-3.1.1-1.tar.gz
 	source = elogd.service
-	md5sums = 4ae5010a2e83e2846b81295bce22aec1
+	md5sums = 6f67024af6b5b7d2a1e8101cb8f52abc
 	md5sums = a56aee958b9d524312c9392c74484e9e
 
 pkgname = elog
