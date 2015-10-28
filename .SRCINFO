@@ -1,7 +1,7 @@
 pkgbase = octave-tisean
 	pkgdesc = Port of TISEAN 3.0.1
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://octave.sourceforge.net/tisean/
 	install = octave-tisean.install
 	arch = any
