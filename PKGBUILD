@@ -1,12 +1,12 @@
 pkgname=enpass-bin
 _pkgname=enpass
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multiplatform password manager"
 arch=('i686' 'x86_64')
 url="http://enpass.io/"
 license=('custom')
-depends=('libxss')
+depends=('libxss' 'libappindicator-gtk2')
 install=enpass-bin.install
 case $CARCH in
     'x86_64')
