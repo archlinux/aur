@@ -20,8 +20,8 @@ build() {
 
   unset CFLAGS
   unset CXXFLAGS
-  NPROC=`grep "physical id" /proc/cpuinfo|sort|uniq|wc -l`
-  NCORE4PROC=`grep "cores" /proc/cpuinfo|sort|tail -n 1|sed -e 's/cpu cores.*: //'`
+  NPROC=`/usr/bin/grep "physical id" /proc/cpuinfo|sort|uniq|wc -l`
+  NCORE4PROC=`/usr/bin/grep "cores" /proc/cpuinfo|sort|tail -n 1|sed -e 's/cpu cores.*: //'`
   let NCORE=NPROC*NCORE4PROC
   make USE_OPENMP=1 NO_LAPACK=1 NUM_THREADS=$NCORE LIBPREFIX=libblas \
     MAJOR_VERSION=3 NO_CBLAS=1 NO_AFFINITY=1
