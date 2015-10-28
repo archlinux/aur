@@ -6,7 +6,7 @@
 # Maintainer: easymodo <easymodofrf@gmail.com>
 pkgname=qimgv-git
 _pkgname=qimgv
-pkgver=v0.43.r13.g27d8602
+pkgver=v0.44.r1.g1a6fd57
 pkgrel=1
 #epoch=
 pkgdesc="Simple image viewer written in qt. Supports webm playback."
@@ -37,20 +37,11 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-	rm -rf ./build
-	mkdir build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release ..
+	cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr
 }
 
 package() {
 	cd "$_pkgname/build"
 	make
-	mv ./qimgv ../
-	make DESTDIR="$pkgdir/usr" install
-	cd ..
-	mkdir -p "$pkgdir/usr/share/applications"
-	mkdir -p "$pkgdir/usr/share/icons"
-	cp -r "./distrib/hicolor" "$pkgdir/usr/share/icons"
-	cp -r "./distrib/qimgv.desktop" "$pkgdir/usr/share/applications"	
+	make DESTDIR="$pkgdir" install
 }
