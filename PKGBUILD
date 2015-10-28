@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-ess-git
-pkgver=15.09.50.g3200477
+pkgver=15.09.62.g95b6df3
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
@@ -30,6 +30,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
+  LANG=C
   make DESTDIR=$pkgdir/usr LISPDIR=$pkgdir/usr/share/emacs/site-lisp/ess \
     INFODIR=$pkgdir/usr/share/info/ install 
 }
