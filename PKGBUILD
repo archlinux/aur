@@ -1,18 +1,18 @@
-# Maintainer: Duck Hunt <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@tfwno.gf>
 
 pkgname=bsnes-classic-git
-pkgver=0.73r62.c134d41
+pkgver=0.73r75.fb26195
 pkgrel=1
 pkgdesc='SNES emulator with Qt GUI and debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/awjackson/bsnes-classic'
 license=('GPL3')
-depends=('libao' 'libpulse' 'openal' 'qt4' 'sdl' 'xdialog')
+depends=('libao' 'libpulse' 'openal' 'qt4' 'sdl' 'zenity')
 makedepends=('mesa' 'git')
 source=("git+${url}.git"
         'bsnes')
 sha256sums=('SKIP'
-            'd3630df281d533312821bff1d27126df437534e39f37c7d42c1cd347d6d240b5')
+            'a51e0c313e1f809aaa2f5cc8c63bd050618053db83a23e76c1a0c5e3d213c2b7')
 conflicts=('bsnes-classic' 'bsnes-plus')
 provides=('bsnes-classic')
 
