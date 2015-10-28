@@ -1,7 +1,9 @@
 # Maintainer: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-beta
-pkgver=42.0b9
+pkgver=42.0rc1
+_realpkgver=42.0
+_rcbuild=1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
 arch=('i686' 'x86_64')
@@ -9,7 +11,7 @@ license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
+         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'gst-plugins-base-libs'
              'inetutils')
@@ -21,14 +23,14 @@ provides=("firefox=$pkgver")
 conflicts=("firefox-beta-bin")            
 install=firefox-beta.install
 options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_realpkgver-candidates/build$_rcbuild/source/firefox-$_realpkgver.source.tar.xz
         mozconfig
         firefox-beta.desktop
         firefox-install-dir.patch
         freetype2-261.patch
         vendor.js
         firefox-fixed-loading-icon.png)
-sha256sums=('858d8e47eb6bc342d6b48ac66951d2833ccc777929ffe933cff5dfc8204bd24d'
+sha256sums=('4d5d9cd2a051ff1c3497a90c05a22ff4fc5d8c2b733ba92244ec5c2fe7bb5a29'
             'ecd3a5982e52f789ca15216fcbda79bf6b47db8be9e9ab495665c934b40641ff'
             'cf19552d5bbd14c2747aad9b92a2897b88701e9b42990cf28cf40c2d50a41909'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -53,7 +55,7 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 
 prepare() {
-  cd firefox-$pkgver
+  cd firefox-$_realpkgver
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
@@ -84,7 +86,7 @@ prepare() {
 }
 
 build() {
-  cd firefox-$pkgver
+  cd firefox-$_realpkgver
 
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
@@ -95,7 +97,7 @@ build() {
 }
 
 package() {
-  cd firefox-$pkgver
+  cd firefox-$_realpkgver
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
   mkdir "$pkgdir"/opt/firefox-beta
   mv "$pkgdir"/opt/firefox/* "$pkgdir"/opt/firefox-beta/
