@@ -2,11 +2,11 @@
 # Contributor: Ner0
 
 pkgname=chromium-pepper-flash-dev
-pkgver=19.0.0.226
+pkgver=19.0.0.228
 pkgrel=1
 pkgdesc="Google Chrome's Pepper Flash plugin for Chromium (Dev Channel)"
 arch=('i686' 'x86_64')
-url="http://www.google.com/chrome"
+url='http://www.google.com/chrome'
 license=('custom:chrome')
 optdepends=('pulseaudio-alsa: For PulseAudio users')
 conflicts=('chromium-pepper-flash' 'chromium-pepper-flash-stable')
