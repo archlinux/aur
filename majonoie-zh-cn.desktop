@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=魔女之家
+Comment=魔女之家
+Exec=majonoie-zh-cn
+Icon=majonoie-zh-cn
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
