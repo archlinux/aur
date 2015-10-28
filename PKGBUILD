@@ -10,7 +10,7 @@
 _pack=secs2d
 pkgname=octave-$_pack
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Drift-Diffusion simulator for 2d semiconductor devices"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -29,6 +29,10 @@ source=("http://downloads.sourceforge.net/octave/$_archive"
 noextract=("$_archive")
 md5sums=('fd4d93f4d4ebed9ceae0d7aed88c18bf'
          'c9cfc1bcf2a7fa1f0c5c582d0f8c7445')
+
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
 
 _install_dir() {
 	src=$1
@@ -49,7 +53,7 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave-cli -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
 		pkg install -verbose -nodeps $_archive_patched;
