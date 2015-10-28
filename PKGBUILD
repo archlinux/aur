@@ -1,8 +1,8 @@
 # Maintainer: Julian Hornich <julianhornich@googlemail.com>
 
 pkgname=kerncraft-git
-pkgver=199.2
-pkgrel=1
+pkgrel=5
+pkgver=199
 pkgdesc="Loop Kernel Analysis and Performance Modeling Toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/RRZE-HPC/kerncraft"
@@ -17,11 +17,21 @@ provides=('kerncraft')
 
 pkgver() {
   cd ${srcdir}/kerncraft
-  echo $(git rev-list --count master).${pkgrel}
+  echo "r"$(git rev-list --count master)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd ${srcdir}/kerncraft
+
+  # install package
   python2 setup.py install --root="${pkgdir}"
+
+  # examples
+  mkdir -p ${pkgdir}/usr/share/${pkgname}
+  cp -a ${srcdir}/kerncraft/examples ${pkgdir}/usr/share/${pkgname}/
+  chmod -R 644 ${pkgdir}/usr/share/${pkgname}
+
+  # license
   install -Dm644 ${srcdir}/kerncraft/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
