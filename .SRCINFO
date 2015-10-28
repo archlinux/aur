@@ -1,7 +1,7 @@
 pkgbase = vtk-visit
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization (legacy version for VisIt).
 	pkgver = 6.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.vtk.org/
 	arch = i686
 	arch = x86_64
@@ -43,6 +43,7 @@ pkgbase = vtk-visit
 	optdepends = gl2ps
 	optdepends = gdal
 	optdepends = mariadb
+	provides = vtk=6.1.0
 	source = http://www.vtk.org/files/release/6.1/VTK-6.1.0.tar.gz
 	source = mesa.patch
 	source = hdf5.patch

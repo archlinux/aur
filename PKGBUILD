@@ -9,7 +9,7 @@ pkgname='vtk-visit'
 _pkgname=vtk
 _PKGNAME=VTK
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (legacy version for VisIt).'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
@@ -35,6 +35,7 @@ optdepends=('python2: python bindings'
             'gl2ps'
             'gdal'
             'mariadb')
+provides=('vtk=6.1.0')
 source=("http://www.vtk.org/files/release/${pkgver:0:3}/${_PKGNAME}-${pkgver}.tar.gz"
         'mesa.patch' 'hdf5.patch' 'vtk-type.patch' 'gdal2.patch')
 sha256sums=('bd7df10a479606d529a8b71f466c44a2bdd11fd534c62ce0aa44fad91883fa34'
