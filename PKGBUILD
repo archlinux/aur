@@ -2,28 +2,22 @@
 # Contributor: dryes <joswiseman@gmail>
 # Contributor: Revelation60, Lucky <https://aur.archlinux.org/packages.php?ID=13691>
 # Contributor: Gordin <9ordin @t gmail dot com>
-_develop=true
-#_develop=false
 pkgname="sabnzbd-git"
 _gitname='sabnzbd'
-pkgver=1
+pkgver=0.7.0.r1013.g56a89ce
 pkgrel=1
 pkgdesc='A web-interface based binary newsgrabber with NZB file support.'
 arch=('any')
 url='http://www.sabnzbd.org/'
 license=('GPL')
-depends=('par2cmdline' 'python2' 'python2-cheetah' 'python2-feedparser' 'python2-yenc' 'python2-pyopenssl' 'python2-gntp-git' 'unrar' 'unzip' 'sqlite' 'curl' 'zip')
+depends=("curl" "par2cmdline"
+         "python2" "python2-cheetah" "python2-yenc"
+         "sqlite" "unrar" "unzip")
 makedepends=('git')
 optdepends=("xdg-utils: registration of .nzb files" 
             "python2-feedparser: rss support"
             "python2-pyopenssl: ssl support")
-backup=('etc/conf.d/sabnzbd')
-install=sabnzbd.install
-conflicts=('sabnzbd' 'sabnzbd-bzr' 'sabnzbd-develop-git')
-
-provides=('sabnzbd')
-replaces=('sabnzbd-bzr')
-source=("git://github.com/sabnzbd/sabnzbd.git$( $_develop && echo \#branch=develop)"
+source=("git+https://github.com/sabnzbd/sabnzbd.git"
         'sabnzbd.sh'
         'sabnzbd.init'
         'sabnzbd.confd'
@@ -34,39 +28,34 @@ source=("git://github.com/sabnzbd/sabnzbd.git$( $_develop && echo \#branch=devel
         'x-nzb.xml'
         'sabnzbd.service'
         )
-
-prepare() {
-  cd "${startdir}"
-  if [ ! -d "bin" ]; then
-    mkdir bin
-    cd bin
-    ln -s /usr/bin/python2 ./python
-  fi
-}
-
-build() {
-  export PATH="${startdir}"/bin:$PATH
-  cd "${srcdir}/${_gitname}"
-  python package.py source
-}
+backup=('etc/conf.d/sabnzbd')
+install=sabnzbd.install
+conflicts=('sabnzbd' 'sabnzbd-bzr' 'sabnzbd-develop-git')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/doc/sabnzbd/examples/"
-  cd "${srcdir}/${_gitname}/srcdist/"
-  rm -rf win PKG-INFO Sample-PostProc.cmd
-  mv licenses/ *.txt "${pkgdir}/usr/share/doc/sabnzbd/"
-  mv Sample-PostProc.sh "${pkgdir}/usr/share/doc/sabnzbd/examples/"
-  mv "${PWD}" "${pkgdir}/usr/share/sabnzbd/"
+  mkdir -p "${pkgdir}/opt/${_gitname}"
+  touch "${pkgdir}/opt/${_gitname}/${_gitname}.ini"
+  cp -r "${srcdir}/${_gitname}/"* "${pkgdir}/opt/${_gitname}"
 
-  install -Dm755 "${srcdir}/sabnzbd.sh" "${pkgdir}/usr/bin/sabnzbd"
-  install -Dm755 "${srcdir}/sabnzbd.init" "${pkgdir}/etc/rc.d/sabnzbd"
-  install -Dm644 "${srcdir}/sabnzbd.confd" "${pkgdir}/etc/conf.d/sabnzbd"
-  install -Dm755 "${srcdir}/sabnzbd.desktop" "${pkgdir}/usr/share/applications/sabnzbd.desktop"
-  install -Dm644 "${srcdir}/sabnzbd.service" "${pkgdir}/usr/lib/systemd/system/sabnzbd.service"
-  install -Dm755 "${srcdir}/addnzb.sh" "${pkgdir}/usr/share/sabnzbd/addnzb.sh"
-  install -Dm644 "${srcdir}/nzb-2.png" "${pkgdir}/usr/share/sabnzbd/nzb-2.png"
-  install -Dm644 "${srcdir}/sab2_64.png" "${pkgdir}/usr/share/sabnzbd/sab2_64.png"
-  install -Dm770 "${srcdir}/x-nzb.xml" "${pkgdir}/usr/share/sabnzbd/x-nzb.xml"
+  # remove Windows and OS X files
+  rm -r "${pkgdir}/opt/${_gitname}/win"
+  rm -r "${pkgdir}/opt/${_gitname}/osx"
+
+  # Fix for issues with Python 3
+  find "${pkgdir}/opt/${_gitname}" -type f -exec sed -i 's/python/python2/g' {} \;
+  find "${pkgdir}/opt/${_gitname}" -type d -exec chmod 755 {} \;
+  find "${pkgdir}/opt/${_gitname}" -type f -exec chmod 644 {} \;
+  chmod 755 "${pkgdir}/opt/${_gitname}/SABnzbd.py"
+
+  install -Dm755 "${srcdir}/${_gitname}.sh" "${pkgdir}/usr/bin/${_gitname}"
+  install -Dm644 "${srcdir}/${_gitname}.confd" "${pkgdir}/etc/conf.d/${_gitname}"
+  install -Dm644 "${srcdir}/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
+  install -Dm755 "${srcdir}/${_gitname}.desktop" \
+    "${pkgdir}/usr/share/applications/${_gitname}.desktop"
+  install -Dm755 "${srcdir}/addnzb.sh"    "${pkgdir}/opt/${_gitname}/addnzb.sh"
+  install -Dm644 "${srcdir}/nzb-2.png"    "${pkgdir}/opt/${_gitname}/nzb-2.png"
+  install -Dm644 "${srcdir}/sab2_64.png"  "${pkgdir}/opt/${_gitname}/sab2_64.png"
+  install -Dm770 "${srcdir}/x-nzb.xml"    "${pkgdir}/opt/${_gitname}/x-nzb.xml"
 }
 
 pkgver() {
@@ -74,13 +63,13 @@ pkgver() {
   git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-sha1sums=('SKIP'
-          '04f871831cff6d986562a317eccf0f7d15bcf0ab'
-          'd75132711c2abc21a75f7331efdf0e60d1917a38'
-          'f9516105cf5a843ace52c92e7afcc5575507ecfc'
-          '72e985c195c93680cea3ae095dd4b02cbcf534db'
-          'ffa58afabd773f7669070ef3597a90dbece3f045'
-          'a77d34fd2222f060d77d121d56bbb94c85cf3f09'
-          '92c17637b360bb938b7000ea0c2dc81178ede130'
-          'fd607d2431583320a8233cced780ed98aa074c4e'
-          'fd35834076158e6d6455e89572fd2840c0b44675')
+sha256sums=('SKIP'
+            '411738ad4dcd761daeda3a97aedfbe39c71f70d7f91c29765f85fb2a5942522d'
+            '35c7ec1bdaadeb1db3c0794254f99e8e44323ef1665d5f4ae2832d5367bd937c'
+            '29190e47cf3140053b000b1bbc9a1f8f5a20e30db19fa065c03576bb5f8e15eb'
+            '6ffe460bebea63faea39e1131131711fdfa3f744fee129f0cc2b3dffff261289'
+            'baea3351a40551a63b90b4a4c32719d4c27b5fff596e74e4a91f289964960eb6'
+            '7fec4494a04ffd6a94644c8ef499ec1c92998a613b1fde5c3a46f38c53dfbc43'
+            '099d625d6efc9e69e7c6a2833221928fb19e9e356e3aa8341c36ffdc281e567d'
+            'f53261d7578c67fb9fd6a639df94cd53604bcf37b9b03a926cb03e5214b496fe'
+            '29e83913b7f66cb5ade8ab6682754c975323fc9905451a1e7147e04dc6ddcc12')

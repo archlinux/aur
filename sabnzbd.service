@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c "python2 /usr/share/sabnzbd/SABnzbd.py -l0"
+ExecStart=/bin/sh -c "python2 /opt/sabnzbd/SABnzbd.py -l0"
 User=sabnzbd
 Group=sabnzbd
 
