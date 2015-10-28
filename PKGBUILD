@@ -1,4 +1,4 @@
-# Maintainer: Moritz Maxeiner <moritz@ucworks.org>
+# Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=seafile-client-cli
 pkgver=4.3.4
@@ -7,11 +7,10 @@ pkgdesc="Seafile is an online file storage and collaboration tool. This is seafi
 arch=('any')
 url="https://github.com/haiwen/seafile/"
 license=('GPL')
-depends=('seafile-shared>=4.3.4' 'libevent')
-makedepends=('vala' 'sed')
-optdepends=()
+depends=('seafile-shared>=4.4.2' 'libevent')
+makedepends=('vala')
 options=('!libtool' '!emptydirs')
-source=("https://github.com/haiwen/seafile/archive/v${pkgver}.tar.gz")
+source=("seafile-client-cli-v${pkgver}.tar.gz::https://github.com/haiwen/seafile/archive/v${pkgver}.tar.gz")
 
 build ()
 {

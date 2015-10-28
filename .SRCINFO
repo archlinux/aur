@@ -6,12 +6,11 @@ pkgbase = seafile-client-cli
 	arch = any
 	license = GPL
 	makedepends = vala
-	makedepends = sed
-	depends = seafile-shared>=4.3.4
+	depends = seafile-shared>=4.4.2
 	depends = libevent
 	options = !libtool
 	options = !emptydirs
-	source = https://github.com/haiwen/seafile/archive/v4.3.4.tar.gz
+	source = seafile-client-cli-v4.3.4.tar.gz::https://github.com/haiwen/seafile/archive/v4.3.4.tar.gz
 	sha256sums = 572b8d20620cabbe12464acb14694bf6d1113b019776f23c7834e0ac157fc360
 
 pkgname = seafile-client-cli
