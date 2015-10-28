@@ -1,4 +1,5 @@
 # Maintainer: maz-1 <ohmygod19993 at gmail dot com>
+# http://vgperson.com/games/witchhouse.htm
 _pkgname=majonoie
 pkgname=${_pkgname}-en
 pkgver=1.07
