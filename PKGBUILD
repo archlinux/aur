@@ -1,4 +1,5 @@
-# Maintainer: Josh 'jheretic' King <josh at chambana dot net>
+# Maintainer: Eduardo Leggiero <https://www.leggiero.uk/>
+# Contributor: Josh 'jheretic' King <josh at chambana dot net>
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=drush
