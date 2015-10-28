@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
 pkgname=openblas
 _pkgname=OpenBLAS
-pkgver=0.2.14
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD "
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('blas=3.5.0')
 conflicts=('blas')
 options=(!makeflags !emptydirs)
 source=(${_pkgname}-v${pkgver}.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz)
-md5sums=('53cda7f420e1ba0ea55de536b24c9701')
+md5sums=('b1190f3d3471685f17cfd1ec1d252ac9')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
