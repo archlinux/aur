@@ -4,7 +4,7 @@ LANG=C
 pkgname=inkscape-bzr
 pkgver=r14434
 pkgrel=1
-pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled"
+pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format"
 url="https://launchpad.net/inkscape"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -20,7 +20,7 @@ optdepends=('python2-numpy: some extensions'
 makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
-options=('!libtool' '!buildflags')
+options=('!libtool' '!makeflags')
 source=('inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/')
 md5sums=('SKIP')
 install=inkscape-bzr.install
@@ -47,9 +47,9 @@ prepare() {
 
 build() {
   cd "$srcdir/$_bzrmod"
+  CXXFLAGS+=" `pkg-config --cflags glib` -fPIC -std=c++11"
   ./autogen.sh
   sed -i 's|python -c|python2 -c|g' configure 
-  CXXFLAGS+=' -std=c++11' 
   ./configure LIBS='-lpangoft2-1.0 -lfontconfig' \
     --prefix=/usr \
     --without-gnome-vfs \

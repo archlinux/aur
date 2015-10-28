@@ -1,5 +1,5 @@
 pkgbase = inkscape-bzr
-	pkgdesc = An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled
+	pkgdesc = An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format
 	pkgver = r14434
 	pkgrel = 1
 	url = https://launchpad.net/inkscape
@@ -40,7 +40,7 @@ pkgbase = inkscape-bzr
 	provides = inkscape
 	conflicts = inkscape
 	options = !libtool
-	options = !buildflags
+	options = !makeflags
 	source = inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/
 	md5sums = SKIP
 
