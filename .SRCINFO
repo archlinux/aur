@@ -1,0 +1,14 @@
+pkgbase = svkm
+	pkgdesc = Simple Vkontakte messanger
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = python-pip
+	depends = python>=3.0
+	options = !emptydirs
+	source = https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B4YjcQAoes55MTJ5Z0xGNWNMdEU
+	md5sums = 0bd661b0bb99f7989ecac8f35a5a723e
+
+pkgname = svkm
+
