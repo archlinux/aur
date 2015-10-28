@@ -3,9 +3,10 @@
 # Contributor: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
 
 pkgname=openblas-lapack
-_pkgname=OpenBLAS
-pkgver=0.2.14
-pkgrel=5
+_PkgName=OpenBLAS
+_pkgname=openblas
+pkgver=0.2.15
+pkgrel=1
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('i686' 'x86_64')
 url="http://xianyi.github.com/OpenBLAS/"
@@ -15,25 +16,24 @@ makedepends=('perl' 'gcc-fortran')
 provides=('openblas' 'blas=3.5.0' 'lapack=3.5.0' 'cblas')
 conflicts=('openblas' 'blas' 'lapack' 'cblas')
 options=(!emptydirs)
-source=(${_pkgname}-v${pkgver}.tar.gz::https://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz)
-sha256sums=('2411c4f56f477b42dff54db2b7ffc0b7cf53bb9778d54982595c64cc69c40fc1')
+source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
+sha256sums=('73c40ace5978282224e5e122a41c8388c5a19e65a6f2329c2b7c0b61bacc9044')
 
 _config="FC=gfortran USE_OPENMP=0 USE_THREAD=1 MAJOR_VERSION=3 NO_LAPACK=0"
 
-build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+build(){
+  cd "${srcdir}/${_PkgName}-${pkgver}"
 
   make ${_config} libs netlib shared
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+check(){
+  cd "${srcdir}/${_PkgName}-${pkgver}"
 
   make ${_config} tests
 }
-
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+package(){
+  cd "${srcdir}/${_PkgName}-${pkgver}"
 
   make ${_config} PREFIX=/usr DESTDIR="${pkgdir}" install
 
@@ -53,5 +53,4 @@ package() {
   ln -sf libopenblas.so liblapack.so.3
   ln -sf libopenblas.so liblapack.so.3.5.0
 }
-
 # vim:set ts=2 sw=2 et:
