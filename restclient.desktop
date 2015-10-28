@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=RESTClient
+GenericName=RESTClient
+Comment=Java application to test RESTful webservices
+Categories=Network;
+Exec=restclient
+Icon=restclient
+Terminal=false
+Type=Application
+StartupWMClass=org-wiztools-restclient-ui-Main

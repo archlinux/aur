@@ -1,0 +1,26 @@
+pkgbase = restclient
+	pkgdesc = RESTClient is a Java application to test RESTful webservices. It can be used to test variety of HTTP communications.
+	pkgver = 3.5
+	pkgrel = 1
+	url = https://github.com/wiztools/rest-client
+	install = restclient.install
+	arch = any
+	license = BSD
+	depends = java-runtime
+	noextract = restclient-ui-3.5-jar-with-dependencies.jar
+	noextract = restclient-cli-3.5-jar-with-dependencies.jar
+	source = https://github.com/EduardoLeggiero/rest-client/releases/download/restclient-3.5/restclient-ui-3.5-jar-with-dependencies.jar
+	source = https://github.com/EduardoLeggiero/rest-client/releases/download/restclient-3.5/restclient-cli-3.5-jar-with-dependencies.jar
+	source = restclient
+	source = restclient-cli
+	source = restclient.desktop
+	source = restclient.png
+	md5sums = a23fa5a028ab936a058360664ef4c445
+	md5sums = 544fb0cb5a8da7b8a377a5975b76d2de
+	md5sums = e52d2f6bd21a9c15a52cc28c2d580446
+	md5sums = 3a1bb520959a5e2d4502a85d79e20f11
+	md5sums = 5f1dd027fa05034d996cc710c9ad0d15
+	md5sums = 143f4391e8bc98210a6baf5d4e01108b
+
+pkgname = restclient
+
