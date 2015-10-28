@@ -1,0 +1,16 @@
+# vim: set syntax=sh
+
+post_install()  {
+
+	chown http:http /var/cache/mod_pagespeed
+
+cat <<END
+Note: To enable mod_pagespeed, add the lines
+
+LoadModule pagespeed_module modules/mod_pagespeed.so
+Include conf/extra/pagespeed.conf
+
+to main httpd configuration, then restart httpd.
+END
+}
+
