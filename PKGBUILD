@@ -13,7 +13,7 @@ url="http://www.xnview.com/en/xnviewmp/"
 
 arch=('x86_64' 'i686')
 license=('custom')
-depends=('glib2' 'expat' 'libpng12' 'gstreamer0.10-base' 'desktop-file-utils' 'libxslt')
+depends=('glib2' 'expat' 'libpng12' 'gstreamer0.10-base' 'desktop-file-utils' 'libxslt' 'qt5-multimedia' 'qt5-webkit' 'qt5-svg' 'qt5-x11extras')
 optdepends=('gvfs: support for moving files to trash')
 
 install='xnviewmp.install'
@@ -32,16 +32,11 @@ fi
 
 
 package() {
-  install -d -m755 "${pkgdir}/opt/${pkgname}"
   install -d -m755 "${pkgdir}/usr/bin"
   install -d -m755 "${pkgdir}/usr/share/applications"
 
-  cp -a "${srcdir}/XnView"/* "${pkgdir}/opt/${pkgname}"
-  ln -s "/opt/${pkgname}/xnview.sh" "${pkgdir}/usr/bin/${pkgname}"
-
   install -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  install -D -m644 "${srcdir}/XnView/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
