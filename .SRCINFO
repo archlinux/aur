@@ -1,8 +1,8 @@
 pkgbase = holyspirit-svn
 	pkgdesc = Action role-playing game (ARPG, like diablo)
 	pkgver = 2420
-	pkgrel = 4
-	url = http://www.holyspirit.fr/
+	pkgrel = 5
+	url = http://sourceforge.net/projects/lechemindeladam/
 	install = holyspirit.install
 	arch = i686
 	arch = x86_64

@@ -2,10 +2,11 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=holyspirit-svn
 pkgver=2420
-pkgrel=4
+pkgrel=5
 pkgdesc="Action role-playing game (ARPG, like diablo)"
 arch=(i686 x86_64)
-url="http://www.holyspirit.fr/"
+#url="http://www.holyspirit.fr/"
+url="http://sourceforge.net/projects/lechemindeladam/"
 license=('GPL')
 depends=('sfml')
 makedepends=('subversion' 'cmake' 'qtwebkit')
