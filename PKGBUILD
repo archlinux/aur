@@ -10,7 +10,7 @@
 _pack=vrml
 pkgname=octave-$_pack
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="3D graphics using VRML"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -27,6 +27,10 @@ source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
 md5sums=('79df290cea3f45e49eb58bfc664679b1')
 
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
+
 _install_dir() {
 	src=$1
 	dst=$2
@@ -39,7 +43,7 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave-cli -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
 		pkg install -verbose -nodeps $_archive;
