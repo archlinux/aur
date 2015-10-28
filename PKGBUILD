@@ -2,7 +2,7 @@
 
 _pkgname=mopidy-gmusic
 pkgname=${_pkgname}-git
-pkgver=0.3.0.r108.gc84b62c
+pkgver=1.0.0.r0.g07487f8
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Google Play Music"
 arch=('any')
