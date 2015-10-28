@@ -1,6 +1,6 @@
 # Maintainer: Michal Kimle <kimle.michal@gmail.com>
 pkgname=plasma5-applets-rssnow-git
-pkgver=1.0.r27.3b4bb77
+pkgver=1.0.r29.46e7e43
 pkgrel=1
 pkgdesc="Show news from various sources"
 arch=(any)
