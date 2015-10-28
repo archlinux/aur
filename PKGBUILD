@@ -7,7 +7,7 @@
 
 pkgname=xnviewmp
 pkgver=0.75
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -24,7 +24,7 @@ md5sums=('b131f97bb0c9eb7e6968cf1576ed9079'
          '24f44d5a881b94daf48775213a57e4ec')
 
 if [ "$CARCH" = 'x86_64' ]; then
-  source=("xnview-x64.tgz::http://download.xnview.com/xnview-x64.tgz"
+  source=("xnview-x64.tgz::http://www.xnview.com/beta/xnview-x64.tgz"
           "xnviewmp.desktop")
   md5sums=('767f931a61fe6062d56733a520c424e3'
            '24f44d5a881b94daf48775213a57e4ec')
