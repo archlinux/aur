@@ -3,7 +3,7 @@
 
 pkgname=acd_cli
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a command line interface to
 Amazon Cloud Drive and allows mounting your cloud drive
 using FUSE for read access."
@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/yadayada/acd_cli"
 license=('GPL')
 depends=('python-appdirs' 'python-requests>=2.1.0'
-'python-sqlalchemy' 'python-dateutil'
+'python-sqlalchemy' 'python-dateutil' 'python-colorama'
 'python-requests-toolbelt')
 makedepends=('python' 'python-setuptools')
 source=("https://github.com/yadayada/$pkgname/archive/$pkgver.tar.gz")
