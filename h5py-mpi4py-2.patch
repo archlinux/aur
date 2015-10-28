@@ -1,0 +1,36 @@
+diff -aur h5py-2.5.0.pristine/h5py/h5p.pyx h5py-2.5.0.new/h5py/h5p.pyx
+--- h5py-2.5.0.pristine/h5py/h5p.pyx	2015-10-28 10:59:53.275550797 -0400
++++ h5py-2.5.0.new/h5py/h5p.pyx	2015-10-28 11:10:02.129772556 -0400
+@@ -25,9 +25,8 @@
+ from ._objects import phil, with_phil
+ 
+ if MPI:
+-    from mpi4py.mpi_c cimport MPI_Comm, MPI_Info, MPI_Comm_dup, MPI_Info_dup, \
+-                               MPI_Comm_free, MPI_Info_free
+-
++    from mpi4py.libmpi cimport MPI_Comm, MPI_Info, MPI_Comm_dup, MPI_Info_dup, MPI_Comm_free, MPI_Info_free
++    
+ # Initialization
+ import_array()
+ 
+Only in h5py-2.5.0.new/h5py: h5p.pyx~
+diff -aur h5py-2.5.0.pristine/setup_build.py h5py-2.5.0.new/setup_build.py
+--- h5py-2.5.0.pristine/setup_build.py	2015-10-28 10:59:53.278884118 -0400
++++ h5py-2.5.0.new/setup_build.py	2015-10-28 11:02:44.964867346 -0400
+@@ -169,7 +169,15 @@
+         
+         # Run Cython
+         print("Executing cythonize()")
++
++        try:
++            import mpi4py
++            include_path = [mpi4py.get_include(),]
++        except:
++            include_path = []
++            
+         self.extensions = cythonize(self._make_extensions(config),
++                            include_path=include_path,
+                             force=config.rebuild_required or self.force)
+         self.check_rerun_cythonize()
+         
+Only in h5py-2.5.0.new: setup_build.py~
