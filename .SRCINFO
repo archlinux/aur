@@ -1,0 +1,22 @@
+pkgbase = tempo-git
+	pkgdesc = Pulsar Timing Software
+	pkgver = r4f9d8db
+	pkgrel = 1
+	url = http://tempo.sourceforge.net/tempo_idx.html
+	install = tempo-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = tcsh
+	depends = atlas-lapack-base
+	depends = tcsh
+	depends = python
+	provides = tempo
+	source = tempo.cfg
+	source = git://git.code.sf.net/p/tempo/tempo
+	md5sums = 616816caf04a2a5bab7d9a148a0af736
+	md5sums = SKIP
+
+pkgname = tempo-git
+
