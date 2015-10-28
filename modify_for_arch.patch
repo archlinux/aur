@@ -19,7 +19,7 @@ diff -Naur a/program/functions.py b/program/functions.py
      print _('Making system dirs ...')
      errors = []
 -    for each in ( '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0' ):
-+    for each in ( '/run', '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0' ):
++    for each in ( '/run', '/dev', '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0' ):
          tmp = commands.getstatusoutput( 'mkdir -p %s'%(target_root + each)  )
          if tmp[0] != 0:
              errors.append( _('Error occurred when mkdir %s , you need to make it manually.')%(target_root + each) )
@@ -32,15 +32,15 @@ diff -Naur a/program/functions.py b/program/functions.py
  '''
      MPs = mp_config.keys()
      MPs.sort()
-@@ -438,6 +438,7 @@
+@@ -438,12 +438,14 @@
      defaultExcludes.append( '/proc' )
      defaultExcludes.append( '/sys' )
      defaultExcludes.append( '/tmp' )
 +    defaultExcludes.append( '/run' )
++    defaultExcludes.append( '/dev' )
++    defaultExcludes.append( '/.snapshots' )
      defaultExcludes.append( '/mnt' )
      defaultExcludes.append( '/media' )
-     
-@@ -444,7 +444,6 @@
      
      defaultExcludes.append( '/boot/grub' )
      defaultExcludes.append( '/etc/fstab' )
@@ -95,3 +95,57 @@ diff -Naur a/program/ucloner_cmd.py b/program/ucloner_cmd.py
      
      # 修复休眠功能
      ret = functions.fix_resume( target_dir, swappart )
+@@ -249,7 +249,7 @@
+             f.close()
+             exList += text
+     
+-    exclusionListFile = './excludes'
++    exclusionListFile = '/tmp/ucloner_excludes'
+     f = file(exclusionListFile, 'w')
+     for each in exList:
+         f.write( each.strip('\r \n') + '\n' )
+diff -Naur a/ucloner_gui.py b/ucloner_gui.py
+--- a/program/ucloner_gui.py	2015-10-26 23:12:28.000000000 +0800
++++ b/program/ucloner_gui.py	2015-10-28 19:37:18.092016519 +0800
+@@ -53,7 +53,9 @@
+ 
+ 
+ 
+-
++def kill_mksquashfs():
++    os.kill(int(commands.getoutput("ps -ef|grep -P '\d\s+mksquashfs.*/tmp/ucloner_excludes'|head").split()[1]), signal.SIGKILL)
++    
+ 
+ 
+ 
+@@ -336,6 +338,7 @@
+         self.parent.set_sensitive(True)
+         try:
+             os.kill( self.id_subproc, signal.SIGKILL )
++            kill_mksquashfs()
+         except:
+             pass
+ 
+@@ -343,6 +346,7 @@
+     def stop_task(self, widget):
+         try:
+             os.kill( self.id_subproc, signal.SIGKILL )
++            kill_mksquashfs()
+         except:
+             pass
+ 
+@@ -674,12 +678,14 @@
+         self.parent.set_sensitive(True)
+         try:
+             os.kill( self.id_subproc, signal.SIGKILL )
++            kill_mksquashfs()
+         except:
+             pass
+ 
+     def stop_task(self, widget):
+         try:
+             os.kill( self.id_subproc, signal.SIGKILL )
++            kill_mksquashfs()
+         except:
+             pass
+ 
