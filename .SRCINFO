@@ -1,0 +1,17 @@
+pkgbase = webex-meta
+	pkgdesc = webex dependencies
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = www.webex.com
+	arch = any
+	license = custom:unknown
+	depends = lib32-libxmu
+	depends = lib32-libxt
+	depends = lib32-pango
+	depends = lib32-libpng12
+	depends = lib32-pangox-compat
+	depends = lib32-gtk2
+	depends = lib32-libx11
+
+pkgname = webex-meta
+
