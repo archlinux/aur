@@ -1,0 +1,27 @@
+pkgbase = frida-git
+	pkgdesc = FrIDa is an interactive disassembler based on LLVM and Qt
+	pkgver = 0.2.r19.g79d63f5
+	pkgrel = 1
+	url = https://www.frida.xyz/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = gmock
+	depends = log4cxx
+	depends = llvm35
+	depends = quazip-qt5
+	depends = guile
+	depends = swig
+	depends = boost
+	depends = libedit
+	provides = frida
+	conflicts = frida
+	source = frida::git+https://git.siccegge.de/frida/frida.git
+	source = frida.patch
+	sha256sums = SKIP
+	sha256sums = 852947bce88c1847b397806d5f13d69505eb8781f939de689f0eee976c8a7693
+
+pkgname = frida-git
+
