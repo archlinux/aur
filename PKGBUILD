@@ -2,7 +2,7 @@
 # Contributor: Daniel Perez <tuvistavie@gmail.com>
 
 pkgname=electron
-pkgver=0.33.7
+pkgver=0.34.1
 pkgrel=1
 pkgdesc="Framework for writing cross-platform desktop applications using JavaScript, HTML and CSS."
 
@@ -16,9 +16,9 @@ optdepends=('nodejs')
 depends=('libgcrypt15' 'libnotify' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libgnome-keyring')
 
 case $CARCH in
-  'arm'   ) _arch='arm' ; sha256sums=('3244f78977de967f461f297795727f0da7b5e4d7fcd73edf72fcf4c4f5adf8b0');;
-  'ia32'  ) _arch='ia32'; sha256sums=('801439b73fab8ed83402ec533b24d8fddffe9a311b8375baf1b6a73ec454ff89');;
-  'x86_64') _arch='x64' ; sha256sums=('431b1a2280b16c702fc140dd6f2bb09355eecc67e2a842d5d9d33877cec403f6');;
+  'arm'   ) _arch='arm' ; sha256sums=('9d2c60acdba06fbe6b7f785757c5085b33296c31c33352129b346e7e1a8efb2e');;
+  'ia32'  ) _arch='ia32'; sha256sums=('65431d3f130d61af832d564529d473d7ca62435298914b883a187af72ebb1b4b');;
+  'x86_64') _arch='x64' ; sha256sums=('0d5a775022e46fa3924ac74b833190855ce0c6665a4745a560fbaf742d530546');;
 esac
 
 source=("electron.zip::https://github.com/atom/electron/releases/download/v${pkgver}/electron-v${pkgver}-linux-${_arch}.zip")
