@@ -1,0 +1,14 @@
+pkgbase = gpxsee-git
+	pkgdesc = GPX viewer and analyzer
+	pkgver = r28.8a4b749
+	pkgrel = 1
+	url = http://tumic.wz.cz/gpxsee
+	arch = any
+	license = gpl3
+	makedepends = git
+	depends = qt5-base
+	source = gpxsee-git::git://github.com/tumic0/GPXSee.git
+	md5sums = SKIP
+
+pkgname = gpxsee-git
+
