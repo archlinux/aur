@@ -9,7 +9,7 @@ pkgbase = kerncraft-git
 	makedepends = git
 	depends = python2>=2.7
 	depends = python2-yaml
-	depends = likwid
+	depends = likwid-git
 	depends = iaca
 	optdepends = intel-compiler-base
 	optdepends = gcc
