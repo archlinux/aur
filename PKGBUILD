@@ -1,8 +1,8 @@
 # Maintainer: Julian Hornich <julianhornich@googlemail.com>
 
 pkgname=kerncraft-git
-pkgrel=5
-pkgver=199
+pkgrel=1
+pkgver=r200
 pkgdesc="Loop Kernel Analysis and Performance Modeling Toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/RRZE-HPC/kerncraft"
@@ -18,7 +18,6 @@ provides=('kerncraft')
 pkgver() {
   cd ${srcdir}/kerncraft
   echo "r"$(git rev-list --count master)
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
