@@ -1,6 +1,6 @@
 pkgbase = tahoe-lafs-git
 	pkgdesc = A secure, decentralized, fault-tolerant file store (git version)
-	pkgver = 6110.9d60033
+	pkgver = 6179.98732cd
 	pkgrel = 1
 	url = https://tahoe-lafs.org/
 	arch = any
@@ -19,7 +19,6 @@ pkgbase = tahoe-lafs-git
 	depends = zfec
 	depends = python2-pyopenssl
 	depends = pyutil
-	depends = python2-argparse
 	depends = zbase32
 	depends = python2-mock>=0.8.0
 	depends = python2-characteristic>=14.0

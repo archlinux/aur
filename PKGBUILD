@@ -2,7 +2,7 @@
 # Contributor (Arch): Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=tahoe-lafs-git
-pkgver=6110.9d60033
+pkgver=6179.98732cd
 pkgrel=1
 pkgdesc="A secure, decentralized, fault-tolerant file store (git version)"
 url="https://tahoe-lafs.org/"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('net-tools' 'python2' 'python2-zope-interface>=3.6.5' 'twisted'
          'python2-pyasn1' 'python2-crypto' 'pycryptopp' 'nevow'
          'python2-foolscap>=0.8.0' 'python2-simplejson' 'zfec' 'python2-pyopenssl'
-         'pyutil' 'python2-argparse' 'zbase32' 'python2-mock>=0.8.0'
+         'pyutil' 'zbase32' 'python2-mock>=0.8.0'
          'python2-characteristic>=14.0' 'python2-service-identity'
          'python2-setuptools')
 makedepends=('git')
