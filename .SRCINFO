@@ -1,0 +1,13 @@
+pkgbase = xfce4-terminal-colors-seoul256
+	pkgdesc = Seoul256 theme for XFCE terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/atweiden/xfce4-terminal-colors-seoul256
+	arch = any
+	license = UNLICENSE
+	depends = xfce4-terminal
+	source = xfce4-terminal-colors-seoul256-1.0.0.tar.gz::https://codeload.github.com/atweiden/xfce4-terminal-colors-seoul256/tar.gz/1.0.0
+	sha256sums = 73b273f181923141d176bdef0f5cf597bb138be1674eaf498b39f2df7a174b63
+
+pkgname = xfce4-terminal-colors-seoul256
+
