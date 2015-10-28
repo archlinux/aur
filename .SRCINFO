@@ -1,6 +1,6 @@
 pkgbase = vis-git
 	pkgdesc = suckless vim like editor - git checkout
-	pkgver = 0.r561.g505d347
+	pkgver = 0.r624.g1190302
 	pkgrel = 1
 	url = http://repo.or.cz/vis.git
 	arch = i686
