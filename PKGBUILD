@@ -8,8 +8,8 @@
 ## -- Build options -- ##
 #########################
 
-_use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
-_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
+_use_clang=0           # Use clang compiler (system). Results in faster build and smaller chromium.
+_use_bundled_clang=0   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
 _use_ccache=0          # Use ccache when build
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
 _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=48.0.2540.0
+pkgver=48.0.2547.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -83,8 +83,6 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         # Misc Patches
         'enable_vaapi_on_linux-r1.diff'
         # Patch from crbug (chromium bugtracker)
-        'https://codereview.chromium.org/download/issue1411863003_20001.diff'
-        'https://codereview.chromium.org/download/issue1409243004_1.diff'
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
           "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
@@ -98,8 +96,6 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           # Misc Patches
           '255d71cd9b9e55265e1bfeaa4612bcf60d293204'
           # Patch from crbug (chromium bugtracker)
-          'ddcd48080cdebdda868fb7b846ee902f8c242038'
-          '9a3b40cacbc9ffdc23cb025eaec24a8d4cda25cf'
           )
 options=('!strip')
 install=chromium-dev.install
@@ -208,13 +204,15 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/boringssl'
            'third_party/cacheinvalidation'
            'third_party/catapult'
+           'third_party/catapult/third_party'
+           'third_party/catapult/third_party/py_vulcanize'
+           'third_party/catapult/third_party/py_vulcanize/third_party/rcssmin'
+           'third_party/catapult/third_party/py_vulcanize/third_party/rjsmin'
+           'third_party/catapult/tracing/third_party'
            'third_party/catapult/tracing/third_party/components/polymer'
            'third_party/catapult/tracing/third_party/d3'
            'third_party/catapult/tracing/third_party/gl-matrix'
            'third_party/catapult/tracing/third_party/jszip'
-           'third_party/catapult/tracing/third_party/tvcm'
-           'third_party/catapult/tracing/third_party/tvcm/third_party/rcssmin'
-           'third_party/catapult/tracing/third_party/tvcm/third_party/rjsmin'
            'third_party/cld_2'
            'third_party/cros_system_api'
            'third_party/cython/python_flags.py'
@@ -268,7 +266,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/polymer'
            'third_party/protobuf'
            'third_party/qcms'
-           'third_party/readability'
            'third_party/sfntly'
            'third_party/skia'
            'third_party/smhasher'
@@ -435,11 +432,6 @@ prepare() {
   # Patch from crbug (chromium bugtracker)
   # fix the missing define (if not, fail build) (need upstream fix) # https://crbug.com/473866
   sed '14i#define WIDEVINE_CDM_VERSION_STRING "The Cake Is a Lie"' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
-
-  # use correct libappindicator when use GTK2 or GTK3 build # https://crbug.com/543219
-  patch -p1 -i ../issue1411863003_20001.diff
-  # Fix https://bugs.archlinux.org/task/46756 # https://crbug.com/505226
-  patch -d third_party/pdfium -p1 -i ../../../issue1409243004_1.diff
 
   ##
 
