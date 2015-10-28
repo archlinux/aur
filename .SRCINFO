@@ -1,6 +1,6 @@
 pkgbase = fmbt
 	pkgdesc = Free Model Based tool
-	pkgver = 0.23
+	pkgver = 0.28
 	pkgrel = 1
 	url = https://01.org/fmbt/
 	arch = x86_64
@@ -16,6 +16,9 @@ pkgbase = fmbt
 	depends = libedit
 	depends = libtool
 	depends = libxml2
+	depends = python
+	depends = python-dbus
+	depends = python-pexpect
 	depends = python-pyside-common
 	depends = python2
 	depends = python2-dbus
@@ -24,10 +27,8 @@ pkgbase = fmbt
 	depends = python2-shiboken
 	depends = tesseract
 	depends = tesseract-data-eng
-	source = https://github.com/01org/fMBT/archive/v0.23.tar.gz
-	source = 0001-Invalid-operands-to-binary-operator-in-findNextColor.patch
-	md5sums = c67e99833607a84e9c493a23526a797b
-	md5sums = e443161ac39c16af976758b2c946b589
+	source = https://github.com/01org/fMBT/archve/v0.28.tar.gz
+	md5sums = 29f13abe954253ec3d567a7691166d1f
 
 pkgname = fmbt
 

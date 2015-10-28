@@ -1,7 +1,7 @@
 # Maintainer: Moritz Lipp <mail@mlq.me>
 pkgname=fmbt
 _pkgname=fMBT
-pkgver=0.23
+pkgver=0.28
 pkgrel=1
 epoch=
 pkgdesc="Free Model Based tool"
@@ -19,6 +19,9 @@ depends=(
   'libedit'
   'libtool'
   'libxml2'
+  'python'
+  'python-dbus'
+  'python-pexpect'
   'python-pyside-common'
   'python2'
   'python2-dbus'
@@ -28,14 +31,11 @@ depends=(
   'tesseract'
   'tesseract-data-eng'
   )
-source=(https://github.com/01org/$_pkgname/archive/v$pkgver.tar.gz
-0001-Invalid-operands-to-binary-operator-in-findNextColor.patch)
-md5sums=('c67e99833607a84e9c493a23526a797b'
-         'e443161ac39c16af976758b2c946b589')
+  source=(https://github.com/01org/$_pkgname/archve/v$pkgver.tar.gz)
+md5sums=('29f13abe954253ec3d567a7691166d1f')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
-  patch -p1 < $srcdir/0001-Invalid-operands-to-binary-operator-in-findNextColor.patch
 }
 
 build() {
@@ -44,11 +44,6 @@ build() {
 	./configure --prefix=/usr PYTHON=python2
 	make
 }
-
-# check() {
-# 	cd "$_pkgname-$pkgver"
-# 	make -k check
-# }
 
 package() {
 	cd "$_pkgname-$pkgver"
