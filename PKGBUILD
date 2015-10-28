@@ -1,6 +1,6 @@
 # Maintainer: Takashi Inoue <inoue@pitan.org>
 pkgname=mackerel-agent-git
-pkgver=0.17.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="A revolutionary new kind of application performance management"
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ build() {
   go get -d github.com/mackerelio/mackerel-agent
   go build -o build/mackerel-agent \
     -ldflags="\
-      -X github.com/mackerelio/mackerel-agent/version.GITCOMMIT `git rev-parse --short HEAD` \
-      -X github.com/mackerelio/mackerel-agent/version.VERSION   `git describe --tags --abbrev=0 | sed 's/^v//' | sed 's/\+.*$$//'` " \
+      -X github.com/mackerelio/mackerel-agent/version.GITCOMMIT=`git rev-parse --short HEAD` \
+      -X github.com/mackerelio/mackerel-agent/version.VERSION=`git describe --tags --abbrev=0 | sed 's/^v//' | sed 's/\+.*$$//'` " \
     github.com/mackerelio/mackerel-agent
 }
 
