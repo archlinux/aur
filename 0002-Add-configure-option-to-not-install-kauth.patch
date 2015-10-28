@@ -1,4 +1,4 @@
-From 30063b4d7664412d6c353763a9aeca44417e3a5b Mon Sep 17 00:00:00 2001
+From 960228c294d545458358c3db92b7e4ef9f31d06b Mon Sep 17 00:00:00 2001
 From: Ben Kaduk <kaduk@mit.edu>
 Date: Thu, 8 Nov 2012 18:40:57 -0500
 Subject: [PATCH 2/3] Add configure option to not install kauth
@@ -190,5 +190,5 @@ index dd1452e..ad24e66 100644
  #
  # Misc. targets
 -- 
-2.5.3
+2.6.2
 
