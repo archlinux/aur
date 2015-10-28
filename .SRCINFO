@@ -1,0 +1,24 @@
+pkgbase = likwid-git
+	pkgdesc = Lightweight performance tools
+	pkgver = r793
+	pkgrel = 1
+	url = https://github.com/rrze-likwid/likwid
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = gcc
+	makedepends = make
+	makedepends = perl
+	depends = lua
+	depends = hwloc
+	depends = perl-template-toolkit
+	optdepends = perl: for likwid-mpirun and likwid-perfscope
+	optdepends = gnuplot: for likwid-perfscope
+	optdepends = openmpi: for likwid-mpirun
+	conflicts = likwid
+	conflicts = likwid-svn
+	source = git+https://github.com/RRZE-HPC/likwid.git
+	sha256sums = SKIP
+
+pkgname = likwid-git
+
