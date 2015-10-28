@@ -29,7 +29,7 @@ package() {
   # examples
   mkdir -p ${pkgdir}/usr/share/${pkgname}
   cp -a ${srcdir}/kerncraft/examples ${pkgdir}/usr/share/${pkgname}/
-  chmod -R 644 ${pkgdir}/usr/share/${pkgname}
+  chmod -R 655 ${pkgdir}/usr/share/${pkgname}
 
   # license
   install -Dm644 ${srcdir}/kerncraft/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
