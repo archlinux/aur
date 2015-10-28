@@ -1,7 +1,7 @@
 pkgbase = python-h5py-openmpi
 	pkgdesc = General-purpose Python bindings for the HDF5 library - OpenMPI version
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.h5py.org/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = python-h5py-openmpi
 	makedepends = python2-numpy
 	makedepends = python-six
 	makedepends = python2-six
+	makedepends = python-mpi4py
+	makedepends = python2-mpi4py
 	source = https://pypi.python.org/packages/source/h/h5py/h5py-2.5.0.tar.gz
 	source = h5py-mpi4py-2.patch
 	source = DOCS_LICENSE.txt
@@ -25,6 +27,7 @@ pkgname = python-h5py-openmpi
 	depends = python-numpy
 	depends = python-six
 	depends = cython
+	depends = python-mpi4py
 	conflicts = python-h5py
 
 pkgname = python2-h5py-openmpi
@@ -32,5 +35,6 @@ pkgname = python2-h5py-openmpi
 	depends = python2-numpy
 	depends = python2-six
 	depends = cython2
+	depends = python2-mpi4py
 	conflicts = python2-h5py
 

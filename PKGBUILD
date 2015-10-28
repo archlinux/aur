@@ -2,12 +2,12 @@
 pkgbase=python-h5py-openmpi
 pkgname=(python-h5py-openmpi python2-h5py-openmpi)
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="General-purpose Python bindings for the HDF5 library - OpenMPI version"
 url="http://www.h5py.org/"
 arch=('i686' 'x86_64')
 license=('BSD')
-makedepends=('cython' 'cython2' 'hdf5-openmpi' 'python-numpy' 'python2-numpy' 'python-six' 'python2-six')
+makedepends=('cython' 'cython2' 'hdf5-openmpi' 'python-numpy' 'python2-numpy' 'python-six' 'python2-six' 'python-mpi4py' 'python2-mpi4py')
 source=("https://pypi.python.org/packages/source/h/h5py/h5py-$pkgver.tar.gz"
         h5py-mpi4py-2.patch
 	DOCS_LICENSE.txt)
@@ -44,7 +44,7 @@ check() {
 }
 
 package_python-h5py-openmpi() {
-  depends=('hdf5-openmpi' 'python-numpy' 'python-six' 'cython')
+  depends=('hdf5-openmpi' 'python-numpy' 'python-six' 'cython' 'python-mpi4py')
   conflicts=('python-h5py')
 
   cd "$srcdir"/h5py-$pkgver
@@ -56,7 +56,7 @@ CENSE"
 }
 
 package_python2-h5py-openmpi() {
-  depends=('hdf5-openmpi' 'python2-numpy' 'python2-six' 'cython2')
+  depends=('hdf5-openmpi' 'python2-numpy' 'python2-six' 'cython2' 'python2-mpi4py')
   conflicts=('python2-h5py')
 
   cd "$srcdir"/h5py-$pkgver-py2
