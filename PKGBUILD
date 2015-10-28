@@ -1,7 +1,7 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=artefetcher-qt4
 pkgname=$_pkgname-git
-pkgver=0.5.3.r1.gc5e6dad
+pkgver=0.6.4.r0.g43d4fb9
 pkgrel=1
 pkgdesc="a tool to fetch videos from Arte TV channel"
 arch=('i686' 'x86_64')
