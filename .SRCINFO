@@ -1,0 +1,16 @@
+pkgbase = n1-git
+	pkgdesc = An extensible mail client built on the modern web
+	pkgver = ..0edbf51
+	pkgrel = 1
+	url = https://github.com/mbilker/N1/tree/node-v4
+	arch = any
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	provides = n1
+	conflicts = n1
+	source = git+https://github.com/mbilker/N1.git
+	sha512sums = SKIP
+
+pkgname = n1-git
+
