@@ -20,14 +20,21 @@ build() {
 
   unset CFLAGS
   unset CXXFLAGS
-  make USE_OPENMP=1 NO_LAPACK=1 LIBPREFIX=libcblas MAJOR_VERSION=3 \
-    ONLY_CBLAS=1 libs shared
+  NPROC=`/usr/bin/grep "physical id" /proc/cpuinfo|sort|uniq|wc -l`
+  NCORE4PROC=`/usr/bin/grep "cores" /proc/cpuinfo|sort|tail -n 1|sed -e 's/cpu cores.*: //'`
+  let NCORE=NPROC*NCORE4PROC
+  make USE_OPENMP=1 NO_LAPACK=1 NUM_THREADS=$NCORE LIBPREFIX=libcblas \
+    MAJOR_VERSION=3 ONLY_CBLAS=1 libs shared
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
-  make PREFIX="$pkgdir/usr" LIBPREFIX=libcblas MAJOR_VERSION=3 install
+  NPROC=`/usr/bin/grep "physical id" /proc/cpuinfo|sort|uniq|wc -l`
+  NCORE4PROC=`/usr/bin/grep "cores" /proc/cpuinfo|sort|tail -n 1|sed -e 's/cpu cores.*: //'`
+  let NCORE=NPROC*NCORE4PROC
+  make PREFIX="$pkgdir/usr" NUM_THREADS=$NCORE LIBPREFIX=libcblas \
+    MAJOR_VERSION=3 install
   rm -f "$pkgdir"/usr/include/lapacke* "$pkgdir"/usr/include/f77blas.h
   mv "$pkgdir"/usr/include/openblas_config.h "$pkgdir"/usr/include/opencblas_config.h
   sed -i -e 's/openblas_config/opencblas_config/' "$pkgdir"/usr/include/cblas.h
