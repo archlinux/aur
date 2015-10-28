@@ -7,10 +7,9 @@
 
 pkgname=xnviewmp
 pkgver=0.75
-pkgrel=2
+pkgrel=3
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
-bname=XnView
 
 arch=('x86_64' 'i686')
 license=('custom')
@@ -19,24 +18,42 @@ optdepends=('gvfs: support for moving files to trash')
 
 install='xnviewmp.install'
 
-source=("xnview.tgz::http://www.xnview.com/beta/xnview.tgz"
+source_i686=("http://download.xnview.com/XnViewMP-linux.tgz"
+	"http://www.xnview.com/beta/XnView-archx32.gz"
         "xnviewmp.desktop")
-md5sums=('b131f97bb0c9eb7e6968cf1576ed9079'
-         '24f44d5a881b94daf48775213a57e4ec')
 
-if [ "$CARCH" = 'x86_64' ]; then
-  source=("xnview-x64.tgz::http://www.xnview.com/beta/xnview-x64.tgz"
-          "xnviewmp.desktop")
-  md5sums=('767f931a61fe6062d56733a520c424e3'
-           '24f44d5a881b94daf48775213a57e4ec')
-fi
+source_x86_64=("http://download.xnview.com/XnViewMP-linux-x64.tgz"
+        "http://www.xnview.com/beta/XnView-archx64.gz"
+        "xnviewmp.desktop")
+md5sums_x86_64=('52bc161bae44ace8391525a0cf4bf668'
+                'e828a9bf168968e21d007da55a0f6825'
+                '24f44d5a881b94daf48775213a57e4ec')
+md5sums_i686=('947e7f3c8d1d63109d8d6a7fb70bfedb'
+              '90bed987c480f08caf91b78eadc7f5e3'
+              '24f44d5a881b94daf48775213a57e4ec')
+
+noextract=("http://www.xnview.com/beta/XnView-archx32.gz"
+           "http://www.xnview.com/beta/XnView-archx64.gz")
+
 
 
 package() {
+  install -d -m755 "${pkgdir}/opt/${pkgname}"
   install -d -m755 "${pkgdir}/usr/bin"
   install -d -m755 "${pkgdir}/usr/share/applications"
-  install -m755 "${bname}" "/usr/bin/${bname}"
+
+  cp -a "${srcdir}/XnView"/* "${pkgdir}/opt/${pkgname}"
+  ln -s "/opt/${pkgname}/xnview.sh" "${pkgdir}/usr/bin/${pkgname}"
+
+  if [ "$CARCH" = "x86_64" ] ; then
+      zcat "${srcdir}/XnView-archx64.gz" > "${pkgdir}/opt/${pkgname}/XnView"
+  else
+    zcat "${srcdir}/XnView-archx32.gz" > "${pkgdir}/opt/${pkgname}/XnView"
+  fi
+
   install -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  install -D -m644 "${srcdir}/XnView/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
 
