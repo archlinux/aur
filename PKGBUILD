@@ -2,7 +2,7 @@
 
 pkgname=libyang-devel-git
 _gitname=libyang
-pkgver=r667.67dcbf8
+pkgver=r1015.9ac51e0
 pkgrel=1
 pkgdesc='libyang is YANG data modelling language parser and toolkit written (and providing API) in C'
 url='https://github.com/CESNET/libyang/'
