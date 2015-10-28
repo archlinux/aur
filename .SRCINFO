@@ -1,0 +1,17 @@
+pkgbase = go-tools
+	pkgdesc = Various packages and tools that support the Go programming language
+	pkgver = 20151028.1639_f96de0f
+	pkgrel = 1
+	url = https://golang.org/x/tools
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	makedepends = git
+	source = go-tools::git+https://github.com/golang/tools.git
+	source = go-net::git+https://github.com/golang/net.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = go-tools
+
