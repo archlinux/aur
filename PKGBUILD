@@ -10,6 +10,7 @@ pkgver=0.75
 pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
+bname=XnView
 
 arch=('x86_64' 'i686')
 license=('custom')
@@ -34,7 +35,7 @@ fi
 package() {
   install -d -m755 "${pkgdir}/usr/bin"
   install -d -m755 "${pkgdir}/usr/share/applications"
-
+  install -m755 "${bname}" "/usr/bin/${bname}"
   install -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 }
