@@ -66,7 +66,7 @@ pkgbase=linux-bfs
 pkgname=('linux-bfs' 'linux-bfs-headers' 'linux-bfs-docs')
 _kernelname=-bfs
 _srcname=linux-4.1
-pkgver=4.1.11
+pkgver=4.1.12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://ck-hack.blogspot.de"
@@ -93,7 +93,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfs.preset'
         'change-default-console-loglevel.patch'
-        'config' 'config.x86_64')
+        'config' 'config.x86_64'
+        'bfs464-cond_resched_lock_and cond_resched_softirq.patch')
         
 prepare() {
     cd ${_srcname}
@@ -118,6 +119,13 @@ prepare() {
          msg " $p"
          patch -Np1 -i "$p"
          done 
+         
+     ### Patch source with bfs464 fix patches
+         msg "Patching source with bfs464 fix patches"
+         for p in "${srcdir}"/bfs464*.patch; do
+         msg " $p"
+         patch -Np1 -i "$p"
+         done  
    
      ### Patch source with BFQ
          msg "Patching source with BFQ patches"
@@ -473,7 +481,7 @@ package_linux-bfs-docs() {
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            'ebd9f9ed7a4921795a0aee43440f6c73bf2ba058a690eb96031b978e61e390ef4d3b64e818a7cce7fe520adb20b93e4b7dd485b50d32c2dcf3012db3477a852c'
+            '164f216faa8fef6a28fe03bdb69c7bee5ff99cf560271264b52e62aec63c1d4d6475d4a6f2b4b4c02d235568ebe8bafd3b36be75c8a505cde8edbb70136d89b4'
             'SKIP'
             '9ff7279db6a976c495ba1e09466d688d84f0ef9cca2912e8aeb12f68070e9af012a3c3558e25daf9459fce7d27dc9a82f8fe58f3499164d42ea4561ea62391b5'
             '205059a0ac0fff34298695685a2de8806193b45a270e5818dd942d7c2d07f1d116eacf69dbaf4c99fe342d56b4f43ee4d2b3675a706724ed18cbc39618865d26'
@@ -485,8 +493,9 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             '84a7c3b96959cb2dd7687b968ba4522b62919529e2c0e166c0369e6cf77ff0e7ee387ca22a0980fc37dd100812205ab2c17b6c4d5dda51958ac1e66693f22925'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             'f1b175f9c0c1735ac26fcd9705a1d6fd7253b6d47de89c3537ef886a7957c2ebc0f535b816dfa6922e1830796a7da4ac9cde1dd2a650369c41d766ea4b144d1e'
-            'c34d13f9ae6564461cc69aad176b4deee98efe9ec5058db2fe34f33387092022da1c59af4e37caff799c71eb2829669295cb0a6fbadeac368be937aaf7f65094')
-
+            'c34d13f9ae6564461cc69aad176b4deee98efe9ec5058db2fe34f33387092022da1c59af4e37caff799c71eb2829669295cb0a6fbadeac368be937aaf7f65094'
+            'a9b96c0ab27738f6406732939d821271581641ba044c2fd939832189beeb43bb8729b784d101b1976b87bbb74fd7a2fb4ceb45176f536eadc6d06a8935e911c7')
+            
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
