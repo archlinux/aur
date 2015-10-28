@@ -8,13 +8,13 @@ arch=('i686' 'x86_64')
 url="https://quickgit.kde.org/?p=breeze-gtk.git"
 license=('LGPL')
 depends=('qt5-base')
-makedepends=('kconfig'
-             'kcoreaddons'
-             )
 optdepends=("gtk2: GTK+2 theme"
             "gtk3: GTK+3 theme")
 makedepends=('git'
-             'extra-cmake-modules')
+             'extra-cmake-modules'
+             'kconfig'
+             'kcoreaddons'
+             )
 source=('git://anongit.kde.org/breeze-gtk.git')
 sha1sums=('SKIP')
 
