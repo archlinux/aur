@@ -2,12 +2,12 @@
 # Maintainer:  saxonbeta <saxonbeta at gmail __com
 pkgname=elmerfem
 pkgver=8.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver."
 arch=('i686' 'x86_64')
 url="http://www.csc.fi/english/pages/elmer"
 license=('GPL')
-depends=('qwt' 'vtk' 'arpack' 'glu' 'tk' 'paraview-salome')
+depends=('qwt' 'vtk-qt4' 'arpack' 'glu' 'tk' 'paraview-salome')
 makedepends=('gcc-fortran' 'cmake')
 conflicts=('elmerfem-git')
 options=(!emptydirs !makeflags)
