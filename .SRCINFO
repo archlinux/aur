@@ -74,7 +74,7 @@ pkgbase = xorg-server-bug865
 	sha256sums = ad64fd593cd4cdfdd830c4295ebe1acd4259e45cfc12a258a162ecdbb11fd7ca
 
 pkgname = xorg-server-bug865
-	pkgdesc = Xorg X server with the patch for freedesktop bug 865
+	pkgdesc = Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press)
 	install = xorg-server.install
 	groups = xorg
 	depends = libepoxy
