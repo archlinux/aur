@@ -15,7 +15,7 @@
 
 [Installing packages from AUR](https://wiki.archlinux.org/index.php/AUR_User_Guidelines#Installing_packages) can be done manually:
 
-* Clone the [docker-squash AUR repository](https://aur.archlinux.org/foo.git)
+* Clone the [docker-squash AUR repository](https://aur.archlinux.org/docker-squash.git)
   `git clone https://aur.archlinux.org/docker-squash.git`
 * Change into the cloned repository
   `cd docker-squash`
