@@ -8,7 +8,7 @@ url="http://p.outlyer.net/relevation/"
 license=('custom')
 depends=('python2-crypto' 'python2-lxml')
 makedepends=('python2-setuptools')
-source=("http://p.outlyer.net/relevation/files/relevation-1.3.tar.gz"
+source=("http://p.outlyer.net/relevation/files/${pkgname}-${pkgver}.tar.gz"
         "$pkgname-python2.patch")
 md5sums=('4b5ec6152c7c6a26f4aa3e1f157ef4e3'
          'a020e1a4f8aeb056f2335224ed3ee3c7')
