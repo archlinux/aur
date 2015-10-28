@@ -1,0 +1,16 @@
+pkgbase = octave-queueing
+	pkgdesc = The queueing package provides functions for queueing networks and Markov chains analysis. This package can be used to compute steady-state performance measures for open, closed and mixed networks with single or multiple job classes. Mean Value Analy [...]
+	pkgver = 1.2.3
+	pkgrel = 3
+	url = http://octave.sourceforge.net/queueing/
+	install = octave-queueing.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=3.2.3
+	noextract = queueing-1.2.3.tar.gz
+	source = http://downloads.sourceforge.net/octave/queueing-1.2.3.tar.gz
+	md5sums = 7345655557c5c35a76de29490304dcfe
+
+pkgname = octave-queueing
+
