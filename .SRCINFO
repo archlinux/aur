@@ -1,0 +1,13 @@
+pkgbase = aspell5-ro
+	pkgdesc = Romanian dictionary for Aspell
+	pkgver = 3.3.10
+	pkgrel = 1
+	url = https://rospell.wordpress.com
+	arch = any
+	license = GPL2
+	depends = aspell>=0.50
+	source = http://downloads.sourceforge.net/rospell/aspell5-ro-3.3.10.tar.bz2
+	md5sums = d74c9bf5254877758ade91990132a1d5
+
+pkgname = aspell5-ro
+
