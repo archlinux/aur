@@ -3,7 +3,7 @@
 
 pkgname=chromium-widevine-dev
 pkgver=1.4.8.854
-pkgrel=1
+pkgrel=2
 pkgdesc="The Widevine Media Optimizer is a browser plugin designed for the viewing of premium video content (Dev Channel)"
 arch=('i686' 'x86_64')
 url='http://www.google.com/chrome'
