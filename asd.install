@@ -1,23 +1,21 @@
-DAEMON_FILE="/run/asd"
+## arg 1:  the new package version
+## arg 2:  the old package version
+
+_stopit() {
+	systemctl is-active asd.service &>/dev/null
+	if [ $? -eq 0 ]; then
+		echo '--> Pacman must stop asd before it can upgrade.'
+		echo '--> Please start it manually once the upgrade is complete.'
+		systemctl stop asd.service &>/dev/null
+	fi
+}
 
 pre_upgrade() {
-	## arg 1:  the new package version
-	## arg 2:  the old package version
-	oldpkgver=${2%-*}
-
-	if [[ $oldpkgver < 5.69 ]]; then
-		if [ -e $DAEMON_FILE ]; then
-			if ! systemd-notify --booted; then # not using systemd  
-				echo '--> Pacman must stop asd before it can upgrade.'
-				echo '--> Please start it manually once the upgrade is complete.'
-				/etc/rc.d/asd stop
-			else
-				echo '--> Pacman must stop asd before it can upgrade.'
-				echo '--> Please start it manually once the upgrade is complete.'
-				/usr/bin/systemctl stop asd
-			fi
+	for version in 5.69 5.76; do
+		if [ $(vercmp $2 $version) -lt 0 ]; then
+			_stopit
 		fi
-	fi
+	done
 }
 
 post_install() {
@@ -30,35 +28,10 @@ post_install() {
 	echo '--------------------------------------------------------------------------'
 }
 
-post_upgrade() {
-	## arg 1:  the new package version
-	## arg 2:  the old package version
-	oldpkgver=${2%-*}
-	#newpkgver=${1%-*}
-
-	if [[ $oldpkgver < 3.13 ]]; then
-		echo '-------------------------------------------------------------------'
-		echo ' Support for cron has been deprecated in favor of a systemd timer.'
-		echo ' This package now provides both asd.service and asd-resync.service'
-		echo
-		echo ' systemctl enable asd asd-resync'
-		echo ' systemctl start asd asd-resync'
-		echo
-		echo ' See the wiki or man page for more info.'
-		echo '-------------------------------------------------------------------'
-	else
-		/bin/true
-	fi
-}
-
 pre_remove() {
-	if [ -e $DAEMON_FILE ]; then
-		if ! systemd-notify --booted; then # not using systemd  
-			echo '--> Automatically stopping asd to rotate data back out of tmpfs.'
-			/etc/rc.d/asd stop
-		else
-			echo '--> Automatically stopping asd to rotate data back out of tmpfs.'
-			/usr/bin/systemctl stop asd
-		fi
+	systemctl is-active asd.service &>/dev/null
+	if [ $? -eq 0 ]; then
+		echo '--> In order to preserve your data, pacman will now stop asd.'
+		systemctl stop asd.service &>/dev/null
 	fi
 }

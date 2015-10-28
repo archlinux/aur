@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname='anything-sync-daemon'
-pkgver=5.75
+pkgver=5.76
 pkgrel=1
 pkgdesc='Offload anything to RAM (tmpfs) for speed and wear reduction.'
 arch=('any')
