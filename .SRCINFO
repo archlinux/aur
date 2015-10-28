@@ -1,6 +1,6 @@
 pkgbase = python2-kivy-git
 	pkgdesc = A python2 module for developing multi-touch enabled media rich applications. Git version.
-	pkgver = 1.9.0.6186fa0
+	pkgver = 1.9.0-git
 	pkgrel = 1
 	epoch = 1
 	url = http://kivy.org/
