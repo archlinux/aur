@@ -1,7 +1,7 @@
 pkgbase = magiccollection
 	pkgdesc = Magic Collection is a small program to manage your collection of Magic: the Gathering cards (software in french only).
 	pkgver = 0.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mirandir.pagesperso-orange.fr/magiccollection/
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = magiccollection
 	depends = python-gobject
 	depends = python-lxml
 	source = http://mirandir.pagesperso-orange.fr/files/magiccollection_0.8.10.tar.xz
-	sha256sums = 824002df04385619a28e4e194b621bde92a7bfe0ef08002056f4656bdfb57f67
+	sha256sums = f2e8d0941eb2f46473798310f0e676ca6b5a27f09354b0123b2300ecb238a035
 
 pkgname = magiccollection
 

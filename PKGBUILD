@@ -2,14 +2,14 @@
 
 pkgname=magiccollection
 pkgver=0.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Magic Collection is a small program to manage your collection of Magic: the Gathering cards (software in french only)."
 arch=('any')
 license=('GPL3')
 depends=('gtk3' 'python' 'python-gobject' 'python-lxml')
 url="http://mirandir.pagesperso-orange.fr/magiccollection/"
 source=(http://mirandir.pagesperso-orange.fr/files/"$pkgname"_"$pkgver".tar.xz)
-sha256sums=('824002df04385619a28e4e194b621bde92a7bfe0ef08002056f4656bdfb57f67')
+sha256sums=('f2e8d0941eb2f46473798310f0e676ca6b5a27f09354b0123b2300ecb238a035')
 
 package() {
         cd "$srcdir"
