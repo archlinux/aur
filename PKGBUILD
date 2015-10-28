@@ -3,7 +3,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=butter-git
-_pkgname=butter
+_pkgname=butter-desktop
 pkgver=r5479.150b1b9
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://butterproject.github.io/"
 license=('GPL3')
 depends=('alsa-lib' 'gconf' 'gtk2' 'nss' 'ttf-font' 'libxtst')
-makedepends=('git' 'nodejs-grunt-cli' 'bower' 'npm')
+makedepends=('bower' 'cmake' 'git' 'nodejs-grunt-cli' 'npm')
 conflicts=('butter')
 provides=('butter')
 options=('!strip')
@@ -20,12 +20,10 @@ install="butter.install"
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
 
-source=("butter.install"
-        "git+https://github.com/butterproject/butter.git"
+source=("git+https://github.com/butterproject/$_pkgname.git"
         "butter.desktop")
-md5sums=('81fa4aa5add54d77c1819f6493fec64a'
-         'SKIP'
-         'a16045882b270fb726de5d03c24626b4')
+md5sums=('SKIP'
+         '280e34e43de9356edf68cc7d17aab99b')
 
 pkgver() {
   cd "$_pkgname"

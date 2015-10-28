@@ -7,9 +7,10 @@ pkgbase = butter-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = bower
+	makedepends = cmake
 	makedepends = git
 	makedepends = nodejs-grunt-cli
-	makedepends = bower
 	makedepends = npm
 	depends = alsa-lib
 	depends = gconf
@@ -20,12 +21,10 @@ pkgbase = butter-git
 	provides = butter
 	conflicts = butter
 	options = !strip
-	source = butter.install
-	source = git+https://github.com/butterproject/butter.git
+	source = git+https://github.com/butterproject/butter-desktop.git
 	source = butter.desktop
-	md5sums = 81fa4aa5add54d77c1819f6493fec64a
 	md5sums = SKIP
-	md5sums = a16045882b270fb726de5d03c24626b4
+	md5sums = 280e34e43de9356edf68cc7d17aab99b
 
 pkgname = butter-git
 
