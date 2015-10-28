@@ -1,0 +1,17 @@
+pkgbase = lib32-libmodbus
+	pkgdesc = A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32.
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = http://libmodbus.org
+	arch = x86_64
+	license = LGPL
+	makedepends = asciidoc
+	makedepends = xmlto
+	conflicts = lib32-libmodbus-dev
+	options = !libtool
+	options = staticlibs
+	source = http://libmodbus.org/releases/libmodbus-3.0.6.tar.gz
+	sha256sums = 046d63f10f755e2160dc56ef681e5f5ad3862a57c1955fd82e0ce036b69471b6
+
+pkgname = lib32-libmodbus
+
