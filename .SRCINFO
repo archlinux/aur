@@ -1,0 +1,15 @@
+pkgbase = helios-solo
+	pkgdesc = Spotify Helios Solo - Docker container orchestration platform in a container
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = Apache
+	depends = docker
+	optdepends = helios-git: for the "helios" client tool that talks to helios-solo
+	source = helios-solo.service
+	source = helios-solo-env.sh
+	md5sums = 61d7f87d92a1ac5464100501ccec322c
+	md5sums = 584cdaa52f45e71d6d4dfc6c6c11e02a
+
+pkgname = helios-solo
+
