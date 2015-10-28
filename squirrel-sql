@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /usr/share/java/squirrel-sql
+sh ./squirrel-sql.sh

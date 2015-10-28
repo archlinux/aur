@@ -1,0 +1,12 @@
+
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Squirrel Sql
+GenericName=Database Manager
+Comment=Graphical Java program to manage JDBC databases
+Exec=squirrel-sql
+Icon=squirrel-sql
+Terminal=false
+Categories=Development;
+
