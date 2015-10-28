@@ -1,0 +1,22 @@
+pkgbase = libvirt-sandbox
+	pkgdesc = An application sandbox toolkit
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://sandbox.libvirt.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = libvirt-glib
+	depends = libselinux
+	depends = cpio
+	optdepends = dhclient: for sandbox network configuration using DHCP
+	optdepends = python2-gobject: for virt-sandbox-service
+	source = http://libvirt.org/sources/sandbox/libvirt-sandbox-0.6.0.tar.gz
+	source = http://libvirt.org/sources/sandbox/libvirt-sandbox-0.6.0.tar.gz.asc
+	md5sums = 546eb0caaa79d50a723adf58f32da87f
+	md5sums = 633854ecab0fb2a4f5f4ee958a731daf
+
+pkgname = libvirt-sandbox
+
