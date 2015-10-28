@@ -18,9 +18,6 @@ md5sums=('616816caf04a2a5bab7d9a148a0af736'
          'SKIP')
 
 build() {
-  #
-  # BUILD HERE
-  #
   cd "$srcdir/${pkgname%-git}"
 
   ./prepare
@@ -52,5 +49,3 @@ package() {
   cp -v  "$srcdir/${pkgname%-git}/tempo.cfg" "$pkgdir/opt/tempo/tempo.cfg"
   cp -v  "$srcdir/${pkgname%-git}/tempo.hlp" "$pkgdir/opt/tempo/tempo.hlp"
 }
-
-# vim:set ts=2 sw=2 et:
