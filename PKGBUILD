@@ -1,8 +1,8 @@
 # Contributor: Splex
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-
+LANG=C
 pkgname=inkscape-gtk3-bzr
-pkgver=r14398
+pkgver=r14430
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled"
 url="https://launchpad.net/inkscape"
@@ -20,7 +20,7 @@ optdepends=('python2-numpy: some extensions'
 makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
-options=('!libtool' '!makeflags')
+options=('!libtool' '!buildflags')
 source=('inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/')
 md5sums=('SKIP')
 install=inkscape-bzr.install
@@ -33,7 +33,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_bzrmod"
-  sed -i 's+2,36+2,35+' src/extension/dbus/wrapper/inkscape-dbus-wrapper.c
+#  sed -i 's+2,36+2,35+' src/extension/dbus/wrapper/inkscape-dbus-wrapper.c
   #fix for inkscape to use python2 with the python 3 package installed.
   sed -i '1s|/usr/bin/python\>|/usr/bin/python2|' cxxtest/*.py
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
@@ -49,6 +49,7 @@ build() {
   cd "$srcdir/$_bzrmod"
   ./autogen.sh
   sed -i 's|python -c|python2 -c|g' configure 
+  CXXFLAGS=" -std=c++11"
   ./configure LIBS='-lpangoft2-1.0 -lfontconfig' \
     --prefix=/usr \
     --without-gnome-vfs \
@@ -61,8 +62,7 @@ build() {
     --disable-rpath \
     --enable-binreloc \
     --disable-dependency-tracking
-    
-  CXXFLAGS="`pkg-config --cflags glib` -fPIC"  make 
+  make 
 }
 
 package() {
