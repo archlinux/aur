@@ -4,7 +4,7 @@
 pkgname=igb-dkms
 _modname=igb
 pkgver=5.3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel igb Ethernet adapter driver (latest version from Intel) (DKMS version)"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("http://downloads.sourceforge.net/project/e1000/${_modname}%20stable/${p
         'dkms.conf.in'
         'igb-dkms.install')
 sha384sums=('2a9c1444b903a4ebf5916e0fe1584a52f81bf9f7f675c06490cd712fa9e683084fa0d21862aa6fd789ba49c4e7ab68bf'
-            'c92e5526d6e9a37b92014c9c8fde284a66aed7bbb14ae2541bb2eaa483f3a2fd7f740afff5fd482e33285ec707bba0cd'
+            '480c6a21582fd5f57ffa01708ca062544333e4b95a6e8e343c2424fced2bc498e0dd62c69fd332ed095c0bf0f63d5fbd'
             'dc92e5b599f09bfff6fd310077f049b77a20915718242a074c15ffb7b849844143a7b36633dc5e98b7a3f89f59960f6a')
 
 package() {
