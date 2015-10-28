@@ -1,0 +1,40 @@
+From a98527dfe9ce23beebf386fab07caef99b911ede Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nico=20Schl=C3=B6mer?= <nico.schloemer@gmail.com>
+Date: Thu, 18 Jun 2015 13:25:14 +0200
+Subject: [PATCH] remove superfluous vtkxdmf3_LINK_DEPENDS from Xdmf3 link line
+
+This caused VTK-compiled HDF5 and LibXML2 libraries to appear on the link line
+even if VTK_USE_SYSTEM_{HDF5,LIBXML2} was on, immediately resulting in a link
+error of the type
+```
+/usr/bin/ld: cannot find -lvtkhdf5
+/usr/bin/ld: cannot find -lvtklibxml2
+```
+This commit fixes things by simply removing vtkxdmf3_LINK_DEPENDS from the link
+line. The dependencies are already taken care of.
+---
+ ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt b/ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt
+index ff045a6..241fa0a 100644
+--- a/ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt
++++ b/ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt
+@@ -8,7 +8,7 @@ include(CheckCXXSourceCompiles)
+ include(SetUpVersion)
+ include(TestBigEndian)
+ 
+-if(VERSION_CONTROL_AUTOUPDATE OR 
++if(VERSION_CONTROL_AUTOUPDATE OR
+     NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/XdmfVersion.hpp)
+   VersionCreate("Xdmf" "2" "XDMFCORE_EXPORT" "XdmfCore.hpp")
+ endif()
+@@ -154,7 +154,7 @@ set(XdmfCoreSources
+ add_library(XdmfCore ${LIBTYPE} ${XdmfCoreSources})
+ link_directories(${XDMF_LIBRARY_DIRS})
+ 
+-target_link_libraries(XdmfCore ${XDMF_LIBRARIES} ${vtkxdmf3_LINK_DEPENDS})
++target_link_libraries(XdmfCore ${XDMF_LIBRARIES})
+ vtk_target_install(XdmfCore)
+ 
+ if(WIN32)
