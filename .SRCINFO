@@ -1,0 +1,15 @@
+pkgbase = pam-shield
+	pkgdesc = PAM module to block remote hosts using iptables after too many failed authentication attempts
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/jtniehof/pam_shield
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pam
+	depends = gdbm
+	source = pam_shield-0.9.6.tar.gz::https://github.com/jtniehof/pam_shield/archive/0.9.6.tar.gz
+	sha256sums = 9da0d423dcdcdeab392cfb7bc5bcd5833850ec46503b1f98e4cadd068720b907
+
+pkgname = pam-shield
+
