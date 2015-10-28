@@ -41,7 +41,7 @@ prepare() {
 }
 
 package() {
-	cd "$_pkgname/build"
+	cd "$_pkgname"
 	make
 	make DESTDIR="$pkgdir" install
 }
