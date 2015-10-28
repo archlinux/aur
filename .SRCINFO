@@ -1,0 +1,22 @@
+pkgbase = mousepad-gtk3
+	pkgdesc = Simple text editor for Xfce
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = mousepad.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL2
+	makedepends = intltool
+	makedepends = perl
+	depends = gtksourceview3
+	depends = dbus-glib
+	depends = dconf
+	depends = desktop-file-utils
+	conflicts = mousepad
+	source = http://archive.xfce.org/src/apps/mousepad/0.4/mousepad-0.4.0.tar.bz2
+	md5sums = f55314c5dda6323883241e6cf01550a7
+
+pkgname = mousepad-gtk3
+
