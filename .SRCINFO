@@ -1,0 +1,12 @@
+pkgbase = python-outbox
+	pkgdesc = SMTP client for Humans
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/nathan-hoad/outbox
+	arch = any
+	license = BSD
+	source = https://pypi.python.org/packages/source/o/outbox/outbox-0.1.8.tar.gz
+	md5sums = e710a8ce23dcac0e799a283e7bff17f3
+
+pkgname = python-outbox
+
