@@ -1,7 +1,7 @@
 pkgbase = amsynth-git
 	pkgdesc = An analog modelling (a.k.a. virtual analog) synthesizer
-	pkgver = 1.5.1.r729.d394e83
-	pkgrel = 2
+	pkgver = 1.6.1.r786.66fb7a7
+	pkgrel = 1
 	url = https://code.google.com/p/amsynth/
 	install = amsynth.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = amsynth-git
 	optdepends = liblo: DSSI plugin
 	provides = amsynth
 	conflicts = amsynth
-	source = amsynth::git+https://code.google.com/p/amsynth/
+	source = amsynth::git+https://github.com/amsynth/amsynth.git
 	md5sums = SKIP
 
 pkgname = amsynth-git
