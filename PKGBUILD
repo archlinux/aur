@@ -11,7 +11,7 @@
 # needs too.
 
 pkgname=ffmpeg-full
-pkgver=2.8
+pkgver=2.8.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
@@ -20,13 +20,13 @@ url='http://ffmpeg.org/'
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
       'alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
-      'libbluray' 'libmodplug' 'libpulse' 'libssh' 'libtheora' 'libva'
-      'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger'
-      'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
+      'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
+      'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
+      'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
       'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
       'celt' 'faac' 'frei0r-plugins' 'jack' 'ladspa' 'libaacplus'
       'libavc1394' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
-      'libfdk-aac' 'libgme' 'libiec61883' 'libsoxr' 'libutvideo-git'
+      'libfdk-aac' 'libgme' 'libiec61883' 'libutvideo-git'
       'libxv' 'mesa' 'openal' 'opencl-headers' 'rtmpdump' 'shine' 'twolame'
       'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'zeromq' 'zvbi' 
       )
@@ -41,7 +41,7 @@ provides=(
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
         UNREDISTRIBUTABLE.txt)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('9565236404d3515aab754283c687c0a001019003148bf7f708e643608c0690b8'
+sha256sums=('e2ed5ab28dee1af94336739173eb0019afc21a54e38a96f4e3208e94a07866e2'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
