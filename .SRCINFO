@@ -1,0 +1,17 @@
+pkgbase = octave-strings
+	pkgdesc = Additional functions for manipulation and analysis of strings.
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = http://octave.sourceforge.net/strings/
+	install = octave-strings.install
+	arch = any
+	groups = octave-forge
+	license = custom
+	makedepends = pcre
+	depends = octave>=3.8.0
+	noextract = strings-1.2.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/strings-1.2.0.tar.gz
+	md5sums = d8554b4131f753f0cc9fddebd985a8f3
+
+pkgname = octave-strings
+
