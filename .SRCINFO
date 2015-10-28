@@ -1,0 +1,16 @@
+pkgbase = octave-octclip
+	pkgdesc = This package allows to do boolean operations with polygons using the Greiner-Hormann algorithm.
+	pkgver = 1.0.8
+	pkgrel = 2
+	url = http://octave.sourceforge.net/octclip/
+	install = octave-octclip.install
+	arch = any
+	groups = octave-forge
+	license = custom
+	depends = octave>=2.9.7
+	noextract = octclip-1.0.8.tar.gz
+	source = http://downloads.sourceforge.net/octave/octclip-1.0.8.tar.gz
+	md5sums = 762a9624798158be07d682eb9a05c80c
+
+pkgname = octave-octclip
+
