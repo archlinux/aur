@@ -1,7 +1,7 @@
 pkgbase = pony-platforming-project
-	pkgdesc = Pony Platformimng Poject 4: A colection of pony games (not all are plataform games)
+	pkgdesc = Pony Platforming Project 4: A collection of pony games (not all are platforming games)
 	pkgver = 4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.dragon-mango.com/ponygame
 	arch = any
 	license = custom:freeware
