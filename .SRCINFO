@@ -1,0 +1,15 @@
+pkgbase = geomview
+	pkgdesc = Interactive 3D viewing program for Unix
+	pkgver = 1.9.5
+	pkgrel = 1
+	url = http://www.geomview.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openmotif
+	depends = glu
+	source = http://downloads.sourceforge.net/project/geomview/geomview/1.9.5/geomview-1.9.5.tar.gz
+	md5sums = 98ada147dfcbabca7c48137590e74a85
+
+pkgname = geomview
+
