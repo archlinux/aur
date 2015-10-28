@@ -1,0 +1,18 @@
+pkgbase = routino-svn
+	pkgdesc = Router for OpenStreetMap Data
+	pkgver = r1832
+	pkgrel = 1
+	url = http://www.routino.org/
+	arch = x86_64
+	license = AGPL3
+	makedepends = make
+	makedepends = subversion
+	depends = zlib
+	depends = bzip2
+	provides = routino
+	conflicts = routino
+	source = routino-svn::svn+http://routino.org/svn/trunk/
+	sha256sums = SKIP
+
+pkgname = routino-svn
+
