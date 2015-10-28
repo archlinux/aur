@@ -24,10 +24,9 @@ pkgver() {
   echo $revision.$hash
 }
 
-
-build() {
+prepare() {
+  # Fetch source dependencies
   cd $pkgname/third_party/
-  
   if [ ! -d gmock-1.7.0 ]; then
     git clone -b release-1.7.0 https://github.com/google/googlemock.git gmock-1.7.0
   fi
@@ -37,12 +36,16 @@ build() {
   if [ ! -d glslang ]; then
     git clone https://github.com/google/glslang
   fi
+}
+
+build() {
+  cd $srcdir
   if [ ! -d build ]; then
     mkdir build
   fi
   cd build
   
-  cmake .. \
+  cmake $srcdir/$pkgname \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -GNinja \
@@ -53,11 +56,11 @@ build() {
 }
 
 package() {
-  cd $pkgname/build
+  cd $srcdir/build
   DESTDIR="$pkgdir" ninja install
   cp glslc/glslc $pkgdir/usr/bin
   cp glslc/libglslc.a $pkgdir/usr/lib
   cp libshaderc/libshaderc.a $pkgdir/usr/lib
   cp libshaderc/libshaderc_combined.a $pkgdir/usr/lib
-  cp libshaderc/libshaderc_util.a $pkgdir/usr/lib
+  cp libshaderc_util/libshaderc_util.a $pkgdir/usr/lib
 }

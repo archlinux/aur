@@ -12,8 +12,6 @@ pkgbase = shaderc
 	makedepends = ninja
 	provides = shaderc=87.6c4d33d
 	source = git://github.com/google/shaderc.git
-	source = https://github.com/google/googlemock/archive/release-1.7.0.zip
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = shaderc
