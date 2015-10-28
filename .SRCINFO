@@ -1,0 +1,16 @@
+pkgbase = octave-sockets
+	pkgdesc = Socket functions for networking from within octave.
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = http://octave.sourceforge.net/sockets/
+	install = octave-sockets.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=3.2.0
+	noextract = sockets-1.2.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/sockets-1.2.0.tar.gz
+	md5sums = 637587b1656fffe2bdcf1d30017f014f
+
+pkgname = octave-sockets
+
