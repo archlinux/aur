@@ -2,7 +2,7 @@
 # Maintainer: Hy Goldsher aka hyness <hyness-at-gmail>
 pkgname=davmail
 pkgver=4.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service"
 arch=('i686' 'x86_64')
 url="http://davmail.sourceforge.net/"
