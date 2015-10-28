@@ -44,6 +44,7 @@ build() {
     # Patching Texture.py
     sed -i 's/import Image/try:\n  from PIL import Image\nexcept ImportError:\n  import Image/' src/Texture.py
     sed -i 's/import PngImagePlugin/try:\n  from PIL import PngImagePlugin\nexcept ImportError:\n  import PngImagePlugin/' src/Texture.py
+    sed -i 's/string = image.tostring/string = image.tobytes/' src/Texture.py
 }
 
 package() {
