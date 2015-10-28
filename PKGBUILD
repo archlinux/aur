@@ -6,8 +6,8 @@
 # Contributor: VuDu <vudu 'dot' curse 'at' gmail 'dot' com>
 
 pkgname=xnviewmp
-pkgver=0.75
-pkgrel=3
+pkgver=0.76.1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
 
