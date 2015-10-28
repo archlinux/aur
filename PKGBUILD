@@ -12,7 +12,7 @@ depends=('openssl' 'bzip2' 'icu' 'gcc-libs' 'zlib')
 makedepends=('curl')
 provides=(unarchiver)
 conflicts=(unarchiver)
-_filename=`curl http://repo.archlinuxcn.org/x86_64/ | grep -oP '(?<==")unarchiver\S+?xz' | head -1`
+_filename=`curl http://repo.archlinuxcn.org/x86_64/ | grep -oP '(?<==")unarchiver\S+?xz' | tail -1`
 source=("gnustep-base_x86_64.tar.xz::https://www.archlinux.org/packages/community/x86_64/gnustep-base/download/"
     "unarchiver-x86_64.tar.xz::http://repo.archlinuxcn.org/x86_64/${_filename}")
 noextract=('gnustep-base_x86_64.tar.xz' 'unarchiver-x86_64.tar.xz')
