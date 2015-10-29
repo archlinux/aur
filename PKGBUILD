@@ -2,20 +2,20 @@
 
 pkgname=restclient
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="RESTClient is a Java application to test RESTful webservices. It can be used to test variety of HTTP communications."
 arch=("any")
 url="https://github.com/wiztools/rest-client"
 license=('BSD')
 depends=('java-runtime')
 install=${pkgname}.install
-source=("https://github.com/EduardoLeggiero/rest-client/releases/download/${pkgname}-${pkgver}/${pkgname}-ui-${pkgver}-jar-with-dependencies.jar"
-        "https://github.com/EduardoLeggiero/rest-client/releases/download/${pkgname}-${pkgver}/${pkgname}-cli-${pkgver}-jar-with-dependencies.jar"
+source=("https://github.com/wiztools/rest-client/releases/download/${pkgname}-${pkgver}/${pkgname}-ui-${pkgver}-jar-with-dependencies.jar"
+        "https://github.com/wiztools/rest-client/releases/download/${pkgname}-${pkgver}/${pkgname}-cli-${pkgver}-jar-with-dependencies.jar"
         restclient restclient-cli restclient.desktop restclient.png)
 noextract=("${pkgname}-ui-${pkgver}-jar-with-dependencies.jar"
            "${pkgname}-cli-${pkgver}-jar-with-dependencies.jar")
-md5sums=('a23fa5a028ab936a058360664ef4c445'
-         '544fb0cb5a8da7b8a377a5975b76d2de'
+md5sums=('5f87136aac60ce97f063d8c3f1a3449e'
+         '9ae25f4050538277abbfa0314674891f'
          'e52d2f6bd21a9c15a52cc28c2d580446'
          '3a1bb520959a5e2d4502a85d79e20f11'
          '5f1dd027fa05034d996cc710c9ad0d15'
