@@ -1,8 +1,8 @@
-# Maintainer: Tajidin Abd <tajidinabd at archlinux dot us>
+# Maintainer: Alexey D. <lq07829icatm at rambler.ru>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ark-git
-pkgver=r3007.f1cf10f
+pkgver=r3038.f42c580
 pkgrel=1
 pkgdesc="Archiving Tool"
 arch=(i686 x86_64)

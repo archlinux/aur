@@ -1,6 +1,6 @@
 pkgbase = ark-git
 	pkgdesc = Archiving Tool
-	pkgver = r3007.f1cf10f
+	pkgver = r3038.f42c580
 	pkgrel = 1
 	url = http://kde.org/applications/utilities/ark/
 	arch = i686
