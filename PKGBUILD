@@ -12,7 +12,7 @@ pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with ngx_http_googl
 provides=("nginx=${pkgver}")
 conflicts=('nginx')
 arch=('i686' 'x86_64')
-url='http://nginx.org'
+url='https://github.com/cuber/ngx_http_google_filter_module'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip')
 backup=('etc/nginx/fastcgi.conf'
