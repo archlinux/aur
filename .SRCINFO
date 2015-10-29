@@ -1,0 +1,23 @@
+pkgbase = covered
+	pkgdesc = Verilog Code Coverage Analyzer
+	pkgver = 0.7.10
+	pkgrel = 3
+	url = http://covered.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gcc
+	makedepends = flex
+	makedepends = bison
+	makedepends = make
+	makedepends = gperf
+	depends = tcl
+	depends = tk
+	depends = tablelist
+	source = http://sourceforge.net/projects/covered/files/covered-stable/covered-0.7.10/covered-0.7.10.tar.gz
+	source = covered_fixes.patch
+	md5sums = 7f79e93471546810b166e9104236bda2
+	md5sums = c90ca06190073dec91cc8a0f591dde6a
+
+pkgname = covered
+

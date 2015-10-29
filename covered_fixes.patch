@@ -1,0 +1,30 @@
+diff -Naur covered-0.7.10/src/lxt2_read.h covered-0.7.10_orig/src/lxt2_read.h
+--- covered-0.7.10/src/lxt2_read.h	2008-06-27 16:02:03.000000000 +0200
++++ covered-0.7.10_orig/src/lxt2_read.h	2015-10-29 21:33:17.980950276 +0100
+@@ -48,7 +48,7 @@
+ #endif
+ 
+ #ifdef __GNUC__
+-#define _LXT2_RD_INLINE inline
++#define _LXT2_RD_INLINE
+ #else
+ #define _LXT2_RD_INLINE
+ #endif
+diff -Naur covered-0.7.10/src/report.c covered-0.7.10_orig/src/report.c
+--- covered-0.7.10/src/report.c	2010-03-26 07:10:18.000000000 +0100
++++ covered-0.7.10_orig/src/report.c	2015-10-29 21:28:49.177000735 +0100
+@@ -1163,12 +1163,12 @@
+           assert( interp );
+ 
+           if( Tcl_Init( interp ) == TCL_ERROR ) {
+-            printf( "ERROR: %s\n", interp->result );
++            printf( "ERROR: %s\n", Tcl_GetString(Tcl_GetObjResult(interp)));
+             Throw 0;
+           }
+ 
+           if( Tk_SafeInit( interp ) == TCL_ERROR ) {
+-            printf( "ERROR: %s\n", interp->result );
++            printf( "ERROR: %s\n", Tcl_GetString(Tcl_GetObjResult(interp)));
+             Throw 0;
+           }
+ 
