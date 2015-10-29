@@ -1,7 +1,7 @@
 # Maintainer: Florian Albertz <flo.albertz@gmail.com>
 pkgname="ttf-profont-iix"
 pkgver="1.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='Profont IIx Variant as a Truetype Font'
 arch=('any')
 url='http://tobiasjung.name/profont/'

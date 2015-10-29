@@ -3,7 +3,7 @@
 pkgbase = ttf-profont-iix
 	pkgdesc = Profont IIx Variant as a Truetype Font
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tobiasjung.name/profont/
 	install = ttf-profont-iix.install
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = ttf-profont-iix
 	sha256sums = 9d118ffd8f80e8b9952d2ae24d13d89149ebb5e9459b9e2a2cc33e1a460c1bfa
 
 pkgname = ttf-profont-iix
-
