@@ -3,7 +3,7 @@
 
 pkgname=artefetcher-qt4
 _pkgname=artefetcher
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="A video grabber for Arte Catch UP TV - QT4 version"
 arch=('i686' 'x86_64')
@@ -37,3 +37,4 @@ package() {
 
 
 
+md5sums=('c728df13d924e91617e0d92ed40475f6')
