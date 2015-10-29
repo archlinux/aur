@@ -1,7 +1,7 @@
 pkgbase = asterisk
 	pkgdesc = A complete PBX solution
 	pkgver = 13.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.asterisk.org
 	install = asterisk.install
 	arch = i686
@@ -102,6 +102,7 @@ pkgbase = asterisk
 	backup = etc/asterisk/phoneprov.conf
 	backup = etc/asterisk/pjsip.conf
 	backup = etc/asterisk/pjsip_notify.conf
+	backup = etc/asterisk/pjsip_wizard.conf
 	backup = etc/asterisk/queuerules.conf
 	backup = etc/asterisk/queues.conf
 	backup = etc/asterisk/res_config_mysql.conf
