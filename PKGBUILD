@@ -3,7 +3,7 @@
 
 pkgname=multimc5
 pkgver=0.4.7
-pkgrel=1
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="http://multimc.org/"
@@ -17,7 +17,7 @@ source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
   'multimc5.desktop'
 )
 sha512sums=('237b566ee6b7e6ba0800790f0ec25e3e2fd6037688fd5b3105d8f3dfe880c3d0eeb5d08969b222b45cf815e8c616aef0bc955a4ac12bf65138a88f004ea2175f'
-            '039dcb1e40eaad229dad9a71b7a858774fc689a90f352726608bb508fb482f50c6ce1fb5c77265846d36937ca60806516bf1d93aa93c44661392dd0922dd00c5'
+            '573ca15b53e22ffde35d0daf55d68ce33ed1764d89517146123bbc6a3bc77f410fa84b1f8fb4b1eb0b6e4c8cdd3291922c5ad83edca4b484e20bd27230e27e4a'
             'a6712d0e84acc719ed1aff740717add44202f88cb42a0b7a3157108b73a1009ac7edd325f75d372e0a63617f40eb614d55fb4e24e5c1fb8957cd280486070675')
 
 
