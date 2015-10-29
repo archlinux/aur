@@ -1,0 +1,4 @@
+# systemd tmpfile settings for tcpcryptd
+# See tmpfiles.d(5) for details
+
+d /run/tcpcryptd 0700 tcpcryptd tcpcryptd -

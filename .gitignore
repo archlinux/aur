@@ -1,0 +1,4 @@
+pkg/
+src/
+tcpcrypt/
+*.pkg.tar

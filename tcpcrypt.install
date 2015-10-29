@@ -1,12 +1,4 @@
 post_install() {
-    getent passwd tcpcryptd &>/dev/null || {
-        echo -n ">>> Creating tcpcryptd system user... "
-        /usr/sbin/useradd --system --user-group --home /run/tcpcryptd tcpcryptd
-        echo "done"
-    }
-    chown tcpcryptd:tcpcryptd /run/tcpcryptd
-    chmod 700 /run/tcpcryptd
-
   echo "To start tcpcrypt, run 'systemctl start tcpcryptd.service'. Secure"
   echo "connections should Just Work between tcpcrypt-enabled machines."
   echo "To start it at boot, run 'systemctl enable tcpcryptd.service'"
@@ -18,17 +10,14 @@ post_install() {
   echo
   echo "For debugging, run 'tcnetstat' to list all active encrypted connections"
   echo "Run 'iptables -vnL' to check if iptables rules were set up correctly"
+  post_upgrade
 }
 
 post_upgrade() {
-    chown -R tcpcryptd:tcpcryptd /run/tcpcryptd
-    chmod 700 /run/tcpcryptd
+  systemd-sysusers tcpcryptd.conf
+  systemd-tmpfiles --create tcpcryptd.conf
 }
 
 pre_remove() {
-    getent passwd tcpcryptd &>/dev/null && {
-        echo -n ">>> Removing tcpcryptd system user... "
-        /usr/sbin/userdel tcpcryptd
-        echo "done"
-    }
+  echo
 }
