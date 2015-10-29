@@ -6,6 +6,7 @@ pkgbase = breeze-icons-git
 	arch = any
 	groups = plasma
 	license = LGPL
+	makedepends = git
 	provides = breeze-icons
 	conflicts = breeze-icons
 	source = breeze-icons::git+https://github.com/NitruxSA/breeze-icon-theme.git

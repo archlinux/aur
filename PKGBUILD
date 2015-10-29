@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/NitruxSA/breeze-icon-theme"
 license=('LGPL')
 groups=('plasma')
+makedepends=('git')
 provides="${_pkgname}"
 conflicts="${_pkgname}"
 source=("${_pkgname}::git+${url}.git")
