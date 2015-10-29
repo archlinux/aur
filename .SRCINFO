@@ -1,0 +1,15 @@
+pkgbase = mediator
+	pkgdesc = Save the world by being a mediator ensuring that no conflict gets escalated.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://dosowisko.net/mediator/
+	arch = i686
+	arch = x86_64
+	license = GPL2+
+	makedepends = cmake
+	depends = allegro
+	source = http://dosowisko.net/mediator/mediator-0.1.2-Linux.tar.gz
+	sha256sums = 35cf6cdb1e52f1f0e06d21eefbb86ffb303d8b4451b2e23de6c7e21f98c1e5e3
+
+pkgname = mediator
+
