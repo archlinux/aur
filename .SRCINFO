@@ -1,0 +1,12 @@
+pkgbase = denix-backgrounds
+	pkgdesc = DeniX backgrounds
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/denix666/denix-backgrounds
+	arch = any
+	license = GPL
+	source = git+https://github.com/denix666/denix-backgrounds.git
+	md5sums = SKIP
+
+pkgname = denix-backgrounds
+
