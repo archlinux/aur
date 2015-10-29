@@ -18,7 +18,7 @@ _slowfscache_ver="1.10"
 _slowfscache_dirname="ngx_slowfscache"
 _echo_ver="v0.58"
 _echo_dirname="ngx_echo"
-_headersmore_ver="v0.26"
+_headersmore_ver="v0.27"
 _headersmore_dirname="ngx_headersmore"
 _uploadprogress_ver="v0.9.1"
 _uploadprogress_dirname="ngx_uploadprogress"
@@ -28,20 +28,20 @@ _fancyindex_ver="v0.3.5"
 _fancyindex_dirname="ngx_fancyindex"
 _authpam_ver="1.4"
 _authpam_dirname="ngx_authpam"
-_pagespeed_ver="1.9.32.4"
+_pagespeed_ver="1.9.32.10"
 _pagespeed_dirname="ngx_pagespeed"
-_accesskey_ver="2.0.3"
-_accesskey_dirname="ngx_accesskey"
 _rtmp_ver="v1.1.7"
 _rtmp_dirname="ngx_rtmp"
 _davext_ver="v0.0.3"
 _davext_dirname="ngx_davext"
-_naxsi_ver="0.53-2"
+_naxsi_ver="0.54"
 _naxsi_dirname="ngx_naxsi"
+_accesskey_ver="2.0.3"
+_accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="lightweight HTTP server and IMAP/POP3 proxy server with standard, additional and 3d party modules"
 arch=('i686' 'x86_64')
 
@@ -84,10 +84,10 @@ source=("nginx.sh"
     "${_authpam_dirname}.tar.gz::https://github.com/stogh/ngx_http_auth_pam_module/archive/v${_authpam_ver}.tar.gz"
     "${_pagespeed_dirname}.zip::https://github.com/pagespeed/ngx_pagespeed/archive/v${_pagespeed_ver}-beta.zip"
     "psol.tar.gz::https://dl.google.com/dl/page-speed/psol/${_pagespeed_ver}.tar.gz"
-    "${_accesskey_dirname}.tar.gz::http://wiki.nginx.org/images/5/51/Nginx-accesskey-${_accesskey_ver}.tar.gz"
     "${_rtmp_dirname}.zip::https://github.com/arut/nginx-rtmp-module/archive/${_rtmp_ver}.zip"
     "${_davext_dirname}.tar.gz::https://github.com/arut/nginx-dav-ext-module/archive/${_davext_ver}.tar.gz"
     "${_naxsi_dirname}.tar.gz::https://github.com/nbs-system/naxsi/archive/${_naxsi_ver}.tar.gz"
+    "${_accesskey_dirname}.tar.gz::https://ostube.googlecode.com/files/Nginx-accesskey-${_accesskey_ver}.tar.gz"
 )
 
 md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
@@ -99,16 +99,16 @@ md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
          '3d4ec04bbc16c3b555fa20392c1119d1'
          '68a1af12d5c1218fb2b3e05ed7ff6f0c'
          'f7dee95dbe8ada5f4d8e9d59ca1f4797'
-         '439380d1db636049cb201836f46b6243'
+         '9fe68166a6e93c99373157ca10eca016'
          '6fe61c5b44b2e338c66e1e33ff7e95ab'
          'ac5e7f485476af70e0ee1c52016cddaf'
          'a5c0fb3af7158297c1457739947b9b0c'
-         '17f64b7d60f6ae6bef15faaf28ae3db2'
-         '9f4d11cabbe5cd0c6945a4a89c82bff0'
-         '9b5304346d5139b1841f5baa01ab0cbe'
+         '1f915fdf13825f3246000c6b2024af49'
+         'c4069b751887d736f643ba698239c514'
          'a81e63cd4cf28eaf0c87d27c44e4c44a'
          '2cb502dbda335be4ebd5fed0b3182bae'
-         '348b50914a1eedaed09a2509621adf43')
+         '1bc31058991268e4cfdb44e9b6d8b3b3'
+         '8862455846c4ce803ca15300ee08e19a')
 
 build() {
   local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
@@ -147,7 +147,7 @@ build() {
     --group=${_group} \
     --with-debug \
     --with-ipv6 \
-    --with-imap \
+    --with-mail \
     --with-threads \
     --add-module=../${_naxsi_dirname}/naxsi_src/ \
     --with-imap_ssl_module \
