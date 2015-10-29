@@ -1,0 +1,40 @@
+pkgbase = telegram-desktop-dev
+	pkgdesc = Official desktop version of Telegram messaging app.
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://desktop.telegram.org/
+	install = telegram-desktop-dev.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = patch
+	makedepends = libunity
+	makedepends = libappindicator-gtk2
+	makedepends = xorg-server-xvfb
+	depends = ffmpeg
+	depends = icu
+	depends = jasper
+	depends = libexif
+	depends = libmng
+	depends = libwebp
+	depends = libxkbcommon-x11
+	depends = libinput
+	depends = libproxy
+	depends = mtdev
+	depends = openal
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	provides = telegram-desktop
+	conflicts = telegram-desktop
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v0.9.7
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.1/single/qt-everywhere-opensource-src-5.5.1.tar.gz
+	source = telegramdesktop.desktop
+	source = tg.protocol
+	sha256sums = SKIP
+	sha256sums = c7fad41a009af1996b62ec494e438aedcb072b3234b2ad3eeea6e6b1f64be3b3
+	sha256sums = 0e936f964fbaa7392a0c58aa919d6ea8c5f931472e1ab59b437523aa1a1d585c
+	sha256sums = d4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb
+
+pkgname = telegram-desktop-dev
+
