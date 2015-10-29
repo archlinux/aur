@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-babel-source
-pkgver=5.8.30
+pkgver=5.8.33
 pkgrel=1
 pkgdesc="Babel JS source"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://rubygems.org/gems/babel-source"
 license=('MIT')
 depends=('ruby')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('9c100a1b0720e0a4eb0e2a494d801d20bd0bfafb3f47960107c3f580cf9f6d0d')
+sha256sums=('d2ec1197cd461ae3d61274d0c308ef841b11a1c9dae4c11bb0afe23d71846b59')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 
 package() {
