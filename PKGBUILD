@@ -19,5 +19,6 @@ package() {
   convmv -r -f SHIFT-JIS -t utf-8 --notest .
   mkdir -p "$pkgdir/opt/"
   cp -r app "$pkgdir/opt/$pkgname"
+  cp "利用規約.txt" "$pkgdir/opt/$pkgname"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/opt/$pkgname/LICENSE"
 }
