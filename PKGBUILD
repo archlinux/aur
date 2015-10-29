@@ -3,7 +3,7 @@
 
 pkgname=sunxi-tools-git
 _pkgname=sunxi-tools
-pkgver=v1.1.r216.g82b9c65
+pkgver=v1.1.r225.g9bf1de0
 pkgrel=1
 pkgdesc="Tools to help hacking Allwinner based devices. (A10, A20, sun4i, sun7i)"
 arch=('i686' 'x86_64')
@@ -29,9 +29,5 @@ build() {
 
 package() {
   cd "$_pkgname"
-  install -Dm755 -d $pkgdir/usr/bin
-  install -Dm755 -t $pkgdir/usr/bin fexc bootinfo fel nand-part
-  cd $pkgdir/usr/bin
-  ln -s fexc bin2fex
-  ln -s fexc fex2bin
+  PREFIX="$pkgdir/usr" make install
 }
