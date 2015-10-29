@@ -1,8 +1,8 @@
 pkgbase = nemo-qml-plugin-dbus-git
 	pkgdesc = The Nemo Mobile D-Bus QML Plugin allows you to access services on the system and session bus, as well as provide your own services.
-	pkgver = 2.0.r77.0427a3b
+	pkgver = 2.0.r97.c4d9847
 	pkgrel = 1
-	url = https://github.com/nemomobile/nemo-qml-plugin-dbus
+	url = https://git.merproject.org/mer-core/nemo-qml-plugin-dbus
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -12,7 +12,7 @@ pkgbase = nemo-qml-plugin-dbus-git
 	depends = qt5-declarative
 	provides = nemo-qml-plugin-dbus-git
 	conflicts = nemo-qml-plugin-dbus-git
-	source = nemo-qml-plugin-dbus-git::git+https://github.com/nemomobile/nemo-qml-plugin-dbus.git#branch=master
+	source = nemo-qml-plugin-dbus-git::git+https://git.merproject.org/mer-core/nemo-qml-plugin-dbus.git#branch=master
 	md5sums = SKIP
 
 pkgname = nemo-qml-plugin-dbus-git
