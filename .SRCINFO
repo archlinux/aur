@@ -1,0 +1,15 @@
+pkgbase = pypam2-bzr
+	pkgdesc = A Python interface to the PAM library (configured to build for python2)
+	pkgver = 17
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/quantal/+source/python-pam
+	arch = any
+	license = GPL
+	makedepends = bzr
+	depends = pam
+	depends = python2
+	provides = pypam2
+	conflicts = pypam2
+
+pkgname = pypam2-bzr
+
