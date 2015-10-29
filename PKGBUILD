@@ -17,6 +17,7 @@ license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
+        'etc/nginx/google.conf'
         'etc/nginx/koi-win'
         'etc/nginx/koi-utf'
         'etc/nginx/mime.types'
@@ -30,12 +31,14 @@ source=(http://nginx.org/download/${_pkgname}-${pkgver}.tar.gz
         ${_mod1}-${_mod1ver}.tar.gz::https://github.com/cuber/${_mod1}/archive/${_mod1ver}.tar.gz
         ${_mod2}-${_mod2ver}.tar.gz::https://github.com/yaoweibin/${_mod2}/archive/v${_mod2ver}.tar.gz
         service
-        logrotate)
+        logrotate
+        google.conf)
 sha256sums=('23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5'
             'a5923f40cc62152bb69b386dbee2c8f67b1db0c807eb6de471a74f12043a74a9'
             'ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3'
             '4ecbc33ce4bf2965996f51b0c7edb677904ba5cff9a32e93e1487a428d3a751b'
-            '2613986dd5faab09ca962264f16841c8c55c3a0bc7a5bb737eabd83143090878')
+            '2613986dd5faab09ca962264f16841c8c55c3a0bc7a5bb737eabd83143090878'
+            '265928f5be4771e6f164196ad641c9e4c95487415658bbdfe7a3011a81f6ab07')
 
 build() {
   cd $_pkgname-$pkgver
@@ -110,6 +113,7 @@ package() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
+  install -Dm644 ../google.conf "$pkgdir"/etc/nginx/google.conf
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 
   rmdir "$pkgdir"/run

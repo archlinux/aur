@@ -15,6 +15,7 @@ pkgbase = nginx-google_filter
 	conflicts = nginx
 	backup = etc/nginx/fastcgi.conf
 	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/google.conf
 	backup = etc/nginx/koi-win
 	backup = etc/nginx/koi-utf
 	backup = etc/nginx/mime.types
@@ -28,11 +29,13 @@ pkgbase = nginx-google_filter
 	source = ngx_http_substitutions_filter_module-0.6.4.tar.gz::https://github.com/yaoweibin/ngx_http_substitutions_filter_module/archive/v0.6.4.tar.gz
 	source = service
 	source = logrotate
+	source = google.conf
 	sha256sums = 23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5
 	sha256sums = a5923f40cc62152bb69b386dbee2c8f67b1db0c807eb6de471a74f12043a74a9
 	sha256sums = ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3
 	sha256sums = 4ecbc33ce4bf2965996f51b0c7edb677904ba5cff9a32e93e1487a428d3a751b
 	sha256sums = 2613986dd5faab09ca962264f16841c8c55c3a0bc7a5bb737eabd83143090878
+	sha256sums = 265928f5be4771e6f164196ad641c9e4c95487415658bbdfe7a3011a81f6ab07
 
 pkgname = nginx-google_filter
 
