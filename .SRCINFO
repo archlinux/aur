@@ -1,5 +1,5 @@
 pkgbase = telegram-desktop-dev
-	pkgdesc = Official desktop version of Telegram messaging app.
+	pkgdesc = Official desktop version of Telegram messaging app. (Development release)
 	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://desktop.telegram.org/
