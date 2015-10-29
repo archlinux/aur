@@ -1,5 +1,5 @@
 pkgbase = yumenikki-jp
-	pkgdesc = Surrealistic adventure game about exploring the dreams of a hikikomori character named Madotsuki. Original Ver(Japanese).
+	pkgdesc = Surrealistic adventure game about exploring the dreams of a hikikomori character named Madotsuki.Also known as "Dream Diary". Original Ver(Japanese).
 	pkgver = 0.10
 	pkgrel = 1
 	url = http://www3.nns.ne.jp/pri/tk-mto/
