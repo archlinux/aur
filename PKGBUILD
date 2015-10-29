@@ -1,13 +1,17 @@
+# Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
+
 pkgname=ttf-font-icons
-pkgver=1
+pkgver=1.1
 pkgrel=1
 pkgdesc="A non-overlapping mix of Ionicons and Awesome iconic fonts"
-url="https://www.dropbox.com/s/9iysh2i0gadi4ic/icons.pdf"
+url="http://kageurufu.net/icons.pdf"
+# Alternative URL: https://drive.google.com/file/d/0B3iQeXAmzOoLaERrZ1BQX0FreDg/view?usp=sharing
 license=('MIT')
 depends=('fontconfig' 'xorg-font-utils')
 options=("!strip")
 arch=('any')
-source=('https://www.dropbox.com/s/nypgaun7ckl97ga/icons.ttf')
+source=('icons.ttf')
+install=ttf.install
 md5sums=('800c09709d456a127bc9160ec1ecddf6')
 
 package() {
