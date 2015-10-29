@@ -19,13 +19,16 @@ md5sums=('f3a16c395078dcec4950200732bc5194'
          'b771b2a649f91dfef9075d9dcc03107e')
 noextract=${_pkgname}${pkgver}.lzh
 
+prepare() {
+  cd "${srcdir}"
+  unar "$srcdir/${_pkgname}${pkgver}.lzh"
+}
+
 package() {
   
   install -dm755 "$pkgdir/opt/"
   install -dm755 "$pkgdir/usr/"{bin,share/applications,share/pixmaps}
   #cd "$pkgdir/opt/$pkgname"
-  cd "${srcdir}"
-  unar "$srcdir/${_pkgname}${pkgver}.lzh"
   cp -r "$srcdir/ゆめにっき/ゆめにっき0.10/" "$pkgdir/opt/$pkgname"
   cp "$srcdir/ゆめにっき/初めに読んで下さい。0.10.txt" "$pkgdir/opt/$pkgname"
   echo "Read \"/opt/${pkgname}/初めに読んで下さい。0.10.txt\"." > "$pkgdir/opt/$pkgname/LICENSE"
