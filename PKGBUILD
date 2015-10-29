@@ -18,16 +18,22 @@ md5sums=('bda8f612443a935b9da78dba85733db4')
 prepare() {
   cd $pkgname-$pkgver
 
+  # Change everything to use python2
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
   sed -i '/os\.environ.*GRASS_PYTHON/ s/"python"/"python2"/' lib/init/grass.py
   sed -i '/^PYTHON/ s/python$/&2/' include/Make/Platform.make.in
+
+  # Fix path
   sed -i '/^\s*INSTDIR/ s/".*"//' configure
+
+  # Upstream bug, calls wrong filename
   sed -i "/^Exec/ s/=.*/=grass$_shortver/" gui/icons/grass.desktop
 }
 
 build() {
   cd $pkgname-$pkgver
 
+  # Ancient autoconf used upstream can't handle CPPFLAGS correctly
   export CFLAGS="$CPPFLAGS $CFLAGS"
   export CXXFLAGS="$CPPFLAGS $CXXFLAGS"
   unset CPPFLAGS
@@ -51,13 +57,15 @@ package() {
 
   make exec_prefix="$pkgdir/usr" INST_DIR="$pkgdir/opt/$pkgname" install
 
-  # This is needed for qgis to find grass
+  # Install linker config file, needed for qgis to find grass
   install -d "$pkgdir/etc/ld.so.conf.d/"
   echo "/opt/$pkgname/lib" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 
+  # Install desktop file
   install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/pixmaps/grass.png"
   install -Dm644 gui/icons/grass.desktop "$pkgdir/usr/share/applications/grass.desktop"
 
+  # Fix some paths that get hard coded by make install
   cd "$pkgdir/opt/$pkgname"
   sed -i "s|$pkgdir||g" demolocation/.grassrc$_shortver \
                         include/Make/{Platform,Grass}.make \
