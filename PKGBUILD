@@ -17,7 +17,7 @@ optdepends=('botan-1.10: Botan plugin'
             'libgcrypt: gcrypt plugin')
 conflicts=('qca-qt5')
 provides=('qca-qt5')
-source=("git://anongit.kde.org/qca.git#branch=qt5")
+source=("git://anongit.kde.org/qca.git")
 md5sums=('SKIP')
 
 pkgver() {

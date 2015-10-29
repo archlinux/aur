@@ -21,7 +21,7 @@ pkgbase = qca-qt5-git
 	optdepends = libgcrypt: gcrypt plugin
 	provides = qca-qt5
 	conflicts = qca-qt5
-	source = git://anongit.kde.org/qca.git#branch=qt5
+	source = git://anongit.kde.org/qca.git
 	md5sums = SKIP
 
 pkgname = qca-qt5-git
