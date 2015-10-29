@@ -32,6 +32,7 @@ aclocal --install
 }
 
 build() {
+gnome-doc-prepare --force
 cd ${srcdir}/${_pkgname}-${pkgver}
 chmod +x ./autogen.sh
 export AUTOMAKE=automake
