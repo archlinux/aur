@@ -10,7 +10,7 @@ url="https://usfirst.collab.net/sf/projects/wpilib/"
 license=('custom=FRC-BSD')
 groups=('frc-2015')
 depends=('arm-frc-linux-gnueabi-gcc')
-makedepends=('git' 'java-environment' 'doxygen')
+makedepends=('git' 'java-environment=8' 'doxygen')
 options=('!strip' 'libtool' 'staticlibs' '!emptydirs')
 source=("git+https://usfirst.collab.net/gerrit/allwpilib"
         "git+git://github.com/PeterJohnson/ntcore")
