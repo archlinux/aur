@@ -1,6 +1,6 @@
 # Maintainer: TyanNN sashavini2000@gmail.com
 pkgname=svkm
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Simple Vkontakte messanger"
 arch=('x86_64')
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=('https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B4YjcQAoes55MTJ5Z0xGNWNMdEU')
-md5sums=('d20ec770d7029520875ecb377befc092')
+md5sums=('f7d8388bcb95d648729550b0e7807395')
 
 package() {
   echo "Installing VK API"
