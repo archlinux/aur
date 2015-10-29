@@ -1,0 +1,17 @@
+pkgbase = unshield-git
+	pkgdesc = Extracts CAB files from InstallShield installers
+	pkgver = r155.24bdf98
+	pkgrel = 1
+	url = https://github.com/twogood/unshield
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	depends = zlib
+	depends = openssl
+	source = git+https://github.com/twogood/unshield
+	md5sums = SKIP
+
+pkgname = unshield-git
+
