@@ -1,19 +1,20 @@
 # Maintainer: Christoph Drexler <chrdr at gmx dot at>
 
 pkgname=pcsc-cyberjack
-pkgver=3.99.5_SP05
-_pkgver=3.99.5final.SP05
-pkgrel=5
+_sp=SP08
+pkgver=3.99.5_${_sp}
+_pkgver=3.99.5final.${_sp}
+pkgrel=1
 pkgdesc="PCSC Driver for Reiner SCT cyberjack Cardreaders"
 arch=('i686' 'x86_64')
-url="http://support.reiner-sct.de/"
+url="http://www.reiner-sct.com/support/download/treiber-und-software/cyberjack/chip-linux.html?grp=kontaktbehaftet"
 license=('LGPL')
 replaces=('ctapi-cyberjack')
 conflicts=('ctapi-cyberjack')
 depends=('libusb' 'pcsclite')
 options=('!libtool' '!docs')
-source=("http://support.reiner-sct.de/downloads/LINUX/V${pkgver}/${pkgname}-${_pkgver}.tar.bz2")
-sha256sums=('c02ef256834e1edb6a81bc31d942e46e28d0ab88439178f6a6d2730cb9017546')
+source=("http://www.kernelport.com/reiner-sct/${_sp}/${pkgname}-${_pkgver}.tar.bz2")
+sha256sums=('ab42b81ad685302c89763faaf0d90e23f804134e020d653323ad9f95a43655fc')
 
 build() {
     cd "${pkgname}-${_pkgver}"
