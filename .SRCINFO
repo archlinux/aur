@@ -1,0 +1,22 @@
+pkgbase = yumenikki-zh-cn
+	pkgdesc = Surrealistic adventure game about exploring the dreams of a hikikomori character named Madotsuki.Also known as "Dream Diary". Simplified chinese Ver.
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://www3.nns.ne.jp/pri/tk-mto/
+	arch = any
+	license = custom
+	makedepends = unarchiver
+	makedepends = convmv
+	depends = easyrpg-player
+	noextract = yumenikki0.10chs.rar
+	source = http://yumenikki.info/yumenikki0.10chs.rar
+	source = yumenikki-zh-cn.desktop
+	source = yumenikki-zh-cn.png
+	source = yumenikki-zh-cn.sh
+	md5sums = b9a475e67f51cd1280d727e877bbd587
+	md5sums = ff532e2f1a3b3a137c60697740d0896c
+	md5sums = b8f0addba27f5c18f806c35b933ec8d9
+	md5sums = 8b7d40a967df6d5636aa2fd33d4809c8
+
+pkgname = yumenikki-zh-cn
+

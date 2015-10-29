@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=梦日记
+Comment=梦日记
+Exec=yumenikki-zh-cn
+Icon=yumenikki-zh-cn
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
