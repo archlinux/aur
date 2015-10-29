@@ -4,6 +4,9 @@ post_install() {
 	chown grafana:grafana /var/{lib,log}/grafana
 }
 
+post_upgrade() {
+	post_install
+}
 
 post_remove() {
 	userdel grafana
