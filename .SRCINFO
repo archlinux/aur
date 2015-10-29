@@ -1,6 +1,6 @@
 pkgbase = pcap-dnsproxy-git
 	pkgdesc = A local DNS server base on WinPcap and LibPcap.
-	pkgver = 20150927
+	pkgver = 20151027
 	pkgrel = 1
 	url = https://github.com/chengr28/Pcap_DNSProxy
 	install = pcap-dnsproxy.install
