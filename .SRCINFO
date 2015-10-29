@@ -1,6 +1,6 @@
 pkgbase = doubanfm
 	pkgdesc = Beautiful DoubanFM player based on Qt5
-	pkgver = r40.1649d3b
+	pkgver = r44.1070385
 	pkgrel = 1
 	url = https://github.com/sbwtw/DoubanFM
 	install = doubanfm.install
