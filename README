@@ -1,0 +1,43 @@
+Guayadeque Music Player
+Arch Linux packaging
+http://guayadeque.org/
+
+Thank you's to:
+Alessio Treglia <alessio@debian.org> (Debian maintainer)
+Martin Gansser <mgansser@alice.de> (Fedora maintainer)
+Maxime Gauduin <alucryd@archlinux.org> (Arch maintainer)
+for their work and efforts which lead to this package.
+
+=== initial release
+- Start with latest Guayadeque Release(dated 2014-02-10)
+- Apply patches
+  guayadeque_01a_rev1891                (update download to SVN rev 1891)
+  guayadeque_01b_rev1892                (update to SVN rev 1892)
+  guayadeque_01c_rev1893                (update to SVN rev 1893)
+  guayadeque_01d_rev1894                (update to SVN rev 1894)
+  guayadeque_02_pause_crash.patch       (correct crash on pause/stop track)
+  guayadeque_03_wx30.patch              (update src for use with wx3.0)
+  guayadeque_04_wxSqlite_upgrade.patch  (update internal wxSqlite3 to rev 3.2.1)
+  guayadeque_05_pixbuf_link.patch       (add build link to libgdk-pixbuf-2.0.so)
+
+=====
+KNOWN BUILD ISSUES
+=====
+"Wno-deprecated-declarations" is used to suppress overflowing cpp warnings
+when compiling against wxWidgets. A change in g++ to 5.1 has created this
+situation.
+
+gcc bug 65974 filed by wxWidgets maintainer:
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=65974
+
+Build Warning:
+src/ListView.cpp:595:35: warning: comparison of constant ‘-1’ with boolean expression is always true [-Wbool-compare]
+         if( ( m_LastDragOverAfter != wxNOT_FOUND ) && ( m_DragOverItem != wxNOT_FOUND ) )
+
+Build Warning:
+src/ApeTag.cpp:115:13: warning: ‘void WriteLittleEndianUint32(char*, wxUint32)’ defined but not used [-Wunused-function]
+ static void WriteLittleEndianUint32( char * cp, wxUint32 i )
+
+Build Warning:
+src/wxsqlite3/wxsqlite3.cpp:3706:7: warning: variable ‘rc’ set but not used [-Wunused-but-set-variable]
+(warning against wxSqlite3 code)

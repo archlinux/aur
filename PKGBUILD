@@ -1,0 +1,71 @@
+# $Id$
+# Maintainer: Scott Furry <scott.wl.furry@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Sial <sial@cpan.org>
+# Contributor: Martin Herndl <martin.herndl@gmail.com>
+
+pkgname=guayadeque
+pkgver=0.3.7
+pkgrel=3
+pkgdesc='Lightweight music player'
+arch=('i686' 'x86_64')
+url='http://guayadeque.org/'
+license=('GPL3')
+depends=('curl' 'desktop-file-utils' 'libgpod' 'taglib' 'wxgtk' 'gdk-pixbuf2')
+makedepends=('cmake')
+optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
+			'gstreamer0.10-bad-plugins: Support for additional file formats'
+			'gstreamer0.10-ugly-plugins: Support for additional file formats'
+			'gvfs: Support for external devices')
+install='guayadeque.install'
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
+        'guayadeque_01a_rev1891.patch'
+        'guayadeque_01b_rev1892.patch'
+        'guayadeque_01c_rev1893.patch'
+        'guayadeque_01d_rev1894.patch'
+        'guayadeque_02_pause_crash.patch'
+        'guayadeque_03_wx30.patch'
+        'guayadeque_04_wxSqlite_upgrade.patch'
+        'guayadeque_05_pixbuf_link.patch')
+sha256sums=('d23eb1247add0bef8d5fef834294d7cb3d7c5fc20db9022b86f618a13d359938'
+            '56ff5fae064fa421cb951a7c664550861e04ae4df8b692044e2a4785f238ce24'
+            '15b49c58be40a57ecb1d38e7055c1edc5aaf71e0164062cc5f2b8fb589530377'
+            '11f51be56bff7b3f1572df9e701ae4ee0c9f7d6324b9b78e0ab93da185eefad2'
+            'b4101860ee371f3d37329267ff71efcb2f3b117399997209197687d1864c6716'
+            'b0a17d8a4b69e5559966d84f9a517e268198a62ccbb178db78a4772b52d62e8f'
+            '52bc278567abbd88fc281cdbaa10427be2e28028cd8c307d58a718c061607f45'
+            '6bd07e63afe0aa7baf30b616d701e234fd1c304897053e3eb466acb2db818071'
+            '23d388711a17dc7e1487c740fd961ceb563a967d5866c5d5508865252be2d645')
+BUILDFLDR='buildlocal'
+
+prepare() {
+  cd guayadeque-${pkgver}
+  patch -Np0 -i ../guayadeque_01a_rev1891.patch
+  patch -Np0 -i ../guayadeque_01b_rev1892.patch
+  patch -Np0 -i ../guayadeque_01c_rev1893.patch
+  patch -Np0 -i ../guayadeque_01d_rev1894.patch
+  patch -Np0 -i ../guayadeque_02_pause_crash.patch
+  patch -Np0 -i ../guayadeque_03_wx30.patch
+  patch -Np0 -i ../guayadeque_04_wxSqlite_upgrade.patch
+  patch -Np0 -i ../guayadeque_05_pixbuf_link.patch
+}
+
+build() {
+  cd guayadeque-${pkgver}
+  mkdir ${BUILDFLDR}
+  cd ${BUILDFLDR}
+
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc' \
+    -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config' \
+    -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations" \
+    -D_GUREVISION_:STRING="${pkgrel}"
+  make
+}
+
+package() {
+  cd guayadeque-${pkgver}/${BUILDFLDR}
+  make DESTDIR="${pkgdir}" install
+}
