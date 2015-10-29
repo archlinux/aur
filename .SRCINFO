@@ -1,6 +1,6 @@
 pkgbase = steamcurses-git
 	pkgdesc = Steam Ncurses for both native and wine versions
-	pkgver = 71c0a6d3
+	pkgver = 0ec79ed
 	pkgrel = 1
 	url = https://github.com/TOTBWF/SteamCurses
 	install = steamcurses-git.install
@@ -15,6 +15,7 @@ pkgbase = steamcurses-git
 	conflicts = steamcurses
 	source = git+https://github.com/TOTBWF/SteamCurses.git
 	sha256sums = SKIP
+	makedepends_x86_64 = gcc-multilib
 
 pkgname = steamcurses-git
 
