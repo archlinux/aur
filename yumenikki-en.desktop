@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Dream Diary
+Comment=Dream Diary
+Exec=yumenikki-en
+Icon=yumenikki-en
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
