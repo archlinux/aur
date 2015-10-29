@@ -37,5 +37,5 @@ package() {
   install -m 755 -d $pkgdir{$el,$info,$bin}_dir
   install -m 644 -t $pkgdir$el_dir *.el{,c}
   install -m 644 -t $pkgdir$info_dir *.info
-  install -m 755 -t $pkgdir/usr/bin/ speechd-log-extractor
+  install -m 755 -t $pkgdir$bin_dir speechd-log-extractor
 }
