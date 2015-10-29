@@ -2,20 +2,20 @@
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
 
 pkgname=grafana
-pkgver=2.1.3
+pkgver=2.5.0
 pkgrel=2
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
 arch=('x86_64' 'i686')
 license=('APACHE')
 depends=(phantomjs)
-makedepends=(go nodejs-grunt-cli phantomjs npm)
+makedepends=(go godep nodejs-grunt-cli npm)
 install=${pkgname}.install
 backup=("etc/${pkgname}/${pkgname}.ini")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "config.patch"
         "grafana.service")
-md5sums=('4c0a403137d0257a513e7db005666aa8'
+md5sums=('831debf7f50f35c91b68e65e17c89c6a'
          'f676cfe7bdd2463e2600ff8fce75a2d6'
          '05508c9c21f4c93ad86944a52d37e925')
 
@@ -32,16 +32,21 @@ build() {
   godep restore
   mkdir -p "$GOPATH/src/github.com/grafana/grafana/"
   ln -s "$GOPATH/pkg" "$GOPATH/src/github.com/grafana/grafana/"
-  # build less to css for the frontend
+
+  # Build frontend assets
   npm install
-  #grunt
+  # Install phantomjs in this directory as well for some reason
+  cd node_modules/karma-phantomjs-launcher
+  npm install
+  cd "$GOPATH"
+  grunt
+  grunt build
+  grunt build-post-process
+
   # build the backend
   # no longer doing package build since this just kicks off rpm/deb builds at the end.
   #go run build.go build package
   go run build.go build
-  grunt build
-  grunt build-post-process
-
 }
 
 package() {
@@ -50,10 +55,9 @@ package() {
   install -dm755 "${pkgdir}/var/lib/grafana"
   install -dm755 "${pkgdir}/var/log/grafana"
   install -Dsm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
-  install -Dm644 tmp/conf/sample.ini "$pkgdir/etc/${pkgname}/${pkgname}.ini"
-  install -Dm644 tmp/conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
-  cp -r tmp/public tmp/vendor "$pkgdir/usr/share/grafana/"
-  rm "$pkgdir/usr/share/grafana/vendor/phantomjs/phantomjs"
+  install -Dm644 conf/sample.ini "$pkgdir/etc/${pkgname}/${pkgname}.ini"
+  install -Dm644 conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
+  cp -r public vendor "$pkgdir/usr/share/grafana/"
 }
 
 # vim:set ts=2 sw=2 et:
