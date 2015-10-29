@@ -1,0 +1,18 @@
+pkgbase = rpgxp-rtp
+	pkgdesc = RPGMaker XP Runtime Package
+	pkgver = 103
+	pkgrel = 1
+	url = http://www.rpgmakerweb.com/download/additional/run-time-packages
+	arch = any
+	license = custom: commercial
+	makedepends = libarchive
+	makedepends = innoextract
+	makedepends = convmv
+	noextract = xp_rtp103.zip
+	source = http://tkool.jp/assets/files/xp_rtp103.zip
+	source = LICENSE
+	md5sums = 3a4a0f3615f536e29b4b1cf33ee58742
+	md5sums = fb08af026ac58b13ee582a447575cf42
+
+pkgname = rpgxp-rtp
+
