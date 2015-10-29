@@ -1,0 +1,16 @@
+pkgbase = cnmem
+	pkgdesc = A simple memory manager for CUDA designed to help Deep Learning frameworks manage memory
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/cnmem
+	arch = any
+	license = BSD
+	makedepends = cuda
+	makedepends = cmake
+	depends = cuda
+	options = !emptydirs
+	source = https://github.com/NVIDIA/cnmem/archive/v1.0.0.tar.gz
+	sha256sums = bd8c2803813f00c55995b106a5d385a343211100f8943856525472997f5b2bb0
+
+pkgname = cnmem
+

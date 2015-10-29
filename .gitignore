@@ -1,0 +1,8 @@
+# Ignore generated package data.
+pkg/
+src/
+
+# Ignore downloaded archives and signatures.
+*.tar.xz
+*.tar.gz
+*.sig
