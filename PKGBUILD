@@ -2,7 +2,7 @@
 # Maintainer: Hy Goldsher aka hyness <hyness-at-gmail>
 pkgname=squirrel-sql
 pkgver=3.7
-pkgrel=2
+pkgrel=1
 pkgdesc="A Java SQL client for any JDBC compliant database"
 arch=('i686' 'x86_64')
 url="http://www.squirrelsql.org/"
