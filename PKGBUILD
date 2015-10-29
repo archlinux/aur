@@ -6,7 +6,7 @@ pkgname=( 'scaleio-gui' 'scaleio-gateway'
           'scaleio-mdm' 'scaleio-callhome'
           'scaleio-lia' 'scaleio-tb')
 pkgver=1.32.2
-pkgrel=7
+pkgrel=8
 pkgdesc="ScaleIO"
 arch=('x86_64')
 url="http://github.com/odeke-em/drive"
@@ -161,6 +161,8 @@ package_scaleio-sdc()
 	mkdir ${pkgdir}/usr/
 	mv ${pkgdir}/bin ${pkgdir}/usr/
 	chmod -R 755 ${pkgdir}/
+	mv ${pkgdir}/etc/init.d/scini ${pkgdir}/usr/bin/
+	rm -rf ${pkgdir}/etc/init.d
         rm -rf ../scaleio-sdc
 }
 
