@@ -1,5 +1,6 @@
-# Maintainer: Hideaki Takahashi <mymelo+aur@gmail.com>
-# Maintainer: Vincent Demeester <vincent@sbr.pm>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Hideaki Takahashi <mymelo+aur@gmail.com>
+# Contributor: Vincent Demeester <vincent@sbr.pm>
 
 pkgname=(python-dockerpty python2-dockerpty)
 pkgver=0.3.4
