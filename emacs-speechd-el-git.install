@@ -1,0 +1,21 @@
+post_install() {
+  install-info /usr/share/info/speechd-el.info.gz /usr/share/info/dir
+  cat <<EOF
+Add the following line to your ~/.emacs:
+  (autoload 'speechd-speak "speechd-speak" nil t)
+If you would like to start voice or braille output on emacs startup also add:
+  (speechd-speak)
+If you would like to disable braille output also add:
+  (setq speechd-out-active-drivers '(ssip ))
+To launch speechd-el manually you can do the following inside emacs:
+  M-x speechd-speak RET
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  install-info --delete /usr/share/info/speechd-el.info.gz /usr/share/info/dir
+}
