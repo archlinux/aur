@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-dlib
 _pkgname=dlib
-pkgver=18.17
+pkgver=18.18
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. (mingw-w64)"
 arch=('any')
@@ -17,8 +17,8 @@ optdepends=('mingw-w64-cblas: for BLAS support'
 options=('!buildflags' '!strip' 'staticlibs')
 source=(http://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2
         dlib-${pkgver}.patch)
-md5sums=('249164604423590c3f1682ab1af66ca0'
-         'ecf412f6ba7382b436cd30f344fcc6dd')
+md5sums=('288d609c13b1c3c1957c6a12d0052e98'
+         '566e1a79a6336c764253a95bce2a3775')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

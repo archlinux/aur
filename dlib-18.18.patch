@@ -1,7 +1,7 @@
-diff -ruN dlib-18.17/dlib/cmake_find_blas.txt dlib-18.17-fixed/dlib/cmake_find_blas.txt
---- dlib-18.17/dlib/cmake_find_blas.txt	2015-08-16 10:26:10.000000000 +0800
-+++ dlib-18.17-fixed/dlib/cmake_find_blas.txt	2015-08-19 16:23:12.199042876 +0800
-@@ -261,6 +261,89 @@
+diff -ruN dlib-18.18/dlib/cmake_find_blas.txt dlib-18.18-patched/dlib/cmake_find_blas.txt
+--- dlib-18.18/dlib/cmake_find_blas.txt	2015-10-29 08:27:41.000000000 +0800
++++ dlib-18.18-patched/dlib/cmake_find_blas.txt	2015-10-29 13:03:20.968515000 +0800
+@@ -273,6 +273,89 @@
      endif()
  
  
@@ -91,10 +91,10 @@ diff -ruN dlib-18.17/dlib/cmake_find_blas.txt dlib-18.17-fixed/dlib/cmake_find_b
  endif()
  
  
-diff -ruN dlib-18.17/dlib/CMakeLists.txt dlib-18.17-fixed/dlib/CMakeLists.txt
---- dlib-18.17/dlib/CMakeLists.txt	2015-08-16 10:26:10.000000000 +0800
-+++ dlib-18.17-fixed/dlib/CMakeLists.txt	2015-08-19 16:23:12.202376276 +0800
-@@ -227,6 +227,7 @@
+diff -ruN dlib-18.18/dlib/CMakeLists.txt dlib-18.18-patched/dlib/CMakeLists.txt
+--- dlib-18.18/dlib/CMakeLists.txt	2015-10-29 08:27:41.000000000 +0800
++++ dlib-18.18-patched/dlib/CMakeLists.txt	2015-10-29 13:03:20.968515000 +0800
+@@ -234,6 +234,7 @@
           if (PNG_FOUND AND LIBPNG_IS_GOOD)
              include_directories(${PNG_INCLUDE_DIR})
              set (dlib_needed_libraries ${dlib_needed_libraries} ${PNG_LIBRARY})
