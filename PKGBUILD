@@ -1,4 +1,5 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Christoph Drexler <chrdr@gmx.at>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Bjoern Bidar <theodorstormgrade@gmail.com>
 
 pkgname=firefox-extension-kwallet-kf5
@@ -18,7 +19,6 @@ package() {
   dstdir=$pkgdir/usr/lib/firefox/browser/extensions/$emid
 
   # Install
-#  sed -i "s|<em:maxVersion>.*</em:maxVersion>|<em:maxVersion>99.*</em:maxVersion>|" install.rdf
   install -dm755 "$dstdir"
   cp -r * "$dstdir/"
 }
