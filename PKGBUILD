@@ -35,9 +35,8 @@ optdepends=('python2: python bindings'
 source=("http://www.vtk.org/files/release/${_majorver}/VTK-${pkgver}.tar.gz"
         "http://www.vtk.org/files/release/${_majorver}/VTKData-${pkgver}.tar.gz"
         "http://www.vtk.org/files/release/${_majorver}/VTKLargeData-${pkgver}.tar.gz"
-        # https://github.com/Kitware/VTK/pull/21
-        remove-vtkxdmf3.patch::https://github.com/nschloe/VTK/commit/a98527dfe9ce23beebf386fab07caef99b911ede.patch
-        find-libxml2.patch::https://github.com/nschloe/VTK/commit/6216f98a7124e12a2c1cefd113347f94b51f3c51.patch
+        remove-vtkxdmf3.patch
+        find-libxml2.patch
         gdal2.patch)
 options=(staticlibs)
 sha1sums=('452efab1eedf6202f2d9a3362b5f69adfc44edda'
