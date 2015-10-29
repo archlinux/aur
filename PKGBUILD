@@ -2,7 +2,7 @@
 pkgname=posixovl
 pkgver=1.2
 pkgrel=1
-pkgdesc='A FUSE filesystem that provides POSIX functionality'
+pkgdesc='A FUSE filesystem that provides POSIX functionality, a modern equivalent to UMSDOS'
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects/posixovl/"
 license=('GPL2')

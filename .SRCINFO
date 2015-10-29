@@ -1,5 +1,5 @@
 pkgbase = posixovl
-	pkgdesc = A FUSE filesystem that provides POSIX functionality
+	pkgdesc = A FUSE filesystem that provides POSIX functionality, a modern equivalent to UMSDOS
 	pkgver = 1.2
 	pkgrel = 1
 	url = http://sourceforge.net/projects/posixovl/
