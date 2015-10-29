@@ -14,7 +14,7 @@ depends=('knewstuff-git' 'ktexteditor-git' 'threadweaver-git'
 makedepends=('extra-cmake-modules' 'git' 'kdoctools-git' 'python' 'plasma-framework-git')
 provides=('kate')
 conflicts=('kate' 'kdesdk-kate' 'kdebase-kwrite')
-install=kate.install
+install=kate-git.install
 source=('git://anongit.kde.org/kate.git')
 md5sums=('SKIP')
 
