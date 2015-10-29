@@ -1,0 +1,14 @@
+pkgbase = u2f-udev
+	pkgdesc = Udev rules for FIDO U2F keys
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Yubico/libu2f-host
+	install = u2f-udev.install
+	arch = any
+	license = GPLv3
+	conflicts = libu2f-host
+	source = https://raw.githubusercontent.com/Yubico/libu2f-host/master/70-u2f.rules
+	md5sums = 0f3b507d1ae3a90d88e4dc600a1b6fd0
+
+pkgname = u2f-udev
+
