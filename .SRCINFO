@@ -1,14 +1,16 @@
 pkgbase = python-keystoneclient
 	pkgdesc = Client Library for OpenStack Identity
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openstack/python-keystoneclient
 	arch = any
 	license = Apache
 	makedepends = python-pbr>=1.8
 	makedepends = python2-pbr>=1.8
 	source = https://pypi.python.org/packages/source/p/python-keystoneclient/python-keystoneclient-1.8.1.tar.gz
+	source = lp1483872.patch
 	sha256sums = 4429b973fc45636d1f7117791d930391a432b4d0db76eafb75f918a8e6d68cf0
+	sha256sums = 4e6e348dffb03ace9a798e0e6c44e177240c0973ec4bc8270ee120409a12be93
 
 pkgname = python-keystoneclient
 	depends = python-babel>=1.3

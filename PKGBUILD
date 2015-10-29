@@ -6,17 +6,20 @@ _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.8.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Client Library for OpenStack Identity"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('4429b973fc45636d1f7117791d930391a432b4d0db76eafb75f918a8e6d68cf0')
+source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
+        "lp1483872.patch")
+sha256sums=('4429b973fc45636d1f7117791d930391a432b4d0db76eafb75f918a8e6d68cf0'
+            '4e6e348dffb03ace9a798e0e6c44e177240c0973ec4bc8270ee120409a12be93')
 
 prepare() {
-    sed -ri '/argparse/d' "${srcdir}/${_name}-${pkgver}"/requirements.txt
+    sed -ri '/argparse/d' "${srcdir}/${_name}-${pkgver}/requirements.txt"
+    patch -d "${srcdir}/${_name}-${pkgver}" -p1 -i "${srcdir}/lp1483872.patch"
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
 }
 
