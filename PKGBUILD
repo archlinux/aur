@@ -1,6 +1,6 @@
 # Maintainer: Veeti Paananen <veeti.paananen@rojekti.fi>
 pkgname=armory-bin
-pkgver=0.93.2
+pkgver=0.93.3
 pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet (official binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('armory' 'armory-git')
 # Don't blindly trust a random AUR package with your coins! Signed hashes available at
 # https://bitcoinarmory.com/download/ with GPG ID 0x98832223
 source=("https://s3.amazonaws.com/bitcoinarmory-releases/armory_${pkgver}_ubuntu-64bit.deb")
-sha256sums=('677b484cbafcaff8a520cd4526beff985ca73eed54b437fa5cfdc123bd2c517a')
+sha256sums=('89a28d7b4c262abc31bb09696e368a0ed633a1d9c7f8bf8922814014258f78d5')
 
 package() {
   tar xvf "$srcdir/data.tar.xz"
