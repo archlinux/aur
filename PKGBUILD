@@ -6,7 +6,7 @@ pkgname=( 'scaleio-gui' 'scaleio-gateway'
           'scaleio-mdm' 'scaleio-callhome'
           'scaleio-lia' 'scaleio-tb')
 pkgver=1.32.2
-pkgrel=6
+pkgrel=7
 pkgdesc="ScaleIO"
 arch=('x86_64')
 url="http://github.com/odeke-em/drive"
@@ -160,6 +160,7 @@ package_scaleio-sdc()
         rsync -a ./ ${pkgdir}/
 	mkdir ${pkgdir}/usr/
 	mv ${pkgdir}/bin ${pkgdir}/usr/
+	chmod -R 755 ${pkgdir}/
         rm -rf ../scaleio-sdc
 }
 

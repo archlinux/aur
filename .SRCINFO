@@ -1,7 +1,7 @@
 pkgbase = scaleio
 	pkgdesc = ScaleIO
 	pkgver = 1.32.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://github.com/odeke-em/drive
 	install = scaleio-gui.install
 	arch = x86_64
