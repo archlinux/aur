@@ -6,7 +6,7 @@
 # Contributor: Flu
 
 pkgname=llpp-git
-pkgver=21.r61.gdf146ab
+pkgver=22
 pkgrel=1
 pkgdesc='Fast, featureful PDF viewer based on MuPDF.'
 arch=('i686' 'x86_64')
@@ -42,24 +42,21 @@ pkgver() {
   git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-prepare() {
-  cd llpp
-  patch -p1 < ../fix-libs.patch
-}
-
 build() {
   cd llpp
-  sh configure.sh -n .
-  ninja "$srcdir"/llpp/build/llpp.custom
-  make -C misc/completions
+
+  sed -i -e 's+-I \$srcdir/mupdf/include -I \$srcdir/mupdf/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
+  sed -i -e 's+-lopenjpeg+-lopenjp2+' build.sh
+  sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
+
+  sh build.sh build
 }
 
 package() {
   cd llpp
-  install -Dm755 build/llpp.custom "$pkgdir"/usr/bin/llpp
-  install -Dm755 misc/llppac "$pkgdir"/usr/bin/llppac
-  install -Dm755 misc/gc.py "$pkgdir"/usr/lib/llpp/gc
+  install -Dm755 build/llpp "$pkgdir"/usr/bin/llpp
+
   install -Dm644 misc/llpp.desktop "$pkgdir"/usr/share/applications/llpp.desktop
   install -Dm644 README "$pkgdir"/usr/share/licenses/llpp/README
-  make -C misc/completions DESTDIR="$pkgdir" PREFIX=/usr install
+  #make -C misc/completions DESTDIR="$pkgdir" PREFIX=/usr install
 }
