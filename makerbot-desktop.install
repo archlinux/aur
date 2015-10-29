@@ -50,11 +50,10 @@ post_install() {
 	chown /var/log/conveyor/conveyord.log
 	
 	## Enable and start conveyor service
-	echo -e "Enabling and starting conveyor.service"
-	systemctl enable conveyor
-	systemctl start conveyor
+	msg2 "Enable and start conveyor.service to be able to connect to printer\n #~ systemctl enable conveyor.service && systemctl start conveyor.service"
 }
 
 post_upgrade() {
         chown conveyor /var/log/conveyor/conveyord.log
+        msg2 "Please restart conveyor.service with\n #~ systemctl restart conveyor.service"
 }
