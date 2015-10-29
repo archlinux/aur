@@ -16,7 +16,7 @@ depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib'
 	 'libvpx' 'libevent' 'nss>=3.14.1' 'hunspell')
 install="${pkgname}.install"
 
-_baseurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora"
+_baseurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora"
 _filename="${_name}-${_milestone}.en-US.linux-${CARCH}"
 _sha512sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("${pkgname}.desktop"
