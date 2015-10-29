@@ -1,11 +1,12 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=pnmixer
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK volume mixer applet that runs in the system tray."
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/nicklan/pnmixer"
+makedepends=('intltool')
 depends=('gtk2' 'alsa-lib' 'libnotify')
 install="${pkgname}.install"
 source=("https://github.com/nicklan/pnmixer/releases/download/v0.6/pnmixer-${pkgver}.tar.gz")
