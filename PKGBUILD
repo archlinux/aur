@@ -2,8 +2,8 @@
 # Contributor: rostov <imn@pochta.ru>
 
 pkgname=projectlibre
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="ProjectLibre is an open source project management software"
 arch=('any')
 replaces=('project-libre')
@@ -16,10 +16,10 @@ source=("http://downloads.sourceforge.net/project/${pkgname}/ProjectLibre/${pkgv
 		"projectlibre.desktop"
 		"projectlibre.patch"
 		"projectlibre.xml")
-md5sums=('48e5848144b73028f4cf81b2a051f8b0'
+md5sums=('d2a29965d3ed06c54fa247c7ee7aafc2'
          'cbeee50a6324b473c17899616f3effbd'
          'e93fab66e95915aaf9ef204d914b6e9f'
-         '5c242f5e1fbdb2e399b584520065f2a8'
+         '0f6c0fb279ae47302ca220c93cd17d35'
          '78bb62198c864aa6ac7a103c044f5b56')
 
 build() {
