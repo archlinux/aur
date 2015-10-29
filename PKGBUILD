@@ -2,16 +2,16 @@
 # Contributor: Bartlomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=llpp
-pkgver=21
-_pkgname=${pkgname}-f376f80
-pkgrel=3
+pkgver=22
+_pkgname=${pkgname}-561dc56
+pkgrel=1
 pkgdesc='Lightweight, fast and featureful PDF viewer based on MuPDF'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/w/llpp.git'
 license=('custom')
 depends=('mupdf' 'openssl' 'openjpeg2' 'libx11' 'desktop-file-utils')
 makedepends=('ocaml' 'ninja' 'ocaml-lablgl')
-source=(http://repo.or.cz/w/llpp.git/snapshot/f376f8000cdf01fcc0ae3aa1fed99f193d6e7909.tar.gz)
+source=(http://repo.or.cz/llpp.git/snapshot/561dc5673cea431e930668b0d87b0c4b31a36b39.tar.gz)
 install=llpp.install
 sha256sums=('SKIP')
 
@@ -38,16 +38,15 @@ options=('!strip')
 
 build() {
   cd $_pkgname
-  sed -i -e 's/openjpeg/openjp2 -lX11/' configure.sh
-  sh configure.sh .
-  echo "mujs=-lmujs" >>.config
-  ninja $srcdir/$_pkgname/build/llpp.custom
+  sed -i -e 's+-I \$srcdir/mupdf/include -I \$srcdir/mupdf/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
+  sed -i -e 's+-lopenjpeg+-lopenjp2+' build.sh
+  sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
+  sh build.sh build/
 }
 
 package() {
   cd $_pkgname
-  install -Dm755 build/llpp.custom "$pkgdir"/usr/bin/llpp
-  install -m755 misc/llppac "$pkgdir"/usr/bin/llppac
+  install -Dm755 build/llpp "$pkgdir"/usr/bin/llpp
 
   install -Dm0644 misc/llpp.desktop "$pkgdir"/usr/share/applications/llpp.desktop
   install -Dm0644 README "$pkgdir"/usr/share/licenses/llpp/README
