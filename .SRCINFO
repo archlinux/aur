@@ -35,9 +35,7 @@ pkgbase = llpp-git
 	provides = llpp
 	conflicts = llpp
 	source = git://repo.or.cz/llpp.git
-	source = fix-libs.patch
 	sha256sums = SKIP
-	sha256sums = fdda445e28d93ecdc0ad03b24da9a2b890a287e34c307c8762944edeacf1ae91
 
 pkgname = llpp-git
 

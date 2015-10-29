@@ -32,10 +32,8 @@ optdepends=(
   'inkscape: llppac svg conversion (alternative)'
   'imagemagick: llppac image conversion'
 )
-source=('git://repo.or.cz/llpp.git'
-        'fix-libs.patch')
-sha256sums=('SKIP'
-            'fdda445e28d93ecdc0ad03b24da9a2b890a287e34c307c8762944edeacf1ae91')
+source=('git://repo.or.cz/llpp.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd llpp
