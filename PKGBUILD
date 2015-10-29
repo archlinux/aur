@@ -1,4 +1,4 @@
-# Maintainer: Tyler Langlois <ty at tjll dot net>
+# Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=packetbeat
 pkgver=1.0.0_beta4
