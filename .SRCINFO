@@ -1,7 +1,7 @@
 pkgbase = backblaze-b2
 	pkgdesc = Backblaze B2 Command Line Client
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.backblaze.com/b2/cloud-storage.html
 	arch = any
 	license = MIT
