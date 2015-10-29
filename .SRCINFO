@@ -1,0 +1,13 @@
+pkgbase = backblaze-b2
+	pkgdesc = Backblaze B2 Command Line Client
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://www.backblaze.com/b2/cloud-storage.html
+	arch = any
+	license = MIT
+	depends = python
+	source = https://docs.backblaze.com/public/b2_src_code_bundles/b2
+	sha256sums = 752de33bd599a2ca15ad77b3ab47a565c0b3ba4427b6a206582c9bdfe96d973c
+
+pkgname = backblaze-b2
+
