@@ -1,6 +1,6 @@
 pkgname=urlregwatch
 pkgver=0.1.0.r6.20151029
-pkgrel=1
+pkgrel=2
 pkgdesc="Check internet pages for changes by regular expression"
 url=http://urlregwatch.sourceforge.net/
 license=(LGPL3)
@@ -33,5 +33,5 @@ package() {
 	_pkgverTriple=$(echo $pkgver | sed "s/\.r.*//g")
 	cd $_gitroot
 	install -Dm755 linux/$pkgname $pkgdir/usr/bin/$pkgname
-	install -Dm644 build/libs/$pkgname-$_pkgverTriple.jar $pkgdir/usr/lib/$pkgname.jar
+	install -Dm644 build/libs/$pkgname-$_pkgverTriple.jar $pkgdir/usr/lib/$pkgname/$pkgname.jar
 }
