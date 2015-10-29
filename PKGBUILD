@@ -2,7 +2,7 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=r386.c649e56
+pkgver=r449.f03d1a1
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h')
@@ -32,11 +32,11 @@ build() {
   make biboumi
 }
 
-check() {
-  cd "$srcdir/$_pkgname/build"
-  make test_suite/fast
-  ./test_suite
-}
+# TODO: reenable that, by moving the Catch download in the source array.
+#check() {
+#  cd "$srcdir/$_pkgname/build"
+#  make check
+#}
 
 package() {
   cd "$srcdir/$_pkgname/build"
