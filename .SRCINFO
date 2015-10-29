@@ -1,0 +1,11 @@
+pkgbase = rpg2003-rtp
+	pkgdesc = RPGMaker 2003 Runtime Package
+	pkgver = 100
+	pkgrel = 1
+	url = http://www.rpgmakerweb.com/download/additional/run-time-packages
+	arch = any
+	license = custom: commercial
+	makedepends = p7zip
+
+pkgname = rpg2003-rtp
+
