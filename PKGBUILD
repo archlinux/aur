@@ -9,7 +9,7 @@ license=('GPL' 'LGPL' 'FDL')
 arch=('i686' 'x86_64')
 url="http://www.kipi-plugins.org/"
 depends=('libkipi-git' 'libkexiv2-git' 'libkdcraw-git')
-makedepends=('git' 'extra-cmake-modules-git' 'kcalcore' 'libkgeomap-git' 'libksane-git' 'libmediawiki-git' 'libkvkontakte-git' 'threadweaver' 'karchive' 'kqoauth-qt5-git''kdoctools')
+makedepends=('git' 'extra-cmake-modules-git' 'kcalcore' 'libkgeomap-git' 'libksane-git' 'libmediawiki-git' 'libkvkontakte-git' 'threadweaver' 'karchive' 'kqoauth-qt5-git' 'kdoctools')
 optdepends=('hugin: for expoblending plugin'
 	    'kcalcore: Calendar plugin'
 	    'libkgeomap-git: A tool to geolocalize pictures'
