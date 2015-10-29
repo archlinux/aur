@@ -5,7 +5,12 @@ pkgbase = rpg2003-rtp
 	url = http://www.rpgmakerweb.com/download/additional/run-time-packages
 	arch = any
 	license = custom: commercial
-	makedepends = p7zip
+	makedepends = unarchiver
+	makedepends = unshield-git
+	makedepends = convmv
+	noextract = 2003rtp.zip
+	source = http://tkool.jp/assets/files/2003rtp.zip
+	md5sums = 8b15ba45ae77cf06b59bff2ead633c4c
 
 pkgname = rpg2003-rtp
 

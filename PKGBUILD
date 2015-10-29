@@ -6,21 +6,21 @@ pkgdesc="RPGMaker 2003 Runtime Package"
 url='http://www.rpgmakerweb.com/download/additional/run-time-packages'
 arch=('any')
 license=('custom: commercial')
-makedepends=('p7zip')
-
-prepare() {
-  cd "$srcdir/.."
-  file_name=2003rtp.7z
-  [ -f "$file_name" ] && checksum=`md5sum "$file_name" | grep -oP '[0-9a-z]+' | head -n 1` || true
-  [ "z""$checksum" = "z""20fb5164724c2fe6c44a79df3cc94e22" ] || \
-    ( rm -f "$file_name" ; \
-    wget --no-check-certificate "http://pan.plyz.net/d.asp?u=118488466&p=$file_name" -O "$file_name" )
-  [ -f "$srcdir/$file_name" ] || ln -s "../$file_name" "$srcdir/$file_name"
-  cd "${srcdir}"
-  7z x $file_name
-}
+makedepends=('unarchiver' 'unshield-git' 'convmv')
+source=("http://tkool.jp/assets/files/2003rtp.zip")
+md5sums=('8b15ba45ae77cf06b59bff2ead633c4c')
+noextract=2003rtp.zip
 
 package() {
+  cd "$srcdir"
+  unar -encoding SHIFT-JIS 2003rtp.zip
+  cd "2003RTPｾｯﾄｱｯﾌﾟ"
+  unar RPG2003RTP.exe
+  cd RPG2003RTP
+  unshield x data1.cab
+  convmv -r -f SHIFT-JIS -t utf-8 --notest .
+  
   mkdir -p "$pkgdir/opt/"
-  cp -r "$srcdir/RTP" "$pkgdir/opt/$pkgname"
+  cp -r "${srcdir}/2003RTPｾｯﾄｱｯﾌﾟ/RPG2003RTP/RPGﾂｸｰﾙ2003_ﾗﾝﾀｲﾑﾊﾟｯｹｰｼﾞ/RTP" "$pkgdir/opt/$pkgname"
+  install -Dm644 "$srcdir/2003RTPｾｯﾄｱｯﾌﾟ/使用規約.txt" "$pkgdir/opt/$pkgname/使用規約.txt"
 }
