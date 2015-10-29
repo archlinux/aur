@@ -18,20 +18,20 @@ function variables() {
 	echo ${DATA_DIR}
 }
 function move() {
-	for i in "${1}"; do
+	for i in "${1}"/*; do
 		mv "${i}" "${2}"
 	done
 }
 function directories() {
 	mkdir --parents "${DATA_DIR}"
 	if [ -d "${HOME}/.${NAME}" ] && [ "${HOME}/.${NAME}" != "${DATA_DIR}" ]; then
-		move "${HOME}/.${NAME}/" "${DATA_DIR}/"
+		move "${HOME}/.${NAME}" "${DATA_DIR}/"
 		rmdir "${HOME}/.${NAME}"
 	elif [ -d "${HOME}/.local/share/${NAME}" ] && [ "${HOME}/.local/share/${NAME}" != "${DATA_DIR}" ]; then
 		move "${HOME}/.local/share/${NAME}" "${DATA_DIR}"
 		rmdir "${HOME}/.local/share/${NAME}"
 	elif [ -d "${XDG_DATA_HOME}/${NAME}" ] && [ "${XDG_DATA_HOME}/${NAME}" != "${DATA_DIR}" ] ; then
-		move "${XDG_DATA_HOME}/${NAME}/" "${DATA_DIR}"
+		move "${XDG_DATA_HOME}/${NAME}" "${DATA_DIR}"
 		rmdir "${XDG_DATA_HOME}/${NAME}"
 	fi
 }
