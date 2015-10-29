@@ -1,0 +1,23 @@
+pkgbase = yumenikki-jp
+	pkgdesc = Surrealistic adventure game about exploring the dreams of a hikikomori character named Madotsuki. Original Ver(Japanese).
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://www3.nns.ne.jp/pri/tk-mto/
+	arch = any
+	license = custom
+	makedepends = unarchiver
+	makedepends = convmv
+	depends = easyrpg-player
+	depends = rpg2003-rtp
+	noextract = yumenikki0.10.lzh
+	source = http://ftp.vector.co.jp/43/88/3084/yumenikki0.10.lzh
+	source = yumenikki-jp.desktop
+	source = yumenikki-jp.png
+	source = yumenikki-jp.sh
+	md5sums = f3a16c395078dcec4950200732bc5194
+	md5sums = dbffbb59e18b8c4d22688134b42cf70f
+	md5sums = b8f0addba27f5c18f806c35b933ec8d9
+	md5sums = b771b2a649f91dfef9075d9dcc03107e
+
+pkgname = yumenikki-jp
+

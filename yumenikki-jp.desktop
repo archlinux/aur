@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=ゆめにっき
+Comment=ゆめにっき
+Exec=yumenikki-jp
+Icon=yumenikki-jp
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
