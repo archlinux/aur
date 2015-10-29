@@ -24,6 +24,7 @@ package() {
   cd "$srcdir"
   mv  'uc?export=download&confirm=no_antivirus&id=0B4YjcQAoes55MTJ5Z0xGNWNMdEU' svkm.py
   install -D -m755 $srcdir/svkm.py $pkgdir/usr/bin/svkm
+  
 }
 
 # vim:set ts=2 sw=2 et: 
