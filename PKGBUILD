@@ -2,7 +2,7 @@
 pkgbase=python-h5py-openmpi
 pkgname=(python-h5py-openmpi python2-h5py-openmpi)
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="General-purpose Python bindings for the HDF5 library - OpenMPI version"
 url="http://www.h5py.org/"
 arch=('i686' 'x86_64')
@@ -46,7 +46,7 @@ check() {
 package_python-h5py-openmpi() {
   depends=('hdf5-openmpi' 'python-numpy' 'python-six' 'cython' 'python-mpi4py')
   conflicts=('python-h5py')
-
+  provides=('python-h5py')
   cd "$srcdir"/h5py-$pkgver
   python setup.py install --prefix=/usr --root="$pkgdir"/ --optimize=1
 
@@ -58,6 +58,7 @@ CENSE"
 package_python2-h5py-openmpi() {
   depends=('hdf5-openmpi' 'python2-numpy' 'python2-six' 'cython2' 'python2-mpi4py')
   conflicts=('python2-h5py')
+  provides=('python2-h5py')
 
   cd "$srcdir"/h5py-$pkgver-py2
   python2 setup.py install --prefix=/usr --root="$pkgdir"/ --optimize=1

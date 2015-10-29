@@ -1,7 +1,7 @@
 pkgbase = python-h5py-openmpi
 	pkgdesc = General-purpose Python bindings for the HDF5 library - OpenMPI version
 	pkgver = 2.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.h5py.org/
 	arch = i686
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgname = python-h5py-openmpi
 	depends = python-six
 	depends = cython
 	depends = python-mpi4py
+	provides = python-h5py
 	conflicts = python-h5py
 
 pkgname = python2-h5py-openmpi
@@ -36,5 +37,6 @@ pkgname = python2-h5py-openmpi
 	depends = python2-six
 	depends = cython2
 	depends = python2-mpi4py
+	provides = python2-h5py
 	conflicts = python2-h5py
 
