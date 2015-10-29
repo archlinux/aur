@@ -1,0 +1,18 @@
+pkgbase = rpgvxace-rtp
+	pkgdesc = RPGMaker VX Ace Runtime Package
+	pkgver = 100
+	pkgrel = 1
+	url = http://www.rpgmakerweb.com/download/additional/run-time-packages
+	arch = any
+	license = custom: commercial
+	makedepends = libarchive
+	makedepends = innoextract
+	makedepends = convmv
+	noextract = vxace_rtp100.zip
+	source = http://tkool.jp/assets/files/vxace_rtp100.zip
+	source = LICENSE
+	md5sums = 40fb975ab967ef519e28ade703ddd848
+	md5sums = 01fee4ed0a5af011bd5b16e54f80e511
+
+pkgname = rpgvxace-rtp
+
