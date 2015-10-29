@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kate-git
-pkgver=r15216.fcf16e1
+pkgver=r15288.15d26a7
 pkgrel=1
 pkgdesc='An advanced editor component which is used in numerous KDE applications requiring a text editing component'
 arch=('i686' 'x86_64')

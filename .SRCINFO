@@ -1,6 +1,6 @@
 pkgbase = kate-git
 	pkgdesc = An advanced editor component which is used in numerous KDE applications requiring a text editing component
-	pkgver = r15216.fcf16e1
+	pkgver = r15288.15d26a7
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/applications/kate
 	install = kate.install
