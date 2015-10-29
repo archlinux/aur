@@ -1,26 +1,26 @@
-# Maintainer: 
+# Maintainer: Jens Staal <staal1978@gmail.com>
 # Contributor: talavis <aur talavis eu>
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 pkgname=ugene
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('i686' 'x86_64')
 url="http://ugene.net/"
 license=('GPL')
-depends=('qt4' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info')
+depends=('qt5-base' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info')
 source=(${url}downloads/$pkgname-$pkgver.tar.gz)
-sha256sums=('0054791827096ab0244e5652f9b0da5d1eec578614b2711a07acaafd59056db4')
+sha256sums=('ad9f94f5c53daa2ef5c5630d92a6f8ebe812fb1066a8bd08869830723f5c29a5')
 install=$pkgname.install
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   if [[ $CARCH == "i686" ]]
   then
-    qmake-qt4 PREFIX=/usr -r
+    qmake-qt5 PREFIX=/usr -r
   elif [[ $CARCH == "x86_64" ]]
   then
-    qmake-qt4 CONFIG+=x64 PREFIX=/usr -r
+    qmake-qt5 CONFIG+=x64 PREFIX=/usr -r
   fi
   make
 }
