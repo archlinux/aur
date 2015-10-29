@@ -1,14 +1,18 @@
 pkgbase = emacs-speechd-el-git
 	pkgdesc = Emacs speech and Braille output interface
 	pkgver = 20141025.3d72981
-	pkgrel = 1
+	pkgrel = 2
 	url = http://devel.freebsoft.org/speechd-el
 	install = emacs-speechd-el-git.install
 	arch = any
 	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = texinfo
 	depends = emacs
 	optdepends = speech-dispatcher: for speech output
 	optdepends = brltty: for braille support
+	optdepends = perl: for speechd-log-extractor script
 	provides = emacs-speechd-el=$pkgver
 	conflicts = emacs-speechd-el
 	source = git://git.freebsoft.org/git/speechd-el
