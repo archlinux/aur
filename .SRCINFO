@@ -1,7 +1,7 @@
 pkgbase = xf86-video-qxl-git
 	pkgdesc = X Window System QXL driver including Xspice server
 	pkgver = 0.1.4.7.ge765cc5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.spice-space.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xf86-video-qxl-git
 	makedepends = git
 	makedepends = xorg-server-devel
 	makedepends = X-ABI-VIDEODRV_VERSION=19
-	makedepends = spice-protocol-git
+	makedepends = spice-protocol
 	depends = xf86dgaproto
 	depends = xproto
 	depends = fontsproto
