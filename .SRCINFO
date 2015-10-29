@@ -1,13 +1,14 @@
 pkgbase = enpass-bin
 	pkgdesc = A multiplatform password manager
 	pkgver = 5.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://enpass.io/
 	install = enpass-bin.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libxss
+	depends = lsof
 	depends = libappindicator-gtk2
 	source = http://repo.sinew.in/pool/main/e/enpass/enpass_5.0.2_.deb
 
