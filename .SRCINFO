@@ -10,6 +10,8 @@ pkgbase = unshield-git
 	makedepends = git
 	depends = zlib
 	depends = openssl
+	provides = unshield
+	conflicts = unshield
 	source = git+https://github.com/twogood/unshield
 	md5sums = SKIP
 

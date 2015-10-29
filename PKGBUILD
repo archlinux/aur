@@ -10,6 +10,8 @@ url="https://github.com/twogood/unshield"
 license=('MIT')
 depends=('zlib' 'openssl')
 makedepends=('cmake' 'git')
+provides=${_pkgname}
+conflicts=${_pkgname}
 source=("git+https://github.com/twogood/unshield")
 md5sums=('SKIP')
 
