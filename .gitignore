@@ -3,5 +3,4 @@ pkg/
 src/
 *.pkg.*.sig
 *.src.tar.gz
-php-go
 deprecation-detector
