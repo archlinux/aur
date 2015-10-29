@@ -1,8 +1,8 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-github'
-pkgver='0.78'
+pkgver='0.79'
 pkgrel='1'
 pkgdesc="Perl Interface for github.com"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-http-message' 'perl-json-maybexs' 'perl-lwp-protocol-https' 'perl-moo' 'perl-type-tiny' 'perl-uri' 'perl-libwww')
 makedepends=()
 url='https://metacpan.org/release/Net-GitHub'
-source=('http://search.cpan.org/CPAN/authors/id/F/FA/FAYLAND/Net-GitHub-0.78.tar.gz')
-md5sums=('5ef625454f5690e4793502e64c957fae')
-sha512sums=('106d1ff17bf6cd37f1ed20bc6e9db0c07590e467e2fb1a2bf4d7d8d4f0d358158b8a6da241769e8163cdfaeade02d5c3a218d77ea5ded3a19656f79056ed531e')
-_distdir="Net-GitHub-0.78"
+source=('http://search.cpan.org/CPAN/authors/id/F/FA/FAYLAND/Net-GitHub-0.79.tar.gz')
+md5sums=('ecfe5cd746a074197250d65f1cb8aba0')
+sha512sums=('f5a2bd2b74ef48738bd5a60850f34d62154b3fadfc8661f8562830ffd4e3a84a0b8b2c631969352fa74f43855a6ce6252ce50144280bb8b7a274483eea4e4514')
+_distdir="Net-GitHub-0.79"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
