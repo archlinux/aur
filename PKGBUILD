@@ -5,7 +5,7 @@
 
 pkgname=gnome-colors-revival
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='GNOME Colors icon theme'
 arch=('i686' 'x86_64')
 url='https://github.com/Somasis/gnome-colors-revival'
@@ -16,11 +16,11 @@ source=("gnome-colors-revival-$pkgver.tar.gz::https://github.com/Somasis/gnome-c
 sha256sums=('ed185351f6e0817cec2796cd2c9952b1911260c5ee5334ed6dd117e6ce9d6f43')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
   make
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install 
 }

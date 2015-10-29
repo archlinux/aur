@@ -1,7 +1,7 @@
 pkgbase = gnome-colors-revival
 	pkgdesc = GNOME Colors icon theme
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Somasis/gnome-colors-revival
 	arch = i686
 	arch = x86_64
