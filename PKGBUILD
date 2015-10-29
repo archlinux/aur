@@ -1,7 +1,7 @@
 # Maintainer: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="A free universal database tool for developers and database administrators"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ noextract=("dbeaver-ce-latest-linux.gtk.x86.tar.gz"
 
 sha256sums=('cf1e850dcb3544507eeb59b8d2e84b67cd25b546e3eaf03a0ab27ca841361478'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_i686=('a0605558bc6a6f8fe14c51ec9fa4042b67d864e73c2401143a08cff6eae26642')
-sha256sums_x86_64=('546c4dbf9abe30bcecf6007c65de280e532e2eb18f146120aa6f34ecd31fb357')
+sha256sums_i686=('5fa4a8766e7f722b1dac5e8dcf429bc479818cac0a7f8e46b0949b6beb43e34c')
+sha256sums_x86_64=('7538c306f55c599fda38176d9f336458f6d221b77993718f71cf6022f000eb0a')
 
 prepare() {
   mkdir -p $srcdir/$pkgname
