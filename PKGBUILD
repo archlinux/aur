@@ -3,7 +3,7 @@
 pkgname=kimchi
 _gitname=kimchi-1.5.1
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 
 pkgdesc="HTML5 management for KVM"
 
@@ -42,6 +42,7 @@ depends=('python2-cherrypy'
   'python2-functools32'
   'python2-configobj'
   'python2-magic'
+  'pypam2-bzr'
 )
 
 
