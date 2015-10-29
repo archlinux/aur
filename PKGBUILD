@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=backblaze-b2
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.6
+pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client"
 url="https://www.backblaze.com/b2/cloud-storage.html"
 depends=('python')
@@ -12,7 +12,7 @@ arch=('any')
 
 # Need a better source URL at some point
 source=("https://docs.backblaze.com/public/b2_src_code_bundles/b2")
-sha512sums=('29384d8d271c0b595ca922819683de2ae235dfd6725ce979f8d50efb0727063df516247e681e2445de84f1f16e29e67f4c447f714cf1a4461d52da297e16dbc5')
+sha512sums=('4be011b5dd12c38a12f8887e009fd0fc25cd5c613d121db07aa9c110cc31fe0fa85e313b7535086559367d7d101b6286fd002814798b98cbe61d6602b80299f3')
 
 package() {
     # Hardcode python2, converting is frivilous
