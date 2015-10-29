@@ -4,13 +4,13 @@
 pkgname=jriver-media-center
 _debpkgver=21.0.16
 pkgver=$_debpkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="The Most Comprehensive Media Software"
 arch=('x86_64')
 url="http://www.jriver.com/"
 license=('custom')
-depends=('alsa-lib' 'gcc-libs' 'libx11' 'libxext' 'libxcb' 'libxau' 'libxdmcp' 'util-linux' 'libxext' 'gtk2' 'p11-kit' 'libtasn1' 'libgnutls26')
-optdepends=('mesa-libgl: nouveau video support' 'nvidia-libgl: nvidia video support' 'xorg-fonts-75dpi:' 'xorg-fonts-100dpi:' 'vorbis-tools:' 'lame:' 'musepack-tools:')
+depends=('alsa-lib' 'gcc-libs' 'libx11' 'libxext' 'libxcb' 'libxau' 'libxdmcp' 'util-linux' 'libxext' 'gtk2' 'p11-kit')
+optdepends=('mesa-libgl: nouveau video support' 'nvidia-libgl: nvidia video support' 'vorbis-tools:' 'lame:' 'musepack-tools:')
 source=("http://files.jriver.com/mediacenter/channels/v21/latest/MediaCenter-$pkgver-amd64.deb" 'License.txt')
 sha256sums=('f5a30ab511537e25b57bf75a61e205eeb17c1f44a7d83e1972ccaa13da1e1406' 'ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd')
 
