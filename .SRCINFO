@@ -1,0 +1,12 @@
+pkgbase = aci-discovery-git
+	pkgdesc = Serve AppContainer Images and allow their discovery
+	pkgver = r11.b43b592
+	pkgrel = 1
+	url = https://github.com/coreos/aci-discovery
+	arch = any
+	license = Apache
+	makedepends = go
+	source = git+https://github.com/coreos/aci-discovery.git
+	sha256sums = SKIP
+
+pkgname = aci-discovery-git
