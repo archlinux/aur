@@ -1,36 +1,25 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-unshield
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Extracts CAB files from InstallShield installers (mingw-w64)"
 arch=('any')
 url="https://github.com/twogood/unshield"
 license=('custom')
-depends=('mingw-w64-crt' 'mingw-w64-zlib')
-makedepends=('mingw-w64-gcc')
-options=('!strip' '!libtool' 'staticlibs')
+depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-openssl')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
+options=('!buildflags' '!strip' '!libtool' 'staticlibs')
 source=("unshield-$pkgver.tar.gz::https://github.com/twogood/unshield/archive/$pkgver.tar.gz")
-md5sums=('209d1b380bf54b25d9b1ee9b343d3090')
+md5sums=('13b716e0a3f45fe74ca24c6aaf4e5bb0')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd unshield-${pkgver}
-
-  sed -i 's|-Werror||g' configure.ac.in
-
-  ./bootstrap
-}
 
 build() {
   for _arch in ${_architectures}; do
     mkdir -p ${srcdir}/build-${_arch} && cd ${srcdir}/build-${_arch}
 
-    unset CFLAGS LDFLAGS
-    ${srcdir}/unshield-${pkgver}/configure \
-      --prefix=/usr/${_arch} \
-      --host=${_arch} \
-      --with-zlib=/usr/${_arch}
+    ${_arch}-cmake \
+      ${srcdir}/unshield-${pkgver}
     make
   done
 }
