@@ -20,7 +20,7 @@ optdepends=('libcanberra: for sound support')
 replaces=("${_name}-aurora")
 install="${_pkgname}.install"
 
-_baseurl="http://ftp.mozilla.org/pub/mozilla.org/${_name}/nightly/latest-comm-aurora-l10n"
+_baseurl="http://ftp.mozilla.org/pub/${_name}/nightly/latest-comm-aurora-l10n"
 _filename="${_name}-${_milestone}.${_lang}.linux-${CARCH}"
 _sha512sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 
