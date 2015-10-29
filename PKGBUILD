@@ -3,7 +3,7 @@
 
 pkgname=grafana
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
 arch=('x86_64' 'i686')
