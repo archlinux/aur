@@ -2,7 +2,7 @@
 pkgname=libps3000a
 pkgver=1.4.5_6r40
 pkgrel=1
-pkgdesc="library for picotech oscilloscope 3000 series"
+pkgdesc="library for picotech oscilloscope 3000a series"
 arch=('i686' 'x86_64')
 if [ "$CARCH" == "i686" ]; then
   _arch="i386"
