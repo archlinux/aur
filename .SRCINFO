@@ -1,0 +1,17 @@
+pkgbase = xorg-xkbprint
+	pkgdesc = generates a PostScript description of an XKB keyboard description
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	makedepends = xorg-util-macros
+	depends = libxkbfile
+	source = http://xorg.freedesktop.org//releases/individual/app/xkbprint-1.0.3.tar.bz2
+	sha1sums = 4e7c91a137f0746202b3a74bbaf49c849484aa30
+
+pkgname = xorg-xkbprint
+
