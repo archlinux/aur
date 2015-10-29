@@ -4,7 +4,7 @@ pkgname=filebeat-bin
 _pkgbase=${pkgname%%-bin}
 pkgver=1.0.0_beta4
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources (precompiled)'
 arch=('i686' 'x86_64')
 url="https://www.elastic.co/products/beats"
@@ -21,6 +21,13 @@ source_i686=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$_pkgver-i68
 source_x86_64=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$_pkgver-x86_64.tar.gz")
 sha256sums_i686=('35fdb23034fec5261cea2e30adf819bdfb0e700396ec15022db56fedc079aff3')
 sha256sums_x86_64=('9fec521157fe6cf8b1f9d6ce4e142521a742b7fe2c585d5ae14ba21b67604235')
+
+prepare() {
+    cd "$_pkgbase-$_pkgver-$CARCH"
+
+    sed -i 's@#registry_file: .filebeat@registry_file: /var/lib/filebeat/registry@' \
+        filebeat.yml
+}
 
 package() {
     cd "$srcdir/$_pkgbase-$_pkgver-$CARCH"
