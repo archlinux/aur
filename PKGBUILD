@@ -4,17 +4,17 @@
 # Contributor: Austin ( doorknob60 [at] gmail [dot] com )
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
-pkgname=broadcom-wl
+pkgname=broadcom-wl-lts
 pkgver=6.30.223.271
 pkgrel=1
 
-pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver'
+pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for LTS kernal'
 url='http://www.broadcom.com/support/802.11/linux_sta.php'
 arch=('i686' 'x86_64')
 license=('custom')
 
-depends=('linux')
-makedepends=('linux-headers')
+depends=('linux-lts')
+makedepends=('linux-lts-headers')
 
 source=('modprobe.d'
         'license.patch'
@@ -33,8 +33,8 @@ sha256sums_x86_64=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c7141
 
 install=install
 
-_kernmajor="$(pacman -Q linux | sed -r 's/linux ([0-9]*.[0-9]*).*/\1/')"
-_kernver="$(</usr/lib/modules/extramodules-"$_kernmajor"-ARCH/version)"
+_kernmajor="$(pacman -Q linux-lts | sed -r 's/linux-lts ([0-9]*.[0-9]*).*/\1/')"
+_kernver="$(</usr/lib/modules/extramodules-"$_kernmajor"-lts/version)"
 
 prepare() {
   patch -p1 -i license.patch
@@ -52,8 +52,8 @@ build() {
 }
 
 package() {
-  install -Dm644 wl.ko "$pkgdir"/usr/lib/modules/extramodules-"$_kernmajor"-ARCH/wl.ko
-  gzip                 "$pkgdir"/usr/lib/modules/extramodules-"$_kernmajor"-ARCH/wl.ko
+  install -Dm644 wl.ko "$pkgdir"/usr/lib/modules/extramodules-"$_kernmajor"-lts/wl.ko
+  gzip                 "$pkgdir"/usr/lib/modules/extramodules-"$_kernmajor"-lts/wl.ko
 
   install -Dm644 lib/LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
   install -Dm644 modprobe.d "$pkgdir"/usr/lib/modprobe.d/broadcom-wl.conf
