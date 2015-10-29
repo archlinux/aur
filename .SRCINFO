@@ -1,0 +1,18 @@
+pkgbase = perl-sub-attribute
+	pkgdesc = Reliable subroutine attribute handlers
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Sub-Attribute
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-mro-compat>=0.09
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Sub-Attribute-0.05.tar.gz
+	md5sums = 9dd0fd69918dbfcd070d2f7fe1e0d4f8
+	sha512sums = e152f78ce3576116252d44dd687cb7a818a154f4bc6b1155d962ebfe26d8e9ecbf6d01db1ee6d10e505b5ffa1f4b2a9c32103a0ea082be38d1bbeb9b6407e456
+
+pkgname = perl-sub-attribute
+
