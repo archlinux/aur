@@ -2,7 +2,9 @@
 _pkgname=ksm_preload
 pkgname=$_pkgname-git
 pkgver=0.10.4.r254cc3b
-pkgrel=1
+pkgrel=2
+pkgdesc='Library which allows legacy applications to use Kernel Same-page Merging'
+url=http://vleu.net/ksm_preload/
 arch=(i686 x86_64)
 license=GPL3
 source=("git+https://github.com/unbrice/$_pkgname.git"

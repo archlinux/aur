@@ -1,6 +1,8 @@
 pkgbase = ksm_preload-git
+	pkgdesc = Library which allows legacy applications to use Kernel Same-page Merging
 	pkgver = 0.10.4.r254cc3b
-	pkgrel = 1
+	pkgrel = 2
+	url = http://vleu.net/ksm_preload/
 	arch = i686
 	arch = x86_64
 	license = GPL3
