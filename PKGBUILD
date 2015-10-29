@@ -9,7 +9,8 @@ arch=('x86_64')
 url="https://www.makerbot.com/desktop"
 license=('GPL')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-webkit' 'jsoncpp=0.6.0rc2' 'postgresql-libs' 'python2'
-'libjpeg6' 'yajl' 'qt4' 'libmariadbclient' 'shared-mime-info' 'opencv' 'gl2ps' 'hdf5' 'tcl' 'zenity')
+'libjpeg6' 'yajl' 'qt4' 'libmariadbclient' 'shared-mime-info' 'opencv' 'gl2ps' 'hdf5' 'tcl' 'zenity'
+'boost=1.58.0' 'boost-libs=1.58.0')
 makedepends=('rpmextract')
 options=('!strip')
 install="$pkgname.install"
