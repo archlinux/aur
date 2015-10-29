@@ -3,7 +3,7 @@
 # Contributor: karolina.lindqvist@kramnet.se
 
 pkgname=algol68genie
-pkgver=2.8
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Algol 68 Genie, an Algol 68 compiler-interpreter"
 arch=('i686' 'x86_64')
@@ -12,12 +12,16 @@ license=('GPL')
 depends=(gsl plotutils)
 optdepends=('postgresql-libs: for postgresql support')
 source=(http://jmvdveer.home.xs4all.nl/algol68g-$pkgver.tar.gz)
-md5sums=('fdb0ecfe7ddc79c7ff20b7245d7ac0a4')
+md5sums=('792194d0342e1e7213bd788a0df0f535')
 
-package() {
+build() {
   cd "$srcdir/algol68g-$pkgver"
   CFLAGS="$CFLAGS -O3 -fomit-frame-pointer -funroll-loops" ./configure --prefix=/usr
   make
+}
+
+package() {
+  cd "$srcdir/algol68g-$pkgver"
   make DESTDIR="$pkgdir" docdir="/usr/share/doc/algol68g" install
 }
 

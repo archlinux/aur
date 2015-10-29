@@ -1,6 +1,6 @@
 pkgbase = algol68genie
 	pkgdesc = Algol 68 Genie, an Algol 68 compiler-interpreter
-	pkgver = 2.8
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = http://www.xs4all.nl/~jmvdveer/algol.html
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = algol68genie
 	depends = gsl
 	depends = plotutils
 	optdepends = postgresql-libs: for postgresql support
-	source = http://jmvdveer.home.xs4all.nl/algol68g-2.8.tar.gz
-	md5sums = fdb0ecfe7ddc79c7ff20b7245d7ac0a4
+	source = http://jmvdveer.home.xs4all.nl/algol68g-2.8.2.tar.gz
+	md5sums = 792194d0342e1e7213bd788a0df0f535
 
 pkgname = algol68genie
 
