@@ -1,5 +1,5 @@
 pkgbase = rpgvx-rtp
-	pkgdesc = RPGMaker Runtime Package
+	pkgdesc = RPGMaker VX Runtime Package
 	pkgver = 202
 	pkgrel = 1
 	url = http://www.rpgmakerweb.com/download/additional/run-time-packages
@@ -12,7 +12,7 @@ pkgbase = rpgvx-rtp
 	source = http://tkool.jp/assets/files/vx_rtp202.zip
 	source = LICENSE
 	md5sums = 9d5377c02400491f96adcf9f429b9b8e
-	md5sums = 01fee4ed0a5af011bd5b16e54f80e511
+	md5sums = 27ea6c531f6cb54d86c701f1595c63a5
 
 pkgname = rpgvx-rtp
 
