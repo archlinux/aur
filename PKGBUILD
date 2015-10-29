@@ -53,9 +53,9 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$_pkgver"
 
-    mkdir -p "$pkgdir/etc/packetbeat"
+    mkdir -p "$pkgdir/etc/$pkgname"
 
-    make PREFIX="$pkgdir/etc/packetbeat" install-cfg
+    make PREFIX="$pkgdir/etc/$pkgname" install-cfg
 
     install -D -m755 "$pkgname-$_pkgver" \
                      "$pkgdir/usr/bin/$pkgname"
