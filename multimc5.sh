@@ -39,6 +39,6 @@ function directories() {
 function main() {
 	variables $@
 	directories
-	#/usr/lib/multimc5/MultiMC5 --dir "${DATA_DIR}"
+	/usr/lib/multimc5/MultiMC5 --dir "${DATA_DIR}"
 }
 main $@

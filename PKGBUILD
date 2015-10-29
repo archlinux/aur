@@ -17,7 +17,7 @@ source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
   'multimc5.desktop'
 )
 sha512sums=('237b566ee6b7e6ba0800790f0ec25e3e2fd6037688fd5b3105d8f3dfe880c3d0eeb5d08969b222b45cf815e8c616aef0bc955a4ac12bf65138a88f004ea2175f'
-            '573ca15b53e22ffde35d0daf55d68ce33ed1764d89517146123bbc6a3bc77f410fa84b1f8fb4b1eb0b6e4c8cdd3291922c5ad83edca4b484e20bd27230e27e4a'
+            '5057e3a5b3affccd89ade67bfa824e53ba9872b851bfe10868c5d35bf3d9f9f6fbdcbbd20bd4abebc1567418da60f967ce08cde95cdcd40a3ef902bb9db1752b'
             'a6712d0e84acc719ed1aff740717add44202f88cb42a0b7a3157108b73a1009ac7edd325f75d372e0a63617f40eb614d55fb4e24e5c1fb8957cd280486070675')
 
 
