@@ -9,7 +9,7 @@ url='http://majonoie.karou.jp'
 arch=('any')
 license=('custom')
 depends=('mkxp-git') # 'rpgvx-rtp'
-makedepends=('p7zip' 'wget')
+makedepends=('p7zip' 'wget' 'convmv')
 source=( # "Majonoie_Ver107_a_CHS_SycrealaStudio.exe::http://pan.plyz.net/d.asp?u=118488466&p=Majonoie_Ver107_a_CHS_SycrealaStudio.exe" 
         "LICENSE"
         "mkxp.conf"

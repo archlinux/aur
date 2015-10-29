@@ -7,6 +7,7 @@ pkgbase = majonoie-zh-cn
 	license = custom
 	makedepends = p7zip
 	makedepends = wget
+	makedepends = convmv
 	depends = mkxp-git
 	source = LICENSE
 	source = mkxp.conf
