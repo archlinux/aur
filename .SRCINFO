@@ -1,7 +1,7 @@
 pkgbase = mpv
 	pkgdesc = Video player based on MPlayer/mplayer2, with selection of features.
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = http://mpv.io
 	install = mpv.install
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = mpv
 	conflicts = mpv
 	options = !emptydirs
 	options = !buildflags
-	source = mpv-0.11.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.11.0.tar.gz
-	sha256sums = a2157174e46db46dad5deb1fde94283e72ebe922fd15447cb16a2a243fae5bda
+	source = mpv-0.12.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.12.0.tar.gz
+	sha256sums = df242044c749d850344f5499860d852849147f20c63d36d2cd678627bd8d6cc4
 
 pkgname = mpv-light
 
