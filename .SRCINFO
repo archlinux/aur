@@ -1,0 +1,19 @@
+pkgbase = perl-vim-x
+	pkgdesc = Candy for Perl programming in Vim
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://metacpan.org/release/Vim-X
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moo
+	depends = perl-path-tiny
+	depends = perl-sub-attribute
+	depends = vim
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/Vim-X-1.2.0.tar.gz
+	md5sums = 23cd21def2deef9ae3ae81807bdd784f
+	sha512sums = f0ccfd40bfef96a63f7eea2b6345b0badabd582594ead918215f5b96bad879796bd62f93994c1954062cdf7f8b2ed8e6473d1620481a3042660efddb721a1dd7
+
+pkgname = perl-vim-x
+
