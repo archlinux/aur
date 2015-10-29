@@ -1,0 +1,21 @@
+pkgbase = filebeat
+	pkgdesc = Collects, pre-processes, and forwards log files from remote sources
+	pkgver = 1.0.0_beta4
+	pkgrel = 1
+	url = https://www.elastic.co/products/beats
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = go>=1.5
+	optdepends = elasticsearch: for running standalone installation
+	provides = filebeat
+	conflicts = filebeat
+	options = !strip
+	backup = etc/filebeat/filebeat.yml
+	source = https://github.com/elastic/filebeat/archive/v1.0.0-beta4.tar.gz
+	source = filebeat.service
+	sha256sums = 11eb9885292b0f299ee11bdd5e56b61fa3df4acbfc7339ef685e3e491d53a8f6
+	sha256sums = 9985f8e0441efde0e60c5efe97890e46d4f1cbd118d8722eb478be876197326a
+
+pkgname = filebeat
+

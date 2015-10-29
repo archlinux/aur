@@ -1,0 +1,9 @@
+[Unit]
+Description=log file forwarder to remote sources
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/filebeat -c /etc/filebeat/filebeat.yml
+
+[Install]
+WantedBy=multi-user.target
