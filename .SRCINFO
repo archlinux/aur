@@ -1,0 +1,16 @@
+pkgbase = lambdapad-git
+	pkgdesc = Static site generator using Erlang. Yes, Erlang.
+	pkgver = 117.684a5a9
+	pkgrel = 1
+	url = http://www.lambdapad.io/
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = erlang-nox
+	source = lambdapad::git://github.com/gar1t/lambdapad.git
+	source = lpad-gen
+	sha256sums = SKIP
+	sha256sums = f336ae9566e924828f1cec89db8c0172063cb7ea40b94c7f3672a5841c2263da
+
+pkgname = lambdapad-git
+

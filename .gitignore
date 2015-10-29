@@ -1,0 +1,6 @@
+pkg/
+src/
+lambdapad/
+
+*.tar.gz
+*.tar.xz
