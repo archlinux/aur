@@ -20,7 +20,7 @@ provides=('firefox-aurora' "firefox-aurora-${_lang}")
 conflicts=('firefox-aurora')
 install="${_pkgname}.install"
 
-_baseurl="http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n"
+_baseurl="http://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n"
 _filename="${_name}-${_milestone}.${_lang}.linux-${CARCH}"
 _sha512sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("${_pkgname}.desktop"
