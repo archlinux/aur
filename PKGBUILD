@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=qca-qt5-git
-pkgver=v2.1.0.35.g4f966b0
+pkgver=v2.1.1.7.g558f819
 pkgrel=1
 pkgdesc="Qt Cryptographic Architecture. Qt5 Build (GIT Version)"
 arch=('i686' 'x86_64')
