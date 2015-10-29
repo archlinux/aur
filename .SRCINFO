@@ -1,9 +1,8 @@
 pkgbase = paper-gtk-theme-git
 	pkgdesc = A modern desktop theme suite. Its design is mostly flat with a minimal use of shadows for depth.
 	pkgver = 179.6a5f14c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://snwh.org/paper/theme/
-	install = paper-gtk-theme-git.install
 	arch = any
 	license = GPL3
 	makedepends = git

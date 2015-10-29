@@ -4,7 +4,7 @@
 pkgname=paper-gtk-theme-git
 _pkgname=paper-gtk-theme
 pkgver=179.6a5f14c
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern desktop theme suite. Its design is mostly flat with a minimal use of shadows for depth."
 arch=('any')
 url="http://snwh.org/paper/theme/"
@@ -14,7 +14,6 @@ depends=('gtk-engine-murrine')
 #optdepends=("python: scripts to simplify the rendering process"
 #            "inkscape: edit theme assets")
 makedepends=('git')
-install=${pkgname}.install
 source=("${_pkgname}"::"git+https://github.com/snwh/${_pkgname}.git")
 md5sums=('SKIP')
 
