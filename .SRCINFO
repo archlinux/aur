@@ -17,7 +17,7 @@ pkgbase = anything-sync-daemon
 	conflicts = tmpfs-sync
 	backup = etc/asd.conf
 	source = http://repo-ck.com/source/anything-sync-daemon/anything-sync-daemon-5.76.tar.xz
-	sha256sums = 54686cd1b75404c92011d3dbcf556bdb68837f818571e82bfba4b235f139df8d
+	sha256sums = a5bdf69f7f60315d9e07eb7b25538220833daf6719b478010d0efaa8c7ad9c0a
 
 pkgname = anything-sync-daemon
 
