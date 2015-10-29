@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=le-editor-git
-pkgver=607.4139406
+pkgver=610.2f1efb4
 pkgrel=1
 pkgdesc="A text editor in memorial to Norton Editor with block and binary operations - git version"
 arch=('i686' 'x86_64')
