@@ -1,6 +1,6 @@
 pkgbase = perl-catalyst-runtime
 	pkgdesc = The Catalyst Framework Runtime
-	pkgver = 5.90101
+	pkgver = 5.90102
 	pkgrel = 1
 	url = https://metacpan.org/release/Catalyst-Runtime
 	arch = any
@@ -53,9 +53,8 @@ pkgbase = perl-catalyst-runtime
 	depends = perl-namespace-clean>=0.23
 	depends = perl>=5.8.3
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Runtime-5.90101.tar.gz
-	md5sums = 02a1d3b0d4ab674d1846f46d78dcabee
-	sha512sums = 1a7f5f665c2cb6bf03ac4a1f35836d8b30381e88b899b4a0573fc2f65a8030eea0a320e1d73dce8d37fdc3a86cd6a8e67368e39fa2f4fbb67361a9997920735d
+	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Runtime-5.90102.tar.gz
+	md5sums = e57f969d859eb19df9995ec442076f38
 
 pkgname = perl-catalyst-runtime
 
