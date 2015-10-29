@@ -19,7 +19,8 @@ source=('https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B4
 md5sums=('0bd661b0bb99f7989ecac8f35a5a723e')
 
 package() {
-  pip install vk
+  echo "Installing VK API"
+  sudo pip install vk
   cd "$srcdir"
   mv  'uc?export=download&confirm=no_antivirus&id=0B4YjcQAoes55MTJ5Z0xGNWNMdEU' svkm.py
   install -D -m755 $srcdir/svkm.py $pkgdir/usr/bin/svkm
