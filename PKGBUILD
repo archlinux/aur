@@ -1,7 +1,7 @@
 # Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=topbeat
-pkgver=1.0.0_beta3
+pkgver=1.0.0_beta4
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc='An open source server monitoring agent that stores metrics in Elasticsearch'
@@ -16,11 +16,19 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/elastic/$pkgname/archive/v$_pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('b728d57a1a878fa89766cfde06d551d493706b799d269de327aa622ea5bc0969'
+sha256sums=('3deb87c346d4409b6f3c4e90c62a593d446e42c71e3af93f1874eca5209419a4'
             '62f5b613d9464e4d8b1074c1a54b95cbd1c6615f0c788f1d9093becbdbc6c45d')
 
 prepare() {
     cd "$pkgname-$_pkgver"
+
+    # Perform some timestomping to avoid make warnings
+    _t="$(date -r Makefile)"
+    # Avoid installing extraneous configs
+    sed -i '/[- ]win/d ; /[- ]darwin/d ; /[- ]binary/d' Makefile
+    # Install the Linux config as default
+    sed -i 's/topbeat-linux.yml/topbeat.yml/' Makefile
+    touch -m -d "$_t" Makefile
 
     # Prepare an empty GOPATH for `go build`
     mkdir -p "$srcdir/gopath"
@@ -32,10 +40,10 @@ prepare() {
 }
 
 build() {
+    cd "$srcdir/$pkgname-$_pkgver"
+
     # Needs to be an environment variable for various go subcommands of make.
     export GOPATH="$srcdir/gopath"
-
-    cd "$srcdir/$pkgname-$_pkgver"
     make
 }
 
@@ -44,14 +52,10 @@ package() {
 
     mkdir -p "$pkgdir/etc/$pkgname"
 
-    # Avoid installing extraneous configs
-    sed -i -E '/-(darwin|win)[.]yml/d' Makefile
-    # Install the Linux config as default
-    sed -i 's/topbeat-linux[.]yml/topbeat.yml/' Makefile
+    make PREFIX="$pkgdir/etc/$pkgname" install-cfg
 
-    make PREFIX="$pkgdir/etc/$pkgname" install_cfg
-
-    install -D -m755 $pkgname-$_pkgver "$pkgdir/usr/bin/$pkgname"
+    install -D -m755 "$pkgname-$_pkgver" \
+                     "$pkgdir/usr/bin/$pkgname"
     install -D -m644 "$srcdir/$pkgname.service" \
                      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
