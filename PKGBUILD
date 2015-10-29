@@ -1,16 +1,17 @@
+# Maintainer: jerry73204 <jerry73204@gmail.com>
+# Former Maintainer: Govind Gopakumar < govind.93 at gmail dot com>
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
-# Adopted by: Govind Gopakumar < govind.93 at gmail dot com>
 pkgname=mlpack
-pkgver=1.0.9
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="a scalable c++ machine learning library"
 arch=('i686' 'x86_64')
 url="http://www.mlpack.org"
 license=('LGPLv3')
 depends=('armadillo>=3.6.0' 'boost>=1.49' 'lapack' 'libxml2>=2.6.0')
-makedepends=('cmake>=2.8.0' 'txt2man')
+makedepends=('cmake>=2.8.5' 'txt2man')
 source=("http://www.$pkgname.org/files/${pkgname}-${pkgver}.tar.gz")
-md5sums=('d32b7e3f3366e8ff06094853251f7710')
+md5sums=('739ca617b4adb118742c59dd8e15d6ca')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,11 +25,11 @@ check() {
 
   make mlpack_test
   bin/mlpack_test
-} 
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  
+
   make install
 }
 
