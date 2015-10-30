@@ -1,7 +1,7 @@
 pkgbase = dbeaver
 	pkgdesc = A free universal database tool for developers and database administrators
 	pkgver = 3.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dbeaver.jkiss.org/
 	install = dbeaver.install
 	arch = i686

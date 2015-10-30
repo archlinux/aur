@@ -2,7 +2,7 @@
 
 pkgname=dbeaver
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free universal database tool for developers and database administrators"
 arch=('i686' 'x86_64')
 url="http://dbeaver.jkiss.org/"
@@ -43,4 +43,6 @@ package() {
   cp opt/dbeaver/icon.xpm usr/share/icons/hicolor/48x48/apps/dbeaver.xpm
   ln -s /opt/dbeaver/dbeaver usr/bin/dbeaver
   install -m 644 $srcdir/dbeaver.desktop $pkgdir/usr/share/applications/
+
+  echo "osgi.configuration.area=@user.home/.dbeaver/configuration" >> opt/$pkgname/configuration/config.ini
 }
