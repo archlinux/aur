@@ -1,0 +1,17 @@
+pkgbase = passcheck-data
+	pkgdesc = Data files for the passcheck package
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/maandree/passcheck
+	arch = any
+	license = custom:public domain
+	makedepends = make
+	makedepends = coreutils
+	makedepends = lrzip
+	source = https://github.com/maandree/passcheck/archive/1.5-data.tar.gz
+	source = https://github.com/maandree/passcheck/archive/1.5.tar.gz
+	sha256sums = 605cac2c724228866958bb750bb3c60efb7ce7167e1d3f07a5e610567fe7b90f
+	sha256sums = 4a6e03a2dc37fbe623a4b93ad8898298d157c23c0a382b18621bb2aab00c90c8
+
+pkgname = passcheck-data
+
