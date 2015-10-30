@@ -53,5 +53,5 @@ package() {
 
 	install -dm666 ./template_packs/ ${pkgdir}/opt/${pkgname}/template_packs/
 	cp -a ./template_packs/. 	${pkgdir}/opt/${pkgname}/template_packs/
-	chmod -R 644 ${pkgdir}/opt/${pkgname}/template_packs/
+	chmod -R 666 ${pkgdir}/opt/${pkgname}/template_packs/
 }
