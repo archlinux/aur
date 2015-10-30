@@ -14,8 +14,7 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'iverilog' 'gnu-cobol' 'pike' 'regina-rexx-das' 'swi-prolog'
          'smalltalk' 'beef' 'jasmin' 'gcc-objc' 'gcc-ada' 'lci-git'
          'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
-         'ratfor')
-         # wspace, scilab
+         'ratfor' 'gambas3-script' 'scilab')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
 source=('quine-relay::git://github.com/mame/quine-relay.git'
@@ -41,7 +40,7 @@ prepare() {
   # npiet is available in Arch Linux
   sed -i 's:vendor/npiet-\*/::' Makefile
   # whitespace is available in Arch Linux
-  sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
+  #sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
 }
 
 package() {
