@@ -1,6 +1,6 @@
 post_install() {
   useradd -M -d / -s /usr/bin/nologin -U news-updater
-  sed -i 's/Exec/User=news-updater\nExec/g' /usr/lib/systemd/system/owncloud-news-updater.service
+  sed -i 's/User=.*/User=news-updater/g' /usr/lib/systemd/system/owncloud-news-updater.service
   chown news-updater:news-updater /etc/owncloud/news/example-updater.ini
   chmod 600 /etc/owncloud/news/example-updater.ini
   echo ""
@@ -14,7 +14,7 @@ post_install() {
 }
 
 post_upgrade() {
-  sed -i 's/Exec/User=news-updater\nExec/g' /usr/lib/systemd/system/owncloud-news-updater.service
+  sed -i 's/User=.*/User=news-updater/g' /usr/lib/systemd/system/owncloud-news-updater.service
   chown news-updater:news-updater /etc/owncloud/news/example-updater.ini
   chmod 600 /etc/owncloud/news/example-updater.ini
 }
