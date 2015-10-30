@@ -1,0 +1,14 @@
+post_install() {
+    xdg-icon-resource forceupdate
+    mkdir -p /var/lib/Upwork/upwork
+    chmod 777 /var/lib/Upwork/upwork
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    xdg-icon-resource forceupdate
+    rm -R /var/lib/Upwork
+}
