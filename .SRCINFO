@@ -1,0 +1,15 @@
+pkgbase = libkar-git
+	pkgdesc = an extremely simple Qt based keyed archiver for usage by the KISS IDE suite of applications
+	pkgver = r37.0777a50
+	pkgrel = 1
+	url = https://github.com/kipr/libkar
+	arch = any
+	license = GPL3
+	depends = cmake>=2.8.12
+	depends = qt5-base
+	provides = libkar
+	source = libkar-git::git+https://github.com/kipr/libkar.git
+	sha256sums = SKIP
+
+pkgname = libkar-git
+
