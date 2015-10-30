@@ -1,0 +1,15 @@
+pkgbase = libydpdict
+	pkgdesc = Interface for Polish-English Collins Dictionary (library)
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://toxygen.net/ydpdict
+	arch = i686
+	arch = x86_64
+	groups = office
+	license = GPL2
+	license = LGPL2.1
+	source = http://toxygen.net/ydpdict/libydpdict-1.0.4.tar.gz
+	sha256sums = 37dcbc12def981a20728bdcb6a5ff1eef8931f29a0f16852f0b2201ff8563528
+
+pkgname = libydpdict
+
