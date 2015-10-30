@@ -16,6 +16,7 @@ pkgbase = upwork
 	depends = gtkglext
 	depends = libgcrypt15
 	depends = libxss
+	conflicts = upwork-beta
 	source_i686 = upwork_i386_4.0.109.0.deb::http://updates.team.odesk.com/binaries/v4_0_109_0_5dd4be27f24afbda38b590/upwork_i386.deb
 	md5sums_i686 = 2deb4a87f09b67e20e9ae1726572b46b
 	source_x86_64 = upwork_amd64_4.0.109.0.deb::http://updates.team.odesk.com/binaries/v4_0_109_0_5dd4be27f24afbda38b590/upwork_amd64.deb
