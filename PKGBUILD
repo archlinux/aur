@@ -5,7 +5,7 @@
 pkgdesc="Standalone systemd libs (including -compat)"
 pkgname=( 'libsystemd-standalone' 'libsystemd-login' 'libsystemd-journal' 'libsystemd-id128' 'libsystemd-daemon' 'libsystemd-udev' )
 pkgver=227
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 license=('GPL2' 'LGPL2.1' 'MIT')
@@ -94,8 +94,9 @@ package_libsystemd-udev() {
   provides=( 'libudev.so' 'libudev' )
 
   cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libudev.so.1.6.4 "${pkgdir}/usr/lib/libudev.so.1.6.2"
+  install -Dm644 .libs/libudev.so.1.6.4 "${pkgdir}/usr/lib/libudev.so.1.6.4"
   ln -s libudev.so.1.6.4 "${pkgdir}/usr/lib/libudev.so"
+  ln -s libudev.so.1.6.4 "${pkgdir}/usr/lib/libudev.so.1"
 
   install -Dm644 src/libudev/libudev.pc "${pkgdir}/usr/lib/pkgconfig/libudev.pc"
   install -Dm644 src/libudev/libudev.h "${pkgdir}/usr/include/libudev.h"
