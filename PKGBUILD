@@ -3,7 +3,7 @@
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 pkgname=cataclysm-dda-ncurses
 pkgver=0.C
-pkgrel=3
+pkgrel=4
 pkgdesc="Cataclysm: Dark Days Ahead is an actively maintained roguelike set in a post-apocalyptic world, forked from the original. (ncurses only)"
 arch=('i686' 'x86_64')
 url="http://www.cataclysmdda.com/"
@@ -26,13 +26,17 @@ prepare() {
   #See https://github.com/CleverRaven/Cataclysm-DDA/issues/11805 for details.
   cd "$srcdir/Cataclysm-DDA-${pkgver}"
   patch -Np1 -i $srcdir/clang36.patch
+
+  #Ncurses update yay
+  sed -e s/ncursesw5-config/ncursesw6-config/ Makefile > Makefile.new
+  mv Makefile.new Makefile
 }
 
 build() {
 
   #Due to build problems with gcc, we'll be using clang for a while
   cd "$srcdir/Cataclysm-DDA-${pkgver}"
-  make USE_HOME_DIR=1 CLANG=1 RELEASE=1
+  make USE_HOME_DIR=1 CLANG=1 RELEASE=1 #LOCALIZE=1 #Uncomment for localizations
 }
 
 package() {
