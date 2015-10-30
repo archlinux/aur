@@ -12,3 +12,9 @@ post_install() {
   echo "to reload the changes if you change the config in /etc/owncloud/news/updater.ini"
 
 }
+
+post_upgrade() {
+  sed -i 's/Exec/User=news-updater\nExec/g' /usr/lib/systemd/system/owncloud-news-updater.service
+  chown news-updater:news-updater /etc/owncloud/news/example-updater.ini
+  chmod 600 /etc/owncloud/news/example-updater.ini
+}
