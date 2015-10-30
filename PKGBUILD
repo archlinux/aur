@@ -3,24 +3,25 @@
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=drush
-pkgver=6.6.0
+pkgver=7.1.0
 pkgrel=1
-pkgdesc="The Drupal command-line shell"
+pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
 arch=('any')
-url="http://github.com/drush-ops/drush/"
+url="https://github.com/drush-ops/drush/"
 license=('GPL')
-depends=('php' 'bash')
+depends=('php' 'php-composer')
 install=${pkgname}.install
 source=(
     "http://github.com/drush-ops/$pkgname/archive/$pkgver.tar.gz"
-    'http://download.pear.php.net/package/Console_Table-1.1.3.tgz'
+    'http://download.pear.php.net/package/Console_Table-1.2.1.tgz'
 )
-md5sums=('bfe556917f29e2d3c25dda8ecde96281'
-         '34b5f34db1ab0c4daedf2862958af257')
-
+md5sums=('edbcac3216b793b5debb4a4b7c7bac12'
+         '87e0447d69f396eb755c3a8629a9d8d9')
 
 package() {
     cd "${pkgname}-${pkgver}"
+
+    composer update
 
     # create dir structure
     install -d "${pkgdir}/etc/${pkgname}"
@@ -31,15 +32,15 @@ package() {
     install -d "${pkgdir}/usr/share/${pkgname}/commands"
 
     # install main files
-    cp -r commands classes includes "${pkgdir}/usr/lib/${pkgname}"
+    cp -r commands lib includes vendor "${pkgdir}/usr/lib/${pkgname}"
     cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
 
     install -m644 examples/example.{{aliases.,}drushrc.php,drush.ini} "${pkgdir}/etc/${pkgname}"
     install -m644 drush_logo-black.png          "${pkgdir}/usr/share/doc/${pkgname}"
-    install -m644 drush.info docs/drush.api.php "${pkgdir}/usr/lib/${pkgname}"
+    install -m644 drush.info drush.api.php "${pkgdir}/usr/lib/${pkgname}"
     install -m755 drush.php drush               "${pkgdir}/usr/lib/${pkgname}"
     ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # install Console_Table library too
-    install -Dm755 ../Console_Table-1.1.3/Table.php "${pkgdir}/usr/lib/${pkgname}/includes/table.inc"
+    install -Dm644 ../Console_Table-1.2.1/Table.php "${pkgdir}/usr/lib/${pkgname}/includes/table.inc"
 }
