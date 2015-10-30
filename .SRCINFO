@@ -1,7 +1,7 @@
 pkgbase = latex2e-help-texinfo
 	pkgdesc = Inofficial LaTeX2e Reference Manual in info format
-	pkgver = 2014_10
-	pkgrel = 2
+	pkgver = 2015_10
+	pkgrel = 1
 	url = http://home.gna.org/latexrefman/
 	install = latex2e.install
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = latex2e-help-texinfo
 	source = http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e.info
 	source = http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e-es.info
 	source = http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e-fr.info
-	md5sums = 8b0e79299924c2e34d2a1f28cb1de5d5
-	md5sums = f4f17c578a9bdff0b926fd5008f4e99f
-	md5sums = 3a5041779266173878b2ce7d7ce90e37
+	md5sums = f05c5f88e0ddd078e62790a94374c3f2
+	md5sums = 457214fce461228c5500fe998e9476ab
+	md5sums = 161b884f26269335f9b2207f0e27e903
 
 pkgname = latex2e-help-texinfo
 

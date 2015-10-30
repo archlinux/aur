@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=latex2e-help-texinfo  
-pkgver=2014_10
-pkgrel=2
+pkgver=2015_10
+pkgrel=1
 pkgdesc="Inofficial LaTeX2e Reference Manual in info format"
 url="http://home.gna.org/latexrefman/"
 arch=('any')
@@ -10,9 +10,9 @@ install=latex2e.install
 source=(http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e.info
 	http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e-es.info
 	http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e-fr.info)
-md5sums=('8b0e79299924c2e34d2a1f28cb1de5d5'
-         'f4f17c578a9bdff0b926fd5008f4e99f'
-         '3a5041779266173878b2ce7d7ce90e37')
+md5sums=('f05c5f88e0ddd078e62790a94374c3f2'
+         '457214fce461228c5500fe998e9476ab'
+         '161b884f26269335f9b2207f0e27e903')
 
 package() {
   cd "$srcdir"
