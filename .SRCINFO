@@ -1,0 +1,16 @@
+pkgbase = libsoxconvolver-git
+	pkgdesc = A DFT-based FIR filtering library based on SoX
+	pkgver = 1.de7fa7b
+	pkgrel = 1
+	url = https://github.com/nu774/libsoxconvolver
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	provides = libsoxrconvolver
+	conflicts = libsoxrconvolver
+	source = libsoxconvolver::git+https://github.com/nu774/libsoxconvolver.git
+	sha256sums = SKIP
+
+pkgname = libsoxconvolver-git
+
