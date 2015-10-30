@@ -14,10 +14,12 @@ url="http://repo.or.cz/w/llpp.git"
 license=('custom')
 provides=('llpp')
 conflicts=('llpp')
+depends=('desktop-file-utils' 'jbig2dec' 'openjpeg2'
+         'libgl' 'libjpeg-turbo' 'glu')
+makedepends=('git' 'mupdf>=1.7' 'ocaml>=4.02')
+source=('git://repo.or.cz/llpp.git')
+sha256sums=('SKIP')
 install=llpp.install
-depends=('desktop-file-utils' 'freetype2' 'glu' 'jbig2dec' 'openjpeg2'
-         'libgl' 'libjpeg-turbo' 'libx11')
-makedepends=('git' 'mupdf>=1.7' 'ninja' 'ocaml>=4.02' 'ocaml-lablgl')
 optdepends=(
   'xsel: Text selection'
   'file: llppac file type recognition'
@@ -32,8 +34,7 @@ optdepends=(
   'inkscape: llppac svg conversion (alternative)'
   'imagemagick: llppac image conversion'
 )
-source=('git://repo.or.cz/llpp.git')
-sha256sums=('SKIP')
+options=('!strip')
 
 pkgver() {
   cd llpp
@@ -42,12 +43,10 @@ pkgver() {
 
 build() {
   cd llpp
-
   sed -i -e 's+-I \$srcdir/mupdf/include -I \$srcdir/mupdf/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
   sed -i -e 's+-lopenjpeg+-lopenjp2+' build.sh
   sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
-
-  sh build.sh build
+  sh build.sh build/
 }
 
 package() {
@@ -55,6 +54,6 @@ package() {
   install -Dm755 build/llpp "$pkgdir"/usr/bin/llpp
 
   install -Dm644 misc/llpp.desktop "$pkgdir"/usr/share/applications/llpp.desktop
-  install -Dm644 README "$pkgdir"/usr/share/licenses/llpp/README
+  install -Dm644 README "$pkgdir"/usr/share/licenses/llpp-git/README
   #make -C misc/completions DESTDIR="$pkgdir" PREFIX=/usr install
 }
