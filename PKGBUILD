@@ -1,4 +1,6 @@
-# Maintainer: Oscar Garcia Amor <ogarcia(at)connectical(dot)com>
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
+# Contributor: Simon Gomizelj <simongmzlj(at)gmail(dot)com>
+# Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop
 pkgver=1.2.5
