@@ -2,7 +2,7 @@
 # Contributor: Nick Lanham <nick@nick>
 
 pkgname=pnmixer-gtk2
-pkgver=0.5.3
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Popular volume mixer systray applet built with gtk2"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=('pnmixer' 'pnmixer-git')
 makedepends=('gettext' 'pkg-config' 'autoconf' 'automake')
 depends=('gtk2>=2.22' 'alsa-lib' 'glib2')
 source=('https://github.com/nicklan/pnmixer/archive/master.tar.gz')
-md5sums=('73a619600472697f6c2830d25fc2061f')
+md5sums=('35cd8ba354d1368da80ab72eb0721248')
 
 build() {
   cd pnmixer-master

@@ -1,6 +1,6 @@
 pkgbase = pnmixer-gtk2
 	pkgdesc = Popular volume mixer systray applet built with gtk2
-	pkgver = 0.5.3
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/nicklan/pnmixer
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = pnmixer-gtk2
 	conflicts = pnmixer
 	conflicts = pnmixer-git
 	source = https://github.com/nicklan/pnmixer/archive/master.tar.gz
-	md5sums = 73a619600472697f6c2830d25fc2061f
+	md5sums = 35cd8ba354d1368da80ab72eb0721248
 
 pkgname = pnmixer-gtk2
 
