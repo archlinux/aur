@@ -7,7 +7,7 @@
 pkgname=vimix-icon-theme
 pkgdesc="Fresh and simple personality icon theme."
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://vinceliuice.deviantart.com/art/Vimix-icon-themes-530683384"
 license=('GPLv3')
@@ -23,11 +23,11 @@ package() {
   install -d -m 755 "$pkgdir"/usr/share/icons/vimix-dark
   install -d -m 755 "$pkgdir"/usr/share/icons/vimix-light
 
-  cd $srcdir/vimix
+  cd $srcdir/Vimix
   cp -r . "$pkgdir"/usr/share/icons/vimix/
-  cd $srcdir/vimix-dark
+  cd $srcdir/Vimix-Dark
   cp -r . "$pkgdir"/usr/share/icons/vimix-dark/
-  cd $srcdir/vimix-light
+  cd $srcdir/Vimix-Light
   cp -r . "$pkgdir"/usr/share/icons/vimix-light/
 
 }

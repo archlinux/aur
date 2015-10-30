@@ -1,7 +1,7 @@
 pkgbase = vimix-icon-theme
 	pkgdesc = Fresh and simple personality icon theme.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vinceliuice.deviantart.com/art/Vimix-icon-themes-530683384
 	arch = any
 	license = GPLv3
