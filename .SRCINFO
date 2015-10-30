@@ -9,17 +9,13 @@ pkgbase = llpp-git
 	license = custom
 	makedepends = git
 	makedepends = mupdf>=1.7
-	makedepends = ninja
 	makedepends = ocaml>=4.02
-	makedepends = ocaml-lablgl
 	depends = desktop-file-utils
-	depends = freetype2
-	depends = glu
 	depends = jbig2dec
 	depends = openjpeg2
 	depends = libgl
 	depends = libjpeg-turbo
-	depends = libx11
+	depends = glu
 	optdepends = xsel: Text selection
 	optdepends = file: llppac file type recognition
 	optdepends = gzip: llppac gzip archives
@@ -34,6 +30,7 @@ pkgbase = llpp-git
 	optdepends = imagemagick: llppac image conversion
 	provides = llpp
 	conflicts = llpp
+	options = !strip
 	source = git://repo.or.cz/llpp.git
 	sha256sums = SKIP
 
