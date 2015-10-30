@@ -1,7 +1,7 @@
 # Maintainer: Fabian Hirschmann <fabian@hirschmann.email>
 pkgname=sleeptimer
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple single button lirc-aware shut down timer with an OSD"
 arch=('i686' 'x86_64')
 url="http://www.github.com/fhirschmann/sleeptimer/"
