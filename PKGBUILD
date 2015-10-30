@@ -1,6 +1,7 @@
 # Maintainer: Evgeny Kurnevsky <kurnevsky@gmail.com>
 # Maintainer: Bob Mottram (4096 bits) <bob@robotics.uk.to>
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: ungenannter <ungenannter@openmailbox.org>
 
 pkgname=pybitmessage
 _realname=PyBitmessage
