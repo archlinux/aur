@@ -2,7 +2,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libsub
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="a small C++ library to read and write subtitles in a few different formats (currently STL, SubRip and DCP)"
 arch=('i686' 'x86_64')
 url="http://carlh.net/libsub"
@@ -16,6 +16,7 @@ sha512sums=('61121c2f2ef78e11dae9e4fc45f65499dd4d29ef21064f1337eb40ad68f6e9ec8bb
 
 
 build() {
+  CXXFLAGS="$CXXFLAGS -std=c++11"
   cd  "${srcdir}/${pkgname}-${pkgver}"
   python2 waf configure --prefix=/usr 
   python2 waf build
