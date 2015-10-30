@@ -7,7 +7,7 @@
 
 pkgname=atom-editor
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
