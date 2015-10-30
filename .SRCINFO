@@ -1,7 +1,7 @@
 pkgbase = jriver-media-center
 	pkgdesc = The Most Comprehensive Media Software
 	pkgver = 21.0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.jriver.com/
 	arch = x86_64
 	license = custom
@@ -15,7 +15,6 @@ pkgbase = jriver-media-center
 	depends = util-linux
 	depends = libxext
 	depends = gtk2
-	depends = p11-kit
 	optdepends = mesa-libgl: nouveau video support
 	optdepends = nvidia-libgl: nvidia video support
 	optdepends = vorbis-tools:
