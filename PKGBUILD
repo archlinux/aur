@@ -10,7 +10,7 @@
 
 _pkgname=angband
 pkgname=angband-ncurses
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)"
 arch=('i686' 'x86_64')
@@ -26,6 +26,12 @@ source=(
   "http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-${pkgver}.tar.gz"
 )
 
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  # Fix detection of ncurses config script for ncurses 6.0
+  sed -i 's/ncursesw5-config/ncursesw6-config/g' acinclude.m4
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -52,4 +58,4 @@ package() {
   install -Dm644 copying.txt "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
 
-sha256sums=('3be090111a597fd2f26860347db277347088677cc646bc3fdf560adf95fb7808')
+sha256sums=('1752d22a164bb073b9a7be322a2b607b06a4c919c073d012c010a61578081ce8')
