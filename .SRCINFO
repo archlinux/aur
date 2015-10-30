@@ -1,7 +1,7 @@
 pkgbase = drush
 	pkgdesc = Drush is a command line shell and Unix scripting interface for Drupal
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drush-ops/drush/
 	install = drush.install
 	arch = any
