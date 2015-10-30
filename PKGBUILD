@@ -3,7 +3,7 @@
 
 pkgname=owncloud-news-updater-git
 pkgver=3.001.1112.g79f5e29
-pkgrel=1
+pkgrel=2
 pkgdesc="A script uses the updater API parallel fetching of RSS feed updates for owncloud-app-news-updater"
 arch=('any')
 url="https://github.com/owncloud/news"
