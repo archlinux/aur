@@ -2,7 +2,7 @@
 
 _pkgname=unshield
 pkgname=${_pkgname}-git
-pkgver=r155.24bdf98
+pkgver=r159.ef73f41
 pkgrel=1
 pkgdesc="Extracts CAB files from InstallShield installers"
 arch=('i686' 'x86_64')
@@ -33,5 +33,6 @@ build() {
 package() {
   cd ${srcdir}/${_pkgname}
   make DESTDIR=${pkgdir} install
+  ln -s libunshield.so ${pkgdir}/usr/lib/libunshield.so.0
   install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/unshield/LICENSE
 }
