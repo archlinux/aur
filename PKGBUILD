@@ -4,7 +4,7 @@
 
 pkgname=drush
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
 arch=('any')
 url="https://github.com/drush-ops/drush/"
@@ -36,9 +36,10 @@ package() {
     cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
 
     install -m644 examples/example.{{aliases.,}drushrc.php,drush.ini} "${pkgdir}/etc/${pkgname}"
-    install -m644 drush_logo-black.png          "${pkgdir}/usr/share/doc/${pkgname}"
+    install -m644 drush_logo-black.png     "${pkgdir}/usr/share/doc/${pkgname}"
     install -m644 drush.info drush.api.php "${pkgdir}/usr/lib/${pkgname}"
-    install -m755 drush.php drush               "${pkgdir}/usr/lib/${pkgname}"
+    install -m644 drush.php                "${pkgdir}/usr/lib/${pkgname}"
+    install -m755 drush                    "${pkgdir}/usr/lib/${pkgname}"
     ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # install Console_Table library too
