@@ -53,4 +53,5 @@ package_python2-heatclient()
         install \
             --root="${pkgdir}" \
             --optimize=1
+    mv "${pkgdir}"/usr/bin/heat{,2}
 }
