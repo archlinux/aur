@@ -2,7 +2,7 @@
 
 pkgname=tiger
 pkgver=3.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A security scanner, that checks computer for known problems. Can also use tripwire, aide and chkrootkit"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/tiger/"
@@ -31,7 +31,7 @@ build() {
               --mandir=/usr/share/man \
               --with-tigerhome=/usr/share/tiger \
               --with-tigerconfig=/etc/tiger \
-              --with-tigerwork=/var/run/tiger \
+              --with-tigerwork=/run/tiger \
               --with-tigerlog=/var/log/tiger \
               --with-tigerbin=/usr/bin
   make
