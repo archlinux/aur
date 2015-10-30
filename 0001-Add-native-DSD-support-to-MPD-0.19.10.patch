@@ -1,0 +1,790 @@
+From c159b5460e267edd377ba74a3ae6154e885b0a98 Mon Sep 17 00:00:00 2001
+From: Jurgen Kramer <gtmkramer@xs4all.nl>
+Date: Sun, 5 Jul 2015 10:38:28 +0200
+Subject: [PATCH] Add native DSD support to MPD 0.19.10
+
+Add native DSD support to MPD 0.19 using DSD_U8 and DSD_U32_BE sample formats.
+
+See https://github.com/lintweaker/xmos-native-dsd for more info.
+
+Jurgen Kramer
+---
+ Makefile.am                             |  5 ++-
+ README-DSD                              | 52 +++++++++++++++++++++++
+ configure.ac                            |  2 +-
+ src/AudioFormat.cxx                     |  4 +-
+ src/AudioFormat.hxx                     | 18 +++++++-
+ src/decoder/plugins/FlacPcm.cxx         |  4 +-
+ src/output/plugins/AlsaOutputPlugin.cxx | 75 +++++++++++++++++++++++++++++++--
+ src/output/plugins/OssOutputPlugin.cxx  |  4 +-
+ src/pcm/ChannelsConverter.cxx           |  4 +-
+ src/pcm/FallbackResampler.cxx           |  6 ++-
+ src/pcm/FormatConverter.cxx             |  6 ++-
+ src/pcm/PcmDsdNative.cxx                | 69 ++++++++++++++++++++++++++++++
+ src/pcm/PcmDsdNative.hxx                | 38 +++++++++++++++++
+ src/pcm/PcmExport.cxx                   | 21 ++++++++-
+ src/pcm/PcmExport.hxx                   | 21 ++++++++-
+ src/pcm/PcmFormat.cxx                   | 10 ++++-
+ src/pcm/PcmMix.cxx                      |  6 ++-
+ src/pcm/Volume.cxx                      |  6 ++-
+ 18 files changed, 330 insertions(+), 21 deletions(-)
+ create mode 100644 README-DSD
+ create mode 100644 src/pcm/PcmDsdNative.cxx
+ create mode 100644 src/pcm/PcmDsdNative.hxx
+
+diff --git a/Makefile.am b/Makefile.am
+index 89819de..dedc881 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -495,7 +495,8 @@ PCM_LIBS = \
+ if ENABLE_DSD
+ libpcm_a_SOURCES += \
+ 	src/pcm/PcmDsd.cxx src/pcm/PcmDsd.hxx \
+-	src/pcm/dsd2pcm/dsd2pcm.c src/pcm/dsd2pcm/dsd2pcm.h
++	src/pcm/dsd2pcm/dsd2pcm.c src/pcm/dsd2pcm/dsd2pcm.h \
++	src/pcm/PcmDsdNative.cxx src/pcm/PcmNativeDsd.hxx
+ endif
+ 
+ if HAVE_LIBSAMPLERATE
+@@ -2092,7 +2093,7 @@ endif
+ #
+ 
+ man_MANS = doc/mpd.1 doc/mpd.conf.5
+-doc_DATA = AUTHORS COPYING NEWS README doc/mpdconf.example
++doc_DATA = AUTHORS COPYING NEWS README README-DSD doc/mpdconf.example
+ 
+ DOCBOOK_FILES = doc/protocol.xml doc/user.xml doc/developer.xml
+ 
+diff --git a/README-DSD b/README-DSD
+new file mode 100644
+index 0000000..d896020
+--- /dev/null
++++ b/README-DSD
+@@ -0,0 +1,52 @@
++[31-jan-15]
++This version of MPD 0.19 has been enhancend with DSD native playback options.
++DSD output using DoP is mutually exclusive with native DSD playback. 
++Disable DoP output (or do not configure DoP output) if you want native DSD playback.
++
++For MPD 0.18 and older:
++
++dsd_usb	"no"
++
++For MPD 0.19:
++
++dop	"no"
++
++Native DSD playback requires ALSA driver and ALSA library support. The ALSA
++library needs patching (ALSA lib <= 1.0.28). A version with the needed DSD_U32_BE sample
++format is not released yet. See: https://github.com/lintweaker/xmos-native-dsd
++
++Add the following configuration to the appropriate audio_output section(s) of your mpd configuration file (e.g.
++/etc/mpd.conf):
++
++audio_output {
++
++	# Normal config parts omitted
++
++
++	# Disable DSD DoP MPD 0.18 or older
++	dsd_usb		"no"
++
++	# Disable DSD DoP MPD 0.19
++	dop		"no"
++
++	# Enable native DSD
++	dsd_native	"yes"
++	# Set DSD native type
++	dsd_native_type	"2"
++
++}
++
++
++Use 'dsd_native_type "2"' for USB DACs that support 32-bit DSD_U32_BE sample
++formats (e.g. XMOS based USB DACs and Marantz/Kenwood DACs).
++
++Use 'dsd_native_type "0"' for USB DACs using 8-bit DSD_U8 format like the Botic
++driver for the BeagleBone Black.
++
++Enjoy!
++Jurgen Kramer
++
++
++https://github.com/lintweaker
++
++
+diff --git a/configure.ac b/configure.ac
+index 1a3471f..190d53f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,6 +1,6 @@
+ AC_PREREQ(2.60)
+ 
+-AC_INIT(mpd, 0.19.10, musicpd-dev-team@lists.sourceforge.net)
++AC_INIT(mpd, 0.19.10-dsd, gtmkramer@xs4all.nl)
+ 
+ VERSION_MAJOR=0
+ VERSION_MINOR=19
+diff --git a/src/AudioFormat.cxx b/src/AudioFormat.cxx
+index edfb9d8..5b23ad9 100644
+--- a/src/AudioFormat.cxx
++++ b/src/AudioFormat.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -48,6 +48,7 @@ sample_format_to_string(SampleFormat format)
+ 		return "?";
+ 
+ 	case SampleFormat::S8:
++	case SampleFormat::DSD_U8:
+ 		return "8";
+ 
+ 	case SampleFormat::S16:
+@@ -57,6 +58,7 @@ sample_format_to_string(SampleFormat format)
+ 		return "24";
+ 
+ 	case SampleFormat::S32:
++	case SampleFormat::DSD_U32:
+ 		return "32";
+ 
+ 	case SampleFormat::FLOAT:
+diff --git a/src/AudioFormat.hxx b/src/AudioFormat.hxx
+index 0937ab8..a4d330f 100644
+--- a/src/AudioFormat.hxx
++++ b/src/AudioFormat.hxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -56,6 +56,18 @@ enum class SampleFormat : uint8_t {
+ 	 * byte (8 samples) per channel.
+ 	 */
+ 	DSD,
++
++	/**
++	 * DSD native output, 1 bit samples. Each frame carries 1 byte
++	 * per channel
++	 */
++	DSD_U8,
++
++	/**
++	 * DSD native output, 1 bit samples. Each frames carries 4 DSD
++	 * 1 byte samples
++	 */
++	DSD_U32,
+ };
+ 
+ #if defined(WIN32) && GCC_CHECK_VERSION(4,6)
+@@ -198,6 +210,8 @@ audio_valid_sample_format(SampleFormat format)
+ 	case SampleFormat::S32:
+ 	case SampleFormat::FLOAT:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		return true;
+ 
+ 	case SampleFormat::UNDEFINED:
+@@ -256,9 +270,11 @@ sample_format_size(SampleFormat format)
+ 	case SampleFormat::S24_P32:
+ 	case SampleFormat::S32:
+ 	case SampleFormat::FLOAT:
++	case SampleFormat::DSD_U32:
+ 		return 4;
+ 
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
+ 		/* each frame has 8 samples per channel */
+ 		return 1;
+ 
+diff --git a/src/decoder/plugins/FlacPcm.cxx b/src/decoder/plugins/FlacPcm.cxx
+index 311500f..3403298 100644
+--- a/src/decoder/plugins/FlacPcm.cxx
++++ b/src/decoder/plugins/FlacPcm.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -104,6 +104,8 @@ flac_convert(void *dest,
+ 	case SampleFormat::FLOAT:
+ 	case SampleFormat::DSD:
+ 	case SampleFormat::UNDEFINED:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		assert(false);
+ 		gcc_unreachable();
+ 	}
+diff --git a/src/output/plugins/AlsaOutputPlugin.cxx b/src/output/plugins/AlsaOutputPlugin.cxx
+index 28c374a..55b22ef 100644
+--- a/src/output/plugins/AlsaOutputPlugin.cxx
++++ b/src/output/plugins/AlsaOutputPlugin.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -68,6 +68,17 @@ struct AlsaOutput {
+ 	 */
+ 	bool dop;
+ 
++	/**
++	 * Enable native DSD playback (requires ALSA driver support)
++	 */
++	bool dsd_native;
++
++	/**
++	 * dsd_native_type
++	 * 0 = regular, uses DSD_U8, 1 = reserved, 2 uses DSD_U32_BE
++	 */
++	unsigned int dsd_native_type;
++
+ 	/** libasound's buffer_time setting (in microseconds) */
+ 	unsigned int buffer_time;
+ 
+@@ -156,6 +167,27 @@ AlsaOutput::Configure(const config_param &param, Error &error)
+ 		/* legacy name from MPD 0.18 and older: */
+ 		param.GetBlockValue("dsd_usb", false);
+ 
++	dsd_native = param.GetBlockValue("dsd_native", false);
++
++
++	/* If native DSD is enabled check for requested output type */
++	if (dsd_native) {
++		dsd_native_type = param.GetBlockValue("dsd_native_type", 255);
++		switch(dsd_native_type) {
++		case 0:
++		case 2:
++			break;
++		case 1:
++			dsd_native = false;
++		default:
++			dsd_native = false;
++		}
++	}
++
++	/* If both dop and dsd_native are enabled, fall back to dop */
++	if (dop && dsd_native)
++		dsd_native = false;
++
+ 	buffer_time = param.GetBlockValue("buffer_time",
+ 					      MPD_ALSA_BUFFER_TIME_US);
+ 	period_time = param.GetBlockValue("period_time", 0u);
+@@ -270,6 +302,12 @@ get_bitformat(SampleFormat sample_format)
+ 
+ 	case SampleFormat::FLOAT:
+ 		return SND_PCM_FORMAT_FLOAT;
++
++	case SampleFormat::DSD_U8:
++		return SND_PCM_FORMAT_DSD_U8;
++
++	case SampleFormat::DSD_U32:
++		return SND_PCM_FORMAT_DSD_U32_BE;
+ 	}
+ 
+ 	assert(false);
+@@ -643,9 +681,31 @@ alsa_setup_dop(AlsaOutput *ad, const AudioFormat audio_format,
+ 	assert(ad->dop);
+ 	assert(audio_format.format == SampleFormat::DSD);
+ 
++	AudioFormat dop_format = audio_format;
++
++	/* DSD native type 0 -> DSD_U8 */
++	if (ad->dsd_native && ad->dsd_native_type == 0) {
++
++		dop_format.format = SampleFormat::DSD_U8;
++		if (!alsa_setup(ad, dop_format, packed_r,
++		     reverse_endian_r, error))
++			return false;
++		return true;
++	}
++
++	/* DSD native type 2 -> DSD_U32_BE */
++	if (ad->dsd_native && ad->dsd_native_type == 2) {
++
++		dop_format.format = SampleFormat::DSD_U32;
++		dop_format.sample_rate /= 4;
++		if (!alsa_setup(ad, dop_format, packed_r,
++		    reverse_endian_r, error))
++			return false;
++		return true;
++	}
++
+ 	/* pass 24 bit to alsa_setup() */
+ 
+-	AudioFormat dop_format = audio_format;
+ 	dop_format.format = SampleFormat::S24_P32;
+ 	dop_format.sample_rate /= 2;
+ 
+@@ -684,7 +744,13 @@ alsa_setup_or_dop(AlsaOutput *ad, AudioFormat &audio_format,
+ 
+ 	const bool dop = ad->dop &&
+ 		audio_format.format == SampleFormat::DSD;
+-	const bool success = dop
++
++	const bool dsd_native = ad->dsd_native &&
++		audio_format.format == SampleFormat::DSD;
++
++	const bool dsd_enabled = dop || dsd_native;
++
++	const bool success = dsd_enabled
+ 		? alsa_setup_dop(ad, audio_format,
+ 				 &shift8, &packed, &reverse_endian,
+ 				 error)
+@@ -695,7 +761,8 @@ alsa_setup_or_dop(AlsaOutput *ad, AudioFormat &audio_format,
+ 
+ 	ad->pcm_export->Open(audio_format.format,
+ 			     audio_format.channels,
+-			     dop, shift8, packed, reverse_endian);
++			     dop, shift8, packed, reverse_endian,
++			     dsd_native, ad->dsd_native_type);
+ 	return true;
+ }
+ 
+diff --git a/src/output/plugins/OssOutputPlugin.cxx b/src/output/plugins/OssOutputPlugin.cxx
+index 39d87fc..c98304a 100644
+--- a/src/output/plugins/OssOutputPlugin.cxx
++++ b/src/output/plugins/OssOutputPlugin.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -419,6 +419,8 @@ sample_format_to_oss(SampleFormat format)
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::FLOAT:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		return AFMT_QUERY;
+ 
+ 	case SampleFormat::S8:
+diff --git a/src/pcm/ChannelsConverter.cxx b/src/pcm/ChannelsConverter.cxx
+index 7146137..b41ad86 100644
+--- a/src/pcm/ChannelsConverter.cxx
++++ b/src/pcm/ChannelsConverter.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -68,6 +68,8 @@ PcmChannelsConverter::Convert(ConstBuffer<void> src, gcc_unused Error &error)
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::S8:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		assert(false);
+ 		gcc_unreachable();
+ 
+diff --git a/src/pcm/FallbackResampler.cxx b/src/pcm/FallbackResampler.cxx
+index bd3f20d..e136f75 100644
+--- a/src/pcm/FallbackResampler.cxx
++++ b/src/pcm/FallbackResampler.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -31,6 +31,8 @@ FallbackPcmResampler::Open(AudioFormat &af, unsigned new_sample_rate,
+ 
+ 	switch (af.format) {
+ 	case SampleFormat::UNDEFINED:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		assert(false);
+ 		gcc_unreachable();
+ 
+@@ -122,6 +124,8 @@ FallbackPcmResampler::Resample(ConstBuffer<void> src, gcc_unused Error &error)
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::S8:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		assert(false);
+ 		gcc_unreachable();
+ 
+diff --git a/src/pcm/FormatConverter.cxx b/src/pcm/FormatConverter.cxx
+index 8874e1b..5238e1c 100644
+--- a/src/pcm/FormatConverter.cxx
++++ b/src/pcm/FormatConverter.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -40,6 +40,8 @@ PcmFormatConverter::Open(SampleFormat _src_format, SampleFormat _dest_format,
+ 
+ 	case SampleFormat::S8:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		error.Format(pcm_domain,
+ 			     "PCM conversion from %s to %s is not implemented",
+ 			     sample_format_to_string(_src_format),
+@@ -74,6 +76,8 @@ PcmFormatConverter::Convert(ConstBuffer<void> src, gcc_unused Error &error)
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::S8:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		assert(false);
+ 		gcc_unreachable();
+ 
+diff --git a/src/pcm/PcmDsdNative.cxx b/src/pcm/PcmDsdNative.cxx
+new file mode 100644
+index 0000000..2e0e7a1
+--- /dev/null
++++ b/src/pcm/PcmDsdNative.cxx
+@@ -0,0 +1,69 @@
++/*
++ * Copyright (C) 2014-2015 Jurgen Kramer
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ */
++
++#include "config.h"
++#include "PcmDsdNative.hxx"
++#include "PcmBuffer.hxx"
++#include "AudioFormat.hxx"
++#include "util/ConstBuffer.hxx"
++
++/* JK For debug info */
++#include "util/Domain.hxx"
++#include "Log.hxx"
++
++static constexpr Domain dsdn_dom("dsd_native");
++
++constexpr
++static inline uint32_t
++pcm_two_dsd_native(uint8_t a, uint8_t b, uint8_t c, uint8_t d)
++{
++	return 0x00000000 | (a << 24 ) | (b << 16) | (c << 8) | d;
++}
++
++ConstBuffer<uint32_t>
++pcm_dsd_native(PcmBuffer &buffer, unsigned channels,
++	       ConstBuffer<uint8_t> _src)
++{
++	assert(audio_valid_channel_count(channels));
++	assert(!_src.isNull());
++	assert(_src_size > 0);
++	assert(_src_size % channels == 0);
++
++	const unsigned num_src_samples = _src.size;
++	const unsigned num_src_frames = num_src_samples / channels;
++
++	const unsigned num_frames = num_src_frames / 2;
++	unsigned num_samples = num_frames * channels;
++
++	uint32_t *const dest0 = (uint32_t *)buffer.GetT<uint32_t>(num_samples / 2),
++		*dest = dest0;
++
++	auto src = _src.data;
++
++	for (unsigned i = num_frames / 2; i > 0 ; --i) {
++
++		/* Left channel */
++		*dest++ = pcm_two_dsd_native(src[6], src[4], src[2], src[0]);
++		/* Right channel */
++		*dest++ = pcm_two_dsd_native(src[7], src[5], src[3], src[1]);
++
++		src += 8;
++	}
++
++	return { dest0, num_samples / 2 };
++}
+diff --git a/src/pcm/PcmDsdNative.hxx b/src/pcm/PcmDsdNative.hxx
+new file mode 100644
+index 0000000..e904949
+--- /dev/null
++++ b/src/pcm/PcmDsdNative.hxx
+@@ -0,0 +1,38 @@
++/*
++ * Copyright (C) 2014-2015 Jurgen Kramer
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ */
++
++#ifndef MPD_PCM_DSD_NATIVE_HXX
++#define MPD_PCM_DSD_NATIVE_HXX
++
++#include "check.h"
++
++#include <stdint.h>
++#include <stddef.h>
++
++class PcmBuffer;
++template<typename T> struct ConstBuffer;
++
++/**
++ * Pack DSD 1 bit samples into DSD_U32_LE samples for
++ * native DSD playback
++ */
++ConstBuffer<uint32_t>
++pcm_dsd_native(PcmBuffer &buffer, unsigned channels,
++	       ConstBuffer<uint8_t> src);
++
++#endif
+diff --git a/src/pcm/PcmExport.cxx b/src/pcm/PcmExport.cxx
+index ef099ba..0bcb9d7 100644
+--- a/src/pcm/PcmExport.cxx
++++ b/src/pcm/PcmExport.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -20,6 +20,7 @@
+ #include "config.h"
+ #include "PcmExport.hxx"
+ #include "PcmDop.hxx"
++#include "PcmDsdNative.hxx"
+ #include "PcmPack.hxx"
+ #include "util/ByteReverse.hxx"
+ #include "util/ConstBuffer.hxx"
+@@ -28,18 +29,26 @@
+ 
+ void
+ PcmExport::Open(SampleFormat sample_format, unsigned _channels,
+-		bool _dop, bool _shift8, bool _pack, bool _reverse_endian)
++		bool _dop, bool _shift8, bool _pack, bool _reverse_endian,
++		bool _dsd_native, unsigned _dsd_native_type)
+ {
+ 	assert(audio_valid_sample_format(sample_format));
+ 	assert(!_dop || audio_valid_channel_count(_channels));
+ 
+ 	channels = _channels;
+ 	dop = _dop && sample_format == SampleFormat::DSD;
++
++	dsd_native = _dsd_native;
++	dsd_native_type = _dsd_native_type;
++
+ 	if (dop)
+ 		/* after the conversion to DoP, the DSD
+ 		   samples are stuffed inside fake 24 bit samples */
+ 		sample_format = SampleFormat::S24_P32;
+ 
++	if (dsd_native && dsd_native_type == 2)
++		sample_format = SampleFormat::S32;
++
+ 	shift8 = _shift8 && sample_format == SampleFormat::S24_P32;
+ 	pack24 = _pack && sample_format == SampleFormat::S24_P32;
+ 
+@@ -71,6 +80,9 @@ PcmExport::GetFrameSize(const AudioFormat &audio_format) const
+ 		   bytes per sample) */
+ 		return channels * 4;
+ 
++	if (dsd_native && dsd_native_type == 2)
++		return channels * 4;
++
+ 	return audio_format.GetFrameSize();
+ }
+ 
+@@ -82,6 +94,11 @@ PcmExport::Export(ConstBuffer<void> data)
+ 				      ConstBuffer<uint8_t>::FromVoid(data))
+ 			.ToVoid();
+ 
++	if (dsd_native && dsd_native_type == 2)
++		data = pcm_dsd_native(dop_buffer, channels,
++				      ConstBuffer<uint8_t>::FromVoid(data))
++			.ToVoid();
++
+ 	if (pack24) {
+ 		const auto src = ConstBuffer<int32_t>::FromVoid(data);
+ 		const size_t num_samples = src.size;
+diff --git a/src/pcm/PcmExport.hxx b/src/pcm/PcmExport.hxx
+index b99a358..6048505 100644
+--- a/src/pcm/PcmExport.hxx
++++ b/src/pcm/PcmExport.hxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -68,6 +68,22 @@ struct PcmExport {
+ 	bool dop;
+ 
+ 	/**
++	 * Output native DSD?
++	 * dsd_native_type contains requested output type
++	 */
++
++	bool dsd_native;
++
++	/**
++	 * DSD native output type
++	 * 0 = DSD_U8, no export needed
++	 * 1 = DSD_U16_BE, reserved. Not supported yet
++	 * 2 = DSD_U32_BE, e.g. XMOS based USB DACs
++	 */
++
++	unsigned dsd_native_type;
++
++	/**
+ 	 * Convert (padded) 24 bit samples to 32 bit by shifting 8
+ 	 * bits to the left?
+ 	 */
+@@ -96,7 +112,8 @@ struct PcmExport {
+ 	 * @param channels the number of channels; ignored unless dop is set
+ 	 */
+ 	void Open(SampleFormat sample_format, unsigned channels,
+-		  bool dop, bool shift8, bool pack, bool reverse_endian);
++		  bool dop, bool shift8, bool pack, bool reverse_endian,
++		  bool dsd_native, unsigned dsd_native_type);
+ 
+ 	/**
+ 	 * Calculate the size of one output frame.
+diff --git a/src/pcm/PcmFormat.cxx b/src/pcm/PcmFormat.cxx
+index 4cabc05..775a9c7 100644
+--- a/src/pcm/PcmFormat.cxx
++++ b/src/pcm/PcmFormat.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -166,6 +166,8 @@ pcm_convert_to_16(PcmBuffer &buffer, PcmDither &dither,
+ 	switch (src_format) {
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		break;
+ 
+ 	case SampleFormat::S8:
+@@ -234,6 +236,8 @@ pcm_convert_to_24(PcmBuffer &buffer,
+ 	switch (src_format) {
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		break;
+ 
+ 	case SampleFormat::S8:
+@@ -302,6 +306,8 @@ pcm_convert_to_32(PcmBuffer &buffer,
+ 	switch (src_format) {
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		break;
+ 
+ 	case SampleFormat::S8:
+@@ -370,6 +376,8 @@ pcm_convert_to_float(PcmBuffer &buffer,
+ 	switch (src_format) {
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		break;
+ 
+ 	case SampleFormat::S8:
+diff --git a/src/pcm/PcmMix.cxx b/src/pcm/PcmMix.cxx
+index d21b5f0..c72afdb 100644
+--- a/src/pcm/PcmMix.cxx
++++ b/src/pcm/PcmMix.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -93,6 +93,8 @@ pcm_add_vol(PcmDither &dither, void *buffer1, const void *buffer2, size_t size,
+ 	switch (format) {
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		/* not implemented */
+ 		return false;
+ 
+@@ -181,6 +183,8 @@ pcm_add(void *buffer1, const void *buffer2, size_t size,
+ 	switch (format) {
+ 	case SampleFormat::UNDEFINED:
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		/* not implemented */
+ 		return false;
+ 
+diff --git a/src/pcm/Volume.cxx b/src/pcm/Volume.cxx
+index b12d8fd..ec718be 100644
+--- a/src/pcm/Volume.cxx
++++ b/src/pcm/Volume.cxx
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2003-2014 The Music Player Daemon Project
++ * Copyright (C) 2003-2015 The Music Player Daemon Project
+  * http://www.musicpd.org
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -116,6 +116,8 @@ PcmVolume::Open(SampleFormat _format, Error &error)
+ 		break;
+ 
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		// TODO: implement this; currently, it's a no-op
+ 		break;
+ 	}
+@@ -181,6 +183,8 @@ PcmVolume::Apply(ConstBuffer<void> src)
+ 		break;
+ 
+ 	case SampleFormat::DSD:
++	case SampleFormat::DSD_U8:
++	case SampleFormat::DSD_U32:
+ 		// TODO: implement this; currently, it's a no-op
+ 		return src;
+ 	}
+-- 
+2.1.0
