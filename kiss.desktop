@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=KISS IDE
+Exec=/usr/bin/KISS
+Icon=/usr/share/icons/kiss.png
+Categrories=Development;
+name[en_US]=kiss.desktop
