@@ -1,18 +1,18 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=slack-bin
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='Client of the Slack team communication service'
 arch=('i686' 'x86_64')
 url="https://slack.com"
 license=(custom)
 
-source_i686=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-amd64.deb")
-sha256sums_i686=("df8fc12e885201bf8dba9c3a210b1be72a48461f2a0dae1d4035f2a56b489b1c")
+source_i686=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-i386.deb")
+sha256sums_i686=("4fc65a3a24a65c4e4ace23ed527bc73087234da75c5a9d9cdfd7924699a96aac")
 
 source_x86_64=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-amd64.deb")
-sha256sums_x86_64=("c0e27464f1d5d4fe0f63b13ea96b7b28bd6695d76b49a00f63d5bdb0ddb59e33")
+sha256sums_x86_64=("2368e2449f08272d8ce38a423f44ed0cd35c1e77ca3c0525f069d0790b6ec58f")
 
 package() {
   install -d "${pkgdir}/opt/slack"
