@@ -3,8 +3,8 @@
 
 _pkgname=xembed-sni-proxy
 pkgname=${_pkgname}-white-git
-pkgver=r69.77d78c3
-pkgrel=2
+pkgver=r105.11e8648
+pkgrel=1
 pkgdesc="Convert XEmbed system tray icons to SNI icons. With white background."
 arch=('i686' 'x86_64')
 url="https://github.com/davidedmundson/${_pkgname}"
@@ -48,6 +48,7 @@ package() {
   echo '#!/bin/sh' > "${pkgdir}/usr/bin/xembedsniproxy"
   echo '[ "z${1}" = "zdelay" ] && sleep ${2}' >> "${pkgdir}/usr/bin/xembedsniproxy"
   echo 'killall -9 xembedsniproxy.bin' >> "${pkgdir}/usr/bin/xembedsniproxy"
-  echo 'exec /usr/bin/xembedsniproxy.bin "`echo $@ | sed "s/delay  *[0-9]*//g" `"' >> "${pkgdir}/usr/bin/xembedsniproxy"
+  #echo 'exec /usr/bin/xembedsniproxy.bin "`echo $@ | sed "s/delay  *[0-9]*//g" `"' >> "${pkgdir}/usr/bin/xembedsniproxy"
+  echo 'while true;do /usr/bin/xembedsniproxy.bin "`echo $@ | sed "s/delay  *[0-9]*//g" `";done' >> "${pkgdir}/usr/bin/xembedsniproxy"
   chmod +x "${pkgdir}/usr/bin/xembedsniproxy"
 }
