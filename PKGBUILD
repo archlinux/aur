@@ -47,17 +47,20 @@ prepare() {
     cd "${srcdir}/${srcname}"
 
     # /var/kea -> /var/lib/kea
-    find . -type f -exec sed --in-place  \
+    find . -path './.git' -prune -or -type f -exec sed --in-place  \
+        --expression='s|/var/kea/kea-|/var/kea/|g' \
         --expression='s|/var/kea|/var/lib/kea|g' \
         --expression='s|@localstatedir@/@PACKAGE@|@localstatedir@/lib/@PACKAGE@|g' \
-        --expression='s|@@LOCALSTATEDIR@@/@PACKAGE@|@@LOCALSTATEDIR@@/lib/@PACKAGE@|g' \
         --expression='s|\$(localstatedir)/\$(PACKAGE)|\$(localstatedir)/lib/\$(PACKAGE)|g' \
         '{}' '+'
 
-    # /var/run/kea -> /var/cache/kea
-    find . -type f -exec sed --in-place \
-        --expression='s|/var/run/kea|/var/cache/kea|g' \
-        --expression='s|\${localstatedir}/run|\${localstatedir}/cache|g' \
+    # /var/log -> /var/log/kea
+    find . -path './.git' -prune -or -type f -exec sed --in-place  \
+        --expression='s|/var/log/kea-|/var/log/|g' \
+        --expression='s|/var/log|/var/log/kea|g' \
+        --expression='s|\${localstatedir}/log/|\${localstatedir}/log/\${PACKAGE_NAME}|g' \
+        --expression='s|@localstatedir@/log/kea-|@localstatedir@/log/|g' \
+        --expression='s|@localstatedir@/log|@localstatedir@/log/@PACKAGE@|g' \
         '{}' '+'
 
     autoreconf --install
@@ -83,4 +86,6 @@ package() {
     cd "${srcdir}/${srcname}"
 
     make DESTDIR="${pkgdir}" install
+
+    rmdir "${pkgdir}/var/run"{/kea,}
 }
