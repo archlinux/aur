@@ -1,7 +1,7 @@
 pkgbase = python-ptpython
 	pkgdesc = Interactive Python prompt with syntax highlighting and code completion
-	pkgver = 0.24
-	pkgrel = 2
+	pkgver = 0.25
+	pkgrel = 1
 	url = https://github.com/jonathanslenders/ptpython
 	arch = any
 	license = BSD
@@ -15,9 +15,9 @@ pkgbase = python-ptpython
 	provides = python-ptpython
 	conflicts = ptpython
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/ptpython/ptpython-0.24.tar.gz
-	md5sums = b9fb477028518adac80a549537e835e2
-	sha256sums = 6dfb728183e92447de5b4de4ac1f6caa07c2ae29e10402166c9ec9921e3bf661
+	source = https://pypi.python.org/packages/source/p/ptpython/ptpython-0.25.tar.gz
+	md5sums = d255428fcb751a8ce1be477866d03358
+	sha256sums = 6df30f3cde8db140daaf0243b54030e9d9acece8c2c424215edd90d437c257ae
 
 pkgname = python-ptpython
 
