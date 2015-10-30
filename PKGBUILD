@@ -1,9 +1,9 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgbase=octopi
-pkgname=('octopi' 'octopi-notifier' 'octopi-notifier-kde4' 'octopi-repoeditor' 'octopi-cachecleaner')
+pkgname=('octopi' 'octopi-notifier' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.7.0
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 url="https://github.com/aarnt/octopi"
 license=('GPL2')
@@ -15,7 +15,7 @@ source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
 sha256sums=('03d15458ebe482e5a9a00e7a3db5676a53886c754b13a7c56e36d75b73f2d496'
             '131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef'
             '459f924eba5bc780cb3a0cb955e9d7c634fe77d7e9f7b1a44d86c827535acbe3'
-            'f163ebc22b7443b929a479ab13484d10bc3cade1a8ed9b77c06e5d48bbb160f8')
+            '81dcbbda0d020607d23f3f8042fa43bfc4318269a55f9327e4995299b59dcb4b')
 
 prepare() {
 	_cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
@@ -25,7 +25,6 @@ prepare() {
 
 	patch -p1 < ../qt55.patch
   
-	cp -r "notifier" "notifier-kde"
 	patch -p1 < ../enable-kstatus.patch
 }            
             
@@ -45,11 +44,6 @@ build() {
 	qmake-qt5 octopi-notifier.pro
 	make -j $_jc
   
-	cd "${srcdir}/${pkgbase}-${pkgver}/notifier-kde/octopi-notifier"
-	msg "Building octopi-notifier-kde..."
-	qmake-qt5 octopi-notifier.pro
-	make -j $_jc
-
 	cd "${srcdir}/${pkgbase}-${pkgver}/repoeditor"
 	msg "Building octopi-repoeditor..."
 	qmake-qt5 octopi-repoeditor.pro
@@ -110,19 +104,6 @@ package_octopi-notifier() {
 	install -D -m755 "${srcdir}/${pkgbase}-${pkgver}/notifier/bin/octopi-notifier" "${pkgdir}/usr/bin/octopi-notifier"
 	install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/octopi-notifier.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/octopi-notifier.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
-}
-
-package_octopi-notifier-kde4() {
-	pkgdesc="Notifier for Octopi (KDE)"
-	depends=('octopi' 'libnotify')
-	install=octopi.install
-	conflicts=('octopi-notifier' 'octopi-notifier-kde')
-	replaces=('octopi-notifier-kde')
-
-	#Octopi-notifier-kde files
-	install -D -m755 "${srcdir}/${pkgbase}-${pkgver}/notifier-kde/bin/octopi-notifier" "${pkgdir}/usr/bin/octopi-notifier"
-	install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/octopi-notifier.desktop" "${pkgdir}/usr/share/applications/octopi-notifier.desktop"
-	install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/octopi-notifier.desktop" "${pkgdir}/etc/xdg/autostart/octopi-notifier.desktop"
 }
 
 package_octopi-repoeditor() {
