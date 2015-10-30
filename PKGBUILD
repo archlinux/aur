@@ -1,7 +1,7 @@
 # Contributor: killhellokitty <killhellokitty.deviantart.com>
 # Maintainer: killhellokitty <killhellokitty.deviantart.com>
 
-pkgname=delorean
+pkgname=delorean-dark
 pkgver=3.18-2_10302015
 pkgrel=1
 pkgdesc="The Metal Gtk Theme. For Gnome 3.16, Xfce, Cinnamon, MATE"
