@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ocaml-ctypes-git
-pkgver=0.3.3
+pkgver=0.4.1.51.g07b21d7
 pkgrel=1
 pkgdesc='Library for binding to C libraries using pure OCaml'
 arch=('i686' 'x86_64')
@@ -10,8 +10,13 @@ license=('custom')
 depends=('ocaml' 'libffi')
 makedepends=('ocaml-findlib>=1.5.3' 'git')
 options=('!strip')
-source=("$pkgname::git+$url.git#tag=$pkgver")
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  echo $(git describe --tags | sed 's+-+.+g')
+}
 
 build() {
   cd $pkgname
