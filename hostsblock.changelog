@@ -1,3 +1,14 @@
+See https://github.com/gaenserich/hostsblock/commits/master for a complete list of updates
+
+Version 0.999.3 (Alpha 3) (30.10.2015)
+*Added more optional source files to hostsblock.conf. Added user agent info to curl to make work with more sites. Sanitized hostsblock.conf file a little bit.
+*Added function to force target file update even if no changes are found to source files
+*Fixed incorrect invocation of _strip_entries subroutine
+*Fixed remaining appearances of gzip -z. (Thanks to Julián Landerreche)
+*Fixed misspelled whitelist/whilelist variable
+*Fixed incorrect use of -z with gzip/pigz
+*Fixed line 261 in hostsblock-common.sh (white list write function)
+
 (07.25.2014)
 PRE-ALPHA RELEASE
 *new main config file: /etc/hostsblock/hostsblock.conf

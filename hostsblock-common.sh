@@ -10,25 +10,14 @@
 ### Level 5: Level 4 + stdout/stderr from sub-processes like curl, zip, 7za, etc.
 
 _notify() {
-    if [ -z "$PS1" ] && [[ $- =~ i ]]; then
-        case $1 in
-            0) _level="[\e[1;31mFATAL\e[0m]" ;;
-            1) _level="[\e[1;31mWARN\e[0m]" ;;
-            2) _level="[\e[0;33mNOTE\e[0m]" ;;
-            3) _level="[\e[0;33mINFO\e[0m]" ;;
-            4) _level="[\e[0;32mDETAIL\e[0m]" ;;
-            5) _level="[\e[0;32mDEBUG\e[0m]" ;;
-        esac
-    else
-        case $1 in
-            0) _level="[FATAL]" ;;
-            1) _level="[WARN]" ;;
-            2) _level="[NOTE]" ;;
-            3) _level="[INFO]" ;;
-            4) _level="[DETAIL]" ;;
-            5) _level="[DEBUG]" ;;
-        esac
-    fi
+    case $1 in
+        0) _level="[FATAL]" ;;
+        1) _level="[WARN]" ;;
+        2) _level="[NOTE]" ;;
+        3) _level="[INFO]" ;;
+        4) _level="[DETAIL]" ;;
+        5) _level="[DEBUG]" ;;
+    esac
     if [ $verbosity -ge $1 ]; then
         echo -e "${_level} $2"
     else
@@ -101,7 +90,7 @@ _extract_entries() {
         _notify 4 "Extracting obvious entries from $_basename_cachefile..."
         _cachefile_url=$(head -n1 "$cachedir"/"$_basename_cachefile".url)
         if grep -rah -- "^[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}" ./* | sed -e 's/[[:space:]][[:space:]]*/ /g' -e \
-          "s/\#.*//g" -e "s/[[:space:]]$//g" -e "s/$_notredirect/$redirecturl/g" | sort -u | grep -vf "$whilelist" | \
+          "s/\#.*//g" -e "s/[[:space:]]$//g" -e "s/$_notredirect/$redirecturl/g" | sort -u | grep -vf "$whitelist" | \
            sed "s|$| \! $_cachefile_url|g" > "$_target_hostsfile"; then
             _notify 4 "Extracted obvious entries from $_basename_cachefile."
             if [ $verbosity -ge 4 ]; then
@@ -113,7 +102,7 @@ _extract_entries() {
         _notify 4 "Extracting less-obvious entries from $_basename_cachefile"
         if grep -rahv "^[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}" ./* | grep -v "^\." | grep -v "\.$" | grep -v "\*" |\
           grep -v "\"" | grep -v "\$" | grep "[a-z]" | grep "\." | sed "s/^/$redirecturl /g" | sed -e 's/[[:space:]][[:space:]]*/ /g' \
-          -e "s/\#.*//g" -e "s/[[:space:]]$//g" | sort -u | grep -vf "$whilelist" | sed "s|$| \! $_cachefile_url|g" |\
+          -e "s/\#.*//g" -e "s/[[:space:]]$//g" | sort -u | grep -vf "$whitelist" | sed "s|$| \! $_cachefile_url|g" |\
            >> "$_target_hostsfile"; then
             _notify 4 "Extracted less-obvious entries from $_basename_cachefile."
             if [ $verbosity -ge 4 ]; then
@@ -224,8 +213,8 @@ _strip_entries() {
     case "$2" in
         *.gz)
             which pigz &>/dev/null && \
-              pigz -dc "$2" | grep -v "$1" | pigz -zc - > "$2".tmp || \
-              gzip -dc "$2" | grep -v "$1" | gzip -zc - > "$2".tmp
+              pigz -dc "$2" | grep -v "$1" | pigz -c - > "$2".tmp || \
+              gzip -dc "$2" | grep -v "$1" | gzip -c - > "$2".tmp
         ;;
         *)
             grep -v "$1" "$2" > "$2".tmp && \
@@ -258,8 +247,8 @@ _check_url(){
         read -p "1-3 (default: 3): " b
         if [[ $b == 1 || "$b" == "1" ]]; then
             echo "Unblocking just $@"
-            echo " $@ " >> "$whitelist"
-            _strip_entries " $@$" "$annotate"
+            echo " $@" >> "$whitelist"
+            _strip_entries " $@ \!" "$annotate"
             _strip_entries " $@$" "$blacklist"
             _strip_entries " $@$" "$hostsfile"
             _changed=1
@@ -282,11 +271,11 @@ _check_url(){
                     if which pigz &>/dev/null; then
                         pigz -dc "$annotate" > "$annotate".tmp
                         echo "$redirecturl $@ \! $blacklist" >> "$annotate".tmp
-                        sort -u "$annotate".tmp | pigz -zc - > "$annotate"
+                        sort -u "$annotate".tmp | pigz -c - > "$annotate"
                     else
                         gzip -dc "$annotate" > "$annotate".tmp
                         echo "$redirecturl $@ \! $blacklist" >> "$annotate".tmp
-                        sort -u "$annotate".tmp | gzip -zc - > "$annotate"
+                        sort -u "$annotate".tmp | gzip -c - > "$annotate"
                     fi
                     rm -f "$_v" -- "$annotate".tmp
                 ;;
@@ -306,11 +295,11 @@ _check_url(){
                     if which pigz &>/dev/null; then
                         pigz -dc "$annotate" > "$annotate".tmp
                         echo "$redirecturl $@ \! $blacklist" >> "$annotate".tmp
-                        sort -u "$annotate".tmp | pigz -zc - > "$annotate"
+                        sort -u "$annotate".tmp | pigz -c - > "$annotate"
                     else
                         gzip -dc "$annotate" > "$annotate".tmp
                         echo "$redirecturl $@ \! $blacklist" >> "$annotate".tmp
-                        sort -u "$annotate".tmp | gzip -zc - > "$annotate"
+                        sort -u "$annotate".tmp | gzip -c - > "$annotate"
                     fi
                     rm -f "$_v" -- "$annotate".tmp
                 ;;
@@ -335,7 +324,7 @@ postprocess() {
 }
 export blocklists=("http://support.it-mate.co.uk/downloads/HOSTS.txt")
 export blacklist="/etc/hostsblock/black.list"
-export whilelist="/etc/hostsblock/white.list"
+export whitelist="/etc/hostsblock/white.list"
 export hostshead="0"
 export cachedir="/var/cache/hostsblock"
 export redirects="0"

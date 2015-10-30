@@ -1,10 +1,11 @@
 #!/bin/bash
-
+_changed=0
 # GET OPTIONS
-while getopts "v:f:h" _option; do
+while getopts "v:f:hu" _option; do
     case "$_option" in
         f)  [ "$OPTARG" != "" ] && _configfile="$OPTARG";;
         v)  [ "$OPTARG" != "" ] && _verbosity_override=$OPTARG;;
+        u)  _changed=1;;
         *)
             cat << EOF
 Usage:
@@ -16,6 +17,7 @@ Help Options:
 Application Options:
   -f CONFIGFILE                 Specify an alternative configuration file (instead of /etc/hostsblock/hostsblock.conf)
   -v VERBOSITY                  Specify how much information hostsblock provides (0=only fatal errors to 5=the kitchen sink)
+  -u                            Force hostsblock to update its target file, even if no changes to source files are found
 EOF
             exit 1
         ;;
@@ -59,7 +61,6 @@ else
 fi
 
 # DOWNLOAD BLOCKLISTS
-_changed=0
 _notify 3 "Checking blocklists for updates..."
 for _url in ${blocklists[*]}; do
     _outfile=$(echo $_url | sed "s|http:\/\/||g" | tr '/%&+?=' '.')
@@ -76,7 +77,7 @@ for _url in ${blocklists[*]}; do
         _notify 4 "Cache file $cachedir/$_outfile for blocklist $_url not found. It will be downloaded."
     fi
     _notify 4 "Checking and, if needed, downloading blocklist $_url to $cachedir/$_outfile"
-    if curl $_v_curl --compressed -L --connect-timeout $connect_timeout --retry $retry -z "$cachedir"/"$_outfile" "$_url" -o "$cachedir"/"$_outfile"; then
+    if curl -A 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0' -e http://forum.xda-developers.com/ $_v_curl --compressed -L --connect-timeout $connect_timeout --retry $retry -z "$cachedir"/"$_outfile" "$_url" -o "$cachedir"/"$_outfile"; then
         _notify 3 "Refreshed blocklist $_url."
         _new_ls=$(ls -l "$cachedir"/"$_outfile")
         if [ "$_old_ls" != "$_new_ls" ]; then
@@ -185,7 +186,7 @@ if [ $_changed != 0 ]; then
         _notify 3 "Compiling redirect entries into $hostsfile..."
         if grep -ahEv -- "^$redirecturl" "$tmpdir"/hostsblock/hosts.block.d/* |\
           grep -ah -- "^[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}" | tee -a "$annotate".tmp |\
-          sed "s/ \!.*$//g" | sort -u | grep -vf "$whilelist"  >> "$hostsfile"; then
+          sed "s/ \!.*$//g" | sort -u | grep -vf "$whitelist"  >> "$hostsfile"; then
             _notify 3 "Compiled redirect entries into $hostsfile."
         else
             _notify 1 "FAILED to compile redirect entries into $hostsfile."
@@ -206,8 +207,8 @@ if [ $_changed != 0 ]; then
     case "$annotate" in
         *.gz)
             which pigz &>/dev/null && \
-              sort -u "$annotate".tmp | pigz -zc - > "$annotate" || \
-              sort -u "$annotate".tmp | gzip -zc - > "$annotate"
+              sort -u "$annotate".tmp | pigz -c - > "$annotate" || \
+              sort -u "$annotate".tmp | gzip -c - > "$annotate"
         ;;
         *)
             sort -u "$annotate".tmp > "$annotate"
