@@ -1,0 +1,14 @@
+pkgbase = hsync
+	pkgdesc = A filesystem hierarchy synchronizer
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://ambrevar.bitbucket.org/hsync/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = hsync-1.1.tar.bz2::https://bitbucket.org/ambrevar/hsync/get/v1.1.tar.bz2
+	sha1sums = 5793e756ccdb306baf722270929cba684026a2b2
+
+pkgname = hsync
+
