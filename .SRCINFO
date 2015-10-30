@@ -13,7 +13,7 @@ pkgbase = sleeptimer
 	makedepends = help2man
 	depends = xosd
 	depends = gettext
-	optdepends = lirc-utils: remote control support
+	optdepends = lirc: remote control support
 	source = https://github.com/fhirschmann/sleeptimer/archive/v0.4.2.tar.gz
 	md5sums = 9be1c0854294754cd5ae5075eac78a63
 
