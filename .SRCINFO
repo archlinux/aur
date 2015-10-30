@@ -1,0 +1,17 @@
+pkgbase = steel
+	pkgdesc = Command line password manager.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://www.steelpasswordmanager.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libmcrypt
+	depends = mhash
+	depends = sqlite
+	source = steel::git+https://gitlab.com/Rosvall/steel.git#tag=v1.1
+	sha256sums = SKIP
+
+pkgname = steel
+
