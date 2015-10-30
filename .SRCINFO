@@ -1,0 +1,13 @@
+pkgbase = pg2ipset-git
+	pkgdesc = Converts PG2 IP Blocklists into lists that ipset under Linux can consume
+	pkgver = 57.2b14fdf
+	pkgrel = 1
+	url = https://github.com/ilikenwf/pg2ipset
+	arch = any
+	license = GPLv2
+	provides = pg2ipset
+	source = git://github.com/ilikenwf/pg2ipset.git
+	md5sums = SKIP
+
+pkgname = pg2ipset-git
+
