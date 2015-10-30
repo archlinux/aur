@@ -1,0 +1,13 @@
+pkgbase = git-sh-git
+	pkgdesc = A customized bash shell suitable for git work.
+	pkgver = 20151030.467c388
+	pkgrel = 1
+	url = http://github.com/rtomayko/git-sh/tree/master
+	arch = any
+	license = GPL
+	depends = git
+	source = git-sh-git::git://github.com/rtomayko/git-sh.git
+	md5sums = SKIP
+
+pkgname = git-sh-git
+
