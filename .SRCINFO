@@ -1,7 +1,7 @@
 pkgbase = smokeqt-git
 	pkgdesc = Language independent library for Qt bindings
 	pkgver = 20150630
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kde.org/
 	arch = i686
 	arch = x86_64

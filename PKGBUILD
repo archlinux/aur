@@ -3,7 +3,7 @@
 
 pkgname=smokeqt-git
 pkgver=20150630
-pkgrel=1
+pkgrel=2
 pkgdesc="Language independent library for Qt bindings"
 url="http://kde.org/"
 arch=('i686' 'x86_64')
@@ -37,8 +37,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_Qwt5=OFF
     
-  numprocs=`cat /proc/cpuinfo | grep processor | wc -l`
-  make -j `expr ${numprocs} + 1`
+  #numprocs=`cat /proc/cpuinfo | grep processor | wc -l`
+  make
+  #-j `expr ${numprocs} + 1`
 }
 
 package() {
