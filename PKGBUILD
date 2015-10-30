@@ -4,9 +4,9 @@
 
 pkgname=armory
 _pkgname=BitcoinArmory
-pkgver=0.93.2 
-_pkgver=0.93.2
-pkgrel=2
+pkgver=0.93.3 
+_pkgver=0.93.3
+pkgrel=1
 pkgdesc="Python-Based Bitcoin Software"
 arch=('i686' 'x86_64')
 url="https://github.com/etotheipi/BitcoinArmory"
