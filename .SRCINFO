@@ -1,0 +1,15 @@
+pkgbase = nodejs-wunderline
+	pkgdesc = Wunderlist for your command line!
+	pkgver = 4.1.3
+	pkgrel = 1
+	url = http://www.wunderline.rocks
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = wunderline-4.1.3.tgz
+	source = http://registry.npmjs.org/wunderline/-/wunderline-4.1.3.tgz
+	sha1sums = efff7103fb8aace56e606efb33bb9d5adb35b669
+
+pkgname = nodejs-wunderline
+
