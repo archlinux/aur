@@ -9,7 +9,7 @@ _build=b17
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (v8) for ARMv7, ARMv6 and ARMv8 (64-bit)"
-arch=('armv6h' 'armv7h' 'armv8h')
+arch=('armv6h' 'armv7h' 'aarch64')
 _carch=arm
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
 license=('custom')
@@ -40,7 +40,7 @@ backup=("etc/java-$_jname/$_carch/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$_pkgname.install
 
-if [ $arch = 'armv8h' ]; then
+if [[ $CARCH == "aarch64" ]]; then
 	osarch=arm64
 else
 	osarch=arm32
