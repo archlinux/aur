@@ -9,6 +9,8 @@ arch=('any')
 url="https://github.com/owncloud/news"
 license=('AGPL')
 depends=('python' 'python-setuptools' 'python-requests')
+conflicts=('owncloud-news-updater')
+provides=('owncloud-news-updater')
 makedepends=()
 options=('!strip')
 source=("$pkgname::git+https://github.com/owncloud/news.git")
@@ -27,5 +29,4 @@ package() {
   install -D -m0644 example-config.ini $pkgdir/etc/owncloud/news/example-updater.ini
   python3 setup.py install --root=$pkgdir
   install -D -m0644 systemd/owncloud-news-updater.service $pkgdir/usr/lib/systemd/system/owncloud-news-updater.service
-
 }
