@@ -26,7 +26,7 @@ package() {
 find DeLorean-Dark-3.18/ -type f \
 -exec install -Dm644 "{}" "$pkgdir~/.themes/{}" \;
 
-  cd 'delorean-dark-3.18/ROOT THEME'
+  cd 'ROOT THEME'
 find DeLorean-Dark-3.18/ -type f \
 -exec install -Dm644 "{}" "$pkgdir~/.themes/{}" \;            
 }
