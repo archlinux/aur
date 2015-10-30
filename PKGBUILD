@@ -1,5 +1,5 @@
 #Maintainer: Archydan <daniel at dragusanu dot net>
-#Contributor: Guglielmo De Concini <guglielmo dor deconcini at gmail dot com>
+#Contributor: Guglielmo De Concini <guglielmo dot deconcini at gmail dot com>
 
 _dirname=rpm_1.01_20110222
 _rpmname=Xerox-Phaser_6000_6010-1.0-1.i686.rpm
@@ -33,6 +33,7 @@ else
   echo "You must accept the EULA to continue. Aborting!"
   rm -r ${srcdir}
   rm ${startdir}/6000_6010_rpm_1.01_20110222.zip
+  exit
 fi
 }
 
