@@ -2,8 +2,8 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=mat
-pkgver=0.5.3
-pkgrel=3
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="Metadata anonymisation toolkit"
 arch=('any')
 url="https://mat.boum.org"
@@ -12,7 +12,7 @@ depends=('python2-distutils-extra' 'python2' 'hachoir-core' 'hachoir-parser' 'py
 optdepends=('perl-image-exiftool: extended image support',
 'mutagen: extended audio format support')
 source=(https://mat.boum.org/files/mat-${pkgver}.tar.xz)
-sha256sums=('616fc4ba13a7ce2a20acd6639a776fa4ee6a61caf999ed64b4545d3f83a41cfd')
+sha256sums=('a928cb2d5ebcafec4563b552096436771598376f8b4dded86a769c278c1314d1')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"

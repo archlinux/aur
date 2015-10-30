@@ -1,7 +1,7 @@
 pkgbase = mat
 	pkgdesc = Metadata anonymisation toolkit
-	pkgver = 0.5.3
-	pkgrel = 2
+	pkgver = 0.5.4
+	pkgrel = 1
 	url = https://mat.boum.org
 	arch = any
 	license = GPL2
@@ -16,8 +16,8 @@ pkgbase = mat
 	depends = python2-pillow
 	optdepends = perl-image-exiftool: extended image support,
 	optdepends = mutagen: extended audio format support
-	source = https://mat.boum.org/files/mat-0.5.3.tar.xz
-	sha256sums = 616fc4ba13a7ce2a20acd6639a776fa4ee6a61caf999ed64b4545d3f83a41cfd
+	source = https://mat.boum.org/files/mat-0.5.4.tar.xz
+	sha256sums = a928cb2d5ebcafec4563b552096436771598376f8b4dded86a769c278c1314d1
 
 pkgname = mat
 
