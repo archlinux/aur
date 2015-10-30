@@ -10,6 +10,9 @@ license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r>=2.11.1' 'shared-mime-info' 'gstreamer0.10-base' 'patchelf')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
+optdepends=('pandoc-bin'
+	    'pandoc-cabal'
+	    'pandoc-static')
 provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 

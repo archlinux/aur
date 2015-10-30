@@ -11,6 +11,9 @@ pkgbase = rstudio-desktop-preview-bin
 	depends = shared-mime-info
 	depends = gstreamer0.10-base
 	depends = patchelf
+	optdepends = pandoc-bin
+	optdepends = pandoc-cabal
+	optdepends = pandoc-static
 	provides = rstudio-desktop-preview=0.99.739
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
