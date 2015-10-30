@@ -1,0 +1,12 @@
+[Unit]
+Description=Madsonic v6
+After=network.target
+ 
+[Service]
+ExecStart=/var/madsonic6/madsonic.sh
+ExecStop=/bin/kill -15 $MAINPID
+Type=forking
+User=madsonic6
+ 
+[Install]
+WantedBy=multi-user.target

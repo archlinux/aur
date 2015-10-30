@@ -1,0 +1,32 @@
+pkgbase = madsonic6
+	pkgdesc = Madsonic Mashup Mod is a fork of the Subsonic Server Build with some Subsonic Data schema modifications! This is the latest devel version.:
+	pkgver = 6.0.7600
+	pkgrel = 2
+	url = http://madsonic.org/
+	install = madsonic6.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jre7-openjdk-headless
+	depends = fontconfig
+	depends = libcups
+	optdepends = ffmpeg: Audio Transcoding
+	conflicts = subsonic-beta
+	conflicts = subsonic
+	conflicts = subsonic-git
+	conflicts = madsonic-beta
+	conflicts = madsonic
+	backup = var/madsonic6/db
+	backup = var/madsonic6/madsonic.sh
+	backup = etc/madsonic6.conf
+	source = http://madsonic.org/download/6.0/20151008_madsonic-6.0.7600-standalone.tar.gz
+	source = madsonic6.service
+	source = enable_config_v6.patch
+	source = madsonic6.conf
+	md5sums = 733675d88f6cc229d1f33687221877fb
+	md5sums = 2d9b4da84d5e148a6d09a9e07d7050f2
+	md5sums = 7ec18a1247f9215670a5e41ac047dcf1
+	md5sums = fcc60cd39c137f39d27e5be56ea3ef0e
+
+pkgname = madsonic6
+

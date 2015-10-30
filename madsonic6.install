@@ -1,0 +1,27 @@
+post_install() {
+  useradd -d /var/madsonic6 -MrU madsonic6
+  chown -R madsonic6:madsonic6 /var/madsonic6
+  systemctl daemon-reload &> /dev/null
+  echo "*************************************************"
+  echo "* Edit /etc/madsonic.conf to configure madsonic *"
+  echo "* Start with systemctl start madsonic6.service  *"
+  echo "*************************************************"
+}
+
+post_upgrade(){
+  useradd -d /var/madsonic6 -MrU madsonic6
+  chown -R madsonic6:madsonic6 /var/madsonic6
+  systemctl daemon-reload &> /dev/null
+
+  echo "* Remember to restart madsonic6.service *"
+  
+}
+
+pre_remove(){
+  systemctl stop madsonic6
+}
+
+post_remove(){
+  userdel madsonic6
+}
+
