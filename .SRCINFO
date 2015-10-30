@@ -1,0 +1,20 @@
+pkgbase = gnupod-git
+	pkgdesc = GNUpod is a collection of tools which allow you to use your iPod under GNU/Linux and other UNIX-like operating systems.
+	pkgver = 520.a3f4c9c
+	pkgrel = 1
+	url = https://github.com/richvdh/gnupod
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl-digest-sha1
+	depends = perl-xml-parser
+	depends = perl-unicode-string
+	depends = perl-mp3-info
+	depends = perl-date-parse
+	depends = perl-text-charwidth
+	source = git+https://github.com/richvdh/gnupod.git
+	md5sums = SKIP
+
+pkgname = gnupod-git
+	install = gnupod.install
+
