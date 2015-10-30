@@ -1,18 +1,16 @@
 pkgbase = chunky
-	pkgdesc = Chunky is a Minecraft mapping and rendering tool created by Jesper Öqvist.
-	pkgver = 1.3.5
+	pkgdesc = Minecraft mapping and rendering tool
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = http://chunky.llbit.se/
 	arch = any
 	license = GPL3
-	makedepends = apache-ant
 	makedepends = gendesk
 	makedepends = unzip
-	depends = java-runtime
-	noextract = Chunky-1.3.5.zip
-	source = https://launchpad.net/chunky/1.3/1.3.5/+download/Chunky-1.3.5.zip
+	depends = java-environment
+	source = https://launchpad.net/chunky/1.3/1.3.7/+download/Chunky-1.3.7.zip
 	source = chunky.sh
-	sha256sums = 728e21d384d38d7038d2a1372b3fe45627b9ef913fd1ae5f22a3210328eadaf3
+	sha256sums = a6c37a8927c3f224186c2143b864e1757841db52fb9a4159f9982b0681d75662
 	sha256sums = 73389b938eaaf1eeac656a762fe16fab68e89ab499d11ac8427e2177a5059c57
 
 pkgname = chunky
