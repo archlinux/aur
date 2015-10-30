@@ -1,6 +1,6 @@
 pkgbase = openoffice-nl-bin
 	pkgdesc = Dutch language pack for OpenOffice.org - Repackaged from upstream
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = http://www.openoffice.org/
 	install = openoffice-i18n-bin.install
@@ -8,10 +8,10 @@ pkgbase = openoffice-nl-bin
 	arch = x86_64
 	license = APACHE
 	makedepends = rpmextract
-	depends = openoffice>=4.1.1
+	depends = openoffice>=4.1.2
 	options = !strip
 	options = docs
-	source = http://apache.org/dist/openoffice/4.1.1/binaries/nl/
+	source = http://apache.org/dist/openoffice/4.1.2/binaries/nl/
 	md5sums = SKIP
 	sha256sums = SKIP
 
