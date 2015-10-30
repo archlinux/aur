@@ -1,11 +1,12 @@
 # Maintainer: Melvin Vermeeren <mail@melvinvermeeren.com>
+# Co-Maintainer: lanDury <gvankampen@xs4all.nl>
 pkgname=openzwave-git
 _gitname="open-zwave"
-pkgver=r1159.fd7d67f
+pkgver=r1238.b258e9e
 pkgrel=1
 pkgdesc="Opensource Z-Wave control"
 url="http://www.openzwave.com"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 license=('LGPL')
 depends=('libsystemd')
 makedepends=('doxygen' 'git')

@@ -1,11 +1,12 @@
 pkgbase = openzwave-git
 	pkgdesc = Opensource Z-Wave control
-	pkgver = r1159.fd7d67f
+	pkgver = r1238.b258e9e
 	pkgrel = 1
 	url = http://www.openzwave.com
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = armv6h
 	license = LGPL
 	makedepends = doxygen
 	makedepends = git
