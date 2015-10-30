@@ -1,6 +1,6 @@
 pkgbase = mpv-vapoursynth
 	pkgdesc = Video player based on MPlayer/mplayer2
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	epoch = 1
 	url = http://mpv.io
@@ -39,8 +39,8 @@ pkgbase = mpv-vapoursynth
 	conflicts = mpv
 	options = !emptydirs
 	options = !buildflags
-	source = mpv-0.11.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.11.0.tar.gz
-	sha256sums = f9eaec3e4f6094c4d889ab04f86c479a089c389616e1a5522c92fedb2fe7044c
+	source = mpv-0.12.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.12.0.tar.gz
+	sha256sums = df242044c749d850344f5499860d852849147f20c63d36d2cd678627bd8d6cc4
 
 pkgname = mpv-vapoursynth
 
