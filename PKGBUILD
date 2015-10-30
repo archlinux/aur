@@ -24,11 +24,11 @@ package() {
   cd delorean-dark-3.18
 
 find DeLorean-Dark-3.18/ -type f \
--exec install -Dm644 "{}" "$pkgdir~/.themes/{}" \;
+-exec install -Dm644 "{}" "$pkgdir$HOME/.themes/{}" \;
 
   cd 'ROOT THEME'
 find DeLorean-Dark-3.18/ -type f \
--exec install -Dm644 "{}" "$pkgdir~/.themes/{}" \;            
+-exec install -Dm644 "{}" "$pkgdir/root/.themes/{}" \;            
 }
 
 # vim:set ts=2 sw=2 et:
