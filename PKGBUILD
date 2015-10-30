@@ -20,11 +20,6 @@ pkgver() {
 	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd ${srcdir}/${_pkgname}/src
-  #temporary fix
-  sed -i 's:if (!isprint(\*p))$:if (0 \&\& !isprint(\*p)):g' unshield.c
-}
 
 build() {
   cd ${srcdir}/${_pkgname}
