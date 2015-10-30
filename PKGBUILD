@@ -1,7 +1,7 @@
 # Maintainer: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-beta
-pkgver=42.0rc2
+pkgver=42.0rc1
 _realpkgver=42.0
 _rcbuild=1
 pkgrel=1

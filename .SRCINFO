@@ -1,6 +1,6 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org - Beta (build from source)
-	pkgver = 42.0rc2
+	pkgver = 42.0rc1
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	install = firefox-beta.install
@@ -41,7 +41,7 @@ pkgbase = firefox-beta
 	optdepends = gst-plugins-good: h.264 video
 	optdepends = gst-libav: h.264 video
 	optdepends = upower: Battery API
-	provides = firefox=42.0rc2
+	provides = firefox=42.0rc1
 	conflicts = firefox-beta-bin
 	options = !emptydirs
 	options = !makeflags
