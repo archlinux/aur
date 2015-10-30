@@ -1,6 +1,6 @@
 pkgbase = dmusic-plugin-neteasecloudmusic-git
 	pkgdesc = NeteaseCloudMusic Plugin for Deepin Music Player
-	pkgver = 20150920
+	pkgver = 20151026
 	pkgrel = 1
 	url = https://github.com/wu-nerd/dmusic-plugin-NeteaseCloudMusic
 	arch = any
