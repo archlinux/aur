@@ -10,9 +10,17 @@ license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 options=('!buildflags' '!strip' '!libtool' 'staticlibs')
-source=("unshield-$pkgver.tar.gz::https://github.com/twogood/unshield/archive/$pkgver.tar.gz")
-md5sums=('13b716e0a3f45fe74ca24c6aaf4e5bb0')
+source=("unshield-$pkgver.tar.gz::https://github.com/twogood/unshield/archive/$pkgver.tar.gz"
+        "seperate_build_dir.patch")
+md5sums=('13b716e0a3f45fe74ca24c6aaf4e5bb0'
+         '16955513c1f9338aee632f4b886cf506')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd ${srcdir}/unshield-${pkgver}
+
+  patch -p1 -i "${srcdir}/seperate_build_dir.patch"
+}
 
 build() {
   for _arch in ${_architectures}; do
