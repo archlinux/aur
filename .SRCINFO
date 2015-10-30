@@ -1,8 +1,8 @@
 pkgbase = perl-extract-url
 	pkgdesc = A Perl script that extracts URLs from correctly-encoded MIME email messages
-	pkgver = 1.5.8
+	pkgver = 1.6
 	pkgrel = 1
-	url = https://code.google.com/p/extracturl/
+	url = http://www.memoryhole.net/~kyle/extract_url
 	arch = any
 	license = BSD
 	depends = perl>=5.10.0
@@ -11,8 +11,8 @@ pkgbase = perl-extract-url
 	optdepends = perl-curses-ui: curses interface
 	optdepends = perl-uri-find: enhanced uri extraction
 	replaces = extract_url
-	source = https://extracturl.googlecode.com/files/extract_url-1.5.8.tar.gz
-	md5sums = 579b4504ba4c89ca6331af89ba40f827
+	source = https://github.com/m3m0ryh0l3/extracturl/archive/v1.6.tar.gz
+	sha256sums = 2f8fb4c361a02ee0053d2e1791d283e9b202297e4b861d7ff676ac00438ddcaf
 
 pkgname = perl-extract-url
 
