@@ -1,0 +1,16 @@
+pkgbase = libsoxrate-git
+	pkgdesc = Library made from sox rate converter
+	pkgver = 36.f447ead
+	pkgrel = 1
+	url = https://github.com/nu774/libsoxrate
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	provides = libsoxrate
+	conflicts = libsoxrate
+	source = libsoxrate::git+https://github.com/nu774/libsoxrate.git
+	sha256sums = SKIP
+
+pkgname = libsoxrate-git
+
