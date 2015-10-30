@@ -6,17 +6,17 @@ _rpmname=Xerox-Phaser_6000_6010-1.0-1.i686.rpm
 
 pkgname=xerox-phaser-6000-6010
 pkgver=1.01
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for Xerox Phaser 6000/6010 color laser printer"
 url="http://www.support.xerox.com/support/phaser-6000/downloads/engb.html?operatingSystem=linux&fileLanguage=en_GB"
 license=('custom:"XeroxEULA"')
 arch=('i686' 'x86_64')
 depends=('cups')
 if test "$CARCH" == x86_64; then
-  depends=("${depends[@]}" lib32-libcups lib32-libstdc++5 lib32-libtiff lib32-libpng)
+  depends=("${depends}" lib32-libcups lib32-libstdc++5 lib32-libtiff lib32-libpng)
 fi
 if test "$CARCH" == i686; then
-  depends=("${depends[@]}" libcups libstdc++5 libtiff libpng)
+  depends=("${depends}" libcups libstdc++5 libtiff libpng)
 fi
 makedepends=('rpmextract' 'libtool' 'dialog')
 source=("6000_6010_rpm_1.01_20110222.zip::http://www.support.xerox.com/support/phaser-6000/file-redirect/enus.html?operatingSystem=linux&fileLanguage=en&contentId=116070")

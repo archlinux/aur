@@ -1,7 +1,7 @@
 pkgbase = xerox-phaser-6000-6010
 	pkgdesc = Driver for Xerox Phaser 6000/6010 color laser printer
 	pkgver = 1.01
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.support.xerox.com/support/phaser-6000/downloads/engb.html?operatingSystem=linux&fileLanguage=en_GB
 	arch = i686
 	arch = x86_64
