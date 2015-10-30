@@ -6,7 +6,9 @@ pkgrel=1
 pkgdesc="A pep8 equivalent for bash scripts"
 arch=('any')
 makedepends=('setuptools')
-depends=('python')
+depends=('python'
+         'python-pbr'
+         'python-babel')
 url="https://github.com/openstack-dev/${pkgname}"
 license=('Apache')
 source=(http://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
