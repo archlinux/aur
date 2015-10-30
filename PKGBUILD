@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Kosteley <zzismd@gmail.com>
 _pkgname=screenshotgun
 pkgname=$_pkgname-git
-pkgver=89
+pkgver=0.10_20151031
 pkgrel=1
 pkgdesc="Open screenshoter with server part"
 arch=(any)
@@ -20,32 +20,20 @@ install=
 changelog=
 source=("$_pkgname::git+https://github.com/ismd/screenshotgun.git")
 noextract=()
-sha256sums=() #autofill using updpkgsums
+sha256sums=()
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git rev-list HEAD --count
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  sed -i "s/\#define VERSION \".*\"/\#define VERSION \"$pkgver\"/g" `find . -name const.h`
-}
-
 build() {
-  cd "$srcdir/$_pkgname"
+  mkdir "$srcdir/build-$_pkgname"
+  cd "$srcdir/build-$_pkgname"
 
-  qmake -config release
-  make
+  cmake "$srcdir/$_pkgname"
+  cmake --build .
+  strip screenshotgun
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-
-  strip screenshotgun
-  install -Dm755 "$srcdir/$_pkgname/screenshotgun" "$pkgdir/usr/bin/screenshotgun"
-
+  install -Dm755 "$srcdir/build-$_pkgname/screenshotgun" "$pkgdir/usr/bin/screenshotgun"
   install -Dm644 "$srcdir/$_pkgname/dist/screenshotgun.desktop" "$pkgdir/usr/share/applications/screenshotgun.desktop"
   install -Dm644 "$srcdir/$_pkgname/dist/screenshotgun.png" "$pkgdir/usr/share/pixmaps/screenshotgun.png"
 }
