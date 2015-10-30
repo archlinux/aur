@@ -3,7 +3,7 @@
 
 pkgname=pear-net-url2
 _pkgname=Net_URL2
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Class for parsing and handling URL'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('php-pear>=1.4.0b1')
 options=('!strip')
 noextract=(${_pkgname}-${pkgver}.tgz)
 source=(http://download.pear.php.net/package/${_pkgname}-${pkgver}.tgz)
-md5sums=('4ec4d47bc517b6b9caa7f2dd753d6424')
+md5sums=('40809c689a17247ca0d184ad7c4fb7c9')
 
 package() {
   cd ${srcdir}
