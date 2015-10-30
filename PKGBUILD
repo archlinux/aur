@@ -2,14 +2,13 @@
 
 pkgname=letsencrypt-git
 _pkgname=letsencrypt
-pkgver=3123.412e6ac
+pkgver=3638.4998f32
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
 license=('Apache')
 url="https://letsencrypt.org/"
-depends=('python2' 'augeas' 'ca-certificates' 'dialog' 'openssl' 'gcc' 'libffi' 'git')
-makedepends=('python-virtualenv')
+depends=('python2' 'augeas' 'ca-certificates' 'dialog' 'openssl' 'gcc' 'libffi' 'git' 'python-virtualenv' 'pkg-config')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/letsencrypt/letsencrypt")
