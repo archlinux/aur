@@ -2,7 +2,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libdcp
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
 arch=('i686' 'x86_64')
 url="http://carlh.net/libdcp"
@@ -13,6 +13,7 @@ source=("http://carlh.net/downloads/${pkgname}/${pkgname}-${pkgver}.tar.bz2"  )
 sha512sums=('23353a744ef607ff6b292182c4ecc65b65b1bc4d0cb3e5810fb6839a9b3afdb4bb557d1627332faad494c8ca08c1b8e906a093a54d6609cbf4568758172bbdb2')
 
 build() {
+  CXXFLAGS="$CXXFLAGS -std=c++11"
   cd "${srcdir}/${pkgname}-${pkgver}"
   python2 waf configure --prefix=/usr
   python2 waf build
