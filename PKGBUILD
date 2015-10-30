@@ -1,7 +1,7 @@
 #  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=letsencrypt-nginx
-pkgver=0.0.0.dev20151024
+pkgver=0.0.0.dev20151030
 pkgrel=1
 pkgdesc="Nginx plugin for Let’s Encrypt client"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('letsencrypt' 'python2-acme' 'python2-setuptools'
 # though for easier package management, it is omitted in this PKGBUILD
 conflicts=("letsencrypt-git")
 source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('15a176e1c6faabe73f5a3543fcbe097b')
+md5sums=('ca077abbf9ad35a18d2b255be834407e')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
