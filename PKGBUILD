@@ -1,7 +1,7 @@
 # Maintainer: Duong Pham <dthpham@gmail.com>
 pkgname=butterflow
-pkgver=0.1.9
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Make slow motion and motion interpolated videos from the command line"
 arch=('x86_64')
 url="https://github.com/dthpham/butterflow"
@@ -14,8 +14,8 @@ optdepends=('intel-opencl-runtime: Intel processor device support'
 provides=('butterflow')
 conflicts=('butterflow')
 install=butterflow.install
-source=("http://srv.dthpham.me/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9f62960bb1a58c7fd7b67e7260d32a51e95ef5c7ff9f0811307463c1f1f338cf')
+source=("http://srv.dthpham.me/butterflow/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('dc70927d78193543b4b364573e0cf2d0881a54483aa306db51cd9f57cf23781e')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,8 +1,7 @@
 post_install() {
-  echo "You still need to install at least one vendor-specific implementation of
-  OpenCL that supports your hardware (see the suggested packages below). When
-  finished, you can run $ butterflow -d to print a list of all detected devices.
-  For more information on how to satisfy this requirement, please read this wiki
-  page:
+  echo "You should install at least one vendor-specific implementation of OpenCL
+  that supports your hardware (see the suggested packages below). When finished,
+  you can run $ butterflow -d to print a list of all detected devices. For more
+  information on how to satisfy this requirement, please read this wiki page:
   https://wiki.archlinux.org/index.php/GPGPU"
 }
