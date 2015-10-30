@@ -1,14 +1,14 @@
 pkgbase = roswell
 	pkgdesc = Lisp installer and launcher
-	pkgver = 0.0.3.49
+	pkgver = 0.0.3.50
 	pkgrel = 1
 	url = https://github.com/snmsts/roswell
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = curl
-	source = https://github.com/snmsts/roswell/archive/v0.0.3.49.tar.gz
-	md5sums = 0746c3a90bfa2e991dce1e65e1abb1bb
+	source = https://github.com/snmsts/roswell/archive/v0.0.3.50.tar.gz
+	md5sums = 2b61fdb585afc026b93744521a19de16
 
 pkgname = roswell
 
