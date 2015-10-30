@@ -1,0 +1,16 @@
+pkgbase = owncloud-app-news-git
+	pkgdesc = An RSS/Atom feed reader app for ownCloud
+	pkgver = 6.0.5.g79f5e29
+	pkgrel = 1
+	url = https://github.com/owncloud/news
+	arch = any
+	license = AGPL
+	depends = owncloud
+	provides = owncloud-app-news
+	conflicts = owncloud-app-news
+	options = !strip
+	source = owncloud-app-news-git::git+https://github.com/owncloud/news.git
+	sha512sums = SKIP
+
+pkgname = owncloud-app-news-git
+
