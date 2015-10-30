@@ -1,6 +1,6 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 6.10.beta1.r0.g3152b5c
+	pkgver = 6.10.beta2.r0.g8a972ca
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = i686

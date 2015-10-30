@@ -7,7 +7,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=6.10.beta1.r0.g3152b5c
+pkgver=6.10.beta2.r0.g8a972ca
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -140,7 +140,7 @@ package() {
   cp bin/sage "$pkgdir"/usr/bin
   for _i in arch-env banner cachegrind callgrind cleaner coverage coverageall CSI CSI-helper.py cython env eval grep grepdoc inline-fortran ipython \
     massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run run-cython runtests startuptime.py \
-    sws2rst valgrind version.sh
+    sws2rst unzip valgrind version.sh
   do
     cp bin/sage-$_i "$pkgdir"/usr/bin
   done
