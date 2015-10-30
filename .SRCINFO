@@ -1,7 +1,7 @@
 pkgbase = owncloud-news-updater-git
 	pkgdesc = A script uses the updater API parallel fetching of RSS feed updates for owncloud-app-news-updater
 	pkgver = 3.001.1112.g79f5e29
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/owncloud/news
 	install = updater.install
 	arch = any
