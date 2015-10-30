@@ -1,0 +1,23 @@
+pkgbase = pybitmessage
+	pkgdesc = Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers
+	pkgver = 0.4.4
+	pkgrel = 2
+	url = https://github.com/Bitmessage/PyBitmessage 
+	arch = any
+	license = MIT
+	depends = openssl
+	depends = python2
+	depends = python2-pyqt4
+	depends = qt4
+	depends = sqlite
+	optdepends = mpg123: MP3 sounds support
+	optdepends = alsa-utils: WAV sounds support
+	provides = pybitmessage
+	conflicts = pybitmessage-git
+	source = PyBitmessage-0.4.4.tar.gz::https://github.com/Bitmessage/PyBitmessage/archive/v0.4.4.tar.gz
+	source = pybitmessage.sh
+	sha256sums = 2fe2b1ad4d7426c8777fb429129b7a07c717ea5f00cc3041a03ac19fd3259b3a
+	sha256sums = dad3783438c7328468eb0117da04b26c4f6d5f897ed3b44a333b22355c938a4b
+
+pkgname = pybitmessage
+
