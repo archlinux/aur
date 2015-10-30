@@ -2,8 +2,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=pykolab
-pkgver=0.7.13
-pkgrel=2
+pkgver=0.7.17
+pkgrel=1
 pkgdesc='Kolab Python Utilities'
 arch=('any')
 license=('GPL3')
@@ -35,11 +35,11 @@ optdepends=('cyrus-imapd-ldap: Only supported IMAP backend so far'
             'kolab-syncroton: ActiveSync support'
             'kolab-webadmin: Administration tool')
 
-sha256sums=('842586765921ae4f25acbcb53dc71c1d89907a1b8a9c70f83349d9367c4ecfee'
+sha256sums=('c01e8f81a8673fbd0bb38bb5447fc08659d8ebc961463af99a9a0aabd392c6bb'
             '6995524d755ea3cbf3d36fc572667629716a141e7f757af1a970c2e85f8fa4de'
             'a515f068b5fe12c858f327fa0558087e61b4d39070d67dfba9a2b6d19a83c2c6'
-            '1ff05a0f7f503443cab6d7b81ce723202df4f10cbbe8f483056d7f4aaea7d460'
-            '653b49d20dbb0b492962e87009c53acaa9acb2d9825bd22d8335c43386ddd8c7'
+            '0f9d45bb7784426b7515eac8158c6cf899b647b20763c5efd302535bd06b1480'
+            'bbf5b350b0cf5b11cf93710440965c91874652d008e5b6cbd6a541188318a2d5'
             '4bbb72695b20b7a4c1c0348a93c62f048f0eef9f3bc7135fa2720c62e98e4634')
 
 

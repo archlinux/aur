@@ -120,7 +120,7 @@ index 7206a09..b8505e0 100644
  
      \$config['mail_domain'] = '';
  
-@@ -132,8 +132,8 @@
+@@ -150,8 +150,8 @@
      \$config['mime_magic'] = null;
      \$config['im_identify_path'] = '/usr/bin/identify';
      \$config['im_convert_path'] = '/usr/bin/convert';

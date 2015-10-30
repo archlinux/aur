@@ -116,10 +116,10 @@ index c805d20..1786438 100644
      if os.path.isfile('/bin/systemctl'):
 -        subprocess.call(['/bin/systemctl', 'restart', 'dirsrv.target'])
 +        subprocess.call(['/bin/systemctl', 'restart', '389-ds-base.target'])
+         time.sleep(20)
      elif os.path.isfile('/sbin/service'):
          subprocess.call(['/sbin/service', 'dirsrv', 'restart'])
-     elif os.path.isfile('/usr/sbin/service'):
-@@ -428,7 +430,7 @@ ServerAdminPwd = %(admin_pass)s
+@@ -429,7 +431,7 @@ ServerAdminPwd = %(admin_pass)s
          log.error(_("Could not start the directory server service."))
  
      if os.path.isfile('/bin/systemctl'):
@@ -194,7 +194,7 @@ diff --git a/pykolab/setup/setup_mysql.py b/pykolab/setup/setup_mysql.py
 index 174cbc7..1e0d70f 100644
 --- a/pykolab/setup/setup_mysql.py
 +++ b/pykolab/setup/setup_mysql.py
-@@ -186,7 +186,7 @@ password='%s'
+@@ -206,7 +206,7 @@ password='%s'
          p2.communicate()
  
          conf.command_set('kolab_wap', 'sql_uri', 'mysql://kolab:%s@localhost/kolab' % (mysql_kolab_password))
@@ -229,7 +229,7 @@ diff --git a/pykolab/setup/setup_roundcube.py b/pykolab/setup/setup_roundcube.py
 index 6558989..fad35fa 100644
 --- a/pykolab/setup/setup_roundcube.py
 +++ b/pykolab/setup/setup_roundcube.py
-@@ -88,9 +88,9 @@ def execute(*args, **kw):
+@@ -89,9 +89,9 @@ def execute(*args, **kw):
              'conf': conf
          }
  
@@ -241,16 +241,16 @@ index 6558989..fad35fa 100644
          rc_settings['skin'] = 'chameleon'
      else:
          rc_settings['skin'] = 'larry'
-@@ -139,13 +139,15 @@ def execute(*args, **kw):
-             fp = open('/etc/roundcubemail/%s' % (want_file), 'w')
-         elif os.path.isdir('/etc/roundcube'):
-             fp = open('/etc/roundcube/%s' % (want_file), 'w')
-+        elif os.path.isdir('/etc/webapps/roundcubemail/config'):
-+            fp = open('/etc/webapps/roundcubemail/config/%s' % (want_file), 'w')
+@@ -140,13 +140,15 @@ def execute(*args, **kw):
+                 fp = open('/etc/roundcubemail/%s' % (want_file), 'w')
+             elif os.path.isdir('/etc/roundcube'):
+                 fp = open('/etc/roundcube/%s' % (want_file), 'w')
++            elif os.path.isdir('/etc/webapps/roundcubemail/config'):
++                fp = open('/etc/webapps/roundcubemail/config/%s' % (want_file), 'w')
  
-         if not fp == None:
-             fp.write(t.__str__())
-             fp.close()
+             if not fp == None:
+                 fp.write(t.__str__())
+                 fp.close()
  
      schema_files = []
 -    for root, directories, filenames in os.walk('/usr/share/doc/'):
@@ -258,7 +258,7 @@ index 6558989..fad35fa 100644
          directories.sort()
          for directory in directories:
              if directory.startswith("roundcubemail"):
-@@ -164,6 +166,8 @@ def execute(*args, **kw):
+@@ -165,6 +167,8 @@ def execute(*args, **kw):
          rcpath = '/usr/share/roundcubemail/'
      elif os.path.isdir('/usr/share/roundcube'):
          rcpath = '/usr/share/roundcube/'
