@@ -12,7 +12,10 @@ depends=('lcms2>=2.2' 'libwmf>=0.2.8' 'webkitgtk2>=1.6.1' \
          'libgexiv2' 'librsvg>=2.16.1' 'libpng>=1.2.27' \
          'fontconfig>=2.2.0' 'desktop-file-utils' 'babl' \
          'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'pygtk' 'dbus-glib' 'gtk-doc' \
-          'openexr>=1.6.1' 'cairo>=1.12.2' 'hicolor-icon-theme' 'gegl')
+          'openexr>=1.6.1' 'cairo>=1.12.2' 'hicolor-icon-theme' 
+          #'gegl'
+          'gegl02'
+          )
 makedepends=('gutenprint>=5.0.0' 'intltool>=0.40.1' \
   'gnome-python>=2.16.2' 'poppler>=0.12.4' 'pkgconfig>=0.21' \
   'alsa-lib>=1.0.0' 'libtool>=2.2' 'autoconf>=2.54' 'automake>=1.10' \
@@ -51,7 +54,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_gitname"
     patch -p1 < ../look_for_automake_1.15.patch
-    patch -p1 < ../use_gegl_3.patch
+    # patch -p1 < ../use_gegl_3.patch
 }
 
 build() {
