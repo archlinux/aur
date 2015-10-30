@@ -47,4 +47,5 @@ package_python2-ceilometerclient() {
         install \
         --root="${pkgdir}" \
         --optimize=1
+    mv "${pkgdir}"/usr/bin/ceilometer{,2}
 }
