@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 User=http
-ExecStart=/opt/domoticz/domoticz -www 8080 -daemon &> /dev/null
+ExecStart=/opt/domoticz/domoticz -www 8080 -daemon
+WorkingDirectory=/opt/domoticz
 RestartSec=5
 Restart=on-failure
 
