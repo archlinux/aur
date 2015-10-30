@@ -1,12 +1,12 @@
 # Maintainer: Hendrik Donner <hendrik.donner@gmx.de>
 pkgname=concurrency-kit
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A library with concurrency related algorithms and data structures in C."
 arch=('i686' 'x86_64')
 url="http://concurrencykit.org"
-source=("http://concurrencykit.org/releases/ck-$pkgver.tar.gz")
-sha256sums=('89feea338cd6a8efbe7bd64d033cefccb34775ea0bedbcb1612df2b822fa0356')
+source=("https://github.com/concurrencykit/ck/archive/$pkgver.tar.gz")
+sha256sums=('c1c77c101a268d2f5b3481a8b5729fab8016f2f7a42313bf01e0c98149106027')
 license=('custom')
 
 build() {

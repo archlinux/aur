@@ -1,13 +1,13 @@
 pkgbase = concurrency-kit
 	pkgdesc = A library with concurrency related algorithms and data structures in C.
-	pkgver = 0.4.5
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = http://concurrencykit.org
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = http://concurrencykit.org/releases/ck-0.4.5.tar.gz
-	sha256sums = 89feea338cd6a8efbe7bd64d033cefccb34775ea0bedbcb1612df2b822fa0356
+	source = https://github.com/concurrencykit/ck/archive/0.5.0.tar.gz
+	sha256sums = c1c77c101a268d2f5b3481a8b5729fab8016f2f7a42313bf01e0c98149106027
 
 pkgname = concurrency-kit
 
