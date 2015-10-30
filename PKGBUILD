@@ -1,6 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
-pkgname=('python-heatclient' 'python2-heatclient')
+pkgname=('python-heatclient'
+         'python2-heatclient')
 pkgver='0.8.0'
 pkgrel='1'
 pkgdesc='Python client library for Heat'
@@ -12,18 +13,18 @@ sha256sums=('5cd1c855ee21f18bfffbc7269e40c417b953d0855aa3cc8b56d778b8612467d5')
 
 package_python-heatclient()
 {
-    depends=('python-babel>=1.3'
-             'python-pbr>=0.6'
-             'python-iso8601>=0.1.9'
-             'python-prettytable>=0.7'
+    depends=('python-babel'
+             'python-pbr'
+             'python-iso8601'
+             'python-prettytable'
              'python-oslo-i18n'
              'python-oslo-serialization'
              'python-oslo-utils'
-             'python-swiftclient'
              'python-keystoneclient'
+             'python-swiftclient'
              'python-yaml'
-             'python-requests>=2.2.0'
-             'python-six>=1.7.0')
+             'python-requests'
+             'python-six')
     makedepends=('python-setuptools')
     cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py \
@@ -34,18 +35,18 @@ package_python-heatclient()
 
 package_python2-heatclient()
 {
-    depends=('python2-babel>=1.3'
-             'python2-pbr>=0.6'
-             'python2-iso8601>=0.1.9'
-             'python2-prettytable>=0.7'
+    depends=('python2-babel'
+             'python2-pbr'
+             'python2-iso8601'
+             'python2-prettytable'
              'python2-oslo-i18n'
              'python2-oslo-serialization'
              'python2-oslo-utils'
-             'python2-swiftclient'
              'python2-keystoneclient'
+             'python2-swiftclient'
              'python2-yaml'
-             'python2-requests>=2.2.0'
-             'python2-six>=1.7.0')
+             'python2-requests'
+             'python2-six')
     makedepends=('python2-setuptools')
     cd "${srcdir}/python-heatclient-${pkgver}"
     python2 setup.py \
