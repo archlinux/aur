@@ -43,7 +43,15 @@ package() {
 	cd deploy
 	install -Dm555 ./KISS ${pkgdir}/opt/${pkgname}/KISS
 	#install -Dm555 ./KISS ${pkgdir}/usr/bin/KISS
-	install -dDm644 ./docs ${pkgdir}/opt/${pkgname}/docs
-	install -dDm644 ./locale ${pkgdir}/opt/${pkgname}/locale
-	install -dDm644 ./template_packs ${pkgdir}/opt/${pkgname}/template_packs
+	install -dm666 ./docs/ ${pkgdir}/opt/${pkgname}/docs/
+	cp -a ./docs/. 	${pkgdir}/opt/${pkgname}/docs/
+	chmod -R 644 ${pkgdir}/opt/${pkgname}/docs/
+
+	install -dm666 ./locale/ ${pkgdir}/opt/${pkgname}/locale/
+	cp -a ./locale/. 	${pkgdir}/opt/${pkgname}/locale/
+	chmod -R 666 ${pkgdir}/opt/${pkgname}/locale/
+
+	install -dm666 ./template_packs/ ${pkgdir}/opt/${pkgname}/template_packs/
+	cp -a ./template_packs/. 	${pkgdir}/opt/${pkgname}/template_packs/
+	chmod -R 644 ${pkgdir}/opt/${pkgname}/template_packs/
 }
