@@ -1,7 +1,7 @@
 pkgname=enpass-bin
 _pkgname=enpass
 pkgver=5.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A multiplatform password manager"
 arch=('i686' 'x86_64')
 url="http://enpass.io/"
