@@ -1,0 +1,34 @@
+pkgbase = python-ceilometerclient
+	pkgdesc = Python client library for Ceilometer
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://launchpad.net/python-ceilometerclient
+	arch = any
+	license = Apache
+	source = https://pypi.python.org/packages/source/p/python-ceilometerclient/python-ceilometerclient-1.5.0.tar.gz
+	sha256sums = f81284c1ac025ba65ac0e630a3bb01d4fd73ad087b9e1218cf677ac42180112c
+
+pkgname = python-ceilometerclient
+	depends = python-pbr
+	depends = python-iso8601
+	depends = python-oslo-i18n
+	depends = python-oslo-serialization
+	depends = python-oslo-utils
+	depends = python-prettytable
+	depends = python-keystoneclient
+	depends = python-requests
+	depends = python-six
+	depends = python-stevedore
+
+pkgname = python2-ceilometerclient
+	depends = python2-pbr
+	depends = python2-iso8601
+	depends = python2-oslo-i18n
+	depends = python2-oslo-serialization
+	depends = python2-oslo-utils
+	depends = python2-prettytable
+	depends = python2-keystoneclient
+	depends = python2-requests
+	depends = python2-six
+	depends = python2-stevedore
+
