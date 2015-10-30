@@ -1,0 +1,15 @@
+pkgbase = sherlock
+	pkgdesc = Plagiarism (similarity) checker for text files (essays, source-code, etc.)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://sydney.edu.au/engineering/it/~scilect/sherlock/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = http://sydney.edu.au/engineering/it/~scilect/sherlock/sherlock.c
+	source = http://sydney.edu.au/engineering/it/~scilect/sherlock/makefile
+	md5sums = 8a934f9ee832a9c8e771c9094eb22a61
+	md5sums = 7f8cb054713da2307f9c7a7a3346a575
+
+pkgname = sherlock
+
