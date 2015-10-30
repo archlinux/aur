@@ -1,6 +1,6 @@
 # Maintainer: Ramana Kumar <at gmail dot com>
 pkgname=opentheory
-pkgver=1.3r20150820
+pkgver=1.3r20151025
 pkgrel=1
 pkgdesc="a tool for processing higher-order logic theory packages"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ groups=()
 depends=()
 makedepends=(mlton)
 source=($pkgname-$pkgver.tar.gz::$url/$pkgname.tar.gz)
-md5sums=('4321a0a289435368d671d18a0a99f6df')
+md5sums=('45b1ed1a59e000b7384b1b3372dcaebd')
 
 build() {
   cd "$srcdir/$pkgname"
