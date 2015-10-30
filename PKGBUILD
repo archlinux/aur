@@ -5,12 +5,12 @@
 _shell=brackets-shell
 _shell_version=linux-1547
 _brackets=brackets
-_brackets_version=1.4
+_brackets_version=1.5
 _version_prefix=release-
 
 # Package
 pkgname=brackets-git
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Adobe Brackets - An open source code editor for the web, written in JavaScript, HTML and CSS."
 arch=("i686" "x86_64")
