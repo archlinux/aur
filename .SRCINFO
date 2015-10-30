@@ -1,6 +1,6 @@
 pkgbase = rkt-git
 	pkgdesc = App container runtime
-	pkgver = 0.8.0.r47.gd71fda7
+	pkgver = 0.10.0.r56.g21fd43a
 	pkgrel = 1
 	url = https://github.com/coreos/rkt
 	install = rkt.install
@@ -12,6 +12,7 @@ pkgbase = rkt-git
 	makedepends = squashfs-tools
 	makedepends = perl-capture-tiny
 	makedepends = intltool
+	makedepends = bc
 	provides = rkt
 	conflicts = rocket
 	conflicts = rkt
