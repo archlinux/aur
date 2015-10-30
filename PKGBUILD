@@ -2,7 +2,7 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=zotonic
-pkgver=0.13.4
+pkgver=0.13.5
 pkgrel=1
 pkgdesc="Content management system (web-CMS) server written in Erlang"
 arch=('any')
@@ -22,11 +22,11 @@ source=("https://github.com/zotonic/zotonic/archive/release-${pkgver}.zip"
 	"${pkgname}.service"
         "config"
         "erlang.config")
-md5sums=('7fdc62f94eb7cd3ac6df3484469e5946'
+md5sums=('b3882699b697d823df3cbf0060e76ca2'
          'a6f0f70d2a2af5ff0d0cfaf1531f6ed0'
          '7904af22bf674471c212bde82a2cdcb6'
          '4f09c0c994f5a17844b8ed999d3e7e39')
-sha512sums=('e988e879b28aeea290eb30c1dc6e17823ddb7da4769e4251e59e6c334534b35073df9d6009a909d46494ce612ca4668786013c6667981a710648445dc844aab7'
+sha512sums=('01a8c406345cfb07043bcec5cc0181d01d4857266c8db9bea2a1f384ae9c422c95e4695831ef83f4bfae8008c371e50c15241044b493144b4742e4e9752c766d'
             '0768bbbf07a3448429ae06e30a13751fc8060b3a7c626623731931d962664f542f13c93967b35303e3f0d8afdf848b4b83d310879d6deb1a7303cdc04f909953'
             '62213581acaadcefacf15253175e27135bcc964768a061624a04ebcb3dc6e761ce3629017ce01286b741884fb0b23c4ebfcb6508f14200d99ecdb4f4860bd000'
             'a6e5069e087a314053dab3774ecb123b5d5888c561430ecf02be34b72b3917c513d076323667188fde0ee6c2014e44f41b3a0a4b8fd79dd17c5523425f6979d8')
