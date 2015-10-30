@@ -1,6 +1,6 @@
 pkgbase = eiciel
 	pkgdesc = GNOME file ACL editor
-	pkgver = 0.9.10
+	pkgver = 0.9.11
 	pkgrel = 1
 	url = http://rofi.roger-ferrer.org/eiciel/
 	install = eiciel.install
@@ -13,8 +13,8 @@ pkgbase = eiciel
 	depends = desktop-file-utils
 	depends = gnome-vfs
 	options = !libtool
-	source = http://rofi.roger-ferrer.org/eiciel/download/eiciel-0.9.10.tar.bz2
-	sha512sums = 7801753edfb07b566f4979067c91031dcb8f3010a7cc96e12b05847706d81e10eb6c5e6df224c98cf9d2ad8cb5d9b7848dd610e1c6c3c8a2331c1d4ca3cc61fe
+	source = http://rofi.roger-ferrer.org/eiciel/download/eiciel-0.9.11.tar.bz2
+	sha512sums = 914b8b888e502a31f6c70bcc7d391ea8b79dde07e13b9a6ebb3b52a20b793fafd7a7a7f8ff7177c0150a223a74cae1b06fca0a274bc27545bb89223b4b8fd2aa
 
 pkgname = eiciel
 
