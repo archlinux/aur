@@ -15,7 +15,7 @@ _install_path=${_install_prefix}/${_install_name}
 
 pkgname=openoffice
 replaces=('openoffice-base-bin')
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Repackaged from upstream"
 arch=('i686' 'x86_64')
@@ -57,10 +57,10 @@ sha256sums=( '0000000000000000000000000000000000000000' )
 case "$CARCH"
 in i686 )
 	source[0]+="Apache_OpenOffice_${pkgver}_Linux_x86_install-rpm_${_lang}.tar.gz"
-	sha256sums[0]='a9e9b1b2b0091701b1fa55fef45a89eee2622e9905de1837df0f080258c15e7e'
+	sha256sums[0]='0b1f975e3ca18ee8217cde8039fa58daa212b23c7a439a5572b79a486b1cd5fe'
 ;; x86_64 )
 	source[0]+="Apache_OpenOffice_${pkgver}_Linux_x86-64_install-rpm_${_lang}.tar.gz"
-	sha256sums[0]='9c96be69cabb4b4e9c9eea6d732d00eb64017dbf1610e65c7d60a7d0b84fcdcd'
+	sha256sums[0]='f1aa4fba69a752e63160b0cc6afb6dbaa1cd686d2d2d5344b50ef844cff72d3a'
 esac
 
 _find_rpms() {

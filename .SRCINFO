@@ -1,6 +1,6 @@
 pkgbase = openoffice
 	pkgdesc = Repackaged from upstream
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = http://www.openoffice.org/
 	install = openoffice.install
@@ -21,7 +21,8 @@ pkgbase = openoffice
 	optdepends = mesa: for the OGLTrans extension of impress
 	optdepends = mime-types: provides /etc/mime.types
 	optdepends = nss: adds support for signed files/macros
-	optdepends = openoffice-de-bin: adds additional language pack (example)
+	optdepends = openoffice-de-bin: adds additional German language pack
+	optdepends = openoffice-nl-bin: adds additional Dutch language pack
 	optdepends = python2: adds python support
 	optdepends = raptor1: adds rdf support
 	optdepends = sqlite: adds sqlite support
@@ -30,7 +31,7 @@ pkgbase = openoffice
 	options = !strip
 	options = docs
 	backup = opt/openoffice4/program/sofficerc
-	source = http://downloads.sourceforge.net/project/openofficeorg.mirror/4.1.1/binaries/en-US/
+	source = http://downloads.sourceforge.net/project/openofficeorg.mirror/4.1.2/binaries/en-US/
 	sha256sums = 0000000000000000000000000000000000000000
 
 pkgname = openoffice
