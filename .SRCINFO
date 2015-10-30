@@ -1,6 +1,6 @@
 pkgbase = kolab-webadmin
 	pkgdesc = Kolab Web Administration Panel
-	pkgver = 3.2.7
+	pkgver = 3.2.10
 	pkgrel = 1
 	url = http://kolab.org
 	install = kolab-webadmin.install
@@ -9,9 +9,9 @@ pkgbase = kolab-webadmin
 	depends = php-ldap
 	depends = pear-net-ldap3
 	optdepends = pykolab: configuration tool
-	source = http://mirror.kolabsys.com/pub/releases/kolab-webadmin-3.2.7.tar.gz
+	source = http://mirror.kolabsys.com/pub/releases/kolab-webadmin-3.2.10.tar.gz
 	source = apache.patch
-	sha256sums = 7110cbcae38cbb4d1eb8ee73749b42aa1dc1df2efdfd1e0edc76e9e5977a625f
+	sha256sums = d4a72d677f63bff1aeee976815b930a7f0eccc652f788eeea03774c6b77a16a8
 	sha256sums = 9f3c03d486a66437fb57ecefc883bd740af6b8b74237b2f819d13ad5df9b034c
 
 pkgname = kolab-webadmin

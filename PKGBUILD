@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=kolab-webadmin
-pkgver=3.2.7
+pkgver=3.2.10
 pkgrel=1
 pkgdesc='Kolab Web Administration Panel'
 arch=('any')
@@ -15,7 +15,7 @@ source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
         "apache.patch")
 optdepends=('pykolab: configuration tool')
 
-sha256sums=('7110cbcae38cbb4d1eb8ee73749b42aa1dc1df2efdfd1e0edc76e9e5977a625f'
+sha256sums=('d4a72d677f63bff1aeee976815b930a7f0eccc652f788eeea03774c6b77a16a8'
             '9f3c03d486a66437fb57ecefc883bd740af6b8b74237b2f819d13ad5df9b034c')
 
 prepare() {
