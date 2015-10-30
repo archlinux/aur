@@ -3,13 +3,13 @@
 pkgname=topbeat
 pkgver=1.0.0_beta4
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source server monitoring agent that stores metrics in Elasticsearch'
 arch=('i686' 'x86_64')
 url='https://www.elastic.co/products/beats'
 license=('APACHE')
 backup=("etc/$pkgname/$pkgname.yml")
-makedepends=('go')
+makedepends=('go>=1.5')
 optdepends=('elasticsearch: for running standalone installation')
 options=('!strip')
 provides=("$pkgname")
