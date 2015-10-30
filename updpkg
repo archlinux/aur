@@ -2,7 +2,7 @@
 # updpkg
 
 updpkgsums
-makepkg -o
+makepkg -do
 mksrcinfo
 
 exit

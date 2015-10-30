@@ -1,7 +1,7 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=updpkg
-pkgver=20150930
+pkgver=20151030
 pkgrel=1
 pkgdesc="checks PKGBUILD, updates checksums and pkgver and creates .SRCINFO"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://forum.manjaro.org/index.php?topic=26744.0"
 license=('GPL')
 depends=('pkgbuild-introspection')
 source=$pkgname
-md5sums=('461fcc327fec0bd662cacc0d94bfc6ee')
+md5sums=('2288e5e41692512380e546a3a11cbab6')
 
 pkgver() {
 	date +'%Y%m%d'
