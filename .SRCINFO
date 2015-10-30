@@ -1,0 +1,17 @@
+pkgbase = pcompiler-git
+	pkgdesc = an automatic source code compiler
+	pkgver = r135.48c898c
+	pkgrel = 1
+	url = https://github.com/kipr/pcompiler
+	arch = any
+	license = GPL3
+	depends = cmake>=2.8.12
+	depends = qt5-base
+	depends = libkar
+	depends = sed
+	provides = pcompiler
+	source = pcompiler-git::git+https://github.com/kipr/pcompiler.git
+	sha256sums = SKIP
+
+pkgname = pcompiler-git
+
