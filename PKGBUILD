@@ -1,11 +1,12 @@
-# Maintainer: portals <portals at riseup.net> Base on work of: 2bluesc <2bluesc at gmail.com> and mazzolino <maze+aur at strahlungsfrei.de>
+# Maintainer: William Grieshaber <me@zee.li>
+# Contributor: portals <portals at riseup.net> Base on work of: 2bluesc <2bluesc at gmail.com> and mazzolino <maze+aur at strahlungsfrei.de>
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 
 pkgname=armory
 _pkgname=BitcoinArmory
 pkgver=0.93.2 
 _pkgver=0.93.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-Based Bitcoin Software"
 arch=('i686' 'x86_64')
 url="https://github.com/etotheipi/BitcoinArmory"

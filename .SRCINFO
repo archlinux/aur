@@ -1,7 +1,7 @@
 pkgbase = armory
 	pkgdesc = Python-Based Bitcoin Software
 	pkgver = 0.93.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/etotheipi/BitcoinArmory
 	arch = i686
 	arch = x86_64
