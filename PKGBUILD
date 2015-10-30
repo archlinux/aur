@@ -17,7 +17,7 @@ package() {
   cd "2003RTPｾｯﾄｱｯﾌﾟ"
   unar RPG2003RTP.exe
   cd RPG2003RTP
-  unshield x data1.cab
+  unshield -R x data1.cab
   convmv -r -f SHIFT-JIS -t utf-8 --notest .
   
   mkdir -p "$pkgdir/opt/"
