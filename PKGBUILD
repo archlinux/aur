@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=quine-relay
-pkgver=73e4544
-pkgrel=2
-pkgdesc='Uroboros program with 50 programming languages'
+pkgver=5029ce6
+pkgrel=1
+pkgdesc='Uroboros program with 100 programming languages'
 arch=('x86_64' 'i686')
 url='http://github.com/mame/quine-relay'
 license=('MIT')
@@ -18,7 +18,7 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          # wspace, scilab
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
-source=('quine-relay::git://github.com/mame/quine-relay.git#branch=50'
+source=('quine-relay::git://github.com/mame/quine-relay.git'
         'quine-relay.sh')
 sha256sums=('SKIP'
             '2409f6ccaed7070143b365fb1e276ff73620d9651f12d5058c2291b3d093be95')
