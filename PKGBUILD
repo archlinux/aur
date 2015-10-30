@@ -3,7 +3,7 @@
 
 pkgname=tbe
 pkgver=0.9.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Butterfly Effect is a physics-based puzzle game"
 arch=('i686' 'x86_64')
 url="https://github.com/kaa-ching/tbe"
@@ -22,10 +22,8 @@ prepare() {
 }
 
 build() {
-	cd tbe-${pkgver}
-	pushd i18n
-	./tbe_levels_i18n.sh
-	popd
+	cd tbe-${pkgver}/i18n
+	./tbe_levels_i18n.sh && cd ..
 	cmake \
 		-DWITH_DOCS=ON \
 		-DBUILD_SHARED_LIBS=OFF \
