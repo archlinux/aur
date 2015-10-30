@@ -74,7 +74,7 @@ package_octopi() {
 		    'octopi-repoeditor: for editing functions'
 		    'octopi-cachecleaner: for cleaning functions'
 		    'octopi-notifier: for notifications'
-		    'octopi-notifier-kde: for notifications on kde'
+		    'octopi-notifier-kde4: for notifications on kde'
 		    'pacmanlogviewer: to view pacman log files')
 	conflicts=('octopi-git')
 

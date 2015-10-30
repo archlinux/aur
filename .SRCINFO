@@ -31,7 +31,7 @@ pkgname = octopi
 	optdepends = octopi-repoeditor: for editing functions
 	optdepends = octopi-cachecleaner: for cleaning functions
 	optdepends = octopi-notifier: for notifications
-	optdepends = octopi-notifier-kde: for notifications on kde
+	optdepends = octopi-notifier-kde4: for notifications on kde
 	optdepends = pacmanlogviewer: to view pacman log files
 	conflicts = octopi-git
 
