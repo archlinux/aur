@@ -6,7 +6,7 @@ _rpmname=Xerox-Phaser_6000_6010-1.0-1.i686.rpm
 
 pkgname=xerox-phaser-6000-6010
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for Xerox Phaser 6000/6010 color laser printer"
 url="http://www.support.xerox.com/support/phaser-6000/downloads/engb.html?operatingSystem=linux&fileLanguage=en_GB"
 license=('custom:"XeroxEULA"')
