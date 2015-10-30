@@ -1,7 +1,7 @@
 pkgbase = libdcp
 	pkgdesc = A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://carlh.net/libdcp
 	arch = i686
 	arch = x86_64
