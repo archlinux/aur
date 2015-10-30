@@ -1,0 +1,22 @@
+pkgbase = photoflow-git
+	pkgdesc = Non-destructive, layer-based photo retouching including RAW image development
+	pkgver = 0.2.3.r10.g8fbe066
+	pkgrel = 1
+	url = http://aferrero2707.github.io/PhotoFlow
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = cmake
+	depends = libgexiv2
+	depends = vips
+	depends = lensfun
+	depends = gtkmm
+	provides = photoflow
+	conflicts = photoflow
+	source = photoflow::git://github.com/aferrero2707/PhotoFlow.git#branch=stable
+	md5sums = SKIP
+
+pkgname = photoflow-git
+
