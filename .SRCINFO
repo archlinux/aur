@@ -1,0 +1,14 @@
+pkgbase = gmux_backlight
+	pkgdesc = Modify brightness of displays attached to a gmux.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/problame/gmux_backlight
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = asciidoc
+	source = git+https://github.com/problame/gmux_backlight#commit=ebd45a90dd6be962f310dc4517147bced792c112
+	md5sums = SKIP
+
+pkgname = gmux_backlight
+
