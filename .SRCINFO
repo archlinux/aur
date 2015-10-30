@@ -1,6 +1,6 @@
 pkgbase = nixnote2-git
 	pkgdesc = Nixnote2 is a C++ rewrite of nixnote,which is a clone of Evernote designed to run on Linux.Nixnote is formerly called nevernote.
-	pkgver = 559.9eb4ba0
+	pkgver = 642.v2.0beta459g6aad8c8
 	pkgrel = 1
 	url = http://nevernote.sourceforge.net/
 	arch = x86_64
