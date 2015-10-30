@@ -1,6 +1,6 @@
 # Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
 pkgname=update-pacman-mirrorlist
-pkgver=20150915
+pkgver=20151030
 pkgrel=1
 pkgdesc='Automatically updates the pacman mirrorlist.'
 arch=('any')
@@ -12,8 +12,8 @@ install=install
 source=(install LICENSE update-pacman-mirrorlist{,.{config,service,timer}})
 sha512sums=('c2a4e59eb361ca119614f6ae34e073357f82b47cca3ee2a4bc3fc2bbc74953a006516f35765ae478bad2b9fb524295fe4e26c8cd660fad9723967b160c318c77'
             '74fe42bbc7c50c09d8694f8ba98c81932e27c2ea43d3d49add6a82e9f2e2f6b25c039a39f7c477d7012bdbcdcef03443249a06e6acec9ab9aafc5d72df3d8c07'
-            'f160b844d011f504375f38abfbbdec75edef1bb830d81049ca40122cb8314f395afc930be416fa623b3e65a7b8daffe36a95431a4263911d1c1bd8b30bb8f57f'
-            'd91c9a5a41a8c35734d0bcaa3099e3860ff92a64cf14ef227e4b78df25933611162f5c6a28aa38ac7e032fb6f2af802b43ae6cbe4aa78616cbf2a91f06c464eb'
+            '13e0c923bfe6bcaf2c91807d1a4fb9921471e6f269362e1e753d2cf10859af210d74a9739272f4c5c07a8666f3427f4256cfd88549d046073af25fd377ca3264'
+            'cf2d28b08afe85e43510013697d1dfb74b56094c8050fce1802f3a80c66b7f7092068c13d849318783cef2f6a96712935014abd6bd783f19507028aec65b6299'
             '587161f9e58732258c2d5d16fa2ccee4b57e3bfb56acf0cb060c1d9eeb048c1dcfea65bc7219a942174883e72beb62e85b25806ab0373cefd6ec49883db40b1c'
             'b18e8ef8992a73758cdc084b04321a9ba15917e2ccf42730d1685f9115f32131ff46dc2c088088632b3824bab464f16b9e4255603f16412b1d3ce9bfb7f35e06')
 package()
