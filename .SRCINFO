@@ -1,0 +1,15 @@
+pkgbase = lightdm-webkit-google-git
+	pkgdesc = A Google/ChromeOS style LightDM Webkit greeter theme
+	pkgver = 20140429
+	pkgrel = 1
+	url = https://github.com/omgmog/lightdm-webkit-google
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	depends = lightdm-webkit-greeter
+	source = git://github.com/omgmog/lightdm-webkit-google.git
+	md5sums = SKIP
+
+pkgname = lightdm-webkit-google-git
+
