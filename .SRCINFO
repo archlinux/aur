@@ -1,7 +1,7 @@
 pkgbase = hexedit-advanced-search
 	pkgdesc = Hex Editor for Linux with advanced search patch from Volker Schatz
 	pkgver = 1.2.13
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rigaux.org/hexedit.html
 	arch = i686
 	arch = x86_64
