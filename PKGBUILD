@@ -9,14 +9,17 @@ license=('custom')
 install=latex2e.install
 source=(http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e.info
 	http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e-es.info
-	http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e-fr.info)
+	http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e-fr.info
+       http://mirror.unl.edu/ctan/info/latex2e-help-texinfo/README)
 md5sums=('f05c5f88e0ddd078e62790a94374c3f2'
          '457214fce461228c5500fe998e9476ab'
-         '161b884f26269335f9b2207f0e27e903')
+         '161b884f26269335f9b2207f0e27e903'
+         'd9d4087ddae0795b6ace85f2958631c6')
 
 package() {
   cd "$srcdir"
   install -Dm644 latex2e.info "$pkgdir"/usr/share/info/latex2e.info
   install -Dm644 latex2e-es.info "$pkgdir"/usr/share/info/latex2e-es.info
   install -Dm644 latex2e-fr.info "$pkgdir"/usr/share/info/latex2e-fr.info
+  install -Dm644 README "$pkgdir"/usr/share/licenses/$pkgname/license
 }
