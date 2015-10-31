@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=the_platinum_searcher
-pkgver=1.7.8
+pkgver=1.7.9
 pkgrel=1
 pkgdesc="A code search tool similar to ack and the_silver_searcher(ag)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ build() {
 }
 
 check() {
-  GOPATH="$GOPATH:$srcdir" go test -v -x github.com/monochromegane/the_platinum_searcher/
+  GOPATH="$GOPATH${GOPATH+:}$srcdir" go test -v -x github.com/monochromegane/the_platinum_searcher/
 }
 
 package() {
