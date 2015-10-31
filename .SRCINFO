@@ -1,17 +1,16 @@
-pkgbase = python2-pypcap-git
-	pkgdesc = A simplified object-oriented Python wrapper for libpcap
-	pkgver = v1.1.3.r4.ga6a2f14
+pkgbase = python2-mimerender-git
+	pkgver = v0.5.5.r2.g62da8bb
 	pkgrel = 1
-	url = https://github.com/pynetwork/pypcap
+	url = https://github.com/martinblech/mimerender
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = python2-setuptools
 	depends = python2
-	provides = pypcap
-	conflicts = pypcap
-	source = git://github.com/pynetwork/pypcap#branch=master
+	provides = mimerender
+	conflicts = mimerender
+	source = git://github.com/martinblech/mimerender#branch=master
 	sha512sums = SKIP
 
-pkgname = python2-pypcap-git
+pkgname = python2-mimerender-git
 

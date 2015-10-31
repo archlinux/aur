@@ -1,13 +1,12 @@
 # Maintainer: David Manouchehri <manouchehri@riseup.net>
-# Contributor: Achilleas Pipinellis <axilleas archlinux info>
 
-_gitname='pypcap'
+_gitname='mimerender'
 pkgname="python2-${_gitname}-git"
 _gitbranch='master'
-_gitauthor='pynetwork'
-pkgver=v1.1.3.r4.ga6a2f14
+_gitauthor='martinblech'
+pkgver=v0.5.5.r2.g62da8bb
 pkgrel=1
-pkgdesc="A simplified object-oriented Python wrapper for libpcap"
+pkgdesc=""
 url="https://github.com/${_gitauthor}/${_gitname}"
 license=('BSD')
 source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
@@ -30,7 +29,6 @@ pkgver() {
 package() {
   cd "${srcdir}/${_gitname}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set et sw=2 sts=2 tw=80:
