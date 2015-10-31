@@ -2,7 +2,7 @@
 
 pkgname="yaoqiang-bpmn-editor"
 _pkgver_major=4.0
-_pkgver_minor=37
+_pkgver_minor=39
 pkgver="${_pkgver_major}.${_pkgver_minor}"
 pkgrel=1
 pkgdesc="An open source graphical editor for business process diagrams, compliant with OMG specifications (BPMN 2.0)."
@@ -19,7 +19,7 @@ source=('yaoqiang-bpmn-editor'
 sha256sums=('e07d0a5de0f58ae849db7f273df0625cfe45d3416ece0511968c7951177e3cd0'
     '58d987538c56e8e0b542dd025803230c25265cd45d6040f9f398cc68ab4ad7ac'
     '038fd8a5e1f9518645fdb8382d704ed5297b89350c5fcace9f63213edb6d380e'
-    '6b0bbdbd155f417d6673e8df27d904bcfe0109d59beb1fec078f3da005bd7bfe')
+    '52694504832741ad1e25777f519a65c6d8440539f870e6b9074cc52db25d1266')
 
 build() {
     # prepare the application files
