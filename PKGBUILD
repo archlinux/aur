@@ -5,7 +5,7 @@ pkgname="${_pkgname}-git"
 
 pkgver=1.0.0.303.gd162281
 pkgrel=1
-pkgdesc="C++ re-write of tablet notetaking app Xournal - GIT string_new branch"
+pkgdesc="C++ re-write of tablet notetaking app Xournal - GIT development branch"
 arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL3')
