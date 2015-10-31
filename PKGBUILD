@@ -1,6 +1,7 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 pkgname=radicale
-pkgver=0.10
+_pkgname=Radicale
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Simple Calendar Server"
 arch=any
@@ -11,27 +12,35 @@ backup=('etc/radicale/config')
 install='radicale.install'
 source=(
 	http://pypi.python.org/packages/source/R/Radicale/Radicale-$pkgver.tar.gz
+  radicale-$pkgver.patch
 	radicale.service
   radicale.install
 )
-md5sums=('32655d8893962956ead0ad690cca6044'
-         '62af2e07ad32a0fcece32fae68e92daf'
+md5sums=('e29e51df14bc8ca5a580998d5d592285'
+         '7d6a8ecdcb02f43780d106d8946338b3'
+         'f3abb0343e66a4045128b93184205d3e'
          '5613eec93efc5ef2ef68abd124fb6b61')
 optdepends=(
-  'python-pam: For PAM authentication' 
+  'python-pam: For PAM authentication'
   'python-requests: For HTTP authentication'
   'python-ldap: For LDAP authentication'
   )
 
+prepare() {
+  cd $srcdir/$_pkgname-$pkgver
+
+  patch -p1 < $startdir/$pkgname-$pkgver.patch
+}
+
 package() {
-  cd "$srcdir/Radicale-$pkgver"
+  cd $srcdir/$_pkgname-$pkgver
   python setup.py install --prefix=/usr --root="$pkgdir"
 
-  install -m644 -D "$srcdir/Radicale-$pkgver/config" "$pkgdir/etc/radicale/config"
+  install -m644 -D "$srcdir/$_pkgname-$pkgver/config" "$pkgdir/etc/radicale/config"
   install -m644 -D "$srcdir/radicale.service" "$pkgdir/usr/lib/systemd/system/radicale.service"
 
-  install -m644 -D "$srcdir/Radicale-$pkgver/radicale.fcgi" \
+  install -m644 -D "$srcdir/$_pkgname-$pkgver/radicale.fcgi" \
     "$pkgdir/usr/share/$pkgname/radicale.fcgi"
-  install -m644 -D "$srcdir/Radicale-$pkgver/radicale.wsgi" \
+  install -m644 -D "$srcdir/$_pkgname-$pkgver/radicale.wsgi" \
     "$pkgdir/usr/share/$pkgname/radicale.wsgi"
 }
