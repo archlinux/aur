@@ -21,12 +21,12 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/$_pkgname"
 	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/$_pkgname"
 	make DESTDIR="$pkgdir" PREFIX=/usr install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
