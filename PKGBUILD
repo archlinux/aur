@@ -18,6 +18,7 @@ sha512sums=('914b8b888e502a31f6c70bcc7d391ea8b79dde07e13b9a6ebb3b52a20b793fafd7a
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  CXXFLAGS="-std=c++11"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
