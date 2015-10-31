@@ -1,6 +1,6 @@
 pkgbase = nodejs-generator-gulp-angular
 	pkgdesc = Yeoman generator for Gulp & Angular
-	pkgver = 1.0.0rc1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Swiip/generator-gulp-angular
 	install = nodejs-generator-gulp-angular.install
@@ -8,12 +8,12 @@ pkgbase = nodejs-generator-gulp-angular
 	license = MIT
 	depends = nodejs-yeoman
 	depends = nodejs-gulp
-	depends = nodejs-bower
+	depends = bower
 	optdepends = ruby-sass: needed to build ruby sass preprocessed projects
 	optdepends = java-runtime: needed to do e2e protractor tests
-	noextract = generator-gulp-angular-1.0.0-rc1.tgz
-	source = https://registry.npmjs.org/generator-gulp-angular/-/generator-gulp-angular-1.0.0-rc1.tgz
-	sha1sums = 9054909dadc36219b5aed4495eccf68b1a0a4d08
+	noextract = generator-gulp-angular-1.0.0.tgz
+	source = https://registry.npmjs.org/generator-gulp-angular/-/generator-gulp-angular-1.0.0.tgz
+	sha1sums = 3f52e03e09c25271d563f96bacd9eebc7be69338
 
 pkgname = nodejs-generator-gulp-angular
 
