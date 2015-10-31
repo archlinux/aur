@@ -2,26 +2,33 @@
 # Contributor: fstirlitz <felix.von.s@posteo.de>
 
 pkgname=libxmlbird
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='XML parsing library written in Vala'
 arch=('i686' 'x86_64')
 url='https://birdfont.org/xmlbird.php'
 license=('LGPL3')
 depends=('glib2')
-makedepends=('vala' 'python2')
-source=(https://birdfont.org/xmlbird-releases/${pkgname}-${pkgver}.tar.xz{,.sig})
-sha512sums=('7d58216bfb6a880948ff6e76062cfcc6e7a41406bf50f5981df44e925d8a77ee2bea3b5aa58d4ca28ddd32c5ab1125dff0af3012a032446230b99454a47a420e'
-            'SKIP')
+makedepends=('vala' 'python')
+source=(https://birdfont.org/xmlbird-releases/${pkgname}-${pkgver}.tar.xz{,.sig}
+        'fix_install.patch')
+sha512sums=('ee407da8a63152e5427456d57724aa19ca54f2af88b5b08d26b0494160920c9d76220c5f5eb199758569b3452419de3523eacdc1fa173ac9d31968d0ffcbee39'
+            'SKIP'
+            '71ff8563ade1e07818a10f6296e8d12bcbbba3e5901fc849b76004be1a0e0ce01336b3193367d0a9f384b40053b9d95afdbfc198c66800f3d123d3165242887e')
 validpgpkeys=('FB3BEFA59A6FF7F0E0682B68BCD31D4CCCEB9DD4') # Johan Mattsson <gmail: johan dot mattsson dot m>
 
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -p1 -i '../fix_install.patch'
+}
+
 build() {
-	cd "${srcdir}/$pkgname-$pkgver"
-	python2 ./configure -p /usr
-	python2 ./scripts/build_linux.py -p /usr
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	./configure -p /usr
+	./build.py
 }
 
 package() {
-	cd "${srcdir}/$pkgname-$pkgver"
-	python2 ./install.py -d "${pkgdir}" -l /lib
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	./install.py -d "${pkgdir}" -l /lib
 }
