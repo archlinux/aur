@@ -1,0 +1,14 @@
+pkgbase = python2-sqlite3dbm
+	pkgdesc = sqlite-backed dictionary
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://github.com/Yelp/sqlite3dbm/
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/s/sqlite3dbm/sqlite3dbm-0.1.4.tar.gz
+	md5sums = fc2f8fb09a4bbc0260b97e835b369184
+
+pkgname = python2-sqlite3dbm
+
