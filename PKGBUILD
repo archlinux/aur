@@ -20,7 +20,7 @@ source=("http://download.crashplan.com/installs/linux/install/CrashPlan/CrashPla
 	'crashplan.service'
 	'install.vars'
 	'sysctl-crashplan.conf')
-sha256sums=('7598e5eeb65179d20cd161f009214a1f4823a7479adbdca91a8ed57dbbfe6254'
+sha256sums=('0bb24c88152f0f523e17d9a0df8013567f29f882538a45524fe440ef170d787a'
             '259d38afa8fc34246ac0ecfeefc701d47501c552eb0ffcd1bd4b8e9a2751c3c8'
             'e5600d9d102fa8668183895fbe208d00cc353706f5b4a78302eca00f70b60800'
             'c6dc626a180671d6b01f46f22158857c3fa86cd3eec79e3388284a2ab2682617'
