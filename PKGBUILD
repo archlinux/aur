@@ -3,7 +3,7 @@
 
 pkgname=dasom-git
 _pkgname=dasom
-pkgver=254.237d031
+pkgver=265.2300f58
 pkgrel=1
 pkgdesc="Dasom is an input method framework"
 arch=('any')
@@ -20,6 +20,7 @@ install=$pkgname.install
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
+	git reset --hard 2300f58827d2f7be874965083ac2bc97d5ca737d
 	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
