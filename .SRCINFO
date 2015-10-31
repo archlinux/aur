@@ -1,0 +1,22 @@
+pkgbase = forgottenserver-git
+	pkgdesc = A free and open-source MMORPG server emulator written in C++
+	pkgver = r2167.ebe14b8
+	pkgrel = 1
+	url = https://github.com/otland/forgottenserver
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = git
+	depends = cmake
+	depends = lua
+	depends = gmp
+	depends = boost
+	depends = boost-libs
+	depends = libmariadbclient
+	source = git://github.com/otland/forgottenserver.git
+	md5sums = SKIP
+
+pkgname = forgottenserver-git
+
