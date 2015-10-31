@@ -1,0 +1,14 @@
+pkgbase = obs-service-download_url
+	pkgdesc = An OBS source service: curl download tool
+	pkgver = 20151031
+	pkgrel = 1
+	url = https://github.com/openSUSE/obs-service-download_files
+	arch = any
+	license = GPL2
+	depends = obs-build
+	depends = git
+	source = git+https://github.com/hiberis/obs-service-download_url.git
+	sha256sums = SKIP
+
+pkgname = obs-service-download_url
+
