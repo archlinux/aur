@@ -1,6 +1,6 @@
 pkgbase = python2-graph-tool
 	pkgdesc = A Python module for manipulation and statistical analysis of graphs
-	pkgver = 2.10
+	pkgver = 2.11
 	pkgrel = 1
 	url = http://projects.skewed.de/graph-tool/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = python2-graph-tool
 	optdepends = python2-cairo: graph drawing
 	optdepends = python2-matplotlib: graph drawing
 	options = !libtool
-	source = http://downloads.skewed.de/graph-tool/graph-tool-2.10.tar.bz2
-	sha256sums = 1569a0dbb28f5a09efd86dad058b1729a4c1aaed3ca76b99723298871f5be2d4
+	source = http://downloads.skewed.de/graph-tool/graph-tool-2.11.tar.bz2
+	sha256sums = ce19142e9c8d4b36a22754d791e3bb363a3cf04156f504584583ac30b5e8c625
 
 pkgname = python2-graph-tool
 
