@@ -1,0 +1,27 @@
+pkgbase = ghostscript-git
+	pkgdesc = An interpreter for the PostScript language
+	pkgver = 20151031
+	pkgrel = 1
+	url = http://www.ghostscript.com/
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	license = custom
+	makedepends = gtk2
+	makedepends = gnutls
+	depends = libxt
+	depends = libcups
+	depends = fontconfig
+	depends = jasper
+	optdepends = texlive-core: needed for dvipdf
+	optdepends = gdk-pixbuf2: needed for gsx
+	optdepends = gtk3: needed for gsx
+	provides = ghostscript=9.18
+	conflicts = ghostscript
+	options = !libtool
+	options = !makeflags
+	source = git://git.ghostscript.com/ghostpdl.git
+	md5sums = SKIP
+
+pkgname = ghostscript-git
+
