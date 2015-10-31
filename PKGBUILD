@@ -27,6 +27,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
+  
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -43,8 +44,8 @@ build() {
   cd "$_pkgname"
 
   grunt bower_clean
-  grunt nwjs
   grunt css
+  grunt nwjs
 }
 
 package() {
