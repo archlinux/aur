@@ -8,6 +8,7 @@ arch=(any)
 url='http://www.memoryhole.net/~kyle/extract_url'
 replaces=(extracturl-git)
 conflicts=(extracturl-git perl-extract-url)
+provides=(perl-extract-url)
 license=('BSD-2-Clause (simplified)')
 depends=('perl'
          'perl-mime-tools'

@@ -10,6 +10,7 @@ pkgbase = perl-extract-url-git
 	depends = perl-html-parser
 	optdepends = perl-curses-ui: allows it to fully replace urlview
 	optdepends = perl-uri-find: for recognising more exotic urls
+	provides = perl-extract-url
 	conflicts = extracturl-git
 	conflicts = perl-extract-url
 	replaces = extracturl-git
