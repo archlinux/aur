@@ -1,0 +1,33 @@
+pkgbase = gcc-x32-seed
+	pkgdesc = An incomplete GCC build for building Glibc with x32 ABI support
+	pkgver = 5.2.0
+	pkgrel = 2.1
+	url = http://gcc.gnu.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = inetutils
+	makedepends = binutils>=2.25
+	makedepends = libmpc
+	makedepends = doxygen
+	makedepends = lib32-glibc>=2.22
+	depends = binutils>=2.24
+	depends = libmpc
+	depends = glibc-x32-seed
+	provides = gcc-multilib-x32=5.2.0-2.1
+	options = !emptydirs
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.2.0/gcc-5.2.0.tar.bz2
+	source = http://isl.gforge.inria.fr/isl-0.14.1.tar.bz2
+	source = pr66035.patch
+	source = https://sites.google.com/site/x32abi/documents/gcc-x32-seed.tar.bz2
+	md5sums = a51bcfeb3da7dd4c623e27207ed43467
+	md5sums = 118d1a379abf7606a3334c98a8411c79
+	md5sums = 5b980076cd5fcbc3aff6014f306282dd
+	md5sums = 1672d3283e6827b8b8ff634f85ddf523
+
+pkgname = gcc-x32-seed
+	options = staticlibs
+
