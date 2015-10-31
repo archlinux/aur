@@ -38,6 +38,7 @@ find Candra-theme/ -type f \
 -exec install -Dm644 "{}" "$pkgdir/root/.themes/{}" \;            
 
   cd ..
+  cd ..
   cd candra-theme-dark-3.18
 find Candra-theme-dark/ -type f \
 -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
