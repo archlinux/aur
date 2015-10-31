@@ -7,11 +7,11 @@
 # Contributor: heinz from #qt-creator
 
 pkgname=qtcreator-git
-pkgver=v3.4.0.beta1.r95.gd65d84f
+pkgver=v3.6.0.beta1.r111.ga1f2b8c
 pkgrel=1
-pkgdesc="Lightweight, cross-platform integrated development environment"
+pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
-url="http://qt-project.org/wiki/Category:Tools::QtCreator"
+url='http://wiki.qt.io/Category:Tools::QtCreator'
 license=('LGPL')
 depends=('qt5-quick1' 'qt5-tools' 'qt5-quickcontrols')
 makedepends=('git' 'mesa' 'clang')
@@ -33,7 +33,7 @@ source=("git://code.qt.io/qt-creator/qt-creator.git"
         'qtcreator.desktop')
 md5sums=('SKIP'
          'SKIP'
-         '50880836fd62ccd87550940feb995f06')
+         '800c94165c547b64012a207d9830250a')
 
 pkgver() {
   cd qt-creator
@@ -53,7 +53,7 @@ build() {
   [[ -d build ]] && rm -r build
   mkdir build && cd build
 
-  LLVM_INSTALL_DIR=/usr qmake -r CONFIG+=journald ../qt-creator/qtcreator.pro
+  LLVM_INSTALL_DIR=/usr qmake CONFIG+=journald -r ../qt-creator/qtcreator.pro
   make
   make docs -j1
 }
