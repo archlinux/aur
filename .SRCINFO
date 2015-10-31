@@ -1,27 +1,34 @@
 pkgbase = voglperf
 	pkgdesc = benchmarking tool for OpenGL games (frame info, logs, steam support)
 	pkgver = 0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ValveSoftware/voglperf
 	arch = x86_64
 	arch = i686
 	license = custom:MIT,
 	license = BSD
 	makedepends = cmake
-	depends = ncurses
+	makedepends = ncurses
+	makedepends = libedit
 	conflicts = voglperf
 	replaces = voglperf
 	source = https://github.com/ValveSoftware/voglperf/archive/0.2.tar.gz
+	source = multilib-libraries.patch
+	source = native-libedit.patch
 	sha256sums = c91ab58aaa69d84312ce67090252f28a104952d4335595bbc728e357bf2ad545
+	sha256sums = fdde9ba59e2d3ae2cf8a0225d007b15732adf271bc283366eff377e762dac66f
+	sha256sums = 72c2cb961df7466984bb6aab44e03a8e2793c5ba867da12bcba18842a1210c31
 
 pkgname = voglperf32
 	arch = x86_64
 	arch = i686
 	depends = lib32-ncurses
+	depends = lib32-libedit
 	depends = lib32-gcc-libs
 
 pkgname = voglperf64
 	arch = x86_64
 	depends = ncurses
+	depends = libedit
 	depends = gcc-libs-multilib
 

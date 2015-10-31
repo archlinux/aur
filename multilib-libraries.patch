@@ -1,0 +1,23 @@
+From 717dc9170079e8adce02728859ee096102957223 Mon Sep 17 00:00:00 2001
+From: Daniel Scharrer <daniel@constexpr.org>
+Date: Thu, 29 May 2014 18:15:01 +0200
+Subject: [PATCH] Fix compiling voglperf32 on non-multiarch systems
+
+For some reason CMake doesn't natively support lib32 paths :/
+---
+ src/build_options.cmake | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/build_options.cmake b/src/build_options.cmake
+index 4d07d18..ff0c7b4 100644
+--- a/src/build_options.cmake
++++ b/src/build_options.cmake
+@@ -31,6 +31,8 @@ else()
+     set(CMAKE_SHARED_LIBRARY_SUFFIX "32.so")
+     # TODO: get dir from: gcc -print-multiarch -m32
+     set(LIBDIR "i386-linux-gnu")
++    set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS False)
++    list(APPEND CMAKE_LIBRARY_PATH /usr/lib32 /usr/local/lib32)
+ endif()
+ 
+ option(CMAKE_VERBOSE "Verbose CMake" FALSE)

@@ -1,0 +1,77 @@
+From 7aa73add5bb8e9ffe3a9dde08352d94f76f32c8a Mon Sep 17 00:00:00 2001
+From: Gregory King <gking@bender>
+Date: Tue, 31 Mar 2015 11:50:16 -0700
+Subject: [PATCH] Updated build procedure. README.md:   (1) Added additional
+ set of packages to be installed;       This includes libedit, ncurses,
+ gcc-dev libraries;
+
+src/CMakeLists.txt:
+  (1) Removed the inclusion of libedit (within the repository);
+  (2) Added simple cmake finding of the libraries necessary to build voglperf;
+
+NOTE: The license should be the same.[Hopefully someone can verify this];
+
+(rebased onto 0.2; not deleting libedit)
+---
+ README.md                                      |   2 +
+ src/CMakeLists.txt                             |  25 +-
+ src/libedit-3.1/README                         |   3 -
+ src/libedit-3.1/include/editline/readline.h    | 224 -----------------
+ src/libedit-3.1/include/histedit.h             | 319 -------------------------
+ src/libedit-3.1/lib/i386-linux-gnu/libedit.a   | Bin 718492 -> 0 bytes
+ src/libedit-3.1/lib/x86_64-linux-gnu/libedit.a | Bin 1044248 -> 0 bytes
+ 7 files changed, 23 insertions(+), 550 deletions(-)
+
+diff --git a/README.md b/README.md
+index ffaf7a6..c27d6a5 100644
+--- a/README.md
++++ b/README.md
+@@ -57,6 +57,8 @@ Building voglperf on SteamOS
+   * `sudo apt-get update`
+   * `sudo apt-get install git ca-certificates cmake g++ gcc-multilib g++-multilib`
+   * `sudo apt-get install mesa-common-dev libedit-dev libtinfo-dev libtinfo-dev:i386`
++  * `sudo apt-get install libedit-dev libedit-dev:i386 libncurses5-dev
++libncurses5-dev:i386 libgcc-dev libgcc-dev:i386 lib32gcc-dev libgcc-dev libstdc++-dev libstdc++-dev:i386`
+ 
+  - Get the volgperf source:
+   * `git clone https://github.com/ValveSoftware/voglperf.git`
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 350132f..0aa7750 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -37,11 +37,28 @@ build_options_finalize()
+ #
+ project(voglperfrun)
+ 
+-# Add libedit library.
+-include_directories(${CMAKE_SOURCE_DIR}/libedit-3.1/include)
++
++#require tinfo and curses
++find_library(curses_LIBRARY NAMES curses )
++if(NOT curses_LIBRARY)
++  message(FATAL_ERROR "Could not find libcurses")
++endif()
++
++find_library(tinfo_LIBRARY NAMES tinfo )
++if(NOT tinfo_LIBRARY)
++  message(FATAL_ERROR "Could not find libtinfo")
++endif()
++
++find_library(edit_LIBRARY NAMES edit )
++if(NOT edit_LIBRARY)
++  message(FATAL_ERROR "Could not find libedit")
++endif()
++
++#
+ set(LIBEDIT_LIBS
+-    "${CMAKE_SOURCE_DIR}/libedit-3.1/lib/${LIBDIR}/libedit.a"
+-    tinfo
++    ${edit_LIBRARY}
++    ${tinfo_LIBRARY}
++    ${curses_LIBRARY}
+     )
+ 
+ set(SRC_LIST
+-- 
+2.6.1
+
