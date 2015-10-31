@@ -1,11 +1,10 @@
 # Maintainer: David Manouchehri <manouchehri@riseup.net>
-# Contributor: Achilleas Pipinellis <axilleas archlinux info>
 
-_gitname='pypcap'
+_gitname='pefile'
 pkgname="python2-${_gitname}-git"
-_gitbranch='master'
-_gitauthor='pynetwork'
-pkgver=v1.1.3.r4.ga6a2f14
+_gitbranch='build_msi' # _gitbranch='master'
+_gitauthor='joachimmetz' # _gitauthor='erocarrera'
+pkgver=r90.4f685a2
 pkgrel=1
 pkgdesc="A simplified object-oriented Python wrapper for libpcap"
 url="https://github.com/${_gitauthor}/${_gitname}"
