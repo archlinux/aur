@@ -9,7 +9,7 @@ _enable_BFQ=
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
 pkgver=3.14.56
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -49,7 +49,7 @@ sha512sums=("31e085561faf8c7dd334c8c680a295f90cca7427452357e52e71c87a3212f6d3ac1
             "edf73585f1363011ba4235919b4265713d3943e3a93996822408ee4c99403a52c81d7cbf23d261aabeefeb41d2bb9b5ad26c4c1a0c6af7e27a4e092654c8e967"
             "91340f269b2aefb4df0e9999dc3664ded7d1758a7257da1268f95ced5f549a1883127b7260657a2ee0782922e7848fb3fac4ae05d822c793ecc9f2c1be9d4b5f"
             "9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd"
-            "ec8a0e57adc5dbab08e997f49fa41be22ee3a37ae50b80096944c15932f052a359c96c2a157ef060b120ab8383ee1e897962362ee6c935a36f82186c171aa49a")
+            "4f8613760db9ec310f125a8431e127b6edf87e384b16e840e051fe61847bde044915e8e7b19e03123a6ed3de47d15f58ceff890dd4ae739a0bfe06b3d064d361")
 validpgpkeys=(
               "ABAF11C65A2970B130ABE3C479BE3E4300411886" # Linux Torvalds
               "647F28654894E3BD457199BE38DBBDC86092693E" # Greg Kroah-Hartman
@@ -77,7 +77,7 @@ prepare() {
 
     patch -p1 -i "${srcdir}/bfs447-454.patch"
 
-    patch -p1 -i "${srcdir}/should_resched-offsets.patch" # Offsets for should_resched are required as of commit fe32d3cd5e8eb0f82e459763374aa80797023403
+    patch -p0 -i "${srcdir}/should_resched-offsets.patch" # Offsets for should_resched are required as of commit fe32d3cd5e8eb0f82e459763374aa80797023403
 
     if [ "${CARCH}" = "x86_64" ]; then
         cat "${srcdir}/config.x86_64" > ./.config
