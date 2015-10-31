@@ -1,0 +1,14 @@
+pkgbase = nuvola-app-amazon-cloud-player-git
+	pkgdesc = Amazon Cloud Player integration for Nuvola Player.
+	pkgver = r18.eeb18cf
+	pkgrel = 1
+	url = https://github.com/tiliado/nuvola-app-amazon-cloud-player
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	depends = nuvolaplayer-git
+	source = nuvola-app-amazon-cloud-player-git::git+https://github.com/tiliado/nuvola-app-amazon-cloud-player.git
+	sha256sums = SKIP
+
+pkgname = nuvola-app-amazon-cloud-player-git
+
