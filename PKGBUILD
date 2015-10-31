@@ -2,7 +2,7 @@
 
 _pkgname=sidef
 pkgname=sidef-git
-pkgver=0.11
+pkgver=2.10
 pkgrel=1
 pkgdesc="A modern object-oriented programming language. (-git version)"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'perl-module-build')
 provides=('sidef')
 conflicts=('sidef')
 
-depends=('perl>=5.14.0' 'perl-data-dump')
+depends=('perl>=5.16.1' 'perl-data-dump')
 
 source=('git://github.com/trizen/sidef.git')
 md5sums=('SKIP')
