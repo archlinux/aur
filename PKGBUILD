@@ -2,14 +2,14 @@
 
 pkgbase=python-argparse
 pkgname=('python-argparse' 'python2-argparse')
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=2
 arch=('any')
 url="https://pypi.python.org/pypi/argparse"
 license=('CUSTOM')
 makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
 source=("https://pypi.python.org/packages/source/a/argparse/argparse-$pkgver.tar.gz")
-md5sums=('9bcf7f612190885c8c85e30ba41db3c7')
+md5sums=('08062d2ceb6596fcbc5a7e725b53746f')
 
 prepare() {
    cp -r argparse-${pkgver} python2-argparse-${pkgver}
