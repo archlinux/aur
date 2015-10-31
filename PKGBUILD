@@ -9,6 +9,8 @@ url="https://github.com/lukablurr/n2n_v2_fork"
 license=('GPL3')
 depends=('openssl' 'net-tools') #iproute2?
 makedepends=('git')
+provides=n2n
+conflicts=n2n
 source=('git+https://github.com/lukablurr/n2n_v2_fork.git'
         'edge.conf.example'
         'edge.sh'
