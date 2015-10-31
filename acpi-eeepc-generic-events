@@ -1,0 +1,3 @@
+event=.*
+action=/etc/acpi/acpi-eeepc-generic-handler.sh %e
+

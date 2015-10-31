@@ -1,0 +1,41 @@
+post_install() {
+
+    # Disable "acpid" events handling
+    [ -e /etc/acpi/events/anything ] && \
+        sed -i 's/^[^#]/#&/' /etc/acpi/events/anything
+
+    # Detect if model is not supported
+    eeepc_model=`dmidecode -s system-product-name`
+    if [[ ! -e "/etc/acpi/eeepc/models/acpi-eeepc-${eeepc_model}-events.conf" ]]; then
+        echo ">>> You're model ${eeepc_model} is not (yet) supported."
+        echo ">>> Please report it to http://github.com/nbigaouette/acpi-eeepc-generic/issues"
+    fi
+
+    #echo ">>> "
+
+    # Get the model and save it to the configuration file
+    . /etc/acpi/eeepc/acpi-eeepc-generic-functions.sh
+    get_model
+
+    echo " "
+    echo ">>> Configuration is done via /etc/conf.d/acpi-eeepc-generic.conf"
+    echo ">>> Note that you will have to COMMENT-out the 'EEEPC_CONF_DONE' option."
+    echo ">>> Else you will receive an error/warning when hitting a special key!"
+    echo " "
+    echo ">>> Please restart acpid to reload actions."
+    echo "# /etc/rc.d/acpid restart"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo " "
+    echo ">>> Note that the file /etc/acpi/handler.sh is now the default."
+    [ -e /etc/acpi/events/anything ] && \
+        sed -e 's/#event/event/g' -e 's/#action/action/g' -i /etc/acpi/events/anything
+    echo ">>> Please restart acpid to reload actions."
+    echo "# /etc/rc.d/acpid restart"
+}
+
