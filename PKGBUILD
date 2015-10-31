@@ -15,7 +15,7 @@ source=("https://dl.dropboxusercontent.com/u/330352/candra-themes-3.18-4_1015201
 #replaces=('delorean-dark-themes-3.8')
 #conflicts=('delorean-dark-theme-3.8')
 
-md5sums=('7f679fa49d6ddb6f2fc980f7ecd259dc')
+md5sums=('c43d856aea0ea7e070ee62d16b7acaa3')
 
 
 package() {
