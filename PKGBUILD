@@ -21,6 +21,7 @@ prepare() {
 
   # arch-specific screens dir
   sed -re 's;^SOCKETDIR=.+$;SOCKETDIR="/tmp/screens";' -i etc/byobu/socketdir	
+  sed -re 's;^Icon=byobu+$;Icon=/usr/share/byobu/pixmaps/byobu.svg;' -i usr/share/applications/byobu.desktop
   ./configure --prefix=/usr --sysconfdir=/etc
 }
 
