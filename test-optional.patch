@@ -1,5 +1,5 @@
---- sage/doctest/control.py.orig	2015-10-31 09:40:55.173671531 +0100
-+++ sage/doctest/control.py	2015-10-31 09:40:05.370125436 +0100
+--- src/sage/doctest/control.py.orig	2015-10-31 09:40:55.173671531 +0100
++++ src/sage/doctest/control.py	2015-10-31 09:40:05.370125436 +0100
 @@ -253,7 +253,7 @@
                  if 'optional' in options.optional:
                      options.optional.discard('optional')
