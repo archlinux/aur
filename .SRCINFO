@@ -1,0 +1,16 @@
+pkgbase = rewritefs-git
+	pkgdesc = A FUSE filesystem intended to be used like Apache mod_rewrite
+	pkgver = 20151030
+	pkgrel = 1
+	url = https://github.com/sloonz/rewritefs
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = fuse
+	depends = pcre
+	source = git+https://github.com/sloonz/rewritefs.git
+	md5sums = SKIP
+
+pkgname = rewritefs-git
+
