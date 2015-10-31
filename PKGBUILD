@@ -29,8 +29,8 @@ conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         "http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2"
-        'anal.h' 'package.patch' 'env.patch' 'paths.patch' 'clean.patch' 'skip-check.patch' 
-        'pexpect-env.patch' 'pexpect-del.patch' 'disable-fes.patch' 'jupyter-path.patch')
+        anal.h package.patch env.patch paths.patch clean.patch skip-check.patch test-optional.patch
+        pexpect-env.patch pexpect-del.patch disable-fes.patch jupyter-path.patch)
 md5sums=('SKIP'
          'd9a3e113ed147dcee8f89962a8dccd43'
          'a906a180d198186a39820b0a2f9a9c63'
@@ -75,6 +75,8 @@ prepare(){
    -i src/sage/databases/cremona.py
 # find bliss headers
   sed -e 's|graph.hh|bliss/graph.hh|' -i src/sage/graphs/bliss.pyx
+# don't list optional packages when running tests
+  patch -p0 -i ../test-optional.patch
 # fix jupyter path
   patch -p0 -i ../jupyter-path.patch
 
