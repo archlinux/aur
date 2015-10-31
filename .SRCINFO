@@ -1,7 +1,7 @@
 pkgbase = enpass-rc-bin
 	pkgdesc = A multiplatform password manager - RC version
 	pkgver = 5.0.0_RC
-	pkgrel = 6
+	pkgrel = 7
 	url = http://enpass.io/
 	install = enpass-bin.install
 	arch = x86_64

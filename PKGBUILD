@@ -1,6 +1,6 @@
 pkgname=enpass-rc-bin
 pkgver=5.0.0_RC
-pkgrel=6
+pkgrel=7
 pkgdesc="A multiplatform password manager - RC version. Based on enpass-bin AUR package by Tadly."
 arch=('x86_64')
 url="http://enpass.io/"
