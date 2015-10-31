@@ -4,7 +4,7 @@
 
 pkgname=drush
 pkgver=7.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
 arch=('any')
 url="https://github.com/drush-ops/drush/"
