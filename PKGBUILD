@@ -7,7 +7,7 @@
 pkgname=libpulse-nosystemd
 _pkgbase=pulseaudio
 pkgdesc="Client library for PulseAudio"
-pkgver=7.0
+pkgver=7.1
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/PulseAudio"
@@ -24,7 +24,7 @@ backup=(etc/pulse/client.conf)
 options=(!emptydirs)
 source=(http://freedesktop.org/software/$_pkgbase/releases/$_pkgbase-$pkgver.tar.xz
         padsp-lib32.patch)
-sha256sums=('ca1ae1377e8926bfc3ffe2aeb9f657f6c363a16f72861166fcf9454e3eeae8fa'
+sha256sums=('e667514a28328f92aceea754a224a0150dddfe7e9a71b4c6d31489220153b9d9'
             '7832fc59df76538ff10aedd297c03cb7ff117235da8bfad26082994bb5b84332')
 
 prepare() {
