@@ -1,0 +1,18 @@
+pkgbase = pijul-darcs
+	pkgdesc = A version control system based on a theory of patches
+	pkgver = 20151021
+	pkgrel = 1
+	url = https://pijul.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = darcs
+	makedepends = ocaml-cryptokit
+	makedepends = ocaml-yojson
+	depends = zlib
+	depends = lmdb
+	provides = pijul
+	conflicts = pijul
+
+pkgname = pijul-darcs
+
