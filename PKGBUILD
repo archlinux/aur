@@ -14,7 +14,7 @@ if [ "$CARCH" = "x86_64" ]; then
 fi
 conflicts=('voglperf')
 replaces=('voglperf')
-source=(https://github.com/ValveSoftware/$pkgname/archive/$pkgver.tar.gz)
+source=(https://github.com/ValveSoftware/$pkgbase/archive/$pkgver.tar.gz)
 sha256sums=('c91ab58aaa69d84312ce67090252f28a104952d4335595bbc728e357bf2ad545')
 
 prepare() {
