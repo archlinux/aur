@@ -1,6 +1,6 @@
 pkgbase = ambiance-radiance-flat-colors-suite
 	pkgdesc = A Modern, Beautiful and Vivid Re-imagination of the Ambiance & Radiance Color GTK 2/3 Themes.
-	pkgver = 15.10.1
+	pkgver = 15.10.2
 	pkgrel = 1
 	url = http://www.ravefinity.com/p/download-ambiance-radiance-flat-colors.html
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ambiance-radiance-flat-colors-suite
 	optdepends = vibrancy-colors
 	options = !strip
 	options = !zipman
-	source = $pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAd19nNm9CQ2NQVm8
-	md5sums = dc87020792a267fa85a8db7b5ab5841a
+	source = ambiance-radiance-flat-colors-suite-15.10.2.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAWFFnVzRvSWFzUDg
+	md5sums = 236c21b008752c70f047bbcbe529f74d
 
 pkgname = ambiance-radiance-flat-colors-suite
 
