@@ -3,7 +3,7 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.0.290.gb62f922
+pkgver=1.0.0.303.gd162281
 pkgrel=1
 pkgdesc="C++ re-write of tablet notetaking app Xournal - GIT string_new branch"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'texlive
 provides=("xournal=${pkgver}" "xournal-dmgerman=${pkgver} xournalpp=${pkgver}")
 conflicts=('xournal' 'xournalpp' 'xournal-dmgerman' 'xournal-image-patched' 'xournalpp-svn')
 install="xournalpp.install"
-source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git#branch=string_new")
+source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git#branch=development")
 sha1sums=('SKIP')
 
 pkgver() {
