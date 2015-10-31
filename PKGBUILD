@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer
-pkgver=3.1.9
+pkgver=3.1.9.7.g2b8c964
 pkgrel=1
 pkgdesc="A Gtk2 application for searching and streaming videos from YouTube."
 arch=('any')
@@ -24,6 +24,7 @@ optdepends=(
             'wget: for downloading videos with wget'
             'mplayer: for playing the videos with MPlayer'
             'vlc: for playing the videos with VLC'
+            'smplayer: for playing the videos with SMPlayer'
             'mpv: for playing the videos with MPV (recommended)'
             )
 
