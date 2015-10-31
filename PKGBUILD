@@ -2,7 +2,7 @@
 pkgname=goweatherserver
 url="https://github.com/Chipsterjulien/goweatherserver"
 pkgver=0.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A server who take temperature from TCP connection and save into a database"
 arch=('any')
 license=('WTFPL')
@@ -31,6 +31,7 @@ build() {
     go get github.com/mattn/go-sqlite3
     go get github.com/op/go-logging
     go get github.com/spf13/viper
+    go get github.com/itsjamie/gin-cors
 
     cd "$_builddir"
 
@@ -63,4 +64,4 @@ package() {
     install -m755 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
-sha512sums=('d6e68c1aba5ef611dd064b7e72b8499ae57ab472eefeaf8849a16837f26e2c8645aef5eaec44106c1d7ad80e59e43c673d14fb7ab48b679e78fd8a0b191af237')
+sha512sums=('e621333f6343684e8feac0fab626845b0efa5caa540b8d9252f65a7c3518a7cfe5f2edfb44541bad385d99b346c9cfc089c299c766fc69fe30d32f52b0ade80f')
