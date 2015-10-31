@@ -1,0 +1,17 @@
+pkgbase = owlman
+	pkgdesc = A pacman and cower wrapper focused on simplicity
+	pkgver = 0.7
+	pkgrel = 5
+	url = https://github.com/baskerville/owlman
+	arch = any
+	license = custom:Unlicense
+	depends = cower
+	depends = expac
+	optdepends = abs: for the *abs* action
+	provides = owlman
+	conflicts = owlman
+	source = https://github.com/baskerville/owlman/archive/0.7.tar.gz
+	md5sums = def17a2c59c076402b2dd66e4c9c9c92
+
+pkgname = owlman
+
