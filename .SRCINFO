@@ -1,6 +1,6 @@
 pkgbase = phoenix-git
 	pkgdesc = A super-slick libretro frontend powered by Qt 5
-	pkgver = 484e14c
+	pkgver = r969.f3a590a
 	pkgrel = 1
 	url = https://github.com/team-phoenix/Phoenix
 	arch = i686

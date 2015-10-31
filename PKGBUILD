@@ -1,7 +1,7 @@
 # Maintainer: David Pedersen <limero@me.com>
 pkgname=phoenix-git
 _gitname=Phoenix
-pkgver=484e14c
+pkgver=r969.f3a590a
 pkgrel=1
 pkgdesc="A super-slick libretro frontend powered by Qt 5"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$_gitname"
 
-  printf "%s" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
