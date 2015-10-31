@@ -8,7 +8,7 @@ pkgdesc='An OBS source service: downloads all remote sources listed in a spec fi
 arch=('any')
 url='https://github.com/openSUSE/obs-service-download_files'
 license=('GPL2')
-depends=('obs-build-git' 'diffutils' 'wget' 'perl-uri')
+depends=('obs-build' 'diffutils' 'wget' 'perl-uri')
 source=("http://download.opensuse.org/source/distribution/13.1/repo/oss/suse/src/${pkgname}-${pkgver}-${_pkgrel}.src.rpm")
 sha256sums=('ce2f8ba0746a0cea6a7db3633f3584f14753ff739ea33c38c357112de10f9dd6')
 
