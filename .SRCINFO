@@ -1,0 +1,20 @@
+pkgbase = ifcplusplus-git
+	pkgdesc = Port of IfcPlusPlus on linux. IfcPlusPlus is an open source C++ class model, as well as a reader and writer for IFC files in STEP format.
+	pkgver = 0.r161.g73d0b99
+	pkgrel = 1
+	url = https://github.com/berndhahnebach/IfcPlusPlus
+	arch = x86_64
+	arch = i686
+	license = custom:OSGPL
+	makedepends = boost
+	makedepends = chrpath
+	depends = openscenegraph
+	depends = boost-libs
+	depends = qt5-base
+	source = IfcPlusPlus::git://github.com/berndhahnebach/IfcPlusPlus.git
+	source = qt5.patch
+	md5sums = SKIP
+	md5sums = 3df56628d79a15799aede92466db77a3
+
+pkgname = ifcplusplus-git
+
