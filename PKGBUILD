@@ -10,7 +10,7 @@ url="http://fav.me/d9cy9dt"
 license=('GPLv3')
 depends=('gtk-engines' 'gnome-themes-standard>=3.18' 'gtk-engine-murrine>=0.98.2')
 
-source=("https://dl.dropboxusercontent.com/u/330352/candra-theme-3.18-4_10152015.zip")
+source=("https://dl.dropboxusercontent.com/u/330352/candra-themes-3.18-4_10152015.zip")
 #install=$pkgname.install
 #replaces=('delorean-dark-themes-3.8')
 #conflicts=('delorean-dark-theme-3.8')
