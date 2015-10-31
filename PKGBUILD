@@ -2,12 +2,14 @@
 
 pkgname=youdao-dict
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='YouDao Dictionary'
 arch=('i686' 'x86_64')
 url='http://cidian.youdao.com/index-linux.html'
 license=('GPL3')
 depends=(
+	'desktop-file-utils'
+	'hicolor-icon-theme'
 	'python'
 	'python-pyqt5'
 	'python-requests'
@@ -21,6 +23,7 @@ depends=(
 	'python-webob'
 	'qt5-webkit'
 )
+install=youdao-dict.install
 source_i686=('http://codown.youdao.com/cidian/linux/youdao-dict_1.0.2~binary_i386.tar.gz')
 source_x86_64=('http://codown.youdao.com/cidian/linux/youdao-dict_1.0.2~binary_amd64.tar.gz')
 sha256sums_i686=('ecab295766c3d54e71ca48820b56a92c61810c77715dac1fb3883be1ede51130')

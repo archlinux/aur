@@ -1,11 +1,14 @@
 pkgbase = youdao-dict
 	pkgdesc = YouDao Dictionary
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cidian.youdao.com/index-linux.html
+	install = youdao-dict.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
 	depends = python
 	depends = python-pyqt5
 	depends = python-requests
