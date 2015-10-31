@@ -8,7 +8,7 @@ _use_1_kHz_ticks=y
 _enable_BFQ=
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
-pkgver=3.14.55
+pkgver=3.14.56
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -30,9 +30,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
         "config.x86_64"
         "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.14.patch"
         "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.14.patch"
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.14.0.patch")
+        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.14.0.patch"
+        "should_resched-offsets.patch")
 
-sha512sums=("4f8cc96d52320b2f37373e933f5612341c7e2aba8fab1fc51891f8bc9c894c0e6340b5fb82ff3cff8bf4f56275a0efa2f8a521873caeffbe5697d1faf977f627"
+sha512sums=("31e085561faf8c7dd334c8c680a295f90cca7427452357e52e71c87a3212f6d3ac14fcf9054a1dc644a18743ab183e35d2ad1d2b6209513b628e3acf2804d531"
             "SKIP"
             "d745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305"
             "1b8ac77604b891aac57257bc3d9578596f38f2f75a625310a7d36e7f59612a616da6ef12d028622cb855a065e4fadc739cb67d12370c49bb52708744ad312957"
@@ -47,7 +48,8 @@ sha512sums=("4f8cc96d52320b2f37373e933f5612341c7e2aba8fab1fc51891f8bc9c894c0e634
             "8a9726cf4b33d30b8413ce8cd69a1cae6367dc697dfd4a4f0ee8251514a0b900b0e8996353f90d32c2a2e072c50af768f76cbf40fbbd32da5d49dbc7eb981d9f"
             "edf73585f1363011ba4235919b4265713d3943e3a93996822408ee4c99403a52c81d7cbf23d261aabeefeb41d2bb9b5ad26c4c1a0c6af7e27a4e092654c8e967"
             "91340f269b2aefb4df0e9999dc3664ded7d1758a7257da1268f95ced5f549a1883127b7260657a2ee0782922e7848fb3fac4ae05d822c793ecc9f2c1be9d4b5f"
-            "9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd")
+            "9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd"
+            "ec8a0e57adc5dbab08e997f49fa41be22ee3a37ae50b80096944c15932f052a359c96c2a157ef060b120ab8383ee1e897962362ee6c935a36f82186c171aa49a")
 validpgpkeys=(
               "ABAF11C65A2970B130ABE3C479BE3E4300411886" # Linux Torvalds
               "647F28654894E3BD457199BE38DBBDC86092693E" # Greg Kroah-Hartman
@@ -74,6 +76,8 @@ prepare() {
     patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.14.0.patch"
 
     patch -p1 -i "${srcdir}/bfs447-454.patch"
+
+    patch -p1 -i "${srcdir}/should_resched-offsets.patch" # Offsets for should_resched are required as of commit fe32d3cd5e8eb0f82e459763374aa80797023403
 
     if [ "${CARCH}" = "x86_64" ]; then
         cat "${srcdir}/config.x86_64" > ./.config
