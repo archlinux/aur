@@ -1,6 +1,6 @@
 pkgbase = sogo
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sogo.nu/
 	arch = i686
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = sogo
 pkgname = sogo
 	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
 	install = sogo.install
-	depends = sope>=2.3.1
+	depends = sope>=2.3.2
 	depends = gnustep-base
 	depends = libmemcached
 	depends = memcached
@@ -45,11 +45,11 @@ pkgname = sogo
 
 pkgname = sogo-openchange
 	pkgdesc = OpenChange module for SOGo
-	depends = sogo=2.3.1
+	depends = sogo=2.3.2
 	depends = openchange
 
 pkgname = sogo-activesync
 	pkgdesc = ActiveSync module for SOGo
-	depends = sogo=2.3.1
+	depends = sogo=2.3.2
 	depends = libwbxml
 

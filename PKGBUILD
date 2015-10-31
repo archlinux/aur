@@ -5,7 +5,7 @@ pkgname=('sogo'
          'sogo-openchange'
          'sogo-activesync')
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -37,7 +37,7 @@ build() {
 
 package_sogo() {
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-depends=('sope>=2.3.1' 'gnustep-base' 'libmemcached' 'memcached')
+depends=("sope>=${pkgver}" 'gnustep-base' 'libmemcached' 'memcached')
 optdepends=(
 	'postgresql: run database server for sogo locally'
 	'mariadb: run database server for sogo locally'
@@ -73,7 +73,7 @@ install=sogo.install
 
 package_sogo-openchange() {
 pkgdesc="OpenChange module for SOGo"
-depends=('sogo=2.3.1' 'openchange')
+depends=("sogo=${pkgver}" 'openchange')
 
   cd "${srcdir}/SOGo-${pkgver}/OpenChange"
   sed 's@-Wall@-Wall -fobjc-exceptions@' -i GNUmakefile
@@ -82,7 +82,7 @@ depends=('sogo=2.3.1' 'openchange')
 
 package_sogo-activesync() {
 pkgdesc="ActiveSync module for SOGo"
-depends=('sogo=2.3.1' 'libwbxml')
+depends=("sogo=${pkgver}" 'libwbxml')
 
   cd "${srcdir}/SOGo-${pkgver}/ActiveSync"
   make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
