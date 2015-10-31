@@ -7,6 +7,7 @@ all: PKGBUILD src
 clean:
 	rm -rf .SRCINFO \
 	  ${PKG}.git    \
+	  PKGBUILD      \
 	  src
 
 upload: .${PKG}.git .SRCINFO
