@@ -3,24 +3,23 @@
 
 pkgname=python-slycot-git
 _gitname=Slycot
-pkgver=tb04ad_segfault.r72.g7b674d1
+pkgver=137.9bec0d2
 pkgrel=1
 pkgdesc="Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations."
 arch=('i686' 'x86_64')
-url="http://github.com/johannes-scharlach/Slycot"
+url="http://github.com/jgoppert/Slycot"
 license=('GPL2')
 depends=('python-numpy')
 makedepends=('git' 'gcc-fortran')
 optdepends=()
 provides=('python-slycot')
 conflicts=('python-slycot')
-source=(git+https://github.com/johannes-scharlach/Slycot.git)
+source=(git+https://github.com/jgoppert/Slycot.git)
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 package() {
