@@ -1,8 +1,9 @@
 # Maintainer: Gomasy <nyan@gomasy.jp>
 
-pkgname=lightdm-webkit-google-git
+_pkgname=lightdm-webkit-google
+pkgname=$_pkgname-git
 pkgver=20140429
-pkgrel=1
+pkgrel=2
 pkgdesc="A Google/ChromeOS style LightDM Webkit greeter theme"
 arch=('i686' 'x86_64')
 url="https://github.com/omgmog/lightdm-webkit-google"
@@ -16,5 +17,5 @@ md5sums=('SKIP')
 
 package() {
 	install -dm755 "$pkgdir/usr/share/lightdm-webkit/themes/"
-	cp -r "$srcdir/lightdm-webkit-google" "$pkgdir/usr/share/lightdm-webkit/themes/"
+	cp -r "$srcdir/$_pkgname" "$pkgdir/usr/share/lightdm-webkit/themes/"
 }
