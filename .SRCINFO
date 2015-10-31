@@ -1,6 +1,6 @@
 pkgbase = libpeas-luajit
 	pkgdesc = A GObject-based plugins engine
-	pkgver = 1.15.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = http://www.gtk.org/
 	install = libpeas.install
@@ -19,8 +19,8 @@ pkgbase = libpeas-luajit
 	depends = gobject-introspection-runtime
 	provides = libpeas
 	conflicts = libpeas
-	source = http://download.gnome.org/sources/libpeas/1.15/libpeas-1.15.0.tar.xz
-	sha256sums = 5690c99cce35fa972a93b20d061bf2384017072d939c95ab50bdf2b72be41e1c
+	source = http://download.gnome.org/sources/libpeas/1.16/libpeas-1.16.0.tar.xz
+	sha256sums = b093008ecd65f7d55c80517589509698ff15ad41f664b11a3eb88ff461b1454e
 
 pkgname = libpeas-luajit
 
