@@ -2,7 +2,7 @@
 
 pkgname=cura
 pkgver=15.06.03
-pkgrel=2
+pkgrel=3
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
 depends=('qt5-svg' 'python-pyserial' 'python-numpy' 'uranium' 'curaengine')
 makedepends=('qt5-tools')
@@ -19,6 +19,16 @@ install=cura.install
 prepare(){
   cd Cura-${pkgver}
   patch -Np1 -i ../site-packages-dir.patch
+
+  cat > ${pkgname}.desktop <<END
+[Desktop Entry]
+Type=Application
+Name=${pkgname^}
+Comment=${pkgdesc}
+Exec=${pkgname}
+Icon=/usr/share/cura/resources/themes/cura/icons/application.svg
+Terminal=false
+END
 }
 
 build(){
@@ -30,6 +40,10 @@ build(){
 package(){
   cd Cura-${pkgver}
   make DESTDIR="${pkgdir}" install
+
+  # install .desktop file
+  install -D -t ${pkgdir}/usr/share/applications ${pkgname}.desktop
+
   # rename executable
   mv ${pkgdir}/usr/bin/cura_app.py ${pkgdir}/usr/bin/cura
 }

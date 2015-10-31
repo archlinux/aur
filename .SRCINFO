@@ -1,7 +1,7 @@
 pkgbase = cura
 	pkgdesc = A software solution for 3D printing aimed at RepRaps and the Ultimaker.
 	pkgver = 15.06.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ultimaker.com/en/products/cura-software
 	install = cura.install
 	arch = i686
