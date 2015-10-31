@@ -1,7 +1,7 @@
 pkgbase = qarte
 	pkgdesc = Allow you to browse into the archive of arte+7 & arteLiveWeb sites and to record your prefered videos.
-	pkgver = 2.3.0
-	pkgrel = 4
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://launchpad.net/qarte
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = qarte
 	depends = python2-notify
 	depends = rtmpdump
 	optdepends = cronie: for differed download
-	source = http://ppa.launchpad.net/vincent-vandevyvre/vvv/ubuntu/pool/main/q/qarte/qarte_2.3.0.orig.tar.gz
-	md5sums = f978a1d5e7ee89e4d3af3ac7d2747b6f
+	source = http://ppa.launchpad.net/vincent-vandevyvre/vvv/ubuntu/pool/main/q/qarte/qarte_2.5.0.orig.tar.gz
+	md5sums = f5748ea3a1527a0817b5a37db8221831
 
 pkgname = qarte
 
