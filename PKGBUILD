@@ -2,7 +2,7 @@
 
 pkgname=gdal-curl
 _pkgname=gdal
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats with curl and podofo (PDF) support"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.ta
 	gdal-1.5.1-python-install.patch
 )
 
-md5sums=('abba44bf198784e28cbf931fa4981059'
+md5sums=('27022cc4a3e0819ab02a69c2d0867437'
          '81afc1c26d29cee84aadb6924fe33861')
 
 provides=('gdal==2.0.0')
