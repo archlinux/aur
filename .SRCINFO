@@ -1,7 +1,7 @@
 pkgbase = fmbt
 	pkgdesc = Free Model Based tool
 	pkgver = 0.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/fmbt/
 	arch = x86_64
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = fmbt
 	depends = python2-shiboken
 	depends = tesseract
 	depends = tesseract-data-eng
-	source = https://github.com/01org/fMBT/archve/v0.28.tar.gz
+	source = https://github.com/01org/fMBT/archive/v0.28.tar.gz
 	md5sums = 29f13abe954253ec3d567a7691166d1f
 
 pkgname = fmbt

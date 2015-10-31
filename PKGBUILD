@@ -2,7 +2,7 @@
 pkgname=fmbt
 _pkgname=fMBT
 pkgver=0.28
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Free Model Based tool"
 arch=('x86_64' 'i686')
@@ -31,7 +31,7 @@ depends=(
   'tesseract'
   'tesseract-data-eng'
   )
-  source=(https://github.com/01org/$_pkgname/archve/v$pkgver.tar.gz)
+  source=(https://github.com/01org/$_pkgname/archive/v$pkgver.tar.gz)
 md5sums=('29f13abe954253ec3d567a7691166d1f')
 
 prepare() {
