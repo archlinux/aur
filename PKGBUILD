@@ -45,7 +45,7 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-# Alternative I/O scheduler by Paolo.
+# Alternative I/O scheduler by Paolo Valente
 # Set this if you want it enabled globally i.e. for all devices in your system
 # If you want it enabled on a device-by-device basis, leave this unset and see:
 # https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
@@ -56,7 +56,7 @@ _BFQ_enable_=
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
 _srcname=linux-4.1
-pkgver=4.1.11
+pkgver=4.1.12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -77,6 +77,7 @@ fbcondecor-4.1.patch
 'change-default-console-loglevel.patch'
 # ck1
 "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
+'bfs-009-add-preempt_offset-argument-to-should_resched.patch'
 # gcc
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 # bfq
@@ -85,7 +86,7 @@ fbcondecor-4.1.patch
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'f98156dd7ceac2849de16b38cdb7a530cd3c74833ab613e0822b7bc4583cccb1'
+            'f3520b06e6a2b9929173c680de75f11cde9f0a380e04195d538b5de820a549ae'
             'SKIP'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42'
             '1e1e592503a7e3c7e93e4f65624dfae4f8f3221468b7219e7ccfd8df7e668cbc'
@@ -93,6 +94,7 @@ sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             '2b264754fb155101481e44ea583ff219fdd35a6d88e59bda63b7e854eac7aa7b'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '87726411f583862e456156fe82ef51b188e5d92e7a4bd944e01a091cd7c46428'
+            '0c8d94a0c416db0fafe6f12469798b2ea9f3d23d9cd712b6db7e1eaf421097e0'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
             'ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975'
             'c5c2c48638c2a8180948bd118ffcc33c8b7ff5f9f1e4b04c8e2cafeca2bde87b'
@@ -118,6 +120,10 @@ prepare() {
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
 	msg "Patching source with ck2 including BFS v0.464"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
+
+	# build issue fix for 4.1.12
+	# http://ck-hack.blogspot.com/2015/08/bfs-464-linux-41-ck2.html?showComment=1445937376359#c8153343895524903784
+	patch -Np1 -i "${srcdir}/bfs-009-add-preempt_offset-argument-to-should_resched.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
