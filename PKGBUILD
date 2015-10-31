@@ -4,7 +4,7 @@
 
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
-pkgver=1.17.3
+pkgver=1.17.4
 pkgrel=1 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
 arch=('i686' 'x86_64')
 license=('custom')
@@ -23,12 +23,11 @@ source=(${url}/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
         0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
         0001-systemd-logind-do-not-rely-on-directed-signals.patch
-        0001-os-make-sure-the-clientsWritable-fd_set-is-initializ.patch
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('89b5c6b7e7ec4731645283d2178f607825b75a470e76b3ad3cb1c1dbd2456b73'
+sha256sums=('0c4b45c116a812a996eb432d8508cf26c2ec8c3916ff2a50781796882f8d6457'
             'SKIP'
             'af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
@@ -36,7 +35,6 @@ sha256sums=('89b5c6b7e7ec4731645283d2178f607825b75a470e76b3ad3cb1c1dbd2456b73'
             '3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7'
             '416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96'
             '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c'
-            'efc05c06af2bfdf588ef7a60b44c1d180fb353b1bffdfdf96415d63690b6e394'
             'ad64fd593cd4cdfdd830c4295ebe1acd4259e45cfc12a258a162ecdbb11fd7ca')
 
 prepare() {
@@ -47,9 +45,6 @@ prepare() {
 
   # fix VT switching with kdbus; from upstream
   patch -Np1 -i ../0001-systemd-logind-do-not-rely-on-directed-signals.patch
-
-  # fix FS#45009, merged upstream
-  patch -Np1 -i ../0001-os-make-sure-the-clientsWritable-fd_set-is-initializ.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
