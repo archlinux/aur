@@ -30,7 +30,7 @@ find Xfdashboard-Candra/ -type f \
 -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
 
   cd candra-theme-3.18
-find Candra-Theme/ -type f \
+find Candra-theme/ -type f \
 -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
 
   cd 'Root'
