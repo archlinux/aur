@@ -60,4 +60,6 @@ package() {
 
   install -D -m644 "${srcdir}/amuled.systemd" "${pkgdir}/usr/lib/systemd/system/amuled.service"
   install -D -m644 "${srcdir}/amuleweb.systemd" "${pkgdir}/usr/lib/systemd/system/amuleweb.service"
+  mv "${pkgdir}/usr/share/amule-dlp" "${pkgdir}/usr/share/amule"
+  ln -s amule "${pkgdir}/usr/share/amule-dlp"
 }
