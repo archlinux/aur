@@ -26,22 +26,22 @@ package() {
     # create dir structure
     install -d "${pkgdir}/etc/${pkgname}"
     install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/lib/${pkgname}"
+    install -d "${pkgdir}/usr/share/webapps/${pkgname}"
     install -d "${pkgdir}/usr/share/doc/${pkgname}"
     # add empty directory for drush extensions
-    install -d "${pkgdir}/usr/share/${pkgname}/commands"
+    install -d "${pkgdir}/usr/share/webapps/${pkgname}/commands"
 
     # install main files
-    cp -r commands lib includes vendor "${pkgdir}/usr/lib/${pkgname}"
+    cp -r commands lib includes vendor "${pkgdir}/usr/share/webapps/${pkgname}"
     cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
 
     install -m644 examples/example.{{aliases.,}drushrc.php,drush.ini} "${pkgdir}/etc/${pkgname}"
     install -m644 drush_logo-black.png     "${pkgdir}/usr/share/doc/${pkgname}"
-    install -m644 drush.info drush.api.php "${pkgdir}/usr/lib/${pkgname}"
-    install -m644 drush.php                "${pkgdir}/usr/lib/${pkgname}"
-    install -m755 drush                    "${pkgdir}/usr/lib/${pkgname}"
-    ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -m644 drush.info drush.api.php "${pkgdir}/usr/share/webapps/${pkgname}"
+    install -m644 drush.php                "${pkgdir}/usr/share/webapps/${pkgname}"
+    install -m755 drush                    "${pkgdir}/usr/share/webapps/${pkgname}"
+    ln -s "/usr/share/webapps/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # install Console_Table library too
-    install -Dm644 ../Console_Table-1.2.1/Table.php "${pkgdir}/usr/lib/${pkgname}/includes/table.inc"
+    install -Dm644 ../Console_Table-1.2.1/Table.php "${pkgdir}/usr/share/webapps/${pkgname}/includes/table.inc"
 }
