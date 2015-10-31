@@ -1,0 +1,14 @@
+pkgbase = perl-statistics-online
+	pkgdesc = Pure Perl implementation of the on-line algorithm to produce statistics
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/~nids/Statistics-OnLine-0.02/lib/Statistics/OnLine.pm
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NI/NIDS/Statistics-OnLine-0.02.tar.gz
+	sha512sums = 3b4455209b732b2871408e6eb0102d6a4fb9b2855701ea8f7a17e732d43ef32dfe0ebd6e05e0d67593e31d8c090329a8f0275700ca0d2db815987da702a6b86d
+
+pkgname = perl-statistics-online
+
