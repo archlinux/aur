@@ -1,8 +1,8 @@
 pkgbase = flatplat-theme
 	pkgdesc = A Material Design-like flat theme for GTK3, GTK2, Metacity, and GNOME-Shell. This package does not contains chrome skin extension.
 	pkgver = v20151025
-	pkgrel = 1
-	url = http://gnome-look.org/content/show.php/Flat-Plat+3.14?content=167704
+	pkgrel = 2
+	url = https://github.com/nana-4/Flat-Plat
 	arch = any
 	license = GPL
 	depends = librsvg
