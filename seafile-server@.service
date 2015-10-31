@@ -5,10 +5,10 @@ After=syslog.target network.target
 [Service]
 Type=forking
 User=seafile
-WorkingDirectory=%h/%i
+WorkingDirectory=/srv/seafile/%i
 ExecStart=/usr/bin/seafile-admin start --fastcgi
 ExecStop=/usr/bin/seafile-admin stop
-PIDFile=%h/%i/seafile-data/pids/seaf-server.pid
+PIDFile=/srv/seafile/%i/seafile-data/pids/seaf-server.pid
 
 [Install]
 WantedBy=multi-user.target
