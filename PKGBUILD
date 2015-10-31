@@ -1,13 +1,13 @@
 # vim: ft=PKGBUILD
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
-# Contributor: Eric Vidal
+# Contributor: Eric Vidal <eric@obarun.org>
 # % Trigger: 1441370137 %
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
-pkgver=r679.a81f7bc
-pkgrel=4
+pkgver=r683.9f910cf
+pkgrel=1
 pkgdesc='A virtual device manager for *nix'
-url='https://github.com/jcnelson/vdev.git'
+url='https://github.com/fbt/vdev.git'
 arch=( 'x86_64' 'i686' )
 license=( 'custom:ISC' )
 makedepends=( 'libpstat' 'fskit' 'squashfs-tools' 'dash' )
@@ -57,6 +57,8 @@ package_vdev-git() {
 		DESTDIR="$pkgdir" \
 		PREFIX='/usr' \
 		ETCDIR='/etc' \
+		RUNDIR='/run' \
+		LOGDIR='/var/log' \
 	install
 
 	# hwdb
@@ -67,12 +69,6 @@ package_vdev-git() {
 	# Config files
 	backup+=( etc/vdev/actions/*.act )
 	backup+=( etc/vdev/*.conf )
-
-	# Fix the log path
-	sed -i "s%logfile=/usr/run%logfile=/var/log%" etc/vdev/vdevd.conf
-
-	# Fix the run path
-	sed -i "s%pidfile=/usr/run%pidfile=/run%" etc/vdev/vdevd.conf
 
 	# Install the licence
 	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
@@ -103,6 +99,9 @@ package_vdev-libudev-compat-git() {
 		DESTDIR="$pkgdir" \
 		PREFIX=/usr \
 	install
+
+	# Missing solink
+	ln -s /lib/libudev.so.1 "$pkgdir/usr/lib/libudev.so"
 
 	# Install the licence
 	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
