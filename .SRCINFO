@@ -1,0 +1,34 @@
+pkgbase = fontforge-git
+	pkgdesc = Full-featured outline and bitmap font editor.
+	pkgver = 20150824.r32.geda9fc9
+	pkgrel = 1
+	epoch = 1
+	url = https://fontforge.github.io/
+	install = fontforge-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = BSD
+	makedepends = git
+	depends = libxkbui
+	depends = libxi
+	depends = pango
+	depends = giflib
+	depends = libltdl
+	depends = libspiro-git
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = libunicodenames
+	depends = gc
+	depends = python
+	depends = shared-mime-info
+	depends = zeromq
+	provides = fontforge
+	conflicts = fontforge
+	source = git://github.com/fontforge/fontforge.git
+	source = http://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.bz2
+	sha256sums = SKIP
+	sha256sums = 2f6e9a7de3ae8e85bdd2fe237e27d868d3ba7a27495e65906455c27722dd1a17
+
+pkgname = fontforge-git
+
