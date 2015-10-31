@@ -1,14 +1,14 @@
 pkgbase = android-x86-system-image-23
 	pkgdesc = Android x86 Atom System Image, API-23
-	pkgver = 6.0_r03
+	pkgver = 6.0_r04
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
 	depends = android-platform-23
 	options = !strip
-	source = http://dl.google.com/android/repository/sys-img/android/sysimg_x86-23_r03.zip
-	sha1sums = 3cb2e8efb575c35a558b091eac7e1bc5843f5f12
+	source = http://dl.google.com/android/repository/sys-img/android/sysimg_x86-23_r04.zip
+	sha1sums = abd300ad36bae688ce78aadcf83e2d8846f8bce8
 
 pkgname = android-x86-system-image-23
 
