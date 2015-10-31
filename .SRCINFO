@@ -1,0 +1,19 @@
+pkgbase = ext4-crypt-git
+	pkgdesc = Userspace tool to create ext4 encrypted directories. Git checkout
+	pkgver = r19.772851d
+	pkgrel = 1
+	url = https://github.com/gdelugre/ext4-crypt
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = keyutils
+	depends = libscrypt
+	provides = ext4-crypt
+	conflicts = ext4-crypt
+	source = git://github.com/gdelugre/ext4-crypt.git
+	md5sums = SKIP
+
+pkgname = ext4-crypt-git
+
