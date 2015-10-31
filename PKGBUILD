@@ -4,7 +4,7 @@ pkgbase=sogo
 pkgname=('sogo'
          'sogo-openchange'
          'sogo-activesync')
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
@@ -13,7 +13,7 @@ makedepends=('gcc-objc'
              'gnustep-base'
              'libwbxml'
              'libmemcached'
-             'sope>=2.3.1')
+             "sope>=${pkgver}")
 options=('!strip')
 source=(
   http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz
@@ -88,7 +88,7 @@ depends=('sogo=2.3.1' 'libwbxml')
   make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
 }
 
-sha256sums=('9b70c595e92a086d6033a76f49e5651a42dbffcf3c40874ce6a0b77595f060ce'
+sha256sums=('7830e2ad684b54c89a4720edf7e73250a076885a3e25052c093e7894227939ac'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
             'ef6ab2829d35c2abb5529ee8ea9a4cc541913b0a82bc91f4c9fa21c65d44a4aa'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
