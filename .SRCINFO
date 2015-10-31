@@ -1,6 +1,6 @@
 pkgbase = ambiance-radiance-colors-suite
 	pkgdesc = Ambiance & Radiance Colors Suite for Unity, Gnome Classic, MATE, XFCE, LXDE and Openbox desktops
-	pkgver = 15.04.3
+	pkgver = 15.10.1
 	pkgrel = 1
 	url = http://www.ravefinity.com/p/ambiance-radiance-colors-suite.html
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ambiance-radiance-colors-suite
 	optdepends = rave-x-colors
 	options = !strip
 	options = !zipman
-	source = ambiance-radiance-colors-suite-15.04.3.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAZDQxa0Izc2dIY2c
-	md5sums = 7d1114882c9412c39ee7962616487283
+	source = ambiance-radiance-colors-suite-15.10.1.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAMV8wQThOdTVENWs
+	md5sums = b8c0127a5b171926bf28863f6e7047e7
 
 pkgname = ambiance-radiance-colors-suite
 
