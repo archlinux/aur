@@ -17,7 +17,7 @@ pkgbase = profile-sync-daemon
 	conflicts = tmpfs-sync
 	conflicts = user-profile-sync-daemon
 	source = http://repo-ck.com/source/profile-sync-daemon/profile-sync-daemon-6.16.tar.xz
-	sha256sums = ea2b02fc78b9188f58574a67ffb955927c50c437e97b36de1f58db72295e537c
+	sha256sums = fdd4193969d159067385fd0e4e0ceb8eff813bac7caa3feac708300858c0a418
 
 pkgname = profile-sync-daemon
 
