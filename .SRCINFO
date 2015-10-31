@@ -1,8 +1,8 @@
 pkgbase = plymouth-theme-arch-charge
 	pkgdesc = A Plyouth theme based on Fedora's Charge theme, but featuring the ArchLinux logo.
 	pkgver = 20151031
-	pkgrel = 1
-	url = http://development.sjmcdougall.com/plymouth/arch-charge
+	pkgrel = 2
+	url = http://development.sjmcdougall.com/plymouth-themes/arch-charge
 	install = plymouth-theme-arch-charge.install
 	arch = any
 	license = GPL
