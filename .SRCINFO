@@ -1,7 +1,7 @@
 pkgbase = nodejs-generator-mobileangularui
 	pkgdesc = Yeoman generator for Mobile Angular UI
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mcasimir/mobile-angular-ui
 	arch = any
 	license = BSD
