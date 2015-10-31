@@ -10,7 +10,7 @@ url="https://strem.io"
 license=('custom')
 install=stremio.install
 source=("https://strem.io/Stremio${_basever}.linux.tar.gz"
-        "http://www.strem.io/Stremio${pkgver}.asar.gz"
+        "https://strem.io/Stremio${pkgver}.asar.gz"
         "https://strem.io/favicon-32x32.png"
         "https://strem.io/favicon-96x96.png"
         "stremio.desktop")
