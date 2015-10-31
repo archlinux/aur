@@ -89,6 +89,7 @@ pkgbase = sagemath-git
 	source = paths.patch
 	source = clean.patch
 	source = skip-check.patch
+	source = test-optional.patch
 	source = pexpect-env.patch
 	source = pexpect-del.patch
 	source = disable-fes.patch
