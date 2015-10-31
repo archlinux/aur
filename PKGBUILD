@@ -4,12 +4,12 @@ _npmname=generator-mobileangularui
 _npmver=1.2.4
 pkgname=nodejs-$_npmname
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Yeoman generator for Mobile Angular UI"
 arch=('any')
 url="https://github.com/mcasimir/mobile-angular-ui"
 license=('BSD')
-depends=('nodejs-yeoman' 'nodejs-gulp' 'nodejs-bower' 'nodejs-mocha')
+depends=('nodejs-yeoman' 'nodejs-gulp' 'bower' 'nodejs-mocha')
 
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
