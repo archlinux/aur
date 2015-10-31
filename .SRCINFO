@@ -1,6 +1,6 @@
 pkgbase = dasom-git
 	pkgdesc = Dasom is an input method framework
-	pkgver = 254.237d031
+	pkgver = 265.2300f58
 	pkgrel = 1
 	url = https://github.com/cogniti/dasom
 	install = dasom-git.install
