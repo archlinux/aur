@@ -1,0 +1,16 @@
+pkgbase = webify
+	pkgdesc = webfont generator - converts ttf to woff, eot and svg
+	pkgver = 0.1.7.0
+	pkgrel = 1
+	url = https://github.com/ananthakumaran/webify
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = libffi
+	depends = gmp
+	source = LICENSE
+	md5sums = aabfb78191314e2b916dddac818da678
+
+pkgname = webify
+
