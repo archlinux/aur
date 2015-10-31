@@ -3,7 +3,7 @@
 
 pkgbase=mint-artwork-cinnamon
 pkgname=cinnamon-sound-effects
-pkgver=4.9
+pkgver=5.0
 pkgrel=1
 pkgdesc='Default artwork for the Cinnamon edition of Linux Mint.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('cinnamon')
 url='http://linuxmint.com'
 source=("https://ftp.fau.de/mint/packages/pool/main/m/${pkgbase}/${pkgbase}_${pkgver}.tar.gz"
 	"${pkgname}.gschema.override")
-sha256sums=('4523f3043977f352309043350bfafc33d07dd3ac9e794e75c481e3733ac7a28c'
+sha256sums=('9071e5e3d73e48c902c8e9c21f00fce903a5f2ef6c35a2187803d3492a0b9ef2'
 	'ca9d9d22c2ca9b0e257f93bd624fc27a53cab258797e009438a82e9b6902100e')
 
 package_cinnamon-sound-effects() {
