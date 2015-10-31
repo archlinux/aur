@@ -2,14 +2,14 @@
 
 pkgname=skippy-xd-git
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-screen task-switcher for X11, similar to Apple's Expose."
 url="http://code.google.com/p/skippy-xd/"
 license=('GPL')
 depends=('libxinerama' 'libxcomposite' 'libxdamage' 'libxft' 'xorg-server' 'giflib')
 makedepends=('git')
 arch=('i686' 'x86_64')
-source=("git://github.com/richardgv/skippy-xd.git")
+source=("git://github.com/penguinpowernz/skippy-xd.git")
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 

@@ -13,7 +13,7 @@ pkgbase = skippy-xd-git
 	depends = libxft
 	depends = xorg-server
 	depends = giflib
-	source = git://github.com/richardgv/skippy-xd.git
+	source = git://github.com/penguinpowernz/skippy-xd.git
 	md5sums = SKIP
 
 pkgname = skippy-xd-git
