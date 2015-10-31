@@ -1,7 +1,7 @@
 # Maintainer: Sajan Parikh (sajan) <sajan@parikh.io>
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
-pkgname=nuvola-app-amazon-cloud-player-git
+pkgname=nuvolaplayer-app-amazon-cloud-player-git
 pkgver=r18.eeb18cf
 pkgrel=1
 pkgdesc="Amazon Cloud Player integration for Nuvola Player."
