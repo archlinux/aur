@@ -14,7 +14,7 @@ pkgbase = warspear
 	depends = zenity
 	depends = curl
 	source = http://cdn.warspear-online.com/repo/pool/non-free/binary-i386/w/warspear/warspear_5.1.2_i386.deb
-	md5sums = fd22655e465f95689460d79acd68346c
+	sha512sums = 704373e521049f35fb2d9721207561f05e1ff4a4a8af6f6e2189ab0fa21438f533eb41bbe5a5e81e100cb4bc73da97cf894472e1325d3960f3bbcf494bdb1f87
 
 pkgname = warspear
 
