@@ -3,17 +3,22 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.3.1.r1836.9c7d417
+pkgver=1.3.1.r2252.83549e6
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=('i686' 'x86_64')
 url='http://www.pcsx2.net'
 license=('GPL2' 'GPL3' 'LGPL2.1' 'LGPL3')
-depends_i686=('glew' 'libaio' 'libjpeg-turbo' 'nvidia-cg-toolkit' 'portaudio'
-              'sdl' 'soundtouch' 'wxgtk')
-depends_x86_64=('lib32-glew' 'lib32-libaio' 'lib32-libjpeg-turbo'
-                'lib32-nvidia-cg-toolkit' 'lib32-portaudio' 'lib32-sdl'
-                'lib32-soundtouch' 'lib32-wxgtk')
+depends_i686=('alsa-lib' 'bzip2' 'gcc-libs' 'gdk-pixbuf2' 'glew' 'glib2'
+              'glibc' 'gtk2' 'libaio' 'libgl' 'libjpeg-turbo' 'libpng' 'libx11'
+              'nvidia-cg-toolkit' 'portaudio' 'sdl2' 'soundtouch' 'wxgtk' 'xz'
+              'zlib')
+depends_x86_64=('lib32-alsa-lib' 'lib32-bzip2' 'gcc-libs-multilib'
+                'lib32-gdk-pixbuf2' 'lib32-glew' 'lib32-glib2' 'lib32-glibc'
+                'lib32-gtk2' 'lib32-libaio' 'lib32-libgl' 'lib32-libjpeg-turbo'
+                'lib32-libpng' 'lib32-libx11' 'lib32-nvidia-cg-toolkit'
+                'lib32-portaudio' 'lib32-sdl2' 'lib32-soundtouch' 'lib32-wxgtk'
+                'lib32-xz' 'lib32-zlib')
 makedepends=('cmake' 'git' 'png++')
 makedepends_x86_64=('gcc-multilib')
 optdepends_i686=('libcanberra: Hide silly warning')
