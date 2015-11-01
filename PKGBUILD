@@ -2,7 +2,7 @@
 # Contributor: Christian METZLER <neroth@xeked.com>
 pkgname=gnome-shell-extension-weather-git
 _pkgname=${pkgname%-git}
-pkgver=r576.746debe
+pkgver=r580.5c44f2f
 pkgrel=1
 epoch=1
 pkgdesc="A simple GNOME Shell extension for displaying weather informations from several cities"
