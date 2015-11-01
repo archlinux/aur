@@ -1,0 +1,29 @@
+pkgbase = neovim
+	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://neovim.io
+	install = neovim.install
+	arch = i686
+	arch = x86_64
+	license = custom:neovim
+	makedepends = cmake
+	makedepends = luajit
+	makedepends = lua51-messagepack
+	makedepends = lua51-lpeg
+	depends = jemalloc
+	depends = libtermkey
+	depends = libuv
+	depends = msgpack-c
+	depends = unibilium
+	optdepends = python2-neovim: for Python 2 plugin support (see :help nvim-python)
+	optdepends = python-neovim: for Python 3 plugin support (see :help nvim-python)
+	optdepends = xclip: for clipboard support (or xsel) (see :help nvim-clipboard)
+	optdepends = xsel: for clipboard support (or xclip) (see :help nvim-clipboard)
+	source = https://github.com/neovim/neovim/archive/v0.1.0.tar.gz
+	source = https://github.com/neovim/libvterm/archive/1b745d29d45623aa8d22a7b9288c7b0e331c7088.tar.gz
+	sha256sums = 2a14bbbde800b87f5d1b4e0c145cab9a8fc0513d6e7ad851d43cd3a4d821fd58
+	sha256sums = 3fc75908256c0d158d6c2a32d39f34e86bfd26364f5404b7d9c03bb70cdc3611
+
+pkgname = neovim
+
