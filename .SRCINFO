@@ -1,7 +1,7 @@
 pkgbase = voglperf
 	pkgdesc = benchmarking tool for OpenGL games (frame info, logs, steam support)
 	pkgver = 0.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/ValveSoftware/voglperf
 	arch = x86_64
 	arch = i686

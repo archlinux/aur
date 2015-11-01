@@ -2,7 +2,7 @@
 pkgbase=voglperf
 pkgname=('voglperf32' 'voglperf64')
 pkgver=0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="benchmarking tool for OpenGL games (frame info, logs, steam support)"
 arch=('x86_64' 'i686')
 url="https://github.com/ValveSoftware/voglperf"
@@ -23,7 +23,7 @@ prepare() {
 	cd "$srcdir/$pkgbase-$pkgver"
 	if [ "$CARCH" = "x86_64" ]; then
 		sed -i -e 's|./libvoglperf32.so|/usr/lib32/libvoglperf.so|' \
-			-e 's|./libvoglperf64|/usr/lib/libvoglperf.so|' \
+			-e 's|./libvoglperf64.so|/usr/lib/libvoglperf.so|' \
 			src/voglperfrun.cpp
 	else
 		# does the 32 bit version need the 64 bit library?
