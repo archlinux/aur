@@ -1,0 +1,18 @@
+pkgbase = ros-jade-slam-gmapping
+	pkgdesc = ROS - slam_gmapping contains a wrapper around gmapping which provides SLAM capabilities.
+	pkgver = 1.3.8
+	pkgrel = 1
+	url = http://ros.org/wiki/slam_gmapping
+	arch = any
+	license = CreativeCommons-by-nc-sa-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-openslam-gmapping
+	depends = ros-jade-gmapping
+	source = slam_gmapping::git+https://github.com/ros-gbp/slam_gmapping-release.git#tag=release/jade/slam_gmapping/1.3.8-0
+	md5sums = SKIP
+
+pkgname = ros-jade-slam-gmapping
+
