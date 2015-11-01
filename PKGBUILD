@@ -9,7 +9,7 @@ _enable_BFQ=
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
 pkgver=3.14.56
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -173,9 +173,9 @@ package_linux-lts314-ck() {
     rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
     rm -rf "${pkgdir}/lib/firmware"
     find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
-    ln -s "../extramodules-${_basekernel}${_kernelname:lts314-ck}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-    mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:lts314-ck}"
-    echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:lts314-ck}/version"
+    ln -s "../extramodules-3.14-lts314-ck" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+    mkdir -p "${pkgdir}/lib/modules/extramodules-3.14-lts314-ck"
+    echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-3.14-lts314-ck/version"
 
     depmod -b "${pkgdir}" -F System.map "${_kernver}"
 
