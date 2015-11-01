@@ -3,7 +3,7 @@
 
 pkgname=perl-set-object
 pkgver=1.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of Objects (smalltalkish: IdentitySet)"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~rurban/Set-Object-${pkgver}/"
@@ -14,14 +14,14 @@ source=(http://www.cpan.org/authors/id/R/RU/RURBAN/Set-Object-$pkgver.tar.gz)
 md5sums=('15721030d597c2744ff3846ccdd419dc')
 
 build() {
-  cd  $startdir/src/Set-Object-$pkgver
+  cd  $srcdir/Set-Object-$pkgver
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd  $startdir/src/Set-Object-$pkgver
+  cd  $srcdir/Set-Object-$pkgver
   make install DESTDIR=$pkgdir
-  find $startdir/pkg -name '.packlist' -delete
-  find $startdir/pkg -name '*.pod' -delete
+  find $pkgdir -name '.packlist' -delete
+  find $pkgdir -name '*.pod' -delete
 }
