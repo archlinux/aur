@@ -35,7 +35,7 @@ md5sums=('831debf7f50f35c91b68e65e17c89c6a'
 
 	 # Build frontend assets
 	 npm install
-	 # Install phantomjs in this directory as well for some reason
+	 # Install phantomjs in this directory as well for some reason. Can be removed after next patch: https://github.com/grafana/grafana/issues/2999
 	 cd node_modules/karma-phantomjs-launcher
 	 npm install
 	 cd "$GOPATH"
