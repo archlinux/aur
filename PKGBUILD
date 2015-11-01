@@ -85,8 +85,6 @@ prepare() {
         cat "${srcdir}/config" > ./.config
     fi
 
-    #make oldconfig
-
     if [ -n "$_use_1_kHz_ticks" ]; then
         sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
             -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
@@ -130,9 +128,16 @@ prepare() {
         make localmodconfig
     fi
 
-    #make menuconfig
+    #make config
     #make nconfig
+    #make menuconfig
     #make xconfig
+    #make gconfig
+    #make oldconfig
+    #make silentoldconfig
+    #make defconfig
+    make allyesconfig
+    #make olddefconfig
 }
 
 build() {
