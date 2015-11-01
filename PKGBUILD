@@ -17,7 +17,7 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
-source=('quine-relay::git://github.com/mame/quine-relay.git'
+source=('quine-relay::git://github.com/mame/quine-relay.git#commit=5029ce6'
         'quine-relay.sh')
 sha256sums=('SKIP'
             '2409f6ccaed7070143b365fb1e276ff73620d9651f12d5058c2291b3d093be95')
@@ -37,8 +37,8 @@ prepare() {
 
   # lolcode is available in Arch Linux
   sed -i 's:vendor/lci-\*/::' Makefile
-  # npiet is available in Arch Linux
-  sed -i 's:vendor/npiet-\*/::' Makefile
+  # fpiet is available in Arch Linux
+  #sed -i 's:vendor/npiet-\*/:fpiet:' Makefile
   # whitespace is available in Arch Linux
   #sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
 }
