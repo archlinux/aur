@@ -5,7 +5,7 @@
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
 pkgver=r683.9f910cf
-pkgrel=2
+pkgrel=3
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/fbt/vdev.git'
 arch=( 'x86_64' 'i686' )
@@ -69,11 +69,11 @@ package_vdev-git() {
 	make DESTDIR="${pkgdir}" PREFIX=/usr -C hwdb install
 
 	# mkinitcpio hook
-	install -Dm755 "$srcdir/vdev_hook" "$pkgdir/usr/lib/initcpio/hooks/vdev"
-	install -Dm755 "$srcdir/vdev_install" "$pkgdir/usr/lib/initcpio/install/vdev"
+	install -Dm644 "$srcdir/vdev_hook" "$pkgdir/usr/lib/initcpio/hooks/vdev"
+	install -Dm644 "$srcdir/vdev_install" "$pkgdir/usr/lib/initcpio/install/vdev"
 
-	# Install the licence
-	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
+	# Install the license
+	install -Dm644 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
 
 	# Config files
 	cd "$pkgdir"
@@ -93,8 +93,8 @@ package_vdevfs-git() {
 		SBINDIR='/usr/bin' \
 	install
 
-	# Install the licence
-	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
+	# Install the license
+	install -Dm644 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_vdev-libudev-compat-git() {
@@ -110,8 +110,8 @@ package_vdev-libudev-compat-git() {
 	# Missing solink
 	ln -s /lib/libudev.so.1 "$pkgdir/usr/lib/libudev.so"
 
-	# Install the licence
-	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
+	# Install the license
+	install -Dm644 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 sha1sums=('SKIP'
