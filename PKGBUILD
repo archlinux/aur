@@ -1,13 +1,13 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname="gitetc"
 pkgver="0.0.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Scripts\ to\ help\ you\ track\ changes\ to\ your\ /etc\ files"
 arch=("any")
 url="https://github.com/vinsonchuong/gitetc"
 license=("MIT")
 depends=("git")
-source=("https://github.com/vinsonchuong/gitetc/archive/v0.0.2-1.tar.gz")
+source=("https://github.com/vinsonchuong/gitetc/archive/v0.0.2-2.tar.gz")
 md5sums=("SKIP")
 build () 
 { 
