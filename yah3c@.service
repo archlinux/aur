@@ -1,6 +1,6 @@
 [Unit]
 Description=yah3c for %I
-Before=dhcpcd.target
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/yah3c -u %I

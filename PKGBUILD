@@ -7,12 +7,12 @@ pkgdesc="A program for h3c authentication in SYSU east campus."
 arch=('any')
 url="https://github.com/zlsun/yah3c"
 license=('MIT')
-depends=('python')
+depends=()
 makedepends=('python-setuptools')
 source=("https://github.com/zlsun/yah3c/archive/v${pkgver}.tar.gz"
         "yah3c@.service")
 md5sums=("e27b277cc79d9e097a6b398397307437"
-         "a49893a03cbe9986a89bb3ebc46b416e")
+         SKIP)
 
 build ()
 {
