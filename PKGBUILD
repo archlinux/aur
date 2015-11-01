@@ -10,7 +10,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-lts318       # Build kernel with a different name
 _srcname=linux-3.18
-pkgver=3.18.22
+pkgver=3.18.23
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         )
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            '370993a59dc24aff4e7428b9c701aaf7fc9ea05fc5f1dd55f2dc93464a7a982c'
+            '52406a0efaefdffd6464ce5866213fa6c800d08d3e8c3af19f01a38c237e5212'
             'SKIP'
             'c9821d2a786b569233833c3074c7bb4e9c0d50ab903a9b9aeb8784d95c87a52d'
             '781d5cb410935f3f904a539ecdb0b49f2d87c95a0f05c665b19b97a9d14dd40e'
@@ -104,6 +104,7 @@ _package() {
   replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
+  groups=('lts-31x')
 
   cd "${srcdir}/${_srcname}"
 
@@ -163,6 +164,7 @@ _package-headers() {
   provides=("kernel26${_kernelname}-headers=${pkgver}")
   conflicts=("kernel26${_kernelname}-headers")
   replaces=("kernel26${_kernelname}-headers")
+  groups=('lts-31x')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
