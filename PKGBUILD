@@ -2,7 +2,7 @@
 
 pkgname=createrepo_c
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
 license=('GPL')
