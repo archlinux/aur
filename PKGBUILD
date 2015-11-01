@@ -38,7 +38,7 @@ prepare() {
   # lolcode is available in Arch Linux
   sed -i 's:vendor/lci-\*/::' Makefile
   # npiet is available in Arch Linux
-  sed -i 's:vendor/npiet-\*/::' Makefile
+  #sed -i 's:vendor/npiet-\*/::' Makefile
   # whitespace is available in Arch Linux
   #sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
 }
