@@ -1,19 +1,19 @@
 pkgname=jcloisterzone
-pkgver=3.3.1
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="A Java version of the classic Carcassonne board game."
 arch=('any')
 url="http://jcloisterzone.com/en/"
 license=('AGPL')
 depends=('java-runtime')
-source=("https://github.com/farin/JCloisterZone/releases/download/v${pkgver}/JCloisterZone-${pkgver}.tgz"
+source=("http://jcloisterzone.com/builds/JCloisterZone-${pkgver}.tgz"
         'jcloisterzone.sh'
         'jcloisterzone.desktop'
         'ico.png')
-md5sums=('cb13173f918d2f67c983a7491e6ea666'
-         '1b1b04d8d0bef074b96033e840affc65'
-         '89950434a2f55328dc0f67a8dca38b23'
-         '788c367802b42ce77fa8486168e21d1d')
+sha256sums=('764f69792973b10213d16092f5e6da19cf44ec69a2ab7f5f557648850ff69fad'
+            '8487b2b043da8604deb48ce702c9bf8bfbcacf8568d71b17702df9b8eb98a3d6'
+            '7b25dfcdcb9ec286555a5f03e7b16bbc9c71f117f10aefc79b7e4537a72f4253'
+            '012a090df7f1fa30fe3ede444eab92cb2f6fd3c37e1b6786f04da9feb3f7cf38')
 
 package() {
     install -d "$pkgdir/usr/share"

@@ -2,7 +2,7 @@
 Version=1.0
 Encoding=UTF-8
 Name=JCloisterZone
-Comment=A Java version of the classic Carcassonne board game.
+Comment=A Java version of the Carcassonne board game.
 Exec=jcloisterzone
 Icon=jcloisterzone.png
 Terminal=false
