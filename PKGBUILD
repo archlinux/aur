@@ -6,7 +6,7 @@
 # $ curl -s http://bluejeans.com/downloads | grep 'bjnplugin.*\.deb'
 
 pkgname=bluejeans
-pkgver=2.110.80.5
+pkgver=2.115.99.8
 pkgrel=1
 pkgdesc="BlueJeans browser plugin"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=()
 source=(
     https://swdl.bluejeans.com/skinny/rbjnplugin_${pkgver}-1_amd64.deb
 )
-sha1sums=('b97c774a2f1ba1f9ba4378a49b3765574879bf9e')
+sha1sums=('c9f8d14dce9495f00f6640559af73ce4febb784d')
 
 package() {
     ar x rbjnplugin_${pkgver}-${pkgrel}_amd64.deb "${pkgdir}"
