@@ -7,7 +7,7 @@
 
 pkgname=midori
 pkgver=0.5.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight web browser (GTK3)'
 arch=('x86_64' 'i686')
 url='http://www.midori-browser.org/'
@@ -16,7 +16,7 @@ install='midori.install'
 conflicts=('midori-gtk2')
 provides=('midori')
 replaces=('midori-gtk3')
-depends=('webkitgtk3' 'libnotify' 'libxss' 'hicolor-icon-theme' 'desktop-file-utils' 'libunique3' 'gcr' 'libzeitgeist' 'zeitgeist')
+depends=('webkitgtk' 'libnotify' 'libxss' 'hicolor-icon-theme' 'desktop-file-utils' 'libunique3' 'gcr' 'libzeitgeist' 'zeitgeist') # webkit2gtk
 makedepends=('pkg-config' 'bzr' 'python2' 'libxml2' 'gtk3' 'intltool' 'python2-docutils' 'libsoup' 'vala' 'librsvg' 'cmake' 'ninja' 'gcr' 'libzeitgeist' 'zeitgeist')
 optdepends=('gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
