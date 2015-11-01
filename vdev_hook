@@ -1,0 +1,7 @@
+#!/usr/bin/ash
+
+run_hook() {
+	/usr/bin/vdevd -c /etc/vdev/vdevd.conf -l /run/vdevd.hook.log -1 -v2 /dev
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

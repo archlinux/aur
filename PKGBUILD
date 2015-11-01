@@ -12,7 +12,11 @@ arch=( 'x86_64' 'i686' )
 license=( 'custom:ISC' )
 makedepends=( 'libpstat' 'fskit' 'squashfs-tools' 'dash' )
 
-source=( "${pkgname}::git+${url}" )
+source=(
+	"${pkgname}::git+${url}"
+	vdev_install
+	vdev_hook
+)
 
 pkgver() {
 	cd "${pkgname}"
@@ -64,14 +68,17 @@ package_vdev-git() {
 	# hwdb
 	make DESTDIR="${pkgdir}" PREFIX=/usr -C hwdb install
 
-	cd "$pkgdir"
-
-	# Config files
-	backup+=( etc/vdev/actions/*.act )
-	backup+=( etc/vdev/*.conf )
+	# mkinitcpio hook
+	install -Dm755 "$srcdir/vdev_hook" /usr/lib/initcpio/hooks/vdev
+	install -Dm755 "$srcdir/vdev_install" /usr/lib/initcpio/install/vdev
 
 	# Install the licence
 	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
+
+	# Config files
+	cd "$pkgdir"
+	backup+=( etc/vdev/actions/*.act )
+	backup+=( etc/vdev/*.conf )
 }
 
 package_vdevfs-git() {

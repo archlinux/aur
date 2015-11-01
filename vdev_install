@@ -1,0 +1,36 @@
+#!/bin/bash
+
+build() {
+	add_full_dir /etc/vdev
+	add_full_dir /usr/lib/vdev
+
+	add_file /etc/group
+	add_file /etc/passwd
+
+	for exe in vdevd MAKEDEV dash sed grep fgrep egrep losetup lvm; do
+		if [[ -f "/usr/bin/$exe" ]]; then
+			add_binary "/usr/bin/$exe"
+		else
+			warning "Couldn't find /usr/bin/$exe!"
+		fi
+	done
+
+	add_symlink /usr/bin/lvs /usr/bin/lvm
+	add_symlink /usr/bin/pvs /usr/bin/lvm
+	
+	#module
+	add_module squashfs
+	add_module loop
+	
+	add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook will use vdev to create your root device node and detect the needed
+modules for your root device. It is also required for firmware loading in
+initramfs. It is recommended to use this hook.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
