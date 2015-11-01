@@ -1,12 +1,12 @@
 # Maintainer: Lukky513 <lukky513 (a t) gmail (d o t) com>
 pkgname=zatikon
 pkgver=1.003
-pkgrel=2
+pkgrel=3
 pkgdesc='Turn-based board strategy game inspired by chess, made by Chronic Logic'
 arch=('any')
 url="http://www.zatikon.com"
 license=('custom:ZatikonEULA')
-depends=('java-environment'
+depends=('java-runtime-jre<=7'
          'hicolor-icon-theme'
          'sh')
 install=('zatikon.install')
@@ -20,6 +20,7 @@ package() {
 	for jarname in zatikon sound art; do
 		install -Dm644 ${jarname}.jar ${_gamedir}/${jarname}.jar
 	done
+
 	install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
     for size in 16x16 32x32 48x48 64x64 128x128; do
@@ -30,5 +31,5 @@ package() {
 	install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
 
-md5sums=('350bb59935be7613908bb082e0c35250')
-sha256sums=('3f97c4c9ced74fd5f71e7ef06cca8d8b6032193a9ff28c09659fb2832e129e57')
+md5sums=('f67c04f9c086f198dfc85c5a4a99b284')
+sha256sums=('4d8839d5638033769a152b12584f455c9985288852808579e1084eac58966aa0')
