@@ -4,3 +4,5 @@ src/
 *.pkg.*.sig
 *.src.tar.gz
 deprecation-detector
+*.phar
+LICENSE
