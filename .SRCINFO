@@ -1,0 +1,16 @@
+pkgbase = rave-wallpaper-collection-1
+	pkgdesc = RAVE Wallpaper Collection 1 by RAVEfinity
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.ravefinity.com/p/rave-wallpaper-collection.html
+	arch = any
+	license = CC
+	options = !strip
+	options = !zipman
+	options = libtool
+	options = staticlibs
+	source = https://dl.dropbox.com/u/85873590/RAVE%20Wallpaper%20Collection%201.zip
+	md5sums = 1fe634c9a79fb34e5920b2320d8f92ba
+
+pkgname = rave-wallpaper-collection-1
+
