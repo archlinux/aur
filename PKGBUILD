@@ -6,7 +6,7 @@ pkgdesc="Converts a bunch of eml files into one mbox file"
 arch=('any')
 url="https://github.com/yardenac/${gitname}"
 license=('LGPL2.1')
-depends=('ruby>=2.0.0_p0-1')
+depends=('ruby')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
