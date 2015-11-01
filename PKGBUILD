@@ -37,4 +37,6 @@ package() {
 
   install -d ${pkgdir}/usr/bin
   install -D ${srcdir}/protege.sh ${pkgdir}/usr/bin/protege
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
