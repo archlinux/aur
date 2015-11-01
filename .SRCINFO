@@ -1,0 +1,14 @@
+pkgbase = multitran_er
+	pkgdesc = Simple multitran.com console client
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tastyminerals/multitran-er.git
+	arch = any
+	license = MIT
+	depends = python>=3.0
+	options = !emptydirs
+	source = https://github.com/tastyminerals/multitran-er/blob/master/multitran_er.py
+	md5sums = 897f05b8b3d2c28133118084888de4dd
+
+pkgname = multitran_er
+
