@@ -1,12 +1,15 @@
 pkgbase = skype4py
 	pkgdesc = Skype4py
 	pkgver = 1.0.35
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/awahlig/skype4py
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python2
+	depends = python2-dbus
+	depends = dbus-glib
+	depends = python2-gobject2
 	source = https://github.com/awahlig/skype4py/archive/1.0.35.tar.gz
 	md5sums = b7f3e0f8a9cb9e1863ef5b15588e45bd
 	sha1sums = 390750aa63b1989e1e4cfb4a0514b232c052fe4c
