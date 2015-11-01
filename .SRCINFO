@@ -1,0 +1,13 @@
+pkgbase = lls
+	pkgdesc = lls is a colorful ls alternative with additional file info. lls provides pleasant colorful highlighting, file information and some easy-to-read permission tags. In addition lls can draw folder trees with a total files/dirs count.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/tastyminerals/lls
+	arch = any
+	license = MIT
+	depends = file
+	source = https://raw.githubusercontent.com/tastyminerals/lls/master/lls
+	md5sums = 6fa410f1647700a2ba6ab0ebac52465f
+
+pkgname = lls
+
