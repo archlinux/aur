@@ -1,0 +1,16 @@
+pkgbase = mpdrandom-git
+	pkgdesc = mpd albums randomizing script
+	pkgver = 1.1.r5.geb67e9a
+	pkgrel = 1
+	url = https://github.com/axujen/mpdrandom
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = python-mpd2
+	provides = mpdrandom
+	source = git+https://github.com/axujen/mpdrandom
+	md5sums = SKIP
+
+pkgname = mpdrandom-git
+
