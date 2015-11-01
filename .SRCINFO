@@ -1,0 +1,16 @@
+pkgbase = yuml
+	pkgdesc = An unofficial command line client for the yUML web app
+	pkgver = r39.a1a1270
+	pkgrel = 1
+	url = https://github.com/wandernauta/yuml
+	arch = any
+	license = ISC
+	makedepends = git
+	depends = python
+	provides = yuml
+	conflicts = yuml
+	source = yuml::git+https://github.com/wandernauta/yuml.git
+	md5sums = SKIP
+
+pkgname = yuml
+
