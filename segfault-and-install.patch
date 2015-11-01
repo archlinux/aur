@@ -1,9 +1,15 @@
-siggen 2.3.10 patch by doragasu (2015). This patch fixes two things:
-1.- Allows to install siggen anywhere, overriding INSDIR and MANDIR.
-2.- Fixes some segfaults due to misc.c missing string.h include.
-diff -ruN siggen-2.3.10/Makefile siggen-2.3.10.work/Makefile
---- siggen-2.3.10/Makefile	2008-05-11 21:47:57.000000000 +0200
-+++ siggen-2.3.10.work/Makefile	2015-06-19 21:59:07.081129612 +0200
+diff -ruN siggen-2.3.10.orig/Makefile siggen-2.3.10/Makefile
+--- siggen-2.3.10.orig/Makefile	2008-05-11 21:47:57.000000000 +0200
++++ siggen-2.3.10/Makefile	2015-11-01 21:59:24.553305871 +0100
+@@ -9,7 +9,7 @@
+ 
+ # Edit PROGS to make the programs you want. You may wish to omit smix
+ #  if you do not want yet another mixer program.
+-PROGS		= tones sgen swgen siggen sweepgen fsynth soundinfo smix
++PROGS		= tones sgen_ swgen siggen sweepgen fsynth soundinfo smix
+ 
+ #
+ TEXTS		= tones.txt sgen.txt swgen.txt siggen.txt sweepgen.txt soundinfo.txt smix.txt fsynth.txt siggen.conf.txt
 @@ -28,8 +28,8 @@
  #
  srcdir		= .
@@ -25,9 +31,18 @@ diff -ruN siggen-2.3.10/Makefile siggen-2.3.10.work/Makefile
  	@echo "Copying $(PROGS) to $(INSDIR)"
  	@cp -p $(PROGS) $(INSDIR)
  	@for n in $(PROGS) ; do \
-diff -ruN siggen-2.3.10/misc.c siggen-2.3.10.work/misc.c
---- siggen-2.3.10/misc.c	2008-05-11 22:55:16.000000000 +0200
-+++ siggen-2.3.10.work/misc.c	2015-06-21 18:09:07.299554288 +0200
+@@ -115,7 +118,7 @@
+ soundinfo:	soundinfo.o
+ 	$(CC)  $@.o -o $@
+ 
+-sgen:	$(SGEN)
++sgen_:	$(SGEN)
+ 	$(CC)  $(SGEN) -lm -o $@
+ 
+ swgen:	$(SWGEN)
+diff -ruN siggen-2.3.10.orig/misc.c siggen-2.3.10/misc.c
+--- siggen-2.3.10.orig/misc.c	2008-05-11 22:55:16.000000000 +0200
++++ siggen-2.3.10/misc.c	2015-11-01 21:58:09.480189829 +0100
 @@ -27,6 +27,7 @@
  #include <sys/types.h>
  #include <unistd.h>

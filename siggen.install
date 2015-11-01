@@ -1,4 +1,5 @@
 post_install() {
+	echo 'Warning: sgen has been renamed to sgen_, because it conflicts with Mono Xml Serializer Generator Tool.'
 	echo 'Warning: if binaries in this package fail, complaining they cannot find /dev/dsp, you can try loading snd-pcm-oss module as follows (with root privileges):
 
 # modprobe snd-pcm-oss'
