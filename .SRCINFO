@@ -1,5 +1,5 @@
 pkgbase = linux-lts-ck
-	pkgver = 4.1.11
+	pkgver = 4.1.12
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = linux-lts-ck
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.11.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.11.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.12.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.12.sign
 	source = config.x86_64
 	source = config
 	source = linux-lts-ck.preset
@@ -24,7 +24,7 @@ pkgbase = linux-lts-ck
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch
 	sha512sums = 168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0
 	sha512sums = SKIP
-	sha512sums = ebd9f9ed7a4921795a0aee43440f6c73bf2ba058a690eb96031b978e61e390ef4d3b64e818a7cce7fe520adb20b93e4b7dd485b50d32c2dcf3012db3477a852c
+	sha512sums = 164f216faa8fef6a28fe03bdb69c7bee5ff99cf560271264b52e62aec63c1d4d6475d4a6f2b4b4c02d235568ebe8bafd3b36be75c8a505cde8edbb70136d89b4
 	sha512sums = SKIP
 	sha512sums = ebcfabb18103802bd607f2a9b1a6750b25e57739eb6d36bad8f15e1f8c31daf9064b4a2398d6d8c9fdfc9d95b0b06fd2cc084506477435ef70f9430158f4f5d4
 	sha512sums = 032296ba49ff77bd70568a4653899a5ce67bd3e9ad11648bbd559553ebdae726a7db5e29c28079b34628fd3f4ed58bccf936dc6450025e4c9aff9a025df827b1
@@ -47,7 +47,7 @@ pkgname = linux-lts-ck
 	optdepends = nvidia-lts-ck: nVidia drivers for linux-lts-ck
 	optdepends = nvidia-340xx-lts-ck: nVidia drivers for linux-lts-ck
 	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-lts-ck=4.1.11
+	provides = linux-lts-ck=4.1.12
 	replaces = kernel26-lts-ck
 	backup = etc/mkinitcpio.d/linux-lts-ck.preset
 
@@ -55,7 +55,7 @@ pkgname = linux-lts-ck-headers
 	pkgdesc = Header files and scripts to build modules for linux-lts-ck.
 	groups = lts-ck-generic
 	depends = linux-lts-ck
-	provides = linux-lts-ck-headers=4.1.11
-	provides = linux-headers=4.1.11
+	provides = linux-lts-ck-headers=4.1.12
+	provides = linux-headers=4.1.12
 	replaces = kernel26-ck-lts-headers
 
