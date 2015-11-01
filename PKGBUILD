@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=32.0.1948.69
+pkgver=33.0.1990.43
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
@@ -20,6 +20,7 @@ backup=("etc/$pkgname/default")
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'alsa-lib' 'nss' 'ttf-font' 'libnotify')
 optdepends=(
     'curl: opera crash reporter and autoupdate checker'
+    'opera-ffmpeg-codecs: playback of proprietary video/audio'
 )
 arch=('x86_64')
 source_x86_64=(
@@ -31,7 +32,7 @@ source=(
 )
 sha256sums=('508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
-sha256sums_x86_64=('b2178af796a9b5adf3a8d6f17391ade03efc6ad3c0f9d853f1e9766735eba91b')
+sha256sums_x86_64=('39798cfd3a10402e95bcd93cf03c43f0d3819561d22f7a7ecf0ebe9d4c4bef8d')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
@@ -49,7 +50,7 @@ package() {
     )
     rm -rf "$pkgdir/usr/lib/"*-linux-gnu
 
-    # suid opera_sandbox / can be removed with linux > 3.16 (we still have lts)
+    # suid opera_sandbox
     chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
 
     # install default options
