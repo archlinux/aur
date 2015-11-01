@@ -1,0 +1,10 @@
+[Unit]
+Description=IP conflict detection daemon
+Documentation=man:ipwatchd(8) man:ipwatchd.conf(5) man:ipwatchd-script(1) http://ipwatchd.sourceforge.net/documentation
+
+[Service]
+ExecStart=/usr/bin/ipwatchd -c /etc/ipwatchd.conf
+PIDFile=/var/run/ipwatchd.pid
+
+[Install]
+WantedBy=multi-user.target

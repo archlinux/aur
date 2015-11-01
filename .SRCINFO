@@ -1,0 +1,19 @@
+pkgbase = ipwatchd
+	pkgdesc = IP conflict detection daemon
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://ipwatchd.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpcap
+	depends = libnet
+	optdepends = ipwatchd-gnotify: provide conflict notifications to the GNOME desktop environment
+	backup = etc/ipwatchd.conf
+	source = http://downloads.sourceforge.net/sourceforge/ipwatchd/ipwatchd-1.2.1.tar.gz
+	source = ipwatchd.service
+	sha256sums = f20d0f0ee956112a25fc7ecdb10e7b4277d0842b48d194ac8552373e29087646
+	sha256sums = 2fbf3937bcab45adce253fb5aea31f93064748e9b8b5023e8ec25a6245380fd6
+
+pkgname = ipwatchd
+
