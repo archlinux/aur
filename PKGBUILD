@@ -3,7 +3,7 @@
 pkgname=quine-relay-git
 pkgver=191d5e2
 pkgrel=1
-pkgdesc='Uroboros program with 71 programming languages (bleeding edge version)'
+pkgdesc='Uroboros program with 100 programming languages (master)'
 arch=('x86_64' 'i686')
 url='http://github.com/mame/quine-relay'
 license=('MIT')
@@ -11,10 +11,10 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'gcc-fortran' 'ghc' 'go' 'groovy' 'llvm' 'make' 'mono' 'nodejs' 'ocaml'
          'octave' 'parrot' 'perl' 'php' 'python' 'r' 'ruby' 'scala' 'tcl'
          'ucblogo' 'vala' 'c-intercal' 'coffee-script' 'f2c' 'gforth' 'icon'
-         'iverilog' 'open-cobol' 'pike' 'regina-rexx-das' 'swi-prolog'
+         'iverilog' 'gnu-cobol' 'pike' 'regina-rexx-das' 'swi-prolog'
          'smalltalk' 'beef' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
-         'spl' 'maxima' 'slang' 'npiet' 'neko' 'nickle' 'pari' 'bsd-games'
-         'ratfor' 'wspace' 'thue' 'mono-basic' 'yorick-git' 'zoem' 'aplus-fsf')
+         'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
+         'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'yorick-git' 'zoem' 'aplus-fsf')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
 source=('quine-relay::git://github.com/mame/quine-relay.git'
@@ -40,7 +40,7 @@ prepare() {
   # npiet is available in Arch Linux
   sed -i 's:vendor/npiet-\*/::' Makefile
   # whitespace is available in Arch Linux
-  sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
+  #sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
 }
 
 package() {
