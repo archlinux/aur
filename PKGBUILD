@@ -116,4 +116,4 @@ package_vdev-libudev-compat-git() {
 
 sha1sums=('SKIP'
           'fba928038a729399bfbff397ecbba71ba1f95a25'
-          'fd9d953c9aad374a9788494686f23ed4a5375915')
+          '8ad752b31a45a44cc2b4d504a4be9cbef033ceb2')
