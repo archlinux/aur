@@ -5,7 +5,7 @@
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
 pkgver=r683.9f910cf
-pkgrel=7
+pkgrel=8
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/fbt/vdev.git'
 arch=( 'x86_64' 'i686' )
@@ -116,4 +116,4 @@ package_vdev-libudev-compat-git() {
 
 sha1sums=('SKIP'
           '74ba847cee8f995683e02b3f554794b32be67bba'
-          'c4cca9f48407f45e06557753d4c7cd476f4c8e8a')
+          '2bbd2b40a9cd87f3a74fdb51565cbab63b0fc887')

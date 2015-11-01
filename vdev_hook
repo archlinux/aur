@@ -1,9 +1,10 @@
 #!/usr/bin/ash
 
-run_earlyhook() {
-	/usr/bin/vdevd -c /etc/vdev/vdevd.conf --foreground --once -v2 /dev &>/run/vdevd_earlyhook.log
+run_hook() {
+	/usr/bin/vdevd -c /etc/vdev/vdevd.conf -l /run/vdevd_hook.log -p /run/vdevd_hook.pid -v2 /dev 2>/run/vdevd_hook.err
 }
 
-run_hook() {
-	/usr/bin/vdevd -c /etc/vdev/vdevd.conf --foreground --once -v2 /dev &>/run/vdevd_hook.log
+run_cleanuphook() {
+	vdev_pid=$(cat /run/vdevd_hook.pid)
+	kill "$vdev_pid"
 }
