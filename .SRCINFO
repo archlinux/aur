@@ -1,0 +1,18 @@
+pkgbase = indicator-multiload
+	pkgdesc = A System Load indicator for GTK 3.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://launchpad.net/indicator-multiload
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = gtk3
+	depends = libindicator-gtk3
+	options = strip
+	source = https://launchpad.net/indicator-multiload/stable/0.4/+download/indicator-multiload-0.4.tar.gz
+	md5sums = 10c1b5ad2f6b6f833b4ecdcdf17ee675
+
+pkgname = indicator-multiload
+
