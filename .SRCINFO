@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official desktop version of Telegram messaging app. (Development release)
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	install = telegram-desktop-dev.install
@@ -27,7 +27,7 @@ pkgbase = telegram-desktop-dev
 	depends = gtk-update-icon-cache
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v0.9.7
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v0.9.8
 	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.1/single/qt-everywhere-opensource-src-5.5.1.tar.gz
 	source = telegramdesktop.desktop
 	source = tg.protocol
