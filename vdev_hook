@@ -7,5 +7,3 @@ run_earlyhook() {
 run_hook() {
     /usr/bin/vdevd -c /etc/vdev/vdevd.conf --foreground --once -v2 /dev &>/run/vdevd_hook.log
 }
-
-# vim: set ft=sh ts=4 sw=4 et:
