@@ -36,7 +36,7 @@ build() {
 }
 
 package_vdev-git() {
-	depends=( 'util-linux' 'kmod' 'iproute2' 'sed' 'grep' 'dash' )
+	depends=( 'util-linux' 'kmod' 'iproute2' 'sed' 'grep' 'makedev' 'dash' )
 	optdepends=( 'lvm2' 'device-mapper' )
 	provides=( 'vdev' 'udev' )
 	conflicts=( 'vdev' )
