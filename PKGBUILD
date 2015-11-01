@@ -5,7 +5,7 @@
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
 pkgver=r683.9f910cf
-pkgrel=1
+pkgrel=2
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/fbt/vdev.git'
 arch=( 'x86_64' 'i686' )
@@ -114,4 +114,6 @@ package_vdev-libudev-compat-git() {
 	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-sha1sums=( 'SKIP' )
+sha1sums=('SKIP'
+          'fba928038a729399bfbff397ecbba71ba1f95a25'
+          'fd9d953c9aad374a9788494686f23ed4a5375915')
