@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Gino Pezzin <pezzin@gmail.com>
 pkgname=tn5250j
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="5250 terminal emulator for iSeries and AS/400 written in Java"
 url="http://tn5250j.sourceforge.net/"
@@ -18,7 +18,7 @@ source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/$
         "${pkgname}.svg"::"http://sourceforge.net/p/${pkgname}/code/1229/tree/branches/new-tabs-jse1.6/resources/tn5250j-icon.svg?format=raw"
         "${pkgname}"
         "${pkgname}.desktop")
-sha256sums=('158a16a16df46c97f76cfd6f70ed2d37b0c9a983824ddd42294ee963cbb11afb'
+sha256sums=('d048eae6f8ac9265b7e8d97402ea3a184667490a9ee80a658fbf2b616bcacb80'
             '9ecf2b4714fe457bdc0edd8cc10db6d55b7e0c86ba85b0f3f7a49fa6159a5d57'
             '02ae481923b7f94b4852a5f706b97086245d2fa37aed4c5934dd77d38cf0d5de'
             'ba0fc30eab33ead695cffdba329dbadf8d05f67adac9a34fa905827a60421fcd')
