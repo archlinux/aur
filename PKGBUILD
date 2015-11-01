@@ -7,7 +7,7 @@
 pkgname=compiz
 pkgver=0.9.12.2
 _pkgseries=0.9.12
-pkgrel=8
+pkgrel=9
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -89,7 +89,7 @@ build() {
     -DUSE_GSETTINGS=On \
     -DCOMPIZ_BUILD_TESTING=Off \
     -DCOMPIZ_WERROR=Off \
-    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher" \
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall" \
     -DCOMPIZ_DISABLE_PLUGIN_DBUS=On
 
     make
