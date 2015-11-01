@@ -1,6 +1,6 @@
 pkgbase = google-cloud-sdk
 	pkgdesc = Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform
-	pkgver = 0.9.82
+	pkgver = 0.9.84
 	pkgrel = 1
 	url = https://developers.google.com/cloud/sdk/
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = google-cloud-sdk
 	optdepends = php: for PHP version of App Engine
 	options = !strip
 	options = staticlibs
-	source = google-cloud-sdk-0.9.82.tar.gz::https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz
+	source = google-cloud-sdk-0.9.84.tar.gz::https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz
 	source = profile.sh
-	md5sums = 3a54a62a5b44eece164569c2c63a0359
+	md5sums = cb1bc5d568aa963edfdc52f35b35b122
 	md5sums = d7c7ccb7d32a871d67288228f5b4cd94
 
 pkgname = google-cloud-sdk
