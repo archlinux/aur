@@ -1,0 +1,16 @@
+pkgbase = calf-ls
+	pkgdesc = CGI file lister
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://git.mg0.fr/calf/
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = systemd
+	depends = fcgi
+	depends = uriparser
+	source = http://www.mg0.fr/pub/calf/calf-2.1.tar.gz
+	sha1sums = b05b44091208e0d0d726a3106785914e186b21e7
+
+pkgname = calf-ls
+
