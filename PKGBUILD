@@ -69,8 +69,8 @@ package_vdev-git() {
 	make DESTDIR="${pkgdir}" PREFIX=/usr -C hwdb install
 
 	# mkinitcpio hook
-	install -Dm755 "$srcdir/vdev_hook" /usr/lib/initcpio/hooks/vdev
-	install -Dm755 "$srcdir/vdev_install" /usr/lib/initcpio/install/vdev
+	install -Dm755 "$srcdir/vdev_hook" "$pkgdir/usr/lib/initcpio/hooks/vdev"
+	install -Dm755 "$srcdir/vdev_install" "$pkgdir/usr/lib/initcpio/install/vdev"
 
 	# Install the licence
 	install -Dm755 "$srcdir/$pkgbase/LICENSE.ISC" "$pkgdir/usr/share/licenses/$pkgname"
