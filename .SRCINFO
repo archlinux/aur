@@ -1,0 +1,20 @@
+pkgbase = perl-exception-base
+	pkgdesc = Lightweight exceptions
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://metacpan.org/release/Exception-Base
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-unit-lite>=0.12
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DE/DEXTER/Exception-Base-0.25.tar.gz
+	source = 1cb0ea6afd4bb76e5a1d759efe27ea0f18306a82.patch
+	md5sums = 7aad69250044146a641fe34a2f8642dd
+	md5sums = f6ed882c1e64667481be4896cbb58a2e
+	sha512sums = 4bc416a8a4096b2149a205dc3129aabaa49bfa9f29746b31a09cbade01e15d53ed82649b75d69c508568a7fb12726e319360aba128102fdc1e0a7ba583473e65
+	sha512sums = 9ab05259c0de820d3bd4fe71774ac5874d3199ccd55e3daf22e672b30344b2ecbe4dcb3ed83bc1e2fba6f751836018f2b856c95506057856c739611f9774f917
+
+pkgname = perl-exception-base
+
