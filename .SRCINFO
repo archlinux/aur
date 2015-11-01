@@ -1,0 +1,24 @@
+pkgbase = ros-jade-robot-controllers-interface
+	pkgdesc = ROS - Generic framework for robot controls.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-actionlib
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-pluginlib
+	makedepends = ros-jade-robot-controllers-msgs
+	makedepends = ros-jade-catkin
+	depends = ros-jade-actionlib
+	depends = ros-jade-roscpp
+	depends = ros-jade-pluginlib
+	depends = ros-jade-robot-controllers-msgs
+	source = robot_controllers_interface::git+https://github.com/fetchrobotics-gbp/robot_controllers-release.git#tag=release/jade/robot_controllers_interface/0.4.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-robot-controllers-interface
+
