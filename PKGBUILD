@@ -17,5 +17,5 @@ pkgver() {
 }
 package() {
     cd "${srcdir}/${gitname}"
-	 install -Dm 755 eml2mbox.rb "${pkgdir}/usr/bin/eml2mbox"
+    install -Dm 755 eml2mbox.rb "${pkgdir}/usr/bin/eml2mbox"
 }
