@@ -1,6 +1,6 @@
 pkgbase = redmine
 	pkgdesc = A flexible project management web application. Written using the Ruby on Rails, it is cross-platform and cross-database.
-	pkgver = 3.0.3
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://www.redmine.org
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = redmine
 	provides = redmine
 	backup = usr/share/webapps/redmine/config/configuration.yml
 	backup = usr/share/webapps/redmine/config/database.yml
-	source = http://www.redmine.org/releases/redmine-3.0.3.tar.gz
-	md5sums = 493463eff3ba9267233648536c59eb85
+	source = http://www.redmine.org/releases/redmine-3.1.1.tar.gz
+	md5sums = 24fd22a238c0236542a5c0ef730fc2bf
 
 pkgname = redmine
 
