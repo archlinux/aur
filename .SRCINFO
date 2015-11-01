@@ -1,0 +1,15 @@
+pkgbase = beamercolorthemesolarized
+	pkgdesc = Beamer color theme using the Solarized palette
+	pkgver = r43.3d95d47
+	pkgrel = 1
+	url = https://github.com/jrnold/beamercolorthemesolarized
+	install = beamercolorthemesolarized.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = texlive-core
+	source = git+https://github.com/jrnold/beamercolorthemesolarized.git
+	md5sums = SKIP
+
+pkgname = beamercolorthemesolarized
+
