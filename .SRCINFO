@@ -20,7 +20,7 @@ pkgbase = profile-sync-daemon-git
 	conflicts = user-profile-sync-daemon
 	conflicts = profile-sync-daemon
 	backup = etc/psd.conf
-	source = git://github.com/graysky2/profile-sync-daemon#branch=unstable
+	source = git://github.com/graysky2/profile-sync-daemon#branch=master
 	sha256sums = SKIP
 
 pkgname = profile-sync-daemon-git

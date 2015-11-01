@@ -13,7 +13,8 @@ makedepends=('git')
 conflicts=('firefox-sync' 'goanysync' 'go-anysync-git' 'iceweasel-sync'
 'tmpfs-store' 'tmpfs-sync' 'user-profile-sync-daemon' 'profile-sync-daemon')
 provides=('profile-sync-daemon')
-_branch='unstable'
+_branch='master'
+#_branch='unstable'
 source=("git://github.com/graysky2/profile-sync-daemon#branch=$_branch")
 backup=('etc/psd.conf')
 install=psd.install
