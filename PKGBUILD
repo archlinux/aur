@@ -14,7 +14,7 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'iverilog' 'gnu-cobol' 'pike' 'regina-rexx-das' 'swi-prolog'
          'smalltalk' 'beef' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
          'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
-         'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'yorick-git' 'zoem' 'aplus-fsf')
+         'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
 source=('quine-relay::git://github.com/mame/quine-relay.git'
