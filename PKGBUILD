@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(https://github.com/tastyminerals/multitran-er/blob/master/multitran_er.py)
-md5sums=(897f05b8b3d2c28133118084888de4dd)
+md5sums=(c93b483633d1eabd22f061b84d054fb2)
 
 package() {
   # python setup.py install --root="$pkgdir/" --optimize=1
