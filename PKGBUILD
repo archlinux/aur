@@ -5,24 +5,28 @@ pkgver=0.6
 pkgrel=1
 pkgdesc="A program for h3c authentication in SYSU east campus."
 arch=('any')
-url="https://github.com/zlsun/YaH3C"
+url="https://github.com/zlsun/yah3c"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zlsun/YaH3C/archive/v${pkgver}.tar.gz"
+source=("https://github.com/zlsun/yah3c/archive/v${pkgver}.tar.gz"
         "yah3c@.service")
-sha256sums=("9e0bc63b518ef8213d9dbbd0af5cfcf928eee5eaad5b93a630fb85a037bf48c0"
-            "08f1b651b04f541651cb3a7c5c20b6a90abd98883a807f7b234e9a45c818aa74")
+md5sums=("e27b277cc79d9e097a6b398397307437"
+         "a49893a03cbe9986a89bb3ebc46b416e")
 
 build ()
 {
     cd "$srcdir/${pkgname}-${pkgver}"
+    msg 'Building...'
     python setup.py build
 }
 
 package ()
 {
     cd "$srcdir/${pkgname}-${pkgver}"
-    python setup.py install --prefix=/usr --root="$pkgdir"
-    install -Dm644 ../yah3c@.service "${pkgdir}"/usr/lib/systemd/system/yah3c@.service
+    msg 'Installing...'
+    python setup.py install --root="$pkgdir" --optimize=1
+    cd ..
+    msg 'Installing systemd service...'
+    install -Dm644 yah3c@.service "${pkgdir}"/usr/lib/systemd/system/yah3c@.service
 }
