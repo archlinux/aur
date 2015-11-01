@@ -16,14 +16,17 @@ prepare() {
   cd ${pkgname}-${pkgver}
   msg2 "Fixing doc build: requires sphinx-build2 from python2-sphinx"
   sed -i 's|\(sphinx-build\)|\12|' doc/python/CMakeLists.txt
+  msg2 "Fixing lib install: /usr/lib64 directory is not used in Arch"
+  sed -i 's|\${LIB_SUFFIX}||' src/CMakeLists.txt
 }
 
 build() {
   cd ${pkgname}-${pkgver}
 
-  cmake -DLIB_INSTALL_DIR:PATH=/usr/lib \
-	-DINCLUDE_INSTALL_DIR:PATH=/usr/include \
-	.
+  cmake \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DLIB_INSTALL_DIR:PATH=/usr/lib \
+    .
 
   make
   make doc
