@@ -1,0 +1,15 @@
+pkgbase = libbtbb
+	pkgdesc = Bluetooth baseband decoding library
+	pkgver = 2015.10.R1
+	pkgrel = 1
+	url = https://github.com/greatscottgadgets/libbtbb
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = cmake
+	depends = python
+	source = https://github.com/greatscottgadgets/libbtbb/archive/2015-10-R1.tar.gz
+	md5sums = 2315216adf16a0cee06e237c62122698
+
+pkgname = libbtbb
+
