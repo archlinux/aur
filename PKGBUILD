@@ -1,11 +1,11 @@
 pkgname='skype4py'
 pkgver=1.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Skype4py"
 url="https://github.com/awahlig/skype4py"
 license=('GPL3')
 makedepends=('python-distribute')
-depends=('python2')
+depends=('python2' 'python2-dbus')
 arch=('any')
 source=("https://github.com/awahlig/skype4py/archive/${pkgver}.tar.gz")
 
