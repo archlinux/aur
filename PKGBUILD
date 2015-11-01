@@ -1,24 +1,21 @@
-# Maintainer: Alan Briolat <alan.briolat@gmail.com>
-# Contributor: Nikolay Amiantov <nikoamia@gmail.com>
-# Original ngnix package:
+# $Id$
 # Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Maintainer: Sébastien Luttringer
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
+# Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=nginx-pam
-pkgver=1.6.0
-pkgrel=1
 _pkgname=nginx
-_pamname=ngx_http_auth_pam_module
-_pamver=1.3
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, built with auth_pam support'
+pkgver=1.8.0
+pkgrel=2
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server with added pam directives'
 arch=('i686' 'x86_64')
-provides=($_pkgname)
-conflicts=($_pkgname)
 url='http://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl')
+provides=('nginx')
+conflicts=('nginx')
+depends=('pcre' 'zlib' 'openssl' 'geoip')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -30,17 +27,21 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 install=nginx.install
-source=($url/download/nginx-$pkgver.tar.gz
-        http://web.iti.upv.es/~sto/nginx/$_pamname-$_pamver.tar.gz
+source=(https://github.com/stogh/ngx_http_auth_pam_module/archive/v1.4.tar.gz
+	$url/download/nginx-$pkgver.tar.gz{,.asc}
         service
         logrotate)
-md5sums=('8efa354f1c3c2ccf434a50d3fbe82340'
-         'bf3c3389353f11f5f2047b67ce08ba79'
-         'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
-         '3441ce77cdd1aab6f0ab7e212698a8a7')
+md5sums=('a5c0fb3af7158297c1457739947b9b0c'
+	 '3ca4a37931e9fa301964b8ce889da8cb'
+         'SKIP'
+         '80cc5f267dfc737484f653d8b48ac6cd'
+         '4ddf076f128cd1738e0c0bba493903bb')
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8')
+
 
 build() {
   cd $_pkgname-$pkgver
+
   ./configure \
     --prefix=/etc/nginx \
     --conf-path=/etc/nginx/nginx.conf \
@@ -61,20 +62,22 @@ build() {
     --with-ipv6 \
     --with-pcre-jit \
     --with-file-aio \
+    --with-http_addition_module \
+    --with-http_auth_request_module \
     --with-http_dav_module \
+    --with-http_degradation_module \
+    --with-http_flv_module \
+    --with-http_geoip_module \
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
+    --with-http_mp4_module \
     --with-http_realip_module \
+    --with-http_secure_link_module \
     --with-http_spdy_module \
     --with-http_ssl_module \
     --with-http_stub_status_module \
-    --with-http_addition_module \
-    --with-http_degradation_module \
-    --with-http_flv_module \
-    --with-http_mp4_module \
-    --with-http_secure_link_module \
     --with-http_sub_module \
-    --add-module="$srcdir/$_pamname-$_pamver"
+    --add-module=${srcdir}/ngx_http_auth_pam_module-1.4 \
 
   make
 }
@@ -82,6 +85,13 @@ build() {
 package() {
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
+
+  install -Dm644 contrib/vim/ftdetect/nginx.vim \
+    "$pkgdir"/usr/share/vim/vimfiles/ftdetect/nginx.vim
+  install -Dm644 contrib/vim/syntax/nginx.vim \
+    "$pkgdir"/usr/share/vim/vimfiles/syntax/nginx.vim
+  install -Dm644 contrib/vim/indent/nginx.vim \
+    "$pkgdir"/usr/share/vim/vimfiles/indent/nginx.vim
 
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
     -e '44s|html|/usr/share/nginx/html|' \
@@ -101,9 +111,12 @@ package() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 
   rmdir "$pkgdir"/run
+
+  install -d "$pkgdir"/usr/share/man/man8/
+  gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
 }
 
 # vim:set ts=2 sw=2 et:
