@@ -1,6 +1,6 @@
 pkgbase = x-highlight-region-git
 	pkgdesc = Dims everything but a selected region of the screen.
-	pkgver = 0.1.0.0.r2.gd6e3221
+	pkgver = 0.4.0.0.r0.gc093f24
 	pkgrel = 1
 	url = https://github.com/eigengrau/x-highlight-region
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = x-highlight-region-git
 	depends = python3-keybinder
 	depends = gtk3
 	depends = python-cairo
+	depends = python-dbus
 	provides = x-highlight-region
 	conflicts = x-highlight-region
 	source = git+https://github.com/eigengrau/x-highlight-region
