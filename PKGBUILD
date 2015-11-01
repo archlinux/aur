@@ -3,7 +3,7 @@
 
 pkgname=neovim
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64')
 url='https://neovim.io'
@@ -17,7 +17,7 @@ optdepends=('python2-neovim: for Python 2 plugin support (see :help nvim-python)
 _libvterm_commit=1b745d29d45623aa8d22a7b9288c7b0e331c7088
 source=("https://github.com/neovim/neovim/archive/v${pkgver}.tar.gz"
         "https://github.com/neovim/libvterm/archive/${_libvterm_commit}.tar.gz")
-sha256sums=('2a14bbbde800b87f5d1b4e0c145cab9a8fc0513d6e7ad851d43cd3a4d821fd58'
+sha256sums=('e8659558103b8f5a65aac84007a12e3581b32736321778028017fd07365cfff8'
             '3fc75908256c0d158d6c2a32d39f34e86bfd26364f5404b7d9c03bb70cdc3611')
 install=neovim.install
 
