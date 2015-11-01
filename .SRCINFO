@@ -1,0 +1,12 @@
+pkgbase = bdf-creep
+	pkgver = 0.31.r19.gb03111f
+	pkgrel = 1
+	url = https://github.com/romeovs/creep
+	arch = any
+	license = MIT
+	makedepends = fontforge
+	source = git://github.com/romeovs/creep.git
+	md5sums = SKIP
+
+pkgname = bdf-creep
+
