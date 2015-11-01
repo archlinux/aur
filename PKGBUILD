@@ -6,7 +6,7 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="http://www.libssh.org/"
@@ -17,13 +17,13 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'doxygen')
 options=(!strip !buildflags staticlibs)
 #cmocka
 #checkdepends=('openssh')
-source=(https://red.libssh.org/attachments/download/154/libssh-${pkgver}.tar.xz
-        https://red.libssh.org/attachments/download/153/libssh-${pkgver}.tar.asc
+source=(https://red.libssh.org/attachments/download/177/libssh-${pkgver}.tar.xz
+        https://red.libssh.org/attachments/download/168/libssh-${pkgver}.tar.asc
         mingw-as-unix.patch
         mingw-DATADIR-conflict.patch)
-md5sums=('bffc9dc548c3bae3a3afc5ac1654b272'
+md5sums=('5d7d468937649a6dfc6186edfff083db'
          'SKIP'
-         'd819f18cb4ae07ad2a6589b02765b6c2'
+         'fc03637960f420837ad506892b444986'
          '7be13e00d27ce77f862012ee0654019b')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
