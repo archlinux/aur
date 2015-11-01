@@ -18,7 +18,7 @@ license=('MPL')
 depends=('java-runtime' 'graphviz')
 source=("http://protege.stanford.edu/download/protege/$_ver/zip/protege-${_pkgver}.zip"
         "${pkgname}.sh"
-        "http://apache.uib.no//felix/org.apache.felix.main.distribution-5.2.0.tar.gz")
+        "https://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.main.distribution/5.2.0/org.apache.felix.main.distribution-5.2.0.tar.gz")
 
 sha256sums=('f7b2d5be3c9837ddb9c5e8676810b18d07460f6428905cfd5a148496f3fc4f16'
             'd8b673954300b73c1badd85283489a5791ae8cdb3cd266fdc5753898b47926a5'
