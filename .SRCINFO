@@ -1,6 +1,6 @@
 pkgbase = limesurvey
 	pkgdesc = Then open source survey application.
-	pkgver = 2.0.6.150612
+	pkgver = 2.0.6.151018
 	pkgrel = 1
 	url = http://www.limesurvey.org
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = limesurvey
 	optdepends = mysql: MySQL database support
 	optdepends = postgresql: PostgreSQL database support
 	provides = limesurvey
-	source = http://download.limesurvey.org/latest-stable-release/limesurvey206plus-build150612.tar.gz
+	source = http://download.limesurvey.org/latest-stable-release/limesurvey206plus-build151018.tar.gz
 	source = apache.example.conf
-	sha512sums = 24a68fde6a2df71a329974f41f1f96a480302e970d08cafee148992c15c22f2387c8cae3de71ab346ce21eb234bf9dfe15777c3cc2eac1589bbb1c3611eeb3ed
+	sha512sums = 7e545d559565ffbcc3ebb9cf7de50f8bfd69c7ffbcfe50ffdf4d253232d474cd43dc8e1bc555ba248d0fca70329adc29e5a42cb68233c643852028a7051811c9
 	sha512sums = e594a3a02cb04e1cca9ddf1c5995344f20adc9c5543fe622ad66fdc48d587fc969541530f1e2a8883e0f501ed1b2d409c23ecc7cd8e29aaea0369f625cd4f417
 
 pkgname = limesurvey
