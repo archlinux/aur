@@ -5,7 +5,7 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=1.2.369
+pkgver=1.2.378
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -45,6 +45,7 @@ depends=('python2'
          'python2-flask-login>=0.3.2'
          'python2-libsass>=0.8.3'
          'python2-pyparsing>=2.0.3'
+         'python2-pyscss>=1.3.4'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
@@ -62,10 +63,10 @@ source=("https://pypi.python.org/packages/source/F/FlexGet/${_pkgname}-${pkgver}
 
 changelog=ChangeLog
 
-sha256sums=('58716dcef7b45874db3f90b91edd669edafe4bb886f471520aa83d32c7a371e2'
+sha256sums=('020ed61352446071f589b7be460de472f0c54fbc07a5d78ea878d9689b83ce41'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6'
-            'daf5c63bbad7be570a9280e855527ba3a225790592e3026784216ea1b3ed92db')
+            '9007c382e68970554ef572dd76411d3df8a37f79d68255410b488a1fc399918b')
 
 prepare() {
   cd "${_pkgname}"-"${pkgver}"
