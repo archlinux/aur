@@ -1,0 +1,25 @@
+pkgbase = libx32-glibc
+	pkgdesc = GNU C Library (x32 ABI)
+	pkgver = 2.22
+	pkgrel = 3.1
+	url = http://www.gnu.org/software/libc
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = gcc-multilib-x32>=5.2
+	provides = glibc-x32-seed
+	conflicts = glibc-x32-seed
+	options = !strip
+	options = staticlibs
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.22.tar.xz
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.22.tar.xz.sig
+	source = glibc-2.22-roundup.patch
+	source = libx32-glibc.conf
+	md5sums = e51e02bf552a0a1fbbdc948fb2f5e83c
+	md5sums = SKIP
+	md5sums = b6b7a0e8d6e6520e40e3164ae773631d
+	md5sums = 34a4169d2bdc5a3eb83676a0831aae57
+
+pkgname = libx32-glibc
+
