@@ -1,0 +1,16 @@
+pkgbase = ipwatchd-gnotify
+	pkgdesc = IP conflict notification for Gnome desktops
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://ipwatchd.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ipwatchd
+	optdepends = arp-scan: scan entire networks for IP address conflicts
+	optdepends = arpwatch: monitor entire networks for IP address conflicts
+	source = http://downloads.sourceforge.net/project/ipwatchd/ipwatchd-gnotify/1.0.1/ipwatchd-gnotify-1.0.1.tar.gz
+	sha256sums = f67798791c8dea16331d5f642d26d38aa5378fe824d61c89426d6770fac54be8
+
+pkgname = ipwatchd-gnotify
+
