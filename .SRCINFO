@@ -1,6 +1,6 @@
 pkgbase = foxitreader
-	pkgdesc = A small, fast PDF viewer
-	pkgver = 1.0.0.0909
+	pkgdesc = A fast, secure and complete PDF viewer
+	pkgver = 1.0.1.0925
 	pkgrel = 1
 	epoch = 1
 	url = http://www.foxitsoftware.com/Secure_PDF_Reader/
@@ -16,10 +16,10 @@ pkgbase = foxitreader
 	source = foxitreader.patch
 	sha256sums = a5be3dc1cf27536de2c0fb5a0d640db349be32f48547b3cc56dcb5791fb278be
 	sha256sums = 95dfbe05398dffbbfd31302f15e1707545512a4abb4b78d0ce843e19759d8586
-	source_i686 = http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.0/en_us/FoxitReader1.00.0909_Server_x86_enu_Setup.run.tar.gz
-	sha256sums_i686 = b3a50f96f7310d2f319b321252a1423cf5b537789127e0cfd75358f23a8d9c73
-	source_x86_64 = http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.0/en_us/FoxitReader1.00.0909_Server_x64_enu_Setup.run.tar.gz
-	sha256sums_x86_64 = 1f4a6b97456049c7f2d4103a3828a52109a9e1a85e502099373632908579c67c
+	source_i686 = http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.0/en_us/FoxitReader1.01.0925_Server_x86_enu_Setup.run.tar.gz
+	sha256sums_i686 = a4821aee03c2fdac67fbbfef09eda8ab3deb21f97442048e3e11c035ad747ba2
+	source_x86_64 = http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.0/en_us/FoxitReader1.01.0925_Server_x64_enu_Setup.run.tar.gz
+	sha256sums_x86_64 = 49684040892037154d9f53a611c72f9d0e3b9fe9a5b7a3e079063ca01903138f
 
 pkgname = foxitreader
 
