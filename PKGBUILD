@@ -1,9 +1,9 @@
-# Maintainer: Valerio Pizzi (pival81) <pival81@yahoo.com>
+# Maintainer: Valerio Pizzi <pival81@yahoo.com>
 
 pkgname=rave-cube-wallpaper-collection-x1
 pkgver=1
 pkgrel=1
-pkgdesc="RAVE Cube Wallpaper Collection is a vivd, vibrant and bold modern wallpaper set"
+pkgdesc="RAVE Cube Wallpaper Collection is a vivid, vibrant and bold modern wallpaper set"
 arch=('any')
 url="http://www.ravefinity.com/p/rave-cube-wallpaper-collection-x1.html"
 license=('CC')
