@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/yardenac/${gitname}"
 license=('LGPL2.1')
 depends=('ruby')
+conflicts=($gitname)
 source=("git+$url.git")
 sha512sums=('SKIP')
 
