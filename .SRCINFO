@@ -1,0 +1,12 @@
+pkgbase = xsbench
+	pkgdesc = Benchmark representing a key computational kernel of the Monte Carlo neutronics
+	pkgver = 13
+	pkgrel = 1
+	url = https://github.com/ANL-CESAR/XSBench
+	arch = any
+	license = MIT
+	source = xsbench-13.tar.gz::https://github.com/ANL-CESAR/XSBench/archive/v13.tar.gz
+	md5sums = 72a92232d2f5777fb52f5ea4082aff37
+
+pkgname = xsbench
+
