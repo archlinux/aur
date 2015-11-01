@@ -5,29 +5,22 @@
 
 pkgname=('mysql' 'libmysqlclient' 'mysql-clients')
 pkgbase=mysql
-pkgver=5.6.26
+pkgver=5.7.9
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition"
 arch=('i686' 'x86_64')
-makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc')
+makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc' 'boost')
 license=('GPL')
 url="https://www.mysql.com/products/community/"
 options=('!libtool')
-source=("https://dev.mysql.com/get/Downloads/MySQL-5.6/${pkgbase}-${pkgver}.tar.gz"
+source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${pkgbase}-${pkgver}.tar.gz"
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
-        "mysqld.service"
-        "mysql-srv_buf_size.patch")
-sha256sums=('b44c6ce5f95172c56c73edfa8b710b39242ec7af0ab182c040208c41866e5070'
+        "mysqld.service")
+sha256sums=('315342f5bee1179548cecad2d776cd7758092fd2854024e60a3a5007feba34e0'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
-            '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556'
-            'bfa3ba5546d470e1c1d32246f687f0faa8c225913a648262fbcae6b2296cb57f')
-
-prepare() {
-  cd "${pkgbase}-${pkgver}"
-  patch -p0 -i "../mysql-srv_buf_size.patch"
-}
+            '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556')
 
 build() {
   rm -rf build
@@ -68,7 +61,7 @@ build() {
     -DWITHOUT_EXAMPLE_STORAGE_ENGINE=ON \
     -DWITHOUT_FEDERATED_STORAGE_ENGINE=ON \
     -DCMAKE_C_FLAGS="-fPIC ${CFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer -fno-delete-null-pointer-checks" \
-    -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti -fno-delete-null-pointer-checks" \
+    -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-delete-null-pointer-checks" \
     -DWITH_MYSQLD_LDFLAGS="-pie ${LDFLAGS},-z,now"
   make
 }
@@ -96,7 +89,7 @@ package_libmysqlclient(){
 
 package_mysql-clients(){
   pkgdesc="MySQL client tools"
-  depends=('libmysqlclient' 'jemalloc')
+  depends=('libmysqlclient' 'jemalloc' 'openssl')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}")
 
@@ -115,6 +108,9 @@ package_mysql-clients(){
   rm "${pkgdir}/usr/bin/mysql_upgrade"
   rm "${pkgdir}/usr/bin/mysql_config_editor"
   rm "${pkgdir}/usr/bin/mysqlbinlog"
+  rm "${pkgdir}/usr/bin/mysql_install_db"
+  rm "${pkgdir}/usr/bin/mysql_secure_installation"
+  rm "${pkgdir}/usr/bin/mysql_ssl_rsa_setup"
   rm "${pkgdir}/usr/bin/mysqltest"
 }
 
@@ -122,7 +118,7 @@ package_mysql(){
   pkgdesc="Fast SQL database server, community edition"
   backup=('etc/mysql/my.cnf')
   install="${pkgbase}.install"
-  depends=('mysql-clients' 'libaio')
+  depends=('mysql-clients' 'libaio' 'jemalloc' 'openssl')
   conflicts=('mariadb')
   provides=("mariadb=${pkgver}")
   options=('emptydirs')
@@ -152,6 +148,7 @@ package_mysql(){
   rm "${pkgdir}/usr/bin/mysqlcheck"
   rm "${pkgdir}/usr/bin/mysqldump"
   rm "${pkgdir}/usr/bin/mysqlimport"
+  rm "${pkgdir}/usr/bin/mysqlpump"
   rm "${pkgdir}/usr/bin/mysqlshow"
   rm "${pkgdir}/usr/bin/mysqlslap"
   rm "${pkgdir}/usr/share/man/man1/mysql.1"
@@ -163,9 +160,7 @@ package_mysql(){
   rm "${pkgdir}/usr/share/man/man1/mysqlslap.1"
 
   # not needed
-  rm -r "${pkgdir}/usr/data"
   rm -r "${pkgdir}/usr/mysql-test"
-  rm -r "${pkgdir}/usr/sql-bench"
   rm "${pkgdir}/usr/share/man/man1/mysql-test-run.pl.1"
 }
 
