@@ -1,7 +1,7 @@
 # Maintainer: Alan Li <yglunl@gmail.com>
 
 pkgname=gtk-theme-windows10
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
@@ -9,8 +9,8 @@ url="http://gnome-look.org/content/show.php/Windows+10+Theme?content=171327"
 license=('GPL')
 depends=('gtk-engines' 'gtk-engine-murrine')
 optdepends=('gnome-themes-standard')
-source=(http://b00merang.weebly.com/uploads/1/6/8/1/16813022/windows_10_default_v0.7.3.zip)
-sha1sums=('c0900ce9d00e278a5b3ff98a495cba93f5c3bae1')
+source=("windows10_default.zip::https://github.com/Elbullazul/B00merang-Project/blob/master/Windows%2010%20Themes/Windows%2010%20Default%20v0.7.4.zip?raw=true")
+sha1sums=('f080d07dfb2c19de3a43c9bbd411b76c362a23d0')
 
 package() {
   cd Windows\ 10
