@@ -1,0 +1,16 @@
+pkgbase = ext4fuse-git
+	pkgdesc = EXT4 implementation for FUSE
+	pkgver = v0.1.r55.gba01a66
+	pkgrel = 1
+	url = https://github.com/gerard/ext4fuse
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	depends = fuse
+	source = ext4fuse::git+https://github.com/gerard/ext4fuse
+	sha256sums = SKIP
+
+pkgname = ext4fuse-git
+
