@@ -72,7 +72,7 @@ pkgname=(linux-lts-ck linux-lts-ck-headers)
 _kernelname=-lts-ck
 _srcname=linux-4.1
 pkgver=4.1.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -90,8 +90,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 		'config.x86_64' 'config'
 		'linux-lts-ck.preset'
 		'change-default-console-loglevel.patch'
-		# ck1
+		# ck2
 		"http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
+		'bfs-009-add-preempt_offset-argument-to-should_resched.patch'
 		# gcc
 		"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 		# bfq
@@ -108,6 +109,7 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             'd365341656f0acf68f9e0bf62f27b14c3eb8583d332f26cdd6b5290153c5bf04d7ac1495bace54f387959ac5330113466fefd73b83663a28e6fcf20224741ca5'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '356e144f858b6015415b2c3f781ca534e5f77b818302e404c3d3b35c088f4a4163356b67f98bfc95175bd52bd8b3e9a9a3e336cbcd8adf6c2d388700ce630d4d'
+            'f445f12f1d79d9f464f8d337d0b72bac4a74e8064826e2a1ccd86da3b6aaef829912e2f7a11bf8e729e4ac3e4e853139abd2d028ee35bd32613615e230f943b1'
             '76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc'
             '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
             'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
@@ -133,6 +135,10 @@ prepare() {
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
 	msg "Patching source with ck2 including BFS v0.464"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
+
+	# build issue fix for 4.1.12
+	# http://ck-hack.blogspot.com/2015/08/bfs-464-linux-41-ck2.html?showComment=1445937376359#c8153343895524903784
+	patch -Np1 -i "${srcdir}/bfs-009-add-preempt_offset-argument-to-should_resched.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
