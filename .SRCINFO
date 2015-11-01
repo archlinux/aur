@@ -1,0 +1,22 @@
+pkgbase = ros-jade-robot-controllers-msgs
+	pkgdesc = ROS - Messages for use with robot_controllers framework.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-actionlib-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-actionlib-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-std-msgs
+	source = robot_controllers_msgs::git+https://github.com/fetchrobotics-gbp/robot_controllers-release.git#tag=release/jade/robot_controllers_msgs/0.4.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-robot-controllers-msgs
+
