@@ -13,8 +13,8 @@ license=('unknown')
 depends=('python' 'python-mpd2')
 makedepends=('git')
 provides=('mpdrandom')
-source=('git+https://github.com/axujen/mpdrandom')
-md5sums=('SKIP')
+source=('git+https://github.com/axujen/mpdrandom' 'mpdrandom.service')
+md5sums=('SKIP' '6a7b6b63bb1ce777372deac19f420b2e')
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -29,6 +29,8 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   python setup.py install --prefix="$pkgdir/usr"
+
+  install -Dm644 "$srcdir/mpdrandom.service" "$pkgdir/usr/lib/systemd/user/mpdrandom.service"
 }
 
 # vim:set ts=2 sw=2 et:

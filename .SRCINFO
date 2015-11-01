@@ -10,7 +10,9 @@ pkgbase = mpdrandom-git
 	depends = python-mpd2
 	provides = mpdrandom
 	source = git+https://github.com/axujen/mpdrandom
+	source = mpdrandom.service
 	md5sums = SKIP
+	md5sums = 6a7b6b63bb1ce777372deac19f420b2e
 
 pkgname = mpdrandom-git
 
