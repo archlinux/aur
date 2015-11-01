@@ -2,7 +2,7 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 
 pkgname=neovim-git
-pkgver=0.r4306.68e5968
+pkgver=0.1.0.r0.gc4826c3
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64')
@@ -22,14 +22,14 @@ install=neovim-git.install
 
 pkgver() {
   cd "${pkgname}"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   mkdir -p "${pkgname}/build"
   cd "${pkgname}/build"
   cmake -G 'Unix Makefiles' \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_BUILD_TYPE=Dev \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DENABLE_JEMALLOC=ON \
         ..
