@@ -152,6 +152,8 @@ package_xorg-server-dev() {
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
   rm -rf "${pkgdir}/usr/include"
   rm -rf "${pkgdir}/usr/share/aclocal"
+  # this is now part of xf86-input-evdev
+  rm -rf "${pkgdir}/usr/share/X11/xorg.conf.d/10-evdev.conf"
 }
 
 package_xorg-server-xephyr-dev() {
