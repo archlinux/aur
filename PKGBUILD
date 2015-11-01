@@ -1,7 +1,7 @@
 # Maintainer: Andy Crowd <andy_crowd@ainsdata.se>
 pkgname=lsdsk
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Search in *.desktop for content in Exec and Categories/Name."
 arch=(any)
 depends=(bash)
