@@ -3,7 +3,7 @@
 
 pkgname=grafana
 pkgver=2.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
 arch=('x86_64' 'i686')
@@ -57,5 +57,6 @@ md5sums=('831debf7f50f35c91b68e65e17c89c6a'
 	 install -Dsm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
 	 install -Dm644 conf/sample.ini "$pkgdir/etc/${pkgname}/${pkgname}.ini"
 	 install -Dm644 conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
-	 cp -r public vendor "$pkgdir/usr/share/grafana/"
+	 cp -r vendor "$pkgdir/usr/share/grafana/"
+	 cp -r public_gen "$pkgdir/usr/share/grafana/public"
  }
