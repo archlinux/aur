@@ -1,0 +1,7 @@
+post_install() {
+  texhash # Refresh TeX DB
+}
+
+post_remove() {
+  texhash
+}
