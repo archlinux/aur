@@ -3,7 +3,7 @@
 
 pkgname=sddm
 pkgver=0.12.0
-pkgrel=4
+pkgrel=5
 pkgdesc='QML based X11 display manager'
 arch=('i686' 'x86_64')
 url='http://github.com/sddm/sddm'
@@ -16,10 +16,12 @@ backup=('usr/share/sddm/scripts/Xsetup'
 provides=('display-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
 	fix-segfault.patch::"https://github.com/davispuh/sddm/commit/671c11d0.patch"
-	CVE-2015-0856.patch::"https://github.com/sddm/sddm/commit/4cfed6b0.patch")
+	CVE-2015-0856.patch::"https://github.com/sddm/sddm/commit/4cfed6b0.patch"
+	multi-monitor.patch::"https://patch-diff.githubusercontent.com/raw/sddm/sddm/pull/511.patch")
 md5sums=('e3261ac93a50c71c973cc79b85387765'
          '208f3b1b49792984989172dd809a03bf'
-         '80eb7eddd8d3d259a6c28e83b9394575')
+         '80eb7eddd8d3d259a6c28e83b9394575'
+         '1704e84c68e6935923d223b6a4c4b198')
 
 prepare() {
   mkdir -p build
@@ -29,6 +31,8 @@ prepare() {
   patch -p1 -i ../fix-segfault.patch
 # Fix CVE-2015-0856
   patch -p1 -i ../CVE-2015-0856.patch
+# Fix multi-monitor support https://github.com/sddm/sddm/issues/496
+  patch -p1 -i ../multi-monitor.patch
 }
 
 build() {
