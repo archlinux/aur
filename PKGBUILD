@@ -1,6 +1,6 @@
 # Contributor: Storm Dragon <support@stormdragon.tk>
 pkgname=fortune-mod-question-answer-jokes
-pkgver=3
+pkgver=4
 pkgrel=3
 pkgdesc="Q: what do you get from this fortune file? A: Some funny, and some really cheesy jokes."
 arch=('any')
@@ -8,7 +8,7 @@ url="http://stormdragon.tk/fortunes/question-answer-jokes"
 license=('WTFPL')
 depends=('fortune-mod')
 source=("$url")
-md5sums=('f8945ddbe860b56b04f2c1a6910db01c')
+md5sums=('89ca04c5c7255b7a732f1cefe8bf17c2')
 
 build()
 {

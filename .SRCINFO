@@ -1,13 +1,13 @@
 pkgbase = fortune-mod-question-answer-jokes
 	pkgdesc = Q: what do you get from this fortune file? A: Some funny, and some really cheesy jokes.
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 3
 	url = http://stormdragon.tk/fortunes/question-answer-jokes
 	arch = any
 	license = WTFPL
 	depends = fortune-mod
 	source = http://stormdragon.tk/fortunes/question-answer-jokes
-	md5sums = f8945ddbe860b56b04f2c1a6910db01c
+	md5sums = 89ca04c5c7255b7a732f1cefe8bf17c2
 
 pkgname = fortune-mod-question-answer-jokes
 
