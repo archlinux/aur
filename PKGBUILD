@@ -9,7 +9,7 @@ _enable_BFQ=
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
 pkgver=3.14.56
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -118,8 +118,6 @@ prepare() {
 
     sed -i '2iexit 0' scripts/depmod.sh
 
-    make prepare
-
     if [ -n "$_localmodcfg" ]; then
         if [ -e /usr/bin/modprobed_db ]; then
             [[ ! -x /usr/bin/sudo ]] && echo "The sudo executable is missing. Install the relevant package and try again." && exit 1
@@ -138,6 +136,8 @@ prepare() {
     #make defconfig
     make allyesconfig
     #make olddefconfig
+
+    make prepare
 }
 
 build() {
