@@ -9,10 +9,8 @@ url="https://github.com/zlsun/yah3c"
 license=('MIT')
 depends=()
 makedepends=('python-setuptools')
-source=("https://github.com/zlsun/yah3c/archive/v${pkgver}.tar.gz"
-        "yah3c@.service")
-md5sums=("e27b277cc79d9e097a6b398397307437"
-         SKIP)
+source=("https://github.com/zlsun/yah3c/archive/v${pkgver}.tar.gz")
+md5sums=("e27b277cc79d9e097a6b398397307437")
 
 build ()
 {
@@ -26,7 +24,4 @@ package ()
     cd "$srcdir/${pkgname}-${pkgver}"
     msg 'Installing...'
     python setup.py install --root="$pkgdir" --optimize=1
-    cd ..
-    msg 'Installing systemd service...'
-    install -Dm644 yah3c@.service "${pkgdir}"/usr/lib/systemd/system/yah3c@.service
 }

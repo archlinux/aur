@@ -1,9 +1,0 @@
-[Unit]
-Description=yah3c for %I
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/yah3c -u %I
-
-[Install]
-WantedBy=multi-user.target
