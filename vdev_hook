@@ -1,9 +1,9 @@
 #!/usr/bin/ash
 
 run_earlyhook() {
-    /usr/bin/vdevd -c /etc/vdev/vdevd.conf --foreground --once -v2 /dev &>/run/vdevd_earlyhook.log
+	/usr/bin/vdevd -c /etc/vdev/vdevd.conf --foreground --once -v2 /dev &>/run/vdevd_earlyhook.log
 }
 
 run_hook() {
-    /usr/bin/vdevd -c /etc/vdev/vdevd.conf --foreground --once -v2 /dev &>/run/vdevd_hook.log
+	/usr/bin/vdevd -c /etc/vdev/vdevd.conf --foreground --once -v2 /dev &>/run/vdevd_hook.log
 }
