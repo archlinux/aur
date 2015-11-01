@@ -2,8 +2,8 @@
 
 _pkgname=tasknc
 pkgname=taskwarrior-${_pkgname}-git
-pkgver=20130227.r546.1274698
-pkgrel=3
+pkgver=20151030.r547.7aa81f2
+pkgrel=1
 pkgdesc="a ncurses wrapper around taskwarrior"
 url="https://github.com/mjheagle8/${_pkgname}"
 license=('GPL3')

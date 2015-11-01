@@ -1,7 +1,7 @@
 pkgbase = taskwarrior-tasknc-git
 	pkgdesc = a ncurses wrapper around taskwarrior
-	pkgver = 20130227.r546.1274698
-	pkgrel = 3
+	pkgver = 20151030.r547.7aa81f2
+	pkgrel = 1
 	url = https://github.com/mjheagle8/tasknc
 	arch = i686
 	arch = x86_64
