@@ -1,6 +1,6 @@
 pkgbase = linux-lts314-ck
 	pkgver = 3.14.56
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kernel.org/
 	arch = i686
 	arch = x86_64

@@ -9,7 +9,7 @@ _enable_BFQ=
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
 pkgver=3.14.56
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
