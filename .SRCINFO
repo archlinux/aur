@@ -1,0 +1,21 @@
+pkgbase = gstreamer0.10-vaapi
+	pkgdesc = A collection of VA-API based plugins for GStreamer (this is the last version compatible with GStreamer 0.10)
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = https://wiki.freedesktop.org/www/Software/vaapi/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = nasm
+	depends = gstreamer0.10-bad
+	depends = libva
+	optdepends = libva-wayland: Wayland support
+	optdepends = xvba-video: for ATI chipsets
+	optdepends = libva-vdpau-driver: for nVidia chipsets
+	optdepends = libva-intel-driver: for Intel chipsets
+	options = !libtool
+	source = http://www.freedesktop.org/software/vaapi/releases/gstreamer-vaapi/gstreamer-vaapi-0.5.9.tar.bz2
+	sha256sums = b5efbb5ccd3e9fd1ce16193dd14cfac327a8ec2662794c0067ff2603c3355003
+
+pkgname = gstreamer0.10-vaapi
+
