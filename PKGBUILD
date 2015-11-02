@@ -2,7 +2,7 @@
 
 pkgname=gnome-system-monitor-gtk2
 pkgver=2.28.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A system monitor for GNOME (GTK2 version)"
 arch=('i686' 'x86_64')
 url='https://help.gnome.org/users/gnome-system-monitor/'
