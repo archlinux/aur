@@ -1,0 +1,14 @@
+pkgbase = oclgrind-git
+	pkgdesc = A SPIR interpreter and virtual OpenCL device simulator.
+	pkgver = 20151102
+	pkgrel = 1
+	url = https://github.com/jrprice/Oclgrind
+	arch = any
+	license = BSD
+	depends = clang
+	depends = llvm
+	source = https://github.com/jrprice/Oclgrind/archive/master.zip
+	md5sums = SKIP
+
+pkgname = oclgrind-git
+
