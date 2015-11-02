@@ -1,12 +1,11 @@
 pkgbase = perl-graph-writer-dsm
 	pkgdesc = Write graph as a quadractic matrix N x N, where N is the number of vertices in the graph. It is useful to visualize graphs with at least 1k vertices.
 	pkgver = 0.006
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/~joenio/Graph-Writer-DSM-0.006/lib/Graph/Writer/DSM.pm
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = [% makedepends %]
 	depends = perl-test-class
 	depends = perl-test-file
 	depends = perl-graph

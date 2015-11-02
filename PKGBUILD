@@ -4,7 +4,7 @@
 
 pkgname=perl-graph-writer-dsm
 pkgver=0.006
-pkgrel=1
+pkgrel=2
 pkgdesc="Write graph as a quadractic matrix N x N, where N is the number of vertices in the graph. It is useful to visualize graphs with at least 1k vertices."
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-test-class' 'perl-test-file' 'perl-graph' 'perl-mojolicious'
          'perl-modern-perl' 'perl-test-tempdir' 'perl-test-most'
          'perl-chart-gnuplot' 'perl-list-moreutils' 'perl-module-install')
-makedepends=([% makedepends %])
+makedepends=()
 url='http://search.cpan.org/~joenio/Graph-Writer-DSM-0.006/lib/Graph/Writer/DSM.pm'
 _distdir="Graph-Writer-DSM"
 source=("http://search.cpan.org/CPAN/authors/id/J/JO/JOENIO/$_distdir-$pkgver.tar.gz")
