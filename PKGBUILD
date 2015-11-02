@@ -11,8 +11,8 @@ url="http://debian.org/"
 license=('custom')
 source=(http://ftp.debian.org/debian/pool/main/a/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
         http://ftp.debian.org/debian/pool/main/a/${pkgname}/${pkgname}_${pkgver}-6.diff.gz)
-md5sums=('ee77b619e01a2d841a45469708d90631'
-         '9608fb9ee121a278bf4cac5fc6dae267')
+sha256sums=('5c60c53eb9ebe5e6a26ca2bd1c920a2332ea2a6db3fd64b14ccc4537e955f354'
+            '7d61485f61255ce23301f17eee74f8afc302f4482b8a64bfb1342ae4d39206fb')
 
 build() {
     cd $srcdir
