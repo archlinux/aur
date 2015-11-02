@@ -1,6 +1,6 @@
 pkgbase = yegonesh
 	pkgdesc = Yeganesh-like dmenu wrapper written in Go
-	pkgver = 20150827
+	pkgver = 20151102
 	pkgrel = 1
 	url = http://github.com/klowner/yegonesh
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = yegonesh
 	options = !strip
 	options = !emptydirs
 	source = https://raw.githubusercontent.com/Klowner/yegonesh/master/main.go
-	sha256sums = 9e4dbf9bf811944cbca05b438e120e7c49914671bd49569f88cdcf0e50727513
+	sha256sums = 5262fbea59aa1fa2cfd06b8642d44ff23586314cced8cb2b30f5cf7804a5f3fb
 
 pkgname = yegonesh
 
