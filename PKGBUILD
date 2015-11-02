@@ -21,6 +21,7 @@ package() {
   mkdir -p $pkgdir/usr/share/zsh/site-functions/
   mkdir $pkgdir/usr/bin/
   cp _yaourt $pkgdir/usr/share/zsh/site-functions/
+  cp _apacman $pkgdir/usr/share/zsh/site-functions/
   install aurtab.py $pkgdir/usr/bin/aurtab 
   chmod +x $pkgdir/usr/bin/aurtab
 
