@@ -3,7 +3,7 @@
 # Contributor: Emanuel Couto <emanuel dot amaral dot couto at gmail dot com>
 
 pkgname='scenebuilder'
-pkgver='8u72_b04'
+pkgver='8u72_b05'
 pkgrel=1
 pkgdesc='JavaFX visual layout tool that lets users quickly design JavaFX application user interfaces, without coding.'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
 license=('BSD')
 depends=('java-environment=8')
 makedepends=('mercurial' 'apache-ant')
-source=("scenebuilder::hg+http://hg.openjdk.java.net/openjfx/8u-dev/rt#tag=8u72-b04"
+source=("scenebuilder::hg+http://hg.openjdk.java.net/openjfx/8u-dev/rt#tag=8u72-b05"
         "SceneBuilder"
        )
 sha256sums=('SKIP'
