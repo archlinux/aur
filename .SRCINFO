@@ -1,6 +1,6 @@
 pkgbase = redis-desktop-manager-bin
 	pkgdesc = Cross-platform open source Redis DB management tool
-	pkgver = 0.8.1_114
+	pkgver = 0.8.2_117
 	pkgrel = 1
 	url = http://redisdesktop.com/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = redis-desktop-manager-bin
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
 	conflicts = redis-desktop-manager
-	source = https://github.com/uglide/RedisDesktopManager/releases/download/0.8.1/redis-desktop-manager_0.8.1-114_amd64.deb
+	source = https://github.com/uglide/RedisDesktopManager/releases/download/0.8.2/redis-desktop-manager_0.8.2-117_amd64.deb
 	source = rdm.desktop
 	source = qt.conf
-	sha256sums = c01b5025bc2392551afd0ac18f7b795095c988e852bbe11e9c4b7ddbbfcb8e93
+	sha256sums = c8c7ed67106a7e0354e72611fd04828c6557065e538b99a81bfaadbced5ead1a
 	sha256sums = 4fac85cec4a7abe7254ff3a6f0382d9a6f2b712372ecbd74474a2f8efe9c4e3c
 	sha256sums = b0b7c82e7d02a9083fbd5950f17f1a9237c9bf51bcd817252202a4f263fa89ff
 
