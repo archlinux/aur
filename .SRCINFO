@@ -1,0 +1,16 @@
+pkgbase = testsslserver
+	pkgdesc = A script to test TLS/SSL servers for CRIME, BEAST, and other issues.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.bolet.org/TestSSLServer/
+	arch = any
+	license = MIT
+	depends = java-runtime
+	noextract = testsslserver.jar
+	source = testsslserver.jar::http://www.bolet.org/TestSSLServer/TestSSLServer.jar
+	source = LICENSE
+	md5sums = ceececde5204be3eca4ee45390f854df
+	md5sums = 9e6efa0007a424c6190c5eeab78b2555
+
+pkgname = testsslserver
+
