@@ -3,14 +3,14 @@
 # Contributer: Amateurfunk Station der Hochschule Niederrhein (DF0FN) <df0fn@hs-niederrhein.de>
 pkgname=('qtel')
 _pkgname=('svxlink')
-pkgver="14.08.1"
+pkgver="14.08.2"
 pkgrel=1
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://sourceforge.net/projects/svxlink/"
 license=('GPL')
 source=("https://github.com/sm0svx/${_pkgname}/archive/${pkgver}.tar.gz")
 conflicts=("svxlink")
-sha256sums=('c631c8073d34638d0762bd246e2fa0f315a640a45f10923e6075720bd4245a82')
+sha256sums=('fe420a035cce6a293b1e46dcba98e79a089548bb5d9329a9f79f0e51054f8ce2')
 depends=('alsa-utils' 'alsa-lib' 'libsigc++' 'gsm' 'libgcrypt' 'popt' 'tcl' 'speex' 'opus')
 makedepends=('cmake')
 pkgdesc="Graphical Userinteface for Echolink written in QT"
