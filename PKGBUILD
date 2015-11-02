@@ -1,20 +1,20 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-minion'
-pkgver='2.01'
+pkgver='3.02'
 pkgrel='1'
 pkgdesc="Job queue"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-dbm-deep>=2.0011' 'perl-mojolicious>=6.0' 'perl>=5.10.1')
+depends=('perl-mojolicious>=6.0' 'perl>=5.10.1')
 makedepends=()
 url='https://metacpan.org/release/Minion'
-source=('http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Minion-2.01.tar.gz')
-md5sums=('fcc46041f28ee8de1faa6f4e91744aa1')
-sha512sums=('70715280ae551c776959a5da1ffc46ca4a83e6b16241ee07cf5d812ee94245d5d40d64c1c64e47bbfbf0361e5784a2c4481aba7691f548e034c6e2118e19af97')
-_distdir="Minion-2.01"
+source=('http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Minion-3.02.tar.gz')
+md5sums=('aa1936ed4442763010ec4127e0305861')
+sha512sums=('a4fd25675b80fd09e8944ec1a4069c1bfe2a0b5dc41269bbfc8455fc7246e0305085b38e19498e831c667e274a29644562b6ac002c3276b7ab30760d22953a03')
+_distdir="Minion-3.02"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
