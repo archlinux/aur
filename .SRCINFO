@@ -1,0 +1,23 @@
+pkgbase = gpicview-git
+	pkgdesc = Lightweight image viewer
+	pkgver = r508.b17f1b8
+	pkgrel = 1
+	url = http://lxde.org/
+	install = gpicview.install
+	arch = i686
+	arch = x86_64
+	groups = lxde
+	license = GPL2
+	makedepends = pkgconfig
+	makedepends = intltool
+	depends = gtk3
+	depends = desktop-file-utils
+	depends = xdg-utils
+	optdepends = librsvg: For SVG support
+	provides = gpicview
+	conflicts = gpicview
+	source = gpicview::git+file:///home/proudzhu/workspace/gpicview
+	md5sums = SKIP
+
+pkgname = gpicview-git
+
