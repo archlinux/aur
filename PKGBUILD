@@ -6,7 +6,7 @@
 # https://bugzilla.novell.com/765524
 
 # _kver=3.11
-_kver=4.0
+_kver=4.2
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
@@ -24,21 +24,19 @@ install="$pkgname.install"
 
 source=(
 	SHA256SUMS_for_3.11
-	SHA256SUMS_for_4.0
+	SHA256SUMS_for_4.2
 	"$pkgname.install"
 	0001-input-Add-LED-support-to-Synaptics-device.patch
 	0002-synaptics-add-debugging-to-synaptics_has_led.patch
 	0003-patch_for_kernel_4.patch
 )
 
-sha256sums=(
-	448b8b052247a081fd99bd4500313cb1bf24687c42c7ac6c178681bbc5c64352
-	1780583e2e1da8526e0b14b232cfdc8e5fb8799aa7477fd74788dccfd3b34bf3
-	b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c
-	4ce194fd0283affb0be2eef6d61aaeae134837af2d204ddd765008d081809e07
-	790b80dc08e22e91fc315c5439cec5d65a1ee523f7d22aba509e39bb8abc7a6f
-	d288fbe19be60efda3ec06f613a302a8d169487f0301a41e501b1541efaf4ec9
-)
+sha256sums=('448b8b052247a081fd99bd4500313cb1bf24687c42c7ac6c178681bbc5c64352'
+            'f97d04b4330c3ae45efef32d90e13355ff9157b5d739bf6dfb6a16712d21d2ae'
+            'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
+            '4ce194fd0283affb0be2eef6d61aaeae134837af2d204ddd765008d081809e07'
+            '790b80dc08e22e91fc315c5439cec5d65a1ee523f7d22aba509e39bb8abc7a6f'
+            '6e9f87025e2b178dc8cf9052fbe014f67d97b6b5ceb98e1a9fd15f12650fb437')
 
 build() {
 
@@ -51,7 +49,7 @@ build() {
 
 	msg2 "Performing Integrity Check"
 #	sha256sum --quiet -c "$srcdir/SHA256SUMS_for_3.11"
-	sha256sum --quiet -c "$srcdir/SHA256SUMS_for_4.0"
+	sha256sum --quiet -c "$srcdir/SHA256SUMS_for_4.2"
 
 	msg2 "Patching source"
 #	patch -p4 -i "$srcdir/0001-input-Add-LED-support-to-Synaptics-device.patch"

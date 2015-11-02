@@ -207,9 +207,9 @@
  	/* Data read from the touchpad */
  	unsigned long int model_id;		/* Model-ID */
 @@ -196,6 +198,7 @@
- 	unsigned long				press_start;
  	bool					press;
  	bool					report_press;
+ 	bool					is_forcepad;
 +	struct synaptics_led *led;
  };
  
