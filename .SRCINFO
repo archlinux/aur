@@ -32,7 +32,6 @@ pkgname = bacula-console
 pkgname = bacula-fd
 	pkgdesc = Bacula - A Network Backup Tool (file daemon)
 	depends = bacula-common=7.2.0
-	depends = tcp_wrappers
 	optdepends = openssl: network encryption between daemons
 	optdepends = lzo: LZO compression for Storage Daemon
 	backup = etc/bacula/bacula-fd.conf

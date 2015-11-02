@@ -161,7 +161,7 @@ package_bacula-fd() {
     'openssl: network encryption between daemons'
     'lzo: LZO compression for Storage Daemon'
   )
-  depends=("${pkgbase}-common=${pkgver}" "tcp_wrappers")
+  depends=("${pkgbase}-common=${pkgver}")
 
   pushd "${_instdir}"
 
