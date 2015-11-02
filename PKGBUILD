@@ -1,47 +1,43 @@
-# Contributor: xRemaLx <anton.komolov@gmail.com>
+# Maintainer: xRemaLx <anton.komolov@gmail.com>
 
 pkgname='perl-protocol-socketio'
-_pkgname='Protocol-SocketIO'
-pkgver=0.04
-pkgrel=2
+pkgver=0.06
+pkgrel=1
 pkgdesc='Socket.IO protocol implementation'
+_dist='Protocol-SocketIO'
 arch=(any)
-license=('PerlArtistic' 'GPL')
 url="http://search.cpan.org/dist/Protocol-SocketIO/"
-options=(!emptydirs)
-
+license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-json')
-makedepends=('perl')
+options=(!emptydirs purge)
+makedepends=('perl-module-build>=0.38')
+checkdepends=()
+provides=("Protocol::SocketIO=${pkgver}" "perl-protocol-socketio=${pkgver}")
+source=("http://search.cpan.org/CPAN/authors/id/V/VT/VTI/${_dist}-${pkgver}.tar.gz")
+sha512sums=('8e144981b7ed7f9afacb31a2311a20afaab06ad1e53a099d23e27e861751e1c9389f5e6fb84b0b9bcd653b28e937ea7dfb11c88fe055840836a8a34f3a688942')
 
-provides=("protocol-socketio=${pkgver}" "Protocol::SocketIO=${pkgver}" "perl-protocol-socketio=${pkgver}")
-
-source=("http://search.cpan.org/CPAN/authors/id/V/VT/VTI/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('430e519b789345a00183b4db18704165')
-sha512sums=('b50746c676f93bedc4d7688f07e7c0c66b325741bd1eceb4c6e6c0940213a5ecd7d4eef26eb762d9c48c93dbcef20aaf6d2e24423dcf7927b94b648ad94039b2')
+sanitize() {
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+}
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "${srcdir}/${_dist}-${pkgver}"
+  sanitize
+  perl Build.PL --installdirs vendor --destdir "$pkgdir"
+  perl Build
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/${_dist}-${pkgver}"
+  sanitize
+  perl Build test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
+  cd "${srcdir}/${_dist}-${pkgver}"
+  sanitize
+  perl Build install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
