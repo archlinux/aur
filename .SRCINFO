@@ -1,0 +1,12 @@
+pkgbase = no-gconf
+	pkgdesc = Get rid of GConf
+	pkgver = 20101030
+	pkgrel = 1
+	url = http://there.is.none
+	arch = any
+	license = GPL
+	provides = gconf=20101030
+	conflicts = gconf
+
+pkgname = no-gconf
+
