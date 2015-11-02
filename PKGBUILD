@@ -24,7 +24,7 @@ build() {
   find ./src -type f -exec sed -i 's/#include <glib\/gstring.*>/#include <glib.h>/g' {} \;
   export LDFLAGS="$LDFLAGS -lgmodule-2.0 -lgthread-2.0"
 
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-scrollkeeper
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-scrollkeeper CXXFLAGS='-g -O2 -std=c++11'
   make
 }
 
