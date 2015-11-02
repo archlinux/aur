@@ -4,12 +4,13 @@
 _gemname=gobject-introspection
 pkgname=ruby-$_gemname
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/GObjectIntrospection is a Ruby binding of GObjectIntrospection.'
 arch=(i686 x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
-license=('LGPLv2.1 or later')
+license=('LGPL2.1')
 depends=(ruby ruby-glib2)
+depends=(ruby ruby-glib2 gobject-introspection-runtime)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
