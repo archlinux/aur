@@ -1,6 +1,6 @@
 pkgbase = feedthebeast
 	pkgdesc = Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes.
-	pkgver = 1.4.9_374
+	pkgver = 1.4.9_375
 	pkgrel = 1
 	epoch = 2
 	url = http://feed-the-beast.com/
@@ -14,11 +14,11 @@ pkgbase = feedthebeast
 	depends = ttf-dejavu
 	noextract = feedthebeast.jar
 	source = feedthebeast
-	source = feedthebeast.jar::http://ftb.cursecdn.com/FTB2/maven/net/ftb/FTB_Launcher/1.4.9-374/FTB_Launcher-1.4.9-374.jar
+	source = feedthebeast.jar::http://ftb.cursecdn.com/FTB2/maven/net/ftb/FTB_Launcher/1.4.9-375/FTB_Launcher-1.4.9-375.jar
 	source = feedthebeast.desktop
 	source = feedthebeast.install
 	sha256sums = 35ebb0e4fc8a581c2aa6e939527f238800f4059bb5253c67eb3d478c463010b0
-	sha256sums = 5cfdbf5e60f3ccf54a7c684932b5800b936fdeb1d0c9998c22ffc53d0e7c8344
+	sha256sums = c62bdf3b2c014f108c6489bc32fb24702afb774628a2225dca888ddc95d0e3ae
 	sha256sums = 4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d
 	sha256sums = dfb83978fea9eddd28c2d90ab9eefa9554d5ae03dfc540554a829ac8ee8db83a
 
