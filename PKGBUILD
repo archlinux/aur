@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=git-lfs
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An open source Git extension for versioning large files"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ install=git-lfs.install
 
 if [[ $CARCH == 'x86_64' ]]; then
   source=(https://github.com/github/git-lfs/releases/download/v$pkgver/git-lfs-linux-amd64-$pkgver.tar.gz)
-  md5sums=('90b35494fd056ea2c30bbfd6f38b8e5d')
+  md5sums=('259380d916fc6519c355432fbc7ae1f5')
 else
   source=(https://github.com/github/git-lfs/releases/download/v$pkgver/git-lfs-linux-386-$pkgver.tar.gz)
-  md5sums=('a8d40260179261fb8ff8d43b2289be9b')
+  md5sums=('77370955ae6a62c8d5033a427014f9db')
 fi
 
 package() {
