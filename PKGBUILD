@@ -1,5 +1,4 @@
 # Maintainer: Chiu-Hsiang Hsu <wdv4758h at gmail.com>
-# Contributor: HIME team
 _pkgname=hime
 pkgname=hime-git
 pkgver=1040.130aa0b
@@ -10,7 +9,7 @@ url="http://hime-ime.github.io/"
 license=('LGPL2' 'FDL' 'GPL2')
 depends=('gtk2' 'libxtst')
 makedepends=('git' 'gettext' 'libchewing')
-optdepends=('gtk3: enable gtk3 im module' 'qt5: enable qt5 im module' 'qt4: enable qt4 im module' 'anthy: enable Anthy input method' 'libchewing: enable Chewing input method')
+optdepends=('gtk3: enable gtk3 im module' 'qt5-base: enable qt5 im module' 'qt4: enable qt4 im module' 'anthy: enable Anthy input method' 'libchewing: enable Chewing input method')
 options=(!strip)
 install=hime-git.install
 conflicts=('hime')
@@ -26,7 +25,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    ./configure --prefix=/usr --disable-lib64
+    ./configure --prefix=/usr --disable-lib64 --qt5-im-module-path=/usr/lib/qt/plugins/platforminputcontexts/
     make
 }
 
