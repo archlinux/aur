@@ -1,23 +1,27 @@
 # Maintainer: Mauro Santos <registo.mailling@gmail.com>
 
 pkgname=sedutil
-pkgver=1.00
-pkgrel=4
+pkgver=1.10
+pkgrel=1
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
 license=('GPL3')
+optdepends=('syslinux: to create a bootable PBA disk image'
+            'intel-ucode: microcode update files for Intel CPUs')
 install=sedutil.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${pkgname}/archive/${pkgver}.tar.gz"
         'extlinux.conf'
-        'mklinuxpba'
+        'mklinuxpba-initramfs'
+        'mklinuxpba-bios'
         'linuxpba.conf'
         'linuxpba.hook'
         'linuxpba.install')
-sha256sums=('7d9c8b3eb408de8218e8bd29f118a8956157ca6e80fb0d8782074302cc13d2e8'
-            '6d528877c70b24367833653f5a7cc004a6b5aad8729b661d8c3fda3f1ee7d4ff'
+sha256sums=('31b1006a1f65b83fb419635f21a02bfb99bed8d4d6b351f566831af3682165dd'
+            '5ab7ef67fea0f4e370d8f0a4da87636a1df18e0edb0152d08f906f38280cc0e8'
             'c66318cb2ddd357de927ab47eb3ec4618a4353ad06e5bd48e6676d77b48b323d'
-            'be7790a69eb4e82a84c690e41cdff04f08a0a61a30a6c28b88df916e3fb59950'
+            '046e481ffca77f222f4c044e32427f25bca12ac9a5e6832ea657596f8fd84228'
+            '9273e9c5d5ce54be31a49ec42839b06d0e54752a19c9e6d4643793174ee9214e'
             'd9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447'
             '7c32370c3405fc33359c1fc5bb243f387c71ca454e9da88348669fd383f04558')
 PKGEXT='.pkg.tar'
@@ -35,7 +39,8 @@ package() {
     install -Dm755 "linux/CLI/dist/Release_$CARCH/GNU-Linux-x86/sedutil-cli" "${pkgdir}/usr/bin/sedutil-cli"
     install -Dm644 "linux/PSIDRevert_LINUX.txt" "${pkgdir}/usr/share/doc/${pkgname}/PSIDRevert.txt"
     install -Dm755 "LinuxPBA/dist/Release_$CARCH/GNU-Linux-x86/linuxpba" "${pkgdir}/usr/bin/linuxpba"
-    install -Dm755 "${srcdir}/mklinuxpba" "${pkgdir}/usr/bin/mklinuxpba"
+    install -Dm755 "${srcdir}/mklinuxpba-initramfs" "${pkgdir}/usr/bin/mklinuxpba-initramfs"
+    install -Dm755 "${srcdir}/mklinuxpba-bios" "${pkgdir}/usr/bin/mklinuxpba-bios"
 
     install -Dm644 "${srcdir}/linuxpba.hook" "${pkgdir}/usr/lib/initcpio/hooks/linuxpba"
     install -Dm644 "${srcdir}/linuxpba.install" "${pkgdir}/usr/lib/initcpio/install/linuxpba"

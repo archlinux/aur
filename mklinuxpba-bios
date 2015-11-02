@@ -1,0 +1,85 @@
+#!/bin/bash
+
+if [[ ! -e /usr/bin/extlinux ]]
+then
+    echo "syslinux is not installed: nothing to do."
+    exit 1
+fi
+
+mklinuxpba-initramfs
+
+kernel_release="$(uname -r)"
+
+case "${kernel_release##*-}" in
+    "ARCH")
+        kernel_image="vmlinuz-linux"
+    ;;
+    "lts")
+        kernel_image="vmlinuz-linux-lts"
+    ;;
+    *)
+        echo "The currenly running kernel is not supported."
+        exit 1
+    ;;
+esac
+
+linux_size=$(stat --printf="%s" /boot/$kernel_image)
+pba_size=$(stat --printf="%s" /boot/linuxpba.img)
+fallback_pba_size=$(stat --printf="%s" /boot/linuxpba-fallback.img)
+if [[ -e /boot/intel-ucode.img ]]
+then
+    intelucode_size=$(stat --printf="%s" /boot/intel-ucode.img)
+else
+    intelucode_size=0
+fi
+
+diskimg_size=$(( (linux_size+pba_size+intelucode_size)/1024+3072 ))
+fallback_diskimg_size=$(( (linux_size+fallback_pba_size+intelucode_size)/1024+3072 ))
+
+mkdir -p "/tmp/linuxpba/mnt"
+pushd "/tmp/linuxpba/"
+
+cp /usr/lib/syslinux/bios/mbr.bin linuxpba.diskimg
+truncate -s "${diskimg_size}k" linuxpba.diskimg
+echo -e "8,,,*\nwrite" | sfdisk linuxpba.diskimg
+loopdev="$(losetup --show -f -o 4096 linuxpba.diskimg)"
+sync
+mkfs.ext4 -L linuxpba "$loopdev"
+mount "$loopdev" mnt
+extlinux -i mnt
+if [[ -e /boot/intel-ucode.img ]]
+then
+    cp /boot/intel-ucode.img mnt
+    cp /etc/linuxpba/extlinux.conf mnt
+else
+    sed 's/intel-ucode.img,//' /etc/linuxpba/extlinux.conf > mnt/extlinux.conf
+fi
+cp /boot/linuxpba.img mnt
+cp /boot/$kernel_image mnt
+umount mnt
+losetup -d "$loopdev"
+
+cp /usr/lib/syslinux/bios/mbr.bin linuxpba-fallback.diskimg
+truncate -s "${fallback_diskimg_size}k" linuxpba-fallback.diskimg
+echo -e "8,,,*\nwrite" | sfdisk linuxpba-fallback.diskimg
+loopdev="$(losetup --show -f -o 4096 linuxpba-fallback.diskimg)"
+sync
+mkfs.ext4 -L linuxpba "$loopdev"
+mount "$loopdev" mnt
+extlinux -i mnt
+if [[ -e /boot/intel-ucode.img ]]
+then
+    cp /boot/intel-ucode.img mnt
+    cp /etc/linuxpba/extlinux.conf mnt
+else
+    sed 's/intel-ucode.img,//' /etc/linuxpba/extlinux.conf > mnt/extlinux.conf
+fi
+cp /boot/linuxpba-fallback.img mnt/linuxpba.img
+cp /boot/$kernel_image mnt
+umount mnt
+losetup -d "$loopdev"
+
+mv linuxpba.diskimg linuxpba-fallback.diskimg /boot
+cd /tmp
+rmdir -p linuxpba/mnt
+popd
