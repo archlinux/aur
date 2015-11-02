@@ -1,7 +1,7 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Package Repository: https://github.com/mij-aur-packages/android-google-apis-x86
 
-_rev=r07
+_rev=r08
 _apilevel=23
 pkgname=android-google-apis-x86
 pkgver=${_apilevel}_${_rev}
@@ -15,10 +15,10 @@ optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86-23_r07.zip"
+source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86-23_r08.zip"
         "source.properties")
-sha1sums=('0452e1490eabcb1d7bf88625ec91b3278d88dee8'
-          '2d9f90259dccf8d018ee0e5e3f6bff4ff01e387f')
+sha1sums=('4f0eb563aeb289fa673649b6313ac9dd35c70d9a'
+          '38a00da06feeb518dffad20bb2a9c58c9fdec1a7')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis/"
