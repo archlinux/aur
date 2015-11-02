@@ -1,0 +1,10 @@
+--- src/3rdparty/qtsingleapplication/qtlocalpeer.cpp
++++ src/3rdparty/qtsingleapplication/qtlocalpeer.cpp
+@@ -41,6 +41,7 @@
+ 
+ #include "qtlocalpeer.h"
+ #include <QCoreApplication>
++#include <QDataStream>
+ #include <QTime>
+ 
+ #if defined(Q_OS_WIN)

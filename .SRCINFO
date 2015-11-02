@@ -1,18 +1,18 @@
 pkgbase = quiterss
 	pkgdesc = Fast and light RSS/Atom feed reader written on Qt/С++
 	pkgver = 0.18.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://quiterss.org/
 	install = quiterss.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake
-	makedepends = gettext
-	makedepends = automoc4
-	depends = qtwebkit
+	depends = qt5-multimedia
+	depends = qt5-tools
 	source = http://quiterss.org/files/0.18.2/QuiteRSS-0.18.2-src.tar.gz
+	source = quiterss.patch
 	sha512sums = ff441887de758f0cdbab32db7a3e730024261c058f487c3409a872554f1fee35ba62f2e7fbd91b0aacfcd09fbf2b1c33a18d96f4153c0c171ea458ac9099b44a
+	sha512sums = f4d1d38ec51765ff11e2b7499f1388a5e5bf91463efcc09b629d801cae4a8224427d8525b8e9c22eedd4d9ecf03d17fd41edb81f925aaaa82fd483b12875f455
 
 pkgname = quiterss
 
