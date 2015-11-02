@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Teamdrive 3
+GenericName=Network Storage
+Comment=TeamDrive synchronises your data quickly and securely.
+Exec=/opt/teamdrive/TeamDrive
+Icon=/opt/teamdrive/folderSpaceLinuxInstaller.png
+Terminal=false
+Type=Application
+Categories=Network;
