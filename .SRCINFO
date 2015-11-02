@@ -1,0 +1,19 @@
+pkgbase = ruby-gstreamer-3.0.7
+	pkgdesc = Ruby/GStreamer is a Ruby binding for GStreamer.
+	pkgver = 3.0.7
+	pkgrel = 1
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = ruby
+	depends = ruby-glib2-3.0.7
+	depends = ruby-gobject-introspection-3.0.7
+	depends = gstreamer
+	noextract = gstreamer-3.0.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gstreamer-3.0.7.gem
+	sha1sums = 8152818f85acc764f70a8b32f2608de678c21614
+
+pkgname = ruby-gstreamer-3.0.7
+
