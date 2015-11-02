@@ -9,6 +9,7 @@ pkgbase = pdfshuffler
 	depends = python2-poppler
 	depends = python2-pypdf2
 	depends = ghostscript
+	depends = python2-pypdf
 	source = http://downloads.sourceforge.net/pdfshuffler/pdfshuffler-0.6.0.tar.gz
 	md5sums = 573f42e8392d20e6f03557096c85c178
 
