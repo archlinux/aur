@@ -15,13 +15,18 @@ license=("GPL")
 build()
 {
 	cd $srcdir/$pkgname-$pkgver
-  
-	mkdir -p $pkgdir/usr/share/honeyd
+  	mkdir -p $pkgdir/usr/share/honeyd
+}
 
+package()
+{
 	./configure --prefix=/usr
 	make || return 1
 	make prefix=$pkgdir/usr install
-  
+}
+
+permissions()
+{
 	# Fix permissions on webserver dirs
 	for dir in webserver webserver/htdocs webserver/htdocs/graphs \
 	webserver/htdocs/images webserver/htdocs/styles webserver/htdocs/templates \
@@ -29,4 +34,3 @@ build()
 		do chmod 755 $pkgdir/usr/share/honeyd/$dir
 	done
 }
-
