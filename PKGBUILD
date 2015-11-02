@@ -1,20 +1,33 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contibutor: Justin Dray <justin@dray.be>
 
+
+# In case of upgrade errors:
+#     error: failed to commit transaction (conflicting files)
+#     sickrage-git: /opt/sickrage/... exists in filesystem
+# Try to remove all or most of the conflicting files:
+#     # rm -rf /opt/sickrage/{contrib/,contributing.md,COPYING.txt,gui/,lib/,runscripts/,sickbeard/,SickBeard.py,sickrage/,tests/}
+# Use at your own risk!
+
+
 _pkgname=sickrage
 pkgname=$_pkgname-git
-pkgver=4.0.54.r0.g3fb81bd
+pkgver=4.1.0.r0.g533d8c1
 pkgrel=1
-pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage and torrents support."
+pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
 license=('GPL3')
-depends=('python2-mako' 'python2-cheetah')
 makedepends=('git')
+depends=('python2-mako' 'python2-cheetah')
+#            'deluge: supported torrent client'
+#            'qbittorrent: supported torrent client'
+#            'rtorrent: supported torrent client'
+#            'sabnzbd: supported NZB downloader'
+#            'transmission-cli: supported torrent client'
 optdepends=('python2-notify: desktop notifications'
-            'python2-pyopenssl: enable ssl'
-            'sabnzbd: NZB downloader'
-            'unrar: rar archives')
+            'python2-pyopenssl: enable SSL'
+            'unrar: RAR archives')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
@@ -31,13 +44,8 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd $pkgname
-  sed -i 's|#![ \t]*/usr/bin/env python[ \t\r]*$|#!/usr/bin/env python2|' autoProcessTV/*.py
-}
-
 package() {
-  # 'source' install type. Does not include git repository files
+  # The "source" sickrage install type does not include the .git folder (git repository files)
   install -dm755 "$pkgdir/opt/sickrage"
   cp -rp $pkgname/* "$pkgdir/opt/sickrage"
  
