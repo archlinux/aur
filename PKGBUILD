@@ -1,5 +1,5 @@
-# Maintainer: mark <mark at unserver dot de>
-# Creator: megadriver <megadriver at gmx dot com>
+# Maintainer: nullmark
+# Old Maintainer: megadriver <megadriver at gmx dot com>
 # Inspired by no-gconf from the AUR
 
 pkgname=no-colord
