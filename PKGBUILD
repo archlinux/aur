@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Image Super-Resolution for Anime-Style-Art. (re-implementation in C++ using OpenCV). with CUDA support (GIT Version)"
 arch=('i686' 'x86_64')
 url='https://github.com/tanakamura/waifu2x-converter-cpp'
-license=('GPL')
+license=('MIT')
 depends=('opencv'
          'cuda'
          )
