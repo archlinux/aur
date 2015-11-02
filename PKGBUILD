@@ -7,9 +7,9 @@
 
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.2
+_srcname=linux-4.3
 _patchname=patch-4.3-rc7
-pkgver=4.3rc7
+pkgver=4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -17,7 +17,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.sign"
         # the main kernel config files
@@ -25,8 +25,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
-            '19e4a01d995d90aac99ced702bfc99b2bf8a21fd657dd70974698f2b6a799918'
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d'
             '58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
@@ -45,7 +44,7 @@ prepare() {
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add mainline patch
-  patch -p1 -i "${srcdir}/${_patchname}"
+  #patch -p1 -i "${srcdir}/${_patchname}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
