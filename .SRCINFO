@@ -1,6 +1,6 @@
 pkgbase = photoflow
 	pkgdesc = Non-destructive, layer-based photo retouching including RAW image development
-	pkgver = 0.2.3.r6.g799b5c6
+	pkgver = 0.2.4.r0.g2292670
 	pkgrel = 1
 	url = http://aferrero2707.github.io/PhotoFlow
 	arch = i686
