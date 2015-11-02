@@ -1,13 +1,13 @@
 pkgbase = cheser-icon-theme
 	pkgdesc = A near complete set of a mix of different Tango/Gnome-style icons.
-	pkgver = 3.16.1
+	pkgver = 3.18.0
 	pkgrel = 1
 	url = http://gnome-look.org/content/show.php/Cheser+Icon+Theme?content=113386
 	arch = any
 	license = CC-BY-SA
 	depends = librsvg
-	source = https://github.com/chekavy/cheser-icon-theme/archive/v3.16.1.tar.gz
-	md5sums = 5f6a960b2179b3ae647a8b9d227114ad
+	source = https://github.com/chekavy/cheser-icon-theme/archive/v3.18.0.tar.gz
+	md5sums = 3d6d0d54b1653ecbac009df5eb79e6b3
 
 pkgname = cheser-icon-theme
 
