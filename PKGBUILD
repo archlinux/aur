@@ -10,12 +10,12 @@ url="http://fav.me/d9et76v"
 license=('GPLv3')
 depends=('gtk-engines' 'gnome-themes-standard>=3.18' 'gtk-engine-murrine>=0.98.2')
 
-source=("https://dl.dropboxusercontent.com/u/330352/delorean-dark-3.18-2_10302015.zip")
+source=("https://dl.dropboxusercontent.com/u/330352/delorean-dark-3.18-4_11022015.zip")
 #install=$pkgname.install
 #replaces=('delorean-dark-themes-3.8')
 #conflicts=('delorean-dark-theme-3.8')
 
-md5sums=('f88d378af1b91d0682cd5c566c024180')
+md5sums=('1de96885c0b9fc3c6b34662826117423')
 
 
 package() {
@@ -28,7 +28,8 @@ find DeLorean-Dark-3.18/ -type f \
 
   cd 'ROOT THEME'
 find DeLorean-Dark-3.18/ -type f \
--exec install -Dm644 "{}" "$pkgdir/root/.themes/{}" \;            
+mkdir /usr/share/themes/DeLorean-Dark-3.18/Root-Theme
+-exec install -Dm644 "{}" "$pkgdir/usr/share/themes/DeLorean-Dark-3.18/Root-Theme/{}" \;            
 }
 
 # vim:set ts=2 sw=2 et:
