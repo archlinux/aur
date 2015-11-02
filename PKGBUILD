@@ -8,7 +8,7 @@ pkgdesc="A multi-interface Twitter client written in Python."
 arch=(any)
 url="http://turpial.org.ve/"
 license=('GPL3')
-depends=('python2' 'libturpial>=0.8' 'python2-distribute' 'python-simplejson>=1.9.2' 'pygtk>=2.12' 'python-notify2>=0.1.1' 'notification-daemon' 'gstreamer0.10-python' 'python-babel>=0.9.1' 'pywebkitgtk')
+depends=('python2' 'libturpial>=0.8' 'python2-distribute' 'python2-simplejson>=1.9.2' 'pygtk>=2.12' 'python2-notify2>=0.1.1' 'notification-daemon' 'gstreamer0.10-python' 'python2-babel>=0.9.1' 'pywebkitgtk')
 optdepends=('python2-gtkspell>=2.25.3' 'gnome-spell' 'aspell')
 conflicts=(${pkgname}-git)
 source=(http://files.turpial.org.ve/sources/stable/$pkgname-$pkgver.tar.gz)
