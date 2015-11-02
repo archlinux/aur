@@ -2,12 +2,12 @@
 
 pkgname=libnexus
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="libnexus provides functionality for loading/saving the nexus file format for scientific data"
 url="http://www.nexusformat.org/"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('hdf5')
+depends=('hdf5-cpp-fortran')
 optdepends=('hdf4: hdf4 file format support')
 source=("http://download.nexusformat.org/kits/${pkgver}/nexus-${pkgver}.tar.gz")
 sha1sums=('ed75a442acad8bc14745df42822286fb735ed526')
