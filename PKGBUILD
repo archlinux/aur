@@ -1,7 +1,7 @@
 # Maintainer: Mark Riedesel <mark@klowner.com>
 
 pkgname=yegonesh
-pkgver=20150928
+pkgver=20151102
 pkgrel=1
 pkgdesc="Yeganesh-like dmenu wrapper written in Go"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ source=(
   'https://raw.githubusercontent.com/Klowner/yegonesh/master/main.go'
 )
 sha256sums=(
-  '04669bd83e53b7e5049ab56aec1784c15f5594a2db68b554b059dce03cce2ccc'
+  '5262fbea59aa1fa2cfd06b8642d44ff23586314cced8cb2b30f5cf7804a5f3fb'
 )
 
 build() {
