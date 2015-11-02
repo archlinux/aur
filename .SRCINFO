@@ -1,0 +1,34 @@
+pkgbase = audacity-git
+	pkgdesc = A program that lets you manipulate digital audio waveforms
+	pkgver = wx3.stable.r418.g162392e
+	pkgrel = 1
+	url = http://audacity.sourceforge.net/
+	install = audacity.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = python2
+	makedepends = twolame
+	depends = libmad
+	depends = libid3tag
+	depends = wxgtk
+	depends = lame
+	depends = lilv
+	depends = soundtouch
+	depends = ffmpeg
+	depends = vamp-plugin-sdk
+	depends = sbsms
+	depends = portsmf
+	depends = desktop-file-utils
+	depends = webkitgtk2
+	provides = audacity
+	conflicts = audacity
+	options = !makeflags
+	source = audacity::git+file:///home/proudzhu/workspace/audacity
+	source = audacity-ffmpeg.patch
+	sha1sums = SKIP
+	sha1sums = 5f1733a3802bcec7d9b54cb3ec8d7d81fc38fc61
+
+pkgname = audacity-git
+
