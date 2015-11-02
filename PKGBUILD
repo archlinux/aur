@@ -1,4 +1,4 @@
-# Maintainer: megadriver <mark at unserver dot de>
+# Maintainer: mark <mark at unserver dot de>
 # Creator: megadriver <megadriver at gmx dot com>
 # Inspired by no-gconf from the AUR
 
