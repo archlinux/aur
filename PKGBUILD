@@ -2,12 +2,12 @@
 
 pkgname=bcm20702a1-firmware
 pkgver=1201550
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware for BCM20702A1 based ASUS X99 USB bluetooth devices (0b05:17cf)"
 arch=(any)
 url="http://linuxtv.org/wiki/index.php/Afatech_AF9005"
 license=("Custom")
-makedepends=('hex2hcd')
+makedepends=('bluez-utils')
 source=("http://dlm3cdnet.asus.com/pub/ASUS/misc/BT/Bluetooth_V${pkgver}_Win10.zip")
 sha256sums=('fe1efb02a5779f67ffecce79d44622e7e2795a9b31352e0f490f63bb471a78d1')
 provides=('linux-firmware')
