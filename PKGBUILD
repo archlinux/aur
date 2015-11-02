@@ -26,10 +26,10 @@ source_x86_64=("http://download.xnview.com/XnViewMP-linux-x64.tgz"
         "http://www.xnview.com/beta/XnView-archx64.gz"
         "xnviewmp.desktop")
 md5sums_x86_64=('52bc161bae44ace8391525a0cf4bf668'
-                'e828a9bf168968e21d007da55a0f6825'
+                'SKIP'
                 '24f44d5a881b94daf48775213a57e4ec')
 md5sums_i686=('947e7f3c8d1d63109d8d6a7fb70bfedb'
-              '90bed987c480f08caf91b78eadc7f5e3'
+              'SKIP'
               '24f44d5a881b94daf48775213a57e4ec')
 
 noextract=("http://www.xnview.com/beta/XnView-archx32.gz"

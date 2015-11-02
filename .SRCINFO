@@ -24,13 +24,13 @@ pkgbase = xnviewmp
 	source_x86_64 = http://www.xnview.com/beta/XnView-archx64.gz
 	source_x86_64 = xnviewmp.desktop
 	md5sums_x86_64 = 52bc161bae44ace8391525a0cf4bf668
-	md5sums_x86_64 = e828a9bf168968e21d007da55a0f6825
+	md5sums_x86_64 = SKIP
 	md5sums_x86_64 = 24f44d5a881b94daf48775213a57e4ec
 	source_i686 = http://download.xnview.com/XnViewMP-linux.tgz
 	source_i686 = http://www.xnview.com/beta/XnView-archx32.gz
 	source_i686 = xnviewmp.desktop
 	md5sums_i686 = 947e7f3c8d1d63109d8d6a7fb70bfedb
-	md5sums_i686 = 90bed987c480f08caf91b78eadc7f5e3
+	md5sums_i686 = SKIP
 	md5sums_i686 = 24f44d5a881b94daf48775213a57e4ec
 
 pkgname = xnviewmp
