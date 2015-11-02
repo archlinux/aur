@@ -1,28 +1,25 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=stremio-bin
-pkgver=3.2.2
-_basever=3.2.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Watch instantly all the video content you enjoy in one place."
 arch=('x86_64')
 url="https://strem.io"
+depends=('ffmpeg')
 license=('custom')
 install=stremio.install
-source=("https://strem.io/Stremio${_basever}.linux.tar.gz"
-        "https://strem.io/Stremio${pkgver}.asar.gz"
+source=("https://strem.io/Stremio${pkgver}.linux.tar.gz"
         "https://strem.io/favicon-32x32.png"
         "https://strem.io/favicon-96x96.png"
         "stremio.desktop")
-md5sums=('11981206cd3e4b477c1080ed52585c87'
-         'f75de8e063a860c3691d74f13efe5a35'
+md5sums=('2e7d4da7a8fd1cabd8e7cfd425448af0'
          '17a3ae27d06908138317c3a9b8d03898'
          'e3b38592637449733618d73b45293b09'
          '218fad56add848a58785d68dbfae02ae')
 
 prepare() {
   sed -i "s#\$(dirname \$0)#/usr/share/stremio#" Stremio.sh
-  mv "Stremio${pkgver}.asar" "resources/app.asar"
 }
 
 package() {
