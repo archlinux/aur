@@ -1,7 +1,7 @@
 pkgbase = gelide-git
 	pkgdesc = A front-end for any emulated system (git version)
 	pkgver = 20150620.g10d8aec
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gelide.sourceforge.net/
 	install = gelide-git.install
 	arch = i686

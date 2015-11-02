@@ -5,7 +5,7 @@
 _pkgname=Gelide
 pkgname=gelide-git
 pkgver=20150620.g10d8aec
-pkgrel=1
+pkgrel=2
 pkgdesc="A front-end for any emulated system (git version)"
 arch=('i686' 'x86_64')
 url="http://gelide.sourceforge.net/"
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 build() {
 cd $srcdir/$_pkgname
 ./autogen.sh --prefix=/usr
-make || return 1
+make CPPFLAGS='-std=c++11' || return 1
 }
 package() {
 cd $srcdir/$_pkgname
