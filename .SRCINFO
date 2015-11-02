@@ -1,6 +1,6 @@
 pkgbase = coreboot-utils-git
 	pkgdesc = Tools and utilities to work with Coreboot firmware
-	pkgver = 4.1.r227.gc7ae731
+	pkgver = 4.2.r58.g65eec4d
 	pkgrel = 1
 	url = http://www.coreboot.org/
 	arch = i686
@@ -8,7 +8,15 @@ pkgbase = coreboot-utils-git
 	license = GPL
 	makedepends = git
 	depends = glibc
-	source = git+https://review.coreboot.org/p/coreboot
+	source = git+https://review.coreboot.org/coreboot
+	source = git+https://review.coreboot.org/vboot
+	source = git+https://review.coreboot.org/blobs
+	source = git+https://review.coreboot.org/nvidia-cbootimage
+	source = git+https://review.coreboot.org/arm-trusted-firmware
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = coreboot-utils-git
