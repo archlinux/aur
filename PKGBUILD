@@ -1,4 +1,5 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
+# Contributor: Mark Weiman <mark dot weiman at markzz dot com>
 
 pkgname=pycharm-professional
 pkgver=5.0.0
@@ -10,10 +11,10 @@ options=('!strip')
 url="http://www.jetbrains.com/pycharm/"
 conflicts=('pycharm' 'pycharm-community')
 provides=('pycharm')
-license=('Commercial')
+license=('custom')
 install=${pkgname}.install
 depends=('java-environment' 'giflib' 'ipython' 'ipython2' 'ttf-font')
-source=(http://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
+source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm-professional.desktop'
         'pycharm-professional.install'
         'pycharm')
@@ -36,9 +37,9 @@ package() {
   mkdir -p $pkgdir/usr/share/{applications,pixmaps}
   mkdir -p $pkgdir/usr/bin/
   install -Dm644 $pkgdir/opt/$pkgname/bin/pycharm.png $pkgdir/usr/share/pixmaps/pycharm.png
-  # lisense
+  # licenses
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-  install -Dm644 $srcdir/pycharm-$_pkgver/license/PyCharm_license.txt $pkgdir/usr/share/licenses/$pkgname/PyCharm_license.txt
+  cp -dr --no-preserve=ownership $srcdir/pycharm-$_pkgver/license $pkgdir/usr/share/licenses/$pkgname
   # exec
   install -Dm755 $startdir/pycharm $pkgdir/usr/bin/
   # app file desktop
