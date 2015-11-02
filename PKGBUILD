@@ -2,7 +2,7 @@
 # Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
 pkgver=s1303
-pkgrel=1
+pkgrel=2
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
 url="http://joewing.net/projects/jwm/"
@@ -24,8 +24,8 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  cp /usr/share/automake-1.15/config.sub .
-  cp /usr/share/automake-1.15/config.guess .
+  /usr/bin/cp -f /usr/share/automake-1.15/config.guess .
+  /usr/bin/cp -f /usr/share/automake-1.15/config.sub   .
   autoreconf
 }
 
