@@ -41,7 +41,7 @@ pkgbase = thunderbird-beta
 	provides = thunderbird=42.0b2
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/42.0b2/source/thunderbird-42.0b2.source.tar.bz2
+	source = https://ftp.mozilla.org/pub/thunderbird/releases/42.0b2/source/thunderbird-42.0b2.source.tar.xz
 	source = mozconfig
 	source = mozconfig-pgo
 	source = thunderbird-beta.desktop

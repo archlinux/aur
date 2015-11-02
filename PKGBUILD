@@ -22,7 +22,7 @@ makedepends=('autoconf2.13' 'mesa' 'python2' 'unzip' 'wireless_tools' 'yasm' 'zi
 provides=("thunderbird=$pkgver")
 install=$pkgname.install
 options=('!emptydirs' '!makeflags')
-source=("https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.bz2"
+source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz"
         'mozconfig'
         'mozconfig-pgo'
         "$pkgname.desktop"
@@ -36,7 +36,7 @@ md5sums=('da2a721107cbf1d9e10a1e2f899aacd9'
          '5a53179d14ae9631b7afe5e4d0fc0b25')
 # RC
 if [[ $_build = ? ]]; then
-  source[0]="https://ftp.mozilla.org/pub/mozilla.org/thunderbird/candidates/$_major-candidates/build$_build/source/thunderbird-$_major.source.tar.bz2"
+  source[0]="https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/source/thunderbird-$_major.source.tar.bz2"
 fi
 
 prepare() {
