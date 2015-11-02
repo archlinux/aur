@@ -1,0 +1,37 @@
+pkgbase = ros-indigo-mavros-extras
+	pkgdesc = ROS - Extra nodes and plugins for MAVROS.
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = http://wiki.ros.org/mavros_extras
+	arch = any
+	license = GPLv3, LGPLv3, BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-mavros
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-cv-bridge
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-mavros-msgs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-urdf
+	makedepends = ros-indigo-visualization-msgs
+	depends = ros-indigo-mavros
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-cv-bridge
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-mavros-msgs
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-urdf
+	depends = ros-indigo-visualization-msgs
+	source = mavros_extras::git+https://github.com/mavlink/mavros-release.git#tag=release/indigo/mavros_extras/0.15.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-mavros-extras
+
