@@ -19,7 +19,7 @@ build() {
 
   autoreconf -i
   ./configure --prefix=/usr
-  make
+  make CXXFLAGS+="-std=c++11"
 }
 
 package() {
