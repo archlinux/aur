@@ -1,0 +1,8 @@
+post_install() {
+	systemd-sysusers readeef.conf
+	systemd-tmpfiles --create readeef.conf
+}
+
+post_upgrade() {
+	systemd-tmpfiles --create readeef.conf
+}

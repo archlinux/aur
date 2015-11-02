@@ -1,0 +1,24 @@
+pkgbase = readeef
+	pkgdesc = Self-hosted feed aggregator
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = readeef.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	backup = etc/readeef/readeef.cfg
+	source = https://github.com/urandom/readeef/archive/1.0.0.tar.gz
+	source = readeef.service
+	source = readeef.cfg
+	source = readeef-user.conf
+	source = readeef-tmpfile.conf
+	md5sums = 8fd5d126d3429d572ba74ee3ff66f562
+	md5sums = c34b33ec0e1b49823ebc90011644fb85
+	md5sums = 90ee66da93df0331b127de5c1bde3d65
+	md5sums = eb803cfce3dfb686ee7bf035db9c60fc
+	md5sums = d3c89d35743e09890928dea50e7facb2
+
+pkgname = readeef
+

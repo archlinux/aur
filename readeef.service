@@ -1,0 +1,12 @@
+[Unit]
+Description=Self-hosted feed aggregator
+After=network.target
+
+[Service]
+User=readeef
+Group=readeef
+ExecStart=/usr/bin/readeef -config /etc/readeef/readeef.cfg
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
