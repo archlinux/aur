@@ -1,7 +1,7 @@
 # Maintainer: Carsten Feuls (DL1CAF) 'Der Techniker' <dl1caf@vfdb.org>
 # Contributer: Amateurfunk Station der Hochschule Niederrhein (DF0FN) <df0fn@hs-niederrhein.de>
 pkgname=('svxlink')
-pkgver="14.08.1"
+pkgver="14.08.2"
 pkgrel=1
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://sourceforge.net/projects/svxlink/"
@@ -9,7 +9,7 @@ license=('GPL')
 source=("https://github.com/sm0svx/${pkgname}/archive/${pkgver}.tar.gz"
 	"svxlink.service"
 	"remotetrx.service")
-sha256sums=('c631c8073d34638d0762bd246e2fa0f315a640a45f10923e6075720bd4245a82'
+sha256sums=('fe420a035cce6a293b1e46dcba98e79a089548bb5d9329a9f79f0e51054f8ce2'
             'adc29c81df1794b62bd47202af388397c886cc86a95fa05b3446b3a93a1b3a7c'
             '41adf7f9863f1ea3013b079e628455a22c29d1b369d174bd19905334c9c31543')
 depends=('alsa-utils' 'alsa-lib' 'libsigc++' 'gsm' 'libgcrypt' 'popt' 'tcl' 'speex' 'opus')
