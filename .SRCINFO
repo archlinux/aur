@@ -1,0 +1,17 @@
+pkgbase = python-adafruit-charlcd-git
+	pkgdesc = Python library for accessing Adafruit character LCDs from a Raspberry Pi or BeagleBone Black.
+	pkgver = r17.97694de
+	pkgrel = 1
+	url = https://github.com/adafruit/Adafruit_Python_CharLCD
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-adafruit-gpio
+	provides = python-adafruit-charlcd
+	conflicts = python-adafruit-charlcd
+	source = python-adafruit-charlcd::git+https://github.com/adafruit/Adafruit_Python_CharLCD.git
+	md5sums = SKIP
+
+pkgname = python-adafruit-charlcd-git
+

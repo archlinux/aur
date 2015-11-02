@@ -1,0 +1,4 @@
+*.xz
+/python-adafruit-charlcd/
+/src/
+/pkg/
