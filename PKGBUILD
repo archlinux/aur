@@ -16,7 +16,7 @@ pkgdesc="Heroes of Newerth is a Real Time Strategy game heavily influcenced by D
 arch=('i686' 'x86_64')
 url="http://www.heroesofnewerth.com/"
 license=('custom:HoN')
-depends=('alsa-lib' 'gconf' 'gtk2'  'nss' 'libxss' 'libjpeg-turbo')
+depends=('alsa-lib' 'gconf' 'gtk2'  'nss' 'libxss' 'libjpeg-turbo' 'cgmanager' 'ncurses5-compat-libs')
 makedepends=('unzip')
 options=(!strip)
 install=hon.install
@@ -47,7 +47,7 @@ Continue?"
 		fi
     fi
     
-    mv HoNClient-${pkgver}-${pkgrel}.sh HoNClient-${pkgver}.sh
+    #mv HoNClient-${pkgver}-${pkgrel}.sh HoNClient-${pkgver}.sh
 
     # Create Destination Directory
     mkdir -p "${pkgdir}/opt/"
