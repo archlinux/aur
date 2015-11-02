@@ -1,7 +1,7 @@
 pkgbase = hon
 	pkgdesc = Heroes of Newerth is a Real Time Strategy game heavily influcenced by DotA
-	pkgver = 3.6.4.1
-	pkgrel = 2
+	pkgver = 3.7.10
+	pkgrel = 1
 	url = http://www.heroesofnewerth.com/
 	install = hon.install
 	arch = i686
@@ -14,14 +14,14 @@ pkgbase = hon
 	depends = nss
 	depends = libxss
 	depends = libjpeg-turbo
-	noextract = HoNClient-3.6.4.1.sh
+	noextract = HoNClient-3.7.10.sh
 	options = !strip
 	source = hon.desktop
 	source = license
-	source = http://dl.heroesofnewerth.com/HoNClient-3.6.4.1-2.sh
+	source = http://dl.heroesofnewerth.com/HoNClient-3.7.10.sh
 	md5sums = 25fb5ab8c49be0f1269c79520ccee789
 	md5sums = dd2c8cd0f5bcafa25cfb583a92e21aec
-	md5sums = 0e802185477b5158877195a3aff8669e
+	md5sums = 7bff09d29b0aca60c93c5604189c47eb
 
 pkgname = hon
 
