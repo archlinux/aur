@@ -1,0 +1,13 @@
+pkgbase = hypercalc
+	pkgdesc = A calculator designed to calculate extremely large numbers without overflowing.
+	pkgver = 20150124
+	pkgrel = 1
+	url = http://mrob.com/pub/perl/hypercalc.html
+	arch = any
+	license = GPL
+	depends = perl
+	source = http://mrob.com/pub/comp/hypercalc/hypercalc.txt
+	sha256sums = 9db69045904a1c2f715b9e2ab78888fdcdf32d33b4cb4683511811edfb9fe89a
+
+pkgname = hypercalc
+
