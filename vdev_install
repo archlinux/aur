@@ -18,8 +18,6 @@ build() {
 	add_symlink /usr/bin/lvs /usr/bin/lvm
 	add_symlink /usr/bin/pvs /usr/bin/lvm
 	
-	#module
-
 	add_module squashfs
 	add_module loop
 	
