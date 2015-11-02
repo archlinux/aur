@@ -1,7 +1,7 @@
 pkgbase = spacefm-dropbox-plugin
 	pkgdesc = Several dropbox options like "puburl to clipboard" or start and stop the daemon.
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IgnorantGuru/spacefm/wiki/plugins
 	arch = any
 	license = GPL

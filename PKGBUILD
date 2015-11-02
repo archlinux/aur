@@ -1,7 +1,7 @@
 # Maintainer: vwugd97 <denis dot meiswinkel at gmail dot com>
 pkgname=spacefm-dropbox-plugin
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Several dropbox options like \"puburl to clipboard\" or start and stop the daemon."
 arch=(any)
 url="https://github.com/IgnorantGuru/spacefm/wiki/plugins"
@@ -15,6 +15,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/spacefm/plugins/Dropbox"
   cd "${pkgdir}/usr/share/spacefm/plugins/Dropbox"
   tar -xf "${srcdir}/Drobox.spacefm-plugin-0.0.9.tar.gz"
+  chmod -R 755 cstm_*
+  chmod 644 cstm_31cfaa37/icon
 }
 
 # vim:set ts=2 sw=2 et:
