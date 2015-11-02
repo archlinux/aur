@@ -1,0 +1,23 @@
+pkgbase = colord-nopolkit
+	pkgdesc = Color daemon widthout polkit
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://www.freedesktop.org/software/colord
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = docbook2x
+	depends = lcms2
+	depends = sqlite3
+	depends = udev
+	provides = colord
+	conflicts = colord
+	options = !libtool
+	source = http://www.freedesktop.org/software/colord/releases/colord-1.0.1.tar.xz
+	sha256sums = 053f028aba6071068064ca7fe949bb3f74fb5ad16af2d7ec5bba10dea00cb785
+
+pkgname = colord-nopolkit
+
