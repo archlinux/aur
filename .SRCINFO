@@ -2,12 +2,13 @@ pkgbase = perl-test-memory-cycle
 	pkgdesc = Verifies code hasn't left circular references
 	pkgver = 1.04
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Test-Memory-Cycle
+	url = https://metacpan.org/release/Test-Memory-Cycle
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl-devel-cycle>=1.07
 	depends = perl-padwalker
+	depends = perl-cgi
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-Memory-Cycle-1.04.tar.gz
 	md5sums = 0c51e09f6bc23676ca0112b1a95e129d
