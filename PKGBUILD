@@ -10,8 +10,8 @@
 PKGEXT=.pkg.tar
 
 pkgname=hon
-pkgver=3.6.4.1
-pkgrel=2
+pkgver=3.7.10
+pkgrel=1
 pkgdesc="Heroes of Newerth is a Real Time Strategy game heavily influcenced by DotA"
 arch=('i686' 'x86_64')
 url="http://www.heroesofnewerth.com/"
@@ -20,11 +20,11 @@ depends=('alsa-lib' 'gconf' 'gtk2'  'nss' 'libxss' 'libjpeg-turbo')
 makedepends=('unzip')
 options=(!strip)
 install=hon.install
-source=('hon.desktop' 'license' "http://dl.heroesofnewerth.com/HoNClient-${pkgver}-${pkgrel}.sh")
+source=('hon.desktop' 'license' "http://dl.heroesofnewerth.com/HoNClient-${pkgver}.sh")
 noextract=("HoNClient-${pkgver}.sh")
 md5sums=('25fb5ab8c49be0f1269c79520ccee789'
          'dd2c8cd0f5bcafa25cfb583a92e21aec'
-         '0e802185477b5158877195a3aff8669e')
+         '7bff09d29b0aca60c93c5604189c47eb')
 
 package() {
     ## Thx to messo8080 for reminding us about the /tmp dir,
