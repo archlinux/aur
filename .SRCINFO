@@ -1,7 +1,7 @@
 pkgbase = cloudruby-git
 	pkgdesc = Ncurses player for Soundcloud tracks in Ruby
 	pkgver = 24.8082314
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kulpae/cloudruby
 	arch = any
 	license = custom
