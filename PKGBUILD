@@ -1,6 +1,6 @@
 pkgname=terasology
-pkgver=59
-_omega_ver=16
+pkgver=61
+_omega_ver=17
 pkgrel=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft!"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ source=(
 )
 sha512sums=('f94c1ac3d85e4fb91cc47056eeec3648d02be9090252401acb740af8c0580623c7ee57470d9e7317d6b577d613e317b5c16ec014f232ec68bc755e0eba7a975e'
             '737953ab10027100b6bd03ca60a3f1cd4fff503c4c5a1689b3e12ef8df66a3e3347c99d498e48dccc3be8d00e9e37fcab56d5c97bbb81dd310ce757979aa0276'
-            '4e06012380e0d98df1f17eee623a4d956f0a7ac12cfc5f1af28470ee2faa671238b5c256e115670a2a7a524ba3563d2d8064e3018e0b56b14445f85fa16faff6')
+            'aff0cb0be80009333d2f03b031dbfd3cdfc5e3fab669b018d7e24ce1b3a0cea3ec2548319cda81ecfe1881e2bc18b5213724c03ebf2091f56f22e0f5192709e0')
 
 package() {
     cd "$srcdir"
