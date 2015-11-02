@@ -1,6 +1,6 @@
 pkgbase = keepass-plugin-keeagent-beta
 	pkgdesc = SSH Agent Plugin for KeePass - Beta Version
-	pkgver = 0.7.8
+	pkgver = 0.7.9
 	pkgrel = 1
 	url = http://lechnology.com/software/keeagent/
 	install = keepass-plugin-keeagent-beta.install
@@ -11,9 +11,9 @@ pkgbase = keepass-plugin-keeagent-beta
 	optdepends = gnupg: For integration with GnuPG SSH agent
 	provides = keepass-plugin-keeagent-beta
 	conflicts = keepass-plugin-keeagent
-	source = http://lechnology.com/wp-content/uploads/2015/10/KeeAgent_Beta_v0.7.8.zip
+	source = http://lechnology.com/wp-content/uploads/2015/11/KeeAgent_Beta_v0.7.9.zip
 	source = keepass-plugin-keeagent-beta.install
-	sha512sums = 527c76de28a4d854cf352476f25ad41134866b1ec5f1e5352f5f76d4af983323ed612071a5b86932e975bb3172c13d28d5a8c63163496461f54fd6164e23b1ac
+	sha512sums = 28279dfadfd055589828a7f3f9aea78ce6389772486b12661bb0f5217ce36cb34914506cd96d67bd4b170e4a149545eafaa2481fe083bef75bf79ea772cbd158
 	sha512sums = af3e0d450c82053f6564dee90f0c3a4f7f06fec1bc4061a6eb4811cc0f5ce764635529aea8501e71f8ca7b3f08d01d9c791975a22bc737def3517232d1efd92a
 
 pkgname = keepass-plugin-keeagent-beta
