@@ -1,0 +1,14 @@
+pkgbase = python-pyautogui
+	pkgdesc = A cross-platform GUI automation Python module for human beings
+	pkgver = 0.9.31
+	pkgrel = 1
+	url = https://github.com/asweigart/pyautogui
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-xlib
+	source = https://pypi.python.org/packages/source/P/PyAutoGUI/PyAutoGUI-0.9.31.zip
+	md5sums = ae5c9468911863bd9d174642abd5bc18
+
+pkgname = python-pyautogui
+
