@@ -6,7 +6,7 @@
 pkgname=flexget-git
 _pkgname=Flexget
 pkgver=1.2.380.r6643.4da9fd2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -55,6 +55,9 @@ optdepends=('python2-guppy: for memusage plugin' #AUR#
             )
 makedepends=('python2-paver'
              'python2-setuptools'
+             'npm'
+             'bower'
+             'gulp'
              )
 
 provides=('flexget')
@@ -80,6 +83,13 @@ prepare() {
   msg "Patching shebangs to point to python2"
   sed -i 's/\(python\)/\12/' flexget{,/ui}/__init__.py
   python2 ./gen-changelog.py
+}
+
+build() {
+  cd "${_pkgname}"/flexget/ui
+  npm install
+  XDG_CONFIG_HOME="${_srcdir}" bower --config.analytics=false install
+  XDG_CONFIG_HOME="${_srcdir}" gulp
 }
 
 package() {
