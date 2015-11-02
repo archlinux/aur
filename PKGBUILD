@@ -2,13 +2,13 @@
 
 _pkgname=lxqt-config
 pkgname=$_pkgname-git
-pkgver=0.9.0.66.gfc07877
+pkgver=0.9.0.93.gb8a6f3a
 pkgrel=1
 pkgdesc="LXQt system configuration."
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("liblxqt-git" "libxcursor" "qt5-svg")
+depends=("liblxqt-git" "libkscreen" "libxcursor" "qt5-svg")
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
