@@ -1,0 +1,411 @@
+17/09/15 - MMM
+- Main changes since 3.0
+  * Relaxed the test for HALFDUPLEX flows to be less strict on out-of-order SYN/SYNACKs
+  * Added configure option --enable-rrdthread for compile with RRD_THREADED defined without
+    having to edit tstat/Makefile.conf
+
+30/05/14 - MMM
+- Main changes since 2.4
+  * Changed the log file organization:
+    - Modular structure controlled by runtime.conf 
+    - Merged log_video_complete and log_streaming_complete in a single
+      log_video_complete file, sharing modules from log_tcp_complete
+  * Included YouTube SSL connections in log_video_complete
+  * Added -Y option for CryptoPAN-based encryption for specific sets of addresses
+  * Added options to provide a CryptoPAn key
+  * Added NDS File Format/Cisco Videoscape (used by Sky+ boxes for VOD) video 
+    classification
+  * Implemented the CryptoPAn key storage as a LRU cache. Size controlled in param.h
+  * Disabled most old and obsolete P2P protocols in the DPI. Can be enabled defining
+    P2P_OLDPROTO in Makefile.conf
+  * Added -W option to exclude (whitelist) addresses from the -Y encryption procedure
+  * Bugfix: added HTTP response code sanity check
+  * Added indicator of truncated URL, Referer and UA fields in log_http_complete
+  * Included features from the DPDK/libtstat branch:
+    - Changed the flow garbage collection timing to improve performace at high speed
+    - Conditional compilation (via RRD_THREADED) to have the RRD writing on a separate thread
+      (currently only working on Debian 7.x)
+  * Configurability revolution:
+    - Global constants defined at compilation time in param.h can now be modified at runtime 
+      before Tstat starts
+    - Added -G option to provide a file with new values for the global constants
+    - Updated the internal workings of ini_reader to support both integer and floating point
+      values
+  * Reworked QUIC classification (from Pure DPI to FSM DPI)
+  * Substituted simplistic SPDY identification with specific NPN/ALPN identification
+  * Added -0 option to enable the strict(er) privacy mode
+  * Removed -p option and thread usage, since it was buggy and never used in production
+
+09/03/12 - MMM
+- Main changes since 2.3:
+  * Defined new RRD/histos for RTT and overall throughtput of 'cloud' 
+    connections
+  * Changed resolution for RTT and overall throughput histos
+  * Added HLS (HTTP LiveStreaming) video classification
+  * Bugfix: problems in video payload classification
+  * Updated YouTube classification, with changes to the mobile/nomobile logic
+  * Added sanity check to SSL client request subject
+  * Updated FLV metadata parsing, to cope with YouTube reduced FLV header  
+  * Changed the name format for log directories to a sortable one (at last!)
+  * Updated Facebook and Vimeo classification
+  * Updated RTMP to include Hulu traffic
+  * Added -M option to distinguish internal/external traffic by the MAC address
+  * Added feature to dump TCP traffic based on Conn_Type
+  * Added classification of UDP SIP flows
+  * Updated classification of UDP BitTorrent DHT flows
+  * Added feature to dump UDP BitTorrent uTP flows
+  * Fixed code to detect missing packets using the sequence numbers
+  * Bugfix: dumped packets were wrongly terminated by a NULL \0 character
+  * Added RRD to profile missed TCP traffic (from sequence numbers) 
+  * Added command-line option to activate IP obfuscation
+  * Added support for the new 46-char YouTube IDs
+  * Bugfix: RST packets were not dumped
+  * Improved identification of YouTube HLS and live streams
+  * Changed YouTube log_video_complete mobile info to mobile/streaming classification
+  * Added log_http_complete to log/dump the HTTP requests (enabled via runtime.conf)
+  * Fixed compilation problem for CentOS 6.4 (64-bit)
+  * Changed default behavior of log_http_complete to limit the exposed information
+  * Added support for compilation in Android environment (thanks to Giorgos Dimopoulos) 
+  * Added support for MultiPath TCP statistics
+  * Updated Vimeo classification
+  * Added Adobe Dynamic Streaming classification (as MP4)
+  * Fixed issue with the video Content-Type identification
+
+17/10/11 - MMM
+- Main changes since 2.2:
+  * Additional packet-level statistics (PACKET_STATS)
+  * Added support for CISCO RAW HDLC
+  * Dump optionally limited to the first few packets in each TCP/UDP flow
+  * Added UDP MPEG2 PES classification
+  * Expanded the capability of logging also external traffic (LOG_UNKNOWN)
+  * Changed log_tcp_(no)complete format to register if the server is
+    internal/external
+  * Bugfix: solved problem when specific addresses were used as internal 
+    networks
+  * Added UDP PPStream (Chinese IP-TV) classification
+  * Added Teredo (IPv6 over UDP, mostly used by uTorrent) classification
+  * Bugfix: solved problem with ip_len histograms and RRDs
+  * Added detailed video classification (log_streaming_complete and video RRDs/
+    histograms)
+  * Updated Skype engine to cope with unidirectional flows
+  * Added SSL server name logging
+  * Added dump of captured video streams
+  * Bugfix: configure.ac modified to cope with recent Debian/Ubuntu architecture
+  * Updated a few HTML classification rules (Facebook, Google Maps)
+  * Bugfix: (sort of) increased some array sizes to manage longer pathnames
+  * Improved classification for Mobile YouTube flows
+  * Added classification for Twitter and Dropbox unencrypted traffic
+
+26/05/10 - MMM 
+- Main changes since 2.1:
+  * Modified IPv6 behavior: all traffic is internal if no network is defined
+    (to mirror IPv4 default behavior)
+  * New feature: direct generation of compressed (.gz) logs and dumps
+  * buxfix: Vimeo classification was broken
+  * Added explicit Bittorrent uTP classification 
+  * Changed RRD type 16 from Kazaa to uTP, and assigned unused RRD type 35 to
+    Kazaa
+  * YouTube characterization (experimental): video ID, size and duration
+  * Updated Rapidshare and FaceBook classification 
+  * YouTube characterization (experimental): differentiation of different 
+    components in video download, tracking of redirections
+  * New feature: separate identification and statistics (RDD/Histograms)
+    for traffic to/from a specific range of addresses ("cloud"). Activated
+    with the new -C command line option. Currently not exposed in the log files.
+  * New log_video_complete file. Most of the collected data for video flows
+    moved from the log_tcp_complete file to the new log_video_complete file to
+    reduce cluttering
+  * Improved YouTube identification and classification, with multiple categories
+    both for video and for site connections
+  * Removed Google Video identification: Google Videos are now classified as 
+    YouTube
+  * New "Video Content" category, for content-identified FLV and MP4 files. 
+    It reuses the GoogleVideo ID. 
+  * YouTube characterization (experimental): all metadata information from
+    FLV file header is collected.
+  * (Re)Introduced absolute flows times in tcp and udp logs.
+  * Improved (and relaxed) RTMP identification
+  * Added the -E command line option to declare a user-defined snaplen
+  * Changed the YouTube seek information to report the real required offset
+  
+23/10/09 -MMM & Finamore
+- Main changes from 2.0 to 2.1:
+  * Libtstat: Changed the API for tstat_next_pckt()
+  * added snap_len option in dump engine and fixed bug in skype runtime engine
+  * added ip_complete option in dump engine to straightforward dump traces at 
+    level 3
+  * added slice_win option in dump engine to control the slicing of the traffic
+    in traces
+  * added TODO
+  * updated ChangeLog and NEWS.in
+  * bugfix: corrected use of RUNTIME_CONFIG_IDLE and removed skype debug 
+    message
+  * bugfix in stderr/stdout redirection
+  * bugfix: segmentation fault executing tstat without parameters
+  * bugfix: segmentation fault using tstat.conf
+  * tstat now execute even if no trace file is specified
+  * changed format of print histograms using -H? option
+  * New format for the file containing the internal networks
+  * update tstat-conf subnet files to the new file format
+  * SSL Handshake (Client/Server Hello) identification
+  * Better IMAP4 matching
+  * Adapted DirectConnect matching for partial packets
+  * Added MySQL scripts
+  * Obfuscated eMule/ED2K/KAD support
+  * eMule 0.49b new opcodes added
+  * Code for removal of duplicate TCP packets
+  * Do not include duplicate datagrams in IP Histograms/RRDs
+  * Minor IPv6 compatibility update
+  * Bugfix: nocomplete flows were considered as UNKNOWN L7 flows in histograms
+  * Change: in histograms, count unanswered UDP flows only in C2S direction, 
+    not both
+  * Use snprintf() to reduce problems with random stack overflows
+  * Bug: wrong stop time in log.txt due to ctime() called twice in a row
+  * Several MSN Chat bugfixes and paranoic string size checking
+  * Added support for MPLS over ETH and MPLS over VLAN
+  * Optional early closure for singleton TCP/UDP flows (SYN or UDP flooding)
+  * SSH 2.0/1.99 Handshake identification
+  * DNS identification
+  * Change: ADX histogram includes only external addresses (if existing, 
+    i.e. -N defined)
+  * ADX histogram: added 'adx_mask <size>' option to histogram configuration
+  * Change: dynamic allocation of Skype/Bayes data structures to reduce 
+    memory footprint when Skype identification is not active
+  * Added HTTP flow content identification, based on the shallow matching of 
+    the URL path
+  * RTMP (Adobe Flash Streaming Protocol) identification
+  * Added RRD/histograms to profile Tstat concurrent flows and CPU usage
+  * Added identification of private Bittorrent trackers
+  * Added identification of encrypted Bittorrent traffic (MSE/PE protocol)
+
+19/10/08 -Finamore
+-Restarting point for Tstat because a lot of changes/adds has been made
+
+19/7/07 -RB
+-Corrected a bug on the number of packets lost for RTP flows smaller then WINDOW_SIZE packets
+
+7/7/06 -RB
+-Added check for UDP packets duplicated (by Marco)
+
+6/7/06 -RB
+-Added decode for RTCP: reciever reports and sender reports.
+-Added histograms:
+	rtcp_cl_b - RTCP flow length [bytes]
+	rtcp_mm_cl_b - associated MM flow length [bytes]
+	rtcp_mm_cl_p - associated MM flow length [packets]
+	rtcp_mm_bt - associated MM flow bitrate (sampled at each sender report)
+	rtcp_bt	- RTCP flow bitrate [Kbit/s]
+	rtcp_jitter - associated MM flow jitter (sampled at each reciever report)
+	rtcp_rtt - associated MM flow RTT (sampled at each reciever report)
+	rtcp_lost - associated MM flow lost packets per interval (sampled at each receiver report)
+	rtcp_f_lost - associated MM flow fraction of lost packets per interval (sampled at each receiver report)
+	rtcp_t_lost - associated MM flow total number of packets lost 
+-New format for log_mm_complete
+	COMMON METRICS
+	-------------------------------------------------------------
+	01 Type
+	02 Protocol
+	03 Source IP address
+	04 Source port
+	05 Destination IP address
+	06 Destination port
+	07 Packet number
+	08 Average inter packet gap
+	09 Average jitter
+	10 Max jitter
+	11 Min jitter
+	12 Internal source
+	13 Internal Destination
+	14 Average TTL
+	15 Max TTL
+	16 Min TTL
+	17 Flow start [s]
+	18 Flow duration [s] 
+	19 Data amount
+	20 Average bitrate [b/s]
+The following colons depend on the flow type:
+	RTP METRICS
+	-------------------------------------------------------------
+	21 Ssrc (Source identifier)
+	22 Lost packets
+	23 Out of sequence packets
+	24 Duplicated packets
+	25 Late packets
+	26 Payload type
+
+	RTCP
+	-------------------------------------------------------------
+	21 Ssrc (source identifier)
+	22 Lost packets
+	23 Associated MM flow length [packets]
+	24 Associated MM flow length [bytes]
+	25 Average RTT
+	26 Max RTT
+	27 Min RTT
+	28 RTT samples
+	
+	TCP
+	-------------------------------------------------------------
+	21 First HTTP packet
+	22 First RTSP packet
+	23 Out of sequence packets
+	24 Duplicated packets
+	25 Average RTT
+	26 Max RTT
+	27 Min RTT
+	28 RTT samples
+	29 RTT variance
+	30 Average RTT
+	31 Max RTT
+	32 Min RTT
+	33 RTT samples
+	34 RTT variance
+	35 First RTP packet
+	36 First ICY packet
+
+4/7/06 - RB
+-Better identifican of RTCP flows using a check on SSRC
+-Corrected a bug on the disabling of GLOBAL histo
+
+29/6/06 - RB
+-Added -g option for global histograms
+
+9/6/06 - RB
+-Changed ParseArg(): now it uses getopt_long() for parsing (tstat.c)
+TODO: need to check the -dag option
+-Changed strkmp() in strstr() (tcptype.c)
+
+5/5/06 - RB - MGM
+-Corrected bug that reallocate 'basename' on every call of create_new_outfiles()
+-Corrected dump in bitrate if tstat is killed using <ctrl>+C or 
+the trace is completed
+
+4/5/06 - RB
+-Corrected bug about the overflow of the bitrate. It use unsigned long long int 
+to count bytes in delta T
+
+3/5/06 - MGM RB
+-Corrected bug about bitrate statistics caused by thread
+-Corrected bug in proto_register(): the internal list was not created correctly
+-Corrected bug about computing of ip_bitrate 
+
+1/5/06 - MGM
+-Corrected bugs for x86_64 architectures:
+  MemCpy_OPTIMIZED
+  cast (unsigned) in cast (unsigned long)
+-Moved functions to manage timeval from tstat.c to output.c
+
+28/4/06 - MGM DR
+-Corrected definition of histograms accordinly with the RRDTOOL limit of 19 chars
+-Added -L option to disable log engine
+-Corrected a bug about -S option
+
+19/4/06 - MGM
+-Corrected bug that didn't allow to see statistics in live mode:
+moved call to cleanup() outside if...
+
+13/4/06 - MGM
+-Corrected Makefile.in to add dependecies on new modules
+-Added an embryo of Skype module (skype.c skype.h) with a 
+
+23/3/06 - MGM
+-Changed tcpdump.c to allow to capture even from unconfigured interfaces
+(eliminated pcap_lookup_net() to have the mask that is never used...)
+
+
+22/3/06 - MGM
+-Added again the check on the maximum number of segments that a flow
+trace to avoid problems with the collapsing systema that fails
+when in a trace misses some segments (for example, drops from a probe).
+
+
+8/3/06 - MGM
+-Corrected a bug about "MAX_SEG_PERQUAD" that causes problems with 
+the muscariello's euristic
+-Corrected collapse_quad() to keep track of muscariello's euristic when the
+first segment collapse
+-Added euristic to control the effect to have 100% of duplicates in addsed()
+-Eliminated flows not full-duplex from trace.c 
+(if see SYN but not SYN+ACK and DATA the flow is assumed half duplex 
+and immediately closed)
+
+
+1.3.1   --      XXX
+Features (Topix):
+	* Added ttl measuremnts for udp connections.
+	* Added average ttl measurements for both UDP and TCP.
+	* Added average inter packet gap time for TCP.
+	* Added jitter computation for TCP.
+	* New log_rtp file format:
+	Type
+	Protocol
+	Source IP address
+	Source port
+	Destination IP address
+	Destination port
+	Packet number
+	Average inter packet gap
+	Average Jitter
+	Out of sequence
+	Duplicate
+	Internal source
+	Internal destination
+	TTL min
+	TTL max
+	TTL average
+	Duration 
+	Data amount
+	Bitrate [b/s]
+	SSRC (no TCP)
+	Late (no TCP)
+	Lost (no TCP)
+	server_RTT avg (no UDP)
+	server_RTT min (no UDP)
+	server_RTT max (no UDP)
+	server_RTT standard deviation (no UDP)
+	server_RTT count (no UDP)
+	client_RTT avg (no UDP)
+	client_RTT min (no UDP)
+	client_RTT max (no UDP)
+	client_RTT standard deviation (no UDP)
+	client_RTT count (no UDP)
+	Relative time when HTTP flow recognized (no UDP)
+	Relative time when RTSP flow recognized (no UDP)
+	Relative time when RTP flow recognized (no UDP)
+	Relative time when ICY flow recognized (no UDP)
+	
+Bugs:
+	* Corrected a bug in the unique bytes computation
+	
+
+1.2.0	--	Fri Oct 21 18:02:30 CEST 2005
+
+
+Features:
+	* ERF format can now be processed in two different _files con file compressi()
+	* added optimized MemCpy function 
+	* added support for DPMI (dpmi.conf)
+	* RRD: in the case where only rrd output is generated (pure_rrd_engine==TRUE) 
+	  from a trace (live_flag==FALSE),  updates will be performed at a higher rate, 
+	  i.e., every MIN_TIME_STEP (5sec) rather than MAX_TIME_STEP (5min)
+
+Bugs:
+	* fixating memory leak in rrd module
+	* using optimal parameter in Makefile.in
+	* used (udp|tcp)_flow_stat notation
+	* #ifdef INTERNAL_WIRED -> if(internal_wired)
+	* TCP flows closed by timeout will be recorded on the correct log_tcp_(no)complete
+ 	-----------------Topix-----------------------------------
+	* Corrected a small bug that you couldn't compile correctly if RRD was missing
+
+TODO:
+	* complete, test and migrate to hyper_histo 
+	* update HOWTO (correct ``val:'' keyword in rrd section) 
+	* ctrunc++ (tcptrunc, udptrunc, opttrunc)
+
+TOPIX:
+	* Added FindConType which tries to guess if the tcp connection uses HTTP, RTSP and/or RTP
+	* Added to the internal statistics a counter for tunneled RTP connections
+	* Added a 97th coloun in the log files specifying the connection type see tcptype.h for details about the meaning
+	* Modified: tcp_pair *tcp_flow_stat (struct ip *, struct tcphdr *ptcp, void *plast) -> tcp_pair *tcp_flow_stat (struct ip *, struct tcphdr *ptcp, void *plast,int *dir)
+	  to be able to export the dir variable.

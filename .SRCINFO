@@ -1,0 +1,19 @@
+pkgbase = tstat-svn
+	pkgdesc = TCP STatistic and Analysis Tool
+	pkgver = 775
+	pkgrel = 1
+	url = http://tstat.polito.it/
+	changelog = tstat-svn.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = automake
+	makedepends = libpcap
+	depends = libgcrypt
+	depends = libcap
+	depends = libpcap
+	options = !emptydirs
+
+pkgname = tstat-svn
+
