@@ -7,7 +7,7 @@ arch=('x86_64')
 url=""
 license=('GPL')
 groups=()
-depends=('python>=3.0')
+depends=('python>=3.0' 'tox')
 makedepends=('python-pip')
 provides=()
 conflicts=()
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=('https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B4YjcQAoes55MTJ5Z0xGNWNMdEU')
-md5sums=('4514dc64b5aa04fd68cdf2135ab82920')
+md5sums=('1437b8f84b708dd0653e15e962fc40b3')
 
 package() {
   echo "Installing VK API"
