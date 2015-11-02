@@ -4,50 +4,55 @@ pkgdesc="ROS - MAVROS -- MAVLink extendable communication node for ROS with prox
 url='http://wiki.ros.org/mavros'
 
 pkgname='ros-indigo-mavros'
-pkgver='0.11.1'
+pkgver='0.15.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(ros-indigo-libmavconn
+  ros-indigo-tf2-ros
   ros-indigo-diagnostic-updater
   ros-indigo-roscpp
   ros-indigo-geometry-msgs
   ros-indigo-std-msgs
-  ros-indigo-catkin
-  ros-indigo-rospy
+  ros-indigo-angles
   ros-indigo-diagnostic-msgs
   ros-indigo-std-srvs
-  ros-indigo-message-generation
   ros-indigo-rosconsole-bridge
+  ros-indigo-mavros-msgs
   ros-indigo-sensor-msgs
-  ros-indigo-angles
+  ros-indigo-cmake-modules
   ros-indigo-mavlink
-  ros-indigo-tf
+  ros-indigo-catkin
+  ros-indigo-eigen-conversions
+  ros-indigo-nav-msgs
   ros-indigo-pluginlib)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost)
+  boost
+  eigen3)
 
 ros_depends=(ros-indigo-libmavconn
+  ros-indigo-tf2-ros
   ros-indigo-diagnostic-updater
   ros-indigo-roscpp
   ros-indigo-geometry-msgs
   ros-indigo-std-msgs
+  ros-indigo-message-runtime
   ros-indigo-rospy
   ros-indigo-diagnostic-msgs
   ros-indigo-std-srvs
-  ros-indigo-message-generation
   ros-indigo-rosconsole-bridge
+  ros-indigo-mavros-msgs
   ros-indigo-sensor-msgs
-  ros-indigo-angles
   ros-indigo-mavlink
-  ros-indigo-tf
+  ros-indigo-eigen-conversions
+  ros-indigo-nav-msgs
   ros-indigo-pluginlib)
 depends=(${ros_depends[@]}
   boost
-  python2)
+  eigen3)
 
 _tag=release/indigo/mavros/${pkgver}-${_pkgver_patch}
 _dir=mavros
