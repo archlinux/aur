@@ -1,8 +1,8 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=flac2all
-pkgver=3.71
-pkgrel=5
+pkgver=2.73
+pkgrel=1
 pkgdesc="Multi-threaded audio converter of FLAC to either Ogg Vorbis or MP3 retaining all tags and metadata."
 arch=('any')
 url="https://github.com/ZivaVatra/flac2all"
@@ -14,8 +14,8 @@ optdepends=('lame: for mp3 support'
 'opus-tools: for opus support')
 
 # graysky is temp hosting on his github until Ziva tags his releases
-source=("https://github.com/graysky2/flac2all/archive/v$pkgver.tar.gz")
-sha256sums=('57026366350d1d399895611e6b30a3f2e15856afc03981a175cdab4b0e37c07b')
+source=("https://github.com/ZivaVatra/flac2all/archive/v$pkgver.tar.gz")
+sha256sums=('11a44717e9dad781e27434c4182a28d1a3c9a6f661bfad4d9168457370797286')
 
 package() {
 	cd "$pkgname-$pkgver"
