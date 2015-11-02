@@ -4,7 +4,7 @@ pkgdesc="ROS - MAVLink communication library."
 url='http://wiki.ros.org/mavros'
 
 pkgname='ros-indigo-libmavconn'
-pkgver='0.11.1'
+pkgver='0.15.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

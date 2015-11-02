@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-libmavconn
 	pkgdesc = ROS - MAVLink communication library.
-	pkgver = 0.11.1
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = http://wiki.ros.org/mavros
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-libmavconn
 	depends = ros-indigo-mavlink
 	depends = boost
 	depends = console-bridge
-	source = libmavconn::git+https://github.com/mavlink/mavros-release.git#tag=release/indigo/libmavconn/0.11.1-0
+	source = libmavconn::git+https://github.com/mavlink/mavros-release.git#tag=release/indigo/libmavconn/0.15.0-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-libmavconn
