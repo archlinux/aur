@@ -1,15 +1,15 @@
 pkgbase = spin
 	pkgdesc = Tool for the formal verification of distributed software systems.
 	pkgver = 6.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://spinroot.com/
 	arch = i686
 	arch = x86_64
 	license = custom:SPIN
 	depends = glibc
-	source = http://spinroot.com/spin/Src/src644.tar.gz
+	source = http://spinroot.com/spin/Src/spin644.tar.gz
 	source = LICENSE.txt
-	sha512sums = d40fe053775d8a8a599fdbc572c1eb03a3ca78f9f443b75c6ea910f3c0183f02393b09c1d2da1eb8798b5b81b4bc752a7a4f456b852a8f5055847ff720b78caf
+	sha512sums = cd16613e6bde57dd968a126b9159e28a44ad5698dd20d9b2b542c6be9b79cbfbbc0b6b3c5dfcf3aac11dfa244ad95583fe914899dde3cf685bc6e1fdcd058cea
 	sha512sums = a5b63fc7136a2631c9a27619953abe2e9d6cab179042dd56bb76afbffe1966ad7edb41a131af5d6663f3cdbf77128833232e9174c0ef817b8522bfd978add595
 
 pkgname = spin
