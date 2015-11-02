@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/asweigart/pyautogui"
 license=('BSD')
 makedepends=('python-setuptools')
-depends=('python-xlib')
+depends=('python-xlib' 'python-pillow')
 source=(https://pypi.python.org/packages/source/P/PyAutoGUI/PyAutoGUI-${pkgver}.zip)
 md5sums=('ae5c9468911863bd9d174642abd5bc18')
 

@@ -7,6 +7,7 @@ pkgbase = python-pyautogui
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-xlib
+	depends = python-pillow
 	source = https://pypi.python.org/packages/source/P/PyAutoGUI/PyAutoGUI-0.9.31.zip
 	md5sums = ae5c9468911863bd9d174642abd5bc18
 
