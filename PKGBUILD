@@ -4,15 +4,15 @@
 
 pkgname=funny-manpages
 pkgver=1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A set of miscellaneous humorous manpages (don't take them too seriously!)."
 arch=('any')
 url="http://debian.org/"
 license=('custom')
 source=(http://ftp.debian.org/debian/pool/main/f/$pkgname/${pkgname}_$pkgver.orig.tar.gz
         http://ftp.debian.org/debian/pool/main/f/$pkgname/${pkgname}_$pkgver-5.diff.gz)
-md5sums=('bed1deef82218d42fb230a2176a11ed4'
-         'd7bccce54fb400de443fe6ff15bba940')
+sha256sums=('5dcfcbb30a26585b53f27dc591b7e9cd485f738e603fa3fc9f074c55eabb6f91'
+            'aea8369726213a8294f70c0d0b1637b2cf961d6208ad52fa97daf105e9452a53')
 
 build() {
     # Apply the patch
