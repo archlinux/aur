@@ -6,7 +6,7 @@ pkgname=webstorm
 _pkgname=WebStorm
 pkgver=11.0.0
 _pkgver=143.381.46
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaScript IDE and HTML editor."
 arch=('x86_64' 'i686')
 options=('!strip')
@@ -27,15 +27,6 @@ package() {
   install -d -m 755 ${pkgdir}/usr/share/pixmaps/
 
   cp -a ${srcdir}/${_pkgname}-${_pkgver} $pkgdir/opt/${pkgname}
-
-  if [[ $CARCH = 'i686' ]]; then
-     rm -f ${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so
-     rm -f ${pkgdir}/opt/${pkgname}/bin/fsnotifier64
-  fi
-  if [[ $CARCH = 'x86_64' ]]; then
-     rm -f ${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so
-     rm -f ${pkgdir}/opt/${pkgname}/bin/fsnotifier
-  fi
 
   ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/
