@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tegrarcm
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='Tegra ReCovery Mode tool; communicates with Tegra boot ROM to download code over USB'
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/NVIDIA/tegrarcm'
 license=(custom)
 depends=(crypto++ libusb)
 source=(tegrarcm-$pkgver.zip::https://github.com/NVIDIA/tegrarcm/archive/v$pkgver.zip)
-sha1sums=('7b87d05a19b841693e198444a962dd9476b9a7df')
+sha1sums=('6974155ae41fff352fb8674a28cfe2cebba4730b')
 
 build() {
   cd tegrarcm-$pkgver
