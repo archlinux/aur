@@ -1,12 +1,3 @@
 post_install() {
-  git lfs init
+  msg "Don't forget to run `git lfs init` for your user"
 }
-
-#post_upgrade() {
-#  post_install
-#}
-#
-#post_remove() {
-#  post_install
-#}
-
