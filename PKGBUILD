@@ -26,17 +26,17 @@ pkgver() {
 
 package() {
   install -dm755 "${pkgdir}/usr/share/icons"
-  cd "${srcdir}/wildfire-master/icons/"
+  cd "${srcdir}/${_pkgname}/icons/"
   cp -r * "${pkgdir}/usr/share/icons/";
   find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 '{}' \;
   find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 '{}' \;
   install -dm755 "${pkgdir}/usr/share/backgrounds/gnome/"
-  cd "${srcdir}/wildfire-master/wallpapers/";
+  cd "${srcdir}/${_pkgname}/wallpapers/";
   install -dm755 "${pkgdir}/usr/share/backgrounds/xenlism/";
   cp -r * "${pkgdir}/usr/share/backgrounds/xenlism/";
   find "${pkgdir}/usr/share/backgrounds/xenlism/" -type d -exec chmod 755 '{}' \;
   find "${pkgdir}/usr/share/backgrounds/xenlism/" -type f -exec chmod 644 '{}' \;
-  cd "${srcdir}/wildfire-master/background-properties/";
+  cd "${srcdir}/${_pkgname}/background-properties/";
   install -dm755 "${pkgdir}/usr/share/gnome-background-properties/";
   cp -r * "${pkgdir}/usr/share/gnome-background-properties/";
   find "${pkgdir}/usr/share/gnome-background-properties/" -type d -exec chmod 755 '{}' \;
