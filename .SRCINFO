@@ -1,5 +1,5 @@
 pkgbase = aurtab
-	pkgdesc = AUR tab completion for yaourt using zsh.
+	pkgdesc = AUR tab completion for yaourt and apacman using zsh.
 	pkgver = 1
 	pkgrel = 2
 	url = https://github.com/worzel666/aurtab
