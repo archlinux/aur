@@ -1,6 +1,7 @@
-# Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
-pkgver=s1278.3.g9a33e3a
+pkgver=s1303
 pkgrel=1
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
@@ -12,21 +13,25 @@ provides=('jwm')
 conflicts=('jwm' 'jwm-snapshot' 'jwm-flashfixed' 'jwm-snapshot-lite')
 depends=('fribidi' 'librsvg'  'libxinerama' 'libxmu' 'libxext' 'libpng' 'libx11' 'libxft' 'libjpeg>=7' 'libxpm')
 makedepends=('git')
-source=('git://github.com/joewing/jwm.git')
+source=("$pkgname::git+https://github.com/joewing/jwm.git")
 md5sums=('SKIP') 
-_gitname=jwm
 
 pkgver() {
-  cd $_gitname
+  cd $pkgname
   # Use the tag of the last commit
   git describe --always | sed 's|-|.|g'
 }
 
+prepare() {
+  cd $pkgname
+  cp /usr/share/automake-1.15/config.sub .
+  cp /usr/share/automake-1.15/config.guess .
+  autoreconf
+}
 
 build() {
-  cd "$srcdir/$_gitname/"
-  autoreconf 
-  ./configure prefix=/usr --sysconfdir=/etc 
+  cd $pkgname
+  ./configure --prefix=/usr --sysconfdir=/etc 
   # --disable-icons         disable icon support
   #--disable-png           disable PNG images
   #--disable-cairo         disable Cairo support
@@ -40,10 +45,10 @@ build() {
   #--disable-xmu           disable Xmu support
   #--disable-xinerama      disable Xinerama support
   #--disable-nls           do not use Native Language Support
-  make
+  make V=0
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd $pkgname
   make DESTDIR="$pkgdir/" install
 }
