@@ -1,6 +1,6 @@
 # Maintainer: Steven Hiscocks <steven[at]hiscocks[dot]me[dot]uk>
 pkgname=milter-greylist
-pkgver=4.5.15
+pkgver=4.5.16
 pkgrel=1
 pkgdesc="milter-greylist is a stand-alone milter written in C that implements the greylist filtering method."
 url="http://hcpnet.free.fr/milter-greylist/"
@@ -12,7 +12,7 @@ backup=('etc/mail/greylist.conf')
 install="${pkgname}.install"
 source=("ftp://ftp.espci.fr/pub/${pkgname}/${pkgname}-${pkgver}.tgz"
         "${pkgname}.service")
-md5sums=('e804dc97e94f5ac1d39e3e5572efeda3'
+md5sums=('dead8ceb27b0b471025bedabd742ce14'
          'SKIP')
 
 build() {
