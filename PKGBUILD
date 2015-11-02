@@ -4,7 +4,7 @@
 # Contributor: Pierre Chapuis <catwell@archlinux.us>
 
 pkgname=spin
-pkgver=6.4.3
+pkgver=6.4.4
 pkgrel=1
 pkgdesc='Tool for the formal verification of distributed software systems.'
 arch=('i686' 'x86_64')
@@ -13,13 +13,11 @@ license=('custom:SPIN')
 depends=('glibc')
 source=("http://spinroot.com/spin/Src/src${pkgver//./}.tar.gz"
         'LICENSE.txt')
-DLAGENTS='http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u'
-md5sums=('8f49cf98fe7bc2ac08f75ad29280843a'
-         '1b7db1b5f5da972bab3db17472e3a342')
+sha512sums=('d40fe053775d8a8a599fdbc572c1eb03a3ca78f9f443b75c6ea910f3c0183f02393b09c1d2da1eb8798b5b81b4bc752a7a4f456b852a8f5055847ff720b78caf'
+            'a5b63fc7136a2631c9a27619953abe2e9d6cab179042dd56bb76afbffe1966ad7edb41a131af5d6663f3cdbf77128833232e9174c0ef817b8522bfd978add595')
 
 build() {
   cd Src${pkgver}
-
   make
 }
 
