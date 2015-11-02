@@ -33,11 +33,13 @@ package() {
     if `pwd | grep -q "/tmp"`; then
 	echo \
 "You are trying to build this pkg in /tmp dir.
-This is not so good idea as /tmp dir is in ram
+This is not so good idea as /tmp dir is in RAM
 by default. If you know that you have lots of
-ram (>4G) and swap and want to continue building in
+ram (>8G) and swap and want to continue building in
 the current directory write yes and press ENTER.
-Otherwise write no and press ENTER.
+Otherwise write no and press ENTER. (You might
+consider changing the temporary directory, e.g.
+using --tmp for yaourt.)
 Continue?"
 	read answer
 		if [ "${answer}" == "no" ]; then
