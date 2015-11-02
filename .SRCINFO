@@ -1,19 +1,20 @@
 pkgbase = clion
 	pkgdesc = C/C++ IDE. Free 30-day trial.
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
 	license = custom
-	optdepends = gdb: native debugger
-	optdepends = cmake: native build system
+	optdepends = java-environment: native JRE (Edit PKGBUILD to remove bundled JRE)
+	optdepends = gdb: native debugger (You may want to edit PKGBUILD to remove the bundled one)
+	optdepends = cmake: native build system (You may want to edit PKGBUILD to remove the bundled one)
 	optdepends = gcc: GNU compiler
 	optdepends = clang: LLVM compiler
 	optdepends = biicode: C/C++ dependency manager
-	noextract = clion-1.1.1.tar.gz
+	noextract = clion-1.2.tar.gz
 	options = !strip
-	source = https://download.jetbrains.com/cpp/clion-1.1.1.tar.gz
-	sha256sums = 3a8d3dc2859460d24c7caf941a9acab18fcf0a05bb7fe1b73f8ba70393c6a3ea
+	source = https://download.jetbrains.com/cpp/clion-1.2.tar.gz
+	sha256sums = c4510c9e75c112acba716bdfa86247cf00cec7333fcad5375e847e8950c48212
 
 pkgname = clion
 

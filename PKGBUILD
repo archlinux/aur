@@ -5,8 +5,8 @@
 #PKGEXT=.pkg.tar
 
 pkgname=clion
-pkgver=1.1.1
-_pkgver=1.1.1
+pkgver=1.2.0
+_pkgver=1.2
 pkgrel=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
 arch=('x86_64')
@@ -14,14 +14,15 @@ options=(!strip)
 url="http://www.jetbrains.com/${pkgname}"
 license=('custom')
 optdepends=(
-  'gdb: native debugger'
-  'cmake: native build system'
+  'java-environment: native JRE (Edit PKGBUILD to remove bundled JRE)'
+  'gdb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
+  'cmake: native build system (You may want to edit PKGBUILD to remove the bundled one)'
   'gcc: GNU compiler'
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
 )
 source=("https://download.jetbrains.com/cpp/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('3a8d3dc2859460d24c7caf941a9acab18fcf0a05bb7fe1b73f8ba70393c6a3ea')
+sha256sums=('c4510c9e75c112acba716bdfa86247cf00cec7333fcad5375e847e8950c48212')
 noextract=("${pkgname}-${_pkgver}.tar.gz")
 
 package() {
@@ -66,7 +67,7 @@ EOF
 
   install -m 644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 
-  ln -s "/opt/${pkgname}/bin/${pkgname}.svg"                     "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+  ln -s "/opt/${pkgname}/bin/${pkgname}.svg"                "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
   ln -s "/opt/${pkgname}/license/CLion_Preview_License.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/opt/${pkgname}/bin/${pkgname}.sh"                 "${pkgdir}/usr/bin/${pkgname}"
 }
