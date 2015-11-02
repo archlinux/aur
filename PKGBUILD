@@ -2,7 +2,7 @@
 
 pkgname=xgalaga
 pkgver=2.1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An open source remake of the classic arcade game Galaga"
 arch=('i686' 'x86_64')
 url="http://rumsey.org/xgal.html"
@@ -21,8 +21,8 @@ md5sums=('f37c3377b245d2d53b33eb489966bf28'
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
 
-  /usr/bin/cp -f /usr/share/automake-1.14/config.guess .
-  /usr/bin/cp -f /usr/share/automake-1.14/config.sub   .
+  /usr/bin/cp -f /usr/share/automake-1.15/config.guess .
+  /usr/bin/cp -f /usr/share/automake-1.15/config.sub   .
 
   patch -Np2 -b -z .orig -i ../$pkgname.patch
 }
