@@ -2,7 +2,7 @@
 
 pkgbase=python-hmmlearn-git
 pkgname=('python2-hmmlearn-git' 'python-hmmlearn-git')
-pkgver=0.1.1.r77.g97ec087
+pkgver=0.1.1.r82.gdd67a47
 pkgrel=1
 
 pkgdesc="Algorithms for unsupervised learning and inference of Hidden Markov Models for Python."
