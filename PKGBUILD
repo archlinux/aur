@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-datetime-format-duration'
-pkgver='1.03'
+pkgver='1.04'
 pkgrel='1'
 pkgdesc="Format and parse DateTime::Durations"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-datetime>=0.3')
+depends=('perl-datetime' 'perl-params-validate' 'perl>=5.006')
 makedepends=()
-url='http://search.cpan.org/dist/DateTime-Format-Duration'
-source=('http://search.cpan.org/CPAN/authors/id/R/RI/RICKM/DateTime-Format-Duration-1.03a.tgz')
-md5sums=('f395c9f17d8fe65aa3b3cca6c8fecf17')
-sha512sums=('c34a3cbcf156cba7c8bd89e8f50d931fc6b3a313439c56aa5dda44e6445b4cdd35eb780749062d807ed6c0aa951986d40b1a02d4f900778dc2099751335a5d66')
-_distdir="DateTime-Format-Duration-1.03"
+url='https://metacpan.org/release/DateTime-Format-Duration'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/DateTime-Format-Duration-1.04.tar.gz')
+md5sums=('34298bc24aee006aaae862809e0e8224')
+sha512sums=('4c5d849975c271f17a258ea05a2d63b1ce32aab2217f6947cb324c4cee417137744fddb423584a5d2bf4b2b77751c8809dacfac9a625310cecbe5edc0b85b109')
+_distdir="DateTime-Format-Duration-1.04"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
