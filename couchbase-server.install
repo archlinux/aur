@@ -1,0 +1,40 @@
+# adapted from preinst/postinst from the original package
+post_install() {
+  # create cb user and group
+  getent group couchbase >/dev/null || \
+    groupadd -r couchbase || exit 1
+  getent passwd couchbase >/dev/null || \
+    useradd -r -g couchbase -d /opt/couchbase -s /usr/sbin/nologin \
+            -c "couchbase system user" couchbase || exit 1
+
+  chown -R couchbase:couchbase /opt/couchbase
+
+    cat <<EOF
+
+You have successfully installed Couchbase Server.
+Start it by running the couchbase-server service via systemd.
+Please browse to http://`hostname`:8091/ to configure your server.
+Please refer to http://couchbase.com for additional resources.
+
+Please note that you have to update your firewall configuration to
+allow connections to the following ports: 11211, 11210, 11209, 4369,
+8091, 8092, 8093,9100 to 9105, 9998, 18091, 18092, 11214, 11215 and
+from 21100 to 21299.
+EOF
+
+    cat <<EOF
+
+By using this software you agree to the End User License Agreement.
+See /opt/couchbase/LICENSE.txt.
+
+EOF
+
+}
+
+post_upgrade() {
+  chown -R couchbase:couchbase /opt/couchbase
+
+  echo Upgrading couchbase-server-community ...
+  echo "  /opt/couchbase/bin/install/cbupgrade -c /opt/couchbase/var/lib/couchbase/config -a yes"
+  /opt/couchbase/bin/install/cbupgrade -c /opt/couchbase/var/lib/couchbase/config -a yes 2>&1
+}
