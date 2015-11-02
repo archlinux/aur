@@ -2,11 +2,12 @@
 
 pkgname=phoneflashtoollite
 pkgver=5.2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Flashes firmware and OS images onto Intel-based devices'
 arch=('x86_64')
 url='https://01.org/android-ia/downloads/intel-phone-flash-tool-lite'
 license=('custom')
+depends=('libusb-compat' 'libudev0')
 
 source=(
   "https://download.01.org/android-ia/tools/phoneflashtool-lite/5.2.4.0/${pkgname}_${pkgver}_linux_x86_64.deb"
