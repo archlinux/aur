@@ -25,12 +25,12 @@ provides=("firefox=$pkgver")
 install=$pkgname.install
 source=("$pkgname.desktop"
         "$pkgname-safe.desktop")
-source_i686=("https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2")
-source_x86_64=("https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2")
+source_i686=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2")
+source_x86_64=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2")
 # RC
 if [[ $_build = ? ]]; then
-  source_i686=("https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_major-candidates/build$_build/linux-i686/en-US/firefox-$_major.tar.bz2")
-  source_x86_64=("https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
+  source_i686=("https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-i686/en-US/firefox-$_major.tar.bz2")
+  source_x86_64=("https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
 md5sums=('f7d82a1aac76f0bead4245fc1572eee1'
          'fecf3a4e9018f2a84e231cddbc047523')
