@@ -20,6 +20,8 @@ build() {
 	
 	add_module squashfs
 	add_module loop
+
+	add_binary /usr/lib/libgcc_s.so.1
 	
 	add_runscript
 }
