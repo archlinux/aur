@@ -1,19 +1,19 @@
 pkgbase = webstorm
 	pkgdesc = JavaScript IDE and HTML editor.
-	pkgver = 10.0.4
-	pkgrel = 3
+	pkgver = 11.0.0
+	pkgrel = 1
 	url = http://www.jetbrains.com/webstorm
-	arch = i686
 	arch = x86_64
+	arch = i686
 	license = custom
 	depends = java-environment
 	options = !strip
-	source = http://download.jetbrains.com/webstorm/WebStorm-10.0.4.tar.gz
-	source = jetbrains-webstorm
+	source = https://download.jetbrains.com/webstorm/WebStorm-11.0.0.tar.gz
 	source = jetbrains-webstorm.desktop
-	sha256sums = f2c6b6fde74513858f204a6fc5d4f39a6b3424edcc1abc435e566ead0929319c
-	sha256sums = 152a0b551a7955837d0e249b24c69d37282633751fc0f5fc68145edcb7c74711
-	sha256sums = ff6de45a3972370ddd70baf4155f6572c45191ec7723990ed56faf67e26feac6
+	source = webstorm.install
+	sha256sums = ae8ae6ec6f3b400b1df4d999fcb6efc80435e630e8e8f80bba4771ac7c59f771
+	sha256sums = df1155779ec87c1f9e3237a2b79a0bea1242f4f2661d3d0f5f152ef24af93166
+	sha256sums = a12071f48cfaa0fa41bf5ebf4d977366ca142329938183139adb044078b2f105
 
 pkgname = webstorm
 
