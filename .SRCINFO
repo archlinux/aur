@@ -6,7 +6,7 @@ pkgbase = archlinuxinfo
 	arch = any
 	license = GPL
 	depends = gcc
-	source = https://raw.githubusercontent.com/817c0d3r/dotfiles/master/bin/archlinuxinfo2.c
+	source = https://raw.githubusercontent.com/817c0d3r/Logo/master/archlinuxinfo.c
 	sha512sums = SKIP
 
 pkgname = archlinuxinfo

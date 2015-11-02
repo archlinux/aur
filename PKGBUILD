@@ -7,12 +7,12 @@ arch=('any')
 url="https://github.com/817c0d3r/dotfiles/tree/master/bin"
 license=('GPL')
 depends=("gcc")
-source=(https://raw.githubusercontent.com/817c0d3r/dotfiles/master/bin/${pkgname}2.c)
+source=(https://raw.githubusercontent.com/817c0d3r/Logo/master/${pkgname}.c)
 sha512sums=('SKIP')
 package() {
 	msg "Compile..."
-	make ${pkgname}2
+	make ${pkgname}
 	msg "Install..."
 
-	install -Dm755 ${pkgname}2 "$pkgdir/usr/bin/${pkgname}"
+	install -Dm755 ${pkgname} "$pkgdir/usr/bin/${pkgname}"
 }
