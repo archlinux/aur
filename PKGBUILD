@@ -1,6 +1,6 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 pkgname=sift
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A fast and powerful open source alternative to grep"
 arch=('i686' 'x86_64')
@@ -10,14 +10,19 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 conflicts=('sift-bin')
 replaces=('sift-bin')
+provides=("sift=${pkgver}")
 source=("https://github.com/svent/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6682b3eb08ae45eca8c6a09ef7811a79f6a9f244cdd06b76cd65eed956375b31')
-_gourl='github.com/svent'
+sha256sums=('da9b34bddd0c1798ebef5fddedae65b08c99ff34527050a637a2039b251d71fa')
+
+# Go URLs
+_github_gourl='github.com/svent'
+_golang_gourl='golang.org'
 
 prepare() {
   export GOPATH="${srcdir}"
-  go get -fix -v -x ${_gourl}/go-flags
-  go get -fix -v -x ${_gourl}/go-nbreader
+  go get -fix -v -x ${_github_gourl}/go-flags
+  go get -fix -v -x ${_github_gourl}/go-nbreader
+  go get -fix -v -x ${_golang_gourl}/x/crypto/ssh/terminal
 }
 
 build() {
@@ -28,8 +33,9 @@ build() {
 
 check() {
   export GOPATH="${srcdir}"
-  go test -v -x ${_gourl}/go-flags
-  go test -v -x ${_gourl}/go-nbreader
+  go test -v -x ${_github_gourl}/go-flags
+  go test -v -x ${_github_gourl}/go-nbreader
+  go test -v -x ${_golang_gourl}/x/crypto/ssh/terminal
 }
 
 package() {
