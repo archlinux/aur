@@ -1,4 +1,4 @@
-pkgbase = mplayer
+pkgbase = mplayer-svn
 	pkgver = 37551
 	pkgrel = 1
 	url = http://www.mplayerhq.hu/
