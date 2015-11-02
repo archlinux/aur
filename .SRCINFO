@@ -1,0 +1,21 @@
+pkgbase = prelink
+	pkgdesc = ELF prelinking utility to speed up dynamic linking
+	pkgver = 20130503
+	pkgrel = 6
+	url = http://people.redhat.com/jakub/prelink/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = elfutils
+	makedepends = libtool
+	depends = elfutils
+	backup = etc/prelink.conf
+	source = http://people.redhat.com/jakub/prelink/prelink-20130503.tar.bz2
+	source = prelink.conf
+	source = prelink.sh
+	sha256sums = 6339c7605e9b6f414d1be32530c9c8011f38820d36431c8a62e8674ca37140f0
+	sha256sums = a149b15b3b4f4ebf931b606e560289fa0a00a08f32855dc1c743485fec704381
+	sha256sums = c1a18338a8dab4fe64078e8e68a741618a68f54161b76cc2cef17311613dc92c
+
+pkgname = prelink
+
