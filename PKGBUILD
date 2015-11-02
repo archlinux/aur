@@ -27,8 +27,8 @@ find DeLorean-Dark-3.18/ -type f \
 -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
 
   cd 'ROOT THEME'
+  mkdir /usr/share/themes/DeLorean-Dark-3.18/Root-Theme
 find DeLorean-Dark-3.18/ -type f \
-mkdir /usr/share/themes/DeLorean-Dark-3.18/Root-Theme
 -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/DeLorean-Dark-3.18/Root-Theme/{}" \;            
 }
 
