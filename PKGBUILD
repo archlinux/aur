@@ -8,7 +8,7 @@
 # Contributor: Vladimir Kirillov <proger@wilab.org.ua>
 
 pkgname=coccinelle
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Provides spatch program used to apply semantic patches"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('ocaml: OCaml scripting feature'
             'ocaml-findlib: OCaml scripting feature')
 options=(!strip)
 source=(http://coccinelle.lip6.fr/distrib/${pkgname}-${pkgver}.tgz)
-sha256sums=('4e45b904f42c9b84732168782d491c8c1ab23bb85db06c4b9ba2762bea8ac679')
+sha256sums=('7f823813a2ea299c0f6c01d8419b83c4dc6617116d32ba99d726443a1c22b06d')
 
 build() {
    cd "$pkgname-$pkgver"
