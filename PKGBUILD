@@ -1,7 +1,7 @@
 # Maintainer: Jeremie Nevin <contact@neurovertex.eu>
 
 pkgname=texiteasy
-pkgver=0.21.0
+pkgver=0.21.5
 pkgrel=1
 _pkgrev="fdc8c2bca42e7b61a11792ec76dc7d08afdb65bb"
 pkgdesc="Simple and Powerful Latex Editor"
