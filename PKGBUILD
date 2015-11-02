@@ -15,7 +15,7 @@ conflicts=($_pkgname)
 source=("git+https://github.com/khws4v1/waifu2x-converter-qt.git"
         "waifu2x.png"
         "waifu2x-converter-qt.desktop")
-sha256sums=('SKIP'
+md5sums=('SKIP'
             '08f2ccd67e567d0fa9feb53c15b9de46'
             '9fb5356615674e93caa8520e6f3717f5')
 _gitname=$_pkgname
