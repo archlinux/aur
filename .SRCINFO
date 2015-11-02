@@ -8,12 +8,12 @@ pkgbase = turpial
 	depends = python2
 	depends = libturpial>=0.8
 	depends = python2-distribute
-	depends = python-simplejson>=1.9.2
+	depends = python2-simplejson>=1.9.2
 	depends = pygtk>=2.12
-	depends = python-notify2>=0.1.1
+	depends = python2-notify2>=0.1.1
 	depends = notification-daemon
 	depends = gstreamer0.10-python
-	depends = python-babel>=0.9.1
+	depends = python2-babel>=0.9.1
 	depends = pywebkitgtk
 	optdepends = python2-gtkspell>=2.25.3
 	optdepends = gnome-spell
