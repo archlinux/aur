@@ -1,6 +1,6 @@
 # Maintainer: TyanNN sashavini2000@gmail.com
 pkgname=svkm
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Simple Vkontakte console messanger"
 arch=('x86_64')
