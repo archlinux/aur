@@ -5,8 +5,8 @@ _pkgname=jdk
 pkgname=jdk-devel
 _major=9
 #_minor=1
-_build=b88
-_date=21_oct_2015
+_build=b90
+_date=29_oct_2015
 _pkgver=$_major
 pkgver=${_major}${_build}
 #_pkgver=${_major}u${_minor}
@@ -60,8 +60,8 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '003bb22b96f9b29f61de47190f843791'
          '419f27776d367e0c06c76dac6f6c3485'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_i686=('7267e4325692b33b9a967741d33e0acc')
-md5sums_x86_64=('f6d5172a0c77c234f0be2d764b35010f')
+md5sums_i686=('d5cd2405b5ec07139cb89028d251bdca')
+md5sums_x86_64=('b0f0ce9f99132fc2a9fee8b4ac064deb')
 
 package() {
     cd ${_pkgname}1.${_major}.0
