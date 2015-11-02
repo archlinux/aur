@@ -1,11 +1,11 @@
 pkgbase = clion
 	pkgdesc = C/C++ IDE. Free 30-day trial.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
 	license = custom
-	optdepends = java-environment: native JRE (Edit PKGBUILD to remove bundled JRE)
+	optdepends = java-runtime: native JRE (Edit PKGBUILD to remove bundled JRE)
 	optdepends = gdb: native debugger (You may want to edit PKGBUILD to remove the bundled one)
 	optdepends = cmake: native build system (You may want to edit PKGBUILD to remove the bundled one)
 	optdepends = gcc: GNU compiler

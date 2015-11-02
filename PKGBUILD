@@ -7,14 +7,14 @@
 pkgname=clion
 pkgver=1.2.0
 _pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ IDE. Free 30-day trial."
 arch=('x86_64')
 options=(!strip)
 url="http://www.jetbrains.com/${pkgname}"
 license=('custom')
 optdepends=(
-  'java-environment: native JRE (Edit PKGBUILD to remove bundled JRE)'
+  'java-runtime: native JRE (Edit PKGBUILD to remove bundled JRE)'
   'gdb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
   'cmake: native build system (You may want to edit PKGBUILD to remove the bundled one)'
   'gcc: GNU compiler'
