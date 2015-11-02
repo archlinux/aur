@@ -3,7 +3,7 @@
 
 pkgname=pdsh-genders
 pkgver=2.29
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Distributed Shell'
 url='http://code.google.com/p/pdsh/'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ options=('libtool')
 source=("http://pdsh.googlecode.com/files/pdsh-${pkgver}.tar.bz2")
 conflicts=('pdsh')
 provides=('pdsh')
-md5sums=('e3512d03e491de6f1a735ab0ff702108')
+sha256sums=('57f0903bf782afe00874267b59e0f4adefa79da4c48d0257c5ae2bef02f87fcf')
 
 build() {
   cd "${srcdir}/pdsh-${pkgver}"
