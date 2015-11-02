@@ -1,0 +1,12 @@
+pkgbase = no-colord
+	pkgdesc = A fake colord to trick CUPS
+	pkgver = 0
+	pkgrel = 1
+	url = http://www.example.org
+	arch = any
+	license = Public domain
+	provides = colord
+	conflicts = colord
+
+pkgname = no-colord
+
