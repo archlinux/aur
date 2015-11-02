@@ -3,7 +3,7 @@
 _gitname="cloudruby"
 pkgname=$_gitname-git
 pkgver=24.8082314
-pkgrel=1
+pkgrel=2
 pkgdesc="Ncurses player for Soundcloud tracks in Ruby"
 arch=(any)
 url="https://github.com/kulpae/cloudruby"
