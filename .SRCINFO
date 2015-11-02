@@ -1,12 +1,12 @@
 pkgbase = python-quamash
 	pkgdesc = Implementation of the asyncio (PEP 3156) event-loop with Qt
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/harvimt/quamash
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python-pyqt4
+	depends = python-pyqt5
 	source = https://pypi.python.org/packages/source/Q/Quamash/Quamash-0.5.3.tar.gz
 	md5sums = af1f34eb94ea0d9719f71a18c0550dea
 

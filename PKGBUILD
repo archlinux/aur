@@ -1,12 +1,12 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=python-quamash
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the asyncio (PEP 3156) event-loop with Qt"
 arch=('any')
 url="https://github.com/harvimt/quamash"
 license=('BSD')
-depends=('python-pyqt4')
+depends=('python-pyqt5')
 makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/Q/Quamash/Quamash-$pkgver.tar.gz)
 md5sums=('af1f34eb94ea0d9719f71a18c0550dea')
