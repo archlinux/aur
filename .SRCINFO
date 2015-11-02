@@ -1,0 +1,15 @@
+pkgbase = libfixbuf
+	pkgdesc = libfixbuf is a compliant implementation of the IPFIX Protocol, as defined in the "Specification of the IPFIX Protocol for the Export of IP Flow Information" (RFC 5101).
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = http://tools.netsa.cert.org/fixbuf/index.html
+	arch = i686
+	arch = x86_64
+	groups = netsa
+	license = LGPL
+	depends = glibc>=2.6.4
+	source = http://tools.netsa.cert.org/releases/libfixbuf-1.7.1.tar.gz
+	md5sums = 46d5d0362581a09902b24635b4679b6a
+
+pkgname = libfixbuf
+
