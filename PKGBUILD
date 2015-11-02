@@ -1,7 +1,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 _pkgbasename=libxpm
 pkgname=lib32-$_pkgbasename
-pkgver=3.5.10
+pkgver=3.5.11
 pkgrel=1
 pkgdesc="X11 pixmap library (32-bit)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(lib32-libxt lib32-libxext $_pkgbasename)
 makedepends=(xorg-util-macros gcc-multilib pkg-config)
 options=('!libtool')
 source=(${url}/releases/individual/lib/libXpm-${pkgver}.tar.bz2)
-sha1sums=('eca9dbfa6253f7d6cc7d593dc83110c6c4876d7c')
+sha1sums=('77b95dd1c8cd9bc00b3b834b53d824409202acbb')
 
 build() {
   export CC="gcc -m32"
