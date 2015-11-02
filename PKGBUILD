@@ -2,11 +2,11 @@
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=neovim-symlinks
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="System-wide: Runs neovim if vi or vim is invoked."
 arch=('any')
 license=('MIT')
-depends=('neovim-git')
+depends=('neovim')
 provides=('vim' 'vi')
 conflicts=('vim' 'vi' 'vi-vim-symlink')
 source=('vimdiff')
