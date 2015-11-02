@@ -1,9 +1,0 @@
-[Unit]
-Description=Tarantool cache server Daemon
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/tarantool_box
-
-[Install]
-WantedBy=multi-user.target

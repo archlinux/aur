@@ -7,8 +7,6 @@ pkgdesc='an in-memory database designed to store the most volatile and highly ac
 arch=(i686 x86_64)
 url='http://www.tarantool.org'
 license=(BSD)
-#backup=(etc/tarantool/tarantool.cfg)
-install=tarantool.install
 depends=(readline ncurses zlib)
 makedepends=(git cmake)
 checkdepends=(python2-daemon python2-yaml python2-msgpack python2-tarantool python2-gevent)
@@ -17,15 +15,13 @@ source=(git://github.com/tarantool/tarantool.git
         git://github.com/tarantool/msgpuck.git
         git://github.com/rtsisyk/luafun.git
         git://github.com/tarantool/sophia.git#branch=current
-        git://github.com/tarantool/test-run.git
-        tarantool.systemd)
+        git://github.com/tarantool/test-run.git)
 sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          'SKIP'
-          'ad36cc26a66a50e8537570bfed5b620c775a9f85')
+          'SKIP')
 
 pkgver() {
   cd tarantool
@@ -66,7 +62,6 @@ package() {
   cd tarantool
   make install DESTDIR="$pkgdir"
 
-  install -D -m644 "$srcdir/tarantool.systemd" "$pkgdir/usr/lib/systemd/system/tarantool.service"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   rm "$pkgdir/usr/share/doc/tarantool/LICENSE"
 }

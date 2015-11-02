@@ -3,7 +3,6 @@ pkgbase = tarantool-git
 	pkgver = 1.6.6.r269.gfe1519e
 	pkgrel = 1
 	url = http://www.tarantool.org
-	install = tarantool.install
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -23,14 +22,12 @@ pkgbase = tarantool-git
 	source = git://github.com/rtsisyk/luafun.git
 	source = git://github.com/tarantool/sophia.git#branch=current
 	source = git://github.com/tarantool/test-run.git
-	source = tarantool.systemd
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = ad36cc26a66a50e8537570bfed5b620c775a9f85
 
 pkgname = tarantool-git
 
