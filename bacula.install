@@ -1,0 +1,4 @@
+post_install() {
+  SERVERNAME=$(hostname -s)
+  sed -i "s/__BASENAME__/${SERVERNAME}/g" /etc/bacula/*.conf
+}

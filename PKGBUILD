@@ -6,8 +6,8 @@
 pkgbase='bacula'
 _dir_backends=("${pkgbase}-dir-sqlite3" "${pkgbase}-dir-mariadb" "${pkgbase}-dir-postgresql")
 pkgname=("${pkgbase}-common" "${pkgbase}-console" "${pkgbase}-fd" "${pkgbase}-bat" "${pkgbase}-sd" "${pkgbase}-dir" ${_dir_backends[@]} "${pkgbase}-dir-mysql")
-pkgver=7.0.5
-pkgrel=3
+pkgver=7.2.0
+pkgrel=2
 arch=(i686 x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool"
 url="http://www.${pkgbase}.org"
@@ -16,12 +16,15 @@ optdepends=('openssl: network encryption between daemons')
 makedepends=('sqlite' 'libmariadbclient' 'postgresql-libs' 'qt4')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
         '00-qmake4.patch'
+        '01-basename.patch'
        )
 
-md5sums=('b4a99d673f5e1eaae8b257ccc610241f'
-         '9ac88867a9ad3a4fe0486a26d0cdb542')
-sha1sums=('3c4b2430960daf2607e824f0c0641f65023e43ce'
-          '58a60e8af9b4735c564c7223c2bf0c25803927f3')
+md5sums=('8381b6523dab31648a0bae417e60832b'
+         '9ac88867a9ad3a4fe0486a26d0cdb542'
+         '1b58f9bf9bfd047b15e8057e2028a96a')
+sha1sums=('5863afe6f438a03a70b02ee59446cb4e44359229'
+          '58a60e8af9b4735c564c7223c2bf0c25803927f3'
+          'ff9549b8ea326654bad5987c820f6dfd629fce54')
 
 _instdir="${startdir}/install"
 _workdir="/var/lib/${pkgbase}"
@@ -100,6 +103,7 @@ _genfiles() {
 prepare() {
     pushd "${srcdir}/${pkgbase}-${pkgver}"
     patch -Np3 -i ${srcdir}/00-qmake4.patch || true
+    patch -Np2 -i ${srcdir}/01-basename.patch || true
     _genfiles
     popd
 }
@@ -119,7 +123,6 @@ build() {
       --with-postgresql                        \
       --with-pid-dir=/run                      \
       --with-systemd=/usr/lib/systemd/system   \
-      --with-tcp-wrappers                      \
       --with-logdir=/var/log/${pkgbase}        \
       --with-working-dir=${_workdir}           \
       --with-x
@@ -132,6 +135,7 @@ package_bacula-bat() {
   pkgdesc="${pkgdesc} (management GUI)"
   backup=("etc/${pkgbase}/bat.conf")
   depends=("${pkgbase}-common=${pkgver}" 'qt4')
+  install=("bacula.install")
   pushd "${_instdir}"
 
   cp --parents -a usr/bin/bat ${pkgdir}
@@ -151,6 +155,7 @@ package_bacula-bat() {
 package_bacula-fd() {
   pkgdesc="${pkgdesc} (file daemon)"
   backup=("etc/${pkgbase}/${pkgname}.conf")
+  install=("bacula.install")
   optdepends=(
     'openssl: network encryption between daemons'
     'lzo: LZO compression for Storage Daemon'
@@ -191,6 +196,7 @@ package_bacula-common() {
 package_bacula-console() {
   pkgdesc="${pkgdesc} (management CLI)"
   backup=("etc/${pkgbase}/bconsole.conf")
+  install=("bacula.install")
   depends=("${pkgbase}-common=${pkgver}")
   pushd "${_instdir}"
 
@@ -207,6 +213,7 @@ package_bacula-console() {
 package_bacula-dir() {
   pkgdesc="${pkgdesc} (Director)"
   depends=("${pkgbase}-common=${pkgver}")
+  install=("bacula.install")
   optdepends=(
     "${pkgname}-sqlite3: SQLite support"
     "${pkgname}-mariadb: MariaDB support"
@@ -237,6 +244,7 @@ package_bacula-dir() {
   cp --parents -a usr/lib/libbacsql-${pkgver}.so ${pkgdir}
 
   mkdir -p ${pkgdir}${_workdir}
+  mkdir -p ${pkgdir}/var/log/${pkgbase}
 
   mkdir -p ${pkgdir}/usr/lib/systemd/system/
   cp -f ${srcdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/
@@ -258,6 +266,7 @@ package_bacula-dir-mariadb() {
   pkgdesc="${pkgdesc} (Director - MariaDB support)"
   depends=("${pkgbase}-dir" 'libmariadbclient')
   conflicts=(${_dir_backends[@]/${pkgname}})
+  install=("bacula.install")
   replaces="${pkgbase}-dir-mysql"
   provides="${pkgbase}-dir-mysql"
   pushd "${_instdir}"
@@ -279,6 +288,7 @@ package_bacula-dir-mysql() {
 package_bacula-dir-postgresql() {
   pkgdesc="${pkgdesc} (Director - PostgreSQL support)"
   depends=("${pkgbase}-dir" 'postgresql-libs')
+  install=("bacula.install")
   conflicts=(${_dir_backends[@]/${pkgname}})
   pushd "${_instdir}"
 
@@ -294,6 +304,7 @@ package_bacula-dir-sqlite3() {
   pkgdesc="${pkgdesc} (Director - SQLite3 support)"
   depends=("${pkgbase}-dir" 'sqlite')
   conflicts=(${_dir_backends[@]/${pkgname}})
+  install=("bacula.install")
   pushd "${_instdir}"
 
   cp --parents -a usr/lib/libbaccats-sqlite3-${pkgver}.so ${pkgdir}
@@ -307,6 +318,7 @@ package_bacula-dir-sqlite3() {
 package_bacula-sd() {
   pkgdesc="${pkgdesc} (Storage Daemon)"
   backup=("etc/${pkgbase}/${pkgname}.conf")
+  install=("bacula.install")
   depends=("${pkgbase}-common")
   optdepends=(
     'openssl: network encryption between daemons'
