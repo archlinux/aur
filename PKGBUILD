@@ -1,9 +1,10 @@
+# $Id $
 # Maintainer: Christian Hesse <mail@eworm.de>
 # Contributor: Florian Walch <florian+aur@fwalch.com>
 
 pkgname=libtermkey
 pkgver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for easy processing of keyboard entry from terminal-based programs'
 arch=('i686' 'x86_64')
 url='http://www.leonerd.org.uk/code/libtermkey'
