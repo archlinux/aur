@@ -1,0 +1,15 @@
+pkgbase = gnuit
+	pkgdesc = A set of interactive text-mode tools.
+	pkgver = 4.9.5
+	pkgrel = 1
+	url = http://www.gnu.org/software/gnuit/
+	install = gnuit.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	source = http://ftp.gnu.org/gnu/gnuit/gnuit-4.9.5.tar.gz
+	md5sums = 6b88eea39361ead2ad48b33b17a870f5
+
+pkgname = gnuit
+
