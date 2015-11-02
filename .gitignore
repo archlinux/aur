@@ -1,0 +1,4 @@
+*.xz
+/python-adafruit-gpio/
+/src/
+/pkg/
