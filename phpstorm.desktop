@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Name=PhpStorm
-Icon=/usr/share/phpstorm/bin/webide.png
-Exec="/usr/share/phpstorm/bin/phpstorm.sh" %f
+Icon=/opt/phpstorm/bin/webide.png
+Exec="/opt/phpstorm/bin/phpstorm.sh" %f
 Comment=Develop with pleasure!
 Categories=Development;IDE;
 Terminal=false
