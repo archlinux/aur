@@ -1,4 +1,5 @@
-# Maintainer: Daniel Albers <daniel@lbe.rs>
+# Maintainer: Tom Keller <tom@isochrono.us>
+# Contributor: Daniel Albers <daniel@lbe.rs>
 # Contributor: Steven Haigh <netwiz@crc.id.au>
 # Contributor: Georg Altmann <george@george-net.de>
 # bacula-fd.service by Christian Hesse <arch@eworm.de>

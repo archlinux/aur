@@ -1,7 +1,7 @@
 pkgbase = bacula
 	pkgdesc = Bacula - A Network Backup Tool
-	pkgver = 7.0.5
-	pkgrel = 3
+	pkgver = 7.2.0
+	pkgrel = 2
 	url = http://www.bacula.org
 	arch = i686
 	arch = x86_64
@@ -11,24 +11,27 @@ pkgbase = bacula
 	makedepends = postgresql-libs
 	makedepends = qt4
 	optdepends = openssl: network encryption between daemons
-	source = http://downloads.sourceforge.net/sourceforge/bacula/bacula-7.0.5.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/bacula/bacula-7.2.0.tar.gz
 	source = 00-qmake4.patch
-	md5sums = b4a99d673f5e1eaae8b257ccc610241f
+	source = 01-basename.patch
+	md5sums = 8381b6523dab31648a0bae417e60832b
 	md5sums = 9ac88867a9ad3a4fe0486a26d0cdb542
-	sha1sums = 3c4b2430960daf2607e824f0c0641f65023e43ce
+	md5sums = 1b58f9bf9bfd047b15e8057e2028a96a
+	sha1sums = 5863afe6f438a03a70b02ee59446cb4e44359229
 	sha1sums = 58a60e8af9b4735c564c7223c2bf0c25803927f3
+	sha1sums = ff9549b8ea326654bad5987c820f6dfd629fce54
 
 pkgname = bacula-common
 	pkgdesc = Bacula - A Network Backup Tool (common files)
 
 pkgname = bacula-console
 	pkgdesc = Bacula - A Network Backup Tool (management CLI)
-	depends = bacula-common=7.0.5
+	depends = bacula-common=7.2.0
 	backup = etc/bacula/bconsole.conf
 
 pkgname = bacula-fd
 	pkgdesc = Bacula - A Network Backup Tool (file daemon)
-	depends = bacula-common=7.0.5
+	depends = bacula-common=7.2.0
 	depends = tcp_wrappers
 	optdepends = openssl: network encryption between daemons
 	optdepends = lzo: LZO compression for Storage Daemon
@@ -36,7 +39,7 @@ pkgname = bacula-fd
 
 pkgname = bacula-bat
 	pkgdesc = Bacula - A Network Backup Tool (management GUI)
-	depends = bacula-common=7.0.5
+	depends = bacula-common=7.2.0
 	depends = qt4
 	backup = etc/bacula/bat.conf
 
@@ -49,7 +52,7 @@ pkgname = bacula-sd
 
 pkgname = bacula-dir
 	pkgdesc = Bacula - A Network Backup Tool (Director)
-	depends = bacula-common=7.0.5
+	depends = bacula-common=7.2.0
 	optdepends = bacula-dir-sqlite3: SQLite support
 	optdepends = bacula-dir-mariadb: MariaDB support
 	optdepends = bacula-dir-postgresql: PostgreSQL support
