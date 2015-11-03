@@ -1,7 +1,8 @@
-# Maintainer: Julien Girardin <jugirardin@gmail.com>
+# Maintainer: Foppe HEMMINGA <foppe@hemminga.net>
+# Contributer: Julien Girardin <jugirardin@gmail.com>
 
 pkgname=zenphoto
-pkgver=1.4.8
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="a php-based Photo Web gallery. Manage Albums"
 arch=(any)
@@ -15,7 +16,7 @@ backup=("etc/webapps/zenphoto/zenphoto.cfg"
 install=zenphoto.install
 source=(http://github.com/zenphoto/zenphoto/archive/zenphoto-${pkgver}.tar.gz
         apache.conf)
-md5sums=('8573863da23410a252c81c32f4ef3f7b'
+md5sums=('b873fef091715964d207daa19d320a99'
          '05298d3385372db7757193a53b22f816')
 
 package() {
