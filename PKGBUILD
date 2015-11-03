@@ -1,22 +1,22 @@
-# Maintainer: Artur Wojcik <xartii at gmail dot com>
+# Maintainer: Anthony C <kurodroid.1@gmail.com>
 pkgname=psad
-pkgver=2.2.3
-pkgrel=1
+pkgver=2.4.1
+pkgrel=0
 pkgdesc="A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic"
 arch=(i686 x86_64)
 url="http://cipherdyne.org/psad/"
 license=('GPL')
 depends=('perl-bit-vector' 'perl-date-calc' 'perl-iptables-chainmgr' 'perl-iptables-parse' 'perl-net-ipv4addr' 'perl-storable' 'perl-unix-syslog' 'net-tools')
 source=("http://cipherdyne.org/psad/download/$pkgname-$pkgver.tar.gz" "responses" "psad-systemdinit.archlinux" "psad.patch1")
-md5sums=('4a944618c270c45df98540727b358859'
+md5sums=('c73d01e472f08775b6fc80c90378f7ce'
          '2425986f9eaa44d983128ebea6c8baf4'
          '29324f5fb0ccf69b443710c7d4c075fd'
-         'f97cabd3c91e5037faf9a843206ba608')
+         '3ebc69df83f083abcd52965fa26c3cf4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  if [ ! -e responses ]; then 
-    ln $srcdir/responses responses -s; 
+  if [ ! -e responses ]; then
+    ln $srcdir/responses responses -s;
   fi
   patch -p1 -i $srcdir/psad.patch1
 
@@ -53,7 +53,7 @@ package () {
            $pkgdir/usr/lib/psad \
            $pkgdir/usr/lib/systemd/system
  ./install.pl --init-dir "$pkgdir/etc/rc.d/" < responses
- 
+
  #Set correct permissions
  chmod -R o+r $pkgdir/etc/psad
  chmod -R o+r $pkgdir/usr/sbin/*
