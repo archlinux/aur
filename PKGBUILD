@@ -3,8 +3,8 @@
 # Contributor: Marti Raudsepp <marti@juffo.org>
 
 pkgname=namebench
-pkgver=1.3.1
-pkgrel=7
+pkgver=1.5
+pkgrel=1
 pkgdesc="Open-source DNS benchmark utility"
 arch=(any)
 url="http://code.google.com/p/namebench/"
@@ -12,11 +12,11 @@ license=(Apache)
 depends=(python2-dnspython python2-httplib2 python2-simplejson python2-jinja
          python2-graphy)
 optdepends=('tk: gui')
-source=(https://$pkgname.googlecode.com/files/$pkgname-$pkgver-source.tgz)
-md5sums=('34e74eac37d6747592f8d5085f03ee4f')
+source=(namebench::git+https://github.com/google/$pkgname.git#branch=$pkgver)
+sha512sums=('SKIP')
 
 package() {
-  cd namebench-$pkgver
+  cd namebench
   export NO_THIRD_PARTY=true
   python2 setup.py install --root="$pkgdir"
   cd "$pkgdir/usr"
