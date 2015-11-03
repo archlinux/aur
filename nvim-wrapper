@@ -25,7 +25,6 @@ TERM_CMD = [
     '--class', CLASS,
     '--name', NAME,
     '--hide-menubar',
-    '--geometry', '90x60',
     '-x',
     'nvim',
 ]
