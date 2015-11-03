@@ -9,9 +9,9 @@ source=('http://downloads.sourceforge.net/project/classic95-p/Classic95.tar.gz')
 noextract=()
 md5sums=('88b17a2b408d793e8f63f0d0c587d4ff') 
 
-build() {
-  wget $source
-}
+#build() {
+  #wget $source
+#}
 
 package() {
   mkdir -p "$pkgdir/usr/share/icons/"
