@@ -24,5 +24,5 @@ fi
 package() {
     cd $srcdir/linux-$_PKGARCH
     install -Dm755 "$_pkgname" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
