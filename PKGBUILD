@@ -14,7 +14,7 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p-dev
-pkgver=0.9.22.0
+pkgver=0.9.22.21
 pkgrel=1
 epoch=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
@@ -37,7 +37,7 @@ source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
 sha256sums=('SKIP'
-            '842b529ae23bc82fd78e986dd7cc683bd7b671e93421de57f279dc3f4d5d0fd2'
+            '47e7e660041977fcf5bc0b111f238000f579d1a9cf0d17556a0477bc3a7582b8'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
             'a76e7b6ccd8f49b51d22012887e1f0101db3bfe6aeebe1bc416b48da4e206b27'
             'c001f045e52ab82154b21125384dbc4f1d2437376fc65c5d83987051e42b5409')
@@ -61,7 +61,7 @@ build_jbigi() {
     msg "Building libjbigi..."
     cd "$srcdir/$_gitname/core/c/jbigi"
     CFLAGS+=" -fPIC -Wall"
-    INCLUDES="-I./jbigi/include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
+    INCLUDES="-I./jbigi/include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so"
     gcc -c $CFLAGS $INCLUDES jbigi/src/jbigi.c
     gcc $LDFLAGS $INCLUDES -o libjbigi.so jbigi.o -lgmp
@@ -72,7 +72,7 @@ build_jcpuid() {
 if [[ "$CARCH" != @(arm)* ]]; then
     msg "Building libjcpuid..."
     cd "$srcdir/$_gitname/core/c/jcpuid"
-    INCLUDES="-I./include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
+    INCLUDES="-I./include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-${CARCH}-linux.so"
     gcc $CFLAGS $LDFLAGS $INCLUDES src/jcpuid.c -o libjcpuid-${CARCH}-linux.so
     install -Dm644 libjcpuid-${CARCH}-linux.so "$srcdir/$_gitname/pkg-temp/lib/libjcpuid.so"
@@ -82,7 +82,8 @@ fi
 build() {
     source /etc/profile.d/apache-ant.sh
     source /etc/profile.d/jre.sh
-    export _JAVA_HOME=/usr/lib/jvm/default
+    export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
+
 
     build_jbigi
     build_jcpuid

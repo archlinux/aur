@@ -1,6 +1,6 @@
 pkgbase = i2p-dev
 	pkgdesc = A distributed anonymous network (daily mtn->git sync)
-	pkgver = 0.9.22.0
+	pkgver = 0.9.22.21
 	pkgrel = 1
 	epoch = 1
 	url = https://geti2p.net
@@ -26,7 +26,7 @@ pkgbase = i2p-dev
 	source = wrapper.config
 	source = router.config
 	sha256sums = SKIP
-	sha256sums = 842b529ae23bc82fd78e986dd7cc683bd7b671e93421de57f279dc3f4d5d0fd2
+	sha256sums = 47e7e660041977fcf5bc0b111f238000f579d1a9cf0d17556a0477bc3a7582b8
 	sha256sums = ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53
 	sha256sums = a76e7b6ccd8f49b51d22012887e1f0101db3bfe6aeebe1bc416b48da4e206b27
 	sha256sums = c001f045e52ab82154b21125384dbc4f1d2437376fc65c5d83987051e42b5409
