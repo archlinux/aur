@@ -1,11 +1,13 @@
 pkgbase = ragnar-git
 	pkgdesc = Mount an existing remote LUKS device with NBD over SSH
 	pkgver = 0.30.a917c66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gavinhungry/ragnar
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = openssh
+	depends = nbd
 	depends = cryptsetup
 	depends = udisks
 	source = ragnar-git::git+https://github.com/gavinhungry/ragnar.git#branch=master
