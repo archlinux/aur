@@ -4,7 +4,7 @@
 _pkgname=QuiteRSS
 pkgname=quiterss
 pkgver=0.18.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and light RSS/Atom feed reader written on Qt/С++"
 arch=('i686' 'x86_64')
 url="http://quiterss.org/"
@@ -17,12 +17,12 @@ sha512sums=('ff441887de758f0cdbab32db7a3e730024261c058f487c3409a872554f1fee35ba6
 
 prepare() {
 cd "$srcdir"
-patch -p1 -i ../"$pkgname".patch
+patch -p1 -i "$pkgname".patch
 }
 
 build() {
 cd "$srcdir"
-qmake "$srcdir/$_pkgname.pro" \
+qmake-qt5 "$srcdir/$_pkgname.pro" \
   PREFIX=/usr \
   CONFIG+=LINUX_INTEGRATED \
   DISABLE_PHONON=1 \
