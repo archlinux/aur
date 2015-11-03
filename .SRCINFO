@@ -1,0 +1,14 @@
+pkgbase = attractmode-git
+	pkgdesc = A MAME front-end
+	pkgver = 20130806
+	pkgrel = 1
+	url = https://github.com/mickelson/attract
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sfml openal ffmpeg fontconfig libxinerama libarchive
+	conflicts = attractmode
+
+pkgname = attractmode-git
+
