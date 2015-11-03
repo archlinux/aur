@@ -3,12 +3,12 @@
 pkgname=python-pyficache
 _pkgname=pyficache
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Cache lines and file information which are generally Python programs'
 arch=('any')
 url="https://pypi.python.org/pypi/pyficache"
 license=('LGPL3')
-depends=()
+depends=('python-coverage')
 makedepends=('python-setuptools')
 replaces=()
 conflicts=()
