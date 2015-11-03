@@ -8,7 +8,7 @@ pkgbase = pueue-git
 	depends = python
 	depends = python-setuptools
 	source = https://github.com/Nukesor/pueue/archive/0.3.6.tar.gz
-	sha256sums = e7efbdef9a8a825de18ff0dc592bbcee9ada9626b80ef029865a9fe1d21cd07a
+	sha256sums = 31c8a66703f31b461020ff371b30a2c16519ad41359787330f2f0b3c78d7ffcf
 
 pkgname = pueue-git
 

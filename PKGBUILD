@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-setuptools')
 url='https://github.com/nukesor/pueue'
 source=("https://github.com/Nukesor/pueue/archive/${pkgver}.tar.gz")
-sha256sums=('e7efbdef9a8a825de18ff0dc592bbcee9ada9626b80ef029865a9fe1d21cd07a')
+sha256sums=('31c8a66703f31b461020ff371b30a2c16519ad41359787330f2f0b3c78d7ffcf')
 
 package() {
   cd "${srcdir}/${_gitname}-$pkgver"
