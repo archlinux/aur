@@ -1,6 +1,6 @@
 pkgbase = keybase-staging
 	pkgdesc = staging build of the Keybase Go client
-	pkgver = 39.7f3132e
+	pkgver = 4310.2bf6d46
 	pkgrel = 1
 	url = https://keybase.io/docs/cli_kbstage
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = keybase-staging
 	license = BSD
 	makedepends = go
 	depends = gnupg
-	source = git://github.com/keybase/client-beta
+	source = git://github.com/keybase/client
 	md5sums = SKIP
 
 pkgname = keybase-staging
