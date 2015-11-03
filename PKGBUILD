@@ -32,7 +32,7 @@ build() {
 
   gcc -c -fPIC -o libomegle.o libomegle.c `pkg-config --cflags pidgin json-glib-1.0`
   gcc -c -fPIC -o om_connection.o om_connection.c `pkg-config --cflags pidgin`
-  gcc -shared -Wl libomegle.o om_connection.o -o omegle.so `pkg-config --libs json-glib-1.0`
+  gcc -shared libomegle.o om_connection.o -o omegle.so `pkg-config --libs json-glib-1.0`
 }
 
 package() {
