@@ -1,7 +1,7 @@
 pkgbase = co2mon-git
 	pkgdesc = CLI for MasterKit CO2 Monitor
 	pkgver = 2.0.1.r9.gdf58994
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dmage/co2mon
 	install = co2mon-git.install
 	arch = i686
