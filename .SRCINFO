@@ -1,0 +1,22 @@
+pkgbase = prayerapp
+	pkgdesc = Simple and light-weight app for prayer time reminders.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/tgharib/PrayerApp
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libappindicator-gtk3
+	depends = libappindicator-gtk2
+	depends = lib32-libappindicator-gtk3
+	depends = lib32-libappindicator-gtk2
+	depends = jre8-openjdk
+	source = https://github.com/tgharib/PrayerApp/releases/download/v1.2/PrayerApp.jar
+	source = PrayerApp.desktop
+	source = trayicon.jpg
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = prayerapp
+

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Icon=/opt/prayerapp/trayicon.jpg
+Name=PrayerApp
+Terminal=false
+Exec=java -jar /opt/prayerapp/PrayerApp.jar
+Hidden=false
