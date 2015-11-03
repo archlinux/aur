@@ -1,0 +1,28 @@
+pkgbase = python-doorstop
+	pkgdesc = Doorstop manages the storage of textual requirements alongside source code in version control.
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/doorstop
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python>=3.3
+	depends = python-yaml>=3.10
+	depends = python-yaml<4
+	depends = python-markdown>=2
+	depends = python-markdown<3
+	depends = python-openpyxl>2.1.0
+	depends = python-openpyxl<2.2
+	depends = python-bottle>=0.12
+	depends = python-bottle<0.13
+	depends = python-requests>=2
+	depends = python-requests<3
+	depends = python-pyficache>=0.2.3
+	depends = python-pyficache<0.3
+	depends = python-pygments
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/D/Doorstop/Doorstop-0.8.4.tar.gz
+	md5sums = f6a17593f1ee7af7e775bda41e05f752
+
+pkgname = python-doorstop
+
