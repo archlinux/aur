@@ -3,7 +3,7 @@
 pkgname=hid-apple-patched-git
 _pkgname=hid-apple-patched
 pkgver=20151025.9bce667
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows to swap the Fn key and left Control key on Macbook Pro and Apple keyboards in GNU/Linux"
 url="https://github.com/free5lot/hid-apple-patched"
 arch=('any')
@@ -15,6 +15,8 @@ source=("git+https://github.com/sami-mw/hid-apple-patched.git#branch=update-make
 sha256sums=('SKIP'
             '4b94f1f55febddad5ff60a8918487b883ceadd4e6c3fb280e98e4e235cd09663')
 
+LINUX_HEADER_DIR=/usr/lib/modules/$(pacman -Qi linux-headers|grep "^Version"|awk '{print $3}')-ARCH/build
+
 pkgver() {
   cd "$srcdir"/"$_pkgname"
   git log -1 --format=%cd.%h --date=short|tr -d -
@@ -22,12 +24,12 @@ pkgver() {
 
 build() {
   cd "$srcdir"/"$_pkgname"
-  make LINUX_HEADER_DIR=/usr/lib/modules/$(uname -r)/build
+  make LINUX_HEADER_DIR=$LINUX_HEADER_DIR
 }
 
 package() {
   cd "$srcdir"/"$_pkgname"
-  make LINUX_HEADER_DIR=/usr/lib/modules/$(uname -r)/build INSTALL_MOD_PATH="$pkgdir" install
+  make LINUX_HEADER_DIR=$LINUX_HEADER_DIR INSTALL_MOD_PATH="$pkgdir" install
   mkdir "$pkgdir"/usr
   mv "$pkgdir"/lib "$pkgdir"/usr
  
@@ -35,4 +37,3 @@ package() {
   mkdir -p "$pkgdir"/etc/depmod.d
   install -m600 hid-apple-patched.conf "$pkgdir"/etc/depmod.d
 }
-

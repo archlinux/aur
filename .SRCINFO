@@ -1,7 +1,7 @@
 pkgbase = hid-apple-patched-git
 	pkgdesc = Allows to swap the Fn key and left Control key on Macbook Pro and Apple keyboards in GNU/Linux
 	pkgver = 20151025.9bce667
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/free5lot/hid-apple-patched
 	install = hid-apple-patched.install
 	arch = any
