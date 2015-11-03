@@ -1,14 +1,14 @@
 pkgbase = epad
 	pkgdesc = Simple text editor using Python and EFL
-	pkgver = 0.9.0
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = http://jeffhoogland.github.io/ePad/
 	arch = any
 	license = GPL3
 	depends = python-efl
 	depends = python-elmextensions
-	source = https://github.com/JeffHoogland/ePad/archive/0.9.0.tar.gz
-	sha256sums = b4a0f164d40de6796887f3ed43699d20f3cd2cc31cdd7a9cc33e7ce59aab16df
+	source = https://github.com/JeffHoogland/ePad/archive/0.9.4.tar.gz
+	sha256sums = 203bbfe8486a525845caacf81d26061399e308366592f416d7479f226ba60cc0
 
 pkgname = epad
 
