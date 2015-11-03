@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=git-lfs
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Git extension for versioning large files"
 arch=('i686' 'x86_64')
 url="https://git-lfs.github.com/"

@@ -1,3 +1,3 @@
 post_install() {
-  msg "Don't forget to run `git lfs init` for your user"
+  echo "=> Don't forget to run 'git lfs init' for your user"
 }
