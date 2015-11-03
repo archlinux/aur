@@ -9,7 +9,7 @@ url="http://pwr.github.com/Solaar/"
 license=('GPL2')
 groups=()
 arch=('any')
-depends=('python' 'python-pyudev' 'python-gobject' 'pygtk')
+depends=('python' 'python-pyudev' 'python-gobject')
 optdepends=(
 	'libappindicator3: better integration into Unity'
 	)
