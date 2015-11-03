@@ -1,4 +1,3 @@
-#TODO: should it be named 'co2mond'?
 pkgname='co2mon-git'
 pkgdesc='CLI for MasterKit CO2 Monitor'
 pkgver=2.0.1.r9.gdf58994
@@ -17,7 +16,7 @@ source=('git+https://github.com/dmage/co2mon.git'
         'co2mon.service'
         'co2mon-git.tmpfiles.conf')
 md5sums=('SKIP'
-         '34aa92981e6a150fc75c43c9427698ee'
+         'e96495d7ed56756af234aa2c4959177b'
          'bef542a1a14f1b5def074c8181ebac0e'
          'f56b35a4420383659798bfa2b31790d5')
 
