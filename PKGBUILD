@@ -5,10 +5,10 @@
 
 pkgname=nixnote-beta
 _pkgname=nixnote2
-pkgver=2.0-beta4
+pkgver=2.0_beta4
 _pkgver="NixNote2%20-%20Beta%204"
 _beta_release="beta4"
-pkgrel=1
+pkgrel=2
 pkgdesc="Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux."
 url="http://www.sourceforge.net/projects/nevernote/"
 arch=('x86_64' 'i686')
