@@ -1,6 +1,6 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 pkgname=qarte
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Allow you to browse into the archive of arte+7 & arteLiveWeb sites and to record your prefered videos.'
 url='https://launchpad.net/qarte'
@@ -9,7 +9,7 @@ license=('GPL3')
 source=(http://ppa.launchpad.net/vincent-vandevyvre/vvv/ubuntu/pool/main/q/qarte/${pkgname}_${pkgver}.orig.tar.gz)
 depends=('python2-pyqt4' 'python2-notify' 'rtmpdump')
 optdepends=('cronie: for differed download')
-md5sums=('f5748ea3a1527a0817b5a37db8221831')
+md5sums=('99b9b7b85c855686243c984ce60bbe1d')
 
 package() {
 	cd $srcdir/${pkgver}
