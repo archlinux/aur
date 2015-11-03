@@ -1,0 +1,27 @@
+diff --git a/a/python/console/console.py b/b/python/console/console.py
+index c85c107..6406f12 100644
+--- a/python/console/console.py
++++ b/python/console/console.py
+@@ -25,7 +25,6 @@ from PyQt4.QtGui import QDockWidget, QToolBar, QToolButton, QWidget,\
+     QSplitter, QTreeWidget, QAction, QFileDialog, QCheckBox, QSizePolicy, QMenu, QGridLayout, QApplication, \
+     QDesktopServices
+ from PyQt4.QtGui import QVBoxLayout
+-from PyQt4 import pyqtconfig
+ from qgis.utils import iface
+ from console_sci import ShellScintilla
+ from console_output import ShellOutputScintilla
+@@ -36,8 +35,13 @@ from qgis.gui import QgsFilterLineEdit
+ 
+ import sys
+ 
+-_console = None
++try:
++  from PyQt4.QtCore import QT_VERSION # works if PyQt4 was built with configure-ng.py
++except ImportError:
++  from PyQt4 import pyqtconfig # works if built with configure.py
++  QT_VERSION = pyqtconfig.Configuration().qt_version
+ 
++_console = None
+ 
+ def show_console():
+     """ called from QGIS to open the console """

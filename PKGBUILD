@@ -10,15 +10,16 @@
 
 pkgname=qgis-git
 _pkgname=${pkgname//-git}
-_pkgver=2.11
-pkgver=2.11.0
-pkgrel=4
+_pkgver=2.13
+pkgver=2.13.0
+pkgrel=1
 pkgdesc='QGIS (master) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 # https://raw.githubusercontent.com/qgis/QGIS/final-2_6_0/INSTALL
 depends=('qt4'
+         'qca-qt4'
          'proj'
          'geos'
          'sqlite'
@@ -56,11 +57,11 @@ install="$pkgname.install"
 source=("${_pkgname}::git://github.com/qgis/QGIS.git"
         "$pkgname.png"
         "$pkgname.sh"
-        "https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py")
+        "console_pyqt4.diff")
 md5sums=('SKIP'
          'e9406ac7c4a2cbb36f820c4602660590'
          '59f82f01838d37d895312bf0c17ddc1e'
-         '57efd9c869ed2d0a50fb7cf35048d99d')
+         '636b0fd147d19f50e82080a5819ae10a')
 
 pkgver() {
   cd $_pkgname
@@ -73,7 +74,7 @@ pkgver() {
 prepare() {
    cd $_pkgname
 
-   mv "$srcdir/console.py" python/console/
+   patch -Np1 -i "$srcdir/console_pyqt4.diff"
 
    # Fixing by hand shebang for .py files.
    find . -iname '*.py' | xargs sed -ie 's:^#!/usr/bin/env python$:#!/usr/bin/env python2:'
