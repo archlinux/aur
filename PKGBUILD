@@ -4,7 +4,7 @@
 # Contributor: Felix Yan <felixonmars [AT] gmail.com>
 
 pkgname=fcitx-sogoupinyin
-pkgver=2.0.0.0066
+pkgver=2.0.0.0068
 pkgrel=1
 pkgdesc="Sogou Pinyin for Linux"
 arch=('x86_64' 'i686')
@@ -15,14 +15,14 @@ depends=('fcitx' 'opencc' 'libidn' 'fcitx-qt4' 'lsb-release' 'xorg-xprop')
 if [ "${CARCH}" = "i686" ]; then
     _LIB_DIR=i386-linux-gnu
     _ARCH=i386
-    _time=1445001029
-    md5sums=('1bfded4d26fc95672236dab744482d8c'
+    _time=1446541532
+    md5sums=('d04b49551f4fd329e77f6249bf6f4e26'
              '60b1dcd637c932cf4f3bfaed797f5401')
 else
     _LIB_DIR=x86_64-linux-gnu
     _ARCH=amd64
-    _time=1445002254
-    md5sums=('cb3662b999bbded58178ecc0f45369c9'
+    _time=1446541585
+    md5sums=('8dea349e467f386f3c877555f9173925'
              '60b1dcd637c932cf4f3bfaed797f5401')
 fi
 
