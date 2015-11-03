@@ -3,14 +3,14 @@
 
 pkgname=ccm
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cassandra Cluster Manager"
 arch=('any')
 license=('Apache')
 url="https://github.com/pcmanus/ccm"
-makedepends=('python-setuptools' 'python-yaml' 'python-six' 'git'
-             'python-psutil' 'apache-ant' 'java-environment')
-checkdepends=()
+depends=('python>=3', 'python-setuptools' 'python-yaml' 'python-six'
+         'python-psutil' 'apache-ant' 'java-environment')
+makedepends=('git')
 source=("git+https://github.com/pcmanus/ccm.git#tag=ccm-$pkgver")
 sha256sums=('SKIP')
 
