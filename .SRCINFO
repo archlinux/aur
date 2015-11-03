@@ -1,12 +1,13 @@
 pkgbase = gnome-news-git
 	pkgdesc = A GNOME 3 Feed Reader
 	pkgver = r192.9ec458d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ignatenkobrain/gnome-news
 	install = gnome-news.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = appstream-glib
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = git
