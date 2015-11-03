@@ -26,8 +26,8 @@ package() {
   install -d "${pkgdir}/usr/share"
   ln -s ../../opt/slack/usr/share/slack "${pkgdir}/usr/share/slack"
 
-  install -Dm644 "${srcdir}/usr/share/pixmaps/slack.png" "${pkgdir}/usr/share/pixmaps/slack.png"
-  install -Dm644 "${srcdir}/usr/share/applications/slack.desktop" "${pkgdir}/usr/share/applications/slack.desktop"
-  install -Dm644 "${srcdir}/usr/share/lintian/overrides/slack" "${pkgdir}/usr/share/lintian/overrides/slack"
-  install -Dm644 "${srcdir}/usr/share/doc/slack/copyright" "${pkgdir}/usr/share/doc/slack/copyright"
+  install -Dm644 "${pkgdir}/opt/slack/usr/share/pixmaps/slack.png" "${pkgdir}/usr/share/pixmaps/slack.png"
+  install -Dm644 "${pkgdir}/opt/slack/usr/share/applications/slack.desktop" "${pkgdir}/usr/share/applications/slack.desktop"
+  install -Dm644 "${pkgdir}/opt/slack/usr/share/lintian/overrides/slack" "${pkgdir}/usr/share/lintian/overrides/slack"
+  install -Dm644 "${pkgdir}/opt/slack/usr/share/doc/slack/copyright" "${pkgdir}/usr/share/doc/slack/copyright"
 }
