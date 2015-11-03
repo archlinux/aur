@@ -109,9 +109,6 @@ build() {
   cd "${srcdir}/${pkgbase}/src"
 
   msg "Starting make..."
-  # Get make -j option from $MAKEFLAGS
-  _jobs=`sed -n -e "s/.*--jobs=\([0-9]\+\).*/\1/p" -e "s/.*-j *\([0-9]\+\).*/\1/p" <<< "$MAKEFLAGS"`
-  _jobs=${_jobs:-1}
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/ibus/ibus.gyp:ibus_mozc renderer/renderer.gyp:mozc_renderer "
   [[ "$_emacs_mozc" == "yes" ]] && _targets+="unix/emacs/emacs.gyp:mozc_emacs_helper "
@@ -120,7 +117,7 @@ build() {
         NM NM_host NM_target READELF READELF_host READELF_target
   QTDIR=$_qt4dir GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" \
     python2 build_mozc.py gyp
-  python2 build_mozc.py build -c $_bldtype -j $_jobs $_targets
+  python2 build_mozc.py build -c $_bldtype $_targets
 
   sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' \
          out_linux/${_bldtype}/gen/unix/ibus/mozc.xml
