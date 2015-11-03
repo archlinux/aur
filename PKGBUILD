@@ -2,13 +2,13 @@
 
 pkgname=feeluown-git
 _pkgname=FeelUOwn
-pkgver=20151002
+pkgver=20151102
 pkgrel=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
 arch=("any")
 url="https://github.com/cosven/FeelUOwn"
 license=('MIT')
-depends=('python-pyqt5' 'qt5-webkit' 'python-xlib' 'qt5-multimedia' 'python-requests' 'python-quamash-qt5' 'xdg-utils')
+depends=('python-pyqt5' 'qt5-webkit' 'python-xlib' 'qt5-multimedia' 'python-requests' 'python-quamash' 'xdg-utils')
 optdepends=('vlc')
 makedepends=('git')
 provides=("feeluown")
@@ -53,11 +53,9 @@ EOF
 
 package() {
     cd "$srcdir/$_pkgname"
-    find ./src -type f -exec install -Dm644 {} \
+    find ./{src,icons} -type f -exec install -Dm644 {} \
         "${pkgdir}/usr/share/${pkgname}/{}" \;
 
-    find ./icons -type f -exec install -Dm644 {} \
-        "${pkgdir}/usr/share/${pkgname}/{}" \;
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -Dm644 "${srcdir}/${_desktop}" "${pkgdir}/usr/share/applications/${_desktop}"
