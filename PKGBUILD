@@ -26,5 +26,5 @@ package() {
 
   ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/
-  install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/0xdbe.png" "${pkgdir}/usr/share/pixmaps/0xdbe.png"
+  install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
