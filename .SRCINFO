@@ -1,0 +1,15 @@
+pkgbase = gitbook-editor
+	pkgdesc = Gitbook Editor - Write and publish books
+	pkgver = 4.1.5
+	pkgrel = 1
+	url = https://www.gitbook.com/editor
+	arch = i686
+	arch = x86_64
+	license = custom
+	source_i686 = gitbook-editor-4.1.5-linux-ia32.deb::http://downloads.editor.gitbook.com/download/linux-32-bit
+	sha256sums_i686 = dfdf00cdbfe08ae71c0bb315ec9eaae8ed93290686d7f7745465014e1757f742
+	source_x86_64 = gitbook-editor-4.1.5-linux-x64.deb::http://downloads.editor.gitbook.com/download/linux-64-bit
+	sha256sums_x86_64 = 55ae09b4b891ac2f3cd28feac2eb7bf02fe5b1d78ca5d4079b3b00dd82881a44
+
+pkgname = gitbook-editor
+
