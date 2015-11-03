@@ -9,11 +9,20 @@ post_install() {
 post_upgrade() {
 	old=`expr $2 : '\([0-9]*\.[0-9]*\.\)'`"0"
 	new=`expr $1 : '\([0-9]*\.[0-9]*\.\)'`"0"
+	if [ $old == $new ]
+	then
+		if [ $old == '3.8.0' ]
+		then
+			old='3.7.0'
+		fi	
+	fi
 	rm var/lib/dolibarr/install.lock
 	cd usr/share/webapps/dolibarr/htdocs/install
-	php upgrade.php $old $new
-	php upgrade2.php $old $new
+	echo 'upgrade.php' $old $new
+	php upgrade.php $old $new > /dev/null
+	echo 'upgrade2.php' $old $new
+	php upgrade2.php $old $new > /dev/null
 	cd /
-	touch var/lib/dolibarr/install.lock
-	chmod 444 var/lib/dolibarr/install.lock
+	#touch var/lib/dolibarr/install.lock
+	#chmod 444 var/lib/dolibarr/install.lock
 }
