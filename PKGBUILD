@@ -5,7 +5,7 @@ pkgname=honeyd
 pkgver=1.5c
 pkgrel=5
 pkgdesc="A small daemon that creates virtual hosts on a network."
-depends=('libdnet' ' libevent' 'libpcap')
+depends=('libdnet' 'libevent' 'libpcap')
 source=(http://www.honeyd.org/uploads/$pkgname-$pkgver.tar.gz)
 md5sums=('9887b44333e380a2205f64fa245cb727')
 arch=(i686 x86_64 arm)
@@ -14,19 +14,24 @@ license=("GPL")
 
 build()
 {
-	cd $srcdir/$pkgname-$pkgver
-  	mkdir -p $pkgdir/usr/share/honeyd
+	cd "$srcdir/$pkgname-$pkgver"
+  	./configure --prefix=/usr
+	make
+}
+
+check() {
+	cd "$srcdir/$pkgname-$pkgver"
+	make -k check
 }
 
 package()
 {
-	./configure --prefix=/usr
-	make || return 1
-	make prefix=$pkgdir/usr install
-}
+	mkdir -p $pkgdir/usr/share/honeyd
 
-permissions()
-{
+	cd "$srcdir/$pkgname-$pkgver"
+	#make prefix=$pkgdir/usr install
+	make DESTDIR="$pkgdir/usr" install
+
 	# Fix permissions on webserver dirs
 	for dir in webserver webserver/htdocs webserver/htdocs/graphs \
 	webserver/htdocs/images webserver/htdocs/styles webserver/htdocs/templates \
