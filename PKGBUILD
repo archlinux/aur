@@ -3,7 +3,7 @@
 pkgname=glide-bin
 _pkgname=glide
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified Go project management, dependency management, and vendoring."
 arch=('x86_64' 'i686')
 url=('https://github.com/Masterminds/glide')
@@ -24,5 +24,5 @@ fi
 package() {
     cd $srcdir/linux-$_PKGARCH
     install -Dm755 "$_pkgname" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
