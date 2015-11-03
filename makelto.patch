@@ -1,0 +1,59 @@
+--- linux-misc/scripts/Makefile.ltold	2015-11-03 22:25:09.836365195 +0100
++++ linux-misc/scripts/Makefile.lto	2015-11-03 22:26:53.597051359 +0100
+@@ -16,56 +16,6 @@
+ 
+ NO_LTO :=
+ 
+-# 4.7 works mostly, but it sometimes loses symbols on large builds
+-# This can be worked around by marking those symbols visible,
+-# but that is fairly ugly and the problem is gone with 4.8
+-# So only allow it with 4.8 for now.
+-ifneq ($(call cc-ifversion, -ge, 0408,y),y)
+-    NO_LTO := y
+-    $(warning "WARNING: GCC $(call cc-version) too old for LTO/WHOPR. CONFIG_LTO disabled")
+-endif
+-
+-# Note that even 4.8 is deprecated, as it is much slower building
+-# than newer compilers.
+-ifneq ($(call cc-ifversion, -ge, 0409,y),y)
+-    $(warning "WARNING: GCC $(call cc-version) builds slower and is deprecated for LTO.")
+-endif
+-
+-# We need HJ Lu's Linux binutils because mainline binutils does not
+-# support mixing assembler and LTO code in the same ld -r object.
+-# Should check if the gcc plugin ld is the expected one too
+-# XXX some Fedora binutils should also support it. How to check for that?
+-ifneq ($(call ld-ifversion,-ge,22710001,y),y)
+-    NO_LTO := 1
+-    $(warning "WARNING: Too old linker version $(call ld-version) for kernel LTO.")
+-    $(warning "WARNING: You need Linux binutils. CONFIG_LTO disabled.")
+-endif
+-
+-# Check for options that need specific compiler versions
+-
+-# needs -mrecord-mcount support
+-ifeq (${CONFIG_FUNCTION_TRACER},y)
+-ifneq ($(call cc-ifversion,-ge, 0500,y),y)
+-    NO_LTO := 1
+-    $(warning "WARNING: CONFIG_FUNCTION_TRACER needs at least gcc 5 for LTO. Disabling LTO.")
+-endif
+-endif
+-
+-ifeq (${CONFIG_MODVERSIONS},y)
+-ifneq ($(call cc-ifversion,-ge, 0409,y),y)
+-    NO_LTO := 1
+-    $(warning "WARNING: CONFIG_MODVERSIONS needs at least gcc 4.9 for LTO. Disabling LTO.")
+-endif
+-endif
+-
+-# needs per file -pg
+-ifeq (${CONFIG_GCOV_KERNEL},y)
+-ifneq ($(call cc-ifversion,-ge, 0500,y),y)
+-    NO_LTO := 1
+-    $(warning "WARNING: CONFIG_GCOV_KERNEL needs at least gcc 5.0 for LTO. Disabling LTO.")
+-endif
+-endif
+-
+ # gcc 5.0 supports __attribute__((no_reorder)), so we don't
+ # need to disable reordering globally, but can only use
+ # it on init calls.

@@ -8,26 +8,28 @@ pkgbase=linux-ltofast-git
 _srcname=linux-misc
 pkgver=4.0rc7.r93.g6842019
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.kernel.org"
+# LTO-enabled kernel:
 #http://halobates.de/
+# march=native support:
+#https://github.com/graysky2/kernel_gcc_patch
+# one of the earliest signs of successful -Ofast compilation:
+#http://duopetalflower.blogspot.be/2011/06/custom-kernel-26391-ubuntu-amd64_23.html
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'binutils-hjl-git')
-# special makedepend:
-# rebuild your gcc with binutils-hjl-git
-# ensure that gcc is compiled with --enable-lto and --with-plugin-ld=/usr/bin/ld
 options=('!strip')
 source=('git+https://github.com/andikleen/linux-misc.git#branch=lto-4.0'
         # patch to enable gcc architecture support
         'git+https://github.com/graysky2/kernel_gcc_patch.git'
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.x86_64' 'makelto.patch'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             'SKIP'
-            'e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2'
             'db4d602900f21772a06fd55d8210cb743d8180a7a82728c06a46759172c20d33'
+            'e72c31e2ea3ac0a14d30d673872b32053bba719eb0523f22f54f09d17165b2f1'
             'de452ef564907a96bdccf9b1f68dddee152f2fe8c7095e017ddec131bedef9a1')
 
 _kernelname=${pkgbase#linux}
@@ -41,17 +43,18 @@ pkgver() {
 prepare() {
   cd "${_srcname}"
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  msg "Apply gcc architecture support"
+  patch -l -p1 --verbose < "${srcdir}"/kernel_gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch
+  #we need the gcc-ld wrapper but this fails the Makefile.lto tests
+  patch -p1 < "${srcdir}"/makelto.patch
+  
+  cat "${srcdir}/config.x86_64" > ./.config
 
   # set localversion to git commit
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   
-  # enable LTO stuff
+  msg "enable LTO stuff"
   ./scripts/config  --disable function_tracer \
                     --disable function_graph_tracer \
                     --disable stack_tracer --enable lto_menu \
@@ -65,12 +68,9 @@ prepare() {
 
   # get kernel version
   make prepare
-  
-  # Apply gcc architecture support
-  git apply "${srcdir}"/kernel_gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch
-  
+    
   #fix Makefile for optimizing CFLAGS
-  sed -i "s|-O2|-Ofast -march=native -fuse-ld=gold|g" ./Makefile
+  sed -i "s|-O2|-Ofast -march=native -funroll-loops|g" ./Makefile
   #fix Makefile to ensure use of gcc-ar and gcc-nm
   sed -i "s|)ar|)gcc-ar|g" ./Makefile
   sed -i "s|)nm|)gcc-nm|g" ./Makefile
@@ -89,11 +89,12 @@ prepare() {
 
 build() {
   cd "${_srcname}"
-  export CFLAGS="-Ofast -march=native -mtune=native -flto -fwhole-program"
+  export CFLAGS="-flto -Ofast -march=native -funroll-loops"
   export AR=gcc-ar
   export NM=gcc-nm
+  export PATH="${srcdir}"/"${_srcname}"/scripts:$PATH
   
-  make ${MAKEFLAGS} CONFIG_LTO=y LOCALVERSION=bzImage 
+  make ${MAKEFLAGS} AR=gcc-ar NM=gcc-nm LD=gcc-ld CONFIG_LTO=y LOCALVERSION=bzImage 
 
 }
 

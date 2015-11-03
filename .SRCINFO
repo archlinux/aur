@@ -2,7 +2,6 @@ pkgbase = linux-ltofast-git
 	pkgver = 4.0rc7.r93.g6842019
 	pkgrel = 1
 	url = http://www.kernel.org
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -15,13 +14,13 @@ pkgbase = linux-ltofast-git
 	options = !strip
 	source = git+https://github.com/andikleen/linux-misc.git#branch=lto-4.0
 	source = git+https://github.com/graysky2/kernel_gcc_patch.git
-	source = config
 	source = config.x86_64
+	source = makelto.patch
 	source = linux-ltofast-git.preset
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2
 	sha256sums = db4d602900f21772a06fd55d8210cb743d8180a7a82728c06a46759172c20d33
+	sha256sums = e72c31e2ea3ac0a14d30d673872b32053bba719eb0523f22f54f09d17165b2f1
 	sha256sums = de452ef564907a96bdccf9b1f68dddee152f2fe8c7095e017ddec131bedef9a1
 
 pkgname = linux-ltofast-git
