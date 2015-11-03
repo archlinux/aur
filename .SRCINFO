@@ -1,6 +1,6 @@
 pkgbase = dolibarr
 	pkgdesc = ERP/CRM for small and medium companies
-	pkgver = 3.8.0
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = http://www.dolibarr.org/
 	install = dolibarr.install
@@ -11,10 +11,10 @@ pkgbase = dolibarr
 	options = !strip
 	options = emptydirs
 	backup = etc/webapps/dolibarr/conf.php
-	source = http://downloads.sourceforge.net/project/dolibarr/Dolibarr%20ERP-CRM/3.8.0/dolibarr-3.8.0.tgz
+	source = http://downloads.sourceforge.net/project/dolibarr/Dolibarr%20ERP-CRM/3.8.1/dolibarr-3.8.1.tgz
 	source = nginx.conf.example
 	source = apache.conf.example
-	md5sums = 64da8048764f2e82e70b412e1a5b10c4
+	md5sums = d8b0b1c57b6a88cb50cdf913662a8e32
 	md5sums = 7ba6f2def8caabbd8321d91067c01b16
 	md5sums = 49d7f5ecb07ee9067fd995eb57b8e4c7
 
