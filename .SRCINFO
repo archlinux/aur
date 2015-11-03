@@ -1,7 +1,7 @@
 pkgbase = lxdm-themes
 	pkgdesc = Archlinux, ArchlinuxFull, ArchlinuxTop, Arch-Dark, Arch-Stripes and IndustrialArch lxdm themes
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.archlinux.org/index.php/LXDM#Themes
 	install = lxdm-themes.install
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = lxdm-themes
 	sha256sums = 09c66ccc6de32c6685b4f27cbfd2f2a2a679d4e961eebcbc80c294eb8d0f47d3
 	sha256sums = ad98f832de33909f321e87b10e0af2da156b91e0abf4b7e877e506dbed2fdd6e
 	sha256sums = SKIP
-	sha256sums = 2e6ad13c483559e3778f81ba4cf3b88b96034f5b38877ac3dad85b9b16def6e3
+	sha256sums = 2fa343b164b4ee6b1891bbf2eb52fc6605ee673323893b443fba32b46949f647
 
 pkgname = lxdm-themes
 
