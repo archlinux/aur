@@ -18,14 +18,14 @@ sha1sums=('74ac9d38bd1d4b386fc236059ea479cc5927f292')
 sha256sums=('ff97d1e9360b5d4fa535f88df87710da8dcb100b33ebb09c4dda031aa01ff9a7')
 
 build() {
-  cd $srcdir/deadbeef-fb-20150930-*
+  cd ${srcdir}/deadbeef-fb-20150930-*
   ./autogen.sh
   ./configure --prefix=/usr --disable-gtk2
   make
 }
 
 package() {
-  cd $srcdir/deadbeef-fb-20150930-*
+  cd ${srcdir}/deadbeef-fb-20150930-*
   make DESTDIR="$pkgdir" install
 }
 
