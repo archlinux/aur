@@ -1,7 +1,7 @@
 pkgbase = qgis
 	pkgdesc = QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats
-	pkgver = 2.10.1
-	pkgrel = 4
+	pkgver = 2.12.0
+	pkgrel = 1
 	url = http://qgis.org/
 	install = qgis.install
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = qgis
 	makedepends = perl
 	makedepends = git
 	depends = qt4
+	depends = qca-qt4
 	depends = proj
 	depends = geos
 	depends = sqlite
@@ -34,17 +35,17 @@ pkgbase = qgis
 	depends = python2-pytz
 	depends = python2-httplib2
 	depends = libspatialite
-	depends = icu
 	depends = spatialindex
+	depends = icu
 	optdepends = grass: GRASS plugin support
 	optdepends = fcgi: QGIS Map Server support
 	optdepends = osgearth: QGIS Globe plugin support
 	optdepends = gpsbabel: GPS toolbar support
-	provides = qgis=2.10.1
-	source = qgis::git://github.com/qgis/QGIS.git#branch=release-2_10
-	source = https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py
+	provides = qgis=2.12.0
+	source = qgis::git://github.com/qgis/QGIS.git#branch=release-2_12
+	source = console_pyqt4.diff
 	md5sums = SKIP
-	md5sums = 57efd9c869ed2d0a50fb7cf35048d99d
+	md5sums = 636b0fd147d19f50e82080a5819ae10a
 
 pkgname = qgis
 

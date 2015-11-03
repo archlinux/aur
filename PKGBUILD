@@ -9,15 +9,16 @@
 # Uncomment them in the build() portion if you'd like enabled during the build.
 
 pkgname=qgis
-_pkgver=2.10
-pkgver=2.10.1
-pkgrel=4
+_pkgver=2.12
+pkgver=2.12.0
+pkgrel=1
 pkgdesc='QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 # https://raw.githubusercontent.com/qgis/QGIS/final-2_6_0/INSTALL
 depends=('qt4'
+         'qca-qt4'
          'proj'
          'geos'
          'sqlite'
@@ -38,8 +39,8 @@ depends=('qt4'
          'python2-pytz'
          'python2-httplib2'
          'libspatialite'
-         'icu'
-         'spatialindex')
+         'spatialindex'
+         'icu')
 makedepends=('cmake'
              'flex'
              'bison'
@@ -53,9 +54,9 @@ optdepends=('grass: GRASS plugin support'           # Uncomment relevant cmake o
 provides=("$pkgname=$pkgver")
 install="$pkgname.install"
 source=("${pkgname}::git://github.com/qgis/QGIS.git#branch=release-${_pkgver//./_}"
-        "https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py")
+        "console_pyqt4.diff")
 md5sums=('SKIP'
-         '57efd9c869ed2d0a50fb7cf35048d99d')
+         '636b0fd147d19f50e82080a5819ae10a')
 
 pkgver() {
   cd $pkgname
@@ -65,7 +66,7 @@ pkgver() {
 prepare() {
    cd $pkgname
 
-   mv "${srcdir}/console.py" python/console/
+   patch -Np1 -i "$srcdir/console_pyqt4.diff"
 
    # Fixing by hand shebang for .py files.
    find . -iname '*.py' | xargs sed -ie 's:^#!/usr/bin/env python$:#!/usr/bin/env python2:'
