@@ -2,7 +2,7 @@
 # Contributor: Okki <okki666@free.fr>
 pkgname=dolibarr
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ERP/CRM for small and medium companies"
 arch=('any')
 url="http://www.dolibarr.org/"
@@ -19,7 +19,7 @@ source=("http://downloads.sourceforge.net/project/$pkgname/Dolibarr%20ERP-CRM/$p
         apache.conf.example)
 md5sums=('d8b0b1c57b6a88cb50cdf913662a8e32'
          '7ba6f2def8caabbd8321d91067c01b16'
-         '49d7f5ecb07ee9067fd995eb57b8e4c7')
+         'd468572a7aa663d958c302b3e15147f1')
 
 prepare() {
 	sed -e "3,5d" \
