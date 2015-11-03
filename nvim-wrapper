@@ -8,19 +8,26 @@ import subprocess
 import dbus
 from time import time
 
+
+APP_ID = 'org.neovim'
+CLASS = 'neovim'
+NAME = 'Neovim'
+
 SERVER_CMD = [
     '/usr/lib/gnome-terminal/gnome-terminal-server',
-    '--app-id=org.neovim',
+    '--app-id', APP_ID,
+    '--class', CLASS,
+    '--name', NAME,
 ]
 TERM_CMD = [
     'gnome-terminal',
-    '--name=Neovim',
+    '--app-id', APP_ID,
+    '--class', CLASS,
+    '--name', NAME,
     '--hide-menubar',
-    '--geometry=90x60',
-    '--app-id=org.neovim',
-    '--class=neovim',
+    '--geometry', '90x60',
     '-x',
-    'nvim'
+    'nvim',
 ]
 
 def main():
@@ -29,21 +36,24 @@ def main():
 
     # launch the terminal server with a custom app-id
     # and window class (so the .desktop file gets associated)
-    if not session_bus.name_has_owner('org.neovim'):
+    if not session_bus.name_has_owner(APP_ID):
         subprocess.Popen(SERVER_CMD)
 
     # wait until the name is registered, or 2 seconds pass (when launching from
     # cold cache it might more time)
     timeout = time() + 2
-    while not session_bus.name_has_owner('org.neovim') and time() <= timeout:
+    while not session_bus.name_has_owner(APP_ID) and time() <= timeout:
         pass
     # launch nvim in a gnome-terminal instance
-    if session_bus.name_has_owner('org.neovim'):
+    if session_bus.name_has_owner(APP_ID):
+        env = os.environ.copy()
+        env['NVIM_TUI_ENABLE_CURSOR_SHAPE'] = '1'
+        env['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
         with open(os.devnull, 'wb') as fnull:
             subprocess.Popen(TERM_CMD + sys.argv[1:],
                              stdout=fnull,
-                             stderr=fnull)
-                             # preexec_fn=os.setpgrp)
+                             stderr=fnull,
+                             env=env)
 
 if __name__ == '__main__':
     main()
