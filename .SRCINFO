@@ -1,0 +1,29 @@
+pkgbase = pidgin-omegle
+	pkgdesc = A plugin to use the omegle.com service in Pidgin
+	pkgver = r17
+	pkgrel = 1
+	url = http://code.google.com/p/pidgin-omegle/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = json-glib
+	depends = pidgin
+	source = http://pidgin-omegle.googlecode.com/svn-history/r17/trunk/libomegle.c
+	source = http://pidgin-omegle.googlecode.com/svn-history/r17/trunk/libomegle.h
+	source = http://pidgin-omegle.googlecode.com/svn-history/r17/trunk/om_connection.c
+	source = http://pidgin-omegle.googlecode.com/svn-history/r17/trunk/om_connection.h
+	source = omegle-16.png
+	source = omegle-22.png
+	source = omegle-48.png
+	source = omegle.svg
+	md5sums = 1467cce331515d1c062ce2253e7f8745
+	md5sums = 7c8b987f1159972d68af6b70e978b81b
+	md5sums = 3e5491b671c7a9963d388a6201cea475
+	md5sums = 44d9cba461358f1319f7304df748d562
+	md5sums = a315958c69c37fea468cd540f8c04e04
+	md5sums = 2fdd7e3a5ab5e3d7a9a75d2d1a608fb2
+	md5sums = 6223cf15987fed7296fa3ef7c2b6b2c8
+	md5sums = c68267eeb0c2e49132b1ca82ece25d63
+
+pkgname = pidgin-omegle
+
