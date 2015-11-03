@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-test-mock-lwp-dispatch'
-pkgver='0.06'
-pkgrel='3'
+pkgver='0.07'
+pkgrel='1'
 pkgdesc="mocks LWP::UserAgent and dispatches your requests/responses"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -9,9 +9,9 @@ options=('!emptydirs')
 depends=('perl-libwww' 'perl-test-mockobject')
 makedepends=('perl-test-exception')
 url='https://metacpan.org/release/Test-Mock-LWP-Dispatch'
-source=("http://cpan.metacpan.org/authors/id/T/TA/TADAM/Test-Mock-LWP-Dispatch-${pkgver}.tar.gz")
-md5sums=('601e663c1900c08b6f28ef27123e9eee')
-sha512sums=('ec0f81e6c91881f80b3c3e0fdf0618fbefd5fff8fc5cc8604b000b699103ba991b49206ecb2c47a9b59edeb9495e6166a069ba02ba3d3ea8ed11a5c84b5d1878')
+source=("https://cpan.metacpan.org/authors/id/T/TA/TADAM/Test-Mock-LWP-Dispatch-${pkgver}.tar.gz")
+md5sums=('a41c1924bf6b01b69ecea160a9df7d9d')
+sha512sums=('2acc8839d82b666d183fb429cec6449b66e44116a9ba19947289f274399e034db4da115b0a88971c17f995bb64bf1af19d7f5d0e545ab89790d4201bdd33c5d7')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
