@@ -1,41 +1,46 @@
-# Maintainer: Anthony C <kurodroid.1@gmail.com>
-# Contributor: Michael P <ptchinster@archlinux.us>
+# This file is part of BlackArch Linux ( http://blackarch.org ).
+# See COPYING for license details.
 
-pkgname=honeyd
-pkgver=1.5c
-pkgrel=5
-pkgdesc="A small daemon that creates virtual hosts on a network."
-depends=('libdnet' 'libevent' 'libpcap')
-source=(http://www.honeyd.org/uploads/$pkgname-$pkgver.tar.gz)
-md5sums=('9887b44333e380a2205f64fa245cb727')
-arch=(i686 x86_64 arm)
-url="http://www.honeyd.org"
-license=("GPL")
+# TODO: check license
+pkgname='honeyd'
+pkgver='1.6.7'
+pkgrel=8
+pkgdesc='A small daemon that creates virtual hosts on a network.'
+url='https://github.com/DataSoft/Honeyd/'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL')
+depends=('libdnet' 'libevent' 'libedit' 'libpcap' 'pcre' 'zlib' 'tcl' 'python2')
+options=('!makeflags')
+source=("https://github.com/DataSoft/Honeyd/archive/honeyd-${pkgver}.tar.gz"
+        'python.patch')
+sha1sums=('a036409d59e92c0903b41ba4e8392aed499f6867'
+          '85a76a6b8e05f22a243f62774343ed0a08ceb157')
 
-build()
-{
-	cd "$srcdir/$pkgname-$pkgver"
-  	./configure --prefix=/usr
-	make
+build() {
+  cd "$srcdir/Honeyd-honeyd-$pkgver"
+
+  ./autogen.sh
+
+  ./configure --prefix=/usr
+
+  #patch -p1 -i ../python.patch
+
+  make
+
+  sed -i 's/python/python2/' Makefile
 }
 
-check() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make -k check
-}
+package() {
+  cd "$srcdir/Honeyd-honeyd-$pkgver"
 
-package()
-{
-	mkdir -p $pkgdir/usr/share/honeyd
+  mkdir -p "$pkgdir/usr/share/honeyd"
 
-	cd "$srcdir/$pkgname-$pkgver"
-	#make prefix=$pkgdir/usr install
-	make DESTDIR="$pkgdir/usr" install
+  make prefix="$pkgdir/usr" install
 
-	# Fix permissions on webserver dirs
-	for dir in webserver webserver/htdocs webserver/htdocs/graphs \
-	webserver/htdocs/images webserver/htdocs/styles webserver/htdocs/templates \
-	webserver/htdocs/templates/inc
-		do chmod 755 $pkgdir/usr/share/honeyd/$dir
-	done
+  for dir in webserver webserver/htdocs webserver/htdocs/graphs \
+    webserver/htdocs/images webserver/htdocs/styles \
+    webserver/htdocs/templates webserver/htdocs/templates/inc
+  do
+    chmod 755 "$pkgdir/usr/share/honeyd/$dir"
+  done
 }
