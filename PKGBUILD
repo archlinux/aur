@@ -1,7 +1,7 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=bing-wallpaper-git
-pkgver=r8.2c8d18a
+pkgver=r10
 pkgrel=1
 pkgdesc="Change wallpaper from Bing daily"
 arch=(any)
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s" "$(git rev-list --count HEAD)"
 }
 
 package() {
