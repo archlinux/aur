@@ -2,22 +2,21 @@
 # Contributor: kaptoxic
 
 pkgname=rainlendar-pro
-pkgver=2.12.2
-pkgrel=2
+pkgver=2.13
+pkgrel=1
 pkgdesc="A desktop Calendar, ToDo list and Event list"
 arch=('i686' 'x86_64')
 url="http://www.rainlendar.net/"
 license=('custom')
-depends=('cairo' 'libsm' 'expat>=1.95.8' 'libstdc++5' 'libpng12' 'openssl098' 'librtmp0')
+depends=('cairo' 'libsm' 'expat>=1.95.8' 'libstdc++5' 'libpng12' 'openssl098' 'librtmp0' 'webkitgtk2')
 provides=('rainlendar2')
 conflicts=('rainlendar-beta' 'rainlendar-beta-unstable' 'rainlendar-lite')
 
 if [ "${CARCH}" = 'x86_64' ]; then
     source=(http://www.rainlendar.net/download/Rainlendar-Pro-$pkgver-amd64.tar.bz2)
-    md5sums=('f990558f0e2543f6536bb90a85d44542')
+md5sums=('9001ec61db0d23bac93d3ee2cac12c18')
   else
     source=(http://www.rainlendar.net/download/Rainlendar-Pro-$pkgver-i386.tar.bz2)
-    md5sums=('dfc0d813b97015c4fb188e6c73aedbf9')
 fi
 
 package() {
