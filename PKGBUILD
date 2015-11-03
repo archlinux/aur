@@ -4,7 +4,7 @@
 
 pkgname=solaar
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
 url="http://pwr.github.com/Solaar/"
 license=('GPL2')
