@@ -1,0 +1,18 @@
+pkgbase = perl-iptables-chainmgr
+	pkgdesc = IPTables::ChainMgr - Perl extension for manipulating iptables and ip6tables policies
+	pkgver = 1.4
+	pkgrel = 0
+	url = http://search.cpan.org/~mrash/IPTables-ChainMgr/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = iptables
+	depends = perl-iptables-parse
+	depends = perl-netaddr-ip
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MR/MRASH/IPTables-ChainMgr-1.4.tar.gz
+	md5sums = f322a583ef49c82c0807237542ed5f35
+
+pkgname = perl-iptables-chainmgr
+
