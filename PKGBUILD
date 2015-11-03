@@ -1,7 +1,7 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog-web-interface
 replaces=graylog2-web-interface
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Web interface for Graylog, an open source syslog implementation"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 )
 backup=(etc/graylog/web-interface/graylog-web-interface.conf)
 options=(!strip)
-sha256sums=('6ed042b84dabe5bf649823384807d382c4d5a18334f5183cb06e275e8daea418'
+sha256sums=('6253bf8432fd11bdf2b07cc5e1b88df0bcc72cb92d00070987c20fd2a52dd515'
 			'SKIP'
 			'SKIP')
 
