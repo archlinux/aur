@@ -4,21 +4,25 @@ pkgname=keybase-release
 pkgdesc='release build of the Keybase Go client'
 url='https://keybase.io/docs/cli_kbstage'
 license=('BSD')
-pkgver=39.7f3132e
+pkgver=4310.2bf6d46
 pkgver() {
-  cd "$srcdir/client-beta"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd "$srcdir/client"
+  tag="$(git describe --abbrev=0 --tags)"
+  echo $(git rev-list --count "$tag").$(git rev-parse --short "$tag")
 }
 pkgrel=1
 arch=(i686 x86_64)
 makedepends=(go)
 depends=(gnupg)
 conflicts=(keybase)
-source=('git://github.com/keybase/client-beta')
+source=('git://github.com/keybase/client')
 md5sums=('SKIP')
 
 package() {
-  cd "$srcdir/client-beta"
+  cd "$srcdir/client"
+  tag="$(git describe --abbrev=0 --tags)"
+  git checkout "$tag"
+  cd "$srcdir"
   export GOPATH=`pwd`
   export GO15VENDOREXPERIMENT=1
   mkdir -p src/github.com/keybase
