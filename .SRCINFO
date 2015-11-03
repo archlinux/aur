@@ -1,0 +1,16 @@
+pkgbase = blingbling-git
+	pkgdesc = Fancy Widgets, Popups and signals for Awesome WM
+	pkgver = 185.694029a
+	pkgrel = 1
+	url = https://github.com/cedlemo/blingbling
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = awesome
+	depends = lua-oocairo-git
+	provides = blingbling
+	source = git://github.com/cedlemo/blingbling.git
+	md5sums = SKIP
+
+pkgname = blingbling-git
+
