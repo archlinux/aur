@@ -1,6 +1,6 @@
 pkgbase = thrift-git
 	pkgdesc = Scalable cross-language services framework for IPC/RPC
-	pkgver = 0.9.2.r4347.fa0796d
+	pkgver = 0.9.2.r4362.d6ca81b
 	pkgrel = 1
 	url = http://thrift.apache.org/
 	arch = i686
