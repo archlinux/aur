@@ -17,7 +17,6 @@ depends=('bzip2'
 provides=('unzip')
 conflicts=('unzip')
 source=("http://downloads.sourceforge.net/infozip/unzip${pkgver/./}.tar.gz"
-        'iconv-utf8+CVE-2015-1315.patch::http://www.conostix.com/pub/adv/06-unzip60-alt-iconv-utf8_CVE-2015-1315.patch'
         'CVE-2014-8139.patch::https://bugzilla.redhat.com/attachment.cgi?id=990132'
         'CVE-2014-8140.patch::https://bugzilla.redhat.com/attachment.cgi?id=969621'
         'CVE-2014-8141.patch::https://bugzilla.redhat.com/attachment.cgi?id=969625'
@@ -27,7 +26,6 @@ source=("http://downloads.sourceforge.net/infozip/unzip${pkgver/./}.tar.gz"
         'CVE-2015-7696+CVE-2015-7697_pt1.patch::https://bugzilla.redhat.com/attachment.cgi?id=1073339'
         'CVE-2015-7696+CVE-2015-7697_pt2.patch::https://bugzilla.redhat.com/attachment.cgi?id=1075942')
 sha1sums=('abf7de8a4018a983590ed6f5cbd990d4740f8a22'
-          '9b5d552cc6ab1f9e8b74fbbbcebfee84d46218c2'
           '8ab9aa19e3743245696223035b04cba9d34aa4f6'
           '614c3e7fa7d6da7c60ea2aa79e36f4cbd17c3824'
           '9904365069c5fc72d10e42ce86eb9b4041aedc98'
