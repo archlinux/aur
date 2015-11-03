@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-openblas
 pkgrel=1
-pkgver=0.2.14
+pkgver=0.2.15
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD (mingw-w64)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -12,7 +12,7 @@ makedepends=("mingw-w64-gcc")
 provides=("mingw-w64-blas")
 conflicts=("mingw-w64-blas")
 source=(http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz)
-md5sums=('53cda7f420e1ba0ea55de536b24c9701')
+md5sums=('b1190f3d3471685f17cfd1ec1d252ac9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
