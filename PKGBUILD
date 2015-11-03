@@ -3,22 +3,21 @@
 _python=python2
 pkgname=$_python-elmextensions
 pkgdesc="${_python^} library that contains a few more complex elementary objects for easy importing/usage"
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 arch=('any')
 url='https://github.com/JeffHoogland/python-elm-extensions'
 license=('BSD')
 depends=("$_python-efl")
 source=("https://github.com/JeffHoogland/python-elm-extensions/archive/$pkgver.tar.gz")
-sha256sums=('6833db0b4fba63dd5257a4a86a2fe8b34b1506d7fac64ec7a65163479678d15b')
+sha256sums=('bdda3b8ca9fc9aca43dcd8a65372d0903b28999fd2c4d8a36110dc77ddf0e6be')
 
 package() {
-  cd "$srcdir/python-elm-extensions-$pkgver"
+  cd python-elm-extensions-$pkgver
 
   [[ "$_python" = "python" ]] && _python=python3
   local _pyver="$(pkg-config --modversion $_python)"
-  install -d "$pkgdir/usr/lib/python$_pyver/site-packages/elmextensions/"
-  install -m644 elmextensions/*.py "$pkgdir/usr/lib/python$_pyver/site-packages/elmextensions/"
+  install -Dm644 elmextensions/*.py -t "$pkgdir/usr/lib/python$_pyver/site-packages/elmextensions/"
 
 # compile python files
   $_python -m compileall -q "$pkgdir"

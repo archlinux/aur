@@ -1,13 +1,13 @@
 pkgbase = python2-elmextensions
 	pkgdesc = Python2 library that contains a few more complex elementary objects for easy importing/usage
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/JeffHoogland/python-elm-extensions
 	arch = any
 	license = BSD
 	depends = python2-efl
-	source = https://github.com/JeffHoogland/python-elm-extensions/archive/0.1.3.tar.gz
-	sha256sums = 6833db0b4fba63dd5257a4a86a2fe8b34b1506d7fac64ec7a65163479678d15b
+	source = https://github.com/JeffHoogland/python-elm-extensions/archive/0.2.0.tar.gz
+	sha256sums = bdda3b8ca9fc9aca43dcd8a65372d0903b28999fd2c4d8a36110dc77ddf0e6be
 
 pkgname = python2-elmextensions
 
