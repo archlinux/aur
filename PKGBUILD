@@ -3,15 +3,15 @@
 pkgname=(crispy-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Vanilla-compatible enhanced Doom, Heretic, Hexen, Strife engine"
-pkgver=3.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
 license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('python')
 source=(https://github.com/fabiangreffrath/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('7aeae60ecd7b18e41678e89a67f04e075d88338466f5efe6e988701c4b6c851f')
+sha256sums=('e94a7fbc1859094c2c745b28f6f097194a1072a5fb4048d8a032ce1e76584dbe')
 
 prepare() {
   # GitHub's generated archive prefix kind of sucks.
@@ -51,7 +51,7 @@ package_crispy-common() {
   rm -f crispy-{doom,heretic,hexen,strife}{,-setup}
 
   cd "${pkgdir}"/usr/share
-  rm -rf doc man/man5
+  rm -rf appdata bash-completion doc man/man5
   rm -rf applications/crispy-{doom,heretic,hexen,strife}.desktop \
     applications/screensavers
   cd man/man6
@@ -76,7 +76,9 @@ package_crispy-doom() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/crispy-{heretic,hexen,strife}
+  rm -f appdata/crispy-{heretic,hexen,strife}.appdata.xml
   rm -rf applications/crispy-{setup,heretic,hexen,strife}.desktop icons
+  rm -f bash-completion/completions/crispy-{heretic,hexen,strife}
   rm -rf man/man5
   rm -f man/man?/crispy-{heretic,hexen,strife,setup,server}* \
     man/man6/chocolate* man/man6/*-setup.6
@@ -96,8 +98,10 @@ package_crispy-heretic() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/crispy-{doom,hexen,strife}
+  rm -f appdata/crispy-{doom,hexen,strife}.appdata.xml
   rm -rf applications/crispy-{setup,doom,hexen,strife}.desktop \
     applications/screensavers icons
+  rm -f bash-completion/completions/crispy-{doom,hexen,strife}
   rm -rf man/man5
   rm -f man/man?/crispy-{doom,hexen,strife,setup,server}* \
     man/man6/chocolate* man/man6/*-setup.6
@@ -116,8 +120,10 @@ package_crispy-hexen() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/crispy-{doom,heretic,strife}
+  rm -f appdata/crispy-{doom,heretic,strife}.appdata.xml
   rm -rf applications/crispy-{setup,doom,heretic,strife}.desktop \
     applications/screensavers icons
+  rm -f bash-completion/completions/crispy-{doom,heretic,strife}
   rm -rf man/man5
   rm -f man/man?/crispy-{doom,heretic,strife,setup,server}* \
     man/man6/chocolate* man/man6/*-setup.6
@@ -136,8 +142,10 @@ package_crispy-strife() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/crispy-{doom,heretic,hexen}
+  rm -f appdata/crispy-{doom,heretic,hexen}.appdata.xml
   rm -rf applications/crispy-{setup,doom,heretic,hexen}.desktop \
     applications/screensavers icons
+  rm -f bash-completion/completions/crispy-{doom,heretic,hexen}
   rm -rf man/man5
   rm -f man/man?/crispy-{doom,heretic,hexen,setup,server}* \
     man/man6/chocolate* man/man6/*-setup.6
