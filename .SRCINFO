@@ -1,7 +1,7 @@
 pkgbase = python-misaka
-	pkgdesc = The Python binding for Sundown, a markdown parsing library.
+	pkgdesc = A CFFI binding for Hoedown, a markdown parsing library.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://misaka.61924.nl/
 	arch = i686
 	arch = x86_64

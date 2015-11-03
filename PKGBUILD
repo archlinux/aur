@@ -3,8 +3,8 @@
 pkgname=python-misaka
 _pkgname=misaka
 pkgver=2.0.0
-pkgrel=1
-pkgdesc="The Python binding for Sundown, a markdown parsing library."
+pkgrel=2
+pkgdesc="A CFFI binding for Hoedown, a markdown parsing library."
 arch=('i686' 'x86_64')
 url="http://misaka.61924.nl/"
 license=('MIT')
