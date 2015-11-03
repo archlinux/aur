@@ -30,7 +30,7 @@ package() {
   patch -i $srcdir/solaar.patch lib/solaar/ui/window.py
   python3 setup.py install --root="$pkgdir/" --optimize=1
   install -D -m0644 rules.d/42-logitech-unify-permissions.rules \
-                   "$pkgdir/etc/udev/rules.d/42-logitech-unify-permissions.rules"
+                   "$pkgdir/usr/lib/udev/rules.d/42-logitech-unify-permissions.rules"
 }
 
 post_install() {
