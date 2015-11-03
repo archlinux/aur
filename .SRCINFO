@@ -1,14 +1,14 @@
 pkgbase = catalyst-test
 	pkgdesc = AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED
 	pkgver = 15.9
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.amd.com
 	install = catalyst-test.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = linux>=3.0
-	depends = linux<4.3
+	depends = linux<4.4
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
@@ -84,6 +84,8 @@ pkgbase = catalyst-test
 	source = 4.2-fglrx-has_fpu.patch
 	source = 4.2-kolasa-fpu_save_init.patch
 	source = ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
+	source = 4.3-kolasa-seq_printf.patch
+	source = 4.3-gentoo-mtrr.patch
 	md5sums = d2de2df6946b452c266a3c892e6e46ff
 	md5sums = f3aaed0084725304cf607f6915e4bfee
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
@@ -113,6 +115,8 @@ pkgbase = catalyst-test
 	md5sums = ed7748a593d6b894269f8c7856b7ae50
 	md5sums = dd51495a1d8f2d1042f04a783bf01e08
 	md5sums = 2f7d42fde403a1b4a22e5db8de738d0f
+	md5sums = 0e0666e95d1d590a7a83192805679485
+	md5sums = 98828e3eeaec2b3795e584883cc1b746
 
 pkgname = catalyst-test
 

@@ -20,13 +20,14 @@
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: Cold (current_euid patch)
 # Contributor: ubuntu (parts of 4.0, 4.1 and 4.2 kernel patches)
-# Contributor: kolasa (part of 4.2 kernel patches)
+# Contributor: kolasa (parts of 4.2 and 4.3 kernel patches)
+# Contributor: gentoo (part of 4.3 kernel patches)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-test
 pkgver=15.9
-pkgrel=5
+pkgrel=6
 # _betano=1.0
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
@@ -34,7 +35,7 @@ arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.3' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4'  'gcc49')
+depends=('linux>=3.0' 'linux<4.4' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4'  'gcc49')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -95,7 +96,9 @@ source=(
     ubuntu_buildfix_kernel_4.2.patch
     4.2-fglrx-has_fpu.patch
     4.2-kolasa-fpu_save_init.patch
-    ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch)
+    ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
+    4.3-kolasa-seq_printf.patch
+    4.3-gentoo-mtrr.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 'f3aaed0084725304cf607f6915e4bfee'
@@ -125,7 +128,9 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '88832af8d6769aa51fa9b266a74394e0'
 	 'ed7748a593d6b894269f8c7856b7ae50'
 	 'dd51495a1d8f2d1042f04a783bf01e08'
-	 '2f7d42fde403a1b4a22e5db8de738d0f')
+	 '2f7d42fde403a1b4a22e5db8de738d0f'
+	 '0e0666e95d1d590a7a83192805679485'
+	 '98828e3eeaec2b3795e584883cc1b746')
 
 
 build() {
@@ -316,6 +321,8 @@ package() {
       patch -Np1 -i ../4.2-fglrx-has_fpu.patch
       patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
       patch -Np1 -i ../ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
+      patch -Np1 -i ../4.3-kolasa-seq_printf.patch
+      patch -Np1 -i ../4.3-gentoo-mtrr.patch
 
     # Prepare modules source files
       _archdir=x86_64
