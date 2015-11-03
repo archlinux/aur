@@ -14,7 +14,7 @@ depends=('java-environment>=6')
 source=(https://download.jetbrains.com/dbe/${pkgname}-${_pkgver}.tar.gz
         jetbrains-0xdbe.desktop)
 sha256sums=('e0cedb4809c6d10309d8c5ce6384fbdee2ae3a223ee603ce4d228d31f7850fbd'
-            'ce2afc4b029f94cb6c80f7f7da4d1b9cd800967d9f47656914fcc19eec89fd38')
+            'b138f90cdeaa4dcc6cbc8cf911d65a3265938824abe64c734b1ff76e580e42c3')
 
 package() {
   install -d -m 755 ${pkgdir}/opt/
