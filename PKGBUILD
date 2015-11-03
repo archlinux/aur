@@ -1,7 +1,7 @@
 # Maintainer: Max Stabel <max dot stabel03 at gmail dot com>
 
 pkgname=ltspice
-pkgver=4.23b
+pkgver=4.23h
 pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer of electronic circuits."
 arch=('i686' 'x86_64')
