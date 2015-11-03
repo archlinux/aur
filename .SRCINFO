@@ -1,12 +1,13 @@
 pkgbase = docopts
 	pkgdesc = Shell interface for docopt, the CLI description language
 	pkgver = 0.6.1+fix
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/docopt/docopts
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-docopt
+	depends = python-setuptools
 	source = http://pypi.python.org/packages/source/d/docopts/docopts-0.6.1-fix.tar.gz
 	source = LICENSE-MIT
 	sha256sums = 563aad461c700a60ffb91bc1c5e548ac05399c8f5a62c65ff3b8359717fd3d87
