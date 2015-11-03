@@ -1,5 +1,6 @@
 # Maintainer: Arnaud Taffanel <dev@taffanel.org>
-# Contributor: Victor Häggqvist <victor@snilius.com>
+# Contributor: Victor Häggqvist <aur a snilius d com>
+# https://github.com/victorhaggqvist/archlinux-pkgbuilds
 
 pkgname=solaar
 pkgver=0.9.2
