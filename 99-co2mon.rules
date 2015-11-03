@@ -1,0 +1,2 @@
+SUBSYSTEM=="usb", ACTION=="add", ENV{PRODUCT}=="4d9/a052/*", OWNER="nobody", RUN+="/usr/bin/systemctl start co2mon.service"
+SUBSYSTEM=="usb", ACTION=="remove", ENV{PRODUCT}=="4d9/a052/*", OWNER="nobody", RUN+="/usr/bin/systemctl stop co2mon.service"

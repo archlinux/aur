@@ -1,0 +1,7 @@
+[Unit]
+Description=Polling daemon for masterkit co2monitor
+
+[Service]
+User=nobody
+UMask=0022
+ExecStart=/usr/bin/co2mond -D /var/lib/co2mon/

@@ -1,0 +1,14 @@
+post_install() {
+  post_upgrade
+  echo 'co2mon.service would be auto started/stopped on device [un]plugging'
+  echo 'When co2mon.service is running you may check sensors values in /var/lib/co2mon'
+  echo 'Or check journalctl -u co2monitor.service'
+}
+
+post_upgrade() {
+  if type -P systemd-tmpfiles >/dev/null; then
+    systemd-tmpfiles --create co2mon-git.conf
+  fi
+}
+
+# vim:set ts=2 sw=2 et:

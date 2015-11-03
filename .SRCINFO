@@ -1,0 +1,24 @@
+pkgbase = co2mon-git
+	pkgdesc = CLI for MasterKit CO2 Monitor
+	pkgver = 2.0.1.r9.gdf58994
+	pkgrel = 1
+	url = https://github.com/dmage/co2mon
+	install = co2mon-git.install
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	depends = hidapi
+	optdepends = munin-node: for monitoring sensor values via munin
+	conflicts = co2mon
+	source = git+https://github.com/dmage/co2mon.git
+	source = 99-co2mon.rules
+	source = co2mon.service
+	source = co2mon-git.tmpfiles.conf
+	md5sums = SKIP
+	md5sums = 34aa92981e6a150fc75c43c9427698ee
+	md5sums = bef542a1a14f1b5def074c8181ebac0e
+	md5sums = f56b35a4420383659798bfa2b31790d5
+
+pkgname = co2mon-git
+
