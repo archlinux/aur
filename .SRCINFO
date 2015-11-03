@@ -1,6 +1,6 @@
 pkgbase = cedet-git
 	pkgdesc = Collection of Emacs Development Enviromnent Tools (Git version)
-	pkgver = 9570.g868e3a4
+	pkgver = 9571.gf6639c6
 	pkgrel = 1
 	url = http://cedet.sourceforge.net/
 	install = cedet-git.install
