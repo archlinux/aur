@@ -31,7 +31,8 @@ EOF
 }
 
 ls_lang () {
-curl "http://ftp.mozilla.org/pub/firefox/releases/${pkgver}/linux-i686/xpi/" | tr '"' '\n' | grep xpi$ | sed 's/\.xpi//g'
+  #curl "http://ftp.mozilla.org/pub/firefox/releases/${pkgver}/linux-i686/xpi/" | tr '"' '\n' | grep xpi$ | sed 's/\.xpi//g'
+  curl "http://ftp.mozilla.org/pub/firefox/releases/${pkgver}/linux-i686/xpi/" | tr '"' '\n' | grep xpi$ | sed -e 's/\.xpi//g' -e 's#/pub/firefox/releases/[0-9.]*/linux-i686/xpi/##'
 }
 
 prepare() {
