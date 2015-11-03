@@ -11,7 +11,7 @@
 
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
-pkgver=11.1.0_devel.72615.458e55d
+pkgver=11.1.0_devel.74002.55365a7
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -42,10 +42,9 @@ build () {
   ./autogen.sh --prefix=/usr \
                --sysconfdir=/etc \
                --with-dri-driverdir=/usr/lib/xorg/modules/dri \
-               --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast \
+               --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
-               --disable-xvmc \
                --enable-llvm-shared-libs \
                --enable-egl \
                --enable-gbm \
@@ -65,7 +64,6 @@ build () {
                --enable-opencl \
                --enable-opencl-icd \
                --with-clang-libdir=/usr/lib
-
 
   make
 
