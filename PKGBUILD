@@ -2,15 +2,15 @@
 # Contributor: DOOMer <doomer3d@gmail.com>
 pkgname=screengrab
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Crossplatform tool for grabbing screenshots of your desktop."
 arch=('i686' 'x86_64')
 url="http://screengrab.doomer.org/"
 license=('GPL2')
 depends=('qt4>=4.6.0')
 makedepends=('cmake>=2.6')
-source=(screengrab-$pkgver.tar.gz::http://screengrab.doomer.org/download/screengrab-1_2_1_/)
-md5sums=('b233b108558c509419bd754ba1c2c318')
+source=(screengrab-$pkgver.tar.gz::https://github.com/DOOMer/screengrab/archive/${pkgver}.tar.gz)
+sha256sums=('48cdaf66e6eff3ef0db89cb09b7c5757f07b99dd1cd05321e33b04a14c670d3b')
 
 build() {
   echo "build"
