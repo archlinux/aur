@@ -2,8 +2,8 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.2
-pkgver=4.2.0
+_srcname=linux-4.3
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 #	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	config-i686
 	config-x86_64)
-md5sums=('3d5ea06d767e2f35c999eeadafc76523'
+md5sums=('58b35794eee3b6d52ce7be39357801e7'
          '80abbe6afc9d3444381968eea4d6dd74'
          '3cc1ee484f8a619447d1f9e238e3392f')
 
