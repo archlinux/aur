@@ -12,7 +12,7 @@
 
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git')
-pkgver=11.1.0_devel.72617.6d2ceb1
+pkgver=11.1.0_devel.74002.55365a7
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
@@ -51,12 +51,11 @@ build() {
                --prefix=/usr \
                --sysconfdir=/etc \
                --with-dri-driverdir=/usr/lib32/xorg/modules/dri \
-               --with-gallium-drivers=r300,r600,radeonsi,nouveau,swrast \
+               --with-gallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
                --enable-va \
                --with-va-libdir=/usr/lib32/dri \
-               --disable-xvmc \
                --enable-llvm-shared-libs \
                --enable-egl \
                --enable-gbm \
@@ -71,7 +70,7 @@ build() {
                --enable-texture-float \
                --enable-nine \
                --enable-vdpau
-
+  
   make
 
   # fake installation

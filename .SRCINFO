@@ -1,5 +1,5 @@
 pkgbase = lib32-mesa-git
-	pkgver = 11.1.0_devel.72617.6d2ceb1
+	pkgver = 11.1.0_devel.74002.55365a7
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
