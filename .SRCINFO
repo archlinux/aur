@@ -1,0 +1,19 @@
+pkgbase = ccm
+	pkgdesc = Cassandra Cluster Manager
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/pcmanus/ccm
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-yaml
+	makedepends = python-six
+	makedepends = git
+	makedepends = python-psutil
+	makedepends = apache-ant
+	makedepends = java-environment
+	source = git+https://github.com/pcmanus/ccm.git#tag=ccm-2.0.3
+	sha256sums = SKIP
+
+pkgname = ccm
+
