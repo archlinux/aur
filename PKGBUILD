@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
 pkgver=3.11.1.1304
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for creating DigiDoc signature files"
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
@@ -15,7 +15,7 @@ validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
 
 build() {
   cd "$srcdir/"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_INSTALL_SYSCONFDIR="/etc" -DINSTALL_DOC=NO -DSWIG_EXECUTABLE=""
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_INSTALL_SYSCONFDIR="/etc" -DINSTALL_DOC=NO -DSWIG_EXECUTABLE="" -DBoost_INCLUDE_DIR=""
   make 
 }
 

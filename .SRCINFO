@@ -1,7 +1,7 @@
 pkgbase = libdigidocpp
 	pkgdesc = Library for creating DigiDoc signature files
 	pkgver = 3.11.1.1304
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.id.ee/
 	arch = x86_64
 	arch = i686
