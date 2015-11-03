@@ -3,7 +3,7 @@
 # Contributer: GutenYe <ywzhaifei@gmail.com>
 
 pkgname=icinga
-pkgver=1.13.2
+pkgver=1.13.3
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program."
 license=('GPL')
@@ -14,7 +14,7 @@ optdepends=('monitoring-plugins: plugins needed for icinga checks')
 source=("https://github.com/Icinga/icinga-core/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz" 
         "icinga.install")
 
-md5sums=('2a576e2391ce56426f3924c4053491e2'
+md5sums=('9a74a5e7217c0fb9aea3a66cc11d2aa5'
          '57e5cdb21a148e55cb5ddb55e6e8812d')
 
 install='icinga.install'
