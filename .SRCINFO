@@ -1,0 +1,14 @@
+pkgbase = nodejs-webpack-dev-server
+	pkgdesc = Serves a webpack app. Updates the browser on changes.
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = http://github.com/webpack/webpack-dev-server
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = webpack-dev-server-1.12.1.tgz
+	source = http://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.12.1.tgz
+	sha1sums = c6dc855520c8ee9cba9256241b3390c1348b0d5c
+
+pkgname = nodejs-webpack-dev-server
+
