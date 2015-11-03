@@ -3,7 +3,7 @@
 # Contributor: Marti Raudsepp <marti@juffo.org>
 
 pkgname=namebench
-pkgver=1.5
+pkgver=1.3
 pkgrel=1
 pkgdesc="Open-source DNS benchmark utility"
 arch=(any)
