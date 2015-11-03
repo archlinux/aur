@@ -1,6 +1,6 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp-git
-pkgver=r1179.b8b91d8
+pkgver=r1190.28777b9
 pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
@@ -14,7 +14,6 @@ install='accel-ppp.install'
 options=('docs')
 backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf')
 source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
-    'accel-ppp-default'
 	'accel-ppp.logrotate'
 	'accel-ppp.lua'
 	'accel-ppp.tmpfiles'
@@ -23,11 +22,10 @@ source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
 	'dictionary.ppp')
 
 md5sums=('SKIP'
-         'bb3e20c8808000f4efe52230c13a13f3'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '816dd5ea9534a077dfd63b6cd529738a'
          '5be7d42b434b74d7e692b19a9e3c4297'
-         'e5dec17bd405052fc647a805db5dd449'
+         'e13fc55329910cd4dd0a9ee0b43bad97'
          '7b94e1ab23db6c849dac3cb86246007d'
          '4e0d4fc5975ea8794ea286e8fbfa56cd')
 
@@ -77,7 +75,6 @@ package() {
 	install -dm0755 "$pkgdir/etc/snmp"
 	install -dm0755 "$pkgdir/var/lib/accel-ppp"
 	touch "$pkgdir/etc/snmp/$_pkgname.conf"
-	install -Dm0644 "$srcdir/$_pkgname-default" "$pkgdir/etc/conf.d/accel-pppd"
 	install -Dm0644 "$srcdir/$_pkgname/README" "$pkgdir/usr/share/doc/$_pkgname/README"
 	install -Dm0644 "$srcdir/accel-pppd.service" "$pkgdir/usr/lib/systemd/system/accel-pppd.service"
 	install -Dm0644 "$srcdir/$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
