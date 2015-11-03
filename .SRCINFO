@@ -1,7 +1,7 @@
 pkgbase = pidgin-omegle
 	pkgdesc = A plugin to use the omegle.com service in Pidgin
 	pkgver = r17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/pidgin-omegle/
 	arch = i686
 	arch = x86_64
