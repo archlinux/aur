@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MiniZinc IDE
+Comment=Simple IDE for writing and running MiniZinc models
+Exec=minizinc-ide
+Icon=/usr/share/minizinc-ide/minizinc.png
+Terminal=false
+Categories=Education;Development;IDE;
