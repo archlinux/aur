@@ -1,8 +1,8 @@
 pkgbase = docker-machine
 	pkgdesc = Machine management for a container-centric world
-	pkgver = 0.5.0_rc4
+	pkgver = 0.5.0
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/docker/machine
 	install = docker-machine.install
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = docker-machine
 	conflicts = docker-machine-bin
 	source = https://raw.githubusercontent.com/docker/machine/master/LICENSE
 	sha256sums = SKIP
-	source_i686 = https://github.com/docker/machine/releases/download/v0.5.0-rc4/docker-machine_linux-386.zip
-	sha256sums_i686 = 823606b3841e2c436ef1d8d3f906a08e121be406509d9d6e5a49ab0012d19ea2
-	source_x86_64 = https://github.com/docker/machine/releases/download/v0.5.0-rc4/docker-machine_linux-amd64.zip
-	sha256sums_x86_64 = df85e2bcbef34b6f5db1be63ae595c7d0d54bf4688dec8e2597c59206f85e483
+	source_i686 = https://github.com/docker/machine/releases/download/v0.5.0/docker-machine_linux-386.zip
+	sha256sums_i686 = 9c0563477ff6fc253973671f53f9da62bf3bf2377091244c75e4174166776d39
+	source_x86_64 = https://github.com/docker/machine/releases/download/v0.5.0/docker-machine_linux-amd64.zip
+	sha256sums_x86_64 = e33b989421cf432882207dbf4ccb9fb3ca7e45176660d65f7bbd64f82fdf55f2
 
 pkgname = docker-machine
 
