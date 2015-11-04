@@ -1,7 +1,7 @@
 pkgbase = pypy-stm-hg
 	pkgdesc = A Python implementation written in Python, STM branch, hg version
 	pkgver = r77701.905ab5c077a5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pypy.org/tmdonate2.html
 	arch = i686
 	arch = x86_64
