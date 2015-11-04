@@ -8,7 +8,7 @@
 pkgname=rubymine
 _pkgname=RubyMine
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools."
 arch=('i686' 'x86_64')
 options=(!strip)
@@ -25,7 +25,7 @@ sha256sums=('4f242198acf857f680313937e3e90652eadb741c18d7874e15f1e098bc4dbc5d'
             '7ecadddf2b315b22df3a5c7b90e18be7ea69e2a0d869ee18bf0e031b2c508f76')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver%.*}"
     # Remove junk
     rm "build.txt"
     rm "Install-Linux-tar.txt"
