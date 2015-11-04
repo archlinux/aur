@@ -23,7 +23,7 @@ prepare() {
 
 build() {
 	cd $pkgname-$pkgver/build
-	cmake ..
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 
 	make
 }
