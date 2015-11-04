@@ -1,0 +1,22 @@
+pkgbase = tmux-24bit-color
+	pkgdesc = A terminal multiplexer, with patched true color support
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://tmux.github.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	depends = libevent
+	depends = libutempter
+	source = https://github.com/tmux/tmux/releases/download/2.1/tmux-2.1.tar.gz
+	source = ncurses6-xterm-standout.patch
+	source = tmux-24bit.patch
+	source = LICENSE
+	md5sums = 74a2855695bccb51b6e301383ad4818c
+	md5sums = 70347df93ed1922d6718d91491a7d9b4
+	md5sums = 182026c71e164ce64cb7f82c3fc4c428
+	md5sums = 71601bc37fa44e4395580b321963018e
+
+pkgname = tmux-24bit-color
+

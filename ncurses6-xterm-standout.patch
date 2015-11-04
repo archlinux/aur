@@ -1,0 +1,157 @@
+From 7382ba82c5b366be84ca55c7842426bcf3d1f521 Mon Sep 17 00:00:00 2001
+From: nicm <nicm>
+Date: Wed, 29 Apr 2015 15:59:08 +0000
+Subject: [PATCH] If default-terminal is set to "screen" or "screen-*", emulate
+ screen's historical (incorrect) behaviour for SGR 3 and send smso (standout).
+ Previously, we would send sitm (italics) if the terminal outside had it and
+ smso otherwise. This was acceptably until recently because xterm's terminfo
+ entry lacked sitm, so most users got smso.
+
+People who want italics should set default-terminal to the forthcoming
+"tmux" entry (and be prepared to deal with it being missing on older
+hosts).
+
+As a side-effect this changes default-terminal to be a server rather
+than a session option.
+
+suggested by and ok naddy
+---
+ options-table.c | 10 +++++-----
+ server-fn.c     |  2 +-
+ tmux.1          | 25 +++++++++++++------------
+ tty.c           | 24 ++++++++++++++++++------
+ 4 files changed, 37 insertions(+), 24 deletions(-)
+
+diff --git a/options-table.c b/options-table.c
+index 5e21c69..089a9b8 100644
+--- a/options-table.c
++++ b/options-table.c
+@@ -61,6 +61,11 @@ const struct options_table_entry server_options_table[] = {
+ 	  .default_num = 20
+ 	},
+ 
++	{ .name = "default-terminal",
++	  .type = OPTIONS_TABLE_STRING,
++	  .default_str = "screen"
++	},
++
+ 	{ .name = "escape-time",
+ 	  .type = OPTIONS_TABLE_NUMBER,
+ 	  .minimum = 0,
+@@ -143,11 +148,6 @@ const struct options_table_entry session_options_table[] = {
+ 	  .default_str = _PATH_BSHELL
+ 	},
+ 
+-	{ .name = "default-terminal",
+-	  .type = OPTIONS_TABLE_STRING,
+-	  .default_str = "screen"
+-	},
+-
+ 	{ .name = "destroy-unattached",
+ 	  .type = OPTIONS_TABLE_FLAG,
+ 	  .default_num = 0
+diff --git a/server-fn.c b/server-fn.c
+index 85067a8..0e6e4d4 100644
+--- a/server-fn.c
++++ b/server-fn.c
+@@ -36,7 +36,7 @@ server_fill_environ(struct session *s, struct environ *env)
+ 	long	pid;
+ 
+ 	if (s != NULL) {
+-		term = options_get_string(&s->options, "default-terminal");
++		term = options_get_string(&global_options, "default-terminal");
+ 		environ_set(env, "TERM", term);
+ 
+ 		idx = s->id;
+diff --git a/tmux.1 b/tmux.1
+index 5bf7782..a7f5f3e 100644
+--- a/tmux.1
++++ b/tmux.1
+@@ -2266,6 +2266,19 @@ Available server options are:
+ Set the number of buffers; as new buffers are added to the top of the stack,
+ old ones are removed from the bottom if necessary to maintain this maximum
+ length.
++.It Ic default-terminal Ar terminal
++Set the default terminal for new windows created in this session - the
++default value of the
++.Ev TERM
++environment variable.
++For
++.Nm
++to work correctly, this
++.Em must
++be set to
++.Ql screen ,
++.Ql tmux
++or a derivative of them.
+ .It Ic escape-time Ar time
+ Set the time in milliseconds for which
+ .Nm
+@@ -2405,18 +2418,6 @@ or
+ This option should be configured when
+ .Nm
+ is used as a login shell.
+-.It Ic default-terminal Ar terminal
+-Set the default terminal for new windows created in this session - the
+-default value of the
+-.Ev TERM
+-environment variable.
+-For
+-.Nm
+-to work correctly, this
+-.Em must
+-be set to
+-.Ql screen
+-or a derivative of it.
+ .It Xo Ic destroy-unattached
+ .Op Ic on | off
+ .Xc
+diff --git a/tty.c b/tty.c
+index ee52d03..f6db8e2 100644
+--- a/tty.c
++++ b/tty.c
+@@ -34,6 +34,7 @@
+ void	tty_read_callback(struct bufferevent *, void *);
+ void	tty_error_callback(struct bufferevent *, short, void *);
+ 
++void	tty_set_italics(struct tty *);
+ int	tty_try_256(struct tty *, u_char, const char *);
+ 
+ void	tty_colours(struct tty *, const struct grid_cell *);
+@@ -457,6 +458,21 @@ tty_putn(struct tty *tty, const void *buf, size_t len, u_int width)
+ }
+ 
+ void
++tty_set_italics(struct tty *tty)
++{
++	const char	*s;
++
++	if (tty_term_has(tty->term, TTYC_SITM)) {
++		s = options_get_string(&global_options, "default-terminal");
++		if (strcmp(s, "screen") != 0 && strncmp(s, "screen-", 7) != 0) {
++			tty_putcode(tty, TTYC_SITM);
++			return;
++		}
++	}
++	tty_putcode(tty, TTYC_SMSO);
++}
++
++void
+ tty_set_title(struct tty *tty, const char *title)
+ {
+ 	if (!tty_term_has(tty->term, TTYC_TSL) ||
+@@ -1396,12 +1412,8 @@ tty_attributes(struct tty *tty, const struct grid_cell *gc,
+ 		tty_putcode(tty, TTYC_BOLD);
+ 	if (changed & GRID_ATTR_DIM)
+ 		tty_putcode(tty, TTYC_DIM);
+-	if (changed & GRID_ATTR_ITALICS) {
+-		if (tty_term_has(tty->term, TTYC_SITM))
+-			tty_putcode(tty, TTYC_SITM);
+-		else
+-			tty_putcode(tty, TTYC_SMSO);
+-	}
++	if (changed & GRID_ATTR_ITALICS)
++		tty_set_italics(tty);
+ 	if (changed & GRID_ATTR_UNDERSCORE)
+ 		tty_putcode(tty, TTYC_SMUL);
+ 	if (changed & GRID_ATTR_BLINK)
