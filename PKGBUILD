@@ -2,12 +2,12 @@
 pkgname=graylog
 replaces=graylog2-server
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
 url="https://www.graylog.org/"
 license=('GPL')
-depends=(java-runtime elasticsearch mongodb)
+depends=(java-runtime 'elasticsearch<2.0' mongodb)
 install=graylog.install
 backup=(
 	etc/graylog/server/server.conf
