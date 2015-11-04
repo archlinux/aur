@@ -1,6 +1,6 @@
 pkgbase = android-sdk-build-tools
 	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
-	pkgver = r23.0.1
+	pkgver = r23.0.2
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = android-sdk-build-tools
 	depends = gcc-libs
 	depends = zlib
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/build-tools_r23.0.1-linux.zip
-	sha1sums = b6ba7c399d5fa487d95289d8832e4ad943aed556
+	source = https://dl-ssl.google.com/android/repository/build-tools_r23.0.2-linux.zip
+	sha1sums = 8a9f2b37f6fcf7a9fa784dc21aeaeb41bbb9f2c3
 
 pkgname = android-sdk-build-tools
 
