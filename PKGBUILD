@@ -1,44 +1,44 @@
+# Maintainer: xRemaLx <anton.komolov@gmail.com>
 # Contributor: AUR Perl <aurperl@juster.info>
-# Generator  : CPANPLUS::Dist::Arch 1.18
 
 pkgname='perl-carp-assert'
-_pkgname='Carp-Assert'
-pkgver='0.20'
-pkgrel='2'
-pkgdesc="Stating the obvious to let the computer know"
+pkgver='0.21'
+pkgrel='1'
+pkgdesc="executable comments"
+_dist='Carp-Assert'
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl')
-makedepends=()
 url='http://search.cpan.org/dist/Carp-Assert'
-source=("http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('9dafe361b9e5e93e8e3e70e015f6b191')
-sha512sums=('208e30f549c1d911623faa0685b87119d80b56caa2fee22b760ac1927d6174afb73124f16a769302783dcdddfb50e9f6538394eca9d0b139dfc06292e7025ec1')
+license=('PerlArtistic' 'GPL')
+depends=('perl')
+options=('!emptydirs' purge)
+makedepends=()
+checkdepends=()
+provides=("Carp::Assert=${pkgver}" "perl-carp-assert=${pkgver}")
+source=("http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/${_dist}-${pkgver}.tar.gz")
+sha512sums=('9fb96ebaf03a86edcd0262b5216b345839dc99e504738e52f883932e425cac33470fcb0e8e4653488c0d8e63e9904af311056213c63ae40bc3935eec4c0410a0')
+
+sanitize() {
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+}
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "${srcdir}/${_dist}-${pkgver}"
+  sanitize
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/${_dist}-${pkgver}"
+  sanitize
+  make test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
+  cd "${srcdir}/${_dist}-${pkgver}"
+  sanitize
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
