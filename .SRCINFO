@@ -1,0 +1,23 @@
+pkgbase = mx-git
+	pkgdesc = A Clutter-based toolkit
+	pkgver = 1.99.4.r272.g63da1f2
+	pkgrel = 1
+	url = http://www.clutter-project.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = vala
+	depends = clutter
+	depends = gdk-pixbuf2
+	provides = mx
+	conflicts = mx
+	source = mx-git::git+https://github.com/clutter-project/mx.git
+	md5sums = SKIP
+
+pkgname = mx-git
+
