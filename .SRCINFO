@@ -1,7 +1,7 @@
 pkgbase = libevhtp-seafile
 	pkgdesc = A more flexible replacement for libevent's httpd API. [Built for seafile]
 	pkgver = 1.2.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ellzey/libevhtp
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = libevhtp-seafile
 	depends = libevent>=2.0.0
 	provides = libevhtp
 	conflicts = libevhtp
-	source = https://github.com/ellzey/libevhtp/archive/1.2.9.zip
+	source = libevhtp-1.2.9.zip::https://github.com/ellzey/libevhtp/archive/1.2.9.zip
 	sha256sums = fc8572823ae7ed77cd0db8fd0e25983ebc770b271d36905fb1379db371aab28a
 
 pkgname = libevhtp-seafile
