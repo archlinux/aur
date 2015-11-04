@@ -3,8 +3,8 @@
 # Contributor: Ray Donnelly <mingw.android@gmail.com>
 _realname=icu
 pkgname=mingw-w64-${_realname}
-pkgver=55.1
-pkgrel=2
+pkgver=56.1
+pkgrel=1
 arch=(any)
 pkgdesc="International Components for Unicode library (mingw-w64)"
 url="http://www.icu-project.org/"
@@ -24,7 +24,7 @@ source=("http://download.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//.
 "0015-debug.mingw.patch"
 "0016-icu-pkgconfig.patch"
 "0017-icu-config-versioning.patch")
-md5sums=('e2d523df79d6cb7855c2fbe284f4db29'
+md5sums=('c4a2d71ff56aec5ebfab2a3f059be99d'
          '4c8143786ed499184e64fc5a1a1d0fdf'
          'eb56b72df2ca0dc77261c4f2adc5c8ad'
          '9c63125f7bdd88871c89e13ee62ac02b'
@@ -53,7 +53,7 @@ prepare() {
   patch -p1 -i ../0017-icu-config-versioning.patch
 
   cd source
-  autoreconf -vfi
+  autoreconf -fi
 }
 
 build() {
@@ -69,7 +69,10 @@ build() {
       --with-cross-build=$PWD/../nativebuild \
       --with-data-packaging=library \
       --disable-rpath \
-      --enable-release
+      --enable-release \
+      --disable-tools \
+      --disable-tests \
+      --disable-samples
     make -j1
     popd
   done
