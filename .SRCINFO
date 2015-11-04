@@ -1,12 +1,12 @@
 pkgbase = papirus
-	pkgver = 20151027
+	pkgver = 20151104
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
 	options = !strip
-	source = papirus-pack-kde-20151027.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/0e37ef5ac813bbb6f6260a20b41ab3da27f5dce5.tar.gz
-	sha256sums = e5b93311b71584829f2bf9ef1ccfa0cd03059876e6e04cf30c934c7782727566
+	source = papirus-pack-kde-20151104.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/f7c7fec5c6f6727d91c844bb531a6fbf0998aa33.tar.gz
+	sha256sums = 1a8db591298f30af71ad070f8ea8b27580b8700f32a42023d55fe2254d00e7df
 
 pkgname = papirus
 	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE.
@@ -50,6 +50,9 @@ pkgname = plasma-theme-papirus
 pkgname = papirus-gtk-theme
 	pkgdesc = Modified and adaptive Paper gtk theme
 	depends = gtk-engine-murrine
+	depends = gdk-pixbuf2
+	optdepends = lib32-gtk-engine-murrine
+	optdepends = lib32-gdk-pixbuf2
 
 pkgname = papirus-konsole-colorscheme
 	pkgdesc = Modified and adaptive Paper colorscheme for Konsole

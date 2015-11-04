@@ -1,10 +1,10 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=0e37ef5ac813bbb6f6260a20b41ab3da27f5dce5
+_git=f7c7fec5c6f6727d91c844bb531a6fbf0998aa33
 _repo=papirus-pack-kde
 pkgbase=papirus
 pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-papirus-theme' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'papirus-plasma-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'papirus-yakuake-theme' 'yakuake-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' )
-pkgver=20151027
+pkgver=20151104
 pkgrel=1
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
@@ -12,7 +12,7 @@ license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('e5b93311b71584829f2bf9ef1ccfa0cd03059876e6e04cf30c934c7782727566')
+sha256sums=('1a8db591298f30af71ad070f8ea8b27580b8700f32a42023d55fe2254d00e7df')
 
 package_papirus() {
 	pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
@@ -80,7 +80,8 @@ package_papirus-color-scheme() {
 
 package_papirus-gtk-theme() {
 	pkgdesc="Modified and adaptive Paper gtk theme"
-	depends=('gtk-engine-murrine')
+	depends=('gtk-engine-murrine' 'gdk-pixbuf2')
+	optdepends=('lib32-gtk-engine-murrine' 'lib32-gdk-pixbuf2')
     install -d ${pkgdir}/usr/share/themes
     cp -r ${srcdir}/${_repo}-${_git}/gtk-themes/papirus* ${pkgdir}/usr/share/themes/
     install -D -m644  ${srcdir}/${_repo}-${_git}/gtk-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
