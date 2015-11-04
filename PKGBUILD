@@ -1,12 +1,11 @@
-# Maintainer: Will Price <will.price94+aur@gmail.com>
 pkgname=attractmode-git
-pkgver=20151103
+pkgver=20151104
 pkgrel=1
 pkgdesc="A MAME front-end"
 arch=('i686' 'x86_64')
 url="https://github.com/mickelson/attract"
 license=('GPL')
-#depends=('sfml', 'openal', 'ffmpeg', 'fontconfig', 'libxinerama', 'libarchive')
+depends=('sfml', 'openal', 'ffmpeg', 'fontconfig', 'libxinerama', 'libarchive')
 makedepends=('git')
 conflicts=('attractmode')
 
