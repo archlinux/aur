@@ -1,7 +1,7 @@
 #  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=letsencrypt-apache
-pkgver=0.0.0.dev20151030
+pkgver=0.0.0.dev20151104
 pkgrel=1
 pkgdesc="Apache plugin for Let’s Encrypt client"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('letsencrypt' 'python2-acme' 'python2-setuptools'
 # though for easier package management, it is omitted in this PKGBUILD
 conflicts=("letsencrypt-git")
 source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('9ad6b0dcc0bc94b9a63086c771f440f1')
+md5sums=('5313d569902396981deb7cdeb645c5c5')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
