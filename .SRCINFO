@@ -2,14 +2,13 @@ pkgbase = screenshooter
 	pkgdesc = Take a screenshot and share it with your friends
 	pkgver = 5.30
 	pkgrel = 1
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = Freeware
 	depends = qt5-x11extras
-	source = http://kosz.marcin.co/dl/screenshooter-5.30-i686.tar.gz
+	source = http://kosz.marcin.co/dl/screenshooter-5.30-any.tar.gz
 	source = icon.png
 	source = screenshooter.desktop
-	md5sums = 2a1216daf992e4a6e213474aad702be3
+	md5sums = c3bfe2a6e369060af02c05759ed4ab0a
 	md5sums = 9f3d281a63a047b7c90272264916561c
 	md5sums = 23ba3762ff952ae7ab695285c227297e
 
