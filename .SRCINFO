@@ -1,7 +1,7 @@
 pkgbase = python-pyalexa
 	pkgdesc = Simple Python API for creating Amazon Echo skills
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/umbc-hackafe/pyalexa
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-pyalexa
 	depends = python>=3.0
 	optdepends = python-flask: to provide a built-in HTTP API
 	source = https://pypi.python.org/packages/source/p/pyalexa/pyalexa-0.1.1.tar.gz
-	md5sums = a67e7d55a9633a1663b935e1ea575414
+	md5sums = 1899a4305699723bb0482f5d616b3bc4
 
 pkgname = python-pyalexa
 
