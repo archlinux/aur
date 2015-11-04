@@ -19,11 +19,15 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://kosz.marcin.co/dl/$pkgname-$pkgver-$arch.tar.gz" "icon.png" "screenshooter.desktop")
+source_i686=("http://kosz.marcin.co/dl/$pkgname-$pkgver-i686.tar.gz" "icon.png" "screenshooter.desktop")
+source_x86_64=("http://kosz.marcin.co/dl/$pkgname-$pkgver-x86_64.tar.gz" "icon.png" "screenshooter.desktop")
 noextract=()
-md5sums=('c3bfe2a6e369060af02c05759ed4ab0a'
-         '9f3d281a63a047b7c90272264916561c'
-         '23ba3762ff952ae7ab695285c227297e')
+md5sums_x86_64=('c3bfe2a6e369060af02c05759ed4ab0a'
+                '9f3d281a63a047b7c90272264916561c'
+                '23ba3762ff952ae7ab695285c227297e')
+md5sums_i686=('2a1216daf992e4a6e213474aad702be3'
+              '9f3d281a63a047b7c90272264916561c'
+              '23ba3762ff952ae7ab695285c227297e')
 
 package() {
   cd "$pkgname-$pkgver-$arch"
