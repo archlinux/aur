@@ -1,6 +1,6 @@
 pkgbase = iceweasel-bin
 	pkgdesc = Debian Browser based on Mozilla Firefox (bin version)
-	pkgver = 41.0.2.deb1
+	pkgver = 42.0.deb1
 	pkgrel = 1
 	url = https://packages.debian.org/experimental/iceweasel
 	install = iceweasel.install
@@ -33,10 +33,10 @@ pkgbase = iceweasel-bin
 	optdepends = gst-libav: h.264 video
 	optdepends = gst-plugins-good: h.264 video
 	optdepends = networkmanager: Location detection via available WiFi networks
-	provides = iceweasel=41.0.2
+	provides = iceweasel=42.0
 	conflicts = iceweasel
-	source = http://ftp.de.debian.org/debian/pool/main/i//iceweasel/iceweasel_41.0.2-1_i386.deb
-	sha1sums = 60c867093ae74461e82707ca42a35eb8970c59ee
+	source = http://ftp.de.debian.org/debian/pool/main/i//iceweasel/iceweasel_42.0-1_i386.deb
+	sha1sums = 87cc6478d6245f74a68384e7320c4b8fe01f6f97
 
 pkgname = iceweasel-bin
 
