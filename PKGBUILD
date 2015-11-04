@@ -1,6 +1,5 @@
-# Maintainer: Moritz Maxeiner <moritz@ucworks.org>
-
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
+# Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 _pkgname=libevhtp
 pkgname="${_pkgname}"-seafile
@@ -12,11 +11,9 @@ url="https://github.com/ellzey/libevhtp"
 license=('BSD')
 depends=('libevent>=2.0.0')
 makedepends=('cmake')
-optdepends=()
 provides=('libevhtp')
 conflicts=('libevhtp')
-options=()
-source=("https://github.com/ellzey/libevhtp/archive/${pkgver}.zip")
+source=("${_pkgname}-${pkgver}.zip::https://github.com/ellzey/libevhtp/archive/${pkgver}.zip")
 
 build () {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -27,7 +24,7 @@ build () {
 package () {
 	#install library and header files
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}/" install
+	make DESTDIR="${pkgdir}" install
 
 	#copy license over
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
