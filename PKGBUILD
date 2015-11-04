@@ -5,7 +5,7 @@ _pkgname=papirus-pack-kde
 pkgbase=papirus-git
 pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git'
          'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git')
-pkgver=r232.0e37ef5
+pkgver=r234.f7c7fec
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE"
 arch=('any')
@@ -48,7 +48,13 @@ package_papirus-icon-theme-git() {
     optdepends=()
     conflicts=('papirus-icon-theme')
     install -d ${pkgdir}/usr/share/icons
-    cp -r ${srcdir}/${_pkgname}/icons/papirus* ${pkgdir}/usr/share/icons/
+    install -d ${pkgdir}/usr/share/apps/amarok/icons/papirus
+    install -d ${pkgdir}/usr/share/apps/amarok/icons/papirus-black-panel
+    install -d ${pkgdir}/usr/share/apps/amarok/icons/papirus-dark
+    cp -r ${srcdir}/${_pkgname}/icons/papirus*                                  ${pkgdir}/usr/share/icons/
+    cp -r ${srcdir}/${_pkgname}/icons/papirus/extra-icons/amarok/*              ${pkgdir}/usr/share/apps/amarok/icons/papirus/
+    cp -r ${srcdir}/${_pkgname}/icons/papirus-black-panel/extra-icons/amarok/*  ${pkgdir}/usr/share/apps/amarok/icons/papirus-black-panel/
+    cp -r ${srcdir}/${_pkgname}/icons/papirus-dark/extra-icons/amarok/*         ${pkgdir}/usr/share/apps/amarok/icons/papirus-dark/
     for d in 32x32 48x48
         do
         cd  ${pkgdir}/usr/share/icons/papirus/$d/apps/
