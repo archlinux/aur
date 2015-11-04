@@ -1,0 +1,20 @@
+pkgbase = heirloom-sh-cvs
+	pkgdesc = Traditional sh [jsh(1)], derived from OpenSolaris code. CVS repository
+	pkgver = 2011.06.22
+	pkgrel = 1
+	url = http://heirloom.sourceforge.net/sh.html
+	arch = i686
+	arch = x86_64
+	license = custom:"caldera"
+	license = custom:"opensolaris"
+	makedepends = cvs
+	provides = sh
+	provides = heirloom-sh
+	replaces = heirloom-sh
+	source = 000-config.diff
+	md5sums = 991b32bee780ce48685dfd4d39d41443
+	sha1sums = 0119962358fce0b5ba88eab750d1ef2d91402428
+	sha256sums = f0452b9fb1c58a6f0fba6d49bcd7598f875c94f64ddd8b60bb8ab12bbbaf7c9b
+
+pkgname = heirloom-sh-cvs
+
