@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=48.0.2547.0
+pkgver=48.0.2552.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -81,7 +81,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r7.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r0.patch'
         # Misc Patches
-        'enable_vaapi_on_linux-r1.diff'
+        'enable_vaapi_on_linux-r2.diff'
         # Patch from crbug (chromium bugtracker)
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
@@ -94,7 +94,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           'c24d14029714d2295f3220a7173a5a7362f578a2'
           '8e828ffd7de532becdd30378cdcc8411575a7b0b'
           # Misc Patches
-          '255d71cd9b9e55265e1bfeaa4612bcf60d293204'
+          'd114dc0d1d9379f1ab08fc015541922c34db21fa'
           # Patch from crbug (chromium bugtracker)
           )
 options=('!strip')
@@ -204,11 +204,9 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/boringssl'
            'third_party/cacheinvalidation'
            'third_party/catapult'
-           'third_party/catapult/third_party'
            'third_party/catapult/third_party/py_vulcanize'
            'third_party/catapult/third_party/py_vulcanize/third_party/rcssmin'
            'third_party/catapult/third_party/py_vulcanize/third_party/rjsmin'
-           'third_party/catapult/tracing/third_party'
            'third_party/catapult/tracing/third_party/components/polymer'
            'third_party/catapult/tracing/third_party/d3'
            'third_party/catapult/tracing/third_party/gl-matrix'
@@ -427,7 +425,7 @@ prepare() {
   patch -p1 -i ../chromium-system-ffmpeg-r0.patch
 
   # Misc Patches:
-  patch -p1 -i ../enable_vaapi_on_linux-r1.diff
+  patch -p1 -i ../enable_vaapi_on_linux-r2.diff
 
   # Patch from crbug (chromium bugtracker)
   # fix the missing define (if not, fail build) (need upstream fix) # https://crbug.com/473866
