@@ -2,8 +2,8 @@
 # Maintainer: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3
-_srcname=linux-4.2
-pkgver=4.2.2
+_srcname=linux-4.3
+pkgver=4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/matthewwardrop/linux-surfacepro3"
@@ -12,36 +12,24 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-	'0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
-        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
-        '0001-fix-bridge-regression.patch'
-        'cam.patch'
-        'buttons.patch'
-        'multitouch.patch'
-        'surface3-touchpad.conf'
-        )
-sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
+	'cam.patch'
+        'multitouch.patch')
+
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            '8b4578f1e1dcfbef1e39c39b861d4715aa99917af0b7c2dc324622d65884dcb5'
-            'SKIP'
-            'cca7068bfe075128ef67449763eeb56a737d29b261f0e67b6f7930a261c8957c'
-            '3cc5befdf5482e150714c12e05cacbfe92571cc327bc5ea4f0fd452f3c5f3d2d'
+            '596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16'
+            '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'            
-            '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
-            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
-            '0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183'
             'a6c5c5dc3fa3e35e9eb762c36c4596f889df7c52be8d0533d697e47786fdef32'
-            'a1d41c0cf7726e7ecd3274767aa6b26bfe1dabe133168cf1b37e549d6c235340'
-            'ced627a726a582e96ebb2fc2d0ba2b6b56d07a692c9c1e520b47278af405095f'
-            'a4f8197e5efd61c04a531cfc7ffc5fc2c000299bdd93480745a992eec16d0580'
+            '225e349648b6b23e5a4e127088518af277cb1cbb14627020d2040492651552e8'
             )
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -55,32 +43,17 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
-  # https://lkml.org/lkml/2015/8/18/292
-  patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
-
-  # add not-yet-mainlined patch to fix network unavailability when iptables
-  # rules are applied during startup - happened with Shorewall; journal had
-  # many instances of this error: nf_conntrack: table full, dropping packet
-  patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
-
-  # add not-yes-mainlined patch to fix bridge code
-  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
-  patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
-  
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   patch -p1 -i "${srcdir}/cam.patch"
-
-  patch -p1 -i "${srcdir}/buttons.patch"
 
   if [[ $multitouch = 'y' ]]; then
     patch -p1 -i "${srcdir}/multitouch.patch"

@@ -5,15 +5,9 @@ This is based on the offical Linux kernel package provided by Arch Linux at: htt
 
 This AUR package adds the following patches to the official Linux kernel package:
  - Camera patch from https://github.com/nuclearsandwich/surface3-archlinux/issues/12 (patch from `colorprint`)
- - Buttons patch from http://bugzilla.kernel.org/show_bug.cgi?id=84651 (patches from Chen Yu, comment #56) [Included in Linux 4.3+]
- - Multitouch patches* from https://gist.github.com/felipeota/afb5f510f5b315f8bed8 .
-   (an X11 configuration file is also placed in `/etc/X11/xorg.conf.d/` in order to enable right click). Using these
-   patches prevents the `caps lock` indicator led from working properly. See the footnote below for how to disable
-   these patches if this is prohibitive for you.
+ - Multitouch patches from https://raw.githubusercontent.com/shvr/fedora-surface-pro-3-kernel/master/Add-multitouch-support-for-Microsoft-Type-Cover-3.patch .
 
-\* The multitouch patches add two-finger scrolling support. Performance under Wayland seems to be poor; but I'm not sure if this
-   is just due to Wayland. If you want to disable this patch, change line 48 of PKGBUILD to: `multitouch='n'`. If disabled, the Xorg
-   configuration will not be copied to `/etc/X11/xorg.conf.d/` .
+Most of the functionality required for the Surface Pro 3 has now been mainlined, so hopefully this package will no longer be required within the next few kernel releases.
 
 ## Building
 
