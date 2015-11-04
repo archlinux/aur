@@ -4,8 +4,8 @@
 
 pkgname=pandoc-static
 _pkgname=pandoc
-pkgver=1.15.0.6
-pkgrel=2
+pkgver=1.15.1.1
+pkgrel=1
 pkgdesc='Conversion between markup formats (no Haskell libraries)'
 url='http://johnmacfarlane.net/pandoc/'
 license=('GPL')
@@ -14,7 +14,7 @@ replaces=('pandoc')
 provides=('pandoc')
 
 arch=('i686' 'x86_64')
-depends=('icu>=55' 'icu<56' 'gmp' 'libffi' 'zlib')
+depends=('icu>=56' 'icu<57' 'gmp' 'libffi' 'zlib')
 makedepends=('ghc' 'sh' 'cabal-install' 'alex' 'happy' 'chrpath')
 optdepends=('texlive-most: for PDF creation')
 options=(strip !makeflags !distcc !emptydirs)
@@ -125,5 +125,5 @@ package() {
   cp -rv "${srcdir}"/build/usr/share/doc/*/* "${pkgdir}"/usr/share/licenses/${pkgname}
   mv -v        "${pkgdir}"/usr/share/doc/*/* "${pkgdir}"/usr/share/licenses/${pkgname}
 }
-sha512sums=('2a751f6559079403fc35a57cf6d6b24c73741a4d5353f12ec8928f806221df6955e7f0e2f3c6f04b21dd9aefed6ec1984c667764677b5ae9df70e172e614de00'
+sha512sums=('46afb223861bc3f34dde8b3ea611d1d23e40cbb5446b1be25afd42411ea1d0e6d7e8f4715afef6e6f588edda9da4c45aba1f77b8f6f99a53fbbb4793d59395fa'
             'SKIP')
