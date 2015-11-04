@@ -1,6 +1,6 @@
 pkgbase = fleet
 	pkgdesc = A distributed init system.
-	pkgver = v0.10.2
+	pkgver = v0.11.5
 	pkgrel = 1
 	url = https://github.com/coreos/fleet
 	arch = any
@@ -9,4 +9,3 @@ pkgbase = fleet
 	md5sums = 58a3be3119adb0dcfaccea03007958a0
 
 pkgname = fleet
-
