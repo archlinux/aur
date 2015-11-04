@@ -1,0 +1,16 @@
+pkgbase = slim-theme-mesos-git
+	pkgdesc = Apache Mesos SLiM theme.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/en0/SLiM-theme-mesos
+	arch = any
+	license = unkonwn
+	makedepends = git
+	optdepends = slim: login manager providing theme support
+	provides = slim-theme-mesos
+	conflicts = slim-theme-mesos
+	source = git://github.com/en0/SLiM-theme-mesos
+	md5sums = SKIP
+
+pkgname = slim-theme-mesos-git
+
