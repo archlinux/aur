@@ -1,9 +1,8 @@
-# Maintainer: Moritz Maxeiner <moritz@ucworks.org>
-
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
+# Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=seafile-server
-pkgver=4.4.2
+pkgver=4.3.2
 pkgrel=2
 pkgdesc="Next-generation open source cloud storage with advanced features on privacy protection and teamwork. (Server components, without seahub)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,8 +10,6 @@ url="https://github.com/haiwen/seafile/"
 license=('GPL3')
 depends=('seafile-shared>=4.4.2' 'python2-mako' 'python2-dateutil' 'python2-webpy' 'python2-pip' 'python2-virtualenv' 'python2-flup' 'python2-six' 'libevhtp-seafile>=1.2.9' 'fuse')
 makedepends=('vala' 'intltool')
-optdepends=()
-provides=()
 conflicts=('django' 'django-rest-framework', 'seafile')
 options=('!libtool' '!emptydirs')
 install=seafile-server.install
@@ -42,7 +39,7 @@ package ()
 {
 	# Install library and header files
 	cd "${srcdir}/seafile-${pkgver}-server"
-	make DESTDIR="${pkgdir}/" install
+	make DESTDIR="${pkgdir}" install
 
 	# Remove files already installed by seafile-shared
 	# to maintain compatibility
@@ -74,9 +71,9 @@ package ()
 	# Install seahub preupgrade script
 	install -D -m755 "${srcdir}/seahub-preupgrade" "${pkgdir}/usr/bin/seahub-preupgrade"
 }
-sha256sums=('7e244f05b20a6bfd7282b8a00eb3e1cda8ecefd98fc2b92210665549aebebe22'
+sha256sums=('f9d7c79363ddc6818d715d8b61aaee41c7fea2e0d726f4431eec14884b6eb8fd'
             '4127284c1d8a4d071925cbcc870ca460fd736e2d53e8ab5806ccf3dd03d5e537'
             'abe1a55d528994e044f6bba71fac0d97313adecd9aa007fa338efdca244882db'
-            '943ed1bb7d4908b452ce8b7abff26e56f3f24582f6a2cf6e0dc4bf2bffd0a6d8'
+            'ae1ed38f94304d27e4ef1ca66e15d544f99681c1e743c510c54d4a112f050421'
             '6a04e89eee4030d06d79f21912c7aa531dfc7beb5d3f51b66ec2bd62f95401ec'
             'b1748e826d8e7cccdd825b99864b74dfb5795312f8878d63e9a87105f4382e29')
