@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-bin
 	pkgdesc = Official desktop version of Telegram messaging app - Static binaries
-	pkgver = 0.9.6
-	pkgrel = 2
+	pkgver = 0.9.10
+	pkgrel = 1
 	url = https://desktop.telegram.org
 	install = telegram-desktop-bin.install
 	arch = i686
@@ -34,10 +34,10 @@ pkgbase = telegram-desktop-bin
 	sha256sums = 0f2a6e4c2b9b4ff5f4ddb628728be4cc5a419f79695c0151321a5f234099ee59
 	sha256sums = e3e10fe8620bd4ed8fda41743ad844739757286eeecea5249cf1fcf21a8431bd
 	sha256sums = 4226167b476a75e844ddf0d429068e7e901bbde516810a7d4ca90f8405c01eef
-	source_i686 = https://updates.tdesktop.com/tlinux32/tsetup32.0.9.6.tar.xz
-	sha256sums_i686 = 3d9aa006600cea43b2087b480f2084a0c2de979b1bcc146a5b056637c25dc7bf
-	source_x86_64 = https://updates.tdesktop.com/tlinux/tsetup.0.9.6.tar.xz
-	sha256sums_x86_64 = 7b59c9919e665a58b5a3af9ce546388a2931d764fa9290eb057f0ee2f7b826bf
+	source_i686 = https://updates.tdesktop.com/tlinux32/tsetup32.0.9.10.tar.xz
+	sha256sums_i686 = eddbf2a92ca763ccf24e25dba17ef5f7bc8dafa84d78c99156f4c39284582894
+	source_x86_64 = https://updates.tdesktop.com/tlinux/tsetup.0.9.10.tar.xz
+	sha256sums_x86_64 = 05aa2f7685491049f948e0790872dd90b6ac4ac4206527f83ac4ecce63bce452
 
 pkgname = telegram-desktop-bin
 
