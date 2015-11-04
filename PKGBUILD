@@ -2,7 +2,7 @@
 # Contributor: Peter Hoeg <peter@hoeg.com>
 
 _pkgver_major=2
-_pkgver_minor=015
+_pkgver_minor=017
 pkgname=ttf-hack
 pkgver=${_pkgver_major}.${_pkgver_minor}
 pkgrel=1
@@ -13,7 +13,7 @@ url="http://sourcefoundry.org/hack/"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=$pkgname.install
 source=("https://github.com/chrissimpkins/Hack/releases/download/v${pkgver}/Hack-v${_pkgver_major}_${_pkgver_minor}-ttf.zip")
-sha256sums=('e59d11540fb63e225bd5441c420df302176ffb8f9cadae8c2ab4c5d8391f0c74')
+sha256sums=('0c78dfb5bf0520d6fff8416b5bf81dae13bab787afb15cf43a6bf14a699357af')
 
 package() {
   install -Dm644 -t $pkgdir/usr/share/fonts/TTF $srcdir/Hack-*.ttf
