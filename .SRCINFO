@@ -1,6 +1,6 @@
 pkgbase = draftsight
 	pkgdesc = Freeware CAD software for your DWG/DXF files.
-	pkgver = SP3
+	pkgver = 2015SP3
 	pkgrel = 1
 	url = http://www.3ds.com/products/draftsight/
 	install = draftsight.install
