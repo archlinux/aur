@@ -4,7 +4,6 @@ pkgbase = screenshooter
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
-	arch = amd64
 	license = Freeware
 	depends = qt5-x11extras
 	source_x86_64 = http://kosz.marcin.co/dl/screenshooter-5.30-x86_64.tar.gz
