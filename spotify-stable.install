@@ -22,10 +22,10 @@ post_install()
 
 	cp -p /opt/spotify/spotify-client/spotify.desktop /usr/share/applications/
 
-	echo -e "Downloading and installing necessary library...\n"
+	echo "Adding license URL to /usr/share/licenses/spotify-stable/LICENSE..."
 
-	wget https://dl.dropboxusercontent.com/u/8593574/Spotify/Arch%20Linux/libgcrypt.so.11 -O /usr/lib/libgcrypt.so.11
-	ldconfig
+	mkdir -p /usr/share/licenses/spotify-stable
+	echo "https://www.spotify.com/legal/end-user-agreement/" > /usr/share/licenses/spotify-stable/LICENSE
 
 	echo -e "Spotify installed!\n"
 }

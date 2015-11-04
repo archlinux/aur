@@ -2,12 +2,12 @@
 
 pkgname=spotify-stable
 pkgver=0.9.17
-pkgrel=1
-pkgdesc="A proprietary music streaming service."
+pkgrel=2
+pkgdesc="A proprietary music streaming service. Version recommended by Spotify. See URL."
 arch=('x86_64')
-url="https://www.spotify.com"
+url="https://www.spotify.com/no/download/linux/"
 license=('custom:Copyright (c) 2014 Spotify AB')
-depends=('binutils' 'desktop-file-utils' 'ffmpeg-compat' 'libxss' 'python2-xdg' 'qt4' 'openssl' 'wget' 'xdg-utils')
+depends=('binutils' 'desktop-file-utils' 'ffmpeg-compat' 'libgcrypt11' 'libxss' 'openssl' 'python2-xdg' 'qt4' 'wget' 'xdg-utils')
 conflicts=('spotify' 'spotify094' 'spotify32bit')
 install=$pkgname.install
 source=('http://repository-origin.spotify.com/pool/non-free/s/spotify/spotify-client-0.9.17_0.9.17.8.gd06432d.31-1_amd64.deb')
