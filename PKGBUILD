@@ -1,7 +1,8 @@
 # Maintainer: Denis Borisevich <elfmax at tut dot by>
+# Author: Laird Breyer <laird at lbreyer dot com> 
 pkgname=xml-coreutils
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 url="http://xml-coreutils.sourceforge.net"
 pkgdesc="A collection of Unix/POSIX command line tools for processing XML files."
 license=('GPL3')
