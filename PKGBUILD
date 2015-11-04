@@ -1,6 +1,6 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-libdbus
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 arch=(any)
 pkgdesc="DBus library (mingw-w64)"
@@ -13,7 +13,7 @@ replaces=(mingw-w64-dbus)
 license=("custom" "GPL")
 url="http://www.freedesktop.org/wiki/Software/dbus"
 source=("http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz"{,.asc})
-md5sums=('5af6297348107a906c8449817a728b3b'
+md5sums=('2428919cc77b8d0028d65ee4d5dbef31'
          'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
@@ -46,9 +46,9 @@ package() {
 	for _arch in ${_architectures}; do
 		cd "${srcdir}/dbus-${pkgver}/build-${_arch}"
 		make DESTDIR="${pkgdir}" install
-		find "${pkgdir}/usr/${_arch}" -name "*.exe" -o -name "*.bat" -o -name "*.def" -o -name "*.exp" | xargs -rtl1 rm
+		find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \;
 		find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
-		find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs -rtl1 ${_arch}-strip -g
+		find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs ${_arch}-strip -g
 		rm -rf "${pkgdir}/usr/${_arch}/"{etc,var,libexec,share}
 	done
 }
