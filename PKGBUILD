@@ -7,8 +7,8 @@ license=('Apache 2.0')
 depends=('keepass')
 arch=(any)
 url="http://readablepassphrase.codeplex.com/"
-source=("ReadablePassphrase.plgx::https://readablepassphrase.codeplex.com/downloads/get/1500723")
-sha256sums=('f5fbfab85e0aa935c69cd5397e44271090114210201e79ffe4b80bf8da3a5e1b')
+source=("ReadablePassphrase.plgx::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=readablepassphrase&DownloadId=1500723&FileTime=130899836329970000&Build=21031")
+sha256sums=('40a33ccf2074f0d5ac1e9bebba2853b1feb50fa522d95621d031e3ff8f5b337b')
 
 package() {
     mkdir -p "${pkgdir}"/usr/share/keepass/plugins
