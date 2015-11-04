@@ -3,7 +3,7 @@
 
 pkgname=firefox-beta-bin
 _pkgname=firefox-beta
-pkgver=42.0
+pkgver=43.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -34,8 +34,8 @@ if [[ $_build = ? ]]; then
 fi
 md5sums=('f7d82a1aac76f0bead4245fc1572eee1'
          'fecf3a4e9018f2a84e231cddbc047523')
-md5sums_i686=('59d57cef8847455a1739bef94dfb377f')
-md5sums_x86_64=('9033e4ab8918e7a066f124eb10160bbe')
+md5sums_i686=('')
+md5sums_x86_64=('')
 
 package() {
   # Create directories
