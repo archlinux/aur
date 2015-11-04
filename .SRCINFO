@@ -1,7 +1,7 @@
 pkgbase = meteor-js
-	pkgdesc = Open-source platform for building top-quality web apps in a fraction of the time.
-	pkgver = 1.1.0.3
-	pkgrel = 2
+	pkgdesc = Open-source JavaScript platform for building top-quality web apps in a fraction of the time.
+	pkgver = 1.2.1
+	pkgrel = 3
 	url = https://github.com/meteor/meteor
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = meteor-js
 	depends = nodejs
 	depends = mongodb
 	options = !strip
-	source_i686 = https://d3sqy0vbqsdhku.cloudfront.net/packages-bootstrap/1.1.0.3/meteor-bootstrap-os.linux.x86_32.tar.gz
-	sha256sums_i686 = 6ff324173ca52df92b04a6f2cd560113e2843416fc5e538bd2c1bb60315f82da
-	source_x86_64 = https://d3sqy0vbqsdhku.cloudfront.net/packages-bootstrap/1.1.0.3/meteor-bootstrap-os.linux.x86_64.tar.gz
-	sha256sums_x86_64 = 8e29914142861123f57c6183b3e1096e3ae25a8ef86af1255c244f805915c925
+	source_i686 = https://d3sqy0vbqsdhku.cloudfront.net/packages-bootstrap/1.2.1/meteor-bootstrap-os.linux.x86_32.tar.gz
+	md5sums_i686 = d049cf5b015a78e6a077b0bd524f7e5b
+	source_x86_64 = https://d3sqy0vbqsdhku.cloudfront.net/packages-bootstrap/1.2.1/meteor-bootstrap-os.linux.x86_64.tar.gz
+	md5sums_x86_64 = 6df11f44a485af737578b8821ef90a21
 
 pkgname = meteor-js
 

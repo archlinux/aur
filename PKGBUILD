@@ -1,14 +1,16 @@
+# Maintainer: Paulo Alexandre <paulequilibrio at gmail dot com>
+# Contributor: morning_star<themorningstar@riseup.net>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Parth Buch <parthbuch115 at gmail dot com>
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
 # Contributor: Valentin Haloiu <vially.ichb+aur@gmail.com>
 # Contributor: Cluxter <contact@cluxter.email>
-# Maintainer: morning_star<themorningstar@riseup.net>
 
 pkgname=meteor-js
-pkgver=1.1.0.3
-pkgrel=2
-pkgdesc="Open-source platform for building top-quality web apps in a fraction of the time."
+pkgver=1.2.1
+pkgrel=3
+pkgdesc="Open-source JavaScript platform for building top-quality web apps in a fraction of the time."
+
 arch=('i686' 'x86_64')
 url="https://github.com/meteor/meteor"
 license=('MIT')
@@ -18,11 +20,8 @@ options=('!strip')
 source_i686=("https://d3sqy0vbqsdhku.cloudfront.net/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz")
 source_x86_64=("https://d3sqy0vbqsdhku.cloudfront.net/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz")
 
-sha256sums_i686=('6ff324173ca52df92b04a6f2cd560113e2843416fc5e538bd2c1bb60315f82da')
-sha256sums_x86_64=('8e29914142861123f57c6183b3e1096e3ae25a8ef86af1255c244f805915c925')
-
-#sha256sums_i686=('3fdddd00f380468c6ddc1ab151c09942e928054837a0a727eae68b15d6f606b9')
-#sha256sums_x86_64=('9dcc4ba6698eaa09016ff8cb8b77704fe31916e8ac86b54796f7e5e591cecaf6')
+md5sums_i686=('d049cf5b015a78e6a077b0bd524f7e5b')
+md5sums_x86_64=('6df11f44a485af737578b8821ef90a21')
 
 package() {
     mkdir -p "$pkgdir/opt"
