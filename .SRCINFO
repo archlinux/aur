@@ -1,0 +1,33 @@
+pkgbase = easystroke-git
+	pkgdesc = Gesture-recognition application for X11.
+	pkgver = 0.6.0.r7.g72eaf61
+	pkgrel = 1
+	url = https://github.com/thjaeger/easystroke/wiki
+	install = easystroke.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = boost
+	makedepends = inputproto
+	makedepends = intltool
+	makedepends = gettext
+	makedepends = xorg-server-devel
+	makedepends = help2man
+	depends = gtkmm3
+	depends = boost-libs
+	depends = libxtst
+	depends = dbus-glib
+	depends = xorg-server
+	provides = easystroke
+	conflicts = easystroke
+	source = git+https://github.com/thjaeger/easystroke.git
+	source = sigc.patch
+	source = dont-ignore-xshape-when-saving.patch
+	source = add-toggle-option.patch
+	md5sums = SKIP
+	md5sums = 25fb4b21e36501276285caa788e1acd0
+	md5sums = b9cd799d59ec868371e8e6c538d43bf6
+	md5sums = 39013c97c368735967a2f6897c96d614
+
+pkgname = easystroke-git
+
