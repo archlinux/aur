@@ -6,6 +6,7 @@ pkgbase = kdeplasma-addons-git
 	install = kdeplasma-addons-git.install
 	arch = i686
 	arch = x86_64
+	groups = plasma
 	license = LGPL
 	makedepends = kdoctools
 	makedepends = extra-cmake-modules

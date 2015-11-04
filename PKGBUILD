@@ -15,6 +15,7 @@ applet' 'kross: comic applet' 'quota-tools: disk quota applet')
 conflicts=(kdeplasma-addons)
 provides=(kdeplasma-addons)
 source=('git://anongit.kde.org/kdeplasma-addons.git')
+groups=('plasma')
 md5sums=('SKIP')
 install=$pkgname.install
 
