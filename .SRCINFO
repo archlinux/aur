@@ -8,10 +8,10 @@ pkgbase = rr
 	license = custom
 	makedepends = git
 	makedepends = cmake
+	makedepends = gcc-multilib
 	depends = libpfm4
 	depends = libdisasm
 	depends = python2-pexpect
-	depends = gcc-multilib
 	source = https://github.com/mozilla/rr/archive/4.0.1.tar.gz
 	sha1sums = 6500d2e648b6470f3d70a0e67558da76e305926d
 
