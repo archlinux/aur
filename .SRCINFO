@@ -1,0 +1,15 @@
+pkgbase = blih
+	pkgdesc = Bocal Lighteweight Interface for Humans, git repositories and SSH public keys management tool for EPITECH students
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://intra-bocal.epitech.eu
+	arch = any
+	license = GPL
+	depends = python>=3.3.0
+	depends = python-requests
+	provides = blih
+	source = https://pkg.blinux.fr/pub/blih/1.7/blih-1.7.tgz
+	md5sums = 8d737cc043bcd2217cfb89ab84882ceb
+
+pkgname = blih
+
