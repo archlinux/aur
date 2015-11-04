@@ -1,6 +1,6 @@
 pkgbase = tryton
 	pkgdesc = A three-tiers high-level general purpose application platform (client application)
-	pkgver = 3.6.3
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
@@ -8,13 +8,15 @@ pkgbase = tryton
 	makedepends = python2-distribute
 	depends = python2>=2.7
 	depends = gtk2
-	depends = pygtk>=2.0
+	depends = pygtk>=2.22
 	depends = librsvg
 	depends = python2-dateutil
-	optdepends = python2-pytz: timezone support
-	source = http://downloads.tryton.org/3.6/tryton-3.6.3.tar.gz
+	depends = python2-chardet
+	optdepends = python2-simplejson: Faster JSON processing
+	optdepends = python2-cdecimal: Faster decimal handling
+	source = http://downloads.tryton.org/3.8/tryton-3.8.1.tar.gz
 	source = tryton.desktop
-	md5sums = dd43613bb7bb773aaf15c269415e08fc
+	md5sums = 40ad5e7f7f0d62f641b5f65a632048d1
 	md5sums = 7ca15ad6c790c78817fe1a1b6a2c3fcf
 
 pkgname = tryton
