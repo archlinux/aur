@@ -1,7 +1,7 @@
 pkgbase = texlive-cleanthesis
 	pkgdesc = A beautiful clean LaTeX style
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cleanthesis.der-ric.de/
 	install = texlive.install
 	arch = any

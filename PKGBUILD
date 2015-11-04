@@ -1,9 +1,10 @@
 # Maintainer: Peter Hoeg <first name at last name dot com>
+# Contributor: David McInnis <davidm@eagles.ewu.edu>
 
 _name=cleanthesis
 pkgname=texlive-${_name}
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful clean LaTeX style"
 arch=("any")
 url="http://cleanthesis.der-ric.de/"
@@ -18,7 +19,6 @@ package() {
 
   install -m775 -d "$pkgdir/usr/share/texmf/doc/latex/${_name}"
   install -m775 -d "$pkgdir/usr/share/texmf/tex/latex/${_name}"
-  # cp -R README.md                 "$pkgdir/usr/share/texmf/doc/latex/${_name}/"
-  cp -R README.md *.bib *.tex content "$pkgdir/usr/share/texmf/doc/latex/${_name}/"
-  cp -R *.sty "$pkgdir/usr/share/texmf/tex/latex/${_name}/"
+  cp -R README.md doc/cleanthesis-doc.pdf thesis-example.* "$pkgdir/usr/share/texmf/doc/latex/${_name}/"
+  cp -R *.bib *.sty content gfx "$pkgdir/usr/share/texmf/tex/latex/${_name}/"
 }
