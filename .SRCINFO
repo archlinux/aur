@@ -1,5 +1,5 @@
 pkgbase = linux-libre-rt
-	pkgver = 4.1.10_gnu.rt10
+	pkgver = 4.1.10_gnu.rt11
 	pkgrel = 1
 	url = https://rt.wiki.kernel.org/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = linux-libre-rt
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.10-gnu/patch-4.1-gnu-4.1.10-gnu.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.10-gnu/patch-4.1-gnu-4.1.10-gnu.xz.sign
-	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.10-rt10.patch.xz
-	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.10-rt10.patch.sign
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.10-rt11.patch.xz
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.10-rt11.patch.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -44,7 +44,7 @@ pkgbase = linux-libre-rt
 	sha256sums = SKIP
 	sha256sums = 868756d2c78a24216afbf6f73dba779817b72d647ec0dc8b1f032245705a9cc2
 	sha256sums = SKIP
-	sha256sums = 287314390826d8ac54dff024a277d8fa4917a17d4b13f4dbe9619fa6283fbc79
+	sha256sums = 3e40f95bba72932f3c21187b39fd3aca4260ee0ebd7e2719daf06cd444bc0ebc
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -77,20 +77,20 @@ pkgname = linux-libre-rt
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-rt=4.1.10_rt10
+	provides = linux-rt=4.1.10_rt11
 	conflicts = 
 	replaces = linux-rt
 	backup = etc/mkinitcpio.d/linux-libre-rt.preset
 
 pkgname = linux-libre-rt-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-rt kernel
-	provides = linux-rt-headers=4.1.10_rt10
+	provides = linux-rt-headers=4.1.10_rt11
 	conflicts = 
 	replaces = linux-rt-headers
 
 pkgname = linux-libre-rt-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-rt kernel
-	provides = linux-rt-docs=4.1.10_rt10
+	provides = linux-rt-docs=4.1.10_rt11
 	conflicts = 
 	replaces = linux-rt-docs
 

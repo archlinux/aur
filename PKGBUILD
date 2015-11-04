@@ -12,7 +12,7 @@ pkgbase=linux-libre-rt
 _pkgbasever=4.1-gnu
 _pkgver=4.1.10-gnu
 _rtbasever=4.1
-_rtpatchver=rt10
+_rtpatchver=rt11
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -64,7 +64,7 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '868756d2c78a24216afbf6f73dba779817b72d647ec0dc8b1f032245705a9cc2'
             'SKIP'
-            '287314390826d8ac54dff024a277d8fa4917a17d4b13f4dbe9619fa6283fbc79'
+            '3e40f95bba72932f3c21187b39fd3aca4260ee0ebd7e2719daf06cd444bc0ebc'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
