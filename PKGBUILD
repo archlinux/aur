@@ -4,14 +4,14 @@
 
 pkgname=bbswitch
 pkgver=0.8
-_extramodules=extramodules-4.2-ARCH # Don't forget to update bbswitch.install
-pkgrel=38
+_extramodules=extramodules-4.3-ARCH # Don't forget to update bbswitch.install
+pkgrel=39
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('i686' 'x86_64')
 url=("http://github.com/Bumblebee-Project/bbswitch")
 license=('GPL')
-depends=('linux>=4.2' 'linux<4.3')
-makedepends=('linux-headers>=4.2' 'linux-headers<4.3')
+depends=('linux>=4.3' 'linux<4.4')
+makedepends=('linux-headers>=4.3' 'linux-headers<4.4')
 install=bbswitch.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
 md5sums=('5b116b31ace3604ddf9d1fc1f4bc5807')
