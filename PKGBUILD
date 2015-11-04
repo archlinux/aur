@@ -41,7 +41,7 @@ set -u
 _pyver="python2"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}"
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -61,9 +61,11 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
   "${_pyver}-guzzle-sphinx-theme"{">=0.7.10","<0.8"}
 )
+depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
+options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('15475c2aef91f507a8bb46e83518fb339412d6f43c204c6a175c897ccdc1eb95')
+sha256sums=('4a3b15e07348f68761bbbc046519a67c7dde1a2a153f483f8edd54899ceb23d7')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
@@ -100,7 +102,7 @@ check() {
 
 package() {
   set -u
-  depends=("${_pyver}" "${_pydepends[@]}")
+  #depends=("${_pyver}" "${_pydepends[@]}")
   cd "${_srcdir}"
   ${_pyver} setup.py install --root="${pkgdir}" --optimize=1
   install -Dpm644 'README.rst' 'requirements.txt' -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
