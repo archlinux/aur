@@ -1,6 +1,6 @@
 pkgbase = screenshotgun-git
 	pkgdesc = Open screenshoter with server part
-	pkgver = 20151104
+	pkgver = 0.11_20151104
 	pkgrel = 1
 	url = http://screenshotgun.com
 	arch = any
