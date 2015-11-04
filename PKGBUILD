@@ -1,8 +1,8 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 pkgname=gnome-shell-pomodoro
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/codito/gnome-shell-pomodoro/'
@@ -13,7 +13,7 @@ conflicts=('gnome-shell-pomodoro-git')
 install='gschemas.install'
 changelog='NEWS'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/codito/gnome-pomodoro/archive/$pkgver.tar.gz")
-sha256sums=('06693d4858d7d96c36f93afd2a3c352bbaeea90e67839a7669a9f0f1fe4e825c')
+sha256sums=('90217c2df07ef7da2f1e8fba4e657a18954d03bc09fe93ba4405aa6e12df1a7a')
 
 prepare() {
   cd "$srcdir/gnome-pomodoro-$pkgver"
