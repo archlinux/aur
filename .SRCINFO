@@ -1,7 +1,7 @@
 pkgbase = xml-coreutils
 	pkgdesc = A collection of Unix/POSIX command line tools for processing XML files.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xml-coreutils.sourceforge.net
 	arch = x86_64
 	arch = i686
