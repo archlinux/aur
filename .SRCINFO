@@ -5,10 +5,11 @@ pkgbase = pueue-git
 	url = https://github.com/nukesor/pueue
 	arch = any
 	license = MIT
+	makedepends = git python-setuptools
 	depends = python
-	depends = python-setuptools
-	source = https://github.com/Nukesor/pueue/archive/0.3.6.tar.gz
-	sha256sums = 31c8a66703f31b461020ff371b30a2c16519ad41359787330f2f0b3c78d7ffcf
+	provides = pueue
+	source = git+https://github.com/nukesor/pueue.git
+	sha256sums = SKIP
 
 pkgname = pueue-git
 
