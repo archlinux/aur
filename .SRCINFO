@@ -1,0 +1,12 @@
+pkgbase = denix-scripts
+	pkgdesc = DeniX scripts
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/denix666/denix-scripts
+	arch = any
+	license = GPL
+	source = git+https://github.com/denix666/denix-scripts.git
+	md5sums = SKIP
+
+pkgname = denix-scripts
+
