@@ -1,0 +1,6 @@
+post_install() {
+  echo 'Quick start: '
+  echo '  - sudo systemctl start 3dm2'
+  echo '  - https://localhost:888'
+  echo '  - The default password for both accounts in 3dm2 is "3ware"'
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=3dm2 raid controller web interface
+After=network.target
+
+[Service]
+Type=forking
+GuessMainPID=yes
+ExecStart=/usr/bin/3dm2
+
+[Install]
+WantedBy=multi-user.target
