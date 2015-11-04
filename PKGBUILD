@@ -2,7 +2,7 @@
 # Contributor: Peter Hoeg <peter@hoeg.com>
 
 _pkgver_major=2
-_pkgver_minor=015
+_pkgver_minor=017
 pkgname=otf-hack
 pkgver=${_pkgver_major}.${_pkgver_minor}
 pkgrel=1
@@ -13,7 +13,7 @@ url="http://sourcefoundry.org/hack/"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=$pkgname.install
 source=("https://github.com/chrissimpkins/Hack/releases/download/v${pkgver}/Hack-v${_pkgver_major}_${_pkgver_minor}-otf.zip")
-sha256sums=('e274aa23efdac2465a7ea8748ff5094ab7bf83e2e00a5b89045ee4d4f86fd906')
+sha256sums=('34b3611f83e140ca23c2dd466b5dca339409b1fd279dfe30513114ccc948a20f')
 
 package() {
   install -Dm644 -t $pkgdir/usr/share/fonts/OTF $srcdir/Hack-*.otf
