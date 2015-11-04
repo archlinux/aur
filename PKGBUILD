@@ -3,12 +3,12 @@
 
 pkgname=rr
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a nondeterministic debugger'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
-depends=('libpfm4' 'libdisasm' 'python2-pexpect')
+depends=('libpfm4' 'libdisasm' 'python2-pexpect' 'gcc-multilib')
 makedepends=('git' 'cmake')
 source=(https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz)
 sha1sums=('e0a172121f82224bd2b8c96327eaa72816a640b2')
