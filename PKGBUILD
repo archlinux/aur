@@ -1,6 +1,6 @@
 # Maintainer: Thayne McCombs <bytecurry.software@gmail.com>
 pkgname=roswell
-pkgver="0.0.3.50"
+pkgver="0.0.3.51"
 pkgrel=1
 pkgdesc="Lisp installer and launcher"
 url="https://github.com/snmsts/roswell"
@@ -9,7 +9,8 @@ license=('MIT')
 depends=('curl')
 optdepends=()
 source=("https://github.com/snmsts/roswell/archive/v$pkgver.tar.gz")
-md5sums=('2b61fdb585afc026b93744521a19de16')
+md5sums=('d8740d5f904c4351c481d85623b10890')
+
 
 build() {
 	cd "$pkgname-$pkgver"
