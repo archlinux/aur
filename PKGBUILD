@@ -1,15 +1,16 @@
 # Contributor: Florian Walch <florian.walch@gmx.at>
 # Maintainer: Robin Baumgartner <robin@baumgartners.ch>
 pkgname=trytond
-pkgver=3.6.3
-_pkgdir=3.6
+pkgver=3.8.0
+_pkgdir=3.8
 pkgrel=1
 pkgdesc="A three-tiers high-level general purpose application platform (server application)"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python2>=2.4' 'python2-lxml' 'python2-relatorio>=0.2.0'
-         'python2-genshi>=0.5' 'python2-polib' 'python2-sql')
+depends=('python2>=2.7' 'python2-lxml' 'python2-relatorio>=0.2.0'
+         'python2-genshi>=0.5' 'python2-dateutil' 'python2-polib'
+         'python2-sql')
 optdepends=('python2-psycopg2: support for PostgreSQL database'
   'python-pywebdav: support for WebDAV feature'
   'pydot: support for displaying workflow graphs'
@@ -20,7 +21,7 @@ install="trytond.install"
 source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         'trytond.install'
         'trytond.service')
-md5sums=('bf717f68ac97ef8f41608f78cec89120'
+md5sums=('abf9e9c0b30f6f51cde8840fc943ae11'
          '768e68c01cb5913e36ea89c67fc98038'
          'b1535a8528dfd8f655624bf6faea6985')
 

@@ -1,16 +1,17 @@
 pkgbase = trytond
 	pkgdesc = A three-tiers high-level general purpose application platform (server application)
-	pkgver = 3.6.3
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	install = trytond.install
 	arch = any
 	license = GPL3
 	makedepends = python2-distribute
-	depends = python2>=2.4
+	depends = python2>=2.7
 	depends = python2-lxml
 	depends = python2-relatorio>=0.2.0
 	depends = python2-genshi>=0.5
+	depends = python2-dateutil
 	depends = python2-polib
 	depends = python2-sql
 	optdepends = python2-psycopg2: support for PostgreSQL database
@@ -18,10 +19,10 @@ pkgbase = trytond
 	optdepends = pydot: support for displaying workflow graphs
 	optdepends = python-pytz: timezone support
 	optdepends = pyopenssl: support for SSL connection
-	source = http://downloads.tryton.org/3.6/trytond-3.6.3.tar.gz
+	source = http://downloads.tryton.org/3.8/trytond-3.8.0.tar.gz
 	source = trytond.install
 	source = trytond.service
-	md5sums = bf717f68ac97ef8f41608f78cec89120
+	md5sums = abf9e9c0b30f6f51cde8840fc943ae11
 	md5sums = 768e68c01cb5913e36ea89c67fc98038
 	md5sums = b1535a8528dfd8f655624bf6faea6985
 
