@@ -1,7 +1,7 @@
 # Maintainer: Dylan Whichard <dylan@whichard.com>
 _name=pyalexa
 pkgname=python-pyalexa
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Simple Python API for creating Amazon Echo skills'
 arch=('any')
