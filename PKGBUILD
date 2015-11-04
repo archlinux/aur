@@ -43,7 +43,7 @@ install=firefox-nightly.install
 
 pkgver() {
   SRC_VER="${_name}-${_version}.en-US.linux-${CARCH}.txt"
-  curl -OR "https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/${SRC_VER}"
+  curl -OR "https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central/${SRC_VER}"
   echo "${_version}.$(head -n1 ${SRC_VER} | cut -c -8)"
 }
 
