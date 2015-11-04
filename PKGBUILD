@@ -2,18 +2,17 @@
 
 pkgname=volatility-git
 _gitname=volatility
-pkgver=2.5.2339.1ba6d73
+pkgver=2.5.2340.ac60895
 pkgrel=1
 pkgdesc="Advanced memory forensics framework"
 url="https://github.com/volatilityfoundation/volatility/wiki"
 arch=('any')
 license=('GPL2')
-depends=('python2-crypto' 'distorm')
+depends=('distorm' 'python2-crypto' 'python2-ujson')
 optdepends=(
   'python2-yara: classify malware support'
   'python2-pillow: screenshots plugin support'
   'python2-pytz: timezone conversion support'
-  'python2-ujson: html output plugin support'
   'ipython2: enhanced volshell support'
   'libforensic1394: firewire live analysis support'
   'libraw1394: alternative firewire live analysis support'
@@ -33,11 +32,6 @@ pkgver() {
 prepare() {
   cd ${pkgname}
   sed -e 's/env python$/env python2/g' -i tools/vtype_diff.py
-}
-
-build() {
-  cd ${pkgname}
-  python2 setup.py build
 }
 
 package() {
