@@ -9,6 +9,7 @@ url='https://github.com/maandree/passcheck'
 license=('custom:public domain')
 depends=()
 makedepends=('make' 'coreutils' 'lrzip')
+conflicts=('passcheck<1.5')
 source=(https://github.com/maandree/passcheck/archive/$pkgver-data.tar.gz
         https://github.com/maandree/passcheck/archive/$pkgver.tar.gz)
 sha256sums=(605cac2c724228866958bb750bb3c60efb7ce7167e1d3f07a5e610567fe7b90f

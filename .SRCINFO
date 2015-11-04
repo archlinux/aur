@@ -8,6 +8,7 @@ pkgbase = passcheck-data
 	makedepends = make
 	makedepends = coreutils
 	makedepends = lrzip
+	conflicts = passcheck<1.5
 	source = https://github.com/maandree/passcheck/archive/1.5-data.tar.gz
 	source = https://github.com/maandree/passcheck/archive/1.5.tar.gz
 	sha256sums = 605cac2c724228866958bb750bb3c60efb7ce7167e1d3f07a5e610567fe7b90f
