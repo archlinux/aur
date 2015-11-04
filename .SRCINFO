@@ -1,6 +1,6 @@
 pkgbase = parcimonie-sh-git
 	pkgdesc = Bash reimplementation of parcimonie - Refresh your GnuPG keyring without disclosing your whole contact list to the world
-	pkgver = 45.d7d83f0
+	pkgver = 48.9344ede
 	pkgrel = 1
 	url = https://github.com/EtiennePerot/parcimonie.sh
 	arch = any

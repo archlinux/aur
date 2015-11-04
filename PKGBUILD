@@ -2,7 +2,7 @@
 # Contributor: Etienne Perot <etienne at perot dot me>
 
 pkgname=parcimonie-sh-git
-pkgver=45.d7d83f0
+pkgver=48.9344ede
 pkgrel=1
 pkgdesc='Bash reimplementation of parcimonie - Refresh your GnuPG keyring without disclosing your whole contact list to the world'
 arch=('any')
@@ -10,22 +10,14 @@ url='https://github.com/EtiennePerot/parcimonie.sh'
 license=('WTFPL')
 depends=('bash' 'torsocks' 'tor' 'gnupg')
 makedepends=('git')
-source=(
-	'git://perot.me/parcimonie.sh'
-	'pgp-key::https://perot.me/pgp-minimal.asc'
-)
-sha512sums=(
-	'SKIP'
-	'0f473fb9b853803570c8213eecbdf43f672cc55c6f39c59c9801b70bbdf33cddb7aedf44c0fc0fef632460c6325157dbf31d1043891ff186d2d064703f0fe97e'
-)
+source=('git://perot.me/parcimonie.sh'
+		'pgp-key::https://perot.me/pgp-minimal.asc')
+sha512sums=('SKIP'
+			'0f473fb9b853803570c8213eecbdf43f672cc55c6f39c59c9801b70bbdf33cddb7aedf44c0fc0fef632460c6325157dbf31d1043891ff186d2d064703f0fe97e')
 
 pkgver() {
 	cd "$startdir/parcimonie.sh"
 	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-build() {
-	_dummy='' # Nothing; but apparently having just a comment causes a syntax error
 }
 
 check() {
