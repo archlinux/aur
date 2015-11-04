@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ScreenShooter
+GenericName=ScreenShooter
+Comment=Take a screenshot and share it with your friends
+Icon=screenshooter
+Exec=ScreenShooter5 %u
+NoDisplay=false
+Categories=Network;
+StartupNotify=true
+Terminal=false
