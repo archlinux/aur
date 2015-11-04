@@ -1,7 +1,7 @@
 pkgbase = utox
 	pkgdesc = Lightweight Tox client
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/GrayHatter/uTox
 	install = utox.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = utox
 	arch = armv6h
 	arch = armv7h
 	license = GPL3
+	makedepends = toxcore
 	depends = desktop-file-utils
 	depends = fontconfig
 	depends = libfilteraudio-git
@@ -21,8 +22,8 @@ pkgbase = utox
 	depends = toxcore
 	depends = v4l-utils
 	optdepends = gtk2: GTK file picker
-	source = https://github.com/GrayHatter/uTox/archive/v0.3.2/utox-0.3.2.tar.gz
-	sha256sums = 848025075e21355c3a8aa959092313d66b4ad6ae03630eb30cc3afce750acc68
+	source = https://github.com/GrayHatter/uTox/archive/v0.4.2/utox-0.4.2.tar.gz
+	sha256sums = 67d29b808079b85691cf5f77e568ef239fd46afac069071aeba513050d84aeda
 
 pkgname = utox
 
