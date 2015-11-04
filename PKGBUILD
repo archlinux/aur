@@ -6,7 +6,7 @@ pkgdesc='Tutanota end-to-end encrypted email client webapp'
 url='https://tutanota.de'
 arch=('any')
 license=('GPL3')
-makedepends=('npm' 'nodejs-gulp')
+makedepends=('npm' 'gulp')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz")
 md5sums=('319083759e7d1a38a4984845e6376bd4')
 
