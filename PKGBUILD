@@ -1,7 +1,7 @@
 # Maintainer: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=15.6.19
+pkgver=15.6.31
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
