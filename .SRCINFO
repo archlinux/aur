@@ -1,0 +1,13 @@
+pkgbase = xlnt-git
+	pkgdesc = user-friendly xlsx library for C++14
+	pkgver = 20151104
+	pkgrel = 1
+	url = https://github.com/tfussell/xlnt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = git://github.com/tfussell/xlnt.git
+	md5sums = SKIP
+
+pkgname = xlnt-git
+
