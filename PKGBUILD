@@ -2,11 +2,11 @@
 
 pkgname=gluon-scenebuilder
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaFX visual layout tool with sereral improvements by Gluon"
 arch=('any')
 url="http://gluonhq.com/open-source/scene-builder/"
-license=('BSD')
+license=('Oracle BSD License')
 groups=()
 depends=('bash' 'java-environment')
 makedepends=('gendesk')
