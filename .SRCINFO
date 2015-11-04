@@ -1,0 +1,18 @@
+pkgbase = heirloom-doctools-cvs
+	pkgdesc = The Heirloom Documentation Tools consist of a modern roff suite.
+	pkgver = 20120529
+	pkgrel = 1
+	url = http://heirloom.sourceforge.net/doctools.html
+	arch = i686
+	arch = x86_64
+	license = custom:"caldera"
+	license = custom:"opensolaris"
+	license = custom:"lucent"
+	makedepends = cvs
+	source = config.diff
+	md5sums = ccb66e215599cab347132e2f3240156e
+	sha1sums = 5b7205e61227aceb81599bdb6a2a2c457d79a016
+	sha256sums = c6270ae3abdae91eb9adbdd093b33c9de758b0b31db397d3d406ac6ee16423af
+
+pkgname = heirloom-doctools-cvs
+

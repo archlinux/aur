@@ -1,0 +1,51 @@
+diff -ru heirloom-doctools.bak/mk.config heirloom-doctools/mk.config
+--- heirloom-doctools.bak/mk.config	2010-12-21 15:12:01.000000000 -0430
++++ heirloom-doctools/mk.config	2010-12-21 15:13:12.693333341 -0430
+@@ -1,32 +1,32 @@
+ #
+ # A BSD-compatible install command.
+ #
+-INSTALL=/usr/ucb/install
++INSTALL=/usr/bin/install
+ 
+ #
+ # Packaging prefix.
+ #
+-PREFIX=/usr
++PREFIX=/usr/heirloom
+ 
+ #
+ # Where to place binaries.
+ #
+-BINDIR=$(PREFIX)/ucb
++BINDIR=$(PREFIX)/bin/ucb
+ 
+ #
+ # Where to place libraries.
+ #
+-LIBDIR=$(PREFIX)/ucblib
++LIBDIR=$(PREFIX)/lib
+ 
+ #
+ # Where to place ASCII charts and the like.
+ #
+-PUBDIR=$(PREFIX)/pub
++PUBDIR=$(LIBDIR)/doctools/pub
+ 
+ #
+ # Where to place manual pages.
+ #
+-MANDIR=$(PREFIX)/share/man/5man
++MANDIR=$(PREFIX)/share/man
+ 
+ #
+ # Where to place the troff macro packages.
+@@ -111,7 +111,7 @@
+ #
+ # A Bourne-compatible shell.
+ #
+-SHELL=/sbin/sh
++SHELL=/bin/sh
+ 
+ #
+ # Run ranlib if it is in the current path. This should take care
