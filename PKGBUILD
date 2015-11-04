@@ -2,16 +2,16 @@
 # Contributor: Stefano Avallone <stavallo@gmail.com>
 
 pkgname=kdeplasma-addons-git
-pkgver=r6824.5c16df7
+pkgver=r6930.1118575
 pkgrel=1
 pkgdesc="All kind of addons to improve your Plasma experience"
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/kdeplasma-addons'
 license=(LGPL)
-depends=(plasma-workspace-git kross-git)
-makedepends=(kdoctools extra-cmake-modules git scim libibus purpose-git)
-optdepends=('scim: SCIM backend for kimpanel' 'fcitx: FCITX backend for kimpanel' 'libibus: IBUS backend for kimpanel' 'purpose-git: quickshare 
-applet')
+depends=(plasma-workspace-git)
+makedepends=(kdoctools extra-cmake-modules git scim libibus purpose kross)
+optdepends=('scim: SCIM backend for kimpanel' 'fcitx: FCITX backend for kimpanel' 'libibus: IBUS backend for kimpanel' 'purpose: quickshare 
+applet' 'kross: comic applet' 'quota-tools: disk quota applet')
 conflicts=(kdeplasma-addons)
 provides=(kdeplasma-addons)
 source=('git://anongit.kde.org/kdeplasma-addons.git')
