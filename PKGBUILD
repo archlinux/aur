@@ -19,7 +19,7 @@ source=("http://cdn.astah.net/downloads/${pkgname}-${pkgver//./_}-${_realpkgrel}
 	'LICENSE')
 md5sums=('24ac9f33bf45a2a592d3f7571437b031'
          'e374756203ba7e4a52309cbe38208683'
-         'd728cbad449409131ed96edf89053caf'
+         'd821b7726b61ce1c15ef84e31c0c0505'
          'b20ec64a7e6b1ad395c6eed7e8a851b7'
          '95e5566bcef2eb2f7ee5a8ec99eae8af'
          '3b5f3a3c4e453544e9c665c7950960fc')
