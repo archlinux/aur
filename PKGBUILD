@@ -1,12 +1,12 @@
 # Maintanier: Tony Ballhause <tony.ballhause@tu-berlin.de>
 pkgname=beamer-theme-tub
 pkgver=1.0
-pkgrel=1
-pkgdesc="Beamer theme for Technische Universität Berlin"
+pkgrel=2
+pkgdesc="Unofficial Beamer theme for Technische Universität Berlin"
 arch=(any)
 url="https://github.com/cola4cube/beamer-theme-tub"
 license=('MIT')
-#depends=('texlive-core')
+depends=('texlive-core')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
