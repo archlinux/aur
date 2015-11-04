@@ -1,0 +1,19 @@
+pkgbase = bookletimposer
+	pkgdesc = Achieve some basic imposition on PDF documents
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://kjo.herbesfolles.org/bookletimposer/
+	install = bookletimposer.install
+	arch = any
+	license = GPLv3+
+	makedepends = python2-distutils-extra
+	makedepends = pandoc
+	depends = python2>=2.6
+	depends = python2-pypdf>=1.13
+	depends = python2-gobject
+	depends = desktop-file-utils
+	source = http://kjo.herbesfolles.org/bookletimposer/archive/bookletimposer-0.2.tar.gz
+	md5sums = c0e5517bae1949dc1d707541f7a8eb51
+
+pkgname = bookletimposer
+
