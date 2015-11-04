@@ -1,15 +1,15 @@
 pkgbase = ttf-koruri
 	pkgdesc = Japanese TrueType font obtained by mixing M+ and Open Sans
-	pkgver = 20141224
-	pkgrel = 2
+	pkgver = 20151021
+	pkgrel = 1
 	url = http://osdn.jp/projects/koruri
 	install = ttf.install
 	arch = any
 	license = APACHE
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = Koruri-20141224.tar.xz::http://osdn.jp/frs/redir.php?m=iij&f=%2Fkoruri%2F62469%2FKoruri-20141224.tar.xz
-	md5sums = 21b1e8b0a011649e37fddf0e2bf61305
+	source = Koruri-20151021.tar.xz::http://osdn.jp/frs/redir.php?m=iij&f=%2Fkoruri%2F63935%2FKoruri-20151021.tar.xz
+	md5sums = 6a2ac1420063905f8c7bca81b6646139
 
 pkgname = ttf-koruri
 
