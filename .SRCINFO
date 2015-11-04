@@ -1,13 +1,13 @@
 pkgbase = python-matrix-angular-sdk-git
 	pkgdesc = AngularJS services for implementing the Client-Server API on Matrix
-	pkgver = 0.6.6.r2.g1fc0444
+	pkgver = 0.6.7.r5.gb01743c
 	pkgrel = 1
 	url = https://github.com/matrix-org/matrix-angular-sdk
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
 	makedepends = git
-	source = git://github.com/matrix-org/matrix-angular-sdk.git#branch=develop
+	source = git://github.com/matrix-org/matrix-angular-sdk.git#branch=master
 	md5sums = SKIP
 
 pkgname = python2-matrix-angular-sdk-git
