@@ -26,6 +26,7 @@ pkgver() {
 }
 
 prepare () {
+    pkgver
 	cd "$srcdir/$pkgname-$pkgver"
 	patch -p1 -i $srcdir/libsearpc.pc.patch 
 }
