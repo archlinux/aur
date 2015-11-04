@@ -5,7 +5,7 @@ pkgdesc="A MAME front-end"
 arch=('i686' 'x86_64')
 url="https://github.com/mickelson/attract"
 license=('GPL')
-depends=('sfml', 'openal', 'ffmpeg', 'fontconfig', 'libxinerama', 'libarchive')
+depends=('sfml' 'openal' 'ffmpeg' 'fontconfig' 'libxinerama' 'libarchive')
 makedepends=('git')
 conflicts=('attractmode')
 
