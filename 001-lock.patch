@@ -1,0 +1,62 @@
+--- heirloom-devtools-070527/make/vroot/lock.cc.orig	2007-01-13 15:50:54.000000000 +0200
++++ heirloom-devtools-070527/make/vroot/lock.cc	2011-04-07 16:19:57.476674044 +0300
+@@ -53,7 +53,7 @@
+ extern	int		sys_nerr;
+ #endif
+ 
+-static	void		file_lock_error(char *msg, char *file, char *str, int arg1, int arg2);
++static	void		file_lock_error(char *msg, char *file, char *str, char *arg1, char *arg2);
+ 
+ #define BLOCK_INTERUPTS sigfillset(&newset) ; \
+ 	sigprocmask(SIG_SETMASK, &newset, &oldset)
+@@ -87,8 +87,8 @@
+  *
+  * Returns an error message.  NULL return means the lock was obtained.
+  *
+- * 12/6/91 Added the parameter "file_locked".  Before this parameter 
+- * was added, the calling procedure would have to wait for file_lock() 
++ * 12/6/91 Added the parameter "file_locked".  Before this parameter
++ * was added, the calling procedure would have to wait for file_lock()
+  * to return before it sets the flag. If the user interrupted "make"
+  * between the time the lock was acquired and the time file_lock()
+  * returns, make wouldn't know that the file has been locked, and therefore
+@@ -107,7 +107,7 @@
+ 	sigset_t newset;
+ 	sigset_t oldset;
+ 
+-	*file_locked = 0;	
++	*file_locked = 0;
+ 	if (timeout <= 0) {
+ 		timeout = 120;
+ 	}
+@@ -123,18 +123,18 @@
+ 
+ 		if (errno != EEXIST) {
+ 			file_lock_error(msg, name, NOCATGETS("symlink(%s, %s)"),
+-			    (int) name, (int) lockname);
++			    name, lockname);
+ 			fprintf(stderr, "%s", msg);
+ 			return errno;
+ 		}
+ 
+ 		counter = 0;
+ 		for (;;) {
+-			sleep(1); 
++			sleep(1);
+ 			r = lstat(lockname, &statb);
+ 			if (r == -1) {
+ 				/*
+-				 * The lock must have just gone away - try 
++				 * The lock must have just gone away - try
+ 				 * again.
+ 				 */
+ 				break;
+@@ -171,7 +171,7 @@
+  * Format a message telling why the lock could not be created.
+  */
+ static	void
+-file_lock_error(char *msg, char *file, char *str, int arg1, int arg2)
++file_lock_error(char *msg, char *file, char *str, char *arg1, char *arg2)
+ {
+ 	int		len;
+ 

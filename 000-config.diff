@@ -1,0 +1,35 @@
+--- heirloom-devtools/mk.config.orig	2010-12-21 11:54:22.063333339 -0430
++++ heirloom-devtools/mk.config	2010-12-21 11:55:52.943333339 -0430
+@@ -5,7 +5,7 @@
+ # compatibility with traditional tools, the Heirloom Bourne shell is
+ # recommended. It then must obviously be compiled and installed first.
+ #
+-SHELL = /sbin/sh
++SHELL = $(BINDIR)/sh
+ 
+ #
+ # Specify the path name for a POSIX-conforming shell here. For example,
+@@ -17,12 +17,12 @@
+ #
+ # A BSD-compatible install command.
+ #
+-INSTALL=/usr/ucb/install
++INSTALL=install
+ 
+ #
+ # Prefix.
+ #
+-PREFIX=/usr/ccs
++PREFIX=/usr/heirloom
+ 
+ #
+ # Where to place binaries.
+@@ -32,7 +32,7 @@
+ #
+ # Where to place additional binaries that aim at POSIX conformance.
+ #
+-SUSBIN=/usr/5bin/posix
++SUSBIN=$(BINDIR)/posix
+ 
+ #
+ # Where to place libraries.
