@@ -1,14 +1,14 @@
 pkgbase = tutanota
 	pkgdesc = Tutanota end-to-end encrypted email client webapp
-	pkgver = 2.0.3
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://tutanota.de
 	arch = any
 	license = GPL3
 	makedepends = npm
-	makedepends = nodejs-gulp
-	source = https://github.com/tutao/tutanota/archive/tutanota-release-2.0.3.tar.gz
-	md5sums = 7162053f03078364e827994a2b079052
+	makedepends = gulp
+	source = https://github.com/tutao/tutanota/archive/tutanota-release-2.3.1.tar.gz
+	md5sums = 319083759e7d1a38a4984845e6376bd4
 
 pkgname = tutanota
 
