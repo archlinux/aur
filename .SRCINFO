@@ -1,19 +1,21 @@
 pkgbase = perl-rrdtool-oo
-	pkgdesc = RRDTool::OO - Object-oriented interface to RRDTool
-	pkgver = 0.33
+	pkgdesc = Object-oriented interface to RRDTool
+	pkgver = 0.36
 	pkgrel = 1
 	url = http://search.cpan.org/dist/RRDTool-OO
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-requires
 	makedepends = perl-extutils-makemaker>=6.59
-	makedepends = perl-test-requires
 	depends = rrdtool
 	depends = perl>=5.6.0
-	depends = perl-log-log4perl
+	depends = perl-log-log4perl>=0.40
+	provides = RRDTool::OO=0.36
+	provides = perl-rrdtool-oo=0.36
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/RRDTool-OO-0.33.tar.gz
-	sha512sums = 8381316dfdd102daf263951b63d2972956d2fc2a539789f61bd5018b5a14d2c45f24e81eaaf416a9e86151bbce99560283eb2e7d41385d92ab0bfa3115dd1591
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/-0.36.tar.gz
 
 pkgname = perl-rrdtool-oo
 
