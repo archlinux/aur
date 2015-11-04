@@ -1,0 +1,4 @@
+pkg/
+src/
+z3-*-*-*.pkg.tar.xz
+z3-*.tar.gz

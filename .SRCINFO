@@ -1,0 +1,21 @@
+pkgbase = z3
+	pkgdesc = A high-performance theorem prover
+	pkgver = 4.4.1
+	pkgrel = 1
+	url = https://github.com/Z3Prover/z3
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python2
+	depends = gcc-libs
+	optdepends = python2: bindings for python2
+	provides = z3
+	conflicts = z3-bin
+	conflicts = z3-codeplex
+	conflicts = z3-git
+	source = https://github.com/Z3Prover/z3/archive/z3-4.4.1.tar.gz
+	md5sums = 4336a9df24f090e711c6d42fd4e2b1fc
+
+pkgname = z3
+
