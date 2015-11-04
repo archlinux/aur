@@ -1,6 +1,6 @@
 pkgbase = infamousplugins-git
 	pkgdesc = A collection of open-source LV2 plugins
-	pkgver = 0.1.2
+	pkgver = 0.1.2.r7.gce99f3c
 	pkgrel = 1
 	url = http://infamousplugins.sourceforge.net
 	arch = i686
