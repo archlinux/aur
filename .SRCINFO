@@ -24,6 +24,10 @@ pkgbase = matrix-synapse
 	depends = python2-ujson
 	depends = python2-blist
 	depends = python2-pysaml2
+	depends = python2-requests
+	depends = python2-dateutil
+	depends = python2-pytz
+	depends = python2-systemd
 	depends = python2-matrix-angular-sdk
 	backup = etc/synapse/log_config.yaml
 	source = git://github.com/matrix-org/synapse#tag=v0.10.0
