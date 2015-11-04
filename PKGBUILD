@@ -4,12 +4,12 @@
 
 pkgname=perl-test-file
 pkgver=1.44
-pkgrel=1
+pkgrel=2
 pkgdesc="This modules provides a collection of test utilities for file attributes."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=()
+depends=(perl-test-utf8)
 makedepends=()
 url='http://search.cpan.org/~bdfoy/Test-File-1.44/lib/Test/File.pm'
 _distdir="Test-File"

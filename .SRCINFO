@@ -1,11 +1,12 @@
 pkgbase = perl-test-file
 	pkgdesc = This modules provides a collection of test utilities for file attributes.
 	pkgver = 1.44
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/~bdfoy/Test-File-1.44/lib/Test/File.pm
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	depends = perl-test-utf8
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Test-File-1.44.tar.gz
 	sha512sums = 428b4027ba8a20fcf92dedb1c1a9ca9866bb41b679f78a7640fee1e0c60c9daa77713e41995b3cba9a271a4df538985276df34ea649efef8592896eade96cb89
