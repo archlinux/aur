@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 249788 2015-10-27 07:48:47Z tpowa $
+# $Id: PKGBUILD 250028 2015-11-02 17:38:51Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-c720       # Build kernel with a different name
-_srcname=linux-4.2
-pkgver=4.2.5
+_srcname=linux-4.3
+pkgver=4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -14,19 +14,17 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
 
-sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            'b631eb4e8b4911b31111b0838e00f7c4a1b7689abcd2233609831b638493f4fb'
-            'SKIP'
-            '0a39e6b4904440ae2e4a43cd0d5a72af0b8beabd021b6a3f2851eca0e0cf3d3b'
+            '56a56f6b0d8edaa6f58342ab9d54392503dfa6ca884a0b936cbf0206604758d2'
             'a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
@@ -41,7 +39,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -76,7 +74,7 @@ prepare() {
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
+  make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
 
   # rewrite configuration
