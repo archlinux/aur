@@ -1,11 +1,12 @@
 pkgbase = radicale
 	pkgdesc = A Simple Calendar Server
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.radicale.org/
 	install = radicale.install
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python>=3.2
 	optdepends = python-pam: For PAM authentication
 	optdepends = python-requests: For HTTP authentication

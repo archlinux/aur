@@ -2,12 +2,13 @@
 pkgname=radicale
 _pkgname=Radicale
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple Calendar Server"
 arch=any
 url="http://www.radicale.org/"
 license=('GPL3')
 depends=('python>=3.2')
+makedepends=('python-setuptools')
 backup=('etc/radicale/config')
 install='radicale.install'
 source=(
