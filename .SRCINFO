@@ -2,7 +2,7 @@
 # Tue May 12 18:19:18 UTC 2015
 pkgbase = firefox-developer-fr
 	pkgdesc = Standalone web browser from mozilla.org, developer build - French
-	pkgver = 43.0a2
+	pkgver = 44.0a2
 	pkgrel = 1
 	url = http://www.mozilla.org/firefox/developer
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = firefox-developer-fr
 	depends = dbus-glib
 	provides = firefox-developer
 	conflicts = firefox-developer
-	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n/firefox-43.0a2.fr.linux-x86_64.tar.bz2
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n/firefox-44.0a2.fr.linux-x86_64.tar.bz2
 	source = firefox-developer.desktop
 	source = vendor.js
 	sha512sums = SKIP

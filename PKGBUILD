@@ -6,7 +6,7 @@
 _name=firefox
 _channel=developer
 pkgname="${_name}-${_channel}-fr"
-pkgver=43.0a2
+pkgver=44.0a2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, developer build - French"
 url="http://www.mozilla.org/firefox/developer"
