@@ -21,7 +21,7 @@ md5sums_x86_64=('e83a03339f4d18775d3796a318c10087'
                 '23ba3762ff952ae7ab695285c227297e')
 
 package() {
-  cd "$pkgname-$pkgver-$arch"
+  cd "$pkgname-$pkgver"
   install -D -m755 "ScreenShooter5"         "${pkgdir}/usr/bin/ScreenShooter5"
 
   cd "../"
