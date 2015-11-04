@@ -46,8 +46,8 @@ diff -rupN linux-3.17.old/drivers/gpu/drm/i915/i915_drv.h linux-3.17/drivers/gpu
  	bool disable_display;
  	bool disable_vtd_wa;
 +	bool enable_hd_vgaarb;
- 	int use_mmio_flip;
- 	bool mmio_debug;
+ 	bool enable_guc_submission;
+	int guc_log_level;
  };
 diff -rupN linux-3.17.old/drivers/gpu/drm/i915/i915_params.c linux-3.17/drivers/gpu/drm/i915/i915_params.c
 --- linux-3.17.old/drivers/gpu/drm/i915/i915_params.c	2014-10-05 17:23:04.000000000 -0200
