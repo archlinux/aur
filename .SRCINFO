@@ -12,7 +12,6 @@ pkgbase = llpp
 	depends = openjpeg2
 	depends = jbig2dec
 	depends = desktop-file-utils
-	depends = glu
 	optdepends = xsel: Text selection
 	optdepends = file: automatic file type recognition
 	optdepends = gzip: handling of MIME types 'application/x-{gzip,compress}'
