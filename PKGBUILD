@@ -1,6 +1,6 @@
 # Maintainer: Hexchain Tong <i at hexchain dot org>
 pkgname=telegram-desktop-dev
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 _qtver=5.5.1
 pkgdesc='Official desktop version of Telegram messaging app. (Development release)'
