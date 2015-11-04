@@ -1,6 +1,6 @@
 pkgbase = lxqt-connman-applet-git
 	pkgdesc = LXQt system-tray applet for ConnMan
-	pkgver = r29.00c4cf3
+	pkgver = r55.e90c62e
 	pkgrel = 1
 	url = https://github.com/surlykke/lxqt-connman-applet
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = lxqt-connman-applet-git
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = qt5-tools
-	depends = liblxqt-git
+	depends = liblxqt
 	provides = lxqt-connman-applet
 	conflicts = lxqt-connman-applet
 	source = git+https://github.com/surlykke/lxqt-connman-applet.git

@@ -3,13 +3,13 @@
 
 _pkgname="lxqt-connman-applet"
 pkgname="$_pkgname-git"
-pkgver=r29.00c4cf3
+pkgver=r55.e90c62e
 pkgrel=1
 pkgdesc="LXQt system-tray applet for ConnMan"
 arch=("i686" "x86_64")
 url="https://github.com/surlykke/lxqt-connman-applet"
 license=("LGPL2.1")
-depends=("liblxqt-git")
+depends=("liblxqt")
 makedepends=("cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
