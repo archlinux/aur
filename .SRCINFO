@@ -7,18 +7,14 @@ pkgbase = screenshooter
 	arch = x86_64
 	license = Freeware
 	depends = qt5-x11extras
+	source = icon.png
+	source = screenshooter.desktop
+	md5sums = 9f3d281a63a047b7c90272264916561c
+	md5sums = 23ba3762ff952ae7ab695285c227297e
 	source_i686 = http://kosz.marcin.co/dl/screenshooter-5.30-i686.tar.gz
-	source_i686 = icon.png
-	source_i686 = screenshooter.desktop
 	md5sums_i686 = 4daba2a9c44574a02a05a5f207164b87
-	md5sums_i686 = 9f3d281a63a047b7c90272264916561c
-	md5sums_i686 = 23ba3762ff952ae7ab695285c227297e
 	source_x86_64 = http://kosz.marcin.co/dl/screenshooter-5.30-x86_64.tar.gz
-	source_x86_64 = icon.png
-	source_x86_64 = screenshooter.desktop
 	md5sums_x86_64 = e83a03339f4d18775d3796a318c10087
-	md5sums_x86_64 = 9f3d281a63a047b7c90272264916561c
-	md5sums_x86_64 = 23ba3762ff952ae7ab695285c227297e
 
 pkgname = screenshooter
 
