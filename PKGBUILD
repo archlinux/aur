@@ -2,13 +2,13 @@
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=r2873.b597d51
+pkgver=r2955.ec32efd
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://mgba.io/"
 license=('custom:MPL2')
 makedepends=('git' 'cmake' 'qt5-base' 'qt5-multimedia' 'sdl2' 'zlib' 'libpng'
-             'libzip' 'libedit' 'ffmpeg' 'imagemagick' 'desktop-file-utils')
+             'libzip' 'libedit' 'ffmpeg' 'imagemagick' 'desktop-file-utils' 'libepoxy')
 source=("git+https://github.com/mgba-emu/mgba.git")
 sha1sums=('SKIP')
 
@@ -46,7 +46,7 @@ package_libmgba-git() {
 
 package_mgba-sdl-git() {
   pkgdesc='A Nintendo Gameboy Advance Emulator'
-  depends=('libmgba-git' 'sdl2')
+  depends=('libmgba-git' 'sdl2' 'libepoxy')
   conflicts=('mgba-sdl')
   provides=('mgba-sdl')
 
@@ -59,7 +59,7 @@ package_mgba-sdl-git() {
 
 package_mgba-qt-git() {
   pkgdesc='A Nintendo Gameboy Advance Emulator - Qt5 UI'
-  depends=('libmgba-git' 'qt5-base' 'qt5-multimedia' 'sdl2')
+  depends=('libmgba-git' 'qt5-base' 'qt5-multimedia' 'sdl2' 'libepoxy')
   conflicts=('mgba-qt')
   provides=('mgba-qt')
   install=mgba.install

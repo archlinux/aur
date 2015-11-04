@@ -1,5 +1,5 @@
 pkgbase = mgba-git
-	pkgver = r2873.b597d51
+	pkgver = r2955.ec32efd
 	pkgrel = 1
 	url = http://mgba.io/
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = mgba-git
 	makedepends = ffmpeg
 	makedepends = imagemagick
 	makedepends = desktop-file-utils
+	makedepends = libepoxy
 	source = git+https://github.com/mgba-emu/mgba.git
 	sha1sums = SKIP
 
@@ -35,6 +36,7 @@ pkgname = mgba-sdl-git
 	pkgdesc = A Nintendo Gameboy Advance Emulator
 	depends = libmgba-git
 	depends = sdl2
+	depends = libepoxy
 	provides = mgba-sdl
 	conflicts = mgba-sdl
 
@@ -45,6 +47,7 @@ pkgname = mgba-qt-git
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = sdl2
+	depends = libepoxy
 	provides = mgba-qt
 	conflicts = mgba-qt
 
