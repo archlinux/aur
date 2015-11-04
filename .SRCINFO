@@ -1,6 +1,6 @@
 pkgbase = vim-session
 	pkgdesc = Extended session management for Vim (:mksession on steroids)
-	pkgver = 2.7
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://github.com/xolox/vim-session
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = vim-session
 	makedepends = git
 	depends = vim-misc-xolox
 	provides = vim-session
-	source = vim-session-2.7.tar.gz::https://github.com/xolox/vim-session/tarball/2.7
-	md5sums = 1d514c4a8cb8cd909549d9c35df0ca91
+	source = vim-session-2.13.1.tar.gz::https://github.com/xolox/vim-session/tarball/2.13.1
+	md5sums = f5ee5155cb5a5def14bd251fcc52f3ee
 
 pkgname = vim-session
 

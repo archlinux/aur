@@ -4,8 +4,8 @@
 # Author: Peter Odding <peter at peterodding dot com>
 
 pkgname=vim-session
-pkgver=2.7
-_gittag=4fb9cdd
+pkgver=2.13.1
+_gittag=9e9a608
 pkgrel=1
 pkgdesc='Extended session management for Vim (:mksession on steroids)'
 provides=('vim-session')
@@ -15,7 +15,7 @@ url='https://github.com/xolox/vim-session'
 source=($pkgname-$pkgver.tar.gz::https://github.com/xolox/$pkgname/tarball/$pkgver)
 depends=('vim-misc-xolox')
 makedepends=('git')
-md5sums=('1d514c4a8cb8cd909549d9c35df0ca91')
+md5sums=('f5ee5155cb5a5def14bd251fcc52f3ee')
 
 build() {
   cd "$srcdir/xolox-$pkgname-$_gittag"
