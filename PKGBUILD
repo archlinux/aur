@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=breeze-gtk-git
-pkgver=5.4.90.r61.0551df0
+pkgver=5.4.90.r62.d4ab635
 pkgrel=1
 pkgdesc="Breeze port for GTK. (GIT version)"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ makedepends=('git'
              'extra-cmake-modules'
              'kconfig'
              'kcoreaddons'
+             'gtk2'
              )
 source=('git://anongit.kde.org/breeze-gtk.git')
 sha1sums=('SKIP')
