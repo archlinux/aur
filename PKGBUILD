@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Python binding to the Networking and Cryptography (NaCl) library'
 license=('Apache')
 arch=('i686' 'x86_64')
-url='https://pypi.python.org/pypi/frozendict/'
+url='https://pypi.python.org/pypi/PyNaCl'
 depends=('libsodium')
 makedepends=('python-setuptools' 'python-pycparser' 'python-cffi'
              'python2-setuptools' 'python2-pycparser' 'python2-cffi')
