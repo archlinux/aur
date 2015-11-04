@@ -1,8 +1,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgbase=python-acme
 pkgname=('python-acme' 'python2-acme')
-pkgver=0.0.0.dev20151030
+pkgver=0.0.0.dev20151104
 pkgrel=1
 pkgdesc="ACME protocol implementation in Python"
 arch=('any')
@@ -16,7 +17,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-pyasn1' 'python2-p
              'python-mock' 'python2-mock')
 checkdepends=('python-nose' 'python2-nose')
 source=("https://pypi.python.org/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('131c02e47db1c664c34e10c0079cdb31993b105f217638e5405f5390093fb7610f114f3c68d560e18e8b7138367ab221d42f63d33af6778ce6479337318c881b')
 
 prepare() {
   cp -a acme-$pkgver{,-py2}
