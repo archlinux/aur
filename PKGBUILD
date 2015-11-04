@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gstreamer
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 makedepends=(mingw-w64-configure bison flex python2)
 
 source=(${url}/src/gstreamer/gstreamer-${pkgver}.tar.xz)
-sha256sums=('52ef885647afef11c8b7645a9afefe04aa09e8971c4b932e7717872ab8a30fcc')
+sha256sums=('973a3f213c8d41d6dd0e4e7e38fd6cccacd5ae1ac09e1179a8d5d869ef0a5c9c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
