@@ -12,6 +12,7 @@ depends=('gmp' 'perl' 'iproute2')
 makedepends=('flex' 'bison')
 optdepends=('python2')
 conflicts=('ipsec-tools')
+options=('!makeflags')
 backup=('etc/ipsec.conf'
         'etc/ipsec.d/policies/'{block,clear,clear-or-private,private,private-or-clear})
 source=("http://download.openswan.org/openswan/openswan-${pkgver}.tar.gz"
