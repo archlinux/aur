@@ -3,7 +3,7 @@ pkgname=screenshooter
 pkgver=5.30
 pkgrel=1
 pkgdesc="Take a screenshot and share it with your friends"
-arch=('i686' 'x86_64' 'amd64')
+arch=('x86_64' 'i686' 'amd64')
 url=""
 license=('Freeware')
 groups=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("http://kosz.marcin.co/dl/$pkgname-$pkgver-$arch.tar.gz" "icon.png" "screenshooter.desktop")
 noextract=()
-md5sums=('2a1216daf992e4a6e213474aad702be3'
+md5sums=('c3bfe2a6e369060af02c05759ed4ab0a'
          '9f3d281a63a047b7c90272264916561c'
          '23ba3762ff952ae7ab695285c227297e')
 
