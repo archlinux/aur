@@ -1,14 +1,14 @@
 pkgbase = powerline-fonts
 	pkgdesc = Patched fonts for Powerline users
-	pkgver = 20140119
+	pkgver = 20150818
 	pkgrel = 1
 	url = https://github.com/Lokaltog/powerline-fonts
 	arch = any
 	license = CPL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/Lokaltog/powerline-fonts/archive/1ceb8dcb0f108eb98cb28401c66f743c3abb4620.zip
-	md5sums = d88d0ef351b476b50c4642c98648bcf3
+	source = https://github.com/Lokaltog/powerline-fonts/archive/4151af0d071503fa7f728dc7779370059258a0e9.zip
+	md5sums = 58ae195f86e734fb69a1b655f0d7cc64
 
 pkgname = powerline-fonts
 

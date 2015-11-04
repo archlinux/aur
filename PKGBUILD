@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=powerline-fonts
-_gitcommit=1ceb8dcb0f108eb98cb28401c66f743c3abb4620
-pkgver=20140119
+_gitcommit=4151af0d071503fa7f728dc7779370059258a0e9
+pkgver=20150818
 pkgrel=1
 depends=('fontconfig' 'xorg-font-utils')
 url=('https://github.com/Lokaltog/powerline-fonts')
@@ -10,8 +10,7 @@ license='CPL'
 pkgdesc="Patched fonts for Powerline users"
 arch=('any')
 source=("https://github.com/Lokaltog/$pkgname/archive/${_gitcommit}.zip")
-
-md5sums=('d88d0ef351b476b50c4642c98648bcf3')
+md5sums=('58ae195f86e734fb69a1b655f0d7cc64')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/TTF"
