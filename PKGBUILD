@@ -2,8 +2,8 @@
 # Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=seafile-server
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.4.2
+pkgrel=1
 pkgdesc="Next-generation open source cloud storage with advanced features on privacy protection and teamwork. (Server components, without seahub)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/haiwen/seafile/"
@@ -71,7 +71,7 @@ package ()
 	# Install seahub preupgrade script
 	install -D -m755 "${srcdir}/seahub-preupgrade" "${pkgdir}/usr/bin/seahub-preupgrade"
 }
-sha256sums=('f9d7c79363ddc6818d715d8b61aaee41c7fea2e0d726f4431eec14884b6eb8fd'
+sha256sums=('7e244f05b20a6bfd7282b8a00eb3e1cda8ecefd98fc2b92210665549aebebe22'
             '4127284c1d8a4d071925cbcc870ca460fd736e2d53e8ab5806ccf3dd03d5e537'
             'abe1a55d528994e044f6bba71fac0d97313adecd9aa007fa338efdca244882db'
             'ae1ed38f94304d27e4ef1ca66e15d544f99681c1e743c510c54d4a112f050421'
