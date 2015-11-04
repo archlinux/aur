@@ -2,7 +2,7 @@
 # Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=seafile-client
-pkgver=4.3.4
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool. This is seafile client for synchronizing your local files with seafile server."
 arch=('i686' 'x86_64')
@@ -26,4 +26,4 @@ package ()
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}/" install
 }
-md5sums=('137a474aca893cec66e5f1e87dc2d0d1')
+md5sums=('8749f059e9209df31e662c9325c735e5')
