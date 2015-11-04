@@ -7,7 +7,7 @@ pkgbase = aurget
 	license = GPL
 	optdepends = customizepkg: for auto-customizing packages
 	source = https://github.com/pbrisbin/aurget/archive/v4.6.0.tar.gz
-	md5sums = 5675299de23b428a1445960d941d2121
+	md5sums = 265408d7f39fb502bae24d67fabf68a2
 
 pkgname = aurget
 
