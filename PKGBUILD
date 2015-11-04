@@ -23,7 +23,7 @@ _pgo=false
 
 # We're getting this from Debian Experimental
 _debname=iceweasel
-_debver=41.0.2
+_debver=42.0
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
@@ -58,8 +58,8 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
         'iceweasel-install-dir.patch'
         'vendor.js'
 	'iceweasel-20.0.1-fixed-loading-icon.png')
-md5sums=('f313df2d29de1b4102728023d8a180b0'
-         '3022b70ccf511fb21fcfdeac1ca98db5'
+md5sums=('2bb4056dd9b58ff6be0d8f43b1779fcf'
+         '2339f2e952c4bf25d1eefdbb06b66052'
          '6027291b9963817e46f816d28b64681d'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
@@ -67,13 +67,13 @@ md5sums=('f313df2d29de1b4102728023d8a180b0'
          '6e335a517c68488941340ee1c23f97b0')
 
 prepare() {
-  export DEBIAN_BUILD="mozilla-release"
+  export DEBIAN_BUILD="firefox-$_debver"
   
   export QUILT_PATCHES=debian/patches
   export QUILT_REFRESH_ARGS='-p ab --no-timestamps --no-index'
   export QUILT_DIFF_ARGS='--no-timestamps'
   
-  mv debian "$srcdir/$DEBIAN_BUILD"
+  mv debian "$srcdir/$DEBIAN_BUILD/"
   cd "$srcdir/$DEBIAN_BUILD"
   
   # We wont save user profile in .mozilla/iceweasel
@@ -111,7 +111,7 @@ prepare() {
 }
 
 build() {
-  export DEBIAN_BUILD="mozilla-release"
+  export DEBIAN_BUILD="firefox-$_debver"
   
   cd "$srcdir/$DEBIAN_BUILD"
 
@@ -127,7 +127,7 @@ build() {
 }
 
 package() {
-  export DEBIAN_BUILD="mozilla-release"
+  export DEBIAN_BUILD="firefox-$_debver"
 
   cd "$srcdir/$DEBIAN_BUILD"
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
