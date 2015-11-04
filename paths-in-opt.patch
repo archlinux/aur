@@ -1,17 +1,17 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 3e6f6d9..41b4c16 100755
+index 081947c..6b61583 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -140,7 +140,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
-         aboutinfo.SetVersion( HydrusData.ToString( HC.SOFTWARE_VERSION ) + ', using network version ' + HydrusData.ToString( HC.NETWORK_VERSION ) )
+@@ -145,7 +145,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+         aboutinfo.SetVersion( str( HC.SOFTWARE_VERSION ) + ', using network version ' + str( HC.NETWORK_VERSION ) )
          aboutinfo.SetDescription( CC.CLIENT_DESCRIPTION )
          
--        with open( HC.BASE_DIR + os.path.sep + 'license.txt', 'rb' ) as f: license = f.read()
+-        with open( os.path.join( HC.BASE_DIR, 'license.txt' ), 'rb' ) as f: license = f.read()
 +        with open( '/usr/share/licenses/hydrus/license.txt', 'rb' ) as f: license = f.read()
          
          aboutinfo.SetLicense( license )
          
-@@ -2071,7 +2071,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
+@@ -2083,7 +2083,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
                  
              elif command == '8chan_board': webbrowser.open( 'https://8ch.net/hydrus/index.html' )
              elif command == 'file_integrity': self._CheckFileIntegrity()
@@ -21,10 +21,10 @@ index 3e6f6d9..41b4c16 100755
              elif command == 'help_shortcuts': wx.MessageBox( CC.SHORTCUT_HELP )
              elif command == 'import_files': self._ImportFiles()
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index 0d530b6..1770bcf 100755
+index 8c9e1a0..6ea01af 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
-@@ -636,7 +636,7 @@ class DialogFirstStart( Dialog ):
+@@ -643,7 +643,7 @@ class DialogFirstStart( Dialog ):
          self._ok.SetForegroundColour( ( 0, 128, 0 ) )
          
          message1 = 'Hi, this looks like the first time you have started the hydrus client. Don\'t forget to check out the'
@@ -34,56 +34,72 @@ index 0d530b6..1770bcf 100755
          message3 = 'When you close this dialog, the client will start its local http server. You will probably get a firewall warning.'
          message4 = 'You can block it if you like, or you can allow it. It doesn\'t phone home, or expose your files to your network; it just provides another way to locally export your files.'
 diff --git a/include/ClientLocalServerResources.py b/include/ClientLocalServerResources.py
-index 85f286d..9709688 100644
+index bccaae5..b389a65 100644
 --- a/include/ClientLocalServerResources.py
 +++ b/include/ClientLocalServerResources.py
 @@ -242,11 +242,11 @@ class HydrusResourceCommandBooruThumbnail( HydrusResourceCommandBooru ):
          mime = media_result.GetMime()
          
          if mime in HC.MIMES_WITH_THUMBNAILS: path = ClientFiles.GetThumbnailPath( hash, full_size = False )
--        elif mime in HC.AUDIO: path = HC.STATIC_DIR + os.path.sep + 'audio_resized.png'
--        elif mime in HC.VIDEO: path = HC.STATIC_DIR + os.path.sep + 'video_resized.png'
--        elif mime == HC.APPLICATION_FLASH: path = HC.STATIC_DIR + os.path.sep + 'flash_resized.png'
--        elif mime == HC.APPLICATION_PDF: path = HC.STATIC_DIR + os.path.sep + 'pdf_resized.png'
--        else: path = HC.STATIC_DIR + os.path.sep + 'hydrus_resized.png'
-+        elif mime in HC.AUDIO: path = HC.TEMP_DIR + os.path.sep + 'audio_resized.png'
-+        elif mime in HC.VIDEO: path = HC.TEMP_DIR + os.path.sep + 'video_resized.png'
-+        elif mime == HC.APPLICATION_FLASH: path = HC.TEMP_DIR + os.path.sep + 'flash_resized.png'
-+        elif mime == HC.APPLICATION_PDF: path = HC.TEMP_DIR + os.path.sep + 'pdf_resized.png'
-+        else: path = HC.TEMP_DIR + os.path.sep + 'hydrus_resized.png'
+-        elif mime in HC.AUDIO: path = os.path.join( HC.STATIC_DIR, 'audio_resized.png' )
+-        elif mime in HC.VIDEO: path = os.path.join( HC.STATIC_DIR, 'video_resized.png' )
+-        elif mime == HC.APPLICATION_FLASH: path = os.path.join( HC.STATIC_DIR, 'flash_resized.png' )
+-        elif mime == HC.APPLICATION_PDF: path = os.path.join( HC.STATIC_DIR, 'pdf_resized.png' )
+-        else: path = os.path.join( HC.STATIC_DIR, 'hydrus_resized.png' )
++        elif mime in HC.AUDIO: path = os.path.join( HC.TEMP_DIR, 'audio_resized.png' )
++        elif mime in HC.VIDEO: path = os.path.join( HC.TEMP_DIR, 'video_resized.png' )
++        elif mime == HC.APPLICATION_FLASH: path = os.path.join( HC.TEMP_DIR, 'flash_resized.png' )
++        elif mime == HC.APPLICATION_PDF: path = os.path.join( HC.TEMP_DIR, 'pdf_resized.png' )
++        else: path = os.path.join( HC.TEMP_DIR, 'hydrus_resized.png' )
          
          response_context = HydrusServerResources.ResponseContext( 200, path = path )
          
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index a0c0e00..c16c6ea 100755
+index b8114d3..37c7cbc 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
-@@ -3,9 +3,9 @@ import sys
+@@ -3,24 +3,9 @@ import sys
  
  # dirs
  
 -BASE_DIR = sys.path[0]
-+BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
- 
--BIN_DIR = BASE_DIR + os.path.sep + 'bin'
-+BIN_DIR = "/opt/hydrus/bin"
- DB_DIR = BASE_DIR + os.path.sep + 'db'
- CLIENT_ARCHIVES_DIR = DB_DIR + os.path.sep + 'client_archives'
- CLIENT_FILES_DIR = DB_DIR + os.path.sep + 'client_files'
-@@ -16,8 +16,14 @@ SERVER_MESSAGES_DIR = DB_DIR + os.path.sep + 'server_messages'
- CLIENT_UPDATES_DIR = DB_DIR + os.path.sep + 'client_updates'
- SERVER_UPDATES_DIR = DB_DIR + os.path.sep + 'server_updates'
- LOGS_DIR = BASE_DIR + os.path.sep + 'logs'
--STATIC_DIR = BASE_DIR + os.path.sep + 'static'
 -
-+STATIC_DIR = '/opt/hydrus/static'
-+TEMP_DIR = BASE_DIR + os.path.sep + 'temp'
+-if BASE_DIR == '':
+-    
+-    BASE_DIR = os.getcwdu()
+-    
+-else:
+-    
+-    try:
+-        
+-        BASE_DIR = BASE_DIR.decode( 'utf-8' )
+-        
+-    except:
+-        
+-        pass
+-        
+-    
+-BIN_DIR = os.path.join( BASE_DIR, 'bin' )
++BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
 +
++BIN_DIR = "/opt/hydrus/bin"
+ DB_DIR = os.path.join( BASE_DIR, 'db' )
+ CLIENT_ARCHIVES_DIR = os.path.join( DB_DIR, 'client_archives' )
+ CLIENT_FILES_DIR = os.path.join( DB_DIR, 'client_files' )
+@@ -31,9 +16,14 @@ SERVER_MESSAGES_DIR = os.path.join( DB_DIR, 'server_messages' )
+ CLIENT_UPDATES_DIR = os.path.join( DB_DIR, 'client_updates' )
+ SERVER_UPDATES_DIR = os.path.join( DB_DIR, 'server_updates' )
+ LOGS_DIR = os.path.join( BASE_DIR, 'logs' )
+-STATIC_DIR = os.path.join( BASE_DIR, 'static' )
++STATIC_DIR = "/opt/hydrus/static"
++TEMP_DIR = os.path.join( BASE_DIR, 'temp' )
+ 
+-#
 +for dirs in [LOGS_DIR, TEMP_DIR, DB_DIR]:
 +    try:
 +        os.makedirs(dirs)
 +    except os.error:
 +        pass
- #
  
  PLATFORM_WINDOWS = False
+ PLATFORM_OSX  = False

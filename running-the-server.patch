@@ -1,31 +1,31 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index eede814..f7eea18 100755
+index 6b61583..8b37d6e 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -246,27 +246,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -251,27 +251,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
                      
                      HydrusData.ShowText( u'Starting server\u2026' )
                      
 -                    if HC.PLATFORM_WINDOWS:
 -                        
--                        my_exe = HC.BASE_DIR + os.path.sep + 'client.exe'
+-                        my_exe = os.path.join( HC.BASE_DIR, 'client.exe' )
 -                        
 -                    else:
 -                        
--                        my_exe = HC.BASE_DIR + os.path.sep + 'client'
+-                        my_exe = os.path.join( HC.BASE_DIR, 'client' )
 -                        
 -                    
 -                    if sys.executable == my_exe:
 -                    
--                        if HC.PLATFORM_WINDOWS: subprocess.Popen( [ HC.BASE_DIR + os.path.sep + 'server.exe' ] )
--                        else: subprocess.Popen( [ '.' + HC.BASE_DIR + os.path.sep + 'server' ] )
+-                        if HC.PLATFORM_WINDOWS: subprocess.Popen( [ os.path.join( HC.BASE_DIR, 'server.exe' ) ] )
+-                        else: subprocess.Popen( [ os.path.join( '.', HC.BASE_DIR, 'server' ) ] )
 -                        
 -                    else:
 -                        
 -                        if HC.PLATFORM_WINDOWS or HC.PLATFORM_OSX: python_bin = 'pythonw'
 -                        else: python_bin = 'python'
 -                        
--                        subprocess.Popen( [ python_bin, HC.BASE_DIR + os.path.sep + 'server.py' ] )
+-                        subprocess.Popen( [ python_bin, os.path.join( HC.BASE_DIR, 'server.py' ) ] )
 -                        
 +                    subprocess.Popen( ["hydrus-server"] )
                      
