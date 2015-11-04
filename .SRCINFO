@@ -1,0 +1,24 @@
+pkgbase = heirloom-cvs
+	pkgdesc = The Heirloom Toolchest of standard UNIX utilities, derived from original UNIX tools
+	pkgver = 2014.07.15
+	pkgrel = 1
+	url = http://heirloom.sourceforge.net/tools.html
+	arch = i686
+	arch = x86_64
+	license = custom:"opensolaris"
+	license = custom:"lucent"
+	makedepends = cvs
+	makedepends = bc
+	depends = heirloom-sh-cvs
+	depends = heirloom-devtools-cvs
+	source = 000-config.diff
+	source = 001-staticdep.diff
+	source = 002-nowhat.diff
+	source = makefile.patch
+	md5sums = f9be8f1cc57f87425b39414a7db06543
+	md5sums = 115355b6058592f9ba16a1c011f27ecd
+	md5sums = 7394fc957b4fe5a58e4f43d7e283e96b
+	md5sums = 9112b52fddffa66cd464eeecd0109a21
+
+pkgname = heirloom-cvs
+

@@ -1,0 +1,34 @@
+diff -u -r heirloom-070715.orig/man/Makefile.mk heirloom-070715/man/Makefile.mk
+--- heirloom-070715.orig/man/Makefile.mk	2006-05-24 10:48:29.000000000 -0400
++++ heirloom-070715/man/Makefile.mk	2010-12-16 18:54:27.580000008 -0430
+@@ -9,28 +9,8 @@
+ 	chmod 755 catman
+ 
+ bang.ksh:
+-	@IFS=: ;\
+-	if test "`uname`" = HP-UX ;\
+-	then \
+-		order='bash ksh';\
+-	else \
+-		order='ksh bash';\
+-	fi ;\
+-	for shell in ksh bash ;\
+-	do \
+-		for dir in /bin /usr/bin $$PATH ;\
+-		do \
+-			if test -x "$$dir"/$$shell ;\
+-			then \
+-				echo "selected $$dir/$$shell" ;\
+-				echo "#!$$dir/$$shell" > bang.ksh ;\
+-				echo "DFLDIR=$(DFLDIR)" >> bang.ksh ;\
+-				exit ;\
+-			fi ;\
+-		done ;\
+-	done ;\
+-	echo 'no bash or ksh found' >&2;\
+-	exit 1
++	echo "#!$(MANSH)" > bang.ksh
++	echo "DFLDIR=$(DFLDIR)" >> bang.ksh
+ 
+ man.dfl: man.dfl.in
+ 	case `uname` in \

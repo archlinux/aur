@@ -1,0 +1,12 @@
+diff -ru heirloom-070715.orig/makefile heirloom-070715/makefile
+--- heirloom-070715.orig/makefile	2007-07-15 09:36:59.000000000 -0400
++++ heirloom-070715/makefile	2010-12-16 18:26:01.703333339 -0430
+@@ -15,7 +15,7 @@
+ 	random renice rm rmdir \
+ 	sdiff sed setpgrp shl sleep sort spell split stty su sum sync \
+ 	tabs tail tapecntl tar tcopy tee test time touch tr true tsort tty \
+-	ul uname uniq units users wc what who whoami whodo xargs yes
++	ul uname uniq units users wc who whoami whodo xargs yes
+ 
+ dummy: makefiles all
+ 
