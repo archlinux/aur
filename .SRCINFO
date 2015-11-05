@@ -8,6 +8,7 @@ pkgbase = kibana
 	arch = x86_64
 	license = apache
 	depends = nodejs
+	optdepends = elasticsearch>=2.0
 	backup = etc/elasticsearch/kibana/kibana.yml
 	source = https://download.elasticsearch.org/kibana/kibana/kibana-4.2.0-linux-x64.tar.gz
 	source = kibana.service

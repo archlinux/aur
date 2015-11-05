@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://www.elasticsearch.org/overview/kibana/"
 license=('apache')
 depends=('nodejs')
-optional=('elasticsearch>=2.0')
+optdepends=('elasticsearch>=2.0')
 backup=('etc/elasticsearch/kibana/kibana.yml')
 install=kibana.install
 source=(
