@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-es-ar
 	pkgdesc = Spanish language pack for Iceweasel (Argentina)
-	pkgver = 41.0.2.deb1
+	pkgver = 42.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.2
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-es-ar_41.0.2-1_all.deb
-	sha256sums = 44786c733da534781675de063b1bc4909ce30048abaa068d3d3df88a7f6ea4f8
+	depends = iceweasel>=42.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-es-ar_42.0-1_all.deb
+	sha256sums = 71a7a08784676e5619e7d63057070846f8c19e0fb917a7ff385ea1d1000aa42e
 
 pkgname = iceweasel-i18n-es-ar
 
