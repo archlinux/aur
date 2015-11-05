@@ -1,0 +1,15 @@
+pkgbase = pymodoro-git
+	pkgdesc = Pomodoro for Xmobar or Dzen
+	pkgver = r101.0136d4c
+	pkgrel = 1
+	url = https://github.com/dattanchu/pymodoro
+	arch = any
+	makedepends = git
+	depends = python
+	provides = pymodoro
+	conflicts = pymodoro
+	source = git+https://github.com/dattanchu/pymodoro.git
+	md5sums = SKIP
+
+pkgname = pymodoro-git
+
