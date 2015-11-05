@@ -3,7 +3,6 @@
 
 pkgbase="python-theano-git"
 pkgname=("python-theano-git" "python2-theano-git")
-_pkgname="Theano"
 pkgver=0.7.1a1.r1287.4260bbf
 pkgrel=1
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
@@ -49,20 +48,6 @@ build() {
   python setup.py build
   cp -f build/scripts-3*/* bin/
 }
-
-# Check always fails on non-64 bit platforms.  Check frequently fails if optional dependencies are present
-# Even if check succeeds it takes hours to complete
-#
-#check() {
-#  msg "Checking Python 2"
-#  cd "$srcdir/${_pkgname}-${pkgver}-py2"/build/lib/theano/
-#  ../../scripts-2.7/theano-nose -v
-#   
-#   
-#  msg "Checking Python 3"
-#  cd "$srcdir/${_pkgname}-${pkgver}"/build/lib/theano/
-#  ../../scripts-3.4/theano-nose -v
-#}
 
 package_python2-theano-git() {
   depends=('python2' 'python2-numpy')
