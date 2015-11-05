@@ -10,8 +10,7 @@ url=http://libre.adacore.com/tools/$_pkgname
 license=(GPL)
 groups=(gcc-ada)
 
-depends=(gcc-ada gnat_util)
-#makedepends=(gprbuild)
+depends=(gcc-ada gnat_util gprbuild)
 
 provides=($pkgname)
 conflicts=($pkgname)
