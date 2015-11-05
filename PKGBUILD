@@ -1,14 +1,14 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwin-git
-pkgver=r12920.60783b8
+pkgver=r13793.3a8d7d8
 pkgrel=1
 pkgdesc='KDE Window Manager'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
 depends=(hicolor-icon-theme qt5-multimedia plasma-framework-git kcmutils-git knewstuff-git kinit-git kdecoration-git xcb-util-cursor 
-kwayland-git libinput)
+kscreenlocker-git libinput)
 makedepends=(extra-cmake-modules git kdoctools qt5-tools)
 conflicts=(kwin kdebase-workspace)
 provides=(kwin)
