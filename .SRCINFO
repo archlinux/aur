@@ -9,7 +9,7 @@ pkgbase = svkm
 	depends = sox
 	options = !emptydirs
 	source = https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B4YjcQAoes55MTJ5Z0xGNWNMdEU
-	md5sums = 1e0c33234d408ddbf6b18566abb05058
+	md5sums = 1da6db690f48a33d0123694e6886c30c 
 
 pkgname = svkm
 
