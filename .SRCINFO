@@ -1,12 +1,12 @@
 pkgbase = kde-servicemenus-pastebinit
 	pkgdesc = A KDE service menu for sending files to pastebin like sites
-	pkgver = 0.1
+	pkgver = 20151105
 	pkgrel = 1
-	url = http://example.com
+	url = https://aur.archlinux.org/packages/kde-servicemenus-pastebinit
 	install = pastebinit.install
 	arch = any
 	license = GPL
-	depends = kdebase-dolphin
+	depends = dolphin
 	depends = xclip
 	depends = pastebinit
 	source = pastebinit.desktop
