@@ -1,0 +1,15 @@
+post_install() {
+  update-desktop-database >/dev/null 2>&1
+}
+
+post_upgrade() {
+  update-desktop-database >/dev/null 2>&1
+}
+
+post_remove() {
+  update-desktop-database >/dev/null 2>&1
+}
+
+op=$1
+shift
+$op $*

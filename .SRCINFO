@@ -1,0 +1,23 @@
+pkgbase = netbeans-php
+	pkgdesc = Netbeans IDE - PHP version
+	pkgver = 8.1
+	pkgrel = 1
+	url = https://netbeans.org
+	install = netbeans-php.install
+	arch = any
+	license = CDDL
+	depends = java-environment
+	depends = desktop-file-utils
+	optdepends = php: php execution support
+	optdepends = xdebug: php debugging support
+	optdepends = python: ant target support
+	optdepends = php-composer: dependency manager for php projects
+	conflicts = netbeans
+	options = !strip
+	source = http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201-php.zip
+	source = netbeans.desktop
+	sha256sums = c8e1f90becc0dde3aa0be18046cf94ab9bba05e4975e98772605fe6a56fbe163
+	sha256sums = a2172e4ab1d73a6d5b6cd0d44a329472ecffbfb1b69a1144737929f3ed0d307c
+
+pkgname = netbeans-php
+

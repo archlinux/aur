@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NetBeans PHP IDE
+Comment=A powerful PHP development environment
+Icon=/usr/share/netbeans/nb/netbeans.png
+Exec=/usr/share/netbeans/bin/netbeans
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true
