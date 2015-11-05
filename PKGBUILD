@@ -19,7 +19,7 @@ package() {
      "${pkgdir}"/usr/share/man/man1
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s ../../../../usr/lib/node_modules/jslint/LICENSE \
+  ln -s ../../../lib/node_modules/jslint/LICENSE \
      "${pkgdir}/usr/share/licenses/${pkgname}"
 
   find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \;
