@@ -1,0 +1,22 @@
+pkgbase = xwax-git
+	pkgdesc = Open-source vinyl emulation software for Linux.
+	pkgver = 1.6.beta2
+	pkgrel = 1
+	url = http://www.xwax.co.uk/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = sdl_ttf
+	depends = ttf-dejavu
+	depends = jack
+	optdepends = cdparanoia: for CD import
+	optdepends = mpg123: for MP3 import
+	optdepends = ffmpeg: for video fallback import
+	provides = xwax
+	conflicts = xwax
+	source = xwax-git::git+http://xwax.org/devel/xwax.git
+	md5sums = SKIP
+
+pkgname = xwax-git
+
