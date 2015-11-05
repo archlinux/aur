@@ -1,0 +1,20 @@
+pkgbase = kscreenlocker-git
+	pkgdesc = Library and components for secure lock screen architecture
+	pkgver = r328.c4054d7
+	pkgrel = 1
+	url = https://projects.kde.org/kscreenlocker
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	depends = kdelibs4support
+	depends = plasma-framework
+	depends = kidletime
+	depends = kwayland
+	source = git://anongit.kde.org/kscreenlocker.git
+	md5sums = SKIP
+
+pkgname = kscreenlocker-git
+
