@@ -1,7 +1,7 @@
 pkgbase = nodejs-0.12
 	pkgdesc = Evented I/O for V8 javascript (legacy version 0.12)
 	pkgver = 0.12.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nodejs.org/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nodejs-0.12
 	depends = zlib
 	depends = icu
 	optdepends = npm: nodejs package manager
-	provides = nodejs
+	provides = nodejs=0.12.7
 	conflicts = nodejs
 	source = http://nodejs.org/dist/v0.12.7/node-v0.12.7.tar.gz
 	sha256sums = b23d64df051c9c969b0c583f802d5d71de342e53067127a5061415be7e12f39d

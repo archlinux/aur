@@ -11,12 +11,12 @@
 
 pkgname=nodejs-0.12
 pkgver=0.12.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 javascript (legacy version 0.12)'
 arch=('i686' 'x86_64')
 url='http://nodejs.org/'
 license=('MIT')
-provides=('nodejs')
+provides=("nodejs=${pkgver}")
 conflicts=('nodejs')
 depends=('openssl' 'zlib' 'icu') # 'libuv' 'v8' 'c-ares')
 makedepends=('python2' 'procps-ng')
