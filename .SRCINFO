@@ -1,7 +1,7 @@
 pkgbase = python-liblarch-git
 	pkgdesc = Python library to easily handle data structure, with a GTK binding
 	pkgver = v3.0.r9.gebd05dd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/action/show/Projects/liblarch
 	arch = any
 	license = LGPL3
@@ -12,6 +12,7 @@ pkgbase = python-liblarch-git
 	depends = python
 	depends = python-gobject
 	depends = pygtk
+	depends = gtk3
 	provides = python-liblarch
 	conflicts = python-liblarch
 	source = git://github.com/liblarch/liblarch.git
