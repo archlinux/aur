@@ -1,0 +1,14 @@
+pkgbase = temp-throttle
+	pkgdesc = A shell script for throttling system CPU frequency based on a desired maximum temperature.
+	pkgver = 2.20
+	pkgrel = 1
+	url = https://github.com/Sepero/temp-throttle
+	arch = any
+	license = GPL2
+	source = temp-throttle-v2.20.tar.gz::https://github.com/Sepero/temp-throttle/archive/v2.20.tar.gz
+	source = temp-throttle@.service
+	sha256sums = 4ab30f204bdf407ebbfa5abdaa3b3d780e3bc674dca0bb08dbde650ccc015cf7
+	sha256sums = 18ae3edd7b41508da279df6d67f1c5d86e1dbfe2daebbc42bbe39c26031b22e0
+
+pkgname = temp-throttle
+
