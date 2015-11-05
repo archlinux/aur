@@ -1,6 +1,6 @@
 pkgbase = premake-git
 	pkgdesc = Simple build configuration and project generation tool using Lua
-	pkgver = 5.0.alpha2.r207.g2706449
+	pkgver = 5.0.alpha2.r435.g82c85e3
 	pkgrel = 1
 	url = http://industriousone.com/premake
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = premake-git
 	license = BSD
 	makedepends = git
 	depends = glibc
+	depends = openssl
 	provides = premake5
 	source = git+https://github.com/premake/premake-core
 	md5sums = SKIP

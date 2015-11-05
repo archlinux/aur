@@ -1,11 +1,11 @@
 pkgname=premake-git
-pkgver=5.0.alpha2.r207.g2706449
+pkgver=5.0.alpha2.r435.g82c85e3
 pkgrel=1
 pkgdesc='Simple build configuration and project generation tool using Lua'
 arch=(i686 x86_64)
 url='http://industriousone.com/premake'
 license=(BSD)
-depends=(glibc)
+depends=(glibc openssl)
 makedepends=(git)
 provides=(premake5)
 source=(git+https://github.com/premake/premake-core)
@@ -38,4 +38,5 @@ package() {
   cd premake-core
   install -Dm755 bin/release/premake5 "$pkgdir"/usr/bin/premake5
   install -Dm755 packages/debian/premake.1 "$pkgdir"/usr/share/man/man1/premake5.1
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
