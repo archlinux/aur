@@ -1,0 +1,12 @@
+pkgbase = ripmime
+	pkgdesc = Tool to extract the attached files out of a MIME package
+	pkgver = 1.4.0.10
+	pkgrel = 1
+	url = http://www.pldaniels.com/ripmime/
+	arch = any
+	license = BSD
+	source = http://www.pldaniels.com/ripmime/ripmime-1.4.0.10.tar.gz
+	md5sums = bb0844b0e73625ef79206d3fe620716e
+
+pkgname = ripmime
+
