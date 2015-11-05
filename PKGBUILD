@@ -21,7 +21,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=3.8.0svn_r251003
+pkgver=3.8.0svn_r252170
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -135,7 +135,6 @@ build() {
     export PKG_CONFIG_PATH='/usr/lib/pkgconfig'
 
     # LLVM_BUILD_LLVM_DYLIB: Build the dynamic runtime libraries (e.g. libLLVM.so).
-    # LLVM_DYLIB_EXPORT_ALL: Export all symbols in the dynamic libs, not just the C API.
     # LLVM_LINK_LLVM_DYLIB:  Link our own tools against the libLLVM dynamic library, too.
     # LLVM_BINUTILS_INCDIR:  Set to binutils' plugin-api.h location in order to build LLVMgold.
     cmake -G 'Unix Makefiles' \
@@ -152,7 +151,6 @@ build() {
         -DSPHINX_OUTPUT_MAN:BOOL=ON \
         -DSPHINX_WARNINGS_AS_ERRORS:BOOL=OFF \
         -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
-        -DLLVM_DYLIB_EXPORT_ALL:BOOL=ON \
         -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
         "../${_pkgname}"
@@ -192,7 +190,7 @@ package_llvm-svn() {
     make DESTDIR="${pkgdir}" install
 
     # The runtime libraries get installed in llvm-libs-svn
-    rm -f "${pkgdir}"/usr/lib/lib{LLVM,LTO}.so{,.*}
+    rm -f "${pkgdir}"/usr/lib/lib{LLVM,LTO}{,-*}.so
     mv -f "${pkgdir}"/usr/lib/{BugpointPasses,LLVMgold}.so "${srcdir}/"
 
     # Clang libraries and OCaml bindings go to separate packages
@@ -243,14 +241,11 @@ package_llvm-libs-svn() {
 
     # Must have a symlink that corresponds to the output of `llvm-config --version`.
     # Without it, some builds, e.g. Mesa, might fail for "lack of shared libraries".
-    for _shlib in lib{LLVM,LTO} ; do
-        # libLLVM.so.3.8.0svn-r123456
-        ln -s "${_shlib}.so.$(echo ${pkgver} | cut -d _ -f 1)" \
-            "${pkgdir}/usr/lib/${_shlib}.so.$(echo ${pkgver} | tr _ -)"
-        # libLLVM-3.8.0svn-r123456.so
-        ln -s "${_shlib}.so.$(echo ${pkgver} | cut -d _ -f 1)" \
-            "${pkgdir}/usr/lib/${_shlib}-$(echo ${pkgver} | tr _ -).so"
-    done
+    _sover="$(echo ${pkgver} | cut -d . -f -2)svn"
+    # libLLVM.so.3.8.0svn-r123456
+    ln -s "libLLVM-${_sover}.so" "${pkgdir}/usr/lib/libLLVM.so.$(echo ${pkgver} | tr _ -)"
+    # libLLVM-3.8.0svn-r123456.so
+    ln -s "libLLVM-${_sover}.so" "${pkgdir}/usr/lib/libLLVM-$(echo ${pkgver} | tr _ -).so"
 
     _install_license
 }
