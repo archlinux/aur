@@ -12,12 +12,10 @@ depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 makedepends=('patch' 'libunity' 'libappindicator-gtk2')
 source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
 	"http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.xz"
-	"fix-genlang.diff"
 	"telegramdesktop.desktop"
 	"tg.protocol")
 sha256sums=('SKIP'
 	    '6f028e63d4992be2b4a5526f2ef3bfa2fe28c5c757554b11d9e8d86189652518'
-	    '6f3bb20460bb5d8d7e60008df75fa79f1bdd8569ff90140c39c76f9e28d0933d'
 	    '0e936f964fbaa7392a0c58aa919d6ea8c5f931472e1ab59b437523aa1a1d585c'
 	    'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb')
 install="$pkgname.install"
@@ -33,19 +31,13 @@ prepare() {
 		patch -p1 -i "$srcdir/tdesktop/Telegram/_qtbase_${_qtver//./_}_patch.diff"
 	fi
 	
-	# Fix langs
-	cd "$srcdir/tdesktop"
-	patch -p1 -i "$srcdir/fix-genlang.diff"
-	
 	sed -i 's/CUSTOM_API_ID//g' "$srcdir/tdesktop/Telegram/Telegram.pro"
 	sed -i 's,LIBS += /usr/local/lib/libxkbcommon.a,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
 	
 	(
+		echo 'CONFIG += c++11'
 		echo "DEFINES += TDESKTOP_DISABLE_AUTOUPDATE"
 		echo "DEFINES += TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
-	) >> "$srcdir/tdesktop/Telegram/Telegram.pro"
-	
-	(
 		echo 'INCLUDEPATH += "/usr/lib/glib-2.0/include"'
 		echo 'INCLUDEPATH += "/usr/lib/gtk-2.0/include"'
 		echo 'INCLUDEPATH += "/usr/include/opus"'
