@@ -1,0 +1,14 @@
+pkgbase = idris-lightyear-git
+	pkgdesc = Parser combinators for Idris
+	pkgver = 122.04e8747
+	pkgrel = 1
+	url = https://github.com/ziman/lightyear
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = idris
+	source = git://github.com/ziman/lightyear.git
+	md5sums = SKIP
+
+pkgname = idris-lightyear-git
+
