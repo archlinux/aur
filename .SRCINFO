@@ -1,6 +1,6 @@
 pkgbase = blitz-cppqed-hg
 	pkgdesc = C++ Class library for scientific computing. This version contains backward compatible patches needed for C++QED
-	pkgver = 0.10.r1926-c75083662d77
+	pkgver = 0.10.r1924.b28e85ab238e
 	pkgrel = 1
 	url = http://www.sourceforge.net/projects/blitz/
 	arch = i686

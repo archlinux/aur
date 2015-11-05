@@ -1,8 +1,8 @@
 # Maintainer: bastikr <basti.kr@gmail.com>
 
 pkgname=blitz-cppqed-hg
-pkgver=0.10.r1926-c75083662d77
 pkgrel=1
+pkgver=0.10.r1924.b28e85ab238e
 pkgdesc="C++ Class library for scientific computing. This version contains backward compatible patches needed for C++QED"
 arch=('i686' 'x86_64')
 url="http://www.sourceforge.net/projects/blitz/"
@@ -16,7 +16,7 @@ source=("${pkgname}"::'hg+http://cppqed.hg.sourceforge.net:8000/hgroot/cppqed/bl
 md5sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "0.10.r%s" "$(hg identify -n)" "-" "$(hg identify -i)"
+    printf "0.10.r%s" "$(hg identify -n).$(hg identify -i)"
 }
 
 build() {
