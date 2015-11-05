@@ -3,7 +3,7 @@
 pkgname=(crispy-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Vanilla-compatible enhanced Doom, Heretic, Hexen, Strife engine"
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('python')
 source=(https://github.com/fabiangreffrath/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('e94a7fbc1859094c2c745b28f6f097194a1072a5fb4048d8a032ce1e76584dbe')
+sha256sums=('d2a58f7cdd61d49ebe711cd2ec873b505a90e2bda08c14d521d063896a39f29b')
 
 prepare() {
   # GitHub's generated archive prefix kind of sucks.
