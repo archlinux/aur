@@ -1,0 +1,19 @@
+pkgbase = python-canonicaljson
+	pkgdesc = Canonical JSON
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/canonicaljson/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-canonicaljson-1.0.0.tar.gz::https://github.com/matrix-org/python-canonicaljson/archive/v1.0.0.tar.gz
+	md5sums = 9bfe11414b3818908bc0be7dbf3cf76c
+
+pkgname = python-canonicaljson
+	depends = python
+
+pkgname = python2-canonicaljson
+	depends = python2
+
