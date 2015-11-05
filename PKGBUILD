@@ -2,7 +2,7 @@
 
 _pkgname=qterminal
 pkgname=$_pkgname-git
-pkgver=0.6.0.42.g0856b29
+pkgver=0.6.0.89.gee32e84
 pkgrel=1
 pkgdesc="Lightweight Qt-based terminal emulator"
 arch=("i686" "x86_64")
@@ -26,9 +26,7 @@ build() {
 	cd build
 	cmake "$srcdir/$_pkgname" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DUSE_SYSTEM_QXT=OFF \
-		-DUSE_QT5=true
+		-DCMAKE_INSTALL_LIBDIR=lib
 	make
 }
 

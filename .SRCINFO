@@ -1,6 +1,6 @@
 pkgbase = qterminal-git
 	pkgdesc = Lightweight Qt-based terminal emulator
-	pkgver = 0.6.0.42.g0856b29
+	pkgver = 0.6.0.89.gee32e84
 	pkgrel = 1
 	url = https://github.com/qterminal/qterminal
 	arch = i686
