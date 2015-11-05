@@ -1,14 +1,14 @@
 pkgbase = mystuff
 	pkgdesc = Create a custom menu in a popup window
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = http://www.kornelix.com/mystuff
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
-	source = http://www.kornelix.com/uploads/1/3/0/3/13035936/mystuff-2.0.tar.gz
-	md5sums = 47cf364a1b9fe3b1a4b5827f841a63a7
+	source = http://www.kornelix.com/uploads/1/3/0/3/13035936/mystuff-2.1.tar.gz
+	md5sums = d20c2f5fb90e1f875804cc10877cb977
 
 pkgname = mystuff
 
