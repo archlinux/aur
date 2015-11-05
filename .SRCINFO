@@ -1,0 +1,16 @@
+pkgbase = python-formatstring-git
+	pkgdesc = Format string exploitation helper
+	pkgver = 1.1.r0.g321baf7
+	pkgrel = 1
+	url = https://github.com/arthaud/formatstring
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-pyelftools: infer the architecture from a binary file
+	source = python-formatstring-git::git://github.com/arthaud/formatstring.git
+	md5sums = SKIP
+
+pkgname = python-formatstring-git
+
