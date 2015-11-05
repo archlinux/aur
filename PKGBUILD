@@ -4,7 +4,7 @@
 pkgbase="python-theano-git"
 pkgname=("python-theano-git" "python2-theano-git")
 _pkgname="Theano"
-pkgver=rel.0.7.1a1.r1287.4260bbf
+pkgver=0.7.1a1.r1287.4260bbf
 pkgrel=1
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgbase%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^rel\.//')"
 
 }
 

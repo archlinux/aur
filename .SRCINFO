@@ -1,6 +1,6 @@
 pkgbase = python-theano-git
 	pkgdesc = Definition and optimized evaluation of mathematical expressions on Numpy arrays.
-	pkgver = rel.0.7.1a1.r1287.4260bbf
+	pkgver = 0.7.1a1.r1287.4260bbf
 	pkgrel = 1
 	url = http://www.deeplearning.net/software/theano/
 	arch = any
