@@ -1,7 +1,7 @@
 # Maintainer: Arthur Skowronek <eisensheng@mailbox.org>
 
 pkgname="deis-client"
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Command line interface client for Deis, an open source PaaS"`
        `" that makes it easy to deploy and manage applications"`
@@ -11,11 +11,15 @@ url='http://deis.io/'
 license=('APACHE')
 makedepends=('go' 'godep')
 source=("https://github.com/deis/deis/archive/v${pkgver}.tar.gz")
-sha256sums=('ae53da596e44cbeccbf0d0f05186538f97d42344f379ed2866bf0f7b0ba018cb')
+sha256sums=('036bfe66831c6405a58cf68cd3685a328883897fc8d7b7842079186166557038')
+md5sums=('b6c0f31a231f44e7ec1db51d969e78a7')
 
 
 prepare() {
   cd "${srcdir}"
+
+  # Delete old build just in case.
+  find ./src -delete
 
   mkdir -p 'src/github.com/deis'
   mv "deis-${pkgver}" 'src/github.com/deis/deis'
