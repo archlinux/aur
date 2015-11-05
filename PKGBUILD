@@ -12,8 +12,10 @@ depends=('gtk2' 'nss' 'libnotify' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib
 makedepends=()
 backup=()
 install=''
-source=("https://release.gitkraken.com/linux/gitkraken-amd64.tar.gz")
-md5sums=('eaf341d5dc59856158905c28eb858dfc')
+source=("https://release.gitkraken.com/linux/gitkraken-amd64.tar.gz" "GitKraken.desktop" "gitkraken.png")
+md5sums=('eaf341d5dc59856158905c28eb858dfc'
+         '765148843d302e15d80ddd0041efc957'
+         'fcac914c0044d1e5831ce46b88c37ec5')
 
 package() {
 	install -d "$pkgdir"/opt
@@ -26,4 +28,7 @@ package() {
 	ln -s ../../opt/gitkraken/gitkraken "$pkgdir"/usr/bin/gitkraken
 
 	install -Dm644 "$srcdir"/GitKraken/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+	install -D -m644 "../GitKraken.desktop" "${pkgdir}/usr/share/applications/GitKraken.desktop"
+  	install -D -m644 "../gitkraken.png"     "${pkgdir}/usr/share/pixmaps/gitkraken.png"
 }
