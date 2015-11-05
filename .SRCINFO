@@ -1,7 +1,7 @@
 pkgbase = nodejs-jslint
 	pkgdesc = The JavaScript Code Quality Tool
-	pkgver = 0.9.3
-	pkgrel = 2
+	pkgver = 0.9.5
+	pkgrel = 1
 	url = https://github.com/reid/node-jslint
 	arch = any
 	license = BSD
