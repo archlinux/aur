@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=vdirsyncer
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
@@ -9,13 +9,13 @@ url="https://vdirsyncer.readthedocs.org/"
 license=('MIT')
 depends=('python-click' 'python-setuptools' 'python-lxml'
          'python-requests-toolbelt' 'python-atomicwrites'
-         'python-click-threading' 'python-click-log'
-         'python-requests-oauthlib')
+         'python-click-threading' 'python-click-log')
+optdepends=('python-requests-oauthlib: Remotestorage support')
 checkdepends=('python-pytest' 'python-wsgi-intercept'
               'radicale' 'python-werkzeug-git' 'python-pytest-xprocess'
               'python-pytest-localserver')
 source=("https://pypi.python.org/packages/source/v/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('ef6547f6a1c2533ffe5ac7abe64af796')
+md5sums=('44cfb16a55b69bdbfef74bf48271e5f6')
 
 # check() {
 #   cd "$srcdir/${pkgname}-$pkgver"
