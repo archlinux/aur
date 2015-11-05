@@ -1,5 +1,6 @@
 post_install() {
 	[[ -x /usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+	echo "This package includes systemd user and system services which are not enabled by default."
 }
 
 post_remove() {
