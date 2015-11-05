@@ -1,0 +1,9 @@
+src
+pkg
+*.pkg.tar
+
+license.rtf
+desktop.ini
+*.ttf
+*.ttc
+*.fon
