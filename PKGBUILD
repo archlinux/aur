@@ -1,7 +1,7 @@
 # Maintainer: Duru Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=0xdbe-eap
 _pkgname=0xdbe
-pkgver=143.324.5
+pkgver=143.615.4
 _buildver=$pkgver
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
