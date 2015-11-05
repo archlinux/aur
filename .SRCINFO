@@ -1,7 +1,7 @@
 pkgbase = thesis
 	pkgdesc = Two LaTeX classes for bigger, thesis-like documents
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dante.ctan.org/CTAN/help/Catalogue/entries/thesis.html#Visit
 	install = thesis.install
 	arch = any
