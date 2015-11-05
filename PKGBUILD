@@ -27,10 +27,4 @@ package() {
 
   	install -dm755 "${pkgdir}/usr/bin"
   	ln -s "/opt/toggldesktop/TogglDesktop" "${pkgdir}/usr/bin/toggl"
-
-  	#Double check the permissons
-  	chmod 755 "${pkgdir}/opt/toggldesktop"
-  	chmod 755 "${pkgdir}/usr/share/applications"
-  	chmod 755 "${pkgdir}/usr/share/applications/toggl.desktop"
-  	chmod 755 "${pkgdir}/usr/bin/toggl"
 }
