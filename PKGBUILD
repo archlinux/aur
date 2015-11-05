@@ -14,6 +14,7 @@ conflicts=(kwin kdebase-workspace)
 provides=(kwin)
 install=$pkgname.install
 source=('git://anongit.kde.org/kwin.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
