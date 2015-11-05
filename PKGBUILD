@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=('https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B4YjcQAoes55MTJ5Z0xGNWNMdEU')
-md5sums=('1da6db690f48a33d0123694e6886c30c')
+md5sums=('ddc6961c3488aabfbc95e8ad3cbb0624')
 
 package() {
   echo "Installing VK API"
