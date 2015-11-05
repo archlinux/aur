@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-nn-no
 	pkgdesc = Nynorsk language package for Iceweasel (Norway)
-	pkgver = 41.0.2.deb1
+	pkgver = 42.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.2
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-nn-no_41.0.2-1_all.deb
-	sha256sums = d955959a559892eb0ecc98ed16113b18e9969e724c295eafe0410fc8a5c44dba
+	depends = iceweasel>=42.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-nn-no_42.0-1_all.deb
+	sha256sums = d3c314fb890e6cf33ff583ccfeaa93e86f2926c96ef7ffd1aa6b3f3fe82ec305
 
 pkgname = iceweasel-i18n-nn-no
 
