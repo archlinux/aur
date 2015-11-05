@@ -1,16 +1,16 @@
 # Maintainer: Psyringe <psyringe@protonmail.com>
 pkgname=toggl-bin
-pkgver=7.2.66
+pkgver=7.3.119
 pkgrel=7
 pkgdesc="Free Time Tracking Software which is insanely easy to use. (Unofficial Binary)"
 arch=('x86_64')
 url="https://toggl.com"
 license=('BSD')
 install=${pkgname}.install
-source=("https://assets.toggl.com/installers//toggldesktop_x86_64-7_2_66-2015-04-28-10-25-02.tar.gz"
+source=("https://github.com/toggl/toggldesktop/releases/download/v7.3.119/toggldesktop_linux_x86_64-7_3_119.tar.gz"
 "toggl.desktop")
-md5sums=("355d9623b09fdc5773199927021e45a4"
-		 "e94844089a6c2b911c6286b7a1f1f519")
+md5sums=("a2c67ea94acb1d0f386eb8af0421c97e"
+		 "8c12ccdabee1dac4d6bec24cc5b9f5d5")
 
 package() {
 	cd "${srcdir}"
