@@ -1,0 +1,16 @@
+pkgbase = ical2rem
+	pkgdesc = Reads iCal files and outputs Remind-compatible files
+	pkgver = 0.5.2
+	pkgrel = 5
+	url = http://tim.stoakes.net/remind/
+	arch = any
+	license = GPL
+	depends = perl-ical-parser
+	depends = perl-datetime-event-recurrence
+	source = http://tim.stoakes.net/remind/ical2rem.pl
+	source = http://tim.stoakes.net/remind/ical2rem.patch
+	md5sums = 78b8f55aa511e6e4dd526a3bbca0d69b
+	md5sums = 6592459e7746f423868f823f5e4a2346
+
+pkgname = ical2rem
+
