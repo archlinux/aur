@@ -2,7 +2,7 @@
 # Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 _lang=en-za
-_debver=41.0.2
+_debver=42.0
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i
 
@@ -22,4 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
-sha256sums=('10018b5cf96309da539f86400d727aff8455b1ea99b1dc27c92d20ea4f23fd59')
+sha256sums=('d7b49f9a5b21c53cf2a2448b89aa7123e35169ca15d4d813d13635ef8ca8aaee')

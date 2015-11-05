@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-en-za
 	pkgdesc = English (South Africa) language package for Iceweasel
-	pkgver = 41.0.2.deb1
+	pkgver = 42.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.2
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-en-za_41.0.2-1_all.deb
-	sha256sums = 10018b5cf96309da539f86400d727aff8455b1ea99b1dc27c92d20ea4f23fd59
+	depends = iceweasel>=42.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-en-za_42.0-1_all.deb
+	sha256sums = d7b49f9a5b21c53cf2a2448b89aa7123e35169ca15d4d813d13635ef8ca8aaee
 
 pkgname = iceweasel-i18n-en-za
 
