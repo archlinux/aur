@@ -26,7 +26,7 @@ md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
          '15efc60875b77125f8d5399797306955'
          '422ffbdfb1fc79dddf46f868e890e435'
          '1f913fe9ca34481134bc36e1045e9a20'
-         'c62b6aa26a4e01d2509fc80bd505e0f7')
+         'SKIP')
 
 
 prepare() {

@@ -19,7 +19,7 @@ diff -Naur a/program/functions.py b/program/functions.py
      print _('Making system dirs ...')
      errors = []
 -    for each in ( '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0' ):
-+    for each in ( '/run', '/dev', '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0' ):
++    for each in ( '/run', '/dev', '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0', '/var/lib/systemd/coredump' ):
          tmp = commands.getstatusoutput( 'mkdir -p %s'%(target_root + each)  )
          if tmp[0] != 0:
              errors.append( _('Error occurred when mkdir %s , you need to make it manually.')%(target_root + each) )
@@ -32,13 +32,15 @@ diff -Naur a/program/functions.py b/program/functions.py
  '''
      MPs = mp_config.keys()
      MPs.sort()
-@@ -438,12 +438,14 @@
+@@ -438,12 +438,16 @@
      defaultExcludes.append( '/proc' )
      defaultExcludes.append( '/sys' )
      defaultExcludes.append( '/tmp' )
 +    defaultExcludes.append( '/run' )
 +    defaultExcludes.append( '/dev' )
 +    defaultExcludes.append( '/.snapshots' )
++    defaultExcludes.append( '/var/lib/systemd/coredump' )
++    defaultExcludes.append( '/home/*/.cache' )
      defaultExcludes.append( '/mnt' )
      defaultExcludes.append( '/media' )
      
