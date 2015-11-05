@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-hi-in
 	pkgdesc = Hindi language pack for Iceweasel (India)
-	pkgver = 41.0.2.deb1
+	pkgver = 42.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.2
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-hi-in_41.0.2-1_all.deb
-	sha256sums = adc9aec91e80ff0c3d9d4e068b2d31e8a2ee84b81ced246be59bf1324c08105e
+	depends = iceweasel>=42.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-hi-in_42.0-1_all.deb
+	sha256sums = 1a4e9e99abf8ab8e9a22c7a4d35c635894173ad0b8abbb58a2489957dd833788
 
 pkgname = iceweasel-i18n-hi-in
 
