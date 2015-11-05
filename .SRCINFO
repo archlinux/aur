@@ -1,0 +1,19 @@
+pkgbase = python-signedjson
+	pkgdesc = Sign JSON with Ed25519 signatures
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/signedjson/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-signedjson-1.0.0.tar.gz::https://github.com/matrix-org/python-signedjson/archive/v1.0.0.tar.gz
+	md5sums = 2b74a01472afe3465db1eecbcecd663b
+
+pkgname = python-signedjson
+	depends = python
+
+pkgname = python2-signedjson
+	depends = python2
+
