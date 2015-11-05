@@ -13,11 +13,7 @@ url="https://www.mozilla.org/en-US/firefox/channel/#beta"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'hicolor-icon-theme'
          'icu' 'libevent' 'libvpx' 'libxt' 'mime-types' 'nss' 'sqlite')
-optdepends=('gstreamer0.10-base: vorbis decoding, ogg demuxing'
-            'gstreamer0.10-good: webm and mp4 demuxing'
-            'gstreamer0.10-bad: aac, vp8 and opus decoding'
-            'gstreamer0.10-ugly: h.264 and mp3 decoding'
-            'gstreamer0.10-ffmpeg: more decoders'
+optdepends=('ffmpeg: additional video and audio decoders'
             'libpulse: PulseAudio driver'
             'networkmanager: Location detection via available WiFi networks')
 makedepends=('pacman>=4.2.0')

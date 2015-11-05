@@ -23,11 +23,7 @@ pkgbase = firefox-beta-bin
 	depends = mime-types
 	depends = nss
 	depends = sqlite
-	optdepends = gstreamer0.10-base: vorbis decoding, ogg demuxing
-	optdepends = gstreamer0.10-good: webm and mp4 demuxing
-	optdepends = gstreamer0.10-bad: aac, vp8 and opus decoding
-	optdepends = gstreamer0.10-ugly: h.264 and mp3 decoding
-	optdepends = gstreamer0.10-ffmpeg: more decoders
+	optdepends = ffmpeg: additional video and audio decoders
 	optdepends = libpulse: PulseAudio driver
 	optdepends = networkmanager: Location detection via available WiFi networks
 	provides = firefox=43.0b1
