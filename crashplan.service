@@ -4,13 +4,13 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-
 Type=forking
 PIDFile=/opt/crashplan/CrashPlanEngine.pid
 EnvironmentFile=/opt/crashplan/bin/run.conf
 WorkingDirectory=/opt/crashplan
 ExecStart=/opt/crashplan/bin/CrashPlanEngine start
 ExecStop=/opt/crashplan/bin/CrashPlanEngine stop
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

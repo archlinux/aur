@@ -3,12 +3,12 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An online/offsite backup solution"
 url="http://www.crashplan.com"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('bash' 'java-runtime-headless') 
+depends=('bash' 'java-runtime-headless')
 makedepends=('cpio')
 optdepents=('java-runtime - For Crashplan GUI')
 backup=('opt/crashplan/bin/run.conf'
@@ -22,7 +22,7 @@ source=("http://download.crashplan.com/installs/linux/install/CrashPlan/CrashPla
 	'sysctl-crashplan.conf')
 sha256sums=('0bb24c88152f0f523e17d9a0df8013567f29f882538a45524fe440ef170d787a'
             '259d38afa8fc34246ac0ecfeefc701d47501c552eb0ffcd1bd4b8e9a2751c3c8'
-            'e5600d9d102fa8668183895fbe208d00cc353706f5b4a78302eca00f70b60800'
+            '09263ae188a034ac2a672e11c61059e969bef2fd494c0501847cd4e8a7fc4d1b'
             'c6dc626a180671d6b01f46f22158857c3fa86cd3eec79e3388284a2ab2682617'
             '2ec3d9cea180e92f1410ff89ece85c01f79d454cfc2e814f583c0e2b3ff8ce30')
 
