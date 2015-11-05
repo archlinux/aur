@@ -2,7 +2,7 @@
 
 pkgname="deis-client"
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface client for Deis, an open source PaaS"`
        `" that makes it easy to deploy and manage applications"`
        `" on your own servers."
@@ -19,7 +19,7 @@ prepare() {
   cd "${srcdir}"
 
   # Delete old build just in case.
-  find ./src -delete
+  [[ -d 'src' ]] && find ./src -ls
 
   mkdir -p 'src/github.com/deis'
   mv "deis-${pkgver}" 'src/github.com/deis/deis'
