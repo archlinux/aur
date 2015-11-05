@@ -1,7 +1,7 @@
 # Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=flens-git
-pkgver=423.757834a
+pkgver=1.1.0_33_g0f8dbe9
 pkgrel=1
 pkgdesc="FLENS - Flexible Library for Efficient Numerical Solutions - new headers only version."
 arch=('i686' 'x86_64')
@@ -12,12 +12,12 @@ makedepends=('git' 'gcc' 'cmake')
 optdepends=()
 provides=('flens')
 conflicts=('flens')
-source=("${pkgname}"::'git://github.com/michael-lehn/FLENS.git#commit=757834a')
+source=("${pkgname}"::'git://github.com/michael-lehn/FLENS.git')
 md5sums=('SKIP')
 
 pkgver() {
    cd "${pkgname}"
-   echo "$(git rev-list --count HEAD).$(git describe --always )"
+   echo "$(git describe --tags | tail -c+2 | sed 's|-|_|g')" 
 }
 
 build() {
