@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colingw@gmail.com>
 _hkgname=aur
 pkgname=haskell-aur
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Access metadata from the Arch Linux User Repository."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -21,9 +21,10 @@ depends=('ghc'
 options=('strip' 'staticlibs')
 provides=('haskell-aur')
 conflicts=('haskell-aur-git')
-source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-md5sums=('bd30a28bd200259b2aca4f70a521f825')
+source=(http://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz)
+md5sums=('482efe81e169dca2cd5b8c24257bbbb7')
 install=${pkgname}.install
+
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
@@ -34,6 +35,7 @@ build() {
     runhaskell Setup unregister --gen-script
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
+
 package() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     install -D -m744 register.sh   ${pkgdir}/usr/share/haskell/${pkgname}/register.sh
