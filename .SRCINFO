@@ -1,15 +1,15 @@
 pkgbase = drandr
 	pkgdesc = a dmenu based XRandR frontend
 	pkgver = 1
-	pkgrel = 1
-	url = https://php.radford.edu/~sdellysse
+	pkgrel = 2
+	url = https://bbs.archlinux.org/viewtopic.php?id=91937
 	arch = any
 	license = GPL2
 	depends = ruby
 	depends = dmenu
 	depends = xorg-xrandr
 	source = https://php.radford.edu/~sdellysse/drandr.rb
-	md5sums = 20792917a24b06700f85a3ab6d6099ab
+	sha256sums = b560dd2ec26a35315d09284e8713152d3be2be5a3f34c9753e3fa80112eb18ba
 
 pkgname = drandr
 
