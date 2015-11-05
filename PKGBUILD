@@ -1,4 +1,5 @@
 # Maintainer: Tim Kleinschmidt <tim.kleinschmidt@gmail.com>
+# Contributor: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=gitkraken
 pkgrel=1
