@@ -51,164 +51,163 @@
 pkgname=ttf-ms-win10
 pkgver=10.0.10240
 pkgrel=2
-pkgdesc="Microsoft Windows 10 TrueType fonts"
-arch=('any')
+pkgdesc='Microsoft Windows 10 TrueType fonts'
+arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
-license=('custom')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-mkfontscale' 'xorg-mkfontdir')
+license=(custom)
+depends=(fontconfig xorg-fonts-encodings xorg-mkfontscale xorg-mkfontdir)
 provides=(ttf-font ttf-tahoma ttf-{ms,vista,win7}-fonts ttf-ms-win8{,-arabic,-hebrew,-indic,-japanese,-korean,-other,-sea,-thai,-zh_cn,-zh_tw})
 conflicts=(ttf-tahoma ttf-{ms,vista,win7}-fonts ttf-ms-win8{,-arabic,-hebrew,-indic,-japanese,-korean,-other,-sea,-thai,-zh_cn,-zh_tw})
 install="${pkgname}.install"
 
-_fonts=(
-	arialbd.ttf
-	arialbi.ttf
-	ariali.ttf
-	arial.ttf
-	ariblk.ttf
-	calibrib.ttf
-	calibrii.ttf
-	calibrili.ttf
-	calibril.ttf
-	calibri.ttf
-	calibriz.ttf
-	cambriab.ttf
-	cambriai.ttf
-	cambria.ttc
-	cambriaz.ttf
-	Candarab.ttf
-	Candarai.ttf
-	Candara.ttf
-	Candaraz.ttf
-	comicbd.ttf
-	comici.ttf
-	comic.ttf
-	comicz.ttf
-	consolab.ttf
-	consolai.ttf
-	consola.ttf
-	consolaz.ttf
-	constanb.ttf
-	constani.ttf
-	constan.ttf
-	constanz.ttf
-	corbelb.ttf
-	corbeli.ttf
-	corbel.ttf
-	corbelz.ttf
-	courbd.ttf
-	courbi.ttf
-	couri.ttf
-	cour.ttf
-	ebrimabd.ttf
-	ebrima.ttf
-	framdit.ttf
-	framd.ttf
-	Gabriola.ttf
-	gadugib.ttf
-	gadugi.ttf
-	georgiab.ttf
-	georgiai.ttf
-	georgia.ttf
-	georgiaz.ttf
-	himalaya.ttf
-	impact.ttf
-	javatext.ttf
-	l_10646.ttf
-	LeelaUIb.ttf
-	LeelawUI.ttf
-	LeelUIsl.ttf
-	lucon.ttf
-	malgunbd.ttf
-	malgunsl.ttf
-	malgun.ttf
-	marlett.ttf
-	micross.ttf
-	mingliub.ttc
-	mmrtextb.ttf
-	mmrtext.ttf
-	monbaiti.ttf
-	msjhbd.ttc
-	msjhl.ttc
-	msjh.ttc
-	msyhbd.ttc
-	msyhl.ttc
-	msyh.ttc
-	msyi.ttf
-	mvboli.ttf
-	NirmalaB.ttf
-	NirmalaS.ttf
-	Nirmala.ttf
-	ntailub.ttf
-	ntailu.ttf
-	palabi.ttf
-	palab.ttf
-	palai.ttf
-	pala.ttf
-	phagspab.ttf
-	phagspa.ttf
-	segmdl2.ttf
-	segoeprb.ttf
-	segoepr.ttf
-	segoescb.ttf
-	segoesc.ttf
-	segoeuib.ttf
-	segoeuii.ttf
-	segoeuil.ttf
-	segoeuisl.ttf
-	segoeui.ttf
-	segoeuiz.ttf
-	seguibli.ttf
-	seguibl.ttf
-	seguiemj.ttf
-	seguihis.ttf
-	seguili.ttf
-	seguisbi.ttf
-	seguisb.ttf
-	seguisli.ttf
-	seguisym.ttf
-	simsunb.ttf
-	simsun.ttc
-	SitkaB.ttc
-	SitkaI.ttc
-	Sitka.ttc
-	SitkaZ.ttc
-	sylfaen.ttf
-	symbol.ttf
-	tahomabd.ttf
-	tahoma.ttf
-	taileb.ttf
-	taile.ttf
-	timesbd.ttf
-	timesbi.ttf
-	timesi.ttf
-	times.ttf
-	trebucbd.ttf
-	trebucbi.ttf
-	trebucit.ttf
-	trebuc.ttf
-	verdanab.ttf
-	verdanai.ttf
-	verdana.ttf
-	verdanaz.ttf
-	webdings.ttf
-	wingding.ttf
-	YuGothB.ttc
-	YuGothL.ttc
-	YuGothM.ttc
-	YuGothR.ttc
+_fonts=(arialbd.ttf
+        arialbi.ttf
+        ariali.ttf
+        arial.ttf
+        ariblk.ttf
+        calibrib.ttf
+        calibrii.ttf
+        calibrili.ttf
+        calibril.ttf
+        calibri.ttf
+        calibriz.ttf
+        cambriab.ttf
+        cambriai.ttf
+        cambria.ttc
+        cambriaz.ttf
+        Candarab.ttf
+        Candarai.ttf
+        Candara.ttf
+        Candaraz.ttf
+        comicbd.ttf
+        comici.ttf
+        comic.ttf
+        comicz.ttf
+        consolab.ttf
+        consolai.ttf
+        consola.ttf
+        consolaz.ttf
+        constanb.ttf
+        constani.ttf
+        constan.ttf
+        constanz.ttf
+        corbelb.ttf
+        corbeli.ttf
+        corbel.ttf
+        corbelz.ttf
+        courbd.ttf
+        courbi.ttf
+        couri.ttf
+        cour.ttf
+        ebrimabd.ttf
+        ebrima.ttf
+        framdit.ttf
+        framd.ttf
+        Gabriola.ttf
+        gadugib.ttf
+        gadugi.ttf
+        georgiab.ttf
+        georgiai.ttf
+        georgia.ttf
+        georgiaz.ttf
+        himalaya.ttf
+        impact.ttf
+        javatext.ttf
+        l_10646.ttf
+        LeelaUIb.ttf
+        LeelawUI.ttf
+        LeelUIsl.ttf
+        lucon.ttf
+        malgunbd.ttf
+        malgunsl.ttf
+        malgun.ttf
+        marlett.ttf
+        micross.ttf
+        mingliub.ttc
+        mmrtextb.ttf
+        mmrtext.ttf
+        monbaiti.ttf
+        msjhbd.ttc
+        msjhl.ttc
+        msjh.ttc
+        msyhbd.ttc
+        msyhl.ttc
+        msyh.ttc
+        msyi.ttf
+        mvboli.ttf
+        NirmalaB.ttf
+        NirmalaS.ttf
+        Nirmala.ttf
+        ntailub.ttf
+        ntailu.ttf
+        palabi.ttf
+        palab.ttf
+        palai.ttf
+        pala.ttf
+        phagspab.ttf
+        phagspa.ttf
+        segmdl2.ttf
+        segoeprb.ttf
+        segoepr.ttf
+        segoescb.ttf
+        segoesc.ttf
+        segoeuib.ttf
+        segoeuii.ttf
+        segoeuil.ttf
+        segoeuisl.ttf
+        segoeui.ttf
+        segoeuiz.ttf
+        seguibli.ttf
+        seguibl.ttf
+        seguiemj.ttf
+        seguihis.ttf
+        seguili.ttf
+        seguisbi.ttf
+        seguisb.ttf
+        seguisli.ttf
+        seguisym.ttf
+        simsunb.ttf
+        simsun.ttc
+        SitkaB.ttc
+        SitkaI.ttc
+        Sitka.ttc
+        SitkaZ.ttc
+        sylfaen.ttf
+        symbol.ttf
+        tahomabd.ttf
+        tahoma.ttf
+        taileb.ttf
+        taile.ttf
+        timesbd.ttf
+        timesbi.ttf
+        timesi.ttf
+        times.ttf
+        trebucbd.ttf
+        trebucbi.ttf
+        trebucit.ttf
+        trebuc.ttf
+        verdanab.ttf
+        verdanai.ttf
+        verdana.ttf
+        verdanaz.ttf
+        webdings.ttf
+        wingding.ttf
+        YuGothB.ttc
+        YuGothL.ttc
+        YuGothM.ttc
+        YuGothR.ttc
 )
 
-source=("${_fonts[@]}" license.rtf)
+source=(${_fonts[@]} license.rtf)
 
 package() {
-	mkdir -p "${pkgdir}/usr/share/fonts/TTF"
+    mkdir -p "$pkgdir/usr/share/fonts/TTF"
 
-	for font in "${_fonts[@]}"; do
-		install -m644 "$font" "${pkgdir}/usr/share/fonts/TTF"
-	done
+    for font in ${_fonts[@]}; do
+        install -m644 $font "$pkgdir/usr/share/fonts/TTF"
+    done
 
-	install -Dm644 license.rtf -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 sha256sums=('61daedc4107c937e66911b8184688601ac70f9c27f19d069c3b38f892fa314e4'
@@ -348,3 +347,5 @@ sha256sums=('61daedc4107c937e66911b8184688601ac70f9c27f19d069c3b38f892fa314e4'
             '1d3848165ad00b4d9be26c69186a405cb4cc9a372d51cc74f76abf7afc705a57'
             '324452829ee14f4c4500653923835ac3de7758f336ed3bf1142522bfede688d3'
             SKIP)
+
+# vim: ts=4 sw=4 et
