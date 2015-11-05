@@ -2,6 +2,10 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
+# Before you complain about unverifiable signature, please read Allan's post:
+# http://allanmcrae.com/2015/01/two-pgp-keyrings-for-package-management-in-arch-linux/
+# TLDR: gpg --keyserver pgp.mit.edu --recv-keys C52048C0C0748FEE227D47A2702353E0F7E48EDB 
+
 pkgname=ncurses5-compat-libs
 _pkgname=ncurses
 pkgver=6.0
