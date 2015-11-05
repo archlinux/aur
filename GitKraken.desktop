@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=GitKraken
+Exec="gitkraken"
+Icon=gitkraken.png
+Terminal=false
+Type=Application
+Categories=Utility;Network;Development
