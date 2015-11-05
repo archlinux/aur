@@ -1,6 +1,6 @@
 pkgname=fahviewer
 pkgver=7.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Folding@home 3D simulation viewer"
 url="http://folding.stanford.edu/English/HomePage"
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 if [ "$CARCH" = "i686" ]; then
     
-source=(https://fah-web.stanford.edu/file-releases/public/release/fahviewer/debian-testing-32bit/v7.4/fahviewer_7.4.4-32bit-release.tar.bz2)
+source=(https://folding.stanford.edu/releases/public/release/fahviewer/debian-testing-32bit/v7.4/fahviewer_7.4.4-32bit-release.tar.bz2)
     md5sums=('cf42a73256d149ecbbe0a25041c18347')
      
 elif [ "$CARCH" = "x86_64" ]; then
     
-source=(https://fah-web.stanford.edu/file-releases/public/release/fahviewer/debian-testing-64bit/v7.4/fahviewer_7.4.4-64bit-release.tar.bz2)
+source=(https://folding.stanford.edu/releases/public/release/fahviewer/debian-testing-64bit/v7.4/fahviewer_7.4.4-64bit-release.tar.bz2)
     md5sums=('f006aa42227fcd292e8ca342e8fb238d')
 fi
 

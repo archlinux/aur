@@ -1,7 +1,7 @@
 pkgbase = fahviewer
 	pkgdesc = A Folding@home 3D simulation viewer
 	pkgver = 7.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://folding.stanford.edu/English/HomePage
 	arch = i686
 	arch = x86_64
