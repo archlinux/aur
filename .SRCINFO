@@ -1,0 +1,19 @@
+pkgbase = tgui-git
+	pkgdesc = Cross-platform C++ GUI library for SFML
+	pkgver = v0.7.alpha2.r21.gffa1863
+	pkgrel = 1
+	url = https://tgui.eu/
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = sfml
+	provides = tgui
+	conflicts = tgui
+	source = git+https://github.com/texus/TGUI.git
+	sha256sums = SKIP
+
+pkgname = tgui-git
+
