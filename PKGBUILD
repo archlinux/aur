@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/jgrahamc/httpdiff'
 license=('GPL2')
 makedepends=('git' 'go')
-source=('git+https://github.com/jgrahamc/httpdiff')
+source=('git://github.com/jgrahamc/httpdiff')
 
 sha256sums=('SKIP')
 
