@@ -3,13 +3,13 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
 pkgver=13.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64')
 url="http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top"
 license=('custom:Citrix')
 depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxml2' 'libxaw' 'libxext' 'libxft'
-  'libxinerama' 'libxmu' 'libxp' 'libxpm' 'libxt' 'ca-certificates' 'nspluginwrapper')
+  'libxinerama' 'libxmu' 'libxp' 'libxpm' 'libxt' 'ca-certificates')
 optdepends=(
   'xerces-c: gtk2 configuration manager'
   'webkitgtk2: gtk2 selfservice/storefront ui')
