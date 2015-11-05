@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-si
 	pkgdesc = Sinhala language pack for Iceweasel
-	pkgver = 41.0.2.deb1
+	pkgver = 42.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.2
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-si_41.0.2-1_all.deb
-	sha256sums = ee924913bb6e45c2e487c84a0a28b7bc8f43ca4a9e5d4f034b0cdec7b01d3469
+	depends = iceweasel>=42.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-si_42.0-1_all.deb
+	sha256sums = a80a38014254998059ca50d0dfc98995c71e1b26fb143b00162a4f3ab7e6ceda
 
 pkgname = iceweasel-i18n-si
 
