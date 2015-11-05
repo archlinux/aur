@@ -6,17 +6,18 @@
 #   gpg --recv-keys 090B11993D9AEBB5
 
 pkgname=guix
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="GNU guix is a purely functional package manager"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guix/"
 license=('GPL')
 makedepends=(
   'bash-completion'
-  'emacs') # Please remove this if you are not going to use guix in emacs
+  'emacs' # Please remove this if you are not going to use guix in emacs
+  'guile-json')
 depends=(
-  'guile>=2.0.5'
+  'guile>=2.0.7'
   'sqlite>=3.6.19'
   'bzip2'
   'libgcrypt')
@@ -26,8 +27,8 @@ optdepends=(
 source=(
   "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 install="${pkgname}.install"
-sha256sums=('dfea48f13e6584db812c24746467eb21cb0553a2f5860e1fe40d4e06e4b4c092'
-            '411b3b850191f1fc701e9a2178aa02a403c44baa59b58a6ef9c18237a10fd049')
+sha1sums=('765de53aa344a801c3d376cf1e050650cec58039'
+          'ab25cfdb39ff6d53458c07a8ab9b397a7bc8c9c5')
 validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
 
 build() {
@@ -42,6 +43,9 @@ build() {
 
 check() {
 	cd ${srcdir}/${pkgname}-${pkgver}
+	# Don't run container tests if the kernel doesn't support user namespace
+	zgrep "CONFIG_USER_NS=y" /proc/config.gz || \
+		sed -i 's|tests/guix-environment-container.sh||' Makefile
 	make check
 }
 

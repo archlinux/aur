@@ -1,7 +1,7 @@
 pkgbase = guix
 	pkgdesc = GNU guix is a purely functional package manager
-	pkgver = 0.8.3
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://www.gnu.org/software/guix/
 	install = guix.install
 	arch = x86_64
@@ -9,16 +9,17 @@ pkgbase = guix
 	license = GPL
 	makedepends = bash-completion
 	makedepends = emacs
-	depends = guile>=2.0.5
+	makedepends = guile-json
+	depends = guile>=2.0.7
 	depends = sqlite>=3.6.19
 	depends = bzip2
 	depends = libgcrypt
 	optdepends = bash-completion: to enable bash programmable completion
 	optdepends = emacs: to enable Emacs Interface
-	source = ftp://alpha.gnu.org/gnu/guix/guix-0.8.3.tar.gz
-	source = ftp://alpha.gnu.org/gnu/guix/guix-0.8.3.tar.gz.sig
-	sha256sums = dfea48f13e6584db812c24746467eb21cb0553a2f5860e1fe40d4e06e4b4c092
-	sha256sums = 411b3b850191f1fc701e9a2178aa02a403c44baa59b58a6ef9c18237a10fd049
+	source = ftp://alpha.gnu.org/gnu/guix/guix-0.9.0.tar.gz
+	source = ftp://alpha.gnu.org/gnu/guix/guix-0.9.0.tar.gz.sig
+	sha1sums = 765de53aa344a801c3d376cf1e050650cec58039
+	sha1sums = ab25cfdb39ff6d53458c07a8ab9b397a7bc8c9c5
 
 pkgname = guix
 
