@@ -1,0 +1,42 @@
+pkgbase = python-theano-git
+	pkgdesc = Definition and optimized evaluation of mathematical expressions on Numpy arrays.
+	pkgver = rel.0.7.1a1.r1287.4260bbf
+	pkgrel = 1
+	url = http://www.deeplearning.net/software/theano/
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python2-nose
+	makedepends = python-distribute
+	makedepends = python2-distribute
+	depends = python
+	depends = python-numpy
+	depends = python2
+	depends = python2-numpy
+	optdepends = python-pycuda
+	optdepends = python-pydot
+	optdepends = python2-pycuda
+	optdepends = python2-pydot
+	provides = python-theano
+	provides = python2-theano
+	conflicts = python-theano
+	conflicts = python2-theano
+	source = python-theano::git+https://github.com/Theano/Theano.git
+	sha256sums = SKIP
+
+pkgname = python-theano-git
+	depends = python
+	depends = python-numpy
+	optdepends = python-pycuda
+	optdepends = python-pydot
+	provides = python-theano
+	conflicts = python-theano
+
+pkgname = python2-theano-git
+	depends = python2
+	depends = python2-numpy
+	optdepends = python2-pycuda
+	optdepends = python2-pydot
+	provides = python2-theano
+	conflicts = python2-theano
+
