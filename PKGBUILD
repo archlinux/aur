@@ -12,8 +12,12 @@ depends=('letsencrypt' 'python2-acme' 'python2-setuptools'
 # To be precise: This package, letsencrypt and python2-acme shell all be at the same version,
 # though for easier package management, it is omitted in this PKGBUILD
 conflicts=("letsencrypt-git")
-source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('5313d569902396981deb7cdeb645c5c5')
+source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc})
+# Refer to the following ArchWiki entry for detailed information about gpg signature verification
+# https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
+validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C')
+md5sums=('5313d569902396981deb7cdeb645c5c5'
+		 'SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
