@@ -7,7 +7,7 @@ arch=('x86_64')
 url=""
 license=('GPL')
 groups=()
-depends=('python>=3.0' 'tox')
+depends=('python>=3.0' 'sox')
 makedepends=('python-pip')
 provides=()
 conflicts=()
