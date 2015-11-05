@@ -12,10 +12,11 @@ pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
 license=('MIT')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
+depends=('alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
 optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git')
+install=atom.install
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
         'atom-python.patch')
 sha256sums=('25a64813b2741540fc26dfa0cf82e5769b324c016317fa3ff0593679fd5e88e9'
