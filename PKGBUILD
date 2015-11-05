@@ -14,7 +14,7 @@ depends=('gksu'
 package=(
 {
 	cd "$srcdir/$pkgname-$pkgver"
-	cp * $pkgdir
+	cp -r * $pkgdir
 })
 source=($pkgname-$pkgver.tar.gz)
 md5sums=('8297da64e39b566fc18282982c8c4db3')
