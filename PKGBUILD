@@ -7,8 +7,11 @@ pkgdesc="A modern object-oriented programming language."
 url="https://github.com/trizen/${pkgname}"
 arch=('any')
 license=('GPLv3')
-depends=('perl>=5.14.2' 'perl-data-dump')
+
 makedepends=('perl-module-build')
+
+depends=('perl>=5.14.2' 'perl-data-dump')
+optdepends=('perl-math-bigint-gmp: for faster numerical calculations')
 
 source="https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz"
 sha256sums=('32d26c8397164270035bc1ffda7f902880b98708339629286d97c74902c157ae')
