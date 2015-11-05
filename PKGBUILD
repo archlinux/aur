@@ -340,10 +340,8 @@ sha256sums=('61daedc4107c937e66911b8184688601ac70f9c27f19d069c3b38f892fa314e4'
             SKIP)
 
 package() {
-    mkdir -p "$pkgdir/usr/share/fonts/TTF"
-
     for font in ${_fonts[@]}; do
-        install -m644 $font "$pkgdir/usr/share/fonts/TTF"
+        install -Dm644 $font -t "$pkgdir/usr/share/fonts/TTF"
     done
 
     install -Dm644 license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
