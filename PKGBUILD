@@ -2,7 +2,7 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp
 pkgver=1.9.0
-pkgrel=7
+pkgrel=8
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -15,7 +15,6 @@ install='accel-ppp.install'
 options=('docs')
 backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf')
 source=(http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2
-	accel-ppp-default
 	accel-ppp.logrotate
 	accel-ppp.lua
 	accel-ppp.tmpfiles
@@ -23,11 +22,10 @@ source=(http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2
 	dictionary.accel_ipoe
 	dictionary.ppp)
 md5sums=('9b02c5c42ad939ea393811f97e844f54'
-         'bb3e20c8808000f4efe52230c13a13f3'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '816dd5ea9534a077dfd63b6cd529738a'
          '5be7d42b434b74d7e692b19a9e3c4297'
-         'e5dec17bd405052fc647a805db5dd449'
+         'e13fc55329910cd4dd0a9ee0b43bad97'
          '7b94e1ab23db6c849dac3cb86246007d'
          '4e0d4fc5975ea8794ea286e8fbfa56cd')
 
@@ -68,7 +66,6 @@ package() {
 	install -dm0755 "$pkgdir/etc/snmp/"
 	install -dm0755 "$pkgdir/var/lib/accel-ppp"
 	touch "$pkgdir/etc/snmp/$pkgname.conf"
-	install -Dm0644 "$srcdir/$pkgname-default" "$pkgdir/etc/conf.d/accel-pppd"
 	install -Dm0644 "$srcdir/$pkgname-$pkgver/README" "$pkgdir/usr/share/doc/$pkgname/README"
 	install -Dm0644 "$srcdir/accel-pppd.service" "$pkgdir/usr/lib/systemd/system/accel-pppd.service"
 	install -Dm0644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
