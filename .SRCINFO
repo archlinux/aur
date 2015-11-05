@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-ms
 	pkgdesc = Malay language pack for Iceweasel
-	pkgver = 41.0.2.deb1
+	pkgver = 42.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.2
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ms_41.0.2-1_all.deb
-	sha256sums = ad8d9f0a567762efc306aea4601f1cc152c0c28e6c9e8a7dcb00214d4162b0e7
+	depends = iceweasel>=42.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ms_42.0-1_all.deb
+	sha256sums = 2cd18c741457016714d50b54f452e27ad85fb3b7b1e3ec44b0bca4fb75c0a697
 
 pkgname = iceweasel-i18n-ms
 
