@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-zh-cn
 	pkgdesc = Chinese language pack for Iceweasel (Simplified)
-	pkgver = 41.0.2.deb1
+	pkgver = 42.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=41.0.2
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-zh-cn_41.0.2-1_all.deb
-	sha256sums = 84455c188369dc9186649e30b1f36d7a615f0947c16b3a3e24ef7faf8b0949b8
+	depends = iceweasel>=42.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-zh-cn_42.0-1_all.deb
+	sha256sums = be2cf5479a1013553b6f509e25d7fedb542ba415acd707deb05d92d8c7dcf126
 
 pkgname = iceweasel-i18n-zh-cn
 
