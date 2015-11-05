@@ -1,6 +1,6 @@
 pkgbase = syncthing-discosrv
 	pkgdesc = Discover server for the syncthing P2P synchronization utility
-	pkgver = 20150922.r47.2062f77
+	pkgver = 20151104.r48.9822396
 	pkgrel = 1
 	url = http://syncthing.net
 	install = syncthing-discosrv.install
