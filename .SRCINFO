@@ -1,13 +1,16 @@
 pkgbase = pacvcs
 	pkgdesc = Pacman VCS version checker
-	pkgver = 1.0489599
+	pkgver = 5.1c4c288
 	pkgrel = 1
 	url = https://github.com/pzl/pacvcs
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = bash
 	optdepends = git
 	optdepends = bzr
+	provides = pacvcs
+	conflicts = pacvcs
 	source = git+https://github.com/pzl/pacvcs.git
 	md5sums = SKIP
 	sha256sums = SKIP

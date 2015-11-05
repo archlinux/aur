@@ -1,13 +1,13 @@
 # Maintainer: pzl <alsoelp@gmail.com>
 
 pkgname=pacvcs
-pkgver=1.0489599
+pkgver=5.1c4c288
 pkgrel=1
 pkgdesc="Pacman VCS version checker"
 arch=('any')
 url="https://github.com/pzl/pacvcs"
 license=('MIT')
-depends=()
+depends=('bash')
 optdepends=('git' 'bzr')
 makedepends=('git')
 provides=("${pkgname}")
@@ -25,4 +25,5 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
     install -D -m755 "$pkgname" "${pkgdir}/usr/bin/$pkgname"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
