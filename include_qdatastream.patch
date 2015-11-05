@@ -1,0 +1,12 @@
+diff --git a/src/qtsingleapplication/src/qtlocalpeer.cpp b/src/qtsingleapplication/src/qtlocalpeer.cpp
+index 332b064..2de5ce2 100644
+--- a/src/qtsingleapplication/src/qtlocalpeer.cpp
++++ b/src/qtsingleapplication/src/qtlocalpeer.cpp
+@@ -40,6 +40,7 @@
+ 
+ 
+ #include "qtlocalpeer.h"
++#include <qdatastream.h>
+ #include <QCoreApplication>
+ #include <QTime>
+ 
