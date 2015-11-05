@@ -1,6 +1,6 @@
 pkgname=pwauth
 pkgver=2.3.11
-pkgrel=3
+pkgrel=4
 pkgdesc="An authenticator designed to be used for web authentication"
 url="http://code.google.com/p/pwauth/"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ source=("http://pwauth.googlecode.com/files/$pkgname-$pkgver.tar.gz"
         "LICENSE")
 md5sums=('2b7812724653bb0d238c1e0dfd5affdf'
          'be1bdc32c7f3b8fce10ff23bb0731326'
-         'd2b3fec58a40b2c7da62bc8e8893c4f7'
+         '850e3b228c00102bc88ef56722520bf9'
          'ba32eb75e91477479ae6eba0bb5c40d0')
 
 build() {
