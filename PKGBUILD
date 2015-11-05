@@ -8,16 +8,17 @@ pkgname=chromium-wayland
 _pkgname=chromium
 pkgver=45.0.2454.37
 _wayland_release="Trask"
-pkgrel=1
+pkgrel=2
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
-url="http://www.chromium.org/"
+url="http://github.com/01org/ozone-wayland/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'bzip2' 'libevent' 'icu' 'libgcrypt'
+depends=('nss' 'alsa-lib' 'bzip2' 'libevent' 'icu' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'flac' 'snappy' 'pciutils'
          'harfbuzz' 'libsecret' 'libvpx-git' 'perl' 'perl-file-basedir'
-         'desktop-file-utils' 'libxslt' 'hicolor-icon-theme' 'libxkbcommon')
+         'desktop-file-utils' 'libxslt' 'hicolor-icon-theme' 'libxkbcommon'
+         'gtk2' 'libexif')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
@@ -32,13 +33,15 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         nacl_posix_source.patch
-        posix_macro.patch)
+        posix_macro.patch
+        chromium-widevine.patch)
 sha256sums=('869adfc21a22d6a677d4bef381ed79aa2ed10acdc300a87dab704c9477f773ed'
             'SKIP'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '17e656549a82b782fe809c4e2a19fbaf564a45b30cec07b1a1d6a08eb0739675'
-            '599f5ef7d98f42fdc877bf2fa82e828ed718c38f87c08b361e76f376bd5145c8')
+            '599f5ef7d98f42fdc877bf2fa82e828ed718c38f87c08b361e76f376bd5145c8'
+            '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -59,6 +62,14 @@ fi
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
+
+  # Enable support for the Widevine CDM plugin
+  # The actual libraries are not included, but can be copied over from Chrome:
+  #   libwidevinecdmadapter.so
+  #   libwidevinecdm.so
+  # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
+  sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
+    patch -Np1
 
   # Remove bundled ICU; its header files appear to get picked up instead of
   # the system ones, leading to errors during the final link stage.
