@@ -2,7 +2,7 @@
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=gitkraken
-pkgrel=1
+pkgrel=2
 pkgver=0.2.13
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
