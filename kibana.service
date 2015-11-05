@@ -4,8 +4,9 @@ After=elasticsearch.service
 
 [Service]
 User=nobody
-Environment="CONFIG_PATH=/etc/elasticsearch/kibana/kibana.yml" "NODE_ENV=production"
-ExecStart=/usr/bin/node /usr/lib/kibana/bin/kibana.js --quiet
+Group=elasticsearch
+Environment="NODE_ENV=production" "BABEL_CACHE_PATH=/tmp/kibana-babel-cache"
+ExecStart=/usr/bin/node /usr/lib/kibana/src/cli --quiet --config=/etc/elasticsearch/kibana/kibana.yml
 
 [Install]
 WantedBy=multi-user.target
