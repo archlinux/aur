@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='https://pypi.python.org/pypi/unpaddedbase64/'
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/matrix-org/python-unpaddedbase64/archive/v${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('598c04aad0efde06d3f0cfc5cef34263')
 
 prepare() {
 	cp -a "python-unpaddedbase64-${pkgver}"{,-python2}
