@@ -1,4 +1,6 @@
 # Maintainer: Michael Lass <bevan@bi-co.net>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Contributor: reflexing <reflexing@reflexing.ru>
 
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
@@ -47,7 +49,6 @@
 # You need the files listed in the source=() array. Place them in the same
 # directory as this PKGBUILD file, then run makepkg.
 
-
 pkgname=ttf-ms-win10
 pkgver=10.0.10240
 pkgrel=2
@@ -58,7 +59,7 @@ license=(custom)
 depends=(fontconfig xorg-fonts-encodings xorg-mkfontscale xorg-mkfontdir)
 provides=(ttf-font ttf-tahoma ttf-{ms,vista,win7}-fonts ttf-ms-win8{,-arabic,-hebrew,-indic,-japanese,-korean,-other,-sea,-thai,-zh_cn,-zh_tw})
 conflicts=(ttf-tahoma ttf-{ms,vista,win7}-fonts ttf-ms-win8{,-arabic,-hebrew,-indic,-japanese,-korean,-other,-sea,-thai,-zh_cn,-zh_tw})
-install="${pkgname}.install"
+install=$pkgname.install
 
 _fonts=(arialbd.ttf
         arialbi.ttf
@@ -200,16 +201,6 @@ _fonts=(arialbd.ttf
 
 source=(${_fonts[@]} license.rtf)
 
-package() {
-    mkdir -p "$pkgdir/usr/share/fonts/TTF"
-
-    for font in ${_fonts[@]}; do
-        install -m644 $font "$pkgdir/usr/share/fonts/TTF"
-    done
-
-    install -Dm644 license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
-}
-
 sha256sums=('61daedc4107c937e66911b8184688601ac70f9c27f19d069c3b38f892fa314e4'
             '3e1b042729be1d73f6c4071482b06c0ff16a031d5f9ebda861fe5e3d1293573a'
             '7645ce18dc998e1280590f2ecce73d5ea0f4944229d4595a38b699ee88f4f102'
@@ -347,5 +338,15 @@ sha256sums=('61daedc4107c937e66911b8184688601ac70f9c27f19d069c3b38f892fa314e4'
             '1d3848165ad00b4d9be26c69186a405cb4cc9a372d51cc74f76abf7afc705a57'
             '324452829ee14f4c4500653923835ac3de7758f336ed3bf1142522bfede688d3'
             SKIP)
+
+package() {
+    mkdir -p "$pkgdir/usr/share/fonts/TTF"
+
+    for font in ${_fonts[@]}; do
+        install -m644 $font "$pkgdir/usr/share/fonts/TTF"
+    done
+
+    install -Dm644 license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
+}
 
 # vim: ts=4 sw=4 et
