@@ -1,7 +1,7 @@
 pkgbase = foldingathome
 	pkgdesc = Folding@Home is a distributed computing project which studies protein folding, misfolding, aggregation, and related diseases.
 	pkgver = 7.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://folding.stanford.edu/
 	install = foldingathome.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = foldingathome
 	license = CUSTOM
 	depends = glibc
 	optdepends = opencl-nvidia: for folding with an nVidia GPU
+	optdepends = opencl-mesa: for folding with an AMD GPU
 	conflicts = foldingathome-v7
 	replaces = foldingathome-v7
 
