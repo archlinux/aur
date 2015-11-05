@@ -3,7 +3,7 @@
 pkgname=ipe
 _dirver=7.1
 pkgver=7.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible drawing editor"
 url="http://tclab.kaist.ac.kr/ipe/"
 depends=('lua52' 'qt5-base' 'freetype2' 'zlib' 'poppler' 'python2')
@@ -11,7 +11,8 @@ arch=('i686' 'x86_64')
 license=("GPL")
 conflicts=('ipe')
 ipepresenter_version_=5c5b7b225081
-source=("https://github.com/otfried/ipe/blob/master/releases/$_dirver/$pkgname-$pkgver-src.tar.gz?raw=true"
+
+source=("https://dl.bintray.com/otfried/generic/$pkgname/$_dirver/$pkgname-$pkgver-src.tar.gz"
         "http://hg.mrzv.org/IpePresenter/archive/$ipepresenter_version_.tar.gz"
         "ipe.bash-completion"
         "config.patch"
