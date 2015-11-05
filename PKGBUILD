@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=smart-units
-pkgver=0.01
+pkgver=0.02
 pkgrel=1
 pkgdesc="A pretty clever command-line units converter. (written in Sidef)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPLv3')
 depends=('sidef')
 
 source="https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz"
-sha256sums=('8c52d8acb1e93c82a00beab9f094dfc04b421ce71b06acf4e34ee29a8a0f2174')
+sha256sums=('1b6083dea1319f50b40345afcee84315f6531c15fcd9f9ce0186e014ae428598')
 
 package() {
   cd "$pkgname-$pkgver"
