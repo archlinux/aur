@@ -1,0 +1,29 @@
+pkgbase = ros-jade-usb-cam
+	pkgdesc = ROS - A ROS Driver for V4L USB Cameras.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://wiki.ros.org/usb_cam
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-image-transport
+	makedepends = ros-jade-camera-info-manager
+	makedepends = ffmpeg
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-std-msgs
+	depends = ros-jade-roscpp
+	depends = ros-jade-camera-info-manager
+	depends = ros-jade-image-transport
+	depends = v4l-utils
+	depends = ffmpeg
+	source = usb_cam::git+https://github.com/bosch-ros-pkg-release/usb_cam-release.git#tag=release/jade/usb_cam/0.3.4-0
+	md5sums = SKIP
+
+pkgname = ros-jade-usb-cam
+
