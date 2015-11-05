@@ -2,11 +2,11 @@
 
 pkgname=stremio-bin
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch instantly all the video content you enjoy in one place."
 arch=('x86_64')
 url="https://strem.io"
-depends=('ffmpeg')
+depends=('ffmpeg' 'gconf')
 license=('custom')
 install=stremio.install
 source=("https://strem.io/Stremio${pkgver}.linux.tar.gz"
