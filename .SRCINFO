@@ -1,15 +1,15 @@
 pkgbase = toggl-bin
 	pkgdesc = Free Time Tracking Software which is insanely easy to use. (Unofficial Binary)
-	pkgver = 7.2.66
+	pkgver = 7.3.119
 	pkgrel = 7
 	url = https://toggl.com
 	install = toggl-bin.install
 	arch = x86_64
 	license = BSD
-	source = https://assets.toggl.com/installers//toggldesktop_x86_64-7_2_66-2015-04-28-10-25-02.tar.gz
+	source = https://github.com/toggl/toggldesktop/releases/download/v7.3.119/toggldesktop_linux_x86_64-7_3_119.tar.gz
 	source = toggl.desktop
-	md5sums = 355d9623b09fdc5773199927021e45a4
-	md5sums = e94844089a6c2b911c6286b7a1f1f519
+	md5sums = a2c67ea94acb1d0f386eb8af0421c97e
+	md5sums = 8c12ccdabee1dac4d6bec24cc5b9f5d5
 
 pkgname = toggl-bin
 
