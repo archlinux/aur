@@ -20,8 +20,12 @@ optdepends=("letsencrypt-apache: Apache plugin for Let’s Encrypt client"
 # To be precise: This package, letsencrypt-nginx, letsencrypt-apache and python2-acme shell all be at
 # the same version, though for easier package management, it is omitted in this PKGBUILD
 conflicts=("${pkgname}-git")
-source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('41f2b5d8a99f19a46a98f1cd2f574e84')
+source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc})
+# Refer to the following ArchWiki entry for detailed information about gpg signature verification
+# https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
+validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C')
+md5sums=('41f2b5d8a99f19a46a98f1cd2f574e84'
+		 'SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
