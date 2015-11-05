@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libbluray
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Library to access Blu-Ray disks for video playback (mingw-w64)'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 #optdepends=('java-environment: for BD-J library')
 source=(ftp://ftp.videolan.org/pub/videolan/libbluray/$pkgver/libbluray-$pkgver.tar.bz2
         'configure.patch')
-md5sums=('a4e8077b9fd82349c767cef2ba9bd750'
+md5sums=('9c1693c22c2b0c8cad29ec6dd97518bc'
          '422ace4c396c294c851368f64d719755')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

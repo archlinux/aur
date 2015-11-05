@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libbluray
 	pkgdesc = Library to access Blu-Ray disks for video playback (mingw-w64)
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = http://www.videolan.org/developers/libbluray.html
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = mingw-w64-libbluray
 	options = !buildflags
 	options = !libtool
 	options = staticlibs
-	source = ftp://ftp.videolan.org/pub/videolan/libbluray/0.9.0/libbluray-0.9.0.tar.bz2
+	source = ftp://ftp.videolan.org/pub/videolan/libbluray/0.9.1/libbluray-0.9.1.tar.bz2
 	source = configure.patch
-	md5sums = a4e8077b9fd82349c767cef2ba9bd750
+	md5sums = 9c1693c22c2b0c8cad29ec6dd97518bc
 	md5sums = 422ace4c396c294c851368f64d719755
 
 pkgname = mingw-w64-libbluray
