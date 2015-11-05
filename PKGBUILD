@@ -16,6 +16,7 @@ optdepends=('plasma-workspace-wallpapers: additional wallpapers')
 conflicts=(plasma-workspace drkonqi kdebase-workspace)
 provides=(plasma-workspace drkonqi)
 source=('git://anongit.kde.org/plasma-workspace.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
