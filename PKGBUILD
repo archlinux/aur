@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-beta
 pkgver=1.0.303.52
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (beta)'
 url="https://vivaldi.com"
 install=vivaldi.install
@@ -15,6 +15,7 @@ optdepends=(
     'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
     'google-chrome: Widevine DRM Plugin'
 )
+conflicts=('vivaldi')
 source=('vivaldi-ffmpeg-codecs.patch')
 source_i686=("https://vivaldi.com/download/vivaldi-beta-${pkgver}-2.i386.rpm")
 source_x86_64=("https://vivaldi.com/download/vivaldi-beta-${pkgver}-2.x86_64.rpm")

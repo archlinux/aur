@@ -1,7 +1,7 @@
 pkgbase = vivaldi-beta
 	pkgdesc = An advanced browser made with the power user in mind. (beta)
 	pkgver = 1.0.303.52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vivaldi.com
 	install = vivaldi.install
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = vivaldi-beta
 	depends = alsa-lib
 	optdepends = vivaldi-ffmpeg-codecs: playback of proprietary video/audio
 	optdepends = google-chrome: Widevine DRM Plugin
+	conflicts = vivaldi
 	options = !strip
 	options = !zipman
 	source = vivaldi-ffmpeg-codecs.patch
