@@ -1,0 +1,12 @@
+pkgbase = denix-grub2-theme
+	pkgdesc = DeniX grub2 theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/denix666/denix-grub2-theme
+	arch = any
+	license = GPL
+	source = git+https://github.com/denix666/denix-grub2-theme.git
+	md5sums = SKIP
+
+pkgname = denix-grub2-theme
+
