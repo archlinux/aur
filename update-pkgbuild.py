@@ -103,6 +103,8 @@ sha256sums_armv6h=('%(sha256_armv6h)s'
 
 source_arm=(${source_armv6h[@]})
 sha256sums_arm=(${sha256sums_armv6h[@]})
+source_armv7h=(${source_armv6h[@]})
+sha256sums_armv7h=(${sha256sums_armv6h[@]})
 
 package() {
     mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
