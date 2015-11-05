@@ -1,6 +1,6 @@
 pkgbase = plantuml
 	pkgdesc = Component that allows to quickly write uml diagrams
-	pkgver = 8031
+	pkgver = 8032
 	pkgrel = 1
 	url = http://plantuml.com/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = plantuml
 	makedepends = java-environment
 	depends = java-runtime
 	depends = graphviz
-	source = http://downloads.sourceforge.net/project/plantuml/plantuml-8031.tar.gz
+	source = http://downloads.sourceforge.net/project/plantuml/plantuml-8032.tar.gz
 	source = plantuml.run
-	sha256sums = be57ee4c181331f93452576aac076fe0fea51b414f69b8ddac9e7a9636236b07
+	sha256sums = 1f634f06d94655188cdfd4bd38761d1cf6d618eefd71a215b20512152290979b
 	sha256sums = dff39e4d8dd8eedb58c1b0a0cf64ab2c404b713e3a42fa5fdf0b6792ca382ed5
 
 pkgname = plantuml
