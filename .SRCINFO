@@ -1,0 +1,18 @@
+pkgbase = amule-remote-git
+	pkgdesc = An eMule-like client for the eD2k and Kademlia p2p networks (remote GUI only, development version)
+	pkgver = master
+	pkgrel = 1
+	url = http://www.amule.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = geoip
+	depends = geoip-database
+	depends = wxgtk>=2.8
+	conflicts = amule
+	source = git+git://repo.or.cz/amule.git
+	md5sums = SKIP
+
+pkgname = amule-remote-git
+
