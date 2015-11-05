@@ -1,0 +1,14 @@
+pkgbase = dextra
+	pkgdesc = A tool for DEX and OAT dumping, decompilation, and fuzzing
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://newandroidbook.com/tools/dextra.html
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = unknown
+	source = http://newandroidbook.com/files/dextra017.tar
+	md5sums = b2bfeef80e28215d7c8faa941df866ab
+
+pkgname = dextra
+
