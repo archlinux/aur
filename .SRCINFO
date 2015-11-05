@@ -1,6 +1,6 @@
 pkgbase = vdirsyncer
 	pkgdesc = Synchronize CalDAV and CardDAV.
-	pkgver = 0.7.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://vdirsyncer.readthedocs.org/
 	arch = any
@@ -18,8 +18,9 @@ pkgbase = vdirsyncer
 	depends = python-atomicwrites
 	depends = python-click-threading
 	depends = python-click-log
-	source = https://pypi.python.org/packages/source/v/vdirsyncer/vdirsyncer-0.7.0.tar.gz
-	md5sums = 509e3e9258ad4e25aa14dab1f5a6c268
+	depends = python-requests-oauthlib
+	source = https://pypi.python.org/packages/source/v/vdirsyncer/vdirsyncer-0.7.2.tar.gz
+	md5sums = ef6547f6a1c2533ffe5ac7abe64af796
 
 pkgname = vdirsyncer
 
