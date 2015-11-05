@@ -48,7 +48,7 @@ else
 pkgname="${_pyver}-${_pybase}-git"
 _pyverother='python'
 fi
-pkgver=1.9.2.r2966.gc601320
+pkgver=1.9.5.r3007.g7e1e980
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -75,10 +75,11 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
   "${_pyver}-guzzle-sphinx-theme"{">=0.7.10","<0.8"}
 )
+depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7035649165a758898698eea591c495c7c3a0b868eda3898604b0d8e2dc38d735')
+sha256sums=('2e2946c7c30d93159dfa3bd8c7be533cdbd28681c7bafc8afb66753135a87e0d')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
@@ -120,7 +121,7 @@ package() {
   provides=("${_pybase//-/}=${pkgver%%.r*}" "${_vcsprovides[@]}")
   conflicts=("${_pyverother}-aws-cli" "${_pyver}-aws-cli" "${_pybase//-/}" "${_vcsconflicts[@]}")
   set -u
-  depends=("${_pyver}" "${_pydepends[@]}")
+  #depends=("${_pyver}" "${_pydepends[@]}")
   #replaces=("${_pyver}-aws-cli" "${_pybase//-/}")
 
   cd "${_srcdir}"
