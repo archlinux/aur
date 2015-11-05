@@ -1,7 +1,7 @@
 pkgbase = deis-client
 	pkgdesc = Command line interface client for Deis, an open source PaaS that makes it easy to deploy and manage applications on your own servers.
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://deis.io/
 	arch = x86_64
 	arch = i686
