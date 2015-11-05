@@ -1,8 +1,9 @@
 pkgbase = germinal
 	pkgdesc = Minimalist terminal emulator based on vte and tmux
 	pkgver = 14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Keruspe/Germinal
+	install = germinal.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
