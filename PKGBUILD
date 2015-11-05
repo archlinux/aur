@@ -1,7 +1,7 @@
 pkgname=telegram-desktop
-pkgver=0.9.6
+pkgver=0.9.10
 pkgrel=1
-_qtver=5.5.0
+_qtver=5.5.1
 pkgdesc='Official desktop version of Telegram messaging app.'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -9,13 +9,15 @@ license=('GPL3')
 depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 	 'libinput' 'libproxy' 'mtdev' 'openal' 'desktop-file-utils'
 	 'gtk-update-icon-cache')
-makedepends=('patch' 'libunity' 'libappindicator-gtk2' 'xorg-server-xvfb')
+makedepends=('patch' 'libunity' 'libappindicator-gtk2')
 source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
-	"http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.gz"
+	"http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.xz"
+	"fix-genlang.diff"
 	"telegramdesktop.desktop"
 	"tg.protocol")
 sha256sums=('SKIP'
-	    'bf3cfc54696fe7d77f2cf33ade46c2cc28841389e22a72f77bae606622998e82'
+	    '6f028e63d4992be2b4a5526f2ef3bfa2fe28c5c757554b11d9e8d86189652518'
+	    '6f3bb20460bb5d8d7e60008df75fa79f1bdd8569ff90140c39c76f9e28d0933d'
 	    '0e936f964fbaa7392a0c58aa919d6ea8c5f931472e1ab59b437523aa1a1d585c'
 	    'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb')
 install="$pkgname.install"
@@ -27,10 +29,13 @@ prepare() {
 	if ! [ -d "$srcdir/Libraries" ]; then
 		mkdir "$srcdir/Libraries"
 		mv "$srcdir/qt-everywhere-opensource-src-$_qtver" "$srcdir/Libraries/QtStatic"
-		cp "$srcdir/tdesktop/Telegram/_qt_${_qtver//./_}_patch.diff" "$srcdir/Libraries/QtStatic"
-		cd "$srcdir/Libraries/QtStatic"
-		patch -p1 -i "_qt_${_qtver//./_}_patch.diff"
+		cd "$srcdir/Libraries/QtStatic/qtbase"
+		patch -p1 -i "$srcdir/tdesktop/Telegram/_qtbase_${_qtver//./_}_patch.diff"
 	fi
+	
+	# Fix langs
+	cd "$srcdir/tdesktop"
+	patch -p1 -i "$srcdir/fix-genlang.diff"
 	
 	sed -i 's/CUSTOM_API_ID//g' "$srcdir/tdesktop/Telegram/Telegram.pro"
 	sed -i 's,LIBS += /usr/local/lib/libxkbcommon.a,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
@@ -50,9 +55,12 @@ prepare() {
 build() {
 	# Build patched Qt
 	cd "$srcdir/Libraries/QtStatic"
-	./configure -prefix "$srcdir/qt" -release -opensource -confirm-license -qt-xcb -no-opengl -static -nomake examples -nomake tests -skip qtquick1 -skip qtdeclarative
-	make module-qtbase module-qtimageformats
-	make module-qtbase-install_subtargets module-qtimageformats-install_subtargets
+	./configure -prefix "$srcdir/qt" -release -opensource -confirm-license -qt-zlib \
+	            -qt-libpng -qt-libjpeg -qt-freetype -qt-harfbuzz -qt-pcre -qt-xcb \
+	            -qt-xkbcommon-x11 -static -nomake examples -nomake tests
+	# Removed from Telegram Desktop build instructions: -no-opengl
+	make
+	make install
 	
 	export PATH="$srcdir/qt/bin:$PATH"
 	
@@ -74,10 +82,10 @@ build() {
 	
 	qmake CONFIG+=release "../../Telegram/Telegram.pro"
 	local pattern="^PRE_TARGETDEPS +\?="
-	grep "$pattern" "$srcdir/tdesktop/Telegram/Telegram.pro" | sed "s/$pattern//g" | xargs xvfb-run -a make
+	grep "$pattern" "$srcdir/tdesktop/Telegram/Telegram.pro" | sed "s/$pattern//g" | xargs make
 	
 	qmake CONFIG+=release "../../Telegram/Telegram.pro"
-	xvfb-run -a make
+	make
 }
 
 package() {
