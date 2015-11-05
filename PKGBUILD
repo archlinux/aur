@@ -1,5 +1,5 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
-# % Trigger: 1440170744 %
+# % Trigger: 1440186708 %
 
 pkgname=fskit-git
 pkgver=r259.2583ba1
@@ -32,8 +32,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make INCLUDEDIR="${pkgdir}/usr/include" \
-	     LIBDIR="${pkgdir}/usr/lib" \
-	     PKGCONFIGDIR="${pkgdir}/usr/lib/pkgconfig" \
-	     install
+	make DESTDIR="${pkgdir}" PREFIX='/usr' INCLUDE_PREFIX='/usr' install
 }
