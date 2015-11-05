@@ -3,7 +3,7 @@
 pkgname=vscode-bin
 pkgdesc='Visual Studio Code for Linux'
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('custom')
@@ -11,10 +11,14 @@ makedepends=()
 depends=('gtk2' 'gconf')
 
 _src_base="https://az764295.vo.msecnd.net/public/${pkgver}"
-source_i686=("${_src_base}/VSCode-linux32.zip")
-source_x86_64=("${_src_base}/VSCode-linux64.zip")
-sha1sums_i686=('c7149d3d2e451b622f223dba43a4c1a9ff46ecca')
-sha1sums_x86_64=('a872a9e6c1eacd8fe3d4c4010f977cde1e24efa5')
+source_i686=("${_src_base}/VSCode-linux32.zip"
+             'vscode.desktop')
+source_x86_64=("${_src_base}/VSCode-linux64.zip"
+               'vscode.desktop')
+sha1sums_i686=('c7149d3d2e451b622f223dba43a4c1a9ff46ecca'
+               '71efff6181d2bba05376ce7401801671e6a58752')
+sha1sums_x86_64=('a872a9e6c1eacd8fe3d4c4010f977cde1e24efa5'
+                 '71efff6181d2bba05376ce7401801671e6a58752')
 
 package() {
     _dirname=INVALID
@@ -30,6 +34,10 @@ package() {
     # Include symlink in system bin directory
     install -m 0755 -d "${pkgdir}/usr/bin"
     ln -s /opt/VSCode/Code "${pkgdir}/usr/bin/vscode"
+
+    # Add .desktop file
+    install -D -m644 "${srcdir}/vscode.desktop" \
+            "${pkgdir}/usr/share/applications/vscode.desktop"
 
     # Install license file
     install -D -m644 "${srcdir}/${_dirname}/resources/app/license.txt" \
