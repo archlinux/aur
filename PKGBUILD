@@ -11,11 +11,11 @@ depends=('gksu'
 		 'tk'
 		 'libva-vdpau-driver'
 		 'python-pyqt4')
-package=(
+package()
 {
-	cd "$srcdir/$pkgname-$pkgver"
-	cp -r * $pkgdir
-})
+	cd "$srcdir"
+	cp -r usr $pkgdir
+}
 source=($pkgname-$pkgver.tar.gz)
 md5sums=('8297da64e39b566fc18282982c8c4db3')
 
