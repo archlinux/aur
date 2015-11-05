@@ -9,9 +9,10 @@ pkgdesc="Record what's happening on your desktop"
 arch=('i686' 'x86_64')
 url="http://git.gnome.org/browse/byzanz/"
 license=('GPL')
-depends=('gtk3' 'gst-plugins-base')
+depends=('gtk3' 'gst-plugins-base' 'gst-plugins-good')
 makedepends=('git' 'gnome-common' 'gnome-panel' 'intltool')
-optdepends=('gnome-panel: panel applet')
+optdepends=('gnome-panel: panel applet'
+            'gst-libav: save into FLV format')
 install=$pkgname.install
 source=(git://git.gnome.org/byzanz#commit=78fb3de3
         0001-Port-to-libpanel-applet-5.patch

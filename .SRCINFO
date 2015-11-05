@@ -13,7 +13,9 @@ pkgbase = byzanz
 	makedepends = intltool
 	depends = gtk3
 	depends = gst-plugins-base
+	depends = gst-plugins-good
 	optdepends = gnome-panel: panel applet
+	optdepends = gst-libav: save into FLV format
 	source = git://git.gnome.org/byzanz#commit=78fb3de3
 	source = 0001-Port-to-libpanel-applet-5.patch
 	source = flv-audio.patch
