@@ -2,9 +2,9 @@
 
 pkgname=filebeat-bin
 _pkgbase=${pkgname%%-bin}
-pkgver=1.0.0_beta4
+pkgver=1.0.0_rc1
 _pkgver=${pkgver/_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources (precompiled)'
 arch=('i686' 'x86_64')
 url="https://www.elastic.co/products/beats"
@@ -19,8 +19,8 @@ sha256sums=('9985f8e0441efde0e60c5efe97890e46d4f1cbd118d8722eb478be876197326a')
 
 source_i686=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$_pkgver-i686.tar.gz")
 source_x86_64=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$_pkgver-x86_64.tar.gz")
-sha256sums_i686=('35fdb23034fec5261cea2e30adf819bdfb0e700396ec15022db56fedc079aff3')
-sha256sums_x86_64=('9fec521157fe6cf8b1f9d6ce4e142521a742b7fe2c585d5ae14ba21b67604235')
+sha256sums_i686=('4135ff126936589f1f2962cff42888dfca76d69e8cf57e001a34fb7b40f9398e')
+sha256sums_x86_64=('57f25959e0849e8257acc2eacb4c56aa997d07b4e4d04b86eaf12d20803c75f4')
 
 prepare() {
     cd "$_pkgbase-$_pkgver-$CARCH"
