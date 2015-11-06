@@ -3,14 +3,17 @@
 # Contributor: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=cockpit-git
-pkgver=0.38.r33.g27888f6
+pkgver=0.83.r7.ge9a7f3f
 pkgrel=1
 pkgdesc='A systemd web based user interface for Linux servers'
 arch=(i686 x86_64)
 url='http://www.cockpit-project.org/'
 license=(GPL2)
-depends=(libssh krb5 sshpass accountsservice perl-json udisks2 json-glib libgsystem perl-locale-po networkmanager pcp)
-makedepends=(jsl git intltool python2-pyscss gtk-doc perl-javascript-minifier-xs gobject-introspection storaged xmlto nodejs)
+backup=(etc/pam.d/cockpit)
+provides=(cockpit)
+depends=(libssh krb5 sshpass accountsservice perl-json perl-locale-po json-glib pcp glib-networking)
+makedepends=(git intltool python2-pyscss gtk-doc perl-javascript-minifier-xs gobject-introspection networkmanager libgsystem xmlto npm)
+optdepends=(storaged udisks2 networkmanager)
 source=(git://github.com/cockpit-project/cockpit
         cockpit.pam)
 sha1sums=('SKIP'
@@ -29,9 +32,6 @@ prepare() {
 build() {
   cd cockpit
 
-  # Build failed with --as-needed
-  export LDFLAGS="${LDFLAGS//,--as-needed}"
-
   ./autogen.sh
   ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
   make
@@ -39,9 +39,7 @@ build() {
 
 check() {
   cd cockpit
-
-#  some D-Bus related failures
-#  make check
+  make check
 }
 
 package() {
@@ -49,5 +47,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # Overwrite cockpit pam file with ArchLinux supported pam file
-  cp "$srcdir"/cockpit.pam "$pkgdir"/etc/pam
+  install -Dm644 "$srcdir"/cockpit.pam "$pkgdir"/etc/pam.d/cockpit
 }
