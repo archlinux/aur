@@ -1,0 +1,21 @@
+pkgbase = git-dpm
+	pkgdesc = debian source package and patch management with git
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://git-dpm.alioth.debian.org/
+	arch = any
+	license = GPL2
+	makedepends = ghostscript
+	depends = dpkg
+	depends = git
+	optdepends = devscripts: for enhanced debian development workflow support
+	optdepends = bzip2: for bzip2 support
+	optdepends = xz: for xz support
+	optdepends = sensible-utils: sensible alternative selection support
+	optdepends = pristine-tar: for re-generating upstream tarballs out of git
+	optdepends = sharutils: for generating shell archives support
+	source = http://httpredir.debian.org/debian/pool/main/g/git-dpm/git-dpm_0.9.1.orig.tar.gz
+	sha256sums = 66063ef7d83b9b865db1547f9dc1c6e96080d1d116d1b2abefdd074d9bbc9fc4
+
+pkgname = git-dpm
+
