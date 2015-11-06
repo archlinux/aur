@@ -1,8 +1,8 @@
 diff --git a/configure b/configure
-index 1582758..ee9af70 100755
+index 573677a..a19c050 100755
 --- a/configure
 +++ b/configure
-@@ -16720,7 +16720,7 @@ _ACEOF
+@@ -18435,7 +18435,7 @@ _ACEOF
  	*) test -f "$ac_im_incroot/X11/Xos.h" && ac_x_includes=$ac_im_incroot;;
      esac
      case $ac_im_usrlibdir in
@@ -11,7 +11,7 @@ index 1582758..ee9af70 100755
  	*) test -d "$ac_im_usrlibdir" && ac_x_libraries=$ac_im_usrlibdir ;;
      esac
    fi
-@@ -21493,7 +21493,7 @@ fi
+@@ -23366,7 +23366,7 @@ fi
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -21,10 +21,10 @@ index 1582758..ee9af70 100755
    ALTERNATE_DOCDIR_TRUE=
    ALTERNATE_DOCDIR_FALSE='#'
 diff --git a/configure.ac b/configure.ac
-index 59f03b6..f0b043d 100644
+index b2bc09e..38bdcab 100755
 --- a/configure.ac
 +++ b/configure.ac
-@@ -2257,12 +2257,7 @@ if test x"$enable_lame" != "xno" ; then
+@@ -2548,12 +2548,7 @@ if test x"$enable_lame" != "xno" ; then
  
  fi
  
@@ -37,8 +37,8 @@ index 59f03b6..f0b043d 100644
 +AM_CONDITIONAL(HAVE_FC_CACHE, false)
  
  if test x"$is_amigaos4" = "xyes"; then
-   if test x"$enable_sdlui" != "xyes"; then
-@@ -3729,7 +3724,7 @@ case "$host_os" in
+   if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
+@@ -4061,7 +4056,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -48,10 +48,10 @@ index 59f03b6..f0b043d 100644
      else
        VICEDIR="$PREFIX/lib/vice"
 diff --git a/configure.proto b/configure.proto
-index 59f03b6..f0b043d 100644
+index b2bc09e..38bdcab 100755
 --- a/configure.proto
 +++ b/configure.proto
-@@ -2257,12 +2257,7 @@ if test x"$enable_lame" != "xno" ; then
+@@ -2548,12 +2548,7 @@ if test x"$enable_lame" != "xno" ; then
  
  fi
  
@@ -64,8 +64,8 @@ index 59f03b6..f0b043d 100644
 +AM_CONDITIONAL(HAVE_FC_CACHE, false)
  
  if test x"$is_amigaos4" = "xyes"; then
-   if test x"$enable_sdlui" != "xyes"; then
-@@ -3729,7 +3724,7 @@ case "$host_os" in
+   if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
+@@ -4061,7 +4056,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
