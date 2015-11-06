@@ -1,4 +1,5 @@
-# Maintainer: Michel Blanc <mblanc@erasme.org>
+# Maintainer: Paul Nicholson <brenix@gmail.com>
+# Contributor: Michel Blanc <mblanc@erasme.org>
 # Contributor: Scott Hansen https://github.com/firecat53
 # Contributor: Buce <dmbuce@gmail.com>
 # Contributor: Bartłomiej Piotrowski <b@bpiotrowski.pl>
@@ -10,21 +11,15 @@
 # Contributor: Michael DeHaan <michael@ansible.com>
 
 pkgname=ansible-git
-pkgver=2.0.0.14080.ded6e9b
+pkgver=2.0.0.16937.5c7d717
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='http://www.ansible.com'
 license=('GPL3')
-depends=('python2'
-         'python2-jinja'
-         'python2-paramiko'
-         'python2-six'
-         'python2-yaml')
+depends=('python2' 'python2-yaml' 'python2-paramiko' 'python2-jinja' 'python2-six')
 makedepends=('git' 'asciidoc' 'fakeroot')
-optdepends=('python2-pyasn1: needed for accelerated mode'
-            'python2-crypto: needed for accelerated mode'
-            'python2-keyczar: needed for accelerated mode')
+optdepends=('python2-passlib: crypt values for vars_prompt')
 conflicts=('ansible')
 provides=('ansible')
 backup=('etc/ansible/ansible.cfg')
@@ -40,6 +35,7 @@ build() {
   cd $pkgname
   git submodule update --init --recursive
   make PYTHON=python2
+  make docs
 }
 
 package() {
