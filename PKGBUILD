@@ -1,6 +1,6 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=mail2rem-git
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="A script that searches *.ics in your mail and puts events to your Remind calendar"
 arch=('any')
@@ -34,6 +34,7 @@ build() {
   cd "$srcdir/$_gitname-build"
 
 }
+
 
 package() {
   cd "$srcdir/$_gitname-build"
