@@ -28,7 +28,7 @@ optdepends=('gstreamer0.10-ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation')
 _base_src="${_name}-${_version}.${_lang}.linux-${CARCH}"
-_base_url="https://ftp.mozilla.org/pub/mozilla.org/${_name}/${_channel}/latest-mozilla-central-l10n"
+_base_url="https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central-l10n/"
 _tarball="${_base_src}.tar.bz2"
 source=(
     "${_base_url}/${_tarball}"
@@ -45,7 +45,7 @@ install=$pkgname.install
 
 pkgver() {
   SRC_VER="${_name}-${_version}.en-US.linux-${CARCH}.txt"
-  curl -OR "https://ftp.mozilla.org/pub/mozilla.org/${_name}/${_channel}/latest-trunk/${SRC_VER}"
+  curl -OR "https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-trunk/${SRC_VER}"
   echo "${_version}.$(head -n1 ${SRC_VER} | cut -c -8)"
 }
 
