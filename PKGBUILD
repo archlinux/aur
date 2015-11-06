@@ -7,7 +7,7 @@ pkgdesc="ENIGMA, the Extensible Non-Interpreted Game Maker Augmentation."
 url="http://enigma-dev.org"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('alure' 'zlib' 'openal' 'libx11' 'libgl' 'mesa' 'gtk2' 'dumb' 'java-runtime' 'desktop-file-utils' \
+depends=('alure' 'zlib' 'openal' 'libx11' 'libgl' 'mesa' 'gtk2' 'dumb' 'java32-runtime' 'desktop-file-utils' \
   'hicolor-icon-theme')
 
 makedepends=('git' 'python')
@@ -15,7 +15,10 @@ conflicts=('lateralgm')
 provides=('lateralgm')
 install='enigma-dev-git.install'
 source=('lateralgm' 'lateralgm.desktop' 'git://github.com/enigma-dev/enigma-dev.git' 'http://enigma-dev.org/docs/wiki/images/4/47/Lateralgmlogo.png')
-md5sums=('b6eea00e8293de6307bc96a78956159f' '0eca65efd1ad5b863e22a284be894b59' 'SKIP' 'e6daacba04f0491b256f8a4d2cc9181a')
+md5sums=('111835b7a7706d338c3faa850bd927ef'
+         '0eca65efd1ad5b863e22a284be894b59'
+         'SKIP'
+         'e6daacba04f0491b256f8a4d2cc9181a')
 
 build() {
   cd "${srcdir}/enigma-dev"
@@ -57,4 +60,5 @@ package() {
   
 # remove some extra stuff to help reduce package size; more of this is may be possible.
   rm -rf "${pkgdir}/usr/share/${pkgname}/packages"
+  rm -rf "${pkgdir}/opt/${pkgname}/.git"
 }
