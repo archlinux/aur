@@ -25,7 +25,6 @@ package() {
   cp -R "${srcdir}"/pyfa/* "${pkgdir}"/usr/share/pyfa || return 1
   
   unzip -p "${srcdir}"/pyfa/imgs.zip  gui/pyfa64.png > "${pkgdir}"/usr/share/pixmaps/pyfa.png || return 1
-  install -m 644 "${srcdir}"/pyfa/icons/pyfa64.png "${pkgdir}"/usr/share/pixmaps/pyfa.png || return 1
   install -m 644 "${srcdir}"/pyfa.desktop "${pkgdir}"/usr/share/applications/pyfa.desktop || return 1
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
