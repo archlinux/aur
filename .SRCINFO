@@ -1,12 +1,13 @@
 pkgbase = nusmv
 	pkgdesc = A new symbolic model checker
 	pkgver = 2.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nusmv.irst.itc.it/NuSMV/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = ghostscript
+	makedepends = texlive-latexextra
 	depends = expat
 	optdepends = perl: for scripts in /usr/share/nusmv/contrib/
 	source = http://nusmv.fbk.eu/distrib/NuSMV-2.5.4.tar.gz

@@ -4,13 +4,13 @@
 pkgname=nusmv
 _pkgname=NuSMV
 pkgver=2.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A new symbolic model checker"
 arch=('i686' 'x86_64')
 url="http://nusmv.irst.itc.it/$_pkgname/"
 license=('LGPL2.1')
 depends=('expat')
-makedepends=('ghostscript')
+makedepends=('ghostscript' 'texlive-latexextra')
 optdepends=('perl: for scripts in /usr/share/nusmv/contrib/')
 source=("http://nusmv.fbk.eu/distrib/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('3c250624cba801b1f62f50733f9507b0f3b3ca557ce1cd65956178eb273f1bdf')
