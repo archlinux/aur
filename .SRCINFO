@@ -1,0 +1,29 @@
+pkgbase = yotta
+	pkgdesc = Tool for managing reusable components for C/C++ by mbed
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://yottadocs.mbed.com/
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-pip
+	depends = python-semantic-version
+	depends = python-requests
+	depends = python-github
+	depends = python-colorama
+	depends = python-hgapi
+	depends = python-jinja
+	depends = python-cryptography
+	depends = python-jwt
+	depends = python-jsonschema
+	depends = python-argcomplete
+	depends = mbed-test-wrapper
+	depends = valinor
+	depends = python-intelhex
+	depends = python-jsonpointer
+	depends = python-ndg-httpsclient
+	source = https://github.com/ARMmbed/yotta/archive/v0.9.2.tar.gz
+	sha512sums = 52262ece8a314ef57ce5e3b99d0c74a00c15e1b5c5d0a6e9f2cac5177f498629ab776ceb0d737df6558b090175272a30632776d93938d5609fb7dbfd427d8c76
+
+pkgname = yotta
+
