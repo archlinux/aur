@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-thenewsroom
 	pkgdesc = Fortune quotes from The Newsroom
-	pkgver = 1508012121
+	pkgver = 1510301724
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/The_Newsroom
 	arch = any
