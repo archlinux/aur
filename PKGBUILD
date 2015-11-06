@@ -2,15 +2,15 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=1.15.0
-pkgrel=2
-everelname="vanguard"
+pkgver=1.16.1
+pkgrel=1
+everelname="parallax"
 everelver=1.0
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
 url="http://github.com/DarkFenX/Pyfa"
 license=('GPL')
-depends=('python2' 'wxpython2.8' 'python2-sqlalchemy' 'python2-dateutil')
+depends=('python2' 'wxpython' 'python2-sqlalchemy' 'python2-dateutil' 'python2-requests' 'python2-urllib3')
 optdepends=('python2-matplotlib: for graph plotting'
         'python2-numpy: for graph plotting')
 source=(https://github.com/DarkFenX/Pyfa/releases/download/v$pkgver/pyfa-$pkgver-$everelname-$everelver-linux.zip pyfa.desktop pyfa-start.sh)
@@ -28,6 +28,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
-md5sums=('196a1e680697efd5440bcfafd517c3f9'
+md5sums=('cba119b4ead24c26ab6cd016479fe858'
          'a6f1cef5a9fcc5dfd6c5ecdddf2c5e38'
          '9937192cfce7f5e16e9cf26086f1899c')
