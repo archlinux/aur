@@ -1,4 +1,4 @@
-pkgbase = squishyball-svn
+pkgbase = squishyball
 	pkgdesc = Perform sample comparison testing on the command line
 	pkgver = 20140210.19518
 	pkgrel = 1
@@ -12,10 +12,8 @@ pkgbase = squishyball-svn
 	depends = libvorbis
 	depends = flac
 	depends = libao
-	provides = squishyball
-	conflicts = squishyball
 	source = svn+https://svn.xiph.org/trunk/squishyball/
 	sha1sums = SKIP
 
-pkgname = squishyball-svn
+pkgname = squishyball
 
