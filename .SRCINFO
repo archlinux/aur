@@ -1,0 +1,13 @@
+pkgbase = libtga
+	pkgdesc = Lightweight library to read and write tga images
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://tgalib.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	source = http://downloads.sourceforge.net/project/tgalib/libtga/1.0.1/libtga-1.0.1.tar.gz
+	sha1sums = 368d8667f1ca28075e92616c0856f1f28dc8103e
+
+pkgname = libtga
+
