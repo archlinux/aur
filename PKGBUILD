@@ -1,5 +1,5 @@
 pkgname=fortune-mod-marriedwithchildren
-pkgver=1508250308
+pkgver=1510270247
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Married... with Children"

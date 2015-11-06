@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-marriedwithchildren
 	pkgdesc = Fortune quotes from Married... with Children
-	pkgver = 1508250308
+	pkgver = 1510270247
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Married..._with_Children
 	arch = any
