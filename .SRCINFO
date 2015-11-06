@@ -1,6 +1,6 @@
 pkgbase = xt7-player-mpv
 	pkgdesc = Aims to be an 'almost complete' but usable mpv gui
-	pkgver = 0.11.381
+	pkgver = 0.12.381
 	pkgrel = 1
 	url = http://xt7-player.sourceforge.net/xt7forum/
 	arch = any
@@ -38,9 +38,9 @@ pkgbase = xt7-player-mpv
 	optdepends = xdg-utils: for desktop integration
 	optdepends = xbindkeys: for global hotkeys support
 	optdepends = aria2: for youtube segmented downloads
-	source = https://github.com/kokoko3k/xt7-player-mpv/archive/0.11.381.tar.gz
+	source = https://github.com/kokoko3k/xt7-player-mpv/archive/0.12.381.tar.gz
 	source = license.txt
-	md5sums = e1efecb58727077101e77484f7b5bbd0
+	md5sums = 1aa4f63a061d36148dcdaec2f126b642
 	md5sums = b6f1380e33b47d0ed95c7ba1b3f4ec73
 
 pkgname = xt7-player-mpv
