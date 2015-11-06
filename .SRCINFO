@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-thebigbangtheory
 	pkgdesc = Fortune quotes from The Big Bang Theory
-	pkgver = 1509032124
+	pkgver = 1511041648
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/The_Big_Bang_Theory
 	arch = any
