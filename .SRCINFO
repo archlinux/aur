@@ -1,6 +1,6 @@
 pkgbase = omim-git
 	pkgdesc = Offline OpenStreetMap maps
-	pkgver = r12174.8b5d38a
+	pkgver = r12677.ef80aa6
 	pkgrel = 1
 	url = http://maps.me/en/home
 	arch = i686
