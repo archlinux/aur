@@ -1,13 +1,13 @@
 # Maintainer: Alexey Korop <akorop@ukr.net>
 
 pkgname=openbox_eui
-pkgver=2015.07.19
+pkgver=2015.11.06
 pkgrel=2
 pkgdesc='Highly configurable and lightweight X11 window manager'
 arch=('i686' 'x86_64')
 url='http://openbox.org'
 conflicts=('openbox')
-provides=('openbox')
+provides=('openbox' 'libobrender.so')
 license=('GPL')
 makedepends=(binutils git patch libtool automake autoconf m4 make pkg-config gcc fakeroot docbook-to-man)
 depends=('startup-notification' 'libxml2' 'libxinerama' 'libxrandr'
