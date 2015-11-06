@@ -1,0 +1,21 @@
+pkgbase = squishyball-svn
+	pkgdesc = Perform sample comparison testing on the command line
+	pkgver = 20140210.19518
+	pkgrel = 1
+	url = https://svn.xiph.org/trunk/squishyball/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = opusfile
+	depends = ncurses
+	depends = libvorbis
+	depends = flac
+	depends = libao
+	provides = squishyball
+	conflicts = squishyball
+	source = svn+https://svn.xiph.org/trunk/squishyball/
+	sha1sums = SKIP
+
+pkgname = squishyball-svn
+
