@@ -1,14 +1,14 @@
 pkgbase = bzr-rewrite
 	pkgdesc = Provides a rebase command for bzr similar to git rebase.
-	pkgver = 0.6.2
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://www.samba.org/~jelmer/bzr-rewrite/
 	arch = any
 	license = GPL
 	depends = bzr
 	depends = python2
-	source = http://samba.org/~jelmer/bzr/bzr-rewrite-0.6.2.tar.gz
-	sha256sums = 90b47caa2dc7c76f3ecdf135b20a0799efe0bb0a304f817f061c46899a71cf06
+	source = bzr+lp:bzr-rewrite
+	sha256sums = SKIP
 
 pkgname = bzr-rewrite
 

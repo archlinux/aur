@@ -1,17 +1,17 @@
 pkgname=bzr-rewrite
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
-pkgdesc="Provides a rebase command for bzr similar to git rebase."
+pkgdesc='Provides a rebase command for bzr similar to git rebase.'
 arch=('any')
-url="https://www.samba.org/~jelmer/bzr-rewrite/"
+url='https://launchpad.net/bzr-rewrite'
 license=('GPL')
 depends=('bzr' 'python2')
 
-source=(http://samba.org/~jelmer/bzr/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('90b47caa2dc7c76f3ecdf135b20a0799efe0bb0a304f817f061c46899a71cf06')
+source=(bzr+lp:bzr-rewrite)
+sha256sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd bzr-rewrite
   # Replace python with python2
   for file in $(find ./ -name '*.py' -print); do
       sed -i 's,^#!.*/usr/bin/python,#!/usr/bin/python2,g' $file
@@ -20,11 +20,11 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd bzr-rewrite
   python2 ./setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd bzr-rewrite
   python2 ./setup.py install --root="${pkgdir}"
 }
