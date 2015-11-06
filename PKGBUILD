@@ -3,7 +3,7 @@
 
 pkgname=delorean-dark-3.18
 pkgver=6_11062015
-pkgrel=1
+pkgrel=2
 pkgdesc="The Metal Gtk Theme. For Gnome 3.16, Xfce w/xfwm4, XfDashboard, Cinnamon, MATE, Openbox, Firefox, & Chromium"
 arch=('any') 
 url="http://fav.me/d9et76v"
@@ -24,6 +24,9 @@ package() {
   cd delorean-dark-3.18
 
 find DeLorean-Dark-3.18/ -type f \
+-exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
+
+find xfdashboard-delorean-dark-3.18/ -type f \
 -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
 
   cd 'ROOT THEME'
