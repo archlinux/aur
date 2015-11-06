@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-mlpfim
 	pkgdesc = Fortune quotes from My Little Pony: Friendship is Magic
-	pkgver = 1508260424
+	pkgver = 1510271156
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/My_Little_Pony:_Friendship_is_Magic
 	arch = any
