@@ -3,7 +3,7 @@
 
 pkgname=seafile-client
 pkgver=4.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Seafile is an online file storage and collaboration tool. This is seafile client for synchronizing your local files with seafile server."
 arch=('i686' 'x86_64')
 url="https://github.com/haiwen/seafile-client/"
@@ -17,7 +17,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/haiwen/${pkgname}/arch
 build ()
 {
 	cd "$srcdir/${pkgname}-${pkgver}"
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
+	cmake -DBUILD_SHIBBOLETH_SUPPORT=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
@@ -26,4 +26,4 @@ package ()
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}/" install
 }
-md5sums=('8749f059e9209df31e662c9325c735e5')
+sha256sums=('86fbdfd2ac4de113aa4498802fbc663bc150ec4525f2ccf6b87d45af624f432a')
