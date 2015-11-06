@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-prettylittleliars
 	pkgdesc = Fortune quotes from Pretty Little Liars
-	pkgver = 1509091255
+	pkgver = 1509290800
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Pretty_Little_Liars
 	arch = any
