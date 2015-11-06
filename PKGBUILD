@@ -7,8 +7,8 @@
 pkgname=onyx-sem
 _pkgname=onyx
 pkgver=1.0.932
-_pkgver="1.0-911"
-pkgrel=4
+_pkgver="1.0-932"
+pkgrel=5
 pkgdesc="A graphical interface for Structural Equation Modeling"
 arch=('any')
 url="http://onyx.brandmaier.de"

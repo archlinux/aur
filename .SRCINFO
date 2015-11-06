@@ -1,13 +1,13 @@
 pkgbase = onyx-sem
 	pkgdesc = A graphical interface for Structural Equation Modeling
 	pkgver = 1.0.932
-	pkgrel = 4
+	pkgrel = 5
 	url = http://onyx.brandmaier.de
 	install = onyx.install
 	arch = any
 	license = custom
 	depends = java-runtime
-	source = http://onyx.brandmaier.de/onyx-1.0-911.jar
+	source = http://onyx.brandmaier.de/onyx-1.0-932.jar
 	source = onyx.svg
 	source = LICENSE
 	md5sums = 621f3488dbb3f41f054806020dd0f667
