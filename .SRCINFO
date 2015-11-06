@@ -1,0 +1,18 @@
+pkgbase = project-generator
+	pkgdesc = Project generators for various embedded tools (IDE)
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = https://github.com/project-generator/project_generator
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-pip
+	depends = python-yaml
+	depends = python-jinja
+	depends = python-xmltodict
+	depends = project-generator-definitions
+	source = https://github.com/project-generator/project_generator/archive/526cb5beab1eee4c18311d860f16080c26f75b66.tar.gz
+	sha512sums = 78083fb121d06112e9dc1f53754be497bdf555d22f8e203791a1711fde2eca3219a17e4de3e9b4dad5e3aed52ec937828a2132f808f6ef6fc240329e08ee9b2b
+
+pkgname = project-generator
+
