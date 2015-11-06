@@ -1,16 +1,16 @@
 # Maintainer : Martin Wimpress <code@flexion.org>
 
-_ver=1.10
+_ver=1.12
 _pkgbase=mate-session-manager
 pkgname=(${_pkgbase}-upower)
-pkgver=${_ver}.2
+pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="The MATE Session Handler (GTK2 version) with upower (i.e. no-systemd) support"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('dbus-glib' 'gtk2' 'libsm' 'libxtst' 'mate-desktop>=1.10'
-         'mate-polkit>=1.10' 'mate-settings-daemon>=1.10' 'ttf-dejavu'
+depends=('dbus-glib' 'gtk2' 'libsm' 'libxtst' 'mate-desktop>=1.12'
+         'mate-polkit>=1.12' 'mate-settings-daemon>=1.12' 'ttf-dejavu'
          'xdg-user-dirs')
 makedepends=('mate-common' 'pangox-compat' 'xmlto')
 optdepends=('mdm-nosystemd: The MDM Display Manager with consolekit support for non-systemd setups'
@@ -18,10 +18,11 @@ optdepends=('mdm-nosystemd: The MDM Display Manager with consolekit support for 
             'orca: Screen reader for blind or visually impaired individuals'
             'xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales')
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
-provides=(${_pkgbase}=${pkgver})
+provides=(${_pkgbase})
 replaces=(${_pkgbase})
 groups=('mate')
-source=("http://pub.mate-desktop.org/releases/1.10/${_pkgbase}-${pkgver}.tar.xz")
+source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
+sha256sums=('6f5bb06b23d035b5e0ee84f3302090843e3e4defad3860ff2b5e1fcc4d273f45')
 install=${_pkgbase}.install
 
 build() {
@@ -42,4 +43,3 @@ package() {
 }
 
 ##
-sha256sums=('ed9d622d0747521c5ef11bbaea85f40445ef68c06ef6d1626b53055b0185cf7a')
