@@ -1,5 +1,5 @@
 pkgname=fortune-mod-lostgirl
-pkgver=1506171755
+pkgver=1509181544
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Lost Girl"

@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-lostgirl
 	pkgdesc = Fortune quotes from Lost Girl
-	pkgver = 1506171755
+	pkgver = 1509181544
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Lost_Girl
 	arch = any
