@@ -1,0 +1,12 @@
+pkgbase = mspgcc-binutils-bin
+	pkgdesc = Binary utilities supporting TI's MSP430 targets
+	pkgver = 20120406
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/binutils-msp430
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/binutils-msp430_2.22%7Emsp20120406-2_.deb
+
+pkgname = mspgcc-binutils-bin
+
