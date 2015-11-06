@@ -41,9 +41,9 @@ optdepends=('python2: for Opensubtitles.org integration' 'ladspa: more audio plu
 
 source=(https://github.com/kokoko3k/xt7-player-mpv/archive/$pkgver$hotfix.tar.gz 'license.txt')
 
-md5sums=('1aa4f63a061d36148dcdaec2f126b642'
-         'b6f1380e33b47d0ed95c7ba1b3f4ec73')
 
+md5sums=('01a663d227d1683f39f242325def4d90'
+         'b6f1380e33b47d0ed95c7ba1b3f4ec73')
 
 build() {
   cd ${srcdir}/${_realname}-${pkgver}$hotfix
@@ -65,3 +65,4 @@ package() {
   install -Dm644 ${srcdir}/license.txt ${pkgdir}/usr/share/licenses/xt7-player/license.txt
 
 }
+
