@@ -1,13 +1,13 @@
 pkgbase = geotoad
 	pkgdesc = A tool to simplify geocaching
-	pkgver = 3.24.1
+	pkgver = 3.24.2
 	pkgrel = 1
 	url = https://github.com/steve8x8/geotoad
 	arch = any
 	license = custom
 	depends = ruby
-	source = geotoad-3.24.1.tar.gz::https://github.com/steve8x8/geotoad/archive/3.24.1.tar.gz
-	sha256sums = 186f12ac1d5ee2070d194652aaa54e6ddea06d5be5b7fbe10c0eff68c1b951f7
+	source = geotoad-3.24.2.tar.gz::https://github.com/steve8x8/geotoad/archive/3.24.2.tar.gz
+	sha256sums = da1c57e0d3bd80105076cc76fbc2645cd5c6a6ebd896ffd97df326ed74d3e626
 
 pkgname = geotoad
 
