@@ -1,0 +1,14 @@
+pkgbase = mbed-test-wrapper
+	pkgdesc = Generate Project Files to Debug ELF files
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/ARMmbed/intelhex
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-pip
+	source = https://pypi.python.org/packages/source/m/mbed-test-wrapper/mbed_test_wrapper-0.0.2.tar.gz
+	sha512sums = bd2369d7fc4574d11f4df5b42b73e35c68b3f9d0233b52f96b9809b731490c6f8fcae8d1c9b4b857273886bd98fad15efa20605782773014507d047bdf5eaede
+
+pkgname = mbed-test-wrapper
+
