@@ -1,0 +1,14 @@
+pkgbase = python-intelhex
+	pkgdesc = Python IntelHex library
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/bialix/intelhex
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-pip
+	source = https://github.com/bialix/intelhex/archive/2.0.tar.gz
+	sha512sums = 770262fba1b032fdc3b4d2b50c239327b8f15286e089a218a48682f2b1b943a680a76b2a0813ee522babc21a8c6289db2244352ed0a5c442c3de55010765e04a
+
+pkgname = python-intelhex
+
