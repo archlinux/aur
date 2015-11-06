@@ -1,7 +1,7 @@
 pkgbase = lilith
 	pkgdesc = logging and access event viewer for Logback, log4j and JUL
 	pkgver = 0.9.44
-	pkgrel = 3
+	pkgrel = 4
 	url = http://lilith.huxhorn.de/
 	arch = any
 	license = GPL
