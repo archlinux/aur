@@ -1,0 +1,29 @@
+post_install() {
+    systemd-sysusers prosody.conf
+    systemd-tmpfiles --create prosody.conf
+
+    chown prosody:jabber var/lib/prosody
+    [ -d var/log/prosody ] && chown prosody:jabber var/log/prosody
+
+    echo ">> Documentation: http://wiki.archlinux.org/index.php/Prosody"
+}
+
+post_upgrade() {
+    post_install $1
+    echo "Now prosody logs to syslog by default"
+}
+
+post_remove() {
+    paths=(/etc/prosody /var/lib/prosody /var/log/prosody
+           /var/log/old/prosody)
+    first=true
+    for path in ${paths[@]}; do
+        if [ -d $path ]; then
+            if $first; then
+                first=false
+                echo "==> Leftover Paths:"
+            fi
+            echo "==> $path"
+        fi
+    done
+}

@@ -1,0 +1,34 @@
+pkgbase = prosody-hg
+	pkgdesc = Lightweight and extensible Jabber/XMPP server written in Lua
+	pkgver = 0.10.r6909.494938dec5d8
+	pkgrel = 1
+	url = http://prosody.im/
+	install = prosody.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = mercurial
+	depends = lua51
+	depends = lua51-socket
+	depends = lua51-expat
+	depends = lua51-filesystem
+	depends = libidn
+	depends = openssl
+	optdepends = lua51-sec: TLS encryption support
+	optdepends = lua51-zlib: compression support
+	provides = prosody
+	backup = etc/logrotate.d/prosody
+	backup = etc/prosody/prosody.cfg.lua
+	source = prosody-hg::hg+http://hg.prosody.im/trunk
+	source = prosody.logrotated
+	source = prosody.tmpfile.d
+	source = sysuser.conf
+	source = prosody.service
+	md5sums = SKIP
+	md5sums = 5b44aee99f1fa9e7f055e067688cafbd
+	md5sums = dc8405a6a235b83dc8a0dcdf7b71cbaa
+	md5sums = 385ca73d9f6046f3636266ce9bf38797
+	md5sums = e74045f27cb60908d535969906781f75
+
+pkgname = prosody-hg
+
