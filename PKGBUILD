@@ -1,6 +1,6 @@
 # Maintainer: Your Name <nvidiux@rungp.redirectme.net>
 pkgname=nvidiux
-pkgver=0.99
+pkgver=0.99.1
 pkgrel=1
 pkgdesc="Interface en pyqt pour overclocker/underclocker les gpu nvidia avec le pilote proprio"
 arch=(any)
@@ -17,5 +17,5 @@ package()
 	cp -r usr $pkgdir
 }
 source=($pkgname-$pkgver.tar.gz)
-md5sums=('8297da64e39b566fc18282982c8c4db3')
+md5sums=('1de7c81ae4265552dce19a1a23c91ae3')
 
