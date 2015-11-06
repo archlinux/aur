@@ -1,16 +1,16 @@
 # Maintainer: Antonio Rojas 
 
 pkgname=kget-frameworks-git
-pkgver=r2717.db16a8b
+pkgver=r2719.845570a
 pkgrel=1
 pkgdesc='KDE Download Manager'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='https://www.kde.org/applications/internet/kget/'
-license=('GPL')
-depends=('kdelibs4support' 'kcmutils' 'knotifyconfig' 'qca-qt5' 'gpgmepp-git')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
-conflicts=('kdenetwork-kget' 'kget')
-provides=('kget')
+license=(GPL)
+depends=(kdelibs4support kcmutils knotifyconfig qca-qt5 gpgmepp)
+makedepends=(extra-cmake-modules git kdoctools python boost)
+conflicts=(kdenetwork-kget kget)
+provides=(kget)
 install=$pkgname.install
 source=("git://anongit.kde.org/kget.git#branch=kf5_port")
 sha256sums=('SKIP')
@@ -22,8 +22,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  sed -e 's|(Qca|(Qca-qt5|' -e 's|qca)|qca-qt5)|' -i kget/CMakeLists.txt
 }
 
 build() { 
