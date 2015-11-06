@@ -1,6 +1,6 @@
 pkgbase = snb-git
 	pkgdesc = A simple Unicode-aware hierarchical notebook.
-	pkgver = 5bec073
+	pkgver = 029d3e8
 	pkgrel = 1
 	url = https://github.com/drbig/snb
 	arch = i686
