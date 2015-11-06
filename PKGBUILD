@@ -1,9 +1,9 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=nvm-git
-pkgver=0.29.0.r0.ge1c84ba
+pkgver=0.29.0.r25.g9972de6
 pkgrel=1
-pkgdesc="Simple bash script to manage multiple active node.js versions (git sources)"
+pkgdesc="Node Version Manager - Simple bash script to manage multiple active node.js versions (git sources)"
 url="https://github.com/creationix/nvm"
 arch=('any')
 license=('MIT')
@@ -30,7 +30,7 @@ package() {
 
   cd "${pkgname}"
 
-  # nvm.sh
+  # nvm itself
   install -Dm644 nvm.sh "$pkgdir/usr/share/nvm/nvm.sh"
 
   # bash completion

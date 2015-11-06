@@ -1,7 +1,7 @@
 pkgbase = nvm-git
-	pkgdesc = Simple bash script to manage multiple active node.js versions (git sources)
+	pkgdesc = Node Version Manager - Simple bash script to manage multiple active node.js versions (git sources)
 	pkgver = 0.29.0.r0.ge1c84ba
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/creationix/nvm
 	install = nvm-git.install
 	arch = any
