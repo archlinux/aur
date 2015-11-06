@@ -1,7 +1,7 @@
 pkgbase = enigma-dev-git
 	pkgdesc = ENIGMA, the Extensible Non-Interpreted Game Maker Augmentation.
 	pkgver = 0.0.0
-	pkgrel = 4
+	pkgrel = 3
 	url = http://enigma-dev.org
 	install = enigma-dev-git.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = enigma-dev-git
 	depends = mesa
 	depends = gtk2
 	depends = dumb
-	depends = java32-runtime
+	depends = bin32-jre
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	provides = lateralgm
