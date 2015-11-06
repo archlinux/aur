@@ -1,0 +1,18 @@
+pkgbase = valinor
+	pkgdesc = Generate Project Files to Debug ELF files
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/ARMmbed/intelhex
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-pip
+	depends = python-yaml
+	depends = python-jinja
+	depends = python-colorama
+	depends = pyocd
+	source = https://github.com/ARMmbed/valinor/archive/v0.0.11.tar.gz
+	sha512sums = 1f485466f01262f0993a5c173ef16c2d6974dca39fa496423bb752ed49f7b407f387dfdaa815bc2fbb8c33e32b40cb231f30f9a41e6620770ffe7977f56beb37
+
+pkgname = valinor
+
