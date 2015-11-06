@@ -13,9 +13,10 @@ url="http://www.lexmark.com/"
 source=("http://downloads.lexmark.com/downloads/cpd/lexmark-inkjet-legacy-1.0-1.x86_64.rpm.sh.tar.gz")
 md5sums=('fc421f21e50a40a4ba482c0b04f17b84')
 
-build() {
-  cd $startdir/src
-  tar xf lexmark-inkjet-legacy-1.0-1.x86_64.rpm.sh.tar.gz
+prepare() {
+#  cd $startdir/src
+#  tar xf lexmark-inkjet-legacy-1.0-1.x86_64.rpm.sh.tar.gz
+  cd ${srcdir}
   sh lexmark-inkjet-legacy-1.0-1.x86_64.rpm.sh --noexec --target Installer-Files
   cd Installer-Files
   mkdir Driver
@@ -23,5 +24,8 @@ build() {
   cd Driver
   rpmextract.sh lexmark-inkjet-legacy-1.0-1.x86_64.rpm
   rpmextract.sh lexmark-legacy-wsu-1.0-1.x86_64.rpm
-  mv -f usr $startdir/pkg
+}
+
+package(){
+	mv -f ${srcdir}/Installer-Files/Driver/usr ${pkgdir}/
 }
