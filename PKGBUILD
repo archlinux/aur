@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 build() {
   cd ${pkgname}-${pkgver}
-  r/autogen.sh --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --disable-static
+  ./autogen.sh --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --disable-static
   make
 }
 
