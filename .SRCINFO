@@ -1,0 +1,17 @@
+pkgbase = python-pygrib
+	pkgdesc = Python module for reading and writing GRIB (editions 1 and 2) files.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/jswhit/pygrib
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python-pyproj
+	depends = jasper
+	depends = python-numpy
+	depends = grib_api
+	source = https://pypi.python.org/packages/source/p/pygrib/pygrib-2.0.0.tar.gz
+	md5sums = 0b1c150216af0b2afd7281fe2cd35483
+
+pkgname = python-pygrib
+
