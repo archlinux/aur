@@ -1,8 +1,8 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=mail2rem-git
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="A script that searches *.ics in your mail and puts events to the Remind calendar"
+pkgdesc="A script that searches *.ics in your mail and puts events to your Remind calendar"
 arch=('any')
 url="https://github.com/esovetkin/mail2rem"
 license=('BSD')
@@ -14,11 +14,6 @@ md5sums=() #generate with 'makepkg -g'
 
 _gitroot=git://github.com/esovetkin/mail2rem
 _gitname=mail2rem
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'     
-}
 
 build() {
   cd "$srcdir"
