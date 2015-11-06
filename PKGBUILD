@@ -1,5 +1,5 @@
 pkgname=fortune-mod-ducktales
-pkgver=1505030159
+pkgver=1510021750
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from DuckTales"

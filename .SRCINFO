@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-ducktales
 	pkgdesc = Fortune quotes from DuckTales
-	pkgver = 1505030159
+	pkgver = 1510021750
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/DuckTales
 	arch = any
