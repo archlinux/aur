@@ -1,18 +1,18 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=breeze-git
-pkgver=r853.af09860
+pkgver=r1354.d0a2cb8
 pkgrel=1
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/breeze'
 license=(LGPL)
-depends=(frameworkintegration kdecoration-git kcmutils hicolor-icon-theme)
+depends=(frameworkintegration kdecoration-git kcmutils hicolor-icon-theme breeze-icons-git)
 makedepends=(extra-cmake-modules git)
-optdepends=('breeze-kde4-git: Breeze widget style for KDE4 applications' 'oxygen-icons: fallback icon theme')
-conflicts=(breeze breeze-icons)
-provides=(breeze breeze-icons)
-source=('git://anongit.kde.org/breeze.git')
+optdepends=('breeze-kde4-git: Breeze widget style for KDE4 applications' 'breeze-gtk-git: Breeze widget style for GTK applications')
+conflicts=(breeze)
+provides=(breeze)
+source=('git://git.kde.org/breeze.git')
 md5sums=('SKIP')
 install=$pkgname.install
 

@@ -1,6 +1,6 @@
 pkgbase = breeze-git
 	pkgdesc = Artwork, styles and assets for the Breeze visual style for the Plasma Desktop
-	pkgver = r853.af09860
+	pkgver = r1354.d0a2cb8
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/workspace/breeze
 	install = breeze-git.install
@@ -13,13 +13,12 @@ pkgbase = breeze-git
 	depends = kdecoration-git
 	depends = kcmutils
 	depends = hicolor-icon-theme
+	depends = breeze-icons-git
 	optdepends = breeze-kde4-git: Breeze widget style for KDE4 applications
-	optdepends = oxygen-icons: fallback icon theme
+	optdepends = breeze-gtk-git: Breeze widget style for GTK applications
 	provides = breeze
-	provides = breeze-icons
 	conflicts = breeze
-	conflicts = breeze-icons
-	source = git://anongit.kde.org/breeze.git
+	source = git://git.kde.org/breeze.git
 	md5sums = SKIP
 
 pkgname = breeze-git
