@@ -52,8 +52,8 @@ arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
 depends=(fontconfig xorg-fonts-encodings xorg-mkfontscale xorg-mkfontdir)
-provides=(ttf-font ttf-ms-fonts)
-conflicts=(ttf-{ms,vista,win7}-fonts)
+provides=(ttf-font)
+conflicts=(ttf-{vista,win7}-fonts)
 install=$pkgbase.install
 
 _ttf_ms_win10=(
@@ -331,8 +331,8 @@ _package() {
 
 package_ttf-ms-win10() {
     pkgdesc='Microsoft Windows 10 TrueType fonts'
-    provides+=('ttf-tahoma')
-    conflicts+=('ttf-tahoma')
+    provides+=(ttf-tahoma  ttf-ms-fonts)
+    conflicts+=(ttf-tahoma ttf-ms-fonts)
     _package ${_ttf_ms_win10[@]}
 }
 
