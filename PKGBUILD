@@ -1,10 +1,10 @@
 #Maintainer: Nick Boughton <nicholasboughton@gmail.com>
 pkgname=devd
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="devd: a web daemon for developers"
 arch=('x86_64')
-url="http://corte.si/posts/devd/intro/index.html"
+url="https://github.com/cortesi/devd"
 license=('MIT')
 provides=('devd')
 source=("https://github.com/cortesi/devd/releases/download/v$pkgver/$pkgname-$pkgver-linux64.tgz")

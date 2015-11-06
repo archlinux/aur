@@ -1,8 +1,8 @@
 pkgbase = devd
 	pkgdesc = devd: a web daemon for developers
 	pkgver = 0.2
-	pkgrel = 1
-	url = http://corte.si/posts/devd/intro/index.html
+	pkgrel = 2
+	url = https://github.com/cortesi/devd
 	arch = x86_64
 	license = MIT
 	provides = devd
