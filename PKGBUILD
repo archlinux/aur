@@ -5,16 +5,19 @@ _module="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="0.6.8"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Extra features for standard library's cmd module"
 arch=("any")
 url="https://bitbucket.org/catherinedevlin/${_name}"
 license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ac780d8c31fc107bf6b4edcbcea711de4ff776d59d89bb167f8819d2d83764a8')
+source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
+        "use-sys-platform.patch")
+sha256sums=('ac780d8c31fc107bf6b4edcbcea711de4ff776d59d89bb167f8819d2d83764a8'
+            'e679459c186950d29079be91f6e7e5049199d0ca4f27f71f975ac5dc9ecd82dd')
 
 prepare() {
+    patch -d "${srcdir}/${_name}-${pkgver}" -p1 -i "${srcdir}/use-sys-platform.patch"
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
 }
 
