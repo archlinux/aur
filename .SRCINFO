@@ -5,6 +5,7 @@ pkgbase = pyfa
 	url = http://github.com/DarkFenX/Pyfa
 	arch = any
 	license = GPL
+	makedepends = unzip
 	depends = python2
 	depends = wxpython
 	depends = python2-sqlalchemy
