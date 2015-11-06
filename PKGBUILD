@@ -2,8 +2,8 @@
 
 pkgname=nvm
 pkgver=0.29.0
-pkgrel=1
-pkgdesc="Simple bash script to manage multiple active node.js versions"
+pkgrel=2
+pkgdesc="Node Version Manager - Simple bash script to manage multiple active node.js versions"
 url="https://github.com/creationix/nvm"
 arch=('any')
 license=('MIT')
@@ -26,7 +26,7 @@ package() {
 
   cd "${pkgname}-${pkgver}"
 
-  # nvm.sh
+  # nvm itself
   install -Dm644 nvm.sh "$pkgdir/usr/share/$pkgname/nvm.sh"
 
   # bash completion
