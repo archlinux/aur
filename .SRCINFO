@@ -1,7 +1,7 @@
 pkgbase = astah-community
 	pkgdesc = Lightweight, easy-to-use, and free UML2.x modeler
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://astah.change-vision.com/en/product/astah-community.html
 	install = astah-community.install
 	arch = any
