@@ -1,5 +1,5 @@
 pkgname=fortune-mod-himym
-pkgver=1505020700
+pkgver=1510302122
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from How I Met Your Mother"

@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-himym
 	pkgdesc = Fortune quotes from How I Met Your Mother
-	pkgver = 1505020700
+	pkgver = 1510302122
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/How_I_Met_Your_Mother
 	arch = any
