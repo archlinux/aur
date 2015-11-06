@@ -4,54 +4,93 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=0.9.84
+pkgver=0.9.85
 pkgrel=1
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
-url="https://developers.google.com/cloud/sdk/"
+url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('i686' 'x86_64')
-source=("$pkgname-$pkgver.tar.gz::https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz"
-        "profile.sh")
 depends=('python2')
 makedepends=('python2')
 optdepends=('go: for Go version of App Engine'
             'java-environment: for Java version of App Engine'
             'php: for PHP version of App Engine')
-md5sums=('cb1bc5d568aa963edfdc52f35b35b122'
-         'd7c7ccb7d32a871d67288228f5b4cd94')
 options=('!strip' 'staticlibs')
 
-pkgver() {
-	grep '"version"' $srcdir/$pkgname/lib/googlecloudsdk/core/config.json | sed "s/.*:.*\"\(.*\)\".*/\1/"
+# 64bit
+source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
+               "profile.sh")
+sha1sums_x86_64=('3f439229dfc55a5473f95dc59d304c20ba91975b'
+                 '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
+
+# 32bit
+source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
+             "profile.sh")
+sha1sums_i686=('eccae329216cdc48404ce97bc80f8ea628c59c96'
+               '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
+
+prepare() {
+
+  msg2 "Checking for newer upstream release"
+  _LATEST=$(curl -s https://dl.google.com/dl/cloudsdk/release/sha1.txt | 
+            egrep "google-cloud-sdk-.*-linux-x86_64.tar.gz" | \
+            awk '{print $2}' | cut -d'-' -f4)
+  if [ "$_LATEST" != "$pkgver" ]; then
+    msg2 "This AUR release: $pkgver"
+    msg2 "Latest upstream release: $_LATEST"
+    msg2 "** Please flag out-of-date at https://aur.archlinux.org/packages/google-cloud-sdk"
+  fi
+
 }
 
 package() {
-	mkdir "$pkgdir/opt"
-	cp -r "$srcdir"/"$pkgname" "$pkgdir"/opt
 
-	msg2 "Running bootstrapping script"
-	python2 "$pkgdir"/opt/google-cloud-sdk/bin/bootstrapping/install.py \
-		--usage-reporting false --disable-installation-options \
-		--path-update false --bash-completion true --rc-path="$srcdir"/fake.bashrc
-	install -Dm755 "$pkgdir"/opt/google-cloud-sdk/completion.bash.inc "$pkgdir"/etc/bash_completion.d/google-cloud-sdk
-	install -Dm755 "$srcdir"/profile.sh "$pkgdir"/etc/profile.d/google-cloud-sdk.sh
+  msg2 "Copying core SDK components"
+  mkdir "$pkgdir/opt"
+  cp -r "$srcdir/$pkgname" "$pkgdir/opt"
 
-	msg2 "Fixing python references..."
-	grep -rl 'python' "$pkgdir/opt/$pkgname" | xargs sed -i 's|#!.*python\b|#!/usr/bin/env python2|g'
-	find "$pkgdir/opt/google-cloud-sdk/bin/" -maxdepth 1 -type f -exec sed -i 's/CLOUDSDK_PYTHON=python/CLOUDSDK_PYTHON=python2/g' {} \;
+  # kubectl is not in the tarball, add it to the package bootstrap
+  msg2 "Running bootstrapping script and adding kubectl"
+  python2 "$pkgdir/opt/$pkgname/bin/bootstrapping/install.py" \
+    --usage-reporting false --path-update false --bash-completion false \
+    --rc-path="$srcdir/fake.bashrc" --additional-components="kubectl"
 
-	# These were removed from 0.9.73 -> 0.9.74
-	#msg2 "Installing man pages"
-	#mkdir -p "$pkgdir/usr/share"
-	#mv "$pkgdir"/opt/google-cloud-sdk/help/man "$pkgdir"/usr/share/
+  # This is the strangest design they made to backup a fresh install
+  msg2 "Removing unnecessary backups created by bootstrap"
+  rm -rf "$pkgdir/opt/$pkgname/.install/.backup"
+  mkdir "$pkgdir/opt/$pkgname/.install/.backup"
 
-	msg2 "Creating symlinks for binaries"
-	mkdir -p "$pkgdir/usr/bin"
-	find "$pkgdir/opt/$pkgname/bin" -maxdepth 1 -type f -printf "/opt/$pkgname/bin/%f\n" | xargs ln -st "$pkgdir/usr/bin"
+  msg2 "Setting up environment variables and shell completion"
+  install -Dm755 "$pkgdir/opt/$pkgname/completion.bash.inc" \
+    "$pkgdir/etc/bash_completion.d/google-cloud-sdk"
+  install -Dm755 "$srcdir/profile.sh" \
+    "$pkgdir/etc/profile.d/google-cloud-sdk.sh"
 
-	msg2 "Cleaning files and folders"
-	rm -rf "$pkgdir/opt/google-cloud-sdk/.install/"
+  msg2 "Fixing python references for python2"
+  grep -rl 'python' "$pkgdir/opt/$pkgname" | \
+    xargs sed -i 's|#!.*python\b|#!/usr/bin/env python2|g'
+  find "$pkgdir/opt/$pkgname/bin/" -maxdepth 1 -type f -exec \
+    sed -i 's/CLOUDSDK_PYTHON=python/CLOUDSDK_PYTHON=python2/g' {} \;
 
-	msg2 "Fixing files permissions"
-	chown root:root -R "$pkgdir"
+  # These are only present in the direct numbered downloads we use
+  msg2 "Installing man pages"
+  mkdir -p "$pkgdir/usr/share"
+  mv -f "$pkgdir/opt/$pkgname/help/man" "$pkgdir/usr/share/"
+
+  msg2 "Creating symlinks for binaries"
+  mkdir -p "$pkgdir/usr/bin"
+  find "$pkgdir/opt/$pkgname/bin" -maxdepth 1 -type f -printf \
+    "/opt/$pkgname/bin/%f\n" | xargs ln -st "$pkgdir/usr/bin"
+
+  # The tarball is rather sloppy with it's file permissions
+  msg2 "Fixing file permissions"
+  chown -R root:root "$pkgdir"
+  find "$pkgdir/usr/share/man" -print0 | xargs -0 chmod -x
+  find "$pkgdir/opt/$pkgname" -name "*.html" -print0 | xargs -0 chmod -x
+  find "$pkgdir/opt/$pkgname" -name "*.json" -print0 | xargs -0 chmod -x
+  find "$pkgdir/opt/$pkgname" -name "*_test.py" -print0 | xargs -0 chmod +x
+  find "$pkgdir/opt/$pkgname/lib/protorpc" -name "*.py" -print0 | \
+    xargs -0 chmod -x
+
 }
+
