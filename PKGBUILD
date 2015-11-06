@@ -1,5 +1,5 @@
 pkgname=fortune-mod-carnivale
-pkgver=1504021519
+pkgver=1510232113
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Carnivàle"
