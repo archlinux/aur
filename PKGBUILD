@@ -3,7 +3,7 @@
 
 pkgname=candra-themes-3.18
 pkgver=4_10152015
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist flat themes for, Gnome, Xfce, Cinnamon, MATE, Openbox, LXDE"
 arch=('any') 
 url="http://fav.me/d9cy9dt"
@@ -35,7 +35,7 @@ find Candra-theme/ -type f \
 
   cd 'Root'
 find Candra-theme/ -type f \
--exec install -Dm644 "{}" "$pkgdir/root/.themes/{}" \;            
+-exec install -Dm644 "{}" "$pkgdir/usr/share/themes/Candra-themes-3.18/Root-Theme/{}" \;           
 
   cd ..
   cd ..
@@ -45,7 +45,7 @@ find Candra-theme-dark/ -type f \
 
   cd 'Root'
 find Candra-theme-dark/ -type f \
--exec install -Dm644 "{}" "$pkgdir/root/.themes/{}" \;            
+-exec install -Dm644 "{}" "$pkgdir/usr/share/themes/Candra-theme-dark-3.18/Root-Theme/{}" \;            
 }
 
 # vim:set ts=2 sw=2 et:
