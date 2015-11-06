@@ -1,7 +1,7 @@
 pkgbase = xf86-input-evdev-ahm
 	pkgdesc = X.org evdev input driver + at-home-modifier patch
-	pkgver = 2.9.2
-	pkgrel = 2
+	pkgver = 2.10.0
+	pkgrel = 1
 	url = https://gitlab.com/at-home-modifier/at-home-modifier-evdev/wikis/home
 	arch = i686
 	arch = x86_64
@@ -15,18 +15,18 @@ pkgbase = xf86-input-evdev-ahm
 	depends = systemd
 	depends = mtdev
 	depends = libevdev
-	provides = xf86-input-evdev=2.9.2
+	provides = xf86-input-evdev=2.10.0
 	conflicts = xorg-server<1.16.0
 	conflicts = X-ABI-XINPUT_VERSION<21
 	conflicts = X-ABI-XINPUT_VERSION>=22
 	conflicts = xf86-input-evdev
 	options = !makeflags
-	source = http://xorg.freedesktop.org//releases/individual/driver/xf86-input-evdev-2.9.2.tar.bz2
-	source = http://xorg.freedesktop.org//releases/individual/driver/xf86-input-evdev-2.9.2.tar.bz2.sig
-	source = https://gitlab.com/at-home-modifier/download/raw/master/patch/ahm-2.9.2.patch
-	sha256sums = 792329b531afc6928ccda94e4b51a5520d4ddf8ef9a00890a5d0d31898acefec
-	sha256sums = bfab0f027a1cf41f71e1d4dc759b8c3e155e8787d7f76712ffa7c783235dc761
-	sha256sums = 76c3fd63fe791727c66748e6b0aa77d659660b759599dfc038127bbd3fbd0ef3
+	source = http://xorg.freedesktop.org//releases/individual/driver/xf86-input-evdev-2.10.0.tar.bz2
+	source = http://xorg.freedesktop.org//releases/individual/driver/xf86-input-evdev-2.10.0.tar.bz2.sig
+	source = ahm-2.10.0.patch
+	sha256sums = d097298eb07b7a9edf4493b5c3c058041458ca52c8c62dbd4f40b84c5086d117
+	sha256sums = SKIP
+	sha256sums = 66481cea220eb0764b5150f63d6915a06598d62f84675d515b6eeacb63f6fe7e
 
 pkgname = xf86-input-evdev-ahm
 

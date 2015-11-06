@@ -1,7 +1,6 @@
-diff --git a/README b/README
-index 95873ba..3228757 100644
---- a/README
-+++ b/README
+diff -aur xf86-input-evdev-2.10.0.orig/README xf86-input-evdev-2.10.0.patched/README
+--- xf86-input-evdev-2.10.0.orig/README	2013-04-10 16:24:31.000000000 +1000
++++ xf86-input-evdev-2.10.0.patched/README	2015-11-06 20:14:47.245718895 +1100
 @@ -1,20 +1,649 @@
 -xf86-input-evdev - Generic Linux input driver for the Xorg X server
 +Welcome to "At Home Modifier" hack of xf86-input-evdev. The original
@@ -663,11 +662,9 @@ index 95873ba..3228757 100644
 +License
 +=======
 +Distributed under MIT License; Same as Xorg.
-diff --git a/README.orig b/README.orig
-new file mode 100644
-index 0000000..95873ba
---- /dev/null
-+++ b/README.orig
+diff -aur xf86-input-evdev-2.10.0.orig/README.orig xf86-input-evdev-2.10.0.patched/README.orig
+--- xf86-input-evdev-2.10.0.orig/README.orig	2015-11-06 21:13:56.676972825 +1100
++++ xf86-input-evdev-2.10.0.patched/README.orig	2013-04-10 16:24:31.000000000 +1000
 @@ -0,0 +1,20 @@
 +xf86-input-evdev - Generic Linux input driver for the Xorg X server
 +
@@ -689,24 +686,10 @@ index 0000000..95873ba
 +For more information on the git code manager, see:
 +
 +        http://wiki.x.org/wiki/GitPage
-diff --git a/src/emuWheel.c b/src/emuWheel.c
-index 04487cf..f1d1990 100644
---- a/src/emuWheel.c
-+++ b/src/emuWheel.c
-@@ -119,7 +119,7 @@ EvdevWheelEmuFilterMotion(InputInfoPtr pInfo, struct input_event *pEv)
- 	    int oldValue;
- 
- 	    if (axis > -1 && valuator_mask_fetch(pEvdev->old_vals, axis, &oldValue)) {
--		valuator_mask_set(pEvdev->vals, axis, value);
-+		valuator_mask_set(pEvdev->abs_vals, axis, value);
- 		value -= oldValue; /* make value into a differential measurement */
- 	    } else
-                 value = 0; /* avoid a jump on the first touch */
-diff --git a/src/evdev.c b/src/evdev.c
-index 651b895..75a3471 100644
---- a/src/evdev.c
-+++ b/src/evdev.c
-@@ -135,6 +135,8 @@ static Atom prop_device;
+diff -aur xf86-input-evdev-2.10.0.orig/src/evdev.c xf86-input-evdev-2.10.0.patched/src/evdev.c
+--- xf86-input-evdev-2.10.0.orig/src/evdev.c	2015-10-27 08:45:58.000000000 +1100
++++ xf86-input-evdev-2.10.0.patched/src/evdev.c	2015-11-06 20:14:47.255718893 +1100
+@@ -127,6 +127,8 @@
  static Atom prop_virtual;
  static Atom prop_scroll_dist;
  
@@ -715,7 +698,7 @@ index 651b895..75a3471 100644
  static int EvdevSwitchMode(ClientPtr client, DeviceIntPtr device, int mode)
  {
      InputInfoPtr pInfo;
-@@ -276,23 +278,359 @@ EvdevNextInQueue(InputInfoPtr pInfo)
+@@ -274,23 +276,359 @@
      return &pEvdev->queue[pEvdev->num_queue - 1];
  }
  
@@ -757,7 +740,6 @@ index 651b895..75a3471 100644
 -        pQueue->type = EV_QUEUE_KEY;
 -        pQueue->detail.key = code;
 -        pQueue->val = value;
--    }
 +/*
 + * Inside of AhmStep2, the keycode is X value. Restore the linux/input.h
 + * value which EvdevQueueKbdEvent accepts.
@@ -880,7 +862,7 @@ index 651b895..75a3471 100644
 +	  WrapEvdevQueueKbdEvent(pInfo, ev, 0, code);
 +	}
 +      }
-+    }
+     }
 +  }else{
 +    /* Plain key */
 +    if(value){
@@ -1086,7 +1068,7 @@ index 651b895..75a3471 100644
  }
  
  void
-@@ -306,6 +644,7 @@ EvdevQueueButtonEvent(InputInfoPtr pInfo, int button, int value)
+@@ -304,6 +642,7 @@
          pQueue->detail.key = button;
          pQueue->val = value;
      }
@@ -1094,115 +1076,7 @@ index 651b895..75a3471 100644
  }
  
  void
-@@ -440,33 +779,33 @@ EvdevProcessValuators(InputInfoPtr pInfo)
-         /* convert to relative motion for touchpads */
-         if (pEvdev->flags & EVDEV_RELATIVE_MODE) {
-             if (pEvdev->in_proximity) {
--                if (valuator_mask_isset(pEvdev->vals, 0))
-+                if (valuator_mask_isset(pEvdev->abs_vals, 0))
-                 {
-                     if (valuator_mask_isset(pEvdev->old_vals, 0))
--                        delta[REL_X] = valuator_mask_get(pEvdev->vals, 0) -
-+                        delta[REL_X] = valuator_mask_get(pEvdev->abs_vals, 0) -
-                             valuator_mask_get(pEvdev->old_vals, 0);
-                     valuator_mask_set(pEvdev->old_vals, 0,
--                            valuator_mask_get(pEvdev->vals, 0));
-+                            valuator_mask_get(pEvdev->abs_vals, 0));
-                 }
--                if (valuator_mask_isset(pEvdev->vals, 1))
-+                if (valuator_mask_isset(pEvdev->abs_vals, 1))
-                 {
-                     if (valuator_mask_isset(pEvdev->old_vals, 1))
--                        delta[REL_Y] = valuator_mask_get(pEvdev->vals, 1) -
-+                        delta[REL_Y] = valuator_mask_get(pEvdev->abs_vals, 1) -
-                             valuator_mask_get(pEvdev->old_vals, 1);
-                     valuator_mask_set(pEvdev->old_vals, 1,
--                            valuator_mask_get(pEvdev->vals, 1));
-+                            valuator_mask_get(pEvdev->abs_vals, 1));
-                 }
-             } else {
-                 valuator_mask_zero(pEvdev->old_vals);
-             }
--            valuator_mask_zero(pEvdev->vals);
-+            valuator_mask_zero(pEvdev->abs_vals);
-             pEvdev->abs_queued = 0;
-             pEvdev->rel_queued = 1;
-         } else {
-             int val;
--            if (valuator_mask_fetch(pEvdev->vals, 0, &val))
-+            if (valuator_mask_fetch(pEvdev->abs_vals, 0, &val))
-                 valuator_mask_set(pEvdev->old_vals, 0, val);
--            if (valuator_mask_fetch(pEvdev->vals, 1, &val))
-+            if (valuator_mask_fetch(pEvdev->abs_vals, 1, &val))
-                 valuator_mask_set(pEvdev->old_vals, 1, val);
-         }
-     }
-@@ -480,9 +819,9 @@ EvdevProcessValuators(InputInfoPtr pInfo)
-             pEvdev->delta[REL_X] = pEvdev->delta[REL_Y];
-             pEvdev->delta[REL_Y] = tmp;
-             if (pEvdev->delta[REL_X] == 0)
--                valuator_mask_unset(pEvdev->vals, REL_X);
-+                valuator_mask_unset(pEvdev->rel_vals, REL_X);
-             if (pEvdev->delta[REL_Y] == 0)
--                valuator_mask_unset(pEvdev->vals, REL_Y);
-+                valuator_mask_unset(pEvdev->rel_vals, REL_Y);
-         }
-         if (pEvdev->invert_x)
-             pEvdev->delta[REL_X] *= -1;
-@@ -498,7 +837,7 @@ EvdevProcessValuators(InputInfoPtr pInfo)
-         {
-             int map = pEvdev->rel_axis_map[i];
-             if (pEvdev->delta[i] && map != -1)
--                valuator_mask_set(pEvdev->vals, map, pEvdev->delta[i]);
-+                valuator_mask_set(pEvdev->rel_vals, map, pEvdev->delta[i]);
-         }
-     }
-     /*
-@@ -511,9 +850,9 @@ EvdevProcessValuators(InputInfoPtr pInfo)
-      * just works.
-      */
-     else if (pEvdev->abs_queued && pEvdev->in_proximity) {
--        EvdevSwapAbsValuators(pEvdev, pEvdev->vals);
--        EvdevApplyCalibration(pEvdev, pEvdev->vals);
--        Evdev3BEmuProcessAbsMotion(pInfo, pEvdev->vals);
-+        EvdevSwapAbsValuators(pEvdev, pEvdev->abs_vals);
-+        EvdevApplyCalibration(pEvdev, pEvdev->abs_vals);
-+        Evdev3BEmuProcessAbsMotion(pInfo, pEvdev->abs_vals);
-     }
- }
- 
-@@ -559,10 +898,10 @@ EvdevProcessProximityState(InputInfoPtr pInfo)
-     if (!pEvdev->prox_queued)
-     {
-         if (pEvdev->abs_queued && !pEvdev->in_proximity)
--            for (i = 0; i < valuator_mask_size(pEvdev->vals); i++)
--                if (valuator_mask_isset(pEvdev->vals, i))
-+            for (i = 0; i < valuator_mask_size(pEvdev->abs_vals); i++)
-+                if (valuator_mask_isset(pEvdev->abs_vals, i))
-                     valuator_mask_set(pEvdev->prox, i,
--                                      valuator_mask_get(pEvdev->vals, i));
-+                                      valuator_mask_get(pEvdev->abs_vals, i));
-         return 0;
-     }
- 
-@@ -581,13 +920,13 @@ EvdevProcessProximityState(InputInfoPtr pInfo)
-         /* We're about to go into/out of proximity but have no abs events
-          * within the EV_SYN. Use the last coordinates we have. */
-         for (i = 0; i < valuator_mask_size(pEvdev->prox); i++)
--            if (!valuator_mask_isset(pEvdev->vals, i) &&
-+            if (!valuator_mask_isset(pEvdev->abs_vals, i) &&
-                 valuator_mask_isset(pEvdev->prox, i))
--                valuator_mask_set(pEvdev->vals, i,
-+                valuator_mask_set(pEvdev->abs_vals, i,
-                                   valuator_mask_get(pEvdev->prox, i));
-         valuator_mask_zero(pEvdev->prox);
- 
--        pEvdev->abs_queued = valuator_mask_size(pEvdev->vals);
-+        pEvdev->abs_queued = valuator_mask_size(pEvdev->abs_vals);
-     }
- 
-     pEvdev->in_proximity = prox_state;
-@@ -622,7 +961,7 @@ EvdevProcessButtonEvent(InputInfoPtr pInfo, struct input_event *ev)
+@@ -590,7 +929,7 @@
      if (button)
          EvdevQueueButtonEvent(pInfo, button, value);
      else
@@ -1211,43 +1085,7 @@ index 651b895..75a3471 100644
  }
  
  /**
-@@ -670,7 +1009,7 @@ EvdevProcessRelativeMotionEvent(InputInfoPtr pInfo, struct input_event *ev)
-             pEvdev->rel_queued = 1;
-             pEvdev->delta[ev->code] += value;
-             map = pEvdev->rel_axis_map[ev->code];
--            valuator_mask_set(pEvdev->vals, map, value);
-+            valuator_mask_set(pEvdev->rel_vals, map, value);
-             break;
-     }
- }
-@@ -821,7 +1160,7 @@ EvdevProcessAbsoluteMotionEvent(InputInfoPtr pInfo, struct input_event *ev)
-         pEvdev->abs_queued = 1;
-     } else if (!pEvdev->mt_mask) {
-         map = pEvdev->abs_axis_map[ev->code];
--        valuator_mask_set(pEvdev->vals, map, value);
-+        valuator_mask_set(pEvdev->abs_vals, map, value);
-         pEvdev->abs_queued = 1;
-     }
- }
-@@ -881,7 +1220,7 @@ EvdevPostRelativeMotionEvents(InputInfoPtr pInfo)
-     EvdevPtr pEvdev = pInfo->private;
- 
-     if (pEvdev->rel_queued) {
--        xf86PostMotionEventM(pInfo->dev, Relative, pEvdev->vals);
-+        xf86PostMotionEventM(pInfo->dev, Relative, pEvdev->rel_vals);
-     }
- }
- 
-@@ -903,7 +1242,7 @@ EvdevPostAbsoluteMotionEvents(InputInfoPtr pInfo)
-      * this scheme still just work.
-      */
-     if (pEvdev->abs_queued && pEvdev->in_proximity) {
--        xf86PostMotionEventM(pInfo->dev, Absolute, pEvdev->vals);
-+        xf86PostMotionEventM(pInfo->dev, Absolute, pEvdev->abs_vals);
-     }
- }
- 
-@@ -936,13 +1275,24 @@ static void EvdevPostQueuedEvents(InputInfoPtr pInfo)
+@@ -907,13 +1246,24 @@
  {
      int i;
      EvdevPtr pEvdev = pInfo->private;
@@ -1275,8 +1113,8 @@ index 651b895..75a3471 100644
          case EV_QUEUE_BTN:
              if (Evdev3BEmuFilterEvent(pInfo,
                                        pEvdev->queue[i].detail.key,
-@@ -968,6 +1318,10 @@ static void EvdevPostQueuedEvents(InputInfoPtr pInfo)
- #endif
+@@ -937,6 +1287,10 @@
+             break;
          }
      }
 +    if(pEvdev->flags & EVDEV_KEYBOARD_EVENTS){
@@ -1286,72 +1124,7 @@ index 651b895..75a3471 100644
  }
  
  /**
-@@ -1001,8 +1355,10 @@ EvdevProcessSyncEvent(InputInfoPtr pInfo, struct input_event *ev)
-         /* don't reset the touchMask */
-     }
- 
--    if (pEvdev->vals)
--        valuator_mask_zero(pEvdev->vals);
-+    if (pEvdev->rel_vals)
-+        valuator_mask_zero(pEvdev->rel_vals);
-+    if (pEvdev->abs_vals)
-+        valuator_mask_zero(pEvdev->abs_vals);
-     pEvdev->num_queue = 0;
-     pEvdev->abs_queued = 0;
-     pEvdev->rel_queued = 0;
-@@ -1042,7 +1398,8 @@ EvdevFreeMasks(EvdevPtr pEvdev)
- 
-     free(pEvdev->slots);
-     pEvdev->slots = NULL;
--    valuator_mask_free(&pEvdev->vals);
-+    valuator_mask_free(&pEvdev->abs_vals);
-+    valuator_mask_free(&pEvdev->rel_vals);
-     valuator_mask_free(&pEvdev->old_vals);
-     valuator_mask_free(&pEvdev->prox);
- #ifdef MULTITOUCH
-@@ -1321,13 +1678,19 @@ EvdevAddAbsValuatorClass(DeviceIntPtr device, int num_scroll_axes)
- 
-     pEvdev->num_vals = num_axes;
-     if (num_axes > 0) {
--        pEvdev->vals = valuator_mask_new(num_axes);
-+        pEvdev->abs_vals = valuator_mask_new(num_axes);
-         pEvdev->old_vals = valuator_mask_new(num_axes);
--        if (!pEvdev->vals || !pEvdev->old_vals) {
-+        pEvdev->rel_vals = valuator_mask_new(num_axes);
-+        /* One needs rel_vals for an absolute device because
-+         *   a) their might be some (relative) scroll axes
-+         *   b) the device could be set in EVDEV_RELATIVE_MODE
-+         */
-+        if (!pEvdev->abs_vals || !pEvdev->rel_vals || !pEvdev->old_vals) {
-             xf86IDrvMsg(pInfo, X_ERROR, "failed to allocate valuator masks.\n");
-             goto out;
-         }
-     }
-+
- #ifdef MULTITOUCH
-     if (num_mt_axes_total > 0) {
-         int nslots = num_slots(pEvdev);
-@@ -1693,8 +2056,8 @@ EvdevAddRelValuatorClass(DeviceIntPtr device, int num_scroll_axes)
- 
-     pEvdev->num_vals = num_axes;
-     if (num_axes > 0) {
--        pEvdev->vals = valuator_mask_new(num_axes);
--        if (!pEvdev->vals)
-+        pEvdev->rel_vals = valuator_mask_new(num_axes);
-+        if (!pEvdev->rel_vals)
-             goto out;
-     }
-     atoms = malloc(pEvdev->num_vals * sizeof(Atom));
-@@ -1745,7 +2108,7 @@ EvdevAddRelValuatorClass(DeviceIntPtr device, int num_scroll_axes)
-     return Success;
- 
- out:
--    valuator_mask_free(&pEvdev->vals);
-+    valuator_mask_free(&pEvdev->rel_vals);
-     return !Success;
- }
- 
-@@ -1984,6 +2347,7 @@ EvdevOn(DeviceIntPtr device)
+@@ -1956,6 +2310,7 @@
      xf86FlushInput(pInfo->fd);
      xf86AddEnabledDevice(pInfo);
      EvdevMBEmuOn(pInfo);
@@ -1359,7 +1132,7 @@ index 651b895..75a3471 100644
      Evdev3BEmuOn(pInfo);
      pEvdev->flags |= EVDEV_INITIALIZED;
      device->public.on = TRUE;
-@@ -2010,11 +2374,11 @@ EvdevProc(DeviceIntPtr device, int what)
+@@ -1982,11 +2337,11 @@
          return EvdevOn(device);
  
      case DEVICE_OFF:
@@ -1376,7 +1149,7 @@ index 651b895..75a3471 100644
          if (pInfo->fd != -1)
          {
              EvdevGrabDevice(pInfo, 0, 1);
-@@ -2667,6 +3031,118 @@ EvdevPreInit(InputDriverPtr drv, InputInfoPtr pInfo, int flags)
+@@ -2637,6 +2992,118 @@
          EvdevDragLockPreInit(pInfo);
      }
  
@@ -1495,10 +1268,9 @@ index 651b895..75a3471 100644
      return Success;
  
  error:
-diff --git a/src/evdev.h b/src/evdev.h
-index 2a010e6..3bfb09a 100644
---- a/src/evdev.h
-+++ b/src/evdev.h
+diff -aur xf86-input-evdev-2.10.0.orig/src/evdev.h xf86-input-evdev-2.10.0.patched/src/evdev.h
+--- xf86-input-evdev-2.10.0.orig/src/evdev.h	2015-10-27 08:45:58.000000000 +1100
++++ xf86-input-evdev-2.10.0.patched/src/evdev.h	2015-11-06 20:14:47.259052226 +1100
 @@ -37,6 +37,7 @@
  
  #include <linux/input.h>
@@ -1507,7 +1279,7 @@ index 2a010e6..3bfb09a 100644
  
  #include <xorg-server.h>
  #include <xf86Xinput.h>
-@@ -94,6 +95,13 @@
+@@ -88,6 +89,13 @@
  #define MAX_VALUATORS 36
  #endif
  
@@ -1521,22 +1293,8 @@ index 2a010e6..3bfb09a 100644
  #ifndef XI_PROP_DEVICE_NODE
  #define XI_PROP_DEVICE_NODE "Device Node"
  #endif
-@@ -161,9 +169,10 @@ typedef struct {
-     int num_mt_vals;        /* number of multitouch valuators */
-     int abs_axis_map[ABS_CNT]; /* Map evdev ABS_* to index */
-     int rel_axis_map[REL_CNT]; /* Map evdev REL_* to index */
--    ValuatorMask *vals;     /* new values coming in */
--    ValuatorMask *old_vals; /* old values for calculating relative motion */
--    ValuatorMask *prox;     /* last values set while not in proximity */
-+    ValuatorMask *abs_vals;     /* values for absolute axis */
-+    ValuatorMask *rel_vals;     /* values for relative axis */
-+    ValuatorMask *old_vals; /* old absolute values for calculating relative motion */
-+    ValuatorMask *prox;     /* last absolute values set while not in proximity */
-     ValuatorMask *mt_mask;
-     ValuatorMask **last_mt_vals;
-     int cur_slot;
-@@ -186,6 +195,33 @@ typedef struct {
-     int delta[REL_CNT];
+@@ -176,6 +184,33 @@
+ 
      unsigned int abs_queued, rel_queued, prox_queued;
  
 +  /* ahm variables */
@@ -1569,7 +1327,7 @@ index 2a010e6..3bfb09a 100644
      /* Middle mouse button emulation */
      struct {
          BOOL                enabled;
-@@ -256,7 +292,11 @@ typedef struct {
+@@ -246,7 +281,11 @@
  } EvdevRec, *EvdevPtr;
  
  /* Event posting functions */
@@ -1581,4 +1339,4 @@ index 2a010e6..3bfb09a 100644
 +int EvdevQueueKbdEvent(InputInfoPtr pInfo, struct input_event *ev, int value);
  void EvdevQueueButtonEvent(InputInfoPtr pInfo, int button, int value);
  void EvdevQueueProximityEvent(InputInfoPtr pInfo, int value);
- #ifdef MULTITOUCH
+ void EvdevQueueTouchEvent(InputInfoPtr pInfo, unsigned int touch,
