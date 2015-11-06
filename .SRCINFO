@@ -1,6 +1,6 @@
 pkgbase = mate-power-manager-upower
 	pkgdesc = Power management tool for the MATE desktop (GTK2 version), with upower 0.9.23
-	pkgver = 1.10.2
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = http://mate-desktop.org
 	install = mate-power-manager.install
@@ -21,15 +21,15 @@ pkgbase = mate-power-manager-upower
 	depends = libgnome-keyring
 	depends = libnotify
 	depends = libunique
-	depends = mate-desktop>=1.10
+	depends = mate-desktop>=1.12
 	depends = upower=0.9.23
 	optdepends = mate-panel: Set brightness and inhibit power management from the panel
 	optdepends = yelp: for reading MATE help documents
 	provides = mate-power-manager
 	conflicts = mate-power-manager
 	conflicts = mate-power-manager-gtk3
-	source = http://pub.mate-desktop.org/releases/1.10/mate-power-manager-1.10.2.tar.xz
-	sha1sums = dd609bc7ffc7cd481813371ba4b035fa2efa81bb
+	source = http://pub.mate-desktop.org/releases/1.12/mate-power-manager-1.12.0.tar.xz
+	sha256sums = e578ea838cb9a78b23fabf61dd11709cd4be70c240f5bb00e2f387f628a65adb
 
 pkgname = mate-power-manager-upower
 
