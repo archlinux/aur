@@ -2,7 +2,7 @@
 # Contributor: KokaKiwi <admin@kokaelkiwi.eu>
 
 pkgname=nanomsg-git
-pkgver=0.5.beta.r82.ga6dcc0c
+pkgver=0.7.beta.r1.g72c695b
 pkgrel=1
 pkgdesc='Simple high-performance implementation of several "scalability protocols"'
 url='http://nanomsg.org/'
@@ -28,7 +28,7 @@ build() {
 
 check() {
   cd nanomsg
-  make check
+  make check -j1
 }
 
 package() {
