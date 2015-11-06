@@ -1,0 +1,32 @@
+pkgbase = auto-multiple-choice
+	pkgdesc = AMC est un ensemble d'utilitaires permettant de créer, gérer et corriger automatiquement des questionnaires à choix multiples (QCM)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://home.gna.org/auto-qcm/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl-locale-gettext
+	depends = perl-xml-writer
+	depends = perl-xml-simple
+	depends = perl-dbd-sqlite
+	depends = perl-file-mimeinfo
+	depends = ttf-linux-libertine
+	depends = perl-text-csv
+	depends = perl-dbi
+	depends = perl-archive-zip
+	depends = graphicsmagick
+	depends = texlive-bin
+	depends = texlive-core
+	depends = gtk2-perl
+	depends = netpbm
+	depends = opencv
+	depends = poppler
+	source = http://download.gna.org/auto-qcm/auto-multiple-choice_1.2.1_precomp.tar.gz
+	source = amc.patch
+	md5sums = fecb9007b315d53502be5ec0eb6901a8
+	md5sums = d3e490a6785f4df9a26424ee52e7100b
+
+pkgname = auto-multiple-choice
+	install = amc.install
+

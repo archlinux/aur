@@ -1,0 +1,33 @@
+diff -Naur auto-multiple-choice-1.2.1-old/Makefile auto-multiple-choice-1.2.1/Makefile
+--- auto-multiple-choice-1.2.1-old/Makefile	2013-07-28 15:22:29.000000000 +0200
++++ auto-multiple-choice-1.2.1/Makefile	2014-10-16 14:27:34.019272080 +0200
+@@ -62,7 +62,7 @@
+ 
+ SHELL=/bin/sh
+ 
+-DESTDIR=
++DESTDIR ?=
+ 
+ # AMC components to build
+ 
+diff -Naur auto-multiple-choice-1.2.1-old/Makefile.conf auto-multiple-choice-1.2.1/Makefile.conf
+--- auto-multiple-choice-1.2.1-old/Makefile.conf	2013-07-28 15:22:29.000000000 +0200
++++ auto-multiple-choice-1.2.1/Makefile.conf	2014-10-16 14:24:21.662237856 +0200
+@@ -33,7 +33,7 @@
+ # directory for executable
+ BINDIR=/usr/bin
+ # directory for perl modules
+-PERLDIR=/usr/share/perl5
++PERLDIR=/usr/share/perl5/vendor_perl
+ # directory for some AMC executables, not to be used by end-user
+ MODSDIR=/usr/lib/AMC
+ # directory for LaTeX style file
+@@ -73,7 +73,7 @@
+ 
+ # BUILD : options to compile with netpbm / opencv libraries
+ 
+-GCC_NETPBM=-lnetpbm
++GCC_NETPBM=-I /usr/include/netpbm -lnetpbm
+ 
+ GCC_OPENCV=-I /usr/include/opencv
+ GCC_OPENCV_LIBS=auto
