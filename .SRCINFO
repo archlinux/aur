@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-betteroffted
 	pkgdesc = Fortune quotes from Better Off Ted
-	pkgver = 1506012036
+	pkgver = 1510300813
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Better_Off_Ted
 	arch = any

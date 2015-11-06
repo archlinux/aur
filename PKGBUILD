@@ -1,5 +1,5 @@
 pkgname=fortune-mod-betteroffted
-pkgver=1506012036
+pkgver=1510300813
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Better Off Ted"
