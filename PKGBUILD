@@ -17,15 +17,15 @@ _full_name=${_name}-${_channel}
 pkgname=${_full_name}-${_lang}
 pkgdesc='Standalone Mail/News reader from Mozilla — Localized Nightly build'
 url='http://www.mozilla.org/thunderbird/'
-_version=45.0a1
-pkgver=45.0a1.20150814
+_version=44.0a1
+pkgver=44.0a1.20150814
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 'freetype2' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg' 'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss' 'shared-mime-info' 'sqlite' 'startup-notification')
 optdepends=('libcanberra: for sound support')
 _base_src="${_name}-${_version}.${_lang}.linux-${CARCH}"
-_base_url="http://ftp.mozilla.org/pub/mozilla.org/${_name}/${_channel}/latest-comm-central-l10n"
+_base_url="http://ftp.mozilla.org/pub/${_name}/${_channel}/latest-comm-central-l10n"
 _tarball="${_base_src}.tar.bz2"
 source=(
     "${_base_url}/${_tarball}"
@@ -41,7 +41,7 @@ install=$pkgname.install
 
 pkgver() {
   SRC_VER="${_name}-${_version}.en-US.linux-${CARCH}.txt"
-  curl -OR "http://ftp.mozilla.org/pub/mozilla.org/${_name}/${_channel}/latest-comm-central/${SRC_VER}"
+  curl -OR "http://ftp.mozilla.org/pub/${_name}/${_channel}/latest-comm-central/${SRC_VER}"
   echo "${_version}.$(head -n1 ${SRC_VER} | cut -c -8)"
 }
 
