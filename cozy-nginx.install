@@ -229,13 +229,13 @@ post_install() {
 		    AFTER=$(sha1sum $CONFIGFILE | cut -f1 -d' ')
 		    if [ "$BEFORE" != "$AFTER" ]; then
 		        if $EXISTING; then
-		            echo "Your configuration file for Apache is different from the one included in this package:"
+		            echo "Your configuration file for Nginx is different from the one included in this package:"
 		            diff /etc/nginx/cozy.conf /usr/share/cozy/nginx-config
 		            while true; do
 			    	msg_blue "Do you want to install the new version? [Y/n]"
 		                read yn
 		                case $yn in
-		                    [Nn]* ) echo "The new configuration file is stored on /usr/share/cozy/apache-config"; break;;
+		                    [Nn]* ) echo "The new configuration file is stored on /usr/share/cozy/nginx-config"; break;;
 		                    * ) mv /etc/nginx/cozy.conf /etc/nginx/cozy.conf.old;
 		                        cp /usr/share/cozy/nginx-config /etc/nginx/cozy.conf;
 		                        echo "The old configuration file has been renamed as /etc/nginx/cozy.conf.old"
