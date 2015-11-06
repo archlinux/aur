@@ -1,6 +1,6 @@
 pkgbase = cppqed-git
 	pkgdesc = C++QED is a highly flexible framework for simulating open quantum dynamics.
-	pkgver = 1498.2.100.2_39_gd5652b9
+	pkgver = 2.100.3
 	pkgrel = 1
 	url = http://cppqed.sourceforge.net
 	arch = i686
