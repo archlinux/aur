@@ -1,0 +1,16 @@
+pkgbase = gromit-mpx-git
+	pkgdesc = Desktop annotation tool. GTK3 multi-pointer variant of original gromit utility.
+	pkgver = 1.1.r33.g98e92c2
+	pkgrel = 1
+	url = https://github.com/bk138/gromit-mpx
+	arch = i686
+	arch = x86_64
+	license = custom:Public Domain
+	depends = gtk3
+	provides = gromit
+	conflicts = gromit
+	source = git://github.com/bk138/gromit-mpx.git
+	md5sums = SKIP
+
+pkgname = gromit-mpx-git
+
