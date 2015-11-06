@@ -5,7 +5,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=0.9.85
-pkgrel=1
+pkgrel=2
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -76,6 +76,8 @@ package() {
   msg2 "Installing man pages"
   mkdir -p "$pkgdir/usr/share"
   mv -f "$pkgdir/opt/$pkgname/help/man" "$pkgdir/usr/share/"
+  chmod 0755 "$pkgdir/usr/share/man"
+  chmod 0755 "$pkgdir/usr/share/man/man1"
 
   msg2 "Creating symlinks for binaries"
   mkdir -p "$pkgdir/usr/bin"
