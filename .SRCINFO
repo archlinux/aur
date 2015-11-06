@@ -14,7 +14,7 @@ pkgbase = seafile-client
 	options = !libtool
 	options = !emptydirs
 	source = seafile-client-v4.4.2.tar.gz::https://github.com/haiwen/seafile-client/archive/v4.4.2.tar.gz
-	md5sums = 8749f059e9209df31e662c9325c735e5
+	sha256sums = 86fbdfd2ac4de113aa4498802fbc663bc150ec4525f2ccf6b87d45af624f432a
 
 pkgname = seafile-client
 
