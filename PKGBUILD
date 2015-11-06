@@ -5,13 +5,13 @@
 # Note: This packae is proprietary and distribution is limited. However, we
 # have written permission to by the FMOD CEO to distribute this in binary form.
 pkgname=fmodex
-pkgver=4.44.33
+pkgver=4.44.58
 pkgrel=1
 pkgdesc="An advanced audio engine"
 arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
 license=('custom')
-source=("fmodapi44433linux.tar.gz::https://www.dropbox.com/s/48eipphfgf46yc1/fmodapi44433linux.tar.gz?dl=1")
+source=("fmodapi44458linux.tar.gz::https://www.dropbox.com/s/0z62kk2p79gs6bh/fmodapi44458linux.tar.gz?dl=1")
 ## source=fmodapi44433linux.tar.gz?dl=1
 md5sums=('SKIP')
 

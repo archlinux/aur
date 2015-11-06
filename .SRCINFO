@@ -1,12 +1,12 @@
 pkgbase = fmodex
 	pkgdesc = An advanced audio engine
-	pkgver = 4.44.33
+	pkgver = 4.44.58
 	pkgrel = 1
 	url = http://www.fmod.org/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = fmodapi44433linux.tar.gz::https://www.dropbox.com/s/48eipphfgf46yc1/fmodapi44433linux.tar.gz?dl=1
+	source = fmodapi44458linux.tar.gz::https://www.dropbox.com/s/0z62kk2p79gs6bh/fmodapi44458linux.tar.gz?dl=1
 	md5sums = SKIP
 
 pkgname = fmodex
