@@ -2,7 +2,7 @@
 pkgname=grub-customizer
 pkgver=4.0.6
 pkgbranch=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical grub2 settings manager"
 url="https://launchpad.net/grub-customizer"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('e4d76cd7cb6eb7ec03461e77db43bf34' \
 package(){
   cd "$srcdir"/$pkgname-$pkgver/
   msg "Starting make..."
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .&& make
+  cmake -DCMAKE_CXX_FLAGS=" -std=c++11" -DCMAKE_INSTALL_PREFIX=/usr .&& make
   make install DESTDIR=${pkgdir} || return 1
   msg "Modifying grub-customizer.desktop file..."
   sed -i -e '/^Categories=/s/Settings/GTK/' \
