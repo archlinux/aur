@@ -1,6 +1,6 @@
 # This PKGBUILD is maintained at: https://github.com/majewsky/system-configuration/tree/master/holo
 pkgname='holo'
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Minimalistic configuration management'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('shadow')
 makedepends=('go' 'perl')
 source=("https://github.com/holocm/holo/releases/download/v${pkgver}/holo-${pkgver}.tar.gz")
-md5sums=('8e41e9bf0b7d1da455071531206309b3')
+md5sums=('fb05e37aab19dbd99d965275c21a163b')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
