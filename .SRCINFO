@@ -1,7 +1,7 @@
 pkgbase = netbeans-cpp
 	pkgdesc = Netbeans IDE development platform - C/C++ only
-	pkgver = 8.0.2
-	pkgrel = 4
+	pkgver = 8.1
+	pkgrel = 1
 	url = https://netbeans.org/
 	install = netbeans.install
 	arch = i686
@@ -13,10 +13,12 @@ pkgbase = netbeans-cpp
 	replaces = netbeans-cpp-beta
 	options = !strip
 	backup = usr/share/netbeans/etc/netbeans.conf
-	source = http://download.netbeans.org/netbeans/8.0.2/final/bundles/netbeans-8.0.2-cpp-linux.sh
 	source = netbeans.desktop
-	md5sums = 285d6e80e29f81721c30484b46e777c5
 	md5sums = eb9c35b558997f62a52bddad16dba248
+	source_i686 = netbeans-8.1-cpp-linux.sh::http://download.netbeans.org/netbeans/8.1/final/bundles/netbeans-8.1-cpp-linux-x86.sh
+	md5sums_i686 = 0a4025cf877347b5f48707fdda238255
+	source_x86_64 = netbeans-8.1-cpp-linux.sh::http://download.netbeans.org/netbeans/8.1/final/bundles/netbeans-8.1-cpp-linux-x64.sh
+	md5sums_x86_64 = 3a437c52d22dd068545e55171cbcf7fa
 
 pkgname = netbeans-cpp
 
