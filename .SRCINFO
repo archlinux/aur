@@ -1,6 +1,6 @@
 pkgbase = packetbeat
 	pkgdesc = An open source network packet analyzer that ships data to Elasticsearch.
-	pkgver = 1.0.0_beta4
+	pkgver = 1.0.0_rc1
 	pkgrel = 1
 	url = https://www.elastic.co/products/beats/packetbeat
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = packetbeat
 	conflicts = packetbeat-bin
 	options = !strip
 	backup = etc/packetbeat/packetbeat.yml
-	source = https://github.com/elastic/packetbeat/archive/v1.0.0-beta4.tar.gz
+	source = https://github.com/elastic/packetbeat/archive/v1.0.0-rc1.tar.gz
 	source = packetbeat.service
-	sha256sums = 05de50b566e8eb5563e939b1e99ff62dcf604f69cfb8bbffaea26e1eb3674033
+	sha256sums = 1760c245b4946a14332c75df244bfbe5b412b9cdac9d7d7c07c149f05d46a5f6
 	sha256sums = 09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64
 
 pkgname = packetbeat
