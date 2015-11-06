@@ -4,7 +4,7 @@
 
 pkgname=lilith
 pkgver=0.9.44
-pkgrel=2
+pkgrel=3
 pkgdesc="logging and access event viewer for Logback, log4j and JUL"
 arch=(any)
 url="http://lilith.huxhorn.de/"
@@ -19,6 +19,7 @@ md5sums=('678903bffc0ab5b2c8c4b139fd1621b2'
 
 prepare() {
 	gendesk
+	gpg --recv-keys ⁠⁠⁠6334E557740A1840
 }
 
 package() {
