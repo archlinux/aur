@@ -3,7 +3,7 @@
 
 pkgname=dump1090-fa-git
 _gitname=dump1090
-pkgver=2.1.3.r1.gc55c71b
+pkgver=2.1.3.r10.g497f88f
 pkgrel=1
 pkgdesc="FlightAware/Mutability fork of dump1090, a simple Mode S decoder for RTLSDR devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
