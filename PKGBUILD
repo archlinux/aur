@@ -7,7 +7,7 @@ pkgdesc="ENIGMA, the Extensible Non-Interpreted Game Maker Augmentation."
 url="http://enigma-dev.org"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('alure' 'zlib' 'openal' 'libx11' 'libgl' 'mesa' 'gtk2' 'dumb' 'java32-runtime' 'desktop-file-utils' \
+depends=('alure' 'zlib' 'openal' 'libx11' 'libgl' 'mesa' 'gtk2' 'dumb' 'bin32-jre' 'desktop-file-utils' \
   'hicolor-icon-theme')
 
 makedepends=('git' 'python')
