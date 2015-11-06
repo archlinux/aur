@@ -1,6 +1,6 @@
 pkgbase = kf5-git-meta
 	pkgdesc = Meta package for KDE Frameworks 5
-	pkgver = 20150530
+	pkgver = 20151106
 	pkgrel = 1
 	url = http://www.kde.org/
 	arch = any
@@ -70,6 +70,7 @@ pkgbase = kf5-git-meta
 	depends = modemmanager-qt-git
 	depends = kpeople-git
 	depends = bluez-qt-git
+	depends = breeze-icons-git
 
 pkgname = kf5-git-meta
 

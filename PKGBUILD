@@ -1,7 +1,7 @@
 # Maintainer: Stefano Avallone <stavallo@gmail.com>
 
 pkgname=kf5-git-meta
-pkgver=20150530
+pkgver=20151106
 pkgrel=1
 pkgdesc='Meta package for KDE Frameworks 5'
 arch=(any)
@@ -71,7 +71,8 @@ depends=(kapidox-git
 	 networkmanager-qt-git
 	 modemmanager-qt-git 
          kpeople-git
-	 bluez-qt-git)
+	 bluez-qt-git
+	 breeze-icons-git)
 
 package(){
   /bin/true
