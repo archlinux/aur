@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-twoandahalfmen
 	pkgdesc = Fortune quotes from Two and a Half Men
-	pkgver = 1509131300
+	pkgver = 1511041356
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Two_and_a_Half_Men
 	arch = any
