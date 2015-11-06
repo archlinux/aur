@@ -1,6 +1,6 @@
 pkgbase = jalview
 	pkgdesc = Bioinformatics Multiple Alignment Editor
-	pkgver = 2.9.0
+	pkgver = 2.9.0b2
 	pkgrel = 1
 	url = http://www.jalview.org/
 	arch = any

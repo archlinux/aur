@@ -1,6 +1,6 @@
 # Maintainer: Stefan Seemayer <mail@semicolonsoftware.de>
 pkgname=jalview
-pkgver=2.9.0
+pkgver=2.9.0b2
 pkgrel=1
 pkgdesc="Bioinformatics Multiple Alignment Editor"
 arch=(any)
