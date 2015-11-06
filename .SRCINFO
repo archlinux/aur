@@ -1,11 +1,11 @@
 pkgbase = premake-ninja-git
 	pkgdesc = Premake extension to support Ninja
-	pkgver = r37.e51a1cb
+	pkgver = r76.a256323
 	pkgrel = 1
 	url = http://industriousone.com/premake
 	arch = any
 	license = MIT
-	checkdepends = python2
+	checkdepends = python
 	makedepends = git
 	depends = premake-git
 	depends = ninja

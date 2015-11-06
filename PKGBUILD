@@ -1,5 +1,5 @@
 pkgname=premake-ninja-git
-pkgver=r37.e51a1cb
+pkgver=r76.a256323
 pkgrel=1
 pkgdesc='Premake extension to support Ninja'
 arch=(any)
@@ -19,7 +19,7 @@ pkgver() {
 check() {
   cd premake-ninja/tests
   # tests fail
-  #python ./run_tests.py
+  python ./run_tests.py
 }
 
 package() {
