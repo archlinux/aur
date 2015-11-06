@@ -1,6 +1,6 @@
 pkgbase = onyx-sem
 	pkgdesc = A graphical interface for Structural Equation Modeling
-	pkgver = 1.0.911
+	pkgver = 1.0.932
 	pkgrel = 4
 	url = http://onyx.brandmaier.de
 	install = onyx.install

@@ -6,7 +6,7 @@
 # Maintainer: Stephen Martin <hwkiller at gmail dot com>
 pkgname=onyx-sem
 _pkgname=onyx
-pkgver=1.0.911
+pkgver=1.0.932
 _pkgver="1.0-911"
 pkgrel=4
 pkgdesc="A graphical interface for Structural Equation Modeling"
