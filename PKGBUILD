@@ -1,6 +1,6 @@
 # Maintainer: Marc McIntosh <email@marcmcintosh.cninja>
 pkgname=jxcore
-pkgver=v0.3.0.6.r23.g710a754
+pkgver=v0.3.0.6.r159.g7b6866f
 pkgrel=1
 pkgdesc="Evented IO for SpiderMonkey and V8 JavaScript"
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ license=('common')
 groups=()
 depends=('openssl' 'zlib')
 makedepends=('git' 'python2')
-optdepends=('npm')
-provides=()
-conflicts=()
-replaces=('nodejs')
+optdepends=()
+provides=('npm')
+conflicts=('nodejs' 'npm')
+replaces=()
 backup=()
 options=()
 install=
@@ -55,4 +55,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('SKIP')
