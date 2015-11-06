@@ -1,0 +1,14 @@
+*.pkg.tar.*
+jalview.jnlp
+pkg
+src
+#### joe made this: https://goel.io/joe
+
+#####=== Vim ===#####
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
