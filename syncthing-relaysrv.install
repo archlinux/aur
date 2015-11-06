@@ -1,0 +1,4 @@
+post_install (){
+  systemd-sysusers syncthing-relaysrv.conf
+  systemd-tmpfiles --create syncthing-relaysrv.conf
+}
