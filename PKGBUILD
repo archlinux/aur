@@ -5,11 +5,6 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-# This is a very basic package for installing the fonts provided with Windows
-# 10. There are much more fancy packages available in the AUR for win7, win8
-# and office fonts. If any of those maintainers want to tweak this package
-# accordingly, I will happily give them permissions to do so.
-
 # Instructions were copied from ttf-ms-win8 and slightly modified:
 #
 # BUILD INSTRUCTIONS:
@@ -49,17 +44,17 @@
 # You need the files listed in the source=() array. Place them in the same
 # directory as this PKGBUILD file, then run makepkg.
 
-pkgname=ttf-ms-win10
+pkgbase=ttf-ms-win10
+pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.10240
-pkgrel=2
-pkgdesc='Microsoft Windows 10 TrueType fonts'
+pkgrel=3
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
 depends=(fontconfig xorg-fonts-encodings xorg-mkfontscale xorg-mkfontdir)
-provides=(ttf-font ttf-tahoma ttf-{ms,vista,win7}-fonts ttf-ms-win8{,-arabic,-hebrew,-indic,-japanese,-korean,-other,-sea,-thai,-zh_cn,-zh_tw})
-conflicts=(ttf-tahoma ttf-{ms,vista,win7}-fonts ttf-ms-win8{,-arabic,-hebrew,-indic,-japanese,-korean,-other,-sea,-thai,-zh_cn,-zh_tw})
-install=$pkgname.install
+provides=(ttf-font ttf-ms-fonts)
+conflicts=(ttf-{ms,vista,win7}-fonts)
+install=$pkgbase.install
 
 _ttf_ms_win10=(
 #########################################################################################
@@ -176,16 +171,15 @@ gadugi.ttf     gadugib.ttf                                  # Gadugi
 mvboli.ttf                                                  # MV Boli
 )
 
-_fonts=(${_ttf_ms_win10[@]}
-        ${_ttf_ms_win10_japanese[@]}
-        ${_ttf_ms_win10_korean[@]}
-        ${_ttf_ms_win10_sea[@]}
-        ${_ttf_ms_win10_thai[@]}
-        ${_ttf_ms_win10_zh_cn[@]}
-        ${_ttf_ms_win10_zh_tw[@]}
-        ${_ttf_ms_win10_other[@]})
-
-source=(${_fonts[@]/#/file://} file://license.rtf)
+source=(${_ttf_ms_win10[@]/#/file://}
+        ${_ttf_ms_win10_japanese[@]/#/file://}
+        ${_ttf_ms_win10_korean[@]/#/file://}
+        ${_ttf_ms_win10_sea[@]/#/file://}
+        ${_ttf_ms_win10_thai[@]/#/file://}
+        ${_ttf_ms_win10_zh_cn[@]/#/file://}
+        ${_ttf_ms_win10_zh_tw[@]/#/file://}
+        ${_ttf_ms_win10_other[@]/#/file://}
+        file://license.rtf)
 
 sha256sums=('95766b58f7d869b0fa2cf6e6feb26c1b21cdf2631f1c5863fc9bd206d5c6e8ee'
             '61daedc4107c937e66911b8184688601ac70f9c27f19d069c3b38f892fa314e4'
@@ -325,12 +319,56 @@ sha256sums=('95766b58f7d869b0fa2cf6e6feb26c1b21cdf2631f1c5863fc9bd206d5c6e8ee'
             '90aa8461b7d61e350495584e0ffcc3a5a3168048605e14b2fedb193b38012962'
             SKIP)
 
-package() {
-    for font in ${_fonts[@]}; do
+_package() {
+    conflicts+=(${pkgname/10/8})
+
+    for font in $@; do
         install -Dm644 $font -t "$pkgdir/usr/share/fonts/TTF"
     done
 
     install -Dm644 license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_ttf-ms-win10() {
+    pkgdesc='Microsoft Windows 10 TrueType fonts'
+    provides+=('ttf-tahoma')
+    conflicts+=('ttf-tahoma')
+    _package ${_ttf_ms_win10[@]}
+}
+
+package_ttf-ms-win10-japanese() {
+    pkgdesc='Microsoft Windows 10 Japanese TrueType fonts'
+    _package ${_ttf_ms_win10_japanese[@]}
+}
+
+package_ttf-ms-win10-korean() {
+    pkgdesc='Microsoft Windows 10 Korean TrueType fonts'
+    _package ${_ttf_ms_win10_korean[@]}
+}
+
+package_ttf-ms-win10-sea() {
+    pkgdesc='Microsoft Windows 10 Southeast Asian TrueType fonts'
+    _package ${_ttf_ms_win10_sea[@]}
+}
+
+package_ttf-ms-win10-thai() {
+    pkgdesc='Microsoft Windows 10 Thai TrueType fonts'
+    _package ${_ttf_ms_win10_thai[@]}
+}
+
+package_ttf-ms-win10-zh_cn() {
+    pkgdesc='Microsoft Windows 10 Simplified Chinese TrueType fonts'
+    _package ${_ttf_ms_win10_zh_cn[@]}
+}
+
+package_ttf-ms-win10-zh_tw() {
+    pkgdesc='Microsoft Windows 10 Traditional Chinese TrueType fonts'
+    _package ${_ttf_ms_win10_zh_tw[@]}
+}
+
+package_ttf-ms-win10-other() {
+    pkgdesc='Microsoft Windows 10 Other TrueType fonts'
+    _package ${_ttf_ms_win10_other[@]}
 }
 
 # vim: ts=4 sw=4 et
