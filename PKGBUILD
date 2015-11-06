@@ -2,7 +2,7 @@
 
 pkgname=unarchiver-nodep
 epoch=1
-pkgver=1.8.1
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="unar and lsar that don't depend on gnustep-base. Resolv conflict with darling-git."
 arch=('x86_64')
@@ -44,10 +44,10 @@ package() {
   install -d "$pkgdir/usr/bin/"
   install -m755 unar lsar "$pkgdir/usr/lib/unarchiver"
   #ln -s /usr/lib/libicuuc.so "$pkgdir/usr/lib/unarchiver/libicuuc.so.54"
-  ldd "$pkgdir/usr/lib/unarchiver/lsar" | grep "not found" | grep -oP 'lib\S+?(?= )' | while read line
-  do
-    ln -s /usr/lib/`echo $line | grep -oP 'lib\S+?.so'` "$pkgdir/usr/lib/unarchiver/$line"
-  done
+  #ldd "$pkgdir/usr/lib/unarchiver/lsar" | grep "not found" | grep -oP 'lib\S+?(?= )' | while read line
+  #do
+  #  ln -s /usr/lib/`echo $line | grep -oP 'lib\S+?.so'` "$pkgdir/usr/lib/unarchiver/$line"
+  #done
   
   echo '#!/bin/sh' > "$pkgdir/usr/lib/unarchiver/run.sh"
   echo '[[ -z "$LD_LIBRARY_PATH" ]] && \' >> "$pkgdir/usr/lib/unarchiver/run.sh"
