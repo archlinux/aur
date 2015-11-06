@@ -12,11 +12,11 @@ optdepends=(
   'ttf-ms-fonts: for better fonts'
 )
 install=${pkgname}.install
-source=("http://download2.mikrotik.com/routeros/winbox/3.0rc12/winbox.exe"
+source=("http://download2.mikrotik.com/routeros/winbox/${pkgver}/winbox.exe"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
-md5sums=('8efafca440ad27704393386bb7b69ac5'
+md5sums=('7a72d69c27657f660b8b6a4af1473158'
          'd1b1fc11e54078239756bbf53b10524a'
          '1147544d4bd5ed8181c0eee5fcd31356'
          'f151701beaea7bb702e400ffb844f560')
