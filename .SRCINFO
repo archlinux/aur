@@ -1,15 +1,15 @@
 pkgbase = nodejs-postcss-cli
 	pkgdesc = Traditional CLI for postcss.
-	pkgver = 2.1.0
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/code42day/postcss-cli
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = postcss-cli-2.1.0.tgz
-	source = https://registry.npmjs.org/postcss-cli/-/postcss-cli-2.1.0.tgz
-	sha256sums = 1faa05e7ede18d4611602d973202899238f5ab1cbe5c3f00249b72d98e6af2c2
+	noextract = postcss-cli-2.3.2.tgz
+	source = https://registry.npmjs.org/postcss-cli/-/postcss-cli-2.3.2.tgz
+	sha256sums = 72b03b898ab8d4b4e1222d58d5cda150a1a7978bde35d96b6781f2daf511a1de
 
 pkgname = nodejs-postcss-cli
 
