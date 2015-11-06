@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=46.0.2490.71
+pkgver=46.0.2490.80
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -26,6 +26,7 @@ install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         inox.desktop
+        0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
         chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-autofill-download-manager.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-google-url-tracker.patch
@@ -42,9 +43,10 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-translation-lang-fetch.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-update-pings.patch)
         
-sha256sums=('cd4b18249e64ee267236c9d4578effe810bf8f47567e2d43a5a8a7613787dcb6'
+sha256sums=('fe8610294664b44fdf80d9d0ed140158783474e7ae889e3a34ed32d24913fe3f'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
+            'd114def156d60d5f4c9e42f2955ba19bdebe38037a330ef947af24ace25db39d'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
             'f36d0212121a4a0751e52bdfbc27c5535b925983b90d342a2d067f4fa7c13711'
             'f28a6d92f2f2ee3a69694468019a59718a8328c28be22c0db23671f376f786f2'
@@ -76,6 +78,9 @@ prepare() {
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
   touch chrome/test/data/webui/i18n_process_css_test.html
   
+  # https://code.google.com/p/chromium/issues/detail?id=505226
+  patch -d third_party/pdfium -Np1 <../0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
+
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
   #   libwidevinecdmadapter.so
