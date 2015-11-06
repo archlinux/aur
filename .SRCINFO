@@ -1,0 +1,29 @@
+pkgbase = discover-git
+	pkgdesc = KDE and Plasma resources management GUI
+	pkgver = r4012.6562fa1
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/discover
+	install = discover-git.install
+	arch = i686
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	makedepends = plasma-framework
+	depends = packagekit-qt5
+	depends = knewstuff
+	depends = appstream-qt
+	depends = archlinux-appstream-data
+	depends = hicolor-icon-theme
+	provides = discover
+	conflicts = muon
+	conflicts = discover
+	conflicts = muon-git
+	replaces = muon-git
+	source = git://anongit.kde.org/discover.git
+	md5sums = SKIP
+
+pkgname = discover-git
+
