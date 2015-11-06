@@ -12,7 +12,7 @@ makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk'
              'boost-libs' 'lzo' 'xdg-utils' 'boost' 'ruby' 'git')
 
 provides=('mkvtoolnix')
-conflicts=('mkvtoolnix-cli mkvtoolnix-gtk')
+conflicts=('mkvtoolnix-cli mkvtoolnix-gui')
 replaces=('mkvtoolnix')
 source=('git://github.com/mbunkus/mkvtoolnix.git')
 noextract=()
