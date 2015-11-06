@@ -8,6 +8,7 @@ pkgbase = sinfo
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = armv7l
 	arch = arm
 	license = GPL
 	depends = ncurses
