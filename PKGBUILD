@@ -5,7 +5,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=0.9.85
-pkgrel=2
+pkgrel=3
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -87,7 +87,7 @@ package() {
   # The tarball is rather sloppy with it's file permissions
   msg2 "Fixing file permissions"
   chown -R root:root "$pkgdir"
-  find "$pkgdir/usr/share/man" -print0 | xargs -0 chmod -x
+  chmod -x "$pkgdir"/usr/share/man/man1/*
   find "$pkgdir/opt/$pkgname" -name "*.html" -print0 | xargs -0 chmod -x
   find "$pkgdir/opt/$pkgname" -name "*.json" -print0 | xargs -0 chmod -x
   find "$pkgdir/opt/$pkgname" -name "*_test.py" -print0 | xargs -0 chmod +x
