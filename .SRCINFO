@@ -1,6 +1,6 @@
 pkgbase = kile-git
 	pkgdesc = A TeX/LaTeX frontend for KDE
-	pkgver = v2.1.r540.g9a9e9af
+	pkgver = v2.1.r572.ga13b20
 	pkgrel = 1
 	url = http://kile.sourceforge.net/
 	install = kile-git.install

@@ -5,7 +5,7 @@
 
 _pkgname=kile
 pkgname=kile-git
-pkgver=v2.1.r540.g9a9e9af
+pkgver=v2.1.r572.ga13b20
 pkgrel=1
 pkgdesc="A TeX/LaTeX frontend for KDE"
 arch=('i686' 'x86_64')
