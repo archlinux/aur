@@ -1,6 +1,6 @@
 pkgbase = mail2rem-git
 	pkgdesc = A script that searches *.ics in your mail and puts events to your Remind calendar
-	pkgver = 0.3
+	pkgver = r9.bb0e039
 	pkgrel = 1
 	url = https://github.com/esovetkin/mail2rem
 	arch = any
@@ -11,7 +11,11 @@ pkgbase = mail2rem-git
 	depends = sed
 	depends = ical2rem
 	depends = ripmime
+	depends = bash
 	optdepends = remind
+	provides = aurvote
+	source = git+https://github.com/esovetkin/mail2rem.git
+	sha256sums = SKIP
 
 pkgname = mail2rem-git
 
