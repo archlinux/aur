@@ -1,6 +1,6 @@
 pkgbase = yamagi-quake2
 	pkgdesc = Enhanced Quake II engine optimized for modern systems
-	pkgver = 5.31
+	pkgver = 5.32
 	pkgrel = 1
 	url = http://www.yamagi.org/quake2/
 	install = yamagi-quake2.install
@@ -15,9 +15,9 @@ pkgbase = yamagi-quake2
 	depends = libvorbis
 	optdepends = quake2-demo: shareware data files
 	optdepends = openal: alternative audio backend
-	source = http://deponie.yamagi.org/quake2/quake2-5.31.tar.xz
+	source = http://deponie.yamagi.org/quake2/quake2-5.32.tar.xz
 	source = yamagi-quake2.desktop
-	sha256sums = 3e72b0a10412df9c6dc37cb37d18a6d8a3ea946c6fddae4b62e09cf79cbbaa42
+	sha256sums = bfc7803254a9d22888554d5af252fffe212db3dab0631637bb9045861b8e508c
 	sha256sums = 7049a1798e38a263fb2660b94fb70f5154fad1f807259d41649e12cea1a6757c
 
 pkgname = yamagi-quake2
