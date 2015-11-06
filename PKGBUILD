@@ -1,21 +1,21 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=teamviewer-quicksupport-beta
-pkgver=10.0.35509
+pkgver=11.0.50678
 _pkgver_major=${pkgver%%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc='Teamviewer Quicksupport - All-In-One Software for Remote Support and Online Meetings - beta version'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com/'
 depends=('bash')
 options=('!strip')
-depends_i686=('alsa-lib' 'gcc-libs' 'freetype2' 'libxdamage' 'libxdamage' 'libxrandr' 'libxtst' 'zlib')
-depends_x86_64=('lib32-alsa-lib' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-libxdamage' 'lib32-libxrandr' 'lib32-libxtst' 'lib32-zlib')
+depends_i686=('gcc-libs' 'alsa-lib' 'freetype2' 'libxdamage' 'libxrandr' 'libxtst' 'zlib')
+depends_x86_64=('lib32-gcc-libs' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-libxdamage' 'lib32-libxrandr' 'lib32-libxtst' 'lib32-zlib')
 conflicts=('teamviewer' 'teamviewer-quicksupport')
 provides=('teamviewer-quicksupport')
 license=('custom')
-source=("teamviewer_qs-${pkgver}.tar.gz::http://download.teamviewer.com/download/version_10x/teamviewer_qs.tar.gz")
-sha256sums=('a69c32f27eec8cf38f4cab799dedb392910cea4fd38a3d377913d1126baeef53')
+source=("teamviewer_qs-${pkgver}.tar.gz::http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_qs.tar.gz")
+sha256sums=('aeca42d891f54523ad8f7b61df7e443daf6d44617633bc99390b23be68716437')
 
 prepare() {
 	cd teamviewerqs/
@@ -25,18 +25,26 @@ prepare() {
 		exit 1
 	fi
 
-	# remove some trash
-	rm -rf tv_bin/RTlib/
-	rm -f tv_bin/xdg-utils/xdg-email
 	rmdir config
 	rmdir logfiles
+
+	cd tv_bin/
+
+	bsdtar xf archive.tar.xz
+
+	rm -rf RTlib/
+	rm -f xdg-utils/xdg-email
+	rm -f archive.tar.xz
 }
 
 build() {
 	cd teamviewerqs/
 
-	# set correct path in desktop file
-	sed -i 's|/opt/teamviewer/|/opt/teamviewer10/|g' tv_bin/desktop/teamviewer-teamviewer${_pkgver_major}.desktop
+	# set correct pathes in desktop file
+	sed -e "/^Exec=/c Exec=/opt/teamviewer${_pkgver_major}/tv_bin/script/teamviewer" \
+		-e "/^Icon=/c Icon=/opt/teamviewer${_pkgver_major}/tv_bin/desktop/teamviewer.png" \
+		< tv_bin/desktop/teamviewer.desktop.template \
+		> "${srcdir}"/teamviewer.desktop
 
 	# duh?!
 	sed -i '/UpdateBinaries/s/^/#/' tv_bin/script/tvw_main
@@ -51,12 +59,12 @@ package() {
 	install -d -m0755 "${pkgdir}"/opt/teamviewer${_pkgver_major}/
 	cp -a --no-preserve=ownership * "${pkgdir}"/opt/teamviewer${_pkgver_major}/
 
-	install -d -m0755 ${pkgdir}/usr/{bin,share/applications,share/licenses/${pkgname}}
-	ln -s /opt/teamviewer${_pkgver_major}/tv_bin/script/teamviewer ${pkgdir}/usr/bin/teamviewer
-	ln -s /opt/teamviewer${_pkgver_major}/tv_bin/script/teamviewer ${pkgdir}/usr/bin/quicksupport
-	ln -s /opt/teamviewer${_pkgver_major}/tv_bin/desktop/teamviewer-teamviewer${_pkgver_major}.desktop \
-		"${pkgdir}"/usr/share/applications/teamviewer.desktop
+	install -d -m0755 "${pkgdir}"/usr/{bin,share/applications,share/licenses/${pkgname}}
+	ln -s /opt/teamviewer${_pkgver_major}/tv_bin/script/teamviewer "${pkgdir}"/usr/bin/teamviewer
+	ln -s /opt/teamviewer${_pkgver_major}/tv_bin/script/teamviewer "${pkgdir}"/usr/bin/quicksupport
 	ln -s /opt/teamviewer${_pkgver_major}/doc/License.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+
+	install -D -m0755 "${srcdir}"/teamviewer.desktop "${pkgdir}"/usr/share/applications/teamviewer.desktop
 
 	install -d -m1777 "${pkgdir}"/var/lib/teamviewer
 	ln -s /var/lib/teamviewer "${pkgdir}"/opt/teamviewer${_pkgver_major}/config
