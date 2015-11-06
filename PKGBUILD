@@ -1,4 +1,7 @@
-#Maintainer: Thomas LEGRAND
+#Maintainer  : Thomas LEGRAND
+#Contributor : Alexis Bienvenue
+#Contributor : fabmen
+
 pkgbase='auto-multiple-choice'
 pkgname='auto-multiple-choice'
 pkgver='1.2.1'
