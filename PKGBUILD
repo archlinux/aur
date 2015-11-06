@@ -1,7 +1,7 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=snb-git
-pkgver=5bec073
+pkgver=029d3e8
 pkgrel=1
 pkgdesc="A simple Unicode-aware hierarchical notebook."
 arch=("i686" "x86_64")
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	make debug
+	make NCURS_CONF=ncursesw6-config debug
 }
 
 package() {
