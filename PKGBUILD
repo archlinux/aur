@@ -12,6 +12,7 @@ makedepends=(extra-cmake-modules git)
 optdepends=('breeze-kde4-git: Breeze widget style for KDE4 applications' 'breeze-gtk-git: Breeze widget style for GTK applications')
 conflicts=(breeze)
 provides=(breeze)
+groups=(plasma)
 source=('git://git.kde.org/breeze.git')
 md5sums=('SKIP')
 install=$pkgname.install
