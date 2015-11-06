@@ -3,7 +3,7 @@
 
 pkgname=seafile-client
 pkgver=4.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Seafile is an online file storage and collaboration tool. This is seafile client for synchronizing your local files with seafile server."
 arch=('i686' 'x86_64')
 url="https://github.com/haiwen/seafile-client/"
