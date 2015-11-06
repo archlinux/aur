@@ -1,5 +1,5 @@
 pkgname=fortune-mod-breakingbad
-pkgver=1508041329
+pkgver=1511050225
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Breaking Bad"
