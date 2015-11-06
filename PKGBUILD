@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=flexisip
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A general purpose SIP proxy with media capabilities"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/BelleDonneCommunications/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('140cfb176b8a19faa0d4f04b031b95cd')
+md5sums=('295f6c7017484c0ea7ce183e586b9c69')
 
 build() {
   CXXFLAGS="$CXXFLAGS -fpermissive"
