@@ -1,6 +1,6 @@
 pkgbase = kwin-git
 	pkgdesc = KDE Window Manager
-	pkgver = r13793.3a8d7d8
+	pkgver = r13798.3a13719
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	install = kwin-git.install
@@ -21,6 +21,7 @@ pkgbase = kwin-git
 	depends = kdecoration-git
 	depends = xcb-util-cursor
 	depends = kscreenlocker-git
+	depends = kidletime
 	depends = libinput
 	provides = kwin
 	conflicts = kwin
