@@ -1,7 +1,7 @@
 pkgbase = puppet3
 	pkgdesc = Server automation framework and application
 	pkgver = 3.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://puppetlabs.com/puppet/puppet-open-source
 	install = puppet.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = puppet3
 	depends = hiera
 	optdepends = ruby-shadow: user password management
 	optdepends = logrotate
-	provides = puppet
+	provides = puppet=3.8.4
 	conflicts = puppet
 	backup = etc/puppet/auth.conf
 	backup = etc/puppet/fileserver.conf
