@@ -1,5 +1,5 @@
 pkgbase = cozy-apache
-	pkgdesc = A personal cloud you can hack, host and delete, configured for the Apache2 web server.
+	pkgdesc = A personal cloud you can hack, host and delete, configured for the Apache2 web server. This package is still being beta-tested, please report anything that seems weird via AUR comments.
 	pkgver = 1.6
 	pkgrel = 1
 	url = https://cozy.io/
