@@ -13,6 +13,8 @@ source=('git://github.com/tuvistavie/fundle')
 sha1sums=('SKIP')
 
 package() {
-	mkdir -p "$pkgdir/etc/fish/functions"
-	cp "fundle/fundle.fish" "$pkgdir/etc/fish/functions/fundle.fish"
+	install -d "$pkgdir/etc/fish/functions"
+	install -d "$pkgdir/etc/fish/completions"
+	install "fundle/functions/fundle.fish" "$pkgdir/etc/fish/functions/fundle.fish"
+	install "fundle/completions/fundle.fish" "$pkgdir/etc/fish/completions/fundle.fish"
 }
