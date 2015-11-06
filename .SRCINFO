@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-warehouse13
 	pkgdesc = Fortune quotes from Warehouse 13
-	pkgver = 1504091841
+	pkgver = 1510301659
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Warehouse_13
 	arch = any
