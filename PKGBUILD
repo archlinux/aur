@@ -10,7 +10,7 @@ depends=('notmuch' 'gawk' 'sed' 'ical2rem' 'ripmime' 'bash')
 sha256sums=('SKIP')
 optdepends=('remind')
 makedepends=('git')
-provides=('aurvote')
+provides=('mail2rem')
 source=('git+https://github.com/esovetkin/mail2rem.git')
 
 
