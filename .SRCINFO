@@ -1,0 +1,19 @@
+pkgbase = libeap-modacom-u3500
+	pkgdesc = Patched EAP Peer Library API for gctwimax-modacom-u3500 driver
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://code.google.com/p/gctwimax
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = custom
+	depends = dbus
+	source = http://hostap.epitest.fi/releases/wpa_supplicant-0.7.3.tar.gz
+	source = wpa_supplicant-0.7.2-generate-libeap-peer.patch
+	source = dbus-arch-deps.h
+	md5sums = f516f191384a9a546e3f5145c08addda
+	md5sums = 9a90a17b05029fbfeefa673b9a01724e
+	md5sums = 31c5bb3c740fb7c754c3169354e12397
+
+pkgname = libeap-modacom-u3500
+
