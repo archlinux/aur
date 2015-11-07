@@ -1,7 +1,7 @@
 #  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=letsencrypt
-pkgver=0.0.0.dev20151104
+pkgver=0.0.0.dev20151107
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
@@ -24,8 +24,8 @@ source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgve
 # Refer to the following ArchWiki entry for detailed information about gpg signature verification
 # https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C')
-md5sums=('41f2b5d8a99f19a46a98f1cd2f574e84'
-		 'SKIP')
+md5sums=('bbc8d651da6e12b2fa8fa74b42d8ce7c'
+         'SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
