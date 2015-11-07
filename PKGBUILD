@@ -9,7 +9,7 @@
 
 pkgname=subtitlecomposer
 pkgver=0.5.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
 url="https://github.com/maxrd2/subtitlecomposer"
@@ -30,7 +30,7 @@ build() {
     cd ${srcdir}/subtitlecomposer-${pkgver}
     cmake -DCMAKE_INSTALL_PREFIX=/usr
     # workaround for "gst/gstconfig.h: No such file or directory"
-    export CPATH=/usr/lib64/gstreamer-1.0/include
+    export CPATH=/usr/lib/gstreamer-1.0/include
     make
 }
 
