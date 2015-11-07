@@ -1,7 +1,7 @@
 pkgbase = get_iplayer-git
 	pkgdesc = Download TV and radio from BBC iPlayer
 	pkgver = 2.94.r2.g52a2c12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/get-iplayer/get_iplayer
 	arch = any
 	license = GPL3
