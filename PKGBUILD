@@ -44,7 +44,7 @@ build() {
   fi
 
   make -C $_pkgbase prefix=/usr sysconfdir=/etc \
-    MARCH=${CARCH/_/-} \
+    #MARCH=${CARCH/_/-} \
     USE_SYSTEM_LLVM=1 \
     USE_SYSTEM_LIBUNWIND=1 \
     USE_SYSTEM_PCRE=1 \
@@ -84,7 +84,7 @@ package_julia-git() {
   backup=('etc/julia/juliarc.jl')
 
   make -C $_pkgbase DESTDIR=$pkgdir prefix=/usr sysconfdir=/etc \
-    MARCH=${CARCH/_/-} \
+    #MARCH=${CARCH/_/-} \
     USE_SYSTEM_LLVM=1 \
     USE_SYSTEM_LIBUNWIND=1 \
     USE_SYSTEM_PCRE=1 \
