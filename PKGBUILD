@@ -1,6 +1,5 @@
-pkgname=masalla-icon-theme-git
 pkgname=masalla-icon-theme
-pkgver=r.
+pkgver=0.8
 pkgrel=1
 pkgdesc="Latest flat design theme by Hayder Majid"
 arch=('any')
@@ -14,15 +13,17 @@ conflicts=('masalla-icon-theme-git')
 source=('git+https://github.com/hayderctee/masalla-icon-theme.git')
 sha256sums=('SKIP')
 
-pkgver(){
-    cd ${_gitname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+  cd $srcdir/$_pkgname
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-    install -d ${pkgdir}/usr/share/icons
-    cp -r ${srcdir}/${_gitname}/${_pkgname} ${pkgdir}/usr/share/icons/Masalla
-    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
-    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
-} 
+  # create theme dirs
+  install -d -m 755 "$pkgdir"/usr/share/icons/Masalla
+
+ # install theme
+  cd $srcdir/$_pkgname/masalla-icon-theme
+  cp -r . "$pkgdir"/usr/share/icons/Masalla
+}
 

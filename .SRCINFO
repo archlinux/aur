@@ -1,6 +1,6 @@
 pkgbase = masalla-icon-theme
 	pkgdesc = Latest flat design theme by Hayder Majid
-	pkgver = r.
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/hayderctee/masalla-icon-theme
 	arch = any
