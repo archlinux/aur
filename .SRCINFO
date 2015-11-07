@@ -9,10 +9,12 @@ pkgbase = kscreenlocker-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = python
+	makedepends = kdoctools
 	depends = kdelibs4support
 	depends = plasma-framework
 	depends = kidletime
 	depends = kwayland
+	depends = libxcursor
 	source = git://anongit.kde.org/kscreenlocker.git
 	md5sums = SKIP
 

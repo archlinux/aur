@@ -7,8 +7,8 @@ pkgdesc='Library and components for secure lock screen architecture'
 arch=(i686 x86_64)
 url='https://projects.kde.org/kscreenlocker'
 license=(LGPL)
-depends=(kdelibs4support plasma-framework kidletime kwayland)
-makedepends=(extra-cmake-modules git python)
+depends=(kdelibs4support plasma-framework kidletime kwayland libxcursor)
+makedepends=(extra-cmake-modules git python kdoctools)
 source=('git://anongit.kde.org/kscreenlocker.git')
 md5sums=('SKIP')
 
