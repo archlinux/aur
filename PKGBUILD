@@ -15,13 +15,11 @@ md5sums=("e27b277cc79d9e097a6b398397307437")
 build ()
 {
     cd "$srcdir/${pkgname}-${pkgver}"
-    msg 'Building...'
     python setup.py build
 }
 
 package ()
 {
     cd "$srcdir/${pkgname}-${pkgver}"
-    msg 'Installing...'
     python setup.py install --root="$pkgdir" --optimize=1
 }
