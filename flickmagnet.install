@@ -1,0 +1,9 @@
+
+post_install() {
+
+	# create system user and group to run the daemon
+	getent group flickmagnet > /dev/null || groupadd -g 420 flickmagnet &>/dev/null
+	getent passwd flickmagnet > /dev/null || useradd -u 420 -g 420 -m -s /bin/false flickmagnet &>/dev/null
+
+}
+
