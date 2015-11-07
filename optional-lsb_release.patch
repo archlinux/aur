@@ -1,0 +1,21 @@
+diff -Naur mate-menu.orig/lib/mate-menu.py mate-menu/lib/mate-menu.py
+--- mate-menu.orig/lib/mate-menu.py	2015-11-07 05:57:34.444720000 +0100
++++ mate-menu/lib/mate-menu.py	2015-11-07 06:04:03.221247132 +0100
+@@ -563,11 +563,12 @@
+     def createPanelButton( self ):
+         self.button_icon = Gtk.Image.new_from_file( self.buttonIcon )
+         self.systemlabel = Gtk.Label(label= self.buttonText )
+-        process = subprocess.Popen(['lsb_release', '-d'], stdout=subprocess.PIPE)
+-        out, err = process.communicate()
+-        tooltip = out.replace('Description:', '').strip()
+-        self.systemlabel.set_tooltip_text(tooltip)
+-        self.button_icon.set_tooltip_text(tooltip)
++        if os.path.exists("/usr/bin/lsb_release"):
++            process = subprocess.Popen(['lsb_release', '-d'], stdout=subprocess.PIPE)
++            out, err = process.communicate()
++            tooltip = out.replace('Description:', '').strip()
++            self.systemlabel.set_tooltip_text(tooltip)
++            self.button_icon.set_tooltip_text(tooltip)
+         if self.applet.get_orient() == MatePanelApplet.AppletOrient.UP or self.applet.get_orient() == MatePanelApplet.AppletOrient.DOWN:
+             self.button_box = Gtk.HBox()
+             self.button_box.pack_start( self.button_icon, False, False, 0 )
