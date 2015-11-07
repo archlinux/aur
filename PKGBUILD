@@ -24,6 +24,7 @@ pkgver=9.0.32150
 #pkgver=10.0.37742
 #pkgver=10.0.41499
 #pkgver=10.0.46203 # Patched to work in user (standalone) mode. Does not work with teamviewerd.service.
+#pkgver=11.0.50678
 pkgrel=1
 _pkgver_major="${pkgver%%.*}"
 
@@ -92,7 +93,7 @@ options=('!strip')
 install="${pkgname%%[0-9]*}.install"
 _verwatch=('https://www.teamviewer.com/en/download/linux.aspx' '\s\+<span id="_ctl2_Version">v\([0-9\.]\+\)</span>.*' 'f')
 
-if [ "${_pkgver_major}" -eq 10 ]; then
+if [ "${_pkgver_major}" -ge 10 ]; then
   source=("http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_${pkgver}.i686.rpm")
 else
   source=("teamviewer_${pkgver}.i686.rpm::http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_linux.rpm")
@@ -234,6 +235,16 @@ unset _opt_QuickSupport
 '
 
   sed -i -e "s@^TV_SCRIPT_DIR=@${_tvcode//${_lf}/\\n}&@g" 'tv_bin/script/teamviewer'
+
+  # New for TV11
+  if [ -L 'logfiles' ]; then
+    rm 'logfiles'
+    mkdir 'logfiles'
+  fi
+  if [ -L 'config' ]; then
+    rm 'config'
+    mkdir 'config'
+  fi
   set +u
 }
 
@@ -241,6 +252,10 @@ check() {
   set -u
   [ -d 'opt' ] && cd 'opt'
   cd 'teamviewer'*/
+  #if [ -L 'logfiles' ]; then
+  #  mv 'logfiles' 'logfiles.Arch' # New in TV 11
+  #  mkdir 'logfiles'
+  #fi
   # The lib checker isn't well tested for TeamViewerQS
   cd 'tv_bin'
   [ -f 'TVGuiSlave.64' ] || ln -s '/usr/bin/true' 'TVGuiSlave.64'
@@ -275,6 +290,10 @@ check() {
   [ ! -L 'TVGuiDelegate' ] || rm -f 'TVGuiDelegate'
   cd ..
   rm -f 'logfiles'/*.log
+  #if [ -L 'logfiles.Arch' ]; then
+  #  rm -rf 'logfiles'
+  #  mv 'logfiles.Arch' 'logfiles' # New for TV 11
+  #fi
 }
 
 package() {
