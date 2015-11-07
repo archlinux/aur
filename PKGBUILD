@@ -1,7 +1,7 @@
 # Maintainer: stef204 < base64 -d c3RlZjIwNEB5YW5kZXguY29tCg== >
 
 pkgname=etmtk-git
-pkgver=3.2.22
+pkgver=r1095.15ede9e
 pkgrel=1
 pkgdesc="Manage events and tasks using simple text files."
 arch=('any')
@@ -14,11 +14,11 @@ source=("git+https://github.com/dagraham/etm-tk.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/etm-tk"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd etm-tk
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/etm-tk"
+  cd etm-tk
   python setup.py install --prefix=/usr --root="$pkgdir"
 }
