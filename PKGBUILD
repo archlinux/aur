@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.5.0.dev.r28167.ga664281
+pkgver=0.5.0.dev.r28171.g9a3fb2d
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
@@ -44,9 +44,8 @@ prepare() {
 
 build() {
   # SSE2 is a requirement for Julia on 32-bit x86
-  if [[ $CARCH == i686 ]]; then
-    export JULIA_CPU_TARGET=pentium4
-  fi
+  CFLAGS=${CFLAGS//-march=i686/-march=pentium4}
+  CXXFLAGS=${CXXFLAGS//-march=i686/-march=pentium4}
 
   make -C $_pkgbase prefix=/usr sysconfdir=/etc
 
@@ -66,7 +65,11 @@ package_julia-git() {
   conflicts=('julia')
   backup=('etc/julia/juliarc.jl')
 
-  make -C $_pkgbase DESTDIR=$pkgdir prefix=/usr sysconfdir=/etc install
+  CFLAGS=${CFLAGS//-march=i686/-march=pentium4}
+  CXXFLAGS=${CXXFLAGS//-march=i686/-march=pentium4}
+
+  cd $_pkgbase
+  make DESTDIR=$pkgdir prefix=/usr sysconfdir=/etc install
 
   # For /etc/ld.so.conf.d, FS#41731
   install -Dm644 julia.conf "$pkgdir/etc/ld.so.conf.d/julia.conf"
@@ -75,7 +78,7 @@ package_julia-git() {
   rm -r $pkgdir/usr/share/doc/julia
 
   # Install license
-  install -Dm644 "$_pkgbase"/LICENSE.md "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE.md"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgbase/LICENSE.md"
 }
 
 package_julia-git-docs() {
@@ -87,16 +90,16 @@ package_julia-git-docs() {
   # Source files and examples"
   install -d "$pkgdir/usr/share/doc"
 
-  cd "$srcdir/$pkgbase"
-  cp -rv "doc" "$pkgdir/usr/share/doc/$pkgbase"
-  cp -rv "examples" "$pkgdir/usr/share/doc/$pkgbase/examples"
+  cd "$srcdir/$_pkgbase"
+  cp -rv "doc" "$pkgdir/usr/share/doc/$_pkgbase"
+  cp -rv "examples" "$pkgdir/usr/share/doc/$_pkgbase/examples"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
   # Remove double
   rm -rv "$pkgdir/usr/share/doc/julia/man/"
 
   # Installing built docs. Adjust it accordingly to your changes in build()
-  cd $_pkgbase/doc/_build
+  cd doc/_build
   cp -dpr --no-preserve=ownership html $pkgdir/usr/share/doc/julia/
   #install -D -m644 man/julialanguage.1 $pkgdir/usr/share/man/man1/julialanguage.1
   #install -D -m644 texinfo/JuliaLanguage.info $pkgdir/usr/share/info/julialanguage.info
