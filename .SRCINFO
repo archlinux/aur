@@ -1,7 +1,7 @@
 pkgbase = j7
 	pkgdesc = J is a modern, high-level, general-purpose, high-performance programming language
 	pkgver = 7.01b
-	pkgrel = 14
+	pkgrel = 15
 	url = http://www.jsoftware.com
 	arch = i686
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = j7
 	optdepends = fftw
 	optdepends = gtksourceview3
 	source = http://www.jsoftware.com/download/j701_b_source.tar.gz
-	source = http://www.databaserossoverde.it/jsoftware/j701_env_20130722.tar.gz
+	source = http://www.databaserossoverde.it/jsoftware/j701_env_20151029.tar.gz
 	md5sums = 2ef8f28c383665258588300587263294
-	md5sums = 30a58ccb7fd24f63ea16211f721ab587
+	md5sums = fb282ed7ca0bd02eadd5ce63bf295c8e
 
 pkgname = j7
 
