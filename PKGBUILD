@@ -2,7 +2,7 @@
 
 _plug=vstaambk
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r8.298ee4b
+pkgver=0.3.1.r12.adcef03
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -28,8 +28,8 @@ _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; pr
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _ver="$(cat README.md | grep '# vsTAAmbk' | cut -d ' ' -f3)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
