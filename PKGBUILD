@@ -1,5 +1,5 @@
 pkgname=pgroonga
-pkgver=0.7.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h')
@@ -27,10 +27,11 @@ package() {
 	echo "*************************************************************"
 	echo "                        NOTICE                               "
 	echo "*************************************************************"
-	echo "You can upgrade to 0.7.0 from 0.6.0 by override install."
-	echo "You don't need to re-create pgroonga indexes."
-	echo "In more detail, please see the PGroonga 0.7.0 release note."
-	echo "https://github.com/pgroonga/pgroonga/blob/master/news.md#070-2015-07-10"
+	echo "You need to run DROP EXTENSION pgroonga CASCADE, "
+	echo "upgrade PGroonga binary, run CREATE EXTENSION pgroonga and "
+	echo "create indexes again to upgrade to 1.0.0 from older versions."
+	echo "In more detail, please see the PGroonga site's news."
+	echo "http://pgroonga.github.io/news/"
 
 }
-sha1sums=('b2dd4c561f52136a88e006d5d9404a69ef688591')
+sha1sums=('0004229351976c532cdb5777170098be5645e644')
