@@ -11,7 +11,6 @@ pkgbase = python-xray
 	depends = python-pandas
 	optdepends = python-netcdf4: NetCDF4 support
 	optdepends = python-bottleneck: Faster NaN operations
-	optdepends = python-cyordereddict: Speed up most internal operations
 	optdepends = python-scipy: OPeNDAP support
 	optdepends = python-matplotlib: Plotting support
 	optdepends = python-dask: Enable out-of-core parallel computation

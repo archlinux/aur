@@ -10,7 +10,6 @@ makedepends=('python-setuptools')
 depends=('python-numpy' 'python-pandas')
 optdepends=('python-netcdf4: NetCDF4 support'
             'python-bottleneck: Faster NaN operations'
-            'python-cyordereddict: Speed up most internal operations'
             'python-scipy: OPeNDAP support' 
             'python-matplotlib: Plotting support'
             'python-dask: Enable out-of-core parallel computation')
