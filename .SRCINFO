@@ -1,7 +1,7 @@
 pkgbase = python-more_itertools
 	pkgdesc = More routines for operating on iterables, beyond itertools
 	pkgver = 2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.python.org/pypi/more-itertools
 	arch = any
 	license = MIT

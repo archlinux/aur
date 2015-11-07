@@ -2,7 +2,7 @@
 
 pkgname=('python-more_itertools' 'python2-more_itertools')
 pkgver=2.2
-pkgrel=4
+pkgrel=5
 pkgdesc='More routines for operating on iterables, beyond itertools'
 arch=('any')
 url='https://pypi.python.org/pypi/more-itertools'
@@ -15,7 +15,7 @@ package_python-more_itertools() {
   depends=('python')
 
   cd "$srcdir/more-itertools-$pkgver"
-  python setup.py clean
+  rm -rf build
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
@@ -23,7 +23,7 @@ package_python2-more_itertools() {
   depends=('python2')
 
   cd "$srcdir/more-itertools-$pkgver"
-  python2 setup.py clean
+  rm -rf build
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
