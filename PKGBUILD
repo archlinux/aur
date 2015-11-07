@@ -1,7 +1,7 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 pkgname=mojo-loader
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mojo Loader"
 arch=('x86_64')
 url="https://embeddedmicro.com/"
@@ -22,7 +22,9 @@ sha512sums=("4f8365144307eba874c7aaf6cacd1a70de9fb78a18e8ecf9c1b0aa196e1ecb7d0ae
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm 644 "driver/99-mojo.rules" "$pkgdir/usr/lib/udev/rules.d/99-mojo.rules"
+  if [ ! -f "$pkgdir/usr/lib/udev/rules.d/99-mojo.rules" ]; then
+    install -Dm 644 "driver/99-mojo.rules" "$pkgdir/usr/lib/udev/rules.d/99-mojo.rules"
+  fi
 
   install -Dm 755 "$srcdir/run-mojo-loader.sh" "$pkgdir/usr/bin/mojo-loader"
   install -Dm 644 "$srcdir/mojo-loader.desktop" "$pkgdir/usr/share/applications/mojo-loader.desktop"
