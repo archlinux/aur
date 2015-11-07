@@ -13,7 +13,9 @@ installing a retail copy of the game on Linux:
   https://github.com/OpenRCT2/OpenRCT2/wiki/Installation-on-Linux
 
 Once installed, set the game_path directive in the [general] section of
-\$HOME/OpenRCT2/config.ini to point to the location of the retail installation.
+\$XDG_CONFIG_HOME/OpenRCT2/config.ini (typically ~/.config/OpenRCT2/config.ini)
+to point to the location of the retail installation.
+
 For example:
 
   [general]
