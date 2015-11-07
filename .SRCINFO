@@ -1,7 +1,7 @@
 pkgbase = google-cloud-sdk
 	pkgdesc = Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform
 	pkgver = 0.9.85
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cloud.google.com/sdk/
 	arch = i686
 	arch = x86_64

@@ -5,7 +5,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=0.9.85
-pkgrel=3
+pkgrel=4
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -83,6 +83,8 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   find "$pkgdir/opt/$pkgname/bin" -maxdepth 1 -type f -printf \
     "/opt/$pkgname/bin/%f\n" | xargs ln -st "$pkgdir/usr/bin"
+  # this conflicts with google-appengine-python
+  rm -f "$pkgdir/usr/bin/dev_appserver.py"
 
   # The tarball is rather sloppy with it's file permissions
   msg2 "Fixing file permissions"
