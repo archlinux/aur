@@ -1,14 +1,14 @@
 pkgbase = ms-sys
 	pkgdesc = Used to create Microsoft compatible boot records
-	pkgver = 2.4.1
-	pkgrel = 3
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = http://ms-sys.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = http://prdownloads.sourceforge.net/ms-sys/ms-sys-2.4.1.tar.gz
-	md5sums = d31e7ef3db6bd77dbb13df11057fa0f2
+	source = http://prdownloads.sourceforge.net/ms-sys/ms-sys-2.5.1.tar.gz
+	sha256sums = 46ac427ffb520cdb77edbaf77e2b55f3ab8c6b02f3e5d389662c9a85d9f688ef
 
 pkgname = ms-sys
 
