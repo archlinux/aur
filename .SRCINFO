@@ -1,0 +1,25 @@
+pkgbase = gnatcoll
+	pkgdesc = Provides components to complement the Ada & GNAT libraries (string/text, memory management, file handling, etc).
+	pkgver = gpl2015
+	pkgrel = 1
+	url = http://libre.adacore.com/tools/gnat-component-collection
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = nawk
+	depends = gcc-ada
+	depends = xmlada
+	depends = gtkada
+	depends = gprbuild
+	depends = gnat_util
+	depends = python2
+	depends = python2-pep8
+	depends = python2-jedi
+	depends = python2-gobject
+	source = http://mirrors.cdn.adacore.com/art/8c386e54b4411aeb49e7786fa403f9caa28b6d91
+	source = patch-python_support_gtk.c
+	md5sums = bc70aaf2e21a488a00f87fdec112454a
+	md5sums = 59ceebb56df53b2b35f97ff3f0df5df4
+
+pkgname = gnatcoll
+
