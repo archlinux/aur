@@ -14,7 +14,7 @@ url="http://www.cryptol.net"
 arch=('x86_64' 'i686')
 license=('BSD')
 depends=('cvc4')
-makedepends=('git' 'ghc' 'cabal-install>=1.20.0.0')
+makedepends=('git' 'ghc' 'cabal-install>=1.20.0.0' 'alex')
 optdepends=('boolector: theorem proving'
             'mathsat-5: theorem proving'
             'yices-bin: theorem proving')
