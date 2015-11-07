@@ -7,7 +7,7 @@
 _pkgname=get_iplayer
 pkgname=$_pkgname-git
 pkgver=2.94.r2.g52a2c12
-pkgrel=1
+pkgrel=2
 pkgdesc="Download TV and radio from BBC iPlayer"
 arch=('any')
 url="https://github.com/get-iplayer/get_iplayer"
