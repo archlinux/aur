@@ -2,7 +2,7 @@
 # Based on Teamcity PKGBUILD by Nowaker
 
 pkgname=upsource
-pkgver=2.0.3678
+pkgver=2.0.3682
 pkgrel=1
 pkgdesc='Repository Browsing and Code Review tool from JetBrains'
 arch=('any')
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("https://download.jetbrains.com/upsource/upsource-${pkgver}.zip"
         'upsource.service'
 	'upsource.conf')
-sha256sums=('d6474bd7fea8a48c8d7a38826e16ac08a4d174f51c169bc114c4ba6636d81415'
+sha256sums=('a1ed8144adb83e7d60233a69e247ce622494a0469b87943e52425a97ef855cdd'
             '90d447198d5ccb96985860a4d1e3b82fa6bfa2ce0def4e7214fbc2dcfe93add7'
 	    '1d216f3e4494a665860a5ca2b295bb22640b6fe5a34e7149fcfd2dfb3026c55f')
 options=('!strip')
