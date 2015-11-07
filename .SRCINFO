@@ -1,7 +1,7 @@
 pkgbase = communi-desktop-git
 	pkgdesc = An IRC client for desktop environments.
 	pkgver = r2931.f15534d
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	license = GPL

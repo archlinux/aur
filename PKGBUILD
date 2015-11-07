@@ -1,7 +1,7 @@
 # Maintainer: Stephen Brennan <smb196@case.edu>
 pkgname=communi-desktop-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r2931.f15534d
-pkgrel=1
+pkgrel=2
 pkgdesc="An IRC client for desktop environments."
 arch=('x86_64' 'i686')
 url=""
