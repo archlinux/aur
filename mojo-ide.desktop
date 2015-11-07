@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Mojo IDE
+Exec=/usr/bin/mojo-ide
+Icon=/opt/mojo-ide/icon.png
+Categories=Development;
+Comment=IDE for Mojo
+StartupNotify=false
+Terminal=false
+Keywords=mojo;fpga;ide;
