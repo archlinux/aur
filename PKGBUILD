@@ -1,8 +1,8 @@
 # Maintainer: stef204 < base64 -d c3RlZjIwNEB5YW5kZXguY29tCg== >
 
 pkgname=etmtk-git
-pkgver=3.2.21
-pkgrel=2
+pkgver=3.2.22
+pkgrel=1
 pkgdesc="Manage events and tasks using simple text files."
 arch=('any')
 url="http://people.duke.edu/~dgraham/etmtk/"

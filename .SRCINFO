@@ -1,7 +1,7 @@
 pkgbase = etmtk-git
 	pkgdesc = Manage events and tasks using simple text files.
-	pkgver = 3.2.21
-	pkgrel = 2
+	pkgver = 3.2.22
+	pkgrel = 1
 	url = http://people.duke.edu/~dgraham/etmtk/
 	arch = any
 	license = GPL
