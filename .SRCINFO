@@ -1,0 +1,16 @@
+pkgbase = qxkb
+	pkgdesc = Keyboard layout switcher (the further development of axkb)
+	pkgver = 0.4.6
+	pkgrel = 2
+	url = http://code.google.com/p/qxkb/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = libxkbfile
+	depends = qt4
+	source = http://qxkb.googlecode.com/files/qxkb-0.4.6.tar.bz2
+	md5sums = a2483765fc24e70bca4e079974861d39
+
+pkgname = qxkb
+
