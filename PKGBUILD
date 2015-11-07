@@ -1,6 +1,6 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=acts-git
-pkgver=r52.1b732df
+pkgver=r62.002cda5
 pkgrel=1
 pkgdesc="Another Calendar-based Tarsnap Script: master branch"
 arch=("any")
@@ -11,7 +11,6 @@ depends=("tarsnap"
 	 "coreutils"
 	 "util-linux")
 makedepends=("git")
-backup=("etc/acts.conf")
 install=$pkgname.install
 source=("$pkgname::git+https://github.com/alexjurkiewicz/acts.git")
 md5sums=('SKIP')
@@ -31,7 +30,10 @@ package() {
 	install -m755 acts "$pkgdir/usr/bin"
 
 	mkdir -p "$pkgdir/etc"
-	install -m644 acts.conf "$pkgdir/etc"
+	install -m644 acts.conf.sample "$pkgdir/etc"
+
+	mkdir -p "$pkgdir/usr/lib/systemd/system"
+	install -m644 contrib/systemd/* "$pkgdir/usr/lib/systemd/system"
 }
 
 # vim: set ts=8 sw=8 tw=0 noet :
