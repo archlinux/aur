@@ -1,0 +1,20 @@
+pkgbase = python-vmprof
+	pkgdesc = Python's vmprof client
+	pkgver = 0.1.5.5
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/vmprof
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python-click
+	depends = python-six
+	depends = libdwarf
+	depends = libelf
+	depends = libunwind
+	source = https://pypi.python.org/packages/source/v/vmprof/vmprof-0.1.5.5.tar.gz
+	source = LICENSE
+	md5sums = c4a058ba74cebce39b9de3367a1fb089
+	md5sums = f4a0384fe9ff04541fbcb583b5dfd3c9
+
+pkgname = python-vmprof
+
