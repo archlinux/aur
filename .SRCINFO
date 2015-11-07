@@ -1,8 +1,8 @@
 pkgbase = giada
 	pkgdesc = A looper, drum machine, sequencer, live sampler and plugin host
 	pkgver = 0.10.2
-	pkgrel = 1
-	url = http://loopauditioneer.sourceforge.net/
+	pkgrel = 2
+	url = http://www.giadamusic.com/
 	install = giada.install
 	arch = i686
 	arch = x86_64

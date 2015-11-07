@@ -2,10 +2,10 @@
 
 pkgname=giada
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A looper, drum machine, sequencer, live sampler and plugin host"
 arch=('i686' 'x86_64')
-url="http://loopauditioneer.sourceforge.net/"
+url="http://www.giadamusic.com/"
 license=('GPL3')
 depends=('fltk' 'jack' 'libpulse' 'libxpm' 'rtmidi')
 source=("${pkgname}-${pkgver}-src.tar.gz::http://www.giadamusic.com/download/grab/source"
