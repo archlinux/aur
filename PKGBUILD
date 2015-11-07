@@ -1,4 +1,4 @@
-# Maintainer: Midov <midov at midov dot com>
+# Maintainer: Midov <midov at midov dot pl>
 pkgname=qownnotes
 _pkgname=QOwnNotes
 pkgver=0.55

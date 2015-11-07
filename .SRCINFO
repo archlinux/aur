@@ -3,8 +3,12 @@ pkgbase = qownnotes
 	pkgver = 0.55
 	pkgrel = 1
 	url = http://www.qownnotes.org/
-	arch = any
-	license = GPL
-	depends = gcc qt5-base
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gcc
+	depends = qt5-base
+	makedepends = git
 
 pkgname = qownnotes
