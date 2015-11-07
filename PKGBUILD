@@ -48,7 +48,7 @@ build() {
     export JULIA_CPU_TARGET=pentium4
   fi
 
-  make -C $_pkgbase prefix=/usr sysconfdir=/etc \
+  make -C $_pkgbase prefix=/usr sysconfdir=/etc
 
   # Building doc
   cd $_pkgbase/doc
