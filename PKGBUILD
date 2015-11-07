@@ -112,8 +112,11 @@ package_julia-git-docs() {
 
   # Source files and examples"
   install -d "$pkgdir/usr/share/doc"
-  cp -rv "$srcdir/$_pkgbase/doc" "$pkgdir/usr/share/doc/$_pkgbase"
-  cp -rv "$srcdir/$_pkgbase/examples" "$pkgdir/usr/share/doc/$_pkgbase/examples"
+
+  cd "$srcdir/$pkgbase"
+  cp -rv "doc" "$pkgdir/usr/share/doc/$pkgbase"
+  cp -rv "examples" "$pkgdir/usr/share/doc/$pkgbase/examples"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
   # Remove double
   rm -rv "$pkgdir/usr/share/doc/julia/man/"
