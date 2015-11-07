@@ -1,4 +1,4 @@
-# Maintainer: Midov <midov@midov.pl>
+# Maintainer: Midov <midov at midov dot pl>
 pkgname=bashets
 pkgver=0.6.3
 pkgrel=3
