@@ -4,9 +4,9 @@
 
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.2
-_zenpatch=1a2337cb512ddf5b5395e47298d80324e29ad4a7
-pkgver=4.2.5
+_srcname=linux-4.3
+_zenpatch=af7a14b9feae58cc658494d8045401ff2b6bb9d2
+pkgver=4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -15,22 +15,20 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         "zen-${_zenpatch}.patch::$url/commit/${_zenpatch}.patch"
         'change-default-console-loglevel.patch')
-sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            'b631eb4e8b4911b31111b0838e00f7c4a1b7689abcd2233609831b638493f4fb'
-            'SKIP'
-            '41f44c163c9ac753f2b54485ce5e8e8ff6b24e44226332cb3e786a6727bb1ee6'
-            'a7db50627c01ad500ded918f708b258ee6918b1968e7b2db6641a06456b8f8f3'
+            'd50600c4b63bc16e5bf9882a2cc0c25f5d6f70864a4aaeb795feb455bb7373ac'
+            '64f76eff952247228f5f5b747147b41bc8c1759ca4ad59a99958193f6224f38d'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '9607de51a3fc24b05fe07a0b3324547a3d6df8546187516b1297377a20d0fc96'
+            'b2ce71e748e4fd0ee162c2613a41ed2c6fbdb69dfd85aaf9005e07c900408c0d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -43,7 +41,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
