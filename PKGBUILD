@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 126573 2015-01-25 14:11:25Z pierre $
+# $Id: PKGBUILD 136591 2015-07-09 14:01:28Z foutrelis $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 # x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=openssl
 pkgname=libx32-$_pkgbasename
-_ver=1.0.2
+_ver=1.0.2d
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
@@ -24,7 +24,7 @@ source=("https://www.openssl.org/source/${_pkgbasename}-${_ver}.tar.gz"
         'opensslconf-stub.h'
 )
 validpgpkeys=(8657ABB260F056B1E5190839D9C4D26D0E604491)
-md5sums=('38373013fc85c790aabf8837969c5eba'
+md5sums=('38dd619b2e77cbac69b99f52a053d25a'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90'
