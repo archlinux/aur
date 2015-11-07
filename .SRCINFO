@@ -1,7 +1,7 @@
 pkgbase = dreamchess
 	pkgdesc = An open source chess game with OpenGL graphics and various chess board sets
 	pkgver = 0.2.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.dreamchess.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dreamchess
 	makedepends = autoconf
 	makedepends = automake
 	depends = mesa
-	depends = mxml-dc
+	depends = mxml
 	depends = sdl_mixer
 	depends = sdl_image
 	source = dreamchess-0.2.0.tar.gz::http://sourceforge.net/projects/dreamchess/files/dreamchess/0.2.0/dreamchess-0.2.0.tar.gz/download
