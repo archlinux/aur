@@ -9,6 +9,5 @@ pkgbase = qownnotes
 	makedepends = git
 	depends = gcc
 	depends = qt5-base
-	makedepends = git
 
 pkgname = qownnotes
