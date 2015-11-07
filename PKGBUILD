@@ -1,12 +1,16 @@
-# $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
-# Contributor: Eduardo Romero <eduardo@archlinux.org>
-# Contributor: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Pierre Franco <pierre dot franco at ensimag dot grenoble dash inp dot fr>
+# Based on wine-staging PKGBUILD
+
+#Additional patches:
+# -Raw input fix
+# -Mip-Map fix (see https://bugs.winehq.org/show_bug.cgi?id=34480 )
+# -Keybind patch reversion
+# -Heap allocation perfomance improvement patch
+# -Wbemprox videocontroller query fix (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
+
 
 pkgname=wine-gaming-nine
-pkgver=1.7.53
+pkgver=1.7.54
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -14,16 +18,14 @@ _winesrcdir="wine-patched-staging-$pkgver"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$pkgver.tar.gz"
         30-win32-aliases.conf
-        gdi32-heap-corruption.patch
         keybindings.patch
         raw.patch
         mipmap.patch
         heap_perf.patch
         wbemprox_query.patch
         nine-1.7.53.patch)
-sha1sums=('07889b58bda0755f53310a19bb6a8e62c704658f'
+sha1sums=('e59eb52e5fdbb7561b482880b0f75638f2516090'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-          'f02a126e46db4283440caf04d618af39747bd284'
           'f3febb8836f38320742a546c667106608d4c4395'
           '57aa524e4e760c907c2acef287f5569e78ea85b0'
           'c3096fccbac23e520d03f592db7f23350cbbc0bc'
@@ -82,7 +84,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   samba
   opencl-headers
 )
-  
+
 optdepends=(
   giflib          lib32-giflib
   libpng          lib32-libpng
@@ -123,9 +125,6 @@ fi
 prepare() {
     cd wine-patched-staging-$pkgver
 
-    # FS#46819
-    
-    patch -p1 < ../gdi32-heap-corruption.patch
     patch -p1 < ../nine-1.7.53.patch
     patch -p1 < ../raw.patch
     patch -p1 < ../mipmap.patch
