@@ -26,11 +26,6 @@ md5sums=('SKIP')
 ## Ghostscript Fonts Location
 FP="/usr/share/fonts/Type1/"
 
-prepare() {
-  cd "$srcdir/$pkgname"
-  sed 's|./mkfn|neatmkfn|g' gen.sh
-}
-
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -39,15 +34,15 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make all
-  ## Generate fonts descriptions for neatroff:
+  # Generation of fonts
   mkdir fonts
   ./gen.sh $FP fonts
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 mkfn $pkgdir/usr/bin/neatmkfn
-  install -Dm755 gen.sh $pkgdir/usr/share/doc/$pkgname/gen.sh
+  install -Dm755 mkfn   $pkgdir/usr/bin/neatmkfn
+  install -Dm644 gen.sh $pkgdir/usr/share/doc/$pkgname/gen.sh
   install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
   mkdir -p $pkgdir/usr/share/neatroff/font/devutf/
   cp $srcdir/$pkgname/fonts/* $pkgdir/usr/share/neatroff/font/devutf/
