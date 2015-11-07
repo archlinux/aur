@@ -7,4 +7,5 @@ if [[ "$JAVA_VERSION" < "1.8" ]]; then
     exit 1
 fi
 
-java -jar "/usr/share/java/blackmarket/blackmarket.jar"
+cd /usr/share/java/blackmarket
+java -cp blackmarket.jar:* net.thirdy.blackmarket.Main
