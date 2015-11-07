@@ -1,0 +1,53 @@
+diff -ur yarp-2.3.64/extern/gtkdataboxmm/CMakeLists.txt yarp-2.3.64-patched/extern/gtkdataboxmm/CMakeLists.txt
+--- yarp-2.3.64/extern/gtkdataboxmm/CMakeLists.txt	2015-06-15 12:05:51.000000000 +0200
++++ yarp-2.3.64-patched/extern/gtkdataboxmm/CMakeLists.txt	2015-11-07 03:23:32.967514575 +0100
+@@ -2,6 +2,7 @@
+ # Author: Daniele E. Domenichelli <daniele.domenichelli@iit.it>
+ # CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ 
++set(CMAKE_CXX_STANDARD 11)
+ 
+ # GtkDataboxMM
+ project(YARP_priv_gtkdataboxmm)
+diff -ur yarp-2.3.64/src/yarpdataplayer-gtk/CMakeLists.txt yarp-2.3.64-patched/src/yarpdataplayer-gtk/CMakeLists.txt
+--- yarp-2.3.64/src/yarpdataplayer-gtk/CMakeLists.txt	2015-06-15 12:05:51.000000000 +0200
++++ yarp-2.3.64-patched/src/yarpdataplayer-gtk/CMakeLists.txt	2015-11-07 03:27:27.205917701 +0100
+@@ -3,6 +3,7 @@
+ # CopyPolicy: Released under the terms of the GNU GPL v2.0.
+ 
+ if(CREATE_YARPDATAPLAYER AND YARP_HAS_GTK2)
++  set(CMAKE_CXX_STANDARD 11)
+ 
+   get_property(YARP_OS_INCLUDE_DIRS TARGET YARP_OS PROPERTY INCLUDE_DIRS)
+   get_property(YARP_sig_INCLUDE_DIRS TARGET YARP_sig PROPERTY INCLUDE_DIRS)
+diff -ur yarp-2.3.64/src/yarpmanager-gtk/CMakeLists.txt yarp-2.3.64-patched/src/yarpmanager-gtk/CMakeLists.txt
+--- yarp-2.3.64/src/yarpmanager-gtk/CMakeLists.txt	2015-06-15 12:05:51.000000000 +0200
++++ yarp-2.3.64-patched/src/yarpmanager-gtk/CMakeLists.txt	2015-11-07 03:26:47.942843595 +0100
+@@ -6,6 +6,7 @@
+ #
+ 
+ if(CREATE_YARPMANAGER AND YARP_HAS_GTK2)
++  set(CMAKE_CXX_STANDARD 11)
+ 
+   get_property(YARP_OS_INCLUDE_DIRS TARGET YARP_OS PROPERTY INCLUDE_DIRS)
+   get_property(YARP_manager_INCLUDE_DIRS TARGET YARP_manager PROPERTY INCLUDE_DIRS)
+@@ -81,4 +82,4 @@
+     set_target_properties(yarpmanager-gtk PROPERTIES OUTPUT_NAME yarpmanager)
+   endif()
+ 
+-endif()
+\ No newline at end of file
++endif()
+diff -ur yarp-2.3.64/src/yarpscope-gtk/CMakeLists.txt yarp-2.3.64-patched/src/yarpscope-gtk/CMakeLists.txt
+--- yarp-2.3.64/src/yarpscope-gtk/CMakeLists.txt	2015-06-15 12:05:51.000000000 +0200
++++ yarp-2.3.64-patched/src/yarpscope-gtk/CMakeLists.txt	2015-11-07 03:26:17.989710272 +0100
+@@ -4,7 +4,8 @@
+ 
+ 
+ if(CREATE_YARPSCOPE AND YARP_HAS_GTK2)
+-
++  set(CMAKE_CXX_STANDARD 11)
++  
+   project(yarpscope-gtk)
+ 
+   get_property(YARP_TREE_INCLUDE_DIRS TARGET YARP_OS PROPERTY INCLUDE_DIRS)

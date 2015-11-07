@@ -1,0 +1,28 @@
+pkgbase = yarp
+	pkgdesc = Yet Another Robot Platform
+	pkgver = 2.3.64
+	pkgrel = 1
+	url = http://www.yarp.it
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = cmake
+	depends = cmake
+	depends = subversion
+	depends = wget
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = goocanvasmm
+	depends = tinyxml
+	depends = gtkmm
+	depends = ace
+	depends = gsl
+	source = https://github.com/robotology/yarp/archive/v2.3.64.tar.gz
+	source = yarp-gui-cxx11.patch
+	sha256sums = 3882b38c39ec9c5fdd06c68f3a4ad21da718bd2733ed7d6a5fb78d9f36dad6b2
+	sha256sums = 88c5be5a1dbef2d8dcf9a9540fc697b64040167c72e0522233c591bd238f6ab0
+
+pkgname = yarp
+
