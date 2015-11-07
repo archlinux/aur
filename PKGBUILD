@@ -2,13 +2,13 @@
 pkgname=cryptol-git
 _pkgname=cryptol
 
-pkgver=v2.2.1.r0.g300ed3c
+pkgver=v2.2.4.r456.g9f3d423
 pkgver() {
       cd "$_pkgname"
         git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
     }
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A domain-specific language for specifying cryptographic algorithms."
 url="http://www.cryptol.net"
 arch=('x86_64' 'i686')
@@ -18,7 +18,6 @@ makedepends=('git' 'ghc' 'cabal-install>=1.20.0.0')
 optdepends=('boolector: theorem proving'
             'mathsat-5: theorem proving'
             'yices-bin: theorem proving')
-makedepends=()
 conflicts=()
 replaces=()
 backup=()
