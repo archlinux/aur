@@ -2,7 +2,8 @@
 # Based on Teamcity PKGBUILD by Nowaker
 
 pkgname=upsource
-pkgver=2.0.3682
+pkgver=2.0.4
+_build=2.0.3682
 pkgrel=1
 pkgdesc='Repository Browsing and Code Review tool from JetBrains'
 arch=('any')
@@ -10,7 +11,7 @@ url="https://www.jetbrains.com/upsource/"
 license=('Commercial')
 depends=('java-runtime-headless')
 install="$pkgname.install"
-source=("https://download.jetbrains.com/upsource/upsource-${pkgver}.zip"
+source=("https://download.jetbrains.com/upsource/upsource-${_build}.zip"
         'upsource.service'
 	'upsource.conf')
 sha256sums=('a1ed8144adb83e7d60233a69e247ce622494a0469b87943e52425a97ef855cdd'

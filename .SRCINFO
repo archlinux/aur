@@ -1,6 +1,6 @@
 pkgbase = upsource
 	pkgdesc = Repository Browsing and Code Review tool from JetBrains
-	pkgver = 2.0.3682
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://www.jetbrains.com/upsource/
 	install = upsource.install
