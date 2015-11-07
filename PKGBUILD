@@ -1,7 +1,7 @@
 # Maintainer: knightzx <cuongvdtz@gmail.com>
 
 pkgname=hakuneko
-pkgver=1.3.10
+pkgver=1.3.11
 pkgrel=1
 pkgdesc="Manga Downloader for Linux and Windows"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('wxgtk2.8' 'curl')
 install=hakuneko.install
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}_${pkgver}_src.tar.gz)
-md5sums=('f22e41e9174e18ad6fed9b31eb2c8c8b')
+md5sums=('90dc5f29c4930dd742001d127df9adf7')
 
 build() {
   cd ${srcdir}/${pkgname}_${pkgver}_src
