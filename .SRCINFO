@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-network-monitor
 	pkgdesc = Plasma 5 applet that monitors network speed of currently active connections
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = http://kde-apps.org/content/show.php/Network+Monitor?content=169377
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = plasma5-applets-network-monitor
 	makedepends = extra-cmake-modules
 	depends = plasma-workspace
 	depends = qt5-graphicaleffects
-	source = https://github.com/kotelnik/plasma-applet-network-monitor/archive/v1.7.0.tar.gz
-	md5sums = 9edc87472b4b161bf6a9074039494a74
+	source = https://github.com/kotelnik/plasma-applet-network-monitor/archive/v1.7.1.tar.gz
+	md5sums = 4ff16d9dd432d4984e38c51e00915adb
 
 pkgname = plasma5-applets-network-monitor
 
