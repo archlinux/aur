@@ -1,4 +1,4 @@
-# Maintainer: Matthew McClatchey <write[at]matthewmcclatchey[dot]com>
+# Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 
 pkgname=winbox-beta
 pkgver=3.0
