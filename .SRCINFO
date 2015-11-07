@@ -1,6 +1,6 @@
 pkgbase = mendeleydesktop
 	pkgdesc = Academic software for managing and sharing research papers (desktop client)
-	pkgver = 1.15
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = http://www.mendeley.com/release-notes/
 	install = mendeleydesktop.install
@@ -10,9 +10,9 @@ pkgbase = mendeleydesktop
 	depends = python2
 	depends = qtwebkit
 	depends = gconf
-	source = http://desktop-download.mendeley.com/download/linux/mendeleydesktop-1.15-linux-.tar.bz2
+	source = http://desktop-download.mendeley.com/download/linux/mendeleydesktop-1.15.1-linux-.tar.bz2
 	source = mendeleydesktop.install
-	md5sums = 98592385aef62734fbe12d5b28e354f2
+	md5sums = 65e526583072c878a22cb11e4e83141d
 	md5sums = 44c54032370c2a7cbc6667af6d19acf7
 
 pkgname = mendeleydesktop
