@@ -1,0 +1,12 @@
+pkgbase = vim-colors-seoul256
+	pkgdesc = Low-contrast Vim color scheme based on Seoul Colors
+	pkgver = 20150330
+	pkgrel = 0
+	url = https://github.com/junegunn/seoul256.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+
+pkgname = vim-colors-seoul256
+
