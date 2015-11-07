@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('python-setuptools')
 source=("https://github.com/zlsun/yah3c/archive/v${pkgver}.tar.gz")
-md5sums=("e27b277cc79d9e097a6b398397307437")
+md5sums=("e5f195a5338b1b269e7e06ccfd8a32f0")
 
 build ()
 {
