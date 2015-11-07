@@ -6,15 +6,17 @@
 
 _pkgname=get_iplayer
 pkgname=$_pkgname-git
-pkgver=2.94
+pkgver=2.94.r2.g52a2c12
 pkgrel=1
 pkgdesc="Download TV and radio from BBC iPlayer"
 arch=('any')
 url="https://github.com/get-iplayer/get_iplayer"
 license=('GPL3')
+
+# perl-libwww is the LWP module
 #  'perl-json: metadata parsing'
-#  'perl-xml-simple: metadata parsing'
-depends=('perl-html-parser' 'perl-http-cookies' 'perl-libwww' 'perl-net-http' 'perl-www-mechanize')
+depends=('perl-html-parser' 'perl-http-cookies' 'perl-libwww' 'perl-net-http' 'perl-www-mechanize' 'perl-xml-simple')
+
 #  'perl-net-smtps: Mail search results via TLS (alternative)'
 optdepends=(
   #'atomicparsley: MP4 and M4A files metadata tagging. Newer "atomicparsley-largefile-hg" is preferred'
@@ -34,9 +36,9 @@ optdepends=(
   'perl-mp3-tag: MP3 files metadata tagging'
   'perl-net-smtp-ssl: Mail search results via SSL'
   'perl-net-smtp-tls: Mail search results via TLS'
-  'perl-xml-simple: metadata parsing'
   'rtmpdump: Flash audio/video streams to FLV files'
   'vlc: 3gp / N95 h.264 streams')
+
 makedepends=('git')
 conflicts=($_pkgname)
 provides=($_pkgname)
