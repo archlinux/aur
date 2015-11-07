@@ -63,7 +63,6 @@ build()
   export PATH=$srcdir/temp_bin:$PATH
 
 
-#  AWK=/usr/bin/nawk  PYTHON=/usr/bin/python2  ./configure --prefix=/usr  --with-python-exec=/usr/bin/python2  --enable-pygtk
   AWK=/usr/bin/nawk  ./configure  --prefix=/usr
 
   ADA_PROJECT_PATH=/usr/lib/gnat make -j1
@@ -83,7 +82,11 @@ package()
   ln -s /usr/bin/python2-config  $srcdir/temp_bin/python-config
   export PATH=$srcdir/temp_bin:$PATH
 
-#  DESTDIR=$pkgdir  make install 
   make DESTDIR="$pkgdir/" install
 
+  # Remove files already installed by gnatcoll.
+  #
+  rm $pkgdir/usr/bin/gnatinspect
+  rm $pkgdir/usr/share/gps/support/core/gnatcoll/__init__.py
+  rm $pkgdir/usr/share/gps/support/core/gnatcoll/runtime.py 
 }
