@@ -6,21 +6,22 @@
 
 pkgbase=dbus-selinux
 pkgname=('dbus-selinux' 'libdbus-selinux')
-pkgver=1.10.0
-pkgrel=4
+pkgver=1.10.2
+pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="http://www.freedesktop.org/Software/dbus"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
 groups=('selinux')
 makedepends=('libx11' 'systemd-selinux' 'xmlto' 'docbook-xsl' 'audit' 'libselinux')
-source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz{,.asc}
-        dbus.socket dbus-setenv.service)
-md5sums=('5af6297348107a906c8449817a728b3b'
-         'SKIP'
-         '5fce2cd240ab1c90fe716076b7d33b8e'
-         'cb82de93178a65dad38a1356210b2453')
+source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz{,.asc})
+md5sums=('2428919cc77b8d0028d65ee4d5dbef31'
+         'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
+
+prepare() {
+  cd dbus-$pkgver
+}
 
 build() {
   cd dbus-$pkgver
@@ -54,10 +55,6 @@ package_dbus-selinux(){
 
   rm -r "${pkgdir}/var/run"
   rm -r "${pkgdir}/usr/lib/pkgconfig"
-
-  # Fix up manager environment
-  install -m644 "$srcdir"/{dbus.socket,dbus-setenv.service} \
-    "$pkgdir/usr/lib/systemd/user"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/dbus-selinux/COPYING"
 }

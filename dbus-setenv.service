@@ -1,9 +1,0 @@
-[Unit]
-Description=Set Environment DBUS_SESSION_BUS_ADDRESS
-DefaultDependencies=no
-Requisite=dbus.socket
-
-[Service]
-Type=oneshot
-Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus
-ExecStart=/usr/bin/systemctl --user import-environment DBUS_SESSION_BUS_ADDRESS
