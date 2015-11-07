@@ -3,7 +3,7 @@
 
 pkgname=bazel
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Correct, reproducible, and fast builds for everyone"
 arch=('i686' 'x86_64')
 url="http://bazel.io/"
@@ -17,6 +17,7 @@ sha256sums=('12a0fee716108fee8c0039551b9020fba3cf6c42262d304485d2788f8611ca41')
 
 build() {
   cd ${pkgname}-${pkgver}
+  HOME=$srcdir
   ./compile.sh
   ./output/bazel build scripts:bazel-complete.bash
 }
