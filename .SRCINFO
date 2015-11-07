@@ -1,0 +1,17 @@
+pkgbase = iscan-plugin-gt-s650
+	pkgdesc = EPSON Image Scan! plugin for Epson Perfection V19 scanner
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	install = iscan-plugin-gt-s650.install
+	arch = i686
+	arch = x86_64
+	license = custom:AVASYSPL
+	depends = iscan
+	source_i686 = https://download2.ebz.epson.net/iscan/plugin/gt-s650/deb/x86/iscan-gt-s650-bundle-1.0.0.x86.deb.tar.gz
+	sha256sums_i686 = 6f12a5d7b3c1a08a6c5f8762e1cff7ee89063eb73ec723f1822d3fa10c5b50f9
+	source_x86_64 = https://download2.ebz.epson.net/iscan/plugin/gt-s650/deb/x64/iscan-gt-s650-bundle-1.0.0.x64.deb.tar.gz
+	sha256sums_x86_64 = d27e55652942f7c6e5f7f1b09296b742751c872e3963f8167e1f66fe360d9226
+
+pkgname = iscan-plugin-gt-s650
+
