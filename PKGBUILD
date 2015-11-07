@@ -1,7 +1,7 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 pkgname=mojo-ide
 pkgver=B1.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The IDE for Mojo"
 arch=('x86_64')
 url="https://embeddedmicro.com/"
@@ -22,7 +22,9 @@ sha512sums=("915c94b552800006ab73abaab2c405e9056c861380b76a5c652e7c13dbecb769ad7
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm 644 "driver/99-mojo.rules" "$pkgdir/usr/lib/udev/rules.d/99-mojo.rules"
+  if [ ! -f "$pkgdir/usr/lib/udev/rules.d/99-mojo.rules" ]; then
+    install -Dm 644 "driver/99-mojo.rules" "$pkgdir/usr/lib/udev/rules.d/99-mojo.rules"
+  fi
 
   install -Dm 755 "$srcdir/run-mojo-ide.sh" "$pkgdir/usr/bin/mojo-ide"
   install -Dm 644 "$srcdir/mojo-ide.desktop" "$pkgdir/usr/share/applications/mojo-ide.desktop"
