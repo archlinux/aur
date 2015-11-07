@@ -1,0 +1,16 @@
+pkgbase = python-pymlconf
+	pkgdesc = Python high level configuration library
+	pkgver = 0.3.20
+	pkgrel = 1
+	url = https://github.com/pylover/pymlconf
+	arch = any
+	license = custom
+	makedepends = fakeroot
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	source = https://pypi.python.org/packages/source/p/pymlconf/pymlconf-0.3.20.tar.gz
+	sha256sums = 084db90a5bba1002e340e88a8bc52d7b71dc69b93572a47adee1651d230b2a42
+
+pkgname = python-pymlconf
+
