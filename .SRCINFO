@@ -1,0 +1,16 @@
+pkgbase = nomad-bin
+	pkgdesc = Easily deploy applications at any scale - A Distributed, Highly Available, Datacenter-Aware Scheduler
+	pkgver = 0.1.2
+	pkgrel = 0
+	url = https://nomadproject.io/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	provides = nomad
+	source_i686 = https://dl.bintray.com/mitchellh/nomad/nomad_0.1.2_linux_386.zip
+	sha256sums_i686 = 8f683ad738a0b141b6cda111b38ec51e2d87da82c61e734a37b5e5e998d2e1e8
+	source_x86_64 = https://dl.bintray.com/mitchellh/nomad/nomad_0.1.2_linux_amd64.zip
+	sha256sums_x86_64 = 3335f7acb0d5eacaaa19aea37d128418ace18e6ef03d38de0c2c52ce831d7934
+
+pkgname = nomad-bin
+
