@@ -1,7 +1,7 @@
 #  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=letsencrypt-nginx
-pkgver=0.0.0.dev20151104
+pkgver=0.0.0.dev20151107
 pkgrel=1
 pkgdesc="Nginx plugin for Let’s Encrypt client"
 arch=('any')
@@ -16,8 +16,8 @@ source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgve
 # Refer to the following ArchWiki entry for detailed information about gpg signature verification
 # https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C')
-md5sums=('f515227811f0b75521ca1758a61cd0d3'
-		 'SKIP')
+md5sums=('bc75c73f8fa923b2bd078efd08985a88'
+         'SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
