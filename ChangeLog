@@ -1,3 +1,10 @@
+2015-11-07 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1.2.0.r16.g065830b-1 :
+    Fix compilation error by linking to missing libboost_system and setting
+    '-std=c++11' in the CXXFLAGS.
+	Fix spelling of 'changelog' field in PKGBUILD.
+
 2015-08-01 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 1.2.0.r14.g707ad84-1 :

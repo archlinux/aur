@@ -3,7 +3,7 @@
 
 _pkgname=lvtk
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r14.g707ad84
+pkgver=1.2.0.r16.g065830b
 pkgrel=1
 pkgdesc="A set of C++ wrappers around the LV2 C API"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/lvtk/lvtk.git")
 md5sums=('SKIP')
-chnagelog=ChangeLog
+changelog=ChangeLog
 
 
 pkgver() {
@@ -28,8 +28,10 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  export LDFLAGS="-lboost_system"
+  export CXXFLAGS="-std=c++11 $CXXFLAGS"
   python2 waf configure --prefix=/usr
-  python2 waf build $MAKEFLAGS
+  python2 waf build
 }
 
 package() {
