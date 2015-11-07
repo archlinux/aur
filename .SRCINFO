@@ -1,0 +1,22 @@
+pkgbase = gctwimax-modacom-u3500
+	pkgdesc = Linux driver for modacom-u3500 GCT Semiconductor WiMax chip. Used by mezon.lt in Lithuania
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://code.google.com/p/gctwimax
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = custom
+	depends = libusb
+	depends = libeap-modacom-u3500
+	depends = usb_modeswitch
+	depends = wpa_supplicant
+	source = http://gctwimax.googlecode.com/files/gctwimax-0.0.3rc4.tar.gz
+	source = gctwimax-0.0.3rc4_libusb_context_fix.patch
+	source = modacom-u3500.service
+	md5sums = 55d643a2e18811207b96a31751dcd2ab
+	md5sums = f298ac40355f613b79c92d94bd20a7ce
+	md5sums = 733eea0fcfc0464d23e9855199f4f558
+
+pkgname = gctwimax-modacom-u3500
+
