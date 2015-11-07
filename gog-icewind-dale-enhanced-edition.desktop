@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Icewind Dale - Enhanced Edition
+Icon=gog-icewind-dale-enhanced-edition
+Exec=gog-icewind-dale-enhanced-edition
+Categories=Game
+StartupNotify=false
