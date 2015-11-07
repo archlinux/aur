@@ -1,7 +1,7 @@
 # Maintainer: Damien Guihal <dguihal@gmail.com>
 pkgname=soapui
-pkgver=5.2.0
-pkgrel=2
+pkgver=5.2.1
+pkgrel=1
 pkgdesc="A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP."
 arch=('i686' 'x86_64')
 url="http://www.soapui.org/"
@@ -13,11 +13,11 @@ source=("http://cdn01.downloads.smartbear.com/soapui/$pkgver/SoapUI-$pkgver-linu
         "$pkgname.desktop"
         "$pkgname")
 #generate with 'makepkg -g'
-md5sums=('a76d98de17cadd7073a70e4db635c980'                                                                                                                                                                                                         
-         '3cc08aca62edb502fc53013edf69f640'                                                                                                                                                                                                         
+md5sums=('ba51c369cee1014319146474334fb4e1'
+         '3cc08aca62edb502fc53013edf69f640'
          'f0e2fa73dd9a7c271e38c179b4e284a3'
          '5c885433a9e32efa30d2a82f3b2a6ad2')
-sha1sums=('11faca78357dce9942ea8c30172cfb6c26891e7c'
+sha1sums=('4550b744742b354b4c552a4f6d7f52082019495e'
           '9f12e2f0db63083a3fa4e5b6fdfd10c8dfd038c0'
           '4ced7d28c3c5880db600bf4769fdb1a3dc3a6fce'
           'e74e1d3dd08f1b027479ceca30051304ae4b1a08')
