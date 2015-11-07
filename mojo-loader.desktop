@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Mojo Loader
+Exec=/usr/bin/mojo-loader
+Icon=/opt/mojo-loader/icon.png
+Categories=Development;
+Comment=Loader for Mojo
+StartupNotify=false
+Terminal=false
+Keywords=mojo;fpga;
