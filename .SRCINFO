@@ -1,0 +1,14 @@
+pkgbase = keepass-plugin-keecloud
+	pkgdesc = Adds support to several online file services to the built in URL file access in KeePass.
+	pkgver = 1.2.0.1
+	pkgrel = 1
+	url = https://bitbucket.org/devinmartin/keecloud/overview
+	arch = any
+	license = MIT
+	depends = keepass
+	noextract = KeeCloud.plgx
+	source = KeeCloud.plgx::https://bitbucket.org/devinmartin/keecloud/downloads/KeeCloud-1.2.0.1.plgx
+	sha256sums = 84b65e32027cf12ace7bf504041065c03675b9acbfca8e26e294a17ac4c6420c
+
+pkgname = keepass-plugin-keecloud
+
