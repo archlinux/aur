@@ -2,13 +2,13 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=stapler-git
-pkgver=0.3.2.r3.g66fb06b
+pkgver=0.3.2.r11.gdc496c5
 pkgrel=1
 pkgdesc="Manipulate PDF documents from the command line"
 url="http://github.com/hellerbarde/stapler"
 arch=('any')
 license=('BSD')
-depends=('python2-pypdf2' 'python2-setuptools')
+depends=('python2-pypdf2' 'python2-setuptools' 'python2-more_itertools')
 makedepends=('git')
 source=('git+https://github.com/hellerbarde/stapler.git')
 md5sums=('SKIP')
