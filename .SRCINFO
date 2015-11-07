@@ -1,7 +1,7 @@
 pkgbase = neatmkfn-git
 	pkgdesc = Creates font description files for neatroff. It used to be called mktrfn.
-	pkgver = 0.r67.10cc844
-	pkgrel = 3
+	pkgver = 0.r78.86b4342
+	pkgrel = 1
 	url = http://litcave.rudi.ir/
 	arch = i686
 	arch = x86_64
