@@ -1,0 +1,11 @@
+[Unit]
+Description=gvpe service for node %i
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/gvpe.pid
+ExecStart=/usr/sbin/gvpe %i
+
+[Install]
+WantedBy=multi-user.target

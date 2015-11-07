@@ -1,0 +1,14 @@
+# global options for all nodes
+udp-port = 5407
+mtu = 1492
+ifname = vpn0
+
+# @node1
+node = node1
+hostname = 1.2.3.4
+enable-udp = yes
+
+# @node2
+node = node2
+hostname = 2.3.4.5
+enable-udp = yes

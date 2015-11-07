@@ -1,0 +1,25 @@
+pkgbase = gvpe
+	pkgdesc = Simple and robust virtual network solution
+	pkgver = 2.25
+	pkgrel = 2
+	url = http://software.schmorp.de/pkg/gvpe.html
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = bash
+	depends = openssl
+	source = http://ftp.gnu.org/gnu/gvpe/gvpe-2.25.tar.gz
+	source = gvpe@.service
+	source = if-up
+	source = node-up
+	source = node-down
+	source = gvpe.conf.example
+	sha256sums = 73c32d9a28fadd6aa531e0fed27c7a96bc0e5e9a5626ebf70368eaad3dbb51bf
+	sha256sums = 60a6b5f03524ede9e9fa2538623b7a808cf02e41f91e800b7c1afe039effd28f
+	sha256sums = 89ea3660f780aabc37adcb621dbfd7cffa70b463c0251f03ad05c58fc564a762
+	sha256sums = 8a74c5c3fcea5586fc72d6c8c2c30a23b3dd32e92bf1674b29a126a0c8ac2fa3
+	sha256sums = 1ae1ad31a0d91fac1764111acbc5fef6d5edf6876c24b44f97cf1b1e9be9b89c
+	sha256sums = 1d01d9f384fb1baa4f15fcc43ab8b3f8fb68250b88cd639010ff00a8a0f7b4ac
+
+pkgname = gvpe
+
