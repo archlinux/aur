@@ -1,7 +1,7 @@
 #  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=letsencrypt-apache
-pkgver=0.0.0.dev20151104
+pkgver=0.0.0.dev20151107
 pkgrel=1
 pkgdesc="Apache plugin for Let’s Encrypt client"
 arch=('any')
@@ -16,8 +16,8 @@ source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgve
 # Refer to the following ArchWiki entry for detailed information about gpg signature verification
 # https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C')
-md5sums=('5313d569902396981deb7cdeb645c5c5'
-		 'SKIP')
+md5sums=('ed4a32158ec6a8dc47697901af629b01'
+         'SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
