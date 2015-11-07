@@ -1,6 +1,6 @@
 pkgbase = fcitx-mozc-ut
 	pkgdesc = Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)
-	pkgver = 2.17.2102.102.20150822
+	pkgver = 2.17.2102.102.20151002
 	pkgrel = 1
 	url = http://www.geocities.jp/ep3797/mozc_01.html
 	arch = i686
@@ -34,9 +34,9 @@ pkgbase = fcitx-mozc-ut
 	source = protobuf::git+https://github.com/google/protobuf.git#commit=172019c40bf548908ab09bfd276074c929d48415
 	source = fontTools::git+https://github.com/googlei18n/fonttools.git#commit=5ba7d98a4153fad57258fca23b0bcb238717aec3
 	source = x-ken-all-201507.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1481657&FileTime=130854558240170000&Build=21031
-	source = edict-20150822.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1481658&FileTime=130854558241600000&Build=21031
+	source = edict-20151002.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1481658&FileTime=130854558241600000&Build=21031
 	source = jigyosyo-201507.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1481659&FileTime=130854558244230000&Build=21031
-	source = mozcdic-ut-20150822.tar.bz2::http://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F8%2F8903%2Fmozcdic-ut-20150822.tar.bz2
+	source = mozcdic-ut-20151002.tar.bz2::http://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F9%2F9229%2Fmozcdic-ut-20151002.tar.bz2
 	source = EDICT_license.html
 	source = mod-generate-mozc-ut.sh
 	source = http://findbugs.googlecode.com/svn/repos/release-repository/com/google/code/findbugs/jsr305/2.0.2/jsr305-2.0.2.jar
@@ -51,7 +51,7 @@ pkgbase = fcitx-mozc-ut
 	sha512sums = 612e7e41557f7549047c9a08d520995d2fb59114e31c619b866b1249038c8fb34075241db05a91d604718d59bc56a198a43c117a3012abf0b0467b0da5404a7f
 	sha512sums = c9d703f5d218ce3e5885d69acd7573afded85d1cfa76091d9c45a04c4221ad0c6c1c18514bce79399b40d1f8ed2de8ebc8fe6e081f685015b636d176fc758003
 	sha512sums = 35cf18f04763ed473dec67266ee7d92266d0c5543cf9785393cc53bb6a37d42f32f7962a2c85a60845a4869540f003ccd52f6885e81b058f3b6196e58946230e
-	sha512sums = 114b9ec0ab02a2e2e5baf35599d327cbe9bbfe76968c468151047aa89c479cb3b8f006f1b2fa3fbe6b63a14a03d8be1eb45f332de380ce8a2b491a00846a3a16
+	sha512sums = edb7b2e30249162fb10c3a3caac84323fc659a9184ca08cf8760b214379ff235924f81f1458b9ca4115546c395c9f2dd6e0e2a6d03f7bfa2fb298dcd9173adc3
 	sha512sums = 4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb
 	sha512sums = 4668967b324261b4643cf4876a65f82a7157df140ca9fa0aa89d5cd39c87961eeabfbe63b20a2acc393acdff6c6284477d47f5a1d4967db64e0521c65ef9c0e4
 	sha512sums = b3b832489ef9249b22d8a0b9d6eee1895c9d93ef53d5968724a65184cb3f04e17cc74938128b98916da7829c6566be0bc6d60fa8801248cc24620730a060eac6
