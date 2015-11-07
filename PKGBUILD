@@ -2,14 +2,14 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname=gnome-shell-extension-justshowthewindow-git
-pkgver=r2.275595c
+pkgname=gnome-shell-extension-stealmyfocus-git
+pkgver=r11.9fd4b4c
 pkgrel=1
-pkgdesc="Rather than the default gnome-shell behaviour of showing a notification that a window is ready, the window is just displayed"
+pkgdesc="Shell Extension that let window that demand attention to steal focus"
 arch=(any)
-depends=('gnome-shell>=3.6')
 license=(GPLv2)
-url="https://github.com/ryanlerch/gnome-shell-extension-justshowthewindow"
+replaces=('gnome-shell-extension-justshowthewindow')
+url="https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus"
 install=notice.install
 
 makedepends+=('git')
@@ -23,17 +23,21 @@ pkgver() {
   [ ${PIPESTATUS[0]} -ne 0 ] && \
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-prepare() {
-  # adjust for shell versions that are not officially supported.
-  local min=$(echo ${depends[@]} | grep -Po '(?<=gnome-shell>=3\.)[[:digit:]]+')
-  local max=$(echo ${depends[@]} | grep -Po '(?<=gnome-shell<3\.)[[:digit:]]+')
-  if [ -z "$max" ]
-  then max=$(
+depends[125]=gnome-shell
+
+package_20_version() {
+  local compatibles=($(\
+    find -path ./pkg -type d -prune -o \
+    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
+    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
+  depends+=("gnome-shell>=3.${compatibles[0]}")
+  local max="${compatibles[-1]}"
+  if [ "3.$max" != $(
     gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
-  ); fi
-  find -name 'metadata.json' -exec sed -i 'H;1h;$!d;x;
-    s/"shell-version": \[.*\]/"shell-version": [ '"$(seq -s ', ' -f '"3.%g"' $min 2 $max)"' ]/' \
-    '{}' +
+  ) ]; then
+    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
+  fi
+  unset depends[125]
 }
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
