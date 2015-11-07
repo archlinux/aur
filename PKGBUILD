@@ -1,7 +1,7 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 pkgname=mojo-ide
 pkgver=B1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The IDE for Mojo"
 arch=('x86_64')
 url="https://embeddedmicro.com/"
