@@ -32,6 +32,9 @@ prepare() {
   cd $_pkgbase
   git submodule init
   git submodule update
+
+  # For /etc/ld.so.conf.d/
+  echo '/usr/lib/julia' > julia.conf
 }
 
 build() {
@@ -72,6 +75,7 @@ build() {
 }
 
 package_julia-git() {
+  backup=('etc/ld.so.conf.d/julia.conf' 'etc/julia/juliarc.jl')
   depends=('arpack' 'fftw' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme' 'xdg-utils') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
   optdepends=('gnuplot: If using the Gaston Package from julia')
   install=julia.install
@@ -103,6 +107,9 @@ package_julia-git() {
     USE_BLAS64=0 \
     USE_LLVM_SHLIB=0 \
     install
+
+  # For /etc/ld.so.conf.d, FS#41731
+  install -Dm644 julia.conf "$pkgdir/etc/ld.so.conf.d/julia.conf"
 
   # Remove doc files
   rm -r $pkgdir/usr/share/doc/julia
