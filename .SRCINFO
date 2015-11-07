@@ -8,6 +8,7 @@ pkgbase = python-pyvidia
 	depends = python
 	depends = python-lxml
 	depends = python-beautifulsoup4
+	provides = pyvidia=1.0.1
 	source = https://pypi.python.org/packages/source/p/pyvidia/pyvidia-1.0.1.tar.gz
 	sha256sums = b2b2f04c6f2b873e7c290a45db0b3e85e9ae3daac9b643d48966b23439c4fdea
 
