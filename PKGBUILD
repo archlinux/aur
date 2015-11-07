@@ -59,6 +59,8 @@ fi
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
 
+  touch chrome/test/data/webui/i18n_process_css_test.html
+
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
   #   libwidevinecdmadapter.so
@@ -139,7 +141,7 @@ build() {
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
-    -Duse_system_libvpx=1
+    -Duse_system_libvpx=0
     -Duse_system_libxml=1
     -Duse_system_snappy=1
     -Duse_system_xdg_utils=1
