@@ -4,30 +4,34 @@
 
 pkgname=gnat-gps
 pkgver=6.1.1
-pkgrel=2
+pkgrel=1
 pkgdesc="GPS, the GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
 url="http://libre.adacore.com/libre/tools/gps"
 license=('GPL')
 
-depends=("gcc-ada" "xmlada" "gtkada" "gprbuild" "gnat_util" "python2" "python2-pep8" "python2-jedi" "python2-gobject" "gnatcoll")
+depends=("gcc-ada" "xmlada" "gtkada" "gprbuild" "gnat_util" "python2" "python2-pep8" "python2-jedi" "python2-gobject")
 makedepends=("nawk")
 
 source=(http://mirrors.cdn.adacore.com/art/eabc020e818b1c6b8a6dc5ea3f665a479a49bb14
+        http://mirrors.cdn.adacore.com/art/8c386e54b4411aeb49e7786fa403f9caa28b6d91
         patch-Makefile.in
-        patch-docs-Makefile.in)
+        patch-docs-Makefile.in
+        patch-python_support_gtk.c)
 
 md5sums=('c690ecf9dc58384cf52ed8ce81e9cb5a'
+         'bc70aaf2e21a488a00f87fdec112454a'
          '66aca5731fc6fb0f22245b000735b719'
-         'b47f71e78c77885bd05f031a36932bbd')
+         'b47f71e78c77885bd05f031a36932bbd'
+         '59ceebb56df53b2b35f97ff3f0df5df4')
 
 
 
 prepare()
 {
-#  cd $srcdir/gnatcoll-gpl-2015-src
-#  patch -p0 -i ../patch-python_support_gtk.c
+  cd $srcdir/gnatcoll-gpl-2015-src
+  patch -p0 -i ../patch-python_support_gtk.c
 
   cd $srcdir/gps-$pkgver-src
   patch -p0 -i ../patch-Makefile.in
@@ -44,7 +48,7 @@ build()
   cd $srcdir/gps-$pkgver-src
 
 
-#  ln -s  $srcdir/gnatcoll-gpl-2015-src  gnatlib
+  ln -s  $srcdir/gnatcoll-gpl-2015-src  gnatlib
 
   find -name '*.gpr'    -print -exec sed -i.bak 's/-fdump-xref//g' {} \;
   find -name '*.gpr.in' -print -exec sed -i.bak 's/-fdump-xref//g' {} \;
