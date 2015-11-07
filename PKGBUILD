@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-gtk3-bzr
-pkgver=r14443
+pkgver=r14446
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled"
 url="https://launchpad.net/inkscape"
@@ -33,7 +33,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_bzrmod"
-#  sed -i 's+2,36+2,35+' src/extension/dbus/wrapper/inkscape-dbus-wrapper.c
   #fix for inkscape to use python2 with the python 3 package installed.
   sed -i '1s|/usr/bin/python\>|/usr/bin/python2|' cxxtest/*.py
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
@@ -46,11 +45,14 @@ prepare() {
 }
 
 build() {
+LANG=C
   cd "$srcdir/$_bzrmod"
+  [[ -d ../build ]] || mkdir ../build
   export CXXFLAGS+=" `pkg-config --cflags glib` -fPIC -std=c++11"
   ./autogen.sh
   sed -i 's|python -c|python2 -c|g' configure 
-  ./configure LIBS='-lpangoft2-1.0 -lfontconfig' \
+  cd ../build
+  ../inkscape/configure LIBS='-lpangoft2-1.0 -lfontconfig' \
     --prefix=/usr \
     --without-gnome-vfs \
     --enable-lcms \
@@ -66,6 +68,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_bzrmod"
+  cd "$srcdir/build"
   make DESTDIR=$pkgdir install
 }
