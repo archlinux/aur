@@ -40,7 +40,7 @@ build() {
 package() {
     cd "${srcdir}/src/gitlab.com/gitlab-org/${pkgname}"
     install -Dm644 "${srcdir}/config.toml" "${pkgdir}/etc/gitlab-runner/config.toml"
-    install -Dm644 "${srcdir}/gitlab-runner.service" "${pkgdir}/etc/systemd/system/gitlab-runner.service"
+    install -Dm644 "${srcdir}/gitlab-runner.service" "${pkgdir}/usr/lib/systemd/system/gitlab-runner.service"
     install -Dm644 "${srcdir}/gitlab-runner.sysusers" "${pkgdir}/usr/lib/sysusers.d/gitlab-runner.conf"
     install -Dm644 "${srcdir}/gitlab-runner.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/gitlab-runner.conf"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
