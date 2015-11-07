@@ -1,13 +1,13 @@
 # Maintainer: Ivan Zenin <i.zenin@gmx.com>
 
 pkgname=amule-remote-git
-pkgver=master
-pkgrel=1
+pkgver=
+pkgrel=2
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks (remote GUI only, development version)'
 url='http://www.amule.org'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('geoip' 'geoip-database' 'wxgtk>=2.8')
+depends=('crypto++' 'geoip' 'geoip-database' 'wxgtk>=2.8')
 makedepends=('git')
 conflicts=('amule')
 source=('git+git://repo.or.cz/amule.git')
