@@ -5,8 +5,8 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.5.0.dev.r27289.g8681313
-pkgrel=2
+pkgver=0.5.0.dev.r28167.ga664281
+pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
 url="http://julialang.org"
@@ -15,8 +15,10 @@ makedepends=('gcc-fortran' 'arpack' 'fftw' 'git' 'gmp' 'libgit2' 'libunwind' 'll
 # Needed if building the documentation
 #makedepends+=('juliadoc-git' 'texlive-langcjk' 'texlive-latexextra')
 options=('!emptydirs')
-source=(git://github.com/JuliaLang/julia.git#branch=master)
-md5sums=('SKIP')
+source=(git://github.com/JuliaLang/julia.git#branch=master
+        Make.user)
+md5sums=('SKIP'
+         'e6ed32e3fa745f640489e6f19ab5c7e8')
 
 
 pkgver() {
@@ -35,6 +37,9 @@ prepare() {
 
   # For /etc/ld.so.conf.d/
   echo '/usr/lib/julia' > julia.conf
+
+  # Move the Make.user in place
+  cp -v $srcdir/Make.user .
 }
 
 build() {
@@ -44,28 +49,6 @@ build() {
   fi
 
   make -C $_pkgbase prefix=/usr sysconfdir=/etc \
-    #MARCH=${CARCH/_/-} \
-    USE_SYSTEM_LLVM=1 \
-    USE_SYSTEM_LIBUNWIND=1 \
-    USE_SYSTEM_PCRE=1 \
-    USE_SYSTEM_LIBM=1 \
-    USE_SYSTEM_OPENLIBM=1 \
-    USE_SYSTEM_OPENSPECFUN=1 \
-    USE_SYSTEM_DSFMT=0 \
-    USE_SYSTEM_BLAS=1 \
-    USE_SYSTEM_LAPACK=1 \
-    USE_SYSTEM_FFTW=1 \
-    USE_SYSTEM_GMP=1 \
-    USE_SYSTEM_MPFR=1 \
-    USE_SYSTEM_ARPACK=1 \
-    USE_SYSTEM_SUITESPARSE=1 \
-    USE_SYSTEM_LIBUV=0 \
-    USE_SYSTEM_UTF8PROC=0 \
-    USE_SYSTEM_LIBGIT2=1 \
-    USE_SYSTEM_PATCHELF=1 \
-    USE_INTEL_MKL=0 \
-    USE_BLAS64=0 \
-    USE_LLVM_SHLIB=0
 
   # Building doc
   cd $_pkgbase/doc
@@ -83,30 +66,7 @@ package_julia-git() {
   conflicts=('julia')
   backup=('etc/julia/juliarc.jl')
 
-  make -C $_pkgbase DESTDIR=$pkgdir prefix=/usr sysconfdir=/etc \
-    #MARCH=${CARCH/_/-} \
-    USE_SYSTEM_LLVM=1 \
-    USE_SYSTEM_LIBUNWIND=1 \
-    USE_SYSTEM_PCRE=1 \
-    USE_SYSTEM_LIBM=1 \
-    USE_SYSTEM_OPENLIBM=1 \
-    USE_SYSTEM_OPENSPECFUN=1 \
-    USE_SYSTEM_DSFMT=0 \
-    USE_SYSTEM_BLAS=1 \
-    USE_SYSTEM_LAPACK=1 \
-    USE_SYSTEM_FFTW=1 \
-    USE_SYSTEM_GMP=1 \
-    USE_SYSTEM_MPFR=1 \
-    USE_SYSTEM_ARPACK=1 \
-    USE_SYSTEM_SUITESPARSE=1 \
-    USE_SYSTEM_LIBUV=0 \
-    USE_SYSTEM_UTF8PROC=0 \
-    USE_SYSTEM_LIBGIT2=1 \
-    USE_SYSTEM_PATCHELF=1 \
-    USE_INTEL_MKL=0 \
-    USE_BLAS64=0 \
-    USE_LLVM_SHLIB=0 \
-    install
+  make -C $_pkgbase DESTDIR=$pkgdir prefix=/usr sysconfdir=/etc install
 
   # For /etc/ld.so.conf.d, FS#41731
   install -Dm644 julia.conf "$pkgdir/etc/ld.so.conf.d/julia.conf"
