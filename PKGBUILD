@@ -2,7 +2,7 @@
 
 pkgname=gitlab-ci-multi-runner
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The official GitLab CI runner written in Go"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://gitlab.com/gitlab-org/gitlab-ci-multi-runner'

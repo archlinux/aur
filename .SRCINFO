@@ -1,7 +1,7 @@
 pkgbase = gitlab-ci-multi-runner
 	pkgdesc = The official GitLab CI runner written in Go
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
 	install = gitlab-runner.install
 	arch = i686
