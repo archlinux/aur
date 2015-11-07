@@ -3,7 +3,7 @@
 
 pkgname=bazel
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Correct, reproducible, and fast builds for everyone"
 arch=('i686' 'x86_64')
 url="http://bazel.io/"
@@ -18,7 +18,13 @@ sha256sums=('12a0fee716108fee8c0039551b9020fba3cf6c42262d304485d2788f8611ca41')
 build() {
   cd ${pkgname}-${pkgver}
   HOME=$srcdir
-  ./compile.sh
+  if (pacman -Q bazel &> /dev/null); then
+    echo "bazel found - compiling with installed bazel"
+    ./compile.sh build /usr/bin/bazel
+  else
+    echo "no installed bazel found - compiling from scratch"
+    ./compile.sh
+  fi
   ./output/bazel build scripts:bazel-complete.bash
 }
 

@@ -1,7 +1,7 @@
 pkgbase = bazel
 	pkgdesc = Correct, reproducible, and fast builds for everyone
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bazel.io/
 	install = bazel.install
 	arch = i686
