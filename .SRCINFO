@@ -1,0 +1,16 @@
+pkgbase = ocaml-camlzip
+	pkgdesc = Provides easy access to compressed files in ZIP, GZIP and JAR format
+	pkgver = 1.05
+	pkgrel = 1
+	url = http://forge.ocamlcore.org/projects/camlzip/
+	arch = i686
+	arch = x86_64
+	license = custom: LGPL-2.1+ with OCaml linking exception
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	depends = ocaml
+	source = http://forge.ocamlcore.org/frs/download.php/1037/camlzip-1.05.tar.gz
+	md5sums = e85c179d5dc79821e6e8d90e636599f1
+
+pkgname = ocaml-camlzip
+
