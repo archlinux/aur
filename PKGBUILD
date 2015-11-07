@@ -5,7 +5,7 @@
 pkgname=subversion-1.6
 _pkgname=subversion
 pkgver=1.6.23
-pkgrel=3
+pkgrel=4
 pkgdesc="A Modern Concurrent Version Control System"
 arch=('i686' 'x86_64')
 license=('APACHE')
@@ -38,7 +38,7 @@ build() {
    ./configure --prefix=/usr --with-apr=/usr --with-apr-util=/usr \
                --with-zlib=/usr --with-neon=/usr --without-apxs \
                --with-sqlite=/usr --with-berkeley-db=:/usr/include/:/usr/lib:db-5.3 \
-               --enable-javahl --with-gnome-keyring --with-kwallet
+               --enable-javahl --with-gnome-keyring --with-kwallet --with-jdk=/usr/lib/jvm/default
 
    make external-all
    make LT_LDFLAGS="-L$Fdestdir/usr/lib" local-all

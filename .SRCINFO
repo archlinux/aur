@@ -1,7 +1,7 @@
 pkgbase = subversion-1.6
 	pkgdesc = A Modern Concurrent Version Control System
 	pkgver = 1.6.23
-	pkgrel = 3
+	pkgrel = 4
 	url = http://subversion.apache.org/
 	arch = i686
 	arch = x86_64
