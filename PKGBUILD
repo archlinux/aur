@@ -5,8 +5,8 @@
 
 pkgname=tmux-truecolor
 _pkgname=tmux
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=0.3
 pkgdesc='A terminal multiplexer, with true color support'
 url='http://tmux.github.io/'
 arch=('i686' 'x86_64')
@@ -16,15 +16,16 @@ provides=('tmux')
 depends=('ncurses' 'libevent' 'libutempter')
 source=(https://github.com/tmux/tmux/releases/download/${pkgver}/tmux-${pkgver}.tar.gz
 	LICENSE
-	tmux-24.diff
+	tmux-24.diff::https://github.com/tmux/tmux/compare/master...kylape:24bit-color.diff
 	)
 
-md5sums=('9fb6b443392c3978da5d599f1e814eaa'
+md5sums=('74a2855695bccb51b6e301383ad4818c'
 	 '71601bc37fa44e4395580b321963018e'
-	 '8283636f62fbefa1bd3ce41a8ea6e426')
+	 'd6d1b307ce64908bb11de678409a16a4')
 
 build() {
 	cd "$srcdir/$_pkgname-${pkgver/_/}"
+	sed -e '/256colors.pl/d;d;d' -i ../tmux-24.diff
 	patch -p1 < ../tmux-24.diff
 	./configure --prefix=/usr
 	make
