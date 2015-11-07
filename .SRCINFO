@@ -1,0 +1,17 @@
+pkgbase = python-bhmm
+	pkgdesc = A toolkit for Bayesian hidden Markov model analysis of single-molecule trajectories
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/bhmm/bhmm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cython
+	depends = python-msmtools
+	depends = python-scipy
+	depends = python-six
+	source = https://github.com/bhmm/bhmm/archive/0.5.2.tar.gz
+	md5sums = 49f891a6ecddee0f3921e0afce82df46
+
+pkgname = python-bhmm
+
