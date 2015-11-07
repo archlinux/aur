@@ -1,5 +1,5 @@
 pkgbase = linux-w110er
-	pkgver = 4.2.4
+	pkgver = 4.2.5
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -12,15 +12,15 @@ pkgbase = linux-w110er
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.4.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.4.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.5.sign
 	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
 	source = config.w110er
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	sha256sums = cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb
 	sha256sums = SKIP
-	sha256sums = 104ba869111c7ce037fc92646f9da7352412a73e84cde7467f29cd4b973d6e78
+	sha256sums = b631eb4e8b4911b31111b0838e00f7c4a1b7689abcd2233609831b638493f4fb
 	sha256sums = SKIP
 	sha256sums = 819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532
 	sha256sums = b44e789a2c6d5109930617665d8d139b22cd292cf58dca49c230f21ecfea6ad5
@@ -28,27 +28,27 @@ pkgbase = linux-w110er
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-w110er
-	pkgdesc = Linux 4.2.4 kernel and modules optimized for Mountain F11 Netbook (Clevo W110ER). See PKGBUILD
+	pkgdesc = Linux 4.2.5 kernel and modules optimized for Mountain F11 Netbook (Clevo W110ER). See PKGBUILD
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-w110er=4.2.4
+	provides = kernel26-w110er=4.2.5
 	conflicts = kernel26-w110er
 	replaces = kernel26-w110er
 	backup = etc/mkinitcpio.d/linux-w110er.preset
 
 pkgname = linux-w110er-headers
 	pkgdesc = Header files and scripts for building modules for Linux-w110er kernel
-	provides = kernel26-w110er-headers=4.2.4
+	provides = kernel26-w110er-headers=4.2.5
 	conflicts = kernel26-w110er-headers
 	replaces = kernel26-w110er-headers
 
 pkgname = linux-w110er-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-w110er kernel
-	provides = kernel26-w110er-docs=4.2.4
+	provides = kernel26-w110er-docs=4.2.5
 	conflicts = kernel26-w110er-docs
 	replaces = kernel26-w110er-docs
 
