@@ -1,0 +1,17 @@
+pkgbase = communi-desktop-git
+	pkgdesc = An IRC client for desktop environments.
+	pkgver = r2931.f15534d
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = qt5-declarative
+	depends = libcommuni-git
+	provides = communi-desktop
+	conflicts = communi-desktop
+	source = git://github.com/communi/communi-desktop.git
+	md5sums = SKIP
+
+pkgname = communi-desktop-git
+
