@@ -1,7 +1,7 @@
 pkgbase = ocamlnet
 	pkgdesc = A library for Web and Internet programming in OCaml
 	pkgver = 4.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://projects.camlcity.org/projects/ocamlnet.html
 	arch = i686
 	arch = x86_64
