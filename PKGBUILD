@@ -6,9 +6,9 @@
 
 pkgname=chromium-wayland
 _pkgname=chromium
-pkgver=45.0.2454.37
-_wayland_release="Trask"
-pkgrel=2
+pkgver=48.0.2548.0
+_wayland_release="SouthSister"
+pkgrel=1
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -32,15 +32,11 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         "ozone-wayland::git+https://github.com/01org/ozone-wayland#branch=Milestone-${_wayland_release}"
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        nacl_posix_source.patch
-        posix_macro.patch
         chromium-widevine.patch)
-sha256sums=('869adfc21a22d6a677d4bef381ed79aa2ed10acdc300a87dab704c9477f773ed'
+sha256sums=('4ca4e2adb340b3fb4d502266ad7d6bda45fa3519906dbf63cce11a63f680dbc8'
             'SKIP'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
-            '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
-            '17e656549a82b782fe809c4e2a19fbaf564a45b30cec07b1a1d6a08eb0739675'
-            '599f5ef7d98f42fdc877bf2fa82e828ed718c38f87c08b361e76f376bd5145c8'
+            '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -98,12 +94,6 @@ prepare() {
     patch -p1 <$patchfile
   done
 
-  # Apply the patches for boringssl...
-  cd third_party/boringssl/src/
-  for patchfile in posix_macro.patch nacl_posix_source.patch; do
-    echo "Applying boringssl patch ${patchfile}."
-    patch -p1 <"${srcdir}/${patchfile}"
-  done
 }
 
 build() {
