@@ -2,7 +2,7 @@
 
 pkgbase=calligra
 pkgname=krita
-pkgver=2.9.8
+pkgver=2.9.9
 pkgrel=1
 pkgdesc="Digital painting and illustration suite (stand-alone)."
 arch=('i686' 'x86_64')
@@ -14,14 +14,13 @@ provides=('calligra-krita')
 conflicts=('calligra-krita' 'calligra-plugins' 'calligra-libs' 'calligra-extras' 'calligra-filters')
 install=krita.install
 source=("http://download.kde.org/stable/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.xz")
-sha256sums=('6cce144e12b8058ca46fe67f047bedfbb6c375b8c07743f0f7e9fe2a1f9a4521')
+sha256sums=('6e9d1251883c9cc5ad17afbe38959dce5ae1adbec7221831733d0f15fc83e521')
 
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
   mkdir -p ${pkgname}-build
 }
 
-# Remove comment markers only if building with vc on Haswell
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}/${pkgname}-build"
   cmake ../ \
@@ -30,9 +29,7 @@ build() {
     -DPRODUCTSET=KRITA \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DWITH_Soprano=OFF #\
-    #-DTARGET_ARCHITECTURE=none \
-    #-DCMAKE_CXX_FLAGS="-fabi-version=0 -march=native"
+    -DWITH_Soprano=OFF
   make
 }
 
