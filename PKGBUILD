@@ -35,7 +35,13 @@ prepare() {
 }
 
 build() {
+  # SSE2 is a requirement for Julia on 32-bit x86
+  if [[ $CARCH == i686 ]]; then
+    export JULIA_CPU_TARGET=pentium4
+  fi
+
   make -C $_pkgbase prefix=/usr sysconfdir=/etc \
+    MARCH=${CARCH/_/-} \
     USE_SYSTEM_LLVM=1 \
     USE_SYSTEM_LIBUNWIND=1 \
     USE_SYSTEM_PCRE=1 \
@@ -74,6 +80,7 @@ package_julia-git() {
   backup=('etc/julia/juliarc.jl')
 
   make -C $_pkgbase DESTDIR=$pkgdir prefix=/usr sysconfdir=/etc \
+    MARCH=${CARCH/_/-} \
     USE_SYSTEM_LLVM=1 \
     USE_SYSTEM_LIBUNWIND=1 \
     USE_SYSTEM_PCRE=1 \
