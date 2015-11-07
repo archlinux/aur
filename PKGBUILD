@@ -49,10 +49,9 @@ build() {
 	cd "$srcdir/Libraries/QtStatic"
 	./configure -prefix "$srcdir/qt" -release -opensource -confirm-license -qt-zlib \
 	            -qt-libpng -qt-libjpeg -qt-freetype -qt-harfbuzz -qt-pcre -qt-xcb \
-	            -qt-xkbcommon-x11 -static -nomake examples -nomake tests
-	# Removed from Telegram Desktop build instructions: -no-opengl
-	make
-	make install
+	            -qt-xkbcommon-x11 -no-opengl -static -nomake examples -nomake tests
+	make module-qtbase module-qtimageformats
+	make module-qtbase-install_subtargets module-qtimageformats-install_subtargets
 	
 	export PATH="$srcdir/qt/bin:$PATH"
 	
@@ -73,7 +72,7 @@ build() {
 	cd "$srcdir/tdesktop/Linux/ReleaseIntermediate"
 	
 	qmake CONFIG+=release "../../Telegram/Telegram.pro"
-	local pattern="^PRE_TARGETDEPS +\?="
+	local pattern="^PRE_TARGETDEPS +="
 	grep "$pattern" "$srcdir/tdesktop/Telegram/Telegram.pro" | sed "s/$pattern//g" | xargs make
 	
 	qmake CONFIG+=release "../../Telegram/Telegram.pro"
