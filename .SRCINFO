@@ -1,0 +1,15 @@
+pkgbase = masalla-icon-theme
+	pkgdesc = Latest flat design theme by Hayder Majid
+	pkgver = r.
+	pkgrel = 1
+	url = https://github.com/hayderctee/masalla-icon-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = masalla-icon-theme-git
+	conflicts = masalla-icon-theme-git
+	source = git+https://github.com/hayderctee/masalla-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = masalla-icon-theme
+
