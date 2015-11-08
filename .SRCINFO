@@ -1,12 +1,13 @@
 pkgbase = syncany
 	pkgdesc = Cloud storage and filesharing application with a focus on security and abstraction of storage.
 	pkgver = 0.4.7_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.syncany.org/
 	arch = any
 	license = GPL3
-	depends = java-runtime>=7
-	depends = bash-completion
+	depends = java-environment>=7,
+	depends = sh
+	optdepends = bash-completion: auto completion in bash
 	source = http://syncany.org/dist/syncany-0.4.7-alpha.tar.gz
 	sha256sums = 14d822b34e0a6363fa580104c7fc0d58571b5adb766aff412b12e9f340ce3477
 
