@@ -1,5 +1,5 @@
 pkgbase = dunst-git
-	pkgdesc = a lightweight replacement for the notification-daemons provided by most desktop environments
+	pkgdesc = a lightweight notification-daemon - git version
 	pkgver = 1.1.0.28.gf601312.633
 	pkgrel = 1
 	url = http://www.knopwob.org/dunst
