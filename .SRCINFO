@@ -1,13 +1,13 @@
 pkgbase = audacious-plugins-gtk3
 	pkgdesc = Plugins for Audacious
-	pkgver = 3.6.2
+	pkgver = 3.7
 	pkgrel = 1
 	url = http://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
-	makedepends = audacious-gtk3>=3.6.2
+	makedepends = audacious-gtk3>=3.7
 	makedepends = glib2
 	makedepends = python2
 	makedepends = alsa-lib
@@ -56,8 +56,8 @@ pkgbase = audacious-plugins-gtk3
 	optdepends = libcue: CUE playlist format
 	provides = audacious-plugins
 	conflicts = audacious-plugins
-	source = http://distfiles.audacious-media-player.org/audacious-plugins-3.6.2-gtk3.tar.bz2
-	sha1sums = 5aec692e35e9dfd72f4c9f09e7bb24b3d94305bf
+	source = http://distfiles.audacious-media-player.org/audacious-plugins-3.7-gtk3.tar.bz2
+	sha1sums = 99936578c23e140092e3fd3307bc1b216f11491d
 
 pkgname = audacious-plugins-gtk3
 
