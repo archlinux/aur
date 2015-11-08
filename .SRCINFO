@@ -1,6 +1,6 @@
 pkgbase = goffice-light
 	pkgdesc = A library of document-centric objects and utilities built on top of GLib and Gtk+
-	pkgver = 0.10.23
+	pkgver = 0.10.24
 	pkgrel = 1
 	url = http://www.gnome.org
 	arch = i686
@@ -10,14 +10,15 @@ pkgbase = goffice-light
 	makedepends = intltool
 	makedepends = gobject-introspection
 	depends = gtk3
+	depends = librsvg
 	depends = libgsf
 	depends = libspectre
 	depends = libxslt
-	provides = goffice=0.10.23
+	provides = goffice=0.10.24
 	conflicts = goffice
 	options = !libtool
-	source = http://ftp.gnome.org/pub/gnome/sources/goffice/0.10/goffice-0.10.23.tar.xz
-	sha256sums = 1325fc38f2476977bd8d71588ccb2a57aa418260406b7c28a20098b6b4e33f9f
+	source = http://ftp.gnome.org/pub/gnome/sources/goffice/0.10/goffice-0.10.24.tar.xz
+	sha256sums = cda70eab0b0b0e29c3bea09849bcfca0c2ccc20038ee69e7e14cde664484af5a
 
 pkgname = goffice-light
 

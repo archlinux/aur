@@ -3,7 +3,7 @@
 
 pkgname=goffice-light
 _pkgname=goffice
-pkgver=0.10.23
+pkgver=0.10.24
 pkgrel=1
 pkgdesc="A library of document-centric objects and utilities built on top of GLib and Gtk+"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ provides=("goffice=$pkgver")
 conflicts=('goffice')
 options=('!libtool')
 makedepends=('pkgconfig' 'intltool' 'gobject-introspection')
-depends=('gtk3' 'libgsf' 'libspectre' 'libxslt')
+depends=('gtk3' 'librsvg' 'libgsf' 'libspectre' 'libxslt')
 source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz)
-sha256sums=('1325fc38f2476977bd8d71588ccb2a57aa418260406b7c28a20098b6b4e33f9f')
+sha256sums=('cda70eab0b0b0e29c3bea09849bcfca0c2ccc20038ee69e7e14cde664484af5a')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
