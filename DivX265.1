@@ -1,0 +1,134 @@
+.TH DIVX265 "1" "November 2014" "1.4.21" "User Commands"
+.SH NAME
+DivX265 \- DivX HEVC Community Encoder
+
+.SH SYNOPSIS
+.B DivX265
+\fI-i <infile> -o <outfile> -br <bitrate> -s <w>x<h>  (for raw infile)\fR
+.br
+.B DivX265
+\fI-i <infile> -o <outfile> -br <bitrate>             (for .avs|.avi infile)\fR
+.br
+.B DivX265
+\fI-h  (for help)\fR
+
+.SH DESCRIPTION
+This tool will allow you to encode HEVC streams that are within DivX HEVC profile.
+After encoding, you can mux video using MKVToolnix.
+
+.SH OPTIONS
+.SS
+Encoder:
+.TP
+\fB\-br\fR, \fB\-\-bitrate\fR <bitrate>
+Target bitrate in kbps
+.TP
+\fB\-qp\fR <1\-51>
+Constant quantizer.
+Note: creates potential non\-compliant DivX HEVC Profile streams
+.TP
+\fB\-I\fR, \fB\-\-interval\fR <interval>
+Keyframe interval. 1 to 6 seconds. Default=6
+.TP
+\fB\-F\fR, \fB\-\-fixed\-gop\-length\fR
+Disable scene change detection, results in fixed gop length.
+.TP
+\fB\-aqo\fR <1\-5>
+Algorithm quality optimized for:
+.br
+1:fastest speed
+.br
+2:fast
+.br
+3:balanced(*)
+.br
+4:higher quality
+.br
+5:highest quality.
+.TP
+\fB\-10\fR, \fB\-\-main10\fR
+Enable 10 bit, main10
+.TP
+\fB\-\-no\-wpp\fR
+Disable WPP
+.TP
+\fB\-709\fR
+Selects 709 for colour\-primaries, transfer\-characteristics and matrix coefficients
+.TP
+\fB\-\-colour\-primaries\fR <value>
+Available: 709, unspec, 470m, 470bg, smpte170m, smpte240m, film, 2020.
+.TP
+\fB\-\-transfer\-characteristics\fR <value>
+Available: 709, unspec, 470m, 470bg, smpte170m, smpte240m, linear, log100, log316,
+iec61966\-2\-4, 1361e, iec61966\-2\-1,2020\-10b.
+.TP
+\fB\-\-matrix\-coefficients\fR <value>
+Available: GBR, 709, unspec, fcc47, smpte170bg, smpte170m, smpte240m, YCgCo, 2020nc.
+
+.SS
+General:
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Help
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Verbose mode, detailed messages output.
+.TP
+\fB\-q\fR, \fB\-\-quiet\fR
+Quiet mode, no messages output.
+
+.SS
+Input/Output:
+.TP
+\fB\-i\fR, \fB\-\-input\fR <Input file>
+Required. (For raw stream from stdin, use \fB\-i\fR \-)
+.TP
+\fB\-o\fR, \fB\-\-output\fR <Output file>
+Required.
+.TP
+\fB\-\-format\fR <format>
+Raw pixelformat.
+Available: yuv420p, yuv420p10le, yuv422p10le, I420, V210.
+.TP
+\fB\-s\fR, \fB\-\-size\fR <height>x<width>
+Required for raw files. Frame dimensions (e.g. 1920x1080)
+.TP
+\fB\-n\fR, \fB\-\-frames\fR <number>
+Maximum number of frames to encode
+.TP
+\fB\-\-start\fR <number>
+First frame to encode
+.TP
+\fB\-fps\fR, \fB\-\-framerate\fR <Frame rate>
+Frame rate.
+Default=24 Hz (raw files) or derived from file (.avs/.avi)
+
+.SS
+Valid frame rates:
+60 Hz
+.br
+60000/1001 Hz
+.br
+50 Hz
+.br
+48 Hz
+.br
+30 Hz
+.br
+30000/1001 Hz
+.br
+25 Hz
+.br
+24 Hz
+.br
+24000/1001 Hz
+
+.SS
+Miscellaneous:
+.TP
+\fB\-\-psnr\fR
+Calculate PSNR metrics
+
+.SH COPYRIGHT
+Copyright \(co 2000\-2014 DivX, LLC.
+

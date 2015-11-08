@@ -1,0 +1,17 @@
+pkgbase = divx265
+	pkgdesc = Free for non commercial use H265/HEVC video encoder
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = http://labs.divx.com/divx265/
+	arch = i686
+	arch = x86_64
+	license = other
+	depends = lib32-gcc-libs
+	options = !strip
+	source = DivX265::http://download.divx.com/hevc/DivX265_1_5_8
+	source = DivX265.1
+	md5sums = 3cb04e8cf69ad7d63e5001c882f2b4a3
+	md5sums = d24e50a151d8951b0e996ce60b70c6d4
+
+pkgname = divx265
+
