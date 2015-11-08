@@ -2,7 +2,7 @@
 
 pkgname='flickmagnet'
 _gitname='flickmagnet'
-pkgver='0.0.1'
+pkgver='0.0.2'
 pkgrel=1
 pkgdesc='HTTP server similar to Netflix and PopcornTime which streams public domain videos from torrent files.'
 arch=('any')
@@ -34,6 +34,7 @@ sha256sums=(
 package() {
     cd "$_gitname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
+    install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "$pkgname/examples/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
 
