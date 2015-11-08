@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libnftnl-git
-pkgver=1.0.0.r6.g076fd1e
+pkgver=1.0.5.r8.g308a021
 pkgrel=1
 pkgdesc='Netfilter nf_tables infrastructure library'
 arch=(i686 x86_64)
