@@ -3,7 +3,7 @@ pkgbase='deadbeef-decast-git'
 pkgname=('deadbeef-decast-gtk2-git' 'deadbeef-decast-gtk3-git')
 _pkgdesc='Podcast subscription plugin for DeaDBeeF audio player.'
 url='https://bitbucket.org/thesame/decast'
-pkgver=0.1
+pkgver=r19
 pkgrel=1
 _commit='9ffd6d6dfb14'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd decast
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  printf "r""$(git rev-list --count HEAD)"
 }
 
 prepare () {
