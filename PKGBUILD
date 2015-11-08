@@ -1,5 +1,6 @@
 # $Id: bfc54885f6617a81b35939f12f0a9f02199bb6d8 $
 # Maintainer: Ido Rosen <ido@kernel.org>
+# Co-maintainer: Chris Fordham <chris at fordham-nagy dot id dot au> aka flaccid
 # Contributor: Sébastien "Seblu" Luttringer
 # Contributor: Marcel Wysocki <maci@satgnu.net>
 # Contributor: Daniel YC Lin <dlin.tw@gmail>
@@ -11,14 +12,17 @@
 #       Otherwise, open a GitHub issue.  Thank you! -Ido
 #
 
+# Important upstream docs:
+# https://github.com/docker/docker/blob/master/project/PACKAGERS.md
+
 pkgname=docker-git
-pkgver=1.9.0.dev.16580.729c9a9
+pkgver=1.10.0.dev.19692.e357be4
 pkgrel=1
 epoch=1
-pkgdesc='Pack, ship and run any application as a lightweight container'
-arch=(i686 'x86_64')
+pkgdesc='Pack, ship and run any application as a lightweight container.'
+arch=('i686' 'x86_64')
 url="https://github.com/docker/docker"
-license=('Apache')
+license=('Apache License Version 2.0')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd')
 makedepends=('git' 'go' 'btrfs-progs' 'go-md2man')
 backup=(etc/sysctl.d/docker.conf)
