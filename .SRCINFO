@@ -1,13 +1,13 @@
 pkgbase = docker-git
-	pkgdesc = Pack, ship and run any application as a lightweight container
-	pkgver = 1.9.0.dev.16580.729c9a9
+	pkgdesc = Pack, ship and run any application as a lightweight container.
+	pkgver = 1.10.0.dev.19692.e357be4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/docker/docker
 	install = docker.install
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache License Version 2.0
 	makedepends = git
 	makedepends = go
 	makedepends = btrfs-progs
