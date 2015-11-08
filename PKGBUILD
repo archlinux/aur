@@ -24,7 +24,7 @@ if [[ ${CARCH} = 'x86_64' ]]; then
 else
     _pkgarch='x86'
     sha512sums=('d91a064342640582a71c664441e944812bc2fd18bd8f00010838adac7ad0581efcf8c9224c48a136ae0aec7f26b6df8071da7c2e10110eafe91c1dbd7f9865ad')
-    source=("iscan-bundle.deb.tar.gz::https://download2.ebz.epson.net/iscan/general/deb/${_pkgarch}/${_pkgdlname}_${_pkgdlver}.${_pkgarch}.deb.tar.gz")
+    source=("iscan-bundle.deb.tar.gz::https://download2.ebz.epson.net/iscan/general/deb/${_pkgarch}/${_pkgdlname}-${_pkgdlver}.${_pkgarch}.deb.tar.gz")
 fi
 
 build() {
