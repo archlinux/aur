@@ -1,0 +1,15 @@
+pkgbase = libx32-mpdecimal
+	pkgdesc = Package for correctly-rounded arbitrary precision decimal floating point arithmetic (x32 ABI)
+	pkgver = 2.4.1
+	pkgrel = 1.1
+	url = http://www.bytereef.org/mpdecimal/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libx32-glibc
+	depends = mpdecimal
+	source = http://www.bytereef.org/software/mpdecimal/releases/mpdecimal-2.4.1.tar.gz
+	sha512sums = 60073ec82faff1ef9a5955a98f7f1320b044ff03bf8589bfe139b4721ae44c943e16bb36e1e61d9c6016529ba460d879bcbb17ea17cd875b27caa7caea211d45
+
+pkgname = libx32-mpdecimal
+
