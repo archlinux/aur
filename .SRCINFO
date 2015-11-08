@@ -1,6 +1,6 @@
 pkgbase = xonsh-git
 	pkgdesc = A Python-ish, BASHwards-compatible shell
-	pkgver = 0.2.3
+	pkgver = 0.2.3.r4.g208d8f7
 	pkgrel = 1
 	url = http://github.com/scopatz/xonsh
 	install = xonsh.install
@@ -10,9 +10,7 @@ pkgbase = xonsh-git
 	depends = python-ply
 	conflicts = xonsh
 	source = git://github.com/scopatz/xonsh.git
-	source = 0001-installation-of-jupyter-hook-to-given-destination.patch
 	sha256sums = SKIP
-	sha256sums = 0cacd63515b512e390cabd46b076c3f0461e1cd3a7218f8830bd1b0ccd860498
 
 pkgname = xonsh-git
 
