@@ -211,7 +211,7 @@ post_install() {
 		include=$(cat /etc/nginx/nginx.conf | grep cozy)
 		if [ ${#include} == 0 ]; then
 		    msg_blue 'This is your first time running this package. Adding some basic configuration...'
-		    sed -i 's/http {/http {\n\t#Cozy configuration\n\tinclude\tcozy.conf;/' /etc/nginx/nginx.conf
+		    sed -i 's/http {/http {\n\t#Cozy configuration\n\tinclude\tcozy.conf;\n\tserver_names_hash_bucket_size 64;/' /etc/nginx/nginx.conf
 		    cp /usr/share/cozy/nginx-config /etc/nginx/cozy.conf
 		    msg_blue 'Starting Nginx web server...'
 		    systemctl enable nginx
