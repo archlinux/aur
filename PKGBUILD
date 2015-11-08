@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=opensgx-git
-pkgver=r31.62fb20f
-pkgrel=2
+pkgver=r43.57cf92c
+pkgrel=1
 pkgdesc="an open platform for Intel SGX"
 arch=('x86_64')
 url="https://github.com/sslab-gatech/opensgx/"
