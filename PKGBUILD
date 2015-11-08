@@ -35,7 +35,7 @@ package_deadbeef-plugin-musical-spectrum-gtk2-git() {
   conflicts=deadbeef-plugin-musical-spectrum-gtk2
   install -D -v -c $srcdir/$_gitname/gtk2/ddb_vis_musical_spectrum_GTK2.so $pkgdir/usr/lib/deadbeef/ddb_vis_musical_spectrum_GTK2.so
 }
-package_deadbeef-plugin-musical-spectrum-gtk2-git() {
+package_deadbeef-plugin-musical-spectrum-gtk3-git() {
   pkgdesc=$_pkgdesc" GTK3 Ver."
   depends=('deadbeef' 'fftw' 'gtk3')
   provides=deadbeef-plugin-musical-spectrum-gtk3
