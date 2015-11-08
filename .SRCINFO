@@ -1,0 +1,18 @@
+pkgbase = iscan-plugin-gt-f720
+	pkgdesc = EPSON Image Scan! plugin for Epson Perfection V30 scanner
+	pkgver = 0.1.1
+	pkgrel = 4
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	install = iscan-plugin-gt-f720.install
+	arch = i686
+	arch = x86_64
+	license = custom:AVASYSPL
+	depends = iscan
+	conflicts = iscan-plugin-gt-x720
+	source_i686 = https://download2.ebz.epson.net/iscan/plugin/gt-f720/deb/x86/iscan-gt-f720-bundle-1.0.0.x86.deb.tar.gz
+	sha256sums_i686 = 594523472475bf2c822f77b3f60b78a0eaa2e0affb263e8e1a7c82b43bc94e0c
+	source_x86_64 = https://download2.ebz.epson.net/iscan/plugin/gt-f720/deb/x64/iscan-gt-f720-bundle-1.0.0.x64.deb.tar.gz
+	sha256sums_x86_64 = c8b36fa3b68ba244cec9f9026bffcfc6d39f5b5a4d9c69f396e83b44b7c9108c
+
+pkgname = iscan-plugin-gt-f720
+
