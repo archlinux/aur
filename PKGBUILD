@@ -1,7 +1,7 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=afx2tool-linux
 pkgname=$_pkgname-git
-pkgver=0.r25.f74c4fe
+pkgver=1.0.r0.g0c3bfb6
 pkgrel=1
 pkgdesc="Linux CLI tool to backup and restore Axe-FX II data"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
