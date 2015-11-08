@@ -1,0 +1,16 @@
+pkgbase = libcommuni
+	pkgdesc = A cross-platform IRC framework written with Qt.
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://communi.github.io/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = qt5-declarative
+	provides = libcommuni
+	conflicts = libcommuni
+	source = https://github.com/communi/libcommuni/archive/v3.4.0.tar.gz
+	md5sums = 987fa2143324ab3f1843483053bf711f
+
+pkgname = libcommuni
+
