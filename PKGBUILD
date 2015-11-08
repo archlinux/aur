@@ -7,22 +7,21 @@
 
 _pkgname=audacious
 pkgname=$_pkgname-gtk3
-pkgver=3.6.2
+pkgver=3.7
 _pkgver=$pkgver-gtk3
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('i686' 'x86_64')
 url="http://audacious-media-player.org/"
 license=('BSD')
-depends=('gtk3' 'glib2' 'libguess' 'libsm' 'gnome-icon-theme'
-         'hicolor-icon-theme' 'desktop-file-utils')
+depends=('gtk3' 'glib2' 'libsm' 'gnome-icon-theme' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('python2') # for gdbus-codegen
 optdepends=('unzip: zipped skins support')
 provides=('audacious')
 conflicts=('audacious')
 install=$_pkgname.install
 source=(http://distfiles.audacious-media-player.org/$_pkgname-$_pkgver.tar.bz2)
-sha1sums=('3cc5dce780158448fb7566665d66d3c56753e626')
+sha1sums=('cf4f9a037bee37ce3cd8dfde05056813a6198ca9')
 
 build() {
   cd "$srcdir/$_pkgname-$_pkgver"
