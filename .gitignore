@@ -1,1 +1,5 @@
 /docker/
+/pkg/
+/src/
+*.pkg.tar.xz
+
