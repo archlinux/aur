@@ -1,0 +1,21 @@
+pkgbase = communi-desktop
+	pkgdesc = An IRC client for desktop environments.
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://communi.github.io/
+	install = .INSTALL
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = qt5-x11extras
+	depends = qt5-multimedia
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = libcommuni
+	source = https://github.com/communi/communi-desktop/archive/v3.4.0.tar.gz
+	source = shared.tar.gz::https://github.com/communi/communi-shared/archive/v3.4.0.tar.gz
+	md5sums = 8f05ceb73232a763b4821e53fd6d7317
+	md5sums = 420d3167ddce7a338d803ecc2fa5d03a
+
+pkgname = communi-desktop
+
