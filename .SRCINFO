@@ -1,6 +1,6 @@
 pkgbase = afx2tool-linux-git
 	pkgdesc = Linux CLI tool to backup and restore Axe-FX II data
-	pkgver = 0.r25.f74c4fe
+	pkgver = 1.0.r0.g0c3bfb6
 	pkgrel = 1
 	url = https://github.com/TieDyedDevil/afx2tool-linux
 	arch = any
