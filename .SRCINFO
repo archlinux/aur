@@ -1,6 +1,6 @@
 pkgbase = pacaur
-	pkgdesc = A fast workflow AUR helper using cower as backend
-	pkgver = 4.3.2
+	pkgdesc = An AUR helper that minimizes user interaction
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/rmarquis/pacaur
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = pacaur
 	depends = cower
 	depends = expac
 	depends = sudo
-	depends = pacman
+	depends = git
 	backup = etc/xdg/pacaur/config
-	source = https://github.com/rmarquis/pacaur/archive/4.3.2.tar.gz
-	md5sums = 2fd0a4bb93da04c7f5bdd789875ee656
+	source = https://github.com/rmarquis/pacaur/archive/4.4.0.tar.gz
+	md5sums = 612d5022b633a039bf74ab9b4d3ed525
 
 pkgname = pacaur
 
