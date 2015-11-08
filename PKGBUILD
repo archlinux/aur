@@ -2,7 +2,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libsub
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="a small C++ library to read and write subtitles in a few different formats (currently STL, SubRip and DCP)"
 arch=('i686' 'x86_64')
 url="http://carlh.net/libsub"
