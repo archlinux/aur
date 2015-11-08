@@ -1,0 +1,82 @@
+From e8f387089e241360bdc6955d3e479450722dcea3 Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Wed, 7 Oct 2015 16:38:52 +0800
+Subject: [PATCH] pass xauth file to xserver command
+
+---
+ src/lxdm.c | 20 +++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/src/lxdm.c b/src/lxdm.c
+index 43a98c7..03bc477 100644
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -304,7 +304,7 @@ static LXSession *lxsession_add(void)
+ 
+ static LXSession *lxsession_greeter(void)
+ {
+-	char temp[16];
++	char temp[128];
+ 	LXSession *s;
+ 	s=lxsession_find_greeter();
+ 	if(s)
+@@ -327,10 +327,17 @@ static LXSession *lxsession_greeter(void)
+ 	s->idle=FALSE;
+ 	sprintf(temp,":%d",s->display);
+ 	setenv("DISPLAY",temp,1);
++	#ifndef DISABLE_XAUTH
++	sprintf(temp,"/var/run/lxdm/lxdm-:%d.auth",s->display);
++	setenv("XAUTHORITY",temp,1);
++	#endif
+ 	g_message("prepare greeter on %s\n",temp);
+ 	ui_prepare();
+ 	lxsession_set_active(s);
+ 	g_message("start greeter on %s\n",temp);
++	#ifndef DISABLE_XAUTH
++	unsetenv("XAUTHORITY");
++	#endif
+ 	return s;
+ }
+ 
+@@ -468,7 +475,7 @@ static char *lxsession_xserver_command(LXSession *s)
+ 		}
+ 	}
+ 
+-	arg = g_renew(char *, arg, arc + 10);
++	arg = g_renew(char *, arg, arc + 15);
+ 	if(nr_tty)
+ 	{
+ 		arg[arc++] = g_strdup("-background");
+@@ -486,6 +493,10 @@ static char *lxsession_xserver_command(LXSession *s)
+ 	{
+ 		arg[arc++] = g_strdup("-novtswitch");
+ 	}
++#ifndef DISABLE_XAUTH
++	arg[arc++] = g_strdup("-auth");
++	arg[arc++] = g_strdup_printf("/var/run/lxdm/lxdm-:%d.auth",s->display);
++#endif
+ 	arg[arc] = NULL;
+ 	p=g_strjoinv(" ", arg);
+ 	g_strfreev(arg);
+@@ -694,7 +705,7 @@ static void create_server_auth(LXSession *s)
+ 
+ 	authfile = g_strdup_printf("/var/run/lxdm/lxdm-:%d.auth",s->display);
+ 
+-	//setenv("XAUTHORITY",authfile,1);
++	setenv("XAUTHORITY",authfile,1);
+ 	remove(authfile);
+ 	xauth_write_file(authfile,s->display,s->mcookie);
+ 	g_free(authfile);
+@@ -998,6 +1009,9 @@ static void lxdm_startx(LXSession *s)
+ 	g_message("%ld: start xserver in %d retry",time(NULL),i);
+ 	if(s->dpy==NULL)
+ 		exit(EXIT_FAILURE);
++	#ifndef DISABLE_XAUTH
++	unsetenv("XAUTHORITY");
++	#endif
+ 	
+ 	if(s->option && g_key_file_has_key(config,s->option,"numlock",NULL))
+ 	{
+-- 
+2.1.4
+

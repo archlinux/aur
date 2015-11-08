@@ -7,7 +7,7 @@
 pkgname=lxdm-gtk3
 _pkgname=lxdm
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight X11 Display Manager (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/lxdm/"
@@ -23,16 +23,21 @@ backup=('etc/lxdm/lxdm.conf' 'etc/pam.d/lxdm' 'etc/lxdm/Xsession'
         'etc/lxdm/PreLogin' 'etc/lxdm/LoginReady' 'etc/lxdm/PostLogin'
         'etc/lxdm/PostLogout' 'etc/lxdm/PreReboot' 'etc/lxdm/PreShutdown')
 source=(http://downloads.sourceforge.net/lxdm/$_pkgname-$pkgver.tar.xz
+        xauth.patch
         default-config.patch
         lxdm.pam
         Xsession)
 md5sums=('7806aeb11d4565c88dca2b05c9f7c44b'
+         'e5e9957f34f40ed5b7f7a47c778e38cd'
          'f0ae6c072f151104c53a030fd7757821'
          'c941ef896248bc7c03901b513490425c'
          '6ff73570368501a06ee7badc8e415d0a')
 
 prepare(){
   cd "$srcdir/$_pkgname-$pkgver"
+
+  # Revert broken commit
+  patch -RNp1 -i ../xauth.patch
 
   # Adjust Arch-specific settings
   patch -Np1 -i ../default-config.patch
