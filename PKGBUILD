@@ -15,7 +15,8 @@ depends=('acl'
          'xz')
 optdepends=('openssh: repositories on remote hosts'
             'python-llfuse: Mounting backups as a FUSE filesystem')
-makedepends=('python-sphinx')
+makedepends=('python-mock'
+             'python-sphinx')
 source=("https://pypi.python.org/packages/source/b/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('2b6af7831d9ed81a6bc9918f7657fa6e65ba3707e6a23e581f53c46d179b173e')
 

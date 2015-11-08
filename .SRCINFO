@@ -6,6 +6,7 @@ pkgbase = borgbackup
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = python-mock
 	makedepends = python-sphinx
 	depends = acl
 	depends = lz4
