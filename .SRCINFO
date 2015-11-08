@@ -1,6 +1,6 @@
 pkgbase = nftables-git
 	pkgdesc = Netfilter nf_tables infrastructure library
-	pkgver = 0.099.r3.g35f689e
+	pkgver = 0.5.r36.g787dff9
 	pkgrel = 1
 	url = http://netfilter.org/projects/nftables/
 	arch = i686

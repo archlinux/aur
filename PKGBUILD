@@ -2,7 +2,7 @@
 # Contibutor: Steven Allen <steven@stebalien.com>
 
 pkgname=nftables-git
-pkgver=0.099.r3.g35f689e
+pkgver=0.5.r36.g787dff9
 pkgrel=1
 pkgdesc='Netfilter nf_tables infrastructure library'
 arch=(i686 x86_64)
@@ -22,11 +22,6 @@ sha1sums=('SKIP'
 pkgver() {
   cd nftables
   git describe | sed 's/^v//; s/-/.r/; s/-/./'
-}
-
-prepare() {
-  cd nftables
-  sed 's/docbook2x-man/docbook2man/g' -i Makefile.rules.in -i configure.ac
 }
 
 build() {
