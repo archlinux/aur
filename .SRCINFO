@@ -1,0 +1,16 @@
+pkgbase = pipeglade
+	pkgdesc = Pipe-driven GTK+ interfaces that can be designed using Glade
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = http://pipeglade.boundp.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gsfonts
+	optdepends = glade: create .ui files
+	source = http://github.com/trebb/pipeglade/archive/4.2.0.tar.gz
+	md5sums = 9fce4dd6dae9855964a122fd83a49331
+
+pkgname = pipeglade
+
