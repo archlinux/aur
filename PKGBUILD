@@ -27,11 +27,10 @@ source=('git://github.com/CVC4/CVC4.git')
 build() {
     cd $srcdir/CVC4
     ./autogen.sh
-    #./contrib/get-antlr-3.4
+    ./contrib/get-antlr-3.4
     ./configure --with-antlr-dir=$srcdir/CVC4/antlr-3.4 ANTLR=$srcdir/CVC4/antlr-3.4/bin/antlr3 --prefix=/usr
-    #make clean
     make
-    #make check
+    make check
 }
 
 package() {
