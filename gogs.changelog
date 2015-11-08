@@ -1,3 +1,25 @@
+2015-11-08
+
+	* V0.7.0
+	Bug fix: Admin e-mail does not allow root@localhost when install #470
+	Bug fix: Wrong commits reference order on issue page #1602
+	Bug fix: Inconsistent link of e-mail URL after sign up #1697
+	Bug fix: Migrated repository incompatible with --all flag #1705
+	Bug fix: Members of team has admin access can't close/reopen issues #1748
+	Bug fix: Huge diff causes out of memory #1790
+	Bug fix: Push returns fail message when no actual update needed #1896
+	Bug fix: Wrong image link is rendered for relative links #1904
+	Improvement: Detect file renames/moves in diffs #1078
+	Improvement: Dashboard issues add sorting #1459
+	Improvement: Allow import local repositories only for admin or permitted users #1511
+	Improvement: Able to trigger mailer for admin created accounts #1525
+	Improvement: Show clone URL with original cases #1895
+	Features: Support pull requests #5
+	Features: Auto-render clickable links for images #1433
+	Features: Add config option [repository] FORCE_PRIVATE that allows forcing all new repositories to be private #1657
+	Others: Drop Go 1.2.x support, minimum requirement of Go is 1.3
+	Others: 0.5.x will no longer be supported in 0.8
+
 2015-09-26
 
 	* V0.6.15
