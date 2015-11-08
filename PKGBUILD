@@ -9,7 +9,7 @@ url="http://www.cython.org"
 license=('APACHE')
 depends=('python')
 makedepends=('python-setuptools')
-conflicts=('cython')
+provides=('cython=${pkgver}')
 source=("http://cython.org/release/Cython-$pkgver.tar.gz")
 sha256sums=('b01af23102143515e6138a4d5e185c2cfa588e0df61c0827de4257bac3393679')
 
