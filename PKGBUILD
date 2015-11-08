@@ -17,7 +17,7 @@ optdepends=('openssh: repositories on remote hosts'
             'python-llfuse: Mounting backups as a FUSE filesystem')
 makedepends=('python-sphinx')
 source=("https://pypi.python.org/packages/source/b/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('48498b73014d285d8ae16e9466f6a8ed6551ba78983d7e16baaeee25c2e2f4db')
+sha256sums=('2b6af7831d9ed81a6bc9918f7657fa6e65ba3707e6a23e581f53c46d179b173e')
 
 build() {
   cd "$pkgname-$pkgver/docs"
