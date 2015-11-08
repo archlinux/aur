@@ -1,7 +1,7 @@
 pkgbase = python-pyroma
 	pkgdesc = Test your project's packaging friendliness
-	pkgver = 1.8.2
-	pkgrel = 2
+	pkgver = 1.8.3
+	pkgrel = 1
 	url = https://bitbucket.org/regebro/pyroma
 	arch = any
 	license = MIT
@@ -12,8 +12,8 @@ pkgbase = python-pyroma
 	makedepends = python-docutils
 	makedepends = python2-docutils
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/pyroma/pyroma-1.8.2.tar.gz
-	md5sums = 7490b824c1bf3713660746f06ed1c68b
+	source = https://pypi.python.org/packages/source/p/pyroma/pyroma-1.8.3.tar.gz
+	md5sums = 6efb379286152e2d5334a7a5cd646617
 
 pkgname = python-pyroma
 	depends = python

@@ -2,8 +2,8 @@
 pkgbase=python-pyroma
 pkgname=('python-pyroma' 'python2-pyroma')
 _pyname=pyroma
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="Test your project's packaging friendliness"
 arch=('any')
 url='https://bitbucket.org/regebro/pyroma'
@@ -12,7 +12,7 @@ makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
              'python-docutils' 'python2-docutils')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7490b824c1bf3713660746f06ed1c68b')
+md5sums=('6efb379286152e2d5334a7a5cd646617')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
