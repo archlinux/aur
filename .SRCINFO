@@ -1,0 +1,18 @@
+pkgbase = dotter
+	pkgdesc = A dotfiles managaer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/dotter_dotfiles
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-thor
+	depends = ruby-git
+	depends = ruby-inifile
+	noextract = dotter_dotfiles-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dotter_dotfiles-0.1.0.gem
+	sha1sums = 73bc455477700b91fb917d98a8d1a40b2980fad2
+
+pkgname = dotter
+
