@@ -1,13 +1,13 @@
 pkgbase = hpmyroom
 	pkgdesc = HP MyRoom a collaborative conferencing meetings software
-	pkgver = 10.4.0.0138
-	pkgrel = 4
-	url = https://www.myroom.hp.com
+	pkgver = 10.4.0.0168
+	pkgrel = 1
+	url = https://www.myroom.hpe.com
 	install = hpmyroom.install
 	arch = i686
 	arch = x86_64
 	license = unknown
-	source_i686 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.4.0.0138_i386.deb
+	source_i686 = https://www.myroom.hpe.com/downloadfiles/hpmyroom_v10.4.0.0168_i386.deb
 	depends_i686 = attr
 	depends_i686 = bzip2
 	depends_i686 = expat
@@ -45,8 +45,8 @@ pkgbase = hpmyroom
 	depends_i686 = util-linux
 	depends_i686 = xz
 	depends_i686 = zlib
-	sha256sums_i686 = ade7c0a948fb02e2fa0590a20d51d090c780aedb738478761d207888f720c7ed
-	source_x86_64 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.4.0.0138_amd64.deb
+	sha256sums_i686 = 1d06eb1ac151e6f1a2b454b4e73b393055c8ef28dc66437e3638c633881f986e
+	source_x86_64 = https://www.myroom.hpe.com/downloadfiles/hpmyroom_v10.4.0.0168_amd64.deb
 	depends_x86_64 = lib32-attr
 	depends_x86_64 = lib32-bzip2
 	depends_x86_64 = lib32-expat
@@ -86,7 +86,7 @@ pkgbase = hpmyroom
 	depends_x86_64 = lib32-util-linux
 	depends_x86_64 = lib32-xz
 	depends_x86_64 = lib32-zlib
-	sha256sums_x86_64 = 49d9796dec16856bcde7d76475f8f1ff1183d6bf11f1dc200f6127e861726232
+	sha256sums_x86_64 = 4d96ba579673350a84d1a8dd2358580f3b2b0de211b041ecbf9366d7b87093a6
 
 pkgname = hpmyroom
 
