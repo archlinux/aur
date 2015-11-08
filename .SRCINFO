@@ -1,0 +1,15 @@
+pkgbase = polar-night-theme
+	pkgdesc = A Clean and compact theme for GTK3, GTK2, Metacity, xfwm4, Gnome Shell and Unity.
+	pkgver = 20141006
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Polar+Night%2Bfor+Unity?content=166607
+	arch = any
+	license = GPL3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	optdepends = gnome-themes-standard: Required for the GTK3 theme
+	source = polar-night-theme-20141006.tar.gz::http://gnome-look.org/CONTENT/content-files/166607-polar-night.tar.gz
+	sha1sums = 0531898e24c31b1241cc41226560ba56d798b5b0
+
+pkgname = polar-night-theme
+
