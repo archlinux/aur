@@ -14,7 +14,9 @@ pkgbase = tinc-pre-git
 	conflicts = tinc-pre
 	conflicts = tinc-pre-systemd
 	source = git+https://github.com/gsliepen/tinc#branch=1.1
+	source = tinc@.service
 	md5sums = SKIP
+	md5sums = 8029b9d35e0abe980d4677c41647f395
 
 pkgname = tinc-pre-git
 
