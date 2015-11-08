@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url='http://simgrid.gforge.inria.fr/index.html'
 license=('GPL')
 source=('http://gforge.inria.fr/frs/download.php/file/33686/SimGrid-3.11.1.tar.gz')
+depends=('boost')
 makedepends=('cmake')
 md5sums=('SKIP')
 
