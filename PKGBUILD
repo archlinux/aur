@@ -1,35 +1,26 @@
-pkgname=deadbeef-plugin-musical-spectrum-git
-pkgver=20140803
+pkgbase=deadbeef-plugin-musical-spectrum-git
+pkgname=(deadbeef-plugin-musical-spectrum-gtk2-git deadbeef-plugin-musical-spectrum-gtk3-git)
+pkgver=r140
 pkgrel=1
-pkgdesc="Musical Spectrum Plugin for the DeaDBeeF audio player (development version)"
+_pkgdesc="Musical Spectrum Plugin for the DeaDBeeF audio player (development version)."
 url="https://github.com/cboxdoerfer/ddb_musical_spectrum"
 arch=('i686' 'x86_64')
 license='GPL2'
-depends=('deadbeef' 'fftw' 'gtk2')
-makedepends=('git' 'pkg-config')
+makedepends=('git' 'pkg-config' 'deadbeef' 'fftw' 'gtk2' 'gtk3')
 
 _gitname=ddb_musical_spectrum
 _gitroot=https://github.com/cboxdoerfer/${_gitname}
 
+source=git+$_gitroot
+md5sums=SKIP
+
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  printf "r""$(git rev-list --count HEAD)"
+}
+
 build() {
-  cd $srcdir
-  msg "Connecting to GIT server..."
-  rm -rf $srcdir/$_gitname-build
-
-  if [ -d $_gitname ]; then
-    cd $_gitname
-    git pull origin master
-  else
-    git clone $_gitroot
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  cd $srcdir
-  cp -r $_gitname $_gitname-build
-
-  cd $_gitname-build
+  cd $_gitname
 
   touch AUTHORS
   touch ChangeLog
@@ -37,7 +28,17 @@ build() {
   make
 }
 
-package() {
-  install -D -v -c $srcdir/$_gitname-build/gtk2/ddb_vis_musical_spectrum_GTK2.so $pkgdir/usr/lib/deadbeef/ddb_vis_musical_spectrum_GTK2.so
-  install -D -v -c $srcdir/$_gitname-build/gtk3/ddb_vis_musical_spectrum_GTK3.so $pkgdir/usr/lib/deadbeef/ddb_vis_musical_spectrum_GTK3.so
+package_deadbeef-plugin-musical-spectrum-gtk2-git() {
+  pkgdesc=$_pkgdesc" GTK2 Ver."
+  depends=('deadbeef' 'fftw' 'gtk2')
+  provides=deadbeef-plugin-musical-spectrum-gtk2
+  conflicts=deadbeef-plugin-musical-spectrum-gtk2
+  install -D -v -c $srcdir/$_gitname/gtk2/ddb_vis_musical_spectrum_GTK2.so $pkgdir/usr/lib/deadbeef/ddb_vis_musical_spectrum_GTK2.so
+}
+package_deadbeef-plugin-musical-spectrum-gtk2-git() {
+  pkgdesc=$_pkgdesc" GTK3 Ver."
+  depends=('deadbeef' 'fftw' 'gtk3')
+  provides=deadbeef-plugin-musical-spectrum-gtk3
+  conflicts=deadbeef-plugin-musical-spectrum-gtk3
+  install -D -v -c $srcdir/$_gitname/gtk3/ddb_vis_musical_spectrum_GTK3.so $pkgdir/usr/lib/deadbeef/ddb_vis_musical_spectrum_GTK3.so
 }

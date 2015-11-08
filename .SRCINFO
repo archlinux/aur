@@ -1,6 +1,5 @@
 pkgbase = deadbeef-plugin-musical-spectrum-git
-	pkgdesc = Musical Spectrum Plugin for the DeaDBeeF audio player (development version)
-	pkgver = 20140803
+	pkgver = r140
 	pkgrel = 1
 	url = https://github.com/cboxdoerfer/ddb_musical_spectrum
 	arch = i686
@@ -8,9 +7,18 @@ pkgbase = deadbeef-plugin-musical-spectrum-git
 	license = GPL2
 	makedepends = git
 	makedepends = pkg-config
+	makedepends = deadbeef
+	makedepends = fftw
+	makedepends = gtk2
+	makedepends = gtk3
+	source = git+https://github.com/cboxdoerfer/ddb_musical_spectrum
+	md5sums = SKIP
+
+pkgname = deadbeef-plugin-musical-spectrum-gtk2-git
+	pkgdesc = Musical Spectrum Plugin for the DeaDBeeF audio player (development version). GTK3 Ver.
 	depends = deadbeef
 	depends = fftw
-	depends = gtk2
+	depends = gtk3
 
-pkgname = deadbeef-plugin-musical-spectrum-git
+pkgname = deadbeef-plugin-musical-spectrum-gtk3-git
 
