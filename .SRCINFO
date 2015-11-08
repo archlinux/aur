@@ -1,6 +1,6 @@
 pkgbase = arturo-git
 	pkgdesc = Command line toolkit for working with Arduino hardware.
-	pkgver = 20150622
+	pkgver = 20151028
 	pkgrel = 1
 	url = https://github.com/scottdarch/Arturo
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = arturo-git
 	makedepends = python2
 	makedepends = git
 	depends = arduino
-	depends = python2-glob2-git
+	depends = python-glob2-git
 	depends = picocom
 	depends = python2-jinja
 	depends = python2-configobj
