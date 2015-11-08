@@ -10,7 +10,7 @@ url=http://libre.adacore.com/tools/$_pkgname
 license=(GPL)
 groups=(gcc-ada)
 
-depends=(gcc-ada gnat_util gnat-gps)
+depends=(gcc-ada gnat_util gnatcoll)
 
 provides=($pkgname)
 conflicts=($pkgname)
