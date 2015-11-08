@@ -3,7 +3,7 @@ pkgname=pmenu
 pkgver=0.2.5
 pkgrel=1
 pkgdesc="Dynamic menu like dmenu for terminal written in Python without dependencies with optional sorting by usage, application launcher and CtrlP alternative."
-url=https://gitlab.com/sgtpep/pmenu
+url=https://github.com/sgtpep/pmenu
 arch=(any)
 license=(GPL3)
 depends=(python)
@@ -12,8 +12,8 @@ optdepends=(
   "grep: pmenu-run application launcher"
 )
 source=(
-  https://gitlab.com/sgtpep/$pkgname/raw/v$pkgver/pmenu
-  https://gitlab.com/sgtpep/$pkgname/raw/v$pkgver/pmenu-run
+  https://raw.githubusercontent.com/sgtpep/$pkgname/v$pkgver/pmenu
+  https://raw.githubusercontent.com/sgtpep/$pkgname/v$pkgver/pmenu-run
 )
 md5sums=(
   cc57291e33e99fbe1630f1883d96b102
