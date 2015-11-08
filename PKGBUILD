@@ -2,7 +2,7 @@
 
 pkgname=pdfpc-git
 pkgrel=1
-pkgver=v4.0.0.r0.g0043a4b
+pkgver=v4.0.1.r0.g2aee348
 pkgdesc='A presenter console with multi-monitor support for PDF files'
 arch=('i686' 'x86_64')
 license=('GPL')
