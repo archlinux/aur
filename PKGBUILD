@@ -1,6 +1,6 @@
 # Maintainer: Bert Burgemeister <trebbu@googlemail.com>
 pkgname=guile-dbi
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc='Guile Scheme generic database interface'
 arch=(any)
@@ -8,10 +8,10 @@ license=(GPL2)
 depends=(guile)
 url=http://home.gna.org/guile-dbi/
 source=(http://download.gna.org/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('1abdef4473760ed7f6687f4f25365aa8')
+md5sums=('09061e538b648bb113a218ef31339c70')
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr || return 1
-  make && make DESTDIR=${pkgdir} install || return 1
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  make DESTDIR="${pkgdir}" install
 }
