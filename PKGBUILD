@@ -1,6 +1,6 @@
 # Maintainer: demian <mikar ατ gmx δοτ de>
 pkgname=blockify
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Mutes Spotify advertisements."
 arch=("any")
@@ -16,4 +16,4 @@ package() {
 
     python setup.py install --root="${pkgdir}"
 }
-sha256sums=('57332f2567932ff91af1971dca8e8722183f24bec72c705f0b42e88feeda10da')
+sha256sums=('78624514320481a6dd07c0202dfd79f057156b2f4adba2d7d7a4273db44d793a')

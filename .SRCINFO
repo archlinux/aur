@@ -1,6 +1,6 @@
 pkgbase = blockify
 	pkgdesc = Mutes Spotify advertisements.
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/mikar/blockify
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = blockify
 	depends = python-dbus
 	depends = python-setuptools
 	optdepends = python-docopt
-	source = https://github.com/mikar/blockify/archive/v3.0.1.tar.gz
-	sha256sums = 57332f2567932ff91af1971dca8e8722183f24bec72c705f0b42e88feeda10da
+	source = https://github.com/mikar/blockify/archive/v3.0.2.tar.gz
+	sha256sums = 78624514320481a6dd07c0202dfd79f057156b2f4adba2d7d7a4273db44d793a
 
 pkgname = blockify
 
