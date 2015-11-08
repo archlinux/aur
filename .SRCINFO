@@ -1,0 +1,22 @@
+pkgbase = cvc4-git
+	pkgdesc = An automatic theorem prover for SMT problems.
+	pkgver = v1.4
+	pkgrel = 1
+	url = http://cvc4.cs.nyu.edu/web/
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = bash
+	depends = gmp
+	depends = boost
+	depends = libantlr3c
+	provides = cvc4
+	conflicts = cvc4
+	source = git://github.com/CVC4/CVC4.git
+	md5sums = SKIP
+
+pkgname = cvc4-git
+
