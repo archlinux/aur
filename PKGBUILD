@@ -1,14 +1,15 @@
-# Maintainer: jchamplin <jake.champlin.27@gmail.com>
+# Contributor: jchamplin <jake.champlin.27@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-minimal
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully-featured word processor"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.abisource.com"
 makedepends=('boost')
-depends=('fribidi' 'wv' 'librsvg' 'enchant' 'desktop-file-utils' 'goffice0.8')
+depends=('fribidi' 'wv' 'librsvg' 'enchant' 'desktop-file-utils' 'goffice' 'hicolor-icon-theme')
 conflicts=('abiword' 'abiword-plugins')
 provides=('abiword')
 install=abiword-minimal.install
