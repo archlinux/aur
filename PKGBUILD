@@ -1,6 +1,6 @@
 # Maintainer: Martchus <martchus@gmx.net>
 pkgname=passwordmanager
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A simple password store using AES-256-CBC encryption via OpenSSL."
@@ -11,7 +11,7 @@ install=${pkgname}.install
 url="https://github.com/Martchus/passwordmanager"
 source=("passwordmanager-${pkgver}.tar.gz::https://github.com/Martchus/passwordmanager/archive/v${pkgver}.tar.gz")
 _reponame=passwordmanager
-sha256sums=('13179422388a35f6caf157c466a5cbdc39d0f5875bafd55d72d99ac90385df0f')
+sha256sums=('a6086f9dd394064368dd0098f01be163bccd6aa00e7c093f5a2cbf1b5951c176')
 
 build() {
     cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
