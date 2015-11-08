@@ -1,0 +1,36 @@
+# Maintainer: Armin Fisslthaler <armin@fisslthaler.net>
+pkgname=syncany-git
+pkgver=0.4.8.alpha.g194955d
+pkgrel=1
+pkgdesc="Cloud storage and filesharing application with a focus on security and abstraction of storage."
+arch=(any)
+url=https://www.syncany.org/
+license=(GPL3)
+depends=('java-environment>=7', 'sh')
+optdepends=('bash-completion: auto completion in bash')
+makedepends=(git)
+conflicts=('syncany')
+source=("${pkgname}"::'git+http://github.com/syncany/syncany')
+md5sums=('SKIP')
+
+pkgver(){
+    cd "$srcdir/$pkgname"
+    echo $(grep 'applicationVersion =' build.gradle | cut -d'"' -f2 | sed 's/-/./g').g$(git rev-parse --short HEAD)
+}
+
+build(){
+    cd "$srcdir/$pkgname"
+    ./gradlew installApp
+}
+
+package(){
+    install -Dm755 "$srcdir/$pkgname/gradle/arch/syncany/syncany" "${pkgdir}/usr/bin/syncany"
+    install -Dm755 "$srcdir/$pkgname/gradle/bash/syncany.bash-completion" "${pkgdir}/etc/bash_completion.d/syncany.bash-completion"
+    install -Dm755 "$srcdir/$pkgname/gradle/systemd/syncany.service" "${pkgdir}/usr/lib/systemd/user/syncany.service"
+    install -Dm755 "$srcdir/$pkgname/gradle/systemd/syncany-gui.service" "${pkgdir}/usr/lib/systemd/user/syncany-gui.service"
+
+    cd "$srcdir/$pkgname/build/install/syncany/lib"
+    for jar in *; do
+        install -Dm644 "$jar" "${pkgdir}/usr/share/java/syncany/$jar"
+    done
+}

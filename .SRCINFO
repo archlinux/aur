@@ -1,0 +1,15 @@
+pkgbase = syncany-git
+	pkgdesc = Cloud storage and filesharing application with a focus on security and abstraction of storage.
+	pkgver = 0.1.8.alpha.g95a5172
+	pkgrel = 1
+	url = https://www.syncany.org/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = java-runtime>=7,
+	depends = bash-completion
+	source = syncany-git::git+http://github.com/syncany/syncany
+	md5sums = SKIP
+
+pkgname = syncany-git
+
