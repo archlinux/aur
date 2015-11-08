@@ -1,7 +1,7 @@
 pkgbase = lxmusic-gtk3
 	pkgdesc = Lightweight XMMS2 client (GTK+ 3 version)
 	pkgver = 0.4.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lxde.org/
 	arch = i686
 	arch = x86_64

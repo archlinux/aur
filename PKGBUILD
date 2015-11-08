@@ -6,7 +6,7 @@
 pkgname=lxmusic-gtk3
 _pkgname=lxmusic
 pkgver=0.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight XMMS2 client (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 url="http://lxde.org/"
