@@ -1,0 +1,20 @@
+pkgbase = python-formatstring
+	pkgdesc = Library to help the exploitation of format string vulnerabilities
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/arthaud/formatstring
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-formatstring-1.1.tar.gz::https://github.com/arthaud/formatstring/archive/v1.1.tar.gz
+	sha512sums = 8c004dafb483085d3f0a71f4bb979b1c51c0762dcc9f4911674df7b46d8d767e7a5a6a77c74e54802c3e010eed21ebc4232695de6a9d144223e801cee1e1f80e
+
+pkgname = python-formatstring
+	depends = python
+	optdepends = python-pyelftools: infer the architecture from a binary file
+
+pkgname = python2-formatstring
+	depends = python2
+	optdepends = python2-pyelftools: infer the architecture from a binary file
+
