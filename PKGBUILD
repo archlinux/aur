@@ -2,12 +2,13 @@
 pkgname=syncany
 pkgver=0.4.7_alpha
 _realver=0.4.7-alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud storage and filesharing application with a focus on security and abstraction of storage."
 arch=(any)
 url="http://www.syncany.org/"
 license=('GPL3')
-depends=('java-runtime>=7' 'bash-completion')
+depends=('java-environment>=7', 'sh')
+optdepends=('bash-completion: auto completion in bash')
 source=("http://syncany.org/dist/$pkgname-${_realver}.tar.gz"
         )
 sha256sums=('14d822b34e0a6363fa580104c7fc0d58571b5adb766aff412b12e9f340ce3477')
