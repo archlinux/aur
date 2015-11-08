@@ -1,0 +1,17 @@
+pkgbase = deadbeef-gnome-mmkeys-git
+	pkgdesc = DeaDBeeF player Gnome (via DBus) multimedia keys plugin
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/barthez/deadbeef-gnome-mmkeys
+	arch = i386
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = git
+	depends = deadbeef
+	depends = glib2
+	source = git+https://github.com/barthez/deadbeef-gnome-mmkeys.git
+	md5sums = SKIP
+
+pkgname = deadbeef-gnome-mmkeys-git
+
