@@ -1,0 +1,25 @@
+pkgbase = deadbeef-decast-git
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://bitbucket.org/thesame/decast
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	makedepends = deadbeef
+	makedepends = libxml2
+	makedepends = curl
+	makedepends = gtk2
+	makedepends = gtk3
+	source = git+https://bitbucket.org/thesame/decast.git
+	md5sums = SKIP
+
+pkgname = deadbeef-decast-gtk2-git
+	pkgdesc = Podcast subscription plugin for DeaDBeeF audio player. GTK2 Ver.
+	depends = deadbeef
+	depends = gtk2
+
+pkgname = deadbeef-decast-gtk3-git
+	pkgdesc = Podcast subscription plugin for DeaDBeeF audio player. GTK3 Ver.
+	depends = deadbeef
+	depends = gtk3
+
