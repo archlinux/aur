@@ -1,13 +1,13 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=sopcast-launcher
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Sopcast Launcher allows you to open Sopcast links with a Media Player of your choice"
 arch=('any')
 url="https://github.com/jonian/sopcast-launcher"
 license=('GPL')
 groups=()
-depends=('python2-psutil' 'python2-notify' 'sopcast')
+depends=('python-psutil' 'python-notify2' 'sopcast')
 makedepends=()
 optdepends=('vlc')
 provides=('sopcast-launcher')

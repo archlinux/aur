@@ -1,16 +1,16 @@
 pkgbase = sopcast-launcher
 	pkgdesc = Sopcast Launcher allows you to open Sopcast links with a Media Player of your choice
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/jonian/sopcast-launcher
 	arch = any
 	license = GPL
-	depends = python2-psutil
-	depends = python2-notify
+	depends = python-psutil
+	depends = python-notify2
 	depends = sopcast
 	optdepends = vlc
 	provides = sopcast-launcher
-	source = https://github.com/jonian/sopcast-launcher/archive/v0.3.1.tar.gz
+	source = https://github.com/jonian/sopcast-launcher/archive/v0.4.0.tar.gz
 	md5sums = SKIP
 
 pkgname = sopcast-launcher
