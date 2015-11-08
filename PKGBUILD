@@ -1,7 +1,7 @@
 # Maintainer: Pim Otte <otte dot pim at gmail dot com>
 pkgname=syncany
-pkgver=0.4.6_alpha
-_realver=0.4.6-alpha
+pkgver=0.4.7_alpha
+_realver=0.4.7-alpha
 pkgrel=1
 pkgdesc="Cloud storage and filesharing application with a focus on security and abstraction of storage."
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('java-runtime>=7' 'bash-completion')
 source=("http://syncany.org/dist/$pkgname-${_realver}.tar.gz"
         )
-sha256sums=('9aab83cc336b898a48dde5e7799d703ef569255e5c6f24a7182a6983c0846bc8')
+sha256sums=('14d822b34e0a6363fa580104c7fc0d58571b5adb766aff412b12e9f340ce3477')
 
 package() {
     install -Dm644 "$srcdir/$pkgname-${_realver}/bash/syncany.bash-completion" "${pkgdir}/etc/bash_completion.d/syncany"
