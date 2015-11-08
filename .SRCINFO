@@ -1,6 +1,6 @@
 pkgbase = libx32-icu
 	pkgdesc = International Components for Unicode library (x32 ABI)
-	pkgver = 54.1
+	pkgver = 56.1
 	pkgrel = 1.1
 	url = http://www.icu-project.org/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = libx32-icu
 	makedepends = gcc-multilib-x32
 	depends = libx32-gcc-libs
 	depends = icu
-	source = http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-src.tgz
+	source = http://download.icu-project.org/files/icu4c/56.1/icu4c-56_1-src.tgz
 	source = icu.8198.revert.icu5431.patch
-	md5sums = e844caed8f2ca24c088505b0d6271bc0
+	md5sums = c4a2d71ff56aec5ebfab2a3f059be99d
 	md5sums = 2e0fb97c7a64ea43c29c6142c22da35a
 
 pkgname = libx32-icu
