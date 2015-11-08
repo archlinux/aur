@@ -1,8 +1,9 @@
-# Contributor: chimeracoder <dev@chimeracoder.net>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# CPAN Name  : App-Cmd
+# Contributor: camb
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-app-cmd'
-pkgver='0.327'
+pkgver='0.330'
 pkgrel='1'
 pkgdesc="write command line apps with less suffering"
 arch=('any')
@@ -11,11 +12,11 @@ options=('!emptydirs')
 depends=('perl-capture-tiny>=0.13' 'perl-class-load>=0.06' 'perl-data-optlist>=0' 'perl-getopt-long-descriptive>=0.084' 'perl-io-tiecombine>=0' 'perl-module-pluggable>=0' 'perl-string-rewriteprefix>=0' 'perl-sub-exporter>=0' 'perl-sub-install>=0' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-fatal>=0')
-url='http://search.cpan.org/dist/App-Cmd'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-0.327.tar.gz')
-md5sums=('9f68d78db859888d569188f6f3db065d')
-sha512sums=('8aba847824aaf5c4f03981c7c1d773cddab6dfd13a0af8baa2c16f2fd00da0961fd2957aa4011e92ff5d04dd94f1b00be1f2acd51886d3d3b9ec26b1d7b03e8d')
-_distdir="App-Cmd-0.327"
+url='https://metacpan.org/release/App-Cmd'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-0.330.tar.gz')
+md5sums=('dde7b65165abeb4613643007583cb03f')
+sha512sums=('72d4e011f786cdf3362fbd2f2f1fb46f5978abfad808c4112e98cd65fd548cab48cb2db70c4cccaed7ac535da9d1bf5b15529b7a1002d9fc85fe5d519e42d3ad')
+_distdir="App-Cmd-0.330"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
