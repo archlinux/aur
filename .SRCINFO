@@ -1,0 +1,17 @@
+pkgbase = saw-script
+	pkgdesc = The SAW scripting language.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://saw.galois.com/
+	arch = x86_64
+	arch = i686
+	license = noncommercial
+	depends = cvc4
+	depends = ncurses
+	depends = java-environment
+	provides = saw-script
+	source = https://github.com/GaloisInc/saw-script/releases/download/v0.1.1-dev/saw-0.1.1-dev-2015-07-31-CentOS6-64.tar.gz
+	md5sums = SKIP
+
+pkgname = saw-script
+
