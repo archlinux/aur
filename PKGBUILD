@@ -140,7 +140,7 @@ package() {
     "$pkgdir/usr/share/vim/vimfiles/third_party"
   cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_client_support.so,ycm_core.so,check_core_version.py,CORE_VERSION} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
-  if [[ "${_COMPLETER}}" == "USE_CLANG_COMPLETER" ]]; then
+  if [[ "${_COMPLETER}" == "USE_CLANG_COMPLETER" ]]; then
     cp "$srcdir/ycmd_build/${_CLANG_DIRNAME}/lib/${_CLANG_LIB_FILENAME}" \
       "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
     cp -r "$srcdir/YouCompleteMe/third_party/ycmd/clang_includes" \
