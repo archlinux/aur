@@ -1,9 +1,9 @@
-# Maintainer: Muflone <webreg@vbsimple.net>
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Tony Dodd <arch@recalcitrance.net>
 # Contributor: Jonathan Frazier <eyeswide@gmail.com>
 pkgname=defcon
 pkgver=1.60
-pkgrel=1
+pkgrel=2
 pkgdesc="Global Thermonuclear War game"
 arch=('i686' 'x86_64')
 url="http://www.introversion.co.uk/defcon/"
@@ -17,13 +17,13 @@ source=("${pkgname}-${pkgver}.sh"::"http://www.introversion.co.uk/${pkgname}/dow
         "${pkgname}-64.png"
         "${pkgname}-128.png"
         "${pkgname}.desktop")
-md5sums=('b8533e05218cc2452b6debed263224f0'
-         '5fe8db2ddd9d8b729bbdc45ef8ed952e'
-         '9f644374d718126ddf5a1b8b6b4bf25e'
-         'ba986cfe6c1cdfb2a415c0c551c840e2'
-         '15e3ad4bea89ee96d62235ca371fb403'
-         'a75d3a0b29668e3ebd2afcaec5d2b199'
-         'e470f70aa1c72f6e37b77e27d769da3f')
+sha256sums=('1259314c58ec99a6e83cb540f40008d209d1cbb34339fb25f0d66c0107d69a76'
+            '07ef73da65038dd161e2b3364f216b96548ad74b1f8d5aeb0cd0f3171a3d8d5a'
+            '8d050bb639082c337cc440d396972e5c24a92b054b58b09bf38adfa99437214a'
+            '226643a2b02468773337b2f98d4201698e98870c4a939915b9a8646b9d7eae5d'
+            '604feca6e953c0e028ea9585874abfa06409b5ce1a64310737678dd32e83c0bd'
+            'bf94e634f6b7cc2727af8a11111fa1741a01a553dee3973f225e1158727cece7'
+            '90a8f19391f25580c40c4c7b3fe073e4caa1f3232c912e1b81da32ba95e1eaed')
 install="${pkgname}.install"
 noextract=("${pkgname}-${pkgver}.sh")
 
@@ -37,30 +37,28 @@ build() {
 }
 
 package() {
-  # install desktop file and icon
+  # Install desktop file and icon
   install -m 755 -D "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -m 644 -D "${pkgname}-16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
-  install -m 644 -D "${pkgname}-32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
-  install -m 644 -D "${pkgname}-48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
-  install -m 644 -D "${pkgname}-64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
-  install -m 644 -D "${pkgname}-128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+  for _size in 16 32 48 64 128
+  do
+    install -m 644 -D "${pkgname}-${_size}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
+  done
 
-  #install program files
+  # Install program files
   cd "Defcon"
-  if [ "${CARCH}" = "x36_64" ]
+  if [ "${CARCH}" = "x86_64" ]
   then
-    install -m 755 -D "defcon.bin.x86_64" "${pkgdir}/usr/share/${pkgname}/defcon"
+    install -m 755 -D "defcon.bin.x86_64" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
   else
-    install -m 755 -D "defcon.bin.x86" "${pkgdir}/usr/share/${pkgname}/defcon"
+    install -m 755 -D "defcon.bin.x86" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
   fi
-  install -m 644 -t "${pkgdir}/usr/share/${pkgname}" "manual.pdf"
-  install -m 644 -t "${pkgdir}/usr/share/${pkgname}" "linux.txt"
-  install -m 644 -t "${pkgdir}/usr/share/${pkgname}" "main.dat"
-  install -m 644 -t "${pkgdir}/usr/share/${pkgname}" "sounds.dat"
+  install -m 644 -t "${pkgdir}/usr/share/${pkgname}" \
+    "manual.pdf" "linux.txt" "main.dat" "sounds.dat"
 
-  #install symlinks
+  # Install symlinks
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${pkgname}/defcon" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   ln -s "/usr/bin/xdg-open" "${pkgdir}/usr/share/${pkgname}/xdg-open.sh"
 
   # Install license
