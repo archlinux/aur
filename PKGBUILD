@@ -1,9 +1,8 @@
-# CPAN Name  : Dancer-Plugin-Database-Core
-# Maintainer: camb
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: camb
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dancer-plugin-database-core'
-pkgver='0.12'
+pkgver='0.13'
 pkgrel='1'
 pkgdesc="Shared core for D1 and D2 Database plugins"
 arch=('any')
@@ -12,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-dbi>=0' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Dancer-Plugin-Database-Core'
-source=('http://search.cpan.org/CPAN/authors/id/A/AM/AMBS/Dancer-Plugin-Database-Core-0.12.tar.gz')
-md5sums=('0cbe3f849667f7b31813f1735289218d')
-sha512sums=('ee169a8aa9a5cf3a6e76859157db7bae942d8cb3c083ce19011bacd44cd21c5794c1792747b24fc06102b9392eb0f5d3d0409b6f48fff1109df3ab8d9b51b80e')
-_distdir="Dancer-Plugin-Database-Core-0.12"
+source=('http://search.cpan.org/CPAN/authors/id/A/AM/AMBS/Dancer-Plugin-Database-Core-0.13.tar.gz')
+md5sums=('ce0c24ec31ba30c037dfde315c306e41')
+sha512sums=('6e43e02e269e18396c05dbe486e73cf8cb81b755b0fa47a1aa4fe7b3f8686ac14a9ee402776839b7c57f49bbd0b196edb1f1998feef1bb110afa8b002abb6ed3')
+_distdir="Dancer-Plugin-Database-Core-0.13"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
