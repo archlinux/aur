@@ -1,0 +1,15 @@
+pkgbase = deadbeef-plugin-quick-search-git
+	pkgdesc = Quick playlist search bar plugin for the DeaDBeeF audio player (development version)
+	pkgver = 20150510
+	pkgrel = 1
+	url = https://github.com/cboxdoerfer/ddb_quick_search
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = pkg-config
+	depends = deadbeef
+	depends = gtk2
+
+pkgname = deadbeef-plugin-quick-search-git
+
