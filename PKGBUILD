@@ -1,43 +1,45 @@
-# Previous Packager: AUR Perl <aurperl at juster dot info>
-# Previous Packager: Kent Fredric <kentnl at cpan dot org>
-# Maintainer: Cyril Bur
+# Contributor: camb
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname=perl-io-tiecombine
-pkgver=1.004
-pkgrel=1
+pkgname='perl-io-tiecombine'
+pkgver='1.005'
+pkgrel='1'
 pkgdesc="produce tied (and other) separate but combined variables"
-arch=(any)
-license=(PerlArtistic GPL)
-options=(!emptydirs)
-depends=('perl')
-url=https://metacpan.org/release/IO-TieCombine
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/IO-TieCombine-${pkgver}.tar.gz")
-md5sums=('c36ad78c5787e064f94d8a3018193432')
-sha512sums=('ffa69d2c7f0b72c56814dc5f1a54ac2b2d5827ff8646d248775a90c86f0c6b46d18dc3b95ca86d55dd48ead8b73d9caf6963ba66f75a2cb0eca3db30e5fee0e6')
-_pkg_dir="IO-TieCombine"
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl>=0')
+makedepends=()
+url='https://metacpan.org/release/IO-TieCombine'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/IO-TieCombine-1.005.tar.gz')
+md5sums=('9538a96407b32d697a4244959a9f0a7a')
+sha512sums=('d0de091279d13e0421e5e0c901a994760cc2f427a1a05305d947f94feb2c040728bcd738965eb583b2c57481fdc474a5516660457069b19f30695962f56cfecf')
+_distdir="IO-TieCombine-1.005"
 
 build() {
-    export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "${srcdir}/${_pkg_dir}-${pkgver}"
+    cd "$srcdir/$_distdir"
     /usr/bin/perl Makefile.PL
     make
+  )
 }
 
 check() {
-    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" HARNESS_OPTIONS=j10
-    cd "${srcdir}/${_pkg_dir}-${pkgver}"
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
+  )
 }
 
 package() {
-    cd "${srcdir}/${_pkg_dir}-${pkgver}"
-    make DESTDIR="$pkgdir" install
-    find "$pkgdir" -name perllocal.pod -delete
+  cd "$srcdir/$_distdir"
+  make install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
 # Local Variables:

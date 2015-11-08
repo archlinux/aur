@@ -1,16 +1,16 @@
 pkgbase = perl-io-tiecombine
 	pkgdesc = produce tied (and other) separate but combined variables
-	pkgver = 1.004
+	pkgver = 1.005
 	pkgrel = 1
 	url = https://metacpan.org/release/IO-TieCombine
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl
+	depends = perl>=0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/IO-TieCombine-1.004.tar.gz
-	md5sums = c36ad78c5787e064f94d8a3018193432
-	sha512sums = ffa69d2c7f0b72c56814dc5f1a54ac2b2d5827ff8646d248775a90c86f0c6b46d18dc3b95ca86d55dd48ead8b73d9caf6963ba66f75a2cb0eca3db30e5fee0e6
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/IO-TieCombine-1.005.tar.gz
+	md5sums = 9538a96407b32d697a4244959a9f0a7a
+	sha512sums = d0de091279d13e0421e5e0c901a994760cc2f427a1a05305d947f94feb2c040728bcd738965eb583b2c57481fdc474a5516660457069b19f30695962f56cfecf
 
 pkgname = perl-io-tiecombine
 
