@@ -1,0 +1,14 @@
+pkgbase = monaco-powerline-font-git
+	pkgdesc = Monaco Powerline fonts for X11 and the console
+	pkgver = r16.616d338
+	pkgrel = 1
+	url = https://gist.github.com/arkhan/229a0729ec79c6fcec81
+	install = monaco-powerline-font-git.install
+	arch = any
+	license = CPL
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+
+pkgname = monaco-powerline-font-git
+
