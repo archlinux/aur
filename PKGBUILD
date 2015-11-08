@@ -10,12 +10,13 @@ _pkgdlname=iscan-bundle
 pkgver=1.36.0
 _pkgver=1.36.0-1 # workaround for hyphen in version
 _pkgdlver=1.0.0 # download bundle version
-pkgrel=11
+pkgrel=12
 pkgdesc="Plugin for using Epson scanners with ISCAN over network"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:AVASYSPL')
 depends=(iscan)
+conflicts=(iscan-data)
 install=iscan-plugin-network.install
 if [[ ${CARCH} = 'x86_64' ]]; then
     _pkgarch='x64'
