@@ -5,6 +5,7 @@ pkgbase = armory-bin
 	url = https://bitcoinarmory.com
 	arch = x86_64
 	license = AGPL
+	depends = bitcoin-daemon
 	depends = crypto++
 	depends = python2
 	depends = python2-pyqt4

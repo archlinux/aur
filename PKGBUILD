@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://bitcoinarmory.com"
 license=('AGPL')
 depends=(
+  'bitcoin-daemon'
   'crypto++'
   'python2'
   'python2-pyqt4'
