@@ -2,7 +2,7 @@
 
 pkgname=('cython-kivy')
 pkgver=0.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C-Extensions for Python; Kivy-compatible version"
 arch=(i686 x86_64)
 url="http://www.cython.org"
