@@ -1,7 +1,7 @@
 pkgbase = adom-noteye
 	pkgdesc = roguelike game with a quest-centric, plot driven structure
 	pkgver = 1.15.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.adom.de/home/index.html
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = adom-noteye
 	depends = mesa
 	depends = lua51
 	depends = libtinfo
+	depends = ncurses5-compat-libs
 	depends = libcaca
 	depends = libmad
 	depends = fluidsynth
