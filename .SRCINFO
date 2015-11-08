@@ -1,0 +1,25 @@
+pkgbase = deadbeef-plugin-playback-order-git
+	pkgver = r2
+	pkgrel = 1
+	url = https://github.com/cboxdoerfer/ddb_playback_order
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = deadbeef
+	makedepends = gtk2
+	makedepends = gtk3
+	source = git+https://github.com/cboxdoerfer/ddb_playback_order
+	md5sums = SKIP
+
+pkgname = deadbeef-plugin-playback-order-gtk2-git
+	pkgdesc = A plugin for the DeaDBeeF audio player which displays a combobox to select different playback orders (development version). GTK2 Ver.
+	depends = deadbeef
+	depends = gtk2
+
+pkgname = deadbeef-plugin-playback-order-gtk3-git
+	pkgdesc = A plugin for the DeaDBeeF audio player which displays a combobox to select different playback orders (development version). GTK3 Ver.
+	depends = deadbeef
+	depends = gtk3
+
