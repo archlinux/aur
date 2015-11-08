@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-uptime-widget-git
 _pkgname=plasma5-applets-uptime-widget
 _gitpkgname=plasma-applet-uptime-widget
-pkgver=r7.0353b2c
+pkgver=r10.cd24c87
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Shows uptime information."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('git' 'extra-cmake-modules')
 conflicts=("${_pkgname-*}")
 provides=("${_pkgname-*}")
-source=("git://github.com/kotelnik/$_gitpkgname.git")
+source=("git+https://github.com/kotelnik/$_gitpkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
