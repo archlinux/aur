@@ -1,0 +1,13 @@
+pkgbase = bml
+	pkgdesc = Buzztrax machine loader (former Buzztard)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://www.buzztrax.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = http://downloads.sourceforge.net/buzztard/buzz%20machine%20loader/bml-0.8.0.tar.gz
+	md5sums = 707c78c8b029701a48f770256ad6f662
+
+pkgname = bml
+
