@@ -1,0 +1,24 @@
+pkgbase = opera-developer-ffmpeg-codecs
+	pkgdesc = additional support for proprietary codecs for opera-developer
+	pkgver = 47.0.2526.35
+	pkgrel = 1
+	url = https://ffmpeg.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gtk2
+	makedepends = libexif
+	makedepends = libpulse
+	makedepends = libxss
+	makedepends = ninja
+	makedepends = nss
+	makedepends = pciutils
+	makedepends = python2
+	makedepends = xdg-utils
+	depends = glibc
+	options = !strip
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-47.0.2526.35.tar.xz
+	sha256sums = 00b4428422b954b5cd19554c5c0e64b831a40d6c93597a28649500bfb96aa870
+
+pkgname = opera-developer-ffmpeg-codecs
+
