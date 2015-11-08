@@ -1,11 +1,9 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=46.0.2490.6
+pkgver=46.0.2490.71
 _opver=33
-_opbver=33
-_opdver=34
-pkgrel=3
+pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
@@ -19,7 +17,7 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha256sums=('c3fcb3f8c0d150fb10dc921621bc6f047a62247e2297c7b78bfa237f10bcaa16')
+sha256sums=('cd4b18249e64ee267236c9d4578effe810bf8f47567e2d43a5a8a7613787dcb6')
 
 
 prepare() {
@@ -56,19 +54,8 @@ build() {
 package() {
   cd "$srcdir/chromium-$pkgver"
 
-	install -Dm644 out/Release/lib/libffmpeg.so \
-    "$pkgdir/usr/lib/opera-ffmpeg-codecs/libffmpeg.so"
-
-  install -dm755 "$pkgdir/usr/lib/opera/lib_extra"
-  install -dm755 "$pkgdir/usr/lib/opera-beta/lib_extra"
-  install -dm755 "$pkgdir/usr/lib/opera-developer/lib_extra"
-
-  ln -sf /usr/lib/opera-ffmpeg-codecs/libffmpeg.so \
+  install -Dm644 out/Release/lib/libffmpeg.so \
     "$pkgdir/usr/lib/opera/lib_extra/libffmpeg.so.$_opver"
-  ln -sf /usr/lib/opera-ffmpeg-codecs/libffmpeg.so \
-    "$pkgdir/usr/lib/opera-beta/lib_extra/libffmpeg.so.$_opbver"
-  ln -sf /usr/lib/opera-ffmpeg-codecs/libffmpeg.so \
-    "$pkgdir/usr/lib/opera-developer/lib_extra/libffmpeg.so.$_opdver"
 }
 
 # vim:set ts=2 sw=2 et:
