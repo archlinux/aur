@@ -1,0 +1,18 @@
+pkgbase = gpg-tools-git
+	pkgdesc = Wrapper for gpg-agent integration
+	pkgver = 1
+	pkgrel = 1
+	url = http://github.com/vodik/gpg-tools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = ragel
+	depends = gnupg
+	provides = gpg-tools
+	conflicts = gpg-tools
+	source = git+git://github.com/vodik/gpg-tools.git
+	sha1sums = SKIP
+
+pkgname = gpg-tools-git
+
