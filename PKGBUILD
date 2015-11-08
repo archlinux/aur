@@ -1,6 +1,6 @@
 # Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 pkgname=insight-fm
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 my_pkgrel=Release
 pkgfullname="lumina-${pkgver}-${my_pkgrel}"
@@ -13,8 +13,7 @@ makedepends=('qt5-tools' 'qt5-base')
 conflicts=("lumina-de-git" "lumina-desktop" "lumina-desktop-git")
 provides=("insight-fm")
 source=("https://github.com/pcbsd/lumina/archive/v${pkgver}-${my_pkgrel}.tar.gz")
-md5sums=('8768c4f9d6b7f80ba7bac1488273d6e8')
-
+md5sums=('b02cf115bc922b2685191fd42c455168')
 
 build(){
     cd $srcdir/${pkgfullname}
