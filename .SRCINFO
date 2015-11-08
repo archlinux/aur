@@ -1,0 +1,21 @@
+pkgbase = taucs
+	pkgdesc = Solver for positive definite sparse matrix
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://www.tau.ac.il/~stoledo/taucs/2.2/
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = make
+	depends = gcc-libs
+	depends = blas
+	depends = lapack
+	depends = metis
+	noextract = taucs.tgz
+	options = staticlibs
+	source = http://www.tau.ac.il/~stoledo/taucs/2.2/taucs.tgz
+	md5sums = ebb43f628c0d3c36873d8a4ec9a31888
+
+pkgname = taucs
+
