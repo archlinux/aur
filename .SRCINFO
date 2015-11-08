@@ -1,12 +1,11 @@
 pkgbase = borgbackup
 	pkgdesc = Deduplicating backup program with compression and authenticated encryption
-	pkgver = 0.28.0
+	pkgver = 0.28.1
 	pkgrel = 1
 	url = https://borgbackup.github.io/borgbackup/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python-mock
 	makedepends = python-sphinx
 	depends = acl
 	depends = lz4
@@ -15,8 +14,8 @@ pkgbase = borgbackup
 	depends = xz
 	optdepends = openssh: repositories on remote hosts
 	optdepends = python-llfuse: Mounting backups as a FUSE filesystem
-	source = https://pypi.python.org/packages/source/b/borgbackup/borgbackup-0.28.0.tar.gz
-	sha256sums = 2b6af7831d9ed81a6bc9918f7657fa6e65ba3707e6a23e581f53c46d179b173e
+	source = https://pypi.python.org/packages/source/b/borgbackup/borgbackup-0.28.1.tar.gz
+	sha256sums = 209dec1dadb95975281cc75b83a9e0d8899f89495eb759ac0a96671cb275980e
 
 pkgname = borgbackup
 

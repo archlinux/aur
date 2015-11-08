@@ -2,7 +2,7 @@
 
 pkgname=borgbackup
 _pkgname=borg
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc="Deduplicating backup program with compression and authenticated encryption"
 url="https://borgbackup.github.io/borgbackup/"
@@ -15,10 +15,9 @@ depends=('acl'
          'xz')
 optdepends=('openssh: repositories on remote hosts'
             'python-llfuse: Mounting backups as a FUSE filesystem')
-makedepends=('python-mock'
-             'python-sphinx')
+makedepends=('python-sphinx')
 source=("https://pypi.python.org/packages/source/b/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('2b6af7831d9ed81a6bc9918f7657fa6e65ba3707e6a23e581f53c46d179b173e')
+sha256sums=('209dec1dadb95975281cc75b83a9e0d8899f89495eb759ac0a96671cb275980e')
 
 build() {
   cd "$pkgname-$pkgver/docs"
