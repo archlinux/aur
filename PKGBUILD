@@ -3,7 +3,7 @@
 
 pkgname=qt-color-widgets-common
 _pkgname=QtColorWidgets
-pkgver=0.r187.dca8233
+pkgver=0.r192.81d3028
 pkgrel=1
 pkgdesc='Common files used by qt4- and qt5-color-widgets packages'
 arch=('any')
