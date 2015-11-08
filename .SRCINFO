@@ -1,0 +1,15 @@
+pkgbase = deadbeef-plugins-psipublish
+	pkgdesc = Plugin for DeaDBeeF to publish tune in Psi/Psi+
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://psi-im.org/wiki/Publish_Tune
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = deadbeef
+	depends = deadbeef
+	source = psipublish.c
+	md5sums = cfab279f1c90cb0f31e833487e5dbc5b
+
+pkgname = deadbeef-plugins-psipublish
+
