@@ -3,9 +3,9 @@
 _pkgname=clog
 pkgname=${_pkgname}-bin
 pkgrel=1
-pkgver=v0.8.2
+pkgver=v0.9.1
 pkgdesc="A conventional changelog for the rest of us"
-url="https://github.com/thoughtram/clog"
+url="https://github.com/clog-tool/clog-cli"
 provides=('clog')
 arch=('x86_64')
 license=('MIT')
@@ -15,7 +15,7 @@ replaces=('clog-git')
 backup=()
 install=''
 source=("http://wod.twentyfives.net/bin/${_pkgname}/${_pkgname}-${pkgver//_/-}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('4d2bda2c691b4227424e871454469075d1636070d37e1037287cf08f027c2e66')
+sha256sums=('6e83e53f81c99c923701840fa33563040f2385274790e452e1d4a63e88303fad')
 
 package() {
   cd "${srcdir}/${_pkgname}/"
