@@ -1,7 +1,7 @@
 pkgname=masalla-icon-theme
 pkgver=0.8
-pkgrel=3
-pkgdesc="Latest flat design theme by Hayder Majid"
+pkgrel=4
+pkgdesc="A flat design icon theme by Hayder Majid"
 arch=('any')
 url="https://github.com/hayderctee/masalla-icon-theme"
 license=('GPL3')
