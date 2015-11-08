@@ -1,5 +1,5 @@
 pkgbase = dotter
-	pkgdesc = A dotfiles managaer
+	pkgdesc = A dotfiles manager
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/dotter_dotfiles
