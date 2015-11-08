@@ -1,0 +1,19 @@
+pkgbase = gst-buzztrax
+	pkgdesc = Buzztrax gstreamer extensions (former Buzztard)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://www.buzztrax.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = bml>=0.8.0
+	depends = fluidsynth
+	depends = gst-plugins-base-libs
+	provides = gst-buzztard=0.8.0
+	conflicts = gst-buzztard
+	replaces = gst-buzztard
+	source = https://downloads.sourceforge.net/buzztard/buzztard%20gstreamer%20extensions/gst-buzztrax-0.8.0.tar.gz
+	md5sums = SKIP
+
+pkgname = gst-buzztrax
+
