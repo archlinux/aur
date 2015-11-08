@@ -1,0 +1,15 @@
+pkgbase = jbwm
+	pkgdesc = Simple X window manager
+	pkgver = 1.35
+	pkgrel = 1
+	url = https://github.com/jefbed/jbwm
+	arch = x86_64
+	arch = x86
+	license = MIT
+	depends = libxau
+	depends = libx11
+	source = https://github.com/jefbed/jbwm/archive/1.35.tar.gz
+	md5sums = b69a6b01a59420f120373e2f5b0e0a67
+
+pkgname = jbwm
+
