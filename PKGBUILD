@@ -6,14 +6,14 @@
 
 pkgname=mint-cinnamon-themes
 _pkgname=cinnamon-themes
-pkgver=2015.10.21
+pkgver=2015.11.06
 pkgrel=1
 pkgdesc='A collection of the best themes available for Cinnamon.'
 arch=('any')
 license=('GPL')
 url='http://linuxmint.com'
 source=("https://ftp.fau.de/mint/packages/pool/main/c/${_pkgname}/${_pkgname}_${pkgver}.tar.gz")
-sha256sums=('d555d0f98698951b2386226a3735dbb9493268a6ced9f5601b0f7964e674585d')
+sha256sums=('652b274ef82c101420a91694bb792a40561f849694de7c0567bfbba30eb5b69f')
  
 package() {
 	cd "${srcdir}/${_pkgname}"
