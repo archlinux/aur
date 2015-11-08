@@ -1,7 +1,7 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=gnome-shell-extension-drop-down-terminal
-pkgver=17
+pkgver=19
 pkgrel=1
 pkgdesc="Drop Down Terminal extension for the Gnome Shell"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gnome-shell')
 install=${pkgname}.install
 source=("https://github.com/zzrough/gs-extensions-drop-down-terminal/archive/v${pkgver}.tar.gz")
-sha256sums=('769096291d2fd3240c216288f43827947a442a2c6d1cbc6e165bbfb17b08af79')
+sha256sums=('1e50ad81ba731e4273e93bc2773d969056bf5cf7d1ccea78fd8fa093511aeede')
 
 package() {
   _uuid='drop-down-terminal@gs-extensions.zzrough.org'
