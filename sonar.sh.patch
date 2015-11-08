@@ -1,0 +1,14 @@
+@@ -25,3 +25,3 @@
+ WRAPPER_CMD="./wrapper"
+-WRAPPER_CONF="../../conf/wrapper.conf"
++WRAPPER_CONF="/etc/sonarqube/wrapper.conf"
+ 
+@@ -30,7 +30,7 @@
+ PRIORITY=
+ 
+ # Location of the pid file.
+-PIDDIR="."
++PIDDIR="/run/sonarqube"
+ 
+ # If uncommented, causes the Wrapper to be shutdown using an anchor file.
+ #  When launched with the 'start' command, it will also ignore all INT and

@@ -1,0 +1,24 @@
+[Unit]
+Description=A code quality management platform.
+After=network.target
+
+[Service]
+User=sonar
+Type=forking
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=sonar
+ExecStart=/usr/share/sonarqube/bin/sonar.sh start
+ExecStop=/usr/share/sonarqube/bin/sonar.sh stop
+PIDFile=/var/run/sonarqube/SonarQube.pid
+OOMScoreAdjust=-1000
+LimitCPU=infinity
+LimitFSIZE=infinity
+LimitDATA=infinity
+LimitCORE=0
+LimitAS=infinity
+LimitLOCKS=infinity
+
+[Install]
+WantedBy=multi-user.target
+
