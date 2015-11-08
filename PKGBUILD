@@ -3,7 +3,7 @@
 pkgname=borgbackup
 _pkgname=borg
 pkgver=0.28.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deduplicating backup program with compression and authenticated encryption"
 url="https://borgbackup.github.io/borgbackup/"
 license=('BSD')
@@ -12,6 +12,7 @@ depends=('acl'
          'lz4'
          'openssl'
          'python-msgpack'
+         'python-setuptools'
          'xz')
 optdepends=('openssh: repositories on remote hosts'
             'python-llfuse: Mounting backups as a FUSE filesystem')
