@@ -1,7 +1,7 @@
 pkgbase = latexila
 	pkgdesc = A LaTeX editor designed for the GNOME desktop
 	pkgver = 3.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://projects.gnome.org/latexila/
 	install = latexila.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = latexila
 	depends = libgee
 	depends = gettext
 	depends = hicolor-icon-theme
-	depends = gspell=0.1.0
+	depends = gspell
 	depends = dconf
 	depends = gsettings-desktop-schemas
 	optdepends = yelp: for viewing help files

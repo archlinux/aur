@@ -3,14 +3,14 @@ pkgname=latexila
 provides=('latexila')
 conflicts=('latexila-git')
 pkgver=3.18.1
-pkgrel=1
+pkgrel=2
 install=latexila.install
 pkgdesc="A LaTeX editor designed for the GNOME desktop"
 arch=('i686' 'x86_64')
 url="http://projects.gnome.org/latexila/"
 license=('GPL3')
 depends=('gtk3' 'gtksourceview3' 'libgee' 'gettext' 'hicolor-icon-theme'
-         'gspell=0.1.0' 'dconf' 'gsettings-desktop-schemas')
+         'gspell' 'dconf' 'gsettings-desktop-schemas')
 optdepends=('yelp: for viewing help files')
 makedepends=('intltool' 'itstool')
 source=("http://ftp.gnome.org/pub/GNOME/sources/latexila/${pkgver%.*}/latexila-${pkgver}.tar.xz")
