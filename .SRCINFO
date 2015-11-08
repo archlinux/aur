@@ -6,6 +6,7 @@ pkgbase = 1pass-hg
 	arch = i686
 	arch = x86_64
 	license = zlib
+	makedepends = cmake
 	makedepends = mercurial
 	depends = gtk2
 	depends = libxtst

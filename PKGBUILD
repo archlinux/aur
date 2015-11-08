@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('zlib')
 url="https://www.icculus.org/1pass/"
 depends=('gtk2' 'libxtst')
-makedepends=('mercurial')
+makedepends=('cmake' 'mercurial')
 source=("hg+http://hg.icculus.org/icculus/1pass/"
         "1pass-lua.patch")
 md5sums=('SKIP'
