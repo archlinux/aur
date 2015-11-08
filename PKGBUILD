@@ -3,21 +3,22 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
 pkgver=13.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64')
 url="http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top"
 license=('custom:Citrix')
 depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxml2' 'libxaw' 'libxext' 'libxft'
   'libxinerama' 'libxmu' 'libxp' 'libxpm' 'libxt' 'ca-certificates')
+makedepends=('automake' 'autoconf' 'wget')
 optdepends=(
   'xerces-c: gtk2 configuration manager'
   'webkitgtk2: gtk2 selfservice/storefront ui')
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
+backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
 source_url="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-1321.html' | awk -F 'rel=\"' '/linuxx64-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
 source=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh' $pkgname-$pkgver.tar.gz::$source_url)
-makedepends=('wget')
 md5sums=('71aca6257f259996ac59729604f32978'
          'a38c3f844a0fefe8017a25bee213b843'
          '0e92c33b3fcc99b04269787da2984809'
