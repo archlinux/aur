@@ -1,15 +1,15 @@
 pkgbase = iscan-plugin-network
 	pkgdesc = Plugin for using Epson scanners with ISCAN over network
-	pkgver = 1.1.1
-	pkgrel = 10
+	pkgver = 1.36.0
+	pkgrel = 11
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = iscan-plugin-network.install
 	arch = i686
 	arch = x86_64
 	license = custom:AVASYSPL
 	depends = iscan
-	source = iscan-network-nt.deb::https://download3.ebz.epson.net/dsc/f/03/00/03/61/60/036fa32e8febc77061170283f84b6b1632949b23/iscan-network-nt_1.1.1-1_i386.deb
-	md5sums = 08b6cd88050151892bc582182cc8a2c0
+	source = iscan-bundle.deb.tar.gz::https://download2.ebz.epson.net/iscan/general/deb/x86/iscan-bundle_1.0.0.x86.deb.tar.gz
+	sha512sums = d91a064342640582a71c664441e944812bc2fd18bd8f00010838adac7ad0581efcf8c9224c48a136ae0aec7f26b6df8071da7c2e10110eafe91c1dbd7f9865ad
 
 pkgname = iscan-plugin-network
 
