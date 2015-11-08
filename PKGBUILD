@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 pkgname='python-harvey'
 _name=harvey
-pkgver=0.0.4.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Harvey is a command line legal expert who manages license for you'
 url='https://github.com/architv/harvey'
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python' 'python-colorama' 'python-docopt' 'python-requests')
 provides=("${_name}=${pkgver}")
 source=("https://pypi.python.org/packages/source/h/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2bce5f011215493ea8267cc170466e6845f37293d89ade5e1d1e5ebac72b2572')
+sha256sums=('d95b2133caed751addaea17cf2d03979169deb4043129224bb60f6ed5f6299f5')
 
 # Enable for tests
 # check() {

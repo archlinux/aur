@@ -1,6 +1,6 @@
 pkgbase = python-harvey
 	pkgdesc = Harvey is a command line legal expert who manages license for you
-	pkgver = 0.0.4.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/architv/harvey
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python-harvey
 	makedepends = python-docopt
 	makedepends = python-requests
 	depends = python
-	provides = harvey=0.0.4.4
-	source = https://pypi.python.org/packages/source/h/harvey/harvey-0.0.4.4.tar.gz
-	sha256sums = 2bce5f011215493ea8267cc170466e6845f37293d89ade5e1d1e5ebac72b2572
+	provides = harvey=0.0.5
+	source = https://pypi.python.org/packages/source/h/harvey/harvey-0.0.5.tar.gz
+	sha256sums = d95b2133caed751addaea17cf2d03979169deb4043129224bb60f6ed5f6299f5
 
 pkgname = python-harvey
 
