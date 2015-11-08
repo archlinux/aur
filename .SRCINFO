@@ -1,7 +1,7 @@
 pkgbase = iscan-plugin-gt-f720
 	pkgdesc = EPSON Image Scan! plugin for Epson Perfection V30 scanner
 	pkgver = 0.1.1
-	pkgrel = 4
+	pkgrel = 1
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = iscan-plugin-gt-f720.install
 	arch = i686
