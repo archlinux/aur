@@ -4,7 +4,9 @@
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Angel "angvp" Velasquez <angvp[at]archlinux.com.ve> 
 
-pkgname=("python2-numpy-openblas" "python-numpy-openblas")
+pkgbase=python-numpy-openblas
+#pkgname=("python2-numpy-openblas" "python-numpy-openblas")
+pkgname=python-numpy-openblas
 pkgver=1.10.1
 pkgrel=1
 pkgdesc="Scientific tools for Python - built with openblas"
