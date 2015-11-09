@@ -79,7 +79,7 @@ EOF
   sed -i 's/^default_options="/default_options="-J-Dawt.useSystemAAFontSettings=on /' "${pkgdir}${_mplabx_dir}/mplab_ide/etc/mplab_ide.conf"
 
   # Fix broken udev rules
-  sed -i '1c \ACTION!="add", SUBSYSTEM!="usb_device", GOTO="jlink_rules_end"' "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
+  sed -i '1c \ACTION!="add", SUBSYSTEM!="usb_device", GOTO="jlink_rules_end"\r' "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
 
   # Patch jdkhome to use system JRE
   local conf
