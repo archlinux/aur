@@ -1,7 +1,7 @@
 pkgbase = eezupnp
 	pkgdesc = UPnP Audio control point
 	pkgver = 2.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.eezupnp.de/
 	arch = x86_64
 	license = custom:eezupnp

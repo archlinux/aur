@@ -2,7 +2,7 @@
 
 pkgname=eezupnp
 pkgver=2.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="UPnP Audio control point"
 arch=('x86_64')
 url="http://www.eezupnp.de/"

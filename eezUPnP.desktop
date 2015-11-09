@@ -2,7 +2,7 @@
 [Desktop Entry]
 Comment[en_US]=
 Comment=
-Exec=export LANG="en_US.utf8";/opt/eezUPnP/CP
+Exec=export LANG=C; /opt/eezUPnP/CP
 GenericName[en_US]=
 GenericName=
 Icon=/opt/eezUPnP/icon.xpm
