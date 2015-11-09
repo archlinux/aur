@@ -1,21 +1,30 @@
-pkgbase = python-numpy-openblas
+pkgbase = python2-numpy-openblas
 	pkgdesc = Scientific tools for Python - built with openblas
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = http://numpy.scipy.org/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = python-numpy-1.10.0.tar.gz::https://github.com/numpy/numpy/archive/v1.10.0.tar.gz
-	md5sums = c8693369638ed9bff12a0c90ef8ea7af
+	source = python-numpy-1.10.1.tar.gz::https://github.com/numpy/numpy/archive/v1.10.1.tar.gz
+	md5sums = d2a125a52187ab234bfe444287b53660
+
+pkgname = python2-numpy-openblas
+	depends = python2
+	depends = cython2
+	depends = openblas-lapack
+	optdepends = python2-nose: testsuite
+	provides = python2-numpy=1.10.1
+	conflicts = python2-numpy
+	options = staticlibs
 
 pkgname = python-numpy-openblas
 	depends = python
 	depends = cython
 	depends = openblas-lapack
 	optdepends = python-nose: testsuite
-	provides = python3-numpy=1.10.0
-	provides = python-numpy=1.10.0
+	provides = python3-numpy=1.10.1
+	provides = python-numpy=1.10.1
 	conflicts = python3-numpy
 	conflicts = python-numpy
 	options = staticlibs
