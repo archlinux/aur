@@ -1,0 +1,14 @@
+pkgbase = smodels
+	pkgdesc = Implementation of the stable model semantics for logic programs
+	pkgver = 2.34
+	pkgrel = 1
+	url = http://www.tcs.hut.fi/Software/smodels/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://www.tcs.hut.fi/Software/smodels/src/smodels-2.34.tar.gz
+	sha1sums = cf3dd5a517afabaa858ccd63ff3e8b38e322f5eb
+	sha256sums = 8d14fe02ad2aec636d674c5e1dd6026e8bac5787693fa16425bf6f6fe3959834
+
+pkgname = smodels
+
