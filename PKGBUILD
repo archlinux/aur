@@ -8,7 +8,7 @@ pkgdesc='cldoc is a clang based documentation generator for C and C++. cldoc tri
 arch=('i686' 'x86_64')
 url='http://jessevdk.github.com/cldoc'
 license=('GPL2')
-depends=('python2' 'python2-pyparsing')
+depends=('python2' 'python2-pyparsing' 'python2-setuptools')
 makedepends=('ruby-sass' 'npm')
 options=(!emptydirs)
 source=("$pkgname-$pkgver::https://github.com/jessevdk/cldoc/archive/v${pkgver}.tar.gz")
@@ -21,8 +21,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py generate \
-		--coffee=node_modules/.bin/coffee
+  python2 setup.py generate --coffee=node_modules/.bin/coffee
 }
 
 package() {

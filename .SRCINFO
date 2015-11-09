@@ -10,6 +10,7 @@ pkgbase = cldoc
 	makedepends = npm
 	depends = python2
 	depends = python2-pyparsing
+	depends = python2-setuptools
 	options = !emptydirs
 	source = cldoc-1.9::https://github.com/jessevdk/cldoc/archive/v1.9.tar.gz
 	md5sums = fada948e1ce7cd0aa1fa330a2fdd256d
