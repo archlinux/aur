@@ -1,6 +1,6 @@
 pkgbase = ryzom-client
 	pkgdesc = Ryzom is a Free to Play MMORPG .This version is for playing on an official server
-	pkgver = 0.12.0.r6277
+	pkgver = 0.12.0.r6356
 	pkgrel = 1
 	url = http://www.ryzom.com/
 	install = install
