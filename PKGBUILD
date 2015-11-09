@@ -3,7 +3,7 @@
 
 pkgname=seafile-server
 pkgver=4.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-generation open source cloud storage with advanced features on privacy protection and teamwork. (Server components, without seahub)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/haiwen/seafile/"
@@ -75,5 +75,5 @@ sha256sums=('7e244f05b20a6bfd7282b8a00eb3e1cda8ecefd98fc2b92210665549aebebe22'
             '4127284c1d8a4d071925cbcc870ca460fd736e2d53e8ab5806ccf3dd03d5e537'
             'abe1a55d528994e044f6bba71fac0d97313adecd9aa007fa338efdca244882db'
             'ae1ed38f94304d27e4ef1ca66e15d544f99681c1e743c510c54d4a112f050421'
-            '6a04e89eee4030d06d79f21912c7aa531dfc7beb5d3f51b66ec2bd62f95401ec'
+            '2a1e079cbea3543f356e6e9571f3d7d2a4b0ab75131ee417115d738ea191c4fb'
             'b1748e826d8e7cccdd825b99864b74dfb5795312f8878d63e9a87105f4382e29')
