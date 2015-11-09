@@ -1,0 +1,15 @@
+pkgbase = ruby-swearjar
+	pkgdesc = Put another nickel in the swearjar. Simple profanity detection with content analysis
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/joshbuddy/swearjar
+	arch = any
+	depends = ruby
+	depends = ruby-fuzzyhash
+	noextract = swearjar-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/swearjar-1.0.0.gem
+	sha256sums = beb27c7532af0a9106e63877e4f89ab968f496183161e2b50c42843e28947d34
+
+pkgname = ruby-swearjar
+
