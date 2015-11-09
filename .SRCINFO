@@ -1,7 +1,7 @@
 pkgbase = ttf-textfonts
 	pkgdesc = Fonts based on early works by Alexander Wilson, Claude Garamond, Victor Scholderer, Firmin Didot et al.
 	pkgver = 6.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://users.teilar.gr/~g1951d/
 	install = ttf-textfonts.install
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = ttf-textfonts
 	replaces = ttf-asea
 	source = http://users.teilar.gr/~g1951d/Textfonts.zip
 	source = LICENSE
-	md5sums = 10ea36306952a18d95c58437568736cb
+	md5sums = 5f69193bc44c8082b4f0c3037faad0e9
 	md5sums = bc1709dc3b1f6a7545ab366923e01a1c
 
 pkgname = ttf-textfonts
