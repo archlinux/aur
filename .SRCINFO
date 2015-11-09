@@ -1,6 +1,6 @@
 pkgbase = python-django-extensions
 	pkgdesc = A collection of custom extensions for the Django Framework.
-	pkgver = 1.5.7
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = http://github.com/django-extensions/django-extensions
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-django-extensions
 	makedepends = python2-setuptools
 	makedepends = python2-six
 	options = !emptydirs
-	source = https://github.com/django-extensions/django-extensions/archive/1.5.7.tar.gz
-	sha256sums = a088a3ab2cd14686cdf16ae13e7cc855b1f71a48eb2cc59878f5f9bcbba13ed2
+	source = https://github.com/django-extensions/django-extensions/archive/1.5.9.tar.gz
+	sha256sums = fc508d086e1e66674e4f8b5fc721264fb138138bea4a3a3438130155500d3c05
 
 pkgname = python-django-extensions
 	depends = python-django
