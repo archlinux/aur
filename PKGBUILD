@@ -71,31 +71,21 @@ build() {
   cd $pkgname-$pkgver/build
 
   cmake -G "Unix Makefiles" ../ \
-    -Wno-dev \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_TESTS=OFF \
     -DQGIS_MANUAL_SUBDIR=share/man \
+    -DENABLE_TESTS=FALSE \
+    -DCMAKE_SKIP_RPATH=TRUE \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-    -DPYTHON_INCLUDE_PATH=/usr/include/python2.7 \
-    -DPYTHON_SITE_PACKAGES_DIR=/usr/lib/python2.7/site-packages \
-    -DPYQT4_SIP_DIR=/usr/share/sip/PyQt4 \
-    -DQSCI_SIP_DIR=/usr/share/sip/PyQt4 \
-    -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4 \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DQWTPOLAR_LIBRARY=/usr/lib/libqwtpolar.so \
-    -DQWT_LIBRARY=/usr/lib/libqwt.so \
+    -DWITH_INTERNAL_SIX=FALSE \
+    -DWITH_INTERNAL_DATEUTIL=FALSE \
+    -DWITH_INTERNAL_HTTPLIB2=FALSE \
+    -DWITH_INTERNAL_JINJA2=FALSE \
+    -DWITH_INTERNAL_MARKUPSAFE=FALSE \
+    -DWITH_INTERNAL_PYGMENTS=FALSE \
+    -DWITH_INTERNAL_PYTZ=FALSE \
 #    -DWITH_SERVER=TRUE \
-#    -DWITH_SERVER_PLUGINS=TRUE \
-#    -DWITH_GRASS7=ON \
-#    -DGRASS_PREFIX7=/opt/grass \
-#    -DGRASS_INCLUDE_DIR7=/opt/grass/include/ \
-#    -DWITH_GRASS=ON \
-#    -DGRASS_PREFIX=/opt/grass64 \
-#    -DGRASS_INCLUDE_DIR=/opt/grass64/include \
-#    -DWITH_GLOBE=TRUE \
+#    -DWITH_GLOBE=TRUE
 
   make
 }
