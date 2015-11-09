@@ -11,7 +11,7 @@
 
 pkgname=qgis-stable
 _pkgname=qgis
-pkgver=2.10.1
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
@@ -19,6 +19,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 # https://raw.githubusercontent.com/qgis/QGIS/final-2_6_0/INSTALL
 depends=('qt4'
+	 'qca-qt4'
          'proj'
          'geos'
          'sqlite'
@@ -55,7 +56,7 @@ provides=("$_pkgname")
 install="$_pkgname.install"
 source=("https://qgis.org/downloads/qgis-latest.tar.bz2"
         "https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py")
-md5sums=('8d719b6013ba0e2adb9a2dd642e9e9c5'
+md5sums=('099efb9482a67e3c57f54f4947986e39'
          '57efd9c869ed2d0a50fb7cf35048d99d')
 
 pkgver() {

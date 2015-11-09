@@ -1,6 +1,6 @@
 pkgbase = qgis-stable
 	pkgdesc = QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats
-	pkgver = 2.10.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = http://qgis.org/
 	install = qgis.install
@@ -14,6 +14,7 @@ pkgbase = qgis-stable
 	makedepends = perl
 	makedepends = git
 	depends = qt4
+	depends = qca-qt4
 	depends = proj
 	depends = geos
 	depends = sqlite
@@ -43,7 +44,7 @@ pkgbase = qgis-stable
 	provides = qgis
 	source = https://qgis.org/downloads/qgis-latest.tar.bz2
 	source = https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py
-	md5sums = 8d719b6013ba0e2adb9a2dd642e9e9c5
+	md5sums = 099efb9482a67e3c57f54f4947986e39
 	md5sums = 57efd9c869ed2d0a50fb7cf35048d99d
 
 pkgname = qgis-stable
