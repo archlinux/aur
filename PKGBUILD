@@ -105,4 +105,7 @@ package() {
   for mime in debian/mime/application/*.desktop
     do install -Dm644 "$mime" -t "$pkgdir/usr/share/mimelnk/application/"
   done
+
+  # compile python files, since the cmake option doesn't seem to account for DESTDIR
+  python2 -m compileall -q "$pkgdir"
 }
