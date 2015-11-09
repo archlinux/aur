@@ -1,6 +1,6 @@
 pkgbase = faust-git
 	pkgdesc = A functional programming language for realtime audio signal processing.
-	pkgver = 3562.6236abf
+	pkgver = 3611.0a5078e
 	pkgrel = 1
 	url = http://faust.grame.fr/
 	arch = i686
