@@ -91,32 +91,19 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver/build
+  cd $pkgname-$pkgver
 
-  make DESTDIR="$pkgdir/" install
-  
+  make -C build DESTDIR="$pkgdir" install
+
   # install some freedesktop.org compatibility
-  install -Dm755 "$srcdir/$pkgname-$pkgver/debian/qgis.desktop" \
-    "$pkgdir/usr/share/applications/qgis.desktop"
-
-  install -Dm755 "$srcdir/$pkgname-$pkgver/debian/qbrowser.desktop" \
-    "$pkgdir/usr/share/applications/qbrowser.desktop"
-
-  install -Dm644 $srcdir/$pkgname-$pkgver/debian/qgis-icon512x512.png \
-    "$pkgdir/usr/share/pixmaps/qgis.png"
-
-  install -Dm644 $srcdir/$pkgname-$pkgver/debian/qbrowser-icon512x512.png \
-    "$pkgdir/usr/share/pixmaps/qbrowser.png"
+  install -Dm644 debian/{qgis,qbrowser}.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 debian/qgis-icon512x512.png "$pkgdir/usr/share/pixmaps/qgis.png"
+  install -Dm644 debian/qbrowser-icon512x512.png "$pkgdir/usr/share/pixmaps/qbrowser.png"
+  install -Dm644 images/icons/qgis-mime-icon.png "$pkgdir/usr/share/pixmaps/qgis-mime.png"
 
   # TODO: these aren't working for some reason, ie, .qgs files are not opened by QGIS...
   # Appears to be a conflict with some file types being defaulted to google-chrome/chromium if that's installed as well.
-  install -dm755 "$pkgdir/usr/share/pixmaps" \
-    "$pkgdir/usr/share/mimelnk/application"
-
-  for mime in "$srcdir/$pkgname-$pkgver/debian/mime/application/"*.desktop
-    do install -m755 "$mime" "$pkgdir/usr/share/mimelnk/application"
+  for mime in debian/mime/application/*.desktop
+    do install -Dm644 "$mime" -t "$pkgdir/usr/share/mimelnk/application/"
   done
-
-  install -Dm644 "$srcdir/$pkgname-$pkgver/images/icons/qgis-mime-icon.png" \
-    "$pkgdir/usr/share/pixmaps/qgis-mime.png"
 }
