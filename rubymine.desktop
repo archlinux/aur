@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=RubyMine7
+Comment=Ruby and Rails IDE with the full stack of essential developer tools. 7 version
+GenericName=Ruby and Rails IDE with the full stack of essential developer tools. 7 version
+Exec=/usr/bin/jetbrains-rubymine7
+Icon=rubymine7
+Terminal=false
+Type=Application
+Categories=Development;IDE;Ruby
+StartupWMClass=jetbrains-rubymine
