@@ -1,0 +1,39 @@
+From 9029e189f8431a39146ac3477c7e4491e06c6f4b Mon Sep 17 00:00:00 2001
+From: Alberto Milone <alberto.milone@canonical.com>
+Date: Thu, 4 Jun 2015 18:03:39 +0200
+Subject: [PATCH 1/1] Add support for Linux 4.0
+
+---
+ firegl_public.c | 5 +++++
+ kcl_str.c       | 4 ++++
+ 2 files changed, 9 insertions(+)
+
+--- 15.7/common/lib/modules/fglrx/build_mod/firegl_public.c
++++ 15.7b/common/lib/modules/fglrx/build_mod/firegl_public.c
+@@ -275,6 +275,11 @@ MODULE_LICENSE("Proprietary. (C) 2002 - ATI Technologies, Starnberg, GERMANY");
+ MODULE_DEVICE_TABLE(pci, fglrx_pci_table);
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 20, 0)
++#define read_cr4()       __read_cr4()
++#define write_cr4(cr4)   __write_cr4(cr4)
++#endif
++
+ /* globals constants */
+ const char*         KCL_SYSINFO_OsVersionString = UTS_RELEASE;
+ const unsigned int  KCL_SYSINFO_PageSize        = PAGE_SIZE;
+diff --git a/kcl_str.c b/kcl_str.c
+index 2d89eb0..bacdb69 100755
+--- 15.7/common/lib/modules/fglrx/build_mod/kcl_str.c
++++ 15.7b/common/lib/modules/fglrx/build_mod/kcl_str.c
+@@ -42,6 +42,10 @@
+ #include "kcl_type.h"
+ #include "kcl_str.h"
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 20, 0)
++#define strnicmp strncasecmp
++#endif
++
+ /** \brief Fill memory with a constant byte
+  *  \param s Pointer to memory
+  *  \param c Initializing value

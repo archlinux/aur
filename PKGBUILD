@@ -25,13 +25,13 @@
 
 pkgname=catalyst-firepro
 pkgver=14.502.1040
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD/ATI beta drivers for FirePro/GL/MV brand cards. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.2' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.17.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('linux>=3.0' 'linux<4.4' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.17.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4' 'gcc49')
 makedepends=('unzip')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
@@ -66,6 +66,9 @@ source=(
     catalyst.sh
     atieventsd.sh
     atieventsd.service
+    ati-powermode.sh
+    a-ac-aticonfig
+    a-lid-aticonfig
     catalyst.conf
     arch-fglrx-authatieventsd_new.patch
     hook-fglrx
@@ -84,15 +87,24 @@ source=(
     fglrx_gpl_symbol.patch
     fglrx_3.17rc6-no_hotplug.patch
     kolasa-3.19-get_cpu_var.patch
-    kolasa_4.0-cr4-strn.patch
-    kolasa_4.1_remove-IRQF_DISABLED-15.7-v2.patch)
+    ubuntu_buildfix_kernel_4.0.patch
+    ubuntu_buildfix_kernel_4.1.patch
+    ubuntu_buildfix_kernel_4.2.patch
+    4.2-fglrx-has_fpu.patch
+    4.2-kolasa-fpu_save_init.patch
+    ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
+    4.3-kolasa-seq_printf.patch
+    4.3-gentoo-mtrr.patch)
 
 md5sums=('37d01238c76792592bfbc77c11dfa9fc'
-	 '601d9c756571dd79d26944e54827631e'
+	 'f3aaed0084725304cf607f6915e4bfee'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
          '9d9ea496eadf7e883d56723d65e96edf'
-	 '90a37e010f4e5f45e270cd000894d553'
+	 'b79e144932616221f6d01c4b05dc9306'
+	 '514899437eb209a1d4670df991cdfc10'
+	 '80fdfbff93d96a1dfca2c7f684be8cc1'
+	 '9054786e08cf3ea2a549fe22d7f2cd92'
 	 '3e19c2285c76f4cb92108435a1e9c302'
 	 'b3ceefeb97c609037845f65d0956c4f0'
          '9126e1ef0c724f8b57d3ac0fe77efe2f'
@@ -111,8 +123,14 @@ md5sums=('37d01238c76792592bfbc77c11dfa9fc'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '67a22f624bae95a76638ce269392cb01'
 	 '3aa45013515b724a71bbd8e01f98ad99'
-	 'dee3df1c5d3ed87363f4304da917fc00'
-	 'daa56baca90f473cf1831f6c64e35c2c')
+	 '40aaf97acae268f8f7949e0fecb926d9'
+	 '982451bcc1fa1ee3da53ffa481d65581'
+	 '88832af8d6769aa51fa9b266a74394e0'
+	 'ed7748a593d6b894269f8c7856b7ae50'
+	 'dd51495a1d8f2d1042f04a783bf01e08'
+	 '2f7d42fde403a1b4a22e5db8de738d0f'
+	 '0e0666e95d1d590a7a83192805679485'
+	 '98828e3eeaec2b3795e584883cc1b746')
 
 
 
@@ -245,9 +263,13 @@ package() {
       install -m644 usr/share/applications/*.desktop ${pkgdir}/usr/share/applications
 
     # ACPI example files
-      install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
-      sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
-      install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+#       install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
+#       sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
+#       install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+    # lets check our own files - V
+      install -m755 ${srcdir}/ati-powermode.sh ${pkgdir}/etc/acpi
+      install -m644 ${srcdir}/a-ac-aticonfig ${pkgdir}/etc/acpi/events
+      install -m644 ${srcdir}/a-lid-aticonfig ${pkgdir}/etc/acpi/events
 
     # Add ATI Events Daemon launcher
       install -m755 ${srcdir}/atieventsd.sh ${pkgdir}/etc/rc.d/atieventsd
@@ -295,8 +317,14 @@ package() {
       patch -Np1 -i ../fglrx_3.17rc6-no_hotplug.patch
       patch -Np1 -i ../kolasa-3.19-get_cpu_var.patch
       patch -Np1 -i ../fglrx_gpl_symbol.patch
-      patch -Np1 -i ../kolasa_4.0-cr4-strn.patch
-      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED-15.7-v2.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.0.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.1.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.2.patch
+      patch -Np1 -i ../4.2-fglrx-has_fpu.patch
+      patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
+      patch -Np1 -i ../4.3-kolasa-seq_printf.patch
+      patch -Np1 -i ../4.3-gentoo-mtrr.patch
 
     # Prepare modules source files
       _archdir=x86_64

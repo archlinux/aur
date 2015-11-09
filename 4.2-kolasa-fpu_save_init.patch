@@ -1,0 +1,34 @@
+--- 15.9/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-09-20 18:29:19.488890309 +0200
++++ 15.9b/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-09-20 14:20:51.000000000 +0200
+@@ -6505,11 +6505,15 @@
+     struct task_struct *cur_task = get_current();
+     preempt_disable();
+     if (cur_thread->status & TS_USEDFPU)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,2,0)
++         copy_fpregs_to_fpstate(&cur_task->thread.fpu);
++#else
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,15,0)
+          KCL_fpu_save_init(cur_task);
+ #else
+          __save_init_fpu(cur_task);
+ #endif
++#endif
+     else
+          clts();
+ 
+@@ -6531,11 +6535,15 @@
+ #else
+     if (cur_task->thread.fpu.fpregs_active)
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,2,0)
++         copy_fpregs_to_fpstate(&cur_task->thread.fpu);
++#else
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,15,0)
+         KCL_fpu_save_init(cur_task);
+ #else
+         __save_init_fpu(cur_task);
+ #endif
++#endif
+     else
+          clts();
+ #endif

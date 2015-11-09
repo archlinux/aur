@@ -1,0 +1,4 @@
+# Called when the user opens/closes the laptop lid
+
+event=button/lid
+action=/etc/acpi/ati-powermode.sh "%e"
