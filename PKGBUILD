@@ -1,7 +1,7 @@
 # Maintainer: Michael von Domaros <mvondomaros at gmail dot com>
 pkgname=travis
 pkgver=151107
-pkgrel=2
+pkgrel=3
 pkgdesc="Trajectory Analyzer and Visualizer"
 arch=('i686' 'x86_64')
 url="http://www.travis-analyzer.de"
@@ -12,11 +12,13 @@ source=($url/files/$pkgname-src-$pkgver.tar.gz)
 md5sums=('66e9d1f7d3d6087feff9d992ba79f256')
 
 build() {
+	#cd "$srcdir/$pkgname-src-$pkgver"
 	cd "$srcdir/$pkgname-src-151108"
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname-src-$pkgver"
+	#cd "$srcdir/$pkgname-src-$pkgver"
+	cd "$srcdir/$pkgname-src-151108"
 	install -Dm 755 exe/travis $pkgdir/usr/bin/travis
 }
