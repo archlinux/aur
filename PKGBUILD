@@ -11,44 +11,16 @@
 
 pkgname=qgis
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qt4'
-         'qca-qt4'
-         'proj'
-         'geos'
-         'sqlite'
-         'gdal'
-         'expat'
-         'qwt'
-         'qwtpolar'
-         'gsl'
-         'python2'
-         'python2-pyqt4'
-         'python2-qscintilla'
-         'python2-sip'
-         'python2-psycopg2'
-         'python2-pygments'
-         'python2-dateutil'
-         'python2-jinja'
-         'python2-markupsafe'
-         'python2-pytz'
-         'python2-httplib2'
-         'libspatialite'
-         'spatialindex'
-         'icu')
-makedepends=('cmake'
-             'flex'
-             'bison'
-             'txt2tags'
-             'perl')
-optdepends=('grass: GRASS plugin support'
-            'fcgi: QGIS Map Server support'         # if you want GRASS, QGIS Map Server
-            'osgearth: QGIS Globe plugin support'   # or the Globe Plugin enabled
-            'gpsbabel: GPS toolbar support')
+depends=('qca-qt4' 'gdal' 'qwtpolar' 'gsl' 'spatialindex' 'icu'
+         'python2-qscintilla' 'python2-sip' 'python2-psycopg2' 'python2-six' 'python2-dateutil'
+         'python2-httplib2' 'python2-jinja' 'python2-markupsafe' 'python2-pygments' 'python2-pytz')
+makedepends=('cmake' 'txt2tags' 'perl')
+optdepends=('gpsbabel: GPS toolbar support')
 install="$pkgname.install"
 source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
         "console_pyqt4.diff")
@@ -91,6 +63,16 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
+
+  # Add optional deps based on selected or autodetected options
+  [[ -n "$(awk -F= '/^GRASS_PREFIX:/ {print $2}' build/CMakeCache.txt)" ]] && \
+    optdepends+=('grass6: GRASS6 plugin support')
+  [[ -n "$(awk -F= '/^GRASS_PREFIX7:/ {print $2}' build/CMakeCache.txt)" ]] && \
+    optdepends+=('grass: GRASS7 plugin support')
+  [[ "$(awk -F= '/^WITH_SERVER:/ {print $2}' build/CMakeCache.txt)" == "TRUE" ]] && \
+    optdepends+=('fcgi: QGIS Map Server support')
+  [[ "$(awk -F= '/^WITH_GLOBE:/ {print $2}' build/CMakeCache.txt)" == "TRUE" ]] && \
+    optdepends+=('osgearth: QGIS Globe plugin support')
 
   make -C build DESTDIR="$pkgdir" install
 
