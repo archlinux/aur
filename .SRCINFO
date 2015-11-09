@@ -1,0 +1,20 @@
+pkgbase = ruby-tmuxinator-git
+	pkgdesc = Manage complex tmux sessions easily
+	pkgver = 0.6.3.r243.g053c35d
+	pkgrel = 1
+	url = https://github.com/tmuxinator/tmuxinator
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ruby
+	depends = ruby-erubis
+	depends = ruby-thor
+	provides = ruby-tmuxinator
+	provides = tmuxinator
+	conflicts = ruby-tmuxinator
+	conflicts = tmuxinator
+	source = ruby-tmuxinator::git+https://github.com/tmuxinator/tmuxinator.git
+	sha256sums = SKIP
+
+pkgname = ruby-tmuxinator-git
+
