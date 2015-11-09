@@ -2,7 +2,7 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 everelname="parallax"
 everelver=1.0
@@ -24,11 +24,8 @@ package() {
 
   cp -R "${srcdir}"/pyfa/* "${pkgdir}"/usr/share/pyfa || return 1
   
-  unzip -p "${srcdir}"/pyfa/imgs.zip  gui/pyfa64.png > "${pkgdir}"/usr/share/pixmaps/pyfa.png || return 1
+  unzip -p "${srcdir}"/pyfa/imgs.zip gui/pyfa64.png > "${pkgdir}"/usr/share/pixmaps/pyfa.png || return 1
   install -m 644 "${srcdir}"/pyfa.desktop "${pkgdir}"/usr/share/applications/pyfa.desktop || return 1
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
-md5sums=('cba119b4ead24c26ab6cd016479fe858'
-         'a6f1cef5a9fcc5dfd6c5ecdddf2c5e38'
-         '9937192cfce7f5e16e9cf26086f1899c')
