@@ -1,4 +1,5 @@
-# Maintainer: SaultDon <sault.don gmail>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Contributor: SaultDon <sault.don gmail>
 # Contributor: Lantald < lantald at gmx.com >
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
@@ -9,14 +10,12 @@
 # Uncomment them in the build() portion if you'd like enabled during the build.
 
 pkgname=qgis
-_pkgver=2.12
 pkgver=2.12.0
 pkgrel=1
 pkgdesc='QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-# https://raw.githubusercontent.com/qgis/QGIS/final-2_6_0/INSTALL
 depends=('qt4'
          'qca-qt4'
          'proj'
@@ -45,26 +44,20 @@ makedepends=('cmake'
              'flex'
              'bison'
              'txt2tags'
-             'perl'
-             'git')
+             'perl')
 optdepends=('grass: GRASS plugin support'           # Uncomment relevant cmake option in build() below
             'fcgi: QGIS Map Server support'         # if you want GRASS, QGIS Map Server
             'osgearth: QGIS Globe plugin support'   # or the Globe Plugin enabled
             'gpsbabel: GPS toolbar support')
 provides=("$pkgname=$pkgver")
 install="$pkgname.install"
-source=("${pkgname}::git://github.com/qgis/QGIS.git#branch=release-${_pkgver//./_}"
+source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
         "console_pyqt4.diff")
-md5sums=('SKIP'
+md5sums=('099efb9482a67e3c57f54f4947986e39'
          '636b0fd147d19f50e82080a5819ae10a')
 
-pkgver() {
-  cd $pkgname
-  git describe --long | sed 's/^final-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
-}
-
 prepare() {
-   cd $pkgname
+   cd $pkgname-$pkgver
 
    patch -Np1 -i "$srcdir/console_pyqt4.diff"
 
@@ -77,7 +70,7 @@ build() {
   # Fix insecure RPATH is weird, but just works ;)
   # echo "os.system(\"sed -i '/^LFLAGS/s|-Wl,-rpath,.\+ ||g' gui/Makefile core/Makefile\")" >> python/configure.py.in
 
-  cd $pkgname
+  cd $pkgname-$pkgver
 
   if [ -d build ]; then
     rm -rf build
@@ -120,21 +113,21 @@ build() {
 }
 
 package() {
-  cd $pkgname/build
+  cd $pkgname-$pkgver/build
 
   make DESTDIR="$pkgdir/" install
   
   # install some freedesktop.org compatibility
-  install -Dm755 "$srcdir/$pkgname/debian/qgis.desktop" \
+  install -Dm755 "$srcdir/$pkgname-$pkgver/debian/qgis.desktop" \
     "$pkgdir/usr/share/applications/qgis.desktop"
 
-  install -Dm755 "$srcdir/$pkgname/debian/qbrowser.desktop" \
+  install -Dm755 "$srcdir/$pkgname-$pkgver/debian/qbrowser.desktop" \
     "$pkgdir/usr/share/applications/qbrowser.desktop"
 
-  install -Dm644 $srcdir/$pkgname/debian/qgis-icon512x512.png \
+  install -Dm644 $srcdir/$pkgname-$pkgver/debian/qgis-icon512x512.png \
     "$pkgdir/usr/share/pixmaps/qgis.png"
 
-  install -Dm644 $srcdir/$pkgname/debian/qbrowser-icon512x512.png \
+  install -Dm644 $srcdir/$pkgname-$pkgver/debian/qbrowser-icon512x512.png \
     "$pkgdir/usr/share/pixmaps/qbrowser.png"
 
   # TODO: these aren't working for some reason, ie, .qgs files are not opened by QGIS...
@@ -142,10 +135,10 @@ package() {
   install -dm755 "$pkgdir/usr/share/pixmaps" \
     "$pkgdir/usr/share/mimelnk/application"
 
-  for mime in "$srcdir/$pkgname/debian/mime/application/"*.desktop
+  for mime in "$srcdir/$pkgname-$pkgver/debian/mime/application/"*.desktop
     do install -m755 "$mime" "$pkgdir/usr/share/mimelnk/application"
   done
 
-  install -Dm644 "$srcdir/$pkgname/images/icons/qgis-mime-icon.png" \
+  install -Dm644 "$srcdir/$pkgname-$pkgver/images/icons/qgis-mime-icon.png" \
     "$pkgdir/usr/share/pixmaps/qgis-mime.png"
 }
