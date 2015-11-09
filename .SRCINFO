@@ -1,0 +1,21 @@
+pkgbase = cld2-git
+	pkgdesc = Compact Language Detector 2
+	pkgver = 196
+	pkgrel = 1
+	url = https://github.com/CLD2Owners/cld2
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	provides = cld2
+	provides = cld2-hg
+	provides = cld2-svn
+	conflicts = cld2-hg
+	conflicts = cld2
+	conflicts = cld2-svn
+	replaces = cld2-hg
+	replaces = cld2-svn
+	source = git+https://github.com/CLD2Owners/cld2.git
+	md5sums = SKIP
+
+pkgname = cld2-git
+
