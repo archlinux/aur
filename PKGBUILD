@@ -3,7 +3,7 @@
 
 pkgname=seafile-server
 pkgver=4.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-generation open source cloud storage with advanced features on privacy protection and teamwork. (Server components, without seahub)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/haiwen/seafile/"
