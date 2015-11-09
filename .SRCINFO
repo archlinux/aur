@@ -1,7 +1,7 @@
 pkgbase = elmerfem
 	pkgdesc = Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver.
-	pkgver = 8.0
-	pkgrel = 8
+	pkgver = 8.1
+	pkgrel = 1
 	url = http://www.csc.fi/english/pages/elmer
 	arch = i686
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = elmerfem
 	conflicts = elmerfem-git
 	options = !emptydirs
 	options = !makeflags
-	source = https://github.com/ElmerCSC/elmerfem/archive/release-8.0.tar.gz
+	source = https://github.com/ElmerCSC/elmerfem/archive/release-8.1.tar.gz
 	source = elmerfem.desktop
-	sha256sums = ac7cb29e1dba205113ed9705a5852ee11117252495fa2b125adecd2b057c8a8f
+	sha256sums = cea4e0b33fac7244a76d7b259d9db58f5ce95e80d468c54f182b3a864bfd06cb
 	sha256sums = d2e9f6f2ced11d845149721371ca15d15f9983a34eedc35a88263f8368f721ab
 
 pkgname = elmerfem
