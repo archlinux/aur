@@ -3,7 +3,7 @@
 
 pkgbase=dolphin-emu-git
 pkgname=('dolphin-emu-git' 'dolphin-emu-cli-git' 'dolphin-emu-qt-git')
-pkgver=4.0.2.r7483.cc5eb6d
+pkgver=4.0.2.r8133.8b3c2c1
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator'
 arch=('x86_64')
@@ -46,7 +46,7 @@ package_dolphin-emu-git() {
   cd dolphin-emu/build
 
   make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/bin/dolphin-emu-nogui
+  rm -rf "${pkgdir}"/usr/bin/dolphin-emu-{nogui,qt}
 }
 
 package_dolphin-emu-cli-git() {
