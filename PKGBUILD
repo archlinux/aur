@@ -2,19 +2,17 @@
 
 pkgbase=octopi
 pkgname=('octopi' 'octopi-notifier' 'octopi-repoeditor' 'octopi-cachecleaner')
-pkgver=0.7.0
-pkgrel=8
+pkgver=0.8.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/aarnt/octopi"
 license=('GPL2')
 makedepends=('qt5-declarative' 'knotifications' 'libnotify')
 source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
 	'octopi-repoeditor.desktop'
-	'qt55.patch'
 	'enable-kstatus.patch')
-sha256sums=('03d15458ebe482e5a9a00e7a3db5676a53886c754b13a7c56e36d75b73f2d496'
+sha256sums=('79ab8a24e3329ab4e5320e03309f44f802336cc00bada0f9a37fae46f5eeb02b'
             '131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef'
-            '459f924eba5bc780cb3a0cb955e9d7c634fe77d7e9f7b1a44d86c827535acbe3'
             '81dcbbda0d020607d23f3f8042fa43bfc4318269a55f9327e4995299b59dcb4b')
 
 prepare() {
@@ -23,7 +21,6 @@ prepare() {
    
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
-	patch -p1 < ../qt55.patch
   
 	patch -p1 < ../enable-kstatus.patch
 }            
