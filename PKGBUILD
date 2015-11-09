@@ -24,5 +24,5 @@ build() {
 package() {
   cd "$srcdir/libpam-pwdfile-${pkgver}"
 
-  make PAM_LIB_DIR="$pkgdir/lib/security" INSTALL=$(which install) install
+  make PAM_LIB_DIR="$pkgdir/usr/lib/security" INSTALL=$(which install) install
 }
