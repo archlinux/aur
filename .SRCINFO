@@ -1,0 +1,18 @@
+pkgbase = anytoggle
+	pkgdesc = Toggle any program with a single shortcut
+	pkgver = 0.r3.61130f4
+	pkgrel = 1
+	url = https://github.com/winged/anytoggle
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = wmctrl
+	depends = xdotool
+	provides = anytoggle
+	source = anytoggle::git://github.com/winged/anytoggle.git
+	source = LICENSE::https://raw.githubusercontent.com/winged/anytoggle/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = anytoggle
+
