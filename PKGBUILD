@@ -1,6 +1,6 @@
 # Maintainer: Oliver Rümpelein <oli_r nospamat fg4f nospamdot de>
 pkgname=mergerfs
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Another FUSE union filesystem"
 arch=('i686' 'x86_64')
@@ -10,13 +10,14 @@ depends=(fuse attr)
 options=(!emptydirs)
 #makedepends=(pandoc)
 source=("https://github.com/trapexit/mergerfs/archive/${pkgver}.tar.gz")
-sha512sums=('521a100e61a3797fcdac967dc4e02ebb74de6c71926901e5c4c87061718b0438f1c7fb40d4106a9541583f82a4f34f600dc18e4752aa38408387054b1c4647c2')
-sha256sums=('d092f2e499090fe535bd3ccbf768e72492b66f185cfda8aed3b1f62d4c0855d1')
-md5sums=('9d73da2692f521cb14179c3bab09b992')
+md5sums=('588a9b771a098ffc1cd86d7642b07d8c')
+sha256sums=('bdc916ca762c2e2ed96c5328306b741070168fad6f704a741a3ed3ed29161911')
+sha512sums=('27821d4425e2e4c5e9527166097e02ba5e554904bbe251fe9da5d371122103a2964fbd58500cd13ecc1b01da6718e0922a5b715c0161c71a27a7864df5f180e3')
+_makeflags=""
 
 build() {
   cd ./"${pkgname}-${pkgver}"
-  make PREFIX="/usr" DESTDIR="${pkgdir}" SBINDIR="${PREFIX}/bin"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" SBINDIR="/usr/bin"
 }
 
 package()
@@ -24,6 +25,6 @@ package()
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p ${pkgdir}/usr/{share,bin}
   mkdir -p ${pkgdir}/usr/share/licenses/mergerfs
-  make PREFIX="/usr" DESTDIR="${pkgdir}" SBINDIR="${PREFIX}/bin" install
+  make DESTDIR=${pkgdir} PREFIX=/usr SBINDIR="/usr/bin" install
   install  -m 644 LICENSE "${pkgdir}/usr/share/licenses/mergerfs/LICENSE"
 }
