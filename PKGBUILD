@@ -3,17 +3,17 @@
 # Contributor: Dany Martineau <dany.luc.martineau at gmail dot com>
 
 pkgname=klook-git
-_pkgname="klook-devel"
+_pkgname="klook"
 pkgver=v2.0_10_5_gf01e033
 pkgrel=1
 pkgdesc="A quick file content preview application that supports integration with Dolphin"
 arch=('i686' 'x86_64')
-url="https://abf.rosalinux.ru/uxteam/klook-devel"
+url="https://github.com/KDE/klook.git"
 license=('GPL')
 depends=('kdebase-runtime')
 makedepends=('automoc4' 'cmake' 'git')
 install="${pkgname}.install"
-source=("git+https://abf.rosalinux.ru/uxteam/${_pkgname}.git")
+source=("git+https://github.com/KDE/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
