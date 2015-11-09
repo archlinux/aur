@@ -1,7 +1,7 @@
 # Maintainer: Borislav Borisov <borislav.borisov@gmail.com>
 pkgname=valentina-studio
 pkgver=6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="MySQL, MariaDB, PostgreSQL, MS SQL Server, Valentina DB and SQLite GUI Admin Tool"
 arch=('i686' 'x86_64')
 url="http://www.valentina-db.com"
