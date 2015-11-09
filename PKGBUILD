@@ -4,12 +4,12 @@
 
 pkgname=aseprite
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('GPL')
-depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype')
+depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2')
 makedepends=('cmake')
 source=("git+https://github.com/aseprite/aseprite.git#tag=v${pkgver}"
         "aseprite.desktop")
@@ -29,6 +29,8 @@ build() {
     -DUSE_SHARED_LIBLOADPNG=OFF \
     -DUSE_SHARED_TINYXML=ON \
     -DENABLE_UPDATER=OFF \
+    -DUSE_SHARED_FREETYPE=ON \
+    -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
     -DCMAKE_INSTALL_PREFIX:STRING=/usr ..
   make aseprite
 }
