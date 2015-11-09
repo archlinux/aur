@@ -14,7 +14,7 @@ pkgbase = pqiv-git
 	optdepends = ffmpeg: basic video support e.g. WEBM
 	provides = pqiv
 	conflicts = pqiv
-	source = git+https://github.com/phillipberndt/pqiv#branch=libav
+	source = git+https://github.com/phillipberndt/pqiv
 	sha256sums = SKIP
 
 pkgname = pqiv-git
