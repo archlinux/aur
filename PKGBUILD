@@ -52,7 +52,7 @@ _BFQ_enable_=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.1
-pkgver=4.1.12
+pkgver=4.1.13
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -81,15 +81,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'f3520b06e6a2b9929173c680de75f11cde9f0a380e04195d538b5de820a549ae'
+            '1c3ba78cbaa1a260798d6d0d2aa319ff41ae676b443e5bf06ab441436dcdd171'
             'SKIP'
-            'b04ce2128ddb94be5ffafb4383d5c8b016760500696b1426a6e552c9a61ab27c'
-            'cc181fe0cfcedcd3bf606d7cce53e07dfb206d6c3549238dc7f4d0d27973d1a4'
+            'e1d4a307a70ec7ba78193982726aeb27e289da2143ac9d6921850b67274aa7b1'
+            'c9f26d854c35768993bcfc3bb0347757124ff18b6d52262b89bb33b43f554ea5'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '87726411f583862e456156fe82ef51b188e5d92e7a4bd944e01a091cd7c46428'
             '0c8d94a0c416db0fafe6f12469798b2ea9f3d23d9cd712b6db7e1eaf421097e0'
-            '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
+            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             'ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975'
             'c5c2c48638c2a8180948bd118ffcc33c8b7ff5f9f1e4b04c8e2cafeca2bde87b'
             '4f30f76adbdf49aec8d41ac27ad212734500c272f3cba594f134a7bc263820d9')
