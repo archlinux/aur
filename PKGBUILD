@@ -1,12 +1,13 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.r624.g1190302
-pkgrel=1
+pkgver=0.r695.g01bf957
+pkgrel=2
 pkgdesc='suckless vim like editor - git checkout'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/vis.git'
-depends=('ncurses' 'libtermkey')
+depends=('ncurses' 'libtermkey' 'lua')
+optdepends=('lua-lpeg: for syntax highlighting')
 conflicts=('vis')
 provides=('vis')
 makedepends=('git' 'markdown')
@@ -27,6 +28,12 @@ pkgver() {
 			"$(git rev-list --count master)" \
 			"$(git log -1 --format='%h')"
 	fi
+}
+
+prepare() {
+	cd vis/
+
+	sed -i '/^\(C\|LD\)FLAGS_LUA =/s/lua5.1/lua/' config.mk
 }
 
 build() {
