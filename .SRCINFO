@@ -1,7 +1,7 @@
 pkgbase = opera-beta
 	pkgdesc = A fast and secure web browser and Internet suite - beta stream
 	pkgver = 34.0.2036.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.opera.com/browser/
 	install = opera.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = opera-beta
 	depends = desktop-file-utils
 	optdepends = curl: opera crash reporter and autoupdate checker
 	optdepends = libnotify: native desktop notifications
-	optdepends = opera-ffmpeg-codecs: support h.264 and mp3 codecs
+	optdepends = opera-beta-ffmpeg-codecs: support h.264 and mp3 codecs
 	options = !strip
 	backup = etc/opera-beta/default
 	source = http://get.geo.opera.com/pub/opera-beta/34.0.2036.3/linux/opera-beta_34.0.2036.3_amd64.deb
