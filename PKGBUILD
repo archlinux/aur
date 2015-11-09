@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Petitjean <alpetitjean at gmail dot com>
 
 pkgname=mopidy-somafm
-pkgver=0.7.1
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Mopidy extension for playing music from SomaFM"
 arch=('any')
 url="http://www.mopidy.com"
@@ -15,7 +15,7 @@ depends=(
 makedepends=('python2')
 provides=('mopidy-somafm')
 source=("https://github.com/AlexandrePTJ/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('fd131b348bfdaaf5715be68a7e1dcdcb')
+md5sums=('4907d5ce0d4c44885321774d809856e3')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
