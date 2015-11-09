@@ -4,12 +4,12 @@
 
 pkgname=aseprite
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('GPL')
-depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml')
+depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype')
 makedepends=('cmake')
 source=("git+https://github.com/aseprite/aseprite.git#tag=v${pkgver}"
         "aseprite.desktop")

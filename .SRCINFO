@@ -1,7 +1,7 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.aseprite.org/
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = aseprite
 	depends = libpng
 	depends = libjpeg-turbo
 	depends = tinyxml
+	depends = freetype
 	source = git+https://github.com/aseprite/aseprite.git#tag=v1.1.1
 	source = aseprite.desktop
 	sha256sums = SKIP
