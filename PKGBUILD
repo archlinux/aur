@@ -7,7 +7,8 @@
 # Contributor: Eric Forgeot < http://esclinux.tk >
 
 # Globe Plugin and QGIS Map Server are disabled in cmake by default.
-# Uncomment them in the build() portion if you'd like enabled during the build.
+# Uncomment them in the build() portion if you'd like them enabled.
+# You will also need to install osgearth or fcgi, respectively, before building.
 
 pkgname=qgis
 pkgver=2.12.0
@@ -20,7 +21,7 @@ depends=('qca-qt4' 'gdal' 'qwtpolar' 'gsl' 'spatialindex' 'icu'
          'python2-qscintilla' 'python2-sip' 'python2-psycopg2' 'python2-six' 'python2-dateutil'
          'python2-httplib2' 'python2-jinja' 'python2-markupsafe' 'python2-pygments' 'python2-pytz')
 makedepends=('cmake' 'txt2tags' 'perl')
-optdepends=('gpsbabel: GPS toolbar support')
+optdepends=('gpsbabel: GPS Tool plugin')
 install="$pkgname.install"
 source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
         "console_pyqt4.diff")
@@ -32,7 +33,7 @@ prepare() {
 
   patch -Np1 -i "$srcdir/console_pyqt4.diff"
 
-  # Fixing by hand shebang for .py files.
+  # Fixing shebang for .py files
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
 
   [[ -d build ]] || mkdir build
@@ -66,13 +67,13 @@ package() {
 
   # Add optional deps based on selected or autodetected options
   [[ -n "$(awk -F= '/^GRASS_PREFIX:/ {print $2}' build/CMakeCache.txt)" ]] && \
-    optdepends+=('grass6: GRASS6 plugin support')
+    optdepends+=('grass6: GRASS6 plugin')
   [[ -n "$(awk -F= '/^GRASS_PREFIX7:/ {print $2}' build/CMakeCache.txt)" ]] && \
-    optdepends+=('grass: GRASS7 plugin support')
+    optdepends+=('grass: GRASS7 plugin')
   [[ "$(awk -F= '/^WITH_SERVER:/ {print $2}' build/CMakeCache.txt)" == "TRUE" ]] && \
-    optdepends+=('fcgi: QGIS Map Server support')
+    optdepends+=('fcgi: QGIS Map Server')
   [[ "$(awk -F= '/^WITH_GLOBE:/ {print $2}' build/CMakeCache.txt)" == "TRUE" ]] && \
-    optdepends+=('osgearth: QGIS Globe plugin support')
+    optdepends+=('osgearth: QGIS Globe plugin')
 
   make -C build DESTDIR="$pkgdir" install
 
