@@ -3,7 +3,7 @@ pkgname=0xdbe-eap
 _pkgname=0xdbe
 pkgver=143.615.4
 _buildver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64') # not 'any' because of fsnotifier
 url="http://www.jetbrains.com/dbe/"
@@ -13,7 +13,7 @@ depends=('java-environment' 'giflib')
 source=("http://download.jetbrains.com/dbe/${_pkgname}-${_buildver}.tar.gz" \
         "${_pkgname}.sh" \
         "${_pkgname}.desktop")
-md5sums=('a7421d2c68dc63f6654626ebc0a31c7e'
+md5sums=('4c9c6c247af099acf8b50f160321dd70'
          '864c5bb6071568a1a9f26573e090207b'
          'e520ed91c5c0578cc93df0cd7e03166b')
 package() {
