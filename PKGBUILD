@@ -7,8 +7,8 @@ arch=('i686' 'x86_64')
 url="https://www.valentina-db.com"
 license=('custom')
 makedepends=('rpmextract')
-source_i686=("http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm")
-source_x86_64=("http://www.valentina-db.com/en/studio/download/current/vstudio_x64_5_lin-rpm")
+source_i686=("https://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm")
+source_x86_64=("https://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm")
 sha256sums_i686=('df0406b55674db4a2bf436784424aacb87dbcd61c05e1106fb6050c605e81336')
 sha256sums_x86_64=('6ea24478e985a203d2d375df8547aa7a8a1c80e2a4e9654d37dc520045ff75f0')
 
