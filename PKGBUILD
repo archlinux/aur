@@ -7,8 +7,8 @@ pkgdesc="Ryzom is a Free to Play MMORPG .This version is for playing on an offic
 arch=('i686' 'x86_64')
 url="http://www.ryzom.com/"
 license=('AGPL3')
-depends=('ryzom-data' 'curl' 'freealut' 'libvorbis' 'libjpeg' 'rrdtool' 'boost'
-         'luabind' 'libsquish' 'libxrandr' 'libxcursor' 'hicolor-icon-theme')
+depends=('ryzom-data' 'curl' 'freealut' 'libvorbis' 'libjpeg' 'giflib' 'rrdtool'
+         'boost' 'luabind' 'libsquish' 'libxrandr' 'libxcursor' 'hicolor-icon-theme')
 conflicts=('ryzom-client-latest-hg' 'ryzom-client-hg') #lua51
 makedepends=('mercurial' 'cpptest' 'cmake' 'bison' 'mesa')
 provides=('libnel' 'ryzom' 'ryzomcore')
