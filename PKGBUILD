@@ -8,63 +8,22 @@ pkgbase=python-numpy-openblas
 #pkgname=("python2-numpy-openblas" "python-numpy-openblas")
 pkgname=python-numpy-openblas
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
 license=("custom")
 url="http://numpy.scipy.org/"
 source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz") 
-
 md5sums=('d2a125a52187ab234bfe444287b53660')
 
-prepare() {
-  cp -a numpy{,-py2}-$pkgver
-  cd numpy-py2-$pkgver
+depends=("python" "cython" "openblas-lapack")
+options=('staticlibs')
+makedepends=("python-distribute" "gcc-fortran" "python-nose")
+optdepends=("python-nose: testsuite")
+provides=("python3-numpy=${pkgver}" "python-numpy=${pkgver}")
+conflicts=("python3-numpy" "python-numpy")
 
-  sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-      -e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
-      -i $(find . -name '*.py')
-}
-
-package_python2-numpy-openblas() {
-  depends=("python2" "cython2" "openblas-lapack")
-  options=('staticlibs')
-  makedepends=("python2-distribute" "gcc-fortran" "python2-nose")
-  optdepends=("python2-nose: testsuite")
-  provides=("python2-numpy=${pkgver}")
-  conflicts=("python2-numpy")
-
-  _pyver=2.7
-
-  export Atlas=None
-  export LDFLAGS="$LDFLAGS -shared"
-
-  echo "Building Python2"
-  cd "${srcdir}"/numpy-py2-"$pkgver"
-
-  #python2 setup.py config_fc --fcompiler=gnu95 config
-  python2 setup.py config_fc --fcompiler=gnu95 build
-
-  python2 setup.py config_fc --fcompiler=gnu95 install \
-    --prefix=/usr --root="${pkgdir}" --optimize=1
-
-  install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
-  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-numpy/"
-
-  install -m755 -d "${pkgdir}/usr/include/python${_pyver}"
-  ln -sf /usr/lib/python${_pyver}/site-packages/numpy/core/include/numpy "${pkgdir}/usr/include/python${_pyver}/numpy"
-
-}
-
-package_python-numpy-openblas() {
-  depends=("python" "cython" "openblas-lapack")
-  options=('staticlibs')
-  makedepends=("python-distribute" "gcc-fortran" "python-nose")
-  optdepends=("python-nose: testsuite")
-  provides=("python3-numpy=${pkgver}" "python-numpy=${pkgver}")
-  conflicts=("python3-numpy" "python-numpy")
-
+package() {
   _pyver=3.5
   _pyinc=3.5m
 
