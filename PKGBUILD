@@ -2,12 +2,12 @@
 pkgname=saw-script
 
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The SAW scripting language."
 url="http://saw.galois.com/"
 arch=('x86_64' 'i686')
 license=('noncommercial')
-depends=('cvc4' 'ncurses' 'java-environment')
+depends=('cvc4' 'libtinfo' 'java-environment')
 makedepends=()
 optdepends=()
 conflicts=()
