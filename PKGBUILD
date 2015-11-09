@@ -4,15 +4,15 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=3.10
-pkgrel=2
+pkgver=3.15
+pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
 url='http://www.microchip.com/mplabx'
 license=(custom)
-depends=(gtk2 alsa-lib libxslt libxtst desktop-file-utils "java-runtime>=7")
-depends_x86_64=(lib32-glibc lib32-fakeroot)
-makedepends=(fakechroot)
+depends=(gtk2 alsa-lib libxslt libxtst "java-runtime>=7")
+makedepends=(fakechroot desktop-file-utils)
+makedepends_x86_64=(lib32-fakeroot)
 optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs'
             'microchip-mplabxc16-bin: C compiler for PIC24 MCUs and dsPIC DSCs'
             'microchip-mplabxc32-bin: C Compiler for PIC32 MCUs'
@@ -26,15 +26,17 @@ options=(!strip docs libtool emptydirs !zipman !upx)
 install="${pkgname}.install"
 
 _mplabx_dir="/opt/microchip/mplabx/v${pkgver}"
-_mplabcomm_dir="/opt/microchip/mplabcomm/v${pkgver}"
 _mplabx_installer="MPLABX-v${pkgver}-linux-installer"
-_mplabcomm_installer="MPLABCOMM-v${pkgver}-linux-installer"
+
+_mplabcomm_version=3.16.00
+_mplabcomm_installer="MPLABCOMM-v${_mplabcomm_version}-linux-installer"
+_mplabcomm_dir="/opt/microchip/mplabcomm/v${_mplabcomm_version}"
 
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.tar"
         "LICENSE")
 source_x86_64=("fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/")
 
-md5sums=('7746910503fd9a01152d43b649cca211'
+md5sums=('9391c04f5650cb180f4c908c573096c7'
          'a34a85b2600a26f1c558bcd14c2444bd')
 md5sums_x86_64=('92b9a1dc8fa0534048790731a7bf2fc5')
 
@@ -45,39 +47,39 @@ PKGEXT='.pkg.tar'
 package() {
   mkdir -p "${pkgdir}"/{etc,usr/{bin,lib},tmp}
 
-  # Create a fake chroot in $pkgdir to run installers into
+  # Create a fake chroot in $pkgdir to run the installer into
   ln -s /usr/bin "${pkgdir}/"
 
   echo "root:x:0:0:root:/root:/bin/bash" > "${pkgdir}/etc/passwd"
   echo "root:x:0:root" > "${pkgdir}/etc/group"
 
   echo "Extracting installers..."
-  sh ${_mplabx_installer}.sh --tar xf
-  mv ${_mplabx_installer}.run ${_mplabcomm_installer}.run "${pkgdir}/tmp"
+  sh ${_mplabx_installer}.sh --tar xf ./${_mplabx_installer}.run
+  mv ${_mplabx_installer}.run "${pkgdir}/tmp"
   chmod 0755 "${pkgdir}/tmp/${_mplabx_installer}.run"
-  chmod 0755 "${pkgdir}/tmp/${_mplabcomm_installer}.run"
 
-  # Create install script
+  # Create install script in chroot
   cat << EOF > "${pkgdir}/tmp/install.sh"
 #!/bin/sh
 LD_LIBRARY_PATH="${srcdir}/usr/lib/libfakeroot/fakechroot:\$LD_LIBRARY_PATH"
 PATH=/bin
 echo Running MPLABX installer...
-tmp/${_mplabx_installer}.run --mode unattended >/dev/null
-echo Running MPLABCOMM installer...
-tmp/${_mplabcomm_installer}.run --mode unattended >/dev/null
+tmp/${_mplabx_installer}.run --mode unattended
 EOF
 
   chmod 0755 "${pkgdir}/tmp/install.sh"
 
-  # Run installers in the fake chroot
+  # Run the installer in the fake chroot
   fakechroot chroot "${pkgdir}" tmp/install.sh
 
-  # Remove uninstaller
+  # Remove uninstaller files
   rm -f "${pkgdir}${_mplabx_dir}"/Uninstall_*
 
   # Fix ugly fonts
   sed -i 's/^default_options="/default_options="-J-Dawt.useSystemAAFontSettings=on /' "${pkgdir}${_mplabx_dir}/mplab_ide/etc/mplab_ide.conf"
+
+  # Fix broken udev rules
+  sed -i '1c \ACTION!="add", SUBSYSTEM!="usb_device", GOTO="jlink_rules_end"' "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
 
   # Patch jdkhome to use system JRE
   local conf
@@ -87,7 +89,8 @@ EOF
   sed -i '/^"$jdkhome"bin\/java/c\ java -jar '${_mplabx_dir}'/mplab_ipe/ipe.jar' "${pkgdir}${_mplabx_dir}/mplab_ipe/mplab_ipe"
 
   # Remove bundled JRE
-  rm -rf "${pkgdir}${_mplabx_dir}/sys"
+  rm -rf "${pkgdir}${_mplabx_dir}/sys/java"
+  rmdir "${pkgdir}${_mplabx_dir}/sys" # the intent here is to fail if something else than java is put into sys.
 
   # Move libs away from /usr/local/lib
   mv "${pkgdir}"/usr/local/lib/*.so{,.*} "${pkgdir}"/usr/lib/
@@ -123,5 +126,7 @@ EOF
   # Cleanup
   rm "${pkgdir}"/{bin,etc/{group,passwd}}
   rm -r "${pkgdir}/tmp"
+  # wtf
+  rm -f "${pkgdir}${_mplabcomm_dir}/${_mplabcomm_installer}.run"
 }
 
