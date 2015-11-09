@@ -12,11 +12,12 @@ depends=('fontconfig'
          'freetype2'
          'guile1.8'
          'pango'
-         'python2'
-	 'ghostscript')
+	 'glib2'
+         'python2')
 makedepends=('fontforge'
              'gsfonts-cyr' # from boohomil's infinality-bundle-fonts repo
              't1utils'
+	     'ghostscript'
              'texlive-core>=2011.23170')
 optdepends=('netpbm: building HTML documentation'
             'imagemagick: building HTML documentation'
