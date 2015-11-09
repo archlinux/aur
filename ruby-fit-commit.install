@@ -1,0 +1,11 @@
+post_install() {
+  cat << EOF
+
+===> Install the hook in each git repo you want to scan using:
+===>
+===> $ fit-commit install
+===>
+===> Read more: https://github.com/m1foley/fit-commit#readme
+
+EOF
+}

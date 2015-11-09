@@ -1,0 +1,18 @@
+pkgbase = ruby-fit-commit
+	pkgdesc = A Git hook to validate your commit messages
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/m1foley/fit-commit
+	install = ruby-fit-commit.install
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-swearjar
+	provides = fit-commit=3.3.0
+	noextract = fit-commit-3.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fit-commit-3.3.0.gem
+	sha256sums = 9f9702fad451c452ed4ef2948868ce5a2ef9177695d2c2e958d5abe8f7464ecb
+
+pkgname = ruby-fit-commit
+
