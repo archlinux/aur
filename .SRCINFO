@@ -1,7 +1,7 @@
 pkgbase = lib32-libindicator
 	pkgdesc = Libary with a set of symbols and convience functions that all indicators would like to use
 	pkgver = 12.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/libindicator
 	install = lib32-libindicator.install
 	arch = i686
