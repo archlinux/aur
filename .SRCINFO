@@ -1,0 +1,14 @@
+pkgbase = xmeasure
+	pkgdesc = Pixel measurement (ruler) tool on linux
+	pkgver = 0.0.1
+	pkgrel = 4
+	url = http://xmeasure.googlecode.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	source = http://xmeasure.googlecode.com/files/xmeasure.c
+	md5sums = dff78ab95ffee6957d849caeb3c69576
+
+pkgname = xmeasure
+
