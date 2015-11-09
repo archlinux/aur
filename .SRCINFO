@@ -1,0 +1,22 @@
+pkgbase = imvirt-git
+	pkgdesc = Detect the virtualization technology of a machine, it is run in
+	pkgver = 0.9.6.231.1db4a69
+	pkgrel = 1
+	url = http://micky.ibh.net/~liske/imvirt.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = perl
+	depends = dmidecode
+	depends = perl-module-find
+	depends = perl-file-slurp
+	depends = perl-data-dumper
+	provides = imvirt
+	conflicts = imvirt
+	options = !emptydirs
+	source = imvirt-git::git+https://github.com/DE-IBH/imvirt
+	sha512sums = SKIP
+
+pkgname = imvirt-git
+
