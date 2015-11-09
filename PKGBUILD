@@ -61,8 +61,7 @@ prepare() {
    patch -Np1 -i "$srcdir/console_pyqt4.diff"
 
    # Fixing by hand shebang for .py files.
-   find . -iname '*.py' | xargs sed -ie 's:^#!/usr/bin/env python$:#!/usr/bin/env python2:'
-   find . -iname '*.py' | xargs sed -ie 's:^#!/usr/bin/python$:#!/usr/bin/env python2:'
+  sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
 
   [[ -d build ]] || mkdir build
 }
