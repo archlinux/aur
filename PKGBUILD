@@ -63,16 +63,12 @@ prepare() {
    # Fixing by hand shebang for .py files.
    find . -iname '*.py' | xargs sed -ie 's:^#!/usr/bin/env python$:#!/usr/bin/env python2:'
    find . -iname '*.py' | xargs sed -ie 's:^#!/usr/bin/python$:#!/usr/bin/env python2:'
+
+  [[ -d build ]] || mkdir build
 }
 
 build() {
-  cd $pkgname-$pkgver
-
-  if [ -d build ]; then
-    rm -rf build
-  fi
-  mkdir build
-  cd build
+  cd $pkgname-$pkgver/build
 
   cmake -G "Unix Makefiles" ../ \
     -Wno-dev \
