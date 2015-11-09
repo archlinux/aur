@@ -1,0 +1,9 @@
+post_install() {
+  mkdir -p /usr/bin
+  echo -e "#!/bin/sh\ncd \"/opt/Tibia\"\n./Tibia" > /usr/bin/tibia
+  chmod 0755 "/usr/bin/tibia"
+}
+
+post_remove() {
+  rm /usr/bin/tibia
+}
