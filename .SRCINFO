@@ -1,0 +1,14 @@
+pkgbase = ruby-fuzzyhash
+	pkgdesc = A weird hash with special semantics for regex keys
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = http://fuzzyhash.rubyforge.org/
+	arch = any
+	depends = ruby
+	noextract = fuzzyhash-0.0.11.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fuzzyhash-0.0.11.gem
+	sha256sums = ed8514e03b5bb15be505908814a060cd28ae4494476559b16953db1ac23a47a5
+
+pkgname = ruby-fuzzyhash
+
