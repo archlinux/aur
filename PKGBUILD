@@ -14,13 +14,13 @@ depends=('fontconfig'
          'freetype2'
          'guile=2.0.11'
          'pango'
-         'python2'
-	 'ghostscript'
-	 'dblatex')
+         'python2')
 makedepends=('fontforge'
              'git'
              'gsfonts-cyr'
              't1utils'
+	     'ghostscript'
+	     'dblatex'
              'texlive-core>=2011.23170')
 optdepends=('netpbm: building HTML documentation'
             'imagemagick: building HTML documentation'

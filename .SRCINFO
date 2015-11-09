@@ -10,14 +10,14 @@ pkgbase = lilypond-git
 	makedepends = git
 	makedepends = gsfonts-cyr
 	makedepends = t1utils
+	makedepends = ghostscript
+	makedepends = dblatex
 	makedepends = texlive-core>=2011.23170
 	depends = fontconfig
 	depends = freetype2
 	depends = guile=2.0.11
 	depends = pango
 	depends = python2
-	depends = ghostscript
-	depends = dblatex
 	optdepends = netpbm: building HTML documentation
 	optdepends = imagemagick: building HTML documentation
 	optdepends = ttf-kochi-substitute: building HTML documentation
