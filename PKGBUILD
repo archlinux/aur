@@ -2,20 +2,22 @@
 
 pkgname=python2-vdirsyncer
 _pkgname=vdirsyncer
-pkgver=0.6.0
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
-url="https://github.com/untitaker/vdirsyncer"
+url="https://vdirsyncer.readthedocs.org/"
 license=('MIT')
 depends=('python2-click' 'python2-setuptools' 'python2-lxml'
-         'python2-requests-toolbelt' 'python2-atomicwrites')
+         'python2-requests-toolbelt' 'python2-atomicwrites'
+         'python2-click-threading' 'python2-click-log')
+optdepends=('python2-requests-oauthlib: Remotestorage support')
 checkdepends=('python2-pytest' 'python2-wsgi-intercept>=0.6.1'
               'python2-radicale' 'python2-werkzeug-git'
               'python2-pytest-xprocess' 'python2-pytest-localserver')
 source=("https://pypi.python.org/packages/source/v/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "build.patch")
-md5sums=('eef4664e6cb52dc987e88eeb82530360'
+md5sums=('44cfb16a55b69bdbfef74bf48271e5f6'
          'b0b1e52f38d13d2e856a9699ca84410d')
 
 # check() {
