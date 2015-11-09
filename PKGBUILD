@@ -3,7 +3,7 @@
 
 pkgname=dee
 pkgver=1.2.7
-pkgrel=5
+pkgrel=6
 pkgdesc='Model to synchronize multiple instances over DBus'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/dee'
