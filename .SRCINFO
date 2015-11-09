@@ -1,6 +1,6 @@
 pkgbase = travis
 	pkgdesc = Trajectory Analyzer and Visualizer
-	pkgver = 150916
+	pkgver = 151107
 	pkgrel = 1
 	url = http://www.travis-analyzer.de
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = travis
 	license = GPL3
 	depends = gcc-libs
 	options = !strip
-	source = http://www.travis-analyzer.de/files/travis-src-150916.tar.gz
-	md5sums = 2b392d43c11e0c5a2a9c65417f30c18d
+	source = http://www.travis-analyzer.de/files/travis-src-151107.tar.gz
+	md5sums = 66e9d1f7d3d6087feff9d992ba79f256
 
 pkgname = travis
 
