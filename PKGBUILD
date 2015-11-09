@@ -56,11 +56,11 @@ md5sums=('099efb9482a67e3c57f54f4947986e39'
          '636b0fd147d19f50e82080a5819ae10a')
 
 prepare() {
-   cd $pkgname-$pkgver
+  cd $pkgname-$pkgver
 
-   patch -Np1 -i "$srcdir/console_pyqt4.diff"
+  patch -Np1 -i "$srcdir/console_pyqt4.diff"
 
-   # Fixing by hand shebang for .py files.
+  # Fixing by hand shebang for .py files.
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
 
   [[ -d build ]] || mkdir build
