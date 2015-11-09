@@ -1,11 +1,13 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Receiver for x86_64 (64bit) Linux (ICAClient)
 	pkgver = 13.2.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top
 	install = citrix-client.install
 	arch = x86_64
 	license = custom:Citrix
+	makedepends = automake
+	makedepends = autoconf
 	makedepends = wget
 	depends = alsa-lib
 	depends = libvorbis
@@ -27,13 +29,16 @@ pkgbase = icaclient
 	conflicts = bin32-citrix-client
 	conflicts = citrix-client
 	options = !strip
+	backup = opt/Citrix/ICAClient/config/appsrv.ini
+	backup = opt/Citrix/ICAClient/config/wfclient.ini
+	backup = opt/Citrix/ICAClient/config/module.ini
 	source = configmgr.desktop
 	source = conncenter.desktop
 	source = selfservice.desktop
 	source = wfica.desktop
 	source = wfica.sh
 	source = wfica_assoc.sh
-	source = icaclient-13.2.1.tar.gz::http://downloads.citrix.com/10836/linuxx64-13.2.1.328635.tar.gz?__gda__=1446733711_7096a6181df7972d1bbc6ef608a38986
+	source = icaclient-13.2.1.tar.gz::http://downloads.citrix.com/10836/linuxx64-13.2.1.328635.tar.gz?__gda__=1447064308_9f8eaa59a5f63b6ceb0f4f58615a1665
 	md5sums = 71aca6257f259996ac59729604f32978
 	md5sums = a38c3f844a0fefe8017a25bee213b843
 	md5sums = 0e92c33b3fcc99b04269787da2984809
