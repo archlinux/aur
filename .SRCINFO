@@ -1,0 +1,16 @@
+pkgbase = influxdb-bin
+	pkgdesc = Scalable datastore for metrics, events, and real-time analytics
+	pkgver = 0.9.4.2
+	pkgrel = 1
+	url = https://influxdb.com/
+	install = influxdb-bin.install
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://s3.amazonaws.com/influxdb/influxdb_0.9.4.2_x86_64.tar.gz
+	source = influxdb.service.d
+	md5sums = 6abb3d5df9b69aeb9bae37d0889bf67a
+	md5sums = 62f0771efc4007cc9577e9f198e21535
+
+pkgname = influxdb-bin
+

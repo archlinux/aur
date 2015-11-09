@@ -1,0 +1,6 @@
+post_install() {
+  groupadd -r influxdb &>/dev/null
+  useradd -r -g influxdb -d /var/lib/influxdb -s /bin/false influxdb &>/dev/null
+
+  install -dm700 -o influxdb -g influxdb /var/lib/influxdb
+}
