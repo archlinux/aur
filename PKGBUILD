@@ -6,13 +6,13 @@
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 # Contributor: Eric Forgeot < http://esclinux.tk >
 
-# GRASS 6 or 7 Processing and Plugin, Globe Plugin and QGIS Map Server are disabled in cmake by default.
+# Globe Plugin and QGIS Map Server are disabled in cmake by default.
 # Uncomment them in the build() portion if you'd like enabled during the build.
 
 pkgname=qgis
 pkgver=2.12.0
 pkgrel=1
-pkgdesc='QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
+pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -45,11 +45,10 @@ makedepends=('cmake'
              'bison'
              'txt2tags'
              'perl')
-optdepends=('grass: GRASS plugin support'           # Uncomment relevant cmake option in build() below
+optdepends=('grass: GRASS plugin support'
             'fcgi: QGIS Map Server support'         # if you want GRASS, QGIS Map Server
             'osgearth: QGIS Globe plugin support'   # or the Globe Plugin enabled
             'gpsbabel: GPS toolbar support')
-provides=("$pkgname=$pkgver")
 install="$pkgname.install"
 source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
         "console_pyqt4.diff")
@@ -67,9 +66,6 @@ prepare() {
 }
 
 build() {
-  # Fix insecure RPATH is weird, but just works ;)
-  # echo "os.system(\"sed -i '/^LFLAGS/s|-Wl,-rpath,.\+ ||g' gui/Makefile core/Makefile\")" >> python/configure.py.in
-
   cd $pkgname-$pkgver
 
   if [ -d build ]; then
@@ -106,10 +102,6 @@ build() {
 #    -DWITH_GLOBE=TRUE \
 
   make
-
-  # TODO: fix $srcdir warning if it's a real problem...
-  # Looks like it's only showing up in non-critical files so can ignore warning.
-
 }
 
 package() {
