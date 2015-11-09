@@ -2,7 +2,7 @@
 
 pkgname=moc-lyrics-git
 _pkgname=moc
-pkgver=7c57de0
+pkgver=0.2212.b21db58
 pkgrel=1
 epoch=1
 pkgdesc="An ncurses console audio player (with lyrics patch)"
@@ -26,7 +26,9 @@ sha1sums=('SKIP')
 pkgver()
 {
     cd $_pkgname
-    git describe --always --long | sed -r "s/^$_pkgname-//;s/([^-]*-g)/r\\1/;s/-/./g"
+    count=$(git rev-list --count HEAD)
+    rev=$(git describe --always)
+    echo "0.${count}.${rev}"
 }
 
 build()
