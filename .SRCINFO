@@ -1,6 +1,6 @@
 pkgbase = charles
 	pkgdesc = Web debugging proxy application
-	pkgver = 3.11.1
+	pkgver = 3.11.2
 	pkgrel = 1
 	url = http://www.charlesproxy.com
 	install = charles.install
@@ -10,10 +10,10 @@ pkgbase = charles
 	license = APACHE
 	depends = java-runtime
 	depends = hicolor-icon-theme
-	source = http://www.charlesproxy.com/assets/release/3.11.1/charles-proxy-3.11.1.tar.gz
+	source = http://www.charlesproxy.com/assets/release/3.11.2/charles-proxy-3.11.2.tar.gz
 	source = charles-arch.patch
 	source = charles.desktop
-	md5sums = 713ddbf6291ac6fe14511bb1730d9ee0
+	md5sums = e124cd10f02b1ef5c97697a75a17d3a5
 	md5sums = 8ddaffe8d0ff4255a66a954bc445d436
 	md5sums = 3f788e0263cb50a545855199c8c60b1e
 
