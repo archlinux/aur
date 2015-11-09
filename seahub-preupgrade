@@ -15,7 +15,8 @@ echo "Preparing local seahub for upgrade..."
 # Ensure newest upgrade scripts are available
 rm -rf ./upgrade
 cp -a /usr/share/seafile-server/scripts/upgrade ./
-
+# Use python2
+sed -i -e 's/python $seahub_secret_keygen/python2 $seahub_secret_keygen/g' upgrade/regenerate_secret_key.sh
 # Ready old seahub version
 rm -rf seahub-old
 mv seahub seahub-old
