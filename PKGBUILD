@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://acts.nersc.gov/hypre"
 license=('lgpl')
 depends=('gcc-libs' 'gcc-fortran' 'openmpi' 'blas' 'lapack' 'superlu')
-source=(https://computation.llnl.gov/project/linear_solvers/download/${pkgname}-${pkgver}-${_suffix}.tar.gz)
+source=(http://computation.llnl.gov/project/linear_solvers/download/${pkgname}-${pkgver}-${_suffix}.tar.gz)
 md5sums=('b0d876cb6958e024c24c05af1c257e24')
 # mirror
 #source=(http://ftp.mcs.anl.gov/pub/petsc/externalpackages/hypre-2.10.0b-p1.tar.gz)
