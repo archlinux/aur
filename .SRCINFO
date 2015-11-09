@@ -1,7 +1,7 @@
 pkgbase = travis
 	pkgdesc = Trajectory Analyzer and Visualizer
 	pkgver = 151107
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.travis-analyzer.de
 	arch = i686
 	arch = x86_64
