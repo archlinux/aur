@@ -1,0 +1,16 @@
+pkgbase = opustags-git
+	pkgdesc = View and edit tags for opus files from the command line.
+	pkgver = 0.36.fcd6470
+	pkgrel = 1
+	url = http://github.com/fmang/pkgname
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = libogg
+	provides = opustags
+	conflicts = opustags
+	source = opustags::git+git://github.com/fmang/opustags.git
+	md5sums = SKIP
+
+pkgname = opustags-git
+
