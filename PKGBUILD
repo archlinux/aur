@@ -1,6 +1,7 @@
-# Maintainaer: SpepS <dreamspepser at yahoo dot it>
+# Maintainer: SpepS <dreamspepser at yahoo dot it>
 # Contributor:  TDY <tdy@gmx.com>
 # Contributor: Nate Crouch <randypenguin@gmail.com>
+# Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 
 pkgname=djvu2pdf
 pkgver=0.9.2
