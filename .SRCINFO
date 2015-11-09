@@ -1,6 +1,6 @@
 pkgbase = ghostscript-git
 	pkgdesc = An interpreter for the PostScript language
-	pkgver = 20151105
+	pkgver = 20151109
 	pkgrel = 1
 	url = http://www.ghostscript.com/
 	arch = i686
