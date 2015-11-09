@@ -1,0 +1,18 @@
+pkgbase = xsel-git
+	pkgdesc = a command-line program for getting and setting the contents of the X selection
+	pkgver = r50.9674445
+	pkgrel = 1
+	url = http://www.vergenet.net/~conrad/software/xsel/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libxt
+	makedepends = git
+	depends = libx11
+	provides = xsel
+	conflicts = xsel
+	source = git+https://github.com/kfish/xsel.git
+	sha256sums = SKIP
+
+pkgname = xsel-git
+
