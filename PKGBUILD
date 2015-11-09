@@ -4,10 +4,8 @@
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Angel "angvp" Velasquez <angvp[at]archlinux.com.ve> 
 
-pkgbase=python-numpy-openblas
-#pkgname=("python2-numpy-openblas" "python-numpy-openblas")
-pkgname=python-numpy-openblas
-pkgver=1.10.0
+pkgname=("python2-numpy-openblas" "python-numpy-openblas")
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
@@ -15,11 +13,7 @@ license=("custom")
 url="http://numpy.scipy.org/"
 source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz") 
 
-md5sums=('c8693369638ed9bff12a0c90ef8ea7af')
-
-#package() {
-#  package_python2-numpy-openblas
-#}
+md5sums=('d2a125a52187ab234bfe444287b53660')
 
 prepare() {
   cp -a numpy{,-py2}-$pkgver
