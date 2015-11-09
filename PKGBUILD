@@ -5,7 +5,7 @@ pkgname=pyfa
 pkgver=1.16.2
 pkgrel=1
 everelname="parallax"
-everelver=1.0
+everelver=1.1
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
 url="http://github.com/DarkFenX/Pyfa"
@@ -29,3 +29,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
+md5sums=('5d938e82fdc7bc8c513c56b495ab1442'
+         'a6f1cef5a9fcc5dfd6c5ecdddf2c5e38'
+         '9937192cfce7f5e16e9cf26086f1899c')
