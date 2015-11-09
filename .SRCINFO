@@ -1,0 +1,14 @@
+pkgbase = passwdqc-utils
+	pkgdesc = pwqcheck (password strength checker) and pwqgen (random passphrase generator) from passwdqc
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://www.openwall.com/passwdqc/
+	arch = any
+	license = BSD
+	license = custom:BSD Revised
+	optdepends = pam_passwdqc: Enforce password strength rules
+	source = http://www.openwall.com/passwdqc/passwdqc-1.3.0.tar.gz
+	md5sums = 3225280caba817c7009dffc157efc1b9
+
+pkgname = passwdqc-utils
+
