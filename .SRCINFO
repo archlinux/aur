@@ -1,6 +1,6 @@
 pkgbase = hugin-hg
 	pkgdesc = A frontend to the panorama-tools
-	pkgver = 7055.ae8cb92b02e5
+	pkgver = 7184.d888313bfc31
 	pkgrel = 1
 	url = http://hugin.sourceforge.net/
 	install = hugin.install

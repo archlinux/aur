@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=hugin-hg
-pkgver=7055.ae8cb92b02e5
+pkgver=7184.d888313bfc31
 pkgrel=1
 pkgdesc="A frontend to the panorama-tools"
 arch=('i686' 'x86_64')
@@ -22,17 +22,18 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/hugin"
+  mkdir -p "$srcdir/build"
+  cd "$srcdir/build"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake "$srcdir/hugin" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_HSI=ON \
-    -DCMAKE_SHARED_LINKER_FLAGS="-lpthread" \
-    .
+    -DCMAKE_SHARED_LINKER_FLAGS="-lpthread"
   make
 }
 
 package() {
-  cd "$srcdir/hugin"
+  cd "$srcdir/build"
   make DESTDIR="$pkgdir" install
 }
 
