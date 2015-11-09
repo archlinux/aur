@@ -1,0 +1,17 @@
+pkgbase = libcitygml
+	pkgdesc = libcitygml is a small and easy to use open source C++ library for parsing CityGML files in such a way that data can be easily exploited by 3D rendering applications.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/jklimke/libcitygml
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = glu
+	depends = xerces-c
+	depends = gdal
+	source = https://github.com/jklimke/libcitygml/archive/v2.0.tar.gz
+	md5sums = 7445e1e9976e5cec901ceb4158143bd5
+
+pkgname = libcitygml
+
