@@ -1,7 +1,7 @@
 pkgbase = opera-developer
 	pkgdesc = A fast and secure web browser and Internet suite - developer stream
 	pkgver = 34.0.2036.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.opera.com/browser/
 	install = opera.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = opera-developer
 	depends = desktop-file-utils
 	optdepends = curl: opera crash reporter and autoupdate checker
 	optdepends = libnotify: native desktop notifications
-	optdepends = opera-ffmpeg-codecs: support h.264 and mp3 codecs
+	optdepends = opera-developer-ffmpeg-codecs: support h.264 and mp3 codecs
 	options = !strip
 	backup = etc/opera-developer/default
 	source = opera
