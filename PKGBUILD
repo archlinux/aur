@@ -2,8 +2,8 @@
 
 pkgname=xt7-player-mpv
 pkgver=0.12.381
-#hotfix=-hotfix
-pkgrel=1
+hotfix=-hotfix
+pkgrel=2
 _realname=xt7-player-mpv
 pkgdesc="Aims to be an 'almost complete' but usable mpv gui"
 arch=('any')
@@ -42,8 +42,6 @@ optdepends=('python2: for Opensubtitles.org integration' 'ladspa: more audio plu
 source=(https://github.com/kokoko3k/xt7-player-mpv/archive/$pkgver$hotfix.tar.gz 'license.txt')
 
 
-md5sums=('01a663d227d1683f39f242325def4d90'
-         'b6f1380e33b47d0ed95c7ba1b3f4ec73')
 
 build() {
   cd ${srcdir}/${_realname}-${pkgver}$hotfix
@@ -66,3 +64,5 @@ package() {
 
 }
 
+md5sums=('b59185a0a8166ba9b7ce34ddd3dd1162'
+         'b6f1380e33b47d0ed95c7ba1b3f4ec73')
