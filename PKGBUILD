@@ -1,6 +1,6 @@
 # Maintainer: Borislav Borisov <borislav.borisov@gmail.com>
 pkgname=valentina-studio
-pkgver=6.0.13
+pkgver=6.1
 pkgrel=1
 pkgdesc="MySQL, MariaDB, PostgreSQL, MS SQL Server, Valentina DB and SQLite GUI Admin Tool"
 arch=('i686' 'x86_64')
@@ -8,15 +8,15 @@ url="http://www.valentina-db.com"
 license=('custom')
 makedepends=('rpmextract')
 source_i686=("http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm")
-source_x86_64=("http://www.valentina-db.com/en/studio/download/current/vstudio_x64_5_lin-rpm")
-sha256sums_i686=('513b63072981c292649bd3cc3cc229ee949df419369eca13396afb0d1a8e79eb')
-sha256sums_x86_64=('3aa4e9e31db3b331a5dabe107cc0403338efe2adb257e8564a5bac9841fa8463')
+source_x86_64=("http://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm")
+sha256sums_i686=('df0406b55674db4a2bf436784424aacb87dbcd61c05e1106fb6050c605e81336')
+sha256sums_x86_64=('6ea24478e985a203d2d375df8547aa7a8a1c80e2a4e9654d37dc520045ff75f0')
 
 build() {
 	if test "$CARCH" == x86_64; then
-		rpmextract.sh ../vstudio_x64_5_lin-rpm
+		rpmextract.sh ../vstudio_x64_6_lin.rpm
 	else
-		rpmextract.sh ../vstudio_lin_32_rpm
+		rpmextract.sh ../vstudio_6_lin.rpm
 	fi
 }
 
