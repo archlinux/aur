@@ -106,6 +106,7 @@ pkgname = mplayer-svn
 	depends = gsm
 	depends = gnutls
 	depends = libdvdnav
+	provides = mplayer
 	conflicts = mplayer
 	backup = etc/mplayer/codecs.conf
 	backup = etc/mplayer/input.conf
@@ -142,5 +143,6 @@ pkgname = mencoder-svn
 	depends = rtmpdump
 	depends = gsm
 	depends = libdvdnav
+	provides = mencoder
 	conflicts = mencoder
 
