@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=
+Type=Application
+Name=Furniture Library Editor
+Comment=An interior design application
+TryExec=/usr/bin/furniturelibraryeditor
+Exec=furniturelibraryeditor
+Icon=/usr/share/pixmaps/furniturelibraryeditor.png
+Categories=Office;Java;
