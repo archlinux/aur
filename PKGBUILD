@@ -297,6 +297,26 @@ package_clang-svn() {
 
     make DESTDIR="${pkgdir}" install
 
+    # The Clang Static Analyzer is installed in a separate package
+    # TODO: Probably there's more elegant way to achieve this.
+    rm -rf "${srcdir}/clang-analyzer.tmp"
+    for _dir in \
+        bin \
+        share/man/man1 \
+        share/scan-view
+    do install -m 0755 -d "${srcdir}/clang-analyzer.tmp/${_dir}" ; done
+    for _file in \
+        bin/{Reporter,ScanView,startfile}.py \
+        bin/scan-{build,view} \
+        bin/scanview.css \
+        bin/sorttable.js \
+        share/man/man1/scan-build.1 \
+        share/scan-view/{FileRadar,GetRadarVersion}.scpt \
+        share/scan-view/bugcatcher.ico
+    do mv "${pkgdir}/usr/${_file}" "${srcdir}/clang-analyzer.tmp/${_file}" ; done
+    mv "${pkgdir}/usr/libexec"/{c++,ccc}-analyzer "${srcdir}/clang-analyzer.tmp/bin/"
+    rmdir "${pkgdir}/usr"/{libexec,share/scan-view}
+
     # Clean up documentation
     rm -r "${pkgdir}/usr/share/doc/clang/html/_sources"
 
@@ -314,6 +334,7 @@ package_clang-analyzer-svn() {
     url='http://clang-analyzer.llvm.org/'
     depends=(
         "clang-svn=${pkgver}-${pkgrel}"
+        'perl'
         'python2'
     )
     groups=('llvm-toolchain-svn')
@@ -321,26 +342,15 @@ package_clang-analyzer-svn() {
     replaces=('clang-analyzer')
     conflicts=('clang-analyzer')
 
-    cd "${srcdir}/llvm/tools/clang"
+    cd "${srcdir}"
 
-    install -m755 -d "${pkgdir}"/usr/{bin,lib/clang-analyzer}
-    for _tool in scan-{build,view}; do
-        cp -r "tools/${_tool}" "${pkgdir}/usr/lib/clang-analyzer/"
-        ln -s "/usr/lib/clang-analyzer/${_tool}/${_tool}" "${pkgdir}/usr/bin/"
-    done
+    _compile_python_files "${srcdir}/clang-analyzer.tmp/bin"
+    mv "${srcdir}/clang-analyzer.tmp" "${pkgdir}/usr"
 
-    # scan-build looks for clang within the same directory
-    ln -s /usr/bin/clang "${pkgdir}/usr/lib/clang-analyzer/scan-build/"
-
-    # Relocate man page
-    install -m755 -d "${pkgdir}/usr/share/man/man1"
-    mv "${pkgdir}/usr/lib/clang-analyzer/scan-build/scan-build.1" "${pkgdir}/usr/share/man/man1/"
+    sed -i 's|/libexec/|/bin/|' "${pkgdir}/usr/bin/scan-build"
 
     _fix_python_exec_path \
-        "${pkgdir}/usr/lib/clang-analyzer/scan-view/scan-view" \
-        "${pkgdir}/usr/lib/clang-analyzer/scan-build/set-xcode-analyzer"
-
-    _compile_python_files "${pkgdir}/usr/lib/clang-analyzer"
+        "${pkgdir}/usr/bin/scan-view"
 
     _install_license
 }
