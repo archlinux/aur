@@ -80,6 +80,7 @@ package_mplayer-svn() {
     'gsm' 'gnutls' 'libdvdnav'
   )
   conflicts=('mplayer')
+  provides=('mplayer')
 
   cd "mplayer-$pkgver"
   make DESTDIR="$pkgdir" install-mplayer install-mplayer-man
@@ -104,6 +105,7 @@ package_mencoder-svn() {
     'libvorbis' 'opus' 'rtmpdump' 'gsm' 'libdvdnav'
   )
   conflicts=('mencoder')
+  provides=('mencoder')
 
   make -C mplayer-$pkgver DESTDIR="$pkgdir" install-mencoder install-mencoder-man
   find "$pkgdir"/usr/share/man -name mplayer.1 -exec rename mplayer.1 mencoder.1 {} +
