@@ -1,0 +1,19 @@
+pkgbase = lib32-libcaca-dev
+	pkgdesc = Color AsCii Art library, lib32, dev
+	pkgver = 0.99.beta19
+	pkgrel = 1
+	url = http://caca.zoy.org/wiki/libcaca
+	arch = x86_64
+	license = LGPL
+	depends = libcaca-dev
+	depends = lib32-imlib2
+	provides = lib32-libcaca
+	conflicts = lib32-libcaca
+	replaces = lib32-libcaca
+	options = !emptydirs
+	options = !libtool
+	source = http://libcaca.zoy.org/files/libcaca/libcaca-0.99.beta19.tar.gz
+	md5sums = a3d4441cdef488099f4a92f4c6c1da00
+
+pkgname = lib32-libcaca-dev
+
