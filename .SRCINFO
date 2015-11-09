@@ -1,7 +1,7 @@
 pkgbase = eezupnp
 	pkgdesc = UPnP Audio control point
 	pkgver = 2.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eezupnp.de/
 	arch = x86_64
 	license = custom:eezupnp
@@ -10,8 +10,10 @@ pkgbase = eezupnp
 	options = !strip
 	source = http://www.eezupnp.de/archives/eezupnp-2.8.3.linux.gtk.x86_64.zip
 	source = License.txt
+	source = eezUPnP.desktop
 	sha256sums = SKIP
 	sha256sums = fc44b250ee98341818d6c76dd8787f02378c61b2d33970555a1fac8511710fb1
+	sha256sums = SKIP
 
 pkgname = eezupnp
 
