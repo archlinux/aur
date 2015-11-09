@@ -1,0 +1,4 @@
+src/
+qdriverstation/
+pkg/
+*.pkg.tar.xz
