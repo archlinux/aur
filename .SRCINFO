@@ -1,14 +1,14 @@
 pkgbase = faustlive-git
 	pkgdesc = A graphical frontend to the Faust compiler.
-	pkgver = 689.318f5e8
+	pkgver = 704.06ef3de
 	pkgrel = 1
 	url = http://faust.grame.fr/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = faust2-git
 	depends = qt4
+	depends = faust2-git
 	depends = jack2
 	depends = qrencode
 	depends = libmicrohttpd

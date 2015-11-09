@@ -1,14 +1,18 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=faustlive-git
-pkgver=689.318f5e8
+pkgver=704.06ef3de
 pkgrel=1
 pkgdesc="A graphical frontend to the Faust compiler."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
 license=('GPL')
-depends=('qt4' 'jack2' 'qrencode' 'libmicrohttpd' 'openssl' 'liblo' 'curl')
-makedepends=('git' 'faust2-git')
+# NOTE: faust2-git used to be a make dependency, but this doesn't work in the
+# latest revisions of FaustLive any more, since it will try to link against
+# the static qrencode and microhttpd libraries which aren't normally installed
+# on Arch. Thus faust2-git is now required at runtime.
+depends=('qt4' 'faust2-git' 'jack2' 'qrencode' 'libmicrohttpd' 'openssl' 'liblo' 'curl')
+makedepends=('git')
 provides=('faustlive')
 conflicts=('faustlive')
 source=("$pkgname::git+git://git.code.sf.net/p/faudiostream/faustlive")
@@ -23,7 +27,7 @@ pkgver() {
 
 build() {
   cd $srcdir/$pkgname
-  make arch=Linux PREFIX=/usr STATIC=1 NETJACK=1
+  make arch=Linux PREFIX=/usr STATIC=0 NETJACK=1
 }
 
 package() {
