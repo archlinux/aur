@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Cremer <bc@benjamin-cremer.de>
 
 pkgname=tideways-daemon
-pkgver=1.2.5
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Tideways Profiler Daemon"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ install=tideways-daemon.install
 
 if [[ $CARCH == "x86_64" ]]; then
     source=("https://s3-eu-west-1.amazonaws.com/qafoo-profiler/downloads/tideways-daemon_linux_amd64-${pkgver}.tar.gz")
-    sha256sums=('972b0d224bfdd4bd926441f67b5d87db22150c1bd91cbd9400bed616b0dd92c1')
+    sha256sums=('1a6c5966eb11064e4636a749d72f82a265707406bfab514a55213feea7a54d2e')
 else
     source=("https://s3-eu-west-1.amazonaws.com/qafoo-profiler/downloads/tideways-daemon_linux_i386-${pkgver}.tar.gz")
-    sha256sums=('21d06a8328b6a2003af48205649ce9fb9ce5744f1b650041281ab80649501760')
+    sha256sums=('4c449f74ed5e8217d666d3e22d940cfa031e40afc6fbccc69741fa3d9b4724e2')
 fi
 
 source+=('tideways-daemon.service' 'tmpfiles.conf' 'sysusers.conf')
