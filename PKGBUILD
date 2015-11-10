@@ -2,7 +2,7 @@
 
 pkgname="ravello"
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ravello systems tool"
 url="https://www.ravellosystems.com/"
 license=('Unknown')
@@ -13,7 +13,7 @@ sha512sums=('14f76391aa2ee7d147430b9885cc759eacb7cffb52539ea503f8f26c962c0c2d81a
 arch=('any')
 depends=('python2' 'python2-pysphere' 'python2-requests' 'python2-pefile-git'
 'python2-argparse' 'python2-jsonpickle' 'python2-webpy' 'python2-mimerender'
-'python2-boto')
+'python2-boto' 'python2-httplib2')
 
 makedepends=('python2-setuptools')
 conflicts=("${_gitname}")
