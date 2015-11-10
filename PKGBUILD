@@ -17,17 +17,20 @@ source=(ftp://ftp.gnu.org/gnu/idutils/idutils-$pkgver.tar.xz)
 md5sums=('99b572536377fcddb4d38e86a3c215fd')
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
-  sed -i -e '/gets is a security/d' lib/stdio.in.h
-  ./configure --prefix=/usr --disable-gcc-warnings --disable-silent-rules
-  #export LC_CTYPE=ISO-8859-1
-  make VERBOSE=1 || return 1
+    cd "${srcdir}/$pkgname-$pkgver"
+    sed -i -e '/gets is a security/d' lib/stdio.in.h
+    ./configure --prefix=/usr --disable-gcc-warnings --disable-silent-rules
+    #export LC_CTYPE=ISO-8859-1
+    make VERBOSE=1 || return 1
 }
 
 package () {
-  cd $startdir/src/$pkgname-$pkgver
-  make DESTDIR=$startdir/pkg install
-  # why was this necessary?
-  #mkdir -p $startdir/pkg/usr/share/misc
-  #mv $startdir/pkg/usr/share/id-lang.map $startdir/pkg/usr/share/misc/
+    cd "${srcdir}/$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
+    # libuser has lid
+    mv $pkgdir/usr/bin/lid $pkgdir/usr/bin/lid-idutils
+    mv $pkgdir/usr/share/man/man1/lid.1 $pkgdir/usr/share/man/man1/lid-idutils.1
+    # why was this necessary?
+    #mkdir -p $pkgdir/usr/share/misc
+    #mv $pkgdir/usr/share/id-lang.map $pkgdir/usr/share/misc/
 }
