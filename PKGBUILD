@@ -17,10 +17,10 @@ source=("http://download2.mikrotik.com/routeros/winbox/${pkgver}/${pkgname}.exe"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
-md5sums=('a63bb3a7ba06ee55c06a8315c2cfa066'
-         'ea6bbb9b138ad71dbcdbeb84298f02eb'
-         '1147544d4bd5ed8181c0eee5fcd31356'
-         'b28167d4aada519014ff57b086292690')
+sha256sums=('d593ca3bb869bef52dfada4ac5aa8493f146c9f356c07d12f69e2ca4a8d7126f'
+         'bd9e0f61fc1178be53e7c16cf1e558bc71a487daa45d718c3eb69c2a95cb7115'
+         '603eaed8dfb5b6146712c5cee801e6d77f1f45d6bd5c4b545f9f84193834d380'
+         'e7d6a2ffc0eda07ac40db88d92629bf8b1e2fa9433f3b74b1eef3437c1d0f6c6')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}.exe" "${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
