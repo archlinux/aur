@@ -2,7 +2,7 @@
 
 pkgname=kanban-bin
 pkgver=1.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Self hosted Kanban board for GitLab issues (precompiled binary)"
 arch=('x86_64')
 url="http://kanban.leanlabs.io/"
@@ -31,9 +31,9 @@ post_remove() {
 	getent group kanban >/dev/null 2>&1 && groupdel kanban
 }
 package() {
-    install -Dm755 "kanban" "${pkgdir}/usr/bin/kanban"
+    install -Dm0755 "kanban" "${pkgdir}/usr/bin/kanban"
     install -Dm0644 kanban.service "${pkgdir}/usr/lib/systemd/system/kanban.service"
     for __cfg in apache2.4 apache2.4-ssl; do
-        install -m644 "${srcdir}/${__cfg}.conf.example" "${pkgdir}${_etcdir}"
+        install -Dm0644 "${srcdir}/${__cfg}.conf.example" "${pkgdir}${_etcdir}"
     done
 }
