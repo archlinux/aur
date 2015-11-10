@@ -2,7 +2,7 @@
 
 pkgbase=python-genty
 pkgname=('python-genty' 'python2-genty')
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Allows you to run a test with multiple data sets"
 arch=('any')
