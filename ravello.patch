@@ -1,0 +1,12 @@
+diff -ur ravello/ravello-2.0/setup.py ravello.o/ravello-2.0/setup.py
+--- ravello/ravello-2.0/setup.py	2015-11-10 11:04:51.740511280 -0600
++++ ravello.o/ravello-2.0/setup.py	2015-11-10 11:03:47.887431323 -0600
+@@ -36,7 +36,7 @@
+             'ravello = ravello.cli.ravello_cli:run',
+             'ravello_vm_import_server = ravello.imageloader.server.ravello_vm_import_server:main']},
+          # other arguments here...
++      install_requires=['boto >=2.8', 'mimerender >=0.3', 'web.py', 'httplib2', 'jsonpickle', 'argparse', 'pefile','requests', 'pysphere']
+-      install_requires=['boto >=2.8', 'mimerender ==0.3', 'web.py', 'httplib2', 'jsonpickle', 'argparse', 'pefile','requests', 'pysphere']
+      )
+ 
+ if os.path.exists(dst_static_path):
