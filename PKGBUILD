@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 pkgname=wolf-data
 pkgver=1.41b
-pkgrel=3
+pkgrel=4
 pkgdesc="Return to Castle Wolfenstein Single Player pk3s files (shared use)"
 arch=('any')
 url="ftp://ftp.internat.freebsd.org/pub/FreeBSD/distfiles/"

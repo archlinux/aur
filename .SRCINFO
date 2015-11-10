@@ -1,7 +1,7 @@
 pkgbase = wolf-data
 	pkgdesc = Return to Castle Wolfenstein Single Player pk3s files (shared use)
 	pkgver = 1.41b
-	pkgrel = 3
+	pkgrel = 4
 	url = ftp://ftp.internat.freebsd.org/pub/FreeBSD/distfiles/
 	install = wolf-data.install
 	arch = any
