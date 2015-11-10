@@ -1,0 +1,15 @@
+pkgbase = trisquel-gtk-theme
+	pkgdesc = Trisquel GNU/Linux gtk theme, A GTK2/3, metacity and xfwm4 theme for Trisquel
+	pkgver = 7.0-8
+	pkgrel = 1
+	url = http://trisquel.info
+	arch = any
+	license = GPL
+	depends = gdk-pixbuf2
+	depends = gtk-engine-murrine
+	depends = gtk-engine-unico
+	source = http://archive.trisquel.info/trisquel/pool/main/t/trisquel-gtk-theme/trisquel-gtk-theme_7.0-8.tar.gz
+	md5sums = 1342affa3a7342de76f04076eab2f4ea
+
+pkgname = trisquel-gtk-theme
+
