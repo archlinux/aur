@@ -2,7 +2,7 @@
 
 _pkgname=sview
 pkgname=$_pkgname-git
-pkgver=14.09.beta.r181.ga4aafb2
+pkgver=15.10.r67.gd2e2ffd
 pkgrel=1
 pkgdesc="Stereoscopic 3D video player with OpenGL UI"
 arch=('i686' 'x86_64')
@@ -25,7 +25,6 @@ build() {
   cd $_pkgname
   unset ANDROID_NDK
   msg2 "Starting make..."
-  make clean
   make -j1 all
 }
 
@@ -34,5 +33,5 @@ package() {
   msg2 "Starting make install..."
   make DESTDIR="$pkgdir" install
   mkdir -p $pkgdir/usr/share/licenses/$_pkgname/
-  cp LICENSE $pkgdir/usr/share/licenses/$_pkgname/
+  cp LICENSE.md $pkgdir/usr/share/licenses/$_pkgname/
 }
