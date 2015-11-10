@@ -1,0 +1,16 @@
+pkgbase = opencc-gui-git
+	pkgdesc = Gui in Qt5 of Library for Open Chinese Convert
+	pkgver = r34.d007b08
+	pkgrel = 1
+	url = http://code.google.com/p/opencc/
+	arch = i686
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = qt5-base
+	depends = opencc
+	optdepends = uchardet-git
+	source = opencc-gui::git+https://github.com/BYVoid/opencc-gui.git
+	md5sums = SKIP
+
+pkgname = opencc-gui-git
+
