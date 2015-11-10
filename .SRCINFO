@@ -1,7 +1,7 @@
 pkgbase = goldendict-qt5-git
 	pkgdesc = Feature-rich dictionary lookup program.
-	pkgver = 1.5.0.RC.550.g1df1b3d
-	pkgrel = 2
+	pkgver = 1.5.0.RC.587.g1ecf9ae
+	pkgrel = 3
 	url = http://goldendict.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = goldendict-qt5-git
 	depends = libxtst
 	depends = lzo2
 	depends = qt5-base
+	depends = qt5-svg
 	depends = qt5-tools
 	depends = qt5-webkit
 	depends = qt5-x11extras
