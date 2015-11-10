@@ -3,7 +3,7 @@
 
 _gemname=dotter_dotfiles
 pkgname=dotter
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A dotfiles manager'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-thor ruby-git ruby-inifile)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('73bc455477700b91fb917d98a8d1a40b2980fad2')
+sha1sums=('1e6beba0f49a8ead41ec8143a3849a627e7ef4c9')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
