@@ -1,0 +1,21 @@
+pkgbase = sleep-until
+	pkgdesc = Sleep until a specified time
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/maandree/sleep-until
+	install = sleep-until.install
+	arch = any
+	license = AGPL3
+	makedepends = glibc>=2.8
+	makedepends = gcc
+	makedepends = general-preprocessor
+	makedepends = grep
+	makedepends = texinfo
+	makedepends = auto-auto-complete
+	depends = linux>=2.6.25
+	depends = glibc>=2.8
+	source = https://github.com/maandree/sleep-until/archive/1.tar.gz
+	sha256sums = fa1776be3f29c550f6eff48bcf714c76fcf399f1c7bac1d7306c5abc7fe14e17
+
+pkgname = sleep-until
+
