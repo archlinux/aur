@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mkinitcpio -c /etc/linuxpba/linuxpba.conf -g /boot/linuxpba.img
-mkinitcpio -S autodetect -c /etc/linuxpba/linuxpba.conf -g /boot/linuxpba-fallback.img
+mkinitcpio -c /usr/lib/linuxpba/linuxpba.conf -g /boot/linuxpba.img
+mkinitcpio -S autodetect -c /usr/lib/linuxpba/linuxpba.conf -g /boot/linuxpba-fallback.img

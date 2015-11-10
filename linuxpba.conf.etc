@@ -1,0 +1,38 @@
+### mkinitcpio options ###
+
+MODULES=""
+BINARIES=""
+FILES=""
+HOOKS="base udev autodetect block keymap keyboard linuxpba"
+
+#COMPRESSION=<gzip|bzip2|lzma|xz|lzop|lz4>
+COMPRESSION="xz"
+#COMPRESSION_OPTIONS=""
+
+
+### linuxpba options ###
+
+# Use the PBA agent from sedutil that supports only password input
+# or use custom the PBA agent that supports keyfile, yubikey and
+# password input. This will result in the smallest initramfs image.
+# All the settings below this one only have any effect if USE_SEDUTIL_PBA=0
+USE_SEDUTIL_PBA=1
+
+# The challenge to send to the yubikey. The response will unlock the
+# keyring file. Use the challenge configured here as the challenge when
+# creating your luks encrypted keyring file.
+YKCHAL=GiveMeThePassword
+
+# Keyfile name. Use an udev rule to create a single symlink to one of many
+# devices with the luks keys and add the rule file in the FILES array above,
+# or set this to /dev/disk/by-id of the device where you keep the keyfile.
+KFNAME=/dev/cryptkey
+
+# How many bytes to skip in the beginning of the keyfile device
+KFSKIP=524288
+
+# How many bytes to read from the keyfile device
+KFSIZE=4096
+
+# Wait before rebooting if the are any problems when unlocking the OPAL drives.
+WAIT_ON_ERRORS=1

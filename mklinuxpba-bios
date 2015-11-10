@@ -50,9 +50,9 @@ extlinux -i mnt
 if [[ -e /boot/intel-ucode.img ]]
 then
     cp /boot/intel-ucode.img mnt
-    cp /etc/linuxpba/extlinux.conf mnt
+    cp /usr/lib/linuxpba/extlinux.conf mnt
 else
-    sed 's/intel-ucode.img,//' /etc/linuxpba/extlinux.conf > mnt/extlinux.conf
+    sed 's/intel-ucode.img,//' /usr/lib/linuxpba/extlinux.conf > mnt/extlinux.conf
 fi
 cp /boot/linuxpba.img mnt
 cp /boot/$kernel_image mnt
@@ -70,9 +70,9 @@ extlinux -i mnt
 if [[ -e /boot/intel-ucode.img ]]
 then
     cp /boot/intel-ucode.img mnt
-    cp /etc/linuxpba/extlinux.conf mnt
+    cp /usr/lib/linuxpba/extlinux.conf mnt
 else
-    sed 's/intel-ucode.img,//' /etc/linuxpba/extlinux.conf > mnt/extlinux.conf
+    sed 's/intel-ucode.img,//' /usr/lib/linuxpba/extlinux.conf > mnt/extlinux.conf
 fi
 cp /boot/linuxpba-fallback.img mnt/linuxpba.img
 cp /boot/$kernel_image mnt

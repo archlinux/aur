@@ -1,0 +1,3 @@
+. /etc/linuxpba/linuxpba.conf
+
+MODULES="$MODULES loop dm-crypt xts algif_skcipher af_alg"

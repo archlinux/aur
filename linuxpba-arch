@@ -1,0 +1,122 @@
+#!/usr/bin/ash
+
+SED_STATUS(){
+    NAME=$1
+    SERIAL=$2
+    LOCKED=$3
+    MBRDONE=$4
+}
+
+KEYRING="/etc/linuxpba/keyring.luks"
+SED_PASSWD=""
+
+echo ""
+
+if [[ -e "$KEYRING" ]]
+then
+
+    . /etc/linuxpba/linuxpba.conf
+
+    if [[ -e "/usr/bin/ykchalresp" && -e "/usr/bin/ykinfo" ]]
+    then
+        ykinfo -s &>/dev/null
+        if [[ $? -eq 0 ]]
+        then
+            echo "Press the Yubikey button if it is blinking."
+            KEYFOB_PASSWD="$(ykchalresp -2 "$YKCHAL" 2>/dev/null)"
+        fi
+    fi
+
+    if [[ "x$KEYFOB_PASSWD" != "x" && "x$SED_PASSWD" = "x" ]]
+    then
+        echo -n "Unlocking keyring with yubikey password ... "
+        echo -n "$KEYFOB_PASSWD" | cryptsetup --key-file - open --type luks \
+                                   "$KEYRING" keyring &>/dev/null
+        if [[ $? -ne 0 ]]
+        then
+            echo "FAIL"
+        else
+            echo "OK"
+            SED_PASSWD="$(cat /dev/mapper/keyring)"
+            cryptsetup close keyring
+        fi
+    fi
+
+    if [[ "x$SED_PASSWD" = "x" ]]
+    then
+        WAIT=6
+        while [[ ! -b "$KFNAME" && "$WAIT" -gt 0 ]]
+        do
+            sleep 0.5
+            let WAIT-=1
+        done
+    fi
+
+    if [[ -e "$KFNAME" && "x$SED_PASSWD" = "x" ]]
+    then
+        echo -n "Unlocking keyring with keyfile ... "
+        cryptsetup --key-file "$KFNAME" --keyfile-offset "$KFSKIP" \
+        --keyfile-size "$KFSIZE" open --type luks "$KEYRING" keyring &>/dev/null
+        if [[ $? -ne 0 ]]
+        then
+            echo "FAIL"
+        else
+            echo "OK"
+            SED_PASSWD="$(cat /dev/mapper/keyring)"
+            cryptsetup close keyring
+        fi
+    fi
+fi
+
+while [[ "x$SED_PASSWD" = "x" ]]
+do
+    echo -n "Enter password to unlock the OPAL drives: "
+    SED_PASSWD="$(getpasswd)"
+    echo ""
+done
+
+ERRORS=0
+
+for DRIVE in $(sedutil-cli --scan 2>/dev/null | awk '$1 ~ "/dev/sd" && $2 !~ "No" {print $1}')
+do
+    [[ "x$DRIVE" = "x" ]] && continue
+    SED_STATUS $(sedutil-cli --query $DRIVE | awk 'NR==2 {name=$3; serial=$5} NR==6 {gsub(",","",$0);lock=$3; mbr=$12} END {print name,serial,lock,mbr}')
+    if [[ "$LOCKED" = "Y" ]]
+    then
+        echo -n "Unlocking $NAME $SERIAL ($DRIVE) ... "
+        sedutil-cli --setLockingRange 0 RW "$SED_PASSWD" "$DRIVE" &>/dev/null
+        if [[ $? -ne 0 ]]
+        then
+            echo "FAIL"
+            let ERRORS+=1
+            continue
+        else
+            echo "OK"
+        fi
+    fi
+    if [[ "$MBRDONE" = "N" ]]
+    then
+        echo -n "Setting MBR DONE on $NAME $SERIAL ($DRIVE) ... "
+        sedutil-cli --setMBRDone on "$SED_PASSWD" "$DRIVE" &>/dev/null
+        if [[ $? -ne 0 ]]
+        then
+            echo "FAIL"
+            let ERRORS+=1
+            continue
+        else
+            echo "OK"
+        fi
+    fi
+done
+
+if [[ "$ERRORS" -gt 0 && "$WAIT_ON_ERRORS" -eq 1 ]]
+then
+    echo ""
+    echo "Some operations failed, drive(s) may not be fully unlocked and accessible!"
+    echo "Press ENTER to reboot."
+    getpasswd > /dev/null
+fi
+
+echo "Rebooting..."
+
+reboot -f
