@@ -5,10 +5,9 @@ pkgname=('zarafa-server-arm')
 pkgver=7.2.0
 _pkgmajver=7.2
 _pkgrev=${pkgver}-48204
-pkgrel=9
+pkgrel=10
 pkgdesc="Open Source Groupware Solution"
 arch=('arm'
-      'aarch64'
       'armv7h'
       'armv6h'
       'x86_64'
