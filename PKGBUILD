@@ -4,7 +4,7 @@ pkgname=sleep-until
 pkgver=1
 pkgrel=1
 pkgdesc='Sleep until a specified time'
-arch=('any')
+arch=('i686' 'x86_64')
 url='https://github.com/maandree/sleep-until'
 license=('AGPL3')
 depends=('linux>=2.6.25' 'glibc>=2.8')
