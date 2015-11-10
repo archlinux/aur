@@ -1,6 +1,6 @@
 pkgbase = subsonic
 	pkgdesc = A free, web-based media streamer and jukebox.
-	pkgver = 5.2.1
+	pkgver = 5.3
 	pkgrel = 1
 	url = http://subsonic.org/
 	install = subsonic.install
@@ -11,9 +11,9 @@ pkgbase = subsonic
 	backup = var/lib/subsonic/db
 	backup = var/lib/subsonic/subsonic.properties
 	backup = var/lib/subsonic/subsonic.sh
-	source = http://prdownloads.sourceforge.net/subsonic/subsonic-5.2.1-standalone.tar.gz
+	source = http://prdownloads.sourceforge.net/subsonic/subsonic-5.3-standalone.tar.gz
 	source = subsonic.service
-	md5sums = c790783b6710923ce4f63e9e657fb90e
+	md5sums = c3f66d64565f76fd01b5f81caba91b3b
 	md5sums = 7cbbb9c8357992385c929e9f05be00be
 
 pkgname = subsonic

@@ -4,7 +4,7 @@
 # Contributors: Nrm
 
 pkgname=subsonic
-pkgver=5.2.1
+pkgver=5.3
 pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
@@ -31,5 +31,5 @@ package() {
   chmod +x $pkgdir/var/lib/subsonic/subsonic.sh
 }
 
-md5sums=('c790783b6710923ce4f63e9e657fb90e'
+md5sums=('c3f66d64565f76fd01b5f81caba91b3b'
          '7cbbb9c8357992385c929e9f05be00be')
