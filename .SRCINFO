@@ -1,16 +1,16 @@
 pkgbase = 0xdbe
 	pkgdesc = Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity
 	pkgver = 1.0preview
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.jetbrains.com/0xdbe/
 	arch = i686
 	arch = x86_64
 	license = Commercial
 	depends = java-environment>=6
 	options = !strip
-	source = https://download.jetbrains.com/dbe/0xdbe-143.615.4.tar.gz
+	source = https://download.jetbrains.com/dbe/0xdbe-143.732.5.tar.gz
 	source = jetbrains-0xdbe.desktop
-	sha256sums = d646a46348aab73d16d0e47fa25131e0de2038b889f5e51b3fe327d64286c369
+	sha256sums = 1a14e967507d2e5be887b5494b5465f355b37b082b027c4c5b01f61fab5fc54a
 	sha256sums = b138f90cdeaa4dcc6cbc8cf911d65a3265938824abe64c734b1ff76e580e42c3
 
 pkgname = 0xdbe

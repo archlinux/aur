@@ -3,8 +3,8 @@
 pkgname=0xdbe
 _pkgname=0xDBE
 pkgver=1.0preview
-_pkgver=143.615.4
-pkgrel=2
+_pkgver=143.732.5
+pkgrel=3
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64')
 options=('!strip')
@@ -13,7 +13,7 @@ license=('Commercial')
 depends=('java-environment>=6')
 source=(https://download.jetbrains.com/dbe/${pkgname}-${_pkgver}.tar.gz
         jetbrains-0xdbe.desktop)
-sha256sums=('d646a46348aab73d16d0e47fa25131e0de2038b889f5e51b3fe327d64286c369'
+sha256sums=('1a14e967507d2e5be887b5494b5465f355b37b082b027c4c5b01f61fab5fc54a'
             'b138f90cdeaa4dcc6cbc8cf911d65a3265938824abe64c734b1ff76e580e42c3')
 
 package() {
