@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=iortcw-git
-pkgver=326
+pkgver=418
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('wolf-data' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
 conflicts=('iortcw-svn')
 replaces=('iortcw-svn')
-makedepends=('cmake' 'subversion')
+makedepends=('cmake' 'git' 'subversion')
 install='iortcw-svn.install'
 source=("git+https://github.com/iortcw/iortcw.git"
 	'iortcwsp.launcher'
