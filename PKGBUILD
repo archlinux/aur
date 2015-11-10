@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
 license=('GPL3')
 depends=('qt5-base' 'libusb>=1.0.0')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=("${pkgname}::git+https://github.com/Nitrokey/nitrokey-app")
 install=nitrokey-app.install
 sha256sums=('SKIP')

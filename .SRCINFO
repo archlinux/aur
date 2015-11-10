@@ -8,6 +8,7 @@ pkgbase = nitrokey-app
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	depends = qt5-base
 	depends = libusb>=1.0.0
 	source = nitrokey-app::git+https://github.com/Nitrokey/nitrokey-app
