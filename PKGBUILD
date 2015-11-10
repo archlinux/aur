@@ -3,7 +3,7 @@
 
 pkgname=firefox-download-youtube-videos-as-mp4
 _pkgname=download_youtube_videos_as_mp4
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=2
 pkgdesc="Extension for firefox which download video"
 arch=('any')
