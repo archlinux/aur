@@ -1,0 +1,21 @@
+--- Makefile.libretro.org	2015-11-10 07:14:36.000000000 +0100
++++ Makefile.libretro	2015-11-10 16:46:48.000000000 +0100
+@@ -114,6 +114,9 @@
+ 
+ include Makefile.common
+ 
++INCFLAGS += -I/usr/include
++PLATFLAGS += -DHAVE_CAPSIMAGE=1
++
+ OBJECTS := $(SOURCES_C:.c=.o)
+ 
+ all: $(TARGET)
+@@ -133,7 +136,7 @@
+ 	$(CC) $(fpic) $(SHARED) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz
+ else
+ $(TARGET): $(OBJECTS)
+-	$(CC) $(fpic) $(SHARED) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz -lpthread
++	$(CC) $(fpic) $(SHARED) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz -lpthread -L/usr/lib64 -lcapsimage
+ 
+ endif
+ 

@@ -1,0 +1,20 @@
+pkgbase = libretro-hatari-enhanced-git
+	pkgdesc = libretro implementation of Hatari v1.8 (Atari ST/STE/TT/Falcon) with IPF support
+	pkgver = 5420.204dc6e
+	pkgrel = 1
+	url = https://github.com/libretro/hatari
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = zlib
+	depends = capsimage
+	source = git+https://github.com/libretro/hatari.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/hatari_libretro.info
+	source = capsimage.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c564cd23d6639ad146c52c6cc1767cc50b27a029a12f2e3ddfc9db1c4063f627
+
+pkgname = libretro-hatari-enhanced-git
+
