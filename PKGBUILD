@@ -1,4 +1,3 @@
-# $Id $
 # Maintainer: Christian Hesse <mail@eworm.de>
 # Contributor: Florian Walch <florian+aur@fwalch.com>
 
