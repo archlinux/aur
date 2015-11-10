@@ -4,14 +4,14 @@
 pkgname=python-cookiecutter
 _pkgname=cookiecutter
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line utility that creates projects from project templates"
 arch=('any')
 url="https://github.com/audreyr/cookiecutter"
 license=('BSD')
 groups=('devel')
 depends=('python-jinja>=2.7'
-         'python-yaml>=3.10'
+         'python-ruamel.yaml>=0.10.12'
          'python-binaryornot>=0.2.0'
          'python-click>=5.0'
          'python-future>=0.15.2'
