@@ -8,8 +8,8 @@ _use_1_kHz_ticks=y
 _enable_BFQ=
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
-pkgver=3.14.56
-pkgrel=6
+pkgver=3.14.57
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -33,7 +33,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
         "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.14.0.patch"
         "should_resched-offsets.patch")
 
-sha512sums=("31e085561faf8c7dd334c8c680a295f90cca7427452357e52e71c87a3212f6d3ac14fcf9054a1dc644a18743ab183e35d2ad1d2b6209513b628e3acf2804d531"
+sha512sums=("ca0efd9ae379d8a6f45a9d57bd4efff212af8fa0d3d335c20f05f0b550425fa86506e0946566f4616baf0e564450e19ec3af03f90b720eb504bb064606440cb5"
             "SKIP"
             "d745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305"
             "1b8ac77604b891aac57257bc3d9578596f38f2f75a625310a7d36e7f59612a616da6ef12d028622cb855a065e4fadc739cb67d12370c49bb52708744ad312957"
