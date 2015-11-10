@@ -4,8 +4,8 @@
 
 _pkgname=xorg-server
 pkgname=xorg-server-hwcursor-gamma
-pkgver=1.17.2
-pkgrel=2
+pkgver=1.17.4
+pkgrel=1 # 2 in xorg-server
 pkgdesc="Xorg X server with patch to apply gamma ramps on hardware cursors"
 depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common xf86-input-evdev libxshmfence libgl)
 provides=("xorg-server=${pkgver}" 'X-ABI-VIDEODRV_VERSION=19' 'X-ABI-XINPUT_VERSION=21.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server')
@@ -27,19 +27,15 @@ source=(${url}/releases/individual/xserver/${_pkgname}-${pkgver}.tar.bz2
         xvfb-run.1
         0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
         0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
-	0001-glamor-make-current-in-prepare-paths.patch
-	0001-os-make-sure-the-clientsWritable-fd_set-is-initializ.patch
 	0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
 	0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
 	0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch)
-sha256sums=('f61120612728f2c5034671d0ca3e2273438c60aba93b3dda4a8aa40e6a257993'
+sha256sums=('0c4b45c116a812a996eb432d8508cf26c2ec8c3916ff2a50781796882f8d6457'
             'af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             '3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7'
             '416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96'
-	    '793579adbef979088cadc0fd9ce0c24df0455a6936d3de7a9356df537b7d9a81'
-	    'efc05c06af2bfdf588ef7a60b44c1d180fb353b1bffdfdf96415d63690b6e394'
 	    'bea348631dedd66475d84ac2cfe0840f22a80a642b4680d73fead4749e47f055'
 	    'be9169b937b5d0b44f7f05d7c08aaa5f0c1092e128ce261d9cb350f09dfe1fb0'
 	    '0a643ae83e03faee0f4db669a33c5b3c99edbba5c86cde2c83962ae536d31081')
@@ -55,10 +51,6 @@ prepare() {
   msg2 'Fix FS#45229, merged upstream'
   patch -Np1 -i ../0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
   patch -Np1 -i ../0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
-  
-  msg2 "Fix FS#45009, merged upstream"
-  patch -Np1 -i ../0001-glamor-make-current-in-prepare-paths.patch
-  patch -Np1 -i ../0001-os-make-sure-the-clientsWritable-fd_set-is-initializ.patch
   
   autoreconf -fvi
 }
@@ -137,4 +129,6 @@ package() {
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
   rm -rf "${pkgdir}/usr/include"
   rm -rf "${pkgdir}/usr/share/aclocal"
+  # this is now part of xorg-input-evdev
+  rm -rf "${pkgdir}/usr/share/X11/xorg.conf.d/10-evdev.conf"
 }
