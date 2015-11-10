@@ -1,0 +1,15 @@
+pkgbase = ttf-ti83symbols
+	pkgdesc = Key font for TI83
+	pkgver = latest
+	pkgrel = 1
+	url = https://education.ti.com/
+	install = ttf-ti83symbols.install
+	arch = any
+	license = custom:proprietary
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://education.ti.com/~/media/05332A946BD34070B7DF0FFCA6B3919B
+	md5sums = b9106d7960706572160a1ab8596c3246
+
+pkgname = ttf-ti83symbols
+
