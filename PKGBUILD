@@ -4,7 +4,7 @@
 pkgbase=lib32-libindicator
 pkgname=('lib32-libindicator-gtk2' 'lib32-libindicator-gtk3')
 pkgver=12.10.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Libary with a set of symbols and convience functions that all indicators would like to use"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/libindicator"
@@ -22,6 +22,7 @@ prepare() {
     sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i                                 libindicator-${pkgver}/configure
     sed 's/LIBS="-lm  $LIBS"/LIBS=" -lm  $LIBS"/g' -i                   libindicator-${pkgver}/configure
     sed 's/LIBS="-lmw  $LIBS"/LIBS=" -lmw  $LIBS"/g' -i                 libindicator-${pkgver}/configure
+    sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i                                 libindicator-${pkgver}/m4/libtool.m4
     rm -rf libindicator-gtk{2,3} &> /dev/null
     cp -r "libindicator-${pkgver}" "libindicator-gtk2"
     mv    "libindicator-${pkgver}" "libindicator-gtk3"
