@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://practical-scheme.net/gauche/index.html'
 license=('BSD')
 depends=('zlib' 'gdbm')
-#makedepends=('gauche') # only needed if this is the first build of gauche-git
+makedepends=('gauche' 'git') # gauche only needed if this is the first build of gauche-git
 provides=('gauche')
 conflicts=('gauche')
 source=('git+https://github.com/shirok/Gauche.git')
@@ -20,7 +20,7 @@ options=('!makeflags' '!emptydirs')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  printf %s.%s $(cat VERSION|tr _ .) $(git rev-list --count HEAD)
+  printf 0.9.5.pre1.%s $(git rev-list --count HEAD)
 }
 
 prepare() {
