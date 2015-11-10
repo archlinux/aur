@@ -217,7 +217,7 @@ package_lib32-clang-svn() {
     make DESTDIR="${pkgdir}" install
 
     # Remove all bits that we don't need in multilib
-    rm -rf "${pkgdir}"/usr/{bin,include,share/clang}
+    rm -rf "${pkgdir}"/usr/{bin,include,libexec,share}
 
     _install_license
 }
