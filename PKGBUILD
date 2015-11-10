@@ -5,15 +5,15 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
 pkgver=4.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-makedepends=('kdepimlibs4' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
+makedepends=('kdepimlibs4' 'libkexiv2_4' 'libkdcraw4' 'libkipi4' 'libksane4' 'liblqr'
              'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt4-gstreamer' 'imagemagick' 'eigen' 
-	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap' 'libmediawiki')
+	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface4' 'libkgeomap4' 'libmediawiki')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha1sums=('08bbded5433e442dce8ac00eb301606ef0924e8c')
 
@@ -31,7 +31,7 @@ build() {
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
   depends=('kdebase-runtime' 'kdepimlibs4' 'libgphoto2' 'opencv' 'liblqr'
-           'libkipi' 'libkexiv2' 'libkdcraw' 'libkface' 'libkgeomap' 'lensfun' 
+           'libkipi4' 'libkexiv2_4' 'libkdcraw4' 'libkface4' 'libkgeomap4' 'lensfun' 
 	   'libpgf' 'libbaloo4')
   optdepends=('kipi-plugins: more tools and plugins' 'kdebase-workspace: Theme configuration dialog')
   install=digikam.install
@@ -54,8 +54,8 @@ package_digikam() {
 
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
-  depends=('kdebase-runtime' 'kdepimlibs4' 'libkdcraw' 'libkipi' 'libksane' 'libkexiv2')
-  optdepends=('libkgeomap: Geolocalize tool'
+  depends=('kdebase-runtime' 'kdepimlibs4' 'libkdcraw4' 'libkipi4' 'libksane4' 'libkexiv2_4')
+  optdepends=('libkgeomap4: Geolocalize tool'
               'libmediawiki: MediaWiki Export plugin'
               'libkvkontakte: VKontakte.ru Exporter plugin'
               'libgpod: iPodExport plugin'
