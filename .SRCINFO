@@ -1,7 +1,7 @@
 pkgbase = trisquel-wallpapers
 	pkgdesc = Trisquel GNU/Linux Wallpapers, the default Wallpapers for Trisquel.
 	pkgver = 7.0_1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://trisquel.info
 	arch = any
 	license = GPL
