@@ -1,14 +1,14 @@
 pkgname=geos-php
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="PHP bindings for geos"
 arch=('i686' 'x86_64')
-url="http://www.osgeo.org/"
+url="http://trac.osgeo.org/geos/"
 license=('LGPL')
 makedepends=('php')
 depends=("geos")
 source=(http://download.osgeo.org/geos/geos-$pkgver.tar.bz2)
-md5sums=('fc5df2d926eb7e67f988a43a92683bae')
+sha256sums=('49982b23bcfa64a53333dab136b82e25354edeb806e5a2e2f5b8aa98b1d0ae02')
 
 build() {
    cd $srcdir/geos-$pkgver/
