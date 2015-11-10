@@ -1,17 +1,17 @@
-pkgbase = gitlab-git-http-server
+pkgbase = gitlab-workhorse
 	pkgdesc = HTTP server to unload Git HTTP traffic from GitLab Rails app (Unicorn)
-	pkgver = 0.2.10
-	pkgrel = 3
-	url = https://gitlab.com/gitlab-org/gitlab-git-http-server
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://gitlab.com/gitlab-org/gitlab-workhorse
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = gitlab
-	source = gitlab-git-http-server-0.2.10.tar.gz::https://gitlab.com/gitlab-org/gitlab-git-http-server/repository/archive.tar.gz?ref=0.2.10
-	source = gitlab-git-http.service
-	sha256sums = 4351b22bb3e336233cfd882ff032c3830576090a18522b30b340295dae14e2d3
-	sha256sums = d7232e76c3f2b565b75b3b5ab027a3f9fa58c992f4b7e2c7efe4f02697b369d1
+	source = gitlab-workhorse-0.4.0.tar.gz::https://gitlab.com/gitlab-org/gitlab-workhorse/repository/archive.tar.gz?ref=0.4.0
+	source = gitlab-workhorse.service
+	sha256sums = 1e260a6443ce09758028f1c65f48416680ee89fb9efad813097183b09aefabf5
+	sha256sums = c9634b8b49f2baa4cb3a71db561e32f7426539f129c826529a8b0d4788774113
 
-pkgname = gitlab-git-http-server
+pkgname = gitlab-workhorse
 

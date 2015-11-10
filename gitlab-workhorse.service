@@ -1,13 +1,13 @@
 [Unit]
-Description=GitLab Git HTTP Service
+Description=Gitlab Workhorse Service
 Requires=gitlab-unicorn.service
 After=gitlab-unicorn.service
 
 [Service]
 User=gitlab
 Group=gitlab
-SyslogIdentifier=gitlab-git-http
-PIDFile=/run/gitlab/gitlab-git-http.pid
+SyslogIdentifier=gitlab-workhorse
+PIDFile=/run/gitlab/gitlab-workhorse.pid
 
 CapabilityBoundingSet=
 PrivateTmp=true
@@ -16,7 +16,7 @@ ProtectSystem=full
 ProtectHome=true
 NoNewPrivileges=true
 
-ExecStart=/usr/bin/gitlab-git-http-server /var/lib/gitlab/repositories
+ExecStart=/usr/bin/gitlab-workhorse /var/lib/gitlab/repositories
 ExecStop=/usr/bin/kill -QUIT $MAINPID
 ExecReload=/usr/bin/kill -USR2 $MAINPID
 
