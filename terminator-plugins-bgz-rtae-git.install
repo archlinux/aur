@@ -1,0 +1,10 @@
+#
+post_install() {
+  cat <<-EOF
+
+  You will need to enable the two plugins, "BackgroundZoom" and "AppearanceEditor"
+by opening a Terminator window and right-clicking the vte widget for the popup
+terminal menu->Preferences->Plugins - place a check in the box beside each one.
+The Dbus server in the main Preferences dialog must be unchecked.
+EOF
+}

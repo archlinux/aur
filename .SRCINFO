@@ -1,0 +1,15 @@
+pkgbase = terminator-plugins-bgz-rtae-git
+	pkgdesc = backgroundzoom & appearanceeditor, plugins for customizing terminator terminal emulator
+	pkgver = r5.94964ae
+	pkgrel = 1
+	url = https://github.com/balinbob/terminator-plugins
+	install = terminator-plugins-bgz-rtae-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = terminator
+	source = git+https://github.com/balinbob/terminator-plugins
+	md5sums = SKIP
+
+pkgname = terminator-plugins-bgz-rtae-git
+
