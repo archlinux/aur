@@ -1,6 +1,6 @@
 pkgname=urlregwatch
-pkgver=0.1.0.r6.20151029
-pkgrel=2
+pkgver=0.1.1.r10.20151110
+pkgrel=1
 pkgdesc="Check internet pages for changes by regular expression"
 url=http://urlregwatch.sourceforge.net/
 license=(LGPL3)
