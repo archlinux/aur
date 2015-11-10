@@ -5,3 +5,6 @@ Description=Daily pacman mirrorlist refresh
 OnCalendar=daily
 Persistent=true
 AccuracySec=12h
+
+[Install]
+WantedBy=timers.target

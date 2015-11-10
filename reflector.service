@@ -4,5 +4,6 @@ Documentation=https://wiki.archlinux.org/index.php/Reflector
 
 [Service]
 Type=oneshot
-EnvironmentFile=/etc/conf.d/reflector.conf
+EnvironmentFile=/usr/share/reflector-timer/reflector.conf
+EnvironmentFile=-/etc/conf.d/reflector.conf
 ExecStart=/usr/bin/reflector --age $AGE --country $COUNTRY --latest $LATEST --number $NUMBER --sort $SORT --save /etc/pacman.d/mirrorlist
