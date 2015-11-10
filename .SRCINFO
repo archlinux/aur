@@ -1,0 +1,34 @@
+pkgbase = qtcurve-git
+	pkgdesc = The QtCurve style engine ready for Plasma 5
+	pkgver = r4139.330bfa5
+	pkgrel = 1
+	url = https://github.com/QtCurve/qtcurve
+	arch = i686
+	arch = x86_64
+	groups = qtcurve
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = gtk2
+	makedepends = qt4
+	makedepends = qt5-svg
+	makedepends = qt5-x11extras
+	source = qtcurve::git://anongit.kde.org/qtcurve.git
+	md5sums = SKIP
+
+pkgname = qtcurve-utils-git
+	depends = libx11
+
+pkgname = qtcurve-gtk2-git
+	depends = qtcurve-utils-git
+	depends = gtk2
+
+pkgname = qtcurve-qt4-git
+	depends = qtcurve-utils-git
+	depends = qt4
+
+pkgname = qtcurve-qt5-git
+	depends = qtcurve-utils-git
+	depends = qt5-svg
+	depends = qt5-x11extras
+
