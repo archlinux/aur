@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-uchardet-git
+	pkgdesc = Encoding detector library ported from Mozilla (mingw-w64)
+	pkgver = r34.016eb18
+	pkgrel = 1
+	url = https://github.com/BYVoid/uchardet
+	arch = any
+	license = MPL
+	makedepends = git
+	makedepends = mingw-w64-cmake
+	makedepends = make
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = uchardet::git+https://github.com/BYVoid/uchardet.git
+	md5sums = SKIP
+
+pkgname = mingw-w64-uchardet-git
+
