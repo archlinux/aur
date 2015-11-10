@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="http://www.ryzom.com/"
 license=('AGPL3')
 depends=('ryzom-data' 'curl' 'freealut' 'libvorbis' 'libjpeg' 'giflib' 'rrdtool'
-         'boost' 'luabind' 'libsquish' 'libxrandr' 'libxcursor' 'hicolor-icon-theme')
-conflicts=('ryzom-client-latest-hg' 'ryzom-client-hg') #lua51
+         'boost' 'lua52bind' 'libsquish' 'libxrandr' 'libxcursor' 'hicolor-icon-theme')
+conflicts=('ryzom-client-latest-hg' 'ryzom-client-hg') #lua52
 makedepends=('mercurial' 'cpptest' 'cmake' 'bison' 'mesa')
 provides=('libnel' 'ryzom' 'ryzomcore')
 _hg_name='ryzomcore'
@@ -38,11 +38,11 @@ build() {
    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release \
     -DWITH_RYZOM_SERVER=OFF -DWITH_RYZOM_CLIENT=ON \
     -DWITH_NEL_TOOLS=OFF -DWITH_NEL_TESTS=OFF -DWITH_PCH=OFF \
-    -DWITH_NEL_SAMPLES=OFF \
+    -DWITH_NEL_SAMPLES=OFF -DWITH_LUA51=OFF -DWITH_LUA52=ON \
     -DWITH_RYZOM_TOOLS=OFF -DCMAKE_INSTALL_PREFIX=/usr \
     -DRYZOM_ETC_PREFIX=/etc/ryzom -DRYZOM_SHARE_PREFIX=/usr/share/ryzom \
     -DRYZOM_BIN_PREFIX=/usr/bin -DRYZOM_GAMES_PREFIX=/usr/bin \
-    -DLUA_INCLUDE_DIR=/usr/include/lua5.1 ../code
+    -DLUA_INCLUDE_DIR=/usr/include/lua5.2 ../code
    make
 
 }
