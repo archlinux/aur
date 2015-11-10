@@ -1,7 +1,7 @@
 pkgbase = battmon
 	pkgdesc = A lightweight battery monitor in C++.
-	pkgver = 0.5beta1
-	pkgrel = 2
+	pkgver = 0.5beta2
+	pkgrel = 1
 	url = https://github.com/arachnid92/battmon
 	arch = any
 	license = GPL2
