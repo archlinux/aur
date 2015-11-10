@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Open source software library for numerical computation using data flow graphs"
 url="http://tensorflow.org"
 # TODO: add missing dependencies
-depends=('python2' 'python2-numpy' 'python2-protobuf>=3.0.0')
+depends=('python2' 'python2-numpy' 'python2-protobuf3')
 makedepends=('python2' 'python2-pip')
 license=('Apache')
 arch=('x86_64')
@@ -21,11 +21,12 @@ fi
 
 package() {
   cd "${srcdir}"
-  pip2 install --no-deps \
+  _site_packages=$(python2 -c "import site; print(site.getsitepackages()[0])")
+  pip2 install --ignore-installed --no-deps \
     --root=${pkgdir} \
     --install-option="--prefix=${pkgdir}/usr" \
     --install-option="--install-scripts=${pkgdir}/usr/bin" \
-    --install-option="--install-lib=${pkgdir}/usr/lib/python2.7/site-packages" \
+    --install-option="--install-lib=${pkgdir}/${_site_packages}" \
     --install-option="--install-data=${pkgdir}/var/lib/${_name}" \
     --install-option="--root=${pkgdir}" \
     ${srcdir}/${_filename}
