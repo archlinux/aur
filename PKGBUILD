@@ -7,7 +7,7 @@ pkgbase=linux-bld       # Build kernel with a different name
 _srcname=linux-4.2
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.2.5
+pkgver=4.2.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -35,9 +35,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            'b631eb4e8b4911b31111b0838e00f7c4a1b7689abcd2233609831b638493f4fb'
+            '419f91fa4a6bb0d2c160ef6812341e5aac7e776550efe1d0958ae3b1ce0ea8ce'
             'SKIP'
-            '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
+            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             '6921399a0e304f6c64cff17226ce3f20ebe8194f14ebcd318989f2515d8248ad'
             'c3be602e0ce609b5fe5af2e631b01c8fba376a0c434206deca3d101b62685262'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
