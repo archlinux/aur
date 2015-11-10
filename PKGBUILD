@@ -7,7 +7,7 @@
 
 _pkgname=libguestfs
 pkgname=libguestfs-python3
-pkgver=1.30.1
+pkgver=1.30.3
 _pkgver_short=${pkgver%.*}
 pkgrel=1
 pkgdesc="Python 3 compatible bindings for libguestfs"
@@ -51,7 +51,7 @@ optdepends=(
 #            "ocaml: Ocaml libs"
             )
 source=("http://libguestfs.org/download/${_pkgver_short}-stable/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('50c4fa46cb0409e329c408986949d3ac27b4b9f7b661fa20b33419baf41410778b9fe6f8228db169fc714161360e21d4a654bda2cfdf0f4552c50487741148b8')
+sha512sums=('f9b0fe75c958290991ad90ba4fbb385b64c39298d7536c8e874cdcce195a1d9c5bd5a3ed289b881524f225a4e328a7e090582b444ed64b60382f37dae8261a21')
 
 check() {
     # test-lock fails, perhaps related to:
