@@ -3,12 +3,12 @@
 
 pkgname=sidplayfp
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sidplay2 fork with improved filter emulation"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/sidplay-residfp/"
 license=('GPL')
-depends=('libsidplayfp>=1.8.1')
+depends=('libsidplayfp>=1.8.2')
 reaplces=('sidplay-residfp' 'sidplay-residfp-alsa' 'sidplay-residfp-pulse')
 conflicts=('sidplay-residfp' 'sidplay-residfp-alsa' 'sidplay-residfp-pulse')
 install=${pkgname}.install
