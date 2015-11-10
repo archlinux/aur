@@ -2,8 +2,8 @@
 # Contributor: Ng Oon-Ee <n g  o o n  e e dot t a l k AT g m a i l DOT c o m>
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
-pkgver=2015r3
-pkgrel=6
+pkgver=2015r31
+pkgrel=1
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -19,7 +19,7 @@ source=("http://41160df63757fc043cfd-66287f38a83954e31a54d1dbe33e0650.r4.cf2.rac
 ##lib32-mesa lib32-icu lib32-gcc-libs) && makedepends=(lib32-webkitgtk2)
 [[ $CARCH == x86_64 ]] && depends=(lib32-gtk2 lib32-expat lib32-glib2 lib32-glibc lib32-mesa 
 lib32-icu lib32-gcc-libs) && makedepends=(lib32-libtinfo libtinfo)
-sha256sums=('316ee5ad65ac984ad7e079c53ef08ef767ff21a45f84fcda0771686e58d3de2d'
+sha256sums=('92a067f15a850232d9b981479f4b5a2702fbff685b413bba38e094fffa242772'
             '17250f624de25bb575a3ca5d3158a60cba95248c624d71959c0bcb823384e9ee'
             '7b084164ba9430b389a500a551a0cec5283f4eaa54dc27c01e7f0aa477e69612'
             '024cbfa8d23766b54aed636a52708f656776a45d6109cde3ca4278d463958e97')
@@ -27,7 +27,7 @@ options=(!strip)
 
 package() {
 	cd $srcdir
-#	mv "xojo2015r3" "xojo$pkgver"
+	mv "xojo2015r3.1" "xojo$pkgver"
 	find . -name '.DS_Store' -exec rm {} \;
 	find "./xojo$pkgver/Extras" -type d \( -name 'OS X' -o -name 'Windows' -o -name 'Visual Studio*' -o -name 'Xcode' \) |
     xargs -rtl1 -I {} rm -r {}
