@@ -7,7 +7,12 @@ _pkgmajver=7.2
 _pkgrev=${pkgver}-48204
 pkgrel=9
 pkgdesc="Open Source Groupware Solution"
-arch=('any')
+arch=('arm'
+      'aarch64'
+      'armv7h'
+      'armv6h'
+      'x86_64'
+      'i686')
 url="http://www.zarafa.com/"
 license=('AGPL3')
 provides=("zarafa-server=${pkgver}")
@@ -38,7 +43,7 @@ depends=("zarafa-libical>=${pkgver}"
 	 'perl'
 	 'kyotocabinet'
          'krb5'
-         'mysql')
+         'mariadb')
 makedepends=('gcc<5.0.0')
 optdepends=('zarafa-webaccess'
 	    'zarafa-webapp'
@@ -61,12 +66,19 @@ md5sums=('7dc8a526b3eb83e6eb5bbc9d2215b501'
          '846b76e5cb0239a488c81e11d74ad08b'
          '705ada3a8c4b904696e0c461c131b4f7')
 
-build() {
-
+prepare() {
   cd ${srcdir}/zarafa-${pkgver}
-  
-  # https://forums.zarafa.com/showthread.php?8651-Raspberry-P
-  patch -p1 <${srcdir}/arm.diff
+
+  if [[ $CARCH == arm* ]]
+  then
+   echo "Patching for ${CARCH}"
+   # https://forums.zarafa.com/showthread.php?8651-Raspberry-P
+   patch -p1 <${srcdir}/arm.diff
+  fi
+}
+
+build() {
+  cd ${srcdir}/zarafa-${pkgver}
 
   msg "Starting build..."
   CPPFLAGS=-I/usr/include/python2.7 ./configure --prefix=/usr \
