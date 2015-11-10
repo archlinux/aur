@@ -1,0 +1,17 @@
+pkgbase = git-remote-gcrypt-git
+	pkgdesc = A git remote helper for GPG-encrypted remotes.
+	pkgver = 20150101.r1.ge914827
+	pkgrel = 1
+	url = https://github.com/Azulinho/git-remote-gcrypt
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-docutils
+	depends = git
+	depends = gnupg
+	depends = bash
+	source = git+https://github.com/Azulinho/git-remote-gcrypt
+	md5sums = SKIP
+
+pkgname = git-remote-gcrypt-git
+
