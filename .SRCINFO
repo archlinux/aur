@@ -1,8 +1,8 @@
 pkgbase = dpdk
-	pkgdesc = A set of tools and libraries for writing high performance, scalable, user-mode storage applications
+	pkgdesc = A set of libraries and drivers for fast packet processing
 	pkgver = 2.2.0.rc1
 	pkgrel = 1
-	url = https://01.org/spdk
+	url = http://dpdk.org
 	arch = x86_64
 	arch = i686
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = dpdk
 	makedepends = libpcap
 	options = staticlibs
 	source = http://dpdk.org/browse/dpdk/snapshot/dpdk-2.2.0-rc1.tar.gz
-	md5sums = d17494e540005d7b7178cf6273ff9c72
+	sha1sums = 11af71ffceb8808f5459f76090166dd6e4af808a
 
 pkgname = dpdk
 
