@@ -9,6 +9,7 @@ pkgbase = sxemacs-git
 	license = GPL
 	makedepends = git
 	makedepends = texinfo
+	makedepends = xbitmaps
 	depends = libao
 	depends = gpm
 	depends = libtiff
@@ -25,6 +26,7 @@ pkgbase = sxemacs-git
 	conflicts = sxemacs
 	conflicts = xemacs
 	options = !libtool
+	options = !makeflags
 	source = git+http://git.sxemacs.org/sxemacs
 	md5sums = SKIP
 

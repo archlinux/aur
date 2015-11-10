@@ -7,14 +7,14 @@ arch=('i686' 'x86_64')
 url="http://www.sxemacs.org/"
 license=('GPL')
 depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 'compface' 'libpulse' 'libxaw' 'postgresql-libs' 'sox' 'openmotif')
-makedepends=('git' 'texinfo')
+makedepends=('git' 'texinfo' 'xbitmaps')
 provides=('sxemacs')
 conflicts=('sxemacs' 'xemacs')
 source=('git+http://git.sxemacs.org/sxemacs')
 md5sums=('SKIP')
 install=sxemacs.install
 _gitname="sxemacs"
-options=('!libtool')
+options=('!libtool' '!makeflags')
 
 prepare() {
   cd "$srcdir/${_gitname}/src"
