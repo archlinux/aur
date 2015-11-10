@@ -1,6 +1,6 @@
 pkgbase = gtk3-typeahead
 	pkgdesc = GTK+ 3 with typeahead feature enabled for the file chooser widget
-	pkgver = 3.18.2
+	pkgver = 3.18.3
 	pkgrel = 1
 	url = http://www.gtk.org/
 	install = gtk3.install
@@ -29,16 +29,17 @@ pkgbase = gtk3-typeahead
 	depends = adwaita-icon-theme
 	depends = json-glib
 	depends = rest
+	depends = librsvg
 	depends = gtk-update-icon-cache
 	optdepends = libcanberra: gtk3-widget-factory demo
-	provides = gtk3=3.18.2
+	provides = gtk3=3.18.3
 	conflicts = gtk3
-	source = https://download.gnome.org/sources/gtk+/3.18/gtk+-3.18.2.tar.xz
+	source = https://download.gnome.org/sources/gtk+/3.18/gtk+-3.18.3.tar.xz
 	source = settings.ini
 	source = typeahead.patch
-	sha256sums = 5dbec561c4a00070073bf9cf4cfdd61fab4a14c8ff5b15d700bd378f8185e152
+	sha256sums = f3c76791f93f51e260b03676f83007730b9875a0a9bf5cd42442e2f14e593546
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
-	sha256sums = aafa56d981ef408f85b103ded3e15920ab96cda74e7501f970184dae38f8f791
+	sha256sums = b915590f309e27a5c430ee692edaff23e51064fc86ff8e159629ef13e4d86646
 
 pkgname = gtk3-typeahead
 	install = gtk3.install
