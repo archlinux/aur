@@ -3,25 +3,25 @@
 
 _pkgname=xfce-polkit
 pkgname=${_pkgname}-git
-pkgver=8.be888ee
-pkgrel=3
-pkgdesc="A simple PolicyKit authentication agent for XFCE"
-arch=('i686' 'x86_64')
+pkgver=17.6ad1ee8
+pkgrel=1
+pkgdesc='A simple PolicyKit authentication agent for XFCE'
+arch=('x86_64' 'i686')
 url="https://github.com/ncopa/xfce-polkit"
 license=(GPL)
 depends=('polkit' 'libxfce4ui')
 makedepends=('git')
 provides=("${_pkgname}" "polkit-gnome")
 conflicts=("${_pkgname}" "polkit-gnome")
-source=("git+$url"
-    "xfce-polkit.desktop")
+source=(git+$url
+        xfce-polkit.desktop)
 md5sums=('SKIP'
-    '7f0d7f7583351851be1bf4c1665fdf91')
+         '7f0d7f7583351851be1bf4c1665fdf91')
 install=xfce-polkit.install
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo "$(git rev-list --count HEAD).$(git describe --always)" | sed 's|-|.|g'
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() { 
