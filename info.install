@@ -1,0 +1,28 @@
+infodir="/usr/share/info"
+filelist=(
+	djgpp-djasm.info
+	djgpp-kb.info
+	djgpp-libc.info
+	djgpp-libm.info
+	djgpp-utils.info
+)
+
+post_install() {
+	if [[ -x "/usr/bin/install-info" ]]; then
+		for file in ${filelist[@]}; do
+			install-info "${infodir}/${file}" "${infodir}/dir" 2> /dev/null
+		done
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	if [[ -x "/usr/bin/install-info" ]]; then
+		for file in ${filelist[@]}; do
+			install-info --delete "${infodir}/${file}" "${infodir}/dir" 2> /dev/null
+		done
+	fi
+}

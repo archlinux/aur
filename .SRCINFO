@@ -1,8 +1,9 @@
 pkgbase = djgpp-djcrx-beta
 	pkgdesc = Headers and utilities for the djgpp cross-compiler (beta version)
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.delorie.com/djgpp/
+	install = info.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -15,8 +16,10 @@ pkgbase = djgpp-djcrx-beta
 	options = !strip
 	source = http://www.delorie.com/pub/djgpp/beta/v2/djcrx205.zip
 	source = http://www.delorie.com/pub/djgpp/beta/v2/djlsr205.zip
+	source = info.install
 	sha512sums = 5f47d6826ceb43b70bcc8386abe4103c25237d969b3d85ef7e60738128e65c75be9ba4e758fccbb6fb2323e41d19d3db2e143a9ebc773359a3bfbffb4e35b8d4
 	sha512sums = 4a3e8f85cff246863458f2ed291617d3e7b08f91d68b3c70ed8c8ff26536083dff3d478e98cfab8ecb2c55b50d73e02b5ac353fba4c51db10308cb9b9cbad6e3
+	sha512sums = 9030c041274b96a6bea6447974000f84e22b9e6a3d2b610961bc4474aadc5dfe9de36a7ff2ecfa50bcd0b3226c4fa5a3f4534379c8be85d9e39938fa868061db
 
 pkgname = djgpp-djcrx-beta
 
