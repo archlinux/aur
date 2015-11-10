@@ -20,6 +20,7 @@ pkgbase = sxemacs-git
 	depends = libxaw
 	depends = postgresql-libs
 	depends = sox
+	depends = openmotif
 	provides = sxemacs
 	conflicts = sxemacs
 	conflicts = xemacs
