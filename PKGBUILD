@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis
-_commit='01bf957'
-pkgver=0.r695.g01bf957
+_commit='7f04e8a'
+pkgver=0.r700.g7f04e8a
 pkgrel=1
 pkgdesc='suckless vim like editor'
 arch=('i686' 'x86_64')

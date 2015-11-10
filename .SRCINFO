@@ -1,6 +1,6 @@
 pkgbase = vis
 	pkgdesc = suckless vim like editor
-	pkgver = 0.r695.g01bf957
+	pkgver = 0.r700.g7f04e8a
 	pkgrel = 1
 	url = http://repo.or.cz/vis.git
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = vis
 	depends = libtermkey
 	depends = lua
 	optdepends = lua-lpeg: for syntax highlighting
-	source = git://repo.or.cz/vis.git#commit=01bf957
+	source = git://repo.or.cz/vis.git#commit=7f04e8a
 	sha256sums = SKIP
 
 pkgname = vis
