@@ -1,0 +1,21 @@
+pkgbase = ipt-netflow-module-git
+	pkgdesc = High performance NetFlow v5, v9, IPFIX flow data export module for Linux kernel. GIT version.
+	pkgver = r301.1bbbcc2
+	pkgrel = 1
+	url = https://github.com/aabc/ipt-netflow
+	install = ipt-netflow.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = wget
+	depends = iptables
+	source = ipt-netflow::git+https://github.com/aabc/ipt-netflow.git
+	source = modprobe.conf
+	source = modules.conf
+	md5sums = SKIP
+	md5sums = ce5b763e857a38dab5f22ad77e0c248e
+	md5sums = 0e3c6d2164bd07a2603f0ad123ac68a8
+
+pkgname = ipt-netflow-module-git
+
