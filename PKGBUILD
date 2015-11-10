@@ -1,6 +1,8 @@
+# Maintainer: Michael Tiebesl <email@tiebesl.com>
+
 pkgname=masalla-icon-theme
 pkgver=0.8
-pkgrel=4
+pkgrel=5
 pkgdesc="A flat design icon theme by Hayder Majid"
 arch=('any')
 url="https://github.com/hayderctee/masalla-icon-theme"
@@ -8,7 +10,6 @@ license=('GPL3')
 depends=()
 makedepends=('git')
 optdepends=()
-provides=('masalla-icon-theme-git')
 conflicts=('masalla-icon-theme-git')
 source=('git+https://github.com/hayderctee/masalla-icon-theme.git')
 sha256sums=('SKIP')
