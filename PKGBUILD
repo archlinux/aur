@@ -2,7 +2,7 @@
 
 pkgname=kanban-bin
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Self hosted Kanban board for GitLab issues (precompiled binary)"
 arch=('x86_64')
 url="http://kanban.leanlabs.io/"
@@ -10,10 +10,16 @@ license=('MIT')
 depends=('redis')
 conflicts=('kanban')
 source=("kanban::https://github.com/leanlabsio/kanban/releases/download/${pkgver}/kanban_x86_64_linux"
-        "kanban.service")
+        "kanban.service"
+        "apache2.4.conf.example"
+        "apache2.4-ssl.conf.example"
+        )
 sha256sums=('6c4f9e3a48d29a16689fc825b34ff7e4705bea70dddb84cd4831a90397b0a455'
-            '40273cb5169a462b609b852b40e18eeb1cb742ebd6ced1181831e5eae108407e')
+            '40273cb5169a462b609b852b40e18eeb1cb742ebd6ced1181831e5eae108407e'
+            'a9d1cb56a566cdc5ced67e8d783b683fd8a4bf27f14a2e876c965d4c2ffc99fc'
+            '86f5a034ad456b786a0d809297a5451dc48443f9e2e2f92147477818bd552170')
 _homedir='/var/lib/kanban'
+_etcdir="/etc/webapps/kanban"
 
 post_install() {
     groupadd kanban &>/dev/null
@@ -27,4 +33,7 @@ post_remove() {
 package() {
     install -Dm755 "kanban" "${pkgdir}/usr/bin/kanban"
     install -Dm0644 kanban.service "${pkgdir}/usr/lib/systemd/system/kanban.service"
+    for __cfg in apache2.4 apache2.4-ssl; do
+        install -m644 "${srcdir}/${__cfg}.conf.example" "${pkgdir}${_etcdir}"
+    done
 }

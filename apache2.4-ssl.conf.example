@@ -1,0 +1,57 @@
+<VirtualHost *:80>
+  ServerName kanban.example.com
+  ServerSignature Off
+
+  RewriteEngine on
+  RewriteCond %{HTTPS} !=on
+  RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [NE,R,L]
+</VirtualHost>
+
+<VirtualHost *:443>
+  SSLEngine on
+  #strong encryption ciphers only
+  #see ciphers(1) http://www.openssl.org/docs/apps/ciphers.html
+  SSLProtocol all -SSLv2 -SSLv3
+  SSLHonorCipherOrder on
+#  SSLCipherSuite "ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS"
+  SSLCipherSuite "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA"
+  Header add Strict-Transport-Security: "max-age=15768000;includeSubdomains"
+  SSLCompression Off
+  SSLCertificateFile /etc/httpd/ssl.crt/kanban.example.com.crt
+  SSLCertificateKeyFile /etc/httpd/ssl.key/kanban.example.com.key
+  SSLCACertificateFile /etc/httpd/ssl.crt/your-ca.crt
+
+  ServerName kanban.example.com
+  ServerSignature Off
+
+  ProxyPreserveHost On
+
+  <Location />
+    # New authorization commands for apache 2.4 and up
+    # http://httpd.apache.org/docs/2.4/upgrading.html#access
+    Require all granted
+
+    ProxyPassReverse http://127.0.0.1:8080
+    ProxyPassReverse http://kanban.example.com/
+  </Location>
+
+  RewriteEngine on
+  RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
+  RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [P,QSA]
+  RequestHeader set X_FORWARDED_PROTO 'https'
+
+  DocumentRoot /usr/share/webapps/kanban
+
+  #Set up apache error documents, if back end goes down (i.e. 503 error) then a maintenance/deploy page is thrown up.
+  ErrorDocument 404 /404.html
+  ErrorDocument 422 /422.html
+  ErrorDocument 500 /500.html
+  ErrorDocument 503 /deploy.html
+
+  LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b" common_forwarded
+  ErrorLog /var/log/httpd/logs/kanban.example.com_error.log
+  CustomLog /var/log/httpd/logs/kanban.example.com_forwarded.log common_forwarded
+  CustomLog /var/log/httpd/logs/kanban.example.com_access.log combined env=!dontlog
+  CustomLog /var/log/httpd/logs/kanban.example.com.log combined
+
+</VirtualHost>

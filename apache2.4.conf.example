@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+  ServerName kanban.example.com
+  ServerSignature Off
+
+  ProxyPreserveHost On
+
+  <Location />
+    Require all granted
+
+    ProxyPassReverse http://127.0.0.1:8383
+    ProxyPassReverse http://kanban.example.com/
+  </Location>
+
+  DocumentRoot /usr/share/webapps/kanban
+  LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b" common_forwarded
+  ErrorLog  /var/log/httpd/logs/kanban.example.com_error.log
+  CustomLog /var/log/httpd/logs/kanban.example.com_forwarded.log common_forwarded
+  CustomLog /var/log/httpd/logs/kanban.example.com_access.log combined env=!dontlog
+  CustomLog /var/log/httpd/logs/kanban.example.com.log combined
+
+</VirtualHost>
