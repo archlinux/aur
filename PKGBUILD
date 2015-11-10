@@ -2,7 +2,7 @@
 
 pkgname=kanban-bin
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Self hosted Kanban board for GitLab issues (precompiled binary)"
 arch=('x86_64')
 url="http://kanban.leanlabs.io/"
@@ -13,6 +13,7 @@ source=("kanban::https://github.com/leanlabsio/kanban/releases/download/${pkgver
         "kanban.service")
 sha256sums=('6c4f9e3a48d29a16689fc825b34ff7e4705bea70dddb84cd4831a90397b0a455'
             '40273cb5169a462b609b852b40e18eeb1cb742ebd6ced1181831e5eae108407e')
+_homedir='/var/lib/kanban'
 
 post_install() {
     groupadd kanban &>/dev/null

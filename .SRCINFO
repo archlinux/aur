@@ -1,7 +1,7 @@
 pkgbase = kanban-bin
 	pkgdesc = Self hosted Kanban board for GitLab issues (precompiled binary)
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kanban.leanlabs.io/
 	arch = x86_64
 	license = MIT
