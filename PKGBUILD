@@ -2,12 +2,13 @@
 
 pkgname=gitlab-workhorse
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP server to unload Git HTTP traffic from GitLab Rails app (Unicorn)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-workhorse"
 license=('MIT')
 depends=('gitlab')
+conflicts=('gitlab-git-http-server')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/${pkgname}/repository/archive.tar.gz?ref=${pkgver}"
         "gitlab-workhorse.service")
