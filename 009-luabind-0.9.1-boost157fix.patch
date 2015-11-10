@@ -1,0 +1,22 @@
+diff -up luabind-0.9.1/luabind/object.hpp\~ luabind-0.9.1/luabind/object.hpp
+--- luabind-0.9.1/luabind/object.hpp~	2015-02-04 02:48:49.558745199 +0100
++++ luabind-0.9.1/luabind/object.hpp	2015-02-04 02:50:22.184188471 +0100
+@@ -551,14 +551,14 @@ namespace detail
+       basic_iterator<basic_access> const& x \
+     , basic_iterator<basic_access> const& y) \
+   { \
+-      return boost::operator op(x, y); \
++      return boost::iterators::operator op(x, y); \
+   } \
+  \
+   inline bool operator op( \
+       basic_iterator<raw_access> const& x \
+     , basic_iterator<raw_access> const& y) \
+   { \
+-      return boost::operator op(x, y); \
++      return boost::iterators::operator op(x, y); \
+   }
+ 
+   LUABIND_OPERATOR_ADL_WKND(==)
+
+Diff finished.  Wed Feb  4 02:52:16 2015

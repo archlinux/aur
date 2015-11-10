@@ -1,0 +1,56 @@
+diff -up luabind-0.9.1/luabind/detail/call_function.hpp.boost luabind-0.9.1/luabind/detail/call_function.hpp
+--- luabind-0.9.1/luabind/detail/call_function.hpp.boost	2013-01-14 12:56:44.024217074 -0500
++++ luabind-0.9.1/luabind/detail/call_function.hpp	2013-01-14 12:57:18.598223390 -0500
+@@ -323,7 +323,8 @@ namespace luabind
+ 
+ #endif // LUABIND_CALL_FUNCTION_HPP_INCLUDED
+ 
+-#elif BOOST_PP_ITERATION_FLAGS() == 1
++#else
++#if BOOST_PP_ITERATION_FLAGS() == 1
+ 
+ #define LUABIND_TUPLE_PARAMS(z, n, data) const A##n *
+ #define LUABIND_OPERATOR_PARAMS(z, n, data) const A##n & a##n
+@@ -440,4 +441,4 @@ namespace luabind
+ 
+ 
+ #endif
+-
++#endif
+diff -up luabind-0.9.1/luabind/detail/call_member.hpp.boost luabind-0.9.1/luabind/detail/call_member.hpp
+--- luabind-0.9.1/luabind/detail/call_member.hpp.boost	2013-01-14 12:59:09.825244981 -0500
++++ luabind-0.9.1/luabind/detail/call_member.hpp	2013-01-14 12:59:34.069252456 -0500
+@@ -316,7 +316,8 @@ namespace luabind
+ 
+ #endif // LUABIND_CALL_MEMBER_HPP_INCLUDED
+ 
+-#elif BOOST_PP_ITERATION_FLAGS() == 1
++#else
++#if BOOST_PP_ITERATION_FLAGS() == 1
+ 
+ #define LUABIND_TUPLE_PARAMS(z, n, data) const A##n *
+ #define LUABIND_OPERATOR_PARAMS(z, n, data) const A##n & a##n
+@@ -360,4 +361,4 @@ namespace luabind
+ #undef LUABIND_TUPLE_PARAMS
+ 
+ #endif
+-
++#endif
+diff -up luabind-0.9.1/luabind/wrapper_base.hpp.boost luabind-0.9.1/luabind/wrapper_base.hpp
+--- luabind-0.9.1/luabind/wrapper_base.hpp.boost	2013-01-14 12:59:47.984261884 -0500
++++ luabind-0.9.1/luabind/wrapper_base.hpp	2013-01-14 13:00:05.707268014 -0500
+@@ -89,7 +89,8 @@ namespace luabind
+ 
+ #endif // LUABIND_WRAPPER_BASE_HPP_INCLUDED
+ 
+-#elif BOOST_PP_ITERATION_FLAGS() == 1
++#else
++#if BOOST_PP_ITERATION_FLAGS() == 1
+ 
+ #define LUABIND_TUPLE_PARAMS(z, n, data) const A##n *
+ #define LUABIND_OPERATOR_PARAMS(z, n, data) const A##n & a##n
+@@ -188,3 +189,4 @@ namespace luabind
+ #undef N
+ 
+ #endif
++#endif

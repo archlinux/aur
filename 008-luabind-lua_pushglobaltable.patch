@@ -1,0 +1,75 @@
+From 8c66030818f0eacbb7356c16776539b55d8c5319 Mon Sep 17 00:00:00 2001
+From: Peter Colberg <peter.colberg@utoronto.ca>
+Date: Fri, 23 Dec 2011 12:53:29 -0500
+Subject: [PATCH] Lua 5.2: use new macro lua_pushglobaltable
+
+This macro is not mentioned in the Lua 5.2 manual.
+---
+ luabind/object.hpp |  8 +++-----
+ src/scope.cpp      | 10 +++++-----
+ 2 files changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/luabind/object.hpp b/luabind/object.hpp
+index 4c877b9..5e2771c 100644
+--- a/luabind/object.hpp
++++ b/luabind/object.hpp
+@@ -50,6 +50,7 @@
+ # define LUA_OPEQ lua_equal
+ # define LUA_OPLT lua_lessthan
+ # define lua_rawlen lua_objlen
++# define lua_pushglobaltable(L) lua_pushvalue(L, LUA_GLOBALSINDEX)
+ #endif
+ 
+ namespace luabind {
+@@ -1214,11 +1215,7 @@ inline object newtable(lua_State* interpreter)
+ // this could be optimized by returning a proxy
+ inline object globals(lua_State* interpreter)
+ {
+-#if LUA_VERSION_NUM >= 502
+-    lua_rawgeti(interpreter, LUA_REGISTRYINDEX, LUA_RIDX_GLOBALS);
+-#else
+-    lua_pushvalue(interpreter, LUA_GLOBALSINDEX);
+-#endif
++    lua_pushglobaltable(interpreter);
+     detail::stack_pop pop(interpreter, 1);
+     return object(from_stack(interpreter, -1));
+ }
+@@ -1422,6 +1419,7 @@ object property(GetValueWrapper const& get, SetValueWrapper const& set)
+ # undef LUA_OPEQ
+ # undef LUA_OPLT
+ # undef lua_rawlen
++# undef lua_pushglobaltable
+ #endif
+ 
+ #endif // LUABIND_OBJECT_050419_HPP
+diff --git a/src/scope.cpp b/src/scope.cpp
+index 24a94c9..8b0ed9e 100755
+--- a/src/scope.cpp
++++ b/src/scope.cpp
+@@ -29,6 +29,10 @@
+ #include <luabind/detail/stack_utils.hpp>
+ #include <cassert>
+ 
++#if LUA_VERSION_NUM < 502
++# define lua_pushglobaltable(L) lua_pushvalue(L, LUA_GLOBALSINDEX)
++#endif
++
+ namespace luabind { namespace detail {
+ 
+     registration::registration()
+@@ -149,11 +153,7 @@
+         }
+         else
+         {
+-#if LUA_VERSION_NUM >= 502
+-            lua_rawgeti(m_state, LUA_REGISTRYINDEX, LUA_RIDX_GLOBALS);
+-#else
+-            lua_pushvalue(m_state, LUA_GLOBALSINDEX);
+-#endif
++            lua_pushglobaltable(m_state);
+         }
+ 
+         lua_pop_stack guard(m_state);
+-- 
+1.8.1.6
+

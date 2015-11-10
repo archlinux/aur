@@ -1,0 +1,31 @@
+From 3866d4c25b7949285dbb7feb90c3025e42a5deea Mon Sep 17 00:00:00 2001
+From: Peter Colberg <peter.colberg@utoronto.ca>
+Date: Wed, 21 Dec 2011 15:13:07 -0500
+Subject: [PATCH] Lua 5.2: fix test_free_functions unit test
+
+The line triggering the error is truncated at a different position.
+---
+ test/test_free_functions.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/test/test_free_functions.cpp b/test/test_free_functions.cpp
+index 6a2df4b..9b649a7 100644
+--- a/test/test_free_functions.cpp
++++ b/test/test_free_functions.cpp
+@@ -144,7 +144,12 @@ void test_main(lua_State* L)
+     catch(luabind::error const& e)
+     {
+         if (std::string("[string \"function failing_fun() error('expected "
+-            "erro...\"]:1: expected error message") != lua_tostring(L, -1))
++#if LUA_VERSION_NUM >= 502
++            "error ..."
++#else
++            "erro..."
++#endif
++            "\"]:1: expected error message") != lua_tostring(L, -1))
+         {
+             TEST_ERROR("function failed with unexpected error message");
+         }
+-- 
+1.8.1.6
+

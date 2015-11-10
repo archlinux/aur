@@ -1,0 +1,117 @@
+From b61d233ac2a1d30a38bc56d54e602a9653fb6b4a Mon Sep 17 00:00:00 2001
+From: Peter Colberg <peter.colberg@utoronto.ca>
+Date: Wed, 21 Dec 2011 12:37:51 -0500
+Subject: [PATCH] Lua 5.2: replace lua_equal and lua_lessthan with lua_compare
+
+http://www.lua.org/manual/5.2/manual.html#8.3
+
+http://www.lua.org/manual/5.2/manual.html#lua_compare
+---
+ doc/docs.rst         |  2 +-
+ luabind/object.hpp   | 20 ++++++++++++++++----
+ src/create_class.cpp |  9 +++++++--
+ 3 files changed, 24 insertions(+), 7 deletions(-)
+
+diff --git a/doc/docs.rst b/doc/docs.rst
+index d9543a6..61a1bce 100755
+--- a/doc/docs.rst
++++ b/doc/docs.rst
+@@ -1116,7 +1116,7 @@ The ``interpreter()`` function returns the Lua state where this object is stored
+ If you want to manipulate the object with Lua functions directly you can push
+ it onto the Lua stack by calling ``push()``.
+ 
+-The operator== will call lua_equal() on the operands and return its result.
++The operator== will call lua_compare() on the operands and return its result.
+ 
+ The ``is_valid()`` function tells you whether the object has been initialized
+ or not. When created with its default constructor, objects are invalid. To make
+diff --git a/luabind/object.hpp b/luabind/object.hpp
+index f7b7ca5..106c2e2 100644
+--- a/luabind/object.hpp
++++ b/luabind/object.hpp
+@@ -45,6 +45,12 @@
+ #include <boost/preprocessor/iteration/iterate.hpp>
+ #include <boost/utility/enable_if.hpp>
+ 
++#if LUA_VERSION_NUM < 502
++# define lua_compare(L, index1, index2, fn) fn(L, index1, index2)
++# define LUA_OPEQ lua_equal
++# define LUA_OPLT lua_lessthan
++#endif
++
+ namespace luabind {
+ 
+ namespace detail 
+@@ -208,11 +214,11 @@
+       detail::stack_pop pop2(L, 1); \
+       detail::push(L, rhs); \
+ \
+-      return fn(L, -1, -2) != 0; \
++      return lua_compare(L, -1, -2, fn) != 0; \
+   }
+ 
+-LUABIND_BINARY_OP_DEF(==, lua_equal)
+-LUABIND_BINARY_OP_DEF(<, lua_lessthan)
++LUABIND_BINARY_OP_DEF(==, LUA_OPEQ)
++LUABIND_BINARY_OP_DEF(<, LUA_OPLT)
+ 
+   template<class ValueWrapper>
+   std::ostream& operator<<(std::ostream& os
+@@ -523,7 +529,7 @@
+           detail::stack_pop pop(m_interpreter, 2);
+           m_key.push(m_interpreter);
+           other.m_key.push(m_interpreter);
+-          return lua_equal(m_interpreter, -2, -1) != 0;
++          return lua_compare(m_interpreter, -2, -1, LUA_OPEQ) != 0;
+       }
+ 
+       adl::iterator_proxy<AccessPolicy> dereference() const 
+@@ -1406,5 +1412,11 @@ object property(GetValueWrapper const& get, SetValueWrapper const& set)
+ 
+ } // namespace luabind
+ 
++#if LUA_VERSION_NUM < 502
++# undef lua_compare
++# undef LUA_OPEQ
++# undef LUA_OPLT
++#endif
++
+ #endif // LUABIND_OBJECT_050419_HPP
+ 
+diff --git a/src/create_class.cpp b/src/create_class.cpp
+index c0eb719..9800c15 100755
+--- a/src/create_class.cpp
++++ b/src/create_class.cpp
+@@ -26,6 +26,11 @@
+ 
+ #include <luabind/luabind.hpp>
+ 
++#if LUA_VERSION_NUM < 502
++# define lua_compare(L, index1, index2, fn) fn(L, index1, index2)
++# define LUA_OPEQ lua_equal
++#endif
++
+ namespace luabind { namespace detail
+ {
+ 	namespace
+@@ -40,7 +45,7 @@
+ 			while (lua_next(L, -2))
+ 			{
+ 				lua_pushstring(L, "__init");
+-				if (lua_equal(L, -1, -3))
++				if (lua_compare(L, -1, -3, LUA_OPEQ))
+ 				{
+ 					lua_pop(L, 2);
+ 					continue;
+@@ -48,7 +53,7 @@
+ 				else lua_pop(L, 1); // __init string
+ 
+ 				lua_pushstring(L, "__finalize");
+-				if (lua_equal(L, -1, -3))
++				if (lua_compare(L, -1, -3, LUA_OPEQ))
+ 				{
+ 					lua_pop(L, 2);
+ 					continue;
+-- 
+1.8.1.6
+
