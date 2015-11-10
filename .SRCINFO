@@ -1,0 +1,24 @@
+pkgbase = sview
+	pkgdesc = Stereoscopic 3D video player with OpenGL UI
+	pkgver = 15.10.1
+	pkgrel = 1
+	url = http://www.sview.ru/en
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libconfig
+	depends = ffmpeg
+	depends = freetype2
+	depends = gtk2
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = libxpm
+	depends = openal
+	optdepends = ttf-droid
+	optdepends = ttf-nanum
+	source = http://download.sview.ru/src/sview-15.10-1.tar.gz
+	sha256sums = 6cdf9e31c26b607914954ec821d164c58f707742e4a0d3a2cae9a8246abc667c
+
+pkgname = sview
+
