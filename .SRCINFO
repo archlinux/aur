@@ -1,0 +1,15 @@
+pkgbase = kanban-bin
+	pkgdesc = Self hosted Kanban board for GitLab issues (precompiled binary)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://kanban.leanlabs.io/
+	arch = x86_64
+	license = MIT
+	depends = redis
+	source = kanban::https://github.com/leanlabsio/kanban/releases/download/1.4.1/kanban_x86_64_linux
+	source = kanban.service
+	sha256sums = 6c4f9e3a48d29a16689fc825b34ff7e4705bea70dddb84cd4831a90397b0a455
+	sha256sums = 40273cb5169a462b609b852b40e18eeb1cb742ebd6ced1181831e5eae108407e
+
+pkgname = kanban-bin
+

@@ -1,0 +1,23 @@
+[Unit]
+Description=Leanlabs Kanban board
+Requires=redis.service
+
+[Service]
+User=kanban
+Group=kanban
+SyslogIdentifier=kanban
+PIDFile=/run/kanban/kanban.pid
+
+CapabilityBoundingSet=
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+ExecStart=/usr/bin/kanban server --redis-addr=127.0.0.1:6379 --server-listen=0.0.0.0:8383
+ExecStop=/usr/bin/kill -QUIT $MAINPID
+ExecReload=/usr/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
