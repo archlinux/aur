@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=LYY Downloader
+GenericName=Video Downloader
+GenericName[zh_CN]=乐影音下载器
+Comment=Download videos from China video websites
+Comment[zh_CN]=从中国视频网站下载视频
+Exec=lyy-downloader
+Icon=lyy-downloader
+Terminal=false
+Categories=Utility;AudioVideo;
+StartupNotify=true

@@ -1,0 +1,18 @@
+pkgbase = lyy-downloader
+	pkgdesc = A gui program to download videos from China video websites
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://mathjoy.lofter.com/post/42208d_7cabd00
+	install = lyy-downloader.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	source = lyy-downloader.desktop
+	md5sums = d276eaf627317aa7b7495e2af0cb341e
+	source_x86_64 = http://public.vanitas.me/lyy-downloader/lyy-downloader-4.0-x86_64.tar.gz
+	md5sums_x86_64 = c084b636d24010eea2f78293608d316f
+	source_i686 = http://public.vanitas.me/lyy-downloader/lyy-downloader-4.0-i686.tar.gz
+	md5sums_i686 = 175d67aec92ae6a90e14af6a284f9328
+
+pkgname = lyy-downloader
+
