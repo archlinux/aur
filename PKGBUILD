@@ -1,25 +1,30 @@
 # Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
 pkgname=connman-gtk
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="GTK GUI for ConnMan"
 arch=('i686' 'x86_64')
 url="https://github.com/jgke/connman-gtk"
 license=('GPL')
-depends=('intltool' 'glib2' 'gtk3')
-makedepends=('git')
+depends=('glib2' 'gtk3')
+makedepends=('intltool' 'git')
+optdepends=('openconnect: for AnyConnect VPNs')
+install=$pkgname.install
 source=("git+https://github.com/jgke/connman-gtk.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/$pkgname"
   ./autogen.sh
-  ./configure
+  ./configure \
+    --bindir=/usr/bin \
+    --datarootdir=/usr/share \
+    --mandir=/usr/share/man
   make
 }
 
 package() {
   cd "${srcdir}/$pkgname"
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
 
