@@ -1,0 +1,33 @@
+pkgbase = python-tornado-401
+	pkgdesc = open source version of the scalable, non-blocking web server and tools (this package gives the old API for some applications)
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = http://www.tornadoweb.org/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = Apache
+	checkdepends = python-pycurl
+	checkdepends = python2-pycurl
+	checkdepends = python-mock
+	checkdepends = python2-mock
+	checkdepends = python-twisted
+	checkdepends = python2-twisted
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python2-backports.ssl_match_hostname
+	makedepends = git
+	makedepends = python-certifi
+	makedepends = python2-certifi
+	conflicts = python-tornado
+	conflicts = python2-tornado
+	source = git+https://github.com/facebook/tornado.git#tag=v4.0.1
+	sha512sums = SKIP
+
+pkgname = python-tornado-401
+	depends = python-certifi
+
+pkgname = python2-tornado-401
+	depends = python2-certifi
+	depends = python2-backports.ssl_match_hostname
+
