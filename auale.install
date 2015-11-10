@@ -1,0 +1,20 @@
+post_install() {
+    glib-compile-schemas usr/share/glib-2.0/schemas || :
+    gtk-update-icon-cache usr/share/icons &> /dev/null || :
+    update-mime-database usr/share/mime &> /dev/null || :
+    update-desktop-database &> /dev/null || :
+}
+
+post_upgrade() {
+    glib-compile-schemas usr/share/glib-2.0/schemas || :
+    gtk-update-icon-cache usr/share/icons &> /dev/null || :
+    update-mime-database usr/share/mime &> /dev/null || :
+    update-desktop-database &> /dev/null || :
+}
+
+post_remove() {
+    glib-compile-schemas usr/share/glib-2.0/schemas || :
+    gtk-update-icon-cache usr/share/icons &> /dev/null || :
+    update-mime-database usr/share/mime &> /dev/null || :
+    update-desktop-database &> /dev/null || :
+}
