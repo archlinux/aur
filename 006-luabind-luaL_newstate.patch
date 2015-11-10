@@ -1,0 +1,140 @@
+From f62198290a5e350c5532fb5cedb7ead3703d7b42 Mon Sep 17 00:00:00 2001
+From: Peter Colberg <peter.colberg@utoronto.ca>
+Date: Wed, 21 Dec 2011 13:51:37 -0500
+Subject: [PATCH] Lua 5.2: replace lua_open with luaL_newstate
+
+This commit drops support for Lua 5.0, since Luabind is incompatible
+with Lua 5.0 anyway, e.g. commit 7dc37f9 requires lua_Integer added
+in Lua 5.1.
+---
+ doc/docs.rst                             | 2 +-
+ examples/any_converter/any_converter.cpp | 2 +-
+ examples/cln/cln_test.cpp                | 2 +-
+ examples/filesystem/filesystem.cpp       | 2 +-
+ examples/glut/glut_bind.cpp              | 2 +-
+ examples/intrusive_ptr/intrusive_ptr.cpp | 2 +-
+ examples/regexp/regex_wrap.cpp           | 2 +-
+ test/benchmark.cpp                       | 2 +-
+ test/main.cpp                            | 2 +-
+ 9 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/doc/docs.rst b/doc/docs.rst
+index 61a1bce..0a7ef92 100755
+--- a/doc/docs.rst
++++ b/doc/docs.rst
+@@ -1734,7 +1734,7 @@ follows::
+     {
+         try
+         {
+-            lua_state L = lua_open();
++            lua_state L = luaL_newstate();
+             /* ... */
+         }
+         catch(luabind::error& e)
+diff --git a/examples/any_converter/any_converter.cpp b/examples/any_converter/any_converter.cpp
+index a5f6995..59c42dd 100644
+--- a/examples/any_converter/any_converter.cpp
++++ b/examples/any_converter/any_converter.cpp
+@@ -69,7 +69,7 @@ int main()
+ 	register_any_converter<const char*>();
+ 	register_any_converter<std::string>();
+ 
+-	lua_State* L = lua_open();
++	lua_State* L = luaL_newstate();
+ #if LUA_VERSION_NUM >= 501 
+ 	luaL_openlibs(L);
+ #else
+diff --git a/examples/cln/cln_test.cpp b/examples/cln/cln_test.cpp
+index 24c622a..c2332bb 100644
+--- a/examples/cln/cln_test.cpp
++++ b/examples/cln/cln_test.cpp
+@@ -107,7 +107,7 @@ void bind_cln(lua_State* L)
+ 
+ int main()
+ {
+-	lua_State* L = lua_open();
++	lua_State* L = luaL_newstate();
+ 	lua_baselibopen(L);
+ 	lua_mathlibopen(L);
+ 	luabind::open(L);
+diff --git a/examples/filesystem/filesystem.cpp b/examples/filesystem/filesystem.cpp
+index 5d6915e..f51e0d0 100755
+--- a/examples/filesystem/filesystem.cpp
++++ b/examples/filesystem/filesystem.cpp
+@@ -78,7 +78,7 @@ void bind_filesystem(lua_State* L)
+ 
+ int main(int argc, const char* argv[])
+ {
+-	lua_State* L = lua_open();
++	lua_State* L = luaL_newstate();
+ 	luaopen_base(L);
+ 	luaopen_string(L);
+ 	luaopen_table(L);
+diff --git a/examples/glut/glut_bind.cpp b/examples/glut/glut_bind.cpp
+index f7022ee..d8941f5 100644
+--- a/examples/glut/glut_bind.cpp
++++ b/examples/glut/glut_bind.cpp
+@@ -167,7 +167,7 @@ void bind_glut(lua_State* L)
+ 
+ int main(int argc, char* argv[])
+ {
+-	lua_State* L = lua_open();
++	lua_State* L = luaL_newstate();
+ 	lua_baselibopen(L);
+ 	lua_mathlibopen(L);
+ 	bind_glut(L);
+diff --git a/examples/intrusive_ptr/intrusive_ptr.cpp b/examples/intrusive_ptr/intrusive_ptr.cpp
+index d477948..02df972 100644
+--- a/examples/intrusive_ptr/intrusive_ptr.cpp
++++ b/examples/intrusive_ptr/intrusive_ptr.cpp
+@@ -140,7 +140,7 @@ void f(boost::intrusive_ptr<A> ptr)
+ 
+ int main()
+ {
+-	lua_State* L = lua_open();
++	lua_State* L = luaL_newstate();
+ 	lua_baselibopen(L);
+ 
+ 	luabind::open(L);
+diff --git a/examples/regexp/regex_wrap.cpp b/examples/regexp/regex_wrap.cpp
+index 6a924cb..0219100 100644
+--- a/examples/regexp/regex_wrap.cpp
++++ b/examples/regexp/regex_wrap.cpp
+@@ -44,7 +44,7 @@ void wrap_regex(lua_State* L)
+ 
+ int main()
+ {
+-	lua_State* L = lua_open();
++	lua_State* L = luaL_newstate();
+ 	lua_baselibopen(L);
+ 	lua_strlibopen(L);
+ 	luabind::open(L);
+diff --git a/test/benchmark.cpp b/test/benchmark.cpp
+index 1923e8e..124c619 100644
+--- a/test/benchmark.cpp
++++ b/test/benchmark.cpp
+@@ -41,7 +41,7 @@ int main()
+ 
+ 	using namespace luabind;
+ 
+-	lua_State* L = lua_open();
++	lua_State* L = luaL_newstate();
+ 	open(L);
+ 	
+ 	class_<A>(L, "A")
+diff --git a/test/main.cpp b/test/main.cpp
+index 3152c73..baa0eac 100644
+--- a/test/main.cpp
++++ b/test/main.cpp
+@@ -50,7 +50,7 @@ struct lua_state
+ };
+ 
+ lua_state::lua_state()
+-    : m_state(lua_open())
++    : m_state(luaL_newstate())
+ {
+     luaopen_base(m_state);
+ #if defined(LUA_VERSION_NUM) && LUA_VERSION_NUM >= 501
+-- 
+1.8.1.6
+

@@ -1,0 +1,41 @@
+From 6497a5a598e86ee08d4f8a35b68508661bb11617 Mon Sep 17 00:00:00 2001
+From: Peter Colberg <peter.colberg@utoronto.ca>
+Date: Wed, 21 Dec 2011 13:45:38 -0500
+Subject: [PATCH] Lua 5.2: pass extra parameter NULL to lua_resume
+
+http://www.lua.org/manual/5.2/manual.html#8.3
+
+This commit drops support for Lua 5.0, since Luabind is incompatible
+with Lua 5.0 anyway, e.g. commit 7dc37f9 requires lua_Integer added
+in Lua 5.1.
+---
+ src/pcall.cpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/pcall.cpp b/src/pcall.cpp
+index 66dbeaa..817884c 100755
+--- a/src/pcall.cpp
++++ b/src/pcall.cpp
+@@ -47,14 +47,14 @@
+ 
+ 	int resume_impl(lua_State *L, int nargs, int)
+ 	{
+-#if LUA_VERSION_NUM >= 501
++#if LUA_VERSION_NUM >= 502
++		int res = lua_resume(L, NULL, nargs);
++#else
++		int res = lua_resume(L, nargs);
++#endif
+ 		// Lua 5.1 added  LUA_YIELD as a possible return value,
+ 		// this was causing crashes, because the caller expects 0 on success.
+-		int res = lua_resume(L, nargs);
+ 		return (res == LUA_YIELD) ? 0 : res;
+-#else
+-		return lua_resume(L, nargs);
+-#endif
+ 	}
+ 
+ }}
+-- 
+1.8.1.6
+

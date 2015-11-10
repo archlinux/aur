@@ -1,0 +1,130 @@
+From c6f38b86ce9593cacd73f359e68f3377cd71f053 Mon Sep 17 00:00:00 2001
+From: Peter Colberg <peter.colberg@utoronto.ca>
+Date: Wed, 21 Dec 2011 13:32:47 -0500
+Subject: [PATCH] Lua 5.2: replace lua_strlen with lua_rawlen
+
+lua_strlen was a macro for lua_objlen, which is superseded by lua_rawlen.
+
+http://www.lua.org/manual/5.2/manual.html#8.3
+
+This commit drops support for Lua 5.0, since Luabind is incompatible
+with Lua 5.0 anyway, e.g. commit 7dc37f9 requires lua_Integer added
+in Lua 5.1.
+---
+ luabind/detail/policy.hpp | 10 +++++++++-
+ luabind/object.hpp        |  4 +++-
+ src/class_rep.cpp         |  6 +++++-
+ src/create_class.cpp      |  3 ++-
+ 4 files changed, 19 insertions(+), 4 deletions(-)
+
+diff --git a/luabind/detail/policy.hpp b/luabind/detail/policy.hpp
+index 689c733..bd0feec 100644
+--- a/luabind/detail/policy.hpp
++++ b/luabind/detail/policy.hpp
+@@ -66,6 +66,10 @@
+ #include <luabind/from_stack.hpp>
+ #include <luabind/typeid.hpp>
+ 
++#if LUA_VERSION_NUM < 502
++# define lua_rawlen lua_objlen
++#endif
++
+ namespace luabind
+ {
+ 	namespace detail
+@@ -745,7 +749,7 @@ struct default_converter<std::string>
+ 
+     std::string from(lua_State* L, int index)
+     {
+-        return std::string(lua_tostring(L, index), lua_strlen(L, index));
++        return std::string(lua_tostring(L, index), lua_rawlen(L, index));
+     }
+ 
+     void to(lua_State* L, std::string const& value)
+@@ -1017,5 +1021,9 @@ struct default_converter<lua_State*>
+ #endif
+ }}
+ 
++#if LUA_VERSION_NUM < 502
++# undef lua_rawlen
++#endif
++
+ #endif // LUABIND_POLICY_HPP_INCLUDED
+ 
+diff --git a/luabind/object.hpp b/luabind/object.hpp
+index 698d236..4c877b9 100644
+--- a/luabind/object.hpp
++++ b/luabind/object.hpp
+@@ -49,6 +49,7 @@
+ # define lua_compare(L, index1, index2, fn) fn(L, index1, index2)
+ # define LUA_OPEQ lua_equal
+ # define LUA_OPLT lua_lessthan
++# define lua_rawlen lua_objlen
+ #endif
+ 
+ namespace luabind {
+@@ -231,7 +232,7 @@
+       value_wrapper_traits<ValueWrapper>::unwrap(interpreter
+         , static_cast<ValueWrapper const&>(v));
+ 		char const* p = lua_tostring(interpreter, -1);
+-        std::size_t len = lua_strlen(interpreter, -1);
++        std::size_t len = lua_rawlen(interpreter, -1);
+ 		std::copy(p, p + len, std::ostream_iterator<char>(os));
+ 		return os;
+ 	}
+@@ -1420,6 +1421,7 @@ object property(GetValueWrapper const& get, SetValueWrapper const& set)
+ # undef lua_compare
+ # undef LUA_OPEQ
+ # undef LUA_OPLT
++# undef lua_rawlen
+ #endif
+ 
+ #endif // LUABIND_OBJECT_050419_HPP
+diff --git a/src/class_rep.cpp b/src/class_rep.cpp
+index 5f03f39..23c58b3 100755
+--- a/src/class_rep.cpp
++++ b/src/class_rep.cpp
+@@ -31,6 +31,10 @@
+ #include <luabind/get_main_thread.hpp>
+ #include <utility>
+ 
++#if LUA_VERSION_NUM < 502
++# define lua_rawlen lua_objlen
++#endif
++
+ using namespace luabind::detail;
+ 
+ namespace luabind { namespace detail
+@@ -287,7 +291,7 @@ int luabind::detail::class_rep::static_class_gettable(lua_State* L)
+ 
+ 	const char* key = lua_tostring(L, 2);
+ 
+-	if (std::strlen(key) != lua_strlen(L, 2))
++	if (std::strlen(key) != lua_rawlen(L, 2))
+ 	{
+ 		lua_pushnil(L);
+ 		return 1;
+diff --git a/src/create_class.cpp b/src/create_class.cpp
+index 738cf9b..7bce6dd 100755
+--- a/src/create_class.cpp
++++ b/src/create_class.cpp
+@@ -29,6 +29,7 @@
+ #if LUA_VERSION_NUM < 502
+ # define lua_compare(L, index1, index2, fn) fn(L, index1, index2)
+ # define LUA_OPEQ lua_equal
++# define lua_rawlen lua_objlen
+ #endif
+ 
+ namespace luabind { namespace detail
+@@ -117,7 +118,7 @@
+ 			lua_error(L);
+ 		}
+ 
+-		if (std::strlen(lua_tostring(L, 1)) != lua_strlen(L, 1))
++		if (std::strlen(lua_tostring(L, 1)) != lua_rawlen(L, 1))
+ 		{
+ 			lua_pushstring(L, "luabind does not support class names with extra nulls");
+ 			lua_error(L);
+-- 
+1.8.1.6
+

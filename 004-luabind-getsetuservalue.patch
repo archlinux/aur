@@ -1,0 +1,65 @@
+From 9d9130ae22c2a32b0275189aa8ff28ac293edf66 Mon Sep 17 00:00:00 2001
+From: Peter Colberg <peter.colberg@utoronto.ca>
+Date: Wed, 21 Dec 2011 13:41:29 -0500
+Subject: [PATCH] Lua 5.2: replace lua_[gs]etfenv with lua_[gs]etuservalue
+
+http://www.lua.org/manual/5.2/manual.html#8.1
+---
+ src/object_rep.cpp | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/src/object_rep.cpp b/src/object_rep.cpp
+index 6977bee..a8d990e 100755
+--- a/src/object_rep.cpp
++++ b/src/object_rep.cpp
+@@ -25,6 +25,11 @@
+ #include <luabind/detail/object_rep.hpp>
+ #include <luabind/detail/class_rep.hpp>
+ 
++#if LUA_VERSION_NUM < 502
++# define lua_getuservalue lua_getfenv
++# define lua_setuservalue lua_setfenv
++#endif
++
+ namespace luabind { namespace detail
+ {
+ 
+@@ -94,7 +99,7 @@
+ 
+       int set_instance_value(lua_State* L)
+       {
+-          lua_getfenv(L, 1);
++          lua_getuservalue(L, 1);
+           lua_pushvalue(L, 2);
+           lua_rawget(L, -2);
+ 
+@@ -129,7 +134,7 @@
+           {
+               lua_newtable(L);
+               lua_pushvalue(L, -1);
+-              lua_setfenv(L, 1);
++              lua_setuservalue(L, 1);
+               lua_pushvalue(L, 4);
+               lua_setmetatable(L, -2);
+           }
+@@ -147,7 +152,7 @@
+ 
+       int get_instance_value(lua_State* L)
+       {
+-          lua_getfenv(L, 1);
++          lua_getuservalue(L, 1);
+           lua_pushvalue(L, 2);
+           lua_rawget(L, -2);
+ 
+@@ -262,7 +267,7 @@
+         void* storage = lua_newuserdata(L, sizeof(object_rep));
+         object_rep* result = new (storage) object_rep(0, cls);
+         cls->get_table(L);
+-        lua_setfenv(L, -2);
++        lua_setuservalue(L, -2);
+         lua_rawgeti(L, LUA_REGISTRYINDEX, cls->metatable_ref());
+         lua_setmetatable(L, -2);
+         return result;
+-- 
+1.8.1.6
+
