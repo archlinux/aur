@@ -1,7 +1,7 @@
 # Maintainer: Silvio Knizek <killermoehre@gmx.net>
 pkgname=reflector-timer
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc='A service and timer for the reflector mirrorlist upgrade.'
 arch=('any')
 url='http://xyne.archlinux.ca/projects/reflector/'
@@ -11,8 +11,8 @@ backup=('etc/conf.d/reflector.conf')
 source=('reflector.service'
         'reflector.timer'
         'reflector.conf')
-md5sums=('41d8e59e224200a41c256ca465454c29'
-         '45f7496d7b0282f1f3ee5d5cb99c9cbb'
+md5sums=('14c1abb2af15976b520c24ac6b056087'
+         '3b43ecdcde2fde5ffc5a1dc5f9919a63'
          '621329d2064b2919b1fd0aaade0cc122')
 
 package() {
