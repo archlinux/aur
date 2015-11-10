@@ -1,0 +1,16 @@
+pkgbase = python-ruamel.yaml
+	pkgdesc = YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order
+	pkgver = 0.10.12
+	pkgrel = 1
+	url = https://bitbucket.org/ruamel/yaml
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/r/ruamel.yaml/ruamel.yaml-0.10.12.tar.gz
+	md5sums = 6b932474a12085f05f21b2c39d89a2a1
+
+pkgname = python-ruamel.yaml
+
