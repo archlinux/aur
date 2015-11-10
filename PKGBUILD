@@ -3,7 +3,7 @@
 # Contributor: markelos <axilleas@archlinux.gr>
 # Contributor: helios <aur@wiresphere.de>
 pkgname=spark
-pkgver=2.7.0
+pkgver=2.7.3
 pkgrel=0
 pkgdesc="Cross-platform real-time collaboration client optimized for business and organizations."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ if [[ $CARCH == i686 ]]; then
 fi
 options=('!strip')
 source=(http://download.igniterealtime.org/${pkgname}/${pkgname}_${pkgver//./_}.tar.gz)
-md5sums=('1e9b78887c31f45a8e500cd8f7cfdde4')
+md5sums=('18ed95bbbc1fc13897fdc3884aec10a9')
 
 conflicts=('spark-svn')
 
