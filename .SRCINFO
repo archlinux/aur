@@ -1,4 +1,4 @@
-pkgbase = plat-icon-theme-git
+pkgbase = plat-icon-theme
 	pkgdesc = A flat design icon theme by MichaelTiebesl
 	pkgver = 1.0
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = plat-icon-theme-git
 	source = git+https://github.com/MichaelTiebesl/Plat.git
 	sha256sums = SKIP
 
-pkgname = plat-icon-theme-git
+pkgname = plat-icon-theme
 
