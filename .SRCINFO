@@ -1,0 +1,13 @@
+pkgbase = djinni
+	pkgdesc = Djinni is a tool for generating cross-language type declarations and interface bindings.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dropbox/djinni
+	arch = any
+	license = Apache 2.0
+	depends = python
+	source = djinni::git+https://github.com/dropbox/djinni.git
+	sha512sums = SKIP
+
+pkgname = djinni
+
