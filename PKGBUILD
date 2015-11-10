@@ -9,13 +9,11 @@ url="http://tensorflow.org"
 depends=('python2' 'python2-numpy' 'python2-protobuf>=3.0.0')
 makedepends=('python2' 'python2-pip')
 license=('Apache')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 _filename="tensorflow-${pkgver}-cp27-none-linux_${CARCH}.whl"
 source=("https://storage.googleapis.com/tensorflow/linux/cpu/${_filename}")
 noextract=("${_filename}")
-if test "$CARCH" == i686 ; then
-  sha256sums=('SKIP')
-elif test "$CARCH" == x86_64 ; then
+if test "$CARCH" == x86_64 ; then
   sha256sums=('d0ba3a7c5ea728b1463d36c88ef09e60fd082e14190989e2df769220260f91ba')
 fi
 
