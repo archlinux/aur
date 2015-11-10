@@ -3,8 +3,8 @@
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
 pkgver=2015r31
-pkgrel=1
-pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web."
+pkgrel=2
+pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, the web and ow with 64Bit and ARM V2 (Raspberry Pi 2) support."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
 license=("custom")

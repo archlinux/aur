@@ -1,7 +1,7 @@
 pkgbase = xojo
-	pkgdesc = A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web.
+	pkgdesc = A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, the web and ow with 64Bit and ARM V2 (Raspberry Pi 2) support.
 	pkgver = 2015r31
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xojo.com
 	arch = i686
 	arch = x86_64
