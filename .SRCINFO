@@ -1,7 +1,7 @@
 pkgbase = lxqt-desktop-git
 	pkgdesc = The LXQt desktop
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lxqt.org
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = lxqt-desktop-git
 	depends = lxqt-qtplugin-git
 	depends = lxqt-runner-git
 	depends = lxqt-session-git
+	depends = lxqt-sudo-git
 	optdepends = lximage-qt-git: The LXQt image viewer
 	optdepends = openbox: Recommended window manager
 	optdepends = sddm: Recommended display manager
