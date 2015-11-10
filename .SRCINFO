@@ -1,7 +1,7 @@
 pkgbase = ravello
 	pkgdesc = ravello systems tool
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ravellosystems.com/
 	arch = any
 	license = Unknown
@@ -15,6 +15,7 @@ pkgbase = ravello
 	depends = python2-webpy
 	depends = python2-mimerender
 	depends = python2-boto
+	depends = python2-httplib2
 	source = http://import-tool.ravellosystems.com/linux/ravello_linux.tar.gz
 	source = ravello.patch
 	sha512sums = 14f76391aa2ee7d147430b9885cc759eacb7cffb52539ea503f8f26c962c0c2d81afac8168bf32921449841befbf655e1a7f3989cf814c748a2403c4061d8cfd
