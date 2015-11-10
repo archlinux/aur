@@ -1,6 +1,6 @@
 pkgbase = scribus1.5
 	pkgdesc = A desktop publishing program - Version 1.5 svn
-	pkgver = 20421
+	pkgver = 20546
 	pkgrel = 1
 	url = http://www.scribus.net
 	install = scribus1.5.install
@@ -22,6 +22,9 @@ pkgbase = scribus1.5
 	depends = libvisio
 	depends = libpagemaker
 	depends = qt5-declarative
+	optdepends = libmspub: Microsoft Publisher file format parser library
+	optdepends = libwpg: Library for importing and converting Corel WordPerfect(tm) Graphics images
+	optdepends = openscenegraph: An Open Source, high performance real-time graphics toolkit
 	options = !makeflags
 	source = scribus::svn://scribus.net/trunk
 	source = scribus1.5.desktop

@@ -5,7 +5,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus1.5
-pkgver=20421
+pkgver=20546
 pkgrel=1
 pkgdesc="A desktop publishing program - Version 1.5 svn"
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
 	 'shared-mime-info' 'poppler' 'libcdr' 'desktop-file-utils'
 	 'libvisio' 'libpagemaker' 'qt5-declarative')
 makedepends=('subversion' 'cmake' 'qt5-tools')
+optdepends=('libmspub: Microsoft Publisher file format parser library' 'libwpg: Library for importing and converting Corel WordPerfect(tm) Graphics images' 'openscenegraph: An Open Source, high performance real-time graphics toolkit')
 #conflicts=('scribus')
 #provides=('scribus')
 source=('scribus::svn://scribus.net/trunk' 'scribus1.5.desktop')
