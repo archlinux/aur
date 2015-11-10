@@ -57,9 +57,9 @@ package() {
 	cp -r "$srcdir/include" "$pkgdir/usr/$_target_alias"
 
 	cd "$srcdir/hostbin"
-	for file in dxegen.exe stubedit.exe stubify.exe; do
-		install -Dm 0755 "$file" "$pkgdir/usr/$_target_alias/bin/${file%.exe}"
-		ln -s "../$_target_alias/bin/${file%.exe}" "$pkgdir/usr/bin/$_target_alias-${file%.exe}"
+	for _file in dxegen.exe stubedit.exe stubify.exe; do
+		install -Dm 0755 "$_file" "$pkgdir/usr/$_target_alias/bin/${_file%.exe}"
+		ln -s "../$_target_alias/bin/${_file%.exe}" "$pkgdir/usr/bin/$_target_alias-${_file%.exe}"
 	done
 
 	install -Dm644 "$srcdir/copying.dj" "$pkgdir/usr/share/licenses/$pkgname/copying.dj"
