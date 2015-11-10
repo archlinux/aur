@@ -4,8 +4,8 @@
 
 pkgname=dogecoin-qt
 _binname=dogecoin
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Cryptocurrency"
 arch=('x86_64' 'i686')
 url="http://dogecoin.com/"
@@ -15,18 +15,11 @@ depends=('miniupnpc' 'boost-libs' 'protobuf' 'openssl' 'db')
 makedepends=('boost' 'gcc' 'make' 'git' 'qt4' 'miniupnpc' 'boost-libs' 'protobuf' 'openssl' 'db')
 source=("https://github.com/dogecoin/dogecoin/archive/v${pkgver}.tar.gz"
         "dogecoin.desktop"
-        "fixing-boost.patch"
         )
 install=dogecoin.install
 
-sha256sums=('87060dfe6d9770f8af17c447120cb6a059bbd84687dfd6a1f0787c9d75d75d9e'
-            '04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6'
-            '3b335f979bc54d5c8760c84192a3b1224e0fa0d7afaa2fb806c4a3b777c2bded')
-
-prepare() {
-	cd "${srcdir}/dogecoin-$pkgver/"
-	patch -p1 -i $srcdir/fixing-boost.patch 
-}
+sha256sums=('2c279a7ee425b3706ce635c74a27fd813ac3605a37f6f13e63775ec311f90f7c'
+            '04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6')
 
 build() {
 	cd "${srcdir}/dogecoin-$pkgver/"
