@@ -1,0 +1,44 @@
+# Maintainer: Eugenio M. Vigo <emvigo@gmail.com>
+
+pkgname=fair-coin
+pkgver=1.5.1
+pkgrel=1
+pkgdesc="FairCoin Qt official client"
+arch=(i686 x86_64)
+url="https://fair-coin.org/"
+license=('MIT')
+depends=('qt4' 'boost-libs' 'qrencode')
+makedepends=('boost' 'imagemagick')
+source=("https://github.com/FairCoinTeam/fair-coin/archive/v$pkgver.tar.gz"
+        "$pkgname.desktop")
+install=("$pkgname.install")
+sha256sums=("6a53b5e81dd020af8ff6dfdc3c836093bce258d880d792b1d841d721ad5cf74c"
+            "7bf32cef879eb08682d92cd8ee35d68b8e295030d2873dc6a3a95cd37b88612c")
+
+build() {
+    cd $pkgname-$pkgver
+    ./autogen.sh
+    LIBS=-lrt ./configure --prefix=/usr --with-incompatible-bdb --disable-tests 
+    make
+}
+
+package() {
+    cd ${pkgname}-${pkgver}
+
+    DESTDIR="$pkgdir" make install
+
+    # Install license file (recommended, as license is MIT)
+    install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+
+    # Imagemagick comes to the rescue to create icons... Extracting the ICO file
+    # for the Windows build into several pngs
+    convert share/pixmaps/faircoin.ico ${pkgname}.png
+    install -Dm644 ${pkgname}-0.png ${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png
+    install -Dm644 ${pkgname}-1.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png
+    install -Dm644 ${pkgname}-2.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png
+    install -Dm644 ${pkgname}-3.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png
+    install -Dm644 ${pkgname}-4.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
+
+    # Desktop entry file
+    install -Dm644 ../../${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+}

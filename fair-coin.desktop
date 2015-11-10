@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=FairCoin
+Comment=FairCoin Qt Wallet client
+Exec=FairCoin-qt
+Icon=fair-coin
+Terminal=false
+Categories=Utility;
