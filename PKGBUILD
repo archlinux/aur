@@ -12,6 +12,7 @@ makedepends=('unzip' 'boost' 'boost-build')
 depends=('lua' 'lua>5.3.0' 'gcc-libs')
 replaces=('luabind' 'lua51bind' 'lua52bind')
 conflicts=('luabind' 'lua51bind' 'lua52bind')
+provides=('luabind')
 source=("http://downloads.sourceforge.net/${pkgname//${luaver//.}}/${pkgname//${luaver//.}}-${pkgver}.tar.gz"
         000-luabind-0.9.1-boost149fix.patch
         001-luabind-use-lua_compare.patch
