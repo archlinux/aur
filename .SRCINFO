@@ -1,6 +1,6 @@
 pkgbase = iannix-qt5-git
 	pkgdesc = A graphical sequencer, based on Iannis Xenakis' works, for digital art (Qt5).
-	pkgver = 0.9.16.r27.gee2e7ec
+	pkgver = 0.9.16.r37.g4031200
 	pkgrel = 1
 	url = http://www.iannix.org/
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = iannix-qt5-git
 	depends = libxrender
 	depends = mesa
 	depends = qt5-base
+	depends = qt5-script
 	depends = qt5-tools
 	depends = sqlite
 	optdepends = ffmpeg: record and convert audio streams
