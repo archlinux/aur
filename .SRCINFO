@@ -1,6 +1,6 @@
 pkgbase = perl-test-mock-lwp-dispatch
 	pkgdesc = mocks LWP::UserAgent and dispatches your requests/responses
-	pkgver = 0.07
+	pkgver = 0.08
 	pkgrel = 1
 	url = https://metacpan.org/release/Test-Mock-LWP-Dispatch
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = perl-test-mock-lwp-dispatch
 	depends = perl-libwww
 	depends = perl-test-mockobject
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/T/TA/TADAM/Test-Mock-LWP-Dispatch-0.07.tar.gz
-	md5sums = a41c1924bf6b01b69ecea160a9df7d9d
-	sha512sums = 2acc8839d82b666d183fb429cec6449b66e44116a9ba19947289f274399e034db4da115b0a88971c17f995bb64bf1af19d7f5d0e545ab89790d4201bdd33c5d7
+	source = https://cpan.metacpan.org/authors/id/T/TA/TADAM/Test-Mock-LWP-Dispatch-0.08.tar.gz
+	md5sums = 2bcefcace7dd714183afc11244440b7c
+	sha512sums = 419e9410c4f86dd7fe669ab09ca5c17dd4a2d9ab9fa36647f8e95702ee7e3b66a36692acc72c03e128553f5289b8d6260e7449061e9009d911d6db406c2d6876
 
 pkgname = perl-test-mock-lwp-dispatch
 
