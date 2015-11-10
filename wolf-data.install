@@ -4,11 +4,8 @@ post_install() {
     echo ">>> /opt/wolf-data/main/ directory in order to play:"
     echo ">>>    pak0.pk3"
     echo ">>>    sp_pak1.pk3"
+    echo ">>>    sp_pak2.pk3"
     echo ">>>    mp_pak0.pk3"
-    echo ">>>"
-    echo ">>> Then run the following commands: "
-    echo ">>>    chown root:root /opt/wolf-data/main/{pak0.pk3,mp_pak0.pk3,sp_pak1.pk3,sp_pak2.pk3}"
-    echo ">>>    chmod 0444 /opt/wolf-data/main/{pak0.pk3,mp_pak0.pk3,sp_pak1.pk3}"
     echo ">>>"
 }
 
