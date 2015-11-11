@@ -1,16 +1,6 @@
 post_install() {
-  echo -n ">>> Creating the aegir user as an alias of the http user... "
-  [ $(getent passwd aegir &>/dev/null; echo $?) -eq 0 ] && {
-    echo "User already exists; no action taken."
-  } || {
-    useradd --gid $(id --group http) --home-dir /usr/share/webapps/aegir --non-unique --uid $(id --user http) aegir
-    # Replace /etc/passwd with itself having the Aegir user rearranged above the HTTP user.
-    tempfile=$(mktemp)
-    cat <(sed -n '1,/^http/p' /etc/passwd | head -n-1) <(getent passwd aegir) <(sed -n '/^http/,$p' /etc/passwd | head -n-1) >| $tempfile
-    install -m644 $tempfile /etc/passwd
-    echo "Done."
-  }
-
+  post_upgrade
+  
   echo -n ">>> Testing that localhost resolves to an IP address assigned to a network interface... "
   [ $(ip addr | sed --quiet --regexp-extended 's/\s+inet6?\s([^\/]*).*/\1/p' | egrep '^(127.0.0.1|::1)$' | wc -l) -eq 0 ] && echo "Failed." || echo "Passed."
 
@@ -52,6 +42,18 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+  echo -n ">>> Creating the aegir user as an alias of the http user... "
+  [ $(getent passwd aegir &>/dev/null; echo $?) -eq 0 ] && {
+    echo "User already exists; no action taken."
+  } || {
+    useradd --gid $(id --group http) --home-dir /usr/share/webapps/aegir --non-unique --uid $(id --user http) aegir
+    # Replace /etc/passwd with itself having the Aegir user rearranged above the HTTP user.
+    tempfile=$(mktemp)
+    cat <(sed -n '1,/^http/p' /etc/passwd | head -n-1) <(getent passwd aegir) <(sed -n '/^http/,$p' /etc/passwd | head -n-1) >| $tempfile
+    install -m644 $tempfile /etc/passwd
+    echo "Done."
+  }
+
   [ -f /tmp/aegir.target-active ] && {
     rm /tmp/aegir.target-active
     systemctl --system stop --now aegir.target
