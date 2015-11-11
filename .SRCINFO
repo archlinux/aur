@@ -6,11 +6,10 @@ pkgbase = python-path-and-address
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = git
 	depends = python
 	options = !emptydirs
-	source = python-path-and-address::git://github.com/joeyespo/path-and-address
-	md5sums = SKIP
+	source = https://github.com/joeyespo/path-and-address/archive/v1.0.0.tar.gz
+	md5sums = 74c53ac1c056c62755d1d5833311ef35
 
 pkgname = python-path-and-address
 
