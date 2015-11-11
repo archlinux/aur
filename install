@@ -3,14 +3,11 @@ post_install() {
 To use this hook add it to the HOOKS array in your /etc/mkinitcpio.conf.
 HELPEOF
 
-    mkinitcpio -H multiencrypt
+    mkinitcpio -H multiencrypt || true
 }
 
 post_upgrade() {
     post_install "$1"
-}
-
-pre_remove() {
 }
 
 # vim:set ts=4 sw=4 et:
