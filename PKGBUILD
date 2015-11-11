@@ -6,7 +6,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=46.0.2490.80
+pkgver=46.0.2490.86
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -16,7 +16,8 @@ license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
-         'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
+         'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
+         'hicolor-icon-theme')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
@@ -30,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium.desktop
         0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
         chromium-widevine.patch)
-sha256sums=('cd4b18249e64ee267236c9d4578effe810bf8f47567e2d43a5a8a7613787dcb6'
+sha256sums=('ee18d28ac80ff958e8a6c770bfc0d7d770b55452ed91a87f731e1b432a7d1d92'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'd114def156d60d5f4c9e42f2955ba19bdebe38037a330ef947af24ace25db39d'
@@ -130,7 +131,7 @@ build() {
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
-    -Duse_system_libvpx=0
+    -Duse_system_libvpx=1
     -Duse_system_libxml=0
     -Duse_system_snappy=1
     -Duse_system_xdg_utils=1
