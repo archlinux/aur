@@ -24,7 +24,7 @@ build() {
   cd "$srcdir/$_gitname"
   [ -d build ] || mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
+  cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr ../src
   make
 }
 
