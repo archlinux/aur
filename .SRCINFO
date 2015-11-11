@@ -1,7 +1,7 @@
 pkgbase = cbootimage
 	pkgdesc = Tools to dump and generate boot config table on Tegra devices
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://http.download.nvidia.com/tegra-public-appnotes/bct-overview.html
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = cbootimage
 	makedepends = automake
 	makedepends = autoconf
 	source = https://github.com/NVIDIA/cbootimage/archive/v1.6.tar.gz
+	sha256sums = a15739c9e2ca4f582de56c4c795c057d7b322224edd65228bdd725dfdd3aa78c
 
 pkgname = cbootimage
 
