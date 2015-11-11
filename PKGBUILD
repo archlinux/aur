@@ -1,12 +1,12 @@
 
 # Maintainer: Matteo De Carlo <matteo.dek AT gmail DOT com>
 pkgname=pencil-android-lollipop-stencils-git
-pkgver=r39.4a109d1
+pkgver=1.0.0.r2.g1a913c4
 pkgrel=1
 pkgdesc="Collection of common Android Lollipop UI elements for Pencil. All in vector format."
 arch=(any)
 url="https://github.com/nathanielw/Android-Lollipop-Pencil-Stencils/"
-license=
+license=('MIT')
 depends=('pencil')
 makedepends=('pacman>=4.1.2' 'git')
 install=
@@ -32,4 +32,5 @@ package() {
   install -m644 -Dt "${DESTDIR}" README.MD
   install -m644 -Dt "${DESTDIR}/Icons" Icons/*
   install -m644 -Dt "${DESTDIR}/misc" misc/*
+  install -Dm644 "${srcdir}/${_name}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }

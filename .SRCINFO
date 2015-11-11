@@ -1,9 +1,10 @@
 pkgbase = pencil-android-lollipop-stencils-git
 	pkgdesc = Collection of common Android Lollipop UI elements for Pencil. All in vector format.
-	pkgver = r39.4a109d1
+	pkgver = 1.0.0.r2.g1a913c4
 	pkgrel = 1
 	url = https://github.com/nathanielw/Android-Lollipop-Pencil-Stencils/
 	arch = any
+	license = MIT
 	makedepends = pacman>=4.1.2
 	makedepends = git
 	depends = pencil
