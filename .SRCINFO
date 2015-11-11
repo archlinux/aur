@@ -1,12 +1,13 @@
 pkgbase = qftp
 	pkgdesc = QFtp is a user interface for Ftp file transfer.
 	pkgver = 1.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=qftp&full=0
 	arch = x86_64
 	arch = i686
 	license = GPLv2
-	depends = qt4
+	makedepends = cmake
+	depends = qt5-base
 	depends = xcb-util-keysyms
 	source = http://hugo.pereira.free.fr/software/tgz/qftp-1.5.7.tar.gz
 	source = qftp.desktop

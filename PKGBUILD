@@ -3,12 +3,13 @@
 
 pkgname=qftp
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="QFtp is a user interface for Ftp file transfer."
 url="http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=qftp&full=0"
 arch=('x86_64' 'i686')
 license=('GPLv2')
-depends=('qt4' 'xcb-util-keysyms')
+depends=('qt5-base' 'xcb-util-keysyms')
+makedepends=('cmake')
 source=("http://hugo.pereira.free.fr/software/tgz/${pkgname}-${pkgver}.tar.gz"
 	"qftp.desktop")
 
@@ -17,7 +18,7 @@ build() {
   export LDFLAGS="-lX11" # Fix linking error.
   cmake . -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DUSE_QT5=Yes
   make
 }
 
