@@ -1,7 +1,7 @@
 pkgbase = ring-gnome-client-git
 	pkgdesc = The GNOME client for Ring (formerly known as SFLphone)
-	pkgver = 20150817
-	pkgrel = 2
+	pkgver = 20151109
+	pkgrel = 1
 	url = http://ring.cx
 	install = ring-gnome-client.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = ring-gnome-client-git
 	depends = libnotify
 	provides = ring-gnome-client
 	conflicts = ring-gnome-client
-	source = git+https://gerrit-ring.savoirfairelinux.com/ring-client-gnome#commit=2beca2910570dece906bd9711a8f3ef66578fef9
+	source = git+https://gerrit-ring.savoirfairelinux.com/ring-client-gnome#commit=b02e9e41a0de17dfbaceec81e36d47136ca13522
 	sha256sums = SKIP
 
 pkgname = ring-gnome-client-git
