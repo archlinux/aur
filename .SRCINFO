@@ -38,7 +38,7 @@ pkgbase = linux-covolunablu-gaming
 	sha256sums = 8f38b93d00789a83f3ec7da7761e6ead63e37a7ae3a7790788021eae5161db09
 
 pkgname = linux-covolunablu-gaming
-	pkgdesc = The Linux-covolunablu-gaming kernel and modules
+	pkgdesc = The Linux kernel and modules with some game-centric improvements: added BFQ disk scheduler, xpad.c from steamos kernel (no need to use steamos-xpad-dkms package) and setted up CPU frequency to 1000Hz
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware

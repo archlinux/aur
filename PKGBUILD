@@ -109,7 +109,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The Linux kernel and modules with some game-centric improvements: added BFQ disk scheduler, xpad.c from steamos kernel (no need to use steamos-xpad-dkms package) and setted up CPU frequency to 1000Hz"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
