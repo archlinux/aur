@@ -13,7 +13,6 @@ depends=('sdl' 'sdl_mixer' 'sdl_image' 'sdl_ttf' 'curl' 'java-runtime' 'libcurl-
 source=(http://www.battlejump.com/Download/Battle_Jump_v0122_Linux_${ARCH}.tar.gz battlejump.desktop)
 md5sums=('4c8c3b0dab9d9b9295b5134dc2c79944'
          '5d91df9432b184e88b98ae4f6009c107')
-[ "$CARCH" = "x86_64" ]  && md5sums=(4c8c3b0dab9d9b9295b5134dc2c79944 04eb14bfddf49b81380f9942d86239d4)
 
 
 package() { 
