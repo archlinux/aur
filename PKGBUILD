@@ -1,7 +1,7 @@
 # Maintainer: Eugenio M. Vigo <emvigo@gmail.com>
 
 pkgname=fair-coin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="FairCoin Qt official client"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ makedepends=('boost' 'imagemagick')
 source=("https://github.com/FairCoinTeam/fair-coin/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
 install=("$pkgname.install")
-sha256sums=("6a53b5e81dd020af8ff6dfdc3c836093bce258d880d792b1d841d721ad5cf74c"
+sha256sums=("72e512768f8307db5c2f1ae5513bf222835919268110db7361bab056ee44db5e"
             "7bf32cef879eb08682d92cd8ee35d68b8e295030d2873dc6a3a95cd37b88612c")
 
 build() {
