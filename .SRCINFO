@@ -1,0 +1,18 @@
+pkgbase = scilab-bin
+	pkgdesc = A scientific software package for numerical computations.
+	pkgver = 5.5.2
+	pkgrel = 1
+	url = https://www.scilab.org
+	arch = x86_64
+	arch = i686
+	license = BSD
+	license = custom:CeCILL
+	source = scilab.sh
+	md5sums = 32bba7f8af6ead4bdacfe40a67d4b30e
+	source_x86_64 = http://www.scilab.org/download/5.5.2/scilab-5.5.2.bin.linux-x86_64.tar.gz
+	md5sums_x86_64 = c24553bc2bf9871d71decd99c2d73d78
+	source_i686 = http://www.scilab.org/download/scilab-bin/scilab-5.5.2.bin.linux-i686.tar.gz
+	md5sums_i686 = 71d794854e85d484b12a8b8c954f03c4
+
+pkgname = scilab-bin
+
