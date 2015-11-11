@@ -53,6 +53,17 @@ post_upgrade() {
     install -m644 $tempfile /etc/passwd
     echo "Done."
   }
+  
+  echo '>>> Setting up shared system-wide drush configuration'
+  echo '    by symlinking ~/.drush to /etc/drush for all users.'
+  for user in $(cut --fields=1,6 --delimiter=: /etc/passwd | grep :/home); do
+    user=($(echo $user | tr ':' ' '))
+    path="${user[1]}/.drush"
+    user="${user[0]}"
+    [ -h "$path" -a "$(realpath "$path")" = /etc/drush ] ||
+      sudo -Hu $user ln --backup --force --symbolic /etc/drush "$path"
+  done
+
 
   [ -f /tmp/aegir.target-active ] && {
     rm /tmp/aegir.target-active
