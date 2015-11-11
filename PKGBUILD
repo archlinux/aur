@@ -16,11 +16,9 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
              'libxshmfence' 'libunwind' 'git')
 source=(git://anongit.freedesktop.org/xorg/xserver
-        nvidia-drm-outputclass.conf
         xvfb-run
         xvfb-run.1)
 sha256sums=('SKIP'
-            'af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -54,9 +52,7 @@ build() {
       --enable-xephyr \
       --enable-glamor \
       --enable-xwayland \
-      --enable-glx-tls \
       --enable-kdrive \
-      --enable-kdrive-evdev \
       --enable-kdrive-kbd \
       --enable-kdrive-mouse \
       --enable-config-udev \
@@ -74,7 +70,7 @@ build() {
       --with-xkb-output=/var/lib/xkb \
       --with-fontrootdir=/usr/share/fonts \
       --with-sha1=libgcrypt
-
+      
 #      --without-dtrace \
 #      --disable-linux-acpi --disable-linux-apm \
 
@@ -113,7 +109,8 @@ package_xorg-server-common-git() {
 
 package_xorg-server-git() {
   pkgdesc="Xorg X server - Git"
-  depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common-git xf86-input-evdev libxshmfence libgl)
+  depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common-git libxshmfence libgl xf86-input-driver)
+
   # see src/xserver/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-git pkg
   for VAR in VIDEODRV XINPUT EXTENSION; do
@@ -129,11 +126,10 @@ package_xorg-server-git() {
 
   msg2 "Starting make install..."
   make DESTDIR="${pkgdir}" install
-
+  
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
-  install -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/"
-
+  
   # Needed for non-mesa drivers, libgl will restore it
   mv "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so" \
      "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.xorg"
@@ -149,8 +145,6 @@ package_xorg-server-git() {
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
   rm -rf "${pkgdir}/usr/include"
   rm -rf "${pkgdir}/usr/share/aclocal"
-  # this is now part of xf86-input-evdev
-  rm -rf "${pkgdir}/usr/share/X11/xorg.conf.d/10-evdev.conf"
 }
 
 package_xorg-server-xephyr-git() {

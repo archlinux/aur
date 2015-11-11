@@ -54,11 +54,9 @@ pkgbase = xorg-server-git
 	makedepends = libunwind
 	makedepends = git
 	source = git://anongit.freedesktop.org/xorg/xserver
-	source = nvidia-drm-outputclass.conf
 	source = xvfb-run
 	source = xvfb-run.1
 	sha256sums = SKIP
-	sha256sums = af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
 
@@ -75,9 +73,9 @@ pkgname = xorg-server-git
 	depends = libgcrypt
 	depends = libxau
 	depends = xorg-server-common-git
-	depends = xf86-input-evdev
 	depends = libxshmfence
 	depends = libgl
+	depends = xf86-input-driver
 	provides = X-ABI-VIDEODRV_VERSION=20.0
 	provides = X-ABI-XINPUT_VERSION=22.1
 	provides = X-ABI-EXTENSION_VERSION=9.0
