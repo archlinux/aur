@@ -8,7 +8,7 @@ url="https://github.com/monome/serialosc"
 source=("$pkgname::git+https://github.com/monome/serialosc")
 md5sums=('SKIP')
 
-depends=("libmonome" "confuse" "liblo" "avahi" "udev")
+depends=("libmonome-git" "confuse" "liblo" "avahi" "udev")
 conflicts=("serialosc")
 provides=("serialosc")
 
