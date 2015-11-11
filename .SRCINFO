@@ -1,7 +1,7 @@
 pkgbase = urho3d
 	pkgdesc = Urho3D is a free lightweight, cross-platform 2D and 3D game engine implemented in C++ and released under the MIT license.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://urho3d.github.io
 	install = urho3d.install
 	arch = i686
