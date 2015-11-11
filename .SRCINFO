@@ -1,6 +1,6 @@
 pkgbase = jlink
 	pkgdesc = ARM Embedded debugger and flashing software from Segger
-	pkgver = 5.02i
+	pkgver = 5.02j
 	pkgrel = 1
 	url = https://www.segger.com/jlink-software.html
 	arch = i686
