@@ -1,0 +1,20 @@
+pkgbase = libsvm-openmp
+	pkgdesc = A library for Support Vector Machines classification, includes openmp support, binaries and python bindings.
+	pkgver = 3.20
+	pkgrel = 1
+	url = http://www.csie.ntu.edu.tw/~cjlin/libsvm/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	optdepends = python: bindings for latest python version
+	optdepends = python2: bindings for python 2
+	optdepends = java-environment: bindings for java
+	provides = libsvm
+	conflicts = libsvm
+	source = https://github.com/cjlin1/libsvm/archive/v320.tar.gz
+	source = openmp.patch
+	sha256sums = e4be7fc8d2e7cb65feae4d6387967484c01c9dc818e7dfff515f663728a6f2ca
+	sha256sums = d357cc901505cb1aecd055cc953490f617b1baa8ac129ab580acf300c60ca1b0
+
+pkgname = libsvm-openmp
+
