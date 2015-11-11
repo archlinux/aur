@@ -11,7 +11,6 @@ makedepends=('boost' 'automoc4' 'protobuf')
 conflicts=('dogecoin-qt') # why can't weeee be friends... (/usr/bin/dogecoind exists in filesystem)
 license=('MIT')
 _git_base_url=github.com/$pkg_base/$pkg_base/
-_git_raw_base_url=github.com/$pkg_base/$pkg_base/
 source=(
     https://$_git_base_url/archive/$_git_branch.tar.gz
     https://raw.$_git_base_url$_git_branch/contrib/debian/examples/$pkg_base.conf
@@ -30,7 +29,6 @@ sha256sums=(
 build() {
   cd $srcdir/$pkg_base-$_git_branch
   ./autogen.sh
-  #CXXFLAGS='$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1'
   ./configure --enable-cxx --prefix=/usr --with-gui=no --disable-tests --without-miniupnpc --with-incompatible-bdb
   make
 }
@@ -45,3 +43,4 @@ package_dogecoin-daemon() {
   install -Dm644 $srcdir/$pkg_base.conf.5 $pkgdir/usr/share/man/man5/$pkg_base.conf.5
   install -Dm644 COPYING '$pkgdir/usr/share/licenses/$pkgname/COPYING'
 }
+
