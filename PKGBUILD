@@ -1,7 +1,7 @@
 # Maintainer: Spike29 <leguen.yannick@gmail.com>
 
 pkgname='qdjango'
-pkgver='0.6.1'
+pkgver='0.6.2'
 pkgrel='1'
 pkgdesc='A Qt-based C++ web framework'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/jlaine/qdjango/'
 depends=('qt5-base')
 conflicts=('qdjango-git')
 source=("https://github.com/jlaine/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('8b63a8e430478c68e4ca2237f75d86fc')
+md5sums=('8afe03390c969759e0007429f19d0de9')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver/"

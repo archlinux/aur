@@ -1,6 +1,6 @@
 pkgbase = qdjango
 	pkgdesc = A Qt-based C++ web framework
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/jlaine/qdjango/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = qdjango
 	license = LGPL2.1
 	depends = qt5-base
 	conflicts = qdjango-git
-	source = https://github.com/jlaine/qdjango/archive/v0.6.1.tar.gz
-	md5sums = 8b63a8e430478c68e4ca2237f75d86fc
+	source = https://github.com/jlaine/qdjango/archive/v0.6.2.tar.gz
+	md5sums = 8afe03390c969759e0007429f19d0de9
 
 pkgname = qdjango
 
