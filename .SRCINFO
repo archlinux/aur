@@ -1,0 +1,31 @@
+pkgbase = dev86-git
+	pkgdesc = The 16-bit bcc compiler + elksemu, github source fork
+	pkgver = 0.16.20.r11.g4ed1997
+	pkgrel = 1
+	url = https://github.com/jbruchon/dev86
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	makedepends = bin86
+	makedepends = git
+	provides = dev86
+	provides = bin86
+	provides = elksemu
+	conflicts = dev86
+	conflicts = bin86
+	replaces = dev86
+	replaces = bin86
+	options = !libtool
+	options = !strip
+	options = !makeflags
+	options = !buildflags
+	options = staticlibs
+	source = dev86::git://github.com/jbruchon/dev86.git
+	source = elks::git://github.com/jbruchon/elks.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dev86-git
+
