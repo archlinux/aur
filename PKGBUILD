@@ -8,7 +8,7 @@ license=('LPPL')
 arch=(any)
 depends=('texlive-core' 'texlive-htmlxml' 'texlive-plainextra' 'texlive-langextra')
 url='https://github.com/oraac/texlive-ewuthesis'
-source=("https://github.com/oraac/texlive-ewuthesis/blob/master/packaged/ewuthesis-${pkgver}.tgz?raw=true")
+source=("ewuthesis-${pkgver}.tgz::https://github.com/oraac/texlive-ewuthesis/blob/master/packaged/ewuthesis-${pkgver}.tgz?raw=true")
 install=texlive-ewuthesis.install
 sha256sums=('51be7716606f9d78a2277a54ced8afc93104186bb55b8243ed1fddd63d25b228'
             '242e3c1287823f1debe4479c70fa09acbc6883adb26c8726882e892384831a13')
