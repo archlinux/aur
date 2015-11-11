@@ -2,7 +2,7 @@
 
 _pkgname=cld2
 pkgname=${_pkgname}-git
-pkgver=196
+pkgver=20150820
 pkgrel=1
 pkgdesc='Compact Language Detector 2'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=('git+https://github.com/CLD2Owners/cld2.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_pkgname"
   git log -1 --pretty='%cd' --date=short | tr -d '-'
 }
 

@@ -1,6 +1,6 @@
 pkgbase = cld2-git
 	pkgdesc = Compact Language Detector 2
-	pkgver = 196
+	pkgver = 20150820
 	pkgrel = 1
 	url = https://github.com/CLD2Owners/cld2
 	arch = x86_64
