@@ -1,0 +1,24 @@
+firstline="## Installed from ws(winshare)##"
+lastline="################################"
+varsudo="${firstline}\n### SAMBA ###\nCmnd_Alias SAMBA = /bin/mount, /bin/umount, /sbin/mount.cifs\nALL ALL=(ALL) NOPASSWD: SAMBA\n${lastline}\n"
+
+post_install() {
+  echo -e "$varsudo" >> /etc/sudoers  
+  cat << '_EOF'
+  
+  /etc/sudoers file was configured to allow all users to mount and unmount samba shares.
+
+_EOF
+}
+
+post_remove() {
+  sed -i "/$firstline/,/$lastline/ d" /etc/sudoers
+  
+  cat << '_EOF'
+  
+  /etc/sudoers was changed. The automatic configuration made by winshare during installation was removed.
+
+_EOF
+}
+
+# vim:set ts=2 sw=2 et:

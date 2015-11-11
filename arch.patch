@@ -1,0 +1,22 @@
+--- ws-0.6-3/ws	2011-04-09 17:19:41.000000000 +0100
++++ ws-0.6-3/ws-new	2012-04-04 20:23:42.000000000 +0100
+@@ -94,7 +94,7 @@
+ CHOWN="/bin/chown"
+ RM="/bin/rm"
+ GREP="/bin/grep"
+-CUT="/bin/cut"
++CUT="/usr/bin/cut"
+ CAT="/bin/cat"
+ CP="/bin/cp"
+ LN="/bin/ln"
+@@ -108,8 +108,8 @@
+ MOUNT="/bin/mount"
+ SUDO="/usr/bin/sudo"
+ TEST="/usr/bin/test"
+-TOUCH="/bin/touch"
+-INSTALL="/bin/install"
++TOUCH="/usr/bin/touch"
++INSTALL="/usr/bin/install"
+ MYEDITOR="/usr/bin/vi"
+ NMBLOOKUP="/usr/bin/nmblookup"
+ FUSER="/usr/bin/fuser"
