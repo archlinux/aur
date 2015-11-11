@@ -13,19 +13,19 @@ source=("$pkgname"::'git+https://github.com/gameplay3d/GamePlay.git')
 sha512sums=('SKIP')
 
 build() {
-	cd $pkgname
+  sudo mv $pkgname /usr/share/
+	cd /usr/share/$pkgname
 
   # install dependencies
   ./install.sh
 
   # build
-  mkdir builld
+  mkdir build
   cd build
   cmake ..
   make
 }
 
 package(){
-  sudo mv $pkgname /usr/share/
-
+  echo "OK"
 }
