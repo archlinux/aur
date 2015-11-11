@@ -12,12 +12,11 @@ pkgbase = battlejump
 	depends = sdl_ttf
 	depends = curl
 	depends = java-runtime
+	depends = libcurl-compat
 	source = http://www.battlejump.com/Download/Battle_Jump_v0122_Linux_.tar.gz
-	source = battlejumplauncher.desktop
 	source = battlejump.desktop
-	md5sums = 264e973bf5ca043c83ecb85dab5b1386
-	md5sums = b15ded254e76fde81cfafbae97da812a
-	md5sums = e27233098a9d454adf2eae4767cfb076
+	md5sums = 4c8c3b0dab9d9b9295b5134dc2c79944
+	md5sums = 5d91df9432b184e88b98ae4f6009c107
 
 pkgname = battlejump
 
