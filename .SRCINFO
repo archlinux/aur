@@ -1,10 +1,11 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Receiver for x86_64 (64bit) Linux (ICAClient)
 	pkgver = 13.2.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top
 	install = citrix-client.install
 	arch = x86_64
+	arch = i686
 	license = custom:Citrix
 	makedepends = automake
 	makedepends = autoconf
@@ -32,20 +33,34 @@ pkgbase = icaclient
 	backup = opt/Citrix/ICAClient/config/appsrv.ini
 	backup = opt/Citrix/ICAClient/config/wfclient.ini
 	backup = opt/Citrix/ICAClient/config/module.ini
-	source = configmgr.desktop
-	source = conncenter.desktop
-	source = selfservice.desktop
-	source = wfica.desktop
-	source = wfica.sh
-	source = wfica_assoc.sh
-	source = icaclient-13.2.1.tar.gz::http://downloads.citrix.com/10836/linuxx64-13.2.1.328635.tar.gz?__gda__=1447064308_9f8eaa59a5f63b6ceb0f4f58615a1665
-	md5sums = 71aca6257f259996ac59729604f32978
-	md5sums = a38c3f844a0fefe8017a25bee213b843
-	md5sums = 0e92c33b3fcc99b04269787da2984809
-	md5sums = 1f214f6f456f59afd1a3275580f4240e
-	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
-	md5sums = dca5a1f51449ef35f1441b900d622276
-	md5sums = d8f21201fae4a22605104f01ab9cf2da
+	source_x86_64 = configmgr.desktop
+	source_x86_64 = conncenter.desktop
+	source_x86_64 = selfservice.desktop
+	source_x86_64 = wfica.desktop
+	source_x86_64 = wfica.sh
+	source_x86_64 = wfica_assoc.sh
+	source_x86_64 = icaclient-x64-13.2.1.tar.gz::http://downloads.citrix.com/10836/linuxx64-13.2.1.328635.tar.gz?__gda__=1447246766_f46066188d263927df7f5be65483989e
+	md5sums_x86_64 = 71aca6257f259996ac59729604f32978
+	md5sums_x86_64 = a38c3f844a0fefe8017a25bee213b843
+	md5sums_x86_64 = 0e92c33b3fcc99b04269787da2984809
+	md5sums_x86_64 = 1f214f6f456f59afd1a3275580f4240e
+	md5sums_x86_64 = 59f8e50cc0e0c399d47eb7ace1df5a32
+	md5sums_x86_64 = dca5a1f51449ef35f1441b900d622276
+	md5sums_x86_64 = d8f21201fae4a22605104f01ab9cf2da
+	source_i686 = configmgr.desktop
+	source_i686 = conncenter.desktop
+	source_i686 = selfservice.desktop
+	source_i686 = wfica.desktop
+	source_i686 = wfica.sh
+	source_i686 = wfica_assoc.sh
+	source_i686 = icaclient-x86-13.2.1.tar.gz::http://downloads.citrix.com/10832/linuxx86-13.2.1.328635.tar.gz?__gda__=1447246752_deca0044173a70a90a91df1d2da837fe
+	md5sums_i686 = 71aca6257f259996ac59729604f32978
+	md5sums_i686 = a38c3f844a0fefe8017a25bee213b843
+	md5sums_i686 = 0e92c33b3fcc99b04269787da2984809
+	md5sums_i686 = 1f214f6f456f59afd1a3275580f4240e
+	md5sums_i686 = 59f8e50cc0e0c399d47eb7ace1df5a32
+	md5sums_i686 = dca5a1f51449ef35f1441b900d622276
+	md5sums_i686 = bdd731b7c2c1d8b9546216def3ab9608
 
 pkgname = icaclient
 
