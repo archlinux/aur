@@ -68,12 +68,20 @@ package() {
 
     msg2 'Creating $pkgname directory structure'
     install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/drush" "$pkgdir/usr/share/webapps/$pkgname"
+    install --directory --owner=http --group=http --mode=0700 "$pkgdir/usr/share/webapps/$pkgname/.ssh"{,/ctrl-sockets}
+    mkdir -p "$pkgdir/srv/http"
+    ln -s /etc/drush "$pkgdir/srv/http/.drush"
+    ln -s /etc/drush "$pkgdir/etc/skel/.drush"
     ln -s /etc/drush "$pkgdir/usr/share/webapps/$pkgname/.drush"
+    ln -s "$pkgdir/usr/share/webapps/$pkgname/.ssh" "$pkgdir/srv/http/.ssh"
+    umask 066
+    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{config{,/{includes,server_{localhost,master{,/nginx}}}},clients}
     umask 077
-    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{backups,clients/admin,config/{includes,self,server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}}
-    umask 022
-    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{,config/{includes,self,server_localhost,server_master/nginx}}
-
+    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{backups,config/{server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}}
+    umask 027
+    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"clients/admin
+    umask 007
+    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"config/self
     ln -s "/usr/share/webapps/$pkgname/config/server_master/nginx.conf"         "$pkgdir/usr/share/webapps/$pkgname/config/nginx.conf"
     ln -s "/usr/share/webapps/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/usr/share/webapps/$pkgname/config/includes/nginx_advanced_include.conf"
     ln -s "/usr/share/webapps/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/usr/share/webapps/$pkgname/config/includes/nginx_simple_include.conf"
