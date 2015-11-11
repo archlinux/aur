@@ -3,7 +3,7 @@
 pkgbase=unicorn
 pkgname=('unicorn')
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
 arch=('i686' 'x86_64')
@@ -37,6 +37,7 @@ check() {
 package_unicorn() {
   cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
+  install -Dm 644 samples/*.c -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
 }
 
 # vim: ts=2 sw=2 et:
