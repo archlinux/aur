@@ -60,8 +60,6 @@ package() {
   install --directory "$pkgdir/etc/bash_completion.d"
   install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/$_pkgname"{,/cache{,/{default,download,usage}}}
   install --owner=http --group=http --mode=644 "$_pkgname.ini" "$pkgdir/etc/$_pkgname/$_pkgname.ini"
-  install --directory "$pkgdir/etc/skel"
-  ln --force --symbolic "/etc/$_pkgname" "$pkgdir/etc/skel/.$_pkgname"
   install --directory "$pkgdir/usr/bin"
   install --directory "$pkgdir/usr/share/webapps/$_pkgname"
   install --directory "$pkgdir/usr/share/doc/$_pkgname/misc"
