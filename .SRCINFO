@@ -1,6 +1,6 @@
 pkgbase = serialosc-git
 	pkgdesc = serialosc is an OSC server for Monomes
-	pkgver = 20150617
+	pkgver = 20150928
 	pkgrel = 1
 	url = https://github.com/monome/serialosc
 	arch = i686

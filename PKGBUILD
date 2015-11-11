@@ -1,5 +1,5 @@
 pkgname=serialosc-git
-pkgver=20150617
+pkgver=20150928
 pkgrel=1
 pkgdesc="serialosc is an OSC server for Monomes"
 arch=("i686" "x86_64")
