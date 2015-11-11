@@ -2,7 +2,7 @@
 
 pkgname=mkinitcpio-multiencrypt
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows to open multiple LUKS containers during boot (optionally using just a single passphrase)"
 arch=(any)
 url="https://github.com/faulesocke/mkinitcpio-multiencrypt"
