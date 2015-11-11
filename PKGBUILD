@@ -14,7 +14,7 @@ md5sums=("32bba7f8af6ead4bdacfe40a67d4b30e")
 source_x86_64=("http://www.scilab.org/download/${pkgver}/scilab-${pkgver}.bin.linux-x86_64.tar.gz")
 md5sums_x86_64=("c24553bc2bf9871d71decd99c2d73d78")
 
-source_i686=("http://www.scilab.org/download/${pkgname}/scilab-${pkgver}.bin.linux-i686.tar.gz")
+source_i686=("http://www.scilab.org/download/${pkgver}/scilab-${pkgver}.bin.linux-i686.tar.gz")
 md5sums_i686=("71d794854e85d484b12a8b8c954f03c4")
 
 # Standalone package
