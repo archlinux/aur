@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
 pkgbase=servefile-git
 pkgname=servefile-git
-pkgver=v0.4.2.r17.g0c781c2
-pkgrel=2
+pkgver=v0.4.2.r20.ga0b8ae4
+pkgrel=1
 pkgdesc="Serve or receive files from shell via a small HTTP server"
 arch=('any')
 url="http://seba-geek.de/stuff/servefile/"
