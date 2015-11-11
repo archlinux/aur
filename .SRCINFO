@@ -10,7 +10,7 @@ pkgbase = hakuneko
 	depends = wxgtk2.8
 	depends = curl
 	source = http://downloads.sourceforge.net/hakuneko/hakuneko_1.3.11_src.tar.gz
-	md5sums = 90dc5f29c4930dd742001d127df9adf7
+	md5sums = 378399cdbe8b0142383a94d08644cdc0
 
 pkgname = hakuneko
 

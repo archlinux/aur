@@ -10,7 +10,7 @@ license=('MIT')
 depends=('wxgtk2.8' 'curl')
 install=hakuneko.install
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}_${pkgver}_src.tar.gz)
-md5sums=('90dc5f29c4930dd742001d127df9adf7')
+md5sums=('378399cdbe8b0142383a94d08644cdc0')
 
 build() {
   cd ${srcdir}/${pkgname}_${pkgver}_src
