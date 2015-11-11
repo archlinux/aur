@@ -13,8 +13,18 @@ APP_ID = 'org.neovim'
 CLASS = 'neovim'
 NAME = 'Neovim'
 
+def find_terminal_server():
+    candidates = list(filter(os.path.exists, \
+                            ('/usr/lib/gnome-terminal/gnome-terminal-server', # arch et al
+                             '/usr/libexec/gnome-terminal-server')))          # fedora 22
+    if len(candidates) > 0:
+        return candidates[0]
+    else:
+        print("nvim-wrapper needs gnome-terminal-server, but it wasn't found.")
+        sys.exit()
+
 SERVER_CMD = [
-    '/usr/lib/gnome-terminal/gnome-terminal-server',
+    find_terminal_server(),
     '--app-id', APP_ID,
     '--class', CLASS,
     '--name', NAME,
@@ -29,6 +39,7 @@ TERM_CMD = [
     'nvim',
 ]
 
+
 def main():
     """Run nvim inside gnome-terminal"""
     session_bus = dbus.SessionBus()
@@ -39,7 +50,7 @@ def main():
         subprocess.Popen(SERVER_CMD)
 
     # wait until the name is registered, or 2 seconds pass (when launching from
-    # cold cache it might more time)
+    # cold cache it might take more time)
     timeout = time() + 2
     while not session_bus.name_has_owner(APP_ID) and time() <= timeout:
         pass

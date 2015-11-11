@@ -9,7 +9,7 @@ it can be associated to filetypes, etc.)
 ## Requisites
 
 * neovim
-* gnome-terminal
+* gnome-terminal >= 3.16 (uses gnome-terminal-server)
 * python-dbus
 
 ## Setup
