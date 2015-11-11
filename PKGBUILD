@@ -2,12 +2,12 @@
 pkgname=stderred-git
 _gitname=stderred
 pkgver=v1.0.r23.gdfe65c8
-pkgrel=2
+pkgrel=3
 pkgdesc="LD_PRELOAD hack to color stderr output red"
 arch=(i686 x86_64)
 url="https://github.com/sickill/stderred"
 license=(MIT)
-depends=(glibc)
+depends=(glibc bash)
 makedepends=(git cmake)
 provides=(stderred)
 conflicts=(stderred)
@@ -33,4 +33,6 @@ package() {
   make DESTDIR="$pkgdir" install
   install -D "$srcdir/$_gitname"/README.md "$pkgdir"/usr/share/doc/stderred/README.md
   install -D "$srcdir/$_gitname"/LICENSE "$pkgdir"/usr/share/licenses/stderred-git/LICENSE
+  install -D "$srcdir/$_gitname"/usr/bin/stderred "$pkgdir"/usr/bin/stderred
+  install -D "$srcdir/$_gitname"/usr/share/stderred/stderred.sh "$pkgdir"/usr/share/stderred/stderred.sh
 }
