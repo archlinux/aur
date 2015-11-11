@@ -5,7 +5,7 @@
 pkgname=update-hosts-git
 _gitname=update-hosts
 pkgdesc="Generate a hosts file based on multiple sources (git)"
-pkgver=r67.114b0d1
+pkgver=r68.99c4bb4
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -37,9 +37,16 @@ package() {
   local _timer="${_gitname}.timer"
   local _service="${_gitname}.service"
   cd "$srcdir/$_gitname"
+
   install -Dm 755 "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
   install -Dm 644 "${_timer}" "${pkgdir}/usr/lib/systemd/system/${_timer}"
   install -Dm 644 "${_service}" "${pkgdir}/usr/lib/systemd/system/${_service}"
+
+  # systemd needs absolute paths
+  sed -i "s#${_gitname}#/usr/bin/${_gitname}#g" \
+        "${pkgdir}/usr/lib/systemd/system/${_service}"
+
+  unset _timer _service
 }
 
