@@ -2,20 +2,20 @@
 # Maintainer: killhellokitty <killhellokitty.deviantart.com>
 
 pkgname=candra-themes-3.18
-pkgver=4_10152015
-pkgrel=2
+pkgver=5_11112015
+pkgrel=1
 pkgdesc="Minimalist flat themes for, Gnome, Xfce, Cinnamon, MATE, Openbox, LXDE"
 arch=('any') 
 url="http://fav.me/d9cy9dt"
 license=('GPLv3')
 depends=('gtk-engines' 'gnome-themes-standard>=3.18' 'gtk-engine-murrine>=0.98.2')
 
-source=("https://dl.dropboxusercontent.com/u/330352/candra-themes-3.18-4_10152015.zip")
+source=("https://dl.dropboxusercontent.com/u/330352/candra-theme-3.18-5_11112015.zip")
 #install=$pkgname.install
 #replaces=('delorean-dark-themes-3.8')
 #conflicts=('delorean-dark-theme-3.8')
 
-md5sums=('c43d856aea0ea7e070ee62d16b7acaa3')
+md5sums=('921d88accb1b41d3ee631dfb0e14e33e')
 
 
 package() {
