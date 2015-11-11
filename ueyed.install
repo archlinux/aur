@@ -1,0 +1,3 @@
+post_install() {
+	useradd --system -M --shell /bin/false ueyed
+}

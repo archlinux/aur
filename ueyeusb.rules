@@ -1,0 +1,6 @@
+SUBSYSTEM=="usb",         ATTR{idVendor}=="1409", OWNER="ueyed", GROUP="ueyed", MODE="0660", TAG+="UACCESS"
+SUBSYSTEM=="usb_device", ATTRS{idVendor}=="1409", OWNER="ueyed", GROUP="ueyed", MODE="0660", TAG+="UACCESS"
+
+SUBSYSTEM=="usb",        ACTION=="add",    ATTR{idVendor}=="1409",     RUN+="/usr/bin/ueyenotify -F usb -f %r/ueye/%m__%k__%s{idProduct}", SYMLINK+="ueye/%m__%k__%s{idProduct}"
+SUBSYSTEM=="usb_device", ACTION=="add",    ATTRS{idVendor}=="1409",    RUN+="/usr/bin/ueyenotify -F usb -f %r/ueye/%m__%k__%s{idProduct}", SYMLINK+="ueye/%m__%k__%s{idProduct}"
+SUBSYSTEM=="usb",        ACTION=="remove", ENV{DEVTYPE}=="usb_device", RUN+="/usr/bin/ueyenotify -F usb"

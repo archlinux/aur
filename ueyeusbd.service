@@ -1,0 +1,11 @@
+[Unit]
+Description=IDS uEye USB deamon
+
+[Service]
+Type=forking
+ExecStartPre=/usr/bin/install -o ueyed -g ueyed -m 755 -d /var/run/ueyed
+ExecStart=/usr/bin/ueyeusbd -c /etc/ueye/ueyeusbd.conf -P /var/run/ueyed/ueyeusbd.pid
+PIDFile=/var/run/ueyed/ueyeusbd.pid
+
+[Install]
+WantedBy=multi-user.target

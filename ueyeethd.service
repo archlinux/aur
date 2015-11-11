@@ -1,0 +1,11 @@
+[Unit]
+Description=IDS uEye ethernet deamon
+
+[Service]
+Type=forking
+ExecStartPre=/usr/bin/install -o ueyed -g ueyed -m 755 -d /var/run/ueyed
+ExecStart=/usr/bin/ueyeethd -c /etc/ueye/ueyeethd.conf -P /var/run/ueyed/ueyeethd.pid
+PIDFile=/var/run/ueyed/ueyeethd.pid
+
+[Install]
+WantedBy=multi-user.target
