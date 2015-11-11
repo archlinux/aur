@@ -1,6 +1,6 @@
 pkgbase = perl-extutils-parsexs
 	pkgdesc = Converts Perl XS code into C code
-	pkgver = 3.24
+	pkgver = 3.30
 	pkgrel = 1
 	url = http://search.cpan.org/dist/ExtUtils-ParseXS
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-extutils-parsexs
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/ExtUtils-ParseXS-3.24.tar.gz
-	md5sums = e6be3f1d493e04ed805576104cf4328b
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/ExtUtils-ParseXS-3.30.tar.gz
+	md5sums = db1d2dffcf538c9b49701d8aa2aea7fa
 
 pkgname = perl-extutils-parsexs
 
