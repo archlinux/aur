@@ -42,4 +42,5 @@ package() {
     python2 setup.py install --root="${pkgdir}"
 
     mkdir -p "${pkgdir}"/{etc,var/lib,var/log}/letsencrypt
+    chmod 700 "${pkgdir}"/var/log/letsencrypt
 }
