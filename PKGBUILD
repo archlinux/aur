@@ -26,7 +26,7 @@ package() {
   install -d "${pkgdir}/opt"
   cp -r "${srcdir}/scilab-${pkgver}" "${pkgdir}/opt/scilab"
 
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm 644 "${srcdir}/scilab-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
   install -d "${pkgdir}/usr/share/applications"
   install -Dm 644 "${srcdir}/scilab-${pkgver}/share/applications/scilab.desktop" "${pkgdir}/usr/share/applications/scilab.desktop"
