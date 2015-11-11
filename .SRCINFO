@@ -58,8 +58,10 @@ pkgbase = ffmpeg-libfdk_aac
 	conflicts = ffmpeg
 	source = http://ffmpeg.org/releases/ffmpeg-2.8.1.tar.bz2
 	source = http://ffmpeg.org/releases/ffmpeg-2.8.1.tar.bz2.asc
-	md5sums = 5eb3839e23c9ca396fabd0ebbe293ea2
+	source = ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
+	md5sums = 63b2cfeea930e942ff7579fd0064c5be
 	md5sums = SKIP
+	md5sums = 71be9bcd297cb9ce833bbc5d425c0470
 
 pkgname = ffmpeg-libfdk_aac
 
