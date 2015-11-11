@@ -3,7 +3,7 @@
 _gitname=Plat
 _pkgname=Plat
 pkgname=('plat-icon-theme')
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="A flat design icon theme by MichaelTiebesl"
 arch=('any')
