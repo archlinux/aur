@@ -1,0 +1,11 @@
+--- crypto/cryptlib.c	2015-11-11 18:59:56.930196694 +0100
++++ crypto/cryptlib.c	2015-11-11 20:42:50.074557585 +0100
+@@ -702,7 +702,7 @@
+                 OPENSSL_ia32cap_P[2] = vecx;
+         }
+     } else
+-        vec = OPENSSL_ia32_cpuid(OPENSSL_ia32cap_P);
++        vec = OPENSSL_ia32_cpuid(OPENSSL_ia32cap_P) & (~0x200000200000000);
+ 
+     /*
+      * |(1<<10) sets a reserved bit to signal that variable
