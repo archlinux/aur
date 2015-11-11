@@ -1,0 +1,18 @@
+pkgbase = texlive-ewuthesis
+	pkgdesc = Style for Master's Thesis at Eastern Washington University
+	pkgver = 2015.11.10
+	pkgrel = 1
+	url = https://github.com/oraac/texlive-ewuthesis
+	install = texlive-ewuthesis.install
+	arch = any
+	license = LPPL
+	depends = texlive-core
+	depends = texlive-htmlxml
+	depends = texlive-plainextra
+	depends = texlive-langextra
+	source = https://github.com/oraac/texlive-ewuthesis/blob/master/packaged/ewuthesis-2015.11.10.tgz
+	sha256sums = 73a86964d9ceafcf7740aee8c3e2532c3675a9d64dcbb7b31430b90dca605753
+	sha256sums = 242e3c1287823f1debe4479c70fa09acbc6883adb26c8726882e892384831a13
+
+pkgname = texlive-ewuthesis
+
