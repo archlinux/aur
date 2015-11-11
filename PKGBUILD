@@ -21,7 +21,7 @@ sha1sums=('SKIP'
           '0fe0fb09ce13383c26c39f016d23a37a9af82bef'
           '64fb34f100c4a94ab497581a871f006012727b5c'
           '50f23061fcd03e0aafdefb3b676f1846c036c856'
-          '2354eb8d1140e8e3ce523122a52a5d07fa80f739')
+          '96d3a0168f392af655e2b309711d7810ad3c022f')
 install=dsview.install
 
 pkgver() {
@@ -49,6 +49,8 @@ package() {
   cd DSView/DSView
 
   make DESTDIR="$pkgdir" install
+
+  install -Dm644 icons/logo_color.png "$pkgdir/usr/share/pixmaps/dsview.png"
 
   install -Dm644 "$srcdir/dsview.desktop" "$pkgdir/usr/share/applications/dsview.desktop"
   install -Dm644 "$srcdir/udev.rules" "$pkgdir/usr/lib/udev/rules.d/20-dsview.rules"
