@@ -69,7 +69,7 @@ package() {
     msg2 'Creating $pkgname directory structure'
     install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/drush" "$pkgdir/usr/share/webapps/$pkgname"
     install --directory --owner=http --group=http --mode=0700 "$pkgdir/usr/share/webapps/$pkgname/.ssh"{,/ctrl-sockets}
-    mkdir -p "$pkgdir/srv/http"
+    mkdir -p "$pkgdir/srv/http" "$pkgdir/etc/skel"
     ln -s /etc/drush "$pkgdir/srv/http/.drush"
     ln -s /etc/drush "$pkgdir/etc/skel/.drush"
     ln -s /etc/drush "$pkgdir/usr/share/webapps/$pkgname/.drush"
