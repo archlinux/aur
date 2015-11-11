@@ -1,6 +1,6 @@
 pkgbase = plat-icon-theme
-	pkgdesc = A flat design icon theme by MichaelTiebesl
-	pkgver = 2.0
+	pkgdesc = A flat design icon theme with long shadow by MichaelTiebesl
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/MichaelTiebesl/Plat
 	arch = any
