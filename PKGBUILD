@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
