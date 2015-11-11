@@ -1,5 +1,5 @@
 pkgname=libmonome-git
-pkgver=20150603
+pkgver=20151108
 pkgrel=1
 pkgdesc="Makes writing applications for Monomes easy"
 arch=("i686" "x86_64")

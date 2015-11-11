@@ -1,7 +1,8 @@
 pkgbase = libmonome-git
 	pkgdesc = Makes writing applications for Monomes easy
-	pkgver = 20150603
+	pkgver = 20151108
 	pkgrel = 1
+	url = https://github.com/monome/libmonome
 	arch = i686
 	arch = x86_64
 	license = ISC
