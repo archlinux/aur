@@ -1,0 +1,13 @@
+pkgbase = ruby-rdtool
+	pkgdesc = RDtool is formatter for RD.
+	pkgver = 0.6.38
+	pkgrel = 0
+	url = http://github.com/uwabami/rdtool
+	arch = any
+	makedepends = ruby
+	noextract = rdtool-0.6.38.gem
+	source = http://rubygems.org/downloads/rdtool-0.6.38.gem
+	md5sums = a9332634a3dff8dfea8cb433fd048168
+
+pkgname = ruby-rdtool
+
