@@ -1,7 +1,7 @@
 # Maintainer: knightzx <cuongvdtz@gmail.com>
 
 pkgname=hakuneko
-pkgver=1.3.11
+pkgver=1.3.12
 pkgrel=1
 pkgdesc="Manga Downloader for Linux and Windows"
 arch=('i686' 'x86_64')
