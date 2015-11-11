@@ -48,6 +48,7 @@ pre_upgrade() {
     touch /tmp/aegir.target-active
     systemctl --system stop --now aegir.target
   }
+  true
 }
 
 post_upgrade() {
@@ -55,6 +56,7 @@ post_upgrade() {
     rm /tmp/aegir.target-active
     systemctl --system stop --now aegir.target
   }
+  true
 }
 
 pre_remove() {
