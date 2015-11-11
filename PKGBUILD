@@ -1,14 +1,17 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=osmo-svn
-pkgver=777
+pkgver=1046
 pkgrel=1
 pkgdesc="Development version of a handy personal organizer"
 arch=('i686' 'x86_64')
 url="http://clayo.org/osmo/"
 license=('GPL')
-depends=('gtk2' 'libxml2')
-optdepends=('libical' 'libgringotts' 'libsyncml' 'libnotify')
+depends=('gtk2' 'hicolor-icon-theme' 'libgringotts' 'libxml2')
+makedepends=('libarchive' 'libical' 'libnotify')
+optdepends=('sox: to play sounds'
+            'libical' 'libnotify' 'libarchive')
+install=$pkgname.install
 provides=('osmo')
 conflicts=('osmo')
 makedepends=('subversion' 'autoconf')
