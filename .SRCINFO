@@ -1,20 +1,22 @@
 pkgbase = netbeans-javase
 	pkgdesc = Oracle's Java (SE) IDE
-	pkgver = 8.0.2
+	pkgver = 8.1
 	pkgrel = 1
 	url = http://netbeans.org
 	install = netbeans-javase.install
 	arch = any
 	license = CDDL
 	depends = java-environment
+	depends = ttf-font
 	depends = libxtst
 	depends = giflib
 	depends = atk
+	provides = netbeans
 	conflicts = netbeans
 	options = !strip
-	source = http://download.netbeans.org/netbeans/8.0.2/final/zip/netbeans-8.0.2-201411102027-javase.zip
+	source = http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201-javase.zip
 	source = netbeans.desktop
-	sha1sums = 477df0eefb5fad4898a466b3aff49426c65801a0
+	sha1sums = 2f9b5537788e141d629e04a6b968ea33d7f0d8ee
 	sha1sums = 6d0c6259d693a345f2f7fd48153ccebe6836c084
 
 pkgname = netbeans-javase
