@@ -2,7 +2,7 @@
 
 _npmname=cordova
 pkgname=nodejs-$_npmname
-pkgver=5.3.3
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Cordova command line interface tool"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('apache-ant: building for Android'
             'android-sdk-build-tools: building for Android')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-${pkgver//_/-}.tgz)
 noextract=($_npmname-${pkgver//_/-}.tgz)
-sha1sums=('d8933ea57cf4d390a1c86d0b43def76f61fb4d76')
+sha1sums=('2ed2255c2d73c713053e84df0de24caf73502659')
 
 package() {
   cd "$srcdir"
