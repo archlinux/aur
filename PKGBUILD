@@ -16,7 +16,7 @@ _filename="tensorflow-${pkgver}-cp27-none-linux_${CARCH}.whl"
 source=("https://storage.googleapis.com/tensorflow/linux/gpu/${_filename}")
 noextract=("${_filename}")
 if test "$CARCH" == x86_64 ; then
-  sha256sums=('d0ba3a7c5ea728b1463d36c88ef09e60fd082e14190989e2df769220260f91ba')
+  sha256sums=('cf7133acfce09f0f3614d45a8b699d3ec6c346ac56b831d5f552be33bb6260ea')
 fi
 
 # TODO: add CUDA support
