@@ -1,0 +1,66 @@
+#!/usr/bin/ash
+
+run_hook() {
+    local pw
+    modprobe -a -q dm-crypt >/dev/null 2>&1
+    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
+
+    if [ -z "${cryptdevices}" ]; then
+        return 1
+    fi
+
+    for devspec in $(echo "${cryptdevices}" | tr ';' '\n'); do
+        [ -z "${devspec}" ] && continue
+        
+        IFS=: read cryptdev cryptname cryptoptions <<EOF
+${devspec}
+EOF
+
+        # parse options
+        cryptargs=""
+        for cryptopt in ${cryptoptions//,/ }; do
+            case ${cryptopt} in
+                allow-discards)
+                    cryptargs="${cryptargs} --allow-discards"
+                    ;;
+                *)
+                    echo "Encryption option '${cryptopt}' not known, ignoring" >&2
+                    ;;
+            esac
+        done
+
+        # try to decrypt
+        if ! resolved=$(resolve_device "${cryptdev}" ${rootdelay}); then
+            err "Device ${cryptdev} could not be resolved. Skipping..."
+            continue
+        fi
+
+        if ! eval cryptsetup isLuks ${resolved} >/dev/null 2>&1; then
+            err "Failed to open device ${cryptdev}: Not a LUKS volume!"
+            continue
+        fi
+
+        while ! [ -e "/dev/mapper/${cryptname}" ]; do
+            eval cryptsetup open --type luks --test-passphrase ${resolved} ${cryptname} ${cryptargs} >/dev/null 2>/dev/null <<EOF
+${pw}
+EOF
+            if [ $? -eq 0 ]; then
+                break
+            else
+                echo -n "Enter password for ${cryptname}: "
+                read -r -s pw
+		echo ""
+            fi
+        done
+
+        eval cryptsetup open --type luks ${resolved} ${cryptname} ${cryptargs} ${CSQUIET} <<EOF
+${pw}
+EOF
+        if ! [ -e "/dev/mapper/${cryptname}" ]; then
+            err "Password succeeded, but ${cryptname} creation failed, aborting..."
+            exit 1
+        fi
+    done
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
