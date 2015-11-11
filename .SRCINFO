@@ -1,0 +1,26 @@
+pkgbase = cuda-7.0
+	pkgdesc = NVIDIA's GPU programming toolkit - Frozen at version 7.0
+	pkgver = 7.0.28
+	pkgrel = 1
+	url = http://www.nvidia.com/object/cuda_home.html
+	install = cuda.install
+	arch = x86_64
+	license = custom:NVIDIA
+	depends = gcc-libs
+	depends = opencl-nvidia
+	optdepends = gdb: for cuda-gdb
+	provides = cuda-toolkit
+	provides = cuda-sdk
+	replaces = cuda-toolkit
+	replaces = cuda-sdk
+	options = !strip
+	options = staticlibs
+	source = http://developer.download.nvidia.com/compute/cuda/7_0/Prod/local_installers/cuda_7.0.28_linux.run
+	source = cuda.sh
+	source = cuda.conf
+	md5sums = 312aede1c3d1d3425c8caa67bbb7a55e
+	md5sums = 7e5990e03eea90075f5a500e91a0c3d3
+	md5sums = ffe1e6fb7f97b23da28fd94a5fd7356d
+
+pkgname = cuda-7.0
+
