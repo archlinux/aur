@@ -1,7 +1,7 @@
 pkgbase = calligra
 	pkgdesc = Digital painting and illustration suite (stand-alone).
 	pkgver = 2.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.krita.org/
 	install = krita.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = calligra
 	depends = glew
 	depends = gsl
 	depends = kdebase-runtime
-	depends = libkdcraw
+	depends = libkdcraw4
 	depends = opencolorio
 	depends = boost-libs
 	depends = curl

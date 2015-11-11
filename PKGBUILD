@@ -3,12 +3,12 @@
 pkgbase=calligra
 pkgname=krita
 pkgver=2.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital painting and illustration suite (stand-alone)."
 arch=('i686' 'x86_64')
 url="http://www.krita.org/"
 license=('GPL2')
-depends=('eigen' 'fftw' 'glew' 'gsl' 'kdebase-runtime' 'libkdcraw' 'opencolorio' 'boost-libs' 'curl' 'poppler-qt4')
+depends=('eigen' 'fftw' 'glew' 'gsl' 'kdebase-runtime' 'libkdcraw4' 'opencolorio' 'boost-libs' 'curl' 'poppler-qt4')
 makedepends=('automoc4' 'boost' 'cmake' 'lcms2' 'openjpeg' 'vc')
 provides=('calligra-krita')
 conflicts=('calligra-krita' 'calligra-plugins' 'calligra-libs' 'calligra-extras' 'calligra-filters')
