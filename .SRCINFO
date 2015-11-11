@@ -1,0 +1,25 @@
+pkgbase = tensorflow-git
+	pkgdesc = Open source software library for numerical computation using data flow graphs.
+	pkgver = 0.5.0.r10.gb4629c0
+	pkgrel = 1
+	url = https://tensorflow.org/
+	arch = i686
+	arch = x86_64
+	license = Apache2
+	makedepends = git
+	makedepends = python2-pip
+	depends = python2-numpy
+	depends = swig
+	depends = python2-wheel
+	provides = tensorflow
+	conflicts = tensorflow
+	conflicts = python2-tensorflow
+	source = git+https://github.com/tensorflow/tensorflow
+	source = git+https://github.com/google/protobuf
+	source = git+https://github.com/bazelbuild/bazel
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = tensorflow-git
+
