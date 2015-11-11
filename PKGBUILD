@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Open source software library for numerical computation using data flow graphs"
 url="http://tensorflow.org"
 # TODO: add missing dependencies
-depends=('python2' 'python2-numpy' 'python2-protobuf3' 'cuda-7.0')
+depends=('python2' 'python2-numpy' 'python2-protobuf3' 'cuda-7.0' 'cudnn')
 makedepends=('python2' 'python2-pip')
 license=('Apache')
 replace=('python2-tensorflow')
