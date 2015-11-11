@@ -25,12 +25,12 @@ sha256sums=('e4be7fc8d2e7cb65feae4d6387967484c01c9dc818e7dfff515f663728a6f2ca'
     'd357cc901505cb1aecd055cc953490f617b1baa8ac129ab580acf300c60ca1b0')
 
 build() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/libsvm-$_pkgver"
   patch -p1 < "$srcdir/openmp.patch"
   make lib all
 }
 package() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/libsvm-$_pkgver"
   install -D -m755 svm-train $pkgdir/usr/bin/svm-train
   install -D -m755 svm-predict $pkgdir/usr/bin/svm-predict
   install -D -m755 svm-scale $pkgdir/usr/bin/svm-scale
