@@ -1,0 +1,16 @@
+pkgbase = nemid
+	pkgdesc = NemID Certificate Tool
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://www.nemid.nu
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = qt4
+	source_i686 = https://www.nemid.nu/dk-da/support/brug_nemid/send_og_modtag_sikker_e-mail/installation_paa_linux/csp_for_ubuntu/DanID-Multifunktionsloesning-1.3.1-RC1-Linux32-PRODUCTION-TEST-CODE-DISABLED.tar.gz
+	md5sums_i686 = 916eb48b961909df418820fcc95c0b4b
+	source_x86_64 = https://www.nemid.nu/dk-da/support/brug_nemid/send_og_modtag_sikker_e-mail/installation_paa_linux/csp_for_ubuntu/DanID-Multifunktionsloesning-1.3.1-RC1-Linux64-PRODUCTION-TEST-CODE-DISABLED.tar.gz
+	md5sums_x86_64 = b073cb17f62c63d4e1b3f35b7ef52380
+
+pkgname = nemid
+
