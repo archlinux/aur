@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Battle Jump
+GenericName=Battle Jump
+Comment="Arcade game inspired by Monster Farm Jump."
+Exec=/usr/bin/battlejump
+Categories=Game;ArcadeGame
+Icon=/usr/share/battlejump/Images/Logo/ico-48.png
+
