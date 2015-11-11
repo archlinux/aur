@@ -1,18 +1,22 @@
 pkgbase = papers-please-gog
 	pkgdesc = A Dystopian Document Thriller (gog.com version)
-	pkgver = 1.0.0.4
+	pkgver = 2.0.0.4
 	pkgrel = 1
 	url = http://gog.com/game/papers_please
 	arch = x86_64
 	arch = i686
 	license = custom: commercial
-	depends = bash
-	depends = libgl
-	depends = gcc-libs
-	source = gog://gog_papers_please_1.0.0.4.tar.gz
+	depends = sh
+	source = gog_papers_please_2.0.0.4.sh::gogdownloader://papers_please/installer_linux_en
 	source = papers-please-gog.sh
-	sha256sums = a6929625cc8d6a87464cf8b099824e03990e1bef6e33f61cec24cb867cf6e387
+	source = papers-please-gog.desktop
+	sha256sums = 13a37a037ef9bda90ac77e878415e678e53814c2ebaf2be29819b0cad297f5ad
 	sha256sums = 9227f364836b975d05609481c0d67e7b6fd8e52f7bb931b39af98d864b296d2e
+	sha256sums = 3273cd3c3f35495d00debbd0d10ad2d188b8cf1b40bc9a754c7e4c6fe82173f6
+	depends_x86_64 = lib32-libgl
+	depends_x86_64 = lib32-gcc-libs
+	depends_i686 = libgl
+	depends_i686 = gcc-libs
 
 pkgname = papers-please-gog
 
