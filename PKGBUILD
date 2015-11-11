@@ -1,12 +1,12 @@
 
 # Maintainer: Matteo De Carlo <matteo.dek AT gmail DOT com>
 pkgname=pencil-material-icons-git
-pkgver=1.1.0.r0.g47d2800
-pkgrel=2
+pkgver=1.1.0.r3.gd6ee561
+pkgrel=1
 pkgdesc="All 700+ of Google's Material Design Icons as a Pencil stencil collection."
 arch=(any)
 url="https://github.com/nathanielw/Material-Icons-for-Pencil/"
-license=
+license=('MIT')
 depends=('pencil')
 makedepends=('pacman>=4.1.2' 'git' 'python' 'python-lxml' 'python-cairosvg')
 install=
@@ -42,4 +42,5 @@ package() {
   
   install -m644 -Dt "${DESTDIR}/${_name}" Definition.xml
   install -m644 -Dt "${DESTDIR}/${_name}/icons" icons/*
+  install -Dm644 "${srcdir}/${_name}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
