@@ -2,7 +2,7 @@
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup-dev"
 _pkgname="burp"
-pkgver=2.0.24
+pkgver=2.0.26
 pkgrel=1
 pkgdesc="A next generation experimental version of the burp backup and restore program."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(
 )
 
 sha256sums=(
-  230f70668ab3a97b5e28df6f8fa8ecae90534bec96d73149e94b3bec5974839e # burp-${pkgver}.tar.bz2
+  e81d8076688ac4f9dbbaa591bbdf4fdd9ac518be1446bbe9c0608f4aec4748cb # burp-${pkgver}.tar.bz2
   1d2c97471494dd5924bd0676e817ebfac54465c4ec0e23b49ad1c3c91d36460f # burp.install
   94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f # burp-server.service
   7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3 # burp-client.service
