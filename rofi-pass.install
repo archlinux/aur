@@ -1,7 +1,7 @@
 #!/bin/bash
 post_install() {
 echo '
-Global config file is installed in /etc/rofi-pass.conf
+Installed global config file as /etc/rofi-pass.conf
 To make user modifications copy it to $HOME/.config/rofi-pass/config
 '
 }
