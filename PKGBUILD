@@ -22,13 +22,11 @@ build() {
 package(){
 	# move package
   echo "Move Package"
-  sudo rm -r /usr/share/$pkgname
+  sudo rm -rf /usr/share/$pkgname
   sudo mv $pkgname /usr/share/$pkgname
 
 	# link builds
   echo "Link Build"
-  sudo rm /usr/bin/djinni
-  sudo rm /usr/bin/djinni-simple
-	sudo ln -s /usr/share/djinni/src/run /usr/bin/djinni
-	sudo ln -s /usr/share/djinni/src/djinni-simple /usr/bin/djinni-simple
+	sudo ln -sf /usr/share/djinni/src/run /usr/bin/djinni
+	sudo ln -sf /usr/share/djinni/src/djinni-simple /usr/bin/djinni-simple
 }
