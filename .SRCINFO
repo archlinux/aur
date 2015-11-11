@@ -1,5 +1,5 @@
 pkgbase = xorg-server-dev
-	pkgver = 1.17.99.902
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = http://xorg.freedesktop.org
 	arch = i686
@@ -52,18 +52,16 @@ pkgbase = xorg-server-dev
 	makedepends = dri3proto
 	makedepends = libxshmfence
 	makedepends = libunwind
-	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.17.99.902.tar.bz2
-	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.17.99.902.tar.bz2.sig
-	source = nvidia-drm-outputclass.conf
+	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.18.0.tar.bz2
+	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.18.0.tar.bz2.sig
 	source = xvfb-run
 	source = xvfb-run.1
-	source = 0001-linux-Do-not-call-FatalError-from-xf86CloseConsole.patch
-	sha256sums = 0344d78d92ba5f1181e0adb98a9679d5906b06bc3c15978e1355b0d3be3749c0
+	source = 0001-systemd-logind-do-not-rely-on-directed-signals.patch
+	sha256sums = 195670819695d9cedd8dde95fbe069be0d0f488a77797a2d409f9f702daf312e
 	sha256sums = SKIP
-	sha256sums = af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
-	sha256sums = bdcfc54ce0b64d29848efc56383d850778c6eeecf836c10b67ec2eda03a6160b
+	sha256sums = 3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c
 
 pkgname = xorg-server-dev
 	pkgdesc = Xorg X server - Bleeding edge version
@@ -78,9 +76,9 @@ pkgname = xorg-server-dev
 	depends = libgcrypt
 	depends = libxau
 	depends = xorg-server-common-dev
-	depends = xf86-input-evdev
 	depends = libxshmfence
 	depends = libgl
+	depends = xf86-input-driver
 	provides = X-ABI-VIDEODRV_VERSION=20.0
 	provides = X-ABI-XINPUT_VERSION=22.1
 	provides = X-ABI-EXTENSION_VERSION=9.0

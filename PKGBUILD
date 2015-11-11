@@ -3,7 +3,7 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.17.99.902  # 1.18.0 RC2: http://lists.x.org/archives/xorg-announce/2015-October/002646.html
+pkgver=1.18.0  # http://lists.x.org/archives/xorg-announce/2015-November/002654.html
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
@@ -14,27 +14,25 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
-             'libxshmfence' 'libunwind') 
+             'libxshmfence' 'libunwind')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
-        nvidia-drm-outputclass.conf
         xvfb-run
         xvfb-run.1
-        0001-linux-Do-not-call-FatalError-from-xf86CloseConsole.patch)
+        0001-systemd-logind-do-not-rely-on-directed-signals.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('0344d78d92ba5f1181e0adb98a9679d5906b06bc3c15978e1355b0d3be3749c0'
+sha256sums=('195670819695d9cedd8dde95fbe069be0d0f488a77797a2d409f9f702daf312e'
             'SKIP'
-            'af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            'bdcfc54ce0b64d29848efc56383d850778c6eeecf836c10b67ec2eda03a6160b')
+            '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
 
-  msg2 "fix FS#46741, taken from Fedora"
-  patch -Np1 -i ../0001-linux-Do-not-call-FatalError-from-xf86CloseConsole.patch
+  msg2 "fix VT switching with kdbus; from upstream"
+  patch -Np1 -i ../0001-systemd-logind-do-not-rely-on-directed-signals.patch
 
   msg2 "Starting autoreconf..."
   autoreconf -fvi
@@ -57,9 +55,7 @@ build() {
       --enable-xephyr \
       --enable-glamor \
       --enable-xwayland \
-      --enable-glx-tls \
       --enable-kdrive \
-      --enable-kdrive-evdev \
       --enable-kdrive-kbd \
       --enable-kdrive-mouse \
       --enable-config-udev \
@@ -77,7 +73,7 @@ build() {
       --with-xkb-output=/var/lib/xkb \
       --with-fontrootdir=/usr/share/fonts \
       --with-sha1=libgcrypt
-
+      
 #      --without-dtrace \
 #      --disable-linux-acpi --disable-linux-apm \
 
@@ -116,7 +112,8 @@ package_xorg-server-common-dev() {
 
 package_xorg-server-dev() {
   pkgdesc="Xorg X server - Bleeding edge version"
-  depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common-dev xf86-input-evdev libxshmfence libgl)
+  depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common-dev libxshmfence libgl xf86-input-driver)
+
   # see src/xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-dev pkg
   for VAR in VIDEODRV XINPUT EXTENSION; do
@@ -132,11 +129,10 @@ package_xorg-server-dev() {
 
   msg2 "Starting make install..."
   make DESTDIR="${pkgdir}" install
-
+  
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
-  install -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/"
-
+  
   # Needed for non-mesa drivers, libgl will restore it
   mv "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so" \
      "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.xorg"
@@ -152,8 +148,6 @@ package_xorg-server-dev() {
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
   rm -rf "${pkgdir}/usr/include"
   rm -rf "${pkgdir}/usr/share/aclocal"
-  # this is now part of xf86-input-evdev
-  rm -rf "${pkgdir}/usr/share/X11/xorg.conf.d/10-evdev.conf"
 }
 
 package_xorg-server-xephyr-dev() {
