@@ -1,0 +1,19 @@
+pkgbase = python-pykalman
+	pkgdesc = Kalman Filter, Smoother, and EM Algorithm for Python
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://pykalman.github.io/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	optdepends = python-sphinx: for generating documentation
+	optdepends = python-numpydoc: for generating documentation
+	optdepends = python-nose: for runnung tests
+	source = https://pypi.python.org/packages/source/p/pykalman/pykalman-0.9.5.tar.gz
+	md5sums = 8baa2921cdfd2a5193ac67e23c2f7e5e
+
+pkgname = python-pykalman
+
