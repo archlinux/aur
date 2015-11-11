@@ -1,13 +1,14 @@
 pkgbase = numberwang-git
 	pkgdesc = Easily copy file names from shell command output
 	pkgver = 0.4.r1.g5bee7d6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robbiev/numberwang
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
 	makedepends = go
+	depends = xclip
 	provides = numberwang
 	conflicts = numberwang
 	source = git+https://github.com/robbiev/numberwang

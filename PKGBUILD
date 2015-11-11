@@ -2,11 +2,13 @@
 pkgname=numberwang-git
 _gitname=numberwang
 pkgver=0.4.r1.g5bee7d6
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily copy file names from shell command output"
 arch=(x86_64 i686)
 url=https://github.com/robbiev/numberwang
 license=(MIT)
+# numberwang links against a clipboard library which calls out to either xclip or xsel.
+depends=(xclip)
 makedepends=(git go)
 provides=(numberwang)
 conflicts=(numberwang)
@@ -22,6 +24,9 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_gitname"
+    export GOPATH="$srcdir/gopath"
+    [ -d "$GOPATH" ] || mkdir "$srcdir"/gopath
+    go get -d
     go build
 }
 
