@@ -1,0 +1,18 @@
+pkgbase = gtksourceview-highlight-haml
+	pkgdesc = HAML syntax highlighting for gtksourceview
+	pkgver = LATEST
+	pkgrel = 1
+	url = https://github.com/mkllnk/gedit-rails-extensions
+	arch = any
+	license = GPL
+	source = git+https://github.com/mkllnk/gedit-rails-extensions.git
+	sha512sums = SKIP
+
+pkgname = gtksourceview2-highlight-haml
+	depends = gtksourceview2
+	depends = mime-haml
+
+pkgname = gtksourceview3-highlight-haml
+	depends = gtksourceview3
+	depends = mime-haml
+
