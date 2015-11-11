@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  mkdir build
+  [ -d build ] || mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
   make
