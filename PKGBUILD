@@ -1,7 +1,7 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=intel-xdk-ea
-pkgver=2567
+pkgver=2682
 pkgrel=1
 _rpmver=2.0-0
 pkgdesc='Comprehensive, cross-platform HTML5 development environment (pre-release version)'
@@ -17,11 +17,11 @@ md5sums=('a8cd1ad751fddfe10a82331109967b11')
 if [ "${CARCH}" == 'i686' ]; then
   _arch='32'
   _carch='i486'
-  md5sums+=('53a093c5b5793c8677aacd9d694bff8f')
+  md5sums+=('1c0f5606095e9ac435da95cecc5977a6')
 elif [ "${CARCH}" == 'x86_64' ]; then
   _arch='64'
   _carch='x86_64'
-  md5sums+=('79f39c63bfe3a5e1ee42692f6e655adf')
+  md5sums+=('7f36f2c133b6a18131af5f3edc5ac4dc')
 fi
 
 _base="xdk-ea_web_linux${_arch}"
