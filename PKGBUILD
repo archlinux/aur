@@ -7,7 +7,7 @@
 
 pkgname=pam-selinux
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('i686' 'x86_64')
 license=('GPL2')
