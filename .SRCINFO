@@ -1,0 +1,55 @@
+pkgbase = linux-covolunablu-gaming
+	pkgver = 4.2.5
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	conflicts = steamos-xpad-dkms
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.5.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.2.0-v7r9/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r9-4.2.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.2.0-v7r9/0002-block-introduce-the-BFQ-v7r9-I-O-sched-for-4.2.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.2.0-v7r9/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r9-for-4.2.0.patch
+	source = https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/1046cf2298d8ebd6a25a80bcb69cd641d2dd8313/drivers/input/joystick/xpad.c
+	sha256sums = cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb
+	sha256sums = SKIP
+	sha256sums = b631eb4e8b4911b31111b0838e00f7c4a1b7689abcd2233609831b638493f4fb
+	sha256sums = SKIP
+	sha256sums = e4ca3dc0f994d6dcc0f2698ee74b74184e9d3bdf867801c85de07a46749372a3
+	sha256sums = 6a395216993e88c1e8ca6fc6492316b590d6ca38ba5caee8fd629a3d228de52e
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 7379bb700a121c8790c1690646b1a8dfdf0199254a4bc660e76c0bf90a7828a5
+	sha256sums = 743ecc34ab048581e9998c53b1eb81c1c31d3ac9ee72d04e1e00b2bafeedbddc
+	sha256sums = 8d9cc296721fc4d6273ee9c7609b7d815e4061c360231eb68d060b4b7e7b7f81
+	sha256sums = 8f38b93d00789a83f3ec7da7761e6ead63e37a7ae3a7790788021eae5161db09
+
+pkgname = linux-covolunablu-gaming
+	pkgdesc = The Linux-covolunablu-gaming kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-covolunablu-gaming.preset
+
+pkgname = linux-covolunablu-gaming-headers
+	pkgdesc = Header files and scripts for building modules for Linux-covolunablu-gaming kernel
+
+pkgname = linux-covolunablu-gaming-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-covolunablu-gaming kernel
+
