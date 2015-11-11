@@ -1,0 +1,13 @@
+pkgbase = pari-elldata
+	pkgdesc = pari package of J. E. Cremona Elliptic Curve Data.
+	pkgver = 20150519
+	pkgrel = 1
+	url = http://pari.math.u-bordeaux.fr/
+	arch = any
+	license = GPL
+	depends = pari
+	source = http://pari.math.u-bordeaux.fr/pub/pari/packages/elldata.tgz
+	md5sums = a738d4c6ebdcfaa222441c0504301d42
+
+pkgname = pari-elldata
+
