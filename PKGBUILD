@@ -1,6 +1,7 @@
+# Maintainer: Benjamin Chrétien <chretien at lirmm dot fr>
 pkgname=cudnn
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA CUDA Deep Neural Network library"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuDNN"
@@ -38,8 +39,8 @@ prepare() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p "${pkgdir}/opt/cuda"
-  cp -r cuda "${pkgdir}/opt/cuda"
+  mkdir -p "${pkgdir}/opt"
+  cp -r cuda "${pkgdir}/opt"
 }
 
 # vim: ft=sh syn=sh et

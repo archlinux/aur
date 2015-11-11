@@ -1,7 +1,7 @@
 pkgbase = cudnn
 	pkgdesc = NVIDIA CUDA Deep Neural Network library
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/cuDNN
 	arch = x86_64
 	license = proprietary
