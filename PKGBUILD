@@ -2,7 +2,7 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 
 pkgname=neovim-git
-pkgver=0.1.0.r12.g9499432
+pkgver=0.1.0.r44.g632408a
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ sha256sums=('SKIP')
 provides=("neovim=${pkgver}")
 conflicts=('neovim')
 install=neovim-git.install
+options=(!strip)
 
 pkgver() {
   cd "${pkgname}"
