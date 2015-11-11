@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: Yann Lopez <arch at lonewulf dot net>
 pkgname=babeld
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A loop-avoiding distance-vector routing protocol"
 arch=('i686' 'x86_64')
@@ -14,18 +14,10 @@ source=("http://www.pps.univ-paris-diderot.fr/~jch/software/files/$pkgname-$pkgv
   "http://www.pps.univ-paris-diderot.fr/~jch/software/files/$pkgname-$pkgver.tar.gz.asc"
   "babeld.conf"
   "babeld.service")
-md5sums=('22926f212731c05db02af1b2143040c2'
+md5sums=('d6881410d674cf9e5ad0673cad846772'
          'SKIP'
          '2b009a8f97eb038fbd7e73c5dd341bf5'
          'd6407e493f79aad1887394639ef5d50e')
-sha1sums=('d1cdcab331fd10bc5dbde30732bd7a2050685394'
-          'SKIP'
-          '119c7fa6ec86d63b0bd59f395ac6651842ba94bb'
-          '864840cfafeeb3f29c0f91421bc210a8c1f4b245')
-sha256sums=('09de0d99684e95466f07be1eb22fa639c8820d8aaaa7a8db2a18a354cb3d0fb7'
-            'SKIP'
-            '6bb17ade33e6fa34a5f0a181b1f2135c396108d40ce1278d9b3ebd68580bbf44'
-            'fde7554e0d8a200d99b0766bd0ce23cbd7d14593c43d96de158e2fa2c379c1c5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
