@@ -1,12 +1,12 @@
 pkgname=groonga-normalizer-mysql
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A MySQL compatible normalizer plugin for groonga."
 arch=('i686' 'x86_64')
 url="http://mroonga.org/"
 license=('LGPL2')
 source=("http://packages.groonga.org/source/groonga-normalizer-mysql/$pkgname-$pkgver.tar.gz")
-depends=('groonga cmake')
+depends=('groonga' 'cmake')
 optdepends=('cutter-test_framework')
 
 build() {
