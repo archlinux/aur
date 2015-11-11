@@ -32,10 +32,17 @@ provides=(
       'libswscale.so'
 )
 conflicts=("$_name")
-source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2{,.asc})
+source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2{,.asc}
+        ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 md5sums=('63b2cfeea930e942ff7579fd0064c5be'
-         'SKIP')
+         'SKIP'
+         '71be9bcd297cb9ce833bbc5d425c0470')
+
+prepare() {
+  cd $_name-$pkgver
+  patch -p1 -i ../ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
+}
 
 build() {
   cd $_name-$pkgver
