@@ -47,7 +47,7 @@ prepare() {
 
 build() {
   cd "$srcdir"/elks/dev86
-  #always build as 32-bit
+  #always build as 32-bit to get elksemu
   if [ "${CARCH}" == "x86_64" ]; then
   _GCC32="gcc -m32 -march=i686 -mtune=generic -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4 -D_FORTIFY_SOURCE=2" 
   _LD32="ld -m32 -Wl,-O1,--sort-common,--as-needed,-z,relro" 
@@ -55,6 +55,14 @@ build() {
   else
   make ELKSSRC="$srcdir"/elks PREFIX=/usr MANDIR=/usr/share/man DIST="$pkgdir" all
   fi
+  #build some elks userland programs for testing / proof-of-concept
+  cd ../elks
+  make defconfig
+  make dep
+  
+  cd ../busyelks
+  ./build
+    
 }
 
 
@@ -65,5 +73,7 @@ package() {
   make install-all DIST="$pkgdir"
   cp -r "$pkgdir"/usr/man/* "$pkgdir"/usr/share/man/
   rm -rf "$pkgdir"/usr/man
+  mkdir -p "$pkgdir"/usr/bin86
+  cp "$srcdir"/elks/busyelks/_install/bin/* "$pkgdir"/usr/bin86/
 }
 
