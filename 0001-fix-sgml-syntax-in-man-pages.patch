@@ -1,0 +1,147 @@
+From 70eb137f7c9350a794f280b36018cb1394965271 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Wed, 11 Nov 2015 14:07:49 +0100
+Subject: [PATCH 1/1] fix sgml syntax in man pages
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ man/nbd-client.8.in.sgml | 19 ++++++++++---------
+ man/nbd-server.1.in.sgml |  7 ++++---
+ man/nbd-server.5.in.sgml |  5 +++--
+ man/nbd-trdump.1.in.sgml |  3 ++-
+ man/nbdtab.5.in.sgml     |  3 ++-
+ 5 files changed, 21 insertions(+), 16 deletions(-)
+
+diff --git a/man/nbd-client.8.in.sgml b/man/nbd-client.8.in.sgml
+index 7e04868..2e220cb 100644
+--- a/man/nbd-client.8.in.sgml
++++ b/man/nbd-client.8.in.sgml
+@@ -1,4 +1,5 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.5//EN" [
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
++  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ 
+ <!-- Process this file with docbook-to-man to generate an nroff manual
+      page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
+@@ -55,9 +56,9 @@ manpage.1: manpage.sgml
+   <refsynopsisdiv>
+     <cmdsynopsis>
+       <command>&dhpackage;</command>
+-      <arg choice=plain><replaceable>host</replaceable></arg>
++      <arg choice="plain"><replaceable>host</replaceable></arg>
+       <arg><replaceable>port</replaceable></arg>
+-      <arg choice=plain><replaceable>nbd-device</replaceable></arg>
++      <arg choice="plain"><replaceable>nbd-device</replaceable></arg>
+       <arg>-sdp</arg>
+       <arg>-swap</arg>
+       <arg>-persist</arg>
+@@ -69,8 +70,8 @@ manpage.1: manpage.sgml
+     </cmdsynopsis>
+     <cmdsynopsis>
+       <command>&dhpackage;</command>
+-      <arg choice=plain><option>-unix <replaceable>path</replaceable></option></arg>
+-      <arg choice=plain><replaceable>nbd-device</replaceable></arg>
++      <arg choice="plain"><option>-unix <replaceable>path</replaceable></option></arg>
++      <arg choice="plain"><replaceable>nbd-device</replaceable></arg>
+       <arg>-sdp</arg>
+       <arg>-swap</arg>
+       <arg>-persist</arg>
+@@ -82,11 +83,11 @@ manpage.1: manpage.sgml
+     </cmdsynopsis>
+     <cmdsynopsis>
+       <command>&dhpackage;</command>
+-      <arg choice=plain><replaceable>short-device</replaceable></arg>
++      <arg choice="plain"><replaceable>short-device</replaceable></arg>
+     </cmdsynopsis>
+     <cmdsynopsis>
+       <command>&dhpackage;</command>
+-      <arg choice=plain><option>-d <replaceable>nbd-device</replaceable></option></arg>
++      <arg choice="plain"><option>-d <replaceable>nbd-device</replaceable></option></arg>
+     </cmdsynopsis>
+     <cmdsynopsis>
+       <command>&dhpackage;</command>
+@@ -175,7 +176,7 @@ manpage.1: manpage.sgml
+ 	  connect to, but without the leading <filename>/dev</filename> part.</para>
+ 	  <para>When this mode is used, &dhpackage; will look up the
+ 	  necessary configuration in the <filename>nbdtab</filename> file. For
+-	  more information, see nbdtab(5).
++	  more information, see nbdtab(5).</para>
+ 	</listitem>
+       </varlistentry>
+       <varlistentry>
+@@ -186,7 +187,7 @@ manpage.1: manpage.sgml
+ 	  connected.</para>
+ 	  <para>If the device is connected, &dhpackage; will exit
+ 	  with an exit state of 0 and print the PID of the &dhpackage;
+-	  instance that connected it to stdout.
++	  instance that connected it to stdout.</para>
+ 	  <para>If the device is not
+ 	  connected or does not exist (for example because the nbd
+ 	  module was not loaded), &dhpackage; will exit with an exit
+diff --git a/man/nbd-server.1.in.sgml b/man/nbd-server.1.in.sgml
+index 72a840b..95199eb 100644
+--- a/man/nbd-server.1.in.sgml
++++ b/man/nbd-server.1.in.sgml
+@@ -1,4 +1,5 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
++  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ 
+ <!-- Process this file with docbook-to-man to generate an nroff manual
+      page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
+@@ -57,8 +58,8 @@ manpage.1: manpage.sgml
+     <cmdsynopsis>
+       <command>&dhpackage; </command>
+ 
+-      <arg choice=plain><replaceable>[ip@]port</replaceable</arg>
+-      <arg choice=plain><replaceable>filename</replaceable></arg>
++      <arg choice="plain"><replaceable>[ip@]port</replaceable></arg>
++      <arg choice="plain"><replaceable>filename</replaceable></arg>
+       <arg><replaceable>size</replaceable></arg>
+       <arg><option>-r</option></arg>
+       <arg><option>-m</option></arg>
+diff --git a/man/nbd-server.5.in.sgml b/man/nbd-server.5.in.sgml
+index 41235e0..6146807 100644
+--- a/man/nbd-server.5.in.sgml
++++ b/man/nbd-server.5.in.sgml
+@@ -1,4 +1,5 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
++  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ 
+ <!-- Process this file with docbook-to-man to generate an nroff manual
+      page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
+@@ -121,7 +122,7 @@ manpage.1: manpage.sgml
+ 	     <command>nbd-client -l</command> to get a list of exports
+ 	     on this server.
+ 	   </para>
+-      <varlistentry>
++	 </listitem>
+ 	<term><option>group</option></term>
+ 	<listitem>
+ 	  <para>
+diff --git a/man/nbd-trdump.1.in.sgml b/man/nbd-trdump.1.in.sgml
+index 4e58617..4ac4e54 100644
+--- a/man/nbd-trdump.1.in.sgml
++++ b/man/nbd-trdump.1.in.sgml
+@@ -1,4 +1,5 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.5//EN" [
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
++  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ 
+ <!-- Process this file with docbook-to-man to generate an nroff manual
+      page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
+diff --git a/man/nbdtab.5.in.sgml b/man/nbdtab.5.in.sgml
+index 1d478e3..7a61943 100644
+--- a/man/nbdtab.5.in.sgml
++++ b/man/nbdtab.5.in.sgml
+@@ -1,4 +1,5 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
++  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ 
+ <!-- Process this file with docbook-to-man to generate an nroff manual
+      page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
+-- 
+2.6.2
+
