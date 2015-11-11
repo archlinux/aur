@@ -1,0 +1,17 @@
+pkgbase = vncdesk
+	pkgdesc = Runs applications via VNC. Useful for scaling on high DPI (HiDPI) screens.
+	pkgver = 1.1.0.r0.ga0b4396
+	pkgrel = 1
+	url = https://github.com/feklee/vncdesk
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = tigervnc
+	depends = gtk-vnc
+	depends = python
+	source = git://github.com/feklee/vncdesk
+	md5sums = SKIP
+
+pkgname = vncdesk
+
