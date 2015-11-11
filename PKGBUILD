@@ -4,9 +4,9 @@
 # Contributor: tomprogrammer <Thomas-Bahn[at]gmx[dot]net>
 
 pkgname=dkms-phc-intel
-pkgver=0.3.2.12.18
-_realver=pack-rev18
-_fileid=167
+pkgver=0.3.2.12.19
+_realver=pack-rev19
+_fileid=168
 pkgrel=1
 pkgdesc="CPU frequency driver - DKMS automatic module generation after kernel upgrade"
 url="http://www.linux-phc.org"
@@ -22,21 +22,21 @@ source=(phc-intel-$_realver.tar.bz2::$url/forum/download/file.php?id=${_fileid}
         phc-intel.{default,sh,sleep,system-sleep}
 	dkms-phc-intel.{sh,service}
         dkms.conf)
-md5sums=('3a0b19261d2531da65653ff38a32e1a1'
+md5sums=('a065ce55dd8ea0834de98b9601d27843'
          'bc8b26dc2966cc9210c5631aceee025a'
          'd5fccf39f5796a048aae8b7a28fe5d2d'
          'fbef61e4ec39af0b580d11508b41d59e'
          '1b91c6462485c127b621a223412a3dfc'
          '6e97791fb6cc4b9ecf9b8b7127050c3a'
          'dd1b315b5747d52445a95bc731e2ccb6'
-         'c45b8482d87752c473655381b0d78d9b')
+         '16a66ab7480e8f5b1f8536cb8841ed90')
 
 
 build() {
 	cd phc-intel-$_realver
 	sed -e 's,$(DESTDIR)/lib/modules/$(KERNELRELEASE)/extra$,$(DESTDIR)/usr/lib/modules/$(KERNELRELEASE)/extramodules,' \
-		-e 's/`uname -r`/\$(KERNELRELEASE)/' \
-		-e 's,^\tinstall -m 644 -o root -g root phc-intel.modprobe,#\tinstall -m 644 -o root -g root phc-intel.modprobe,' -i Makefile
+	    -e 's,^\tinstall -m 644 -o root -g root phc-intel.modprobe,#\tinstall -m 644 -o root -g root phc-intel.modprobe,' \
+	    -e 's/`uname -r`/\$(KERNELRELEASE)/' -i Makefile
 	sed -i 's,/sbin/modprobe phc-intel |,/sbin/modprobe phc-intel \&\& /usr/bin/phc-intel set |,' phc-intel.modprobe
 }
 

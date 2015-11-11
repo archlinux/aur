@@ -1,4 +1,4 @@
-ver=0.3.2.12.18
+ver=0.3.2.12.19
 post_install() {
     DKMS=`which dkms 2>/dev/null`
 
