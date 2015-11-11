@@ -40,10 +40,17 @@ install=citrix-client.install
 package() {
     cd "${srcdir}"
     ICAROOT=/opt/Citrix/ICAClient
+    if [[ $CARCH == 'i686' ]]
+    then
+        ICADIR="$srcdir/linuxx86/linuxx86.cor"
+    elif [[ $CARCH == 'x86_64' ]]
+    then
+        ICADIR="$srcdir/linuxx64/linuxx64.cor"
+    fi
 
     mkdir -p ${pkgdir}$ICAROOT
 
-    cd "$srcdir/linuxx64/linuxx64.cor"
+    cd $ICADIR
     install -m755 wfica *.so *.DLL AuthManagerDaemon PrimaryAuthManager ServiceRecord selfservice ${pkgdir}$ICAROOT
 
     # copy directories

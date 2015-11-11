@@ -39,7 +39,7 @@ pkgbase = icaclient
 	source_x86_64 = wfica.desktop
 	source_x86_64 = wfica.sh
 	source_x86_64 = wfica_assoc.sh
-	source_x86_64 = icaclient-x64-13.2.1.tar.gz::http://downloads.citrix.com/10836/linuxx64-13.2.1.328635.tar.gz?__gda__=1447246766_f46066188d263927df7f5be65483989e
+	source_x86_64 = icaclient-x64-13.2.1.tar.gz::http://downloads.citrix.com/10836/linuxx64-13.2.1.328635.tar.gz?__gda__=1447262203_40d676cf14027ba1df57494b8f3caad4
 	md5sums_x86_64 = 71aca6257f259996ac59729604f32978
 	md5sums_x86_64 = a38c3f844a0fefe8017a25bee213b843
 	md5sums_x86_64 = 0e92c33b3fcc99b04269787da2984809
@@ -53,7 +53,7 @@ pkgbase = icaclient
 	source_i686 = wfica.desktop
 	source_i686 = wfica.sh
 	source_i686 = wfica_assoc.sh
-	source_i686 = icaclient-x86-13.2.1.tar.gz::http://downloads.citrix.com/10832/linuxx86-13.2.1.328635.tar.gz?__gda__=1447246752_deca0044173a70a90a91df1d2da837fe
+	source_i686 = icaclient-x86-13.2.1.tar.gz::http://downloads.citrix.com/10832/linuxx86-13.2.1.328635.tar.gz?__gda__=1447262213_c7bbfc035a88e601028860a4cc34d457
 	md5sums_i686 = 71aca6257f259996ac59729604f32978
 	md5sums_i686 = a38c3f844a0fefe8017a25bee213b843
 	md5sums_i686 = 0e92c33b3fcc99b04269787da2984809
