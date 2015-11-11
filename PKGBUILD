@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('vapoursynth' 'libcl')
 makedepends=('git' 'opencl-headers')
 source=("https://github.com/Khanattila/KNLMeansCL/archive/v${pkgver}.tar.gz")
-sha1sums=('17c101def6ab1b1c3460a3c62dcd39d66ca8ba3f')
+sha1sums=('225f0ac304af59f4e81ab67f11c6b2ba52d7ed0e')
 
 # prepare() {
 #   chmod +x "KNLMeansCL-${pkgver}/configure"
