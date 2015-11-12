@@ -2,8 +2,7 @@ pkgbase = svkm
 	pkgdesc = Simple Vkontakte console messanger
 	pkgver = 1.3
 	pkgrel = 1
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = GPL
 	makedepends = python-pip
 	depends = python>=3.0
