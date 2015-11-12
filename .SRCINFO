@@ -1,6 +1,6 @@
 pkgbase = urlregwatch
 	pkgdesc = Check internet pages for changes by regular expression
-	pkgver = 0.1.1.r10.20151110
+	pkgver = 0.1.2.r12.20151112
 	pkgrel = 1
 	url = http://urlregwatch.sourceforge.net/
 	arch = any
