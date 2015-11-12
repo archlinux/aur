@@ -11,8 +11,9 @@ arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3')
 makedepends=('git' 'cmake' 'zip')
-makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2')
-makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-lua' 'lib32-sdl2')
+makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'sdl2')
+makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 
+'lib32-sdl2')
 options=(!strip)
 source=('git://github.com/etlegacy/etlegacy.git')
 md5sums=('SKIP')
@@ -117,8 +118,10 @@ build() {
 package_etlegacy32-git() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit)"
     depends=('etlegacy32-mod-git')
-    depends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2')
-    depends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-lua' 'lib32-sdl2')
+    depends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'sdl2')
+    depends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 
+'lib32-lua' 
+'lib32-sdl2')
     provides=('etlegacy32' 'etlegacy')
     conflicts=('etlegacy32' 'etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
