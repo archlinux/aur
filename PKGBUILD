@@ -7,7 +7,7 @@ _buildver=143.595
 _pkgver=5.0.1
 _eap="False"
 pkgver=${_pkgver}.${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=('any')
 options=('!strip')
@@ -22,7 +22,7 @@ if [[ ${_eap} = "True" ]]; then
 	source=("http://download.jetbrains.com/python/pycharm-professional-${_buildver}.tar.gz")
 	sha256sums=$(wget -q "${source}.sha256" && cat "pycharm-professional-${_buildver}.tar.gz.sha256" | cut -f1 -d" ")
 else
-	source=("http://download.jetbrains.com/python/pycharm-professional-${_pkgver/.0}.tar.gz")
+	source=("http://download.jetbrains.com/python/pycharm-professional-${_pkgver}.tar.gz")
 	sha256sums=$(wget -q "${source}.sha256" && cat "pycharm-professional-${_pkgver/.0}.tar.gz.sha256" | cut -f1 -d" ")
 fi
 
@@ -33,7 +33,7 @@ package() {
   if [[ ${_eap} = "True" ]]; then
   	cp -R "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
   else
-  	cp -R "${srcdir}/pycharm-${_pkgver/.0}/"* "${pkgdir}/opt/${pkgname}"
+  	cp -R "${srcdir}/pycharm-${_pkgver}/"* "${pkgdir}/opt/${pkgname}"
   fi
   if [[ $CARCH = 'i686' ]]; then
      rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
