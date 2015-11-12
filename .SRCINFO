@@ -1,5 +1,5 @@
 pkgbase = etlegacy32-git
-	pkgver = 2.74.17.g6310cde
+	pkgver = 2.74.241.g3ba998b
 	pkgrel = 1
 	url = http://www.etlegacy.com/
 	arch = i686
