@@ -1,7 +1,7 @@
 pkgbase = opera-developer
 	pkgdesc = A fast and secure web browser and Internet suite - developer stream
-	pkgver = 34.0.2036.2
-	pkgrel = 2
+	pkgver = 34.0.2044.0
+	pkgrel = 1
 	url = http://www.opera.com/browser/
 	install = opera.install
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = opera-developer
 	source = default
 	sha256sums = 508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5
 	sha256sums = 99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231
-	source_x86_64 = http://get.geo.opera.com/pub/opera-developer/34.0.2036.2/linux/opera-developer_34.0.2036.2_amd64.deb
-	sha256sums_x86_64 = ad857569cf2dc3128f935f9e00fae516a71710a7d2d83e49aa62b5ff64ab126f
-	source_i686 = http://get.geo.opera.com/pub/opera-developer/34.0.2036.2/linux/opera-developer_34.0.2036.2_i386.deb
-	sha256sums_i686 = 7514f18d4a89d04523298c16af67aeb5c18f880e5e35eb2cf8c045d8e1431232
+	source_x86_64 = http://get.geo.opera.com/pub/opera-developer/34.0.2044.0/linux/opera-developer_34.0.2044.0_amd64.deb
+	sha256sums_x86_64 = 2997a0ceb39dc0f6d13d2e9df351091ee6acd8e673fb696c9ba76284367ca64b
+	source_i686 = http://get.geo.opera.com/pub/opera-developer/34.0.2044.0/linux/opera-developer_34.0.2044.0_i386.deb
+	sha256sums_i686 = 8110149a5e709e70abe2c08a33b9932e79c0fda6306ccd33b3c121c7ef524d4f
 
 pkgname = opera-developer
 
