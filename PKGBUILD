@@ -1,46 +1,80 @@
-# Maintainer: Jelle van der Waa <jelle@vdwaa.nl>
 # Maintainer: MartiMcFly martimcfly@autorisation.de
-# Contributor: Archist archist@die-optimisten.net
 # Contributor: C Anthony Risinger
 
 pkgname=('zarafa-server')
-pkgver=7.1.12
-_pkgrel=48726
-pkgrel=1
+replaces=('zarafa-server-arm')
+pkgver=7.2.0
+_pkgmajver=7.2
+_pkgrev=${pkgver}-48204
+pkgrel=10
 pkgdesc="Open Source Groupware Solution"
-arch=('x86_64' 'i686')
+arch=('arm'
+      'armv7h'
+      'armv6h'
+      'x86_64'
+      'i686')
 url="http://www.zarafa.com/"
 license=('AGPL3')
-makedepends=('libical' 'php' 'e2fsprogs' 'openldap' 'automake' 'swig' 'zarafa-libvmime' 'mysql' 'python2' 'kyotocabinet' 'clucene' 'boost')
-install=${pkgname}.install
-source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/7.1/${pkgver}-${_pkgrel}/sourcecode/zcp-${pkgver}.tar.gz"
+provides=("zarafa-server=${pkgver}")
+depends=("zarafa-libical>=${pkgver}"
+         "zarafa-libvmime>=${pkgver}"
+	 'bison'
+	 'flex'
+	 'gettext'
+	 'gsoap'
+	 'boost'
+         'curl'
+         'icu'
+         'ncurses'
+         'openldap'
+	 'openssl'
+	 'libtool'
+         'libxml2'
+	 'php'
+	 'libidn'
+         'python'
+	 'python2'
+	 'swig'
+	 'libutil-linux'
+	 'xmlto'
+	 'zlib'
+	 'clucene'
+	 'gperftools'
+	 'perl'
+	 'kyotocabinet'
+         'krb5'
+         'mariadb')
+makedepends=('gcc<5.0.0')
+optdepends=('zarafa-webaccess'
+	    'zarafa-webapp'
+	    'sabre-zarafa'
+	    'z-push')
+install=("install")
+source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/zarafa-${pkgver}.tar.gz"
+	"arm.diff"
 	"zarafa-server.service"
 	"zarafa-ical.service"
-        "zarafa-gateway.service"
-        "zarafa-spooler.service"
-        "zarafa-dagent.service"
-        "zarafa-7.1.12-licensed-archiver.patch")
+	"zarafa-dagent.service"
+	"zarafa-spooler.service"
+	"zarafa-gateway.service")
 
-md5sums=('98ceed8b35a68bba669aecccbc7b1f43'
+md5sums=('7dc8a526b3eb83e6eb5bbc9d2215b501'
+         '5de9759477995d9940c056e56ed9d3f1'
          '0e2728f1e35b25ca679427fcb57315d8'
          'c25f3982217fe390d68ed9003a5988ed'
-         '705ada3a8c4b904696e0c461c131b4f7'
-         '846b76e5cb0239a488c81e11d74ad08b'
          '9666bf713645af11dd65b3ac5cbb42d9'
-         '36b88a6b61b3e40eb9e133fd0e59d80e')
+         '846b76e5cb0239a488c81e11d74ad08b'
+         '705ada3a8c4b904696e0c461c131b4f7')
 
 prepare() {
   cd ${srcdir}/zarafa-${pkgver}
 
-  sed -i 's/python setup.py/python2 setup.py/' swig/python/Makefile.in
-  sed -i 's/python setup.py/python2 setup.py/' swig/python/Makefile.am
-
-  patch -Np1 -i $srcdir/zarafa-7.1.12-licensed-archiver.patch
-
-  # Disable search, doesn't compile due to a boost error
-  cd ${srcdir}/zarafa-${pkgver}/ECtools/
-  sed -i 's/zarafa-search//g' Makefile.in
-  sed -i 's/zarafa-search//g' Makefile.am
+  if [[ $CARCH == arm* ]]
+  then
+   echo "Patching for ${CARCH}"
+   # https://forums.zarafa.com/showthread.php?8651-Raspberry-P
+   patch -p1 <${srcdir}/arm.diff
+  fi
 }
 
 build() {
@@ -48,56 +82,85 @@ build() {
 
   msg "Starting build..."
   CPPFLAGS=-I/usr/include/python2.7 ./configure --prefix=/usr \
+    --enable-oss \
+    --enable-release \
     --enable-python \
-    --enable-swig \
+    --enable-unicode \
     --with-python=/usr/bin/python2 \
     --disable-debug \
-    --enable-unicode \
+    --disable-testtools \
     --disable-static \
+    --disable-perl \
     --with-userscript-prefix=/etc/zarafa/userscripts \
     --with-quotatemplate-prefix=/etc/zarafa/quotamails \
-    --with-searchscripts-prefix=/etc/zarafa/searchscripts
+    --with-sysconfdir=/etc
 
-  make
+  # make/g++ doesnt pick up -luuid properly without this... even though configure
+  # finds it, and -luuid is present in the actual command that fails...
+  make LDFLAGS="-luuid" || return 1
+
 }
 
 
-package(){
-  pkgdesc="Open Source Groupware Solution"
-  depends=('libical>=0.44' 'mysql' 'curl' 'libxml2' 'openssl' 'openldap' 'krb5' 'libical'
-	 'boost-libs' 'python2' 'kyotocabinet' 'zarafa-libvmime' 'libmariadbclient')
-  optdepends=('openldap: ldap backend')
-  backup=('etc/zarafa/server.cfg'
-	'etc/zarafa/dagent.cfg'
-	'etc/zarafa/gateway.cfg'
-	'etc/zarafa/monitor.cfg'
-	'etc/zarafa/spooler.cfg'
-	'etc/zarafa/ical.cfg')
+package() {
 
+  # prepare application
   cd ${srcdir}/zarafa-${pkgver}
+  sed -i -e "s/\(install-ajax-webaccess\:\)/void-ajax-webaccess\:/" Makefile
+  make DESTDIR=${pkgdir} install || return 1
 
-  make DESTDIR=${pkgdir} install
-  # Finalize
-  install -m 755 -o root -g root -d ${pkgdir}/var/log/zarafa
-  install -m 755 -o root -g root -d ${pkgdir}/var/lib/zarafa
+  # This isn't really a PEAR package... but Arch's default PHP config has open_basedir restrictions
+  # and I doubt there will ever be a MAPI PEAR package to conflict, so one less thing user will have to do
+  mv ${pkgdir}/usr/share/php ${pkgdir}/usr/share/pear
 
-  # move /var/lib to the right place related to https://jira.zarafa.com/browse/ZCP-12249
-  #mv  $pkgdir/usr/var/lib/zarafa/* $pkgdir/var/lib/zarafa/
-  #rm -rf $pkgdir/usr/var
+  # prepare libraries
+  cp -R ${pkgdir}/usr/var ${pkgdir}/var
+  rm -Rf ${pkgdir}/usr/var
+  
+  # pepare settings
+  cp -R ${pkgdir}/usr/etc/* ${pkgdir}/etc
+  rm -Rf ${pkgdir}/usr/etc
+  rm ${pkgdir}/etc/zarafa/*.cfg
+ 
+  # => change to socket connections only
+  sed -i -e "s/\(server_tcp_enabled\s*=\)\(.*$\)/\1 no/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
+  sed -i -e "s/\(attachment_compression\s*=\)\(.*$\)/\1 0/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
+  sed -i -e "s/\(search_enabled\s*=\)\(.*$\)/\1 no/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
+  sed -i -e "s/\(disabled_features\s*=\)\(.*$\)/\1 pop3/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
+  sed -i -e "s/\(mysql_socket\s*=\)\(.*$\)/\1 \/run\/mysqld\/mysqld.sock/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
+  sed -i -e "s/\(mysql_user\s*=\)\(.*$\)/\1 zarafa/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
+  sed -i -e "s/\(mysql_password\s*=\)\(.*$\)/\1 zarafa/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
 
-  # Systemd files
-  install -d  ${pkgdir}/usr/lib/systemd/system
-  install -m 755 $srcdir/zarafa-server.service ${pkgdir}/usr/lib/systemd/system
-  install -m 755 $srcdir/zarafa-ical.service ${pkgdir}/usr/lib/systemd/system
-  install -m 755 $srcdir/zarafa-spooler.service ${pkgdir}/usr/lib/systemd/system
-  install -m 755 $srcdir/zarafa-dagent.service ${pkgdir}/usr/lib/systemd/system
-  install -m 755 $srcdir/zarafa-gateway.service ${pkgdir}/usr/lib/systemd/system
-
-  # Remove unused /usr/etc related to https://jira.zarafa.com/browse/ZCP-12249
-  #rm -rf $pkgdir/usr/etc
-
-  # copy example configs to their active locations
   for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/*.cfg; do
-    install -m 755 -o root -g root -D ${cfg} ${pkgdir}/etc/zarafa
+   sed -i -e "s/\(server_socket\s*=\)\(.*$\)/\1 file:\/\/\/var\/run\/zarafa/" ${cfg}
+   sed -i -e "s/\(ssl_protocols\s*=\)\(.*$\)/\1 TLSv1 TLSv1\.1 TLSv1\.2/" ${cfg}
+   sed -i -e "s/\(ssl_ciphers\s*=\)\(.*$\)/\1 AES256\+EECDH:AES256\+EDH:\!aNULL/" ${cfg}
+   sed -i -e "s/\(ssl_prefer_server_ciphers\s*=\)\(.*$\)/\1 yes/" ${cfg}
+   sed -i -e "s/\(ssl_certificate_file\s*=\)\(.*$\)/\1 \/etc\/ssl\/private\/zarafa.crt/" ${cfg}
+   sed -i -e "s/\(ssl_private_key_file\s*=\)\(.*$\)/\1 \/etc\/ssl\/private\/zarafa.key/" ${cfg}
   done
+ 
+  # => change running user for services
+  for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/{server.cfg,spooler.cfg}; do
+   sed -i -e "s/\(run_as_user\s*=\)\(.*$\)/\1 zarafa/" ${cfg}
+   sed -i -e "s/\(run_as_group\s*=\)\(.*$\)/\1 zarafa/" ${cfg}
+  done
+  
+  for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/{dagent.cfg,gateway.cfg,ical.cfg}; do
+   sed -i -e "s/\(run_as_user\s*=\)\(.*$\)/\1 http/" ${cfg}
+   sed -i -e "s/\(run_as_group\s*=\)\(.*$\)/\1 http/" ${cfg}
+  done
+
+
+  # prepare logging
+  mkdir -p ${pkgdir}/var/log/zarafa
+  
+  # prepare systemd services
+  mkdir -p  ${pkgdir}/usr/lib/systemd/system
+  cp ${srcdir}/zarafa-server.service ${pkgdir}/usr/lib/systemd/system
+  cp ${srcdir}/zarafa-ical.service ${pkgdir}/usr/lib/systemd/system
+  cp ${srcdir}/zarafa-dagent.service ${pkgdir}/usr/lib/systemd/system
+  cp ${srcdir}/zarafa-gateway.service ${pkgdir}/usr/lib/systemd/system
+  cp ${srcdir}/zarafa-spooler.service ${pkgdir}/usr/lib/systemd/system
+  
 }
