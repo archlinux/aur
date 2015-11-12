@@ -2,10 +2,10 @@
 # Maintainer: Marc Rozanc <marc AT rozanc D0T fr>
 
 pkgname=flareget
-_rel=4.2
-_subrel=92
+_rel=4.3
+_subrel=95
 pkgver=${_rel}.${_subrel}
-pkgrel=2
+pkgrel=1
 pkgdesc="A full featured, advanced, multi-threaded, multisegment download manager and accelerator."
 arch=('i686' 'x86_64')
 url="http://flareget.com"
@@ -19,11 +19,11 @@ noextract=("${pkgname}-${_rel}-${_subrel}.${_arch1}.rpm")
 if  [ "${CARCH}" = "i686" ]; then
     _arch1="i386"
     _arch2=$_arch1
-    md5sums=('28a36562e26033770f2019e05dd1abb8')
+    md5sums=('285e8e59d6b488c3528b604396bf0ba5')
 elif [ "${CARCH}" = "x86_64" ]; then
     _arch1="x86_64"
     _arch2="amd64"
-    md5sums=('26076f444a1579ba77966785501ff2e6')
+    md5sums=('0b015603e389bfb8048ec5c07682d907')
 fi
 
 source=("http://www.flareget.com/files/flareget/rpm/${_arch2}/${pkgname}_${_rel}-${_subrel}_${_arch1}(stable)_rpm.tar.gz")
