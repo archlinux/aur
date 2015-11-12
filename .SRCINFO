@@ -1,7 +1,7 @@
 pkgbase = mpv-plugin-xrandr
 	pkgdesc = Makes mpv automatically invoke the xrandr tool to set the best suitable parameters for the display output
 	pkgver = r312074b
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/lvml/mpv-plugin-xrandr
 	arch = i686
 	arch = x86_64
