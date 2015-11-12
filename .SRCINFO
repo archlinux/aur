@@ -1,0 +1,14 @@
+pkgbase = qrun
+	pkgdesc = A command line tool to run QEMU in the most common configurations
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = qemu
+	depends = bridge-utils
+	depends = iproute2
+
+pkgname = qrun
+
