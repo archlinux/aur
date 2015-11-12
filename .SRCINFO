@@ -1,13 +1,13 @@
 pkgbase = python2-itunes-git
 	pkgdesc = A simple python wrapper to access iTunes Store API.
 	pkgver = r50.4585f1c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ocelma/python-itunes
 	arch = any
 	license = GPLv3
 	makedepends = python2-setuptools
 	depends = python2
-	provides = python2-itunes}
+	provides = python2-itunes
 	conflicts = python2-itunes
 	source = git://github.com/ocelma/python-itunes.git
 	sha256sums = SKIP
