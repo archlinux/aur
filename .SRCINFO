@@ -1,6 +1,6 @@
 pkgbase = fmit
 	pkgdesc = Free Music Instrument Tuner
-	pkgver = 1.0.8
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://github.com/gillesdegottex/fmit
 	install = fmit.install
@@ -12,11 +12,10 @@ pkgbase = fmit
 	depends = glut
 	depends = qt5-multimedia
 	depends = fftw
-	depends = freeglut
 	depends = hicolor-icon-theme
 	depends = portaudio
-	source = https://github.com/gillesdegottex/fmit/archive/v1.0.8.tar.gz
-	md5sums = SKIP
+	source = https://github.com/gillesdegottex/fmit/archive/v1.0.12.tar.gz
+	sha256sums = f68ae70bdb92d87566a67f1ee72c111cf7a6d6414a24c6b3afadd00fb144ca2f
 
 pkgname = fmit
 
