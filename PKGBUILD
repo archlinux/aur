@@ -1,5 +1,5 @@
 pkgname='qemu-static'
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -10,7 +10,7 @@ makedepends=('perl' 'python2'
 	     'glibc-static' 'glib2-static' 'pcre-static')
 options=(!strip)
 source=(http://wiki.qemu.org/download/qemu-${pkgver}.tar.bz2)
-md5sums=('186ee8194140a484a455f8e3c74589f4')
+md5sums=('a895e93ec1dafc34bc64ed676f0d55a6')
 
 build() {
   cd "${srcdir}/qemu-${pkgver}"
