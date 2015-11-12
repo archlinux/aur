@@ -1,8 +1,8 @@
-# Maintainer: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
+# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
 
-_gitname=lastpass-cli
 pkgname=lastpass-cli-git
-pkgver=2014.10.22.g70acc1b
+pkgver=0.6.0.r25.gf2acef6
 pkgrel=1
 pkgdesc="LastPass command line interface tool (git version)"
 arch=('i686' 'x86_64')
@@ -11,23 +11,21 @@ license=('GPL2')
 depends=('openssl' 'curl' 'libxml2')
 makedepends=('asciidoc' 'git')
 optdepends=('xclip: clipboard support'
-       'pinentry: securelly read passwords')
-source=("git+https://github.com/lastpass/${_gitname}.git")
+            'pinentry: securely read passwords')
+source=("git://github.com/lastpass/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  git log -1 --format="%cd.g%h" --date=short | sed 's/-/./g'
+    cd "${srcdir}/${pkgname%-git}"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_gitname}"
+    cd "${srcdir}/${pkgname%-git}"
     make all doc
 }
 
 package() {
-    cd "${srcdir}/${_gitname}"
+    cd "${srcdir}/${pkgname%-git}"
     make DESTDIR="${pkgdir}/" install install-doc
 }
-
-# vim:set ts=2 sw=2 et:
