@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-ca
 	pkgdesc = Catalan language pack for SeaMonkey
-	pkgver = 2.38
+	pkgver = 2.39
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.38
-	noextract = seamonkey-2.38.ca.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.38/langpack/seamonkey-2.38.ca.langpack.xpi
-	sha256sums = 79e2b20e71f59b23a86663f411008e38df1fb43216ed26e9172e04ea5550d772
+	depends = seamonkey>=2.39
+	noextract = seamonkey-2.39.ca.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.39/langpack/seamonkey-2.39.ca.langpack.xpi
+	sha256sums = 7cd996abf7027189f6c3fd09501331b1bcf06a61f596cd7042d2a2a66b58e0e2
 
 pkgname = seamonkey-i18n-ca
 
