@@ -2,7 +2,7 @@ pkgbase = dasom-git
 	pkgdesc = Dasom is an input method framework
 	pkgver = 265.2300f58
 	pkgrel = 1
-	url = https://github.com/cogniti/dasom
+	url = https://github.com/dasom-im/dasom
 	install = dasom-git.install
 	arch = any
 	license = GNU LGPL v3
@@ -28,7 +28,7 @@ pkgbase = dasom-git
 	optdepends = dconf-editor: For Editing Dasom IM Config
 	conflicts = dasom
 	options = !buildflags
-	source = dasom::git+https://github.com/cogniti/dasom.git
+	source = dasom::git+https://github.com/dasom-im/dasom.git
 	md5sums = SKIP
 
 pkgname = dasom-git
