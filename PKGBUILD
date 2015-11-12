@@ -1,21 +1,21 @@
 # Maintainer: Eduardo Sánchez Muñoz
 
 pkgname=cling-git
-pkgver=r2663.040bad9
+pkgver=r2704.30cc58a
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
-url="https://root.cern.ch/drupal/content/cling"
+url="https://root.cern.ch/cling"
 license=('custom:Cling Release License')
 depends=('libffi')
-makedepends=('cmake' 'libffi' 'clang' 'git' 'python2')
+makedepends=('cmake' 'libffi' 'git' 'python2')
 options=()
 conflicts=()
 provides=()
 source=("llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches"
 	"clang::git+http://root.cern.ch/git/clang.git#branch=cling-patches"
 	"cling::git+http://root.cern.ch/git/cling.git#branch=master")
-md5sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/cling"
@@ -33,14 +33,13 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir"
-	
 	mkdir -p "$srcdir/cling-build"
 	cd "$srcdir/cling-build"
 	
 	cmake \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX="/opt/cling" \
+		-DLLVM_TARGETS_TO_BUILD="host" \
 		-DLLVM_BUILD_LLVM_DYLIB=OFF \
 		-DLLVM_ENABLE_RTTI=ON \
 		-DLLVM_ENABLE_FFI=ON \
@@ -50,7 +49,8 @@ build() {
 		-DFFI_INCLUDE_DIR=$(pkg-config --cflags-only-I libffi | cut -c3-) \
 		"$srcdir/llvm"
 	
-	make
+	make -C tools/clang
+	make -C tools/cling
 }
 
 package() {
