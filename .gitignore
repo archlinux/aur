@@ -2,3 +2,4 @@
 /src
 *.tar.*
 *.run
+/cuda-7.0-7.0.28-1-x86_64.pkg.tar
