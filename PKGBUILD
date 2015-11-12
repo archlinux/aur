@@ -2,12 +2,12 @@
 
 pkgname=artanis
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
-arch=('i686' 'x86_64')
+depends=('guile')
+arch=('any')
 license=('GPL')
-install=
 source=(http://alpha.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.bz2 Makefile.in.patch)
 md5sums=('0ac17cdda340aa468cb9aa30956dcca2'
          'ec8451aa3912501be9d9c8ad48f68b38')
