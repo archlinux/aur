@@ -1,0 +1,20 @@
+pkgbase = npm2
+	pkgdesc = A package manager for javascript
+	pkgver = 2.14.10
+	pkgrel = 1
+	url = https://www.npmjs.com/
+	arch = any
+	license = custom:Artistic
+	makedepends = git
+	makedepends = procps-ng
+	depends = nodejs
+	optdepends = python2: for node-gyp
+	provides = nodejs-node-gyp
+	provides = npm=2.14.10
+	conflicts = npm
+	options = !emptydirs
+	source = git+https://github.com/npm/npm.git#tag=v2.14.10
+	md5sums = SKIP
+
+pkgname = npm2
+
