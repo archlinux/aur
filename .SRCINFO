@@ -1,6 +1,6 @@
 pkgbase = liri-browser-git
 	pkgdesc = A Web Browser using the QML Material framework from the Papyros Project
-	pkgver = 0.3.r188.gf776c6d
+	pkgver = 0.3.r198.g67cb43f
 	pkgrel = 1
 	url = https://github.com/liri-browser/liri-browser
 	install = liri-browser-git.install
