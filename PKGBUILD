@@ -7,7 +7,7 @@ pkgdesc="Grouping package for complete Zarafa Open Source Groupware Solution"
 arch=('any')
 url="http://www.zarafa.com/"
 license=('AGPL3')
-depends=('zarafa-server-arm'
+depends=('zarafa-server'
 	 'zarafa-webaccess'
 	 'zarafa-webapp'
 	 'zarafa-webapp-plugins'
