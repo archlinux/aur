@@ -6,13 +6,13 @@
 
 pkgname=nvidia-grsec
 pkgver=355.11
-_extramodules=extramodules-4.2.5-grsec
-pkgrel=4
+_extramodules=extramodules-4.2.6-grsec
+pkgrel=5
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec>=4.2.5' 'linux-grsec<4.3')
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.2.5' 'linux-grsec-headers<4.3')
+depends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec>=4.2' 'linux-grsec<4.3')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.2' 'linux-grsec-headers<4.3')
 license=('custom')
 install=nvidia-grsec.install
 options=(!strip)
