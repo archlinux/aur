@@ -25,6 +25,7 @@ sha256sums=(
     '34afb1af9e1e628dc32b7a320e23b66b3f384a64cb7cfca500332489a9ca6cd5'
     '87b5a5c7cbfa9ebb959453858068fca4289bf465b42c8bc12944ab184639e224'
 )
+install=$pkgname.install
 
 build() {
   cd $srcdir/$pkg_base-$_git_branch

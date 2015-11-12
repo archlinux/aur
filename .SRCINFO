@@ -2,6 +2,7 @@ pkgbase = dogecoin-daemon
 	pkgver = 1.10
 	pkgrel = 1
 	url = http://dogecoin.com/
+	install = dogecoin-daemon.install
 	arch = i686
 	arch = x86_64
 	license = MIT
