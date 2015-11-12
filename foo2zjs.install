@@ -12,6 +12,8 @@ post_install() {
   echo "-                                                         -"
   echo "-   to choose the appropriate driver for your printer.    -"
   echo "-                                                         -"
+  echo "-  You can support us by Paypal http://foo2zjs.rkkda.com  -"
+  echo "-                                                         -"
   echo "-----------------------------------------------------------"
   echo
 }
@@ -24,6 +26,8 @@ post_upgrade() {
   echo "-               Please restart CUPS!!!                    -"
   echo "-                                                         -"
   echo "-Remember to check for foomatic-db-foo2zjs updates as well-"
+  echo "-                                                         -"
+  echo "-  You can support us by Paypal http://foo2zjs.rkkda.com  -"
   echo "-                                                         -"
   echo "-----------------------------------------------------------"
   echo
@@ -38,6 +42,8 @@ post_remove() {
   echo "-                                                         -"
   echo "-      Remember to replace foomatic-db-foo2zjs  with      -"
   echo "-                foomatic-db from [extra].                -"
+  echo "-                                                         -"
+  echo "-  You can support us by Paypal http://foo2zjs.rkkda.com  -"
   echo "-                                                         -"
   echo "-----------------------------------------------------------"
   echo
