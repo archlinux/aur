@@ -1,7 +1,7 @@
 pkgbase = polyphone
 	pkgdesc = Graphical user interface for editing sf2 and sfz files
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.polyphone.fr/
 	install = polyphone.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = polyphone
 	source = http://sourceforge.net/projects/polyphone/files/polyphone%20releases/1.6/polyphone-1.6-src.zip
 	source = polyphone.desktop
 	source = polyphone.mime
-	md5sums = c9ddaebbd865bbb2ea79f6d2334653e5
+	md5sums = b1b8c0d7b6de8f12a7a9cbc106cba733
 	md5sums = c796f82cd0ab742741de5c607cd87169
 	md5sums = f0808717b27757c80b508f6114a535ce
 
