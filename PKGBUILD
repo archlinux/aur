@@ -2,7 +2,7 @@
 
 pkgname=imv
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Image viewer for Wayland and X11"
 url="http://github.com/eXeC64/imv"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=(
   'sdl2'
 )
 conflicts=('renameutils')
-source=("$pkgname::git://github.com/eXeC64/imv.git#tag=v${pkgver}")
+source=("$pkgname::https://github.com/eXeC64/imv.git#tag=v${pkgver}")
 sha1sums=('SKIP')
 
 build() {
