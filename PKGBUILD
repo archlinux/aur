@@ -3,10 +3,12 @@
 _gitname="python-itunes"
 pkgname=("python2-itunes-git")
 pkgver="r50.4585f1c"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A simple python wrapper to access iTunes Store API."
 arch=("any")
 depends=("python2")
+provides=("${_gitname}")
+conflicts=("python2-itunes")
 url="https://github.com/ocelma/${_gitname}"
 license=("GPLv3")
 makedepends=("python2-setuptools")

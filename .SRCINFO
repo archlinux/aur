@@ -7,6 +7,8 @@ pkgbase = python2-itunes-git
 	license = GPLv3
 	makedepends = python2-setuptools
 	depends = python2
+	provides = python2-itunes
+	conflicts = python2-itunes
 	source = git://github.com/ocelma/python-itunes.git
 	sha256sums = SKIP
 
