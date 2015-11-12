@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-pl
-pkgver=2.38
+pkgver=2.39
 pkgrel=1
 _lang=pl
 pkgdesc="Polish language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('a9d6dfc47c62460974e6cbe32b2e892d1413fdeb427a2579325f7da6d06270da')
+sha256sums=('00cc6c894fc6dab4a22e9d38fb6037850f8e57a13f8150d64e8faf3878f204c8')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
