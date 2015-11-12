@@ -4,20 +4,17 @@
 
 pkgbase=python-mdtraj
 pkgname=('python2-mdtraj' 'python-mdtraj')
-pkgver=1.4.2
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A modern, open library for the analysis of molecular dynamics trajectories'
 url='http://mdtraj.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
 depends=()
-optdepends=('python-scipy: For loading and saving AMBER netcdf formatted trajectories.'
-            'python-pandas: Some functionality, including mol2 parsing, requires pandas.'
-            'python-pytables: Working with HDF5 formatted trajectories requires the PyTables package.')
 makedepends=('python2-setuptools' 'python-setuptools')
 options=('!libtool')
 source=("https://github.com/SimTk/mdtraj/archive/${pkgver}.tar.gz")
-sha1sums=('9012aa9233f061b886ed471bb0d780f0c17027d5')
+sha1sums=('d2e8000aab532afa8e4935a6c5e8b6f0e97d0104')
 
 prepare() {
   cd "$srcdir"
@@ -34,9 +31,31 @@ build() {
   python setup.py build
 }
 
+package_python-mdtraj() {
+  depends=('python-numpy' 'cython')
+  optdepends=('python-scipy: For loading and saving AMBER netcdf formatted trajectories.'
+              'python-pandas: Some functionality, including mol2 parsing, requires pandas.'
+              'python-nose: To run tests.'
+              'python-scripttest: To run some of the tests with nose "nosetest -v mdtraj".'
+              'python-networkx: Required for some of the functions'
+              'python-pytables: Working with HDF5 formatted trajectories requires the PyTables package.')
+  msg2 "Installing mdtraj python3"
+  cd "${srcdir}/mdtraj-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+
+  # Remove left over directories from distribute utils.
+  find ${pkgdir} -type d -name "__pycache__" -exec rm -r {} \; -prune
+}
+
 
 package_python2-mdtraj() {
   depends=('python2-numpy' 'cython2')
+  optdepends=('python2-scipy: For loading and saving AMBER netcdf formatted trajectories.'
+              'python2-pandas: Some functionality, including mol2 parsing, requires pandas.'
+              'python2-nose: To run tests.'
+              'python2-scripttest: To run some of the tests with nose "nosetest -v mdtraj".'
+              'python2-networkx: Required for some of the functions'
+              'python2-pytables: Working with HDF5 formatted trajectories requires the PyTables package.')
   msg2 "Installing mdtraj python2"
   cd "${srcdir}/mdtraj-py2-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
@@ -46,12 +65,3 @@ package_python2-mdtraj() {
   find ${pkgdir} -type d -name "__pycache__" -exec rm -r {} \; -prune
 }
 
-package_python-mdtraj() {
-  depends=('python-numpy' 'cython')
-  msg2 "Installing mdtraj python3"
-  cd "${srcdir}/mdtraj-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-
-  # Remove left over directories from distribute utils.
-  find ${pkgdir} -type d -name "__pycache__" -exec rm -r {} \; -prune
-}
