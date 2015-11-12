@@ -1,7 +1,7 @@
 pkgbase = ihaskell-git
 	pkgdesc = A Haskell kernel for IPython, built in a sandbox.
-	pkgver = 0.7.1
-	pkgrel = 3
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = https://github.com/gibiansky/IHaskell
 	arch = i686
 	arch = x86_64
