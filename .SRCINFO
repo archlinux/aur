@@ -1,7 +1,7 @@
 pkgbase = mongochef
 	pkgdesc = A free universal database tool for developers and database administrators
-	pkgver = 3.0.5
-	pkgrel = 2
+	pkgver = 3.0.7
+	pkgrel = 1
 	url = http://3t.io/mongochef/
 	arch = i686
 	arch = x86_64
@@ -9,12 +9,14 @@ pkgbase = mongochef
 	makedepends = unzip
 	depends = java-runtime>=1.6
 	provides = mongochef
-	source = mongochef.desktop
-	sha256sums = 97916034880dc7249f899764ff321768c7865da62124df44443ceefd517cbfb9
-	source_i686 = https://cdn.3t.io/mongochef/linux/3.0.5/mongochef-linux-x86-dist.tar.gz
-	sha256sums_i686 = 70eca864fad16bcb675c28238992b598722f91b1a64ae458c777156d1296bb1f
-	source_x86_64 = https://cdn.3t.io/mongochef/linux/3.0.5/mongochef-linux-x64-dist.tar.gz
-	sha256sums_x86_64 = 1b062cd196e26ef5998b85a7fadbbcb0fb6759cb6553c3b7cb4197c198198ad8
+	source = mongochef.desktop 
+        source = mongochef
+	sha256sums = a603fd54a34f8aa59a70580fd4321db24f439ceb746545f1cf6c0216f7f8169e 
+        sha256sums = 4b0f30fd696fc270df6333446294b761d9dcd8921b39f0dda9957d4fafacdece
+	source_i686 = https://cdn.3t.io/mongochef/linux/3.0.7/mongochef-linux-x86-dist.tar.gz
+	sha256sums_i686 = 266748ef1fabbee08fcd74e9896f6c24030ef6281e1380c2c3d4c336e216f8c5
+	source_x86_64 = https://cdn.3t.io/mongochef/linux/3.0.7/mongochef-linux-x64-dist.tar.gz
+	sha256sums_x86_64 = 5f06150e4119e802b7e9f22450062f90c9caf9b5820ecec797599e3a979e7cb9
 
 pkgname = mongochef
 
