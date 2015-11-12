@@ -1,6 +1,6 @@
 pkgbase = linux-think
 	pkgdesc = Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments
-	pkgver = 4.2.5
+	pkgver = 4.2.6
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = linux-think
 	optdepends = linux-think-firmware: BRCM bluetooth firmware
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.6.xz
 	source = 001-change_default_console_loglevel.patch
 	source = 002-i915.patch
 	source = 003-override_for_missing_acs_capabilities.patch
@@ -28,7 +28,7 @@ pkgbase = linux-think
 	source = config.x86_64
 	source = linux.preset
 	md5sums = 3d5ea06d767e2f35c999eeadafc76523
-	md5sums = 19e47863ca441b2e11f90f25fb6c41ec
+	md5sums = 408f9975969da326b5804a04dbf0d4de
 	md5sums = df7fceae6ee5d7e7be7b60ecd7f6bb35
 	md5sums = 43bcd5f7d5d86ad22c1817e282872e2e
 	md5sums = be91dd41334c87c68ed0e730846b8192
@@ -48,20 +48,20 @@ pkgname = linux-think
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-think=4.2.5
+	provides = kernel26-think=4.2.6
 	conflicts = kernel26-think
 	replaces = kernel26-think
 	backup = etc/mkinitcpio.d/linux-think.preset
 
 pkgname = linux-think-headers
 	pkgdesc = Header files and scripts for building modules for Linux-think kernel
-	provides = kernel26-think-headers=4.2.5
+	provides = kernel26-think-headers=4.2.6
 	conflicts = kernel26-think-headers
 	replaces = kernel26-think-headers
 
 pkgname = linux-think-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-think kernel
-	provides = kernel26-think-docs=4.2.5
+	provides = kernel26-think-docs=4.2.6
 	conflicts = kernel26-think-docs
 	replaces = kernel26-think-docs
 
