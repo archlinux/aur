@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
-pkgver=6778
-pkgrel=2
+pkgver=6779
+pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/texinfo/"
@@ -23,9 +23,14 @@ pkgver() {
   printf "${ver//[[:alpha:]]}"
 }
 
+prepare() {
+  cd "$srcdir"/"${_svnmod}"
+  sed -i 's+$srcdir+$texinfo_srcdir+' configure.ac
+}
+
 build() {
   cd "$srcdir"/"${_svnmod}"
-  ./autogen.sh
+  ./autogen.sh 
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
