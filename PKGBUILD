@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='gauche-git'
-pkgver=0.9.5.pre1.8696
+pkgver=0.9.5.pre1.8707
 pkgrel=1
 pkgdesc="R5RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
 url='http://practical-scheme.net/gauche/index.html'
 license=('BSD')
 depends=('zlib' 'gdbm')
-makedepends=('gauche' 'git') # gauche only needed if this is the first build of gauche-git
+makedepends=('gauche' 'bash' 'git') # gauche only needed if this is the first build of gauche-git
 provides=('gauche')
 conflicts=('gauche')
 source=('git+https://github.com/shirok/Gauche.git')
@@ -31,7 +31,7 @@ prepare() {
 build() {
   cd "$srcdir/$_gitname"
   ./DIST gen
-  CC=gcc ./configure --prefix=/usr --enable-multibyte=utf-8 \
+  CC=gcc CONFIG_SHELL=/bin/bash ./configure --prefix=/usr --enable-multibyte=utf-8 \
 	      --enable-threads=pthreads 
   make DESTDIR="$pkgdir"
 }
