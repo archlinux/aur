@@ -5,10 +5,12 @@ _module="${_name}"
 
 pkgname=("python2-${_module}")
 pkgver="0.1.28"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Improve genre metadata of audio files based on tags from various music sites."
 arch=("any")
-depends=('python2')
+depends=("python2")
+optdepends=("python2-rauth: required for Discogs"
+            "python2-lxml: required for RateYourMusic")
 url="https://yetanothernerd.github.io/whatlastgenre/"
 license=("MIT")
 makedepends=("python2-setuptools")
