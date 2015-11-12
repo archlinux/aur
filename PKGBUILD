@@ -3,8 +3,8 @@
 
 _pkgname=mutt
 pkgname="${_pkgname}-sidebar-hg"
-pkgver=r6518.7aa4e6fc6884
-pkgrel=2
+pkgver=r6524.c799162691b2
+pkgrel=1
 pkgdesc="Mutt-hg package with sidebar patches"
 url="http://www.mutt.org/"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ prepare() {
 
   # Ensure we are working in a clean environment
   hg revert --all
-  hg purge --all
+  hg update -C
 
   # Patch to add trash folder support
   echo "Patching $_trashfolder"
