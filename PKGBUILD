@@ -6,7 +6,7 @@ pkgrel=1
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
 makedepends=("cmake" "git" "asciidoc")
-depends=("wlc-git" "xorg-server-xwayland" "xcb-util-image" "json-c")
+depends=("wlc-git" "xorg-server-xwayland" "xcb-util-image" "json-c" "pango" "cairo" "wayland")
 optdepends=(
 	"rxvt-unicode: default terminal emulator"
 	"dmenu: default for launching applications"
