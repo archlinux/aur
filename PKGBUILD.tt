@@ -11,6 +11,7 @@ url='[% url %]'
 license=('PerlArtistic' 'GPL')
 makedepends=('perl-module-build>=0.38')
 depends=('perl')
+checkdepends=('perl-test-requires')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
