@@ -3,7 +3,7 @@
 pkgname=kimchi
 _gitname=kimchi-1.5.1
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 
 pkgdesc="HTML5 management for KVM"
 
@@ -50,6 +50,7 @@ makedepends=('git')
 
 # User files that should be saved. They are kept as Pacnew and Pacsave Files
 backup=('etc/kimchi/kimchi.conf')
+iinstall=kimchi.install
 
 #Git: "git+git://github.com/kimchi-project/kimchi.git#tag=${pkgver}"
 source=(
@@ -88,4 +89,5 @@ package() {
   make DESTDIR=$pkgdir install
   # Systemd units
   install -Dm0644 ../kimchid.service "${pkgdir}/usr/lib/systemd/system/kimchid.service"
+  rm ${pkgdir}/var/lib/kimchi/objectstore
 }
