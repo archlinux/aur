@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Launch the java program
+java -jar /opt/mongochef/data-man-mongodb-pro-3.0.7.jar
+

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=java -jar /opt/mongochef/data-man-mongodb-pro-3.0.5.jar
+Exec=/usr/bin/mongochef
 Type=Application
 Terminal=false
 Icon=mongochef
