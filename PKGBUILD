@@ -5,12 +5,12 @@
 # AUR Category: devel
 
 pkgname=tortoisehg
-pkgver=3.5.2
+pkgver=3.6
 pkgrel=1
 pkgdesc="Graphical tools for Mercurial"
 url="http://tortoisehg.bitbucket.org/"
 license="GPL"
-depends=('python2' 'mercurial>=3.4' 'python2-pyqt4>=4.10' 'python2-qscintilla' 'python2-iniparse')
+depends=('python2' 'mercurial>=3.5' 'python2-pyqt4>=4.10' 'python2-qscintilla' 'python2-iniparse')
 builddepends=(python2)
 arch=('any')
 optdepends=('python2-pygments: syntax highlighting'
@@ -26,4 +26,4 @@ package() {
 	install -Dm 644 "icons/svg/thg_logo.svg" "${pkgdir}/usr/share/pixmaps/thg_logo.svg"
 }
 
-sha256sums=('f5d36d8f19b508dd00a7ac720af3889defd40e99fcb60d907a0fefb9c867dd63')
+sha256sums=('ec43d13f029bb23a12129d2a2c3b3b4daf3d8121cbb5c9c23e4872f7b0b75ad8')
