@@ -1,15 +1,16 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=ropper-git
-pkgver=1.6.2.170.266a808
+pkgver=1.7.2.268.debc8e8
 pkgrel=1
 pkgdesc="Show information about binary files and find gadgets to build rop chains for different architectures"
-arch=('any')
 url="https://github.com/sashs/Ropper"
+arch=('any')
 license=('GPL2')
 depends=('python-capstone')
 optdepends=('sqlite: gadgets database support')
 makedepends=('git' 'python-setuptools')
+checkdepends=('sqlite')
 provides=('ropper')
 conflicts=('ropper')
 source=(${pkgname}::git+https://github.com/sashs/Ropper)
@@ -25,11 +26,16 @@ build() {
   python setup.py build
 }
 
+check() {
+  cd ${pkgname}
+  python test.py
+}
+
 package() {
   cd ${pkgname}
   python setup.py install -O1 --root="${pkgdir}"
-  install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm 644 sample.py "${pkgdir}/usr/share/doc/${pkgname}/sample.py"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
