@@ -1,5 +1,5 @@
 pkgbase = dogecoin-daemon
-	pkgver = 1.10
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = http://dogecoin.com/
 	install = dogecoin-daemon.install

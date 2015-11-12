@@ -2,7 +2,7 @@
 
 pkg_base=dogecoin
 pkgname=('dogecoin-daemon')
-pkgver=1.10
+pkgver=1.10.0
 _git_branch=master
 pkgrel=1
 arch=('i686' 'x86_64')
