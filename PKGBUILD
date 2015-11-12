@@ -9,7 +9,7 @@
 
 pkgname=atom-editor-beta-bin
 _ver=1.2.0
-_beta=beta2
+_beta=beta3
 pkgver="${_ver}.${_beta}"
 pkgrel=1
 pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository"
@@ -21,7 +21,7 @@ depends=('git' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'python2' 'gvfs' 'xdg-
 conflicts=('atom-editor-beta')
 install=$pkgname.install
 
-md5sums=('f7f4e1b77b717726917ce8c3bb9944a5'
+md5sums=('6e70134691943c34af73755c804aa891'
          '8ed449a6d7d7aff30d8208135a11d9dc')
 source=("atom-amd64-v${_ver}-${_beta}.deb::https://github.com/atom/atom/releases/download/v${_ver}-${_beta}/atom-amd64.deb"
          atom-python.patch)
