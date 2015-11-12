@@ -1,7 +1,7 @@
 pkgbase = gpwsafe
 	pkgdesc = A commandline program for managing encrypted password databases
-	pkgver = 0.21.0
-	pkgrel = 2
+	pkgver = 0.21.1
+	pkgrel = 1
 	url = https://github.com/sakhnik/gpwsafe
 	install = gpwsafe.install
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = gpwsafe
 	depends = gtk3
 	depends = libcap
 	depends = boost
-	source = https://github.com/sakhnik/gpwsafe/archive/v0.21.0.tar.gz
-	sha1sums = 34288363bdf5319bb6938c57822f28be6472e9e4
+	source = https://github.com/sakhnik/gpwsafe/archive/v0.21.1.tar.gz
+	sha1sums = fbd743cb539a2ed159b5df0406c87ea9c2f8bc62
 
 pkgname = gpwsafe
 

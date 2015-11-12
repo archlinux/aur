@@ -1,7 +1,7 @@
 # Maintainer: Anatolii Sakhnik <sakhnik@gmail.com>
 pkgname=gpwsafe
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.21.1
+pkgrel=1
 _revision=v${pkgver}
 pkgdesc="A commandline program for managing encrypted password databases"
 arch=('i686' 'x86_64' 'armv7h')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libgcrypt' 'gtk3' 'libcap' 'boost')
 makedepends=('cmake' 'gtest' 'asciidoc' 'python-pexpect')
 source=(${url}/archive/${_revision}.tar.gz)
-sha1sums=('34288363bdf5319bb6938c57822f28be6472e9e4')
+sha1sums=('fbd743cb539a2ed159b5df0406c87ea9c2f8bc62')
 install=${pkgname}.install
 
 build()
