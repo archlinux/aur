@@ -1,0 +1,20 @@
+pkgbase = mpv-plugin-xrandr
+	pkgdesc = Makes mpv automatically invoke the xrandr tool to set the best suitable parameters for the display output
+	pkgver = r312074b
+	pkgrel = 1
+	url = https://github.com/lvml/mpv-plugin-xrandr
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mpv
+	depends = xorg-xrandr
+	depends = bash
+	source = git+https://github.com/lvml/mpv-plugin-xrandr
+	source = mpv.sh
+	source = default_screen.conf
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mpv-plugin-xrandr
+
