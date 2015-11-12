@@ -1,15 +1,22 @@
 # Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 pkgname=pypi2deb-git
 pkgver=1.20151008.r1.g2cea25b
-pkgrel=1
+pkgrel=2
 pkgdesc="generate debian source packages from pypi python packages"
 arch=(any)
 url="https://github.com/p1otr/pypi2deb"
 license=('MIT')
-depends=('python')
-makedepends=('python')
-optdepends=()
-install=
+depends=('python' 
+         'debhelper-python'
+	 'devscripts'
+	 'python-aiohttp'
+	 'python-jinja'
+	 'python-debian')
+makedepends=('python'
+             'python-setuptools'
+	     'git')
+optdepends=('python-redis: persistent caching support'
+            'python-msgpack: serialisation support')
 source=("git+https://github.com/p1otr/pypi2deb.git"
         "setup.py" )
 sha256sums=('SKIP'
