@@ -1,6 +1,6 @@
 pkgbase = evince-browser-plugin
 	pkgdesc = Document viewer - browser plugin
-	pkgver = 3.18.1
+	pkgver = 3.18.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evince
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = evince-browser-plugin
 	makedepends = python
 	depends = evince
 	depends = gst-plugins-base-libs
-	source = http://ftp.gnome.org/pub/gnome/sources/evince/3.18/evince-3.18.1.tar.xz
-	sha256sums = 7b5023765e6d6fb98da582fe3adc4f268f87b2f35110634e12cdac40f7aa8c31
+	source = http://ftp.gnome.org/pub/gnome/sources/evince/3.18/evince-3.18.2.tar.xz
+	sha256sums = 42ad6c7354d881a9ecab136ea84ff867acb942605bcfac48b6c12e1c2d8ecb17
 
 pkgname = evince-browser-plugin
 
