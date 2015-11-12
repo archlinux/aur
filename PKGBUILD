@@ -3,7 +3,7 @@
 
 pkgname=cdate
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Show Chinese lunisolar calender date"
 arch=('i686' 'x86_64')
 url="http://www.vinoca.org/"
@@ -16,12 +16,12 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   ./configure --prefix=/usr
-  make || return 1
+  make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install || return 1
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
