@@ -1,0 +1,15 @@
+pkgbase = ngxtop
+	pkgdesc = Real-time metrics for nginx server
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/lebinh/ngxtop
+	arch = any
+	license = MIT
+	depends = python2-setuptools
+	depends = python2-pyparsing
+	depends = python2-tabulate
+	source = http://pypi.python.org/packages/source/n/ngxtop/ngxtop-0.0.2.tar.gz
+	md5sums = 9758ff9c8163024a5a9b30df9fb6eedc
+
+pkgname = ngxtop
+
