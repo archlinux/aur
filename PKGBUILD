@@ -2,25 +2,14 @@
 # for more information on packaging from GIT sources.
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
-pkgname=qrun
+pkgname=qrun-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool to run QEMU in the most common configurations"
 arch=('any')
-url=
 license=('GPL')
-groups=()
 depends=('python' 'qemu' 'bridge-utils' 'iproute2')
 makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-md5sums=()
 
 _gitroot="https://github.com/vmaffione/qrun"
 _gitname="qrun"
