@@ -8,8 +8,8 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=2.8.2
-pkgrel=1
+pkgver=2.8.1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC and opencl)"
 arch=('i686' 'x86_64')
@@ -33,11 +33,18 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'qt-faststart')
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc}
-        'UNREDISTRIBUTABLE.txt')
+        'UNREDISTRIBUTABLE.txt'
+        'ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('830ec647f7ad774fc0caf17ba47774bf5dee7a89cbd65894f364a87ba3ad21b2'
+sha256sums=('e2ed5ab28dee1af94336739173eb0019afc21a54e38a96f4e3208e94a07866e2'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
+            '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p1 -i ../ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
+}
 
 build() {
   cd $_pkgbasename-$pkgver
