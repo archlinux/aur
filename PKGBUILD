@@ -3,7 +3,7 @@
 
 pkgname=mpv-plugin-xrandr
 pkgver=r312074b
-pkgrel=1
+pkgrel=2
 pkgdesc="Makes mpv automatically invoke the "xrandr" tool to set the best suitable parameters for the display output"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -22,4 +22,5 @@ package () {
     install -Dm755 "$srcdir/$pkgname/xrandr.lua" "$pkgdir/etc/mpv/xrandr.lua"
     install -Dm644 default_screen.conf "$pkgdir/etc/mpv/default_screen.conf"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 "$srcdir/$pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README"
 }
