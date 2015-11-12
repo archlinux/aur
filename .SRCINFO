@@ -1,16 +1,16 @@
 pkgbase = nvidia-340xx-ck
 	pkgdesc = NVIDIA drivers for linux-ck, 340xx legacy branch.
 	pkgver = 340.93
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.nvidia.com/
 	install = nvidia-340xx-ck.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-ck-headers>=4.1
-	makedepends = linux-ck-headers<4.2
-	depends = linux-ck>=4.1
-	depends = linux-ck<4.2
+	makedepends = linux-ck-headers>=4.3
+	makedepends = linux-ck-headers<4.4
+	depends = linux-ck>=4.3
+	depends = linux-ck<4.4
 	depends = nvidia-340xx-libgl
 	depends = nvidia-340xx-utils=340.93
 	conflicts = nvidia-ck
@@ -64,7 +64,9 @@ pkgbase = nvidia-340xx-ck
 	conflicts = nvidia-340xx-ck-sandybridge
 	options = !strip
 	source = nv-drm.patch
+	source = nvidia-4.3-build.patch
 	sha256sums = 9515310b017ad4134f50e92b39cb437e3d18605d26aead1dda02599d41e6ee26
+	sha256sums = 0e11d4d73556e39fffce5b8c14674ede0064cabee058d9fb8f8bd7c3035fca5d
 	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/340.93/NVIDIA-Linux-x86-340.93.run
 	sha256sums_i686 = 4a81c158302c595e1e72b5a1812eb3c67c8cf584ca74b1bc24163dad5289d612
 	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/340.93/NVIDIA-Linux-x86_64-340.93-no-compat32.run

@@ -1,15 +1,13 @@
-post_install() {
-    EXTRAMODULES='extramodules-4.1-ck'
+post_upgrade() {
+    EXTRAMODULES='extramodules-4.3-ck'
     depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
-    echo 'In order to use nvidia module, reboot the system.'
 }
 
-post_upgrade() {
-    EXTRAMODULES='extramodules-4.1-ck'
-    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+post_install() {
+	post_upgrade
+	echo 'In order to use nvidia module, reboot the system.'
 }
 
 post_remove() {
-    EXTRAMODULES='extramodules-4.1-ck'
-    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+	post_upgrade
 }
