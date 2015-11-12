@@ -2,7 +2,7 @@
 
 _perlmod=Travel-Routing-DE-VRR
 pkgname=perl-travel-routing-de-vrr
-pkgver=2.13
+pkgver=2.14
 pkgrel=1
 pkgdesc='Unofficial efa.vrr.de command line client and Perl module'
 url='http://finalrewind.org/projects/Travel-Routing-DE-VRR/'
@@ -14,8 +14,8 @@ options=('!emptydirs')
 validpgpkeys=('781BB7071C6BF648EAEB08A1100D5BFB5166E005')
 source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc}
         'http://www.wtfpl.net/txt/copying/COPYING')
-md5sums=('8cb7c5717b119ceb5b1d5d1da01c6669'
-         'cc687792858176c88c8d2a8c4df9f534'
+md5sums=('0690cb181c4b7ee72550d0968a2c0b3b'
+         'be1e0f273031289af8e208171fa0ad35'
          '8365d07beeb5f39d87e846dca3ae7b64')
 
 build() {
