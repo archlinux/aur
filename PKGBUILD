@@ -2,7 +2,7 @@
 
 pkgbase=evince
 pkgname=evince-light
-pkgver=3.18.0
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="GNOME document viewer, built with minimal dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -13,7 +13,8 @@ depends=('desktop-file-utils'
          'gsettings-desktop-schemas'
          'gtk3'
          'libsm'
-         'libarchive')
+         'libarchive'
+         'poppler-glib')
 # Add to depends:
 #        'poppler-glib' for PDF
 #        'libspectre' for PostScript
@@ -26,7 +27,7 @@ provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 install=${pkgbase}.install
 source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.xz")
-sha256sums=('96e8351f6a6fc5823bb8f51178cde1182bd66481af6fb09bf58a18b673cafa70')
+sha256sums=('42ad6c7354d881a9ecab136ea84ff867acb942605bcfac48b6c12e1c2d8ecb17')
 
 build()
 {
@@ -51,7 +52,7 @@ build()
         --enable-viewer \
         --enable-previewer \
         --enable-thumbnailer \
-        --disable-pdf \
+        --enable-pdf \
         --disable-ps \
         --disable-djvu \
         --disable-dvi \
