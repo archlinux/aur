@@ -6,7 +6,7 @@
 _pkgbasename=ncurses
 pkgname=libx32-${_pkgbasename}
 pkgver=6.0
-pkgrel=2.1
+pkgrel=2.2
 pkgdesc="System V Release 4.0 curses emulation library (x32 ABI)"
 arch=('x86_64')
 url="http://www.gnu.org/software/ncurses/"
@@ -26,7 +26,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/libx32/pkgconfig"
 
   ./configure --prefix=/usr --mandir=/usr/share/man \
-     --with-shared --with-normal --without-debug --without-ada --without-gpm \
+     --with-shared --with-normal --without-debug --without-ada \
      --with-install-prefix=${pkgdir} --enable-widec --libdir=/usr/libx32 \
      --enable-ext-colors --enable-ext-mouse
   make
