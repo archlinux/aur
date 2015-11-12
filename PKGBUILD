@@ -45,7 +45,7 @@ depends=("zarafa-libical>=${pkgver}"
          'krb5'
          'mariadb')
 makedepends=('gcc<=4.9.2'
-             'gcc-libs<=1.58.0'
+             'gcc-libs<=4.9.2'
              'binutils<=2.25'
              'boost<=1.58.0'
              'boost-libs<=1.58.0'
