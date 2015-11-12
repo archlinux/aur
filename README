@@ -4,7 +4,7 @@ http://guayadeque.org/
 
 Thank you's to:
 Alessio Treglia <alessio@debian.org> (Debian maintainer)
-Martin Gansser <mgansser@alice.de> (Fedora maintainer)
+Olly Betts <olly@survex.com> (Debian contributor)
 Maxime Gauduin <alucryd@archlinux.org> (Arch maintainer)
 for their work and efforts which lead to this package.
 
@@ -17,8 +17,10 @@ for their work and efforts which lead to this package.
   guayadeque_01d_rev1894                (update to SVN rev 1894)
   guayadeque_02_pause_crash.patch       (correct crash on pause/stop track)
   guayadeque_03_wx30.patch              (update src for use with wx3.0)
-  guayadeque_04_wxSqlite_upgrade.patch  (update internal wxSqlite3 to rev 3.2.1)
-  guayadeque_05_pixbuf_link.patch       (add build link to libgdk-pixbuf-2.0.so)
+  guayadeque_04_wxcurl.patch            (update header path for wxcurl)
+  guayadeque_05_wxSqlite_upgrade.patch  (update internal wxSqlite3 to rev 3.2.1)
+  guayadeque_06_pixbuf_link.patch       (add build link to libgdk-pixbuf-2.0.so)
+  guayadeque_07_player_display_fix.patch(correct current track display bug)
 
 =====
 KNOWN BUILD ISSUES

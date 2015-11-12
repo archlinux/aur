@@ -1,0 +1,78 @@
+diff --git src/LastFM.cpp src/LastFM.cpp
+index 14fdb90..12b0444 100644
+--- src/LastFM.cpp
++++ src/LastFM.cpp
+@@ -24,7 +24,7 @@
+ #include "DbCache.h"
+ #include "Utils.h"
+ 
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ 
+ #include <wx/arrimpl.cpp>
+ #include <wx/sstream.h>
+diff --git src/LastFMPanel.cpp src/LastFMPanel.cpp
+index 56d8edd..c2a3f28 100644
+--- src/LastFMPanel.cpp
++++ src/LastFMPanel.cpp
+@@ -21,7 +21,7 @@
+ #include "LastFMPanel.h"
+ 
+ #include "Commands.h"
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ #include "Images.h"
+ #include "MainApp.h"
+ #include "Settings.h"
+diff --git src/LyricsPanel.cpp src/LyricsPanel.cpp
+index 10a0660..7e03aab 100644
+--- src/LyricsPanel.cpp
++++ src/LyricsPanel.cpp
+@@ -23,7 +23,7 @@
+ #include "Base64.h"
+ #include "Commands.h"
+ #include "Config.h"
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ #include "Preferences.h"
+ #include "Images.h"
+ #include "ListView.h"
+diff --git src/MusicBrainz.cpp src/MusicBrainz.cpp
+index 9bdd48a..102f622 100644
+--- src/MusicBrainz.cpp
++++ src/MusicBrainz.cpp
+@@ -21,7 +21,7 @@
+ #include "MusicBrainz.h"
+ 
+ #include "Utils.h"
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ 
+ #include <wx/arrimpl.cpp>
+ #include <wx/sstream.h>
+diff --git src/MusicDns.cpp src/MusicDns.cpp
+index b211c64..6bdf115 100644
+--- src/MusicDns.cpp
++++ src/MusicDns.cpp
+@@ -21,7 +21,7 @@
+ #include "MusicDns.h"
+ 
+ #include "Commands.h"
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ #include "MusicBrainz.h"
+ #include "Utils.h"
+ #include "Version.h"
+diff --git src/Podcasts.h src/Podcasts.h
+index 6855483..0772ee1 100644
+--- src/Podcasts.h
++++ src/Podcasts.h
+@@ -21,7 +21,7 @@
+ #ifndef PODCASTS_H
+ #define PODCASTS_H
+ 
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ 
+ #include <wx/dynarray.h>
+ #include <wx/xml/xml.h>

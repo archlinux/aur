@@ -6,7 +6,7 @@
 
 pkgname=guayadeque
 pkgver=0.3.7
-pkgrel=3
+pkgrel=5
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
 url='http://guayadeque.org/'
@@ -25,8 +25,10 @@ source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgve
         'guayadeque_01d_rev1894.patch'
         'guayadeque_02_pause_crash.patch'
         'guayadeque_03_wx30.patch'
-        'guayadeque_04_wxSqlite_upgrade.patch'
-        'guayadeque_05_pixbuf_link.patch')
+        'guayadeque_04_wxcurl.patch'
+        'guayadeque_05_wxSqlite_upgrade.patch'
+        'guayadeque_06_pixbuf_link.patch'
+        'guayadeque_07_player_display_fix.patch')
 sha256sums=('d23eb1247add0bef8d5fef834294d7cb3d7c5fc20db9022b86f618a13d359938'
             '56ff5fae064fa421cb951a7c664550861e04ae4df8b692044e2a4785f238ce24'
             '15b49c58be40a57ecb1d38e7055c1edc5aaf71e0164062cc5f2b8fb589530377'
@@ -34,8 +36,10 @@ sha256sums=('d23eb1247add0bef8d5fef834294d7cb3d7c5fc20db9022b86f618a13d359938'
             'b4101860ee371f3d37329267ff71efcb2f3b117399997209197687d1864c6716'
             'b0a17d8a4b69e5559966d84f9a517e268198a62ccbb178db78a4772b52d62e8f'
             '52bc278567abbd88fc281cdbaa10427be2e28028cd8c307d58a718c061607f45'
+            'f6e8faedeac2ff47f6f2ea0ef3cb7737aafb9f7179b49313aac0f07b63783506'
             '6bd07e63afe0aa7baf30b616d701e234fd1c304897053e3eb466acb2db818071'
-            '23d388711a17dc7e1487c740fd961ceb563a967d5866c5d5508865252be2d645')
+            '23d388711a17dc7e1487c740fd961ceb563a967d5866c5d5508865252be2d645'
+            'e2dbb71fc1d6118fa31d30f49382c16bb306130fc94118f3df9f0ea64c27ca0f')
 BUILDFLDR='buildlocal'
 
 prepare() {
@@ -46,8 +50,10 @@ prepare() {
   patch -Np0 -i ../guayadeque_01d_rev1894.patch
   patch -Np0 -i ../guayadeque_02_pause_crash.patch
   patch -Np0 -i ../guayadeque_03_wx30.patch
-  patch -Np0 -i ../guayadeque_04_wxSqlite_upgrade.patch
-  patch -Np0 -i ../guayadeque_05_pixbuf_link.patch
+  patch -Np0 -i ../guayadeque_04_wxcurl.patch
+  patch -Np0 -i ../guayadeque_05_wxSqlite_upgrade.patch
+  patch -Np0 -i ../guayadeque_06_pixbuf_link.patch
+  patch -Np0 -i ../guayadeque_07_player_display_fix.patch
 }
 
 build() {

@@ -1,0 +1,70 @@
+diff --git src/AutoScrollText.cpp src/AutoScrollText.cpp
+index 7be1b90..4652238 100644
+--- src/AutoScrollText.cpp
++++ src/AutoScrollText.cpp
+@@ -36,7 +36,7 @@ END_EVENT_TABLE()
+ 
+ // -------------------------------------------------------------------------------- //
+ guAutoScrollText::guAutoScrollText( wxWindow * parent, const wxString &label, const wxSize &size ) :
+-    wxControl( parent, wxID_ANY )
++    wxControl( parent, wxID_ANY, wxDefaultPosition, size, wxBORDER_NONE )
+ {
+     m_ScrollPos = 0;
+     m_ScrollQuantum = 1;
+diff --git src/PlayerPanel.cpp src/PlayerPanel.cpp
+index 326314f..a81e55e 100644
+--- src/PlayerPanel.cpp
++++ src/PlayerPanel.cpp
+@@ -260,48 +260,40 @@ guPlayerPanel::guPlayerPanel( wxWindow * parent, guDbLibrary * db,
+ 	PlayerDetailsSizer = new wxBoxSizer( wxHORIZONTAL );
+ 
+ 	m_PlayerCoverBitmap = new wxStaticBitmap( this, wxID_ANY, guImage( guIMAGE_INDEX_no_cover ), wxDefaultPosition, wxSize( 100,100 ), 0 );
+-	//m_PlayerCoverBitmap->SetToolTip( _( "Shows the current track album cover if available" ) );
+ 	PlayerDetailsSizer->Add( m_PlayerCoverBitmap, 0, wxALL, 2 );
+ 
+ 	wxBoxSizer* PlayerLabelsSizer;
+ 	PlayerLabelsSizer = new wxBoxSizer( wxVERTICAL );
+ 
+-	//m_TitleLabel = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+ 	m_TitleLabel = new guAutoScrollText( this, wxEmptyString );
+ 	m_TitleLabel->SetToolTip( _( "Show the name of the current track" ) );
+-	//m_TitleLabel->Wrap( -1 );
+ 	CurrentFont.SetPointSize( guPLAYER_FONTSIZE_TRACKNAME );
+ 	CurrentFont.SetWeight( wxFONTWEIGHT_BOLD );
+ 	m_TitleLabel->SetFont( CurrentFont );
+ 
+-	PlayerLabelsSizer->Add( m_TitleLabel, 0, wxEXPAND|wxLEFT|wxRIGHT|wxBOTTOM, 2 );
++	PlayerLabelsSizer->Add( m_TitleLabel, 1, wxEXPAND, 2 );
+ 
+-	//m_AlbumLabel = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+ 	m_AlbumLabel = new guAutoScrollText( this, wxEmptyString );
+ 	m_AlbumLabel->SetToolTip( _( "Show the album name of the current track" ) );
+-	//m_AlbumLabel->Wrap( -1 );
+ 	CurrentFont.SetPointSize( guPLAYER_FONTSIZE_ALBUMNAME );
+ 	CurrentFont.SetWeight( wxFONTWEIGHT_NORMAL );
+ 	CurrentFont.SetStyle( wxFONTSTYLE_ITALIC );
+ 	m_AlbumLabel->SetFont( CurrentFont );
+ 
+-	PlayerLabelsSizer->Add( m_AlbumLabel, 0, wxEXPAND|wxLEFT|wxRIGHT|wxBOTTOM, 2 );
++	PlayerLabelsSizer->Add( m_AlbumLabel, 1, wxEXPAND, 2 );
+ 
+-	//m_ArtistLabel = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+ 	m_ArtistLabel = new guAutoScrollText( this, wxEmptyString );
+ 	m_ArtistLabel->SetToolTip( _( "Show the artist name of the current track" ) );
+-	//m_ArtistLabel->Wrap( -1 );
+ 	CurrentFont.SetPointSize( guPLAYER_FONTSIZE_ARTISTNAME );
+ 	CurrentFont.SetStyle( wxFONTSTYLE_NORMAL );
+ 	m_ArtistLabel->SetFont( CurrentFont );
+ 
+-	PlayerLabelsSizer->Add( m_ArtistLabel, 0, wxEXPAND|wxLEFT|wxRIGHT|wxBOTTOM, 2 );
++	PlayerLabelsSizer->Add( m_ArtistLabel, 1, wxEXPAND, 2 );
+ 
+ 	m_PosLabelSizer = new wxBoxSizer( wxHORIZONTAL );
+-	//m_PosLabelSizer->Add( 0, 0, 1, wxEXPAND, 5 );
+ 	m_YearLabel = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+ 	m_YearLabel->SetToolTip( _( "Show the year of the current track" ) );
+-	m_PosLabelSizer->Add( m_YearLabel, 1, wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT, 2 );
++	m_PosLabelSizer->Add( m_YearLabel, 1, wxALIGN_CENTER_VERTICAL, 2 );
+ 
+ 	m_PositionLabel = new wxStaticText( this, wxID_ANY, _("00:00 of 00:00"), wxDefaultPosition, wxDefaultSize, 0 );
+ 	m_PositionLabel->SetToolTip( _( "Show the current position and song length of the current track" ) );
