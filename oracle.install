@@ -1,0 +1,119 @@
+post_install() {
+   
+	if [ -e `grep dba /etc/group` ]; then
+		echo
+		echo -n "creating group \"dba\" ..."
+		groupadd dba
+		echo "done"
+		echo
+	fi
+
+	if [ -e `grep oracle /etc/passwd` ]; then
+		echo -n "creating user \"oracle\" ..."
+		useradd -g dba oracle
+		echo "done"
+		echo
+	fi 		 
+
+	echo -n "change directory rights ..."
+	chown -R oracle:dba /usr/lib/oracle
+	echo "done"
+	echo
+
+	echo -n "set sticky bit to oracle executable ..."
+	chmod 6755 /usr/lib/oracle/product/11.2.0/xe/bin/oracle
+	echo "done"
+	echo
+	
+	if [ ! -d /etc/sysconfig ]; then
+		echo -n "creating /etc/sysconfig ..."
+		mkdir /etc/sysconfig
+		echo "done"
+		echo
+	fi
+	
+	if [ ! -d /var/log/oracle ]; then
+		echo -n "creating /var/log/oracle ..."
+		mkdir /var/log/oracle
+		chown -R oracle:dba /var/log/oracle
+		echo "done"
+		echo
+	fi
+
+	availphymem=`cat /proc/meminfo | grep '^MemTotal' | awk '{print $2}'`
+	availphymem=`echo $availphymem / 1024 | bc`
+	memory_target=`echo 0.40 \* $availphymem | bc | sed "s/\..*//"`
+	if [ $memory_target -gt 1024 ];
+	then
+		memory_target=`echo 1024 \* 1048576 | bc`
+	else
+		memory_target=`echo $memory_target \* 1048576 | bc`
+	fi
+
+	/bin/sed -i "s/%memory_target%/$memory_target/g" /usr/lib/oracle/product/11.2.0/xe/config/scripts/init.ora
+	/bin/sed -i "s/%memory_target%/$memory_target/g" /usr/lib/oracle/product/11.2.0/xe/config/scripts/initXETemp.ora
+
+	echo
+	echo "add your user to the \"dba\" group in order to use the oracle tools"
+	echo
+}
+
+post_remove() {
+
+	if [ `grep oracle /etc/passwd` ]; then
+		echo -n "remove user \"oracle\" ..."
+		userdel oracle
+		echo "done"
+	fi 
+   
+	if [ `grep dba /etc/group` ]; then
+		echo -n "remove group \"dba\" ..."
+		groupdel dba
+		echo "done"
+	fi 
+		
+	if [ -f /etc/rc.d/oracle-xe ]; then
+		echo -n "remove /etc/rc.d/oracle-xe ..."
+		rm /etc/rc.d/oracle-xe
+		echo "done"	
+	fi
+	
+	if [ -f /etc/oratab ]; then
+		echo -n "remove /etc/oratab ..."
+		rm /etc/oratab
+		echo "done"	
+	fi
+	
+	if [ -d /etc/sysconfig ]; then
+	
+		if [ -f /etc/sysconfig/oracle-xe ]; then
+			echo -n "remove /etc/sysconfig/oracle-xe ..."
+			rm -rf /etc/sysconfig/oracle-xe
+			echo "done"
+		fi
+		
+		if [ `ls /etc/sysconfig/|wc -l` -eq 0 ]; then
+			echo -n "remove /etc/sysconfig ..."
+			rm -rf /etc/sysconfig
+			echo "done"
+		fi
+	fi
+	if [ -f /etc/default/oracle-xe ]; then
+		echo -n "remove /etc/default/oracle-xe ..."
+		rm -rf /etc/default/oracle-xe
+		echo "done"
+	fi
+	
+	if [ -d /usr/lib/oracle ]; then
+		echo -n "remove /usr/lib/oracle ..."
+		rm -rf /usr/lib/oracle
+		echo "done"
+	fi
+	
+	if [ -d /var/log/oracle ]; then
+		echo -n "remove /var/log/oracle ..."
+		rm -rf /var/log/oracle
+		echo "done"
+	fi
+}
+
