@@ -1,0 +1,43 @@
+diff -Naur artanis-0.1.0.orig/Makefile.in artanis-0.1.0.new/Makefile.in
+--- artanis-0.1.0.orig/Makefile.in	2015-11-06 23:32:16.628173940 +0100
++++ artanis-0.1.0.new/Makefile.in	2015-11-12 12:33:12.175634478 +0100
+@@ -1,5 +1,6 @@
+ TOP := $(shell pwd)
+ PREFIX := @prefix@
++DESTDIR := @DESTDIR@
+ SRC := @srcdir@
+ CC := @CC@
+ GUILE := @GUILE@
+@@ -21,7 +22,7 @@
+ TEMP_LIB_PATH := $(OBJ)
+ MOD_PATH := $(shell guile -c "(display (%site-dir))")
+ MOD_COMPILED_PATH := $(shell guile -c "(display (%site-ccache-dir))")
+-MOD_TARGET_PATH := $(MOD_COMPILED_PATH)
++MOD_TARGET_PATH := $(DESTDIR)/$(MOD_COMPILED_PATH)
+ GUILE_CFLAGS := -Wunsupported-warning -Wunbound-variable -Warity-mismatch -Wduplicate-case-datum -Wbad-case-datum -Wformat
+ GUILEC := GUILE_LOAD_COMPILED_PATH=$(TEMP_LIB_PATH) guild compile $(GUILE_CFLAGS)
+ ARTANIS_ETC := $(SRC)/etc/artanis
+@@ -124,15 +125,16 @@
+ 	-rm -f config.{h,log}
+ 
+ install: $(ALL_TARGETS)
+-	mkdir -p $(MOD_PATH)
+-	$(CP) $(MOD) $(MOD_PATH)/
++	mkdir -p $(DESTDIR)/$(MOD_PATH)
++	$(CP) $(MOD) $(DESTDIR)/$(MOD_PATH)/
+ 	mkdir -p $(MOD_TARGET_PATH)/
+ 	$(CP) $(MOD_OBJ) $(MOD_TARGET_PATH)/
+-	$(CP) $(ARTANIS_ETC) /etc/
+-	$(CP) $(ARTANIS_PAGES) /etc/artanis/
+-	$(CP) $(BIN)/art $(PREFIX)/bin/
+-	mkdir -p /etc/bash_completion.d/
+-	$(CP) $(CMDCOMP) /etc/bash_completion.d/
++	$(CP) $(ARTANIS_ETC) $(DESTDIR)/etc/
++	$(CP) $(ARTANIS_PAGES) $(DESTDIR)/etc/artanis/
++	mkdir -p $(DESTDIR)/$(PREFIX)/bin/
++	$(CP) $(BIN)/art $(DESTDIR)/$(PREFIX)/bin/
++	mkdir -p $(DESTDIR)/etc/bash_completion.d/
++	$(CP) $(CMDCOMP) $(DESTDIR)/etc/bash_completion.d/
+ 	source /etc/bash.bashrc
+ 	if [ -e artanis.info ]; then $(CP) artanis.info $(INFO_DIR)/; fi
+ 
