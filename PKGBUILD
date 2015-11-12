@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar-server
 pkgname=${_pkgname}-git
-pkgver=344.7ef9eec
+pkgver=436.169dcf9
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -52,7 +52,7 @@ package(){
   cd $pkgdir/var/lib/${_pkgname}/ && python2 -m compileall .
 
   msg2 "Remove git folder"
-  rm -rf $pkgdir/${_pkgname}/.git
+  rm -rf $pkgdir/var/lib/${_pkgname}/.git
 }
 
 pkgver() {
@@ -61,8 +61,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '884b0f2fa1458ab997f8fc6a8bd1f563'
-         '88cdcb63c6a6c9044cee53fff770d3a5')
-md5sums=('SKIP'
          '9c59866628a1b53521ecee30daf9cc6a'
-         '88cdcb63c6a6c9044cee53fff770d3a5')
+         '97e789911e6a239dfc33cbcceee63dd3')
