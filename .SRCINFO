@@ -1,6 +1,6 @@
 pkgbase = glogg
 	pkgdesc = A Qt GUI application to browse and search through long or complex log files.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = http://glogg.bonnefon.org/
 	install = glogg.install
@@ -10,8 +10,8 @@ pkgbase = glogg
 	makedepends = boost
 	depends = qt4
 	depends = boost-libs
-	source = http://glogg.bonnefon.org/files/glogg-1.0.2.tar.gz
-	md5sums = d6d9bb70ed50a38c5fa9114d71b52d3d
+	source = http://glogg.bonnefon.org/files/glogg-1.0.3.tar.gz
+	md5sums = b32d9b714cf5bb80a2a46729c2e7bfc0
 
 pkgname = glogg
 
