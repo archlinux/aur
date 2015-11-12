@@ -21,10 +21,10 @@ index 081947c..6b61583 100755
              elif command == 'help_shortcuts': wx.MessageBox( CC.SHORTCUT_HELP )
              elif command == 'import_files': self._ImportFiles()
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index 8c9e1a0..6ea01af 100755
+index ed75abd..8046f7e 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
-@@ -643,7 +643,7 @@ class DialogFirstStart( Dialog ):
+@@ -648,7 +648,7 @@ class DialogFirstStart( Dialog ):
          self._ok.SetForegroundColour( ( 0, 128, 0 ) )
          
          message1 = 'Hi, this looks like the first time you have started the hydrus client. Don\'t forget to check out the'
@@ -55,7 +55,7 @@ index bccaae5..b389a65 100644
          response_context = HydrusServerResources.ResponseContext( 200, path = path )
          
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index b8114d3..37c7cbc 100755
+index ee72421..549efe9 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,24 +3,9 @@ import sys
