@@ -1,13 +1,13 @@
 # Maintainer: Davi da Silva Böger <dsboger[at]gmail[dot]com>
 pkgname=fmit-git
 _pkgname=fmit
-pkgver=1.0.8.r0.a9bbe9d
+pkgver=1.0.12.r1.196da15
 pkgrel=1
 pkgdesc="Free Music Instrument Tuner"
 url="https://github.com/gillesdegottex/fmit"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('glut' 'qt5-multimedia' 'fftw' 'freeglut' 'hicolor-icon-theme' 'portaudio')
+depends=('glut' 'qt5-multimedia' 'fftw' 'hicolor-icon-theme' 'portaudio')
 makedepends=('git' 'desktop-file-utils' 'xdg-utils')
 conflicts=('fmit')
 provides=('fmit')
