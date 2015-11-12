@@ -51,48 +51,46 @@ _BFQ_enable_=
 
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
-_srcname=linux-4.1
-pkgver=4.1.13
+_srcname=linux-4.3
+pkgver=4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
-_ckpatchversion=2
-_ckpatchname="patch-4.1-ck${_ckpatchversion}"
+_ckpatchversion=1
+_ckpatchname="patch-4.3-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.3.0-v7r8"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+#"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+#"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
 # ck1
-"http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
-'bfs-009-add-preempt_offset-argument-to-should_resched.patch'
+"http://ck.kolivas.org/patches/4.0/4.3/4.3-ck${_ckpatchversion}/${_ckpatchname}.xz"
+"http://ck.kolivas.org/patches/bfs/4.0/4.3/Pending/bfs465-nohz-buildfix.patch"
 # gcc
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 # bfq
-"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.1.patch"
-"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.1.patch"
-"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
-sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.3.patch"
+"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.3.patch"
+"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.3.0.patch")
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            '1c3ba78cbaa1a260798d6d0d2aa319ff41ae676b443e5bf06ab441436dcdd171'
-            'SKIP'
-            'e1d4a307a70ec7ba78193982726aeb27e289da2143ac9d6921850b67274aa7b1'
-            'c9f26d854c35768993bcfc3bb0347757124ff18b6d52262b89bb33b43f554ea5'
+            '229ce657a994e2cb5d329bbbf38b83f8941fa4f047151303968cc79797284bfb'
+            'a383132ff11f53bc01a2bb1ab474e641774a2caa328bd4df01da117d981bdf37'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '87726411f583862e456156fe82ef51b188e5d92e7a4bd944e01a091cd7c46428'
-            '0c8d94a0c416db0fafe6f12469798b2ea9f3d23d9cd712b6db7e1eaf421097e0'
+            '01961bedc08ae3def15050e107092cba39361f6d5402049a36ff9aa0fbf328a3'
+            '3c5eccbcf6159f7e8e66f8ecc062524e89fde8ebaafda503b34be87fa6cb6588'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            'ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975'
-            'c5c2c48638c2a8180948bd118ffcc33c8b7ff5f9f1e4b04c8e2cafeca2bde87b'
-            '4f30f76adbdf49aec8d41ac27ad212734500c272f3cba594f134a7bc263820d9')
+            'ebeb62206999b2749ac43bb287a6a2a5db4f6b1b688a90cefa1ceb5db94aa490'
+            '91b7cb42b8337b768e5329da205a6b61211628ec99b1e308e0e9d5283b2c86eb'
+            '77430c7154670dd288b6d5bd45896222bf955f02029ee5d0cfe97cc5d9bc1a9d')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -102,7 +100,7 @@ prepare() {
 	cd "${_srcname}"
 
 	# add upstream patch
-	patch -p1 -i "${srcdir}/patch-${pkgver}"
+	#patch -p1 -i "${srcdir}/patch-${pkgver}"
 
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
@@ -112,12 +110,9 @@ prepare() {
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck2 including BFS v0.464"
+	msg "Patching source with ck1 including BFS v0.465"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
-
-	# build issue fix for 4.1.12
-	# http://ck-hack.blogspot.com/2015/08/bfs-464-linux-41-ck2.html?showComment=1445937376359#c8153343895524903784
-	patch -Np1 -i "${srcdir}/bfs-009-add-preempt_offset-argument-to-should_resched.patch"
+	patch -Np1 -i "${srcdir}/bfs465-nohz-buildfix.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
@@ -240,8 +235,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
+	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.465.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.465.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
