@@ -5,13 +5,13 @@ pkgname=iraf-bin
 pkgver=2.16
 _ver=216
 _x11iraf=2.0BETA
-pkgrel=6
+pkgrel=7
 pkgdesc="Image Reduction and Analysis Facility"
 arch=('i686' 'x86_64')
 url="http://iraf.noao.edu/"
 license=('CDDL' 'MIT')
-depends=('tcsh' 'libxmu' 'ncurses' 'tcl' 'libtinfo')
-[[ $CARCH = x86_64 ]] && depends=('tcsh' 'lib32-libxmu' 'lib32-ncurses' 'tcl' 'lib32-libtinfo')
+depends=('tcsh' 'lib32-libxmu' 'lib32-ncurses' 'tcl' 'lib32-libtinfo')
+[[ $CARCH = x86_64 ]] && depends=('tcsh' 'libxmu' 'ncurses' 'tcl' 'libtinfo')
 provides=('iraf')
 conflicts=('iraf')
 options=(!strip)
