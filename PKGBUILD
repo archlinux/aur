@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=48.0.2552.0
+pkgver=48.0.2560.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -71,7 +71,8 @@ optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
             'kwalletmanager: Needed for storing passwords in KWallet in KF5'
             #
             'libexif: Need for read EXIF metadata'
-            'ttf-font: For some typography')
+            'ttf-font: For some typography'
+            )
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
         'chromium-dev.desktop'
