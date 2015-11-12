@@ -11,7 +11,9 @@ ExecStart=/usr/bin/archsocks
 PrivateTmp=true
 PrivateDevices=true
 ProtectSystem=full
+ProtectHome=true
 NoNewPrivileges=true
+CapabilityBoundingSet=
 
 ExecStartPre=-/usr/bin/iptables -w -N ARCHSOCKS
 ExecStartPre=/usr/bin/iptables -w -A OUTPUT -m owner --uid-owner archsocks -j ARCHSOCKS
