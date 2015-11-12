@@ -1,0 +1,82 @@
+post_install() {
+  
+  # => create user
+  getent group zarafa &>/dev/null || groupadd -r zarafa
+  getent passwd zarafa &>/dev/null || useradd -r -c 'Zarafa Groupware Suite' -g zarafa -d /dev/null -s /bin/false zarafa
+  passwd -l zarafa &>/dev/null
+  
+
+  if [ ! -d "/var/lib/mysql" ]
+  then
+   # => create database
+   mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+   systemctl start mysqld
+
+   # => prepare database
+   mysql -u root -e "CREATE DATABASE IF NOT EXISTS zarafa; GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY 'zarafa'; SET GLOBAL max_allowed_packet=16777216;"
+  
+  else
+   # => show instructions
+   echo ">>> MySQL user zarafa, with unrestricted access to a "zarafa" database, must exist"
+   echo "    > CREATE DATABASE IF NOT EXISTS zarafa;"
+   echo "    > GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY 'zarafa';"
+   echo ">>> Run /usr/bin/mysql_secure_installation"
+   echo 
+   echo ">>> Ensure the GLOBAL MySQL variable, max_allowed_packet, is >= 16MB, or is SESSION writable"
+   echo "    > SET GLOBAL max_allowed_packet=16777216;"
+   echo
+   echo ">>> Log files located at /var/log/zarafa"
+
+  fi
+
+  # => set permission (PWD)
+  chown zarafa:zarafa -R /var/log/zarafa
+  chown zarafa:zarafa -R /var/lib/zarafa
+
+  # => copy example configs to their active locations
+  for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/*.cfg; do
+    cp -n ${cfg} /etc/zarafa
+  done
+
+  # => create ssl key and certificate (SSL)
+  if [ ! -f "/etc/ssl/private/zarafa.key" ]
+  then
+    # https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+    # https://cipherli.st/
+    # http://www.shellhacks.com/en/HowTo-Create-CSR-using-OpenSSL-Without-Prompt-Non-Interactive
+    echo ">>> Creating default key and certificate to /etc/ssl/private/zarafa.*"
+    openssl genrsa -out /etc/ssl/private/zarafa.key 4096
+    openssl req -new -sha512 -key /etc/ssl/private/zarafa.key -out /tmp/zarafa.csr -subj "/CN=localhost"
+    openssl x509 -req -days 3650 -in /tmp/zarafa.csr -signkey /etc/ssl/private/zarafa.key -out /etc/ssl/private/zarafa.crt
+
+    # trust own certificate for later connections
+    find -L /etc/ssl/certs -samefile /etc/ssl/private/zarafa.crt -exec rm {} \;
+    ln -s /etc/ssl/private/zarafa.crt /etc/ssl/certs/zarafa.crt
+    ln -s /etc/ssl/private/zarafa.crt /etc/ssl/certs/$(openssl x509 -noout -hash -in /etc/ssl/certs/zarafa.crt).0
+    update-ca-trust
+  fi
+  
+  # => create diffie hellman (PFS)
+  if [ ! -f "/etc/ssl/private/zarafa.dh" ]
+  then
+    echo ">>> Creating default dh file to /etc/ssl/private/zarafa.*"
+    openssl dhparam -out /etc/ssl/private/zarafa.dh 512
+  fi
+  
+  # => set permission (SSL)
+  echo ">>> Setting permissions to /etc/ssl/private/zarafa.*"
+  chmod go-rwx /etc/ssl/private/zarafa.*
+  chmod u+rw /etc/ssl/private/zarafa.*
+  chown root:root /etc/ssl/private/zarafa.*
+
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  userdel zarafa &> /dev/null
+  groupdel zarafa &> /dev/null
+  return 0
+}
