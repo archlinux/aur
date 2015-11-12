@@ -1,3 +1,13 @@
+2015-11-12
+
+	* V0.7.6
+	Bug fix: Images in subdirectory does not have correct relative links #1904
+	Bug fix: SSH operations do not handle mixed cases URL
+	Bug fix: Wrong redirection after deleting system notice with sub-path #1930
+	Improvement: Show current branch in commit overview #1572
+	Improvement: Allow tab to button in issue view page and use enter or space bar to trigger click #1824 #1917
+	Features: Able to start builtin SSH server by config option [server] START_SSH_SERVER = true
+
 2015-11-08
 
 	* V0.7.0
