@@ -1,14 +1,14 @@
 pkgbase = mactelnet
 	pkgdesc = A linux console tool for connecting to MikroTik RouterOS devices via their ethernet address
-	pkgver = 0.4.0
-	pkgrel = 4
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/haakonnessjoen/MAC-Telnet
 	arch = i686
 	arch = x86_64
 	license = GPL
 	backup = etc/mactelnetd.users
-	source = mactelnet-0.4.0.tar.gz::https://github.com/haakonnessjoen/MAC-Telnet/archive/v0.4.0.tar.gz
-	sha256sums = 2e94e9df3b43ec441626d875becf7ebca335a79170e1fc75373eaeda506f363e
+	source = mactelnet-0.4.1.tar.gz::https://github.com/haakonnessjoen/MAC-Telnet/archive/v0.4.1.tar.gz
+	sha256sums = d791edb97df1f559875da9c91ec2240c876c489dd88d1f49b45aeed4a762d9b2
 
 pkgname = mactelnet
 
