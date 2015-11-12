@@ -1,6 +1,6 @@
 pkgbase = netmap
 	pkgdesc = Netmap is a framework for high speed network packet I/O.
-	pkgver = 3.18
+	pkgver = 4.2
 	pkgrel = 1
 	url = http://info.iet.unipi.it/~luigi/netmap
 	install = netmap.install
