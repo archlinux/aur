@@ -9,7 +9,7 @@ pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
 license=('GPL3')
-makedepends=('git' 'cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2')
+makedepends=('git' 'cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'sdl2')
 options=(!strip)
 source=('git+https://github.com/etlegacy/etlegacy.git')
 sha512sums=('SKIP')
@@ -103,7 +103,7 @@ build() {
 
 package_etlegacy-git() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine)"
-    depends=('etlegacy-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2')
+    depends=('etlegacy-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'sdl2')
     provides=('etlegacy')
     conflicts=('etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
