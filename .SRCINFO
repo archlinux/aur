@@ -12,7 +12,6 @@ pkgbase = libmygpo-qt5-git
 	provides = libmygpo-qt5
 	conflicts = libmygpo-qt5
 	source = git+https://github.com/gpodder/libmygpo-qt.git
-	source = include_suffix.patch
 	sha256sums = SKIP
 	sha256sums = 7994f3c29086268b8138e7ac0c0d1a99acfa55e07a7695507f314903b890f79d
 
