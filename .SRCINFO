@@ -1,7 +1,7 @@
 pkgbase = lib32-gstreamer0.10-bad
 	pkgdesc = GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad) (32 bit)
 	pkgver = 0.10.23
-	pkgrel = 7
+	pkgrel = 8
 	url = http://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
@@ -52,6 +52,7 @@ pkgbase = lib32-gstreamer0.10-bad
 pkgname = lib32-gstreamer0.10-bad
 	pkgdesc = GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad, lib32)
 	depends = lib32-gstreamer0.10-base
+	depends = gstreamer0.10-bad
 
 pkgname = lib32-gstreamer0.10-bad-plugins
 	pkgdesc = GStreamer Multimedia Framework Bad Plugins (gst-plugins-bad)
@@ -81,4 +82,5 @@ pkgname = lib32-gstreamer0.10-bad-plugins
 	depends = lib32-opus
 	depends = lib32-celt
 	depends = lib32-spandsp
+	depends = gstreamer0.10-bad-plugins
 

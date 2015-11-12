@@ -5,7 +5,7 @@ _pkgbase=gstreamer0.10-bad
 pkgbase=lib32-$_pkgbase
 pkgname=('lib32-gstreamer0.10-bad' 'lib32-gstreamer0.10-bad-plugins')
 pkgver=0.10.23
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 license=('LGPL' 'GPL')
 pkgdesc="GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad) (32 bit)"
@@ -59,7 +59,7 @@ sed -e 's/gst sys ext/gst/' -i Makefile
 
 package_lib32-gstreamer0.10-bad() {
 pkgdesc="GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad, lib32)"
-depends=('lib32-gstreamer0.10-base')
+depends=('lib32-gstreamer0.10-base' 'gstreamer0.10-bad')
 
 cd gst-plugins-bad
 make DESTDIR="$pkgdir" install
@@ -68,7 +68,7 @@ rm -rf "$pkgdir/usr"/{include,share}
 
 package_lib32-gstreamer0.10-bad-plugins() {
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (gst-plugins-bad)"
-depends=("lib32-gstreamer0.10-bad=${pkgver}" 'lib32-libdca' 'bzip2' 'lib32-libdc1394' 'lib32-neon' 'lib32-faac' 'lib32-musicbrainz' 'lib32-faad2' 'lib32-libmms' 'lib32-libcdaudio' 'lib32-libmpcdec' 'lib32-libdvdnav' 'lib32-libmodplug' 'lib32-liblrdf' 'lib32-libofa' 'lib32-libvdpau' 'lib32-soundtouch' 'lib32-libass' 'lib32-schroedinger' 'lib32-rtmpdump' 'lib32-libsndfile' 'lib32-librsvg' 'lib32-opus' 'lib32-celt' 'lib32-spandsp')
+depends=("lib32-gstreamer0.10-bad=${pkgver}" 'lib32-libdca' 'bzip2' 'lib32-libdc1394' 'lib32-neon' 'lib32-faac' 'lib32-musicbrainz' 'lib32-faad2' 'lib32-libmms' 'lib32-libcdaudio' 'lib32-libmpcdec' 'lib32-libdvdnav' 'lib32-libmodplug' 'lib32-liblrdf' 'lib32-libofa' 'lib32-libvdpau' 'lib32-soundtouch' 'lib32-libass' 'lib32-schroedinger' 'lib32-rtmpdump' 'lib32-libsndfile' 'lib32-librsvg' 'lib32-opus' 'lib32-celt' 'lib32-spandsp' 'gstreamer0.10-bad-plugins')
 
 install=lib32-gstreamer0.10-bad-plugins.install
 
