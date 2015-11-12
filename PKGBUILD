@@ -1,6 +1,6 @@
 # Maintainer: Harley Wiltzer <harleyw@hotmail.com>
 pkgname=savant-git
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A CLI based calculator that supports variables and uses SDL2 to do graphs."
 arch=('x86_64')
