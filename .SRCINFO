@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-sv-se
 	pkgdesc = Swedish language pack for SeaMonkey
-	pkgver = 2.38
+	pkgver = 2.39
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.38
-	noextract = seamonkey-2.38.sv-SE.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.38/langpack/seamonkey-2.38.sv-SE.langpack.xpi
-	sha256sums = 894b973fdbca5d5971de92069d122d0e0c4c116907ad8704807ded037b1b9a01
+	depends = seamonkey>=2.39
+	noextract = seamonkey-2.39.sv-SE.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.39/langpack/seamonkey-2.39.sv-SE.langpack.xpi
+	sha256sums = 4ee82e2d89fd9846b4fc9465797c2f04facea76b10bf00d82ade5a581b6c5c59
 
 pkgname = seamonkey-i18n-sv-se
 
