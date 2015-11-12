@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt.old b/CMakeLists.txt
+index f0a5600..61cf155 100644
+--- a/CMakeLists.txt.old
++++ b/CMakeLists.txt
+@@ -332,16 +332,10 @@ endif(WITH_QHULL)
+ 
+ option(WITH_QT "Build QT Front-End" TRUE)
+ if(WITH_QT)
+-  # Find Qt4
+-  find_package(Qt4)
+-  if (QT4_FOUND)
+-    include("${QT_USE_FILE}")
+-  endif (QT4_FOUND)
++  set(QT4_FOUND FALSE)
+ 
+   # Find QT5
+-  if(NOT QT4_FOUND)
+-      include(cmake/pcl_find_qt5.cmake)
+-  endif(NOT QT4_FOUND)
++  include(cmake/pcl_find_qt5.cmake)
+ endif(WITH_QT)
+ 
+ # Find VTK

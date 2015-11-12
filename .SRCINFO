@@ -1,0 +1,31 @@
+pkgbase = pcl-qt5
+	pkgdesc = A comprehensive open source library for n-D Point Clouds and 3D geometry processing (Qt5 version)
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = http://www.pointclouds.org
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = cmake
+	makedepends = gl2ps
+	depends = boost
+	depends = eigen
+	depends = flann
+	depends = vtk
+	depends = qhull
+	depends = qt5-base
+	depends = glu
+	depends = qt5-webkit
+	optdepends = openmpi
+	optdepends = cuda
+	optdepends = openni2
+	optdepends = python-sphinx
+	provides = pcl
+	conflicts = pcl
+	source = https://github.com/PointCloudLibrary/pcl/archive/pcl-1.7.2.tar.gz
+	source = qt5.patch
+	sha256sums = 479f84f2c658a6319b78271111251b4c2d6cf07643421b66bbc351d9bed0ae93
+	sha256sums = 9e7303a9faa2fc5d0453841333a3e7c3801452b79efcef0d3c9d3f13285d5b91
+
+pkgname = pcl-qt5
+
