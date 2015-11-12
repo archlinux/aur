@@ -1,8 +1,8 @@
 pkgbase = legendofedgar
 	pkgdesc = 2D platformer: Venture across the world, battle fearsome creatures and solve puzzles to rescue your father.
-	pkgver = 1.21
+	pkgver = 1.22
 	pkgrel = 1
-	url = http://sourceforge.net/projects/legendofedgar/
+	url = http://www.parallelrealities.co.uk/p/legend-of-edgar.html
 	install = legendofedgar.install
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = legendofedgar
 	depends = sdl_mixer
 	depends = sdl_ttf
 	depends = hicolor-icon-theme
-	source = https://github.com/riksweeney/edgar/releases/download/1.21/edgar-1.21-1.tar.gz
-	md5sums = 89b786bfcf81767a9447ddd397b943d5
+	source = https://github.com/riksweeney/edgar/releases/download/1.22/edgar-1.22-1.tar.gz
+	md5sums = 8d90138efcc3aa3c283220bca8394a90
 
 pkgname = legendofedgar
 
