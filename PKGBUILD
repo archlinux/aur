@@ -1,6 +1,6 @@
-# Maintainer: Jeff Parent <jecxjo@sdf.lonestar.org>
+# Maintainer: Daniel Milde <daniel@milde.cz> 
 pkgname=python-err
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="A plugin based chatbot designed to be easily deployable, extensible and maintainable."
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=('python-sleekxmpp: XMPP backend'
 options=(!emptydirs)
 install=
 source=("https://pypi.python.org/packages/source/e/err/err-$pkgver.tar.gz")
-sha256sums=('658321641ec1f1b57ab53eafc64d78dfe804f56ae0a111f8eb18d6cf64702eea')
+sha256sums=('109633a948cd9cb1e09c4445e9db7c0b7bf783a997f667ce32b64f94cba95db6')
 
 package() {
   cd "$srcdir/err-$pkgver"
