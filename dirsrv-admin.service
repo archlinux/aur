@@ -1,0 +1,12 @@
+[Unit]
+Description=389 Directory Server Admin Server.
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/usr/var/run/dirsrv/admin-serv.pid
+ExecStart=/usr/sbin/start-ds-admin
+ExecStop=/usr/sbin/stop-ds-admin
+
+[Install]
+WantedBy=multi-user.target
