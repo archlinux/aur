@@ -1,6 +1,6 @@
 pkgbase = lain-git
 	pkgdesc = Layouts, Utilities and Widgets for Awesome WM
-	pkgver = 589.2b8a2bc
+	pkgver = 596.11e448e
 	pkgrel = 1
 	url = https://github.com/copycat-killer/lain
 	arch = any
