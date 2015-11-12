@@ -1,0 +1,20 @@
+pkgbase = python-scripttest
+	pkgdesc = A library to help you test your interactive command-line applications
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://pythonpaste.org/scripttest/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	options = !libtool
+	source = https://pypi.python.org/packages/source/s/scripttest/scripttest-1.3.tar.gz
+	sha1sums = 9551db7d23da77199f6137e6ffb6489b66ddf143
+
+pkgname = python2-scripttest
+	depends = 
+
+pkgname = python-scripttest
+	depends = 
+
