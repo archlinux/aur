@@ -3,7 +3,7 @@
 
 pkgname=mpv-plugin-xrandr
 pkgver=r312074b
-pkgrel=2
+pkgrel=3
 pkgdesc="Makes mpv automatically invoke the "xrandr" tool to set the best suitable parameters for the display output"
 arch=('i686' 'x86_64')
 license=('GPL')
