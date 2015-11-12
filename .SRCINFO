@@ -32,6 +32,7 @@ pkgbase = awesome34
 	optdepends = dex: autostart your desktop files
 	optdepends = vicious21: widgets for the Awesome window manager
 	provides = notification-daemon
+	provides = awesome=$pkgver
 	conflicts = awesome
 	source = http://awesome.naquadah.org//download/awesome-3.4.15.tar.xz
 	source = awesome-lua51.patch

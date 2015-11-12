@@ -44,7 +44,7 @@ optdepends=(
   'vicious21: widgets for the Awesome window manager'
 )
 conflicts=('awesome')
-provides=('notification-daemon')
+provides=('notification-daemon' 'awesome=$pkgver')
 source=("$url/download/awesome-$pkgver.tar.xz"
         "awesome-lua51.patch"
         "awesome.desktop")
