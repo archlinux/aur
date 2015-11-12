@@ -1,20 +1,20 @@
 # Maintainer: Andreas Bilke <andreas@bilke.org>
 
 pkgname=python-networkit
-pkgrel=3
-pkgver=3.6
+pkgrel=1
+pkgver=4.0.1
 pkgdesc='A toolkit for high-performance network analysis'
 arch=('i686' 'x86_64')
 url='https://networkit.iti.kit.edu/'
-depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-networkx' 'python-tabulate' 'python-powerlaw' 'python-scikit-learn')
+depends=('python>=3.4' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-networkx' 'python-tabulate' 'python-powerlaw' 'python-scikit-learn')
 makedepends=('scons' 'cython')
 license=('MIT')
-md5sums=('0c1defc8796f5a30db8c234dfd43859e')
-sha256sums=('b83c76135e3379f8d1184015319e0db061675c29e0cad6d50af1aeb3fdd5d492')
+md5sums=('4eeb1e15bb590c2804fc92f57d567974')
+sha256sums=('422f464e389eb4e8b682d8ea38335a29e3af9049a2296c3d9a09b14a25654789')
 
-source=('https://algohub.iti.kit.edu/parco/NetworKit/NetworKit/archive/71ba57e8f56d007b72f1191b9d02a70110e05ac1.zip?subrepos=true')
+source=('https://algohub.iti.kit.edu/parco/NetworKit/NetworKit/archive/44250f0d3559cb039b1752f463f63c73c5e7fc84.zip?subrepos=false')
 
 package() {
-  cd "NetworKit-71ba57e8f56d"
+  cd "NetworKit-44250f0d3559/"
   python setup.py install --root="$pkgdir/"
 }
