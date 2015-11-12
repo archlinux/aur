@@ -1,6 +1,6 @@
 pkgbase = slack-desktop
 	pkgdesc = Slack Desktop (Beta) for Linux
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://slack.com/apps
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = slack-desktop
 	depends = libxtst
 	depends = xdg-utils
 	optdepends = gnome-keyring
-	source_i686 = https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-1.2.5-i386.deb
-	sha256sums_i686 = 4fc65a3a24a65c4e4ace23ed527bc73087234da75c5a9d9cdfd7924699a96aac
-	source_x86_64 = https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-1.2.5-amd64.deb
-	sha256sums_x86_64 = 2368e2449f08272d8ce38a423f44ed0cd35c1e77ca3c0525f069d0790b6ec58f
+	source_i686 = https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-1.2.6-i386.deb
+	sha256sums_i686 = 474a1f95920e39e3a93e7771e7214401e8549d82142d313e6224540c9e17ddef
+	source_x86_64 = https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-1.2.6-amd64.deb
+	sha256sums_x86_64 = f7a10e7b565e2251f63bff879e9a31728af374c5e0aa36b577d3c542a3e25760
 
 pkgname = slack-desktop
 
