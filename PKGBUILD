@@ -2,7 +2,7 @@
 
 pkgname=firefox-beta
 pkgver=43.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')

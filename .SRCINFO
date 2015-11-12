@@ -1,7 +1,7 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org - Beta (build from source)
 	pkgver = 43.0b2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	install = firefox-beta.install
 	arch = i686
