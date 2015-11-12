@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-cs
-pkgver=2.38
+pkgver=2.39
 pkgrel=1
 _lang=cs
 pkgdesc="Czech language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('54727a8b78eab47adaef7a0f1424c2342bc688183820eb42975d56bf3b5cfee4')
+sha256sums=('6204072196d5ef65cfd5a380d7a985f225f17b8bf5c945e7828ca33cdb09b2da')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
