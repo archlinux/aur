@@ -1,7 +1,7 @@
 pkgbase = mongochef
 	pkgdesc = A free universal database tool for developers and database administrators
 	pkgver = 3.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://3t.io/mongochef/
 	arch = i686
 	arch = x86_64
