@@ -20,7 +20,6 @@ install=$pkgname.install
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git reset --hard 2300f58827d2f7be874965083ac2bc97d5ca737d
 	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
