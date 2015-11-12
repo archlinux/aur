@@ -1,21 +1,5 @@
 #!/bin/bash
-loader=$(mktemp -p /tmp sgx-XXXXXXXX.lds)
-sed \
--e "/ENCT_START/,/ENCT_END/{ /ENCT_START/{p; i \\
-	O_TEXT_SEGMENTS \\
-	/usr/lib/sgx/polarssl_sgx/*.o(.text) \\
-	/usr/lib/sgx/lib/*.o(.text) \\
-	/usr/lib/sgx/*(.enc_text) \\
-	/usr/lib/sgx/*Lib.o(.text)
-}; /ENCT_END/p; d }" \
--e "/ENCD_START/,/ENCD_END/{ /ENCD_START/{p; i \\
-	O_DATA_SEGMENTS \\
-	/usr/lib/sgx/polarssl_sgx/*.o(.data .data.rel.local .bss .rodata COMMON) \\
-	/usr/lib/sgx/lib/*.o(.data .data.rel.local .bss .rodata COMMON) \\
-	/usr/lib/sgx/*(.enc_data) \\
-	/usr/lib/sgx/*Lib.o(.data .data.rel.local .bss .rodata COMMON)
-}; /ENCD_END/p; d }"  /usr/lib/sgx/sgx.lds > "$loader"
-
+# SGX needs the .os to be present to continue
 args=()
 for a in "$@"; do
 	if [ ! -e "$a" ]; then
@@ -27,22 +11,19 @@ for a in "$@"; do
 		continue
 	fi
 
-	# Compile all .cs into .os so they can be included in .enc_data/.enc_text
-	cc -c -g -Wall -pedantic -Wno-unused-function -std=gnu1x -fno-stack-protector -fvisibility=hidden -o "${a%.c}.o" "$a"
+	# Compile all .cs into .os so they can be included by the LDS
+	cc -c -g -Wall -pedantic -Wno-unused-function -std=gnu11 -fno-stack-protector -fvisibility=hidden -o "${a%.c}.o" "$a"
 	end=$?
 	if [ $end -ne 0 ]; then
 		exit $end
 	fi
-
-	sed -i \
-	-e "/O_TEXT_SEGMENTS/i \\
-	${a%.c}.o(.text)" \
-	-e "/O_DATA_SEGMENTS/i \\
-	${a%.c}.o(.data .data.rel.local .bss .rodata COMMON)" "$loader"
 	args=("${args[@]}" "${a%.c}.o")
 done
 
-sed -i -e '/O_TEXT_SEGMENTS/d' -e '/O_DATA_SEGMENTS/d' "$loader"
-
-find /usr/lib/sgx/ -type f -iname '*.o' -print0 | xargs -0 cc -g -Wall -pedantic -Wno-unused-function -std=gnu1x -fno-stack-protector -fvisibility=hidden "-Wl,-T,$loader" "${args[@]}"
-rm "$loader"
+# Now link (with the .os in the current directory)
+find /usr/lib/sgx/ -type f -iname '*.a' -print0 \
+	| xargs -0 \
+	cc \
+	-g -Wall -pedantic -Wno-unused-function -std=gnu11 \
+	-fno-stack-protector -static -fPIC -fvisibility=hidden \
+	-static -nostdlib "-Wl,-T,/usr/lib/sgx/sgx.lds" "${args[@]}"
