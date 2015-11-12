@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libssh
 	pkgdesc = Library for accessing ssh client services through C libraries (mingw-w64)
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libssh.org/
 	arch = any
 	license = LGPL
@@ -17,10 +17,12 @@ pkgbase = mingw-w64-libssh
 	source = https://red.libssh.org/attachments/download/168/libssh-0.7.2.tar.asc
 	source = mingw-as-unix.patch
 	source = mingw-DATADIR-conflict.patch
+	source = mingw-pkgconfig.patch
 	md5sums = 5d7d468937649a6dfc6186edfff083db
 	md5sums = SKIP
 	md5sums = fc03637960f420837ad506892b444986
 	md5sums = 7be13e00d27ce77f862012ee0654019b
+	md5sums = 500031299c94117c62526601ec966f1e
 
 pkgname = mingw-w64-libssh
 

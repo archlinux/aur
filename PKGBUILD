@@ -7,7 +7,7 @@
 
 pkgname=mingw-w64-libssh
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="http://www.libssh.org/"
 license=('LGPL')
@@ -20,11 +20,13 @@ options=(!strip !buildflags staticlibs)
 source=(https://red.libssh.org/attachments/download/177/libssh-${pkgver}.tar.xz
         https://red.libssh.org/attachments/download/168/libssh-${pkgver}.tar.asc
         mingw-as-unix.patch
-        mingw-DATADIR-conflict.patch)
+        mingw-DATADIR-conflict.patch
+        mingw-pkgconfig.patch)
 md5sums=('5d7d468937649a6dfc6186edfff083db'
          'SKIP'
          'fc03637960f420837ad506892b444986'
-         '7be13e00d27ce77f862012ee0654019b')
+         '7be13e00d27ce77f862012ee0654019b'
+         '500031299c94117c62526601ec966f1e')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -38,6 +40,7 @@ prepare() {
 
   patch -p1 -i ${srcdir}/mingw-as-unix.patch
   patch -p1 -i ${srcdir}/mingw-DATADIR-conflict.patch
+  patch -p1 -i ${srcdir}/mingw-pkgconfig.patch
 }
 
 build() {
