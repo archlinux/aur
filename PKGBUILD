@@ -9,7 +9,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=2.8.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC and opencl)"
 arch=('i686' 'x86_64')
@@ -42,7 +42,8 @@ sha256sums=('e2ed5ab28dee1af94336739173eb0019afc21a54e38a96f4e3208e94a07866e2'
             '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $_pkgbasename-$pkgver
+
   patch -p1 -i ../ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
 }
 
