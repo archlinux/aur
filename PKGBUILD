@@ -44,7 +44,12 @@ depends=("zarafa-libical>=${pkgver}"
 	 'kyotocabinet'
          'krb5'
          'mariadb')
-makedepends=('gcc<5.0.0')
+makedepends=('gcc<=4.9.2'
+             'gcc-libs<=1.58.0'
+             'binutils<=2.25'
+             'boost<=1.58.0'
+             'boost-libs<=1.58.0'
+             'pkg-config<=0.28')
 optdepends=('zarafa-webaccess'
 	    'zarafa-webapp'
 	    'sabre-zarafa'
