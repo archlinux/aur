@@ -1,0 +1,36 @@
+pkgbase = dasom-jeongeum-git
+	pkgdesc = dasom-jeongeum is a Korean engine based on libhangul
+	pkgver = 268.b5a8524
+	pkgrel = 1
+	url = https://github.com/dasom-im/dasom-jeongeum
+	install = dasom-jeongeum-git.install
+	arch = any
+	license = GNU LGPL v3
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = qt4
+	makedepends = qt5-base
+	makedepends = libhangul
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = glib2
+	makedepends = libappindicator-gtk3
+	makedepends = git
+	makedepends = librsvg
+	depends = dasom-git
+	depends = gtk2
+	depends = gtk3
+	depends = qt4
+	depends = qt5-base
+	depends = libhangul
+	depends = xorg-server-utils
+	depends = glib2
+	depends = libappindicator-gtk3
+	optdepends = dconf-editor: For Editing Dasom IM Config
+	conflicts = dasom-jeongeum
+	options = !buildflags
+	source = dasom-jeongeum::git+https://github.com/dasom-im/dasom-jeongeum.git
+	md5sums = SKIP
+
+pkgname = dasom-jeongeum-git
+
