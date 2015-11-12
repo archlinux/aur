@@ -1,17 +1,16 @@
 # Maintainer: Score_Under <seejay.11@gmail.com>
 _pkgname=ksm_preload
-pkgname=$_pkgname-git
+pkgname=lib32-$_pkgname-git
 pkgver=0.10.4.r254cc3b
 pkgrel=2
 pkgdesc='Library which allows legacy applications to use Kernel Same-page Merging'
 url=http://vleu.net/ksm_preload/
-arch=(i686 x86_64)
+arch=(x86_64)
 license=GPL3
-source=("git+https://github.com/unbrice/$_pkgname.git"
-        ksm-wrapper)
-optdepends=('sh: ksm-wrapper script')
-sha256sums=('SKIP'
-            '348c6c707eef3f6efed5896492faa6482ad8fe964a0eab8eec8fec1217069610')
+source=("git+https://github.com/unbrice/$_pkgname.git")
+sha256sums=(SKIP)
+depends=(lib32-glibc)
+makedepends=(gcc-multilib)
 
 cdgit() { cd -- "$_pkgname"; }
 
@@ -25,14 +24,17 @@ pkgver() {
 }
 
 build() {
+    export CC="${CC:-gcc} -m32"
+    export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
+
     cdgit
     autoreconf -is
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --libdir=/usr/lib32
     make
 }
 
 package() {
-    install -m755 -Dt "$pkgdir/usr/bin" ksm-wrapper
     cdgit
     make install DESTDIR="$pkgdir"
+    rm -rf -- "${pkgdir:?}/usr/share"
 }
