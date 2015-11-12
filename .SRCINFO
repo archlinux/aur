@@ -1,6 +1,6 @@
 pkgbase = youtube-dl-git
 	pkgdesc = A small command-line program to download videos from YouTube.com and a few more sites
-	pkgver = 2015.11.02.r46.g71bb016
+	pkgver = 2015.11.10.r22.gcf5881f
 	pkgrel = 1
 	url = http://rg3.github.io/youtube-dl
 	arch = any
