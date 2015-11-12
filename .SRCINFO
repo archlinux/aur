@@ -1,0 +1,17 @@
+pkgbase = sent
+	pkgdesc = Simple plaintext presentation tool
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://tools.suckless.org/sent
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxft
+	depends = fontconfig
+	depends = libpng
+	source = git://git.suckless.org/sent#tag=0.1
+	sha256sums = SKIP
+
+pkgname = sent
+
