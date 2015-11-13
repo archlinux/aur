@@ -5,7 +5,7 @@
 
 pkgname=pebble-sdk
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
 arch=('i386' 'x86_64')
@@ -38,7 +38,8 @@ depends=('arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'arm-none-eabi-binutils'
          'python2-pygeoip'
          'python2-dateutil'
          'python2-wsgiref')
-optdepends=('qemu: Emulator support')
+optdepends=('qemu: Emulator support'
+            'dtc: Emulator support')
 conflicts=('pebble-sdk-beta')
 source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-${pkgver/_/-}.tar.gz"
         'pebble-sdk.install'
