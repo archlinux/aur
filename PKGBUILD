@@ -29,7 +29,7 @@ build() {
   fi
 
   mkdir "${srcdir}/build" && cd "${srcdir}/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_WEBKIT_4=ON -DWITH_LIBUNITY=OFF ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_WEBKIT_4=ON -DWITH_LIBUNITY=OFF -DWITH_VILISTEXTUM=OFF ..
   make
 }
 
