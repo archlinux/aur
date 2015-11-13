@@ -7,7 +7,7 @@ pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
 arch=('x86_64')
 license=('GPL3')
-depends=('python-magic' 'python-libarchive-c')
+depends=('python-magic' 'python-libarchive-c' 'python-setuptools')
 optdepends=(
   'acl: access control list utilities support'
   'binutils: binary utilities support'
@@ -30,7 +30,7 @@ optdepends=(
   'vim: Vi IMproved (xxd) utilities support'
   'xz: XZ and LZMA utilities support'
 )
-makedepends=('git' 'python-setuptools')
+makedepends=('git')
 checkdepends=(
   'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'cpio' 'java-runtime' 'fontforge' 'gettext' 'ghc' 'gnupg' 'mono-tools'
   'poppler' 'sqlite' 'squashfs-tools' 'unzip' 'gzip' 'tar' 'vim' 'xz')
@@ -42,6 +42,11 @@ sha512sums=('SKIP')
 pkgver() {
   cd ${pkgname}
   printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  sed '/python-magic/d' -i setup.py
 }
 
 build() {
