@@ -1,7 +1,7 @@
 pkgbase = lazpaint-gtk2
 	pkgdesc = Image editor, like PaintBrush or Paint.Net, written in Lazarus (Free Pascal).
 	pkgver = 6.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/lazpaint/
 	install = lazpaint.install
 	arch = i686
@@ -16,22 +16,22 @@ pkgbase = lazpaint-gtk2
 	conflicts = lazpaint-qt4
 	source = http://downloads.sourceforge.net/project/lazpaint/src/lazpaint6.4.1_src.zip
 	source = http://downloads.sourceforge.net/project/lazpaint/src/inet0.6.6.zip
-	source = http://downloads.sourceforge.net/project/lazpaint/src/bgrabitmap8.5.1.zip
+	source = http://downloads.sourceforge.net/project/lazpaint/src/bgrabitmap8.7.zip
 	source = http://downloads.sourceforge.net/project/bgra-controls/bgra-controls-3.0/bgracontrols-3.6-2015-05-02.zip
 	source = lazpaint.desktop
 	source = lazpaint.png
 	source = language_path_fix.patch
-	source = bgrabitmap_disable_optimization.patch
-	source = bgrabitmap_fix_qt_compilation.patch
+	source = bug_22_fix.patch
+	source = bug_28_fix.patch
 	md5sums = 2ac6eaeedbda6332028a659fdcd58045
 	md5sums = 63e9ae30886fdd3ee309a12bdc0ff613
-	md5sums = f276aa0153d8f04288e28ad6a430eff6
+	md5sums = 3d97daf8bb9ff1a2778b63d11f57e528
 	md5sums = f9c699fc31221355defef022cfb41ef7
 	md5sums = e6f4f8c4d9456b21ed4a25d7b775fec4
 	md5sums = 8f26062ad1e3222d375201d96341716c
 	md5sums = 432a9cea4a7bde018869b5a2ee5af7c3
-	md5sums = ac1568044af330d53da5d4b27797dbf7
-	md5sums = 3349a78f598d8e5ef4a753d3fb3f75b1
+	md5sums = 20c12644e674bb612cc4fd41b7ebe9cc
+	md5sums = e24a3d1bb7149beba4122a0fb86dae81
 
 pkgname = lazpaint-gtk2
 

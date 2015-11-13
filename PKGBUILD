@@ -4,9 +4,9 @@ pkgname=lazpaint-gtk2
 _pkgname=lazpaint
 pkgver=6.4.1
 _inetver=0.6.6
-_bgrabitmapver=8.5.1
+_bgrabitmapver=8.7
 _bgracontrolsver=3.6-2015-05-02
-pkgrel=2
+pkgrel=3
 pkgdesc='Image editor, like PaintBrush or Paint.Net, written in Lazarus (Free Pascal).'
 arch=(i686 x86_64)
 url='http://sourceforge.net/projects/lazpaint/'
@@ -23,29 +23,32 @@ source=(http://downloads.sourceforge.net/project/${_pkgname}/src/${_pkgname}${pk
         ${_pkgname}.desktop
         ${_pkgname}.png
         language_path_fix.patch
-        bgrabitmap_disable_optimization.patch
-        bgrabitmap_fix_qt_compilation.patch)
+        bug_22_fix.patch
+        bug_28_fix.patch)
 md5sums=(2ac6eaeedbda6332028a659fdcd58045
          63e9ae30886fdd3ee309a12bdc0ff613
-         f276aa0153d8f04288e28ad6a430eff6
+         3d97daf8bb9ff1a2778b63d11f57e528
          f9c699fc31221355defef022cfb41ef7
          e6f4f8c4d9456b21ed4a25d7b775fec4
          8f26062ad1e3222d375201d96341716c
          432a9cea4a7bde018869b5a2ee5af7c3
-         ac1568044af330d53da5d4b27797dbf7
-         3349a78f598d8e5ef4a753d3fb3f75b1)
+         20c12644e674bb612cc4fd41b7ebe9cc
+         e24a3d1bb7149beba4122a0fb86dae81)
 _ws=gtk2
 
 prepare() {
   cd ${srcdir}
 
   patch -p0 < language_path_fix.patch
-  # http://sourceforge.net/p/lazpaint/bugs/20/
-  patch -p0 < bgrabitmap_disable_optimization.patch
-  # http://sourceforge.net/p/lazpaint/bugs/21/
-  patch -p0 < bgrabitmap_fix_qt_compilation.patch
 
-  mkdir config
+  # http://sourceforge.net/p/lazpaint/bugs/22/
+  patch -p0 < bug_22_fix.patch
+
+  # http://sourceforge.net/p/lazpaint/bugs/28/
+  cd ${srcdir}/bgrabitmap${_bgrabitmapver}
+  patch -p1 < ${srcdir}/bug_28_fix.patch
+
+  mkdir ${srcdir}/config
 }
 
 build() {
