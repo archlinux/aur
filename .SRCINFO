@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ultimate-edition
 	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
-	pkgver = 15.0
+	pkgver = 15.0.1
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = intellij-idea-ultimate-edition
 	backup = usr/share/intellij-idea-ultimate-edition/bin/idea.vmoptions
 	backup = usr/share/intellij-idea-ultimate-edition/bin/idea64.vmoptions
 	backup = usr/share/intellij-idea-ultimate-edition/bin/idea.properties
-	source = https://download.jetbrains.com/idea/ideaIU-15.0.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIU-15.0.1.tar.gz
 	source = intellijidea.sh
 	source = jetbrains-idea.desktop
-	sha256sums = 4a66c46e3100aa8be9f574491334204b56b8bcfc5699ae680497b6f92f8688c3
+	sha256sums = 1f4c6f55eeb0ce08f697008935c5b7356e74a85dfaad00f6521670b8f5c6862f
 	sha256sums = 69f9e675d2fc5fe1c02e281367a38789a5005afc3d6a3e0cd08d099f10057b62
 	sha256sums = 83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b
 
