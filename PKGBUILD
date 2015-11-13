@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=counterblock
-pkgver=1.2.0.BETA
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Extended functionality for Counterparty"
 arch=('any')
@@ -20,7 +20,7 @@ depends=('cython2'
          'python2-dateutil'
          'python2-flask'
          'python2-gevent'
-         'python2-geventhttpclient-git'
+         'python2-geventhttpclient'
          'python2-gevent-socketio'
          'python2-gevent-websocket'
          'python2-grequests-git'
@@ -32,6 +32,7 @@ depends=('cython2'
          'python2-pycoin'
          'python2-pygeoip'
          'python2-pymongo'
+         'python2-pytest'
          'python2-python-bitcoinlib'
          'python2-pyzmq'
          'python2-redis'
