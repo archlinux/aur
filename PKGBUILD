@@ -65,43 +65,43 @@ _BFQ_enable_=
 pkgbase=linux-bfs
 pkgname=('linux-bfs' 'linux-bfs-headers' 'linux-bfs-docs')
 _kernelname=-bfs
-_srcname=linux-4.1
-pkgver=4.1.13
+_srcname=linux-4.3
+pkgver=4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://ck-hack.blogspot.de"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
-_bfsrel=464
-_bfspatch="4.1-sched-bfs-${_bfsrel}.patch"
+_bfsrel=465
+_bfspatch="4.3-sched-bfs-${_bfsrel}.patch"
 _bfqrel=v7r8
-#_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-${_bfqrel}"
-_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.1.0-${_bfqrel}/"
+#_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.3.0-${_bfqrel}"
+_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.3.0-${_bfqrel}/"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "http://ck.kolivas.org/patches/bfs/4.0/4.1/${_bfspatch}"
-        "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck2/patches/hz-default_1000.patch"
-        "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck2/patches/hz-no_default_250.patch"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.1.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.1.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.1.0.patch"
+        #"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "http://ck.kolivas.org/patches/bfs/4.0/4.3/${_bfspatch}"
+        "http://ck.kolivas.org/patches/4.0/4.3/4.3-ck1/patches/hz-default_1000.patch"
+        "http://ck.kolivas.org/patches/4.0/4.3/4.3-ck1/patches/hz-no_default_250.patch"
+        "http://ck.kolivas.org/patches/bfs/4.0/4.3/Pending/bfs465-nohz-buildfix.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.3.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.3.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.3.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfs.preset'
         'change-default-console-loglevel.patch'
-        'config' 'config.x86_64'
-        'bfs464-cond_resched_lock_and cond_resched_softirq.patch')
+        'config' 'config.x86_64')
         
 prepare() {
     cd ${_srcname}
 
      ### Add upstream patch
-         msg "Add upstream patch"
-         patch -Np1 -i "${srcdir}/patch-${pkgver}"
+         #msg "Add upstream patch"
+         #patch -Np1 -i "${srcdir}/patch-${pkgver}"
          
      ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
      # remove this when a Kconfig knob is made available by upstream
@@ -110,7 +110,7 @@ prepare() {
          patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
  
      ### Patch source with BFS 
-         msg "Patching source with BFS v0.464"
+         msg "Patching source with BFS v0.465"
          patch -Np1 -i "${srcdir}/${_bfspatch}"
     
      ### Patch source with ck-hz patches
@@ -120,9 +120,9 @@ prepare() {
          patch -Np1 -i "$p"
          done 
          
-     ### Patch source with bfs464 fix patches
-         msg "Patching source with bfs464 fix patches"
-         for p in "${srcdir}"/bfs464*.patch; do
+     ### Patch source with bfs465 fix patches
+         msg "Patching source with bfs465 fix patches"
+         for p in "${srcdir}"/bfs465*.patch; do
          msg " $p"
          patch -Np1 -i "$p"
          done  
@@ -479,22 +479,20 @@ package_linux-bfs-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
+sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056d4ddd9c0f129f570f5d1f6df5c20385aec5f6a2e0755edc1e2f5f93e2c6bc'
             'SKIP'
-            '0fa60b9fceb6103c11ed1df8d4f264d1c4efcd75da258709f1d0a6813f8117977fa2279b36da22bd69cc2bc808b092207a438c2e80a65a988f4c72363a605832'
-            'SKIP'
-            '9ff7279db6a976c495ba1e09466d688d84f0ef9cca2912e8aeb12f68070e9af012a3c3558e25daf9459fce7d27dc9a82f8fe58f3499164d42ea4561ea62391b5'
-            '205059a0ac0fff34298695685a2de8806193b45a270e5818dd942d7c2d07f1d116eacf69dbaf4c99fe342d56b4f43ee4d2b3675a706724ed18cbc39618865d26'
-            'f31469c53e1ae5d1a4caa67b3f6e51a9699c74aadb8f9468189baf6695c00a8d7b151625822da293a2b8344b94c2ba0e191f7a713825111af2b6690d2e5cacee'
-            '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
-            'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
-            '1db70764577d3e8d5e65351bdef7f2cf61d2546138a6342c4bf4e5e6738b8e06b5291a9a0c12f9fc2c8cb620048006d05474cf75902cb26e7504038150cf0a44'
+            '738bf71fa75efdd41e1808a1ed2863b75593a92b89b9d84fc66c3a97315d2dd9612ab9311197953c2ac127e080e003c3951fd9d32cd06f49b0306c1d22fff39b'
+            'e477785814a62cb848a4e923371f24bf393137aa29660d204f42702b3aaaf1fceefbfc6b0d9bfbfff7ec6efb629b4159712b8840fee10679e6eec2d368aa270d'
+            '3439880f70e553f44533c2c428b57b1677cc4b17a7eac7dfbc34f68efa82f2ac0cec13af65ae4d0dbcdf4a5304b5e5d4a3f5727a4ca00079868a3e2443229818'
+            'd19cef3c335d8ab750977ad7cbc699a9e8dfc4e30fe1ccb4e48151fbca238c9c7f103f658fbeb5f291744c8fc11b990a55d5a6a314f0c96ff6de66e766c1a3d8'
+            'e31394f8addbfa7d46eaa6ebf4b848a0f13cbfc8d41f3741d2512c7728db839fa67f1a138cc0b5b88a85f0b7c285522e166ad2e349bebd9f4c3f4a187235b6e3'
+            '593c8217c83a46faffa2b0639b3b8a17fd2cd68c160d716e9a931c6e114300384f68f6e98bb50a99d17bf3343ff694ce3edca627505813bb08a37f67ba525eee'
+            '76e63b7c983d695a420fbe58a5d29063722a413a540160e63789d4dc4d6ac59c8cd15a6583ee4c8bcef965ab9512d4e69a4c1dac207bbe954b49f7356c90bdf4'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '84a7c3b96959cb2dd7687b968ba4522b62919529e2c0e166c0369e6cf77ff0e7ee387ca22a0980fc37dd100812205ab2c17b6c4d5dda51958ac1e66693f22925'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '5d0bfad9873298875cae825a7410ebf271428511e4b103d7acf737c0c9129a625345126c01e6df30d62b161f9b25cc128dfcd3bb198fbad4e42d9154e9eaeab9'
-            'c54d2d76e695455b11b8ed2031eb50e3f65814a129728150b502804eb74e2dadc5464db9ca7d376ab78aa0ed7fa0929ad1cd694a0ed4f34502918eb86a20113a'
-            'a9b96c0ab27738f6406732939d821271581641ba044c2fd939832189beeb43bb8729b784d101b1976b87bbb74fd7a2fb4ceb45176f536eadc6d06a8935e911c7')
+            '92b292ec1a058fae85b788131466d7a5a81205c4cedecb81276eb993a2b5fc7318c330c1cf69bc1df7b30315c6fe282cd0d7454f992d162fdb8b5795d77ca62e'
+            '1463e651ff4215a1eabb93a50fc524bf406ddbd5da43babf786440a86e6d5f66d59870d1dab3ffe2486d994d8e414b1d40fe885322b7c9664f9cbd724e5704f8')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
