@@ -1,5 +1,5 @@
 pkgname=phototonic
-pkgver=1.6.17
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Image Viewer and Organizer"
 arch=('i686' 'x86_64')
