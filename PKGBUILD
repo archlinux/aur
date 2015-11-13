@@ -3,8 +3,8 @@
 # Contributor: Beej Jorgensen <beej@beej.us>
 
 pkgname=python2-pypng
-pkgver=0.0.16
-pkgrel=2
+pkgver=0.0.18
+pkgrel=1
 pkgdesc="Python 2 module to decode and encode PNG files"
 arch=('any')
 url="https://github.com/drj11/pypng"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python2')
 makedepends=('python2' 'python2-setuptools')
 source=(https://github.com/drj11/pypng/archive/pypng-${pkgver}.tar.gz)
-sha1sums=('656da1a46b82689154760b1863d3677472321c39')
+sha1sums=('160bf4105b8870032e0f7b0a02ed3d9c611133f4')
 
 package() {
   cd "$srcdir/pypng-pypng-$pkgver"
