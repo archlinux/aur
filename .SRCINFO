@@ -1,14 +1,14 @@
 pkgbase = qaccordion
 	pkgdesc = A Qt Widget that provides an Accordion control
-	pkgver = 0.2
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/crapp/qaccordion
 	arch = any
 	license = GPL
 	makedepends = cmake
 	depends = qt5-base
-	source = https://github.com/crapp/qaccordion/archive/v0.2.tar.gz
-	md5sums = 5b23bd85cb1e1d22557f33c5001dbc14
+	source = https://github.com/crapp/qaccordion/archive/v0.2.2.tar.gz
+	md5sums = b62f1aa62d6b9309856582f3348b8824
 
 pkgname = qaccordion
 

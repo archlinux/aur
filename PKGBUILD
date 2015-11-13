@@ -1,7 +1,7 @@
 
 # Maintainer: Christian Rapp <0x2a@posteo.org>
 pkgname=qaccordion
-pkgver=0.2
+pkgver=0.2.2
 pkgrel=1
 epoch=
 pkgdesc="A Qt Widget that provides an Accordion control"
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/crapp/qaccordion/archive/v0.2.tar.gz")
+source=("https://github.com/crapp/qaccordion/archive/v0.2.2.tar.gz")
 noextract=()
-md5sums=('5b23bd85cb1e1d22557f33c5001dbc14')
+md5sums=('b62f1aa62d6b9309856582f3348b8824')
 validpgpkeys=()
 
 prepare() {
