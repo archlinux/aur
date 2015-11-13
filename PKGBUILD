@@ -2,9 +2,6 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: reflexing <reflexing@reflexing.ru>
 
-# This PKGBUILD is maintained on github:
-# https://github.com/michaellass/AUR
-
 # Instructions were copied from ttf-ms-win8 and slightly modified:
 #
 # BUILD INSTRUCTIONS:
@@ -14,8 +11,8 @@
 # system is prohibited by EULA (although in certain countries EULA is invalid).
 # Please consult Microsoft license before using fonts.
 #
-# You can acquire fonts either from an installed Windows 10 system
-# or install medium.
+# You can acquire fonts either from an installed and up-to-date Windows 10
+# system or the most recent install medium.
 #
 # On the installed Windows 10 system fonts are usually located in
 #       C:\Windows\Fonts
@@ -37,12 +34,13 @@
 #    Put the following script together with previously extracted
 #    'install.wim' and execute:
 #
-#       wimextract install.wim 1 /Windows/{Fonts/"*".{ttf,ttc},System32/license.rtf} --dest-dir fonts
+#       wimextract install.wim 1 /Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf} --dest-dir fonts
 #
 #    Fonts and license will be located in the 'fonts' dir.
 #
-# You need the files listed in the source=() array. Place them in the same
-# directory as this PKGBUILD file, then run makepkg.
+# You need the files listed in the _ttf_ms_win10[_*] arrays, depending on
+# what packages you want to build. Place them in the same directory as this
+# PKGBUILD file, then run makepkg.
 
 pkgbase=ttf-ms-win10
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
