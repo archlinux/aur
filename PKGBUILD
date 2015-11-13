@@ -4,13 +4,13 @@
 
 pkgname=makemkv-libaacs
 pkgver=1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Enable libaacs emulation from MakeMKV"
 arch=('any')
 license=('none')
 url="http://www.makemkv.com/forum2/viewtopic.php?f=3&t=7009"
-depends=('makemkv' 'qt4' 'ffmpeg')
+depends=('makemkv')
 provides=('libaacs' 'libbdplus')
 conflicts=('libaacs' 'libaacs-git' 'libbdplus' 'libdplus-git')
 
