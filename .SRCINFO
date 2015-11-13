@@ -1,6 +1,6 @@
 pkgbase = keepassx-http
 	pkgdesc = KeepassX, with eugenesan's merge request for keepasshttp.
-	pkgver = 2.0.beta2.r82.g6337e67
+	pkgver = 2.0.r1
 	pkgrel = 1
 	url = https://github.com/eugenesan/keepassx/tree/http
 	install = keepassx.install
@@ -19,6 +19,7 @@ pkgbase = keepassx-http
 	depends = qt5-x11extras
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
+	depends = qjson
 	depends = libmicrohttpd
 	conflicts = keepassx-svn
 	conflicts = keepassx
@@ -28,7 +29,7 @@ pkgbase = keepassx-http
 	conflicts = keepassx-http
 	conflicts = keepassx-git
 	options = !emptydirs
-	source = git+https://github.com/eugenesan/keepassx.git#branch=http
+	source = git+https://github.com/eugenesan/keepassx.git#branch=2.0-http-totp-beta2
 	md5sums = SKIP
 
 pkgname = keepassx-http
