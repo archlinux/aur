@@ -1,0 +1,16 @@
+pkgbase = ensenso-sdk
+	pkgdesc = Ensenso SDK and tools
+	pkgver = 1.3.167
+	pkgrel = 1
+	url = http://ensenso.com
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = glu
+	depends = libsm
+	optdepends = ueyed: for capturing from live cameras
+	source = http://dl.ensenso.de/public/Software/EnsensoSDK/EnsensoSDK-1.3.167-x64.tar.bz2
+	sha512sums = bac71a28b30135c5960c12c2d00b0392fda2587851c3f57136a51caf90ff25033023461fc1cee51bd793dd3e66bb3d2d82f62cb9be07c1371ca8d7859b8c5ffa
+
+pkgname = ensenso-sdk
+
