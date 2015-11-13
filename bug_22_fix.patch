@@ -1,0 +1,12 @@
+diff -rupN lazpaint/utranslation.pas lazpaint_p/utranslation.pas
+--- lazpaint/utranslation.pas	2014-08-12 16:38:38.000000000 +0200
++++ lazpaint_p/utranslation.pas	2015-09-10 22:39:19.309513345 +0200
+@@ -32,7 +32,7 @@ procedure TranslateLazPaint(AConfig: TIn
+ 
+ implementation
+ 
+-uses Forms, FileUtil, LCLProc, LResources, DefaultTranslator, Translations, LazPaintType;
++uses Forms, FileUtil, LCLProc, LResources, LCLTranslator, Translations, LazPaintType;
+ 
+ {$ifdef Darwin}
+ function GetResourcesPath(): string;
