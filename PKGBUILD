@@ -1,8 +1,8 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=polyphone
-pkgver=1.6
-pkgrel=3
+pkgver=1.7
+pkgrel=1
 pkgdesc="Graphical user interface for editing sf2 and sfz files"
 arch=('i686' 'x86_64')
 url="http://www.polyphone.fr/"
@@ -14,14 +14,14 @@ source=("http://sourceforge.net/projects/$pkgname/files/$pkgname%20releases/$pkg
         "$pkgname.desktop"
         "$pkgname.mime")
 install="$pkgname.install"
-md5sums=('b1b8c0d7b6de8f12a7a9cbc106cba733'
+md5sums=('8031470d1561a7e216d00eecb6a6f080'
          'c796f82cd0ab742741de5c607cd87169'
          'f0808717b27757c80b508f6114a535ce')
 
 prepare() {
   cd "$srcdir/trunk"
   sed -i \
-    -e 's/#DEFINES += USE_LOCAL_LIBRARIES/DEFINES += USE_LOCAL_LIBRARIES/g' \
+    -e 's/^#DEFINES += USE_LOCAL/DEFINES += USE_LOCAL/g' \
     -e 's/__LINUX_ALSASEQ__/__LINUX_ALSA__ __UNIX_JACK__/g' \
     polyphone.pro
 }
