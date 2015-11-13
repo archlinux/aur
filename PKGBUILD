@@ -4,8 +4,8 @@
 
 pkgbase=linux-bcm4350               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.2
-pkgver=4.2.5
+_srcname=linux-4.3
+pkgver=4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -14,8 +14,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -23,12 +23,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         '0001-bcm4350.patch')
 
-sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            'b631eb4e8b4911b31111b0838e00f7c4a1b7689abcd2233609831b638493f4fb'
-            'SKIP'
-            '6921399a0e304f6c64cff17226ce3f20ebe8194f14ebcd318989f2515d8248ad'
-            'c3be602e0ce609b5fe5af2e631b01c8fba376a0c434206deca3d101b62685262'
+            '596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16'
+            '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '7a3763a7dcdfada7edda636860ee125e270a9542d70c496edf9850c02a25baad')
@@ -43,7 +41,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -53,6 +51,7 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
+  # add Broadcom 4350 wifi support
   patch -p1 -i "${srcdir}/0001-bcm4350.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
@@ -94,7 +93,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with a backported patch for Broadcom 4350 support"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')

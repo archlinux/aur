@@ -1,8 +1,8 @@
 # arg 1:  the new package version
 # arg 2:  the old package version
 
-KERNEL_NAME=-bcm9350
-KERNEL_VERSION=4.2.5-1-bcm9350
+KERNEL_NAME=-bcm4350
+KERNEL_VERSION=4.3.0-1-bcm4350
 
 post_install () {
   # updating module dependencies
