@@ -3,9 +3,9 @@
 _gitname=Plat
 _pkgname=Plat
 pkgname=('plat-icon-theme')
-pkgver=2.1
-pkgrel=1
-pkgdesc="A flat design icon theme with long shadow by MichaelTiebesl"
+pkgver=3.2
+pkgrel=2
+pkgdesc="Plat is a flat icon theme. It has material design colors and comes with a long shadow."
 arch=('any')
 makedepends=('git')
 url="https://github.com/MichaelTiebesl/${_gitname}"
