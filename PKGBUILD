@@ -38,7 +38,8 @@ package() {
 	install -dm 755 \
 		"${pkgdir}/opt/${pkgname}" \
 		"${pkgdir}/usr/bin/" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/"
+		"${pkgdir}/usr/share/licenses/${pkgname}/" \
+		"${pkgdir}/usr/share/applications/"
 
 	wget "https://www.jetbrains.com/pycharm/buy/license.pdf"
 	install -m644 license.pdf "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
