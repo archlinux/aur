@@ -1,9 +1,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mydumper
-pkgver=0.6.2
-_myver=5.6.24
-pkgrel=3
+pkgver=0.9.1
+_myver=5.6.27
+pkgrel=1
 pkgdesc="A high performance MySQL backup tool."
 arch=("i686" "x86_64")
 url="https://launchpad.net/mydumper"
@@ -89,7 +89,7 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('fa28563e8967752828954c5d81e26ef50aad9083d50a977bf5733833b23e3330'
-            '37e27305b67d76883c5902dce59c89d596beee9dca7dbadd4a2e117f8101dfeb'
+sha256sums=('aefab5dc4192acb043d685b6bb952c87557fbea5e083b8547c68ccfec878171f'
+            '8356bba23f3f6c0c2d4806110c41d1c4d6a4b9c50825e11c5be4bbee2b20b71d'
             'e6b7d938cc5882cad564103f6e367c1babaccb624587c96e9e6c349e58e7ede4'
             '9b35858057d82948579f43d8b95605a88d80580412bf5ed1daf992c092ca4edf')
