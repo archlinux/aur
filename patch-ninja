@@ -1,9 +1,0 @@
-14c14
-< ldflags = -ltermcap -lm -lz -Wl,-O1,--sort-common,--as-needed,-z,relro
----
-> ldflags = -lncurses -lm -lz -Wl,-O1,--sort-common,--as-needed,-z,relro
-93a94,97
-> 
-> rule script
->     command = $script $in > $out
->     description = SCRIPT $script $in
