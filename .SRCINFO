@@ -1,13 +1,13 @@
 pkgbase = python2-tifffile
 	pkgdesc = Read and write image data from and to TIFF files
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/tifffile
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.python.org/packages/source/t/tifffile/tifffile-0.6.2.tar.gz
+	source = https://pypi.python.org/packages/source/t/tifffile/tifffile-0.7.0.tar.gz
 	sha256sums = 9c2b700d80ab2ec56d748216cdd32f09986e54c908aa47efc226d4101350fbd6
 
 pkgname = python2-tifffile
