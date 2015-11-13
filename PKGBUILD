@@ -3,11 +3,11 @@
 
 pkgname=python2-grequests-git
 pkgver=20140618
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to use Requests with Gevent to make asyncronous HTTP Requests easily"
 arch=('any')
 depends=('python2' 'python2-greenlet')
-makedepends=('cython2' 'git' 'python2-setuptools')
+makedepends=('git' 'python2-setuptools')
 url="https://github.com/natecode/grequests"
 license=('ISC')
 source=(${pkgname%-git}::git+https://github.com/natecode/grequests#commit=ea00e193074fc11d71b4ff74138251f6055ca364)
