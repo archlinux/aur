@@ -2,7 +2,7 @@
 
 pkgname=toontown-rewritten
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An MMO originally by Disney, rewritten. An account is needed to play."
 arch=("x86_64")
 url=""

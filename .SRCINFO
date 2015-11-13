@@ -1,7 +1,7 @@
 pkgbase = toontown-rewritten
 	pkgdesc = An MMO originally by Disney, rewritten. An account is needed to play.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	makedepends = git
 	depends = qt5-base
