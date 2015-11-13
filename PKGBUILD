@@ -28,7 +28,7 @@ makedepends=('cmake'
              'aspell'
              'attr'
              'wget'
-             'boost-libs'
+             'boost'
              #'miniupnpc'
              'jsoncpp'
              'qtscriptgenerator'
@@ -245,7 +245,8 @@ package_eiskaltdcpp-qt4-git() {
   depends=("eiskaltdcpp-core-git=${pkgver}"
            "eiskaltdcpp-data-git=${pkgver}"
            'aspell'
-           'qtscriptgenerator')
+           'qtscriptgenerator'
+           )
   optdepends=('php: needed for some scripts')
   provides=("eiskaltdcpp-qt4-git=${pkgver}"
             'eiskaltdcpp-qt4')
@@ -260,11 +261,11 @@ package_eiskaltdcpp-qt5-git() {
   pkgdesc="Qt5-based DC and ADC client for EiskaltDC++ core. (GIT Version)"
   depends=("eiskaltdcpp-core-git=${pkgver}"
            "eiskaltdcpp-data-git=${pkgver}"
-           'boost-libs'
            'aspell'
            'qt5-quick1'
            'qt5-multimedia'
-           'desktop-file-utils')
+           'desktop-file-utils'
+           )
   optdepends=('php: needed for some scripts')
   provides=("eiskaltdcpp-qt5-git=${pkgver}"
             'eiskaltdcpp-qt5')
@@ -281,7 +282,8 @@ package_eiskaltdcpp-gtk2-git() {
            "eiskaltdcpp-data-git=${pkgver}"
            'gtk2'
            'libnotify'
-           'desktop-file-utils')
+           'desktop-file-utils'
+           )
   conflicts=('eiskaltdcpp-gtk3-git')
   provides=("eiskaltdcpp-gtk2-git=${pkgver}"
             'eiskaltdcpp-gtk2')
@@ -298,7 +300,8 @@ package_eiskaltdcpp-gtk3-git() {
            "eiskaltdcpp-data-git=${pkgver}"
            'gtk3'
            'libnotify'
-           'desktop-file-utils')
+           'desktop-file-utils'
+           )
   provides=("eiskaltdcpp-gtk3-git=${pkgver}"
             'eiskaltdcpp-gtk3')
   conflicts=('eiskaltdcpp-gtk2'
@@ -313,7 +316,7 @@ package_eiskaltdcpp-daemon-git() {
   depends=("eiskaltdcpp-core-git=${pkgver}"
            "eiskaltdcpp-data-git=${pkgver}"
            'jsoncpp'
-           'boost-libs')
+           )
   provides=("eiskaltdcpp-daemon-git=${pkgver}"
             "eiskaltdcpp-cli-git=${pkgver}"
             'eiskaltdcpp-daemon')
@@ -329,7 +332,8 @@ package_eiskaltdcpp-cli-git() {
            'perl-json'
            'perl-json-rpc'
            'perl-rpc-xml'
-           'perl-term-shellui')
+           'perl-term-shellui'
+           )
   provides=("eiskaltdcpp-cli-git=${pkgver}"
             'eiskaltdcpp-cli')
   conflicts=('eiskaltdcpp-cli')
@@ -354,7 +358,8 @@ package_eiskaltdcpp-data-git() {
   arch=('any')
   pkgdesc="EiskaltDC++ common data files. (GIT Version)"
   depends=('bash'
-           'hicolor-icon-theme')
+           'hicolor-icon-theme'
+           )
   optdepends=('php: needed for some scripts'
               'python: test http server')
   provides=("eiskaltdcpp-data-git=${pkgver}"
