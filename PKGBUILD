@@ -1,7 +1,7 @@
 # Maintainer: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=tshock
-pkgver=4.3.9
+pkgver=4.3.11
 # Because of tag 4.2200 is 4.2.2.1228 and tag 4.2202 is 4.2.2.0224 epoch must be 1
 epoch=1
 pkgrel=1
@@ -11,11 +11,11 @@ url="http://tshock.co/xf/"
 license=("GPL")
 depends=('tmux'
          'mono')
-source=("https://github.com/NyxStudios/TShock/releases/download/v${pkgver}/${pkgname}_${pkgver}.zip"
+source=("https://github.com/NyxStudios/TShock/releases/download/v${pkgver}/${pkgname}_release.zip"
         'tshock.sh'
         'tshock@.service')
 
-sha512sums=('bf211d82ef68bc3a575e4bbf11cd537b7b06b3ebf47a0c867db541dd29fb3327c718547a12cd2cb8c18ed0d626522735338b871719fe1f1b80464bbccc56a386'
+sha512sums=('47659bb9041449e589b5a4081f5734b4142475c7c87655b52fee2000bacfd7a9ba035f4603ee7967eb16bb7509c53f80997e1645c4520884276304824dd322f9'
             'e73ca357516700bbd4ec5e6529320984b81fc7c6abc882181a9a9b3aad32f0d655b7686470fdbf7a953ce1935a79dbed983397aff0bf7ff26a1611dbcca391fb'
             '563ada981c2e08293462485fd85b2c4e0b190c55ed3bcea4139b955f931d970d97c2bd89fba5b190231e9f2adeddd2c385abd11781bf1a98b13b78b8951bf623')
 
