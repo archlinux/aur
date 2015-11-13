@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Cerny <blackvladimir@gmail.com>
 pkgname=kicadlibrarian
-pkgver=1.0.5252
+pkgver=1.1.5365
 pkgrel=1
 pkgdesc="A utility to manage and maintain KiCad libraries with schematic symbols and footprints"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://www.compuphase.com/electronics/kicadlibrarian_en.htm"
 license=('GPL')
 depends=(desktop-file-utils gcc-libs-multilib wxgtk curl libharu)
 source=("http://www.compuphase.com/software/kicadlibrarian-sources.tar.gz")
-md5sums=('833d5b3c314fe9538237fd76aea321aa')
+md5sums=('ab946069d91550da9a47acec602b675c')
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}/src"
