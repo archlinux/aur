@@ -1,14 +1,14 @@
 pkgbase = gmap-gsnap
 	pkgdesc = A Genomic Mapping and Alignment Program for mRNA and EST Sequences, and Genomic Short-read Nucleotide Alignment Program
-	pkgver = 2014.12.17
+	pkgver = 2015.09.29
 	pkgrel = 1
 	url = http://research-pub.gene.com/gmap/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = perl
-	source = http://research-pub.gene.com/gmap/src/gmap-gsnap-2014-12-17.tar.gz
-	md5sums = 3c4fd021abc1a5c23e01bb8fef9b2cd1
+	source = http://research-pub.gene.com/gmap/src/gmap-gsnap-2015-09-29.tar.gz
+	md5sums = e929947ce1cb4f5316d9bddf064b795c
 
 pkgname = gmap-gsnap
 
