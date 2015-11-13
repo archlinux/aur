@@ -3,7 +3,7 @@
 
 pkgname=python2-radicale
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple Calendar Server. Python 2 version."
 arch=any
 url="http://www.radicale.org/"
