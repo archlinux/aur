@@ -11,7 +11,7 @@ pkgbase = abc-hg
 	makedepends = gcc
 	provides = abc
 	conflicts = abc
-	source = hg+ssh://hg@bitbucket.org/alanmi/abc
+	source = hg+https://hg@bitbucket.org/alanmi/abc
 	md5sums = SKIP
 
 pkgname = abc-hg

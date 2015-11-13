@@ -23,7 +23,7 @@ conflicts=('abc')
 provides=('abc')
 md5sums=('SKIP')
 
-source=('hg+ssh://hg@bitbucket.org/alanmi/abc')
+source=('hg+https://hg@bitbucket.org/alanmi/abc')
 
 build() {
   cd $srcdir/$_pkgname
