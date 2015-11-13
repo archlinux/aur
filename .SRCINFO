@@ -10,7 +10,7 @@ pkgbase = pac_manage
 	depends = bash
 	depends = sed
 	source = pac_manage.sh
-	md5sums = 1d6512d6a514eef4d31e7734eb92eabe
+	md5sums = SKIP
 
 pkgname = pac_manage
 
