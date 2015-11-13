@@ -300,22 +300,34 @@ package_clang-svn() {
     # The Clang Static Analyzer is installed in a separate package
     # TODO: Probably there's more elegant way to achieve this.
     rm -rf "${srcdir}/clang-analyzer.tmp"
-    for _dir in \
-        bin \
-        share/man/man1 \
-        share/scan-view
-    do install -m 0755 -d "${srcdir}/clang-analyzer.tmp/${_dir}" ; done
-    for _file in \
-        bin/{Reporter,ScanView,startfile}.py \
-        bin/scan-{build,view} \
-        bin/scanview.css \
-        bin/sorttable.js \
-        share/man/man1/scan-build.1 \
-        share/scan-view/{FileRadar,GetRadarVersion}.scpt \
-        share/scan-view/bugcatcher.ico
-    do mv "${pkgdir}/usr/${_file}" "${srcdir}/clang-analyzer.tmp/${_file}" ; done
-    mv "${pkgdir}/usr/libexec"/{c++,ccc}-analyzer "${srcdir}/clang-analyzer.tmp/bin/"
-    rmdir "${pkgdir}/usr"/{libexec,share/scan-view}
+    install -m 0755 -d \
+        "${srcdir}/clang-analyzer.tmp/usr/bin" \
+        "${srcdir}/clang-analyzer.tmp/usr/share/man/man1" \
+        "${srcdir}/clang-analyzer.tmp/usr/share/scan-view"
+    mv \
+        "${pkgdir}/usr/bin/Reporter.py" \
+        "${pkgdir}/usr/bin/ScanView.py" \
+        "${pkgdir}/usr/bin/startfile.py" \
+        "${pkgdir}/usr/bin/scan-build" \
+        "${pkgdir}/usr/bin/scan-view" \
+        "${pkgdir}/usr/libexec/c++-analyzer" \
+        "${pkgdir}/usr/libexec/ccc-analyzer" \
+        \
+        "${srcdir}/clang-analyzer.tmp/usr/bin/"
+    mv \
+        "${pkgdir}/usr/share/man/man1/scan-build.1" \
+        "${srcdir}/clang-analyzer.tmp/usr/share/man/man1/"
+    mv \
+        "${pkgdir}/usr/share/scan-view/FileRadar.scpt" \
+        "${pkgdir}/usr/share/scan-view/GetRadarVersion.scpt" \
+        "${pkgdir}/usr/share/scan-view/bugcatcher.ico" \
+        "${pkgdir}/usr/share/scan-view/scanview.css" \
+        "${pkgdir}/usr/share/scan-view/sorttable.js" \
+        \
+        "${srcdir}/clang-analyzer.tmp/usr/share/scan-view/"
+    rmdir \
+        "${pkgdir}/usr/libexec" \
+        "${pkgdir}/usr/share/scan-view"
 
     # Clean up documentation
     rm -r "${pkgdir}/usr/share/doc/clang/html/_sources"
@@ -344,8 +356,9 @@ package_clang-analyzer-svn() {
 
     cd "${srcdir}"
 
-    _compile_python_files "${srcdir}/clang-analyzer.tmp/bin"
-    mv "${srcdir}/clang-analyzer.tmp" "${pkgdir}/usr"
+    _compile_python_files "${srcdir}/clang-analyzer.tmp/usr/bin"
+
+    mv "${srcdir}/clang-analyzer.tmp"/* "${pkgdir}"/
 
     sed -i 's|/libexec/|/bin/|' "${pkgdir}/usr/bin/scan-build"
 
