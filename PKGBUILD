@@ -3,7 +3,7 @@
 
 pkgname=ngxtop
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time metrics for nginx server"
 arch=('any')
 url="https://github.com/lebinh/ngxtop"
@@ -13,6 +13,7 @@ depends=(
          'python2-setuptools'
          'python2-pyparsing'
          'python2-tabulate'
+         'python2-docopt'
 )
 source=("http://pypi.python.org/packages/source/n/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('9758ff9c8163024a5a9b30df9fb6eedc')
