@@ -1,7 +1,7 @@
 # Maintainer: Anthony Samartsev <kycok@archlinux.info>
 
 pkgname=pymonopoly-git
-pkgver=0.147.875b600
+pkgver=0.148.e2db8b9
 pkgrel=1
 pkgdesc="Famous monopoly board game (russian variation - 'Manager'). In active development, so currently there's no ability to play"
 arch=('any')
@@ -24,7 +24,6 @@ build() {
 package() {
 	mkdir -p $pkgdir/usr/bin
 	cp ${srcdir}/${pkgname}/pymonopoly_linux.py ${pkgdir}/usr/bin/pymonopoly
-	mkdir -p $pkgdir/usr/lib/pymonopoly
-	cp -r ${srcdir}/${pkgname}/{LIB,settings} ${pkgdir}/usr/lib/pymonopoly
-	mv ${pkgdir}/usr/lib/pymonopoly/LIB/modules/Globals_linux.py ${pkgdir}/usr/lib/pymonopoly/LIB/modules/Globals.py
+	cp -r ${srcdir}/${pkgname}/LIB ${pkgdir}/usr/lib/pymonopoly
+	mv ${pkgdir}/usr/lib/pymonopoly/modules/Globals_linux.py ${pkgdir}/usr/lib/pymonopoly/modules/Globals.py
 }
