@@ -1,7 +1,7 @@
 # Maintainer: William McKIE <mckie.william@hotmail.co.uk>
 pkgname=monogame-git
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source implementation of the Microsoft XNA 4 Framework."
 arch=('any')
 url="http://www.monogame.net/"
@@ -13,10 +13,12 @@ conflicts=('monogame' 'tao-framework' 'tao-framework-svn')
 provides=('monogame')
 source=('git+https://github.com/mono/MonoGame.git'
 		'monogame.pc.in'
+		'mgcb.sh'
 		'monogame-pipeline.sh')
-md5sums=(SKIP
-	 	 'c41ca3ef34fc31b114b77bdff626c5a0'
-		 '46a2caa68e21fd99aa4b30b78ab1a109')
+md5sums=('SKIP'
+         'c41ca3ef34fc31b114b77bdff626c5a0'
+         'a0ff773f5647651148ecb443a29b9ea9'
+         '46a2caa68e21fd99aa4b30b78ab1a109')
 
 prepare() {
 	cd "${srcdir}/MonoGame"
@@ -51,6 +53,7 @@ package() {
 	find ./Templates -type f -exec install -Dm644 {} "${pkgdir}/usr/lib/monogame/"{} \;
 
 	install -Dm644 "${srcdir}/MonoGame/LICENSE.txt" "${pkgdir}/usr/share/licenses/monogame/LICENSE.txt"
+	install -Dm755 "${srcdir}/mgcb.sh" "${pkgdir}/usr/bin/mgcb"
 	install -Dm755 "${srcdir}/monogame-pipeline.sh" "${pkgdir}/usr/bin/monogame-pipeline"
 	install -Dm644 "${srcdir}/monogame.pc.in" "${pkgdir}/usr/lib/pkgconfig/monogame.pc"
 	sed -i "s,@VERSION@,v${pkgver}," "${pkgdir}/usr/lib/pkgconfig/monogame.pc"
