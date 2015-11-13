@@ -1,7 +1,7 @@
 # Maintainer: Hannes Graeuler < hgraeule [at] uos [dot] de >
 pkgname=sfcgal
 pkgver=1.2.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models"
 arch=(i686 x86_64)
 url="http://oslandia.github.io/SFCGAL/index.html"
