@@ -51,5 +51,5 @@ package() {
   cd $pkgdir/usr/bin
   ln -s icont icon
   install -D -m644 $srcdir/LICENSE \
-    $pkgdir/usr/share/licenses/icon/LICENSE
+    $pkgdir/usr/share/licenses/icon-git/LICENSE
 }
