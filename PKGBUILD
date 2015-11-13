@@ -3,30 +3,34 @@
 
 pkgname=nvidia-bfs
 pkgver=355.11
-_extramodules=extramodules-4.1-bfs
-pkgrel=1
+_extramodules=extramodules-4.3-bfs
+pkgrel=6
 _pkgdesc="NVIDIA drivers for linux-bfs."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-bfs>=4.1' 'linux-bfs<4.2' "nvidia-libgl" "nvidia-utils=${pkgver}")
-makedepends=('linux-bfs-headers>=4.1' 'linux-bfs-headers<4.2')
+depends=('linux-bfs>=4.3' 'linux-bfs<4.4' "nvidia-libgl" "nvidia-utils=${pkgver}")
+makedepends=('linux-bfs-headers>=4.3' 'linux-bfs-headers<4.4')
 conflicts=('nvidia-bfs-304xx' 'nvidia-bfs-340xx')
 license=('custom')
 install=nvidia-bfs.install
 options=(!strip)
-source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('16d143ccafe99328a2ca8e5a396fd4bc')
-md5sums_x86_64=('30133d89690f4683c4e289ec6c0247dc')
+source=('nvidia-4.3-build.patch')
+source_i686="ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
+source_x86_64="ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+md5sums=('1e5f60cf8e77af482345549b9436887a')
+md5sums_i686='16d143ccafe99328a2ca8e5a396fd4bc'
+md5sums_x86_64='30133d89690f4683c4e289ec6c0247dc'
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
-prepare() {
+prepare() { 
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     # patches here
+    patch -Np1 -i ${srcdir}/nvidia-4.3-build.patch
+   
 }
 
 build() {

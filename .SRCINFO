@@ -1,21 +1,23 @@
 pkgbase = nvidia-bfs
 	pkgdesc = NVIDIA drivers for linux-bfs.
 	pkgver = 355.11
-	pkgrel = 1
+	pkgrel = 6
 	url = http://www.nvidia.com/
 	install = nvidia-bfs.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-bfs-headers>=4.1
-	makedepends = linux-bfs-headers<4.2
-	depends = linux-bfs>=4.1
-	depends = linux-bfs<4.2
+	makedepends = linux-bfs-headers>=4.3
+	makedepends = linux-bfs-headers<4.4
+	depends = linux-bfs>=4.3
+	depends = linux-bfs<4.4
 	depends = nvidia-libgl
 	depends = nvidia-utils=355.11
 	conflicts = nvidia-bfs-304xx
 	conflicts = nvidia-bfs-340xx
 	options = !strip
+	source = nvidia-4.3-build.patch
+	md5sums = 1e5f60cf8e77af482345549b9436887a
 	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/355.11/NVIDIA-Linux-x86-355.11.run
 	md5sums_i686 = 16d143ccafe99328a2ca8e5a396fd4bc
 	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/355.11/NVIDIA-Linux-x86_64-355.11-no-compat32.run
