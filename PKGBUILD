@@ -24,7 +24,7 @@ source=("http://downloads.sourceforge.net/infozip/unzip${pkgver/./}.tar.gz"
         'CVE-2014-9636_pt2.patch::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/overflow-fsize.patch?h=packages/unzip&id=15e9a8c67463aaf62a718c6e74b1c972de654346'
         'iconv-utf8+CVE-2015-1315.patch::http://www.conostix.com/pub/adv/06-unzip60-alt-iconv-utf8_CVE-2015-1315.patch'
         'CVE-2015-7696+CVE-2015-7697_pt1.patch::https://bugzilla.redhat.com/attachment.cgi?id=1073339'
-        'CVE-2015-7696+CVE-2015-7697_pt2.patch::https://bugzilla.redhat.com/attachment.cgi?id=1075942')
+        'CVE-2015-7696+CVE-2015-7697_pt2.patch')
 sha1sums=('abf7de8a4018a983590ed6f5cbd990d4740f8a22'
           '8ab9aa19e3743245696223035b04cba9d34aa4f6'
           '614c3e7fa7d6da7c60ea2aa79e36f4cbd17c3824'
@@ -33,7 +33,7 @@ sha1sums=('abf7de8a4018a983590ed6f5cbd990d4740f8a22'
           '2852ce1a9db8d646516f8828436a44d34785a0b3'
           '9b5d552cc6ab1f9e8b74fbbbcebfee84d46218c2'
           '1a412abf0861225767c776721a5cd75b7e2011d7'
-          'e4cc8772737e8c606ad8abb0e899a1ad631a3fa6')
+          '9fe70b98dee314385eba5fdc73baebfb648c7b6e')
 
 prepare() {
   cd "unzip${pkgver/./}"

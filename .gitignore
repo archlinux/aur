@@ -2,11 +2,4 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!CVE-2014-8139.patch
-!CVE-2014-8140.patch
-!CVE-2014-8141.patch
-!CVE-2014-9636_pt1.patch
-!CVE-2014-9636_pt2.patch
-!CVE-2015-7696+CVE-2015-7697_pt1.patch
 !CVE-2015-7696+CVE-2015-7697_pt2.patch
-!iconv-utf8+CVE-2015-1315.patch
