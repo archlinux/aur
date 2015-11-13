@@ -1,8 +1,8 @@
 pkgbase = perl-json-rpc
 	pkgdesc = Perl implementation of JSON-RPC 1.1 protocol
 	pkgver = 1.06
-	pkgrel = 1
-	url = http://search.cpan.org/dist/JSON-RPC/
+	pkgrel = 2
+	url = http://search.cpan.org/dist/JSON-RPC
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -13,9 +13,9 @@ pkgbase = perl-json-rpc
 	depends = perl-plack
 	depends = perl-router-simple
 	depends = perl-json
+	depends = perl-cgi
 	conflicts = perl-json-rpc-legacy
 	options = !emptydirs
-	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/D/DM/DMAKI/JSON-RPC-1.06.tar.gz
 	sha1sums = d3288e5475c2fae5c7ed7fd5e547dd26a1fd07cd
 
