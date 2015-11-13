@@ -6,7 +6,7 @@ pkgname=pycharm-eap
 _buildver=143.595
 _pkgver=5.0.1
 _eap="False"
-pkgver=${_pkgver}.${_buildver}
+pkgver="${_pkgver}.${_buildver}"
 pkgrel=2
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=('any')
@@ -17,51 +17,42 @@ depends=("java-environment>=6")
 makedepends=("wget")
 provides=("pycharm-professional")
 conflicts=("pycharm-professional" "pycharm-pro-eap")
-changelog="CHANGES"
-if [[ ${_eap} = "True" ]]; then
-	source=("http://download.jetbrains.com/python/pycharm-professional-${_buildver}.tar.gz")
-	sha256sums=$(wget -q "${source}.sha256" && cat "pycharm-professional-${_buildver}.tar.gz.sha256" | cut -f1 -d" ")
+
+if [[ "True" = "${_eap}" ]]; then
+	_srcfile="pycharm-professional-${_buildver}.tar.gz"
+	source=("http://download.jetbrains.com/python/${_srcfile}")
+	sha256sums=$(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
 else
-	source=("http://download.jetbrains.com/python/pycharm-professional-${_pkgver}.tar.gz")
-	sha256sums=$(wget -q "${source}.sha256" && cat "pycharm-professional-${_pkgver/.0}.tar.gz.sha256" | cut -f1 -d" ")
+	_srcfile="pycharm-professional-${_pkgver}.tar.gz"
+	source=("http://download.jetbrains.com/python/${_srcfile}")
+	sha256sums=$(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
 fi
 
 
 package() {
-  cd "${srcdir}"
-  mkdir -p "${pkgdir}/opt/${pkgname}"
-  if [[ ${_eap} = "True" ]]; then
-  	cp -R "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
-  else
-  	cp -R "${srcdir}/pycharm-${_pkgver}/"* "${pkgdir}/opt/${pkgname}"
-  fi
-  if [[ $CARCH = 'i686' ]]; then
-     rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
-     rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
-  fi
-(
-cat <<EOF
-[Desktop Entry]
-Version=$pkgver
-Type=Application
-Name=PyCharm-EAP
-Exec="/opt/$pkgname/bin/pycharm.sh" %f
-Icon=/opt/$pkgname/bin/pycharm.png
-Comment=$pkgdesc
-Categories=Development;IDE;
-Terminal=false
-StartupNotify=true
-StartupWMClass=jetbrains-pycharm
-EOF
-) > "${srcdir}/${pkgname}.desktop"
+	cd "${srcdir}"
+	install -dm 755 \
+		"${pkgdir}/opt/${pkgname}" \
+		"${pkgdir}/usr/bin/" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/"
 
-  wget https://www.jetbrains.com/pycharm/buy/license.pdf
+	wget "https://www.jetbrains.com/pycharm/buy/license.pdf"
+	install -Dm644 license.pdf "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
 
-  mkdir -p "${pkgdir}/usr/bin/"
-  mkdir -p "${pkgdir}/usr/share/applications/"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-  install -Dm644 license.pdf "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
-  ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm-eap"
+	if [[ "True" = "${_eap}" ]]; then
+		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
+	else
+		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_pkgver}/"* "${pkgdir}/opt/${pkgname}"
+	fi
+	
+	if [[ "i686" = "${CARCH}" ]]; then
+		rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
+		rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
+	fi
+
+	sed -i "s/Version=/Version=${pkgver}" "${pkgname}.desktop"
+	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+	
+	ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm-eap"
 }
 
