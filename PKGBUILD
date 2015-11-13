@@ -10,7 +10,7 @@ _pkgver=$_major
 pkgver=${_major}${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.${_build}
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://jdk$_major.java.net/"
 license=('custom:Oracle BSD')
@@ -20,8 +20,8 @@ options=('!strip')
 source=("http://download.java.net/jdk$_major/archive/$_build/binaries/jdk-$_pkgver-ea-docs-$_build-all-$_date.zip"
         "http://download.java.net/jdk$_major/archive/$_build/binaries/javafx-$_pkgver-ea-apidocs-$_build-$_date_fx.zip"
         'LICENSE')
-md5sums=('d2384cb0c13cba7e67380054060fe7a1'
-         '07b9ecb3403418b10c42e1931689feaf'
+md5sums=('0e366ea5324c44273960a2882f2aa813'
+         '201e6fe4b40e3820fbdac657f26b2d58'
          'f09947a67691a2d78d20a3885889981c')
 
 package_jdk-devel-docs() {
