@@ -1,0 +1,15 @@
+pkgbase = pwgen-passphrase
+	pkgdesc = Secure wordlist-based passphrase generator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/xmikos/pwgen-passphrase
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-pyqt5: copying to clipboard
+	source = https://github.com/xmikos/pwgen-passphrase/archive/v1.0.tar.gz
+	sha256sums = f2cc0eb6e21f9910831201acf5193fe52dbc52716ab81b6896bfb228f8e1bdd9
+
+pkgname = pwgen-passphrase
+
