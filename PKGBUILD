@@ -1,4 +1,5 @@
-# Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: forest76 <forestt@poczta.onet.pl>
 # Contributor: Tilman Blumenbach <tilman@ax86.net>
