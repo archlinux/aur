@@ -1,6 +1,6 @@
 pkgbase = tensorflow-git
 	pkgdesc = Open source software library for numerical computation using data flow graphs.
-	pkgver = 0.5.0.r14.g1d76583
+	pkgver = 0.5.0.r17.ga9ca517
 	pkgrel = 1
 	url = https://tensorflow.org/
 	arch = i686

@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/tensorflow/tensorflow
 
 pkgname=tensorflow-git
-pkgver=0.5.0.r14.g1d76583
+pkgver=0.5.0.r17.ga9ca517
 pkgrel=1
 pkgdesc="Open source software library for numerical computation using data flow graphs."
 arch=('i686' 'x86_64')
@@ -50,6 +50,6 @@ package() {
   cd "$srcdir/tensorflow"
 
   TMP_PKG=`find $srcdir/tmp -name "tensor*.whl"`
-  pip2 install --upgrade --root $pkgdir/ $TMP_PKG --no-dependencies
+  pip2 install --ignore-installed --upgrade --root $pkgdir/ $TMP_PKG --no-dependencies
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
