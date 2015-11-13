@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=PyCharm-EAP
+Version=
+Type=Application
+Exec="/opt/pycharm-pro-eap/bin/pycharm.sh" %f
+Icon=/opt/pycharm-pro-eap/bin/pycharm.png
+Comment="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm
+Name[en_US]=pycharm-eap.desktop

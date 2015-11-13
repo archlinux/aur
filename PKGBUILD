@@ -20,11 +20,13 @@ conflicts=("pycharm-professional" "pycharm-pro-eap")
 
 if [[ "True" = "${_eap}" ]]; then
 	_srcfile="pycharm-professional-${_buildver}.tar.gz"
-	source=("http://download.jetbrains.com/python/${_srcfile}")
+	source=("http://download.jetbrains.com/python/${_srcfile}"
+			"${pkgname}.desktop")
 	sha256sums=$(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
 else
 	_srcfile="pycharm-professional-${_pkgver}.tar.gz"
-	source=("http://download.jetbrains.com/python/${_srcfile}")
+	source=("http://download.jetbrains.com/python/${_srcfile}"
+			"${pkgname}.desktop")
 	sha256sums=$(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
 fi
 
@@ -50,7 +52,7 @@ package() {
 		rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
 	fi
 
-	sed -i "s/Version=/Version=${pkgver}" "${pkgname}.desktop"
+	sed -i "s/Version=/Version=${pkgver}/g" "${pkgname}.desktop"
 	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 	
 	ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm-eap"

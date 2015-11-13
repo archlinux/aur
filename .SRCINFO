@@ -12,6 +12,7 @@ pkgbase = pycharm-eap
 	conflicts = pycharm-pro-eap
 	options = !strip
 	source = http://download.jetbrains.com/python/pycharm-professional-5.0.1.tar.gz
+	source = pycharm-eap.desktop
 	sha256sums = 038501f116f5b18e5fc30c7b7edf1c076f0ec6d5f2e2c14348004dc8b6745a80
 
 pkgname = pycharm-eap
