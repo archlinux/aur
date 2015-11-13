@@ -4,7 +4,7 @@
 
 pkgname=feedreader
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple feedreader client for web services like Tiny Tiny RSS and in the future others.'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/feedreader'
