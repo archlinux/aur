@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-geventhttpclient-git
-pkgver=20141102
+pkgver=20151104
 pkgrel=1
 pkgdesc="A high performance, concurrent HTTP client library for Python with gevent"
 arch=('i686' 'x86_64')
-depends=('python2' 'python2-gevent')
+depends=('python2' 'python2-certifi' 'python2-gevent')
 makedepends=('git' 'python2-setuptools')
 url="https://github.com/gwik/geventhttpclient"
 license=('MIT')

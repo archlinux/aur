@@ -1,6 +1,6 @@
 pkgbase = python2-geventhttpclient-git
 	pkgdesc = A high performance, concurrent HTTP client library for Python with gevent
-	pkgver = 20141102
+	pkgver = 20151104
 	pkgrel = 1
 	url = https://github.com/gwik/geventhttpclient
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = python2-geventhttpclient-git
 	makedepends = git
 	makedepends = python2-setuptools
 	depends = python2
+	depends = python2-certifi
 	depends = python2-gevent
 	provides = python2-geventhttpclient
 	conflicts = python2-geventhttpclient
