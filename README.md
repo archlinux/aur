@@ -1,6 +1,6 @@
 # pac_manage
 ```
-Manages your packages in a single file where you can add comments
+pac_manage manages your packages in a single file where you can add comments
 and group your packages.
 
     USAGE: pac_manage [OPTIONS] OPERATION
@@ -10,6 +10,8 @@ and group your packages.
             Install all missing packages.
 
         update
+            TODO: packages that are not installed are removed - rename command
+                  to 'sync'.
             Update the package list. (New packages are added to the section
             'NEW_PACKAGES')
 
@@ -33,6 +35,9 @@ and group your packages.
     -n --no-confirm
         Don't ask for confirmations. Applys to remove and install operations.
 
+    -d --dry-run
+        Just print what would be done.
+
 
     USE CASES / EXAMPLES:
         # generate an initial package-list
@@ -40,6 +45,7 @@ and group your packages.
         # edit the list to your likings (add comments, reorder entries etc.)
         >>> vim ~/package-list
         # install new packages to your system
+        >>> sudo pacman -S gvim colorgcc
         # decide you want to keep them
         # save them to your package-list (1)
         >>> pac_manage update

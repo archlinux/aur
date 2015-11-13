@@ -62,9 +62,11 @@ createInitialPackageList() {
 updatePackageList() {
     for package in $(yaourt -Qqe); do
         if ! grep --quiet $package $LIST_FILE; then
-            echo adding $package
             local repository=$(yaourt -Qe $package | cut -d' ' -f1 | cut -d/ -f1)
-            sed -i "/NEW_PACKAGES=(/a $package # $repository" $LIST_FILE
+            echo "adding $package # $repository"
+            if [ -z "$DRY_RUN" ]; then
+                sed -i "/NEW_PACKAGES=(/a $package # $repository" $LIST_FILE
+            fi
         fi
     done
 }
@@ -82,7 +84,10 @@ installMissing() {
     for i in "${!list[@]}"; do
         local package="${list[i]}"
         if ! (yaourt -Qq $package > /dev/null); then
-            yaourt -S --needed $NO_CONFIRM $package
+            echo "installing $package"
+            if [ -z "$DRY_RUN" ]; then
+                yaourt -S --needed $NO_CONFIRM $package
+            fi
         fi
         redrawProgressBar 50 0 $i ${#list[@]}
     done
@@ -92,7 +97,9 @@ removePackages() {
     for package in $(pacman -Qqe); do
         if ! (grep --quiet $package $LIST_FILE); then
             echo "removing $package"
-            sudo pacman -Rns $NO_CONFIRM $package
+            if [ -z "$DRY_RUN" ]; then
+                sudo pacman -Rns $NO_CONFIRM $package
+            fi
         fi
     done
 }
@@ -108,6 +115,7 @@ and group your packages.
             Install all missing packages.
 
         update
+            TODO: packages that are not installed are removed. rename to sync
             Update the package list. (New packages are added to the section
             'NEW_PACKAGES')
 
@@ -131,6 +139,9 @@ and group your packages.
     -n --no-confirm
         Don't ask for confirmations. Applys to remove and install operations.
 
+    -d --dry-run
+        Just print what would be done.
+
 
     USE CASES / EXAMPLES:
         # generate an initial package-list
@@ -138,6 +149,7 @@ and group your packages.
         # edit the list to your likings (add comments, reorder entries etc.)
         >>> vim ~/package-list
         # install new packages to your system
+        >>> sudo pacman -S gvim colorgcc
         # decide you want to keep them
         # save them to your package-list (1)
         >>> $0 update
@@ -164,6 +176,10 @@ commandLineInterface() {
             -n|--no-confirm)
                 shift
                 NO_CONFIRM="--noconfirm"
+                ;;
+            -d|--dry-run)
+                shift
+                DRY_RUN=1
                 ;;
             update)
                 shift
@@ -196,6 +212,9 @@ commandLineInterface() {
             printHelpMessage "$0"
             exit 1
         fi
+    fi
+    if [ -n "$DRY_RUN" ]; then
+        echo "NOTE: -d(--dry-run) is set, no operations will actually change anything"
     fi
     if [ -n "$do_remove" ]; then
         echo "removing packages..."
