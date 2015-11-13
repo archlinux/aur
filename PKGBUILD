@@ -7,12 +7,13 @@
 
 pkgname=autotrace
 pkgver=0.31.1
-pkgrel=14
+pkgrel=15
 pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics'
 arch=('i686' 'x86_64')
 url='http://autotrace.sourceforge.net/'
 license=('GPL' 'LGPL')
-depends=('imagemagick>=6.5.3.10')
+depends=('imagemagick>=6.5.3.10' 'libpng')
+optdepends=('pstoedit')
 makedepends=('pkg-config' 'autoconf')
 options=('!libtool')
 source=("http://downloads.sourceforge.net/autotrace/$pkgname-$pkgver.tar.gz"
@@ -23,13 +24,13 @@ sha512sums=('7d0ec86a41617b3d4336eed72f2974c10f569ff53d450a4c91b4611bb6fdb8c4ff8
             '92c984a6d7bea6b58ce3fc8419d89af9c52d2029e91b0fe3e29f05f10b18d75742abff828cec551a4e8da44a22c563e321fcd91ceb3a186c040cf465fef77b97')
 
 prepare(){
-  cd autotrace-0.31.1
+  cd "$pkgname-$pkgver"
   patch < ../complete.patch
   autoreconf -ivf
 }
 
 build() {
-  cd autotrace-0.31.1
+  cd "$pkgname-$pkgver"
   ./configure --prefix=/usr --with-pstoedit
   sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
   sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
@@ -37,6 +38,6 @@ build() {
 }
 
 package() {
-  cd autotrace-0.31.1
+  cd "$pkgname-$pkgver"
   make install DESTDIR="${pkgdir}"
 }
