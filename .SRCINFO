@@ -1,0 +1,18 @@
+pkgbase = abc-hg
+	pkgdesc = System for Sequential Logic Synthesis and Formal Verification
+	pkgver = r3088.7cc77dc226de
+	pkgrel = 1
+	url = http://www.eecs.berkeley.edu/~alanmi/abc/abc.htm
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = mercurial
+	makedepends = make
+	makedepends = gcc
+	provides = abc
+	conflicts = abc
+	source = hg+ssh://hg@bitbucket.org/alanmi/abc
+	md5sums = SKIP
+
+pkgname = abc-hg
+
