@@ -26,4 +26,5 @@ package() {
 	cp ${srcdir}/${pkgname}/pymonopoly_linux.py ${pkgdir}/usr/bin/pymonopoly
 	cp -r ${srcdir}/${pkgname}/LIB ${pkgdir}/usr/lib/pymonopoly
 	mv ${pkgdir}/usr/lib/pymonopoly/modules/Globals_linux.py ${pkgdir}/usr/lib/pymonopoly/modules/Globals.py
+	mkdir -p ${pkgdir}/${HOME}/.config/pymonopoly
 }
