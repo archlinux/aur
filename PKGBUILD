@@ -6,13 +6,13 @@
 pkgbase=virtualbox-modules-bfq
 pkgname=('virtualbox-host-modules-bfq' 'virtualbox-guest-modules-bfq')
 pkgver=5.0.8
-pkgrel=1
+pkgrel=6
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-bfq-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.2-bfq
+_extramodules=extramodules-4.3-bfq
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -30,7 +30,7 @@ build() {
 package_virtualbox-host-modules-bfq() {
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-bfq.'
 	license=('GPL')
-	depends=('linux-bfq>=4.2' 'linux-bfq<4.3')
+	depends=('linux-bfq>=4.3' 'linux-bfq<4.4')
 	install=host.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
@@ -43,7 +43,7 @@ package_virtualbox-host-modules-bfq() {
 package_virtualbox-guest-modules-bfq() {
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-bfq.'
 	license=('GPL')
-	depends=('linux-bfq>=4.2' 'linux-bfq<4.3')
+	depends=('linux-bfq>=4.3' 'linux-bfq<4.4')
 	install=guest.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"

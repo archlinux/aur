@@ -1,6 +1,6 @@
 pkgbase = virtualbox-modules-bfq
 	pkgver = 5.0.8
-	pkgrel = 1
+	pkgrel = 6
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgname = virtualbox-host-modules-bfq
 	pkgdesc = Host kernel modules for VirtualBox running under Linux-bfq.
 	install = host.install
 	license = GPL
-	depends = linux-bfq>=4.2
-	depends = linux-bfq<4.3
+	depends = linux-bfq>=4.3
+	depends = linux-bfq<4.4
 
 pkgname = virtualbox-guest-modules-bfq
 	pkgdesc = Guest kernel modules for VirtualBox running under Linux-bfq.
 	install = guest.install
 	license = GPL
-	depends = linux-bfq>=4.2
-	depends = linux-bfq<4.3
+	depends = linux-bfq>=4.3
+	depends = linux-bfq<4.4
 
