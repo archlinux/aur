@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=PlayOnLinux 5
+Comment=GUI for managing Windows programs under linux
+Type=Application
+Exec=playonlinux5
+Icon=playonlinux5
+Categories=Application;Game
