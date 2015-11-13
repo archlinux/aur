@@ -1,0 +1,19 @@
+pkgbase = qmidinet
+	pkgdesc = A MIDI Network Gateway via UDP/IP Multicast
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://qmidinet.sourceforge.net/
+	install = qmidinet.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qtchooser
+	depends = alsa-lib
+	depends = jack
+	source = http://downloads.sourceforge.net/project/qmidinet/qmidinet/0.3.0/qmidinet-0.3.0.tar.gz
+	md5sums = 506bfb62840a5d884252711671632f76
+
+pkgname = qmidinet
+
