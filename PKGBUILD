@@ -4,9 +4,9 @@
 _name="cflint"
 _gitname="CFLint"
 pkgname="$_name-git"
-pkgver=20150929.192
+pkgver=20151113.192
 pkgrel=1
-pkgdesc="A static code analysis tool for ColdFusion - git branch"
+pkgdesc="A static code analysis tool for ColdFusion - dev branch"
 arch=('any')
 url="https://github.com/$_name/$_gitname/wiki"
 license=("BSD")
@@ -14,7 +14,7 @@ depends=('java-environment' 'bash')
 makedepends=('git' 'maven')
 provides=("$_name" "$_name-ui")
 conflicts=("$_name" "$_name-ui")
-source=(git+https://github.com/$_gitname/${_gitname}.git)
+source=(git+https://github.com/$_gitname/${_gitname}.git#branch=dev)
 md5sums=('SKIP')
 
 pkgver() {
