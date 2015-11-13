@@ -1,7 +1,7 @@
 # PKGBUILD for HOOMD-blue. This pulls from git, but uses the "maint" version.
 # Maintainer: Asmund Ervik <aaervik@gmail.com>
 pkgname=hoomd-blue
-pkgver=v1.0.2.r0.g6413a77
+pkgver=v1.2.1.r5.g86a3316-1
 pkgrel=1
 pkgdesc="A general-purpose particle simulation toolkit using GPUs with CUDA"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = hoomd-blue
 	pkgdesc = A general-purpose particle simulation toolkit using GPUs with CUDA
-	pkgver = v1.0.2.r0.g6413a77
+	pkgver = v1.2.1.r5.g86a3316-1
 	pkgrel = 1
 	url = http://codeblue.umich.edu/hoomd-blue/index.html
 	arch = any
