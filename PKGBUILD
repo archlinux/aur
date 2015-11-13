@@ -2,7 +2,7 @@
 
 _pkgname=google-cli
 pkgname=google-cli
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="Google Search from command line"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python')
 conflicts=('google-cli-git')
 source=("https://github.com/jarun/google-cli/archive/v$pkgver.tar.gz")
-md5sums=('a45390bcfb3e4e2d079287c2f6b97e24')
+md5sums=('4d23bf9f3b01eda68145d718c5a7f507')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
