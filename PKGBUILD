@@ -41,7 +41,7 @@ package() {
 		"${pkgdir}/usr/share/licenses/${pkgname}/"
 
 	wget "https://www.jetbrains.com/pycharm/buy/license.pdf"
-	install -Dm644 license.pdf "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
+	install -m644 license.pdf "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
 
 	if [[ "True" = "${_eap}" ]]; then
 		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
