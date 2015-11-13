@@ -1,23 +1,23 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python2-couleur
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="ANSI terminal tool for python, colored shell and other handy fancy features"
 url="https://github.com/gabrielfalcao/couleur"
 license=(APACHE)
-depends=('python2')
+depends=('python2-setuptools')
 arch=('any')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gabrielfalcao/couleur/tarball/$pkgver")
+source=("https://pypi.python.org/packages/source/c/couleur/couleur-$pkgver.tar.gz")
 
 build() {
-	cd "$srcdir/gabrielfalcao-couleur-a1889fc"
+	cd "$srcdir/couleur-$pkgver"
 	python2 setup.py build
 }
 
 package() {
-	cd "$srcdir/gabrielfalcao-couleur-a1889fc"
+	cd "$srcdir/couleur-$pkgver"
 	python2 setup.py install --skip-build -O1 --root="$pkgdir"
 }
 
-sha256sums=('e828cd812a25089768d3a4af059b16f8c61f2249bb670ac2e0671e425dd51498')
+sha256sums=('6bc07462df223fbf6bfc6fa7106da633fcd7acf895a7003676126c7b347491c8')
