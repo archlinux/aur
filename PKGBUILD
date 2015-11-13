@@ -2,7 +2,7 @@
 pkgname=tidy-html5
 name=tidy-html5
 pkgver=5.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to tidy down your HTML5 code to a clean style"
 url="https://github.com/htacg/tidy-html5"
 license=('custom')
@@ -24,5 +24,4 @@ package() {
   cd "$srcdir/$name-$pkgver/build/cmake"
   make install
   install -Dm644 $srcdir/$name-$pkgver/LICENSE.md $pkgdir/usr/share/licenses/$name/LICENSE.md
-  rm -rf $pkgdir/usr/include
 } 
