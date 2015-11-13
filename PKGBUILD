@@ -1,6 +1,6 @@
 # Maintainer: Philip 'Chais' Abernethy<chais.z3r0@gmail.com>
 pkgname=racethesun
-pkgver=1.441
+pkgver=1.455
 pkgrel=1
 pkgdesc="Hurtle towards the sunset at breakneck speed in a futile race against time."
 url="http://flippfly.com/"
@@ -9,7 +9,7 @@ license=('custom:commercial')
 
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 source=("hib://RaceTheSunLINUX_${pkgver}.zip")
-sha512sums=('e642dc8d4f89949345e552aadb36b448f358dd261cd952c1d059d16010890ef5e10d03b176196c833468dcc1c5b1b50f80930d2e230613d716bbf91e3e791e80')
+sha512sums=('49bb009538e25cf6f2d8bb4676ea8518d972fa12ef6ad80fe46efb6a1d0e27651dd33e44fc93e2f801b9042926f43d286e7bf4b911780354e427ffc54ded87c8')
 
 # Uncomment for big packages
 #PKGEXT=".pkg.tar"
