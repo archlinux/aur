@@ -38,7 +38,7 @@ depends=('arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'arm-none-eabi-binutils'
          'python2-pygeoip'
          'python2-dateutil'
          'python2-wsgiref')
-optdepends=('qemu-fdt: Emulator support')
+optdepends=('qemu: Emulator support')
 conflicts=('pebble-sdk-beta')
 source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-${pkgver/_/-}.tar.gz"
         'pebble-sdk.install'
