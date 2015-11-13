@@ -1,0 +1,15 @@
+pkgbase = kjell
+	pkgdesc = a refurbished Erlang shell with support for color profiles and extensions.
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/karlll/kjell
+	arch = x86_64
+	makedepends = git
+	depends = erlang
+	depends = make
+	provides = kjell
+	source = git+https://github.com/karlll/kjell
+	md5sums = SKIP
+
+pkgname = kjell
+
