@@ -1,7 +1,7 @@
 pkgbase = connman-gtk
 	pkgdesc = GTK GUI for ConnMan
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jgke/connman-gtk
 	install = connman-gtk.install
 	arch = i686

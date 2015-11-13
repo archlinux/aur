@@ -1,7 +1,7 @@
 # Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
 pkgname=connman-gtk
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK GUI for ConnMan"
 arch=('i686' 'x86_64')
 url="https://github.com/jgke/connman-gtk"
@@ -19,8 +19,7 @@ build() {
   ./configure \
     --bindir=/usr/bin \
     --datarootdir=/usr/share \
-    --mandir=/usr/share/man \
-    --with-openconnect=dynamic
+    --mandir=/usr/share/man
   make
 }
 
