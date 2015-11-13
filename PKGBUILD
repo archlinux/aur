@@ -1,7 +1,7 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kwave-git
-pkgver=0.9.0.r3283.b3ed81a
+pkgver=0.9.0.r3210.3085f54
 pkgrel=1
 pkgdesc="A sound editor for KDE. (GIT version)"
 arch=('i686' 'x86_64')
@@ -19,10 +19,8 @@ makedepends=('git'
              'doxygen'
              'python'
              'librsvg'
-             'flac'
              'opus'
              'fftw'
-             'libvorbis'
              'id3lib'
              'libmad'
              )
