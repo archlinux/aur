@@ -3,7 +3,7 @@
 # Contributor: K. Hampf <khampf@users.sourceforge.net>
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 
-_pkgname=playonlinux
+_pkgname=playonlinux4
 pkgname=$_pkgname-git
 pkgver=4.2.9.r1.g1157b14
 pkgrel=1

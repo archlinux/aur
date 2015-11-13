@@ -1,4 +1,4 @@
-pkgbase = playonlinux-git
+pkgbase = playonlinux4-git
 	pkgdesc = GUI for managing Windows programs under linux
 	pkgver = 4.2.9.r1.g1157b14
 	pkgrel = 1
@@ -23,8 +23,8 @@ pkgbase = playonlinux-git
 	provides = playonlinux
 	conflicts = playonlinux
 	options = !strip
-	source = playonlinux::git://github.com/PlayOnLinux/POL-POM-4.git
+	source = playonlinux4::git://github.com/PlayOnLinux/POL-POM-4.git
 	md5sums = SKIP
 
-pkgname = playonlinux-git
+pkgname = playonlinux4-git
 
