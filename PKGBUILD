@@ -1,6 +1,6 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=yotta
-pkgver=0.9.3
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Tool for managing reusable components for C/C++ by mbed"
 url="http://yottadocs.mbed.com/"
@@ -26,7 +26,7 @@ optdepends=()
 license=('Apache')
 arch=('any')
 source=("https://github.com/ARMmbed/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('e92ce4ea7533eeaec187843378ef2cdee32bc1057fc24b8e104c1bf668bcec80629087dc319646b5039f40eccc02eb53bfacd36c131c74a49fc44e89bd29942f')
+sha512sums=('67c8dc7f4b148cb72fd868f54a70242bd340e5b6d7eafc9d29b84733171fd2c887111ba0cdd2f3d6f23c386cf1b603c48e93112c48b5769e59a2e7d90f78ed65')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
