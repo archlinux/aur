@@ -2,10 +2,10 @@
 
 _target=aarch64-linux-gnu
 pkgname=$_target-gcc-stage1
-pkgver=5.1.0
+pkgver=5.2.0
 _islver=0.14.1
 pkgrel=1
-_snapshot=5-20150616
+#_snapshot=5-20150616
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
 arch=(i686 x86_64)
 url='http://gcc.gnu.org/'
@@ -13,10 +13,10 @@ license=(GPL LGPL FDL)
 depends=($_target-binutils libmpc zlib)
 makedepends=(gmp mpfr)
 options=(!emptydirs !strip)
-source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.bz2
-        ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.bz2
+source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.bz2
+        #ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.bz2
         http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
-sha256sums=('7d24ae045743dac384fc11692ef6fff5fd001ce0c10fa6ba128cd34110caf0de'
+sha256sums=('5f835b04b5f7dd4f4d2dc96190ec1621b8d89f2dc6f638f9f8bc1b1014ba8cad'
             '1f20561843eb9f6ae2076800bc45f3680ff7696520257cd5734ccfb843464cae')
 
 if [ -n "$_snapshot" ]; then
