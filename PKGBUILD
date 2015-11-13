@@ -55,7 +55,7 @@ package() {
 	fi
 
 	sed -i "s/Version=/Version=${pkgver}/g" "${pkgname}.desktop"
-	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+	install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 	
 	ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm-eap"
 }
