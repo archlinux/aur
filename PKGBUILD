@@ -14,13 +14,14 @@ optdepends=(
   'bzip2: bzip2 utilities support'
   'cdrkit: ISO utilities support'
   'cpio: cpio archive support'
-  'java-runtime: java utilities support'
+  'e2fsprogs: Ext2/3/4 filesystem utilities support'
+  'fpc: Free Pascal utilities support'
+  'java-environment: java utilities support'
   'fontforge: bitmap font utilities support'
   'gettext: GNU internationalization utilities support'
   'ghc: haskell utilities support'
   'gnupg: GNU privacy guard support'
   'mono-tools: mono utilities support'
-  #'pdftk: PDF utilities support'
   'poppler: PDF utilities support'
   'sqlite: SQLite support'
   'squashfs-tools: squashfs filesystem support'
@@ -32,8 +33,8 @@ optdepends=(
 )
 makedepends=('git')
 checkdepends=(
-  'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'cpio' 'java-runtime' 'fontforge' 'gettext' 'ghc' 'gnupg' 'mono-tools'
-  'poppler' 'sqlite' 'squashfs-tools' 'unzip' 'gzip' 'tar' 'vim' 'xz')
+  'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'cpio' 'e2fsprogs' 'fpc' 'java-environment' 'fontforge' 'gettext' 'ghc' 'gnupg'
+  'mono-tools' 'poppler' 'sqlite' 'squashfs-tools' 'unzip' 'gzip' 'tar' 'vim' 'xz')
 provides=('diffoscope')
 conflicts=('diffoscope')
 source=(${pkgname}::git+https://anonscm.debian.org/git/reproducible/diffoscope.git)
