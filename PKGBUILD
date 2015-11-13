@@ -2,7 +2,7 @@
 
 pkgname='sslyze'
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and full-featured SSL scanner."
 arch=('i686' 'x86_64')
 url=('https://github.com/nabla-c0d3/sslyze')
@@ -28,7 +28,7 @@ package() {
 
 cat << EOF > "$pkgdir/usr/bin/sslyze"
 #!/usr/bin/bash
-cd /opt/sslyze && python2 sslyze.py \$@
+python2 /opt/sslyze/sslyze.py \$@
 EOF
 
 	chmod 755 "$pkgdir/usr/bin/sslyze"
