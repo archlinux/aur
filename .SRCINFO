@@ -1,80 +1,139 @@
 pkgbase = eiskaltdcpp-git
-	pkgver = v2.2.10.82.g31355fd
+	pkgdesc = EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)
+	pkgver = 2.3.0.4901.31355fd
 	pkgrel = 1
-	url = http://code.google.com/p/eiskaltdc/
+	url = http://code.google.com/p/eiskaltdc
 	arch = i686
 	arch = x86_64
-	arch = arm
-	arch = arm
-	arch = armv7h
-	arch = armv6h
 	license = GPL3
-	makedepends = gcc
-	makedepends = make
-	makedepends = cmake
-	makedepends = gtk2
-	makedepends = libnotify
-	makedepends = qt4
-	makedepends = bzip2
-	makedepends = openssl
-	makedepends = lua52
+	makedepends = lua
 	makedepends = libidn
-	makedepends = pcre
+	makedepends = aspell
+	makedepends = attr
+	makedepends = wget
+	makedepends = boost-libs
+	makedepends = jsoncpp
+	makedepends = qtscriptgenerator
+	makedepends = qt5-quick1
+	makedepends = qt5-multimedia
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = libnotify
+	makedepends = perl-json
+	makedepends = perl-json-rpc
+	makedepends = perl-rpc-xml
+	makedepends = perl-term-shellui
 	conflicts = eiskaltdcpp
 	options = !emptydirs
-	source = git://github.com/eiskaltdcpp/eiskaltdcpp.git
+	source = git+https://github.com/eiskaltdcpp/eiskaltdcpp.git
 	sha1sums = SKIP
 
-pkgname = eiskaltdcpp-gtk-git
-	pkgdesc = EiskaltDC++: Gtk2-based DC and ADC client based on dcpp core
-	install = eiskaltdcpp.install
-	depends = gtk2
-	depends = libnotify
-	depends = desktop-file-utils
-	depends = eiskaltdcpp-core-git
-	depends = eiskaltdcpp-data-git
-	provides = eiskaltdcpp-gtk
-	conflicts = eiskaltdcpp-gtk
-	conflicts = eiskaltdcpp
-
-pkgname = eiskaltdcpp-qt-git
-	pkgdesc = EiskaltDC++: Qt4-based DC and ADC client based on dcpp core
-	install = eiskaltdcpp.install
-	depends = qt4
-	depends = eiskaltdcpp-core-git
-	depends = eiskaltdcpp-data-git
-	optdepends = aspell: spellchecking
-	optdepends = qtscriptgenerator: need for qtscript
-	provides = eiskaltdcpp-qt
-	conflicts = eiskaltdcpp-qt
-
-pkgname = eiskaltdcpp-daemon-git
-	pkgdesc = EiskaltDC++ Daemon
-	depends = eiskaltdcpp-core-git
-	depends = eiskaltdcpp-data-git
-	depends = gcc-libs
-	provides = eiskaltdcpp-daemon
-	conflicts = eiskaltdcpp-daemon
-
 pkgname = eiskaltdcpp-core-git
-	pkgdesc = EiskaltDC++ Core
-	depends = zlib
-	depends = bzip2
+	pkgdesc = EiskaltDC++ Core. (GIT Version)
 	depends = openssl
-	depends = lua52
+	depends = lua
 	depends = libidn
-	depends = pcre
+	depends = attr
+	depends = boost-libs
+	provides = eiskaltdcpp-core-git=2.3.0.4901.31355fd
 	provides = eiskaltdcpp-core
 	conflicts = eiskaltdcpp-core
 
-pkgname = eiskaltdcpp-data-git
-	pkgdesc = EiskaltDC++ Data files
-	install = eiskaltdcpp.install
+pkgname = eiskaltdcpp-qt5-git
+	pkgdesc = Qt5-based DC and ADC client for EiskaltDC++ core. (GIT Version)
+	install = eiskaltdcpp-git.install
+	depends = eiskaltdcpp-core-git=2.3.0.4901.31355fd
+	depends = eiskaltdcpp-data-git=2.3.0.4901.31355fd
+	depends = boost-libs
+	depends = aspell
+	depends = qt5-quick1
+	depends = qt5-multimedia
+	depends = desktop-file-utils
+	optdepends = php: needed for some scripts
+	provides = eiskaltdcpp-qt5-git=2.3.0.4901.31355fd
+	provides = eiskaltdcpp-qt5
+	conflicts = eiskaltdcpp-qt4
+	conflicts = eiskaltdcpp-qt5
+
+pkgname = eiskaltdcpp-qt4-git
+	pkgdesc = Qt4-based DC and ADC client for EiskaltDC++ core. (GIT Version)
+	install = eiskaltdcpp-git.install
+	depends = eiskaltdcpp-core-git=2.3.0.4901.31355fd
+	depends = eiskaltdcpp-data-git=2.3.0.4901.31355fd
+	depends = aspell
+	depends = qtscriptgenerator
+	optdepends = php: needed for some scripts
+	provides = eiskaltdcpp-qt4-git=2.3.0.4901.31355fd
+	provides = eiskaltdcpp-qt4
+	conflicts = eiskaltdcpp-qt5
+	conflicts = eiskaltdcpp-qt4
+
+pkgname = eiskaltdcpp-gtk2-git
+	pkgdesc = Gtk2-based DC and ADC client based for EiskaltDC++ core. (GIT Version)
+	install = eiskaltdcpp-git.install
+	depends = eiskaltdcpp-core-git=2.3.0.4901.31355fd
+	depends = eiskaltdcpp-data-git=2.3.0.4901.31355fd
+	depends = gtk2
+	depends = libnotify
+	depends = desktop-file-utils
+	provides = eiskaltdcpp-gtk2-git=2.3.0.4901.31355fd
+	provides = eiskaltdcpp-gtk2
+	conflicts = eiskaltdcpp-gtk3
+	conflicts = eiskaltdcpp-gtk2
+
+pkgname = eiskaltdcpp-gtk3-git
+	pkgdesc = Gtk3-based DC and ADC client for EiskaltDC++ core. (GIT Version)
+	install = eiskaltdcpp-git.install
+	depends = eiskaltdcpp-core-git=2.3.0.4901.31355fd
+	depends = eiskaltdcpp-data-git=2.3.0.4901.31355fd
+	depends = gtk3
+	depends = libnotify
+	depends = desktop-file-utils
+	provides = eiskaltdcpp-gtk3-git=2.3.0.4901.31355fd
+	provides = eiskaltdcpp-gtk3
+	conflicts = eiskaltdcpp-gtk2
+	conflicts = eiskaltdcpp-gtk3
+
+pkgname = eiskaltdcpp-daemon-git
+	pkgdesc = DC and ADC daemon for EiskaltDC++ core. (GIT Version)
+	depends = eiskaltdcpp-core-git=2.3.0.4901.31355fd
+	depends = eiskaltdcpp-data-git=2.3.0.4901.31355fd
+	depends = jsoncpp
+	depends = boost-libs
+	provides = eiskaltdcpp-daemon-git=2.3.0.4901.31355fd
+	provides = eiskaltdcpp-cli-git=2.3.0.4901.31355fd
+	provides = eiskaltdcpp-daemon
+	conflicts = eiskaltdcpp-daemon
+
+pkgname = eiskaltdcpp-cli-git
+	pkgdesc = CLI interface for EiskaltDC++ Daemon. (GIT Version)
 	arch = any
-	depends = sh
+	depends = eiskaltdcpp-data-git=2.3.0.4901.31355fd
+	depends = perl-json
+	depends = perl-json-rpc
+	depends = perl-rpc-xml
+	depends = perl-term-shellui
+	provides = eiskaltdcpp-cli-git=2.3.0.4901.31355fd
+	provides = eiskaltdcpp-cli
+	conflicts = eiskaltdcpp-cli
+
+pkgname = eiskaltdcpp-web-git
+	pkgdesc = Web interface for EiskaltDC++ Daemon. (GIT Version)
+	arch = any
+	depends = eiskaltdcpp-data-git=2.3.0.4901.31355fd
+	provides = eiskaltdcpp-web-git=2.3.0.4901.31355fd
+	provides = eiskaltdcpp-web
+	conflicts = eiskaltdcpp-web
+
+pkgname = eiskaltdcpp-data-git
+	pkgdesc = EiskaltDC++ common data files. (GIT Version)
+	install = eiskaltdcpp-git.install
+	arch = any
 	depends = bash
 	depends = hicolor-icon-theme
-	optdepends = php: needed for some optional scripts
+	optdepends = php: needed for some scripts
+	optdepends = python: test http server
+	provides = eiskaltdcpp-data-git=2.3.0.4901.31355fd
 	provides = eiskaltdcpp-data
 	conflicts = eiskaltdcpp-data
 
