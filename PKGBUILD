@@ -1,4 +1,4 @@
-# Maintanier: Tony Ballhause <tony.ballhause@tu-berlin.de>
+# Maintainer: Tony Ballhause <tony.ballhause@tu-berlin.de>
 pkgname=beamer-theme-tub
 pkgver=1.0
 pkgrel=3
