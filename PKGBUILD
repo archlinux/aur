@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=1.2.0rc2
+pkgver=1.2.0
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
@@ -18,7 +18,7 @@ install=mattermost.install
 source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgver.tar.gz
         mattermost.service
         mattermost-user.conf)
-sha256sums=('95c97e7cc15b77785059b0b158eb5384747ca97452e501d269001bde5a50717e'
+sha256sums=('df5d84ee7374182843dcce040e7ff01415dac7f10c2b77de2ad28b8ffb6757d2'
             'b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd')
 
