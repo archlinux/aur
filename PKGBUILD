@@ -3,14 +3,14 @@
 
 pkgname=wine-visual-novel-reader
 _pkgname=wine
-pkgver=1.7.52
+pkgver=1.7.55
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
 source=("http://prdownloads.sourceforge.net/wine/$_pkgname-$pkgver.tar.bz2"
         "livino-wine-1.6.2.patch")
-sha256sums=('0773b32a0c358323db4c383ceb1e9e28d5d4ed4ea37570af2bcb41fecf0d554b'
+sha256sums=('a148f6c9cb45a75ef1a15e60a7db9c22fce985e0e58fe1350e7931dfe5d36119'
             'c0c589ef61781fca51bfb4513c772622af2ab261f3ee17b59f941ae0f143bd31')
 
 pkgdesc="Patched wine with custom prefix for text extraction from visual novels"
@@ -22,6 +22,8 @@ install=wine-visual-novel-reader.install
 
 _depends=(
   fontconfig      lib32-fontconfig
+  lcms2           lib32-lcms2
+  libxml2         lib32-libxml2
   libxcursor      lib32-libxcursor
   libxrandr       lib32-libxrandr
   libxdamage      lib32-libxdamage
@@ -35,7 +37,7 @@ _depends=(
   desktop-file-utils
 )
 
-makedepends=(autoconf ncurses bison perl fontforge flex prelink
+makedepends=(autoconf ncurses bison perl fontforge flex
   'gcc>=4.5.0-2'  'gcc-multilib>=4.5.0-2'
   giflib          lib32-giflib
   libpng          lib32-libpng
@@ -44,9 +46,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   libxcomposite   lib32-libxcomposite
   libxmu          lib32-libxmu
   libxxf86vm      lib32-libxxf86vm
-  libxml2         lib32-libxml2
   libldap         lib32-libldap
-  lcms2           lib32-lcms2
   mpg123          lib32-mpg123
   openal          lib32-openal
   v4l-utils       lib32-v4l-utils
@@ -65,8 +65,6 @@ optdepends=(
   libpng          lib32-libpng
   libldap         lib32-libldap
   gnutls          lib32-gnutls
-  lcms2           lib32-lcms2
-  libxml2         lib32-libxml2
   mpg123          lib32-mpg123
   openal          lib32-openal
   v4l-utils       lib32-v4l-utils
@@ -101,7 +99,7 @@ prepare() {
   cd "$_pkgname-$pkgver"
 
   patch -p1 < "${srcdir}/livino-wine-1.6.2.patch"
-  #sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 
   # Picked up changed configuration after patching
   autoreconf -f
@@ -116,7 +114,7 @@ build() {
   export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
 
   # Allow ccache to work
-  rm -rf "$pkgname"
+  # rm -rf "$pkgname"
   mv "$_pkgname-$_pkgbasever" "$pkgname"
 
   # Get rid of old build dirs
@@ -144,7 +142,7 @@ build() {
     make
 
     _wine32opts=(
-      --libdir=/${_prefix}/lib32
+      --libdir="/${_prefix}/lib32"
       --with-wine64="$srcdir/$pkgname-64-build"
     )
 
@@ -153,11 +151,10 @@ build() {
 
   msg2 "Building Wine-32..."
   cd "${srcdir}/${pkgname}-32-build"
-  ../$pkgname/configure \
+  "../$pkgname/configure" \
     --prefix="${_prefix}" \
     --sysconfdir="${_sysconf}" \
     --with-x \
-    --with-xattr \
     --without-gstreamer \
     --disable-tests \
     "${_wine32opts[@]}"
@@ -185,9 +182,4 @@ package() {
       libdir="${pkgdir}/${_prefix}/lib" \
       dlldir="${pkgdir}/${_prefix}/lib/wine" install
   fi
-  
-  #mkdir -p "${pkgdir}/usr/bin"
-  #ln -s "${_prefix}/bin/wine" "${pkgdir}/usr/bin/wine-vn"
 }
-
-# vim:set ts=8 sts=2 sw=2 et:
