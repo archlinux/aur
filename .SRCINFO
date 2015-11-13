@@ -5,6 +5,7 @@ pkgbase = pymonopoly-git
 	url = https://bitbucket.org/Kycok/pymonopoly-rewrite
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python2-pygame
 	source = pymonopoly-git::git+https://bitbucket.org/Kycok/pymonopoly-rewrite.git
 	md5sums = SKIP
