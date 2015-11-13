@@ -1,6 +1,6 @@
 pkgbase = icon-git
 	pkgdesc = The Icon programming language
-	pkgver = 11.g26f32ee
+	pkgver = 13.g780923d
 	pkgrel = 1
 	url = http://www.cs.arizona.edu/icon/
 	arch = i686
