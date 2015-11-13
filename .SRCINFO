@@ -1,0 +1,15 @@
+pkgbase = python2-slicerator
+	pkgdesc = a lazy-loading, fancy-sliceable iterable
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/soft-matter/slicerator
+	arch = any
+	license = BSD
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://github.com/soft-matter/slicerator/archive/v0.9.4.zip
+	md5sums = 527e2ecf8e417f98156cf0b13ee83f12
+
+pkgname = python2-slicerator
+
