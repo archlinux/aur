@@ -14,6 +14,7 @@ pkgbase = pycharm-eap
 	source = http://download.jetbrains.com/python/pycharm-professional-5.0.1.tar.gz
 	source = pycharm-eap.desktop
 	sha256sums = 038501f116f5b18e5fc30c7b7edf1c076f0ec6d5f2e2c14348004dc8b6745a80
+	sha256sums = 9e83f3760ab2547ef477d9c8a73d38e174afe26083cab3046b86f9c5f1329677
 
 pkgname = pycharm-eap
 
