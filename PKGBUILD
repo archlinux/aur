@@ -22,7 +22,8 @@ conflicts=('eiskaltdcpp')
 options=('!emptydirs')
 source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp.git')
 sha1sums=('SKIP')
-makedepends=('lua'
+makedepends=('cmake'
+             'lua'
              'libidn'
              'aspell'
              'attr'

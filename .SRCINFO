@@ -6,6 +6,7 @@ pkgbase = eiskaltdcpp-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	makedepends = lua
 	makedepends = libidn
 	makedepends = aspell
