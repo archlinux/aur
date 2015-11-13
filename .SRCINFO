@@ -15,7 +15,7 @@ pkgbase = eiskaltdcpp-git
 	makedepends = aspell
 	makedepends = attr
 	makedepends = wget
-	makedepends = boost-libs
+	makedepends = boost
 	makedepends = jsoncpp
 	makedepends = qtscriptgenerator
 	makedepends = qt5-quick1
@@ -48,7 +48,6 @@ pkgname = eiskaltdcpp-qt5-git
 	install = eiskaltdcpp-git.install
 	depends = eiskaltdcpp-core-git=2.3.0.4901.31355fd
 	depends = eiskaltdcpp-data-git=2.3.0.4901.31355fd
-	depends = boost-libs
 	depends = aspell
 	depends = qt5-quick1
 	depends = qt5-multimedia
@@ -103,7 +102,6 @@ pkgname = eiskaltdcpp-daemon-git
 	depends = eiskaltdcpp-core-git=2.3.0.4901.31355fd
 	depends = eiskaltdcpp-data-git=2.3.0.4901.31355fd
 	depends = jsoncpp
-	depends = boost-libs
 	provides = eiskaltdcpp-daemon-git=2.3.0.4901.31355fd
 	provides = eiskaltdcpp-cli-git=2.3.0.4901.31355fd
 	provides = eiskaltdcpp-daemon
