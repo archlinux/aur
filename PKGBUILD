@@ -4,7 +4,7 @@
 # Contributor: Michal Krenek <mikos@sg1.cz>
 
 pkgname=ttf-dejavu-snapshot
-pkgver=2.34+20140118+2580
+pkgver=2.35+20150518+2601
 pkgrel=1
 pkgdesc="Font family based on the Bitstream Vera Fonts with a wider range of characters (development snapshot)"
 arch=('any')
@@ -15,7 +15,7 @@ provides=('ttf-font' 'ttf-dejavu')
 conflicts=('ttf-dejavu')
 install=ttf-dejavu.install
 source=(http://dejavu.sourceforge.net/snapshots/dejavu-fonts-ttf-${pkgver//+/-}.tar.bz2)
-md5sums=('fb214cf77a62d132081d0a2d7d5d77e4')
+md5sums=('0380bc2e26fab356ea16d9c9ebdba7cd')
 
 package() {
   install -dm755 "${pkgdir}"/etc/fonts/conf.avail

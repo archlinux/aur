@@ -1,6 +1,6 @@
 pkgbase = ttf-dejavu-snapshot
 	pkgdesc = Font family based on the Bitstream Vera Fonts with a wider range of characters (development snapshot)
-	pkgver = 2.34+20140118+2580
+	pkgver = 2.35+20150518+2601
 	pkgrel = 1
 	url = http://dejavu-fonts.org/wiki/Main_Page
 	install = ttf-dejavu.install
@@ -13,8 +13,8 @@ pkgbase = ttf-dejavu-snapshot
 	provides = ttf-font
 	provides = ttf-dejavu
 	conflicts = ttf-dejavu
-	source = http://dejavu.sourceforge.net/snapshots/dejavu-fonts-ttf-2.34-20140118-2580.tar.bz2
-	md5sums = fb214cf77a62d132081d0a2d7d5d77e4
+	source = http://dejavu.sourceforge.net/snapshots/dejavu-fonts-ttf-2.35-20150518-2601.tar.bz2
+	md5sums = 0380bc2e26fab356ea16d9c9ebdba7cd
 
 pkgname = ttf-dejavu-snapshot
 
