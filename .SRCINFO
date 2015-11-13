@@ -1,6 +1,6 @@
 pkgbase = recstudio
 	pkgdesc = Cross platform interactive decompiler.
-	pkgver = 4.0_20130724
+	pkgver = 4.1_20150924
 	pkgrel = 1
 	url = http://www.backerstreet.com/rec/rec.htm
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = recstudio
 	source = recstudio.desktop
 	source = recstudio.png
 	source = LICENSE
-	md5sums = 767af17c545da7b92519bbef5a065cb5
+	md5sums = 5fdc11ef14946eef292276863f532376
 	md5sums = 5d6a0bc5ef2a9372b33c78860e776f37
 	md5sums = 8d7e21187611fe192789663e9b9ca92b
 	md5sums = b0e43f834bd7405a36f29c0213413ba3

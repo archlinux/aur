@@ -1,7 +1,7 @@
 # Maintainer: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgname=recstudio
-pkgver=4.0_20130724
+pkgver=4.1_20150924
 pkgrel=1
 pkgdesc='Cross platform interactive decompiler.'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(gtk2)
 [ ${CARCH} = x86_64 ] && depends=(lib32-gtk2)
 source=(http://www.backerstreet.com/rec/RecStudioLinux.tgz recstudio
         recstudio.desktop recstudio.png LICENSE)
-md5sums=(767af17c545da7b92519bbef5a065cb5
+md5sums=(5fdc11ef14946eef292276863f532376
          5d6a0bc5ef2a9372b33c78860e776f37
          8d7e21187611fe192789663e9b9ca92b
          b0e43f834bd7405a36f29c0213413ba3
