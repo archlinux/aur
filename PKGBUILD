@@ -1,4 +1,5 @@
-# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+# Former Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 # Contributor: Beej Jorgensen <beej@beej.us>
 
 pkgname=python2-pypng
