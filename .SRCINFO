@@ -1,7 +1,7 @@
 pkgbase = feedreader
 	pkgdesc = A simple feedreader client for web services like Tiny Tiny RSS and in the future others.
-	pkgver = 1.2.1
-	pkgrel = 5
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://launchpad.net/feedreader
 	install = feedreader.install
 	arch = i686
@@ -21,13 +21,10 @@ pkgbase = feedreader
 	depends = libsecret
 	depends = libxml2
 	depends = rest
-	optdepends = gnome-keyring: needed for authentification in Cinnamon, Gnome
 	provides = feedreader
 	conflicts = feedreader
-	source = https://launchpad.net/feedreader/1.2/1.2.1/+download/FeedReader-1.2.1.tar.gz
-	source = feedreader.patch
-	sha256sums = cb24d6dcef46080f2aa61fdc1b0187a8c52aedf913e6f63325ee46c631e5c87a
-	sha256sums = 4f1ad2f9085930c9436b534fd24e3a40ff026cc24133a645ea09428c7e5143ef
+	source = https://launchpad.net/feedreader/1.4/1.4-final/+download/FeedReader-1.4.tar.gz
+	sha256sums = 707efe7a309704bc3cd361533e3699a81f591619a5295f5fc4902fe556aede4f
 
 pkgname = feedreader
 
