@@ -1,0 +1,35 @@
+From 8f639e7a29b3bfebbbbd8f520c05637377560bb3 Mon Sep 17 00:00:00 2001
+From: Mike Keen <mkeen.atl@gmail.com>
+Date: Thu, 5 Nov 2015 11:47:30 -0500
+Subject: [PATCH] Support the -o flag if the -w flag fails
+ 
+---
+mugshot/MugshotWindow.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+ 
+diff --git a/mugshot/MugshotWindow.py b/mugshot/MugshotWindow.py
+index 35323be..b557edf 100644
+--- a/mugshot/MugshotWindow.py
++++ b/mugshot/MugshotWindow.py
+@@ -632,11 +632,18 @@ class MugshotWindow(Window):
+             success = False
+ 
+         logger.debug('Updating Office Phone...')
++        
+         command = "%s -w \"%s\" %s" % (chfn, office_phone, username)
++        # Office phone is potentially handled by the -o flag in newer versions of chfn
++        command2 = "%s -o \"%s\" %s" % (chfn, office_phone, username)
+         if self.process_terminal_password(command, password):
+             self.office_phone = office_phone
+         else:
+-            success = False
++            # Retry with command2
++            if self.process_terminal_password(command2, password):
++                self.office_phone = office_phone
++            else:
++                success = False
+ 
+         return (success, response)
+ 
+--
+2.6.2
