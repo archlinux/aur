@@ -1,7 +1,7 @@
 pkgbase = screenshooter
 	pkgdesc = Take a screenshot and share it with your friends
 	pkgver = 5.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://screenshooter.net/
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = screenshooter
 	source = screenshooter.desktop
 	md5sums = 9f3d281a63a047b7c90272264916561c
 	md5sums = 23ba3762ff952ae7ab695285c227297e
-	source_i686 = http://kosz.marcin.co/dl/screenshooter-5.30-i686.tar.gz
-	md5sums_i686 = 4daba2a9c44574a02a05a5f207164b87
-	source_x86_64 = http://kosz.marcin.co/dl/screenshooter-5.30-x86_64.tar.gz
-	md5sums_x86_64 = e83a03339f4d18775d3796a318c10087
+	source_i686 = http://screenshooter.net/screenshooter_5.30-i386.tar.gz
+	md5sums_i686 = 1e155d20e8285e879f90e6afe83ec20b
+	source_x86_64 = http://screenshooter.net/screenshooter_5.30-amd64.tar.gz
+	md5sums_x86_64 = e7f5e726a4a4f13b57bc90f0ac90aaf3
 
 pkgname = screenshooter
 
