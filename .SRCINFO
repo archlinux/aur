@@ -1,7 +1,7 @@
 pkgbase = python-py-wink
 	pkgdesc = Python library for interfacing with Wink devices
 	pkgver = r52.ebc9e46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/umbc-hackafe/py-wink
 	arch = any
 	license = MIT
