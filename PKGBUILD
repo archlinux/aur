@@ -2,7 +2,7 @@
 
 pkgname=tikzit
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows the creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
 url="http://tikzit.github.io"
@@ -26,7 +26,7 @@ build() {
 package() {
   source /etc/profile.d/GNUstep.sh
   cd "$srcdir/$pkgname-$pkgver/tikzit"
-  make "DESTDIR=$pkgdir" install || return 1
+  make -j1 "DESTDIR=$pkgdir" install || return 1
 }
 
 # vim: set ts=2 sw=2 et:

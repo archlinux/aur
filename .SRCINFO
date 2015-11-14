@@ -1,7 +1,7 @@
 pkgbase = tikzit
 	pkgdesc = Allows the creation and modification of TeX diagrams written using the pgf/TikZ macro library
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tikzit.github.io
 	install = tikzit.install
 	arch = i686
