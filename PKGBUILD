@@ -1,7 +1,7 @@
 # Maintainer: ava1ar - <mail(at)ava1ar(dot)me>
 
 pkgname=softethervpn-git
-pkgver=v4.17.9562.beta
+pkgver=v4.19.9599.beta
 pkgrel=1
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ sha1sums=('SKIP'
           'efd246e8176683237609b7dae2e12300169b297f'
           'cdfb0c943128286bb318b5c044e5ca53c1dcffff')
 license=('GPL')
+makedepends=('git')
 url="http://www.softether.org/"
 
 pkgver() {
