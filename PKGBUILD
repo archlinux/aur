@@ -2,7 +2,7 @@
 
 pkgname=pymonopoly-git
 pkgver=0.151.0c01210
-pkgrel=1
+pkgrel=2
 pkgdesc="Famous monopoly board game (russian variation - 'Manager'). In active development, so currently there's no ability to play"
 arch=('any')
 url="https://bitbucket.org/Kycok/pymonopoly-rewrite"
@@ -24,6 +24,7 @@ build() {
 package() {
 	mkdir -p $pkgdir/usr/bin
 	cp ${srcdir}/${pkgname}/pymonopoly_linux.py ${pkgdir}/usr/bin/pymonopoly
-	cp -r ${srcdir}/${pkgname}/LIB ${pkgdir}/usr/lib/pymonopoly
+	mkdir ${pkgdir}/usr/lib/pymonopoly
+	cp -r ${srcdir}/${pkgname}/LIB/* ${pkgdir}/usr/lib/pymonopoly/*
 	mv ${pkgdir}/usr/lib/pymonopoly/modules/Globals_linux.py ${pkgdir}/usr/lib/pymonopoly/modules/Globals.py
 }
