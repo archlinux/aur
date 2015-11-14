@@ -4,7 +4,7 @@
 
 pkgname=ghost
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
 url="http://ghost.org"
