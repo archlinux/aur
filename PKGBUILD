@@ -17,11 +17,6 @@ provides=("miraclecast")
 source=("$_name::https://github.com/albfan/miraclecast.git")
 md5sums=('SKIP') #generate with 'makepkg -g'
 
-#prepare() {
-#	cd "$srcdir/$_name"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
-
 build() {
 	cd "$srcdir/$_name"
 	#./configure --prefix=/usr
