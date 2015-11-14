@@ -1,0 +1,24 @@
+pkgbase = xkcd-dl-git
+	pkgdesc = Download ALL xkcd's which have been uploaded till date. Ever!
+	pkgver = latest
+	pkgrel = 1
+	url = http://gstreamer.freedesktop.org/modules/gst-python.html
+	install = xkcd-dl-git.install
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-wheel
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-docopt
+	depends = python-magic>=0.4.10
+	provides = xkcd-dl
+	source = git+https://github.com/prodicus/xkcd-dl
+	source = versions.patch
+	sha256sums = SKIP
+	sha256sums = 151499395b685ec4456da8dbefeaa444222e8e025aa08f19547a4a2566f27254
+
+pkgname = xkcd-dl-git
+
