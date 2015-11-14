@@ -2,8 +2,8 @@
 Name=PyCharm-EAP
 Version=
 Type=Application
-Exec="/opt/pycharm-pro-eap/bin/pycharm.sh" %f
-Icon=/opt/pycharm-pro-eap/bin/pycharm.png
+Exec="/opt/pycharm-eap/bin/pycharm.sh" %f
+Icon=/opt/pycharm-eap/bin/pycharm.png
 Comment="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 Categories=Development;IDE;
 Terminal=false
