@@ -18,7 +18,7 @@ pkgbase = ghost
 	source = new-node.patch
 	sha256sums = aeae4b83553633df4ef3fe6bd97479b6082e3e6f752a263b61957cca3a365e10
 	sha256sums = f6ddfd93a839cadcc34b8b5971948aebad2ab3989210ac04c66b8d681e11d3ee
-	sha256sums = 739766e9c0e0b72b7131a3906cacac72e01e0b4aa59f6b17e7f16fa52723583c
+	sha256sums = 02645f3bebb7c1e770d06c85ce4c24cc0d59976dcde17f036e053d98253e3cfa
 
 pkgname = ghost
 

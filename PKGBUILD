@@ -19,7 +19,7 @@ source=(http://ghost.org/zip/$pkgname-$pkgver.zip
 noextract=($pkgname-$pkgver.zip)
 sha256sums=('aeae4b83553633df4ef3fe6bd97479b6082e3e6f752a263b61957cca3a365e10'
             'f6ddfd93a839cadcc34b8b5971948aebad2ab3989210ac04c66b8d681e11d3ee'
-            '739766e9c0e0b72b7131a3906cacac72e01e0b4aa59f6b17e7f16fa52723583c')
+            '02645f3bebb7c1e770d06c85ce4c24cc0d59976dcde17f036e053d98253e3cfa')
 
 # Note: You may need to log into ghost.org and download the zip file manually
 # and place it inside the same directory as the PKGBUILD
