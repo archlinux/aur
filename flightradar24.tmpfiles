@@ -1,0 +1,2 @@
+D /var/log/fr24feed 0755 fr24 fr24 -
+D /etc/fr24feed 0755 fr24 fr24 -
