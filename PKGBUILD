@@ -14,10 +14,10 @@ source=("https://pypi.python.org/packages/source/s/${_name}/${_name}-${pkgver}.t
 sha256sums=('199318c40d68bf7a6cfa5416c4ac7aa0563af489cf3b1f9fc679dc5720cd6478')
 
 # Enable for tests
-# check() {
-  # cd "${srcdir}/${_name}-${pkgver}"
-  # python setup.py check
-# }
+check() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py check
+}
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
