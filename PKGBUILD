@@ -2,7 +2,7 @@
 
 pkgbase=python2-guessit-git
 pkgname=('python2-guessit-git' 'python-guessit-git')
-pkgver=0.11.1.r930.ded3ba7
+pkgver=0.11.1.r940.4993486
 pkgrel=1
 _gitname="guessit"
 _gitroot="git+https://github.com/wackou/guessit"
