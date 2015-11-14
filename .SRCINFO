@@ -1,6 +1,6 @@
 pkgbase = fundle-git
 	pkgdesc = A minimalist package manager for fish shell
-	pkgver = 20151109
+	pkgver = 20151114
 	pkgrel = 1
 	url = https://github.com/tuvistavie/fundle
 	arch = i686
