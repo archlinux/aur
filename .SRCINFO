@@ -1,8 +1,8 @@
 pkgbase = libcpuid-git
 	pkgdesc = Provides CPU identification for x86 (and x86_64)
-	pkgver = r160.01ece12
+	pkgver = 0.2.2.r0.g535ec64
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/anrieff/libcpuid
 	arch = i686
 	arch = x86_64

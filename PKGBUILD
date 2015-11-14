@@ -3,8 +3,8 @@
 
 _pkgname=libcpuid
 pkgname=$_pkgname-git
-epoch=1
-pkgver=r160.01ece12
+epoch=2
+pkgver=0.2.2.r0.g535ec64
 pkgrel=1
 pkgdesc="Provides CPU identification for x86 (and x86_64)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
