@@ -6,8 +6,8 @@
 
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-qt')
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('i686' 'x86_64')
 url='http://www.ppsspp.org/'
@@ -15,50 +15,41 @@ license=('GPL2')
 depends=('ffmpeg' 'sdl2')
 makedepends=('cmake' 'git' 'glu' 'qt5-tools')
 source=("git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}"
-        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=52c757e'
-        'ppsspp-native::git+https://github.com/hrydgard/native.git#commit=52ce9c1'
+        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=c0db1fc'
         'ppsspp-armips::git+https://github.com/Kingcom/armips.git#commit=a0b878f'
-        'ppsspp-ffmpeg.patch'
-        'ppsspp-gcc5.1.patch')
+        'ppsspp.desktop')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '4d60b99f9e6fe1bb81b2b1b648845f9e76289ba824fcb5e53f2117d0319e086d'
-            'f5f946da7eb234a24338aaa990c50e35966231ea931923c35b5c09ae7ee59ad0')
+            '1c332702d0aeced07df7e12ba8530bc3f19a52bc76c355f6c84c141becfd46d8')
 
 prepare() {
   cd ppsspp
 
-  for submodule in native lang ext/armips; do
+  for submodule in lang ext/armips; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
   done
 
-  patch -Np1 -i ../ppsspp-ffmpeg.patch
-  patch -Np1 -i ../ppsspp-gcc5.1.patch
+  for ui in sdl qt; do
+    if [[ -d build-$ui ]]; then
+      rm -rf build-$ui
+    fi
+    mkdir build-$ui
+  done
 }
 
 build() {
-  cd ppsspp
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
+  cd ppsspp/build-sdl
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_SKIP_RPATH='TRUE'
+    -DCMAKE_SKIP_RPATH='TRUE' \
+    -DUSE_SYSTEM_FFMPEG='TRUE'
   make
 
-  cd ..
-
-  if [[ -d build-qt ]]; then
-    rm -rf build-qt
-  fi
-  mkdir build-qt && cd build-qt
+  cd ../build-qt
 
   qmake-qt5 CONFIG+='release' CONFIG+='system_ffmpeg' ../Qt/PPSSPPQt.pro
   make
@@ -67,14 +58,13 @@ build() {
 package_ppsspp() {
   conflicts=('ppsspp-qt')
 
-  cd ppsspp/build
+  cd ppsspp/build-sdl
 
-  install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,man/man1,pixmaps,ppsspp}}
+  install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,pixmaps,ppsspp}}
   install -m 755 PPSSPPSDL "${pkgdir}"/usr/bin/ppsspp
   cp -dr --no-preserve='ownership' assets "${pkgdir}"/usr/share/ppsspp/
   install -m 644 ../assets/unix-icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
-  install -m 644 ../debian/ppsspp.desktop "${pkgdir}"/usr/share/applications/
-  install -m 644 ../debian/ppsspp.1 "${pkgdir}"/usr/share/man/man1/
+  install -m 644 ../../ppsspp.desktop "${pkgdir}"/usr/share/applications/
 }
 
 package_ppsspp-qt() {
@@ -84,11 +74,10 @@ package_ppsspp-qt() {
 
   cd ppsspp/build-qt
 
-  install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,man/man1,pixmaps}}
+  install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,pixmaps}}
   install -m 755 ppsspp "${pkgdir}"/usr/bin/
   install -m 644 ../assets/unix-icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
-  install -m 644 ../debian/ppsspp.desktop "${pkgdir}"/usr/share/applications/
-  install -m 644 ../debian/ppsspp.1 "${pkgdir}"/usr/share/man/man1/
+  install -m 644 ../../ppsspp.desktop "${pkgdir}"/usr/share/applications/
 }
 
 # vim: ts=2 sw=2 et:
