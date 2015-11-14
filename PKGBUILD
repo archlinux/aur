@@ -20,5 +20,4 @@ pkgver() {
 
 package() {
   install -Dm755 "${srcdir}/docker-makepkg/dmakepkg" "${pkgdir}/usr/bin/dmakepkg"
-  install -Dm644 "${srcdir}/docker-makepkg/zsh-completion" "${pkgdir}/usr/share/zsh/site-functions/_dockershell"
 }
