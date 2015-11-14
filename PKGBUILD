@@ -1,6 +1,6 @@
 # Maintainer: Danil Semelenov <mail@danil.mobi>
 pkgname=pmenu
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Dynamic menu like dmenu for terminal written in Python without dependencies with optional sorting by usage, application launcher and CtrlP alternative."
 url=https://github.com/sgtpep/pmenu
@@ -16,7 +16,7 @@ source=(
   https://raw.githubusercontent.com/sgtpep/$pkgname/v$pkgver/pmenu-run
 )
 md5sums=(
-  cc57291e33e99fbe1630f1883d96b102
+  89cf08aeb39601d1fa8121a341a518cb
   f359b480070d59b0faea2c34492192af
 )
 
