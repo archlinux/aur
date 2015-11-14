@@ -1,7 +1,7 @@
 pkgbase = scangearmp-mg4200
 	pkgdesc = Canon Scanner Driver (for mg4200 series)
 	pkgver = 2.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support-my.canon-asia.com/contents/MY/EN/0100470802.html
 	install = scangearmp-mg4200.install
 	arch = i686

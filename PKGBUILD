@@ -17,7 +17,7 @@ _id=405
 
 pkgname=scangearmp-${_name}
 pkgver=2.00
-pkgrel=1
+pkgrel=2
 _pkgver=2.00-1
 pkgdesc="Canon Scanner Driver (for ${_name} series)"
 url="http://support-my.canon-asia.com/contents/MY/EN/0100470802.html"
@@ -36,26 +36,33 @@ md5sums=(
     '6ff76bfcfa4b4021e47677882772c895'
 )
 
+if [ "$CARCH" == "x86_64" ]; then
+    _libdir=libs_bin64
+else
+    _libdir=libs_bin32
+fi
+
 build() {
-    if [ "$CARCH" == "x86_64" ]; then
-        libdir=libs_bin64
-    else
-        libdir=libs_bin32
-    fi
+    cd "${srcdir}/scangearmp-source-${_pkgver}"
 
     # Patch for libpng>=1.5
-    cd "${srcdir}"/scangearmp-source-${_pkgver}
     patch -p1 -i ../libpng15.patch
     patch -p1 -i ../fix_configure.patch
 
-    cd ${srcdir}/scangearmp-source-${_pkgver}/scangearmp
-    ./autogen.sh --prefix=/usr --enable-libpath=/usr/lib LDFLAGS="-lm -L`pwd`/../com/${libdir}"
+    cd scangearmp
+
+    ./autogen.sh --prefix=/usr --enable-libpath=/usr/lib LDFLAGS="-lm -L`pwd`/../com/${_libdir}"
     # Force the use of system's libtool
     rm -f libtool
     ln -s `which libtool` .
     # Build package
     make clean || return 1
     make || return 1
+}
+
+package() {
+    cd "${srcdir}/scangearmp-source-${_pkgver}/scangearmp"
+
     # Install package
     install -d -m 0755 $pkgdir/usr/lib/bjlib
     make DESTDIR=${pkgdir} install || return 1
@@ -65,16 +72,16 @@ build() {
     install -m 0644 ${srcdir}/scangearmp-source-${_pkgver}/scangearmp/backend/canon_mfp.conf $pkgdir/etc/sane.d/canon_mfp.conf
 
     # Install common libraries
-    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${libdir}/libcncpcmcm.so.8.0.1 ${pkgdir}/usr/lib/
-    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${libdir}/libcncpmsimg.so.1.0.2 ${pkgdir}/usr/lib/
-    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${libdir}/libcncpmslld.so.1.0.1 ${pkgdir}/usr/lib/
-    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${libdir}/libcncpmsui.so.2.0.0 ${pkgdir}/usr/lib/
-    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${libdir}/libcncpnet.so.1.2.2 ${pkgdir}/usr/lib/
+    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${_libdir}/libcncpcmcm.so.8.0.1 ${pkgdir}/usr/lib/
+    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${_libdir}/libcncpmsimg.so.1.0.2 ${pkgdir}/usr/lib/
+    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${_libdir}/libcncpmslld.so.1.0.1 ${pkgdir}/usr/lib/
+    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${_libdir}/libcncpmsui.so.2.0.0 ${pkgdir}/usr/lib/
+    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/com/${_libdir}/libcncpnet.so.1.2.2 ${pkgdir}/usr/lib/
 
     # Install specific libraries
-    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/${_id}/${libdir}/libcncpmsimg${_id}.so.2.0.0 ${pkgdir}/usr/lib/
-    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/${_id}/${libdir}/libcncpmslld${_id}c.so.1.04.1 ${pkgdir}/usr/lib/
-    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/${_id}/${libdir}/libcncpmslld${_id}.so.2.0.0 ${pkgdir}/usr/lib/
+    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/${_id}/${_libdir}/libcncpmsimg${_id}.so.2.0.0 ${pkgdir}/usr/lib/
+    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/${_id}/${_libdir}/libcncpmslld${_id}c.so.1.04.1 ${pkgdir}/usr/lib/
+    install -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/${_id}/${_libdir}/libcncpmslld${_id}.so.2.0.0 ${pkgdir}/usr/lib/
     # Create symbolic links
     cd ${pkgdir}/usr/lib/
     ln -s libcncpcmcm.so.8.0.1 libcncpcmcm.so
