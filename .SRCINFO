@@ -1,6 +1,6 @@
 pkgbase = remmina-plugin-exec
 	pkgdesc = A protocol plugin for Remmina to execute an external process.
-	pkgver = 1.2.0.0
+	pkgver = 1.2.1.0
 	pkgrel = 1
 	url = http://www.muflone.com/remmina-plugin-exec/
 	install = remmina-plugin-exec.install
@@ -11,10 +11,10 @@ pkgbase = remmina-plugin-exec
 	makedepends = cmake
 	depends = gtk3
 	depends = remmina
-	source = remmina-plugin-builder_1.2.0.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.2.0.0.tar.gz
-	source = remmina-plugin-exec_1.2.0.0.tar.gz::https://github.com/muflone/remmina-plugin-exec/archive/1.2.0.0.tar.gz
-	sha256sums = c3cb8201943b00d7475922055a68dd86ec163a01e1f578aae32427ab2427121e
-	sha256sums = bf1f709227313df33e5abfd35942b858b4478a1e38487cda3c26b44bae386263
+	source = remmina-plugin-builder_1.2.1.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.2.1.0.tar.gz
+	source = remmina-plugin-exec_1.2.1.0.tar.gz::https://github.com/muflone/remmina-plugin-exec/archive/1.2.1.0.tar.gz
+	sha256sums = bf2a289f30f1176d3eb1ffd33bfeeaa80b5efd68562eb254a16d1c97337f016b
+	sha256sums = eb3333b9de924922b619f0c88e911cbd91b5cbba99d95e0e732e28965a7c72b8
 
 pkgname = remmina-plugin-exec
 

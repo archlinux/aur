@@ -1,9 +1,9 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=remmina-plugin-exec
-pkgver=1.2.0.0
+pkgver=1.2.1.0
 pkgrel=1
-_builderver=1.2.0.0
+_builderver=1.2.1.0
 pkgdesc="A protocol plugin for Remmina to execute an external process."
 arch=('i686' 'x86_64')
 url="http://www.muflone.com/${pkgname}/"
@@ -13,8 +13,8 @@ makedepends=('pkg-config' 'cmake')
 install="${pkgname}.install"
 source=("remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
         "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('c3cb8201943b00d7475922055a68dd86ec163a01e1f578aae32427ab2427121e'
-            'bf1f709227313df33e5abfd35942b858b4478a1e38487cda3c26b44bae386263')
+sha256sums=('bf2a289f30f1176d3eb1ffd33bfeeaa80b5efd68562eb254a16d1c97337f016b'
+            'eb3333b9de924922b619f0c88e911cbd91b5cbba99d95e0e732e28965a7c72b8')
 
 build() {
   [ -d build ] && rm -rf build
