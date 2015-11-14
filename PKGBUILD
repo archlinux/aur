@@ -33,6 +33,7 @@ package() {
 	cd "$srcdir/$_name"
 	make DESTDIR="$pkgdir/" install
 }
+
 pkgver() {
   cd "$srcdir/$_name"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
