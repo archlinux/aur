@@ -1,6 +1,6 @@
 pkgbase = flickmagnet
 	pkgdesc = HTTP server similar to Netflix and PopcornTime which streams public domain videos from torrent files.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/acerix/flickmagnet
 	install = flickmagnet.install
@@ -15,7 +15,7 @@ pkgbase = flickmagnet
 	depends = python-mako
 	depends = python-requests
 	depends = python-beautifulsoup4
-	source = https://github.com/acerix/flickmagnet/archive/0.0.2.tar.gz
+	source = https://github.com/acerix/flickmagnet/archive/0.0.3.tar.gz
 	source = flickmagnet.install
 	sha256sums = SKIP
 	sha256sums = 75566e170c89ed9638d9178e7c15a7bd8fad2f53222545c973e72642e5c1704e
