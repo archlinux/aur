@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 pkgname='minisatip'
-pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (branch 0.5)"
+pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards"
 pkgver=0.3.79
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
