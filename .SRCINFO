@@ -1,0 +1,21 @@
+pkgbase = brother-ql720nw-cupswrapper
+	pkgdesc = LPR-to-CUPS wrapper for Brother P-Touch QL-720nw labelprinter (metric)
+	pkgver = 1.0.2
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = cupswrapper.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = rpmextract
+	makedepends = cpio
+	depends = cups
+	depends = ghostscript
+	depends = glibc
+	depends = brother-ql720nw-lpr
+	noextract = ql720nwcupswrapper-1.0.2-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp002205/ql720nwcupswrapper-1.0.2-0.i386.rpm
+	sha256sums = c5fc46d1b70cf627f079cba109cccae8ddec3b7bbf49144d7f0566cb7fb5ac73
+
+pkgname = brother-ql720nw-cupswrapper
+
