@@ -2,7 +2,7 @@
 pkgname="password-gorilla"
 realpkgname="gorilla"
 pkgver="1.5.3.7"
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform password manager."
 arch=('x86_64')
 url="https://github.com/zdia/gorilla/wiki/"
@@ -26,7 +26,7 @@ package() {
     local man_dir="${pkgdir}/usr/share/man/man1"
 
     # binary
-    install -D --preserve-timestamps --verbose --mode=u=rwx,go=rx "${srcdir}/gorilla1537_64.bin" "${bin_dir}/gorilla"
+    install -D --preserve-timestamps --verbose --mode=u=rwx,go=rx "${srcdir}/gorilla1537_64.bin" "${bin_dir}/password-gorilla"
 
     # icons
     install -D --preserve-timestamps --verbose "${srcdir}/${realpkgname}-${pkgver}/utilities/make-deb.data/16x16.password-gorilla.png" "${icon16x16_dir}/password-gorilla.png"
