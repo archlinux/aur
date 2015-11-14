@@ -1,21 +1,9 @@
-info_dir=/usr/share/info
-info_files=(gnuplot.info)
-
 post_install() {
-cat << EOF
-==> To add the gnuplot mode in Emacs, add the content of 
-==> /usr/share/emacs/site-lisp/dotemacs.gnuplot to your 
-==> ~/.emacs file.
-EOF
-
   if [ -f /usr/bin/mktexlsr ]; then
     echo "Updating TeX tree..."
     mktexlsr
   fi
-
-  for f in ${info_files[@]}; do
-    install-info ${info_dir}/$f.gz ${info_dir}/dir 2> /dev/null
-  done
+  install-info /usr/share/info/gnuplot-info /usr/share/info/dir
 }
 
 post_upgrade() {
@@ -23,9 +11,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-  for f in ${info_files[@]}; do
-    install-info --delete ${info_dir}/$f.gz ${info_dir}/dir 2> /dev/null
-  done
+  install-info --delete /usr/share/info/gnuplot-info /usr/share/info/dir 
 }
 
 post_remove() {
