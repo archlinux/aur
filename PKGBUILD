@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('python-pyqt4' 'python-dbus' 'jack')
 optdepends=(
     'a2jmidid: alsa-midi bridge'
-    'pulseaudio: pulseaudio bridge'
+    'pulseaudio-jack: pulseaudio bridge'
     'zita-ajbridge: alternate alsa-audio bridge'
     'jack_capture: needed for cadence-render'
     'ladish: needed for claudia'
