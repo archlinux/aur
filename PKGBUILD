@@ -1,6 +1,6 @@
 # Maintainer: Miguel de Val-Borro <valborro at princeton dot edu>
 pkgname=('python-django-guardian' 'python2-django-guardian')
-pkgver=1.3
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Implementation of per object permissions for Django 1.2 or later"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://github.com/lukaszb/django-guardian"
 license=('BSD')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/d/django-guardian/django-guardian-${pkgver}.tar.gz")
-md5sums=('5e90f213bf43f0eab1cc674bc06974e9')
+md5sums=('53589b9f1943db0e53a12808eb124c67')
 
 build() {
   cp -r ${srcdir}/django-guardian-${pkgver} ${srcdir}/django-guardian-${pkgver}-py2
