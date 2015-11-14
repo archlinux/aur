@@ -18,20 +18,20 @@ source=("$_name::https://github.com/albfan/miraclecast.git")
 md5sums=('SKIP') #generate with 'makepkg -g'
 
 build() {
-	cd "$srcdir/$_name"
-	./autogen.sh --prefix=/usr
-   ./configure
-	make
+  cd "$srcdir/$_name"
+  ./autogen.sh --prefix=/usr
+  ./configure
+  make
 }
 
 check() {
-	cd "$srcdir/$_name"
-	make -k check
+  cd "$srcdir/$_name"
+  make -k check
 }
 
 package() {
-	cd "$srcdir/$_name"
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$_name"
+  make DESTDIR="$pkgdir/" install
 }
 
 pkgver() {
