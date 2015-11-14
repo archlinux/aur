@@ -1,7 +1,7 @@
 # Maintainer: Craig Cabrey <craigcabrey@gmail.com>
 pkgname=grestful
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple RESTful API client written in GTK 3."
 arch=("i686" "x86_64")
 url="https://github.com/gert-dev/grestful"
@@ -17,8 +17,11 @@ build() {
 }
 
 package() {
+  builddir="${srcdir}/${pkgname}-${pkgver}"
   mkdir -p "${pkgdir}/usr/bin"
-  cp "${srcdir}/${pkgname}-${pkgver}/grestful" "${pkgdir}/usr/bin/grestful"
-  mkdir -p "${pkgdir}/usr/share"
-  cp -R "${srcdir}/${pkgname}-${pkgver}/public" "${pkgdir}/usr/share/grestful"
+  cp "${builddir}/grestful" "${pkgdir}/usr/bin/grestful"
+  mkdir -p "${pkgdir}/usr/share/grestful"
+  cp -R "${builddir}/public/design" "${pkgdir}/usr/share/grestful/"
+  mkdir -p "${pkgdir}/usr/share/applications"
+  cp -R "${builddir}/public/grestful.desktop" "${pkgdir}/usr/share/applications/"
 }

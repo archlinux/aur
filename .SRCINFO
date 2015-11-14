@@ -1,7 +1,7 @@
 pkgbase = grestful
 	pkgdesc = A simple RESTful API client written in GTK 3.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gert-dev/grestful
 	arch = i686
 	arch = x86_64
