@@ -1,0 +1,19 @@
+pkgbase = python-poppler-qt5-git
+	pkgdesc = Python binding to libpoppler-qt5.
+	pkgver = 0.24.2
+	pkgrel = 1
+	url = https://github.com/wbsoft/python-poppler-qt5
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = python-sip
+	depends = python
+	depends = python-pyqt5
+	depends = poppler-qt5
+	provides = python-poppler-qt5
+	conflicts = python-poppler-qt5
+	source = python-poppler-qt5-git::git+https://github.com/wbsoft/python-poppler-qt5.git
+	sha256sums = SKIP
+
+pkgname = python-poppler-qt5-git
+
