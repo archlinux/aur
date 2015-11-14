@@ -1,10 +1,11 @@
 pkgbase = cutter-test_framework
 	pkgdesc = cutter is a C/C++ unit test framework.
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cutter.sourceforge.net/index.html
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = FDL1.3
 	license = LGPL3
 	depends = glib2
