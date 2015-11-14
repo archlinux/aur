@@ -299,34 +299,47 @@ package_clang-svn() {
 
     # The Clang Static Analyzer is installed in a separate package
     # TODO: Probably there's more elegant way to achieve this.
+
     rm -rf "${srcdir}/clang-analyzer.tmp"
+
     install -m 0755 -d \
         "${srcdir}/clang-analyzer.tmp/usr/bin" \
         "${srcdir}/clang-analyzer.tmp/usr/share/man/man1" \
+        "${srcdir}/clang-analyzer.tmp/usr/share/scan-build" \
         "${srcdir}/clang-analyzer.tmp/usr/share/scan-view"
+
     mv \
-        "${pkgdir}/usr/bin/Reporter.py" \
-        "${pkgdir}/usr/bin/ScanView.py" \
-        "${pkgdir}/usr/bin/startfile.py" \
         "${pkgdir}/usr/bin/scan-build" \
         "${pkgdir}/usr/bin/scan-view" \
         "${pkgdir}/usr/libexec/c++-analyzer" \
         "${pkgdir}/usr/libexec/ccc-analyzer" \
         \
         "${srcdir}/clang-analyzer.tmp/usr/bin/"
+
     mv \
         "${pkgdir}/usr/share/man/man1/scan-build.1" \
+        \
         "${srcdir}/clang-analyzer.tmp/usr/share/man/man1/"
+
+    mv \
+        "${pkgdir}/usr/share/scan-build/scanview.css" \
+        "${pkgdir}/usr/share/scan-build/sorttable.js" \
+        \
+        "${srcdir}/clang-analyzer.tmp/usr/share/scan-build/"
+
     mv \
         "${pkgdir}/usr/share/scan-view/FileRadar.scpt" \
         "${pkgdir}/usr/share/scan-view/GetRadarVersion.scpt" \
+        "${pkgdir}/usr/share/scan-view/Reporter.py" \
+        "${pkgdir}/usr/share/scan-view/ScanView.py" \
         "${pkgdir}/usr/share/scan-view/bugcatcher.ico" \
-        "${pkgdir}/usr/share/scan-view/scanview.css" \
-        "${pkgdir}/usr/share/scan-view/sorttable.js" \
+        "${pkgdir}/usr/share/scan-view/startfile.py" \
         \
         "${srcdir}/clang-analyzer.tmp/usr/share/scan-view/"
+
     rmdir \
         "${pkgdir}/usr/libexec" \
+        "${pkgdir}/usr/share/scan-build" \
         "${pkgdir}/usr/share/scan-view"
 
     # Clean up documentation
