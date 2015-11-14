@@ -11,8 +11,8 @@ url="https://github.com/satya164/elegance-colors"
 license=('GPL3')
 depends=('gnome-shell>=3.6' 'imagemagick')
 makedepends=('vala')
-conflicts=('gnome-shell-themes-elegance-colors')
 provides=('gnome-shell-themes-elegance-colors')
+conflicts=('gnome-shell-themes-elegance-colors')
 install="${_pkgname}.install"
 source=(${_pkgname}::'git+https://github.com/satya164/elegance-colors.git')
 sha256sums=('SKIP')
