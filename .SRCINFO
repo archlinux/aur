@@ -1,0 +1,15 @@
+pkgbase = python-py-wink-git
+	pkgdesc = Python library for interfacing with Wink devices
+	pkgver = r52.ebc9e46
+	pkgrel = 1
+	url = https://github.com/umbc-hackafe/py-wink
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = git
+	depends = python
+	source = py-wink::git+https://github.com/umbc-hackafe/py-wink.git
+	md5sums = SKIP
+
+pkgname = python-py-wink-git
+
