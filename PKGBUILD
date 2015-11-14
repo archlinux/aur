@@ -4,15 +4,14 @@
 
 pkgname=gnome-terminal-fedora
 _pkgname=gnome-terminal
-pkgver=3.18.1
+pkgver=3.18.2
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('vte3-notification>=0.42.1' 'gsettings-desktop-schemas' 'dconf')
+depends=('vte3-notification>=0.42.1' 'gsettings-desktop-schemas' 'dconf' 'gtk3')
 makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'desktop-file-utils'
              'libnautilus-extension' 'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
-optdepends=('gconf: settings migration when upgrading from older version')
 options=('!emptydirs')
 url='https://www.gnome.org'
 provides=("${_pkgname}=${pkgver}")
@@ -22,16 +21,14 @@ source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
 	'0001-build-Don-t-treat-warnings-as-errors.patch'
 	'gnome-terminal-symbolic-new-tab-icon.patch'
-	'gnome-terminal-restore-dark-transparency.patch'
-	'gnome-terminal-command-notify.patch'
+	'gnome-terminal-dark-transparency-notify.patch'
 	'org.gnome.Terminal.gschema.override'
 )
 sha256sums=(
-	'6eecc81f38c8019d9f49b8950cd814da88d84a8d98c9da98a57be06a1b9f4119'
+	'5e35c0fa1395258bab83952cfabe4c1828b8655bcd761f8faed70b452bd89efa'
 	'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
 	'5a3d70ffca64e81f10ede0ed222199581bfb8e92bec26d89dc86130243f8994d'
-	'd912e5e889c50ecdae880728dc78bf227f4f736ab27a3748f97f343658e2c30a'
-	'd7ca2a58dfd0c44352dbb70ec48a3ba20ea514be7652cc023785a4cdb5257e05'
+	'18e2f9530e759707775162a0207e782072a202f5c5efbbfe16079c6985eb37d9'
 	'e2797c0591e45b7cf4e7e8d3b926803bcff129d88dfe3b54f63dc61e0c8377de'
 )
 
@@ -40,16 +37,22 @@ prepare () {
 
 	patch -p1 -i '../0001-build-Don-t-treat-warnings-as-errors.patch'
 	patch -p1 -i '../gnome-terminal-symbolic-new-tab-icon.patch'
-	patch -p1 -i '../gnome-terminal-restore-dark-transparency.patch'
-	patch -p1 -i '../gnome-terminal-command-notify.patch'
+	patch -p1 -i '../gnome-terminal-dark-transparency-notify.patch'
 
 	autoreconf -f -i
 }
 
 build() {
 	cd "${_pkgname}-${pkgver}"
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-		--libexecdir=/usr/lib/${_pkgname} --disable-static --with-nautilus-extension
+	./configure --prefix=/usr \
+	            --sysconfdir=/etc \
+	            --localstatedir=/var \
+	            --libexecdir=/usr/lib/${_pkgname} \
+	            --disable-static \
+	            --disable-gterminal \
+	            --disable-migration \
+	            --with-gtk=3.0 \
+	            --with-nautilus-extension
 	make
 }
 
