@@ -6,7 +6,7 @@ pkgdesc="Curio - Concurrent I/O"
 arch=('any')
 url="https://github.com/dabeaz/curio"
 license=('BSD')
-depends=('python')
+depends=('python' 'python-setuptools')
 source=('https://pypi.python.org/packages/source/c/curio/curio-0.1.tar.gz')
 md5sums=('cc667ad56947843f6326b61b099e8609')
 
