@@ -1,6 +1,6 @@
 pkgbase = emacs-xwidget-git
 	pkgdesc = The famous editor from xwidget_mvp branch
-	pkgver = 25.0.50.r123149
+	pkgver = 25.0.50.r123441
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs.install
