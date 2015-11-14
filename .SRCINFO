@@ -1,20 +1,18 @@
 pkgbase = bcalc
 	pkgdesc = Double-dummy solver for bridge (the card game).
-	pkgver = 13.01.0
+	pkgver = 15.10.0
 	pkgrel = 1
 	url = http://www.bcalc.w8.pl
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = lua>=5.1
-	depends = libcurl-compat
+	depends = lua52
+	depends = libcurl-gnutls
 	options = !strip
 	source = http://www.bcalc.w8.pl/download/bcalc_linuxpkgdevel_09.tar.gz
+	source = http://www.bcalc.w8.pl/download/bcalc15100_linux_x86-64.tar.gz
 	md5sums = 32ebb622ae7ef95626279a0dfc877964
-	source_i686 = http://www.bcalc.w8.pl/download/bcalc13010_linux_i686.tar.gz
-	md5sums_i686 = 8dbbb3db7261c640cc2704b744621f2b
-	source_x86_64 = http://www.bcalc.w8.pl/download/bcalc13010_linux_x86-64.tar.gz
-	md5sums_x86_64 = 8d80c342fbda2e2c155fc83954f33cca
+	md5sums = 807fc80b48a2fee7a4e89f09842a865a
 
 pkgname = bcalc
 
