@@ -2,12 +2,11 @@
 _name=humanize
 pkgname='python-humanize'
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc=''
 url='https://github.com/jmoiron/humanize'
 arch=('any')
 license=('MIT')
-depends=('python')
 makedepends=('python')
 source=("https://pypi.python.org/packages/source/h/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('a43f57115831ac7c70de098e6ac46ac13be00d69abbf60bdcac251344785bb19')
