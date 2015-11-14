@@ -1,7 +1,7 @@
 # Maintainer: ThePilot <afuturepilotis at gmail dot com>
 # Contributor: deadsurgeon42 <deadsurgeon42 at gmail dot com>
 pkgname=vibrancy-colors
-pkgver=2.5.1
+pkgver=2.6
 pkgrel=1
 pkgdesc="A flat icon theme composed from many open source icon projects"
 arch=('any')
@@ -9,8 +9,8 @@ url="http://www.ravefinity.com/p/vibrancy-colors-gtk-icon-theme.html"
 license=('custom:cc-by-sa-3.0' 'GPL2')
 options=('!strip' '!zipman' 'libtool' 'staticlibs')
 install=update-icon-cache.install
-source=($pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAQ1RTMGxPX2JWY2c)
-md5sums=('3a46151d6e97694f11b617322d55e12f')
+source=($pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAZ1N2bl8tZnRIaFE)
+md5sums=('53b9c1ee7aafe24fca9d1b73e10371f1')
 
 package() {
  mkdir -p $pkgdir/usr/share/icons/
