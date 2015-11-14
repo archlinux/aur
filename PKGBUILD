@@ -1,13 +1,13 @@
 # Maintainer: Eric Biggers <ebiggers3@gmail.com>
 pkgname=libdivsufsort
 pkgver=2.0.1
-pkgrel=1
-pkgdesc="A fast and lightweight C library to construct the suffix array and the Burrows-Wheeler transformed string for any input string of a constant-size alphabet."
+pkgrel=2
+pkgdesc="A lightweight suffix-sorting library"
 arch=("i686" "x86_64")
-url="https://code.google.com/p/${pkgname}/"
+url="https://github.com/y-256/libdivsufsort"
 license=("BSD")
 makedepends=("cmake")
-source=("https://libdivsufsort.googlecode.com/files/${pkgname}-${pkgver}.tar.bz2")
+source=("https://github.com/y-256/libdivsufsort/archive/${pkgver}.tar.gz")
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -23,4 +23,4 @@ package() {
     rm -f "${pkgdir}"/usr/lib/*.la
 }
 
-sha1sums=("9a4af93d36724c0136eccbc5317a61b19323656e")
+sha1sums=("4d0d0c153ec74ce3584d393440a3d344342581ad")
