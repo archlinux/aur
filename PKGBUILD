@@ -19,8 +19,8 @@ md5sums=('SKIP') #generate with 'makepkg -g'
 
 build() {
 	cd "$srcdir/$_name"
-	#./configure --prefix=/usr
 	./autogen.sh --prefix=/usr
+   ./configure
 	make
 }
 
