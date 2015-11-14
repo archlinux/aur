@@ -1,6 +1,6 @@
 pkgbase = perf-tools-git
 	pkgdesc = Performance analysis tools based on Linux perf_events (aka perf) and ftrace
-	pkgver = r171.30ff475
+	pkgver = r181.0c13e83
 	pkgrel = 1
 	url = https://github.com/brendangregg/perf-tools
 	arch = any
