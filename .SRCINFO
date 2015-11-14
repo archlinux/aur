@@ -1,0 +1,17 @@
+pkgbase = rhythmbox-plugin-fileorganizer-git
+	pkgdesc = Music library organizer (move and rename files according to Rhythmbox database)
+	pkgver = 3.r16.ce123eb
+	pkgrel = 1
+	url = https://github.com/lachlan-00/rb-fileorganizer
+	arch = any
+	license = CCPL
+	makedepends = git
+	depends = rhythmbox
+	depends = python-gobject
+	provides = rhythmbox-plugin-fileorganizer
+	conflicts = rhythmbox-plugin-fileorganizer
+	source = git+https://github.com/lachlan-00/rb-fileorganizer.git
+	sha256sums = SKIP
+
+pkgname = rhythmbox-plugin-fileorganizer-git
+
