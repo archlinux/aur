@@ -4,7 +4,7 @@
 
 pkgname=gnuplot-cvs
 pkgver=5.1r20151112
-pkgrel=1
+pkgrel=2
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
 url="http://www.gnuplot.info"
