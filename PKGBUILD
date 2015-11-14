@@ -1,13 +1,14 @@
 # Maintainer: Eugenio M. Vigo <emvigo@gmail.com>
+# Co-mantainer: Rubén Fdes. Moreira <ruben.fdesmoreira@openmailbox.org>
 
 pkgname=fair-coin
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="FairCoin Qt official client"
 arch=(i686 x86_64)
 url="https://fair-coin.org/"
 license=('MIT')
-depends=('qt4' 'boost-libs' 'qrencode')
+depends=('qt4' 'boost-libs' 'qrencode' 'protobuf')
 makedepends=('boost' 'imagemagick')
 source=("https://github.com/FairCoinTeam/fair-coin/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
