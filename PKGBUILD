@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: gerito <gero.bare@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Charles Bos <charlesbos1@gmail.com>
 # Contributor: Balló György <ballogyor+arch@gmail.com>
 # Contributor: Branchini Massimo <max.bra.gtalk@gmail.com>
@@ -6,7 +7,7 @@
 pkgbase=libindicate
 pkgname=('libindicate-gtk2' 'libindicate-gtk3' 'libindicate-sharp')
 pkgver=12.10.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Library for raising indicators via DBus'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libindicate'
@@ -42,6 +43,7 @@ build() {
     --localstatedir='/var' \
     --libexecdir='/usr/lib/libindicate' \
     --sysconfdir='/etc' \
+    CSC=/usr/bin/mcs \
     --disable-static
   make -j1
 
@@ -53,6 +55,7 @@ build() {
     --libexecdir='/usr/lib/libindicate' \
     --sysconfdir='/etc' \
     --with-gtk='2' \
+    CSC=/usr/bin/mcs \
     --disable-static
   make -j1
 }
