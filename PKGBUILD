@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
 pkgname=miraclecast
 _name=miraclecast
 pkgver=185.a92df37
