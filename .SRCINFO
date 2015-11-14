@@ -1,7 +1,7 @@
 pkgbase = watsup
 	pkgdesc = Showing some system status informations
-	pkgver = 3.3
-	pkgrel = 2
+	pkgver = 3.4
+	pkgrel = 1
 	url = http://www.kornelix.com/watsup
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = watsup
 	makedepends = xdg-utils
 	depends = gtk3
 	depends = gdk-pixbuf2
+	depends = pango
 	depends = lm_sensors
-	source = http://www.kornelix.com/uploads/1/3/0/3/13035936/watsup-3.3.tar.gz
-	md5sums = 0b8282dcad7d4a787642ecb397a66823
+	source = http://www.kornelix.com/uploads/1/3/0/3/13035936/watsup-3.4.tar.gz
+	md5sums = d72e03b2bef2036d4bd3c734ae768dbb
 
 pkgname = watsup
 
