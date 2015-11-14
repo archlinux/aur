@@ -1,6 +1,6 @@
 pkgbase = bibtool-git
 	pkgdesc = Command line manipulation of BibTeX files - from git-repo
-	pkgver = 2.61.40.g8f1cbfc
+	pkgver = 2.61.41.g340a765
 	pkgrel = 1
 	url = http://www.gerd-neugebauer.de/software/TeX/BibTool/
 	arch = i686
