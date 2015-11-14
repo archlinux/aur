@@ -14,6 +14,8 @@ depends=('gtk-engine-murrine')
 #optdepends=("python: scripts to simplify the rendering process"
 #            "inkscape: edit theme assets")
 makedepends=('git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/snwh/${_pkgname}.git")
 md5sums=('SKIP')
 
