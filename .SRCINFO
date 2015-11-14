@@ -1,7 +1,7 @@
 pkgbase = libindicate
 	pkgdesc = Library for raising indicators via DBus
 	pkgver = 12.10.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://launchpad.net/libindicate
 	arch = i686
 	arch = x86_64
