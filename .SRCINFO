@@ -1,0 +1,16 @@
+pkgbase = hyphen-sr
+	pkgdesc = Serbian Cyrillic and Latin hyphen dictionaries
+	pkgver = 20151113
+	pkgrel = 1
+	url = https://github.com/grakic/hyphen-sr
+	arch = any
+	license = GPL
+	license = LGPL
+	license = MPL
+	license = CC BY-SA 3.0 Unported
+	optdepends = hyphen: library for high quality hyphenation and justification
+	source = hyphen-sr-20151113.tar.gz::https://github.com/grakic/hyphen-sr/archive/4edd9b13ed7f4484658dea5bde5aa1d920dabe4a.tar.gz
+	sha1sums = 4e8d3ca5065ff98ef63b0d200e469aa7e0222927
+
+pkgname = hyphen-sr
+
