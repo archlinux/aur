@@ -14,7 +14,7 @@ depends=("systemd-kdbus" "kdbus") #kdbus-git provides kdbus
 #optdepends=()
 provides=("miraclecast")
 #conflicts=()
-source=("$_name::https://github.com/albfan/miraclecast.git")
+source=("$_name::git+https://github.com/albfan/miraclecast.git#branch=master")
 md5sums=('SKIP') #generate with 'makepkg -g'
 
 build() {
