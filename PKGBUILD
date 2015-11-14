@@ -1,7 +1,7 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=wimlib
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="A library and program to extract, create, and modify WIM files"
 arch=("i686" "x86_64")
@@ -30,7 +30,7 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
-	for file in NEWS README*; do
+	for file in NEWS README; do
 		install -Dm644 $file "$pkgdir/usr/share/doc/$pkgname/$file"
 	done
 	for file in COPYING*; do
@@ -38,4 +38,4 @@ package() {
 	done
 }
 
-sha1sums=('fac34a6388d758db4886b81b19c69a206e20be11')
+sha1sums=('3e04424f805e0421235566d57996ccbfe222ce5d')
