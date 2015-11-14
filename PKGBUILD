@@ -3,7 +3,7 @@
 
 _pkgname=ksystemlog
 pkgname=${_pkgname}-git
-pkgver=0.4.r320.2f2ca84
+pkgver=0.4.r325.7b08ba7
 pkgrel=1
 pkgdesc='KDE SystemLog Application. (GIT version)'
 arch=('i686' 'x86_64')
