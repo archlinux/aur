@@ -1,6 +1,6 @@
 # Maintainer: ant32 <antreimer@gmail.com>
 pkgname=mingw-w64-poppler
-pkgver=0.33.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="PDF rendering library based on xpdf 3.0 (mingw-w64)"
 arch=(any)
@@ -20,7 +20,7 @@ optdepends=("mingw-w64-glib2: libpoppler-glib"
             "mingw-w64-qt4: libpoppler-qt4")
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz")
-md5sums=('69927d1614d6704021c0b0dd0ee6a852')
+md5sums=('c635e1742202cbbd9182cb0255d95652')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

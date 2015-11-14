@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-poppler
 	pkgdesc = PDF rendering library based on xpdf 3.0 (mingw-w64)
-	pkgver = 0.33.0
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = http://poppler.freedesktop.org
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = mingw-w64-poppler
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://poppler.freedesktop.org/poppler-0.33.0.tar.xz
-	md5sums = 69927d1614d6704021c0b0dd0ee6a852
+	source = http://poppler.freedesktop.org/poppler-0.37.0.tar.xz
+	md5sums = c635e1742202cbbd9182cb0255d95652
 
 pkgname = mingw-w64-poppler
 
