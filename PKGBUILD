@@ -2,7 +2,7 @@
 pkgname="password-gorilla"
 realpkgname="gorilla"
 pkgver="1.5.3.7"
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform password manager."
 arch=('x86_64')
 url="https://github.com/zdia/gorilla/wiki/"
@@ -22,6 +22,7 @@ package() {
     local icon16x16_dir="${icon_dir}/16x16/apps"
     local pixmaps_dir="${pkgdir}/usr/share/pixmaps"
     local desktop_dir="${pkgdir}/usr/share/applications"
+    local menu_dir="${pkgdir}/usr/share/menu"
     local man_dir="${pkgdir}/usr/share/man/man1"
 
     # binary
@@ -31,9 +32,13 @@ package() {
     install -D --preserve-timestamps --verbose "${srcdir}/${realpkgname}-${pkgver}/utilities/make-deb.data/16x16.password-gorilla.png" "${icon16x16_dir}/password-gorilla.png"
     install -D --preserve-timestamps --verbose "${srcdir}/${realpkgname}-${pkgver}/utilities/make-deb.data/32x32.password-gorilla.png" "${icon32x32_dir}/password-gorilla.png"
     install -D --preserve-timestamps --verbose "${srcdir}/${realpkgname}-${pkgver}/utilities/make-deb.data/48x48.password-gorilla.png" "${icon48x48_dir}/password-gorilla.png"
+    install -D --preserve-timestamps --verbose "${srcdir}/${realpkgname}-${pkgver}/utilities/make-deb.data/password-gorilla.xpm" "${pixmaps_dir}/password-gorilla.xpm"
 
     # desktop file
     install -D --preserve-timestamps --verbose "${srcdir}/${realpkgname}-${pkgver}/utilities/make-deb.data/password-gorilla.desktop" "${desktop_dir}/password-gorilla.desktop"
+
+    # menu file
+    install -D --preserve-timestamps --verbose "${srcdir}/${realpkgname}-${pkgver}/utilities/make-deb.data/password-gorilla.menu" "${menu_dir}/password-gorilla.menu"
 
     # man file
     install -D --preserve-timestamps --verbose "${srcdir}/${realpkgname}-${pkgver}/utilities/make-deb.data/password-gorilla.1" "${man_dir}/password-gorilla.1"
