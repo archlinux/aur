@@ -4,5 +4,5 @@ post_install() {
 
   echo "==> To signup and configure fr24feed, run"
   echo "==> "
-  echo "==> sudo -u fr24 fr24feed --signup --config-file=/etc/fr24feed/fr24feed/ini"
+  echo "==> sudo -u fr24 fr24feed --signup --config-file=/etc/fr24feed/fr24feed.ini"
 }
