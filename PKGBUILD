@@ -10,7 +10,7 @@ _debrepo=http://ftp.de.debian.org/debian/pool/main/i/
  
 pkgname=iceweasel-bin
 pkgver=${_debver}.deb${_debrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian Browser based on Mozilla Firefox (bin version)"
 arch=('i686' 'x86_64')
 url=("https://packages.debian.org/experimental/iceweasel")
@@ -49,6 +49,10 @@ package(){
       rm -rv "${pkgdir}"/usr/lib/{mozilla,mime}
       rm -rv "${pkgdir}"/usr/share/{bug,mozilla,doc}
       rm -v "${pkgdir}"/usr/bin/firefox
+
+      msg "Workaround for libvpx.so.2"
+      ln -s /usr/lib/libvpx.so "${pkgdir}"/usr/lib/libvpx.so.2
+
 }
  
 # vim:set ts=2 sw=2 et:
