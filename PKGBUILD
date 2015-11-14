@@ -1,7 +1,7 @@
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 
 pkgname=cadence-git
-pkgver=r971.f8b18cf
+pkgver=r979.7eeeb94
 pkgrel=1
 epoch=1
 pkgdesc="JACK Audio Toolbox."

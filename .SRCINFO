@@ -1,6 +1,6 @@
 pkgbase = cadence-git
 	pkgdesc = JACK Audio Toolbox.
-	pkgver = r971.f8b18cf
+	pkgver = r979.7eeeb94
 	pkgrel = 1
 	epoch = 1
 	url = http://kxstudio.sf.net/cadence
