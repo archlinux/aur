@@ -3,8 +3,9 @@
 
 pkgname=dump1090-fa-git
 _gitname=dump1090
-pkgver=2.1.3.r10.g497f88f
+pkgver=1.15.r108.g497f88f
 pkgrel=1
+epoch=1
 pkgdesc="FlightAware/Mutability fork of dump1090, a simple Mode S decoder for RTLSDR devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/mutability/dump1090"
@@ -21,7 +22,7 @@ install='dump1090-fa.install'
  
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --long --tags | sed 's/faup1090-//g' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match=v* | sed 's/dev.//g' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
