@@ -1,7 +1,7 @@
 pkgbase = screenshooter
 	pkgdesc = Take a screenshot and share it with your friends
 	pkgver = 5.30
-	pkgrel = 2
+	pkgrel = 3
 	url = http://screenshooter.net/
 	arch = i686
 	arch = x86_64
