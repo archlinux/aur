@@ -1,6 +1,6 @@
 pkgbase = python2-pafy
 	pkgdesc = Python API for YouTube
-	pkgver = v0.3.76
+	pkgver = v0.3.78
 	pkgrel = 1
 	url = http://np1.github.io/pafy
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-pafy
 	depends = python2
 	provides = python2-pafy
 	conflicts = python-pafy
-	source = python2-pafy-v0.3.76.tar.gz::https://github.com/mps-youtube/pafy/tarball/v0.3.76
-	md5sums = 165a1ef429ad3cc0cd53154c497a9289
+	source = python2-pafy-v0.3.78.tar.gz::https://github.com/mps-youtube/pafy/tarball/v0.3.78
+	md5sums = 7e6fa4f4435def2621138be718894593
 
 pkgname = python2-pafy
 
