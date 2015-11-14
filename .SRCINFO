@@ -8,6 +8,8 @@ pkgbase = gnome-shell-theme-copernico-git
 	makedepends = git
 	depends = gtk3
 	depends = gnome-shell
+	provides = gnome-shell-theme-copernico
+	conflicts = gnome-shell-theme-copernico
 	source = copernico::git+https://github.com/mgyugcha/copernico-theme.git
 	sha256sums = SKIP
 

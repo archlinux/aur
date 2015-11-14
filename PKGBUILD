@@ -10,6 +10,8 @@ url="http://gnome-look.org/content/show.php/Copernico+Theme?content=167439"
 license=('GPL3')
 depends=('gtk3' 'gnome-shell')
 makedepends=('git')
+provides=('gnome-shell-theme-copernico')
+conflicts=('gnome-shell-theme-copernico')
 source=(${_pkgname}::'git+https://github.com/mgyugcha/copernico-theme.git')
 sha256sums=('SKIP')
 
