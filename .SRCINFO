@@ -1,0 +1,17 @@
+pkgbase = python-sen
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/TomasTomecek/sen
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-urwid
+	makedepends = python-humanize
+	makedepends = python-docker-py
+	depends = python
+	provides = sen=0.1.1
+	source = https://pypi.python.org/packages/source/s/sen/sen-0.1.1.tar.gz
+	sha256sums = 199318c40d68bf7a6cfa5416c4ac7aa0563af489cf3b1f9fc679dc5720cd6478
+
+pkgname = python-sen
+
