@@ -8,8 +8,8 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.8.2
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ conflicts=("$_name")
 source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2{,.asc}
         ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-md5sums=('63b2cfeea930e942ff7579fd0064c5be'
+md5sums=('99f31723326dfe1bfd1bc7521338f2d2'
          'SKIP'
          '71be9bcd297cb9ce833bbc5d425c0470')
 
