@@ -369,14 +369,14 @@ package_clang-analyzer-svn() {
 
     cd "${srcdir}"
 
-    _compile_python_files "${srcdir}/clang-analyzer.tmp/usr/bin"
-
     mv "${srcdir}/clang-analyzer.tmp"/* "${pkgdir}"/
 
     sed -i 's|/libexec/|/bin/|' "${pkgdir}/usr/bin/scan-build"
 
     _fix_python_exec_path \
         "${pkgdir}/usr/bin/scan-view"
+
+    _compile_python_files "${pkgdir}/usr/share/scan-view"
 
     _install_license
 }
