@@ -1,0 +1,12 @@
+pkgbase = perl-ntlm
+	pkgdesc = Perl/CPAN module NTLM
+	pkgver = 1.09
+	pkgrel = 1
+	url = http://search.cpan.org/~nbebout/NTLM/
+	arch = any
+	license = GPL
+	source = http://search.cpan.org/CPAN/authors/id/N/NB/NBEBOUT/NTLM-1.09.tar.gz
+	md5sums = da314ee94b14af2a2f39b6f2c0046e73
+
+pkgname = perl-ntlm
+
