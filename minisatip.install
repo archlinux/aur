@@ -1,0 +1,14 @@
+post_upgrade() {
+    setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/minisatip
+    systemd-sysusers
+}
+
+post_install() {
+    post_upgrade
+}
+
+post_remove() {
+    getent passwd minisatip &>/dev/null && userdel minisatip >/dev/null
+    getent group minisatip &>/dev/null && groupdel minisatip >/dev/null
+    return 0
+}

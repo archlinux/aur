@@ -1,0 +1,15 @@
+[Unit]
+Description=Single threaded SAT>IP server
+After=network.target
+Wants=oscam.service
+
+[Service]
+User=minisatip
+Group=minisatip
+WorkingDirectory=/var/lib/minisatip
+Type=simple
+EnvironmentFile=-/etc/conf.d/minisatip
+ExecStart=/usr/bin/minisatip -f $SERVER_ARGS
+
+[Install]
+WantedBy=multi-user.target
