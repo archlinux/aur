@@ -3,14 +3,14 @@
 pkgname=rgain
 pkgver=1.3.3
 _dirname='fk-'$pkgname'-ee516a7bec19'
-pkgrel=1
+pkgrel=2
 pkgdesc="Modules to read, write and calculate Replay Gain"
 arch=('any')
 url="https://bitbucket.org/fk/rgain"
 license=('GPL')
 groups=()
 #Actually we get a traceback when gst-plugins-good is not installed
-depends=('python2' 'mutagen' 'gstreamer' 'pygobject2-devel' 'gst-plugins-good')
+depends=('mutagen' 'pygobject2-devel' 'gst-plugins-good' 'gst-python2')
 makedepends=('python2-docutils')
 optdepends=('gst-plugins-bad' 'gst-plugins-ugly')
 provides=()
