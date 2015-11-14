@@ -1,6 +1,6 @@
 pkgname=bibfilex-gtk
 name=bibfilex-gtk
-pkgver=1.2.5.0
+pkgver=1.2.6.0
 pkgrel=1
 pkgdesc="A free bibliographic manager for GNU/Linux"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ fi
 
 if [ "${CARCH}" = 'x86_64' ]; then
     ARCH='amd64'
-    md5sums=('4cfe3e47acffc30ba4c1a26ae623506e')
+    md5sums=('2638eecb29b70f150aac44069df7a492')
 elif [ "${CARCH}" = 'i686' ]; then
     ARCH='i386'
-    md5sums=('d0b417b47f6e30570aa61a6e7f59b5ba')
+    md5sums=('553a9e65c2aafbd95a4448358111f667')
 fi
 
 source=("https://sites.google.com/site/bibfilex/download/${pkgname}_${pkgver}_${ARCH}.deb?attredirects=0&d=1")
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd ${pkgdir}
-  tar -xvf ${startdir}/src/data.tar.gz
+  tar -xvf ${startdir}/src/data.tar.xz
   mv -v opt/bibfilex opt/${pkgname}
   mv -v usr/share/applications/Bibfilex.desktop usr/share/applications/${pkgname}.desktop
   mv -v usr/share/doc/bibfilex usr/share/doc/${pkgname}
