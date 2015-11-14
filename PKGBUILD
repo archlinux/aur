@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 pkgname='minisatip-git'
-pkgdesc="SAT>IP server for linux using local DVB-S2, DVB-S or DVB-T cards"
-pkgver=r192.b4f0bdb
+pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (branch 0.5)"
+pkgver=r224.7331f1c
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/catalinii/minisatip"
@@ -13,14 +13,14 @@ depends=('libdvbcsa' 'linuxtv-dvb-apps')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 install='minisatip.install'
-source=("git+https://github.com/catalinii/minisatip"
+source=("git+https://github.com/catalinii/minisatip#branch=0.5"
         'minisatip.service'
         'minisatip.sysuser'
         'minisatip.conf')
 sha256sums=('SKIP'
             'ea3b7b52c33946c156f174c043015e6922af0c28ef43f9a4b4615e3abb36d4ad'
             '9f0ea2c29ab6c69bd444a6e4021928bbafc332c71735e1af975c3a973c3e5c2e'
-            '42f3bb7ed053afa338535bd649b4738bf142a9d039010f6bd1a356cf51e80dbc')
+            '24a03332e662c80c00d8f7ce40a60b35bcd7c8d08052c8e4deeb7e0f6720a2aa')
 
 pkgver() {
     cd ${srcdir}/minisatip
@@ -38,7 +38,6 @@ package() {
     install -Dm644 ../minisatip.sysuser ${pkgdir}/usr/lib/sysusers.d/minisatip.conf
     install -Dm644 ../minisatip.conf ${pkgdir}/etc/conf.d/minisatip
     install -Dm755 minisatip ${pkgdir}/usr/bin/minisatip
-    mkdir -p ${pkgdir}/var/lib/minisatip
-    cp -ar html ${pkgdir}/var/lib/minisatip
-    chown -fR 183:183 ${pkgdir}/var/lib/minisatip
+    mkdir -p ${pkgdir}/usr/share/minisatip
+    cp -ar html ${pkgdir}/usr/share/minisatip
 }

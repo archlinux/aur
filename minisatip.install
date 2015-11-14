@@ -1,6 +1,8 @@
 post_upgrade() {
     setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/minisatip
     systemd-sysusers
+    echo "The git sources got switch to 0.5 branch to test experimental futures."
+    echo "If You wish to use version 0.3x feel free to install 'minisatip' package."
 }
 
 post_install() {
