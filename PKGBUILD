@@ -5,7 +5,7 @@
 # Contributor: bender02 at gmx dot com
 
 pkgname=asymptote-git
-pkgver=2.36.27.gd7d0920
+pkgver=2.36.28.g71ff9e7
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
