@@ -1,6 +1,6 @@
 pkgbase = arno-iptables-firewall
 	pkgdesc = A secure stateful firewall for both single and multi-homed machine
-	pkgver = 2.0.1e
+	pkgver = 2.0.1f
 	pkgrel = 1
 	url = http://rocky.eld.leidenuniv.nl/joomla/
 	arch = any
@@ -25,12 +25,10 @@ pkgbase = arno-iptables-firewall
 	backup = etc/arno-iptables-firewall/plugins/traffic-shaper.conf
 	backup = etc/arno-iptables-firewall/plugins/transparent-dnat.conf
 	backup = etc/arno-iptables-firewall/plugins/transparent-proxy.conf
-	source = http://rocky.eld.leidenuniv.nl/arno-iptables-firewall/arno-iptables-firewall_2.0.1e.tar.gz
+	source = http://rocky.eld.leidenuniv.nl/arno-iptables-firewall/arno-iptables-firewall_2.0.1f.tar.gz
 	source = arno-iptables-firewall.patch
-	source = arno-iptables-firewall.service
-	sha256sums = fa7b865e5d9b8e077cba73b2f28695a2fd691092a0a7f9e1c16ee369fc27fe43
-	sha256sums = f1c09af1470354aa8b1a506cd97d1a5c2f95599db896e6dbde7dd506d4c85d1d
-	sha256sums = 8c35a221ae7bb4b8abda923590b8bfab856dcc4d3f85991eebb37314efd1931c
+	sha256sums = 198848b8241b31f8498b43517af13879f55e00d17edfc6647ca48b43af2789a9
+	sha256sums = fbac95bced8565b00f5ff7b403579b1aaf7d386deb61c0f4a9acf50408a8200d
 
 pkgname = arno-iptables-firewall
 

@@ -1,25 +1,8 @@
---- etc/arno-iptables-firewall/firewall.conf	2010-12-30 13:17:02.000000000 +0100
-+++ etc/arno-iptables-firewall/firewall.conf	2011-01-22 21:10:39.000000000 +0100
-@@ -233,18 +233,18 @@
- # 'whereis iptables' to manually locate it), required for (default) IPv4 support
- # -----------------------------------------------------------------------------
--IP4TABLES="/sbin/iptables"
-+IP4TABLES="/usr/bin/iptables"
- 
- # (EXPERT SETTING!) Location of the ip6tables-binary (use 'locate ip6tables' or
- # 'whereis ip6tables' to manually locate it), required for IPv6 support
- # -----------------------------------------------------------------------------
--IP6TABLES="/sbin/ip6tables"
-+IP6TABLES="/usr/bin/ip6tables"
- 
- # (EXPERT SETTING!) Location of the environment file
- # -----------------------------------------------------------------------------
+--- etc/arno-iptables-firewall/firewall.conf.orig	2015-10-01 16:58:12.000000000 +0200
++++ etc/arno-iptables-firewall/firewall.conf	2015-11-14 13:05:29.748859879 +0100
+@@ -235 +235 @@
 -ENV_FILE="/usr/local/share/arno-iptables-firewall/environment"
 +ENV_FILE="/usr/share/arno-iptables-firewall/environment"
- 
- # (EXPERT SETTING!) Location of plugin binary & config files
- # -----------------------------------------------------------------------------
+@@ -239 +239 @@
 -PLUGIN_BIN_PATH="/usr/local/share/arno-iptables-firewall/plugins"
 +PLUGIN_BIN_PATH="/usr/share/arno-iptables-firewall/plugins"
- PLUGIN_CONF_PATH="/etc/arno-iptables-firewall/plugins"
- 
