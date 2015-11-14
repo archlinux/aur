@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=miraclecast
 _name=miraclecast
-pkgver=150.12193e4
+pkgver=185.a92df37
 pkgrel=1
 #epoch=
 pkgdesc="MiracleCast provides software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd."
