@@ -1,0 +1,26 @@
+pkgbase = istanbul
+	pkgdesc = Desktop Session Recorder
+	pkgver = 0.2.2
+	pkgrel = 10
+	url = https://wiki.gnome.org/Projects/Istanbul
+	install = istanbul.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gnome-python-extras
+	depends = gstreamer0.10-base-plugins
+	depends = gstreamer0.10-good-plugins
+	depends = gstreamer0.10-python
+	depends = python2-gconf
+	depends = python2-xlib
+	options = !libtool
+	source = http://zaheer.merali.org/istanbul-0.2.2.tar.bz2
+	source = istanbul.patch
+	sha256sums = 3baa2462ecf1b13d0d95cd035fe0f0fc0fcc3df8cb04a3b7f237e90e9a40acd5
+	sha256sums = 9ed6fc1893e34d073db7408ba94e2660d5383599ef369e01b681c40e7a48ff56
+	sha512sums = b7d5b99cb3860414f4139fd1fa887e4d58f99fc5c94f9d24d7a96f03e82ec7338d733e3ab7d8b8db6ae2c00f69aa48a099b957a23e3827c7d6505ab92bbb5c60
+	sha512sums = d7e3bd2380e96583b47c46c27a8459aa37b4e6ff164d46cfe216e1ea4490bf3f115b774c2ecf5e10ead96b5ed466735fa39c966d5fe33005a874e45bd4ce1dc0
+
+pkgname = istanbul
+

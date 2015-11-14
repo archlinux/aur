@@ -1,0 +1,401 @@
+From: Florian Boucault <florian@boucault.net>
+Subject: Patch fixing audio recording 
+Origin: upstream
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=430151 
+Bug-Debian: http://bugs.debian.org/486660
+
+Index: istanbul-0.2.2.orig/istanbul/main/screencast.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/screencast.py	(révision 131)
++++ istanbul-0.2.2.orig/istanbul/main/screencast.py	(copie de travail)
+@@ -135,7 +135,7 @@
+             m.run()
+             m.destroy()
+             self.finished_callback(message)
+-        elif message.type == gst.MESSAGE_EOS:
++        elif message.type == gst.MESSAGE_EOS or message.type == gst.MESSAGE_CLOCK_LOST:
+             self._pipeline.set_state(gst.STATE_NULL)
+             self.on_eos()
+ 
+--- istanbul-0.2.2.orig/bin/istanbul.in
++++ istanbul-0.2.2/bin/istanbul.in
+@@ -18,15 +18,9 @@
+ import os
+ import sys
+ 
+-if not '@PYGTK_DIR@' in sys.path:
+-    sys.path.insert(0, '@PYGTK_DIR@')
+-
+ import pygtk
+ pygtk.require('2.0')
+ 
+-if not '@PYTHONDIR@' in sys.path:
+-    sys.path.insert(0, '@PYTHONDIR@')
+-
+ from istanbul.main import main
+ from istanbul.configure import config
+ 
+--- istanbul-0.2.2.orig/istanbul/main/window_select.py
++++ istanbul-0.2.2/istanbul/main/window_select.py
+@@ -85,7 +85,7 @@
+                 return child
+ 
+         for child in children:
+-            result = self._get_client_window_check_children(window)
++            result = self._get_client_window_check_children(child)
+             if result != None:
+                 return result
+ 
+Index: istanbul-0.2.2/doc/man/istanbul.1
+===================================================================
+--- istanbul-0.2.2.orig/doc/man/istanbul.1	2007-08-11 14:59:47.000000000 +0200
++++ istanbul-0.2.2/doc/man/istanbul.1	2007-08-11 15:01:04.000000000 +0200
+@@ -14,8 +14,9 @@
+ area: a click on the icon to start recording, another click to stop.
+ .PP
+ \fBistanbul\fP preferences can be configured with a right click on the icon.
++You can choose to record full screen, a selected windows or a particular area.
+ .TP
+-It can also stream to an Icecast2 server.
++It can also record audio from GStreamer default input.
+ .PP
+ By default it records to ~/desktop-recording.ogg
+ .SH OPTIONS
+@@ -29,55 +30,13 @@
+ .B \-\-version
+ Show version of program.
+ .TP
+-.B \-\-usage
+-Display brief usage message
++.B \-\-help\-all
++Print summary of all available options for istanbul.
+ .TP
+-Istanbul accepts also GStreamer options.
+-A summary of them is included below.
+-.TP
+-.B \-\-gst\-version
+-Print the GStreamer version
+-.TP
+-.B \-\-gst\-fatal\-warnings
+-Make all warnings fatal
+-.TP
+-.B \-\-gst\-debug\-help
+-Print available debug categories and exit
+-.TP
+-.B \-\-gst\-debug\-level=LEVEL
+-Default debug level from 1 (only error) to 5 (anything) or 0 for no output
+-.TP
+-.B \-\-gst\-debug=LIST
+-Comma-separated list of category_name:level pairs to set specific levels for the individual categories
+-.TP
+-.B \-\-gst\-debug\-no\-color
+-Disable colored debugging output
+-.TP
+-.B \-\-gst\-debug\-disable
+-Disable debugging
+-.TP
+-.B \-\-gst\-disable\-cpu\-opt
+-Disable accelerated CPU instructions
+-.TP
+-.B \-\-gst\-plugin\-spew
+-Enable verbose plugin loading diagnostics
+-.TP
+-.B \-\-gst\-plugin\-path=PATHS
+-path list for loading plugins (separated by ':')
+-.TP
+-.B \-\-gst\-plugin\-load=PLUGINS 
+-Comma-separated list of plugins to preload in addition to the list stored in environment variable GST_PLUGIN_PATH
+-.TP
+-.B \-\-gst\-disable\-segtrap
+-Disable trapping of segmentation faults during plugin loading
+-.TP
+-.B \-\-gst\-scheduler=SCHEDULER
+-Scheduler to use (default is 'opt')
+-.TP
+-.B \-\-gst\-registry=REGISTRY
+-Registry to use
+-.SH AUTHOR
+-Istanbul was written by  Zaheer Abbas Merali <zaheerabbas@merali.org>.
++.B \-\-help\-gst
++Print summary of available options for the gstreamer framework.
++.SH AUTHORS
++Istanbul was written by Zaheer Abbas Merali <zaheerabbas@merali.org>.
+ .PP
+ This manual page was written by Luca Bruno <luca.br@uno.it>,
+ for the Debian project (but may be used by others).
+--- istanbul-0.2.2.orig/data/istanbul.desktop.in
++++ istanbul-0.2.2/data/istanbul.desktop.in
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ _Name=Istanbul Desktop Session Recorder
+ _GenericName=Desktop Session Recorder
+ _Comment=Record a video of your desktop session
+@@ -7,5 +6,5 @@
+ Terminal=false
+ Type=Application
+ Icon=istanbul.png
+-Categories=GNOME;Application;AudioVideo;
++Categories=GNOME;AudioVideo;
+ StartupNotify=false
+Index: istanbul-0.2.2/istanbul/main/save_window.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/save_window.py	2007-08-11 15:53:00.000000000 +0200
++++ istanbul-0.2.2/istanbul/main/save_window.py	2007-08-11 16:58:11.000000000 +0200
+@@ -253,11 +253,12 @@
+ 
+         if Preferences().has_gnomevfs():
+             import gnomevfs
++            XFER_TARGET_DEFAULT_PERMS = 1 << 12
+             try:
+                 trysave = gnomevfs.xfer_uri(gnomevfs.URI("file://%s" % self.location), 
+                     gnomevfs.URI(self.filechooser.get_uri()), 
+                     gnomevfs.XFER_DELETE_ITEMS,
+-                    gnomevfs.XFER_ERROR_MODE_ABORT, 
++                    gnomevfs.XFER_ERROR_MODE_ABORT | XFER_TARGET_DEFAULT_PERMS, 
+                     gnomevfs.XFER_OVERWRITE_MODE_ABORT)
+             except gnomevfs.FileExistsError:
+                 dialog = gtk.MessageDialog(self,
+@@ -276,7 +277,7 @@
+                         gnomevfs.URI("file://%s" % self.location), 
+                         gnomevfs.URI(self.filechooser.get_uri()), 
+                         gnomevfs.XFER_DELETE_ITEMS,
+-                        gnomevfs.XFER_ERROR_MODE_ABORT, 
++                        gnomevfs.XFER_ERROR_MODE_ABORT | XFER_TARGET_DEFAULT_PERMS, 
+                         gnomevfs.XFER_OVERWRITE_MODE_REPLACE)
+                     except Exception:
+                         dialog = gtk.MessageDialog(self,
+@@ -299,7 +300,10 @@
+             import shutil
+ 
+             try:
++                umask = os.umask(0)
++                empty_umask = os.umask(umask)
+                 shutil.move(self.location, self.filechooser.get_uri()[7:])
++                os.chmod(self.filechooser.get_uri()[7:], 0777-umask)
+             except Exception:
+                 dialog = gtk.MessageDialog(self,
+                     gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+Index: istanbul-0.2.2/istanbul/main/tray_icon.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/tray_icon.py	2009-12-30 11:50:39.000000000 +0100
++++ istanbul-0.2.2/istanbul/main/tray_icon.py	2009-12-30 11:50:47.000000000 +0100
+@@ -23,7 +23,6 @@
+ from istanbul.main.preferences import Preferences
+ 
+ import gtk
+-import egg.trayicon
+ 
+ import locale, gettext
+ _ = gettext.gettext
+@@ -33,20 +32,13 @@
+     state = RecordingState.STOPPED
+     current_screencast = None
+     popup_menu = TrayPopupMenu()
+-    event_box = Screen().event_box
++    tray_image = gtk.StatusIcon()
+ 
+     def __init__(self):
+-        gtk.window_set_default_icon_name(gtk.STOCK_MEDIA_RECORD)
+-        self.tray_image = gtk.Image()
+-        self.tray_image.set_from_stock(gtk.STOCK_MEDIA_RECORD, gtk.ICON_SIZE_SMALL_TOOLBAR)
+-        self.event_box.add(self.tray_image)
+-        self.tooltips = gtk.Tooltips()
+-        self.tooltips.set_tip(self.event_box,
+-            _("Left click to start screencast.  Right click for menu."))
+-        self.tray_container = egg.trayicon.TrayIcon("istanbul")
+-        self.tray_container.add(self.event_box)
+-        self.event_box.connect("button-press-event", self._trayicon_clicked)
+-        self.tray_container.show_all()
++        self.tray_image.set_from_stock(gtk.STOCK_MEDIA_RECORD)
++        self.tray_image.set_tooltip(_("Left click to start screencast.  Right click for menu."))
++        self.tray_image.connect("button-press-event", self._trayicon_clicked)
++        self.tray_image.set_visible(True)
+ 
+     def _trayicon_clicked(self, widget, event):
+         """
+@@ -55,21 +47,17 @@
+         """
+         if event.button == 1:
+             if self.state == RecordingState.STOPPED:
+-                self.tray_image.set_from_stock(gtk.STOCK_MEDIA_STOP, 
+-                    gtk.ICON_SIZE_SMALL_TOOLBAR)
+-                self.tooltips.set_tip(self.event_box,
+-                    _("Left click to stop recording screencast."))
++                self.tray_image.set_from_stock(gtk.STOCK_MEDIA_STOP)
++                self.tray_image.set_tooltip(_("Left click to stop recording screencast."))
+                 self.state = RecordingState.RECORDING
+                 self.current_screencast = Screencast(self.stop_handler)
+                 self.current_screencast.selector = self.popup_menu.selector
+                 self.current_screencast.start_recording()
+ 
+             elif self.state == RecordingState.RECORDING:
+-                self.tray_image.set_from_stock(gtk.STOCK_HARDDISK,
+-                    gtk.ICON_SIZE_SMALL_TOOLBAR)
++                self.tray_image.set_from_stock(gtk.STOCK_HARDDISK)
+                 self.state = RecordingState.SAVING
+-                self.tooltips.set_tip(self.event_box,
+-                    _("In process of saving to disk."))
++                self.tray_image.set_tooltip(_("In process of saving to disk."))
+                 self.current_screencast.stop_recording()
+                
+         # only show popup if in idle state                    
+@@ -77,11 +65,8 @@
+             self.popup_menu.show()
+     
+     def stop_handler(self, event):
+-        self.tray_image.set_from_stock(gtk.STOCK_MEDIA_RECORD, 
+-            gtk.ICON_SIZE_SMALL_TOOLBAR)
++        self.tray_image.set_from_stock(gtk.STOCK_MEDIA_RECORD)
+         self.state = RecordingState.STOPPED
+-        self.tooltips.set_tip(self.event_box,
+-            _("Left click to start screencast.  Right click for menu."))
++        self.tray_image.set_tooltip(_("Left click to start screencast.  Right click for menu."))
+         return False
+ 
+-
+Index: istanbul-0.2.2/istanbul/main/main.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/main.py	2009-12-30 11:51:23.000000000 +0100
++++ istanbul-0.2.2/istanbul/main/main.py	2009-12-30 11:51:33.000000000 +0100
+@@ -49,8 +49,6 @@
+ 
+ import gst
+ 
+-import egg.trayicon
+-
+ _ = gettext.gettext
+ 
+ class Istanbul:
+
+Index: istanbul-0.2.2/configure
+===================================================================
+--- istanbul-0.2.2.orig/configure	2007-08-08 22:54:20.000000000 +0200
++++ istanbul-0.2.2/configure	2007-08-08 22:54:36.000000000 +0200
+@@ -22509,7 +22509,7 @@
+ 
+ try:
+ 
+-    import egg.trayicon
++    import sys
+ 
+     sys.exit(0)
+ except ImportError:
+From: Jef Spaleta <jspaleta@gmail.com>
+Subject: Try to get the xid on realization of the videowidget
+Origin: upstream
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=604938
+Bug-Debian: http://bugs.debian.org/554568
+Add fix from Ubuntu
+
+Index: istanbul-0.2.2/istanbul/main/save_window.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/save_window.py	2010-07-08 10:38:56.609390459 +0200
++++ istanbul-0.2.2/istanbul/main/save_window.py	2010-07-08 10:38:53.153107943 +0200
+@@ -35,8 +35,13 @@
+     def __init__(self):
+         gtk.DrawingArea.__init__(self)
+         self.imagesink = None
++        self._xid = None
+         self.unset_flags(gtk.DOUBLE_BUFFERED)
+ 
++    def do_realize(self):
++        gtk.DrawingArea.do_realize(self)
++        self._xid = self.window.xid
++
+     def do_expose_event(self, event):
+         if self.imagesink:
+             self.imagesink.expose()
+@@ -45,9 +50,9 @@
+             return True
+ 
+     def set_sink(self, sink):
+-        assert self.window.xid
++        assert self._xid is not None
+         self.imagesink = sink
+-        self.imagesink.set_xwindow_id(self.window.xid)
++        self.imagesink.set_xwindow_id(self._xid)
+ 
+ class SaveWindow(gtk.Window):
+     UPDATE_INTERVAL = 500
+From: Jef Spaleta <jspaleta@gmail.com>
+Subject: Additional patch to fix preview video widget in save_window.py
+Origin: upstream
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=604938
+Bug-Debian: http://bugs.debian.org/554568
+
+Index: istanbul-0.2.2/istanbul/main/save_window.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/save_window.py	2010-07-08 10:39:51.433390429 +0200
++++ istanbul-0.2.2/istanbul/main/save_window.py	2010-07-08 10:39:49.184894943 +0200
+@@ -143,8 +143,11 @@
+             yoptions=0)
+         table.set_row_spacing(0,6)
+         table.set_row_spacing(1,6)
++        def init_videowidget( widget):
++            widget._xid = widget.window.xid
++            self.player.pause()
+         self.videowidget.connect_after('realize',
+-                                       lambda *x: self.player.pause() )
++            init_videowidget )
+         self.videowidget.set_size_request(width, height)
+ 
+         # create save, edit, cancel buttons
+Index: istanbul-0.2.2/istanbul/main/save_window.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/save_window.py	2010-08-17 11:45:43.178263468 +0200
++++ istanbul-0.2.2/istanbul/main/save_window.py	2010-08-17 11:46:54.030511524 +0200
+@@ -265,7 +265,7 @@
+             try:
+                 trysave = gnomevfs.xfer_uri(gnomevfs.URI("file://%s" % self.location), 
+                     gnomevfs.URI(self.filechooser.get_uri()), 
+-                    gnomevfs.XFER_DELETE_ITEMS,
++                    gnomevfs.XFER_REMOVESOURCE,
+                     gnomevfs.XFER_ERROR_MODE_ABORT | XFER_TARGET_DEFAULT_PERMS, 
+                     gnomevfs.XFER_OVERWRITE_MODE_ABORT)
+             except gnomevfs.FileExistsError:
+@@ -281,10 +281,12 @@
+                 dialog.hide()
+                 if res == gtk.RESPONSE_YES:
+                     try:
++                        if os.path.isdir(self.filechooser.get_uri()[7:]):
++                            raise Exception()
+                         trysave = gnomevfs.xfer_uri(
+                         gnomevfs.URI("file://%s" % self.location), 
+                         gnomevfs.URI(self.filechooser.get_uri()), 
+-                        gnomevfs.XFER_DELETE_ITEMS,
++                        gnomevfs.XFER_REMOVESOURCE,
+                         gnomevfs.XFER_ERROR_MODE_ABORT | XFER_TARGET_DEFAULT_PERMS, 
+                         gnomevfs.XFER_OVERWRITE_MODE_REPLACE)
+                     except Exception:
+Index: istanbul-0.2.2/istanbul/main/screencast.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/screencast.py	2010-08-17 11:38:02.898762661 +0200
++++ istanbul-0.2.2/istanbul/main/screencast.py	2010-08-17 11:38:51.154511463 +0200
+@@ -95,7 +95,7 @@
+             if Preferences().has_gconf():
+                 asource = 'gconfaudiosrc name=audiosource'
+             else:
+-                asource = 'alsasrc name=audiosource'
++                asource = 'autoaudiosrc name=audiosource'
+             acappipeline = '%s ! audioconvert ! vorbisenc' % asource
+ 
+         vencode_pipeline = 'video/x-raw-yuv,width=%d,height=%d,framerate=%s '\
+--- a/istanbul/main/save_window.py	2007-02-23 02:01:12.000000000 -0900
++++ b/istanbul/main/save_window.py	2009-11-25 21:28:31.000000000 -0900
+@@ -289,6 +289,15 @@
+                         dialog.hide()
+                     else:
+                         save_succesful = True
++            except Exception:
++                dialog = gtk.MessageDialog(self,
++                    gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
++                    gtk.MESSAGE_QUESTION,
++                    gtk.BUTTONS_OK,
++                    _("There was an unknown error writing to \"%s\".  Please try a different file or location.") % (
++                    self.filechooser.get_uri()))
++                dialog.run()
++                dialog.hide()
+             else:
+                 save_succesful = True
+         else:
