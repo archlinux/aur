@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-keepkey
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Python library for communicating with KeepKey Hardware Wallet"
 arch=('any')
@@ -17,8 +17,8 @@ url="https://github.com/keepkey/python-keepkey"
 license=('LGPL3')
 options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/keepkey/python-keepkey/tar.gz/v$pkgver)
-md5sums=('f6808f9f6197770f67079295bd8ee372')
-sha256sums=('ffd7cbda3e97707e0ed80b62268ceb2e505b55bfbd0650f47ef5e0b65a53a8b9')
+md5sums=('838262145e5cbadfc55ffbbd31bb6e20')
+sha256sums=('b642fac4c801ccb52c83e5791c3eb33ca5d8bb3c87c1e166f187f87dde980d00')
 provides=('keepkeyctl' 'python2-keepkey')
 conflicts=('keepkeyctl')
 
