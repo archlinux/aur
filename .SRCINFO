@@ -1,0 +1,20 @@
+pkgbase = brother-ql720nw-lpr
+	pkgdesc = Brother LPR driver for P-Touch QL-720NW labelprinter
+	pkgver = 1.0.2
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = lpr.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	makedepends = rpmextract
+	depends = cups
+	depends = ghostscript
+	noextract = ql720nwlpr-1.0.2-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp002203/ql720nwlpr-1.0.2-0.i386.rpm
+	source = license.txt
+	sha256sums = 376dd85f57bffa6c681dfbf7ebffce554f9c69ee23f191abf99c6ffc4e8ecdfb
+	sha256sums = 3bc1ec170d87992f379de83cb6e6ce775e88f31049f5cba7cdddc84d956fae0e
+
+pkgname = brother-ql720nw-lpr
+

@@ -1,0 +1,13 @@
+# Install file for brother-ql720nw-lpr
+
+post_install() {
+	useradd -s /bin/false -g lp lp
+	mkdir -p /var/spool/lpd/ql720nw
+	/opt/brother/PTouch/ql720nw/inf/setupPrintcappt1 ql720nw -i USB
+}
+
+pre_remove() {
+	rm -rf /var/spool/lpd/ql720nw
+	/opt/brother/PTouch/ql720nw/inf/setupPrintcappt1 ql720nw -e
+}
+
