@@ -1,6 +1,6 @@
 pkgbase = miraclecast
 	pkgdesc = MiracleCast provides software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd.
-	pkgver = 150.12193e4
+	pkgver = 185.a92df37
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/miracle/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = miraclecast
 	depends = systemd-kdbus
 	depends = kdbus
 	provides = miraclecast
-	source = miraclecast::https://github.com/albfan/miraclecast.git
+	source = miraclecast::git+https://github.com/albfan/miraclecast.git#branch=master
 	md5sums = SKIP
 
 pkgname = miraclecast
