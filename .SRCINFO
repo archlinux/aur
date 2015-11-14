@@ -10,6 +10,7 @@ pkgbase = gtk-theme-iris-light-git
 	depends = gtk3
 	depends = gtk-engine-murrine
 	provides = gtk-theme-iris-light
+	conflicts = gtk-theme-iris-light
 	source = iris-light::git+https://github.com/xyl0n/iris-light.git
 	sha256sums = SKIP
 
