@@ -1,8 +1,8 @@
-pkgbase = candra-themes-3.18
+pkgbase = candra-themes-3.18-cn
 	pkgdesc = Minimalist flat themes for, Gnome, Xfce, Cinnamon, MATE, Openbox, LXDE
 	pkgver = 7_11112015
 	pkgrel = 1
-	url = http://fav.me/d9cy9dt
+	url = http://www.linuser.org
 	arch = any
 	license = GPLv3
 	depends = gtk-engines
@@ -11,5 +11,5 @@ pkgbase = candra-themes-3.18
 	source = http://7xizf7.com1.z0.glb.clouddn.com/candra-themes-3.18-7-11112015.zip
 	md5sums = 13d051d2b0a754899c436428a490c599
 
-pkgname = candra-themes-3.18
+pkgname = candra-themes-3.18-cn
 

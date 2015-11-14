@@ -1,12 +1,12 @@
 # Contributor: killhellokitty <killhellokitty.deviantart.com>
 # Maintainer: killhellokitty <killhellokitty.deviantart.com>
 
-pkgname=candra-themes-3.18
+pkgname=candra-themes-3.18-cn
 pkgver=7_11112015
 pkgrel=1
 pkgdesc="Minimalist flat themes for, Gnome, Xfce, Cinnamon, MATE, Openbox, LXDE"
 arch=('any') 
-url="http://fav.me/d9cy9dt"
+url="http://www.linuser.org"
 license=('GPLv3')
 depends=('gtk-engines' 'gnome-themes-standard>=3.18' 'gtk-engine-murrine>=0.98.2')
 
