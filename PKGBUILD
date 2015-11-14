@@ -4,7 +4,7 @@
 
 pkgname='mint-x-theme'
 _name='mint-themes'
-pkgver='1.4.5'
+pkgver='1.4.6'
 _gtk3ver='3.14+8'
 pkgrel='1'
 pkgdesc='A Linux Mint theme.  Includes GTK2, GTK3, Metacity, Xfce, and Openbox components.'
@@ -15,7 +15,7 @@ conflicts=('mint-themes')
 source=("${url}/pool/main/m/${_name}/${_name}_${pkgver}.tar.gz"
         "${url}/pool/main/m/${_name}-gtk3/${_name}-gtk3_${_gtk3ver}.tar.gz"
 	'http://box-look.org/CONTENT/content-files/152051-newmint.7z')
-sha256sums=('7f6c12b8b01dbd1b30e0c7fdeda85258cd79229b20528857735be086d59dd65a'
+sha256sums=('49efc330923d4aef8d55ac589bca57882a9c52f69d8efa4c588863575b09e0d2'
             '71ae8c96ba5c067763f448d919d494dc6f66e451a42b98806ed20b15f97ed455'
             '7a3e19d90920331f47ca3dc55a0d072ff927bd3eca64ff6d3ad685bbfbf99af1')
 
