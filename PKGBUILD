@@ -10,7 +10,7 @@ depends=('texlive-core' 'texlive-htmlxml' 'texlive-plainextra' 'texlive-langextr
 url='https://github.com/oraac/texlive-ewuthesis'
 source=("ewuthesis.tgz::https://github.com/oraac/texlive-ewuthesis/blob/master/packaged/ewuthesis.tgz?raw=true")
 install=texlive-ewuthesis.install
-sha256sums=('cafa89290da7fdf079751c6ec5f0e941cca1fdac6e1f057067c799f6e46481cc')
+sha256sums=('1632d064d58b5ce25035d58408e007eb2e802e4c8677c410f8aa8c71346bc0c0')
 
 build() {
     cd "$srcdir/$pkgname"
