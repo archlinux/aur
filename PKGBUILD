@@ -1,7 +1,7 @@
 # Maintainer: Dylan Whichard <dylan at whichard dot com>
 
 pkgbase=python-py-wink
-pkgname=${pkgname}-git
+pkgname=${pkgbase}-git
 _pkgname=py-wink
 pkgver=r52.ebc9e46
 pkgrel=1
