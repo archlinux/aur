@@ -1,7 +1,7 @@
 pkgbase = password-gorilla
 	pkgdesc = A cross-platform password manager.
 	pkgver = 1.5.3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zdia/gorilla/wiki/
 	arch = x86_64
 	license = GPL2

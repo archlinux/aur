@@ -2,7 +2,7 @@
 pkgname="password-gorilla"
 realpkgname="gorilla"
 pkgver="1.5.3.7"
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform password manager."
 arch=('x86_64')
 url="https://github.com/zdia/gorilla/wiki/"
@@ -16,10 +16,11 @@ options=( '!strip' )
 package() {
     # directory structur
     local bin_dir="${pkgdir}/usr/bin"
-    local icondir="${pkgdir}/usr/share/icons/hicolor"
-    local icon48x48_dir="${pkgdir}/48x48/apps"
-    local icon32x32_dir="${pkgdir}/32x32/apps"
-    local icon16x16_dir="${pkgdir}/16x16/apps"
+    local icon_dir="${pkgdir}/usr/share/icons/hicolor"
+    local icon48x48_dir="${icon_dir}/48x48/apps"
+    local icon32x32_dir="${icon_dir}/32x32/apps"
+    local icon16x16_dir="${icon_dir}/16x16/apps"
+    local pixmaps_dir="${pkgdir}/usr/share/pixmaps"
     local desktop_dir="${pkgdir}/usr/share/applications"
     local man_dir="${pkgdir}/usr/share/man/man1"
 
