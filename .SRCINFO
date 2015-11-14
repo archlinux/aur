@@ -8,6 +8,7 @@ pkgbase = python-py-wink
 	makedepends = python
 	makedepends = git
 	depends = python
+	depends = python-httplib2
 	source = py-wink::git+https://github.com/umbc-hackafe/py-wink.git
 	md5sums = SKIP
 
