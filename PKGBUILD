@@ -38,6 +38,7 @@ package() {
     install -Dm644 ../minisatip.sysuser ${pkgdir}/usr/lib/sysusers.d/minisatip.conf
     install -Dm644 ../minisatip.conf ${pkgdir}/etc/conf.d/minisatip
     install -Dm755 minisatip ${pkgdir}/usr/bin/minisatip
-    mkdir -p ${pkgdir}/usr/share/minisatip
-    cp -ar html ${pkgdir}/usr/share/minisatip
+    mkdir -p ${pkgdir}/var/lib/minisatip
+    cp -ar html ${pkgdir}/var/lib/minisatip
+    chown -fR 183:183 ${pkgdir}/var/lib/minisatip
 }
