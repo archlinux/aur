@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-dark-variant
 	pkgdesc = The GNOME Terminal Emulator - Patched to bring back 'Use dark theme variant' option in preferences
-	pkgver = 3.18.1
+	pkgver = 3.18.2
 	pkgrel = 1
 	url = http://www.gnome.org
 	install = gnome-terminal-dark-variant.install
@@ -24,9 +24,9 @@ pkgbase = gnome-terminal-dark-variant
 	optdepends = gconf: settings migration when upgrading from older version
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-terminal/3.18/gnome-terminal-3.18.1.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-terminal/3.18/gnome-terminal-3.18.2.tar.xz
 	source = gnome-terminal-restore-dark.patch
-	sha256sums = 6eecc81f38c8019d9f49b8950cd814da88d84a8d98c9da98a57be06a1b9f4119
+	sha256sums = 5e35c0fa1395258bab83952cfabe4c1828b8655bcd761f8faed70b452bd89efa
 	sha256sums = 5ef48574b93ec5530ce2747012fc0838a5e1ffa265803069a8da79b1be5e1eff
 
 pkgname = gnome-terminal-dark-variant
