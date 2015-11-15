@@ -1,7 +1,7 @@
 # Maintainer: James Clark <s1127853@sms.ed.ac.uk>
 pkgname=opencoarrays
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A transport layer for coarray Fortran compilers."
 url="http://www.opencoarrays.org/"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ md5sums=('b70e8d89ab0e55be50902fdab32c25f9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir build
+  mkdir -p build
   cd build
   CC=mpicc FC=mpif90 cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
