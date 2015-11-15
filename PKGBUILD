@@ -13,14 +13,14 @@ md5sums=('d8740d5f904c4351c481d85623b10890')
 
 
 build() {
-	cd "$pkgname-$pkgver"
-	./bootstrap
-	./configure --prefix=/usr
-	make
+  cd "$pkgname-$pkgver"
+  ./bootstrap
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
-	install -D COPYING "$pkgdir/usr/share/licenses/roswell/LICENSE"
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+  install -D COPYING "$pkgdir/usr/share/licenses/roswell/LICENSE"
 }
