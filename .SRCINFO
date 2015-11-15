@@ -1,10 +1,11 @@
 pkgbase = milter-manager-git
 	pkgdesc = A milter to use milters effectively.
 	pkgver = 20151113.5989.9e358d6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://milter-manager.sourceforge.net/
 	arch = x86
 	arch = x86_64
+	arch = armv7h
 	license = GPL3
 	license = GFDL
 	license = LGPL3

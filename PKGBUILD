@@ -1,8 +1,8 @@
 pkgname=milter-manager-git
 pkgver=20151113.5989.9e358d6
-pkgrel=1
+pkgrel=2
 pkgdesc="A milter to use milters effectively."
-arch=('x86' 'x86_64')
+arch=('x86' 'x86_64' 'armv7h')
 url="http://milter-manager.sourceforge.net/"
 license=('GPL3' 'GFDL' 'LGPL3')
 depends=('sh')
