@@ -57,7 +57,7 @@ true && pkgname=(linux-lts310-ck linux-lts310-ck-headers)
 _kernelname=-lts310-ck
 _srcname=linux-3.10
 pkgver=3.10.93
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -83,7 +83,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 		"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.10.8.patch"
 		"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.10.8+.patch"
 		"${pkgver}+-ck1.patch"
-		"${pkgver}+-ck1.patch.asc")
+		"${pkgver}+-ck1.patch.asc"
+        '0001_asmlinkage.patch'
+        '0002_asmlinkage.patch')
 
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
@@ -101,7 +103,9 @@ sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'ac0730dc24529970185ae527e98fb03ee427e1bce44ba9360c4c386ff63792ee'
             '3e818d3dec6a960033668e52b471cc8eaf277ad147d2006fbd73453981c18a91'
             'dab726c6f7f3a7bdb16b8ddd26bc44d2b007761eef632b5beeb61343378482fe'
-            'SKIP')
+            'SKIP'
+            '1247a4936a0b9f2fa4a67bc1100547fc44ea96e2ab491939459b2e0e8e7c6711'
+            '2696c43b1b42504f58657205a100defb8002b5055986cf363fc8fbe8e63e5923')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -130,6 +134,14 @@ prepare() {
 	# allow criu without expert option set
 	# patch from fedora
 	patch -Np1 -i "${srcdir}/criu-no-expert.patch"
+
+  # Fix asmlinkage for GCC5 on 32bit systems
+  if [ "${CARCH}" = "i686" ]; then
+    #http://kernel.opensuse.org/cgit/kernel/patch/?id=54c2f3fdb941204cad136024c7b854b7ad112ab6
+    patch -Np1 -i "${srcdir}/0001_asmlinkage.patch"
+    #https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/patch/drivers/lguest/x86/core.c?id=cdd77e87eae52b7251acc5990207a1c4500a84ce
+    patch -Np1 -i "${srcdir}/0002_asmlinkage.patch"
+  fi
 
 	### Patch source with ck patchset with BFS
 	# Fix double name in EXTRAVERSION
