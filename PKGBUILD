@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-audit
 _pkgbasever=4.2-gnu
-_pkgver=4.2.5-gnu
+_pkgver=4.2.6-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -20,7 +20,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -58,7 +58,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
-            '3fd7d8305cd9c9f581e9a64806be9949c72176b1fc0247f688febac5eaaf8362'
+            'eeb789dc08b73958694db66763d263071591cb2f16a076acc521b044aaccac30'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -71,17 +71,17 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'd70238b00be1a70204b5288c9c49898169eff1950c7017a4a7a108b942008342'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            '4969456f0bf72be5d23aa86c2edc487217a3708ce6fde4e1a3a8f930444174c9'
+            '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
+            '8516a699054b78ed921bca546af3b955c10eb422ada14787a5b05a45bd193572'
             'SKIP'
-            '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
-            '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
-            '39bfd7f6e2df0b87b52488462edb2fbcfaf9e3eb2a974fc7b3bc22147352fece'
-            '59444ed7dce62697f1c35be340b740899e1d71398b334c419ad07cea838c6ed6'
-            '90cff98e43322e79c8d8b1c6456a328650f6af3ebf018086a82ab690a688da5d'
-            'ed6cf79434d3b1c10e0e141ab6bdc2aa9abfe7e7df6bbb24b2097c0e0d62ac17'
-            '2c3df3d9a3d8fe11fefc485167a81c6fc53635b04ba0312bef144505dc0a6ce4'
-            '0f6b0146096ee7a04938d39a013c23cfd8719f3bef0956b5c88a33e7d7ecafdc')
+            '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
+            '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
+            '810697eec07faa60acb59b97df291e5f2e9428e86ae54e5ef90a6e4b2d0844ab'
+            'c743e41975260aab3176b6f473707c8d8371cb89575e1c128bddb3bd74030b8b'
+            'abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0'
+            'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
+            'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
+            'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
