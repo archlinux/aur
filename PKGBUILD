@@ -1,25 +1,23 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=remmina-plugin-url
-pkgver=1.1.1.0
-pkgrel=2
-_builderver=1.1.0.0
+pkgver=1.2.0.0
+pkgrel=1
+_builderver=1.2.0.0
 pkgdesc="A protocol plugin for Remmina to open an URL in an external browser."
 arch=('i686' 'x86_64')
 url="http://www.muflone.com/${pkgname}/"
 license=('GPL')
 depends=('gtk3' 'remmina')
 makedepends=('pkg-config' 'cmake')
-optdepends=(
-  'firefox: for Mozilla Firefox option'
-  'iceweasel: for Iceweasel option'
-  'epiphany: for Epiphany option'
-)
+optdepends=('firefox: for Mozilla Firefox option'
+            'iceweasel: for Iceweasel option'
+            'epiphany: for Epiphany option')
 install="${pkgname}.install"
 source=("remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
         "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0d41d50731ae25dfa1e66394cfa489d598cf491d36dbaf44d72ad921589e0960'
-            '5252bbdca11fba208f8da37c26a819003c94b014fa104e0246aa583a0448cc5f')
+sha256sums=('c3cb8201943b00d7475922055a68dd86ec163a01e1f578aae32427ab2427121e'
+            'a8e18d2010688acbbfc3ea965349722706e5ed919b256efc03521f11e2d698d9')
 
 build() {
   [ -d build ] && rm -rf build
