@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec
 _pkgbasever=4.2-gnu
-_pkgver=4.2.5-gnu
+_pkgver=4.2.6-gnu
 _grsecver=3.1
-_timestamp=201510290852
+_timestamp=201511122040
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -22,7 +22,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
 pkgver=${_pkgver//-/_}.${_timestamp}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="https://grsecurity.net/"
 license=('GPL2')
@@ -62,9 +62,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
-            '3fd7d8305cd9c9f581e9a64806be9949c72176b1fc0247f688febac5eaaf8362'
+            'eeb789dc08b73958694db66763d263071591cb2f16a076acc521b044aaccac30'
             'SKIP'
-            '35ddca969462848375487c9bf939cfa919b595f5dacb0732a7c42bd393790d2e'
+            'fbfd60db515a0e3dc063ee946d85f2d71e33abaf126f70a25a8bf223d300f4ff'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -78,7 +78,7 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
-            'eb50f52921b735a44de37de1c99377f8b6a3118c46680958d5e2a1005ae9f287'
+            'd0035c2183afa3be70e2f8744a065f98146faa97dc04b5ffd8f23db9b4f9a68b'
             'SKIP'
             '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
             '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
