@@ -1,7 +1,7 @@
 pkgbase = linux-lts310
 	pkgdesc = The linux-lts310 kernel and modules - 3.10 longterm stable kernel
 	pkgver = 3.10.93
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = linux-lts310
 	source = config
 	source = config.x86_64
 	source = criu-no-expert.patch
+	source = 0001_asmlinkage.patch
+	source = 0002_asmlinkage.patch
 	sha256sums = df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544
 	sha256sums = SKIP
 	sha256sums = 2e4768460dd2dc560c1d6c97aed88969781d3e7c7d42354d17748b35cf22f8d1
@@ -30,6 +32,8 @@ pkgbase = linux-lts310
 	sha256sums = 9f3ac423acd111057786196413798e46d7f88435d34a28eb6af882b197f11597
 	sha256sums = efc600449f588e8baff59f7595c885cedd5b83af8302aa9e87a4a8171e72bd50
 	sha256sums = daa75228a4c45a925cc5dbfeba884aa696a973a26af7695adc198c396474cbd5
+	sha256sums = 1247a4936a0b9f2fa4a67bc1100547fc44ea96e2ab491939459b2e0e8e7c6711
+	sha256sums = 2696c43b1b42504f58657205a100defb8002b5055986cf363fc8fbe8e63e5923
 
 pkgname = linux-lts310
 	pkgdesc = The linux-lts310 kernel and modules - 3.10 longterm stable kernel
