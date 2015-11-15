@@ -1,0 +1,11 @@
+[Unit]
+Description=DevDocs
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/devdocs-server
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target 
+
