@@ -11,7 +11,7 @@ source=('https://gitlab.com/corbie/twitch-curses/blob/master/twitch-curses.py')
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/twitch-curses"
+  cd "$srcdir"
   install -Dm755 twitch-curses.py \
     "${pkgdir}/usr/bin/twitch-curses"
 }
