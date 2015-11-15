@@ -1,0 +1,22 @@
+pkgbase = python-uhashring
+	pkgdesc = Full featured consistent hashing python library compatible with ketama
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/ultrabug/uhashring
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python2-pytest
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/u/uhashring/uhashring-0.4.tar.gz
+	source = python-uhashring-0.4.patch
+	source = tox.ini
+	md5sums = 3ec9b158187ebdb63ea3295fa7a4eac0
+	md5sums = 02062405a03ff4c814a12c518e82e3c2
+	md5sums = 16b7aff12d15c2832a847a6a783a3d13
+
+pkgname = python-uhashring
+
+pkgname = python2-uhashring
+
