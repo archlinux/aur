@@ -34,5 +34,7 @@ package() {
   install -D -m644 doc/katarakt.txt "${pkgdir}/usr/share/doc/${pkgname}/katarakt.txt"
   install -D -m644 doc/katarakt.1 "${pkgdir}/usr/share/man/man1/katarakt.1"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m755 -d "${pkgdir}/usr/share/${pkgname}/"
+  install -m644 share/* "${pkgdir}/usr/share/${pkgname}/"
 }
 
