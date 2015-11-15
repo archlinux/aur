@@ -1,6 +1,6 @@
 pkgbase = android-google-apis-x86-64
 	pkgdesc = Android Google APIs x86-64 System Image, latest API
-	pkgver = 23_r08
+	pkgver = 23_r09
 	pkgrel = 1
 	url = http://code.google.com/android/add-ons/google-apis
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = android-google-apis-x86-64
 	conflicts = android-google-apis-x86-64-23
 	conflicts = android-google-apis-x86_64-23
 	options = !strip
-	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86_64-23_r08.zip
+	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86_64-23_r09.zip
 	source = source.properties
-	sha1sums = 8b744b0806417bbbd8967d4fb7574e55f7ee2a23
-	sha1sums = 1a896bc7cc53a0f024f48717ea8a0223d8dda4f9
+	sha1sums = 31ed3b7e4a94080ee60acd8c6c8ffc1ac1f5fdd8
+	sha1sums = ada3af4c35af70b0577115c8396a2a7741488e80
 
 pkgname = android-google-apis-x86-64
 
