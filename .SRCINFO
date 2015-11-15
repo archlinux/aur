@@ -1,6 +1,6 @@
 pkgbase = remmina-plugin-url
 	pkgdesc = A protocol plugin for Remmina to open an URL in an external browser.
-	pkgver = 1.2.1.0
+	pkgver = 1.2.2.0
 	pkgrel = 1
 	url = http://www.muflone.com/remmina-plugin-url/
 	install = remmina-plugin-url.install
@@ -14,10 +14,11 @@ pkgbase = remmina-plugin-url
 	optdepends = firefox: for Mozilla Firefox option
 	optdepends = iceweasel: for Iceweasel option
 	optdepends = epiphany: for Epiphany option
-	source = remmina-plugin-builder_1.2.1.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.2.1.0.tar.gz
-	source = remmina-plugin-url_1.2.1.0.tar.gz::https://github.com/muflone/remmina-plugin-url/archive/1.2.1.0.tar.gz
-	sha256sums = bf2a289f30f1176d3eb1ffd33bfeeaa80b5efd68562eb254a16d1c97337f016b
-	sha256sums = edd8b9756a0838bc4bc25a91b58e3ad8ccec6dfbbb1d4e6ceffc3825ca1e8aa1
+	optdepends = midori: for Midori option
+	source = remmina-plugin-builder_1.2.2.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.2.2.0.tar.gz
+	source = remmina-plugin-url_1.2.2.0.tar.gz::https://github.com/muflone/remmina-plugin-url/archive/1.2.2.0.tar.gz
+	sha256sums = bce686835b951dc49263dd760ea3a216618e5d5b1f6652da94edf4ba95081434
+	sha256sums = 2ac72b137ed1a88170208be3073305093d4fa49f73caacfc7548463407c81316
 
 pkgname = remmina-plugin-url
 
