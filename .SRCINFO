@@ -1,5 +1,5 @@
 pkgbase = linux-libre-pae
-	pkgver = 4.2.5_gnu
+	pkgver = 4.2.6_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = linux-libre-pae
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.5-gnu/patch-4.2-gnu-4.2.5-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.5-gnu/patch-4.2-gnu-4.2.5-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.6-gnu/patch-4.2-gnu-4.2.6-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.6-gnu/patch-4.2-gnu-4.2.6-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -26,7 +26,7 @@ pkgbase = linux-libre-pae
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
 	sha256sums = 3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49
 	sha256sums = SKIP
-	sha256sums = 3fd7d8305cd9c9f581e9a64806be9949c72176b1fc0247f688febac5eaaf8362
+	sha256sums = eeb789dc08b73958694db66763d263071591cb2f16a076acc521b044aaccac30
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -47,20 +47,20 @@ pkgname = linux-libre-pae
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-pae=4.2.5
+	provides = linux-pae=4.2.6
 	conflicts = 
 	replaces = linux-pae
 	backup = etc/mkinitcpio.d/linux-libre-pae.preset
 
 pkgname = linux-libre-pae-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-pae kernel
-	provides = linux-pae-headers=4.2.5
+	provides = linux-pae-headers=4.2.6
 	conflicts = 
 	replaces = linux-pae-headers
 
 pkgname = linux-libre-pae-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-pae kernel
-	provides = linux-pae-docs=4.2.5
+	provides = linux-pae-docs=4.2.6
 	conflicts = 
 	replaces = linux-pae-docs
 
