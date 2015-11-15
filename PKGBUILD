@@ -1,6 +1,6 @@
 # Maintainer: goodmind <andwebar@gmail.com>
 pkgname=infornography-git
-pkgver=0.2.r7.g9e9c603
+pkgver=0.3.r0.g9e9c603
 pkgrel=1
 pkgdesc="Racket script to show system information, lightweight alternative to screenfetch."
 arch=('any')
