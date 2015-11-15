@@ -2,7 +2,7 @@
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 pkgname=rakudo
-pkgver=2015.09
+pkgver=2015.10
 pkgrel=1
 pkgdesc="Perl6 compiler for MoarVM"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ replaces=('rakudo-moarvm')
 conflicts=('rakudo-moarvm')
 options=('!makeflags')
 source=(http://rakudo.org/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('5709145749a3d8add52eb2cd20122b2d1e089cc59450bf9eed5a67c243c5e38a639ccd15dfd444c6e2b80c0f10f650eda177726b94f691ca2290282161a596eb')
+sha512sums=('3aa3d8c186926cfeca40c2ba1079ade0894e7e0e8c8127661f2ec64443d01eef8b8b8a7dfdc69fe3500289eb7c5cd45209dea2e02cf1e2f94368473b9be54cf0')
 
 build() {
 	cd "$pkgname-$pkgver"
