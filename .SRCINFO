@@ -1,0 +1,14 @@
+pkgbase = python2-ezdxf
+	pkgdesc = A Python package to create/manipulate DXF drawings.
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = http://bitbucket.org/mozman/ezdxf
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2
+	source = https://pypi.python.org/packages/source/e/ezdxf/ezdxf-0.6.5.tar.gz
+	md5sums = bd471bd7d433e085b8f6d11ab39055b2
+
+pkgname = python2-ezdxf
+
