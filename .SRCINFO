@@ -1,7 +1,7 @@
 pkgbase = xscreensaver-dbus-screenlock
-	pkgdesc = Emulate gnome-screensaver's dbus for integrated screen-locking in gnome-derivatives
+	pkgdesc = Emulate org.freedesktop.screensaver dbus for integrated screen-locking
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ubuntuforums.org/showthread.php?t=1865593&s=1c7f28c50a3f258e1d3404e41f098a0b&p=11418175#post11418175
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = xscreensaver-dbus-screenlock
 	conflicts = gnome-screensaver
 	source = xscreensaver-dbus-screenlock.py
 	source = xscreensaver-dbus-screenlock.desktop
-	md5sums = 0a1f60e3834481b1b3043d484d4ffcf7
+	md5sums = 4595fc34d3b3f8b620f67d0518c16d58
 	md5sums = d334857a577f92413ddf5d16df79c15c
 
 pkgname = xscreensaver-dbus-screenlock
