@@ -1,9 +1,9 @@
 # Maintainer: Muflone <webreg@vbsimple.net>
 
 pkgname=remmina-plugin-ultravnc
-pkgver=1.2.0.0
+pkgver=1.2.1.0
 pkgrel=1
-_builderver=1.2.0.0
+_builderver=1.2.1.0
 pkgdesc="A protocol plugin for Remmina to connect via VNC using UltraVNC viewer."
 arch=('i686' 'x86_64')
 url="http://www.muflone.com/${pkgname}/"
@@ -13,8 +13,8 @@ makedepends=('pkg-config' 'cmake')
 install="${pkgname}.install"
 source=("remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
         "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('c3cb8201943b00d7475922055a68dd86ec163a01e1f578aae32427ab2427121e'
-            '94fe4355262f54ac7befba23d52378d9833a5cffde9f0b08c4462b58fdf4ee33')
+sha256sums=('bf2a289f30f1176d3eb1ffd33bfeeaa80b5efd68562eb254a16d1c97337f016b'
+            '9c24d9cb79c7ff90560307128b01555198250e10782cb61470f7a41446c24e18')
 
 build() {
   [ -d build ] && rm -rf build
