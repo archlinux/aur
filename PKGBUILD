@@ -4,7 +4,7 @@
 # Contributor: quantax
 
 pkgname=ags-git
-pkgver=3.3.4.2.4.g5b5613d
+pkgver=3.3.4.2.34.g6edac71
 pkgrel=1
 pkgdesc="Adventure Game Studio, a development tool that is primarily used to create graphical adventure games"
 arch=('i686' 'x86_64')

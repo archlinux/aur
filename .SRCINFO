@@ -1,6 +1,6 @@
 pkgbase = ags-git
 	pkgdesc = Adventure Game Studio, a development tool that is primarily used to create graphical adventure games
-	pkgver = 3.3.4.2.4.g5b5613d
+	pkgver = 3.3.4.2.34.g6edac71
 	pkgrel = 1
 	url = https://github.com/adventuregamestudio/ags
 	install = ags.install
