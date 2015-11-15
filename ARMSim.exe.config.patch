@@ -1,0 +1,11 @@
+--- ARMSim.exe.config	2009-12-09 12:25:56.000000000 -0500
++++ ARMSim.exe.configNew	2015-11-15 14:22:08.689964100 -0500
+@@ -13,7 +13,7 @@
+     <!-- This key defines which window manager to use. -->
+     <!-- Leave it commented out to use the Docking Windows version (usually for Windows) -->
+     <!-- Uncomment it to use the static windows (usually for MONO) -->
+-    <!-- <add key="DockingWindowStyle" value="StaticWindows"></add> -->
++    <add key="DockingWindowStyle" value="StaticWindows"></add>
+     
+   </appSettings>
+ </configuration>

@@ -1,0 +1,16 @@
+pkgbase = armsimsharp
+	pkgdesc = The ARMSim# program.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://armsim.cs.uvic.ca/index.html
+	arch = any
+	depends = mono
+	source = http://armsim.cs.uvic.ca/Downloads/ARMSim-191-MAC.zip
+	source = ARMSim.exe.config.patch
+	source = armsimsharp
+	md5sums = ea523500526e19c73965b4fb8108163f
+	md5sums = 9d411f7f252516fa289756efe6eed5cd
+	md5sums = 815e1e557b89f634b136a252c6fc61db
+
+pkgname = armsimsharp
+
