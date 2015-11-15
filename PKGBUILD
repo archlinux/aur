@@ -1,16 +1,16 @@
-# -*- shell-script -*-
+# Maintainer : Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.A.7768.g6fb2244
+pkgver=0.C.7422.ge98a0e1
 pkgrel=1
 pkgdesc="Cataclysm: Dark Days Ahead is an actively maintained roguelike set in a post-apocalyptic world. Both SDL tiles and ascii version included."
 arch=('i686' 'x86_64')
-url="http://www.cataclysmdda.com/"
+url="http://en.cataclysmdda.com/"
 license=('CCPL:by-sa')
 conflicts=('cataclysm-dda', 'cataclysm-dda-ncurses')
-depends=('ncurses' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'gcc-libs' 'glibc' 'zlib' 'bzip2')
+depends=('ncurses' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'zlib')
 makedepends=('git' 'gettext')
 optdepends=('lua51')
 install=
