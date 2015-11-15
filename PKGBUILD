@@ -4,7 +4,7 @@
 pkgname=lxdm-git
 _gitname=lxdm
 pkgver=0.5.2.r0.g1ff8969
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Display Manager (part of LXDE) - git checkout'
 arch=('i686' 'x86_64')
 url="http://blog.lxde.org/?p=531"
@@ -32,15 +32,13 @@ source=('lxdm::git+http://git.lxde.org/git/lxde/lxdm.git'
         'Xsession'
         'lxdm.in.patch'
         'lxdm.conf.in.patch'
-        'lxdm.pam'
-        'PostLogout')
+        'lxdm.pam')
 md5sums=('SKIP'
          '1cc5163253149952329671db34ce7907'
          'de8be632e7daef6787628ebb0dc94ad1'
          'b40a5e90b95b07c7fc1120da574c3149'
          '1062f248ce6e7b3868fdc60da0645458'
-         'c941ef896248bc7c03901b513490425c'
-         '5d585acc332056b8d5be3a15d2f20d84')
+         'c941ef896248bc7c03901b513490425c')
 
 pkgver() {
     cd $_gitname
@@ -76,7 +74,6 @@ package() {
 
     make DESTDIR=${pkgdir} install
     chmod 644 "$pkgdir/etc/lxdm/lxdm.conf"
-    install -m755 ${srcdir}/PostLogout ${pkgdir}/etc/lxdm/PostLogout
 
     # Home directory
     install -dm 755 ${pkgdir}/var/lib/lxdm    

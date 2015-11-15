@@ -1,7 +1,7 @@
 pkgbase = lxdm-git
 	pkgdesc = Lightweight Display Manager (part of LXDE) - git checkout
 	pkgver = 0.5.2.r0.g1ff8969
-	pkgrel = 1
+	pkgrel = 2
 	url = http://blog.lxde.org/?p=531
 	install = lxdm.install
 	arch = i686
@@ -41,14 +41,12 @@ pkgbase = lxdm-git
 	source = lxdm.in.patch
 	source = lxdm.conf.in.patch
 	source = lxdm.pam
-	source = PostLogout
 	md5sums = SKIP
 	md5sums = 1cc5163253149952329671db34ce7907
 	md5sums = de8be632e7daef6787628ebb0dc94ad1
 	md5sums = b40a5e90b95b07c7fc1120da574c3149
 	md5sums = 1062f248ce6e7b3868fdc60da0645458
 	md5sums = c941ef896248bc7c03901b513490425c
-	md5sums = 5d585acc332056b8d5be3a15d2f20d84
 
 pkgname = lxdm-git
 
