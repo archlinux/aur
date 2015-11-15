@@ -13,9 +13,12 @@ depends=('erlang-nox')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rebar/rebar3/archive/${_pkgver}.tar.gz")
 md5sums=('1fb59ee00622d93b2d11f0c4b8a795c5')
 
+prepare() {
+  sed -i s/\"git\"/\"${_pkgver}\"/ $srcdir/$pkgname-$_pkgver/src/rebar.app.src
+}
+
 build() {
   cd "$srcdir/$pkgname-$_pkgver"
-  sed -i s/\"git\"/\"${_pkgver}\"/ src/rebar.app.src
   ./bootstrap
 }
 
