@@ -1,4 +1,3 @@
-# Maintainer: Sebastian Lau <lauseb644@gmail.com>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Tianjiao Yin <ytj000+aur@gmail.com>
 
