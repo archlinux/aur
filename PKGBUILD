@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kreport-git
-pkgver=2.96.1.r1004.d361d0e
+pkgver=2.96.1.r1023.c021aa0
 pkgrel=1
 pkgdesc="A framework for creation and generation of reports in multiple formats. (GIT version)"
 url='https://www.kde.org/applications/graphics/kreport'
@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('kross'
          'kproperty-git'
+         'hicolor-icon-theme'
          )
 makedepends=('extra-cmake-modules'
              'kdoctools'
@@ -19,6 +20,7 @@ conflicts=('kreport')
 provides=('kreport')
 source=('git://anongit.kde.org/kreport.git')
 sha1sums=('SKIP')
+install=kreport-git.install
 
 pkgver() {
   cd kreport
