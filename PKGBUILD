@@ -6,7 +6,7 @@
 
 _gitname=znc
 pkgname=znc-git
-pkgver=1.6.1.r397.g2c0dfbb
+pkgver=1.6.2.r479.g622b484
 pkgrel=1
 pkgdesc='An IRC bouncer with modules & scripts support'
 url='http://znc.in/'
@@ -43,6 +43,9 @@ prepare() {
 	git config submodule.Csocket.url "$srcdir/Csocket"
 	git config submodule.third_party/googletest.url "$srcdir/googletest"
 	git submodule update
+
+	# service file is invalid: https://github.com/znc/znc/issues/1165
+	sed -i 's|@bindir@|/usr/bin|' znc.service.in
 }
 
 build() {
