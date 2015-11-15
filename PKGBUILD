@@ -25,9 +25,7 @@ build() {
   python2 setup.py build
 }
 
-package_python2-macs2() {
-  depends=('python2-numpy')
-
+package() {
   cd "${srcdir}/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}"
   install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
