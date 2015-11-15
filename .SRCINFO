@@ -1,0 +1,13 @@
+pkgbase = pyenv-virtualenv
+	pkgdesc = pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)
+	pkgver = 20151103
+	pkgrel = 1
+	url = https://github.com/yyuu/pyenv-virtualenv
+	arch = any
+	license = MIT
+	depends = pyenv
+	source = https://github.com/yyuu/pyenv-virtualenv/archive/v20151103.zip
+	md5sums = a24ff32f55b4d9e7e3c130b0944d8f29
+
+pkgname = pyenv-virtualenv
+
