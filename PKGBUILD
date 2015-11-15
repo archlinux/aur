@@ -1,7 +1,7 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 _pkgname="inkscape-open-symbols"
 pkgname="${_pkgname}-git"
-pkgver=r27.edaad3d
+pkgver=r43.99b8be9
 pkgrel=1
 pkgdesc="Open source icon sets to use as Inkscape symbols"
 arch=('any')
@@ -26,7 +26,15 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/inkscape/symbols"
-  for i in material-design octicons humble-ui suru-icons font-awesome; do
+  for i in \
+      font-awesome \
+          genericons \
+          gnome-icon-theme \
+          humble-ui \
+          material-design \
+          octicons \
+          suru-icons \
+      ; do
     find "$i" -mindepth 1 -iname '*.svg' \
          -exec 'cp' '{}' "${pkgdir}/usr/share/inkscape/symbols" ';'
   done
