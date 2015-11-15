@@ -1,5 +1,5 @@
 pkgbase = linux-libre-grsec-knock
-	pkgver = 4.2.5_gnu.201510290852
+	pkgver = 4.2.6_gnu.201511122040
 	pkgrel = 1
 	url = https://wiki.parabola.nu/Grsecurity%2BKnock
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = linux-libre-grsec-knock
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.5-gnu/patch-4.2-gnu-4.2.5-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.5-gnu/patch-4.2-gnu-4.2.5-gnu.xz.sign
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.2.5-201510290852.patch
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.2.5-201510290852.patch.sig
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.6-gnu/patch-4.2-gnu-4.2.6-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.6-gnu/patch-4.2-gnu-4.2.6-gnu.xz.sign
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.2.6-201511122040.patch
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.2.6-201511122040.patch.sig
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.2_2.diff
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.2_2.diff.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
@@ -32,8 +32,8 @@ pkgbase = linux-libre-grsec-knock
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
-	source = https://repo.parabola.nu/other/rcn-libre-grsec/patches/4.2.5/rcn-libre-grsec-4.2.5-armv7-x2.patch
-	source = https://repo.parabola.nu/other/rcn-libre-grsec/patches/4.2.5/rcn-libre-grsec-4.2.5-armv7-x2.patch.sig
+	source = https://repo.parabola.nu/other/rcn-libre-grsec/patches/4.2.6/rcn-libre-grsec-4.2.6-armv7-x3.patch
+	source = https://repo.parabola.nu/other/rcn-libre-grsec/patches/4.2.6/rcn-libre-grsec-4.2.6-armv7-x3.patch.sig
 	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
 	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
 	source = 0003-SMILE-Plug-device-tree-file.patch
@@ -44,9 +44,9 @@ pkgbase = linux-libre-grsec-knock
 	source = 0008-USB-armory-support.patch
 	sha256sums = 3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49
 	sha256sums = SKIP
-	sha256sums = 3fd7d8305cd9c9f581e9a64806be9949c72176b1fc0247f688febac5eaaf8362
+	sha256sums = eeb789dc08b73958694db66763d263071591cb2f16a076acc521b044aaccac30
 	sha256sums = SKIP
-	sha256sums = 35ddca969462848375487c9bf939cfa919b595f5dacb0732a7c42bd393790d2e
+	sha256sums = fbfd60db515a0e3dc063ee946d85f2d71e33abaf126f70a25a8bf223d300f4ff
 	sha256sums = SKIP
 	sha256sums = c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4
 	sha256sums = SKIP
@@ -62,7 +62,7 @@ pkgbase = linux-libre-grsec-knock
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc
-	sha256sums = eb50f52921b735a44de37de1c99377f8b6a3118c46680958d5e2a1005ae9f287
+	sha256sums = d0035c2183afa3be70e2f8744a065f98146faa97dc04b5ffd8f23db9b4f9a68b
 	sha256sums = SKIP
 	sha256sums = 2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d
 	sha256sums = 842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe
@@ -86,20 +86,20 @@ pkgname = linux-libre-grsec-knock
 	optdepends = paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-grsec-knock=4.2.5.201510290852
+	provides = linux-grsec-knock=4.2.6.201511122040
 	conflicts = 
 	replaces = linux-grsec-knock
 	backup = etc/mkinitcpio.d/linux-libre-grsec-knock.preset
 
 pkgname = linux-libre-grsec-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-grsec-knock kernel
-	provides = linux-grsec-knock-headers=4.2.5.201510290852
+	provides = linux-grsec-knock-headers=4.2.6.201511122040
 	conflicts = 
 	replaces = linux-grsec-knock-headers
 
 pkgname = linux-libre-grsec-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-grsec-knock kernel
-	provides = linux-grsec-knock-docs=4.2.5.201510290852
+	provides = linux-grsec-knock-docs=4.2.6.201511122040
 	conflicts = 
 	replaces = linux-grsec-knock-docs
 
