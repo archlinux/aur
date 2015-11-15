@@ -13,7 +13,6 @@ pkgbase = mpv-plugin-xrandr
 	source = mpv-xrandr.desktop
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = SKIP
 
 pkgname = mpv-plugin-xrandr
 

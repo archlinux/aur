@@ -9,7 +9,7 @@ license=('GPL')
 url="https://github.com/lvml/mpv-plugin-xrandr"
 depends=('mpv' 'xorg-xrandr' 'bash')
 source=('git+https://github.com/lvml/mpv-plugin-xrandr' 'mpv-xrandr.desktop')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$pkgname"
