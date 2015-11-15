@@ -1,6 +1,6 @@
-# $Id: PKGBUILD 141377 2015-09-21 11:12:32Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer:Biginoz < biginoz AT free point fr>
+# Maintainer: Moritz Patelscheck <moritz(at)patelscheck.de>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Biginoz < biginoz AT free point fr>
 # Contributor: Ignacio Galmarino <igalmarino@gmail.com>
 # Contributor: Matthias Sobczyk <matthias.sobczyk@googlemail.com>
 # Contributor: Kamil Kaminski <kyle@kkaminsk.com>
