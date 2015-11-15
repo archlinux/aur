@@ -1,4 +1,5 @@
 # Maintainer: Emil Vanherp <emil DOT vanherp AT hot mail DOT com>
+# Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 # Contributor: Valère Monseur <valere DOT monseur AT ymail·com>
 
 pkgname=eid-viewer
