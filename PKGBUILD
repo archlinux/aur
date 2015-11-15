@@ -2,13 +2,13 @@
 
 pkgname=sic
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An extremely simple IRC client"
 url="http://tools.suckless.org/sic/"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('glibc')
-source=(http://dl.suckless.org/tools/sic-1.2.tar.gz
+source=(http://dl.suckless.org/tools/sic-$pkgver.tar.gz
 	config.mk)
 md5sums=('eb099e790c3ce7866df50d3fe1a52c25'
          '747dbcc56f36935c4dcd8db5007f7e37')
