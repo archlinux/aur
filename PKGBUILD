@@ -5,7 +5,7 @@
 pkgname=libpng14
 _realname=libpng
 pkgver=1.4.17
-_apngver=1.4.16
+_apngver=1.4.17
 pkgrel=0
 pkgdesc="A collection of routines used to create PNG format graphics files - 1.4 version"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/$_realname/libpng-${pkgver}.tar.xz"
 "http://downloads.sourceforge.net/sourceforge/libpng-apng/$pkgname/$pkgver/libpng-${_apngver}-apng.patch.gz")
 md5sums=('48ca3e14b90d4bea3370ecfd25b53875'
-         '9f8224f606cabc4e8cc18ca6bafc4e9b')
+         '024a04bc2a77a9edf405c10cefa001bc')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"

@@ -9,9 +9,9 @@ pkgbase = libpng14
 	depends = zlib
 	options = !libtool
 	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.4.17.tar.xz
-	source = http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng14/1.4.17/libpng-1.4.16-apng.patch.gz
+	source = http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng14/1.4.17/libpng-1.4.17-apng.patch.gz
 	md5sums = 48ca3e14b90d4bea3370ecfd25b53875
-	md5sums = 9f8224f606cabc4e8cc18ca6bafc4e9b
+	md5sums = 024a04bc2a77a9edf405c10cefa001bc
 
 pkgname = libpng14
 
