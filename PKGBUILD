@@ -2,7 +2,7 @@
 
 pkgname=wiringop-git
 pkgver=20151115.r16.7538fcb
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a modified WiringPi for OrangePi. We call it WiringOP. (git-version)"
 
 arch=('any')
@@ -40,5 +40,5 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+  install -Dm755 "gpio/gpio" "$pkgdir/usr/bin/gpio"
 }
