@@ -1,6 +1,6 @@
 pkgbase = emacs-lucid-git
 	pkgdesc = GNU Emacs. Official git master.
-	pkgver = 25.1.50.r123381
+	pkgver = 25.1.50.r123383
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs.install
