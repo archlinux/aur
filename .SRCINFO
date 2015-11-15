@@ -1,6 +1,6 @@
 pkgbase = python-nmap
 	pkgdesc = A Python library which helps in using the nmap port scanner. required nmap software
-	pkgver = 0.4.4
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = http://xael.org/pages/python-nmap.html
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-nmap
 	makedepends = python
 	makedepends = python2
 	depends = nmap
-	source = http://xael.org/pages/python-nmap-0.4.4.tar.gz
-	md5sums = ed1f456d1a77974a5402d5e860f0df7d
+	source = http://xael.org/pages/python-nmap-0.4.6.tar.gz
+	md5sums = 236cf72905edf916d9c769b11f72bf81
 
 pkgname = python-nmap
 	depends = nmap
