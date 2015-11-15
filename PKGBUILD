@@ -1,7 +1,7 @@
 # Maintainer: <nontlikeuname at tuta dot io>
 
 pkgname=mingw-w64-atk
-pkgver=2.16.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="A library providing a set of interfaces for accessibility (mingw-w64)"
 arch=('any')
