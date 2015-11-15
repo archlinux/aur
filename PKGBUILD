@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987@gmail.com>
 
 pkgname=napi-bash
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Lightweight, easy and fast polish subtitle downloader from the napiprojekt.pl"
 arch=('any')
@@ -16,11 +16,16 @@ optdepends=('notification-daemon: dla wersji GUI/GTK'
             'mplayer: detektor FPS dla subotage'
             'bc: kalkulator dla ffmpeg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/3ed/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('695b2d39a82fa1ad348cbae2ba0cb5425a9a59934ac718635f8455ba0903e26b')
+sha256sums=('8b298f2b77dce14ef5244b122c451a354d8b7baafb0e316bd24ad276b794a675')
 
-# Mirror: http://napi-bash.googlecode.com/archive/v${pkgver}.tar.gz (sums will not mach)
+build() {
+  cd "$pkgname-$pkgver"
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+}
 
 package() {
   cd "$pkgname-$pkgver"
-  make install PREFIX="/usr" DESTDIR="$pkgdir"
+  make install DESTDIR="$pkgdir"
 }
