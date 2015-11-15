@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0.20699.e15b7963746b
+pkgver=4.1.0+20704.571508c1ed06
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -11,34 +11,35 @@ license=('GPL')
 # Some of these may be optional, e.g. arpack, lapack, qhull, but if they
 # are installed, octave will be linked against them.
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'gl2ps' 
-	 'qscintilla' 'qhull' 'graphicsmagick' 'portaudio'
-	 'mesa' 'suitesparse')
+	 'qscintilla' 'qhull' 'graphicsmagick' 'portaudio' 'mesa'
+	 'suitesparse' 'java-environment')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gnuplot'
-	     'gettext' 'suitesparse' 'transfig' 'epstool' 'texlive-core' 'icoutils')
+	     'gettext' 'suitesparse' 'transfig' 'epstool' 'texlive-core'
+	     'icoutils')
 optdepends=('texinfo: for help-support in octave'
 	    'gnuplot: alternative plotting')
 conflicts=('octave')
 install=octave.install
 options=('!emptydirs' '!makeflags')
-_appver="4.1.0"
 provides=("octave=$_appver")
 _hgroot=http://hg.savannah.gnu.org/hgweb/
 _hgrepo=octave
 
 pkgver() {
-  cd "$srcdir/$_hgrepo"
-  echo ${_appver}.$(hg identify -n).$(hg identify -i)
-}
-
-build() {
   cd $srcdir
   if [ -d ${_hgrepo} ]; then
       cd ${_hgrepo}
       hg pull -u
   else
     hg clone ${_hgroot}${_hgrepo}
-  fi
-    
+  fi > /dev/null 2>&1
+  cd "$srcdir/$_hgrepo"
+  _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d [])
+  echo ${_appver}$(hg identify -n).$(hg identify -i)
+}
+
+build() {
+  cd $srcdir
   [[ -d $srcdir/${_hgrepo}-build ]] && rm -rf $srcdir/${_hgrepo}-build
   cp -rf $srcdir/${_hgrepo} $srcdir/${_hgrepo}-build
  
@@ -48,14 +49,14 @@ build() {
   [[ $CARCH == "i686" ]] && _arch=i386
   export LD_PRELOAD=/usr/lib/libGL.so
   
-  CXX=g++ CC=gcc ./configure --prefix=/usr \
-    --libexecdir=/usr/lib --enable-shared --enable-jit \
-    --enable-qhull MOC=moc-qt4 UIC=uic-qt4 --with-umfpack \
-    --with-quantum-depth=16 --enable-java  \
+  MOC=moc-qt4 UIC=uic-qt4 \
+    CXXFLAGS+=" $(llvm-config --cxxflags) -fexceptions" ./configure \
+    --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
+    --with-umfpack --enable-java  \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
     --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
     --with-java-libdir=/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server 
-  CXXFLAGS+="-fexceptions `llvm-config --cxxflags`" make
+  CXXFLAGS+=" $(llvm-config --cxxflags) -fexceptions" make
 }
 
 package() {
