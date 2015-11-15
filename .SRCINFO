@@ -1,6 +1,6 @@
 pkgbase = remmina-plugin-ultravnc
 	pkgdesc = A protocol plugin for Remmina to connect via VNC using UltraVNC viewer.
-	pkgver = 1.2.1.0
+	pkgver = 1.2.2.0
 	pkgrel = 1
 	url = http://www.muflone.com/remmina-plugin-ultravnc/
 	install = remmina-plugin-ultravnc.install
@@ -12,10 +12,10 @@ pkgbase = remmina-plugin-ultravnc
 	depends = gtk3
 	depends = remmina
 	depends = ultravnc-viewer
-	source = remmina-plugin-builder_1.2.1.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.2.1.0.tar.gz
-	source = remmina-plugin-ultravnc_1.2.1.0.tar.gz::https://github.com/muflone/remmina-plugin-ultravnc/archive/1.2.1.0.tar.gz
-	sha256sums = bf2a289f30f1176d3eb1ffd33bfeeaa80b5efd68562eb254a16d1c97337f016b
-	sha256sums = 9c24d9cb79c7ff90560307128b01555198250e10782cb61470f7a41446c24e18
+	source = remmina-plugin-builder_1.2.2.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.2.2.0.tar.gz
+	source = remmina-plugin-ultravnc_1.2.2.0.tar.gz::https://github.com/muflone/remmina-plugin-ultravnc/archive/1.2.2.0.tar.gz
+	sha256sums = bce686835b951dc49263dd760ea3a216618e5d5b1f6652da94edf4ba95081434
+	sha256sums = db8385e59e1cb55e6ffede3fdd0d64923e0b37737f2c2bec8fe28f71196118d9
 
 pkgname = remmina-plugin-ultravnc
 
