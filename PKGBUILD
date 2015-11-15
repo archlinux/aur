@@ -2,11 +2,11 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect-git
-pkgver=r993.b62349c
+pkgver=r1002.a8a8080
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 arch=(i686 x86_64)
-url='https://projects.kde.org/projects/playground/base/kdeconnect-kde'
+url='https://community.kde.org/KDEConnect'
 license=(GPL2)
 depends=(kio kcmutils qca-qt5 libfakekey hicolor-icon-theme kwayland) # telepathy-qt5 - requires 0.9.7
 makedepends=(extra-cmake-modules git python)
