@@ -22,7 +22,7 @@ sha256sums=('cf8ee95758242065556ca500e49c62ba48ae62895d7dcf44e49088a0c22af0eb')
 
 build() {
   cd "$pkgname-$pkgver/docs"
-  PYTHONPATH=.. make man
+  make man
 }
 
 package() {
