@@ -1,7 +1,7 @@
 # Maintainer: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=gnupot
 pkgver=0.3.r0.ge7a03b7
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another libre Dropbox clone written in bash and based on git."
 arch=('any')
 url="https://github.com/frnmst/gnupot"

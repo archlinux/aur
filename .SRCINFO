@@ -1,7 +1,7 @@
 pkgbase = gnupot
 	pkgdesc = Yet another libre Dropbox clone written in bash and based on git.
 	pkgver = 0.3.r0.ge7a03b7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frnmst/gnupot
 	install = .INSTALL
 	arch = any
