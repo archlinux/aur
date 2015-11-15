@@ -3,8 +3,8 @@
 pkgname=ow-curses-win32a
 pkgdesc="An extended PDCurses directly on Win32 api (watcom-win32)"
 groups=('watcom-win32' 'watcom-win16' 'watcom-dos')
-pkgver=15.05 #date of last release year.month
-pkgrel=2
+pkgver=15.08 #date of last release year.month
+pkgrel=1
 arch=('any')
 license=('custom: Public Domain')
 depends=(openwatcom-v2)
@@ -14,7 +14,7 @@ provides=("watcom-curses-win32" "watcom-curses-win16" "watcom-curses-dos")
 url="http://www.projectpluto.com/win32a.htm"
 source=("http://www.projectpluto.com/win32a.zip")
 options=(!strip !buildflags staticlibs emptydirs)
-md5sums=('835356e2ffa311c5bb908063cfda7dfa')
+md5sums=('e7613a470362920309245354f7e7a25d')
 
 build() {
   cd "$srcdir"/win32a
