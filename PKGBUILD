@@ -3,7 +3,7 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-pdcurses-win32a
 pkgver=3.4
-pkgrel=1505 #yymm
+pkgrel=1508 #yymm
 pkgdesc="Curses library on the Win32 API for MinGW-w64"
 arch=(any)
 depends=(mingw-w64-crt)
@@ -15,7 +15,7 @@ conflicts=('mingw-w64-pdcurses')
 license=("public domain")
 url="http://www.projectpluto.com/win32a.htm"
 source=("http://www.projectpluto.com/win32a.zip")
-md5sums=('835356e2ffa311c5bb908063cfda7dfa')
+md5sums=('e7613a470362920309245354f7e7a25d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
