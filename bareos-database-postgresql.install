@@ -1,0 +1,20 @@
+yellow='\e[0;33m'
+coloroff='\e[0m'
+
+# arg 0:  the new package version
+post_install() {
+	echo -e "${yellow}NOTE: Please see documentation (section 2.4.2) to setup database:${coloroff}"
+	echo -e "${yellow}      http://doc.bareos.org/master/html/bareos-manual-main-reference.html#x1-380002.4.2${coloroff}"
+}
+
+# arg 0:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	echo -e "${yellow}NOTE: Please see documentation (section) 3.1.2 to update database${coloroff}"
+	echo -e "${yellow}      http://doc.bareos.org/master/html/bareos-manual-main-reference.html#x1-450003.1.2${coloroff}"
+}
+
+# arg 0:  the old package version
+post_remove() {
+	echo -e "${yellow}NOTE: To remove all traces of bareos please delete the bareos database.${coloroff}"
+}

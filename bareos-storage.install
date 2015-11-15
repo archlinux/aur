@@ -1,0 +1,12 @@
+## arg 1:  the new package version
+post_install() {
+	/usr/lib/bareos/scripts/bareos-config initialize_local_hostname
+	/usr/lib/bareos/scripts/bareos-config initialize_passwords
+
+	chown root:bareos /etc/bareos/bareos-sd.conf
+	chown root:bareos /etc/bareos/bareos-sd.d
+	chown root:bareos /var/lib/bareos/storage/
+	chmod 640 /etc/bareos/bareos-sd.conf
+
+	/usr/lib/bareos/scripts/bareos-config setup_sd_user
+}

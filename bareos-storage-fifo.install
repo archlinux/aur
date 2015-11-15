@@ -1,0 +1,4 @@
+## arg 1:  the new package version
+post_install() {
+	chown root:bareos /etc/bareos/bareos-sd.d/device-fifo.conf
+}
