@@ -1,17 +1,18 @@
 # Author: Dominic Radermacher <dominic.radermacher@gmail.com>
 pkgname=ptouch
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Command line tool to print text or graphic labels on Brother P-touch printers like PT-2430PC"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://mockmoon-cybernetics.ch/computer/p-touch2430pc/"
 license=('GPL2')
 depends=('libusb>=1.0' 'gd>=2.0.16')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.txz)
-sha256sums=('388448c311a99fad31f4315ff42375c9f7b9f71c4601397ef86d46b089404204')
+source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.xz)
+sha256sums=('327c383c47fb92d34c06b737ca25874326ce2936fb5a94ae38c48f16c14658a3')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
+	./configure --prefix=/usr
 	make
 }
 package() {
