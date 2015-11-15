@@ -1,0 +1,20 @@
+pkgbase = k290-fnkeyctl
+	pkgdesc = Logitech K290 Fn-key configuration
+	pkgver = 1
+	pkgrel = 3
+	url = https://github.com/milgner/k290-fnkeyctl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libusb
+	source = k290_fnkeyctl.cpp
+	source = 99-k290-config.rules
+	source = k290-fnkeyctl.sh
+	source = LICENSE.MIT
+	sha256sums = 7a2967f1fb89961b823e86d4ad7ad98ebc2421bcd96d02a598825c216a32630a
+	sha256sums = 53889796bce94b160363b27fe330cb2104bbd85ac28d028c3878747c38bf93ae
+	sha256sums = 686d674244ffb7a503b25b21ae7dfd4603efa1a480f2f4d754a754b99c79da02
+	sha256sums = d30cadbdab051c6447e2113634166c453f101e8d2f47286049a898bf27c884dd
+
+pkgname = k290-fnkeyctl
+

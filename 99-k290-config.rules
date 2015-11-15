@@ -1,0 +1,1 @@
+ATTR{idVendor}=="046d", ATTR{idProduct}=="c31f", RUN+="/usr/local/sbin/k290_fnkeyctl"
