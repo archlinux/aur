@@ -1,13 +1,13 @@
 pkgbase = rebar3
 	pkgdesc = A sophisticated build-tool for Erlang projects that follows OTP principles.
-	pkgver = 3.0.0_beta.3
-	pkgrel = 2
+	pkgver = 3.0.0_beta.4
+	pkgrel = 1
 	url = https://github.com/rebar/rebar3
 	arch = any
 	license = APACHE
 	depends = erlang-nox
-	source = rebar3-3.0.0_beta.3.tar.gz::https://github.com/rebar/rebar3/archive/3.0.0-beta.3.tar.gz
-	md5sums = 1347cba97461c96dbace6954cd388cf3
+	source = rebar3-3.0.0_beta.4.tar.gz::https://github.com/rebar/rebar3/archive/3.0.0-beta.4.tar.gz
+	md5sums = 1fb59ee00622d93b2d11f0c4b8a795c5
 
 pkgname = rebar3
 
