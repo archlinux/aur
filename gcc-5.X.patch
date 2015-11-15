@@ -1,0 +1,12 @@
+diff -Naur bitfighter-019e.orig/tnl/tnlTypes.h bitfighter-019e/tnl/tnlTypes.h
+--- bitfighter-019e.orig/tnl/tnlTypes.h	2015-05-12 00:58:58.656019389 +0000
++++ bitfighter-019e/tnl/tnlTypes.h	2015-11-15 05:41:54.353333331 +0000
+@@ -333,6 +333,8 @@
+ #      define TNL_GCC_3
+ #    elif __GNUC__ == 4
+ #      define TNL_GCC_4
++#    elif __GNUC__ == 5
++#      define TNL_GCC_5
+ #    else
+ #      error "TNL: Unsupported version of GCC (see tnlMethodDispatch.cpp)"
+ #    endif

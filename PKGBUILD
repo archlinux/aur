@@ -5,7 +5,7 @@
 
 pkgname=bitfighter
 pkgver=0.19e
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast-paced team-based outer-space multi-player combat game"
 arch=('i686' 'x86_64')
 url="http://bitfighter.org/"
@@ -16,11 +16,18 @@ install=${pkgname}.install
 source=("http://${pkgname}.org/files/${pkgname}-${pkgver/./}.tar.gz"
         "https://$pkgname.googlecode.com/files/classic_level_pack.zip"
         "$pkgname.png"
-        "$pkgname.desktop")
+        "$pkgname.desktop"
+        "gcc-5.X.patch")
 md5sums=('66ff2a80f4ffd7cd354667e906323759'
          'cb32039b47026e176d3f1f3639bd1a9f'
          '8b28490af9deadd0a1a104ae372f5b08'
-         '657e0ff146dd3dac682e15be5a74fbf0')
+         '657e0ff146dd3dac682e15be5a74fbf0'
+         '5e908bcd41b746bb45a56c69fb819b04')
+
+prepare() {
+  cd ${pkgname}-${pkgver/./}
+  patch -p1 < ${srcdir}/gcc-5.X.patch
+}
 
 build() {
   cd ${pkgname}-${pkgver/./}/build
