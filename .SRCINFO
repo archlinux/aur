@@ -1,6 +1,6 @@
 pkgbase = keepassx-http
 	pkgdesc = KeepassX, with eugenesan's merge request for keepasshttp.
-	pkgver = 2.0.r1
+	pkgver = 2.0.alpha6.r214.g8b6d49a
 	pkgrel = 1
 	url = https://github.com/eugenesan/keepassx/tree/http
 	install = keepassx.install

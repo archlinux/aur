@@ -2,7 +2,7 @@
 
 pkgname=keepassx-http
 _gitname=keepassx
-pkgver=2.0.r1
+pkgver=2.0.alpha6.r214.g8b6d49a
 pkgrel=1
 pkgdesc="KeepassX, with eugenesan's merge request for keepasshttp."
 arch=('i686' 'x86_64')
