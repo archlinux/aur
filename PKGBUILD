@@ -1,7 +1,7 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Package Repository: https://github.com/mij-aur-packages/android-x86-64-system-image
 
-_rev=r04
+_rev=r05
 _apilevel=23
 pkgname=android-x86-64-system-image
 pkgver=${_apilevel}_${_rev}
@@ -15,10 +15,10 @@ optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${_apilevel}" "${pkgname/x86-64/x86_64}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}" "${pkgname/x86-64/x86_64}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_x86_64-23_r04.zip"
+source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_x86_64-23_r05.zip"
         "source.properties")
-sha1sums=('07ba4d1c9bd0cbca28119f3bd1387c5f05e3d7c0'
-          'bf63b0e677680ba63d1f7374ca454b1bd144e1c6')
+sha1sums=('b4b2279361406ffdcb79a8e0f1031a43d35b4e55'
+          'db4ff24bd7ecb5aed28e14d15d2dbc4055b93f14')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
