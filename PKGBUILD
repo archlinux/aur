@@ -1,8 +1,8 @@
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 
 pkgname=pacmixer
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="alsamixer alike for PulseAudio."
 arch=('i686' 'x86_64')
 url="https://github.com/KenjiTakahashi/pacmixer"
@@ -17,7 +17,7 @@ makedepends=(
     'ninja'
 )
 source=("https://github.com/KenjiTakahashi/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('be2fb1a365427cf4e7a22e59e12b4c9b')
+md5sums=('ad37c17e67994c9a123563092ac841c3')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
