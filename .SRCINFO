@@ -1,7 +1,7 @@
 pkgbase = cataclysm-dda-git
 	pkgdesc = Cataclysm: Dark Days Ahead is an actively maintained roguelike set in a post-apocalyptic world. Both SDL tiles and ascii version included.
-	pkgver = 0.C.7422.ge98a0e1
-	pkgrel = 1
+	pkgver = 0.C.r7422.ge98a0e1
+	pkgrel = 2
 	url = http://en.cataclysmdda.com/
 	arch = i686
 	arch = x86_64

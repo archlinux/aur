@@ -3,8 +3,8 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.C.7422.ge98a0e1
-pkgrel=1
+pkgver=0.C.r7422.ge98a0e1
+pkgrel=2
 pkgdesc="Cataclysm: Dark Days Ahead is an actively maintained roguelike set in a post-apocalyptic world. Both SDL tiles and ascii version included."
 arch=('i686' 'x86_64')
 url="http://en.cataclysmdda.com/"
@@ -19,40 +19,46 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  make version >&2
-  printf "%s" $(sed -n 's/.*VERSION \"\(.*[^\\]\)\"/\1/;s/[- ]/./gp' src/version.h)
+  git describe --tags --long | sed 's/-/.r/; s/-/./'
 }
 
+prepare() {
+	cd "${srcdir}/${pkgname}"
+
+	sed -i 's/-Werror//' Makefile
+
+}
 build() {
-  cd "${srcdir}/${pkgname}"
-  make RELEASE=1 USE_HOME_DIR=1
-  make RELEASE=1 USE_HOME_DIR=1 TILES=1 SOUND=1
+       #LUA=1 is deactivated for now. Got bug while trying to build.
+
+        cd "${srcdir}/${pkgname}"
+	
+        msg 'Building ncurses version...'
+	make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 
+
+	msg 'Building SDL version...'
+	make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 TILES=1 SOUND=1
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}"
 
-  local instdir=/usr/share/cataclysm-dda,locale
+	PREFIX="$pkgdir/usr" make install TILES=1 SOUND=1
 
-  install -dm755 "$pkgdir/${instdir}/"{data,gfx,doc}
-  cp -ru --no-preserve=ownership data gfx doc "$pkgdir/${instdir}/"
+	# Desktop file
+	#install -dm755 "$pkgdir/usr/share/applications"
+	#cp "$srcdir/cataclysm-dda.desktop" "$pkgdir/usr/share/applications"
 
-  install -Dm755 cataclysm cataclysm-tiles cataclysm-launcher "$pkgdir/${instdir}/"
+	# Icon
+	install -D 'data/osx/AppIcon.iconset/icon_128x128.png' "$pkgdir/usr/share/icons/hicolor/128x128/apps/cataclysm-dda.png"
 
-  # License file
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	# Docs
+	install -d "$pkgdir/usr/share/doc/cataclysm-dda"
+	cp -r doc/* "$pkgdir/usr/share/doc/cataclysm-dda"
+	rm "$pkgdir/usr/share/doc/cataclysm-dda/JSON_LOADING_ORDER.md"
+	cp 'data/json/LOADING_ORDER.md' "$pkgdir/usr/share/doc/cataclysm-dda/JSON_LOADING_ORDER.md"
 
-  # User default mod list needs to be writeable
-  [ -f "$srcdir/user-default-mods.json" ] || echo "{}" > "$srcdir/user-default-mods.json"
-  install -Dm775 -g games "$srcdir/user-default-mods.json" "$pkgdir/var/games/cataclysm-dda/data/mods/user-default-mods.json"
-  ln -s "/var/games/cataclysm-dda/data/mods/user-default-mods.json" "$pkgdir/${instdir}/data/mods/user-default-mods.json"
-  
-  # Launcher symlinks
-  install -dm755  "$pkgdir/usr/bin/"
-  ln -s "${instdir}/cataclysm-launcher" "$pkgdir/usr/bin/cataclysm"
-  ln -s "${instdir}/cataclysm-launcher" "$pkgdir/usr/bin/cataclysm-tiles"
-
-  # Localization
-  install -dm755 "$pkgdir/usr/share/locale"
-  LOCALE_DIR="$pkgdir/usr/share/locale" lang/compile_mo.sh
+	# License file
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
+
