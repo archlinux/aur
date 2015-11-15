@@ -28,5 +28,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}"
-  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
