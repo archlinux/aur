@@ -2,7 +2,7 @@
 # Thu Oct 22 22:46:00 UTC 2015
 pkgbase = hybrid-encoder
 	pkgdesc = A very complete gui for video encoding
-	pkgver = 151021
+	pkgver = 151115
 	pkgrel = 1
 	url = http://www.selur.de/
 	arch = i686
