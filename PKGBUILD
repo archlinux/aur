@@ -1,7 +1,7 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=hangupsbot
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bot for Google Hangouts"
 arch=('any')
 url="https://github.com/xmikos/hangupsbot"
@@ -18,7 +18,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/^.*asyncio.*$//' setup.py
   python setup.py install --root="$pkgdir"
 }
 
