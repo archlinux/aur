@@ -5,6 +5,7 @@ pkgbase = pugixml
 	url = http://pugixml.org
 	arch = x86_64
 	arch = i686
+	arch = armv7h
 	license = MIT
 	makedepends = cmake
 	source = http://github.com/zeux/pugixml/releases/download/v1.7/pugixml-1.7.tar.gz
