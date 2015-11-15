@@ -1,4 +1,5 @@
-# Contributor: Ross Eldridge <ptepid@ptepid.org>
+# Original contributor: Ross Eldridge <ptepid@ptepid.org>
+# Recovery by Ivo(sh) Musil <ivoshm@gmail.com>
 pkgname=zssh
 pkgver=1.5c
 pkgrel=8
