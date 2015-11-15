@@ -1,0 +1,27 @@
+pre_install() {
+    if ! /usr/bin/getent group milter-manager &>/dev/null; then
+       /usr/sbin/groupadd -r milter-manager || \
+          echo "Unexpected error adding group \"milter-manager\". Aborting installation."
+    fi
+    if ! /usr/bin/id milter-manager &>/dev/null; then
+        /usr/sbin/useradd -r -s /sbin/nologin -c 'milter manager' \
+        -d /var/lib/milter-manager --create-home \
+        -g milter-manager milter-manager || \
+            echo "Unexpected error adding user \"milter-manager\". Aborting installation."
+    fi
+}
+
+post_install() {
+    /usr/bin/mkdir -p /var/run/milter-manager
+    /usr/bin/chown -R milter-manager:milter-manager /var/run/milter-manager
+}
+
+post_remove(){
+  if getent passwd milter-manager >/dev/null 2>&1; then
+    userdel milter-manager
+  fi
+
+  if getent group milter-manager >/dev/null 2>&1; then
+    groupdel milter-manager
+  fi
+}
