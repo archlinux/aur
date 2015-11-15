@@ -1,7 +1,7 @@
 pkgbase = bcfg2
 	pkgdesc = Configuration management tool.
 	pkgver = 1.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bcfg2.org
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,10 @@ pkgbase = bcfg2
 	depends = python2-lxml
 	depends = python2-lockfile
 	depends = python2-daemon
+	optdepends = gamin: autodetect changes without bcfg2 server restart (only one needed)
+	optdepends = python2-pyinotify: autodetect changes without bcfg2 server restart (only one needed)
+	optdepends = python2-genshi: Genshi templating plugin
+	optdepends = python2-cheetah: Cheetah templating plugin
 	source = ftp://ftp.mcs.anl.gov/pub/bcfg/bcfg2-1.3.6.tar.gz
 	md5sums = 07065402dc1ae4525894fdb148c1b668
 
