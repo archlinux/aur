@@ -4,7 +4,7 @@
 pkgbase=python-uhashring
 pkgname=('python-uhashring' 'python2-uhashring')
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Full featured consistent hashing python library compatible with ketama"
 arch=('any')
 url="https://github.com/ultrabug/uhashring"
@@ -28,7 +28,7 @@ prepare() {
     # Prepare package_python-uhashring
     # ----------------------------------------------------------------------
 
-    # This file is not included in the package, but it is necessary for the
+    # This file was not included in the package, but it is necessary for the
     # testing.
     install -v -m0644 tox.ini $path_of_uhashring_python
 
