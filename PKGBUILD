@@ -31,12 +31,12 @@ package() {
     mkdir -p "${pkgdir}"/usr/share/applications
 
     # Move .desktop file to global applications folder
-    mv "${srcdir}/"minizinc-ide.desktop "${pkgdir}"/usr/share/applications/
+    install "${srcdir}/"minizinc-ide.desktop "${pkgdir}"/usr/share/applications/
 
     mkdir -p "${pkgdir}"/usr/share/"${pkgname}"
     
     # Move png to package
-    mv "${srcdir}/"minizinc.png "${pkgdir}"/usr/share/"${pkgname}"
+    install "${srcdir}/"minizinc.png "${pkgdir}"/usr/share/"${pkgname}"
 
     # Move uncompressed files to package
     mv "${srcdir}/"MiniZincIDE-2.0.8-bundle-linux-x86_"${_arch}"/* "${pkgdir}"/usr/share/"${pkgname}"
