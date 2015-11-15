@@ -4,7 +4,7 @@
 pkgbase=python-uhashring
 pkgname=('python-uhashring' 'python2-uhashring')
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Full featured consistent hashing python library compatible with ketama"
 arch=('any')
 url="https://github.com/ultrabug/uhashring"
@@ -32,14 +32,13 @@ prepare() {
     # testing.
     install -v -m0644 tox.ini $path_of_uhashring_python
 
-    # In the classifiers (see the setup.py), it appear that the package is
-    # Apply a patch py3k (python 3.5) for three reasons
+    # Apply a patch python-uhashring.patch for three reasons:
     # 1 - tests/*: the unittests are not compatible with python35 (SyntaxError)
     # 2 - setup.py: AttributeError: can't set attribute
     #               https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=801726
     # 3 - tox.ini: In the classifiers (see the setup.py), it appear that the
-    #              package is compatible with python35, but this version was
-    #              forget in the file tox.ini (envtest = ...,py34,py35)
+    #              package is compatible with python3.5 but it seem forget in
+    #              the section envtest of tox.ini
     install -v -m0644 "${pkgbase}-${pkgver}.patch" $path_of_uhashring_python
     pushd $path_of_uhashring_python
         patch --verbose -p0 -i "${pkgbase}-${pkgver}.patch"
