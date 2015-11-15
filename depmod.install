@@ -1,0 +1,15 @@
+post_install() {
+	echo "Running depmod..."
+	/sbin/depmod -a $(uname -r)
+	echo "Module name is mt7650u_sta"
+}
+
+post_upgrade() {
+	echo "Running depmod..."
+	/sbin/depmod -a $(uname -r)
+}
+
+post_remove() {
+	echo "Running depmod..."
+	/sbin/depmod -a $(uname -r)
+}

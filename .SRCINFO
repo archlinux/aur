@@ -1,0 +1,21 @@
+pkgbase = mt7610u_wifi_sta
+	pkgdesc = Modified usb wifi driver for TP-Link TL-WDN5200 AC600 T2U and Cisco Linksys AE6000 / AC580 on Linux
+	pkgver = 4606187
+	pkgrel = 1
+	url = https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916
+	install = depmod.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = linux-headers
+	makedepends = make
+	makedepends = sed
+	makedepends = grep
+	depends = linux
+	source = mt7610u_wifi_sta::git+https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916.git
+	md5sums = SKIP
+
+pkgname = mt7610u_wifi_sta
+
