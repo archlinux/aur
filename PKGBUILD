@@ -1,14 +1,25 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdb-git
-pkgver=2.96.0.r1717.ffaaabb
+pkgver=2.96.1.r1863.07a0fb2
 pkgrel=1
 pkgdesc="A database connectivity and creation framework for various database vendors. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://community.kde.org/KDb'
 license=('GPL')
 depends=('kcoreaddons')
-makedepends=('extra-cmake-modules-git' 'git' 'python2' 'mariadb' 'postgresql' 'sqlite')
+makedepends=('extra-cmake-modules'
+             'git'
+             'python2'
+             'sqlite'
+             'mariadb'
+             'libmariadbclient'
+             'postgresql-libs'
+             )
+optdepends=('postgresql-libs: PostgreSQL plugin'
+            'libmariadbclient: MySQL plugin'
+            'sqlite: SQLite plugin'
+            )
 conflicts=('kdb')
 provides=('kdb')
 source=('git://anongit.kde.org/kdb.git')
