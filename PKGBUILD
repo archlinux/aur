@@ -2,9 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=siod
-pkgver=3.2
-pkgrel=2
-pkgdesc="Scheme in one day"
+pkgver=3.6
+pkgrel=1
+pkgdesc="Scheme in one day or scheme in one defun"
 arch=('i686' 'x86_64')
 url="http://people.delphiforums.com/gjc/siod.html"
 license=('LGPL')
