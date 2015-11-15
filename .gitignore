@@ -1,0 +1,5 @@
+*.swp
+/src
+/pkg
+/ceylon-git
+*.tar.xz

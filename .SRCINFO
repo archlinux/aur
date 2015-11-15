@@ -1,0 +1,19 @@
+pkgbase = ceylon-git
+	pkgdesc = A powerful statically typed language for writing large programs in groups
+	pkgver = master
+	pkgrel = 1
+	url = http://ceylon-lang.org/
+	arch = any
+	license = Apache
+	license = custom:GPL-CP
+	license = LGPL
+	makedepends = git
+	makedepends = apache-ant
+	depends = java-environment>=7
+	depends = bash
+	optdepends = nodejs: for JavaScript interoperability
+	source = ceylon-git::git+http://github.com/ceylon/ceylon.git#branch=master
+	sha256sums = SKIP
+
+pkgname = ceylon-git
+
