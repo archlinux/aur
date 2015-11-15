@@ -1,6 +1,6 @@
 pkgbase = moarvm
 	pkgdesc = Runtime built for the 6model object system.
-	pkgver = 2015.09
+	pkgver = 2015.10
 	pkgrel = 1
 	url = http://moarvm.com/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = moarvm
 	makedepends = perl>=5.8
 	depends = glibc
 	options = !makeflags
-	source = http://moarvm.com/releases/MoarVM-2015.09.tar.gz
-	sha512sums = 4ea6f1328d273a18748791d79623df420017792bfa02ba6dbddd8db1d322ee75ebccd0c29a9215a83e36c65422c12865b705a38eb5749c45cf52d53911257c5c
+	source = http://moarvm.com/releases/MoarVM-2015.10.tar.gz
+	sha512sums = cba17f97306911f15a0dc76ed29b7dc32333a9d52e06f3b14a0806bea2e02c44cc83812e43cd46f937f6eafc9b97c9664bdcc8dcb34ea7b35f05ac04bc8c7731
 
 pkgname = moarvm
 
