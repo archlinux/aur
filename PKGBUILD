@@ -1,3 +1,4 @@
+# Maintainer: Will Alexander <archlinux dot org at willalexander dot me>
 pkgname=sic
 pkgver=1.2
 pkgrel=1
