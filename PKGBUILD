@@ -6,12 +6,13 @@
 _gemname=rails
 pkgname=ruby-$_gemname
 pkgver=4.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Full-stack web application framework.'
 arch=(any)
 url='http://www.rubyonrails.org'
 license=(MIT)
-depends=(ruby ruby-activesupport ruby-actionpack ruby-actionview ruby-activemodel ruby-activerecord ruby-actionmailer ruby-railties ruby-bundler ruby-sprockets-rails)
+depends=(ruby ruby-activesupport ruby-actionpack ruby-actionview ruby-activemodel \
+	ruby-activerecord ruby-actionmailer ruby-railties ruby-bundler ruby-sprockets-rails)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
@@ -19,6 +20,8 @@ sha1sums=('95b0fa311e719893165ae33c8378580b6da5e485')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  # No documentatoin due to https://github.com/rdoc/rdoc/issues/361
+  gem install --no-ri -no-rdoc --ignore-dependencies --no-user-install \
+  	  -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
