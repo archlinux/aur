@@ -1,0 +1,13 @@
+post_install() {
+  systemd-sysusers minidlna.conf
+  systemd-tmpfiles --create minidlna.conf
+  touch var/log/minidlna.log
+  chown minidlna:minidlna var/log/minidlna.log
+}
+
+post_upgrade() {
+  systemd-sysusers minidlna.conf
+  systemd-tmpfiles --create minidlna.conf
+  echo "-- minidlna uses minidlna/minidlna user/group now,"
+  echo "-- needs manual intervention in /var/cache/minidlna and /run/minidlna!"
+}

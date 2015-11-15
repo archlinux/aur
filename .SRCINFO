@@ -1,0 +1,33 @@
+pkgbase = minidlna-custom-icon
+	pkgdesc = A DLNA/UPnP-AV Media server (aka ReadyDLNA) with patch to set a custom icon (instead of a tux)
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/minidlna/
+	install = minidlna.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libexif
+	depends = libjpeg
+	depends = libid3tag
+	depends = flac
+	depends = libvorbis
+	depends = ffmpeg
+	depends = sqlite
+	provides = minidlna
+	conflicts = minidlna
+	conflicts = readymedia-transcode-git
+	backup = etc/minidlna.conf
+	source = http://downloads.sourceforge.net/project/minidlna/minidlna/1.1.5/minidlna-1.1.5.tar.gz
+	source = minidlna.service
+	source = minidlna.tmpfiles
+	source = minidlna.sysusers
+	source = minidlna-custom-icon.patch
+	md5sums = 1970e553a1eb8a3e7e302e2ce292cbc4
+	md5sums = 1f53adef7dfa12c1d4636737366b1d39
+	md5sums = a61f97b037ea17555f6632b3ffd761ef
+	md5sums = 5b2a57160589dfd559a23b1a7f365a23
+	md5sums = 2ea8a7cd48234900c9e510373d3d3d6a
+
+pkgname = minidlna-custom-icon
+
