@@ -1,7 +1,7 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=prince
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Prince of Persia adventure game (for dosbox)"
 arch=(any)
 url="http://unknown/"
@@ -9,10 +9,10 @@ license=('unknown')
 depends=(dosbox)
 makedepends=(unzip)
 source=(princeofpersia
-        "prince.zip::http://www.abzone.be/downloads/apps/gam_PoP_vxx.zip")
+        "prince.zip::http://popuw.com/files/prince14.zip")
 noextract=("prince.zip")
 sha256sums=('c431d88d1486fcd5c3c26e67571e86f3d65a3f4bfdff0ac4f1b372a7a4070308'
-            '5bd534f8fae481b37e388a952c5c7aeb73afa31ab748443c558edf39783388ec')
+            '896fa1597f5997ce9b06b3d63cc5e0c8f4f8397354d8ab0e0c7fe6fecb324ac7')
 
 build() {
   mkdir -p "$srcdir/princedir"
