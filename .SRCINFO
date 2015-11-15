@@ -1,6 +1,6 @@
 pkgbase = krita-git
 	pkgdesc = A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)
-	pkgver = 3.0.89.r39272.c4da452
+	pkgver = 3.0.89.r39303.a627798
 	pkgrel = 1
 	url = http://www.krita.org
 	install = krita-git.install
@@ -29,7 +29,6 @@ pkgbase = krita-git
 	depends = hicolor-icon-theme
 	provides = krita
 	conflicts = krita
-	conflicts = calligra-krita-git
 	source = git://anongit.kde.org/krita.git
 	sha1sums = SKIP
 

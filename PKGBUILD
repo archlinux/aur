@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
-#Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
+# Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
 
 pkgname=krita-git
-pkgver=3.0.89.r39272.c4da452
+pkgver=3.0.89.r39303.a627798
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ makedepends=('extra-cmake-modules'
              'kwindowsystem'
              )
 provides=('krita')
-conflicts=('krita' 'calligra-krita-git')
+conflicts=('krita')
 install=krita-git.install
 source=('git://anongit.kde.org/krita.git')
 sha1sums=('SKIP')
