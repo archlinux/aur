@@ -1,6 +1,6 @@
 pkgbase = remmina-plugin-open
 	pkgdesc = A protocol plugin for Remmina to open a document with its associated application.
-	pkgver = 1.2.0.0
+	pkgver = 1.2.1.0
 	pkgrel = 1
 	url = http://www.muflone.com/remmina-plugin-open/
 	install = remmina-plugin-open.install
@@ -13,10 +13,10 @@ pkgbase = remmina-plugin-open
 	depends = remmina
 	optdepends = xdg-utils: for Automatically detected option
 	optdepends = libgnome: for Open for GNOME option
-	source = remmina-plugin-builder_1.2.0.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.2.0.0.tar.gz
-	source = remmina-plugin-open_1.2.0.0.tar.gz::https://github.com/muflone/remmina-plugin-open/archive/1.2.0.0.tar.gz
-	sha256sums = c3cb8201943b00d7475922055a68dd86ec163a01e1f578aae32427ab2427121e
-	sha256sums = e958946f62a52f39246aa7e6cbe4f1fbd0a45c69256b4e39cd6887cf469fe211
+	source = remmina-plugin-builder_1.2.1.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.2.1.0.tar.gz
+	source = remmina-plugin-open_1.2.1.0.tar.gz::https://github.com/muflone/remmina-plugin-open/archive/1.2.1.0.tar.gz
+	sha256sums = bf2a289f30f1176d3eb1ffd33bfeeaa80b5efd68562eb254a16d1c97337f016b
+	sha256sums = 9bd1e4784a8ab91043a9e8f2bf4a000b3b2c4440d4594f52920f0c48bf713bc6
 
 pkgname = remmina-plugin-open
 
