@@ -1,9 +1,9 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=remmina-plugin-url
-pkgver=1.2.0.0
+pkgver=1.2.1.0
 pkgrel=1
-_builderver=1.2.0.0
+_builderver=1.2.1.0
 pkgdesc="A protocol plugin for Remmina to open an URL in an external browser."
 arch=('i686' 'x86_64')
 url="http://www.muflone.com/${pkgname}/"
@@ -16,8 +16,8 @@ optdepends=('firefox: for Mozilla Firefox option'
 install="${pkgname}.install"
 source=("remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
         "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('c3cb8201943b00d7475922055a68dd86ec163a01e1f578aae32427ab2427121e'
-            'a8e18d2010688acbbfc3ea965349722706e5ed919b256efc03521f11e2d698d9')
+sha256sums=('bf2a289f30f1176d3eb1ffd33bfeeaa80b5efd68562eb254a16d1c97337f016b'
+            'edd8b9756a0838bc4bc25a91b58e3ad8ccec6dfbbb1d4e6ceffc3825ca1e8aa1')
 
 build() {
   [ -d build ] && rm -rf build
