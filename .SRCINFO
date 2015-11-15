@@ -1,0 +1,17 @@
+pkgbase = x-tile-git
+	pkgdesc = A gnome/xfce tiling applet for your panel
+	pkgver = 2.5.r4.g6f39fd8
+	pkgrel = 1
+	url = http://www.giuspen.com/x-tile
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = python2-gconf
+	provides = x-tile
+	conflicts = x-tile
+	source = x-tile::git+https://github.com/giuspen/x-tile.git
+	sha256sums = SKIP
+
+pkgname = x-tile-git
+
