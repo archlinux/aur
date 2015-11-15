@@ -1,6 +1,6 @@
 pkgbase = howl-editor-git
 	pkgdesc = General purpose, light-weight customizable editor
-	pkgver = 0.3.r238.g21af6dd
+	pkgver = 0.3.r289.ge6f4910
 	pkgrel = 1
 	url = http://howl.io/
 	install = howl-editor.install
