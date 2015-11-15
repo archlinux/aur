@@ -1,0 +1,25 @@
+pkgbase = python-steamcontroller-git
+	pkgdesc = Standalone userland driver for the Steam controller
+	pkgver = 6ab9f2a
+	pkgrel = 1
+	url = https://github.com/ynsta/steamcontroller
+	install = steamcontroller.install
+	changelog = changelog.txt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-distutils-extra
+	depends = python-libusb1
+	optdepends = steamcontroller-udev: Required to have the controller recognized
+	optdepends = python-pyside
+	optdepends = python-pyqtgraph
+	provides = steamcontroller
+	conflicts = steamcontroller
+	conflicts = steamcontroller-udev
+	source = git+https://github.com/ynsta/steamcontroller.git
+	source = 99-steamcontroller.rules
+	sha256sums = SKIP
+	sha256sums = 46de34b75730482e5276d94f072dd1911c48789f4442a41c56653b2db05ef46d
+
+pkgname = python-steamcontroller-git
+

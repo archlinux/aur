@@ -1,0 +1,49 @@
+Initial code
+	* Not really working
+	* Try "echo 8f07005e 015e01f4 01000000 | sc-test-cmsg.py" to check
+	* sc-xbox.py start *should* start emulating the 360 controller.Initial
+	code
+		* Not really working
+		* Try "echo 8f07005e 015e01f4 01000000 | sc-test-cmsg.py" to
+		check
+		* sc-xbox.py start *should* start emulating the 360
+		controller.Initial code
+			* Not really working
+			* Try "echo 8f07005e 015e01f4 01000000 |
+			sc-test-cmsg.py" to check
+			* sc-xbox.py start *should* start emulating the 360
+			controller.Initial code
+				* Not really working
+				* Try "echo 8f07005e 015e01f4 01000000 |
+				sc-test-cmsg.py" to check
+				* sc-xbox.py start *should* start emulating
+				the 360 controller.Initial code
+					* Not really working
+					* Try "echo 8f07005e 015e01f4 01000000
+					| sc-test-cmsg.py" to check
+					* sc-xbox.py start *should* start
+					emulating the 360 controller.Initial
+					code
+						* Not really working
+						* Try "echo 8f07005e 015e01f4
+						01000000 | sc-test-cmsg.py" to
+						check
+						* sc-xbox.py start *should*
+						start emulating the 360
+						controller.Initial code
+							* Not really working
+
+						* Try "echo 8f07005e 015e01f4
+						01000000 | sc-test-cmsg.py" to
+						check
+						* sc-xbox.py start *should*
+						start emulating the 360
+						controller.Initial code
+							* Not really working
+
+						* Try "echo 8f07005e 015e01f4
+						01000000 | sc-test-cmsg.py" to
+						check
+						* sc-xbox.py start *should*
+						start emulating the 360
+						controller.
