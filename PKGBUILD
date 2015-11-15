@@ -1,11 +1,13 @@
 # Maintainer: Will Alexander <archlinux dot org at willalexander dot me>
+
 pkgname=sic
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely simple IRC client"
 url="http://tools.suckless.org/sic/"
 arch=('i686' 'x86_64')
 license=('MIT')
+depends=('glibc')
 source=(http://dl.suckless.org/tools/sic-1.2.tar.gz
 	config.mk)
 md5sums=('eb099e790c3ce7866df50d3fe1a52c25'
