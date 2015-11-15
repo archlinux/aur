@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-uptime-widget-git
 	pkgdesc = Plasmoid for Plasma 5. Shows uptime information.
-	pkgver = r10.cd24c87
+	pkgver = r11.5d595e5
 	pkgrel = 1
 	url = https://github.com/kotelnik/plasma-applet-uptime-widget
 	arch = any

@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-uptime-widget-git
 _pkgname=plasma5-applets-uptime-widget
 _gitpkgname=plasma-applet-uptime-widget
-pkgver=r10.cd24c87
+pkgver=r11.5d595e5
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Shows uptime information."
 arch=('any')
