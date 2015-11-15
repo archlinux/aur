@@ -8,13 +8,13 @@ arch=(any)
 url=http://www.giuspen.com/$_pkgname
 license=(GPL2)
 
-depends=(hicolor-icon-theme python2-gconf)
+depends=('hicolor-icon-theme' 'python2-gconf')
 makedepends=('git')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}::git+https://github.com/giuspen/x-tile.git")
+source=("${_pkgname}::git+https://github.com/giuspen/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
