@@ -1,0 +1,14 @@
+pkgbase = twitch-curses
+	pkgdesc = Terminal-based twitch.tv browser / livestreamer frontend
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/corbie/twitch-curses
+	arch = any
+	license = WTFPL
+	depends = python
+	depends = livestreamer
+	source = git+https://gitlab.com/corbie/twitch-curses.git
+	sha256sums = SKIP
+
+pkgname = twitch-curses
+
