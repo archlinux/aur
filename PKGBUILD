@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-redshift-control-git
 _pkgname=plasma5-applets-redshift-control
 _gitpkgname=plasma-applet-redshift-control
-pkgver=r15.ce7656f
+pkgver=r17.8850e93
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5 for controlling redshift."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('plasma-workspace' 'qt5-graphicaleffects' 'redshift')
 makedepends=('git' 'extra-cmake-modules')
 conflicts=("${_pkgname-*}")
 provides=("${_pkgname-*}")
-source=("git://github.com/kotelnik/$_gitpkgname.git")
+source=("git+https://github.com/kotelnik/$_gitpkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
