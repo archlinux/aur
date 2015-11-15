@@ -2,8 +2,8 @@
 
 pkgname=xscreensaver-dbus-screenlock
 pkgver=1
-pkgrel=2
-pkgdesc="Emulate gnome-screensaver's dbus for integrated screen-locking in gnome-derivatives"
+pkgrel=3
+pkgdesc="Emulate org.freedesktop.screensaver dbus for integrated screen-locking"
 arch=('i686' 'x86_64')
 url="http://ubuntuforums.org/showthread.php?t=1865593&s=1c7f28c50a3f258e1d3404e41f098a0b&p=11418175#post11418175"
 license=('GPL')
@@ -24,7 +24,7 @@ package() {
   fi
 
   # This startup script runs in user sesssions with user permissions.
-  # Because dbus sessions are exclusive, both gnome-session and indicator session expect this.
+  # Because dbus sessions are exclusive, both gnome-session and indicator-session expect this.
   # It might be more secure to run the process as root, but users would be locked out of sessions!
   # Regardless, gnome-screensaver works just the same way so whatever...
   install -Dm644 {${srcdir},${pkgdir}/etc/xdg/autostart}/xscreensaver-dbus-screenlock.desktop

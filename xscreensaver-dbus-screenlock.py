@@ -7,18 +7,22 @@ import dbus.service
 import dbus.glib
 import gobject
 import subprocess
- 
+
 class ScreenDbusObj(dbus.service.Object):
     def __init__(self):
         session_bus = dbus.SessionBus()
-        bus_name=dbus.service.BusName("org.gnome.ScreenSaver",bus=session_bus)
-        dbus.service.Object.__init__(self,bus_name, '/org/gnome/ScreenSaver')
- 
-    @dbus.service.method("org.gnome.ScreenSaver")
+        bus_name=dbus.service.BusName("org.freedesktop.ScreenSaver",bus=session_bus)
+        #bus_name=dbus.service.BusName("org.gnome.ScreenSaver",bus=session_bus)
+        dbus.service.Object.__init__(self,bus_name, '/org/freedesktop/ScreenSaver')
+        #dbus.service.Object.__init__(self,bus_name, '/org/gnome/ScreenSaver')
+
+
+    @dbus.service.method("org.freedesktop.ScreenSaver")
+    #@dbus.service.method("org.gnome.ScreenSaver")
     def Lock(self):
         subprocess.Popen(['xscreensaver-command', '-lock'])
- 
- 
+
+
 if __name__ == '__main__':
     object=ScreenDbusObj()
     gobject.MainLoop().run()
