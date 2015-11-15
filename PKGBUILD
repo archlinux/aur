@@ -25,7 +25,7 @@ md5sums=('SKIP')
 build() {
 	# Changes local to global paths.
 	cd "$srcdir"/"$pkgname"/src
-	sed -i 's/"${0%\/gnupot}"/\/opt\/gnupot/' gnupot.sh functions.sh
+	sed -i 's/"${prgPath%\/gnupot}"/\/opt\/gnupot/' gnupot.sh functions.sh
 	sed -i "s/git describe --long/printf \""$pkgver\\\\n"\"/" functions.sh
 	sed -i 's/src\/configVariables.conf/\/opt\/gnupot\/src\/configVariables.conf/' config.sh
 }
