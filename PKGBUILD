@@ -7,7 +7,7 @@ arch=('any')
 url="https://gitlab.com/corbie/twitch-curses"
 license=('WTFPL')
 depends=('python' 'livestreamer')
-source=('https://gitlab.com/corbie/twitch-curses/blob/master/twitch-curses.py')
+source=('https://gitlab.com/corbie/twitch-curses/raw/master/twitch-curses.py')
 sha256sums=('SKIP')
 
 package() {
