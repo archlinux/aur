@@ -2,7 +2,7 @@
 # Contributor: Jeramy Harrison <dbralir@gmail.com>
 # Contributor: Onni R. <onnir at iki dot fi>
 pkgname=png++
-pkgver=0.2.7
+pkgver=0.2.9
 pkgrel=1
 license=('custom')
 pkgdesc='A C++ wrapper for libpng.'
@@ -11,7 +11,7 @@ url='http://savannah.nongnu.org/projects/pngpp/'
 depends=('libpng')
 makedepends=('doxygen')
 source=("http://download.savannah.gnu.org/releases/pngpp/$pkgname-$pkgver.tar.gz")
-md5sums=('99a74f9d02975ce9c893725476b47d95')
+md5sums=('92863df3bee625d707cebc0e749c10df')
 
 build() {
   cd $srcdir/$pkgname-$pkgver

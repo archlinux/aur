@@ -1,6 +1,6 @@
 pkgbase = png++
 	pkgdesc = A C++ wrapper for libpng.
-	pkgver = 0.2.7
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = http://savannah.nongnu.org/projects/pngpp/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = png++
 	license = custom
 	makedepends = doxygen
 	depends = libpng
-	source = http://download.savannah.gnu.org/releases/pngpp/png++-0.2.7.tar.gz
-	md5sums = 99a74f9d02975ce9c893725476b47d95
+	source = http://download.savannah.gnu.org/releases/pngpp/png++-0.2.9.tar.gz
+	md5sums = 92863df3bee625d707cebc0e749c10df
 
 pkgname = png++
 
