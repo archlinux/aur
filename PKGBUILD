@@ -4,14 +4,14 @@
 
 pkgname=pantheon-workarounds
 pkgver=3
-pkgrel=3
+pkgrel=4
 pkgdesc='Workarounds for modular and minimal Pantheon Desktop Environments'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/gala'
 license=('GPL3')
 depends=('gconf' gnome-{keyring,settings-daemon{,-compat},session}
          'polkit-gnome' 'xdg-user-dirs-gtk')
-makedepends=('bzr' 'gnome-common' 'intltool')
+makedepends=('bzr' 'intltool')
 conflicts=(gala{,-bzr} pantheon-session{,-bzr})
 install='gala.install'
 source=("pantheon-session::bzr+lp:~elementary-os/elementaryos/pantheon-xsession-settings"
@@ -19,7 +19,6 @@ source=("pantheon-session::bzr+lp:~elementary-os/elementaryos/pantheon-xsession-
         'gnome-fallback-media-keys-helper-pantheon.desktop')
 sha512sums=('SKIP'
             'b2630c31724675c247b7017eea0862c76ec80a9f46691b65bc7f76702a9cacda46d9350d3bddc05ee21ded154f4d8ab277d536439152972dca0764f28e62cb38'
-            'c17ff9b6eb001b03d4eecd68fef1fbed9c90dfec0fb61140a639bd4743ffac7941095b5cef3b3d1e10cbb7602a17f7edaa9ebb7fce81e564e0950263dd2ead4a'
             'b01a18bb7829eb7a48b72c90bdf5aa5913c24247426e0bfc509cba22f49d2d8c9eb301e1937b70f3f7f01a873c987e0bdea6dd5f24f8d900b952188fa5635d39')
 
 prepare() {
