@@ -1,7 +1,7 @@
 pkgbase = leleleplayer-git
 	pkgdesc = An audio player wich can find similar songs in your library
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 4
 	install = leleleplayer.install
 	arch = i686
 	arch = x86_64
