@@ -25,7 +25,7 @@ build() {
   cp -r "remmina-plugin-builder-${_builderver}" build
   cp -r "${pkgname}-${pkgver}"/* "build/remmina-plugin-to-build"
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=OFF .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=ON .
   make
 }
 
