@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-lkl-linux-git
+	pkgdesc = Linux kernel library for building portable linux drivers (mingw-w64)
+	pkgver = 4.3.r329.g5eb6acb
+	pkgrel = 1
+	url = https://github.com/lkl/linux/blob/master/Documentation/lkl.txt
+	arch = any
+	license = GPL2
+	makedepends = bc
+	makedepends = python2
+	makedepends = git
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	depends = mingw-w64-winpthreads
+	options = !buildflags
+	options = staticlibs
+	source = git+git://github.com/lkl/linux.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-lkl-linux-git
+
