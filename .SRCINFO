@@ -1,6 +1,6 @@
 pkgbase = httraqt
 	pkgdesc = Is the clone from WinHTTrack tool. GUI is based on Qt4 libriaries.
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = http://qt-apps.org/content/show.php/HTTraQt?content=155711
 	install = httraqt.install
@@ -12,8 +12,8 @@ pkgbase = httraqt
 	makedepends = gcc
 	depends = qt4
 	depends = httrack>=3
-	source = http://freefr.dl.sourceforge.net/project/httraqt/httraqt-1.4.6.tar.gz
-	md5sums = 3404d89e0d2d662210d766cd59f0c9fe
+	source = http://freefr.dl.sourceforge.net/project/httraqt/httraqt-1.4.7.tar.gz
+	md5sums = ac913f58521c7a3e302cc2ecebecd819
 
 pkgname = httraqt
 
