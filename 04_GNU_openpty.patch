@@ -1,0 +1,42 @@
+diff -Nur zssh_1.5c.debian.1-3/configure.in zssh_1.5c.debian.1-3.new/configure.in
+--- zssh_1.5c.debian.1-3/configure.in	2007-09-25 01:28:53.000000000 -0700
++++ zssh_1.5c.debian.1-3.new/configure.in	2007-09-25 01:30:03.000000000 -0700
+@@ -57,7 +57,7 @@
+ AC_HEADER_STDC
+ AC_HEADER_SYS_WAIT
+ AC_CHECK_HEADERS(fcntl.h paths.h sys/ioctl.h sys/time.h termios.h unistd.h \
+-	err.h sys/cdefs.h sys/param.h util.h stropts.h)
++	err.h sys/cdefs.h sys/param.h util.h stropts.h pty.h)
+ 
+ 
+ 
+@@ -97,7 +97,14 @@
+ 
+ 
+ dnl Check what is available for tty/pty allocation 
+-AC_CHECK_FUNCS(_getpty getpseudotty openpty grantpt unlockpt)
++AC_CHECK_FUNCS(_getpty getpseudotty grantpt unlockpt)
++AC_CHECK_FUNCS(openpty,,
++	[AC_CHECK_LIB(util,openpty,
++		[AC_DEFINE(HAVE_OPENPTY)
++		LIBS="$LIBS -lutil"]
++	)])
++
++
+ AC_MSG_CHECKING(for pseudo ttys)
+ if test -c /dev/getpty && test $ac_cv_func_getpseudotty = yes
+ then
+diff -Nur zssh_1.5c.debian.1-3/openpty.c zssh_1.5c.debian.1-3.new/openpty.c
+--- zssh_1.5c.debian.1-3/openpty.c	2007-09-25 01:28:53.000000000 -0700
++++ zssh_1.5c.debian.1-3.new/openpty.c	2007-09-25 01:30:03.000000000 -0700
+@@ -25,6 +25,10 @@
+ #include <util.h>
+ #endif
+ 
++#ifdef HAVE_PTY_H
++#include <pty.h>
++#endif
++
+ void	getmaster()
+ {
+ #ifdef DEBUG

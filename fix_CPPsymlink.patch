@@ -1,0 +1,10 @@
+--- configure	2014-08-17 15:11:40.382633891 +1000
++++ ../fix/configure	2014-08-17 15:17:24.110722666 +1000
+@@ -52,6 +52,7 @@
+ oldincludedir='/usr/include'
+ infodir='${prefix}/info'
+ mandir='${prefix}/man'
++CPPFLAGS="$CPPFLAGS -O2"
+ 
+ # Initialize some other variables.
+ subdirs=
