@@ -1,9 +1,9 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=remmina-plugin-teamviewer
-pkgver=1.1.1.0
-pkgrel=2
-_builderver=1.1.0.0
+pkgver=1.2.0.0
+pkgrel=1
+_builderver=1.2.0.0
 pkgdesc="A protocol plugin for Remmina to launch a TeamViewer connection."
 arch=('i686' 'x86_64')
 url="http://www.muflone.com/${pkgname}/"
@@ -13,8 +13,8 @@ makedepends=('pkg-config' 'cmake')
 install="${pkgname}.install"
 source=("remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
         "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0d41d50731ae25dfa1e66394cfa489d598cf491d36dbaf44d72ad921589e0960'
-            'b75fde3d81dc3c67f4d92fb929f00fdecc45f99dff17d0f5660df72b821051c7')
+sha256sums=('c3cb8201943b00d7475922055a68dd86ec163a01e1f578aae32427ab2427121e'
+            'f24485afafd144881d1731ad3b50a22f90035f0cc6e99c583ea68df4a791cbcb')
 
 build() {
   [ -d build ] && rm -rf build
