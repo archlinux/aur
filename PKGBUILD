@@ -1,6 +1,6 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=hangupsbot
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Bot for Google Hangouts"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('hangups-git' 'python-appdirs')
 makedepends=('python-setuptools')
 source=(https://github.com/xmikos/hangupsbot/archive/v$pkgver.tar.gz)
-md5sums=('d7d423eceb039ed43e8900aa6dfa4f3e')
+sha256sums=('5c0cda30ef0b556d04b91fed1c17a5d170bc556bb23b0c960b301224272b5565')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
