@@ -31,7 +31,7 @@ makedepends=('extra-cmake-modules'
              'kwindowsystem'
              )
 provides=('krita')
-conflicts=('krita' 'calligra-krita')
+conflicts=('krita')
 install=krita-git.install
 source=('git://anongit.kde.org/krita.git')
 sha1sums=('SKIP')

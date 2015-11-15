@@ -29,7 +29,6 @@ pkgbase = krita-git
 	depends = hicolor-icon-theme
 	provides = krita
 	conflicts = krita
-	conflicts = calligra-krita
 	source = git://anongit.kde.org/krita.git
 	sha1sums = SKIP
 
