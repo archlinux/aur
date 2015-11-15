@@ -1,0 +1,15 @@
+pkgbase = wiringop-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP. (git-version)
+	pkgver = 20151115.r16.7538fcb
+	pkgrel = 1
+	url = https://github.com/zhaolei/WiringOP
+	arch = any
+	license = unknown
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	source = wiringop::git+https://github.com/zhaolei/WiringOP.git#branch=h3
+	sha256sums = SKIP
+
+pkgname = wiringop-git
+
