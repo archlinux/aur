@@ -1,0 +1,21 @@
+pkgbase = brother-dcp9017cdw
+	pkgdesc = LPR and CUPS driver for the Brother DCP-9017CDW
+	pkgver = 1.1.3
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-dcp9017cdw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = http://www.brother.com/pub/bsc/linux/packages/dcp9017cdwcupswrapper-1.1.3-0.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/packages/dcp9017cdwlpr-1.1.3-0.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = bc7a8a0f6573679c7328ff4885f37eb1
+	md5sums = e0af5c747096abcaed076ca063035cc8
+	md5sums = 97ad0cffd216059e9d1d3121899d8646
+	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+
+pkgname = brother-dcp9017cdw
+
