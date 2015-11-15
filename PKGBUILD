@@ -1,7 +1,7 @@
 # Maintainer: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=gnupot
 pkgver=0.3.r0.ge7a03b7
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another libre Dropbox clone written in bash and based on git."
 arch=('any')
 url="https://github.com/frnmst/gnupot"
@@ -25,7 +25,8 @@ md5sums=('SKIP')
 build() {
 	# Changes local to global paths.
 	cd "$srcdir"/"$pkgname"/src
-	sed -i 's/"${prgPath%\/gnupot}"/\/opt\/gnupot/' gnupot.sh functions.sh
+	sed -i 's/"${0%\/gnupot}"/\/opt\/gnupot/' gnupot.sh
+	sed -i 's/"${prgPath%\/gnupot}"/\/opt\/gnupot/' functions.sh
 	sed -i "s/git describe --long/printf \""$pkgver\\\\n"\"/" functions.sh
 	sed -i 's/src\/configVariables.conf/\/opt\/gnupot\/src\/configVariables.conf/' config.sh
 }
