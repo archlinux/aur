@@ -1,6 +1,6 @@
 pkgbase = rkt
 	pkgdesc = App container runtime
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/coreos/rkt
 	install = rkt.install
@@ -19,8 +19,8 @@ pkgbase = rkt
 	provides = rkt
 	conflicts = rocket
 	replaces = rocket
-	source = https://github.com/coreos/rkt/archive/v0.10.0.tar.gz
-	sha256sums = c7a48efce39cd4e012da804098b104bf3a0d5da6a574ad53483e1eff642dc766
+	source = https://github.com/coreos/rkt/archive/v0.11.0.tar.gz
+	sha256sums = b470c412383f574778a28af8548b40b2725720d564d83e53282e9997e8b3dda5
 
 pkgname = rkt
 
