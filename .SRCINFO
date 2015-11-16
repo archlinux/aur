@@ -1,5 +1,5 @@
 pkgbase = linux-mainline
-	pkgver = 4.3
+	pkgver = 4.4rc1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -12,13 +12,17 @@ pkgbase = linux-mainline
 	makedepends = bc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.3.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/testing/patch-4.4-rc1.xz
+	source = libcfs-fix.patch
 	source = config
 	source = config.x86_64
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	sha256sums = 4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae
-	sha256sums = f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d
-	sha256sums = 58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755
+	sha256sums = 3870efdb5dfdbcb17d5a233e8e9c69156609825a3fb344b8f0fcecb92646360d
+	sha256sums = fd07e2d6ec71d2d87a977c4298f634fa1abfc75ddbd0d5b3ecf9befa7a4b82b4
+	sha256sums = 596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16
+	sha256sums = 333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 

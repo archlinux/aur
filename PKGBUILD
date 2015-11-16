@@ -8,8 +8,8 @@
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.3
-_patchname=patch-4.3-rc7
-pkgver=4.3
+_patchname=patch-4.4-rc1
+pkgver=4.4rc1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -17,7 +17,8 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
+        "libcfs-fix.patch"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.sign"
         # the main kernel config files
@@ -26,8 +27,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
-            'f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d'
-            '58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755'
+            '3870efdb5dfdbcb17d5a233e8e9c69156609825a3fb344b8f0fcecb92646360d'
+            'fd07e2d6ec71d2d87a977c4298f634fa1abfc75ddbd0d5b3ecf9befa7a4b82b4'
+            '596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16'
+            '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -44,7 +47,10 @@ prepare() {
   # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add mainline patch
-  #patch -p1 -i "${srcdir}/${_patchname}"
+  patch -p1 -i "${srcdir}/${_patchname}" | true
+
+  # libcfs fix
+  patch -p1 -i "${srcdir}/libcfs-fix.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
