@@ -24,18 +24,19 @@ test ! -z "${_opt_HexCode}" && _opt_HexCode="-${_opt_HexCode}"
 
 _pkgname='adminer-editor'
 pkgname="${_pkgname}"
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc='Database data editing tool written in PHP'
 arch=('any')
 url='https://www.adminer.org/en/editor/'
-license=('Apache License, Version 2.0')
+license=('Apache')
 depends=('php')
 optdepends=('mariadb' 'apache' 'postgresql' 'sqlite' 'sqlite2')
 _verwatch=("${url}" '/static/download/[0-9\.]\+/editor-\([0-9\.]\+\).php' 'l')
 install="${_pkgname}.install"
-source=("http://downloads.sourceforge.net/adminer/editor-${pkgver}.php")
-sha256sums=('3b07a61595756703a3e443a2bae082ae7acca511940cdaf3976cb33c7b477705')
+#source=("http://downloads.sourceforge.net/adminer/editor-${pkgver}.php")
+source=("https://www.adminer.org/static/download/4.2.3/editor-${pkgver}.php")
+sha256sums=('7e0fe7a19225b989d7e0e16a86420ecacd08a3a1cff2834fae193e30fd343a33')
 
 package() {
   set -u
