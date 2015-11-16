@@ -1,0 +1,16 @@
+pkgbase = kodi-devel-screensaver-biogenesis
+	pkgdesc = BioGenesis screensaver addon for Kodi
+	pkgver = 20150921.39928ee
+	pkgrel = 1
+	url = https://github.com/notspiff/screensaver.biogenesis
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	source = https://github.com/notspiff/screensaver.biogenesis/archive/39928eef56ed639085d401dd97bf18f44b1f3e8b.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-screensaver-biogenesis
+
