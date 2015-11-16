@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-adsp-freesurround
 _gitname=adsp.freesurround
-pkgver=20150719.4dd3202
-_gitver=4dd3202f65ccf95776b3c9cf20b01bbe1d97e623
-pkgrel=2
+pkgver=20151014.f0c6bf0
+_gitver=f0c6bf0075da350f6c889fc28dcf21480637e6ea
+pkgrel=1
 pkgdesc='FreeSurround ADSP addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-adsp/$_gitname"
