@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <xwildn00bx@gmail.com>
 
 pkgname=('dscanner-git')
-pkgver=r823.eb50bc9
+pkgver=r878.ef46a70
 pkgrel=1
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 
 prepare() {
     cd $srcdir/Dscanner
-    git submodule update --init
+    git submodule update --init --recursive
 }
 
 build() {
