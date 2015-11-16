@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-adsp-basic
 	pkgdesc = Basic ADSP Processor addon for Kodi
-	pkgver = 20150720.da6ee5d
-	pkgrel = 2
+	pkgver = 20151015.8901516
+	pkgrel = 1
 	url = https://github.com/kodi-adsp/adsp.basic
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kodi-devel-adsp-basic
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
 	depends = libsamplerate
-	source = https://github.com/kodi-adsp/adsp.basic/archive/da6ee5dd4f1cadeb7c4ae706d79c5ca2ced1e90f.tar.gz
+	source = https://github.com/kodi-adsp/adsp.basic/archive/89015163135c78375dbc54eca81e1d4aa91ca1d2.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-adsp-basic

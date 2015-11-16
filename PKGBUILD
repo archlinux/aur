@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-adsp-basic
 _gitname=adsp.basic
-pkgver=20150720.da6ee5d
-_gitver=da6ee5dd4f1cadeb7c4ae706d79c5ca2ced1e90f
-pkgrel=2
+pkgver=20151015.8901516
+_gitver=89015163135c78375dbc54eca81e1d4aa91ca1d2
+pkgrel=1
 pkgdesc='Basic ADSP Processor addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-adsp/$_gitname"
