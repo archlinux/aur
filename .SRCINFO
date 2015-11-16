@@ -1,0 +1,12 @@
+pkgbase = xinput_calibrator-git
+	pkgdesc = Generic touchscreen calibration program for X.Org
+        pkgver = 0.7.5
+        pkgrel = 1
+        url = http://www.freedesktop.org/wiki/Software/xinput_calibrator/
+        arch = i686
+        arch = x86_64
+        license = MIT
+        source = xinput_calibrator-git::git+https://github.com/tias/xinput_calibrator.git
+
+pkgname = xinput_calibrator-git
+
