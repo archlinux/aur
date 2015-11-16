@@ -12,7 +12,7 @@ source=("http://github.com/downloads/tias/${pkgname}/${pkgname}-${pkgver}.tar.gz
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./configure --prefix=/usr
+    ./autogen.sh --with-gui=x11
     make
     make DESTDIR="$pkgdir" install
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"

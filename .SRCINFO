@@ -6,7 +6,6 @@ pkgbase = xinput_calibrator
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = gtkmm
 	source = http://github.com/downloads/tias/xinput_calibrator/xinput_calibrator-0.7.5.tar.gz
 	md5sums = 20da0a2055a5a75962add8c6b44f60fa
 
