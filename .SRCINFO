@@ -1,7 +1,7 @@
 pkgbase = dcd-git
 	pkgdesc = D Completion Daemon: auto-complete for the D programming language
-	pkgver = r608.f018754
-	pkgrel = 1
+	pkgver = r1
+	pkgrel = 2
 	url = https://github.com/Hackerpilot/DCD
 	arch = i686
 	arch = x86_64

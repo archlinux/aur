@@ -2,8 +2,8 @@
 #Contributor: Mihails Strasuns <public@dicebot.lv>
 
 pkgname=('dcd-git')
-pkgver=r608.f018754
-pkgrel=1
+pkgver=r1
+pkgrel=2
 pkgdesc="D Completion Daemon: auto-complete for the D programming language"
 arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/DCD"
@@ -33,7 +33,7 @@ pkgver() {
 
 prepare() {
     cd $srcdir/DCD
-    git submodule update --init
+    git submodule update --init --recursive
 
     # Extra needed dependencie
     cd containers
