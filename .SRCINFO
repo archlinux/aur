@@ -1,0 +1,15 @@
+pkgbase = exprtk-git
+	pkgdesc = C++ Mathematical Expression Library
+	pkgver = r170.b8e8b95
+	pkgrel = 1
+	url = http://www.partow.net/programming/exprtk/index.html
+	arch = any
+	license = CPL
+	makedepends = git
+	provides = exprtk
+	conflicts = exprtk
+	source = git+https://github.com/ArashPartow/exprtk.git
+	md5sums = SKIP
+
+pkgname = exprtk-git
+
