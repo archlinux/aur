@@ -1,11 +1,10 @@
 pkgbase = airtame-streamer
 	pkgdesc = Stream your display to an airtame dongle.
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.airtame.com
 	arch = x86_64
 	license = Proprietary
-	makedepends = unzip
 	makedepends = yasm
 	depends = jsonrpc-c-git
 	depends = ffmpeg-compat
