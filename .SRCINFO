@@ -1,0 +1,16 @@
+pkgbase = kodi-devel-screensaver-pingpong
+	pkgdesc = Ping-pong screensaver addon for Kodi
+	pkgver = 20150920.5c7cf6f
+	pkgrel = 1
+	url = https://github.com/notspiff/screensaver.pingpong
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	source = https://github.com/notspiff/screensaver.pingpong/archive/5c7cf6fd9f9ff1468f620bb891e66bebd3a5fe17.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-screensaver-pingpong
+
