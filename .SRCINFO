@@ -1,0 +1,20 @@
+pkgbase = dfmt-git
+	pkgdesc = Dfmt is a formatter for D source code
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/Hackerpilot/dfmt
+	arch = i686
+	arch = x86_64
+	groups = dlang
+	license = BSL
+	makedepends = dmd
+	makedepends = git
+	depends = libphobos
+	provides = dscanner
+	conflicts = dscanner
+	options = !strip
+	source = git+https://github.com/Hackerpilot/dfmt
+	sha256sums = SKIP
+
+pkgname = dfmt-git
+
