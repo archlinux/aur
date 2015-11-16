@@ -1,7 +1,7 @@
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
 
 pkgname=ncview
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="A visual browser for netCDF format files"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="http://meteora.ucsd.edu/~pierce/ncview_home_page.html"
 license=('GPL3')
 depends=(netcdf udunits netpbm libxaw)
 source=("ftp://cirrus.ucsd.edu/pub/ncview/${pkgname}-${pkgver}.tar.gz")
-md5sums=('e1f170283cb84d33a7e42747c76fccd7')
+md5sums=('f9f53ba2cc789cbe10dfb073057f3b7f')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
