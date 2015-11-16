@@ -1,0 +1,19 @@
+pkgbase = monkeysign
+	pkgdesc = OpenPGP Key Exchange for Humans
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://web.monkeysphere.info/monkeysign/
+	arch = any
+	license = GPL3
+	makedepends = python2-setuptools
+	depends = python2-qrencode
+	depends = gtk2
+	depends = pygtk
+	depends = zbar
+	depends = python2-imaging
+	source = http://cdn.debian.net/debian/pool/main/m/monkeysign/monkeysign_2.0.2.tar.xz
+	md5sums = 914d479599cb1fbd9473a4ea54e36217
+	sha256sums = c883dc0c4f1dbd313239012e1c5984a6ef19b0e5040e613e1727085aa619bf63
+
+pkgname = monkeysign
+
