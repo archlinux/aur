@@ -1,0 +1,21 @@
+pkgbase = kodi-devel-screensavers-rsxs
+	pkgdesc = RSXS screensavers addon for Kodi
+	pkgver = 20150907.3241d29
+	pkgrel = 1
+	url = https://github.com/notspiff/screensavers.rsxs
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	depends = libpng
+	source = https://github.com/notspiff/screensavers.rsxs/archive/3241d290917e99a3e88fca44e16d74c885a78b3d.tar.gz
+	source = 0001-fix-gcc5-compile.patch
+	source = 0002-fix-default-include-dir.patch
+	md5sums = SKIP
+	md5sums = 3c0fc8c71c9ed7c76d4809a76b654283
+	md5sums = f32a6f97865027503a002f4dc72045b6
+
+pkgname = kodi-devel-screensavers-rsxs
+
