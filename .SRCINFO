@@ -1,0 +1,17 @@
+pkgbase = kodi-devel-screensaver-matrixtrails
+	pkgdesc = Matrix trails screensaver addon for Kodi
+	pkgver = 20151029.16057e7
+	pkgrel = 1
+	url = https://github.com/notspiff/screensaver.matrixtrails
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	depends = soil
+	source = https://github.com/notspiff/screensaver.matrixtrails/archive/16057e7195f930109f0a4aea999296ca315700e5.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-screensaver-matrixtrails
+
