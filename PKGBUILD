@@ -6,10 +6,17 @@ pkgname=('qcma-git' 'qcma-kdenotifier-git')
 pkgver=v0.3.9.5.g7ed5bac
 pkgrel=1
 pkgdesc="Content Manager Assistant for the PS Vita. (GIT version)"
-arch=("i686" "x86_64")
-url="https://github.com/codestation/qcma"
+arch=('i686' 'x86_64')
+url='https://github.com/codestation/qcma'
 license=('GPL')
-makedepends=('git' 'qt5-tools' 'qt5-base' 'vitamtpmod' 'ffmpeg' 'libnotify' 'knotifications')
+makedepends=('git'
+             'qt5-tools'
+             'qt5-base'
+             'libvitamtp'
+             'ffmpeg'
+             'libnotify'
+             'knotifications'
+             )
 source=('git+https://github.com/codestation/qcma.git')
 sha1sums=('SKIP')
 
@@ -37,7 +44,12 @@ build() {
 
 package_qcma-git() {
   pkgdesc="Content Manager Assistant for the PS Vita. (GIT Version)"
-  depends=('ffmpeg' 'qt5-base' 'libnotify' 'vitamtpmod' 'hicolor-icon-theme')
+  depends=('ffmpeg'
+           'qt5-base'
+           'libnotify'
+           'libvitamtp'
+           'hicolor-icon-theme'
+           )
   conflicts=('qcma')
   provides=('qcma')
   install=qcma-git.install
@@ -47,7 +59,9 @@ package_qcma-git() {
 
 package_qcma-kdenotifier-git() {
   pkgdesc="Content Manager Assistant for the PS Vita. (KDE notifier) (GIT Version)"
-  depends=('qcma-git' 'knotifications')
+  depends=('qcma-git'
+           'knotifications'
+           )
   conflicts=('qcma-kdenotifier')
   provides=('qcma-kdenotifier')
 
