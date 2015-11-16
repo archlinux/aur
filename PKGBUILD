@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-audiodecoder-modplug
 _gitname=audiodecoder.modplug
-pkgver=20150602.5ae7349
-_gitver=5ae7349f39a8e5552c86dfdad339fb18c7e52550
-pkgrel=3
+pkgver=20150806.03b772d
+_gitver=03b772da7ea44ff3c34b322989254cd1e4732443
+pkgrel=1
 pkgdesc='Modplug decoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/notspiff/$_gitname"
