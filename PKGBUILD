@@ -1,14 +1,14 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
+# Maintainer: Danny Dutton <duttondj@vt.edu>
 
 pkgname="qt-installer-framework"
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 _qtver=5.4.2
 pkgdesc="The Qt Installer Framework used for the Qt SDK installer."
 arch=('i686' 'x86_64')
 url='http://qt-project.org/wiki/Qt-Installer-Framework'
 license=('FDL' 'LGPL')
-depends=("qt5-base>=${_qtver}")
+depends=("qt5-base>=${_qtver}" "qt5-tools>=${_qtver}")
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname}-opensource-${pkgver}-src"
 source=("http://download.qt.io/official_releases/${pkgname}/${pkgver}/${_pkgfqn}.tar.gz")
