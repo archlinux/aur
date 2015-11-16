@@ -1,6 +1,6 @@
 pkgbase = plex-media-server-plexpass
 	pkgdesc = Plex Media Server (PlexPass version)
-	pkgver = 0.9.14.0.1539
+	pkgver = 0.9.14.1.1544
 	pkgrel = 1
 	url = https://plex.tv/
 	install = plex-media-server.install
@@ -21,14 +21,14 @@ pkgbase = plex-media-server-plexpass
 	sha256sums = 9da45cc3951ae03086ec663e6273c2de0183495fd15dc34ddd9aa100346d4d3a
 	sha256sums = ebf153d5789f9d24cb98ae607d227286e1da6ce54e149c8be4f47e08ee729573
 	sha256sums = 7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a
-	source_arm = https://downloads.plex.tv/plex-media-server/0.9.14.0.1539-61cdd0f/PlexMediaServer-0.9.14.0.1539-61cdd0f-arm.spk
-	sha256sums_arm = bba7211c663fa263820683d2c0e96bf36d91fcc0f4a528d491b05c53a2bf586f
-	source_armv7h = https://downloads.plex.tv/plex-media-server/0.9.14.0.1539-61cdd0f/PlexMediaServer-0.9.14.0.1539-61cdd0f-arm7.spk
-	sha256sums_armv7h = 77636b1b6bbbd91426eaf7d5dd51e261f081470d0a86d028433a57a9eec51159
-	source_i686 = https://downloads.plex.tv/plex-media-server/0.9.14.0.1539-61cdd0f/plexmediaserver-0.9.14.0.1539-61cdd0f.i386.rpm
-	sha256sums_i686 = a6fca6ca4daa2b5b5ebf32ed0cc5025c94d61fc1f50ecd229f419cb31aabb00a
-	source_x86_64 = https://downloads.plex.tv/plex-media-server/0.9.14.0.1539-61cdd0f/plexmediaserver-0.9.14.0.1539-61cdd0f.x86_64.rpm
-	sha256sums_x86_64 = d8e562ae7a8535efe74d6e8d769fb2b2789420d58e9275d55ee7f6c68ee6f0bd
+	source_arm = https://downloads.plex.tv/plex-media-server/0.9.14.1.1544-651f92a/PlexMediaServer-0.9.14.1.1544-651f92a-arm.spk
+	sha256sums_arm = 0189f0a7cdae260596a6bd121171f591d0fbb7cf63726c474beb2152a39dffc6
+	source_armv7h = https://downloads.plex.tv/plex-media-server/0.9.14.1.1544-651f92a/PlexMediaServer-0.9.14.1.1544-651f92a-arm7.spk
+	sha256sums_armv7h = f9ead21fcc5da6ed7abc3682423afcf1a90a5df3c91fbdd96ad014cf464d0d430
+	source_i686 = https://downloads.plex.tv/plex-media-server/0.9.14.1.1544-651f92a/plexmediaserver-0.9.14.1.1544-651f92a.i386.rpm
+	sha256sums_i686 = bbe596a0d3c9640a1c19893f8353bdc67e47f6f8e872455066f44af9b9cc1f9b
+	source_x86_64 = https://downloads.plex.tv/plex-media-server/0.9.14.1.1544-651f92a/plexmediaserver-0.9.14.1.1544-651f92a.x86_64.rpm
+	sha256sums_x86_64 = affaf7e5f531b1467aa61ab12bc93574e5ab6e212550de6a7384474b7cbbf863
 
 pkgname = plex-media-server-plexpass
 
