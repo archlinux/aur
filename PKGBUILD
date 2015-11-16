@@ -1,8 +1,8 @@
 # Maintainer Denis Demidov <dennis.demidov@gmail.com>
 
 pkgname=hpx-git
-pkgrel=3
-pkgver=20150609
+pkgrel=4
+pkgver=20151116
 pkgdesc="A general purpose C++ runtime system for parallel and distributed applications of any scale"
 arch=("any")
 url="http://stellar-group.org/libraries/hpx"
@@ -26,8 +26,8 @@ build() {
     cd build
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DHPX_BUILD_EXAMPLES=OFF \
-        -DHPX_BUILD_TESTS=OFF
+        -DHPX_WITH_EXAMPLES=OFF \
+        -DHPX_WITH_TESTS=OFF
     make -j1
 }
 
