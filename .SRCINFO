@@ -1,6 +1,6 @@
 pkgbase = paycoin-qt-git
 	pkgdesc = Paycoin is a Paycoin network-compatible, community-developed wallet client.
-	pkgver = 0.3.1.1.r105.g9c1aa43
+	pkgver = 0.3.3.0
 	pkgrel = 1
 	url = http://paycoin.com
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = paycoin-qt-git
 	provides = paycoin-qt
 	conflicts = paycoin-wallet
 	conflicts = paycoin-qt
-	source = git://github.com/PaycoinFoundation/paycoin.git
+	source = git://github.com/PaycoinFoundation/paycoin.git#tag=v0.3.3.0
 	source = paycoin-qt.desktop
 	md5sums = SKIP
 	md5sums = f6f77ced97d4fba182ed01f33d49d895
