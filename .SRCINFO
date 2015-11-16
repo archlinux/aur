@@ -1,0 +1,18 @@
+pkgbase = midisharelight-git
+	pkgdesc = light version of the MidiShare library (git version)
+	pkgver = 1647.f8a17cc
+	pkgrel = 1
+	url = http://midishare.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = cmake
+	provides = midisharelight
+	conflicts = midisharelight
+	options = strip
+	options = staticlibs
+	source = midisharelight-git::git+git://git.code.sf.net/p/midishare/code#branch=dev
+	md5sums = SKIP
+
+pkgname = midisharelight-git
+
