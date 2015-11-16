@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-audiodecoder-timidity
 	pkgdesc = Timidity decoder addon for Kodi
-	pkgver = 20150602.da5eb9a
-	pkgrel = 3
+	pkgver = 20150806.732ab44
+	pkgrel = 1
 	url = https://github.com/notspiff/audiodecoder.timidity
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = kodi-devel-audiodecoder-timidity
 	makedepends = kodi-devel-platform
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
-	source = https://github.com/notspiff/audiodecoder.timidity/archive/da5eb9ac6557fc1ea0f48cc044cfd16f4f2a1e0b.tar.gz
+	source = https://github.com/notspiff/audiodecoder.timidity/archive/732ab44f658b127ffa08ee187624ba944ffbad15.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-audiodecoder-timidity
