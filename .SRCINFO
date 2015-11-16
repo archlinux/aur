@@ -1,6 +1,6 @@
 pkgbase = dtc-git
 	pkgdesc = Device Tree Compiler
-	pkgver = 1.4.1.r20.g604e61e
+	pkgver = 1.4.1.r21.gaf9f26d
 	pkgrel = 1
 	url = http://jdl.com/software/
 	arch = i686
