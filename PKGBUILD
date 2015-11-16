@@ -1,6 +1,6 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=openxenmanager-git
-pkgver=r191.bceaaef
+pkgver=r195.9bdb00f
 pkgrel=1
 pkgdesc="An opensource multiplatform clone of Citrix XenCenter"
 arch=('any')
