@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-audiodecoder-sidplay
 _gitname=audiodecoder.sidplay
-pkgver=20150602.27b2c05
-_gitver=27b2c0582878857bfe03195471fa7ffa4bcc40f0
-pkgrel=3
+pkgver=20150806.d832f05
+_gitver=d832f050211b4e5f085a8b09bc7d26ce32098169
+pkgrel=1
 pkgdesc='Sidplay decoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/notspiff/$_gitname"
