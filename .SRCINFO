@@ -1,0 +1,16 @@
+pkgbase = vol-git
+	pkgdesc = Volument control and notification (PulseAudio, pamixer and volnoti) - klassiker's fork
+	pkgver = 20141030.0c16674
+	pkgrel = 1
+	url = https://github.com/klassiker/vol.sh
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = pacman
+	depends = pamixer
+	depends = volnoti
+	source = vol::git+https://github.com/klassiker/vol.sh.git
+	sha1sums = SKIP
+
+pkgname = vol-git
+
