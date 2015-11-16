@@ -1,0 +1,13 @@
+pkgbase = ijvm-tools
+	pkgdesc = Implementation of the IJVM machine described in the book Structured Computer Organization
+	pkgver = 0.9
+	pkgrel = 1.0
+	url = https://users-cs.au.dk/bouvin/dComArk/2015/noter/Note_2/
+	arch = x86_64
+	license = GPL2
+	provides = ijvm
+	source = ijvm-tools-0.9.tar.gz::https://users-cs.au.dk/bouvin/dComArk/2015/noter/Note_2/ijvm-tools-0.9.tar.gz
+	sha512sums = 29fb6076b30a63cf3db64f96972928e1a4c281defcc71fa124a795be1dc3f10322cd11e0bc880adfa50d0be423e8f45826c7515bdd90f52e5258053e700ed1bc
+
+pkgname = ijvm-tools
+
