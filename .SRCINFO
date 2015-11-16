@@ -1,6 +1,6 @@
 pkgbase = virtualbox-modules-pf
 	pkgdesc = Host linux-pf kernel modules for VirtualBox
-	pkgver = 5.0.2
+	pkgver = 5.0.8
 	pkgrel = 1
 	url = http://virtualbox.org
 	install = virtualbox-modules-pf.install
@@ -8,9 +8,9 @@ pkgbase = virtualbox-modules-pf
 	arch = x86_64
 	license = GPL
 	makedepends = linux-pf-headers
-	makedepends = virtualbox-host-dkms=5.0.2
-	depends = linux-pf>=4.1
-	depends = linux-pf<4.2
+	makedepends = virtualbox-host-dkms=5.0.8
+	depends = linux-pf>=4.3
+	depends = linux-pf<4.4
 	provides = virtualbox-host-modules
 
 pkgname = virtualbox-modules-pf
