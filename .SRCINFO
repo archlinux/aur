@@ -1,6 +1,6 @@
 pkgbase = gmt4
 	pkgdesc = Generic Mapping Tools V4: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps.
-	pkgver = 4.5.13
+	pkgver = 4.5.14
 	pkgrel = 1
 	url = http://gmt.soest.hawaii.edu/
 	install = gmt.install
@@ -14,8 +14,8 @@ pkgbase = gmt4
 	optdepends = ghostscript
 	optdepends = gmt-coast
 	conflicts = gmt
-	source = ftp://ftp.soest.hawaii.edu/gmt/gmt-4.5.13-src.tar.bz2
-	md5sums = cc577e8c600ab0ea8e1ee7412a5902a6
+	source = ftp://ftp.soest.hawaii.edu/gmt/gmt-4.5.14-src.tar.bz2
+	md5sums = 2d5bad3aaf593c46f0ff57264c2d3a47
 
 pkgname = gmt4
 
