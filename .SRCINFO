@@ -1,6 +1,6 @@
 pkgbase = perl-moose
 	pkgdesc = A postmodern object system for Perl 5
-	pkgver = 2.1603
+	pkgver = 2.1604
 	pkgrel = 1
 	url = https://metacpan.org/release/Moose
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = perl-moose
 	checkdepends = perl-test-fatal>=0.001
 	checkdepends = perl-test-requires>=0.05
 	checkdepends = perl-test-warnings>=0.016
-	depends = perl-cpan-meta-check>=0.007
+	depends = perl-cpan-meta-check>=0.011
 	depends = perl-class-load>=0.09
 	depends = perl-class-load-xs>=0.01
 	depends = perl-data-optlist>=0.107
@@ -33,9 +33,9 @@ pkgbase = perl-moose
 	depends = perl-task-weaken
 	depends = perl-try-tiny>=0.17
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-2.1603.tar.gz
-	md5sums = fb58efdf8cb287bc925763da6e4443bc
-	sha512sums = 130efdb12bdf3ea3a03cf7188637faa9aa3a85de5e36ec5818c3e0f0a7b8a9c4b0959b6102b06bc0b6cc53027ae00f7dfb2e0d4063363b52e55fa4e5b850dae4
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-2.1604.tar.gz
+	md5sums = 25776b282dd23067449dc0e885b681bc
+	sha512sums = f0506dfd8bad0f59a1cb85cf994572ec521da93099354138bbba4622bb04cf67b1313e805231ec73b9af69ab8c443b998524219121fecbe00f8af74a6e9556ba
 
 pkgname = perl-moose
 
