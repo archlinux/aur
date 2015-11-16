@@ -1,16 +1,16 @@
 pkgbase = acpi_call-pf
 	pkgdesc = A linux-pf kernel module that enables calls to ACPI methods through /proc/acpi/call
 	pkgver = 1.1.0
-	pkgrel = 15
+	pkgrel = 23
 	url = http://github.com/mkottman/acpi_call
 	install = acpi_call-pf.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = linux-pf-headers>=4.0
-	makedepends = linux-pf-headers<4.1
-	depends = linux-pf>=4.0
-	depends = linux-pf<4.1
+	makedepends = linux-pf-headers>=4.3
+	makedepends = linux-pf-headers<4.4
+	depends = linux-pf>=4.3
+	depends = linux-pf<4.4
 	provides = acpi_call
 	source = http://github.com/mkottman/acpi_call/archive/v1.1.0.tar.gz
 	sha256sums = d0d14b42944282724fca76f57d598eed794ef97448f387d1c489d85ad813f2f0
