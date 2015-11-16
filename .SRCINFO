@@ -17,7 +17,7 @@ pkgbase = bareos
 	source = https://github.com/bareos/bareos/archive/Release/15.2.1.tar.gz
 	source = PKGBUILD.common
 	sha256sums = 020b974b54f10d245ee920dd3144827ef32588599e703e4f3ce1c913a0201160
-	sha256sums = 4720c3fcfd1593f7efef4d04e736f0d468fde742bdc5e1155140bcfa576df20e
+	sha256sums = a76f47b2cdfaede8bba6f1c658afed999260bb267fe7cba48255ce1a73796b06
 
 pkgname = bareos-common
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Common files
