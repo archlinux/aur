@@ -2,20 +2,19 @@
 
 _pkgname=fb-adb
 pkgname=$_pkgname-git
-pkgver=20151030.r323.a10f1ee
+pkgver=20151114.r325.d447d38
 pkgrel=1
 pkgdesc='A better shell to use in place of adb when connecting to Android devices'
 url='https://github.com/facebook/fb-adb'
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('android-tools')
-makedepends=('git' 'prelink' 'zip' 'vim')
+makedepends=('git' 'zip' 'vim')
 options=('!strip' '!buildflags')
-install=$pkgname.install
-_ndkver=10e
 source=("git+$url.git")
 sha512sums=('SKIP')
 sha512sums=('SKIP')
+_ndkver=10e
 
 [[ -z "$ANDROID_NDK" ]] && {
   source_i686+=("android-ndk-r$_ndkver-linux-i686.bin::http://dl.google.com/android/ndk/android-ndk-r$_ndkver-linux-x86.bin")
@@ -30,8 +29,7 @@ pkgver() {
 }
 
 build() {
-  [[ -z "$ANDROID_NDK" ]] \
-      && export ANDROID_NDK="$srcdir/android-ndk-r$_ndkver"
+  [[ -z "$ANDROID_NDK" ]] && export ANDROID_NDK="$srcdir/android-ndk-r$_ndkver"
 
   # configure
   cd $_pkgname
@@ -50,7 +48,4 @@ build() {
 
 package() {
   install -Dm755 $_pkgname/build/$_pkgname "$pkgdir/usr/bin/$_pkgname"
-  install -Dm755 $_pkgname/build/stub-arm/$_pkgname-android-arm.zip "$pkgdir/usr/share/$_pkgname/$_pkgname-android-arm-$pkgver.zip"
-  printf '%s\n' "Extract '$_pkgname-android-arm-$pkgver.zip' and copy 'fb-adb' to '/system/bin/fb-adb' on your Android device" \
-    > "$pkgdir/usr/share/$_pkgname/README"
 }
