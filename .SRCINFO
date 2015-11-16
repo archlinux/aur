@@ -7,15 +7,15 @@ pkgbase = ghostscript-git
 	arch = x86_64
 	license = AGPL
 	license = custom
-	makedepends = gtk2
 	makedepends = gnutls
+	depends = gtk3
 	depends = libxt
 	depends = libcups
 	depends = fontconfig
 	depends = jasper
+	depends = libpaper
 	optdepends = texlive-core: needed for dvipdf
 	optdepends = gdk-pixbuf2: needed for gsx
-	optdepends = gtk3: needed for gsx
 	provides = ghostscript=9.18
 	conflicts = ghostscript
 	options = !libtool

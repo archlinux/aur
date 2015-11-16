@@ -7,11 +7,10 @@ pkgrel=1
 pkgdesc="An interpreter for the PostScript language"
 arch=('i686' 'x86_64')
 license=('AGPL' 'custom')
-depends=('libxt' 'libcups' 'fontconfig' 'jasper')
-makedepends=('gtk2' 'gnutls')
+depends=('gtk3' 'libxt' 'libcups' 'fontconfig' 'jasper' 'libpaper')
+makedepends=('gnutls')
 optdepends=('texlive-core: needed for dvipdf'
-            'gdk-pixbuf2: needed for gsx'
-            'gtk3: needed for gsx')
+            'gdk-pixbuf2: needed for gsx')
 url="http://www.ghostscript.com/"
 provides=('ghostscript=9.18')
 conflicts=('ghostscript')
