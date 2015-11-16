@@ -1,8 +1,8 @@
 #Maintainer: max-k <max-k AT post DOT com>
 
 pkgname=pydio
-pkgver=6.0.8
-pkgrel=3
+pkgver=6.2.0
+pkgrel=1
 pkgdesc='PHP file sharing platform, formerly AjaXplorer.'
 arch=('any')
 url='http://pyd.io/'
@@ -37,7 +37,7 @@ source=("${_srcbase}/${pkgver}/${pkgname}-core-${pkgver}.tar.gz"
         "example_nginx_vhost_ssl.conf"
         "${pkgname}.install")
 
-md5sums=('e5372adc38d128a11d14cbb19be3983b'
+md5sums=('e557215a2ed98b953aa338cae5f3dcb4'
          'b93ccc2869b485a3c7cd760e5435645c'
          '85c19235373da52b97e0b6073ba45635'
          'e3c4ea819d6790c61c9b81dc48a34e05'
