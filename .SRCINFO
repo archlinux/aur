@@ -1,12 +1,12 @@
 pkgbase = libx32-libxcb
 	pkgdesc = X11 client-side library (x32 ABI)
-	pkgver = 1.11
+	pkgver = 1.11.1
 	pkgrel = 1.1
 	url = http://xcb.freedesktop.org/
 	arch = x86_64
 	license = custom
 	makedepends = pkgconfig
-	makedepends = libx32-libxslt
+	makedepends = libxslt
 	makedepends = python
 	makedepends = xorg-util-macros
 	makedepends = gcc-multilib-x32
@@ -14,9 +14,9 @@ pkgbase = libx32-libxcb
 	depends = libx32-libxdmcp
 	depends = libx32-libxau
 	depends = libxcb
-	source = http://xcb.freedesktop.org//dist/libxcb-1.11.tar.bz2
+	source = http://xcb.freedesktop.org//dist/libxcb-1.11.1.tar.bz2
 	source = libxcb-1.1-no-pthread-stubs.patch
-	sha256sums = 03635d70045b9ede90778e67516135828a57de87ac508f987024f43c03620ff7
+	sha256sums = b720fd6c7d200e5371affdb3f049cc8f88cff9aed942ff1b824d95eedbf69d30
 	sha256sums = 3923bcb1930b851012968435909597d8d5251c72153511cb2982636c97100cc3
 
 pkgname = libx32-libxcb
