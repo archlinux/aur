@@ -2,16 +2,16 @@
 # Contributor: Mohammad Alsaleh <msal@tormail.org>
 # Maintainer: Steven Allen <steven@stebalien.com>
 
-_date=2015-11-12
+_date=2015-11-16
 pkgname=rust-nightly-bin
-pkgver=1.6.0_2015.11.11
+pkgver=1.6.0_2015.11.15
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
 url='http://www.rust-lang.org/'
 license=('MIT' 'Apache' 'custom')
 provides=('rust' 'rust-nightly' 'cargo' 'cargo-nightly')
-conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin')
+conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin' 'cargo' 'cargo-git' 'cargo-nightly' 'cargo-nightly-bin')
 depends=('gcc-libs' 'zlib' 'sh')
 source=("rust-nightly-${_date}-${CARCH}-unknown-linux-gnu.tar.gz.asc::http://static.rust-lang.org/dist/${_date}/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz.asc"
         "rust-nightly-${_date}-${CARCH}-unknown-linux-gnu.tar.gz::http://static.rust-lang.org/dist/${_date}/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"
