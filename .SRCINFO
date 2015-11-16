@@ -1,0 +1,16 @@
+pkgbase = kodi-devel-screensaver-pyro
+	pkgdesc = Pyro screensaver addon for Kodi
+	pkgver = 20150921.2476b77
+	pkgrel = 1
+	url = https://github.com/notspiff/screensaver.pyro
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	source = https://github.com/notspiff/screensaver.pyro/archive/2476b77d9954980a27e07eb8eb0727e2af226351.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-screensaver-pyro
+
