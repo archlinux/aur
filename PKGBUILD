@@ -1,8 +1,8 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-padwalker'
-pkgver='2.1'
+pkgver='2.2'
 pkgrel='1'
 pkgdesc="play with other peoples' lexical variables"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/PadWalker'
-source=('http://search.cpan.org/CPAN/authors/id/R/RO/ROBIN/PadWalker-2.1.tar.gz')
-md5sums=('fdd962c6e519aad58606997d11448fd3')
-sha512sums=('632100ef9f13def71aa496737d6a49977d311cae749a1b4827f2b965ae797357fbb5ab756ead0927f200ba8a8a62a9b6fcce3a49f3cc0c4e196855d8427502d3')
-_distdir="PadWalker-2.1"
+source=('http://search.cpan.org/CPAN/authors/id/R/RO/ROBIN/PadWalker-2.2.tar.gz')
+md5sums=('6bcc741f77b1831a893b2a22c785e31a')
+sha512sums=('b0bdfd4f1ebf63e71618dda0db6249fc6b4a0165cc829a9a90e68353f31b61ec6c5873b598b67b085f0a7fb8be40fd1f890e57de85dfdd1bee5543146cc1a3f3')
+_distdir="PadWalker-2.2"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,6 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
