@@ -2,7 +2,7 @@
 
 pkgname=counterblock
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extended functionality for Counterparty"
 arch=('any')
 depends=('cython2'
@@ -31,7 +31,7 @@ depends=('cython2'
          'python2-prettytable'
          'python2-pycoin'
          'python2-pygeoip'
-         'python2-pymongo'
+         'python2-pymongo-2.9'
          'python2-pytest'
          'python2-python-bitcoinlib'
          'python2-pyzmq'
@@ -50,19 +50,19 @@ optdepends=('armory: for armory_utxsvr'
 groups=('counterparty')
 url="https://github.com/CounterpartyXCP/counterblock"
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterblock/tar.gz/1.2.0-BETA)
-sha256sums=('3fd0b51e49c7b6c292313c5a585b8a053beeb51dd5038c9b70eb458b480a3ce3')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterblock/tar.gz/$pkgver)
+sha256sums=('ba529709abc88b709d516524b36353c38d24137b7423fed0c42f1d4aeedb8f66')
 install=counterblock.install
 
 build() {
-  cd "$srcdir/$pkgname-1.2.0-BETA"
+  cd "$srcdir/$pkgname-$pkgver"
 
   msg 'Building...'
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-1.2.0-BETA"
+  cd "$srcdir/$pkgname-$pkgver"
 
   msg 'Installing...'
   python2 setup.py install --root="$pkgdir" --optimize=1
