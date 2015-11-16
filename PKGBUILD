@@ -1,4 +1,3 @@
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
 # Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 # Contributor: skydrome <skydrome@i2pmail.org>
 # Contributor: Valere Monseur <valere_monseur@hotmail.com>
@@ -9,23 +8,32 @@ pkgname=vuurmuur-devel
 _pkgname_short=vuurmuur
 _pkgname=Vuurmuur
 pkgver=0.8rc1
-pkgrel=1
+pkgrel=2
 pkgdesc='powerful front-end for iptables aimed at system-administrators who need a decent firewall, but dont have netfilter specific knowledge - development release'
 arch=('i686' 'x86_64')
 url='http://www.vuurmuur.org'
 license=('GPL')
 install='vuurmuur.install'
-depends=('iptables' 'ncurses' 'libjpeg')
-optdepends=('conntrack-tools: for connection tracking'
-            'iproute2: for traffic shapping'
-            'iptrafvol: for traffic volume logging')
+depends=(
+iptables
+ncurses
+libjpeg
+libnetfilter_log
+)
+optdepends=(
+'conntrack-tools: for connection tracking'
+'iproute2: for traffic shapping'
+'iptrafvol: for traffic volume logging'
+)
 provides=(vuurmuur)
 conflicts=(vuurmuur)
-backup=('etc/vuurmuur/config.conf'
-        'etc/vuurmuur/modules.conf'
-        'etc/vuurmuur/vuurmuur_conf.conf'
-        'etc/vuurmuur/plugins/textdir.conf'
-        'etc/logrotate.d/vuurmuur')
+backup=(
+'etc/vuurmuur/config.conf'
+'etc/vuurmuur/modules.conf'
+'etc/vuurmuur/vuurmuur_conf.conf'
+'etc/vuurmuur/plugins/textdir.conf'
+'etc/logrotate.d/vuurmuur'
+)
 source=(
 "ftp://ftp.vuurmuur.org/releases/$pkgver/${_pkgname}-${pkgver}.tar.gz"
 modules.conf
@@ -33,6 +41,11 @@ vuurmuur.rc
 vuurmuur.service
 vuurmuur.script
 )
+sha256sums=('2edd9e04ebe286f0a752ef20b760d2defdd22f340b893c69f165df6c061696ce'
+            'a18d4093075f8e0a24f902780b04d03116be8c057b139a7502d8517009bd65e0'
+            'f1b49c9e1480f9d37ef2df779f725f926552f8713f7aacfc49e0b359e10f27a5'
+            '1bf559e49ac64cdf6bff9b003adbe97af1b222d59ec49242545cf13daee07a24'
+            'de4cee0e33d3431c985289d8de2844eeb1b1e614e69b7e3b1d6c99e8cda3aa4f')
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
 
@@ -71,7 +84,6 @@ build() {
     make
     popd
 }
-
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}
 
@@ -138,8 +150,3 @@ package() {
     install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/${_pkgname_short}_conf-${pkgver}/COPYING \
                     ${pkgdir}/usr/share/licenses/${_pkgname_short}_conf/COPYING
 }
-md5sums=('f5293d074a8cb1e4a68bd5c1272babcd'
-         'e7e07db3cf65dbb7bebfd6ca3fde0e56'
-         '214161fa924d6817ba6919862af37fbd'
-         'ba3a1c90289a42c5c29bdf06e0045c5e'
-         '718f0384b915db99b2d93ab9792cc92d')
