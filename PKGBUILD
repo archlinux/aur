@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/dock-applet"
+        autoreconf
 	./configure --prefix=/usr --disable-schemas-compile
 	make
 }
