@@ -1,0 +1,28 @@
+pkgbase = inscore-git
+	pkgdesc = Grame's INScore: interactive augmented music scores (git version)
+	pkgver = 2669.20c4660
+	pkgrel = 1
+	url = http://inscore.sourceforge.net/
+	install = inscore-git.install
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-websockets
+	depends = guidolib
+	optdepends = libmusicxml: MusicXML support
+	optdepends = libmicrohttpd: HTTP server support
+	optdepends = faust2-git: Faust programming support
+	optdepends = lua: Lua programming support (deprecated)
+	provides = inscore
+	conflicts = inscore
+	source = inscore-git::git+git://git.code.sf.net/p/inscore/code#branch=dev
+	md5sums = SKIP
+
+pkgname = inscore-git
+
