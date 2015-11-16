@@ -14,7 +14,9 @@ pkgbase = obnam
 	depends = python2-yaml
 	optdepends = python2-fuse: support for mounting backups
 	source = http://code.liw.fi/debian/pool/main/o/obnam/obnam_1.18.1.orig.tar.xz
+	source = Add-prefetch-size-argument.patch
 	sha256sums = 455159a162ce6cddbe7dacc04f94ba3cd9e65c868ea41d3f06b44254da523c7e
+	sha256sums = f1504e89c6e003cdf40cfbdc5154dafd3f7fd41aa19c4cab7120486c241d5e32
 
 pkgname = obnam
 
