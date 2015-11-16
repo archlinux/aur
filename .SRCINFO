@@ -10,6 +10,7 @@ pkgbase = libvitamtp-git
 	depends = libusb
 	depends = libxml2
 	provides = libvitamtp
+	conflicts = libvitamtp
 	conflicts = vitamtp
 	conflicts = vitamtpmod
 	source = libvitamtp::git+https://github.com/codestation/vitamtp.git
