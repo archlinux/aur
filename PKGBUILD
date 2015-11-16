@@ -9,7 +9,8 @@ license=('MIT')
 depends=('texlive-core')
 makedepends=('git')
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=("${pkgname}"
+			'beamer-theme-tub')
 replaces=('beamer-theme-tub')
 source=("git+https://github.com/cola4cube/beamer-theme-tub.git")
 install="${pkgname}.install"
