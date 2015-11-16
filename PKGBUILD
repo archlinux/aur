@@ -1,4 +1,3 @@
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
 # Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 # Contributor: skydrome <skydrome@i2pmail.org>
 # Contributor: Valere Monseur <valere_monseur@hotmail.com>
@@ -8,22 +7,31 @@
 pkgname=vuurmuur
 _pkgname=Vuurmuur
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='powerful front-end for iptables aimed at system-administrators who need a decent firewall, but dont have netfilter specific knowledge'
 arch=('i686' 'x86_64')
 url='http://www.vuurmuur.org'
 license=('GPL')
 install='vuurmuur.install'
-depends=('iptables' 'ncurses' 'libjpeg')
-optdepends=('conntrack-tools: for connection tracking'
-            'iproute2: for traffic shapping'
-            'iptrafvol: for traffic volume logging')
+depends=(
+libnetfilter_log
+iptables
+ncurses
+libjpeg
+)
+optdepends=(
+'conntrack-tools: for connection tracking'
+'iproute2: for traffic shapping'
+'iptrafvol: for traffic volume logging'
+)
 conflicts=(vuurmuur-devel)
-backup=('etc/vuurmuur/config.conf'
-        'etc/vuurmuur/modules.conf'
-        'etc/vuurmuur/vuurmuur_conf.conf'
-        'etc/vuurmuur/plugins/textdir.conf'
-        'etc/logrotate.d/vuurmuur')
+backup=(
+'etc/vuurmuur/config.conf'
+'etc/vuurmuur/modules.conf'
+'etc/vuurmuur/vuurmuur_conf.conf'
+'etc/vuurmuur/plugins/textdir.conf'
+'etc/logrotate.d/vuurmuur'
+)
 source=(
 ftp://ftp.vuurmuur.org/releases/$pkgver/${_pkgname}-$pkgver.tar.gz
 modules.conf
@@ -69,7 +77,6 @@ build() {
     make
     popd
 }
-
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}
 
@@ -136,8 +143,8 @@ package() {
     install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/${pkgname}_conf-${pkgver}/COPYING \
                     ${pkgdir}/usr/share/licenses/${pkgname}_conf/COPYING
 }
-md5sums=('bad91aafcbea5e3a434440f88d722778'
-         'e7e07db3cf65dbb7bebfd6ca3fde0e56'
-         '214161fa924d6817ba6919862af37fbd'
-         'ba3a1c90289a42c5c29bdf06e0045c5e'
-         '718f0384b915db99b2d93ab9792cc92d')
+sha256sums=('7d4f8245de98f0a362f5ddfdeb672ee887eb54f39056764df98429d6eab4c26b'
+            'a18d4093075f8e0a24f902780b04d03116be8c057b139a7502d8517009bd65e0'
+            'f1b49c9e1480f9d37ef2df779f725f926552f8713f7aacfc49e0b359e10f27a5'
+            '1bf559e49ac64cdf6bff9b003adbe97af1b222d59ec49242545cf13daee07a24'
+            'de4cee0e33d3431c985289d8de2844eeb1b1e614e69b7e3b1d6c99e8cda3aa4f')
