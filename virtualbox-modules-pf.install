@@ -4,17 +4,17 @@ cat << EOF
 ===> You must load vboxdrv module before starting VirtualBox:
 ===> # modprobe vboxdrv
 EOF
-    EXTRAMODULES='extramodules-4.1pf'
+    EXTRAMODULES='extramodules-4.3-pf'
     depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 
 post_upgrade() {
-    EXTRAMODULES='extramodules-4.1-pf'
+    EXTRAMODULES='extramodules-4.3-pf'
     depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
     echo 'In order to use the new version, reload all virtualbox modules manually.'
 }
 
 post_remove() {
-    EXTRAMODULES='extramodules-4.1-pf'
+    EXTRAMODULES='extramodules-4.3-pf'
     depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
