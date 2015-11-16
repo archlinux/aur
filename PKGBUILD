@@ -19,7 +19,7 @@ conflicts=('libvitamtp'
 source=('libvitamtp::git+https://github.com/codestation/vitamtp.git'
         'libvitamtp-git.sysuser')
 sha1sums=('SKIP'
-          '90ec10f07f7526009e099ddcb758fcfec7d3b095')
+          '06698a33a6dec777373ab4273caf4a55bfde596c')
 install=libvitamtp-git.install
 
 pkgver() {

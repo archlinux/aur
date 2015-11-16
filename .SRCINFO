@@ -16,7 +16,7 @@ pkgbase = libvitamtp-git
 	source = libvitamtp::git+https://github.com/codestation/vitamtp.git
 	source = libvitamtp-git.sysuser
 	sha1sums = SKIP
-	sha1sums = 90ec10f07f7526009e099ddcb758fcfec7d3b095
+	sha1sums = 06698a33a6dec777373ab4273caf4a55bfde596c
 
 pkgname = libvitamtp-git
 
