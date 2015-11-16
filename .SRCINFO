@@ -23,6 +23,7 @@ pkgbase = kdenlive-git
 	optdepends = libdv: for webcam capture (if FFmpeg is not installed)
 	optdepends = recordmydesktop: for screen capture
 	optdepends = xine-ui: for DVD preview
+	optdepends = oxygen-icons: optional for xfce
 	provides = kdenlive
 	conflicts = kdenlive
 	source = git://anongit.kde.org/kdenlive

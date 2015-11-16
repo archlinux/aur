@@ -19,7 +19,8 @@ optdepends=('ffmpeg: for FFmpeg plugin'
             'dvgrab: for firewire capture'
             'libdv: for webcam capture (if FFmpeg is not installed)'
             'recordmydesktop: for screen capture'
-            'xine-ui: for DVD preview')
+            'xine-ui: for DVD preview'
+	    'oxygen-icons: optional for xfce')
 provides=('kdenlive')
 conflicts=('kdenlive')
 source=('git://anongit.kde.org/kdenlive') 
