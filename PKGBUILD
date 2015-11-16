@@ -3,7 +3,7 @@
 # Contributor: Maxence Sartiaux
 
 pkgname=feedthebeast
-pkgver=1.4.10_377
+pkgver=1.4.11_378
 pkgrel=1
 epoch=2
 pkgdesc="Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes."
@@ -19,7 +19,7 @@ source=("$pkgname"
         "${pkgname}.install")
 noextract=("${pkgname}.jar")
 sha256sums=('35ebb0e4fc8a581c2aa6e939527f238800f4059bb5253c67eb3d478c463010b0'
-            '8714f157de7e4bfcd122be017288cf6990fdbdff303cc358c9d49d9d5be356dc'
+            '83c842c4a768bb1f125c4229381795f13f7ef14f790c36c718dc0d5fe8908113'
             '4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d'
             'dfb83978fea9eddd28c2d90ab9eefa9554d5ae03dfc540554a829ac8ee8db83a')
 
