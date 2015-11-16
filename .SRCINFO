@@ -1,0 +1,17 @@
+pkgbase = kodi-devel-visualization-vsxu
+	pkgdesc = VSXu visualization addon for Kodi
+	pkgver = 20151029.990332f
+	pkgrel = 1
+	url = https://github.com/notspiff/visualization.vsxu
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	depends = vsxu
+	source = https://github.com/notspiff/visualization.vsxu/archive/990332f0719503c4575021f5f64daa0fbc35ac4e.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-visualization-vsxu
+
