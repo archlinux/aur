@@ -1,13 +1,13 @@
 pkgbase = eclipse-vrapper
 	pkgdesc = Vim-like editing plugin for Eclipse
-	pkgver = 0.58.0
+	pkgver = 0.60.0
 	pkgrel = 1
 	url = http://vrapper.sourceforge.net/home/
 	arch = any
 	license = GPL3
 	depends = eclipse>=4.5
-	source = http://downloads.sourceforge.net/project/vrapper/vrapper/0.58.0/vrapper_0.58.0_20150802.zip
-	sha256sums = a9b0c82da16453d1a55bf90d56b296ee749f51b40965d30b184f5e17829ed98e
+	source = http://downloads.sourceforge.net/project/vrapper/vrapper/0.60.0/vrapper_0.60.0_20151004.zip
+	sha256sums = 77bd4225ab83861fec0a0c6cd06b4bf692c4add0ad06b137ca81ede1e43f0393
 
 pkgname = eclipse-vrapper
 
