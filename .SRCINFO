@@ -1,7 +1,7 @@
 pkgbase = libx32-libx11
 	pkgdesc = X11 client-side library (x32 ABI)
-	pkgver = 1.6.2
-	pkgrel = 1
+	pkgver = 1.6.3
+	pkgrel = 1.1
 	url = http://xorg.freedesktop.org/
 	arch = x86_64
 	license = custom:XFREE86
@@ -13,8 +13,10 @@ pkgbase = libx32-libx11
 	depends = libx32-libxcb
 	depends = libx11
 	options = !libtool
-	source = http://xorg.freedesktop.org//releases/individual/lib/libX11-1.6.2.tar.bz2
-	sha256sums = 2aa027e837231d2eeea90f3a4afe19948a6eb4c8b2bec0241eba7dbc8106bd16
+	source = http://xorg.freedesktop.org//releases/individual/lib/libX11-1.6.3.tar.bz2
+	source = http://xorg.freedesktop.org//releases/individual/lib/libX11-1.6.3.tar.bz2.sig
+	sha256sums = cf31a7c39f2f52e8ebd0db95640384e63451f9b014eed2bb7f5de03e8adc8111
+	sha256sums = SKIP
 
 pkgname = libx32-libx11
 
