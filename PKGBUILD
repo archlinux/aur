@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-audioencoder-vorbis
 _gitname=audioencoder.vorbis
-pkgver=20150601.15d619d
-_gitver=15d619dae4411ecebadf2ec2996d611600ad0bee
-pkgrel=2
+pkgver=20150811.42620de
+_gitver=42620dec2707a717e6365171b43deacc76e9f1f5
+pkgrel=1
 pkgdesc='Vorbis encoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/xbmc/$_gitname"
