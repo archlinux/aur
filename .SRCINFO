@@ -1,8 +1,8 @@
 pkgbase = volnoti-hcchu-git
 	pkgdesc = Lightweight indicator, hcchu's fork
-	pkgver = 20151022.c5a94af
+	pkgver = 0.1
 	pkgrel = 1
-	url = https://github.com/hcchu/volnoti.giy
+	url = https://github.com/hcchu/volnoti.git
 	arch = i686
 	arch = x86_64
 	license = GPLv3

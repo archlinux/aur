@@ -1,12 +1,11 @@
 # Maintainer: gabrielsimoes <simoes.sgabriel@gmail.com>
-# Contibutor: David Brazdil <db538@cam.ac.uk>
 
 _pkgname='volnoti'
 pkgname="${_pkgname}-hcchu-git"
-pkgver=20151022.c5a94af
+pkgver=0.1
 pkgrel=1
 pkgdesc="Lightweight indicator, hcchu's fork"
-url="https://github.com/hcchu/volnoti.giy"
+url="https://github.com/hcchu/volnoti.git"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('dbus-core' 'dbus-glib' 'gtk2' 'gdk-pixbuf2' 'librsvg')
