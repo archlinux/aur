@@ -1,0 +1,16 @@
+pkgbase = libmusicxml-git
+	pkgdesc = library and tools for the MusicXML format (git version)
+	pkgver = 34.68feb19
+	pkgrel = 1
+	url = https://github.com/dfober/libmusicxml
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = cmake
+	provides = libmusicxml
+	conflicts = libmusicxml
+	source = libmusicxml-git::git+https://github.com/dfober/libmusicxml
+	md5sums = SKIP
+
+pkgname = libmusicxml-git
+
