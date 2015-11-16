@@ -1,4 +1,4 @@
-# Maintainer: Ian Denhardt <ian@zenhack.net>
+# Maintainer: Danny Dutton <duttondj@vt.edu>
 
 pkgname=xinput_calibrator
 pkgver=0.7.5
@@ -7,7 +7,6 @@ pkgdesc="Generic touchscreen calibration program for X.Org"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/xinput_calibrator/"
 license=('MIT')
-depends=('gtkmm')
 source=("http://github.com/downloads/tias/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
 package() {
