@@ -1,15 +1,15 @@
 pkgbase = nodejs-sails
 	pkgdesc = Realtime MVC Framework for Node.js.
-	pkgver = 0.11.0
-	pkgrel = 3
+	pkgver = 0.11.2
+	pkgrel = 1
 	url = http://sailsjs.org
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = sails-0.11.0.tgz
-	source = https://registry.npmjs.org/sails/-/sails-0.11.0.tgz
-	sha256sums = 1bed1cef794f88f012a4c238435d765a8d733bf2b35e8acec8a69a5872da545b
+	noextract = sails-0.11.2.tgz
+	source = https://registry.npmjs.org/sails/-/sails-0.11.2.tgz
+	sha256sums = 30c23940170e99e8599369b11c658ff5044787a8630454d96929545d3d00c9f1
 
 pkgname = nodejs-sails
 
