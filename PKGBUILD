@@ -166,7 +166,7 @@ package_kodi-devel() {
     'kodi-devel-screensaver-pyro: Pyro screensaver addon for Kodi'
     'kodi-devel-screensavers-rsxs: RSXS screensavers addon for Kodi'
     'kodi-devel-screensaver-stars: Starfield screensaver addon for Kodi'
-    'kodi-devel-visualization.fishbmc: Fische visualization addon for Kodi'
+    'kodi-devel-visualization-fishbmc: Fische visualization addon for Kodi'
     'kodi-devel-visualization-goom: GOOM visualization addon for Kodi'
     'kodi-devel-visualization-projectm: ProjectM visualization addon for Kodi'
     'kodi-devel-visualization-shadertoy: Shadertoy visualization addon for Kodi'
