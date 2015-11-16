@@ -1,14 +1,15 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=yubikey-neo-manager-git
-pkgver=1.3.0.r30.gccc3594
+pkgver=1.4.0.r3.gcd0de3a
 pkgrel=1
 pkgdesc="Cross platform personalization tool for the YubiKey NEO - git checkout"
 arch=('i686' 'x86_64')
 url="https://github.com/Yubico/yubikey-neo-manager"
 license=('BSD')
-depends=('yubikey-personalization' 'libykneomgr' 'libu2f-host' 'python2-pyside' 'python2-crypto' 'qtwebkit')
-makedepends=('git' 'python2-setuptools' 'python2-pyside-tools' 'imagemagick')
+depends=('yubikey-personalization' 'libykneomgr' 'libu2f-host'
+	'python2-setuptools' 'python2-pyside' 'python2-crypto' 'qtwebkit')
+makedepends=('git' 'python2-pyside-tools' 'imagemagick')
 provides=('yubikey-neo-manager')
 conflicts=('yubikey-neo-manager')
 install=yubikey-neo-manager.install
