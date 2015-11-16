@@ -6,6 +6,12 @@
 # Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>
 # Contributor: Ralf Barth <archlinux dot org at haggy dot org>
 # Contributor: B & monty - Thanks for your hints :)
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Brad Fanella <bradfanella@archlinux.us>
+# Contributor: [vEX] <niechift.vex@gmail.com>
+# Contributor: Zeqadious <zeqadious@gmail.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 #
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
@@ -19,7 +25,7 @@ pkgname=('kodi-devel' 'kodi-devel-eventclients')
 _gitname=xbmc
 
 # when building specific commit: 1) pkgver=commit_sha   2) _gitver=$pkgver
-pkgver=16.0a1
+pkgver=16.0b1
 #_gitver=$pkgver
 _gitver=$pkgver-Jarvis
 
@@ -41,8 +47,7 @@ makedepends=(
 )
 
 source=("https://github.com/xbmc/xbmc/archive/$_gitver.tar.gz")
-sha256sums=(
-  'ec20732275d67fd50b1c63434599fa7858d93a3d4829f56bce0d6fa2bf550717')
+sha256sums=('b77f336f4134151f0d4e31ae388894b339798b02902446706e67f769b6c1f074')
 
 _prefix='/usr'
 
@@ -112,8 +117,8 @@ package_kodi-devel() {
   conflicts=('xbmc' 'xbmc-pulse' 'xbmc-svn' 'xbmc-git-xvba' 'xbmc-git' 'kodi' 'kodi-git')
 
   depends=(
-    'bluez-libs' 'curl' 'glew' 'hicolor-icon-theme' 'lame' 'libaacs'
-    'libass' 'libbluray' 'libcdio' 'libmariadbclient' 'libmicrohttpd' 'libmodplug'
+    'bluez-libs' 'libcrossguid-git' 'curl' 'dcadec-git' 'glew' 'hicolor-icon-theme' 'lame'
+    'libaacs' 'libass' 'libbluray' 'libcdio' 'libmariadbclient' 'libmicrohttpd' 'libmodplug'
     'libmpeg2' 'libpulse' 'libsamplerate' 'libssh' 'libva' 'libvdpau' 'libvorbis'
     'libxrandr' 'libxslt' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson'
     'rtmpdump' 'sdl2' 'smbclient' 'taglib' 'tinyxml' 'xorg-xdpyinfo' 'yajl'
