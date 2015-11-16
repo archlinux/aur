@@ -1,6 +1,6 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=airtame-streamer
-pkgver=1.0.3_15
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Stream your display to an airtame dongle."
 arch=('x86_64')
@@ -11,13 +11,13 @@ provides=("airtame-streamer")
 depends=("jsonrpc-c-git" "ffmpeg-compat")
 makedepends=("unzip" "yasm")
 install=
-source=("http://downloads.airtame.com/update/ga/lin_x64/AIRTAME-v${pkgver//_/-}_x64.tar.gz"
+source=("https://downloads.airtame.com/application/ga/lin_x64/releases/deb/airtame-application_${pkgver}_amd64.deb"
         "enet::git+https://github.com/airtame/enet.git#branch=development"
         "zlog::git+https://github.com/airtame/zlog.git"
         "x264::git+git://git.videolan.org/x264.git#branch=stable"
         "streamer.sh"
         "airtame-streamer.service")
-md5sums=('5709aee983075461f5dfbbbee8aaf953'
+md5sums=('3e9c6e83bcfc1ac82ed33e90c87f876c'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -27,6 +27,9 @@ md5sums=('5709aee983075461f5dfbbbee8aaf953'
 backup=()
 
 build() {
+  cd "$srcdir"
+  tar xvfJ data.tar.xz
+
   cd "$srcdir/enet"
   autoreconf -vfi
   ./configure
@@ -38,7 +41,6 @@ build() {
   cd "${srcdir}/x264"
   ./configure --enable-shared
   make
-
 }
 
 package() {
@@ -57,14 +59,20 @@ package() {
   #install our systemd user service
   cp airtame-streamer.service ${pkgdir}/usr/lib/systemd/user/
 
+  #move into the streamer directory
+  cd opt/airtame-application/resources/streamer
+
   #copy the executable to bin directory
-  cp app/streamer/bin/airtame-streamer ${pkgdir}/opt/airtame/bin
+  cp bin/airtame-streamer ${pkgdir}/opt/airtame/bin
 
   #copy the modules
-  cp -r app/streamer/lib/airtame-modules ${pkgdir}/opt/airtame/modules
+  cp -r lib/airtame-modules ${pkgdir}/opt/airtame/modules
 
   #copy the airtame shared libraries only (the other libraries we use from our dependencies)
-  cp app/streamer/lib/libairtame-* ${pkgdir}/opt/airtame/lib
+  cp lib/libairtame-* ${pkgdir}/opt/airtame/lib
+
+  #move back up
+  cd "$srcdir"
 
   #copy the libraries that airtame have forked or used newer versions of,
   #and that we've built in the build() function

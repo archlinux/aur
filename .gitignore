@@ -5,3 +5,4 @@ x264
 zlog
 *.tar.gz
 *.pkg.tar.xz
+*.deb
