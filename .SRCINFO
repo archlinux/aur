@@ -1,0 +1,16 @@
+pkgbase = kodi-devel-visualization-goom
+	pkgdesc = GOOM visualization addon for Kodi
+	pkgver = 20151105.7393592
+	pkgrel = 1
+	url = https://github.com/notspiff/visualization.goom
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	source = https://github.com/notspiff/visualization.goom/archive/739359261bd870e1948aabf98e3e73d8b0e66e58.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-visualization-goom
+
