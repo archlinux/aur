@@ -1,13 +1,13 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=snx
 pkgver=800007097
-pkgrel=1
+pkgrel=2
 pkgdesc="Check Point SSL Network Extender (vpn client)"
 arch=('x86_64')
 url=""
 license=('GPL')
 groups=()
-depends=('lib32-pam>=1.2.1')
+depends=('lib32-pam>=1.2.1' 'lib32-libstdc++5>=3.3.6')
 makedepends=()
 optdepends=()
 provides=()
