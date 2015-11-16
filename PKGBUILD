@@ -2,7 +2,7 @@
 pkgname=juliadoc-git
 pkgver=r42.85c83a5
 pkgrel=1
-pkgdesc="Python package providing Sphinx extensions and a theme for the Julia language "
+pkgdesc="Python package providing Sphinx extensions and a theme for the Julia language"
 arch=('any')
 url="https://github.com/JuliaLang/JuliaDoc"
 license=('GPL')
