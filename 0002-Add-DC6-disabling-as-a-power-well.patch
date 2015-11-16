@@ -1,0 +1,203 @@
+Signed-off-by: Patrik Jakobsson <patrik.jakobsson at linux.intel.com>
+---
+ drivers/gpu/drm/i915/intel_ddi.c        |  9 +++++
+ drivers/gpu/drm/i915/intel_drv.h        |  2 +
+ drivers/gpu/drm/i915/intel_runtime_pm.c | 69 +++++++++++++++++++++++++--------
+ 3 files changed, 64 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/intel_ddi.c b/drivers/gpu/drm/i915/intel_ddi.c
+index 4823184..c2c1ad2 100644
+--- a/drivers/gpu/drm/i915/intel_ddi.c
++++ b/drivers/gpu/drm/i915/intel_ddi.c
+@@ -2289,4 +2289,6 @@ static void intel_ddi_pre_enable(struct intel_encoder *intel_encoder)
+ 	if (type == INTEL_OUTPUT_DISPLAYPORT || type == INTEL_OUTPUT_EDP) {
+ 		struct intel_dp *intel_dp = enc_to_intel_dp(encoder);
+ 
++		intel_display_power_get(dev_priv, POWER_DOMAIN_AUX_A);
++
+ 		intel_ddi_init_dp_buf_reg(intel_encoder);
+@@ -2297,6 +2299,8 @@ static void intel_ddi_pre_enable(struct intel_encoder *intel_encoder)
+ 		intel_dp_complete_link_train(intel_dp);
+ 		if (port != PORT_A || INTEL_INFO(dev)->gen >= 9)
+ 			intel_dp_stop_link_train(intel_dp);
++
++		intel_display_power_put(dev_priv, POWER_DOMAIN_AUX_A);
+ 	} else if (type == INTEL_OUTPUT_HDMI) {
+ 		struct intel_hdmi *intel_hdmi = enc_to_intel_hdmi(encoder);
+ 
+@@ -2339,9 +2343,14 @@ static void intel_ddi_post_disable(struct intel_encoder *intel_encoder)
+ 
+ 	if (type == INTEL_OUTPUT_DISPLAYPORT || type == INTEL_OUTPUT_EDP) {
+ 		struct intel_dp *intel_dp = enc_to_intel_dp(encoder);
++
++		intel_display_power_get(dev_priv, POWER_DOMAIN_AUX_A);
++
+ 		intel_dp_sink_dpms(intel_dp, DRM_MODE_DPMS_OFF);
+ 		intel_edp_panel_vdd_on(intel_dp);
+ 		intel_edp_panel_off(intel_dp);
++
++		intel_display_power_put(dev_priv, POWER_DOMAIN_AUX_A);
+ 	}
+ 
+ 	if (IS_SKYLAKE(dev))
+diff --git a/drivers/gpu/drm/i915/intel_drv.h b/drivers/gpu/drm/i915/intel_drv.h
+index 46484e4..82489ad 100644
+--- a/drivers/gpu/drm/i915/intel_drv.h
++++ b/drivers/gpu/drm/i915/intel_drv.h
+@@ -1338,6 +1338,8 @@
+ void intel_runtime_pm_put(struct drm_i915_private *dev_priv);
+
+ void intel_display_set_init_power(struct drm_i915_private *dev, bool enable);
++void skl_enable_dc6(struct drm_i915_private *dev_priv);
++void skl_disable_dc6(struct drm_i915_private *dev_priv);
+ 
+ /* intel_pm.c */
+ void intel_init_clock_gating(struct drm_device *dev);
+diff --git a/drivers/gpu/drm/i915/intel_runtime_pm.c b/drivers/gpu/drm/i915/intel_runtime_pm.c
+index 3f682a1..e30c9a6 100644
+--- a/drivers/gpu/drm/i915/intel_runtime_pm.c
++++ b/drivers/gpu/drm/i915/intel_runtime_pm.c
+@@ -335,6 +335,10 @@ static void hsw_set_power_well(struct drm_i915_private *dev_priv,
+ 	SKL_DISPLAY_POWERWELL_1_POWER_DOMAINS |		\
+ 	BIT(POWER_DOMAIN_PLLS) |			\
+ 	BIT(POWER_DOMAIN_INIT))
++#define SKL_DISPLAY_DC6_OFF_POWER_DOMAINS (		\
++	SKL_DISPLAY_POWERWELL_2_POWER_DOMAINS |		\
++	BIT(POWER_DOMAIN_AUX_A))
++
+ #define SKL_DISPLAY_ALWAYS_ON_POWER_DOMAINS (		\
+ 	(POWER_DOMAIN_MASK & ~(SKL_DISPLAY_POWERWELL_1_POWER_DOMAINS |	\
+ 	SKL_DISPLAY_POWERWELL_2_POWER_DOMAINS |		\
+@@ -550,7 +554,7 @@ static void assert_can_disable_dc6(struct drm_i915_private *dev_priv)
+ 		"DC6 already programmed to be disabled.\n");
+ }
+ 
+-static void skl_enable_dc6(struct drm_i915_private *dev_priv)
++void skl_enable_dc6(struct drm_i915_private *dev_priv)
+ {
+ 	uint32_t val;
+ 
+@@ -567,7 +571,7 @@ static void skl_enable_dc6(struct drm_i915_private *dev_priv)
+ 	POSTING_READ(DC_STATE_EN);
+ }
+ 
+-static void skl_disable_dc6(struct drm_i915_private *dev_priv)
++void skl_disable_dc6(struct drm_i915_private *dev_priv)
+ {
+ 	uint32_t val;
+ 
+@@ -628,10 +632,8 @@ static void skl_set_power_well(struct drm_i915_private *dev_priv,
+ 				!I915_READ(HSW_PWR_WELL_BIOS),
+ 				"Invalid for power well status to be enabled, unless done by the BIOS, \
+ 				when request is to disable!\n");
+-			if ((GEN9_ENABLE_DC5(dev) || SKL_ENABLE_DC6(dev)) &&
+-				power_well->data == SKL_DISP_PW_2) {
++			if (power_well->data == SKL_DISP_PW_2) {
+ 				if (SKL_ENABLE_DC6(dev)) {
+-					skl_disable_dc6(dev_priv);
+ 					/*
+ 					 * DDI buffer programming unnecessary during driver-load/resume
+ 					 * as it's already done during modeset initialization then.
+@@ -639,10 +641,9 @@ static void skl_set_power_well(struct drm_i915_private *dev_priv,
+ 					 */
+ 					if (!dev_priv->power_domains.initializing)
+ 						intel_prepare_ddi(dev);
+-				} else {
+-					gen9_disable_dc5(dev_priv);
+ 				}
+ 			}
++
+ 			I915_WRITE(HSW_PWR_WELL_DRIVER, tmp | req_mask);
+ 		}
+ 
+@@ -660,8 +661,7 @@ static void skl_set_power_well(struct drm_i915_private *dev_priv,
+ 			POSTING_READ(HSW_PWR_WELL_DRIVER);
+ 			DRM_DEBUG_KMS("Disabling %s\n", power_well->name);
+ 
+-			if ((GEN9_ENABLE_DC5(dev) || SKL_ENABLE_DC6(dev)) &&
+-				power_well->data == SKL_DISP_PW_2) {
++			if (power_well->data == SKL_DISP_PW_2) {
+ 				enum csr_state state;
+ 				/* TODO: wait for a completion event or
+ 				 * similar here instead of busy
+@@ -669,14 +669,10 @@ static void skl_set_power_well(struct drm_i915_private *dev_priv,
+ 				 */
+ 				wait_for((state = intel_csr_load_status_get(dev_priv)) !=
+ 						FW_UNINITIALIZED, 1000);
+-				if (state != FW_LOADED)
++				if (state != FW_LOADED) {
+ 					DRM_ERROR("CSR firmware not ready (%d)\n",
+-							state);
+-				else
+-					if (SKL_ENABLE_DC6(dev))
+-						skl_enable_dc6(dev_priv);
+-					else
+-						gen9_enable_dc5(dev_priv);
++						  state);
++				}
+ 			}
+ 		}
+ 	}
+@@ -752,6 +748,34 @@ static void skl_power_well_disable(struct drm_i915_private *dev_priv,
+ 	skl_set_power_well(dev_priv, power_well, false);
+ }
+ 
++static bool skl_dc6_state_enabled(struct drm_i915_private *dev_priv,
++				  struct i915_power_well *power_well)
++{
++	/* Return true if disabling of DC6 is enabled */
++	return !(I915_READ(DC_STATE_EN) & DC_STATE_EN_UPTO_DC6);
++}
++
++static void skl_dc6_state_on(struct drm_i915_private *dev_priv,
++			     struct i915_power_well *power_well)
++{
++	skl_enable_dc6(dev_priv);
++}
++
++static void skl_dc6_state_off(struct drm_i915_private *dev_priv,
++			      struct i915_power_well *power_well)
++{
++	skl_disable_dc6(dev_priv);
++}
++
++static void skl_dc6_sync_hw(struct drm_i915_private *dev_priv,
++			    struct i915_power_well *power_well)
++{
++	if (power_well->count > 0)
++		skl_disable_dc6(dev_priv);
++	else
++		skl_enable_dc6(dev_priv);
++}
++
+ static void i9xx_always_on_power_well_noop(struct drm_i915_private *dev_priv,
+ 					   struct i915_power_well *power_well)
+ {
+@@ -1546,6 +1570,14 @@ static const struct i915_power_well_ops skl_power_well_ops = {
+ 	.is_enabled = skl_power_well_enabled,
+ };
+ 
++static const struct i915_power_well_ops skl_dc_state_ops = {
++	.sync_hw = skl_dc6_sync_hw,
++	/* To enable power we turn the DC state off */
++	.enable = skl_dc6_state_off,
++	.disable = skl_dc6_state_on,
++	.is_enabled = skl_dc6_state_enabled,
++};
++
+ static struct i915_power_well hsw_power_wells[] = {
+ 	{
+ 		.name = "always-on",
+@@ -1745,6 +1777,11 @@ static struct i915_power_well skl_power_wells[] = {
+ 		.ops = &skl_power_well_ops,
+ 		.data = SKL_DISP_PW_DDI_D,
+ 	},
++	{
++		.name = "DC6 state off",
++		.domains = SKL_DISPLAY_DC6_OFF_POWER_DOMAINS,
++		.ops = &skl_power_well_ops,
++	},
+ };
+ 
+ static struct i915_power_well bxt_power_wells[] = {
+-- 

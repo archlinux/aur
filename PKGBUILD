@@ -21,7 +21,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-bcm4350.patch')
+        '0001-bcm4350.patch'
+        '0002-Add-DC6-disabling-as-a-power-well.patch')
 
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
@@ -29,7 +30,8 @@ sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7a3763a7dcdfada7edda636860ee125e270a9542d70c496edf9850c02a25baad')
+            '7a3763a7dcdfada7edda636860ee125e270a9542d70c496edf9850c02a25baad'
+            '7bf515ca1fc1c432999f7c5227d77d7c0429eaabbc48bc887383119bbeca2dd4')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -45,14 +47,18 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
+  
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # add Broadcom 4350 wifi support
+  #add support for Broadcom 4350 wifi adapter
   patch -p1 -i "${srcdir}/0001-bcm4350.patch"
+  
+  # prevent intel graffics to fail on skylake
+  patch -p1 -i "${srcdir}/0002-Add-DC6-disabling-as-a-power-well.patch"
+  
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -93,7 +99,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with a backported patch for Broadcom 4350 support"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -148,7 +154,7 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
 }
 
 _package-headers() {
