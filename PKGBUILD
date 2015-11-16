@@ -1,7 +1,7 @@
 # Maintainer: spelufo <santiagopelufo@gmail.com>
 pkgname=scsh-git
-pkgver=20150110
-pkgrel=1
+pkgver=20151026
+pkgrel=2
 pkgdesc="Scheme Shell"
 arch=('i686' 'x86_64')
 url="http://github.com/scheme/scsh"
@@ -18,11 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/scheme/scsh" "Makefile.in.patch")
-md5sums=('SKIP'
-         '2ef9f652e51741fa35dd9b5aa75c5f12')
+source=("git+https://github.com/scheme/scsh")
+md5sums=('SKIP')
 validpgpkeys=()
-
 
 pkgver() {
 	cd ${pkgname%-git}
@@ -32,7 +30,6 @@ pkgver() {
 prepare() {
 	cd ${pkgname%-git}
 	git submodule update --init
-	patch -Nup0 < $srcdir/Makefile.in.patch
 }
 
 build() {

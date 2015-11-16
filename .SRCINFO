@@ -1,7 +1,7 @@
 pkgbase = scsh-git
 	pkgdesc = Scheme Shell
-	pkgver = 20150110
-	pkgrel = 1
+	pkgver = 20151026
+	pkgrel = 2
 	url = http://github.com/scheme/scsh
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,7 @@ pkgbase = scsh-git
 	makedepends = git
 	depends = scheme48
 	source = git+https://github.com/scheme/scsh
-	source = Makefile.in.patch
 	md5sums = SKIP
-	md5sums = 2ef9f652e51741fa35dd9b5aa75c5f12
 
 pkgname = scsh-git
 
