@@ -1,7 +1,7 @@
 # Contributor: Benjamin Sick
 
 pkgname=gmt
-pkgver=5.1.2
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
@@ -12,8 +12,8 @@ depends=('gdal' 'fftw')
 optdepends=('ghostscript' 'python-sphynx' 'python2-sphynx' 'gmt-coast' 'gmt-dcw')
 conflicts=('gmt4')
 install=gmt.install
-source=(ftp://ftp.soest.hawaii.edu/gmt/${pkgname}-${pkgver}-src.tar.bz2)
-md5sums=('66212f2f237843a448fa9c0ec6cfb86d')
+source=(ftp://ftp.soest.hawaii.edu/gmt/${pkgname}-${pkgver}-src.tar.xz)
+md5sums=('4823ab45965a55d5d8869181ae3b0cca')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
