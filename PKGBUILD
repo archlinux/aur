@@ -4,25 +4,21 @@
 # package version generated with # git log -1 --date=short --format="%cd.%h" | tr -d '-'
 
 pkgname=asplib
-pkgver=20150502.490de46
-_gitver=490de460e856acd1ae2feb7f8111f137e40aa0d0
+pkgver=20151025.df5c386
+_gitver=df5c386d122c8fcd3e405ef93076e81ba9638772
 pkgrel=2
 pkgdesc='a small and lightweight C++ library for digital signal processing'
 arch=('i686' 'x86_64')
 url="https://github.com/AchimTuran/$pkgname"
 license=('GPL')
 makedepends=('cmake')
-source=("https://github.com/AchimTuran/$pkgname/archive/$_gitver.tar.gz"
-        "0001-CMakeLists.txt-fix-compilation-on-linux.patch"
-        "0002-CMakelist.txt-add-missing-files-and-install-headers.patch")
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=("https://github.com/AchimTuran/$pkgname/archive/$_gitver.tar.gz")
+md5sums=('SKIP')
 
 _prefix='/usr'
 
 prepare() {
   cd "$srcdir/$pkgname-$_gitver"
-  patch -p1 -i "${srcdir}/0001-CMakeLists.txt-fix-compilation-on-linux.patch"
-  patch -p1 -i "${srcdir}/0002-CMakelist.txt-add-missing-files-and-install-headers.patch"
 }
 
 build() {
@@ -30,7 +26,6 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=1 \
     -DCMAKE_BUILD_TYPE=Release \
     ..
