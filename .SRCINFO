@@ -1,0 +1,17 @@
+pkgbase = kodi-devel-visualization-shadertoy
+	pkgdesc = Shadertoy visualization addon for Kodi
+	pkgver = 20151029.f998800
+	pkgrel = 1
+	url = https://github.com/notspiff/visualization.shadertoy
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	depends = kodi-devel-platform
+	source = https://github.com/notspiff/visualization.shadertoy/archive/f9988007681bf37e6c03d6992bae30133b020608.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-visualization-shadertoy
+
