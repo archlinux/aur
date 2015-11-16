@@ -1,7 +1,7 @@
 pkgbase = cryptol
 	pkgdesc = A domain-specific language for specifying cryptographic algorithms.
 	pkgver = 2.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cryptol.net
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = cryptol
 	optdepends = mathsat-5: theorem proving
 	optdepends = yices-bin: theorem proving
 	source = https://github.com/GaloisInc/cryptol/releases/download/v2.2.5/cryptol-2.2.5-CentOS6-32.tar.gz
-	md5sums = a800ae82c3784072369c2679dec4df95
+	sha512sums = 094d6771c9a17a8bafe5ed27e8c2dac59f0eb59cbee5b8380f215cf25a42428b8baaa1f14b128d468d7af9c601fabf11a308fcf9b53084fe933aec4c81359470
 
 pkgname = cryptol
 
