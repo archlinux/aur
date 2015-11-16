@@ -1,0 +1,13 @@
+[Unit]
+Description=Universal Media Server
+After=syslog.target network.target rpcbind.service
+
+[Service]
+User=%i
+Group=users
+WorkingDirectory=/opt/ums/
+Type=simple
+ExecStart=/opt/ums/UMS.sh
+
+[Install]
+WantedBy=multi-user.target
