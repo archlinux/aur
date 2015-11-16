@@ -35,7 +35,7 @@ build() {
 
 check() {
   cd "$srcdir/sopel"
-  py.test build || warning "Tests failed"
+  py.test --ignore build || warning "Tests failed"
 }
 
 package() {
