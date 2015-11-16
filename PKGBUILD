@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sopel
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
 license=('custom:EFL')
@@ -11,12 +11,14 @@ depends=('python-setuptools' 'sqlite')
 optdepends=('python-feedparser: nws and rss modules'
             'python-pytz: remind module'
             'python-lxml: xkcd module'
-            'python-pyenchant: spellchek module'
+            'python-pyenchant: spellcheck module'
             'python-praw: reddit module'
-            'python-pygeoip: geoip module')
+            'python-pygeoip: geoip module'
+            'python-xmltodict: bugzilla, currency, weather modules')
 makedepends=('git' 'python-sphinx')
 checkdepends=('python-pytest' 'python-feedparser' 'python-pytz' 'python-lxml'
-              'python-pyenchant' 'python-praw' 'python-pygeoip' 'ipython')
+              'python-pyenchant' 'python-praw' 'python-pygeoip' 'ipython'
+              'python-xmltodict')
 backup=('etc/sopel.cfg')
 source=("git+https://github.com/sopel-irc/sopel.git#tag=$pkgver")
 md5sums=('SKIP')
@@ -33,7 +35,7 @@ build() {
 
 check() {
   cd "$srcdir/sopel"
-  py.test --ignore build || warning "Tests failed"
+  py.test build || warning "Tests failed"
 }
 
 package() {
