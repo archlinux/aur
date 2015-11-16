@@ -1,0 +1,21 @@
+pkgbase = i2c-ch341-dkms
+	pkgdesc = CH341 USB-I2C adapter driver
+	pkgver = 20151116
+	pkgrel = 1
+	url = https://github.com/gmarco/i2c-ch341
+	install = i2c-ch341-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	optdepends = linux-headers: build the module against Arch kernel
+	optdepends = linux-ck-headers: build the module against Linux-ck kernel
+	optdepends = linux-lts-headers: build the module against LTS Arch kernel
+	source = git://github.com/gmarco/i2c-ch341.git
+	source = dkms.conf.in
+	md5sums = SKIP
+	md5sums = 12f499ec278e1ad8b8dcc4630f59ea78
+
+pkgname = i2c-ch341-dkms
+
