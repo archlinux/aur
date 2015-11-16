@@ -17,8 +17,8 @@ sha256sums=('SKIP')
 _gitname=$_pkgname
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	echo "$(git rev-list --count HEAD).$(git describe --always)"|sed 's:-::g'
+  cd "$_gitname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
         rm -rf ${srcdir}/build
