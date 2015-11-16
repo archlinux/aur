@@ -1,7 +1,7 @@
 pkgbase = msp430-elf-newlib
-	pkgdesc = C library for bare metal systems msp430-elf target.
-	pkgver = 2.2.0.20150824
-	pkgrel = 2
+	pkgdesc = C library for bare metal systems (msp430-elf target).
+	pkgver = 2.2.0.20151023
+	pkgrel = 1
 	url = https://sourceware.org/newlib/
 	arch = any
 	groups = devel
@@ -11,8 +11,8 @@ pkgbase = msp430-elf-newlib
 	options = !makeflags
 	options = !strip
 	options = staticlibs
-	source = ftp://sourceware.org/pub/newlib/newlib-2.2.0.20150824.tar.gz
-	sha256sums = 05c4a82974f30487ded7965465acdd3f726ea487e1398f118e52c516b4aad093
+	source = ftp://sourceware.org/pub/newlib/newlib-2.2.0.20151023.tar.gz
+	sha256sums = fd1d3d358dd66922f37563518e787196e1fba8adaa6d8b1e955d145b38b3fa60
 
 pkgname = msp430-elf-newlib
 
