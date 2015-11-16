@@ -9,7 +9,6 @@ pkgbase = cryptol
 	depends = cvc4
 	depends = gmp4
 	depends = libtinfo
-	optdepends = boolector: theorem proving
 	optdepends = mathsat-5: theorem proving
 	optdepends = yices-bin: theorem proving
 	source = https://github.com/GaloisInc/cryptol/releases/download/v2.2.5/cryptol-2.2.5-CentOS6-32.tar.gz

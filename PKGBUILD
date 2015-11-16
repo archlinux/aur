@@ -12,7 +12,6 @@ depends=(
   'libtinfo'
 )
 optdepends=(
-  'boolector: theorem proving'
   'mathsat-5: theorem proving'
   'yices-bin: theorem proving'
 )
