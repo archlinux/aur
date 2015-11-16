@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 127459 2015-02-10 07:28:52Z lcarlier $
+# $Id: PKGBUILD 139578 2015-09-08 08:31:32Z lcarlier $
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
 # x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 pkgname=libx32-libdbus
 _pkgbasename=libdbus
-pkgver=1.8.16
+pkgver=1.10.0
 pkgrel=1.1
 pkgdesc="DBus library (x32 ABI)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('libx32-dbus-core' 'libx32-dbus')
 conflicts=('libx32-dbus-core' 'libx32-dbus')
 replaces=('libx32-dbus-core' 'libx32-dbus')
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-${pkgver}.tar.gz{,.asc})
-md5sums=('020824a38850501e7d6ba8307a7c5ac3'
+md5sums=('5af6297348107a906c8449817a728b3b'
          'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
@@ -31,9 +31,9 @@ build() {
         --libexecdir=/usr/lib/dbus-1.0 --with-dbus-user=81 \
         --with-system-pid-file=/run/dbus.pid \
         --with-console-auth-dir=/run/console/ \
-        --enable-inotify --disable-dnotify \
+        --enable-inotify \
         --disable-verbose-mode --disable-static \
-        --disable-tests --disable-asserts --disable-systemd		
+        --disable-tests --disable-asserts --disable-systemd
 
     make
 }

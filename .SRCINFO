@@ -1,6 +1,6 @@
 pkgbase = libx32-libdbus
 	pkgdesc = DBus library (x32 ABI)
-	pkgver = 1.8.16
+	pkgver = 1.10.0
 	pkgrel = 1.1
 	url = http://www.freedesktop.org/Software/dbus
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = libx32-libdbus
 	conflicts = libx32-dbus
 	replaces = libx32-dbus-core
 	replaces = libx32-dbus
-	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.16.tar.gz
-	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.16.tar.gz.asc
-	md5sums = 020824a38850501e7d6ba8307a7c5ac3
+	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.10.0.tar.gz
+	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.10.0.tar.gz.asc
+	md5sums = 5af6297348107a906c8449817a728b3b
 	md5sums = SKIP
 
 pkgname = libx32-libdbus
