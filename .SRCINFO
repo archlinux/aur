@@ -1,7 +1,7 @@
 pkgbase = volnoti-hcchu-git
-	pkgdesc = Lightweight indicator, hcchu's fork
-	pkgver = 0.1
-	pkgrel = 1
+	pkgdesc = Lightweight volume notification - hcchu's fork (custom icon)
+	pkgver = 20151022.c5a94af
+	pkgrel = 2
 	url = https://github.com/hcchu/volnoti.git
 	arch = i686
 	arch = x86_64

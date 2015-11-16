@@ -2,9 +2,9 @@
 
 _pkgname='volnoti'
 pkgname="${_pkgname}-hcchu-git"
-pkgver=0.1
-pkgrel=1
-pkgdesc="Lightweight indicator, hcchu's fork"
+pkgver=20151022.c5a94af
+pkgrel=2
+pkgdesc="Lightweight volume notification - hcchu's fork (custom icon)"
 url="https://github.com/hcchu/volnoti.git"
 arch=('i686' 'x86_64')
 license=('GPLv3')
