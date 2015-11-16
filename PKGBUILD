@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-platform
 _gitname=kodi-platform
-pkgver=20150504.054a42f
-_gitver=054a42f664af3a6740d49759c081d4929a190671
-pkgrel=2
+pkgver=20150805.15edaf7
+_gitver=15edaf78d6307eaa5e1d17028122d8bce9d55aa2
+pkgrel=1
 pkgdesc='Kodi platform environment for compiling cmake binary addons'
 arch=('i686' 'x86_64')
 url="https://github.com/xbmc/$_gitname"
@@ -16,9 +16,10 @@ groups=('kodi-devel')
 makedepends=('cmake' 'kodi-devel-libplatform')
 depends=('kodi-devel' 'tinyxml')
 raplaces=('kodi-platform-devel')
+provides=('kodi-platform')
 conflicts=('kodi-platform' 'kodi-platform-devel')
 source=("https://github.com/xbmc/$_gitname/archive/$_gitver.tar.gz")
-md5sums=('SKIP')
+md5sums=('82ccaba3328b440e659625addb18f008')
 
 _prefix='/usr'
 
