@@ -1,6 +1,6 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=da2013ctl-git
-pkgver=20151116.8689635
+pkgver=20151116.8775611
 pkgrel=1
 pkgdesc="Alternative to razercfg for the DeathAdder 2013"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,6 +12,7 @@ conflicts=('da2013ctl')
 makedepends=('git')
 source=('git+https://github.com/Streetwalrus/da2013ctl.git')
 md5sums=('SKIP')
+install=('da2013ctl.install')
 
 pkgver() {
   cd "${srcdir}/da2013ctl"
@@ -25,7 +26,7 @@ build() {
 
 package() {
   cd "${srcdir}/da2013ctl"
-  make install PREFIX="${pkgdir}/usr"
+  make install ROOT="${pkgdir}" PREFIX="/usr"
 }
 
 # vim:set ts=2 sw=2 et:
