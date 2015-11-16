@@ -1,7 +1,7 @@
 pkgbase = controllermap
 	pkgdesc = Game controller mapping generator
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libsdl.org
 	arch = i686
 	arch = x86_64
