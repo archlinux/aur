@@ -1,0 +1,19 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+green="${bold}$(tput setaf 2)"
+
+_instructions() {
+   printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}\n"
+printf "${green}==>${all_off} To use qcma as normal user you have to add yourself into ${bold}vitamtp${all_off} group.\n
+}
+
+post_install() {
+  post_upgrade $1
+}
+
+post_upgrade() {
+  systemd-sysusers vitamtp.conf
+}
+

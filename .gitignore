@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!libvitamtp-git.install
+!libvitamtp-git.sysuser
