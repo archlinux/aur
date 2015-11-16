@@ -1,0 +1,16 @@
+pkgbase = kodi-devel-screensaver-stars
+	pkgdesc = Starfield screensaver addon for Kodi
+	pkgver = 20150921.28bf79d
+	pkgrel = 1
+	url = https://github.com/notspiff/screensaver.stars
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	source = https://github.com/notspiff/screensaver.stars/archive/28bf79d4dce040e9fbdc25f51007e13950cab937.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-screensaver-stars
+
