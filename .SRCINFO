@@ -1,7 +1,7 @@
 pkgbase = inscore-git
 	pkgdesc = Grame's INScore: interactive augmented music scores (git version)
 	pkgver = 2669.20c4660
-	pkgrel = 1
+	pkgrel = 2
 	url = http://inscore.sourceforge.net/
 	install = inscore-git.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = inscore-git
 	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-declarative
+	depends = qt5-imageformats
 	depends = qt5-multimedia
 	depends = qt5-svg
 	depends = qt5-tools

@@ -1,12 +1,12 @@
 # Maintainer: aggraef@gmail.com
 pkgname=inscore-git
 pkgver=2669.20c4660
-pkgrel=1
+pkgrel=2
 pkgdesc="Grame's INScore: interactive augmented music scores (git version)"
 arch=('x86_64' 'i686')
 url="http://inscore.sourceforge.net/"
 license=('LGPL')
-depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-svg'
+depends=('qt5-base' 'qt5-declarative' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg'
 	 'qt5-tools' 'qt5-websockets' 'guidolib')
 # Optional dependencies; you need to install all of these beforehand in order
 # to get a complete feature set.
