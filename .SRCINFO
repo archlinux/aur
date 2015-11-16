@@ -1,6 +1,6 @@
 pkgbase = paycoin-qt-bin
 	pkgdesc = PayCoin is a global currency that lets you send money to anyone, anywhere, anytime. Sending and accepting money is virtually free, lightning fast and insanely easy.
-	pkgver = 0.3.2.0
+	pkgver = 0.3.3.0
 	pkgrel = 1
 	url = http://paycoin.com
 	arch = i386
@@ -12,9 +12,9 @@ pkgbase = paycoin-qt-bin
 	provides = paycoind
 	source = paycoin-wallet.desktop
 	sha256sums = 711d5c86aab6e324aef38ab52dc5426b24a18b2daab63cc0bbfcb490a6216a0b
-	source_i386 = https://github.com/PaycoinFoundation/paycoin/releases/download/v0.3.2.0/linux32.zip
+	source_i386 = https://github.com/PaycoinFoundation/paycoin/releases/download/v0.3.3.0/linux32.zip
 	sha256sums_i386 = 315fef82b7ced7c86ea46bc0c54e3fb677e7aa7aeb14a08c46f8a8688c7d56e0
-	source_x86_64 = https://github.com/PaycoinFoundation/paycoin/releases/download/v0.3.2.0/linux64.zip
+	source_x86_64 = https://github.com/PaycoinFoundation/paycoin/releases/download/v0.3.3.0/linux64.zip
 	sha256sums_x86_64 = a3bf33b4e737f10a80700439b612bf1e0aa901ae589c7b38068e08d79aadcc76
 
 pkgname = paycoin-qt-bin

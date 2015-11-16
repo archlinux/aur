@@ -1,6 +1,6 @@
 # Maintainer: Eric Pfeiffer <computerfreak@computerfr33k.com>
 pkgname=paycoin-qt-bin
-pkgver=0.3.2.0
+pkgver=0.3.3.0
 pkgrel=1
 epoch=
 pkgdesc="PayCoin is a global currency that lets you send money to anyone, anywhere, anytime. Sending and accepting money is virtually free, lightning fast and insanely easy."
