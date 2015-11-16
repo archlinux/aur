@@ -9,8 +9,8 @@ pkgbase = qt-installer-framework
 	groups = qt5
 	license = FDL
 	license = LGPL
-	depends = qt5-base>=5.4.2
-	depends = qt5-tools>=5.4.2
+	makedepends = qt5-base>=5.4.2
+	makedepends = qt5-tools>=5.4.2
 	source = http://download.qt.io/official_releases/qt-installer-framework/2.0.1/qt-installer-framework-opensource-2.0.1-src.tar.gz
 	md5sums = 0069845a6a37bccfc814a8d5ca7f3b3b
 
