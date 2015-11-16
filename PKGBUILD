@@ -11,18 +11,12 @@ makedepends=('python2-setuptools' 'git')
 source=(http://projectarch.tk/pub/aur/${pkgname}/${pkgname}_${pkgver}.tar.gz)
 sha256sums=('01393cfd61c88f1c329e1bcb73f4d3fa17211f32ed7aa955721288e42d32f90a')
 
-pkgver() {
-    cd "${pkgname}-${pkgver}"
-    echo "$(git describe --long --tags | tr - .)"
-}
-
-
 build() {
     cd "${pkgname}-${pkgver}"
     python2 setup.py build
 }
 
 package() {
-    cd monkeysign
+    cd "${pkgname}-${pkgver}"
     python2 setup.py install --root="${pkgdir}" --prefix="/usr" --optimize=1
 }
