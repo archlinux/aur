@@ -11,7 +11,7 @@ pkgbase = mingw-w64-atk
 	options = !buildflags
 	options = staticlibs
 	source = http://ftp.gnome.org/pub/gnome/sources/atk/2.18/atk-2.18.0.tar.xz
-	md5sums = c7c5002bd6e58b4723a165f1bf312116
+	md5sums = fd3678f35004b4c92e3da39356996054
 
 pkgname = mingw-w64-atk
 

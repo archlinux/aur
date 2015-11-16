@@ -11,7 +11,7 @@ depends=('mingw-w64-glib2>=2.31.2')
 makedepends=('mingw-w64-configure')
 options=(!strip !buildflags staticlibs)
 source=("http://ftp.gnome.org/pub/gnome/sources/atk/${pkgver:0:4}/atk-${pkgver}.tar.xz")
-md5sums=('c7c5002bd6e58b4723a165f1bf312116')
+md5sums=('fd3678f35004b4c92e3da39356996054')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
