@@ -1,8 +1,8 @@
 
 pkgname=mingw-w64-lapack
 pkgname=('mingw-w64-lapack' 'mingw-w64-blas')
-pkgver=3.5.0
-pkgrel=6
+pkgver=3.6.0
+pkgrel=1
 arch=('any')
 pkgdesc="Linear Algebra PACKage (mingw-w64)"
 depends=('mingw-w64-crt')
@@ -11,7 +11,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 license=('LGPL')
 url="http://www.netlib.org/lapack"
 source=("http://www.netlib.org/lapack/lapack-${pkgver}.tgz")
-sha1sums=('5870081889bf5d15fd977993daab29cf3c5ea970')
+sha1sums=('7e993de16d80d52b22b6093465eeb90c93c7a2e7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -48,7 +48,7 @@ package_mingw-w64-lapack()
     make install DESTDIR="$pkgdir"
     cd "$srcdir/lapack-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-    rm "$pkgdir"/usr/${_arch}/*/libblas* 
+    rm "$pkgdir"/usr/${_arch}/*/libblas*
     rm "$pkgdir"/usr/${_arch}/lib/pkgconfig/blas.pc
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
