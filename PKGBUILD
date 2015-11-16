@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-audiodecoder-snesapu
 _gitname=audiodecoder.snesapu
-pkgver=20150602.399d1d3
-_gitver=399d1d3f32fe6f62f5657b8ce67c30229629cb51
-pkgrel=3
+pkgver=20150806.db62e88
+_gitver=db62e88e568994a0496d7026a10e044d70b3aa2b
+pkgrel=1
 pkgdesc='SPC decoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/notspiff/$_gitname"
