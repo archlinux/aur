@@ -5,5 +5,6 @@ post_install() {
 }
 
 post_update() {
-    echo -e "Remeber to regenerate your local workspace using: \033[0;32mof-make-workspace\033[0m".
+    echo -e "Remeber to regenerate your local workspace using: \033[0;32mof-make-workspace\033[0m."
+    echo "If you have already a local workspace in your home, BACKUP YOUR PROJECTS BEFORE generating a new local workspace."
 }

@@ -2,15 +2,18 @@
 # Contributor: Marco Pompili <marcs.pompili at gmail dot com>
 
 pkgname=openframeworks
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="openFrameworks is an open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64' 'i686')
 license='MIT'
-depends=('gcc' 'pkg-config' 'openal' 'glew' 'freeglut' 'gstreamer' 'cairo' 'mpg123' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'freeimage' 'gst-libav' 'python-lxml')
-optdepends=('codeblocks' 'xterm')
+depends=('make' 'pkg-config' 'gcc' 'openal' 'python-lxml' 'glew' 'freeglut'
+'freeimage' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad'
+'gst-plugins-ugly' 'gst-libav' 'opencv' 'libxcursor' 'assimp' 'boost' 'mpg123' 'rtaudio')
+optdepends=('qtcreator' 'xterm')
 makedepends=()
+options=(!strip)
 install=openframeworks.install
 
 [[ "$CARCH" == "i686" ]] && _arch="linux" || _arch="linux64"
@@ -18,9 +21,9 @@ _name=of_v${pkgver}_${_arch}_release
 
 source=("http://www.openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz" "of-make-workspace")
 
-[[ "$CARCH" == "i686" ]] && md5sums=("ff38e469b8ebda0529c9d131bc4f499c") || md5sums=("8465ecdaf86a45f0e0f43443e98966fe")
+[[ "$CARCH" == "i686" ]] && md5sums=("4573107c7324e061043462e6efe5f85c") || md5sums=("96b1076fdcac679ff1888542851c175c")
 
-md5sums+=("6a6111a7a98279498899ef0eba789589")
+md5sums+=("594d0a3c82e0451f7b7fb353e3b658c6")
 
 build() {
 	cd ${srcdir}/$_name/scripts/linux/
@@ -41,9 +44,9 @@ package() {
 
 	msg2 "Fixing emptyExample project files permissions..."
 
+	chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/addons.make
 	chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/config.make
-	chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/emptyExample.cbp
-	chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/emptyExample.workspace
+	chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/emptyExample.qbs
 	chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/Makefile
 
 	install -D -m644 "${srcdir}/${_name}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
