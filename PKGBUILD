@@ -3,9 +3,9 @@
 _pkgname='volnoti'
 pkgname="${_pkgname}-hcchu-git"
 pkgver=20151022.c5a94af
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight volume notification - hcchu's fork (custom icon)"
-url="https://github.com/hcchu/volnoti.git"
+url="https://github.com/hcchu/volnoti"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('dbus-core' 'dbus-glib' 'gtk2' 'gdk-pixbuf2' 'librsvg')
