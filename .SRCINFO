@@ -1,0 +1,16 @@
+pkgbase = showimage
+	pkgdesc = ShowImage is a simple KDE based image viewer using the maximum space inside its window without cluttering the window with menubar, toolbar or statusbar.
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php/ShowImage?content=143977
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	source = http://opendesktop.org/CONTENT/content-files/143977-showimage-1.9.tar.bz2
+	sha256sums = be21dd3d46be4347601187a7533449d72bc13b75c5346355b274c33a0b9eea61
+
+pkgname = showimage
+
