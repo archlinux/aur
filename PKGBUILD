@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 package() {
         TEXMFDIST=$(kpsewhich -var-value=TEXMFDIST)
-        cd "$srcdir/$pkgname"
+        cd "$srcdir/beamer-theme-tub"
         mkdir -p ${pkgdir}/${TEXMFDIST}/tex/latex/beamer/themes/{theme,images,inner,outer}
 
         install -m644 images/TU_Logo_lang_RGB_red.pdf \
