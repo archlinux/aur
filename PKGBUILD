@@ -10,8 +10,8 @@ license=("BSL")
 groups=('dlang')
 makedepends=('dmd' 'git')
 depends=('libphobos')
-provides=('dscanner')
-conflicts=('dscanner')
+provides=('dfmt')
+conflicts=('dfmt')
 options=('!strip')
 
 source=(
