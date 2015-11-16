@@ -1,15 +1,17 @@
 pkgbase = git-lfs
 	pkgdesc = An open source Git extension for versioning large files
 	pkgver = 1.0.2
-	pkgrel = 2
-	url = https://git-lfs.github.com/
+	pkgrel = 3
+	url = https://git-lfs.github.com
 	install = git-lfs.install
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = go
+	makedepends = ruby-ronn
 	depends = git
-	source = https://github.com/github/git-lfs/releases/download/v1.0.2/git-lfs-linux-386-1.0.2.tar.gz
-	md5sums = 77370955ae6a62c8d5033a427014f9db
+	source = https://github.com/github/git-lfs/archive/v1.0.2.tar.gz
+	sha1sums = 633dc27cf232de214cc7933ebb561abe95a7afa6
 
 pkgname = git-lfs
 
