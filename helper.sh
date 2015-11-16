@@ -58,6 +58,10 @@ function get_golang {
   then
     echo $1 $2 $3
     get_git "github.com/golang/text" $2
+  elif [[ $1 == "golang.org/x/crypto" ]]
+  then
+    echo $1 $2 $3
+    get_git "github.com/golang/crypto" $2
   else
     echo $1 $2 $3
   fi

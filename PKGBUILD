@@ -4,7 +4,7 @@
 pkgname=gogs-git
 _pkgname=gogs
 _branch=master
-pkgver=2952.e0aab4a
+pkgver=3076.951037c
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
@@ -33,8 +33,8 @@ source=('gogs.service'
         "$_pkgname::git+https://${_gourl}.git#branch=${_branch}")
 
 sha512sums=(c7abbe4af438a8a1db44537a16dbd40b82d50c921d53002c083071c4cd16644769e9d5dabbccedc1bd4ba563324186da4b4378365e098cc45df76402a657be90
-            ea000611134a2a794d75ec71bb18991e5b51117042522cdcfee17827ccd71c33003231ff19bff33e36d52cdff4799df88ca0a98937e3e1834a831a8d8744b739
-            e746dbdafc4c8d0b15a224dba95ae3151611ba9ff468ee6f0b1789e489955e4d7eaac0dbdf28a22e5b8211559af5950726f4a37d699a2490fd349f034401028c
+            d4f6518c644b76e4d1688cd5756c9eea7a89d0abad68a14638ccc6f0d1006c164c1ae3b3f89efd903def7398a3dabce7299100303808ad7a1937407a9eb13a39
+            5dde38b286b2a27624e4c2f5c87c7eb279c6c5fc71dad818762b7100a8d20d5b16c14695624107e21b361ab662b90e769717325ba5f276067aa1ead38ae44e47
             'SKIP')
 
 _goroot="/usr/lib/go"
