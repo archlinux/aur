@@ -2,8 +2,8 @@
 #Contributor: Mihails Strasuns <public@dicebot.lv>
 
 pkgname=('dcd-git')
-pkgver=r1
-pkgrel=2
+pkgver=r660.4195075
+pkgrel=1
 pkgdesc="D Completion Daemon: auto-complete for the D programming language"
 arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/DCD"
