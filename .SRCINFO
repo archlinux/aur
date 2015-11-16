@@ -1,0 +1,16 @@
+pkgbase = kodi-devel-screensaver-greynetic
+	pkgdesc = Greynetic screensaver addon for Kodi
+	pkgver = 20150921.80e850e
+	pkgrel = 1
+	url = https://github.com/notspiff/screensaver.greynetic
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	source = https://github.com/notspiff/screensaver.greynetic/archive/80e850eb3cbc7ee2c937fcab666dc45d2b2ee0bb.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-screensaver-greynetic
+
