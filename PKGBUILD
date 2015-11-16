@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-adsp-biquad-filters
 _gitname=adsp.biquad.filters
-pkgver=20150719.b6a31a9
-_gitver=b6a31a90b7a0213b9362e3ec0ddb7d49aa71ac55
-pkgrel=2
+pkgver=20151023.1746fe4
+_gitver=1746fe469965c6e701133f36ff0b7a42805f5c1d
+pkgrel=1
 pkgdesc='Biquad filter ADSP addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-adsp/$_gitname"
