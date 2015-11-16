@@ -5,7 +5,7 @@
 pkgname=kodi-devel-libcec
 _gitname=libcec
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter"
 arch=('i686' 'x86_64')
 url="http://libcec.pulse-eight.com/"
@@ -13,6 +13,7 @@ license=('GPL')
 groups=('kodi-devel')
 makedepends=('cmake')
 depends=('udev' 'lockdev' 'kodi-devel-libplatform' 'libxrandr')
+provides=('libcec')
 conflicts=('libcec')
 source=("$_gitname-$pkgver.tar.gz::https://github.com/Pulse-Eight/$_gitname/archive/$_gitname-$pkgver.tar.gz")
 sha256sums=('7e3670c8949a1964d6e5481f56dfff838857da10bdc60b506f6e9b7f117e253e')
