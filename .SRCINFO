@@ -1,6 +1,6 @@
 pkgbase = zhuaxia-git
 	pkgdesc = cli tool to download mp3 from xiami.com and music.163.com
-	pkgver = r223.bff6043
+	pkgver = r228.eb9d5b2
 	pkgrel = 1
 	url = https://github.com/sk1418/zhuaxia/tree/bleeding
 	arch = any
