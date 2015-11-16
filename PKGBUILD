@@ -3,7 +3,7 @@
 
 pkgbase="python-theano-git"
 pkgname=("python-theano-git" "python2-theano-git")
-pkgver=0.7.1a1.r1287.4260bbf
+pkgver=0.7.1a1.r1364.33c9760
 pkgrel=1
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
@@ -11,8 +11,8 @@ url='http://www.deeplearning.net/software/theano/'
 license=('BSD')
 conflicts=('python-theano' 'python2-theano')
 provides=('python-theano' 'python2-theano')
-depends=('python'  'python-numpy' 
-         'python2' 'python2-numpy')
+depends=('python'  'python-numpy' 'python-six'
+         'python2' 'python2-numpy' 'python2-six')
 makedepends=('python-distribute' 'python2-distribute')
 checkdepends=('python-nose'      'python2-nose')
 optdepends=('python-pycuda' 'python-pydot'
@@ -50,7 +50,7 @@ build() {
 }
 
 package_python2-theano-git() {
-  depends=('python2' 'python2-numpy')
+  depends=('python2' 'python2-numpy' 'python2-six')
   optdepends=('python2-pycuda' 'python2-pydot')
   provides=('python2-theano')
   conflicts=('python2-theano')
@@ -63,7 +63,7 @@ package_python2-theano-git() {
 }
 
 package_python-theano-git() {
-  depends=('python' 'python-numpy')
+  depends=('python' 'python-numpy' 'python-six')
   optdepends=('python-pycuda' 'python-pydot')
   provides=('python-theano')
   conflicts=('python-theano')
