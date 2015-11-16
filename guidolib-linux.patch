@@ -1,0 +1,13 @@
+diff --git a/environments/Qt/apps/GuidoEditor/GuidoEditor.pro b/environments/Qt/apps/GuidoEditor/GuidoEditor.pro
+index 3e935ed..c38349b 100644
+--- a/environments/Qt/apps/GuidoEditor/GuidoEditor.pro
++++ b/environments/Qt/apps/GuidoEditor/GuidoEditor.pro
+@@ -9,7 +9,7 @@ win32 { TEMPLATE = vcapp }
+ else  { TEMPLATE = app }
+ win32:DebugBuild { CONFIG += console }
+ 
+-unix:TARGET = guidoeditor
++unix:TARGET = GuidoEditor
+ macx:TARGET = GuidoEditor
+ 
+ MOC_DIR = ./tmpSrc
