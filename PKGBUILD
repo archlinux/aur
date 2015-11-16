@@ -4,12 +4,13 @@
 
 pkgname=lib32-fltk
 pkgver=1.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Graphical user interface toolkit for X (32-bit)"
 arch=('x86_64')
 url="http://www.fltk.org"
 license=('LGPL')
 depends=('fltk' 'lib32-gcc-libs' 'lib32-glu' 'lib32-libjpeg-turbo' 'lib32-libpng' 'lib32-libxft' 'lib32-libxinerama' 'lib32-libxcursor')
+makedepends=('gcc-multilib')
 install=${pkgname}.install
 source=("http://fltk.org/pub/${pkgname#lib32-}/${pkgver}/${pkgname#lib32-}-${pkgver}-source.tar.gz"
         "tigervnc.patch" "fltk-config-dynlibs.patch")
