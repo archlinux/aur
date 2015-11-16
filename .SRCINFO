@@ -1,0 +1,17 @@
+pkgbase = artanis-git
+	pkgdesc = A fast monolithic web-framework of Scheme
+	pkgver = r783.73c99b7
+	pkgrel = 1
+	url = http://web-artanis.com/
+	install = artanis-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = guile
+	provides = artanis
+	conflicts = artanis
+	source = git+https://github.com/NalaGinrut/artanis.git
+	md5sums = SKIP
+
+pkgname = artanis-git
+
