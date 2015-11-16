@@ -4,13 +4,13 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 _major=4
-_minor=1
+_minor=3
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=4
+_pfrel=1
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -83,10 +83,9 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	'change-default-console-loglevel.patch'
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
-        "git+$_aufs3#branch=aufs4.1"
-        'bfs_gc_remove_resched_closest_idle.patch'
+        "git+$_aufs3#branch=aufs4.3"  
        )
-
+# 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
 prepare() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -143,8 +142,8 @@ prepare() {
   # added gcc 4.7.1 support for Kconfig and menuconfig
   # now inclued in pf patchset
 
-  # fix bfs issue
-  patch -Np1 -i "${srcdir}/bfs_gc_remove_resched_closest_idle.patch"
+  # fix ci  invalid PC card inserted issue hopefully
+  #patch -Rp1 -i "${srcdir}/cx23885_move_CI_AC_registration_to_a_separate_function.patch" || true
   
   if [ "$CARCH" = "x86_64" ]; then
 	cat "${startdir}/config.x86_64" >| .config
@@ -696,11 +695,10 @@ package_linux-pf-headers() {
 pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3"
 
 # makepkg -g >>PKGBUILD
-sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
-            '30e86da2fd10b5750371563546b92c6a0017c8ae78bbb3c067d3125deef1f048'
-            'fe834ce67939cf6d08e76a0f5fa58cf98d0cfffffabed47142c69bcca0cc9219'
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
+            'deb12235ebf9285ce778402ff76b3ac948510ba217e3293fa9f27248c370b555'
+            '74f174a6780ca9687c5815620df29364c3431c1a2be8917900aed79566977460'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '247c7e2001e4fe28e8cabd0f861240ac13487a942bcb2dbd92ea50302d799414'
-            'SKIP'
-            '64330f2b455c1b5be9f595e00a111ed6edfe9eec010453ccb6e4d7dfe3cdad3f')
+            '5114f247db30ea4302a12a04ccc5b189c40aa4c4aaf1272bff5d28c6fee84958'
+            'SKIP')
