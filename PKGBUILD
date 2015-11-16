@@ -41,7 +41,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add mainline patch
   #patch -p1 -i "${srcdir}/${_patchname}"
@@ -98,9 +98,6 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("kernel26${_kernelname}=${pkgver}")
-  conflicts=("kernel26${_kernelname}")
-  replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
@@ -157,9 +154,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-headers=${pkgver}")
-  conflicts=("kernel26${_kernelname}-headers")
-  replaces=("kernel26${_kernelname}-headers")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -277,9 +271,6 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-docs=${pkgver}")
-  conflicts=("kernel26${_kernelname}-docs")
-  replaces=("kernel26${_kernelname}-docs")
 
   cd "${srcdir}/${_srcname}"
 

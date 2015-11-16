@@ -30,20 +30,11 @@ pkgname = linux-mainline
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-mainline=4.3
-	conflicts = kernel26-mainline
-	replaces = kernel26-mainline
 	backup = etc/mkinitcpio.d/linux-mainline.preset
 
 pkgname = linux-mainline-headers
 	pkgdesc = Header files and scripts for building modules for Linux-mainline kernel
-	provides = kernel26-mainline-headers=4.3
-	conflicts = kernel26-mainline-headers
-	replaces = kernel26-mainline-headers
 
 pkgname = linux-mainline-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-mainline kernel
-	provides = kernel26-mainline-docs=4.3
-	conflicts = kernel26-mainline-docs
-	replaces = kernel26-mainline-docs
 
