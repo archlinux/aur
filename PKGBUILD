@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-audiodecoder-stsound
 _gitname=audiodecoder.stsound
-pkgver=20150602.f6fbae9
-_gitver=f6fbae94818fedd09e2f55c6cd1cb283bfdab6f4
-pkgrel=3
+pkgver=20150806.759ae7e
+_gitver=759ae7eadb94adfde8533a2a42d949c321718625
+pkgrel=1
 pkgdesc='YM decoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/notspiff/$_gitname"
