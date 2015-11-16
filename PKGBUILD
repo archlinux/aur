@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-pvr-iptvsimple
 _gitname=pvr.iptvsimple
-pkgver=20150720.353cb28
-_gitver=353cb28d7e427fc0ba274420159a743a1a1525ae
-pkgrel=2
+pkgver=20150920.953477b
+_gitver=953477b7df5fb60d8d811f9085045148b8d571fa
+pkgrel=1
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-pvr/$_gitname"
