@@ -8,6 +8,7 @@ pkgbase = ivideon-server-headless
 	license = freeware
 	makedepends = libarchive
 	depends = portaudio
+	depends = ffmpeg
 	depends = gstreamer0.10
 	depends = gstreamer0.10-base-plugins
 	depends = gstreamer0.10-good-plugins
