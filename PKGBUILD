@@ -1,24 +1,28 @@
-# Maintainer: Loïc Guitaut <flink at belfalas dot eu>
-# Contributor: Lukas Sabota <lukas at lwsabota dot com>
+# Maintainer: Loïc Guitaut <flink at belfalas.eu>
+# Contributor: Lukas Sabota <lukas at lwsabota.com>
+# Contributor: Nicolas Doualot <packages at slubman.info>
 
 pkgname='litecoin-daemon'
 pkgver=0.10.2.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
-makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc')
+makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
 license=('MIT')
 source=("https://github.com/litecoin-project/litecoin/archive/v$pkgver.tar.gz"
         "litecoind@.service"
+        "upnp-1.9.patch"
 )
 sha256sums=('952c84b181323db17a8fa23217f59b576ad3ebad92c158b3a7c29d458a1130dc'
-            '3e0afef47970cdf304a376b51dbbb44759ac7eeb232be1ea4b2b995817b5df88')
+            '3e0afef47970cdf304a376b51dbbb44759ac7eeb232be1ea4b2b995817b5df88'
+            '3060917f8e327002da842534265392a1849239ec5049f25c1ae8a81c3952e7b1')
 pkgdesc="Peer-to-peer network based digital currency (daemon)"
-depends=(boost-libs miniupnpc openssl)
+depends=(boost-libs miniupnpc openssl protobuf)
 conflicts=(litecoin)
 
 build() {
   cd "$srcdir/litecoin-$pkgver"
+  patch -p1 -i ../upnp-1.9.patch
   ./autogen.sh
   ./configure --without-gui --with-incompatible-bdb
   make
