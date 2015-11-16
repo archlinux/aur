@@ -1,0 +1,15 @@
+pkgbase = breeze-icons-extras
+	pkgdesc = Breeze extras icons for KDE Plasma.
+	pkgver = 20151112
+	pkgrel = 1
+	url = https://github.com/NitruxSA/breeze-icon-theme/
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = fakeroot
+	options = !strip
+	source = breeze-icons-extras-20151112.tar.gz::https://github.com/NitruxSA/breeze-icon-theme//archive/44d2e6dfa4f7766e3ba6620287e65545dea4c481.tar.gz
+	sha256sums = SKIP
+
+pkgname = breeze-icons-extras
+
