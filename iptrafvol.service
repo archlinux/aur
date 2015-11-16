@@ -1,0 +1,9 @@
+### /usr/lib/systemd/system/iptrafvol.service
+
+[Unit]
+Description=IPTrafficVolume network traffic volume logging tool
+Wants=iptrafvol.timer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/iptrafvol.pl -l

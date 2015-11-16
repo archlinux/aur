@@ -1,0 +1,11 @@
+### /usr/lib/systemd/system/iptrafvol.timer
+
+[Unit]
+Description=Timer for iptrafvol.service
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=multi-user.target

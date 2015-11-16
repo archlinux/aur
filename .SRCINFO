@@ -1,7 +1,7 @@
 pkgbase = iptrafvol
 	pkgdesc = IP traffic volume logger using iptables
 	pkgver = 0.3.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://iptrafficvolume.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,12 @@ pkgbase = iptrafvol
 	depends = perl
 	source = http://downloads.sourceforge.net/project/iptrafficvolume/iptrafficvolume/0.3.4/iptrafvol-0.3.4.tgz
 	source = fix-pod.patch
+	source = iptrafvol.timer
+	source = iptrafvol.service
 	md5sums = 21d96650dd6452792ad47a5636954053
 	md5sums = 4201e99e219f92ec7b5147c65c09fda9
+	md5sums = 0d612976c4cc7e6a133926721bbf6232
+	md5sums = dc2737ba522b528c6f35872798497afe
 
 pkgname = iptrafvol
 

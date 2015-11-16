@@ -15,16 +15,20 @@
 pkgname=iptrafvol
 _pkgname=iptrafficvolume
 pkgver=0.3.4
-pkgrel=4
+pkgrel=5
 pkgdesc="IP traffic volume logger using iptables"
 arch=('i686' 'x86_64')
 url="http://iptrafficvolume.sourceforge.net/"
 license=('GPL')
 depends=('iptables' 'perl')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${pkgname}-${pkgver}.tgz"
-        'fix-pod.patch')
+        'fix-pod.patch'
+        'iptrafvol.timer'
+        'iptrafvol.service')
 md5sums=('21d96650dd6452792ad47a5636954053'
-         '4201e99e219f92ec7b5147c65c09fda9')
+         '4201e99e219f92ec7b5147c65c09fda9'
+         '0d612976c4cc7e6a133926721bbf6232'
+         'dc2737ba522b528c6f35872798497afe')
 
 prepare() {
   cd "$srcdir"/${pkgname}-${pkgver}
@@ -49,6 +53,10 @@ package() {
   install -D -m644 Examples/iptrafvol_init.d "$pkgdir"/usr/share/${pkgname}/iptrafvol_init.d
   install -D -m644 iptrafvol.1.gz "$pkgdir"/usr/share/man/man1/iptrafvol.1.gz
   install -D -m644 COPYING "$pkgdir"/usr/share/licenses/${pkgname}/COPYING
+
+  # install systemd units (thanks to @Amplificator)
+  install -D -m755 "$srcdir"/iptrafvol.timer   "$pkgdir"/usr/lib/systemd/system/iptrafvol.timer
+  install -D -m755 "$srcdir"/iptrafvol.service "$pkgdir"/usr/lib/systemd/system/iptrafvol.service
 
   # adapt config to suits arch
   sed \
