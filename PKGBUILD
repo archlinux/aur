@@ -5,10 +5,10 @@
 
 pkgname=kodi-devel-pvr-filmon
 _gitname=pvr.filmon
-pkgver=20150720.5d1a5c1
-_gitver=5d1a5c13631d39331218ae662f608b919dd762bf
+pkgver=20151014.bea2509
+_gitver=bea2509bcd5d2e511f88e53d1e749051af45428e
 _jsoncpp_ver=0.5.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Filmon PVR addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-pvr/$_gitname"
@@ -18,11 +18,11 @@ makedepends=('cmake' 'kodi-devel-platform' 'kodi-devel-libplatform')
 depends=('kodi-devel')
 source=(
   "https://github.com/kodi-pvr/$_gitname/archive/$_gitver.tar.gz"
-  "http://garr.dl.sourceforge.net/project/jsoncpp/jsoncpp/0.5.0/jsoncpp-src-$_jsoncpp_ver.tar.gz"
+  "https://github.com/open-source-parsers/jsoncpp/archive/svn-release-$_jsoncpp_ver.tar.gz"
   "jsoncpp-cmakelists.patch")
 md5sums=(
   'SKIP'
-  '24482b67c1cb17aac1ed1814288a3a8f'
+  '11b6a4ff1bf1a8f34f6e4b813d61342e'
   'SKIP')
 
 _prefix='/usr'
@@ -30,7 +30,7 @@ _prefix='/usr'
 prepare() {
   msg "Building JsonCpp"
 
-  cd "$srcdir/jsoncpp-src-$_jsoncpp_ver"
+  cd "$srcdir/jsoncpp-svn-release-$_jsoncpp_ver"
   patch -p1 -i "$srcdir/jsoncpp-cmakelists.patch"
   mkdir -p build && pushd build
   cmake \
@@ -50,8 +50,8 @@ build() {
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
-    -DJSONCPP_INCLUDE_DIRS="$srcdir/jsoncpp-src-$_jsoncpp_ver/out/usr/include/jsoncpp" \
-    -DJSONCPP_LIBRARIES="$srcdir/jsoncpp-src-$_jsoncpp_ver/out/usr/lib" \
+    -DJSONCPP_INCLUDE_DIRS="$srcdir/jsoncpp-svn-release-$_jsoncpp_ver/out/usr/include/jsoncpp" \
+    -DJSONCPP_LIBRARIES="$srcdir/jsoncpp-svn-release-$_jsoncpp_ver/out/usr/lib" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
