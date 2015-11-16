@@ -1,0 +1,16 @@
+pkgbase = grub2-theme-air-git
+	pkgdesc = Grub2 theme Air
+	pkgver = 20151116
+	pkgrel = 1
+	url = https://github.com/WaWei/grub2-theme-air
+	install = grub2-theme-air-git.install
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = grub
+	conflicts = grub2-theme-air
+	source = grub2-theme-air-git::git+https://github.com//WaWei/grub2-theme-air
+	md5sums = SKIP
+
+pkgname = grub2-theme-air-git
+
