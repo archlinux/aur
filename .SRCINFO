@@ -1,6 +1,6 @@
 pkgbase = douban.fm
 	pkgdesc = a tiny and smart cli player of douban.fm based on Python
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/taizilongxu/douban.fm
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = douban.fm
 	depends = python2-requests
 	depends = mplayer
 	optdepends = libnotify: for desktop notification
-	source = https://pypi.python.org/packages/source/d/douban.fm/douban.fm-0.4.7.tar.gz
-	md5sums = 10097e0b2fd178fb4c9fed8653afdcf0
+	source = https://pypi.python.org/packages/source/d/douban.fm/douban.fm-0.4.8.tar.gz
+	md5sums = a650e9e9f3d8387005b2fd9f38c1a988
 
 pkgname = douban.fm
 
