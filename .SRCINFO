@@ -1,0 +1,12 @@
+pkgbase = stlsoft
+	pkgdesc = C++ library providing operating system facades and STL extensions.
+	pkgver = 1.9.124
+	pkgrel = 1
+	url = http://www.stlsoft.org/
+	arch = any
+	license = BSD
+	source = https://github.com/synesissoftware/STLSoft-1.9/archive/STLSoft-1.9.124.tar.gz
+	md5sums = 7e64507190925a348ac2eae8d0fe274a
+
+pkgname = stlsoft
+
