@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=dfu-convert-git
-pkgver=r3.17064d7
+pkgver=r8.e2b1c1c
 pkgrel=1
 pkgdesc='Tool that converts RAW binary firmware into DFU format and back'
 arch=(any)

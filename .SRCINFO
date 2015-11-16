@@ -1,6 +1,6 @@
 pkgbase = dfu-convert-git
 	pkgdesc = Tool that converts RAW binary firmware into DFU format and back
-	pkgver = r3.17064d7
+	pkgver = r8.e2b1c1c
 	pkgrel = 1
 	url = https://github.com/plietar/dfuse-tool
 	arch = any
