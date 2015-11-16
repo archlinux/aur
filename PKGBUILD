@@ -1,5 +1,5 @@
 pkgname="paycoin-qt-git"
-pkgver=0.3.1.1.r105.g9c1aa43
+pkgver=0.3.3.0
 pkgrel=1
 pkgdesc='Paycoin is a Paycoin network-compatible, community-developed wallet client.'
 arch=('any')
@@ -9,15 +9,10 @@ depends=('qt4' 'miniupnpc' 'qrencode' 'boost-libs' 'openssl')
 makedepends=('git' 'boost')
 provides=('paycoin-qt')
 conflicts=('paycoin-wallet' 'paycoin-qt')
-source=('git://github.com/PaycoinFoundation/paycoin.git'
+source=("git://github.com/PaycoinFoundation/paycoin.git#tag=v$pkgver"
 	'paycoin-qt.desktop')
 md5sums=('SKIP'
          'f6f77ced97d4fba182ed01f33d49d895')
-
-pkgver() {
-	cd "$srcdir/paycoin"
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
 	cd "$srcdir/paycoin"
@@ -27,7 +22,7 @@ prepare() {
 build() {
 	# Build Qt Wallet
         cd "$srcdir/paycoin"
-        make -j 4
+        make
 }
 
 package() {
