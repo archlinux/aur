@@ -2,7 +2,7 @@
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
 pkgver=15.2.1
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
@@ -48,17 +48,13 @@ _configure_args="--prefix=/usr \
   --with-python \
   --enable-includes \
   --disable-rpath \
-  --with-systemd=/usr/lib/systemd/system"
-
-  # Add in wrappers
-  #--with-tcp-wrappers \
-  # Add back in when i get users working
-  #--with-dir-user=$(DIRECTOR_DAEMON_USER) \
-  #--with-dir-group=$(DAEMON_GROUP) \
-  #--with-sd-user=$(STORAGE_DAEMON_USER) \
-  #--with-sd-group=$(STORAGE_DAEMON_GROUP) \
-  #--with-fd-user=$(FILE_DAEMON_USER) \
-  #--with-fd-group=$(DAEMON_GROUP) \
+  --with-systemd=/usr/lib/systemd/system \
+  --with-dir-user=bareos \
+  --with-dir-group=bareos \
+  --with-sd-user=bareos \
+  --with-sd-group=bareos \
+  --with-fd-user=bareos \
+  --with-fd-group=bareos"
 
 prepare() {
   # bareos must use python2
@@ -76,17 +72,23 @@ build() {
 _install_files() {
   pushd $_instdir &> /dev/null
 
+  # Create needed directories
+  if [ -e "${_pkgsrc}/debian/$1.dirs" ]; then
+    while read dir
+    do
+      mkdir -p ${pkgdir}${dir}
+    done < ${_pkgsrc}/debian/$1.dirs
+  fi
+
+  # Create files
   while read file
   do
+    set -f # Handle BLOB wild cards
     file=$(echo $file | sed 's,\([^ ]*\).*,\1,g') # Remove second param, if exists
-
-    #if [[ -e ${file#?} || -L ${file#?} || ${file#?} == *"*"* ]]; then
-      cp --parents -a ${file#?} ${pkgdir}
-    #else
-      #warning "Source file ${file#?} does not exist"
-    #fi
-
-  done < ${_pkgsrc}/debian/$1
+    file=${file:1:${#file}-1}
+    set +f
+    cp --parents -a ${file} ${pkgdir}
+  done < ${_pkgsrc}/debian/$1.install
 
   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin" &> /dev/null || true
 
@@ -96,91 +98,100 @@ _install_files() {
 _etc_files() {
   pushd $_instdir &> /dev/null
 
+  # HACK: This allows mksrcinfo to work when determining etc files dynamically
+  [[ ${_pkgsrc} == $(readlink -f $(pwd)/..)* ]] || MKSRCINFO=1
+  [[ $MKSRCINFO -eq 1 ]] &&  _pkgsrc=${_pkgsrc:1:${#_pkgsrc}-1}
+
   while read file
   do
     file=$(echo $file | sed 's,\([^ ]*\).*,\1,g') # Remove second param, if exists
+    [[ $MKSRCINFO -ne 1 ]] && file=${file:1:${#file}-1}
 
     if [[ "$file" =~ "/etc" ]]; then
-      out="'${file#?}' $out"
+      out="'${file}' $out"
     fi
   done < ${_pkgsrc}/debian/$1
 
   popd &> /dev/null
-
   echo $out
 }
+
 
 package_bareos-bat() {
   pkgdesc="${pkgdesc} - Admin Tool (GUI)"
   depends=("bareos-common=$pkgver" "qt4")
   makedepends+=('qt4')
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-bat.install
+  _install_files ${pkgname}
 }
 
 package_bareos-bconsole() {
   pkgdesc="${pkgdesc} - Admin Tool (CLI)"
   depends=("bareos-common=$pkgver")
   groups+=('bareos-client')
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-bconsole.install
+  _install_files ${pkgname}
 }
 
 package_bareos-common() {
   pkgdesc="${pkgdesc} - Common files"
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-common.install
+  _install_files ${pkgname}
 }
 
 package_bareos-database-common() {
   pkgdesc="${pkgdesc} - Generic abstration libs and tools for sql catalog"
-  depends=("bareos-common=$pkgver")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  depends=("bareos-common=$pkgver" "bareos-database-tools=$pkgver")
+  backup=(`_etc_files ${pkgname}.install`)
+  _install_files ${pkgname}
 }
 
 package_bareos-database-mysql() {
   pkgdesc="${pkgdesc} - Libs and tools for mysql catalog"
   provides=("bareos-database=$pkgver")
   depends=("bareos-database-common=$pkgver" "libmariadbclient")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-database-mysql.install
+  _install_files ${pkgname}
 }
 
 package_bareos-database-postgresql() {
   pkgdesc="${pkgdesc} - Libs and tools for postgresql catalog"
   provides=("bareos-database=$pkgver")
   depends=("bareos-database-common=$pkgver" "postgresql-libs")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  _install_files ${pkgname}
 }
 
 package_bareos-database-sqlite3() {
   pkgdesc="${pkgdesc} - Libs and tools for sqlite3 catalog"
   provides=("bareos-database=$pkgver")
   depends=("bareos-database-common=$pkgver" "sqlite3")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  _install_files ${pkgname}
 }
 
 package_bareos-database-tools() {
-pkgdesc="${pkgdesc} - CLI tools with database dpendencies (dbcheck, bscan)"
-  depends=("bareos-database=$pkgver")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  pkgdesc="${pkgdesc} - CLI tools with database dpendencies (dbcheck, bscan)"
+  backup=(`_etc_files ${pkgname}.install`)
+  _install_files ${pkgname}
 }
 
 package_bareos-devel() {
   pkgdesc="${pkgdesc} - Devel headers"
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  _install_files ${pkgname}
 }
 
 package_bareos-director() {
   pkgdesc="${pkgdesc} - Director daemon"
-  depends=("bareos-common=$pkgver" "bareos-database-common=$pkgver" "bareos-database=$pkgver" "bareos-database-tools=$pkgver")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  depends=("bareos-common=$pkgver")
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-director.install
+  _install_files ${pkgname}
 
   # Install systemd service
   mkdir -p ${pkgdir}/usr/lib/systemd/system
@@ -190,16 +201,17 @@ package_bareos-director() {
 package_bareos-director-python-plugin() {
   pkgdesc="${pkgdesc} - Python plugin for director daemon"
   depends=("bareos-director=$pkgver" "python" "python2")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  _install_files ${pkgname}
 }
 
 package_bareos-filedaemon() {
   pkgdesc="${pkgdesc} - File daemon"
   depends=("bareos-common=$pkgver")
   groups+=('bareos-client')
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-filedaemon.install
+  _install_files ${pkgname}
 
   # Install systemd service
   mkdir -p ${pkgdir}/usr/lib/systemd/system
@@ -209,16 +221,17 @@ package_bareos-filedaemon() {
 package_bareos-filedaemon-python-plugin() {
   pkgdesc="${pkgdesc} - Python plugin for file daemon"
   depends=("bareos-filedaemon=$pkgver" "python" "python2")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  _install_files ${pkgname}
 }
 
 package_bareos-storage() {
   pkgdesc="${pkgdesc} - Storage daemon"
   optdepends+=('lzo2: LZO compression for Storage Daemon')
   depends=("bareos-common=$pkgver")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-storage.install
+  _install_files ${pkgname}
 
   # Install systemd service
   mkdir -p ${pkgdir}/usr/lib/systemd/system
@@ -228,35 +241,38 @@ package_bareos-storage() {
 package_bareos-storage-fifo() {
   pkgdesc="${pkgdesc} - FIFO support for storage daemon"
   depends=("bareos-storage=$pkgver")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-storage-fifo.install
+  _install_files ${pkgname}
 }
 
 package_bareos-storage-python-plugin() {
   pkgdesc="${pkgdesc} - Python plugin for storage daemon"
   depends=("bareos-storage=$pkgver" "python" "python2")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  _install_files ${pkgname}
 }
 
 package_bareos-storage-tape() {
   pkgdesc="${pkgdesc} - Tape support for storage daemon"
   depends=("bareos-storage=$pkgver" "mtx")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-storage-tape.install
+  _install_files ${pkgname}
 }
 
 package_bareos-tools() {
   pkgdesc="${pkgdesc} - CLI tools (bcopy, bextract, bls, bregeq, bwild)"
   depends=("bareos-common=$pkgver")
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  _install_files ${pkgname}
 }
 
 package_bareos-traymonitor() {
   pkgdesc="${pkgdesc} - Tray Monitor (QT)"
   depends=("bareos-common=$pkgver" "qt4")
   makedepends+=('qt4')
-  declare -a backup=(`_etc_files ${pkgname}.install`)
-  _install_files ${pkgname}.install
+  backup=(`_etc_files ${pkgname}.install`)
+  install=bareos-traymonitor.install
+  _install_files ${pkgname}
 }
