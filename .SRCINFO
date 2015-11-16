@@ -1,0 +1,15 @@
+pkgbase = plasma-theme-invisible
+	pkgdesc = Invisible plasmatheme for KDE 4
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Invisible?content=164089
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdelibs
+	depends = kdebase-workspace
+	source = http://kde-look.org/CONTENT/content-files/164089-Invisible.tar.gz
+	sha256sums = 7b2a4687402b00d2b9e7010bcf34a78cbf7b6b4de1c60ff72385d8877f9cc45f
+
+pkgname = plasma-theme-invisible
+
