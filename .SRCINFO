@@ -1,5 +1,5 @@
 pkgbase = mplayer-svn
-	pkgver = 37551
+	pkgver = 37553
 	pkgrel = 1
 	url = http://www.mplayerhq.hu/
 	arch = i686
@@ -55,12 +55,14 @@ pkgbase = mplayer-svn
 	makedepends = libdvdnav
 	options = !buildflags
 	options = !emptydirs
-	source = mplayer-37551::svn://svn.mplayerhq.hu/mplayer/trunk#revision=37551
-	source = http://ffmpeg.org/releases/ffmpeg-2.8.1.tar.bz2
+	source = mplayer-37553::svn://svn.mplayerhq.hu/mplayer/trunk#revision=37553
+	source = http://ffmpeg.org/releases/ffmpeg-2.8.2.tar.bz2
 	source = mplayer.desktop
+	source = ffmpeg-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
 	md5sums = SKIP
-	md5sums = 63b2cfeea930e942ff7579fd0064c5be
+	md5sums = 99f31723326dfe1bfd1bc7521338f2d2
 	md5sums = 62f44a58f072b2b1a3c3d3e4976d64b3
+	md5sums = 71be9bcd297cb9ce833bbc5d425c0470
 
 pkgname = mplayer-svn
 	pkgdesc = Media player for Linux

@@ -5,9 +5,9 @@
 
 pkgbase='mplayer-svn'
 pkgname=('mplayer-svn' 'mencoder-svn')
-pkgver=37551
+pkgver=37553
 pkgrel=1
-_ffmpegver=2.8.1
+_ffmpegver=2.8.2
 arch=('i686' 'x86_64')
 makedepends=(
   'libxxf86dga' 'libxxf86vm' 'libmad' 'libxinerama' 'sdl' 'lame' 'libtheora'
@@ -23,10 +23,12 @@ url='http://www.mplayerhq.hu/'
 options=('!buildflags' '!emptydirs')
 source=("mplayer-$pkgver::svn://svn.mplayerhq.hu/mplayer/trunk#revision=$pkgver"
         "http://ffmpeg.org/releases/ffmpeg-$_ffmpegver.tar.bz2"
-        'mplayer.desktop')
+        'mplayer.desktop'
+        'ffmpeg-libvpxenc-remove-some-unused-ctrl-id-mappings.patch')
 md5sums=('SKIP'
-         '63b2cfeea930e942ff7579fd0064c5be'
-         '62f44a58f072b2b1a3c3d3e4976d64b3')
+         '99f31723326dfe1bfd1bc7521338f2d2'
+         '62f44a58f072b2b1a3c3d3e4976d64b3'
+         '71be9bcd297cb9ce833bbc5d425c0470')
 
 pkgver() {
   cd "mplayer-$pkgver"
@@ -36,6 +38,8 @@ pkgver() {
 prepare() {
   cd "mplayer-$pkgver"
   mv "../ffmpeg-$_ffmpegver" ffmpeg
+
+  patch -d ffmpeg -Np1 <../ffmpeg-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
 
   ./version.sh
 }
