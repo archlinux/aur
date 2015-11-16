@@ -7,7 +7,7 @@ pkgver=0.13.0
 pkgrel=1
 pkgdesc="A cartographic python library with matplotlib support for visualisation"
 url="http://scitools.org.uk/cartopy/docs/latest/"
-depends=('python' 'python-shapely' 'python-pyshp' 'python-pyproj')
+depends=('python' 'python-shapely<=1.5.12' 'python-pyshp' 'python-pyproj')
 makedepends=('python3' 'cython')
 license=('LGPLv3')
 arch=('any')
