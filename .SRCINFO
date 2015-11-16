@@ -1,0 +1,16 @@
+pkgbase = kodi-devel-screensaver-asteroids
+	pkgdesc = Asteroids screensaver addon for Kodi
+	pkgver = 20150921.c7ae05f
+	pkgrel = 1
+	url = https://github.com/notspiff/screensaver.asteroids
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	source = https://github.com/notspiff/screensaver.asteroids/archive/c7ae05f1881b9abda6a1ac6beaca8d64a164c4fa.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-screensaver-asteroids
+
