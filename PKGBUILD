@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-stacktrace-withlexicals'
-pkgver='0.10'
+pkgver='2.01'
 pkgrel='1'
 pkgdesc="Devel::StackTrace + PadWalker"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1' 'perl-devel-stacktrace>=1.25' 'perl-padwalker>=1.92')
+depends=('perl-devel-stacktrace>=2.00' 'perl-padwalker>=1.98' 'perl>=5.8.1')
 makedepends=()
-url='http://search.cpan.org/dist/Devel-StackTrace-WithLexicals'
-source=('http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Devel-StackTrace-WithLexicals-0.10.tar.gz')
-md5sums=('2912c1d6386f5ff70e13b8fc99b0c830')
-sha512sums=('34b19a0792b7a15f818dedab5961442a32b8c9d55650fba287fbdf808c2215b471ebb2431d58c14570a7f3075f1c5dee77ef89eda9be0075d23a140679760eb4')
-_distdir="Devel-StackTrace-WithLexicals-0.10"
+url='https://metacpan.org/release/Devel-StackTrace-WithLexicals'
+source=('http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Devel-StackTrace-WithLexicals-2.01.tar.gz')
+md5sums=('bcf170645b1cbd120c4d9593f5c85fb1')
+sha512sums=('ccfd415af962ce876d658b0429d8ea3491261decf4cf46b357e8c7eccac0cbabf9b227b37d2aab38a304d6caac6a895cefb6a5e2e7bfb79c547c7f4a53ab2d76')
+_distdir="Devel-StackTrace-WithLexicals-2.01"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
