@@ -11,6 +11,7 @@ pkgbase = mate-applet-dock-git
 	depends = python
 	depends = python-xdg
 	depends = python-cairo
+	depends = python-gobject2
 	source = git+http://github.com/robint99/dock-applet
 	md5sums = SKIP
 
