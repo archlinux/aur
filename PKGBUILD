@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-patricia'
-pkgver='1.20'
+pkgver='1.22'
 pkgrel='1'
 pkgdesc="Patricia Trie perl module for fast IP address lookups"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('glibc>=2.17' 'perl-net-cidr-lite>=0.20' 'perl-socket6')
+depends=('glibc>=2.22' 'perl-net-cidr-lite>=0.20' 'perl-socket6')
 makedepends=()
-url='http://search.cpan.org/dist/Net-Patricia'
-source=('http://search.cpan.org/CPAN/authors/id/G/GR/GRUBER/Net-Patricia-1.20.tar.gz')
-md5sums=('d5499f5bc1d6c36538a84153095ea11f')
-sha512sums=('27ae23b86ed2b2b0e1439d33a167f6b83d636f33c4e3bed6ac3967eaa10a3350645d3ec509e0949db8b290e608f2bc4207370ab075be30177ac1e2a9367f0448')
-_distdir="Net-Patricia-1.20"
+url='https://metacpan.org/release/Net-Patricia'
+source=('http://search.cpan.org/CPAN/authors/id/G/GR/GRUBER/Net-Patricia-1.22.tar.gz')
+md5sums=('ef838f7512b050ca4b35d742f9565b3b')
+sha512sums=('d76702d30784f8448dcf3a5269e052bc7bd6f5fe5a16824b6e3ede1d0182deb139522e45e1fb78749a7527ddbc950c213d843e43f45b5b0ed63b5b985b329861')
+_distdir="Net-Patricia-1.22"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
