@@ -1,6 +1,6 @@
 pkgbase = libraptorq
 	pkgdesc = Forward error correction library implementing RaptorQ algorithm
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://www.fenrirproject.org
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = libraptorq
 	license = LGPL3
 	makedepends = cmake
 	depends = eigen>=3.1.0
-	source = https://www.fenrirproject.org/Luker/libRaptorQ/repository/archive.tar.gz?ref=v0.1.3
-	sha1sums = 29366c7f1480ab62de38f72346af3b36a5155490
-	sha256sums = 91cd4fc2a7e6707e575dba60eaa76d32ac3a141ad528bc84f2009beb04facd18
+	source = https://www.fenrirproject.org/Luker/libRaptorQ/repository/archive.tar.gz?ref=v0.1.4
+	sha1sums = 5f63c017fc427ff4cfe00e627e20c903f0ddc736
+	sha256sums = d9ab1c4f12cfc3bf2641982ae67350bc0bb3e85c09b6186bb09a29b8beebf6e1
 
 pkgname = libraptorq
 
