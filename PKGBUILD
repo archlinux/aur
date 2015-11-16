@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-audiodecoder-vgmstream
 _gitname=audiodecoder.vgmstream
-pkgver=20150602.7723f91
-_gitver=7723f9130957f4684eac5788ccbc2f45c39590ad
-pkgrel=3
+pkgver=20150806.cb2892a
+_gitver=cb2892ac0465b0563ee45f532323198a6f722b62
+pkgrel=1
 pkgdesc='VGM decoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/notspiff/$_gitname"
