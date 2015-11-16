@@ -1,0 +1,16 @@
+pkgbase = kodi-devel-visualization-waveform
+	pkgdesc = Waveform visualization addon for Kodi
+	pkgver = 20151109.43956cb
+	pkgrel = 1
+	url = https://github.com/notspiff/visualization.waveform
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	source = https://github.com/notspiff/visualization.waveform/archive/43956cbfe1ed03612574a19a8a6e3fb829d29e87.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-visualization-waveform
+
