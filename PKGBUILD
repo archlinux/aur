@@ -4,7 +4,7 @@
 # Contributor: phoenixlzx < phoenixlzx AT phoenixsec DOT org >
 
 pkgname=vuze
-pkgver=5.6.2.0
+pkgver=5.7.0.0
 pkgrel=1
 _ver=${pkgver//./} 
 pkgdesc="A feature-rich Java-based BitTorrent client (previously called 'Azureus')"
