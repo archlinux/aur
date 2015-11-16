@@ -3,7 +3,7 @@
 
 pkgname=libcurl-gnutls
 _pkgname=curl
-pkgver=7.38.0
+pkgver=7.45.0
 pkgrel=1
 pkgdesc="An URL retrieval utility and library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://curl.haxx.se"
 license=('MIT')
 depends=('ca-certificates' 'libssh2' 'zlib' 'gnutls')
 options=('!libtool' '!strip')
-source=("http://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"{,.asc}
+source=("http://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"
         curlbuild.h
         01_runtests_gdb.patch
         02_art_http_scripting.patch
@@ -19,14 +19,10 @@ source=("http://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"{,.asc}
         04_workaround_as_needed_bug.patch
         06_always-disable-valgrind.patch
         07_do-not-disable-debug-symbols.patch
-	08_fix-spelling.patch
-	09_libtoolize_check.patch
-	10_fix-resolver.patch
         90_gnutls.patch
         99_nss.patch)
 
-md5sums=('b6e3ea55bb718f2270489581efa50a8a'
-         'SKIP'
+md5sums=('be21c6a190d65cfd3eeb749a3dce3947'
          '751bd433ede935c8fae727377625a8ae'
          'e6b1f326a81f4a21e829f0a7ce43619f'
          '5cadcf82367cef12738fc3b0ef27483f'
@@ -34,11 +30,8 @@ md5sums=('b6e3ea55bb718f2270489581efa50a8a'
          'fd110c854e055d0375798c2857bd260e'
          '2cc79bcb4c64e131f4be9f86a5d7f2cb'
          'eb393f4dcd524916372c6bdd66c78c0b'
-         'fc565eca2ca9b5996ef8f4168497b2f4'
-         '19a2255c096bb829b2d9fb5082dd1842'
-         '26723d41149031db8c282d5cb42f2bd2'
-         '011864a7f8332d7785939016af5f98c3'
-         '7d13d3b00286735dbed1161809546f61')
+         '8647154bd1e6943b072afad746e8fc9b'
+         '92089fe6b6e4f57fe109db89c6a643ce')
 
 ptrsize=$(cpp <<<'__SIZEOF_POINTER__' | sed '/^#/d')
 case $ptrsize in
@@ -54,6 +47,7 @@ build() {
   # apply debian patches
   for i in ../*patch
 	do
+	echo "using $i"
 	patch -p1 < "$i"
 	done
 
@@ -78,7 +72,7 @@ build() {
 }
 
 package() {
-  install -Dm644 $srcdir/$_pkgname-$pkgver/lib/.libs/libcurl.so.4.3.0 $pkgdir/usr/lib/libcurl-gnutls.so.4.3.0
-  ln -s libcurl-gnutls.so.4.3.0 $pkgdir/usr/lib/libcurl-gnutls.so.4
-  ln -s libcurl-gnutls.so.4.3.0 $pkgdir/usr/lib/libcurl-gnutls.so.3
+  install -Dm644 $srcdir/$_pkgname-$pkgver/lib/.libs/libcurl.so.4.4.0 $pkgdir/usr/lib/libcurl-gnutls.so.4.4.0
+  ln -s libcurl-gnutls.so.4.4.0 $pkgdir/usr/lib/libcurl-gnutls.so.4
+  ln -s libcurl-gnutls.so.4.4.0 $pkgdir/usr/lib/libcurl-gnutls.so.3
 }
