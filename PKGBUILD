@@ -6,7 +6,7 @@ pkgbase=linux-bcm4350               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.3
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,7 +22,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-bcm4350.patch'
-        '0002-Add-DC6-disabling-as-a-power-well.patch')
+        '0002-Add-DC6-disabling-as-a-power-well.patch'
+        '0003-HID-multitouch-Do-not-fetch-initial-feature-reports-for-Win8-devices.patch')
 
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
@@ -31,7 +32,8 @@ sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '7a3763a7dcdfada7edda636860ee125e270a9542d70c496edf9850c02a25baad'
-            '7bf515ca1fc1c432999f7c5227d77d7c0429eaabbc48bc887383119bbeca2dd4')
+            '7bf515ca1fc1c432999f7c5227d77d7c0429eaabbc48bc887383119bbeca2dd4'
+            '7bbd0fb7f0d82d982b0f8ff1299e67c9d40f43dcb8054bd8553396c0e8b2b2c5')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -59,6 +61,7 @@ prepare() {
   # prevent intel graffics to fail on skylake
   patch -p1 -i "${srcdir}/0002-Add-DC6-disabling-as-a-power-well.patch"
   
+  patch -p1 -i "${srcdir}/0003-HID-multitouch-Do-not-fetch-initial-feature-reports-for-Win8-devices.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config

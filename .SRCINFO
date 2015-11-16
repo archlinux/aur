@@ -1,6 +1,6 @@
 pkgbase = linux-bcm4350
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = linux-bcm4350
 	source = change-default-console-loglevel.patch
 	source = 0001-bcm4350.patch
 	source = 0002-Add-DC6-disabling-as-a-power-well.patch
+	source = 0003-HID-multitouch-Do-not-fetch-initial-feature-reports-for-Win8-devices.patch
 	sha256sums = 4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae
 	sha256sums = SKIP
 	sha256sums = 596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16
@@ -27,6 +28,7 @@ pkgbase = linux-bcm4350
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 7a3763a7dcdfada7edda636860ee125e270a9542d70c496edf9850c02a25baad
 	sha256sums = 7bf515ca1fc1c432999f7c5227d77d7c0429eaabbc48bc887383119bbeca2dd4
+	sha256sums = 7bbd0fb7f0d82d982b0f8ff1299e67c9d40f43dcb8054bd8553396c0e8b2b2c5
 
 pkgname = linux-bcm4350
 	pkgdesc = The Linux-bcm4350 kernel and modules
