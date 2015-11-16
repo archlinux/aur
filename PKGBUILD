@@ -1,14 +1,14 @@
 # Maintainer: Martin Schmölzer <mschmoelzer@gmail.com>
 
 pkgname=libopencm3-git
-pkgver=r1675.eb18cc1
+pkgver=r1746.f14c678
 pkgrel=1
 pkgdesc='Open Source firmware library for various ARM Cortex microcontrollers'
 arch=(any)
 url='http://www.libopencm3.org/'
 license=(GPL)
 makedepends=(git arm-none-eabi-gcc arm-none-eabi-newlib python-yaml)
-options=(!strip staticlibs)
+options=(!strip staticlibs !buildflags)
 source=(git://github.com/libopencm3/libopencm3.git)
 sha256sums=('SKIP')
 
