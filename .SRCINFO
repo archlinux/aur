@@ -1,6 +1,6 @@
 pkgbase = aws-cli
 	pkgdesc = Universal Command Line Interface for Amazon Web Services awscli
-	pkgver = 1.9.5
+	pkgver = 1.9.7
 	pkgrel = 1
 	url = https://github.com/aws/aws-cli
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = aws-cli
 	makedepends = python-distribute
 	depends = python
 	depends = python-bcdoc
-	depends = python-botocore>=1.3.5
+	depends = python-botocore>=1.3.7
 	depends = python-colorama>=0.2.5
 	depends = python-colorama<=0.3.3
 	depends = python-rsa>=3.2
@@ -28,11 +28,11 @@ pkgbase = aws-cli
 	depends = python-guzzle-sphinx-theme<0.8
 	options = !emptydirs
 	options = !strip
-	source = aws-cli-1.9.5.tar.gz::https://github.com/aws/aws-cli/archive/1.9.5.tar.gz
-	sha256sums = 58eb588a0dc28ca43243f74c10c22c13f033de4d95a7c3f08c1abfac2531462f
+	source = aws-cli-1.9.7.tar.gz::https://github.com/aws/aws-cli/archive/1.9.7.tar.gz
+	sha256sums = bdea752bbd9f54549d78891df65422aa5e6d6eb4cab42eb57cf5999e520c7ec9
 
 pkgname = aws-cli
-	provides = awscli=1.9.5
+	provides = awscli=1.9.7
 	conflicts = python2-aws-cli
 	conflicts = python-aws-cli
 	conflicts = awscli
