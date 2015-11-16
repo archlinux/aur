@@ -1,0 +1,21 @@
+pkgbase = volnoti-hcchu-git
+	pkgdesc = Lightweight indicator, hcchu's fork
+	pkgver = 20151022.c5a94af
+	pkgrel = 1
+	url = https://github.com/hcchu/volnoti.giy
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = dbus-core
+	depends = dbus-glib
+	depends = gtk2
+	depends = gdk-pixbuf2
+	depends = librsvg
+	provides = volnoti
+	conflicts = volnoti
+	replaces = volnoti
+	source = volnoti::git+https://github.com/hcchu/volnoti.git
+	sha1sums = SKIP
+
+pkgname = volnoti-hcchu-git
+
