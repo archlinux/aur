@@ -1,17 +1,17 @@
-# Maintainer: Miroslav Koskar (http://mkoskar.com/)
+# Maintainer: Miroslav Koskar <http://mkoskar.com/>
 
 pkgname='spring-boot-cli'
-pkgver='1.2.7'
+pkgver='1.3.0'
 _pkgver="$pkgver.RELEASE"
 pkgrel=1
 pkgdesc='Spring Boot CLI'
-url='http://docs.spring.io/spring-boot/docs/1.2.7.RELEASE/reference/html/getting-started-installing-spring-boot.html#getting-started-installing-the-cli'
+url='http://projects.spring.io/spring-boot/'
 license=('Apache')
 arch=('any')
 depends=('java-environment>=6')
 
 source=("https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/$_pkgver/spring-boot-cli-$_pkgver-bin.tar.gz")
-md5sums=('83833959597258261f3b3c0f002f030e')
+md5sums=('c2a73ae8e328c0c2109da22350386f03')
 
 package() {
     cd "spring-$_pkgver"
