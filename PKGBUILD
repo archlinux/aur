@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=counterblock-git
-pkgver=20150330
+pkgver=20151104
 pkgrel=1
 pkgdesc="Extended functionality for Counterparty"
 arch=('any')
@@ -20,7 +20,7 @@ depends=('cython2'
          'python2-dateutil'
          'python2-flask'
          'python2-gevent'
-         'python2-geventhttpclient-git'
+         'python2-geventhttpclient'
          'python2-gevent-socketio'
          'python2-gevent-websocket'
          'python2-grequests-git'
@@ -31,7 +31,8 @@ depends=('cython2'
          'python2-prettytable'
          'python2-pycoin'
          'python2-pygeoip'
-         'python2-pymongo'
+         'python2-pymongo-2.9'
+         'python2-pytest'
          'python2-python-bitcoinlib'
          'python2-pyzmq'
          'python2-redis'
@@ -42,8 +43,7 @@ depends=('cython2'
          'redis'
          'sqlite'
          'zeromq')
-makedepends=('git'
-             'python2-setuptools')
+makedepends=('git' 'python2-setuptools')
 optdepends=('armory-git: for armory_utxsvr'
             'counterparty-cli-git: Counterparty server'
             'python: for armory_utxsvr')
