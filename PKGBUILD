@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-_pkgver=0.1.13
+_pkgver=0.1.14
 _rpmrel=1
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
@@ -11,7 +11,7 @@ depends=('dnf' 'python')
 makedepends=('cmake')
 checkdepends=('python-nose')
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('6264e179af8714843d488df3a31c0f20')
+md5sums=('3a8dda311742fcabe581cfd94f768679')
 
 prepare() {
 	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
