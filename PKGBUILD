@@ -5,9 +5,9 @@
 
 pkgname=kodi-devel-pvr-dvblink
 _gitname=pvr.dvblink
-pkgver=20150720.1855e44
-_gitver=1855e4419511a87ccef3cf5d55872acdafb3bd70
-pkgrel=2
+pkgver=20150920.4d71897
+_gitver=4d7189703bdf18d7dd90cf13bb9007f47ec92e26
+pkgrel=1
 pkgdesc='DVBLink PVR addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-pvr/$_gitname"
