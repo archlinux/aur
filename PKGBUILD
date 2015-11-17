@@ -4,12 +4,12 @@
 
 pkgname=z-push
 pkgver=2.2.5
-pkgrel=4
+pkgrel=1
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
 license=('AGPL3')
-depends=('php')
+depends=('php>=5.1')
 optdepends=('php-fpm'
 	    'nginx'
 	    'apache'
