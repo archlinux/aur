@@ -2,12 +2,13 @@
 
 pkgname=perl6-terminal-ansicolor
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Colorize terminal output"
 arch=('any')
 depends=('rakudo')
 checkdepends=('perl')
 makedepends=('git')
+groups=('perl6')
 url="https://github.com/tadzik/Terminal-ANSIColor"
 license=('MIT')
 source=($pkgname-$pkgver::git+https://github.com/tadzik/Terminal-ANSIColor)
