@@ -2,12 +2,13 @@
 
 pkgname=perl6-digest-xxhash
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl 6 bindings for xxHash"
 arch=('any')
 depends=('libxxhash' 'rakudo')
 checkdepends=('perl')
 makedepends=('git')
+groups=('perl6')
 url="https://github.com/atweiden/digest-xxhash"
 license=('UNLICENSE')
 source=($pkgname-$pkgver::git+https://github.com/atweiden/digest-xxhash)
