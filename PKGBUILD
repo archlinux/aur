@@ -1,24 +1,31 @@
 # $Id$
-# Maintainer: Jonathan Steel <jsteel at archlinux.org>
+# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+# Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 # Contributor: David Rosenstrauch <darose@darose.net>
 
 pkgname=ddclient
 pkgver=3.8.3
-pkgrel=1
+pkgrel=2
+
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
-arch=('any')
 url="http://ddclient.sourceforge.net"
+arch=('any')
 license=('GPL2')
-depends=('perl-io-socket-ssl' 'perl-digest-sha1' 'net-tools')
+
 backup=('etc/ddclient/ddclient.conf')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2
-        $pkgname.service)
-md5sums=('3b426ae52d509e463b42eeb08fb89e0b'
-         '1bcd3e75309e658931532adef2a0608a')
+
+depends=('perl-io-socket-ssl' 'perl-digest-sha1' 'net-tools')
+optdepends=('perl-json-any: needed for cloudflare module')
+
+source=(http://downloads.sourceforge.net/sourceforge/ddclient/ddclient-$pkgver.tar.bz2
+        ddclient.service)
+
+sha256sums=('d40e2f1fd3f4bff386d27bbdf4b8645199b1995d27605a886b8c71e44d819591'
+            '0f2f66359de844ca2a0c99f0189879ca1c6b5924f8e07e33cc226680540fa62d')
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd ddclient-$pkgver
 
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm600 sample-etc_$pkgname.conf "$pkgdir"/etc/$pkgname/$pkgname.conf
