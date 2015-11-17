@@ -2,7 +2,7 @@
 
 pkgname='flickmagnet'
 _gitname='flickmagnet'
-pkgver='0.0.3'
+pkgver='0.0.4'
 pkgrel=1
 pkgdesc='HTTP server similar to Netflix and PopcornTime which streams public domain videos from torrent files.'
 arch=('any')
