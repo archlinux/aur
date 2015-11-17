@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
-pkgname=sift-bin
-_rname=sift
-pkgver=0.4.1
+_name=sift
+pkgname=${_name}-bin
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A fast and powerful open source alternative to grep - Static binary"
 arch=('i686' 'x86_64')
@@ -11,19 +11,19 @@ options=('!strip' '!emptydirs')
 conflicts=('sift')
 replaces=('sift')
 provides=("sift=${pkgver}")
-source_i686=("${url}/downloads/${_rname}/${_rname}_${pkgver}_linux_386.tar.gz")
-source_x86_64=("${url}/downloads/${_rname}/${_rname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_i686=('56ec0039d7976fd077fec614e8bccc1d5fcf6b4619fec68ab0958a88af193753')
-sha256sums_x86_64=('4dff93da3049fb18e67f52fd823f4c06c8b650baa6573c21a1c5758e00f3c571')
+source_i686=("${url}/downloads/${_name}/${_name}_${pkgver}_linux_386.tar.gz")
+source_x86_64=("${url}/downloads/${_name}/${_name}_${pkgver}_linux_amd64.tar.gz")
+sha256sums_i686=('c65bdd39b23cde5fbed6ae0edfe0fda07ea73db3fccc8648905dffbb6cbe387f')
+sha256sums_x86_64=('13bc84f8ce934d226b4477657298fd1b99407e0408030e1e583becc456222ed1')
 
 [[ "$CARCH" = "i686" ]] && _arch='386'
 [[ "$CARCH" = "x86_64" ]] && _arch='amd64'
 
 package() {
-  cd "${_rname}_${pkgver}_linux_${_arch}"
+  cd "${_name}_${pkgver}_linux_${_arch}"
 
-  install -Dm 775 "${_rname}" "${pkgdir}/usr/bin/${_rname}"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_rname}/LICENSE"
+  install -Dm 775 "${_name}" "${pkgdir}/usr/bin/${_name}"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
