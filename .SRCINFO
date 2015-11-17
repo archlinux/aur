@@ -1,0 +1,17 @@
+pkgbase = gede
+	pkgdesc = Graphical frontend (GUI) to GDB written in Qt.
+	pkgver = 1.14.6
+	pkgrel = 1
+	url = http://acidron.com/gede
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2
+	depends = qt4
+	depends = gdb
+	depends = ctags
+	source = http://gede.acidron.com/uploads/source/gede-1.14.6.tar.xz
+	md5sums = dadce66ae85721ad6e51bd4445006ec8
+
+pkgname = gede
+
