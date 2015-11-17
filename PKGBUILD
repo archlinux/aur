@@ -3,7 +3,7 @@
 pkgname=nginx-mainline
 provides=('nginx')
 conflicts=('nginx')
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate)
-md5sums=('f6899825e7a8deadba4948ff84515ad6'
+md5sums=('390586a36c8a510849527df106d857c0'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7')
 
