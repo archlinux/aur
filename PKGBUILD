@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
 
 pkgname=apache-spark
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
@@ -15,7 +15,7 @@ install=apache-spark.install
 source=("http://d3kbcqa49mib13.cloudfront.net/spark-$pkgver.tgz"
         'apache-spark-standalone.service'
         'spark-env.sh')
- md5sums=('e3695ba12a4edcd6a0c86db8c923be2b'
+md5sums=('0e4b39d13cb8a87bd1dd0961f772de8a'
          'bb7d8b85366e6f9cc0b2777eaea161a8'
          '0913001583e607849270090555dbd309')
 backup=('etc/apache-spark/spark-env.sh')
