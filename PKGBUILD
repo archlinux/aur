@@ -7,6 +7,8 @@ pkgname=(
     'drush-registry-rebuild'
     'drush-vagrant'
     'drush-entity'
+    'drush-buildmanager'
+    'drush-subtree'
 )
 pkgbase='drush-extensions'
 pkgver='7.x'
@@ -17,6 +19,7 @@ url='http://github.com/drush-ops/drush/'
 license=('GPL')
 groups=('drupal')
 depends=('drush')
+makedepends=('git')
 install=install
 source=(
     'install'
@@ -26,6 +29,8 @@ source=(
     'http://ftp.drupal.org/files/projects/registry_rebuild-7.x-2.2.tar.gz'
     'http://ftp.drupal.org/files/projects/drush-vagrant-7.x-2.0-rc4.tar.gz'
     'http://ftp.drupal.org/files/projects/drush_entity-7.x-5.0-alpha2.tar.gz'
+    'buildmanager::git+https://github.com/WhiteHouse/buildmanager.git'
+    'drushsubtree::git+https://github.com/WhiteHouse/drushsubtree.git'
 )
 md5sums=(
     'f68c7407446bc4dfe95fbe1741928a15'
@@ -35,6 +40,8 @@ md5sums=(
     '6057703bd4a5bec81e397e19602e2756'
     '8d735f9e8f864424f292d4866a70b8f1'
     'b121cc7779ba3fd346e4ca90fd6db19a'
+    'SKIP'
+    'SKIP'
 )
 
 
@@ -87,12 +94,28 @@ package_drush-entity() {
     _dirname=drush_entity
     _package
 }
+package_drush-buildmanager() {
+    pkgver="$(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-list --count master)"
+    pkgdesc='Drush Make wrapper to simplify maintaining Drupal builds.'
+    url='https://github.com/whitehouse/buildmanager'
+    depends=('drush')
+    _dirname=buildmanager
+    _package
+}
+package_drush-subtree() {
+    pkgver="$(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-list --count master)"
+    pkgdesc='Integrate git-subtree with Drush Make for automated and efficient Drupal builds.'
+    url='https://github.com/whitehouse/drushsubtree'
+    depends=('drush-buildmanager')
+    _dirname=drushsubtree
+    _package
+}
 
 _package() {
     cd $_dirname
 
-    rm LICENSE.txt
-    for doc in docs README.md; do
+    [ -f LICENSE.txt ] && rm LICENSE.txt
+    for doc in docs {README,TODO}{,.{md,txt,html}}; do
         [ -d "$doc" -o -f "$doc" ] && {
             install -dm755 "$pkgdir/usr/share/doc/$pkgname"
             cp -R "$doc" "$pkgdir/usr/share/doc/$pkgname/$doc"
@@ -100,6 +123,7 @@ _package() {
     done
 
     msg2 'Adding main files'
+    # Ignore dot-files at the root directory of the extension (e.g. the .git dot-folder).
     install -m755 -d "$pkgdir/usr/share/webapps/drush/commands/$_dirname"
-    cp -R . "$pkgdir/usr/share/webapps/drush/commands/$_dirname"
+    cp -a * "$pkgdir/usr/share/webapps/drush/commands/$_dirname"
 }
