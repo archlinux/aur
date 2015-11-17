@@ -7,10 +7,10 @@ arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
 depends=('qt5-base' 'libraw')
-makedepends=('git' 'extra-cmake-modules-git')
+makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
 conflicts=('libkdcraw')
 provides=('libkdcraw')
-groups=('digikam-git')
+groups=('digikamsc-git')
 source=('libkdcraw::git+git://anongit.kde.org/libkdcraw')
 md5sums=('SKIP')
 
