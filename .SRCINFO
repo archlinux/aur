@@ -1,11 +1,12 @@
 pkgbase = digikam-git
 	pkgdesc = Digital photo management application for KDE
-	pkgver = r33193.04d0ae6
+	pkgver = r33482.24015cb
 	pkgrel = 1
 	url = http://www.digikam.org/
 	install = digikam-git.install
 	arch = i686
 	arch = x86_64
+	groups = digikamsc-git
 	license = GPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git

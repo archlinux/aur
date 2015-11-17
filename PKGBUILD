@@ -1,5 +1,5 @@
 pkgname=digikam-git
-pkgver=r33193.04d0ae6
+pkgver=r33482.24015cb
 pkgrel=1
 pkgdesc='Digital photo management application for KDE'
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ provides=('digikam')
 install=digikam-git.install
 source=('digikam::git+git://anongit.kde.org/digikam')
 md5sums=('SKIP')
+groups=('digikamsc-git')
 
 pkgver() {
   cd "${srcdir}/digikam"
