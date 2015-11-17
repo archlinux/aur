@@ -15,9 +15,9 @@ arch=('arm'
       'i686')
 url="http://www.zarafa.com/"
 license=('AGPL3')
-provides=("zarafa-server=${pkgver}")
-depends=("zarafa-libical>=${pkgver}"
-         "zarafa-libvmime>=${pkgver}"
+provides=("zarafa-server-arm=${pkgver}")
+depends=("zarafa-libical>=7.2.0"
+         "zarafa-libvmime>=7.2.0"
 	 'bison'
 	 'flex'
 	 'gettext'
