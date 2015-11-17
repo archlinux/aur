@@ -2,11 +2,12 @@
 
 pkgname=perl6-debugger-ui-commandline
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line debugger frontend for Rakudo"
 arch=('any')
 depends=('rakudo' 'perl6-terminal-ansicolor')
 makedepends=('git')
+groups=('perl6')
 url="https://github.com/jnthn/rakudo-debugger"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/jnthn/rakudo-debugger)
