@@ -27,13 +27,10 @@ build() {
   mkdir "$srcdir/build-$_pkgname"
   cd "$srcdir/build-$_pkgname"
 
-  cmake "$srcdir/$_pkgname"
+  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build .
-  strip screenshotgun
 }
 
 package() {
-  install -Dm755 "$srcdir/build-$_pkgname/screenshotgun" "$pkgdir/usr/bin/screenshotgun"
-  install -Dm644 "$srcdir/$_pkgname/dist/screenshotgun.desktop" "$pkgdir/usr/share/applications/screenshotgun.desktop"
-  install -Dm644 "$srcdir/$_pkgname/dist/screenshotgun.png" "$pkgdir/usr/share/pixmaps/screenshotgun.png"
+  make install/strip
 }
