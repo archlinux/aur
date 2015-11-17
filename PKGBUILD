@@ -1,15 +1,15 @@
 pkgname=libmediawiki-git
-pkgver=r103.17550db
+pkgver=r108.a5cd0ea
 pkgrel=1
 pkgdesc='A KDE C++ interface for MediaWiki based web service as wikipedia.org'
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
 depends=('qt5-base' 'kcoreaddons')
-makedepends=('git' 'extra-cmake-modules-git')
+makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
 conflicts=('libmediawiki')
 provides=('libmediawiki')
-groups=('digikam-git')
+groups=('digikamsc-git')
 source=('git://anongit.kde.org/libmediawiki')
 md5sums=('SKIP')
 
