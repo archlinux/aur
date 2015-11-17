@@ -2,18 +2,19 @@
 # PKGBUILD based on libkface-svn. Contributors:
 # Chris Heien <chris.h.heien@gmail.com>
 # Dany Martineau <dany.luc.martineau at gmail.com>
+
 pkgname=libkface-git
-pkgver=r762.7a21803
+pkgver=r779.bc1cebf
 pkgrel=1
 pkgdesc='A Qt/C++ wrapper around LibFace library to perform face recognition and detection over pictures'
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
 depends=('qt5-base' 'opencv')
-makedepends=('git' 'extra-cmake-modules-git')
+makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
 conflicts=('libkface')
 provides=('libkface')
-groups=('digikam-git')
+groups=('digikamsc-git')
 source=('libkface::git+git://anongit.kde.org/libkface')
 md5sums=('SKIP')
 
@@ -44,4 +45,3 @@ package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
 }
-
