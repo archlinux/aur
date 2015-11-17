@@ -2,8 +2,8 @@
 
 _pkgname=provision
 pkgname=aegir-${_pkgname/_/-}
-pkgver=7.x_3.0
-pkgrel=2
+pkgver=7.x_3.2
+pkgrel=1
 pkgdesc="mass Drupal hosting system - backend"
 arch=('any')
 url='http://aegirproject.org'
