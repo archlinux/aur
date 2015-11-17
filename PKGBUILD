@@ -54,5 +54,8 @@ package() {
 
     install -Dm644 <( ) "$pkgdir/usr/share/webapps/$_pkgname/sites/all/drush/drushrc.php"
     install -Dm644 <( ) "$pkgdir/usr/share/webapps/$_pkgname/sites/sites.php"
+
+    msg2 'Fixing file permissions...'
+    find "$pkgdir/usr/share/webapps/$_pkgname" -perm /u+w -exec chmod g+w {} +
     chown -R http:http "$pkgdir/usr/share/webapps/$_pkgname"
 }
