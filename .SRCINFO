@@ -1,0 +1,16 @@
+pkgbase = perl6-pod-to-html
+	pkgdesc = Convert Perl 6 Pod to HTML
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/perl6/Pod-To-HTML
+	arch = any
+	license = MIT
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	depends = perl6-uri
+	source = perl6-pod-to-html-0.0.1::git+https://github.com/perl6/Pod-To-HTML
+	sha256sums = SKIP
+
+pkgname = perl6-pod-to-html
+
