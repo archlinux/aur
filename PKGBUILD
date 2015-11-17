@@ -93,12 +93,10 @@ build() {
     --enable-unicode \
     --with-python=/usr/bin/python2 \
     --disable-debug \
-    --disable-testtools \
     --disable-static \
-    --disable-perl \
+    --sbindir=/usr/bin \
     --with-userscript-prefix=/etc/zarafa/userscripts \
     --with-quotatemplate-prefix=/etc/zarafa/quotamails \
-    --with-sysconfdir=/etc
 
   # make/g++ doesnt pick up -luuid properly without this... even though configure
   # finds it, and -luuid is present in the actual command that fails...
