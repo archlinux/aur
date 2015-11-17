@@ -1,0 +1,21 @@
+pkgbase = proxychains-ng-multilib
+	pkgdesc = A hook preloader that allows to redirect TCP traffic of existing dynamically linked programs through one or more SOCKS or HTTP proxies. Multilib version.
+	pkgver = 4.10
+	pkgrel = 1
+	url = https://github.com/rofl0r/proxychains
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = glibc
+	depends = lib32-glibc
+	provides = proxychains-ng
+	conflicts = proxychains-ng
+	replaces = proxychains
+	backup = etc/proxychains.conf
+	source = http://downloads.sourceforge.net/project/proxychains-ng-multilib/proxychains-4.10.tar.bz2
+	source = multilib.patch
+	md5sums = 19442655ea290b18dcccf30fc4ae3e74
+	md5sums = SKIP
+
+pkgname = proxychains-ng-multilib
+
