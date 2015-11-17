@@ -2,12 +2,13 @@
 
 pkgname=perl6-pod-to-html
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert Perl 6 Pod to HTML"
 arch=('any')
 depends=('rakudo' 'perl6-uri')
 checkdepends=('perl')
 makedepends=('git')
+groups=('perl6')
 url="https://github.com/perl6/Pod-To-HTML"
 license=('MIT')
 source=($pkgname-$pkgver::git+https://github.com/perl6/Pod-To-HTML)
