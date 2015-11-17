@@ -1,6 +1,6 @@
 pkgbase = datovka
-	pkgdesc = GUI application allowing access to a Databox - an electronic communication interface endorsed by the Czech government
-	pkgver = 4.4.0
+	pkgdesc = GUI application for a Databox - an electronic communication interface endorsed by the Czech government
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://labs.nic.cz/cs/datovka.html
 	install = datovka.install
@@ -12,8 +12,8 @@ pkgbase = datovka
 	depends = libisds
 	depends = openssl
 	depends = hicolor-icon-theme
-	source = https://secure.nic.cz/files/datove_schranky/4.4.0/datovka-4.4.0-src.tar.xz
-	sha256sums = 4551ba7fd9ca5490f1772209ee3903f2f9c328f44dcc35ec070cc16b4a31561f
+	source = https://secure.nic.cz/files/datove_schranky/4.4.1/datovka-4.4.1-src.tar.xz
+	sha256sums = 83a21b3e5798eff0f6630b5e8c226ca24f6b5f8ec770eabc6194f0d42293169c
 
 pkgname = datovka
 
