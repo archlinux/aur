@@ -24,9 +24,6 @@ prepare() {
 
   # Python 3 fix
   sed -i '0,/env python/s//python3/' waf
-
-  # Fix spaces to tabs.
-  find -iname '*.py' -exec sed -i 's/ \{8\}/\t/g' '{}' +
 }
 
 build() {
