@@ -20,7 +20,7 @@ md5sums=('19442655ea290b18dcccf30fc4ae3e74' 'SKIP')
 
 prepare() {
   cd $srcdir/proxychains-$pkgver
-  patch -p1 -i $srcdir/multilib.patch
+  #patch -p1 -i $srcdir/multilib.patch
   cp -r $srcdir/proxychains-$pkgver $srcdir/build-32
   cp -r $srcdir/proxychains-$pkgver $srcdir/build-64
 }
