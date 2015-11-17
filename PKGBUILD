@@ -13,7 +13,7 @@ install=bdf-boxxy.install
 source=('boxxy.bdf::https://raw.githubusercontent.com/Tecate/bitmap-fonts/master/bitmap/boxxy/boxxy.bdf' 'boxxy-bold.bdf::https://raw.githubusercontent.com/Tecate/bitmap-fonts/master/bitmap/boxxy/boxxy-bold.bdf')
 md5sums=('979994a1b1c68496c7a5604ed25e19fd' '56e7b9698834f051b6ab2343ee16868d')
 
-build() {
+package() {
   install -Dm644 ${srcdir}/boxxy.bdf \
 	${pkgdir}/usr/share/fonts/misc/boxxy.bdf
   install -Dm644 ${srcdir}/boxxy-bold.bdf \
