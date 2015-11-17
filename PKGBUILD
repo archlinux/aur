@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-lapack
-pkgname=('mingw-w64-lapack' 'mingw-w64-blas')
+pkgname=('mingw-w64-lapack' 'mingw-w64-blas' 'mingw-w64-cblas')
 pkgver=3.6.0
 pkgrel=1
 arch=('any')
@@ -15,6 +15,11 @@ sha1sums=('7e993de16d80d52b22b6093465eeb90c93c7a2e7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd "$srcdir/lapack-${pkgver}"
+  sed -e 's|/CMAKE/|/cmake/|' -i CBLAS/CMakeLists.txt
+}
+
 build()
 {
   cd "$srcdir/lapack-${pkgver}"
@@ -25,6 +30,7 @@ build()
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_SHARED_LIBS=OFF \
       -DLAPACKE=ON \
+      -DCBLAS=ON \
       -DBUILD_TESTING=OFF \
       ..
     make
@@ -33,6 +39,7 @@ build()
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DLAPACKE=ON \
+      -DCBLAS=ON \
       -DBUILD_TESTING=OFF \
       ..
     make
@@ -48,8 +55,10 @@ package_mingw-w64-lapack()
     make install DESTDIR="$pkgdir"
     cd "$srcdir/lapack-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-    rm "$pkgdir"/usr/${_arch}/*/libblas*
-    rm "$pkgdir"/usr/${_arch}/lib/pkgconfig/blas.pc
+    rm "$pkgdir"/usr/${_arch}/*/lib*blas*
+    rm "$pkgdir"/usr/${_arch}/lib/pkgconfig/*blas.pc
+    rm "$pkgdir"/usr/${_arch}/include/cblas*
+    rm -r "$pkgdir"/usr/${_arch}/lib/cmake/cblas*
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
@@ -68,3 +77,15 @@ package_mingw-w64-blas()
   done
 }
 
+package_mingw-w64-cblas()
+{
+  pkgdesc="C interface to BLAS (mingw-w64)"
+  for _arch in ${_architectures}; do
+    cd "$srcdir/lapack-${pkgver}/build-${_arch}-static/CBLAS"
+    make install DESTDIR="$pkgdir"
+    cd "$srcdir/lapack-${pkgver}/build-${_arch}/CBLAS"
+    make install DESTDIR="$pkgdir"
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+  done
+}
