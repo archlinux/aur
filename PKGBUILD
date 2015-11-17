@@ -58,7 +58,7 @@ package() {
 
   # Set up directory structure
   install --directory "$pkgdir/etc/bash_completion.d"
-  install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/$_pkgname"{,/cache{,/{default,download,usage}}}
+  install --owner=http --group=http --mode=6775  --directory "$pkgdir/etc/drush"
   install --owner=http --group=http --mode=644 "$_pkgname.ini" "$pkgdir/etc/$_pkgname/$_pkgname.ini"
   install --directory "$pkgdir/usr/bin"
   install --directory "$pkgdir/usr/share/webapps/$_pkgname"
