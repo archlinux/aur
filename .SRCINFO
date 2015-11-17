@@ -1,0 +1,18 @@
+pkgbase = perl6-json-marshall
+	pkgdesc = Simple serialisation of objects to JSON
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/jonathanstowe/JSON-Marshall
+	arch = any
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	depends = perl6-json-name
+	depends = perl6-json-tiny
+	source = perl6-json-marshall-0.0.3::git+https://github.com/jonathanstowe/JSON-Marshal
+	sha256sums = SKIP
+
+pkgname = perl6-json-marshall
+
