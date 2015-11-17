@@ -15,6 +15,7 @@ src
 #
 # Additional ignore patterns:
 #
+*.war
 
 # Source files
 *.deb
@@ -22,7 +23,6 @@ src
 *.out
 *.rpm
 *.html
-*.war
 
 # Ignore package source folders
 */*
