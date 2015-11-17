@@ -1,4 +1,5 @@
 pkgbase = python-humanize
+	pkgdesc = Humanize is a modest package contains various common humanization utilities
 	pkgver = 0.5.1
 	pkgrel = 2
 	url = https://github.com/jmoiron/humanize
