@@ -9,7 +9,7 @@ url="http://screenshotgun.com"
 license=('GPL')
 groups=()
 depends=('qt5-base')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake>=3.3')
 optdepends=()
 provides=()
 conflicts=()
