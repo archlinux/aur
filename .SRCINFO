@@ -1,6 +1,6 @@
 pkgbase = libcork
 	pkgdesc = A simple, easily embeddable cross-platform C library
-	pkgver = 0.14.3
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/redjack/libcork
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libcork
 	makedepends = cmake
 	makedepends = check
 	depends = pkg-config
-	source = libcork-0.14.3.tar.gz::https://github.com/redjack/libcork/archive/0.14.3.tar.gz
-	sha256sums = 0cad91de2613a88b1f520d7a457aaf841857570efe5ff2d2330c2df9c1942f01
+	source = git+https://github.com/redjack/libcork.git#tag=0.15.0
+	sha256sums = SKIP
 
 pkgname = libcork
 
