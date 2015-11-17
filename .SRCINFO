@@ -1,0 +1,15 @@
+pkgbase = perl6-config-toml
+	pkgdesc = TOML parser for Perl 6
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/atweiden/config-toml
+	arch = any
+	license = UNLICENSE
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	source = perl6-config-toml-0.0.1::git+https://github.com/atweiden/config-toml
+	sha256sums = SKIP
+
+pkgname = perl6-config-toml
+
