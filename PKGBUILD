@@ -1,7 +1,7 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=libosmo-abis
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Osmocom library for A-bis interface"
 arch=('any')
