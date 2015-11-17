@@ -6,10 +6,10 @@ arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
 depends=('qt5-base' 'exiv2')
-makedepends=('git' 'extra-cmake-modules-git')
+makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
 conflicts=('libkexiv2')
 provides=('libkexiv2')
-groups=('digikam-git')
+groups=('digikamsc-git')
 source=('libkexiv2::git+git://anongit.kde.org/libkexiv2')
 md5sums=('SKIP')
 
