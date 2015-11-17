@@ -1,4 +1,4 @@
-# See AUR interface for current maintainer.
+# Maintainer: See AUR interface for current maintainer.
 
 #
 # TIP: Don't run this on a tmpfs unless you have oodles of RAM.
@@ -7,9 +7,9 @@
 #
 
 pkgname=emacs-git
-pkgver=25.0.50.r122501
+pkgver=25.1.50.r123387
 pkgrel=1
-pkgdesc="GNU Emacs. Official git trunk."
+pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
@@ -42,18 +42,19 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  ac_cv_lib_gif_EGifPutExtensionLast=yes \
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --mandir=/usr/share/man \
-    --pdfdir=/usr/share/doc/emacs/pdf \
-    --with-sound=alsa \
-    --without-gconf \
-    --with-x-toolkit=gtk3 \
-    --with-xft
+  local _conf=(
+    --prefix=/usr 
+    --sysconfdir=/etc 
+    --libexecdir=/usr/lib 
+    --localstatedir=/var 
+    --mandir=/usr/share/man 
+    --pdfdir=/usr/share/doc/emacs/pdf 
+    --with-sound=alsa 
+    --without-gconf 
+    --with-x-toolkit=gtk3 
+    --with-xft)
+
+  ./configure ${_conf}
 
   # Using "make" instead of "make bootstrap" makes incremental
   # compiling work. Less time recompiling. Yay! But if you may 
