@@ -4,7 +4,7 @@
 
 pkgname=rkt
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
@@ -27,9 +27,8 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
-    --with-stage1=coreos \
     --with-stage1-flavors=coreos \
-    --with-stage1-image-path=/usr/share/rkt/stage1.aci
+    --with-stage1-default-location=/usr/lib/rkt/stage1.aci
   make -s
 }
 
@@ -44,8 +43,7 @@ package() {
 
   cd "build-${pkgname}-${pkgver}"
   install -Dm755 bin/rkt "$pkgdir/usr/bin/rkt"
-  install -Dm755 bin/actool "$pkgdir/usr/bin/actool"
-  install -Dm644 bin/stage1-coreos.aci "$pkgdir/usr/share/rkt/stage1.aci"
+  install -Dm644 bin/stage1-coreos.aci "$pkgdir/usr/lib/rkt/stage1.aci"
 }
 
 # vim:set ts=2 sw=2 et:
