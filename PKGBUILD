@@ -4,7 +4,8 @@
 
 pkgname=feedreader
 pkgver=1.4
-pkgrel=2
+_ver=1
+pkgrel=1
 pkgdesc='A simple feedreader client for web services like Tiny Tiny RSS and in the future others.'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/feedreader'
@@ -14,8 +15,8 @@ makedepends=('vala' 'gobject-introspection' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
-source=('https://launchpad.net/feedreader/'${pkgver}'/'${pkgver}'-final/+download/FeedReader-'${pkgver}'.tar.gz')
-sha256sums=('707efe7a309704bc3cd361533e3699a81f591619a5295f5fc4902fe556aede4f')
+source=('https://launchpad.net/feedreader/'${pkgver}'/'${pkgver}'.'${_ver}'/+download/FeedReader-'${pkgver}'.'${_ver}'.tar.gz')
+sha256sums=('1a0fcaf3d6bbd6bc75e3ef85e2d00e63ad85b150c566212de3b8f58decd0cfeb')
 
 pkgver() {
   cd "${srcdir}"
