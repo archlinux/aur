@@ -1,0 +1,17 @@
+pkgbase = vim-vimproc-git
+	pkgdesc = interactive command execution in vim
+	pkgver = ver.9.2.r5.ee10f74
+	pkgrel = 1
+	url = https://github.com/Shougo/vimproc
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	depends = vim
+	provides = vim-vimproc
+	conflicts = vim-vimproc
+	source = git://github.com/Shougo/vimproc.git
+	md5sums = SKIP
+
+pkgname = vim-vimproc-git
+
