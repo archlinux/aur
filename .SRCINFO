@@ -1,0 +1,20 @@
+pkgbase = bdf-boxxy
+	pkgdesc = Terminal friendly bdf font by caffeinebasedlifeform
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Tecate/bitmap-fonts/tree/master/bitmap/boxxy
+	install = bdf-boxxy.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	license = GPL2
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = boxxy.bdf::https://raw.githubusercontent.com/Tecate/bitmap-fonts/master/bitmap/boxxy/boxxy.bdf
+	source = boxxy-bold.bdf::https://raw.githubusercontent.com/Tecate/bitmap-fonts/master/bitmap/boxxy/boxxy-bold.bdf
+	md5sums = 979994a1b1c68496c7a5604ed25e19fd
+	md5sums = 56e7b9698834f051b6ab2343ee16868d
+
+pkgname = bdf-boxxy
+
