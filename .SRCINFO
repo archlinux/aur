@@ -1,0 +1,16 @@
+pkgbase = ttf-i.bming
+	pkgdesc = An old-style CJK serif font.
+	pkgver = 3.5
+	pkgrel = 1
+	url = http://founder.acgvlyric.org/iu/doku.php/造字:開源字型_i.明體
+	install = INSTALL
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	options = !strip
+	source = http://input.foruto.com/ccc/1.font/font/I.BMing3.5.zip
+	sha512sums = 7a3aa034d67074bb2a9b8da7cbcef39f7de53cb71de4ef6a37499b67f498f669e750d4a1a616a903754bce9e95df2aa325e673dc26af7632524fd088b0c1858b
+
+pkgname = ttf-i.bming
+
