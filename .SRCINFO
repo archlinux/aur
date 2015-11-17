@@ -1,0 +1,15 @@
+pkgbase = perl6-uri
+	pkgdesc = A URI implementation using Perl 6 grammars to implement RFC 3986 BNF
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/perl6-community-modules/uri
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	source = perl6-uri-0.1.1::git+https://github.com/perl6-community-modules/uri
+	sha256sums = SKIP
+
+pkgname = perl6-uri
+
