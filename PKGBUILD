@@ -3,8 +3,7 @@
 # Contributer: Jörg Thalheim <joerg@higgsboson.tk>
 
 pkgname=z-push
-pkgver=2.2.1
-_pkgrev=1939
+pkgver=2.2.5
 pkgrel=4
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
@@ -20,7 +19,7 @@ backup=('etc/webapps/z-push/nginx-location.conf'
 	'etc/php/conf.d/z-push.ini'
 	'etc/php/fpm.d/z-push.conf')
 options=('!strip')
-source=("${pkgname}-${pkgver}-${_pkgrev}.tar.gz::http://download.z-push.org/final/2.2/${pkgname}-${pkgver}-${_pkgrev}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::http://download.z-push.org/final/2.2/${pkgname}-${pkgver}.tar.gz"
         "apache.example.conf"
         "htaccess"
 	"z-push.ini"
@@ -29,7 +28,7 @@ source=("${pkgname}-${pkgver}-${_pkgrev}.tar.gz::http://download.z-push.org/fina
 	"nginx-ssl.example.conf"
 	"php-fpm.example.conf")
 
-md5sums=('6c0e968c1ca07ec65824193d01c016b9'
+md5sums=('4a89b1a827ab7019d41e42179fc83094'
          '32a459bd61135b6c5e99e82e3a6b0007'
          '1091aa1ba272ef05bf628f73b05c527a'
          '6e87a175d15fce77264ae87ed016b223'
@@ -41,7 +40,7 @@ md5sums=('6c0e968c1ca07ec65824193d01c016b9'
 package() {
     # according to https://wiki.archlinux.org/index.php/Web_application_package_guidelines
     mkdir -p ${pkgdir}/usr/share/webapps/z-push
-    cp -r ${srcdir}/${pkgname}-${pkgver}-${_pkgrev}/* ${pkgdir}/usr/share/webapps/z-push/
+    cp -r ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/usr/share/webapps/z-push/
     cp ${srcdir}/htaccess ${pkgdir}/usr/share/webapps/z-push/.htaccess
     rm ${pkgdir}/usr/share/webapps/z-push/config.php
 
@@ -50,7 +49,7 @@ package() {
     cp ${srcdir}/php-fpm.example.conf ${pkgdir}/etc/webapps/z-push/
     cp ${srcdir}/nginx-ssl.example.conf ${pkgdir}/etc/webapps/z-push/
     cp ${srcdir}/nginx-location.conf ${pkgdir}/etc/webapps/z-push/
-    cp ${srcdir}/${pkgname}-${pkgver}-${_pkgrev}/config.php ${pkgdir}/etc/webapps/z-push/config.example.php
+    cp ${srcdir}/${pkgname}-${pkgver}/config.php ${pkgdir}/etc/webapps/z-push/config.example.php
     ln -s /etc/webapps/z-push/config.php ${pkgdir}/usr/share/webapps/z-push/config.php
 
     mkdir -p ${pkgdir}/etc/php/conf.d
