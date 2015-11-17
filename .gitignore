@@ -8,10 +8,6 @@
 *.log.*
 *.sig
 
-# AUR metadata
-.AURINFO
-.SRCINFO
-
 # makepkg working folders
 pkg
 src
