@@ -1,6 +1,6 @@
 pkgbase = rkt-git
 	pkgdesc = App container runtime
-	pkgver = 0.10.0.r56.g21fd43a
+	pkgver = 0.11.0.r12.gfad1cb1
 	pkgrel = 1
 	url = https://github.com/coreos/rkt
 	install = rkt.install
