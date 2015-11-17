@@ -2,12 +2,13 @@
 
 pkgname=perl6-config-toml
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TOML parser for Perl 6"
 arch=('any')
 depends=('rakudo')
 checkdepends=('perl')
 makedepends=('git')
+groups=('perl6')
 url="https://github.com/atweiden/config-toml"
 license=('UNLICENSE')
 source=($pkgname-$pkgver::git+https://github.com/atweiden/config-toml)
