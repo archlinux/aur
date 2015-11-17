@@ -2,12 +2,13 @@
 
 pkgname=perl6-grammar-debugger
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line debugger frontend for Rakudo"
 arch=('any')
 depends=('rakudo' 'perl6-terminal-ansicolor')
 checkdepends=('perl')
 makedepends=('git')
+groups=('perl6')
 url="https://github.com/jnthn/grammar-debugger"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/jnthn/grammar-debugger)
