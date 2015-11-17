@@ -11,7 +11,7 @@ pkgbase = pmenu
 	source = https://raw.githubusercontent.com/sgtpep/pmenu/v0.3.0/pmenu
 	source = https://raw.githubusercontent.com/sgtpep/pmenu/v0.3.0/pmenu-run
 	md5sums = 89cf08aeb39601d1fa8121a341a518cb
-	md5sums = f359b480070d59b0faea2c34492192af
+	md5sums = 2ee3252e45eec43a0131dfaba8e0a6bf
 
 pkgname = pmenu
 
