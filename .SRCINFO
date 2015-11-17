@@ -1,0 +1,22 @@
+pkgbase = pimpmylog-git
+	pkgdesc = Log viewer for your web server (formerly the PHP Apache Log Viewer)
+	pkgver = 1.7.9.r0.g22f448c
+	pkgrel = 1
+	url = http://pimpmylog.com
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = php>=5.2
+	optdepends = apache: compatible web server
+	optdepends = nginx: compatible web server
+	optdepends = lighttpd: compatible web server
+	optdepends = darkhttpd: compatible web server
+	provides = pimpmylog=1.7.9.r0.g22f448c
+	conflicts = pimpmylog
+	source = pimpmylog::git+https://github.com/potsky/PimpMyLog.git
+	source = nginx.conf
+	md5sums = SKIP
+	md5sums = 78ee0cca1e8da50b0064648ed125bbd8
+
+pkgname = pimpmylog-git
+
