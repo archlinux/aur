@@ -6,10 +6,10 @@ arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
 depends=('qt5-base' 'sane' 'ktextwidgets' 'kwallet')
-makedepends=('git' 'extra-cmake-modules-git')
+makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
 conflicts=('libksane')
 provides=('libksane')
-groups=('digikam-git')
+groups=('digikamsc-git')
 source=('libksane::git+git://anongit.kde.org/libksane')
 md5sums=('SKIP')
 
