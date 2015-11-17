@@ -5,7 +5,7 @@
 
 pkgbase='firefox-theme-adwaita-git'
 pkgname=('firefox-theme-gnome-git' 'firefox-extension-gnome-theme-tweak-git')
-pkgver=40.1
+pkgver=42.1
 pkgrel=1
 pkgdesc="Adwaita theme for Firefox (Matches the default Gnome Shell theme)"
 url="https://github.com/gnome-integration-team/firefox-gnome"
