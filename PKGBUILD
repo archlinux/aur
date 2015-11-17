@@ -1,7 +1,7 @@
 # Maintainer: bitwave
 
 pkgname=textadept
-pkgver=8.3
+pkgver=8.4
 pkgrel=1
 pkgdesc="A fast, minimalist and remarkably extensible text editor"
 url="http://foicica.com/textadept"
@@ -17,8 +17,8 @@ _arch=x86_64
 source=(http://foicica.com/textadept/download/${pkgname}_${pkgver}.${_arch}.tgz
         http://foicica.com/textadept/download/${pkgname}_${pkgver}.modules.zip
         textadept.install)
-sha256sums=('a9fe9690103b5564ed9b590b8154a0ec86bc15cd4a8a4e7729859a507dcd724e'
-            '4c2a6742401fb25e740f428f809e2c939c3c57d50fd40a4a4e476ea57128e91e'
+sha256sums=('ccd827759048e49ce27e2e25f85311afa37aded5bb5f958df9114a588a8ffbc7'
+            '4dc8d07e86bd444322e0f62518abdfc4b6069f3f2afcbbc57477fef7305669bf'
             'b2971d4c6743033b16b172c2b208942a4a6082c7bcfb593ae25bff3fbad45b4b')
 [ "$CARCH" = "i686" ] &&
 sha256sums[0]='1ec95f00a118462b6b5256cf77c2afe4ee66e70390ec5d503f79a0cd2c339df3'
