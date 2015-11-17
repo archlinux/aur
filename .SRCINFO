@@ -1,0 +1,14 @@
+pkgbase = lightdm-webkit-theme-material-git
+	pkgdesc = A material design LightDM theme
+	pkgver = 20151117
+	pkgrel = 1
+	url = https://github.com/artur9010/lightdm-webkit-material
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = lightdm-webkit2-greeter
+	source = git+https://github.com/artur9010/lightdm-webkit-material.git
+	md5sums = SKIP
+
+pkgname = lightdm-webkit-theme-material-git
+
