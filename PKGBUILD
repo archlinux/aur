@@ -5,7 +5,7 @@ pkgname=('zarafa-server')
 replaces=('zarafa-server-arm')
 pkgver=7.2.1
 _pkgmajver=7.2
-_pkgrev=${pkgver}-51838
+_pkgrev=${pkgver}-51847
 pkgrel=1
 pkgdesc="Open Source Groupware Solution"
 arch=('arm'
@@ -55,7 +55,7 @@ optdepends=('zarafa-webaccess'
 	    'sabre-zarafa'
 	    'z-push')
 install=("install")
-source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/zarafa-${pkgver}.tar.gz"
+source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}-51838/sourcecode/zarafa-${_pkgrev}.tar.gz"
 	"arm.diff"
 	"zarafa-server.service"
 	"zarafa-ical.service"
@@ -63,7 +63,7 @@ source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_
 	"zarafa-spooler.service"
 	"zarafa-gateway.service")
 
-md5sums=('9858733e801d68e0a89b7a5532efe75c'
+md5sums=('d281fd9f85562efc81802620673d682b'
          '5de9759477995d9940c056e56ed9d3f1'
          '0e2728f1e35b25ca679427fcb57315d8'
          'c25f3982217fe390d68ed9003a5988ed'
