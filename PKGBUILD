@@ -1,6 +1,6 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 _name=humanize
-pkgname='python-humanize'
+pkgname="python-${_name}"
 pkgver=0.5.1
 pkgrel=2
 pkgdesc='Humanize is a modest package contains various common humanization utilities'
