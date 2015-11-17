@@ -59,14 +59,10 @@ package_mingw-w64-blas()
 {
   pkgdesc="Basic Linear Algebra Subprograms (mingw-w64)"
   for _arch in ${_architectures}; do
-    install -d "$pkgdir"/usr/${_arch}/bin
-    install -d "$pkgdir"/usr/${_arch}/lib/pkgconfig
-    cd "$srcdir/lapack-${pkgver}/build-${_arch}-static"
-    install -m644 lib/libblas.a "$pkgdir"/usr/${_arch}/lib
-    cd "$srcdir/lapack-${pkgver}/build-${_arch}"
-    install -m644 lib/libblas.dll.a "$pkgdir"/usr/${_arch}/lib
-    install -m755 bin/libblas.dll "$pkgdir"/usr/${_arch}/bin
-    install -m644 BLAS/blas.pc "$pkgdir"/usr/${_arch}/lib/pkgconfig
+    cd "$srcdir/lapack-${pkgver}/build-${_arch}-static/BLAS"
+    make install DESTDIR="$pkgdir"
+    cd "$srcdir/lapack-${pkgver}/build-${_arch}/BLAS"
+    make install DESTDIR="$pkgdir"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
