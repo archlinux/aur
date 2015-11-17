@@ -1,0 +1,20 @@
+pkgbase = mate-tweak
+	pkgdesc = Tweak tool for MATE, a fork of mintDesktop
+	pkgver = 3.5.2a
+	pkgrel = 1
+	url = https://bitbucket.org/ubuntu-mate/mate-tweak
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-distutils-extra
+	makedepends = python-setuptools
+	depends = gtk3
+	depends = libnotify
+	depends = mate-panel
+	depends = python-configobj
+	depends = python-gobject
+	source = mate-tweak-3.5.2a::git+https://bitbucket.org/ubuntu-mate/mate-tweak.git#tag=3.5.2a
+	md5sums = SKIP
+
+pkgname = mate-tweak
+
