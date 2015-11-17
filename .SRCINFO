@@ -1,0 +1,15 @@
+pkgbase = deadbeef-optimfrog-git
+	pkgdesc = OptimFROG input plugin for DeaDBeeF
+	pkgver = 20151108.g07c8965
+	pkgrel = 1
+	url = https://github.com/cspiegel/deadbeef-optimfrog
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = deadbeef
+	depends = optimfrog
+	source = git+https://github.com/cspiegel/deadbeef-optimfrog.git
+	md5sums = SKIP
+
+pkgname = deadbeef-optimfrog-git
+
