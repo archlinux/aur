@@ -1,6 +1,6 @@
 pkgbase = netsniff-ng-git
 	pkgdesc = A high performance Linux network sniffer for packet inspection (git version, without curvetun tool).
-	pkgver = v0.5.9.7.gb02dc7e
+	pkgver = v0.6.0.33.gf9b2327
 	pkgrel = 1
 	url = http://netsniff-ng.org/
 	arch = i686
