@@ -9,11 +9,11 @@ arranging photos on a map'
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
-depends=('qt5-base' 'marble-git')
-makedepends=('git' 'extra-cmake-modules-git')
+depends=('qt5-base' 'marble')
+makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
 conflicts=('libkgeomap')
 provides=('libkgeomap')
-groups=('digikam-git')
+groups=('digikamsc-git')
 source=('libkgeomap::git+git://anongit.kde.org/libkgeomap')
 md5sums=('SKIP')
 
