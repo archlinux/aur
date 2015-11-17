@@ -1,7 +1,7 @@
 # Maintainer: banbanchs <memory.silentvoyage@gmail.com>
 
 pkgname=libcork
-pkgver=0.14.3
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A simple, easily embeddable cross-platform C library"
 arch=('i686' 'x86_64')
@@ -18,12 +18,12 @@ backup=()
 options=()
 install=
 changelog=
-source=($pkgname-$pkgver.tar.gz::"https://github.com/redjack/$pkgname/archive/$pkgver.tar.gz")
+source=(git+https://github.com/redjack/libcork.git#tag=$pkgver)
 noextract=()
-sha256sums=('0cad91de2613a88b1f520d7a457aaf841857570efe5ff2d2330c2df9c1942f01')
+sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     mkdir build
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr
@@ -31,9 +31,9 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$srcdir/$pkgname/build"
     make DESTDIR="$pkgdir/" install
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     mkdir -p $pkgdir/usr/share/licenses/$pkgname
-    cp $srcdir/$pkgname-$pkgver/COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    cp $srcdir/$pkgname/COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
