@@ -1,13 +1,13 @@
 pkgbase = stardict-en-cz
 	pkgdesc = GNU/FDL English-Czech dictionary for StarDict
-	pkgver = 20150201
+	pkgver = 20151101
 	pkgrel = 1
 	url = http://slovnik.zcu.cz/
 	arch = any
 	license = FDL
 	depends = stardict
-	source = http://dl.cihar.com/slovnik/stable/stardict-english-czech-20150201.tar.gz
-	md5sums = 43e57bf52b44d852edf94f62a7aaa094
+	source = http://dl.cihar.com/slovnik/stable/stardict-english-czech-20151101.tar.gz
+	md5sums = 6e32a6b37a50bb68408dc597eff9cd7d
 
 pkgname = stardict-en-cz
 
