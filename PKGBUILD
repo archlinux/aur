@@ -1,8 +1,8 @@
 # Maintainer: vorpalblade77@gmail.com
 pkgname=python-steamcontroller-git
 _pkgname=steamcontroller
-pkgver=6ab9f2a
-pkgrel=2
+pkgver=f70b7ea
+pkgrel=1
 pkgdesc="Standalone userland driver for the Steam controller"
 arch=('i686' 'x86_64')
 url="https://github.com/ynsta/${_pkgname}"
@@ -11,9 +11,7 @@ makedepends=('python-distutils-extra')
 depends=('python-libusb1')
 optdepends=('steamcontroller-udev: Required to have the controller recognized'
 	'python-pyside: Required for sc-gyro-plot.py'
-	'python-pyqtgraph: Required for sc-gyro-plot.py'
-	'kodi: Can use xbox controller'
-	'evtest: Can test xbox controller settings')
+	'python-pyqtgraph: Required for sc-gyro-plot.py')
 provides=('steamcontroller')
 conflicts=("${_pkgname}" 'steamcontroller-udev')
 changelog=('changelog.txt')

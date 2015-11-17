@@ -1,3 +1,8 @@
+Git commit  f70b7ea
+	* NEW: sc-desktop.py gives desktop keyboard/mouse
+	* Removed: optional dependencies (kodi, evtest) as it is no longer
+	needed.
+
 Initial code v2
 	* Added programs that can be used for testing (Kodi, evtest)
 

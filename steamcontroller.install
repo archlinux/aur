@@ -5,6 +5,12 @@ post_install() {
 ==> Please add all users that will be running Steam to the "${__GROUP}" group
 EOF
   udevadm control --reload
+  /bin/cat <<EOF
+==> You can use the controller in xbox360 mode or desktop mode
+    $ sc-xbox.py start
+==> or
+    $ sc-desktop.py start
+EOF
 }
 
 post_upgrade() {
