@@ -1,8 +1,8 @@
 # Maintainer: pzl <alsoelp@gmail.com>
 
 pkgname=jlink
-_pkgver="502j"
-pkgver="5.02j"
+_pkgver="502k"
+pkgver="5.02k"
 pkgrel=1
 pkgdesc="ARM Embedded debugger and flashing software from Segger"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('custom') #https://www.segger.com/cms/admin/uploads/userfiles/file/J-Li
 depends=('glibc')
 source=('udev_fix.patch') #fetching the pkg source requires a POST request, so we must do this in prepare()
 md5sums=('8134047402c9ac6dc7c3bc24dfcf51b5')
-_md5sums_64=("b80ce35e7d7aa7b537ab4c93bb7b6fc1") #underscored because real md5sums must match source array length, ours is missing package URL
-_md5sums_32=("59e5651da9767bb8d7ee52ef399475a8")
+_md5sums_64=("5bffdcfb62d4d29ea7aa80b6687a0d53") #underscored because real md5sums must match source array length, ours is missing package URL
+_md5sums_32=("c1bbab7db30defc83b1344363178969b")
 
 
 prepare() {
