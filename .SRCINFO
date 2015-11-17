@@ -1,0 +1,20 @@
+pkgbase = lxde-common-gtk3
+	pkgdesc = Common files of the LXDE Desktop (GTK+ 3 version)
+	pkgver = 0.99.0
+	pkgrel = 1
+	url = http://lxde.org/
+	arch = any
+	groups = lxde-gtk3
+	license = GPL2
+	makedepends = intltool
+	depends = lxsession-gtk3
+	conflicts = lxde-common
+	backup = etc/xdg/lxsession/LXDE/desktop.conf
+	backup = etc/xdg/lxsession/LXDE/autostart
+	source = http://downloads.sourceforge.net/lxde/lxde-common-0.99.0.tar.xz
+	source = dbus-update-environment.patch
+	md5sums = 5a417f5a0e5b510a0c018b66b0dc4081
+	md5sums = 9f5cdfb8aef6286b6de79a50d1fddd7f
+
+pkgname = lxde-common-gtk3
+
