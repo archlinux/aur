@@ -1,11 +1,12 @@
 pkgbase = qpdfview
 	pkgdesc = A tabbed PDF viewer using the poppler library.
 	pkgver = 0.4.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/qpdfview
 	install = qpdfview.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL2
 	makedepends = qt5-tools
 	depends = libcups

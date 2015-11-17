@@ -2,9 +2,9 @@
 
 pkgname=qpdfview
 pkgver=0.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc='A tabbed PDF viewer using the poppler library.'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url='https://launchpad.net/qpdfview'
 license=('GPL2')
 depends=('libcups' 'poppler-qt5' 'qt5-svg' 'desktop-file-utils' 'hicolor-icon-theme')
