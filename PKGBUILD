@@ -32,5 +32,6 @@ build() {
 }
 
 package() {
+  cd "$srcdir/build-$_pkgname"
   make install/strip
 }
