@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.35.9.19.g84368ea
+pkgver=1.35.9.27.g8eb5016
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ prepare() {
       -i tools/settings_template_readonly.py
   
   # python2 shebang fixes
-  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc
+  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc em++
   cd $srcdir/emscripten-fastcomp
   
   # put clang source into the right place (http://git.io/i1GBkg)
