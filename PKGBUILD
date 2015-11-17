@@ -1,7 +1,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 _hkgname=idris
 pkgname=idris
-pkgver=0.9.20
+pkgver=0.9.20.1
 pkgrel=1
 pkgdesc="Functional Programming Language with Dependent Types"
 url="http://www.idris-lang.org/"
@@ -12,13 +12,13 @@ depends=('gmp' 'libffi' 'zlib' 'gcc')
 provides=('idris')
 conflicts=('idris-git')
 source=(http://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('cbb1205173893ad8987057b286a3418d')
+md5sums=('a3ea7fda6aedafc70de96bcbfba8eabe')
 install=${pkgname}.install
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
     # I've heard this can cause a problem in the past. If necessary, do a
     # cabal update manually and comment it out here.
-    cabal update
+    #cabal update
 
     cabal sandbox init
     cabal install --only-dependencies
