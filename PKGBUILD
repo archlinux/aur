@@ -6,7 +6,7 @@ replaces=('zarafa-server-arm')
 pkgver=7.2.1
 _pkgmajver=7.2
 _pkgrev=${pkgver}-51847
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Groupware Solution"
 arch=('arm'
       'armv7h'
@@ -53,7 +53,8 @@ makedepends=('gcc<=4.9.2'
 optdepends=('zarafa-webaccess'
 	    'zarafa-webapp'
 	    'sabre-zarafa'
-	    'z-push')
+	    'z-push'
+	    'bash-completion')
 install=("install")
 source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}-51838/sourcecode/zarafa-${_pkgrev}.tar.gz"
 	"arm.diff"
@@ -86,17 +87,20 @@ build() {
   cd ${srcdir}/zarafa-${pkgver}
 
   msg "Starting build..."
-  CPPFLAGS=-I/usr/include/python2.7 ./configure --prefix=/usr \
+  CPPFLAGS=-I/usr/include/python2.7 ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --sbindir=/usr/bin \    
+    --localstatedir=/var \
+    --with-python=/usr/bin/python2 \    
+    --with-userscript-prefix=/etc/zarafa/userscripts \
+    --with-quotatemplate-prefix=/etc/zarafa/quotamails \
     --enable-oss \
     --enable-release \
     --enable-python \
     --enable-unicode \
-    --with-python=/usr/bin/python2 \
     --disable-debug \
-    --disable-static \
-    --sbindir=/usr/bin \
-    --with-userscript-prefix=/etc/zarafa/userscripts \
-    --with-quotatemplate-prefix=/etc/zarafa/quotamails \
+    --disable-static
 
   # make/g++ doesnt pick up -luuid properly without this... even though configure
   # finds it, and -luuid is present in the actual command that fails...
@@ -112,17 +116,31 @@ package() {
   sed -i -e "s/\(install-ajax-webaccess\:\)/void-ajax-webaccess\:/" Makefile
   make DESTDIR=${pkgdir} install || return 1
 
+  # remove legacy technologies
+  rm -Rf ${pkgdir}/etc/init.d
+  rm -Rf ${pkgdir}/etc/sysconfig
+  rm -Rf ${pkgdir}/etc/cron.daily
+
+  # prepare license
+  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+  cp -R installer/licenseagreement/* ${pkgdir}/usr/share/licenses/${pkgname} 
+
   # This isn't really a PEAR package... but Arch's default PHP config has open_basedir restrictions
   # and I doubt there will ever be a MAPI PEAR package to conflict, so one less thing user will have to do
   mv ${pkgdir}/usr/share/php ${pkgdir}/usr/share/pear
+  
+  # prepare bash-completion 
+  mkdir -p /usr/share/bash-completion/
+  mv ${pkgdir}/etc/bash_completion.d/zarafa-bash-completion.sh ${pkgdir}/usr/share/bash-completion/completions/zarafa
+  rm -Rf ${pkgdir}/etc/bash_completion.d
 
   # prepare libraries
-  cp -R ${pkgdir}/usr/var ${pkgdir}/var
-  rm -Rf ${pkgdir}/usr/var
+  #cp -R ${pkgdir}/usr/var ${pkgdir}/var
+  #rm -Rf ${pkgdir}/usr/var
   
   # pepare settings
-  cp -R ${pkgdir}/usr/etc/* ${pkgdir}/etc
-  rm -Rf ${pkgdir}/usr/etc
+  #cp -R ${pkgdir}/usr/etc/* ${pkgdir}/etc
+  #rm -Rf ${pkgdir}/usr/etc
   rm ${pkgdir}/etc/zarafa/*.cfg
  
   # => change to socket connections only
