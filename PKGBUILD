@@ -1,7 +1,7 @@
 # Contributor: Martin Corley <Martin.Corley@ed.ac.uk>
 
 pkgname=opensesame
-pkgver=2.9.7
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A graphical, open-source experiment builder for the social sciences, with ability to deploy on Android"
 arch=(any)
@@ -9,20 +9,26 @@ url="http://www.cogsci.nl/software/opensesame"
 license=(GPL)
 makedepends='git'
 # This is a fairly minimal set of dependencies
-depends=('python2' 'python2-pygame' 'python2-numpy' 'python2-pyqt4'
-'python2-qscintilla' 'python2-qprogedit>=2.0.0' 'python2-imaging'
-'python2-markdown' 'faenza-icon-theme' 'python2-yaml')
+depends=('python2' 'python2-pygame' 'python2-pyqt4'
+'python2-qscintilla' 'python2-qprogedit>=3.0.0' 'python2-yaml'
+'python2-webcolors'
+'python2-numpy' 'python2-pillow' 'python2-markdown')
+
+#'faenza-icon-theme'
+
 optdepends=('psychopy: PsychoPy backend'
 'python2-expyriment: Expyriment backend'
-'python2-pyserial: Serial/Parallel port communication')
+'python2-pyserial: Serial/Parallel port communication'
+'python2-pyflakes: validation of python scripts'
+'ipython2: improved debugging')
 
 options=(!emptydirs)
 #source=(http://files.cogsci.nl/software/opensesame/opensesame_${pkgver}-1.tar.g
 #python2.patch)
-source=("$pkgname-$pkgver"::'git://github.com/smathot/OpenSesame.git#tag=release/2.9.7'
+source=("$pkgname-$pkgver"::'git://github.com/smathot/OpenSesame.git#tag=release/3.0.2'
 python2.patch)
 md5sums=('SKIP'
-         'b7238618028cffb2169c5b05a332e144')
+         '3620ccb77431d68a968a6d17ed9c5568')
 
 fix_links() {
   cd  "$pkgdir/usr/share/opensesame/resources/theme/gnome/os-custom-icons/"
