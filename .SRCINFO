@@ -1,9 +1,10 @@
 pkgbase = perl6-json-tiny
 	pkgdesc = A tiny JSON parser and emitter for Perl 6 on Rakudo
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moritz/json
 	arch = any
+	groups = perl6
 	license = PerlArtistic
 	checkdepends = perl
 	makedepends = git
