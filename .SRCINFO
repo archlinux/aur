@@ -1,6 +1,6 @@
 pkgbase = breeze-icons-git
 	pkgdesc = Breeze icon themes for KDE Plasma. (GIT version)
-	pkgver = r812.252d1ed
+	pkgver = r813.08c847d
 	pkgrel = 1
 	url = https://github.com/NitruxSA/breeze-icon-theme
 	arch = any
