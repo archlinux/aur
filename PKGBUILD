@@ -8,7 +8,7 @@
 
 pkgname=emacs24-git
 pkgver=24.5.50.r116792
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Official git stable 24 branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -42,18 +42,20 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  ac_cv_lib_gif_EGifPutExtensionLast=yes \
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --mandir=/usr/share/man \
-    --pdfdir=/usr/share/doc/emacs/pdf \
-    --with-sound=alsa \
-    --without-gconf \
-    --with-x-toolkit=gtk3 \
-    --with-xft
+
+  local _conf=(
+    --prefix=/usr 
+    --sysconfdir=/etc 
+    --libexecdir=/usr/lib 
+    --localstatedir=/var 
+    --mandir=/usr/share/man 
+    --pdfdir=/usr/share/doc/emacs/pdf 
+    --with-sound=alsa 
+    --without-gconf 
+    --with-x-toolkit=gtk3 
+    --with-xft)
+
+  ./configure ${_conf}
 
   # Using "make" instead of "make bootstrap" makes incremental
   # compiling work. Less time recompiling. Yay! But if you may 
@@ -90,9 +92,9 @@ package() {
   find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
 
   # fix permssions on /var/games
+  mkdir -p "$pkgdir"/var/games/emacs
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
-  chmod 664 "$pkgdir"/var/games/emacs/*
   chown -R root:games "$pkgdir"/var/games
 }
 
