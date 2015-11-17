@@ -1,0 +1,18 @@
+pkgbase = perl6-json-unmarshall
+	pkgdesc = Turn JSON into objects
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://github.com/tadzik/JSON-Unmarshal
+	arch = any
+	groups = perl6
+	license = MIT
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	depends = perl6-json-name
+	depends = perl6-json-tiny
+	source = perl6-json-unmarshall-0.03::git+https://github.com/tadzik/JSON-Unmarshal
+	sha256sums = SKIP
+
+pkgname = perl6-json-unmarshall
+
