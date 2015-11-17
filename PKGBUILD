@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://git.yoctoproject.org/cgit/cgit.cgi/opkg"
 license=('GPL')
 depends=('curl' 'libarchive' 'gpgme')
-makedepends=('git' 'automake' 'autoconf')
+makedepends=('git')
 conflicts=(opkg)
 source=("git+http://git.yoctoproject.org/git/opkg#branch=opkg-0.3.x")
 sha256sums=('SKIP')
