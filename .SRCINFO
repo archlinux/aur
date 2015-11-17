@@ -1,7 +1,7 @@
 pkgbase = opera-developer-ffmpeg-codecs
 	pkgdesc = additional support for proprietary codecs for opera-developer
 	pkgver = 48.0.2547.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
