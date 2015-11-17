@@ -1,0 +1,72 @@
+diff -uprNEBZ --suppress-blank-empty a/UltraFlatIcons/index.theme b/UltraFlatIcons/index.theme
+--- a/UltraFlatIcons/index.theme	2015-02-02 15:48:53.000000000 -0600
++++ b/UltraFlatIcons/index.theme	2015-11-17 14:52:40.109247224 -0600
+@@ -1,5 +1,5 @@
+ [Icon Theme]
+-Name=Ultra-Flat-Icons
++Name=Ultra Flat Icons
+ Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
+ Inherits=
+
+diff -uprNEBZ --suppress-blank-empty a/UltraFlatIconsDark/index.theme b/UltraFlatIconsDark/index.theme
+--- a/UltraFlatIconsDark/index.theme	2015-02-02 15:48:53.000000000 -0600
++++ b/UltraFlatIconsDark/index.theme	2015-11-17 14:53:40.246220002 -0600
+@@ -1,7 +1,7 @@
+ [Icon Theme]
+-Name=Ultra-Flat-Icons
+-Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
+-Inherits=
++Name=Ultra Flat Icons
++Comment=A dark icon theme for Linux desktops, the set is inspired by the latest flat design trend.
++Inherits=UltraFlatIcons
+
+ Example=x-directory-normal
+
+diff -uprNEBZ --suppress-blank-empty a/UltraFlatIconsGreen/index.theme b/UltraFlatIconsGreen/index.theme
+--- a/UltraFlatIconsGreen/index.theme	2015-02-07 09:00:28.000000000 -0600
++++ b/UltraFlatIconsGreen/index.theme	2015-11-17 14:54:45.646551171 -0600
+@@ -1,5 +1,5 @@
+ [Icon Theme]
+-Name=Ultra-Flat-Icons-Mint-Green
++Name=Ultra Flat Icons Mint Green
+ Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
+ Inherits=
+
+diff -uprNEBZ --suppress-blank-empty a/UltraFlatIconsGreenDark/index.theme b/UltraFlatIconsGreenDark/index.theme
+--- a/UltraFlatIconsGreenDark/index.theme	2015-02-07 09:00:28.000000000 -0600
++++ b/UltraFlatIconsGreenDark/index.theme	2015-11-17 14:55:28.393433371 -0600
+@@ -1,7 +1,7 @@
+ [Icon Theme]
+-Name=Ultra-Flat-Icons-Mint-Green
+-Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
+-Inherits=
++Name=Ultra Flat Icons Mint Green Dark
++Comment=A dark icon theme for Linux desktops, the set is inspired by the latest flat design trend.
++Inherits=UltraFlatIconsGreen
+
+ Example=x-directory-normal
+
+diff -uprNEBZ --suppress-blank-empty a/UltraFlatIconsOrange/index.theme b/UltraFlatIconsOrange/index.theme
+--- a/UltraFlatIconsOrange/index.theme	2015-02-02 15:49:10.000000000 -0600
++++ b/UltraFlatIconsOrange/index.theme	2015-11-17 14:55:54.823566285 -0600
+@@ -1,5 +1,5 @@
+ [Icon Theme]
+-Name=Ultra-Flat-Icons
++Name=Ultra Flat Icons Orange
+ Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
+ Inherits=
+
+diff -uprNEBZ --suppress-blank-empty a/UltraFlatIconsOrangeDark/index.theme b/UltraFlatIconsOrangeDark/index.theme
+--- a/UltraFlatIconsOrangeDark/index.theme	2015-02-02 15:49:10.000000000 -0600
++++ b/UltraFlatIconsOrangeDark/index.theme	2015-11-17 14:56:29.560407246 -0600
+@@ -1,7 +1,7 @@
+ [Icon Theme]
+-Name=Ultra-Flat-Icons
+-Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
+-Inherits=
++Name=Ultra Flat Icons Orange Dark
++Comment=A dark icon theme for Linux desktops, the set is inspired by the latest flat design trend.
++Inherits=UltraFlatIconsOrange
+
+ Example=x-directory-normal
+

@@ -1,9 +1,0 @@
---- a/ultra-flat-icons-mint-green/index.theme	2015-02-07 09:00:28.000000000 -0600
-+++ b/ultra-flat-icons-mint-green/index.theme	2015-09-18 10:10:49.753813669 -0500
-@@ -1,5 +1,5 @@
- [Icon Theme]
--Name=Ultra-Flat-Icons-Mint-Green
-+Name=Ultra Flat Icons Mint Green
- Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
- Inherits=
-

@@ -1,9 +1,0 @@
---- a/ultra-flat-icons-orange/index.theme	2015-02-02 15:49:10.000000000 -0600
-+++ b/ultra-flat-icons-orange/index.theme	2015-09-18 10:07:24.151600975 -0500
-@@ -1,5 +1,5 @@
- [Icon Theme]
--Name=Ultra-Flat-Icons
-+Name=Ultra Flat Icons Orange
- Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
- Inherits=
-
