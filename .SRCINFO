@@ -1,0 +1,15 @@
+pkgbase = pass-web
+	pkgdesc = A web interface for pass (password-store)
+	pkgver = 1.0.0.beta.3
+	pkgrel = 1
+	url = https://github.com/BenoitZugmeyer/pass-web
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = pass-web-1.0.0-beta.3.tgz
+	source = https://registry.npmjs.org/pass-web/-/pass-web-1.0.0-beta.3.tgz
+	sha256sums = 8b2c95761c354848853a3d6918bc79e07b542b8f258801205e88bf8c161e2946
+
+pkgname = pass-web
+
