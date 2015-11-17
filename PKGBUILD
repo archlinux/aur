@@ -3,7 +3,7 @@
 
 _pkgname=drush
 pkgname=$_pkgname-git
-pkgver=8.0.0.rc3.r36.g78c3598
+pkgver=8.0.0.rc4.r10.gf303433
 pkgrel=1
 pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
