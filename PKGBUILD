@@ -15,7 +15,7 @@
 pkgname=iptrafvol
 _pkgname=iptrafficvolume
 pkgver=0.3.4
-pkgrel=5
+pkgrel=6
 pkgdesc="IP traffic volume logger using iptables"
 arch=('i686' 'x86_64')
 url="http://iptrafficvolume.sourceforge.net/"
@@ -66,5 +66,6 @@ package() {
   sed \
     -e 's|/usr/local/sbin/iptrafvol.pl|/usr/bin/iptrafvol.pl|' \
     -i "$pkgdir"/usr/share/${pkgname}/iptrafvol.cgi \
-    -i "$pkgdir"/usr/share/${pkgname}/iptrafvol_cron.d
+    -i "$pkgdir"/usr/share/${pkgname}/iptrafvol_cron.d \
+    -i "$pkgdir"/usr/share/${pkgname}/iptrafvol_init.d
 }

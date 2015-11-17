@@ -1,7 +1,7 @@
 pkgbase = iptrafvol
 	pkgdesc = IP traffic volume logger using iptables
 	pkgver = 0.3.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://iptrafficvolume.sourceforge.net/
 	arch = i686
 	arch = x86_64
