@@ -2,43 +2,43 @@
 # Contributor: Alexander Potashev <aspotashev@gmail.com>
 
 pkgname=libkvkontakte-git
-pkgver=4.70.0.r438.0845fe3
+pkgver=r440.fd5dfce
 pkgrel=1
 pkgdesc="Library implementing VKontakte.ru API. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/extragear/libs/libkvkontakte'
 license=('GPL')
 depends=('kdewebkit')
-makedepends=('extra-cmake-modules'
-             'kdoctools'
-             'git'
-             'python'
-             )
+makedepends=('extra-cmake-modules-git' 'kdoctools' 'git')
 conflicts=('libkvkontakte' 'libkvkontakte-frameworks-git')
+groups=('digikamsc-git')
 source=('git://anongit.kde.org/libkvkontakte')
 sha1sums=('SKIP')
 
 pkgver() {
-  cd libkvkontakte
-  _ver="$(cat CMakeLists.txt | grep LIBKVKONTAKTE_VERSION | head -n1 | cut -d '"' -f2)"
-  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "${srcdir}/libkvkontakte"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  mkdir -p build
+if [[ -d "${srcdir}/build" ]]; then
+      msg "Cleaning the previous build directory..."
+      rm -rf "${srcdir}/build"
+  fi
+  mkdir "${srcdir}/build"
 }
 
 build() {
-  cd build
-  cmake ../libkvkontakte \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
+  cd "${srcdir}/build"
+  cmake "${srcdir}/libkvkontakte" -DCMAKE_BUILD_TYPE=Release \
+                -DCMAKE_INSTALL_PREFIX=/usr \
+                -DLIB_INSTALL_DIR=lib \
+                -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+                -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}" install
 }
