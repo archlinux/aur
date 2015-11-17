@@ -6,6 +6,7 @@ pkgbase = screenshotgun-git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = cmake
 	depends = qt5-base
 	source = screenshotgun::git+https://github.com/ismd/screenshotgun.git
 	md5sums = SKIP
