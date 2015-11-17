@@ -1,0 +1,23 @@
+pkgbase = hledger-git
+	pkgdesc = The hledger command-line and web-based accounting tool
+	pkgver = 20151116
+	pkgrel = 1
+	url = http://hledger.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = haskell-stack
+	makedepends = ncurses
+	provides = hledger
+	provides = hledger-ui
+	provides = hledger-web
+	conflicts = hledger
+	conflicts = hledger-ui
+	conflicts = hledger-web
+	options = strip
+	source = git+https://github.com/simonmichael/hledger
+	sha256sums = SKIP
+
+pkgname = hledger-git
+
