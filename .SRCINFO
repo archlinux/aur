@@ -1,7 +1,7 @@
 pkgbase = netsniff-ng
-	pkgdesc = A high performance Linux network sniffer for packet inspection (without curvetun tool).
+	pkgdesc = A high performance Linux network sniffer for packet inspection.
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://netsniff-ng.org/
 	arch = i686
 	arch = x86_64

@@ -2,8 +2,8 @@
 pkgname=netsniff-ng
 pkgver=0.6.0
 _pkgver=${pkgver}
-pkgrel=2
-pkgdesc='A high performance Linux network sniffer for packet inspection (without curvetun tool).'
+pkgrel=3
+pkgdesc='A high performance Linux network sniffer for packet inspection.'
 arch=('i686' 'x86_64')
 url='http://netsniff-ng.org/'
 license=('GPL2')
