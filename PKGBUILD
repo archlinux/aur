@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 122984 2014-11-23 10:25:53Z bluewind $
+# $Id: PKGBUILD 144547 2015-10-21 05:26:35Z fyan $
 # Maintainer:  Ionut Biru <ibiru@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
@@ -6,7 +6,7 @@
 
 _pkgbasename=glib2
 pkgname=libx32-$_pkgbasename
-pkgver=2.42.1
+pkgver=2.46.1
 pkgrel=1.1
 pkgdesc="Common C routines used by GTK+ 2.4 and other libs (x32 ABI)"
 url="http://www.gtk.org/"
@@ -17,7 +17,7 @@ makedepends=('gcc-multilib-x32' 'python2')
 options=('!docs')
 source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz"
         'revert-warn-glib-compile-schemas.patch')
-sha256sums=('8f3f0865280e45b8ce840e176ef83bcfd511148918cc8d39df2ee89b67dcf89a'
+sha256sums=('5a1f03b952ebc3a7e9f612b8724f70898183e31503db329b4f15d07163c8fdfb'
             '049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97')
 
 prepare() {
@@ -29,6 +29,11 @@ build() {
   export CC="gcc -mx32"
   export CXX="g++ -mx32"
   export PKG_CONFIG_PATH="/usr/libx32/pkgconfig"
+
+  ## Prevent runtime unloading of glib
+  # https://bugs.archlinux.org/task/46619
+  # https://bugzilla.gnome.org/show_bug.cgi?id=755609
+  LDFLAGS+=" -Wl,-z,nodelete"
 
   cd "${srcdir}/glib-${pkgver}"
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sysconfdir=/etc \
