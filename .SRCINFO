@@ -9,7 +9,7 @@ pkgbase = bashbullet
 	depends = nodejs
 	depends = libnotify
 	depends = yad>=0.31
-	depends = nodejs-ws
+	depends = wscat
 	depends = xclip
 	optdepends = screen: running in background
 	optdepends = surl: url shortener support
