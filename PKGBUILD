@@ -94,7 +94,6 @@ package() {
   mkdir -p "$pkgdir"/var/games/emacs
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
-  chmod 664 "$pkgdir"/var/games/emacs/*
   chown -R root:games "$pkgdir"/var/games
 }
 
