@@ -2,10 +2,10 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qpdfview-bzr
-pkgver=1924
+pkgver=1968
 pkgrel=1
 pkgdesc='A tabbed PDF viewer using the poppler library. (development version)'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url='https://launchpad.net/qpdfview'
 license=('GPL2')
 depends=('libcups' 'qt5-svg' 'desktop-file-utils' 'hicolor-icon-theme')
@@ -25,9 +25,9 @@ pkgver() {
 build() {
   cd "$srcdir/qpdfview"
 
-if ! pkg-config --exists poppler-qt5; then
+  if ! pkg-config --exists poppler-qt5; then
     local config="$config without_pdf"
-fi
+  fi
   
   if ! pkg-config --exists libspectre; then
     local config="$config without_ps"
@@ -37,9 +37,9 @@ fi
     local config="$config without_djvu"
   fi
 
-if [ -f /usr/lib/libmupdf.a  ]; then
+  if [ -f /usr/lib/libmupdf.a  ]; then
     local config="$config with_fitz"
-fi
+  fi
 
   lrelease-qt5 qpdfview.pro qpdfview.pro
   qmake-qt5 "CONFIG+=$config" qpdfview.pro
