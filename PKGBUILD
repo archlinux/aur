@@ -3,10 +3,10 @@
 
 pkgname=('zarafa-server')
 replaces=('zarafa-server-arm')
-pkgver=7.2.0
+pkgver=7.2.1
 _pkgmajver=7.2
-_pkgrev=${pkgver}-48204
-pkgrel=10
+_pkgrev=${pkgver}-51838
+pkgrel=1
 pkgdesc="Open Source Groupware Solution"
 arch=('arm'
       'armv7h'
@@ -63,7 +63,7 @@ source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_
 	"zarafa-spooler.service"
 	"zarafa-gateway.service")
 
-md5sums=('7dc8a526b3eb83e6eb5bbc9d2215b501'
+md5sums=('9858733e801d68e0a89b7a5532efe75c'
          '5de9759477995d9940c056e56ed9d3f1'
          '0e2728f1e35b25ca679427fcb57315d8'
          'c25f3982217fe390d68ed9003a5988ed'
