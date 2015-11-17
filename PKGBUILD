@@ -1,31 +1,33 @@
-# Contributor: Tom < reztho at archlinux dot us >
+# Maintainer: Tom < reztho at archlinux dot us >
 # Based on an AUR contribution of: Juraj Misur <juraj.misur@gmail.com>
+# Contributors:
+# - veger 
 pkgname=capt-src
-pkgver=2.60
-pkgrel=3
+pkgver=2.70
+pkgrel=1
 pkgdesc="Canon CAPT Printer Driver for Linux. Compiled from source code."
 arch=('i686' 'x86_64')
 url='http://support-asia.canon-asia.com/'
 license=('custom')
 depends=('cups' 'libglade' 'libxml2' 'popt')
-[ "${CARCH}" == "x86_64" ] && depends=('cups' 'libglade' 'lib32-libcups' 'lib32-libxml2' 'lib32-popt' 'lib32-gcc-libs')
+[ "${CARCH}" == "x86_64" ] && depends=('cups' 'libglade' 'lib32-libxml2' 'lib32-popt' 'lib32-gcc-libs')
 optdepends=('gtk2: for gui')
 install=${pkgname}.install
-_tardir=Linux_CAPT_PrinterDriver_V260_uk_EN
-source=("http://gdlp01.c-wss.com/gds/6/0100004596/03/${_tardir}.tar.gz"
+_tardir=Linux_CAPT_PrinterDriver_V270_uk_EN
+source=("http://gdlp01.c-wss.com/gds/6/0100004596/04/${_tardir}.tar.gz"
         'ccpd.service')
 options=(!strip !zipman)
 
 package() {
     unset LDFLAGS
-    _common_dir=${srcdir}/cndrvcups-common-${pkgver}-1
-    _capt_dir=${srcdir}/cndrvcups-capt-${pkgver}-1
+    _pkgcommonver=3.20
+    _common_dir=${srcdir}/cndrvcups-common-${_pkgcommonver}
+    _capt_dir=${srcdir}/cndrvcups-capt-${pkgver}
     _endlibdir=/usr/lib
-    [ "${CARCH}" == "x86_64" ] && _endlibdir=/usr/lib32
 
     # Decompressing source and proprietary code packages
     cd ${srcdir}
-    tar xvzf ${srcdir}/${_tardir}/Src/cndrvcups-common-${pkgver}-1.tar.gz
+    tar xvzf ${srcdir}/${_tardir}/Src/cndrvcups-common-${_pkgcommonver}-1.tar.gz
     tar xvzf ${srcdir}/${_tardir}/Src/cndrvcups-capt-${pkgver}-1.tar.gz
 
     # Starting source code compilation
@@ -38,7 +40,8 @@ package() {
     cd ${_common_dir}/buftool && /usr/bin/autoreconf -fi && ./autogen.sh --prefix=/usr --libdir=/usr/lib
     msg "Configuring: cngplp"
     cd ${_common_dir}/cngplp && /usr/bin/autoreconf -fi && LIBS=-lgmodule-2.0 ./autogen.sh --prefix=/usr --libdir=/usr/lib
-
+    msg "Configuring: backend"
+    cd ${_common_dir}/backend && /usr/bin/autoreconf -fi && ./autogen.sh --prefix=/usr --libdir=/usr/lib
 
     msg "Compiling cndrvcups-common package"
     cd ${_common_dir}
@@ -48,7 +51,7 @@ package() {
     make
 
     msg "Installing cndrvcups-common package"
-    for _dir in buftool cngplp
+    for _dir in buftool cngplp backend
     do
         msg "Installing: $_dir"
         cd ${_common_dir}/$_dir && make DESTDIR=${pkgdir} install
@@ -60,20 +63,17 @@ package() {
 
     # cndrvcups-capt package
     msg "cndrvcups-capt package"
-    
+
     #Patching statusui
     sed -i 's@#include <cups/cups.h>@#include <cups/cups.h>\n#include <cups/ppd.h>@' "${_capt_dir}/statusui/src/ppapdata.c"
     sed -i 's@char req_header\[4\];@char req_header\[5\];@' "${_capt_dir}/statusui/cnsktmodule/cnsktmodule.h"
 
     msg "Configuring cndrvcups-capt package"
     
-    msg "Configuring: driver"
-    cd ${_capt_dir}/driver && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --disable-static
-    
-    for _dir in backend pstocapt pstocapt2 pstocapt3
+    for _dir in driver backend pstocapt pstocapt2 pstocapt3
     do
         msg "Configuring: "${_dir}
-        cd ${_capt_dir}/$_dir && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin
+        cd ${_capt_dir}/$_dir && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --disable-static
     done
         
     msg "Configuring: ppd"
@@ -113,9 +113,9 @@ package() {
     install -c -m 755 libs/libcaiousb.so.1.0.0 ${pkgdir}${_endlibdir}
     install -c -m 755 libs/libc3pl.so.0.0.1 ${pkgdir}${_endlibdir}
     install -c -m 755 libs/libcaepcm.so.1.0 ${pkgdir}${_endlibdir}
-    install -c -m 755 libs/libcanon_slim.so.1.0.0 ${pkgdir}${_endlibdir}
     install -c -m 755 libs/libColorGear.so.0.0.0 ${pkgdir}${_endlibdir}
     install -c -m 755 libs/libColorGearC.so.0.0.0 ${pkgdir}${_endlibdir}
+    install -c -m 755 libs/libcanon_slim.so.1.0.0 ${pkgdir}${_endlibdir}
 
     cd ${pkgdir}${_endlibdir}
     ln -s libc3pl.so.0.0.1 libc3pl.so.0
@@ -139,8 +139,7 @@ package() {
 
     install -dm755 ${pkgdir}/usr/share/caepcm
     cd ${_common_dir}
-    install -c -m 644 data/CA*    ${pkgdir}/usr/share/caepcm
-    install -c -m 644 data/CNZ0*  ${pkgdir}/usr/share/caepcm
+    install -c -m 644 data/*.ICC  ${pkgdir}/usr/share/caepcm
 
     # Debian postinst
 
@@ -169,8 +168,13 @@ package() {
     install -c libs/captmon/captmon         ${pkgdir}/usr/bin
     install -c libs/captmon2/captmon2       ${pkgdir}/usr/bin
     install -c libs/captemon/captmon*       ${pkgdir}/usr/bin
-    install -c libs/ccpd                    ${pkgdir}/usr/bin
-    install -c libs/ccpdadmin               ${pkgdir}/usr/bin
+    if [ "${CARCH}" == "x86_64" ]; then
+        install -c libs64/ccpd                    ${pkgdir}/usr/bin
+        install -c libs64/ccpdadmin               ${pkgdir}/usr/bin
+    else
+        install -c libs/ccpd                    ${pkgdir}/usr/bin
+        install -c libs/ccpdadmin               ${pkgdir}/usr/bin
+    fi
     install -dm755 ${pkgdir}/etc
     install -c samples/ccpd.conf            ${pkgdir}/etc
     install -dm755 ${pkgdir}/usr/share/ccpd
@@ -190,7 +194,7 @@ package() {
     install -dm755 ${pkgdir}/usr/share/caepcm
     install -c -m 644 data/C*   ${pkgdir}/usr/share/caepcm
     install -dm755 ${pkgdir}/usr/share/doc/capt-src
-    install *capt*.txt ${pkgdir}/usr/share/doc/capt-src
+    install -c -m 644 *capt*.txt ${pkgdir}/usr/share/doc/capt-src
     # End of copying the proprietary source
 
     # Other dirs...
@@ -208,11 +212,12 @@ package() {
 
     # Custom License
     install -dm755 ${pkgdir}/usr/share/licenses/$pkgname
-    install -Dm664 ${srcdir}/${_tardir}/Doc/LICENSE-captdrv-${pkgver}E.txt ${pkgdir}/usr/share/licenses/$pkgname/LICENSE-captdrv-${pkgver}E.txt
+    install -Dm664 ${srcdir}/${_tardir}/Doc/LICENSE-EN.txt ${pkgdir}/usr/share/licenses/$pkgname/LICENSE-EN.txt
 
-    # Guide
-    install -Dm664 ${srcdir}/${_tardir}/Doc/guide-capt-2.6xUK.tar.gz ${pkgdir}/usr/share/doc/capt-src/guide-capt-2.6xUK.tar.gz
+    # Guide & README
+    install -Dm664 ${srcdir}/${_tardir}/Doc/guide-capt-2.7xUK.tar.gz ${pkgdir}/usr/share/doc/capt-src/guide-capt-2.7xUK.tar.gz
+    install -Dm664 ${srcdir}/${_tardir}/Doc/README-capt-2.7xUK.txt ${pkgdir}/usr/share/doc/capt-src/README-capt-2.7xUK.txt
 }
 
-md5sums=('356fe6abed036f107eaaca92186e0c56'
+md5sums=('52bfd331278457cf63cb4a1a0730b14a'
          '4a6e0263535e96c119feafdbfd62cdd0')
