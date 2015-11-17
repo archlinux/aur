@@ -1,0 +1,11 @@
+diff --git a/cpubars.c b/cpubars.c
+index 3acc0d1..223fe42 100644
+--- a/cpubars.c
++++ b/cpubars.c
+@@ -1,5 +1,6 @@
+ // -*- c-file-style: "bsd" -*-
+ 
++#include <sys/time.h>
+ #include <ctype.h>
+ #include <errno.h>
+ #include <fcntl.h>

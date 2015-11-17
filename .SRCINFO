@@ -1,0 +1,16 @@
+pkgbase = cpubars-git
+	pkgdesc = lightweight terminal-based multicore CPU usage monitor
+	pkgver = r27.6deab3e
+	pkgrel = 1
+	url = https://github.com/aclements/cpubars
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ncurses
+	source = cpubars-git::git+https://github.com/aclements/cpubars.git
+	source = include-time.patch
+	md5sums = SKIP
+	md5sums = 6f6e0e92c6424d5785c901a0d300c7b7
+
+pkgname = cpubars-git
+
