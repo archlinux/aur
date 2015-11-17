@@ -87,20 +87,16 @@ build() {
   cd ${srcdir}/zarafa-${pkgver}
 
   msg "Starting build..."
-  CPPFLAGS=-I/usr/include/python2.7 ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --sbindir=/usr/bin \    
-    --localstatedir=/var \
-    --with-python=/usr/bin/python2 \    
-    --with-userscript-prefix=/etc/zarafa/userscripts \
-    --with-quotatemplate-prefix=/etc/zarafa/quotamails \
+  CPPFLAGS=-I/usr/include/python2.7 ./configure --prefix=/usr \
     --enable-oss \
     --enable-release \
     --enable-python \
     --enable-unicode \
+    --with-python=/usr/bin/python2 \
     --disable-debug \
-    --disable-static
+    --disable-static \
+    --with-userscript-prefix=/etc/zarafa/userscripts \
+    --with-quotatemplate-prefix=/etc/zarafa/quotamails
 
   # make/g++ doesnt pick up -luuid properly without this... even though configure
   # finds it, and -luuid is present in the actual command that fails...
@@ -135,12 +131,12 @@ package() {
   rm -Rf ${pkgdir}/etc/bash_completion.d
 
   # prepare libraries
-  #cp -R ${pkgdir}/usr/var ${pkgdir}/var
-  #rm -Rf ${pkgdir}/usr/var
+  cp -R ${pkgdir}/usr/var ${pkgdir}/var
+  rm -Rf ${pkgdir}/usr/var
   
   # pepare settings
-  #cp -R ${pkgdir}/usr/etc/* ${pkgdir}/etc
-  #rm -Rf ${pkgdir}/usr/etc
+  cp -R ${pkgdir}/usr/etc/* ${pkgdir}/etc
+  rm -Rf ${pkgdir}/usr/etc
   rm ${pkgdir}/etc/zarafa/*.cfg
  
   # => change to socket connections only
