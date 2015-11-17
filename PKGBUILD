@@ -1,9 +1,8 @@
-
 # Maintainer: James An <james@jamesan.ca>
 
 _pkgname=hostmaster
 pkgname=aegir-$_pkgname
-pkgver=7.x_3.0
+pkgver=7.x_3.2
 pkgrel=1
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
