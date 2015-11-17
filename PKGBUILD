@@ -1,4 +1,5 @@
-# Maintainer:  Acidhub <contact@acidhub.click>
+# Maintainer :  David Phillips <dbphillipsnz@gmail.com>
+# Contributor:  Acidhub <contact@acidhub.click>
 
 pkgname=mount-gtk
 pkgver=1.4.3
