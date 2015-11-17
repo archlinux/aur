@@ -8,14 +8,14 @@ _basedir=/usr
 
 pkgname=${_pkgname}${_ext}
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple script to update archlinux using pacmatic and pacaur."
 arch=('any')
 url=""
 license=('Apache')
 depends=('bash' 'pacmatic' 'pacaur')
 source=(
-        archupdate.sh
+        https://bitbucket.org/theojadevries/archupdate-script/raw/d0e7cbe2eb329ae510e9ea99a998716e2f434c0e/archupdate.sh
         archupdate.desktop
         arch.png
         )

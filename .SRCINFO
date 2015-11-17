@@ -1,13 +1,13 @@
 pkgbase = archupdate
 	pkgdesc = A simple script to update archlinux using pacmatic and pacaur.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = Apache
 	depends = bash
 	depends = pacmatic
 	depends = pacaur
-	source = archupdate.sh
+	source = https://bitbucket.org/theojadevries/archupdate-script/raw/d0e7cbe2eb329ae510e9ea99a998716e2f434c0e/archupdate.sh
 	source = archupdate.desktop
 	source = arch.png
 	md5sums = 9647e3b024f7efafc88e771d6b31a6c7
