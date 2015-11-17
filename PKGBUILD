@@ -8,7 +8,7 @@
 
 pkgname=emacs-git
 pkgver=25.1.50.r123388
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -91,7 +91,7 @@ package() {
   find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
 
   # fix permssions on /var/games
-  mkdir -p "$pkgdir"/var/games
+  mkdir -p "$pkgdir"/var/games/emacs
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
   chmod 664 "$pkgdir"/var/games/emacs/*
