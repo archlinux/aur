@@ -1,5 +1,5 @@
 [Unit]
-Description=Single threaded SAT>IP server
+Description=Multi-threaded SAT>IP server
 After=network.target
 Wants=oscam.service
 
