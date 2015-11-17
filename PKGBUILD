@@ -67,7 +67,8 @@ package() {
     install -Dm644 php-fpm.systemd.conf "$pkgdir/usr/lib/systemd/system/php-fpm.service.d/aegir.conf"
 
     msg2 'Creating $pkgname directory structure'
-    install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/drush" "$pkgdir/usr/share/webapps/$pkgname"
+    install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/drush"{,/cache{,/{complete,default,download,usage}}}
+    install --directory --owner=http --group=http --mode=6775 "$pkgdir/usr/share/webapps/$pkgname"
     install --directory --owner=http --group=http --mode=0700 "$pkgdir/usr/share/webapps/$pkgname/.ssh"{,/ctrl-sockets}
     mkdir -p "$pkgdir/srv/http" "$pkgdir/etc/skel"
     ln -s /etc/drush "$pkgdir/srv/http/.drush"
