@@ -1,6 +1,7 @@
 pkgname='doin-git'
+pkgdesc='Run any command inside any namespace-based Linux container'
 pkgver=r7.5982079
-pkgrel=1
+pkgrel=2
 depends=('glibc')
 provides=('doin')
 conflicts=('doin')
