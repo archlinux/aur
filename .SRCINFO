@@ -1,6 +1,6 @@
 pkgbase = wine-gaming-nine
 	pkgdesc = Based off wine-staging, including the gallium-nine patches and some more hacks
-	pkgver = 1.7.54
+	pkgver = 1.7.55
 	pkgrel = 1
 	url = http://www.wine-staging.com
 	install = wine.install
@@ -13,7 +13,6 @@ pkgbase = wine-gaming-nine
 	makedepends = perl
 	makedepends = fontforge
 	makedepends = flex
-	makedepends = prelink
 	makedepends = gcc>=4.5.0-2
 	makedepends = gcc-multilib>=4.5.0-2
 	makedepends = giflib
@@ -38,22 +37,18 @@ pkgbase = wine-gaming-nine
 	makedepends = lib32-openal
 	makedepends = v4l-utils
 	makedepends = lib32-v4l-utils
+	makedepends = libpulse
+	makedepends = lib32-libpulse
 	makedepends = alsa-lib
 	makedepends = lib32-alsa-lib
 	makedepends = libxcomposite
 	makedepends = lib32-libxcomposite
 	makedepends = mesa
 	makedepends = lib32-mesa
-	makedepends = libgl
-	makedepends = lib32-libgl
 	makedepends = libcl
 	makedepends = lib32-libcl
 	makedepends = libxslt
 	makedepends = lib32-libxslt
-	makedepends = libpulse
-	makedepends = lib32-libpulse
-	makedepends = libva
-	makedepends = lib32-libva
 	makedepends = gtk3
 	makedepends = lib32-gtk3
 	makedepends = samba
@@ -119,34 +114,31 @@ pkgbase = wine-gaming-nine
 	optdepends = lib32-libcl
 	optdepends = libxslt
 	optdepends = lib32-libxslt
-	optdepends = libva
-	optdepends = lib32-libva
-	optdepends = gtk3
-	optdepends = lib32-gtk3
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = bin32-wine=1.7.54
-	provides = wine=1.7.54
-	provides = wine-wow64=1.7.54
+	provides = bin32-wine=1.7.55
+	provides = wine=1.7.55
+	provides = wine-wow64=1.7.55
+	provides = wine-staging=1.7.55
 	conflicts = wine
 	conflicts = wine-wow64
 	options = staticlibs
-	source = https://github.com/wine-compholio/wine-patched/archive/staging-1.7.54.tar.gz
+	source = https://github.com/wine-compholio/wine-patched/archive/staging-1.7.55.tar.gz
 	source = 30-win32-aliases.conf
 	source = keybindings.patch
 	source = raw.patch
 	source = mipmap.patch
 	source = heap_perf.patch
-	source = wbemprox_query.patch
+	source = wbemprox_query_v2.patch
 	source = nine-1.7.53.patch
-	sha1sums = e59eb52e5fdbb7561b482880b0f75638f2516090
+	sha1sums = 18317cfdc7a9a751910eb31df4996bd430a23c18
 	sha1sums = 023a5c901c6a091c56e76b6a62d141d87cce9fdb
 	sha1sums = f3febb8836f38320742a546c667106608d4c4395
 	sha1sums = 57aa524e4e760c907c2acef287f5569e78ea85b0
 	sha1sums = c3096fccbac23e520d03f592db7f23350cbbc0bc
 	sha1sums = 0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd
-	sha1sums = 20da841265d5b16dba02246f158ad4f54f13b775
+	sha1sums = e26d369e9964657b481ac4b7b18c575786ec9c8c
 	sha1sums = 83d666e677b9ae3caed648de7c6107dfc080f9ec
 
 pkgname = wine-gaming-nine
