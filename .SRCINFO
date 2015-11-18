@@ -1,16 +1,15 @@
 pkgbase = libx32-db
 	pkgdesc = The Berkeley DB embedded database system (x32 ABI)
-	pkgver = 5.3.21
-	pkgrel = 1.1
+	pkgver = 5.3.28
+	pkgrel = 2.1
 	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
 	arch = x86_64
 	license = custom
 	makedepends = gcc-multilib-x32
+	depends = db=5.3.28
 	depends = libx32-gcc-libs
-	depends = db
-	options = !libtool
-	source = http://download.oracle.com/berkeley-db/db-5.3.21.tar.gz
-	sha1sums = 32e43c4898c8996750c958a90c174bd116fcba83
+	source = http://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
+	sha256sums = e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
 
 pkgname = libx32-db
 

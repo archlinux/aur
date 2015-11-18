@@ -1,43 +1,47 @@
-# Upstream Maintainer: josephgbr <rafael.f.f1@gmail.com>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# $Id: PKGBUILD 126747 2015-01-29 15:09:32Z alucryd $
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
-_pkgbase=db
-pkgname=libx32-${_pkgbase}
-pkgver=5.3.21
-pkgrel=1.1
+pkgname=libx32-db
+pkgver=5.3.28
+pkgrel=2.1
 pkgdesc="The Berkeley DB embedded database system (x32 ABI)"
 arch=('x86_64')
-url="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
+url='http://www.oracle.com/technology/software/products/berkeley-db/index.html'
 license=('custom')
-depends=('libx32-gcc-libs' "${_pkgbase}")
+depends=("db=${pkgver}" 'libx32-gcc-libs')
 makedepends=('gcc-multilib-x32')
-options=('!libtool')
 source=("http://download.oracle.com/berkeley-db/db-${pkgver}.tar.gz")
-sha1sums=('32e43c4898c8996750c958a90c174bd116fcba83')
+sha256sums=('e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628')
 
 build() {
-  export CC="gcc -mx32"
-  export CXX="g++ -mx32"
-  export PKG_CONFIG_PATH="/usr/libx32/pkgconfig"
+  cd db-${pkgver}/build_unix
 
-  cd ${_pkgbase}-${pkgver}/build_unix
+  export CC='gcc -mx32'
+  export CXX='g++ -mx32'
+  export PKG_CONFIG_PATH='/usr/libx32/pkgconfig'
+
   ../dist/configure \
-    --prefix=/usr \
+    --prefix='/usr' \
+    --libdir='/usr/libx32' \
     --enable-compat185 \
-    --enable-shared \
-    --enable-static \
     --enable-cxx \
     --enable-dbm \
-    --libdir=/usr/libx32
-  make LIBSO_LIBS=-lpthread
+    --enable-shared
+  make LIBSO_LIBS='-lpthread'
 }
 
 package() {
-  cd ${_pkgbase}-${pkgver}/build_unix
-  make DESTDIR="${pkgdir}" install
-  rm -r "${pkgdir}"/usr/{docs,include,bin}
+  cd db-${pkgver}/build_unix
 
-  # install license
-  install -dm755 "$pkgdir"/usr/share/licenses
-  ln -s ${_pkgbase} "${pkgdir}"/usr/share/licenses/${pkgname}
+  make DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}"/usr/{bin,docs,include,share}
+
+  install -dm 755 "${pkgdir}"/usr/share/licenses
+  ln -s db "${pkgdir}"/usr/share/licenses/libx32-db
 }
+
+# vim: ts=2 sw=2 et:
