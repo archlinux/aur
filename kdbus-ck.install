@@ -1,0 +1,20 @@
+EXTRAMODULES=extramodules-4.3-ck
+
+_updatemod() {
+  echo "  > Updating module dependencies..."
+  depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+  _updatemod
+}
+
+post_upgrade() {
+  _updatemod
+}
+
+post_remove() {
+  _updatemod
+}
+
+# vim:set ts=2 sw=2 et:

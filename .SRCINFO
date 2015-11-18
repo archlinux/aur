@@ -1,0 +1,25 @@
+pkgbase = kdbus-ck
+	pkgver = 4.3
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/systemd/kdbus
+	install = kdbus-ck.install
+	arch = i686
+	arch = x86_64
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = libxslt
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = linux-ck-*-headers>=4.3
+	makedepends = linux-ck-*-headers<4.4
+	options = debug
+	options = !strip
+	source = git://github.com/systemd/kdbus.git#branch=v4.3
+	source = kdbus-ck.install
+	md5sums = SKIP
+	md5sums = c6835d4962c9e9fc74e3079c722f4b2b
+
+pkgname = kdbus-ck
+
