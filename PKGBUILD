@@ -5,7 +5,7 @@
 # Contributor: Ricardo <rikardo.horo@gmail.com>
 
 pkgname=gromacs
-pkgver=5.1
+pkgver=5.1.1
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -15,7 +15,7 @@ depends=('fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11')
 makedepends=('cmake')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('1630297e853ff9be0767cf348f86effafb1dc1a9')
+sha1sums=('01f83cfc98e8d23f978f8bf87c9cc58beb62476b')
 
 build() {
   mkdir -p ${srcdir}/{single,double}
