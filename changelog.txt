@@ -1,4 +1,8 @@
-Git commit  f70b7ea
+Git commit f8a6316
+	* NEW: Haptics have been added
+	* Removed: udev rule -- appears to work without it when STEAM is
+	  installed.
+Git commit f70b7ea
 	* NEW: sc-desktop.py gives desktop keyboard/mouse
 	* Removed: optional dependencies (kodi, evtest) as it is no longer
 	needed.

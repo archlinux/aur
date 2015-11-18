@@ -1,8 +1,8 @@
 # Maintainer: vorpalblade77@gmail.com
 pkgname=python-steamcontroller-git
 _pkgname=steamcontroller
-pkgver=f70b7ea
-pkgrel=2
+pkgver=f8a6316
+pkgrel=1
 pkgdesc="Standalone userland driver for the Steam controller"
 arch=('i686' 'x86_64')
 url="https://github.com/ynsta/${_pkgname}"
@@ -10,14 +10,14 @@ license=('MIT')
 makedepends=('python-distutils-extra')
 depends=('python-libusb1')
 optdepends=('python-pyside: Required for sc-gyro-plot.py'
-	'python-pyqtgraph: Required for sc-gyro-plot.py')
+	'python-pyqtgraph: Required for sc-gyro-plot.py'
+	'steamcontroller-udev: udev rules for the controller'
+	'steam: udev rules for the controller')
 provides=('steamcontroller')
-conflicts=("${_pkgname}" 'steamcontroller-udev')
+conflicts=("${_pkgname}")
 changelog=('changelog.txt')
-source=("git+https://github.com/ynsta/${_pkgname}.git"
-	"99-steamcontroller.rules")
-sha256sums=('SKIP'
-            '46de34b75730482e5276d94f072dd1911c48789f4442a41c56653b2db05ef46d')
+source=("git+https://github.com/ynsta/${_pkgname}.git")
+sha256sums=('SKIP')
 install='steamcontroller.install'
 
 pkgver() {
@@ -31,8 +31,8 @@ build() {
 }
 
 package() {
-	install -m755 -d "${pkgdir}/usr/lib/udev/rules.d"
-	install -Dm 644 "99-steamcontroller.rules" "${pkgdir}/usr/lib/udev/rules.d/99-steamcontroller.rules"
+	#install -m755 -d "${pkgdir}/usr/lib/udev/rules.d"
+	#install -Dm 644 "99-steamcontroller.rules" "${pkgdir}/usr/lib/udev/rules.d/99-steamcontroller.rules"
 	cd "${srcdir}/${_pkgname}"
 	python setup.py install --root="${pkgdir}" \
 	--prefix="/usr" \

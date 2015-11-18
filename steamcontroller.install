@@ -6,6 +6,7 @@ post_install() {
 EOF
   udevadm control --reload
   /bin/cat <<EOF
+==> Install either "steam" or "steamcontroller-udev" for the udev rules.
 ==> You can use the controller in xbox360 mode or desktop mode
     $ sc-xbox.py start
 ==> or
