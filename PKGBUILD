@@ -2,10 +2,10 @@
 pkgdesc='LuaJIT-based scientific computing framework'
 pkgname='torch7-git'
 pkgver=r817.91a2970
-pkgrel=1
+pkgrel=2
 url='http://torch.ch'
 source=("${pkgname}::git://github.com/torch/torch7")
-depends=('luajit' 'blas' 'lapack' 'torch7-cwrap-git')
+depends=('luajit' 'blas' 'lapack' 'torch7-cwrap-git' 'torch7-paths-git')
 conflicts=('torch7')
 provides=('torch7')
 makedepends=('cmake')
