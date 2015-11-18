@@ -1,0 +1,14 @@
+pkgbase = kata-git
+	pkgdesc = A command to transliterate ASCII to katakana.
+	pkgver = r5.38ce908
+	pkgrel = 1
+	url = https://github.com/robpike/kata
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go>=1.5
+	conflicts = kata
+
+pkgname = kata-git
+
