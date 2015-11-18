@@ -1,0 +1,20 @@
+pkgbase = darcs-sandbox
+	pkgdesc = Elegant and powerful distributed revision control system. Standalone sandbox build.
+	pkgver = 2.10.2
+	pkgrel = 1
+	url = http://darcs.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cabal-install
+	makedepends = chrpath
+	makedepends = ghc
+	makedepends = inotify-tools
+	depends = curl
+	depends = libffi
+	options = strip
+	source = http://darcs.net/releases/darcs-2.10.2.tar.gz
+	sha256sums = 6337d3fac04711fa2ef5813558b409c59166c5599b0c9d68c418d21cdccfb327
+
+pkgname = darcs-sandbox
+
