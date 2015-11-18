@@ -4,7 +4,7 @@
 
 pkgname=saleae-logic-beta
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="High speed USB logic analyzer."
 arch=('i686' 'x86_64')
 url="http://www.saleae.com/"
@@ -50,7 +50,7 @@ package() {
   # docs
   install -Dm644 ../../*.pdf "$pkgdir/usr/share/doc/saleae-logic/"
   # udev
-  install -Dm644 Drivers/99-SaleaeLogic.rules "$pkgdir/etc/udev/rules.d/99-SaleaeLogic.rules" 
+  install -Dm644 Drivers/99-SaleaeLogic.rules "$pkgdir/usr/lib/udev/rules.d/99-SaleaeLogic.rules" 
   # launch script
   install -d "$pkgdir/usr/bin"
   touch "$pkgdir/usr/bin/logic"
