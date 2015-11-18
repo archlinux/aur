@@ -3,12 +3,13 @@
 pkgname=zeal
 epoch=1
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple offline API documentation browser'
 arch=(x86_64 i686)
 url='http://zealdocs.org/'
 license=('GPL')
-depends=('qt5-webkit' 'hicolor-icon-theme' 'desktop-file-utils' 'libarchive')
+depends=('qt5-webkit' 'hicolor-icon-theme' 'desktop-file-utils' 'libarchive'
+	'qt5-x11extras')
 makedepends=()
 conflicts=(zeal-git)
 install=zeal.install
