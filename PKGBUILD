@@ -8,7 +8,6 @@ url="http://blogs.gnome.org/emmanuel/category/lasem/"
 license=('LGPL')
 depends=('gtk3')
 makedepends=('intltool')
-optdepends=('lyx: ttf fonts for MathML')
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('e7d950f9579defc7bb9d4159a0bfff165a3a621945ac9f202c930f2fea2dd58f')
