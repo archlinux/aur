@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=le-editor-git
-pkgver=610.2f1efb4
+pkgver=615.6b44e60
 pkgrel=1
 pkgdesc="A text editor in memorial to Norton Editor with block and binary operations - git version"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ source=(git://git.sv.gnu.org/gnulib le-editor::git://github.com/lavv17/le.git)
 md5sums=('SKIP'
          'SKIP')
 _gitname="le-editor"
+options=('!makeflags')
 
 pkgver() {
   cd $srcdir/$_gitname

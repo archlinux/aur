@@ -1,6 +1,6 @@
 pkgbase = le-editor-git
 	pkgdesc = A text editor in memorial to Norton Editor with block and binary operations - git version
-	pkgver = 610.2f1efb4
+	pkgver = 615.6b44e60
 	pkgrel = 1
 	url = https://directory.fsf.org/wiki/Le_editor
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = le-editor-git
 	provides = le-editor
 	conflicts = le
 	conflicts = le-editor
+	options = !makeflags
 	source = git://git.sv.gnu.org/gnulib
 	source = le-editor::git://github.com/lavv17/le.git
 	md5sums = SKIP
