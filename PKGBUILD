@@ -2,13 +2,13 @@
 
 pkgname=flmsg
 pkgver=2.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Forms management editor for Amateur Radio standard message formats"
 arch=('i686' 'x86_64')
 url="http://www.w1hkj.com/flmsg-help/index.html"
 license=('GPL')
 depends=('fldigi')
-source=(http://w1hkj.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(http://downloads.sourceforge.net/project/fldigi/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('e1e52679332f7bacdf5fcd4dd5cee8f5')
 
 build() {
