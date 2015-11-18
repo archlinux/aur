@@ -1,0 +1,14 @@
+pkgbase = strings-git
+	pkgdesc = A custom, Unicode-competent version of the BSD strings utility.
+	pkgver = r9.c455a79
+	pkgrel = 1
+	url = https://github.com/robpike/strings
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go>=1.5
+	conflicts = strings
+
+pkgname = strings-git
+
