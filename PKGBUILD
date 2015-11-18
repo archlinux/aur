@@ -10,7 +10,7 @@ _nxver="${_major}.$((${_minor} + 1))"
 _extramodules="extramodules-$pkgver-ck"
 _cpu=`pacman -Q | grep linux-ck | head -1 | awk '{print $1}' | sed 's/.*-//'`
 
-pkgrel=1
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd/kdbus"
 makedepends=('xmlto' 'docbook-xsl' 'libxslt' 'kmod' 'inetutils' 'bc' 'git'
