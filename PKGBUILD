@@ -19,7 +19,6 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$_gitname"
-  sh apply_patches.sh
 }
 
 build() {
