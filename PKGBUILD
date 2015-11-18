@@ -1,26 +1,30 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# Contributor: Bernd Helm
-# Contributor: Mike Shade <mshade@mshade.org>
 
-_pkgname=evdev
-pkgname=python-$_pkgname
+pkgname=python-evdev
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
+_libname=${pkgname/python-/}
 pkgdesc="Python bindings for the linux input handling subsystem"
-arch=(any)
-url="http://packages.python.org/evdev/"
-license=(New BSD)
+url="http://python-evdev.readthedocs.org/en/latest/"
 depends=(python linux-api-headers)
-makedepends=(python-setuptools)
-provides=(python-$_pkgname=$pkgver)
-conflicts=(python-$_pkgname)
-source=(http://pypi.python.org/packages/source/e/$_pkgname/$_pkgname-$pkgver.tar.gz
-        https://github.com/gvalkov/python-evdev/raw/d9110552d6d03bd657d876b40a066b6790e82ebb/LICENSE)
+makedepends=('python-setuptools')
+license=('BSD')
+arch=('i686' 'x86_64')
+source=(http://pypi.python.org/packages/source/e/$_libname/$_libname-$pkgver.tar.gz
+        $pkgname-$pkgver-LICENSE::https://github.com/gvalkov/python-evdev/raw/v0.5.0/LICENSE)
 sha256sums=('509f0f6ce5a12315fcad0b7f9b41cbdfc5c5f49a7cecdd6a88ce5c1d04f6827c'
-            '6aebc0c215cb6b73660175704579011215a7ca8f4e35a6c129169de217faf7fb')
+            '7f5d5a45eb177f143709c191c1f4cb5e06555583c92412419bfb3fc56c715f33')
+
+build() {
+	cd "$srcdir"/$_libname-$pkgver
+	python setup.py build
+}
 
 package() {
-    cd "$srcdir"/$_pkgname-$pkgver/
-    python setup.py install --prefix=/usr --root="$pkgdir" -O1
-    install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "$srcdir"/$_libname-$pkgver
+	python setup.py install --skip-build -O1 --root="$pkgdir"
+
+	cd "$pkgdir"
+	install -m0644 -D "$srcdir"/$pkgname-$pkgver-LICENSE usr/share/licenses/$pkgname/LICENSE
+	chmod -R a+r usr
 }
