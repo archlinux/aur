@@ -1,0 +1,15 @@
+pkgbase = nodejs-requirejs
+	pkgdesc = Node.js adapter for RequireJS
+	pkgver = 2.1.20
+	pkgrel = 1
+	url = http://github.com/jrburke/r.js
+	arch = any
+	license = BSD
+	license = MIT
+	depends = nodejs
+	noextract = requirejs-2.1.20.tgz
+	source = http://registry.npmjs.org/requirejs/-/requirejs-2.1.20.tgz
+	md5sums = eb865548683a44422594629206ddf04b
+
+pkgname = nodejs-requirejs
+
