@@ -16,9 +16,3 @@ pkgbase = mingw-w64-lapack
 pkgname = mingw-w64-lapack
 	depends = mingw-w64-blas
 
-pkgname = mingw-w64-blas
-	pkgdesc = Basic Linear Algebra Subprograms (mingw-w64)
-
-pkgname = mingw-w64-cblas
-	pkgdesc = C interface to BLAS (mingw-w64)
-
