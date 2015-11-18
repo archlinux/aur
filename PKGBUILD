@@ -5,15 +5,15 @@ _module="github"
 _check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.25.2"
-pkgrel="5"
+pkgver="1.26.0"
+pkgrel="1"
 pkgdesc="Use the full Github API v3"
 arch=("any")
 url="http://jacquev6.net/${_name}/v1/"
 license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('72aee507625e8ce6e3bef825e2ba543d0a2a20cb5ba5edfbe6436fc6eadfcef8')
+sha256sums=('59d0ceafd1c4fb73117aa35f515988b691a386046714f278521ba01d260ddefb')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"

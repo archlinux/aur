@@ -1,14 +1,14 @@
 pkgbase = python-github
 	pkgdesc = Use the full Github API v3
-	pkgver = 1.25.2
-	pkgrel = 5
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = http://jacquev6.net/PyGithub/v1/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/P/PyGithub/PyGithub-1.25.2.tar.gz
-	sha256sums = 72aee507625e8ce6e3bef825e2ba543d0a2a20cb5ba5edfbe6436fc6eadfcef8
+	source = https://pypi.python.org/packages/source/P/PyGithub/PyGithub-1.26.0.tar.gz
+	sha256sums = 59d0ceafd1c4fb73117aa35f515988b691a386046714f278521ba01d260ddefb
 
 pkgname = python-github
 	depends = python
