@@ -26,7 +26,7 @@ md5sums=("75854469a4abb1132b93a80c2336d7c6"
 
 package() {
 	install -d -m755 "$pkgdir"/usr/share/ynab4
-	cp -ra "$srcdir"/Setup.exe "$pkgdir"/usr/share/ynab4
+	cp -raL "$srcdir"/Setup.exe "$pkgdir"/usr/share/ynab4
 	
 	install -d -m755 "$pkgdir"/usr/bin
 	install -m755 ynab4 "$pkgdir"/usr/bin
