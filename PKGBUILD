@@ -2,8 +2,8 @@
 
 pkgname=zeal
 epoch=1
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Simple offline API documentation browser'
 arch=(x86_64 i686)
 url='http://zealdocs.org/'
@@ -13,12 +13,10 @@ makedepends=()
 conflicts=(zeal-git)
 install=zeal.install
 source=(zeal-${pkgver}.tar.gz::https://github.com/jkozera/zeal/archive/v${pkgver}.tar.gz
-  add_qdatastream_include.patch
   zeal.install)
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	patch -p1 < "${srcdir}/add_qdatastream_include.patch"
 	qmake CONFIG+=no_libappindicator
 	make ZEAL_VERSION=${pkgver}
 }
@@ -28,6 +26,5 @@ package() {
 	make INSTALL_ROOT="$pkgdir/" install
 }
 
-sha256sums=('f4e959f9bc66a6e350ee8a33d34695379633432d103db9776c0c7a76cbc5a9d6'
-            '8aa8b29ea5d0ff06766eac6c8ad659012bfa71b0b62167bb0b2382291be7ad6b'
+sha256sums=('a27dcdd94324575eb43a9f67aeea93b4b912691ab6df6e575d51ef104679e084'
             '00c8482dd54eaa217682adee62267e8b9e45cc72842cba82ae7de370301cd4eb')
