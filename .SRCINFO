@@ -1,14 +1,14 @@
 pkgbase = python-warlock
 	pkgdesc = Python object model built on JSON schema and JSON patch.
-	pkgver = 1.1.0
-	pkgrel = 4
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/bcwaldon/warlock
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/w/warlock/warlock-1.1.0.tar.gz
-	sha256sums = bbfb4279034ccc402723e38d2a2e67cd619988bf4802fda7ba3e8fab15762651
+	source = https://pypi.python.org/packages/source/w/warlock/warlock-1.2.0.tar.gz
+	sha256sums = 7c0d17891e14cf77e13a598edecc9f4682a5bc8a219dc84c139c5ba02789ef5a
 
 pkgname = python-warlock
 	depends = python-jsonschema>=0.7
