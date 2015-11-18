@@ -69,5 +69,24 @@ package() {
   #sudo pacman -S restartd
   #echo 'netvirt-agent \"netvirt-agent\" \"sleep 20 && su - \$USER -c netvirt-agent &\" \"\"' | sudo tee -a /etc/restartd.conf
   #" > ${pkgdir}/usr/bin/netvirt-daemonize
+
+  # ArchLinux uses SystemD, Yeah
+  cat << EOF > ${pkgdir}/usr/lib/systemd/system/netvirt-agent.service
+[Unit]
+Description=Netvirt Agent
+After=network.target
+
+[Service]
+Environment="HOME=/root"
+ExecStart=/usr/bin/netvirt-agent
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+EOF
+
 }
 
