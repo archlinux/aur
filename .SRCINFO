@@ -1,7 +1,7 @@
 pkgbase = bazel
 	pkgdesc = Correct, reproducible, and fast builds for everyone
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = http://bazel.io/
 	install = bazel.install
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = bazel
 	depends = zip
 	depends = unzip
 	options = !strip
-	source = https://github.com/bazelbuild/bazel/archive/0.1.0.tar.gz
-	sha256sums = 12a0fee716108fee8c0039551b9020fba3cf6c42262d304485d2788f8611ca41
+	source = https://github.com/bazelbuild/bazel/archive/0.1.1.tar.gz
+	sha256sums = 49d11d467cf9e32dea618727198592577fbe76ff2e59217c53e3515ddf61cd95
 
 pkgname = bazel
 
