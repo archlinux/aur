@@ -15,8 +15,6 @@ source=("http://kde-look.org/CONTENT/content-files/146380-kde-thumbnailer-blende
         "port_to_qt5.patch")
 sha256sums=('b2162c1ea09103b87b7f6ee69725e8de972a4781fd442c34fd4b3346de878319' 'SKIP')
 
-[[ $CARCH == x86_64 ]] && is64bit=64
-
 prepare() {
     cd "${srcdir}"/${_pkgname}
     patch -p1 < ../port_to_qt5.patch
@@ -28,9 +26,10 @@ build() {
 }
 
 package() {
+  [[ $CARCH == x86_64 ]] && is64bit=64
   cd "${srcdir}"/${_pkgname}
   install -dm755 "${pkgdir}/usr/lib/qt/plugins"
   make DESTDIR="${pkgdir}" install
   mv "${pkgdir}/usr/lib${is64bit}/plugins"/* "${pkgdir}/usr/lib/qt/plugins"
-  rm -rf "${pkgdir}/usr/lib64"
+  rmdir "${pkgdir}/usr/"{lib64/plugins,lib64}
 }
