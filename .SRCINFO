@@ -10,6 +10,7 @@ pkgbase = sent-git
 	depends = fontconfig
 	depends = libxft
 	depends = libpng
+	conflicts = sent
 	source = sent-git::git://git.suckless.org/sent
 	sha256sums = SKIP
 
