@@ -8,7 +8,7 @@ license=('GPL')
 makedepends=('go' 'git')
 
 source=(
-	"impl::git+ssh://github.com/josharian/impl"
+	"impl::git://github.com/josharian/impl.git"
 )
 
 md5sums=(
