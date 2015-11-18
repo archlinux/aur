@@ -7,7 +7,7 @@
 
 pkgname=pam-selinux
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -63,16 +63,6 @@ package() {
   # source ftp://ftp.suse.com/pub/people/kukuk/pam/pam_unix2
   cd $srcdir/pam_unix2-2.9.1
   make DESTDIR=$pkgdir install
-
-  # add the realtime permissions for audio users
-  sed -i 's|# End of file||' $pkgdir/etc/security/limits.conf
-  cat >>$pkgdir/etc/security/limits.conf <<_EOT
-*               -       rtprio          0
-*               -       nice            0
-@audio          -       rtprio          65
-@audio          -       nice           -10
-@audio          -       memlock         40000
-_EOT
 
   # fix some missing symlinks from old pam for compatibility
   cd $pkgdir/usr/lib/security
