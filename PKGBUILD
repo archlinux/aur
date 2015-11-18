@@ -14,9 +14,9 @@ sha256sums_x86_64=('7040186648b01451767c122889b5429220f975ecb5f2d25ce4acf1f00cc8
 
 build() {
 	if test "$CARCH" == x86_64; then
-		rpmextract.sh ../vstudio_x64_lin-rpm
+		rpmextract.sh ../vstudio_x64_lin-rpm?format=raw
 	else
-		rpmextract.sh ../vstudio_6_lin-rpm
+		rpmextract.sh ../vstudio_lin_32_rpm?format=raw
 	fi
 }
 
