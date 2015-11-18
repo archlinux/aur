@@ -12,7 +12,7 @@ install=${pkgname}.install
 md5sums=('8a41fe42b1cabd9f196ce81d84db6736')
 
 package() {
-    msg2 "Extracting the data.tar.xz..."
+    msg2 "Extracting data.tar.gz..."
     bsdtar -xf data.tar.gz -C "${pkgdir}/"
 
     cd "${pkgdir}"
