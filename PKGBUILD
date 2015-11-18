@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php?content=156421"                                                  
 license=('GPL')                                                    
 depends=('kdelibs4support')
-makedepends=('cmake')
+makedepends=('cmake' 'extra-cmake-modules' 'kdoctools' 'qt5-tools')
 conflicts=("$_pkgname")
 source=("${_pkgname}-${pkgver}.tar.bz2::http://kde-apps.org/CONTENT/content-files/156421-${_pkgname}-${pkgver}.tar.bz2"
         "port_to_qt5.patch")
@@ -29,9 +29,10 @@ build() {
 }
 
 package() {
+  [[ $CARCH == x86_64 ]] && is64bit=64
   cd "${srcdir}"/${_pkgname}
   install -dm755 "${pkgdir}/usr/lib/qt/plugins"
   make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}/usr/lib64/plugins"/* "${pkgdir}/usr/lib/qt/plugins"
-  rm -r "${pkgdir}/usr/lib64"
+  mv "${pkgdir}/usr/lib${is64bit}/plugins"/* "${pkgdir}/usr/lib/qt/plugins"
+  rmdir "${pkgdir}/usr/"{lib64/plugins,lib64}
 }
