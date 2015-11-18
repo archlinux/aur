@@ -1,6 +1,6 @@
 pkgbase = flashplugin-focusfix
 	pkgdesc = Adobe Flash Player with multi-monitor full-screen fix
-	pkgver = 11.2.202.540
+	pkgver = 11.2.202.548
 	pkgrel = 1
 	url = http://get.adobe.com/flashplayer
 	install = flashplugin.install
@@ -24,10 +24,10 @@ pkgbase = flashplugin-focusfix
 	source = mms.cfg
 	md5sums = 94ca2aecb409abfe36494d1a7ec7591d
 	md5sums = f34aae6279b40e0bd2abfb0d9963d7b8
-	source_i686 = flashplugin_11.2.202.540.i386.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.540/install_flash_player_11_linux.i386.tar.gz
-	md5sums_i686 = 6c16fe02dd4024a3067db346414f57d7
-	source_x86_64 = flashplugin_11.2.202.540.x86_64.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.540/install_flash_player_11_linux.x86_64.tar.gz
-	md5sums_x86_64 = 8231c8b59499a56b2388d311b538c384
+	source_i686 = flashplugin_11.2.202.548.i386.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.548/install_flash_player_11_linux.i386.tar.gz
+	md5sums_i686 = 33544137ff1c8dedc428b8e077be2326
+	source_x86_64 = flashplugin_11.2.202.548.x86_64.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.548/install_flash_player_11_linux.x86_64.tar.gz
+	md5sums_x86_64 = dc274f3e5deef7ca304e4d3f791e1f29
 
 pkgname = flashplugin-focusfix
 
