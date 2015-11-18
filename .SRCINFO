@@ -1,0 +1,17 @@
+pkgbase = perl6-json-path
+	pkgdesc = Implementation of the JSONPath data structure query language
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jnthn/json-path
+	arch = any
+	groups = perl6
+	license = MIT
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	depends = perl6-json-tiny
+	source = perl6-json-path-0.0.1::git+https://github.com/jnthn/json-path
+	sha256sums = SKIP
+
+pkgname = perl6-json-path
+
