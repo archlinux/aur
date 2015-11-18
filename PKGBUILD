@@ -1,7 +1,7 @@
 # Maintainer: ssfdust <ssfdust@gmail.com>
 pkgname=ycm-generator-git
 pkgbase=ycm-generator-git
-pkgver=develop79.fc4839e
+pkgver=stable92.3d1ee4e
 pkgrel=1
 pkgdesc="Generates config files for YouCompleteMe (https://github.com/Valloric/YouCompleteMe)"
 arch=('any')
@@ -15,15 +15,9 @@ provides=('ycm-generator-git' 'ycm-generator')
 source=("git://github.com/rdnetto/YCM-Generator.git")
 md5sums=('SKIP')
 
-prepare()
-{
-    #switch to develop branch for archlinux support
-	cd $srcdir/YCM-Generator/
-    git checkout develop
-}
 pkgver() {
 	cd $srcdir/YCM-Generator/
-	printf "develop%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "stable%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
