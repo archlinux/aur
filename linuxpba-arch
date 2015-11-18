@@ -28,8 +28,9 @@ then
                 YKCHAL="$(getpasswd)"
                 echo ""
             fi
-            echo "Touch the Yubikey button if it is blinking."
+            echo -n "Touch the Yubikey button if it is blinking."
             KEYFOB_PASSWD="$(ykchalresp -2 "$YKCHAL" 2>/dev/null)"
+            echo -en "\r\e[K"
         fi
     fi
 
