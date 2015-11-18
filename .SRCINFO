@@ -1,0 +1,14 @@
+pkgbase = freq-git
+	pkgdesc = Command to show character (Unicode code point) frequency.
+	pkgver = r8.1b93e11
+	pkgrel = 1
+	url = https://github.com/robpike/freq
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go>=1.5
+	conflicts = freq
+
+pkgname = freq-git
+
