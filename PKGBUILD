@@ -12,6 +12,7 @@ license=('GPL')
 depends=('fftw' 'gdal' 'glu' 'python2-pillow' 'subversion' 'wxpython')
 makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface')
+install=$pkgname.install
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
 md5sums=('bda8f612443a935b9da78dba85733db4')
 
@@ -61,12 +62,14 @@ package() {
   install -d "$pkgdir/etc/ld.so.conf.d/"
   echo "/opt/$pkgname/lib" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 
-  # Install desktop file
-  install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/pixmaps/grass.png"
-  install -Dm644 gui/icons/grass.desktop "$pkgdir/usr/share/applications/grass.desktop"
+  cd "$pkgdir/opt/$pkgname"
+
+  # Put freedesktop.org files in correct location
+  mv share "$pkgdir/usr"
+  install -Dm644 gui/icons/grass-48x48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/grass.png"
+  install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/grass.png"
 
   # Fix some paths that get hard coded by make install
-  cd "$pkgdir/opt/$pkgname"
   sed -i "s|$pkgdir||g" demolocation/.grassrc$_shortver \
                         include/Make/{Platform,Grass}.make \
                         etc/fontcap \
