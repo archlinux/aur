@@ -1,0 +1,14 @@
+pkgbase = typo-git
+	pkgdesc = A modern version of the original Unix typo command.
+	pkgver = r16.ee3a2cb
+	pkgrel = 1
+	url = https://github.com/robpike/typo
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go>=1.5
+	conflicts = typo
+
+pkgname = typo-git
+
