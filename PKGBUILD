@@ -1,6 +1,6 @@
 # Maintainer: Marius Zukaitis <marius.zukaitis@gmail.com>
 
-pkgbase=kdbus-ck
+pkgbase=kdbus
 pkgname=('kdbus-ck')
 pkgver=4.3
 
@@ -23,7 +23,7 @@ md5sums=('SKIP'
          'c6835d4962c9e9fc74e3079c722f4b2b')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$scrdir"
 
   #
   # You *MUST* set $pkgver to the kernel version you want to build kdbus for.
@@ -49,13 +49,13 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "$srcdir"
 
   # nothing to do?
 }
 
 build() {
-  cd "$pkgname"
+  cd "$srcdir"
 
   make ${MAKEFLAGS} KERNELVER="$(cat /usr/lib/modules/$_extramodules/version)"
 }
@@ -65,7 +65,7 @@ package_kdbus-ck() {
   license=('GPL2')
   depends=("linux-ck-$_cpu>=$pkgver" "linux-ck-$_cpu<$_nxver")
 
-  cd "$pkgname"
+  cd "$srcdir"
 
   install -Dm644 "ipc/kdbus/kdbus.ko" "${pkgdir}/usr/lib/modules/${_extramodules}/kdbus.ko"
 
