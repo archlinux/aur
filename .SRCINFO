@@ -1,5 +1,5 @@
 pkgbase = loudness-scanner-git
-	pkgdesc = EBU R128 loduness normalization tool
+	pkgdesc = EBU R128 loudness normalization tool
 	pkgver = v0.5.1.r18.g3d333bf
 	pkgrel = 1
 	url = https://github.com/jiixyj/loudness-scanner
