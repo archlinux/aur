@@ -1,13 +1,13 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=n1
-pkgver=0.3.20
+pkgver=0.3.23
 pkgrel=1
 pkgdesc="N1 is a new mail client for Mac, Linux and Windows, built on the modern web and designed to be extended."
 arch=('x86_64')
 url="https://nylas.com/N1/"
 license=('MIT')
 depends=('gtk2' 'libgnome-keyring' 'desktop-file-utils' 'python2' 'gconf' 'nodejs' 'libnotify' 'libxtst' 'nss' 'alsa-lib')
-source=(http://edgehill.s3-us-west-2.amazonaws.com/${pkgver}-6bbe930/linux/x64/N1.deb)
+source=(http://edgehill.s3-us-west-2.amazonaws.com/${pkgver}-94e0cb9/linux/x64/N1.deb)
 install=${pkgname}.install
 md5sums=('8a41fe42b1cabd9f196ce81d84db6736')
 
