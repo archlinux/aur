@@ -19,12 +19,6 @@ build () {
                 add_binary "cryptsetup"
                 add_binary "dmsetup"
                 add_file "/etc/linuxpba/keyring.luks"
-                add_module loop
-                #add_all_modules '/crypto/'
-                add_module dm-crypt
-                add_module xts
-                add_module algif_skcipher
-                add_module af_alg
                 add_file "/usr/lib/udev/rules.d/10-dm.rules"
                 add_file "/usr/lib/udev/rules.d/13-dm-disk.rules"
                 add_file "/usr/lib/udev/rules.d/95-dm-notify.rules"

@@ -20,13 +20,14 @@ USE_SEDUTIL_PBA=1
 
 # The challenge to send to the yubikey. The response will unlock the
 # keyring file. Use the challenge configured here as the challenge when
-# creating your luks encrypted keyring file.
-YKCHAL=GiveMeThePassword
+# creating your luks encrypted keyring file. Alternatively leave the challenge
+# blank to be prompted for the challenge when booting.
+YKCHAL="GiveMeThePassword"
 
 # Keyfile name. Use an udev rule to create a single symlink to one of many
 # devices with the luks keys and add the rule file in the FILES array above,
 # or set this to /dev/disk/by-id of the device where you keep the keyfile.
-KFNAME=/dev/cryptkey
+KFNAME="/dev/cryptkey"
 
 # How many bytes to skip in the beginning of the keyfile device
 KFSKIP=524288

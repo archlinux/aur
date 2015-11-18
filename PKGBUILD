@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -26,11 +26,11 @@ sha256sums=('31b1006a1f65b83fb419635f21a02bfb99bed8d4d6b351f566831af3682165dd'
             '5ab7ef67fea0f4e370d8f0a4da87636a1df18e0edb0152d08f906f38280cc0e8'
             '77c725e4eee095dbede512d2bca13b8f2c139a67b9b87a11d98be94e6df0e1d7'
             'c599c6066f23aa403cd7c4c43b9b9900079cdbb7bc0b97c79e70a2383864646f'
-            '7b2ffee83e775f9225728f2457752e20792112148079490f95e7b3b72ee0db30'
-            'b444dc45933db1ba893ad1a4c6a9a7405b2332ae11b5db8dc86c6dae45776948'
-            'fb23e2697cb5d8e3240ed6cd9345c40606defd298405938020e7efffe9cbebed'
+            '80a7bdea707a0935310adc3c88a2e0958767134315a2da284bc2afb0ed1b2135'
+            '6bf64faa4e413bac489e83518daf6963760cc4474ea2b848d0192402214c0efb'
+            'a110e6d6da0fd658412d8c79f7f2cbc58a9b0067c34c34c94c8f623801eecc78'
             'd9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447'
-            'b20ec0ee18cf8cbdad7e2154fdad3e0c4ba3b65471c750464c69f23318e4e80d'
+            'f31a0ba891dd705ef68174afeb651bdc3426a63202d058d98510907de43248f7'
             'e94d011c98bd336f37d6d4923e5d63a22ebd10d8f2c6486b6bcd6617524d6484')
 PKGEXT='.pkg.tar'
 CPPFLAGS="$CPPFLAGS -O2"

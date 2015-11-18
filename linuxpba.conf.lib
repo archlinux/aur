@@ -1,3 +1,6 @@
 . /etc/linuxpba/linuxpba.conf
 
-MODULES="$MODULES loop dm-crypt xts algif_skcipher af_alg"
+if [[ "$USE_SEDUTIL_PBA" -eq 0 ]]
+then
+    MODULES="$MODULES loop dm-crypt xts algif_skcipher"
+fi

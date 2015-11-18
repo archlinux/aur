@@ -22,12 +22,18 @@ then
         ykinfo -s &>/dev/null
         if [[ $? -eq 0 ]]
         then
-            echo "Press the Yubikey button if it is blinking."
+            if [[ "x$YKCHAL" = "x" ]]
+            then
+                echo -n "Enter the Yubikey challenge: "
+                YKCHAL="$(getpasswd)"
+                echo ""
+            fi
+            echo "Touch the Yubikey button if it is blinking."
             KEYFOB_PASSWD="$(ykchalresp -2 "$YKCHAL" 2>/dev/null)"
         fi
     fi
 
-    if [[ "x$KEYFOB_PASSWD" != "x" && "x$SED_PASSWD" = "x" ]]
+    if [[ "x$KEYFOB_PASSWD" != "x" ]]
     then
         echo -n "Unlocking keyring with yubikey password ... "
         echo -n "$KEYFOB_PASSWD" | cryptsetup --key-file - open --type luks \
@@ -68,12 +74,12 @@ then
     fi
 fi
 
-while [[ "x$SED_PASSWD" = "x" ]]
-do
+if [[ "x$SED_PASSWD" = "x" ]]
+then
     echo -n "Enter password to unlock the OPAL drives: "
     SED_PASSWD="$(getpasswd)"
     echo ""
-done
+fi
 
 ERRORS=0
 
