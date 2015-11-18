@@ -1,21 +1,30 @@
 # Maintainer: David Phillips <dbphillipsnz@gmail.com>
 
-_pkgname=dodo
+_pkgname=sent
 pkgname=${_pkgname}-git
-pkgver=r74.f4d89e7
+pkgver=r69.cc57a28
 pkgrel=1
-pkgdesc="Scriptable in-place file editor"
+pkgdesc="Simple plain-text presentation tool"
 arch=('i686' 'x86_64')
-url=(https://github.com/mkfifo/${_pkgname})
+url=(http://tools.suckless.org/${_pkgname})
 license=('MIT')
-depends=()
+depends=('fontconfig' 'libxft' 'libpng')
 makedepends=('git')
-source=("${pkgname}::git://github.com/mkfifo/${_pkgname}.git")
+source=("${pkgname}::git://git.suckless.org/${_pkgname}")
+#        "config.h")
 sha256sums=('SKIP')
+#            'SKIP')
 
 pkgver() {
 	cd "${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/${pkgname}"
+	if [ -f "${srcdir}/config.h" ]; then
+		cp "${srcdir}/config.h" .
+	fi
 }
 
 build() {
