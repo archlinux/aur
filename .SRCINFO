@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-theme-air-git
+	pkgdesc = Grub2 theme Air
+	pkgver = 20151118
+	pkgrel = 1
+	url = https://github.com/WaWei/gnome-shell-theme-air
+	install = gnome-shell-theme-air-git.install
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = grub
+	conflicts = gnome-shell-theme-air
+	source = gnome-shell-theme-air-git::git+https://github.com//WaWei/gnome-shell-theme-air
+	md5sums = SKIP
+
+pkgname = gnome-shell-theme-air-git
