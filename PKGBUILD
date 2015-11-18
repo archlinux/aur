@@ -60,7 +60,7 @@ build() {
   make ${MAKEFLAGS} KERNELVER="$(cat /usr/lib/modules/$_extramodules/version)"
 }
 
-package_kdbus() {
+package_kdbus-ck() {
   pkgdesc="kdbus ipc kernel module"
   license=('GPL2')
   depends=("linux-ck-$_cpu>=$pkgver" "linux-ck-$_cpu<$_nxver")
