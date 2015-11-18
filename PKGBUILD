@@ -2,8 +2,8 @@
 
 pkgname=vscode-bin
 pkgdesc='Visual Studio Code for Linux'
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('custom')
@@ -15,9 +15,9 @@ source_i686=("${_src_base}/VSCode-linux32.zip"
              'vscode.desktop')
 source_x86_64=("${_src_base}/VSCode-linux64.zip"
                'vscode.desktop')
-sha1sums_i686=('c7149d3d2e451b622f223dba43a4c1a9ff46ecca'
+sha1sums_i686=('793403a073b5a484e906a191ff5d4957e69911d3'
                '71efff6181d2bba05376ce7401801671e6a58752')
-sha1sums_x86_64=('a872a9e6c1eacd8fe3d4c4010f977cde1e24efa5'
+sha1sums_x86_64=('65693e3991fa15efc20a7e2d749b40d582f88022'
                  '71efff6181d2bba05376ce7401801671e6a58752')
 
 package() {
