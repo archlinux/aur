@@ -1,0 +1,9 @@
+[Unit]
+Description=eGalax touchscreen device driver
+
+[Service]
+ExecStart=/usr/bin/eGTouchD
+Type=forking
+
+[Install]
+WantedBy=graphical.target

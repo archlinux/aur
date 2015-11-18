@@ -1,0 +1,9 @@
+
+[Desktop Entry]
+Name=eGalax Config Utility
+Comment=eGalax Touch Controller Configuration
+Exec=gksu eGTouchU
+Icon=eGTouchU
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;System;

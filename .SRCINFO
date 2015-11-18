@@ -1,0 +1,28 @@
+pkgbase = xf86-input-egalax
+	pkgdesc = Touchscreen driver for eGalax (eeti) devices
+	pkgver = 2.5.4330
+	pkgrel = 3
+	url = http://home.eeti.com.tw/drivers_Linux.html
+	install = xf86-input-egalax.install
+	arch = i686
+	arch = x86_64
+	groups = xorg-input-drivers
+	license = custom:EULA
+	depends = linux
+	depends = libpng12
+	depends = gksu
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = xorg-server
+	backup = etc/eGTouchL.ini
+	source = eGTouch_v2.5.4330.L-x.zip::http://home.eeti.com.tw/touch_driver/Linux/20141009/eGTouch_v2.5.4330.L-x.zip
+	source = eGalaxConfig.desktop
+	source = eGTouchD.service
+	source = eGTouchD.conf
+	md5sums = F036A1284CEFC9394B30E4E0C960D122
+	md5sums = 0ee99c83fd74bdb8357427eae9b2dc7d
+	md5sums = a52c4c1682ee196a6bbffe4768154a92
+	md5sums = c9284fbcf2bdaec8d3eea21f6b7be34d
+
+pkgname = xf86-input-egalax
+

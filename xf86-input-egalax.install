@@ -1,0 +1,14 @@
+_install_notes() {
+    echo
+    echo "(I) To start the eGTouch driver on boot:"
+    echo "    # systemctl enable eGTouchD.service"
+    echo
+}
+
+post_install() {
+    _install_notes
+}
+
+post_upgrade() {
+    _install_notes
+}
