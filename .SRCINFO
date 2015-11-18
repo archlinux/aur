@@ -6,7 +6,6 @@ pkgbase = mingw-w64-hmat-oss
 	arch = any
 	license = GPL
 	makedepends = mingw-w64-cmake
-	depends = mingw-w64-cblas
 	depends = mingw-w64-lapack
 	options = !buildflags
 	options = staticlibs
