@@ -1,6 +1,6 @@
 pkgbase = guidolib-git
 	pkgdesc = engine for the graphic rendering of music scores, based on the Guido Music Notation format (git version)
-	pkgver = 2092.3d8d8f3
+	pkgver = 2094.d9f8e03
 	pkgrel = 1
 	url = http://guidolib.sourceforge.net/
 	install = guidolib-git.install

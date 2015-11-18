@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidolib-git
-pkgver=2092.3d8d8f3
+pkgver=2094.d9f8e03
 pkgrel=1
 pkgdesc="engine for the graphic rendering of music scores, based on the Guido Music Notation format (git version)"
 arch=('x86_64' 'i686')
