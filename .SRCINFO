@@ -1,18 +1,18 @@
 pkgbase = python-rauth
 	pkgdesc = A Python library for OAuth 1.0/a, 2.0, and Ofly
-	pkgver = 0.7.1
-	pkgrel = 3
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://rauth.readthedocs.org
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/r/rauth/rauth-0.7.1.tar.gz
-	sha256sums = 3117cbbb92d4d88e14ae91f327c73a13485fbc6822132de611f60ea8fc343dea
+	source = https://pypi.python.org/packages/source/r/rauth/rauth-0.7.2.tar.gz
+	sha256sums = 8ec57f8d6bfc574b55b622fd04b61cc5d4732e8efd63c092fa102641f83ff802
 
 pkgname = python-rauth
-	depends = python-requests
+	depends = python-requests>=1.2.3
 
 pkgname = python2-rauth
-	depends = python2-requests
+	depends = python2-requests>=1.2.3
 
