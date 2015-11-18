@@ -9,7 +9,7 @@ pkgname=protege
 pkgver=4.3.0.304
 _pkgver=4.3.0-304
 _ver=4.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Free, open source ontology editor and knowledge-base framework'
 arch=('any')
 url='http://protege.stanford.edu/'
@@ -37,9 +37,11 @@ package() {
 
   install -d ${pkgdir}/usr/share/java/${pkgname}
   cp -r * ${pkgdir}/usr/share/java/${pkgname}
-
   install -d ${pkgdir}/usr/bin
   install -D ${srcdir}/protege.sh ${pkgdir}/usr/bin/protege
   install -Dm644 "${srcdir}/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "${srcdir}/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
+  sed -i '10a\ \ \ \ \ $CMD_OPTIONS \\' ${pkgdir}/usr/share/java/${pkgname}/run.sh
+
 }

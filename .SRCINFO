@@ -1,7 +1,7 @@
 pkgbase = protege
 	pkgdesc = Free, open source ontology editor and knowledge-base framework
 	pkgver = 4.3.0.304
-	pkgrel = 3
+	pkgrel = 4
 	url = http://protege.stanford.edu/
 	arch = any
 	license = MPL
