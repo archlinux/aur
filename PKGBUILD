@@ -7,13 +7,13 @@
 
 _pkgname=dmenu
 pkgname=$_pkgname-git
-pkgver=4.5.21.bbf7b95
+pkgver=4.5.46.32f2564
 pkgrel=1
 pkgdesc="A generic menu for X"
 url="http://tools.suckless.org/dmenu/"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('sh' 'libxinerama')
+depends=('sh' 'libxinerama' 'libxft')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
