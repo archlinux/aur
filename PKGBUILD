@@ -3,7 +3,7 @@
 
 pkgname=pcb2gcode
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Gerber to gcode file converter" 
 arch=('i686' 'x86_64')
 url="https://github.com/pcb2gcode/pcb2gcode/wiki"
@@ -12,9 +12,9 @@ depends=('gerbv-git')
 source=("https://github.com/pcb2gcode/pcb2gcode/releases/download/v${pkgver}/pcb2gcode-${pkgver}.tar.gz"
         '0001-Fixed-GCC5-build-errors.patch'
         'glibmm.patch')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+md5sums=('cacb0d0b7ab58ff1b6b45353bb2ebd55'
+         'ef0e42b4a9173e290845aa6e91a61f34'
+         '8d1ea64839d36b359dfb4ad8131b7e73')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
