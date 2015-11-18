@@ -6,7 +6,7 @@ replaces=('zarafa-server-arm')
 pkgver=7.2.1
 _pkgmajver=7.2
 _pkgrev=${pkgver}-51847
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Groupware Solution"
 arch=('arm'
       'armv7h'
@@ -22,7 +22,7 @@ depends=("zarafa-libical>=7.2.0"
 	 'flex'
 	 'gettext'
 	 'gsoap'
-	 'boost'
+	 'boost<=1.58.0'
          'curl'
          'icu'
          'ncurses'
@@ -47,8 +47,6 @@ depends=("zarafa-libical>=7.2.0"
 makedepends=('gcc<=4.9.2'
              'gcc-libs<=4.9.2'
              'binutils<=2.25'
-             'boost<=1.58.0'
-             'boost-libs<=1.58.0'
              'pkg-config<=0.28')
 optdepends=('zarafa-webaccess'
 	    'zarafa-webapp'
