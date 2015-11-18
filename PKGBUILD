@@ -3,7 +3,7 @@
 pkgname=gnome-shell-theme-air-git
 pkgver=20151118
 pkgrel=1
-pkgdesc="Grub2 theme Air"
+pkgdesc="A simple theme for gnome-shell"
 url="https://github.com/WaWei/gnome-shell-theme-air"
 arch=('any')
 license=('GPLv3')

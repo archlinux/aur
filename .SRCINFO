@@ -1,5 +1,5 @@
 pkgbase = gnome-shell-theme-air-git
-	pkgdesc = Grub2 theme Air
+	pkgdesc = A simple theme for gnome-shell
 	pkgver = 20151118
 	pkgrel = 1
 	url = https://github.com/WaWei/gnome-shell-theme-air
@@ -13,3 +13,4 @@ pkgbase = gnome-shell-theme-air-git
 	md5sums = SKIP
 
 pkgname = gnome-shell-theme-air-git
+
