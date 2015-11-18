@@ -37,7 +37,7 @@ check() {
 
 package() {
   cd "$srcdir"
-  install -Dm755 bin/freq "$pkgdir/usr/bin/go/freq"
+  install -Dm755 bin/freq "$pkgdir/usr/bin/freq"
   install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
