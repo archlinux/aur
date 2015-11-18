@@ -5,10 +5,10 @@
 
 pkgname=adom
 pkgver=60
-pkgrel=3
+pkgrel=4
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=("i686" "x86_64" "armv6h")
-depends=("ncurses")
+depends=("ncurses5-compat-libs")
 url="http://www.adom.de/"
 license=('custom: "adom"')
 
