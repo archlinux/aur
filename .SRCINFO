@@ -1,0 +1,31 @@
+pkgbase = popcorntime-community
+	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
+	pkgver = 0.3.8.5
+	pkgrel = 6
+	url = https://github.com/astrolince/popcorn-desktop
+	install = popcorntime.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = ttf-font
+	depends = gconf
+	depends = nss
+	depends = libxtst
+	depends = gtk2
+	depends = alsa-lib
+	optdepends = net-tools: necessary for the new vpn feature
+	optdepends = ttf-liberation: open source ttf fonts
+	provides = popcorntime
+	conflicts = popcorntime
+	options = !strip
+	source = https://github.com/astrolince/popcorn-desktop/releases/download/v0.3.8-5/Popcorn-Time-Community-0.3.8-5-Linux-64.tar.xz
+	source = popcorntime.install
+	source = popcorntime.desktop
+	sha1sums = bdfc10021882f439e3118f60e77dd61b5b3b5cb4
+	sha1sums = d2e56426a321faabd316ea0bc89b2fa2fb0dfa48
+	sha1sums = 98cba5c0c979d37e601cc33cf3b562f106427d36
+
+pkgname = popcorntime-community
+
