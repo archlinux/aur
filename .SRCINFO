@@ -1,0 +1,14 @@
+pkgbase = pbc
+	pkgdesc = a pairing-based cryptography library
+	pkgver = 0.5.14
+	pkgrel = 1
+	url = https://crypto.stanford.edu/pbc/
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	depends = gmp
+	source = https://crypto.stanford.edu/pbc//files/pbc-0.5.14.tar.gz
+	sha256sums = 772527404117587560080241cedaf441e5cac3269009cdde4c588a1dce4c23d2
+
+pkgname = pbc
+
