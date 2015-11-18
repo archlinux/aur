@@ -1,6 +1,6 @@
 pkgbase = lasem
 	pkgdesc = SVG and Mathml rendering library
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = http://blogs.gnome.org/emmanuel/category/lasem/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = lasem
 	depends = gtk3
 	optdepends = lyx: ttf fonts for MathML
 	options = !libtool
-	source = http://ftp.gnome.org/pub/GNOME/sources/lasem/0.4/lasem-0.4.1.tar.xz
-	sha256sums = 20dfdb964eaf88407fb705499b7bc7d944bc7301369e8792263fb0b31b8fbcc3
+	source = http://ftp.gnome.org/pub/GNOME/sources/lasem/0.4/lasem-0.4.3.tar.xz
+	sha256sums = e7d950f9579defc7bb9d4159a0bfff165a3a621945ac9f202c930f2fea2dd58f
 
 pkgname = lasem
 
