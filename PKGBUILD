@@ -13,12 +13,12 @@ DLAGENTS=("http::/usr/bin/wget --user ${_username} --password ${_password} %u")
 
 pkgname=adom-restricted
 pkgver=61
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=("i686" "x86_64" "armv6h")
 conflicts=("adom")
 provides=("adom")
-depends=("ncurses")
+depends=("ncurses5-compat-libs")
 url="http://www.adom.de/"
 license=('custom: "adom"')
 
