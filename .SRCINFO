@@ -1,6 +1,6 @@
 pkgbase = holo
 	pkgdesc = Minimalistic configuration management
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = http://holocm.org
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = holo
 	makedepends = go
 	makedepends = perl
 	depends = shadow
-	source = https://github.com/holocm/holo/releases/download/v0.8.0/holo-0.8.0.tar.gz
-	md5sums = fb05e37aab19dbd99d965275c21a163b
+	source = https://github.com/holocm/holo/releases/download/v0.9.0/holo-0.9.0.tar.gz
+	md5sums = b14333d0c83a58938a6c1b2b45db55ee
 
 pkgname = holo
 
