@@ -4,7 +4,7 @@
 
 pkgname=drawpile
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('x86_64' 'i686')
 url='http://drawpile.net/'
@@ -18,11 +18,19 @@ optdepends=('kdnssd: automatic service discovery (such as printers)'
 	'libsystemd: systemd and logging support (server dependency)')
 makedepends=('qt5-tools' 'qt5-svg' 'ninja' 'cmake')
 install="${pkgname}.install"
-source=("http://drawpile.net/files/src/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('012a470316ccca51a28700948cd3f866c9b7fcc8fa9bfa21f27f28e9dc53f019')
+source=("http://drawpile.net/files/src/${pkgname}-${pkgver}.tar.gz"
+	'0001-Support-miniupnpc-version-1.9.20150730.patch')
+sha256sums=('012a470316ccca51a28700948cd3f866c9b7fcc8fa9bfa21f27f28e9dc53f019'
+	'8bfda21cf734a36cafeeac1132337dbfddfb464f104a0c67acf9d5f4fc432727')
 
 	## SET TO 'SERVER' OR 'CLIENT' FOR BUILDING SERVER OR CLIENT ONLY ##
 	BUILD='BOTH'
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+
+	patch -p1 -i '../0001-Support-miniupnpc-version-1.9.20150730.patch'
+}
 
 build() {
 	cd "${pkgname}-${pkgver}"
