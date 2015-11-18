@@ -1,19 +1,21 @@
 pkgbase = mu
 	pkgdesc = A collection of utilities for indexing and searching Maildirs
-	pkgver = 0.9.13
+	pkgver = 0.9.15
 	pkgrel = 1
 	url = http://www.djcbsoftware.nl/code/mu
 	install = mu.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = webkitgtk
 	depends = xapian-core
 	depends = gmime
 	depends = sqlite3
 	optdepends = cronie: Updating index regularly
+	optdepends = webkitgtk: for msg2pdf and GUI
 	conflicts = mailutils
-	source = mu-0.9.13.tar.gz::https://github.com/djcb/mu/archive/v0.9.13.tar.gz
-	sha256sums = a1c88efd3bfeda96e06d7f77a87562c472e6d787f3cca984ddf275a4ea1d4372
+	source = mu-0.9.15.tar.gz::https://github.com/djcb/mu/archive/0.9.15.tar.gz
+	sha256sums = 60c63fdf1b726696cb0028b86eaee2aa72e171493b2d5626ea173b912ff25d4c
 
 pkgname = mu
 
