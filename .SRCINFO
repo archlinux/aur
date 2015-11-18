@@ -1,0 +1,24 @@
+pkgbase = loudness-scanner-git
+	pkgdesc = EBU R128 loduness normalization tool
+	pkgver = v0.5.1.r18.g3d333bf
+	pkgrel = 1
+	url = https://github.com/jiixyj/loudness-scanner
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = libebur128
+	depends = glib2
+	depends = taglib
+	optdepends = gstreamer: gstreamer input support
+	optdepends = libsndfile: libsndfile input support
+	optdepends = ffmpeg: ffmpeg input support
+	optdepends = libmpcdec: libmpcdec input support
+	optdepends = mpg123: libmpg123 input support
+	provides = loudness-scanner
+	conflicts = loudness-scanner
+	source = loudness-scanner-git::git+https://github.com/jiixyj/loudness-scanner.git
+	md5sums = SKIP
+
+pkgname = loudness-scanner-git
+
