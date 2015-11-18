@@ -4,16 +4,16 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot-audio
-pkgver=0.0.4
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A high-quality audio editing and playback library used by libopenshot."
 arch=('i686' 'x86_64')
 url="http://openshot.org/"
 license=('GPL3')
-depends=('alsa-lib' 'freetype2' 'libx11' 'libxcursor' 'libxinerama')
-makedepends=('cmake')
+depends=('alsa-lib' 'freetype2' 'libxcursor' 'libxinerama' 'libxrandr')
+makedepends=('cmake' 'doxygen')
 source=("https://launchpad.net/libopenshot/0.0/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('66086c5ff1cb5cc6a499f84888d07ad03a31b30105213fb5b578909707acbb2b')
+sha256sums=('60abba3609a8c67c621a268be7ba8afd1225f81d74142d808173fb441564e2db')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
