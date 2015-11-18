@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kimageformats
-pkgver=5.15.0
+pkgver=5.16.0
 pkgrel=1
 arch=(any)
 pkgdesc="Image format plugins for Qt5 (mingw-w64)"
@@ -11,7 +11,7 @@ optdepends=("mingw-w64-openexr: EXR plugins")
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kimageformats"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kimageformats-${pkgver}.tar.xz")
-md5sums=('90831d906b5ab8224bb4a4a6c01e11b5')
+md5sums=('248134d418032944e26b634fa9422632')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
