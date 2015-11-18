@@ -54,7 +54,8 @@ optdepends=('zarafa-webaccess'
 	    'zarafa-webapp'
 	    'sabre-zarafa'
 	    'z-push'
-	    'bash-completion')
+	    'bash-completion'
+	    'postfix')
 install=("install")
 source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}-51838/sourcecode/zarafa-${_pkgrev}.tar.gz"
 	"arm.diff"
@@ -87,7 +88,7 @@ build() {
   cd ${srcdir}/zarafa-${pkgver}
 
   msg "Starting build..."
-  CPPFLAGS=-I/usr/include/python2.7 ./configure --prefix=/usr \
+  CPPFLAGS=-I/usr/include/python2.7 ./configure --prefix=/usr --sbindir=/usr/bin \
     --enable-oss \
     --enable-release \
     --enable-python \
@@ -112,10 +113,15 @@ package() {
   sed -i -e "s/\(install-ajax-webaccess\:\)/void-ajax-webaccess\:/" Makefile
   make DESTDIR=${pkgdir} install || return 1
 
+  # prepare bash-completion 
+  mkdir -p ${pkgdir}/usr/share/bash-completion/completions
+  mv ${pkgdir}/usr/etc/bash_completion.d/zarafa-bash-completion.sh ${pkgdir}/usr/share/bash-completion/completions/zarafa
+
   # remove legacy technologies
-  rm -Rf ${pkgdir}/etc/init.d
-  rm -Rf ${pkgdir}/etc/sysconfig
-  rm -Rf ${pkgdir}/etc/cron.daily
+  rm -Rf ${pkgdir}/usr/etc/init.d
+  rm -Rf ${pkgdir}/usr/etc/sysconfig
+  rm -Rf ${pkgdir}/usr/etc/cron.daily
+  rm -Rf ${pkgdir}/usr/etc/bash_completion.d
 
   # prepare license
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
@@ -125,11 +131,6 @@ package() {
   # and I doubt there will ever be a MAPI PEAR package to conflict, so one less thing user will have to do
   mv ${pkgdir}/usr/share/php ${pkgdir}/usr/share/pear
   
-  # prepare bash-completion 
-  mkdir -p /usr/share/bash-completion/
-  mv ${pkgdir}/etc/bash_completion.d/zarafa-bash-completion.sh ${pkgdir}/usr/share/bash-completion/completions/zarafa
-  rm -Rf ${pkgdir}/etc/bash_completion.d
-
   # prepare libraries
   cp -R ${pkgdir}/usr/var ${pkgdir}/var
   rm -Rf ${pkgdir}/usr/var
@@ -138,7 +139,7 @@ package() {
   cp -R ${pkgdir}/usr/etc/* ${pkgdir}/etc
   rm -Rf ${pkgdir}/usr/etc
   rm ${pkgdir}/etc/zarafa/*.cfg
- 
+
   # => change to socket connections only
   sed -i -e "s/\(server_tcp_enabled\s*=\)\(.*$\)/\1 no/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
   sed -i -e "s/\(attachment_compression\s*=\)\(.*$\)/\1 0/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
