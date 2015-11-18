@@ -1,0 +1,15 @@
+diff --git a/src/env.h b/src/env.h
+index b54dc08..e8b3f34 100644
+--- a/src/env.h
++++ b/src/env.h
+@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+ #ifndef SWAPSPACE_ENV_H
+ #define SWAPSPACE_ENV_H
+ 
+-#define ETCPREFIX "/usr/local"
+-#define VARPREFIX "/usr/local"
++#define ETCPREFIX "/"
++#define VARPREFIX "/"
+ 
+ #ifdef _LARGE_FILES
+ # define _LARGEFILE64_SOURCE
