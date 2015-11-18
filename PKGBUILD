@@ -2,8 +2,8 @@
 # Contributor: oldbay <old_bay@mail.ru>
 
 pkgname=ossim-nogui-svn
-pkgver=22270
-pkgrel=2
+pkgver=23624
+pkgrel=1
 pkgdesc='A powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data; built w/o GUIs'
 url=http://www.ossim.org/
 license=(LGPL)
