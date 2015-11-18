@@ -1,0 +1,635 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2012-01-02 01:38:26.000000000 +0800
++++ b/CMakeLists.txt	2015-11-18 21:46:52.917654393 +0800
+@@ -2,27 +2,37 @@
+ 
+ 
+ # search packages used by KDE
+-find_package(KDE4 REQUIRED)
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets)
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support I18n) #CoreAddons Solid 
+ # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} 
+-                      ${KDE4_DATA_DIR}/cmake/modules
+                       ${CMAKE_SOURCE_DIR}/cmake/modules )
+ 
+ 
+ SET(KRENAME_VERSION "4.0.9")
+ 
+-INCLUDE (KDE4Defaults)
+ INCLUDE (MacroLibrary)
+ INCLUDE (FindGettext)
+ 
++INCLUDE (MacroLogFeature)
++
+ # Find taglib
+ set(TAGLIB_MIN_VERSION "1.5")
+-macro_optional_find_package(Taglib REQUIRED)
++find_package(Taglib)
+ macro_log_feature( TAGLIB_FOUND "taglib" "Read and write tags in audio files" "http://www.freshmeat.net/projects/taglib" TRUE "1.5.0" "")
++#set_package_properties( FEATURE PROPERTIES DESCRIPTION "taglib" URL "http://www.freshmeat.net/projects/taglib" TYPE RECOMMENDED PURPOSE "Read and write tags in audio files" )
+ 
+ IF(TAGLIB_FOUND)
+   ADD_DEFINITIONS( -DWITH_TAGLIB )
++  #  include_directories(${TAGLIB_INCLUDE_DIRS})
+   MESSAGE("-- The tablib library was found. KRename will be built with tablib support.")
+ ELSE(TAGLIB_FOUND)
+   MESSAGE("-- The tablib library was not found. KRename will not be built with tablib support.")
+@@ -30,21 +40,25 @@
+ 
+ # Find exiv2
+ set(EXIV2_MIN_VERSION "0.13") # AccessMode was added in 0.13
+-macro_optional_find_package(Exiv2)
++find_package(Exiv2)
+ macro_log_feature(EXIV2_FOUND "Exiv2" "A library to access image metadata" "http://www.exiv2.org" FALSE "")
++#set_package_properties( FEATURE PROPERTIES DESCRIPTION "Exiv2" URL "http://www.exiv2.org" TYPE RECOMMENDED PURPOSE "A library to access image metadata" )
+ 
+ IF(EXIV2_FOUND)
+   ADD_DEFINITIONS( -DWITH_EXIV2 )
++#  include_directories(${EXIV2_INCLUDE_DIRS})
+   MESSAGE("-- The exiv2 library was found. KRename will be built with exiv2 support.")
+ ELSE(EXIV2_FOUND)
+   MESSAGE("-- The exiv2 library was not found. KRename will not be built with exiv2 support.")
+ ENDIF(EXIV2_FOUND)
+ 
+ # Find podofo
+-macro_optional_find_package(LIBPODOFO)
++find_package(LIBPODOFO)
+ macro_log_feature(LIBPODOFO_FOUND "libPodofo" "A library to access pdf metadata" "http://podofo.sourceforge.net/" FALSE "")
++#set_package_properties( FEATURE PROPERTIES DESCRIPTION "libPodofo" URL "http://podofo.sourceforge.net/" TYPE RECOMMENDED PURPOSE "A library to access pdf metadata" )
+ IF(LIBPODOFO_FOUND)
+   ADD_DEFINITIONS( -DWITH_PODOFO )
++  #  include_directories(${PODOFO_INCLUDE_DIRS})
+   MESSAGE("-- The podofo library was found. KRename will be built with podofo support.")
+ ELSE(LIBPODOFO_FOUND)
+   MESSAGE("-- The podofo library was not found. KRename will not be built with podofo support.")
+@@ -52,10 +66,12 @@
+ ENDIF(LIBPODOFO_FOUND)
+ 
+ # Find freetype
+-macro_optional_find_package(Freetype)
++find_package(Freetype)
+ macro_log_feature(FREETYPE_FOUND "FreeType2" "A library to access font metadata" "http://www.freetype.org" FALSE "")
++#set_package_properties( FEATURE PROPERTIES DESCRIPTION "FreeType2" URL "http://www.freetype.org" TYPE RECOMMENDED PURPOSE "A library to access font metadata" )
+ IF(FREETYPE_FOUND)
+   ADD_DEFINITIONS( -DWITH_FREETYPE )
++  include_directories(${FREETYPE_INCLUDE_DIRS})
+   MESSAGE("-- The freetype library was found. KRename will be built with freetype support.")
+ ELSE(FREETYPE_FOUND)
+   MESSAGE("-- The freetype library was not found. KRename will not be built with freetype support.")
+diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature.cmake
+--- a/cmake/modules/MacroLogFeature.cmake	1970-01-01 08:00:00.000000000 +0800
++++ b/cmake/modules/MacroLogFeature.cmake	2015-11-18 21:46:53.037657015 +0800
+@@ -0,0 +1,157 @@
++# This file defines the Feature Logging macros.
++#
++# MACRO_LOG_FEATURE(VAR FEATURE DESCRIPTION URL [REQUIRED [MIN_VERSION [COMMENTS]]])
++#   Logs the information so that it can be displayed at the end
++#   of the configure run
++#   VAR : TRUE or FALSE, indicating whether the feature is supported
++#   FEATURE: name of the feature, e.g. "libjpeg"
++#   DESCRIPTION: description what this feature provides
++#   URL: home page
++#   REQUIRED: TRUE or FALSE, indicating whether the featue is required
++#   MIN_VERSION: minimum version number. empty string if unneeded
++#   COMMENTS: More info you may want to provide.  empty string if unnecessary
++#
++# MACRO_DISPLAY_FEATURE_LOG()
++#   Call this to display the collected results.
++#   Exits CMake with a FATAL error message if a required feature is missing
++#
++# Example:
++#
++# INCLUDE(MacroLogFeature)
++#
++# FIND_PACKAGE(JPEG)
++# MACRO_LOG_FEATURE(JPEG_FOUND "libjpeg" "Support JPEG images" "http://www.ijg.org" TRUE "3.2a" "")
++# ...
++# MACRO_DISPLAY_FEATURE_LOG()
++
++# Copyright (c) 2006, Alexander Neundorf, <neundorf@kde.org>
++# Copyright (c) 2006, Allen Winter, <winter@kde.org>
++# Copyright (c) 2009, Sebastian Trueg, <trueg@kde.org>
++#
++# Redistribution and use is allowed according to the terms of the BSD license.
++# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
++
++IF (NOT _macroLogFeatureAlreadyIncluded)
++   SET(_file ${CMAKE_BINARY_DIR}/MissingRequirements.txt)
++   IF (EXISTS ${_file})
++      FILE(REMOVE ${_file})
++   ENDIF (EXISTS ${_file})
++
++   SET(_file ${CMAKE_BINARY_DIR}/EnabledFeatures.txt)
++   IF (EXISTS ${_file})
++      FILE(REMOVE ${_file})
++   ENDIF (EXISTS ${_file})
++
++   SET(_file ${CMAKE_BINARY_DIR}/DisabledFeatures.txt)
++   IF (EXISTS ${_file})
++      FILE(REMOVE ${_file})
++  ENDIF (EXISTS ${_file})
++
++  SET(_macroLogFeatureAlreadyIncluded TRUE)
++
++  INCLUDE(FeatureSummary)
++
++ENDIF (NOT _macroLogFeatureAlreadyIncluded)
++
++
++MACRO(MACRO_LOG_FEATURE _var _package _description _url ) # _required _minvers _comments)
++
++   STRING(TOUPPER "${ARGV4}" _required)
++   SET(_minvers "${ARGV5}")
++   SET(_comments "${ARGV6}")
++
++   IF (${_var})
++     SET(_LOGFILENAME ${CMAKE_BINARY_DIR}/EnabledFeatures.txt)
++   ELSE (${_var})
++     IF ("${_required}" STREQUAL "TRUE")
++       SET(_LOGFILENAME ${CMAKE_BINARY_DIR}/MissingRequirements.txt)
++     ELSE ("${_required}" STREQUAL "TRUE")
++       SET(_LOGFILENAME ${CMAKE_BINARY_DIR}/DisabledFeatures.txt)
++     ENDIF ("${_required}" STREQUAL "TRUE")
++   ENDIF (${_var})
++
++   SET(_logtext "   * ${_package}")
++
++   IF (NOT ${_var})
++      IF (${_minvers} MATCHES ".*")
++        SET(_logtext "${_logtext} (${_minvers} or higher)")
++      ENDIF (${_minvers} MATCHES ".*")
++      SET(_logtext "${_logtext}  <${_url}>\n     ")
++   ELSE (NOT ${_var})
++     SET(_logtext "${_logtext} - ")
++   ENDIF (NOT ${_var})
++
++   SET(_logtext "${_logtext}${_description}")
++
++   IF (NOT ${_var})
++      IF (${_comments} MATCHES ".*")
++        SET(_logtext "${_logtext}\n     ${_comments}")
++      ENDIF (${_comments} MATCHES ".*")
++#      SET(_logtext "${_logtext}\n") #double-space missing features?
++   ENDIF (NOT ${_var})
++
++   FILE(APPEND "${_LOGFILENAME}" "${_logtext}\n")
++
++   IF(COMMAND SET_PACKAGE_INFO)  # in FeatureSummary.cmake since CMake 2.8.3
++     SET_PACKAGE_INFO("${_package}" "\"${_description}\"" "${_url}" "\"${_comments}\"")
++   ENDIF(COMMAND SET_PACKAGE_INFO)
++
++ENDMACRO(MACRO_LOG_FEATURE)
++
++
++MACRO(MACRO_DISPLAY_FEATURE_LOG)
++   IF(COMMAND FEATURE_SUMMARY) # in FeatureSummary.cmake since CMake 2.8.3
++      FEATURE_SUMMARY(FILENAME ${CMAKE_CURRENT_BINARY_DIR}/FindPackageLog.txt
++                      WHAT ALL)
++   ENDIF(COMMAND FEATURE_SUMMARY)
++
++   SET(_missingFile ${CMAKE_BINARY_DIR}/MissingRequirements.txt)
++   SET(_enabledFile ${CMAKE_BINARY_DIR}/EnabledFeatures.txt)
++   SET(_disabledFile ${CMAKE_BINARY_DIR}/DisabledFeatures.txt)
++
++   IF (EXISTS ${_missingFile} OR EXISTS ${_enabledFile} OR EXISTS ${_disabledFile})
++     SET(_printSummary TRUE)
++   ENDIF (EXISTS ${_missingFile} OR EXISTS ${_enabledFile} OR EXISTS ${_disabledFile})
++
++   IF(_printSummary)
++     SET(_missingDeps 0)
++     IF (EXISTS ${_enabledFile})
++       FILE(READ ${_enabledFile} _enabled)
++       FILE(REMOVE ${_enabledFile})
++       SET(_summary "${_summary}\n-----------------------------------------------------------------------------\n-- The following external packages were located on your system.\n-- This installation will have the extra features provided by these packages.\n-----------------------------------------------------------------------------\n${_enabled}")
++     ENDIF (EXISTS ${_enabledFile})
++
++
++     IF (EXISTS ${_disabledFile})
++       SET(_missingDeps 1)
++       FILE(READ ${_disabledFile} _disabled)
++       FILE(REMOVE ${_disabledFile})
++       SET(_summary "${_summary}\n-----------------------------------------------------------------------------\n-- The following OPTIONAL packages could NOT be located on your system.\n-- Consider installing them to enable more features from this software.\n-----------------------------------------------------------------------------\n${_disabled}")
++     ENDIF (EXISTS ${_disabledFile})
++
++
++     IF (EXISTS ${_missingFile})
++       SET(_missingDeps 1)
++       FILE(READ ${_missingFile} _requirements)
++       SET(_summary "${_summary}\n-----------------------------------------------------------------------------\n-- The following REQUIRED packages could NOT be located on your system.\n-- You must install these packages before continuing.\n-----------------------------------------------------------------------------\n${_requirements}")
++       FILE(REMOVE ${_missingFile})
++       SET(_haveMissingReq 1)
++     ENDIF (EXISTS ${_missingFile})
++
++
++     IF (NOT ${_missingDeps})
++       SET(_summary "${_summary}\n-----------------------------------------------------------------------------\n-- Congratulations! All external packages have been found.")
++     ENDIF (NOT ${_missingDeps})
++
++
++     MESSAGE(${_summary})
++     MESSAGE("-----------------------------------------------------------------------------\n")
++
++
++     IF(_haveMissingReq)
++       MESSAGE(FATAL_ERROR "Exiting: Missing Requirements")
++     ENDIF(_haveMissingReq)
++
++   ENDIF(_printSummary)
++
++ENDMACRO(MACRO_DISPLAY_FEATURE_LOG)
+diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt	2010-09-26 14:50:36.000000000 +0800
++++ b/src/CMakeLists.txt	2015-11-18 21:46:53.037657015 +0800
+@@ -136,22 +136,20 @@
+ 
+ IF(EXIV2_FOUND)
+   TARGET_LINK_LIBRARIES(krename 
+-    ${KDE4_KDECORE_LIBS} 
+-    ${KDE4_KDEUI_LIBS}
+-    ${KDE4_KIO_LIBS} 
+-    ${KDE4_KMETADATA}
+-    ${KDE4_KJSAPI_LIBS} 
++    KF5::KDELibs4Support
++    KF5::KIOCore
++    KF5::I18n
++    KF5JSApi
+     ${TAGLIB_LIBRARIES}
+     ${LIBPODOFO_LIB}
+     ${FREETYPE_LIBRARIES}
+     ${EXIV2_LIBRARIES} )
+ ELSE(EXIV2_FOUND)
+   TARGET_LINK_LIBRARIES(krename 
+-    ${KDE4_KDECORE_LIBS} 
+-    ${KDE4_KDEUI_LIBS}
+-    ${KDE4_KIO_LIBS} 
+-    ${KDE4_KMETADATA}
+-    ${KDE4_KJSAPI_LIBS} 
++    KF5::KDELibs4Support
++    KF5::KIOCore
++    KF5::I18n
++    KF5JSApi
+     ${LIBPODOFO_LIB}
+     ${FREETYPE_LIBRARIES}
+     ${TAGLIB_LIBRARIES} )
+diff -Naur a/src/customdialog.cpp b/src/customdialog.cpp
+--- a/src/customdialog.cpp	2009-12-27 19:06:34.000000000 +0800
++++ b/src/customdialog.cpp	2015-11-18 21:46:53.037657015 +0800
+@@ -71,14 +71,14 @@
+     m_widget.lineEditCustom->setText( krenameFilename );
+     slotEnableControls();
+ 
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+     KConfigGroup group = config->group( QString("CustomDialogGroup") );
+     this->restoreDialogSize(group);
+ }
+ 
+ CustomDialog::~CustomDialog()
+ {
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+     KConfigGroup group = config->group( QString("CustomDialogGroup") );
+     this->saveDialogSize(group);
+ }
+diff -Naur a/src/customdialog.h b/src/customdialog.h
+--- a/src/customdialog.h	2009-12-27 19:06:34.000000000 +0800
++++ b/src/customdialog.h	2015-11-18 21:46:53.037657015 +0800
+@@ -21,7 +21,9 @@
+ #include <kdialog.h>
+ #include "ui_customfilenamedlg.h"
+ #include "batchrenamer.h"
+-
++#include <KConfigGroup>
++#include <KSharedConfig>
++ 
+ class KRenameFile;
+ 
+ class CustomDialog : public KDialog {
+diff -Naur a/src/datetimeplugin.h b/src/datetimeplugin.h
+--- a/src/datetimeplugin.h	2008-07-15 23:14:28.000000000 +0800
++++ b/src/datetimeplugin.h	2015-11-18 21:46:53.037657015 +0800
+@@ -21,6 +21,7 @@
+ #include "plugin.h"
+ 
+ #include <QObject>
++#include <KUrl>
+ 
+ namespace Ui {
+     class DateTimePluginWidget;
+diff -Naur a/src/dirsortplugin.h b/src/dirsortplugin.h
+--- a/src/dirsortplugin.h	2009-12-28 05:54:35.000000000 +0800
++++ b/src/dirsortplugin.h	2015-11-18 21:46:53.037657015 +0800
+@@ -21,6 +21,8 @@
+ #include "plugin.h"
+ #include "ui_dirsortpluginwidget.h"
+ 
++#include <KUrl>
++
+ class DirSortPlugin : public Plugin {
+     public:
+     DirSortPlugin( PluginLoader* loader );
+diff -Naur a/src/exthistorycombo.cpp b/src/exthistorycombo.cpp
+--- a/src/exthistorycombo.cpp	2010-05-02 18:22:03.000000000 +0800
++++ b/src/exthistorycombo.cpp	2015-11-18 21:46:53.040990421 +0800
+@@ -51,7 +51,7 @@
+     QStringList history;
+     QStringList completion;
+ 
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+     KConfigGroup groupGui = config->group( QString("ExtHistoryCombo") + this->objectName() );
+     
+     
+@@ -67,7 +67,7 @@
+ {
+     addToHistory( currentText() );
+ 
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+     KConfigGroup groupGui = config->group( QString("ExtHistoryCombo") + this->objectName() );
+     
+     groupGui.writeEntry("CompletionList", this->completionObject()->items());
+diff -Naur a/src/krenamefile.cpp b/src/krenamefile.cpp
+--- a/src/krenamefile.cpp	2011-12-31 23:58:07.000000000 +0800
++++ b/src/krenamefile.cpp	2015-11-18 21:46:53.040990421 +0800
+@@ -76,6 +76,21 @@
+     initFileDescription( m_src, src, eSplitMode, dot );
+ }
+ 
++KRenameFile::KRenameFile( const QUrl & src, ESplitMode eSplitMode, unsigned int dot )
++    : m_bValid( false ), m_error( 0 ), m_manualMode( eManualChangeMode_None )
++{
++    KIO::UDSEntry entry;
++    KIO::NetAccess::stat( src, entry, NULL );
++    KFileItem file( entry, src );
++
++    m_bValid     = file.isReadable();
++    m_bDirectory = file.isDir();
++
++    m_fileItem = file;
++    initFileDescription( m_src, src, eSplitMode, dot );
++}
++
++
+ KRenameFile::KRenameFile( const KUrl & src, bool directory, ESplitMode eSplitMode, unsigned int dot )
+     : m_bDirectory( directory ), m_bValid( true ), m_error( 0 ), m_manualMode( eManualChangeMode_None )
+ {
+diff -Naur a/src/krenamefile.h b/src/krenamefile.h
+--- a/src/krenamefile.h	2011-12-31 23:58:07.000000000 +0800
++++ b/src/krenamefile.h	2015-11-18 21:46:53.040990421 +0800
+@@ -24,6 +24,8 @@
+ #include <kurl.h>
+ #include <QPixmap>
+ 
++#include <kio/pixmaploader.h>
++
+ class KFileItem;
+ 
+ /** An enum to describe the mode to split 
+@@ -118,6 +120,9 @@
+      *                    filename and extension
+      *  \param dot dot to use as separator for eSplitMode_CustomDot
+      */
++    
++    KRenameFile( const QUrl & src, ESplitMode eSplitMode, unsigned int dot );
++    
+     KRenameFile( const KFileItem& item, ESplitMode eSplitMode, unsigned int dot );
+ 
+     /** Copy constructor
+diff -Naur a/src/krenameimpl.cpp b/src/krenameimpl.cpp
+--- a/src/krenameimpl.cpp	2011-12-31 23:58:07.000000000 +0800
++++ b/src/krenameimpl.cpp	2015-11-18 21:46:53.040990421 +0800
+@@ -88,7 +88,7 @@
+ 
+ QWidget* KRenameImpl::launch( const QRect & rect, const KRenameFile::List & list, bool loadprofile )
+ {
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+ 
+     KConfigGroup groupGui = config->group( QString("GUISettings") );
+     bool firststart  = groupGui.readEntry( "firststart4", QVariant(true) ).toBool();
+@@ -124,7 +124,7 @@
+     // Disabled profiles as they are not implemented right now
+     //KMenu* mnuExtra    = new KMenu( i18n("E&xtras"), m_window );
+ 
+-    KMenu* mnuHelp     = m_window->helpMenu( QString::null, true );
++    QMenu* mnuHelp     = m_window->helpMenu( QString::null, true );
+ 
+     //KAction* actProfiles = new KAction( i18n("&Profiles..."), m_window );
+ 
+@@ -621,7 +621,7 @@
+ 
+ void KRenameImpl::loadConfig() 
+ {
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+ 
+     KConfigGroup groupGui = config->group( QString("GUISettings") );
+     //groupGui.readEntry( "firststart4", QVariant(true) ).toBool();
+@@ -670,7 +670,7 @@
+ 
+     m_window->saveConfig();
+ 
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+ 
+ 
+     KConfigGroup groupGui = config->group( QString("GUISettings") );
+diff -Naur a/src/krenameimpl.h b/src/krenameimpl.h
+--- a/src/krenameimpl.h	2009-05-27 01:23:20.000000000 +0800
++++ b/src/krenameimpl.h	2015-11-18 21:46:53.040990421 +0800
+@@ -23,6 +23,9 @@
+ 
+ #include <kurl.h>
+ 
++#include <KConfigGroup>
++#include <KSharedConfig>
++
+ #include "batchrenamer.h"
+ #include "krenamefile.h"
+ 
+diff -Naur a/src/krenamemodel.cpp b/src/krenamemodel.cpp
+--- a/src/krenamemodel.cpp	2011-12-31 23:58:07.000000000 +0800
++++ b/src/krenamemodel.cpp	2015-11-18 21:46:53.040990421 +0800
+@@ -504,7 +504,7 @@
+     {
+         const KRenameFile& file = m_vector->at(index.row());
+         if( !file.manualChanges().isNull() )
+-            return QVariant( Qt::blue );
++            return QVariant( QColor(Qt::blue) );
+     }
+     /*
+       Icons are to large, so this is disabled
+diff -Naur a/src/krenameplugins.ui b/src/krenameplugins.ui
+--- a/src/krenameplugins.ui	2008-01-28 02:49:35.000000000 +0800
++++ b/src/krenameplugins.ui	2015-11-18 21:46:53.040990421 +0800
+@@ -92,7 +92,7 @@
+   <customwidget>
+    <class>KTreeWidgetSearchLineWidget</class>
+    <extends>QLineEdit</extends>
+-   <header location="global" >ktreewidgetsearchline.h</header>
++   <header location="global" >KItemViews/ktreewidgetsearchlinewidget.h</header>
+   </customwidget>
+  </customwidgets>
+  <resources/>
+diff -Naur a/src/krenamewindow.cpp b/src/krenamewindow.cpp
+--- a/src/krenamewindow.cpp	2010-09-15 21:55:28.000000000 +0800
++++ b/src/krenamewindow.cpp	2015-11-18 21:46:53.040990421 +0800
+@@ -160,7 +160,7 @@
+     m_pageFilename->comboPrefixCustom->loadConfig();
+     m_pageFilename->comboSuffixCustom->loadConfig();
+ 
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+     KConfigGroup groupGui = config->group( QString("GUISettings") );
+ 
+     int width = groupGui.readEntry( "Column0", QVariant(this->previewColumnWidth( 0 )) ).toInt();
+@@ -181,7 +181,7 @@
+     m_pageFilename->comboPrefixCustom->saveConfig();
+     m_pageFilename->comboSuffixCustom->saveConfig();
+ 
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+     KConfigGroup groupGui = config->group( QString("GUISettings") );
+ 
+     groupGui.writeEntry( "Column0", this->previewColumnWidth( 0 ) );
+diff -Naur a/src/krenamewindow.h b/src/krenamewindow.h
+--- a/src/krenamewindow.h	2010-09-15 21:55:28.000000000 +0800
++++ b/src/krenamewindow.h	2015-11-18 21:46:53.040990421 +0800
+@@ -22,6 +22,7 @@
+ #include "batchrenamer.h"
+ 
+ #include <QHash>
++#include <KTreeWidgetSearchLine>
+ 
+ class KRenameModel;
+ class KRenamePreviewModel;
+diff -Naur a/src/main.cpp b/src/main.cpp
+--- a/src/main.cpp	2011-12-31 23:59:26.000000000 +0800
++++ b/src/main.cpp	2015-11-18 21:46:53.040990421 +0800
+@@ -28,6 +28,9 @@
+ #include <klocale.h>
+ #include <kmessagebox.h>
+ 
++#include <klocale.h>
++#include <k4aboutdata.h>
++
+ // Own includes
+ #include "krenameimpl.h"
+ 
+@@ -55,7 +58,7 @@
+     options.add( "test", ki18n("start KRename's selftest (developers only)") );
+     // This option was never implemented in the KDE4 version:
+     //options.add( "previewitems <num>",  ki18n("only show <num> preview items") );
+-
++/*
+     KAboutData aboutData( "krename", "krename", ki18n("KRename"), VERSION, ki18n(
+                               "<qt><p>KRename is a batch file renamer which can rename a "
+                               "list of files based on a set of expressions.</p>"
+@@ -65,6 +68,16 @@
+                           KAboutData::License_GPL, ki18n("KRename Build:" __DATE__ " " __TIME__ )
+                           , ki18n("(c) 2001-2012, Dominik Seichter\n"),
+                           "http://www.krename.net", "domseichter@web.de" );
++    */
++    K4AboutData aboutData("krename", 0, ki18n("KRename"), VERSION, ki18n(
++                              "<qt><p>KRename is a batch file renamer which can rename a "
++                              "list of files based on a set of expressions.</p>"
++                              "<p>If you like KRename you may want to support it. "
++                              "Testing, bug fixes and feature requests are as welcome "
++                              "as financial support (everybody needs money ;). See help files for details.</p></qt>" ), K4AboutData::License_GPL_V3,
++                         ki18n("(c) 2001-2012, Dominik Seichter\n"), KLocalizedString(), 
++                          "http://www.krename.net");
++    
+ 
+     aboutData.addAuthor( ki18n("Dominik Seichter"), ki18n("developer and maintainer"), "domseichter@web.de",
+                          "http://www.krename.net" );
+diff -Naur a/src/permissionsplugin.cpp b/src/permissionsplugin.cpp
+--- a/src/permissionsplugin.cpp	2008-10-10 01:07:58.000000000 +0800
++++ b/src/permissionsplugin.cpp	2015-11-18 21:46:53.040990421 +0800
+@@ -23,6 +23,7 @@
+ 
+ #include "ui_permissionspluginwidget.h"
+ 
++#include <QDialog>
+ #include <QDialogButtonBox>
+ 
+ // OS includes
+diff -Naur a/src/plugin.h b/src/plugin.h
+--- a/src/plugin.h	2011-12-31 23:58:07.000000000 +0800
++++ b/src/plugin.h	2015-11-18 21:46:53.040990421 +0800
+@@ -21,6 +21,11 @@
+ #include <QPixmap>
+ #include <QString>
+ 
++#include <KConfigGroup>
++#include <KSharedConfig>
++
++#include <KUrl>
++
+ class BatchRenamer;
+ class KConfigGroup;
+ class PluginLoader;
+diff -Naur a/src/tokenhelpdialog.cpp b/src/tokenhelpdialog.cpp
+--- a/src/tokenhelpdialog.cpp	2012-01-01 00:30:11.000000000 +0800
++++ b/src/tokenhelpdialog.cpp	2015-11-18 21:46:53.044323828 +0800
+@@ -88,8 +88,8 @@
+     this->setButtons( KDialog::Close | KDialog::User1 ); 
+     this->setButtonText( KDialog::User1, i18n("&Insert") ); 
+ 
+-    KPushButton* insert = this->button( KDialog::User1 );
+-    KPushButton* close = this->button( KDialog::Close );
++    QPushButton* insert = this->button( KDialog::User1 );
++    QPushButton* close = this->button( KDialog::Close );
+     
+     m_widget.searchCategory->searchLine()->setTreeWidget( m_widget.listCategories );
+     m_widget.searchToken   ->searchLine()->setTreeWidget( m_widget.listTokens );
+@@ -198,7 +198,7 @@
+ 
+ void TokenHelpDialog::loadConfig() 
+ {
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+ 
+     KConfigGroup groupGui = config->group( QString("TokenHelpDialog") );
+ 
+@@ -230,7 +230,7 @@
+ 
+ void TokenHelpDialog::saveConfig() 
+ {
+-    KSharedConfigPtr config = KGlobal::config();
++    KSharedConfigPtr config = KSharedConfig::openConfig();
+ 
+     KConfigGroup groupGui = config->group( QString("TokenHelpDialog") );
+ 
+diff -Naur a/src/tokenhelpdialog.h b/src/tokenhelpdialog.h
+--- a/src/tokenhelpdialog.h	2012-01-01 00:30:11.000000000 +0800
++++ b/src/tokenhelpdialog.h	2015-11-18 21:46:53.044323828 +0800
+@@ -21,6 +21,7 @@
+ #include <kdialog.h>
+ 
+ #include "ui_tokenhelpwidget.h"
++#include <KTreeWidgetSearchLineWidget>
+ 
+ class QLineEdit;
+ class QTreeWidgetItem;
+diff -Naur a/src/tokenhelpwidget.ui b/src/tokenhelpwidget.ui
+--- a/src/tokenhelpwidget.ui	2009-06-02 04:14:34.000000000 +0800
++++ b/src/tokenhelpwidget.ui	2015-11-18 21:46:53.044323828 +0800
+@@ -170,7 +170,7 @@
+   <customwidget>
+    <class>KTreeWidgetSearchLineWidget</class>
+    <extends>QWidget</extends>
+-   <header>ktreewidgetsearchline.h</header>
++   <header>KItemViews/ktreewidgetsearchlinewidget.h</header>
+   </customwidget>
+  </customwidgets>
+  <resources/>

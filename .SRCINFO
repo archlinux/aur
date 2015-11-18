@@ -1,0 +1,25 @@
+pkgbase = krename-frameworks
+	pkgdesc = A very powerful batch file renamer for KDE. KF5 Version.
+	pkgver = 4.0.9
+	pkgrel = 5
+	url = http://www.krename.net
+	install = krename.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs4support
+	depends = taglib
+	depends = kio
+	depends = kjs
+	provides = krename
+	conflicts = krename
+	options = libtool
+	source = http://downloads.sourceforge.net/project/krename/KDE4%20krename-stable/4.0.9/krename-4.0.9.tar.bz2
+	source = port_to_kf5.patch
+	sha1sums = 03886a385a16de4c9bc285d25b9816ea97768c9e
+	sha1sums = SKIP
+
+pkgname = krename-frameworks
+
