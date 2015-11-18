@@ -1,15 +1,16 @@
+# Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=5.13.0.r2666.097c1cf
+pkgver=5.16.0.r2701.7d6915b
 pkgrel=1
-pkgdesc='Extra CMake modules'
+pkgdesc='Extra modules and scripts for CMake'
 arch=('any')
 url='https://projects.kde.org/projects/kdesupport/extra-cmake-modules'
 license=('LGPL')
 depends=('cmake')
-makedepends=('git')
+makedepends=('git' 'python-sphinx')
 conflicts=('extra-cmake-modules')
 provides=('extra-cmake-modules')
 source=('git://anongit.kde.org/extra-cmake-modules.git')
