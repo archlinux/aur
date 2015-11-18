@@ -1,6 +1,6 @@
 pkgbase = xournalpp-git
 	pkgdesc = C++ re-write of tablet notetaking app Xournal - GIT development branch
-	pkgver = 1.0.0.303.gd162281
+	pkgver = 1.0.0.307.gd6eb675
 	pkgrel = 1
 	url = https://github.com/xournalpp/xournalpp
 	install = xournalpp.install
@@ -19,8 +19,8 @@ pkgbase = xournalpp-git
 	depends = glibmm
 	depends = texlive-bin
 	depends = desktop-file-utils
-	provides = xournal=1.0.0.303.gd162281
-	provides = xournal-dmgerman=1.0.0.303.gd162281 xournalpp=1.0.0.303.gd162281
+	provides = xournal=1.0.0.307.gd6eb675
+	provides = xournal-dmgerman=1.0.0.307.gd6eb675 xournalpp=1.0.0.307.gd6eb675
 	conflicts = xournal
 	conflicts = xournalpp
 	conflicts = xournal-dmgerman
