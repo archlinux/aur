@@ -2,8 +2,9 @@
 pkgdesc='File name manipulation module for Torch7'
 pkgname='torch7-paths-git'
 pkgver=r39.3c0dc8f
-pkgrel=1
-depends='torch7-git'
+pkgrel=2
+makedepends='cmake'
+depends='luajit'
 conflicts='torch7-paths'
 provides='torch7-paths'
 arch=('x86_64' 'i686')
