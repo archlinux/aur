@@ -2,8 +2,7 @@
 pkgname=blih
 pkgver=1.7
 pkgrel=1
-pkgdesc="Bocal Lightweight Interface for Humans, git repositories and 
-SSH public keys management tool for EPITECH students"
+pkgdesc="Bocal Lightweight Interface for Humans, git repositories and SSH public keys management tool for EPITECH students"
 arch=('any')
 url="https://intra-bocal.epitech.eu"
 license=('GPL')
