@@ -1,0 +1,26 @@
+pkgbase = kde-services
+	pkgdesc = kde-service multifunction
+	pkgver = 2.0
+	pkgrel = 8
+	url = https://opendesktop.org/content/show.php/kde-services?content=147065
+	install = kde-services.install
+	arch = any
+	license = GPL
+	depends = kdebase-runtime
+	depends = dmidecode
+	depends = festival
+	depends = poppler
+	depends = ffmpeg
+	depends = transcode
+	depends = ghostscript
+	depends = fuse
+	depends = cdrkit
+	depends = diffutils
+	depends = fuseiso
+	source = http://downloads.sourceforge.net/project/kde-services/Source-Code/kde-services-2.0.tar.bz2
+	source = System-Tools_addtoservicemenu.desktop
+	md5sums = 903f63348e5c04e5aaeb5d23f4c3b4e3
+	md5sums = 2a096a1c7f0b579c37fa0046b46e6770
+
+pkgname = kde-services
+

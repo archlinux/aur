@@ -1,0 +1,27 @@
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin,inode/directory
+Icon=applications-system
+Actions=BuildKernel;CheckKernelUpdate;RebuildPackage;SysInfo;Htop;
+X-KDE-Submenu=System Tools
+X-KDE-Submenu[en_US]=System Tools
+X-KDE-Submenu[es]=Sistema - Herramientas
+X-KDE-Submenu[x-test]=xxSystem Toolsxx
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+
+[Desktop Action SysInfo]
+Name=System Information
+Name[en_US]=System Information
+Name[es]=Información del Sistema
+Name[x-test]=xxSystem Informationxx
+Icon=hwinfo
+Exec=/usr/share/applications/System_Tools-sys-info.sh
+
+[Desktop Action Htop]
+Name=Process Viewer
+Name[en_US]=Process Viewer
+Name[es]=Visor De Procesos
+Name[x-test]=xxProcess Viewerxx
+Icon=view-process-all
+Exec=/usr/share/applications/System_Tools-process-viewer.sh
