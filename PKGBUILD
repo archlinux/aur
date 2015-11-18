@@ -2,25 +2,31 @@
 # Contributor: Pierre DOUCET <pierre at equinoxefr.org>
 
 pkgname=pcb2gcode
-pkgver=1.1.4
-_pkgver=1.1.4-git2012-07-02
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Gerber to gcode file converter" 
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/apps/mediawiki/pcb2gcode/index.php?title=Main_Page"
+url="https://github.com/pcb2gcode/pcb2gcode/wiki"
 license=('GPL')
-depends=('gerbv=2.6.0')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${_pkgver}.tar.gz")
-md5sums=('52c49627b04013fef16fedba2917efed')
+depends=('gerbv-git')
+source=("https://github.com/pcb2gcode/pcb2gcode/releases/download/v${pkgver}/pcb2gcode-${pkgver}.tar.gz"
+        '0001-Fixed-GCC5-build-errors.patch'
+        'glibmm.patch')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 -i ../0001-Fixed-GCC5-build-errors.patch
+  patch -p1 -i ../glibmm.patch
+  autoreconf -i
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr
-
-  # no binary due to broken libtool distributed with package
-  echo -e 'exec /usr/bin/libtool "$@"' > libtool
-
   make
 }
 

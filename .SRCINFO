@@ -1,14 +1,18 @@
 pkgbase = pcb2gcode
 	pkgdesc = Gerber to gcode file converter
-	pkgver = 1.1.4
+	pkgver = 1.2.2
 	pkgrel = 1
-	url = http://sourceforge.net/apps/mediawiki/pcb2gcode/index.php?title=Main_Page
+	url = https://github.com/pcb2gcode/pcb2gcode/wiki
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = gerbv=2.6.0
-	source = http://downloads.sourceforge.net/pcb2gcode/pcb2gcode-1.1.4-git2012-07-02.tar.gz
-	md5sums = 52c49627b04013fef16fedba2917efed
+	depends = gerbv-git
+	source = https://github.com/pcb2gcode/pcb2gcode/releases/download/v1.2.2/pcb2gcode-1.2.2.tar.gz
+	source = 0001-Fixed-GCC5-build-errors.patch
+	source = glibmm.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = pcb2gcode
 

@@ -1,0 +1,111 @@
+From e6580db4365c9f3ad42cea103382faeaf472800f Mon Sep 17 00:00:00 2001
+From: Nicola Corna <nicola@corna.info>
+Date: Mon, 9 Nov 2015 20:38:03 +0100
+Subject: [PATCH] Fixed GCC5 build errors
+
+---
+ drill.cpp           |  5 ++++-
+ layer.cpp           |  1 -
+ ngc_exporter.cpp    |  6 +++++-
+ outline_bridges.cpp | 12 +++++++-----
+ svg_exporter.cpp    |  1 -
+ 5 files changed, 16 insertions(+), 9 deletions(-)
+
+diff --git a/drill.cpp b/drill.cpp
+index ec4c6f2..b6dfdcf 100644
+--- a/drill.cpp
++++ b/drill.cpp
+@@ -26,7 +26,6 @@ using std::endl;
+ 
+ #include <fstream>
+ #include <iomanip>
+-using namespace std;
+ 
+ #include "drill.hpp"
+ 
+@@ -41,6 +40,10 @@ using std::pair;
+ using std::make_pair;
+ using std::max;
+ using std::min_element;
++using std::cerr;
++using std::ios_base;
++using std::setw;
++using std::left;
+ 
+ /******************************************************************************/
+ /*
+diff --git a/layer.cpp b/layer.cpp
+index 8f482cb..272d0dd 100644
+--- a/layer.cpp
++++ b/layer.cpp
+@@ -36,7 +36,6 @@ Layer::Layer(const string& name, shared_ptr<Surface> surface,
+ }
+ 
+ #include <iostream>
+-using namespace std;
+ 
+ /******************************************************************************/
+ /*
+diff --git a/ngc_exporter.cpp b/ngc_exporter.cpp
+index 5604a7e..8126a01 100644
+--- a/ngc_exporter.cpp
++++ b/ngc_exporter.cpp
+@@ -24,8 +24,12 @@
+ #include <boost/foreach.hpp>
+ #include <boost/algorithm/string.hpp>
+ #include <iostream>
++using std::cerr;
++using std::ios_base;
++using std::setw;
++using std::left;
++
+ #include <iomanip>
+-using namespace std;
+ 
+ #include <glibmm/miscutils.h>
+ using Glib::build_filename;
+diff --git a/outline_bridges.cpp b/outline_bridges.cpp
+index e5a5135..0b973f7 100644
+--- a/outline_bridges.cpp
++++ b/outline_bridges.cpp
+@@ -63,7 +63,7 @@ vector< pair< unsigned int, double > > outline_bridges::findLongestSegments ( co
+ vector<unsigned int> outline_bridges::insertBridges ( shared_ptr<icoords> path, vector< pair< unsigned int, double > > chosenSegments, double length )
+ {
+     vector<unsigned int> output;
+-    icoords temp;
++    icoords temp (2);
+ 
+     path->reserve( path->size() + chosenSegments.size() * 2 );  //Just to avoid unnecessary reallocations
+     std::sort( chosenSegments.begin(), chosenSegments.end(), boost::bind(&pair<unsigned int, double>::first, _1) <
+@@ -72,10 +72,12 @@ vector<unsigned int> outline_bridges::insertBridges ( shared_ptr<icoords> path,
+     for( unsigned int i = 0; i < chosenSegments.size(); i++ )
+     {
+         chosenSegments[i].first += 2 * i;   //Each time we insert a bridge all following indexes have a offset of 2, we compensate it
+-        temp = boost::assign::list_of( intermediatePoint( path->at( chosenSegments[i].first ), path->at( chosenSegments[i].first + 1 ),
+-                                       0.5 - ( length / chosenSegments[i].second ) / 2 ) )
+-               ( intermediatePoint( path->at( chosenSegments[i].first ), path->at( chosenSegments[i].first + 1 ),
+-                                    0.5 + ( length / chosenSegments[i].second ) / 2 ) );
++        temp.at(0) = intermediatePoint( path->at( chosenSegments[i].first ),
++                                        path->at( chosenSegments[i].first + 1 ),
++                                        0.5 - ( length / chosenSegments[i].second ) / 2 );
++        temp.at(1) = intermediatePoint( path->at( chosenSegments[i].first ),
++                                        path->at( chosenSegments[i].first + 1 ),
++                                        0.5 + ( length / chosenSegments[i].second ) / 2 );
+         path->insert( path->begin() + chosenSegments[i].first + 1, temp.begin(), temp.end() );  //Insert the bridges in the path
+         output.push_back( chosenSegments[i].first + 1 );    //Add the bridges indexes to output
+     }
+diff --git a/svg_exporter.cpp b/svg_exporter.cpp
+index d094d8d..34f0821 100644
+--- a/svg_exporter.cpp
++++ b/svg_exporter.cpp
+@@ -23,7 +23,6 @@ using std::endl;
+ 
+ #include <fstream>
+ #include <iomanip>
+-using namespace std;
+ 
+ #include "svg_exporter.hpp"
+ 
+-- 
+2.6.2
+
