@@ -1,0 +1,20 @@
+pkgbase = libevdevc-git
+	pkgdesc = Chromium OS libevdev
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/hugegreenbug/libevdevc
+	arch = i686
+	arch = x86_64
+	license = custom:chromiumos
+	makedepends = git
+	makedepends = python2
+	makedepends = check
+	makedepends = valgrind
+	makedepends = doxygen
+	depends = glibc
+	conflicts = libevdevc
+	source = libevdevc::git+https://github.com/hugegreenbug/libevdevc.git
+	md5sums = SKIP
+
+pkgname = libevdevc-git
+
