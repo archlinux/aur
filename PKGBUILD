@@ -1,7 +1,7 @@
 # Maintainer: Samo Turk <samo.turk@gmail.com> 
 pkgname=rdkit
 _pkgname=RDKit
-pkgver=2015_03_1
+pkgver=2015_09_2
 pkgrel=1
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ url="http://rdkit.org/"
 license=('New BSD License')
 depends=( 'bison' 'boost' 'boost-libs' 'cmake' 'flex' 'python2' 'python2-numpy' 'sqlite3' )
 source=(https://github.com/rdkit/rdkit/archive/Release_${pkgver}.tar.gz )
-md5sums=('a6e5e90eb3ccafde2715b2c89bf1019b')
+md5sums=('889fc8bda9d59ce3b72bf6252c630287')
 provides=('rdkit')
 
 build() {
