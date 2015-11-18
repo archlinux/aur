@@ -2,7 +2,7 @@
 
 pkgname=clessc-git 
 pkgver=r425.9798e3e
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ implementation of the LESS CSS Compiler"
 arch=('i386' 'x86_64')
 url="https://github.com/BramvdKroef/clessc"
@@ -10,9 +10,9 @@ license=('GPLv3')
 groups=()
 depends=('libpng' 'libjpeg' 'google-glog')
 makedepends=('git') 
-provides=("nodejs-less" "clessc")
-conflicts=("nodejs-less" "clessc")
-replaces=("nodejs-less" "clessc")
+provides=("clessc")
+conflicts=("clessc")
+replaces=("clessc")
 backup=()
 options=()
 source=("${pkgname%-git}::git+https://github.com/BramvdKroef/clessc")
@@ -28,8 +28,8 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./autogen.sh
-	./configure --prefix=/usr
-	make
+	./configure --prefix=/usr --program-prefix=c
+    make
 }
 
 package() {
