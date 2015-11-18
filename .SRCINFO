@@ -1,6 +1,6 @@
 pkgbase = dmenu-git
 	pkgdesc = A generic menu for X
-	pkgver = 4.5.21.bbf7b95
+	pkgver = 4.5.46.32f2564
 	pkgrel = 1
 	url = http://tools.suckless.org/dmenu/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = dmenu-git
 	makedepends = git
 	depends = sh
 	depends = libxinerama
+	depends = libxft
 	provides = dmenu
 	conflicts = dmenu
 	source = git://git.suckless.org/dmenu
