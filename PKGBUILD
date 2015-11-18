@@ -1,5 +1,5 @@
 pkgname=mingw-w64-threadweaver
-pkgver=5.15.0
+pkgver=5.16.0
 pkgrel=1
 arch=(any)
 pkgdesc="High-level multithreading framework (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-cmake "mingw-w64-extra-cmake-modules=$pkgver")
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/threadweaver"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/threadweaver-${pkgver}.tar.xz")
-md5sums=('87e37a9c741adb9a124b64f2227ff7c0')
+md5sums=('4ccb22b1d87266b06be07575170ea6b3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
