@@ -1,0 +1,19 @@
+pkgbase = tclln
+	pkgdesc = TclLN is a library for integrating a tcl-shell with custom commands
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/TestudoAquatilis/tclln
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = LGPLv3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = tcl
+	depends = glib2
+	source = git+https://github.com/TestudoAquatilis/tclln.git
+	md5sums = SKIP
+
+pkgname = tclln
+
