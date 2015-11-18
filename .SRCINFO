@@ -7,7 +7,7 @@ pkgbase = impl
 	license = GPL
 	makedepends = go
 	makedepends = git
-	source = impl::git+ssh://github.com/josharian/impl
+	source = impl::git://github.com/josharian/impl.git
 	md5sums = SKIP
 
 pkgname = impl
