@@ -1,0 +1,17 @@
+pkgbase = picolisp
+	pkgdesc = Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines).
+	pkgver = 3.1.12.r0.g4535b0d
+	pkgrel = 1
+	url = http://www.picolisp.com
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = git
+	depends = bash
+	depends = openssl
+	optdepends = jre: for picolisp ersatz.jar
+	source = picolisp::git+https://github.com/taij33n/picolisp.git
+	md5sums = SKIP
+
+pkgname = picolisp
+
