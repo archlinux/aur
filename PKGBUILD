@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=firefox-extension-beyond-australis-git
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='A Firefox add-on to improve the feeling of using the new Australis theme.'
 url='https://github.com/Quicksaver/The-Fox--Only-Better'
