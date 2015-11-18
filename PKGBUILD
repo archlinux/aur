@@ -5,7 +5,7 @@
 
 # Maintainer: Thorsten Lanfer <tlanfer@gmail.com>
 pkgname=openhab-runtime
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="openHAB automation runtime"
 arch=('any')
@@ -21,7 +21,7 @@ source=("https://bintray.com/artifact/download/openhab/bin/distribution-$pkgver-
 				"openhab.service"
 				"openhab-startsh.patch")
 noextract=("distribution-$pkgver-runtime.zip")
-md5sums=('cecc93e8cf8abf96a956c1502229efaf'
+md5sums=('d8c1e777bfa9da5c19a9b363fcbe99b5'
          'e06c404f7174ac0b1d9c2e9e429c3b5f'
          '18299bfcb7865fec55d06890e25c8668'
          '481370e7c473aff7e9267e2e4f6fe68c')
