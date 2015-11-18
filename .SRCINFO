@@ -1,8 +1,8 @@
 pkgbase = pcb2gcode-git
 	pkgdesc = Gerber to gcode file converter
-	pkgver = r144.05e093f
+	pkgver = r241.eb2a001
 	pkgrel = 1
-	url = https://github.com/patkan/pcb2gcode
+	url = https://github.com/pcb2gcode/pcb2gcode
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,9 @@ pkgbase = pcb2gcode-git
 	provides = pcb2gcode
 	conflicts = pcb2gcode
 	source = pcb2gcode::git://github.com/pcb2gcode/pcb2gcode.git
+	source = glibmm.patch
 	md5sums = SKIP
+	md5sums = 3cc7d7023d3d89332d88a9eaa97eb8bc
 
 pkgname = pcb2gcode-git
 
