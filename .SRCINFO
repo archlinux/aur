@@ -1,6 +1,6 @@
 pkgbase = greenisland-git
 	pkgdesc = Green Island: Qt-based compositor infrastructure for Wayland
-	pkgver = 20150924.114feb0
+	pkgver = 20151115.83e3202
 	pkgrel = 1
 	url = http://hawaiios.org
 	arch = i686
@@ -18,7 +18,6 @@ pkgbase = greenisland-git
 	depends = libdrm
 	depends = libinput
 	depends = qt5-declarative
-	depends = hawaii-qt5-wayland
 	depends = xkeyboard-config
 	depends = libxkbcommon
 	depends = fontconfig
