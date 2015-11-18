@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code
 	pkgdesc = Editor for building and debugging modern web and cloud applications
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	arch = x86_64
 	arch = i686

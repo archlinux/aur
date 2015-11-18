@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for building and debugging modern web and cloud applications"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
@@ -31,8 +31,8 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/icons" 
   
-  install -m644 "${srcdir}/${_pkg}/resources/app/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -m644 "${srcdir}/${_pkg}/resources/app/vso.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  install -m644 "${srcdir}/${_pkg}/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 "${srcdir}/${_pkg}/resources/app/resources/linux/vscode.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
   install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   rm -f "${srcdir}"/${pkgname}.desktop
