@@ -40,7 +40,7 @@ if [[ $_build = ? ]]; then
 fi
 
 prepare() {
-  cd comm-*
+  cd thunderbird-$pkgver
 
   # Create directories
   msg2 "Creating directory structure..."
@@ -61,7 +61,7 @@ prepare() {
 }
 
 build() {
-  cd comm-*
+  cd thunderbird-$pkgver
 
   # Build flags
   export LDFLAGS="$LDFLAGS -Wl,-rpath,/opt/$pkgname"
@@ -89,7 +89,7 @@ build() {
 }
 
 package() {
-  cd comm-*/obj-*
+  cd thunderbird-$pkgver
 
   # Put together
   msg2 "Running make install.."
