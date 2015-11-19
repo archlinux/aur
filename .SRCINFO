@@ -12,6 +12,8 @@ pkgbase = patacrep-git
 	depends = python-chardet
 	depends = python-unidecode
 	depends = texlive-fontsextra
+	depends = texlive-latexextra
+	depends = python-argparse
 	depends = lilypond
 	source = patacrep::git://github.com/patacrep/patacrep.git#branch=master
 	sha256sums = SKIP

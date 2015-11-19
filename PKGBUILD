@@ -8,7 +8,8 @@ arch=('any')
 url="http://www.patacrep.com"
 license=('GPL')
 depends=('python' 'python-ply' 'python-jinja' 'python-chardet'
-         'python-unidecode' 'texlive-fontsextra' 'lilypond')
+         'python-unidecode' 'texlive-fontsextra' 'texlive-latexextra'
+         'python-argparse' 'lilypond')
 makedepends=('python-setuptools')
 source=("patacrep::git://github.com/patacrep/patacrep.git#branch=master")
 sha256sums=(SKIP)
