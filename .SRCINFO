@@ -5,6 +5,7 @@ pkgbase = filebeat
 	url = https://www.elastic.co/products/beats
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = APACHE
 	makedepends = go>=1.5
 	optdepends = elasticsearch: for running standalone installation
