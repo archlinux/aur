@@ -3,15 +3,15 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=143.595
-_pkgver=5.0.1
-_eap="False"
+_buildver=143.869.1
+_pkgver=5.0.2
+_eap="True"
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=('any')
 options=('!strip')
-url="http://www.jetbrains.com/pycharm/"
+url="https://confluence.jetbrains.com/pages/viewpage.action?pageId=23004355"
 license=("custom")
 depends=("java-environment>=6")
 makedepends=("wget")

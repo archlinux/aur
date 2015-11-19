@@ -1,8 +1,8 @@
 pkgbase = pycharm-eap
 	pkgdesc = Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition.
-	pkgver = 5.0.1.143.595
-	pkgrel = 2
-	url = http://www.jetbrains.com/pycharm/
+	pkgver = 5.0.2.143.869.1
+	pkgrel = 1
+	url = https://confluence.jetbrains.com/pages/viewpage.action?pageId=23004355
 	arch = any
 	license = custom
 	makedepends = wget
@@ -11,9 +11,9 @@ pkgbase = pycharm-eap
 	conflicts = pycharm-professional
 	conflicts = pycharm-pro-eap
 	options = !strip
-	source = http://download.jetbrains.com/python/pycharm-professional-5.0.1.tar.gz
+	source = http://download.jetbrains.com/python/pycharm-professional-143.869.1.tar.gz
 	source = pycharm-eap.desktop
-	sha256sums = 038501f116f5b18e5fc30c7b7edf1c076f0ec6d5f2e2c14348004dc8b6745a80
+	sha256sums = bddec2c9021ba502a06a80528ef243c7feb3334ab2b3fb051638b74624ac0820
 	sha256sums = aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731
 
 pkgname = pycharm-eap
