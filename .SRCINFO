@@ -10,6 +10,7 @@ pkgbase = krename-frameworks
 	makedepends = cmake
 	makedepends = automoc4
 	makedepends = extra-cmake-modules
+	makedepends = kdoctools
 	depends = kdelibs4support
 	depends = taglib
 	depends = podofo

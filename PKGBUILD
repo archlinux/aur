@@ -9,8 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.krename.net"
 license=('GPL')
 depends=('kdelibs4support' 'taglib' 'podofo' 'kjs' 'exiv2' 'hicolor-icon-theme')
-#kitemviews
-makedepends=('cmake' 'automoc4' 'extra-cmake-modules')
+makedepends=('cmake' 'automoc4' 'extra-cmake-modules' 'kdoctools')
 provides=$_pkgname
 conflicts=$_pkgname
 install=krename.install

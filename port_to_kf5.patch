@@ -15,7 +15,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 +include(FeatureSummary)
 +
 +find_package(Qt5 REQUIRED COMPONENTS Widgets)
-+find_package(KF5 REQUIRED COMPONENTS KDELibs4Support I18n) #CoreAddons Solid 
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support I18n JS)
  # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
  set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} 
 -                      ${KDE4_DATA_DIR}/cmake/modules
@@ -261,7 +261,7 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 +    KF5::KDELibs4Support
 +    KF5::KIOCore
 +    KF5::I18n
-+    KF5JSApi
++    KF5::JSApi
      ${TAGLIB_LIBRARIES}
      ${LIBPODOFO_LIB}
      ${FREETYPE_LIBRARIES}
@@ -276,7 +276,7 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 +    KF5::KDELibs4Support
 +    KF5::KIOCore
 +    KF5::I18n
-+    KF5JSApi
++    KF5::JSApi
      ${LIBPODOFO_LIB}
      ${FREETYPE_LIBRARIES}
      ${TAGLIB_LIBRARIES} )
