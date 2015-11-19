@@ -1,0 +1,45 @@
+From 2f868b2ffb3140c8d8b27adf7308e26d73271bf7 Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz.sarnecki@collabora.co.uk>
+Date: Thu, 19 Nov 2015 12:25:32 +0100
+Subject: [PATCH] make prefix /usr/
+
+---
+ LibKeyFinder.pro | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/LibKeyFinder.pro b/LibKeyFinder.pro
+index 3876a58..7d6c86f 100644
+--- a/LibKeyFinder.pro
++++ b/LibKeyFinder.pro
+@@ -34,6 +34,8 @@ QMAKE_CXXFLAGS += -std=c++11
+ 
+ DEFINES += LIBKEYFINDER_LIBRARY
+ 
++PREFIX = /usr
++
+ HEADERS += \
+     audiodata.h \
+     binode.h \
+@@ -80,15 +82,15 @@ macx{
+   CONFIG -= ppc ppc64 x86
+   CONFIG += x86_64
+ # installs
+-  QMAKE_LFLAGS_SONAME  = -Wl,-install_name,/usr/local/lib/
+-  headers.path = /usr/local/include/$$TARGET
++  QMAKE_LFLAGS_SONAME  = -Wl,-install_name,/usr/lib/
++  headers.path = /usr/include/$$TARGET
+   headers.files = $$HEADERS
+   INSTALLS += headers
+ }
+ 
+ unix|macx{
+-  INCLUDEPATH += /usr/local/include
+-  LIBS += -L/usr/local/lib/
++  INCLUDEPATH += /usr/include
++  LIBS += -L/usr/lib/
+   LIBS += -lfftw3
+ }
+ 
+-- 
+2.6.2
+
