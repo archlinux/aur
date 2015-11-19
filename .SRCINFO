@@ -1,7 +1,7 @@
 pkgbase = n1
 	pkgdesc = N1 is a new mail client for Mac, Linux and Windows, built on the modern web and designed to be extended.
 	pkgver = 0.3.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nylas.com/N1/
 	install = n1.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = n1
 	depends = nss
 	depends = alsa-lib
 	source = http://edgehill.s3-us-west-2.amazonaws.com/0.3.23-94e0cb9/linux/x64/N1.deb
-	md5sums = 10a5dd6369ee788140dc71bd5c27360f
+	md5sums = 2874862f45b79349eaf08fb5f8d88bbc
 
 pkgname = n1
 
