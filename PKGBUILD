@@ -3,7 +3,7 @@
 _pkgname=hostmaster
 pkgname=aegir-$_pkgname
 pkgver=7.x_3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
@@ -22,7 +22,7 @@ prepare() {
     for TYPE in modules themes; do
         for DIR in $_pkgname/profiles/$_pkgname/$TYPE/*/*; do
             EXT=$(basename $DIR)
-            VER_DO=$(drush rl $EXT --fields=version,status --pipe |& grep Supported | head -n1 | cut -f1 -d,)
+            VER_DO=$(drush rl --default-major=7 $EXT --fields=version,status --pipe |& grep -v -- '-dev' | grep Supported | head -n1 | cut -f1 -d,)
             VER_HM=$(grep 'version = ' $DIR/$EXT.info | tail -n1 | cut -f2 -d\")
             if [[ "$VER_HM" < "$VER_DO" ]]; then
                 msg2 "  Fetching $EXT..."
