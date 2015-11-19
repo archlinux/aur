@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='LuaJIT-based scientific computing framework'
 pkgname='torch7-git'
-pkgver=r817.91a2970
-pkgrel=2
+pkgver=r819.c2b91e6
+pkgrel=1
 url='http://torch.ch'
 source=("${pkgname}::git://github.com/torch/torch7")
 depends=('luajit' 'blas' 'lapack' 'torch7-cwrap-git' 'torch7-paths-git')
@@ -24,9 +24,11 @@ pkgver () {
 build () {
 	cd "${pkgname}"
 	cmake . \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLUADIR=/usr/share/lua/5.1 \
 		-DLIBDIR=/usr/lib/lua/5.1 \
+		-DLUA_BINDIR=/usr/bin \
 		-DLUA_INCDIR=/usr/include/luajit-2.0 \
 		-DLUA_LIBDIR=/usr/lib \
 		-DLUALIB=/usr/lib/libluajit-5.1.so \
@@ -37,19 +39,5 @@ build () {
 package () {
 	cd "${pkgname}"
 	make DESTDIR="${pkgdir}" install
-
-	# Ugh. CMake does a monstrosity here.
-	local base="${pkgdir}${srcdir}"
-
-	# Relocate CMake module files
-	mkdir -p "${pkgdir}/usr/share/cmake/Modules/"
-	mv "${base}/share/cmake/torch"/*.cmake \
-	   "${pkgdir}/usr/share/cmake/Modules/"
-
-	# Clean up junk
-	cd "${pkgdir}"
-	for name in * ; do
-		[[ ${name} == usr ]] || rm -rf "${name}"
-	done
 }
 
