@@ -1,5 +1,5 @@
 pkgbase = xorg-server-git
-	pkgver = 1.17.99.901.100.r15045.g4513f92
+	pkgver = 1.18.0.18.r15103.g51984dd
 	pkgrel = 1
 	url = http://cgit.freedesktop.org/xorg/xserver/
 	arch = i686

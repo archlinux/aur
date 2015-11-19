@@ -3,10 +3,11 @@
 # Based on xorg-server-dev: https://aur.archlinux.org/packages/xorg-server-dev/
 
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xdmx-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
-pkgver=1.17.99.901.100.r15045.g4513f92
+pkgver=1.18.0.18.r15103.g51984dd
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
+groups=('xorg')
 url="http://cgit.freedesktop.org/xorg/xserver/"
 makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
@@ -117,7 +118,6 @@ package_xorg-server-git() {
     provides+=("X-ABI-${VAR}_VERSION=$(grep -Po "${VAR}_V.*\(\K[^)]*" xserver/hw/xfree86/common/xf86Module.h |& sed 's/, /./')")
   done
   provides+=('x-server' 'xorg-server')
-  groups=('xorg')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
