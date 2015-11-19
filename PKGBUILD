@@ -5,18 +5,17 @@ _name="oslo.i18n"
 _module="${_name/./-}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.6.0"
-pkgrel="2"
+pkgver="2.7.0"
+pkgrel="1"
 pkgdesc="Oslo i18n library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
-makedepends=("python-pbr>=1.3" "python2-pbr>=1.3")
+makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b5fae03ebac2083180ecd5c7d651bea5c66924dbe2d6c90e1d835ad364dc7688')
+sha256sums=('9f510fd251510ca670ef876783a1727f67fe7a27595d772057273d33e4664f86')
 
 prepare() {
-    sed -ri '/pbr/d' "${srcdir}/${_name}-${pkgver}/requirements.txt"
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
 }
 
@@ -28,13 +27,21 @@ build() {
 }
 
 package_python-oslo-i18n() {
-    depends=("python-babel>=1.3" "python-six>=1.9.0")
+    depends=(
+        "python-pbr>=1.6"
+        "python-babel>=1.3"
+        "python-six>=1.9.0"
+    )
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
 
 package_python2-oslo-i18n() {
-    depends=("python2-babel>=1.3" "python2-six>=1.9.0")
+    depends=(
+        "python2-pbr>=1.6"
+        "python2-babel>=1.3"
+        "python2-six>=1.9.0"
+    )
     cd "${srcdir}/${_name}-${pkgver}-python2"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
