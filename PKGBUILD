@@ -1,6 +1,6 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
 
-pkgname=vscode
+pkgname=vscode-oss
 pkgdesc='Visual Studio Code for Linux'
 pkgver=0.10.1
 pkgrel=1
