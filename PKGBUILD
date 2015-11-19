@@ -1,7 +1,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Original Package: Vítor Ferreira <vitor.dominor@gmail.com>
 pkgname=xboxdrv-git
-pkgver=0.9.0.1412.a99985e
+pkgver=0.8.8.1183.e75d0e1
 pkgrel=1
 pkgdesc="An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers"
 arch=('i686' 'x86_64')
