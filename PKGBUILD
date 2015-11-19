@@ -34,8 +34,6 @@ provides=(
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2)
 sha256sums=('830ec647f7ad774fc0caf17ba47774bf5dee7a89cbd65894f364a87ba3ad21b2')
 
-# TODO: add patch for libvpx 1.5 (AUR still has 1.4)
-
 build() {
   cd $_pkgbasename-$pkgver
 
