@@ -2,13 +2,15 @@ pkgbase = perl-yaml-libyaml
 	pkgdesc = Perl YAML Serialization using XS and libyaml
 	pkgver = 0.59
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/YAML-LibYAML
-	arch = any
+	url = https://metacpan.org/release/YAML-LibYAML
+	arch = i686
+	arch = x86_64
 	license = PerlArtistic
 	license = GPL
 	depends = perl>=5.8.1
+	depends = libyaml
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/I/IN/INGY/YAML-LibYAML-0.59.tar.gz
+	source = http://search.cpan.org/CPAN/authors/id/I/IN/INGY/YAML-LibYAML-0.59.tar.gz
 	md5sums = 733e63b743088781eb8cad6477cd4905
 	sha512sums = 0c0bdbd7d93352b1e60f41f185f2947b163a9ea7074945c933850a3d165f75dd202403406f9e355e78535ae7d1726f2328dc006af7a01a6f30c48999013da3bc
 

@@ -1,17 +1,17 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-yaml-libyaml'
 pkgver='0.59'
 pkgrel='1'
 pkgdesc="Perl YAML Serialization using XS and libyaml"
-arch=('any')
+arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1')
+depends=('perl>=5.8.1' 'libyaml')
 makedepends=()
-url='http://search.mcpan.org/dist/YAML-LibYAML'
-source=('http://search.mcpan.org/CPAN/authors/id/I/IN/INGY/YAML-LibYAML-0.59.tar.gz')
+url='https://metacpan.org/release/YAML-LibYAML'
+source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/YAML-LibYAML-0.59.tar.gz')
 md5sums=('733e63b743088781eb8cad6477cd4905')
 sha512sums=('0c0bdbd7d93352b1e60f41f185f2947b163a9ea7074945c933850a3d165f75dd202403406f9e355e78535ae7d1726f2328dc006af7a01a6f30c48999013da3bc')
 _distdir="YAML-LibYAML-0.59"
