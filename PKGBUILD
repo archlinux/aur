@@ -7,10 +7,10 @@ arch=('x86_64' 'i686')
 url="http://inscore.sourceforge.net/"
 license=('LGPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-imageformats' 'qt5-multimedia'
-	 'qt5-svg' 'qt5-tools' 'qt5-websockets' 'guidolib'
+	 'qt5-svg' 'qt5-tools' 'qt5-websockets' 'guidolib-git'
 	 # These dependencies are all optional but we pull them in anyway in
 	 # order to provide a complete feature set.
-	 'libmusicxml' 'libmicrohttpd' 'faust2-git' 'lua')
+	 'libmusicxml-git' 'libmicrohttpd' 'faust2-git' 'lua')
 #optdepends=('libmusicxml: MusicXML support'
 #	    'libmicrohttpd: HTTP server support'
 #	    'faust2-git: Faust programming support'
