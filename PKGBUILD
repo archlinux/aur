@@ -3,7 +3,7 @@
 _pkgname=hostmaster
 pkgname=aegir-$_pkgname
 pkgver=7.x_3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
@@ -11,12 +11,12 @@ license=('GPL')
 depends=('drush>=7')
 
 pkgver() {
-    drush rl --fields=version --field-labels=0 hostmaster | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' '
+    drush rl --default-major=7 --fields=version --field-labels=0 $_pkgname | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' '
 }
 
 prepare() {
     msg2 'Fetching hostmaster...'
-    drush dl $_pkgname --yes --drupal-project-rename=$_pkgname &>/dev/null
+    drush dl --default-major=7 $_pkgname --yes --drupal-project-rename=$_pkgname &>/dev/null
 
     msg2 'Fetching latest version of hostmaster extensions...'
     for TYPE in modules themes; do
@@ -34,7 +34,7 @@ prepare() {
     msg2 'Fetching devel and devel_debug_log (missing extension dependency)...'
     for EXT in devel devel_debug_log; do
         msg2 "  Fetching $EXT..."
-        drush dl $EXT --yes --destination=modules
+        drush dl --default-major=7 $EXT --yes --destination=modules
     done
 }
 
