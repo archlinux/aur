@@ -34,9 +34,9 @@ build() {
 check() {
     if [[ "${_check}" == "enabled" ]]; then
         cd "${srcdir}/${_name}-${pkgver}"
-        nosetests -s --with-coverage --cover-package=ddt --cover-html
+        nosetests
         cd "${srcdir}/${_name}-${pkgver}-python2"
-        nosetests2 -s --with-coverage --cover-package=ddt --cover-html
+        nosetests2
     else
         echo "_check is not set to \"enabled\", skipping check()"
     fi
