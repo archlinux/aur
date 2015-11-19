@@ -1,0 +1,18 @@
+pkgbase = dwm0statusbard-git
+	pkgdesc = Dwm dynamic status bar daemon, done to help writing battery uneager status updater clients.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ichigo663/dwm0statusbar
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = xorg-server
+	provides = dwm0statusbard-git=0.1
+	conflicts = dwm0statusbard-git
+	replaces = dwm0statusbard-git
+	source = dwm0statusbard-git::git+https://github.com/ichigo663/dwm0statusbar.git
+	md5sums = SKIP
+
+pkgname = dwm0statusbard-git
+
