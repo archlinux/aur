@@ -1,7 +1,8 @@
 pkgbase = instant-meshes
-	pkgdesc = interactive meshing software developed as part of some publication
+	pkgdesc = interactive meshing/retopology software developed as part of SIGGRAPH ASIA 2015
 	pkgver = git
-	pkgrel = 1
+	pkgrel = 2
+	url = http://igl.ethz.ch/projects/instant-meshes/
 	arch = any
 	license = custom
 	makedepends = git
