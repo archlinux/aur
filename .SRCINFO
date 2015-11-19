@@ -1,0 +1,21 @@
+pkgbase = swatchdog
+	pkgdesc = The active log file monitoring tool
+	pkgver = 3.2.4
+	pkgrel = 1
+	url = http://swatch.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = perl-date-calc
+	depends = perl-date-manip
+	depends = perl-file-tail
+	depends = perl-timedate
+	depends = perl>=5.10.0
+	provides = swatch
+	conflicts = swatch
+	replaces = swatch
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/sourceforge/swatch/swatchdog-3.2.4.tar.gz
+	md5sums = df4c20ff7d3f6a46a2efd72a42078011
+
+pkgname = swatchdog
+
