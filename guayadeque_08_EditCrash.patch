@@ -1,0 +1,13 @@
+diff --git src/TrackEdit.cpp src/TrackEdit.cpp
+index c38cec5..8cc4127 100644
+--- src/TrackEdit.cpp
++++ src/TrackEdit.cpp
+@@ -1959,7 +1959,7 @@ void inline guUpdateComboBoxEntries( wxComboBox * combobox, wxSortedArrayString
+     int Index;
+     int Count;
+ 
+-    combobox->Clear();
++    //combobox->Clear();
+ 
+     if( curitem == wxNOT_FOUND )
+         return;

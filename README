@@ -21,6 +21,7 @@ for their work and efforts which lead to this package.
   guayadeque_05_wxSqlite_upgrade.patch  (update internal wxSqlite3 to rev 3.2.1)
   guayadeque_06_pixbuf_link.patch       (add build link to libgdk-pixbuf-2.0.so)
   guayadeque_07_player_display_fix.patch(correct current track display bug)
+  guayadeque_08_EditCrash.patch         (workaround seg error when editing track ID3)
 
 =====
 KNOWN BUILD ISSUES
