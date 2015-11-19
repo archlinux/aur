@@ -1,0 +1,97 @@
+From 7ea16aa17813ea8fc4a43853804c2ebe99ebb1fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mattias=20Andr=C3=A9e?= <maandree@operamail.com>
+Date: Thu, 19 Nov 2015 21:58:27 +0100
+Subject: [PATCH] Fix some errors
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Mattias Andrée <maandree@operamail.com>
+---
+ Makefile       | 7 +++----
+ Server.C       | 6 +-----
+ everything.H   | 1 +
+ newsd.conf.pod | 6 ++++++
+ 4 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 73f5d9f..1e2c1b0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -105,10 +105,9 @@ MANPAGES	=	newsd.man newsd.$(CAT8EXT) \
+ 	$(POD2MAN) $< >$@
+ .pod.0 .pod.1m .pod.5 .pod.8:
+ 	echo Formatting $@...
+-	$(RM) $@.roff
+-	$(POD2MAN) $< >$@.roff
+-	$(NROFF) -man $@.roff >$@
+-	$(RM) $@.roff
++	$(POD2MAN) $< > $@
++	sed -i 's/^\.TH NEWSD\.CONF.*$$/\.TH newsd.conf 5/' $@
++	sed -i 's/^\.TH NEWSD.*$$/\.TH newsd 8/' $@
+ .pod.z:
+ 	echo Formatting $@...
+ 	$(RM) $@ $@.roff $@.tmp $@.tmp.z
+diff --git a/Server.C b/Server.C
+index 58aff13..f61ce38 100644
+--- a/Server.C
++++ b/Server.C
+@@ -964,11 +964,7 @@ int Server::Accept()
+ //    fprintf(stderr, "Listening for connect requests on port %d\n", 
+ //        (int)port);
+ 
+-#if defined(DARWIN) | defined(BSD)
+-    int length = sizeof(sin);
+-#else
+-    size_t length = sizeof(sin);
+-#endif
++    socklen_t length = sizeof(sin);
+ 
+     msgsock = accept(sock, (struct sockaddr*)&sin, &length);
+     if (msgsock < 0) 
+diff --git a/everything.H b/everything.H
+index afc861a..350fe47 100644
+--- a/everything.H
++++ b/everything.H
+@@ -43,6 +43,7 @@
+ #include <time.h>
+ #include <pwd.h>
+ #include <grp.h>
++#include <limits.h>
+ 
+ using namespace std;
+ 
+diff --git a/newsd.conf.pod b/newsd.conf.pod
+index 768d2f5..9f0f75f 100644
+--- a/newsd.conf.pod
++++ b/newsd.conf.pod
+@@ -244,6 +244,8 @@ replies to be sent to the specifies address, typically a mail
+ gateway back to the newsgroup. If set to "-", no Reply-To header
+ will be sent. The default is "-".
+ 
++=back
++
+ =head1 .INFO FILES
+ 
+ I<newsd> automatically creates and maintains little ".info"
+@@ -256,6 +258,8 @@ a problem, in which case the daemon should not be running.
+ 
+ =head1 SEE ALSO
+ 
++=over
++
+ =item newsd(8) -- erco's simple nntp news server
+ 
+ =item RFC 977 -- NNTP Protocol
+@@ -264,6 +268,8 @@ a problem, in which case the daemon should not be running.
+ 
+ =item RFC 1036 -- Usenet news messages format
+ 
++=back
++
+ =head1 REPORTING BUGS
+ 
+ Report bugs using the form at "http://www.easysw.com/~mike/newsd/".
+-- 
+2.6.2
+

@@ -1,0 +1,19 @@
+pkgbase = newsd
+	pkgdesc = Standalone local nntp server
+	pkgver = 1.44
+	pkgrel = 1
+	url = http://www.msweet.org/projects.php?Z4
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-libs
+	makedepends = perl
+	makedepends = sed
+	depends = gcc-libs
+	source = http://www.msweet.org/files/project4/newsd-1.44-source.tar.gz
+	source = 0001-Fix-some-errors.patch
+	sha256sums = e6d97cc347bc8f897cfa4c2f4aa80690fa7018efebc39555b1ab4aa19edee406
+	sha256sums = 75d69ea858b55f60581e19ce18925b6a56da1f869aff8c0fcac9feb2c4924c58
+
+pkgname = newsd
+
