@@ -12,7 +12,7 @@ url="http://libre.adacore.com/libre/tools/xmlada/"
 license=('GPL')
 
 depends=("gcc-ada")
-source=(http://mirrors.cdn.adacore.com/art/949752df2432aed8d06c48d57cea71f38d0517cc
+source=(http://mirrors.cdn.adacore.com/art/564b3e2ec8e196b040fbd143
         Makefile.archy
         generic_gpr.in
         patch-xmlada-config.in)
