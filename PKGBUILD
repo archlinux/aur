@@ -48,6 +48,6 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname-build"
-  ninja DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja install
   install -D -m644 "$srcdir/$_gitname/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
