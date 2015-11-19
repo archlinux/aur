@@ -1,6 +1,6 @@
 pkgbase = bcompare
-	pkgver = 4.1.1.20615
-	pkgrel = 4
+	pkgver = 4.1.2.20720
+	pkgrel = 1
 	url = http://www.scootersoftware.com
 	arch = i686
 	arch = x86_64
@@ -16,27 +16,39 @@ pkgbase = bcompare
 	depends = libxrandr
 	depends = zlib
 	options = !strip
-	source_i686 = http://www.scootersoftware.com/bcompare-4.1.1.20615.i386.tar.gz
-	sha256sums_i686 = ee3468ca8849559aad999a4c1c1375e8d6766033e27d28abd19387d66e43890d
-	source_x86_64 = http://www.scootersoftware.com/bcompare-4.1.1.20615.x86_64.tar.gz
-	sha256sums_x86_64 = 8ba8e7fdaa45f55df4a36a2d41708632cef2fde3166f18a4382f3a9eceaea8bb
+	source_i686 = http://www.scootersoftware.com/bcompare-4.1.2.20720.i386.tar.gz
+	sha256sums_i686 = bdf5f3c32782c60516554fcbfa34f84f3e46ea0757bda2f1a4cd8670fb748864
+	source_x86_64 = http://www.scootersoftware.com/bcompare-4.1.2.20720.x86_64.tar.gz
+	sha256sums_x86_64 = 7e820508f5fbc9fe97e2f1b5e7fe020cd213399f011c9808e78a3d9eafb4913f
 
 pkgname = bcompare
 	pkgdesc = Beyond Compare 4: Compare, sync, and merge files and folders
 	install = bcompare.install
 	optdepends = bcompare-kde: KDE service menus for Beyond Compare 4
-	optdepends = bcompare-gnome: Gnome service menus for Beyond Compare 4
-	optdepends = bcompare-xfce: Xfce service menus for Beyond Compare 4
+	optdepends = bcompare-nautilus: Nautilus service menus for Beyond Compare 4
+	optdepends = bcompare-thunar: Thunar service menus for Beyond Compare 4
+	optdepends = bcompare-cinnamon: Cinnamon service menus for Beyond Compare 4
+	optdepends = bcompare-mate: MATE service menus for Beyond Compare 4
 
 pkgname = bcompare-kde
 	pkgdesc = KDE service menus for Beyond Compare 4
 	depends = bcompare
 
-pkgname = bcompare-gnome
+pkgname = bcompare-nautilus
 	pkgdesc = Gnome service menus for Beyond Compare 4
 	depends = bcompare
+	provides = bcompare-gnome
 
-pkgname = bcompare-xfce
+pkgname = bcompare-thunar
 	pkgdesc = Xfce service menus for Beyond Compare 4
+	depends = bcompare
+	provides = bcompare-xfce
+
+pkgname = bcompare-cinnamon
+	pkgdesc = Cinnamon service menus for Beyond Compare 4
+	depends = bcompare
+
+pkgname = bcompare-mate
+	pkgdesc = MATE service menus for Beyond Compare 4
 	depends = bcompare
 

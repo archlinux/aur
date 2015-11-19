@@ -11,19 +11,19 @@
 # - http://www.scootersoftware.com/vbulletin/showpost.php?s=3c1f289bc76655230b49f440dbe17b53&p=26449&postcount=7
 
 pkgbase=bcompare
-pkgname=('bcompare' 'bcompare-kde' 'bcompare-gnome' 'bcompare-xfce')
-pkgver=4.1.1.20615
-pkgrel=4
+pkgname=('bcompare' 'bcompare-kde' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
+pkgver=4.1.2.20720
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.scootersoftware.com"
 license=('custom')
 groups=('utility')
 depends=('qt4' 'fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxrandr' 'zlib')
 makedepends=('sed')
-source_x86_64=("http://www.scootersoftware.com/${pkgname}-${pkgver}.x86_64.tar.gz")
-source_i686=("http://www.scootersoftware.com/${pkgname}-${pkgver}.i386.tar.gz")
-sha256sums_x86_64=('8ba8e7fdaa45f55df4a36a2d41708632cef2fde3166f18a4382f3a9eceaea8bb')
-sha256sums_i686=('ee3468ca8849559aad999a4c1c1375e8d6766033e27d28abd19387d66e43890d')
+source_x86_64=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
+source_i686=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
+sha256sums_x86_64=('7e820508f5fbc9fe97e2f1b5e7fe020cd213399f011c9808e78a3d9eafb4913f')
+sha256sums_i686=('bdf5f3c32782c60516554fcbfa34f84f3e46ea0757bda2f1a4cd8670fb748864')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
@@ -40,12 +40,14 @@ options=('!strip') # Do not strip binaries because it breaks them down
 
   # Set up Gnome service menus
   mkdir -p "${_install_dir}/usr/lib/nautilus/extensions-3.0"
+  mkdir -p "${_install_dir}/usr/lib/nemo/extensions-3.0"
+  mkdir -p "${_install_dir}/usr/lib/caja/extensions-3.0"
 
   # Set up Xfce service menus
   mkdir -p "${_install_dir}/usr/lib/thunarx-2"
 
   # Apply some fixes on install.sh script
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   sed -i 's|/usr/|${PREFIX}/usr/|g' install.sh
   sed -i '/-h \/lib64/{N;N;d;}' install.sh
  }
@@ -53,12 +55,14 @@ options=('!strip') # Do not strip binaries because it breaks them down
 package_bcompare() {
   pkgdesc="Beyond Compare 4: Compare, sync, and merge files and folders"
   optdepends=('bcompare-kde: KDE service menus for Beyond Compare 4'
-                         'bcompare-gnome: Gnome service menus for Beyond Compare 4'
-                         'bcompare-xfce: Xfce service menus for Beyond Compare 4'  )
-  install=${pkgname}.install
+                         'bcompare-nautilus: Nautilus service menus for Beyond Compare 4'
+                         'bcompare-thunar: Thunar service menus for Beyond Compare 4'
+                         'bcompare-cinnamon: Cinnamon service menus for Beyond Compare 4'
+                         'bcompare-mate: MATE service menus for Beyond Compare 4'  )
+  install=${pkgbase}.install
 
   # Excecute install script - needs to be run here
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   _install_dir="${srcdir}/install"
   sh install.sh --prefix="${_install_dir}"
 
@@ -82,6 +86,9 @@ package_bcompare() {
   rm -rf "${pkgdir}/usr/lib/kde4"
   rm -rf "${pkgdir}/usr/lib/nautilus"
   rm -rf "${pkgdir}/usr/lib/thunarx-2"
+  rm -rf "${pkgdir}/usr/lib/caja"
+  rm -rf "${pkgdir}/usr/lib/nemo"
+
 
   #Clean unneded files
   pushd usr/lib/beyondcompare/ > /dev/null
@@ -114,9 +121,10 @@ package_bcompare-kde() {
   msg2 "Done!"
 }
 
-package_bcompare-gnome() {
+package_bcompare-nautilus() {
   pkgdesc="Gnome service menus for Beyond Compare 4"
   depends=('bcompare')
+  provides=('bcompare-gnome')
 
   msg2 "Packaging Gnome service menus..."
   _install_dir="${srcdir}/install"
@@ -127,9 +135,10 @@ package_bcompare-gnome() {
   msg2 "Done!"
 }
 
-package_bcompare-xfce() {
+package_bcompare-thunar() {
   pkgdesc="Xfce service menus for Beyond Compare 4"
   depends=('bcompare')
+  provides=('bcompare-xfce')
 
   msg2 "Packaging Xfce service menus..."
   _install_dir="${srcdir}/install"
@@ -137,5 +146,31 @@ package_bcompare-xfce() {
   mkdir -p "${pkgdir}/usr/lib"
 
   mv "${_install_dir}/usr/lib/thunarx-2" "${pkgdir}/usr/lib/"
+  msg2 "Done!"
+}
+
+package_bcompare-cinnamon() {
+  pkgdesc="Cinnamon service menus for Beyond Compare 4"
+  depends=('bcompare')
+
+  msg2 "Packaging Cinnamon service menus..."
+  _install_dir="${srcdir}/install"
+  # Set up service menus
+  mkdir -p "${pkgdir}/usr/lib"
+
+  mv "${_install_dir}/usr/lib/nemo" "${pkgdir}/usr/lib/"
+  msg2 "Done!"
+}
+
+package_bcompare-mate() {
+  pkgdesc="MATE service menus for Beyond Compare 4"
+  depends=('bcompare')
+
+  msg2 "Packaging MATE service menus..."
+  _install_dir="${srcdir}/install"
+  # Set up service menus
+  mkdir -p "${pkgdir}/usr/lib"
+
+  mv "${_install_dir}/usr/lib/caja" "${pkgdir}/usr/lib/"
   msg2 "Done!"
 }
