@@ -1,7 +1,7 @@
 pkgbase = scudcloud
 	pkgdesc = A Linux client for Slack
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raelgc/scudcloud
 	install = scudcloud.install
 	arch = any

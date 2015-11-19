@@ -3,7 +3,7 @@
 
 pkgname=scudcloud
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux client for Slack"
 arch=('any')
 url="https://github.com/raelgc/scudcloud"
@@ -14,7 +14,7 @@ source=("https://github.com/raelgc/scudcloud/archive/v${pkgver}.tar.gz")
 sha256sums=('7c920dfad32328f410b354d09788d7828f1f1cf5e1101aa5e5df486306e4829f')
 
 package() {
-  cd "${pkgname}-${pkgver}/scudcloud-1.0"
+  cd "${pkgname}-${pkgver}/scudcloud-${pkgver:0:3}"
 
   install -d "${pkgdir}/opt/${pkgname}" \
              "${pkgdir}/opt/${pkgname}/lib" \
