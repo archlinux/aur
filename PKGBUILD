@@ -3,7 +3,7 @@
 _py=python2
 
 pkgname=websockify
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="WebSocket to TCP proxy/bridge."
 license=('LGPL3')
@@ -12,7 +12,7 @@ url="http://github.com/kanaka/websockify"
 makedepends=($_py "$_py-distribute")
 depends=($_py "$_py-numpy")
 source=("https://github.com/kanaka/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('e11c9b1404b84564e4c401c1ed78e264')
+md5sums=('396a39001aeb0b4a1b2591f9715e1dbb')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
