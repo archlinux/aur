@@ -1,0 +1,71 @@
+From b64fcf0e8557552aa5c193bb20a6a89975528027 Mon Sep 17 00:00:00 2001
+From: Robin Nehls <nehls@mi.fu-berlin.de>
+Date: Thu, 19 Nov 2015 16:18:42 +0100
+Subject: [PATCH] PKGBUILD compat
+
+---
+ GNUmakefile | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 56647ba..beab352 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -1,4 +1,5 @@
+ PREFIX = /usr/local
++REALPREFIX = /usr/local
+ LIBDIR = lib/imunes
+ IMUNESDIR = $(PREFIX)/$(LIBDIR)
+ CONFIGDIR = $(IMUNESDIR)/config
+@@ -11,6 +12,7 @@ NORMAL_ICONSDIR = $(ICONSDIR)/normal
+ SMALL_ICONSDIR = $(ICONSDIR)/small
+ TINY_ICONSDIR = $(ICONSDIR)/tiny
+ BINDIR = $(PREFIX)/bin
++REALBINDIR = $(REALPREFIX)/bin
+ IMUNESDATE = `date +"%Y%m%d"`
+ IMUNESVER = 1.0
+ TARBALL_DIR = imunes_$(IMUNESDATE)
+@@ -47,19 +49,19 @@ info:
+ 
+ all: install
+ 
+-install: uninstall
++install:
+ 	mkdir -p $(IMUNESDIR)
+ 	cp $(BASEFILES) $(IMUNESDIR)
+ 	sh scripts/update_version.sh
+ 	mkdir -p $(BINDIR)
+ 
+ 	sed -e "s,set LIBDIR \"\",set LIBDIR $(LIBDIR)," \
+-	    -e "s,set ROOTDIR \".\",set ROOTDIR $(PREFIX)," \
++	    -e "s,set ROOTDIR \".\",set ROOTDIR $(REALPREFIX)," \
+ 	    imunes.tcl > $(IMUNESDIR)/imunes.tcl
+ 
+ 	sed -e "s,LIBDIR=\"\",LIBDIR=$(LIBDIR)," \
+-	    -e "s,ROOTDIR=\".\",ROOTDIR=$(PREFIX)," \
+-	    -e "s,BINDIR=\".\",BINDIR=$(BINDIR)," \
++	    -e "s,ROOTDIR=\".\",ROOTDIR=$(REALPREFIX)," \
++	    -e "s,BINDIR=\".\",BINDIR=$(REALBINDIR)," \
+ 	    imunes > $(BINDIR)/imunes
+ 	chmod 755 $(BINDIR)/imunes
+ 
+@@ -80,7 +82,7 @@ endif
+ 
+ 	for file in $(VROOT); do \
+ 	    sed -e "s,LIBDIR=\"\",LIBDIR=$(LIBDIR)," \
+-		-e "s,ROOTDIR=\".\",ROOTDIR=$(PREFIX)," \
++		-e "s,ROOTDIR=\".\",ROOTDIR=$(REALPREFIX)," \
+ 		$${file} > $(IMUNESDIR)/$${file}; \
+ 	    chmod 755 $(IMUNESDIR)/$${file}; \
+ 	done ;
+@@ -149,7 +151,6 @@ endif
+ 
+ tarball:
+ 	rm -f ../$(TARBALL_DIR).tar.gz
+-
+ 	mkdir -p ../$(TARBALL_DIR)
+ 	cp $(FILES) $(BINARIES) $(VROOT) Makefile imunes imunes.tcl ../$(TARBALL_DIR)
+ 
+-- 
+2.6.2
+
