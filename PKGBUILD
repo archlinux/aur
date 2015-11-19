@@ -11,10 +11,10 @@ depends=('ugene')
 
 if   [ "$CARCH" == 'i686' ]; then
   _filename=ext_tools_linux_32-bit
-  md5sums=('541f2c3b8280b4f6b7577a854cc6ca4e')
+  md5sums=('572f4e95ace77e0de9a8d9bdd4bed01e')
 elif [ "$CARCH" == 'x86_64' ]; then
   _filename=ext_tools_linux_64-bit
-  md5sums=('08e06909f459ce4d836c112f01b6ae50')
+  md5sums=('d9f06c3eb85d6c9b4319eac325969f6d')
 fi
 
 source=( ${url}/downloads/${_filename}.tar.gz )
