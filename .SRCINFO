@@ -1,6 +1,6 @@
 pkgbase = opensgx-git
 	pkgdesc = an open platform for Intel SGX
-	pkgver = r47.40f48bf
+	pkgver = r52.57cb88f
 	pkgrel = 1
 	url = https://github.com/sslab-gatech/opensgx/
 	arch = x86_64

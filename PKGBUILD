@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=opensgx-git
-pkgver=r47.40f48bf
+pkgver=r52.57cb88f
 pkgrel=1
 pkgdesc="an open platform for Intel SGX"
 arch=('x86_64')
