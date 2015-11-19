@@ -1,10 +1,11 @@
-# Maintainer: Kai Korla <balticer@balticer.de>
+# Maintainer: Eduardo Leggiero <https://www.leggiero.uk/>
+# Contributor: Kai Korla <balticer@balticer.de>
 # Contributor: Techlive Zheng <techlivezheng@gmail.com>
 # Contributor: Ernie Brodeur <ebrodeur@ujami.net>
 
 pkgname=gitflow
 pkgver=0.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Extend git with the Gitflow branching model.'
 arch=('any')
 url='https://github.com/nvie/gitflow'
