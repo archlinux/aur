@@ -1,6 +1,6 @@
 pkgbase = atom-editor-beta-bin
 	pkgdesc = Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository
-	pkgver = 1.3.0.beta4
+	pkgver = 1.3.0.beta5
 	pkgrel = 1
 	url = https://github.com/atom/atom
 	install = atom-editor-beta-bin.install
@@ -18,9 +18,9 @@ pkgbase = atom-editor-beta-bin
 	depends = desktop-file-utils
 	conflicts = atom-editor-beta
 	options = !strip
-	source = atom-amd64-v1.3.0-beta4.deb::https://github.com/atom/atom/releases/download/v1.3.0-beta4/atom-amd64.deb
+	source = atom-amd64-v1.3.0-beta5.deb::https://github.com/atom/atom/releases/download/v1.3.0-beta5/atom-amd64.deb
 	source = atom-python.patch
-	md5sums = ce3f5a62b2cde6c504182191eed0e806
+	md5sums = dad83674b8896b13922c7db3e88a5853
 	md5sums = 8ed449a6d7d7aff30d8208135a11d9dc
 
 pkgname = atom-editor-beta-bin
