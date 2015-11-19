@@ -7,6 +7,7 @@ arch=('x86_64')
 url="http://www.jamoma.org"
 license=('BSD')
 groups=()
+makedepends=('ninja' 'cmake')
 depends=('portaudio' 'libxml2')
 makedepends=('git')
 provides=('jamomacore')
@@ -19,37 +20,34 @@ source=()
 noextract=()
 
 
-_gitroot=https://github.com/Jamoma/Jamoma
-_gitname=Jamoma
+_gitroot=https://github.com/Jamoma/JamomaCore
+_gitname=JamomaCore
 _gitbranch=master
 
 build() {
   cd "$srcdir"
 
   if [[ -d "$_gitname" ]]; then
-	(
-		cd "$_gitname"
-		git pull
-		cd Core
-		git pull
-	)
+    (
+      cd "$_gitname"
+      git pull
+    )
   else
     git clone "$_gitroot" "$_gitname"
     (
-		cd "$_gitname"
-		git checkout "$_gitbranch"
-		git submodule update --init -- Core
+      cd "$_gitname"
+      git checkout "$_gitbranch"
     )
   fi
 
   mkdir -p "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
-  cmake "$srcdir/$_gitname"
-  make -j$(nproc)
+  cmake -GNinja "$srcdir/$_gitname"
+  ninja
 }
 
 package() {
   cd "$srcdir/$_gitname-build"
-  make DESTDIR="$pkgdir/" install
+  ninja DESTDIR="$pkgdir/" install
   install -D -m644 "$srcdir/$_gitname/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
