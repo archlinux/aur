@@ -17,7 +17,7 @@ depends=("java-environment>=6")
 makedepends=("wget")
 provides=("pycharm-professional")
 conflicts=("pycharm-professional" "pycharm-pro-eap")
-groups=("development", "IDE", "editor", "jetbrains")
+groups=("development" "IDE" "editor" "jetbrains")
 
 if [[ "True" = "${_eap}" ]]; then
 	_srcfile="pycharm-professional-${_buildver}.tar.gz"
