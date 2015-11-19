@@ -1,21 +1,22 @@
 pkgbase = vscode-bin
 	pkgdesc = Visual Studio Code for Linux
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = gtk2
 	depends = gconf
+	conflicts = vscode
 	source_i686 = https://az764295.vo.msecnd.net/public/0.10.1/VSCode-linux32.zip
 	source_i686 = vscode.desktop
 	sha1sums_i686 = 793403a073b5a484e906a191ff5d4957e69911d3
-	sha1sums_i686 = 71efff6181d2bba05376ce7401801671e6a58752
+	sha1sums_i686 = a85c0aa0c38757bbc0ae27c6db8ddb3d9bf5f2a0
 	source_x86_64 = https://az764295.vo.msecnd.net/public/0.10.1/VSCode-linux64.zip
 	source_x86_64 = vscode.desktop
 	sha1sums_x86_64 = 65693e3991fa15efc20a7e2d749b40d582f88022
-	sha1sums_x86_64 = 71efff6181d2bba05376ce7401801671e6a58752
+	sha1sums_x86_64 = a85c0aa0c38757bbc0ae27c6db8ddb3d9bf5f2a0
 
 pkgname = vscode-bin
 

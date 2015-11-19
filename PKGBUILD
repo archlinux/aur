@@ -3,12 +3,13 @@
 pkgname=vscode-bin
 pkgdesc='Visual Studio Code for Linux'
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('custom')
 makedepends=()
 depends=('gtk2' 'gconf')
+conflicts=('vscode')
 
 _src_base="https://az764295.vo.msecnd.net/public/${pkgver}"
 source_i686=("${_src_base}/VSCode-linux32.zip"
@@ -16,9 +17,9 @@ source_i686=("${_src_base}/VSCode-linux32.zip"
 source_x86_64=("${_src_base}/VSCode-linux64.zip"
                'vscode.desktop')
 sha1sums_i686=('793403a073b5a484e906a191ff5d4957e69911d3'
-               '71efff6181d2bba05376ce7401801671e6a58752')
+               'a85c0aa0c38757bbc0ae27c6db8ddb3d9bf5f2a0')
 sha1sums_x86_64=('65693e3991fa15efc20a7e2d749b40d582f88022'
-                 '71efff6181d2bba05376ce7401801671e6a58752')
+                 'a85c0aa0c38757bbc0ae27c6db8ddb3d9bf5f2a0')
 
 package() {
     _dirname=INVALID
@@ -40,6 +41,6 @@ package() {
             "${pkgdir}/usr/share/applications/vscode.desktop"
 
     # Install license file
-    install -D -m644 "${srcdir}/${_dirname}/resources/app/license.txt" \
+    install -D -m644 "${srcdir}/${_dirname}/resources/app/LICENSE.txt" \
             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

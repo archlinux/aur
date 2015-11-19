@@ -3,6 +3,6 @@ Encoding=UTF-8
 Name=Visual Studio Code
 Version=0.9.2
 Exec=/opt/VSCode/Code %F
-Icon=/opt/VSCode/resources/app/vso.png
+Icon=/opt/VSCode/resources/app/resources/linux/vscode.png
 Type=Application
 Categories=Development;
