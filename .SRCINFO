@@ -1,6 +1,6 @@
 pkgbase = mruby
 	pkgdesc = Lightweight Ruby
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/mruby/mruby
 	arch = i686
@@ -9,11 +9,10 @@ pkgbase = mruby
 	makedepends = git
 	makedepends = bison
 	makedepends = ruby
+	depends = readline
 	options = staticlibs
-	source = https://github.com/mruby/mruby/archive/1.1.0.zip
-	source = remove_termcap_static_lib.patch
-	sha1sums = SKIP
-	sha1sums = 3042fc7811afee7e88535dca43495a1a5486d6a5
+	source = mruby-1.2.0.zip::https://github.com/mruby/mruby/archive/1.2.0.zip
+	sha1sums = 0f3c535d6c89b710d1fd0fdbf167077abce55996
 
 pkgname = mruby
 
