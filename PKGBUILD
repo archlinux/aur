@@ -2,7 +2,7 @@
 
 pkgname=cava-git
 _pkgname=cava
-pkgver=r156.b2a8305
+pkgver=r218.2a2750a
 pkgrel=1
 pkgdesc='Console-based Audio Visualizer for Alsa'
 arch=(i686 x86_64)
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
+  sed -i -e 's/ncursesw5-config/ncursesw6-config/' makefile
   make
 }
 
