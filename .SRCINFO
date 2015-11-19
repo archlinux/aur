@@ -31,7 +31,9 @@ pkgbase = lightdm-webkit2-greeter
 	options = !libtool
 	backup = etc/lightdm/lightdm-webkit2-greeter.conf
 	source = lightdm-webkit2-greeter-0.2.3::git+https://github.com/antergos/lightdm-webkit2-greeter.git
+	source = http://antergos.com/antergos-wallpapers-0.6.zip
 	sha256sums = SKIP
+	sha256sums = 383484231d5d4c1e785d8b5e7635909e3e3200a9fe18fef5dbc6fc2f23961b28
 
 pkgname = lightdm-webkit2-greeter
 
