@@ -2,7 +2,7 @@
 # Contributor: Bitwig GmbH <support at bitwig dot com>
 pkgname=bitwig-studio-demo
 _pkgname=bitwig-studio
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Music production system for production, remixing and performance"
 arch=( 'x86_64' )
@@ -23,7 +23,7 @@ provides=('bitwig-studio')
 conflicts=('bitwig-studio-demo-rc')
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${pkgver}/bitwig-studio-${pkgver}.deb")
-md5sums=('06b6a388f095529da6ceb92f6149073b')
+md5sums=('1e2785a134eb119760ba1703637283d9')
 
 package() {
   cd $srcdir
@@ -35,6 +35,16 @@ package() {
   install -d $pkgdir/usr/share/licenses/$pkgname
 
   bsdtar -xf ./data.tar.gz -C "${pkgdir}/"
+
+  # Fix icon cache bug
+  local hicolor="${pkgdir}/usr/share/icons/hicolor"
+  if [[ -f ${hicolor}/scalable/apps/bitwig-modular.sh ]]; then
+    # Rename .sh to .svg
+    mv ${hicolor}/scalable/apps/bitwig-modular.{sh,svg}
+  fi
+
+  # Fix directory permission bug
+  chmod -R 755 ${pkgdir}/usr/bin
 
   install -m644 ${pkgdir}/opt/$_pkgname/EULA.rtf $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
