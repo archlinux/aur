@@ -1,6 +1,6 @@
 pkgbase = wireshark-gtk2
 	pkgdesc = a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend
-	pkgver = 1.12.8
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://www.wireshark.org/
 	install = wireshark-gtk2.install
@@ -24,10 +24,8 @@ pkgbase = wireshark-gtk2
 	provides = wireshark-gtk
 	conflicts = wireshark-cli
 	conflicts = wireshark-gtk
-	source = http://www.wireshark.org/download/src/all-versions/wireshark-1.12.8.tar.bz2
-	source = optional_sbc_2021845.patch
-	sha1sums = d8c23120525a2f3505e822b7684e7367bcd0ba70
-	sha1sums = 6f4fe6ca4b21f32aa7678e0f2837c22bc0b2ee65
+	source = http://www.wireshark.org/download/src/all-versions/wireshark-2.0.0.tar.bz2
+	sha1sums = f8b226b40e36e4c431b4f70bc3f523b6dd53a501
 
 pkgname = wireshark-gtk2
 

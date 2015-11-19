@@ -2,7 +2,7 @@
 
 pkgname=wireshark-gtk2
 _pkgbase=wireshark
-pkgver=1.12.8
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend'
 arch=('i686' 'x86_64')
@@ -15,24 +15,11 @@ makedepends=('python')
 provides=('wireshark-cli' 'wireshark-gtk')
 conflicts=('wireshark-cli' 'wireshark-gtk')
 install=wireshark-gtk2.install
-source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.bz2
-		optional_sbc_2021845.patch)
-sha1sums=('d8c23120525a2f3505e822b7684e7367bcd0ba70'
-		  '6f4fe6ca4b21f32aa7678e0f2837c22bc0b2ee65')
-
-prepare() {
-	cd ${_pkgbase}-${pkgver}
-
-	# Make sbc optional
-	# https://code.wireshark.org/review/#/c/6399/
-	patch -p1 < ../optional_sbc_2021845.patch
-}
-
+source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.bz2)
+sha1sums=('f8b226b40e36e4c431b4f70bc3f523b6dd53a501')
 
 build() {
 	cd ${_pkgbase}-${pkgver}
-
-	[ -f /usr/bin/lua ] && error "compile will fail if lua 5.3 is installed. Temporarily remove it to build." && exit
 
 	./autogen.sh
 	./configure \
