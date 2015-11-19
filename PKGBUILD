@@ -1,11 +1,12 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: Eduardo Leggiero <https://www.leggiero.uk/>
+# Contributor: Justin Dray <justin@dray.be>
 # Contributor: DonVla <donvla@users.sourceforge.net>
 # Contributor: mirandir <mirandir@orange.fr>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 pkgname=skype4pidgin-git
 pkgver=r771.ba5483c
-pkgrel=1
+pkgrel=2
 pkgdesc="A Skype plugin for libpurple clients (Pidgin, Empathy, Finch, etc)"
 arch=("i686" "x86_64")
 url="https://github.com/EionRobb/skype4pidgin"
