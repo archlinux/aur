@@ -3,7 +3,7 @@
 
 pkgname=google-webdesigner
 #pkgver=1.2.0.1203
-pkgver=1.3.0.0410
+pkgver=1.5.1.1118
 pkgrel=1
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ options=('!emptydirs' '!strip')
 install=${pkgname}.install
 _source_arch="i386"
 [ "${CARCH}" = 'x86_64' ] && _source_arch="amd64"
-md5sums=('cc439889f3cc0cf47a85faf2e523832e')
-[ "${CARCH}" = 'i686' ] && md5sums[0]='3fcfe673c41c07c0826596369b5daf89' # i686 not tested by me
+md5sums=('e669bd6fd0163f37d9ec970db7bcfc31')
+[ "${CARCH}" = 'i686' ] && md5sums[0]='04ab693e6baa641ebcbdcc9512d4f57e' # i686 not tested by me
 source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
 
 package() {
