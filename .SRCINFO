@@ -1,7 +1,7 @@
 pkgbase = unifi-controller-beta
 	pkgdesc = Controller for Ubiquiti UniFi accesspoints
 	pkgver = 4.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ubnt.com/
 	install = unifi.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = unifi-controller-beta
 	depends = java-runtime
 	conflicts = unifi-controller
 	backup = opt/unifi/data/system.properties
-	source = UniFi-4.7.6.zip::http://dl.ubnt.com/unifi/4.7.6-sp783omb/UniFi.unix.zip
+	source = UniFi-4.7.6.zip::http://dl.ubnt.com/unifi/4.7.6/UniFi.unix.zip
 	source = unifi.service
 	md5sums = 8f3afca200f8b405d2c270c2e5598f81
 	md5sums = 04934ee4be43b6f80db610d140edf49f
