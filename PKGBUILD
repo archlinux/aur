@@ -1,6 +1,6 @@
 # Maintainer: Michael Wendland <michael@michiwend.com>
-# Contributor: Adri·n PÈrez de Castro <aperez@igalia.com>
-# Contributor: Jo„o Guerra <joca.bt@gmail.com>
+# Contributor: Adri√°n P√©rez de Castro <aperez@igalia.com>
+# Contributor: Jo√£o Guerra <joca.bt@gmail.com>
 
 pkgname=evopop-gtk-theme-git
 pkgver=0.29.r8.gdadcccd
