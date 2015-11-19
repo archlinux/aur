@@ -11,6 +11,7 @@ pkgbase = gr-fosphor-git
 	depends = swig
 	depends = glfw
 	depends = opencl-headers
+	depends = freetype2
 	provides = gr-fosphor
 	source = git://git.osmocom.org/gr-fosphor
 	sha1sums = SKIP
