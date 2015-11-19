@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=xpybar
-pkgver=1.11.1
+pkgver=1.12
 pkgrel=1
 pkgdesc="A highly extensible minimalistic dock panel configured in Python 3"
 arch=(any)
@@ -17,10 +17,14 @@ optdepends=("linux: most of the monitors require Linux's procfs or sysfs"
 	    "iputils: for ping support"
 	    "inotify-tools: for inotify support"
 	    "alarm: for limiting the time of a file search in locks"
-	    "findutils: for file search in locks")
+	    "findutils: for file search in locks"
+	    "graphicsmagick: for image support"
+	    "imagemagick: for image support"
+	    "file: for image support"
+	    "librsvg: for image support")
 makedepends=(make coreutils sed zip)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(bf5c50ed72745b85a0eeaef080f9ca7ea913fec46d3cc02c3f9a55f501037d8b)
+sha256sums=(db33ec28902f0885743fa05e604c07ff429c5a99cfdb14ab0b84e1ce9db7176c)
 
 
 build() {
