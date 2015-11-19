@@ -6,6 +6,7 @@ pkgbase = wsjtx-svn
 	arch = i686
 	arch = x86_64
 	license = GPL-3
+	makedepends = cmake
 	makedepends = subversion
 	makedepends = asciidoc
 	depends = qt5-base
