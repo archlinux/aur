@@ -1,7 +1,7 @@
 pkgbase = guayadeque
 	pkgdesc = Lightweight music player
 	pkgver = 0.3.7
-	pkgrel = 5
+	pkgrel = 6
 	url = http://guayadeque.org/
 	install = guayadeque.install
 	arch = i686
@@ -29,6 +29,7 @@ pkgbase = guayadeque
 	source = guayadeque_05_wxSqlite_upgrade.patch
 	source = guayadeque_06_pixbuf_link.patch
 	source = guayadeque_07_player_display_fix.patch
+	source = guayadeque_08_EditCrash.patch
 	sha256sums = d23eb1247add0bef8d5fef834294d7cb3d7c5fc20db9022b86f618a13d359938
 	sha256sums = 56ff5fae064fa421cb951a7c664550861e04ae4df8b692044e2a4785f238ce24
 	sha256sums = 15b49c58be40a57ecb1d38e7055c1edc5aaf71e0164062cc5f2b8fb589530377
@@ -40,6 +41,7 @@ pkgbase = guayadeque
 	sha256sums = 6bd07e63afe0aa7baf30b616d701e234fd1c304897053e3eb466acb2db818071
 	sha256sums = 23d388711a17dc7e1487c740fd961ceb563a967d5866c5d5508865252be2d645
 	sha256sums = e2dbb71fc1d6118fa31d30f49382c16bb306130fc94118f3df9f0ea64c27ca0f
+	sha256sums = aaf355a3df930128da5c165b6ff07d06c3aa8ed4514522cc6a71e78634b5ee14
 
 pkgname = guayadeque
 
