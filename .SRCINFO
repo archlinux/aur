@@ -1,4 +1,4 @@
-pkgbase = pygraphviz
+pkgbase = python2-pygraphviz
 	pkgdesc = PyGraphviz is a Python interface to the Graphviz graph layout and visualization package.
 	pkgver = 1.3.1
 	pkgrel = 1
