@@ -2,7 +2,7 @@
 
 pkgname=tex2page-git
 pkgver=20151119
-pkgrel=1
+pkgrel=2
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
 url="https://github.com/ds26gte/tex2page"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  ./configure --dialect=guile --prefix=/usr
+  ./configure searchpathforscmxlate="$srcdir" --dialect=guile --prefix=/usr
   # creating the documentation
   cat story.tex $srcdir/end > story.new
   mv story.new story.tex
@@ -32,6 +32,10 @@ build() {
   mpost lambda
   pdftex index
   pdftex index
+}
+
+check() {
+  cd "$_gitname"
   # run the generated program to build html-docs, also a good test
   ./my-$_gitname index
   ./my-$_gitname index
