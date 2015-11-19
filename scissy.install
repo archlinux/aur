@@ -6,7 +6,7 @@ post_install() {
     fi
 
     if ! id scissy &>/dev/null ; then
-        useradd -r -g scissy -d /var/lib/scissy -s /bin/nologin scissy
+        useradd -r -g scissy -d /var/lib/scissy -s /bin/bash scissy
     fi
 
     systemd-tmpfiles --create scissy.conf

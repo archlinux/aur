@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bique <bique.alexandre@gmail.com>
 pkgname=scissy
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Lightweight and standalone git repository server"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(
   scissy.tmpfiles
 )
 md5sums=('SKIP'
-         '7184c02ab052a3f27ff0e7eaefae88d0'
+         '0bbb3e6a2601df538c204d7439a5ced6'
          '98690f1002f7d80af6cb9b939209a4dd'
          '6c652e0203eb62fd67ed28bfa7fc9d0c')
 install=scissy.install
