@@ -1,6 +1,6 @@
 pkgbase = cava
 	pkgdesc = Console-based Audio Visualizer for Alsa
-	pkgver = 0.3.3
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/karlstav/cava
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cava
 	license = MIT
 	depends = fftw
 	depends = alsa-lib
-	source = https://codeload.github.com/karlstav/cava/tar.gz/0.3.3
-	sha1sums = 2cc455e2897d705a538449366d88a4709aaee925
+	source = https://codeload.github.com/karlstav/cava/tar.gz/0.3.5
+	sha1sums = 19b3a69e9e3a40d5112897cf94bd5e4649ce41f9
 
 pkgname = cava
 
