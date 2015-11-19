@@ -1,8 +1,8 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 081947c..6b61583 100755
+index 3ce3564..5c479bb 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -145,7 +145,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -146,7 +146,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
          aboutinfo.SetVersion( str( HC.SOFTWARE_VERSION ) + ', using network version ' + str( HC.NETWORK_VERSION ) )
          aboutinfo.SetDescription( CC.CLIENT_DESCRIPTION )
          
@@ -11,7 +11,16 @@ index 081947c..6b61583 100755
          
          aboutinfo.SetLicense( license )
          
-@@ -2083,7 +2083,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
+@@ -277,7 +277,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+                             server_executable = server_executable.replace( 'pythonw', 'python' )
+                             
+                         
+-                        subprocess.Popen( [ server_executable, os.path.join( HC.BASE_DIR, 'server.py' ) ] )
++                        subprocess.Popen( [ server_executable, '/opt/hydrus/server.py' ] )
+                         
+                     
+                     time_waited = 0
+@@ -2091,7 +2091,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
                  
              elif command == '8chan_board': webbrowser.open( 'https://8ch.net/hydrus/index.html' )
              elif command == 'file_integrity': self._CheckFileIntegrity()
@@ -21,7 +30,7 @@ index 081947c..6b61583 100755
              elif command == 'help_shortcuts': wx.MessageBox( CC.SHORTCUT_HELP )
              elif command == 'import_files': self._ImportFiles()
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index ed75abd..8046f7e 100755
+index b1df8d3..667a633 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
 @@ -648,7 +648,7 @@ class DialogFirstStart( Dialog ):
@@ -55,7 +64,7 @@ index bccaae5..b389a65 100644
          response_context = HydrusServerResources.ResponseContext( 200, path = path )
          
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index ee72421..549efe9 100755
+index 47bed02..d53aa9a 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,24 +3,9 @@ import sys
@@ -86,7 +95,7 @@ index ee72421..549efe9 100755
  DB_DIR = os.path.join( BASE_DIR, 'db' )
  CLIENT_ARCHIVES_DIR = os.path.join( DB_DIR, 'client_archives' )
  CLIENT_FILES_DIR = os.path.join( DB_DIR, 'client_files' )
-@@ -31,9 +16,14 @@ SERVER_MESSAGES_DIR = os.path.join( DB_DIR, 'server_messages' )
+@@ -30,9 +15,14 @@ SERVER_THUMBNAILS_DIR = os.path.join( DB_DIR, 'server_thumbnails' )
  CLIENT_UPDATES_DIR = os.path.join( DB_DIR, 'client_updates' )
  SERVER_UPDATES_DIR = os.path.join( DB_DIR, 'server_updates' )
  LOGS_DIR = os.path.join( BASE_DIR, 'logs' )
