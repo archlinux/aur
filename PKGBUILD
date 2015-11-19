@@ -10,7 +10,7 @@ url="http://www.krename.net"
 license=('GPL')
 depends=('kdelibs4support' 'taglib' 'podofo' 'kjs' 'exiv2' 'hicolor-icon-theme')
 #kitemviews
-makedepends=('cmake' 'automoc4')
+makedepends=('cmake' 'automoc4' 'extra-cmake-modules')
 provides=$_pkgname
 conflicts=$_pkgname
 install=krename.install

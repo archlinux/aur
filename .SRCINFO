@@ -9,6 +9,7 @@ pkgbase = krename-frameworks
 	license = GPL
 	makedepends = cmake
 	makedepends = automoc4
+	makedepends = extra-cmake-modules
 	depends = kdelibs4support
 	depends = taglib
 	depends = podofo
