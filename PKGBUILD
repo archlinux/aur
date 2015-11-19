@@ -7,7 +7,7 @@
 
 _pkgname=dmenu
 pkgname=$_pkgname-git
-pkgver=4.5.46.32f2564
+pkgver=4.6.0.g32f2564
 pkgrel=1
 pkgdesc="A generic menu for X"
 url="http://tools.suckless.org/dmenu/"
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  echo 4.5.$(git rev-list 7f45b3f7a..@ --count).$(git rev-parse --short HEAD)
+  git describe --tags --long | sed 's/-/./g'
 }
 
 build(){
