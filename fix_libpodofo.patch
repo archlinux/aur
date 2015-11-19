@@ -1,0 +1,6 @@
+diff -r -u -0 krename-4.0.7/cmake/modules/FindLIBPODOFO.cmake krename-4.0.7.fixed/cmake//modules/FindLIBPODOFO.cmake
+--- krename-4.0.7/cmake/modules/FindLIBPODOFO.cmake	2011-02-21 23:00:30.000000000 +0100
++++ krename-4.0.7.fixed/cmake//modules/FindLIBPODOFO.cmake	2011-11-12 11:14:42.696446120 +0100
+@@ -26 +26 @@
+-	NAMES libpodofo-doc podofo-doc
++	NAMES libpodofo podofo

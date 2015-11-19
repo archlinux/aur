@@ -18,8 +18,10 @@ pkgbase = krename-frameworks
 	conflicts = krename
 	options = libtool
 	source = http://downloads.sourceforge.net/project/krename/KDE4%20krename-stable/4.0.9/krename-4.0.9.tar.bz2
+	source = fix_libpodofo.patch
 	source = port_to_kf5.patch
 	sha1sums = 03886a385a16de4c9bc285d25b9816ea97768c9e
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = krename-frameworks

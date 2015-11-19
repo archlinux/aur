@@ -14,12 +14,15 @@ makedepends=('cmake' 'automoc4')
 provides=$_pkgname
 conflicts=$_pkgname
 install=krename.install
-source=(http://downloads.sourceforge.net/project/krename/KDE4%20krename-stable/${pkgver}/${_pkgname}-${pkgver}.tar.bz2 "port_to_kf5.patch")
-sha1sums=('03886a385a16de4c9bc285d25b9816ea97768c9e' 'SKIP')
+source=(http://downloads.sourceforge.net/project/krename/KDE4%20krename-stable/${pkgver}/${_pkgname}-${pkgver}.tar.bz2
+        "fix_libpodofo.patch"
+        "port_to_kf5.patch")
+sha1sums=('03886a385a16de4c9bc285d25b9816ea97768c9e' 'SKIP' 'SKIP')
 options=('libtool')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
+  patch -p1 -i ${srcdir}/fix_libpodofo.patch
   patch -p1 -i ${srcdir}/port_to_kf5.patch
 }
 
