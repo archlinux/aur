@@ -2,8 +2,8 @@
 
 _perlmod=Travel-Status-DE-URA
 pkgname=perl-travel-status-de-ura
-pkgver=0.04
-pkgrel=2
+pkgver=1.00
+pkgrel=1
 pkgdesc='Travel::Status::DE::URA is an inofficial interface to URA-based departure monitors (as used by ASEAG)'
 url='http://finalrewind.org/projects/Travel-Status-DE-URA/'
 license=('GPL' 'PerlArtistic')
@@ -13,7 +13,7 @@ depends=('perl-class-accessor' 'perl-datetime' 'perl-datetime-format-duration'
 makedepends=('perl-file-slurp' 'perl-test-pod')
 options=('!emptydirs')
 source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz")
-sha256sums=('42ba942fb69984d04a8488d63f7b6c2b9ffcdfc77e0191e79142965686f85d69')
+sha256sums=('c344ed237d8a5b2c4ec3d38f4949646553412f67b66360faf6e7a661788892bf')
 
 build() {
   cd "${srcdir}"/${_perlmod}-${pkgver}
@@ -31,4 +31,3 @@ package() {
   ./Build install
   install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
 }
-sha256sums=('e1417a3ed6483f472ac6fc5cd79b37792ac7295b3faf41f2454e7ba13680cc32')
