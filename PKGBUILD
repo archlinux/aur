@@ -9,8 +9,8 @@
 # Maintainer: fdev31@gmail.com
 pkgname=instant-meshes
 pkgver=git
-pkgrel=2
-pkgdesc="interactive meshing/retopology software developed as part of SIGGRAPH ASIA 2015"
+pkgrel=3
+pkgdesc="interactive retopology of .obj or .ply developed as part of SIGGRAPH ASIA 2015"
 arch=("any")
 url="http://igl.ethz.ch/projects/instant-meshes/"
 license=('custom')

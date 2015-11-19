@@ -1,7 +1,7 @@
 pkgbase = instant-meshes
-	pkgdesc = interactive meshing/retopology software developed as part of SIGGRAPH ASIA 2015
+	pkgdesc = interactive retopology of .obj or .ply developed as part of SIGGRAPH ASIA 2015
 	pkgver = git
-	pkgrel = 2
+	pkgrel = 3
 	url = http://igl.ethz.ch/projects/instant-meshes/
 	arch = any
 	license = custom
