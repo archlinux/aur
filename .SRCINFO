@@ -1,0 +1,14 @@
+pkgbase = znc-chanfilter-git
+	pkgdesc = ZNC channel filter module for identified clients
+	pkgver = r62.cdfd196
+	pkgrel = 1
+	url = http://wiki.znc.in/Chanfilter
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = znc
+	source = git+https://github.com/jpnurmi/znc-chanfilter.git
+	sha256sums = SKIP
+
+pkgname = znc-chanfilter-git
+
