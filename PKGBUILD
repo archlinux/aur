@@ -3,7 +3,7 @@
 
 pkgname=idevicerestore-git
 epoch=1
-pkgver=r497.861f45c
+pkgver=r527.e2e83dc
 pkgrel=1
 pkgdesc="Restore/upgrade firmware of iOS devices"
 arch=('i686' 'x86_64')
@@ -11,8 +11,10 @@ url="http://www.libimobiledevice.org"
 license=('LGPL3')
 depends=('libirecovery-git' 'libimobiledevice-git' 'libplist-git' 'libzip' 'openssl' 'curl')
 makedepends=('git')
-source=("git://git.sukimashita.com/idevicerestore.git")
-md5sums=('SKIP')
+source=("git://git.sukimashita.com/idevicerestore.git"
+        "0001-configure.ac-check-for-pthreads.patch")
+sha256sums=('SKIP'
+            'c259a9f977de42fbfde75ad0c9a4d813b7d39bf217ee416902409403cd6d7931')
 
 pkgver() {
 	cd idevicerestore
@@ -23,6 +25,7 @@ pkgver() {
 prepare() {
 	cd idevicerestore
 
+	patch -Np1 -i "${srcdir}/0001-configure.ac-check-for-pthreads.patch"
 #	sed -re 's|automake|& --add-missing|' -i autogen.sh
 }
 
