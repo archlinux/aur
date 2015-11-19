@@ -1,12 +1,12 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidolib-git
 pkgver=2100.0f02cdf
-pkgrel=1
+pkgrel=2
 pkgdesc="engine for the graphic rendering of music scores, based on the Guido Music Notation format (git version)"
 arch=('x86_64' 'i686')
 url="http://guidolib.sourceforge.net/"
 license=('MPL')
-depends=('qt5-base' 'qt5-tools' 'cairo' 'midisharelight')
+depends=('qt5-base' 'qt5-tools' 'cairo' 'midisharelight-git')
 makedepends=('cmake')
 provides=('guidolib')
 conflicts=('guidolib')
