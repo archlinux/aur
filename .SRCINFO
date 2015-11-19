@@ -4,6 +4,10 @@ pkgbase = pycharm-eap
 	pkgrel = 1
 	url = https://confluence.jetbrains.com/pages/viewpage.action?pageId=23004355
 	arch = any
+	groups = development,
+	groups = IDE,
+	groups = editor,
+	groups = jetbrains
 	license = custom
 	makedepends = wget
 	depends = java-environment>=6

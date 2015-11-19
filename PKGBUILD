@@ -17,6 +17,7 @@ depends=("java-environment>=6")
 makedepends=("wget")
 provides=("pycharm-professional")
 conflicts=("pycharm-professional" "pycharm-pro-eap")
+groups=("development", "IDE", "editor", "jetbrains")
 
 if [[ "True" = "${_eap}" ]]; then
 	_srcfile="pycharm-professional-${_buildver}.tar.gz"
@@ -40,7 +41,7 @@ package() {
 		"${pkgdir}/usr/bin/" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/" \
 		"${pkgdir}/usr/share/applications/"
-
+	_eap="False"
 	wget "https://www.jetbrains.com/pycharm/buy/license.pdf"
 	install -m644 license.pdf "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
 
