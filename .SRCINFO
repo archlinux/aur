@@ -1,0 +1,16 @@
+pkgbase = perl-lib-abs
+	pkgdesc = C<lib> that makes relative path absolute to caller.
+	pkgver = 0.93
+	pkgrel = 1
+	url = https://metacpan.org/release/lib-abs
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MO/MONS/lib-abs-0.93.tar.gz
+	md5sums = 5fd0de8756a76bafb61abae49ca74e2e
+	sha512sums = b9927ac7ebac7a415fedbd801d83b7083a0897a3566f34ed5c0aa5edc1be18aed66314e9899163719879eecf59c1b4f45d6c825a07357b352ff6aab612fac775
+
+pkgname = perl-lib-abs
+
