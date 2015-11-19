@@ -4,7 +4,7 @@
 
 pkgname=corsix-th
 pkgver=0.50
-pkgrel=1
+pkgrel=2
 pkgdesc='Reimplementation of the game engine of Theme Hospital'
 url='https://github.com/CorsixTH/CorsixTH'
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,14 +13,18 @@ makedepends=('cmake')
 depends=('lua' 'lua-lpeg' 'lua-filesystem' 'sdl2_mixer' 'ffmpeg' 'timidity-freepats')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::"https://github.com/CorsixTH/CorsixTH/archive/v$pkgver.tar.gz"
+        $pkgname-fix-parameters-to-sws_scale.patch::"https://github.com/CorsixTH/CorsixTH/commit/4ae56e100911c1763cb9fd9a4b8647e323ecc032.patch"
         "$pkgname.sh")
 sha256sums=('822cb5b4a4ec863ba410b6a37e456b360516b2362337532689070e4555c037ee'
+            '65161006dfc0aaff77d0beffd3894203ca2f304d0db71f54329859fa08c712ab'
             '3614197a30498774fff4055ee54d82a812a8b88eba353b70c3288a09ff700158')
 
 prepare() {
   # fix location in .desktop entry
   cp -up CorsixTH-$pkgver/DebianPackage/usr/share/applications/CorsixTH.desktop $pkgname.desktop
   sed 's/games/share/g' -i $pkgname.desktop
+  # fix crash in ffmpeg 2.8+
+  patch -d CorsixTH-$pkgver -Np1 < $pkgname-fix-parameters-to-sws_scale.patch
 }
 
 build() {
