@@ -1,6 +1,6 @@
 # Maintainer: Stefano Facchini <stefano.facchini@gmail.com>
 pkgname=pinpoint
-pkgver=0.1.4
+pkgver=0.1.8
 pkgrel=2
 pkgdesc="A tool for making hackers do excellent presentations"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('clutter-gst' 'gdk-pixbuf2' 'pango' 'librsvg')
 makedepends=()
 install=pinpoint.install
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('4559155e9dc61ee47256ef7f5b73e4cdecbfc1b2bd6b0a1ab45dfee64ae8b92b')
+sha256sums=('5a207dd1a35681b7268e6aa5ff9b2c5381f4cc63e5f2e5695997ca9d3264e8ca')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

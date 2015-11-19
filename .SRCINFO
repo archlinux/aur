@@ -1,6 +1,6 @@
 pkgbase = pinpoint
 	pkgdesc = A tool for making hackers do excellent presentations
-	pkgver = 0.1.4
+	pkgver = 0.1.8
 	pkgrel = 2
 	url = https://live.gnome.org/Pinpoint
 	install = pinpoint.install
@@ -11,8 +11,8 @@ pkgbase = pinpoint
 	depends = gdk-pixbuf2
 	depends = pango
 	depends = librsvg
-	source = http://ftp.gnome.org/pub/gnome/sources/pinpoint/0.1/pinpoint-0.1.4.tar.xz
-	sha256sums = 4559155e9dc61ee47256ef7f5b73e4cdecbfc1b2bd6b0a1ab45dfee64ae8b92b
+	source = http://ftp.gnome.org/pub/gnome/sources/pinpoint/0.1/pinpoint-0.1.8.tar.xz
+	sha256sums = 5a207dd1a35681b7268e6aa5ff9b2c5381f4cc63e5f2e5695997ca9d3264e8ca
 
 pkgname = pinpoint
 
