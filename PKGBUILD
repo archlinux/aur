@@ -2,8 +2,8 @@
 # Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname=grass
-pkgver=7.0.1
-pkgrel=7
+pkgver=7.0.2
+pkgrel=1
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface')
 install=$pkgname.install
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
-md5sums=('bda8f612443a935b9da78dba85733db4')
+md5sums=('1f2c8f5cba2fe2d681a01b9519180e9e')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -26,9 +26,6 @@ prepare() {
 
   # Fix path
   sed -i '/^\s*INSTDIR/ s/".*"//' configure
-
-  # Upstream bug, calls wrong filename
-  sed -i "/^Exec/ s/=.*/=grass$_shortver/" gui/icons/grass.desktop
 }
 
 build() {
