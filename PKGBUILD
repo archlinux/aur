@@ -3,12 +3,12 @@
 
 pkgname=apache-spark
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
 license=('APACHE')
-depends=('maven' 'java-environment>=6' 'scala' 'python2>=2.7')
+depends=('maven>=3.3.3' 'java-environment>=6' 'scala' 'python2>=2.7')
 optdepends=('python: PYSPARK_PYTHON=python3 pyspark'
             'ipython: PYSPARK_DRIVER_PYTHON=ipython pyspark; IPYTHON=1 pyspark')
 install=apache-spark.install
