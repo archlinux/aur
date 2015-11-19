@@ -1,0 +1,19 @@
+#! /bin/bash
+
+post_install() {
+    if [ ! `grep scissy /etc/group` ]; then
+        groupadd -r scissy &>/dev/null;
+    fi
+
+    if ! id scissy &>/dev/null ; then
+        useradd -r -g scissy -d /var/lib/scissy -s /bin/nologin scissy
+    fi
+
+    systemd-tmpfiles --create scissy.conf
+    chown -R scissy:scissy /var/lib/scissy
+    chown -R scissy:scissy /etc/scissy
+}
+
+post_upgrade() {
+    post_install
+}
