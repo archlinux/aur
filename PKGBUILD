@@ -5,8 +5,8 @@ _module="${_name}"
 _check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.0.0"
-pkgrel="4"
+pkgver="1.0.1"
+pkgrel="1"
 pkgdesc="Data-Driven/Decorated Tests"
 arch=("any")
 url="https://github.com/txels/ddt"
@@ -18,7 +18,7 @@ checkdepends=("python-coverage" "python-nose" "python-six"
 #source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
 #        "https://raw.githubusercontent.com/txels/ddt/master/LICENSE.md")
 source=("https://github.com/txels/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=("cc8fcfd3097ddd4818d9f0ff23daa4325c5d71d02436c808a3bedc451ea9afdf")
+sha256sums=('1f768e2a63f2221af4bbbdcf2e3a2602f096f15f29e9480ff9f3c23bbe919d37')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
