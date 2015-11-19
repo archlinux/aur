@@ -7,10 +7,10 @@ pkgbase = wxmedit
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = boost
 	depends = wxgtk2.8
 	depends = icu
 	depends = desktop-file-utils
-	depends = boost
 	source = http://downloads.sourceforge.net/project/wxmedit/3.0.2/wxMEdit-3.0.2.tar.gz
 	sha256sums = 7d77c0ac255e699c44f713dae9aaac00a75bf442cf04355c161adf2c8de2206c
 
