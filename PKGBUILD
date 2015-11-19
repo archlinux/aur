@@ -1,8 +1,8 @@
 # Maintainer: Davi da Silva Böger <dsboger@gmail.com>
 pkgname=texlive-sbc-article
 pkgver=20111103
-pkgrel=1
-pkgdesc='LaTeX style package for Brazilian Computer Society conference papers'
+pkgrel=2
+pkgdesc='LaTeX style for Brazilian Computer Society conference papers'
 arch=('any')
 url="http://www.sbc.org.br/"
 license=('LPPL')
@@ -10,7 +10,7 @@ depends=('texlive-core')
 makedepends=('unrar')
 install=$pkgname.install
 _filename='sbc-article.rar'
-source=("$_filename::http://www.sbc.org.br/index.php?option=com_jdownloads&Itemid=195&task=finish&cid=38&catid=32")
+source=("$_filename::http://www.sbc.org.br/documentos-da-sbc/send/169-templates-para-artigos-e-capitulos-de-livros/878-modelosparapublicaodeartigos")
 sha512sums=('ca5304e417dc81642b64fcaed96af68dec74839759d29d2138baa2ca4d600592294c09641bdf25c3288c0e1eb0db8109d8ca0f2498ef5efc63c582b1ba76330f')
 noextract=("$_filename")
 
