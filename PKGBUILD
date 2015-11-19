@@ -3,7 +3,7 @@
 _pkgname=provision
 pkgname=aegir-${_pkgname/_/-}
 pkgver=7.x_3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="mass Drupal hosting system - backend"
 arch=('any')
 url='http://aegirproject.org'
@@ -11,11 +11,11 @@ license=('GPL')
 depends=('drush>=7')
 
 pkgver() {
-    drush rl --fields=version --field-labels=0 hostmaster | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' '
+    drush rl --default-major=7 --fields=version --field-labels=0 $_pkgname | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' '
 }
 
 prepare() {
-    drush dl $_pkgname --yes --destination="$srcdir" &>/dev/null
+    drush dl --default-major=7 $_pkgname --yes --destination="$srcdir" &>/dev/null
     echo 'extension=posix.so' >| "$srcdir/posix.ini"
 
     cd $_pkgname
