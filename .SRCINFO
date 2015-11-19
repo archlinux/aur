@@ -1,0 +1,17 @@
+pkgbase = heirloom-doctools-git
+	pkgdesc = The Heirloom Documentation Tools provide troff, nroff, and related utilities.
+	pkgver = 150406.r109.g9fa6f63
+	pkgrel = 1
+	url = https://github.com/n-t-roff/heirloom-doctools
+	arch = i686
+	arch = x86_64
+	license = CDDL
+	makedepends = git
+	provides = heirloom-doctools
+	conflicts = heirloom-doctools
+	conflicts = heirloom-doctools-cvs
+	source = heirloom-doctools-git::git+https://github.com/n-t-roff/heirloom-doctools
+	md5sums = SKIP
+
+pkgname = heirloom-doctools-git
+
