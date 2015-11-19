@@ -1,17 +1,20 @@
 pkgbase = lightdm-webkit2-greeter
 	pkgdesc = A webkit2 greeter for LightDM
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/antergos/lightdm-webkit2-greeter
 	install = greeter.install
 	arch = i686
 	arch = x86_64
+	groups = system
 	license = GPL3
 	license = LGPL3
 	makedepends = gnome-doc-utils
 	makedepends = gobject-introspection
 	makedepends = intltool
 	makedepends = gnome-common
+	makedepends = exo
+	makedepends = git
 	depends = lightdm
 	depends = webkit2gtk>=2.10
 	depends = webkit2gtk<2.12
@@ -19,15 +22,16 @@ pkgbase = lightdm-webkit2-greeter
 	depends = gtk3>=3.18
 	depends = gtk3<3.20
 	depends = dbus-glib
-	optdepends = lightdm-webkit-theme-antergos: fully featured and functional greeter theme
-	provides = lightdm-webkit2-greeter
 	provides = lightdm-webkit-greeter
+	provides = lightdm-webkit-theme-antergos=2.2.4
 	conflicts = lightdm-webkit-greeter
+	conflicts = lightdm-webkit-theme-antergos
 	replaces = lightdm-webkit-greeter
+	replaces = lightdm-webkit-theme-antergos<2.2.4
 	options = !libtool
 	backup = etc/lightdm/lightdm-webkit2-greeter.conf
-	source = lightdm-webkit2-greeter-0.2.2.tar.gz::https://github.com/antergos/lightdm-webkit2-greeter/archive/0.2.2.tar.gz
-	sha256sums = 529150d1b05247209f18227991f58330cc620f96dd92f20145babeb3669e1912
+	source = lightdm-webkit2-greeter-0.2.3::git+https://github.com/antergos/lightdm-webkit2-greeter.git
+	sha256sums = SKIP
 
 pkgname = lightdm-webkit2-greeter
 
