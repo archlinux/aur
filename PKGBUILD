@@ -1,0 +1,52 @@
+# Maintainer: Aurelien Cedeyn <aurelien.cedeyn@gmail.com>
+pkgname="clustershell"
+pkgver=1.7
+pkgrel=1
+pkgdesc="Python framework for efficient cluster administration"
+arch=(any)
+url="http://cea-hpc.github.io/clustershell/"
+license=('custom:CeCILL')
+groups=()
+depends=('python2')
+makedepends=('python2' 'setuptools')
+optdepends=('openssh: Secure SHell client to connect to distant machines', 'vim: Vi Improved')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=ChangeLog
+source=(https://github.com/cea-hpc/${pkgname}/archive/v${pkgver}.tar.gz)
+noextract=()
+md5sums=('43ac9b5a39f01bb84cfb2a5a459c4e4e')
+
+build() {
+	echo "Directory: ${srcdir}/${pkgname}-${pkgver}"
+	cd ${srcdir}/${pkgname}-${pkgver}
+	python2 setup.py build
+}
+package(){
+	cd ${srcdir}/${pkgname}-${pkgver}
+	python2 setup.py install -O1 --skip-build --root="${pkgdir}"
+	# config files
+	install -d ${pkgdir}/etc/clustershell
+	install -p -m 0644 conf/*.conf ${pkgdir}/etc/${pkgname}/
+
+	# man pages
+	install -d ${pkgdir}/usr/share/man/{man1,man5}
+	install -p -m 0644 doc/man/man1/clubak.1 ${pkgdir}/usr/share/man/man1/
+	install -p -m 0644 doc/man/man1/clush.1 ${pkgdir}/usr/share/man/man1/
+	install -p -m 0644 doc/man/man1/nodeset.1 ${pkgdir}/usr/share/man/man1/
+	install -p -m 0644 doc/man/man5/clush.conf.5 ${pkgdir}/usr/share/man/man5/
+	install -p -m 0644 doc/man/man5/groups.conf.5 ${pkgdir}/usr/share/man/man5/
+	install -D -m644 Licence_CeCILL-C_V1-en.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	local vimdatadir=/usr/share/vim/vimfiles
+	cd ${srcdir}/${pkgbase}-${pkgver}
+	# vim addons
+	install -d ${pkgdir}/$vimdatadir/{ftdetect,syntax}
+	install -p -m 0644 doc/extras/vim/ftdetect/clustershell.vim ${pkgdir}/${vimdatadir}/ftdetect/
+	install -p -m 0644 doc/extras/vim/syntax/clushconf.vim ${pkgdir}/${vimdatadir}/syntax/
+	install -p -m 0644 doc/extras/vim/syntax/groupsconf.vim ${pkgdir}/${vimdatadir}/syntax/
+}
