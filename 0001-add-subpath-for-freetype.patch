@@ -1,0 +1,15 @@
+diff --git a/cmake/Modules/FindFreetype2.cmake b/cmake/Modules/FindFreetype2.cmake
+index 7047c03..f8cdb2a 100644
+--- a/cmake/Modules/FindFreetype2.cmake
++++ b/cmake/Modules/FindFreetype2.cmake
+@@ -62,6 +62,7 @@ if(NOT FREETYPE2_FOUND)
+       ENV FREETYPE2_DIR
+       PATH_SUFFIXES
+       freetype2
++      freetype
+       include/freetype2
+       include
+       NO_DEFAULT_PATH
+-- 
+2.6.2
+
