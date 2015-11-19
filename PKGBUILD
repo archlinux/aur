@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 
 pkgname=vim-color_coded-git
-pkgver=r364.97847b6
+pkgver=r433.345ec53
 pkgrel=1
 pkgdesc="A vim plugin for libclang-based highlighting in C, C++, ObjC"
 arch=('i686' 'x86_64')
@@ -23,6 +23,7 @@ prepare() {
   cd color_coded
 
   sed -i '/CMAKE_INSTALL_PREFIX/d' CMakeLists.txt
+  sed -i 's/NAMES LLVM/NAMES LLVM LLVM/' cmake/clang/link.cmake
 }
 
 build() {

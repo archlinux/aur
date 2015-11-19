@@ -1,6 +1,6 @@
 pkgbase = vim-color_coded-git
 	pkgdesc = A vim plugin for libclang-based highlighting in C, C++, ObjC
-	pkgver = r364.97847b6
+	pkgver = r433.345ec53
 	pkgrel = 1
 	url = https://github.com/jeaye/color_coded
 	install = vimdoc.install
