@@ -1,7 +1,7 @@
 # Maintainer: Davi da Silva Böger <dsboger@gmail.com>
 pkgname=texlive-sbc-bookchapter
 pkgver=20111103
-pkgrel=1
+pkgrel=2
 pkgdesc='LaTeX class for Brazilian Computer Society book chapters'
 arch=('any')
 url="http://www.sbc.org.br/"
@@ -10,7 +10,7 @@ depends=('texlive-core')
 optdepends=('texlive-sbc-article: for sbc bibtex style')
 install=$pkgname.install
 _filename='sbc-bookchapter.zip'
-source=("$_filename::http://www.sbc.org.br/index.php?option=com_jdownloads&Itemid=195&task=finish&cid=102&catid=32")
+source=("$_filename::http://www.sbc.org.br/documentos-da-sbc/send/169-templates-para-artigos-e-capitulos-de-livros/879-modeloparapublicaodecaptulosdelivros")
 sha512sums=('4521c246c0840c65ca2c66a308da82b3449d37f2bf610220a8af62e98edfdecf6b5095cdead945fe493ac968d0f4ff3ea838057fda731481d93edb077e6b4e21')
 
 package() {
