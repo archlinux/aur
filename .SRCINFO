@@ -1,0 +1,21 @@
+pkgbase = pandoc-plantuml-filter-git
+	pkgdesc = Pandoc filter for PlantUML code blocks
+	pkgver = 0.1.0.2
+	pkgrel = 1
+	url = https://github.com/kbonne/pandoc-plantuml-filter
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = cabal-install
+	makedepends = haskell-pandoc-types
+	depends = pandoc
+	depends = plantuml
+	provides = pandoc-plantuml-filter
+	conflicts = pandoc-plantuml-filter
+	source = git+https://github.com/kbonne/pandoc-plantuml-filter.git
+	source = cabal.patch
+	md5sums = SKIP
+	md5sums = 38558ee9e9dddd252f5c46d0e8e273a6
+
+pkgname = pandoc-plantuml-filter-git
+

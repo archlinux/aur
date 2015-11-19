@@ -1,0 +1,13 @@
+diff --git a/pandoc-plantuml-filter.cabal b/pandoc-plantuml-filter.cabal
+index ca19824..11bbe95 100644
+--- a/pandoc-plantuml-filter.cabal
++++ b/pandoc-plantuml-filter.cabal
+@@ -60,7 +60,7 @@ executable pandoc-plantuml-filter
+   -- other-extensions:
+ 
+   -- Other library packages from which modules are imported.
+-  build-depends:       base >=4.6 && <4.8
++  build-depends:       base >=4.6 && <5
+                      , pandoc-types
+                      , utf8-string
+                      , SHA
