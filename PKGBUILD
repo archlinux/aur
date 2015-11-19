@@ -1,11 +1,17 @@
 pkgname=wacom-utility-git
 pkgver=20150614
-pkgrel=1
+pkgver() {
+    cd "${pkgname}"
+    git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+pkgrel=2
 pkgdesc="Graphical tablet configuration utility"
 arch=('i686' 'x86_64')
 url="http://github.com/lubosz/wacom-utility.git"
 license=('GPL')
 depends=('gtk2' 'python2' 'xf86-input-wacom' 'gksu')
+conflicts=('wacom-utility')
+replaces=('wacom-utility')
 source=(wacom-utility.desktop)
 md5sums=('1d44b3571fd5e48b80b2dec5209fcf47')
 
