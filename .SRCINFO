@@ -1,7 +1,7 @@
 pkgbase = qemacs
 	pkgdesc = Quick version of Emacs
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bellard.org/qemacs/
 	install = qemacs.install
 	arch = x86_64

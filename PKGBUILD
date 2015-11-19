@@ -1,8 +1,8 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander RÃ¸dseth <rodseth@gmail.com>
 
 pkgname=qemacs
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Quick version of Emacs'
 license=('LGPL2.1')
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ source=("http://bellard.org/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('2ffba66a44783849282199acfcc08707debc7169394a8fd0902626222f27df94')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   # Patch a few compilation errors
   sed -i 's:static QEDisplay:QEDisplay:' tty.c
@@ -45,7 +45,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   # Compile
   make -C libqhtml
@@ -53,7 +53,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   # Binaries
   mkdir -p "$pkgdir/usr/bin"
