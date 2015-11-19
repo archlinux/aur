@@ -1,6 +1,6 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
-	pkgver = 2.8
+	pkgver = 2.8.2
 	pkgrel = 1
 	epoch = 1
 	url = http://ffmpeg.org/
@@ -46,8 +46,8 @@ pkgbase = lib32-ffmpeg
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	source = http://ffmpeg.org/releases/ffmpeg-2.8.tar.bz2
-	sha256sums = 9565236404d3515aab754283c687c0a001019003148bf7f708e643608c0690b8
+	source = http://ffmpeg.org/releases/ffmpeg-2.8.2.tar.bz2
+	sha256sums = 830ec647f7ad774fc0caf17ba47774bf5dee7a89cbd65894f364a87ba3ad21b2
 
 pkgname = lib32-ffmpeg
 

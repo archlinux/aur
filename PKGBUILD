@@ -5,7 +5,7 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=2.8
+pkgver=2.8.2
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
@@ -32,7 +32,9 @@ provides=(
       'libswscale.so'
 )
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2)
-sha256sums=('9565236404d3515aab754283c687c0a001019003148bf7f708e643608c0690b8')
+sha256sums=('830ec647f7ad774fc0caf17ba47774bf5dee7a89cbd65894f364a87ba3ad21b2')
+
+# TODO: add patch for libvpx 1.5 (AUR still has 1.4)
 
 build() {
   cd $_pkgbasename-$pkgver
@@ -80,6 +82,7 @@ build() {
 #    --enable-libvpx \
 #    --enable-libx265 \
 #    --enable-libssh \
+#    --enable-libvidstab \
 
   make
 }
