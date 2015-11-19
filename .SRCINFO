@@ -1,0 +1,18 @@
+pkgbase = gnuradio-ra-blocks-git
+	pkgdesc = Essential radio astronomy tools for Gnuradio.
+	pkgver = 20150623
+	pkgrel = 1
+	url = https://github.com/patchvonbraun/gr-ra_blocks
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = swig
+	depends = gnuradio
+	source = git+https://github.com/patchvonbraun/gr-ra_blocks
+	md5sums = SKIP
+
+pkgname = gnuradio-ra-blocks-git
+
