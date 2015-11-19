@@ -8,7 +8,7 @@ pkgdesc="A very powerful batch file renamer for KDE. KF5 Version."
 arch=('i686' 'x86_64')
 url="http://www.krename.net"
 license=('GPL')
-depends=('kdelibs4support' 'taglib' 'kio' 'kjs')
+depends=('kdelibs4support' 'taglib' 'podofo' 'kjs' 'exiv2')
 #kitemviews
 makedepends=('cmake' 'automoc4')
 provides=$_pkgname
