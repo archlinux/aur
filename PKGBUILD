@@ -10,7 +10,7 @@ license=('LGPL')
 groups=('fenics-git')
 # the package may still build without these dependencies but it wouldn't be
 # very useful, most people would want these installed before building
-depends=('python2' 'boost' 'libxml2' 'hdf5-openmpi' 'cppunit' 'trilinos' 'petsc' 'slepc' 'ffc-git' 'instant-git' 'eigen' 'python2-ply' 'vtk' 'python2-sphinx'  'python2-six' 'python-sympy')
+depends=('python2' 'boost' 'libxml2' 'hdf5-openmpi' 'cppunit' 'trilinos' 'petsc' 'slepc' 'ffc-git' 'instant-git' 'eigen' 'python2-ply' 'vtk' 'python2-sphinx'  'python2-six' 'python2-sympy' 'gl2ps')
 makedepends=('git' 'cmake' 'swig')
 optdepends=('python2-sphinx: for building documentation')
 conflicts=('dolfin')
