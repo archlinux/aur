@@ -1,0 +1,10 @@
+pkgbase = instant-meshes
+	pkgdesc = interactive meshing software developed as part of some publication
+	pkgver = git
+	pkgrel = 1
+	arch = any
+	license = custom
+	makedepends = git
+
+pkgname = instant-meshes
+
