@@ -14,6 +14,7 @@ pkgbase = krename-frameworks
 	depends = podofo
 	depends = kjs
 	depends = exiv2
+	depends = hicolor-icon-theme
 	provides = krename
 	conflicts = krename
 	options = libtool
