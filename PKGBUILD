@@ -1,6 +1,6 @@
 pkgname=prayerapp
 pkgdesc="Simple and light-weight app for prayer time reminders."
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/tgharib/PrayerApp"
