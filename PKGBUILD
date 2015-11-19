@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidolib-git
-pkgver=2094.d9f8e03
+pkgver=2100.0f02cdf
 pkgrel=1
 pkgdesc="engine for the graphic rendering of music scores, based on the Guido Music Notation format (git version)"
 arch=('x86_64' 'i686')
@@ -11,18 +11,12 @@ makedepends=('cmake')
 provides=('guidolib')
 conflicts=('guidolib')
 install="$pkgname.install"
-source=("$pkgname::git+git://git.code.sf.net/p/guidolib/code#branch=dev"
-	"guidolib-linux.patch")
-md5sums=('SKIP' 'b483aea1fcdaf85884d4b5bf238d4d9d')
+source=("$pkgname::git+git://git.code.sf.net/p/guidolib/code#branch=dev")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-    cd "$srcdir/$pkgname"
-    patch -p1 < ../guidolib-linux.patch
 }
 
 build() {
@@ -34,11 +28,7 @@ package() {
     cd "$srcdir/$pkgname"
     # binaries
     install -d "$pkgdir/usr/bin"
-    # the desktop files expect the names of GuidoEditor and GuidoSceneComposer
-    # to be in lowercase
-    cp environments/Qt/apps/GuidoEditor/GuidoEditor "$pkgdir/usr/bin/guidoeditor"
-    cp environments/Qt/apps/GuidoSceneComposer/GuidoSceneComposer "$pkgdir/usr/bin/guidoscenecomposer"
-    cp environments/Qt/apps/guido2image/guido2image src/tools/build/linux/guido* src/tools/build/linux/midi2proll "$pkgdir/usr/bin"
+    cp environments/Qt/apps/GuidoEditor/GuidoEditor environments/Qt/apps/GuidoSceneComposer/GuidoSceneComposer environments/Qt/apps/guido2image/guido2image src/tools/build/linux/guido* src/tools/build/linux/midi2proll "$pkgdir/usr/bin"
     # libraries
     install -d "$pkgdir/usr/lib"
     cp -a build/libGUIDOEngine.* "$pkgdir/usr/lib"
