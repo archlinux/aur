@@ -1,0 +1,20 @@
+pkgbase = vscode
+	pkgdesc = Visual Studio Code for Linux
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://code.visualstudio.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = npm
+	makedepends = gulp
+	depends = gtk2
+	depends = gconf
+	conflicts = vscode-bin
+	source = https://github.com/Microsoft/vscode/archive/0.10.1.tar.gz
+	source = vscode.desktop
+	sha1sums = 4c9a4f2033c55bc2d8fd3efcfcb056fc446f235b
+	sha1sums = 33cdc2df8d89d544f994f914c3bb3b414e3b81b7
+
+pkgname = vscode
+
