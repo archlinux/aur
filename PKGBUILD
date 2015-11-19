@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc='Design tools, documentation, software and support resources for EFM32™, EFM8™, 8051, Wireless MCUs and Wireless SoCs.'
 arch=(i686 x86_64)
 url='http://www.silabs.com/products/mcu/Pages/simplicity-studio.aspx'
-
 license=('unknown')
 
 # should probably put something here but most dependencies are included
@@ -14,7 +13,7 @@ depends=()
 
 options=('!strip')
 
-source=(http://www.silabs.com/Support%20Documents/Software/SimplicityStudio.tgz
+source=(https://www.silabs.com/Support%20Documents/Software/SimplicityStudio.tgz
         simplicitystudio.patch
         simplicitystudio)
 md5sums=('e5881c26d731343d11a1346968c5eb6b'
