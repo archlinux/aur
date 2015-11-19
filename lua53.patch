@@ -1,5 +1,6 @@
---- a/src/qtluastate.cc	2013-03-17 16:14:27.000000000 -0700
-+++ b/src/qtluastate.cc	2015-06-27 20:39:35.371045361 -0700
+diff -rupN a/src/qtluastate.cc b/src/qtluastate.cc
+--- a/src/qtluastate.cc	2015-11-19 11:20:00.485709803 -0800
++++ b/src/qtluastate.cc	2015-11-19 11:19:28.119041925 -0800
 @@ -439,7 +439,7 @@ void State::lua_pgettable(lua_State *st,
    if (lua_type(st, index) == LUA_TTABLE)
      {
@@ -9,14 +10,18 @@
        lua_pop(st, 1);
      }
  
---- a/src/qtluavaluebase.cc	2013-03-17 16:14:27.000000000 -0700
-+++ b/src/qtluavaluebase.cc	2015-06-27 20:44:12.166864362 -0700
-@@ -657,7 +657,7 @@ QByteArray ValueBase::to_bytecode() cons
+diff -rupN a/src/qtluavaluebase.cc b/src/qtluavaluebase.cc
+--- a/src/qtluavaluebase.cc	2015-11-19 11:20:15.155710350 -0800
++++ b/src/qtluavaluebase.cc	2015-11-19 11:21:27.722379730 -0800
+@@ -657,7 +657,11 @@ QByteArray ValueBase::to_bytecode() cons
    if (lua_type(lst, -1) == LUA_TFUNCTION)
      {
        QByteArray bytecode;
--      int status = lua_dump(lst, &lua_writer, &bytecode);	
-+      int status = lua_dump(lst, &lua_writer, &bytecode, 0);	
++#if LUA_VERSION_NUM < 503
+       int status = lua_dump(lst, &lua_writer, &bytecode);	
++#else
++      int status = lua_dump(lst, &lua_writer, &bytecode, 0);
++#endif
        lua_pop(lst, 1);
        if (status)
  	QTLUA_THROW(QtLua::ValueBase, "Unable to dump function bytecode (status=%)", .arg(status));

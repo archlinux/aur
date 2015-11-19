@@ -13,11 +13,15 @@ depends=(qt5-base lua)
 source=("http://download.savannah.gnu.org/releases/libqtlua/libqtlua-${pkgver}.tar.gz"
         "lua53.patch")
 sha1sums=('2553c8c30c2154143fe47278e91d3d26719b06e2'
-          '674da42a462ab1957a4571611d948cc222ad1faa')
+          '7c5a37ea14f5c4536a3669b7bac81b6d5cf00369')
+
+prepare() {
+    cd "${srcdir}/libqtlua-${pkgver}"
+    patch -p1 < ../lua53.patch
+}
 
 build() {
     cd "${srcdir}/libqtlua-${pkgver}"
-    patch -p1 < ../lua53.patch
 
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/build"

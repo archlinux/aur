@@ -10,7 +10,7 @@ pkgbase = qt-lua
 	source = http://download.savannah.gnu.org/releases/libqtlua/libqtlua-2.0.tar.gz
 	source = lua53.patch
 	sha1sums = 2553c8c30c2154143fe47278e91d3d26719b06e2
-	sha1sums = 674da42a462ab1957a4571611d948cc222ad1faa
+	sha1sums = 7c5a37ea14f5c4536a3669b7bac81b6d5cf00369
 
 pkgname = qt-lua
 
