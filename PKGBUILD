@@ -4,7 +4,7 @@
 
 _pkgname=xf86-input-evdev
 pkgname=$_pkgname-git
-pkgver=2.9.1.6.r644.gb370ccd
+pkgver=2.10.0.1.r2.gd7e61a7
 pkgrel=1
 pkgdesc="X.org evdev input driver - Git version"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ license=('custom')
 groups=('xorg' 'xorg-drivers')
 depends=('glibc' 'systemd-tools' 'mtdev')
 makedepends=('xorg-server-devel' 'resourceproto' 'scrnsaverproto' 'git' 'libevdev')
-provides=("$_pkgname=$pkgver")
-conflicts=('xorg-server<1.16.0' 'X-ABI-XINPUT_VERSION<21' "$_pkgname")
+provides=("$_pkgname=$pkgver" 'xf86-input-driver')
+conflicts=('xorg-server<1.18.0' 'X-ABI-XINPUT_VERSION<22' "$_pkgname")
 options=('!libtool' '!makeflags')
 source=("git://anongit.freedesktop.org/xorg/driver/$_pkgname")
 md5sums=('SKIP')
