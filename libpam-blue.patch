@@ -1,0 +1,56 @@
+diff -Naur --no-dereference libpam-blue-0.9.0.orig/aclocal.m4 libpam-blue-0.9.0.new/aclocal.m4
+--- libpam-blue-0.9.0.orig/aclocal.m4	2007-05-18 13:23:29.000000000 +0300
++++ libpam-blue-0.9.0.new/aclocal.m4	2015-11-18 21:03:30.657381520 +0200
+@@ -6289,7 +6289,7 @@
+ # ----------------------------
+ # Automake X.Y traces this macro to ensure aclocal.m4 has been
+ # generated from the m4 files accompanying Automake X.Y.
+-AC_DEFUN([AM_AUTOMAKE_VERSION], [am__api_version="1.8"])
++AC_DEFUN([AM_AUTOMAKE_VERSION], [am__api_version="1.15"])
+ 
+ # AM_SET_CURRENT_AUTOMAKE_VERSION
+ # -------------------------------
+diff -Naur --no-dereference libpam-blue-0.9.0.orig/configure libpam-blue-0.9.0.new/configure
+--- libpam-blue-0.9.0.orig/configure	2007-05-21 16:19:47.000000000 +0300
++++ libpam-blue-0.9.0.new/configure	2015-11-18 21:04:03.327100206 +0200
+@@ -7928,7 +7928,7 @@
+   exit 1
+ fi
+ gentoo_lt_version="1.5.18"
+-gentoo_ltmain_version=`grep '^[:space:]*VERSION=' $ltmain | sed -e 's|^[:space:]*VERSION=||'`
++gentoo_ltmain_version=`grep '^[[:space:]]*VERSION=' $ltmain | sed -e 's|^[[:space:]]*VERSION=||'`
+ if test "$gentoo_lt_version" != "$gentoo_ltmain_version"; then
+   { echo "$as_me:$LINENO: result: no" >&5
+ echo "${ECHO_T}no" >&6; }
+diff -Naur --no-dereference libpam-blue-0.9.0.orig/data/Makefile.am libpam-blue-0.9.0.new/data/Makefile.am
+--- libpam-blue-0.9.0.orig/data/Makefile.am	2007-05-18 13:23:29.000000000 +0300
++++ libpam-blue-0.9.0.new/data/Makefile.am	2015-11-18 21:29:24.667734819 +0200
+@@ -14,9 +14,9 @@
+ EXTRA_DIST = sample.conf
+ 
+ install-data-local:
+-		test -d ${sysconfdir} || mkdir -p ${sysconfdir}
+-		test -d ${sysconfdir}/security || mkdir -p ${sysconfdir}/security
+-		cp -f $(srcdir)/sample.conf ${sysconfdir}/security/bluescan.conf
++		test -d ${DESTDIR}${sysconfdir} || mkdir -p ${DESTDIR}${sysconfdir}
++		test -d ${DESTDIR}${sysconfdir}/security || mkdir -p ${DESTDIR}${sysconfdir}/security
++		cp -f $(srcdir)/sample.conf ${DESTDIR}${sysconfdir}/security/bluescan.conf
+ 
+ uninstall-local:
+ 		rm -f ${sysconfdir}/security/bluescan.conf
+diff -Naur --no-dereference libpam-blue-0.9.0.orig/data/Makefile.in libpam-blue-0.9.0.new/data/Makefile.in
+--- libpam-blue-0.9.0.orig/data/Makefile.in	2007-05-18 13:23:29.000000000 +0300
++++ libpam-blue-0.9.0.new/data/Makefile.in	2015-11-18 21:30:06.436322287 +0200
+@@ -321,9 +321,9 @@
+ 
+ 
+ install-data-local:
+-		test -d ${sysconfdir} || mkdir -p ${sysconfdir}
+-		test -d ${sysconfdir}/security || mkdir -p ${sysconfdir}/security
+-		cp -f $(srcdir)/sample.conf ${sysconfdir}/security/bluescan.conf
++		test -d ${DESTDIR}${sysconfdir} || mkdir -p ${DESTDIR}${sysconfdir}
++		test -d ${DESTDIR}${sysconfdir}/security || mkdir -p ${DESTDIR}${sysconfdir}/security
++		cp -f $(srcdir)/sample.conf ${DESTDIR}${sysconfdir}/security/bluescan.conf
+ 
+ uninstall-local:
+ 		rm -f ${sysconfdir}/security/bluescan.conf

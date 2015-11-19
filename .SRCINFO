@@ -1,0 +1,21 @@
+pkgbase = libpam-blue
+	pkgdesc = PAM module for local authenticaction with bluetooth devices.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/libpam-blue
+	arch = any
+	license = GPL
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	makedepends = bluez-libs
+	depends = bluez
+	depends = bluez-libs
+	depends = glibc
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/libp/libpam-blue/libpam-blue_0.9.0.orig.tar.gz
+	source = libpam-blue.patch
+	md5sums = b95c27f1c13bf4e07be9dd57b2f4db71
+	md5sums = 97a12dbda2e690fb7b7cacdeb8297b3b
+
+pkgname = libpam-blue
+
