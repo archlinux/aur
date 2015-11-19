@@ -1,7 +1,7 @@
 # Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=filebeat
-pkgver=1.0.0_rc1
+pkgver=1.0.0_rc2
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources'
@@ -16,7 +16,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/elastic/$pkgname/archive/v$_pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('3ea03cfbc82f13155f7cc4cd114f4b2617b0c9c326594fdc72ae1bfb4560eedd'
+sha256sums=('a9ef85bafda63d5204033597c72df8befe31acce2946f05330b9dea279b562af'
             '9985f8e0441efde0e60c5efe97890e46d4f1cbd118d8722eb478be876197326a')
 
 prepare() {
