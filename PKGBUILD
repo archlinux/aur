@@ -5,8 +5,8 @@
 # Contributor: Michael Hansen <zrax0111 gmail com>
 
 pkgname=lldb-svn
-_gcc_ver=4.6.2
-pkgver=235563
+_gcc_ver=4.7
+pkgver=253587
 pkgrel=1
 pkgdesc="The LLDB Debugger"
 arch=('i686' 'x86_64')
@@ -45,7 +45,6 @@ build() {
 
   sed -i -e "s|python-config|python2-config|" lib/Makefile
   sed -i -e "s|python-config|python2-config|" Makefile
-  sed -i -e "s|/usr/bin/env python|&2|" scripts/Python/build-swig-Python.sh
   sed -i -e "s|/usr/bin/env python|&2|" scripts/Python/finish-swig-Python-LLDB.sh
 
   cd "$srcdir/llvm"

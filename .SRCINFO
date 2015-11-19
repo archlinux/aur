@@ -1,6 +1,6 @@
 pkgbase = lldb-svn
 	pkgdesc = The LLDB Debugger
-	pkgver = 235563
+	pkgver = 253587
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = lldb-svn
 	depends = gcc-libs
 	depends = libffi
 	depends = python2
-	depends = gcc>=4.6.2
+	depends = gcc>=4.7
 	depends = libedit
 	depends = llvm
 	depends = clang
