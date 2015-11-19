@@ -1,7 +1,7 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=jamomacore-git
 pkgver=1.0b1
-pkgrel=1
+pkgrel=3
 pkgdesc="The Jamoma Frameworks"
 arch=('x86_64')
 url="http://www.jamoma.org"
@@ -33,7 +33,7 @@ build() {
       git pull
     )
   else
-    git clone "$_gitroot" "$_gitname"
+    git clone --depth=1 "$_gitroot" "$_gitname"
     (
       cd "$_gitname"
       git checkout "$_gitbranch"
@@ -42,7 +42,7 @@ build() {
 
   mkdir -p "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
-  cmake -GNinja "$srcdir/$_gitname"
+  cmake -GNinja -DCMAKE_INSTALL_PREFIX="/usr" "$srcdir/$_gitname"
   ninja
 }
 
