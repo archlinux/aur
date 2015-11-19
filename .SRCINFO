@@ -1,0 +1,15 @@
+pkgbase = zsh-notify-git
+	pkgdesc = Desktop notifications for long-running commands in zsh.
+	pkgver = 29.cf8c1b9
+	pkgrel = 1
+	url = https://github.com/marzocchi/zsh-notify
+	arch = any
+	license = Custom:none
+	makedepends = git
+	depends = zsh
+	provides = zsh-notify
+	source = zsh-notify::git://github.com/marzocchi/zsh-notify
+	sha256sums = SKIP
+
+pkgname = zsh-notify-git
+
