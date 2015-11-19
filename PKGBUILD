@@ -3,14 +3,14 @@
 pkgname=('jdk-devel-docs' 'javafx-devel-docs')
 _major=9
 #_minor=1
-_build=b91
-_date=04_nov_2015
-_date_fx=03_nov_2015
+_build=b92
+_date=11_nov_2015
+_date_fx=10_nov_2015
 _pkgver=$_major
 pkgver=${_major}${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.${_build}
-pkgrel=2
+pkgrel=1
 arch=('any')
 url="https://jdk$_major.java.net/"
 license=('custom:Oracle BSD')
@@ -20,8 +20,8 @@ options=('!strip')
 source=("http://download.java.net/jdk$_major/archive/$_build/binaries/jdk-$_pkgver-ea-docs-$_build-all-$_date.zip"
         "http://download.java.net/jdk$_major/archive/$_build/binaries/javafx-$_pkgver-ea-apidocs-$_build-$_date_fx.zip"
         'LICENSE')
-md5sums=('0e366ea5324c44273960a2882f2aa813'
-         '201e6fe4b40e3820fbdac657f26b2d58'
+md5sums=('6a4a430c565af3e769a27e6aa05f448b'
+         'd967ef256b1bc47314404ea90c42b123'
          'f09947a67691a2d78d20a3885889981c')
 
 package_jdk-devel-docs() {
