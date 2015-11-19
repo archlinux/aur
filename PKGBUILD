@@ -30,7 +30,7 @@ package() {
     install -dm755 "$pkgdir/usr/share/applications/"
     install -dm755 "$pkgdir/etc/udev/rules.d"
 
-    cp -r "$srcdir/SimplicityStudio_v3" "$pkgdir/opt/$pkgname"
+    cp -a "$srcdir/SimplicityStudio_v3" "$pkgdir/opt/$pkgname"
 
     DESTDIR="$pkgdir" "$pkgdir/opt/$pkgname/setup.sh"
 
