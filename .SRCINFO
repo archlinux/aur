@@ -1,16 +1,16 @@
 pkgbase = octave-parallel
 	pkgdesc = Parallel execution package. See also package mpi, maintained by Carlo de Falco.
-	pkgver = 3.0.2
-	pkgrel = 2
+	pkgver = 3.0.3
+	pkgrel = 1
 	url = http://octave.sourceforge.net/parallel/
 	install = octave-parallel.install
 	arch = any
 	groups = octave-forge
 	license = GPL3
 	depends = octave>=3.8.0
-	noextract = parallel-3.0.2.tar.gz
-	source = http://downloads.sourceforge.net/octave/parallel-3.0.2.tar.gz
-	md5sums = 5c17c41677c38702a3086c39571b12f0
+	noextract = parallel-3.0.3.tar.gz
+	source = http://downloads.sourceforge.net/octave/parallel-3.0.3.tar.gz
+	md5sums = 187a4934e03f6760e65b86f0f0d90a21
 
 pkgname = octave-parallel
 
