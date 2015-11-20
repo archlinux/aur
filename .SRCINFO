@@ -1,0 +1,20 @@
+pkgbase = kdesrc-build
+	pkgdesc = A script to build KDE software from KDE's source repositories
+	pkgver = 15.10
+	pkgrel = 1
+	url = http://kdesrc-build.kde.org/
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = perl
+	depends = perl-libwww
+	depends = perl-xml-parser
+	depends = dialog
+	depends = perl-json
+	optdepends = subversion: download source code using svn
+	optdepends = git: download source code using git
+	source = git://anongit.kde.org/kdesrc-build.git#tag=v15.10
+	md5sums = SKIP
+
+pkgname = kdesrc-build
+
