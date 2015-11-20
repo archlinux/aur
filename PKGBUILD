@@ -32,7 +32,7 @@ prepare() {
 # This does not actually use the build script in the elm-lang/elm-platform
 # repository, but the commands below are taken from there.
 build() {
-	cd "$srcdir"
+  cd "$srcdir"
 
   cabal update
   cabal sandbox init
@@ -51,15 +51,15 @@ build() {
 
 package() {
   cd "$srcdir"
-	binpath=".cabal-sandbox/bin"
+  binpath=".cabal-sandbox/bin"
 
-	install -Dm755 "$binpath/elm"         "$pkgdir/usr/bin/elm"
-	install -Dm755 "$binpath/elm-make"    "$pkgdir/usr/bin/elm-make"
-	install -Dm755 "$binpath/elm-package" "$pkgdir/usr/bin/elm-package"
-	install -Dm755 "$binpath/elm-reactor" "$pkgdir/usr/bin/elm-reactor"
-	install -Dm755 "$binpath/elm-repl"    "$pkgdir/usr/bin/elm-repl"
+  install -Dm755 "$binpath/elm"         "$pkgdir/usr/bin/elm"
+  install -Dm755 "$binpath/elm-make"    "$pkgdir/usr/bin/elm-make"
+  install -Dm755 "$binpath/elm-package" "$pkgdir/usr/bin/elm-package"
+  install -Dm755 "$binpath/elm-reactor" "$pkgdir/usr/bin/elm-reactor"
+  install -Dm755 "$binpath/elm-repl"    "$pkgdir/usr/bin/elm-repl"
 
-	install -d -m755 "$pkgdir/usr/share/elm-reactor"
+  install -d -m755 "$pkgdir/usr/share/elm-reactor"
   cp -r -t "$pkgdir/usr/share/elm-reactor" elm-reactor-$pkgver/assets/*
 
   install -Dm644 "elm-compiler-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/elm-platform/LICENSE"
