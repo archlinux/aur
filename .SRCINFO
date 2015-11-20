@@ -1,6 +1,6 @@
 pkgbase = git-lfs-bin
 	pkgdesc = An open source Git extension for versioning large files
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://git-lfs.github.com/
 	install = git-lfs.install
@@ -10,8 +10,8 @@ pkgbase = git-lfs-bin
 	depends = git
 	provides = git-lfs
 	conflicts = git-lfs
-	source = https://github.com/github/git-lfs/releases/download/v1.0.2/git-lfs-linux-386-1.0.2.tar.gz
-	md5sums = 77370955ae6a62c8d5033a427014f9db
+	source = https://github.com/github/git-lfs/releases/download/v1.1.0/git-lfs-linux-386-1.1.0.tar.gz
+	md5sums = 29a6ec6f368e8219f59e13749eaeb9f8
 
 pkgname = git-lfs-bin
 
