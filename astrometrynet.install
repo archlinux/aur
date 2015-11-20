@@ -1,0 +1,5 @@
+post_install() {
+    echo "==> Now download some indexes (http://astrometry.net/doc/readme.html#getting-index-files) and place them in \"/usr/share/astrometry/data\"."
+    echo "==> The Tycho-2 indexes for wide field solving can be downloaded from http://data.astrometry.net/4100/"
+    echo "==> then try... \"solve-field -D output /usr/share/astrometry/examples/apod4.jpg\""
+}
