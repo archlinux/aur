@@ -1,7 +1,7 @@
 pkgbase = kde-services
 	pkgdesc = kde-service multifunction
-	pkgver = 2.0
-	pkgrel = 8
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://opendesktop.org/content/show.php/kde-services?content=147065
 	install = kde-services.install
 	arch = any
@@ -17,10 +17,11 @@ pkgbase = kde-services
 	depends = cdrkit
 	depends = diffutils
 	depends = fuseiso
-	source = http://downloads.sourceforge.net/project/kde-services/Source-Code/kde-services-2.0.tar.bz2
+	depends = youtube-dl
+	source = http://downloads.sourceforge.net/project/kde-services/Source-Code/kde-services-2.1.tar.bz2
 	source = System-Tools_addtoservicemenu.desktop
-	md5sums = 903f63348e5c04e5aaeb5d23f4c3b4e3
-	md5sums = 2a096a1c7f0b579c37fa0046b46e6770
+	sha512sums = c10f5be7ade82cff4079d63fa83a615a871cec0df3ec15bea87fe63ae074ae5c13754a77eb4b72d99f0b9ffd8689caf585e341a43fb270f211de69c2b42a1b9f
+	sha512sums = 170b89e91dad38340424911f3a1daad69b4a3bc7aa6813ffd74e53c4b34c2555f68c05334b0d2a7fa17d1f0f778369e7cfe3e0590e18e8e0bf006ec1685a59f2
 
 pkgname = kde-services
 

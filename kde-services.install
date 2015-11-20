@@ -1,8 +1,9 @@
 post_install() {
-	[ -x `which update-mime-database` ] &&  update-mime-database usr/share/mime 
-	[ -x `which gtk-update-icon-cache` ] && gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	update-desktop-database -q
-	bin/true
+	[ -x `which update-mime-database` ] &&  update-mime-database /usr/share/mime  > /dev/null
+#	[ -x `which gtk-update-icon-cache` ] && gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	[ -x `which xdg-icon-resource` ] && xdg-icon-resource forceupdate --theme hicolor
+	[ -x `which xdg-desktop-menu` ] && xdg-desktop-menu forceupdate
+	[ -x `which update-desktop-database` ] && update-desktop-database -q
 }
 
 post_upgrade() {
