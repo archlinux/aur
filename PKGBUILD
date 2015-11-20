@@ -1,64 +1,82 @@
-# Maintainer : Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.C.r7422.ge98a0e1
-pkgrel=2
-pkgdesc="Cataclysm: Dark Days Ahead is an actively maintained roguelike set in a post-apocalyptic world. Both SDL tiles and ascii version included."
-arch=('i686' 'x86_64')
+pkgver=0.C.2015.11.20
+_pkgver=0.C
+pkgrel=1
+pkgdesc="A post-apocalyptic roguelike."
+#url="http://cataclysmrl.blogspot.com/"
+#url="http://www.cataclysm.glyphgryph.com/"
 url="http://en.cataclysmdda.com/"
-license=('CCPL:by-sa')
-conflicts=('cataclysm-dda', 'cataclysm-dda-ncurses')
-depends=('ncurses' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'zlib')
-makedepends=('git' 'gettext')
-optdepends=('lua51')
-install=
-source=("$pkgname"::'git://github.com/CleverRaven/Cataclysm-DDA.git#branch=master')
+arch=('i686' 'x86_64')
+license=("CCPL:by-sa")
+depends=('ncurses' 'lua51')
+makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git')
+optdepends=('sdl2_image: for tiles'
+            'sdl2_ttf: for tiles'
+            'freetype2: for tiles'
+            'sdl2_mixer: for tiles')
+install=cataclysm-dda.install
+conflicts=('cataclysm-dda', 'cataclysm-dda-ncurses' 'cataclysm-dda-sdl-git')
+#source=("$pkgname"::'git://github.com/CleverRaven/Cataclysm-DDA.git#branch=master')
+# The git repo is more than a GB
+# so download a snapshot while waiting for shallow clone support in makepkg
+source=('https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip')
 md5sums=('SKIP')
 
+# for some reason this one autodetects lua51?
+
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --tags --long | sed 's/-/.r/; s/-/./'
+  cd "Cataclysm-DDA-master"
+  #git describe --tags --long | sed 's/-/.r/; s/-/./'
+  # no git metadata in the snapshot, so fake it
+  echo "${_pkgver}.$(date +%Y.%m.%d)"
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
-
-	sed -i 's/-Werror//' Makefile
-
+  cd "Cataclysm-DDA-master"
+  sed -i 's/ncursesw5-config/ncursesw6-config/' Makefile
+  #sed -i 's|"\(l.*h\)"|"lua5.1/\1"|' src/catalua.{h,cpp}
 }
+
 build() {
-       #LUA=1 is deactivated for now. Got bug while trying to build.
+  cd "Cataclysm-DDA-master"
+  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1
+  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES=1 SOUND=1
+  #LUA_BINARY="/usr/bin/lua5.1"
+  # USE_XDG_DIR=1 ?
 
-        cd "${srcdir}/${pkgname}"
-	
-        msg 'Building ncurses version...'
-	make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 
-
-	msg 'Building SDL version...'
-	make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 TILES=1 SOUND=1
+  # 'make install' needs this
+  touch README.txt
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+  cd "Cataclysm-DDA-master"
 
-	PREFIX="$pkgdir/usr" make install TILES=1 SOUND=1
+  # no DESTDIR
+  make PREFIX="$pkgdir/usr" \
+  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES=0 SOUND=0 \
+  install
+  # doesn't install executable?
+  install -Dm755 cataclysm "$pkgdir/usr/bin/cataclysm"
 
-	# Desktop file
-	#install -dm755 "$pkgdir/usr/share/applications"
-	#cp "$srcdir/cataclysm-dda.desktop" "$pkgdir/usr/share/applications"
+  make PREFIX="$pkgdir/usr" \
+  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES=1 SOUND=1 \
+  install
 
-	# Icon
-	install -D 'data/osx/AppIcon.iconset/icon_128x128.png' "$pkgdir/usr/share/icons/hicolor/128x128/apps/cataclysm-dda.png"
+  # Icon
+  install -D 'data/osx/AppIcon.iconset/icon_128x128.png' "$pkgdir/usr/share/icons/hicolor/128x128/apps/cataclysm-dda.png"
 
-	# Docs
-	install -d "$pkgdir/usr/share/doc/cataclysm-dda"
-	cp -r doc/* "$pkgdir/usr/share/doc/cataclysm-dda"
-	rm "$pkgdir/usr/share/doc/cataclysm-dda/JSON_LOADING_ORDER.md"
-	cp 'data/json/LOADING_ORDER.md' "$pkgdir/usr/share/doc/cataclysm-dda/JSON_LOADING_ORDER.md"
+  # Docs
+  install -d "$pkgdir/usr/share/doc/cataclysm-dda"
+  cp -r doc/* "$pkgdir/usr/share/doc/cataclysm-dda"
+  # undo symlink
+  rm "$pkgdir/usr/share/doc/cataclysm-dda/JSON_LOADING_ORDER.md"
+  cp 'data/json/LOADING_ORDER.md' "$pkgdir/usr/share/doc/cataclysm-dda/      JSON_LOADING_ORDER.md"
 
-	# License file
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  # License
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
