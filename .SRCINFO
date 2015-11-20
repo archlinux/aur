@@ -1,6 +1,6 @@
 pkgbase = paramano
 	pkgdesc = Docking battery monitor and CPU governer controller (fork of trayfreq)
-	pkgver = 0.6.1
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/phillid/paramano
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = paramano
 	license = GPL
 	depends = gtk3
 	depends = sudo
-	replaces = trayfreq-archlinux
 	backup = etc/paramano.conf
-	source = paramano-0.6.1.tar.gz::https://github.com/phillid/paramano/archive/0.6.1.tar.gz
-	sha512sums = aa765d789fa159eea2fdbbdb8f568ba4f6bea7c7d7a26db8e46070abac0e142563002b27874e6859ec446908b14c809ad9df9d539e56eb394256e10c9cfdd1aa
+	source = paramano-0.7.tar.gz::https://github.com/phillid/paramano/archive/0.7.tar.gz
+	sha512sums = 75624241cacad50bb8934856ab760334f973dd0f6c61e51274d58382ce2ec85acd4e013a677f6c466eb2096c3fa39cda7b76e5553f11733006c0272b7c3fd49d
 
 pkgname = paramano
 
