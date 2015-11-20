@@ -36,6 +36,6 @@ build() {
 package() {
   cd $srcdir/build
   make DESTDIR="$pkgdir" install
-  install -Dm644 $srcdir/ex-vi/LICENSE $pkgdir/usr/share/licences/$pkgname/LICENSE
+  install -Dm644 $srcdir/ex-vi/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
