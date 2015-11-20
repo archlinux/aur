@@ -11,6 +11,7 @@ pkgbase = storaged
 	makedepends = intltool
 	makedepends = gobject-introspection
 	makedepends = libxslt
+	makedepends = docbook-xml
 	depends = udisks2
 	depends = lvm2
 	source = https://github.com/storaged-project/storaged/releases/download/storaged-2.3.0/storaged-2.3.0.tar.bz2

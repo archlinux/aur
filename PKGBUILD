@@ -8,7 +8,7 @@ url="https://github.com/storaged-project/storaged"
 license=('LGPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('udisks2' 'lvm2')
-makedepends=('intltool' 'gobject-introspection' 'libxslt')
+makedepends=('intltool' 'gobject-introspection' 'libxslt' 'docbook-xml')
 source=(https://github.com/storaged-project/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('910d4c10568c575d0ae5be7b68890126')
 
