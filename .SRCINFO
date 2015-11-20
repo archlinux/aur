@@ -1,0 +1,14 @@
+pkgbase = rnc2rng
+	pkgdesc = Convert compact form Relac-NG schemas (rnc) to XML (rng)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/djc/rnc2rng
+	arch = any
+	license = custom:public domain
+	depends = python
+	depends = python-rply
+	source = https://github.com/djc/rnc2rng/archive/2.0.tar.gz
+	md5sums = 74d0b9b1977bdf879a78e418f3f8061b
+
+pkgname = rnc2rng
+
