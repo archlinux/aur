@@ -8,6 +8,8 @@ arch=('i686' 'x86_64')
 url="https://git-lfs.github.com/"
 license=('MIT')
 depends=('git')
+conflicts=('git-lfs')
+provides=('git-lfs')
 install=git-lfs.install
 
 if [[ $CARCH == 'x86_64' ]]; then

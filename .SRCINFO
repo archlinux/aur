@@ -8,6 +8,8 @@ pkgbase = git-lfs-bin
 	arch = x86_64
 	license = MIT
 	depends = git
+	provides = git-lfs
+	conflicts = git-lfs
 	source = https://github.com/github/git-lfs/releases/download/v1.0.2/git-lfs-linux-386-1.0.2.tar.gz
 	md5sums = 77370955ae6a62c8d5033a427014f9db
 
