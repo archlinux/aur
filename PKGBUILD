@@ -3,7 +3,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=cockpit
-pkgver=0.79
+pkgver=0.84
 pkgrel=1
 pkgdesc='A systemd web based user interface for Linux servers'
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=(libssh krb5 sshpass accountsservice perl-json perl-locale-po json-glib 
 makedepends=(git intltool python2-pyscss gtk-doc perl-javascript-minifier-xs gobject-introspection networkmanager libgsystem xmlto npm)
 optdepends=(storaged udisks2 networkmanager)
 source=(https://github.com/cockpit-project/cockpit/archive/${pkgver}.tar.gz)
-sha1sums=('20846b3eba187f178f4ef5d627f0ea07d14486a7')
+sha1sums=('55ab248fa174f1bd16c8d77cf704e33ebc4b1e5d')
 
 prepare() {
   cd cockpit-${pkgver}
