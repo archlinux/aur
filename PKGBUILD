@@ -1,8 +1,9 @@
-# Maintainer: Michael Herold <arch@michaeljherold.com>
+# Maintainer: Eduardo Leggiero <https://www.leggiero.uk/>
+# Contributor: Michael Herold <arch@michaeljherold.com>
 
 _pkgname=scudcloud
 pkgname=${_pkgname}-git
-pkgver=v1.0.50.r0.g89c0291
+pkgver=v1.1.0.r1.g5bdbed2
 pkgrel=1
 pkgdesc="A Linux client for Slack"
 arch=('any')
@@ -22,7 +23,7 @@ pkgver() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/scudcloud-1.0"
+  cd "${srcdir}/${_pkgname}/scudcloud-1.1"
 
   install -d "${pkgdir}/opt/${_pkgname}" \
              "${pkgdir}/opt/${_pkgname}/lib" \
