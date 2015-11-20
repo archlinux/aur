@@ -2,7 +2,7 @@
 # Maintainer: killhellokitty <killhellokitty.deviantart.com>
 
 pkgname=delorean-dark-3.18
-pkgver=12_11162015
+pkgver=13_11202015
 pkgrel=1
 pkgdesc="The Metal Gtk Theme. For Gnome 3.18, Gnome-Shell, GDM, Xfce w/xfwm4, XfDashboard, Cinnamon, MATE gtk2 & gtk3, Openbox, Plank, Firefox, & Chromium"
 arch=('any') 
@@ -10,12 +10,12 @@ url="http://fav.me/d9et76v"
 license=('GPLv3')
 depends=('gtk-engines' 'gnome-themes-standard>=3.18' 'gtk-engine-murrine>=0.98.2')
 
-source=("https://dl.dropboxusercontent.com/u/330352/delorean-dark-3.18-12_11162015.zip")
+source=("https://dl.dropboxusercontent.com/u/330352/delorean-dark-3.18-13_11202015.zip")
 #install=$pkgname.install
 #replaces=('delorean-dark-themes-3.8')
 #conflicts=('delorean-dark-theme-3.8')
 
-md5sums=('eaae19d4efb70be1ce14f1e2e25ad25d')
+md5sums=('94685e3eac38c4f92f3cf3ca5a6f9719')
 
 
 package() {
