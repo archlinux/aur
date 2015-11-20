@@ -1,0 +1,23 @@
+pkgbase = mssh-git
+	pkgdesc = Tool to administrate multiple servers at once
+	pkgver = 2.2.r0.g9221061
+	pkgrel = 1
+	url = http://baloo.dyndns.biz/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	makedepends = bash-completion
+	makedepends = gconf
+	makedepends = intltool
+	depends = gconf
+	depends = openssh
+	depends = vte3
+	provides = mssh=2.2.r0.g9221061
+	conflicts = mssh
+	options = !strip
+	source = mssh-git::git://baloo.dyndns.biz/mssh.git
+	sha256sums = SKIP
+
+pkgname = mssh-git
+
