@@ -1,5 +1,5 @@
 USER="craftbukkit"
-SERVER_ROOT="/srv/spigot"
+SERVER_ROOT="/srv/craftbukkit"
 
 _update() {
 	getent group "${USER}" &>/dev/null

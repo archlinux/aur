@@ -1,7 +1,7 @@
 pkgbase = spigot
 	pkgdesc = High performance Minecraft server implementation
 	pkgver = 1.8.8
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.spigotmc.org/
 	install = spigot.install
 	arch = any
@@ -32,8 +32,8 @@ pkgbase = spigot
 	md5sums = fd17202ba0bb7796439f0b2f6bc53be4
 	md5sums = 774cd44ed90f6be51d368533cf74d7c2
 	md5sums = 580c470c92d88ae2362250d59bd33b10
-	md5sums = abdc0e0fd9528bd5ae4155f45f67c857
-	md5sums = 4d14e748e8769ecbe8c784297c39ab33
+	md5sums = 12a49f9b4ba6e5f4887555af0947949b
+	md5sums = 528b26d2326fe92d96d29d8b615c9d6d
 
 pkgname = spigot
 

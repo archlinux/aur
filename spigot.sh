@@ -3,10 +3,10 @@
 source /etc/conf.d/spigot || echo "Could not source /etc/conf.d/spigot"
 
 # You may use this script for any minecraft server of your choice, just alter the config file
-SERVER_ROOT="${SERVER_ROOT:-/srv/spigot}"
-BACKUPPATH="${BACKUPPATH:-/srv/spigot/backup}"
-LOGPATH="${LOGPATH:-/srv/spigot/logs}"
-WORLDPATHS="${WORLDPATHS:-/srv/spigot/world /srv/spigot/world_nether /srv/spigot/world_the_end}"
+SERVER_ROOT="${SERVER_ROOT:-/srv/craftbukkit}"
+BACKUPPATH="${BACKUPPATH:-/srv/craftbukkit/backup}"
+LOGPATH="${LOGPATH:-/srv/craftbukkit/logs}"
+WORLDPATHS="${WORLDPATHS:-/srv/craftbukkit/world /srv/craftbukkit/world_nether /srv/craftbukkit/world_the_end}"
 KEEP_BACKUPS="${KEEP_BACKUPS:-10}"
 MC_USER="${MC_USER:-craftbukkit}"
 MAIN_JAR="${MAIN_JAR:-spigot.jar}"
