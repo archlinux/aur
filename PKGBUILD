@@ -1,8 +1,8 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
  
 pkgname=cura-git
-pkgver=15.06.03.687.ge7f2c9d
-pkgrel=2
+pkgver=15.06.03.785.g1a4a396
+pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -12,7 +12,7 @@ conflicts=('cura')
 depends=('python' 'python-pyqt5' 'python-pyserial' 'python-numpy' 'python-protobuf3' 'qt5-quickcontrols' 'libarcus-git' 'uranium-git' 'curaengine-git')
 makedepends=('git' 'cmake')
 source=('git+https://github.com/Ultimaker/Cura.git' 'site-packages-dir.patch')
-md5sums=('SKIP' 'c8e529ea3c817b5ae7ca4f73a2be0335')
+md5sums=('SKIP' '83c7a13d4819a0814460b1368fb4ada2')
 
 pkgver() {
   cd Cura
@@ -37,9 +37,6 @@ package() {
 
   chmod +x "$pkgdir/usr/bin/cura_app.py"
   ln -s "$pkgdir/usr/bin/cura_app.py" "$pkgdir/usr/bin/cura"
-
-  install -d "$pkgdir/usr/share/applications/"
-  install "$srcdir/Cura/cura.desktop" "$pkgdir/usr/share/applications/"
 }
 
 # vim:set ts=2 sw=2 et:
