@@ -1,7 +1,7 @@
 pkgbase = pngnq-s9
 	pkgdesc = Modified version of pngnq, neural network colour quantizer for PNG images
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/pngnqs9/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,7 @@ pkgbase = pngnq-s9
 	depends = libpng
 	conflicts = pngnq
 	source = http://sourceforge.net/projects/pngnqs9/files/pngnq-s9-2.0.1.tar.gz/download
-	source = LICENSE
 	sha256sums = 4c88a87e7b3c09f762f5bb27cd9639402b35d48abe010174d2e0cfd2fdd98ae6
-	sha256sums = b1d4705a2a2b3012427fa8f1c3d174eaea478739d05eb3dac0a6a92e5ab3725a
 
 pkgname = pngnq-s9
 
