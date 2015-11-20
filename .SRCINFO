@@ -1,0 +1,18 @@
+pkgbase = heirloom-ex-vi-cvs
+	pkgdesc = The Traditional Vi
+	pkgver = 2011.06.22
+	pkgrel = 1
+	url = http://ex-vi.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = Custom:BSD
+	makedepends = cvs
+	depends = heirloom-cvs
+	provides = vi
+	source = Makefile.patch
+	md5sums = 9464be14a42fbf6f9f0a60a8be93db1e
+	sha1sums = a378477207165ef1bcbd640edb874224d9111f7b
+	sha256sums = c028c899b1045d488e67af2be834bf5f615e6f0e8a6240992f76bc79398aa744
+
+pkgname = heirloom-ex-vi-cvs
+

@@ -1,0 +1,16 @@
+82c82
+< PREFIX		= /usr/local
+---
+> PREFIX		= /usr/heirloom
+97c97
+< INSTALL		= /usr/ucb/install
+---
+> INSTALL		= /usr/heirloom/bin/install
+164,166c164,166
+< REINC	= -I./libuxre -DUXRE
+< RELIB	= -L./libuxre -luxre
+< RETGT	= uxre
+---
+> #REINC	= -I./libuxre -DUXRE
+> #RELIB	= -L./libuxre -luxre
+> #RETGT	= uxre
