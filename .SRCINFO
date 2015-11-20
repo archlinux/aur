@@ -1,5 +1,5 @@
 pkgbase = heirloom-sh-cvs
-	pkgdesc = Traditional sh [jsh(1)], derived from OpenSolaris code. CVS repository
+	pkgdesc = A portable variant of the traditional Unix shell, implements the SVR4/SVID3 level of the shell.
 	pkgver = 2011.06.22
 	pkgrel = 1
 	url = http://heirloom.sourceforge.net/sh.html

@@ -6,7 +6,7 @@
 pkgname=heirloom-sh-cvs
 pkgver=2011.06.22
 pkgrel=1
-pkgdesc="Traditional sh [jsh(1)], derived from OpenSolaris code. CVS repository"
+pkgdesc="A portable variant of the traditional Unix shell, implements the SVR4/SVID3 level of the shell."
 arch=('i686' 'x86_64')
 url="http://heirloom.sourceforge.net/sh.html"
 license=('custom:"caldera"' 'custom:"opensolaris"')
@@ -22,20 +22,19 @@ sha256sums=('f0452b9fb1c58a6f0fba6d49bcd7598f875c94f64ddd8b60bb8ab12bbbaf7c9b')
 prepare() {
   cvs -d:pserver:anonymous:@heirloom.cvs.sourceforge.net:/cvsroot/heirloom login
   cvs -d:pserver:anonymous:@heirloom.cvs.sourceforge.net:/cvsroot/heirloom co -P heirloom-sh
-  rm -rf $srcdir/build #starting fresh
+  rm -rf $srcdir/build
   cp -ar $srcdir/heirloom-sh $srcdir/build
-  cd $srcdir/build
+  cd "$srcdir/build"
   patch -p1 < ../000-config.diff
 }
 
 build() {
-  cd $srcdir/build
+  cd "$srcdir/build"
   make
 }
 package() {    
-  cd $srcdir/build
+  cd "$srcdir/build"
   make install ROOT="$pkgdir"
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-  install -m644 CALDERA.LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/CALDERA
+  install -Dm644 CALDERA.LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/CALDERA
 }
 
