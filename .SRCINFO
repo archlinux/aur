@@ -1,5 +1,5 @@
 pkgbase = heirloom-pkgtools-cvs
-	pkgdesc = The Heirloom Packaging Tools is a port of SVR4 application packaging utilities from OpenSolaris
+	pkgdesc = The Heirloom Packaging Tools is a port of SVR4 application packaging utilities from OpenSolaris.
 	pkgver = 111210
 	pkgrel = 4
 	url = http://heirloom.sourceforge.net/pkgtools.html
