@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/filebeat -c /etc/filebeat/filebeat.yml
+User=filebeat
 
 [Install]
 WantedBy=multi-user.target
