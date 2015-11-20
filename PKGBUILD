@@ -7,8 +7,8 @@
 
 pkgname=conky-lua-nv
 _pkgname=conky
-pkgver=1.10.0
-pkgrel=8
+pkgver=1.10.1
+pkgrel=1
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -22,24 +22,15 @@ optdepends=('nvidia: for GT4xx and newer GPUs',
   'nvidia-340xx: for G8x, G9x, GT2xx GPUS',
   'nvidia-304xx: for GeForce 6/7 GPUs')
 source=(https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz
-        ascii.patch
-        ipv6.patch
-        curl.patch
-        cpu_count.patch)
-sha1sums=('d5863420150150002947180d0ee96c9ef56c43b1'
-          '96cdbc38e8706c8a3120601983df5c7265716128'
-          'a0899973483d0ad664b60e58b3ba899ba88712af'
-          '1c066b439a1e7166d733fb710faa9bf08b81ce4c'
-          'a0e8c2fb9f262ff8dbea17917dc15eaa2023c3c5')
+        ascii.patch)
+sha1sums=('97b59ec1daf54126b30516e8663a9cf1f218d8ae'
+          '96cdbc38e8706c8a3120601983df5c7265716128')
 options=('!strip' 'debug')
 install=('conky-lua-nv.install')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   patch -p1 -i ../ascii.patch
-  patch -p1 -i ../ipv6.patch
-  patch -p1 -i ../curl.patch
-  patch -p1 -i ../cpu_count.patch
 
   cd cmake
   # -lXext must come *after* -lXNVCtrl
@@ -49,6 +40,10 @@ prepare() {
   sed -i -e \
     's/pkg_search_module(LUA REQUIRED lua5.2 lua-5.2 lua>=5.1 lua5.1 lua-5.1)/pkg_search_module(LUA REQUIRED lua=5.1 lua5.1 lua-5.1)/' \
     ConkyPlatformChecks.cmake
+  sed -i -e \
+    's/include(CheckIncludeFile)/include(CheckIncludeFiles)/' \
+    ConkyPlatformChecks.cmake
+
 }
 
 build() {
