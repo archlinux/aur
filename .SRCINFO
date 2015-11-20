@@ -1,7 +1,7 @@
 pkgbase = perl6-uri
 	pkgdesc = A URI implementation using Perl 6 grammars to implement RFC 3986 BNF
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/perl6-community-modules/uri
 	arch = any
 	groups = perl6

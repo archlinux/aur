@@ -2,7 +2,7 @@
 
 pkgname=perl6-uri
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A URI implementation using Perl 6 grammars to implement RFC 3986 BNF"
 arch=('any')
 depends=('rakudo')
@@ -18,7 +18,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
-  prove -r -l lib -e perl6
+  PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
