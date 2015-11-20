@@ -2,7 +2,7 @@
 
 pkgname=fastqc
 pkgver=0.11.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A quality control tool for high throughput sequence data.'
 arch=('any')
 url="http://www.bioinformatics.babraham.ac.uk/projects/fastqc"
@@ -18,7 +18,4 @@ package() {
   mkdir -p "${pkgdir}/usr/bin/"
   chmod 755 $pkgdir/opt/FastQC/fastqc
   ln -s "/opt/FastQC/fastqc" "${pkgdir}/usr/bin/"
-
-  mkdir -p ${pkgdir}/usr/share/man/man1/
-  sed -e '1,/__DATA__/d' $srcdir/FastQC/fastqc | tail -n +2 > ${pkgdir}/usr/share/man/man1/fastq.1
 }
