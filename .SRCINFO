@@ -12,6 +12,7 @@ pkgbase = leleleplayer-git
 	depends = gst-plugins-bad
 	depends = ffmpeg
 	depends = gtk3
+	depends = bliss-git
 	optdepends = gst-plugins-ugly: Needed for some audio format support
 	source = git://github.com/Polochon-street/leleleplayer.git
 	md5sums = SKIP
