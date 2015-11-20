@@ -21,30 +21,33 @@ install=
 source=("$pkgname::git://repo.or.cz/troff.git")
 noextract=()
 md5sums=('SKIP')
-sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prefix="/usr"
-libdir="$prefix/lib/troff"
-docdir="/share/doc"
-## uncomment bellow to avoid conflict with groff and grap package by installing to, e.g. /opt directory
+## Choose prefix:
+#prefix="/usr"
+prefix="/usr/plan9"
 #prefix="/opt/$pkgname"
-#libdir="$prefix/lib"
-#docdir="/doc"
 
+libdir="lib/troff"
+docdir="share/doc/$pkgname"
 licensedir="/usr/share/licenses/$pkgname/"
+tbase="$prefix/$libdir"
 
 if [ "$prefix" == "/usr" ]; then
   conflicts=('groff' 'grap')
+elif [ "$prefix" == "/opt/$pkgname" ]; then
+  libdir="lib"
+  docdir="doc"
+  tbase="$prefix/$libdir"
 fi
 
 prepare() {
   cd "$srcdir/$pkgname"
-  sed -i "s|/root/troff/home|$libdir|" conf.mk
+  sed -i "s@/root/troff/home@$tbase@" conf.mk
 }
 
 build() {
@@ -56,7 +59,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  prefix=$pkgdir/$prefix
+  prefix="$pkgdir/$prefix"
   install -Dm755 eqn/eqn $prefix/bin/eqn
   install -Dm755 grap/grap $prefix/bin/grap
   install -Dm755 pic/pic $prefix/bin/pic
@@ -67,9 +70,8 @@ package() {
   install -Dm644 README $prefix/$docdir/README
   install -Dm644 NOTICE $pkgdir/$licensedir/NOTICE
 
-  libdir=$pkgdir/$libdir
-  mkdir -p $libdir
+  mkdir -p $prefix/$libdir
   cd "$srcdir/$pkgname/home"
-  cp -a font hyphen ps term tmac $libdir/
+  cp -a font hyphen ps term tmac $prefix/$libdir/
 }
 

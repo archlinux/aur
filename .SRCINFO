@@ -9,11 +9,8 @@ pkgbase = troff-git
 	license = custom
 	makedepends = git
 	provides = troff
-	conflicts = groff
-	conflicts = grap
 	source = troff-git::git://repo.or.cz/troff.git
 	md5sums = SKIP
-	sha1sums = SKIP
 
 pkgname = troff-git
 
