@@ -1,7 +1,7 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=pbpst-git
-pkgver=0.r153.54b98b7
+pkgver=0.9.0.r0.g5ca5d03
 pkgrel=1
 
 pkgdesc='A small tool to interact with pb instances'
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver () {
     cd pbpst
-    printf '0.r%s.%s' "$(git rev-list --count HEAD)" "$(git log -1 --pretty=format:%h)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {
