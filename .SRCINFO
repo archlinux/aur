@@ -1,6 +1,6 @@
 pkgbase = ncmpy
 	pkgdesc = A curses-based MPD client written in Python.
-	pkgver = 1.2
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://www.cykerway.com/projects/ncmpy
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = ncmpy
 	depends = python2
 	depends = python2-mpd
 	conflicts = ncmpy-git
-	source = https://github.com/cykerway/ncmpy/archive/v1.2.tar.gz
-	sha256sums = 33db27db4c7b164422bad106b50871c616a8e15412da5bee212346a89803d609
+	source = https://github.com/cykerway/ncmpy/archive/v1.4.tar.gz
+	sha256sums = ec85151b3f19e9b4481836a1d4caf1f0d5b82a57f12b65c3a733cfce80e468cc
 
 pkgname = ncmpy
 
