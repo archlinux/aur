@@ -2,7 +2,7 @@
 
 pkgname=perl6-grammar-debugger
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line debugger frontend for Rakudo"
 arch=('any')
 depends=('rakudo' 'perl6-terminal-ansicolor')
@@ -18,7 +18,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
-  prove -r -e perl6
+  PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
