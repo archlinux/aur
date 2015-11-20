@@ -23,7 +23,7 @@ url="http://www.adacore.com/gnatpro/toolsuite/gprbuild/"
 #        "patch-src_gprinstall-install.adb"
 #        "extrapatch-src_gprslave.adb")
 
-source=("http://mirrors.cdn.adacore.com/art/3c2da2f1d3335d39bc9ebb65a3a58264ddac6d41"
+source=("http://mirrors.cdn.adacore.com/art/564b3e2ec8e196b040fbd13a"
         "Makefile.archy"
         "patch-gnat_targparm"
 )
