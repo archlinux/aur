@@ -23,7 +23,7 @@ install=palemoon.install
 options=('!strip')
 source=("http://linux.palemoon.org/files/atom/$pkgver/palemoon-$pkgver-atom.en-US.linux-$CARCH.tar.bz2"
         "palemoon.desktop")
-sha1sums=('53ddb65a2081fa6d50754d5ee7f9f0c9a4ce9f07'
+sha1sums=('5cfcfabd85d72e26034f9f54c9a1329965e47ed9'
           '83ff22ff7a034efac31f1dd5f27ad0115a778743')
 
 package() {
