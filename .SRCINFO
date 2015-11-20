@@ -1,6 +1,6 @@
 pkgbase = pcp
 	pkgdesc = System performance and analysis framework
-	pkgver = 3.10.7
+	pkgver = 3.10.8
 	pkgrel = 1
 	url = http://pcp.io
 	install = pcp.install
@@ -19,10 +19,10 @@ pkgbase = pcp
 	optdepends = libmicrohttpd: support for pmwebd
 	optdepends = cairo: support for pmwebd
 	optdepends = qt4: support for PCP-GUI and pmchart
-	source = https://bintray.com/artifact/download/pcp/source/pcp-3.10.7.src.tar.gz
+	source = https://bintray.com/artifact/download/pcp/source/pcp-3.10.8.src.tar.gz
 	source = pcp.install
 	source = pcp.tmpfiles
-	sha256sums = 2c47ce3fd51502579968f3e7f5c42e3b9236b6ee09561e71064fb9cee7dd8ba3
+	sha256sums = 80856d7c934ba32f32673cd1d771f79b3dd2cfff5445dd8c424dc4b8a73a61fd
 	sha256sums = 590d816edc87dd03e3700d7637f57ca81d24d63802f32f772709e0c33a4ca0b5
 	sha256sums = 48ce114e95ab640bfe6c6c9608c96c22a75b65ccb38dfa89bfa2b12621845f20
 
