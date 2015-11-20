@@ -1,0 +1,18 @@
+pkgbase = heirloom-mailx-cvs
+	pkgdesc = A mail user agent for Unix systems.
+	pkgver = 2011.06.22
+	pkgrel = 1
+	url = http://heirloom.sourceforge.net/mailx.html
+	arch = i686
+	arch = x86_64
+	license = Custom:BSD
+	makedepends = cvs
+	depends = heirloom-cvs
+	provides = vi
+	source = Makefile.patch
+	md5sums = 32b97d276c08da4945ec79bb1fbce5ec
+	sha1sums = 2de1b2479aea2d8bf48ed9270fd030749b84afb9
+	sha256sums = a03fec52ebfcb072e7839e253ef5b897f10f2afafe524d3bc3166d8875e48d5e
+
+pkgname = heirloom-mailx-cvs
+

@@ -1,0 +1,20 @@
+--- Makefile_	2007-04-14 17:26:00.000000000 +0200
++++ Makefile	2015-11-20 06:24:28.871818171 +0100
+@@ -6,7 +6,7 @@
+ # See the file INSTALL if you need help.
+ #
+ 
+-PREFIX		= /usr/local
++PREFIX		= /usr/heirloom
+ BINDIR		= $(PREFIX)/bin
+ MANDIR		= $(PREFIX)/share/man
+ SYSCONFDIR	= /etc
+@@ -17,7 +17,7 @@
+ 
+ DESTDIR		=
+ 
+-UCBINSTALL	= /usr/ucb/install
++UCBINSTALL	= /usr/heirloom/bin/ucb/install
+ 
+ # Define compiler, preprocessor, and linker flags here.
+ # Note that some Linux/glibc versions need -D_GNU_SOURCE in CPPFLAGS, or
