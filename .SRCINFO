@@ -1,0 +1,13 @@
+pkgbase = libcsv
+	pkgdesc = A small, simple and fast CSV library written in pure ANSI C89 that can read and write CSV data.
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/robertpostill/libcsv
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = git+https://github.com/robertpostill/libcsv.git
+	md5sums = SKIP
+
+pkgname = libcsv
+
