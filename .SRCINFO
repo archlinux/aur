@@ -1,0 +1,32 @@
+pkgbase = camotics-git
+	pkgdesc = 3-axis NC machining simulation software
+	pkgver = 1.0.6.r15.ga799aa8
+	pkgrel = 1
+	url = http://camotics.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = scons
+	depends = boost-libs
+	depends = bzip2
+	depends = cairo
+	depends = expat
+	depends = glu
+	depends = libffi
+	depends = libgl
+	depends = libmariadbclient
+	depends = openssl
+	depends = qt5-base
+	depends = sqlite
+	depends = v8-3.14
+	depends = zlib
+	provides = camotics
+	replaces = openscam
+	source = camotics-git::git+https://github.com/CauldronDevelopmentLLC/CAMotics.git
+	source = git+https://github.com/CauldronDevelopmentLLC/cbang.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = camotics-git
+
