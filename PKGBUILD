@@ -20,21 +20,20 @@ prepare() {
   cvs -d:pserver:anonymous:@heirloom.cvs.sourceforge.net:/cvsroot/heirloom co -P heirloom-doctools
   rm -rf $srcdir/build
   cp -ar $srcdir/heirloom-doctools $srcdir/build
-  cd $srcdir/build
+  cd "$srcdir/build"
   patch -p1 < ../config.diff
 }
 
 build() {
-  cd $srcdir/build
+  cd "$srcdir/build"
   make
 }
 
 package() {
-  cd $srcdir/build 
+  cd "$srcdir/build "
   make install ROOT=$pkgdir
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
   cd "$srcdir/heirloom-doctools/LICENSE"
-  install -m0644 CALDERA.LICENSE $pkgdir/usr/share/licenses/${pkgname}/CALDERA.LICENSE
+  install -Dm0644 CALDERA.LICENSE $pkgdir/usr/share/licenses/${pkgname}/CALDERA.LICENSE
   install -m0644 OPENSOLARIS.LICENSE $pkgdir/usr/share/licenses/${pkgname}/OPENSOLARIS.LICENSE
   install -m0644 LUCENT.LICENSE $pkgdir/usr/share/licenses/${pkgname}/LUCENT.LICENSE
 }
