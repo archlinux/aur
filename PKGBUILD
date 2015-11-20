@@ -12,7 +12,7 @@ depends=('python-click' 'python-setuptools' 'python-lxml'
          'python-click-threading' 'python-click-log')
 optdepends=('python-requests-oauthlib: Remotestorage support')
 checkdepends=('python-pytest' 'python-wsgi-intercept'
-              'radicale' 'python-werkzeug-git' 'python-pytest-xprocess'
+              'radicale' 'python-werkzeug' 'python-pytest-xprocess'
               'python-pytest-localserver')
 source=("https://pypi.python.org/packages/source/v/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('44cfb16a55b69bdbfef74bf48271e5f6')
