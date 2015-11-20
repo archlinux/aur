@@ -1,9 +1,10 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2012-01-02 01:38:26.000000000 +0800
 +++ b/CMakeLists.txt	2015-11-18 21:46:52.917654393 +0800
-@@ -2,27 +2,37 @@
+@@ -2,27 +2,38 @@
  
  
++cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
  # search packages used by KDE
 -find_package(KDE4 REQUIRED)
 +find_package(ECM 0.0.11 REQUIRED NO_MODULE)

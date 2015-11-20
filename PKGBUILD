@@ -29,7 +29,7 @@ build() {
   mkdir build
   cd build
   cmake ../${_pkgname}-${pkgver} \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF\
     -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-I/usr/include/freetype2"
   #sed -i 's|/share/locale|/share/locale/kde4|' po/cmake_install.cmake
   make
