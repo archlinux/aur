@@ -6,7 +6,7 @@
 #       may fail if make uses more than one job.
 
 pkgname=calculix
-pkgver=2.8p2
+pkgver=2.9
 pkgrel=1
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
@@ -20,15 +20,15 @@ makedepends=('gcc-fortran')
 # This is needed because the minor version of ccx and cgx could differ
 _mainver="${pkgver:0:3}"
 _ccxver="${pkgver}"
-_cgxver="${_mainver}"
+_cgxver="${pkgver}"
 
 source=("http://www.dhondt.de/ccx_${_ccxver}.src.tar.bz2"
       	"http://www.dhondt.de/cgx_${_cgxver}.all.tar.bz2"
         "calculix_${_mainver}_archlinux.patch")
 
-sha256sums=('a21feb1a498b5925ddc9f7f58cb486d930435db4a47d5c583dd73f5160431eb2'
-            '8e605df835f62748b2d7bba00d7c9ef0a2b797fb7f4ba4a8614062c1f0ba0875'
-            '6bca58a5d5632d26d926e0348be1fce4eafa27af272df6972f4f8b35b0ce9407')
+sha256sums=('7ad617c93ff995ae186e8f23c204b5bdac884c0ffb672d60e972c8d3dae36705'
+            '62f252422c539fa972a02e7b533aa1ea4b9cb5e4fe28caafdea6f1dad7f7bcce'
+            '0f4a6ca904b2a86599b4cd99875bff58e97a928b40e08e01871360a88750ea70')
 
 prepare()
 {
