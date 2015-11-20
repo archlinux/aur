@@ -3,10 +3,10 @@
 pkgname=perl6-json-class
 _p6name=JSON-Class
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Role to provide simple serialisation/deserialisation of objects to/from JSON"
 arch=('any')
-depends=('rakudo' 'perl6-json-marshall' 'perl6-json-unmarshall')
+depends=('rakudo' 'perl6-json-marshal' 'perl6-json-unmarshal')
 checkdepends=('perl')
 makedepends=('git')
 groups=('perl6')
