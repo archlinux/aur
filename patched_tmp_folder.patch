@@ -1,0 +1,33 @@
+diff -aur package.pristine/Changelog package.new/Changelog
+--- package.pristine/Changelog	2015-11-13 02:42:18.000000000 +0100
++++ package.new/Changelog	2015-11-20 11:40:22.000000000 +0100
+@@ -10,7 +10,7 @@
+ - proper fullscreen mode for videos
+ - support multiple share accounts of the same kind (e.g. two different pocket accounts)
+ - fixed memory leaks
+-- option to ignore unknown CA's
++- option to ignore unknowns CA
+ - updated GrabberConfig files to upstream from fivefilters
+ 
+ 1.2:
+diff -aur package.pristine/src/Utils.vala package.new/src/Utils.vala
+--- package.pristine/src/Utils.vala	2015-11-16 23:16:13.000000000 +0100
++++ package.new/src/Utils.vala	2015-11-20 11:40:22.000000000 +0100
+@@ -33,7 +33,7 @@
+ 				}
+ 				else if(Article.getHTML() != "" && Article.getHTML() != null)
+ 				{
+-					string filename = GLib.Environment.get_tmp_dir() + "/" + "articleHtml.XXXXXX";
++					string filename = GLib.Environment.get_tmp_dir() + "/FeedReader/articleHtml.XXXXXX";
+ 					int outputfd = GLib.FileUtils.mkstemp(filename);
+ 					try{
+ 						GLib.FileUtils.set_contents(filename, Article.getHTML());
+@@ -120,7 +120,7 @@
+         string title = "";
+         doc->dump_memory_enc(out title);
+ 
+-        string filename = GLib.Environment.get_tmp_dir() + "/" + "articleHtml.XXXXXX";
++        string filename = GLib.Environment.get_tmp_dir() + "/FeedReader/articleHtml.XXXXXX";
+         int outputfd = GLib.FileUtils.mkstemp(filename);
+         try{
+             GLib.FileUtils.set_contents(filename, title);
