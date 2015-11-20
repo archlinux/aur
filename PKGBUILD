@@ -2,7 +2,7 @@
 # Contributor: eric <eric@archlinux.org>
 
 pkgname=hexcurse
-pkgver=1.58
+pkgver=1.60.0
 pkgrel=1
 pkgdesc="Versatile ncurses-based hex editor."
 arch=('i686' 'x86_64')
@@ -11,17 +11,14 @@ url="https://github.com/LonnyGomes/hexcurse"
 license=('GPL')
 depends=('ncurses>=5.6-7')
 options=('!makeflags')
-source=("https://github.com/LonnyGomes/hexcurse/archive/hexcurse-$pkgver.tar.gz"
-        "hexcurse-alloca.patch")
+source=("https://github.com/LonnyGomes/hexcurse/archive/v$pkgver.tar.gz")
 #source=("http://www.sourcefiles.org/Editors/Hex/$pkgname-$pkgver.tar.gz")
-#source=("http://gd.tuwien.ac.at/opsys/linux/gentoo/distfiles/$pkgname-$pkgver.tar.gz" 
-md5sums=('26c3ccf56850ff030d5097ee4bbc2b0b'
-         'fb7723bff0411392fe410839f6105e4f')
+#source=("http://gd.tuwien.ac.at/opsys/linux/gentoo/distfiles/$pkgname-$pkgver.tar.gz")
+#source=("https://github.com/LonnyGomes/hexcurse/archive/hexcurse-$pkgver.tar.gz")
+md5sums=('cb24b564bea21a615a5c6a2ee30d6cad')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
-
-  #patch -p0 < ../hexcurse-alloca.patch
+  cd "$srcdir/$pkgname-$pkgver"
 
   ./configure \
 	--prefix=/usr \
@@ -31,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir/" install
 }
