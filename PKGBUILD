@@ -1,8 +1,8 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=zoom
-pkgver=1.1.26956.0918
-pkgrel=5
+pkgver=1.1.32904.1120
+pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -14,7 +14,7 @@ depends=('desktop-file-utils' 'lib32-libxml2' 'lib32-libsm' 'lib32-sqlite' 'lib3
 options=(!strip)
 install=${pkgname}.install
 source=("https://zoom.us/client/latest/ZoomInstaller_i386.deb")
-md5sums=('0c7366e9555ea5f508f1a0f2a5279aa7')
+md5sums=('776642f5e82e22645189fe016515ade0')
 
 package() {
     bsdtar xf data.tar.xz
