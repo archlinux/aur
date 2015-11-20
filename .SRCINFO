@@ -1,8 +1,9 @@
 pkgbase = filebeat
 	pkgdesc = Collects, pre-processes, and forwards log files from remote sources
 	pkgver = 1.0.0_rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/products/beats
+	install = filebeat.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -14,9 +15,13 @@ pkgbase = filebeat
 	options = !strip
 	backup = etc/filebeat/filebeat.yml
 	source = https://github.com/elastic/filebeat/archive/v1.0.0-rc2.tar.gz
+	source = filebeat.install
 	source = filebeat.service
+	source = filebeat.sysusers
 	sha256sums = a9ef85bafda63d5204033597c72df8befe31acce2946f05330b9dea279b562af
-	sha256sums = 9985f8e0441efde0e60c5efe97890e46d4f1cbd118d8722eb478be876197326a
+	sha256sums = dca0278bc86c4bbf2c1976a4482784f608221cd4e0607787c334beca7bdef0ef
+	sha256sums = d6db8138b0cb70925a529609b612ad0caf0c72bd8cf2e6b85de64eb2c42bced7
+	sha256sums = 33feb3690f8b31563cc1e2da557c2aa326501ce9ccd7e0a142036902bfdb05ff
 
 pkgname = filebeat
 
