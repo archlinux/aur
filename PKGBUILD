@@ -2,7 +2,7 @@
 
 pkgname=perl6-pod-to-html
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert Perl 6 Pod to HTML"
 arch=('any')
 depends=('rakudo' 'perl6-uri')
@@ -18,7 +18,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
-  prove -r -l lib -e perl6
+  PERL6LIB=lib prove -r -e perl6
 }
 
 package() {

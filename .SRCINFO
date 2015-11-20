@@ -1,7 +1,7 @@
 pkgbase = perl6-pod-to-html
 	pkgdesc = Convert Perl 6 Pod to HTML
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/perl6/Pod-To-HTML
 	arch = any
 	groups = perl6
