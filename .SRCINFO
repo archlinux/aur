@@ -8,7 +8,6 @@ pkgbase = heirloom-mailx-cvs
 	license = Custom:BSD
 	makedepends = cvs
 	depends = heirloom-cvs
-	provides = mailx
 	source = Makefile.patch
 	md5sums = 32b97d276c08da4945ec79bb1fbce5ec
 	sha1sums = 2de1b2479aea2d8bf48ed9270fd030749b84afb9
