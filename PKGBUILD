@@ -47,12 +47,16 @@ options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
 prepare() {
-  warning "If you are using an AUR-Helper or building on a small partition (like /tmp),"
-  warning "you might want to change the build-/cache-directory as this package is rather big"
+  if [ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]; then
+    warning "It seems that you have less than 10GB left.If you are using an AUR-Helper"
+    warning "or building on a small partition (like /tmp), you might want to change the"
+    warning "build-/cache-directory as this package is rather big"
+  fi
 }
 
 build() {
-  yes | fakeroot sh "unity-editor-installer-${pkgver}.sh"
+  msg2 "Extracting archive ..."
+  yes | fakeroot sh "unity-editor-installer-${pkgver}.sh" > /dev/null
   rm "unity-editor-installer-${pkgver}.sh"
 }
 
