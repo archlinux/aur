@@ -9,12 +9,11 @@ arch=('any')
 license=('MIT')
 depends=('python' 'python-wheel' 'python-requests' 'python-beautifulsoup4' 'python-docopt' 'python-magic>=0.4.10')
 makedepends=('python' 'python-setuptools')
-url='http://gstreamer.freedesktop.org/modules/gst-python.html'
+url='https://github.com/prodicus/xkcd-dl'
 provides=(xkcd-dl)
 
 source=('git+https://github.com/prodicus/xkcd-dl'
-		'versions.patch'
-		)
+        'versions.patch')
 sha256sums=('SKIP'
             '151499395b685ec4456da8dbefeaa444222e8e025aa08f19547a4a2566f27254')
 
