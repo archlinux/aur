@@ -1,13 +1,13 @@
 # Maintainer: Marc Cousin <cousinmarc@gmail.com>
 pkgname=mkvtoolnix-git
 pkgver=r8519.4969ee8
-pkgrel=1
+pkgrel=2
 pkgdesc="Git version of mkvtoolnix (to get the latest mkvtoolnix-gui"
 arch=(x86 x86_64)
 url="https://www.bunkus.org/videotools/mkvtoolnix"
 license=('GPL')
 groups=()
-depends=('libmatroska' 'expat' 'flac' 'libvorbis' 'file' 'boost-libs' 'lzo' 'wxgtk' 'xdg-utils' 'desktop-file-utils' 'qt5-base' 'libogg' 'zlib' 'curl')
+depends=('libmatroska' 'expat' 'flac' 'libvorbis' 'file' 'boost-libs' 'lzo' 'wxgtk' 'xdg-utils' 'desktop-file-utils' 'qt5-base' 'libogg' 'zlib' 'curl' 'libxkbcommon-x11')
 makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk'
              'boost-libs' 'lzo' 'xdg-utils' 'boost' 'ruby' 'git')
 
