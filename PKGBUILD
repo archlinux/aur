@@ -1,33 +1,34 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=saleae-logic
 pkgver=1.1.15
-pkgrel=5
+pkgrel=6
 pkgdesc="High speed USB logic analyzer."
 arch=('i686' 'x86_64')
 url="http://www.saleae.com/"
 license=('unknown')  # closed source, none given
 depends=('gcc-libs' 'gtk2' 'libice')
 
+source_i686=("http://downloads.saleae.com/Logic%20$pkgver%20(32-bit).zip"
+            "http://downloads.saleae.com/Logic%20Guide.pdf"
+            "http://opendesktop.org/CONTENT/content-files/133473-SaleaeLogic.svg"
+            "saleae-logic.desktop")
+md5sums_i686=('c33210a9b99e5c09bd9a56658fa279c6'
+             '836db7ec757b1e6453602ed4831d4765'
+             '96aac500508492509d8e47645a826af8'
+             '120198dc1ce881e4959da215dc1ab8f5')
+
+source_x86_64=("http://downloads.saleae.com/Logic%20$pkgver%20(64-bit).zip" \
+            "http://downloads.saleae.com/Logic%20Guide.pdf"
+            "http://opendesktop.org/CONTENT/content-files/133473-SaleaeLogic.svg"
+            "saleae-logic.desktop")
+md5sums_x86_64=('a5074f4bf198ebb95b6e08309b207a88'
+             '836db7ec757b1e6453602ed4831d4765'
+             '96aac500508492509d8e47645a826af8'
+             '120198dc1ce881e4959da215dc1ab8f5')
 case $CARCH in
   'i686')
-    source=("http://downloads.saleae.com/Logic%20$pkgver%20(32-bit).zip"
-            "http://downloads.saleae.com/Logic%20Guide.pdf"
-            "http://opendesktop.org/CONTENT/content-files/133473-SaleaeLogic.svg"
-            "saleae-logic.desktop")
-    md5sums=('c33210a9b99e5c09bd9a56658fa279c6'
-             '836db7ec757b1e6453602ed4831d4765'
-             '96aac500508492509d8e47645a826af8'
-             '120198dc1ce881e4959da215dc1ab8f5')
     __arch=' (32-bit)' ;;
   'x86_64')
-    source=("http://downloads.saleae.com/Logic%20$pkgver%20(64-bit).zip" \
-            "http://downloads.saleae.com/Logic%20Guide.pdf"
-            "http://opendesktop.org/CONTENT/content-files/133473-SaleaeLogic.svg"
-            "saleae-logic.desktop")
-    md5sums=('a5074f4bf198ebb95b6e08309b207a88'
-             '836db7ec757b1e6453602ed4831d4765'
-             '96aac500508492509d8e47645a826af8'
-             '120198dc1ce881e4959da215dc1ab8f5')
     __arch=' (64-bit)' ;;
 esac
 
@@ -47,7 +48,7 @@ package() {
   install -Dm644 ../../*.pdf "$pkgdir/usr/share/doc/saleae-logic/"
   # udev
   sed -i 's/SYSFS/ATTRS/g' Drivers/99-SaleaeLogic.rules
-  install -Dm644 Drivers/99-SaleaeLogic.rules "$pkgdir/etc/udev/rules.d/99-SaleaeLogic.rules" 
+  install -Dm644 Drivers/99-SaleaeLogic.rules "$pkgdir/usr/lib/udev/rules.d/99-SaleaeLogic.rules" 
   # launch script
   install -d "$pkgdir/usr/bin"
   touch "$pkgdir/usr/bin/logic"
