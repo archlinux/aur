@@ -1,0 +1,12 @@
+post_install(){
+	echo "Generating pyne nuclear database..."
+	cat<<EOF | python2
+from pyne.dbgen.nuc_data_make import main
+main()
+EOF
+}
+
+pre_remove() {
+	echo "Removing pyne nuclear database..."
+	rm -f "/usr/lib/python2.7/site-packages/pyne/nuc_data.h5"
+}
