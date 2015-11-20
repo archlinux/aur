@@ -1,0 +1,21 @@
+pkgbase = slime
+	pkgdesc = The Superior Lisp Interaction Mode for Emacs
+	pkgver = 2.15
+	pkgrel = 1
+	url = http://common-lisp.net/project/slime
+	install = slime.install
+	arch = any
+	license = GPL
+	makedepends = texinfo
+	makedepends = texlive-core
+	depends = emacs
+	depends = awk
+	optdepends = awk: for recreating the documentation
+	optdepends = texlive-core: for recreating the documentation
+	provides = slime
+	conflicts = slime
+	source = https://github.com/slime/slime/archive/v2.15.tar.gz
+	md5sums = d7fff5a030cabfc9354f72b92b90c5d0
+
+pkgname = slime
+
