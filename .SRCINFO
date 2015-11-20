@@ -1,6 +1,6 @@
 pkgbase = gis-weather-git
 	pkgdesc = Customizable weather widget
-	pkgver = 0.7.9.4
+	pkgver = 0.7.9.7
 	pkgrel = 1
 	url = https://github.com/RingOV/gis-weather
 	arch = i686
