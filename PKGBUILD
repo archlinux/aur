@@ -2,9 +2,9 @@
 # Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=xf86-input-egalax
-pkgver=2.5.4330
-pkgrel=3
-_reldate=20141009
+pkgver=2.5.5814
+pkgrel=1
+_reldate=20151022
 pkgdesc="Touchscreen driver for eGalax (eeti) devices"
 arch=('i686' 
       'x86_64')
@@ -20,11 +20,11 @@ depends=('linux'
 backup=(etc/eGTouchL.ini)
 install='xf86-input-egalax.install'
 #http://home.eeti.com.tw/touch_driver/Linux/20141009/eGTouch_v2.5.4330.L-x.zip
-source=("eGTouch_v${pkgver}.L-x.zip::http://home.eeti.com.tw/touch_driver/Linux/${_reldate}/eGTouch_v${pkgver}.L-x.zip" 
+source=("eGTouch_v${pkgver}.L-x.tar.gz::http://home.eeti.com.tw/touch_driver/Linux/${_reldate}/eGTouch_v${pkgver}.L-x.tar.gz" 
         "eGalaxConfig.desktop" 
         "eGTouchD.service"
         "eGTouchD.conf")
-md5sums=('F036A1284CEFC9394B30E4E0C960D122'
+md5sums=('fb29252cd9ebf3a4ebd1530e4946f092'
          '0ee99c83fd74bdb8357427eae9b2dc7d' 
          'a52c4c1682ee196a6bbffe4768154a92'
          'c9284fbcf2bdaec8d3eea21f6b7be34d')
@@ -55,27 +55,27 @@ package() {
     install -D -m755 eGTouchD $pkgdir/usr/bin
     install -D -m755 eCalib $pkgdir/usr/bin
     install -D -m755 eGTouchL.ini $pkgdir/etc
-    
-    cd ../../Rule
-    
+
+    cd $srcdir/eGTouch_v${pkgver}.L-x/Rule
+
     install -D -m644 52-egalax-virtual.conf $pkgdir/etc/X11/xorg.conf.d
     install -D -m644 eGTouchU.png $pkgdir/usr/share/icons/hicolor/scalable/apps
 
     install -D -m755 serio_raw.sh $pkgdir/usr/share/eGTouch/sample
 
-    cd ../Patent_Declaration
+    cd $srcdir/eGTouch_v${pkgver}.L-x
 
-    install -D -m644 eula.pdf $pkgdir/usr/share/licenses/$pkgname
+    install -D -m644 EULA.pdf $pkgdir/usr/share/licenses/$pkgname
     install -D -m644 "EETI_Declaration_and_Disclaimer.pdf" $pkgdir/usr/share/licenses/$pkgname
 
-    cd ../Guide
-    
-#    install -D -m644 "EETI_eGTouch_Utility_Guide_for Linux_v1.03.pdf" $pkgdir/usr/share/eGTouch
-#    install -D -m644 "EETI_eGTouch_Linux_Programming_Guide_v2.5f.pdf" $pkgdir/usr/share/eGTouch
+    cd $srcdir/eGTouch_v${pkgver}.L-x/Guide
+
+    # install -D -m644 "EETI_eGTouch_Utility_Guide_for Linux_v1.03.pdf" $pkgdir/usr/share/eGTouch
+    # install -D -m644 "EETI_eGTouch_Linux_Programming_Guide_v2.5h.pdf" $pkgdir/usr/share/eGTouch
 
     install -D -m644 GetEvent.c $pkgdir/usr/share/eGTouch/sample
 
-    cd ../../../
+    cd $srcdir/
 
     install -D -m755 eGalaxConfig.desktop $pkgdir/usr/share/applications
     install -D -m755 eGTouchD.service $pkgdir/usr/lib/systemd/system
