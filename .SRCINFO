@@ -1,6 +1,6 @@
 pkgbase = sdr-j-dabreceiver
 	pkgdesc = The DAB decoding software (SDR-J)
-	pkgver = 0.98
+	pkgver = 0.99
 	pkgrel = 0
 	url = http://www.sdr-j.tk/
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = sdr-j-dabreceiver
 	depends = qwt
 	depends = faad2
 	depends = portaudio
+	depends = qt5-quick1
 	conflicts = dabstick-radio
 	replaces = dabstick-radio
-	source = http://www.sdr-j.tk/sdr-j-dabreceiver-0.98.tgz
-	md5sums = 58fbef4cd8d418ddc23f5a85ec87c1b8
+	source = https://github.com/JvanKatwijk/sdr-j-dab/archive/V0.99.tar.gz
+	md5sums = 4e4ba826c8aa818188a9777de691ae6c
 
 pkgname = sdr-j-dabreceiver
 
