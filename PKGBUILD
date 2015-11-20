@@ -24,11 +24,13 @@ install="$pkgname.install"
 prepare() {
 	cd "$srcdir/tdesktop"
 	
-	if ! [ -d "$srcdir/Libraries" ]; then
-		mkdir "$srcdir/Libraries"
+	local qt_patch_file="$srcdir/tdesktop/Telegram/_qtbase_${_qtver//./_}_patch.diff"
+	if [ "$qt_patch_file" -nt "$srcdir/Libraries/QtStatic" ]; then
+		mkdir -p "$srcdir/Libraries"
+		rm -rf "$srcdir/Libraries/QtStatic"
 		mv "$srcdir/qt-everywhere-opensource-src-$_qtver" "$srcdir/Libraries/QtStatic"
 		cd "$srcdir/Libraries/QtStatic/qtbase"
-		patch -p1 -i "$srcdir/tdesktop/Telegram/_qtbase_${_qtver//./_}_patch.diff"
+		patch -p1 -i "$qt_patch_file"
 	fi
 	
 	sed -i 's/CUSTOM_API_ID//g' "$srcdir/tdesktop/Telegram/Telegram.pro"
