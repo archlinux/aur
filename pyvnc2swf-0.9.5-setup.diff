@@ -1,0 +1,1299 @@
+diff -Naur pyvnc2swf-0.9.5.old/setup.py pyvnc2swf-0.9.5/setup.py
+--- pyvnc2swf-0.9.5.old/setup.py	1969-12-31 18:00:00.000000000 -0600
++++ pyvnc2swf-0.9.5/setup.py	2008-12-18 06:10:12.000000000 -0600
+@@ -0,0 +1,21 @@
++#!/usr/bin/env python
++# -*- coding: ISO-8859-1 -*-
++
++from distutils.core import setup, Extension
++
++pkgs = ['pyvnc2swf']
++docs = ['docs/pyvnc2swf.html', 'docs/recordwin.html']
++data = [('share/doc/pyvnc2swf', docs)]
++bins = ['bin/recordwin', 'bin/pyvnc2swf', 'bin/pyvnc2swf-edit', 'bin/pyvnc2swf-play']
++
++setup(
++    name = 'pyvnc2swf',
++    version = '0.9.5',
++    author = 'Yusuke Shinyama',
++    author_email = 'yusuke at cs dot nyu dot edu',
++    license = 'GPL',
++    url = 'http://www.unixuser.org/~euske/vnc2swf/pyvnc2swf.html',
++    packages = pkgs,
++    data_files = data,
++    scripts = bins
++)
+diff -Naur pyvnc2swf-0.9.5.old/bin/pyvnc2swf pyvnc2swf-0.9.5/bin/pyvnc2swf
+--- pyvnc2swf-0.9.5.old/bin/pyvnc2swf	1969-12-31 18:00:00.000000000 -0600
++++ pyvnc2swf-0.9.5/bin/pyvnc2swf	2008-12-18 06:07:48.000000000 -0600
+@@ -0,0 +1,611 @@
++#!/usr/bin/env python
++##
++##  pyvnc2swf - vnc2swf.py
++##
++##  $Id: vnc2swf.py,v 1.7 2008/11/16 02:39:40 euske Exp $
++##
++##  Copyright (C) 2005 by Yusuke Shinyama (yusuke at cs . nyu . edu)
++##  All Rights Reserved.
++##
++##  This is free software; you can redistribute it and/or modify
++##  it under the terms of the GNU General Public License as published by
++##  the Free Software Foundation; either version 2 of the License, or
++##  (at your option) any later version.
++##
++##  This software is distributed in the hope that it will be useful,
++##  but WITHOUT ANY WARRANTY; without even the implied warranty of
++##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++##  GNU General Public License for more details.
++##
++##  You should have received a copy of the GNU General Public License
++##  along with this software; if not, write to the Free Software
++##  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
++##  USA.
++##
++
++import sys, os, os.path, time, socket, re
++import Tkinter, tkFileDialog, tkMessageBox, tempfile, shutil
++from tkSimpleDialog import Dialog
++from struct import pack, unpack
++import threading
++
++from pyvnc2swf.movie import SWFInfo
++from pyvnc2swf.output import StreamFactory
++from pyvnc2swf.rfb import RFBError, RFBNetworkClient, RFBFileParser, RFBNetworkClientForRecording, RFBStreamConverter
++stderr = sys.stderr
++
++
++##  tkPasswordDialog
++##
++class tkPasswordDialog(Dialog):
++
++  def __init__(self, title, prompt, master=None):
++    if not master:
++      master = Tkinter._default_root
++    self.prompt = prompt
++    Dialog.__init__(self, master, title)
++    return
++  
++  def destroy(self):
++    self.entry = None
++    Dialog.destroy(self)
++    return
++  
++  def body(self, master):
++    w = Tkinter.Label(master, text=self.prompt, justify=Tkinter.LEFT)
++    w.grid(row=0, padx=5, sticky=Tkinter.W)
++    self.entry = Tkinter.Entry(master, name="entry", show="*")
++    self.entry.grid(row=1, padx=5, sticky=Tkinter.W+Tkinter.E)
++    return self.entry
++  
++  def validate(self):
++    self.result = self.entry.get()
++    return 1
++
++
++##  tkEntryDialog
++##
++class tkEntryDialog(Dialog):
++
++  def __init__(self, title, prompt, pattern=None, default=None, master=None):
++    if not master:
++      master = Tkinter._default_root
++    self.prompt = prompt
++    self.default = default
++    self.pattern = re.compile(pattern)
++    Dialog.__init__(self, master, title)
++    return
++  
++  def destroy(self):
++    self.entry = None
++    Dialog.destroy(self)
++    return
++  
++  def body(self, master):
++    w = Tkinter.Label(master, text=self.prompt, justify=Tkinter.LEFT)
++    w.grid(row=0, padx=5, sticky=Tkinter.W)
++    self.entry = Tkinter.Entry(master, name="entry")
++    self.entry.grid(row=1, padx=5, sticky=Tkinter.W+Tkinter.E)
++    if self.default:
++      self.entry.insert(0, self.default)
++    return self.entry
++  
++  def validate(self):
++    self.result = self.entry.get()
++    if self.pattern and not self.pattern.match(self.result):
++      return 0
++    return 1
++
++
++##  RFBNetworkClientWithTkMixin
++##
++class RFBNetworkClientWithTkMixin:
++
++  def tk_init(self, root):
++    self.root = root
++    self.doloop = True
++    return
++
++  def interrupt(self):
++    self.doloop = False
++    return
++
++  def loop(self):
++    self.doloop = True
++    while self.doloop:
++      self.root.update()
++      if not self.loop1(): break
++    self.finish_update()
++    return self
++
++  def getpass(self):
++    return tkPasswordDialog('Login',
++                            'Password for %s:%d' % (self.host, self.port),
++                            self.root).result
++
++class RFBNetworkClientWithTk(RFBNetworkClientWithTkMixin, RFBNetworkClient): pass
++class RFBNetworkClientForRecordingWithTk(RFBNetworkClientWithTkMixin, RFBNetworkClientForRecording): pass
++
++
++##  VNC2SWFWithTk
++##
++class VNC2SWFWithTk:
++
++  FILE_TYPES = [
++    ('Flash(v5)', 'swf5',  'Macromedia Flash Files', '.swf'),    # 0
++    ('Flash(v7)', 'swf7',  'Macromedia Flash Files', '.swf'),    # 1
++    ('FLV',       'flv',   'Macromedia Flash Video Files', '.flv'), # 3
++    ('MPEG',      'mpeg',  'MPEG Files', '.mpeg'),               # 2
++    ('VNCRec',    'vnc',   'VNCRec Files', '.vnc'),              # 4
++    ]
++
++  def __init__(self, tempdir, info,
++               outtype='swf5', host='localhost', port=5900,
++               preferred_encoding=(0,), subprocess=None, pwdfile=None,
++               debug=0):
++    self.tempdir = tempdir
++    self.moviefile = info.filename
++    self.info = info
++    self.debug = debug
++    self.preferred_encoding = preferred_encoding
++    self.subprocess = subprocess
++    self.pwdfile = pwdfile
++    self.outtype = outtype
++    self.host = host
++    self.port = port
++    self.recording = False
++    self.exit_immediately = False
++    self.root = Tkinter.Tk()
++    self.root.title('vnc2swf.py')
++    self.root.wm_protocol('WM_DELETE_WINDOW', self.file_exit)
++    self.toggle_button = Tkinter.Button(master=self.root)
++    self.toggle_button.pack(side=Tkinter.LEFT)
++    self.status_label = Tkinter.Label(master=self.root, justify=Tkinter.LEFT)
++    self.status_label.pack(side=Tkinter.LEFT)
++    self.setup_menubar()
++    self.file_new(True)
++    return
++
++  def frames(self):
++    return self.stream and self.stream.output_frames
++
++  # Set up the GUI components.
++  def setup_menubar(self):
++    
++    def option_server():
++      x = tkEntryDialog('Server', 'Server? (host:port)', pattern='^([^:/]+(:\d+)?|)$',
++                        default='%s:%d' % (self.host, self.port), master=self.root).result
++      if not x: return
++      m = re.match(r'^([^:/]*)(:(\d+))?', x)
++      if not m:
++        tkMessageBox.showerror('Invalid address: %s' % x)
++        return
++      (host, port) = (m.group(1) or 'localhost', int(m.group(3) or '5900'))
++      if host != self.host or port != self.port and self.file_new_ask():
++        (self.host, self.port) = (host, port)
++        self.file_new(True)
++      return
++
++    def option_framerate():
++      x = tkEntryDialog('Framerate', 'Framerate? (fps)', pattern='^([1-9][.0-9]+|)$',
++                        default=self.info.framerate, master=self.root).result
++      if not x: return
++      framerate = float(x)
++      if framerate != self.info.framerate and self.file_new_ask():
++        self.info.framerate = framerate
++        self.file_new(True)
++      return
++
++    def option_clipping():
++      try:
++        s = self.info.get_clipping()
++      except ValueError:
++        s = ''
++      x = tkEntryDialog('Clipping', 'Clipping? (ex. 640x480+0+0)',
++                        pattern='^(\d+x\d+\+\d+\+\d+|)$',
++                        default=s, master=self.root).result
++      if not x: return
++      if x != s and self.file_new_ask():
++        self.info.set_clipping(x)
++        self.file_new(True)
++      return
++
++    record_type = Tkinter.StringVar(self.root)
++    record_type.set(self.outtype)
++    def option_type():
++      if record_type.get() != self.outtype and self.file_new_ask():
++        self.outtype = record_type.get()
++        self.file_new()
++      else:
++        record_type.set(self.outtype)
++      return
++
++    menubar = Tkinter.Menu(self.root)
++    self.file_menu = Tkinter.Menu(menubar, tearoff=0)
++    self.file_menu.add_command(label="New...", underline=0, command=self.file_new, accelerator='Alt-N')
++    self.file_menu.add_command(label="Save as...", underline=0, command=self.file_saveas, accelerator='Alt-S')
++    self.file_menu.add_separator()
++    self.file_menu.add_command(label="Exit", underline=1, command=self.file_exit)
++    self.option_menu = Tkinter.Menu(menubar, tearoff=0)
++    self.option_menu.add_command(label="Server...", underline=0, command=option_server)
++    self.option_menu.add_command(label="Clipping...", underline=0, command=option_clipping)
++    self.option_menu.add_command(label="Framerate...", underline=0, command=option_framerate)
++    type_submenu = Tkinter.Menu(self.option_menu, tearoff=0)
++    for (k,v,_,_) in self.FILE_TYPES:
++      type_submenu.add_radiobutton(label=k, value=v, variable=record_type, command=option_type)
++    self.option_menu.add_cascade(label="Type", underline=0, menu=type_submenu)
++    menubar.add_cascade(label="File", underline=0, menu=self.file_menu)
++    menubar.add_cascade(label="Option", underline=0, menu=self.option_menu)
++    self.root.config(menu=menubar)
++    self.root.bind('<Alt-n>', lambda e: self.file_new())
++    self.root.bind('<Alt-s>', lambda e: self.file_saveas())
++    return
++
++  # Change the current status of UI.
++  def set_status(self):
++    
++    def enable_menus(state):
++      self.file_menu.entryconfig(0, state=state) # "File->New..."
++      self.option_menu.entryconfig(0, state=state) # "Option->Server..."
++      self.option_menu.entryconfig(1, state=state) # "Option->Clipping..."
++      self.option_menu.entryconfig(2, state=state) # "Option->Framerate..."
++      self.option_menu.entryconfig(3, state=state) # "Option->Type"
++      return
++
++    # "File->Save As..."
++    if not self.recording and self.frames():
++      self.file_menu.entryconfig(1, state='normal')
++    else:
++      self.file_menu.entryconfig(1, state='disabled')
++    
++    s = []
++    if not self.recording:
++      s.append('Ready (%d frames recorded).' % (self.frames() or 0))
++      self.toggle_button.config(text='Start', underline=0)
++      self.toggle_button.config(background='#80ff80', activebackground='#00ff00')
++      self.toggle_button.config(command=self.record)
++      self.root.bind('<s>', lambda e: self.record())
++      self.root.bind('<space>', lambda e: self.record())
++      enable_menus('normal')
++    else:
++      s.append('Recording.')
++      self.toggle_button.config(text='Stop', underline=0)
++      self.toggle_button.config(background='#ff8080', activebackground='#ff0000')
++      self.toggle_button.config(command=self.client.interrupt)
++      self.root.bind('<s>', lambda e: self.client.interrupt())
++      self.root.bind('<space>', lambda e: self.client.interrupt())
++      enable_menus('disabled')
++    if self.host != 'localhost' or self.port != 5900:
++      s.append('Server: %s:%d' % (self.host, self.port))
++    if self.info.clipping:
++      s.append('Clipping: %s' % self.info.get_clipping())
++    if self.info.framerate:
++      s.append('Framerate: %s' % self.info.framerate)
++    self.status_label.config(text='\n'.join(s))
++    return
++
++  # File->New
++  def file_new_ask(self):
++    if self.frames():
++      if not tkMessageBox.askokcancel('New file', 'Discard the current session?'):
++        return False
++    return True
++  
++  def file_new(self, force=False):
++    if self.recording or (not force and not self.file_new_ask()): return
++    ext = dict([ (t,ext) for (_,t,desc,ext) in self.FILE_TYPES ])[self.outtype]
++    if self.moviefile:
++      moviefile = self.moviefile
++    else:
++      moviefile = os.path.join(self.tempdir, 'pyvnc2swf-%d%s' % (os.getpid(), ext))
++    self.info.filename = moviefile
++    self.fp = None
++    if self.outtype == 'vnc':
++      self.fp = file(self.info.filename, 'wb')
++      self.client = RFBNetworkClientForRecordingWithTk(
++        self.host, self.port, self.fp, pwdfile=self.pwdfile,
++        preferred_encoding=self.preferred_encoding)
++      self.stream = None
++    else:
++      self.stream = StreamFactory(self.outtype)(self.info)
++      self.client = RFBNetworkClientWithTk(
++        self.host, self.port, RFBStreamConverter(self.info, self.stream),
++        pwdfile=self.pwdfile,
++        preferred_encoding=self.preferred_encoding)
++    self.set_status()
++    return True
++    
++  # File->SaveAs
++  def file_saveas(self):
++    if self.recording or not self.frames(): return
++    (ext,desc) = dict([ (t,(ext,desc)) for (_,t,desc,ext) in self.FILE_TYPES ])[self.outtype]
++    filename = tkFileDialog.asksaveasfilename(
++      master=self.root, title='Vnc2swf Save As', defaultextension=ext,
++      filetypes=[(desc,'*'+ext), ("All Files", "*")]
++      )
++    if not filename: return
++    if self.stream:
++      # Finish the movie.
++      self.stream.close()
++      self.stream = None
++      if self.fp:
++        self.fp.close()
++        self.fp = None
++    shutil.move(self.info.filename, filename)
++    self.info.write_html(filename=filename)
++    self.set_status()
++    return
++
++  # File->Exit
++  def file_exit(self):
++    if self.recording:
++      self.client.interrupt()
++      self.exit_immediately = True
++    else:
++      if self.frames():
++        if not tkMessageBox.askokcancel('Exit', 'Discard the current session?'):
++          return
++      self.root.destroy()
++    return
++  
++  # Do recording.
++  def record(self):
++    self.client.tk_init(self.root)
++    try:
++      self.client.init().auth().start()
++    except socket.error, e:
++      return self.error('Socket error', e)
++    except RFBError, e:
++      return self.error('RFB protocol error', e)
++    if self.debug:
++      print >>stderr, 'start recording'
++    self.recording = True
++    self.set_status()
++    if self.subprocess:
++      self.subprocess.start()
++    try:
++      self.client.loop()
++    except socket.error, e:
++      return self.error('Socket error', e)
++    except RFBError, e:
++      return self.error('RFB protocol error', e)
++    if self.debug:
++      print >>stderr, 'stop recording'
++    if self.subprocess:
++      self.subprocess.stop()
++    self.client.close()
++    self.recording = False
++    self.set_status()
++    if self.exit_immediately:
++      self.file_exit()
++    return
++
++  # Displays an error message.
++  def error(self, msg, arg):
++    print >>stderr, arg
++    tkMessageBox.showerror('vnc2swf: %s' % msg, str(arg))
++    return
++
++  # Runs Tk mainloop.
++  def run(self):
++    self.root.mainloop()
++    return
++
++
++##  vnc2swf - CLI routine
++##
++def vnc2swf(info, outtype='swf5', host='localhost', port=5900, 
++            preferred_encoding=(0,), subprocess=None, pwdfile=None, vncfile=None,
++            debug=0, merge=False):
++  fp = None
++  if outtype == 'vnc':
++    if info.filename == '-':
++      fp = sys.stdout
++    else:
++      fp = file(info.filename, 'wb')
++    client = RFBNetworkClientForRecording(host, port, fp, pwdfile=pwdfile,
++                                          preferred_encoding=preferred_encoding, debug=debug)
++  else:
++    stream = StreamFactory(outtype)(info, debug=debug)
++    converter = RFBStreamConverter(info, stream, debug=debug)
++    if vncfile:
++      client = RFBFileParser(vncfile, converter, debug=debug)
++    else:
++      client = RFBNetworkClient(host, port, converter, pwdfile=pwdfile,
++                                preferred_encoding=preferred_encoding, debug=debug)
++  try:
++    client.init().auth().start()
++  except socket.error, e:
++    print >>stderr, 'Socket error:', e
++  except RFBError, e:
++    print >>stderr, 'RFB error:', e
++  if debug:
++    print >>stderr, 'start recording'
++  if subprocess:
++    subprocess.start()
++  try:
++    client.loop()
++  except KeyboardInterrupt:
++    pass
++  except socket.error, e:
++    print >>stderr, 'Socket error:', e
++  except RFBError, e:
++    print >>stderr, 'RFB error:', e
++  if debug:
++    print >>stderr, 'stop recording'
++  if subprocess:
++    subprocess.stop()
++  client.close()
++  stream.close()
++  info.write_html()
++  if fp:
++    fp.close()
++  # Contributed by David Fraser
++  if merge:
++    tmpfile = os.tempnam(os.path.dirname(info.filename), "vncmerge-") + os.path.basename(info.filename)
++    print >>stderr, "renaming %s to %s for merge" % (info.filename, tmpfile)
++    if os.path.exists(tmpfile):
++      os.remove(tmpfile)
++    os.rename( info.filename, tmpfile )
++    try:
++      # TODO: sort out getting outputfilename properly
++      audiofilename = subprocess.outputfile
++      import edit
++      args = ["-d", "-o", info.filename, "-a", audiofilename, tmpfile]
++      if not edit.main(args):
++        print >>stderr, "Error doing merge..."
++    finally:
++      origexists, tmpexists = os.path.exists(info.filename), os.path.exists(tmpfile)
++      print >>stderr, "origexists %r, tmpexists %r" % (origexists, tmpexists)
++      if origexists and tmpexists:
++        try:
++          os.remove(tmpfile)
++        except OSError, e:
++          print >>stderr, "Could not remove temporary file: %s" % e
++      elif tmpexists:
++        print >>stderr, "only tmpfile remains after merge, renaming to original (but will not contain sound)"
++        os.rename( tmpfile, info.filename )
++  return
++
++
++# Thread management
++class RecordingThread:
++  def __init__(self, outputfile):
++    try:
++      import record_sound
++    except ImportError, e:
++      print >>stderr, "unable to use pymedia?:", e
++      raise
++    self.outputfile = outputfile
++    self.recorder = record_sound.voiceRecorder(self.outputfile)
++    self.thread = threading.Thread(target=self.recorder.run)
++
++  def start(self):
++    self.thread.start()
++
++  def stop(self):
++    self.recorder.finished = True
++    self.thread.join()
++
++# Subprocess management
++class Subprocess:
++  
++  def __init__(self, s):
++    try:
++      import subprocess
++    except ImportError:
++      print >>stderr, '-S option requires Python 2.4 or newer.'
++      sys.exit(111)
++    if not hasattr(os, 'kill'):
++      print >>stderr, '-S option works only on Unix or Mac OS X.'
++      sys.exit(111)
++    self.args = s.split(' ')
++    self.popen = None
++    return
++  
++  def start(self):
++    import subprocess
++    self.popen = subprocess.Popen(self.args)
++    return
++  
++  def stop(self):
++    import signal
++    os.kill(self.popen.pid, signal.SIGINT)
++    self.popen.wait()
++    return
++
++
++# main
++# ./vnc2swf.py -S 'arecord -t wav -c 1 -r 22050 out.wav' -n -o out.swf 
++def main(argv):
++  import getopt
++  def usage():
++    print ('usage: %s [-d] [-n] [-o filename] [-t {flv|mpeg|swf5|swf7|vnc}]'
++           ' [-e encoding] [-N] [-C clipping] [-r framerate] [-s scaling] [-z] [-m] [-a] [-V]'
++           ' [-S subprocess] [-P pwdfile] [host[:display] [port]]' % argv[0])
++    return 100
++  try:
++    (opts, args) = getopt.getopt(argv[1:], 'dno:t:e:NC:r:S:P:s:zmaV')
++  except getopt.GetoptError:
++    return usage()
++  (debug, console, outtype, subprocess, merge, pwdfile, isfile) = (0, False, None, None, False, None, False)
++  (cursor, host, port, preferred_encoding) = (True, 'localhost', 5900, (0,))
++  info = SWFInfo()
++  for (k, v) in opts:
++    if k == '-d': debug += 1
++    elif k == '-n': console = True
++    elif k == '-t': outtype = v
++    elif k == '-e': preferred_encoding = tuple([ int(i) for i in v.split(',') ])
++    elif k == '-N': cursor = False
++    elif k == '-S': subprocess = Subprocess(v)
++    elif k == '-a': subprocess = RecordingThread(v)
++    elif k == '-m': merge = True
++    elif k == '-P': pwdfile = v
++    elif k == '-V': isfile = True
++    elif k == '-o':
++      info.filename = v
++    elif k == '-C':
++      try:
++        info.set_clipping(v)
++      except ValueError:
++        print 'Invalid clipping specification:', v
++        return usage()
++    elif k == "-r":
++      info.framerate = int(v)
++    elif k == "-z":
++      info.set_scalable(True)
++    elif k == '-s':
++      info.scaling = float(v)
++      assert 0 < info.scaling and info.scaling <= 1.0, 'Invalid scaling.'
++  if not outtype:
++    if info.filename:
++      if info.filename.endswith('.vnc'):
++        outtype = 'vnc'
++      elif info.filename.endswith('.swf'):
++        outtype = 'swf5'
++      elif info.filename.endswith('.mpg') or info.filename.endswith('.mpeg'):
++        outtype = 'mpeg'
++      elif info.filename.endswith('.flv'):
++        outtype = 'flv'
++    else:
++      outtype = 'swf5'
++  if outtype not in ('swf5','swf7','vnc','mpeg','flv'):
++    print 'Please specify the output type or file extension.'
++    return usage()
++  if cursor:
++    preferred_encoding += (-232,-239,)
++  if 1 <= len(args):
++    if ':' in args[0]:
++      i = args[0].index(':')
++      host = args[0][:i] or 'localhost'
++      port = int(args[0][i+1:])+5900
++    else:
++      host = args[0]
++  if 2 <= len(args):
++    port = int(args[1])
++  if console:
++    if not info.filename:
++      print 'Please specify the output filename.'
++      return usage()
++    vncfile = None
++    if isfile:
++      vncfile = sys.stdin
++      if args:
++        vncfile = file(args[0], 'rb')
++    vnc2swf(info, outtype, host, port,
++            preferred_encoding=preferred_encoding,
++            subprocess=subprocess, pwdfile=pwdfile, vncfile=vncfile,
++            merge=merge, debug=debug)
++  else:
++    tempdir = os.path.join(tempfile.gettempdir(), 'pyvnc2swf')
++    try:
++      os.mkdir(tempdir)
++    except OSError:
++      pass
++    VNC2SWFWithTk(tempdir, info, outtype, host, port,
++                  preferred_encoding=preferred_encoding,
++                  subprocess=subprocess, pwdfile=pwdfile,
++                  debug=debug).run()
++  return
++
++if __name__ == "__main__": sys.exit(main(sys.argv))
+diff -Naur pyvnc2swf-0.9.5.old/bin/pyvnc2swf-edit pyvnc2swf-0.9.5/bin/pyvnc2swf-edit
+--- pyvnc2swf-0.9.5.old/bin/pyvnc2swf-edit	1969-12-31 18:00:00.000000000 -0600
++++ pyvnc2swf-0.9.5/bin/pyvnc2swf-edit	2008-12-18 06:07:56.000000000 -0600
+@@ -0,0 +1,248 @@
++#!/usr/bin/env python
++##
++##  pyvnc2swf - edit.py
++##
++##  $Id: edit.py,v 1.6 2008/11/16 02:39:40 euske Exp $
++##
++##  Copyright (C) 2005 by Yusuke Shinyama (yusuke at cs . nyu . edu)
++##  All Rights Reserved.
++##
++##  This is free software; you can redistribute it and/or modify
++##  it under the terms of the GNU General Public License as published by
++##  the Free Software Foundation; either version 2 of the License, or
++##  (at your option) any later version.
++##
++##  This software is distributed in the hope that it will be useful,
++##  but WITHOUT ANY WARRANTY; without even the implied warranty of
++##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++##  GNU General Public License for more details.
++##
++##  You should have received a copy of the GNU General Public License
++##  along with this software; if not, write to the Free Software
++##  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
++##  USA.
++##
++
++import sys, re
++from pyvnc2swf.movie import SWFInfo, MovieContainer
++from pyvnc2swf.output import FLVVideoStream, MPEGVideoStream, SWFVideoStream, \
++     SWFShapeStream, ImageSequenceStream, MovieBuilder
++stderr = sys.stderr
++
++
++# range2list: converts strings like "1,5-8" to [1,5,6,7,8].
++class RangeError(ValueError): pass
++def range2list(s, n0, n1, step=1):
++  PAT_RANGE = re.compile(r'^([0-9]*)-([0-9]*)$')
++  r = []
++  for i in s.split(','):
++    i = i.strip()
++    if not i: continue
++    if i.isdigit():
++      n = int(i)
++      if n0 <= n and n <= n1:
++        r.append(n)
++      else:
++        raise RangeError('%d: must be in %d...%d' % (n,n0,n1))
++    else:
++      m = PAT_RANGE.match(i.strip())
++      if not m:
++        raise RangeError('%r: illegal number' % i)
++      b = n0
++      if m.group(1):
++        b = int(m.group(1))
++      e = n1
++      if m.group(2):
++        e = int(m.group(2))
++      if e < b:
++        (b,e) = (e,b)
++      if b < n0:
++        raise RangeError('%d: must be in %d...%d' % (b,n0,n1))
++      if n1 < e:
++        raise RangeError('%d: must be in %d...%d' % (e,n0,n1))
++      r.extend(xrange(b,e+1,step))
++  return r
++
++
++# reorganize
++def reorganize(info, stream, moviefiles, range_str='-',
++               loop=True, seekbar=True,
++               step=1, kfinterval=0, 
++               mp3seek=True, mp3skip=0,
++               debug=0):
++  movie = MovieContainer(info)
++  for fname in moviefiles:
++    if fname.endswith('.swf'):
++      # vnc2swf file
++      movie.parse_vnc2swf(fname, True, debug=debug)
++    elif fname.endswith('.flv'):
++      # flv file
++      movie.parse_flv(fname, True, debug=debug)
++    elif fname.endswith('.vnc'):
++      # vncrec file
++      movie.parse_vncrec(fname, debug=debug)
++    else:
++      raise ValueError('unsupported format: %r' % fname)
++  r = range2list(range_str, 0, movie.nframes-1, step)
++  if movie.info.mp3:
++    if isinstance(mp3skip, float):
++      mp3skip = int(mp3skip * movie.info.mp3.sample_rate)
++    movie.info.mp3.set_initial_skip(mp3skip)
++  builder = MovieBuilder(movie, stream, mp3seek=mp3seek, kfinterval=kfinterval, debug=debug)
++  builder.build(r)
++  stream.close()
++  movie.info.write_html(seekbar=seekbar, loop=loop)
++  return 0
++
++
++# main
++def main(argv):
++  import getopt
++  def usage():
++    print >>stderr, '''usage: %s
++    [-d] [-c] [-t type] [-f|-F frames] [-a mp3file] [-r framerate]
++    [-S mp3sampleskip] [-C WxH+X+Y] [-B blocksize] [-K keyframe]
++    [-R framestep] [-s scaling]
++    -o outfile.swf file1 file2 ...
++
++    Specify one output filename from the following:
++      *.swf: generate a SWF movie.
++      *.flv: generate a FLV movie.
++      *.mpg: generate a MPEG movie.
++      *.png|*.bmp: save snapshots of given frames as "X-nnn.png"
++      
++    -d: debug mode.
++    -c: compression.
++    -t {swf5,swf7,flv,mpeg,png,bmp}: specify the output movie type.
++    -f(-F) frames: frames to extract. e.g. 1-2,100-300,310,500-
++       -F disables seeking audio.
++    -R framestep: frame resampling step (default: 1)
++    -s scaling: scale factor (default: 1.0)
++    -a filename: attach MP3 file(s). (multiple files can be specified)
++    -r framerate: override framerate.
++    -B blocksize: (SWF7 and FLV mode only) blocksize of video packet (must be a multiple of 16)
++    -K keyframe: keyframe interval
++    -S N[s]: skip the first N samples (or N seconds) of the sound when the movie starts.
++    -C WxH+X+Y: crop a specific area of the movie.
++    -b: disable seekbar.
++    -l: disable loop.
++    -z: make the movie scalable.
++    ''' % argv[0]
++    return 100
++  try:
++    (opts, args) = getopt.getopt(argv[1:], 'dr:o:t:cHa:S:C:B:K:f:F:R:s:blz')
++  except getopt.GetoptError:
++    return usage()
++  #
++  debug = 0
++  info = SWFInfo()
++  range_str = '-'
++  step = 1
++  streamtype = None
++  kfinterval = 0
++  mp3skip = 0
++  mp3seek = True
++  loop = True
++  seekbar = True
++  for (k, v) in opts:
++    if k == '-d':
++      debug += 1
++    elif k == '-r':
++      info.set_framerate(float(v))
++    elif k == '-o':
++      info.filename = v
++    elif k == '-t':
++      v = v.lower()
++      if v not in ('swf5','swf7','mpeg','mpg','flv','png','bmp','gif'):
++        print >>stderr, 'Invalid output type:', v
++        return usage()
++      streamtype = v
++    elif k == '-a':
++      fp = file(v, 'rb')
++      print >>stderr, 'Reading mp3 file: %s...' % v
++      info.reg_mp3blocks(fp)
++      fp.close()
++    elif k == '-S':
++      if v.endswith('s'):
++        mp3skip = float(v[:-1])
++      else:
++        mp3skip = int(v)
++    elif k == '-C':
++      try:
++        info.set_clipping(v)
++      except ValueError:
++        print >>stderr, 'Invalid clipping specification:', v
++        return usage()
++    elif k == '-B':
++      blocksize = int(v)
++      assert 0 < blocksize and blocksize <= 256 and blocksize % 16 == 0, 'Invalid block size.'
++      info.blocksize = blocksize
++    elif k == '-K':
++      kfinterval = int(v)
++    elif k == '-c':
++      info.compression = True
++    elif k == '-f':
++      range_str = v
++    elif k == '-F':
++      range_str = v
++      mp3seek = False
++    elif k == '-R':
++      step = int(v)
++      mp3seek = False
++    elif k == '-s':
++      info.scaling = float(v)
++      assert 0 < info.scaling and info.scaling <= 1.0, 'Invalid scaling.'
++    elif k == '-b':
++      seekbar = False
++    elif k == '-l':
++      loop = False
++    elif k == '-z':
++      info.set_scalable(True)
++  if not args:
++    print >>stderr, 'Specify at least one input movie.'
++    return usage()
++  if not info.filename:
++    print >>stderr, 'Specify exactly one output file.'
++    return usage()
++  if not streamtype:
++    v = info.filename
++    if v.endswith('.swf'):
++      streamtype = 'swf5'
++    elif v.endswith('.png'):
++      streamtype = 'png'
++    elif v.endswith('.bmp'):
++      streamtype = 'bmp'
++    elif v.endswith('.gif'):
++      streamtype = 'gif'
++    elif v.endswith('.mpg') or v.endswith('.mpeg'):
++      streamtype = 'mpeg'
++    elif v.endswith('.flv'):
++      streamtype = 'flv'
++    else:
++      print >>stderr, 'Unknown stream type.'
++      return 100
++  if streamtype == 'mpeg' and not MPEGVideoStream:
++    print >>stderr, 'MPEGVideoStream is not supported.'
++    return 100
++  stream = None
++  if streamtype == 'swf5':
++    stream = SWFShapeStream(info, debug=debug)
++  elif streamtype == 'swf7':
++    stream = SWFVideoStream(info, debug=debug)
++  elif streamtype in ('mpg', 'mpeg'):
++    stream = MPEGVideoStream(info, debug=debug)
++  elif streamtype == 'flv':
++    stream = FLVVideoStream(info, debug=debug)
++  else:
++    stream = ImageSequenceStream(info, debug=debug)
++  try:
++    return reorganize(info, stream, args, range_str,
++                      loop=loop, seekbar=seekbar,
++                      step=step, kfinterval=kfinterval, 
++                      mp3seek=mp3seek, mp3skip=mp3skip,
++                      debug=debug)
++  except RangeError, e:
++    print >>stderr, 'RangeError:', e
++    return 100
++
++if __name__ == "__main__": sys.exit(main(sys.argv))
+diff -Naur pyvnc2swf-0.9.5.old/bin/pyvnc2swf-play pyvnc2swf-0.9.5/bin/pyvnc2swf-play
+--- pyvnc2swf-0.9.5.old/bin/pyvnc2swf-play	1969-12-31 18:00:00.000000000 -0600
++++ pyvnc2swf-0.9.5/bin/pyvnc2swf-play	2008-12-18 06:08:06.000000000 -0600
+@@ -0,0 +1,275 @@
++#!/usr/bin/env python
++##
++##  pyvnc2swf - play.py
++##
++##  $Id: play.py,v 1.6 2008/11/16 02:39:40 euske Exp $
++##
++##  Copyright (C) 2005 by Yusuke Shinyama (yusuke at cs . nyu . edu)
++##  All Rights Reserved.
++##
++##  This is free software; you can redistribute it and/or modify
++##  it under the terms of the GNU General Public License as published by
++##  the Free Software Foundation; either version 2 of the License, or
++##  (at your option) any later version.
++##
++##  This software is distributed in the hope that it will be useful,
++##  but WITHOUT ANY WARRANTY; without even the implied warranty of
++##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++##  GNU General Public License for more details.
++##
++##  You should have received a copy of the GNU General Public License
++##  along with this software; if not, write to the Free Software
++##  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
++##  USA.
++##
++
++import sys, os.path, subprocess
++import pygame
++from pyvnc2swf.image import create_image_from_string_argb
++from pyvnc2swf.movie import SWFInfo, MovieContainer
++from pyvnc2swf.output import SWFScreen, MovieOutputStream, MovieBuilder
++lowerbound = max
++upperbound = min
++stderr = sys.stderr
++
++
++##  PygameMoviePlayer
++##
++class PygameMoviePlayer(MovieOutputStream):
++
++  """
++  A simple movie player using Pygame.
++  """
++
++  font_size = 24
++
++  def __init__(self, movie, debug=0):
++    MovieOutputStream.__init__(self, movie.info, debug)
++    self.builder = MovieBuilder(movie, self, debug)
++    self.movie = movie
++    return
++
++  # MovieOuputStream methods
++  
++  def open(self):
++    MovieOutputStream.open(self)
++    # open window
++    (x,y,w,h) = self.info.clipping
++    self.imagesize = ( int(w*(self.info.scaling or 1)), int(h*(self.info.scaling or 1)) )
++    self.screen = SWFScreen(x, y, w, h)
++    (self.winwidth, self.winheight) = self.imagesize
++    self.font = pygame.font.SysFont(pygame.font.get_default_font(), self.font_size)
++    (fw1,fh1) = self.font.size('00000  ')
++    (fw2,fh2) = self.font.size('[>]  ')
++    self.panel_x0 = 0
++    self.panel_x1 = fw1
++    self.panel_x2 = fw1+fw2
++    self.panel_y0 = self.winheight
++    self.panel_y1 = self.winheight + fh1/2
++    self.panel_h = fh1
++    self.panel_w = lowerbound(64, self.winwidth-fw1-fw2-4)
++    self.slide_h = fh1/2
++    self.slide_w = 8
++    self.actualwidth = self.panel_w+fw1+fw2+4
++    pygame.display.set_caption(self.info.filename, self.info.filename)
++    self.window = pygame.display.set_mode((self.actualwidth, self.winheight+self.panel_h))
++    self.cursor_image = None
++    self.cursor_pos = None
++    self.playing = True
++    self.mp3_out = self.mp3_dec = None
++    #import pymedia
++    #self.mp3_out = subprocess.Popen(['mpg123','-q','-'], stdin=subprocess.PIPE)
++    #self.mp3_dec = pymedia.audio.acodec.Decoder('mp3')
++    #self.mp3_out = pymedia.audio.sound.Output(44100,2,pymedia.audio.sound.AFMT_S16_LE)
++    return
++
++  def paint_frame(self, (images, othertags, cursor_info)):
++    for ((x0,y0), (w,h,data)) in images:
++      self.screen.paint_image(x0, y0, w, h, data)
++    if cursor_info:
++      (cursor_image, cursor_pos) = cursor_info
++      if cursor_image:
++        (w, h, dx, dy, data) = cursor_image
++        self.cursor_offset = (dx, dy)
++        self.cursor_image = create_image_from_string_argb(w, h, data)
++      if cursor_pos:
++        self.cursor_pos = cursor_pos
++    return
++
++  def preserve_frame(self):
++    img = pygame.Surface(self.screen.buf.get_size())
++    img.blit(self.screen.buf, (0,0))
++    return img
++
++  def recover_frame(self, img):
++    self.screen.buf.blit(img, (0,0))
++    return
++
++  # additional methods
++
++  def show_status(self):
++    f = self.current_frame
++    n = self.movie.nframes
++    s = '%05d' % f
++    self.window.fill((0,0,0), (0, self.panel_y0, self.actualwidth, self.panel_h))
++    self.window.blit(self.font.render(s, 0, (255,255,255)), (0, self.panel_y0))
++    if self.playing:
++      self.window.blit(self.font.render('[>]', 0, (0,255,0)), (self.panel_x1, self.panel_y0))
++    else:
++      self.window.blit(self.font.render('[||]', 0, (255,0,0)), (self.panel_x1, self.panel_y0))
++    self.window.fill((255,255,255), (self.panel_x2, self.panel_y1, self.panel_w, 1))
++    x = self.panel_x2 + self.panel_w*f/n - self.slide_w/2
++    y = self.panel_y1 - self.slide_h/2
++    self.window.fill((255,255,255), (x, y, self.slide_w, self.slide_h))
++    return
++
++  def update(self):
++    surface = self.screen.buf
++    if self.info.scaling:
++      # rotozoom is still very unstable... it sometime causes segfault :(
++      # in case it doesn't work, use scale instead.
++      #   surface = pygame.transform.scale(surface, self.imagesize)
++      #   surface.set_alpha()
++      surface = pygame.transform.rotozoom(surface, 0, self.info.scaling)
++    self.window.blit(surface, (0,0))
++    if self.cursor_image and self.cursor_pos:
++      (x, y) = self.cursor_pos
++      (dx, dy) = self.cursor_offset
++      self.window.blit(self.cursor_image, (x-dx, y-dy))
++    self.show_status()
++    pygame.display.update()
++    if self.mp3_out and self.info.mp3:
++      t = (self.current_frame+1) / self.info.framerate
++      (nsamples, seeksamples, mp3frames) = self.info.mp3.get_frames_until(t)
++      r = self.mp3_dec.decode(''.join(mp3frames))
++      self.mp3_out.play(r.data)
++    return
++
++  def toggle_playing(self):
++    self.playing = not self.playing
++    if self.playing and self.movie.nframes-1 <= self.current_frame:
++      self.current_frame = 0
++    return
++
++  def seek(self, goal):
++    self.current_frame = upperbound(lowerbound(goal, 0), self.movie.nframes-1)
++    self.builder.seek(self.current_frame)
++    self.playing = False
++    self.update()
++    return
++
++  def play(self):
++    drag = False
++    loop = True
++    ticks0 = 0
++    self.current_frame = 0
++    self.builder.start()
++    while loop:
++      if self.playing:
++        events = pygame.event.get()
++      else:
++        events = [pygame.event.wait()]
++      for e in events:
++        if e.type in (pygame.MOUSEBUTTONDOWN, pygame.MOUSEMOTION):
++          (x,y) = e.pos
++          if (e.type == pygame.MOUSEBUTTONDOWN and y < self.panel_y0):
++            # the screen clicked
++            self.toggle_playing()
++          elif (self.panel_y0 < y and (e.type == pygame.MOUSEBUTTONDOWN or drag)):
++            # slide bar dragging
++            drag = True
++            (x,y) = e.pos
++            self.seek((x-self.panel_x2)*self.movie.nframes/self.panel_w)
++        elif e.type == pygame.MOUSEBUTTONUP:
++          drag = False
++        elif e.type == pygame.KEYDOWN:
++          if e.key in (13, 32): # space or enter
++            self.toggle_playing()
++          elif e.key in (113, 27): # 'q'uit, esc
++            loop = False
++          elif e.key in (115, 83): # 's'napshot
++            (root, ext) = os.path.splitext(self.info.filename)
++            fname = '%s-%05d.bmp' % (root, self.current_frame)
++            pygame.image.save(self.screen.buf, fname)
++            print >>stderr, 'Save:', fname
++          elif e.key == 275: # right
++            self.current_frame += 1
++            self.seek(self.current_frame)
++          elif e.key == 276: # left
++            self.current_frame -= 1
++            self.seek(self.current_frame)
++          else:
++            print >>stderr, 'Unknown key:', e
++        elif e.type == pygame.QUIT:
++          # window close attmpt
++          loop = False
++      if self.playing:
++        self.builder.seek(self.current_frame)
++        if self.movie.nframes-1 <= self.current_frame:
++          # reach the end.
++          self.playing = False
++        else:
++          self.current_frame += 1
++          ticks1 = pygame.time.get_ticks()
++          d = lowerbound(int(1000.0/self.info.framerate), ticks0-ticks1)
++          ticks0 = ticks1
++          pygame.time.wait(d)
++        self.update()
++      # loop end
++    self.builder.finish()
++    self.close()
++    return
++  
++
++# play
++def play(moviefiles, info, debug=0):
++  movie = MovieContainer(info)
++  for fname in moviefiles:
++    if fname.endswith('.swf'):
++      # vnc2swf file
++      movie.parse_vnc2swf(fname, True, debug=debug)
++    elif fname.endswith('.flv'):
++      # flv file
++      movie.parse_flv(fname, True, debug=debug)
++    elif fname.endswith('.vnc'):
++      # vncrec file
++      movie.parse_vncrec(fname, debug=debug)
++    else:
++      raise ValueError('unsupported format: %r' % fname)
++    info.filename = os.path.basename(fname)
++  PygameMoviePlayer(movie, debug=debug).play()
++  return
++
++# main
++def main(argv):
++  import getopt, re
++  def usage():
++    print 'usage: %s [-d] [-r framerate] [-C WxH+X+Y] [-s scaling] file1 file2 ...' % argv[0]
++    return 100
++  try:
++    (opts, args) = getopt.getopt(argv[1:], 'dr:C:s:')
++  except getopt.GetoptError:
++    return usage()
++  #
++  debug = 0
++  info = SWFInfo()
++  for (k, v) in opts:
++    if k == '-d':
++      debug += 1
++    elif k == '-r':
++      info.set_framerate(float(v))
++    elif k == '-C':
++      m = re.match(r'^(\d+)x(\d+)\+(\d+)\+(\d+)$', v)
++      if not m:
++        print >>stderr, 'Invalid clipping specification:', v
++        return usage()
++      x = map(int, m.groups())
++      info.clipping = (x[2],x[3], x[0],x[1])
++    elif k == '-s':
++      info.scaling = float(v)
++  if not args:
++    print >>stderr, 'Specify at least one input movie.'
++    return usage()
++  return play(args, info, debug=debug)
++
++if __name__ == "__main__": sys.exit(main(sys.argv))
+diff -Naur pyvnc2swf-0.9.5.old/bin/recordwin pyvnc2swf-0.9.5/bin/recordwin
+--- pyvnc2swf-0.9.5.old/bin/recordwin	1969-12-31 18:00:00.000000000 -0600
++++ pyvnc2swf-0.9.5/bin/recordwin	2008-11-15 20:39:40.000000000 -0600
+@@ -0,0 +1,60 @@
++#!/bin/sh
++##
++##  recordwin.sh
++##  $Id: recordwin.sh,v 1.3 2008/11/16 02:39:40 euske Exp $
++##
++##  Quick recording script for UNIX.
++##
++##  usage:
++##     recordwin.sh [-display disp] [-name winname] [-id winid] output.swf
++##
++##  Requires: x11vnc, xwininfo, awk
++##
++
++PYTHON=python
++VNC2SWF=pyvnc2swf/vnc2swf.py
++X11VNC=x11vnc
++XWININFO=xwininfo
++AWK=awk
++
++usage() {
++    echo "usage: $0 [-all] [-display display] [-name windowname] [-id windowid] [-type filetype] outfile"
++    exit 100
++}
++
++vncopts=
++xwopts=
++desktop=
++display="$DISPLAY"
++while [ $# -gt 1 ]; do
++    case "$1" in
++	-all|-a) desktop=1;;
++	-name) shift; xwopts="$xwopts -name $1";;
++	-id) shift; xwopts="$xwopts -id $1";;
++	-display|-d) shift; display="$1"; xwopts="$xwopts -display $1";;
++	-type|-t) shift; vncopts="$vncopts -t $1";;
++	-*) usage;;
++    esac
++    shift
++done
++
++if [ $# -lt 1 ]; then usage; fi
++
++outfile="$1"
++if [ "X$desktop" = "X" ]; then
++  info=`$XWININFO $xwopts 2>/dev/null`
++  if [ "X$info" = "X" ]; then
++    echo "Window $xwopts not found!"
++    exit 2
++  fi
++  geometry="-C `echo "$info" |
++               $AWK '/Absolute upper-left X:/{x=$4}
++                     /Absolute upper-left Y:/{y=$4}
++                     /Width:/{w=$2} /Height:/{h=$2}
++                     END {printf "%dx%d+%d+%d",w,h,x,y}' `"
++  echo $geometry
++fi
++
++# launch x11vnc and vnc2swf
++$X11VNC -quiet -bg -nopw -display "$display" -viewonly -localhost -cursor -wait 10 -defer 10 &&
++  $PYTHON $VNC2SWF -n $vncopts -o "$outfile" $geometry
+diff -Naur pyvnc2swf-0.9.5.old/bin/recordwin.sh pyvnc2swf-0.9.5/bin/recordwin.sh
+--- pyvnc2swf-0.9.5.old/bin/recordwin.sh	2008-12-18 06:06:38.000000000 -0600
++++ pyvnc2swf-0.9.5/bin/recordwin.sh	1969-12-31 18:00:00.000000000 -0600
+@@ -1,60 +0,0 @@
+-#!/bin/sh
+-##
+-##  recordwin.sh
+-##  $Id: recordwin.sh,v 1.3 2008/11/16 02:39:40 euske Exp $
+-##
+-##  Quick recording script for UNIX.
+-##
+-##  usage:
+-##     recordwin.sh [-display disp] [-name winname] [-id winid] output.swf
+-##
+-##  Requires: x11vnc, xwininfo, awk
+-##
+-
+-PYTHON=python
+-VNC2SWF=pyvnc2swf/vnc2swf.py
+-X11VNC=x11vnc
+-XWININFO=xwininfo
+-AWK=awk
+-
+-usage() {
+-    echo "usage: $0 [-all] [-display display] [-name windowname] [-id windowid] [-type filetype] outfile"
+-    exit 100
+-}
+-
+-vncopts=
+-xwopts=
+-desktop=
+-display="$DISPLAY"
+-while [ $# -gt 1 ]; do
+-    case "$1" in
+-	-all|-a) desktop=1;;
+-	-name) shift; xwopts="$xwopts -name $1";;
+-	-id) shift; xwopts="$xwopts -id $1";;
+-	-display|-d) shift; display="$1"; xwopts="$xwopts -display $1";;
+-	-type|-t) shift; vncopts="$vncopts -t $1";;
+-	-*) usage;;
+-    esac
+-    shift
+-done
+-
+-if [ $# -lt 1 ]; then usage; fi
+-
+-outfile="$1"
+-if [ "X$desktop" = "X" ]; then
+-  info=`$XWININFO $xwopts 2>/dev/null`
+-  if [ "X$info" = "X" ]; then
+-    echo "Window $xwopts not found!"
+-    exit 2
+-  fi
+-  geometry="-C `echo "$info" |
+-               $AWK '/Absolute upper-left X:/{x=$4}
+-                     /Absolute upper-left Y:/{y=$4}
+-                     /Width:/{w=$2} /Height:/{h=$2}
+-                     END {printf "%dx%d+%d+%d",w,h,x,y}' `"
+-  echo $geometry
+-fi
+-
+-# launch x11vnc and vnc2swf
+-$X11VNC -quiet -bg -nopw -display "$display" -viewonly -localhost -cursor -wait 10 -defer 10 &&
+-  $PYTHON $VNC2SWF -n $vncopts -o "$outfile" $geometry
