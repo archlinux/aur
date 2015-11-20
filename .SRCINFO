@@ -1,16 +1,14 @@
 pkgbase = ncmpy-git
-	pkgdesc = A [Python + Curses]-based MPD client.
-	pkgver = 20110908
+	pkgdesc = A curses-based MPD client written in Python.
+	pkgver = 20151120
 	pkgrel = 1
-	url = http://ncmpy.cykerway.com/
-	arch = any
+	url = http://www.cykerway.com/projects/ncmpy
+	arch = i686
+	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = python2
-	depends = python2-httplib2
 	depends = python2-mpd
-	depends = python-lxml
-	depends = pyosd
 	provides = ncmpy
 	conflicts = ncmpy
 
