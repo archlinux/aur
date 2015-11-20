@@ -6,7 +6,7 @@
 
 pkgname=teamviewer-beta
 pkgver=11.0.51386
-pkgrel=1
+pkgrel=2
 pkgdesc='All-In-One Software for Remote Support and Online Meetings - beta version'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com'
@@ -18,6 +18,7 @@ depends_x86_64=('lib32-gcc-libs'
 	'lib32-alsa-lib'
 	'lib32-freetype2'
 	'lib32-libice'
+	'lib32-libpng12'
 	'lib32-libsm'
 	'lib32-libxdamage'
 	'lib32-libxinerama'
@@ -28,6 +29,7 @@ depends_i686=('gcc-libs'
 	'alsa-lib'
 	'freetype2'
 	'libice'
+	'libpng12'
 	'libsm'
 	'libxdamage'
 	'libxinerama'
