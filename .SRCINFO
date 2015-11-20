@@ -1,7 +1,7 @@
 pkgbase = feedreader
 	pkgdesc = A simple feedreader client for web services like Tiny Tiny RSS and in the future others.
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/feedreader
 	install = feedreader.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = feedreader
 	source = https://launchpad.net/feedreader/1.4/1.4.1/+download/FeedReader-1.4.1.tar.gz
 	source = patched_tmp_folder.patch
 	sha256sums = 1a0fcaf3d6bbd6bc75e3ef85e2d00e63ad85b150c566212de3b8f58decd0cfeb
-	sha256sums = 0050efaec8b31125b7e69a1e9490929982a891d032d3256705a28968eb835ccd
+	sha256sums = f00d16f3e0ed85171972c8c87fe8aec9058eb85273fd1523a50e40ead2f9cf17
 
 pkgname = feedreader
 
