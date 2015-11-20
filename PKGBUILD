@@ -2,7 +2,7 @@
 
 pkgname=packetbeat-bin
 _pkgbase=${pkgname%%-bin}
-pkgver=1.0.0_rc1
+pkgver=1.0.0_rc2
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch (precompiled)'
@@ -19,8 +19,8 @@ sha256sums=('09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64')
 
 source_i686=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$_pkgver-i686.tar.gz")
 source_x86_64=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$_pkgver-x86_64.tar.gz")
-sha256sums_i686=('662edb993b1fd92628db887778941068bcdada523acf699b4bdb2f5c0aa10772')
-sha256sums_x86_64=('5c39fd96b33ab467152ef0d466ede9e6602687ea9a788df9e1023100c23dd6d3')
+sha256sums_i686=('56ee0e3c7d2578a6c8ed28c4b532bbf91de941b412e7958e2bec60c94f1879ba')
+sha256sums_x86_64=('cd4ea633c411e8d6394587ebd7d0fd9a0cbdac0bafb65d068cbde06604d10a32')
 
 package() {
     cd "$srcdir/$_pkgbase-$_pkgver-$CARCH"
