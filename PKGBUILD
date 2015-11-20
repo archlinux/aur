@@ -10,12 +10,12 @@ url='http://dogecoin.com/'
 makedepends=('boost' 'automoc4' 'protobuf')
 conflicts=('dogecoin-qt') # /usr/bin/dogecoind exists in filesystem
 license=('MIT')
-_git_base_url=github.com/$pkg_base/$pkg_base/
+_git_base_url=github.com/$pkg_base/$pkg_base
 source=(
     https://$_git_base_url/archive/$_git_branch.tar.gz
-    https://raw.$_git_base_url$_git_branch/contrib/debian/examples/$pkg_base.conf
-    https://raw.$_git_base_url$_git_branch/contrib/debian/manpages/$pkg_base'd.1'
-    https://raw.$_git_base_url$_git_branch/contrib/debian/manpages/$pkg_base.conf.5
+    https://raw.$_git_base_url/$_git_branch/contrib/debian/examples/$pkg_base.conf
+    https://raw.$_git_base_url/$_git_branch/contrib/debian/manpages/$pkg_base'd.1'
+    https://raw.$_git_base_url/$_git_branch/contrib/debian/manpages/$pkg_base.conf.5
 )
 sha256sums=(
     '8dc2125a5e36fd20b471ab63a8db837566528b3a23079fdc24da8573d7d98d1a'
