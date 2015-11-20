@@ -1,0 +1,18 @@
+pkgbase = qwtpolar-qt5
+	pkgdesc = A Qwt library that contains classes for displaying values on a polar coordinate system.
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = http://qwtpolar.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom:Qwt License, Version 1.0
+	depends = qwt-qt5
+	provides = qwtpolar
+	conflicts = qwtpolar
+	conflicts = qwtpolar-svn
+	conflicts = qwtpolar-svn-qt4
+	source = http://sourceforge.net/projects/qwtpolar/files/qwtpolar/1.1.1/qwtpolar-1.1.1.tar.bz2
+	md5sums = 0f549b51a06fa0f0f43b12f3269fe206
+
+pkgname = qwtpolar-qt5
+
