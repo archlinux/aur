@@ -1,7 +1,7 @@
 pkgbase = perl6-terminal-ansicolor
 	pkgdesc = Colorize terminal output
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tadzik/Terminal-ANSIColor
 	arch = any
 	groups = perl6

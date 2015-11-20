@@ -2,7 +2,7 @@
 
 pkgname=perl6-terminal-ansicolor
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Colorize terminal output"
 arch=('any')
 depends=('rakudo')
@@ -18,7 +18,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
-  prove -r -e perl6
+  PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
