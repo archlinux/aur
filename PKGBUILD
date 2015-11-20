@@ -15,7 +15,7 @@ license=('GPL')
 depends=("gtk3" "gprbuild" "prepare_gnat_util")
 makedepends=("gcc-ada")
 
-source=(http://mirrors.cdn.adacore.com/art/db00d9243e8d34c0da0a583c22903272f2d28135
+source=(http://mirrors.cdn.adacore.com/art/564b3f85c8e196b040fbfaff
         patch-Makefile.in
         patch-projects-Makefile.in)
 
