@@ -1,6 +1,6 @@
 pkgbase = snowflake-client
 	pkgdesc = Snowflake Database command line and JDBC client
-	pkgver = 2.7.9
+	pkgver = 2.7.24
 	pkgrel = 1
 	url = http://www.snowflake.net/
 	arch = i686
