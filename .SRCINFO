@@ -1,19 +1,19 @@
 pkgbase = calculix-doc
 	pkgdesc = CalculiX: 3D finite element solver and post-processor (documentation and examples)
-	pkgver = 2.8
-	pkgrel = 2
+	pkgver = 2.9
+	pkgrel = 1
 	url = http://www.calculix.de/
 	arch = any
 	license = GPL2
 	depends = calculix
 	options = docs
 	options = !strip
-	source = http://www.dhondt.de/ccx_2.8.htm.tar.bz2
-	source = http://www.dhondt.de/cgx_2.8.htm.tar.bz2
-	source = http://www.dhondt.de/cgx_2.8.exa.tar.bz2
-	sha256sums = 89559fdfe0ca46da4a61669dd4a4e19b992275a8be84d58d729f4dab7d3a03dd
-	sha256sums = de9da52f427c8cb2e9635c1a6f7e09a59bf2d4802b7a64fa1e4c197e8b75db59
-	sha256sums = f5c51bef56682bf78f6f86275a125acc4e7124875fc53871549d335bd6612a8d
+	source = http://www.dhondt.de/ccx_2.9.htm.tar.bz2
+	source = http://www.dhondt.de/cgx_2.9.htm.tar.bz2
+	source = http://www.dhondt.de/cgx_2.9.exa.tar.bz2
+	sha256sums = 2313229b854e2558524d521ff586df05947416f0ee31a6b15edc59334e65178d
+	sha256sums = f8f4585275902f99e785be3d7beb4b4eaeecea3ab2c4456114a5a715c9fec032
+	sha256sums = 7553005a384faadb702c3fc186fc48b26559ba1a52ecd662579990167514f6ec
 
 pkgname = calculix-doc
 
