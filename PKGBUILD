@@ -1,9 +1,10 @@
 # Maintainer: kumpelblase2
 pkgname=nanobox-bin
 pkgver=0.16.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Local Development Done Right'
 arch=('x86_64')
+provides='nanobox'
 url='https://desktop.nanobox.io/'
 license=('custom:MPL2')
 depends=('virtualbox' 'vagrant')
