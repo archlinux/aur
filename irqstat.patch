@@ -1,0 +1,9 @@
+diff -Naupr irqstat.orig/irqstat irqstat/irqstat
+--- irqstat.orig/irqstat	2015-11-20 11:22:45.179194457 +0600
++++ irqstat/irqstat	2015-11-20 11:23:58.476078572 +0600
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ # The MIT License (MIT)
+ #

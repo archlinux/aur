@@ -1,0 +1,48 @@
+diff -Naupr irq-tune.orig/irq-eth.json.sample irq-tune/irq-eth.json.sample
+--- irq-tune.orig/irq-eth.json.sample	1970-01-01 07:00:00.000000000 +0700
++++ irq-tune/irq-eth.json.sample	2015-11-20 11:27:04.373296735 +0600
+@@ -0,0 +1,13 @@
++## Can be executed '-a -j irq-eth.json'
++[
++  { "cores": [0], "name": "eth0-0" },
++  { "cores": [1], "name": "eth0-txrx-1" },
++  { "cores": [2], "name": "eth0-txrx-2" },
++  { "cores": [3], "name": "eth0-txrx-3" },
++  { "cores": [4], "name": "eth0-txrx-4" },
++  { "cores": [0], "name": "eth1-0" },
++  { "cores": [1], "name": "eth1-txrx-1" },
++  { "cores": [2], "name": "eth1-txrx-2" },
++  { "cores": [3], "name": "eth1-txrx-3" },
++  { "cores": [4], "name": "eth1-txrx-4" }
++]
+diff -Naupr irq-tune.orig/irq-tune.py irq-tune/irq-tune.py
+--- irq-tune.orig/irq-tune.py	2015-11-20 11:22:45.152527711 +0600
++++ irq-tune/irq-tune.py	2015-11-20 11:25:10.592959185 +0600
+@@ -1,4 +1,4 @@
+-#!/bin/python
++#!/usr/bin/python2
+ # vim: set expandtab ts=4 sw=4:
+ 
+ # irq-tune
+@@ -109,7 +109,6 @@ def main():
+         parse.error("The file: " + options.jsonfile + "does not exist.")
+ 
+ 
+-    #json_data = open("irq.json").read()
+     json_data = open(options.jsonfile).read()
+     irqdict = json.loads(json_data)
+ 
+@@ -120,13 +119,3 @@ def main():
+ 
+ if __name__ == "__main__":
+     main()
+-
+-# Some debugging junk
+-#
+-#  ddpprint.pprint(irqdict,width=120)
+-#  bmask = total_mask(cpulist,"binary")
+-#  hmask1 = total_mask(cpulist,"hex")
+-#  hmask2 = total_mask(irqlist[0]['cores'],"hex")
+-#  hreal = total_mask([36],"hex")
+-#  print hmask2
+-#  print hreal

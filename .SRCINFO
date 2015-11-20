@@ -1,0 +1,27 @@
+pkgbase = irq-tools
+	pkgdesc = irq-tune for set smp affinity and irqstat for better watch /proc/interrupts, designet for NUMA systems
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/k0ste/irq-tools
+	install = irq-tools.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = patch
+	depends = python2
+	depends = numactl
+	source = irq-tune::git+https://github.com/hep-gc/irq-tune
+	source = irqstat::git+https://github.com/lanceshelton/irqstat
+	source = irq-tune.patch
+	source = irqstat.patch
+	source = irqtune.service
+	source = irqtune-auto.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = b83afbfc604d7195cf75b25f0bf74eb3bb7a8e545736ccda589283e74b291dea
+	sha256sums = 7cc83179add66cf0bd4a012dcd5cf908944359f0b2b76a9d0fdb08cb3d3a2131
+	sha256sums = 3a7575d6ec501b44878cce38d95effd99dfa8d43a8706abfffbed43a16905321
+	sha256sums = 6121ebabc8c6b965fded2944c4ddce2bff79d78eb3661b7260f065a99c3b9725
+
+pkgname = irq-tools
+

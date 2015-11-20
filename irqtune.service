@@ -1,0 +1,13 @@
+[Unit]
+Description=Set IRQ via irq-tune
+After=network.target
+Wants=network.target
+Conflicts=irqtune-auto.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/irq-tune -j /etc/irq-tune/irq.json
+
+[Install]
+WantedBy=network.target

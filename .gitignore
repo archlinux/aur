@@ -1,0 +1,6 @@
+pkg/*
+src/*
+irq-tune/*
+irqstat/*
+*.deb
+*.tar.*
