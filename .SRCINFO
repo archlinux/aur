@@ -8,6 +8,7 @@ pkgbase = godot-git
 	license = MIT
 	makedepends = git
 	makedepends = scons
+	makedepends = pkg-config
 	depends = glu
 	depends = libxcursor
 	depends = alsa-lib
