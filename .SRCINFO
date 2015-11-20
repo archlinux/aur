@@ -1,7 +1,7 @@
 pkgbase = strongswan
 	pkgdesc = open source IPsec implementation
 	pkgver = 5.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.strongswan.org
 	arch = i686
 	arch = x86_64
@@ -82,7 +82,9 @@ pkgbase = strongswan
 	backup = etc/strongswan.d/charon/xcbc.conf
 	backup = etc/strongswan.d/charon/chapoly.conf
 	source = https://download.strongswan.org/strongswan-5.3.4.tar.bz2
+	source = sigfix.patch
 	sha256sums = 938ad1f7b612e039f1d32333f4865160be70f9fb3c207a31127d0168116459aa
+	sha256sums = 9f12c48bd4a82802107c0d171468e7e6a8a9d303df7838433b398add7d2cd25e
 
 pkgname = strongswan
 

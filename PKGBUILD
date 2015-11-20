@@ -10,7 +10,7 @@
 
 pkgname=strongswan
 pkgver=5.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
@@ -33,15 +33,22 @@ revocation.conf,sha1.conf,sha2.conf,socket-default.conf,sql.conf,sqlite.conf,ssh
 vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,chapoly.conf}
 )
 
-source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2")
+source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
+	"sigfix.patch")
 
 # md5 is broken. We use sha256 now. Alternatively, we could check the signature of the file, but that
 # doesn't yield any more security and just increases the work users initially have to invest.
-sha256sums=('938ad1f7b612e039f1d32333f4865160be70f9fb3c207a31127d0168116459aa')
+sha256sums=('938ad1f7b612e039f1d32333f4865160be70f9fb3c207a31127d0168116459aa'
+            '9f12c48bd4a82802107c0d171468e7e6a8a9d303df7838433b398add7d2cd25e')
 
 # We don't build libipsec because it would get loaded before kernel-netlink and netkey, which
 # would case processing to be handled in user space. Also, the plugin is experimental. If you need it,
 # add --enable-libipsec and --enable-kernel-libipsec
+
+prepare() {
+	cd ${srcdir}/${pkgname}-${pkgver}
+	patch -p1 < ${srcdir}/sigfix.patch
+}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
