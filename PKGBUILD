@@ -34,7 +34,7 @@ optdepends=('ffmpeg: for WebGL exporting'
 conflicts=('unity3d')
 replaces=('unity3d')
 install="${pkgname}.install"
-source=("http://download.unity3d.com/download_unity/unity-editor-installer-${pkgver}.sh"
+source=("http://files.unity3d.com/levi/unity-editor-installer-5.2.2f1+20151018.sh"
         'EULA'
         'unity-editor'
         'monodevelop-unity')
