@@ -3,7 +3,6 @@ pkgbase = idris
 	pkgver = 0.9.20.1
 	pkgrel = 1
 	url = http://www.idris-lang.org/
-	install = idris.install
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
