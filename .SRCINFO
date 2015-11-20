@@ -1,7 +1,7 @@
 pkgbase = perl6-digest-xxhash
 	pkgdesc = Perl 6 bindings for xxHash
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/atweiden/digest-xxhash
 	arch = any
 	groups = perl6

@@ -2,7 +2,7 @@
 
 pkgname=perl6-digest-xxhash
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl 6 bindings for xxHash"
 arch=('any')
 depends=('libxxhash' 'rakudo')
@@ -18,7 +18,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
-  prove -r -e perl6
+  PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
