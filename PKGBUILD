@@ -10,7 +10,7 @@ pkgbase=linux-mainline               # Build stock -ARCH kernel
 _srcname=linux-4.3
 _patchname=patch-4.4-rc1
 pkgver=4.4rc1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -47,7 +47,7 @@ prepare() {
   # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add mainline patch
-  patch -p1 -i "${srcdir}/${_patchname}" | true
+  patch -p1 -i "${srcdir}/${_patchname}" || true
 
   # libcfs fix
   patch -p1 -i "${srcdir}/libcfs-fix.patch"
