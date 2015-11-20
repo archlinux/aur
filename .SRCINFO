@@ -1,6 +1,6 @@
 pkgbase = flannel
 	pkgdesc = Etcd backed network fabric for containers
-	pkgver = 0.5.2
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/coreos/flannel
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = flannel
 	license = APACHE
 	makedepends = go
 	depends = glibc
-	source = https://github.com/coreos/flannel/archive/v0.5.2.tar.gz
+	source = https://github.com/coreos/flannel/archive/v0.5.5.tar.gz
 	source = flannel.service
-	sha256sums = 787873235aba22f2c4f2d5f667a92393ed0cd9e67f20e21ff679908ea09c2265
+	sha256sums = dbbcb08c0e70713b0c920387a9967e5b30ef833c8118c847edbbca4f68ff0562
 	sha256sums = 3ec927a5a545293541e800057c3c0b85fcd5161071526a8fc9666caa0801c80f
 
 pkgname = flannel
