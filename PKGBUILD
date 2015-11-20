@@ -17,8 +17,7 @@ makedepends=(gprbuild)
 provides=($_pkgname ada-web-server)
 conflicts=($_pkgname ada-web-server)
 
-#source=(http://downloads.dragonlace.net/src/$_pkgname-$pkgver.tar.bz2)
-source=(http://mirrors.cdn.adacore.com/art/fe47e20355c57bba144256718c13cfa3aa4ce189)
+source=(http://mirrors.cdn.adacore.com/art/564b3e7cc8e196b040fbde39)
 
 sha256sums=('9efcc9f6f07c26d29b112a01aff8c2309d9f8342431d94a7135c6759d63f6500')
 
