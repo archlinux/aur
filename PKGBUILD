@@ -2,18 +2,17 @@
 
 pkgname=python-jira
 pkgdesc="Python library for interacting with JIRA via REST APIs."
-pkgver=0.50
+pkgver=1.0.3
 pkgrel=1
 url="https://pypi.python.org/pypi/jira"
 license=('GPL')
 arch=('any')
 depends=('python') 
-source="https://pypi.python.org/packages/source/j/jira/jira-0.50.tar.gz"
-md5sums=('23abea2446beb4161ce50bab13654319')
+makedepends=('python-pip')
+source="https://pypi.python.org/packages/2.7/j/jira/jira-1.0.3-py2.py3-none-any.whl"
+md5sums=('a4eb7a250cd8fc2adb00e2245a68a528')
 
 package(){
-	tar -zxvf jira-${pkgver}.tar.gz
-	cd jira-${pkgver}
-	python setup.py install --root="${pkgdir}" --optimize=1
+	pip install --no-deps --target $pkgdir/usr/lib/python2.7/site-packages jira-1.0.3-py2.py3-none-any.whl
 }
 
