@@ -1,12 +1,11 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=java8-openjdk-hsdis
 _java_ver=8
-_jdk_update=65
+_jdk_update=66
 _jdk_build=17
 _binutils_ver=2.25.1
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
-_binutils_commit=2bd25930
 pkgrel=1
 pkgdesc="Disassembler for HotSpot"
 arch=('i686' 'x86_64')
@@ -15,7 +14,7 @@ license=('GPL2')
 _url_src=http://hg.openjdk.java.net/jdk8u/jdk8u
 source=(hotspot-${_repo_ver}.tar.gz::${_url_src}/hotspot/archive/${_repo_ver}.tar.gz
         http://ftp.gnu.org/gnu/binutils/binutils-${_binutils_ver}.tar.bz2)
-sha256sums=('7ef89c932bb829d3a69ff827493254657cdc98724f3a16956027922b3604e82e'
+sha256sums=('f552ab7216d233296f64cb2551f43090b4ff1c0383bec365c910a913e25e61bb'
             'b5b14added7d78a8d1ca70b5cb75fef57ce2197264f4f5835326b0df22ac9f22')
 
 prepare() {
