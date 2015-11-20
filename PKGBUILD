@@ -3,16 +3,17 @@
 _name=meld
 pkgname=$_name-dev
 pkgver=3.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Visual diff and merge tool'
 arch=('any')
 url='http://meldmerge.org/'
 license=('GPL')
 depends=('python2'
         'gtk3>=3.6'
-		'glib2>=2.34'
-		'pygobject-devel>=3.6'
-		'gtksourceview3>=3.6')
+	'glib2>=2.34'
+	'python2-gobject>=3.6'
+	'pygobject-devel>=3.6'
+	'gtksourceview3>=3.6')
 makedepends=('intltool' 'gnome-doc-utils' 'git' 'itstool')
 optdepends=('python2-dbus: open a new tab in an already running instance'
             'python2-gconf: gnome integration')
