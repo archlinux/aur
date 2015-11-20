@@ -1,5 +1,5 @@
 pkgbase = heirloom-cvs
-	pkgdesc = The Heirloom Toolchest of standard UNIX utilities, derived from original UNIX tools
+	pkgdesc = The Heirloom Toolchest of standard UNIX utilities, derived from original UNIX tools.
 	pkgver = 2014.07.15
 	pkgrel = 1
 	url = http://heirloom.sourceforge.net/tools.html

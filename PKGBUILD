@@ -5,7 +5,7 @@ pkgname=heirloom-cvs
 pkgver=2014.07.15
 pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc="The Heirloom Toolchest of standard UNIX utilities, derived from original UNIX tools"
+pkgdesc="The Heirloom Toolchest of standard UNIX utilities, derived from original UNIX tools."
 url="http://heirloom.sourceforge.net/tools.html"
 license=('custom:"opensolaris"' 'custom:"lucent"')
 depends=('heirloom-sh-cvs' 'heirloom-devtools-cvs')
@@ -24,12 +24,16 @@ sha256sums=('fff4800193c75b065efd85d70c88e9b85ed40bddf9fe7a742b7c8a2727a75d44'
             '0116a8bb3c1e89c073c3dc7a4b3006c69978d80998c5e9d0ae8c5aa35fcd1dae'
             '9936108bf2e226ad99d66a213649eb35ea16ccee5e2594b84c328ba4eafa2ad2')
 
+_hmake() {
+  env PATH="/usr/heirloom/bin:$PATH" MAKEFLAGS="" make "$@"
+}
+
 prepare() {
   cvs -d:pserver:anonymous:@heirloom.cvs.sourceforge.net:/cvsroot/heirloom login
   cvs -d:pserver:anonymous:@heirloom.cvs.sourceforge.net:/cvsroot/heirloom co -P heirloom
   rm -rf $srcdir/build
   cp -ar $srcdir/heirloom $srcdir/build
-  cd $srcdir/build
+  cd "$srcdir/build"
   patch -p1 < ../000-config.diff
   patch -p1 < ../001-staticdep.diff
   patch -p1 < ../002-nowhat.diff
@@ -37,16 +41,15 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/build
-  env PATH="/usr/heirloom/bin:$PATH" LCUR="lncurses" make
+  cd "$srcdir/build"
+  make
 }
 
 package() {
-  cd $srcdir/build
-  env PATH="/usr/heirloom/bin:$PATH" LCUR="lncurses" make install ROOT="$pkgdir"
-  mkdir -p ${pkgdir}/usr/share/licenses/$pkgname/
-  cd $srcdir/heirloom/LICENSE
-  install -m0644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd "$srcdir/build"
+  make install ROOT="$pkgdir"
+  cd "$srcdir/heirloom/LICENSE"
+  install -Dm0644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   install -m0644 OPENSOLARIS.LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/OPENSOLARIS.LICENSE
   install -m0644 LUCENT ${pkgdir}/usr/share/licenses/${pkgname}/LUCENT
 }
