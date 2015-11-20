@@ -1,0 +1,19 @@
+pkgbase = python-mbed-tools
+	pkgdesc = Tool for managing reusable components for C/C++ by mbed
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/mbedmicro/mbed
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-pip
+	depends = python-colorama
+	depends = python-jinja
+	depends = python-intelhex
+	depends = python-prettytable
+	depends = python-pyserial
+	source = https://github.com/mbedmicro/mbed/archive/mbed_lib_rev108.tar.gz
+	sha512sums = 0498919f25f5099d62f6ce19687c1f78d4b33a327ffc2050bb0a68807ecd5f6bacc30c8ea095610e459d00190e934e3b4beb04758532bcfcbf688be8e179c4e0
+
+pkgname = python-mbed-tools
+
