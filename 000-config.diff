@@ -1,0 +1,54 @@
+diff -ru heirloom-pkgtools-070227.orig/mk.config heirloom-pkgtools-070227/mk.config
+--- heirloom-pkgtools-070227.orig/mk.config	2007-02-27 16:13:42.000000000 -0400
++++ heirloom-pkgtools-070227/mk.config	2010-12-16 20:24:15.273333340 -0430
+@@ -2,36 +2,36 @@
+ # Path to the Heirloom Bourne shell. It is used during compilation
+ # as well as by the package commands.
+ #
+-SHELL = /sbin/sh
++SHELL = $(BINDIR)/sh
+ 
+ #
+ # A BSD-compatible install command.
+ #
+-INSTALL=/usr/ucb/install
++INSTALL=$(BINDIR)/ucb/install
+ 
+ #
+ # Where the Heirloom Development Tools package has been placed.
+ # $(CCSDIR)/bin must also be in the PATH setting when building.
+ #
+-CCSDIR=/usr/ccs
++CCSDIR=$(PREFIX)
+ 
+ #
+ # Prefixes.
+ #
+-PREFIX=/usr
++PREFIX=/usr/heirloom
+ VAR=/var
+ 
+ #
+ # Where to place binaries. This must be the same place
+ # where the Heirloom Toolchest binaries are installed.
+ #
+-BINDIR=$(PREFIX)/5bin
++BINDIR=$(PREFIX)/bin
+ 
+ #
+ # Where to place superuser-only binaries. This may be
+ # the same place as the binary directory.
+ #
+-SBINDIR=$(PREFIX)/5bin
++SBINDIR=$(BINDIR)
+ 
+
+ #
+ # Where to place the database of installed packages.
+ #
+-VSADMDIR=$(VAR)/sadm
++VSADMDIR=$(VAR)/lib/sadm
+ 
+ 
+ #
+ # Binaries are stripped with this command after installation.

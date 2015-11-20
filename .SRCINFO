@@ -1,0 +1,20 @@
+pkgbase = heirloom-pkgtools-cvs
+	pkgdesc = The Heirloom Packaging Tools is a port of SVR4 application packaging utilities from OpenSolaris
+	pkgver = 111210
+	pkgrel = 4
+	url = http://heirloom.sourceforge.net/pkgtools.html
+	arch = i686
+	arch = x86_64
+	license = custom:CALDERA
+	license = custom:OPENSOLARIS
+	makedepends = cvs
+	depends = heirloom-sh-cvs
+	depends = heirloom-devtools-cvs
+	depends = heirloom-cvs
+	source = 000-config.diff
+	md5sums = 7ab977ec2bafe3b55fa9c56fe541e0d5
+	sha1sums = 2306f0f890c6cfcfba21a8ad0cc9d81872a1eb2d
+	sha256sums = c5dedd3c85b1d4cdee9d2c21a15b2bc042349da446e88c1a056881ce349674b7
+
+pkgname = heirloom-pkgtools-cvs
+
