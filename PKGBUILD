@@ -14,8 +14,8 @@ license=('GPL')
 depends=("gcc-ada" "xmlada" "gtkada" "gprbuild" "gnat_util" "python2" "python2-pep8" "python2-jedi" "python2-gobject" "gnatcoll")
 makedepends=("nawk")
 
-source=(http://mirrors.cdn.adacore.com/art/eabc020e818b1c6b8a6dc5ea3f665a479a49bb14
-        http://mirrors.cdn.adacore.com/art/8c386e54b4411aeb49e7786fa403f9caa28b6d91
+source=(http://mirrors.cdn.adacore.com/art/564b3dfac8e196b040fbcc14
+        http://mirrors.cdn.adacore.com/art/564b3e2ec8e196b040fbd140
         patch-Makefile.in
         patch-docs-Makefile.in
         patch-python_support_gtk.c)
