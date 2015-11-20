@@ -1,12 +1,12 @@
 pkgbase = liblogcpp
 	pkgdesc = A simple, but highly customizable and intuitive LGPL library for logging in C++.
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/gS644/liblogcpp
 	arch = x86_64
 	arch = i386
 	arch = arm6h
-	license = LGPL 2.1
+	license = LGPL2.1
 	makedepends = cmake
 	makedepends = git
 	source = git+https://github.com/gS644/liblogcpp.git
