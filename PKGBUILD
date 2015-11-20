@@ -2,7 +2,7 @@
 
 pkgname=ubus-lua-git
 _gitname=ubus
-pkgver=r210.f361bfa
+pkgver=r232.259450f
 pkgrel=1
 pkgdesc='An embedded bus system developed for OpenWrt. It is like dbus but simple and small.'
 url='http://nbd.name/gitweb.cgi?p=luci2/ubus.git'
@@ -12,7 +12,7 @@ depends=('libubox-lua-git' 'json-c' 'lua51')
 makedepends=('git' 'cmake' 'gcc' 'make' 'patch' 'pkg-config')
 conflicts=('ubus' 'ubus-git')
 provides=('ubus')
-source=('git://nbd.name/luci2/ubus.git' '001-lua-version.patch' '002-ubusd-location.patch')
+source=('git://git.openwrt.org/project/ubus.git' '001-lua-version.patch' '002-ubusd-location.patch')
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
