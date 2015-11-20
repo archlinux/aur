@@ -1,7 +1,7 @@
 pkgbase = fastqc
 	pkgdesc = A quality control tool for high throughput sequence data.
 	pkgver = 0.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bioinformatics.babraham.ac.uk/projects/fastqc
 	arch = any
 	license = GPL3
