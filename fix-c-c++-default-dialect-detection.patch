@@ -1,0 +1,39 @@
+From: Setze Post <cmake@sietze.uk>
+Date: Tue, 17 Nov 2015 16:59:05 +0000 (-0500)
+Subject: Make C and C++ default dialect detection robust to advanced optimizations
+X-Git-Url: https://cmake.org/gitweb?p=cmake.git;a=commitdiff_plain;h=716a09b9
+
+Make C and C++ default dialect detection robust to advanced optimizations
+
+In commit v3.4.0-rc1~71^2 (Project: Determine default language dialect
+for the compiler, 2015-09-15) we added an "INFO:..." string to the
+compiler id detection binary.  The value can be optimized out of the
+compiler id binary unless we force it to be included by making the
+program behavior depend on it at runtime.  Add references to the value
+as we do for the other info strings already.
+---
+
+diff --git a/Modules/CMakeCCompilerId.c.in b/Modules/CMakeCCompilerId.c.in
+index b224007..63f8787 100644
+--- a/Modules/CMakeCCompilerId.c.in
++++ b/Modules/CMakeCCompilerId.c.in
+@@ -55,6 +55,7 @@ int main(int argc, char* argv[])
+ #ifdef SIMULATE_VERSION_MAJOR
+   require += info_simulate_version[argc];
+ #endif
++  require += info_language_dialect_default[argc];
+   (void)argv;
+   return require;
+ }
+diff --git a/Modules/CMakeCXXCompilerId.cpp.in b/Modules/CMakeCXXCompilerId.cpp.in
+index d467507..61cd790 100644
+--- a/Modules/CMakeCXXCompilerId.cpp.in
++++ b/Modules/CMakeCXXCompilerId.cpp.in
+@@ -49,6 +49,7 @@ int main(int argc, char* argv[])
+ #ifdef SIMULATE_VERSION_MAJOR
+   require += info_simulate_version[argc];
+ #endif
++  require += info_language_dialect_default[argc];
+   (void)argv;
+   return require;
+ }

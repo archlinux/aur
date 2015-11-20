@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -14,11 +14,15 @@ makedepends=('qt5-base' 'python-sphinx' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 install="${pkgname}.install"
-source=("http://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('cd3034e0a44256a0917e254167217fc8')
+source=("http://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
+        fix-c-c++-default-dialect-detection.patch)
+md5sums=('cd3034e0a44256a0917e254167217fc8'
+         'a2c3f0abf120a6dc8e142aa23dba1520')
 
 prepare() {
   cd ${pkgname}-${pkgver}
+  # FS#47113
+  patch -p1 -i ../fix-c-c++-default-dialect-detection.patch
 }
 
 build() {
