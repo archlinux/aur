@@ -32,6 +32,6 @@ build() {
 package() {
   cd $srcdir/build
   make DESTDIR="$pkgdir" install
-  install -Dm644 $srcdir/nail/COPYING $pkgdir/usr/share/licences/$pkgname/LICENSE
+  install -Dm644 $srcdir/nail/COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
