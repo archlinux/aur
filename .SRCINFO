@@ -1,7 +1,7 @@
 pkgbase = ivideon-client
 	pkgdesc = Ivideon Client
 	pkgver = 6.1.3
-	pkgrel = 261
+	pkgrel = 263
 	url = http://ivideon.com/
 	install = ivideon.install
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = ivideon-client
 	depends = openssl
 	depends = wget
 	depends = vlc
-	source = https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-client/ivideon-client_6.1.3.261_amd64.deb
+	source = https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-client/ivideon-client_6.1.3.263_amd64.deb
 	source = ivideon-client.desktop
-	sha256sums = 461960d695a46bc48c0e360db48b3c7a58ae192e8fdcf5da7ecabcc19cd2e830
+	sha256sums = e0b9af6dfae707982128c90d3be8600cc3bc511d273d4e66b23267abe9683775
 	sha256sums = 2baf7178b17057d0e638d19c1c3feb17e8eb65ea32106d477f9d53e24937020b
 
 pkgname = ivideon-client
