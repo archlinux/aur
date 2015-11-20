@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	echo "$(git show -s --format="%ci %cr"|grep -oP '\d{4}-\d{2}-\d{2}'|sed 's:-::g').g$(git describe --always)"
+	echo "$(git show -s --format="%ci"|grep -oP '\d{4}-\d{2}-\d{2}'|sed 's:-::g').g$(git describe --always)"
 }
 
 
