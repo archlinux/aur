@@ -6,7 +6,7 @@
 pkgbase="spl-dkms-git"
 pkgname=("spl-dkms-git" "spl-utils-dkms-git")
 pkgver=0.6.5.3_r0_g7e85f6b
-pkgrel=2
+pkgrel=3
 license=('GPL')
 makedepends=("git" "tar")
 arch=("i686" "x86_64")
@@ -40,7 +40,7 @@ build() {
 package_spl-dkms-git() {
     pkgdesc="Solaris Porting Layer kernel modules."
     depends=("dkms" "spl-utils-dkms-git=${pkgver}-${pkgrel}")
-    provides=("spl-dkms")
+    provides=("spl-dkms=${pkgver%%_*}")
     conflicts=("spl-git" "spl-lts" "spl-dkms")
     install=spl.install
 
