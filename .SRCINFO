@@ -2,14 +2,14 @@ pkgbase = par2cmdline-tbb
 	pkgdesc = This is a concurrent (multithreaded) version of par2cmdline 0.4
 	pkgver = 20150503
 	pkgrel = 1
-	url = http://www.chuchusoft.com/par2_tbb/
+	url = https://github.com/jcfp/par2tbb-chuchusoft-sources
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = intel-tbb
 	provides = par2cmdline=0.4
 	conflicts = par2cmdline
-	source = http://www.chuchusoft.com/par2_tbb/par2cmdline-0.4-tbb-20150503.tar.gz
+	source = https://github.com/jcfp/par2tbb-chuchusoft-sources/releases/download/0.4-tbb-20150503/par2cmdline-0.4-tbb-20150503.tar.gz
 	sha256sums = 1840ab6ebbd8ac980f496dcb2d0446eaae418237dc5471cfd04a35dece1b3c51
 
 pkgname = par2cmdline-tbb
