@@ -6,14 +6,14 @@ _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="OpenStack Image API Client Library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
-source=("https://github.com/openstack/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('4caa4f7a1402af65ce9988fb1604f212481be5d8d46a0eac2fe3aafccd07ea15')
+source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('89db4bffe45fd4d956182743d714ce7d60b623d22cdeeaa35e450b6499ce66bc')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
