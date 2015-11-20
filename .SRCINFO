@@ -1,6 +1,6 @@
 pkgbase = sile-git
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.9.3_52_g21de3ad
+	pkgver = 0.9.3_171_g2eac0a4
 	pkgrel = 1
 	url = http://www.sile-typesetter.org/
 	arch = any
@@ -8,10 +8,11 @@ pkgbase = sile-git
 	depends = lua-lpeg
 	depends = lua-expat
 	depends = lua-filesystem
+	depends = fontconfig
 	depends = harfbuzz
 	provides = sile
 	conflicts = sile
-	source = git://github.com/simoncozens/sile.git#branch=master
+	source = git://github.com/alerque/sile.git#branch=master
 	sha512sums = SKIP
 
 pkgname = sile-git
