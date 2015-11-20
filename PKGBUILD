@@ -2,7 +2,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
@@ -12,7 +12,7 @@ depends=("ruby" "puppet>=4" "java-environment" "logrotate" "jruby" "facter2")
 backup=('etc/default/puppetserver'
         'etc/logrotate.d/puppetserver'
         'etc/puppetlabs/puppetserver/bootstrap.cfg'
-        'etc/puppetlabs/puppetserver/conf.d/ca.conf'
+        'etc/puppetlabs/puppetserver/conf.d/auth.conf'
         'etc/puppetlabs/puppetserver/conf.d/global.conf'
         'etc/puppetlabs/puppetserver/conf.d/puppetserver.conf'
         'etc/puppetlabs/puppetserver/conf.d/web-routes.conf'
@@ -21,7 +21,7 @@ backup=('etc/default/puppetserver'
         'etc/puppetlabs/puppetserver/request-logging.xml')
 install=$pkgname.install
 source=(http://downloads.puppetlabs.com/puppet/$pkgname-$pkgver.tar.gz)
-md5sums=('bc52c31cf74523ec709657abc426e16b')
+md5sums=('41792869d380aa5334bc8039a29c9162')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -55,16 +55,16 @@ _defaultsdir=/etc/default
     install -d -m 0755 "${pkgdir}${_app_prefix}"
     install -d -m 0755 "${pkgdir}${_app_data}"
     install -m 0644 puppet-server-release.jar "${pkgdir}${_app_prefix}"
-    install -m 0774 ext/ezbake-functions.sh "${pkgdir}${_app_prefix}"
+    install -m 0755 ext/ezbake-functions.sh "${pkgdir}${_app_prefix}"
     install -m 0644 ext/ezbake.manifest "${pkgdir}${_app_prefix}"
     install -d -m 0755 "${pkgdir}${_projconfdir}/conf.d"
     install -m 0644 ext/config/conf.d/puppetserver.conf "${pkgdir}${_projconfdir}/conf.d/puppetserver.conf"
-    install -m 0644 ext/config/conf.d/ca.conf "${pkgdir}${_projconfdir}/conf.d/ca.conf"
     install -m 0644 ext/config/request-logging.xml "${pkgdir}${_projconfdir}/request-logging.xml"
     install -m 0644 ext/config/logback.xml "${pkgdir}${_projconfdir}/logback.xml"
     install -m 0644 ext/config/bootstrap.cfg "${pkgdir}${_projconfdir}/bootstrap.cfg"
     install -m 0644 ext/config/conf.d/global.conf "${pkgdir}${_projconfdir}/conf.d/global.conf"
     install -m 0644 ext/config/conf.d/web-routes.conf "${pkgdir}${_projconfdir}/conf.d/web-routes.conf"
+    install -m 0644 ext/config/conf.d/auth.conf "${pkgdir}${_projconfdir}/conf.d/auth.conf"
     install -m 0644 ext/config/conf.d/webserver.conf "${pkgdir}${_projconfdir}/conf.d/webserver.conf"
     install -d -m 0755 "${pkgdir}${_app_prefix}/scripts"
     install -d -m 0755 "${pkgdir}${_app_prefix}/cli"

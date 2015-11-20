@@ -1,6 +1,6 @@
 pkgbase = puppetserver
 	pkgdesc = Server automation framework and application
-	pkgver = 2.1.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html
 	install = puppetserver.install
@@ -15,15 +15,15 @@ pkgbase = puppetserver
 	backup = etc/default/puppetserver
 	backup = etc/logrotate.d/puppetserver
 	backup = etc/puppetlabs/puppetserver/bootstrap.cfg
-	backup = etc/puppetlabs/puppetserver/conf.d/ca.conf
+	backup = etc/puppetlabs/puppetserver/conf.d/auth.conf
 	backup = etc/puppetlabs/puppetserver/conf.d/global.conf
 	backup = etc/puppetlabs/puppetserver/conf.d/puppetserver.conf
 	backup = etc/puppetlabs/puppetserver/conf.d/web-routes.conf
 	backup = etc/puppetlabs/puppetserver/conf.d/webserver.conf
 	backup = etc/puppetlabs/puppetserver/logback.xml
 	backup = etc/puppetlabs/puppetserver/request-logging.xml
-	source = http://downloads.puppetlabs.com/puppet/puppetserver-2.1.2.tar.gz
-	md5sums = bc52c31cf74523ec709657abc426e16b
+	source = http://downloads.puppetlabs.com/puppet/puppetserver-2.2.0.tar.gz
+	md5sums = 41792869d380aa5334bc8039a29c9162
 
 pkgname = puppetserver
 
