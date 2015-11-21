@@ -2,14 +2,14 @@
 
 _pkgname=openbazaar-client
 pkgname=${_pkgname}-git
-pkgver=257.f5b8442
+pkgver=704.b5ce309
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar-Server daemon"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(npm)
-makedepends=(git)
+depends=(electrum)
+makedepends=(git npm)
 source=(
 	"${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Client.git"
 	"${_pkgname}.sh"
@@ -43,4 +43,4 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '70ef57608feaeeefd1cc6bb1b73bcc31')
+         '0717c66b7078511c5af8ee11124df20c')
