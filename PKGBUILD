@@ -2,7 +2,7 @@
 # Contributors: bepebe, cconrad
 # Parts adapted from: Muflone/freeoffice@aur
 
-pkgname=softmaker-office--2016-bin
+pkgname=softmaker-office-2016-bin
 pkgver=2016.748
 pkgrel=1
 pkgdesc="Softmaker Office 2016, proprietary office suite; word processing, spreadsheets, presentations"

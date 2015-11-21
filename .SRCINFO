@@ -1,4 +1,4 @@
-pkgbase = softmaker-office--2016-bin
+pkgbase = softmaker-office-2016-bin
 	pkgdesc = Softmaker Office 2016, proprietary office suite; word processing, spreadsheets, presentations
 	pkgver = 2016.748
 	pkgrel = 1
@@ -40,5 +40,5 @@ pkgbase = softmaker-office--2016-bin
 	depends_i686 = libgl
 	depends_i686 = libxrandr
 
-pkgname = softmaker-office--2016-bin
+pkgname = softmaker-office-2016-bin
 
