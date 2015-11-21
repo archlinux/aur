@@ -8,7 +8,7 @@ pkgdesc="Front-end Electron application for talking with the OpenBazaar-Server d
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(electrum)
+depends=(electron)
 makedepends=(git npm)
 source=(
 	"${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Client.git"
