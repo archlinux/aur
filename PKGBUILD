@@ -3,7 +3,7 @@
 _pkgsrcname=txrudp
 pkgname=python2-${_pkgsrcname}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Twisted extension implementing RUDP"
 url="https://pypi.python.org/pypi/txrudp"
 license=("MIT")
@@ -14,7 +14,8 @@ source=("https://pypi.python.org/packages/py2/t/${_pkgsrcname}/txrudp-$pkgver-py
 
 package() {
   cd $srcdir/
-  pip2 install txrudp-$pkgver-py2-none-any.whl --root $pkgdir
+  pip2 install -I txrudp-$pkgver-py2-none-any.whl --root $pkgdir --no-deps
+
   rm -r $pkgdir/usr/lib/python2.7/site-packages/tests/ 
 }
 
