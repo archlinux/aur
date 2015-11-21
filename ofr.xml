@@ -51,5 +51,6 @@
      </magic>
     <glob pattern="*.OFR"/>
     <glob pattern="*.ofr"/>
+    <icon name="file-ofr"/>
    </mime-type>
 </mime-info>
