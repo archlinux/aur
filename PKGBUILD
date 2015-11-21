@@ -2,16 +2,32 @@
 # Maintainer: Paramvir Likhari <plikhari at gmail dot com>
 
 pkgname=conkywx
-pkgver=4.0.2
-pkgrel=1 
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="To display weather from multiple sources using conky"
-arch=('any')
+arch=('i686' 'x86_64')
 url='https://bitbucket.org/plikhari/conkywx_pub/downloads'
 license=('GPL3')
 depends=( wget perl )
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-md5sums=('eb54b325da16e26e12cdc181f40067e9')
+md5sums=('77b56e7c2f70585ca9ca636f33a2cde4')
 _conkyvar="usr/share/conkywx"
+
+
+build() {
+	cd "${srcdir}/${pkgname}_${pkgver}/lib/magellan_source/"
+	make
+
+	cd "${srcdir}/${pkgname}_${pkgver}/lib/taglib-1.10beta_source/"
+	cmake \
+		-D CMAKE_BUILD_TYPE=Release \
+		-D BUILD_EXAMPLES=ON  \
+		-D ENABLE_STATIC=ON  \
+		-D CMAKE_INSTALL_PREFIX=/usr \
+		.
+	make
+}
+
 
 package()
 {
@@ -19,6 +35,7 @@ package()
 
   # install script
   install -D -m755 conkywx.bin "${pkgdir}/usr/bin/conkywx"
+  install -D -m755 ./lib/wxmp.bin "${pkgdir}/usr/bin/wxmp"
 
   mkdir -p ${pkgdir}/${_conkyvar}/images/windrose-2
   mkdir -p ${pkgdir}/${_conkyvar}/images/lua_windvane
@@ -35,9 +52,9 @@ package()
   mkdir -p ${pkgdir}/${_conkyvar}/help
   mkdir -p ${pkgdir}/${_conkyvar}/lang
   mkdir -p ${pkgdir}/${_conkyvar}/lib
-  mkdir -p ${pkgdir}/${_conkyvar}/lib/magellan_source
   mkdir -p ${pkgdir}/usr/share/fonts/TTF/conkywx
   mkdir -p ${pkgdir}/${_conkyvar}/examples
+  mkdir -p ${pkgdir}/usr/share/applications
  
   install -D -m755 conkywx.sh ${pkgdir}/${_conkyvar}/
   install -D -m755 conky-restart.sh ${pkgdir}/${_conkyvar}/
@@ -61,13 +78,14 @@ package()
   install -D -m755 lib/*.pl ${pkgdir}/${_conkyvar}/lib/
   install -D -m755 lib/*.lua ${pkgdir}/${_conkyvar}/lib/
   install -D -m755 lib/*.sh ${pkgdir}/${_conkyvar}/lib/
-  install -D -m755 lib/magellan_32 ${pkgdir}/${_conkyvar}/lib/
-  install -D -m755 lib/magellan_64 ${pkgdir}/${_conkyvar}/lib/
-  install -D -m644 lib/magellan_source/* ${pkgdir}/${_conkyvar}/lib/magellan_source/
+  install -D -m755 lib/magellan_source/magellan ${pkgdir}/${_conkyvar}/lib/
+  install -D -m755 lib/taglib-1.10beta_source/examples/tagreader ${pkgdir}/${_conkyvar}/lib/
   install -D -m644 fonts/* ${pkgdir}/usr/share/fonts/TTF/conkywx/
   install -D -m644 examples/* ${pkgdir}/${_conkyvar}/examples/
+  install -D -m644 examples/wxmp.desktop ${pkgdir}/usr/share/applications
  
  
+
   # install man page
   gzip -c -9 conkywx.1 > conkywx.1.gz
   install -D -m644 conkywx.1.gz "${pkgdir}/usr/share/man/man1/conkywx.1.gz"
