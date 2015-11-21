@@ -1,0 +1,30 @@
+pkgbase = kuser-frameworks
+	pkgdesc = User Manager
+	pkgver = 15.08.3
+	pkgrel = 1
+	url = http://kde.org/applications/system/kuser/
+	install = kuser.install
+	arch = i686
+	arch = x86_64
+	groups = kde-applications
+	groups = kdeadmin
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = extra-cmake-modules
+	depends = kdelibs4support
+	depends = kio
+	depends = kldap
+	provides = kdeadmin-kuser
+	provides = kuser
+	conflicts = kdeadmin-kuser
+	conflicts = kuser
+	source = http://download.kde.org/stable/applications/15.08.3/src/kuser-15.08.3.tar.xz
+	source = port_to_kf5.patch
+	sha1sums = 45a1ba4913e6dfe0104675151d81527f289703a8
+	sha1sums = SKIP
+
+pkgname = kuser-frameworks
+

@@ -1,0 +1,277 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2015-02-01 12:00:27.000000000 +0800
++++ b/CMakeLists.txt	2015-11-21 09:27:00.302301775 +0800
+@@ -1,18 +1,35 @@
+ project(kuser)
+ 
+ # search packages used by KDE
+-find_package(KDE4 REQUIRED)
+-include (KDE4Defaults)
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++
++if(COMMAND cmake_policy)
++  cmake_policy(SET CMP0003 NEW)
++endif(COMMAND cmake_policy)
++
++
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets)
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support KIO Ldap)
++
++
+ include (MacroLibrary)
+ 
+-add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
++include(CheckIncludeFiles)
++
++#add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
+ add_definitions( -DQT_NO_CAST_FROM_ASCII )
+ add_definitions( -DQT_NO_CAST_TO_ASCII )
+ add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+ 
+ include_directories (${QDBUS_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
+ 
+-find_package(KdepimLibs REQUIRED)
++#find_package(KdepimLibs REQUIRED)
+ 
+ include(CheckFunctionExists)
+ include(CheckLibraryExists)
+@@ -25,7 +42,7 @@
+ add_subdirectory(doc)
+ 
+ # use the project-specific _SOURCE_DIR variable (set by the project() call above), Alex
+-include_directories(${kuser_SOURCE_DIR} ${KDEPIMLIBS_INCLUDE_DIR})
++include_directories(${kuser_SOURCE_DIR})
+ 
+ set(KU_HOMEDIR_PERM 0700 CACHE STRING "Default home directory permissions")
+ set(KU_MAILBOX_GID 0 CACHE STRING "Default GID of the created mbox file")
+@@ -86,7 +103,7 @@
+ 
+ kde4_add_executable(kuser ${kuser_SRCS})
+ 
+-target_link_libraries(kuser ${KDE4_KIO_LIBS} ${KDE4_KLDAP_LIBS} kntlm)
++target_link_libraries(kuser KF5::KDELibs4Support KF5::KIONTLM KF5::Ldap)
+ if(HAVE_CRYPT_LIBRARY)
+ 	target_link_libraries(kuser crypt)
+ endif(HAVE_CRYPT_LIBRARY)
+diff -Naur a/ku_adduser.cpp b/ku_adduser.cpp
+--- a/ku_adduser.cpp	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_adduser.cpp	2015-11-21 08:31:06.847312512 +0800
+@@ -46,9 +46,10 @@
+   QGroupBox *group = new QGroupBox(frontpage);
+   group->setTitle(i18n("New Account Options"));
+   QVBoxLayout *grouplayout = new QVBoxLayout( group );
+-  grouplayout->setMargin( marginHint() );
+-  grouplayout->setSpacing( spacingHint() );
+-//  grouplayout->addSpacing( group->fontMetrics().lineSpacing() );
++  //TO BE FIXED
++  //grouplayout->setMargin( marginHint() );
++  //grouplayout->setSpacing( spacingHint() );
++  grouplayout->addSpacing( group->fontMetrics().lineSpacing() );
+ 
+   createhome = new QCheckBox(i18n("Create home folder"), 0);
+   createhome->setChecked(true);
+diff -Naur a/ku_configdlg.cpp b/ku_configdlg.cpp
+--- a/ku_configdlg.cpp	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_configdlg.cpp	2015-11-21 09:21:47.051765092 +0800
+@@ -40,12 +40,12 @@
+ #include "ui_ku_ldapsamba.h"
+ #include "ui_ku_passwordpolicy.h"
+ 
+-KU_ConfigDlg::KU_ConfigDlg( KConfigSkeleton *config, QWidget *parent, const char *name ) :
++KU_ConfigDlg::KU_ConfigDlg( KCoreConfigSkeleton *config, QWidget *parent, const char *name ) :
+     KConfigDialog( parent, QLatin1String( name ), config),sambaui(0)
+ {
+   setFaceType(List);
+-  setButtons(Default|Ok|Apply|Cancel|Help);
+-  setDefaultButton(Ok);
++  setStandardButtons(QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Ok | QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Help );
++  //setDefaultButton(Ok);
+   setModal(true);
+   KTabWidget *page1 = new KTabWidget( this );
+   {
+@@ -142,7 +142,7 @@
+   _url.setExtension( QLatin1String( "x-dir" ), QLatin1String( "base" ) );
+   _url.setFilter( filter );
+ 
+-  kDebug() << "sendQuery url: " << _url.prettyUrl();
++  //kDebug() << "sendQuery url: " << _url.prettyUrl();
+   mLdif.startParsing();
+   KIO::Job *job = KIO::get( _url, KIO::Reload, KIO::HideProgressInfo );
+ //  job->addMetaData("no-auth-prompt","true");
+@@ -152,7 +152,7 @@
+     this, SLOT(loadResult(KJob*)) );
+ 
+   mProg = new QProgressDialog( 0 );
+-  mProg->setLabel( new QLabel(_url.prettyUrl()) );
++  mProg->setLabel( new QLabel(_url.toDisplayString()) );
+   mProg->setValue( 0 );
+   mProg->setMaximum( 1 );
+   mProg->setAutoClose( false );
+diff -Naur a/ku_configdlg.h b/ku_configdlg.h
+--- a/ku_configdlg.h	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_configdlg.h	2015-11-21 08:33:13.020282105 +0800
+@@ -44,7 +44,7 @@
+ class KU_ConfigDlg : public KConfigDialog {
+   Q_OBJECT
+ public:
+-  KU_ConfigDlg( KConfigSkeleton *config, QWidget* parent, const char * name = 0 );
++  KU_ConfigDlg( KCoreConfigSkeleton *config, QWidget* parent, const char * name = 0 );
+   ~KU_ConfigDlg();
+ private:
+   QProgressDialog *mProg;
+diff -Naur a/ku_edituser.cpp b/ku_edituser.cpp
+--- a/ku_edituser.cpp	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_edituser.cpp	2015-11-21 08:23:26.194420990 +0800
+@@ -349,13 +349,13 @@
+   KPageDialog( parent)
+ 
+ {
+-  setCaption(i18n("User Properties"));
+-  setButtons( Ok | Cancel);
+-  setDefaultButton(Ok);
++  setWindowTitle(i18n("User Properties"));
++  setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
++  //setDefaultButton(QDialogButtonBox::Ok);
+   setFaceType(KPageDialog::Tabbed);
+   mSelected = selected;
+   if ( mSelected.count() > 1 )
+-    setCaption( i18n("User Properties - %1 Selected Users", mSelected.count() ) );
++    setWindowTitle( i18n("User Properties - %1 Selected Users", mSelected.count() ) );
+   else {
+     mUser = KU_Global::users()->at( selected[0] );
+     mSelected.clear();
+@@ -372,9 +372,9 @@
+   KPageDialog(parent)
+ 
+ {
+-  setCaption(i18n("User Properties"));
+-  setButtons(Ok | Cancel);
+-  setDefaultButton( Ok);
++  setWindowTitle(i18n("User Properties"));
++  setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
++  //setDefaultButton(QDialogButtonBox::Ok);
+   setModal(true);
+   setFaceType(KPageDialog::Tabbed);
+ 
+diff -Naur a/ku_global.cpp b/ku_global.cpp
+--- a/ku_global.cpp	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_global.cpp	2015-11-21 08:42:38.675674127 +0800
+@@ -63,7 +63,7 @@
+   delete mGroups;
+ 
+   SID::setAlgRidBase( mCfg->samridbase() );
+-  kDebug() << "Algorithmic RID base: " << SID::getAlgRidBase();
++  //qCDebug() << "Algorithmic RID base: " << SID::getAlgRidBase();
+   switch ( mCfg->source() ) {
+     case KU_PrefsBase::EnumSource::Files:
+       mUsers = new KU_UserFiles( mCfg );
+diff -Naur a/ku_global.h b/ku_global.h
+--- a/ku_global.h	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_global.h	2015-11-21 08:41:15.347639261 +0800
+@@ -24,6 +24,7 @@
+ 
+ #include "ku_user.h"
+ #include "ku_group.h"
++#include <QLoggingCategory>
+ 
+ class KU_Global {
+ public:
+diff -Naur a/ku_groupldap.cpp b/ku_groupldap.cpp
+--- a/ku_groupldap.cpp	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_groupldap.cpp	2015-11-21 09:25:54.004086092 +0800
+@@ -29,16 +29,16 @@
+ KU_GroupLDAP::KU_GroupLDAP( KU_PrefsBase *cfg ) : KU_Groups( cfg )
+ {
+   if ( mCfg->ldapssl() )
+-    mUrl.setProtocol(QLatin1String( "ldaps" ));
++    mUrl.setScheme(QLatin1String( "ldaps" ));
+   else
+-    mUrl.setProtocol(QLatin1String( "ldap" ));
++    mUrl.setScheme(QLatin1String( "ldap" ));
+ 
+   mUrl.setHost( mCfg->ldaphost() );
+   mUrl.setPort( mCfg->ldapport() );
+   mUrl.setDn( KLDAP::LdapDN( mCfg->ldapgroupbase() + QLatin1Char( ',' ) + mCfg->ldapdn() ) );
+   if ( !mCfg->ldapanon() ) {
+-    mUrl.setUser( mCfg->ldapuser() );
+-    mUrl.setPass( mCfg->ldappassword() );
++    mUrl.setUserName( mCfg->ldapuser() );
++    mUrl.setPassword( mCfg->ldappassword() );
+     QString binddn = mCfg->ldapbinddn();
+     if ( !binddn.isEmpty() )
+       mUrl.setExtension( QLatin1String( "bindname" ),binddn );
+diff -Naur a/ku_main.cpp b/ku_main.cpp
+--- a/ku_main.cpp	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_main.cpp	2015-11-21 08:26:47.874965120 +0800
+@@ -33,15 +33,19 @@
+ #include "ku_misc.h"
+ #include "ku_mainwidget.h"
+ 
++#include <klocale.h>
++#include <k4aboutdata.h>
++#include <KGlobal>
++
+ static const char *description =
+ 	I18N_NOOP("KDE User Editor");
+ 
+ int main(int argc, char **argv) 
+ {
++    K4AboutData aboutData("kuser", 0, ki18n("KUser"), _KU_VERSION, ki18n(description), K4AboutData::License_GPL,
++                         ki18n("(c) 1997-2000, Denis Perchine\n(c) 2004, Szombathelyi György"), KLocalizedString(), 
++                          "http://kde.org/applications/system/kuser/");
+   
+-  KAboutData aboutData("kuser", 0, ki18n("KUser"),
+-    _KU_VERSION, ki18n(description), KAboutData::License_GPL, 
+-    ki18n("(c) 1997-2000, Denis Perchine\n(c) 2004, Szombathelyi György"));
+   aboutData.addAuthor(ki18n("Denis Perchine"), ki18n("kuser author"),
+     "dyp@perchine.com", "http://www.perchine.com/dyp/");
+   aboutData.addAuthor(ki18n("Szombathelyi György"), ki18n("kuser author"),
+diff -Naur a/ku_mainwidget.cpp b/ku_mainwidget.cpp
+--- a/ku_mainwidget.cpp	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_mainwidget.cpp	2015-11-21 08:12:19.394633989 +0800
+@@ -48,13 +48,13 @@
+   init();
+   mv->slotTabChanged();
+ 
+-  statusBar()->insertItem(i18n("Reading configuration"), 0);
++  statusBar()->showMessage(i18n("Reading configuration"), 0);
+ 
+   setCentralWidget(mv);
+ 
+   setupGUI();
+ 
+-  statusBar()->changeItem(i18n("Ready"), 0);
++  statusBar()->showMessage(i18n("Ready"), 0);
+ }
+ 
+ KU_MainWidget::~KU_MainWidget()
+diff -Naur a/ku_userldap.cpp b/ku_userldap.cpp
+--- a/ku_userldap.cpp	2015-02-01 12:00:27.000000000 +0800
++++ b/ku_userldap.cpp	2015-11-21 09:25:03.072903905 +0800
+@@ -37,16 +37,16 @@
+   schemaversion = 0;
+ 
+   if ( mCfg->ldapssl() )
+-    mUrl.setProtocol(QLatin1String( "ldaps" ));
++    mUrl.setScheme(QLatin1String( "ldaps" ));
+   else
+-    mUrl.setProtocol(QLatin1String( "ldap" ));
++    mUrl.setScheme(QLatin1String( "ldap" ));
+ 
+   mUrl.setHost( mCfg->ldaphost() );
+   mUrl.setPort( mCfg->ldapport() );
+   mUrl.setDn( KLDAP::LdapDN( mCfg->ldapuserbase() + QLatin1Char( ',' ) + mCfg->ldapdn() ) );
+   if ( !mCfg->ldapanon() ) {
+-    mUrl.setUser( mCfg->ldapuser() );
+-    mUrl.setPass( mCfg->ldappassword() );
++    mUrl.setUserName( mCfg->ldapuser() );
++    mUrl.setPassword( mCfg->ldappassword() );
+     QString binddn = mCfg->ldapbinddn();
+     if ( !binddn.isEmpty() )
+       mUrl.setExtension( QLatin1String( "bindname" ),binddn );
