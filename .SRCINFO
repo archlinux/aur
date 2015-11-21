@@ -9,15 +9,15 @@ pkgbase = chromium-widevine-dev
 	depends = gcc-libs
 	provides = chromium-widevine
 	conflicts = chromium-widevine
-	noextract = google-chrome-unstable-48.0.2564.8-1.i386.rpm
-	noextract = google-chrome-unstable-48.0.2564.8-1.x86_64.rpm
+	noextract = google-chrome-unstable-48.0.2564.10-1.i386.rpm
+	noextract = google-chrome-unstable-48.0.2564.10-1.x86_64.rpm
 	options = !strip
 	source = https://www.google.com/chrome/intl/en/eula_text.html
 	sha1sums = 1ffba5152cb749300a016efec909b828eba9a64a
-	source_i686 = http://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-unstable-48.0.2564.8-1.i386.rpm
-	sha1sums_i686 = 9c3157a05d3b97a3934a2b2ff7d77fe88cff4e27
-	source_x86_64 = http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-48.0.2564.8-1.x86_64.rpm
-	sha1sums_x86_64 = c54bba17ff887aafdd67a20d32329c4c20266255
+	source_i686 = http://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-unstable-48.0.2564.10-1.i386.rpm
+	sha1sums_i686 = a4f9cafbf19007801a06316c830bfda97e898831
+	source_x86_64 = http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-48.0.2564.10-1.x86_64.rpm
+	sha1sums_x86_64 = b0aff7e48dfee6340a58d9fa8188aaa0402189bf
 
 pkgname = chromium-widevine-dev
 
