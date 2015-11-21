@@ -4,7 +4,7 @@
 pkgname=tomahawk-qt5
 _pkgname=tomahawk
 pkgver=0.8.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A Music Player App written in C++/Qt5"
 arch=('i686' 'x86_64')
 url='http://tomahawk-player.org/'
@@ -37,6 +37,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_WITH_QT4=OFF \
         -DBUILD_HATCHET=OFF \
+        -DTAGLIB_MIN_VERSION=1.10 \
         "../${_pkgname}-${pkgver}"
   make
 }
