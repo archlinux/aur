@@ -1,8 +1,9 @@
-# Maintainer: Michael Goehler <somebody dot here at gmx dot de>
+# Maintainer: grimsock <lord.grimsock at gmail dot com>
+# Contributor: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=docker-registry-git
 _pkgname=docker-registry
-pkgver=v2.1.1.128.gf6d2271
+pkgver=v2.2.0.18.g0a3acb2
 pkgrel=1
 pkgdesc="An implementation of the Docker Registry HTTP API V2 for use with docker 1.6+."
 arch=('any')
