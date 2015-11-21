@@ -1,4 +1,4 @@
-# Maintainer: Austin Haedicke
+\# Maintainer: Austin Haedicke
 
 # If you find errors or have suggestions feel free to file an issue
 # or submit a pull request @ https://github.com/gtbjj/pkgbuild
@@ -24,10 +24,14 @@ build() {
   cd "$pkgname-$pkgver"
   perl Configure.pl --gen-moar --gen-nqp --backends=moar
   make
+
+## The below tests are optional, but advised by Rakudo Devs
+#  make rakudo-test
+#  make rakudo-spectest
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-  sudo ln -sf "$srcdir"/"$pkgname-$pkgver"/install/bin/* /usr/bin/
+  make install
+  sudo cp "$srcdir"/"$pkgname-$pkgver"/install/bin/* /usr/bin/
 }
