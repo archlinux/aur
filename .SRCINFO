@@ -1,7 +1,7 @@
 pkgbase = gcp-cups-connector
 	pkgdesc = The Google Cloud Print (aka GCP) CUPS Connector shares CUPS printers with users of Google Cloud Print.
-	pkgver = 2015.10.05.r9.g3297fab
-	pkgrel = 3
+	pkgver = 2015.10.05.r39.g3d6844a
+	pkgrel = 1
 	url = https://github.com/google/cups-connector
 	arch = i686
 	arch = x86_64
