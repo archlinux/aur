@@ -1,0 +1,13 @@
+pkgbase = steinberg-vst36
+	pkgdesc = Steinberg's VST SDK (version 3.6)
+	pkgver = 3.6.5
+	pkgrel = 1
+	url = http://www.steinberg.net/en/company/developers.html
+	arch = any
+	license = custom
+	provides = steinberg-vst
+	source = http://www.steinberg.net/sdk_downloads/vstsdk365_12_11_2015_build_67.zip
+	md5sums = ebe8f242084a742284f7e541f6f1d301
+
+pkgname = steinberg-vst36
+
