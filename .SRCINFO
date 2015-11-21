@@ -1,0 +1,14 @@
+pkgbase = jgraph
+	pkgdesc = A filter for plotting graphs in postscript
+	pkgver = 20131228
+	pkgrel = 1
+	url = http://web.eecs.utk.edu/~plank/plank/jgraph/jgraph.html
+	arch = any
+	license = Custom
+	source = http://web.eecs.utk.edu/~plank/plank/jgraph/2012-10-15-Jgraph.tar
+	source = jgrtoppm
+	md5sums = e8b41f5f5fb286dd7896af4dfd6e9324
+	md5sums = 300bb41658a410d0e5276357e42e5fad
+
+pkgname = jgraph
+
