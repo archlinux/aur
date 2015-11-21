@@ -21,6 +21,6 @@ package() {
 
 	cp ${srcdir}/../ida.png ${pkgdir}/usr/share/pixmaps/
 	cp ${srcdir}/../ida-demo.desktop ${pkgdir}/usr/share/applications/
-	mv ${srcdir}/idademo68/license.txt ${pkgdir}/usr/share/ida-demo/LICENSE
+	cp ${srcdir}/idademo68/license.txt ${pkgdir}/usr/share/ida-demo/LICENSE
 	mv ${srcdir}/idademo68 ${pkgdir}/opt/ida-demo
 }
