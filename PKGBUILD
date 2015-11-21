@@ -1,15 +1,23 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lokalize-git
-pkgver=2.0.r1177.4768929
+pkgver=2.0.r1232.c9495b0
 pkgrel=1
 pkgdesc="Computer-Aided Translation System. (GIT version)"
 url='https://www.kde.org/applications/development/lokalize'
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
-depends=('kross' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'hunspell' 'python')
-optdepends=('hunspell: Spell checker')
+groups=('kde-applications' 'kdesdk')
+depends=('kross'
+         'hunspell'
+         'hicolor-icon-theme'
+         )
+makedepends=('extra-cmake-modules'
+             'kdoctools'
+             'git'
+             'python'
+             )
+replaces=('kdesdk-lokalize')
 conflicts=('kdesdk-lokalize' 'lokalize')
 provides=('lokalize')
 source=('git://anongit.kde.org/lokalize.git'
@@ -27,7 +35,7 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  patch -p0 -i ../patch.patch
+  patch -p0 -i patch.patch
 }
 
 build() {
@@ -37,7 +45,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTS=OFF
+    -DBUILD_TESTING=OFF
   make
 }
 
