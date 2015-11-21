@@ -1,3 +1,5 @@
+# Maintainer: Carlos Silva <r3pek@r3pek.org>
+
 pkgname=cartaodecidadao
 pkgver=1.60.0
 _subversion=1608
