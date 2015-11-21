@@ -1,0 +1,19 @@
+pkgbase = qlipper-git
+	pkgdesc = Cross-platform clipboard history applet
+	pkgver = 2.0.2.23.g4d52f94
+	pkgrel = 1
+	url = https://github.com/pvanek/qlipper
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	provides = qlipper
+	conflicts = qlipper
+	source = git+https://github.com/pvanek/qlipper.git
+	sha256sums = SKIP
+
+pkgname = qlipper-git
+
