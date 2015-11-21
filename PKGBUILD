@@ -4,10 +4,10 @@ pkgdesc="ROS - This package provides an implementation of a 2D costmap based on 
 url='http://wiki.ros.org/costmap_2d'
 
 pkgname='ros-indigo-costmap-2d'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf
