@@ -17,7 +17,7 @@ pkgbase = bareos
 	source = https://github.com/bareos/bareos/archive/Release/15.2.2.tar.gz
 	source = PKGBUILD.common
 	sha256sums = e8f5b2c8635985abce68b057585db9d2b7abf3e394bc2b34cb3fbd6ebfed6d3b
-	sha256sums = 0819fdf926a4c256efe4ed74cfa850815148d43cdbbe661d5ddd372954be8122
+	sha256sums = 8193e38eb86ffa15aa7ad246179b07c30c9ffd529f723b90e886a3558e834a5e
 
 pkgname = bareos-common
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Common files
@@ -30,7 +30,7 @@ pkgname = bareos-bconsole
 	groups = bareos
 	groups = bareos-client
 	depends = bareos-common=15.2.2
-	backup = '/etc/bareos/bconsole.conf'
+	backup = 'etc/bareos/bconsole.conf'
 
 pkgname = bareos-database-common
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Generic abstration libs and tools for sql catalog
@@ -72,14 +72,14 @@ pkgname = bareos-director
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Director daemon
 	install = bareos-director.install
 	depends = bareos-common=15.2.2
-	backup = '/etc/bareos/bareos-dir.conf'
-	backup = '/etc/logrotate.d/bareos-dir'
+	backup = 'etc/bareos/bareos-dir.conf'
+	backup = 'etc/logrotate.d/bareos-dir'
 
 pkgname = bareos-storage-fifo
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - FIFO support for storage daemon
 	install = bareos-storage-fifo.install
 	depends = bareos-storage=15.2.2
-	backup = '/etc/bareos/bareos-sd.d/device-fifo.conf'
+	backup = 'etc/bareos/bareos-sd.d/device-fifo.conf'
 
 pkgname = bareos-tools
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - CLI tools (bcopy, bextract, bls, bregeq, bwild)
@@ -92,7 +92,7 @@ pkgname = bareos-filedaemon
 	groups = bareos
 	groups = bareos-client
 	depends = bareos-common=15.2.2
-	backup = '/etc/bareos/bareos-fd.conf'
+	backup = 'etc/bareos/bareos-fd.conf'
 
 pkgname = bareos-storage
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Storage daemon
@@ -100,15 +100,15 @@ pkgname = bareos-storage
 	depends = bareos-common=15.2.2
 	optdepends = openssl: network encryption between daemons
 	optdepends = lzo2: LZO compression for Storage Daemon
-	backup = '/etc/bareos/bareos-sd.conf'
+	backup = 'etc/bareos/bareos-sd.conf'
 
 pkgname = bareos-storage-tape
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Tape support for storage daemon
 	install = bareos-storage-tape.install
 	depends = bareos-storage=15.2.2
 	depends = mtx
-	backup = '/etc/bareos/bareos-sd.d/device-tape-with-autoloader.conf'
-	backup = '/etc/bareos/mtx-changer.conf'
+	backup = 'etc/bareos/bareos-sd.d/device-tape-with-autoloader.conf'
+	backup = 'etc/bareos/mtx-changer.conf'
 
 pkgname = bareos-director-python-plugin
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for director daemon

@@ -105,9 +105,9 @@ _etc_files() {
   while read file
   do
     file=$(echo $file | sed 's,\([^ ]*\).*,\1,g') # Remove second param, if exists
-    [[ $MKSRCINFO -ne 1 ]] && file=${file:1:${#file}-1}
+    file=${file:1:${#file}-1}
 
-    if [[ "$file" =~ "/etc" ]]; then
+    if [[ "$file" =~ "etc" ]]; then
       out="'${file}' $out"
     fi
   done < ${_pkgsrc}/debian/$1
