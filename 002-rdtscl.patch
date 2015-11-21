@@ -6,7 +6,7 @@ diff -ru a/src/shared/linux_osl.c b/src/shared/linux_osl.c
  
  #if defined(__i386__)
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 3, 0)
-+	cycles = (u32)native_read_tsc();
++	cycles = (u32)rdtsc();
 +#else
  	rdtscl(cycles);
 +#endif
