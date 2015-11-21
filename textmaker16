@@ -1,0 +1,4 @@
+#!/bin/sh
+# A script to run TextMaker.
+export LD_LIBRARY_PATH=/opt/smoffice2016/usr/lib:${LD_LIBRARY_PATH}
+/opt/smoffice2016/textmaker "$@"
