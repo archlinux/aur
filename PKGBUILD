@@ -3,11 +3,17 @@
 pkgname=python-jira
 pkgdesc="Python library for interacting with JIRA via REST APIs."
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 url="https://pypi.python.org/pypi/jira"
 license=('GPL')
 arch=('any')
-depends=('python') 
+depends=('python'
+         'python-requests'
+	 'python-six'
+	 'python2-tlslite'
+	 'python2-requests-toolbelt'
+	 'python2-requests-oauthlib'
+	 'python-oauthlib') 
 makedepends=('python-pip')
 source="https://pypi.python.org/packages/2.7/j/jira/jira-1.0.3-py2.py3-none-any.whl"
 md5sums=('a4eb7a250cd8fc2adb00e2245a68a528')
