@@ -8,6 +8,8 @@ pkgbase = optimfrog-mime
 	license = custom:OptimFROG
 	depends = optimfrog
 	source = ofr.xml
+	source = file-ofr.svg
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = optimfrog-mime
