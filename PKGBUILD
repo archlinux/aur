@@ -4,7 +4,7 @@ pkgdesc="ROS - This planner attempts to find a legal place to put a carrot for t
 url='http://wiki.ros.org/carrot_planner'
 
 pkgname='ros-indigo-carrot-planner'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

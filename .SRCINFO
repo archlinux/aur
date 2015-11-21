@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-carrot-planner
 	pkgdesc = ROS - This planner attempts to find a legal place to put a carrot for the robot to follow.
-	pkgver = 1.12.4
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = http://wiki.ros.org/carrot_planner
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = ros-indigo-carrot-planner
 	depends = ros-indigo-tf
 	depends = ros-indigo-pluginlib
 	depends = eigen3
-	source = carrot_planner::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/carrot_planner/1.12.4-0
+	source = carrot_planner::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/carrot_planner/1.12.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-carrot-planner
