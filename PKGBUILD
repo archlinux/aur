@@ -1,7 +1,7 @@
 pkgname=cuddly-octo-tatertot-git
 _pkgname=cuddly-octo-tatertot
 pkgdesc='Silly python scripts'
-pkgrel=2
+pkgrel=3
 pkgver=0
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -18,5 +18,6 @@ pkgver () {
 }
 
 package () {
-	cp `find $srcdir/$_pkgname -mindepth 1 -maxdepth 1 | grep -v *.md | grep -v /.git` $pkgdir
+	mkdir -p $pkgdir/usr/bin
+	cp `find $srcdir/$_pkgname -mindepth 1 -maxdepth 1 | grep -v .*\.md | grep -v /.git` $pkgdir/usr/bin
 }
