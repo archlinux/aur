@@ -3,7 +3,7 @@
 
 pkgname=discord
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord linux App'
 arch=('i686' 'x86_64')
 url='https://github.com/XNBlank/discord-linux'
@@ -12,11 +12,11 @@ license=('MIT')
 source=('Discord.desktop')
 sha256sums=('6b0faff2ddd149a8c9b9b5ca66d9117a6388c3a2e720d3d3f971ae97b2670bee')
 
-source_i686=("https://github.com/XNBlank/discord-linux/archive/x86-${pkgver}.tar.gz")
-sha256sums_i686=('a3312e2f71ed89c8a5e490a0e1fa0cec60a4d97b3c9329fa6f0ce511ecbd74fc')
+source_i686=("https://github.com/XNBlank/discord-linux/archive/x86-${pkgver}-AUR.tar.gz")
+sha256sums_i686=('6b8ceaee7e3463cc0c4f3c414be8993fda9fadd8345812747e3628d0f87264fd')
 
-source_x86_64=("https://github.com/XNBlank/discord-linux/archive/x64-${pkgver}.tar.gz")
-sha256sums_x86_64=('ee663f41dad18d99e0925442c542f48693e7df0b7aca696c26375445d740a45d')
+source_x86_64=("https://github.com/XNBlank/discord-linux/archive/x64-${pkgver}-AUR.tar.gz")
+sha256sums_x86_64=('8a7189bf1edce61900dacce77a411bcb76256c9aa744f8d970ea1204c236e3b5')
 
 package() {
   case $CARCH in
