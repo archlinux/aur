@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides implementations of the Trajectory Rollout a
 url='http://wiki.ros.org/base_local_planner'
 
 pkgname='ros-indigo-base-local-planner'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
