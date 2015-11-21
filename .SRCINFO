@@ -1,0 +1,14 @@
+pkgbase = optimfrog-mime
+	pkgdesc = MIME type file for OptimFROG
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.losslessaudio.org
+	install = optimfrog-mime.install
+	arch = any
+	license = custom:OptimFROG
+	depends = optimfrog
+	source = ofr.xml
+	sha1sums = SKIP
+
+pkgname = optimfrog-mime
+

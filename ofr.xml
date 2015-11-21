@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+   <mime-type type="audio/x-ofr">
+     <comment>OptimFROG Audio</comment>
+     <comment xml:lang="ar">OptimFROG سمعي</comment>
+     <comment xml:lang="be@latin">Aŭdyjo OptimFROG</comment>
+     <comment xml:lang="bg">Аудио — OptimFROG</comment>
+     <comment xml:lang="ca">àudio OptimFROG</comment>
+     <comment xml:lang="cs">zvuk OptimFROG</comment>
+     <comment xml:lang="da">OptimFROG-lyd</comment>
+     <comment xml:lang="de">OptimFROG-Audio</comment>
+     <comment xml:lang="el">Ήχος OptimFROG</comment>
+     <comment xml:lang="en_GB">OptimFROG Audio</comment>
+     <comment xml:lang="es">sonido OptimFROG</comment>
+     <comment xml:lang="eu">OptimFROG audioa</comment>
+     <comment xml:lang="fi">OptimFROG-ääni</comment>
+     <comment xml:lang="fo">OptimFROG ljóður</comment>
+     <comment xml:lang="fr">audio OptimFROG</comment>
+     <comment xml:lang="ga">fuaim OptimFROG</comment>
+     <comment xml:lang="gl">son OptimFROG</comment>
+     <comment xml:lang="he">שמע OptimFROG</comment>
+     <comment xml:lang="hu">OptimFROG hang</comment>
+     <comment xml:lang="ia">Audio OptimFROG</comment>
+     <comment xml:lang="id">Audio OptimFROG</comment>
+     <comment xml:lang="it">Audio OptimFROG</comment>
+     <comment xml:lang="ja">OptimFROG オーディオ</comment>
+     <comment xml:lang="ka">OptimFROG-ის აუდიო</comment>
+     <comment xml:lang="kk">OptimFROG аудиосы</comment>
+     <comment xml:lang="ko">OptimFROG 오디오</comment>
+     <comment xml:lang="lt">OptimFROG garso įrašas</comment>
+     <comment xml:lang="lv">OptimFROG audio</comment>
+     <comment xml:lang="nb">OptimFROG lyd</comment>
+     <comment xml:lang="nl">OptimFROG-audio</comment>
+     <comment xml:lang="nn">OptimFROG-lyd</comment>
+     <comment xml:lang="pl">Plik dźwiękowy OptimFROG</comment>
+     <comment xml:lang="pt_BR">Áudio OptimFROG</comment>
+     <comment xml:lang="ro">Audio OptimFROG</comment>
+     <comment xml:lang="ru">аудио OptimFROG</comment>
+     <comment xml:lang="sk">Zvuk OptimFROG</comment>
+     <comment xml:lang="sl">Zvočna datoteka OptimFROG</comment>
+     <comment xml:lang="sq">Audio OptimFROG</comment>
+     <comment xml:lang="sr">OptimFROG звук</comment>
+     <comment xml:lang="sv">OptimFROG-ljud</comment>
+     <comment xml:lang="tr">OptimFROG Sesi</comment>
+     <comment xml:lang="uk">звук OptimFROG</comment>
+     <comment xml:lang="vi">Âm thanh OptimFROG</comment>
+     <comment xml:lang="zh_CN">OptimFROG 音频</comment>
+     <comment xml:lang="zh_TW">OptimFROG 音訊</comment>
+     <magic priority="50">
+       <match value="OFR" type="string" offset="0"/>
+     </magic>
+    <glob pattern="*.OFR"/>
+    <glob pattern="*.ofr"/>
+   </mime-type>
+</mime-info>
