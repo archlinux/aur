@@ -20,7 +20,7 @@ pkgbase = tomahawk
 	depends = liblastfm
 	depends = libechonest
 	depends = sqlite
-	depends = taglib
+	depends = taglib>=1.10
 	depends = lucene++
 	depends = qjson
 	depends = qca

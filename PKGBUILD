@@ -11,7 +11,7 @@ url='http://tomahawk-player.org/'
 license=('GPL3')
 # NOTE: The phonon VLC backend supposedly supports networking better than the gstreamer backend.
 depends=('qtwebkit' 'phonon-qt4' 'quazip-qt4' 'qtkeychain-qt4' 'attica-qt4'
-         'liblastfm' 'libechonest' 'sqlite' 'taglib' 'lucene++' 'qjson' 'qca')
+         'liblastfm' 'libechonest' 'sqlite' 'taglib>=1.10' 'lucene++' 'qjson' 'qca')
 makedepends=('cmake' 'sparsehash' 'boost' 'websocketpp' 'gnutls')
 optdepends=('kdelibs: integration with Plasma Desktop'
             'telepathy-qt4: integration with Telepathy'
