@@ -2,7 +2,7 @@
 # Contributor: Sergio Conde <skgsergio@gmail.com>
 
 pkgname=discord
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Discord linux App'
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ source=('Discord.desktop')
 sha256sums=('6b0faff2ddd149a8c9b9b5ca66d9117a6388c3a2e720d3d3f971ae97b2670bee')
 
 source_i686=("https://github.com/XNBlank/discord-linux/archive/x86-${pkgver}.tar.gz")
-sha256sums_i686=('e08ef65e3f8940b3b2735058a428f198db20913e96693003d68d07ec714e5bf8')
+sha256sums_i686=('a3312e2f71ed89c8a5e490a0e1fa0cec60a4d97b3c9329fa6f0ce511ecbd74fc')
 
 source_x86_64=("https://github.com/XNBlank/discord-linux/archive/x64-${pkgver}.tar.gz")
-sha256sums_x86_64=('d7a67984c9476fe1aa1232c7cd4b6384d529dc52c060bc9ebc3bf349056d7caa')
+sha256sums_x86_64=('ee663f41dad18d99e0925442c542f48693e7df0b7aca696c26375445d740a45d')
 
 package() {
   case $CARCH in
