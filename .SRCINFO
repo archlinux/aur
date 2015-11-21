@@ -1,0 +1,16 @@
+pkgbase = faust-vst-git
+	pkgdesc = VST plugin architecture for Faust
+	pkgver = 38.32865ee
+	pkgrel = 1
+	url = https://bitbucket.org/agraef/faust-vst/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = faust
+	depends = boost
+	depends = steinberg-vst36
+	source = git+https://bitbucket.org/agraef/faust-vst
+	md5sums = SKIP
+
+pkgname = faust-vst-git
+
