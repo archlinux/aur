@@ -1,3 +1,3 @@
 #!/bin/bash
-bundle exec rackup "$@"
+cd /opt/devdocs-git && bundle exec rackup "$@"
 

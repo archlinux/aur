@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=devdocs-git
 pkgver=r1002.de1c879
-pkgrel=2
+pkgrel=3
 pkgdesc="API Documentation Browser"
 arch=('any')
 url="http://devdocs.io"

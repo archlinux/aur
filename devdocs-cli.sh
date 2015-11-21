@@ -1,3 +1,3 @@
 #!/bin/bash
-thor "$@"
+cd /opt/devdocs-git && thor "$@"
 
