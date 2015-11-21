@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '2de8f7758174dca885b59f4c4a9f83896d71e795315d322ae35f3a7fe9c9bc42'
+    '3bd07df2978ac25f1cd96eb1631f48d865d4719c694fd5d6cccd91ba37148c3b'
 )
 
 package() {

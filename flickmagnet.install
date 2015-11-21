@@ -10,7 +10,7 @@ post_install() {
 post_remove() {
 
     # delete the system user and group
-    getent passwd flickmagnet > /dev/null && userdel -f -r flickmagnet &>/dev/null
+    getent passwd flickmagnet > /dev/null && userdel -r flickmagnet &>/dev/null
     getent group flickmagnet > /dev/null && groupdel flickmagnet &>/dev/null
 
 }
