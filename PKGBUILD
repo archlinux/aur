@@ -11,14 +11,9 @@ depends=('emacs')
 makedepends=('git')
 provides=("$pkgname%-git")
 conflicts=("$pkgname%-git")
-source=("git://gitorious.org/symbols-mode-el/symbols-mode-el.git")
+source=("git+https://github.com/stefanhusmann/emacs-symbols-mode.git")
 md5sums=('SKIP')
-_gitname="symbols-mode"
-
-pkgver() {
-  cd "$srcdir/$_gitname"
-  echo $(git describe --tags|sed 's/-/./g')
-}
+_gitname="emacs-symbols-mode"
 
 build() {
   cd "$srcdir/$_gitname"
