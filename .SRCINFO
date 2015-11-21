@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-global-planner
 	pkgdesc = ROS - A path planner library and node.
-	pkgver = 1.12.4
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = http://wiki.ros.org/global_planner
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = ros-indigo-global-planner
 	makedepends = ros-indigo-roscpp
 	makedepends = ros-indigo-geometry-msgs
 	makedepends = ros-indigo-navfn
+	makedepends = ros-indigo-angles
 	makedepends = ros-indigo-costmap-2d
 	makedepends = ros-indigo-catkin
 	makedepends = ros-indigo-dynamic-reconfigure
@@ -27,7 +28,7 @@ pkgbase = ros-indigo-global-planner
 	depends = ros-indigo-dynamic-reconfigure
 	depends = ros-indigo-nav-msgs
 	depends = ros-indigo-pluginlib
-	source = global_planner::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/global_planner/1.12.4-0
+	source = global_planner::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/global_planner/1.12.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-global-planner
