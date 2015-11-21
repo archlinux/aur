@@ -1,3 +1,5 @@
+# Maintainer: Carlos Silva <r3pek@r3pek.org>
+
 pkgname=autenticacao-gov-pt
 pkgver=1.0.6
 pkgrel=1
