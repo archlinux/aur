@@ -1,6 +1,6 @@
 pkgbase = openbazaar-server-git
 	pkgdesc = Server daemon for communication between client and OpenBazaar network
-	pkgver = 436.169dcf9
+	pkgver = 444.456c759
 	pkgrel = 1
 	url = http://openbazaar.org
 	install = openbazaar-server.install
@@ -21,6 +21,7 @@ pkgbase = openbazaar-server-git
 	depends = python2-autobahn
 	depends = python2-obelisk
 	depends = python2-requests
+	depends = python2-service-identity
 	provides = openbazaar-server
 	replaces = openbazaar-server
 	options = !strip
@@ -29,7 +30,7 @@ pkgbase = openbazaar-server-git
 	source = openbazaar-server.sh
 	md5sums = SKIP
 	md5sums = 9c59866628a1b53521ecee30daf9cc6a
-	md5sums = 97e789911e6a239dfc33cbcceee63dd3
+	md5sums = 6e8afd740cdec723fbf6eda0f3626397
 
 pkgname = openbazaar-server-git
 

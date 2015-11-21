@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar-server
 pkgname=${_pkgname}-git
-pkgver=436.169dcf9
+pkgver=444.456c759
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -23,6 +23,7 @@ depends=(
 	python2-autobahn
 	python2-obelisk
 	python2-requests
+	python2-service-identity
 )
 
 makedepends=(git)
@@ -62,4 +63,4 @@ pkgver() {
 
 md5sums=('SKIP'
          '9c59866628a1b53521ecee30daf9cc6a'
-         '97e789911e6a239dfc33cbcceee63dd3')
+         '6e8afd740cdec723fbf6eda0f3626397')
