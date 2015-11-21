@@ -8,7 +8,7 @@ pkgname=chromium-wayland
 _pkgname=chromium
 pkgver=48.0.2548.0
 _wayland_release="SouthSister"
-pkgrel=1
+pkgrel=2
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -16,10 +16,10 @@ url="http://github.com/01org/ozone-wayland/"
 license=('BSD')
 depends=('nss' 'alsa-lib' 'bzip2' 'libevent' 'icu' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'flac' 'snappy' 'pciutils'
-         'harfbuzz' 'libsecret' 'libvpx-git' 'perl' 'perl-file-basedir'
+         'harfbuzz' 'libvpx' 'perl' 'perl-file-basedir'
          'desktop-file-utils' 'libxslt' 'hicolor-icon-theme' 'libxkbcommon'
-         'gtk2' 'libexif')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
+         'gtk2')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'libexif' 'libsecret')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -32,12 +32,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         "ozone-wayland::git+https://github.com/01org/ozone-wayland#branch=Milestone-${_wayland_release}"
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-widevine.patch)
+        chromium-widevine.patch
+        unbundle-libvpx_new-fix.patch)
 sha256sums=('4ca4e2adb340b3fb4d502266ad7d6bda45fa3519906dbf63cce11a63f680dbc8'
             'SKIP'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
+            '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
+            '6a2fd2d8ce5363a67452f6531a6b83f1e535f800286119fd9910d3b31c76c3bc')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -90,6 +92,10 @@ prepare() {
   # Ozone-Wayland
   mv ../ozone-wayland ozone
 
+  # Patch to fix build with use_system_libvpx
+  # Chromium bug #541273
+  patch -p1 < "${srcdir}/unbundle-libvpx_new-fix.patch"
+
   # Patch!
   for patchfile in ozone/patches/00*; do
     echo "Applying ${patchfile}."
@@ -141,7 +147,7 @@ build() {
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
-    -Duse_system_libvpx=0
+    -Duse_system_libvpx=1
     -Duse_system_libxml=1
     -Duse_system_snappy=1
     -Duse_system_xdg_utils=1
