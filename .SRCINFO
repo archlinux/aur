@@ -1,6 +1,6 @@
 pkgbase = pgmodeler-git
 	pkgdesc = PostgreSQL Database Modeler
-	pkgver = v0.8.1.beta1.r3.gd75bd0c
+	pkgver = v0.8.2.alpha1.r0.g3d505fb
 	pkgrel = 1
 	url = http://www.pgmodeler.com.br
 	install = pgmodeler-git.install
