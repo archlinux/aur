@@ -1,6 +1,6 @@
 pkgbase = mdp-git
 	pkgdesc = A command-line based markdown presentation tool.
-	pkgver = r235.6363ec1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/visit1985/mdp
 	arch = i686

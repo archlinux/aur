@@ -2,7 +2,7 @@
 
 pkgname=mdp-git
 _pkgname=mdp
-pkgver=r235.6363ec1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A command-line based markdown presentation tool."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags
 }
 
 build() {
