@@ -2,10 +2,10 @@
 
 pkgname=emacs-symbols-mode-git
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs major mode for listing symbols from object files"
 arch=('any')
-url="https://gitorious.org/symbols-mode-el"
+url="https://github.com/stefanhusmann/emacs-symbols-mode"
 license=('GPL3')
 depends=('emacs')
 makedepends=('git')
