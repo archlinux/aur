@@ -1,4 +1,12 @@
 post_install() {
+  hash nmcli 2>/dev/null && echo '
+  WARNING: You seem to have Network Manager installed.
+  As of 1.0.6, this no longer works with NetworkManager.
+  Use the solution from
+  https://wiki.archlinux.org/index.php/Wake-on-LAN#NetworkManager
+  instead.
+  '
+
   cat <<EOT
 Now you may enable WOL on each boot with:
 

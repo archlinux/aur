@@ -1,7 +1,7 @@
 pkgbase = wol-systemd
 	pkgdesc = A systemd unit file for enabling Wake-On-LAN automatically
 	pkgver = 20150903
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Wake-on-LAN
 	install = wol-systemd.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = wol-systemd
 	source = wol@.service
 	source = wol-systemd.install
 	sha1sums = 2fae47e792b954f8e70a2dbe9df56458e65ff75b
-	sha1sums = 7d1c8ce6f187316746e11fc403f469137ad3a6b4
+	sha1sums = ee32d3ec60f1257509b7bac3af36ff6b57ab325f
 
 pkgname = wol-systemd
 
