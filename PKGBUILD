@@ -1,7 +1,7 @@
 # Maintainer: killruana <killruana@gmail.com>
 pkgname=qrouter
 pkgver=1.2.35
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Multi-level, over-the-cell maze router'
 arch=('i686' 'x86_64')
