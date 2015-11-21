@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-mvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: mvsfunc (GIT version)
-	pkgver = r18.cbd41b5
+	pkgver = v5.r29.1e20b50
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=172564
 	arch = i686

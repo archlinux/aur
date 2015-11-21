@@ -2,7 +2,7 @@
 
 _plug=mvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r18.cbd41b5
+pkgver=v5.r29.1e20b50
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; pr
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _ver="$(cat mvsfunc.py | grep -m1 MvsFuncVersion | grep -o "[[:digit:]]*")"
+  echo "v${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
