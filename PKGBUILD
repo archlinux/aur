@@ -4,7 +4,7 @@ pkgdesc="ROS - The move_base package provides an implementation of an action (se
 url='http://wiki.ros.org/move_base'
 
 pkgname='ros-indigo-move-base'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
