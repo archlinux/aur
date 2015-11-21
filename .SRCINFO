@@ -18,7 +18,7 @@ pkgbase = flickmagnet
 	source = https://github.com/acerix/flickmagnet/archive/0.0.4.tar.gz
 	source = flickmagnet.install
 	sha256sums = SKIP
-	sha256sums = 75566e170c89ed9638d9178e7c15a7bd8fad2f53222545c973e72642e5c1704e
+	sha256sums = 2de8f7758174dca885b59f4c4a9f83896d71e795315d322ae35f3a7fe9c9bc42
 
 pkgname = flickmagnet
 

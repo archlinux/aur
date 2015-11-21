@@ -1,9 +1,23 @@
 
 post_install() {
 
-	# create system user and group to run the daemon
-	getent group flickmagnet > /dev/null || groupadd -g 420 flickmagnet &>/dev/null
-	getent passwd flickmagnet > /dev/null || useradd -u 420 -g 420 -m -s /bin/false flickmagnet &>/dev/null
+    # create system user and group to run the daemon
+    getent group flickmagnet > /dev/null || groupadd -g 420 flickmagnet &>/dev/null
+    getent passwd flickmagnet > /dev/null || useradd -u 420 -g 420 -m -s /bin/false flickmagnet &>/dev/null
 
 }
 
+post_remove() {
+
+    # delete the system user and group
+    getent passwd flickmagnet > /dev/null && userdel -f -r flickmagnet &>/dev/null
+    getent group flickmagnet > /dev/null && groupdel flickmagnet &>/dev/null
+
+}
+
+post_upgrade() {
+
+    echo "** Flick Magnet doesn't have graceful upgrades yet, delete user files to reinitialize:"
+    echo "rm -r ~/.config/flickmagnet/ ~/.cache/flickmagnet/ ~/.local/share/flickmagnet/"
+
+}
