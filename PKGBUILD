@@ -4,7 +4,7 @@ pkgdesc="ROS - navfn provides a fast interpolated navigation function that can b
 url='http://wiki.ros.org/navfn'
 
 pkgname='ros-indigo-navfn'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
