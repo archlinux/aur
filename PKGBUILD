@@ -1,12 +1,12 @@
 # Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 pkgname=qibuild
 pkgver='3.10.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The meta build framework'
 arch=('any')
 url='http://doc.aldebaran.com/qibuild/'
 license=('BSD')
-depends=('python2' 'cmake')
+depends=('cmake' 'python2-setuptools' 'python2-virtualenv')
 optdepends=(
   'git: for qisrc'
   'python2-sphinx: Sphinx support in qidoc'
