@@ -1,0 +1,20 @@
+pkgbase = kmuddy-git
+	pkgdesc = Mud client for KDE4
+	pkgver = 20150927
+	pkgrel = 1
+	url = http://kmuddy.org
+	install = kmuddy-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdebase-runtime
+	depends = libmxp
+	provides = kmuddy
+	source = kmuddy::git+https://anongit.kde.org/kmuddy.git
+	sha256sums = SKIP
+
+pkgname = kmuddy-git
+
