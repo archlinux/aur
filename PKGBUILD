@@ -27,7 +27,7 @@ build() {
   cd build
   cmake ../kuser-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
-    -DKDE4_BUILD_TESTS=OFF \
+    -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
