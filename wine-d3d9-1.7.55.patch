@@ -1,0 +1,5139 @@
+diff --git a/configure.ac b/configure.ac
+index 7d2449f..055b93b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,6 +65,8 @@ AC_ARG_WITH(openal,    AS_HELP_STRING([--without-openal],[do not use OpenAL]),
+ AC_ARG_WITH(opencl,    AS_HELP_STRING([--without-opencl],[do not use OpenCL]),
+             [if test "x$withval" = "xno"; then ac_cv_header_CL_cl_h=no; ac_cv_header_OpenCL_opencl_h=no; fi])
+ AC_ARG_WITH(opengl,    AS_HELP_STRING([--without-opengl],[do not use OpenGL]))
++AC_ARG_WITH(d3dadapter,AS_HELP_STRING([--without-d3dadapter],[do not use native Direct3D]))
++AC_ARG_WITH(d3dadapter-dri2-fallback, AS_HELP_STRING([--without-d3dadapter-dri2-fallback],[add a DRI2 fallback to d3dadapter DRI3 code]))
+ AC_ARG_WITH(osmesa,     AS_HELP_STRING([--without-osmesa],[do not use the OSMesa library]))
+ AC_ARG_WITH(oss,       AS_HELP_STRING([--without-oss],[do not use the OSS sound support]))
+ AC_ARG_WITH(pcap,      AS_HELP_STRING([--without-pcap],[do not use the Packet Capture library]),
+@@ -379,6 +381,8 @@ AC_CHECK_LIB(ossaudio,_oss_ioctl)
+ 
+ AC_SUBST(OPENGL_LIBS,"")
+ 
++AC_SUBST(D3DADAPTER9_LIBS,"")
++
+ dnl **** Check for header files ****
+ 
+ AC_SYS_LARGEFILE()
+@@ -1157,6 +1161,45 @@ This probably prevents linking to OpenGL. Try deleting the file and restarting c
+     WINE_WARNING_WITH(opengl,[test -n "$opengl_msg"],[$opengl_msg
+ OpenGL and Direct3D won't be supported.])
+ 
++
++
++    dnl Check for d3dadapter
++    if test "x$with_d3dadapter" != "xno"
++    then
++         D3D_CFLAGS=`pkg-config --cflags d3d`
++         D3D_LIBS=`pkg-config --libs d3d`
++         AC_SUBST(D3D_CFLAGS)
++         AC_SUBST(D3D_LIBS)
++         AC_DEFINE(SONAME_D3DADAPTER9, ["d3dadapter9.so.1"], ["temporary hack"])
++         AC_DEFINE_UNQUOTED(D3D_MODULE_DIR, ["`pkg-config --variable=moduledir d3d`"], ["module dir"])
++         D3DADAPTER9_LIBS=""
++         WINE_CHECK_SONAME(xcb,xcb_request_check, [D3DADAPTER9_LIBS="-lxcb $D3DADAPTER9_LIBS"])
++         WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lxcb "],[D3Dadapter9 requires libxcb])
++         WINE_CHECK_SONAME(xcb-dri3,xcb_dri3_open, [D3DADAPTER9_LIBS="-lxcb-dri3 $D3DADAPTER9_LIBS"])
++         WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lxcb-dri3 -lxcb "],[D3Dadapter9 requires libxcb-dri3])
++         WINE_CHECK_SONAME(xcb-present,xcb_present_notify_msc, [D3DADAPTER9_LIBS="-lxcb-present $D3DADAPTER9_LIBS"])
++         WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lxcb-present -lxcb-dri3 -lxcb "],[D3Dadapter9 requires libxcb-present])
++         WINE_CHECK_SONAME(X11-xcb,XGetXCBConnection, [D3DADAPTER9_LIBS="-lX11-xcb $D3DADAPTER9_LIBS"])
++         WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lX11-xcb -lxcb-present -lxcb-dri3 -lxcb "],[D3Dadapter9 requires libX11-xcb])
++         WINE_CHECK_SONAME(xcb-xfixes,xcb_xfixes_create_region, [D3DADAPTER9_LIBS="-lxcb-xfixes $D3DADAPTER9_LIBS"])
++         WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lxcb-xfixes -lX11-xcb -lxcb-present -lxcb-dri3 -lxcb "],[D3Dadapter9 requires libxcb-xfixes])
++         WINE_CHECK_SONAME(X11,XOpenDisplay, [D3DADAPTER9_LIBS="-lX11 $D3DADAPTER9_LIBS"])
++         WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lX11 -lxcb-xfixes -lX11-xcb -lxcb-present -lxcb-dri3 -lxcb "],[D3Dadapter9 requires libX11])
++         WINE_CHECK_SONAME(Xext,XextRemoveDisplay, [D3DADAPTER9_LIBS="-lXext $D3DADAPTER9_LIBS"])
++         WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lXext -lX11 -lxcb-xfixes -lX11-xcb -lxcb-present -lxcb-dri3 -lxcb "],[D3Dadapter9 requires libXext])
++         WINE_CHECK_SONAME(pthread,pthread_mutex_lock, [D3DADAPTER9_LIBS="-lpthread $D3DADAPTER9_LIBS"])
++         WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lpthread -lXext -lX11 -lxcb-xfixes -lX11-xcb -lxcb-present -lxcb-dri3 -lxcb "],[D3Dadapter9 requires libpthread])
++
++         if test "x$with_d3dadapter_dri2_fallback" != "xno"
++         then
++             AC_DEFINE(D3DADAPTER9_DRI2, 1, [Whether d3dadapter9 DRI2 fallback is compiled])
++             WINE_CHECK_SONAME(GL,glGenFramebuffers, [D3DADAPTER9_LIBS="-lGL $D3DADAPTER9_LIBS"])
++             WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lGL -lpthread -lXext -lX11 -lxcb-xfixes -lX11-xcb -lxcb-present -lxcb-dri3 -lxcb "],[D3Dadapter9 DRI2 fallback requires libGL])
++             WINE_CHECK_SONAME(EGL,eglCreateContext, [D3DADAPTER9_LIBS="-lEGL $D3DADAPTER9_LIBS"])
++             WINE_ERROR_WITH(d3dadapter,[test "x$D3DADAPTER9_LIBS" != "x-lEGL -lGL -lpthread -lXext -lX11 -lxcb-xfixes -lX11-xcb -lxcb-present -lxcb-dri3 -lxcb "],[D3Dadapter9 DRI2 fallback requires libEGL])
++         fi
++    fi
++
+     CPPFLAGS="$ac_save_CPPFLAGS"
+ else
+     X_CFLAGS=""
+@@ -2767,6 +2810,7 @@ WINE_CONFIG_DLL(d3d8,,[implib])
+ WINE_CONFIG_TEST(dlls/d3d8/tests)
+ WINE_CONFIG_DLL(d3d9,,[implib])
+ WINE_CONFIG_TEST(dlls/d3d9/tests)
++WINE_CONFIG_DLL(d3d9-nine,,[implib])
+ WINE_CONFIG_DLL(d3dcompiler_33)
+ WINE_CONFIG_DLL(d3dcompiler_34)
+ WINE_CONFIG_DLL(d3dcompiler_35)
+diff --git a/dlls/d3d9-nine/Makefile.in b/dlls/d3d9-nine/Makefile.in
+new file mode 100644
+index 0000000..a761cd7
+--- /dev/null
++++ b/dlls/d3d9-nine/Makefile.in
+@@ -0,0 +1,12 @@
++MODULE    = d3d9-nine.dll
++IMPORTS   = dxguid uuid advapi32 gdi32 user32
++EXTRAINCL = $(X_CFLAGS)
++EXTRALIBS = $(D3DADAPTER9_LIBS)
++
++C_SRCS = \
++        d3d9_main.c \
++        d3dadapter9.c \
++        present.c \
++        dri3.c
++
++RC_SRCS = version.rc
+diff --git a/dlls/d3d9-nine/d3d9-nine.spec b/dlls/d3d9-nine/d3d9-nine.spec
+new file mode 100644
+index 0000000..a33cba5
+--- /dev/null
++++ b/dlls/d3d9-nine/d3d9-nine.spec
+@@ -0,0 +1,14 @@
++@ stdcall Direct3DShaderValidatorCreate9()
++@ stub PSGPError
++@ stub PSGPSampleTexture
++@ stdcall D3DPERF_BeginEvent(long wstr)
++@ stdcall D3DPERF_EndEvent()
++@ stdcall D3DPERF_GetStatus()
++@ stdcall D3DPERF_QueryRepeatFrame()
++@ stdcall D3DPERF_SetMarker(long wstr)
++@ stdcall D3DPERF_SetOptions(long)
++@ stdcall D3DPERF_SetRegion(long wstr)
++@ stub DebugSetLevel
++@ stdcall DebugSetMute()
++@ stdcall Direct3DCreate9(long)
++@ stdcall Direct3DCreate9Ex(long ptr)
+diff --git a/dlls/d3d9-nine/d3d9_main.c b/dlls/d3d9-nine/d3d9_main.c
+new file mode 100644
+index 0000000..de20475
+--- /dev/null
++++ b/dlls/d3d9-nine/d3d9_main.c
+@@ -0,0 +1,163 @@
++/*
++ * Direct3D 9
++ *
++ * Copyright 2002-2003 Jason Edmeades
++ * Copyright 2002-2003 Raphael Junqueira
++ * Copyright 2005 Oliver Stieber
++ * Copyright 2015 Patrick Rudolph
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ *
++ */
++
++#include "config.h"
++#include "initguid.h"
++#include "wine/debug.h"
++
++#include <dlfcn.h>
++#include <fcntl.h>
++#include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++#include <d3dadapter/d3dadapter9.h>
++
++#include "d3dadapter9.h"
++
++#include "wine/library.h"
++
++WINE_DEFAULT_DEBUG_CHANNEL(d3dadapter);
++
++static int D3DPERF_event_level = 0;
++static Display *gdi_display;
++
++void WINAPI DebugSetMute(void) {
++    /* nothing to do */
++}
++
++IDirect3D9 * WINAPI DECLSPEC_HOTPATCH Direct3DCreate9(UINT sdk_version)
++{
++    IDirect3D9 *native;
++    TRACE("sdk_version %#x.\n", sdk_version);
++
++    if (SUCCEEDED(d3dadapter9_new(gdi_display, FALSE, (IDirect3D9Ex **)&native))) {
++        return native;
++    }
++
++    return NULL;
++}
++
++HRESULT WINAPI DECLSPEC_HOTPATCH Direct3DCreate9Ex(UINT sdk_version, IDirect3D9Ex **d3d9ex)
++{
++    TRACE("sdk_version %#x, d3d9ex %p.\n", sdk_version, d3d9ex);
++
++    return d3dadapter9_new(gdi_display, TRUE, d3d9ex);
++}
++
++/*******************************************************************
++ *       Direct3DShaderValidatorCreate9 (D3D9.@)
++ *
++ * No documentation available for this function.
++ * SDK only says it is internal and shouldn't be used.
++ */
++void* WINAPI Direct3DShaderValidatorCreate9(void)
++{
++    static int once;
++
++    if (!once++) FIXME("stub\n");
++    return NULL;
++}
++
++/*******************************************************************
++ *       DllMain
++ */
++BOOL WINAPI DllMain(HINSTANCE inst, DWORD reason, void *reserved)
++{
++    switch (reason)
++    {
++        case DLL_PROCESS_ATTACH:
++            if (!(gdi_display = XOpenDisplay( NULL ))) {
++                ERR("Failed to open display\n");
++                return FALSE;
++            }
++
++            fcntl( ConnectionNumber(gdi_display), F_SETFD, 1 ); /* set close on exec flag */
++            break;
++    }
++
++    return TRUE;
++}
++
++/***********************************************************************
++ *              D3DPERF_BeginEvent (D3D9.@)
++ */
++int WINAPI D3DPERF_BeginEvent(D3DCOLOR color, const WCHAR *name)
++{
++    TRACE("color 0x%08x, name %s.\n", color, debugstr_w(name));
++
++    return D3DPERF_event_level++;
++}
++
++/***********************************************************************
++ *              D3DPERF_EndEvent (D3D9.@)
++ */
++int WINAPI D3DPERF_EndEvent(void) {
++    TRACE("(void) : stub\n");
++
++    return --D3DPERF_event_level;
++}
++
++/***********************************************************************
++ *              D3DPERF_GetStatus (D3D9.@)
++ */
++DWORD WINAPI D3DPERF_GetStatus(void) {
++    FIXME("(void) : stub\n");
++
++    return 0;
++}
++
++/***********************************************************************
++ *              D3DPERF_SetOptions (D3D9.@)
++ *
++ */
++void WINAPI D3DPERF_SetOptions(DWORD options)
++{
++  FIXME("(%#x) : stub\n", options);
++}
++
++/***********************************************************************
++ *              D3DPERF_QueryRepeatFrame (D3D9.@)
++ */
++BOOL WINAPI D3DPERF_QueryRepeatFrame(void) {
++    FIXME("(void) : stub\n");
++
++    return FALSE;
++}
++
++/***********************************************************************
++ *              D3DPERF_SetMarker (D3D9.@)
++ */
++void WINAPI D3DPERF_SetMarker(D3DCOLOR color, const WCHAR *name)
++{
++    FIXME("color 0x%08x, name %s stub!\n", color, debugstr_w(name));
++}
++
++/***********************************************************************
++ *              D3DPERF_SetRegion (D3D9.@)
++ */
++void WINAPI D3DPERF_SetRegion(D3DCOLOR color, const WCHAR *name)
++{
++    FIXME("color 0x%08x, name %s stub!\n", color, debugstr_w(name));
++}
+diff --git a/dlls/d3d9-nine/d3dadapter9.c b/dlls/d3d9-nine/d3dadapter9.c
+new file mode 100644
+index 0000000..f15e44f
+--- /dev/null
++++ b/dlls/d3d9-nine/d3dadapter9.c
+@@ -0,0 +1,865 @@
++/*
++ * Wine IDirect3D9 interface using ID3DAdapter9
++ *
++ * Copyright 2013 Joakim Sindholt
++ *                Christoph Bumiller
++ * Copyright 2014 David Heidelberger
++ * Copyright 2014-2015 Axel Davy
++ * Copyright 2015 Nick Sarnie
++ *                Patrick Rudolph
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++
++#include "config.h"
++#include "wine/debug.h"
++
++WINE_DEFAULT_DEBUG_CHANNEL(d3dadapter);
++
++#include <d3dadapter/d3dadapter9.h>
++#include "present.h"
++
++/* this represents a snapshot taken at the moment of creation */
++struct output
++{
++    D3DDISPLAYROTATION rotation; /* current rotation */
++    D3DDISPLAYMODEEX *modes;
++    unsigned nmodes;
++    unsigned nmodesalloc;
++    unsigned current; /* current mode num */
++
++    HMONITOR monitor;
++};
++
++struct adapter_group
++{
++    struct output *outputs;
++    unsigned noutputs;
++    unsigned noutputsalloc;
++
++    /* override driver provided DeviceName with this to homogenize device names
++     * with wine */
++    WCHAR devname[32];
++
++    /* driver stuff */
++    ID3DAdapter9 *adapter;
++};
++
++struct adapter_map
++{
++    unsigned group;
++    unsigned master;
++};
++
++struct d3dadapter9
++{
++    /* COM vtable */
++    void *vtable;
++    /* IUnknown reference count */
++    LONG refs;
++
++    /* adapter groups and mappings */
++    struct adapter_group *groups;
++    struct adapter_map *map;
++    unsigned nadapters;
++    unsigned ngroups;
++    unsigned ngroupsalloc;
++
++    /* true if it implements IDirect3D9Ex */
++    boolean ex;
++    Display *gdi_display;
++};
++
++/* convenience wrapper for calls into ID3D9Adapter */
++#define ADAPTER_GROUP \
++    This->groups[This->map[Adapter].group]
++
++#define ADAPTER_PROC(name, ...) \
++    ID3DAdapter9_##name(ADAPTER_GROUP.adapter, ## __VA_ARGS__)
++
++#define ADAPTER_OUTPUT \
++    ADAPTER_GROUP.outputs[Adapter-This->map[Adapter].master]
++
++static HRESULT WINAPI
++d3dadapter9_CheckDeviceFormat( struct d3dadapter9 *This,
++                               UINT Adapter,
++                               D3DDEVTYPE DeviceType,
++                               D3DFORMAT AdapterFormat,
++                               DWORD Usage,
++                               D3DRESOURCETYPE RType,
++                               D3DFORMAT CheckFormat );
++
++static ULONG WINAPI
++d3dadapter9_AddRef( struct d3dadapter9 *This )
++{
++    ULONG refs = InterlockedIncrement(&This->refs);
++    TRACE("%p increasing refcount to %u.\n", This, refs);
++    return refs;
++}
++
++static ULONG WINAPI
++d3dadapter9_Release( struct d3dadapter9 *This )
++{
++    ULONG refs = InterlockedDecrement(&This->refs);
++    TRACE("%p decreasing refcount to %u.\n", This, refs);
++    if (refs == 0) {
++        /* dtor */
++        if (This->map) {
++            HeapFree(GetProcessHeap(), 0, This->map);
++        }
++
++        if (This->groups) {
++            int i, j;
++            for (i = 0; i < This->ngroups; ++i) {
++                if (This->groups[i].outputs) {
++                    for (j = 0; j < This->groups[i].noutputs; ++j) {
++                        if (This->groups[i].outputs[j].modes) {
++                            HeapFree(GetProcessHeap(), 0,
++                                     This->groups[i].outputs[j].modes);
++                        }
++                    }
++                    HeapFree(GetProcessHeap(), 0, This->groups[i].outputs);
++                }
++
++                if (This->groups[i].adapter) {
++                    ID3DAdapter9_Release(This->groups[i].adapter);
++                }
++            }
++            HeapFree(GetProcessHeap(), 0, This->groups);
++        }
++
++        HeapFree(GetProcessHeap(), 0, This);
++    }
++    return refs;
++}
++
++static HRESULT WINAPI
++d3dadapter9_QueryInterface( struct d3dadapter9 *This,
++                            REFIID riid,
++                            void **ppvObject )
++{
++    if (!ppvObject) { return E_POINTER; }
++    if ((IsEqualGUID(&IID_IDirect3D9Ex, riid) && This->ex) ||
++         IsEqualGUID(&IID_IDirect3D9, riid) ||
++         IsEqualGUID(&IID_IUnknown, riid)) {
++        *ppvObject = This;
++        d3dadapter9_AddRef(This);
++        return S_OK;
++    }
++
++    WARN("%s not implemented, returning E_NOINTERFACE.\n", debugstr_guid(riid));
++    *ppvObject = NULL;
++
++    return E_NOINTERFACE;
++}
++
++static HRESULT WINAPI
++d3dadapter9_RegisterSoftwareDevice( struct d3dadapter9 *This,
++                                    void *pInitializeFunction )
++{
++    FIXME("(%p, %p), stub!\n", This, pInitializeFunction);
++    return D3DERR_INVALIDCALL;
++}
++
++static UINT WINAPI
++d3dadapter9_GetAdapterCount( struct d3dadapter9 *This )
++{
++    return This->nadapters;
++}
++
++static HRESULT WINAPI
++d3dadapter9_GetAdapterIdentifier( struct d3dadapter9 *This,
++                                  UINT Adapter,
++                                  DWORD Flags,
++                                  D3DADAPTER_IDENTIFIER9 *pIdentifier )
++{
++    HRESULT hr;
++    HKEY regkey;
++
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) { return D3DERR_INVALIDCALL; }
++
++    hr = ADAPTER_PROC(GetAdapterIdentifier, Flags, pIdentifier);
++    if (SUCCEEDED(hr)) {
++        /* Override the driver provided DeviceName with what Wine provided */
++        ZeroMemory(pIdentifier->DeviceName, sizeof(pIdentifier->DeviceName));
++        if (!WideCharToMultiByte(CP_ACP, 0, ADAPTER_GROUP.devname, -1,
++                                 pIdentifier->DeviceName,
++                                 sizeof(pIdentifier->DeviceName),
++                                 NULL, NULL)) {
++            /* Wine does it */
++            return D3DERR_INVALIDCALL;
++        }
++        TRACE("DeviceName overriden: %s\n", pIdentifier->DeviceName);
++
++        /* Override PCI IDs when wined3d registry keys are set */
++        if (!RegOpenKeyA(HKEY_CURRENT_USER, "Software\\Wine\\Direct3D", &regkey)) {
++            DWORD type, data;
++            DWORD size = sizeof(DWORD);
++
++            if (!RegQueryValueExA(regkey, "VideoPciDeviceID", 0, &type, (BYTE *)&data, &size) && (type == REG_DWORD) && (size == sizeof(DWORD)))
++                pIdentifier->DeviceId = data;
++            if(size != sizeof(DWORD)) {
++                ERR("VideoPciDeviceID is not a DWORD\n");
++                size = sizeof(DWORD);
++            }
++            if (!RegQueryValueExA(regkey, "VideoPciVendorID", 0, &type, (BYTE *)&data, &size) && (type == REG_DWORD) && (size == sizeof(DWORD)))
++                pIdentifier->VendorId = data;
++            if(size != sizeof(DWORD))
++                ERR("VideoPciVendorID is not a DWORD\n");
++            RegCloseKey(regkey);
++
++            TRACE("DeviceId:VendorId overridden: %04X:%04X\n", pIdentifier->DeviceId, pIdentifier->VendorId);
++        }
++    }
++    return hr;
++}
++
++static UINT WINAPI
++d3dadapter9_GetAdapterModeCount( struct d3dadapter9 *This,
++                                 UINT Adapter,
++                                 D3DFORMAT Format )
++{
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) {
++        WARN("Adapter %u does not exist.\n", Adapter);
++        return 0;
++    }
++    if (FAILED(d3dadapter9_CheckDeviceFormat(This, Adapter, D3DDEVTYPE_HAL,
++                                         Format, D3DUSAGE_RENDERTARGET,
++                                         D3DRTYPE_SURFACE, Format))) {
++        WARN("DeviceFormat not available.\n");
++        return 0;
++    }
++
++    TRACE("%u modes.\n", ADAPTER_OUTPUT.nmodes);
++    return ADAPTER_OUTPUT.nmodes;
++}
++
++static HRESULT WINAPI
++d3dadapter9_EnumAdapterModes( struct d3dadapter9 *This,
++                              UINT Adapter,
++                              D3DFORMAT Format,
++                              UINT Mode,
++                              D3DDISPLAYMODE *pMode )
++{
++    HRESULT hr;
++
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) {
++        WARN("Adapter %u does not exist.\n", Adapter);
++        return D3DERR_INVALIDCALL;
++    }
++
++    hr = d3dadapter9_CheckDeviceFormat(This, Adapter, D3DDEVTYPE_HAL,
++                                   Format, D3DUSAGE_RENDERTARGET,
++                                   D3DRTYPE_SURFACE, Format);
++    if (FAILED(hr)) {
++        TRACE("DeviceFormat not available.\n");
++        return hr;
++    }
++
++    if (Mode >= ADAPTER_OUTPUT.nmodes) {
++        WARN("Mode %u does not exist.\n", Mode);
++        return D3DERR_INVALIDCALL;
++    }
++
++    pMode->Width = ADAPTER_OUTPUT.modes[Mode].Width;
++    pMode->Height = ADAPTER_OUTPUT.modes[Mode].Height;
++    pMode->RefreshRate = ADAPTER_OUTPUT.modes[Mode].RefreshRate;
++    pMode->Format = Format;
++
++    return D3D_OK;
++}
++
++static HRESULT WINAPI
++d3dadapter9_GetAdapterDisplayMode( struct d3dadapter9 *This,
++                                   UINT Adapter,
++                                   D3DDISPLAYMODE *pMode )
++{
++    UINT Mode;
++
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) {
++        WARN("Adapter %u does not exist.\n", Adapter);
++        return D3DERR_INVALIDCALL;
++    }
++
++    Mode = ADAPTER_OUTPUT.current;
++    pMode->Width = ADAPTER_OUTPUT.modes[Mode].Width;
++    pMode->Height = ADAPTER_OUTPUT.modes[Mode].Height;
++    pMode->RefreshRate = ADAPTER_OUTPUT.modes[Mode].RefreshRate;
++    pMode->Format = ADAPTER_OUTPUT.modes[Mode].Format;
++
++    return D3D_OK;
++}
++
++static HRESULT WINAPI
++d3dadapter9_CheckDeviceType( struct d3dadapter9 *This,
++                             UINT Adapter,
++                             D3DDEVTYPE DevType,
++                             D3DFORMAT AdapterFormat,
++                             D3DFORMAT BackBufferFormat,
++                             BOOL bWindowed )
++{
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) { return D3DERR_INVALIDCALL; }
++    return ADAPTER_PROC(CheckDeviceType,
++                        DevType, AdapterFormat, BackBufferFormat, bWindowed);
++}
++
++static HRESULT WINAPI
++d3dadapter9_CheckDeviceFormat( struct d3dadapter9 *This,
++                               UINT Adapter,
++                               D3DDEVTYPE DeviceType,
++                               D3DFORMAT AdapterFormat,
++                               DWORD Usage,
++                               D3DRESOURCETYPE RType,
++                               D3DFORMAT CheckFormat )
++{
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) { return D3DERR_INVALIDCALL; }
++    return ADAPTER_PROC(CheckDeviceFormat,
++                        DeviceType, AdapterFormat, Usage, RType, CheckFormat);
++}
++
++static HRESULT WINAPI
++d3dadapter9_CheckDeviceMultiSampleType( struct d3dadapter9 *This,
++                                        UINT Adapter,
++                                        D3DDEVTYPE DeviceType,
++                                        D3DFORMAT SurfaceFormat,
++                                        BOOL Windowed,
++                                        D3DMULTISAMPLE_TYPE MultiSampleType,
++                                        DWORD *pQualityLevels )
++{
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) { return D3DERR_INVALIDCALL; }
++    return ADAPTER_PROC(CheckDeviceMultiSampleType, DeviceType, SurfaceFormat,
++                        Windowed, MultiSampleType, pQualityLevels);
++}
++
++static HRESULT WINAPI
++d3dadapter9_CheckDepthStencilMatch( struct d3dadapter9 *This,
++                                    UINT Adapter,
++                                    D3DDEVTYPE DeviceType,
++                                    D3DFORMAT AdapterFormat,
++                                    D3DFORMAT RenderTargetFormat,
++                                    D3DFORMAT DepthStencilFormat )
++{
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) { return D3DERR_INVALIDCALL; }
++    return ADAPTER_PROC(CheckDepthStencilMatch, DeviceType, AdapterFormat,
++                        RenderTargetFormat, DepthStencilFormat);
++}
++
++static HRESULT WINAPI
++d3dadapter9_CheckDeviceFormatConversion( struct d3dadapter9 *This,
++                                     UINT Adapter,
++                                     D3DDEVTYPE DeviceType,
++                                     D3DFORMAT SourceFormat,
++                                     D3DFORMAT TargetFormat )
++{
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) { return D3DERR_INVALIDCALL; }
++    return ADAPTER_PROC(CheckDeviceFormatConversion,
++                        DeviceType, SourceFormat, TargetFormat);
++}
++
++static HRESULT WINAPI
++d3dadapter9_GetDeviceCaps( struct d3dadapter9 *This,
++                           UINT Adapter,
++                           D3DDEVTYPE DeviceType,
++                           D3DCAPS9 *pCaps )
++{
++    HRESULT hr;
++
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) { return D3DERR_INVALIDCALL; }
++
++    hr = ADAPTER_PROC(GetDeviceCaps, DeviceType, pCaps);
++    if (FAILED(hr)) { return hr; }
++
++    pCaps->MasterAdapterOrdinal = This->map[Adapter].master;
++    pCaps->AdapterOrdinalInGroup = Adapter-This->map[Adapter].master;
++    pCaps->NumberOfAdaptersInGroup = ADAPTER_GROUP.noutputs;
++
++    return hr;
++}
++
++static HMONITOR WINAPI
++d3dadapter9_GetAdapterMonitor( struct d3dadapter9 *This,
++                               UINT Adapter )
++{
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) { return (HMONITOR)0; }
++    return (HMONITOR)ADAPTER_OUTPUT.monitor;
++}
++
++static HRESULT WINAPI
++d3dadapter9_CreateDeviceEx( struct d3dadapter9 *This,
++                            UINT Adapter,
++                            D3DDEVTYPE DeviceType,
++                            HWND hFocusWindow,
++                            DWORD BehaviorFlags,
++                            D3DPRESENT_PARAMETERS *pPresentationParameters,
++                            D3DDISPLAYMODEEX *pFullscreenDisplayMode,
++                            IDirect3DDevice9Ex **ppReturnedDeviceInterface );
++
++static HRESULT WINAPI
++d3dadapter9_CreateDevice( struct d3dadapter9 *This,
++                          UINT Adapter,
++                          D3DDEVTYPE DeviceType,
++                          HWND hFocusWindow,
++                          DWORD BehaviorFlags,
++                          D3DPRESENT_PARAMETERS *pPresentationParameters,
++                          IDirect3DDevice9 **ppReturnedDeviceInterface )
++{
++    HRESULT hr;
++    hr = d3dadapter9_CreateDeviceEx(This, Adapter, DeviceType, hFocusWindow,
++                                    BehaviorFlags, pPresentationParameters,
++                                    NULL,
++                                    (IDirect3DDevice9Ex **)ppReturnedDeviceInterface);
++    if (FAILED(hr))
++        return hr;
++    return D3D_OK;
++}
++
++static UINT WINAPI
++d3dadapter9_GetAdapterModeCountEx( struct d3dadapter9 *This,
++                                   UINT Adapter,
++                                   const D3DDISPLAYMODEFILTER *pFilter )
++{
++    return 1;
++}
++
++static HRESULT WINAPI
++d3dadapter9_EnumAdapterModesEx( struct d3dadapter9 *This,
++                                UINT Adapter,
++                                const D3DDISPLAYMODEFILTER *pFilter,
++                                UINT Mode,
++                                D3DDISPLAYMODEEX *pMode )
++{
++    FIXME("(%p, %u, %p, %u, %p), stub!\n", This, Adapter, pFilter, Mode, pMode);
++    return D3DERR_INVALIDCALL;
++}
++
++static HRESULT WINAPI
++d3dadapter9_GetAdapterDisplayModeEx( struct d3dadapter9 *This,
++                                     UINT Adapter,
++                                     D3DDISPLAYMODEEX *pMode,
++                                     D3DDISPLAYROTATION *pRotation )
++{
++    FIXME("(%p, %u, %p, %p), stub!\n", This, Adapter, pMode, pRotation);
++    return D3DERR_INVALIDCALL;
++}
++
++static HRESULT WINAPI
++d3dadapter9_CreateDeviceEx( struct d3dadapter9 *This,
++                            UINT Adapter,
++                            D3DDEVTYPE DeviceType,
++                            HWND hFocusWindow,
++                            DWORD BehaviorFlags,
++                            D3DPRESENT_PARAMETERS *pPresentationParameters,
++                            D3DDISPLAYMODEEX *pFullscreenDisplayMode,
++                            IDirect3DDevice9Ex **ppReturnedDeviceInterface )
++{
++    ID3DPresentGroup *present;
++    HRESULT hr;
++    boolean no_window_changes;
++
++    if (Adapter >= d3dadapter9_GetAdapterCount(This)) {
++        WARN("Adapter %u does not exist.\n", Adapter);
++        return D3DERR_INVALIDCALL;
++    }
++
++    {
++        struct adapter_group *group = &ADAPTER_GROUP;
++        unsigned nparams, ordinal;
++
++        if (BehaviorFlags & D3DCREATE_ADAPTERGROUP_DEVICE) {
++            nparams = group->noutputs;
++            ordinal = 0;
++        } else {
++            nparams = 1;
++            ordinal = Adapter - This->map[Adapter].master;
++        }
++        no_window_changes = !!(BehaviorFlags & D3DCREATE_NOWINDOWCHANGES);
++
++        hr = present_create_present_group(This->gdi_display, group->devname, ordinal,
++                                               hFocusWindow,
++                                               pPresentationParameters,
++                                               nparams, &present, This->ex, no_window_changes);
++    }
++
++    if (FAILED(hr)) {
++        WARN("Failed to create PresentGroup.\n");
++        return hr;
++    }
++
++    if (This->ex) {
++        hr = ADAPTER_PROC(CreateDeviceEx, Adapter, DeviceType, hFocusWindow,
++                          BehaviorFlags, pPresentationParameters,
++                          pFullscreenDisplayMode,
++                          (IDirect3D9Ex *)This, present,
++                          ppReturnedDeviceInterface);
++    } else { /* CreateDevice on non-ex */
++        hr = ADAPTER_PROC(CreateDevice, Adapter, DeviceType, hFocusWindow,
++                          BehaviorFlags, pPresentationParameters,
++                          (IDirect3D9 *)This, present,
++                          (IDirect3DDevice9 **)ppReturnedDeviceInterface);
++    }
++    if (FAILED(hr)) {
++        WARN("ADAPTER_PROC failed.\n");
++        ID3DPresentGroup_Release(present);
++    }
++
++    return hr;
++}
++
++static HRESULT WINAPI
++d3dadapter9_GetAdapterLUID( struct d3dadapter9 *This,
++                            UINT Adapter,
++                            LUID *pLUID )
++{
++    FIXME("(%p, %u, %p), stub!\n", This, Adapter, pLUID);
++    return D3DERR_INVALIDCALL;
++}
++
++static struct adapter_group *
++add_group( struct d3dadapter9 *This )
++{
++    if (This->ngroups >= This->ngroupsalloc) {
++        void *r;
++
++        if (This->ngroupsalloc == 0) {
++            This->ngroupsalloc = 2;
++            r = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                          This->ngroupsalloc*sizeof(struct adapter_group));
++        } else {
++            This->ngroupsalloc <<= 1;
++            r = HeapReAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, This->groups,
++                        This->ngroupsalloc*sizeof(struct adapter_group));
++        }
++
++        if (!r) { return NULL; }
++        This->groups = r;
++    }
++
++    return &This->groups[This->ngroups++];
++}
++
++static void
++remove_group( struct d3dadapter9 *This )
++{
++    struct adapter_group *group = &This->groups[This->ngroups-1];
++    int i;
++
++    for (i = 0; i < group->noutputs; ++i) {
++        HeapFree(GetProcessHeap(), 0, group->outputs[i].modes);
++    }
++    HeapFree(GetProcessHeap(), 0, group->outputs);
++
++    ZeroMemory(group, sizeof(struct adapter_group));
++    This->ngroups--;
++}
++
++static struct output *
++add_output( struct d3dadapter9 *This )
++{
++    struct adapter_group *group = &This->groups[This->ngroups-1];
++
++    if (group->noutputs >= group->noutputsalloc) {
++        void *r;
++
++        if (group->noutputsalloc == 0) {
++            group->noutputsalloc = 2;
++            r = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                          group->noutputsalloc*sizeof(struct output));
++        } else {
++            group->noutputsalloc <<= 1;
++            r = HeapReAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, group->outputs,
++                            group->noutputsalloc*sizeof(struct output));
++        }
++
++        if (!r) { return NULL; }
++        group->outputs = r;
++    }
++
++    return &group->outputs[group->noutputs++];
++}
++
++static void
++remove_output( struct d3dadapter9 *This )
++{
++    struct adapter_group *group = &This->groups[This->ngroups-1];
++    struct output *out = &group->outputs[group->noutputs-1];
++
++    HeapFree(GetProcessHeap(), 0, out->modes);
++
++    ZeroMemory(out, sizeof(struct output));
++    group->noutputs--;
++}
++
++static D3DDISPLAYMODEEX *
++add_mode( struct d3dadapter9 *This )
++{
++    struct adapter_group *group = &This->groups[This->ngroups-1];
++    struct output *out = &group->outputs[group->noutputs-1];
++
++    if (out->nmodes >= out->nmodesalloc) {
++        void *r;
++
++        if (out->nmodesalloc == 0) {
++            out->nmodesalloc = 8;
++            r = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                          out->nmodesalloc*sizeof(struct D3DDISPLAYMODEEX));
++        } else {
++            out->nmodesalloc <<= 1;
++            r = HeapReAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, out->modes,
++                            out->nmodesalloc*sizeof(struct D3DDISPLAYMODEEX));
++        }
++
++        if (!r) { return NULL; }
++        out->modes = r;
++    }
++
++    return &out->modes[out->nmodes++];
++}
++
++static void
++remove_mode( struct d3dadapter9 *This )
++{
++    struct adapter_group *group = &This->groups[This->ngroups-1];
++    struct output *out = &group->outputs[group->noutputs-1];
++    out->nmodes--;
++}
++
++#ifndef DM_INTERLACED
++#define DM_INTERLACED 2
++#endif /* DM_INTERLACED */
++
++static HRESULT
++fill_groups( struct d3dadapter9 *This )
++{
++    DISPLAY_DEVICEW dd;
++    DEVMODEW dm;
++    POINT pt;
++    HDC hdc;
++    HRESULT hr;
++    int i, j, k;
++
++    WCHAR wdisp[] = {'D','I','S','P','L','A','Y',0};
++
++    ZeroMemory(&dd, sizeof(dd));
++    ZeroMemory(&dm, sizeof(dm));
++    dd.cb = sizeof(dd);
++    dm.dmSize = sizeof(dm);
++
++    for (i = 0; EnumDisplayDevicesW(NULL, i, &dd, 0); ++i) {
++        struct adapter_group *group = add_group(This);
++        if (!group) {
++            ERR("Out of memory.\n");
++            return E_OUTOFMEMORY;
++        }
++
++        hdc = CreateDCW(wdisp, dd.DeviceName, NULL, NULL);
++        if (!hdc) {
++            remove_group(This);
++            WARN("Unable to create DC for display %d.\n", i);
++            goto end_group;
++        }
++
++        hr = present_create_adapter9(This->gdi_display, hdc, &group->adapter);
++        DeleteDC(hdc);
++        if (FAILED(hr)) {
++            remove_group(This);
++            goto end_group;
++        }
++
++        CopyMemory(group->devname, dd.DeviceName, sizeof(group->devname));
++        for (j = 0; EnumDisplayDevicesW(group->devname, j, &dd, 0); ++j) {
++            struct output *out = add_output(This);
++            boolean orient = FALSE, monit = FALSE;
++            if (!out) {
++                ERR("Out of memory.\n");
++                return E_OUTOFMEMORY;
++            }
++
++            for (k = 0; EnumDisplaySettingsExW(dd.DeviceName, k, &dm, 0); ++k) {
++                D3DDISPLAYMODEEX *mode = add_mode(This);
++                if (!out) {
++                    ERR("Out of memory.\n");
++                    return E_OUTOFMEMORY;
++                }
++
++                mode->Size = sizeof(D3DDISPLAYMODEEX);
++                mode->Width = dm.dmPelsWidth;
++                mode->Height = dm.dmPelsHeight;
++                mode->RefreshRate = dm.dmDisplayFrequency;
++                mode->ScanLineOrdering =
++                    (dm.dmDisplayFlags & DM_INTERLACED) ?
++                        D3DSCANLINEORDERING_INTERLACED :
++                        D3DSCANLINEORDERING_PROGRESSIVE;
++
++                switch (dm.dmBitsPerPel) {
++                    case 32: mode->Format = D3DFMT_X8R8G8B8; break;
++                    case 24: mode->Format = D3DFMT_R8G8B8; break;
++                    case 16: mode->Format = D3DFMT_R5G6B5; break;
++                    case 8:
++                        remove_mode(This);
++                        goto end_mode;
++
++                    default:
++                        remove_mode(This);
++                        WARN("Unknown format (%u bpp) in display %d, monitor "
++                             "%d, mode %d.\n", dm.dmBitsPerPel, i, j, k);
++                        goto end_mode;
++                }
++
++                if (!orient) {
++                    switch (dm.dmDisplayOrientation) {
++                        case DMDO_DEFAULT:
++                            out->rotation = D3DDISPLAYROTATION_IDENTITY;
++                            break;
++
++                        case DMDO_90:
++                            out->rotation = D3DDISPLAYROTATION_90;
++                            break;
++
++                        case DMDO_180:
++                            out->rotation = D3DDISPLAYROTATION_180;
++                            break;
++
++                        case DMDO_270:
++                            out->rotation = D3DDISPLAYROTATION_270;
++                            break;
++
++                        default:
++                            remove_output(This);
++                            WARN("Unknown display rotation in display %d, "
++                                 "monitor %d\n", i, j);
++                            goto end_output;
++                    }
++                    orient = TRUE;
++                }
++
++                if (!monit) {
++                    pt.x = dm.dmPosition.x;
++                    pt.y = dm.dmPosition.y;
++                    out->monitor = MonitorFromPoint(pt, 0);
++                    if (!out->monitor) {
++                        remove_output(This);
++                        WARN("Unable to get monitor handle for display %d, "
++                             "monitor %d.\n", i, j);
++                        goto end_output;
++                    }
++                    monit = TRUE;
++                }
++
++end_mode:
++                ZeroMemory(&dm, sizeof(dm));
++                dm.dmSize = sizeof(dm);
++            }
++
++end_output:
++            ZeroMemory(&dd, sizeof(dd));
++            dd.cb = sizeof(dd);
++        }
++
++end_group:
++        ZeroMemory(&dd, sizeof(dd));
++        dd.cb = sizeof(dd);
++    }
++
++    return D3D_OK;
++}
++
++static IDirect3D9ExVtbl d3dadapter9_vtable = {
++    (void *)d3dadapter9_QueryInterface,
++    (void *)d3dadapter9_AddRef,
++    (void *)d3dadapter9_Release,
++    (void *)d3dadapter9_RegisterSoftwareDevice,
++    (void *)d3dadapter9_GetAdapterCount,
++    (void *)d3dadapter9_GetAdapterIdentifier,
++    (void *)d3dadapter9_GetAdapterModeCount,
++    (void *)d3dadapter9_EnumAdapterModes,
++    (void *)d3dadapter9_GetAdapterDisplayMode,
++    (void *)d3dadapter9_CheckDeviceType,
++    (void *)d3dadapter9_CheckDeviceFormat,
++    (void *)d3dadapter9_CheckDeviceMultiSampleType,
++    (void *)d3dadapter9_CheckDepthStencilMatch,
++    (void *)d3dadapter9_CheckDeviceFormatConversion,
++    (void *)d3dadapter9_GetDeviceCaps,
++    (void *)d3dadapter9_GetAdapterMonitor,
++    (void *)d3dadapter9_CreateDevice,
++    (void *)d3dadapter9_GetAdapterModeCountEx,
++    (void *)d3dadapter9_EnumAdapterModesEx,
++    (void *)d3dadapter9_GetAdapterDisplayModeEx,
++    (void *)d3dadapter9_CreateDeviceEx,
++    (void *)d3dadapter9_GetAdapterLUID
++};
++
++HRESULT
++d3dadapter9_new( Display *gdi_display,
++                 boolean ex,
++                 IDirect3D9Ex **ppOut )
++{
++    struct d3dadapter9 *This = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                                         sizeof(struct d3dadapter9));
++    HRESULT hr;
++    unsigned i, j, k;
++
++    if (!This) {
++        ERR("Out of memory.\n");
++        return E_OUTOFMEMORY;
++    }
++
++    This->vtable = &d3dadapter9_vtable;
++    This->refs = 1;
++    This->ex = ex;
++    This->gdi_display = gdi_display;
++
++    if (!has_d3dadapter(gdi_display)) {
++        ERR("Your display driver doesn't support native D3D9 adapters.\n");
++        d3dadapter9_Release(This);
++        return D3DERR_NOTAVAILABLE;
++    }
++
++    hr = fill_groups(This);
++    if (FAILED(hr)) {
++        d3dadapter9_Release(This);
++        return hr;
++    }
++
++    /* map absolute adapter IDs with internal adapters */
++    for (i = 0; i < This->ngroups; ++i) {
++        for (j = 0; j < This->groups[i].noutputs; ++j) {
++            This->nadapters++;
++        }
++    }
++    if (This->nadapters == 0) {
++        ERR("No available native adapters in system.\n");
++        d3dadapter9_Release(This);
++        return D3DERR_NOTAVAILABLE;
++    }
++
++    This->map = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                          This->nadapters*sizeof(struct adapter_map));
++    if (!This->map) {
++        d3dadapter9_Release(This);
++        ERR("Out of memory.\n");
++        return E_OUTOFMEMORY;
++    }
++    for (i = k = 0; i < This->ngroups; ++i) {
++        for (j = 0; j < This->groups[i].noutputs; ++j, ++k) {
++            This->map[k].master = k-j;
++            This->map[k].group = i;
++        }
++    }
++
++    *ppOut = (IDirect3D9Ex *)This;
++    FIXME("\033[1;32m\nNative Direct3D 9 is active."
++          "\nFor more information visit https://wiki.ixit.cz/d3d9\033[0m\n");
++    return D3D_OK;
++}
+diff --git a/dlls/d3d9-nine/d3dadapter9.h b/dlls/d3d9-nine/d3dadapter9.h
+new file mode 100644
+index 0000000..2fafdf2
+--- /dev/null
++++ b/dlls/d3d9-nine/d3dadapter9.h
+@@ -0,0 +1,30 @@
++/*
++ * D3DAdapter9 interface
++ *
++ * Copyright 2015 Patrick Rudolph
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++
++#ifndef __WINE_D3D9ADAPTER_H
++#define __WINE_D3D9ADAPTER_H
++
++#include <X11/Xlib.h>
++
++void d3dadapter9_init(HINSTANCE hinst);
++void d3dadapter9_destroy(HINSTANCE hinst);
++HRESULT d3dadapter9_new(Display *gdi_display, boolean ex, IDirect3D9Ex **ppOut);
++
++#endif /* __WINE_D3D9ADAPTER_H */
+diff --git a/dlls/d3d9-nine/dri3.c b/dlls/d3d9-nine/dri3.c
+new file mode 100644
+index 0000000..d147b23
+--- /dev/null
++++ b/dlls/d3d9-nine/dri3.c
+@@ -0,0 +1,1344 @@
++/*
++ * Wine DRI3 interface
++ *
++ * Copyright 2014-2015 Axel Davy
++ * Copyright 2015 Patrick Rudolph
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++
++
++#include "config.h"
++#include "wine/debug.h"
++
++WINE_DEFAULT_DEBUG_CHANNEL(d3dadapter);
++
++#include <d3dadapter/d3dadapter9.h>
++#include <stdlib.h>
++#include <fcntl.h>
++#include <pthread.h>
++
++#include "dri3.h"
++#include "winbase.h" /* for Sleep */
++
++#ifdef D3DADAPTER9_DRI2
++#include <unistd.h>
++#include <sys/ioctl.h>
++#include <stdio.h>
++#include <string.h>
++
++#define BOOL X_BOOL
++#define BYTE X_BYTE
++#define INT8 X_INT8
++#define INT16 X_INT16
++#define INT32 X_INT32
++#define INT64 X_INT64
++#include <X11/Xmd.h>
++#include <X11/Xproto.h>
++#undef BOOL
++#undef BYTE
++#undef INT8
++#undef INT16
++#undef INT32
++#undef INT64
++#undef LONG64
++
++#include <X11/Xlibint.h>
++#include <X11/extensions/dri2tokens.h>
++#include <X11/extensions/dri2proto.h>
++#include <X11/extensions/extutil.h>
++#define GL_GLEXT_PROTOTYPES 1
++#define EGL_EGLEXT_PROTOTYPES 1
++#define GL_GLEXT_LEGACY 1
++#include <GL/gl.h>
++/* workaround gl header bug */
++#define glBlendColor glBlendColorLEV
++#define glBlendEquation glBlendEquationLEV
++#include <GL/glext.h>
++#include <EGL/egl.h>
++#include <EGL/eglext.h>
++#include <libdrm/drm_fourcc.h>
++#include <libdrm/drm.h>
++/*GLAPI void GLAPIENTRY glFlush( void );
++
++GLAPI void APIENTRY glGenFramebuffers (GLsizei n, GLuint *framebuffers);
++GLAPI void APIENTRY glBindFramebufferEXT (GLenum target, GLuint framebuffer);
++GLAPI void APIENTRY glBlitFramebuffer (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
++GLAPI void APIENTRY glFramebufferTexture2DEXT (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
++GLAPI void APIENTRY glBindFramebuffer (GLenum target, GLuint framebuffer);
++GLAPI void APIENTRY glFramebufferTexture2D (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
++GLAPI void APIENTRY glDeleteTexturesEXT (GLsizei n, const GLuint *textures);
++EGLAPI EGLBoolean EGLAPIENTRY eglDestroyImageKHR (EGLDisplay dpy, EGLImageKHR image);*/
++
++typedef void (APIENTRYP PFNGLEGLIMAGETARGETTEXTURE2DOESPROC) (GLenum target, GLeglImageOES image);
++typedef EGLImageKHR (EGLAPIENTRYP PFNEGLCREATEIMAGEKHRPROC) (EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list);
++typedef EGLDisplay (EGLAPIENTRYP PFNEGLGETPLATFORMDISPLAYEXTPROC) (EGLenum platform, void *native_display, const EGLint *attrib_list);
++
++#endif
++
++BOOL
++DRI3CheckExtension(Display *dpy, int major, int minor)
++{
++    xcb_connection_t *xcb_connection = XGetXCBConnection(dpy);
++    xcb_dri3_query_version_cookie_t dri3_cookie;
++    xcb_dri3_query_version_reply_t *dri3_reply;
++    xcb_generic_error_t *error;
++    const xcb_query_extension_reply_t *extension;
++    int fd;
++
++    xcb_prefetch_extension_data(xcb_connection, &xcb_dri3_id);
++
++    extension = xcb_get_extension_data(xcb_connection, &xcb_dri3_id);
++    if (!(extension && extension->present)) {
++        ERR("DRI3 extension is not present\n");
++        return FALSE;
++    }
++
++    dri3_cookie = xcb_dri3_query_version(xcb_connection, major, minor);
++
++    dri3_reply = xcb_dri3_query_version_reply(xcb_connection, dri3_cookie, &error);
++    if (!dri3_reply) {
++        free(error);
++        ERR("Issue getting requested version of DRI3: %d,%d\n", major, minor);
++        return FALSE;
++    }
++
++    if (!DRI3Open(dpy, DefaultScreen(dpy), &fd)) {
++        ERR("DRI3 advertised, but not working\n");
++        return FALSE;
++    }
++    close(fd);
++
++    TRACE("DRI3 version %d,%d found. %d %d requested\n", major, minor, (int)dri3_reply->major_version, (int)dri3_reply->minor_version);
++    free(dri3_reply);
++
++    return TRUE;
++}
++
++#ifdef D3DADAPTER9_DRI2
++
++struct DRI2priv {
++    Display *dpy;
++    EGLDisplay display;
++    EGLContext context;
++    PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glEGLImageTargetTexture2DOES_func;
++    PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR_func;
++    PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR_func;
++};
++
++/* TODO: We don't free memory properly. When exiting, eglTerminate doesn't work well(crash), and things are freed automatically. Rely on it */
++
++BOOL
++DRI2FallbackInit(Display *dpy, struct DRI2priv **priv)
++{
++    PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glEGLImageTargetTexture2DOES_func;
++    PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR_func;
++    PFNEGLGETPLATFORMDISPLAYEXTPROC eglGetPlatformDisplayEXT_func;
++    PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR_func;
++    EGLDisplay display;
++    EGLint major, minor;
++    EGLConfig config;
++    EGLContext context;
++    EGLint i;
++    EGLBoolean b;
++    EGLenum current_api = 0;
++    const char *extensions;
++    EGLint config_attribs[] = {
++        EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT,
++        EGL_NONE
++    };
++    EGLint context_compatibility_attribs[] = {
++        EGL_CONTEXT_OPENGL_PROFILE_MASK_KHR, EGL_CONTEXT_OPENGL_COMPATIBILITY_PROFILE_BIT_KHR,
++        EGL_NONE
++    };
++
++    current_api = eglQueryAPI();
++    eglGetPlatformDisplayEXT_func = (PFNEGLGETPLATFORMDISPLAYEXTPROC) eglGetProcAddress("eglGetPlatformDisplayEXT");
++    if (!eglGetPlatformDisplayEXT_func)
++        return FALSE;
++    display = eglGetPlatformDisplayEXT_func(EGL_PLATFORM_X11_EXT, dpy, NULL);
++    if (!display)
++        return FALSE;
++    if (eglInitialize(display, &major, &minor) != EGL_TRUE)
++        goto clean_egl_display;
++
++    extensions = eglQueryString(display, EGL_CLIENT_APIS);
++    if (!extensions || !strstr(extensions, "OpenGL"))
++        goto clean_egl_display;
++
++    extensions = eglQueryString(display, EGL_EXTENSIONS);
++    if (!extensions || !strstr(extensions, "EGL_EXT_image_dma_buf_import") ||
++        !strstr(extensions, "EGL_KHR_create_context") ||
++        !strstr(extensions, "EGL_KHR_surfaceless_context") ||
++        !strstr(extensions, "EGL_KHR_image_base"))
++        goto clean_egl_display;
++
++    if (!eglChooseConfig(display, config_attribs, &config, 1, &i))
++        goto clean_egl_display;
++
++    b = eglBindAPI(EGL_OPENGL_API);
++    if (b == EGL_FALSE)
++        goto clean_egl_display;
++    context = eglCreateContext(display, config, EGL_NO_CONTEXT, context_compatibility_attribs);
++    if (context == EGL_NO_CONTEXT)
++        goto clean_egl_display;
++
++    glEGLImageTargetTexture2DOES_func = (PFNGLEGLIMAGETARGETTEXTURE2DOESPROC) eglGetProcAddress("glEGLImageTargetTexture2DOES");
++    eglCreateImageKHR_func = (PFNEGLCREATEIMAGEKHRPROC) eglGetProcAddress("eglCreateImageKHR");
++    eglDestroyImageKHR_func = (PFNEGLDESTROYIMAGEKHRPROC) eglGetProcAddress("eglDestroyImageKHR");
++    if (!eglCreateImageKHR_func || !glEGLImageTargetTexture2DOES_func || !eglDestroyImageKHR_func) {
++        ERR("eglGetProcAddress failed !");
++        goto clean_egl_display;
++    }
++
++    eglMakeCurrent(display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
++
++    *priv = calloc(1, sizeof(struct DRI2priv));
++    if (!*priv)
++        goto clean_egl;
++    (*priv)->dpy = dpy;
++    (*priv)->display = display;
++    (*priv)->context = context;
++    (*priv)->glEGLImageTargetTexture2DOES_func = glEGLImageTargetTexture2DOES_func;
++    (*priv)->eglCreateImageKHR_func = eglCreateImageKHR_func;
++    (*priv)->eglDestroyImageKHR_func = eglDestroyImageKHR_func;
++    eglBindAPI(current_api);
++    return TRUE;
++
++clean_egl:
++clean_egl_display:
++    eglTerminate(display);
++    eglBindAPI(current_api);
++    return FALSE;
++}
++
++/* hypothesis: at this step all textures, etc are destroyed */
++void
++DRI2FallbackDestroy(struct DRI2priv *priv)
++{
++    EGLenum current_api;
++    current_api = eglQueryAPI();
++    eglBindAPI(EGL_OPENGL_API);
++    eglMakeCurrent(priv->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
++    eglDestroyContext(priv->display, priv->context);
++    eglTerminate(priv->display);
++    eglBindAPI(current_api);
++    free(priv);
++}
++
++BOOL
++DRI2FallbackCheckSupport(Display *dpy)
++{
++    struct DRI2priv *priv;
++    int fd;
++    if (!DRI2FallbackInit(dpy, &priv))
++        return FALSE;
++    DRI2FallbackDestroy(priv);
++    if (!DRI2FallbackOpen(dpy, DefaultScreen(dpy), &fd))
++        return FALSE;
++    close(fd);
++    return TRUE;
++}
++
++#endif
++
++BOOL
++PRESENTCheckExtension(Display *dpy, int major, int minor)
++{
++    xcb_connection_t *xcb_connection = XGetXCBConnection(dpy);
++    xcb_present_query_version_cookie_t present_cookie;
++    xcb_present_query_version_reply_t *present_reply;
++    xcb_generic_error_t *error;
++    const xcb_query_extension_reply_t *extension;
++
++    xcb_prefetch_extension_data(xcb_connection, &xcb_present_id);
++
++    extension = xcb_get_extension_data(xcb_connection, &xcb_present_id);
++    if (!(extension && extension->present)) {
++        ERR("PRESENT extension is not present\n");
++        return FALSE;
++    }
++
++    present_cookie = xcb_present_query_version(xcb_connection, major, minor);
++
++    present_reply = xcb_present_query_version_reply(xcb_connection, present_cookie, &error);
++    if (!present_reply) {
++        free(error);
++        ERR("Issue getting requested version of PRESENT: %d,%d\n", major, minor);
++        return FALSE;
++    }
++
++    TRACE("PRESENT version %d,%d found. %d %d requested\n", major, minor, (int)present_reply->major_version, (int)present_reply->minor_version);
++    free(present_reply);
++
++    return TRUE;
++}
++
++BOOL
++DRI3Open(Display *dpy, int screen, int *device_fd)
++{
++    xcb_dri3_open_cookie_t cookie;
++    xcb_dri3_open_reply_t *reply;
++    xcb_connection_t *xcb_connection = XGetXCBConnection(dpy);
++    int fd;
++    Window root = RootWindow(dpy, screen);
++
++    cookie = xcb_dri3_open(xcb_connection, root, 0);
++
++    reply = xcb_dri3_open_reply(xcb_connection, cookie, NULL);
++    if (!reply)
++        return FALSE;
++
++    if (reply->nfd != 1) {
++        free(reply);
++        return FALSE;
++    }
++
++    fd = xcb_dri3_open_reply_fds(xcb_connection, reply)[0];
++    fcntl(fd, F_SETFD, FD_CLOEXEC);
++
++    *device_fd = fd;
++    free(reply);
++
++    return TRUE;
++}
++
++#ifdef D3DADAPTER9_DRI2
++
++static XExtensionInfo _dri2_info_data;
++static XExtensionInfo *dri2_info = &_dri2_info_data;
++static char dri2_name[] = DRI2_NAME;
++
++#define DRI2CheckExtension(dpy, i, val) \
++  XextCheckExtension(dpy, i, dri2_name, val)
++
++
++static int
++close_display(Display *dpy,
++              XExtCodes *codes);
++static Bool
++wire_to_event(Display *dpy,
++              XEvent *re,
++              xEvent *event);
++static Status
++event_to_wire(Display *dpy,
++              XEvent *re,
++              xEvent *event);
++static int
++error( Display *dpy,
++       xError *err,
++       XExtCodes *codes,
++       int *ret_code );
++static XExtensionHooks dri2_hooks = {
++    NULL, /* create_gc */
++    NULL, /* copy_gc */
++    NULL, /* flush_gc */
++    NULL, /* free_gc */
++    NULL, /* create_font */
++    NULL, /* free_font */
++    close_display, /* close_display */
++    wire_to_event, /* wire_to_event */
++    event_to_wire, /* event_to_wire */
++    error, /* error */
++    NULL, /* error_string */
++};
++static XEXT_GENERATE_CLOSE_DISPLAY(close_display, dri2_info);
++static XEXT_GENERATE_FIND_DISPLAY(find_display, dri2_info,
++                                  dri2_name, &dri2_hooks, 0, NULL);
++static Bool
++wire_to_event(Display *dpy,
++              XEvent *re,
++              xEvent *event)
++{
++    XExtDisplayInfo *info = find_display(dpy);
++    DRI2CheckExtension(dpy, info, False);
++    TRACE("dri2 wire_to_event\n");
++    return False;
++}
++static Status
++event_to_wire(Display *dpy,
++              XEvent *re,
++              xEvent *event)
++{
++    XExtDisplayInfo *info = find_display(dpy);
++    DRI2CheckExtension(dpy, info, False);
++    TRACE("dri2 event_to_wire\n");
++    return False;
++}
++static int
++error(Display *dpy,
++      xError *err,
++      XExtCodes *codes,
++      int *ret_code)
++{
++    TRACE("dri2 error\n");
++    return False;
++}
++
++#define XALIGN(x) (((x) + 3) & (~3))
++
++static BOOL
++DRI2Connect(Display *dpy,
++            XID window,
++            unsigned driver_type,
++            char **device )
++{
++    XExtDisplayInfo *info = find_display(dpy);
++    xDRI2ConnectReply rep;
++    xDRI2ConnectReq *req;
++    int dev_len, driv_len;
++    char *driver;
++
++    DRI2CheckExtension(dpy, info, False);
++
++    LockDisplay(dpy);
++    GetReq(DRI2Connect, req);
++    req->reqType = info->codes->major_opcode;
++    req->dri2ReqType = X_DRI2Connect;
++    req->window = window;
++    req->driverType = driver_type;
++    if (!_XReply(dpy, (xReply *)&rep, 0, xFalse)) {
++        UnlockDisplay(dpy);
++        SyncHandle();
++        return False;
++    }
++
++    /* check string lengths */
++    dev_len = rep.deviceNameLength;
++    driv_len = rep.driverNameLength;
++    if (dev_len == 0 || driv_len == 0) {
++        _XEatData(dpy, XALIGN(dev_len) + XALIGN(driv_len));
++        UnlockDisplay(dpy);
++        SyncHandle();
++        return False;
++    }
++
++    /* read out driver */
++    driver = HeapAlloc(GetProcessHeap(), 0, driv_len + 1);
++    if (!driver) {
++        _XEatData(dpy, XALIGN(dev_len) + XALIGN(driv_len));
++        UnlockDisplay(dpy);
++        SyncHandle();
++        return False;
++    }
++    _XReadPad(dpy, driver, driv_len);
++    HeapFree(GetProcessHeap(), 0, driver); /* we don't need the driver */
++
++    /* read out device */
++    *device = HeapAlloc(GetProcessHeap(), 0, dev_len + 1);
++    if (!*device) {
++        _XEatData(dpy, XALIGN(dev_len));
++        UnlockDisplay(dpy);
++        SyncHandle();
++        return False;
++    }
++    _XReadPad(dpy, *device, dev_len);
++    (*device)[dev_len] = '\0';
++
++    UnlockDisplay(dpy);
++    SyncHandle();
++
++    return True;
++}
++
++static Bool
++DRI2Authenticate(Display *dpy,
++                 XID window,
++                 uint32_t token)
++{
++    XExtDisplayInfo *info = find_display(dpy);
++    xDRI2AuthenticateReply rep;
++    xDRI2AuthenticateReq *req;
++
++    DRI2CheckExtension(dpy, info, False);
++
++    LockDisplay(dpy);
++    GetReq(DRI2Authenticate, req);
++    req->reqType = info->codes->major_opcode;
++    req->dri2ReqType = X_DRI2Authenticate;
++    req->window = window;
++    req->magic = token;
++    if (!_XReply(dpy, (xReply *)&rep, 0, xFalse)) {
++        UnlockDisplay(dpy);
++        SyncHandle();
++        return False;
++    }
++    UnlockDisplay(dpy);
++    SyncHandle();
++
++    return rep.authenticated ? True : False;
++}
++
++BOOL
++DRI2FallbackOpen(Display *dpy, int screen, int *device_fd)
++{
++    char *device;
++    int fd;
++    Window root = RootWindow(dpy, screen);
++    drm_auth_t auth;
++
++    if (!DRI2Connect(dpy, root, DRI2DriverDRI, &device))
++        return FALSE;
++
++    fd = open(device, O_RDWR);
++    HeapFree(GetProcessHeap(), 0, device);
++    if (fd < 0)
++        return FALSE;
++
++    if (ioctl(fd, DRM_IOCTL_GET_MAGIC, &auth) != 0) {
++        close(fd);
++        return FALSE;
++    }
++
++    if (!DRI2Authenticate(dpy, root, auth.magic)) {
++        close(fd);
++        return FALSE;
++    }
++
++    *device_fd = fd;
++
++    return TRUE;
++}
++
++#endif
++
++
++BOOL
++DRI3PixmapFromDmaBuf(Display *dpy, int screen, int fd, int width, int height, int stride, int depth, int bpp, Pixmap *pixmap)
++{
++    xcb_connection_t *xcb_connection = XGetXCBConnection(dpy);
++    Window root = RootWindow(dpy, screen);
++    xcb_void_cookie_t cookie;
++    xcb_generic_error_t *error;
++
++    cookie = xcb_dri3_pixmap_from_buffer_checked(xcb_connection,
++                                                (*pixmap = xcb_generate_id(xcb_connection)),
++                                                root,
++                                                0,
++                                                width, height, stride,
++                                                depth, bpp, fd);
++    error = xcb_request_check(xcb_connection, cookie); /* performs a flush */
++    if (error) {
++        ERR("Error using DRI3 to convert a DmaBufFd to pixmap\n");
++        return FALSE;
++    }
++    return TRUE;
++}
++
++BOOL
++DRI3DmaBufFromPixmap(Display *dpy, Pixmap pixmap, int *fd, int *width, int *height, int *stride, int *depth, int *bpp)
++{
++    xcb_connection_t *xcb_connection = XGetXCBConnection(dpy);
++    xcb_dri3_buffer_from_pixmap_cookie_t bp_cookie;
++    xcb_dri3_buffer_from_pixmap_reply_t  *bp_reply;
++
++    bp_cookie = xcb_dri3_buffer_from_pixmap(xcb_connection, pixmap);
++    bp_reply = xcb_dri3_buffer_from_pixmap_reply(xcb_connection, bp_cookie, NULL);
++    if (!bp_reply)
++        return FALSE;
++    *fd = xcb_dri3_buffer_from_pixmap_reply_fds(xcb_connection, bp_reply)[0];
++    *width = bp_reply->width;
++    *height = bp_reply->height;
++    *stride = bp_reply->stride;
++    *depth = bp_reply->depth;
++    *bpp = bp_reply->depth;
++    return TRUE;
++}
++
++struct PRESENTPriv {
++    xcb_connection_t *xcb_connection;
++    xcb_connection_t *xcb_connection_bis; /* to avoid libxcb thread bugs, use a different connection to present pixmaps */
++    XID window;
++    uint64_t last_msc;
++    uint64_t last_target;
++    uint32_t last_serial_given;
++    xcb_special_event_t *special_event;
++    PRESENTPixmapPriv *first_present_priv;
++    int pixmap_present_pending;
++    BOOL notify_with_serial_pending;
++    pthread_mutex_t mutex_present; /* protect readind/writing present_priv things */
++    pthread_mutex_t mutex_xcb_wait;
++    BOOL xcb_wait;
++};
++
++struct PRESENTPixmapPriv {
++    PRESENTpriv *present_priv;
++    Pixmap pixmap;
++    BOOL released;
++    unsigned int width;
++    unsigned int height;
++    unsigned int depth;
++    BOOL present_complete_pending;
++    uint32_t serial;
++#ifdef D3DADAPTER9_DRI2
++    struct {
++        BOOL is_dri2;
++        struct DRI2priv *dri2_priv;
++        GLuint fbo_read;
++        GLuint fbo_write;
++        GLuint texture_read;
++        GLuint texture_write;
++    } dri2_info;
++#endif
++    BOOL last_present_was_flip;
++    PRESENTPixmapPriv *next;
++};
++
++static PRESENTPixmapPriv *PRESENTFindPixmapPriv(PRESENTpriv *present_priv, uint32_t serial)
++{
++    PRESENTPixmapPriv *current = present_priv->first_present_priv;
++
++    while (current) {
++        if (current->serial == serial)
++            return current;
++        current = current->next;
++    }
++    return NULL;
++}
++
++static void PRESENThandle_events(PRESENTpriv *present_priv, xcb_present_generic_event_t *ge)
++{
++    PRESENTPixmapPriv *present_pixmap_priv = NULL;
++
++    switch (ge->evtype) {
++        case XCB_PRESENT_COMPLETE_NOTIFY: {
++            xcb_present_complete_notify_event_t *ce = (void *) ge;
++            if (ce->kind == XCB_PRESENT_COMPLETE_KIND_NOTIFY_MSC) {
++                if (ce->serial)
++                    present_priv->notify_with_serial_pending = FALSE;
++                free(ce);
++                return;
++            }
++            present_pixmap_priv = PRESENTFindPixmapPriv(present_priv, ce->serial);
++            if (!present_pixmap_priv || ce->kind != XCB_PRESENT_COMPLETE_KIND_PIXMAP) {
++                ERR("FATAL ERROR: PRESENT handling failed\n");
++                free(ce);
++                return;
++            }
++            present_pixmap_priv->present_complete_pending = FALSE;
++            switch (ce->mode) {
++                case XCB_PRESENT_COMPLETE_MODE_FLIP:
++                    present_pixmap_priv->last_present_was_flip = TRUE;
++                    break;
++                case XCB_PRESENT_COMPLETE_MODE_COPY:
++                    present_pixmap_priv->last_present_was_flip = FALSE;
++                    break;
++            }
++            present_priv->pixmap_present_pending--;
++            present_priv->last_msc = ce->msc;
++            break;
++        }
++        case XCB_PRESENT_EVENT_IDLE_NOTIFY: {
++            xcb_present_idle_notify_event_t *ie = (void *) ge;
++            present_pixmap_priv = PRESENTFindPixmapPriv(present_priv, ie->serial);
++            if (!present_pixmap_priv || present_pixmap_priv->pixmap != ie->pixmap) {
++                ERR("FATAL ERROR: PRESENT handling failed\n");
++                free(ie);
++                return;
++            }
++            present_pixmap_priv->released = TRUE;
++            break;
++        }
++    }
++    free(ge);
++}
++
++static void PRESENTflush_events(PRESENTpriv *present_priv, BOOL assert_no_other_thread_waiting)
++{
++    xcb_generic_event_t *ev;
++
++    if ((present_priv->xcb_wait && !assert_no_other_thread_waiting) || /* don't steal events to someone waiting */
++        !present_priv->special_event)
++        return;
++
++    while ((ev = xcb_poll_for_special_event(present_priv->xcb_connection, present_priv->special_event)) != NULL) {
++        PRESENThandle_events(present_priv, (void *) ev);
++    }
++}
++
++static BOOL PRESENTwait_events(PRESENTpriv *present_priv, BOOL allow_other_threads)
++{
++    xcb_generic_event_t *ev;
++
++    if (allow_other_threads) {
++        present_priv->xcb_wait = TRUE;
++        pthread_mutex_lock(&present_priv->mutex_xcb_wait);
++        pthread_mutex_unlock(&present_priv->mutex_present);
++    }
++    ev = xcb_wait_for_special_event(present_priv->xcb_connection, present_priv->special_event);
++    if (allow_other_threads) {
++        pthread_mutex_unlock(&present_priv->mutex_xcb_wait);
++        pthread_mutex_lock(&present_priv->mutex_present);
++        present_priv->xcb_wait = FALSE;
++    }
++    if (!ev) {
++        ERR("FATAL error: xcb had an error\n");
++        return FALSE;
++    }
++
++    PRESENThandle_events(present_priv, (void *) ev);
++    return TRUE;
++}
++
++static struct xcb_connection_t *
++create_xcb_connection(Display *dpy)
++{
++    int screen_num = DefaultScreen(dpy);
++    xcb_connection_t *ret;
++    xcb_xfixes_query_version_cookie_t cookie;
++    xcb_xfixes_query_version_reply_t *rep;
++
++    ret = xcb_connect(DisplayString(dpy), &screen_num);
++    cookie = xcb_xfixes_query_version_unchecked(ret, XCB_XFIXES_MAJOR_VERSION, XCB_XFIXES_MINOR_VERSION);
++    rep = xcb_xfixes_query_version_reply(ret, cookie, NULL);
++    if (rep)
++        free(rep);
++    return ret;
++}
++
++BOOL
++PRESENTInit(Display *dpy, PRESENTpriv **present_priv)
++{
++    *present_priv = (PRESENTpriv *) calloc(1, sizeof(PRESENTpriv));
++    if (!*present_priv) {
++        return FALSE;
++    }
++    (*present_priv)->xcb_connection = create_xcb_connection(dpy);
++    (*present_priv)->xcb_connection_bis = create_xcb_connection(dpy);
++    pthread_mutex_init(&(*present_priv)->mutex_present, NULL);
++    pthread_mutex_init(&(*present_priv)->mutex_xcb_wait, NULL);
++    return TRUE;
++}
++
++static void PRESENTForceReleases(PRESENTpriv *present_priv)
++{
++    PRESENTPixmapPriv *current = NULL;
++
++    if (!present_priv->window)
++        return;
++
++    /* There should be no other thread listening for events here.
++     * This can happen when hDestWindowOverride changes without reset.
++     * This case should never happen, but can happen in theory.*/
++    if (present_priv->xcb_wait) {
++        xcb_present_notify_msc(present_priv->xcb_connection, present_priv->window, 0, 0, 0, 0);
++        xcb_flush(present_priv->xcb_connection);
++        pthread_mutex_lock(&present_priv->mutex_xcb_wait);
++        pthread_mutex_unlock(&present_priv->mutex_xcb_wait);
++        /* the problem here is that we don't have access to the event the other thread got.
++         * It is either presented event, idle event or notify event.
++         */
++        while (present_priv->pixmap_present_pending >= 2)
++            PRESENTwait_events(present_priv, FALSE);
++        PRESENTflush_events(present_priv, TRUE);
++        /* Remaining events to come can be a pair of present/idle,
++         * or an idle, or nothing. To be sure we are after all pixmaps
++         * have been presented, add an event to the queue that can only
++         * be after the present event, then if we receive an event more,
++         * we are sure all pixmaps were presented */
++        present_priv->notify_with_serial_pending = TRUE;
++        xcb_present_notify_msc(present_priv->xcb_connection, present_priv->window, 1, present_priv->last_target + 5, 0, 0);
++        xcb_flush(present_priv->xcb_connection);
++        while (present_priv->notify_with_serial_pending)
++            PRESENTwait_events(present_priv, FALSE);
++        /* Now we are sure we are not expecting any new event */
++    } else {
++        while (present_priv->pixmap_present_pending) /* wait all sent pixmaps are presented */
++            PRESENTwait_events(present_priv, FALSE);
++        PRESENTflush_events(present_priv, TRUE); /* may be remaining idle event */
++        /* Since idle events are send with the complete events when it is not flips,
++         * we are not expecting any new event here */
++    }
++
++    current = present_priv->first_present_priv;
++    while (current) {
++        if (!current->released) {
++            if (!current->last_present_was_flip && !present_priv->xcb_wait) {
++                ERR("ERROR: a pixmap seems not released by PRESENT for no reason. Code bug.\n");
++            } else {
++                /* Present the same pixmap with a non-valid part to force the copy mode and the releases */
++                xcb_xfixes_region_t valid, update;
++                xcb_rectangle_t rect_update;
++                rect_update.x = 0;
++                rect_update.y = 0;
++                rect_update.width = 8;
++                rect_update.height = 1;
++                valid = xcb_generate_id(present_priv->xcb_connection);
++                update = xcb_generate_id(present_priv->xcb_connection);
++                xcb_xfixes_create_region(present_priv->xcb_connection, valid, 1, &rect_update);
++                xcb_xfixes_create_region(present_priv->xcb_connection, update, 1, &rect_update);
++                /* here we know the pixmap has been presented. Thus if it is on screen,
++                 * the following request can only make it released by the server if it is not */
++                xcb_present_pixmap(present_priv->xcb_connection, present_priv->window,
++                                   current->pixmap, 0, valid, update, 0, 0, None, None,
++                                   None, XCB_PRESENT_OPTION_COPY | XCB_PRESENT_OPTION_ASYNC, 0, 0, 0, 0, NULL);
++                xcb_flush(present_priv->xcb_connection);
++                PRESENTwait_events(present_priv, FALSE); /* by assumption this can only be idle event */
++                PRESENTflush_events(present_priv, TRUE); /* Shoudln't be needed */
++            }
++        }
++        current = current->next;
++    }
++    /* Now all pixmaps are released (possibility if xcb_wait is true that one is not aware yet),
++     * and we don't expect any new Present event to come from Xserver */
++}
++
++static void PRESENTFreeXcbQueue(PRESENTpriv *present_priv)
++{
++    if (present_priv->window) {
++        xcb_unregister_for_special_event(present_priv->xcb_connection, present_priv->special_event);
++        present_priv->last_msc = 0;
++        present_priv->last_target = 0;
++        present_priv->special_event = NULL;
++    }
++}
++
++static BOOL PRESENTPrivChangeWindow(PRESENTpriv *present_priv, XID window)
++{
++    xcb_void_cookie_t cookie;
++    xcb_generic_error_t *error;
++    xcb_present_event_t eid;
++
++    PRESENTForceReleases(present_priv);
++    PRESENTFreeXcbQueue(present_priv);
++    present_priv->window = window;
++
++    if (window) {
++        cookie = xcb_present_select_input_checked(present_priv->xcb_connection,
++                                                  (eid = xcb_generate_id(present_priv->xcb_connection)),
++                                                  window,
++                                                  XCB_PRESENT_EVENT_MASK_COMPLETE_NOTIFY|
++                                                  XCB_PRESENT_EVENT_MASK_IDLE_NOTIFY);
++        present_priv->special_event = xcb_register_for_special_xge(present_priv->xcb_connection,
++                                                                   &xcb_present_id,
++                                                                   eid, NULL);
++        error = xcb_request_check(present_priv->xcb_connection, cookie); /* performs a flush */
++        if (error || !present_priv->special_event) {
++            ERR("FAILED to use the X PRESENT extension. Was the destination a window ?\n");
++            if (present_priv->special_event)
++                xcb_unregister_for_special_event(present_priv->xcb_connection, present_priv->special_event);
++            present_priv->special_event = NULL;
++            present_priv->window = 0;
++        }
++    }
++    return (present_priv->window != 0);
++}
++
++/* Destroy the content, except the link and the struct mem */
++static void
++PRESENTDestroyPixmapContent(Display *dpy, PRESENTPixmapPriv *present_pixmap)
++{
++    XFreePixmap(dpy, present_pixmap->pixmap);
++#ifdef D3DADAPTER9_DRI2
++    if (present_pixmap->dri2_info.is_dri2) {
++        struct DRI2priv *dri2_priv = present_pixmap->dri2_info.dri2_priv;
++        EGLenum current_api;
++        current_api = eglQueryAPI();
++        eglBindAPI(EGL_OPENGL_API);
++        if(eglMakeCurrent(dri2_priv->display, EGL_NO_SURFACE, EGL_NO_SURFACE, dri2_priv->context)) {
++            glDeleteFramebuffers(1, &present_pixmap->dri2_info.fbo_read);
++            glDeleteFramebuffers(1, &present_pixmap->dri2_info.fbo_write);
++            glDeleteTextures(1, &present_pixmap->dri2_info.texture_read);
++            glDeleteTextures(1, &present_pixmap->dri2_info.texture_write);
++        } else {
++            ERR("eglMakeCurrent failed with 0x%0X\n", eglGetError());
++        }
++        eglMakeCurrent(dri2_priv->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
++        eglBindAPI(current_api);
++    }
++#endif
++}
++
++void
++PRESENTDestroy(Display *dpy, PRESENTpriv *present_priv)
++{
++    PRESENTPixmapPriv *current = NULL;
++
++    pthread_mutex_lock(&present_priv->mutex_present);
++
++    PRESENTForceReleases(present_priv);
++
++    current = present_priv->first_present_priv;
++    while (current) {
++        PRESENTPixmapPriv *next = current->next;
++        PRESENTDestroyPixmapContent(dpy, current);
++        free(current);
++        current = next;
++    }
++
++    PRESENTFreeXcbQueue(present_priv);
++
++    xcb_disconnect(present_priv->xcb_connection);
++    xcb_disconnect(present_priv->xcb_connection_bis);
++    pthread_mutex_unlock(&present_priv->mutex_present);
++    pthread_mutex_destroy(&present_priv->mutex_present);
++    pthread_mutex_destroy(&present_priv->mutex_xcb_wait);
++
++    free(present_priv);
++}
++
++BOOL
++PRESENTPixmapInit(PRESENTpriv *present_priv, Pixmap pixmap, PRESENTPixmapPriv **present_pixmap_priv)
++{
++    xcb_get_geometry_cookie_t cookie;
++    xcb_get_geometry_reply_t *reply;
++
++    cookie = xcb_get_geometry(present_priv->xcb_connection, pixmap);
++    reply = xcb_get_geometry_reply(present_priv->xcb_connection, cookie, NULL);
++
++    if (!reply)
++        return FALSE;
++
++    *present_pixmap_priv = (PRESENTPixmapPriv *) calloc(1, sizeof(PRESENTPixmapPriv));
++    if (!*present_pixmap_priv) {
++        free(reply);
++        return FALSE;
++    }
++    pthread_mutex_lock(&present_priv->mutex_present);
++
++    (*present_pixmap_priv)->released = TRUE;
++    (*present_pixmap_priv)->pixmap = pixmap;
++    (*present_pixmap_priv)->present_priv = present_priv;
++    (*present_pixmap_priv)->next = present_priv->first_present_priv;
++    (*present_pixmap_priv)->width = reply->width;
++    (*present_pixmap_priv)->height = reply->height;
++    (*present_pixmap_priv)->depth = reply->depth;
++#ifdef D3DADAPTER9_DRI2
++    (*present_pixmap_priv)->dri2_info.is_dri2 = FALSE;
++#endif
++    free(reply);
++
++    present_priv->last_serial_given++;
++    (*present_pixmap_priv)->serial = present_priv->last_serial_given;
++    present_priv->first_present_priv = *present_pixmap_priv;
++
++    pthread_mutex_unlock(&present_priv->mutex_present);
++    return TRUE;
++}
++
++#ifdef D3DADAPTER9_DRI2
++
++BOOL
++DRI2FallbackPRESENTPixmap(PRESENTpriv *present_priv, struct DRI2priv *dri2_priv,
++                          int fd, int width, int height, int stride, int depth,
++                          int bpp, PRESENTPixmapPriv **present_pixmap_priv)
++{
++    Window root = RootWindow(dri2_priv->dpy, DefaultScreen(dri2_priv->dpy));
++    Pixmap pixmap;
++    EGLImageKHR image;
++    GLuint texture_read, texture_write, fbo_read, fbo_write;
++    EGLint attribs[] = {
++        EGL_WIDTH, 0,
++        EGL_HEIGHT, 0,
++        EGL_LINUX_DRM_FOURCC_EXT, DRM_FORMAT_ARGB8888,
++        EGL_DMA_BUF_PLANE0_FD_EXT, 0,
++        EGL_DMA_BUF_PLANE0_OFFSET_EXT, 0,
++        EGL_DMA_BUF_PLANE0_PITCH_EXT, 0,
++        EGL_NONE
++    };
++    EGLenum current_api;
++    int status;
++
++    pthread_mutex_lock(&present_priv->mutex_present);
++
++    pixmap = XCreatePixmap(dri2_priv->dpy, root, width, height, 24);
++    if (!pixmap)
++        goto fail;
++
++    attribs[1] = width;
++    attribs[3] = height;
++    attribs[7] = fd;
++    attribs[11] = stride;
++
++    current_api = eglQueryAPI();
++    eglBindAPI(EGL_OPENGL_API);
++
++    /* We bind the dma-buf to a EGLImage, then to a texture, and then to a fbo.
++     * Note that we can delete the EGLImage, but we shouldn't delete the texture,
++     * else the fbo is invalid */
++
++    image = dri2_priv->eglCreateImageKHR_func(dri2_priv->display,
++                              EGL_NO_CONTEXT,
++                              EGL_LINUX_DMA_BUF_EXT,
++                              NULL, attribs);
++
++    if (image == EGL_NO_IMAGE_KHR)
++        goto fail;
++    close(fd);
++
++    if(eglMakeCurrent(dri2_priv->display, EGL_NO_SURFACE, EGL_NO_SURFACE, dri2_priv->context)) {
++        glGenTextures(1, &texture_read);
++        glBindTexture(GL_TEXTURE_2D, texture_read);
++        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
++        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
++        dri2_priv->glEGLImageTargetTexture2DOES_func(GL_TEXTURE_2D, image);
++        glGenFramebuffers(1, &fbo_read);
++        glBindFramebuffer(GL_FRAMEBUFFER, fbo_read);
++        glFramebufferTexture2D(GL_FRAMEBUFFER,
++                               GL_COLOR_ATTACHMENT0,
++                               GL_TEXTURE_2D, texture_read,
++                               0);
++        status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
++        if (status != GL_FRAMEBUFFER_COMPLETE)
++            goto fail;
++        glBindTexture(GL_TEXTURE_2D, 0);
++        dri2_priv->eglDestroyImageKHR_func(dri2_priv->display, image);
++
++        /* We bind a newly created pixmap (to which we want to copy the content)
++         * to an EGLImage, then to a texture, then to a fbo. */
++        image = dri2_priv->eglCreateImageKHR_func(dri2_priv->display,
++                                                  dri2_priv->context,
++                                                  EGL_NATIVE_PIXMAP_KHR,
++                                                  (void *)pixmap, NULL);
++        if (image == EGL_NO_IMAGE_KHR)
++            goto fail;
++
++        glGenTextures(1, &texture_write);
++        glBindTexture(GL_TEXTURE_2D, texture_write);
++        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
++        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
++        dri2_priv->glEGLImageTargetTexture2DOES_func(GL_TEXTURE_2D, image);
++        glGenFramebuffers(1, &fbo_write);
++        glBindFramebuffer(GL_FRAMEBUFFER, fbo_write);
++        glFramebufferTexture2D(GL_FRAMEBUFFER,
++                               GL_COLOR_ATTACHMENT0,
++                               GL_TEXTURE_2D, texture_write,
++                               0);
++        status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
++        if (status != GL_FRAMEBUFFER_COMPLETE)
++            goto fail;
++        glBindTexture(GL_TEXTURE_2D, 0);
++        dri2_priv->eglDestroyImageKHR_func(dri2_priv->display, image);
++    } else {
++        ERR("eglMakeCurrent failed with 0x%0X\n", eglGetError());
++    }
++    eglMakeCurrent(dri2_priv->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
++
++    *present_pixmap_priv = (PRESENTPixmapPriv *) calloc(1, sizeof(PRESENTPixmapPriv));
++    if (!*present_pixmap_priv) {
++        goto fail;
++    }
++
++    (*present_pixmap_priv)->released = TRUE;
++    (*present_pixmap_priv)->pixmap = pixmap;
++    (*present_pixmap_priv)->present_priv = present_priv;
++    (*present_pixmap_priv)->next = present_priv->first_present_priv;
++    (*present_pixmap_priv)->width = width;
++    (*present_pixmap_priv)->height = height;
++    (*present_pixmap_priv)->depth = depth;
++    (*present_pixmap_priv)->dri2_info.is_dri2 = TRUE;
++    (*present_pixmap_priv)->dri2_info.dri2_priv = dri2_priv;
++    (*present_pixmap_priv)->dri2_info.fbo_read = fbo_read;
++    (*present_pixmap_priv)->dri2_info.fbo_write = fbo_write;
++    (*present_pixmap_priv)->dri2_info.texture_read = texture_read;
++    (*present_pixmap_priv)->dri2_info.texture_write = texture_write;
++
++    present_priv->last_serial_given++;
++    (*present_pixmap_priv)->serial = present_priv->last_serial_given;
++    present_priv->first_present_priv = *present_pixmap_priv;
++
++    eglBindAPI(current_api);
++
++    pthread_mutex_unlock(&present_priv->mutex_present);
++    return TRUE;
++fail:
++    eglMakeCurrent(dri2_priv->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
++    eglBindAPI(current_api);
++    pthread_mutex_unlock(&present_priv->mutex_present);
++    return FALSE;
++}
++
++#endif
++
++BOOL
++PRESENTTryFreePixmap(Display *dpy, PRESENTPixmapPriv *present_pixmap_priv)
++{
++    PRESENTpriv *present_priv = present_pixmap_priv->present_priv;
++    PRESENTPixmapPriv *current;
++
++    pthread_mutex_lock(&present_priv->mutex_present);
++
++    if (!present_pixmap_priv->released || present_pixmap_priv->present_complete_pending) {
++        pthread_mutex_unlock(&present_priv->mutex_present);
++        return FALSE;
++    }
++
++    if (present_priv->first_present_priv == present_pixmap_priv) {
++        present_priv->first_present_priv = present_pixmap_priv->next;
++        goto free_priv;
++    }
++
++    current = present_priv->first_present_priv;
++    while (current->next != present_pixmap_priv)
++        current = current->next;
++    current->next = present_pixmap_priv->next;
++free_priv:
++    PRESENTDestroyPixmapContent(dpy, present_pixmap_priv);
++    free(present_pixmap_priv);
++    pthread_mutex_unlock(&present_priv->mutex_present);
++    return TRUE;
++}
++
++BOOL
++PRESENTHelperCopyFront(Display *dpy, PRESENTPixmapPriv *present_pixmap_priv)
++{
++    PRESENTpriv *present_priv = present_pixmap_priv->present_priv;
++    xcb_void_cookie_t cookie;
++    xcb_generic_error_t *error;
++
++    uint32_t v = 0;
++    xcb_gcontext_t gc;
++
++    pthread_mutex_lock(&present_priv->mutex_present);
++
++    if (!present_priv->window) {
++        pthread_mutex_unlock(&present_priv->mutex_present);
++        return FALSE;
++    }
++
++    xcb_create_gc(present_priv->xcb_connection,
++                  (gc = xcb_generate_id(present_priv->xcb_connection)),
++                  present_priv->window,
++                  XCB_GC_GRAPHICS_EXPOSURES,
++                  &v);
++    cookie = xcb_copy_area_checked(present_priv->xcb_connection,
++                                   present_priv->window,
++                                   present_pixmap_priv->pixmap,
++                                   gc,
++                                   0, 0, 0, 0,
++                                   present_pixmap_priv->width,
++                                   present_pixmap_priv->height);
++    error = xcb_request_check(present_priv->xcb_connection, cookie);
++    xcb_free_gc(present_priv->xcb_connection, gc);
++    pthread_mutex_unlock(&present_priv->mutex_present);
++    return (error != NULL);
++}
++
++BOOL
++PRESENTPixmap(Display *dpy, XID window,
++              PRESENTPixmapPriv *present_pixmap_priv, D3DPRESENT_PARAMETERS *pPresentationParameters,
++              const RECT *pSourceRect, const RECT *pDestRect, const RGNDATA *pDirtyRegion)
++{
++    PRESENTpriv *present_priv = present_pixmap_priv->present_priv;
++#ifdef D3DADAPTER9_DRI2
++    struct DRI2priv *dri2_priv = present_pixmap_priv->dri2_info.dri2_priv;
++    EGLenum current_api;
++#endif
++    xcb_void_cookie_t cookie;
++    xcb_generic_error_t *error;
++    int64_t target_msc, presentationInterval;
++    xcb_xfixes_region_t valid, update;
++    int16_t x_off, y_off;
++    uint32_t options = XCB_PRESENT_OPTION_NONE;
++
++    pthread_mutex_lock(&present_priv->mutex_present);
++
++    if (window != present_priv->window)
++        PRESENTPrivChangeWindow(present_priv, window);
++
++    if (!window) {
++        ERR("ERROR: Try to Present a pixmap on a NULL window\n");
++        pthread_mutex_unlock(&present_priv->mutex_present);
++        return FALSE;
++    }
++
++    PRESENTflush_events(present_priv, FALSE);
++    if (!present_pixmap_priv->released || present_pixmap_priv->present_complete_pending) {
++        ERR("FATAL ERROR: Trying to Present a pixmap not released\n");
++        pthread_mutex_unlock(&present_priv->mutex_present);
++        return FALSE;
++    }
++#ifdef D3DADAPTER9_DRI2
++    if (present_pixmap_priv->dri2_info.is_dri2) {
++        current_api = eglQueryAPI();
++        eglBindAPI(EGL_OPENGL_API);
++        if(eglMakeCurrent(dri2_priv->display, EGL_NO_SURFACE, EGL_NO_SURFACE, dri2_priv->context)) {
++            glBindFramebuffer(GL_READ_FRAMEBUFFER, present_pixmap_priv->dri2_info.fbo_read);
++            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, present_pixmap_priv->dri2_info.fbo_write);
++
++            glBlitFramebuffer(0, 0, present_pixmap_priv->width, present_pixmap_priv->height,
++                              0, 0, present_pixmap_priv->width, present_pixmap_priv->height,
++                              GL_COLOR_BUFFER_BIT, GL_NEAREST);
++            glFlush(); /* Perhaps useless */
++        } else {
++            ERR("eglMakeCurrent failed with 0x%0X\n", eglGetError());
++        }
++        eglMakeCurrent(dri2_priv->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
++        eglBindAPI(current_api);
++    }
++#endif
++    target_msc = present_priv->last_msc;
++    switch(pPresentationParameters->PresentationInterval) {
++        case D3DPRESENT_INTERVAL_DEFAULT:
++        case D3DPRESENT_INTERVAL_ONE:
++            presentationInterval = 1;
++            break;
++        case D3DPRESENT_INTERVAL_TWO:
++            presentationInterval = 2;
++            break;
++        case D3DPRESENT_INTERVAL_THREE:
++            presentationInterval = 3;
++            break;
++        case D3DPRESENT_INTERVAL_FOUR:
++            presentationInterval = 4;
++            break;
++        case D3DPRESENT_INTERVAL_IMMEDIATE:
++        default:
++            presentationInterval = 0;
++            options |= XCB_PRESENT_OPTION_ASYNC;
++            break;
++    }
++    target_msc += presentationInterval * (present_priv->pixmap_present_pending + 1);
++
++    /* Note: PRESENT defines some way to do partial copy:
++     * presentproto:
++     * 'x-off' and 'y-off' define the location in the window where
++     *  the 0,0 location of the pixmap will be presented. valid-area
++     *  and update-area are relative to the pixmap.
++     */
++    if (!pSourceRect && !pDestRect && !pDirtyRegion) {
++        valid = 0;
++        update = 0;
++        x_off = 0;
++        y_off = 0;
++    } else {
++        xcb_rectangle_t rect_update;
++        xcb_rectangle_t *rect_updates;
++        int i;
++
++        rect_update.x = 0;
++        rect_update.y = 0;
++        rect_update.width = present_pixmap_priv->width;
++        rect_update.height = present_pixmap_priv->height;
++        x_off = 0;
++        y_off = 0;
++        if (pSourceRect) {
++            x_off = -pSourceRect->left;
++            y_off = -pSourceRect->top;
++            rect_update.x = pSourceRect->left;
++            rect_update.y = pSourceRect->top;
++            rect_update.width = pSourceRect->right - pSourceRect->left;
++            rect_update.height = pSourceRect->bottom - pSourceRect->top;
++        }
++        if (pDestRect) {
++            x_off += pDestRect->left;
++            y_off += pDestRect->top;
++            rect_update.width = pDestRect->right - pDestRect->left;
++            rect_update.height = pDestRect->bottom - pDestRect->top;
++            /* Note: the size of pDestRect and pSourceRect are supposed to be the same size
++             * because the driver would have done things to assure that. */
++        }
++        valid = xcb_generate_id(present_priv->xcb_connection_bis);
++        update = xcb_generate_id(present_priv->xcb_connection_bis);
++        xcb_xfixes_create_region(present_priv->xcb_connection_bis, valid, 1, &rect_update);
++        if (pDirtyRegion && pDirtyRegion->rdh.nCount) {
++            rect_updates = (void *) calloc(pDirtyRegion->rdh.nCount, sizeof(xcb_rectangle_t));
++            for (i = 0; i < pDirtyRegion->rdh.nCount; i++)
++            {
++                RECT rc;
++                memcpy(&rc, pDirtyRegion->Buffer + i * sizeof(RECT), sizeof(RECT));
++                rect_update.x = rc.left;
++                rect_update.y = rc.top;
++                rect_update.width = rc.right - rc.left;
++                rect_update.height = rc.bottom - rc.top;
++                memcpy(rect_updates + i * sizeof(xcb_rectangle_t), &rect_update, sizeof(xcb_rectangle_t));
++            }
++            xcb_xfixes_create_region(present_priv->xcb_connection_bis, update, pDirtyRegion->rdh.nCount, rect_updates);
++            free(rect_updates);
++        } else
++            xcb_xfixes_create_region(present_priv->xcb_connection_bis, update, 1, &rect_update);
++    }
++    if (pPresentationParameters->SwapEffect == D3DSWAPEFFECT_COPY)
++        options |= XCB_PRESENT_OPTION_COPY;
++    cookie = xcb_present_pixmap_checked(present_priv->xcb_connection_bis,
++                                        window,
++                                        present_pixmap_priv->pixmap,
++                                        present_pixmap_priv->serial,
++                                        valid, update, x_off, y_off,
++                                        None, None, None, options,
++                                        target_msc, 0, 0, 0, NULL);
++    error = xcb_request_check(present_priv->xcb_connection_bis, cookie); /* performs a flush */
++
++    if (update)
++        xcb_xfixes_destroy_region(present_priv->xcb_connection_bis, update);
++    if (valid)
++        xcb_xfixes_destroy_region(present_priv->xcb_connection_bis, valid);
++
++    if (error) {
++        xcb_get_geometry_cookie_t cookie_geom;
++        xcb_get_geometry_reply_t *reply;
++
++        cookie_geom = xcb_get_geometry(present_priv->xcb_connection_bis, window);
++        reply = xcb_get_geometry_reply(present_priv->xcb_connection_bis, cookie_geom, NULL);
++
++        ERR("Error using PRESENT. Here some debug info\n");
++        if (!reply) {
++            ERR("Error querying window info. Perhaps it doesn't exist anymore\n");
++            pthread_mutex_unlock(&present_priv->mutex_present);
++            return FALSE;
++        }
++        ERR("Pixmap: width=%d, height=%d, depth=%d\n",
++            present_pixmap_priv->width, present_pixmap_priv->height,
++            present_pixmap_priv->depth);
++        ERR("Window: width=%d, height=%d, depth=%d, x=%d, y=%d\n",
++            (int) reply->width, (int) reply->height,
++            (int) reply->depth, (int) reply->x, (int) reply->y);
++        ERR("Present parameter: PresentationInterval=%d, BackBufferCount=%d, Pending presentations=%d\n",
++            pPresentationParameters->PresentationInterval,
++            pPresentationParameters->BackBufferCount,
++            present_priv->pixmap_present_pending
++           );
++        if (present_pixmap_priv->depth != reply->depth)
++            ERR("Depths are different. PRESENT needs the pixmap and the window have same depth\n");
++        free(reply);
++        pthread_mutex_unlock(&present_priv->mutex_present);
++        return FALSE;
++    }
++    present_priv->last_target = target_msc;
++    present_priv->pixmap_present_pending++;
++    present_pixmap_priv->present_complete_pending = TRUE;
++    present_pixmap_priv->released = FALSE;
++    pthread_mutex_unlock(&present_priv->mutex_present);
++    return TRUE;
++}
++
++BOOL
++PRESENTWaitPixmapReleased(PRESENTPixmapPriv *present_pixmap_priv)
++{
++    PRESENTpriv *present_priv = present_pixmap_priv->present_priv;
++
++    pthread_mutex_lock(&present_priv->mutex_present);
++
++    PRESENTflush_events(present_priv, FALSE);
++
++    while (!present_pixmap_priv->released || present_pixmap_priv->present_complete_pending) {
++        /* Note: following if should not happen because we'll never
++         * use two PRESENTWaitPixmapReleased in parallels on same window.
++         * However it would make it work in that case */
++        if (present_priv->xcb_wait) { /* we allow only one thread to dispatch events */
++            pthread_mutex_lock(&present_priv->mutex_xcb_wait);
++            /* here the other thread got an event but hasn't treated it yet */
++            pthread_mutex_unlock(&present_priv->mutex_xcb_wait);
++            pthread_mutex_unlock(&present_priv->mutex_present);
++            Sleep(10); /* Let it treat the event */
++            pthread_mutex_lock(&present_priv->mutex_present);
++        } else if (!PRESENTwait_events(present_priv, TRUE)) {
++            pthread_mutex_unlock(&present_priv->mutex_present);
++            return FALSE;
++        }
++    }
++    pthread_mutex_unlock(&present_priv->mutex_present);
++    return TRUE;
++}
+diff --git a/dlls/d3d9-nine/dri3.h b/dlls/d3d9-nine/dri3.h
+new file mode 100644
+index 0000000..795c3c7
+--- /dev/null
++++ b/dlls/d3d9-nine/dri3.h
+@@ -0,0 +1,106 @@
++/*
++ * Wine X11DRV DRI3 interface
++ *
++ * Copyright 2014 Axel Davy
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++
++#ifndef __WINE_DRI3_H
++#define __WINE_DRI3_H
++
++#ifndef __WINE_CONFIG_H
++# error You must include config.h to use this header
++#endif
++
++#include <X11/Xlib.h>
++#include <X11/Xutil.h>
++#include <X11/Xlib-xcb.h>
++#include <xcb/xcb.h>
++#include <xcb/dri3.h>
++#include <xcb/present.h>
++
++BOOL
++DRI3CheckExtension(Display *dpy, int major, int minor);
++
++#ifdef D3DADAPTER9_DRI2
++struct DRI2priv;
++
++BOOL
++DRI2FallbackInit(Display *dpy, struct DRI2priv **priv);
++
++void
++DRI2FallbackDestroy(struct DRI2priv *priv);
++
++BOOL
++DRI2FallbackCheckSupport(Display *dpy);
++#endif
++
++BOOL
++PRESENTCheckExtension(Display *dpy, int major, int minor);
++
++BOOL
++DRI3Open(Display *dpy, int screen, int *device_fd);
++
++#ifdef D3DADAPTER9_DRI2
++BOOL
++DRI2FallbackOpen(Display *dpy, int screen, int *device_fd);
++#endif
++
++BOOL
++DRI3PixmapFromDmaBuf(Display *dpy, int screen, int fd, int width, int height, int stride, int depth, int bpp, Pixmap *pixmap);
++
++BOOL
++DRI3DmaBufFromPixmap(Display *dpy, Pixmap pixmap, int *fd, int *width, int *height, int *stride, int *depth, int *bpp);
++
++typedef struct PRESENTPriv PRESENTpriv;
++typedef struct PRESENTPixmapPriv PRESENTPixmapPriv;
++
++BOOL
++PRESENTInit(Display *dpy, PRESENTpriv **present_priv);
++
++/* will clean properly and free all PRESENTPixmapPriv associated to PRESENTpriv.
++ * PRESENTPixmapPriv should not be freed by something else.
++ * If never a PRESENTPixmapPriv has to be destroyed,
++ * please destroy the current PRESENTpriv and create a new one.
++ * This will take care than all pixmaps are released */
++void
++PRESENTDestroy(Display *dpy, PRESENTpriv *present_priv);
++
++BOOL
++PRESENTPixmapInit(PRESENTpriv *present_priv, Pixmap pixmap, PRESENTPixmapPriv **present_pixmap_priv);
++
++#ifdef D3DADAPTER9_DRI2
++BOOL
++DRI2FallbackPRESENTPixmap(PRESENTpriv *present_priv, struct DRI2priv *priv,
++                          int fd, int width, int height, int stride, int depth,
++                          int bpp, PRESENTPixmapPriv **present_pixmap_priv);
++#endif
++
++BOOL
++PRESENTTryFreePixmap(Display *dpy, PRESENTPixmapPriv *present_pixmap_priv);
++
++BOOL
++PRESENTHelperCopyFront(Display *dpy, PRESENTPixmapPriv *present_pixmap_priv);
++
++BOOL
++PRESENTPixmap(Display *dpy, XID window,
++              PRESENTPixmapPriv *present_pixmap_priv, D3DPRESENT_PARAMETERS *pPresentationParameters,
++              const RECT *pSourceRect, const RECT *pDestRect, const RGNDATA *pDirtyRegion);
++
++BOOL
++PRESENTWaitPixmapReleased(PRESENTPixmapPriv *present_pixmap_priv);
++
++#endif /* __WINE_DRI3_H */
+diff --git a/dlls/d3d9-nine/libd3d9-nine.def b/dlls/d3d9-nine/libd3d9-nine.def
+new file mode 100644
+index 0000000..4f41fcb
+--- /dev/null
++++ b/dlls/d3d9-nine/libd3d9-nine.def
+@@ -0,0 +1,16 @@
++; File generated automatically from ./dlls/d3d9-nine/d3d9-nine.spec; do not edit!
++
++LIBRARY d3d9-nine.dll
++
++EXPORTS
++  Direct3DShaderValidatorCreate9@0 @1
++  D3DPERF_BeginEvent@8 @4
++  D3DPERF_EndEvent@0 @5
++  D3DPERF_GetStatus@0 @6
++  D3DPERF_QueryRepeatFrame@0 @7
++  D3DPERF_SetMarker@8 @8
++  D3DPERF_SetOptions@4 @9
++  D3DPERF_SetRegion@8 @10
++  DebugSetMute@0 @12
++  Direct3DCreate9@4 @13
++  Direct3DCreate9Ex@8 @14
+diff --git a/dlls/d3d9-nine/present.c b/dlls/d3d9-nine/present.c
+new file mode 100644
+index 0000000..931c784
+--- /dev/null
++++ b/dlls/d3d9-nine/present.c
+@@ -0,0 +1,1333 @@
++/*
++ * Wine ID3DAdapter9 support functions
++ *
++ * Copyright 2013 Joakim Sindholt
++ *                Christoph Bumiller
++ * Copyright 2014 Tiziano Bacocco
++ *                David Heidelberger
++ * Copyright 2014-2015 Axel Davy
++ * Copyright 2015 Patrick Rudolph
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++
++#include "config.h"
++#include "wine/port.h"
++#include "wine/debug.h"
++
++WINE_DEFAULT_DEBUG_CHANNEL(d3dadapter);
++
++#include <d3dadapter/d3dadapter9.h>
++#include <d3dadapter/drm.h>
++#include <libdrm/drm.h>
++#include <errno.h>
++#include <fcntl.h>
++
++#include "dri3.h"
++#include "wine/library.h"
++#include "wine/unicode.h"
++
++#ifndef D3DPRESENT_DONOTWAIT
++#define D3DPRESENT_DONOTWAIT      0x00000001
++#endif
++
++#define WINE_D3DADAPTER_DRIVER_PRESENT_VERSION_MAJOR 1
++#ifdef ID3DPresent_GetWindowOccluded
++#define WINE_D3DADAPTER_DRIVER_PRESENT_VERSION_MINOR 1
++#else
++#define WINE_D3DADAPTER_DRIVER_PRESENT_VERSION_MINOR 0
++#endif
++
++static const struct D3DAdapter9DRM *d3d9_drm = NULL;
++#ifdef D3DADAPTER9_DRI2
++static int is_dri2_fallback = 0;
++#endif
++
++#define X11DRV_ESCAPE 6789
++enum x11drv_escape_codes
++{
++    X11DRV_SET_DRAWABLE,     /* set current drawable for a DC */
++    X11DRV_GET_DRAWABLE,     /* get current drawable for a DC */
++    X11DRV_START_EXPOSURES,  /* start graphics exposures */
++    X11DRV_END_EXPOSURES,    /* end graphics exposures */
++    X11DRV_FLUSH_GL_DRAWABLE /* flush changes made to the gl drawable */
++};
++
++struct x11drv_escape_get_drawable
++{
++    enum x11drv_escape_codes code;         /* escape code (X11DRV_GET_DRAWABLE) */
++    Drawable                 drawable;     /* X drawable */
++    Drawable                 gl_drawable;  /* GL drawable */
++    int                      pixel_format; /* internal GL pixel format */
++    RECT                     dc_rect;      /* DC rectangle relative to drawable */
++};
++
++static XContext d3d_hwnd_context;
++static CRITICAL_SECTION context_section;
++static CRITICAL_SECTION_DEBUG critsect_debug =
++{
++    0, 0, &context_section,
++    { &critsect_debug.ProcessLocksList, &critsect_debug.ProcessLocksList },
++      0, 0, { (DWORD_PTR)(__FILE__ ": context_section") }
++};
++static CRITICAL_SECTION context_section = { &critsect_debug, -1, 0, 0, 0, 0 };
++
++const GUID IID_ID3DPresent = { 0x77D60E80, 0xF1E6, 0x11DF, { 0x9E, 0x39, 0x95, 0x0C, 0xDF, 0xD7, 0x20, 0x85 } };
++const GUID IID_ID3DPresentGroup = { 0xB9C3016E, 0xF32A, 0x11DF, { 0x9C, 0x18, 0x92, 0xEA, 0xDE, 0xD7, 0x20, 0x85 } };
++
++struct d3d_drawable
++{
++    Drawable drawable; /* X11 drawable */
++    RECT dc_rect; /* rect relative to the X11 drawable */
++    HDC hdc;
++    HWND wnd; /* HWND (for convenience) */
++};
++
++#ifdef ID3DPresent_GetWindowOccluded
++static HHOOK hhook;
++
++struct d3d_wnd_hooks
++{
++    HWND focus_wnd;
++    struct DRI3Present *present;
++    struct d3d_wnd_hooks *prev;
++    struct d3d_wnd_hooks *next;
++};
++
++static HRESULT dri3_present_unregister_window_hook( struct DRI3Present *This );
++static HRESULT dri3_present_register_window_hook( struct DRI3Present *This );
++
++static struct d3d_wnd_hooks d3d_hooks;
++#endif
++
++struct DRI3Present
++{
++    /* COM vtable */
++    void *vtable;
++    /* IUnknown reference count */
++    LONG refs;
++
++    D3DPRESENT_PARAMETERS params;
++    HWND focus_wnd;
++    PRESENTpriv *present_priv;
++#ifdef D3DADAPTER9_DRI2
++    struct DRI2priv *dri2_priv;
++#endif
++
++    WCHAR devname[32];
++    HCURSOR hCursor;
++
++    DEVMODEW initial_mode;
++    BOOL device_needs_reset;
++    BOOL occluded;
++    Display *gdi_display;
++    struct d3d_drawable *d3d;
++    boolean ex;
++    boolean no_window_changes;
++    boolean mode_changed;
++    long style;
++    long style_ex;
++    boolean drop_wnd_messages;
++};
++
++struct D3DWindowBuffer
++{
++    PRESENTPixmapPriv *present_pixmap_priv;
++};
++
++static void
++free_d3dadapter_drawable(struct d3d_drawable *d3d)
++{
++    ReleaseDC(d3d->wnd, d3d->hdc);
++    HeapFree(GetProcessHeap(), 0, d3d);
++}
++
++void
++destroy_d3dadapter_drawable(Display *gdi_display, HWND hwnd)
++{
++    struct d3d_drawable *d3d;
++
++    EnterCriticalSection(&context_section);
++    if (!XFindContext(gdi_display, (XID)hwnd,
++                      d3d_hwnd_context, (char **)&d3d)) {
++        XDeleteContext(gdi_display, (XID)hwnd, d3d_hwnd_context);
++        free_d3dadapter_drawable(d3d);
++    }
++    LeaveCriticalSection(&context_section);
++}
++
++static struct d3d_drawable *
++create_d3dadapter_drawable(HWND hwnd)
++{
++    struct x11drv_escape_get_drawable extesc = { X11DRV_GET_DRAWABLE };
++    struct d3d_drawable *d3d;
++
++    d3d = HeapAlloc(GetProcessHeap(), 0, sizeof(*d3d));
++    if (!d3d) {
++        ERR("Couldn't allocate d3d_drawable.\n");
++        return NULL;
++    }
++
++    d3d->hdc = GetDCEx(hwnd, 0, DCX_CACHE | DCX_CLIPSIBLINGS);
++    if (ExtEscape(d3d->hdc, X11DRV_ESCAPE, sizeof(extesc), (LPCSTR)&extesc,
++                  sizeof(extesc), (LPSTR)&extesc) <= 0) {
++        ERR("Unexpected error in X Drawable lookup (hwnd=%p, hdc=%p)\n",
++            hwnd, d3d->hdc);
++        ReleaseDC(hwnd, d3d->hdc);
++        HeapFree(GetProcessHeap(), 0, d3d);
++        return NULL;
++    }
++
++    d3d->drawable = extesc.drawable;
++    d3d->wnd = hwnd;
++    d3d->dc_rect = extesc.dc_rect;
++
++    return d3d;
++}
++
++static struct d3d_drawable *
++get_d3d_drawable(Display *gdi_display, HWND hwnd)
++{
++    struct d3d_drawable *d3d, *race;
++
++    EnterCriticalSection(&context_section);
++    if (!XFindContext(gdi_display, (XID)hwnd,
++                      d3d_hwnd_context, (char **)&d3d)) {
++        struct x11drv_escape_get_drawable extesc = { X11DRV_GET_DRAWABLE };
++
++        /* check if the window has moved since last we used it */
++        if (ExtEscape(d3d->hdc, X11DRV_ESCAPE, sizeof(extesc), (LPCSTR)&extesc,
++                      sizeof(extesc), (LPSTR)&extesc) <= 0) {
++            WARN("Window update check failed (hwnd=%p, hdc=%p)\n",
++                 hwnd, d3d->hdc);
++        }
++
++        if (!EqualRect(&d3d->dc_rect, &extesc.dc_rect))
++            d3d->dc_rect = extesc.dc_rect;
++
++        return d3d;
++    }
++    LeaveCriticalSection(&context_section);
++
++    TRACE("No d3d_drawable attached to hwnd %p, creating one.\n", hwnd);
++
++    d3d = create_d3dadapter_drawable(hwnd);
++    if (!d3d) { return NULL; }
++
++    EnterCriticalSection(&context_section);
++    if (!XFindContext(gdi_display, (XID)hwnd,
++                      d3d_hwnd_context, (char **)&race)) {
++        /* apparently someone beat us to creating this d3d drawable. Let's not
++           waste more time with X11 calls and just use theirs instead. */
++        free_d3dadapter_drawable(d3d);
++        return race;
++    }
++    XSaveContext(gdi_display, (XID)hwnd, d3d_hwnd_context, (char *)d3d);
++    return d3d;
++}
++
++static void
++release_d3d_drawable(struct d3d_drawable *d3d)
++{
++    if (d3d) { LeaveCriticalSection(&context_section); }
++}
++
++static ULONG WINAPI
++DRI3Present_AddRef( struct DRI3Present *This )
++{
++    ULONG refs = InterlockedIncrement(&This->refs);
++    TRACE("%p increasing refcount to %u.\n", This, refs);
++    return refs;
++}
++
++static ULONG WINAPI
++DRI3Present_Release( struct DRI3Present *This )
++{
++    ULONG refs = InterlockedDecrement(&This->refs);
++    TRACE("%p decreasing refcount to %u.\n", This, refs);
++    if (refs == 0) {
++        /* dtor */
++#ifdef ID3DPresent_GetWindowOccluded
++        dri3_present_unregister_window_hook(This);
++#endif
++        if (This->d3d)
++            destroy_d3dadapter_drawable(This->gdi_display, This->d3d->wnd);
++        ChangeDisplaySettingsExW(This->devname, &(This->initial_mode), 0, CDS_FULLSCREEN, NULL);
++
++        PRESENTDestroy(This->gdi_display, This->present_priv);
++#ifdef D3DADAPTER9_DRI2
++        if (is_dri2_fallback)
++            DRI2FallbackDestroy(This->dri2_priv);
++#endif
++        HeapFree(GetProcessHeap(), 0, This);
++    }
++    return refs;
++}
++
++static HRESULT WINAPI
++DRI3Present_QueryInterface( struct DRI3Present *This,
++                            REFIID riid,
++                            void **ppvObject )
++{
++    if (!ppvObject) { return E_POINTER; }
++
++    if (IsEqualGUID(&IID_ID3DPresent, riid) ||
++        IsEqualGUID(&IID_IUnknown, riid)) {
++        *ppvObject = This;
++        DRI3Present_AddRef(This);
++        return S_OK;
++    }
++
++    WARN("%s not implemented, returning E_NOINTERFACE.\n", debugstr_guid(riid));
++    *ppvObject = NULL;
++
++    return E_NOINTERFACE;
++}
++
++static HRESULT
++DRI3Present_ChangePresentParameters( struct DRI3Present *This,
++                                    D3DPRESENT_PARAMETERS *params);
++
++static HRESULT WINAPI
++DRI3Present_SetPresentParameters( struct DRI3Present *This,
++                                  D3DPRESENT_PARAMETERS *pPresentationParameters,
++                                  D3DDISPLAYMODEEX *pFullscreenDisplayMode )
++{
++    if (pFullscreenDisplayMode)
++        ERR("Ignoring pFullscreenDisplayMode\n");
++    return DRI3Present_ChangePresentParameters(This, pPresentationParameters);
++}
++
++static HRESULT WINAPI
++DRI3Present_D3DWindowBufferFromDmaBuf( struct DRI3Present *This,
++                       int dmaBufFd,
++                       int width,
++                       int height,
++                       int stride,
++                       int depth,
++                       int bpp,
++                       struct D3DWindowBuffer **out)
++{
++    Pixmap pixmap;
++
++#ifdef D3DADAPTER9_DRI2
++    if (is_dri2_fallback) {
++        *out = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                    sizeof(struct D3DWindowBuffer));
++        DRI2FallbackPRESENTPixmap(This->present_priv, This->dri2_priv,
++                                  dmaBufFd, width, height, stride, depth,
++                                  bpp,
++                                  &((*out)->present_pixmap_priv));
++        return D3D_OK;
++    }
++#endif
++    if (!DRI3PixmapFromDmaBuf(This->gdi_display, DefaultScreen(This->gdi_display),
++                              dmaBufFd, width, height, stride, depth,
++                              bpp, &pixmap ))
++        return D3DERR_DRIVERINTERNALERROR;
++
++    *out = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                    sizeof(struct D3DWindowBuffer));
++    PRESENTPixmapInit(This->present_priv, pixmap, &((*out)->present_pixmap_priv));
++    return D3D_OK;
++}
++
++static HRESULT WINAPI
++DRI3Present_DestroyD3DWindowBuffer( struct DRI3Present *This,
++                           struct D3DWindowBuffer *buffer )
++{
++    /* the pixmap is managed by the PRESENT backend.
++     * But if it can delete it right away, we may have
++     * better performance */
++    PRESENTTryFreePixmap(This->gdi_display, buffer->present_pixmap_priv);
++    HeapFree(GetProcessHeap(), 0, buffer);
++    return D3D_OK;
++}
++
++static HRESULT WINAPI
++DRI3Present_WaitBufferReleased( struct DRI3Present *This,
++                                struct D3DWindowBuffer *buffer)
++{
++    PRESENTWaitPixmapReleased(buffer->present_pixmap_priv);
++    return D3D_OK;
++}
++
++static HRESULT WINAPI
++DRI3Present_FrontBufferCopy( struct DRI3Present *This,
++                             struct D3DWindowBuffer *buffer )
++{
++#ifdef D3DADAPTER9_DRI2
++    if (is_dri2_fallback)
++        return D3DERR_DRIVERINTERNALERROR;
++#endif
++    /* TODO: use dc_rect */
++    if (PRESENTHelperCopyFront(This->gdi_display, buffer->present_pixmap_priv))
++        return D3D_OK;
++    else
++        return D3DERR_DRIVERINTERNALERROR;
++}
++
++static HRESULT WINAPI
++DRI3Present_PresentBuffer( struct DRI3Present *This,
++                           struct D3DWindowBuffer *buffer,
++                           HWND hWndOverride,
++                           const RECT *pSourceRect,
++                           const RECT *pDestRect,
++                           const RGNDATA *pDirtyRegion,
++                           DWORD Flags )
++{
++    struct d3d_drawable *d3d;
++    RECT dest_translate;
++
++    if (hWndOverride) {
++        d3d = get_d3d_drawable(This->gdi_display, hWndOverride);
++    } else if (This->params.hDeviceWindow) {
++        d3d = get_d3d_drawable(This->gdi_display, This->params.hDeviceWindow);
++    } else {
++        d3d = get_d3d_drawable(This->gdi_display, This->focus_wnd);
++    }
++    if (!d3d) { return D3DERR_DRIVERINTERNALERROR; }
++
++    /* TODO: should we use a list here instead ? */
++    if (This->d3d && (This->d3d->wnd != d3d->wnd)) {
++        destroy_d3dadapter_drawable(This->gdi_display, This->d3d->wnd);
++    }
++    This->d3d = d3d;
++
++    if (d3d->dc_rect.top != 0 &&
++        d3d->dc_rect.left != 0) {
++        if (!pDestRect)
++            pDestRect = (const RECT *) &(d3d->dc_rect);
++        else {
++            dest_translate.top = pDestRect->top + d3d->dc_rect.top;
++            dest_translate.left = pDestRect->left + d3d->dc_rect.left;
++            dest_translate.bottom = pDestRect->bottom + d3d->dc_rect.bottom;
++            dest_translate.right = pDestRect->right + d3d->dc_rect.right;
++            pDestRect = (const RECT *) &dest_translate;
++        }
++    }
++
++    if (!PRESENTPixmap(This->gdi_display, d3d->drawable, buffer->present_pixmap_priv,
++                       &This->params, pSourceRect, pDestRect, pDirtyRegion))
++        return D3DERR_DRIVERINTERNALERROR;
++
++    release_d3d_drawable(d3d);
++
++    return D3D_OK;
++}
++
++static HRESULT WINAPI
++DRI3Present_GetRasterStatus( struct DRI3Present *This,
++                             D3DRASTER_STATUS *pRasterStatus )
++{
++    FIXME("(%p, %p), stub!\n", This, pRasterStatus);
++    return D3DERR_INVALIDCALL;
++}
++
++static HRESULT WINAPI
++DRI3Present_GetDisplayMode( struct DRI3Present *This,
++                            D3DDISPLAYMODEEX *pMode,
++                            D3DDISPLAYROTATION *pRotation )
++{
++    DEVMODEW dm;
++
++    ZeroMemory(&dm, sizeof(dm));
++    dm.dmSize = sizeof(dm);
++
++    EnumDisplaySettingsExW(This->devname, ENUM_CURRENT_SETTINGS, &dm, 0);
++    pMode->Width = dm.dmPelsWidth;
++    pMode->Height = dm.dmPelsHeight;
++    pMode->RefreshRate = dm.dmDisplayFrequency;
++    pMode->ScanLineOrdering = (dm.dmDisplayFlags & DM_INTERLACED) ?
++                                  D3DSCANLINEORDERING_INTERLACED :
++                                  D3DSCANLINEORDERING_PROGRESSIVE;
++
++    /* XXX This is called "guessing" */
++    switch (dm.dmBitsPerPel) {
++        case 32: pMode->Format = D3DFMT_X8R8G8B8; break;
++        case 24: pMode->Format = D3DFMT_R8G8B8; break;
++        case 16: pMode->Format = D3DFMT_R5G6B5; break;
++        default:
++            WARN("Unknown display format with %u bpp.\n", dm.dmBitsPerPel);
++            pMode->Format = D3DFMT_UNKNOWN;
++    }
++
++    switch (dm.dmDisplayOrientation) {
++        case DMDO_DEFAULT: *pRotation = D3DDISPLAYROTATION_IDENTITY; break;
++        case DMDO_90:      *pRotation = D3DDISPLAYROTATION_90; break;
++        case DMDO_180:     *pRotation = D3DDISPLAYROTATION_180; break;
++        case DMDO_270:     *pRotation = D3DDISPLAYROTATION_270; break;
++        default:
++            WARN("Unknown display rotation %u.\n", dm.dmDisplayOrientation);
++            *pRotation = D3DDISPLAYROTATION_IDENTITY;
++    }
++
++    return D3D_OK;
++}
++
++static HRESULT WINAPI
++DRI3Present_GetPresentStats( struct DRI3Present *This,
++                             D3DPRESENTSTATS *pStats )
++{
++    FIXME("(%p, %p), stub!\n", This, pStats);
++    return D3DERR_INVALIDCALL;
++}
++
++static HRESULT WINAPI
++DRI3Present_GetCursorPos( struct DRI3Present *This,
++                          POINT *pPoint )
++{
++    BOOL ok;
++    HWND draw_window;
++
++    if (!pPoint)
++        return D3DERR_INVALIDCALL;
++
++    draw_window = This->params.hDeviceWindow ?
++        This->params.hDeviceWindow : This->focus_wnd;
++
++    ok = GetCursorPos(pPoint);
++    ok = ok && ScreenToClient(draw_window, pPoint);
++    return ok ? S_OK : D3DERR_DRIVERINTERNALERROR;
++}
++
++static HRESULT WINAPI
++DRI3Present_SetCursorPos( struct DRI3Present *This,
++                          POINT *pPoint )
++{
++    BOOL ok;
++    POINT real_pos;
++
++    if (!pPoint)
++        return D3DERR_INVALIDCALL;
++
++    ok = SetCursorPos(pPoint->x, pPoint->y);
++    if (!ok)
++        goto error;
++
++    ok = GetCursorPos(&real_pos);
++    if (!ok || real_pos.x != pPoint->x || real_pos.y != pPoint->y)
++        goto error;
++
++    return D3D_OK;
++
++error:
++    SetCursor(NULL); /* Hide cursor rather than put wrong pos */
++    return D3DERR_DRIVERINTERNALERROR;
++}
++
++
++/* Note: assuming 32x32 cursor */
++static HRESULT WINAPI
++DRI3Present_SetCursor( struct DRI3Present *This,
++                       void *pBitmap,
++                       POINT *pHotspot,
++                       BOOL bShow )
++{
++   if (pBitmap) {
++      ICONINFO info;
++      HCURSOR cursor;
++
++      DWORD mask[32];
++      memset(mask, ~0, sizeof(mask));
++
++      if (!pHotspot)
++         return D3DERR_INVALIDCALL;
++      info.fIcon = FALSE;
++      info.xHotspot = pHotspot->x;
++      info.yHotspot = pHotspot->y;
++      info.hbmMask = CreateBitmap(32, 32, 1, 1, mask);
++      info.hbmColor = CreateBitmap(32, 32, 1, 32, pBitmap);
++
++      cursor = CreateIconIndirect(&info);
++      if (info.hbmMask) DeleteObject(info.hbmMask);
++      if (info.hbmColor) DeleteObject(info.hbmColor);
++      if (cursor)
++         DestroyCursor(This->hCursor);
++      This->hCursor = cursor;
++   }
++   SetCursor(bShow ? This->hCursor : NULL);
++
++   return D3D_OK;
++}
++
++static HRESULT WINAPI
++DRI3Present_SetGammaRamp( struct DRI3Present *This,
++                          const D3DGAMMARAMP *pRamp,
++                          HWND hWndOverride )
++{
++    HWND hWnd = hWndOverride ? hWndOverride : This->focus_wnd;
++    HDC hdc;
++    BOOL ok;
++    if (!pRamp) {
++        return D3DERR_INVALIDCALL;
++    }
++    hdc = GetDC(hWnd);
++    ok = SetDeviceGammaRamp(hdc, (void *)pRamp);
++    ReleaseDC(hWnd, hdc);
++    return ok ? D3D_OK : D3DERR_DRIVERINTERNALERROR;
++}
++
++static HRESULT WINAPI
++DRI3Present_GetWindowInfo( struct DRI3Present *This,
++                           HWND hWnd,
++                           int *width, int *height, int *depth )
++{
++    HRESULT hr;
++    RECT pRect;
++
++    if (!hWnd)
++        hWnd = This->focus_wnd;
++    hr = GetClientRect(hWnd, &pRect);
++    if (!hr)
++        return D3DERR_INVALIDCALL;
++    *width = pRect.right - pRect.left;
++    *height = pRect.bottom - pRect.top;
++    *depth = 24; //TODO
++    return D3D_OK;
++}
++
++static LONG fullscreen_style(LONG style)
++{
++    /* Make sure the window is managed, otherwise we won't get keyboard input. */
++    style |= WS_POPUP | WS_SYSMENU;
++    style &= ~(WS_CAPTION | WS_THICKFRAME);
++
++    return style;
++}
++
++static LONG fullscreen_exstyle(LONG exstyle)
++{
++    /* Filter out window decorations. */
++    exstyle &= ~(WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE);
++
++    return exstyle;
++}
++
++static HRESULT
++DRI3Present_ChangeDisplaySettingsIfNeccessary( struct DRI3Present *This, DEVMODEW *new_mode ) {
++    DEVMODEW current_mode;
++    LONG hr;
++
++    ZeroMemory(&current_mode, sizeof(DEVMODEW));
++    /* Only change the mode if necessary. */
++    if (!EnumDisplaySettingsW(This->devname, ENUM_CURRENT_SETTINGS, &current_mode))
++    {
++       ERR("Failed to get current display mode.\n");
++    } else if (current_mode.dmPelsWidth != new_mode->dmPelsWidth
++           || current_mode.dmPelsHeight != new_mode->dmPelsHeight
++           || (current_mode.dmDisplayFrequency != new_mode->dmDisplayFrequency
++           && (new_mode->dmFields & DM_DISPLAYFREQUENCY)))
++    {
++        hr = ChangeDisplaySettingsExW(This->devname, new_mode, 0, CDS_FULLSCREEN, NULL);
++        if (hr != DISP_CHANGE_SUCCESSFUL) {
++            /* try again without display RefreshRate */
++            if (new_mode->dmFields & DM_DISPLAYFREQUENCY) {
++                new_mode->dmFields &= ~DM_DISPLAYFREQUENCY;
++                new_mode->dmDisplayFrequency = 0;
++                hr = ChangeDisplaySettingsExW(This->devname, new_mode, 0, CDS_FULLSCREEN, NULL);
++                if (hr != DISP_CHANGE_SUCCESSFUL) {
++                    ERR("ChangeDisplaySettingsExW failed with 0x%08X\n", hr);
++                    return D3DERR_INVALIDCALL;
++                }
++            } else {
++                ERR("ChangeDisplaySettingsExW failed with 0x%08X\n", hr);
++                return D3DERR_INVALIDCALL;
++            }
++        }
++    }
++    return D3D_OK;
++}
++
++#ifdef ID3DPresent_GetWindowOccluded
++static struct d3d_wnd_hooks *get_last_hook(void) {
++    struct d3d_wnd_hooks *hook = &d3d_hooks;
++    while (hook->next) {
++        hook = hook->next;
++    }
++    return hook;
++}
++
++LRESULT CALLBACK HookCallback(int nCode, WPARAM wParam, LPARAM lParam)
++{
++    struct d3d_wnd_hooks *hook = &d3d_hooks;
++    boolean drop_wnd_messages;
++
++    if (nCode < 0) {
++        return CallNextHookEx(hhook, nCode, wParam, lParam);
++    }
++
++    if (lParam) {
++        CWPSTRUCT wndprocparams = *((CWPSTRUCT*)lParam);
++        while (hook->next) {
++            hook = hook->next;
++
++            /* skip messages for other hwnds */
++            if (hook->focus_wnd != wndprocparams.hwnd)
++                continue;
++            if (!hook->present)
++                continue;
++
++            switch (wndprocparams.message) {
++                case WM_ACTIVATEAPP:
++                    if (hook->present->drop_wnd_messages)
++                        return -1;
++
++                    drop_wnd_messages = hook->present->drop_wnd_messages;
++                    hook->present->drop_wnd_messages = TRUE;
++                    if (wndprocparams.wParam == WA_INACTIVE) {
++                            hook->present->occluded = TRUE;
++
++                            DRI3Present_ChangeDisplaySettingsIfNeccessary(hook->present, &(hook->present->initial_mode));
++
++                            if (!hook->present->no_window_changes &&
++                                    IsWindowVisible(hook->present->params.hDeviceWindow))
++                                ShowWindow(hook->present->params.hDeviceWindow, SW_MINIMIZE);
++                    } else {
++                            hook->present->device_needs_reset |= hook->present->occluded;
++                            hook->present->occluded = FALSE;
++
++                            if (!hook->present->no_window_changes) {
++                                /* restore window */
++                                SetWindowPos(hook->present->params.hDeviceWindow, NULL, 0, 0,
++                                             hook->present->params.BackBufferWidth, hook->present->params.BackBufferHeight,
++                                             SWP_NOACTIVATE | SWP_NOZORDER);
++                            }
++
++                            if (hook->present->ex) {
++                                DEVMODEW new_mode;
++
++                                ZeroMemory(&new_mode, sizeof(DEVMODEW));
++                                new_mode.dmPelsWidth = hook->present->params.BackBufferWidth;
++                                new_mode.dmPelsHeight = hook->present->params.BackBufferHeight;
++                                new_mode.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT;
++                                if (hook->present->params.FullScreen_RefreshRateInHz) {
++                                    new_mode.dmFields |= DM_DISPLAYFREQUENCY;
++                                    new_mode.dmDisplayFrequency = hook->present->params.FullScreen_RefreshRateInHz;
++                                }
++                                new_mode.dmSize = sizeof(DEVMODEW);
++                                DRI3Present_ChangeDisplaySettingsIfNeccessary(hook->present, &new_mode);
++                            }
++                    }
++                    hook->present->drop_wnd_messages = drop_wnd_messages;
++                break;
++                case WM_DISPLAYCHANGE:
++                    hook->present->mode_changed = TRUE;
++                    hook->present->device_needs_reset = TRUE;
++                break;
++                /* TODO: handle other window messages here */
++                default:
++                break;
++            }
++        }
++    }
++
++    return CallNextHookEx(hhook, nCode, wParam, lParam);
++}
++
++static HRESULT dri3_present_register_window_hook( struct DRI3Present *This ) {
++    struct d3d_wnd_hooks *lasthook;
++    struct d3d_wnd_hooks *hook = &d3d_hooks;
++
++    HWND hWnd = This->focus_wnd;
++
++    /* let's see if already hooked */
++    while (hook->next) {
++        hook = hook->next;
++        if (hook->focus_wnd == hWnd && hook->present == This)
++            return D3DERR_INVALIDCALL;
++    }
++    /* create single WindowsHook in this process */
++    if (!hhook) {
++        // TODO: do we need to handle different threadIDs ?
++        DWORD threadID = GetWindowThreadProcessId(hWnd, NULL);
++        hhook = SetWindowsHookExW(WH_CALLWNDPROC, HookCallback, NULL, threadID);
++        if (!hhook) {
++            ERR("SetWindowsHookEx failed with 0x%08x\n", GetLastError());
++            return D3DERR_DRIVERINTERNALERROR;
++        }
++    }
++    lasthook = get_last_hook();
++    hook = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++            sizeof(struct d3d_wnd_hooks));
++    if (!hook)
++        return E_OUTOFMEMORY;
++    /* add window hwnd to list */
++    lasthook->next = hook;
++    hook->prev = lasthook;
++    hook->focus_wnd = hWnd;
++    hook->present = This;
++    return D3D_OK;
++}
++
++static HRESULT dri3_present_unregister_window_hook( struct DRI3Present *This ) {
++    struct d3d_wnd_hooks *hook = &d3d_hooks;
++
++    HWND hWnd = This->focus_wnd;
++
++    /* find hook and remove it */
++    while (hook->next) {
++        hook = hook->next;
++        if(hook->focus_wnd == hWnd && hook->present == This) {
++            /* remove hook */
++            hook->prev->next = hook->next;
++            HeapFree(GetProcessHeap(), 0, hook);
++            /* start again at list head */
++            hook = &d3d_hooks;
++        }
++    }
++    /* remove single process WindowsHook */
++    if (get_last_hook() == &d3d_hooks && hhook) {
++       if (!UnhookWindowsHookEx(hhook)) {
++           ERR("UnhookWindowsHookEx failed with 0x%08x\n", GetLastError());
++       }
++       hhook = NULL;
++    }
++
++    return D3D_OK;
++}
++
++static BOOL WINAPI
++DRI3Present_GetWindowOccluded( struct DRI3Present *This )
++{
++    /* we missed to poll occluded */
++    if (This->device_needs_reset) {
++        This->device_needs_reset = FALSE;
++        return TRUE;
++    }
++
++    return This->occluded;
++}
++#endif
++/*----------*/
++
++
++static ID3DPresentVtbl DRI3Present_vtable = {
++    (void *)DRI3Present_QueryInterface,
++    (void *)DRI3Present_AddRef,
++    (void *)DRI3Present_Release,
++    (void *)DRI3Present_SetPresentParameters,
++    (void *)DRI3Present_D3DWindowBufferFromDmaBuf,
++    (void *)DRI3Present_DestroyD3DWindowBuffer,
++    (void *)DRI3Present_WaitBufferReleased,
++    (void *)DRI3Present_FrontBufferCopy,
++    (void *)DRI3Present_PresentBuffer,
++    (void *)DRI3Present_GetRasterStatus,
++    (void *)DRI3Present_GetDisplayMode,
++    (void *)DRI3Present_GetPresentStats,
++    (void *)DRI3Present_GetCursorPos,
++    (void *)DRI3Present_SetCursorPos,
++    (void *)DRI3Present_SetCursor,
++    (void *)DRI3Present_SetGammaRamp,
++    (void *)DRI3Present_GetWindowInfo,
++#ifdef ID3DPresent_GetWindowOccluded
++    (void *)DRI3Present_GetWindowOccluded
++#endif
++};
++
++static HRESULT
++DRI3Present_ChangePresentParameters( struct DRI3Present *This,
++                                    D3DPRESENT_PARAMETERS *params )
++{
++    HWND draw_window = params->hDeviceWindow;
++    RECT rect;
++    DEVMODEW new_mode;
++
++    if (!GetClientRect(draw_window, &rect)) {
++        WARN("GetClientRect failed.\n");
++        rect.right = 640;
++        rect.bottom = 480;
++    }
++
++    if (params->BackBufferWidth == 0) {
++        params->BackBufferWidth = rect.right - rect.left;
++    }
++    if (params->BackBufferHeight == 0) {
++        params->BackBufferHeight = rect.bottom - rect.top;
++    }
++
++    if ((This->params.BackBufferWidth != params->BackBufferWidth) ||
++        (This->params.BackBufferHeight != params->BackBufferHeight)) {
++        This->mode_changed = TRUE;
++    }
++
++    if (This->mode_changed || (This->params.Windowed != params->Windowed)) {
++        if (!params->Windowed) {
++            /* switch display mode */
++            ZeroMemory(&new_mode, sizeof(DEVMODEW));
++            new_mode.dmPelsWidth = params->BackBufferWidth;
++            new_mode.dmPelsHeight = params->BackBufferHeight;
++            new_mode.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT;
++            if (params->FullScreen_RefreshRateInHz) {
++                new_mode.dmFields |= DM_DISPLAYFREQUENCY;
++                new_mode.dmDisplayFrequency = params->FullScreen_RefreshRateInHz;
++            }
++            new_mode.dmSize = sizeof(DEVMODEW);
++            DRI3Present_ChangeDisplaySettingsIfNeccessary(This, &new_mode);
++        } else {
++            DRI3Present_ChangeDisplaySettingsIfNeccessary(This, &This->initial_mode);
++        }
++        This->mode_changed = FALSE;
++
++        if (This->params.Windowed) {
++            if (!params->Windowed) {
++                LONG style, style_ex;
++                boolean drop_wnd_messages;
++
++                /* switch from window to fullscreen */
++#ifdef ID3DPresent_GetWindowOccluded
++                if (dri3_present_register_window_hook(This)) {
++                    SetWindowPos(This->focus_wnd, 0, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
++                }
++#else
++                SetWindowPos(This->focus_wnd, 0, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
++#endif
++                This->style = GetWindowLongW(draw_window, GWL_STYLE);
++                This->style_ex = GetWindowLongW(draw_window, GWL_EXSTYLE);
++
++                style = fullscreen_style(This->style);
++                style_ex = fullscreen_exstyle(This->style_ex);
++
++                drop_wnd_messages = This->drop_wnd_messages;
++                This->drop_wnd_messages = TRUE;
++
++                SetWindowLongW(draw_window, GWL_STYLE, style);
++                SetWindowLongW(draw_window, GWL_EXSTYLE, style_ex);
++                SetWindowPos(draw_window, HWND_TOPMOST, 0, 0, params->BackBufferWidth,
++                             params->BackBufferHeight,
++                             SWP_FRAMECHANGED | SWP_SHOWWINDOW | SWP_NOACTIVATE);
++                This->drop_wnd_messages = drop_wnd_messages;
++            }
++        } else {
++            if (!params->Windowed) {
++                /* switch from fullscreen to fullscreen */
++                MoveWindow(draw_window, 0, 0,
++                        params->BackBufferWidth,
++                        params->BackBufferHeight,
++                        TRUE);
++            } else {
++                LONG style, style_ex;
++                boolean drop_wnd_messages;
++
++                /* switch from fullscreen to window */
++                style = GetWindowLongW(draw_window, GWL_STYLE);
++                style_ex = GetWindowLongW(draw_window, GWL_EXSTYLE);
++
++                /* These flags are set by wined3d_device_setup_fullscreen_window, not the
++                 * application, and we want to ignore them in the test below, since it's
++                 * not the application's fault that they changed. Additionally, we want to
++                 * preserve the current status of these flags (i.e. don't restore them) to
++                 * more closely emulate the behavior of Direct3D, which leaves these flags
++                 * alone when returning to windowed mode. */
++                This->style ^= (This->style ^ style) & WS_VISIBLE;
++                This->style_ex ^= (This->style_ex ^ style_ex) & WS_EX_TOPMOST;
++
++                /* Only restore the style if the application didn't modify it during the
++                 * fullscreen phase. Some applications change it before calling Reset()
++                 * when switching between windowed and fullscreen modes (HL2), some
++                 * depend on the original style (Eve Online). */
++                drop_wnd_messages = This->drop_wnd_messages;
++                This->drop_wnd_messages = TRUE;
++                if (style == fullscreen_style(This->style) && style_ex == fullscreen_exstyle(This->style_ex))
++                {
++                    SetWindowLongW(draw_window, GWL_STYLE, style);
++                    SetWindowLongW(draw_window, GWL_EXSTYLE, style_ex);
++                }
++                SetWindowPos(draw_window, 0, 0, 0, 0, 0, SWP_FRAMECHANGED |
++                             SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER |
++                             SWP_NOACTIVATE);
++                This->drop_wnd_messages = drop_wnd_messages;
++
++#ifdef ID3DPresent_GetWindowOccluded
++        dri3_present_unregister_window_hook(This);
++#endif
++                This->style = 0;
++                This->style_ex = 0;
++            }
++        }
++    } else if (!params->Windowed) {
++        LONG style, style_ex;
++        /* move draw window back to place */
++
++        style = GetWindowLongW(draw_window, GWL_STYLE);
++        style_ex = GetWindowLongW(draw_window, GWL_EXSTYLE);
++
++        style = fullscreen_style(style);
++        style_ex = fullscreen_exstyle(style_ex);
++
++        SetWindowLongW(draw_window, GWL_STYLE, style);
++        SetWindowLongW(draw_window, GWL_EXSTYLE, style_ex);
++        SetWindowPos(draw_window, HWND_TOPMOST, 0, 0, params->BackBufferWidth,
++                     params->BackBufferHeight,
++                     SWP_FRAMECHANGED | SWP_SHOWWINDOW | SWP_NOACTIVATE);
++    }
++
++    This->params = *params;
++    return D3D_OK;
++}
++
++static HRESULT
++DRI3Present_new( Display *gdi_display,
++                 const WCHAR *devname,
++                 D3DPRESENT_PARAMETERS *params,
++                 HWND focus_wnd,
++                 struct DRI3Present **out,
++                 boolean ex,
++                 boolean no_window_changes )
++{
++    struct DRI3Present *This;
++
++    if (!focus_wnd) { focus_wnd = params->hDeviceWindow; }
++    if (!focus_wnd) {
++        ERR("No focus HWND specified for presentation backend.\n");
++        return D3DERR_INVALIDCALL;
++    }
++
++    This = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                     sizeof(struct DRI3Present));
++    if (!This) {
++        ERR("Out of memory.\n");
++        return E_OUTOFMEMORY;
++    }
++
++    This->gdi_display = gdi_display;
++    This->vtable = &DRI3Present_vtable;
++    This->refs = 1;
++    This->focus_wnd = focus_wnd;
++    This->params.Windowed = TRUE;
++    This->ex = ex;
++    This->no_window_changes = no_window_changes;
++
++    strcpyW(This->devname, devname);
++
++    ZeroMemory(&(This->initial_mode), sizeof(This->initial_mode));
++    This->initial_mode.dmSize = sizeof(This->initial_mode);
++
++    EnumDisplaySettingsExW(This->devname, ENUM_CURRENT_SETTINGS, &(This->initial_mode), 0);
++
++    PRESENTInit(gdi_display, &(This->present_priv));
++#ifdef D3DADAPTER9_DRI2
++    if (is_dri2_fallback)
++        DRI2FallbackInit(gdi_display, &(This->dri2_priv));
++#endif
++    *out = This;
++
++    return D3D_OK;
++}
++
++struct DRI3PresentGroup
++{
++    /* COM vtable */
++    void *vtable;
++    /* IUnknown reference count */
++    LONG refs;
++
++    struct DRI3Present **present_backends;
++    unsigned npresent_backends;
++    Display *gdi_display;
++    boolean ex;
++    boolean no_window_changes;
++};
++
++static ULONG WINAPI
++DRI3PresentGroup_AddRef( struct DRI3PresentGroup *This )
++{
++    ULONG refs = InterlockedIncrement(&This->refs);
++    TRACE("%p increasing refcount to %u.\n", This, refs);
++    return refs;
++}
++
++static ULONG WINAPI
++DRI3PresentGroup_Release( struct DRI3PresentGroup *This )
++{
++    ULONG refs = InterlockedDecrement(&This->refs);
++    TRACE("%p decreasing refcount to %u.\n", This, refs);
++    if (refs == 0) {
++        unsigned i;
++        if (This->present_backends) {
++            for (i = 0; i < This->npresent_backends; ++i) {
++                if (This->present_backends[i])
++                    DRI3Present_Release(This->present_backends[i]);
++            }
++            HeapFree(GetProcessHeap(), 0, This->present_backends);
++        }
++        HeapFree(GetProcessHeap(), 0, This);
++    }
++    return refs;
++}
++
++static HRESULT WINAPI
++DRI3PresentGroup_QueryInterface( struct DRI3PresentGroup *This,
++                                 REFIID riid,
++                                 void **ppvObject )
++{
++    if (!ppvObject) { return E_POINTER; }
++    if (IsEqualGUID(&IID_ID3DPresentGroup, riid) ||
++        IsEqualGUID(&IID_IUnknown, riid)) {
++        *ppvObject = This;
++        DRI3PresentGroup_AddRef(This);
++        return S_OK;
++    }
++
++    WARN("%s not implemented, returning E_NOINTERFACE.\n", debugstr_guid(riid));
++    *ppvObject = NULL;
++
++    return E_NOINTERFACE;
++}
++
++static UINT WINAPI
++DRI3PresentGroup_GetMultiheadCount( struct DRI3PresentGroup *This )
++{
++    FIXME("(%p), stub!\n", This);
++    return 1;
++}
++
++static HRESULT WINAPI
++DRI3PresentGroup_GetPresent( struct DRI3PresentGroup *This,
++                             UINT Index,
++                             ID3DPresent **ppPresent )
++{
++    if (Index >= DRI3PresentGroup_GetMultiheadCount(This)) {
++        ERR("Index >= MultiHeadCount\n");
++        return D3DERR_INVALIDCALL;
++    }
++    DRI3Present_AddRef(This->present_backends[Index]);
++    *ppPresent = (ID3DPresent *)This->present_backends[Index];
++
++    return D3D_OK;
++}
++
++static HRESULT WINAPI
++DRI3PresentGroup_CreateAdditionalPresent( struct DRI3PresentGroup *This,
++                                          D3DPRESENT_PARAMETERS *pPresentationParameters,
++                                          ID3DPresent **ppPresent )
++{
++    HRESULT hr;
++    hr = DRI3Present_new(This->gdi_display, This->present_backends[0]->devname,
++                         pPresentationParameters, 0, (struct DRI3Present **)ppPresent,
++                         This->ex, This->no_window_changes);
++    return hr;
++}
++
++static void WINAPI
++DRI3PresentGroup_GetVersion( struct DRI3PresentGroup *This,
++                             int *major,
++                             int *minor)
++{
++    *major = WINE_D3DADAPTER_DRIVER_PRESENT_VERSION_MAJOR;
++    *minor = WINE_D3DADAPTER_DRIVER_PRESENT_VERSION_MINOR;
++}
++
++static ID3DPresentGroupVtbl DRI3PresentGroup_vtable = {
++    (void *)DRI3PresentGroup_QueryInterface,
++    (void *)DRI3PresentGroup_AddRef,
++    (void *)DRI3PresentGroup_Release,
++    (void *)DRI3PresentGroup_GetMultiheadCount,
++    (void *)DRI3PresentGroup_GetPresent,
++    (void *)DRI3PresentGroup_CreateAdditionalPresent,
++    (void *)DRI3PresentGroup_GetVersion
++};
++
++HRESULT
++present_create_present_group( Display *gdi_display,
++                           const WCHAR *device_name,
++                           UINT adapter,
++                           HWND focus_wnd,
++                           D3DPRESENT_PARAMETERS *params,
++                           unsigned nparams,
++                           ID3DPresentGroup **group,
++                           boolean ex,
++                           boolean no_window_changes )
++{
++    struct DRI3PresentGroup *This =
++        HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                  sizeof(struct DRI3PresentGroup));
++    DISPLAY_DEVICEW dd;
++    HRESULT hr;
++    unsigned i;
++
++    if (!This) {
++        ERR("Out of memory.\n");
++        return E_OUTOFMEMORY;
++    }
++
++    This->gdi_display = gdi_display;
++    This->vtable = &DRI3PresentGroup_vtable;
++    This->refs = 1;
++    This->ex = ex;
++    This->no_window_changes = no_window_changes;
++    This->npresent_backends = nparams;
++    This->present_backends = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
++                                       This->npresent_backends *
++                                       sizeof(struct DRI3Present *));
++    if (!This->present_backends) {
++        DRI3PresentGroup_Release(This);
++        ERR("Out of memory.\n");
++        return E_OUTOFMEMORY;
++    }
++
++    if (nparams != 1) { adapter = 0; }
++    for (i = 0; i < This->npresent_backends; ++i) {
++        ZeroMemory(&dd, sizeof(dd));
++        dd.cb = sizeof(dd);
++        /* find final device name */
++        if (!EnumDisplayDevicesW(device_name, adapter+i, &dd, 0)) {
++            WARN("Couldn't find subdevice %d from `%s'\n",
++                 i, debugstr_w(device_name));
++        }
++
++        /* create an ID3DPresent for it */
++        hr = DRI3Present_new(gdi_display, dd.DeviceName, &params[i],
++                             focus_wnd, &This->present_backends[i],
++                             This->ex, This->no_window_changes);
++        if (FAILED(hr)) {
++            DRI3PresentGroup_Release(This);
++            return hr;
++        }
++    }
++
++    *group = (ID3DPresentGroup *)This;
++    TRACE("Returning %p\n", *group);
++
++    return D3D_OK;
++}
++
++HRESULT
++present_create_adapter9( Display *gdi_display,
++                      HDC hdc,
++                      ID3DAdapter9 **out )
++{
++    struct x11drv_escape_get_drawable extesc = { X11DRV_GET_DRAWABLE };
++    HRESULT hr;
++    int fd;
++
++    if (!d3d9_drm) {
++        ERR("DRM drivers are not supported on your system.\n");
++        return D3DERR_DRIVERINTERNALERROR;
++    }
++
++    if (ExtEscape(hdc, X11DRV_ESCAPE, sizeof(extesc), (LPCSTR)&extesc,
++                  sizeof(extesc), (LPSTR)&extesc) <= 0) {
++        ERR("X11 drawable lookup failed (hdc=%p)\n", hdc);
++    }
++
++#ifdef D3DADAPTER9_DRI2
++    if (!is_dri2_fallback && !DRI3Open(gdi_display, DefaultScreen(gdi_display), &fd)) {
++#else
++    if (!DRI3Open(gdi_display, DefaultScreen(gdi_display), &fd)) {
++#endif
++        ERR("DRI3Open failed (fd=%d)\n", fd);
++        return D3DERR_DRIVERINTERNALERROR;
++    }
++#ifdef D3DADAPTER9_DRI2
++    if (is_dri2_fallback && !DRI2FallbackOpen(gdi_display, DefaultScreen(gdi_display), &fd)) {
++        ERR("DRI2Open failed (fd=%d)\n", fd);
++        return D3DERR_DRIVERINTERNALERROR;
++    }
++#endif
++    hr = d3d9_drm->create_adapter(fd, out);
++    if (FAILED(hr)) {
++        ERR("Unable to create ID3DAdapter9 (fd=%d)\n", fd);
++        return hr;
++    }
++
++    TRACE("Created ID3DAdapter9 with fd %d\n", fd);
++
++    return D3D_OK;
++}
++
++BOOL
++has_d3dadapter( Display *gdi_display )
++{
++    static const void * WINAPI (*pD3DAdapter9GetProc)(const char *);
++    static void *handle = NULL;
++    static int done = 0;
++
++    char errbuf[256];
++
++#if !defined(SONAME_D3DADAPTER9)
++    return FALSE;
++#endif
++
++    /* like in opengl.c (single threaded assumption OK?) */
++    if (done) { return handle != NULL; }
++    done = 1;
++
++    handle = wine_dlopen(D3D_MODULE_DIR "/" SONAME_D3DADAPTER9,
++                         RTLD_GLOBAL | RTLD_NOW, errbuf, sizeof(errbuf));
++    if (!handle) {
++        ERR("Failed to load %s: %s\n", SONAME_D3DADAPTER9, errbuf);
++        goto cleanup;
++    }
++
++    /* find our entry point in d3dadapter9 */
++    pD3DAdapter9GetProc = wine_dlsym(handle, "D3DAdapter9GetProc",
++                                     errbuf, sizeof(errbuf));
++    if (!pD3DAdapter9GetProc) {
++        ERR("Failed to get the entry point from %s: %s",
++            SONAME_D3DADAPTER9, errbuf);
++        goto cleanup;
++    }
++
++    /* get a handle to the drm backend struct */
++    d3d9_drm = pD3DAdapter9GetProc(D3DADAPTER9DRM_NAME);
++    if (!d3d9_drm) {
++        ERR("%s doesn't support the `%s' backend.\n",
++            SONAME_D3DADAPTER9, D3DADAPTER9DRM_NAME);
++        goto cleanup;
++    }
++
++    /* verify that we're binary compatible */
++    if (d3d9_drm->major_version != D3DADAPTER9DRM_MAJOR) {
++        ERR("Version mismatch. %s has %d.%d, was expecting %d.x\n",
++            SONAME_D3DADAPTER9, d3d9_drm->major_version,
++            d3d9_drm->minor_version, D3DADAPTER9DRM_MAJOR);
++        goto cleanup;
++    }
++
++    /* this will be used to store d3d_drawables */
++    d3d_hwnd_context = XUniqueContext();
++
++    if (!PRESENTCheckExtension(gdi_display, 1, 0)) {
++        ERR("Unable to query PRESENT.\n");
++        goto cleanup;
++    }
++
++    if (!DRI3CheckExtension(gdi_display, 1, 0)) {
++#ifndef D3DADAPTER9_DRI2
++        ERR("Unable to query DRI3.\n");
++        goto cleanup;
++#else
++        ERR("Unable to query DRI3. Trying DRI2 fallback (slower performance).\n");
++        is_dri2_fallback = 1;
++        if (!DRI2FallbackCheckSupport(gdi_display)) {
++            ERR("DRI2 fallback unsupported\n");
++            goto cleanup;
++        }
++#endif
++    }
++
++    return TRUE;
++
++cleanup:
++    ERR("\033[1;31m\nNative Direct3D 9 will be unavailable."
++        "\nFor more information visit https://wiki.ixit.cz/d3d9\033[0m\n");
++    if (handle) {
++        wine_dlclose(handle, NULL, 0);
++        handle = NULL;
++    }
++
++    return FALSE;
++}
+diff --git a/dlls/d3d9-nine/present.h b/dlls/d3d9-nine/present.h
+new file mode 100644
+index 0000000..52791a5
+--- /dev/null
++++ b/dlls/d3d9-nine/present.h
+@@ -0,0 +1,36 @@
++/*
++ * Wine present interface
++ *
++ * Copyright 2015 Patrick Rudolph
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++
++#ifndef __WINE_PRESENT_H
++#define __WINE_PRESENT_H
++
++#ifndef __WINE_CONFIG_H
++# error You must include config.h to use this header
++#endif
++
++#include <X11/Xlib.h>
++
++HRESULT present_create_present_group(Display *gdi_display, const WCHAR *device_name, UINT adapter, HWND focus, D3DPRESENT_PARAMETERS *params, unsigned nparams, ID3DPresentGroup **group, boolean ex, boolean no_window_changes);
++
++HRESULT present_create_adapter9(Display *gdi_display, HDC hdc, ID3DAdapter9 **adapter);
++
++BOOL has_d3dadapter(Display *gdi_display);
++
++#endif /* __WINE_DRI3_H */
+diff --git a/dlls/d3d9-nine/version.rc b/dlls/d3d9-nine/version.rc
+new file mode 100644
+index 0000000..bfafc2f
+--- /dev/null
++++ b/dlls/d3d9-nine/version.rc
+@@ -0,0 +1,26 @@
++/*
++ * Copyright 2015 Patrick Rudolph
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++
++#define WINE_FILEDESCRIPTION_STR "Wine Gallium Nine Direct3D"
++#define WINE_FILENAME_STR "d3d9-nine.dll"
++#define WINE_FILEVERSION 5,3,1,904
++#define WINE_FILEVERSION_STR "5.3.1.904"
++#define WINE_PRODUCTVERSION 5,3,1,904
++#define WINE_PRODUCTVERSION_STR "5.3.1.904"
++
++#include "wine/wine_common_ver.rc"
+diff --git a/dlls/d3d9/Makefile.in b/dlls/d3d9/Makefile.in
+index 1c05f5a..dc06d68 100644
+--- a/dlls/d3d9/Makefile.in
++++ b/dlls/d3d9/Makefile.in
+@@ -1,6 +1,6 @@
+ MODULE    = d3d9.dll
+ IMPORTLIB = d3d9
+-IMPORTS   = dxguid uuid wined3d
++IMPORTS   = dxguid uuid advapi32 wined3d
+ 
+ C_SRCS = \
+ 	buffer.c \
+diff --git a/dlls/d3d9/tests/d3d9ex.c b/dlls/d3d9/tests/d3d9ex.c
+index 151db41..5314915 100644
+--- a/dlls/d3d9/tests/d3d9ex.c
++++ b/dlls/d3d9/tests/d3d9ex.c
+@@ -1410,6 +1410,7 @@ static void test_lost_device(void)
+     HRESULT hr;
+     BOOL ret;
+     struct device_desc desc;
++    IDirect3DSwapChain9 *swapchain;
+ 
+     window = CreateWindowA("static", "d3d9_test", WS_OVERLAPPEDWINDOW,
+             0, 0, 640, 480, NULL, NULL, NULL, NULL);
+@@ -1434,6 +1435,12 @@ static void test_lost_device(void)
+     hr = IDirect3DDevice9Ex_CheckDeviceState(device, NULL);
+     ok(hr == S_PRESENT_OCCLUDED, "Got unexpected hr %#x.\n", hr);
+ 
++    hr = IDirect3DDevice9Ex_GetSwapChain(device, 0, &swapchain);
++    ok(SUCCEEDED(hr), "Failed to get swapchain, hr %#x.\n", hr);
++    hr = IDirect3DSwapChain9_Present(swapchain, NULL, NULL, NULL, NULL, 0);
++    ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
++    IDirect3DSwapChain9_Release(swapchain);
++
+     ret = SetForegroundWindow(GetDesktopWindow());
+     ok(ret, "Failed to set foreground window.\n");
+     hr = IDirect3DDevice9Ex_TestCooperativeLevel(device);
+@@ -1447,6 +1454,12 @@ static void test_lost_device(void)
+     hr = IDirect3DDevice9Ex_CheckDeviceState(device, NULL);
+     ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
+ 
++    hr = IDirect3DDevice9Ex_GetSwapChain(device, 0, &swapchain);
++    ok(SUCCEEDED(hr), "Failed to get swapchain, hr %#x.\n", hr);
++    hr = IDirect3DSwapChain9_Present(swapchain, NULL, NULL, NULL, NULL, 0);
++    ok(hr == S_PRESENT_OCCLUDED, "Got unexpected hr %#x.\n", hr);
++    IDirect3DSwapChain9_Release(swapchain);
++
+     ret = SetForegroundWindow(window);
+     ok(ret, "Failed to set foreground window.\n");
+     hr = IDirect3DDevice9Ex_TestCooperativeLevel(device);
+@@ -1460,6 +1473,12 @@ static void test_lost_device(void)
+     hr = IDirect3DDevice9Ex_CheckDeviceState(device, NULL);
+     ok(hr == S_PRESENT_OCCLUDED, "Got unexpected hr %#x.\n", hr);
+ 
++    hr = IDirect3DDevice9Ex_GetSwapChain(device, 0, &swapchain);
++    ok(SUCCEEDED(hr), "Failed to get swapchain, hr %#x.\n", hr);
++    hr = IDirect3DSwapChain9_Present(swapchain, NULL, NULL, NULL, NULL, 0);
++    ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
++    IDirect3DSwapChain9_Release(swapchain);
++
+     desc.width = 1024;
+     desc.height = 768;
+     hr = reset_device(device, &desc);
+@@ -1489,6 +1508,12 @@ static void test_lost_device(void)
+     hr = IDirect3DDevice9Ex_CheckDeviceState(device, NULL);
+     todo_wine ok(hr == S_PRESENT_MODE_CHANGED, "Got unexpected hr %#x.\n", hr);
+ 
++    hr = IDirect3DDevice9Ex_GetSwapChain(device, 0, &swapchain);
++    ok(SUCCEEDED(hr), "Failed to get swapchain, hr %#x.\n", hr);
++    hr = IDirect3DSwapChain9_Present(swapchain, NULL, NULL, NULL, NULL, 0);
++    ok(hr == S_PRESENT_MODE_CHANGED, "Got unexpected hr %#x.\n", hr);
++    IDirect3DSwapChain9_Release(swapchain);
++
+     hr = reset_device(device, &desc);
+     ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
+     hr = IDirect3DDevice9Ex_TestCooperativeLevel(device);
+@@ -1502,6 +1527,12 @@ static void test_lost_device(void)
+     hr = IDirect3DDevice9Ex_CheckDeviceState(device, NULL);
+     ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
+ 
++    hr = IDirect3DDevice9Ex_GetSwapChain(device, 0, &swapchain);
++    ok(SUCCEEDED(hr), "Failed to get swapchain, hr %#x.\n", hr);
++    hr = IDirect3DSwapChain9_Present(swapchain, NULL, NULL, NULL, NULL, 0);
++    ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
++    IDirect3DSwapChain9_Release(swapchain);
++
+     ret = SetForegroundWindow(GetDesktopWindow());
+     ok(ret, "Failed to set foreground window.\n");
+     hr = IDirect3DDevice9Ex_TestCooperativeLevel(device);
+diff --git a/dlls/d3d9/tests/device.c b/dlls/d3d9/tests/device.c
+index 326e789..0ff7211 100644
+--- a/dlls/d3d9/tests/device.c
++++ b/dlls/d3d9/tests/device.c
+@@ -8222,10 +8222,10 @@ done:
+ 
+ static void test_vidmem_accounting(void)
+ {
+-    IDirect3DDevice9 *device;
++    IDirect3DDevice9 *device, *device2;
+     IDirect3D9 *d3d9;
+     ULONG refcount;
+-    HWND window;
++    HWND window, window2;
+     HRESULT hr = D3D_OK;
+     IDirect3DTexture9 *textures[20];
+     unsigned int i;
+@@ -8233,6 +8233,8 @@ static void test_vidmem_accounting(void)
+ 
+     window = CreateWindowA("static", "d3d9_test", WS_OVERLAPPEDWINDOW,
+             0, 0, 640, 480, 0, 0, 0, 0);
++    window2 = CreateWindowA("static", "d3d9_test", WS_OVERLAPPEDWINDOW,
++            0, 0, 640, 480, 0, 0, 0, 0);
+     d3d9 = Direct3DCreate9(D3D_SDK_VERSION);
+     ok(!!d3d9, "Failed to create a D3D object.\n");
+     if (!(device = create_device(d3d9, window, NULL)))
+@@ -8267,6 +8269,43 @@ static void test_vidmem_accounting(void)
+             IDirect3DTexture9_Release(textures[i]);
+     }
+ 
++    /* Multi-device testing */
++    if (!(device2 = create_device(d3d9, window2, NULL)))
++    {
++        skip("Failed to create a D3D device, skipping tests.\n");
++        refcount = IDirect3DDevice9_Release(device);
++        ok(!refcount, "Device has %u references left.\n", refcount);
++        IDirect3D9_Release(d3d9);
++        DestroyWindow(window2);
++        DestroyWindow(window);
++        return;
++    }
++
++     vidmem_start = IDirect3DDevice9_GetAvailableTextureMem(device);
++     memset(textures, 0, sizeof(textures));
++     for (i = 0; (i < sizeof(textures) / sizeof(*textures)) && SUCCEEDED(hr); i++)
++     {
++         hr = IDirect3DDevice9_CreateTexture(device2, 1024, 1024, 1, D3DUSAGE_RENDERTARGET,
++                 D3DFMT_X8R8G8B8, D3DPOOL_DEFAULT, &textures[i], NULL);
++         /* D3DERR_OUTOFVIDEOMEMORY is returned when the card runs out of video memory
++          * E_FAIL is returned on address space or system memory exhaustion */
++         ok(SUCCEEDED(hr) || hr == D3DERR_OUTOFVIDEOMEMORY || hr == E_OUTOFMEMORY,
++                 "Failed to create texture, hr %#x.\n", hr);
++     }
++     vidmem_end = IDirect3DDevice9_GetAvailableTextureMem(device);
++
++     /* Windows 7 uses device private counters */
++     ok(vidmem_start > vidmem_end || broken(vidmem_start == vidmem_end), "Expected available texture memory to decrease during texture creation.\n");
++     diff = vidmem_start - vidmem_end;
++     ok(diff > 1024 * 1024 * 2 * i || broken(diff == 0), "Expected a video memory difference of at least %u MB, got %u MB.\n",
++             2 * i, diff / 1024 / 1024);
++
++     for (i = 0; i < sizeof(textures) / sizeof(*textures); i++)
++     {
++         if (textures[i])
++             IDirect3DTexture9_Release(textures[i]);
++     }
++
+     refcount = IDirect3DDevice9_Release(device);
+     ok(!refcount, "Device has %u references left.\n", refcount);
+     IDirect3D9_Release(d3d9);
+@@ -9987,6 +10026,7 @@ static void test_lost_device(void)
+     HWND window;
+     HRESULT hr;
+     BOOL ret;
++    IDirect3DSwapChain9 *swapchain;
+ 
+     window = CreateWindowA("static", "d3d9_test", WS_OVERLAPPEDWINDOW,
+             0, 0, 640, 480, NULL, NULL, NULL, NULL);
+@@ -10014,6 +10054,12 @@ static void test_lost_device(void)
+     hr = IDirect3DDevice9_Present(device, NULL, NULL, NULL, NULL);
+     ok(hr == D3DERR_DEVICELOST, "Got unexpected hr %#x.\n", hr);
+ 
++    hr = IDirect3DDevice9_GetSwapChain(device, 0, &swapchain);
++    ok(SUCCEEDED(hr), "Failed to get swapchain, hr %#x.\n", hr);
++    hr = IDirect3DSwapChain9_Present(swapchain, NULL, NULL, NULL, NULL, 0);
++    ok(hr == D3DERR_DEVICELOST, "Got unexpected hr %#x.\n", hr);
++    IDirect3DSwapChain9_Release(swapchain);
++
+     ret = ShowWindow(window, SW_RESTORE);
+     ok(ret, "Failed to restore window.\n");
+     ret = SetForegroundWindow(window);
+@@ -10023,6 +10069,12 @@ static void test_lost_device(void)
+     hr = IDirect3DDevice9_Present(device, NULL, NULL, NULL, NULL);
+     ok(hr == D3DERR_DEVICELOST, "Got unexpected hr %#x.\n", hr);
+ 
++    hr = IDirect3DDevice9_GetSwapChain(device, 0, &swapchain);
++    ok(SUCCEEDED(hr), "Failed to get swapchain, hr %#x.\n", hr);
++    hr = IDirect3DSwapChain9_Present(swapchain, NULL, NULL, NULL, NULL, 0);
++    ok(hr == D3DERR_DEVICELOST, "Got unexpected hr %#x.\n", hr);
++    IDirect3DSwapChain9_Release(swapchain);
++
+     hr = reset_device(device, &device_desc);
+     ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
+     hr = IDirect3DDevice9_TestCooperativeLevel(device);
+@@ -10030,6 +10082,12 @@ static void test_lost_device(void)
+     hr = IDirect3DDevice9_Present(device, NULL, NULL, NULL, NULL);
+     ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
+ 
++    hr = IDirect3DDevice9_GetSwapChain(device, 0, &swapchain);
++    ok(SUCCEEDED(hr), "Failed to get swapchain, hr %#x.\n", hr);
++    hr = IDirect3DSwapChain9_Present(swapchain, NULL, NULL, NULL, NULL, 0);
++    ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
++    IDirect3DSwapChain9_Release(swapchain);
++
+     device_desc.flags = 0;
+     hr = reset_device(device, &device_desc);
+     ok(hr == D3D_OK, "Got unexpected hr %#x.\n", hr);
+diff --git a/dlls/ntdll/loader.c b/dlls/ntdll/loader.c
+index 74feb97..d331513 100644
+--- a/dlls/ntdll/loader.c
++++ b/dlls/ntdll/loader.c
+@@ -92,6 +92,7 @@ struct builtin_load_info
+ {
+     const WCHAR *load_path;
+     const WCHAR *filename;
++    const WCHAR *fakemodule;
+     NTSTATUS     status;
+     WINE_MODREF *wm;
+ };
+@@ -117,7 +118,8 @@ static WINE_MODREF *cached_modref;
+ static WINE_MODREF *current_modref;
+ static WINE_MODREF *last_failed_modref;
+ 
+-static NTSTATUS load_dll( LPCWSTR load_path, LPCWSTR libname, DWORD flags, WINE_MODREF** pwm );
++static NTSTATUS load_dll( LPCWSTR load_path, LPCWSTR libname, LPCWSTR fakemodule,
++                          DWORD flags, WINE_MODREF** pwm );
+ static NTSTATUS process_attach( WINE_MODREF *wm, LPVOID lpReserved );
+ static FARPROC find_ordinal_export( HMODULE module, const IMAGE_EXPORT_DIRECTORY *exports,
+                                     DWORD exp_size, DWORD ordinal, LPCWSTR load_path );
+@@ -443,7 +445,7 @@ static FARPROC find_forwarded_export( HMODULE module, const char *forward, LPCWS
+     if (!(wm = find_basename_module( mod_name )))
+     {
+         TRACE( "delay loading %s for '%s'\n", debugstr_w(mod_name), forward );
+-        if (load_dll( load_path, mod_name, 0, &wm ) == STATUS_SUCCESS &&
++        if (load_dll( load_path, mod_name, NULL, 0, &wm ) == STATUS_SUCCESS &&
+             !(wm->ldr.Flags & LDR_DONT_RESOLVE_REFS))
+         {
+             if (process_attach( wm, NULL ) != STATUS_SUCCESS)
+@@ -592,7 +594,7 @@ static WINE_MODREF *import_dll( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *d
+     {
+         ascii_to_unicode( buffer, name, len );
+         buffer[len] = 0;
+-        status = load_dll( load_path, buffer, 0, &wmImp );
++        status = load_dll( load_path, buffer, NULL, 0, &wmImp );
+     }
+     else  /* need to allocate a larger buffer */
+     {
+@@ -600,7 +602,7 @@ static WINE_MODREF *import_dll( HMODULE module, const IMAGE_IMPORT_DESCRIPTOR *d
+         if (!ptr) return NULL;
+         ascii_to_unicode( ptr, name, len );
+         ptr[len] = 0;
+-        status = load_dll( load_path, ptr, 0, &wmImp );
++        status = load_dll( load_path, ptr, NULL, 0, &wmImp );
+         RtlFreeHeap( GetProcessHeap(), 0, ptr );
+     }
+ 
+@@ -916,7 +918,7 @@ static NTSTATUS fixup_imports( WINE_MODREF *wm, LPCWSTR load_path )
+  * Allocate a WINE_MODREF structure and add it to the process list
+  * The loader_section must be locked while calling this function.
+  */
+-static WINE_MODREF *alloc_module( HMODULE hModule, LPCWSTR filename )
++static WINE_MODREF *alloc_module( HMODULE hModule, LPCWSTR filename, LPCWSTR fakemodule )
+ {
+     WINE_MODREF *wm;
+     const WCHAR *p;
+@@ -939,7 +941,7 @@ static WINE_MODREF *alloc_module( HMODULE hModule, LPCWSTR filename )
+     wm->ldr.TimeDateStamp = 0;
+     wm->ldr.ActivationContext = 0;
+ 
+-    RtlCreateUnicodeString( &wm->ldr.FullDllName, filename );
++    RtlCreateUnicodeString( &wm->ldr.FullDllName, fakemodule ? fakemodule : filename );
+     if ((p = strrchrW( wm->ldr.FullDllName.Buffer, '\\' ))) p++;
+     else p = wm->ldr.FullDllName.Buffer;
+     RtlInitUnicodeString( &wm->ldr.BaseDllName, p );
+@@ -1578,7 +1580,7 @@ static void load_builtin_callback( void *module, const char *filename )
+         return;
+     }
+ 
+-    wm = alloc_module( module, fullname );
++    wm = alloc_module( module, fullname, builtin_load_info->fakemodule );
+     RtlFreeHeap( GetProcessHeap(), 0, fullname );
+     if (!wm)
+     {
+@@ -1760,8 +1762,8 @@ static NTSTATUS perform_relocations( void *module, SIZE_T len )
+ /******************************************************************************
+  *	load_native_dll  (internal)
+  */
+-static NTSTATUS load_native_dll( LPCWSTR load_path, LPCWSTR name, HANDLE file,
+-                                 DWORD flags, WINE_MODREF** pwm )
++static NTSTATUS load_native_dll( LPCWSTR load_path, LPCWSTR name, LPCWSTR fakemodule,
++                                 HANDLE file, DWORD flags, WINE_MODREF** pwm )
+ {
+     void *module;
+     HANDLE mapping;
+@@ -1795,7 +1797,7 @@ static NTSTATUS load_native_dll( LPCWSTR load_path, LPCWSTR name, HANDLE file,
+ 
+     /* create the MODREF */
+ 
+-    if (!(wm = alloc_module( module, name )))
++    if (!(wm = alloc_module( module, name, fakemodule )))
+     {
+         status = STATUS_NO_MEMORY;
+         goto done;
+@@ -1859,8 +1861,8 @@ done:
+ /***********************************************************************
+  *           load_builtin_dll
+  */
+-static NTSTATUS load_builtin_dll( LPCWSTR load_path, LPCWSTR path, HANDLE file,
+-                                  DWORD flags, WINE_MODREF** pwm )
++static NTSTATUS load_builtin_dll( LPCWSTR load_path, LPCWSTR path, LPCWSTR fakemodule,
++                                  HANDLE file, DWORD flags, WINE_MODREF** pwm )
+ {
+     char error[256], dllname[MAX_PATH];
+     const WCHAR *name, *p;
+@@ -1880,6 +1882,7 @@ static NTSTATUS load_builtin_dll( LPCWSTR load_path, LPCWSTR path, HANDLE file,
+      */
+     info.load_path = load_path;
+     info.filename  = NULL;
++    info.fakemodule = fakemodule;
+     info.status    = STATUS_SUCCESS;
+     info.wm        = NULL;
+ 
+@@ -2198,14 +2201,14 @@ overflow:
+     return STATUS_BUFFER_TOO_SMALL;
+ }
+ 
+-
+ /***********************************************************************
+  *	load_dll  (internal)
+  *
+  * Load a PE style module according to the load order.
+  * The loader_section must be locked while calling this function.
+  */
+-static NTSTATUS load_dll( LPCWSTR load_path, LPCWSTR libname, DWORD flags, WINE_MODREF** pwm )
++static NTSTATUS load_dll( LPCWSTR load_path, LPCWSTR libname, LPCWSTR fakemodule,
++                          DWORD flags, WINE_MODREF** pwm )
+ {
+     enum loadorder loadorder;
+     WCHAR buffer[64];
+@@ -2242,6 +2245,25 @@ static NTSTATUS load_dll( LPCWSTR load_path, LPCWSTR libname, DWORD flags, WINE_
+     }
+ 
+     main_exe = get_modref( NtCurrentTeb()->Peb->ImageBaseAddress );
++
++    /* handle dll redirection */
++    if (!fakemodule)
++    {
++        BYTE buffer2[sizeof(KEY_VALUE_PARTIAL_INFORMATION) + MAX_PATH * sizeof(WCHAR)];
++        WCHAR *redirect = get_redirect( main_exe ? main_exe->ldr.BaseDllName.Buffer : NULL,
++                                        filename, buffer2, sizeof(buffer2) );
++        if (redirect)
++        {
++            FIXME("Loader redirect from %s to %s\n", debugstr_w(libname), debugstr_w(redirect));
++
++            nts = load_dll( load_path, redirect, filename, flags, pwm );
++
++            if (handle) NtClose( handle );
++            if (filename != buffer) RtlFreeHeap( GetProcessHeap(), 0, filename );
++            return nts;
++        }
++    }
++
+     loadorder = get_load_order( main_exe ? main_exe->ldr.BaseDllName.Buffer : NULL, filename );
+ 
+     if (handle && is_fake_dll( handle ))
+@@ -2264,22 +2286,22 @@ static NTSTATUS load_dll( LPCWSTR load_path, LPCWSTR libname, DWORD flags, WINE_
+         if (!handle) nts = STATUS_DLL_NOT_FOUND;
+         else
+         {
+-            nts = load_native_dll( load_path, filename, handle, flags, pwm );
++            nts = load_native_dll( load_path, filename, fakemodule, handle, flags, pwm );
+             if (nts == STATUS_INVALID_IMAGE_NOT_MZ)
+                 /* not in PE format, maybe it's a builtin */
+-                nts = load_builtin_dll( load_path, filename, handle, flags, pwm );
++                nts = load_builtin_dll( load_path, filename, fakemodule, handle, flags, pwm );
+         }
+         if (nts == STATUS_DLL_NOT_FOUND && loadorder == LO_NATIVE_BUILTIN)
+-            nts = load_builtin_dll( load_path, filename, 0, flags, pwm );
++            nts = load_builtin_dll( load_path, filename, fakemodule, 0, flags, pwm );
+         break;
+     case LO_BUILTIN:
+     case LO_BUILTIN_NATIVE:
+     case LO_DEFAULT:  /* default is builtin,native */
+-        nts = load_builtin_dll( load_path, filename, handle, flags, pwm );
++        nts = load_builtin_dll( load_path, filename, fakemodule, handle, flags, pwm );
+         if (!handle) break;  /* nothing else we can try */
+         /* file is not a builtin library, try without using the specified file */
+         if (nts != STATUS_SUCCESS)
+-            nts = load_builtin_dll( load_path, filename, 0, flags, pwm );
++            nts = load_builtin_dll( load_path, filename, fakemodule, 0, flags, pwm );
+         if (nts == STATUS_SUCCESS && loadorder == LO_DEFAULT &&
+             (MODULE_InitDLL( *pwm, DLL_WINE_PREATTACH, NULL ) != STATUS_SUCCESS))
+         {
+@@ -2289,7 +2311,7 @@ static NTSTATUS load_dll( LPCWSTR load_path, LPCWSTR libname, DWORD flags, WINE_
+             nts = STATUS_DLL_NOT_FOUND;
+         }
+         if (nts == STATUS_DLL_NOT_FOUND && loadorder != LO_BUILTIN)
+-            nts = load_native_dll( load_path, filename, handle, flags, pwm );
++            nts = load_native_dll( load_path, filename, fakemodule, handle, flags, pwm );
+         break;
+     }
+ 
+@@ -2322,7 +2344,7 @@ NTSTATUS WINAPI DECLSPEC_HOTPATCH LdrLoadDll(LPCWSTR path_name, DWORD flags,
+     RtlEnterCriticalSection( &loader_section );
+ 
+     if (!path_name) path_name = NtCurrentTeb()->Peb->ProcessParameters->DllPath.Buffer;
+-    nts = load_dll( path_name, libname->Buffer, flags, &wm );
++    nts = load_dll( path_name, libname->Buffer, NULL, flags, &wm );
+ 
+     if (nts == STATUS_SUCCESS && !(wm->ldr.Flags & LDR_DONT_RESOLVE_REFS))
+     {
+@@ -3285,7 +3307,7 @@ void __wine_process_init(void)
+     /* setup the load callback and create ntdll modref */
+     wine_dll_set_callback( load_builtin_callback );
+ 
+-    if ((status = load_builtin_dll( NULL, kernel32W, 0, 0, &wm )) != STATUS_SUCCESS)
++    if ((status = load_builtin_dll( NULL, kernel32W, NULL, 0, 0, &wm )) != STATUS_SUCCESS)
+     {
+         MESSAGE( "wine: could not load kernel32.dll, status %x\n", status );
+         exit(1);
+diff --git a/dlls/ntdll/loadorder.c b/dlls/ntdll/loadorder.c
+index 401d256..c7c4592 100644
+--- a/dlls/ntdll/loadorder.c
++++ b/dlls/ntdll/loadorder.c
+@@ -290,102 +290,165 @@ static inline enum loadorder get_env_load_order( const WCHAR *module )
+ 
+ 
+ /***************************************************************************
+- *	get_standard_key
++ *	open_user_reg_key
++ *
++ * Return a handle to a registry key under HKCU.
++ */
++static HANDLE open_user_reg_key(const WCHAR *key_name)
++{
++    HANDLE hkey, root;
++    OBJECT_ATTRIBUTES attr;
++    UNICODE_STRING nameW;
++
++    RtlOpenCurrentUser( KEY_ALL_ACCESS, &root );
++    attr.Length = sizeof(attr);
++    attr.RootDirectory = root;
++    attr.ObjectName = &nameW;
++    attr.Attributes = 0;
++    attr.SecurityDescriptor = NULL;
++    attr.SecurityQualityOfService = NULL;
++    RtlInitUnicodeString( &nameW, key_name );
++
++    if (NtOpenKey( &hkey, KEY_ALL_ACCESS, &attr )) hkey = 0;
++    NtClose( root );
++
++    return hkey;
++}
++
++
++/***************************************************************************
++ *	open_app_reg_key
++ *
++ * Return a handle to an app-specific registry key.
++ */
++static HANDLE open_app_reg_key( const WCHAR *sub_key, const WCHAR *app_name )
++{
++    static const WCHAR AppDefaultsW[] = {'S','o','f','t','w','a','r','e','\\','W','i','n','e','\\',
++                                         'A','p','p','D','e','f','a','u','l','t','s','\\',0};
++    WCHAR *str;
++    HANDLE hkey;
++
++    str = RtlAllocateHeap( GetProcessHeap(), 0,
++                           sizeof(AppDefaultsW) +
++                           strlenW(sub_key) * sizeof(WCHAR) +
++                           strlenW(app_name) * sizeof(WCHAR) );
++    if (!str) return 0;
++    strcpyW( str, AppDefaultsW );
++    strcatW( str, app_name );
++    strcatW( str, sub_key );
++
++    hkey = open_user_reg_key( str );
++    RtlFreeHeap( GetProcessHeap(), 0, str );
++    return hkey;
++}
++
++
++/***************************************************************************
++ *	get_override_standard_key
+  *
+  * Return a handle to the standard DllOverrides registry section.
+  */
+-static HANDLE get_standard_key(void)
++static HANDLE get_override_standard_key(void)
+ {
+     static const WCHAR DllOverridesW[] = {'S','o','f','t','w','a','r','e','\\','W','i','n','e','\\',
+                                           'D','l','l','O','v','e','r','r','i','d','e','s',0};
+     static HANDLE std_key = (HANDLE)-1;
+ 
+     if (std_key == (HANDLE)-1)
+-    {
+-        OBJECT_ATTRIBUTES attr;
+-        UNICODE_STRING nameW;
+-        HANDLE root;
+-
+-        RtlOpenCurrentUser( KEY_ALL_ACCESS, &root );
+-        attr.Length = sizeof(attr);
+-        attr.RootDirectory = root;
+-        attr.ObjectName = &nameW;
+-        attr.Attributes = 0;
+-        attr.SecurityDescriptor = NULL;
+-        attr.SecurityQualityOfService = NULL;
+-        RtlInitUnicodeString( &nameW, DllOverridesW );
+-
+-        /* @@ Wine registry key: HKCU\Software\Wine\DllOverrides */
+-        if (NtOpenKey( &std_key, KEY_ALL_ACCESS, &attr )) std_key = 0;
+-        NtClose( root );
+-    }
++        std_key = open_user_reg_key( DllOverridesW );
++
+     return std_key;
+ }
+ 
+ 
+ /***************************************************************************
+- *	get_app_key
++ *	get_override_app_key
+  *
+  * Get the registry key for the app-specific DllOverrides list.
+  */
+-static HANDLE get_app_key( const WCHAR *app_name )
++static HANDLE get_override_app_key( const WCHAR *app_name )
+ {
+-    OBJECT_ATTRIBUTES attr;
+-    UNICODE_STRING nameW;
+-    HANDLE root;
+-    WCHAR *str;
+-    static const WCHAR AppDefaultsW[] = {'S','o','f','t','w','a','r','e','\\','W','i','n','e','\\',
+-                                         'A','p','p','D','e','f','a','u','l','t','s','\\',0};
+     static const WCHAR DllOverridesW[] = {'\\','D','l','l','O','v','e','r','r','i','d','e','s',0};
+     static HANDLE app_key = (HANDLE)-1;
+ 
+-    if (app_key != (HANDLE)-1) return app_key;
++    if (app_key == (HANDLE)-1)
++        app_key = open_app_reg_key( DllOverridesW, app_name );
+ 
+-    str = RtlAllocateHeap( GetProcessHeap(), 0,
+-                           sizeof(AppDefaultsW) + sizeof(DllOverridesW) +
+-                           strlenW(app_name) * sizeof(WCHAR) );
+-    if (!str) return 0;
+-    strcpyW( str, AppDefaultsW );
+-    strcatW( str, app_name );
+-    strcatW( str, DllOverridesW );
++    return app_key;
++}
+ 
+-    RtlOpenCurrentUser( KEY_ALL_ACCESS, &root );
+-    attr.Length = sizeof(attr);
+-    attr.RootDirectory = root;
+-    attr.ObjectName = &nameW;
+-    attr.Attributes = 0;
+-    attr.SecurityDescriptor = NULL;
+-    attr.SecurityQualityOfService = NULL;
+-    RtlInitUnicodeString( &nameW, str );
+ 
+-    /* @@ Wine registry key: HKCU\Software\Wine\AppDefaults\app.exe\DllOverrides */
+-    if (NtOpenKey( &app_key, KEY_ALL_ACCESS, &attr )) app_key = 0;
+-    NtClose( root );
+-    RtlFreeHeap( GetProcessHeap(), 0, str );
++/***************************************************************************
++ *	get_redirect_standard_key
++ *
++ * Return a handle to the standard DllRedirects registry section.
++ */
++static HANDLE get_redirect_standard_key(void)
++{
++    static const WCHAR DllRedirectsW[] = {'S','o','f','t','w','a','r','e','\\','W','i','n','e','\\',
++                                          'D','l','l','R','e','d','i','r','e','c','t','s',0};
++    static HANDLE std_key = (HANDLE)-1;
++
++    if (std_key == (HANDLE)-1)
++        std_key = open_user_reg_key( DllRedirectsW );
++
++    return std_key;
++}
++
++
++/***************************************************************************
++ *	get_redirect_app_key
++ *
++ * Get the registry key for the app-specific DllRedirects list.
++ */
++static HANDLE get_redirect_app_key( const WCHAR *app_name )
++{
++    static const WCHAR DllRedirectsW[] = {'\\','D','l','l','R','e','d','i','r','e','c','t','s',0};
++    static HANDLE app_key = (HANDLE)-1;
++
++    if (app_key == (HANDLE)-1)
++        app_key = open_app_reg_key( DllRedirectsW, app_name );
++
+     return app_key;
+ }
+ 
+ 
+ /***************************************************************************
+- *	get_registry_value
++ *	get_registry_string
+  *
+- * Load the registry loadorder value for a given module.
++ * Load a registry string for a given module.
+  */
+-static enum loadorder get_registry_value( HANDLE hkey, const WCHAR *module )
++static WCHAR* get_registry_string( HANDLE hkey, const WCHAR *module, BYTE *buffer,
++                                   ULONG size )
+ {
+     UNICODE_STRING valueW;
+-    char buffer[80];
+     DWORD count;
++    WCHAR *ret = NULL;
+ 
+     RtlInitUnicodeString( &valueW, module );
+-
+-    if (!NtQueryValueKey( hkey, &valueW, KeyValuePartialInformation,
+-                                 buffer, sizeof(buffer), &count ))
++    if (size >= sizeof(WCHAR) &&
++        !NtQueryValueKey( hkey, &valueW, KeyValuePartialInformation,
++                          buffer, size - sizeof(WCHAR), &count ))
+     {
+-        WCHAR *str = (WCHAR *)((KEY_VALUE_PARTIAL_INFORMATION *)buffer)->Data;
+-        return parse_load_order( str );
++        KEY_VALUE_PARTIAL_INFORMATION *info = (void *)buffer;
++        ret = (WCHAR *)info->Data;
++        ret[info->DataLength / sizeof(WCHAR)] = 0;
+     }
+-    return LO_INVALID;
++
++    return ret;
++}
++
++
++/***************************************************************************
++ *	get_registry_load_order
++ *
++ * Load the registry loadorder value for a given module.
++ */
++static enum loadorder get_registry_load_order( HANDLE hkey, const WCHAR *module )
++{
++    BYTE buffer[81];
++    WCHAR *str = get_registry_string( hkey, module, buffer, sizeof(buffer) );
++    return str ? parse_load_order( str ) : LO_INVALID;
+ }
+ 
+ 
+@@ -407,13 +470,13 @@ static enum loadorder get_load_order_value( HANDLE std_key, HANDLE app_key, cons
+         return ret;
+     }
+ 
+-    if (app_key && ((ret = get_registry_value( app_key, module )) != LO_INVALID))
++    if (app_key && ((ret = get_registry_load_order( app_key, module )) != LO_INVALID))
+     {
+         TRACE( "got app defaults %s for %s\n", debugstr_loadorder(ret), debugstr_w(module) );
+         return ret;
+     }
+ 
+-    if (std_key && ((ret = get_registry_value( std_key, module )) != LO_INVALID))
++    if (std_key && ((ret = get_registry_load_order( std_key, module )) != LO_INVALID))
+     {
+         TRACE( "got standard key %s for %s\n", debugstr_loadorder(ret), debugstr_w(module) );
+         return ret;
+@@ -424,24 +487,44 @@ static enum loadorder get_load_order_value( HANDLE std_key, HANDLE app_key, cons
+ 
+ 
+ /***************************************************************************
+- *	get_load_order   (internal)
++ *	get_redirect_value
+  *
+- * Return the loadorder of a module.
+- * The system directory and '.dll' extension is stripped from the path.
++ * Get the redirect value for the exact specified module string, looking in:
++ * 1. The per-application DllRedirects key
++ * 2. The standard DllRedirects key
+  */
+-enum loadorder get_load_order( const WCHAR *app_name, const WCHAR *path )
++static WCHAR* get_redirect_value( HANDLE std_key, HANDLE app_key, const WCHAR *module,
++                                  BYTE *buffer, ULONG size )
+ {
+-    enum loadorder ret = LO_INVALID;
+-    HANDLE std_key, app_key = 0;
+-    WCHAR *module, *basename;
+-    UNICODE_STRING path_str;
+-    int len;
++    WCHAR *ret = NULL;
+ 
+-    if (!init_done) init_load_order();
+-    std_key = get_standard_key();
+-    if (app_name) app_key = get_app_key( app_name );
++    if (app_key && (ret = get_registry_string( app_key, module, buffer, size )))
++    {
++        TRACE( "got app defaults %s for %s\n", debugstr_w(ret), debugstr_w(module) );
++        return ret;
++    }
+ 
+-    TRACE("looking for %s\n", debugstr_w(path));
++    if (std_key && (ret = get_registry_string( std_key, module, buffer, size )))
++    {
++        TRACE( "got standard key %s for %s\n", debugstr_w(ret), debugstr_w(module) );
++        return ret;
++    }
++
++    return ret;
++}
++
++
++/***************************************************************************
++ *	get_module_basename
++ *
++ * Determine the module basename. The caller is responsible for releasing
++ * the memory.
++ */
++static WCHAR* get_module_basename( const WCHAR *path, WCHAR **basename )
++{
++    UNICODE_STRING path_str;
++    WCHAR *module;
++    int len;
+ 
+     /* Strip path information if the module resides in the system directory
+      */
+@@ -453,12 +536,36 @@ enum loadorder get_load_order( const WCHAR *app_name, const WCHAR *path )
+         if (!strchrW( p, '\\' ) && !strchrW( p, '/' )) path = p;
+     }
+ 
+-    if (!(len = strlenW(path))) return ret;
+-    if (!(module = RtlAllocateHeap( GetProcessHeap(), 0, (len + 2) * sizeof(WCHAR) ))) return ret;
++    if (!(len = strlenW(path))) return NULL;
++    if (!(module = RtlAllocateHeap( GetProcessHeap(), 0, (len + 2) * sizeof(WCHAR) ))) return NULL;
+     strcpyW( module+1, path );  /* reserve module[0] for the wildcard char */
+-    basename = (WCHAR *)get_basename( module+1 );
++    *basename = (WCHAR *)get_basename( module+1 );
+ 
+     if (len >= 4) remove_dll_ext( module + 1 + len - 4 );
++    return module;
++}
++
++
++/***************************************************************************
++ *	get_load_order   (internal)
++ *
++ * Return the loadorder of a module.
++ * The system directory and '.dll' extension is stripped from the path.
++ */
++enum loadorder get_load_order( const WCHAR *app_name, const WCHAR *path )
++{
++    enum loadorder ret = LO_INVALID;
++    HANDLE std_key, app_key = 0;
++    WCHAR *module, *basename;
++
++    if (!init_done) init_load_order();
++    std_key = get_override_standard_key();
++    if (app_name) app_key = get_override_app_key( app_name );
++
++    TRACE("looking up loadorder for %s\n", debugstr_w(path));
++
++    if (!(module = get_module_basename(path, &basename)))
++        return ret;
+ 
+     /* first explicit module name */
+     if ((ret = get_load_order_value( std_key, app_key, module+1 )) != LO_INVALID)
+@@ -489,3 +596,46 @@ enum loadorder get_load_order( const WCHAR *app_name, const WCHAR *path )
+     RtlFreeHeap( GetProcessHeap(), 0, module );
+     return ret;
+ }
++
++
++/***************************************************************************
++ *  get_redirect   (internal)
++ *
++ * Return the redirect value of a module.
++ * The system directory and '.dll' extension is stripped from the path.
++ */
++WCHAR* get_redirect( const WCHAR *app_name, const WCHAR *path, BYTE *buffer, ULONG size )
++{
++    WCHAR *ret = NULL;
++    HANDLE std_key, app_key = 0;
++    WCHAR *module, *basename;
++
++    std_key = get_redirect_standard_key();
++    if (app_name) app_key = get_redirect_app_key( app_name );
++
++    TRACE("looking up redirection for %s\n", debugstr_w(path));
++
++    if (!(module = get_module_basename(path, &basename)))
++        return ret;
++
++    /* first explicit module name */
++    if ((ret = get_redirect_value( std_key, app_key, module+1, buffer, size )))
++        goto done;
++
++    /* then module basename preceded by '*' */
++    basename[-1] = '*';
++    if ((ret = get_redirect_value( std_key, app_key, basename-1, buffer, size )))
++        goto done;
++
++    /* then module basename without '*' (only if explicit path) */
++    if (basename != module+1 && (ret = get_redirect_value( std_key, app_key, basename, buffer, size )))
++        goto done;
++
++    /* and last the hard-coded default */
++    ret = NULL;
++    TRACE( "no redirection found for %s\n", debugstr_w(path) );
++
++ done:
++    RtlFreeHeap( GetProcessHeap(), 0, module );
++    return ret;
++}
+diff --git a/dlls/ntdll/ntdll_misc.h b/dlls/ntdll/ntdll_misc.h
+index cbd19db..e522464 100644
+--- a/dlls/ntdll/ntdll_misc.h
++++ b/dlls/ntdll/ntdll_misc.h
+@@ -205,6 +205,7 @@ enum loadorder
+ };
+ 
+ extern enum loadorder get_load_order( const WCHAR *app_name, const WCHAR *path ) DECLSPEC_HIDDEN;
++extern WCHAR* get_redirect( const WCHAR *app_name, const WCHAR *path, BYTE *buffer, ULONG size ) DECLSPEC_HIDDEN;
+ 
+ struct debug_info
+ {
+diff --git a/dlls/winex11.drv/init.c b/dlls/winex11.drv/init.c
+index 6bc4fb3..b0024a0 100644
+--- a/dlls/winex11.drv/init.c
++++ b/dlls/winex11.drv/init.c
+@@ -365,6 +365,7 @@ static INT X11DRV_ExtEscape( PHYSDEV dev, INT escape, INT in_count, LPCVOID in_d
+                 {
+                     struct x11drv_escape_get_drawable *data = out_data;
+                     data->drawable = physDev->drawable;
++                    data->dc_rect = physDev->dc_rect;
+                     return TRUE;
+                 }
+                 break;
+diff --git a/dlls/winex11.drv/x11drv.h b/dlls/winex11.drv/x11drv.h
+index 2694d23..3e94b64 100644
+--- a/dlls/winex11.drv/x11drv.h
++++ b/dlls/winex11.drv/x11drv.h
+@@ -292,6 +292,7 @@ struct x11drv_escape_get_drawable
+     Drawable                 drawable;     /* X drawable */
+     Drawable                 gl_drawable;  /* GL drawable */
+     int                      pixel_format; /* internal GL pixel format */
++    RECT                     dc_rect;      /* DC rectangle relative to drawable */
+ };
+ 
+ struct x11drv_escape_flush_gl_drawable
+diff --git a/programs/winecfg/Makefile.in b/programs/winecfg/Makefile.in
+index 7b52a69..c86fdd0 100644
+--- a/programs/winecfg/Makefile.in
++++ b/programs/winecfg/Makefile.in
+@@ -11,6 +11,7 @@ C_SRCS = \
+ 	driveui.c \
+ 	libraries.c \
+ 	main.c \
++	staging.c \
+ 	theme.c \
+ 	winecfg.c \
+ 	x11drvdlg.c
+diff --git a/programs/winecfg/main.c b/programs/winecfg/main.c
+index b8a85fe..de209a9 100644
+--- a/programs/winecfg/main.c
++++ b/programs/winecfg/main.c
+@@ -58,7 +58,7 @@ PropSheetCallback (HWND hWnd, UINT uMsg, LPARAM lParam)
+     return 0;
+ }
+ 
+-#define NUM_PROPERTY_PAGES 7
++#define NUM_PROPERTY_PAGES 8
+ 
+ static INT_PTR
+ doPropertySheet (HINSTANCE hInstance, HWND hOwner)
+@@ -139,6 +139,16 @@ doPropertySheet (HINSTANCE hInstance, HWND hOwner)
+     psp[pg].lParam = 0;
+     pg++;
+ 
++    psp[pg].dwSize = sizeof (PROPSHEETPAGEW);
++    psp[pg].dwFlags = PSP_USETITLE;
++    psp[pg].hInstance = hInstance;
++    psp[pg].u.pszTemplate = MAKEINTRESOURCEW (IDD_STAGING);
++    psp[pg].u2.pszIcon = NULL;
++    psp[pg].pfnDlgProc = StagingDlgProc;
++    psp[pg].pszTitle =  load_string (IDS_TAB_STAGING);
++    psp[pg].lParam = 0;
++    pg++;
++
+     /*
+      * Fill out the (General) PROPSHEETPAGE data structure 
+      * for the property sheet
+diff --git a/programs/winecfg/resource.h b/programs/winecfg/resource.h
+index 8604fb4..201e5c3 100644
+--- a/programs/winecfg/resource.h
++++ b/programs/winecfg/resource.h
+@@ -45,6 +45,7 @@
+ #define IDS_SHELL_FOLDER                16
+ #define IDS_LINKS_TO                    17
+ #define IDS_WINECFG_TITLE_APP           18   /* App specific title */
++#define IDS_TAB_STAGING                 19
+ #define IDI_WINECFG                     100
+ #define IDI_LOGO                        102
+ #define IDD_ABOUTCFG                    107
+@@ -54,6 +55,7 @@
+ #define IDD_DLLCFG                      111
+ #define IDD_DRIVECFG                    112
+ #define IDD_DESKTOP_INTEGRATION         115
++#define IDD_STAGING                     116
+ #define IDC_WINVER                      1012
+ #define IDC_DESKTOP_WIDTH               1023
+ #define IDC_DESKTOP_HEIGHT              1024
+@@ -218,3 +220,6 @@
+ #define IDC_ABT_TITLE_TEXT           8436
+ #define IDC_ABT_WEB_LINK             8437
+ #define IDC_ABT_LICENSE_TEXT         8438
++
++/* Staging tab */
++#define IDC_ENABLE_NATIVE_D3D9       9001
+diff --git a/programs/winecfg/staging.c b/programs/winecfg/staging.c
+new file mode 100644
+index 0000000..4a53815
+--- /dev/null
++++ b/programs/winecfg/staging.c
+@@ -0,0 +1,93 @@
++/*
++ * WineCfg Staging panel
++ *
++ * Copyright 2014 Michael Müller
++ * Copyright 2015 Sebastian Lackner
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ *
++ */
++
++#define COBJMACROS
++
++#include "config.h"
++
++#include <windows.h>
++#include <wine/unicode.h>
++#include <wine/debug.h>
++
++#include "resource.h"
++#include "winecfg.h"
++
++WINE_DEFAULT_DEBUG_CHANNEL(winecfg);
++
++/*
++ * Gallium nine
++ */
++static BOOL nine_get(void)
++{
++    BOOL ret;
++    char *value = get_reg_key(config_key, keypath("DllRedirects"), "d3d9", NULL);
++    ret = (value && !strcmp(value, "d3d9-nine.dll"));
++    HeapFree(GetProcessHeap(), 0, value);
++    return ret;
++}
++
++static void nine_set(BOOL status)
++{
++    set_reg_key(config_key, keypath("DllRedirects"), "d3d9", status ? "d3d9-nine.dll" : NULL);
++}
++
++
++static void load_staging_settings(HWND dialog)
++{
++    CheckDlgButton(dialog, IDC_ENABLE_NATIVE_D3D9, nine_get() ? BST_CHECKED : BST_UNCHECKED);
++#if !defined(SONAME_D3DADAPTER9)
++    disable(IDC_ENABLE_NATIVE_D3D9);
++#endif
++}
++
++INT_PTR CALLBACK StagingDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
++{
++    switch (uMsg)
++    {
++    case WM_INITDIALOG:
++        break;
++
++    case WM_NOTIFY:
++        if (((LPNMHDR)lParam)->code == PSN_SETACTIVE)
++            load_staging_settings(hDlg);
++        break;
++
++    case WM_SHOWWINDOW:
++        set_window_title(hDlg);
++        break;
++
++    case WM_DESTROY:
++        break;
++
++    case WM_COMMAND:
++        if (HIWORD(wParam) != BN_CLICKED) break;
++        switch (LOWORD(wParam))
++        {
++        case IDC_ENABLE_NATIVE_D3D9:
++            nine_set(IsDlgButtonChecked(hDlg, IDC_ENABLE_NATIVE_D3D9) == BST_CHECKED);
++            SendMessageW(GetParent(hDlg), PSM_CHANGED, 0, 0);
++            return TRUE;
++        }
++        break;
++    }
++    return FALSE;
++}
+diff --git a/programs/winecfg/winecfg.h b/programs/winecfg/winecfg.h
+index 110856a..a949474 100644
+--- a/programs/winecfg/winecfg.h
++++ b/programs/winecfg/winecfg.h
+@@ -87,6 +87,7 @@ INT_PTR CALLBACK AppDlgProc (HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+ INT_PTR CALLBACK LibrariesDlgProc (HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+ INT_PTR CALLBACK AudioDlgProc (HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+ INT_PTR CALLBACK ThemeDlgProc (HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
++INT_PTR CALLBACK StagingDlgProc (HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+ INT_PTR CALLBACK AboutDlgProc (HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+ 
+ /* Drive management  */
+diff --git a/programs/winecfg/winecfg.rc b/programs/winecfg/winecfg.rc
+index 221916b..ee4c55d 100644
+--- a/programs/winecfg/winecfg.rc
++++ b/programs/winecfg/winecfg.rc
+@@ -39,6 +39,7 @@ BEGIN
+     IDS_TAB_GRAPHICS        "Graphics"
+     IDS_TAB_DESKTOP_INTEGRATION "Desktop Integration"
+     IDS_TAB_AUDIO           "Audio"
++    IDS_TAB_STAGING         "Staging"
+     IDS_TAB_ABOUT           "About"
+     IDS_WINECFG_TITLE       "Wine configuration"
+     IDS_WINECFG_TITLE_APP   "Wine configuration for %s"
+@@ -308,6 +309,15 @@ BEGIN
+     PUSHBUTTON      "B&rowse...",IDC_BROWSE_SFPATH,195,195,50,13,WS_DISABLED
+ END
+ 
++IDD_STAGING DIALOG  0, 0, 260, 220
++STYLE WS_CHILD | WS_DISABLED
++FONT 8, "MS Shell Dlg"
++BEGIN
++    GROUPBOX    "Staging settings",IDC_STATIC,8,4,244,210
++    LTEXT       "The following settings are experimental and may break stuff!\nMake sure to reset them again in case of a problem.\nGallium Nine requires MESA graphic drivers and AMD/Nvidia GPU.\n",IDC_STATIC,16,16,230,24
++    CONTROL     "Enable &Gallium Nine for better D3D9 graphic performance.",IDC_ENABLE_NATIVE_D3D9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,40,230,8
++END
++
+ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+ 
+ /* @makedep: winecfg.ico */
