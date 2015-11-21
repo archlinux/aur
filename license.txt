@@ -1,0 +1,41 @@
+License: SoftMaker Office 2012 2015-8-28 http://www.softmaker.com/english/license2012_en.htm
+Different licensing conditions apply for school, university, teacher, and student licenses.
+
+SoftMaker Office 2012 (the "Software") does not employ copy protection or mandatory activation. It can be installed and uninstalled repeatedly, even on different computers, so long as you stay within the rights granted by this license.
+
+The Software is the property of SoftMaker Software GmbH ("SoftMaker") or its licensors and is protected by copyright law. While SoftMaker continues to own the Software, you will have certain rights to use the Software after your acceptance of the license.
+
+Read this agreement carefully. If you agree to its terms, press the Accept key to continue with the installation. If you do not agree to its terms, press Decline to abort the installation. Except as may be modified by a license addendum which accompanies this license, your rights and obligations are as follows:
+You may choose among the following licensing options:
+
+    You may EITHER install and use one copy of the Software on up to 3 (three) computers simultaneously, so long as all of these computers belong to the same household or company at the same physical location;
+
+    ALTERNATIVELY, you may install one copy of the Software on up to 5 (five) computers that are owned by the same person or company, so long as only one copy of the Software is in use at any given time.
+
+These licensing options may be exercised at your discretion, but not simultaneously.
+You may:
+
+    Transfer the Software from one of your computers to another by simply uninstalling the Software on one computer and installing it on the other;
+
+    Make a reasonable number of backup copies for archive purposes, so long as the backup copies are not distributed; and
+
+    Transfer the Software on a permanent basis to another person or entity, provided that you retain no copies of the Software and the transferee agrees to the terms of this agreement.
+
+You may not:
+
+    Make copies of the accompanying documentation;
+
+    Sublicense, rent or lease any portion of the Software or accompanying documentation; or
+
+    Reverse-engineer, decompile, dissassemble, modify, translate, make any attempt to discover the source code of the Software, or create derivative works from the software.
+
+Limited warranty
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SOFTMAKER DISCLAIMS ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, AND ALL SUCH WARRANTIES ARE EXPRESSLY AND SPECIFICALLY DISCLAIMED. NEITHER SOFTMAKER NOR ANYONE ELSE WHO HAS BEEN INVOLVED IN THE CREATION, PRODUCTION, OR DELIVERY OF THIS SOFTWARE SHALL BE LIABLE FOR ANY INDIRECT, CONSEQUENTIAL, OR INCIDENTAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE SUCH SOFTWARE EVEN IF SOFTMAKER HAS BEEN ADVISED OF POSSIBILITY OF SUCH DAMAGES OR CLAIMS. IN NO EVENT SHALL SOFTMAKER'S LIABILITY FOR ANY DAMAGES EVER EXCEED THE PRICE PAID FOR LICENSE TO USE THE SOFTWARE, REGARDLESS OF THE FORM OF QUALITY AND PERFORMANCE OF THE SOFTWARE. THE PERSON USING THE SOFTWARE BEARS ALL RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE.
+General
+
+This Agreement is the complete statement of the Agreement between the parties on the subject matter, and merges and supersedes all other or prior understandings, purchase orders, agreements and arrangements. This Agreement shall be governed by and construed in accordance with the laws of the Federal Republic of Germany. Exclusive jurisdiction and venue for all matters relating to this Agreement shall be in courts located in the City of Nürnberg, Germany, and you consent to such jurisdiction and venue, thereby excluding the United Nations Convention on Contracts for the International Sale of Goods and any legislation implementing such Convention, if otherwise applicable.
+
+If any provision of this Agreement is declared by a Court of competent jurisdiction to be invalid, illegal, or unenforceable, such a provision shall be severed from the Agreement and the other provisions shall remain in full force and effect.
+
+All rights of any kind in the Software which are not expressly granted in this License are entirely and exclusively reserved to and by SoftMaker.
