@@ -15,5 +15,5 @@ pkgname=("bareos-traymonitor"
 source=("https://github.com/bareos/bareos/archive/Release/${pkgver}.tar.gz"
         "PKGBUILD.common")
 
-sha256sums=('020b974b54f10d245ee920dd3144827ef32588599e703e4f3ce1c913a0201160'
-            'a76f47b2cdfaede8bba6f1c658afed999260bb267fe7cba48255ce1a73796b06')
+sha256sums=('e8f5b2c8635985abce68b057585db9d2b7abf3e394bc2b34cb3fbd6ebfed6d3b'
+            '0819fdf926a4c256efe4ed74cfa850815148d43cdbbe661d5ddd372954be8122')
