@@ -1,7 +1,7 @@
 _pkgbasename=nss
 pkgname=lib32-${_pkgbasename}-chacha20
 pkgver=3.20.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Mozilla Network Security Services with ChaCha20-Poly1305 (32-bit)"
 arch=('x86_64')
 url="http://www.mozilla.org/projects/security/pki/nss/"
@@ -14,7 +14,7 @@ license=('MPL' 'GPL')
 _nsprver=4.10.7
 depends=("lib32-nspr>=${_nsprver}" 'lib32-sqlite>=3.6.17' "${_pkgbasename}" 'lib32-zlib' 'lib32-p11-kit')
 conflicts=('lib32-nss')
-provides=('lib32-nss')
+provides=("lib32-nss=${pkgver}")
 makedepends=('gcc-multilib' 'perl')
 options=('!strip' '!makeflags' staticlibs)
 source=(https://ftp.mozilla.org/pub/security/nss/releases/NSS_${pkgver//./_}_RTM/src/${_pkgbasename}-${pkgver}.tar.gz
