@@ -29,40 +29,14 @@ def set_version(version):
     with open(pkgbuild, "w") as fp:
         fp.writelines(new_lines)
 
-
-def get_checksum_line():
-    cmd = ["makepkg", "--geninteg"]
-    output = subprocess.check_output(cmd, cwd=THIS_DIR)
-    return output.decode("utf-8")
-
-def set_checksum(checksum_line):
-    pkgbuild = os.path.join(THIS_DIR, "PKGBUILD")
-    with open(pkgbuild, "r") as fp:
-        lines = fp.readlines()
-    new_lines = list()
-    for line in lines:
-        if line.startswith("md5sums"):
-            new_lines.append(checksum_line)
-        else:
-            new_lines.append(line)
-
-    with open(pkgbuild, "w") as fp:
-        fp.writelines(new_lines)
+def set_checksums():
+    cmd = ["/usr/bin/updpkgsums"]
+    subprocess.check_call(cmd, cwd=THIS_DIR)
 
 def run_makepkg():
-    cmd = ["makepkg"]
+    cmd = ["/usr/bin/extra-x86_64-build"]
     subprocess.check_call(cmd, cwd=THIS_DIR)
 
-def run_namcap():
-    cmd = ["namcap", "PKGBUILD"]
-    subprocess.check_call(cmd, cwd=THIS_DIR)
-    contents = os.listdir(THIS_DIR)
-    pkgs = [x for x in contents if "pkg.tar.xz" in x]
-    if len(pkgs) != 1:
-        sys.exit("Expecting one pkg, got %s" % pkgs)
-    pkg = pkgs[0]
-    cmd = ["namcap", pkg]
-    subprocess.check_call(cmd, cwd=THIS_DIR)
 
 def update_srcinfo():
     cmd = ["mksrcinfo"]
@@ -85,12 +59,8 @@ def push():
 def make_release(version):
     clean()
     set_version(version)
-    new_checksum_line = get_checksum_line()
-    set_checksum(new_checksum_line)
+    set_checksums()
     run_makepkg()
-    print("running namcap ...")
-    run_namcap()
-    print("namcap OK")
     update_srcinfo()
     commit_all(version)
     push()
