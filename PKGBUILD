@@ -1,4 +1,4 @@
-# Maintainer: Valerio Pizzi (pival81) <pival81@yahoo.com>
+# Maintainer: Valerio Pizzi (pival81) <pival81@aol.com>
 
 pkgname=vibrantly-colors
 pkgver=1.2.2
