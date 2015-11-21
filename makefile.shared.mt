@@ -16,13 +16,13 @@ libptf77blas.so : libptf77blas.a libatlas.so
 	ld $(LDFLAGS) -shared -soname libblas.so.3 -o $@ --whole-archive \
 	   libptf77blas.a --no-whole-archive $(F77SYSLIB) -L. -latlas
 
-libstcblas.so : libcblas.a libatlas.so
+libstcblas.so : libcblas.a libatlas.so libblas.so
 	ld $(LDFLAGS) -shared -soname libstcblas.so -o $@ --whole-archive \
-	   libcblas.a -L. -latlas
+	   libcblas.a -L. -latlas -lblas
 
-libptcblas.so : libptcblas.a libatlas.so
+libptcblas.so : libptcblas.a libatlas.so libblas.so
 	ld $(LDFLAGS) -shared -soname libcblas.so -o $@ --whole-archive \
-	   libptcblas.a -L. -latlas
+	   libptcblas.a -L. -latlas -lblas
 
 libblas.so: libptf77blas.so
 	ln -s $< $@

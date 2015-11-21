@@ -11,9 +11,9 @@ libf77blas.so : libf77blas.a libatlas.so
 	ld $(LDFLAGS) -shared -soname libblas.so.3 -o $@ --whole-archive \
 	   libf77blas.a --no-whole-archive $(F77SYSLIB) -L. -latlas
 
-libcblas.so : libcblas.a libatlas.so
+libcblas.so : libcblas.a libatlas.so libblas.so
 	ld $(LDFLAGS) -shared -soname $@ -o $@ --whole-archive libcblas.a \
-	    -L. -latlas
+	    -L. -latlas -lblas
 
 libblas.so: libf77blas.so
 	ln -s $< $@

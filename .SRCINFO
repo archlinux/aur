@@ -1,7 +1,7 @@
 pkgbase = atlas-lapack
 	pkgdesc = Complete LAPACK and BLAS implementation using optimised ATLAS routines
 	pkgver = 3.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://math-atlas.sourceforge.net/
 	install = atlas-lapack.install
 	arch = i686
@@ -32,8 +32,8 @@ pkgbase = atlas-lapack
 	md5sums = a4e21f343dec8f22e7415e339f09f6da
 	md5sums = 38b6acb8ed5691d25863319d30a8b365
 	md5sums = 4903eb06072dfbf94710691ccb6660bf
-	md5sums = 471f0ecdc36ef5e1118309847d142eea
-	md5sums = 6e307b98236ff319ac1c03166ad9164c
+	md5sums = 2532ea5fdd412414a438b65b49451574
+	md5sums = 24dfa225d311585d79dcf2560a9682b5
 
 pkgname = atlas-lapack
 

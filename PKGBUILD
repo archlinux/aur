@@ -5,7 +5,7 @@
 pkgname=atlas-lapack
 pkgver=3.10.2
 _lapackver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete LAPACK and BLAS implementation using optimised ATLAS routines"
 url="http://math-atlas.sourceforge.net/"
 depends=('gcc-libs')
@@ -22,8 +22,8 @@ md5sums=('b1d3e3e425b2e44a06760ff173104bdf'
          'a4e21f343dec8f22e7415e339f09f6da'
          '38b6acb8ed5691d25863319d30a8b365'
          '4903eb06072dfbf94710691ccb6660bf'
-         '471f0ecdc36ef5e1118309847d142eea'
-         '6e307b98236ff319ac1c03166ad9164c')
+         '2532ea5fdd412414a438b65b49451574'
+         '24dfa225d311585d79dcf2560a9682b5')
 
 build() {
    cd "$srcdir"
@@ -33,6 +33,7 @@ build() {
    #USE_ARCH_DEFAULTS="yes"
    msg 'Before building this package, as root you must set the CPU(s)'
    msg 'governor(s) to "performance".'
+   msg 'See: https://wiki.archlinux.org/index.php/CPU_frequency_scaling'
 
    if [ "$CARCH" = "x86_64" ]; then
       ARCHITECTURE_BUILD_OPTS="-b 64" # for x86_64
