@@ -4,7 +4,7 @@ pkgdesc="ROS - Holds the action description and relevant messages for the move_b
 url='http://wiki.ros.org/move_base_msgs'
 
 pkgname='ros-indigo-move-base-msgs'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-move-base-msgs
 	pkgdesc = ROS - Holds the action description and relevant messages for the move_base package.
-	pkgver = 1.12.4
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = http://wiki.ros.org/move_base_msgs
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-move-base-msgs
 	depends = ros-indigo-actionlib-msgs
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-geometry-msgs
-	source = move_base_msgs::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/move_base_msgs/1.12.4-0
+	source = move_base_msgs::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/move_base_msgs/1.12.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-move-base-msgs
