@@ -1,3 +1,5 @@
+# Maintainer: Carlos Silva <r3pek@r3pek.org>
+
 pkgname=ida-demo
 _pkgname=${pkgname/-/}
 pkgver=6.8
