@@ -1,0 +1,19 @@
+pkgbase = cuddly-octo-tatertot-git
+	pkgdesc = Silly python scripts
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/vpzomtrrfrt/cuddly-octo-tatertot
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python2
+	makedepends = zenity
+	makedepends = imagemagick
+	provides = cuddly-octo-tatertot
+	conflicts = cuddly-octo-tatertot
+	source = git+https://github.com/vpzomtrrfrt/cuddly-octo-tatertot
+	md5sums = SKIP
+
+pkgname = cuddly-octo-tatertot-git
+
