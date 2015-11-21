@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=devdocs-git
 pkgver=r1002.de1c879
-pkgrel=3
+pkgrel=4
 pkgdesc="API Documentation Browser"
 arch=('any')
 url="http://devdocs.io"
@@ -44,9 +44,6 @@ package() {
   ln -s "/opt/$pkgname/devdocs-server.sh" "$pkgdir/usr/bin/devdocs-server"
   ln -s "/opt/$pkgname/devdocs-cli.sh" "$pkgdir/usr/bin/devdocs-cli"
   
-  cd "$pkgdir/opt/$pkgname" && bundle install --path .bundle
-  cd "$pkgdir/opt/$pkgname" && thor assets:clean && thor assets:compile
-  
   mkdir -p "$pkgdir/opt/$pkgname/tmp"
   
   chown -R http:wheel "$pkgdir/opt/$pkgname/public"
@@ -54,5 +51,8 @@ package() {
   
   chmod -R g+w "$pkgdir/opt/$pkgname/public"
   chmod -R g+w "$pkgdir/opt/$pkgname/tmp"
+  
+  cd "$pkgdir/opt/$pkgname" && bundle install --path .bundle
+  cd "$pkgdir/opt/$pkgname" && bundle exec thor assets:clean && bundle exec thor assets:compile
 }
 

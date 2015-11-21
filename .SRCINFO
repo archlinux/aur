@@ -1,7 +1,7 @@
 pkgbase = devdocs-git
 	pkgdesc = API Documentation Browser
 	pkgver = r1002.de1c879
-	pkgrel = 3
+	pkgrel = 4
 	url = http://devdocs.io
 	arch = any
 	license = GPL
