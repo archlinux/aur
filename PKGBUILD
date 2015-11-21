@@ -4,7 +4,7 @@
 pkgname=gogs-git
 _pkgname=gogs
 _branch=master
-pkgver=3076.951037c
+pkgver=3135.6a6a751
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
@@ -19,7 +19,7 @@ optdepends=('sqlite: SQLite support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support'
             'tidb-git: TiDB support')
-makedepends=('go>=1.2' 'git>=1.7.1' 'patch')
+makedepends=('go>=1.3' 'git>=1.7.1' 'patch')
 conflicts=('gogs-bin' 'gogs' 'gogs-git')
 options=('!strip' '!emptydirs')
 backup=('srv/gogs/conf/app.ini')
@@ -27,14 +27,14 @@ backup=('srv/gogs/conf/app.ini')
 install=gogs.install
 
 _gourl=github.com/gogits/$_pkgname
-source=('gogs.service'
+source=('gogs.service.patch'
         'app.ini.patch'
         'helper.sh'
         "$_pkgname::git+https://${_gourl}.git#branch=${_branch}")
 
-sha512sums=(c7abbe4af438a8a1db44537a16dbd40b82d50c921d53002c083071c4cd16644769e9d5dabbccedc1bd4ba563324186da4b4378365e098cc45df76402a657be90
+sha512sums=(834e95fe9bcfa291a573ad1fa43f41bbed844658a918ff4fcf53ab8a44a296206ee4003eab1d9a2785c9126be077022f4907846d2eb6c5d64050b5e81ce47f44
             d4f6518c644b76e4d1688cd5756c9eea7a89d0abad68a14638ccc6f0d1006c164c1ae3b3f89efd903def7398a3dabce7299100303808ad7a1937407a9eb13a39
-            5dde38b286b2a27624e4c2f5c87c7eb279c6c5fc71dad818762b7100a8d20d5b16c14695624107e21b361ab662b90e769717325ba5f276067aa1ead38ae44e47
+            e45775adafeecad5deaf24a98cd85b25a8383cb0e89905b2927c13fe7f0ec9918a42071ce43eabc429d8a826db93bb75ffb1927dce9c431ed88b0b5c619fd60d
             'SKIP')
 
 _goroot="/usr/lib/go"
@@ -76,7 +76,7 @@ prepare() {
   msg2 "Check and download dependencies from .gopmfile"
   get_gopm "$GOPATH/src/${_gourl}/.gopmfile" "$GOPATH/src"
 
-  msg2 "Download missing dependencies"
+#  msg2 "Download missing dependencies"
 #  go_get github.com/macaron-contrib/oauth2 "$GOPATH/src/github.com/macaron-contrib/oauth2"
 
   msg2 "Workaround dependencies"
@@ -86,6 +86,7 @@ prepare() {
   # Execute patch
   msg2 "Execute patches"
   patch -Np1 -i "$srcdir/app.ini.patch" "$GOPATH/src/${_gourl}/conf/app.ini"
+  patch -Np1 -i "$srcdir/gogs.service.patch" "$GOPATH/src/${_gourl}/scripts/systemd/gogs.service"
 }
 
 build() {
@@ -105,6 +106,6 @@ package() {
   cp -r "$srcdir/build/src/${_gourl}/templates" "$pkgdir/usr/share/themes/gogs/default"
 
   install -Dm0644 "$pkgdir/usr/share/$_pkgname/conf/app.ini" "$pkgdir/srv/$_pkgname/conf/app.ini"
-  install -Dm0644 "$srcdir/gogs.service" "$pkgdir/usr/lib/systemd/system/gogs.service"
+  install -Dm0644 "$srcdir/build/src/${_gourl}/scripts/systemd/gogs.service" "$pkgdir/usr/lib/systemd/system/gogs.service"
   install -Dm0644 "$srcdir/build/src/${_gourl}/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
 }
