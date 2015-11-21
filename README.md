@@ -19,3 +19,5 @@ Should you choose to run the service as a different user than root, you need to 
 sudo chmod 666 /dev/net/tun
 sudo setcap cap_net_bind_service,cap_net_admin=ep /usr/bin/netvirt-agent
 ```
+
+Link to AUR https://aur.archlinux.org/packages/netvirt-agent-git/
