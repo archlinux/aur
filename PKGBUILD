@@ -6,6 +6,11 @@ license=('Various')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/mint-backgrounds-rosa"
 source=("$url/mint-backgrounds-rosa_$pkgver.tar.gz")
+sha1sums=('6b15cdfbdea184a84aaa1d56e48bdc55710e6be5')
 package() {
-	cp -a $srcdir/usr $pkgdir
+	mkdir -p $pkgdir/usr/share/backgrounds/linuxmint-rosa
+	cp -a $srcdir/$pkgname/backgrounds $pkgdir/usr/share/backgrounds/linuxmint-rosa
+	mkdir -p $pkgdir/usr/share/{cinnamon-background-properties,gnome-background-properties}
+	cp -a $srcdir/$pkgname/cinnamon-background-properties/* $pkgdir/usr/share/cinnamon-background-properties/
+	cp -a $srcdir/$pkgname/gnome-background-properties/* $pkgdir/usr/share/gnome-background-properties
 }

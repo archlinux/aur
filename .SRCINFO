@@ -6,6 +6,7 @@ pkgbase = mint-backgrounds-rosa
 	arch = any
 	license = Various
 	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-rosa/mint-backgrounds-rosa_1.2.tar.gz
+	sha1sums = 6b15cdfbdea184a84aaa1d56e48bdc55710e6be5
 
 pkgname = mint-backgrounds-rosa
 
