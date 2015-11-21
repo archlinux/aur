@@ -1,8 +1,8 @@
 # Maintainer: Arnoud Willemsen <mail@lynthium.com>
 
 pkgname='clevo-xsm-wmi-util'
-pkgver='0.5'
-_pkgtag='e782b6b2d01f'
+pkgver='0.6'
+_pkgtag='291801cb8d85'
 pkgrel=1
 pkgdesc='A GUI control utility for the clevo-xsm-wmi driver.'
 arch=('i686' 'x86_64')
@@ -23,4 +23,4 @@ package() {
 	install -Dm755 systemd/clevo-xsm-wmi.service ${pkgdir}/usr/lib/systemd/system/clevo-xsm-wmi.service
 	install -D -m644 /usr/share/licenses/common/GPL2/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('98e0323c28e10896826c817fc2c0732b1cfb798edb2718e25a565ca5dc92f136')
+sha256sums=('7619a39cbd2445e947a348b27737c41fc7d3f11bd7f15e52a89e2cd310a03698')
