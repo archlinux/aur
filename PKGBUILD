@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=sopcast-launcher
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Sopcast Launcher allows you to open Sopcast links with a Media Player of your choice"
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/jonian/sopcast-launcher/archive/v$pkgver.tar.gz)
+source=("https://github.com/jonian/sopcast-launcher/archive/v$pkgver.tar.gz")
 noextract=()
 md5sums=('SKIP')
 
@@ -28,7 +28,7 @@ package() {
 
   cp -a "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/sopcast-launcher"
 
-  sudo update-desktop-database "$pkgdir/opt/sopcast-launcher"
+  update-desktop-database "$pkgdir/opt/sopcast-launcher"
 
   ln -s "/opt/sopcast-launcher/sopcast-launcher.py" "$pkgdir/usr/bin/sopcast-launcher"
   mv "$pkgdir/opt/sopcast-launcher/sopcast-launcher.desktop" "$pkgdir/usr/share/applications/sopcast-launcher.desktop"
