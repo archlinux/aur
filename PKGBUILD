@@ -3,13 +3,13 @@
 
 pkgname=freeminer
 pkgver=0.4.13.7
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source sandbox game inspired by Minecraft.'
 arch=('i686' 'x86_64')
 url='http://freeminer.org/'
 license=('GPL3' 'CCPL:cc-by-sa-3.0')
 
-depends=('irrlicht' 'leveldb' 'libvorbis' 'openal' 'sqlite' 'curl' 'luajit' 'xdg-utils' 'hicolor-icon-theme' 'hiredis' 'jsoncpp')
+depends=('leveldb' 'curl' 'hiredis' 'sqlite' 'luajit' 'xdg-utils' 'irrlicht' 'openal' 'jsoncpp' 'libvorbis' 'hicolor-icon-theme' 'freetype2')
 makedepends=('cmake' 'msgpack-c' 'clang')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
