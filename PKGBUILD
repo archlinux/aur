@@ -1,9 +1,9 @@
 # Maintainer: Uroš Vampl <mobile.leecher at gmail dot com>
 
 pkgname=tigervnc-git
-pkgver=r3061.500cbe6e
+pkgver=r3167.36eac99
 pkgrel=1
-_xorgver=1.17.1
+_xorgver=1.18.0
 pkgdesc="Suite of VNC servers and clients. Based on the VNC 4 branch of TightVNC."
 arch=('i686' 'x86_64')
 url="http://www.tigervnc.org"
@@ -23,12 +23,12 @@ source=(git+https://github.com/TigerVNC/tigervnc.git
 	ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${_xorgver}.tar.bz2
 	vncserver.service
 	vncviewer.desktop
-	getmaster.patch)
+	xorg118.patch)
 md5sums=('SKIP'
-         '5986510d59e394a50126a8e2833e79d3'
+         '3c1c1057d3ad27380d8dd87ffcc182cd'
          'a8a20685c23a50f86a13c33ce96a7ba7'
          'b200d83c60e80c6f9693ea19a2d9f5b0'
-         '5ee303c958d14771affd5514de3328ca')
+         '731083cf1bd4d5ca338bc1f680a361b8')
 
 pkgver() {
   cd tigervnc
@@ -38,12 +38,12 @@ pkgver() {
 prepare() {
   cd tigervnc
 
-  patch -Np1 -i ${srcdir}/getmaster.patch
+  patch -Np1 -i ${srcdir}/xorg118.patch
   sed -i 's/iconic/nowin/' unix/vncserver
 
   cd unix/xserver
   cp -r ${srcdir}/xorg-server-${_xorgver}/* .
-  patch -Np1 -i ../xserver116.patch
+  patch -Np1 -i ../xserver117.patch
 }
 
 build() {
@@ -59,7 +59,7 @@ build() {
 	--disable-xwin --disable-xephyr --disable-kdrive --disable-xwayland \
 	--disable-config-hal --disable-config-udev --with-pic \
 	--disable-unit-tests --disable-devel-docs --disable-selective-werror \
-	--disable-dri --enable-dri2 --enable-dri3 --enable-glx --enable-glx-tls
+	--disable-dri --enable-dri2 --enable-dri3 --enable-glx
   make
 }
 
