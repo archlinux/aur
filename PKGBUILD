@@ -11,7 +11,7 @@ url='http://tomahawk-player.org/'
 license=('GPL3')
 depends=('attica-qt5' 'gnutls' 'libechonest-qt5' 'liblastfm-qt5' 'lucene++'
          'phonon-qt5' 'qca-qt5' 'qt5-svg' 'qt5-webkit' 'qtkeychain-qt5' 'quazip-qt5'
-         'taglib')
+         'taglib>=1.10')
 makedepends=('boost' 'cmake' 'sparsehash' 'qt5-tools')
 optdepends=('telepathy-qt5: integration with Telepathy')
 provides=('tomahawk')

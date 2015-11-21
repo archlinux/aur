@@ -22,7 +22,7 @@ pkgbase = tomahawk-qt5
 	depends = qt5-webkit
 	depends = qtkeychain-qt5
 	depends = quazip-qt5
-	depends = taglib
+	depends = taglib>=1.10
 	optdepends = telepathy-qt5: integration with Telepathy
 	provides = tomahawk
 	conflicts = tomahawk
