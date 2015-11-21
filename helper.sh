@@ -50,22 +50,14 @@ function get_hg {
 }
 
 function get_golang {
-  if [[ $1 == "golang.org/x/net" ]]
-  then
-    echo $1 $2 $3
-    get_git "github.com/golang/net" $2
-  elif [[ $1 == "golang.org/x/text" ]]
-  then
-    echo $1 $2 $3
-    get_git "github.com/golang/text" $2
-  elif [[ $1 == "golang.org/x/crypto" ]]
-  then
-    echo $1 $2 $3
-    get_git "github.com/golang/crypto" $2
-  else
-    echo $1 $2 $3
-  fi
+  local package=$1
+  local match="golang.org/x"
+  local replace="github.com/golang"
+  local result=""
 
+  result=${package/$match/$replace}
+
+  get_git $result $2 $3
 }
 
 # Read the .gopmfile file and clone the branch/commits of the depends
