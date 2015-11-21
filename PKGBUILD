@@ -1,4 +1,4 @@
-# Maintainer: Valerio Pizzi <pival81@yahoo.com>
+# Maintainer: Valerio Pizzi <pival81@aol.com>
 
 pkgname=rave-cube-wallpaper-collection-x1
 pkgver=1
