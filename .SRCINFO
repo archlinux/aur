@@ -1,7 +1,7 @@
 pkgbase = bombono-dvd
 	pkgdesc = DVD authoring program with nice and clean GUI
 	pkgver = 1.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.bombono.org
 	install = bombono-dvd.install
 	arch = i686
@@ -25,9 +25,15 @@ pkgbase = bombono-dvd
 	source = http://downloads.sourceforge.net/bombono/bombono-dvd-1.2.2.tar.bz2
 	source = fix_ffmpeg_codecid.patch
 	source = bombono-dvd-1.2.2-ffmpeg26.patch
+	source = fix_ptr2bool_cast.patch
+	source = fix_c++11_literal_warnings.patch
+	source = fix_crefoftemp_bug.patch
 	sha256sums = 3ffaadc803dc2526d2805629ee928800ce150cb2e6a40b6724d898c76366f68b
 	sha256sums = decc8f9261b0fcd18780080438c9fc4297d56a281355f195a5dee9a92abf474a
 	sha256sums = ee89adeff7bd19d731eac96c180d5d59766bb3a68f3b21b898199e1cb6c5639e
+	sha256sums = 9471454c97d8b91b4234085f1eabc625d9e23e76a91266b205dc3f79553322b9
+	sha256sums = 31dfc5400d450490a53bbd386bafb59d68a9a2d6f9036755419d3be035aa87be
+	sha256sums = 0ea8ad5ccf64d30d0463e9bde5b07abdedd00e2da2fa7f3f72de99aa3915a64c
 
 pkgname = bombono-dvd
 

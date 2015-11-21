@@ -1,0 +1,168 @@
+--- bombono-dvd-1.2.2/src/mlib/regex.h	2013-03-08 00:50:45.000000000 +0330
++++ new/src/mlib/regex.h	2015-11-20 18:37:26.167057488 +0330
+@@ -185,7 +185,7 @@
+ #define RG_EW "\\>"           // конец  слова
+ #define RG_SPS "[[:space:]]*" // пробелы
+ #define RG_NUM "([0-9]+)"     // число
+-#define RG_FLT RG_NUM"([\\.,]"RG_NUM")" // вещ. число, в паре с ExtractDouble()
++#define RG_FLT RG_NUM "([\\.,]" RG_NUM ")" // вещ. число, в паре с ExtractDouble()
+ #define RG_CMD_BEG RG_BW // "^"RG_SPS  // начало команды
+ 
+ bool ExtractDouble(double& val, const re::match_results& what, int idx = 1);
+--- bombono-dvd-1.2.2/src/mgui/author/burn.cpp	2013-03-08 00:50:45.000000000 +0330
++++ new/src/mgui/author/burn.cpp	2015-11-20 18:44:47.940364110 +0330
+@@ -85,7 +85,7 @@
+     return bd;
+ }
+ 
+-re::pattern WriteSpeed_RE("Write Speed #"RG_NUM":"RG_SPS RG_NUM"\\."RG_NUM "x1385"); 
++re::pattern WriteSpeed_RE("Write Speed #" RG_NUM ":" RG_SPS RG_NUM "\\." RG_NUM "x1385"); 
+ 
+ RefPtr<Gtk::ListStore> sp_store;
+ 
+@@ -253,7 +253,7 @@
+     }
+     else
+     {
+-        static re::pattern media_type_re("Mounted Media:"RG_SPS"[0-9A-F]+h, ([^ \n]+)");
++        static re::pattern media_type_re("Mounted Media:" RG_SPS "[0-9A-F]+h, ([^ \n]+)");
+         re::match_results what;
+ 
+         bool is_found = re::search(out_info, what, media_type_re);
+@@ -277,7 +277,7 @@
+         // isBlank
+         if( res != dvdOTHER )
+         {
+-            static re::pattern media_status_re("Disc status:"RG_SPS"([a-z]+)\n");
++            static re::pattern media_status_re("Disc status:" RG_SPS "([a-z]+)\n");
+             bool is_found = re::search(out_info, what, media_status_re);
+             ASSERT_RTL( is_found );
+ 
+--- bombono-dvd-1.2.2/src/mgui/author/execute.cpp	2013-03-08 00:50:45.000000000 +0330
++++ new/src/mgui/author/execute.cpp	2015-11-20 18:47:25.260354601 +0330
+@@ -64,9 +64,9 @@
+     tag->property_foreground() = "darkgreen";
+ }
+ 
+-re::pattern DVDAuthorRE(RG_CMD_BEG"dvdauthor"RG_EW ".*-x"RG_EW RG_SPS RG_BW"DVDAuthor\\.xml"RG_EW);
+-re::pattern MkIsoFsRE(RG_CMD_BEG MK_ISO_CMD RG_EW ".*-dvd-video"RG_EW ".*>.*"RG_BW"dvd.iso"RG_EW);
+-re::pattern GrowIsoFsRE(RG_CMD_BEG"growisofs"RG_EW ".*-dvd-compat"RG_EW ".*-dvd-video"RG_EW); 
++re::pattern DVDAuthorRE(RG_CMD_BEG"dvdauthor" RG_EW ".*-x" RG_EW RG_SPS RG_BW "DVDAuthor\\.xml" RG_EW);
++re::pattern MkIsoFsRE(RG_CMD_BEG MK_ISO_CMD RG_EW ".*-dvd-video" RG_EW ".*>.*" RG_BW "dvd.iso" RG_EW);
++re::pattern GrowIsoFsRE(RG_CMD_BEG"growisofs" RG_EW ".*-dvd-compat" RG_EW ".*-dvd-video" RG_EW); 
+ 
+ //static void PrintMatchResults(const re::match_results& what)
+ //{
+@@ -94,7 +94,7 @@
+     virtual void  Filter(const std::string& line);
+ };
+ 
+-re::pattern MkIsoFsPercent_RE( RG_FLT"?% done");
++re::pattern MkIsoFsPercent_RE( RG_FLT "?% done");
+ 
+ void MkIsoFsPP::Filter(const std::string& line)
+ {
+@@ -126,8 +126,8 @@
+             bool  fixStage;
+ };
+ 
+-re::pattern DVDAuthorVOB_RE( "^STAT: VOBU "RG_NUM" at "RG_NUM"MB"); 
+-re::pattern DVDAuthorFix_RE( "^STAT: fixing VOBU at "RG_NUM"MB \\("RG_NUM"/"RG_NUM", "RG_NUM"%\\)"); 
++re::pattern DVDAuthorVOB_RE( "^STAT: VOBU " RG_NUM " at " RG_NUM "MB"); 
++re::pattern DVDAuthorFix_RE( "^STAT: fixing VOBU at " RG_NUM "MB \\(" RG_NUM "/" RG_NUM ", " RG_NUM "%\\)"); 
+ 
+ void DVDAuthorPP::Filter(const std::string& line)
+ {
+@@ -157,7 +157,7 @@
+     if( p )
+         of.SetProgress(p);
+     
+-    static re::pattern ch_error_re("ERR:.*Cannot jump to chapter "RG_NUM" of title "RG_NUM", only "RG_NUM" exist");
++    static re::pattern ch_error_re("ERR:.*Cannot jump to chapter " RG_NUM " of title " RG_NUM ", only " RG_NUM " exist");
+     if( re::search(line, what, ch_error_re) )
+     {
+         std::string& err_str = of.firstError;
+--- bombono-dvd-1.2.2/src/mgui/author/render.cpp	2013-03-08 00:50:45.000000000 +0330
++++ new/src/mgui/author/render.cpp	2015-11-20 18:50:40.550342794 +0330
+@@ -866,7 +866,7 @@
+             // 
+             // :KLUDGE: (только) в ffmpeg, avformat 53.13.0, поменяли . на : => надо
+             // самим открывать файл и узнавать индекс! 
+-            static re::pattern audio_idx("Stream #"RG_NUM"[\\.|:]"RG_NUM".*Audio:");
++            static re::pattern audio_idx("Stream #" RG_NUM "[\\.|:]" RG_NUM ".*Audio:");
+ 
+             re::match_results what;
+             // флаг означает, что перевод строки не может быть точкой
+@@ -1221,17 +1221,17 @@
+ {
+     CheckNoCodecs(CheckForCodecList(conts));
+ 
+-    static re::pattern dvd_format("^ .E dvd"RG_EW);
++    static re::pattern dvd_format("^ .E dvd" RG_EW);
+     CheckStrippedFFmpeg(dvd_format, conts, "dvd format");
+ 
+ // :TRICKY: с версии libavcodec 54 при выводе начальный пробел не ставят => поэтому ?
+ // ("спасибо" Anton Khirnov за очередное "улучшение") 
+ #define _CPP_ "^ ?"
+-    static re::pattern mpeg2video_codec(_CPP_".EV... mpeg2video"RG_EW);
++    static re::pattern mpeg2video_codec(_CPP_ ".EV... mpeg2video" RG_EW);
+     CheckStrippedFFmpeg(mpeg2video_codec, conts, "mpeg2 video encoder");
+ 
+     // по факту ffmpeg всегда использует ac3, однако mp2 тоже возможен
+-    static re::pattern ac3_codec(_CPP_".EA... ac3"RG_EW);
++    static re::pattern ac3_codec(_CPP_ ".EA... ac3" RG_EW);
+     CheckStrippedFFmpeg(ac3_codec, conts, "ac3 audio encoder");
+ #undef _CPP_
+ }
+@@ -1241,7 +1241,7 @@
+     // * ищем версию libavfilter
+     // пример: " libavfilter    0. 4. 0 / "
+ #define RG_PADNUM RG_SPS RG_NUM
+-    std::string reg_str = boost::format(RG_BW"%1%"RG_PADNUM"\\."RG_PADNUM"\\."RG_PADNUM" / ")
++    std::string reg_str = boost::format(RG_BW "%1%" RG_PADNUM "\\." RG_PADNUM "\\." RG_PADNUM " / ")
+         % avlib_name % bf::stop;
+     re::pattern avfilter_version(reg_str.c_str());
+     return FindVersion(conts, avfilter_version, AVCnvBin(), avlib_name);
+--- bombono-dvd-1.2.2/src/mgui/author/script.cpp	2015-11-20 18:40:35.770379359 +0330
++++ new/src/mgui/author/script.cpp	2015-11-20 19:02:42.020299175 +0330
+@@ -755,9 +755,9 @@
+ // ffmpeg выводит статистику первого создаваемого файла каждые полсекунды,
+ // см. print_report() (при verbose=1, по умолчанию)
+ // Формат размера: "size=%8.0fkB"
+-re::pattern FFmpegSizePat( "size= *"RG_NUM"kB"); 
++re::pattern FFmpegSizePat( "size= *" RG_NUM "kB"); 
+ // Формат длительности: "time=%0.2f"
+-re::pattern FFmpegDurPat( "time="RG_FLT);
++re::pattern FFmpegDurPat( "time=" RG_FLT);
+ 
+ static void OnTranscodePrintParse(const char* dat, int sz, const PercentFunctor& fnr)
+ {
+@@ -787,7 +787,7 @@
+ 
+ // Формат длительности для ffmpeg c коммита dd471070: "time=%02d:%02d:%02d.%02d"
+ // Образец: frame=  208 fps= 58 q=2.0 size=     476kB time=00:00:08.44 bitrate= 461.9kbits/s dup=1 drop=0
+-re::pattern FFmpegNewDurPat( "time="RG_NUM":"RG_NUM":"RG_FLT);
++re::pattern FFmpegNewDurPat( "time=" RG_NUM ":" RG_NUM ":" RG_FLT);
+ 
+ static void OnTranscodeHMSParse(const char* dat, int sz, const PercentFunctor& fnr)
+ {
+@@ -1136,7 +1136,7 @@
+             // 2) парсер dvdauthor не любит незнакомые ему атрибуты => spumux < 0.7 не работает
+             std::string help_str;
+             PipeOutput("spumux -h", help_str);
+-            static re::pattern spumux_version("DVDAuthor::spumux, version "RG_NUM"\\."RG_NUM"\\."RG_NUM"\\.\n");
++            static re::pattern spumux_version("DVDAuthor::spumux, version " RG_NUM "\\." RG_NUM "\\." RG_NUM "\\.\n");
+             if( IsVersionGE(FindVersion(help_str, spumux_version, "spumux"), TripleVersion(0, 7, 0)) )
+                 AddFormatAttr(sp);
+ 
+--- bombono-dvd-1.2.2/src/mgui/project/browser.cpp	2013-03-08 00:50:45.000000000 +0330
++++ new/src/mgui/project/browser.cpp	2015-11-20 19:03:52.983628220 +0330
+@@ -328,7 +328,7 @@
+     return hb;
+ }
+ 
+-std::string MediaItemDnDTVType() { return "DnDTreeView<"DND_MI_NAME">"; }
++std::string MediaItemDnDTVType() { return "DnDTreeView<" DND_MI_NAME ">"; }
+ 
+ void SetupBrowser(ObjectBrowser& brw, int dnd_column, bool is_media_brw)
+ {
