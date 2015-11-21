@@ -1,3 +1,5 @@
+# Maintainer: Carlos Silva <r3pek@r3pek.org>
+
 pkgname=corebird
 pkgver=1.1
 pkgrel=1
