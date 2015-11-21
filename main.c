@@ -26,6 +26,25 @@
 #include <stdio.h>
 #include <string.h>
 
+gboolean short_format = 0;
+gboolean one_shot = 0;
+
+GOptionEntry option_entries[] = {
+	{
+		.long_name = "short",
+		.arg = G_OPTION_ARG_NONE,
+		.arg_data = &short_format,
+		.description = "Use #RRGGBB output format",
+	},
+	{
+		.long_name = "one-shot",
+		.arg = G_OPTION_ARG_NONE,
+		.arg_data = &one_shot,
+		.description = "Exit after picking one color",
+	},
+	{}
+};
+
 static void
 printColorAt(GdkDrawable *drawable, gint x, gint y)
 {
@@ -33,12 +52,15 @@ printColorAt(GdkDrawable *drawable, gint x, gint y)
 
 	guint32 color = gdk_image_get_pixel(pixel, 0, 0);
 
-	printf("R: %3d, G: %3d, B: %3d | Hex: #%06X\n",
-	       (color >> 0x10) & 0xFF,
-	       (color >> 0x08) & 0xFF,
-	       (color >> 0x00) & 0xFF,
-	       color);
-
+	if (short_format) {
+		printf("#%06X\n", color);
+	} else {
+		printf("R: %3d, G: %3d, B: %3d | Hex: #%06X\n",
+			(color >> 0x10) & 0xFF,
+			(color >> 0x08) & 0xFF,
+			(color >> 0x00) & 0xFF,
+			color);
+	}
 	gdk_image_destroy(pixel);
 }
 
@@ -59,7 +81,12 @@ region_filter_func(GdkXEvent *xevent, GdkEvent *event, GdkWindow *root)
 
 		/* Print color */
 		printColorAt(GDK_DRAWABLE(root), x, y);
-		return GDK_FILTER_CONTINUE;
+		if (one_shot) {
+			gtk_main_quit();
+			return GDK_FILTER_REMOVE;
+		} else {
+			return GDK_FILTER_CONTINUE;
+		}
 
 	default:
 		gtk_main_quit();
@@ -74,7 +101,7 @@ void main(int argc, char *argv[])
 	GdkWindow *root;
 	GdkCursor *cursor;
 
-	gtk_init(&argc, &argv);
+	gtk_init_with_args(&argc, &argv, NULL, option_entries, NULL, NULL);
 
 	root = gdk_get_default_root_window();
 
