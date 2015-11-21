@@ -2,7 +2,7 @@
 
 _pkgsrcname=txrudp
 pkgname=python2-${_pkgsrcname}
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A Twisted extension implementing RUDP"
 url="https://pypi.python.org/pypi/txrudp"
@@ -18,4 +18,4 @@ package() {
   rm -r $pkgdir/usr/lib/python2.7/site-packages/tests/ 
 }
 
-md5sums=('6368f5c978e6a6f214997f748341d576')
+md5sums=('5c08ce0e7f45161f39c52efdb3fc67be')

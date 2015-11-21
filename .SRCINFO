@@ -1,14 +1,14 @@
 pkgbase = python2-txrudp
 	pkgdesc = A Twisted extension implementing RUDP
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/txrudp
 	arch = any
 	license = MIT
 	depends = python2
 	depends = python2-twisted
-	source = https://pypi.python.org/packages/py2/t/txrudp/txrudp-0.4.0-py2-none-any.whl
-	md5sums = 6368f5c978e6a6f214997f748341d576
+	source = https://pypi.python.org/packages/py2/t/txrudp/txrudp-0.4.1-py2-none-any.whl
+	md5sums = 5c08ce0e7f45161f39c52efdb3fc67be
 
 pkgname = python2-txrudp
 
