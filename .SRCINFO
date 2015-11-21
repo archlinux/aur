@@ -19,6 +19,7 @@ pkgbase = linux-vfio
 	source = change-default-console-loglevel.patch
 	source = override_for_missing_acs_capabilities.patch
 	source = i915_317.patch
+	source = kvm-x86-obey-KVM_X86_QUIRK_CD_NW_CLEARED-in-kvm_set_cr0.patch
 	sha256sums = 4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae
 	sha256sums = SKIP
 	sha256sums = 596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16
@@ -27,6 +28,7 @@ pkgbase = linux-vfio
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149
 	sha256sums = ff2bb84f054633c6088ad31b450b7b96b5f4ee18667dd56772dff1d8c1687854
+	sha256sums = 2d8bf50218cff86db6723f3623823a47b1c8299a2eb0589458b0a19887799f4e
 
 pkgname = linux-vfio
 	pkgdesc = The Linux kernel and modules with patches to enable GPU passthrough with KVM
