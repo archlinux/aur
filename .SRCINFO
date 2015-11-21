@@ -1,7 +1,7 @@
 pkgbase = clevo-xsm-wmi-dkms
 	pkgdesc = A reverse engineering driver for the Clevo SM series backlight keyboard (DKMS version)
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/lynthium/clevo-xsm-wmi
 	install = clevo-xsm-wmi-dkms.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = clevo-xsm-wmi-dkms
 	license = GPL
 	depends = dkms
 	depends = linux-headers
+	provides = clevo-xsm-wmi
 	conflicts = clevo-xsm-wmi
 	conflicts = tuxedo-wmi
 	conflicts = tuxedo-wmi-dkms
