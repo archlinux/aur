@@ -2,15 +2,15 @@
 # Contributor: nmeum <nmeum-aur@8pit.net>
 
 pkgname=tpm
-pkgver=1.2
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='tiny password manager'
 url='http://github.com/nmeum/tpm'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('any')
 depends=('gnupg')
 source=("https://github.com/nmeum/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('348e172a7340535f2d507cd23350d5c635d489f942424e871169375ffe416e59')
+sha256sums=('b73d995d89537b8cf3deee432bf4e510a4f72dd9e8bc3a30112a7b569c47fc35')
 
 
 build() {
@@ -22,6 +22,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 
-  install -Dm644 zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm644 bash_completion "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm644 contrib/zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm644 contrib/bash_completion "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 }

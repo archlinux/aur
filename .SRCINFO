@@ -1,14 +1,13 @@
 pkgbase = tpm
 	pkgdesc = tiny password manager
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = http://github.com/nmeum/tpm
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = gnupg
-	source = https://github.com/nmeum/tpm/archive/1.2.tar.gz
-	sha256sums = 348e172a7340535f2d507cd23350d5c635d489f942424e871169375ffe416e59
+	source = https://github.com/nmeum/tpm/archive/1.3.1.tar.gz
+	sha256sums = b73d995d89537b8cf3deee432bf4e510a4f72dd9e8bc3a30112a7b569c47fc35
 
 pkgname = tpm
 
