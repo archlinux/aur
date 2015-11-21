@@ -1,20 +1,22 @@
-# Maintainer: George Eleftheriou <eleftg>
+# Maintainer: Jed Brown <jed@59A2.org>
 # Contributor: Jed Brown <jed@59A2.org>
+# Contributor: George Eleftheriou <eleftg>
 
 pkgname=mpich
-pkgver=3.1.4
-pkgrel=4
+pkgver=3.2
+pkgrel=1
 pkgdesc="An improved implementation of the Message Passing Interface."
 url="https://mpich.org"
 arch=("any")
 license=("custom")
+replaces=(mpich2)
 depends=('python2' 'gcc-fortran' 'libxml2' 'openssh' 'numactl' 'pciutils')
 makedepends=('texlive-core' 'sowing')
 optdepends=("java-environment")
 install="${pkgname}.install"
 source=("http://www.mpich.org/static/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	    "mpich.profile")
-sha256sums=('f68b5330e94306c00ca5a1c0e8e275c7f53517d01d6c524d51ce9359d240466b'
+sha256sums=('0778679a6b693d7b7caff37ff9d2856dc2bfc51318bf8373859bfa74253da3dc'
             'b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284')
 options=('!libtool')
 
