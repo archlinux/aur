@@ -4,7 +4,7 @@ pkgdesc="ROS - The Robot Pose EKF package is used to estimate the 3D pose of a r
 url='http://wiki.ros.org/robot_pose_ekf'
 
 pkgname='ros-indigo-robot-pose-ekf'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
