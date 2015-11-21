@@ -1,13 +1,13 @@
 pkgbase = p4
 	pkgdesc = Perforce commandline client
-	pkgver = 2015.1.1204891
-	pkgrel = 13
+	pkgver = 2015.2.1264740
+	pkgrel = 14
 	url = http://www.perforce.com
 	arch = i686
 	arch = x86_64
 	license = custom:p4
 	depends = glibc
-	source = http://www.perforce.com/downloads/perforce/r15.1/bin.linux26/p4
+	source = http://www.perforce.com/downloads/perforce/r15.2/bin.linux26/p4
 	source = LICENSE
 
 pkgname = p4
