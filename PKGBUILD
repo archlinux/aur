@@ -1,3 +1,5 @@
+# Maintainer: Carlos Silva <r3pek@r3pek.org>
+
 pkgname=cartaodecidadao-pki
 pkgver=1.0
 pkgrel=1
