@@ -1,16 +1,16 @@
 pkgbase = nodejs-brunch
 	pkgdesc = A lightweight approach to building HTML5 applications with emphasis on elegance and simplicity.
-	pkgver = 1.8.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://brunch.io/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = brunch-1.8.5.tgz
-	source = http://registry.npmjs.org/brunch/-/brunch-1.8.5.tgz
+	noextract = brunch-2.0.0.tgz
+	source = http://registry.npmjs.org/brunch/-/brunch-2.0.0.tgz
 	source = LICENSE
-	sha1sums = 50e6536eee40159a3fa3b65c14e09bc83a47cc39
+	sha1sums = 964489591a0fcf9a2ac4fb58f9f68e9eb9b9d245
 	sha1sums = de1abc751d24ab2b3ee1dff74f86aeeaee3854b3
 
 pkgname = nodejs-brunch
