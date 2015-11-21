@@ -7,7 +7,7 @@
 
 pkgname=guix
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU guix is a purely functional package manager"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guix/"
@@ -23,7 +23,8 @@ depends=(
   'libgcrypt')
 optdepends=(
   'bash-completion: to enable bash programmable completion'
-  'emacs: to enable Emacs Interface')
+  'emacs: to enable Emacs Interface'
+  'guile-json: to import packages from cpan, gem, pypi')
 source=(
   "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 install="${pkgname}.install"
