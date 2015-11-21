@@ -3,15 +3,15 @@
 pkgbase="python-keras-git"
 pkgname=("python-keras-git" "python2-keras-git")
 _pkgname="keras"
-pkgver=r541.256a908
+pkgver=0.2.0.r189.g50467e3
 pkgrel=1
 pkgdesc="Theano-based Deep Learning library (convnets, recurrent neural networks, and more)"
 arch=('i686' 'x86_64')
 url="https://github.com/fchollet/keras"
 license=('MIT')
 makedepends=('git'
-             'python' 'python-setuptools' 'python-numpy' 'python-scipy' 'python-h5py'
-             'python2' 'python2-setuptools' 'python2-numpy' 'python2-scipy' 'python2-h5py'
+             'python' 'python-setuptools'
+             'python2' 'python2-setuptools'
             )
 changelog="ChangeLog"
 source=("${_pkgname}::git+http://github.com/fchollet/${_pkgname}.git")
