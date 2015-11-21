@@ -1,6 +1,6 @@
 pkgbase = docker-compose-bin
 	pkgdesc = Pythonless package of a fast, isolated development environments using Docker
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/docker/compose
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = docker-compose-bin
 	depends = docker
 	conflicts = docker-compose
 	options = !strip
-	source = https://github.com/docker/compose/releases/download/1.5.0/docker-compose-Linux-x86_64
-	source = https://github.com/docker/compose/archive/1.5.0.tar.gz
-	sha256sums = f920ae9e3907b5007d3d833f1d369f908eeeabf31f292130636102b0c9b6ddf1
-	sha256sums = d44d7c966c3ec6b2baf493fb8c8f94b0c23cb03609517cc174884c7ff46cf809
+	source = https://github.com/docker/compose/releases/download/1.5.1/docker-compose-Linux-x86_64
+	source = https://github.com/docker/compose/archive/1.5.1.tar.gz
+	sha256sums = 5b9b6287c95103a553f8902e1e607bf4cdae74466f66a78d25195252ba380b0e
+	sha256sums = 334814f64910823fa588e89eea8f73d8ad3bb0d304e513fe51026a1f1d08d3db
 
 pkgname = docker-compose-bin
 
