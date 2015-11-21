@@ -1,5 +1,5 @@
 pkgbase = wine-d3dadapter
-	pkgdesc = A compatibility layer for running Windows programs
+	pkgdesc = A compatibility layer for running Windows programs (with d3dadapter patch)
 	pkgver = 1.7.55
 	pkgrel = 1
 	url = http://www.winehq.com

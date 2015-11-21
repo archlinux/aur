@@ -18,7 +18,7 @@ sha1sums=('55c4af456f08ca4fcf67785bc7a90280c752fc06'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '20787cb633b2c454c0cb7a91fd912c419a7fb36f')
 
-pkgdesc="A compatibility layer for running Windows programs"
+pkgdesc="A compatibility layer for running Windows programs (with d3dadapter patch)"
 url="http://www.winehq.com"
 arch=(i686 x86_64)
 options=(staticlibs)
