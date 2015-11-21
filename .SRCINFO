@@ -29,7 +29,7 @@ pkgbase = openbazaar-server-git
 	source = openbazaar-server.service
 	source = openbazaar-server.sh
 	md5sums = SKIP
-	md5sums = 9c59866628a1b53521ecee30daf9cc6a
+	md5sums = 884b0f2fa1458ab997f8fc6a8bd1f563
 	md5sums = 6e8afd740cdec723fbf6eda0f3626397
 
 pkgname = openbazaar-server-git

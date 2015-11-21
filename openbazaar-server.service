@@ -7,7 +7,7 @@ User=openbazaar-server
 WorkingDirectory=/var/lib/openbazaar-server/
 ExecStart=/usr/bin/openbazaar-server start
 ExecStop=/usr/bin/openbazaar-server stop
-#PIDFile=/tmp/openbazaard.pid
+PIDFile=/tmp/openbazaard.pid
 
 [Install]
 WantedBy=multi-user.target

@@ -62,5 +62,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '9c59866628a1b53521ecee30daf9cc6a'
+         '884b0f2fa1458ab997f8fc6a8bd1f563'
          '6e8afd740cdec723fbf6eda0f3626397')
