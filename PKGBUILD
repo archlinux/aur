@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.0.0b1.r172.g47a5a0c
+pkgver=3.0.0b1.r546.g2c5568e
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -40,20 +40,32 @@ build() {
 
 package_spyder-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 2 version)"
-  depends=('ipython2-notebook' 'python2-pyqt4' 'python2-pyflakes' 'python2-pyzmq' 'python2-pygments'
-           'desktop-file-utils' 'gtk-update-icon-cache')
+  #'icu'
+  depends=('ipython2-notebook'
+           'python2-pyqt4'
+           'python2-pyflakes'
+           'python2-sphinx'
+           'python2-pygments'
+           'python2-pylint'
+           'python2-pep8 '
+           'python2-psutil'
+
+           'python2-pyzmq'
+           'desktop-file-utils'
+           'gtk-update-icon-cache')
   #'ipython2<4.0: enhanced Python interpreter'
   #'ipython2-notebook>=4.0: enhanced Python interpreter (qtconsole)'
-  optdepends=('python2-pylint: powerful code analysis'
+  optdepends=('python2-pyqt5: Qt-Python bindings'
+              'python2-pyside: Qt-Python bindings'
               'python2-rope: editor code completion, calltips and go-to-definition'
-              'python2-sphinx: rich text help on the object inspector'
+              'python2-jedi: editor code completion, calltips and go-to-definition'
+              'python2-matplotlib: 2D/3D plotting'
+              'python2-pandas: DataFrame and Series support'
               'python2-numpy: N-dimensional arrays'
+              'python2-sympy: symbolic mathematics'
+
               'python2-scipy: signal/image processing'
-              'python2-psutil: memory/CPU usage in the status bar'
-              'python2-h5py: HDF5 support'
-              'python2-matplotlib: interactive 2D/3D data plotting'
-              'pep8-python2: real-time code style analysis'
-              'python2-sympy: symbolic mathematics for the IPython console')
+              'python2-h5py: HDF5 support')
   provides=($_pkgname2)
   conflicts=($_pkgname2)
 
@@ -67,20 +79,32 @@ package_spyder-git() {
 
 package_spyder3-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)"
-  depends=('jupyter' 'python-pyqt4' 'python-pyflakes' 'python-pyzmq' 'python-pygments'
-           'desktop-file-utils' 'gtk-update-icon-cache')
+  #'icu'
+  depends=('ipython-notebook'
+           'python-pyqt4'
+           'python-pyflakes'
+           'python-sphinx'
+           'python-pygments'
+           'python-pylint'
+           'pep8'
+           'python-psutil'
+
+           'python-pyzmq'
+           'desktop-file-utils'
+           'gtk-update-icon-cache')
   #'ipython<4.0: enhanced Python interpreter'
-  #'jupyter>=4.0: enhanced Python interpreter (qtconsole)'
-  optdepends=('python-pylint: powerful code analysis'
+  #'ipython-notebook>=4.0: enhanced Python interpreter (qtconsole)'
+  optdepends=('python-pyqt5: Qt-Python bindings'
+              'python-pyside: Qt-Python bindings'
               'python-rope: editor code completion, calltips and go-to-definition'
-              'python-sphinx: rich text help on the object inspector'
+              'python-jedi: editor code completion, calltips and go-to-definition'
+              'python-matplotlib: 2D/3D plotting'
+              'python-pandas: DataFrame and Series support'
               'python-numpy: N-dimensional arrays'
+              'python-sympy: symbolic mathematics'
+
               'python-scipy: signal/image processing'
-              'python-psutil: memory/CPU usage in the status bar'
-              'python-h5py: HDF5 support'
-              'python-matplotlib: interactive 2D/3D data plotting'
-              'pep8: real-time code style analysis'
-              'python-sympy: symbolic mathematics for the IPython console')
+              'python-h5py: HDF5 support')
   provides=($_pkgname3)
   conflicts=($_pkgname3)
 
