@@ -6,7 +6,7 @@
 
 _gitname=znc
 pkgname=znc-git
-pkgver=1.6.2.r479.g622b484
+pkgver=1.6.2.r482.gf3bc06c
 pkgrel=1
 pkgdesc='An IRC bouncer with modules & scripts support'
 url='http://znc.in/'

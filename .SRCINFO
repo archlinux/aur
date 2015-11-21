@@ -1,6 +1,6 @@
 pkgbase = znc-git
 	pkgdesc = An IRC bouncer with modules & scripts support
-	pkgver = 1.6.2.r479.g622b484
+	pkgver = 1.6.2.r482.gf3bc06c
 	pkgrel = 1
 	url = http://znc.in/
 	install = znc-git.install
