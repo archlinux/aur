@@ -1,0 +1,25 @@
+pkgbase = python2-pydrive
+	pkgdesc = Google Drive API made easy
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/googledrive/PyDrive
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-google-api-python-client
+	depends = python2-yaml
+	depends = python2-six
+	depends = python2-uritemplate
+	depends = python2-oauth2client
+	depends = python2-httplib2
+	depends = python2-simplejson
+	depends = python2-pyasn1
+	depends = python2-pyasn1-modules
+	depends = python2-rsa
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/P/PyDrive/PyDrive-1.0.1.tar.gz
+	sha256sums = 5b644a896ee3c53f4d37907c09e514dcf0bfa1ddb2214d408531b57c5232ac81
+
+pkgname = python2-pydrive
+
