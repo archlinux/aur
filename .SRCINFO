@@ -1,10 +1,11 @@
 pkgbase = papirus-git
 	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE
-	pkgver = r245.9046be6
+	pkgver = r246.b10950e
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
+	makedepends = git
 	depends = plasma-desktop
 	optdepends = papirus-plasma-theme-git
 	optdepends = papirus-icon-theme-git
@@ -66,8 +67,9 @@ pkgname = papirus-konsole-colorscheme-git
 
 pkgname = papirus-yakuake-theme-git
 	pkgdesc = Modified and adaptive Paper theme for Yakuake
-	depends = yakuake
-	optdepends = 
+	depends = 
+	optdepends = yakuake
+	optdepends = yakuake-frameworks-git
 	conflicts = papirus-yakuake-theme
 	conflicts = yakuake-skin-papirus
 	conflicts = yakuake-skin-papirus-dark
