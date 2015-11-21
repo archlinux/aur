@@ -1,3 +1,5 @@
+# Maintainer: Carlos Silva <r3pek@r3pek.org>
+
 pkgname=ecce-gov-pt-certificates
 pkgver=1.0
 pkgrel=1
