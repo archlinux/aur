@@ -4,7 +4,7 @@ pkgdesc="ROS - A ROS node that simply forwards odometry information."
 url='http://wiki.ros.org/fake_localization'
 
 pkgname='ros-indigo-fake-localization'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

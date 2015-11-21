@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-fake-localization
 	pkgdesc = ROS - A ROS node that simply forwards odometry information.
-	pkgver = 1.12.4
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = http://wiki.ros.org/fake_localization
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = ros-indigo-fake-localization
 	depends = ros-indigo-rosconsole
 	depends = ros-indigo-tf
 	depends = ros-indigo-message-filters
-	source = fake_localization::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/fake_localization/1.12.4-0
+	source = fake_localization::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/fake_localization/1.12.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-fake-localization
