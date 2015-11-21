@@ -1,6 +1,6 @@
 pkgbase = jsctags-tern-git
 	pkgdesc = jsctags generator using tern
-	pkgver = 0474181
+	pkgver = v0.2.1.r36.g444338c
 	pkgrel = 1
 	url = https://github.com/ramitos/jsctags
 	arch = any

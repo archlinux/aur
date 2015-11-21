@@ -1,6 +1,6 @@
 # Author: Jesus Alvarez <jeezusjr@gmail.com>
 pkgname=jsctags-tern-git
-pkgver=0474181
+pkgver=v0.2.1.r36.g444338c
 pkgrel=1
 pkgdesc="jsctags generator using tern"
 arch=('any')
@@ -25,4 +25,6 @@ package() {
   # cd "${_npmdir}"
   # # npm install -g --prefix "$pkgdir/usr" "$srcdir/doctorjs"
   # npm install -g --prefix "${pkgdir}/usr" "${srcdir}/package/"
+  find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \;
+  find "${pkgdir}" -name "package.json" -exec sed -e "s|${srcdir}||" -i {} \;
 }
