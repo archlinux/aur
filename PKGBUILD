@@ -1,3 +1,5 @@
+# Maintainer: Carlos Silva <r3pek@r3pek.org>
+
 pkgname=ez100-pcsc-driver
 pkgver=1.5.3
 pkgrel=1
