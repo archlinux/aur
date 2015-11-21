@@ -1,6 +1,6 @@
 pkgbase = grim-fandango
 	pkgdesc = Grim Fandango Remastered - GOG version
-	pkgver = 1.3.0.6
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://grimremastered.com/
 	arch = i686

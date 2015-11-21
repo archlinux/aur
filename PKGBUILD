@@ -2,7 +2,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=grim-fandango
-pkgver=1.3.0.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Grim Fandango Remastered - GOG version"
 arch=('i686' 'x86_64')
