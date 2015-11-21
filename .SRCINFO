@@ -1,0 +1,17 @@
+pkgbase = perl-db-color
+	pkgdesc = DB::Color - Colorize your debugger output
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://metacpan.org/pod/DB::Color
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	provides = perl-db-color-config
+	provides = perl-db-color-highlight
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OV/OVID/DB-Color-0.20.tar.gz
+	sha256sums = 8fef6afe5ac3e3e245d5a36f8ba28a8a8b5c9552cc31b5c0976013b6f02bca4d
+
+pkgname = perl-db-color
+
