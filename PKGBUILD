@@ -15,11 +15,11 @@ install='ida-demo.install'
 
 package() {
 	mkdir ${pkgdir}/opt/
-	mkdir -p ${pkgdir}/usr/share/pixmaps/
+	mkdir -p ${pkgdir}/usr/share/icons/hicolor/64x64/apps/
 	mkdir -p ${pkgdir}/usr/share/applications/
 	mkdir -p ${pkgdir}/usr/share/ida-demo/
 
-	cp ${srcdir}/../ida.png ${pkgdir}/usr/share/pixmaps/
+	cp ${srcdir}/../ida.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/
 	cp ${srcdir}/../ida-demo.desktop ${pkgdir}/usr/share/applications/
 	cp ${srcdir}/idademo68/license.txt ${pkgdir}/usr/share/ida-demo/LICENSE
 	mv ${srcdir}/idademo68 ${pkgdir}/opt/ida-demo
