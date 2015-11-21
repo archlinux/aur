@@ -1,5 +1,5 @@
---- src/pyarchey-0.6.7/pyarchey/pyarchey.py	2015-09-26 17:16:41.076808842 +0200
-+++ src/pyarchey-0.6.7/pyarchey/pyarchey.py	2015-09-26 17:21:38.420151890 +0200
+--- src/pyarchey-0.6.8/pyarchey/pyarchey.py	2015-09-26 17:16:41.076808842 +0200
++++ src/pyarchey-0.6.8/pyarchey/pyarchey.py	2015-09-26 17:21:38.420151890 +0200
 @@ -444,7 +444,7 @@
  		Does the printing. Either picture and info to screen or dumps json.
  		"""

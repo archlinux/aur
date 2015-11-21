@@ -2,7 +2,7 @@
 
 pkgname=pyarchey
 pkgdesc="A simple python scrip to display an OS logo in ASCII art along with basic system information."
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 arch=('i686','x86_64')
 url="https://pypi.python.org/pypi/pyarchey/"
@@ -13,8 +13,8 @@ depends=('python'
 	 'python-setuptools') 
 source=("https://pypi.python.org/packages/source/p/pyarchey/pyarchey-${pkgver}.tar.gz"
 	'arch.patch')
-md5sums=('a2a5456d86dc0983eff69b748790a7cf'
-	 '58c97f133fbad2a0ad94d9901b70a6ac')
+md5sums=('e25b2fb36e483befd6e6d1fa42b2fced'
+	 '675768afc3bec92439577408a5d3aad0')
 
 prepare(){
 	tar -zxvf pyarchey-${pkgver}.tar.gz
