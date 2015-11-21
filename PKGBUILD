@@ -1,36 +1,31 @@
-# Maintainer: Antergos Devs <dev@antergos.com>
+# Maintainer: Dustin Falgout <dustin@antergos.com>
 
 pkgname=lightdm-webkit-theme-antergos
 _pkgname=antergos
-pkgver=2.2.3
+pkgver=2.2.4
 _bgver=0.6
 pkgrel=1
-pkgdesc="The official greeter theme of Antergos Linux"
+pkgdesc="The official greeter theme of Antergos Linux. For use with the legacy webkit greeter."
 arch=('any')
-url="http://www.antergos.com"
-license=('GPLv2')
-depends=('lightdm-webkit2-greeter')
-confilcts=('lightdm-webkit-theme-antergos-git')
+url="https://github.com/Antergos/${pkgname}"
+license=('GPL')
+depends=('lightdm-webkit-greeter')
+confilcts=('lightdm-webkit2-greeter')
 install=theme.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Antergos/${pkgname}/archive/${pkgver}.tar.gz"
-        "http://antergos.com/antergos-wallpapers-${_bgver}.zip")
-sha256sums=('5d647d91f8070eb11a62528fbafff3189fcebac878f18c1014bdf5a1baaddbff'
-            '383484231d5d4c1e785d8b5e7635909e3e3200a9fe18fef5dbc6fc2f23961b28')
+		"http://antergos.com/antergos-wallpapers-${_bgver}.zip")
+md5sums=('9d97e860a225c3f436ff0a310f8ede8a'
+		'c996d26914e71897019c33854b0ae634')
 
-build()
-{
-	cd ${srcdir}/${pkgname}-${pkgver}
-      sed -i 's%/usr/share/%/usr/share/lightdm-webkit/themes/%g' index.html
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	sed -i 's%/usr/share/%/usr/share/lightdm-webkit/themes/%g' index.html
 }
 
-package()
-{
-	cd ${pkgdir}
-	mkdir -p usr/share/lightdm-webkit/themes
-	cd usr/share/lightdm-webkit/themes
-	cp -dpr --no-preserve=ownership ${srcdir}/${pkgname}-${pkgver} ${_pkgname}
-	msg "Removing .git files"
-	cd ${_pkgname}
-	rm -rf .gitignore
-      cp -dpr --no-preserve=ownership "${srcdir}/antergos-wallpapers-${_bgver}" wallpapers
+package() {
+	install -dm755 "${pkgdir}/usr/share/lightdm-webkit/themes"
+	cp -dpr --no-preserve=ownership \
+		"${srcdir}/${pkgname}-${pkgver}" \
+		"${pkgdir}/usr/share/lightdm-webkit/themes/${_pkgname}"
+	cp -dpr --no-preserve=ownership "${srcdir}/antergos-wallpapers-${_bgver}" wallpapers
 }
