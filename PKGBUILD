@@ -1,6 +1,6 @@
 # Maintainer: Mario Galic <mario@libretronix.com>
 pkgname=coqide-beta
-pkgver=8.5beta2
+pkgver=8.5beta3
 pkgrel=1
 pkgdesc='Interactive Theorem Proving and Program Development. Beta version.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ options=('!emptydirs')
 depends=('gtk2' 'ocaml' 'camlp5-transitional' 'gtksourceview2')
 makedepends=('ocaml-findlib' 'lablgtk2')
 source=("http://coq.inria.fr/distrib/V$pkgver/files/coq-$pkgver.tar.gz")
-sha1sums=('c72d3486d27003513563f4a48f68c1c27e7bcb0c')
+sha1sums=('96e22c608bd1962f5aa975f5e4e8bdf28f1ef052')
 
 build() {
   cd "$srcdir/coq-$pkgver"

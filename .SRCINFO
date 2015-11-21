@@ -1,6 +1,6 @@
 pkgbase = coqide-beta
 	pkgdesc = Interactive Theorem Proving and Program Development. Beta version.
-	pkgver = 8.5beta2
+	pkgver = 8.5beta3
 	pkgrel = 1
 	url = http://coq.inria.fr/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = coqide-beta
 	depends = camlp5-transitional
 	depends = gtksourceview2
 	options = !emptydirs
-	source = http://coq.inria.fr/distrib/V8.5beta2/files/coq-8.5beta2.tar.gz
-	sha1sums = c72d3486d27003513563f4a48f68c1c27e7bcb0c
+	source = http://coq.inria.fr/distrib/V8.5beta3/files/coq-8.5beta3.tar.gz
+	sha1sums = 96e22c608bd1962f5aa975f5e4e8bdf28f1ef052
 
 pkgname = coqide-beta
 
