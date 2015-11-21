@@ -4,7 +4,7 @@ pkgdesc="ROS - move_slow_and_clear."
 url='http://wiki.ros.org/move_slow_and_clear'
 
 pkgname='ros-indigo-move-slow-and-clear'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

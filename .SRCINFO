@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-move-slow-and-clear
 	pkgdesc = ROS - move_slow_and_clear.
-	pkgver = 1.12.4
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = http://wiki.ros.org/move_slow_and_clear
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ros-indigo-move-slow-and-clear
 	depends = ros-indigo-pluginlib
 	depends = ros-indigo-roscpp
 	depends = ros-indigo-costmap-2d
-	source = move_slow_and_clear::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/move_slow_and_clear/1.12.4-0
+	source = move_slow_and_clear::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/move_slow_and_clear/1.12.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-move-slow-and-clear
