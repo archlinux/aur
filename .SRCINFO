@@ -117,9 +117,9 @@ pkgbase = wine-d3dadapter
 	optdepends = samba
 	optdepends = dosbox
 	provides = wine
-	provides = bin32-wine=1.7.55
-	provides = wine-wow64=1.7.55
-	provides = wine-staging=1.7.55
+	provides = bin32-wine=$pkgver
+	provides = wine-wow64=$pkgver
+	provides = wine-staging=$pkgver
 	conflicts = winebin32-wine
 	conflicts = wine-wow64wine-staging
 	options = staticlibs

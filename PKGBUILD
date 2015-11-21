@@ -96,7 +96,7 @@ if [[ $CARCH == i686 ]]; then
   optdepends=(${optdepends[@]/*32-*/})
 else
   makedepends=(${makedepends[@]} ${_depends[@]})
-  provides=("wine" "bin32-wine=$pkgver" "wine-wow64=$pkgver" "wine-staging=$pkgver")
+  provides=('wine' 'bin32-wine=$pkgver' 'wine-wow64=$pkgver' 'wine-staging=$pkgver')
   conflicts=('wine''bin32-wine' 'wine-wow64''wine-staging')
 fi
 
