@@ -1,4 +1,4 @@
-# Maintainer: Ramana Kumar <firstname.lastname @ gmail at com>
+# Maintainer: Ramana Kumar <ramana(at)member.fsf.org>
 pkgname=vim-inkpot-git
 pkgver=r9.b86ad4d
 pkgrel=1
@@ -8,6 +8,8 @@ url="http://github.com/ciaranm/inkpot"
 license=('GPL')
 depends=('vim')
 makedepends=('git')
+provides=('vim-inkpot')
+conflicts=('vim-inkpot')
 groups=('vim-plugins')
 source=('git://github.com/ciaranm/inkpot.git')
 md5sums=('SKIP')

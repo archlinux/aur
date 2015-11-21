@@ -9,6 +9,8 @@ pkgbase = vim-inkpot-git
 	license = GPL
 	makedepends = git
 	depends = vim
+	provides = vim-inkpot
+	conflicts = vim-inkpot
 	source = git://github.com/ciaranm/inkpot.git
 	md5sums = SKIP
 
