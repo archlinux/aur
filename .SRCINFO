@@ -1,0 +1,11 @@
+pkgbase = mint-backgrounds-rosa
+	pkgdesc = The backgrounds included in Linux Mint 17.3 Rosa
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-rosa
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-rosa/mint-backgrounds-rosa_1.2.tar.gz
+
+pkgname = mint-backgrounds-rosa
+
