@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides common interfaces for navigation specific r
 url='http://wiki.ros.org/nav_core'
 
 pkgname='ros-indigo-nav-core'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
