@@ -3,15 +3,15 @@
 
 pkgname=giftrans
 pkgver=1.12.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Making transparent GIF images"
 url="http://www.abdn.ac.uk/tools/ibmpc/giftrans/index.hti"
 license="GPL"
 arch=(i686 x86_64)
 source=(http://ftp.debian.org/debian/pool/main/g/giftrans/${pkgname}_${pkgver}.orig.tar.gz 
-	http://ftp.debian.org/debian/pool/main/g/giftrans/${pkgname}_${pkgver}-18.debian.tar.gz)
+	http://ftp.debian.org/debian/pool/main/g/giftrans/${pkgname}_${pkgver}-19.debian.tar.xz)
 md5sums=('886782be6f9bef1798615264ea7ed9f6'
-         '7ce0b20fc8a866e69890694b5496ec94')
+         'ea3e83079aae0b69a413d8d6b2e797a3')
 
 
 prepare() {
