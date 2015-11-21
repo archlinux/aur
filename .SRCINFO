@@ -1,16 +1,16 @@
 pkgbase = lightdm-webkit-theme-antergos
-	pkgdesc = The official greeter theme of Antergos Linux
-	pkgver = 2.2.3
+	pkgdesc = The official greeter theme of Antergos Linux. For use with the legacy webkit greeter.
+	pkgver = 2.2.4
 	pkgrel = 1
-	url = http://www.antergos.com
+	url = https://github.com/Antergos/lightdm-webkit-theme-antergos
 	install = theme.install
 	arch = any
-	license = GPLv2
-	depends = lightdm-webkit2-greeter
-	source = lightdm-webkit-theme-antergos-2.2.3.tar.gz::https://github.com/Antergos/lightdm-webkit-theme-antergos/archive/2.2.3.tar.gz
+	license = GPL
+	depends = lightdm-webkit-greeter
+	source = lightdm-webkit-theme-antergos-2.2.4.tar.gz::https://github.com/Antergos/lightdm-webkit-theme-antergos/archive/2.2.4.tar.gz
 	source = http://antergos.com/antergos-wallpapers-0.6.zip
-	sha256sums = 5d647d91f8070eb11a62528fbafff3189fcebac878f18c1014bdf5a1baaddbff
-	sha256sums = 383484231d5d4c1e785d8b5e7635909e3e3200a9fe18fef5dbc6fc2f23961b28
+	md5sums = 9d97e860a225c3f436ff0a310f8ede8a
+	md5sums = c996d26914e71897019c33854b0ae634
 
 pkgname = lightdm-webkit-theme-antergos
 
