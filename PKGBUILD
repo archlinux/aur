@@ -4,7 +4,7 @@ pkgdesc="ROS - voxel_grid provides an implementation of an efficient 3D voxel gr
 url='http://wiki.ros.org/voxel_grid'
 
 pkgname='ros-indigo-voxel-grid'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
