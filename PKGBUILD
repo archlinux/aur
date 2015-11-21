@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=devdocs-git
 pkgver=r1002.de1c879
-pkgrel=1
+pkgrel=2
 pkgdesc="API Documentation Browser"
 arch=('any')
 url="http://devdocs.io"
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=($pkgname::git+https://github.com/Thibaut/devdocs devdocs-server devdocs-cli devdocs.service)
+source=("$pkgname::git+https://github.com/Thibaut/devdocs" "devdocs-server.sh" "devdocs-cli.sh" "devdocs.service")
 noextract=()
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
@@ -37,9 +37,12 @@ package() {
   cp -a "$srcdir/$pkgname" "$pkgdir/opt/$pkgname"
   sed -i "/ruby /d" "$pkgdir/opt/$pkgname/Gemfile"
   
-  cp -a "$srcdir/devdocs-server" "$pkgdir/usr/bin/devdocs-server"
-  cp -a "$srcdir/devdocs-cli" "$pkgdir/usr/bin/devdocs-cli"
-  cp -a "$srcdir/devdocs.service" "$pkgdir/usr/lib/systemd/system/devdocs.service"
+  cp "$srcdir/devdocs-server.sh" "$pkgdir/opt/$pkgname/devdocs-server.sh"
+  cp "$srcdir/devdocs-cli.sh" "$pkgdir/opt/$pkgname/devdocs-cli.sh"
+  cp "$srcdir/devdocs.service" "$pkgdir/usr/lib/systemd/system/devdocs.service"
+  
+  ln -s "/opt/$pkgname/devdocs-server.sh" "$pkgdir/usr/bin/devdocs-server"
+  ln -s "/opt/$pkgname/devdocs-cli.sh" "$pkgdir/usr/bin/devdocs-cli"
   
   cd "$pkgdir/opt/$pkgname" && bundle install --path .bundle
   cd "$pkgdir/opt/$pkgname" && thor assets:clean && thor assets:compile
