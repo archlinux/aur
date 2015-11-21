@@ -1,5 +1,5 @@
 # !!! NOTE !!!
-# Please download AMD-APP-SDKInstaller-v3.0.124.132-GA-linux<your_bits_here>.tar.bz2 from
+# Please download AMD-APP-SDKInstaller-v3.0.130.135-GA-linux<your_bits_here>.tar.bz2 from
 # http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/
 # and paste it next to this PKGBUILD
 
@@ -15,15 +15,15 @@
 pkgbase=amdapp-sdk
 pkgname=('amdapp-sdk' 'amdapp-sdk-opencv' 'amdapp-sdk-nocatalyst' 'amdapp-sdk-docs')
 pkgver=3.0
-pkgrel=10
+pkgrel=20
 arch=('i686' 'x86_64')
 url="http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/"
 license=("custom")
 options=('staticlibs' 'libtool' '!strip' '!upx')
 groups=('amdapp')
 makedepends=('perl' 'llvm'  'apache-ant')
-_dirname='AMD-APP-SDKInstaller-v3.0.124.132-GA-linux'
-_scriptname='AMD-APP-SDK-v3.0.124.132-GA-linux'
+_dirname='AMD-APP-SDKInstaller-v3.0.130.135-GA-linux'
+_scriptname='AMD-APP-SDK-v3.0.130.135-GA-linux'
 
 #Architecture resolution
     if [ "$CARCH" = 'i686' ]; then
@@ -37,8 +37,8 @@ _scriptname='AMD-APP-SDK-v3.0.124.132-GA-linux'
 # 	     _tarbits=64
      fi
 
-[ "$CARCH" = 'i686' ] && _hash='55b8fa734d84808b12a52c71f69dab42faeb7f011f333e51918c20c52ab13578' \
-                        || _hash='d1900229cda86fe15ae01195bddbb4fe332bf5713b6d907b2522f10eb7587656'
+[ "$CARCH" = 'i686' ] && _hash='8e1ad82b4cd2fcf58649daf4e43574d9d5c654cd2e07fcbb4bae7cc6d2f3daf6' \
+                        || _hash='27a6145a73910d2320fd017159cf72f16601c375c2b304644c31566f45cc26a6'
 
 #Sources
 source=(
