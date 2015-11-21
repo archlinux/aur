@@ -120,8 +120,10 @@ pkgbase = wine-d3dadapter
 	provides = bin32-wine=$pkgver
 	provides = wine-wow64=$pkgver
 	provides = wine-staging=$pkgver
-	conflicts = winebin32-wine
-	conflicts = wine-wow64wine-staging
+	conflicts = wine
+	conflicts = bin32-wine
+	conflicts = wine-wow64
+	conflicts = wine-staging
 	options = staticlibs
 	source = https://dl.winehq.org/wine/source/1.7/wine-1.7.55.tar.bz2
 	source = 30-win32-aliases.conf
