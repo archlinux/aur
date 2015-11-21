@@ -6,7 +6,7 @@
 
 pkgname=wine-staging-d3dadapter
 _pkgbasename=wine
-pkgver=1.7.53
+pkgver=1.7.55
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -14,9 +14,9 @@ _pkgbasever=${pkgver/rc/-rc}
 source=(http://ftp.winehq.org/pub/wine/source/1.7/wine-${pkgver}.tar.bz2
         "wine-staging-patches-v${pkgver}.tar.gz"::https://github.com/wine-compholio/wine-staging/archive/v${pkgver}.tar.gz
         30-win32-aliases.conf
-	wine-d3d9-$pkgver.patch)
-sha1sums=('d13fa9152e23f0ab2a31bef70c5d381e795013a2'
-          'ac7f0ad09213f26b17d086f8c784c055de00a739'
+	wine-d3d9-1.7.53.patch)
+sha1sums=('55c4af456f08ca4fcf67785bc7a90280c752fc06'
+          '2b8cd9aaef638d10fdb2f775c8e21f3fc303a3e5'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '83d666e677b9ae3caed648de7c6107dfc080f9ec')
 
@@ -119,11 +119,9 @@ if [[ $CARCH == i686 ]]; then
   makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
   makedepends=(${makedepends[@]/*-multilib*/})
   optdepends=(${optdepends[@]/*32-*/})
-  provides=("wine=$pkgver" "wine-compholio=${pkgver}" "wine-silverlight=${pkgver}")
-  conflicts=('wine' 'wine-staging')
 else
   makedepends=(${makedepends[@]} ${_depends[@]})
-  provides=("bin32-wine=$pkgver" "wine-wow64=$pkgver" "wine=$pkgver" "wine-compholio=${pkgver}" "wine-silverlight=${pkgver}")
+  provides=("bin32-wine=$pkgver" "wine-wow64=$pkgver" "wine=$pkgver" "wine-staging=${pkgver}" "wine-silverlight=${pkgver}")
   conflicts=('bin32-wine' 'wine-wow64' 'wine'  'wine-staging')
 fi
 
@@ -137,7 +135,7 @@ prepare() {
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 
   msg2 "patching d3d9..."
-  patch -p1 -i "${srcdir}/wine-d3d9-${pkgver}.patch" 
+  patch -p1 -i "${srcdir}/wine-d3d9-1.7.53.patch" 
 }
 build() {
   cd "$srcdir"
