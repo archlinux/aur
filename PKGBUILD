@@ -1,8 +1,8 @@
 pkgname=cuddly-octo-tatertot-git
 _pkgname=cuddly-octo-tatertot
 pkgdesc='Silly python scripts'
-pkgrel=3
-pkgver=0
+pkgrel=1
+pkgver=r5.57bf561
 arch=('i686' 'x86_64')
 license=('MIT')
 url="https://github.com/vpzomtrrfrt/$_pkgname"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver () {
 	cd "$srcdir/$_pkgname"
-	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package () {

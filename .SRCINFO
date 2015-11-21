@@ -1,7 +1,7 @@
 pkgbase = cuddly-octo-tatertot-git
 	pkgdesc = Silly python scripts
-	pkgver = 0
-	pkgrel = 3
+	pkgver = r5.57bf561
+	pkgrel = 1
 	url = https://github.com/vpzomtrrfrt/cuddly-octo-tatertot
 	arch = i686
 	arch = x86_64
