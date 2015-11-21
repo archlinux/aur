@@ -1,3 +1,25 @@
+2015-11-21
+
+	* V0.7.19
+	Bug fix: Bad syntax highlighting #670 #1315 #1549 #1712
+	Bug fix: Broken copy link button #1168 #1396
+	Bug fix: Broken download archive UI #1668
+	Bug fix: Pull request does not support merge BIN diff #1922
+	Bug fix: Test patch does not checkout correct base branch #1931
+	Bug fix: Branch/tag selection has wrong z-index #1942
+	Bug fix: Huge image does not display correctly in file view
+	Bug fix: No links in email for admin created account #1979
+	Bug fix: Repository description is not copied after forked #1981
+	Bug fix: Forked repository's visibility is changed itself when update settings #1987
+	Improvement: Sort collaborative repositories by last updated time in dashboard #1302
+	Improvement: Able to delete a release #1383
+	Improvement: Update default branch in Git repository while change in web view #1742
+	Improvement: Show issue title and content in news feeds #1854
+	Improvement: Show custom avatar for pushed commits list in news feeds
+	Improvement: Able to use config option [other] SHOW_FOOTER_VERSION = true disable version display on non-admin pages' footer #1957
+	Features: Admin can now view and edit settings of private repositories #493 #1401
+	Others: New discussion forum http://forum.gogs.io/
+
 2015-11-12
 
 	* V0.7.6
