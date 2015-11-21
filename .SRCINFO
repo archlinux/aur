@@ -12,6 +12,7 @@ pkgbase = pycharm-eap
 	makedepends = wget
 	depends = java-environment>=6
 	provides = pycharm-professional
+	provides = pycharm-pro-eap
 	conflicts = pycharm-professional
 	conflicts = pycharm-pro-eap
 	options = !strip

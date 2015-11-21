@@ -15,7 +15,7 @@ url="https://confluence.jetbrains.com/pages/viewpage.action?pageId=23004355"
 license=("custom")
 depends=("java-environment>=6")
 makedepends=("wget")
-provides=("pycharm-professional")
+provides=("pycharm-professional" "pycharm-pro-eap")
 conflicts=("pycharm-professional" "pycharm-pro-eap")
 groups=("development" "IDE" "editor" "jetbrains")
 
@@ -41,7 +41,9 @@ package() {
 		"${pkgdir}/usr/bin/" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/" \
 		"${pkgdir}/usr/share/applications/"
+
 	_eap="False"
+
 	wget "https://www.jetbrains.com/pycharm/buy/license.pdf"
 	install -m644 license.pdf "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
 
@@ -61,4 +63,3 @@ package() {
 	
 	ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm-eap"
 }
-
