@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=IDA Demo
+Exec=/opt/ida-demo/idaq
+Icon=ida
+Type=Application
+Categories=Development;Debugger;Profiling;
