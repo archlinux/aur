@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-message-filters
 	pkgdesc = ROS - A set of message filters which take in messages and may output those messages at a later time, based on the conditions that filter needs met.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://ros.org/wiki/message_filters
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = ros-indigo-message-filters
 	depends = ros-indigo-rosconsole
 	depends = ros-indigo-roscpp
 	depends = ros-indigo-xmlrpcpp
-	source = message_filters::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/message_filters/1.11.15-0
+	source = message_filters::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/message_filters/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-message-filters
