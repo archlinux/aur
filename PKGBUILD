@@ -5,7 +5,7 @@
 
 pkgbase=(virtualbox-zen-modules)
 pkgname=(virtualbox-zen-host-modules virtualbox-zen-guest-modules)
-pkgver=5.0.8
+pkgver=5.0.10
 pkgrel=2
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
