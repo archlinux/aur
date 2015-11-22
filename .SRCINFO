@@ -1,15 +1,15 @@
 pkgbase = oxefmsynth
 	pkgdesc = An 8-OP FM synthesizer VST plug-in
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = http://www.oxesoft.com/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = libx11
-	source = https://github.com/oxesoft/oxefmsynth/archive/v1.3.3.zip
+	source = https://github.com/oxesoft/oxefmsynth/archive/v1.3.4.zip
 	source = http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip
-	md5sums = e61c6fa2a80b2bf65d1dae9c6ad3e670
+	md5sums = 44841c42b5a3d934f27d3cec73b20b57
 	md5sums = 1ac422ebb4aa2e86061278412c347b55
 
 pkgname = oxefmsynth
