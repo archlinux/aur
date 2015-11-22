@@ -4,12 +4,12 @@
 
 pkgbase=systemd-git
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
-pkgver=227.r255.g931c7fe
+pkgver=228.r54.g0c203f1-1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 conflicts=
-makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
+makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
@@ -67,7 +67,7 @@ package_systemd-git() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd-git' 'libidn' 'lz4' 'pam' 'libseccomp'
+           'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
   provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" )
   replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
