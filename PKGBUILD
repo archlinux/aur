@@ -2,7 +2,7 @@
 
 pkgname=sachesi-git
 _pkgname=Sachesi #no uppercase letter in pkgname
-pkgver=2.0.0rc.r42.ga31f73b
+pkgver=2.0.3.r2.g7cd35fb
 pkgrel=1
 pkgdesc="Firmware, extractor, searcher and installer for Blackberry 10"
 arch=('i686' 'x86_64')
@@ -17,6 +17,11 @@ install=sachesi.install
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --tags --long | sed 's/-/.r/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  sed -i 's/-lquazip/&5/' Sachesi.pro
 }
 
 build() {
