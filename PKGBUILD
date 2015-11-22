@@ -12,6 +12,7 @@
 
 _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
+_kernelname=${_runkernver##*-}
 
 pkgname=backports-patched
 pkgver=4.3_1
@@ -22,7 +23,10 @@ url='https://backports.wiki.kernel.org/index.php/Main_Page'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('linux')
-makedepends=('linux-api-headers' "linux-headers>=$_shortkernver")
+# TODO: array for different forks like linux-ck, linux-grsec
+if [ "$_kernelname" == 'ARCH' ]; then
+  makedepends=('linux-api-headers' "linux-headers>=$_shortkernver")
+fi
 optdepends=('backports-frag+ack: wl-frag+ack patch')
 install=backports.install
 # Stable and rc? TODO: Check with rc :D | Double %% cuts to the first, single % cuts to the last
@@ -38,7 +42,7 @@ if [[ $? == 0 ]]; then
   warning "Skipping checksum check for snapshots"
 fi
 
-_extramodules=extramodules-${_shortkernver}-ARCH
+_extramodules=extramodules-${_shortkernver}-${_kernelname}
 _kernver=$(cat /usr/lib/modules/${_extramodules}/version) # TODO make this a lower boundary and utilize in reality pacman to get freshest paths. Or make it for specific kernels. Or multiply it over specific kernels ? :3
 
 _cfgdir="/etc/makepkg.d/${pkgname}/"
