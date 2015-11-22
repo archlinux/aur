@@ -1,9 +1,10 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
 
 pkgname=vscode-oss
+_pkgname=vscode
 pkgdesc='Visual Studio Code for Linux'
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('custom')
@@ -30,7 +31,7 @@ case "$CARCH" in
 esac
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
     npm install
     gulp vscode-linux-${_vscode_arch}

@@ -1,7 +1,7 @@
 pkgbase = vscode-oss
 	pkgdesc = Visual Studio Code for Linux
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	arch = i686
 	arch = x86_64
