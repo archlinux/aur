@@ -1,0 +1,17 @@
+pkgbase = ncurses-ada
+	pkgdesc = Ada binding for ncurses library
+	pkgver = 6.0
+	pkgrel = 1
+	url = http://www.gnu.org/software/ncurses/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ncurses
+	depends = gcc-ada
+	source = ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.0.tar.gz
+	source = ncurses.gpr
+	md5sums = ee13d052e1ead260d7c28071f46eefb1
+	md5sums = 7864c280e2023a9865463d515fcb5ae5
+
+pkgname = ncurses-ada
+

@@ -1,0 +1,12 @@
+library project Ncurses is
+
+   for Library_Name use "AdaCurses";
+
+   for Source_Dirs use ("/usr/include/ncurses-ada");
+   for Library_Dir use "/usr/lib";
+   for Library_ALI_Dir use "/usr/lib/ncurses-ada";
+   for Library_Kind use "relocatable";
+
+   for Externally_Built use "True";
+
+end Ncurses;
