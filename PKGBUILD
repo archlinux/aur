@@ -1,7 +1,7 @@
 # Contributor: Sebastian Wolf <swolf at melonkru dot de>
 pkgname=xseticon
 pkgver=0.1+bzr13
-pkgrel=1
+pkgrel=2
 pkgdesc="Set the X11 window icon for any given window to that of a given image file"
 arch=('i686' 'x86_64')
 url="http://www.leonerd.org.uk/code/xseticon/"
