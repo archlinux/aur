@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.7.55
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$pkgver"
@@ -19,7 +19,6 @@ _winesrcdir="wine-patched-staging-$pkgver"
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$pkgver.tar.gz"
         30-win32-aliases.conf
         keybindings.patch
-        raw.patch
         mipmap.patch
         heap_perf.patch
         wbemprox_query_v2.patch
@@ -27,7 +26,6 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$pkgver.
 sha1sums=('18317cfdc7a9a751910eb31df4996bd430a23c18'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           'f3febb8836f38320742a546c667106608d4c4395'
-          '57aa524e4e760c907c2acef287f5569e78ea85b0'
           'c3096fccbac23e520d03f592db7f23350cbbc0bc'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'e26d369e9964657b481ac4b7b18c575786ec9c8c'
@@ -123,7 +121,6 @@ prepare()
     cd wine-patched-staging-$pkgver
 
     patch -p1 < ../nine-1.7.53.patch
-    patch -p1 < ../raw.patch
     patch -p1 < ../mipmap.patch
     patch -p1 < ../heap_perf.patch
     patch -p1 < ../wbemprox_query_v2.patch
