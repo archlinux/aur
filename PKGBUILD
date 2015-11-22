@@ -19,7 +19,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -m755 -d "${pkgdir}/usr/bin"
-  install -m644 ${pkgname} "${pkgdir}/usr/bin/"
+  install -m755 ${pkgname} "${pkgdir}/usr/bin/"
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
