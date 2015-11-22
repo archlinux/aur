@@ -14,7 +14,7 @@ _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
 
 pkgname=backports-patched
-pkgver=4.2_rc1_1
+pkgver=4.3_1
 _upver="${pkgver//_/-}"
 pkgrel=7
 pkgdesc='Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor'
@@ -29,13 +29,12 @@ install=backports.install
 source=("http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v${_upver%-*}/backports-${_upver}.tar.xz")
 # Snapshot:
 #source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
-sha256sums=('0dee9afd22a72fe326d27d069418979cebe9a311612e74938ccb3bc720188070')
+sha256sums=('b3268058f72cb26563d5e4e65133b59f3e4eda2a03babe36105a3e9c258c8ca7')
 
 # Check for daily pkgver eg. 20370718
 date -d "$pkgver" > /dev/null 2>&1
 if [[ $? == 0 ]]; then
   source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
-  sha256sums=('SKIP')
   warning "Skipping checksum check for snapshots"
 fi
 
