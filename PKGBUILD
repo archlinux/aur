@@ -1,10 +1,10 @@
 # Maintainer: Sebastian Lau <lauseb644@gmail.com>
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 
-_mintrel=rosa
+_mintrel=betsy
 pkgname=nemo-dropbox
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dropbox for Linux - Nemo extension"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
@@ -17,7 +17,7 @@ options=('!libtool' '!emptydirs')
 
 source=("http://packages.linuxmint.com/pool/main/n/$pkgname/${pkgname}_${pkgver}%2b${_mintrel}.tar.gz")
 #http://packages.linuxmint.com/pool/main/n/$pkgname/$pkgname_$pkgver%2b$_mintrel.tar.gz
-md5sums=('f3a5f55e2e0ef92d42e364c2e9b4d0c8')
+md5sums=('1d7ff4cb2c2dbf9bc7331d2aee5d6e08')
 
 build() {
   cd ${pkgname}-${pkgver}+${_mintrel}

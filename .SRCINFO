@@ -1,7 +1,7 @@
 pkgbase = nemo-dropbox
 	pkgdesc = Dropbox for Linux - Nemo extension
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/nemo-extensions
 	install = nemo-dropbox.install
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = nemo-dropbox
 	conflicts = caja-dropbox
 	options = !libtool
 	options = !emptydirs
-	source = http://packages.linuxmint.com/pool/main/n/nemo-dropbox/nemo-dropbox_2.8.0%2brosa.tar.gz
-	md5sums = f3a5f55e2e0ef92d42e364c2e9b4d0c8
+	source = http://packages.linuxmint.com/pool/main/n/nemo-dropbox/nemo-dropbox_2.8.0%2bbetsy.tar.gz
+	md5sums = 1d7ff4cb2c2dbf9bc7331d2aee5d6e08
 
 pkgname = nemo-dropbox
 
