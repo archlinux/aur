@@ -1,7 +1,7 @@
 pkgbase = gitlab-ci-multi-runner
 	pkgdesc = The official GitLab CI runner written in Go
-	pkgver = 0.6.2
-	pkgrel = 3
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
 	install = gitlab-runner.install
 	arch = i686
@@ -16,15 +16,17 @@ pkgbase = gitlab-ci-multi-runner
 	makedepends = mercurial
 	depends = glibc
 	depends = ca-certificates
+	depends = curl
 	depends = git
+	depends = tar
 	backup = etc/gitlab-runner/config.toml
-	source = gitlab-ci-multi-runner-0.6.2.tar.gz::https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/repository/archive.tar.gz?ref=v0.6.2
+	source = gitlab-ci-multi-runner-0.7.0.tar.gz::https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/repository/archive.tar.gz?ref=v0.7.0
 	source = gitlab-runner.install
 	source = gitlab-runner.service
 	source = gitlab-runner.sysusers
 	source = gitlab-runner.tmpfiles
 	source = config.toml
-	sha512sums = 4a330ff80c576543809b36fdd521f3d4b2005ace3d1cdb2a5ebfaac6f7fdd4d84559a95b06759d78d340888f6d392affc47fa29e19c7f6a8295d07c1af69d643
+	sha512sums = 317cccfe6fa332c794ec53b4fed0d9013d1f6b89f75753f6ddfa72723b56951f823c23aefee4c532e25d1fa91b4d28ad98947701a63a9f5d62432fe67db2bcd3
 	sha512sums = d952618713a4ead9e8ac4d28bc5e3b1f9f0e7a36691d3abee40f73aa31d1b7dcff171c5ce62127b51ddf2c52ad490e7fa4bf0d928a3be793b813706588813535
 	sha512sums = e0db2ecd45ba9472a9e9109b0254c12d1d27571fa28a01329dbd7f9aa32df33c1d8f1583a27a8105b1ee6e26e5ae5a6696248544f1f7a9d399271973d6a21fed
 	sha512sums = 648647fbffbf8dac5558d06d257e460f47ede45dc7e60b183091d03af96546b31fd6e8120b6b2e02af2e49f7aa094e472ef2db266a8b3baa8490a96afd915944
