@@ -1,0 +1,19 @@
+pkgbase = zimg-git
+	pkgdesc = Scaling, colorspace conversion, and dithering library. include VapourSynth plugin (deprecated soon(?)). (GIT version)
+	pkgver = 2.0.1.22.g1aa2811
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171334
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = vapoursynth
+	provides = zimg
+	provides = vapoursynth-plugin-zimg
+	conflicts = zimg
+	conflicts = vapoursynth-plugin-zimg
+	source = git+https://github.com/sekrit-twc/zimg.git
+	sha1sums = SKIP
+
+pkgname = zimg-git
+
