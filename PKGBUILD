@@ -4,7 +4,7 @@
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
 pkgname=filebot
-pkgver=4.6
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums"
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('java-runtime>=8' 'fontconfig')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/FileBot_$pkgver/FileBot_$pkgver-portable.zip
         $pkgname-arch.sh $pkgname.svg $pkgname.desktop)
-md5sums=('4533ee65aae5adbb7f5840be08c042a5'
+md5sums=('29845bf89eeeab2c6e7c6669ea034876'
          '1d5dcc2c4a045830e59c705e29c99d18'
          '04f46be047049448dba3f0de29fe192d'
          'f37edd0bba7570904d28ab1681c7a7f3')
