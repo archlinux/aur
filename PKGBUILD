@@ -3,7 +3,7 @@
 # Contributor: Ferdi265 <theferdi265@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=libwm-git
-pkgver=1.0.r1.ae47478
+pkgver=1.0.r3.gae47478
 pkgrel=1
 pkgdesc="A set of tools for X windows manipulation."
 url="https://github.com/wmutils/core"
