@@ -15,17 +15,17 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QNapi/${pkgname}/releas
 sha256sums=('c7718a8844b930d5483850947b4b005d0264511314a4e69929aaac320fca48f1')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  qmake-qt5 ${pkgname}.pro 
-  make
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    qmake-qt5 ${pkgname}.pro 
+    make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make INSTALL_ROOT="${pkgdir}/" install
-  mkdir -p ${pkgdir}/usr/share/{kde4/services/ServiceMenus/,kservices5/ServiceMenus/}
-  mv ${pkgdir}/usr/share/doc/qnapi/qnapi-scan.desktop       ${pkgdir}/usr/share/kde4/services/ServiceMenus/qnapi-scan.desktop 
-  mv ${pkgdir}/usr/share/doc/qnapi/qnapi-download.desktop   ${pkgdir}/usr/share/kde4/services/ServiceMenus/qnapi-download.desktop
-  cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/qnapi-scan.desktop      ${pkgdir}/usr/share/kservices5/ServiceMenus/qnapi-scan.desktop
-  cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/qnapi-download.desktop  ${pkgdir}/usr/share/kservices5/ServiceMenus/qnapi-download.desktop
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make INSTALL_ROOT="${pkgdir}/" install
+    mkdir -p ${pkgdir}/usr/share/{kde4/services,kservices5}/ServiceMenus/
+    mv ${pkgdir}/usr/share/doc/${pkgname}/${pkgname}-scan.desktop                  ${pkgdir}/usr/share/kde4/services/ServiceMenus/${pkgname}-scan.desktop 
+    mv ${pkgdir}/usr/share/doc/${pkgname}/${pkgname}-download.desktop              ${pkgdir}/usr/share/kde4/services/ServiceMenus/${pkgname}-download.desktop
+    cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/${pkgname}-scan.desktop      ${pkgdir}/usr/share/kservices5/ServiceMenus/${pkgname}-scan.desktop
+    cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/${pkgname}-download.desktop  ${pkgdir}/usr/share/kservices5/ServiceMenus/${pkgname}-download.desktop
 }
