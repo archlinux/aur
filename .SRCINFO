@@ -1,7 +1,7 @@
 pkgbase = helm-git
 	pkgdesc = a cross-platform, polyphonic synthesizer LV2 and VST plugin
-	pkgver = 0.3.3.r958.0741c59
-	pkgrel = 2
+	pkgver = 0.5.0.r1105.ad798d4
+	pkgrel = 1
 	url = http://tytel.org/helm/
 	changelog = ChangeLog
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = helm-git
 	license = GPL
 	makedepends = git
 	depends = alsa-lib
+	depends = freetype2
 	depends = mesa
 	depends = lv2
 	provides = helm

@@ -2,14 +2,14 @@
 
 _pkgname=helm
 pkgname="${_pkgname}-git"
-pkgver=0.3.3.r958.0741c59
-pkgrel=2
+pkgver=0.5.0.r1105.ad798d4
+pkgrel=1
 pkgdesc="a cross-platform, polyphonic synthesizer LV2 and VST plugin"
 arch=('i686' 'x86_64')
 url="http://tytel.org/helm/"
 license=('GPL')
 groups=('lv2-plugins' 'vst-plugins')
-depends=('alsa-lib' 'mesa' 'lv2')
+depends=('alsa-lib' 'freetype2' 'mesa' 'lv2')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
