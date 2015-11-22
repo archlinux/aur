@@ -2,8 +2,8 @@
 # Contributor: peace4all <markspost at rocketmail dot com>
 
 pkgname=unified-remote-server
-pkgver=3.3.3.732
-pkgrel=2
+pkgver=3.3.4.734
+pkgrel=1
 pkgdesc="Unified Remote Server"
 arch=('x86_64')
 url="http://www.unifiedremote.com/"
