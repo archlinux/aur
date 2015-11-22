@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-xacro
 	pkgdesc = ROS - Xacro (XML Macros) Xacro is an XML macro language.
-	pkgver = 1.9.4
+	pkgver = 1.9.5
 	pkgrel = 1
 	url = http://ros.org/wiki/xacro
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-xacro
 	makedepends = ros-indigo-roslint
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-roslaunch
-	source = xacro::git+https://github.com/ros-gbp/xacro-release.git#tag=release/indigo/xacro/1.9.4-0
+	source = xacro::git+https://github.com/ros-gbp/xacro-release.git#tag=release/indigo/xacro/1.9.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-xacro
