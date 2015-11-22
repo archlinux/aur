@@ -1,0 +1,247 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2010-01-13 06:27:00.000000000 +0800
++++ b/CMakeLists.txt	2015-11-22 20:12:29.677289542 +0800
+@@ -2,11 +2,20 @@
+ 
+ project( kmozillahelper )
+ 
+-find_package( KDE4 REQUIRED )
+-include( KDE4Defaults )
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets)
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support)
++
+ include( MacroLibrary )
+-add_definitions( ${QT_DEFINITIONS} ${KDE4_DEFINITIONS} -DHAVE_CONFIG_H=1 )
+-include_directories( ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES} )
++add_definitions(-DHAVE_CONFIG_H=1 )
++include_directories( ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR})
+ 
+ ########### next target ###############
+ 
+@@ -14,7 +23,7 @@
+      main.cpp )
+ 
+ kde4_add_executable( kmozillahelper ${kmozillahelper_SRCS} )
+-target_link_libraries( kmozillahelper ${KDE4_KFILE_LIBS} )
++target_link_libraries( kmozillahelper KF5::KDELibs4Support )
+ 
+ # TODO hardcoded path?
+ install( TARGETS kmozillahelper DESTINATION /usr/lib/mozilla/ )
+diff -Naur a/main.cpp b/main.cpp
+--- a/main.cpp	2012-09-11 19:21:34.000000000 +0800
++++ b/main.cpp	2015-11-22 21:35:58.217217276 +0800
+@@ -48,6 +48,12 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ 
++#include <QUrl>
++#include <KUrl>
++#include <KConfigGroup>
++#include <KGlobal>
++#include <k4aboutdata.h>
++#include <QStandardPaths>
+ //#define DEBUG_KDE
+ 
+ #define HELPER_VERSION 6
+@@ -55,11 +61,9 @@
+ 
+ int main( int argc, char* argv[] )
+     {
+-    KAboutData about( "kmozillahelper", "kdelibs4", ki18n( "KMozillaHelper" ), APP_HELPER_VERSION );
++    K4AboutData about("kmozillahelper", 0, ki18n("KMozillaHelper"), APP_HELPER_VERSION);
++    
+     about.setBugAddress( "https://bugzilla.novell.com/enter_bug.cgi");
+-#if KDE_IS_VERSION( 4, 1, 0 )
+-    about.setProgramIconName( "firefox" ); // TODO what about other mozilla apps?
+-#endif
+     KCmdLineArgs::init( argc, argv, &about );
+     App app;
+     app.disableSessionManagement();
+@@ -163,7 +167,7 @@
+     {
+     if( !readArguments( 1 ))
+         return false;
+-    KUrl url( getArgument());
++    QUrl url( getArgument());
+     if( !allArgumentsUsed())
+         return false;
+     QString proxy;
+@@ -173,7 +177,7 @@
+         outputLine( "DIRECT" );
+         return true;
+         }
+-    KUrl proxyurl( proxy );
++    QUrl proxyurl( proxy );
+     if( proxyurl.isValid())
+         { // firefox wants this format
+         outputLine( "PROXY" " " + proxyurl.host() + ":" + QString::number( proxyurl.port()));
+@@ -270,7 +274,7 @@
+         return false;
+     KOpenWithDialog dialog( NULL );
+     if( !title.isEmpty())
+-        dialog.setPlainCaption( title );
++        dialog.setWindowTitle( title );
+     dialog.hideNoCloseOnExit();
+     dialog.hideRunInTerminal(); // TODO
+     if( wid != 0 )
+@@ -289,7 +293,7 @@
+         command = KStandardDirs::findExe( command );
+         if( command.isEmpty())
+             return false;
+-        outputLine( KUrl( command ).url());
++        outputLine( QUrl( command ).url());
+         return true;
+         }
+     return false;
+@@ -314,7 +318,7 @@
+         | ( multiple ? KFile::Files : KFile::File ));
+     if( title.isEmpty())
+         title = i18n( "Open" );
+-    dialog.setPlainCaption( title );
++    dialog.setWindowTitle( title );
+     QStringList filterslist = dialog.filterWidget()->filters();
+     selectFilter = qBound( 0, selectFilter, filterslist.count() - 1 );
+     dialog.filterWidget()->setCurrentFilter( filterslist[ selectFilter ] );
+@@ -329,20 +333,20 @@
+             {
+             outputLine( QString::number( dialog.filterWidget()->currentIndex()));
+             foreach( QString str, result )
+-                outputLine( KUrl( str ).url());
++                outputLine( QUrl( str ).url());
+             return true;
+             }
+         }
+     else
+         {
+-        KUrl::List result = multiple ? dialog.selectedUrls() : KUrl::List( dialog.selectedUrl());
+-        result.removeAll(KUrl());
++        QList<QUrl> result = multiple ? dialog.selectedUrls() : (QList<QUrl>() << dialog.selectedUrl());
++        result.removeAll(QUrl());
+         if( !result.isEmpty())
+             {
+             outputLine( QString::number( dialog.filterWidget()->currentIndex()));
+-            foreach( const KUrl& str, result )
++            foreach( const QUrl &str, result )
+               {
+-              KUrl newUrl = KIO::NetAccess::mostLocalUrl(str, NULL);
++              QUrl newUrl = KIO::NetAccess::mostLocalUrl(str, NULL);
+               outputLine( newUrl.toLocalFile() );
+               }
+             return true;
+@@ -366,12 +370,10 @@
+     dialog.setSelection( startDir );
+     dialog.setOperationMode( KFileDialog::Saving );
+     dialog.setMode( ( url ? KFile::Mode( 0 ) : KFile::LocalOnly ) | KFile::File );
+-#if KDE_IS_VERSION( 4, 2, 0 )
+-    dialog.setConfirmOverwrite( true );
+-#endif
++
+     if( title.isEmpty())
+         title = i18n( "Save As" );
+-    dialog.setPlainCaption( title );
++    dialog.setWindowTitle( title );
+     QStringList filterslist = dialog.filterWidget()->filters();
+     selectFilter = qBound( 0, selectFilter, filterslist.count() - 1 );
+     dialog.filterWidget()->setCurrentFilter( filterslist[ selectFilter ] );
+@@ -380,10 +382,10 @@
+     dialog.exec();
+     if( url )
+         {
+-        KUrl result = dialog.selectedUrl();
++        QUrl result = dialog.selectedUrl();
+         if( result.isValid())
+             {
+-#if !KDE_IS_VERSION( 4, 2, 0 )
++
+             KIO::StatJob* job = KIO::stat( result, KIO::HideProgressInfo );
+             if( KIO::NetAccess::synchronousRun( job, NULL )
+                 && KMessageBox::warningContinueCancelWId( wid,
+@@ -393,7 +395,7 @@
+                 {
+                 return false;
+                 }
+-#endif
++
+             outputLine( QString::number( dialog.filterWidget()->currentIndex()));
+             outputLine( result.url());
+             return true;
+@@ -404,7 +406,7 @@
+         QString result = dialog.selectedFile();
+         if( !result.isEmpty())
+             {
+-#if !KDE_IS_VERSION( 4, 2, 0 )
++
+             if( QFile::exists( result )
+                 && KMessageBox::warningContinueCancelWId( wid,
+                     i18n( "A file named \"%1\" already exists. " "Are you sure you want to overwrite it?",
+@@ -413,7 +415,7 @@
+                 {
+                 return false;
+                 }
+-#endif
++
+             KRecentDocument::add( result );
+             outputLine( QString::number( dialog.filterWidget()->currentIndex()));
+             outputLine( result );
+@@ -434,7 +436,7 @@
+         return false;
+     KDirSelectDialog dialog( startDir, !url );
+     if( !title.isEmpty())
+-        dialog.setPlainCaption( title );
++        dialog.setWindowTitle( title );
+     if( wid != 0 )
+         KWindowSystem::setMainWindow( &dialog, wid );
+     if( dialog.exec() == QDialog::Accepted )
+@@ -449,7 +451,7 @@
+     {
+     if( !readArguments( 1 ))
+         return false;
+-    KUrl url = getArgument();
++    QUrl url = getArgument();
+     QString mime;
+     if( isArgument( "MIMETYPE" ))
+         mime = getArgument();
+@@ -493,7 +495,7 @@
+         }
+     QFileInfo info(path);
+     QString dir = info.dir().path();
+-    (void) new KRun( KUrl(dir), NULL ); // TODO parent
++    (void) new KRun( QUrl(dir), NULL ); // TODO parent
+     return true; // TODO check for errors?
+     }
+ 
+@@ -543,7 +545,7 @@
+     if( mail )
+         {
+         KApplication::updateUserTimestamp( 0 ); // TODO
+-        return KRun::run( *mail, KUrl::List(), NULL ); // TODO parent
++        return KRun::run( *mail, QList<QUrl>(), NULL ); // TODO parent
+         }
+     return false;
+     }
+@@ -556,7 +558,7 @@
+     if( news )
+         {
+         KApplication::updateUserTimestamp( 0 ); // TODO
+-        return KRun::run( *news, KUrl::List(), NULL ); // TODO parent
++        return KRun::run( *news, QList<QUrl>(), NULL ); // TODO parent
+         }
+     return false;
+     }
+@@ -598,7 +600,7 @@
+     // TODO cheat a bit due to i18n freeze - the strings are in the .notifyrc file,
+     // taken from KGet, but the notification itself needs the text too.
+     // So create it from there.
+-    KConfig cfg( "kmozillahelper.notifyrc", KConfig::FullConfig, "appdata" );
++    KConfig cfg( "kmozillahelper.notifyrc", KConfig::FullConfig, QStandardPaths::AppDataLocation );
+     QString message = KConfigGroup( &cfg, "Event/downloadfinished" ).readEntry( "Comment" );
+     KNotification::event( "downloadfinished", download + " : " + message );
+     return true;
