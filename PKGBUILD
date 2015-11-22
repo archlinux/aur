@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('libupnpp>=0.12.1' 'qtwebkit')
 makedepends=('qtchooser')
 source=("http://www.lesbonscomptes.com/upplay/downloads/${pkgname}-${pkgver}.tar.gz")
-md5sums=('5d52fc1de4a0d764b37b23d9ac139508')
+md5sums=('6ce52189643f4e238ea13077e961dbab')
          
 
 build(){
