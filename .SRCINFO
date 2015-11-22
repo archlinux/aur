@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-havsfunc
 	pkgdesc = Plugin for Vapoursynth: havsfunc
 	pkgver = r20
-	pkgrel = 2
+	pkgrel = 3
 	url = http://forum.doom9.org/showthread.php?t=166582
 	arch = any
 	license = GPL
@@ -20,6 +20,10 @@ pkgbase = vapoursynth-plugin-havsfunc
 	optdepends = vapoursynth-plugin-bilateral-git: for logoNR function
 	optdepends = vapoursynth-plugin-fluxsmooth: for logoNR function
 	optdepends = vapoursynth-plugin-flash3kyuu_deband-git: for SmoothLevels function
+	optdepends = vapoursynth-plugin-awarpsharp2-git: for YAHR function
+	optdepends = vapoursynth-plugin-dctfilter-git: for Deblock_QED function
+	optdepends = vapoursynth-plugin-deblock-git: for Deblock_QED function
+	optdepends = vapoursynth-plugin-sangnommod-git-git: for santiag function
 	source = https://dl.dropbox.com/u/6596386/vapoursynth-plugins/havsfunc-r20.7z
 	sha1sums = db82d7a159ba128219ab796193ca3c8c14daba76
 
