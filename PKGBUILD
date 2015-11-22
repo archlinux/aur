@@ -23,10 +23,14 @@ url='https://backports.wiki.kernel.org/index.php/Main_Page'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('linux')
-# TODO: array for different forks like linux-ck, linux-grsec
-if [ "$_kernelname" == 'ARCH' ]; then
-  makedepends=('linux-api-headers' "linux-headers>=$_shortkernver")
-fi
+
+# Assocative array for different forks like linux-ck, linux-grsec
+declare -A linfork
+linfork["ARCH"]=''
+linfork["grsec"]='-grsec'
+linfork["ck"]='-ck'
+makedepends=('linux-api-headers' "linux-headers${linfork[${_kernelname}]}>=$_shortkernver")
+
 optdepends=('backports-frag+ack: wl-frag+ack patch')
 install=backports.install
 # Stable and rc? TODO: Check with rc :D | Double %% cuts to the first, single % cuts to the last
