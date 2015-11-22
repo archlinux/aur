@@ -1,0 +1,15 @@
+pkgbase = ghq
+	pkgdesc = Manage remote repository clones
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/motemen/ghq
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = ghq-0.7.1.tar.gz::https://github.com/motemen/ghq/archive/v0.7.1.tar.gz
+	sha1sums = 424af3889e4781423d35d3bea1ec9812067808f7
+
+pkgname = ghq
+
