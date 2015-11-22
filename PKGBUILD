@@ -12,7 +12,7 @@ license=('GPL2')
 makedepends=('grep' 'gzip' 'zlib')
 depends=('pcre' 'perl')
 url="http://e2guardian.org"
-optdepends=('squid' 'clamav')
+optdepends=('squid' 'clamav' 'c-icap')
 conflicts=('dansguardian' 'dansguardian-dev')
 install=${pkgname}.install
 source=(https://github.com/e2guardian/${pkgname}/archive/v${pkgver}.tar.gz
@@ -26,7 +26,7 @@ build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   ./autogen.sh
   ./configure --prefix="/usr" --enable-pcre --enable-locallists \
-	      --enable-icap --enable-commandline= --enable-email --enable-ntlm=yes --enable-trickledm \
+	      --enable-icap --enable-commandline= --enable-email --enable-trickledm \
               --sysconfdir=/etc --localstatedir=/var --enable-email --enable-clamd \
               --sbindir=/usr/bin
   make
