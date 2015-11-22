@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-roslaunch
 	pkgdesc = ROS - roslaunch is a tool for easily launching multiple ROS nodes locally and remotely via SSH, as well as setting parameters on the Parameter Server.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://ros.org/wiki/roslaunch
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = ros-indigo-roslaunch
 	depends = python2-rospkg
 	depends = python2-paramiko
 	depends = python2-yaml
-	source = roslaunch::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/roslaunch/1.11.15-0
+	source = roslaunch::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/roslaunch/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-roslaunch
