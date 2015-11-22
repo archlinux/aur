@@ -1,0 +1,13 @@
+pkgbase = python-mando
+	pkgdesc = A wrapper for the Python argparse module, which helps to write flexible CLI applications
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://mando.readthedocs.org/
+	arch = any
+	license = MIT
+	depends = python
+	source = http://pypi.python.org/packages/source/m/mando/mando-0.3.3.tar.gz
+	md5sums = 4244d87684a3c49b888dc702589a7d5b
+
+pkgname = python-mando
+
