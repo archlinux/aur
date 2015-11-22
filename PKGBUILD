@@ -1,10 +1,11 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Zachary Lund <admin@computerquip.com>
 # Contributor: Edward Noname <edward.81@gmail.com>
+# Contributor: Brett McGruddy <braxs69@gmail.com>
  
 pkgname=libgaminggear
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -18,8 +19,7 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cmake \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DINSTALL_LIBDIR="/usr/lib" \
-        -DINSTALL_CMAKE_MODULESDIR="/usr/share/cmake-3.3/Modules"
+        -DINSTALL_LIBDIR="/usr/lib"
     make
 }
 
