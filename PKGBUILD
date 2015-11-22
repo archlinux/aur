@@ -2,7 +2,7 @@
 
 pkgname=flif-git
 _pkgname=FLIF
-pkgver=r200.e028196
+pkgver=r303.630eba2
 pkgrel=1
 pkgdesc="Free Lossless Image Format"
 arch=("i686" "x86_64")
@@ -21,18 +21,19 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/${_pkgname}"
+  cd "$srcdir/${_pkgname}/src"
   make all
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
+  cd "$srcdir/${_pkgname}/src"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/lib/"
   install -dm755 "${pkgdir}/usr/include/${_pkgname}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -m755 flif "${pkgdir}/usr/bin" 
   install -m755 viewflif "${pkgdir}/usr/bin" 
   install -m755 libflif.so "${pkgdir}/usr/lib/" 
   install -m644 flif.h "${pkgdir}/usr/include/${_pkgname}" 
+  cd "$srcdir/${_pkgname}"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
