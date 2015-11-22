@@ -1,13 +1,13 @@
 pkgbase = gtk-theme-numix-solarized
 	pkgdesc = Solarized versions of Numix GTK2 and GTK3 theme
 	pkgver = 20151122
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bitterologist.deviantart.com/art/Numix-Solarized-417575928
 	arch = any
 	license = GPL3
 	depends = gtk-engine-murrine
-	source = https://github.com/corebob/numix-solarized/archive/v0.1.zip
-	md5sums = 03aa40b5bd0464afde59ccc011e82af0
+	source = https://github.com/corebob/numix-solarized/archive/v0.2.zip
+	md5sums = 920102c90ae0bb59a0b6799010d5934f
 
 pkgname = gtk-theme-numix-solarized
 
