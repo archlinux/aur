@@ -18,7 +18,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd extra-cmake-modules
-  _ver="$(cat CMakeLists.txt | grep -m3 -e 'ECM_MAJOR_VERSION' -e 'ECM_MINOR_VERSION' -e 'ECM_PATCH_VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m1 'set(VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
