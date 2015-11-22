@@ -1,0 +1,21 @@
+pkgbase = textdataparser-git
+	pkgdesc = Trace the activities of an external application
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://www.muflone.com/textdataparser/
+	install = textdataparser-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gtk3
+	depends = gobject-introspection
+	depends = python2-xdg
+	depends = python2-gobject
+	depends = gtk-update-icon-cache
+	provides = textdataparser
+	conflicts = textdataparser
+	source = git+https://github.com/muflone/textdataparser.git
+	sha256sums = SKIP
+
+pkgname = textdataparser-git
+
