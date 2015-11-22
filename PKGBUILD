@@ -72,7 +72,7 @@ package_uzbl-tabbed-next-git() {
   pkgdesc="Tabbing manager providing multiple uzbl-browser instances in 1
            window"
   arch=("any")
-  depends=("uzbl-core"
+  depends=("uzbl-core-next-git=$pkgver"
            "python2")
   provides=("uzbl-tabbed")
   conflicts=("uzbl-tabbed")
