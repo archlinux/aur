@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="http://kaffeine.kde.org"
 depends=('kdebase-runtime' 'xine-lib')
 makedepends=('cmake' 'automoc4')
+conflicts=('kaffeine' 'kaffeine-git')
 install=kaffeine.install
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
         kaffeine-1.2.2-gcc4.7.patch)
