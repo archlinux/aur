@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rosbag
 	pkgdesc = ROS - This is a set of tools for recording from and playing back to ROS topics.
-	pkgver = 1.11.15
-	pkgrel = 2
+	pkgver = 1.11.16
+	pkgrel = 1
 	url = http://ros.org/wiki/rosbag
 	arch = any
 	license = BSD
@@ -29,7 +29,7 @@ pkgbase = ros-indigo-rosbag
 	depends = ros-indigo-xmlrpcpp
 	depends = python2-rospkg
 	depends = boost
-	source = rosbag::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosbag/1.11.15-0
+	source = rosbag::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosbag/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosbag
