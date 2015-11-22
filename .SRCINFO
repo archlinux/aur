@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosmsg
 	pkgdesc = ROS - rosmsg contains two command-line tools: rosmsg and rossrv.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://ros.org/wiki/rosmsg
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-indigo-rosmsg
 	depends = ros-indigo-rosbag
 	depends = ros-indigo-catkin
 	depends = python2-rospkg
-	source = rosmsg::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosmsg/1.11.15-0
+	source = rosmsg::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosmsg/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosmsg
