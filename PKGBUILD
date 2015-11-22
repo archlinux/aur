@@ -3,7 +3,7 @@
 
 pkgname=vim-startify-git
 pkgver=1.0.r1.ga58f92e
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A fancy start screen for Vim.'
 arch=('any')
@@ -19,7 +19,7 @@ source=("git+https://github.com/mhinz/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd ${pkgname%-git}
   # cutting off 'v' prefix from the git tag
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
