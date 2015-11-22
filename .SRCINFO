@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosmaster
 	pkgdesc = ROS - ROS Master implementation.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://ros.org/wiki/rosmaster
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ros-indigo-rosmaster
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-rosgraph
-	source = rosmaster::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosmaster/1.11.15-0
+	source = rosmaster::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosmaster/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosmaster
