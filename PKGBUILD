@@ -4,7 +4,7 @@
 pkgname=gogs-git
 _pkgname=gogs
 _branch=master
-pkgver=3135.6a6a751
+pkgver=3148.e6b2a01
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
@@ -94,7 +94,7 @@ build() {
 
   msg2 "Build program"
   go fix
-  go build -x -tags='sqlite redis memcache'
+  go build -x -tags='sqlite'
 }
 
 package() {
