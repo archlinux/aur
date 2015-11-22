@@ -1,6 +1,19 @@
 QNapi ChangeLog:
 ================
 
+2015-11-22 v0.2.0:
+ * możliwość wyboru cichego trybu wsadowego - #13
+ * poprawki bledow w silniku Napisy24 - #23
+ * umieszczenie ikon w katalogach opisujacych ich rozmiar - #24 (thx Fisiu)
+ * wsparcie dla ekranow retina (OSX) - #27
+ * wsparcie dla nazw sciezek zawierajacych znaki specjalne (Windows) - #28
+ * poprawiony blad przy konwersji SRT polegajacy na dodawaniu pustych linii (Windows) - #29
+ * automatyczne zamykanie aplikacji po pobraniu napisow (OSX) - #31
+ * informacje o wersji w pliku .exe (Windows) - #32
+ * poprawki bledow w wykrywaniu kodowania pliku (m.in. UTF-8 z BOM) - #34
+ * zachowanie kodowania znakow podczas konwersji pomiedzy formatami
+ * poprawiony blad nieuwzgledniajacy jezyka zapasowego przy pobieraniu napisow - #36
+
 2015-08-26 v0.1.9:
  * obsluga konwersji pomiedzy formatami napisow: SRT, mDVD, TMP, MPL2
    (wymagany jest program ffprobe) - #10
