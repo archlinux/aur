@@ -3,12 +3,13 @@
 pkgbase = libpaper
 	pkgdesc = Library for handling paper characteristics
 	pkgver = 1.1.24
-	pkgrel = 8
+	pkgrel = 9
 	url = http://packages.debian.org/unstable/source/libpaper
 	arch = x86_64
 	arch = i686
 	license = GPL
 	depends = sh
+	depends = run-parts
 	backup = etc/papersize
 	source = http://ftp.de.debian.org/debian/pool/main/libp/libpaper/libpaper_1.1.24+nmu4.tar.gz
 	md5sums = 155d2e589e2f4ef163de8fbbc5d3dd1e

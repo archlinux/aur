@@ -7,12 +7,12 @@
 
 pkgname=libpaper
 pkgver=1.1.24
-pkgrel=8
+pkgrel=9
 pkgdesc='Library for handling paper characteristics'
 arch=('x86_64' 'i686')
 url='http://packages.debian.org/unstable/source/libpaper'
 license=('GPL')
-depends=('sh')
+depends=('sh' 'run-parts')
 backup=('etc/papersize')
 source=("http://ftp.de.debian.org/debian/pool/main/libp/$pkgname/${pkgname}_$pkgver+nmu4.tar.gz")
 md5sums=('155d2e589e2f4ef163de8fbbc5d3dd1e')
