@@ -3,13 +3,13 @@
 
 pkgname=yarock-qt5
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Modern Music Player with collection browse based on cover art"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/yarock"
 license=('GPL3')
 makedepends=('cmake' 'mpv')
-depends=('htmlcxx' 'qt5-x11extras' 'phonon-qt5' 'taglib')
+depends=('htmlcxx' 'qt5-x11extras' 'phonon-qt5' 'taglib>=1.10')
 optdepends=('mpv: alternative (working) engine')
 source=("https://launchpad.net/yarock/1.x/${pkgver}/+download/Yarock_${pkgver}_source.tar.gz"
         "phonon.patch")
@@ -28,7 +28,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_QT5=1 \
-    -DENABLE_MPV=ON
+    -DENABLE_MPV=ON \
+    -DTAGLIB_MIN_VERSION=1.10
   make
 }
 
