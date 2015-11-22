@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-roscpp
 	pkgdesc = ROS - roscpp is a C++ implementation of ROS.
-	pkgver = 1.11.15
-	pkgrel = 2
+	pkgver = 1.11.16
+	pkgrel = 1
 	url = http://ros.org/wiki/roscpp
 	arch = any
 	license = BSD
@@ -29,7 +29,7 @@ pkgbase = ros-indigo-roscpp
 	depends = ros-indigo-roscpp-traits
 	depends = ros-indigo-rosgraph-msgs
 	depends = ros-indigo-xmlrpcpp
-	source = roscpp::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/roscpp/1.11.15-0
+	source = roscpp::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/roscpp/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-roscpp
