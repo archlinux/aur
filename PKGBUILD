@@ -4,7 +4,7 @@ pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
          'marble-data-git')
-pkgver=1.11.80.r10804.f59d559
+pkgver=1.12.20.r11049.8417b5d
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -47,6 +47,7 @@ prepare() {
       -e '/Quick/d' \
       -e '/touch/d' \
       -i marble/src/apps/CMakeLists.txt
+
 }
 
 build() {
@@ -73,6 +74,7 @@ package_libastro-git() {
              'marble-qt'
              'libastro'
              )
+  provides=('libastro')
 
   make -C build/src/lib/astro DESTDIR="${pkgdir}" install
 }
@@ -96,6 +98,7 @@ package_marble-git() {
              'marble-qt'
              'marble'
              )
+  provides=('marble')
   replaces=('kdeedu-marble'
             'marble-qt<15.07'
             )
@@ -123,6 +126,7 @@ package_marble-data-git() {
              'marble-qt'
              'marble-data'
              )
+  provides=('marble-data')
   install=marble-git.install
 
   make -C build/data DESTDIR="${pkgdir}" install
