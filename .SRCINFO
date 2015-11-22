@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-havsfunc
 	pkgdesc = Plugin for Vapoursynth: havsfunc
 	pkgver = r20
-	pkgrel = 3
+	pkgrel = 4
 	url = http://forum.doom9.org/showthread.php?t=166582
 	arch = any
 	license = GPL
@@ -24,6 +24,7 @@ pkgbase = vapoursynth-plugin-havsfunc
 	optdepends = vapoursynth-plugin-dctfilter-git: for Deblock_QED function
 	optdepends = vapoursynth-plugin-deblock-git: for Deblock_QED function
 	optdepends = vapoursynth-plugin-sangnommod-git: for santiag function
+	optdepends = vapoursynth-plugin-temporalsoften-git: for TemporalSoften function
 	source = https://dl.dropbox.com/u/6596386/vapoursynth-plugins/havsfunc-r20.7z
 	sha1sums = db82d7a159ba128219ab796193ca3c8c14daba76
 

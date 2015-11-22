@@ -3,7 +3,7 @@
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=r20
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
@@ -27,6 +27,7 @@ optdepends=('vapoursynth-plugin-genericfilters-git: for HQDering function'
             'vapoursynth-plugin-dctfilter-git: for Deblock_QED function'
             'vapoursynth-plugin-deblock-git: for Deblock_QED function'
             'vapoursynth-plugin-sangnommod-git: for santiag function'
+            'vapoursynth-plugin-temporalsoften-git: for TemporalSoften function'
             )
 source=("https://dl.dropbox.com/u/6596386/vapoursynth-plugins/${_plug}-${pkgver}.7z")
 sha1sums=('db82d7a159ba128219ab796193ca3c8c14daba76')
