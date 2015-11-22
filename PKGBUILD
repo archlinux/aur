@@ -3,7 +3,7 @@
 pkgname=textdataparser
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Graphic interface to view text data files with definitions"
+pkgdesc="Graphical interface to view text data files with definitions"
 url="http://www.muflone.com/textdataparser/"
 arch=('any')
 license=('GPL2')
