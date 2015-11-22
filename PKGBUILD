@@ -2,14 +2,14 @@
 pkgname=openblas
 _pkgname=OpenBLAS
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD "
 arch=('i686' 'x86_64')
 url="http://www.openblas.net/"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
-provides=('blas=3.5.0')
+provides=('blas=3.6.0')
 conflicts=('blas')
 options=(!makeflags !emptydirs)
 source=(${_pkgname}-v${pkgver}.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz)
