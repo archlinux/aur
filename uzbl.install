@@ -7,5 +7,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    update-desktop-database -q
+  update-desktop-database -q
 }
