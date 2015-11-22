@@ -1,16 +1,16 @@
 pkgbase = nvidia-mainline
 	pkgdesc = NVIDIA drivers for linux-mainline
 	pkgver = 355.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-mainline-headers>=4.3rc1
-	makedepends = linux-mainline-headers<4.4rc1
-	depends = linux-mainline>=4.3rc1
-	depends = linux-mainline<4.4rc1
+	makedepends = linux-mainline-headers>=4.4rc1
+	makedepends = linux-mainline-headers<4.5rc1
+	depends = linux-mainline>=4.4rc1
+	depends = linux-mainline<4.5rc1
 	depends = nvidia-libgl
 	depends = nvidia-utils=355.11
 	options = !strip
