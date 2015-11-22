@@ -1,0 +1,5 @@
+post_install() {
+  echo '==> WARNING: pacmarge is really new and totally untested; use it at your own risk!'
+}
+
+# vim:set ts=2 sw=2 et:
