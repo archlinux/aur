@@ -1,15 +1,15 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
 pkgname=nvidia-think
-pkgver=355.11
+pkgver=358.16
 _extramodules=extramodules-4.2-think
-pkgrel=2
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-think kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 depends=('linux-think>=4.2' 
 	 'linux-think<4.3'
-   	 'nvidia-utils=355.11' 
+   	 'nvidia-utils=358.16' 
 	 'libgl')
 makedepends=('linux-think-headers>=4.2')
 license=('custom')
@@ -17,8 +17,8 @@ install=nvidia.install
 options=(!strip)
 source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
         "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('16d143ccafe99328a2ca8e5a396fd4bc'
-         '30133d89690f4683c4e289ec6c0247dc')
+md5sums=('5dfe11ca13548ca4813b10f3223d6014'
+         'efb1e649c0e0d62e92774bbf2c124488')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
