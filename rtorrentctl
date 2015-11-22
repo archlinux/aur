@@ -16,11 +16,15 @@ set -e
 # a path on the first line, in which case that path will be the
 # working directory for rtorrent/screen.
 #
+# rtorrent/screen will be executed as the user named in the file
+# ${CONFIG_DIR}/${INSTANCE}${USER_SUFFIX}
+#
 # Return codes:
 # 1 - Working directory doesn't exist
 # 2 - Invalid action
 # 3 - Missing instance argument
 # 4 - Incorrect number of arguments
+# 5 - Run-as user file doesn't exist
 
 # Directory containing .rtorrent.rc files for each rtorrent instance
 CONFIG_DIR="/etc/rtorrent.d"
@@ -30,11 +34,13 @@ CONFIG_EXT=".rtorrent.rc"
 WORKING_DIR_EXT=".wd"
 # Suffix added to instance name and used as the screen session name
 SESSION_SUFFIX="-rtorrent"
+# Suffix of run-as user file for an instance
+USER_SUFFIX=".user"
 
 # Prints the script usage
 function usage() {
   echo "Usage: rtorrentctl {start|stop} instance" >&2
-  echo "'instance' names prefix of ${CONFIG_EXT} in ${CONFIG_DIR}" >&2
+  echo "'instance' names prefix of ${CONFIG_EXT} and ${USER_SUFFIX} in ${CONFIG_DIR}" >&2
 }
 
 # Produces the configuration file path from the instance name 
@@ -58,6 +64,11 @@ function workingDir() {
   head -n 1 "${workingDirFile}"
 }
 
+# Produces the filename containing the run-as user for this instance
+function runAsUserFile() {
+  echo "${CONFIG_DIR}/${1}${USER_SUFFIX}"
+}
+
 # Produces the screen session name for an instance
 function sessionName() {
   echo "${1}${SESSION_SUFFIX}"
@@ -66,26 +77,31 @@ function sessionName() {
 # Starts an instance
 function start() {
   instance="${1}"
+  user="${2}"
 
   # Change to the desired working directory
   workingdir=$(workingDir "${instance}")
   cd "${workingdir}"
 
-  # Exec screen
+  # Exec screen as user
+  # "-u ..."        User to exec screen as
   # "-D -m"         Start detached and don't fork process
   # "-S ..."        Session name
   # "-n"            Tell rtorrent to not read ~/.rtorrent.rc
   # "-o import=..." Tell rtorrent to read and use this file as configuration
-  screen -D -m -S "$(sessionName "${instance}")"  rtorrent -n -o import=${CONFIG}
+  sudo -u "${user}" screen -D -m -S "$(sessionName "${instance}")"  rtorrent -n -o import=${CONFIG}
 }
 
 # Stops an instance
 function stop() {
+  instance="${1}"
+  user="${2}"
   # Signal screen to send "quit" keystroke (CTRL+Q) to rtorrent
+  # "-u ..." User to send signal as
   # "-S ..." Session name
   # "-p ..." Screen number within session
   # "-X xon" Send 'xon' command, which means send 'CTRL+Q'
-  screen -S "$(sessionName "${1}")" -p 0 -X xon
+  sudo -u "${user}" screen -S "$(sessionName "${1}")" -p 0 -X xon
 }
 
 screen -D -m -S "${INSTANCE}${SESSION_SUFFIX}" -s "rtorrent -o 'import=${CONFIG}'"
@@ -116,20 +132,28 @@ INSTANCE="${2}"
 CONFIG=$(configFile "${INSTANCE}")
 if [[ ! -e "${CONFIG}" ]]
 then
-  echo "Instance doesn't exist. Check ${CONFIG_DIR}" >&2
+  echo "Instance doesn't exist. Check for ${CONFIG}" >&2
   exit 5
 fi
+
+USERFILE="$(runAsUserFile "${INSTANCE}")"
+if [[ ! -e "${USERFILE}" ]]
+then
+  echo "Instance run-as user file doesn't exist. Check for ${USERFILE}" >&2
+  exit 6
+fi
+USER=$(head -n 1 "${USERFILE}")
 
 echo "I am ${ACTION}ing ${INSTANCE}"
 if [[ "${ACTION}" == "start" ]]
 then
 
-  start "${INSTANCE}"
+  start "${INSTANCE}" "${USER}" 
 
 elif [[ "${ACTION}" == "stop" ]]
 then
 
-  stop "${INSTANCE}"
+  stop "${INSTANCE}" "${USER}"
 
 fi
 
