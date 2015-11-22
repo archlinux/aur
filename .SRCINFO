@@ -1,19 +1,15 @@
 pkgbase = pius
 	pkgdesc = PGP Individual UID Signer (PIUS)
-	pkgver = 2.1.1
-	pkgrel = 4
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = http://www.phildev.net/pius/
 	install = pius.install
 	arch = any
 	license = GPL2
 	depends = python2
 	optdepends = python2-pexpect: interactive mode support
-	source = http://downloads.sourceforge.net/pgpius/pius-2.1.1.tar.bz2
-	source = python2.patch
-	source = gpg-2.1.patch
-	md5sums = adc49aa7a8afecb37b6ad30b55be00d0
-	md5sums = 451ef646bd19d49c0205a94ead0b6862
-	md5sums = dfe4e05076fd809619da2512ada0ad6d
+	source = https://github.com/jaymzh/pius/releases/download/v2.2.1/pius-2.2.1.tar.bz2
+	md5sums = 9e3cb58a6e3576602bc39943818791f1
 
 pkgname = pius
 
