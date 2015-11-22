@@ -1,8 +1,8 @@
-# Maintainer: eagletmt <eagletmt@gmail.com>
+# Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=yaskkserv
-pkgver=0.6.2
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='Yet another SKK Japanese input method dictionary server'
+pkgdesc='Yet Another SKK Japanese input method dictionary server'
 arch=('x86_64' 'i686')
 url='http://umiushi.org/~wac/yaskkserv/'
 license=('GPL')
@@ -34,5 +34,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('552a3eee3afd42b942936696d61be8ffdbc186cd'
+sha1sums=('3718f90eecb3167a4cb278ec36c6aed8c2b0687a'
           '807a07e4dbd456ddea198505862667da563c787f')

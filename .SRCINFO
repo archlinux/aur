@@ -1,6 +1,6 @@
 pkgbase = yaskkserv
-	pkgdesc = Yet another SKK Japanese input method dictionary server
-	pkgver = 0.6.2
+	pkgdesc = Yet Another SKK Japanese input method dictionary server
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://umiushi.org/~wac/yaskkserv/
 	install = yaskkserv.install
@@ -10,9 +10,9 @@ pkgbase = yaskkserv
 	makedepends = perl
 	makedepends = skk-jisyo
 	depends = openssl
-	source = http://umiushi.org/~wac/yaskkserv/yaskkserv-0.6.2.tar.xz
+	source = http://umiushi.org/~wac/yaskkserv/yaskkserv-1.0.0.tar.xz
 	source = yaskkserv.service
-	sha1sums = 552a3eee3afd42b942936696d61be8ffdbc186cd
+	sha1sums = 3718f90eecb3167a4cb278ec36c6aed8c2b0687a
 	sha1sums = 807a07e4dbd456ddea198505862667da563c787f
 
 pkgname = yaskkserv
