@@ -2,7 +2,7 @@
 # Contributor: mjheagle <mjheagle8@gmail.com>
 _name='zsh-syntax-highlighting'
 pkgname="${_name}-git"
-pkgver=0.2.1.230.85b3446
+pkgver=0.2.1.452.e60737d
 pkgrel=1
 pkgdesc='Fish shell like syntax highlighting for Zsh'
 url='https://github.com/zsh-users/zsh-syntax-highlighting'
@@ -23,6 +23,5 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_name}"
-    install -d "${pkgdir}/usr/share/zsh/plugins/${_name}"
-    cp -a --no-preserve=ownership * "${pkgdir}/usr/share/zsh/plugins/${_name}"
+    make DESTDIR="${pkgdir}" install
 }

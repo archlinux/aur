@@ -1,6 +1,6 @@
 pkgbase = zsh-syntax-highlighting-git
 	pkgdesc = Fish shell like syntax highlighting for Zsh
-	pkgver = 0.2.1.228.3dc5741
+	pkgver = 0.2.1.452.e60737d
 	pkgrel = 1
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
 	install = zsh-syntax-highlighting.install
@@ -8,6 +8,8 @@ pkgbase = zsh-syntax-highlighting-git
 	license = Custom
 	makedepends = git
 	depends = zsh>=4.3.9
+	provides = zsh-syntax-highlighting
+	conflicts = zsh-syntax-highlighting
 	source = zsh-syntax-highlighting::git://github.com/zsh-users/zsh-syntax-highlighting
 	sha256sums = SKIP
 
