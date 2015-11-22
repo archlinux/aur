@@ -1,0 +1,10 @@
+[Unit]
+Description=E2guardian web filtering
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/e2guardian
+
+[Install]
+WantedBy=multi-user.target
