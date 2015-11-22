@@ -1,0 +1,20 @@
+pkgbase = kaffeine-legacy
+	pkgdesc = KDE media player. Old 1.2.2 version using Xine frontend
+	pkgver = 1.2.2
+	pkgrel = 5
+	url = http://kaffeine.kde.org
+	install = kaffeine.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = xine-lib
+	source = http://downloads.sourceforge.net/kaffeine-legacy/kaffeine-legacy-1.2.2.tar.gz
+	source = kaffeine-1.2.2-gcc4.7.patch
+	md5sums = 690e48d2e5fe123887109aa9b1bc1c31
+	md5sums = 48afe5ec99b38fe02782db57a847033f
+
+pkgname = kaffeine-legacy
+
