@@ -8,6 +8,8 @@ url="https://www.sencha.com/products/extjs/cmd-download/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('java-runtime')
+provides=('sencha-cmd')
+conficts=('sencha-cmd')
 
 source_i686=("http://cdn.sencha.com/cmd/$pkgver/no-jre/SenchaCmd-$pkgver-linux-i386.sh.zip")
 source_x86_64=("http://cdn.sencha.com/cmd/$pkgver/no-jre/SenchaCmd-$pkgver-linux-amd64.sh.zip")
