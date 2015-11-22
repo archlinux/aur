@@ -1,0 +1,18 @@
+pkgbase = textdataparser
+	pkgdesc = Graphic interface to view text data files with definitions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://www.muflone.com/textdataparser/
+	install = textdataparser.install
+	arch = any
+	license = GPL2
+	depends = gtk3
+	depends = gobject-introspection
+	depends = python2-xdg
+	depends = python2-gobject
+	depends = gtk-update-icon-cache
+	source = textdataparser-0.1.0.tar.gz::https://github.com/muflone/textdataparser/archive/0.1.0.tar.gz
+	sha256sums = cb7f8bb3969c5f16933b7ea1ab5e046c9f6b09ba66afb095981e5e55723cec69
+
+pkgname = textdataparser
+
