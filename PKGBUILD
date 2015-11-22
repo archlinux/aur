@@ -3,13 +3,14 @@ python=python
 
 _libname=pushbullet.py
 pkgname=python-$_libname
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A simple python client for pushbullet.com."
-depends=('python-requests' 'python-magic' 'python-websocket-client' 'python-pip')
+depends=('python-requests' 'python-magic' 'python-websocket-client')
+makedepends=('python-setuptools')
 arch=('any')
 source=(https://pypi.python.org/packages/source/p/pushbullet.py/${_libname}-${pkgver}.tar.gz)
-md5sums=('1e8eccd95062df199830d92a29c57bdf')
+md5sums=('5e9e15f14753e79917c94cfa8e44d9ab')
 
 url="https://github.com/randomchars/pushbullet.py"
 license="MIT"
