@@ -1,0 +1,15 @@
+pkgbase = xseticon
+	pkgdesc = Set the X11 window icon for any given window to that of a given image file
+	pkgver = 0.1+bzr13
+	pkgrel = 1
+	url = http://www.leonerd.org.uk/code/xseticon/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libx11
+	depends = gd
+	source = http://www.leonerd.org.uk/code/xseticon/xseticon-0.1+bzr13.tar.gz
+	sha256sums = 6b568674643e13a3671bd74aaa8316f11721d48764a822f76d28b83a88d919b9
+
+pkgname = xseticon
+
