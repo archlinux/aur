@@ -1,7 +1,7 @@
 pkgbase = discord
 	pkgdesc = Discord linux App
-	pkgver = 0.1.3-AUR
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 3
 	url = https://github.com/XNBlank/discord-linux
 	arch = i686
 	arch = x86_64
