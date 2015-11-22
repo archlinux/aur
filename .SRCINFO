@@ -1,9 +1,10 @@
 pkgbase = xorg-server-bug865
-	pkgver = 1.17.4
-	pkgrel = 2
+	pkgver = 1.18.0
+	pkgrel = 3
 	url = http://xorg.freedesktop.org
 	arch = i686
 	arch = x86_64
+	groups = xorg
 	license = custom
 	makedepends = pixman
 	makedepends = libx11
@@ -52,29 +53,24 @@ pkgbase = xorg-server-bug865
 	makedepends = dri3proto
 	makedepends = libxshmfence
 	makedepends = libunwind
-	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.17.4.tar.bz2
-	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.17.4.tar.bz2.sig
-	source = nvidia-drm-outputclass.conf
+	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.18.0.tar.bz2
+	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.18.0.tar.bz2.sig
 	source = xvfb-run
 	source = xvfb-run.1
-	source = 0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
-	source = 0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
 	source = 0001-systemd-logind-do-not-rely-on-directed-signals.patch
+	source = v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch
 	source = freedesktop-bug-865.patch
-	sha256sums = 0c4b45c116a812a996eb432d8508cf26c2ec8c3916ff2a50781796882f8d6457
+	sha256sums = 195670819695d9cedd8dde95fbe069be0d0f488a77797a2d409f9f702daf312e
 	sha256sums = SKIP
-	sha256sums = af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
-	sha256sums = 3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7
-	sha256sums = 416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96
 	sha256sums = 3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c
-	sha256sums = ad64fd593cd4cdfdd830c4295ebe1acd4259e45cfc12a258a162ecdbb11fd7ca
+	sha256sums = c8addd0dc6d91797e82c51b539317efa271cd7997609e026c7c8e3884c5f601c
+	sha256sums = dad4bbadda03db2fe7046c43d838afd5e41f98c821fdac0908f0f20493caa660
 
 pkgname = xorg-server-bug865
 	pkgdesc = Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press)
 	install = xorg-server.install
-	groups = xorg
 	depends = libepoxy
 	depends = libxdmcp
 	depends = libxfont
@@ -84,14 +80,14 @@ pkgname = xorg-server-bug865
 	depends = libgcrypt
 	depends = libxau
 	depends = xorg-server-common
-	depends = xf86-input-evdev
 	depends = libxshmfence
 	depends = libgl
-	provides = X-ABI-VIDEODRV_VERSION=19
-	provides = X-ABI-XINPUT_VERSION=21.1
+	depends = xf86-input-driver
+	provides = X-ABI-VIDEODRV_VERSION=20
+	provides = X-ABI-XINPUT_VERSION=22.1
 	provides = X-ABI-EXTENSION_VERSION=9.0
 	provides = x-server
-	provides = xorg-server=1.17.1
+	provides = xorg-server=1.18.0
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
