@@ -3,7 +3,7 @@
 
 pkgname=paxctld
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PaX flags maintenance daemon'
 arch=(i686 x86_64)
 url=http://grsecurity.net
@@ -38,6 +38,6 @@ package() {
     "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
 
-sha256sums=('94b319e0c506fe42bd610247a8997758d7409d92fd94dd28621d7641006b6ed0'
+sha256sums=('7a6b322b02f583f4c93a7090a3f774dc069a014893351f0d544de377d3cdadf0'
             'SKIP'
             'bedd98fa6bd95ff00af420e6ca1811f792825d9fb9078218e16b78653ad74cff')
