@@ -4,7 +4,7 @@ _gitname=pynbody
 _gitbranch=master
 pkgname="python-${_gitname}-git"
 pkgdesc='Pynbody is a light-weight, portable, format-transparent analysis framework for N-body and hydrodynamic astrophysical simulations.'
-pkgver=2103.8f64329
+pkgver=2139.dd026fd
 pkgrel=1
 url="http://pynbody.github.io/"
 license=('MIT')
@@ -13,9 +13,9 @@ depends=('python>=3.3'
 	 'python-numpy'
 	 'python-scipy')	
 makedepends=('git'
-	 'cython>=0.2')
+             'cython>=0.2')
 optdepends=('python-matplotlib: plotting pynbody built-in plots'
-	 'ipython: makes using python much easier')
+            'ipython: makes using python much easier')
 source=("${_gitname}::git://github.com/pynbody/${_gitname}.git#branch=${_gitbranch}")
 md5sums=('SKIP')
 
