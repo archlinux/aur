@@ -15,13 +15,14 @@
 pkgname=x2vnc-no-xinerama
 _realpkgname=x2vnc
 pkgver=1.7.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Lets you use a monitor on a different computer as if it was connected to the one you are using. This version disables xinerama, fixing two related bugs."
 arch=('i686' 'x86_64')
 url="http://fredrik.hubbe.net/x2vnc.html"
 license=('GPL')
 conflicts=('x2vnc')
 depends=('libxss' 'libxrandr' 'libxxf86dga')
+makedepends=('imake')
 source=("http://fredrik.hubbe.net/x2vnc/$_realpkgname-$pkgver.tar.gz")
 md5sums=('f23f86bcfa12a80eaeb886ab9b3ee447')
 

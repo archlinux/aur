@@ -1,11 +1,12 @@
 pkgbase = x2vnc-no-xinerama
 	pkgdesc = Lets you use a monitor on a different computer as if it was connected to the one you are using. This version disables xinerama, fixing two related bugs.
 	pkgver = 1.7.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://fredrik.hubbe.net/x2vnc.html
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = imake
 	depends = libxss
 	depends = libxrandr
 	depends = libxxf86dga
