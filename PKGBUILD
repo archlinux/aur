@@ -1,7 +1,7 @@
 # Maintainer: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=libphonenumber
-pkgver=7.1.0
+pkgver=7.2.1
 pkgrel=1
 pkgdesc='library for parsing, formatting, storing and validating phone numbers by Google'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('boost-libs' 'protobuf')
 makedepends=('cmake' 'boost' 'gtest')
 source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ff4ffee0395023b967376d9f6d81b5bfcfd992fcead6c900e080fd0263d3452b')
+sha256sums=('4d4497b77c6897358a21d2c646e6fe243fefb551d6806ef28683c6845c04cded')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
