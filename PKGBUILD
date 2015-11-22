@@ -1,4 +1,4 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Louis Jencka <louis@cs.nmt.edu>
 pkgbase=uzbl-next-git
 pkgrel=1
 pkgname=("uzbl-core-next-git" "uzbl-browser-next-git" "uzbl-tabbed-next-git")
