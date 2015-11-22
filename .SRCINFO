@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosnode
 	pkgdesc = ROS - rosnode is a command-line tool for displaying debug information about ROS Nodes, including publications, subscriptions and connections.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://ros.org/wiki/rosnode
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ros-indigo-rosnode
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-rostopic
 	depends = ros-indigo-rosgraph
-	source = rosnode::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosnode/1.11.15-0
+	source = rosnode::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosnode/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosnode
