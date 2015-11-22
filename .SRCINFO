@@ -1,7 +1,7 @@
 pkgbase = nemo-seahorse-nonautilus
 	pkgdesc = An extension for Nemo which allows encryption and decryption of OpenPGP files using GnuPG. (without nautilus dependency)
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/nemo-extensions
 	install = nemo-seahorse-nonautilus.install
 	arch = i686
@@ -24,9 +24,9 @@ pkgbase = nemo-seahorse-nonautilus
 	options = !libtool
 	options = !emptydirs
 	source = nemo-seahorse-nonautilus.install
-	source = http://packages.linuxmint.com/pool/main/n/nemo-seahorse/nemo-seahorse_2.8.0%2brosa.tar.gz
+	source = http://packages.linuxmint.com/pool/main/n/nemo-seahorse/nemo-seahorse_2.8.0%2bbetsy.tar.gz
 	md5sums = bb1003e1d7217fd9b9610f8cdd5a07aa
-	md5sums = 0409e31b8f1c4c290791699290218462
+	md5sums = eaeb054acb8a8b70b809723a1a46056a
 
 pkgname = nemo-seahorse-nonautilus
 

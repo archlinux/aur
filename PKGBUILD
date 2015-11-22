@@ -1,11 +1,11 @@
 # Maintainer: Sebastian Lau <lauseb644@gmail.com>
 # Contributor: RubenKelevra <cyrond@gmail.com>
 
-_mintrel=rosa
+_mintrel=betsy
 _pkgname=nemo-seahorse
 pkgname="${_pkgname}-nonautilus"
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension for Nemo which allows encryption and decryption of OpenPGP files using GnuPG. (without nautilus dependency)"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
@@ -22,7 +22,7 @@ options=('!libtool' '!emptydirs')
 source=("${pkgname}.install"
 	"http://packages.linuxmint.com/pool/main/n/$_pkgname/${_pkgname}_${pkgver}%2b${_mintrel}.tar.gz")
 md5sums=('bb1003e1d7217fd9b9610f8cdd5a07aa'
-         '0409e31b8f1c4c290791699290218462')
+         'eaeb054acb8a8b70b809723a1a46056a')
 
 
 prepare() {
