@@ -31,8 +31,7 @@ depends=(wine)
 # Register lgogdownloader as a download agent
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
-# Must be a version > 2.24 after commit 5c9488f
-makedepends=(lgogdownloader-git)
+makedepends=("lgogdownloader>=2.25")
 
 build() {
   export WINEDEBUG=-all
