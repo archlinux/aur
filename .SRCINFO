@@ -1,6 +1,6 @@
 pkgbase = pt3_drv-dkms-git
 	pkgdesc = PT3 driver sources for DKMS
-	pkgver = r101.3e315b5
+	pkgver = r105.ecf4a6f
 	pkgrel = 1
 	url = https://github.com/m-tsudo/pt3
 	install = dkms.install

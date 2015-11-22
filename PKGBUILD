@@ -1,7 +1,7 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=pt3_drv-dkms-git
 _pkgname=pt3_drv
-pkgver=r101.3e315b5
+pkgver=r105.ecf4a6f
 pkgrel=1
 pkgdesc="PT3 driver sources for DKMS"
 arch=('i686' 'x86_64')
