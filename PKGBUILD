@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=172564'
 license=('GPL')
 depends=('vapoursynth-plugin-fmtconv'
-         'vapoursynth-plugin-zimg-git'
-         'vapoursynth-plugin-bm3d-git')
+         'vapoursynth-plugin-bm3d-git'
+         'zimg-git'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
