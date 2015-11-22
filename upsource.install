@@ -8,28 +8,27 @@ post_install() {
     echo "If you want to use a different Java, set it in /etc/conf.d/upsource"
     echo ""
     echo "To start your instance:"
-    echo "  systemctl start upsource"
+    echo "  # systemctl start upsource"
     echo 
     echo "After that you can access Upsource by opening http://localhost:8080/"
 }
 
 pre_upgrade() {
+    if ! find /opt/upsource/backups/ -mindepth 1 -type d -mtime 0 | egrep -q '.*' ; then 
+	echo "WARNING: No recent backup found in /opt/upsource/backups/"
+    fi
+
     echo "Shutting down Upsource for upgrade..."
     systemctl stop upsource
-    echo "Moving conf and data directories..."
-    mv /opt/upsource/conf /opt/upsource/conf.upgrade
-    mv /opt/upsource/data /opt/upsource/data.upgrade
 }
 
 post_upgrade() {
-    echo "Restoring conf and data directories..."
-    rm -rf /opt/upsource/conf
-    mv /opt/upsource/conf.upgrade /opt/upsource/conf
-    mv /opt/upsource/data.upgrade /opt/upsource/data
-    echo "Starting Upsource..."
-    systemctl start upsource
-    echo "Make sure /usr/lib/jvm/default-java symlinks to your prefered Java environment."
-    echo "If you want to use a different Java, set it in /etc/conf.d/upsource"
+    echo "Please have a look at /opt/upsource and copy"
+    echo "the old backup to the new location as mentioned in"
+    echo "https://www.jetbrains.com/upsource/help/2.5/upgrade.html"
+    echo
+    echo "After that, start Upsource with"
+    echo "  # systemctl start upsource"
 }
 
 post_remove() {
