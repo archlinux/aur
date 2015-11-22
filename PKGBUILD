@@ -7,16 +7,21 @@
 # Original PKGBUILD: Andre Naumann <anaumann@SPARCed.org>
 # See http://bbs.archlinux.org/viewtopic.php?t=9318&highlight=fpc
 
+# Build docs
+_docs=1
+
 pkgbase=fpc-svn
 pkgname=(fpc-svn fpc-src-svn)
-pkgver=3.1.1.r31028
+[[ $_docs = 1 ]] && pkgname+=(fpc-docs-svn)
+pkgver=3.1.1.r32385
 _pkgver=${pkgver/${pkgver:5}}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freepascal.org/"
 license=('GPL' 'LGPL' 'custom')
 depends=(ncurses zlib expat)
-makedepends=(fpc)
+makedepends=(fpc rsync)
+[[ $_docs = 1 ]] && makedepends+=(texlive-core texlive-htmlxml texlive-latexextra)
 source=(fpcbuild::svn+http://svn.freepascal.org/svn/fpcbuild/trunk)
 sha1sums=('SKIP')
 
@@ -24,7 +29,16 @@ pkgver() {
   cd "$srcdir/fpcbuild/fpcsrc"
   printf "%s.r%s" \
     $(grep -m1 version Makefile.fpc |sed 's/version=//') \
-    $(svnversion)
+    $(svnversion | tr -d [A-z])
+}
+
+prepare() {
+  cd "${srcdir}/fpcbuild"
+  rsync -aq --exclude='*/.svn*' fpcsrc ../fpcsrc
+
+  # For documentation building
+  ln -s fpcsrc/rtl
+  ln -s fpcsrc/packages
 }
 
 build() {
@@ -32,7 +46,10 @@ build() {
   pushd fpcsrc/compiler
   fpcmake -Tall
   popd
-  make ${MAKEFLAGS} build NOGDB=1 # OPT=" -CX -Xs -XX -dRelease"
+  make ${MAKEFLAGS} build NOGDB=1 OPT=" -CX -Xs -XX -dRelease"
+
+  cd fpcdocs
+  [[ $_docs=1 ]] && make ${MAKEFLAGS} html
 }
 
 package_fpc-svn() {
@@ -46,7 +63,7 @@ package_fpc-svn() {
 
   export HOME="$srcdir"
 
-  make -j1 PREFIX=${pkgdir}/usr install NOGDB=1 # OPT=" -Xs -XX -CX -dRelease"
+  make -j1 PREFIX=${pkgdir}/usr install NOGDB=1 OPT=" -Xs -XX -CX -dRelease"
 
   export PATH="$pkgdir/usr/bin:$PATH"
 
@@ -73,5 +90,12 @@ package_fpc-src-svn() {
   provides=(fpc-src)
 
   mkdir -p $pkgdir/usr/lib/fpc
-  cp -r $srcdir/../fpcbuild/fpcsrc $pkgdir/usr/lib/fpc/src
+  cp -r $srcdir/fpcsrc $pkgdir/usr/lib/fpc/src
+}
+
+package_fpc-docs-svn() {
+  pkgdesc="Documentation for the Free Pascal compiler"
+
+  cd "$srcdir/fpcbuild/fpcdocs"
+  make PREFIX="$pkgdir/usr" htmlinstall
 }
