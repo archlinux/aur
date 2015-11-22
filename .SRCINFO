@@ -1,13 +1,13 @@
 pkgbase = jgnash
 	pkgdesc = Cross platform personal finance application written in Java
-	pkgver = 2.19.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/jgnash/
 	arch = any
 	license = GPL3
 	depends = java-runtime
-	source = http://sourceforge.net/projects/jgnash/files/Active%20Stable%202.x/jgnash-2.19.0-bin.zip
-	sha256sums = abe1dd287e1e73863813a00154dddfc3d62e9d978312b1e91493a7908deaeeca
+	source = http://sourceforge.net/projects/jgnash/files/Active%20Stable%202.x/jgnash-2.20.0-bin.zip
+	sha256sums = 20485006db1b15ce9ca192ab718f4399ec4dfbbc1f064b064dcd5aaff41c8e95
 
 pkgname = jgnash
 
