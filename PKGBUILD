@@ -11,8 +11,15 @@ depends=('gsm' 'lame' 'opencore-amr' 'openjpeg' 'opus' 'rtmpdump' 'libvpx'
          'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'libpulse'  'libx264'
          'libtheora' 'libbluray' 'libmodplug' 'sdl' 'jack' 'libavutil-52')
 makedepends=('yasm' 'libass')
-source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2")
-sha256sums=('0302375c3a64e9c2facfa7cbeb1aa333a39fdf6bbacda228cd48e04bf9ee32ca')
+source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"
+        "libvpx_VP8E_UPD_ENTROPY.patch"::"https://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=6540fe04a3f9a11ba7084a49b3ee5fa2fc5b32ab")
+sha256sums=('0302375c3a64e9c2facfa7cbeb1aa333a39fdf6bbacda228cd48e04bf9ee32ca'
+            'c31179fe8676a6e006fa037bd58ed218890edcf8be2e32505d1675625027d6ed')
+
+prepare() {
+  cd "ffmpeg-${pkgver}"
+  patch -p1 -i "../libvpx_VP8E_UPD_ENTROPY.patch"
+}
 
 build() {
   cd "ffmpeg-${pkgver}"
