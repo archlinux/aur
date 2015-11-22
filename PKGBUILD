@@ -2,8 +2,8 @@
 # Contributor: PyroPeter < googlemail.com @ abi1789 >
 
 pkgname=hplip-plugin
-pkgver=3.15.9
-pkgrel=2
+pkgver=3.15.11
+pkgrel=1
 pkgdesc="Binary plugin for HPs hplip printer driver library"
 arch=('i686' 'x86_64')
 url="http://hplipopensource.com/node/309"
