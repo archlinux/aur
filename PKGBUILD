@@ -11,6 +11,7 @@ arch=('x86_64')
 url="http://www.crark.net/"
 license="freeware-proprietary"
 depends=('unrar')
+depends=('libcl')
 makedepends=('unrar')
 provides=('crark')
 conflics=('crark')
