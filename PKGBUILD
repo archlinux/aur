@@ -33,19 +33,21 @@ if [ -z "$pikey" ]; then
   msg2 "pikey: $pikey"
 fi
 
-source=("netfabb-basic_${pkgver}_linux${nARCH}.tar.gz::http://www.netfabb.com/download.php?pikey=${pikey}")
+source=("netfabb-basic_${pkgver}_linux${nARCH}.tar.gz::http://www.netfabb.com/download.php?pikey=${pikey}" "icons.tar.gz" "netfabb-basic.desktop")
+md5sums+=('a6d3336b9dc60f30f94c9415d578dd7a' '2ab8714cd64e4aaa49457b5bb553f420')
 
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  sed -i -E "/(echo)/!s#/usr#$pkgdir/usr#" install.sh
-  sed -i "/echo/ s#>/usr/bin/netfabb-basic#>$pkgdir/usr/bin/netfabb-basic#" install.sh
-  sed -i '/uninstall/d' install.sh
-}
 
 package () {
-  cd "$srcdir/$pkgname"
-  ./install.sh
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  cp "$pkgdir/usr/share/doc/$pkgname/copyright" "$pkgdir/usr/share/licenses/$pkgname/"
+  cd "$srcdir"
+#  install -d "$pkgdir/usr/share/licenses/$pkgname"
+#  cp "$pkgdir/usr/share/doc/$pkgname/copyright" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -d "$pkgdir/usr/bin/"
+  install -m 755 ./netfabb_free "$pkgdir/usr/bin/netfabb-basic"
+  install -d "$pkgdir/usr/lib/"
+  install -m 755 ./*.so.* "$pkgdir/usr/lib/"
+  install -d "$pkgdir/usr/share/applications"
+  install -m 644 ./*.desktop "$pkgdir/usr/share/applications/"
+
+  # Install icons
+  cp -R ${srcdir}/icons ${pkgdir}/usr/share/
 }
