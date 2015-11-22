@@ -1,0 +1,21 @@
+pkgbase = bulk_extractor
+	pkgdesc = A computer forensics tool that scans a disk image, a file, or a directory of files and extracts useful information
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = http://www.forensicswiki.org/wiki/Bulk_extractor
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = hashdb
+	depends = libewf
+	depends = sqlite
+	depends = java-environment
+	depends = openssl
+	depends = gcc-libs
+	depends = expat
+	depends = bash
+	source = http://digitalcorpora.org/downloads/bulk_extractor/bulk_extractor-1.5.5.tar.gz
+	sha256sums = 297a57808c12b81b8e0d82222cf57245ad988804ab467eb0a70cf8669594e8ed
+
+pkgname = bulk_extractor
+
