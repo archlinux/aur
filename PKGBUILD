@@ -2,7 +2,7 @@
 
 pkgname=4kyoutubetomp3
 pkgver=2.10.9.1525
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract audio from YouTube, Vimeo, Facebook and other online video hosting services."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-youtubetomp3"
@@ -14,8 +14,8 @@ source_i686=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_i386
 source_x86_64=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_amd64.tar.bz2")
 sha256sums=('386dfa4085efcd9403c4387c7be4dd0f9762c726555b5ebd0126dcd225bcf828'
             'b25f830bb1fe559ea9f0b35cc9eb8ab75e2e40d09b8755f937451f5ddeeec2fd')
-sha256sums_i686=('f1d130bfb45f9ad5a7ffd8bd8fdbcb4e749cbb2d3080a41428b0da4274838d0c')
-sha256sums_x86_64=('42a42a5081edc373e00cb18384a0f444d3d3e3f2eff3fc021c79d04778e4fdcb')
+sha256sums_i686=('7d97634ad047f5df6f86762d9df6dde3d70e0dbe795f903a48db0dc4e975365d')
+sha256sums_x86_64=('561a7f81a0199143d39cdf313c312be0e0190ad2116d9695b86414eab19fbb7f')
 
 package() {
   # Install desktop file
