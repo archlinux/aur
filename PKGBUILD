@@ -61,7 +61,8 @@ package() {
 
   # Install game
   install -m755 -d "${pkgdir}"/opt/gog/
-  cp -r "${srcdir}/tmp/env/drive_c/GOG Games/Heroes of Might and Magic 3 Complete" ${pkgdir}/opt/gog/${pkgname#gog-}
+  # mv instead of cp to save disk space
+  mv "${srcdir}/tmp/env/drive_c/GOG Games/Heroes of Might and Magic 3 Complete" ${pkgdir}/opt/gog/${pkgname#gog-}
   # Remove unneeded files
   rm -rf ${pkgdir}/opt/gog/${pkgname#gog-}/unins*
   rm -rf ${pkgdir}/opt/gog/${pkgname#gog-}/*.lnk
