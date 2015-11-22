@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-hector-gazebo-plugins
 	pkgdesc = ROS - hector_gazebo_plugins provides gazebo plugins from Team Hector.
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = http://ros.org/wiki/hector_gazebo_plugins
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = ros-indigo-hector-gazebo-plugins
 	depends = ros-indigo-std-srvs
 	depends = ros-indigo-tf
 	depends = ros-indigo-nav-msgs
-	source = hector_gazebo_plugins::git+https://github.com/tu-darmstadt-ros-pkg-gbp/hector_gazebo-release.git#tag=release/indigo/hector_gazebo_plugins/0.3.6-0
+	source = hector_gazebo_plugins::git+https://github.com/tu-darmstadt-ros-pkg-gbp/hector_gazebo-release.git#tag=release/indigo/hector_gazebo_plugins/0.3.7-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-hector-gazebo-plugins

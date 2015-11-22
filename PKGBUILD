@@ -4,7 +4,7 @@ pkgdesc="ROS - hector_gazebo_plugins provides gazebo plugins from Team Hector."
 url='http://ros.org/wiki/hector_gazebo_plugins'
 
 pkgname='ros-indigo-hector-gazebo-plugins'
-pkgver='0.3.6'
+pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -54,7 +54,6 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo \
-	-DCMAKE_CXX_FLAGS=-std=c++11\
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
