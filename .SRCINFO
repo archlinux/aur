@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-roswtf
 	pkgdesc = ROS - roswtf is a tool for diagnosing issues with a running ROS system.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://ros.org/wiki/roswtf
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = ros-indigo-roswtf
 	depends = ros-indigo-rosnode
 	depends = python2-rospkg
 	depends = python2-paramiko
-	source = roswtf::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/roswtf/1.11.15-0
+	source = roswtf::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/roswtf/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-roswtf
