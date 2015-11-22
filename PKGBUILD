@@ -4,11 +4,11 @@
 
 _pkgname=xorg-server
 pkgname=xorg-server-hwcursor-gamma
-pkgver=1.17.4
-pkgrel=1 # 2 in xorg-server
+pkgver=1.18.0
+pkgrel=2 # 3 in xorg-server
 pkgdesc="Xorg X server with patch to apply gamma ramps on hardware cursors"
-depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common xf86-input-evdev libxshmfence libgl)
-provides=("xorg-server=${pkgver}" 'X-ABI-VIDEODRV_VERSION=19' 'X-ABI-XINPUT_VERSION=21.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server')
+depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common libxshmfence libgl xf86-input-evdev)
+provides=("xorg-server=${pkgver}" 'X-ABI-VIDEODRV_VERSION=20' 'X-ABI-XINPUT_VERSION=22.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server')
 conflicts=('xorg-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
 replaces=('glamor-egl' 'xf86-video-modesetting')
 arch=('i686' 'x86_64')
@@ -22,20 +22,16 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
 	     'libxshmfence' 'libunwind')
 source=(${url}/releases/individual/xserver/${_pkgname}-${pkgver}.tar.bz2
-	nvidia-drm-outputclass.conf
         xvfb-run
         xvfb-run.1
-        0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
-        0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
+	v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch
 	0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
 	0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
 	0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch)
-sha256sums=('0c4b45c116a812a996eb432d8508cf26c2ec8c3916ff2a50781796882f8d6457'
-            'af1c3d2ea5de7f6a6b5f7c60951a189a4749d1495e5462f3157ae7ac8fe1dc56'
+sha256sums=('195670819695d9cedd8dde95fbe069be0d0f488a77797a2d409f9f702daf312e'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            '3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7'
-            '416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96'
+	    'c8addd0dc6d91797e82c51b539317efa271cd7997609e026c7c8e3884c5f601c'
 	    'bea348631dedd66475d84ac2cfe0840f22a80a642b4680d73fead4749e47f055'
 	    'be9169b937b5d0b44f7f05d7c08aaa5f0c1092e128ce261d9cb350f09dfe1fb0'
 	    '0a643ae83e03faee0f4db669a33c5b3c99edbba5c86cde2c83962ae536d31081')
@@ -43,15 +39,14 @@ sha256sums=('0c4b45c116a812a996eb432d8508cf26c2ec8c3916ff2a50781796882f8d6457'
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  msg2 'Apply hardware cursors gamma adjustments patchs'
+  msg2 'Apply hardware cursors gamma adjustments patches'
   patch -Np1 -i ../0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
   patch -Np1 -i ../0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
   patch -Np1 -i ../0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch
 
-  msg2 'Fix FS#45229, merged upstream'
-  patch -Np1 -i ../0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
-  patch -Np1 -i ../0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
-  
+  msg2 'Fix xorg only working with root FS#47061'
+  patch -Np1 -i ../v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch
+
   autoreconf -fvi
 }
 
@@ -70,9 +65,7 @@ build() {
       --enable-xephyr \
       --enable-glamor \
       --enable-xwayland \
-      --enable-glx-tls \
       --enable-kdrive \
-      --enable-kdrive-evdev \
       --enable-kdrive-kbd \
       --enable-kdrive-mouse \
       --enable-config-udev \
@@ -112,7 +105,6 @@ package() {
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
-  install -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/"
 
   # Needed for non-mesa drivers, libgl will restore it
   mv "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so" \
@@ -129,6 +121,5 @@ package() {
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
   rm -rf "${pkgdir}/usr/include"
   rm -rf "${pkgdir}/usr/share/aclocal"
-  # this is now part of xorg-input-evdev
-  rm -rf "${pkgdir}/usr/share/X11/xorg.conf.d/10-evdev.conf"
 }
+
