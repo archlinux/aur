@@ -6,7 +6,7 @@ _name=at-home-modifier
 pkgname=xf86-input-evdev-ahm
 _pkgname_orig=xf86-input-evdev
 pkgver=2.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='X.org evdev input driver + at-home-modifier patch'
 arch=(i686 x86_64)
 url='https://gitlab.com/at-home-modifier/at-home-modifier-evdev/wikis/home'
@@ -14,8 +14,8 @@ _url_orig='http://xorg.freedesktop.org/'
 license=('custom')
 depends=('glibc' 'systemd' 'mtdev' 'libevdev')
 makedepends=('xorg-server-devel' 'resourceproto' 'scrnsaverproto')
-conflicts=('xorg-server<1.16.0' 'X-ABI-XINPUT_VERSION<21' 'X-ABI-XINPUT_VERSION>=22' 'xf86-input-evdev')
-provides=('xf86-input-evdev=2.10.0-1')
+provides=('xf86-input-driver' 'xf86-input-evdev=2.10.0-2')
+conflicts=('xorg-server<1.18.0' 'X-ABI-XINPUT_VERSION<22' 'X-ABI-XINPUT_VERSION>=23' 'xf86-input-evdev')
 options=('!makeflags')
 groups=('xorg-drivers' 'xorg')
 source=(${_url_orig}/releases/individual/driver/${_pkgname_orig}-${pkgver}.tar.bz2{,.sig}
