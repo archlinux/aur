@@ -4,10 +4,10 @@
 
 #pkgbase=linux           # Build stock -ARCH kernel
 pkgbase=linux-bld       # Build kernel with a different name
-_srcname=linux-4.2
+_srcname=linux-4.3
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.2.6
+pkgver=4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -15,8 +15,8 @@ license=('GPL2')
 makedepends=( 'kmod' 'inetutils' 'bc')
 options=('!strip')
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.2.0-v7r9"
-_BLDpatch="BLD-4.2.patch"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.3.0-v7r8"
+_BLDpatch="BLD-4.3.patch"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -27,25 +27,25 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r9-4.2.patch"
-	"${_bfqpath}/0002-block-introduce-the-BFQ-v7r9-I-O-sched-for-4.2.patch"
-	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r9-for-4.2.0.patch"
+	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.3.patch"
+	"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.3.patch"
+	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.3.0.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 
-sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            '419f91fa4a6bb0d2c160ef6812341e5aac7e776550efe1d0958ae3b1ce0ea8ce'
+            '605d6b6fbf20baf320c652653044b8331ea71829b8894934245ce658ba329305'
             'SKIP'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            '6921399a0e304f6c64cff17226ce3f20ebe8194f14ebcd318989f2515d8248ad'
-            'c3be602e0ce609b5fe5af2e631b01c8fba376a0c434206deca3d101b62685262'
+            '596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16'
+            '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7379bb700a121c8790c1690646b1a8dfdf0199254a4bc660e76c0bf90a7828a5'
-            '743ecc34ab048581e9998c53b1eb81c1c31d3ac9ee72d04e1e00b2bafeedbddc'
-            '8d9cc296721fc4d6273ee9c7609b7d815e4061c360231eb68d060b4b7e7b7f81'
-            '40c76861b95b8fc69daf48d69dbd5abb8c0be23c9c2ac1e208c4303e6f03f016')
+            'ebeb62206999b2749ac43bb287a6a2a5db4f6b1b688a90cefa1ceb5db94aa490'
+            '91b7cb42b8337b768e5329da205a6b61211628ec99b1e308e0e9d5283b2c86eb'
+            '77430c7154670dd288b6d5bd45896222bf955f02029ee5d0cfe97cc5d9bc1a9d'
+            '5abf7ed1ff7001926efdec319286bd0876c3f29e9e9cb75532a6865898dd5e38')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
