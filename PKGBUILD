@@ -3,7 +3,7 @@
 pkgname=textdataparser-git
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Trace the activities of an external application"
+pkgdesc="Graphic interface to view text data files with definitions"
 url="http://www.muflone.com/textdataparser/"
 arch=('any')
 license=('GPL2')
