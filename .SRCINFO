@@ -1,6 +1,6 @@
 pkgbase = upplay
 	pkgdesc = A Qt-based UPnP audio Control point
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://www.lesbonscomptes.com/upplay/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = upplay
 	makedepends = qtchooser
 	depends = libupnpp>=0.12.1
 	depends = qtwebkit
-	source = http://www.lesbonscomptes.com/upplay/downloads/upplay-1.0.0.tar.gz
+	source = http://www.lesbonscomptes.com/upplay/downloads/upplay-1.1.0.tar.gz
 	md5sums = 5d52fc1de4a0d764b37b23d9ac139508
 
 pkgname = upplay

@@ -1,6 +1,6 @@
 # Maintainer: Tristelune  <tristelune at archlinux dot info>
 pkgname=upplay
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Qt-based UPnP audio Control point"
 url="http://www.lesbonscomptes.com/upplay/"
