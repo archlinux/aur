@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sopel
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
