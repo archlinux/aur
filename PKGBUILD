@@ -48,7 +48,8 @@ package_uzbl-browser-next-git() {
   depends=("uzbl-core-next-git=$pkgver"
            "desktop-file-utils"
            "python"
-           "python2")
+           "python2"
+           "python-six")
   provides=("uzbl-browser")
   conflicts=("uzbl-browser")
   install -d $pkgdir/usr/share/appdata
