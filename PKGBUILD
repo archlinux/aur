@@ -13,13 +13,13 @@ depends=('kdebase-runtime' 'xine-lib')
 makedepends=('cmake' 'automoc4')
 conflicts=('kaffeine' 'kaffeine-git')
 install=kaffeine.install
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
+source=(http://downloads.sourceforge.net/kaffeine/kaffeine-${pkgver}.tar.gz
         kaffeine-1.2.2-gcc4.7.patch)
 md5sums=('690e48d2e5fe123887109aa9b1bc1c31'
          '48afe5ec99b38fe02782db57a847033f')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd kaffeine-${pkgver}
   patch -p1 -i "${srcdir}/kaffeine-1.2.2-gcc4.7.patch"
   sed -i -e '2aINCLUDE(CheckIncludeFiles)' CMakeLists.txt
 }
@@ -27,7 +27,7 @@ prepare() {
 build() {
   mkdir -p build
   cd build
-  cmake ../${pkgname}-${pkgver} \
+  cmake ../kaffeine-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_INSTALL_PREFIX=/usr
