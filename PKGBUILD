@@ -18,7 +18,7 @@ makedepends=('pkgconfig' 'intltool')
 optdepends=('librsvg: For SVG support')
 provides=('gpicview')
 conflicts=('gpicview')
-source=("$_pkgname::git+file:///home/proudzhu/workspace/gpicview")
+source=("$_pkgname::git+http://git.lxde.org/git/lxde/gpicview.git")
 md5sums=('SKIP')
 
 pkgver() {
