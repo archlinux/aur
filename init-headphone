@@ -1,19 +1,30 @@
 #!/usr/bin/env python
 
-from __future__ import (print_function, unicode_literals)
-import subprocess
-import os
-import sys
-import ctypes
-import locale
-import functools
-import logging
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Copyright 2015 Unrud <unrud@openaliasbox.org>
+
 import argparse
+import ctypes
+import logging
+import os
+import subprocess
 import traceback
 
 __all__ = ["init", "set_mute", "set_effect", "recovery"]
 
-VERSION = "0.8"
+VERSION = "0.10"
 SUPPORTED_BASEBOARD_PRODUCT_NAMES = [
 #   x is used as wildcard
     "N1xxSD", "P37xSM-A", "P65xSE", "P770ZM", "W130SV", "W230SD", "W230SS",
@@ -23,14 +34,13 @@ SUPPORTED_BASEBOARD_PRODUCT_NAMES = [
     "W970TUQ", "W9xxAUx", "W9xxKL", "W9xxKU", "W9xxSU1", "W9xxSU2", "WA50SBQ",
     "WA50SFQ", "WA50SJQ"
 ]
-SUPPORTED_I2C_BUS_NAMES = ["SMBus I801 adapter at f040"]
+SUPPORTED_I2C_BUS_NAMES = ["SMBus I801 adapter"]
 I2C_CLASS_PATH = "/sys/class/i2c-dev"
 DEV_PATH = "/dev"
 CMDLINE_PATH = "/proc/cmdline"
 KERNEL_PARAMETER = "acpi_enforce_resources=lax"
 MODULES_PATH = "/proc/modules"
 REQUIRED_MODULES = ["i2c_dev", "i2c_i801"]
-DMIDECODE_EXECUTABLE = "dmidecode"
 DEVICE_ADDRESS = 0x73
 DATA_DISABLE_OUTPUT = [
 #    CMD   Value
@@ -90,7 +100,7 @@ class SMBus(object):
         try:
             self.__fd = os.open(path, os.O_RDWR)
         except Exception as e:
-            self.__logger.error("Can't open file (%s)" % path)
+            self.__logger.error("Can't open file: %s" % path)
             raise e
         self.__libc = ctypes.cdll.LoadLibrary("libc.so.6")
         self.__address = None
@@ -101,7 +111,7 @@ class SMBus(object):
 
     @address.setter
     def address(self, address):
-        self.__logger.info("Setting I2C slave address to %d" % address)
+        self.__logger.info("Setting I2C slave address: %d" % address)
         if self.__address != address:
             err = self.__libc.ioctl(self.__fd, I2C_SLAVE, address)
             if err != 0:
@@ -124,7 +134,7 @@ class SMBus(object):
             raise RuntimeError("Can't transfer data on I2C bus")
 
     def write_byte_data(self, device_cmd, value):
-        self.__logger.info("Writing byte data on I2C bus (device_cmd: 0x%x, value: 0x%x)" % (device_cmd, value))
+        self.__logger.info("Writing byte data on I2C bus: (device_cmd: 0x%x, value: 0x%x)" % (device_cmd, value))
         data = i2c_smbus_data()
         data.byte = value
         self.__access(I2C_SMBUS_WRITE, device_cmd, I2C_SMBUS_BYTE_DATA, data)
@@ -133,47 +143,12 @@ class SMBus(object):
         data = i2c_smbus_data()
         self.__access(I2C_SMBUS_READ, device_cmd, I2C_SMBUS_BYTE_DATA, data)
         result = data.byte & 0xff
-        self.__logger.info("Read byte data on I2C bus (device_cmd: 0x%x, value: 0x%x)" % (device_cmd, result))
+        self.__logger.info("Read byte data on I2C bus: (device_cmd: 0x%x, value: 0x%x)" % (device_cmd, result))
         return result
 
     def close(self):
         self.__logger.info("Closing I2C bus")
         os.close(self.__fd)
-
-
-def get_baseboard_product_name():
-    try:
-        name = subprocess.check_output([DMIDECODE_EXECUTABLE, "-s",
-                                       "baseboard-product-name"])
-        return name.strip().decode(locale.getpreferredencoding())
-    except subprocess.CalledProcessError as e:
-        logging.error("dmidecode returned non-zero exit status")
-        raise e
-    except Exception as e:
-        logging.error("dmidecode not found")
-        raise e
-
-
-def check_baseboard_product_name():
-    def compare_with_wildcards(supported_name, name):
-        if len(supported_name) != len(name):
-            return False
-        for i in range(len(supported_name)):
-            if supported_name[i] == "x":
-                continue
-            if supported_name[i] != name[i]:
-                return False
-        return True
-
-    name = get_baseboard_product_name()
-    found = False
-    for supported_name in SUPPORTED_BASEBOARD_PRODUCT_NAMES:
-        if compare_with_wildcards(supported_name, name):
-            found = True
-            break
-    if not found:
-        logging.error("Unsupported system (%s)" % name)
-        raise RuntimeError("Unsupported system")
 
 
 def check_root():
@@ -185,24 +160,24 @@ def check_cmdline():
     try:
         cmdline_file = open(CMDLINE_PATH, "r")
     except:
-        logging.warning("Can't open file (%s)" % CMDLINE_PATH)
+        logging.warning("Can't open file: %s" % CMDLINE_PATH)
         return
     cmdline_parameters = cmdline_file.read().split()
     cmdline_file.close()
     if KERNEL_PARAMETER not in cmdline_parameters:
-        logging.warning("Kernel parameter is missing (%s)" % KERNEL_PARAMETER)
+        logging.warning("Kernel parameter is missing: %s" % KERNEL_PARAMETER)
 
 
 def check_modules():
     try:
         modules_file = open(MODULES_PATH, "r")
     except:
-        logging.warning("Can't open file (%s)")
+        logging.warning("Can't open file: %s")
         return
     loaded_modules = [line.split()[0] for line in modules_file.readlines()]
     for required_module in REQUIRED_MODULES:
         if required_module not in loaded_modules:
-            logging.warning("Module is not loaded (%s)" % required_module)
+            logging.warning("Module is not loaded: %s" % required_module)
 
 
 def get_i2c_busses():
@@ -210,7 +185,7 @@ def get_i2c_busses():
     try:
         i2c_directories = os.listdir(I2C_CLASS_PATH)
     except Exception as e:
-        logging.error("Can't list directory (%s)" % I2C_CLASS_PATH)
+        logging.error("Can't list directory: %s" % I2C_CLASS_PATH)
         raise e
     for i2c_dev in i2c_directories:
         path = os.path.join(I2C_CLASS_PATH, i2c_dev, "name")
@@ -218,28 +193,31 @@ def get_i2c_busses():
             with open(path) as name_file:
                 i2c_dev_name = name_file.read().strip()
         except Exception as e:
-            logging.warning("Can't open file (%s)" % path)
+            logging.warning("Can't open file: %s" % path)
             continue
         busses.append((i2c_dev_name, i2c_dev))
     return busses
 
 
-def do_checks_and_get_i2c_bus(skip_model_check=False):
+def do_checks_and_get_i2c_bus():
     check_root()
-    if skip_model_check:
-        logging.warning("Skipping model check")
-    else:
-        check_baseboard_product_name()
     check_cmdline()
     check_modules()
     i2c_busses = get_i2c_busses()
     selected_i2c_dev = None
+    selected_i2c_bus_name = None
+    logging.debug("Available i2c busses: %s" % list(map(lambda a: a[0],
+                                                        i2c_busses)))
+    logging.debug("Supported i2c bus names: %s" % SUPPORTED_I2C_BUS_NAMES)
     for i2c_bus_name, i2c_dev in i2c_busses:
-        if i2c_bus_name in SUPPORTED_I2C_BUS_NAMES:
-            selected_i2c_dev = i2c_dev
+        for supported_name in SUPPORTED_I2C_BUS_NAMES:
+            if supported_name in i2c_bus_name:
+                selected_i2c_dev = i2c_dev
+                selected_i2c_bus_name = i2c_bus_name
     if selected_i2c_dev is None:
         logging.error("Can't find i2c bus")
         raise RuntimeError("Can't find i2c bus")
+    logging.debug("Selected i2c bus: %s" % selected_i2c_bus_name)
     i2c_dev_path = os.path.join(DEV_PATH, selected_i2c_dev)
     i2c_bus = SMBus(i2c_dev_path)
     return i2c_bus
@@ -252,8 +230,8 @@ def prolog(i2c_bus):
         i2c_bus.write_byte_data(device_cmd, value)
 
 
-def write_data_to_device(data, skip_model_check=False):
-    i2c_bus = do_checks_and_get_i2c_bus(skip_model_check)
+def write_data_to_device(data):
+    i2c_bus = do_checks_and_get_i2c_bus()
     try:
         i2c_bus.address = DEVICE_ADDRESS
         prolog(i2c_bus)
@@ -263,29 +241,28 @@ def write_data_to_device(data, skip_model_check=False):
         i2c_bus.close()
 
 
-def init(skip_model_check=False):
-    set_effect(DEFAULT_EFFECT, skip_model_check)
+def init():
+    set_effect(DEFAULT_EFFECT)
 
 
-def set_mute(b, skip_model_check=False):
+def set_mute(b):
     if b:
-        write_data_to_device(DATA_DISABLE_OUTPUT, skip_model_check)
+        write_data_to_device(DATA_DISABLE_OUTPUT)
     else:
-        write_data_to_device(DATA_ENABLE_OUTPUT, skip_model_check)
+        write_data_to_device(DATA_ENABLE_OUTPUT)
 
 
-def set_effect(i, skip_model_check=False):
+def set_effect(i):
     if i < 0 or i >= len(DATA_EFFECTS):
         logging.error("Invalid effect")
         raise ValueError("Invalid effect")
     write_data_to_device(DATA_DISABLE_OUTPUT +
                          DATA_EFFECTS[i] +
-                         DATA_ENABLE_OUTPUT,
-                         skip_model_check)
+                         DATA_ENABLE_OUTPUT)
 
 
-def recovery(skip_model_check=False):
-    write_data_to_device(DATA_RECOVERY, skip_model_check)
+def recovery():
+    write_data_to_device(DATA_RECOVERY)
 
 
 def parse_args():
@@ -319,13 +296,13 @@ def parse_args():
     epilog += "  %s\n" % line
     parser = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        description='Manage the headphone amplifier found in some Clevo laptops\n'
-                    '(see the list of supported models below)\n\n'
-                    'version: %s' % VERSION, epilog=epilog)
+        description="Manage the headphone amplifier found in some Clevo laptops\n"
+                    "(see the list of supported models below)", epilog=epilog)
+    parser.add_argument("--version", action="version", version="%(prog)s " + VERSION)
     parser.add_argument("-v", "--verbose", help="increase output verbosity",
                         action="store_true")
-    parser.add_argument("-f", "--force", help="skip model check",
-                        action="store_true")
+    parser.add_argument("-f", "--force", action="store_true",
+                        help="for compatibility with previous versions")
     parser.add_argument("command", nargs="?", choices=commands, metavar="command",
                         default="init",
                         help="see the list of available commands below, "
@@ -338,20 +315,21 @@ def main():
     args = parse_args()
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
-    logging.info("version %s" % VERSION)
+    logging.info("Version: %s" % VERSION)
+    if args.force:
+        logging.warning("The -f, --force argument is deprecated")
     command = args.command
-    skip_model_check = args.force
     if command == "init":
-        init(skip_model_check)
+        init()
     elif command.startswith("effect"):
         i = int(command[len("effect"):])
-        set_effect(i, skip_model_check)
+        set_effect(i)
     elif command == "mute":
-        set_mute(True, skip_model_check)
+        set_mute(True)
     elif command == "unmute":
-        set_mute(False, skip_model_check)
+        set_mute(False)
     elif command == "recovery":
-        recovery(skip_model_check)
+        recovery()
 
 
 if __name__ == "__main__":
