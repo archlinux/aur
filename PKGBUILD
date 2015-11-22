@@ -6,6 +6,8 @@ pkgdesc="FFmpeg-based thumbnail creator for video files"
 arch=('i686' 'x86_64')
 url="https://projects.kde.org/projects/kde/kdemultimedia/ffmpegthumbs"
 depends=('ffmpeg' 'kio')
+conflicts=('ffmpegthumbs')
+provides=('ffmpegthumbs')
 makedepends=('extra-cmake-modules' 'git')
 source=("git://anongit.kde.org/ffmpegthumbs#branch=frameworks")
 license=('GPL')
@@ -33,6 +35,6 @@ build() {
 
 package() {
   cd ${srcdir}/build
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 }
 

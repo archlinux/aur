@@ -10,6 +10,8 @@ pkgbase = ffmpegthumbs-git
 	makedepends = git
 	depends = ffmpeg
 	depends = kio
+	provides = ffmpegthumbs
+	conflicts = ffmpegthumbs
 	source = git://anongit.kde.org/ffmpegthumbs#branch=frameworks
 	md5sums = SKIP
 
