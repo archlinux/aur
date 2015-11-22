@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosbag-storage
 	pkgdesc = ROS - This is a set of tools for recording from and playing back ROS message without relying on the ROS client library.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = ros-indigo-rosbag-storage
 	depends = bzip2
 	depends = boost
 	depends = console-bridge
-	source = rosbag_storage::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosbag_storage/1.11.15-0
+	source = rosbag_storage::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosbag_storage/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosbag-storage
