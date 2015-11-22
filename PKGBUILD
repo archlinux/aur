@@ -3,9 +3,9 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
  
 pkgname=nvidia-bfq
-pkgver=355.11
+pkgver=358.16
 _extramodules=extramodules-4.3-bfq
-pkgrel=6
+pkgrel=1
 _pkgdesc="NVIDIA drivers for linux-bfq."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -16,12 +16,10 @@ conflicts=('nvidia-bfq-304xx' 'nvidia-bfq-340xx')
 license=('custom')
 install=nvidia-bfq.install
 options=(!strip)
-source=('nvidia-4.3-build.patch')
-source_i686="ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
-source_x86_64="ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-md5sums=('1e5f60cf8e77af482345549b9436887a')
-md5sums_i686='16d143ccafe99328a2ca8e5a396fd4bc'
-md5sums_x86_64='30133d89690f4683c4e289ec6c0247dc'
+source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
+source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+md5sums_i686=('5dfe11ca13548ca4813b10f3223d6014')
+md5sums_x86_64=('efb1e649c0e0d62e92774bbf2c124488')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -30,7 +28,6 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     # patches here
-    patch -Np1 -i ${srcdir}/nvidia-4.3-build.patch
    
 }
 
@@ -43,6 +40,8 @@ build() {
 package() {
 	install -Dm644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
 		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
+        install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
+                "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-modeset.ko"	
 
 	if [[ "$CARCH" = "x86_64" ]]; then
 		install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
