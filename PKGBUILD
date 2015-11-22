@@ -33,7 +33,6 @@ sha1sums=('765de53aa344a801c3d376cf1e050650cec58039'
 validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
 
 build() {
-	current_arch="`uname -m`"
 	bash_completion_dir="`pkg-config --variable=completionsdir bash-completion`"
 	cd ${srcdir}/${pkgname}-${pkgver}
 	./configure --prefix=/usr --sbindir=/usr/bin --localstatedir=/var \
