@@ -1,0 +1,10 @@
+[Unit]
+Description=High performance RTMP streaming server
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/crtmpserver --uid=root /etc/crtmpserver/crtmpserver.lua
+
+[Install]
+WantedBy=multi-user.target

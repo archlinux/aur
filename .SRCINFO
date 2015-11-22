@@ -1,0 +1,19 @@
+pkgbase = crtmpserver-git
+	pkgdesc = High performance rtmp streaming server
+	pkgver = b6fdcdb
+	pkgrel = 1
+	url = http://www.rtmpd.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = openssl
+	provides = crtmpserver
+	conflicts = crtmpserver
+	conflicts = crtmpserver-svn
+	source = git://github.com/j0sh/crtmpserver
+	md5sums = SKIP
+
+pkgname = crtmpserver-git
+
