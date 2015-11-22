@@ -1,0 +1,14 @@
+pkgbase = nodejs-superstatic
+	pkgdesc = A static file server for fancy apps
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/firebase/superstatic
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = superstatic
+	provides = nodejs-superstatic
+
+pkgname = nodejs-superstatic
+
