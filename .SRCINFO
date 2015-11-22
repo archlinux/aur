@@ -1,6 +1,6 @@
 pkgbase = gp2c
 	pkgdesc = Translates GP scripts to PARI programs
-	pkgver = 0.0.9pl3
+	pkgver = 0.0.9pl4
 	pkgrel = 1
 	url = http://pari.math.u-bordeaux.fr/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = gp2c
 	license = GPL
 	makedepends = perl
 	depends = pari
-	source = http://pari.math.u-bordeaux.fr/pub/pari/GP2C/gp2c-0.0.9pl3.tar.gz
-	md5sums = cb263990e399153aca6a2540930b4600
+	source = http://pari.math.u-bordeaux.fr/pub/pari/GP2C/gp2c-0.0.9pl4.tar.gz
+	sha1sums = 3cae0c1677517a1e38313cc154d4df6a4e1df879
 
 pkgname = gp2c
 
