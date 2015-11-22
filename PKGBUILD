@@ -1,7 +1,7 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net
 pkgname=xtrkcad
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ provides=('xtrkcad')
 backup=()
 _srcname="${pkgname}-source-${pkgver}"
 source=("http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%20${pkgver}/${_srcname}.tar.gz")
-sha256sums=('ac1a6a1cdffc799a7cfed1a12a320724e97081fcc8b8759f4e0b920f06cda668')
+sha256sums=('3b2c8f2e0a4a56edb151766cfc5634db23896ec7d7676cfc2c4e4e508df89d0c')
  
 build() {
   cd "${_srcname}"
