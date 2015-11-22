@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-xmlrpcpp
 	pkgdesc = ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://xmlrpcpp.sourceforge.net
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-xmlrpcpp
 	makedepends = ros-indigo-cpp-common
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-cpp-common
-	source = xmlrpcpp::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/xmlrpcpp/1.11.15-0
+	source = xmlrpcpp::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/xmlrpcpp/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-xmlrpcpp
