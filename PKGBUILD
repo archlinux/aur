@@ -11,7 +11,7 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
@@ -28,7 +28,7 @@ source=(synergy-${pkgver}.tar.gz::https://github.com/synergy/synergy/archive/v${
         synergys_at.service
         fix-incompetence.patch
         wrapper)
-sha512sums=('ad6139209a8635ed91e943e11a7709d96a037bdda45a949c9f63aa3e13211aecf02651794921d2dde30d9024930e256da7538f1cf104d300be1e6b7bc4732932'
+sha512sums=('f6124509944b8fd2feb048fae88c723f8c3f9ca4f7fa514bfd48ab0324810d7851d9e670c668a333d8b5df636732349c7a486fa329c333ee4569d6b9b43b6084'
             'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
             'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
             'd598f05614d0db894781e85ecab9a1196da3df6967e3bd44f5b8246c7cba76859734cf953edddf0addf6464f62f88b99da52fb5674e8db4a58bf971d078da83a'
