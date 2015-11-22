@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-amcl
 	pkgdesc = ROS - amcl is a probabilistic localization system for a robot moving in 2D.
-	pkgver = 1.12.4
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = http://wiki.ros.org/amcl
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ros-indigo-amcl
 	depends = ros-indigo-tf
 	depends = ros-indigo-roscpp
 	depends = ros-indigo-nav-msgs
-	source = amcl::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/amcl/1.12.4-0
+	source = amcl::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/amcl/1.12.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-amcl

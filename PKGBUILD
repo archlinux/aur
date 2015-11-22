@@ -4,7 +4,7 @@ pkgdesc="ROS -  amcl is a probabilistic localization system for a robot moving i
 url='http://wiki.ros.org/amcl'
 
 pkgname='ros-indigo-amcl'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
