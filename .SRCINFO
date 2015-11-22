@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-topic-tools
 	pkgdesc = ROS - Tools for directing, throttling, selecting, and otherwise messing with ROS topics at a meta level.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://ros.org/wiki/topic_tools
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = ros-indigo-topic-tools
 	depends = ros-indigo-rostime
 	depends = ros-indigo-rosconsole
 	depends = ros-indigo-xmlrpcpp
-	source = topic_tools::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/topic_tools/1.11.15-0
+	source = topic_tools::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/topic_tools/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-topic-tools
