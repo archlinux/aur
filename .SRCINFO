@@ -23,7 +23,7 @@ pkgbase = vapoursynth-plugin-havsfunc
 	optdepends = vapoursynth-plugin-awarpsharp2-git: for YAHR function
 	optdepends = vapoursynth-plugin-dctfilter-git: for Deblock_QED function
 	optdepends = vapoursynth-plugin-deblock-git: for Deblock_QED function
-	optdepends = vapoursynth-plugin-sangnommod-git-git: for santiag function
+	optdepends = vapoursynth-plugin-sangnommod-git: for santiag function
 	source = https://dl.dropbox.com/u/6596386/vapoursynth-plugins/havsfunc-r20.7z
 	sha1sums = db82d7a159ba128219ab796193ca3c8c14daba76
 

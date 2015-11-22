@@ -26,7 +26,7 @@ optdepends=('vapoursynth-plugin-genericfilters-git: for HQDering function'
             'vapoursynth-plugin-awarpsharp2-git: for YAHR function'
             'vapoursynth-plugin-dctfilter-git: for Deblock_QED function'
             'vapoursynth-plugin-deblock-git: for Deblock_QED function'
-            'vapoursynth-plugin-sangnommod-git-git: for santiag function'
+            'vapoursynth-plugin-sangnommod-git: for santiag function'
             )
 source=("https://dl.dropbox.com/u/6596386/vapoursynth-plugins/${_plug}-${pkgver}.7z")
 sha1sums=('db82d7a159ba128219ab796193ca3c8c14daba76')
