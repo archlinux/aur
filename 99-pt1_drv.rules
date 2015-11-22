@@ -1,0 +1,1 @@
+KERNEL=="pt1video*", GROUP="video", MODE="0660"

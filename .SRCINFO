@@ -1,0 +1,22 @@
+pkgbase = pt1_drv-dkms-hg
+	pkgdesc = PT1/2 driver sources for DKMS
+	pkgver = r141.c8688d7d6382
+	pkgrel = 1
+	url = http://hg.honeyplanet.jp/pt1/
+	install = dkms.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = mercurial
+	depends = dkms
+	depends = linux-headers
+	provides = pt1_drv-dkms
+	source = pt1_drv-dkms-hg::hg+http://hg.honeyplanet.jp/pt1/
+	source = dkms.conf
+	source = 99-pt1_drv.rules
+	sha1sums = SKIP
+	sha1sums = af3fc15f2b7e9e1fc9a8559546a0ed733f7115c6
+	sha1sums = ad3c58078fbd48b8f97ea24af2b084be29210b47
+
+pkgname = pt1_drv-dkms-hg
+
