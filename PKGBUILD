@@ -11,14 +11,14 @@ source=("ghq-${pkgver}.tar.gz::https://github.com/motemen/ghq/archive/v${pkgver}
 
 build() {
   cd "$pkgname-$pkgver"
-  GOPATH="$srcdir/build"
+  export GOPATH="$srcdir/build"
   go get -t -d -v
   go build
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  GOPATH="$srcdir/build"
+  export GOPATH="$srcdir/build"
   go test
 }
 
