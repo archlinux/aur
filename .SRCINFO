@@ -16,6 +16,7 @@ pkgbase = e2guardian
 	depends = perl
 	optdepends = squid
 	optdepends = clamav
+	optdepends = c-icap
 	conflicts = dansguardian
 	conflicts = dansguardian-dev
 	backup = etc/e2guardian/e2guardian.conf
