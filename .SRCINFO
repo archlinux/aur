@@ -1,6 +1,6 @@
 pkgbase = wobbly-git
 	pkgdesc = IVTC assistant for VapourSynth, similar to Yatta. (GIT version)
-	pkgver = v1.3.g1d455f5
+	pkgver = v1.10.g3496a2d
 	pkgrel = 1
 	url = https://github.com/dubhater/Wobbly
 	install = wobbly-git.install
@@ -12,8 +12,8 @@ pkgbase = wobbly-git
 	depends = vapoursynth-plugin-scxvid-git
 	depends = vapoursynth-plugin-fieldhint-git
 	depends = vapoursynth-plugin-d2vsource-git
-	depends = vapoursynth-plugin-zimg-git
 	depends = vapoursynth-plugin-lsmashsource
+	depends = zimg-git
 	depends = xdg-utils
 	provides = wobbly
 	conflicts = wobbly

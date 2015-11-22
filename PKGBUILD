@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=wobbly-git
-pkgver=v1.3.g1d455f5
+pkgver=v1.10.g3496a2d
 pkgrel=1
 pkgdesc="IVTC assistant for VapourSynth, similar to Yatta. (GIT version)"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('qt5-base'
          'vapoursynth-plugin-scxvid-git'
          'vapoursynth-plugin-fieldhint-git'
          'vapoursynth-plugin-d2vsource-git'
-         'vapoursynth-plugin-zimg-git'
          'vapoursynth-plugin-lsmashsource'
+         'zimg-git'
          'xdg-utils'
          )
 makedepends=('git')
