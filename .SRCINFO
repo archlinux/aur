@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosout
 	pkgdesc = ROS - System-wide logging mechanism for messages sent to the /rosout topic.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://ros.org/wiki/rosout
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ros-indigo-rosout
 	makedepends = ros-indigo-roscpp
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-roscpp
-	source = rosout::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosout/1.11.15-0
+	source = rosout::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosout/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosout
