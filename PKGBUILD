@@ -2,8 +2,8 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 pkgname=fldigi
-pkgver=3.23.04
-pkgrel=2
+pkgver=3.23.05
+pkgrel=1
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64')
 url="http://w1hkj.com"
@@ -41,5 +41,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-md5sums=('6d47545ca950e632168f54d84b595802')
-sha512sums=('af332e0da86300e5a18adec8841dabad3ceaea8cf0352b49a88a3387bf53422b4d19e73894352eb0f454f47f6612f37a5476f32dd25ddc49a80f287e345aeb3b')
+sha512sums=('499a192f150dbf95aab2a9d05a230fcf652f7a5787da6e2ce9594cf6328055bb2d3de33f9a4e1d2fc9bda291c62f45fe6f3d9f1340967d967d6fe47707e4c4e0')
