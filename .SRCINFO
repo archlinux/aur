@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosgraph
 	pkgdesc = ROS - rosgraph contains the rosgraph command-line tool, which prints information about the ROS Computation Graph.
-	pkgver = 1.11.15
+	pkgver = 1.11.16
 	pkgrel = 1
 	url = http://ros.org/wiki/rosgraph
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-rosgraph
 	makedepends = ros-indigo-catkin
 	depends = python2-rospkg
 	depends = python2-netifaces
-	source = rosgraph::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosgraph/1.11.15-0
+	source = rosgraph::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosgraph/1.11.16-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosgraph
