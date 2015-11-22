@@ -9,7 +9,8 @@ license='GPL3'
 arch=('i686' 'x86_64')
 depends=('gtkmm3' 'gettext' 'desktop-file-utils' 'gtk-update-icon-cache' 'gstreamermm' 'flatbuffers' 'toxcore' 'util-linux')
 makedepends=('git' 'cmake' 'librsvg')
-source=("${pkgname%-git}::git+https://github.com/KoKuToru/gTox.git#branch=AUR")
+source=("${pkgname%-git}::git+https://github.com/KoKuToru/gTox.git#branch=AUR"
+        "audio-git::git+https://github.com/Tox/Sounds.git")
 conflicts=('gtox')
 install="gTox.install"
 
@@ -35,9 +36,18 @@ build()
 
 package()
 {
-        cd ${pkgname%-git}
-        cd src
-        cd build
-        make install
+    cd ${pkgname%-git}
+    cd src
+    cd build
+    make install
 }
-md5sums=('SKIP')
+
+prepare()
+{
+    cd ${pkgname%-git}
+    git submodule init
+    git config submodule."src/audio".url $srcdir/audio-git
+    git submodule update
+}
+md5sums=('SKIP'
+         'SKIP')

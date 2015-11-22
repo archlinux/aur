@@ -20,6 +20,8 @@ pkgbase = gtox-git
 	depends = util-linux
 	conflicts = gtox
 	source = gtox::git+https://github.com/KoKuToru/gTox.git#branch=AUR
+	source = audio-git::git+https://github.com/Tox/Sounds.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = gtox-git
