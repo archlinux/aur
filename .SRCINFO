@@ -1,15 +1,15 @@
 pkgbase = python-radon
-	pkgdesc = Radon is a tool for Python that computes various metrics from the source code.
-	pkgver = 1.2
+	pkgdesc = A tool that computes various metrics for Python source code.
+	pkgver = 1.2.2
 	pkgrel = 1
-	url = https://github.com/rubik/radon
+	url = https://radon.readthedocs.org/
 	arch = any
 	license = MIT
-	depends = python
-	depends = python-baker
+	makedepends = python-sphinx
+	depends = python-mando
 	depends = python-colorama
-	source = http://pypi.python.org/packages/source/r/radon/radon-1.2.tar.gz
-	md5sums = a4c661620ff2416475fab4a03c8db125
+	source = http://pypi.python.org/packages/source/r/radon/radon-1.2.2.tar.gz
+	md5sums = 44b8d4b9a48650c134be67b83fa46886
 
 pkgname = python-radon
 

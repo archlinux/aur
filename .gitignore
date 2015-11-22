@@ -1,0 +1,6 @@
+pkg
+src
+radon-*.tar.gz
+python-radon-*.pkg.tar.xz
+python-radon-*.src.tar.gz
+.AURINFO

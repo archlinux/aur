@@ -1,19 +1,31 @@
+# Maintainer: Christopher Arndt <aur at chrisarndt dot de>
+# Contributor: Simon Conseil <contact+aur at saimon dot org>
 # Contributor: Jesus Alvarez
-# Maintainer: Simon Conseil <contact+aur at saimon dot org>
+
 pkgname=python-radon
-pkgver=1.2
+pkgver=1.2.2
 pkgrel=1
-pkgdesc="Radon is a tool for Python that computes various metrics from the source code."
+pkgdesc="A tool that computes various metrics for Python source code."
 arch=('any')
-url="https://github.com/rubik/radon"
+url="https://radon.readthedocs.org/"
 license=('MIT')
-depends=('python' 'python-baker' 'python-colorama')
+depends=('python-mando' 'python-colorama')
+makedepends=('python-sphinx')
 source=("http://pypi.python.org/packages/source/r/radon/radon-${pkgver}.tar.gz")
-md5sums=('a4c661620ff2416475fab4a03c8db125')
+md5sums=('44b8d4b9a48650c134be67b83fa46886')
+
+build() {
+  cd "$srcdir/radon-$pkgver/docs"
+
+  make html
+}
 
 package() {
   cd "$srcdir/radon-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+
+  install -d "$pkgdir/usr/share/docs/$pkgname"
+  cp -r docs/_build/html/* "$pkgdir/usr/share/docs/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
