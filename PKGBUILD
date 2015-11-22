@@ -5,15 +5,15 @@
 
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
-pkgver=5.0.8
-pkgrel=2
+pkgver=5.0.10
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 depends=('linux-mainline>=4.4rc1' 'linux-mainline<4.5rc1')
 makedepends=('dkms' 'linux-mainline-headers>=4.4rc1' 'linux-mainline-headers<4.5rc1' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver")
 # remember to also adjust the .install files and the package deps below
-_extramodules=extramodules-4.3-mainline
+_extramodules=extramodules-4.4-mainline
 
 build() {
   _kernver=$(cat /usr/lib/modules/$_extramodules/version)
