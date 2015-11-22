@@ -23,5 +23,5 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_name}"
-    make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }
