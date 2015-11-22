@@ -9,9 +9,9 @@ pkgbase = zimg-git
 	makedepends = git
 	depends = vapoursynth
 	provides = zimg
-	provides = vapoursynth-plugin-zimg
 	conflicts = zimg
 	conflicts = vapoursynth-plugin-zimg
+	conflicts = vapoursynth-plugin-zimg-git
 	source = git+https://github.com/sekrit-twc/zimg.git
 	sha1sums = SKIP
 

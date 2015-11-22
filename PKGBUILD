@@ -9,8 +9,8 @@ url='http://forum.doom9.org/showthread.php?t=171334'
 license=('custom:WTFPL')
 depends=('vapoursynth')
 makedepends=('git')
-provides=('zimg' 'vapoursynth-plugin-zimg')
-conflicts=('zimg' 'vapoursynth-plugin-zimg')
+provides=('zimg')
+conflicts=('zimg' 'vapoursynth-plugin-zimg' 'vapoursynth-plugin-zimg-git')
 source=('git+https://github.com/sekrit-twc/zimg.git')
 sha1sums=('SKIP')
 
