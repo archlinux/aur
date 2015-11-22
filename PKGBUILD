@@ -1,3 +1,5 @@
+# Maintainer: Salamandar <felix@piedallu.me>
+
 pkgname=livewallpaper
 pkgver=0.4.1
 pkgrel=2
@@ -5,7 +7,7 @@ pkgdesc="OpenGL powered animated wallpapers with configuration utility, autostar
 arch=(any)
 url="https://launchpad.net/livewallpaper"
 license=('GPL3')
-depends=('libgl' 'gtk3' 'libpeas' 'libx11' 'python' 'python-numpy' 'python-cairo' 'python-opengl')
+depends=('libgl' 'gtk3' 'libpeas' 'libx11' 'python' 'python-numpy' 'python-cairo' 'python2-opengl')
 makedepends=('intltool' 'xcftools')
 provides=('livewallpaper' 'livewallpaper-indicator' 'livewallpaper-config')
 source=(https://launchpad.net/livewallpaper/0.4/0.4.1/+download/livewallpaper-0.4.1.tar.gz)
