@@ -3,7 +3,7 @@
 _pkgname=caps-lv2
 pkgname="${_pkgname}-git"
 pkgver=0.9.24.r142.cc8241f
-pkgrel=1
+pkgrel=2
 pkgdesc="The LADSPA C* Audio Plugin Suite (LV2 port)"
 arch=('i686' 'x86_64')
 url="http://quitte.de/dsp/caps.html"
@@ -42,7 +42,7 @@ package() {
 
   unset LV2_PATH
   make PREFIX=/usr DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir/usr/lib/lv2/caps.lv2/modgui"
+  rm -rf "$pkgdir"/usr/lib/lv2/mod-caps-*.lv2/modgui*
 }
 
 # vim:set ts=2 sw=2 et:
