@@ -1,8 +1,8 @@
 # Maintainer: Arthur Vuillard <arthur@hashbang.fr>
 pkgname=tidy-html5
 name=tidy-html5
-pkgver=5.1.9
-pkgrel=2
+pkgver=5.1.24
+pkgrel=1
 pkgdesc="A tool to tidy down your HTML5 code to a clean style"
 url="https://github.com/htacg/tidy-html5"
 license=('custom')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake')
 provides=('tidy')
 conflicts=('tidy-html5-git' 'tidyhtml')
 source=(https://github.com/htacg/${pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('e3060d162eec7b0e2be021909cf70ebf')
+md5sums=('2d642c88bdb8f8457a39c6c0a3d88140')
 
 build() {
   cd "$srcdir/$name-$pkgver/build/cmake"
@@ -23,5 +23,6 @@ build() {
 package() {
   cd "$srcdir/$name-$pkgver/build/cmake"
   make install
-  install -Dm644 $srcdir/$name-$pkgver/LICENSE.md $pkgdir/usr/share/licenses/$name/LICENSE.md
+  install -Dm644 $srcdir/$name-$pkgver/README/LICENSE.md $pkgdir/usr/share/licenses/$name/LICENSE.md
+  install -Dm644 $srcdir/$name-$pkgver/README/LICENSE.txt $pkgdir/usr/share/licenses/$name/LICENSE.txt
 } 
