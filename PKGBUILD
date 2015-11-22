@@ -7,7 +7,7 @@
 DLAGENTS=('http::/usr/bin/curl -d agree="We+luv+You" -fL -o %o %u')
 
 pkgname=netfabb-basic
-pkgver=5.2.1
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="view and repair STL files"
 arch=('i686' 'x86_64')
@@ -16,10 +16,10 @@ license=('custom:freeware')
 depends=('gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
 install='netfabb-basic.install'
 
-md5sums=('50b43a88530b5bd4736a88048d121801') # 32-bit
+md5sums=('eaae92691b14c56185a8b62cb09f2006') # 32-bit
 nARCH=32
 if [ "$CARCH" == x86_64 ] ; then
-   md5sums=('b2f288c19b23b1fbb1b5856ec7bc9f44') # 64-bit
+   md5sums=('094c5aa7113016efbe182ab832de1a0c') # 64-bit
    depends[0]="lib32-gtk2"
    nARCH=64
 fi
