@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-thermal-monitor-git
 _pkgname=plasma5-applets-thermal-monitor
 _gitpkgname=plasma-applet-thermal-monitor
-pkgver=r40.89de935
+pkgver=r41.41d3cdd
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Monitors temperature of existing sensors including CPU, GPU and HDD."
 arch=('any')
