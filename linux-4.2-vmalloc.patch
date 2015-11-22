@@ -1,0 +1,49 @@
+# HG changeset patch
+# User Kohei Suzuki <eagletmt@gmail.com>
+# Date 1446531070 -32400
+#      Tue Nov 03 15:11:10 2015 +0900
+# Branch linux-4.2-vmalloc
+# Node ID 13436a0b7e593ff0f29a8a267275fdce8cf2f95d
+# Parent  c8688d7d6382dcc96ea739b75fca93299ae1e455
+Fix compile error on Linux 4.2 or above
+
+```
+% make
+revh=`hg parents --template '#define DRV_VERSION "r{rev}:{node|short}"\n#define DRV_RELDATE "{date|shortdate}"\n' 2>/dev/null`; \
+if [ -n "$revh" ] ; then \
+        echo "$revh" > version.h; \
+else \
+        printf "#define DRV_VERSION \""1.1.0"\"\n#define DRV_RELDATE \""2010-01-27"\"\n" > version.h; \
+fi
+make -C /lib/modules/`uname -r`/build M=`pwd` V=0 modules
+make[1]: Entering directory '/usr/lib/modules/4.2.5-1-ARCH/build'
+  CC [M]  /home/eagletmt/.ghq/hg.honeyplanet.jp/pt1/driver/pt1_pci.o
+/home/eagletmt/.ghq/hg.honeyplanet.jp/pt1/driver/pt1_pci.c: In function ‘pt1_pci_init_one’:
+/home/eagletmt/.ghq/hg.honeyplanet.jp/pt1/driver/pt1_pci.c:857:20: error: implicit declaration of function ‘vmalloc’ [-Werror=implicit-function-declaration]
+     channel->buf = vmalloc(CHANNEL_DMA_SIZE);
+                    ^
+/home/eagletmt/.ghq/hg.honeyplanet.jp/pt1/driver/pt1_pci.c:857:18: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+     channel->buf = vmalloc(CHANNEL_DMA_SIZE);
+                  ^
+/home/eagletmt/.ghq/hg.honeyplanet.jp/pt1/driver/pt1_pci.c:862:18: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+     channel->buf = vmalloc(BS_CHANNEL_DMA_SIZE);
+                  ^
+/home/eagletmt/.ghq/hg.honeyplanet.jp/pt1/driver/pt1_pci.c:911:5: error: implicit declaration of function ‘vfree’ [-Werror=implicit-function-declaration]
+     vfree(dev_conf->channel[lp]->buf);
+     ^
+cc1: some warnings being treated as errors
+```
+
+diff -r c8688d7d6382 -r 13436a0b7e59 driver/pt1_pci.c
+--- a/driver/pt1_pci.c	Tue Oct 01 16:36:12 2013 +0900
++++ b/driver/pt1_pci.c	Tue Nov 03 15:11:10 2015 +0900
+@@ -29,6 +29,9 @@
+ } pm_message_t;
+ #endif
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,2,0)
++#include <linux/vmalloc.h>
++#endif
+ #include <linux/kthread.h>
+ #include <linux/dma-mapping.h>
+ 
