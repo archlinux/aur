@@ -16,7 +16,7 @@ pkgbase = gpicview-git
 	optdepends = librsvg: For SVG support
 	provides = gpicview
 	conflicts = gpicview
-	source = gpicview::git+file:///home/proudzhu/workspace/gpicview
+	source = gpicview::git+http://git.lxde.org/git/lxde/gpicview.git
 	md5sums = SKIP
 
 pkgname = gpicview-git
