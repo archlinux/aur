@@ -6,9 +6,9 @@
 # Original arch package by: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-mainline
-pkgver=355.11
+pkgver=358.16
 _extramodules=extramodules-4.4-mainline
-pkgrel=2
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-mainline"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -17,26 +17,23 @@ makedepends=('linux-mainline-headers>=4.4rc1' 'linux-mainline-headers<4.5rc1')
 license=('custom')
 install=nvidia.install
 options=(!strip)
-source=("nvidia-4.3.patch")
-sha256sums=('1e252fdb7a7e6396a9fbe71a9501345d86b23080048fd1280b23c139e0299415')
 
 if [ "$CARCH" = "i686" ]; then
     _arch='x86'
     _pkg="NVIDIA-Linux-${_arch}-${pkgver}"
-    source+=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run")
-    sha256sums+=('94ce6b879581b931b84d83a9111040b9a5aa9306b012b4380cd93f6ffede3066')
+    source=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run")
+    sha256sums=('d3a2842cbfb1163e20c658fbfaf5a235d5c9f035cd2d657f15df8a14b3fe80b1')
 elif [ "$CARCH" = "x86_64" ]; then
     _arch='x86_64'
     _pkg="NVIDIA-Linux-${_arch}-${pkgver}-no-compat32"
-    source+=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run")
-    sha256sums+=('0fcc6a62a05fc11344aff375faaca56b358ee1252f6b2c98c00d628ea3d0f842')
+    source=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run")
+    sha256sums=('4f0f02d1eb123128d133a5fd00a5ff129b2ac0482f552e15eafa8baa943321f7')
 fi
 
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     # patches here
-    patch -Np1 -i ${srcdir}/nvidia-4.3.patch
 }
 
 build() {
