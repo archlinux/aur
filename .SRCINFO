@@ -1,6 +1,6 @@
 pkgbase = nemo-terminal
 	pkgdesc = An embedded terminal for Nemo, the Cinnamon file manager.
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/linuxmint/nemo-extensions
 	install = nemo-terminal.install
@@ -13,8 +13,8 @@ pkgbase = nemo-terminal
 	optdepends = python2-xdg: Integration with freedesktop.org standards
 	options = !libtool
 	options = !emptydirs
-	source = http://packages.linuxmint.com/pool/main/n/nemo-terminal/nemo-terminal_2.8.0+rosa.tar.gz
-	sha256sums = ab75b2500a6ca04efef5c54250f2a82dc633e11ce870312a9f0d23cffabe21ca
+	source = http://packages.linuxmint.com/pool/main/n/nemo-terminal/nemo-terminal_2.8.1+rosa.tar.gz
+	sha256sums = 17eb327a6065f52384dc344c83f1b97e75170989420be1138b2d01d09d2852eb
 
 pkgname = nemo-terminal
 

@@ -2,7 +2,7 @@
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 
 pkgname=nemo-terminal
-pkgver=2.8.0
+pkgver=2.8.1
 _mintrel=rosa
 pkgrel=1
 pkgdesc="An embedded terminal for Nemo, the Cinnamon file manager."
@@ -17,7 +17,7 @@ install="${pkgname}.install"
 options=('!libtool' '!emptydirs')
 
 source=("http://packages.linuxmint.com/pool/main/n/nemo-terminal/${pkgname}_${pkgver}+${_mintrel}.tar.gz")
-sha256sums=('ab75b2500a6ca04efef5c54250f2a82dc633e11ce870312a9f0d23cffabe21ca')
+sha256sums=('17eb327a6065f52384dc344c83f1b97e75170989420be1138b2d01d09d2852eb')
 
 package() {
   install -d ${pkgdir}/usr/share/nemo-python/extensions
