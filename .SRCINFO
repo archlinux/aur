@@ -1,0 +1,22 @@
+pkgbase = pt3_drv-dkms-git
+	pkgdesc = PT3 driver sources for DKMS
+	pkgver = r101.3e315b5
+	pkgrel = 1
+	url = https://github.com/m-tsudo/pt3
+	install = dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	depends = linux-headers
+	provides = pt3_drv-dkms
+	source = pt3_drv-dkms-git::git+https://github.com/m-tsudo/pt3
+	source = remove-make-dkms.patch
+	source = 99-pt3_drv.rules
+	sha1sums = SKIP
+	sha1sums = 7632bc7217c4414f202afe681780541eb58149f7
+	sha1sums = 89f86e04814e0a85dc9b1ffda9a440b833237a3b
+
+pkgname = pt3_drv-dkms-git
+
