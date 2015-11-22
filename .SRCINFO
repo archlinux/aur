@@ -1,5 +1,5 @@
 pkgbase = uzbl-next-git
-	pkgver = 2012.05.14.1271.gd2b741c
+	pkgver = 2012.05.14.1288.g5c24ea0
 	pkgrel = 1
 	url = http://www.uzbl.org
 	arch = i686
@@ -28,18 +28,19 @@ pkgname = uzbl-browser-next-git
 	pkgdesc = A complete browser experience based on uzbl-core
 	install = uzbl.install
 	arch = any
-	depends = uzbl-core-next-git=2012.05.14.1271.gd2b741c
+	depends = uzbl-core-next-git=2012.05.14.1288.g5c24ea0
 	depends = desktop-file-utils
 	depends = python
 	depends = python2
+	depends = python-six
 	provides = uzbl-browser
 	conflicts = uzbl-browser
 
 pkgname = uzbl-tabbed-next-git
 	pkgdesc = Tabbing manager providing multiple uzbl-browser instances in 1 window
 	arch = any
+	depends = uzbl-core-next-git=2012.05.14.1288.g5c24ea0
 	depends = python2
-	depends = uzbl-core
 	provides = uzbl-tabbed
 	conflicts = uzbl-tabbed
 
