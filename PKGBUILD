@@ -18,7 +18,7 @@ options=('!makeflags')
 install=audacity.install
 provides=('audacity')
 conflicts=('audacity')
-source=("$_pkgname::git+file:///home/proudzhu/workspace/audacity"
+source=("$_pkgname::git+https://github.com/audacity/audacity.git"
 		'audacity-ffmpeg.patch')
 sha1sums=('SKIP'
           '5f1733a3802bcec7d9b54cb3ec8d7d81fc38fc61')
