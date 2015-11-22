@@ -1,0 +1,11 @@
+[Unit]
+Description=systemd integration for rtorrent - starts/stops rtorrent instances on startup/shutdown
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/rtorrentctl start %i
+ExecStop=/usr/bin/rtorrentctl stop %i
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+pkgbase = rtorrent-systemd
+	pkgdesc = Systemd integration for rtorrent
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/User:Mwberry/rtorrent-systemd
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = rtorrent
+	depends = screen
+	depends = bash
+	depends = coreutils
+
+pkgname = rtorrent-systemd
+
