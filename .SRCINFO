@@ -1,0 +1,17 @@
+pkgbase = sencha-cmd-5
+	pkgdesc = Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks
+	pkgver = 5.1.3
+	pkgrel = 61
+	url = https://www.sencha.com/products/extjs/cmd-download/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	provides = sencha-cmd
+	source_i686 = https://cdn.sencha.com/cmd/5.1.3.61/SenchaCmd-5.1.3.61-linux.run.zip
+	md5sums_i686 = b4fed5c99dc8942c9800290a62b55dca
+	source_x86_64 = https://cdn.sencha.com/cmd/5.1.3.61/SenchaCmd-5.1.3.61-linux-x64.run.zip
+	md5sums_x86_64 = b0f5336cbffb9e5def7fb3ab331b7b2f
+
+pkgname = sencha-cmd-5
+
