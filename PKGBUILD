@@ -4,7 +4,7 @@ pkgdesc="ROS - A 2D navigation stack that takes in information from odometry, se
 url='http://wiki.ros.org/navigation'
 
 pkgname='ros-indigo-navigation'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
