@@ -24,8 +24,7 @@ build() {
 }
 
 package_uzbl-core-next-git() {
-  pkgdesc="Webpage interface component meant for integration with other tools
-           and scripts"
+  pkgdesc="Webpage interface component meant for integration with other tools and scripts"
   provides=("uzbl-core")
   conflicts=("uzbl-core")
   optdepends=("socat: to interface with the socket"
@@ -69,8 +68,7 @@ package_uzbl-browser-next-git() {
 }
 
 package_uzbl-tabbed-next-git() {
-  pkgdesc="Tabbing manager providing multiple uzbl-browser instances in 1
-           window"
+  pkgdesc="Tabbing manager providing multiple uzbl-browser instances in 1 window"
   arch=("any")
   depends=("uzbl-core-next-git=$pkgver"
            "python2")
