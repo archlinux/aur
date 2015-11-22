@@ -4,20 +4,22 @@
 
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
-pkgver=2.4.3.beta.r20.g60f97b4
+pkgver=2.4.8.beta.r1.g84cc01a
 pkgrel=2
 pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
 
-depends=('ffmpeg' 'lame' 'qt5-x11extras')
+depends=('ffmpeg' 'lame' 'qt5-x11extras' 'desktop-file-utils')
 optdepends=(
 	'pulseaudio-alsa: for PulseAudio support'
 )
 makedepends=('git' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
+
+install=${pkgname}.install
 
 source=(
 	"git+https://github.com/vkohaupt/${_pkgname}.git"
@@ -41,7 +43,7 @@ pkgver() {
 prepare() {
 	# Desktop file description
 	cd ${srcdir}/${_pkgname}
-	patch applications/${_pkgname}.desktop ../desktop_file.patch
+	patch -p1 < ../desktop_file.patch
 
 	# Create build directory
 	mkdir -p ${srcdir}/build
