@@ -1,13 +1,14 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=pacmarge
-pkgver=0.r1.ca743cd
+pkgver=0.r3.81212ec
 pkgrel=1
 pkgdesc="A tool to automatically merge .pacnew files (hopefully correctly!)"
 arch=('any')
 url="https://github.com/foutrelis/pacmarge"
 license=('ISC')
 depends=('pacman' 'diffutils' 'patch' 'git')
+makedepends=('asciidoc')
 install=$pkgname.install
 source=(git+https://github.com/foutrelis/pacmarge.git)
 sha256sums=('SKIP')
@@ -17,9 +18,14 @@ pkgver() {
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "$srcdir/$pkgname"
+  make
+}
+
 package() {
   cd "$srcdir/$pkgname"
-  install -D scripts/pacmarge "$pkgdir/usr/bin/pacmarge"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
