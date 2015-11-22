@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=netfabb Basic
+GenericName=STL-Viewer
+GenericName[de]=STL-Betrachter
+Comment=View and repair STL files
+Comment[de]=STL Dateien betrachten und reparieren
+Icon=netfabb-basic
+TryExec=/usr/bin/netfabb-basic
+Exec=/usr/bin/netfabb-basic %U
+Terminal=false
+MimeType=application/netfabb;application/sla;application/x-3ds;model/mesh;image/x-3ds;model/x3d+xml;model/x3d+binary;
+Categories=Graphics;3DGraphics;Viewer;
+StartupNotify=true
