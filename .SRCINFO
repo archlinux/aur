@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-hector-gazebo-plugins
 	pkgdesc = ROS - hector_gazebo_plugins provides gazebo plugins from Team Hector.
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/hector_gazebo_plugins
 	arch = any
 	license = BSD

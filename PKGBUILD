@@ -7,7 +7,7 @@ pkgname='ros-indigo-hector-gazebo-plugins'
 pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-dynamic-reconfigure
@@ -52,6 +52,7 @@ build() {
   # Build project
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_CXX_FLAGS=-std=c++11\
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
