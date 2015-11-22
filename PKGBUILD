@@ -1,6 +1,6 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=2.0.1.17
-pkgrel=1
+pkgrel=2
 _gamename=${pkgname#gog-}
 _gamename_=${_gamename//-/_}
 _unpatchedver=2.0.0.16
