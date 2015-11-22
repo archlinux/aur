@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=fre:ac
+GenericName=Audio Converter
+Exec=freac
+Icon=freac.png
+Categories=AudioVideo
