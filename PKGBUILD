@@ -11,7 +11,7 @@ pkgdesc="Virtual Machine Hypervisor & Tools"
 arch=(i686 x86_64)
 url="http://www.xenproject.org/"
 license=(GPL2)
-depends=(bridge-utils curl gnutls iproute2 libaio libcap-ng libiscsi libjpeg-turbo libpng libseccomp lzo2 nss pixman pciutils python python2 sdl yajl spice usbredir)
+depends=(linux-igvtg bridge-utils curl gnutls iproute2 libaio libcap-ng libiscsi libjpeg-turbo libpng libseccomp lzo2 nss pixman pciutils python python2 sdl yajl spice usbredir)
 [[ "$CARCH" == "x86_64" ]] && depends+=(lib32-glibc)
 makedepends=(bin86 cmake dev86 git iasl markdown ocaml-findlib figlet wget spice-protocol)
 optdepends=('xen-docs: Official Xen Documentation' 'openvswitch: Optional Networking support')
