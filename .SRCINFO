@@ -1,0 +1,18 @@
+pkgbase = rust-gallery
+	pkgdesc = A simple and fast web gallery, meant for the command line.
+	pkgver = r1.ee7ab9c
+	pkgrel = 1
+	url = https://github.com/TheNeikos/rust-gallery
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = openssl
+	provides = rust-gallery
+	conflicts = rust-gallery
+	source = git+https://github.com/TheNeikos/rust-gallery.git
+	md5sums = SKIP
+
+pkgname = rust-gallery
+
