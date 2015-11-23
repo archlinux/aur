@@ -1,6 +1,6 @@
 pkgbase = octave-linear-algebra
 	pkgdesc = Additional linear algebra code, including general SVD and matrix functions.
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 2
 	url = http://octave.sourceforge.net/linear-algebra/
 	install = octave-linear-algebra.install
@@ -9,9 +9,9 @@ pkgbase = octave-linear-algebra
 	license = custom
 	depends = octave>=3.2.3
 	depends = octave-general>=1.3.0
-	noextract = linear-algebra-2.2.1.tar.gz
-	source = http://downloads.sourceforge.net/octave/linear-algebra-2.2.1.tar.gz
-	md5sums = 99bb7f404d06447f379fb3100cc46c64
+	noextract = linear-algebra-2.2.2.tar.gz
+	source = http://downloads.sourceforge.net/octave/linear-algebra-2.2.2.tar.gz
+	md5sums = 702461982f6028addf00bac1d0b31538
 
 pkgname = octave-linear-algebra
 
