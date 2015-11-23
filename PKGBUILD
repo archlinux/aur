@@ -2,7 +2,7 @@
 
 pkgname=zelda-roth-se
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Zelda : Return of the Hylian solarus edition."
 arch=('any')
