@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-mythtv
 _gitname=pvr.mythtv
-pkgver=20151024.e088636
-_gitver=e088636ef54dcbd7bd8750e68a87c34f98586bb3
+pkgver=20151119.b1f5764
+_gitver=b1f5764f063350ca51fe00ed610fd13986df7e78
 pkgrel=1
 pkgdesc='MythTV PVR client addon for Kodi'
 arch=('i686' 'x86_64')
