@@ -1,5 +1,5 @@
 diff --git a/config.example.js b/config.example.js
-index d1f21e7..ad64d34 100644
+index f432409..1049700 100644
 --- a/config.example.js
 +++ b/config.example.js
 @@ -6,7 +6,7 @@ conf.group = "";
@@ -20,7 +20,7 @@ index d1f21e7..ad64d34 100644
  
  // Transports available to the client.
  // Behind an Apache reverse proxy? Uncomment the below - Apache does not support websockets!
-@@ -105,7 +105,7 @@ conf.client_plugins = [
+@@ -122,7 +122,7 @@ conf.client_plugins = [
  
  
  // Directory to find the server modules
@@ -28,9 +28,9 @@ index d1f21e7..ad64d34 100644
 +conf.module_dir = "/usr/lib/kiwiirc/server_modules/";
  
  // Which modules to load
- conf.modules = [];
+ conf.modules = [
 diff --git a/kiwi b/kiwi
-index 3ac269e..dca2dcc 100755
+index ddcdfdf..dca2dcc 100755
 --- a/kiwi
 +++ b/kiwi
 @@ -1,11 +1,6 @@
@@ -41,82 +41,32 @@ index 3ac269e..dca2dcc 100755
 -    *CYGWIN*) basedir=`cygpath -w "$basedir"`;;
 -esac
 -
--node $basedir/server/helpers/launcher.js "$@"
+-$(command -v nodejs || command -v node) $basedir/server/helpers/launcher.js "$@"
 +node /usr/share/kiwiirc/server/helpers/launcher.js "$@"
  ret=$?
  
  exit $ret
-diff --git a/server/helpers/launcher.js b/server/helpers/launcher.js
-index b4d8ec3..18e74f2 100644
---- a/server/helpers/launcher.js
-+++ b/server/helpers/launcher.js
-@@ -1,5 +1,5 @@
- var kiwi_app = '../kiwi.js';
--var pidfile = '../../kiwiirc.pid';
-+var pidfile = '/run/kiwiirc/kiwiirc.pid';
- var pidfile_arg;
+diff --git a/server_modules/client_file_watcher.js b/server_modules/client_file_watcher.js
+index 2c3a017..47ad093 100644
+--- a/server_modules/client_file_watcher.js
++++ b/server_modules/client_file_watcher.js
+@@ -6,12 +6,12 @@
  
- // Check if a pidfile has been set as an argument
-@@ -16,6 +16,13 @@ if (process.argv.indexOf('-p') > -1) {
-     }
- }
+ var fs = require('fs');
+ var path = require('path');
+-var kiwiModules = require('../server/modules');
++var kiwiModules = require('/usr/share/kiwiirc/server/modules');
  
-+try {
-+    process.setgid('kiwiirc');
-+    process.setuid('kiwiirc');
-+} catch (e) {
-+    console.error('Cannot switch to user kiwiirc. Try running as root.')
-+    process.exit();
-+}
+ var module = new kiwiModules.Module('client_file_watcher');
  
- var daemon = require('daemonize2').setup({
-     main: kiwi_app,
-diff --git a/server/httphandler.js b/server/httphandler.js
-index d89ecad..5c9b78c 100644
---- a/server/httphandler.js
-+++ b/server/httphandler.js
-@@ -14,7 +14,7 @@ var cached_available_locales = null;
+ // Watch the common stylesheets
+-fs.watch('client/assets/css', alertClients);
++fs.watch('/var/lib/kiwiirc/assets/css', alertClients);
  
  
- var HttpHandler = function (config) {
--    var public_http = config.public_http || 'client/';
-+    var public_http = config.public_http || global.config.public_http  || 'client/';
-     this.file_server = new node_static.Server(public_http);
- 
-     if (!cached_available_locales) {
-diff --git a/server/settingsgenerator.js b/server/settingsgenerator.js
-index 6f70be1..f420819 100644
---- a/server/settingsgenerator.js
-+++ b/server/settingsgenerator.js
-@@ -112,7 +112,7 @@ function addThemes() {
-     return (config.get().client_themes || ['relaxed']).reduce(function (prom, theme) {
-         return prom.then(function (themes) {
-             return new Promise(function readThemeInfo(resolve, reject) {
--                fs.readFile(__dirname + '/../client/assets/themes/' + theme.toLowerCase() + '/theme.json', function (err, theme_json) {
-+                fs.readFile(global.config.public_http + '/assets/themes/' + theme.toLowerCase() + '/theme.json', function (err, theme_json) {
-                     var theme;
-                     if (err) {
-                         return reject(err);
-@@ -134,7 +134,7 @@ function addThemes() {
- 
- function addTranslations() {
-     return new Promise(function (resolve, reject) {
--        fs.readFile(__dirname + '/../client/src/translations/translations.json', function readTranslations(err, translations) {
-+        fs.readFile(global.config.public_http + '/src/translations/translations.json', function readTranslations(err, translations) {
-             if (err) {
-                 return reject(err);
-             }
-@@ -145,7 +145,7 @@ function addTranslations() {
-                 return reject(e);
-             }
- 
--            fs.readdir(__dirname + '/../client/src/translations/', function readTranslationFile(err, pofiles) {
-+            fs.readdir(global.config.public_http + '/src/translations/', function readTranslationFile(err, pofiles) {
-                 var trans = [];
- 
-                 if (err) {
+ // Watch the theme stylesheets
 diff --git a/server_modules/control.js b/server_modules/control.js
-index c1e5517..3fb3ef7 100644
+index d1c9cbf..1e187ec 100644
 --- a/server_modules/control.js
 +++ b/server_modules/control.js
 @@ -5,8 +5,8 @@
@@ -152,6 +102,19 @@ index d880c19..575dc5f 100644
 +var kiwiModules = require('/usr/share/kiwiirc/server/modules');
  
  var module = new kiwiModules.Module('Example Module');
+ 
+diff --git a/server_modules/force_https.js b/server_modules/force_https.js
+index 9ca8362..512ffed 100644
+--- a/server_modules/force_https.js
++++ b/server_modules/force_https.js
+@@ -4,7 +4,7 @@
+  * Keep users secure by redirecting them to HTTPS if not already
+  */
+ 
+-var kiwiModules = require('../server/modules');
++var kiwiModules = require('/usr/share/kiwiirc/server/modules');
+ 
+ var module = new kiwiModules.Module('force_https');
  
 diff --git a/server_modules/proxychecker.js b/server_modules/proxychecker.js
 index 660defc..7fb96e6 100644
