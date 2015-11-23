@@ -1,0 +1,14 @@
+pkgbase = python-progressbar2
+	pkgdesc = Progressbar library to provide visual (yet text based) progress to long running operations
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/WoLpH/python-progressbar
+	arch = any
+	license = BSD
+	depends = python
+	conflicts = python-progressbar
+	source = https://github.com/WoLpH/python-progressbar/archive/v3.5.0.tar.gz
+	sha256sums = 7bd889ffb1a55c8d85e286be70acc7a8aa024eb7e2c707dd8de8d55cf4a82ca0
+
+pkgname = python-progressbar2
+
