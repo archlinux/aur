@@ -8,14 +8,14 @@
 
 _pack=general
 pkgname=octave-$_pack
-pkgver=1.3.4
+pkgver=2.0.0
 pkgrel=2
 pkgdesc="General tools for Octave."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
 license=('custom')
 groups=('octave-forge')
-depends=('octave>=3.4.3')
+depends=('octave>=4.0.0')
 makedepends=()
 optdepends=()
 backup=()
@@ -24,7 +24,11 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('f94fffe8bc7bfe83d525528ddd04c3c8')
+md5sums=('81514b9d133b8013ae2b394f7aa6e16b')
+
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
 
 _install_dir() {
 	src=$1
@@ -38,7 +42,7 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
 		pkg install -verbose -nodeps $_archive;
