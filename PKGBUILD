@@ -1,7 +1,7 @@
 # Maintainer: Bruno Nova <brunomb.nova@gmail.com>
 pkgname=drmips-doc
 _pkgname=drmips
-pkgver=1.3.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Graphical MIPS simulator to support computer architecture teaching and learning - User Manuals"
 arch=('any')
@@ -10,11 +10,11 @@ license=('GPL3')
 makedepends=('cmake>=2.8' 'texlive-core' 'texlive-latexextra' 'texlive-science')
 optdepends=('drmips: the simulator')
 source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/DrMIPS_v$pkgver.tar.xz")
-md5sums=('4d9de6b78ed07f278839f0f2d7f90d28')
+md5sums=('f4756bf519e96d7811a1276633346f79')
 
 build() {
 	cd "$srcdir"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DDRMIPS_BUILD_PC_VERSION=off
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DDRMIPS_BUILD_PC_VERSION=off -DDRMIPS_BUILD_TESTS=off
 	make
 }
 
