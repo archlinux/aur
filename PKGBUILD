@@ -5,7 +5,7 @@
 
 pkgname=zsxd
 pkgver=1.10.2
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Free and opensource, amateur Zelda game with humoristic characters."
 arch=('any')
@@ -25,7 +25,7 @@ install=
 changelog=
 source=(http://www.zelda-solarus.com/downloads/zsxd/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('9d737bfc6cd574f83de31f7dbba2c002')
+md5sums=('5221e9741fe6a06bf12ff23ceb5021b0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
