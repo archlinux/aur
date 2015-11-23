@@ -1,6 +1,6 @@
 pkgbase = feeluown-git
 	pkgdesc = 个性化音乐服务 For Mac And Linux
-	pkgver = 20151102
+	pkgver = 20151123
 	pkgrel = 1
 	url = https://github.com/cosven/FeelUOwn
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = feeluown-git
 	depends = python-requests
 	depends = python-quamash
 	depends = xdg-utils
+	depends = python-sqlalchemy
 	optdepends = vlc
 	provides = feeluown
 	conflicts = feeluown
