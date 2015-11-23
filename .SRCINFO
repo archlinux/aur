@@ -1,0 +1,25 @@
+pkgbase = synthpod-git
+	pkgdesc = Lightweight non-linear plugin host
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://open-music-kontrollers.ch/lv2/synthpod
+	install = synthpod.install
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	groups = lv2-hosts
+	license = Artistic2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = lv2
+	makedepends = xdg-utils
+	depends = lilv
+	depends = jack
+	depends = zita-alsa-pcmi
+	depends = elementary
+	depends = hicolor-icon-theme
+	optdepends = moony-lv2
+	optdepends = sherlock-lv2
+
+pkgname = synthpod-git
+
