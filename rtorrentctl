@@ -81,10 +81,11 @@ function start() {
   # Exec screen as user
   # "-u ..."        User to exec screen as
   # "-D -m"         Start detached and don't fork process
+  # "-fn"           Disable software flow control (CTRL+Q,CTRL+S)
   # "-S ..."        Session name
   # "-n"            Tell rtorrent to not read ~/.rtorrent.rc
   # "-o import=..." Tell rtorrent to read and use this file as configuration
-  sudo -u "${user}" screen -D -m -S "${sessionName}"  rtorrent -n -o import="${rcFile}"
+  sudo -u "${user}" screen -D -m -fn -S "${sessionName}"  rtorrent -n -o import="${rcFile}"
 }
 
 # Stops an instance
