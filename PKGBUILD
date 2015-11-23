@@ -11,6 +11,7 @@ url="http://www.mopidy.com"
 license=('APACHE')
 depends=('python2'
          'python2-pykka'
+         'python2-requests'
          'python2-setuptools'
          'python2-tornado'
          'gstreamer0.10-python'

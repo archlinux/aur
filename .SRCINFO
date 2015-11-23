@@ -8,6 +8,7 @@ pkgbase = mopidy-git
 	makedepends = git
 	depends = python2
 	depends = python2-pykka
+	depends = python2-requests
 	depends = python2-setuptools
 	depends = python2-tornado
 	depends = gstreamer0.10-python
