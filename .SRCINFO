@@ -1,0 +1,12 @@
+pkgbase = tdlib
+	pkgdesc = Algorithms for computing tree decompositions of graphs
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://www.tdi.informatik.uni-frankfurt.de/~lukas/tdlib.html
+	arch = any
+	license = GPL2
+	source = http://www.tdi.informatik.uni-frankfurt.de/~lukas/data/tdlib-0.5.0.tar.gz
+	md5sums = 771fd79bd3d98959820a87285a34d9b6
+
+pkgname = tdlib
+
