@@ -5,14 +5,14 @@
 
 pkgname=zsxd
 pkgver=1.10.2
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Free and opensource, amateur Zelda game with humoristic characters."
 arch=('any')
 url="http://www.zelda-solarus.com/"
 license=('custom')
 groups=()
-depends=('solarus>=1.2.0')
+depends=('solarus>=1.4.0')
 makedepends=('zip' 'cmake')
 checkdepends=()
 optdepends=()
@@ -29,7 +29,6 @@ md5sums=('9d737bfc6cd574f83de31f7dbba2c002')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i "s/echo 'solarus/echo 'solarus_run/" CMakeLists.txt
   cmake -D CMAKE_INSTALL_PREFIX="/usr" -D CMAKE_BUILD_TYPE=Release .
   make
 }

@@ -1,14 +1,14 @@
 pkgbase = zsxd
 	pkgdesc = Free and opensource, amateur Zelda game with humoristic characters.
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.zelda-solarus.com/
 	arch = any
 	license = custom
 	makedepends = zip
 	makedepends = cmake
-	depends = solarus>=1.2.0
-	source = http://www.zelda-solarus.com/downloads/zsxd/zsxd-1.10.1.tar.gz
+	depends = solarus>=1.4.0
+	source = http://www.zelda-solarus.com/downloads/zsxd/zsxd-1.10.2.tar.gz
 	md5sums = 9d737bfc6cd574f83de31f7dbba2c002
 
 pkgname = zsxd
