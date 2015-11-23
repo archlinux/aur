@@ -6,7 +6,7 @@ pkgbase = nqc
 	arch = i686
 	arch = x86_64
 	license = custom:MPL
-	source = http://bricxcc.sourceforge.net/nqc/${pkgname}-${pkgver}.tgz
+	source = http://bricxcc.sourceforge.net/nqc/release/nqc-3.1.r6.tgz
 	md5sums = 2ed4b2728ab6f0d21723a466996ce91b
 
 pkgname = nqc
