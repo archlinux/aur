@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-applications
-pkgver=0.1.0.1
+pkgver=0.1.0.2
 pkgrel=1
 pkgdesc='Applications plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/switchboard-plug-applications/freya/${pkgver}/+download/switchboard-plug-applications-${pkgver}.tar.xz")
-sha256sums=('f8836aa3b3cd852e13313843ea8e7b2b41a7aa230169dc0236ae6bf055cfa8ee')
+sha256sums=('12f396ae073c087a55a114e1bcce605a347ad01c450c5853c054a93338a4112d')
 
 prepare() {
   cd switchboard-plug-applications-${pkgver}
