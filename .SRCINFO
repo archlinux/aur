@@ -1,0 +1,16 @@
+pkgbase = ruby-pluggaloid
+	pkgdesc = Extensible plugin system
+	pkgver = 1.0.2
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-delayer
+	depends = ruby-instance_storage
+	noextract = pluggaloid-1.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pluggaloid-1.0.2.gem
+	sha1sums = dd024ff41cbcadeb16f1a5e0bcca142adda2511a
+
+pkgname = ruby-pluggaloid
+
