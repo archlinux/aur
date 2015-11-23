@@ -1,7 +1,7 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=pbpst-git
-pkgver=0.9.0.r0.g5ca5d03
+pkgver=0.9.0.r12.gd251568
 pkgrel=1
 
 pkgdesc='A small tool to interact with pb instances'
@@ -27,7 +27,5 @@ build () {
 
 package () {
     cd pbpst
-    install -Dm755 src/pbpst "$pkgdir"/usr/bin/pbpst
-    install -Dm644 doc/pbpst.1 "${pkgdir}"/usr/share/man/man1/pbpst.1
-    install -Dm644 doc/pbpst_db.5 "${pkgdir}"/usr/share/man/man5/pbpst_db.5
+    make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }
