@@ -1,0 +1,14 @@
+pkgbase = arc-firefox-theme-git
+	pkgdesc = Arc Firefox Theme
+	pkgver = 42.20151103
+	pkgrel = 1
+	url = https://github.com/horst3180/arc-firefox-theme
+	arch = i686
+	arch = x86_64
+	license = Mozilla Public License version 2.0
+	depends = firefox
+	source = arc-firefox-theme::git+https://github.com/horst3180/arc-firefox-theme.git
+	sha1sums = SKIP
+
+pkgname = arc-firefox-theme-git
+
