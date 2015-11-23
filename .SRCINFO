@@ -1,0 +1,17 @@
+pkgbase = zimg
+	pkgdesc = Scaling, colorspace conversion, and dithering library
+	pkgver = 2.0.1a
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171334
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	depends = gcc-libs
+	depends = glibc
+	provides = vapoursynth-plugin-zimg
+	options = !emptydirs
+	source = zimg-2.0.1a.tar.gz::https://github.com/sekrit-twc/zimg/archive/release-2.0.1a.tar.gz
+	md5sums = 29a17b4af2ca9606bf46fe8c7408a36c
+
+pkgname = zimg
+
