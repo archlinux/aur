@@ -8,14 +8,14 @@
 
 _pack=geometry
 pkgname=octave-$_pack
-pkgver=1.7.0
+pkgver=2.0.0
 pkgrel=2
 pkgdesc="Library for geometric computing extending MatGeom functions. Useful to create, transform, manipulate and display geometric primitives."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
 license=('custom')
 groups=('octave-forge')
-depends=('octave>=3.4.0' 'octave-general>=1.3.0')
+depends=('octave>=4.0.0' 'octave-general>=1.3.0')
 makedepends=()
 optdepends=()
 backup=()
@@ -24,7 +24,11 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('45a58dd83eb9801b190b298daca9fda0')
+md5sums=('0dde6024d893d7e68124ad5c40a4e393')
+
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
 
 _install_dir() {
 	src=$1
@@ -38,7 +42,7 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
 		pkg install -verbose -nodeps $_archive;
