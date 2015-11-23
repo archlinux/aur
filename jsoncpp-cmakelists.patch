@@ -1,0 +1,19 @@
+diff -ru --new-file jsoncpp-src-0.5.0-org/CMakeLists.txt jsoncpp-src-0.5.0/CMakeLists.txt
+--- jsoncpp-src-0.5.0-org/CMakeLists.txt	1970-01-01 02:00:00.000000000 +0200
++++ jsoncpp-src-0.5.0/CMakeLists.txt	2015-06-11 12:51:57.332001061 +0300
+@@ -0,0 +1,15 @@
++project(jsoncpp)
++
++cmake_minimum_required(VERSION 2.6)
++enable_language(CXX)
++
++set(SOURCES src/lib_json/json_reader.cpp
++            src/lib_json/json_value.cpp
++            src/lib_json/json_writer.cpp)
++
++include_directories(${PROJECT_SOURCE_DIR}/include)
++
++add_library(jsoncpp ${SOURCES})
++
++install(TARGETS jsoncpp DESTINATION ${CMAKE_INSTALL_PREFIX}/lib) 
++install(DIRECTORY include/json DESTINATION ${CMAKE_INSTALL_PREFIX}/include/jsoncpp)

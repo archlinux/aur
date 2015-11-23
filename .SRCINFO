@@ -1,0 +1,23 @@
+pkgbase = kodi-devel-pvr-hdhomerun
+	pkgdesc = HDHomeRun PVR addon for Kodi
+	pkgver = 20151122.2935bc4
+	pkgrel = 1
+	url = https://github.com/kodi-pvr/pvr.hdhomerun
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-devel-platform
+	makedepends = kodi-devel-libplatform
+	depends = kodi-devel
+	depends = libhdhomerun
+	source = https://github.com/kodi-pvr/pvr.hdhomerun/archive/2935bc40a6b7c03fae0a0628c3990a2fd0316a06.tar.gz
+	source = https://github.com/open-source-parsers/jsoncpp/archive/svn-release-0.5.0.tar.gz
+	source = jsoncpp-cmakelists.patch
+	md5sums = SKIP
+	md5sums = 11b6a4ff1bf1a8f34f6e4b813d61342e
+	md5sums = SKIP
+
+pkgname = kodi-devel-pvr-hdhomerun
+
