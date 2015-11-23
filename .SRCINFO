@@ -1,5 +1,5 @@
 pkgbase = kodi-devel
-	pkgver = 16.0b1
+	pkgver = 16.0b2
 	pkgrel = 1
 	url = http://xbmc.org
 	arch = i686
@@ -58,8 +58,8 @@ pkgbase = kodi-devel
 	makedepends = xorg-xdpyinfo
 	makedepends = yajl
 	makedepends = zip
-	source = https://github.com/xbmc/xbmc/archive/16.0b1-Jarvis.tar.gz
-	sha256sums = b77f336f4134151f0d4e31ae388894b339798b02902446706e67f769b6c1f074
+	source = https://github.com/xbmc/xbmc/archive/16.0b2-Jarvis.tar.gz
+	sha256sums = b71f41f0786cb0e47c3f97c9ee18260488bdbc9565e3b8014d9b6d000ca53d6c
 
 pkgname = kodi-devel
 	pkgdesc = Kodi Media Center monthly development releases
