@@ -1,7 +1,7 @@
 pkgbase = pithos
 	pkgdesc = Pandora Internet Radio player for GNOME
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = http://pithos.github.io/
 	install = pithos.install
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = pithos
 	optdepends = python-pylast: Last.fm scrobbling support
 	optdepends = libnotify: Notification support
 	optdepends = python-dbus: MPRIS/Screensaver Pause/Gnome mediakeys support
-	source = https://github.com/pithos/pithos/archive/1.1.1.tar.gz
-	sha256sums = 4424534bbf7ab3d3d6c51764d689606fd0df214422eb79ccc91a8981f95d7dce
+	source = https://github.com/pithos/pithos/archive/1.1.2.tar.gz
+	sha256sums = 560cc42410981c4578505bf67635c75d11b63fe8ff5d4d73e154e016e7fe5465
 
 pkgname = pithos
 
