@@ -7,7 +7,7 @@ pkgdesc="A python wrapper around RIPE ATLAS API"
 arch=('any')
 url="https://github.com/RIPE-NCC/ripe-atlas-cousteau"
 license=('GPL3')
-depends=('python>=3.4' 'python-requests>=2.7.0' 'python-dateutil', 'python-socketio-client>=0.6.5')
+depends=('python>=3.4' 'python-requests>=2.7.0' 'python-dateutil' 'python-socketio-client>=0.6.5')
 makedepends=('python-setuptools')
 provides=('python-ripe-atlas-cousteau')
 source=("https://pypi.python.org/packages/source/r/$_name/$_name-$pkgver.tar.gz")
