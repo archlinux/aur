@@ -1,7 +1,7 @@
 # Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 pkgname=qibuild
 pkgver='3.10.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='The meta build framework'
 arch=('any')
 url='http://doc.aldebaran.com/qibuild/'
@@ -13,7 +13,7 @@ optdepends=(
   'python2-virtualenv: for qipy'
   'doxygen: Doxygen support in qidoc'
   'gettext: Gettext support in qilinguist'
-  'qt5-tool: QtLinguist support in qilinguist'
+  'qt5-tools: QtLinguist support in qilinguist'
 )
 makedepends=('python2' 'python2-docutils')
 
