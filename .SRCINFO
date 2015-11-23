@@ -1,0 +1,16 @@
+pkgbase = perl6-file-find
+	pkgdesc = File::Find for Perl 6
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/tadzik/File-Find
+	arch = any
+	groups = perl6
+	license = MIT
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	source = perl6-file-find-0.1::git+https://github.com/tadzik/File-Find
+	sha256sums = SKIP
+
+pkgname = perl6-file-find
+
