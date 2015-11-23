@@ -1,8 +1,8 @@
 pkgbase = timbl-git
 	pkgdesc = Tilburg Memory-Based Learner, implementations of k-nearest neighbour classification
 	pkgver = 1
-	pkgrel = 3
-	url = http://ilk.uvt.nl/timbl
+	pkgrel = 4
+	url = https://languagemachines.github.io/timbl
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = timbl-git
 	provides = timbl
 	conflicts = timbl
 	options = !libtool
-	source = git://github.com/proycon/timbl.git
+	source = git://github.com/LanguageMachines/timbl.git
 	md5sums = SKIP
 
 pkgname = timbl-git
