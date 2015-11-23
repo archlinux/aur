@@ -1,0 +1,16 @@
+pkgbase = perl6-digest
+	pkgdesc = Pure perl6 implementation of SHA-256 and RIPEMD-160 digests
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/grondilu/libdigest-perl6
+	arch = any
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	source = perl6-digest-0.3.4::git+https://github.com/grondilu/libdigest-perl6
+	sha256sums = SKIP
+
+pkgname = perl6-digest
+
