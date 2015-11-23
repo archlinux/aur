@@ -168,6 +168,8 @@ gadugi.ttf     gadugib.ttf                                  # Gadugi
 mvboli.ttf                                                  # MV Boli
 )
 
+DLAGENTS+=("file::/usr/bin/echo ${BOLD}${RED} Unable to find %u, please read the PKGBUILD ${ALL_OFF}")
+
 source=(${_ttf_ms_win10[@]/#/file://}
         ${_ttf_ms_win10_japanese[@]/#/file://}
         ${_ttf_ms_win10_korean[@]/#/file://}
