@@ -30,5 +30,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}/"
-	cargo install --path . --root "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/bin"
+	install "target/release/gallery" "$pkgdir/usr/bin"
 }
