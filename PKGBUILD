@@ -2,7 +2,7 @@
 
 pkgname=ladish
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ladish"
@@ -17,6 +17,8 @@ sha512sums=('bc0854e2b72837e42f2c4f6d6038b24c1918bebefda6a3dd2cfe2b0b09a7ebd8716
 
 prepare() {
   cd "${srcdir}/${pkgname}-dec0b7d"
+  export PYTHON=/usr/bin/python2
+  export CXX='g++ -std=c++11'
   sed -i "1s/python/&2/" ladish_control
   sed -i "s|\(RELEASE = \).*|\1True|" wscript
 
@@ -26,7 +28,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-dec0b7d"
-  export PYTHON=/usr/bin/python2
   python2 waf configure --prefix=/usr \
               --enable-liblash \
               --enable-pylash

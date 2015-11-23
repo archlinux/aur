@@ -1,7 +1,7 @@
 pkgbase = ladish
 	pkgdesc = Session management system for JACK.
 	pkgver = 0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://launchpad.net/ladish
 	install = ladish.install
 	arch = i686
