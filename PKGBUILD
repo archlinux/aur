@@ -31,5 +31,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}/"
     mkdir -p "$pkgdir/usr/bin"
-	install "target/release/gallery" "$pkgdir/usr/bin"
+	install "target/release/gallery" "$pkgdir/usr/bin/rust-gallery"
 }
