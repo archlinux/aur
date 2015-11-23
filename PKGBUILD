@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-locale
-pkgver=0.2
+pkgver=0.2.0.1
 pkgrel=1
 pkgdesc='Locale plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('accountsservice' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'ibus'
 makedepends=('cmake' 'vala')
 install='switchboard-plug-locale.install'
 source=("https://launchpad.net/switchboard-plug-locale/freya/${pkgver}/+download/switchboard-plug-locale-${pkgver}.tar.xz")
-sha256sums=('d009f33b9fe3afe6c0821fd98ad2be510b40fd7cc398a3a0ed786dd4491cc6da')
+sha256sums=('628619cf735de1516bfa7aca8506e67f138587c242cb57a91bfc165c06eff7d3')
 
 prepare() {
   cd switchboard-plug-locale-${pkgver}
