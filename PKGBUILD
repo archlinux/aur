@@ -20,7 +20,7 @@ _CLANG_DIRNAME="clang+llvm-${_CLANG_VERSION}-x86_64-linux-gnu-ubuntu-14.04"
 _CLANG_FILENAME="${_CLANG_DIRNAME}.tar.xz"
 
 pkgname=vim-youcompleteme-git
-pkgver=1549.5a18627
+pkgver=1591.96f0d94
 pkgver() {
   cd "YouCompleteMe"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -65,7 +65,6 @@ prepare() {
   msg2 'Setting up Git submodules...'
   cd "$srcdir/YouCompleteMe"
   git submodule init
-  git config submodule.third_party/requests.url "$srcdir/requests"
   git config submodule.third_party/requests-futures.url "$srcdir/requests-futures"
   git config submodule.third_party/ycmd.url "$srcdir/ycmd"
   git submodule update
@@ -136,7 +135,7 @@ package() {
 
   cp -r "$srcdir/YouCompleteMe/"{autoload,doc,plugin,python} \
     "$pkgdir/usr/share/vim/vimfiles"
-  cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests,requests-futures,retries} \
+  cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests-futures,retries} \
     "$pkgdir/usr/share/vim/vimfiles/third_party"
   cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_client_support.so,ycm_core.so,check_core_version.py,CORE_VERSION} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
@@ -146,7 +145,7 @@ package() {
     cp -r "$srcdir/YouCompleteMe/third_party/ycmd/clang_includes" \
       "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/clang_includes"
   fi
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,jedi,waitress} \
+  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,jedi,requests,waitress} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party"
   cp     "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode/gocode" \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/gocode/gocode"
