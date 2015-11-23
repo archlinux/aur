@@ -4,8 +4,8 @@
 # Contributor: Huulivoide
 
 pkgname=zsxd
-pkgver=1.10.1
-pkgrel=2
+pkgver=1.10.2
+pkgrel=1
 epoch=
 pkgdesc="Free and opensource, amateur Zelda game with humoristic characters."
 arch=('any')
