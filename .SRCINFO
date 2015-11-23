@@ -1,0 +1,17 @@
+pkgbase = python2-parse_type
+	pkgdesc = simplifies to build parse types based on the parse module
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/parse_type/
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-parse>=1.6
+	depends = python2-six
+	source = https://pypi.python.org/packages/source/p/parse_type/parse_type-0.3.4.tar.gz
+	sha256sums = 3dd0b323bafcb8c25e000ce5589042a1c99cba9c3bec77b9f591e46bc9606147
+
+pkgname = python2-parse_type
+
