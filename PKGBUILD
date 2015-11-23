@@ -6,7 +6,7 @@
 
 pkgname=xf86-input-synaptics-xswipe-git
 pkgver=r1464.8cc57ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Synaptics driver for notebook touchpads - Forked branch with -m flag forward ported and 4/5 finger detectable"
 arch=('i686' 'x86_64')
 license=('custom')
