@@ -1,6 +1,6 @@
 pkgbase = switchboard-plug-display
 	pkgdesc = Display plug for Switchboard
-	pkgver = 0.1.1
+	pkgver = 0.1.1.1
 	pkgrel = 1
 	url = https://launchpad.net/switchboard-plug-display
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = switchboard-plug-display
 	depends = gtk3
 	depends = libgee
 	depends = libswitchboard-2.0.so
-	source = https://launchpad.net/switchboard-plug-display/0.x/0.1.1/+download/switchboard-plug-display-0.1.1.tar.xz
-	sha256sums = eca745a851b83bed5547700d8e1edf5a637b93b1047615647236723464cade56
+	source = https://launchpad.net/switchboard-plug-display/0.x/0.1.1.1/+download/switchboard-plug-display-0.1.1.1.tar.xz
+	sha256sums = 6d8e234358c31d881699f9d98dbffe5685765547bc5ff7699141c0b7e08bc559
 
 pkgname = switchboard-plug-display
 
