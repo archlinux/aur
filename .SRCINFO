@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-python-bin
+pkgbase = mingw-w64-python34-bin
 	pkgdesc = Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)
 	pkgver = 3.4.3
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = mingw-w64-python-bin
 	md5sums = cb450d1cc616bfc8f7a2d6bd88780bf6
 	md5sums = f6ade29acaf8fcdc0463e69a6e7ccf87
 
-pkgname = mingw-w64-python-bin
+pkgname = mingw-w64-python34-bin
 
