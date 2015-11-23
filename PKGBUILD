@@ -8,7 +8,7 @@ _gitname=pvr.filmon
 pkgver=20151014.bea2509
 _gitver=bea2509bcd5d2e511f88e53d1e749051af45428e
 _jsoncpp_ver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Filmon PVR addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-pvr/$_gitname"
@@ -36,6 +36,7 @@ prepare() {
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=on \
     ..
   make
   mkdir ../out
@@ -50,7 +51,7 @@ build() {
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
     -DJSONCPP_INCLUDE_DIRS="$srcdir/jsoncpp-svn-release-$_jsoncpp_ver/out/usr/include/jsoncpp" \
-    -DJSONCPP_LIBRARIES="$srcdir/jsoncpp-svn-release-$_jsoncpp_ver/out/usr/lib" \
+    -DJSONCPP_LIBRARIES="$srcdir/jsoncpp-svn-release-$_jsoncpp_ver/out/usr/lib/libjsoncpp.a" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
