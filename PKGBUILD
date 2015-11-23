@@ -2,18 +2,18 @@
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
 pkgname=openjk-git
-pkgver=2983.1b6e1ec
-pkgrel=2
+pkgver=3191.d56be4f
+pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine"
 arch=('i686' 'x86_64')
-url="https://github.com/Razish/OpenJK"
+url="https://github.com/JACoders/OpenJK"
 license=('GPL')
 depends=('libgl' 'openal' 'zlib' 'sdl2' 'libjpeg' 'glu')
 optdepends=('libpng')
 makedepends=('cmake' 'yasm')
 provides=(openjk)
 conflicts=(openjk)
-source=("openjk::git://github.com/Razish/OpenJK.git"
+source=("openjk::git+https://github.com/JACoders/OpenJK.git"
 				'openjk.install'
 				'openjkmp.png'
 				'openjksp.png'
@@ -55,8 +55,8 @@ package() {
 
 	mkdir -p "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/JediAcademy/openjk.${_jkarch}" "${pkgdir}/usr/bin/openjk"
-	ln -s "/opt/${pkgname}JediAcademy/openjk_sp.${_jkarch}" "${pkgdir}/usr/bin/openjk_sp"
-	ln -s "/opt/${pkgname}JediAcademy/openjkded.${_jkarch}" "${pkgdir}/usr/bin/openjkded"
+	ln -s "/opt/${pkgname}/JediAcademy/openjk_sp.${_jkarch}" "${pkgdir}/usr/bin/openjk_sp"
+	ln -s "/opt/${pkgname}/JediAcademy/openjkded.${_jkarch}" "${pkgdir}/usr/bin/openjkded"
 
 	install -Dm755 "${srcdir}/openjkmp.png" "${pkgdir}/usr/share/pixmaps/openjkmp.png"
 	install -Dm755 "${srcdir}/openjksp.png" "${pkgdir}/usr/share/pixmaps/openjksp.png"
