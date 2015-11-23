@@ -1,0 +1,17 @@
+pkgbase = zget
+	pkgdesc = Zeroconf based peer to peer file transfer
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/nils-werner/zget
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-netifaces
+	depends = python-progressbar2
+	depends = python-requests
+	depends = python-zeroconf
+	source = https://github.com/nils-werner/zget/archive/0.10.tar.gz
+	sha256sums = b72435578be80fe8eb5cd836a3e53550e5da88e987ddd3c04c2e3ac504cc770b
+
+pkgname = zget
+
