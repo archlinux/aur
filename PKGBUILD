@@ -7,7 +7,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=6.10.beta3.r0.g94635cc
+pkgver=6.10.beta5.r0.g4ca26b3
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ optdepends=('cython2: to compile cython code' 'jmol: 3D plots' 'sage-notebook: B
   'modular_decomposition: modular decomposition of graphs' 'ffmpeg: to export animations to video' 'imagemagick: to show animations'
   'coxeter3: Coxeter groups implementation' 'cryptominisat: SAT solver')
 makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-or-cbc
-  mcqd coxeter3 cryptominisat modular_decomposition bliss-graphs) # libfes
+  mcqd coxeter3 cryptominisat modular_decomposition bliss-graphs tdlib) # libfes
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
