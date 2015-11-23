@@ -1,0 +1,336 @@
+From 9464ca1d23c83797e91257641b283bc7bf9c8e5d Mon Sep 17 00:00:00 2001
+From: Luis Fagundes <lhfagundes@hacklab.com.br>
+Date: Thu, 19 Jan 2012 15:31:16 -0200
+Subject: Apply numerous fixes for Python 3 support
+
+- documentation issues.rst (missed commit before)
+
+removed useless line
+
+Change fetching InstallPath winreg key for LibreOffice 3.4 on Windows 7
+
+Correct bug in OOPacker.script_name() for Windows 7
+
+Move OOSheet.Quit() to OODoc.quit()
+
+Fix inconsistent identation
+
+Fix problematic use of single backslash
+
+Fix invalid syntax
+
+Remove unnecessary octal notation
+
+  Octal notatation changes on python3
+
+str doesn't support the buffer API
+
+Fix import
+
+many fixing to make it work on my computer
+
+import winreg instead _winreg (for Python3)
+fixed save_as() method (ods format is default)
+added save() method
+removed spaces after the print function
+
+diff --git a/docs/index.rst b/docs/index.rst
+index 5183561..e8e9c5b 100644
+--- a/docs/index.rst
++++ b/docs/index.rst
+@@ -95,6 +95,12 @@ Luc Jean sent patch that allows OOSheet to run on Windows Vista with default Pyt
+ Changelog
+ =========
+ 
++- 1.2.1
++
++  - Move OOSheet.Quit() to OODoc.quit()
++  - Correct bug in OOPacker.script_name() for Windows 7
++  - Change fetching InstallPath winreg key for LibreOffice 3.4 on Windows 7
++
+ - 1.2
+ 
+   - Much better performance when acessing via sockets
+diff --git a/docs/issues.rst b/docs/issues.rst
+new file mode 100644
+index 0000000..c9a1547
+--- /dev/null
++++ b/docs/issues.rst
+@@ -0,0 +1,19 @@
++======
++Issues
++======
++
++Breakpoint issue
++================
++
++It's worth noticing that *ipdb.set_trace() does not work* when you use OOSheet. This is not an issue from this module, it happens in deeper and darker layers of python-uno. If you see an error like this:
++
++  SystemError: 'pyuno runtime is not initialized, (the pyuno.bootstrap needs to be called before using any uno classes)'
++
++it's probably because you have an ipdb breakpoint. Use *pdb* instead.
++
++Connection issues
++=================
++
++In version 1.2 performance got much better when using sockets, by caching the conection. The drawback is that when connection is broken, script must be restarted.
++
++Sometimes the initial connection takes a long time. This was not reported in OpenOffice.org, but with LibreOffice this is a bit common. Any clue on why this helps is very welcome.
+diff --git a/oosheet/__init__.py b/oosheet/__init__.py
+index 2474852..28cdb7f 100644
+--- a/oosheet/__init__.py
++++ b/oosheet/__init__.py
+@@ -1,15 +1,29 @@
+ # -*- coding: utf-8 -*-
+ 
+ import sys, os, time
+-from columns import name as col_name, index as col_index
++from . import columns
++col_name = columns.name
++col_index = columns.index
+ 
+ if sys.platform == 'win32':
+     #This is required in order to make pyuno usable with the default python interpreter under windows
+     #Some environment variables must be modified
+ 
+     #get the install path from registry
+-    import _winreg
+-    value = _winreg.QueryValue(_winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\OpenOffice.org\UNO\InstallPath')
++    try:
++        import winreg
++    except:
++        import _winreg as winreg
++        
++    # try with OpenOffice, LibreOffice on W7
++    for _key in ['SOFTWARE\\OpenOffice.org\\UNO\\InstallPath',             # OpenOffice 3.3
++                 'SOFTWARE\\Wow6432Node\\LibreOffice\\UNO\\InstallPath']:   # LibreOffice 3.4.5 on W7
++        try:
++            value = winreg.QueryValue(winreg.HKEY_LOCAL_MACHINE, _key)
++        except Exception as detail:
++            _errMess = "%s" % detail
++        else:
++            break   # first existing key will do
+     install_folder = '\\'.join(value.split('\\')[:-1]) # 'C:\\Program Files\\OpenOffice.org 3'
+ 
+     #modify the environment variables
+@@ -17,9 +31,10 @@ if sys.platform == 'win32':
+     os.environ['UNO_PATH'] = install_folder+'\\program\\'
+ 
+     sys.path.append(install_folder+'\\Basis\\program')
++    sys.path.append(install_folder+'\\program')
+ 
+     paths = ''
+-    for path in ("\\URE\\bin;", "\\Basis\\program;"):
++    for path in ("\\URE\\bin;", "\\Basis\\program;", "'\\program;"):
+         paths += install_folder + path
+     os.environ['PATH'] =  paths+ os.environ['PATH']
+ 
+@@ -50,7 +65,6 @@ class OODoc(object):
+             self.load_cache()
+                 
+     def connect(self):
+-        start = time.time()
+         OODoc._macro_environment = self.macro_environment = self._detect_macro_environment()
+         OODoc._context = self.context = self.get_context()
+         OODoc._model = self.model = self.get_model()
+@@ -163,11 +177,11 @@ class OODoc(object):
+         parentWin = self.model.CurrentController.Frame.ContainerWindow
+ 
+         aDescriptor = WindowDescriptor()
+-	aDescriptor.Type = MODALTOP
+-	aDescriptor.WindowServiceName = 'messbox'
+-	aDescriptor.ParentIndex = -1
+-	aDescriptor.Parent = parentWin
+-	aDescriptor.WindowAttributes = OK
++        aDescriptor.Type = MODALTOP
++        aDescriptor.WindowServiceName = 'messbox'
++        aDescriptor.ParentIndex = -1
++        aDescriptor.Parent = parentWin
++        aDescriptor.WindowAttributes = OK
+ 
+         tk = parentWin.getToolkit()
+         box = tk.createWindow(aDescriptor)
+@@ -188,18 +202,35 @@ class OODoc(object):
+         self.dispatch('.uno:Redo')
+ 
+     def _file_url(self, filename):
++        """
++        for examples:
++            '/D:/example.ods' tested in Windows absolute path
++            'example.ods' tested in Windows relative path (in current directory)
++        """
++        if filename.startswith('file://'):
++            filename = filename[7:]
++            
+         if not filename.startswith('/'):
+-            filename = os.path.join(os.environ['PWD'], filename)
++            #filename = os.path.join(os.environ['PWD'], filename)
++            filename = "/%s" % (os.path.join(os.path.abspath(os.curdir), filename).replace("\\",'/'))
+ 
+         return 'file://%s' % filename
++
++    def save(self):   
++        """
++        Saves the current doc. Be sure it has already have a filename.
++        """
++        self.dispatch('Save')
+         
+-    def save_as(self, filename):
++    def save_as(self, filename, filtername = 'calc8'):
+         """
+         Saves the current doc to filename. Expects a string representing a path in filesystem.
+         Path can be absolute or relative to PWD environment variable.
+         """
+-
+-        self.dispatch('SaveAs', ('URL', self._file_url(filename)))
++        self.dispatch('SaveAs', 
++                      ('URL', self._file_url(filename)),
++                      ('FilterName', filtername)
++                     )
+ 
+     def open(self, filename):
+         """
+@@ -207,6 +238,9 @@ class OODoc(object):
+         """
+         self.dispatch('Open', ('URL', self._file_url(filename)))
+ 
++    def quit(self):
++        """Closes the OpenOffice.org instance"""
++        self.dispatch('Quit')
+ 
+ class OOSheet(OODoc):
+     """
+@@ -668,9 +702,9 @@ class OOSheet(OODoc):
+ 
+     def find(self, query):
+         if isinstance(query, str) or isinstance(query, unicode):
+-            test = lambda(cell): cell.string == query
++            test = lambda cell: cell.string == query
+         elif isinstance(query, int) or isinstance(query, float):
+-            test = lambda(cell): cell.value == query
++            test = lambda cell: cell.value == query
+         elif type(query) is types.FunctionType:
+             test = query
+         else:
+@@ -931,10 +965,6 @@ class OOSheet(OODoc):
+         self.dispatch('Protection', ('Protection.Locked', False))
+         return self
+     
+-    def quit(self):
+-        """Closes the OpenOffice.org instance"""
+-        self.dispatch('Quit')
+-
+ 
+ class OOPacker():
+     """
+@@ -955,7 +985,7 @@ class OOPacker():
+     @property
+     def script_name(self):
+         """Gets the script name, ignoring the path of the file"""
+-        return self.script.rpartition('/')[2]
++        return os.path.basename(self.script)
+ 
+     def manifest_add(self, path):
+         """
+@@ -964,6 +994,7 @@ class OOPacker():
+         """        
+         manifest = []
+         for line in self.doc.open('META-INF/manifest.xml'):
++            line = line.decode('utf-8')
+             if '</manifest:manifest>' in line:
+                 manifest.append(' <manifest:file-entry manifest:media-type="application/binary" manifest:full-path="%s"/>' % path)
+             elif ('full-path:"%s"' % path) in line:
+@@ -1005,14 +1036,16 @@ def pack():
+ def print_help():
+     """Prints help message for pack()"""
+     script_name = sys.argv[0].split('/')[-1]
+-    print "Usage: %s document script.py" % script_name
++    print("Usage: %s document script.py" % script_name)
+     sys.exit(1)
+ 
+ def launch():
+-    print """
++    print("""
+ # This is just a reminder of the complicated command needed to launch 
+ # LibreOffice with proper parameters to be controlled by sockets
+ 
+-  libreoffice -calc -accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager"
+-"""
++  libreoffice --calc --nologo --norestore --accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager"
++  libreoffice --calc --nologo --norestore --accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager" --nodefault --headless
++""")
++
+ 
+diff --git a/oosheet/tests/run_tests.py b/oosheet/tests/run_tests.py
+index cd3e755..1774af7 100755
+--- a/oosheet/tests/run_tests.py
++++ b/oosheet/tests/run_tests.py
+@@ -62,7 +62,7 @@ class OOCalcLauncher(object):
+     def pid(self):
+         sub = subprocess.Popen('ps aux'.split(), stdout=subprocess.PIPE)
+         sub.wait()
+-        processes = [ line for line in sub.stdout if 'soffice' in line ]
++        processes = [ line for line in sub.stdout if 'soffice' in line.decode('utf-8') ]
+         try:
+             return int(processes[0].split()[1])
+         except IndexError:
+@@ -106,29 +106,29 @@ def run_tests(event = None):
+         clear()
+         if stop_on_error:
+             test.__call__()
+-            print 'OK'
++            print ('OK')
+         else:
+             try:
+                 test.__call__()
+                 if event:
+                     S('Tests.c%d' % (i+10)).string = 'OK'
+                 else:
+-                    print 'OK'
++                    print ('OK')
+                 ok += 1
+-            except Exception, e:
++            except Exception as e:
+                 errors += 1
+                 if event:
+                     S('Tests.d%d' % (i+10)).string = e
+                 else:
+-                    print '%s: %s' % (type(e).__name__, e)
++                    print ('%s: %s' % (type(e).__name__, e))
+ 
+     if event:
+         S('Tests.a1').focus()
+     else:
+         if not errors:
+-            print "Passed %d of %d tests" % (ok, ok)
++            print ("Passed %d of %d tests" % (ok, ok))
+         else:
+-            print "Passed %d of %d tests (%d errors)" % (ok, ok+errors, errors)
++            print ("Passed %d of %d tests (%d errors)" % (ok, ok+errors, errors))
+ 
+     return ok
+             
+diff --git a/oosheet/tests/tests.py b/oosheet/tests/tests.py
+index 0ab904f..ac9bee9 100644
+--- a/oosheet/tests/tests.py
++++ b/oosheet/tests/tests.py
+@@ -73,7 +73,7 @@ def test_date_only_sets_format_if_not_already_in_date_format():
+     S().sheet.getCellRangeByName('Sheet1.A1').NumberFormat = 30
+     S().sheet.getCellRangeByName('Sheet1.A2').NumberFormat = 38
+ 
+-    S('a1:a3').date = datetime(2011, 02, 20)
++    S('a1:a3').date = datetime(2011, 2, 20)
+ 
+     # Check if formats have been preserved
+     # lfagundes's environment is pt_BR, so let's check either format
+@@ -680,8 +680,8 @@ def test_user_selection():
+ 
+ def test_format_as():
+     S().sheet.getCellRangeByName('Sheet1.A1').NumberFormat = 38
+-    S('a1').date = datetime(2011, 03, 1)
+-    S('a2:3').date = datetime(2011, 03, 8)
++    S('a1').date = datetime(2011, 3, 1)
++    S('a2:3').date = datetime(2011, 3, 8)
+ 
+     weekday = S('a1').string.split()[0] #probably "wednesday", but might be localized
+     S('a2').format_as('a1')
