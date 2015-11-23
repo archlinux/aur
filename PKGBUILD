@@ -2,10 +2,10 @@
 
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
-pkgver=1.15 #/.1_dev8
+pkgver=1.16_dev1
 pkgrel=1
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
-url=http://www.mendeley.com/release-notes/
+url=http://www.mendeley.com
 arch=(i686 x86_64)
 depends=(python2 qtwebkit)
 conflicts=(mendeleydesktop)
@@ -15,11 +15,11 @@ md5sums=('' '44c54032370c2a7cbc6667af6d19acf7')
 
 if [[ $CARCH = i686 ]];then
   _arch=i486
-  md5sums[0]='4b19536ef4f59406e6708c223a911b96'
+  md5sums[0]='202b5fd0aea29432fd1c083d12360328'
 
 else
   _arch=$CARCH
-  md5sums[0]='98592385aef62734fbe12d5b28e354f2'
+  md5sums[0]=''43295608b1688b2da8cf28f03fcb5dd7
 fi
 
 if which gconftool-2 &>/dev/null;then
