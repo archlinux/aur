@@ -1,7 +1,7 @@
 pkgbase = milter-manager-git
 	pkgdesc = A milter to use milters effectively.
-	pkgver = 20151113.5989.9e358d6
-	pkgrel = 2
+	pkgver = 20151116.5993.8c24a95
+	pkgrel = 1
 	url = http://milter-manager.sourceforge.net/
 	arch = x86
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = milter-manager-git
 	source = milter-manager-git::git://github.com/milter-manager/milter-manager.git
 	source = milter-manager.service
 	sha1sums = SKIP
-	sha1sums = SKIP
+	sha1sums = a2bf48052ba00fdddbf42810ba5ec70cbfd43b9f
 
 pkgname = milter-manager-git
 	install = milter-manager.install
