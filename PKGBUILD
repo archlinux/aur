@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Here is a socket.io client library for Python. You can use it to write test code for your socket.io server."
 arch=('any')
 url="https://github.com/invisibleroads/socketIO-client"
-license=('custom')
+license=('custom':'MIT')
 depends=('python>=3.4' 'python-requests>=2.7.0' 'python-six' 'python-websocket-client')
 makedepends=('python-setuptools')
 provides=('python-socketio-client')

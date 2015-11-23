@@ -4,7 +4,7 @@ pkgbase = python-socketio-client
 	pkgrel = 1
 	url = https://github.com/invisibleroads/socketIO-client
 	arch = any
-	license = custom
+	license = custom:MIT
 	makedepends = python-setuptools
 	depends = python>=3.4
 	depends = python-requests>=2.7.0
