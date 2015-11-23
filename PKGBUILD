@@ -1,5 +1,4 @@
-# Maintainer: Christian Hesse <arch@eworm.de>
-# Contributor: speps <speps at aur dot archlinux dot org>
+# Maintainer: Lennard Fleischer <lefl65@gmail.com>
 
 pkgname=nqc
 pkgver=3.1.r6
