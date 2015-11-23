@@ -4,7 +4,7 @@
 pkgname=llpp
 pkgver=22
 _pkgname=${pkgname}-561dc56
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight, fast and featureful PDF viewer based on MuPDF'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/w/llpp.git'
@@ -13,7 +13,7 @@ depends=('openjpeg2' 'jbig2dec' 'desktop-file-utils')
 makedepends=('ocaml' 'mupdf')
 source=(http://repo.or.cz/llpp.git/snapshot/561dc5673cea431e930668b0d87b0c4b31a36b39.tar.gz)
 install=llpp.install
-sha256sums=('SKIP')
+sha256sums=('06dff0377bb47c172f5cb498f8bce0f362cca910f90e8663fcd3f1500ce8fa0e')
 
 optdepends=(
   # llpp
@@ -47,6 +47,7 @@ build() {
 package() {
   cd $_pkgname
   install -Dm755 build/llpp "$pkgdir"/usr/bin/llpp
+  install -Dm755 misc/llppac "$pkgdir"/usr/bin/llppac
 
   install -Dm0644 misc/llpp.desktop "$pkgdir"/usr/share/applications/llpp.desktop
   install -Dm0644 README "$pkgdir"/usr/share/licenses/llpp/README

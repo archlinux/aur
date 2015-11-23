@@ -1,7 +1,7 @@
 pkgbase = llpp
 	pkgdesc = Lightweight, fast and featureful PDF viewer based on MuPDF
 	pkgver = 22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://repo.or.cz/w/llpp.git
 	install = llpp.install
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = llpp
 	optdepends = texlive-core: dvi conversion
 	options = !strip
 	source = http://repo.or.cz/llpp.git/snapshot/561dc5673cea431e930668b0d87b0c4b31a36b39.tar.gz
-	sha256sums = SKIP
+	sha256sums = 06dff0377bb47c172f5cb498f8bce0f362cca910f90e8663fcd3f1500ce8fa0e
 
 pkgname = llpp
 
