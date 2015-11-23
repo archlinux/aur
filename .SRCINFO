@@ -1,8 +1,8 @@
 pkgbase = xkcd-dl-git
 	pkgdesc = Download ALL xkcd's which have been uploaded till date. Ever!
 	pkgver = latest
-	pkgrel = 1
-	url = http://gstreamer.freedesktop.org/modules/gst-python.html
+	pkgrel = 2
+	url = https://github.com/prodicus/xkcd-dl
 	install = xkcd-dl-git.install
 	arch = any
 	license = MIT
