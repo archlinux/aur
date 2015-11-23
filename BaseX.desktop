@@ -4,7 +4,7 @@ Encoding=UTF-8
 Name=BaseX
 Comment=XML Processing and Visualization
 Exec=/usr/share/java/basex/bin/basexgui
-Icon=/usr/share/java/basex/img/icon.png
+Icon=/usr/share/java/basex/img/logo_256.png
 Terminal=false
 Categories=Development;
 

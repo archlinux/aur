@@ -15,7 +15,7 @@ source=("http://files.basex.org/releases/${pkgver}/BaseX${pkgver//./}.zip"
         "BaseX.desktop")
 sha1sums=('cfd5611173c171dfb53e5246216fb2741b1755d0'
           'b82c43d2f247d65b93b2f073543b8ceee038bfd1'
-          '53eb192fe09410da5dff22ba7ecd5b26e5753fd7')
+          '1f2e10e989258cc41e8d516efa80801038142358')
 
 package() {
   # install profile.d script
