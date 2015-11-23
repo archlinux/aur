@@ -1,0 +1,19 @@
+pkgbase = brother-mfc-9320cw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-9320CW
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-9320cw.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9320cwlpr-1.1.2-1.i386.deb
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9320cwcupswrapper-1.1.2-2.i386.deb
+	sha256sums = d9ce7952a0f9048171c502e256ed5514126a6f3284c9b3776cecc8d29ede71ad
+	sha256sums = e7ade052e663cb3999d59e67904d4ee022bb6836959c480a34c8cd3f28b3e9ec
+
+pkgname = brother-mfc-9320cw
