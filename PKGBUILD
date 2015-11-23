@@ -29,19 +29,19 @@ build() {
  # export QTDIR=/usr/share/qt4
  # export QMAKESPEC=/usr/share/qt4/mkspecs/linux-g++
  # export QT_LIBRARY_PATH=/usr/include/Qt
- # 
- ##dunno what I'm doing.
- ##soo ashamed of this sed :()
- ##dunno why it keeps copying files to /usr/local
- #grep -ir usr\/local | cut -d ':' -f 1 | uniq | grep -v secmod.db  > replaces
- #FILE=replaces
- #
- #while read CMD; do
- #  sed -i 's/usr\/local/usr/g'   "$CMD"
- #done < "$FILE"
- #
- #./configure --prefix=/usr  
- #make
+  
+ #dunno what I'm doing.
+ #soo ashamed of this sed :()
+ #dunno why it keeps copying files to /usr/local
+ grep -ir usr\/local | cut -d ':' -f 1 | uniq | grep -v secmod.db  > replaces
+ FILE=replaces
+ 
+ while read CMD; do
+   sed -i 's/usr\/local/usr/g'   "$CMD"
+ done < "$FILE"
+ 
+ ./configure --prefix=/usr  
+ make
 }
 
 
