@@ -1,7 +1,7 @@
 pkgbase = gnuclad
 	pkgdesc = A cladogram tree generator mainly used by GNU/Linux distro timeline project
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/gnuclad
 	arch = i686
 	arch = x86_64
