@@ -1,0 +1,18 @@
+pkgbase = perl6-avro
+	pkgdesc = Perl6 Avro Data Serialization
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sylvarant/Avro
+	arch = any
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	depends = perl6-compress-zlib
+	depends = perl6-json-tiny
+	source = perl6-avro-0.1.1::git+https://github.com/sylvarant/Avro
+	sha256sums = SKIP
+
+pkgname = perl6-avro
+
