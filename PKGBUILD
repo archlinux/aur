@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://bricxcc.sourceforge.net/nqc/'
 license=('custom:MPL')
 dependends=('gcc' 'glibc')
-source=('http://bricxcc.sourceforge.net/nqc/${pkgname}-${pkgver}.tgz')
+source=('http://bricxcc.sourceforge.net/nqc/release/nqc-3.1.r6.tgz')
 md5sums=('2ed4b2728ab6f0d21723a466996ce91b')
 
 build() {
