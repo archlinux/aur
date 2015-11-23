@@ -2,7 +2,7 @@
 
 pkgname=xkcd-dl-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 install=$pkgname.install
 pkgdesc="Download ALL xkcd's which have been uploaded till date. Ever!"
 arch=('any')
