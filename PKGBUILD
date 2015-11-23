@@ -22,6 +22,7 @@ nose==1.3.0
 mock==1.0.1
 wheel==0.24.0
 docutils>=0.10
+behave==1.2.5
 -e git://github.com/boto/jmespath.git@develop#egg=jmespath
 
 #setup.py
@@ -41,7 +42,7 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.3.7.r2388.g7049f4a
+pkgver=1.3.8.r2400.ge359c69
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -56,16 +57,17 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-nose>=1.3.0"     # COM ==
   "${_pyver}-mock>=1.0.1"     # COM ==
   "${_pyver}-docutils>=0.10"  # COM
-  "${_pyver}-six>=1.1.0"      # COM This is in the sources but I"m not sure where the version comes from.
+  "${_pyver}-six>=1.1.0"      # COM This is in the sources but I'm not sure where the version comes from.
   # requirements-docs.txt
   "${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
   "${_pyver}-guzzle-sphinx-theme"{">=0.7.10","<0.8"}
+  "${_pyver}-behave>=1.2.5"
 )
 depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('779b8ece5b58c68669a34796eb7fe092f8178821b358faaf1f8911f3f643d914')
+sha256sums=('a858447413c5f468bd272dc7c07f96139e83a7a549df359ab7ed9b1c3d5045a9')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
