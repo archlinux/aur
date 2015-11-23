@@ -1,7 +1,7 @@
 pkgbase = zsdx
 	pkgdesc = A free 2D Zelda fangame.
-	pkgver = 1.10.1
-	pkgrel = 2
+	pkgver = 1.10.2
+	pkgrel = 1
 	url = http://www.zelda-solarus.com/
 	arch = any
 	license = custom
