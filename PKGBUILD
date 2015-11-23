@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-stamps-cvs
-pkgver=20151023
+pkgver=20151122
 pkgrel=1
 arch=('any')
 pkgdesc="Additional stamps for Tux Paint, cvs version"
@@ -24,7 +24,7 @@ pkgver() {
     cvs -z3 -d$_cvsroot co -P $_cvsmod
     cd $_cvsmod
   fi
-  printf "%s" $(cvs -q log | grep '^date:' | sort | tail -n 1 | cut -d ' ' -f 2 | tr -d '/')
+  printf "%s" $(cvs -d$_cvsroot -q log | grep '^date:' | sort | tail -n 1 | cut -d ' ' -f 2 | tr -d '/')
 }
 
 build() {
