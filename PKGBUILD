@@ -1,4 +1,4 @@
-# Maintainer: Abraham Levine <arc at plusreed dot com>
+# Maintainer: Colin Reeder <colin AT reederhome DOT net>
 pkgname=pa-applet-git
 pkgver=17.33b413b
 pkgrel=1
