@@ -7,7 +7,7 @@ else
   LLP_NULL=false ;
 fi
 
-. /opt/intel/composerxe/bin/compilervars.sh <arch>
+. /opt/intel/composerxe/linux/bin/compilervars.sh <arch>
 #. /opt/intel/composerxe/bin/iccvars.sh <arch>
 
 PATH=$PATH:/opt/intel/bin

@@ -1,2 +1,2 @@
-PATH=$PATH:/opt/intel/vtune_amplifier_xe_2013/<arch>
+PATH=$PATH:/opt/intel/vtune_amplifier_xe_2016/<arch>
 export PATH

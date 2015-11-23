@@ -1,9 +1,8 @@
 pkgbase = intel-parallel-studio-xe
-	pkgdesc = Intel C++ C and fortran compiler - Intel Parallel Studio XE - intel compiler - icc icpc ifort ipp mkl
-	pkgver = 2015.15.0.3.3.187
-	pkgrel = 3
+	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl mpi
+	pkgver = 2016.16.0.0.0.109
+	pkgrel = 0
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = libarchive
@@ -14,7 +13,7 @@ pkgbase = intel-parallel-studio-xe
 	options = strip
 	options = libtool
 	options = staticlibs
-	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/7538/parallel_studio_xe_2015_update3.tgz
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/7997/parallel_studio_xe_2016.tgz
 	source = intel_compilers.sh
 	source = intel_vtune-amplifier-xe.sh
 	source = intel_advisor-xe.sh
@@ -22,8 +21,10 @@ pkgbase = intel-parallel-studio-xe
 	source = intel-composer.install
 	source = intel-compiler-base.conf
 	source = intel-fortran.conf
+	source = intel-gdb.conf
 	source = intel-openmp.conf
 	source = intel-mkl.conf
+	source = intel-mpi.conf
 	source = intel-ipp.conf
 	source = intel-tbb.conf
 	source = intel-mkl.sh
@@ -31,16 +32,17 @@ pkgbase = intel-parallel-studio-xe
 	source = intel-mkl-th.conf
 	source = intel-tbb.install
 	source = EULA.txt
-	sha256sums = ab7169989c87bbb0fe66221cb7eb3a26b17c8b9ceff38f1926e5607834306896
-	sha256sums = 338041f924d8f3ac31d349bca57f8ab66f094a5bb53d4f821f48fa710a112111
-	sha256sums = 7da22140b9d8277d06d88f6bd37cb77ed17bc87d4f7ec5958587416639955991
+	sha256sums = fd4c32352fd78fc919601bedac5658ad5ac48efbc5700d9a8d42ed7d53bd8bb7
+	sha256sums = 75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5
+	sha256sums = 624001bbd846f460d46f062acdf78a602c862aa9c956f3f7e4b0ec9d9b38d3fb
 	sha256sums = 292a9eea2c9a836ee9dc0d4ff28fc741d5548a3182e4f75aec7b93e1dd7b4f21
-	sha256sums = 6dc3992ac649f979328d13cb98ead95121752a34fbad07d41ee65b084cdf03cf
+	sha256sums = 6d81d03efc3efe248b3c2ed1eab679fb0d8bcf21edc055042c1996c4a2c61eb1
 	sha256sums = 3f96dec03111e69d16bb363acf4d0570e8a9526c09e5e542a7558f1b26d043ef
 	sha256sums = 31ac4d0f30a93fe6393f48cb13761d7d1ce9719708c76a377193d96416bed884
 	sha256sums = c165386ba33b25453d4f5486b7fefcdba7d31e156ad280cbdfa13ed924b01bef
 	sha256sums = 99cc9683cc75934cc21bb5a09f6ad83365ee48712719bfd914de9444695eed13
 	sha256sums = a856326362e9b80c19dc237cbf66bf3d96a69bd7ad1baff99ec9849f8208348c
+	sha256sums = f32ad4fbaaab40001dc7a8b5cf06dcb9f1ec3cdf210eda3ea649fa15fbf4a93d
 	sha256sums = da6f41c2e002c9a793c75a18c8d1c85ef7ef5bf83a7a0a158ff144481491aac8
 	sha256sums = aee2ae7f87f12f4af38d52423b40d547fd5bbe77e18694b9847e9f2a96d33c6e
 	sha256sums = 5e68c529c65cac54218026c869e54b2ddb268179725fc1e6b56d920470dad999
@@ -50,54 +52,47 @@ pkgbase = intel-parallel-studio-xe
 	sha256sums = 228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5
 
 pkgname = intel-compiler-base
-	pkgdesc = Intel C/C++ compiler
-	pkgver = 15.0.3
+	pkgdesc = Intel C/C++ compiler with OpenMP
+	pkgver = 2016.16.0.0.0.109
 	install = intel-composer.install
-
-pkgname = intel-openmp
-	pkgdesc = Intel OpenMP Library
-	pkgver = 15.0.3
-	install = intel-composer.install
-	depends = intel-compiler-base
 
 pkgname = intel-fortran-compiler
 	pkgdesc = Intel Fortran compiler
-	pkgver = 15.0.3
+	pkgver = 2016.16.0.0.0.109
 	install = intel-composer.install
 	depends = intel-compiler-base
 
 pkgname = intel-ipp
 	pkgdesc = Intel Integrated Performance Primitives
-	pkgver = 8.2.2
+	pkgver = 2016.9.0.0
 	install = intel-composer.install
 
 pkgname = intel-mkl
 	pkgdesc = Intel Math Kernel Library (Intel® MKL)
-	pkgver = 11.2.3
+	pkgver = 2016.11.3.0
 	install = intel-mkl.install
 	backup = etc/intel-mkl-th.conf
 
-pkgname = intel-sourcechecker
-	pkgdesc = Intel Source Checker
-	pkgver = 15.0.3
+pkgname = intel-mpi
+	pkgdesc = Intel Message Passing Interface (Intel® MPI)
+	pkgver = 2016.5.1.1
+	backup = etc/intel-mpi.conf
 	depends = intel-compiler-base
 
-pkgname = intel-tbb_psxe
+pkgname = intel-tbb
 	pkgdesc = Intel Threading Building Blocks (TBB)
-	pkgver = 4.3.5
+	pkgver = 2016.4.4.0
 	install = intel-tbb.install
-	provides = intel-tbb
 
 pkgname = intel-vtune-amplifier-xe
 	pkgdesc = Performance profiler for serial and parallel performance analysis
-	pkgver = 3.0.403110
+	pkgver = 2016.16.1-424694
 	depends = pangox-compat
 
 pkgname = intel-inspector-xe
 	pkgdesc = Memory and thread debugger
-	pkgver = 1.2.379161
+	pkgver = 2016.16.1-423441
 
 pkgname = intel-advisor-xe
 	pkgdesc = Threading design and prototyping tool for software architects
-	pkgver = 1.10.380555
-
+	pkgver = 2016.16.1-423501
