@@ -2,12 +2,12 @@
 
 pkgname=freedv
 pkgver="1.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://freedv.org/"
-depends=('glibc' 'portaudio' 'hamlib' 'sox' 'wxgtk' 'codec2' 'speex')
+depends=('glibc' 'portaudio' 'hamlib' 'sox' 'wxgtk' 'codec2' 'speex' 'libao')
 #depends=('glibc' 'portaudio' 'hamlib' 'wxgtk' 'codec2' 'speex')
 makedepends=('cmake')
 source=("https://files.freedv.org/$pkgname/$pkgname-$pkgver.tar.xz")
