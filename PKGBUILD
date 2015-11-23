@@ -3,7 +3,7 @@
 
 pkgname=ladish-git
 pkgver=0.3.r147.g5fe205f
-pkgrel=8
+pkgrel=9
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ladish"
@@ -28,6 +28,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  export PYTHON=/usr/bin/python2
+  export CXX='g++ -std=c++11'
   git checkout ${_branch}
   sed -i "s|env python|&2|" ladish_control
   sed -i "s|\(RELEASE = \).*|\1True|" wscript
