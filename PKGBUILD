@@ -24,7 +24,7 @@ build() {
   msg "Starting make..."
 
   cd "$srcdir/$_gitname-$_gitver"
-  mkdir -p build && pushd build
+  mkdir build && cd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
     -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
@@ -32,7 +32,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
-  popd
 }
 
 package() {
