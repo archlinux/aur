@@ -1,0 +1,17 @@
+pkgbase = perl6-shell-command
+	pkgdesc = Common shell command replacements
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/tadzik/Shell-Command
+	arch = any
+	groups = perl6
+	license = MIT
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	depends = perl6-file-find
+	source = perl6-shell-command-0.0.1::git+https://github.com/tadzik/Shell-Command
+	sha256sums = SKIP
+
+pkgname = perl6-shell-command
+
