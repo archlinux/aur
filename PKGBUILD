@@ -68,9 +68,9 @@ _mkl_ver='11.3.0' # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
 _tbb_ver='4.4.0' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
 _gdb_ver='7.8.0' # intel-gdb-${_gdb_ver}-${_v_b}.x86_64.rpm
 _gdb_gt_ver='7.6.0' # intel-gdb-gt-${_gdb_gt_ver}-{_v_b}.x86_64.rpm
-_vtune_ver='16.1-424694' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
-_inspector_ver='16.1-423441' # intel-inspector-xe-${year}-*-${_inspector_ver}.${arch}.rpm
-_advisor_ver='16.1-423501' # intel-advisor-xe-${year}-*-${_advisor_ver}.${arch}.rpm
+_vtune_ver='16.1.424694' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
+_inspector_ver='16.1.423441' # intel-inspector-xe-${year}-*-${_inspector_ver}.${arch}.rpm
+_advisor_ver='16.1.423501' # intel-advisor-xe-${year}-*-${_advisor_ver}.${arch}.rpm
 
 # Different version for docs
 _vtune_man_ver='1.0.424694'
