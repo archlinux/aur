@@ -33,11 +33,7 @@
 #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgbase="intel-parallel-studio-xe"
-#pkgname=( 'intel-fortran-compiler' )
-pkgname=('intel-tbb_psxe')
-#pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
-#true && pkgname=('intel-compiler-base'  'intel-gdb'  )
-
+pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
 PKGEXT='.pkg.tar.gz'
 
 ########################################

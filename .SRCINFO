@@ -52,7 +52,7 @@ pkgbase = intel-parallel-studio-xe
 	sha256sums = 228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5
 
 pkgname = intel-compiler-base
-	pkgdesc = Intel C/C++ compiler with OpenMP
+	pkgdesc = Intel C/C++ compiler with Intel OpenMP
 	pkgver = 2016.16.0.0.0.109
 	install = intel-composer.install
 
@@ -79,7 +79,7 @@ pkgname = intel-mpi
 	backup = etc/intel-mpi.conf
 	depends = intel-compiler-base
 
-pkgname = intel-tbb
+pkgname = intel-tbb_psxe
 	pkgdesc = Intel Threading Building Blocks (TBB)
 	pkgver = 2016.4.4.0
 	install = intel-tbb.install
