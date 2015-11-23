@@ -10,7 +10,7 @@
 # intel-ipp:                    Intel Integrated Performance Primitives
 # intel-mkl:                    Intel Math Kernel Library (Intel® MKL)
 # intel-mpi:                    Intel Message passing interface (MPI)
-# intel-tbb:                    Intel Threading Building Blocks (TBB)
+# intel-tbb_psxe:               Intel Threading Building Blocks (TBB)
 # intel-vtune:                  Intel Vtune Amplifier
 # intel-advisor:                Intel Advisor
 # intel-inspector:              Intel Inspector
@@ -34,7 +34,8 @@
 
 pkgbase="intel-parallel-studio-xe"
 #pkgname=( 'intel-fortran-compiler' )
-pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
+pkgname=('intel-tbb_psxe')
+#pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
 #true && pkgname=('intel-compiler-base'  'intel-gdb'  )
 
 PKGEXT='.pkg.tar.gz'
@@ -710,7 +711,7 @@ package_intel-mpi() {
 	mv ${xe_build_dir}/etc ${pkgdir}
 }
 
-package_intel-tbb() {
+package_intel-tbb_psxe() {
 
 	set_build_vars
 
