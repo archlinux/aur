@@ -1,16 +1,14 @@
 pkgbase = rssdler
 	pkgdesc = Utility to automatically download RSS enclosures
 	pkgver = 0.4.2
-	pkgrel = 1
-	url = http://code.google.com/p/rssdler/
+	pkgrel = 2
+	url = https://github.com/dwayne80/rssdler/
 	arch = any
 	license = GPL2
 	depends = python2-feedparser
-	source = http://rssdler.googlecode.com/files/rssdler-0.4.2.tar.gz
-	source = rssdler-0.4.2-fix.diff
+	source = git+https://github.com/dwayne80/rssdler.git
 	source = config.txt
-	md5sums = 2f0aef5611bc1231928b861f717953eb
-	md5sums = 2317d4526f1d0e35fbdb0fb48709e058
+	md5sums = SKIP
 	md5sums = f9bf928e97b4fd996e1c5854990adcad
 
 pkgname = rssdler
