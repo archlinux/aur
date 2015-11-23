@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-marshmallow
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="ORM/ODM/framework-agnostic library for converting complex datatypes, such as objects, to and from native Python datatypes"
 arch=('any')
@@ -13,8 +13,8 @@ url="https://github.com/marshmallow-code/marshmallow"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/m/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('75811e1e8c840867e7c142f6a866d2ba')
-sha256sums=('141b96424a7bc15e5c39af0da9a596b6a5056c62c2135687c10c44cb1fcb7fcd')
+md5sums=('b8e3d771336f6172ffd106dabb4a5496')
+sha256sums=('2b3c754317accb5ec5045cbb0c04170f0560d95e0ababa45ce76b882efc7a76e')
 
 build() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
