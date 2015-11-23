@@ -1,7 +1,7 @@
 pkgbase = yajhfc
 	pkgdesc = (Yet another Java HylaFAX client) is a client for the HylaFAX fax server written completely in Java.
 	pkgver = 0.5.7_1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.yajhfc.de/
 	install = yajhfc.install
 	arch = any
