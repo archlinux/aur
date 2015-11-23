@@ -1,7 +1,7 @@
 pkgbase = zelda-roth-se
 	pkgdesc = Zelda : Return of the Hylian solarus edition.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zelda-solarus.com/
 	arch = any
 	license = custom
