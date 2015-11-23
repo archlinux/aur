@@ -5,7 +5,7 @@
 
 pkgname=zsdx
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A free 2D Zelda fangame."
 arch=('any')
@@ -29,7 +29,6 @@ md5sums=('2da8cd5954537978ea23a85b85328b02')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i "s/echo 'solarus/echo 'solarus_run/" CMakeLists.txt
   cmake -D CMAKE_INSTALL_PREFIX="/usr" -D CMAKE_BUILD_TYPE=Release .
   make
 }
