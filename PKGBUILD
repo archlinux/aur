@@ -32,7 +32,7 @@ prepare() {
 
   cd "$srcdir/jsoncpp-svn-release-$_jsoncpp_ver"
   patch -p1 -i "$srcdir/jsoncpp-cmakelists.patch"
-  mkdir -p build && pushd build
+  mkdir build && cd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
     -DCMAKE_BUILD_TYPE=Release \
@@ -40,14 +40,13 @@ prepare() {
   make
   mkdir ../out
   make DESTDIR="../out" install
-  popd
 }
 
 build() {
   msg "Starting make..."
 
   cd "$srcdir/$_gitname-$_gitver"
-  mkdir -p build && pushd build
+  mkdir build && cd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
     -DJSONCPP_INCLUDE_DIRS="$srcdir/jsoncpp-svn-release-$_jsoncpp_ver/out/usr/include/jsoncpp" \
@@ -55,7 +54,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
-  popd
 }
 
 package() {
