@@ -1,7 +1,7 @@
 pkgbase = mopidy-git
 	pkgdesc = A music server which can play music from Spotify
-	pkgver = 0.19.4.r249.g84897dd
-	pkgrel = 2
+	pkgver = 1.1.1.r120.gcc3ec5e
+	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
 	license = APACHE
@@ -19,7 +19,7 @@ pkgbase = mopidy-git
 	optdepends = mopidy-spotify: Spotify backend
 	optdepends = mopidy-scrobbler: Last.FM scrobbler
 	optdepends = mopidy-MPRIS: MPRIS frontend
-	provides = mopidy=0.19.4.r249.g84897dd-2
+	provides = mopidy=1.1.1.r120.gcc3ec5e-1
 	conflicts = mopidy
 	source = git+https://github.com/mopidy/mopidy.git
 	source = mopidy@.service
