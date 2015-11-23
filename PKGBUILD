@@ -1,18 +1,17 @@
 # Maintainer: Antonio Rojas 
 
 pkgname=okular-frameworks-git
-pkgver=r7036.dcf4d93
+pkgver=r7207.c793fb2
 pkgrel=1
 pkgdesc='Universal document viewer'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='http://kde.org/applications/graphics/okular/'
-license=('GPL')
-depends=('kpty' 'kdelibs4support' 'threadweaver' 'kactivities-frameworks' 'khtml' 'chmlib' 'djvulibre' 'libspectre' 'poppler-qt5' 
-'libkscreen')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python' 'ebook-tools' 'qca-qt5')
+license=(GPL)
+depends=(kpty kdelibs4support threadweaver kactivities-frameworks khtml chmlib djvulibre libspectre poppler-qt5 libkscreen libkexiv2)
+makedepends=(extra-cmake-modules kdoctools git python ebook-tools qca-qt5)
 optdepends=('ebook-tools: mobi and epub support' 'qca-qt5: support for encrypted ODF documents')
-conflicts=('kdegraphics-okular' 'okular')
-provides=('okular')
+conflicts=(kdegraphics-okular okular)
+provides=(okular)
 source=("git://anongit.kde.org/okular.git#branch=frameworks")
 install=$pkgname.install
 sha256sums=('SKIP')

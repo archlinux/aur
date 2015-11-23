@@ -23,6 +23,7 @@ pkgbase = okular-frameworks-git
 	depends = libspectre
 	depends = poppler-qt5
 	depends = libkscreen
+	depends = libkexiv2
 	optdepends = ebook-tools: mobi and epub support
 	optdepends = qca-qt5: support for encrypted ODF documents
 	provides = okular
