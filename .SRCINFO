@@ -1,0 +1,16 @@
+pkgbase = jsl
+	pkgdesc = JavaScript Lint
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.javascriptlint.com/index.htm
+	arch = any
+	license = GPL
+	makedepends = python2
+	depends = python2
+	provides = jsl,
+	provides = jscpucfg
+	source = jsl::svn+https://javascriptlint.svn.sourceforge.net/svnroot/javascriptlint/tags/0.3.0
+	md5sums = SKIP
+
+pkgname = javascript-lint
+
