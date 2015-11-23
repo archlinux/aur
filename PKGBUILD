@@ -8,7 +8,7 @@ _gitname=pvr.argustv
 pkgver=20150920.2bf67bb
 _gitver=2bf67bb7b0c6d69da7f062f7fa0f2134fd9018b4
 _jsoncpp_ver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ARGUS TV PVR addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-pvr/$_gitname"
@@ -36,6 +36,7 @@ prepare() {
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=on \
     ..
   make
   mkdir ../out
@@ -50,7 +51,7 @@ build() {
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
     -DJSONCPP_INCLUDE_DIRS="$srcdir/jsoncpp-svn-release-$_jsoncpp_ver/out/usr/include/jsoncpp" \
-    -DJSONCPP_LIBRARIES="$srcdir/jsoncpp-svn-release-$_jsoncpp_ver/out/usr/lib" \
+    -DJSONCPP_LIBRARIES="$srcdir/jsoncpp-svn-release-$_jsoncpp_ver/out/usr/lib/libjsoncpp.a" \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
