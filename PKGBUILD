@@ -5,7 +5,7 @@ _pkgname='bigloo'
 pkgname="${_pkgname}-devel"
 epoch=12
 _pkgver='4.2c'
-_pkgsuffix='beta17Nov15'
+_pkgsuffix='beta23Nov15'
 pkgver="${_pkgver}_${_pkgsuffix}"
 pkgrel=1
 pkgdesc="Fast scheme compiler"
@@ -21,7 +21,7 @@ conflicts=('bigloo')
 options=('!makeflags' 'libtool' 'staticlibs' '!strip')
 install=bigloo.install
 source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh")
-md5sums=('026217bab20cc42254e0ca787571023b'
+md5sums=('a689406f2fd6302f813664d909846fce'
          'c253eb5651c81204f6c16b89c3c2cb6a')
 
 prepare() {
