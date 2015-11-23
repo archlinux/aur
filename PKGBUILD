@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-security-privacy
-pkgver=0.1.0.1
+pkgver=0.1.0.2
 pkgrel=1
 pkgdesc='Security & Privacy plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('elementary-dpms-helper-bzr' 'glib2' 'glibc' 'gtk3' 'libgee'
          'light-locker' 'polkit' 'ufw' 'zeitgeist'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
-source=("https://launchpad.net/switchboard-plug-security-privacy/freya/${pkgver}/+download/switchboard-plug-security-privacy-${pkgver}.tgz")
-sha256sums=('9163630a27ec4fc724e288cbe091e156fd92939326c9f4a3f48264e19c38e5c7')
+source=("https://launchpad.net/switchboard-plug-security-privacy/freya/0.2.0.2/+download/switchboard-plug-security-privacy-${pkgver}.tar.xz")
+sha256sums=('bae8a0b289d84718dd64eb64346a17ae22f46094c1fc05709600934e902a0b7f')
 
 prepare() {
   cd switchboard-plug-security-privacy-${pkgver}
