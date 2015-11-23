@@ -10,7 +10,7 @@ license=('GPL')
 source=(http://downloads.sourceforge.net/puf/puf-1.0.0.tar.gz)
 md5sums=('78f870f2a0c611ace8c5e9ced7b08a83')
 
-build() {
+package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   ./configure --prefix=/usr
