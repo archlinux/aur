@@ -32,13 +32,12 @@ build() {
   cd "$srcdir/$_gitname-$_gitver"
   patch -p1 -i "$srcdir/0001-fix-gcc5-compile.patch"
   patch -p1 -i "$srcdir/0002-fix-default-include-dir.patch"
-  mkdir -p build && pushd build
+  mkdir build && cd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
-  popd
 }
 
 package() {
