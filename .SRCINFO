@@ -1,8 +1,8 @@
 pkgbase = foliatools-git
 	pkgdesc = Tools for working with the FoLiA format, based on libfolia. *NOT* the same as Python package FoLiA-tools!
 	pkgver = 1
-	pkgrel = 1
-	url = http://ilk.uvt.nl/
+	pkgrel = 2
+	url = https://proycon.github.io/folia/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = foliatools-git
 	provides = foliatools
 	conflicts = foliatools
 	options = !libtool
-	source = git://github.com/proycon/foliatools.git
+	source = git://github.com/LanguageMachines/foliatools.git
 	md5sums = SKIP
 
 pkgname = foliatools-git
