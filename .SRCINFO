@@ -1,0 +1,17 @@
+pkgbase = perl6-compress-zlib
+	pkgdesc = Nicer zlib interface
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/retupmoca/P6-Compress-Zlib
+	arch = any
+	groups = perl6
+	license = MIT
+	checkdepends = perl
+	makedepends = git
+	depends = rakudo
+	depends = perl6-compress-zlib-raw
+	source = perl6-compress-zlib-1.0.0::git+https://github.com/retupmoca/P6-Compress-Zlib
+	sha256sums = SKIP
+
+pkgname = perl6-compress-zlib
+
