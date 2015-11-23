@@ -7,3 +7,6 @@ Left click to print the pixel color, any other mouse click to quit the program.
 
 ### Dependencies
 GTK/GDK 2.0.
+
+### License
+MIT
