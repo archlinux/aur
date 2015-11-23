@@ -6,10 +6,15 @@ pkgbase = python-socketio-client
 	arch = any
 	license = custom
 	makedepends = python-setuptools
-	depends = python>=3.4,python-requests>=2.7.0,python-six,python-websocket-client
+	depends = python>=3.4
+	depends = python-requests>=2.7.0
+	depends = python-six
+	depends = python-websocket-client
 	provides = python-socketio-client
 	source = https://pypi.python.org/packages/source/s/socketIO-client/socketIO_client-0.6.5.tar.gz
+	source = LICENSE
 	md5sums = febe2d6ab5839521c45fbd16c455d183
+	md5sums = d254476822e464804f51bea272ee2588
 
 pkgname = python-socketio-client
 
