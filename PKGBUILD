@@ -3,14 +3,24 @@
 pkgname=teamviewer-quicksupport-beta
 pkgver=11.0.51386
 _pkgver_major=${pkgver%%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc='Teamviewer Quicksupport - All-In-One Software for Remote Support and Online Meetings - beta version'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com/'
 depends=('bash')
 options=('!strip')
-depends_i686=('gcc-libs' 'alsa-lib' 'freetype2' 'libxdamage' 'libxrandr' 'libxtst' 'zlib')
-depends_x86_64=('lib32-gcc-libs' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-libxdamage' 'lib32-libxrandr' 'lib32-libxtst' 'lib32-zlib')
+depends_x86_64=(
+	'lib32-fontconfig'
+	'lib32-libpng12'
+	'lib32-libsm'
+	'lib32-libxinerama'
+	'lib32-libxrender')
+depends_i686=(
+	'fontconfig'
+	'libpng12'
+	'libsm'
+	'libxinerama'
+	'libxrender')
 conflicts=('teamviewer' 'teamviewer-quicksupport')
 provides=('teamviewer-quicksupport')
 license=('custom')
