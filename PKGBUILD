@@ -6,7 +6,7 @@
 
 pkgname=teamviewer-beta
 pkgver=11.0.51386
-pkgrel=2
+pkgrel=3
 pkgdesc='All-In-One Software for Remote Support and Online Meetings - beta version'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com'
@@ -14,28 +14,18 @@ license=('custom')
 options=('!strip')
 provides=('teamviewer')
 conflicts=('teamviewer')
-depends_x86_64=('lib32-gcc-libs'
-	'lib32-alsa-lib'
-	'lib32-freetype2'
-	'lib32-libice'
+depends_x86_64=(
+	'lib32-fontconfig'
 	'lib32-libpng12'
 	'lib32-libsm'
-	'lib32-libxdamage'
 	'lib32-libxinerama'
-	'lib32-libxrandr'
-	'lib32-libxtst'
-	'lib32-zlib')
-depends_i686=('gcc-libs'
-	'alsa-lib'
-	'freetype2'
-	'libice'
+	'lib32-libxrender')
+depends_i686=(
+	'fontconfig'
 	'libpng12'
 	'libsm'
-	'libxdamage'
 	'libxinerama'
-	'libxrandr'
-	'libxtst'
-	'zlib')
+	'libxrender')
 install=teamviewer.install
 source_x86_64=("http://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
 source_i686=("http://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
