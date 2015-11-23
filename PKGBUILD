@@ -5,9 +5,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-grsec
-pkgver=355.11
+pkgver=358.16
 _extramodules=extramodules-4.2.6-grsec
-pkgrel=5
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -19,15 +19,13 @@ options=(!strip)
 source=('nvidia-drivers-pax-usercopy.patch'
          'nvidia-drivers-pax-constify.patch'
          'nv-drm.patch')
-md5sums=('2d3de69362039a4ff10b68dadebc49ca'
-         'cea9a028cb816b5495759cfad2d981b6'
-         '72cdf32a6d35729a12c6c23a7e91e972')
-md5sums_i686=('16d143ccafe99328a2ca8e5a396fd4bc')
-md5sums_x86_64=('30133d89690f4683c4e289ec6c0247dc')
-source_i686="ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
-source_x86_64="ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-md5sums_i686='16d143ccafe99328a2ca8e5a396fd4bc'
-md5sums_x86_64='30133d89690f4683c4e289ec6c0247dc'
+source_i686="http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
+source_x86_64="http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+sha512sums=('6abba40f39cf92f4b25e2e8233d4ac4fd6720b4679697471e513042be156aa51d435eee53c5a71b1be078655580d9a52e364763b38827a6230fdb890bc5e1520'
+            '7cdd21eb783f48564220122c38bad1a64b0b976f50a6f48411a4d3735d83c5b605bd53336dc8745077e060f0071ddc5ee692f89ae6992e01f5de66ceadf3a73e'
+            '068b494da1be73cace96405c82c0816fab311bba88244a2142bd0be92d84b01e485607bc3570f4eb41509621c073b035616980c3431b71ea60ac66d08ca6f31e')
+sha512sums_i686=('a5d37fb56a59b9958f6c34139250baf13a1c42ffc70f7deb19ffaac1ae6c2ce80b96649c5797d60754050d75792d14141cd5ebc8820bb73ee4aad4aa6d6c5b20')
+sha512sums_x86_64=('eb1abeebbfa807c784e9019afaa3f238d2142b28467c80dcac8d5199cf1082d72ab417e39660bda076023aecb7d04d9c3c91a2d494f1513cfe82b617b17a2297')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -50,6 +48,8 @@ build() {
 package() {
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
+    install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
+         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-modeset.ko"
 
     if [[ "$CARCH" = "x86_64" ]]; then
         install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
