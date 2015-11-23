@@ -2,7 +2,7 @@ pkgbase = libfolia-git
 	pkgdesc = C++ library for FoLiA (Format for Linguistic Annotation)
 	pkgver = 1
 	pkgrel = 2
-	url = http://ilk.uvt.nl/
+	url = https://proycon.github.io/folia
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = libfolia-git
 	provides = libfolia
 	conflicts = libfolia
 	options = !libtool
-	source = git://github.com/proycon/libfolia.git
+	source = git://github.com/LanguageMachines/libfolia.git
 	md5sums = SKIP
 
 pkgname = libfolia-git
