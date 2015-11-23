@@ -1,13 +1,13 @@
 pkgbase = kotlinc
 	pkgdesc = Kotlin compiler
-	pkgver = 0.12.613
-	pkgrel = 1
-	url = https://github.com/JetBrains/kotlin/releases/tag/build-0.12.613
+	pkgver = 1.0.0_beta
+	pkgrel = 1038
+	url = https://github.com/JetBrains/kotlin/releases/tag/build-1.0.0-beta-1038
 	arch = any
 	license = Apache License, Version 2.0
 	depends = java-environment>=6
-	source = https://github.com/JetBrains/kotlin/releases/download/build-0.12.613/kotlin-compiler-0.12.613.zip
-	sha256sums = e72b02661d8d995f51dec9c3d63b901d13a451c1d2a99faf7b9b9ab4e3ef87f5
+	source = https://github.com/JetBrains/kotlin/releases/download/build-1.0.0-beta-1038/kotlin-compiler-1.0.0-beta-1038.zip
+	sha256sums = 53e1516eb95274ac58b5445d1d8a82d265166d7c5038a878395589604f35275c
 
 pkgname = kotlinc
 
