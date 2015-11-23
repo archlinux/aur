@@ -1,0 +1,25 @@
+From 1bb4863befc294ac25c584d766796ab476cbeb97 Mon Sep 17 00:00:00 2001
+From: Joseph Kogut <joseph.kogut@gmail.com>
+Date: Thu, 19 Nov 2015 14:42:04 -0800
+Subject: [PATCH] patch makefile
+
+---
+ tools/firmware/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/firmware/Makefile b/tools/firmware/Makefile
+index 8979b88..53d13e9 100644
+--- a/tools/firmware/Makefile
++++ b/tools/firmware/Makefile
+@@ -25,7 +25,7 @@ ovmf-dir:
+ 
+ seabios-dir:
+ 	GIT=$(GIT) $(XEN_ROOT)/scripts/git-checkout.sh $(SEABIOS_UPSTREAM_URL) $(SEABIOS_UPSTREAM_REVISION) seabios-dir
+-	patch -p1 < $(XEN_ROOT)/tools/firmware/xengt_seabios.patch
++	patch -p1 < $(XEN_ROOT)/tools/firmware/xengt_seabios.patch && patch -Np1 -i seabios-gcc5.patch
+ 	$(MAKE) -C seabios-dir defconfig
+ 
+ .PHONY: all
+-- 
+2.6.2
+

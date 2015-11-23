@@ -1,0 +1,128 @@
+2015-07-04 David Sutton <kantras - gmail.com>
+	* 4.5.1-1
+	New major release from upstream
+	Added -fno-caller-saves CFLAG to PKGBUILD to work around GCC5 issues
+	Added in some compile fixes for GCC 5
+	Disabled OVMF for now until patched for GCC 5
+
+2015-05-13 David Sutton <kantras - gmail.com>
+	* 4.5.0-3
+	Added Security patches
+
+2015-04-08 David Sutton <kantras - gmail.com>
+	* 4.5.0-2
+	Updated PKGBUILD to use absolute instead of relative paths for install
+	Updated efi-xen.cfg with syntax fix
+	Added gnuttls-3.4.0 patch 
+	Added security patches
+
+2015-03-01 David Sutton <kantras - gmail.com>
+	* 4.5.0-1 
+	New major release from upstream
+	Cleaned up old XSA patches
+	Removed old systemd support patches and realigned with the new upstream methods
+
+2014-10-26 David Sutton <kantras - gmail.com>
+	* 4.4.1-3
+	Enabled OVMF support and added patches to fix compile
+	Enabled spice support and added patch to enable qemu support in qemu-xen
+	Added figlet as an make dependancy for the ascii art version number
+	Including an example xen.cfg package for people who will be using EFI
+	Additional cleanup (explictly disabling some unnecessary libraries)
+
+2014-10-12 David Sutton <kantras - gmail.com>
+	* 4.4.1-2:
+	Added XSA 104, 105, 106, 107 and 108 security patches
+	Added .config to resolve compile issues where /etc/sysconfig exists
+
+2014-09-04 David Sutton <kantras - gmail.com>
+	* 4.4.1-1:
+	New Upstream release
+	Cleared out unnecessary patches (security, gcc compile and pit)
+
+2014-06-22 David Sutton <kantras - gmail.com>
+	* 4.4.0-6:
+	Added additional patch to support XSA 100 on AMD platform
+
+2014-06-17 David Sutton <kantras - gmail.com>
+	* 4.4.0-5:
+	Added XSA 96 and 100 security patches
+	Added patch to explictly disable searching for bluez libs
+	Cleaned up PKGBUILD
+
+2014-05-17 David Sutton <kantras - gmail.com>
+	* 4.4.0-4:
+	Added patch to fix shutdown issues with pvh domains
+
+2014-05-01 David Sutton <kantras - gmail.com>
+	* 4.4.0-3:
+        Added XSA 92 Security patch
+        Added fix for compiling under GCC 4.9.0 (From Fedora Rawhide SRPM)
+        Added updates to 09_xen to closer match system 10_linux
+
+2014-03-11 David Sutton <kantras - gmail.com>
+	* 4.4.0-2:
+	Moved xen-syms file so 09_xen won't pick it up as a potential kernel.
+	Added XSA 89 Security patch
+	Minor PKGBUILD cleanup/changes
+
+2014-03-10 David Sutton <kantras - gmail.com>
+	* 4.4.0-1:
+	New upstream release
+	Cleaned up old unnecessary patches
+
+2014-02-19 David Sutton <kantras - gmail.com>
+	* 4.3.2-1:
+	New upstream release
+	Removed unnecessary security patches (since now integrated into source)
+	Attempts to pull down additional required source file to ensure not corrupted
+	Added missing dependancy libseccomp
+
+2013-11-25 David Sutton <kantras - gmail.com>
+	* 4.3.1-2:
+	Changed bluez dependancy from bluez4 to bluez
+	Added recent security patches
+
+2013-10-31 David Sutton <kantras - gmail.com>
+	* 4.3.1-1:
+	New upstream release
+	Removed unnecessary security patches (already merged)
+	Fixed BIOS Workaround patch to apply to the new source files
+	Fixed ATI Passthrough patch to apply to the new source files
+	Updated paths in all patches
+
+2013-09-29 David Sutton <kantras - gmail.com>
+	* 4.3.0-7:
+	Fixed optdepends in PKGBUILD
+	Added in a pre_remove function in xen.install to disable services
+	Minor text formating changes in xen.install
+	Added XSA 62,63,64 and 66 patches (Xen Security Advisories)
+
+2013-09-29 David Sutton <kantras - gmail.com>
+	* 4.3.0-6:
+	Fixed 09_xen so it can detect lts kernels
+
+2013-09-28 David Sutton <kantras - gmail.com>
+	* 4.3.0-5:
+	Fixed mount option in 09_xen from ro to rw
+	Added in dummy /etc/xen/grub.conf to control settings in 09_xen
+	Fix library sanitize so that it returns to the base directory
+	Move the syms file to /usr/share/xen so that it is out of the way of boot but still accessible
+	Added optional dependancy for openvswitch
+
+2013-08-13 David Sutton <kantras - gmail.com>
+	* 4.3.0-4 :
+	Added patch for qemu-xen to add a TOM register for PCI Hole mapping
+	Protected /etc/conf.d/xendomains from being overwritten
+	Included ATI Passthrough patch (not enabled by default, compile tested only)
+
+2013-07-23 David Sutton <kantras - gmail.com>
+
+        * 4.3.0-3 :
+        added ChangeLog.
+        Cleaned up PKGBUILD to match Arch Package Standards
+        Fixed some path references - /var/run to /run
+        Removed some unnecessary empty directories
+        Updated xenconsoled and xenstored so they use /run for pid file
+        Updated auto-created /run directories to include xenstored
+

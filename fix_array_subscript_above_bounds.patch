@@ -1,0 +1,25 @@
+From a96a4608887dfd52ccecb0bf9c8c9562dd03119c Mon Sep 17 00:00:00 2001
+From: Joseph Kogut <joseph.kogut@gmail.com>
+Date: Mon, 24 Aug 2015 06:00:53 +0000
+Subject: [PATCH] Fix build error caused by undersized array
+
+---
+ xen/common/symbols.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xen/common/symbols.c b/xen/common/symbols.c
+index bc2fde6..fc7c9e7 100644
+--- a/xen/common/symbols.c
++++ b/xen/common/symbols.c
+@@ -19,7 +19,7 @@
+ #include <xen/spinlock.h>
+ 
+ #ifdef SYMBOLS_ORIGIN
+-extern const unsigned int symbols_offsets[1];
++extern const unsigned int symbols_offsets[];
+ #define symbols_address(n) (SYMBOLS_ORIGIN + symbols_offsets[n])
+ #else
+ extern const unsigned long symbols_addresses[];
+-- 
+2.5.0
+

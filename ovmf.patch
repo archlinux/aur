@@ -1,0 +1,13 @@
+--- a/tools/firmware/Makefile	2014-10-26 23:26:08.002103548 -0500
++++ b/tools/firmware/Makefile	2014-10-26 23:25:50.112361448 -0500
+@@ -19,6 +19,10 @@
+ 
+ ovmf-dir:
+ 	GIT=$(GIT) $(XEN_ROOT)/scripts/git-checkout.sh $(OVMF_UPSTREAM_URL) $(OVMF_UPSTREAM_REVISION) ovmf-dir
++	sed 's|python |python2 |g' -i "ovmf-dir/BaseTools/BinWrappers/PosixLike"/* || true
++	sed 's|python |python2 |g' -i "ovmf-dir/BaseTools/Tests/GNUmakefile"
++	patch -Np1 -i ovmf-gcc4.9-basetools.patch
++	patch -Np1 -i ovmf-gcc4.9-ovmfpkg.patch
+ 	cp ovmf-makefile ovmf-dir/Makefile;
+ 
+ seabios-dir:
