@@ -1,21 +1,21 @@
 # Maintainer: Bruno Nova <brunomb.nova@gmail.com>
 pkgname=drmips
-pkgver=1.3.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Graphical MIPS simulator to support computer architecture teaching and learning"
 arch=('any')
 url="http://brunonova.github.io/$pkgname/"
 license=('GPL3')
-depends=('java-runtime>=6' 'desktop-file-utils' 'hicolor-icon-theme' 'ttf-font')
-makedepends=('java-environment>=6' 'cmake>=2.8')
+depends=('java-runtime>=7' 'desktop-file-utils' 'hicolor-icon-theme' 'ttf-font')
+makedepends=('java-environment>=7' 'cmake>=2.8')
 optdepends=('drmips-doc: user manuals')
 install="$pkgname.install"
 source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/DrMIPS_v$pkgver.tar.xz")
-md5sums=('4d9de6b78ed07f278839f0f2d7f90d28')
+md5sums=('f4756bf519e96d7811a1276633346f79')
 
 build() {
 	cd "$srcdir"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DDRMIPS_BUILD_MANUALS=off
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DDRMIPS_BUILD_MANUALS=off -DDRMIPS_BUILD_TESTS=off
 	make
 }
 
