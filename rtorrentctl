@@ -4,69 +4,63 @@ set -e
 
 # systemd integration for rtorrent
 #
-# Starts and stops instances of rtorrent inside screen sessions
-# Utilized by rtorrent@.service systemd service
-# This process does not fork after starting rtorrent/screen
+# Starts and stops instances of rtorrent inside screen sessions.
+# Utilized by rtorrent@.service systemd service.
+# This process does not fork after starting rtorrent/screen.
 #
-# Instances are rtorrent.rc files named ${INSTANCE}${CONFIG_EXT}
-# Instances live in ${CONFIG_DIR}
+# Instances are rtorrent.rc files named ${INSTANCE}${RC_EXT} and
+# directive files named ${INSTANCE}${DIRECTIVE_EXT}. Directive
+# files are sourced BASH fragments that set known elements in an
+# associated array named 'CONFIG'. Instances live in ${CONFIG_DIR}.
 #
-# rtorrent's working directory will be the current directory unless
-# there is a file named ${INSTANCE}${WORKING_DIR_EXT} containing
-# a path on the first line, in which case that path will be the
-# working directory for rtorrent/screen.
+# Supported Directives:
+# user=... Sets the run-as user for the rtorrent and screen programs
+# dir=...  Sets the working directory of the rtorrent and screen programs
+#          Defaults to the current working directory
 #
-# rtorrent/screen will be executed as the user named in the file
-# ${CONFIG_DIR}/${INSTANCE}${USER_SUFFIX}
+# Example Directive File:
+# CONFIG+=([user]="username")
+# CONFIG+=([dir]="/torrents")
 #
 # Return codes:
 # 1 - Working directory doesn't exist
 # 2 - Invalid action
 # 3 - Missing instance argument
 # 4 - Incorrect number of arguments
-# 5 - Run-as user file doesn't exist
+# 5 - Instance rtorrent.rc file missing
+# 6 - Instance directive file missing
 
 # Directory containing .rtorrent.rc files for each rtorrent instance
 CONFIG_DIR="/etc/rtorrent.d"
 # Suffix of instance rtorrent.rc files
-CONFIG_EXT=".rtorrent.rc"
-# Suffix of working directory override file for an instance
-WORKING_DIR_EXT=".wd"
+RC_EXT=".rtorrent.rc"
+# Suffic of instance directive files
+DIRECTIVE_EXT=".config"
 # Suffix added to instance name and used as the screen session name
 SESSION_SUFFIX="-rtorrent"
-# Suffix of run-as user file for an instance
-USER_SUFFIX=".user"
 
 # Prints the script usage
 function usage() {
   echo "Usage: rtorrentctl {start|stop} instance" >&2
-  echo "'instance' names prefix of ${CONFIG_EXT} and ${USER_SUFFIX} in ${CONFIG_DIR}" >&2
+  echo "'instance' names prefix of ${RC_EXT} and ${DIRECTIVE_EXT} in ${CONFIG_DIR}" >&2
 }
 
-# Produces the configuration file path from the instance name 
+# Produces the rtorrent.rc file path from the instance name 
+function rcFile() {
+  echo "${CONFIG_DIR}/${1}${RC_EXT}"
+}
+
+# Produces the directive file path from the instance name
 function configFile() {
-  echo "${CONFIG_DIR}/${1}${CONFIG_EXT}"
+  echo "${CONFIG_DIR}/${1}${DIRECTIVE_EXT}"
 }
 
-# Produces the working directory to use from the instance name
-function workingDir() {
-  # Path to where the working directory override file may be
-  workingDirFile="${CONFIG_DIR}/${1}${WORKING_DIR_EXT}"
-
-  # If there is no working directory override, use the current directory
-  if [ ! -e "${workingDirFile}" ]
+# Sets the working directory to the default if not specified
+function defaultWorkingDir() {
+  if [[ "${CONFIG[dir]}" == "" ]]
   then
-    pwd
-    return
+    CONFIG[dir]="$(pwd)"
   fi
-
-  # Otherwise grab the path from the override file
-  head -n 1 "${workingDirFile}"
-}
-
-# Produces the filename containing the run-as user for this instance
-function runAsUserFile() {
-  echo "${CONFIG_DIR}/${1}${USER_SUFFIX}"
 }
 
 # Produces the screen session name for an instance
@@ -76,12 +70,13 @@ function sessionName() {
 
 # Starts an instance
 function start() {
-  instance="${1}"
-  user="${2}"
+  dir="${CONFIG[dir]}"
+  user="${CONFIG[user]}"
+  sessionName="${CONFIG[sessionName]}"
+  rcFile="${CONFIG[rcFile]}"
 
   # Change to the desired working directory
-  workingdir=$(workingDir "${instance}")
-  cd "${workingdir}"
+  cd "${dir}"
 
   # Exec screen as user
   # "-u ..."        User to exec screen as
@@ -89,22 +84,23 @@ function start() {
   # "-S ..."        Session name
   # "-n"            Tell rtorrent to not read ~/.rtorrent.rc
   # "-o import=..." Tell rtorrent to read and use this file as configuration
-  sudo -u "${user}" screen -D -m -S "$(sessionName "${instance}")"  rtorrent -n -o import=${CONFIG}
+  sudo -u "${user}" screen -D -m -S "${sessionName}"  rtorrent -n -o import="${rcFile}"
 }
 
 # Stops an instance
 function stop() {
-  instance="${1}"
-  user="${2}"
+  instance="${CONFIG[instance]}"
+  user="${CONFIG[user]}"
+  sessionName="${CONFIG[sessionName]}"
+
   # Signal screen to send "quit" keystroke (CTRL+Q) to rtorrent
   # "-u ..." User to send signal as
   # "-S ..." Session name
   # "-p ..." Screen number within session
   # "-X xon" Send 'xon' command, which means send 'CTRL+Q'
-  sudo -u "${user}" screen -S "$(sessionName "${1}")" -p 0 -X xon
+  sudo -u "${user}" screen -S "${sessionName}" -p 0 -X xon
 }
 
-screen -D -m -S "${INSTANCE}${SESSION_SUFFIX}" -s "rtorrent -o 'import=${CONFIG}'"
 if [[ "${1}" != "start" ]] && [[ "${1}" != "stop" ]]
 then
   echo "Valid actions are 'start' and 'stop'" >&2
@@ -129,31 +125,46 @@ fi
 ACTION="${1}"
 INSTANCE="${2}"
 
-CONFIG=$(configFile "${INSTANCE}")
-if [[ ! -e "${CONFIG}" ]]
+RCFILE=$(rcFile "${INSTANCE}")
+if [[ ! -e "${RCFILE}" ]]
 then
-  echo "Instance doesn't exist. Check for ${CONFIG}" >&2
+  echo "Instance rtorrent.rc doesn't exist. Check for ${RCFILE}" >&2
   exit 5
 fi
 
-USERFILE="$(runAsUserFile "${INSTANCE}")"
-if [[ ! -e "${USERFILE}" ]]
+CONFIGFILE=$(configFile "${INSTANCE}")
+if [[ ! -e "${CONFIGFILE}" ]]
 then
-  echo "Instance run-as user file doesn't exist. Check for ${USERFILE}" >&2
+  echo "Instance configuration directive file doesn't exist. Check for ${CONFIGFILE}" >&2
   exit 6
 fi
-USER=$(head -n 1 "${USERFILE}")
 
-echo "I am ${ACTION}ing ${INSTANCE}"
+# Load the configuration directives from the config file
+declare -A CONFIG
+CONFIG[instance]="${INSTANCE}"
+CONFIG[action]="${ACTION}"
+CONFIG[sessionName]="$(sessionName "${INSTANCE}")"
+CONFIG[rcFile]="${RCFILE}"
+source ${CONFIGFILE}
+
+# Set the default directory if none was set
+defaultWorkingDir
+
+if [[ "${CONFIG[user]}" == "" ]]
+then
+  echo "User directive missing from ${CONFIGFILE}" >&2
+  exit 7
+fi
+
 if [[ "${ACTION}" == "start" ]]
 then
 
-  start "${INSTANCE}" "${USER}" 
+  start
 
 elif [[ "${ACTION}" == "stop" ]]
 then
 
-  stop "${INSTANCE}" "${USER}"
+  stop
 
 fi
 
