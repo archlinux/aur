@@ -27,7 +27,7 @@ pkgver=16.0b2
 _gitver=$pkgver-Jarvis
 
 _pkgsrcname=$_gitname-$_gitver
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://xbmc.org"
 license=('GPL' 'LGPL')
@@ -133,6 +133,7 @@ package_kodi-devel() {
     'kodi-devel-pvr-dvblink: DVBLink PVR client addon for Kodi'
     'kodi-devel-pvr-dvbviewer: DVBViewer PVR client addon for Kodi'
     'kodi-devel-pvr-filmon: Filmon client PVR addon for Kodi'
+    'kodi-devel-pvr-hdhomerun: HDHomeRun PVR addon for Kodi'
     'kodi-devel-pvr-hts: Tvheadend HTSP PVR client addon for Kodi'
     'kodi-devel-pvr-iptvsimple: IPTV Simple PVR client addon for Kodi'
     'kodi-devel-pvr-mediaportal-tvserver: MediaPortal PVR client addon for Kodi'
