@@ -10,7 +10,7 @@ arch=('x86_64')
 url="http://www.codef00.com/projects.php#Debugger"
 license=('GPL2')
 depends=('lib32-qt4>=4.5')
-makedepends=('boost>=1.35.0')
+makedepends=('gcc-multilib' 'boost>=1.35.0')
 install=edb.install
 source=(http://www.codef00.com/projects/debugger-${pkgver}.tgz
         edb32.desktop)

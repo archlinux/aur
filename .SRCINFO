@@ -6,6 +6,7 @@ pkgbase = bin32-edb-debugger
 	install = edb.install
 	arch = x86_64
 	license = GPL2
+	makedepends = gcc-multilib
 	makedepends = boost>=1.35.0
 	depends = lib32-qt4>=4.5
 	source = http://www.codef00.com/projects/debugger-0.9.20.tgz
