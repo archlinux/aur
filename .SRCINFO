@@ -1,4 +1,4 @@
-pkgbase = jsl
+pkgbase = javascriptlint
 	pkgdesc = JavaScript Lint
 	pkgver = 0.3
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = jsl
 	source = jsl::svn+https://javascriptlint.svn.sourceforge.net/svnroot/javascriptlint/tags/0.3.0
 	md5sums = SKIP
 
-pkgname = javascript-lint
+pkgname = javascriptlint
 
