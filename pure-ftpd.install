@@ -22,6 +22,10 @@ post_install()
 		echo "Then restart the ftp service: systemctl restart pure-ftpd.service"
 		echo
 	fi
+
+	echo "With some FTP clients (e.g. Total Commander, AndFTP) you may encounter unexpected"
+	echo "closed connections. This can be resolved by enabling 'BrokenClientsCompatibility'"
+	echo "in /etc/pure-ftpd/pure-ftpd.conf."
 }
 
 post_upgrade() {

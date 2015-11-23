@@ -1,4 +1,5 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: spapanik21
 # Contributor: kleph
 # Contributor: fila pruda.com
 # Contributor: tuxce <tuxce.net@gmail.com>
@@ -8,7 +9,7 @@
 
 pkgname=pure-ftpd
 pkgver=1.0.42
-pkgrel=2
+pkgrel=3
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
 url="http://www.pureftpd.org/"
@@ -61,7 +62,7 @@ package() {
 	sed -i "/# FortunesFile/a FortunesFile \/etc\/pure-ftpd\/welcome.msg" ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
 	sed -i 's|SyslogFacility\s.*ftp|SyslogFacility none|' ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
 	sed -i 's|# /usr/sbin/pure-config.pl /usr/etc/pure-ftpd.conf|# /usr/bin/pure-config.pl /etc/pure-ftpd/pure-ftpd.conf|' ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
-	sed -i 's|#PIDFile\s.*/var/run/pure-ftpd.pid|PIDFile /run/pure-ftpd/pure-ftpd.pid|' ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
+	sed -i 's|#PIDFile\s.*/var/run/pure-ftpd.pid|PIDFile /run/pure-ftpd.pid|' ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
 	sed -i 's|# AltLog\s.*clf:/var/log/pureftpd.log|AltLog clf:/var/log/pureftpd.log|' ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
 	sed -i 's|# TLS\s.*1|TLS 1|' ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
 	sed -i 's|# TLSCipherSuite\s.*HIGH|TLSCipherSuite HIGH:MEDIUM:+TLSv1|' ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
