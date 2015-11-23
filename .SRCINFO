@@ -1,0 +1,14 @@
+pkgbase = neatas-git
+	pkgdesc = A simple ARM assembler.
+	pkgver = r24.6a3f8d4
+	pkgrel = 1
+	url = http://repo.or.cz/neatas.git
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	source = neatas-git::git+git://repo.or.cz/neatas.git
+	md5sums = SKIP
+
+pkgname = neatas-git
+
