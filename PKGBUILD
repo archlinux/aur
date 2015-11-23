@@ -11,7 +11,7 @@ _pkgname='imagemagick'
 pkgbase="${_pkgname}-git"
 _srcdir="${pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-doc")
-pkgver=7.0.0.0.r10204.g979447c
+pkgver=7.0.0.0.r10337.gaab369d
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
              'openexr' 'libwmf' 'librsvg' 'libxml2' 'liblqr' 'openjpeg2'
              'opencl-headers' 'libcl' 'libwebp' 'patch' 'git')
 _verwatch=("${url/script/download/}" 'ImageMagick-\([-0-9\.]\+\)\.tar\.bz2' 'l')
-_archlink="@@@::https://projects.archlinux.org/togit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
+_archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 source=("${_srcdir}::git+http://git.imagemagick.org/repos/ImageMagick.git"
     'libpng_mmx_patch_x86_64.patch'
     "${_archlink//@@@/perlmagick.rpath.patch}")
