@@ -1,17 +1,17 @@
 # Maintainer: Stephan Windmüller <arch at freewarepoint dot de>
 
 pkgname=osm-gps-map-gtk3
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="GTK+ 3 library for showing OSM tiles"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://nzjrs.github.com/osm-gps-map/"
 license=('GPL2')
 source=("https://github.com/nzjrs/osm-gps-map/archive/$pkgver.tar.gz")
 depends=('gtk3' 'libsoup') 
 makedepends=('gnome-common' 'gtk-doc' 'gobject-introspection')
 optdepends=('python2-osmgpsmap: Python bindings')
-sha256sums=('5cc98624926191a06848ee694884bea830be084cc19f25dbf30a25befec01004')
+sha256sums=('027004459f2f29232d4ca0c914f835e6c06b720aef1daa9b470d9d5e1b71159b')
 
 package() {
   cd $srcdir/osm-gps-map-$pkgver
