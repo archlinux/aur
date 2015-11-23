@@ -2,13 +2,12 @@
 pkgname='python-harvey'
 _name=harvey
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Harvey is a command line legal expert who manages license for you'
 url='https://github.com/architv/harvey'
 arch=('any')
 license=('MIT')
-depends=('python')
-makedepends=('python' 'python-colorama' 'python-docopt' 'python-requests')
+depends=('python' 'python-colorama' 'python-docopt' 'python-requests')
 provides=("${_name}=${pkgver}")
 source=("https://pypi.python.org/packages/source/h/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('d95b2133caed751addaea17cf2d03979169deb4043129224bb60f6ed5f6299f5')

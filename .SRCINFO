@@ -1,15 +1,14 @@
 pkgbase = python-harvey
 	pkgdesc = Harvey is a command line legal expert who manages license for you
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/architv/harvey
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python-colorama
-	makedepends = python-docopt
-	makedepends = python-requests
 	depends = python
+	depends = python-colorama
+	depends = python-docopt
+	depends = python-requests
 	provides = harvey=0.0.5
 	source = https://pypi.python.org/packages/source/h/harvey/harvey-0.0.5.tar.gz
 	sha256sums = d95b2133caed751addaea17cf2d03979169deb4043129224bb60f6ed5f6299f5
