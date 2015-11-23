@@ -1,25 +1,33 @@
-# Submitter: Dmitrij Podabed <dmitrij at podabed dot org>
+# Submitter : Dobroslaw Kijowski <dobo90 at gmail dot com>
 # Maintainer: Dmitrij Podabed <dmitrij at podabed dot org>
+# Maintainer: Dmitrij Podabed <dmitrij at podabed dot org>
+
 pkgname=connman-ncurses
+_pkgname=connman-json-client
 pkgver=1.0
-pkgrel=1
-pkgdesc="Simple ncurses UI for ConnMan"
-arch=('any')
-url="https://github.com/eurogiciel-oss/connman-json-client"
-license=('GPL2')
-depends=('json-c' 'ncurses' 'connman')
-makedepends=('git')
-provides=("$pkgname=$pkgver")
-source=("git://github.com/eurogiciel-oss/connman-json-client/commit/cb0f024e8741b9d5765a1b6fe85c755dfb1515d7.git")
-sha256sums=("SKIP")
+pkgrel=2
+pkgdesc='Simple ncurses UI for ConnMan'
+arch=(i686 x86_64)
+url='https://github.com/eurogiciel-oss/connman-json-client'
+license=(GPL2)
+depends=(json-c connman)
+conflicts=(connman-ncurses-git)
+source=("https://github.com/eurogiciel-oss/${_pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=(26f23eaa1828e2d7a45fce94e1a06203)
 
-_gitroot="connman-json-client"
+build()
+{
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-build() {
-  cd "$srcdir/$_gitroot"
-  ./run-me.sh
+  autoreconf -i
+  # it doesn't compile without --disable-optimization flag
+  ./configure --prefix='/usr' --disable-optimization
+  make
 }
 
-package() {
-  install -Dm733 "$srcdir/$_gitroot/connman_ncurses" "$pkgdir/usr/bin/$_pkgname"
+package()
+{
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  install -D -m 755 connman_ncurses "${pkgdir}/usr/bin/${pkgname}"
 }
