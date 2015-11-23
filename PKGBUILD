@@ -16,17 +16,14 @@
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 #
-# The PKGBUILD includes easy ways to:
-#   1) build from specific commit (without having to clone the whole repository)
-#   2) test new features by adding a list of Github's PR numbers
+# To build a specific commit without having to clone the whole repository
+#   set "pkgver" as commit sha and "_gitver" as "$pkgver".
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients')
 _gitname=xbmc
 
-# when building specific commit: 1) pkgver=commit_sha   2) _gitver=$pkgver
 pkgver=16.0b1
-#_gitver=$pkgver
 _gitver=$pkgver-Jarvis
 
 _pkgsrcname=$_gitname-$_gitver
@@ -55,16 +52,6 @@ prepare() {
   msg "Starting make..."
 
   cd "${srcdir}/$_pkgsrcname"
-
-  # test new features by adding Github PR numbers, e.g. prlist=('6615')
-  prlist=('')
-  if [[ $prlist != '' ]]; then
-    msg "Adding new features to test..."
-   for pr in $prlist; do
-      curl -o $srcdir/$pr.patch https://github.com/xbmc/xbmc/pull/$pr.patch
-      patch -p1 -i $srcdir/$pr.patch
-    done
-  fi
 
   find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
   sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
