@@ -5,7 +5,7 @@
 
 pkgname=zsdx
 pkgver=1.10.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A free 2D Zelda fangame."
 arch=('any')
