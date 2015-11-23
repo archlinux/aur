@@ -2,8 +2,8 @@
 
 _pkgname=ticcutils
 pkgname=ticcutils-git
-pkgver=161
-pkgrel=3
+pkgver=187
+pkgrel=1
 pkgdesc="Common library with functions for tools developed at Tilburg Centre for Cognition and Communication"
 arch=('i686' 'x86_64')
 url="https://github.com/LanguageMachines/ticcutils"
