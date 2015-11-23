@@ -2,7 +2,7 @@ pkgbase = ucto-git
 	pkgdesc = An advanced rule-based (regular-expression) and unicode-aware tokenizer for various languages. Tokenization is an essential first step in any NLP pipeline.
 	pkgver = 1
 	pkgrel = 2
-	url = http://ilk.uvt.nl/
+	url = https://languagemachines.github.io/ucto
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = ucto-git
 	provides = ucto
 	conflicts = ucto
 	options = !libtool
-	source = git://github.com/proycon/ucto.git
+	source = git://github.com/LanguageMachines/ucto.git
 	md5sums = SKIP
 
 pkgname = ucto-git
