@@ -3,7 +3,7 @@
 pkgname=crtmpserver-git
 _gitname=crtmpserver
 pkgdesc="High performance rtmp streaming server"
-pkgver=b6fdcdb
+pkgver=b866fff
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.rtmpd.com/"
@@ -14,10 +14,11 @@ makedepends=('git' 'cmake')
 provides=('crtmpserver')
 conflicts=('crtmpserver' 'crtmpserver-svn')
 source=(
-  'git://github.com/j0sh/crtmpserver'
+  'git://github.com/shiretu/crtmpserver'
+  #'git://github.com/j0sh/crtmpserver'
+  #'git://github.com/mich181189/crtmpserver'
   'crtmpserver-conf.zip'
 )
-#source=('git://github.com/mich181189/crtmpserver')
 md5sums=(
   'SKIP'
   'ed069404b4172e71df48d3d256f0be12'
