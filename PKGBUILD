@@ -5,7 +5,7 @@
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 pkgname=solarus
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An open-source Zelda-like 2D game engine used by the games zsxd and zsdx."
 arch=('i686' 'x86_64')
