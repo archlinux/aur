@@ -2,13 +2,14 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r27.117.g0abe37e
+pkgver=r28.40.g5d3860e
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://www.vapoursynth.com'
 license=('LGPL2.1' 'custom:OFL' 'custom:WFTPL')
-depends=('ffmpeg'
+depends=('zimg-git'
+         'libass'
          'tesseract'
          'python'
          'imagemagick'
@@ -35,8 +36,13 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p vapoursynth/doc/_static
   cd vapoursynth
+
+  git submodule init
+  git submodule update
+
+  mkdir -p doc/_static
+
   ./autogen.sh
 }
 

@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-git
 	pkgdesc = A video processing framework with simplicity in mind. (GIT version)
-	pkgver = r27.117.g0abe37e
+	pkgver = r28.40.g5d3860e
 	pkgrel = 1
 	url = http://www.vapoursynth.com
 	install = vapoursynth-git.install
@@ -13,7 +13,8 @@ pkgbase = vapoursynth-git
 	makedepends = git
 	makedepends = yasm
 	makedepends = python-sphinx
-	depends = ffmpeg
+	depends = zimg-git
+	depends = libass
 	depends = tesseract
 	depends = python
 	depends = imagemagick
