@@ -2,14 +2,14 @@
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edbrowse-git
-pkgver=3.5.4.r15.gfd29362
+pkgver=3.5.4.2.r261.gebf2190
 pkgrel=1
-pkgdesc="Editor, browser, and mail client based on /bin/ed."
+pkgdesc="A line-oriented editor, browser and mail client."
 arch=('i686' 'x86_64')
 url="http://edbrowse.org/"
 license=('GPL' 'openssl')
 groups=()
-depends=('js>=2.4' 'openssl' 'pcre' 'curl>=7.17.0' 'readline')
+depends=('js>=2.4' 'openssl' 'pcre' 'curl>=7.17.0' 'readline' 'tidy-html5-git')
 makedepends=('git')
 provides=('edbrowse')
 conflicts=('edbrowse')
@@ -34,11 +34,9 @@ build() {
 package() {
   cd "$srcdir/$pkgname/src"
   make DESTDIR="$pkgdir" prefix=/usr install
-  cd ../doc
-  # setup.ebrc is a shell script that builds a config file for you. It's in doc/.
-  install -m755 setup.ebrc $pkgdir/usr/bin
   install -Dm644 ../doc/man-edbrowse-debian.1 $pkgdir/usr/share/man/man1/edbrowse.1
-  mkdir -p $pkgdir/usr/share/doc/edbrowse
-  install -Dm644 usersguide.html philosophy.html sample.ebrc $pkgdir/usr/share/doc/edbrowse
+  mkdir -p $pkgdir/usr/share/doc/$pkgname
+  install -Dm644 ../doc/usersguide.html ../doc/sample.ebrc ../README $pkgdir/usr/share/doc/$pkgname
+  install -Dm644 ../COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
 
