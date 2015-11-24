@@ -13,8 +13,10 @@ sha512sums=('6b6bb473b03552043684394c8ff5ef3c460a3d837a28627f278b87f1c9705521199
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    autoconf
-    ./configure --prefix=/usr
+    ./configure \
+        --prefix=/usr \
+        --with-bindir=/usr/bin \
+        --with-libdir=/usr/share/${pkgname}
     make
 }
 
