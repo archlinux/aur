@@ -1,11 +1,11 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 pkgname=python2-libsass
-pkgver=0.8.3
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Python binding for libsass CSS compiler"
 arch=(i686 x86_64)
 url="http://dahlia.kr/libsass-python/"
-depends=(python2)
+depends=(python2 python2-six)
 makedepends=(libsass)
 source=(https://pypi.python.org/packages/source/l/libsass/libsass-${pkgver}.tar.gz)
 license=('LGPL')
@@ -20,4 +20,4 @@ package() {
 	python2 setup.py install --root=$pkgdir
 }
 
-md5sums=('011f35ccfcacafe90ea20a8103f616d5')
+md5sums=('3078f2801b36e60bc70fcb1398d4d759')
