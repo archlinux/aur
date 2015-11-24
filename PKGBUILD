@@ -2,24 +2,24 @@
 
 pkgbase=mpd
 pkgname=mpd-minimal
-pkgver=0.19.10
+pkgver=0.19.11
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Minmal version with only flac playback through socket connection.'
 url='http://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('alsa-lib' 'flac' 'icu' 'libmpdclient' 'libsystemd' 'sqlite')
+depends=('alsa-lib' 'flac' 'glib2' 'icu' 'libmpdclient' 'libsystemd' 'sqlite')
 makedepends=('boost')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
 replaces=('mpd')
 source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"
-        'mpd.tmpfile'
-        'mpd.conf')
-sha1sums=('4635b33223d3f1e67eed41f6350ef75515153213'
-          'f4d5922abb69abb739542d8e93f4dfd748acdad7'
-          '291fd5cda9f0845834a553017327c4586bd853f6')
-backup=('etc/mpd.conf')
+        'mpd.tmpfile')
+#        'mpd.conf')
+sha1sums=('bc39026742b43d851a846b1f09bff94895cd1927'
+          'f4d5922abb69abb739542d8e93f4dfd748acdad7')
+#          '291fd5cda9f0845834a553017327c4586bd853f6')
+#backup=('etc/mpd.conf')
 install=mpd.install
 
 build() {
@@ -88,7 +88,7 @@ build() {
     make
 }
 
-package() {
+package_mpd-minimal() {
     cd "${srcdir}/mpd-${pkgver}"
 
     make DESTDIR="${pkgdir}" install
