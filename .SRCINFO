@@ -1,6 +1,6 @@
 pkgbase = wayland-git
 	pkgdesc = A computer display server protocol.
-	pkgver = 1.8.90.1733.56a5a89
+	pkgver = 1.9.90.1804.d5f22d2
 	pkgrel = 1
 	url = http://wayland.freedesktop.org
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = wayland-git
 	makedepends = git
 	makedepends = expat
 	depends = libffi
-	provides = wayland=1.8.90.1733.56a5a89
+	provides = wayland=1.9.90.1804.d5f22d2
 	conflicts = wayland
 	source = git://anongit.freedesktop.org/wayland/wayland
 	sha1sums = SKIP

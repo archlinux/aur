@@ -2,7 +2,7 @@
 # Contributor: Scimmia
 
 pkgname=wayland-git
-pkgver=1.8.90.1733.56a5a89
+pkgver=1.9.90.1804.d5f22d2
 pkgrel=1
 pkgdesc='A computer display server protocol.'
 arch=(i686 x86_64)
