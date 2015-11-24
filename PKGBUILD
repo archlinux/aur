@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=sent
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='Simple plaintext presentation tool'
 arch=('i686' 'x86_64')
