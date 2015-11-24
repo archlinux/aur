@@ -1,6 +1,6 @@
 pkgbase = jload-git
 	pkgdesc = Load average display for JWM
-	pkgver = 1
+	pkgver = r13.3235d1d
 	pkgrel = 1
 	url = https://github.com/joewing/jload
 	arch = i686

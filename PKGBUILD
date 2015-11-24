@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 _pkgname=jload
 pkgname=${_pkgname}-git
-pkgver=1
+pkgver=r13.3235d1d
 pkgrel=1
 pkgdesc="Load average display for JWM"
 arch=('i686' 'x86_64')
