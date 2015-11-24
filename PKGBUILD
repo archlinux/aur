@@ -6,13 +6,13 @@
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 # Contributor: Eric Forgeot < http://esclinux.tk >
 
-# Globe Plugin and QGIS Map Server are disabled in cmake by default.
+# Globe Plugin and Map Server are disabled in cmake by default.
 # Uncomment them in the build() portion if you'd like them enabled.
 # You will also need to install osgearth or fcgi, respectively, before building.
 
 pkgname=qgis
 pkgver=2.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -23,18 +23,21 @@ depends=('qca-qt4' 'gdal' 'qwtpolar' 'gsl' 'spatialindex' 'icu'
 makedepends=('cmake' 'txt2tags' 'perl')
 optdepends=('gpsbabel: GPS Tool plugin')
 install="$pkgname.install"
-source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
-        "console_pyqt4.diff")
-md5sums=('099efb9482a67e3c57f54f4947986e39'
-         '636b0fd147d19f50e82080a5819ae10a')
+source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
+md5sums=('099efb9482a67e3c57f54f4947986e39')
 
 prepare() {
   cd $pkgname-$pkgver
 
-  patch -Np1 -i "$srcdir/console_pyqt4.diff"
-
   # Fixing shebang for .py files
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
+
+  # Fix console.py for new pyqt build system
+  sed -e '/from PyQt4.QtCore/ s/$/, QT_VERSION_STR/' \
+      -e '/import pyqtconfig/d' \
+      -e 's/pyqtconfig.*qt_version/QT_VERSION_STR/' \
+      -e 's/0x40700/"4.7.0"/' \
+      -i python/console/console.py
 
   [[ -d build ]] || mkdir build
 }
@@ -71,9 +74,9 @@ package() {
   [[ -n "$(awk -F= '/^GRASS_PREFIX7:/ {print $2}' build/CMakeCache.txt)" ]] && \
     optdepends+=('grass: GRASS7 plugin')
   [[ "$(awk -F= '/^WITH_SERVER:/ {print $2}' build/CMakeCache.txt)" == "TRUE" ]] && \
-    optdepends+=('fcgi: QGIS Map Server')
+    optdepends+=('fcgi: Map Server')
   [[ "$(awk -F= '/^WITH_GLOBE:/ {print $2}' build/CMakeCache.txt)" == "TRUE" ]] && \
-    optdepends+=('osgearth: QGIS Globe plugin')
+    optdepends+=('osgearth: Globe plugin')
 
   make -C build DESTDIR="$pkgdir" install
 
