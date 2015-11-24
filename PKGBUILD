@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit-c-git
-pkgver=4.8.0.r3.g9e85e3b
+pkgver=4.8.1.r16.ge91b7d8
 pkgrel=1
 pkgdesc="Scheme R5RS interpreter and compiler (via C) - git version"
 arch=('i686' 'x86_64')
@@ -14,28 +14,28 @@ provides=('gambit-c')
 conflicts=('gambit-c')
 install="$pkgname.install"
 options=('!makeflags' 'staticlibs')
-source=(git+https://github.com/feeley/gambit.git)
+source=(gambit-scheme::git+https://github.com/feeley/gambit.git)
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/gambit"
-    git rev-list --ount HEAD
+    cd "$srcdir/gambit-scheme"
+    git describe --tags|sed 's+-+.r+'| sed 's+-+.+' | cut -c2-
 }
 
 build() {
-	cd "$srcdir/gambit"
-	CC=gcc CXX=g++ ./configure \
-            --prefix=/usr \
-            --docdir=/usr/share/gambit-c \
-            --infodir=/usr/share/info \
-            --libdir=/usr/lib/gambit-c \
-            --enable-single-host \
-            --enable-compiler-name=gambitc
-        make 
+    cd "$srcdir/gambit-scheme"	cd
+    CC=gcc CXX=g++ ./configure \
+      --prefix=/usr \
+      --docdir=/usr/share/gambit-c \
+      --infodir=/usr/share/info \
+      --libdir=/usr/lib/gambit-c \
+      --enable-single-host \
+      --enable-compiler-name=gambitc
+    make 
 }
 
 package() {
-	cd "$srcdir/gambit"
-	make DESTDIR="$pkgdir/" install
-        ln -sf /usr/bin/gambitc "$pkgdir/usr/bin/gsc-script"
+    cd "$srcdir/gambit-scheme"
+    make DESTDIR="$pkgdir/" install
+    ln -sf /usr/bin/gambitc "$pkgdir/usr/bin/gsc-script"
 }
