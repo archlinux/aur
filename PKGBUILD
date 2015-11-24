@@ -1,7 +1,7 @@
 # Maintainer: Akira Wakana <jalen.cn@gmail.com>
 
 pkgname=file-roller-ja
-pkgver=3.16.3
+pkgver=3.16.4
 pkgrel=1
 provides=('file-roller')
 conflicts=('file-roller')
@@ -23,7 +23,7 @@ url="http://www.gnome.org"
 source=("http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz"
         'fc-init.patch'
         'Z99-zip-cp932.sh')
-sha256sums=('2b3a1111caba26e67b96559a3118a700dbfb6a4c6ad7ebd3e509df227995411c'
+sha256sums=('5455980b2c9c7eb063d2d65560ae7ab2e7f01b208ea3947e151680231c7a4185'
             '27df085f1d6c8fad4bceb503267e767e7c43ad920f3cf9e91ee03e7f751addaf'
             '1ad7e934405a9c407a35d0e185503fff8f5f869156cc5598db1035c0900a89f0')
 

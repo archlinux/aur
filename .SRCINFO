@@ -1,6 +1,6 @@
 pkgbase = file-roller-ja
 	pkgdesc = the file-roller with an additional patch to use unzip-iconv for unzip archive file cp932 charset.
-	pkgver = 3.16.3
+	pkgver = 3.16.4
 	pkgrel = 1
 	url = http://www.gnome.org
 	install = file-roller.install
@@ -31,10 +31,10 @@ pkgbase = file-roller-ja
 	provides = file-roller
 	conflicts = file-roller
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/file-roller/3.16/file-roller-3.16.3.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/file-roller/3.16/file-roller-3.16.4.tar.xz
 	source = fc-init.patch
 	source = Z99-zip-cp932.sh
-	sha256sums = 2b3a1111caba26e67b96559a3118a700dbfb6a4c6ad7ebd3e509df227995411c
+	sha256sums = 5455980b2c9c7eb063d2d65560ae7ab2e7f01b208ea3947e151680231c7a4185
 	sha256sums = 27df085f1d6c8fad4bceb503267e767e7c43ad920f3cf9e91ee03e7f751addaf
 	sha256sums = 1ad7e934405a9c407a35d0e185503fff8f5f869156cc5598db1035c0900a89f0
 
