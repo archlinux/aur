@@ -1,6 +1,6 @@
 pkgbase = duck
 	pkgdesc = Cyberduck CLI
-	pkgver = 4.7.17418
+	pkgver = 4.8.18546
 	pkgrel = 2
 	url = https://duck.sh/
 	install = duck.install
@@ -10,10 +10,10 @@ pkgbase = duck
 	makedepends = rpmextract
 	depends = java-runtime
 	options = !strip
-	source_x86_64 = https://repo.cyberduck.io/stable/x86_64/duck-4.7.17418.x86_64.rpm
-	md5sums_x86_64 = 48fc1c17350adda930f8b4b1c3d16de0
-	source_i686 = https://repo.cyberduck.io/stable/i386/duck-4.7.17418.i686.rpm
-	md5sums_i686 = fa217a087f45cc77292fa86f712f3b76
+	source_x86_64 = https://dist.duck.sh/duck-4.8.18546.x86_64.rpm
+	md5sums_x86_64 = 83f3bcf56d259020ae70590343f4a031
+	source_i686 = https://dist.duck.sh/duck-4.8.18546.i686.rpm
+	md5sums_i686 = 20d63d3cc803d5b3aa38463daed1873e
 
 pkgname = duck
 
