@@ -7,6 +7,9 @@ pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171334'
 license=('custom:WTFPL')
+depends=('gcc-libs'
+         'glibc'
+         )
 makedepends=('git')
 provides=('zimg')
 conflicts=('zimg' 'vapoursynth-plugin-zimg' 'vapoursynth-plugin-zimg-git')
