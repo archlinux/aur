@@ -1,14 +1,16 @@
 pkgbase = weston-git
 	pkgdesc = Reference implementation of a Wayland compositor
-	pkgver = 1.8.90.4666.883ac02
+	pkgver = 1.9.90.5002.cd9bb71
 	pkgrel = 1
 	url = http://wayland.freedesktop.org
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	makedepends = git
 	depends = libxkbcommon
 	depends = wayland-git
+	depends = wayland-protocols-git
 	depends = mesa
 	depends = poppler-glib
 	depends = mtdev

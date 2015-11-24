@@ -3,15 +3,16 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=weston-git
-pkgver=1.8.90.4666.883ac02
+pkgver=1.9.90.5002.cd9bb71
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
-arch=(i686 x86_64)
+arch=('i686' 'x86_64' 'armv7h')
 url='http://wayland.freedesktop.org'
 license=('MIT')
 makedepends=('git')
-depends=('libxkbcommon' 'wayland-git' 'mesa' 'poppler-glib' 'mtdev' 'libva' 'libinput'
-         'libxcursor' 'glu' 'cairo' 'pixman' 'libunwind' 'pango' 'colord' 'libwebp')
+depends=('libxkbcommon' 'wayland-git' 'wayland-protocols-git' 'mesa'
+         'poppler-glib' 'mtdev' 'libva' 'libinput' 'libxcursor' 'glu' 'cairo'
+         'pixman' 'libunwind' 'pango' 'colord' 'libwebp')
 conflicts=('weston')
 provides=('weston')
 
@@ -28,22 +29,25 @@ pkgver() {
     echo $_major_version.$_minor_version.$_micro_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
+prepare() {
+    mkdir -p weston/build
+}
+
 build() {
-	cd weston
-	./autogen.sh --prefix=/usr \
-		--libexecdir=/usr/lib/weston \
-		--enable-demo-clients-install \
-		--with-cairo=gl
-	make
+    cd weston/build
+    ../autogen.sh --prefix=/usr \
+        --libexecdir=/usr/lib/weston \
+        --enable-demo-clients-install \
+        --with-cairo=image
+    make
 }
 
 package() {
-	cd weston
-	make DESTDIR="${pkgdir}" install
+    cd weston/build
+    make DESTDIR="${pkgdir}" install
+    install -Dm644 "config.h" "$pkgdir/usr/include/weston/config.h"
 
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-
-	install -Dm644 "shared/zalloc.h" "$pkgdir/usr/include/weston/zalloc.h"
-	install -Dm644 "config.h" "$pkgdir/usr/include/weston/config.h"
+    cd ..
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 "shared/zalloc.h" "$pkgdir/usr/include/weston/zalloc.h"
 }
-
