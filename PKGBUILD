@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=cwdiff-git
-pkgver=r33.cfe9fa2
+pkgver=r36.da12852
 pkgrel=1
 epoch=
 pkgdesc="A (w)diff wrapper to support directories and colorize the output."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/junghans/cwdiff/"
 license=('GPL')
 groups=()
-depends=('wdiff')
+depends=('wdiff' 'help2man')
 makedepends=('git')
 optdepends=()
 checkdepends=()
