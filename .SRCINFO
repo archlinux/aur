@@ -1,0 +1,13 @@
+pkgbase = vlfeat
+	pkgdesc = An open source library of popular computer vision algorithms specializing in image understanding and local features extraction and matching
+	pkgver = 0.9.20
+	pkgrel = 1
+	url = http://www.vlfeat.org
+	arch = x86
+	arch = x86_64
+	license = BSD
+	source = https://github.com/vlfeat/vlfeat/archive/v0.9.20.tar.gz
+	sha256sums = d85945b05b782d612bd5208fdbc2d9f74ef2dcf138a17ad8ffc9864edb79ff54
+
+pkgname = vlfeat
+
