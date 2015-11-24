@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vivisect-git
-pkgver=20150307
+pkgver=20151124
 pkgrel=1
 pkgdesc="Static analysis / emulation / symbolik analysis framework for PE/Elf/Mach-O/Blob binary formats on various architectures"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
   cd ${pkgname%-git}
 
-  msg 'Fixing Python version...'
+  msg2 'Fixing Python version...'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
 }
@@ -35,13 +35,13 @@ prepare() {
 package() {
   cd ${pkgname%-git}
 
-  msg 'Installing...'
+  msg2 'Installing...'
   install -Dm 755 "$srcdir/vdbbin.sh" "$pkgdir/usr/bin/vdbbin"
   install -Dm 755 "$srcdir/vivbin.sh" "$pkgdir/usr/bin/vivbin"
   install -dm 755 "$pkgdir/usr/share/vivisect"
   tar -c . | tar -x -C "$pkgdir/usr/share/vivisect"
 
-  msg 'Cleaning up pkgdir...'
+  msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
