@@ -1,0 +1,18 @@
+pkgbase = pwstore-git
+	pkgdesc = Multi User Password store
+	pkgver = 38745c9
+	pkgrel = 1
+	url = https://github.com/formorer/pwstore
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	depends = ruby
+	options = !emptydirs
+	source = pwstore-git::git+https://github.com/formorer/pwstore.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pwstore-git
+
