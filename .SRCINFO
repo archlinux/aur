@@ -1,0 +1,16 @@
+pkgbase = pdl2ork-mdnsbrowser-git
+	pkgdesc = Zeroconf service advertising and discovery for Pd, Pd-L2Ork version
+	pkgver = 4.1ac1d25
+	pkgrel = 1
+	url = https://bitbucket.org/agraef/pd-mdnsbrowser/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = pd-l2ork
+	depends = pdl2ork-pure
+	depends = pure-avahi
+	source = git+https://bitbucket.org/agraef/pd-mdnsbrowser
+	md5sums = SKIP
+
+pkgname = pdl2ork-mdnsbrowser-git
+
