@@ -1,0 +1,16 @@
+pkgbase = pd-mdnsbrowser-git
+	pkgdesc = A TouchOSC MIDI bridge for Pd
+	pkgver = 4.1ac1d25
+	pkgrel = 1
+	url = https://bitbucket.org/agraef/pd-mdnsbrowser/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = pd
+	depends = pd-pure
+	depends = pure-avahi
+	source = git+https://bitbucket.org/agraef/pd-mdnsbrowser
+	md5sums = SKIP
+
+pkgname = pd-mdnsbrowser-git
+
