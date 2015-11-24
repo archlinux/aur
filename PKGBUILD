@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.10.0.r0.gefeeff2
+pkgver=0.11.1.r0.g2ca01ed
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
@@ -11,8 +11,8 @@ depends=('python2-syutil-git' 'python2-twisted>=15.1.0' 'python2-service-identit
          'python2-pyopenssl' 'python2-yaml' 'python2-pyasn1' 'python2-pynacl'
          'python2-daemonize' 'python2-py-bcrypt' 'python2-frozendict'
 		 'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
-		 'python2-pysaml2'
-		 'python2-matrix-angular-sdk-git')
+		 'python2-pysaml2' 'python2-requests' 'python2-dateutil' 'python2-pytz'
+		 'python2-systemd' 'python2-matrix-angular-sdk-git')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 source=("git://github.com/matrix-org/synapse.git"
 		'sysusers-synapse.conf')
@@ -22,6 +22,7 @@ backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 provides=('matrix-synapse')
 conflicts=('matrix-synapse')
+
 pkgver() {
 	cd synapse
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
