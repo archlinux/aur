@@ -1,4 +1,5 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  Eduardo Leggiero <https://www.leggiero.uk/>
+# Contributor:  jyantis <yantis@yantis.net>
 # Contributor: jcsiv <siviter dot jamie at gmx dot co dot uk>
 # Contributor: ThinCarrotShrimp <christoph.r.martin+arch at gmail dot com>
 
