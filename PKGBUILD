@@ -23,7 +23,7 @@ sha256sums=('ac1844018226894cf23a8494c720069360fecbaeeecc0327d6d3a992881cee0e')
 build() {
   mkdir -p build
   cd build
-  cmake ../moonlight-embedded-$pkgver -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake ../moonlight-embedded-$pkgver -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
 
