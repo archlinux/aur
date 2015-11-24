@@ -1,0 +1,15 @@
+pkgbase = dvblast
+	pkgdesc = DVBlast is a simple and powerful MPEG-2/TS demux and streaming application.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://www.videolan.org/projects/dvblast.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = bitstream
+	depends = libev
+	source = https://downloads.videolan.org/pub/videolan/dvblast/3.0/dvblast-3.0.tar.bz2
+	md5sums = 89ea9ffb16476d47b8853e52a8a3ee63
+
+pkgname = dvblast
+
