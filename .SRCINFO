@@ -1,5 +1,5 @@
 pkgbase = ruby-mini_portile2
-	pkgdesc = Simplistic port-like solution for developers. Version 2.x, which is incompatible to v0.6/v0.7.
+	pkgdesc = Simplistic port-like solution for developers. Version 2.x, which is incompatible with v0.6/v0.7.
 	pkgver = 2.0.0.rc2
 	pkgrel = 1
 	url = https://github.com/flavorjones/mini_portile
