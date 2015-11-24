@@ -1,0 +1,15 @@
+pkgbase = jload-git
+	pkgdesc = Load average display for JWM
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/joewing/jload
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = libx11
+	source = git://github.com/joewing/jload.git
+	md5sums = SKIP
+
+pkgname = jload-git
+
