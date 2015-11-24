@@ -1,0 +1,24 @@
+pkgbase = ripe-atlas-tools
+	pkgdesc = The official command-line client for RIPE Atlas
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/ripe.atlas.tools
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python>=3.4
+	depends = python-dateutil>=2.4.2
+	depends = python-requests>=2.7.0
+	depends = python-ripe-atlas-cousteau>=1.0.4
+	depends = python-ripe-atlas-sagan>=1.1.4
+	depends = python-tzlocal
+	depends = python-yaml
+	depends = python-pyopenssl>=0.13
+	optdepends = python-ujson: faster json decoding
+	optdepends = python-sphinx: documentation generator
+	provides = ripe-atlas-tools
+	source = https://pypi.python.org/packages/source/r/ripe.atlas.tools/ripe.atlas.tools-1.1.0.tar.gz
+	md5sums = d24d205252bebbe0d4707f3179d7c756
+
+pkgname = ripe-atlas-tools
+
