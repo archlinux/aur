@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-umatrix
+	pkgdesc = Point and click matrix to filter net requests by source, destination and type
+	pkgver = 0.9.3.1
+	pkgrel = 1
+	url = https://github.com/gorhill/uMatrix
+	arch = any
+	license = GPL3
+	depends = firefox
+	conflicts = firefox-extension-ublock
+	noextract = umatrix-0.9.3.1-sm+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/613250/umatrix-0.9.3.1-sm+fx.xpi
+	sha256sums = 6a47eaedbe155bc708a9d427f45d05b64ca6f2e28bdb3612cf8ce64a70d39c08
+
+pkgname = firefox-extension-umatrix
+
