@@ -31,14 +31,15 @@ build() {
 package() {
   prefix="/usr"
   manprefix="$prefix/share/man"
-  licenseprefix="/usr"
+  licenseprefix="$prefix/share/licenses/$pkgname"
+  docprefix="$prefix/share/doc/$pkgname"
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" PREFIX="$prefix" MANPREFIX="$manprefix" install
-  install -Dm644 LICENSE $pkgdir/$licenseprefix/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE $pkgdir/$licenseprefix/LICENSE
   cd "$srcdir/opt"
   make DESTDIR="$pkgdir" PREFIX="$prefix" MANPREFIX="$manprefix" install
-  mkdir -p "$pkgdir/$prefix/share/doc/wmutils/examples"
-  install -Dm644 ../contrib/*.sh $pkgdir/$prefix/share/doc/wmutils/examples
-  install -m755 ../contrib/killwa/killwa $pkgdir/$prefix/bin/killwa
+  mkdir -p "$pkgdir/$docprefix/examples"
+  install -Dm644 ../contrib/*.sh $pkgdir/$docprefix/examples
+  install -Dm755 ../contrib/killwa/killwa $pkgdir/$prefix/bin/killwa
 }
 
