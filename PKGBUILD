@@ -51,46 +51,46 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2016'
-_v_a='0'
-_v_b='109' 
+_v_a='1'
+_v_b='150' 
 
-_update=''
+_update='1'
 
-pkgrel=1
+pkgrel=2
 
 _sp=''
 
-_icc_ver='16.0.0' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
-#_openmp_ver='16.0.0' # intel-openmp-${_v_b}-${_openmp_ver}.${arch}.rpm
-_ipp_ver='9.0.0' # intel-ipp-ac-${_v_b}-${_ipp_ver}.${arch}.rpm
+_icc_ver='16.0.1' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
+#_openmp_ver='16.0.1' # intel-openmp-${_v_b}-${_openmp_ver}.${arch}.rpm
+_ipp_ver='9.0.1' # intel-ipp-ac-${_v_b}-${_ipp_ver}.${arch}.rpm
 _mpi_ver='5.1.1' # intel-mpi-${_v_b}-${_ipp_ver}.${arch}.rpm
-_mkl_ver='11.3.0' # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
-_tbb_ver='4.4.0' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
-_gdb_ver='7.8.0' # intel-gdb-${_gdb_ver}-${_v_b}.x86_64.rpm
-_gdb_gt_ver='7.6.0' # intel-gdb-gt-${_gdb_gt_ver}-{_v_b}.x86_64.rpm
-_vtune_ver='16.1.424694' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
-_inspector_ver='16.1.423441' # intel-inspector-xe-${year}-*-${_inspector_ver}.${arch}.rpm
-_advisor_ver='16.1.423501' # intel-advisor-xe-${year}-*-${_advisor_ver}.${arch}.rpm
+_mkl_ver='11.3.1' # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
+_tbb_ver='4.4.1' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
+#_gdb_ver='7.8.0' # intel-gdb-${_gdb_ver}-${_v_b}.x86_64.rpm
+#_gdb_gt_ver='7.6.0' # intel-gdb-gt-${_gdb_gt_ver}-{_v_b}.x86_64.rpm
+_vtune_ver='16.1.434111' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
+_inspector_ver='16.1.435552' # intel-inspector-xe-${year}-*-${_inspector_ver}.${arch}.rpm
+_advisor_ver='16.1.435553' # intel-advisor-xe-${year}-*-${_advisor_ver}.${arch}.rpm
 
 # Different version for docs
-_vtune_man_ver='1.0.424694'
-_inspector_man_ver='1.0.423441'
-_advisor_man_ver='1.0.423501'
+_vtune_man_ver='1.1.434111'
+_inspector_man_ver='1.1.435552'
+_advisor_man_ver='1.10.435553'
 
 
 
 pkgver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
 
-_dir_nr='7997'
+_dir_nr='8365'
 
 options=(strip libtool staticlibs)
 
 url="http://software.intel.com/en-us/articles/non-commercial-software-download/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom')
 makedepends=('libarchive' 'sed' 'gzip')
 
-_parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_sp:+_${_sp}}${_update:+_${_update}}"
+_parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_sp:+_${_sp}}${_update:+_update${_update}}"
 
 source=(
 	"http://registrationcenter-download.intel.com/akdlm/irc_nas/${_dir_nr}/${_parallel_studio_xe_dir}.tgz"
@@ -116,7 +116,7 @@ source=(
 
 
 sha256sums=(
-    'fd4c32352fd78fc919601bedac5658ad5ac48efbc5700d9a8d42ed7d53bd8bb7'  # parallel_studio_xe_2016.tgz
+    'f5a3ab9fb581e19bf1bd966f7d40a11905e002a2bfae1c4a2140544288ca3e48'  # parallel_studio_xe_2016_update1.tgz
 	'75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5'  # intel_compilers.sh
 	'624001bbd846f460d46f062acdf78a602c862aa9c956f3f7e4b0ec9d9b38d3fb'  # intel_vtune-amplifier-xe.sh
 	'292a9eea2c9a836ee9dc0d4ff28fc741d5548a3182e4f75aec7b93e1dd7b4f21'  # intel_advisor-xe.sh
@@ -447,10 +447,9 @@ package_intel-fortran-compiler() {
 
 	rm *.csh
 
-	#rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/Documentation/en_US/gs_resources/intel_f_logo.gif
-	#rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/compiler/lib/${_i_arch}/locale/ja_JP/diagspt.cat
-	#rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/compiler/lib/${_i_arch}/locale/ja_JP/flexnet.cat
-	#rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/compiler/lib/${_i_arch}/locale/ja_JP/helpxi.cat
+    #Remove duplicate logo and .css found in intel base
+	rm ${xe_build_dir}/opt/intel/documentation_2016/en/tutorials/ps2016/resources/intel_gsp_styles.css
+	rm ${xe_build_dir}/opt/intel/documentation_2016/en/tutorials/ps2016/resources/intel_logo.png
 
 	if $_remove_docs ; then
 	  echo -e " # intel-fortran-compiler: Remove documentation"
@@ -632,13 +631,13 @@ package_intel-mkl() {
 
 	rm -rf ./${_not_arch}
 
-	cd $_i_arch
-	rm mklvars_${_i_arch}.csh
-	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' mklvars_${_i_arch}.sh
+	#cd $_i_arch
+	#rm mklvars_${_i_arch}.csh
+	#sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' mklvars_${_i_arch}.sh
 
 	if ${_remove_docs} ; then
 	  echo -e " # intel-mkl: remove documentation"
-	  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
+	  #rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
 	  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/examples
 	  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/benchmarks
 	fi
