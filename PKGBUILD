@@ -1,7 +1,7 @@
 # Maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=residualvm-git
-pkgver=r5806.4d53b39
+pkgver=r5870.d4b7b14
 pkgrel=1
 pkgdesc="A cross-platform 3D game interpreter which allows you to play LucasArts' LUA-based 3D adventures"
 arch=('i686' 'x86_64')
