@@ -22,57 +22,43 @@
 # +-------------+-------------+-------------+-----------+---------------------------------------------------------------------------+-----------+---------+
 # | _march      | CARCH       | _arch       | <machine> | _os_target (GNU/*)                                                        | _multilib | -       |
 # +-------------+-------------+-------------+-----------+---------------------------------------------------------------------------+-----------+---------+
-# | mips64el    | mips64el    | mips64el    | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu|elf                                 | opt       | bin/sys |
-# | mips64      | mips64      | mips64      | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu|elf                                 | opt       | bin/sys |
-# | *           | mipsel      | mipsel      | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu|elf                                 | no        | bin/sys |
-# | *           | mips        | mips        | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu|elf                                 | no        | bin/sys |
-# | x86_64      | x86_64      | x86_64      | unknown   | gnu<|{linux,kfreebsd,kopenbsd,knetbsd,kdragonflybsd,kopensolaris}-gnu|elf | yes       | bin/sys |
-# | i[3-7]86    | i[3-7]86    | i[3-7]86    | pc        | gnu|{linux,kfreebsd,kopenbsd,knetbsd,kdragonflybsd,kopensolaris}-gnu|elf  | no        | bin/sys |
-# | armv8-a     | aarch64     | aarch64     | unknown   | {linux,kfreebsd,kopenbsd,knetbsd,kopensolaris}-gnu|elf                    | yes       | -       |
-# | armv8-a     | aarch64_be  | aarch64_be  | unknown   | {linux,kfreebsd,kopenbsd,knetbsd,kopensolaris}-gnu|elf                    | yes       | -       |
+# | x86_64      | x86_64      | x86_64      | unknown   | {linux,kfreebsd,kopenbsd,knetbsd,kdragonflybsd,kopensolaris}-gnu|elf      | yes       | bin/sys |
+# | i[3-7]86    | i[3-7]86    | i[3-7]86    | pc        | gnu|{linux,kfreebsd,kopenbsd,knetbsd,kopensolaris}-gnu|elf                | no        | bin/sys |
+# | armv8-a     | aarch64     | aarch64     | unknown   | {linux,kfreebsd,knetbsd}-gnu|elf                                          | no        | bin/sys |
+# | armv8-a     | aarch64_be  | aarch64_be  | unknown   | {linux,kfreebsd,knetbsd}-gnu|elf                                          | no        | bin/sys |
 # | armv7-a     | armv7h      | armv7l      | unknown   | {linux,kfreebsd,kopenbsd,knetbsd,kopensolaris}-gnueabihf|elf              | no        | bin/sys |
 # | armv6       | armv6h      | armv6l      | unknown   | {linux,kfreebsd,kopenbsd,knetbsd,kopensolaris}-gnueabihf|elf              | no        | bin/sys |
 # | armv5te     | arm         | armv5tel    | unknown   | {linux,kfreebsd,kopenbsd,knetbsd,kopensolaris}-gnueabi                    | no        | bin/sys |
 # | *           | arm         | arm         | unknown   | eabi                                                                      | no        | bin/sys |
 # | arm         | armeb       | armeb       | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnueabi|eabi                            | no        | bin     |
-# | sparc64     | sparc64     | sparc64     | unknown   | {linux,kfreebsd,kopenbsd,knetbsd,kopensolaris}-gnu                        | opt       | bin/sys |
-# | sparc       | sparc       | sparc       | unknown   | {linux,kopenbsd,knetbsd,kopensolaris}-gnu                                 | no        | bin/sys |
-# | -           | ia64        | ia64        | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu                                     | yes       | -       |
-# | -           | s390        | s390        | ibm       | linux-gnu                                                                 | no        | -       |
-# | -           | s390x       | s390x       | ibm       | linux-gnu                                                                 | no        | bin/sys |
-#v| powerpc64   | powerpc64   | powerpc64   | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu{,eabi}|{elf,eabi}                   | opt       | bin/sys |x|eabi
-#x| powerpc64le | powerpc64le | powerpc64le | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu{,eabi}|{elf,eabi}                   | opt       | -       |
+# | mips64el    | mips64el    | mips64el    | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu|elf                                 | no        | bin/sys |
+# | mips64      | mips64      | mips64      | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu|elf                                 | no        | bin/sys |
+# | *           | mipsel      | mipsel      | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu|elf                                 | no        | bin/sys |
+# | *           | mips        | mips        | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu|elf                                 | no        | bin/sys |
+#v| powerpc64   | powerpc64   | powerpc64   | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu{,eabi}|{elf,eabi}                   | no        | bin/sys |x|eabi
+#x| powerpc64le | powerpc64le | powerpc64le | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu{,eabi}|{elf,eabi}                   | no        | bin     |
 # | powerpc     | powerpc     | powerpc     | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu{,eabi}|{elf,eabi}                   | no        | bin/sys |
 # | powerpcle   | powerpcle   | powerpcle   | unknown   | {linux,kfreebsd,kopenbsd,knetbsd}-gnu{,eabi}|{elf,eabi}                   | no        | -       |
 # | -           | spu         | spu         | unknown   | elf                                                                       | no        | -       |
-# | -           | sh64        | sh64        | unknown   | {linux,kopenbsd,knetbsd}-gnu|elf                                          | opt       | -       |
-# | -           | sh64le      | sh64le      | unknown   | {linux,kopenbsd,knetbsd}-gnu|elf                                          | opt       | -       |
+# | -           | sh64        | sh64        | unknown   | {linux,kopenbsd,knetbsd}-gnu|elf                                          | no        | -       |
+# | -           | sh64le      | sh64le      | unknown   | {linux,kopenbsd,knetbsd}-gnu|elf                                          | no        | -       |
 # | -           | sh4         | sh4         | unknown   | {linux,kopenbsd,knetbsd}-gnu|elf                                          | no        | bin/sys |
 # | -           | sh4le       | sh4le       | unknown   | {linux,kopenbsd,knetbsd}-gnu|elf                                          | no        | bin/sys |
 # | -           | sh          | sh          | unknown   | {linux,kopenbsd,knetbsd}-gnu|elf                                          | no        | - @     |
 # | -           | shle        | shle        | unknown   | {linux,kopenbsd,knetbsd}-gnu|elf                                          | no        | - @     |
-# | -           | xtensa      | xtensa      | unknown   | elf                                                                       | no        | sys     |
-# | *           | avr         | avr         | unknown   | elf                                                                       | no        | -       |
-# | *           | m68k        | m68k        | unknown   | gnu|{linux,kopenbsd,knetbsd}-gnu|elf                                      | no        | bin/sys |
+# | -           | m68k        | m68k        | unknown   | gnu|{linux,knetbsd}-gnu|elf                                               | no        | bin/sys |
+# | -           | avr         | avr         | unknown   | linux-gnu|elf                                                             | no        | -       |
+# | -           | xtensa      | xtensa      | unknown   | linux-gnu|elf                                                             | no        | sys     |
 # | -           | lm32        | lm32        | unknown   | linux-gnu|elf                                                             | no        | sys     |
-# | -           | or32        | or32        | unknown   | linux-gnu<|elf<                                                           | no        | bin/sys |x|linux-gnu
+# | -           | or32        | or32        | unknown   | linux-gnu|elf                                                             | no        | bin/sys |x|linux-gnu
 # +-------------+-------------+-------------+-----------+---------------------------------------------------------------------------+-----------+---------+
 
-# For "Wine"
+# For "Wine, Darling and DOSBox"
 # +-------------+-------------+-------------+-----------+---------------------------------------------------------------------------+-----------+---------+
-#i| *           | x86_64      | x86_64      | unknown   | mingw64                                                                   | yes       | bin/sys |
-#i| *           | i[3-7]86    | i[3-7]86    | unknown   | mingw32                                                                   | no        | bin/sys |
-#?| *           | aarch64     | aarch64     | unknown   | ???                                                                       | yes       | -       |
-#?| *           | aarch64_be  | aarch64_be  | unknown   | ???                                                                       | yes       | -       |
-#?| *           | armv7h      | armv7l      | unknown   | ???                                                                       | no        | bin/sys |
-#?| *           | armv6h      | armv6l      | unknown   | ???                                                                       | no        | bin/sys |
-#?| *           | arm         | armv5tel    | unknown   | ???                                                                       | no        | bin/sys |
-#?| *           | armeb       | armeb       | unknown   | ???                                                                       | no        | bin     |
-# +-------------+-------------+-------------+-----------+---------------------------------------------------------------------------+-----------+---------+
-
-# For "DOSBox"
-# +-------------+-------------+-------------+-----------+---------------------------------------------------------------------------+-----------+---------+
-#i| *           | i386        | i386        | pc        | msdosdjgpp                                                                | no        | bin/sys |
+# | x86_64      | x86_64      | x86_64      | unknown   | mingw64(Wine)|darwin                                                      | yes       | bin/sys |
+# | i[3-7]86    | i[3-7]86    | i[3-7]86    | pc        | mingw32(Wine)|msdosdjgpp(DOSBox)|darwin                                   | no        | bin/sys |
+# | armv7-a     | armv7h      | armv7l      | unknown   | mingw-arm(Wine)|darwin                                                    | no        | bin/sys |
+# | powerpc     | powerpc     | powerpc     | unknown   | darwin                                                                    | no        | bin/sys |
 # +-------------+-------------+-------------+-----------+---------------------------------------------------------------------------+-----------+---------+
 
 # opt : Multilib is optional
@@ -87,13 +73,13 @@
 
 # Hardware architecture:
 
-# options: "same", "mips64el", "x86_64", "i686" or "xtensa"
+# options: "same", "x86_64", "i686", "armv7l" or "xtensa"
 _arch_target=xtensa
 
 # OS target:
 
 # system: <os> or <kernel>-<os>
-# options: "gnu", "linux-gnu", "kfreebsd-gnu" or "elf"
+# options: "gnu", "linux-gnu", "linux-gnueabi" or "elf"
 _os_target=elf
 
 #--------------------------------------------------------------------------------
@@ -122,15 +108,15 @@ fi
 
 _pkgname=binutils
 pkgname=$_target-$_pkgname
-pkgver=2.25
-pkgrel=5
-_commit=69352378
+pkgver=2.25.1
+pkgrel=1
+_commit=2bd25930
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'mips64el')
 url="http://www.gnu.org/software/$_pkgname/"
 license=('GPL')
 groups=('cross-devel')
-depends=('glibc>=2.20' 'zlib')
+depends=('glibc>=2.22' 'zlib')
 makedepends=('git')
 checkdepends=('dejagnu' 'bc')
 options=('staticlibs' '!distcc' '!ccache')
@@ -169,6 +155,7 @@ build() {
     --with-bugurl=https://labs.parabola.nu/ \
     --enable-threads --with-pic \
     --enable-ld=default --enable-gold --enable-plugins \
+    --enable-deterministic-archives \
     --disable-werror --disable-gdb --disable-nls \
     --target=$_target --with-sysroot=/usr/$_target
 

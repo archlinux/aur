@@ -1,7 +1,7 @@
 pkgbase = xtensa-unknown-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files
-	pkgver = 2.25
-	pkgrel = 5
+	pkgver = 2.25.1
+	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	install = binutils.install
 	arch = i686
@@ -14,12 +14,12 @@ pkgbase = xtensa-unknown-elf-binutils
 	checkdepends = dejagnu
 	checkdepends = bc
 	makedepends = git
-	depends = glibc>=2.20
+	depends = glibc>=2.22
 	depends = zlib
 	options = staticlibs
 	options = !distcc
 	options = !ccache
-	source = git://sourceware.org/git/binutils-gdb.git#commit=69352378
+	source = git://sourceware.org/git/binutils-gdb.git#commit=2bd25930
 	source = binutils-e9c1bdad.patch
 	source = binutils-xtensa.patch::https://raw.githubusercontent.com/qca/open-ath9k-htc-firmware/1.3.2/local/patches/binutils.patch
 	md5sums = SKIP
