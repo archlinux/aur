@@ -1,7 +1,7 @@
 pkgbase = ttf-google-fonts-git
 	pkgdesc = TrueType fonts from the Google Fonts project
-	pkgver = 20150316
-	pkgrel = 2
+	pkgver = 20151118
+	pkgrel = 1
 	url = https://github.com/google/fonts
 	install = font.install
 	arch = any
