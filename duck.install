@@ -9,7 +9,6 @@ _update() {
 }
 
 post_install() {
-  ln -sf /opt/duck/duck /usr/local/bin/duck
   desktop-file-install /opt/duck/duck.desktop
   _update
 }
@@ -19,7 +18,6 @@ post_upgrade() {
 }
 
 post_remove() {
-  rm -f /usr/local/bin/duck
   rm -f /usr/share/applications/duck.desktop
   _update
 }

@@ -2,7 +2,7 @@
 # Upstream URL: https://duck.sh/
 
 pkgname=duck
-pkgver=4.7.17418
+pkgver=4.8.18546
 pkgrel=2
 pkgdesc="Cyberduck CLI"
 PKGEXT='.pkg.tar'
@@ -13,12 +13,15 @@ url="https://duck.sh/"
 install=$pkgname.install
 makedepends=('rpmextract')
 depends=('java-runtime')
-md5sums_x86_64=('48fc1c17350adda930f8b4b1c3d16de0')
-source_x86_64=("https://repo.cyberduck.io/stable/x86_64/duck-$pkgver.x86_64.rpm")
-md5sums_i686=('fa217a087f45cc77292fa86f712f3b76')
-source_i686=("https://repo.cyberduck.io/stable/i386/duck-$pkgver.i686.rpm")
+md5sums_x86_64=('83f3bcf56d259020ae70590343f4a031')
+md5sums_i686=('20d63d3cc803d5b3aa38463daed1873e')
+source_x86_64=("https://dist.duck.sh/duck-${pkgver}.x86_64.rpm")
+source_i686=("https://dist.duck.sh/duck-${pkgver}.i686.rpm")
+
 package() {
   rpmextract.sh *
   chmod -R g-w opt
   mv opt "${pkgdir}"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s /opt/duck/duck "${pkgdir}/usr/bin/duck"
 }
