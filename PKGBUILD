@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=voltron-git
-pkgver=20150223
+pkgver=20151109
 pkgrel=1
 pkgdesc="UI for GDB, LLDB and Vivisect's VDB"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python'
          'python-flask'
          'python-pygments'
          'python-rl'
-         'python-scruffy'
+         'python-scruffington'
          'readline')
 makedepends=('git' 'python-setuptools')
 optdepends=('gdb: GDB'
@@ -33,23 +33,26 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
 
-  msg 'Building...'
+  msg2 'Building...'
   python setup.py build
 }
 
 package() {
   cd ${pkgname%-git}
 
-  msg 'Installing docs...'
-  install -Dm 644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
+  msg2 'Installing docs...'
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
 
-  msg 'Fixing placement of dbgentry.py...'
-  mv "$pkgdir/usr/dbgentry.py" "$pkgdir/usr/lib/python3.4/site-packages/voltron"
+  msg2 'Fixing placement of dbgentry.py...'
+  _pysite=$(python -c \
+    'from distutils.sysconfig import get_python_lib; print(get_python_lib())'
+  )
+  mv "$pkgdir/usr/dbgentry.py" "$pkgdir/$_pysite/voltron"
 
-  msg 'Cleaning up pkgdir...'
+  msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }

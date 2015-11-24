@@ -1,6 +1,6 @@
 pkgbase = voltron-git
 	pkgdesc = UI for GDB, LLDB and Vivisect's VDB
-	pkgver = 20150223
+	pkgver = 20151109
 	pkgrel = 1
 	url = https://github.com/snare/voltron
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = voltron-git
 	depends = python-flask
 	depends = python-pygments
 	depends = python-rl
-	depends = python-scruffy
+	depends = python-scruffington
 	depends = readline
 	optdepends = gdb: GDB
 	optdepends = lldb: LLDB
