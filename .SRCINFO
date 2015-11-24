@@ -5,6 +5,7 @@ pkgbase = moonlight-embedded
 	url = https://github.com/irtimmer/moonlight-embedded
 	arch = armv6h
 	arch = armv7h
+	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	depends = curl
@@ -22,6 +23,8 @@ pkgbase = moonlight-embedded
 	makedepends_armv6h = raspberrypi-firmware-tools
 	makedepends_armv7h = raspberrypi-firmware-tools
 	makedepends_armv7h = imx-vpu
+	depends_x86_64 = ffmpeg
+	depends_x86_64 = sdl2-hg
 
 pkgname = moonlight-embedded
 
