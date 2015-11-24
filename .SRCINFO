@@ -1,0 +1,35 @@
+pkgbase = haka-git
+	pkgdesc = Collection of tools that allows capturing TCP/IP packets and filtering them based on Lua policy files
+	pkgver = 0.3.0.2192.47374d2
+	pkgrel = 1
+	url = http://haka-security.org/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = cmake
+	makedepends = swig
+	makedepends = doxygen
+	makedepends = python2-sphinx
+	makedepends = check
+	makedepends = iniparser
+	makedepends = git
+	depends = wireshark-cli
+	depends = rsync
+	depends = libpcap
+	depends = gawk
+	depends = libedit
+	depends = pcre
+	depends = lua
+	depends = capstone
+	depends = luajit
+	provides = haka
+	conflicts = haka
+	options = !emptydirs
+	backup = etc/haka/haka.conf
+	source = haka-git::git+https://github.com/haka-security/haka
+	source = fix-32bit-build.patch
+	sha512sums = SKIP
+	sha512sums = d4b5db5fb3d04a4c2bb6d4c5833d34a21b3aac8f81eafa8305a0ca57a8bd24578a7baab05e485cb855d3ff0c48b3baa1627ed1db3553fda8c4b7de420d61a857
+
+pkgname = haka-git
+
