@@ -1,6 +1,6 @@
 pkgbase = rust-always-nightly-bin
 	pkgdesc = Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.
-	pkgver = 1.6.0_2015.11.23
+	pkgver = 999999
 	pkgrel = 1
 	url = http://www.rust-lang.org/
 	arch = i686
