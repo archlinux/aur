@@ -9,7 +9,7 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20151023.r2345.19835b6
+pkgver=20151123.r2403.3bca8de
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
@@ -31,7 +31,7 @@ sha512sums=(
   'SKIP'
   'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
   'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
-  '679cc88794d2ef65325ef93f1034f465824efeb2f01521eda7050556c1200df31abf9b5d055b9438d24f040c234d37b74c489e4db6acbf15a2e7fec8e1da226d'
+  '19d7afb79d02e04463fe574106b38b611465326188a7b698dd78412ad848d22a95bbb43bd645b68e69d4acf8e350d3a93c6d3a166add23a2e89ba3dd6b17d4df'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")

@@ -1,6 +1,6 @@
 pkgbase = synergy-git
 	pkgdesc = Share a single mouse and keyboard between multiple computers
-	pkgver = 20151023.r2345.19835b6
+	pkgver = 20151023.r2326.6320156
 	pkgrel = 1
 	url = http://synergy-foss.org
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = synergy-git
 	optdepends = openssl: encryption support
 	provides = synergy
 	conflicts = synergy
-	source = synergy::git+https://github.com/synergy/synergy.git
+	source = synergy::git+https://github.com/synergy/synergy.git#commit=6320156279e6890bb9bcba12c0595fabd15b8f6b
 	source = synergys_at.socket
 	source = synergys_at.service
 	source = missing-include-fix.patch
