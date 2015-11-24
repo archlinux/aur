@@ -1,0 +1,14 @@
+pkgbase = pidgin-recent-contacts-git
+	pkgdesc = Recent Contact/Buddy List for Pidgin
+	pkgver = r0.9
+	pkgrel = 1
+	url = https://github.com/segler-alex/Recent-Contacts-Plugin-for-Pidgin
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = pidgin
+	source = git+https://git@github.com/interskh/Recent-Contacts-Plugin-for-Pidgin.git
+	md5sums = SKIP
+
+pkgname = pidgin-recent-contacts-git
+
