@@ -1,7 +1,7 @@
 pkgbase = yaourt-gui-manjaro
-	pkgdesc = A bash GUI for yaourt - Manjaro theming
-	pkgver = 1.2.5
-	pkgrel = 5
+	pkgdesc = A bash GUI for yaourt (Manjaro theming) and Romanian translation added
+	pkgver = 1.4.5
+	pkgrel = 2
 	url = http://alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/
 	install = yaourt-gui-manjaro.install
 	arch = any

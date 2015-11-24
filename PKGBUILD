@@ -2,9 +2,9 @@
 # Conversion maintainer: alexandru.ianu@gmail.com
 
 pkgname=yaourt-gui-manjaro
-pkgver=1.2.5
-pkgrel=5
-pkgdesc="A bash GUI for yaourt - Manjaro theming"
+pkgver=1.4.5
+pkgrel=2
+pkgdesc="A bash GUI for yaourt (Manjaro theming) and Romanian translation added"
 arch=('any')
 url="http://alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/"
 license=('GPL')
