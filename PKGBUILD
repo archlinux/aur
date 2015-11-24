@@ -10,7 +10,7 @@ pkgbase=linux-mainline               # Build stock -ARCH kernel
 _srcname=linux-4.3
 _patchname=patch-4.4-rc2
 pkgver=4.4rc2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -43,13 +43,14 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
+  # mainline: not needed
   # add upstream patch
   # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # add mainline patch
+  # mainline: add patch
   patch -p1 -i "${srcdir}/${_patchname}" || true
 
-  # libcfs fix
+  # mainline: libcfs fix
   patch -p1 -i "${srcdir}/libcfs-fix.patch"
 
   # add latest fixes from stable queue, if needed
@@ -273,6 +274,9 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+  # mainline: remove Documentation Kconfigs.
+  rm -rf "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation"
 }
 
 _package-docs() {
