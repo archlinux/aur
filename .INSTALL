@@ -1,0 +1,97 @@
+function cmd_present() {
+	command -v "$1" >/dev/null 2>&1
+}
+
+
+#The script is run right before files are extracted. One argument is passed: new package version.
+function pre_install() {
+	echo ""
+}
+
+#The script is run right after files are extracted. One argument is passed: new package version.
+function post_install() {
+	BASE_TC_PATH="/opt/trueconf"
+	STARTUP_SCRIPT="${BASE_TC_PATH}/trueconf-client"
+	AUTORUN_SCRIPT="${BASE_TC_PATH}/trueconf-client-autostart"
+
+	chmod a+x ${STARTUP_SCRIPT}
+	chmod a+x ${AUTORUN_SCRIPT}
+
+	#create symbolic link to executable
+	LINK_FILE="/usr/bin/trueconf"
+	if [ -f ${LINK_FILE} ]; then
+		rm ${LINK_FILE}
+	fi
+
+	if [ ! -f ${LINK_FILE} ]; then
+		ln -s -f ${STARTUP_SCRIPT} ${LINK_FILE}
+	fi
+	# ~create symbolic link to executable
+
+	# final preparation
+	XDG_DESKTOP_MENU=`which xdg-desktop-menu 2> /dev/null`
+	if [ ! -x "$XDG_DESKTOP_MENU" ]; then
+		echo "WARNING: Could not find xdg-desktop-menu" >&2
+	else
+		"$XDG_DESKTOP_MENU" install --novendor --mode system /opt/trueconf/trueconf.desktop
+		"$XDG_DESKTOP_MENU" forceupdate --mode system
+	fi
+	# ~ final preparation
+
+	# restart application if running        
+	pid=`ps axco pid,command | awk '$2 == "trueconf-bin" {print $1; }'`
+
+	if [ -n "$pid" ]; then
+		for process in "$pid"; do
+    			kill -s 50 $process 
+		done
+
+	fi
+}
+
+#The script is run right before files are extracted. Two arguments are passed in the following order: new package version, old package version.
+function pre_upgrade() {
+	echo ""
+}
+
+#The script is run right after files are extracted. Two arguments are passed in the following order: new package version, old package version.
+function post_upgrade() {
+	post_install
+}
+
+#The script is run right before files are removed. One argument is passed: old package version.
+function pre_remove() {
+	# remove autostart files
+	autostart_dir="${HOME}/.config/autostart"
+	if [ -f ${autostart_dir}/trueconf.desktop ]; then
+		rm ${autostart_dir}/trueconf.desktop
+	fi
+
+	if [ -f ${autostart_dir}/trueconf-autostart.desktop ]; then
+		rm ${autostart_dir}/trueconf-autostart.desktop
+	fi
+	# ~remove autostart files
+
+	# remove application data
+	for USER_DIR in $(ls -d /home/*)
+	do
+		DATA_DIR="${USER_DIR}/.config/trueconf"
+		if [ -d "${DATA_DIR}" ]; then
+			rm -rf "${DATA_DIR}"
+		fi
+	done
+	# ~remove application data
+
+	# uninstall menu file and update system menu
+	#"$XDG_DESKTOP_MENU" uninstall --novendor --mode system /opt/trueconf/trueconf.desktop
+	#"$XDG_DESKTOP_MENU" forceupdate --mode system
+	# ~uninstall menu file and update system menu
+}
+
+#The script is run right after files are removed. One argument is passed: old package version.
+function post_remove() {
+	LINK_FILE="/usr/bin/trueconf"
+	if [ -f ${LINK_FILE} ]; then
+		rm ${LINK_FILE}
+	fi
+}
