@@ -2,14 +2,14 @@
 
 _pkgname=fb-adb
 pkgname=$_pkgname-git
-pkgver=20151114.r325.d447d38
+pkgver=20151122.r327.a682c99
 pkgrel=1
 pkgdesc='A better shell to use in place of adb when connecting to Android devices'
 url='https://github.com/facebook/fb-adb'
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('android-tools')
-makedepends=('git' 'zip' 'vim')
+makedepends=('git' 'vim' 'zip')
 options=('!strip' '!buildflags')
 source=("git+$url.git")
 sha512sums=('SKIP')
