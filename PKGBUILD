@@ -1,6 +1,6 @@
 # Maintainer: Maxs <max dot van dot den dot branden @t gmail dot com>
 pkgname="solarus-quest-editor"
-pkgver="1.4.4"
+pkgver="1.4.5"
 pkgrel="1"
 epoch=
 pkgdesc="A graphical user interface to create and modify quests for the Solarus engine."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/christopho/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=("f825a67a598f30b28ac17612cff63654")
+md5sums=("2af8a97bb53aac488974e69d81972050")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
