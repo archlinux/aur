@@ -1,6 +1,6 @@
 # Maintainer: kumpelblase2
 pkgname=nanobox-bin
-pkgver=0.16.9
+pkgver=0.16.10
 pkgrel=1
 pkgdesc='Local Development Done Right'
 arch=('x86_64')
@@ -10,9 +10,8 @@ license=('custom:MPL2')
 depends=('virtualbox' 'vagrant')
 source=('https://s3.amazonaws.com/tools.nanobox.io/cli/linux/amd64/nanobox'
         'LICENSE')
-md5sums=('378a10af92646cd8314d8f11e1996bf9'
+md5sums=('6bc8090f3584c3df6aa9388007e394b2'
          '12db314d9a9d5c9479e9890471e8e543')
-
 package() {
   cd "$srcdir"
   install -Dm755 nanobox "$pkgdir/usr/bin/nanobox"
