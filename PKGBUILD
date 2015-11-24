@@ -139,9 +139,13 @@ build() {
     ./configure PYTHON=/usr/bin/python2 --prefix=/usr --sbindir=/usr/bin --with-sysconfig-leaf-dir=conf.d --with-initddir=/etc/init.d \
         --enable-systemd --disable-docs --with-extra-qemu-configure-args="--disable-bluez --disable-gtk"
 
+    pushd $PWD
     make -C "$srcdir/xen_src/tools/" qemu-xen-traditional-dir-force-update
-    patch -p1 -i ../gnutls-3.4.0.patch
 
+    cd "$srcdir/xen_src/tools/qemu-xen-traditional-dir"
+    patch -p3 -i "$srcdir/gnutls-3.4.0.patch"
+
+    popd
     make LANG=C PYTHON=python2 PYTHON_PREFIX_ARG= xen tools
 }
 
