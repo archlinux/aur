@@ -1,4 +1,4 @@
-# Maintainer: <fsmail[at]kondorgulasch[dot]de>
+# Maintainer: <development[at]kondorgulasch[dot]de>
 
 pkgname=pidgin-xmpp-receipts
 pkgver=0.6
