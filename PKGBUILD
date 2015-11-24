@@ -6,8 +6,8 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=20150316
-pkgrel=2
+pkgver=20151118
+pkgrel=1
 pkgdesc="TrueType fonts from the Google Fonts project"
 arch=('any')
 url="https://github.com/google/fonts"
@@ -47,6 +47,7 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-lekton'
            'ttf-medievalsharp'
            'ttf-noto'
+           'noto-fonts'
            'ttf-nova'
            'ttf-oldstandard'
            'ttf-opensans'
@@ -72,7 +73,7 @@ install=font.install
 _gitname="fonts"
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
