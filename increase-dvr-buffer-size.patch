@@ -1,0 +1,11 @@
+--- /drivers/media/dvb-core/dmxdev.h	2015-08-30 14:34:09.000000000 -0400
++++ /drivers/media/dvb-core/dmxdev.h	2015-11-23 21:22:15.392340269 -0500
+@@ -106,7 +106,7 @@
+ 	struct dmx_frontend *dvr_orig_fe;
+ 
+ 	struct dvb_ringbuffer dvr_buffer;
+-#define DVR_BUFFER_SIZE (10*188*1024)
++#define DVR_BUFFER_SIZE (500*188*1024)
+ 
+ 	struct mutex mutex;
+ 	spinlock_t lock;
