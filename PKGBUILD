@@ -2,7 +2,7 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp
 pkgver=1.9.0
-pkgrel=8
+pkgrel=9
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -26,7 +26,7 @@ md5sums=('9b02c5c42ad939ea393811f97e844f54'
          '816dd5ea9534a077dfd63b6cd529738a'
          '5be7d42b434b74d7e692b19a9e3c4297'
          'e13fc55329910cd4dd0a9ee0b43bad97'
-         '7b94e1ab23db6c849dac3cb86246007d'
+         '7e58716f1249f924ce218bd348d4c03a'
          '4e0d4fc5975ea8794ea286e8fbfa56cd')
 
 prepare() {
