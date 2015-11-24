@@ -1,10 +1,11 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Sameed Pervaiz <greenbagels@teknik.io>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=4.90.90.r22909.b21188a
+pkgver=4.90.90.r23015.0fe2047
 pkgrel=1
 pkgdesc="A C/C++ development environment for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
