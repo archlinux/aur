@@ -1,0 +1,15 @@
+pkgbase = limboole
+	pkgdesc = A simple tool for checking satisfiability respectively tautology on arbitrary structural formulas.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://fmv.jku.at/limboole/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = http://fmv.jku.at/limboole/limboole1.1.tar.gz
+	source = http://fmv.jku.at/picosat/picosat-960.tar.gz
+	sha256sums = fbf54fdfa7b6bd11c8e8246ba4367ff50287b6db264b0b3b39796c7c71855fe4
+	sha256sums = edb3184a04766933b092713d0ae5782e4a3da31498629f8bb2b31234a563e817
+
+pkgname = limboole
+
