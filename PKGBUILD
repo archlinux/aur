@@ -5,7 +5,7 @@
 # Build syndie with i2p.jar from kytv's debian mirror.
 # Useful if you dont want to build i2p just to install syndie.
 _external_i2p=1
-_i2p_ver=0.9.20-2ubuntu1
+_i2p_ver=0.9.23-1ubuntu1
 ###########################################################
 
 pkgname=syndie
@@ -27,7 +27,7 @@ sha256sums=('f6bd632b0264016fb57255e8c3db1bea8d1d1004e163c10cd7c1d44c980f36bb'
             'a4711e9876f8e185a5de84976f2b5a72a8890329c86688ffa583ae8741ecc6cc'
             '552d02ae3724d969e668996b67d0d7b1d70f39bf03ad43287073511696c995f7'
             'a3e9d28f4e2da66cf91b4f1e57bf902dcd091ac1b97dadd9ec819f383cd83df8'
-            'b3f25f5ad1a067f2a7e772c4f6d9ff0de67fe608a7b6874556928129c16af18f')
+            'd98206e532898ad546adeca6460dc988d6107e639a3631be3d01db0abba9914e')
 
 validpgpkeys=('97C6EEFB60D38EA4C1BE33FFABE0C319DF0A0A1A'
               '2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
