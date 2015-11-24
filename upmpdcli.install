@@ -1,0 +1,12 @@
+post_install() {
+  if ! getent group upmpdcli >/dev/null; then
+     groupadd --system upmpdcli >/dev/null
+  fi
+  if ! getent passwd upmpdcli >/dev/null; then
+     useradd -g upmpdcli --system upmpdcli -s /bin/false -d / >/dev/null
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
