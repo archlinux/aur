@@ -3,7 +3,7 @@
 pkgname=pd-mdnsbrowser-git
 pkgver=4.1ac1d25
 pkgrel=1
-pkgdesc="A TouchOSC MIDI bridge for Pd"
+pkgdesc="Zeroconf service advertising and discovery for Pd"
 arch=("i686" "x86_64")
 license=('BSD')
 url="https://bitbucket.org/agraef/pd-mdnsbrowser/"

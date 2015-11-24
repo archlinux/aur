@@ -1,5 +1,5 @@
 pkgbase = pd-mdnsbrowser-git
-	pkgdesc = A TouchOSC MIDI bridge for Pd
+	pkgdesc = Zeroconf service advertising and discovery for Pd
 	pkgver = 4.1ac1d25
 	pkgrel = 1
 	url = https://bitbucket.org/agraef/pd-mdnsbrowser/
