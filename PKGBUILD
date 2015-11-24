@@ -1,12 +1,12 @@
 # Maintainer: Moritz Kaspar Rudert (mortzu) <me@mortzu.de>
 pkgname=gitter
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Where developers come to talk'
 url='https://gitter.im'
 license=('unknown')
 arch=('x86_64')
-depends=('libsystemd' 'desktop-file-utils')
+depends=('libsystemd' 'desktop-file-utils' 'gconf')
 makedepends=('tar' 'binutils')
 source=("https://update.gitter.im/linux64/${pkgname}_${pkgver}_amd64.deb"
         gitter.sh)

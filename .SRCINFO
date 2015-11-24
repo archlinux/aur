@@ -1,7 +1,7 @@
 pkgbase = gitter
 	pkgdesc = Where developers come to talk
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitter.im
 	install = gitter.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = gitter
 	makedepends = binutils
 	depends = libsystemd
 	depends = desktop-file-utils
+	depends = gconf
 	noextract = gitter_2.4.0_amd64.deb
 	options = !strip
 	source = https://update.gitter.im/linux64/gitter_2.4.0_amd64.deb
