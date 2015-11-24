@@ -1,6 +1,6 @@
 pkgbase = zoom
 	pkgdesc = Video Conferencing and Web Conferencing Service
-	pkgver = 1.1.32904.1120
+	pkgver = 1.1.33228.1124
 	pkgrel = 1
 	url = https://zoom.us/
 	install = zoom.install
@@ -24,7 +24,7 @@ pkgbase = zoom
 	depends = lib32-libxcb
 	options = !strip
 	source = https://zoom.us/client/latest/ZoomInstaller_i386.deb
-	md5sums = 776642f5e82e22645189fe016515ade0
+	md5sums = efbe00aade9b2f14ddd6b7425bc4da39
 
 pkgname = zoom
 
