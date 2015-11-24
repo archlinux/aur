@@ -4,7 +4,7 @@
 
 pkgname=lilith
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="logging and access event viewer for Logback, log4j and JUL"
 arch=(any)
 url="http://lilith.huxhorn.de/"
@@ -24,7 +24,6 @@ prepare() {
 }
 
 package() {
-  gpg --recv-keys 6334E557740A1840
   cd "$srcdir"
   install -dm755 "$pkgdir/opt"
   install -dm755 "$pkgdir/usr/bin"
