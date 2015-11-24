@@ -1,23 +1,24 @@
-# Maintainer: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Contributor: Lex Black <autumn-wind at web dot de>
+# Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=nodejs-git
-pkgver=0.12.7.52.g9660833
+pkgver=3.0.0.r699.g6588422
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
 url='http://nodejs.org/'
 license=('MIT')
-depends=('openssl')
-makedepends=('python2' 'git')
+depends=('openssl' 'zlib' 'icu' 'libuv' 'http-parser') # 'v8')
+makedepends=('python2' 'procps-ng' 'git')
+optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
-options=('!emptydirs')
-source=($pkgname::git://github.com/joyent/node.git)
+source=($pkgname::git://github.com/nodejs/node#branch=master) # alternative: v5.x
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe | sed 's/^v//;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
@@ -28,6 +29,8 @@ prepare() {
     -e 's_^#!/usr/bin/env python$_&2_' \
     -e 's_^\(#!/usr/bin/python2\).[45]$_\1_' \
     -e 's_^#!/usr/bin/python$_&2_' \
+    -e 's_^\( *exec \+\)python\( \+.*\)$_\1python2\2_'\
+    -e 's_^\(.*\)python\( \+-c \+.*\)$_\1python2\2_'\
     -e "s_'python'_'python2'_" -i {} \;
   find test/ -type f -exec sed 's_python _python2 _' -i {} \;
 }
@@ -38,14 +41,31 @@ build() {
   export PYTHON=python2
   ./configure \
     --prefix=/usr \
-    --shared-openssl
+    --with-intl=system-icu \
+    --without-npm \
+    --shared-openssl \
+    --shared-zlib \
+    --shared-libuv \
+    --shared-http-parser
+    # --shared-v8
 
   make
+}
+
+check() {
+  cd $pkgname
+  make test
 }
 
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nodejs/LICENSE
+  # install docs as per user request
+  install -d "$pkgdir"/usr/share/doc/nodejs
+  cp -r doc/api/*.markdown \
+    "$pkgdir"/usr/share/doc/nodejs
+
+  install -D -m644 LICENSE \
+    "$pkgdir"/usr/share/licenses/nodejs/LICENSE
 }
