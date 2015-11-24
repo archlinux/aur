@@ -1,0 +1,14 @@
+pkgbase = sam
+	pkgdesc = Sam is an adaption to C of the speech software SAM (Software Automatic Mouth) for the Commodore C64.
+	pkgver = r44.78f363d
+	pkgrel = 1
+	url = http://simulationcorner.net/index.php?page=sam
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = git
+	source = SAM::git+http://github.com/s-macke/SAM/#branch=master
+	md5sums = SKIP
+
+pkgname = sam
+
