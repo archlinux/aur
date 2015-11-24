@@ -1,0 +1,9 @@
+# KDE Config File
+[Desktop Entry]
+Categories=Application;Network;
+Type=Application
+Exec=qchat
+Icon=/usr/share/qchat/icons/tray-icon.png
+Terminal=false
+Name=QChat
+GenericName=LAN chat

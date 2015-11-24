@@ -1,0 +1,16 @@
+pkgbase = qchat
+	pkgdesc = QT4 Local area network (wlan) chat with or without server
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://q-chat.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = http://sourceforge.net/projects/q-chat/files/QChat/qchat-0.3/qchat-0.3.tar.bz2
+	source = qchat.desktop
+	md5sums = e94f03d11e4a78dff115c3af8c38bac9
+	md5sums = 7c0769f294d714770e3d66f30de21273
+
+pkgname = qchat
+
