@@ -9,7 +9,8 @@ set -u
 #_ubver='1.7.3~177~ubuntu15.10.1' # not found
 #_ubver='1.7.3~177~ubuntu15.04.1' # not found
 #_ubver='1.7.3~177~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
-_ubver='1.7.5~180~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
+#_ubver='1.7.5~180~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
+_ubver='1.7.6~184~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver%~*}"
 pkgrel='1'
@@ -26,7 +27,7 @@ makedepends=('vala')
 options=('!emptydirs')
 install="${pkgname}.install"
 source=("${url}/+files/${_srcdir}.tar.gz")
-sha256sums=('b7c411ce6677e19d7c2114565c820f3c0eab8dc26e151367c28f87c51da66027')
+sha256sums=('391b9716cd54060eb7f7b2058d9ca0486fcd41add4e5e44a568b27b94146e82e')
 
 build() {
   set -u
