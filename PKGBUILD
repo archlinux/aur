@@ -3,12 +3,15 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=folly-git
-pkgver=r1110.81e0e45
+pkgver=0.57.0.r209.g442584e
 pkgrel=1
 pkgdesc='Folly is an open-source C++ library developed and used at Facebook'
 arch=(i686 x86_64)
 url='https://github.com/facebook/folly'
 license=(Apache)
+conflicts=(folly)
+provides=(folly)
+replaces=(folly)
 depends=(google-glog gflags double-conversion libevent xz boost-libs jemalloc lz4)
 makedepends=(git boost python2)
 source=(
@@ -22,7 +25,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd folly
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
