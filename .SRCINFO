@@ -15,13 +15,13 @@ pkgbase = syndie
 	source = syndie.desktop
 	source = syndie.xpm
 	source = syndie.sh
-	source = https://launchpad.net/~i2p.packages/+archive/i2p/+files/i2p-router_0.9.20-2ubuntu1_all.deb
+	source = https://launchpad.net/~i2p.packages/+archive/i2p/+files/i2p-router_0.9.23-1ubuntu1_all.deb
 	sha256sums = f6bd632b0264016fb57255e8c3db1bea8d1d1004e163c10cd7c1d44c980f36bb
 	sha256sums = SKIP
 	sha256sums = a4711e9876f8e185a5de84976f2b5a72a8890329c86688ffa583ae8741ecc6cc
 	sha256sums = 552d02ae3724d969e668996b67d0d7b1d70f39bf03ad43287073511696c995f7
 	sha256sums = a3e9d28f4e2da66cf91b4f1e57bf902dcd091ac1b97dadd9ec819f383cd83df8
-	sha256sums = b3f25f5ad1a067f2a7e772c4f6d9ff0de67fe608a7b6874556928129c16af18f
+	sha256sums = d98206e532898ad546adeca6460dc988d6107e639a3631be3d01db0abba9914e
 	sha256sums = cfe05cc780753ef07f439b1b63cd4133b21c5b8c49d8c8839532872b9ac91781
 
 pkgname = syndie
