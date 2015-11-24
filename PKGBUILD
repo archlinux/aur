@@ -3,7 +3,7 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Davi da Silva Böger <dsboger@gmail.com>
 pkgname=gcdemu
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="GNOME panel applet controlling cdemu-daemon"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('cdemu-daemon' 'python2' 'python2-gobject' 'python2-notify' 'gtk3')
 makedepends=('cmake' 'intltool')
 install=gcdemu.install
 source=(http://downloads.sourceforge.net/cdemu/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('1357a02720f05644929bae167fcc64dc58784f406aa426bcd806955cc458aad4')
+sha512sums=('e5a1905642c08145669c5eb9e65159d5a9a2fbcd1657edd28ae091ee1d02673e56bb7007df2a9f95863cae1a1ab01916bb43b4d10fe054d52507beabd7dd532f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
