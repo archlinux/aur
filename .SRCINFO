@@ -1,19 +1,19 @@
 pkgbase = rakudo
 	pkgdesc = Perl6 compiler for MoarVM
-	pkgver = 2015.10
+	pkgver = 2015.11
 	pkgrel = 1
 	url = http://rakudo.org/
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
 	makedepends = perl>=5.8
-	depends = nqp>=2015.10
+	depends = nqp>=2015.11
 	provides = rakudo-moarvm
 	conflicts = rakudo-moarvm
 	replaces = rakudo-moarvm
 	options = !makeflags
-	source = http://rakudo.org/downloads/rakudo/rakudo-2015.10.tar.gz
-	sha512sums = 3aa3d8c186926cfeca40c2ba1079ade0894e7e0e8c8127661f2ec64443d01eef8b8b8a7dfdc69fe3500289eb7c5cd45209dea2e02cf1e2f94368473b9be54cf0
+	source = http://rakudo.org/downloads/rakudo/rakudo-2015.11.tar.gz
+	sha512sums = e4d662709cf47b2b98398c5781973d1abd008f6f13b170fdba418bf36ff552e6c33caee26e2833539828c06ab7562f02cf5e54789f898e2e2d1d31db98d2e95e
 
 pkgname = rakudo
 
