@@ -1,0 +1,32 @@
+pkgbase = haka
+	pkgdesc = Collection of tools that allows capturing TCP/IP packets and filtering them based on Lua policy files
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://haka-security.org/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = cmake
+	makedepends = swig
+	makedepends = doxygen
+	makedepends = python2-sphinx
+	makedepends = check
+	makedepends = iniparser
+	depends = wireshark-cli
+	depends = rsync
+	depends = libpcap
+	depends = gawk
+	depends = libedit
+	depends = pcre
+	depends = lua
+	depends = capstone
+	depends = luajit
+	options = !emptydirs
+	backup = etc/haka/haka.conf
+	source = haka-0.3.0.tar.gz::https://github.com/haka-security/haka/releases/download/v0.3.0/haka_0.3.0_source.tar.gz
+	source = fix-32bit-build.patch
+	sha512sums = 8c2c219b8e89710289e300c1fd8ad9b6a95562efc77966bee7ddf343d73b108d6ebf3f7ff73963ca66954bdc0719c08eef127e58ffa42469ae47cf95e817e720
+	sha512sums = d4b5db5fb3d04a4c2bb6d4c5833d34a21b3aac8f81eafa8305a0ca57a8bd24578a7baab05e485cb855d3ff0c48b3baa1627ed1db3553fda8c4b7de420d61a857
+
+pkgname = haka
+
