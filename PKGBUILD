@@ -1,6 +1,6 @@
 _name='zsh-autosuggestions'
 pkgname="${_name}-git"
-pkgver=0.2.1.86.cbaf7ce
+pkgver=0.2.1.92.7a00bfa
 pkgrel=1
 pkgdesc='Fish shell like fast/unobtrusive autosuggestions for zsh'
 url='https://github.com/tarruda/zsh-autosuggestions'
