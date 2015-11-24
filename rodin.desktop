@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Rodin
+Comment=A tool for cost effective rigorous development of dependable software systems
+Icon=rodin
+Exec=/opt/rodin/rodin
+Terminal=false
+Type=Application
+Categories=Development;IDE;Java;
+StartupNotify=true

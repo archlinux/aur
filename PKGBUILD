@@ -1,22 +1,22 @@
 # Contributor: Gustavo A. Gomez Farhat <gustavo_dot_gomez_dot_farhat at gmail_dot_com>
 
 pkgname=rodin
-pkgver=3.0.1
-pkgver_upstream=201406111447-5326174
+pkgver=3.2
+pkgver_upstream=0.201506220911-ecacdcb
 pkgrel=1
-pkgdesc="Open tool platform for the cost effective rigorous development of dependable complex software systems services."
+pkgdesc="Tool for cost effective rigorous development of dependable software systems"
 arch=('i686' 'x86_64')
 url="http://www.event-b.org"
 license=('CPL' 'EPL')
 depends=('python' 'libxrender' 'fontconfig' 'java-runtime')
-source=(rodin.profile)
-md5sums=('c9fcb488308b15325449384d0fe9c411')
-sha256sums=('69193f15dabda1ee69b45744a22f0306f67793e71b629befcbd3e27c93ff5b8e')
+source=('rodin.desktop')
+md5sums=('b9941b26369aff6665dcde43091ebef9')
+sha256sums=('aa4c0909b4e156f20882a1b861c6a7b37d144a18e9fe7fa00088b9dc2f586d75')
 
 if test "$CARCH" == x86_64; then
   source+=(http://downloads.sourceforge.net/project/rodin-b-sharp/Core_Rodin_Platform/${pkgver}/rodin-${pkgver}.${pkgver_upstream}-linux.gtk.x86_64.tar.gz)
-  md5sums+=('386e1b1a3d3e343f624e4cdda6719630')
-  sha256sums+=('acbcfa9c1f9619862c20b7275eef1fdf33c54132ce2c307061867ed3bd255c13')
+  md5sums+=('2da46b2fd30ae5dff7d466baf475bf55')
+  sha256sums+=('36e3ac4ab30586f12bd552902e9afb4e50a4bd3cb711ee4f9becbec88ea5385e')
 else
   source+=(http://downloads.sourceforge.net/project/rodin-b-sharp/Core_Rodin_Platform/${pkgver}/rodin-${pkgver}.${pkgver_upstream}-linux.gtk.x86.tar.gz)
   md5sums+=('7f52140cc41133908b19ed8758d9b80b')
@@ -27,5 +27,9 @@ package() {
   cd $srcdir/$pkgname
   mkdir -p $pkgdir/opt/rodin || return 1
   cp -rf * $pkgdir/opt/rodin || return 1
-  install -m 755 -D $srcdir/rodin.profile $pkgdir/etc/profile.d/rodin.sh
+  mkdir -p $pkgdir/usr/share/pixmaps
+  install $pkgdir/opt/rodin/icon.xpm $pkgdir/usr/share/pixmaps/rodin.xpm
+  mkdir -p $pkgdir/usr/share/applications
+  install -m 755 $srcdir/rodin.desktop $pkgdir/usr/share/applications/rodin.desktop
+  #install -m 755 -D $srcdir/rodin.profile $pkgdir/etc/profile.d/rodin.sh
 }
