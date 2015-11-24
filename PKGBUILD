@@ -3,11 +3,10 @@
 pkgname=zimg-git
 pkgver=2.0.1.22.g1aa2811
 pkgrel=1
-pkgdesc="Scaling, colorspace conversion, and dithering library. include VapourSynth plugin (deprecated soon(?)). (GIT version)"
+pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171334'
 license=('custom:WTFPL')
-depends=('vapoursynth')
 makedepends=('git')
 provides=('zimg')
 conflicts=('zimg' 'vapoursynth-plugin-zimg' 'vapoursynth-plugin-zimg-git')
@@ -33,9 +32,7 @@ build() {
 
 package(){
   make -C zimg DESTDIR="${pkgdir}" install
-  install -d "${pkgdir}/usr/lib/vapoursynth"
-  ln -s ../zimg/vszimg.so "${pkgdir}/usr/lib/vapoursynth/libvszimg.so"
+  rm -fr "${pkgdir}/usr/lib/zimg"
 
   install -Dm644 zimg/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 zimg/doc/vszimg/vszimg.txt "${pkgdir}/usr/share/doc/vapoursynth/plugins/zimg/vszimg.txt"
 }
