@@ -1,7 +1,7 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=pacmarge
-pkgver=0.r6.8109763
+pkgver=0.r7.d3d1dbb
 pkgrel=1
 pkgdesc="A tool to automatically merge .pacnew files (hopefully correctly!)"
 arch=('any')
