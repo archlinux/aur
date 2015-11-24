@@ -2,7 +2,7 @@
 
 pkgname=voltron-git
 pkgver=20151109
-pkgrel=1
+pkgrel=2
 pkgdesc="UI for GDB, LLDB and Vivisect's VDB"
 arch=('any')
 depends=('python'
@@ -20,8 +20,9 @@ optdepends=('gdb: GDB'
 url="https://github.com/snare/voltron"
 license=('Beerware')
 options=('!emptydirs')
-source=(${pkgname%-git}::git+https://github.com/snare/voltron)
-sha256sums=('SKIP')
+source=(git+https://github.com/snare/voltron
+        git+https://github.com/snare/voltron.wiki)
+sha256sums=('SKIP' 'SKIP')
 provides=('voltron')
 conflicts=('voltron')
 
@@ -40,8 +41,10 @@ build() {
 package() {
   cd ${pkgname%-git}
 
-  msg2 'Installing docs...'
+  msg2 'Installing documentation...'
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  cp -dpr --no-preserve=ownership "$srcdir/voltron.wiki" \
+    "$pkgdir/usr/share/doc/${pkgname%-git}/wiki"
 
   msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1

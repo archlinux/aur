@@ -1,7 +1,7 @@
 pkgbase = voltron-git
 	pkgdesc = UI for GDB, LLDB and Vivisect's VDB
 	pkgver = 20151109
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snare/voltron
 	arch = any
 	license = Beerware
@@ -21,7 +21,9 @@ pkgbase = voltron-git
 	provides = voltron
 	conflicts = voltron
 	options = !emptydirs
-	source = voltron::git+https://github.com/snare/voltron
+	source = git+https://github.com/snare/voltron
+	source = git+https://github.com/snare/voltron.wiki
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = voltron-git
