@@ -1,0 +1,12 @@
+[Unit]
+Description=A new data visualization tool for InfluxDB
+After=network-online.target
+
+[Service]
+User=chronograf
+ExecStart=/usr/bin/chronograf -config=/etc/chronograf.toml
+Restart=on-failure
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
