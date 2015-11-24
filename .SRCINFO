@@ -12,6 +12,7 @@ pkgbase = gauche-git
 	makedepends = git
 	depends = zlib
 	depends = gdbm
+	depends = libatomic_ops
 	provides = gauche
 	conflicts = gauche
 	options = !makeflags
