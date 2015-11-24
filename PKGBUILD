@@ -3,10 +3,10 @@
 # Contributor: Chuck Boucher <jofywyxaxukyvofa (at) tempomail.fr>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edbrowse
-pkgver=3.5.4
+pkgver=3.5.4.2
 pkgrel=1
 epoch=
-pkgdesc="Editor, browser, and mail client based on /bin/ed."
+pkgdesc="A line-oriented editor, browser and mail client."
 arch=('i686' 'x86_64')
 url="http://edbrowse.org/"
 license=('GPL' 'openssl')
@@ -24,9 +24,9 @@ install=
 changelog=
 source=("http://edbrowse.org/$pkgname-$pkgver.zip")
 noextract=()
-md5sums=('b58fe2e97ff6eef543f03f059403963a')
-sha1sums=('5ea0182655c70b4908d9da304d5f571fc05f43a1')
-sha256sums=('9b8ef8c8b83a207f59999e9117b1f1f09ca498ccd08811782dd4d42081679225')
+md5sums=('0fe3fffd3c6086e05c905ccf459844ef')
+sha1sums=('55069248f3e54ed9dca332b90a817a07edb1a689')
+sha256sums=('0c14da87ca1b6adb0ddc7b51e8d5392a58d9a8c2ae636385f38e7c6a4622551d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
