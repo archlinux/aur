@@ -14,8 +14,10 @@ conflicts=('visit' 'visit-build')
 depends=('libpng12' 'glu')
 makedepends=('bash' 'cpio')
 _ver=rhel6
-source=("http://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz"
-        "http://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/${_pkgname}-install${_pkgver}"
+#_url="http://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/"
+_url="http://visit.ilight.com/svn/${_pkgname}/trunk/releases/${pkgver}/"
+source=("${_url}/${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz"
+        "${_url}/${_pkgname}-install${_pkgver}"
         'visit-bin.sh'
         'visit-libs.patch')
 noextract=("${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz")
