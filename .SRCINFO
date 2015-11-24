@@ -1,0 +1,21 @@
+pkgbase = python-ripe-atlas-sagan
+	pkgdesc = A parsing library for RIPE Atlas measurement results
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/RIPE-NCC/ripe.atlas.sagan
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python>=3.4
+	depends = python-dateutil
+	depends = python-pytz
+	depends = python-ipy
+	depends = python-pyopenssl
+	optdepends = python-ujson: faster json decoding
+	optdepends = python-sphinx: documentation generator
+	provides = python-ripe-atlas-sagan
+	source = https://pypi.python.org/packages/source/r/ripe.atlas.sagan/ripe.atlas.sagan-1.1.5.tar.gz
+	md5sums = 123a7fb3607f3038fbdb44cfbc0d1206
+
+pkgname = python-ripe-atlas-sagan
+
