@@ -3,13 +3,17 @@
 
 pkgname=qpdfview-bzr
 pkgver=1968
-pkgrel=1
+pkgrel=2
 pkgdesc='A tabbed PDF viewer using the poppler library. (development version)'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://launchpad.net/qpdfview'
 license=('GPL2')
 depends=('libcups' 'qt5-svg' 'desktop-file-utils' 'hicolor-icon-theme')
-optdepends=('poppler-qt5: for PDF support (required at build time)' 'libspectre: for PostScript support (required at build time)' 'djvulibre: for DjVu support (required at build time)' 'mupdf: for PDF support (required at build time)')
+optdepends=('texlive-bin: for shared SyncTeX parser library (required at build time)'
+            'poppler-qt5: for PDF support (required at build time)'
+            'libspectre: for PostScript support (required at build time)'
+            'djvulibre: for DjVu support (required at build time)'
+            'mupdf: for PDF support (required at build time)')
 makedepends=('bzr' 'qt5-tools')
 conflicts=('qpdfview')
 install='qpdfview.install'
@@ -50,4 +54,8 @@ package() {
   cd "$srcdir/qpdfview"
 
   make "INSTALL_ROOT=$pkgdir" install
+
+  if pkg-config --exists synctex; then
+    depends=("${depends[@]}" 'texlive-bin')
+  fi
 }

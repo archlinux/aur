@@ -1,7 +1,7 @@
 pkgbase = qpdfview-bzr
 	pkgdesc = A tabbed PDF viewer using the poppler library. (development version)
 	pkgver = 1968
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/qpdfview
 	install = qpdfview.install
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = qpdfview-bzr
 	depends = qt5-svg
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
+	optdepends = texlive-bin: for shared SyncTeX parser library (required at build time)
 	optdepends = poppler-qt5: for PDF support (required at build time)
 	optdepends = libspectre: for PostScript support (required at build time)
 	optdepends = djvulibre: for DjVu support (required at build time)
@@ -23,4 +24,9 @@ pkgbase = qpdfview-bzr
 	md5sums = SKIP
 
 pkgname = qpdfview-bzr
+	depends = libcups
+	depends = qt5-svg
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = texlive-bin
 
