@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pd-mdnsbrowser-git
-pkgver=4.1ac1d25
+pkgver=7.9e37aff
 pkgrel=1
 pkgdesc="Zeroconf service advertising and discovery for Pd"
 arch=("i686" "x86_64")
