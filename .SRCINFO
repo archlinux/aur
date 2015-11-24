@@ -1,16 +1,16 @@
 pkgbase = drush
 	pkgdesc = Drush is a command line shell and Unix scripting interface for Drupal
-	pkgver = 7.1.0
-	pkgrel = 3
+	pkgver = 8.0.0
+	pkgrel = 1
 	url = https://github.com/drush-ops/drush/
 	install = drush.install
 	arch = any
 	license = GPL
 	depends = php
 	depends = php-composer
-	source = http://github.com/drush-ops/drush/archive/7.1.0.tar.gz
+	source = http://github.com/drush-ops/drush/archive/8.0.0.tar.gz
 	source = http://download.pear.php.net/package/Console_Table-1.2.1.tgz
-	md5sums = edbcac3216b793b5debb4a4b7c7bac12
+	md5sums = 133970474ac88ed86e1619f40ec35283
 	md5sums = 87e0447d69f396eb755c3a8629a9d8d9
 
 pkgname = drush

@@ -3,8 +3,8 @@
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=drush
-pkgver=7.1.0
-pkgrel=3
+pkgver=8.0.0
+pkgrel=1
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
 arch=('any')
 url="https://github.com/drush-ops/drush/"
@@ -15,7 +15,7 @@ source=(
     "http://github.com/drush-ops/$pkgname/archive/$pkgver.tar.gz"
     'http://download.pear.php.net/package/Console_Table-1.2.1.tgz'
 )
-md5sums=('edbcac3216b793b5debb4a4b7c7bac12'
+md5sums=('133970474ac88ed86e1619f40ec35283'
          '87e0447d69f396eb755c3a8629a9d8d9')
 
 package() {
