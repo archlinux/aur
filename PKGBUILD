@@ -1,15 +1,17 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
+_author=SALVA
+_perlmod=Config-Properties
 pkgname=perl-config-properties
-pkgver=1.77
+pkgver=1.80
 pkgrel=1
 pkgdesc="A near implementation of the java.util.Properties API."
 arch=(any)
-url="http://search.cpan.org/~salva/Config-Properties/"
+url="https://metacpan.org/release/$_perlmod"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
-source=(http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Config-Properties-$pkgver.tar.gz)
-md5sums=('ff3a93d8ba9de61a1df0e26274a34f82')
+source=(http://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
+md5sums=('d3aa9eebbbb2c751d5b3441616d8eb56')
 
 build() {
   cd "$srcdir/Config-Properties-$pkgver"
@@ -18,6 +20,11 @@ build() {
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 
+}
+
+check() {
+  cd "$srcdir/Config-Properties-$pkgver"
+  make test
 }
 
 package() {
