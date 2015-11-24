@@ -1,0 +1,22 @@
+pkgbase = rodin
+	pkgdesc = Open tool platform for the cost effective rigorous development of dependable complex software systems services.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://www.event-b.org
+	arch = i686
+	arch = x86_64
+	license = CPL
+	license = EPL
+	depends = python
+	depends = libxrender
+	depends = fontconfig
+	depends = java-runtime
+	source = rodin.profile
+	source = http://downloads.sourceforge.net/project/rodin-b-sharp/Core_Rodin_Platform/3.0.1/rodin-3.0.1.201406111447-5326174-linux.gtk.x86.tar.gz
+	md5sums = c9fcb488308b15325449384d0fe9c411
+	md5sums = 7f52140cc41133908b19ed8758d9b80b
+	sha256sums = 69193f15dabda1ee69b45744a22f0306f67793e71b629befcbd3e27c93ff5b8e
+	sha256sums = ede945b0abde3c1167d77f1cedba15c2234671a4c8e3e65cfbfd487fad0dee2a
+
+pkgname = rodin
+
