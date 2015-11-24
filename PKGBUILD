@@ -1,8 +1,8 @@
 # Maintainer: sxe <sxxe@gmx.de>
 
 pkgname=flowblade
-pkgver=1.2.0
-pkgrel=4
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="a multitrack non-linear video editor for Linux"
 arch=('any')
 url="https://github.com/jliljebl/flowblade"
@@ -12,8 +12,7 @@ conflicts=('flowblade-hg' 'flowblade-git')
 provides=('flowblade')
 
 install=flowblade.install
-#https://www.dropbox.com/s/lzwlycblfpgn8vg/flowblade-1.2.0.tar.gz?dl=0
-source=(https://www.dropbox.com/s/lzwlycblfpgn8vg/flowblade-$pkgver.tar.gz?dl=0)
+source=(https://www.dropbox.com/s/vmu12w36ov2aza8/flowblade-$pkgver.tar.gz?dl=0)
 
 package() {
   #cd $srcdir/$pkgname-$pkgver/$pkgname-trunk
@@ -21,4 +20,4 @@ package() {
   python2 setup.py install --root=$pkgdir/ --install-lib=/usr/share/pyshared --optimize=1
 }
 
-md5sums=('8432518e0b99d8d638ac9d5305e4646e')
+md5sums=('901045ed28407730543e3f845dc5cbd8')
