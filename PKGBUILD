@@ -46,9 +46,6 @@ package() {
     cp -r Lib "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m644 DLLs/*.pyd "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m755 python.exe "$pkgdir"/usr/${_arch}/bin/python${_pybasever}.exe
-    pushd "$pkgdir"/usr/${_arch}/bin/
-    ln -s python${_pybasever}.exe python3.exe
-    ln -s python3.exe python.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
 }
