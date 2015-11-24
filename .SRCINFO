@@ -13,7 +13,6 @@ pkgbase = wobbly-git
 	depends = vapoursynth-plugin-fieldhint-git
 	depends = vapoursynth-plugin-d2vsource-git
 	depends = vapoursynth-plugin-lsmashsource
-	depends = zimg-git
 	depends = xdg-utils
 	provides = wobbly
 	conflicts = wobbly

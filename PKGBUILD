@@ -12,7 +12,6 @@ depends=('qt5-base'
          'vapoursynth-plugin-fieldhint-git'
          'vapoursynth-plugin-d2vsource-git'
          'vapoursynth-plugin-lsmashsource'
-         'zimg-git'
          'xdg-utils'
          )
 makedepends=('git')
