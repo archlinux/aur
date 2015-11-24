@@ -3,7 +3,7 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname=cryptsetup-nuke-keys
-pkgver=1.6.7
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="cryptsetup patched to nuke all keyslots given a certain passphrase"
 arch=(i686 x86_64)
@@ -13,8 +13,8 @@ groups=('base')
 depends=('device-mapper' 'libgcrypt' 'popt' 'libutil-linux')
 makedepends=('util-linux')
 options=('!emptydirs')
-source=(https://www.kernel.org/pub/linux/utils/cryptsetup/v1.6/${pkgname%-nuke*}-${pkgver}.tar.xz
-        #https://www.kernel.org/pub/linux/utils/cryptsetup/v1.6/${pkgname%-nuke*}-${pkgver}.tar.sign
+source=(https://www.kernel.org/pub/linux/utils/cryptsetup/v1.7/cryptsetup-${pkgver}.tar.xz
+        https://www.kernel.org/pub/linux/utils/cryptsetup/v1.7/cryptsetup-${pkgver}.tar.sign
         encrypt_hook
         encrypt_install
         sd-encrypt
@@ -23,7 +23,8 @@ source=(https://www.kernel.org/pub/linux/utils/cryptsetup/v1.6/${pkgname%-nuke*}
         libcryptsetup.h.patch
         libcryptsetup.h.patch.asc
         setup.c.patch)
-sha256sums=('c23c24c8d662032da8650c1c84985221be8bbedf4737c1540bba7e4517dfe820'
+sha256sums=('075524a7cc0db36d12119fa79116750accb1c6c8825d5faa2534b74b8ce3d148'
+            'SKIP'
             '4406f8dc83f4f1b408e49d557515f721d91b358355c71fbe51f74ab27e5c84ff'
             'cfe465bdad3d958bb2332a05e04f2e1e884422a5714dfd1a0a3b9b74bf7dc6ae'
             'd442304e6a78b3513ebc53be3fe2f1276a7df470c8da701b3ece971d59979bdd'
@@ -35,6 +36,7 @@ sha256sums=('c23c24c8d662032da8650c1c84985221be8bbedf4737c1540bba7e4517dfe820'
 
 validpgpkeys=(
               '5F885602C7FD0951F565E27949F67298E6366A92' # Claire Farron
+              '2A2918243FDE46648D0686F9D9B0577BD93E98FC' # Milan Broz <gmazyland@gmail.com>		
              )
 
 provides=('cryptsetup')
