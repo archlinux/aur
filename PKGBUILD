@@ -1,7 +1,7 @@
 # Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 pkgname=qibuild
 pkgver='3.10.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='The meta build framework'
 arch=('any')
 url='http://doc.aldebaran.com/qibuild/'
@@ -10,7 +10,6 @@ depends=('cmake' 'python2-setuptools' 'python2-virtualenv')
 optdepends=(
   'git: for qisrc'
   'python2-sphinx: Sphinx support in qidoc'
-  'python2-virtualenv: for qipy'
   'doxygen: Doxygen support in qidoc'
   'gettext: Gettext support in qilinguist'
   'qt5-tools: QtLinguist support in qilinguist'
