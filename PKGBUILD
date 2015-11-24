@@ -3,7 +3,7 @@
 # Contributor: alesko <askondro@gmail.com>
 
 pkgname=clutter-git
-pkgver=1.22.0.r38.g896e43c
+pkgver=1.24.2.r17.g8c86357
 pkgrel=1
 pkgdesc='A GObject based library for creating fast, visually rich graphical user interfaces'
 arch=('i686' 'x86_64')

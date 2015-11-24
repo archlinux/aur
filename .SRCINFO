@@ -1,6 +1,6 @@
 pkgbase = clutter-git
 	pkgdesc = A GObject based library for creating fast, visually rich graphical user interfaces
-	pkgver = 1.22.0.r38.g896e43c
+	pkgver = 1.24.2.r17.g8c86357
 	pkgrel = 1
 	url = http://clutter-project.org/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = clutter-git
 	depends = libinput
 	depends = gobject-introspection
 	depends = libxkbcommon
-	provides = clutter=1.22.0.r38.g896e43c
+	provides = clutter=1.24.2.r17.g8c86357
 	conflicts = clutter
 	source = git://git.gnome.org/clutter
 	md5sums = SKIP
