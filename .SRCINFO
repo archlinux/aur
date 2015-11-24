@@ -1,7 +1,7 @@
 pkgbase = accel-ppp-git
 	pkgdesc = High performance PPTP/L2TP/PPPoE/IPoE server
 	pkgver = r1190.28777b9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/apps/trac/accel-ppp/
 	install = accel-ppp.install
 	arch = i686
@@ -34,7 +34,7 @@ pkgbase = accel-ppp-git
 	md5sums = 816dd5ea9534a077dfd63b6cd529738a
 	md5sums = 5be7d42b434b74d7e692b19a9e3c4297
 	md5sums = e13fc55329910cd4dd0a9ee0b43bad97
-	md5sums = 7b94e1ab23db6c849dac3cb86246007d
+	md5sums = 7e58716f1249f924ce218bd348d4c03a
 	md5sums = 4e0d4fc5975ea8794ea286e8fbfa56cd
 
 pkgname = accel-ppp-git

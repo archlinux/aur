@@ -1,7 +1,7 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp-git
 pkgver=r1190.28777b9
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -26,7 +26,7 @@ md5sums=('SKIP'
          '816dd5ea9534a077dfd63b6cd529738a'
          '5be7d42b434b74d7e692b19a9e3c4297'
          'e13fc55329910cd4dd0a9ee0b43bad97'
-         '7b94e1ab23db6c849dac3cb86246007d'
+         '7e58716f1249f924ce218bd348d4c03a'
          '4e0d4fc5975ea8794ea286e8fbfa56cd')
 
 _pkgname=accel-ppp
