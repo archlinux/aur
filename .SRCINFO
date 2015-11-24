@@ -1,6 +1,6 @@
 pkgbase = libinput-git
 	pkgdesc = A library to handle input devices in Wayland compositors
-	pkgver = 0.17.0.r2.gbd4f129
+	pkgver = 1.1.1.r1.g09a2967
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/libinput/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libinput-git
 	depends = mtdev
 	depends = systemd
 	depends = libevdev
-	provides = libinput=0.17.0.r2.gbd4f129
+	provides = libinput=1.1.1.r1.g09a2967
 	conflicts = libinput
 	source = git://anongit.freedesktop.org/wayland/libinput
 	sha1sums = SKIP

@@ -1,7 +1,7 @@
 # Maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=libinput-git
-pkgver=0.17.0.r2.gbd4f129
+pkgver=1.1.1.r1.g09a2967
 pkgrel=1
 pkgdesc='A library to handle input devices in Wayland compositors'
 arch=(i686 x86_64)
