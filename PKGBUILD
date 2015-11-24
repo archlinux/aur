@@ -74,8 +74,7 @@ sha256sums=('SKIP'
             'd93c2d5bcdf0c3e4c6e8efb357cb4b9d618209025361f5ccd9d03651a8acd7a3'
             'deeec880522c1374ad135dc8b4c14c7b301464a60fbac410efb3db70f670eed9'
             '295af57acabaa56b14543997a28dcb75a6ab88ce359bdaf9336718a86b4b85eb'
-            '5108bf04f7621758f8b7dc433b5ef99dae3e78ff4f98f178c8c6f6437620da3d'
-            '693ea385fd514fda9630a3e48ecfac4a4384c79f07754f81097b579adff577a9'
+            'e25d38376e22f6f935d2c0ce1b9d6e6b47ff261b5e6056bc3b47168739d7a992'
             '1c44b9dc848bb6c3ef2ab76e4807a0b3ed360aea6b13b5b86d2bf5301d14247b'
             '45aae7a1d48357e5f981c12870b5bcac0dd0f630f84e398160d8c9adb42a6674'
             '8e16638d0cc366d1eaae7ccbcf43215853b4444a625478ec8f6e0a2c655370d9'
@@ -83,6 +82,7 @@ sha256sums=('SKIP'
             'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
             '3f0af16958c3e057b9baa5afc47050d9adf7dd553274dd97ae4f35938fefb568'
             '094c0b8a39144b73f5c92b0e245eeaa7105f2602a9cbb5a6e605b33feeeb76d5')
+
 prepare() {
     cp -r $srcdir/qemu-xen $srcdir/xen_src/tools
     cd "$srcdir/xen_src/"
