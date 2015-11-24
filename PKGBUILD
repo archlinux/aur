@@ -9,12 +9,13 @@ url="http://www.python.org/"
 provides=('mingw-w64-python')
 conflicts=('mingw-w64-python')
 depends=('mingw-w64-crt')
-makedepends=('wine' 'mingw-w64-tools' 'mingw-w64-binutils')
+makedepends=('mingw-w64-tools' 'mingw-w64-binutils')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win32.zip"
         "https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-amd64.zip"
         "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz")
-noextract=(python-${pkgver}-embed-win32.zip python-${pkgver}-embed-amd64.zip)
+noextract=("python-${pkgver}-embed-win32.zip"
+           "python-${pkgver}-embed-amd64.zip")
 md5sums=('6701f6eba0697949bc9031e887e27b32'
          '09a9bcabcbf8c616c21b1e5a6eaa9129'
          'a56c0c0b45d75a0ec9c6dee933c41c36')
@@ -45,10 +46,12 @@ package() {
     install -d "$pkgdir"/usr/${_arch}/bin
     install -d "$pkgdir"/usr/${_arch}/include
     cp -r ../Include "$pkgdir"/usr/${_arch}/include/python${_pybasever}
+    install -m644 ../PC/pyconfig.h "$pkgdir"/usr/${_arch}/include/python${_pybasever}
     install -m755 python${_pybasever}.dll "$pkgdir"/usr/${_arch}/bin
     install -d "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m644 *.pyd "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m755 python.exe "$pkgdir"/usr/${_arch}/bin/python${_pybasever}.exe
+    install -m644 python${_pybasever}.zip "$pkgdir"/usr/${_arch}/bin/
     pushd "$pkgdir"/usr/${_arch}/bin/
     ln -s python${_pybasever}.exe python3.exe
     ln -s python3.exe python.exe
