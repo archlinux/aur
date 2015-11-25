@@ -1,0 +1,31 @@
+From 8babd05ea9c196390570928a386f5a17a8a37fb9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Wed, 13 May 2015 19:10:06 +0200
+Subject: [PATCH 2/3] kms: do not overwrite screen virtualX/Y
+
+The pScrn->currentMode is the resolution of the first monitor,
+not the resolution of the whole virtual screen.
+
+This fixes restarting X when several monitors are enabled.
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ src/qxl_kms.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/qxl_kms.c b/src/qxl_kms.c
+index b6952f3..4ffb4e7 100644
+--- a/src/qxl_kms.c
++++ b/src/qxl_kms.c
+@@ -286,8 +286,6 @@ Bool qxl_screen_init_kms(SCREEN_INIT_ARGS_DECL)
+ 	goto out;
+     pScrn->displayWidth = pScrn->virtualX;
+ 
+-    pScrn->virtualX = pScrn->currentMode->HDisplay;
+-    pScrn->virtualY = pScrn->currentMode->VDisplay;
+     if (!qxl_fb_init (qxl, pScreen))
+ 	goto out;
+     
+-- 
+2.6.2
+

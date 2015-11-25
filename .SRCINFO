@@ -1,7 +1,7 @@
 pkgbase = xf86-video-qxl
 	pkgdesc = Xorg X11 qxl video driver
 	pkgver = 0.1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.x.org
 	arch = x86_64
 	arch = i686
@@ -25,10 +25,16 @@ pkgbase = xf86-video-qxl
 	conflicts = X-ABI-VIDEODRV_VERSION>=21
 	source = http://xorg.freedesktop.org/releases/individual/driver/xf86-video-qxl-0.1.4.tar.bz2
 	source = http://xorg.freedesktop.org/releases/individual/driver/xf86-video-qxl-0.1.4.tar.bz2.sig
-	source = fix-cast.patch
+	source = 0001-fix-cast.patch
+	source = 0002-kms-initialize-primary-surface-to-screen-virtual-siz.patch
+	source = 0003-kms-do-not-overwrite-screen-virtualX-Y.patch
+	source = 0004-Fix-drawable-mm_time-with-KMS.patch
 	sha256sums = e57ad22f0b1daf8979e722be0cc38d351bfcc2e41568edc566d2bade5a621105
 	sha256sums = SKIP
 	sha256sums = 30b09971562d82b5bc9dc26e43514ff38e5eaa680c15471194f07c9129e1e0ed
+	sha256sums = 2bee0ec4dacbe1bfd996373701090696b3bfdfd00f347329a8bc5b20c6da8853
+	sha256sums = 561dd6f41ccfdfdd666d631dd0dc66e8f671bff6191bad8359881e16d9a1d849
+	sha256sums = b8ab4f53d367615bfb0b6297511e6aa7a83b4324de3c76aad558516da1b76f2f
 
 pkgname = xf86-video-qxl
 
