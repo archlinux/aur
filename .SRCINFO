@@ -1,0 +1,21 @@
+pkgbase = chipmachine
+	pkgdesc = A demoscene/retro Jukebox/spotify-like music player
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://github.com/sasq64/chipmachine
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = mpg123
+	depends = glew
+	depends = glfw
+	depends = curl
+	source = https://github.com/sasq64/chipmachine/archive/v1.01.tar.gz
+	source = https://github.com/sasq64/apone/archive/chipmachine-v1.01.tar.gz
+	sha256sums = f39a4688ed3e2ee545b35af40bf7577d52596e0db74eddea12ad7cf878c981cc
+	sha256sums = 37a39f2a3ed502e2c5ee55d005c8634888d5129a0ca0af79d53028f279ee6623
+
+pkgname = chipmachine
+
