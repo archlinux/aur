@@ -1,7 +1,7 @@
 pkgbase = opensesame
 	pkgdesc = A graphical, open-source experiment builder for the social sciences, with ability to deploy on Android
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cogsci.nl/software/opensesame
 	arch = any
 	license = GPL
@@ -16,6 +16,7 @@ pkgbase = opensesame
 	depends = python2-numpy
 	depends = python2-pillow
 	depends = python2-markdown
+	depends = python2-scipy
 	optdepends = psychopy: PsychoPy backend
 	optdepends = python2-expyriment: Expyriment backend
 	optdepends = python2-pyserial: Serial/Parallel port communication

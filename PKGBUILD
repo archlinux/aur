@@ -2,7 +2,7 @@
 
 pkgname=opensesame
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical, open-source experiment builder for the social sciences, with ability to deploy on Android"
 arch=(any)
 url="http://www.cogsci.nl/software/opensesame"
@@ -12,7 +12,10 @@ makedepends='git'
 depends=('python2' 'python2-pygame' 'python2-pyqt4'
 'python2-qscintilla' 'python2-qprogedit>=3.0.0' 'python2-yaml'
 'python2-webcolors'
-'python2-numpy' 'python2-pillow' 'python2-markdown')
+'python2-numpy' 'python2-pillow' 'python2-markdown'
+'python2-scipy')
+
+# scipy seems to be needed alongside numpy for synth to work
 
 #'faenza-icon-theme'
 
