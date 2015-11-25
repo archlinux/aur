@@ -2,7 +2,7 @@
 pkgname=qownnotes
 _pkgname=QOwnNotes
 pkgver=0.58
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source notepad for that works together with the notes application of OwnCloud."
 url="http://www.qownnotes.org/"
 arch=('x86_64' 'i686')
@@ -27,6 +27,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -Dm755 "${srcdir}/${_pkgname}/src/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/qownnotes.desktop "${pkgdir}/usr/share/applications/qownnotes.desktop"
+  install -Dm644 "${srcdir}/qownnotes.desktop" "${pkgdir}/usr/share/applications/qownnotes.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
