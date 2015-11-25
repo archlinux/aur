@@ -3,10 +3,10 @@
 
 pkgname=freerdp-git
 pkgdesc='Free RDP client - git checkout'
-pkgver=1.2.0.beta1.android9.r1982.g7aca1e0
+pkgver=1.2.0.beta1.android9.r2064.gc63928f
 pkgrel=1
 depends=('openssl' 'libxcursor' 'libcups' 'alsa-lib' 'libxext' 'libxdamage'
-         'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv')
+         'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv' 'openh264')
 makedepends=('git' 'krb5' 'cmake' 'damageproto')
 arch=('i686' 'x86_64')
 url="http://www.freerdp.com/"
@@ -39,6 +39,7 @@ build() {
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DWITH_PULSE=ON \
 		-DWITH_SERVER=ON \
+		-DWITH_OPENH264=ON \
 		.
 	make
 }

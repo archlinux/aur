@@ -1,6 +1,6 @@
 pkgbase = freerdp-git
 	pkgdesc = Free RDP client - git checkout
-	pkgver = 1.2.0.beta1.android9.r1982.g7aca1e0
+	pkgver = 1.2.0.beta1.android9.r2064.gc63928f
 	pkgrel = 1
 	url = http://www.freerdp.com/
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = freerdp-git
 	depends = libxkbfile
 	depends = libxinerama
 	depends = libxv
+	depends = openh264
 	provides = freerdp
 	conflicts = freerdp
 	source = freerdp::git://github.com/FreeRDP/FreeRDP.git
