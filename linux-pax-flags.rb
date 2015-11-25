@@ -63,7 +63,7 @@ def usage
                      argument. Can contain globs (escape them in some shells
                      (zsh for example)). 
     -h, --help       This help.
-    -p, --prepend    Do not change anything.
+    -p, --pretend    Do not change anything.
     -y, --yes        Non-interactive mode. Assume yes on questions.
     -x, --xattr      Sets the PaX flags through setfattr, underlying
                      filesystems need xattr support.
@@ -122,14 +122,14 @@ trap(:INT) { exit 1 }
 options = GetoptLong.new(
   ['--config',  '-c', GetoptLong::REQUIRED_ARGUMENT],
   ['--help',    '-h', GetoptLong::NO_ARGUMENT],
-  ['--prepend', '-p', GetoptLong::NO_ARGUMENT],
+  ['--pretend', '-p', GetoptLong::NO_ARGUMENT],
   ['--xattr',   '-x', GetoptLong::NO_ARGUMENT],
   ['--yes',     '-y', GetoptLong::NO_ARGUMENT],
 )
 
 # Initialize option variables.
 new_configs = []
-prepend = false
+pretend = false
 yes = false
 xattr = false
 
@@ -141,8 +141,8 @@ begin
         new_configs = Dir.glob argument
       when '--help'
         usage
-      when '--prepend'
-        prepend = true
+      when '--pretend'
+        pretend = true
       when '--xattr'
         xattr = true
       when '--yes'
@@ -246,7 +246,7 @@ each_entry config, filters do |flags, entry, pattern, path|
     # If the entry is complex, stop it if it is running.
     if entry.is_a? Hash
       if status and system(status + '> /dev/null')
-        system stop unless prepend
+        system stop unless pretend
         start_again = true if start
       end
     end
@@ -262,8 +262,10 @@ each_entry config, filters do |flags, entry, pattern, path|
     end
 
     # Set the flags and notify the user.
-    unless prepend
+    unless pretend
       if xattr
+        # if system "paxctl -v '#{path}' &> /dev/null"
+        # end
         `setfattr -n user.pax.flags -v #{xflags} "#{path}"`
       else
         header = 'c'
@@ -273,6 +275,6 @@ each_entry config, filters do |flags, entry, pattern, path|
     end
 
     # Start the complex entries service again, if it is neccessary.
-    system start unless prepend if start_again
+    system start unless pretend if start_again
   end
 end
