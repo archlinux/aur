@@ -2,25 +2,24 @@
 
 pkgname=cjdnsify
 pkgver=20140717.r6.bc354af
-pkgrel=1
-pkgdesc="Limit network access of bind-compatible programs to the local cjdns network"
-url="https://github.com/prurigro/${pkgname}"
+pkgrel=2
+pkgdesc='Limit network access of bind-compatible programs to the local cjdns network'
+url='https://github.com/prurigro/cjdnsify'
 license=('GPL')
-depends=('bash' 'cjdns-git' 'force_bind')
+depends=('bash' 'cjdns' 'force_bind')
 makedepends=('git')
 arch=('any')
-backup=("etc/default/${pkgname}")
-
-source=("git://github.com/prurigro/${pkgname}.git#branch=master")
+backup=("etc/default/$pkgname")
+source=("git://github.com/prurigro/$pkgname.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd $pkgname
-    printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $pkgname
+  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd $pkgname
-    install -Dm755 $pkgname "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 ${pkgname}.conf "${pkgdir}/etc/default/${pkgname}"
+  cd $pkgname
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $pkgname.conf "$pkgdir/etc/default/$pkgname"
 }
