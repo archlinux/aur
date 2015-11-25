@@ -1,13 +1,13 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation-git
-pkgver=r358.4fe1089
+pkgver=r413.b27ba5b
 pkgrel=1
 pkgdesc="Drive your FRC robot with your phone or tablet!"
 arch=('i686' 'x86_64')
 url="https://github.com/wint-3794/qdriverstation"
 license=('MIT')
 groups=()
-depends=('sdl2' 'qt5-base')
+depends=('sdl2' 'qt5-multimedia')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
