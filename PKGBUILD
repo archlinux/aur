@@ -14,7 +14,7 @@ makedepends=(extra-cmake-modules gpsd quazip-qt5 libwlocate phonon-qt5 qt5-webki
 depends=(qt5-webkit quazip-qt5 phonon-qt5 qt5-svg qt5-script libwlocate gpsd hicolor-icon-theme)
 optdepends=('gpsd: GPS based geolocation'
             'libwlocate: WLAN based geolocation')
-replaces=(marble)
+provides=(marble)
 conflicts=(marble)
 install=$pkgname.install
 source=("http://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"

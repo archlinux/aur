@@ -24,8 +24,8 @@ pkgbase = marble-qt
 	depends = hicolor-icon-theme
 	optdepends = gpsd: GPS based geolocation
 	optdepends = libwlocate: WLAN based geolocation
+	provides = marble
 	conflicts = marble
-	replaces = marble
 	source = http://download.kde.org/stable/applications/15.08.3/src/marble-15.08.3.tar.xz
 	source = plugin-dir.patch::https://quickgit.kde.org/?p=marble.git&a=commitdiff&h=f59d559&o=plain
 	md5sums = 98f8a4392897da9a475076ccd106c0b2
