@@ -14,13 +14,13 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=zabbix-server
-pkgver=2.4.6
+pkgver=2.4.7
 pkgrel=1
 pkgdesc="Software designed for monitoring availability and performance of IT infrastructure components"
 arch=('i686' 'x86_64')
 url="http://www.zabbix.com"
 license=('GPL')
-depends=('apache' 'postgresql' 'php' 'php-pgsql' 'php-gd' 'fping' 'net-snmp' 'curl' 'iksemel' 'libxml2')
+depends=('apache' 'postgresql' 'php' 'php-pgsql' 'php-gd' 'fping' 'net-snmp' 'curl' 'libxml2')
 backup=('etc/zabbix/zabbix_server.conf')
 install='zabbix-server.install'
 options=('emptydirs')
@@ -37,14 +37,15 @@ build() {
 
   ./configure \
     --prefix=/usr \
-	--sbindir=/usr/bin \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
     --enable-server \
+    --enable-ipv6 \
     --with-net-snmp \
-    --with-jabber \
     --with-libcurl \
     --with-postgresql \
-	--with-libxml2 \
-	--sysconfdir=/etc/zabbix
+    --with-libxml2 \
+    --sysconfdir=/etc/zabbix
 
   make
 }
@@ -64,7 +65,7 @@ package() {
     install -D -m 0444 database/postgresql/$_SQLFILE $_DBSCHEMADIR/$_SQLFILE
   done
 
-  # frontends (user:group = root:apache)
+  # frontends
   mkdir -p $pkgdir/$_HTMLPATH/
   cp -r frontends/php/* $pkgdir/$_HTMLPATH/
   chown -R http:http $pkgdir/$_HTMLPATH/
@@ -85,11 +86,11 @@ package() {
   install -D -m 0644 $srcdir/zabbix-server.tmpfiles $pkgdir/usr/lib/tmpfiles.d/zabbix-server.conf
 }
 
-md5sums=('06ad8d5808a0eddf2b9f0a256b6a5fde'
+md5sums=('9f8aeb11d8415585f41c3f2f22566b78'
          '9b9f8575c1f43e5c993c83a37f4580dc'
          '7200c01662be3a1d364c280ff2a818ac'
          '9ce692356b4ac0a71595ce55fe3b44c1')
-sha1sums=('9abcf58db92dacb94f2c64e93f23d59b0635b47f'
+sha1sums=('9090472e5f78fd828bf89d5558ceedd60db74443'
           'a645c438874928a78f40b7f31e10a69a32d8779c'
           '7db689838d1f7985b75f91fb319227c3211bab7d'
           '8926befcb944732fd59a34c89b569d3fbef1ca9d')
