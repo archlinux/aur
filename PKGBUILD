@@ -11,7 +11,7 @@ license=("Apache" "custom:GPL-CP" "LGPL")
 install="${pkgname}.install"
 depends=("java-environment>=7" "bash")
 optdepends=("nodejs: for JavaScript interoperability")
-source=("http://downloads.ceylon-lang.org/cli/$pkgname-$pkgver.zip")
+source=("https://downloads.ceylon-lang.org/cli/$pkgname-$pkgver.zip")
 sha256sums=("2e3b50e3e80ea3a356d0d62a2cff5b59104c591aa06387e55cd34a10d52c2919")
 
 package() {

@@ -11,7 +11,7 @@ pkgbase = ceylon
 	depends = java-environment>=7
 	depends = bash
 	optdepends = nodejs: for JavaScript interoperability
-	source = http://downloads.ceylon-lang.org/cli/ceylon-1.2.0.zip
+	source = https://downloads.ceylon-lang.org/cli/ceylon-1.2.0.zip
 	sha256sums = 2e3b50e3e80ea3a356d0d62a2cff5b59104c591aa06387e55cd34a10d52c2919
 
 pkgname = ceylon
