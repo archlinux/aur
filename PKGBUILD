@@ -1,6 +1,6 @@
 # Maintainer: Kai Yuan <kent.yuan @t gmail d@t com>
 pkgname=zhuaxia-git
-pkgver=r237.d79814b
+pkgver=r239.3c7fc5a
 pkgrel=1
 pkgdesc="cli tool to download mp3 from xiami.com and music.163.com"
 arch=('any')
