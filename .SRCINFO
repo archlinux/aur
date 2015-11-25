@@ -1,0 +1,13 @@
+pkgbase = ruby-os
+	pkgdesc = Basic Ruby OS functions
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://rubygems.org/gems/os/
+	arch = any
+	license = MIT
+	depends = ruby
+	source = http://rubygems.org/downloads/os-0.9.6.gem
+	sha256sums = bf7a387eed04790758ef4cf53da2dad6ad65f394aca8927b7b8f4bf106479bd2
+
+pkgname = ruby-os
+
