@@ -1,0 +1,15 @@
+pkgbase = ruby-platform
+	pkgdesc = Hopefully robust platform sensing.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://rubyforge.org/projects/platform/
+	arch = any
+	license = BSD
+	depends = ruby
+	depends = rubygems
+	noextract = Platform-0.4.0.gem
+	source = http://rubygems.org/downloads/Platform-0.4.0.gem
+	sha512sums = c0e3a30e3a04b8ebfd91a7b46eb87d7adc015503c9a1fe42cf031ebbb3dd4ce1b48bdf301014b470b21fb0252bba8bdfad080e174a8798443c0d899f14f64bb9
+
+pkgname = ruby-platform
+
