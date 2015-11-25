@@ -1,0 +1,21 @@
+pkgbase = neatlibc-git
+	pkgdesc = A small ARM/x86(_64) libc.
+	pkgver = r148.124258a
+	pkgrel = 1
+	url = http://repo.or.cz/w/neatlibc.git
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	makedepends = neatcc-git
+	makedepends = fasm
+	makedepends = neatas-git
+	optdepends = neatcc-git: A simple ARM/x86(_64) C compiler
+	optdepends = neatld-git: A simple ARM/x86(_64) static linker
+	optdepends = neatas-git: A simple ARM assembler
+	conflicts = glibc
+	source = neatlibc-git::git+git://repo.or.cz/neatlibc.git
+	md5sums = SKIP
+
+pkgname = neatlibc-git
+
