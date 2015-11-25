@@ -1,0 +1,15 @@
+pkgbase = ruby-fog-serverlove
+	pkgdesc = This library can be used as a module for fog or as standalone provider to use the ServerLove in applications.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/fog/fog-serverlove
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = fog-serverlove-0.1.2.gem
+	source = http://rubygems.org/downloads/fog-serverlove-0.1.2.gem
+	sha512sums = 42a31269e22bb085b864503db1619e99abc705ec335eba7296df629122dc5255e5e1b2696ab79d472cc0d3dcca981730f9564b986baf7651826eb5ca145fa2ba
+
+pkgname = ruby-fog-serverlove
+
