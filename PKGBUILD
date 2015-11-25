@@ -2,30 +2,30 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 
 pkgname=anaconda2
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing."
 arch=('x86' 'x86_64')
 url="https://store.continuum.io/cshop/anaconda/"
 license=("custom")
 makedepends=('patch')
-source=("https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-${pkgver}-Linux-x86_64.sh"
+source=("https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-${pkgver}-Linux-x86_64.sh"
         "installer_sh_x86.patch"
         "installer_sh_x86_64.patch"
         "conda_install.patch")
 options=(!strip libtool)
-sha256sums=('7c02499e9511c127d225992cfe1cd815e88fd46cd8a5b3cdf764f3fb4d8d4576'
-            '5ae6a17322c767633a99be6b623cc6ba1de67361afb6d4582d3a717c4e840426'
-            'eea6e7f691fbd14c2cc7daa7a84b0d6adde88cdc74f2a70f72c6b86613f5419b'
-            '4d5b77ff19ec71accbcba4c8c201af95fb2918e1b5addff31b50817163ae1ef3')
-_pythonver='2.7.10-0'
-_condaver='3.14.1'
+sha256sums=('49d19834da06b1b82b6fa85bc647d2e78fa5957d0cbae3ccd6c695a541befa6b'
+            '2807b1f1ff261b9b9cf77ab68123f7c9ee0c261a0d36cb9ed851dee5ee8d19ff'
+            'f8e9bd8b719e6cada2b835e7477dd336632efe86782c0933570c79ef8a103525'
+            '88db08ed1dbd9ffaaeac769487fe28acad9601d0081cddb852353ddc59835da5')
+_pythonver='2.7.10-2'
+_condaver='3.18.3'
 
 _pkgarch=`uname -m`
 if [ "$CARCH" == "x86" ]; then
     _pkgarch="x86"
-    sha256sums[0]='73fdbbb3e38207ed18e5059f71676d18d48fdccbc455a1272eb45a60376cd818'
-    source[0]="https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-${pkgver}-Linux-x86.sh"
+    sha256sums[0]='478a8fdde3a6e4040a68c57d7bdd6fab1a4f7f6e813948d46dad54867014c124'
+    source[0]="https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-${pkgver}-Linux-x86.sh"
 fi
 
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
 
 package() {
     prefix=${pkgdir}/opt/${pkgname}
-    bash ${srcdir}/Anaconda-${pkgver}-Linux-${_pkgarch}.sh -b -p $prefix 2>/dev/null
+    bash ${srcdir}/Anaconda2-${pkgver}-Linux-${_pkgarch}.sh -b -p $prefix 2>/dev/null
     [ "$BREAK_EARLY" = 1 ] && exit 1
     cd $prefix
     patch -p1 < $srcdir/conda_install.patch

@@ -8,8 +8,8 @@ makepkg --verifysource
 CARCH=x86 makepkg --verifysource
 
 source PKGBUILD
-anaconda_x86_64=Anaconda-${pkgver}-Linux-x86_64.sh
-anaconda_x86=Anaconda-${pkgver}-Linux-x86.sh
+anaconda_x86_64=Anaconda2-${pkgver}-Linux-x86_64.sh
+anaconda_x86=Anaconda2-${pkgver}-Linux-x86.sh
 cp $anaconda_x86_64 ${anaconda_x86_64}.old
 cp $anaconda_x86 ${anaconda_x86}.old
 
