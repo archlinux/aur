@@ -6,7 +6,7 @@
 
 pkgname=clion-eap
 _pkgname=clion
-pkgver=143.869.7
+pkgver=143.1015.8
 _pkgver=1.2.2
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -24,7 +24,7 @@ optdepends=(
   'java-environment: native JRE (Edit PKGBUILD to remove bundled JRE)'
 )
 source=("https://download.jetbrains.com/cpp/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('dfec8c47d01207800cb6ff6b04a611a647b01fff721504984ec1adefa5731965717433c0de082e7f540c60baa84794f43766a5c2e5a111be140ff9b80edb665d')
+sha512sums=('2e4def290d6ef0e7cc74469a22d1a8f1889d603229a806e63b10fbdb50dce35d6b8ef2afb066a5e1b4b2ef6281017ffd242728799600dfcb15fa750a014325d1')
 noextract=("${_pkgname}-${pkgver}.tar.gz")
 
 package() {
