@@ -7,7 +7,7 @@ pkgver=179.6a5f14c
 pkgrel=2
 pkgdesc="A modern desktop theme suite. Its design is mostly flat with a minimal use of shadows for depth."
 arch=('any')
-url="http://snwh.org/paper/theme/"
+url="http://samuelhewitt.com/paper/theme"
 license=('GPL3')
 depends=('gtk-engine-murrine')
 # Optional dependencies for developers
