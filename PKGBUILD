@@ -5,9 +5,9 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='0.9.4.2'
-branch='0.9.4'
-commit='da1b59e7d7764d36786253b2db13b97f42ed4e1d'
+pkgver='0.9.5'
+branch='0.9.5'
+commit='770b0ecf9f1f61a9d3a97136d5b6d7dd21afea1e'
 pkgrel='1'
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
@@ -31,7 +31,7 @@ source=("https://github.com/influxdb/influxdb/archive/$pkgtar"
         "$pkgname.install")
 changelog=
 noextract=("$pkgtar")
-md5sums=('bbc1de589558e2a53e71c7d871c25e31'
+md5sums=('49840d94f05311e05f09cc0aaa325b10'
          'SKIP'
          'SKIP')
 
@@ -53,8 +53,8 @@ build()
 {
   echo "Building influxdb version=${pkgver} branch=$branch commit=${commit}..."
   cd $INFLUXDBGOPATH
-  go get -ldflags="-X main.version=0.9.4.1 -X main.branch=$branch -X main.commit=$commit" ./...
-  go install -ldflags="-X main.version=0.9.4.1 -X main.branch=$branch -X main.commit=$commit" ./...
+  go get -ldflags="-X main.version=${pkgver} -X main.branch=$branch -X main.commit=$commit" ./...
+  go install -ldflags="-X main.version=${pkgver} -X main.branch=$branch -X main.commit=$commit" ./...
 }
 package()
 {
