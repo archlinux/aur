@@ -1,6 +1,6 @@
 pkgbase = girara-git
 	pkgdesc = user interface library
-	pkgver = 0.2.2.r2.gcf8389d
+	pkgver = 0.2.4.r16.gc6c1e8a
 	pkgrel = 1
 	url = http://pwmt.org/projects/girara
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = girara-git
 	depends = intltool
 	provides = girara
 	conflicts = girara
-	source = girara::git+git://pwmt.org/girara.git#branch=develop
+	source = girara::git+https://git.pwmt.org/pwmt/girara.git#branch=develop
 	md5sums = SKIP
 
 pkgname = girara-git

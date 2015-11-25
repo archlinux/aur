@@ -3,7 +3,7 @@
 _pkgname=girara
 
 pkgname=girara-git
-pkgver=0.2.2.r2.gcf8389d
+pkgver=0.2.4.r16.gc6c1e8a
 pkgrel=1
 pkgdesc="user interface library"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gtk3>=3.2' 'glib2>=2.28' 'intltool')
 makedepends=('git')
 conflicts=('girara')
 provides=('girara')
-source=("${_pkgname}::git+git://pwmt.org/girara.git#branch=develop")
+source=("${_pkgname}::git+https://git.pwmt.org/pwmt/girara.git#branch=develop")
 md5sums=('SKIP')
 
 build() {
