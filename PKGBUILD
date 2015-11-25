@@ -14,8 +14,8 @@ makedepends=(extra-cmake-modules gpsd quazip-qt5 libwlocate phonon-qt5 qt5-webki
 depends=(qt5-webkit quazip-qt5 phonon-qt5 qt5-svg qt5-script libwlocate gpsd hicolor-icon-theme)
 optdepends=('gpsd: GPS based geolocation'
             'libwlocate: WLAN based geolocation')
-replaces=(kdeedu-marble)
-conflicts=(kdeedu-marble)
+replaces=(marble)
+conflicts=(marble)
 install=$pkgname.install
 source=("http://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"
 	       plugin-dir.patch::"https://quickgit.kde.org/?p=marble.git&a=commitdiff&h=f59d559&o=plain")
