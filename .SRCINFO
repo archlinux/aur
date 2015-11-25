@@ -1,0 +1,15 @@
+pkgbase = ruby-cfpropertylist
+	pkgdesc = A module to read, write and manipulate property lists as defined by Apple.
+	pkgver = 2.2.8
+	pkgrel = 2
+	url = http://github.com/ckruse/CFPropertyList/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = libxml-ruby
+	noextract = CFPropertyList-2.2.8.gem
+	source = http://rubygems.org/downloads/CFPropertyList-2.2.8.gem
+	sha512sums = 7444839ae3cd75a3c7526fb1798aabd548acc2d6a5143f18aa3a83cee479f4f8905846ae52ef1299ac0054f3f166c701c09678443271cc6cbb1654eac3002e3f
+
+pkgname = ruby-cfpropertylist
+
