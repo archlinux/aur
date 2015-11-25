@@ -1,13 +1,13 @@
 pkgbase = ruby-build
 	pkgdesc = Compile and install Ruby
 	pkgver = 20151028
-	pkgrel = 1
+	pkgrel = 2
 	url = ruby-build-v20151028.tar.gz::https://github.com/sstephenson/ruby-build
 	arch = any
 	license = MIT
 	optdepends = git: install ruby from git
 	source = ruby-build-v20151028.tar.gz::https://github.com/sstephenson/ruby-build/tarball/v20151028
-	sha1sums = 4875672e90c343fbb4de761b5ed84a2496b3e15b
+	sha1sums = 37d22a09e49bc0e6971706d42454c11bba09a97e
 
 pkgname = ruby-build
 
