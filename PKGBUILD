@@ -8,7 +8,7 @@ url="http://www.tribler.org/"
 arch=(any)
 license=('LGPL')
 depends=('python-cryptography' 'python-feedparser' 'python-gmpy2' 'python-apsw' 'python-cherrypy'
-'python-decorator' 'python-netifaces' 'python-requests' 'python-twisted' 'wxpython2.8' 'libsodium' 'libtorrent-rasterbar')
+'python-decorator' 'python-netifaces' 'python-requests' 'python-twisted' 'wxpython' 'libsodium' 'libtorrent-rasterbar')
 optdepends=('python-vlc-git: for internal video player')
 makedepends=()
 source=("https://github.com/Tribler/tribler/releases/download/v${_pkgver}/Tribler-v${_pkgver}.tar.xz")
