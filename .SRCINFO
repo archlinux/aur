@@ -1,6 +1,6 @@
 pkgbase = qdriverstation-git
 	pkgdesc = Drive your FRC robot with your phone or tablet!
-	pkgver = r358.4fe1089
+	pkgver = r413.b27ba5b
 	pkgrel = 1
 	url = https://github.com/wint-3794/qdriverstation
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = qdriverstation-git
 	license = MIT
 	makedepends = git
 	depends = sdl2
-	depends = qt5-base
+	depends = qt5-multimedia
 	provides = qdriverstation
 	conflicts = qdriverstation
 	source = qdriverstation::git+https://github.com/WinT-3794/QDriverStation.git
