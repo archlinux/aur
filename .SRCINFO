@@ -1,6 +1,6 @@
 pkgbase = artefetcher-qt4
 	pkgdesc = A video grabber for Arte Catch UP TV - QT4 version
-	pkgver = 0.6.5
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = http://artefetcher.sourceforge.net/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = artefetcher-qt4
 	conflicts = artefetcher-qt5
 	options = !libtool
 	options = !emptydirs
-	source = http://downloads.sf.net/sourceforge/artefetcher/artefetcher_0.6.5.tar.gz
-	md5sums = c728df13d924e91617e0d92ed40475f6
+	source = http://downloads.sf.net/sourceforge/artefetcher/artefetcher_0.7.0.tar.gz
+	md5sums = 650c3ec91b22572af918d921e26a7f90
 
 pkgname = artefetcher-qt4
 

@@ -3,7 +3,7 @@
 
 pkgname=artefetcher-qt4
 _pkgname=artefetcher
-pkgver=0.6.5
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A video grabber for Arte Catch UP TV - QT4 version"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=('!libtool' '!emptydirs')
 source=(http://downloads.sf.net/sourceforge/$_pkgname/artefetcher_$pkgver.tar.gz)
-md5sums=('8360d9b993e3061523feb3909bcac5b9')
+md5sums=('650c3ec91b22572af918d921e26a7f90')
 
 build() {
   cd $_pkgname
@@ -36,5 +36,3 @@ package() {
 }
 
 
-
-md5sums=('c728df13d924e91617e0d92ed40475f6')
