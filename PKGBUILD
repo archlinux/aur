@@ -37,7 +37,6 @@ prepare() {
 	sed -i 's,LIBS += /usr/local/lib/libxkbcommon.a,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
 	
 	(
-		echo 'CONFIG += c++11'
 		echo "DEFINES += TDESKTOP_DISABLE_AUTOUPDATE"
 		echo "DEFINES += TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
 		echo 'INCLUDEPATH += "/usr/lib/glib-2.0/include"'
