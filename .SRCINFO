@@ -1,0 +1,18 @@
+pkgbase = ruby-fog-profitbricks
+	pkgdesc = Module for the 'fog' gem to support ProfitBricks.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/fog/fog-profitbricks
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-fog-core
+	depends = ruby-fog-xml
+	depends = ruby-nokogiri
+	noextract = fog-profitbricks-0.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-profitbricks-0.0.1.gem
+	sha512sums = f103857f95faae8282e05801fd889b084bbb48c25f6d8e10bc46efde40c5e30e5f174f6054138a3b8093bbcf2cfa1b1bff6b04840cb4e1cc182ae9acae7ba44e
+
+pkgname = ruby-fog-profitbricks
+
