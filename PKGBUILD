@@ -1,8 +1,8 @@
 # Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=ganglia
-pkgver=3.7.1
-pkgrel=4
+pkgver=3.7.2
+pkgrel=1
 pkgdesc="A scalable distributed monitoring system for high-performance computing systems such as clusters and Grids."
 arch=('i686' 'x86_64' 'armv6h')
 url="http://${pkgname}.sourceforge.net/"
@@ -18,7 +18,7 @@ source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
         'ganglia.sysusers'
         'uid.patch'
         'runstatedir.patch')
-sha256sums=('e735a6218986a0ff77c737e5888426b103196c12dc2d679494ca9a4269ca69a3'
+sha256sums=('042dbcaf580a661b55ae4d9f9b3566230b2232169a0898e91a797a4c61888409'
             '79df856f3b0623e736ea9c1f5c36c321769d6f161c85faf31fab3d7b872d6725'
             '34506cdaab1a6250c9a0d6d9fb9c6a0a0dfe1187bcb0a5d6ca71491007116d05'
             'dc2cdffaf0cbedbbac2e654843803423f93da494aaeecda8a185ad3badea8e21'
