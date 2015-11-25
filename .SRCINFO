@@ -7,6 +7,7 @@ pkgbase = stock_quote
 	license = GPL
 	makedepends = git
 	depends = python
+	depends = python-numpy
 	source = https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote.py
 	md5sums = 9f2ce0a313a88dc6cc7d160abfbfde83
 
