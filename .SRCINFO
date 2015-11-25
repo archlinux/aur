@@ -1,0 +1,25 @@
+pkgbase = tribler
+	pkgdesc = Privacy with BitTorrent and resilient to shut down
+	pkgver = 6.5.0rc6
+	pkgrel = 1
+	url = http://www.tribler.org/
+	arch = any
+	license = LGPL
+	depends = python-cryptography
+	depends = python-feedparser
+	depends = python-gmpy2
+	depends = python-apsw
+	depends = python-cherrypy
+	depends = python-decorator
+	depends = python-netifaces
+	depends = python-requests
+	depends = python-twisted
+	depends = wxpython2.8
+	depends = libsodium
+	depends = libtorrent-rasterbar
+	optdepends = python-vlc-git: for internal video player
+	source = https://github.com/Tribler/tribler/releases/download/v6.5.0-rc6/Tribler-v6.5.0-rc6.tar.xz
+	md5sums = 3f57a3581a80af9d0b95d582aab472b5
+
+pkgname = tribler
+
