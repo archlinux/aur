@@ -1,0 +1,17 @@
+pkgbase = snacc-basin-git
+	pkgdesc = Sample Neufeld ASN.1 to C Compiler
+	pkgver = 1.3.1_16_g23ba7a6
+	pkgrel = 1
+	url = http://packages.debian.org/source/sid/snacc
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	license = GPLv2+
+	source = snacc-basin-git::git+https://github.com/basinilya/snacc.git
+	md5sums = SKIP
+
+pkgname = snacc-basin-git
+
