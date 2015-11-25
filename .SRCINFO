@@ -1,0 +1,17 @@
+pkgbase = ruby-fog-voxel
+	pkgdesc = Module for the 'fog' gem to support Voxel.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://rubygems.org/gems/fog-voxel
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-fog-core
+	depends = ruby-fog-xml
+	noextract = fog-voxel-0.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-voxel-0.0.2.gem
+	sha1sums = e1232709e32dd742c85da18074070a54c76d4ef5
+
+pkgname = ruby-fog-voxel
+
