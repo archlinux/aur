@@ -13,5 +13,5 @@ yellow="${bold}$(tput setaf 3)"
 
 pre_remove() {
     msg_blue "Removing no longer needed symlinks for xf86-input-cmt"
-	sudo cmt-post-install remove
+	sudo cmt-conf-setup remove
 }

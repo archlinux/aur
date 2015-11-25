@@ -3,7 +3,7 @@
 pkgname=xf86-input-cmt-setup
 pkgdesc="A script to install the correct device specific conf files for the xf86-input-cmt driver"
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/joebonrichie/xf86-input-cmt-conf"
 _gitname=("xf86-input-cmt-conf")
@@ -19,6 +19,6 @@ md5sums=('SKIP')
 package() { 
   cd "$srcdir/$_gitname"
   mkdir -p $pkgdir/usr/bin/
-  mv cmt-post-install.sh cmt-post-install
-  cp cmt-post-install $pkgdir/usr/bin/cmt-post-install
+  mv cmt-conf-setup.sh cmt-conf-setup
+  cp cmt-conf-setup $pkgdir/usr/bin/cmt-conf-setup
 }
