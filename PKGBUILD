@@ -1,7 +1,7 @@
-# Maintainer: Thomas Weißschuh <thomas t-8ch.de>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=pipsi
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc='Wraps pip and virtualenv to install scripts'
 arch=('any')
@@ -21,4 +21,4 @@ package() {
     python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
-sha256sums=('cc3072a41956e3ce625d80e34c017de051cb5b7197daa1407306d0fe08e42f2c')
+sha256sums=('688b688cc8a7a76612c0d4d1839aaef98ece8382d4382b9d8b6f0caa65f0ed34')
