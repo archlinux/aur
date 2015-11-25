@@ -1,0 +1,17 @@
+pkgbase = ruby-popen4
+	pkgdesc = A single API across platforms for executing a command in a child process.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/shairontoledo/popen4/
+	arch = any
+	license = RUBY
+	depends = ruby
+	depends = rubygems
+	depends = ruby-open4
+	depends = ruby-platform
+	noextract = popen4-0.1.2.gem
+	source = http://rubygems.org/downloads/popen4-0.1.2.gem
+	sha512sums = d97524f1c3792c5f922fd5b335dcfcc0f5320496e035458e73307e81480470df49ccbe2b5c80820c2ef7b2b47612bc145e408301458ab4426e1a03daa21d8bd0
+
+pkgname = ruby-popen4
+
