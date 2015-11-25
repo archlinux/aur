@@ -26,16 +26,16 @@
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-test
-pkgver=15.9
-pkgrel=6
+pkgver=15.11
+pkgrel=2
 # _betano=1.0
-_amdver=15.201.1151
-pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
+_amdver=15.30.1025
+pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4  k ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.4' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4'  'gcc49')
+depends=('linux>=3.0' 'linux<4.4' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -68,7 +68,7 @@ source=(
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
 #     http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
-    http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
+    http://www2.ati.com/drivers/linux/radeon-crimson-15.11-15.30.1025.zip
     catalyst_build_module
     lib32-catalyst.sh
     catalyst.sh
@@ -91,17 +91,12 @@ source=(
     lano1106_fglrx_intel_iommu.patch
     lano1106_kcl_agp_13_4.patch
     fglrx_gpl_symbol.patch
-    ubuntu_buildfix_kernel_4.0.patch
-    ubuntu_buildfix_kernel_4.1.patch
-    ubuntu_buildfix_kernel_4.2.patch
-    4.2-fglrx-has_fpu.patch
-    4.2-kolasa-fpu_save_init.patch
-    ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
     4.3-kolasa-seq_printf.patch
-    4.3-gentoo-mtrr.patch)
+    4.3-gentoo-mtrr.patch
+    crimson_i686_xg.patch)
 
-md5sums=('d2de2df6946b452c266a3c892e6e46ff'
-	 'f3aaed0084725304cf607f6915e4bfee'
+md5sums=('7ba22f465970fbe2bb9ff974beb0a918'
+	 '601d9c756571dd79d26944e54827631e'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
          '9d9ea496eadf7e883d56723d65e96edf'
@@ -123,19 +118,14 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '5184b94a2a40216a67996999481dd9ee'
 	 'c5156eddf81c8a1719b160d05a2e8d67'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
-	 '880d5e59554cda382f74206c202942be'
-	 '982451bcc1fa1ee3da53ffa481d65581'
-	 '88832af8d6769aa51fa9b266a74394e0'
-	 'ed7748a593d6b894269f8c7856b7ae50'
-	 'dd51495a1d8f2d1042f04a783bf01e08'
-	 '2f7d42fde403a1b4a22e5db8de738d0f'
 	 '0e0666e95d1d590a7a83192805679485'
-	 '98828e3eeaec2b3795e584883cc1b746')
+	 '98828e3eeaec2b3795e584883cc1b746'
+	 '6cdbaf5f71d867d225721a0369413616')
 
 
 build() {
   ## Unpack archive
-     /bin/sh ./AMD-Catalyst-${pkgver}-Linux-installer-${_amdver}-x86.x86_64.run --extract archive_files
+     /bin/sh ./fglrx-15.30.1025/amd-driver-installer-${_amdver}-x86.x86_64.run --extract archive_files
 # mkdir common
 # mv etc lib usr common
 # mkdir archive_files
@@ -312,17 +302,12 @@ package() {
       patch -Np1 -i ../makefile_compat.patch
       patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
       patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
-#      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
+      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
 #	since 3.19 not only i686 needs gpl symbol - V
-      patch -Np1 -i ../fglrx_gpl_symbol.patch
-      patch -Np1 -i ../ubuntu_buildfix_kernel_4.0.patch
-      patch -Np1 -i ../ubuntu_buildfix_kernel_4.1.patch
-      patch -Np1 -i ../ubuntu_buildfix_kernel_4.2.patch
-      patch -Np1 -i ../4.2-fglrx-has_fpu.patch
-      patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
-      patch -Np1 -i ../ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
+#       patch -Np1 -i ../fglrx_gpl_symbol.patch
       patch -Np1 -i ../4.3-kolasa-seq_printf.patch
       patch -Np1 -i ../4.3-gentoo-mtrr.patch
+      test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
 
     # Prepare modules source files
       _archdir=x86_64
