@@ -1,0 +1,18 @@
+pkgbase = xame
+	pkgdesc = XFCE Applications Menu Editor
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://www.redsquirrel87.com/XAME.html
+	install = xame.install
+	arch = any
+	license = freeware
+	depends = gambas3-gb-gtk
+	depends = gambas3-gb-form
+	depends = gambas3-gb-image
+	depends = gambas3-gb-form-stock
+	optdepends = gambas3-gb-qt4: if you need the QT support (KDE)
+	source = https://bitbucket.org/Red_Squirrel/xfce-applications-menu-editor/downloads/xame-AUR-3.0.tar.gz
+	md5sums = 6c2cf6c543a3b68f07bba46cf40aa1ec
+
+pkgname = xame
+
