@@ -1,14 +1,14 @@
 pkgbase = yape
-	pkgdesc = Yet another Commodore plus/4 emulator (SDL port)
-	pkgver = 0.36.2
+	pkgdesc = A decent multiplatform Commodore plus/4 and 64 emulator written in C++ using the SDL 2.0 media API
+	pkgver = 0.58.2
 	pkgrel = 1
-	url = http://yape.plus4.net
+	url = http://yapesdl.codeplex.com
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = sdl
-	source = http://yape.homeserver.hu/download/yapeSDL-0.36.2.tar.gz
-	md5sums = 7a44d45106261d464c78ed8319fe3bd9
+	depends = sdl2
+	source = yapesdl::git+https://git01.codeplex.com/yapesdl
+	md5sums = SKIP
 
 pkgname = yape
 
