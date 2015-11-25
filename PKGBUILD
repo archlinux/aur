@@ -3,14 +3,14 @@
 pkgname=python2-etc-merge
 _pyname=etc-merge
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to track /etc files and .pacnew files using mercurial"
 arch=('any')
 url="https://bitbucket.org/xdegaye/etc-merge"
 license=('GPL3')
 depends=('python2-hglib' 'vim')
 makedepends=('python2')
-optdepends=('DirDiff: to view the changes')
+optdepends=('vim-dirdiff: to view the changes')
 source=(https://pypi.python.org/packages/source/e/${_pyname}/${_pyname}-${pkgver}.tar.gz)
 md5sums=('45f85ccc2ebd201a8dd10a783370e26f')
 
