@@ -4,7 +4,7 @@
 # Contributor: Ichimonji10 <Ichimonji10@gmail.com>
 pkgname=rbenv
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Ruby version manager"
 arch=('any')
 url="https://github.com/sstephenson/rbenv"
@@ -15,7 +15,7 @@ conflicts=('rbenv-git')
 install="rbenv.install"
 noextract=("v${pkgver}")
 source=("https://github.com/sstephenson/rbenv/tarball/v${pkgver}")
-md5sums=('c1cf110b256cdab1c44e41020b57b489')
+md5sums=('89be6977f7c47655c41900ab55a48c6b')
 
 build() {
     cd $srcdir

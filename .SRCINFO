@@ -1,7 +1,7 @@
 pkgbase = rbenv
 	pkgdesc = Simple Ruby version manager
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sstephenson/rbenv
 	install = rbenv.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = rbenv
 	conflicts = rbenv-git
 	noextract = v0.4.0
 	source = https://github.com/sstephenson/rbenv/tarball/v0.4.0
-	md5sums = c1cf110b256cdab1c44e41020b57b489
+	md5sums = 89be6977f7c47655c41900ab55a48c6b
 
 pkgname = rbenv
 
