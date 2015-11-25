@@ -1,0 +1,15 @@
+pkgbase = ruby-fog-terremark
+	pkgdesc = This library can be used as a module for fog or as standalone provider to use the Terremark vCloud in applications.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fog/fog-terremark
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = fog-terremark-0.1.0.gem
+	source = http://rubygems.org/downloads/fog-terremark-0.1.0.gem
+	sha512sums = 9ac3f9ad10bfcedf5e85b26ac8f7efa5d93e3dea4bca31e717b4a19839edfc961ae7774e4e1547aa62cdda13de301efdd42adfa3049188b4068b6b9aa910c76c
+
+pkgname = ruby-fog-terremark
+
