@@ -1,7 +1,7 @@
 pkgbase = mailnag-git
 	pkgdesc = An extensible mail notification daemon
 	pkgver = 20151122.r512.0a9551f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pulb/mailnag
 	install = mailnag-git.install
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = mailnag-git
 	depends = gst-plugins-base
 	depends = gtk3
 	depends = gdk-pixbuf2
-	optdepends = mailnag-gnome-shell: tighter GNOME 3 integration
 	optdepends = mailnag-goa-plugin-git: GNOME Online Accounts integration
 	optdepends = libgnome-keyring: save password storage in GNOME 3
 	optdepends = gnome-keyring: save password storage in GNOME 3
