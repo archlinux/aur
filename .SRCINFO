@@ -1,0 +1,22 @@
+pkgbase = kftpgrabber-svn
+	pkgdesc = A graphical FTP client for KDE
+	pkgver = r1445187
+	pkgrel = 1
+	url = http://kftp.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	depends = libssh2
+	provides = kftpgrabber
+	conflicts = kftpgrabber
+	source = svn://anonsvn.kde.org/home/kde/trunk/extragear/network/kftpgrabber
+	source = FindLibSSH2.patch
+	sha256sums = SKIP
+	sha256sums = 0cca5a3fd92633210fa4ae297be437db7a6ebd6e58b9f01af553a761fa49cace
+
+pkgname = kftpgrabber-svn
+
