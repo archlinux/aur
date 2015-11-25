@@ -3,13 +3,13 @@
 _pkgname=fb-adb
 pkgname=$_pkgname-git
 pkgver=20151122.r327.a682c99
-pkgrel=1
+pkgrel=2
 pkgdesc='A better shell to use in place of adb when connecting to Android devices'
 url='https://github.com/facebook/fb-adb'
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('android-tools')
-makedepends=('git' 'vim' 'zip')
+makedepends=('git' 'vim')
 options=('!strip' '!buildflags')
 source=("git+$url.git")
 sha512sums=('SKIP')
@@ -29,7 +29,8 @@ pkgver() {
 }
 
 build() {
-  [[ -z "$ANDROID_NDK" ]] && export ANDROID_NDK="$srcdir/android-ndk-r$_ndkver"
+  [[ -z "$ANDROID_NDK" ]] \
+    && export ANDROID_NDK="$srcdir/android-ndk-r$_ndkver"
 
   # configure
   cd $_pkgname
@@ -40,10 +41,6 @@ build() {
   cd build
   ../configure --enable-checking=yes
   make
-
-  # compress android deployment binary
-  cd stub-arm
-  zip $_pkgname-android-arm.zip $_pkgname
 }
 
 package() {
