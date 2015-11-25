@@ -1,0 +1,14 @@
+pkgbase = ruby-ruby-vnc
+	pkgdesc = A library which implements the client VNC protocol to control VNC servers.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://code.google.com/p/ruby-vnc/
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = ruby-vnc-1.1.0.gem
+	source = http://rubygems.org/downloads/ruby-vnc-1.1.0.gem
+	sha512sums = 138f44d9cfe844397b26153d2c5e55e074f69925f81d1b3f860b9ef20d8fdf792bc1c2fbb3430827c1023e9437a320e97e19f3dce65c912dee8c9185fe53f683
+
+pkgname = ruby-ruby-vnc
+
