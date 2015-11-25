@@ -2,15 +2,15 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
 pkgname='kawa'
-pkgver='2.0'
-pkgrel=2
+pkgver='2.1'
+pkgrel=1
 pkgdesc='A Scheme implementation and framework targeted the JVM.'
 arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/kawa/index.html'
 license=('X11/MIT')
 depends=('java-environment')
 source=("http://ftp.gnu.org/pub/gnu/kawa/$pkgname-$pkgver.tar.gz")
-sha256sums=('bf73041cebff6e8bbf13883a9a5fefa8bffd88fc68547b9cb6d3314e616211e5')
+sha256sums=('caf8eb01fbefe82f3e44b5ad08d4356ee56335da79499d9cca2b720f7d04fd39')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
