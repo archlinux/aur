@@ -1,0 +1,21 @@
+pkgbase = ruby-fog-core
+	pkgdesc = Shared classes and tests for fog providers and services.
+	pkgver = 1.25.0
+	pkgrel = 1
+	url = https://github.com/fog/fog-core
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-builder
+	depends = ruby-excon
+	depends = ruby-formatador
+	depends = ruby-mime-types
+	depends = ruby-net-scp
+	depends = ruby-net-ssh
+	noextract = fog-core-1.25.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-core-1.25.0.gem
+	sha512sums = bcd6adfa9a12724884e20045352e11da99de2c69b3a631aa2a34bc526f7421fe3f3e0503b850a2a2e2606520139c3810c29fc08f6dae85dda1f01bfa68a57d12
+
+pkgname = ruby-fog-core
+
