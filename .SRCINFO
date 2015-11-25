@@ -1,0 +1,15 @@
+pkgbase = ruby-fog-storm_on_demand
+	pkgdesc = This library can be used as a module for fog or as standalone provider to use the StormOnDemand in applications.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/fog/fog-storm_on_demand
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = fog-storm_on_demand-0.1.1.gem
+	source = http://rubygems.org/downloads/fog-storm_on_demand-0.1.1.gem
+	sha512sums = eb55981f87a083150b8de7062a6af7880579eeb0af8e02fc3c88ff935f58c29e53b6aa5c6ca3dfe52ed0bc074d9425343754e48ba081e6e799ded496c10fdecf
+
+pkgname = ruby-fog-storm_on_demand
+
