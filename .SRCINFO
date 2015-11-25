@@ -14,18 +14,18 @@ pkgbase = btrl
 	depends = sdl
 	source = btrl.desktop
 	source = btrl.launcher
-	source = ftp://ftp.unreal.ie/unreal.ie/non-unreal/BtRLDemoInstaller.run
+	source = http://www.freespacemods.net/e107_files/downloads/BtRLDemoInstaller.run
 	source = http://www.fsoinstaller.com/files/btrl/btrlpatch_linux.tar.gz
 	source = http://www.fsoinstaller.com/files/btrl/w_patch2.vp
 	source = http://www.fsoinstaller.com/files/btrl/x_patch1.vp
 	source = http://www.fsoinstaller.com/files/btrl/y_patch1.vp
-	md5sums = 3acd39a97465576bbb28855c025b987a
-	md5sums = b4988100342221dacdc9e011db07a57e
-	md5sums = f11b425f3aeb9acba9a180cfc4dafcf0
-	md5sums = 048d91174c0ede75cf428406a444db56
-	md5sums = b656b65b3832e5cbb6f87afb7280f1d5
-	md5sums = 3c6f15f5e21da5fa89a656993f919ac7
-	md5sums = 22602aa184842d80812aba04ca51cbaa
+	sha256sums = d4d608fe7c0771523c40eda8f47388db46810d613997a1ea39aaa6a01a83313f
+	sha256sums = a56e8e9a9e494f9bb79222c84aaf2d1a6c1795bc53383c3d90b4c7919c1c2807
+	sha256sums = 6a49431b37808cac690473e5df8bdb9be3af0d06eff933ddde6b4852c57cd340
+	sha256sums = d274607b134c0c4d6b50bdb14724fb2199b1eb7fb9cb97d2dada2434bd6a07d0
+	sha256sums = 3d1f5cd7e13e35cdfe98dbaff0063eea51124862d91fa5fd7485cdb542b98bee
+	sha256sums = 98ccc633aad0f4a61de129cdec457d6809e1098df151a873c16eaf94e7c8d66b
+	sha256sums = 6a20720b25b17cdf028fa8ee74674148001e81c8b88f57c4049e23ab6064b054
 
 pkgname = btrl
 

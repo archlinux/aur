@@ -3,3 +3,8 @@ pkg/
 *.pkg.tar.xz
 *.pkg.tar
 *.src.tar.gz
+BtRLDemoInstaller.run
+btrlpatch_linux.tar.gz
+w_patch2.vp
+x_patch1.vp
+y_patch1.vp
