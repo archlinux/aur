@@ -23,19 +23,29 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/gambit-scheme"	cd
-    CC=gcc CXX=g++ ./configure \
+  LANG=C
+  cd "$srcdir/gambit-scheme"
+  ./configure \
       --prefix=/usr \
       --docdir=/usr/share/gambit-c \
       --infodir=/usr/share/info \
       --libdir=/usr/lib/gambit-c \
+      --enable-c-opt \
+      --enable-gcc-opts \
       --enable-single-host \
-      --enable-compiler-name=gambitc
-    make 
+      --enable-shared \
+      --enable-compiler-name=gambitc \
+      --enable-compiler-name=gambiti 
+  make from-scratch
+}
+
+check() {
+  cd "$srcdir/gambit-scheme"
+  make check
 }
 
 package() {
-    cd "$srcdir/gambit-scheme"
-    make DESTDIR="$pkgdir/" install
-    ln -sf /usr/bin/gambitc "$pkgdir/usr/bin/gsc-script"
+  cd "$srcdir/gambit-scheme"
+  make DESTDIR="$pkgdir/" install
+  ln -sf /usr/bin/gambitc "$pkgdir/usr/bin/gsc-script"
 }
