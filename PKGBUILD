@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Kosteley <zzismd@gmail.com>
 _pkgname=screenshotgun
 pkgname=$_pkgname-git
-pkgver=0.12_20151125
+pkgver=0.12_20151125_1
 pkgrel=1
 pkgdesc="Open screenshoter with cloud support and server part"
 arch=(any)
