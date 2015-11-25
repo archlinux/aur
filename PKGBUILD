@@ -3,7 +3,7 @@
 
 pkgname=khal-git
 _gitname=khal
-pkgver=0.6.1.dev82+ng8480d23
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Command line CalDav client"
 license=("MIT")

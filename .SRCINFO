@@ -1,6 +1,6 @@
 pkgbase = khal-git
 	pkgdesc = Command line CalDav client
-	pkgver = 0.6.1.dev82+ng8480d23
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = http://lostpackets.de/khal/
 	install = khal.install
