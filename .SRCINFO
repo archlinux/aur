@@ -1,0 +1,19 @@
+pkgbase = python-cartopy-git
+	pkgdesc = A cartographic python library with matplotlib support for visualisation
+	pkgver = 20151125
+	pkgrel = 1
+	url = https://github.com/SciTools/cartopy
+	arch = any
+	license = LGPLv3
+	makedepends = git
+	makedepends = python3
+	makedepends = cython
+	depends = python
+	depends = python-shapely
+	depends = python-pyshp
+	depends = python-pyproj
+	provides = python-cartopy
+	conflicts = python-cartopy
+
+pkgname = python-cartopy-git
+
