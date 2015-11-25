@@ -1,0 +1,35 @@
+pkgbase = marble-qt
+	pkgdesc = Desktop Globe - Qt version
+	pkgver = 15.08.3
+	pkgrel = 1
+	url = https://www.kde.org/applications/system/marble
+	install = marble-qt.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = gpsd
+	makedepends = quazip-qt5
+	makedepends = libwlocate
+	makedepends = phonon-qt5
+	makedepends = qt5-webkit
+	makedepends = qt5-tools
+	depends = qt5-webkit
+	depends = quazip-qt5
+	depends = phonon-qt5
+	depends = qt5-svg
+	depends = qt5-script
+	depends = libwlocate
+	depends = gpsd
+	depends = hicolor-icon-theme
+	optdepends = gpsd: GPS based geolocation
+	optdepends = libwlocate: WLAN based geolocation
+	conflicts = kdeedu-marble
+	replaces = kdeedu-marble
+	source = http://download.kde.org/stable/applications/15.08.3/src/marble-15.08.3.tar.xz
+	source = plugin-dir.patch::https://quickgit.kde.org/?p=marble.git&a=commitdiff&h=f59d559&o=plain
+	md5sums = 98f8a4392897da9a475076ccd106c0b2
+	md5sums = e4441d763de7588a8c4fa93b83d945fe
+
+pkgname = marble-qt
+
