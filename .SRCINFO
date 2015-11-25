@@ -5,7 +5,6 @@ pkgbase = stock_quote
 	url = https://github.com/gps1539/stock_quote
 	arch = any
 	license = GPL
-	makedepends = git
 	depends = python
 	depends = python-numpy
 	source = https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote.py

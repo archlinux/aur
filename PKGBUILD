@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL')
 url='https://github.com/gps1539/stock_quote'
 depends=('python' 'python-numpy')
-makedepends=('git')
+makedepends=()
 source=("https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote.py")
 md5sums=('9f2ce0a313a88dc6cc7d160abfbfde83')
 
