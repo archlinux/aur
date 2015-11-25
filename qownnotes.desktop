@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=QOwnNotes
+Comment=OwnNotes
+Exec=/usr/bin/qownnotes
+Terminal=false
+Type=Application
+Icon=qownnotes
+Categories=Office;Internet;

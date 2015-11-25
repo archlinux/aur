@@ -9,5 +9,7 @@ pkgbase = qownnotes
 	makedepends = git
 	depends = gcc
 	depends = qt5-base
+	source = https://github.com/pbek/QOwnNotes.git
+	source = qownnotes.desktop
 
 pkgname = qownnotes
