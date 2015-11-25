@@ -10,6 +10,9 @@ pkgbase = snacc-basin-git
 	arch = armv7h
 	arch = arm
 	license = GPLv2+
+	makedepends = git
+	provides = snacc
+	conflicts = snacc
 	source = snacc-basin-git::git+https://github.com/basinilya/snacc.git
 	md5sums = SKIP
 
