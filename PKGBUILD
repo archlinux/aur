@@ -1,8 +1,9 @@
 # Maintainer: Laurent Mouillart <lmouillart@gmail.com
 pkgname=gnome-kra-ora-thumbnailer
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A thumbnailer for KRA ( Krita native file ) and ORA ( open-raster ) for the Gnome desktop"
+makedepends=('git' 'gnome-common' 'automake' 'intltool')
 arch=(i686 x86_64)
 url="https://github.com/Deevad/gnome-kra-ora-thumbnailer"
 license=('DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE')
