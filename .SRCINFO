@@ -1,0 +1,15 @@
+pkgbase = ruby-fog-riakcs
+	pkgdesc = This library can be used as a module for fog or as standalone provider to use the Riakcs in applications.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fog/fog-riakcs
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = fog-riakcs-0.1.0.gem
+	source = http://rubygems.org/downloads/fog-riakcs-0.1.0.gem
+	sha512sums = 3a65da9a72c6a18c7cc1879aa5019ce7c2f7b0430aed6539e9d6c6e54e00cb1093cede01dc7161f843aa95169b5b434bff9672a2591c14b2dbfdc6f128428bff
+
+pkgname = ruby-fog-riakcs
+
