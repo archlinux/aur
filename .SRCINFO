@@ -1,0 +1,25 @@
+pkgbase = vimprobable-git
+	pkgdesc = A web browser that behaves like the Vimperator plugin available for Mozilla Firefox.
+	pkgver = r446.9a571d4
+	pkgrel = 1
+	url = http://sourceforge.net/p/vimprobable/wiki/Home/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = webkitgtk2>=1.1.11
+	depends = gtk2
+	depends = libsoup
+	provides = vimprobable
+	conflicts = vimprobable
+	source = vimprobable-git::git+git://git.code.sf.net/p/vimprobable/code#branch=vimprobable1
+	source = config.h
+	md5sums = SKIP
+	md5sums = 0a97c3865c32be0ac3e60cb0547da641
+	sha1sums = SKIP
+	sha1sums = 165828fb6aca71955bc8c2f5b813e8c75722bd00
+	sha256sums = SKIP
+	sha256sums = 9c14eeb8cd886c7d8a99a0a76d4502f6b7beb2dcfafbdce75dd5031082fff61e
+
+pkgname = vimprobable-git
+
