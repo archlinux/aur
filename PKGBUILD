@@ -1,5 +1,5 @@
 pkgname=dlt-viewer
-pkgver=1.14.1alpha
+pkgver=1.15
 pkgrel=1
 pkgdesc="Diagnostic Log and Trace client viewer"
 url="http://projects.genivi.org/diagnostic-log-trace/"
