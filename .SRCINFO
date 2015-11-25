@@ -1,14 +1,14 @@
 pkgbase = uchardet
 	pkgdesc = Encoding detector library ported from Mozilla
-	pkgver = 0.0.1
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/BYVoid/uchardet
 	arch = i686
 	arch = x86_64
 	license = MPL
 	makedepends = cmake
-	source = http://uchardet.googlecode.com/files/uchardet-0.0.1.tar.gz
-	sha256sums = e238c212350e07ebbe1961f8f128faaa40f71b70d37b63ffa2fe12c664269ee6
+	source = https://github.com/BYVoid/uchardet/archive/v0.0.3.tar.gz
+	sha256sums = 8caba57524b6e306e764b4dabf5bfec48b6f9d89b73543ed7c95263890e2006f
 
 pkgname = uchardet
 

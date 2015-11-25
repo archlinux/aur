@@ -2,15 +2,15 @@
 # Contributor: Blake Imsland <blake@retroco.de>
 
 pkgname=uchardet
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Encoding detector library ported from Mozilla'
 arch=('i686' 'x86_64')
 url='https://github.com/BYVoid/uchardet'
 license=('MPL')
 makedepends=('cmake')
-source=("http://uchardet.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e238c212350e07ebbe1961f8f128faaa40f71b70d37b63ffa2fe12c664269ee6')
+source=("https://github.com/BYVoid/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('8caba57524b6e306e764b4dabf5bfec48b6f9d89b73543ed7c95263890e2006f')
 
 build() {
 	cd ${pkgname}-${pkgver}
