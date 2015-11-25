@@ -12,7 +12,7 @@ pkgbase = ceylon-git
 	depends = java-environment>=7
 	depends = bash
 	optdepends = nodejs: for JavaScript interoperability
-	source = ceylon-git::git+http://github.com/ceylon/ceylon.git#branch=master
+	source = ceylon-git::git+https://github.com/ceylon/ceylon.git#branch=master
 	sha256sums = SKIP
 
 pkgname = ceylon-git

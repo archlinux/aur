@@ -11,7 +11,7 @@ license=("Apache" "custom:GPL-CP" "LGPL")
 depends=("java-environment>=7" "bash")
 makedepends=("git" "apache-ant")
 optdepends=("nodejs: for JavaScript interoperability")
-source=("ceylon-git::git+http://github.com/ceylon/ceylon.git#branch=master")
+source=("ceylon-git::git+https://github.com/ceylon/ceylon.git#branch=master")
 sha256sums=("SKIP")
 
 pkgver() {
