@@ -11,8 +11,8 @@
 
 pkgname=linux-pax-flags
 pkgdesc='Deactivates PaX flags for several binaries to work with PaX enabled kernels.'
-pkgver=2.0.16
-pkgrel=5
+pkgver=2.0.17
+pkgrel=1
 arch=(any)
 url='https://github.com/nning/linux-pax-flags'
 license=(GPL3)
@@ -49,7 +49,7 @@ sha256sums=('8581506830903ffcbb0876e4380d660ff044d9805d68f1432753c5bb99dc0db9'
             '01ddeec77c605e1d3aa00a1fdc4c3537989468ab78da5f37b893cdbcfe34176c'
             '1f205fddfb427a696fb00221a3007453e25fbbf180ea026c264d23eeac9e1870'
             '2736d0ef20d0127c34e132db38d8993dee3062ba0ac0cdf8d444a8d3665698b8'
-            'e5562d68df885c5ceeb51709fc57c86d7b2c7849b9d99f828a77228878e25d71'
+            'eb81aaa596443ac8a0eebc4da093e144152b2e7919e66aa73194f01e408168b3'
             'ea10930e4b20064f104a476958b2f794d6220ac8a1c39b8f3105f7914c61d9f9'
             '459925589cc1c7b3c4e548c0ab30ae8c8780d093d6ff2bfc3c27e9712b032c9e'
             '561ec088f1408e35046ad6d5ef6eac0ede40f97e0a6cc28b470a19c611c970b2'
