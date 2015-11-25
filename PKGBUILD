@@ -1,7 +1,7 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-git
-pkgver=0.2.9.2.g1eec4a6
+pkgver=0.3.3.76.ge10cf0e
 pkgrel=1
 pkgdesc="a document viewer"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('girara-git' 'gtk3>=3.10' 'cairo>=1.8.8')
 makedepends=('git' 'python-docutils' 'intltool')
 conflicts=('zathura')
 provides=('zathura')
-source=('zathura::git+git://pwmt.org/zathura.git#branch=develop')
+source=('zathura::git+https://git.pwmt.org/pwmt/zathura.git#branch=develop')
 md5sums=('SKIP')
 _gitname=zathura
 
