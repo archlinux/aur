@@ -1,0 +1,15 @@
+pkgbase = ruby-ansi-1.3
+	pkgdesc = A collection of ANSI escape code related libraries enabling ANSI colorization and stylization of console output.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://github.com/rubyworks/ansi
+	arch = any
+	license = BSD
+	depends = ruby
+	depends = rubygems
+	noextract = ansi-1.3.0.gem
+	source = http://rubygems.org/downloads/ansi-1.3.0.gem
+	sha512sums = 43476d6cb7b33d1e7b6954d9b649c129158b6de7724d1f91b5011ff3c7391eb87ecdcbd6a1275aafb3a1d706fbdb7a67a79151baf99c74b77a8791a16616fc12
+
+pkgname = ruby-ansi-1.3
+
