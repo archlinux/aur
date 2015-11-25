@@ -1,12 +1,12 @@
 # Maintainer: MobiusHorizons <codemobius@gmail.com>
 pkgname=libmacaroons
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Libmacaroons provides flexible authorization credentials that support decentralized delegation, attenuation, and verification, and is used by HyperDex."
 url="https://github.com/rescrv/libmacaroons"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=()
+depends=('libsodium')
 makedepends=('wget' 'gcc')
 conflicts=()
 replaces=()
