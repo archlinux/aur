@@ -1,6 +1,6 @@
 pkgbase = telegraf
 	pkgdesc = Server-level metric gathering agent for InfluxDB
-	pkgver = 0.1.9
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = http://influxdb.org/
 	install = telegraf.install
@@ -8,12 +8,13 @@ pkgbase = telegraf
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = godep
 	makedepends = git
 	provides = telegraf
 	backup = etc/telegraf/telegraf.conf
-	source = https://github.com/influxdb/telegraf/archive/v0.1.9.tar.gz
+	source = https://github.com/influxdb/telegraf/archive/v0.2.2.tar.gz
 	source = telegraf.install
-	md5sums = ae8312d37649bd2538c50c6f9f9d8455
+	md5sums = 769a9243f95193e0c692315ce3bd78be
 	md5sums = SKIP
 
 pkgname = telegraf
