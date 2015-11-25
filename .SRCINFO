@@ -1,0 +1,17 @@
+pkgbase = verynice
+	pkgdesc = A tool for dynamically adjusting the nice level of processes under UNIX-like operating systems.
+	pkgver = 1.1
+	pkgrel = 14
+	url = http://thermal.cnde.iastate.edu/~sdh4/verynice/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	backup = etc/verynice.conf
+	source = http://fossies.org/linux/misc/old/verynice-1.1.tar.gz
+	source = verynice.service
+	md5sums = fb00b79779a30df2c03916181c873545
+	md5sums = dd2aee4e833c9f668e10c894c6c4d189
+
+pkgname = verynice
+

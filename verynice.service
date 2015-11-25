@@ -1,0 +1,10 @@
+[Unit]
+Description=A tool for dynamically adjusting the nice-level of processes
+
+[Service]
+Type=forking
+PIDFile=/var/run/verynice.pid
+ExecStart=/usr/bin/verynice -d /var/run/verynice.pid
+
+[Install]
+WantedBy=multi-user.target
