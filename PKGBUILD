@@ -4,7 +4,7 @@
 pkgname=xf86-input-cmt
 pkgdesc="Chromium OS multitouch input driver for Xorg X server"
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="https://github.com/hugegreenbug/xf86-input-cmt"
 license=('custom:chromiumos')
