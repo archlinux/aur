@@ -18,19 +18,17 @@
 # Contributor: lano1106 (patch to improve jacob's patch)
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
-# Contributor: Cold (current_euid patch)
-# Contributor: ubuntu (parts of 4.0, 4.1 and 4.2 kernel patches)
-# Contributor: kolasa (parts of 4.2 and 4.3 kernel patches)
+# Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-test
 pkgver=15.11
-pkgrel=2
+pkgrel=3
 # _betano=1.0
 _amdver=15.30.1025
-pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4  k ARE NOT SUPPORTED"
+pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')

@@ -30,10 +30,10 @@ whisperer(){
     echo -e "\e[0;32m--------------------------- PXP --------------------------------\e[0m"
     echo -e "\e[0;32m@pxp_user:\e[0m I switched GL/glx links to catalyst again..."
     echo -e "\e[0;32m----------------------------------------------------------------\e[0m"
-    echo -e "\e[1;31m-------------------------- TTY BUG -----------------------------\e[0m"
-    echo "There's a bug in switching to VT/TTY"
-    echo "Using uvesafb is a workaround:"
-    echo "https://wiki.archlinux.org/index.php/uvesafb"
+    echo -e "\e[1;31m------------ DROPPED SUPPORT FOR RADEONS HD 5 6 k --------------\e[0m"
+    echo "Please note that this release SADLY :( is"
+    echo "dropping support for pre-GCN cards so mainly"
+    echo "Radeons of series 5000 and 6000"
     echo -e "\e[1;31m----------------------------------------------------------------\e[0m"
 }
 
