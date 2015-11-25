@@ -1,7 +1,7 @@
-pkgbase = gnome-kra-ora-thumbnailer-git
+pkgbase = gnome-kra-ora-thumbnailer
 	pkgdesc = A thumbnailer for KRA ( Krita native file ) and ORA ( open-raster ) for the Gnome desktop
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Deevad/gnome-kra-ora-thumbnailer
 	arch = i686
 	arch = x86_64
