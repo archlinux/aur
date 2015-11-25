@@ -1,0 +1,19 @@
+pkgbase = phonetisaurus-git
+	pkgdesc = WFST-driven grapheme-to-phoneme (g2p) framework suitable for rapid development of high quality g2p or p2g systems.
+	pkgver = r34.317a177
+	pkgrel = 1
+	url = https://github.com/AdolfVonKleist/Phonetisaurus
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	depends = openfst
+	provides = phonetisaurus
+	conflicts = phonetisaurus
+	source = git+https://github.com/AdolfVonKleist/Phonetisaurus.git
+	sha256sums = SKIP
+
+pkgname = phonetisaurus-git
+
