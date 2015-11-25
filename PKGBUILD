@@ -35,7 +35,7 @@ build() {
       --enable-single-host \
       --enable-shared \
       --enable-compiler-name=gambitc \
-      --enable-compiler-name=gambiti 
+      --enable-interpreter-name-name=gambiti 
   make from-scratch
 }
 
