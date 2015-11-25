@@ -1,17 +1,17 @@
 pkgbase = sptk
 	pkgdesc = A suite of speech signal processing tools.
-	pkgver = 3.7
+	pkgver = 3.8
 	pkgrel = 1
 	url = http://sp-tk.sourceforge.net/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
+	makedepends = tcsh
 	depends = glibc
 	optdepends = libx11: for XY-plotter
 	optdepends = tcsh: for helper scripts
-	source = http://downloads.sourceforge.net/sp-tk/SPTK-3.7.tar.gz
+	source = http://downloads.sourceforge.net/sp-tk/SPTK-3.8.tar.gz
 	source = sptk.sh
-	sha256sums = afc4b309f5911010f1a37cbb307f4637f93b4aa141bdc915813913426b1513af
+	sha256sums = 028d6b3230bee73530f3d67d64eafa32cf23eaa987545975d260d0aaf6953f2b
 	sha256sums = b5afaf60414297bd359f73dbe14ae2a3608f9c52301cc5801c9708ceb710d416
 
 pkgname = sptk
