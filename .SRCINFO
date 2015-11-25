@@ -1,0 +1,17 @@
+pkgbase = securecrt
+	pkgdesc = Vandyke SecureCRT SSH Client
+	pkgver = 7.3.5
+	pkgrel = 1
+	url = http://www.vandyke.com/products/securecrt/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = openssl
+	depends = glibc
+	depends = qt4
+	options = !strip
+	source_x86_64 = securecrt-7.3.5.903.ubuntu13-64.tar.gz
+	source_i686 = securecrt-7.3.5.903.ubuntu13.tar.gz
+
+pkgname = securecrt
+
