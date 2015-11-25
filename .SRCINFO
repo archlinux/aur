@@ -1,7 +1,7 @@
 pkgbase = python2-etc-merge
 	pkgdesc = A tool to track /etc files and .pacnew files using mercurial
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/xdegaye/etc-merge
 	arch = any
 	license = GPL3
