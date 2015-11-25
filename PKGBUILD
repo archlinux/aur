@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=libreoffice-extension-grammalecte-fr
-pkgver=0.4.10.3
+pkgver=0.4.10.4
 pkgrel=1
 pkgdesc="French grammar checker extension for LibreOffice."
 arch=('any')
@@ -16,7 +16,7 @@ changelog=changelog
 source=("http://www.dicollecte.org/grammalecte/oxt/Grammalecte-v${pkgver}.oxt"
 	      "LICENSE::https://www.mozilla.org/MPL/2.0/index.txt")
 noextract=(Grammalecte-v${pkgver}.oxt)
-sha256sums=('47dbbe0d7270d7707f276b198e8c07b1e963ccdfca15000dc3de29fd25d93c0a'
+sha256sums=('3c6a6e76fdafc1ec12bad09d68cb5b578bf190143ace149ea03a45688a66233e'
             'fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85')
 
 package() {
