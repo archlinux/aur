@@ -2,8 +2,8 @@
 
 pkgname=ganglia-minimal
 _pkgbase=${pkgname%%-minimal}
-pkgver=3.7.1
-pkgrel=3
+pkgver=3.7.2
+pkgrel=1
 pkgdesc="A version of the ganglia package without gmetad to reduce dependencies."
 arch=('i686' 'x86_64' 'armv6h')
 url="http://ganglia.sourceforge.net/"
@@ -18,7 +18,7 @@ source=("http://downloads.sourceforge.net/$_pkgbase/$_pkgbase-$pkgver.tar.gz"
         'ganglia.sysusers'
         'uid.patch'
         'runstatedir.patch')
-sha256sums=('e735a6218986a0ff77c737e5888426b103196c12dc2d679494ca9a4269ca69a3'
+sha256sums=('042dbcaf580a661b55ae4d9f9b3566230b2232169a0898e91a797a4c61888409'
             '8fc88d5c6d294315cbb7eca104af115514dd89afb2bcb8cc4e462ebc0db128e2'
             'e0a14ba384d8e3685461241811cea18e5251ab5d84fd68471972540bcc542c4c'
             'dc2cdffaf0cbedbbac2e654843803423f93da494aaeecda8a185ad3badea8e21'
