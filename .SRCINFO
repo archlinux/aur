@@ -1,0 +1,15 @@
+pkgbase = kde-servicemenus-getmediainfo
+	pkgdesc = Simple service menu that show the mediainfo about the selected media.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php?action=content&content=141946
+	arch = any
+	license = GPL
+	depends = kdebase-dolphin
+	depends = kdebase-kdialog
+	depends = mediainfo
+	source = http://kde-apps.org/CONTENT/content-files/141946-MediaInfoKDE.desktop
+	md5sums = 8a14b856b510378a2dcf8bc4d2eec0c8
+
+pkgname = kde-servicemenus-getmediainfo
+
