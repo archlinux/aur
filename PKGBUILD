@@ -5,11 +5,12 @@
 
 pkgname=gnome-shell-extension-window-buttons-git
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension which puts minimize, maximize and close buttons in the top panel."
 arch=('any')
 url="https://github.com/danielkza/Gnome-Shell-Window-Buttons-Extension"
 license=('GPL3')
+depends=('gconf')
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
