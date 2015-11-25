@@ -10,6 +10,7 @@ pkgbase = tribler
 	depends = python-gmpy2
 	depends = python-apsw
 	depends = python-cherrypy
+	depends = python-plyvel
 	depends = python-decorator
 	depends = python-netifaces
 	depends = python-requests
