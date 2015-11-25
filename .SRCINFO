@@ -1,0 +1,19 @@
+pkgbase = dybuk-git
+	pkgdesc = Prettify the ugly Rustc messages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Ticki/dybuk
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	provides = dybuk
+	conflicts = dybuk
+	source = git://github.com/Ticki/dybuk.git
+	md5sums = SKIP
+
+pkgname = dybuk-git
+
