@@ -3,7 +3,7 @@
 
 pkgname=artefetcher-qt5
 _pkgname=artefetcher
-pkgver=0.6.5
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A video grabber for Arte Catch UP TV - QT5 version"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=('!libtool' '!emptydirs')
 source=(http://downloads.sf.net/sourceforge/$_pkgname/artefetcher_$pkgver.tar.gz)
-md5sums=('c728df13d924e91617e0d92ed40475f6')
+md5sums=('650c3ec91b22572af918d921e26a7f90')
 
 build() {
   cd $_pkgname
@@ -34,6 +34,4 @@ package() {
    cp img/arteFetcher.png "$pkgdir"/usr/share/pixmaps
    make DESTDIR="$pkgdir" install 
 }
-
-
 
