@@ -1,0 +1,20 @@
+pkgbase = liblttng-ust-python-agent
+	pkgdesc = LTTng-UST Python agent tracepoint provider
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = http://lttng.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = GPL2
+	license = MIT
+	makedepends = liburcu>=0.7.2
+	makedepends = util-linux
+	makedepends = python
+	depends = lttng-ust>=2.7.0
+	options = !libtool
+	source = http://lttng.org/files/lttng-ust/lttng-ust-2.7.1.tar.bz2
+	sha1sums = 597ebecb885debb58c263de57f30b1096d4eefc6
+
+pkgname = liblttng-ust-python-agent
+
