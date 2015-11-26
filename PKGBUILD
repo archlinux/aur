@@ -8,8 +8,16 @@ pkgdesc="A multi-interface Twitter client written in Python."
 arch=(any)
 url="http://turpial.org.ve/"
 license=('GPL3')
-depends=('python2' 'libturpial>=0.8' 'python2-distribute' 'python2-simplejson>=1.9.2' 'pygtk>=2.12' 'python2-notify2>=0.1.1' 'notification-daemon' 'gstreamer0.10-python' 'python2-babel>=0.9.1' 'pywebkitgtk')
-optdepends=('python2-gtkspell>=2.25.3' 'gnome-spell' 'aspell')
+depends=('python2' 'libturpial>=0.8' 'python2-distribute' 'python2-simplejson>=1.9.2' 'python2-notify2>=0.1.1' 'notification-daemon' 'gstreamer0.10-python' 'python2-babel>=0.9.1' 'pywebkitgtk')
+optdepends=(
+    'pygtk>=2.12: GTK user interface'
+    'aspell: GTK user interface'
+    'gnome-spell: GTK user interface'
+    'python2-gtkspell>=2.25.3: GTK user interface'
+    'python2-pyqt4>=2.12: Qt user interface'
+    'python2-jinja>=2.6: Qt user interface'
+)
+# TODO is it really correct that pywebkitgtk is required but the GTK UI is optional?
 conflicts=(${pkgname}-git)
 source=(http://files.turpial.org.ve/sources/stable/$pkgname-$pkgver.tar.gz)
 sha1sums=('f47af9b7e4ffbf5b2dcd7ed4d81fd55a212b072c') # ${source[0]}.sha1sum
