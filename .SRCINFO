@@ -1,7 +1,7 @@
 pkgbase = python-lttngust
 	pkgdesc = LTTng-UST Python agent
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lttng.org/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = python-lttngust
 	license = MIT
 	makedepends = python
 	depends = lttng-ust>=2.7.0
+	depends = liblttng-ust-python-agent>=2.7.1
 	optdepends = lttng-tools: LTTng trace control client
 	optdepends = babeltrace: trace viewing
 	options = !libtool
