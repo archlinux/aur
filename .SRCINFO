@@ -1,13 +1,13 @@
 pkgbase = lkl-linux-git
 	pkgdesc = Linux kernel library for building portable linux drivers (git version)
-	pkgver = 4.3.r329.g5eb6acb
+	pkgver = 4.3.r347.g2b6ea3c
 	pkgrel = 1
 	url = https://github.com/lkl/linux/blob/master/Documentation/lkl.txt
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = python2
+	makedepends = python
 	makedepends = git
 	depends = glibc
 	options = !buildflags
