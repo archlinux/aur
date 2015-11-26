@@ -23,7 +23,7 @@ install=ktorrent-frameworks-git.install
 
 pkgver() {
   cd ktorrent
-  _ver="$(cat libktcore/ktversion.h | grep -m3 -e MAJOR -e MINOR -e RELEASE | cut -d '=' -f2 | tr -d ';' | tr -d ' ' | paste -sd'.')"
+  _ver="$(cat libktcore/ktversion.h | grep -m3 -e MAJOR -e MINOR -e RELEASE | cut -d '=' -f2 | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo -e "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
