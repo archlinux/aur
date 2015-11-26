@@ -1,7 +1,7 @@
 # Maintainer:  Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=python-pyplothelper-git
-pkgver=20140210
+pkgver=20151126
 pkgrel=1
 pkgdesc="A collection of scripts that facilitate the creation of fancy plots with matplotlib."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-matplotlib' 'python-numpy' 'python-brewer2mpl')
 makedepends=('git')
 provides=('python-pyplothelper')
-source=("$pkgname"::'git+git://github.com/ValiValpas/pyplot_helper')
+source=("$pkgname"::'git+https://github.com/ValiValpas/pyplot_helper')
 md5sums=("SKIP")
 
 pkgver() {
