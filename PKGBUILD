@@ -2,7 +2,7 @@
 
 pkgname='warsow-beta'
 pkgver='1.6.beta7'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine'
 url='https://www.warsow.gg/'
 license=('GPL')
@@ -37,8 +37,8 @@ prepare() {
 
 build() {
   # Compile Warsow binaries
-  cd "${srcdir}"/source/source
-  patch < "${srcdir}"/warsow-cmakelists.patch
+  cd "${srcdir}/source/source"
+  patch < "${srcdir}/warsow-cmakelists.patch"
   cmake .
   make ${MAKE_FLAGS}
 }
@@ -47,27 +47,27 @@ package() {
   local builddir="${srcdir}/source/source/build"
 
   # Create Destination Directories
-  install -d "${pkgdir}"/opt/warsow/
+  install -d "${pkgdir}/opt/warsow/"
 
   # Move Compiled Data to Destination Directory except basewsw.
   # NOTE: We don't need cgame library because it's a pure lib provided by
   # modules_16.pk3 from warsow-data package.
-  cp -r "${builddir}"/libs "${pkgdir}"/opt/warsow
-  cp "${builddir}"/warsow.* "${pkgdir}"/opt/warsow/warsow
-  cp "${builddir}"/wsw_server.* "${pkgdir}"/opt/warsow/wsw_server
-  cp "${builddir}"/wswtv_server.* "${pkgdir}"/opt/warsow/wswtv_server
-  find "${pkgdir}"/opt/warsow -type d | xargs chmod 755
-  find "${pkgdir}"/opt/warsow -type f | xargs chmod 755 # only executables here
+  cp -r "${builddir}/libs" "${pkgdir}/opt/warsow"
+  cp "${builddir}/warsow.${CARCH}" "${pkgdir}/opt/warsow/warsow"
+  cp "${builddir}/wsw_server.${CARCH}" "${pkgdir}/opt/warsow/wsw_server"
+  cp "${builddir}/wswtv_server.${CARCH}" "${pkgdir}/opt/warsow/wswtv_server"
+  find "${pkgdir}/opt/warsow" -type d | xargs chmod 755
+  find "${pkgdir}/opt/warsow" -type f | xargs chmod 755 # only executables here
 
   # Install launchers to /usr/bin
-  install -D -m 0755 "${srcdir}"/warsow.launcher "${pkgdir}"/usr/bin/warsow
-  install -D -m 0755 "${srcdir}"/wsw-server.launcher "${pkgdir}"/usr/bin/wsw-server
-  install -D -m 0755 "${srcdir}"/wswtv-server.launcher "${pkgdir}"/usr/bin/wswtv-server
+  install -D -m 0755 "${srcdir}/warsow.launcher" "${pkgdir}/usr/bin/warsow"
+  install -D -m 0755 "${srcdir}/wsw-server.launcher" "${pkgdir}/usr/bin/wsw-server"
+  install -D -m 0755 "${srcdir}/wswtv-server.launcher" "${pkgdir}/usr/bin/wswtv-server"
 
   # Install the menu entry
-  install -D -m 0644 "${srcdir}"/warsow.desktop "${pkgdir}"/usr/share/applications/warsow.desktop
+  install -D -m 0644 "${srcdir}/warsow.desktop" "${pkgdir}/usr/share/applications/warsow.desktop"
 
   # Install the launcher icon
-  convert "${srcdir}"/source/icons/warsow256x256.xpm "${srcdir}"/warsow.png
-  install -D -m 0644 "${srcdir}"/warsow.png "${pkgdir}"/usr/share/pixmaps/warsow.png
+  convert "${srcdir}/source/icons/warsow256x256.xpm" "${srcdir}/warsow.png"
+  install -D -m 0644 "${srcdir}/warsow.png" "${pkgdir}/usr/share/pixmaps/warsow.png"
 }
