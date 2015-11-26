@@ -1,6 +1,6 @@
 pkgbase = manaplus-git
 	pkgdesc = ManaPlus GIT version.
-	pkgver = 7301.e6a0f5d
+	pkgver = 8335.ba2ad81
 	pkgrel = 1
 	url = http://manaplus.evolonline.org
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = manaplus-git
 	depends = mesa
 	depends = curl
 	conflicts = manaplus
-	source = manaplus::git+https://gitlab.com/manaplus/manaplus.git
+	source = manaplus::git://github.com/ManaPlus/ManaPlus.git
 	sha256sums = SKIP
 
 pkgname = manaplus-git
