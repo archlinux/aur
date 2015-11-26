@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mario
+Comment=Mario - old DOS game
+Exec=/usr/bin/dosbox -conf /usr/local/games/dosbox-mario/dosbox-mario.conf
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/dosbox-mario.png
+Encoding=UTF-8
+Categories=GNOME;GTK;Game;
