@@ -1,6 +1,6 @@
 pkgbase = jumanji-git
 	pkgdesc = a web browser
-	pkgver = r464.f8e04e5
+	pkgver = r466.de4c6c3
 	pkgrel = 1
 	url = http://pwmt.org/projects/jumanji
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = jumanji-git
 	depends = sqlite3
 	provides = jumanji
 	conflicts = jumanji
-	source = jumanji::git+git://pwmt.org/jumanji.git#branch=develop
+	source = jumanji::git+https://git.pwmt.org/pwmt/jumanji.git#branch=develop
 	md5sums = SKIP
 
 pkgname = jumanji-git

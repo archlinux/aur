@@ -1,7 +1,7 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=jumanji-git
-pkgver=r464.f8e04e5
+pkgver=r466.de4c6c3
 pkgrel=1
 pkgdesc="a web browser"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('girara' 'webkitgtk' 'libsoup>=2.36.1' 'sqlite3')
 makedepends=('git')
 conflicts=('jumanji')
 provides=('jumanji')
-source=('jumanji::git+git://pwmt.org/jumanji.git#branch=develop')
+source=('jumanji::git+https://git.pwmt.org/pwmt/jumanji.git#branch=develop')
 md5sums=('SKIP')
 _repo=jumanji
 
