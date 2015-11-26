@@ -3,7 +3,7 @@
 _pkgname=libzathura
 
 pkgname=libzathura-git
-pkgver=49ca31e
+pkgver=f0fe052
 pkgrel=1
 pkgdesc="A document library."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('git')
 checkdepends=('check' 'libfiu')
 conflicts=('libzathura')
 provides=('libzathura')
-source=("${_pkgname}::git+git://pwmt.org/libzathura.git#branch=develop")
+source=("${_pkgname}::git+https://git.pwmt.org/pwmt/libzathura.git#branch=develop")
 md5sums=('SKIP')
 
 build() {
