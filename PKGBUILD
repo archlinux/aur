@@ -2,7 +2,7 @@
 
 _npmname=express-generator
 pkgname=nodejs-$_npmname
-pkgver=4.12.4
+pkgver=4.13.1
 pkgrel=1
 pkgdesc="Express' application generator."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('c45afd57c7d04d310f9f179477b06b4e32e7864f43ed8f86f1ff079c159ad419')
+sha256sums=('a0329dbe8e952426eb74bd68a97b3fffa9721fa5417ebea5301c0190c320ffb4')
 
 package() {
   cd "$srcdir"
