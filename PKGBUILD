@@ -2,7 +2,7 @@
 # Contributor: Manuel Mendez <mmendez534 at gmail dot com>
 
 pkgname=babeltrace
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="command-line trace reader for LTTng"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('popt' 'util-linux' 'glib2>=2.22.0')
 options=('!libtool')
 source=(http://www.efficios.com/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 install='babeltrace.install'
-sha1sums=('4554fa9b20c63a4e5c6a0816b0de6bb2fbc678f4')
+sha1sums=('6490f9033f6876f83d78d72b76b863200b0bfb4b')
 
 build()
 {
