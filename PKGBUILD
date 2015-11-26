@@ -1,34 +1,28 @@
 # Patches 'execgraph.patch' and 'xshape.patch' by Alexey Korop added. 
 # Original package info:
-# $Id: PKGBUILD 246486 2015-09-17 21:01:11Z foutrelis $
+# $Id: PKGBUILD 251435 2015-11-19 21:45:56Z bisson $
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: James Rayner <james@archlinux.org>
 # Contributor: Partha Chowdhury <kira.laucas@gmail.com>
 
 pkgname=conky-mt
-pkgver=1.10.0
-pkgrel=5
+pkgver=1.10.1
+pkgrel=1
 pkgdesc='Lightweight system monitor for X'
-url='http://conky.sourceforge.net/'
+url='https://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL')
 arch=('i686' 'x86_64')
-makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db')
+makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db' 'git')
 depends=('glib2' 'curl' 'lua' 'wireless_tools' 'libxml2' 'libxft' 'libxdamage' 'imlib2')
 conflicts=('conky')
 provides=('conky')
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz"
-        'ascii.patch'
         'lua53.patch'
-        'ipv6.patch'
-        'curl.patch'
         'xshape.patch'
         'execgraph.patch')
-sha1sums=('d5863420150150002947180d0ee96c9ef56c43b1'
-          '96cdbc38e8706c8a3120601983df5c7265716128'
+sha1sums=('97b59ec1daf54126b30516e8663a9cf1f218d8ae'
           'a3a74542b6524e5663ad37aaba292b48e8bea3b1'
-          'a0899973483d0ad664b60e58b3ba899ba88712af'
-          '1c066b439a1e7166d733fb710faa9bf08b81ce4c'
           '930f9d0313b7e32b895b75aa92be2cb128f957ed'
           '7615818bc255032dc4f5eeba9a2e009b9a7c177c')
 
@@ -37,10 +31,7 @@ options=('!strip' 'debug')
 prepare() {
   mv "${srcdir}/conky-${pkgver}" "${srcdir}/${pkgname}-${pkgver}"
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch -p1 -i ../ascii.patch # db2x_manxml fails on non-ascii chars
 	patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
-	patch -p1 -i ../ipv6.patch # https://bugs.archlinux.org/task/45626
-	patch -p1 -i ../curl.patch # https://github.com/bagder/curl/issues/342
 	patch -p1 -i ../xshape.patch # https://github.com/brndnmtthws/conky/issues/158
 	patch -p1 -i ../execgraph.patch # https://github.com/brndnmtthws/conky/issues/153
 }
