@@ -20,7 +20,7 @@ prepare() {
 }
 
 build() {
-	mkdir "$srcdir/$pkgname-build"
+	mkdir -p "$srcdir/$pkgname-build"
 	cd "$srcdir/$pkgname-build"
 
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF \

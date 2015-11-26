@@ -1,7 +1,9 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2010-01-13 06:27:00.000000000 +0800
-+++ b/CMakeLists.txt	2015-11-22 20:12:29.677289542 +0800
-@@ -2,11 +2,20 @@
++++ b/CMakeLists.txt	2015-11-26 10:13:58.000000000 +0800
+@@ -1,20 +1,28 @@
+-cmake_minimum_required( VERSION 2.6 )
++cmake_minimum_required( VERSION 2.8.16 )
  
  project( kmozillahelper )
  
@@ -15,7 +17,6 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 +include(KDECompilerSettings)
 +include(FeatureSummary)
 +
-+find_package(Qt5 REQUIRED COMPONENTS Widgets)
 +find_package(KF5 REQUIRED COMPONENTS KDELibs4Support)
 +
  include( MacroLibrary )
@@ -26,45 +27,49 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
  ########### next target ###############
  
-@@ -14,7 +23,7 @@
+ set( kmozillahelper_SRCS
       main.cpp )
  
- kde4_add_executable( kmozillahelper ${kmozillahelper_SRCS} )
+-kde4_add_executable( kmozillahelper ${kmozillahelper_SRCS} )
 -target_link_libraries( kmozillahelper ${KDE4_KFILE_LIBS} )
++add_executable( kmozillahelper ${kmozillahelper_SRCS} )
 +target_link_libraries( kmozillahelper KF5::KDELibs4Support )
  
  # TODO hardcoded path?
  install( TARGETS kmozillahelper DESTINATION /usr/lib/mozilla/ )
 diff -Naur a/main.cpp b/main.cpp
 --- a/main.cpp	2012-09-11 19:21:34.000000000 +0800
-+++ b/main.cpp	2015-11-22 21:35:58.217217276 +0800
-@@ -48,6 +48,12 @@
++++ b/main.cpp	2015-11-26 10:14:52.000000000 +0800
+@@ -48,6 +48,11 @@
  #include <stdio.h>
  #include <unistd.h>
  
 +#include <QUrl>
-+#include <KUrl>
 +#include <KConfigGroup>
 +#include <KGlobal>
-+#include <k4aboutdata.h>
 +#include <QStandardPaths>
++#include <QCommandLineParser>
  //#define DEBUG_KDE
  
  #define HELPER_VERSION 6
-@@ -55,11 +61,9 @@
+@@ -55,12 +59,12 @@
  
  int main( int argc, char* argv[] )
      {
 -    KAboutData about( "kmozillahelper", "kdelibs4", ki18n( "KMozillaHelper" ), APP_HELPER_VERSION );
-+    K4AboutData about("kmozillahelper", 0, ki18n("KMozillaHelper"), APP_HELPER_VERSION);
++    KAboutData about( "kmozillahelper", i18n( "KMozillaHelper" ), APP_HELPER_VERSION );
 +    
      about.setBugAddress( "https://bugzilla.novell.com/enter_bug.cgi");
 -#if KDE_IS_VERSION( 4, 1, 0 )
 -    about.setProgramIconName( "firefox" ); // TODO what about other mozilla apps?
 -#endif
-     KCmdLineArgs::init( argc, argv, &about );
+-    KCmdLineArgs::init( argc, argv, &about );
++    QApplication::setWindowIcon(QIcon::fromTheme(QLatin1String("firefox")));
++    QCommandLineParser parser;
++    about.setupCommandLine(&parser);
      App app;
      app.disableSessionManagement();
+     app.setQuitOnLastWindowClosed( false );
 @@ -163,7 +167,7 @@
      {
      if( !readArguments( 1 ))
