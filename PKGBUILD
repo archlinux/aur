@@ -2,7 +2,7 @@
 
 pkgname='warsow-beta-data'
 pkgver='1.6.beta7'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine (data files)'
 url='https://www.warsow.gg/'
 license=('custom:Warsow Content License')
@@ -16,14 +16,14 @@ package() {
   local wswdir="${srcdir}/warsow_16"
 
   # Create Destination Directories
-  install -d ${pkgdir}/opt/warsow/
+  install -d "${pkgdir}/opt/warsow/"
 
   # Move Data to Destination Directory
-  cp -r ${wswdir}/{basewsw,docs} ${pkgdir}/opt/warsow
-  find ${pkgdir}/opt/warsow -type d | xargs chmod 755
-  find ${pkgdir}/opt/warsow -type f | xargs chmod 644
+  cp -r "${wswdir}"/{basewsw,docs} "${pkgdir}/opt/warsow"
+  find "${pkgdir}/opt/warsow" -type d | xargs chmod 755
+  find "${pkgdir}/opt/warsow" -type f | xargs chmod 644
 
   # Install Custom License: Warsow Content License
-  install -Dm0644 ${wswdir}/docs/license.txt \
-    ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
+  install -Dm0644 "${wswdir}/docs/license.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
