@@ -1,13 +1,13 @@
 pkgbase = mysql-docs
 	pkgdesc = Set of HTML documentation for MySQL
-	pkgver = 5.6
+	pkgver = 5.7
 	pkgrel = 1
 	url = http://dev.mysql.com/doc/
 	arch = any
 	license = GPL
 	options = docs
-	source = http://downloads.mysql.com/docs/refman-5.6-en.html-chapter.tar.gz
-	md5sums = ffbdcd3fe9754ee7936f03c897427fff
+	source = http://downloads.mysql.com/docs/refman-5.7-en.html-chapter.tar.gz
+	md5sums = e3eba7716f6571d928eb2e68d26b4445
 
 pkgname = mysql-docs
 
