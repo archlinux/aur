@@ -24,7 +24,7 @@ set -e
 
 # filled by the PKGBUILD
 NAME='tor-messenger-bin'
-VERSION='0.1.0b3'
+VERSION='0.1.0b4'
 LANGUAGE="en-US"
 
 ARCH=$(getconf LONG_BIT)
