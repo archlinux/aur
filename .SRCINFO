@@ -1,0 +1,26 @@
+pkgbase = funcoeszz
+	pkgdesc = Brazilian script with 134 useful mini applications
+	pkgver = 15.5
+	pkgrel = 1
+	url = http://funcoeszz.net/
+	arch = any
+	license = GPL
+	depends = bash
+	depends = sed
+	depends = grep
+	depends = lynx
+	depends = sox
+	depends = bc
+	depends = diffutils
+	depends = coreutils
+	depends = gawk
+	depends = ncurses
+	depends = gcc
+	depends = findutils
+	depends = procps
+	depends = glibc
+	source = http://funcoeszz.net/download/funcoeszz-15.5.sh
+	md5sums = 25b8ef28e897c064af9f91a12b5f0eb2
+
+pkgname = funcoeszz
+
