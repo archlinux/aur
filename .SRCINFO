@@ -1,0 +1,12 @@
+pkgbase = warsow-beta-data
+	pkgdesc = Free online multiplayer competitive FPS based on the Qfusion engine (data files)
+	pkgver = 1.6.beta7
+	pkgrel = 1
+	url = https://www.warsow.gg/
+	arch = any
+	license = custom:Warsow Content License
+	source = https://www.warsow.gg/1.6-test/test7/warsow_16_TEST7_unified.tar.gz
+	md5sums = 8ebf41faebc537ce6bbdc1e66fe11877
+
+pkgname = warsow-beta-data
+
