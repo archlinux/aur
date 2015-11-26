@@ -1,6 +1,6 @@
 pkgbase = wayland-protocols-git
 	pkgdesc = Wayland protocols that add functionalities not available in the core protocol
-	pkgver = 0.1.0.30.f828a43
+	pkgver = 1.0.37.3543bb7
 	pkgrel = 1
 	url = http://cgit.freedesktop.org/wayland/wayland-protocols
 	arch = any
