@@ -1,6 +1,6 @@
 pkgbase = zathura-cb-git
 	pkgdesc = Comic book support for zathura
-	pkgver = 0.1.2.3.ge2958f3
+	pkgver = 0.1.4.2.g1a7ba12
 	pkgrel = 1
 	url = http://pwmt.org/projects/zathura/plugins/zathura-cb
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = zathura-cb-git
 	optdepends = tar: For *.cbt support
 	provides = zathura-cb
 	conflicts = zathura-cb
-	source = zathura-cb::git+git://pwmt.org/zathura-cb.git#branch=develop
+	source = zathura-cb::git+https://git.pwmt.org/pwmt/zathura-cb.git#branch=develop
 	md5sums = SKIP
 
 pkgname = zathura-cb-git

@@ -2,7 +2,7 @@
 
 pkgname=zathura-cb-git
 pkgrel=1
-pkgver=0.1.2.3.ge2958f3
+pkgver=0.1.4.2.g1a7ba12
 pkgdesc="Comic book support for zathura"
 arch=('i686' 'x86_64')
 url="http://pwmt.org/projects/zathura/plugins/zathura-cb"
@@ -17,7 +17,7 @@ optdepends=(
   'p7zip: For *.cb7 support'
   'tar:   For *.cbt support'
 )
-source=('zathura-cb::git+git://pwmt.org/zathura-cb.git#branch=develop')
+source=('zathura-cb::git+https://git.pwmt.org/pwmt/zathura-cb.git#branch=develop')
 md5sums=('SKIP')
 _gitname=zathura-cb
 
