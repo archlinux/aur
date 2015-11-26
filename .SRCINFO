@@ -1,6 +1,6 @@
 pkgbase = mint-themes
 	pkgdesc = Mint-X GTK2, GTK3, Metacity and Xfce theme.
-	pkgver = 3.14_8
+	pkgver = 3.14+9
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-themes
 	arch = any
