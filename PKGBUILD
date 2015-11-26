@@ -17,7 +17,7 @@ source=(
 md5sums=('0e48eb688615e66e3267c341adffb3cf'
          'c0cf3c5a00d05b5a380e0b292f8e0a11'
          'aa01366944258e0301b66423f581c864'
-         '3837cb886e28a60e78d32438fe987689')
+         '5ea9a78dd5449b7cf1ea3d37e2f2851c')
 
 package () {
     cd ${srcdir}
