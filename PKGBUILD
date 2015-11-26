@@ -1,6 +1,6 @@
 # Maintainer: wolftankk <wolftankk@gmail.com>
 pkgname=php-phalcon
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
@@ -15,7 +15,7 @@ source=(
 	"https://github.com/phalcon/cphalcon/archive/phalcon-v$pkgver.zip"
 )
 
-sha256sums=('9f396c4a79399b61d9347d07ccad4746417e54ca04e65d291b1fbc32f0bc74a5')
+sha256sums=('c6c89d6090c1f0e5b4b7046951be4a21511b186e7e06b93ca1f64d8898c534b6')
 
 build() {
   cd "$srcdir/cphalcon-phalcon-v$pkgver"
