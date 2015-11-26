@@ -2,7 +2,7 @@
 
 pkgname='warsow-beta'
 pkgver='1.6.beta7'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine'
 url='https://www.warsow.gg/'
 license=('GPL')
