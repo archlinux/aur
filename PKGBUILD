@@ -1,7 +1,7 @@
 # Maintainer: Ted Meyer <tmathmeyer@gmail.com>
 
 pkgname=tint3
-pkgver=201
+pkgver=205
 pkgrel=1
 pkgdesc='An independant status bar for X11 (works best with bspwm)'
 arch=('x86_64')
@@ -13,11 +13,11 @@ optdepends=()
 provides=("${pkgname}")
 conflicts=("${pkgname}" "tint3-cpp-git")
 conflicts=("${pkgname}" "tint3-git")
-source=("git://github.com/tmathmeyer/${pkgname}.git")
-md5sums=('SKIP')
+source=("https://github.com/tmathmeyer/tint3/archive/v205.zip")
+md5sums=('27592e4b4456cd69aa85c2f75daec566')
 
 build() {
-    cd "$srcdir/$pkgname/src"
+    cd "$srcdir/$pkgname-$pkgver/src"
     make update
 }
 
@@ -26,6 +26,6 @@ package() {
     fontDir="$pkgdir/usr/share/fonts/TTF"
     install -dm755 "$installDir"
     install -dm755 "$fontDir"
-    install -m755 "$srcdir/$pkgname/fonts/sakamoto-11.bdf" "$fontDir/sakamoto-11.bdf"
-    install -m755 "$srcdir/$pkgname/src/tint3" "$installDir/tint3"
+    install -m755 "$srcdir/$pkgname-$pkgver/fonts/sakamoto-11.bdf" "$fontDir/sakamoto-11.bdf"
+    install -m755 "$srcdir/$pkgname-$pkgver/src/tint3" "$installDir/tint3"
 }
