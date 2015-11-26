@@ -11,7 +11,7 @@ depends=('zathura>=0.2.0' 'calibre')
 makedepends=('git')
 conflicts=('zathura-epub')
 provides=('zathura-epub')
-source=('zathura-epub::git+git://pwmt.org/zathura-epub.git#branch=develop')
+source=('zathura-epub::git+https://git.pwmt.org/pwmt/zathura-epub.git#branch=develop')
 md5sums=('SKIP')
 _gitname=zathura-epub
 

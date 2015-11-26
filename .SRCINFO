@@ -11,7 +11,7 @@ pkgbase = zathura-epub-git
 	depends = calibre
 	provides = zathura-epub
 	conflicts = zathura-epub
-	source = zathura-epub::git+git://pwmt.org/zathura-epub.git#branch=develop
+	source = zathura-epub::git+https://git.pwmt.org/pwmt/zathura-epub.git#branch=develop
 	md5sums = SKIP
 
 pkgname = zathura-epub-git
