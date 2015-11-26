@@ -1,7 +1,7 @@
 pkgbase = ow-curses-win32a
 	pkgdesc = An extended PDCurses directly on Win32 api (watcom-win32)
-	pkgver = 15.05
-	pkgrel = 2
+	pkgver = 15.08
+	pkgrel = 1
 	url = http://www.projectpluto.com/win32a.htm
 	arch = any
 	groups = watcom-win32
@@ -18,7 +18,7 @@ pkgbase = ow-curses-win32a
 	options = staticlibs
 	options = emptydirs
 	source = http://www.projectpluto.com/win32a.zip
-	md5sums = 835356e2ffa311c5bb908063cfda7dfa
+	md5sums = e7613a470362920309245354f7e7a25d
 
 pkgname = ow-curses-win32a
 
