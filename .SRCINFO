@@ -12,10 +12,14 @@ pkgbase = turpial-git
 	depends = libturpial-git
 	depends = notification-daemon
 	depends = python2-babel
-	depends = python2-jinja
 	depends = python2-notify
-	depends = python2-pyqt4
 	depends = python2-simplejson
+	optdepends = pygtk>=2.12: GTK user interface
+	optdepends = aspell: GTK user interface
+	optdepends = gnome-spell: GTK user interface
+	optdepends = python2-gtkspell>=2.25.3: GTK user interface
+	optdepends = python2-pyqt4>=2.12: Qt user interface
+	optdepends = python2-jinja>=2.6: Qt user interface
 	provides = turpial=3.0.r1647.2c44359
 	conflicts = turpial
 	source = turpial-git::git://github.com/satanas/Turpial.git#branch=development
