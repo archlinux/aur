@@ -1,24 +1,22 @@
 pkgbase = fifth
 	pkgdesc = Browser that carries the best features from Opera
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.4
+	pkgrel = 1
 	url = http://fifth-browser.sourceforge.net
 	install = fifth.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = webkitfltk
-	depends = liburlmatch-git
-	depends = fltk
-	depends = sqlite
+	depends = liburlmatch
 	depends = physfs
 	depends = libxslt
 	depends = curl
 	depends = harfbuzz-icu
 	depends = libjpeg-turbo
 	depends = cairo
-	source = fifth-0.2.tar.gz::https://github.com/clbr/fifth/archive/v0.2.tar.gz
-	md5sums = 4af11739796d5d9bf08f4cee3e796210
+	source = fifth-0.4.tar.gz::https://github.com/clbr/fifth/archive/v0.4.tar.gz
+	md5sums = da927c1be0dc1b895b93afb178ee46f2
 
 pkgname = fifth
 
