@@ -1,6 +1,6 @@
 pkgbase = wxlauncher
 	pkgdesc = wxLauncher is a cross-platform launcher for the FreeSpace 2 Open engine
-	pkgver = 0.9.6
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = http://www.hard-light.net/forums/index.php?topic=67950.0
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = wxlauncher
 	depends = python2-markdown
 	depends = openal
 	optdepends = fs2_open
-	source = https://github.com/wxLauncher/wxlauncher/archive/revision-0.9.6.zip
+	source = https://github.com/scp-fs2open/wxLauncher/archive/release-0.10.1.zip
 	source = wxlauncher.png
 	source = wxlauncher.desktop
-	sha256sums = a39051eff51462bbb5610758519cd7ba74723e73e5716a4913cee62ad39917a0
+	sha256sums = aaf721fb44eb23362da92e243ea62e9dc6d9ba80064579d66d9c411f3430327e
 	sha256sums = e3bf9cbe7c61378026331a21313fccd891b051e949448715625d1cfd3ae72576
 	sha256sums = 8de688171c12fdf273ece4f33177fd773395204c81cf212f8c4293f0ddd16582
 
