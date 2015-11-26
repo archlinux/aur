@@ -2,7 +2,7 @@
 
 pkgname=zathura-ps-git
 pkgrel=1
-pkgver=0.2.0.7.g2a02c06
+pkgver=0.2.0.8.gbd8aaf1
 pkgdesc="PostScript support for zathura"
 arch=('i686' 'x86_64')
 url="http://pwmt.org/projects/zathura-ps"
@@ -11,7 +11,7 @@ depends=('zathura-git' 'libspectre')
 makedepends=('git')
 conflicts=('zathura-ps')
 provides=('zathura-ps')
-source=('zathura-ps::git+git://pwmt.org/zathura-ps.git#branch=develop')
+source=('zathura-ps::git+https://git.pwmt.org/pwmt/zathura-ps.git#branch=develop')
 md5sums=('SKIP')
 _gitname=zathura-ps
 
