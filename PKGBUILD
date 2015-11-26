@@ -2,7 +2,7 @@
 
 pkgname=zathura-djvu-git
 pkgrel=1
-pkgver=0.2.2.3.gf64f3ff
+pkgver=0.2.4.3.g9d09a48
 pkgdesc="DjVu support for zathura"
 arch=('i686' 'x86_64')
 url="http://pwmt.org/projects/zathura/plugins/zathura-djvu"
@@ -11,7 +11,7 @@ depends=('zathura-git' 'djvulibre')
 makedepends=('git')
 conflicts=('zathura-djvu')
 provides=('zathura-djvu')
-source=('zathura-djvu::git+git://pwmt.org/zathura-djvu.git#branch=develop')
+source=('zathura-djvu::git+https://git.pwmt.org/pwmt/zathura-djvu.git#branch=develop')
 md5sums=('SKIP')
 _gitname=zathura-djvu
 

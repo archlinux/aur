@@ -11,7 +11,7 @@ pkgbase = zathura-djvu-git
 	depends = djvulibre
 	provides = zathura-djvu
 	conflicts = zathura-djvu
-	source = zathura-djvu::git+git://pwmt.org/zathura-djvu.git#branch=develop
+	source = zathura-djvu::git+https://git.pwmt.org/pwmt/zathura-djvu.git#branch=develop
 	md5sums = SKIP
 
 pkgname = zathura-djvu-git
