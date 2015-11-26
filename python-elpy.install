@@ -1,0 +1,8 @@
+post_install() {
+    echo "This is the Python library of Elpy. To properly use it with Emacs \
+you must install the *.el files of Elpy (there is a MELPA elpy package)."
+}
+
+post_upgrade() {
+    post_install "$1"
+}

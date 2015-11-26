@@ -1,0 +1,17 @@
+pkgbase = python-elpy
+	pkgdesc = Package to bring powerful Python editing to Emacs. Python library only.
+	pkgver = 1.10.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/jorgenschaefer/elpy
+	install = python-elpy.install
+	arch = any
+	license = GPL
+	depends = python-epc
+	depends = flake8
+	options = !emptydirs
+	source = https://github.com/jorgenschaefer/elpy/archive/1.10.0.tar.gz
+	md5sums = 4dc5bd90eb1011da58ccd68cca880e66
+
+pkgname = python-elpy
+
