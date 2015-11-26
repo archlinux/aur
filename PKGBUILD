@@ -1,6 +1,6 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 pkgname=rocker-compose-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Docker composition tool with idempotency features for deploying apps composed of multiple containers"
 depends=( )
@@ -14,9 +14,9 @@ source=(
 )
 url="https://github.com/grammarly/rocker-compose"
 license="Apache"
-sha256sums=('b1434bef6012eb6c04b66737cd5d9df45678b2cdb6dde739bcabfbe0739259eb'
+sha256sums=('0d3d5f93554be348aba041b348a62f9ebbd560650a4c5a8ad131337b4904b66f'
             '58f1fbfa93dd08a1b77a80dd5821c6e8cf025d54831c43e8235a280d512fb62b'
-            '8638e056f958beac508f4c5e19dd23fc0395cae9257a7400127612b04fede2d0')
+            '72d3d3b81447a5da71060184173f877bf69583a6495d36b3fc4d860fa1969369')
 
 package() {
   cd "$srcdir"
