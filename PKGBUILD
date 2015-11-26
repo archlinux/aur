@@ -4,7 +4,7 @@ pkgname=nginx-mainline
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -92,6 +92,9 @@ package() {
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+  for i in ftdetect indent syntax; do
+  install -Dm644 contrib/vim/${i}/nginx.vim "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
+  done
 
   rmdir "$pkgdir"/run
 }
