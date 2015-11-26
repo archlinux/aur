@@ -1,0 +1,16 @@
+pkgbase = xclip-svn
+	pkgdesc = Command line interface to the X11 clipboard - SVN version
+	pkgver = r85
+	pkgrel = 1
+	url = http://sourceforge.net/projects/xclip
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxmu
+	provides = xclip
+	conflicts = xclip
+	source = svn://svn.code.sf.net/p/xclip/code/trunk@r85
+	sha1sums = SKIP
+
+pkgname = xclip-svn
+
