@@ -1,12 +1,12 @@
 pkgbase = azenis-green-icon-theme
 	pkgdesc = Azenis green icon theme
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gnome-look.org/content/show.php/Azenis+Icons+Green?content=126630
 	arch = any
 	license = GPL
-	source = http://esclapion.free.fr/AUR/AzenisIconsGreen_1-2.tar.gz
-	md5sums = 313ed5afbadeafbe87ef117475c02192
+	source = http://limeonfire.de/aur/azenis/AzenisIconsGreen.tar.gz
+	md5sums = c6938f95250a215c6cd554c24243a886
 
 pkgname = azenis-green-icon-theme
 
