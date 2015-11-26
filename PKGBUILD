@@ -19,7 +19,7 @@ install=$pkgname.install
 prepare() {
 	mkdir -p build
 
-	sed -e '253,257d;264,283d;287,303d;310,313d;315d;318,327d' -i kdepim-$pkgver/CMakeLists.txt
+	sed -e '253,257d;264,283d;287,294d;296,303d;310,313d;315d;318,327d' -i kdepim-$pkgver/CMakeLists.txt
 }
 
 build() {
