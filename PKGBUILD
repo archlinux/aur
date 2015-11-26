@@ -4,8 +4,8 @@
 # then please put 'unknown'.
 
 # Maintainer: Devaux Fabien <fdev31@gmail.com>
-pkgname=dicom2-bin
-pkgver=1.9n
+pkgname=dicom2
+pkgver=bin
 pkgrel=1
 epoch=
 pkgdesc="CLI program which allows you to convert medical images and DICOM files"

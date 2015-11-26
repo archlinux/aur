@@ -1,6 +1,6 @@
-pkgbase = dicom2-bin
+pkgbase = dicom2
 	pkgdesc = CLI program which allows you to convert medical images and DICOM files
-	pkgver = 1.9n
+	pkgver = bin
 	pkgrel = 1
 	arch = x86
 	arch = x86_64
@@ -10,5 +10,5 @@ pkgbase = dicom2-bin
 	source = http://www.barre.nom.fr/medical/dicom2/files/linux/dicom2.gz
 	md5sums = 08890ec19325e163c16417882ba2c8d3
 
-pkgname = dicom2-bin
+pkgname = dicom2
 
