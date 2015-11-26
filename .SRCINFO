@@ -1,6 +1,6 @@
 pkgbase = zathura-pdf-mupdf-git
 	pkgdesc = PDF support for zathura by using the mupdf library
-	pkgver = 0.2.6.5.ga7bef63
+	pkgver = 0.2.7.10.g37898c2
 	pkgrel = 1
 	url = http://pwmt.org/projects/zathura-pdf-mupdf
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = zathura-pdf-mupdf-git
 	depends = mupdf>=1.4
 	provides = zathura-pdf-mupdf
 	conflicts = zathura-pdf-mupdf
-	source = zathura-pdf-mupdf::git+git://pwmt.org/zathura-pdf-mupdf.git#branch=develop
+	source = zathura-pdf-mupdf::git+https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git#branch=develop
 	md5sums = SKIP
 
 pkgname = zathura-pdf-mupdf-git
