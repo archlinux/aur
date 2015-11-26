@@ -13,7 +13,8 @@ license=('custom')
 if [ "$CARCH" = "x86_64" ]; then
   _pkgarch=_x64
 sha256sums=('e4900224cd6c7e82aad1cfc033aa6144f4e4c7998d468ae0dc285432d533c35a'
-            '2cd3246d12597e1e7b8b72180904a0aa479b70df7b669824372b1fc2f30f80d3')
+            '2cd3246d12597e1e7b8b72180904a0aa479b70df7b669824372b1fc2f30f80d3'
+            '13d30733e737e732812ae52e37d9fea4650fd18d2e8cfb8631ebbc76d9e8d770')
 else
   _pkgarch=
 fi
@@ -23,8 +24,7 @@ optdepends=('texlive-bin' 'firefox')
 install=atelierb.install
 source=(http://www.atelierb.eu/atelier-b/${_majver}/free/atelierb-free-${pkgver}-linux${_pkgarch}.deb
 	AtelierB.desktop
-  #license.pdf
-  )
+	http://www.atelierb.eu/wp-content/uploads/sites/3/atelierb/licences/4.0/licence-atelier-b-utilisation-en-V4.pdf)
 
 
 
