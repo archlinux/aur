@@ -1,0 +1,17 @@
+pkgbase = webkitfltk
+	pkgdesc = Port of Webkit to FLTK 1.3
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://fifth-browser.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gperf
+	makedepends = ruby
+	makedepends = fltk
+	makedepends = sqlite
+	source = webkitfltk-0.4.tar.gz::https://github.com/clbr/webkitfltk/archive/v0.4.tar.gz
+	md5sums = d87640667c9bb5b44aeb30b868b3cc5c
+
+pkgname = webkitfltk
+
