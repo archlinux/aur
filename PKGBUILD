@@ -1,4 +1,4 @@
-# Maintainer: douedd <oytdbm@gmail>
+# Maintainer: douedd <douglaseddie90@gmail>
 pkgname='coinversion-git'
 pkgver=1
 pkgrel=1
