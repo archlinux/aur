@@ -20,7 +20,7 @@ build() {
   cd $_pkgname-$pkgver
   ./bootstrap
   ./configure \
-    --prefix=/opt/opensc-openct \
+    --prefix=$_prefix \
     --disable-pcsc \
     --enable-openct
   make
