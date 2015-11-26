@@ -1,7 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 pkgname=php-codesniffer-drupal
-pkgver=8.x_2.4
+pkgver=8.x_2.5
 _pkgver=${pkgver//[_]/-}
 pkgrel=2
 pkgdesc="Drupal coding standard for PHP_CodeSniffer"
@@ -11,7 +11,7 @@ license=("GPLv2")
 depends=("php-codesniffer")
 provides=("php-codesniffer-drupal")
 source=("http://ftp.drupal.org/files/projects/coder-${_pkgver}.tar.gz")
-sha512sums=('93bcbffa96949784c5f0f173681dcd0e177dc2adca41fa063c6e41ab19e28362f6a103835872bb58e10e6d054d9085043bde903a0cc30e9c3cd12bce70b46fd3')
+sha512sums=('90d3174b5cc96bf1ff8325e507bef542e8cc560411b941c7bce0da9bd81f4bde26e8969a199c08f4afbdc9ef6f2558040bbae5e44dda0ca3f2b164bdf49aa169')
 
 package() {
     install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/Drupal"
