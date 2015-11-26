@@ -3,7 +3,7 @@
 
 pkgname=gogs
 _pkgname=${pkgname}
-pkgver=0.7.19
+pkgver=0.7.22
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
@@ -84,7 +84,7 @@ build() {
 
   msg2 "Build program"
   go fix
-  go build -x -tags='sqlite redis memcache'
+  go build -x -tags='sqlite'
 }
 
 package() {
