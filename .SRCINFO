@@ -1,6 +1,6 @@
 pkgbase = pertino
 	pkgdesc = Cloud-based VPN client
-	pkgver = 470.4537
+	pkgver = 500.4567
 	pkgrel = 1
 	url = http://pertino.com/
 	install = pertino.install
@@ -12,16 +12,16 @@ pkgbase = pertino
 	backup = usr/share/pgateway/conf/client.conf
 	source_i686 = client.conf
 	source_i686 = pgateway.service
-	source_i686 = http://download.pertino.com/clients/linux/470-4537/pertino_470.4537-1_i386.deb
-	sha1sums_i686 = 16c08a94d0e72d610fef71ed6ed0839db56d6484
-	sha1sums_i686 = 1ed8d0eef425ca9ee605c3e9510010065e71b222
-	sha1sums_i686 = b70d22aaa843c5b99661778dfb789480d601af99
+	source_i686 = http://download.pertino.com/clients/linux/500-4567/pertino_500.4567-1_i386.deb
+	md5sums_i686 = 6860e827d05c06b63dad13fbc0b947c8
+	md5sums_i686 = c8dd2304f286498e215543a4651b4e37
+	md5sums_i686 = c12e420b9fa84157ec45500431f65b90
 	source_x86_64 = client.conf
 	source_x86_64 = pgateway.service
-	source_x86_64 = http://download.pertino.com/clients/linux/470-4537/pertino_470.4537-1_amd64.deb
-	sha1sums_x86_64 = 16c08a94d0e72d610fef71ed6ed0839db56d6484
-	sha1sums_x86_64 = 1ed8d0eef425ca9ee605c3e9510010065e71b222
-	sha1sums_x86_64 = 891650db47a3943234d3d31d7b6be6aef729edb6
+	source_x86_64 = http://download.pertino.com/clients/linux/500-4567/pertino_500.4567-1_amd64.deb
+	md5sums_x86_64 = 6860e827d05c06b63dad13fbc0b947c8
+	md5sums_x86_64 = c8dd2304f286498e215543a4651b4e37
+	md5sums_x86_64 = 9e639b0df3da34e09f4f442d9bbae948
 
 pkgname = pertino
 

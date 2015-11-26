@@ -1,6 +1,6 @@
 # Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 pkgname=pertino
-pkgver=470.4537
+pkgver=500.4567
 pkgrel=1
 pkgdesc="Cloud-based VPN client"
 arch=(i686 x86_64)
@@ -12,8 +12,6 @@ _srcfileprefix="${pkgname}_${pkgver}-1_"
 source_i686=("client.conf" "pgateway.service" "http://download.pertino.com/clients/linux/$(echo $pkgver | tr . -)/${_srcfileprefix}i386.deb")
 source_x86_64=("client.conf" "pgateway.service" "http://download.pertino.com/clients/linux/$(echo $pkgver | tr . -)/${_srcfileprefix}amd64.deb")
 noextract=("${source[@]%%::*}")
-sha1sums_i686=(16c08a94d0e72d610fef71ed6ed0839db56d6484 1ed8d0eef425ca9ee605c3e9510010065e71b222 b70d22aaa843c5b99661778dfb789480d601af99)
-sha1sums_x86_64=(16c08a94d0e72d610fef71ed6ed0839db56d6484 1ed8d0eef425ca9ee605c3e9510010065e71b222 891650db47a3943234d3d31d7b6be6aef729edb6)
 install=${pkgname}.install
 backup=(usr/share/pgateway/conf/client.conf)
 
@@ -52,3 +50,9 @@ package() {
     ln -s "/usr/share/pgateway/pGateway" "$pkgdir/usr/bin/pGateway"
     ln -s "/usr/share/pgateway/pertino" "$pkgdir/usr/bin/pertino"
 }
+md5sums_i686=('6860e827d05c06b63dad13fbc0b947c8'
+              'c8dd2304f286498e215543a4651b4e37'
+              'c12e420b9fa84157ec45500431f65b90')
+md5sums_x86_64=('6860e827d05c06b63dad13fbc0b947c8'
+                'c8dd2304f286498e215543a4651b4e37'
+                '9e639b0df3da34e09f4f442d9bbae948')
