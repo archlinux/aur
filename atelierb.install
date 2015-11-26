@@ -1,0 +1,25 @@
+pkgname=atelierb
+post_install() {
+  getent passwd atelierb >/dev/null 2>&1 || usr/sbin/useradd -c 'Atelir B' -u 2000 -g users -d /opt/atelierb -s /sbin/nologin atelierb
+  passwd -l atelierb > /dev/null
+  chown -R atelierb:users /opt/atelierb > /dev/null
+
+}
+
+pre_upgrade() {
+   echo ""
+}
+
+pre_remove() {
+   echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+
+post_remove() {
+  getent passwd atelierb >/dev/null 2>&1 || userdel atelierb
+}
+
