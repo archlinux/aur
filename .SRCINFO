@@ -1,0 +1,17 @@
+pkgbase = macchiato-git
+	pkgdesc = MAC spoofing with a restricted range of OUI prefixes
+	pkgver = 20151123
+	pkgrel = 1
+	url = https://github.com/EtiennePerot/macchiato
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = bash
+	depends = iproute2
+	provides = macchiato
+	conflicts = macchiato
+	source = git+https://github.com/EtiennePerot/macchiato.git
+	md5sums = SKIP
+
+pkgname = macchiato-git
+
