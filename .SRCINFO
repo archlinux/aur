@@ -1,0 +1,15 @@
+pkgbase = nodejs-sequelize-cli
+	pkgdesc = The sequelize CLI.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://sequelizejs.com
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = sequelize-cli-2.2.1.tgz
+	source = https://registry.npmjs.org/sequelize-cli/-/sequelize-cli-2.2.1.tgz
+	sha256sums = c8a39ce8d65e9500af47142b338d7f336fd41366513715aef5b57454cc70765d
+
+pkgname = nodejs-sequelize-cli
+
