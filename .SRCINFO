@@ -1,6 +1,6 @@
 pkgbase = libktorrent-frameworks-git
 	pkgdesc = A BitTorrent protocol implementation. KF5 Frameworks branch. (GIT version)
-	pkgver = 1.1dev.r321.850118f
+	pkgver = 1.9.50.r325.3fd254e
 	pkgrel = 1
 	url = https://projects.kde.org/projects/extragear/network/libktorrent
 	arch = i686

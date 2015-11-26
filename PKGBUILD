@@ -1,13 +1,15 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libktorrent-frameworks-git
-pkgver=1.1dev.r321.850118f
+pkgver=1.9.50.r325.3fd254e
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/extragear/network/libktorrent'
 license=('GPL')
-depends=('qca-qt5' 'kdelibs4support')
+depends=('qca-qt5'
+         'kdelibs4support'
+         )
 makedepends=('extra-cmake-modules'
              'kdoctools'
              'git'
