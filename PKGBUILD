@@ -3,16 +3,18 @@
 pkgname=toxic
 pkgdesc='CLI Tox client'
 license=('GPL3')
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
-depends=('desktop-file-utils'
+depends=('curl'
+         'desktop-file-utils'
          'freealut'
          'libnotify'
+         'qrencode'
          'toxcore')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url=('https://github.com/JFreegman/toxic')
 source=("https://github.com/JFreegman/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('eac982bc65779d283af40ae185e7830e93822b0ec1dabd03b2cbd58e58474be8')
+sha256sums=('f11eab5dc3fd24ee329438f57dad068064c0900838f684af6596e64c68be7006')
 install="$pkgname.install"
 
 build() {
