@@ -1,0 +1,27 @@
+pkgbase = kaku-bin
+	pkgdesc = The next generation music client
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://kaku.rocks
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = gtk2
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = python2
+	depends = gvfs
+	depends = xdg-utils
+	depends = desktop-file-utils
+	conflicts = kaku
+	options = !strip
+	source = Kaku-linux64-v1.5.0.zip::https://github.com/EragonJ/Kaku/releases/download/1.5.0/Kaku-linux64.zip
+	source = kaku.png::https://camo.githubusercontent.com/0b9900f6f5800a2121741e6adf860a048220cef0/687474703a2f2f692e696d6775722e636f6d2f63334b4b5139742e706e67
+	source = kaku.desktop
+	md5sums = 61ef3e5ea03a3f50460c3e9d6baccf97
+	md5sums = 4da31bb76a5352d2310a332d7972be4a
+	md5sums = abbb6affbdd10243d96892edc5dd68ac
+
+pkgname = kaku-bin
+
