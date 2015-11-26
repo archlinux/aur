@@ -1,5 +1,5 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 3ce3564..5c479bb 100755
+index 58f1cbb..a4a3491 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
 @@ -146,7 +146,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
@@ -20,7 +20,7 @@ index 3ce3564..5c479bb 100755
                          
                      
                      time_waited = 0
-@@ -2091,7 +2091,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
+@@ -2105,7 +2105,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
                  
              elif command == '8chan_board': webbrowser.open( 'https://8ch.net/hydrus/index.html' )
              elif command == 'file_integrity': self._CheckFileIntegrity()
@@ -64,7 +64,7 @@ index bccaae5..b389a65 100644
          response_context = HydrusServerResources.ResponseContext( 200, path = path )
          
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 47bed02..d53aa9a 100755
+index 5609f73..7dde366 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,24 +3,9 @@ import sys
