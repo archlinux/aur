@@ -1,0 +1,20 @@
+pkgbase = phonetisaurus
+	pkgdesc = WFST-driven grapheme-to-phoneme (g2p) framework suitable for rapid development of high quality g2p or p2g systems.
+	pkgver = 0.8a
+	pkgrel = 1
+	url = https://code.google.com/p/phonetisaurus/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	depends = openfst
+	depends = python2>=2.7.1
+	optdepends = mitlm
+	conflicts = phonetisaurus-git
+	source = https://www.dropbox.com/s/154q9yt3xenj2gr/phonetisaurus-0.8a.tgz
+	sha256sums = 324772327eab63d05df395e169174502204d66a8463ed462e5ca60cf09cafc02
+
+pkgname = phonetisaurus
+
