@@ -21,7 +21,7 @@ source=(
 )
 md5sums=(
   'SKIP'
-  'ed069404b4172e71df48d3d256f0be12'
+  '6ba239d886cd67013bd501ab423889e4'
 )
 
 pkgver() {
@@ -43,6 +43,9 @@ prepare() {
   # change log and applications location
   sed -i 's/fileName="\/tmp\/crtmpserver",/fileName="\/var\/log\/crtmpserver\/main.log",/g' crtmpserver/crtmpserver.lua
   sed -i 's/rootDirectory="applications",/rootDirectory="\/usr\/lib\/crtmpserver\/applications",/g' crtmpserver/crtmpserver.lua
+
+  # enable applestreamingclient and vmapp
+  #sed -i 's/#ADD_SUBDIRECTORY/ADD_SUBDIRECTORY/g' applications/CMakeLists.txt
 }
 
 build() {

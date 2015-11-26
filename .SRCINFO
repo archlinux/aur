@@ -16,7 +16,7 @@ pkgbase = crtmpserver-git
 	source = git://github.com/shiretu/crtmpserver
 	source = crtmpserver-conf.zip
 	md5sums = SKIP
-	md5sums = ed069404b4172e71df48d3d256f0be12
+	md5sums = 6ba239d886cd67013bd501ab423889e4
 
 pkgname = crtmpserver-git
 

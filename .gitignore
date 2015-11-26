@@ -1,4 +1,5 @@
 crtmpserver/
+crtmpserver-conf/
 src/
 pkg/
 *.pkg.tar.xz
