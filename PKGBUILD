@@ -3,7 +3,7 @@
 _pkgname=treesheets
 pkgname=$_pkgname-git
 pkgver=r119.10fbc77
-pkgrel=1
+pkgrel=2
 pkgdesc='The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases'
 url='http://treesheets.com/'
 license=('zlib')
@@ -40,8 +40,9 @@ package() {
   cd $_pkgname
   install -Dm644 ZLIB_LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 TS/$_pkgname "$pkgdir/usr/bin/$_pkgname"
-  install -d "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
   cp -R TS/examples "$pkgdir/usr/share/$_pkgname/examples"
   cp -R TS/images "$pkgdir/usr/share/$_pkgname/images"
+  cp -R TS/docs "$pkgdir/usr/share/$_pkgname/docs"
 }
 
