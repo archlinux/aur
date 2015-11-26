@@ -14,8 +14,7 @@ sha256sums=('1632d064d58b5ce25035d58408e007eb2e802e4c8677c410f8aa8c71346bc0c0')
 
 build() {
     cd "$srcdir/$pkgname"
-    make clean
-    make all
+    make
 }
 
 package() {
