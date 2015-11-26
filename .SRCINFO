@@ -1,6 +1,6 @@
 pkgbase = lttng-ust
 	pkgdesc = Userspace tracing library for LTTng
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = http://lttng.org/
 	install = lttng-ust.install
@@ -13,8 +13,8 @@ pkgbase = lttng-ust
 	depends = util-linux
 	optdepends = babeltrace
 	options = !libtool
-	source = http://lttng.org/files/lttng-ust/lttng-ust-2.7.0.tar.bz2
-	sha1sums = c8c2a843526f5fd874fdf7889cee71464927fa6d
+	source = http://lttng.org/files/lttng-ust/lttng-ust-2.7.1.tar.bz2
+	sha1sums = 597ebecb885debb58c263de57f30b1096d4eefc6
 
 pkgname = lttng-ust
 
