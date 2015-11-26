@@ -1,0 +1,17 @@
+pkgbase = chisel-git
+	pkgdesc = Constructing Hardware in a Scala Embedded Language
+	pkgver = r2895.edfc2c4
+	pkgrel = 1
+	url = https://chisel.eecs.berkeley.edu/
+	arch = any
+	license = BSD
+	makedepends = sbt
+	makedepends = git
+	depends = java-environment
+	provides = chisel
+	conflicts = chisel
+	source = git+https://github.com/ucb-bar/chisel.git
+	sha512sums = SKIP
+
+pkgname = chisel-git
+
