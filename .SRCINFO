@@ -1,6 +1,6 @@
 pkgbase = hugo-git
 	pkgdesc = Fast and Flexible Static Site Generator in Go
-	pkgver = v0.14.r185.g1b8440a
+	pkgver = v0.15.r3.g26af48a
 	pkgrel = 1
 	url = http://hugo.spf13.com/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = hugo-git
 	license = custom:SimPL
 	makedepends = go
 	makedepends = git
+	makedepends = mercurial
 	provides = hugo
 	conflicts = hugo
 	options = !strip

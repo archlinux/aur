@@ -3,7 +3,7 @@
 
 pkgname=hugo-git
 _pkgname=hugo
-pkgver=v0.14.r185.g1b8440a
+pkgver=v0.15.r3.g26af48a
 pkgrel=1
 pkgdesc="Fast and Flexible Static Site Generator in Go"
 arch=('x86_64' 'i686' 'arm')
@@ -12,7 +12,7 @@ conflicts=('hugo')
 provides=('hugo')
 options=('!strip')
 license=('custom:SimPL')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'mercurial')
 source=('git+https://github.com/spf13/hugo.git')
 sha512sums=('SKIP')
 
