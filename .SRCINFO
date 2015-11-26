@@ -1,6 +1,6 @@
 pkgbase = artanis-git
 	pkgdesc = A fast monolithic web-framework of Scheme
-	pkgver = r783.73c99b7
+	pkgver = r787.97bf51f
 	pkgrel = 1
 	url = http://web-artanis.com/
 	install = artanis-git.install

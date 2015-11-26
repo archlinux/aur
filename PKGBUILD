@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis-git
-pkgver=r783.73c99b7
+pkgver=r787.97bf51f
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('any')
