@@ -1,5 +1,5 @@
 pkgbase = adjbacklight
-	pkgdesc = Convient method for adjusting the backlight on your portable computer
+	pkgdesc = Convenient method for adjusting the backlight on your portable computer
 	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://github.com/maandree/adjbacklight

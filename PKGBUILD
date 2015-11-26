@@ -3,7 +3,7 @@
 pkgname=adjbacklight
 pkgver=7.2.1
 pkgrel=1
-pkgdesc="Convient method for adjusting the backlight on your portable computer"
+pkgdesc="Convenient method for adjusting the backlight on your portable computer"
 arch=('x86_64' 'i686')
 url="https://github.com/maandree/adjbacklight"
 license=('GPL3')
