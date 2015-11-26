@@ -4,7 +4,7 @@
 
 set -u
 pkgname='liquibase'
-pkgver='3.4.1'
+pkgver='3.4.2'
 pkgrel='1'
 pkgdesc='VCS source control tailored for database management'
 arch=('any')
@@ -13,11 +13,11 @@ license=('Apache')
 depends=('java-environment')
 _giturl="https://github.com/liquibase/${pkgname}"
 _verwatch=("${_giturl}/releases" "${_giturl#*github.com}/releases/download/liquibase-parent-[^/]\+/liquibase-\([0-9\.]\+\)-bin.tar.gz" 'l')
+options=('!strip')
 source=("https://github.com/liquibase/${pkgname}/releases/download/liquibase-parent-${pkgver}/liquibase-${pkgver}-bin.tar.gz"
         "liquibase.profile")
-sha256sums=('693919918e217e7a88c5140e82f279f31f636233a62cd2108abdafa4f3ed0a02'
+sha256sums=('c52f6c795169073158a30ee528b1f566ba57bb56e242cac2aa175789bec47dcf'
             '7c1939e5b1aee63db199c86989726bbdf81102784512ed69f8595fddf80c30c0')
-options=('!strip')
 
 package() {
   set -u
