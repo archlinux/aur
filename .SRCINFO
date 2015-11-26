@@ -1,7 +1,7 @@
 pkgbase = nixnote-beta
 	pkgdesc = Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux.
-	pkgver = 2.0_beta4
-	pkgrel = 2
+	pkgver = 2.0_beta5
+	pkgrel = 1
 	url = http://www.sourceforge.net/projects/nevernote/
 	arch = x86_64
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = nixnote-beta
 	conflicts = nixnote
 	conflicts = nixnote2-git
 	replaces = nixnote
-	source_x86_64 = http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernote/NixNote2%20-%20Beta%204/nixnote2-2.0-beta4_amd64.tar.gz
-	sha256sums_x86_64 = 2a839c962cb9115c72a5094d65f5cbeec597673dbf844450d82e90a89b8ed4d6
-	source_i686 = http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernote/NixNote2%20-%20Beta%204/nixnote2-2.0-beta4_i386.tar.gz
-	sha256sums_i686 = 4c7f86662d183bc1eaf4e0cea7e58a02eae78869fc234a6fc11e1686e9d0d643
+	source_x86_64 = http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernote/NixNote2%20-%20Beta%205/nixnote2-2.0-beta5_amd64.tar.gz
+	sha256sums_x86_64 = 6150b876556a55de5817a73f8c072e10961e30eb565306762b3c55494550cdf9
+	source_i686 = http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernote/NixNote2%20-%20Beta%205/nixnote2-2.0-beta5_i386.tar.gz
+	sha256sums_i686 = e0dbb9b8a774983e955b3a4c74be1e28e57ccdfd45581c5876c8e9c056763432
 
 pkgname = nixnote-beta
 
