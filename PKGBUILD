@@ -5,7 +5,7 @@ pkgver=4.3.0.r2159.de3503b
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/extragear/network/libktorrent'
+url='https://userbase.kde.org/KTorrent'
 license=('GPL')
 depends=('knotifyconfig'
          'libktorrent-frameworks-git'
