@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=passcheck
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Passphrase strength evaluator'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python3' 'passcheck-data')
 makedepends=('make' 'sed' 'coreutils' 'texinfo' 'auto-auto-complete')
 install=passcheck.install
 source=(https://github.com/maandree/passcheck/archive/$pkgver.tar.gz)
-sha256sums=(1f55ab4c9e2f73c28f3c136384c49d95f008e7aef04303a1d018e73798516b99)
+sha256sums=(d530dbeb0ce7686b9ac12a86041656a302b6716ef54a36fc1aa7828ceb910fd8)
 
 
 build() {
