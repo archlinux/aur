@@ -2,7 +2,7 @@
 # Contributor: Guilherme "nirev" Nogueira <guilherme@nirev.org>
 
 pkgname=rhc
-pkgver=1.37.1
+pkgver=1.38.4
 pkgrel=1
 pkgdesc="The client tools for the OpenShift platform that allow for application management."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby' 'ruby-archive-tar-minitar' 'ruby-commander<4.3.0' 'ruby-highline
          'ruby-net-scp' 'ruby-net-ssh<2.9.3' 'ruby-net-ssh-multi' 'ruby-open4')
 source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-sha1sums=('b92bb65f40f2f4df0199be2b22d179ddf7fc3518')
+sha1sums=('be7260f7693e3ffcf09ac6ea87f18dc52e803f93')
 
 package() {
   cd "$srcdir"
