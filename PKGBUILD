@@ -1,7 +1,7 @@
 # Maintainer: EFE KANDEMIR  <817c0d3r@gmail.com>
 pkgname=archlinuxinfo
 pkgver=2
-pkgrel=3
+pkgrel=4
 pkgdesc="C program to display system infomation alongside the Arch Linux logo"
 arch=('any')
 url="https://github.com/817c0d3r/Logo"

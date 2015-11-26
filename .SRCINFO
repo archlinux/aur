@@ -1,7 +1,7 @@
 pkgbase = archlinuxinfo
 	pkgdesc = C program to display system infomation alongside the Arch Linux logo
 	pkgver = 2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/817c0d3r/Logo
 	arch = any
 	license = GPL
