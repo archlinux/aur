@@ -24,7 +24,7 @@ source=(
   'https://www.warsow.gg/1.6-test/test7/warsow_16_TEST7_sdk.tar.gz'
 )
 md5sums=(
-  '003f8a0974f0cd5c2b9e78d49cab24c9'
+  '65c5ffc2ccc19c661f87467e756bbea2'
   '45a3f846fd6ea3b7dc857e60501d0e12'
   '13d520525638c544565d8f799ffdca48'
   '826509400d2d3f5035b40552f0c95acb'
