@@ -2,7 +2,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=arcadia
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=0
 pkgdesc="A light IDE for Ruby"
 arch=('any')
