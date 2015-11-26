@@ -1,7 +1,7 @@
 # Maintainer: David McInnis<davidm@eagles.ewu.edu>
 
 pkgname=texlive-ewuthesis
-pkgver=2015.11.13
+pkgver=2015.11.25
 pkgrel=1
 pkgdesc="Style for Master's Thesis at Eastern Washington University"
 license=('LPPL')
