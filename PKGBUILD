@@ -2,13 +2,13 @@
 
 _pkgname=atticmatic
 pkgname=atticmatic-hg
-pkgver=0.1.1.r2_3bb266098c1a
+pkgver=0.1.7.r9_feba6a4d5d12
 pkgrel=1
 pkgdesc="A simple Python wrapper script for the Attic backup software that initiates a backup and prunes any old backups according to a retention policy."
 arch=('i686' 'x86_64')
 url="http://torsion.org/atticmatic/"
 license=('GPLv3')
-depends=('attic')
+depends=('attic' 'python-ruamel.yaml')
 makedepends=('mercurial')
 source=("$pkgname"::'hg+https://torsion.org/hg/atticmatic')
 sha512sums=('SKIP')
