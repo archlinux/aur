@@ -1,0 +1,7 @@
+#!/bin/bash
+
+basepath="/opt/warsow"
+
+${basepath}/wsw_server \
+  +set fs_basepath ${basepath} \
+  +set fs_usehomedir 1 "${@}"
