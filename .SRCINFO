@@ -1,0 +1,21 @@
+pkgbase = dosbox-digger
+	pkgdesc = Digger - old DOS game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dosgamesarchive.com
+	arch = any
+	license = freeware
+	depends = dosbox
+	depends = sdl
+	depends = unzip
+	source = http://image.dosgamesarchive.com/games/digger.zip
+	source = dosbox-digger.png
+	source = dosbox-digger.desktop
+	source = dosbox-digger.conf
+	md5sums = 978cc19407d9a3f9fc26e09398c39705
+	md5sums = ff8cb0fc6a62e81787b1438cde0b9c11
+	md5sums = a09d02b49e4d12cabc6dd55d73c5afcf
+	md5sums = 40adbcbaa696a35d837b18a4a97adc41
+
+pkgname = dosbox-digger
+
