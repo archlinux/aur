@@ -35,7 +35,8 @@ build() {
         plymouth-read-write.service \
         plymouth-reboot.service \
         plymouth-start.service \
-        plymouth-switch-root.service
+        plymouth-switch-root.service \
+	plymouth-start.path
 
 
     add_runscript
