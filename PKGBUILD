@@ -9,8 +9,8 @@
 # Maintainer: Thermi <noel [at] familie-kuntze dot de>
 
 pkgname=strongswan
-pkgver=5.3.4
-pkgrel=2
+pkgver=5.3.5
+pkgrel=1
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
@@ -33,22 +33,15 @@ revocation.conf,sha1.conf,sha2.conf,socket-default.conf,sql.conf,sqlite.conf,ssh
 vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,chapoly.conf}
 )
 
-source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
-	"sigfix.patch")
+source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2")
 
 # md5 is broken. We use sha256 now. Alternatively, we could check the signature of the file, but that
 # doesn't yield any more security and just increases the work users initially have to invest.
-sha256sums=('938ad1f7b612e039f1d32333f4865160be70f9fb3c207a31127d0168116459aa'
-            '9f12c48bd4a82802107c0d171468e7e6a8a9d303df7838433b398add7d2cd25e')
+sha256sums=('2c84b663da652b1ff180a1a73c24a3d7b9fc4b9b8ba6bd07f94a1e33092e6350')
 
 # We don't build libipsec because it would get loaded before kernel-netlink and netkey, which
 # would case processing to be handled in user space. Also, the plugin is experimental. If you need it,
 # add --enable-libipsec and --enable-kernel-libipsec
-
-prepare() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-	patch -p1 < ${srcdir}/sigfix.patch
-}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
