@@ -3,7 +3,6 @@
 pkgname=python-elpy
 pkgver=1.10.0
 pkgrel=1
-epoch=1
 pkgdesc="Package to bring powerful Python editing to Emacs. Python library only."
 install="python-elpy.install"
 arch=('any')
