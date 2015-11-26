@@ -1,12 +1,12 @@
 pkgbase = public_suffix_list
 	pkgdesc = List of "public suffixes" under which Internet users can (or historically could) directly register names
-	pkgver = 20151125
+	pkgver = 20151126
 	pkgrel = 1
 	url = https://publicsuffix.org/
 	arch = any
 	license = MPL
 	source = https://publicsuffix.org/list/public_suffix_list.dat
-	sha256sums = f150911ddb65d7ce583d38344a393fd8e120db5941a51b0fda73dded18d1fa73
+	sha256sums = 7a159638a3dd0b16dea51fe57434894345892f7e207cf29a5bd0e8d79278ebd4
 
 pkgname = public_suffix_list
 
