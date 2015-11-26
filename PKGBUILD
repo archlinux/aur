@@ -7,7 +7,7 @@ pkgdesc="Privacy with BitTorrent and resilient to shut down"
 url="http://www.tribler.org/"
 arch=(any)
 license=('LGPL')
-depends=('python-cryptography' 'python-feedparser' 'python-gmpy2' 'python-apsw' 'python-cherrypy' 'python-plyvel'
+depends=('python-cryptography' 'python-feedparser' 'python-gmpy2' 'python-apsw' 'python-cherrypy' 'python-plyvel' 'python-pillow'
 'python-decorator' 'python-netifaces' 'python-requests' 'python-twisted' 'wxpython' 'libsodium' 'libtorrent-rasterbar')
 optdepends=('python-vlc-git: for internal video player')
 makedepends=()
