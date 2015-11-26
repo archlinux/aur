@@ -1,6 +1,6 @@
 pkgbase = vips
 	pkgdesc = A free image processing system
-	pkgver = 8.0.2
+	pkgver = 8.1.1
 	pkgrel = 1
 	url = http://www.vips.ecs.soton.ac.uk/index.php
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = vips
 	depends = libexif
 	optdepends = python2: vipsprofile
 	options = !libtool
-	source = http://www.vips.ecs.soton.ac.uk/supported/8.0/vips-8.0.2.tar.gz
-	md5sums = d3879c09254a33a01d6b86173e11265f
+	source = http://www.vips.ecs.soton.ac.uk/supported/8.1/vips-8.1.1.tar.gz
+	md5sums = 7311df69cf0f3ae0666e0ead15b98cb0
 
 pkgname = vips
 
