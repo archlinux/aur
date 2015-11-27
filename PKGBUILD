@@ -7,7 +7,7 @@
 
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
-pkgver=2.4.22
+pkgver=2.4.23
 pkgrel=1
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ depends=('libpulse' 'giflib' 'vte' 'gtkglext' 'libpcap')
 makedepends=('dos2unix' 'xorg-bdftopcf' 'xorg-mkfontdir' 'autoconf')
 options=('!makeflags')
 install=$pkgname.install
-conflicts=('vice' 'vice-ethernet' 'vice-gnome' 'vice-gnomeui' 'vice-gtkglext' 'vice-sdl' 'vice-svn' 'vice-2.2-gnomeui')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 source=(
   "http://downloads.sourceforge.net/project/vice-emu/development-releases/$_pkgname-$pkgver.tar.gz"
@@ -29,7 +30,7 @@ source=(
   'notexi-notxt.patch'
 )
 sha512sums=(
-  'b43e609ae2f43717d10e079d3b8ac284e5c4920ed222c7502e9a7b75dfe32784628031ae6cf8672c8d9d50576fb714cecdd1a9292bf53477f4bbd52c10403975'
+  '506561c714fd48d3371cb23cfbbc3ab1469780738191193e3d7f899252c94e0f10ccc5608ba0f28c04982a03527204ca97f50726a832b523ad1722ee25dc973b'
   '1433ed9e88f5eab34e53f89201df62c0c3a6aa4b61e6855823bb1ff833886a3058bdfeb9ea79c0f8658c2ec744314638524db6e0194783b4bf04d86824f19cdf'
   'dc96b8658fac1a6f605b8f0052c11a5abb653da4b9deb3401d8b8177b14a664c0b3a5ed9e7c5c3013b0bc18b831045244f2f9187de9ff8b25b90f0b1cfa0cd8a'
   '77260d30312b44a50287cae55d57b5e8bfcee7b693ca87f206affff5bdc5d1717cc9260d4c9372a098c2b83028061222c36061d67559ba05859213cf640a9563'
