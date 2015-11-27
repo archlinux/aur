@@ -9,7 +9,7 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
@@ -21,7 +21,7 @@ depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'console
          'libteam' 'libgudev')
 makedepends=('intltool' 'iptables' 'gobject-introspection' 'gtk-doc' 
              "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala' 'perl-yaml' 
-             'python2-gobject' 'git')
+             'python2-gobject')
 optdepends=('modemmanager: for modem management service'
             'dhcpcd: alternative DHCP client; does not support DHCPv6'
             'iptables: connection sharing'
@@ -34,13 +34,12 @@ replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 install=networkmanager.install
-_commit=ba46efd07777350be737dbdac9df9becb86e8f77
-source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit"
+source=(http://ftp.gnome.org/pub/gnome/sources/NetworkManager/${pkgver:0:3}/NetworkManager-${pkgver}.tar.xz
         NetworkManager.conf 
         disable_set_hostname.patch 
         networkmanager.rc
         )
-sha256sums=('SKIP'
+sha256sums=('8bb128950f8a79ff881afadb46dd55e16f952390cf7cb4e06063431e5144937f'
             '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
@@ -49,17 +48,16 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd NetworkManager
+  cd NetworkManager-$pkgver
 
   patch -Np1 -i ../disable_set_hostname.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd NetworkManager
+  cd NetworkManager-$pkgver
 
   export PATH="$srcdir/path:$PATH"
-  AUTOPOINT="intltoolize -f -c --automake" autoreconf -fi
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -89,7 +87,7 @@ build() {
 }
 
 package() {
-  cd NetworkManager
+  cd NetworkManager-$pkgver
   make DESTDIR="${pkgdir}" install
 
   make DESTDIR="$pkgdir" -C libnm uninstall
