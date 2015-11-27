@@ -1,4 +1,4 @@
-# Contributor: fneuhaus <fneuhaus@uni-koblenz.de>
+# Contributor: dtag <dtag00@gmail.com>
 
 pkgname=ceres-solver
 pkgver=1.11.0
