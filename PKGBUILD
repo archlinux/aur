@@ -1,7 +1,7 @@
 # Maintainer: Chiu-Hsiang Hsu <wdv4758h@gmail.com>
 
 pkgname=musl-git
-pkgver=v1.1.11.r57.gc82d3ba
+pkgver=v1.1.12.r35.g8eead3e
 pkgrel=1
 pkgdesc='Lightweight implementation of C standard library'
 arch=('i686' 'x86_64')
