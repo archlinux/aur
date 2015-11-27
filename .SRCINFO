@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-freshprince
 	pkgdesc = Fortune quotes from The Fresh Prince of Bel-Air
-	pkgver = 1506182245
+	pkgver = 1511202115
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/The_Fresh_Prince_of_Bel-Air
 	arch = any
