@@ -1,7 +1,7 @@
 # Maintainer: Simon Perry <pezz [at] sanxion [dot] net>
 
 pkgname=perl-bigip-icontrol
-pkgver=0.097
+pkgver=0.098
 pkgrel=1
 conflicts=('perl-icontrol')
 replaces=('perl-icontrol')
@@ -12,7 +12,7 @@ url="http://search.cpan.org/dist/BigIP-iControl/"
 source=(http://search.cpan.org/CPAN/authors/id/L/LT/LTP/BigIP-iControl-$pkgver.tar.gz)
 options=('!emptydirs')
 arch=(any)
-sha256sums=('bd3e73bc2a17df5bf01a7d39ad8e99f508dd89394ed3bafda5a98b7f0b38f914')
+sha256sums=('03d9aa2cd8f7132a6844bbac1e608ba4dd62a7a0f17726d1949f1072deda7156')
 
 build()
 {
