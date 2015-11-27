@@ -22,9 +22,9 @@ source=(
 md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
          '3dac4b28900e7be1068b502b7b848028'
          '15efc60875b77125f8d5399797306955'
-         '422ffbdfb1fc79dddf46f868e890e435'
+         '617b6d95bee5d2ca778d3887203cce53'
          '1f913fe9ca34481134bc36e1045e9a20'
-         'SKIP')
+         '47c1f138ebb7b4ef961be9f9dccd543a')
 
 
 prepare() {
