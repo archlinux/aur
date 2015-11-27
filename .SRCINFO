@@ -18,3 +18,5 @@ pkgbase = cloudfoundry-cli
 	md5sums_x86_64 = cd5625dfc2ec41de540013297fa772e2
 	sha256sums_x86_64 = 141248c34fc16d3b3672af1b7ff3177855a895446c64667b851b11a2e4fdb6b0
 
+pkgname = cloudfoundry-cli
+
