@@ -8,7 +8,7 @@ arch=(any)
 license=('LGPL')
 depends=('python2-cryptography' 'python2-feedparser' 'python2-gmpy2' 'python2-apsw' 'python2-cherrypy' 'python2-plyvel' 'python2-pillow'
 'python2-decorator' 'python2-netifaces' 'python2-requests' 'python2-twisted' 'wxpython2.8' 'libsodium' 'libtorrent-rasterbar' 'python2-m2crypto')
-optdepends=('python2-vlc-git: for internal video player')
+# optdepends=('python2-vlc-git: for internal video player')
 makedepends=()
 source=("https://github.com/Tribler/tribler/releases/download/v${pkgver}/Tribler-v${pkgver}.tar.xz")
 sha1sums=('96e886834cf6c4f946484dcb0744e4f62a1bd94b')
