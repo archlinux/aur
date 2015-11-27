@@ -10,6 +10,8 @@ url="https://github.com/X0rg/CPU-X"
 license=('GPL3')
 depends=('gtk3' 'ncurses' 'libcpuid-git' 'pciutils' 'procps-ng')
 makedepends=('cmake' 'nasm')
+provides=('cpu-x')
+conflicts=('cpu-x')
 source=("git://github.com/X0rg/CPU-X.git")
 md5sums=('SKIP')
 

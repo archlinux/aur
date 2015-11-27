@@ -13,6 +13,8 @@ pkgbase = cpu-x-git
 	depends = libcpuid-git
 	depends = pciutils
 	depends = procps-ng
+	provides = cpu-x
+	conflicts = cpu-x
 	source = git://github.com/X0rg/CPU-X.git
 	md5sums = SKIP
 
