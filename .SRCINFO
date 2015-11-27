@@ -1,0 +1,14 @@
+pkgbase = libomxil-component-fbdevsink
+	pkgdesc = An opensource implementation of the OpenMAX Integration Layer API - FBdevSink component
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://omxil.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/omxil/components/libomxfbdevsink-0.1.tar.gz
+	md5sums = 6a6a452bd8c9c4fb64f7913ba0884732
+
+pkgname = libomxil-component-fbdevsink
+
