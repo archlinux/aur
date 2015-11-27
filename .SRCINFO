@@ -1,0 +1,13 @@
+pkgbase = matrix-js-sdk
+	pkgdesc = JS services for implementing the Client-Server API on Matrix
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/matrix-org/matrix-js-sdk
+	arch = any
+	license = Apache
+	makedepends = npm
+	source = matrix-js-sdk-0.3.0.tar.gz::https://github.com/matrix-org/matrix-js-sdk/archive/v0.3.0.tar.gz
+	md5sums = d2a38464234d619523dd780155e5334d
+
+pkgname = matrix-js-sdk
+
