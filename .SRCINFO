@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-breakingbad
 	pkgdesc = Fortune quotes from Breaking Bad
-	pkgver = 1511050225
+	pkgver = 1511261901
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Breaking_Bad
 	arch = any
