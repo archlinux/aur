@@ -1,10 +1,11 @@
 pkgbase = snazzer-git
 	pkgdesc = btrfs snapshotting and backup system offering snapshot measurement, transport and pruning.
-	pkgver = r146.8d85449
-	pkgrel = 2
+	pkgver = r149.7bbd507
+	pkgrel = 1
 	url = https://github.com/csirac2/snazzer
 	arch = any
 	license = BSD
+	makedepends = git
 	depends = btrfs-progs
 	source = git+https://github.com/csirac2/snazzer.git
 	sha256sums = SKIP
