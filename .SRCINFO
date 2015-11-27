@@ -1,0 +1,20 @@
+pkgbase = cpu-x-git
+	pkgdesc = A Free software that gathers information on CPU, motherboard and more (like CPU-Z)
+	pkgver = 2.2.1.r2.g6275f1f
+	pkgrel = 1
+	url = https://github.com/X0rg/CPU-X
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = nasm
+	depends = gtk3
+	depends = ncurses
+	depends = libcpuid-git
+	depends = pciutils
+	depends = procps-ng
+	source = git://github.com/X0rg/CPU-X.git
+	md5sums = SKIP
+
+pkgname = cpu-x-git
+
