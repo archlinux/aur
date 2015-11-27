@@ -3,7 +3,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=8.0.1.r162.g36ea786
+pkgver=9.0.r201.g43eb861
 pkgrel=1
 pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
 arch=('i686' 'x86_64')
