@@ -1,14 +1,14 @@
 pkgbase = nodejs-eslint
 	pkgdesc = An AST-based pattern checker for JavaScript.
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = http://eslint.org
 	arch = any
 	depends = nodejs
 	depends = npm
-	noextract = eslint-1.10.1.tgz
-	source = http://registry.npmjs.org/eslint/-/eslint-1.10.1.tgz
-	sha256sums = 7846926e5f63992e4c637543e4c48f66f28b206b8169ee08e7c4620e8c1e8323
+	noextract = eslint-1.10.2.tgz
+	source = http://registry.npmjs.org/eslint/-/eslint-1.10.2.tgz
+	sha256sums = 96f43422bf8ddeca7d5af537d83aa673fd24f536eeab587ea0bedbf99a0dfb3b
 
 pkgname = nodejs-eslint
 
