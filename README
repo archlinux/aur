@@ -11,17 +11,18 @@ for their work and efforts which lead to this package.
 === initial release
 - Start with latest Guayadeque Release(dated 2014-02-10)
 - Apply patches
-  guayadeque_01a_rev1891                (update download to SVN rev 1891)
-  guayadeque_01b_rev1892                (update to SVN rev 1892)
-  guayadeque_01c_rev1893                (update to SVN rev 1893)
-  guayadeque_01d_rev1894                (update to SVN rev 1894)
-  guayadeque_02_pause_crash.patch       (correct crash on pause/stop track)
-  guayadeque_03_wx30.patch              (update src for use with wx3.0)
-  guayadeque_04_wxcurl.patch            (update header path for wxcurl)
-  guayadeque_05_wxSqlite_upgrade.patch  (update internal wxSqlite3 to rev 3.2.1)
-  guayadeque_06_pixbuf_link.patch       (add build link to libgdk-pixbuf-2.0.so)
-  guayadeque_07_player_display_fix.patch(correct current track display bug)
-  guayadeque_08_EditCrash.patch         (workaround seg error when editing track ID3)
+  guayadeque_01a_rev1891                    (update download to SVN rev 1891)
+  guayadeque_01b_rev1892                    (update to SVN rev 1892)
+  guayadeque_01c_rev1893                    (update to SVN rev 1893)
+  guayadeque_01d_rev1894                    (update to SVN rev 1894)
+  guayadeque_02_pause_crash.patch           (correct crash on pause/stop track)
+  guayadeque_03_wx30.patch                  (update src for use with wx3.0)
+  guayadeque_04_wxcurl.patch                (update header path for wxcurl)
+  guayadeque_05_wxSqlite_upgrade.patch      (update internal wxSqlite3 to rev 3.2.1)
+  guayadeque_06_pixbuf_link.patch           (add build link to libgdk-pixbuf-2.0.so)
+  guayadeque_07_player_display_fix.patch    (correct current track display bug)
+  guayadeque_08_EditCrash.patch             (workaround seg error when editing track ID3)
+  guayadeque_09_gstreamer_deprecated.patch  (replace gstreamer deprecated pad call)
 
 =====
 KNOWN BUILD ISSUES

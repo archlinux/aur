@@ -6,7 +6,7 @@
 
 pkgname=guayadeque
 pkgver=0.3.7
-pkgrel=6
+pkgrel=7
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
 url='http://guayadeque.org/'
@@ -29,7 +29,8 @@ source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgve
         'guayadeque_05_wxSqlite_upgrade.patch'
         'guayadeque_06_pixbuf_link.patch'
         'guayadeque_07_player_display_fix.patch'
-        'guayadeque_08_EditCrash.patch')
+        'guayadeque_08_EditCrash.patch'
+        'guayadeque_09_gstreamer_deprecated.patch')
 sha256sums=('d23eb1247add0bef8d5fef834294d7cb3d7c5fc20db9022b86f618a13d359938'
             '56ff5fae064fa421cb951a7c664550861e04ae4df8b692044e2a4785f238ce24'
             '15b49c58be40a57ecb1d38e7055c1edc5aaf71e0164062cc5f2b8fb589530377'
@@ -41,7 +42,8 @@ sha256sums=('d23eb1247add0bef8d5fef834294d7cb3d7c5fc20db9022b86f618a13d359938'
             '6bd07e63afe0aa7baf30b616d701e234fd1c304897053e3eb466acb2db818071'
             '23d388711a17dc7e1487c740fd961ceb563a967d5866c5d5508865252be2d645'
             'e2dbb71fc1d6118fa31d30f49382c16bb306130fc94118f3df9f0ea64c27ca0f'
-            'aaf355a3df930128da5c165b6ff07d06c3aa8ed4514522cc6a71e78634b5ee14')
+            'aaf355a3df930128da5c165b6ff07d06c3aa8ed4514522cc6a71e78634b5ee14'
+            'b9df9aad73ef4b78850dea00d1f123770b0b139eddeba614bc662756ebfc4c6e')
 BUILDFLDR='buildlocal'
 
 prepare() {
@@ -57,6 +59,7 @@ prepare() {
   patch -Np0 -i ../guayadeque_06_pixbuf_link.patch
   patch -Np0 -i ../guayadeque_07_player_display_fix.patch
   patch -Np0 -i ../guayadeque_08_EditCrash.patch
+  patch -Np0 -i ../guayadeque_09_gstreamer_deprecated.patch
 }
 
 build() {
