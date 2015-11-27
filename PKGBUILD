@@ -3,7 +3,7 @@
 pkgname=jpexs-decompiler-git
 _pkgname=jpexs-decompiler
 _github_addr=jindrapetrik/jpexs-decompiler
-pkgver=20150706
+pkgver=20151127
 pkgrel=1
 pkgdesc="Opensource flash SWF decompiler and editor"
 arch=("any")
@@ -20,6 +20,12 @@ md5sums=(
     '7f20d8a7ae9e6fc17e9ac45d31802499'
 )
 
+java_8_home() {
+    cd /usr/lib/jvm
+    java_8_folder=$(ls --directory java-8-* | head -n 1)
+    echo "/usr/lib/jvm/$java_8_folder"
+}
+
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git log -1 --format='%cd' --date=short | tr -d -- '-'
@@ -31,9 +37,9 @@ prepare() {
 }
 
 build() {
-    msg2 "Note: requires JDK 8 for building"
-
     cd "${srcdir}/${_pkgname}"
+
+    export JAVA_HOME="$(java_8_home)"
     ant build
 }
 
