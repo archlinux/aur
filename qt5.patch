@@ -80,7 +80,7 @@ diff -Naur a/install.sh b/install.sh
  Comment[de]=Eine GUI fuer ndiswrapper.
 -Exec=/usr/bin/kndiswrapper
 -Icon=/usr/share/kndiswrapper/kndiswrapper.png
-+Exec=kdesu kndiswrapper
++Exec=pkexec kndiswrapper
 +Icon=kndiswrapper
  Terminal=false
  Type=Application

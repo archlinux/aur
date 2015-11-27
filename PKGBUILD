@@ -5,7 +5,7 @@ pkgdesc='Frontend for ndiswrapper'
 url='http://kde-apps.org/content/show.php/KNDISWrapper?content=86885'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('qt5-base' 'ndiswrapper' 'kde-cli-tools')
+depends=('qt5-base' 'ndiswrapper' 'polkit')
 makedepends=('qt5-tools')
 provides=kndiswrapper
 conflicts=kndiswrapper
