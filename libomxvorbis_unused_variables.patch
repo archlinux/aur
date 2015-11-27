@@ -1,0 +1,38 @@
+just fixed some unused variables
+
+Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
+
+--- src/omx_vorbisdec_component.c.orig	2015-11-27 11:04:10.165742923 +0100
++++ src/omx_vorbisdec_component.c	2015-11-27 11:06:19.167893551 +0100
+@@ -268,7 +268,6 @@
+ 
+   omx_vorbisdec_component_PrivateType* omx_vorbisdec_component_Private = openmaxStandComp->pComponentPrivate;
+   OMX_U8* outputCurrBuffer;
+-  OMX_U32 outputLength;
+   OMX_S32 result;
+   float **pcm;
+   OMX_S32 samples;
+@@ -277,7 +276,6 @@
+   OMX_S32 clipflag=0;
+   int val;
+   float  *mono;
+-  int eos=0;
+   char *vorbis_buffer;
+   ogg_int16_t convbuffer[4096];
+ 
+@@ -298,7 +296,6 @@
+     DEBUG(DEB_LEV_FULL_SEQ,"***** bytes read to buffer (of first header): %d \n",(int)inputbuffer->nFilledLen);
+   }
+   outputCurrBuffer = outputbuffer->pBuffer;
+-  outputLength = outputbuffer->nAllocLen;
+   outputbuffer->nFilledLen = 0;
+   outputbuffer->nOffset = 0;
+ 
+@@ -498,7 +495,6 @@
+   }
+   if(ogg_page_eos(&omx_vorbisdec_component_Private->og)) {
+     DEBUG(DEB_LEV_FULL_SEQ, "In %s EOS Detected\n",__func__);
+-    eos=1;
+   }
+ 
+   DEBUG(DEB_LEV_FULL_SEQ, "One output buffer %p len=%d is full returning\n", outputbuffer->pBuffer, (int)outputbuffer->nFilledLen);
