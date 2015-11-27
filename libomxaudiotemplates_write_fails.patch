@@ -1,0 +1,182 @@
+not the best fix for unused variables/return values and write result values,
+but it becomes compileable without changing the pedantic make options
+
+Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
+
+--- src/audio_capturer/audio_capturer_test.c.orig	2015-11-27 08:50:28.948391045 +0100
++++ src/audio_capturer/audio_capturer_test.c	2015-11-27 09:06:08.949259927 +0100
+@@ -83,26 +83,26 @@
+   OMX_PTR pAppData,
+   OMX_BUFFERHEADERTYPE* pBuffer)
+ {
+-  OMX_ERRORTYPE err;
++  OMX_ERRORTYPE err = OMX_ErrorNone;
+ 
+   DEBUG(DEB_LEV_FULL_SEQ, "Hi there, I am in the %s callback.\n", __func__);
+ 
+   DEBUG(DEB_LEV_PARAMS, "Fill buffer %p\n", pBuffer);
+ 
+-  write(appPriv->opd,
+-	pBuffer->pBuffer + pBuffer->nOffset,
+-	pBuffer->nFilledLen);
+-
+-  if((pBuffer->nFlags & OMX_BUFFERFLAG_EOS) != OMX_BUFFERFLAG_EOS) {
+-    /* Reschedule the fill buffer request */
+-    pBuffer->nFilledLen = 0;
+-    err = OMX_FillThisBuffer(appPriv->handle, pBuffer);
++  if((write(appPriv->opd, pBuffer->pBuffer + pBuffer->nOffset,	pBuffer->nFilledLen)) == -1) {
++    err = OMX_ErrorUndefined;
+   } else {
+-    DEBUG(DEB_LEV_FULL_SEQ,"In %s EOS reached\n",__func__);
+-    tsem_up(appPriv->eofSem);
++    if((pBuffer->nFlags & OMX_BUFFERFLAG_EOS) != OMX_BUFFERFLAG_EOS) {
++      /* Reschedule the fill buffer request */
++      pBuffer->nFilledLen = 0;
++      err = OMX_FillThisBuffer(appPriv->handle, pBuffer);
++    } else {
++      DEBUG(DEB_LEV_FULL_SEQ,"In %s EOS reached\n",__func__);
++      tsem_up(appPriv->eofSem);
++    }
+   }
+ 
+-  return OMX_ErrorNone;
++  return err;
+ }
+ 
+ OMX_CALLBACKTYPE audio_capturer_callbacks = {
+--- src/audio_decoder/audio_decoder_test.c.orig	2015-11-27 09:14:41.200960846 +0100
++++ src/audio_decoder/audio_decoder_test.c	2015-11-27 09:17:14.266140218 +0100
+@@ -89,18 +89,20 @@
+   OMX_PTR pAppData,
+   OMX_BUFFERHEADERTYPE* pBuffer)
+ {
+-  OMX_ERRORTYPE err;
++  OMX_ERRORTYPE err = OMX_ErrorNone;
+ 
+   DEBUG(DEB_LEV_FULL_SEQ, "%s: Fill buffer %p\n", __func__, pBuffer);
+ 
+   /* Write output data to file */
+-  write(appPriv->opd, pBuffer->pBuffer, pBuffer->nFilledLen);
++  if((write(appPriv->opd, pBuffer->pBuffer, pBuffer->nFilledLen)) == -1) {
++    err = OMX_ErrorUndefined;
++  } else {
++    /* Reschedule the fill buffer request */
++    pBuffer->nFilledLen = 0;
++    err = OMX_FillThisBuffer(appPriv->decoderHandle, pBuffer);
++  }
+ 
+-  /* Reschedule the fill buffer request */
+-  pBuffer->nFilledLen = 0;
+-  err = OMX_FillThisBuffer(appPriv->decoderHandle, pBuffer);
+-
+-  return OMX_ErrorNone;
++  return err;
+ }
+ 
+ OMX_ERRORTYPE audiodecoderEmptyBufferDone(
+@@ -108,7 +110,7 @@
+   OMX_PTR pAppData,
+   OMX_BUFFERHEADERTYPE* pBuffer)
+ {
+-  OMX_ERRORTYPE err;
++  OMX_ERRORTYPE err = OMX_ErrorNone;
+   int count;
+ 
+   DEBUG(DEB_LEV_FULL_SEQ, "%s: Fill buffer %p\n", __func__, pBuffer);
+@@ -123,7 +125,7 @@
+   /* Reschedule the empty buffer request */
+   err = OMX_EmptyThisBuffer(appPriv->decoderHandle, pBuffer);
+ 
+-  return OMX_ErrorNone;
++  return err;
+ }
+ 
+ OMX_CALLBACKTYPE audio_decoder_callbacks = {
+--- src/audio_reader/audio_reader_test.c.orig	2015-11-27 09:27:07.123687711 +0100
++++ src/audio_reader/audio_reader_test.c	2015-11-27 09:29:38.045542211 +0100
+@@ -114,16 +114,17 @@
+   OMX_PTR pAppData,
+   OMX_BUFFERHEADERTYPE* pBuffer)
+ {
+-  OMX_ERRORTYPE err;
++  OMX_ERRORTYPE err = OMX_ErrorNone;
+ 
+   DEBUG(DEB_LEV_FULL_SEQ, "Hi there, I am in the %s callback.\n", __func__);
+ 
+   DEBUG(DEB_LEV_PARAMS, "Fill buffer %p\n", pBuffer);
+ 
+-  if(-1 != appPriv->opd)
+-    write(appPriv->opd,
+-	  pBuffer->pBuffer + pBuffer->nOffset,
+-	  pBuffer->nFilledLen);
++  if(-1 != appPriv->opd) {
++    if((write(appPriv->opd, pBuffer->pBuffer + pBuffer->nOffset, pBuffer->nFilledLen)) == -1) {
++      err = OMX_ErrorUndefined;
++    }
++  }
+ 
+   if((pBuffer->nFlags & OMX_BUFFERFLAG_EOS) != OMX_BUFFERFLAG_EOS) {
+     /* Reschedule the fill buffer request */
+@@ -134,7 +135,7 @@
+     tsem_up(appPriv->eofSem);
+   }
+ 
+-  return OMX_ErrorNone;
++  return err;
+ }
+ 
+ OMX_CALLBACKTYPE callbacks = {
+--- src/audio_renderer/audio_renderer_test.c.orig	2015-11-27 09:40:01.319412090 +0100
++++ src/audio_renderer/audio_renderer_test.c	2015-11-27 09:40:42.259008228 +0100
+@@ -110,7 +110,7 @@
+   OMX_PTR pAppData,
+   OMX_BUFFERHEADERTYPE* pBuffer)
+ {
+-  OMX_ERRORTYPE err;
++  OMX_ERRORTYPE err = OMX_ErrorNone;
+   int count, size;
+ 
+   DEBUG(DEB_LEV_FULL_SEQ, "%s: Empty buffer %p\n", __func__, pBuffer);
+@@ -131,7 +131,7 @@
+     err = OMX_EmptyThisBuffer(appPriv->rendererHandle, pBuffer);
+   }
+ 
+-  return OMX_ErrorNone;
++  return err;
+ }
+ 
+ static void test_component(void)
+--- src/audio_writer/audio_writer_test.c.orig	2015-11-27 09:49:46.847288358 +0100
++++ src/audio_writer/audio_writer_test.c	2015-11-27 09:52:04.072691807 +0100
+@@ -91,7 +91,7 @@
+   OMX_PTR pAppData,
+   OMX_BUFFERHEADERTYPE* pBuffer)
+ {
+-  OMX_ERRORTYPE err;
++  OMX_ERRORTYPE err = OMX_ErrorNone;
+   int count;
+ 
+   DEBUG(DEB_LEV_FULL_SEQ, "%s: Fill buffer %p\n", __func__, pBuffer);
+@@ -108,7 +108,7 @@
+     err = OMX_EmptyThisBuffer(appPriv->handle, pBuffer);
+   }
+ 
+-  return OMX_ErrorNone;
++  return err;
+ }
+ 
+ OMX_CALLBACKTYPE callbacks = {
+--- src/audio_writer/audio_writer.c.orig	2015-11-27 09:54:07.991548626 +0100
++++ src/audio_writer/audio_writer.c	2015-11-27 09:55:16.724246907 +0100
+@@ -39,10 +39,9 @@
+   OMX_BUFFERHEADERTYPE* pInBuffer)
+ {
+   omx_audio_writer_component_PrivateType *pPrivate = pComponent->pComponentPrivate;
+-  CPresult res;
+ 
+   /* Use the pipe, luke */
+-  res = pPrivate->hPipe->Write((CPhandle*) pPrivate->hPipe,
++  pPrivate->hPipe->Write((CPhandle*) pPrivate->hPipe,
+ 			       (CPbyte*) (pInBuffer->pBuffer + pInBuffer->nOffset),
+ 			       pInBuffer->nFilledLen);
+   pInBuffer->nFilledLen = 0;

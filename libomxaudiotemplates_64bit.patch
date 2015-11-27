@@ -1,0 +1,81 @@
+proper memory address printf
+
+Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
+
+--- src/audio_capturer/audio_capturer_test.c.orig	2015-11-27 08:44:32.538526765 +0100
++++ src/audio_capturer/audio_capturer_test.c	2015-11-27 08:44:59.738261885 +0100
+@@ -87,7 +87,7 @@
+ 
+   DEBUG(DEB_LEV_FULL_SEQ, "Hi there, I am in the %s callback.\n", __func__);
+ 
+-  DEBUG(DEB_LEV_PARAMS, "Fill buffer %x\n", (int) pBuffer);
++  DEBUG(DEB_LEV_PARAMS, "Fill buffer %p\n", pBuffer);
+ 
+   write(appPriv->opd,
+ 	pBuffer->pBuffer + pBuffer->nOffset,
+--- src/audio_capturer/audio_capturer.c.orig	2015-11-27 08:46:19.100821855 +0100
++++ src/audio_capturer/audio_capturer.c	2015-11-27 08:46:36.617317730 +0100
+@@ -178,7 +178,7 @@
+ 	return OMX_ErrorInsufficientResources;
+       }
+     } else {
+-      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %x Already Allocated\n", __func__, (int) pComponent->pComponentPrivate);
++      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %p Already Allocated\n", __func__, pComponent->pComponentPrivate);
+     }
+   }
+ 
+--- src/audio_decoder/audio_decoder.c.orig	2015-11-27 09:11:03.076408647 +0100
++++ src/audio_decoder/audio_decoder.c	2015-11-27 09:12:08.079112483 +0100
+@@ -58,7 +58,7 @@
+       return OMX_ErrorInsufficientResources;
+     }
+     } else {
+-      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %x Already Allocated\n", __func__, (int) pComponent->pComponentPrivate);
++      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %p Already Allocated\n", __func__, pComponent->pComponentPrivate);
+     }
+   }
+ 
+--- src/audio_reader/audio_reader_test.c.orig	2015-11-27 09:21:21.720396633 +0100
++++ src/audio_reader/audio_reader_test.c	2015-11-27 09:21:37.430243383 +0100
+@@ -118,7 +118,7 @@
+ 
+   DEBUG(DEB_LEV_FULL_SEQ, "Hi there, I am in the %s callback.\n", __func__);
+ 
+-  DEBUG(DEB_LEV_PARAMS, "Fill buffer %x\n", (int) pBuffer);
++  DEBUG(DEB_LEV_PARAMS, "Fill buffer %p\n", pBuffer);
+ 
+   if(-1 != appPriv->opd)
+     write(appPriv->opd,
+--- src/audio_reader/audio_reader.c.orig	2015-11-27 09:22:50.536196536 +0100
++++ src/audio_reader/audio_reader.c	2015-11-27 09:23:41.282367578 +0100
+@@ -297,7 +297,7 @@
+ 	return OMX_ErrorInsufficientResources;
+       }
+     } else {
+-      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %x Already Allocated\n", __func__, (int) pComponent->pComponentPrivate);
++      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %p Already Allocated\n", __func__, pComponent->pComponentPrivate);
+     }
+   }
+ 
+--- src/audio_renderer/audio_renderer.c.orig	2015-11-27 09:34:36.362612582 +0100
++++ src/audio_renderer/audio_renderer.c	2015-11-27 09:35:14.072241663 +0100
+@@ -56,7 +56,7 @@
+ 	return OMX_ErrorInsufficientResources;
+       }
+     } else {
+-      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %x Already Allocated\n", __func__, (int) pComponent->pComponentPrivate);
++      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %p Already Allocated\n", __func__, pComponent->pComponentPrivate);
+     }
+   }
+ 
+--- src/audio_writer/audio_writer.c.orig	2015-11-27 09:43:41.587302774 +0100
++++ src/audio_writer/audio_writer.c	2015-11-27 09:48:04.571561277 +0100
+@@ -203,7 +203,7 @@
+ 	return OMX_ErrorInsufficientResources;
+       }
+     } else {
+-      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %x Already Allocated\n", __func__, (int) pComponent->pComponentPrivate);
++      DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %p Already Allocated\n", __func__, pComponent->pComponentPrivate);
+     }
+   }
+ 

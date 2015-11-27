@@ -1,0 +1,14 @@
+pkgbase = libomxil-component-audiotemplates
+	pkgdesc = An opensource implementation of the OpenMAX Integration Layer API - AudioTemplates component
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://omxil.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/omxil/components/libomxaudiotemplates-0.1.tar.gz
+	md5sums = 722a1d96d85bcce7a0e6b3218aa99209
+
+pkgname = libomxil-component-audiotemplates
+
