@@ -4,26 +4,25 @@
 
 _pkgname=compton-conf
 pkgname=${_pkgname}-git
-pkgver=0.1.0.r24.g8ae8fbb
-pkgrel=1
+pkgver=0.1.0.r30.ga1640ea
+pkgrel=2
 pkgdesc='A graphical configuration tool for Compton X composite manager. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
 license=('GPL2' 'LGPL2.1')
 
 depends=('qt5-base' 'libconfig')
-optdepends=(
-	'compton-git: for bleeding-edge compton features'
-)
 makedepends=('cmake' 'git' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
 source=(
 	"git+https://github.com/lxde/${_pkgname}.git"
+	'desktop_entry.patch'
 )
 sha512sums=(
 	'SKIP'
+	'1874fd90bb791542440c444d7809a03f651045f2acde7db194d309f67c75d81cacf656912f4b4837fade265994737522a0b51b347fc930296ce6ce70051b020e'
 )
 
 pkgver() {
@@ -37,6 +36,10 @@ pkgver() {
 }
 
 prepare() {
+	# Patch desktop entry
+	cd ${srcdir}/${_pkgname}
+	patch -p1 < ../desktop_entry.patch
+	
 	# Build directory
 	mkdir -p ${srcdir}/build
 }
