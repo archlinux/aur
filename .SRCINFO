@@ -1,0 +1,14 @@
+pkgbase = nodejs-aglio
+	pkgdesc = An API Blueprint renderer with theme support that outputs static HTML
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/danielgtaylor/aglio
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = aglio-2.2.0.tgz
+	source = http://registry.npmjs.org/aglio/-/aglio-2.2.0.tgz
+	sha1sums = 6bef6ba2073bf852896cf1628d888e533293651e
+
+pkgname = nodejs-aglio
+
