@@ -1,0 +1,16 @@
+pkgbase = python-pefile-git
+	pkgdesc = A simplified object-oriented Python wrapper for libpcap
+	pkgver = r93.5958343
+	pkgrel = 1
+	url = https://github.com/stangelandcl/pefile
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	provides = pefile
+	conflicts = python2-pefile-git
+	source = git://github.com/stangelandcl/pefile
+	sha512sums = SKIP
+
+pkgname = python-pefile-git
+
