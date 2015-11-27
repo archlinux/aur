@@ -3,7 +3,7 @@
 
 pkgname=anaconda
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing."
 arch=('x86' 'x86_64')
 url="https://store.continuum.io/cshop/anaconda/"
@@ -39,7 +39,7 @@ package() {
     [ "$BREAK_EARLY" = 1 ] && exit 1
     cd $prefix
     patch -p1 < $srcdir/conda_install.patch
-    CONDA_INSTALL="$prefix/pkgs/conda-${_condaver}-py34_0/lib/python3.4/site-packages/conda/install.py"
+    CONDA_INSTALL="$prefix/pkgs/conda-${_condaver}-py35_0/lib/python3.5/site-packages/conda/install.py"
     $prefix/pkgs/python-${_pythonver}/bin/python -E $CONDA_INSTALL --prefix=$prefix --instdir=/opt/${pkgname} --pkgs-dir=$prefix/pkgs --link-all || exit 1
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
