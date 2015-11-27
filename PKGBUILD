@@ -1,7 +1,7 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 pkgname=rocker-compose-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker composition tool with idempotency features for deploying apps composed of multiple containers"
 depends=( )
 arch=('x86_64')
