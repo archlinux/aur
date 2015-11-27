@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(glibc)
 makedepends=(make coreutils gcc glibc)
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(d02c9584a242cac33b9009f9e4f2ff0a49020e64e6f8946a0fd3ec7444fb632b)
+sha256sums=(a8aa6f12591ce70beaa283214e0f1196dae6f78b7eb4b6e100b96b25627e6ae4)
 
 build() {
     cd "${srcdir}/alarm-${pkgver}"

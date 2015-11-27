@@ -12,7 +12,7 @@ pkgbase = alarm
 	makedepends = glibc
 	depends = glibc
 	source = https://github.com/maandree/alarm/archive/1.1.tar.gz
-	sha256sums = d02c9584a242cac33b9009f9e4f2ff0a49020e64e6f8946a0fd3ec7444fb632b
+	sha256sums = a8aa6f12591ce70beaa283214e0f1196dae6f78b7eb4b6e100b96b25627e6ae4
 
 pkgname = alarm
 
