@@ -5,9 +5,10 @@ pkgbase = vapoursynth-plugin-delogo-git
 	url = http://forum.doom9.org/showthread.php?t=171252
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = git
 	depends = vapoursynth
+	depends = gcc-libs
 	provides = vapoursynth-plugin-delogo
 	conflicts = vapoursynth-plugin-delogo
 	source = delogo::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-DeLogo.git
