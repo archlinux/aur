@@ -1,6 +1,6 @@
 pkgbase=mingw-w64-harfbuzz
 pkgname=(mingw-w64-harfbuzz mingw-w64-harfbuzz-icu)
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ license=("MIT")
 makedepends=(mingw-w64-configure mingw-w64-cairo mingw-w64-icu)
 options=(!strip !buildflags staticlibs)
 source=("http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-${pkgver}.tar.bz2")
-sha256sums=('0c366a77276fa69d40006cf8a2f2dbcd82f3fb406f3960c3c3a0d34dd3a0f06c')
+sha256sums=('4a2c5790bd3db7c3ca8c02e4858f2fd592df7932c1d2fa9f6b99acbce0f8461f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
