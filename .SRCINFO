@@ -1,6 +1,6 @@
 pkgbase = xpybar
 	pkgdesc = A highly extensible minimalistic dock panel configured in Python 3
-	pkgver = 1.12
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://github.com/maandree/xpybar
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = xpybar
 	makedepends = coreutils
 	makedepends = sed
 	makedepends = zip
+	makedepends = auto-auto-complete
+	makedepends = texinfo
 	depends = python3
 	depends = argparser
 	depends = python-xlib
@@ -28,8 +30,8 @@ pkgbase = xpybar
 	optdepends = imagemagick: for image support
 	optdepends = file: for image support
 	optdepends = librsvg: for image support
-	source = https://github.com/maandree/xpybar/archive/1.12.tar.gz
-	sha256sums = db33ec28902f0885743fa05e604c07ff429c5a99cfdb14ab0b84e1ce9db7176c
+	source = https://github.com/maandree/xpybar/archive/1.13.tar.gz
+	sha256sums = 09357b9aa426cab2f9a465c0e5f6ed18f7a83212e8bf56af1773f27a24aec9e7
 
 pkgname = xpybar
 
