@@ -5,7 +5,7 @@
 
 _pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=0.3.3637
+pkgver=17.1.r48.g747468b
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
@@ -25,7 +25,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed 's|-|.|g;s|[^\.]*\.||;s|\.[^\.]*$||'
+  git describe --tags | sed 's|^[^-]*-v||;s|-|.r|;s|-|.|g'
 }
 
 build() {
