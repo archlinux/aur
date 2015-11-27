@@ -2,7 +2,7 @@
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r16
+pkgver=r17
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://forum.doom9.org/showthread.php?t=166504'
 license=('custom:WTFPL')
 depends=('vapoursynth')
 source=("http://ldesoras.free.fr/src/vs/${_plug}-${pkgver}.zip")
-sha1sums=('80b90c6404fbfa1a1301993cab069bbe5fed01c8')
+sha1sums=('1fcf9321a754c66494d4e6fe69e42599bfe8df7c')
 
 prepare() {
   rm -fr src/VapourSynth.h
@@ -26,7 +26,7 @@ build() {
 }
 
 package(){
-  make -C build/unix DESTDIR=${pkgdir} install
+  make -C build/unix DESTDIR="${pkgdir}" install
   (cd doc; for i in *.{html,png,css}; do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/${i}"; done)
   install -Dm644 doc/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }

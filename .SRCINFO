@@ -1,14 +1,14 @@
 pkgbase = vapoursynth-plugin-fmtconv
 	pkgdesc = Plugin for Vapoursynth: fmtconv
-	pkgver = r16
+	pkgver = r17
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=166504
 	arch = i686
 	arch = x86_64
 	license = custom:WTFPL
 	depends = vapoursynth
-	source = http://ldesoras.free.fr/src/vs/fmtconv-r16.zip
-	sha1sums = 80b90c6404fbfa1a1301993cab069bbe5fed01c8
+	source = http://ldesoras.free.fr/src/vs/fmtconv-r17.zip
+	sha1sums = 1fcf9321a754c66494d4e6fe69e42599bfe8df7c
 
 pkgname = vapoursynth-plugin-fmtconv
 
