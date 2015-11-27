@@ -420,7 +420,7 @@ diff -Naur kcm-grub2-0.6.4/src/installDlg.cpp kcm-grub2-0.6.4-new2/src/installDl
              return;
          }
  
-@@ -112,19 +119,24 @@
+@@ -112,19 +119,25 @@
          progressDlg.progressBar()->setMinimum(0);
          progressDlg.progressBar()->setMaximum(0);
          progressDlg.show();
@@ -438,9 +438,10 @@ diff -Naur kcm-grub2-0.6.4/src/installDlg.cpp kcm-grub2-0.6.4-new2/src/installDl
              dialog->setModal(true);
              dialog->setDefaultButton(KDialog::Ok);
              dialog->setEscapeButton(KDialog::Ok);
++            QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::Ok);
 -            KMessageBox::createKMessageBox(dialog, QMessageBox::Information, i18nc("@info", "Successfully installed GRUB."), QStringList(), QString(), 0, KMessageBox::Notify, reply.data().value("output").toString()); // krazy:exclude=qclasses
 +            //TO BE FIXED
-+            //KMessageBox::createKMessageBox(dialog, QMessageBox::Information, i18nc("@info", "Successfully installed GRUB."), QStringList(), QString(), 0, KMessageBox::Notify, reply.data().value("output").toString()); // krazy:exclude=qclasses
++            KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully installed GRUB."), QStringList(), QString(), 0, KMessageBox::Notify, reply->data().value("output").toString()); // krazy:exclude=qclasses
 +            
          } else {
 -            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), KDE_IS_VERSION(4,7,0) ? reply.errorDescription() : reply.data().value("errorDescription").toString());
@@ -567,7 +568,7 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
 +        //dialog->setDefaultButton(KDialog::Ok);
 +        //dialog->setEscapeButton(KDialog::Ok);
 +        QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::Ok);
-+        KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully saved GRUB settings."), QStringList(), QString(), 0, KMessageBox::Notify, "");//reply.data().value("output").toString()); // krazy:exclude=qclasses
++        KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully saved GRUB settings."), QStringList(), QString(), 0, KMessageBox::Notify, reply->data().value("output").toString()); // krazy:exclude=qclasses
          load();
      } else {
 -        KMessageBox::detailedError(this, i18nc("@info", "Failed to save GRUB settings."), reply.errorDescription());
