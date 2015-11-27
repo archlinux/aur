@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r670.d729032
+pkgver=r789.d95447f
 pkgrel=1
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
@@ -10,6 +10,8 @@ depends=("wlc-git" "xorg-server-xwayland" "xcb-util-image" "json-c" "pango" "cai
 optdepends=(
 	"rxvt-unicode: default terminal emulator"
 	"dmenu: default for launching applications"
+	"imagemagick: for taking screenshots"
+	"ffmpeg: for recording screencasts"
 )
 arch=("i686" "x86_64")
 url='https://github.com/SirCmpwn/sway'
