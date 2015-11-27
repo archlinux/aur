@@ -1,0 +1,14 @@
+pkgbase = libomxil-component-jpeg
+	pkgdesc = An opensource implementation of the OpenMAX Integration Layer API - JPEG component
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://omxil.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/omxil/components/libomxjpeg-0.1.tar.gz
+	md5sums = 4985931601103c65b915c9ed0b82a695
+
+pkgname = libomxil-component-jpeg
+

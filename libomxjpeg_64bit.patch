@@ -1,0 +1,39 @@
+proper memory address printf
+
+Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
+
+--- src/omx_jpegenc_component.c.orig	2015-11-27 11:22:45.492151057 +0100
++++ src/omx_jpegenc_component.c	2015-11-27 11:23:57.118158784 +0100
+@@ -58,7 +58,7 @@
+   dmgr->next_output_byte = dest;
+   dmgr->free_in_buffer = destlen;
+ 
+-  DEBUG(DEB_LEV_ERR, "In %s: free_in_buffer=%d next_output_byte=%x\n", __func__,dmgr->free_in_buffer,(int)dmgr->next_output_byte);
++  DEBUG(DEB_LEV_ERR, "In %s: free_in_buffer=%d next_output_byte=%p\n", __func__,dmgr->free_in_buffer, dmgr->next_output_byte);
+ 
+ }
+ 
+@@ -119,8 +119,8 @@
+       return OMX_ErrorInsufficientResources;
+     }
+   }  else {
+-    DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %x Already Allocated\n",
+-              __func__, (int)openmaxStandComp->pComponentPrivate);
++    DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %p Already Allocated\n",
++              __func__, openmaxStandComp->pComponentPrivate);
+   }
+ 
+   omx_jpegenc_component_Private = openmaxStandComp->pComponentPrivate;
+--- src/omx_jpegdec_component.c.orig	2015-11-27 11:22:11.812460744 +0100
++++ src/omx_jpegdec_component.c	2015-11-27 11:24:16.557979866 +0100
+@@ -108,8 +108,8 @@
+       return OMX_ErrorInsufficientResources;
+     }
+   }  else {
+-    DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %x Already Allocated\n",
+-              __func__, (int)openmaxStandComp->pComponentPrivate);
++    DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %p Already Allocated\n",
++              __func__, openmaxStandComp->pComponentPrivate);
+   }
+ 
+   omx_jpegdec_component_Private = openmaxStandComp->pComponentPrivate;
