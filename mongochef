@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# as workaround for https://bugs.eclipse.org/bugs/show_bug.cgi?id=435773
+export SWT_GTK3=0
+
 # Launch the java program
-java -jar /opt/mongochef/data-man-mongodb-pro-3.0.7.jar
+java -jar /opt/mongochef/data-man-mongodb-pro-*.jar
 
