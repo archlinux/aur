@@ -3,7 +3,7 @@
 _realname=CPU-X
 pkgname=cpu-x-git
 pkgver=2.2.1.r2.g6275f1f
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free software that gathers information on CPU, motherboard and more (like CPU-Z)"
 arch=('i686' 'x86_64')
 url="https://github.com/X0rg/CPU-X"
@@ -12,6 +12,7 @@ depends=('gtk3' 'ncurses' 'libcpuid-git' 'pciutils' 'procps-ng')
 makedepends=('cmake' 'nasm')
 provides=('cpu-x')
 conflicts=('cpu-x')
+options=('debug')
 source=("git://github.com/X0rg/CPU-X.git")
 md5sums=('SKIP')
 
