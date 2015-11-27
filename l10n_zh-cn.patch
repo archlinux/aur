@@ -1,0 +1,1105 @@
+diff -Naur a/po/CMakeLists.txt b/po/CMakeLists.txt
+--- a/po/CMakeLists.txt	2015-11-27 13:49:04.338421322 +0800
++++ b/po/CMakeLists.txt	2015-11-27 13:49:31.930507416 +0800
+@@ -26,5 +26,6 @@
+ add_subdirectory( sv )
+ add_subdirectory( tr )
+ add_subdirectory( uk )
++add_subdirectory( zh_CN )
+ add_subdirectory( zh_TW )
+ 
+diff -Naur a/po/zh_CN/CMakeLists.txt b/po/zh_CN/CMakeLists.txt
+--- a/po/zh_CN/CMakeLists.txt	1970-01-01 08:00:00.000000000 +0800
++++ b/po/zh_CN/CMakeLists.txt	2013-10-12 18:35:37.000000000 +0800
+@@ -0,0 +1,2 @@
++file( GLOB _po_files *.po )
++GETTEXT_PROCESS_PO_FILES( zh_TW ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
+diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
+--- a/po/zh_CN/kcm-grub2.po	1970-01-01 08:00:00.000000000 +0800
++++ b/po/zh_CN/kcm-grub2.po	2015-11-27 14:03:57.657121918 +0800
+@@ -0,0 +1,1085 @@
++# Copyright (C) YEAR This_file_is_part_of_KDE
++# This file is distributed under the same license as the PACKAGE package.
++#
++# maz-1 < ohmygod19993 at gmail dot com >
++msgid ""
++msgstr ""
++"Project-Id-Version: \n"
++"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
++"POT-Creation-Date: 2015-11-27 01:33+0000\n"
++"PO-Revision-Date: 2013-07-04 16:31+0800\n"
++"Last-Translator: Lin Ziyun < ohmygod19993 at gmail dot com >\n"
++"Language-Team: Chinese Simplified <kde-cn@googlegroups.com>\n"
++"Language: zh_CN\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"X-Generator: Lokalize 1.5\n"
++"Plural-Forms: nplurals=1; plural=0;\n"
++
++msgctxt "NAME OF TRANSLATORS"
++msgid "Your names"
++msgstr "Lin Ziyun"
++
++msgctxt "EMAIL OF TRANSLATORS"
++msgid "Your emails"
++msgstr "franklin@goodhorse.idv.tw"
++
++#: src/convertDlg.cpp:48
++msgctxt "@item:inlistbox"
++msgid "ImageMagick supported image formats"
++msgstr "ImageMagick 支持的图像格式"
++
++#: src/convertDlg.cpp:76
++msgctxt "@info"
++msgid ""
++"Please fill in both <interface>Image</interface> and <interface>Convert To</"
++"interface> fields."
++msgstr ""
++"请填入「<interface>图像</interface>」与「<interface>转换为</interface>」栏"
++"目。"
++
++#: src/convertDlg.cpp:79
++msgctxt "@info"
++msgid ""
++"Please fill in both <interface>Width</interface> and <interface>Height</"
++"interface> fields."
++msgstr ""
++"请填入「<interface>宽度</interface>」与「<interface>高度</interface>」栏目。"
++
++#: src/convertDlg.cpp:82
++msgctxt "@info"
++msgid ""
++"You do not have write permissions in this directory, please select another "
++"destination."
++msgstr "您没有此目录的写入权限。请选择其他的目标。"
++
++#: src/helper/helper.cpp:79
++#, kde-format
++msgctxt "@info"
++msgid "Original configuration file <filename>%1</filename> does not exist."
++msgstr "原始设置文件 <filename>%1</filename> 不存在。"
++
++#: src/helper/helper.cpp:84
++#, kde-format
++msgctxt "@info"
++msgid "Cannot remove current configuration file <filename>%1</filename>."
++msgstr "无法移除目前的设置文件 <filename>%1</filename>。"
++
++#: src/helper/helper.cpp:89
++#, kde-format
++msgctxt "@info"
++msgid ""
++"Cannot copy original configuration file <filename>%1</filename> to <filename>"
++"%2</filename>."
++msgstr ""
++"无法复制原始设置文件 <filename>%1</filename> 到 <filename>%2</filename>。"
++
++#: src/helper/helper.cpp:105
++msgctxt "@info"
++msgid "Failed to create temporary mount point."
++msgstr "建立暂时的挂载点失败。"
++
++#: src/installDlg.cpp:45
++msgctxt "@title:window"
++msgid "Install/Recover Bootloader"
++msgstr "安装/恢复启动加载器"
++
++#: src/installDlg.cpp:98
++msgctxt "@info"
++msgid "Sorry, you have to select a partition with a proper name!"
++msgstr "抱歉，您必须选择有适当名称的分区。"
++
++#: src/installDlg.cpp:109
++msgctxt "@title:window"
++msgid "Installing"
++msgstr "安装中"
++
++#: src/installDlg.cpp:109
++msgctxt "@info:progress"
++msgid "Installing GRUB..."
++msgstr "安装 GRUB 中..."
++
++#: src/installDlg.cpp:120 src/kcm_grub2.cpp:484
++msgctxt "@title:window"
++msgid "Information"
++msgstr "资讯"
++
++#: src/installDlg.cpp:125
++msgctxt "@info"
++msgid "Successfully installed GRUB."
++msgstr "已成功安装 GRUB。"
++
++#: src/installDlg.cpp:127
++msgctxt "@info"
++msgid "Failed to install GRUB."
++msgstr "安装 GRUB 失败。"
++
++#: src/kcm_grub2.cpp:62
++msgctxt "@title"
++msgid "KDE GRUB2 Bootloader Control Module"
++msgstr "KDE GRUB2 启动加载器控制模块"
++
++#: src/kcm_grub2.cpp:62
++msgctxt "@title"
++msgid "A KDE Control Module for configuring the GRUB2 bootloader."
++msgstr "设置 GRUB2 启动加载器的 KDE 控制模块"
++
++#: src/kcm_grub2.cpp:62
++msgctxt "@info:credit"
++msgid "Copyright (C) 2008-2013 Konstantinos Smanis"
++msgstr "Copyright (C) 2008-2013 Konstantinos Smanis"
++
++#: src/kcm_grub2.cpp:63
++msgctxt "@info:credit"
++msgid "Κonstantinos Smanis"
++msgstr "Κonstantinos Smanis"
++
++#: src/kcm_grub2.cpp:63
++msgctxt "@info:credit"
++msgid "Main Developer"
++msgstr "主要开发者"
++
++#: src/kcm_grub2.cpp:89
++msgctxt "@info"
++msgid "Successfully restored the default values."
++msgstr "已成功恢复预设值。"
++
++#: src/kcm_grub2.cpp:91
++msgctxt "@info"
++msgid "Failed to restore the default values."
++msgstr "恢复预设值失败。"
++
++#: src/kcm_grub2.cpp:472
++msgctxt "@title:window Verb (gerund). Refers to current status."
++msgid "Saving"
++msgstr "正在储存"
++
++#: src/kcm_grub2.cpp:472
++msgctxt "@info:progress"
++msgid "Saving GRUB settings..."
++msgstr "正在储存 GRUB 设置..."
++
++#: src/kcm_grub2.cpp:489
++msgctxt "@info"
++msgid "Successfully saved GRUB settings."
++msgstr "已成功储存 GRUB 设置。"
++
++#: src/kcm_grub2.cpp:492
++msgctxt "@info"
++msgid "Failed to save GRUB settings."
++msgstr "储存 GRUB 设置失败。"
++
++#: src/kcm_grub2.cpp:563 src/kcm_grub2.cpp:585
++msgctxt "@title:window"
++msgid "Enter screen resolution"
++msgstr "输入屏幕分辨率"
++
++#: src/kcm_grub2.cpp:563
++msgctxt "@label:textbox"
++msgid "Please enter a GRUB resolution:"
++msgstr "请输入 GRUB 分辨率："
++
++#: src/kcm_grub2.cpp:585
++msgctxt "@label:textbox"
++msgid "Please enter a Linux boot resolution:"
++msgstr "请输入 Linux 开机画面分辨率："
++
++#: src/kcm_grub2.cpp:631
++msgctxt "@info"
++msgid "Press <shortcut>Escape</shortcut> to exit fullscreen mode."
++msgstr "按下 ESC 离开全屏幕模式。"
++
++#: src/kcm_grub2.cpp:780 src/kcm_grub2.cpp:781
++msgctxt "@item:inlistbox Refers to color."
++msgid "Black"
++msgstr "黑"
++
++#: src/kcm_grub2.cpp:782 src/kcm_grub2.cpp:783
++msgctxt "@item:inlistbox Refers to color."
++msgid "Transparent"
++msgstr "透明"
++
++#: src/kcm_grub2.cpp:785
++msgctxt "@item:inlistbox Refers to color."
++msgid "Blue"
++msgstr "蓝"
++
++#: src/kcm_grub2.cpp:787
++msgctxt "@item:inlistbox Refers to color."
++msgid "Cyan"
++msgstr "青绿色"
++
++#: src/kcm_grub2.cpp:789
++msgctxt "@item:inlistbox Refers to color."
++msgid "Dark Gray"
++msgstr "暗灰色"
++
++#: src/kcm_grub2.cpp:791
++msgctxt "@item:inlistbox Refers to color."
++msgid "Green"
++msgstr "绿"
++
++#: src/kcm_grub2.cpp:793
++msgctxt "@item:inlistbox Refers to color."
++msgid "Light Cyan"
++msgstr "浅青色"
++
++#: src/kcm_grub2.cpp:795
++msgctxt "@item:inlistbox Refers to color."
++msgid "Light Blue"
++msgstr "亮蓝色"
++
++#: src/kcm_grub2.cpp:797
++msgctxt "@item:inlistbox Refers to color."
++msgid "Light Green"
++msgstr "浅绿色"
++
++#: src/kcm_grub2.cpp:799
++msgctxt "@item:inlistbox Refers to color."
++msgid "Light Gray"
++msgstr "亮灰色"
++
++#: src/kcm_grub2.cpp:801
++msgctxt "@item:inlistbox Refers to color."
++msgid "Light Magenta"
++msgstr "浅品红色"
++
++#: src/kcm_grub2.cpp:803
++msgctxt "@item:inlistbox Refers to color."
++msgid "Light Red"
++msgstr "浅红色"
++
++#: src/kcm_grub2.cpp:805
++msgctxt "@item:inlistbox Refers to color."
++msgid "Magenta"
++msgstr "紫红色"
++
++#: src/kcm_grub2.cpp:807
++msgctxt "@item:inlistbox Refers to color."
++msgid "Red"
++msgstr "红色"
++
++#: src/kcm_grub2.cpp:809
++msgctxt "@item:inlistbox Refers to color."
++msgid "White"
++msgstr "白色"
++
++#: src/kcm_grub2.cpp:811
++msgctxt "@item:inlistbox Refers to color."
++msgid "Yellow"
++msgstr "黄色"
++
++#: src/kcm_grub2.cpp:834 src/kcm_grub2.cpp:843
++msgctxt "@action:inmenu"
++msgid "Quiet Boot"
++msgstr "安静开机"
++
++#: src/kcm_grub2.cpp:835 src/kcm_grub2.cpp:844
++msgctxt "@action:inmenu"
++msgid "Show Splash Screen"
++msgstr "显示欢迎画面"
++
++#: src/kcm_grub2.cpp:836 src/kcm_grub2.cpp:845
++msgctxt "@action:inmenu"
++msgid "Disable Plymouth"
++msgstr "关闭 Plymouth"
++
++#: src/kcm_grub2.cpp:837 src/kcm_grub2.cpp:846
++msgctxt "@action:inmenu"
++msgid "Turn Off ACPI"
++msgstr "关闭 ACPI"
++
++#: src/kcm_grub2.cpp:838 src/kcm_grub2.cpp:847
++msgctxt "@action:inmenu"
++msgid "Turn Off APIC"
++msgstr "关闭 APIC"
++
++#: src/kcm_grub2.cpp:839 src/kcm_grub2.cpp:848
++msgctxt "@action:inmenu"
++msgid "Turn Off Local APIC"
++msgstr "关闭本地端 APIC"
++
++#: src/kcm_grub2.cpp:840 src/kcm_grub2.cpp:849
++msgctxt "@action:inmenu"
++msgid "Single User Mode"
++msgstr "单一使用者模式"
++
++#: src/kcm_grub2.cpp:852 src/kcm_grub2.cpp:857 src/kcm_grub2.cpp:864
++msgctxt "@action:inmenu"
++msgid "PC BIOS && EFI Console"
++msgstr "PC BIOS 与 EFI 主控台"
++
++#: src/kcm_grub2.cpp:853 src/kcm_grub2.cpp:858 src/kcm_grub2.cpp:865
++msgctxt "@action:inmenu"
++msgid "Serial Terminal"
++msgstr "序列终端"
++
++#: src/kcm_grub2.cpp:854 src/kcm_grub2.cpp:859 src/kcm_grub2.cpp:866
++msgctxt ""
++"@action:inmenu 'Open' is an adjective here, not a verb. 'Open Firmware' is a "
++"former IEEE standard."
++msgid "Open Firmware Console"
++msgstr "开启韧体主控台"
++
++#: src/kcm_grub2.cpp:860
++msgctxt "@action:inmenu"
++msgid "PC AT Keyboard (Coreboot)"
++msgstr "PC AT 键盘（Coreboot）"
++
++#: src/kcm_grub2.cpp:861
++msgctxt "@action:inmenu"
++msgid "USB Keyboard (HID Boot Protocol)"
++msgstr "USB 键盘(HID 开机协定）"
++
++#: src/kcm_grub2.cpp:867
++msgctxt "@action:inmenu"
++msgid "Graphics Mode Output"
++msgstr "图形模式输出"
++
++#: src/kcm_grub2.cpp:868
++msgctxt "@action:inmenu"
++msgid "VGA Text Output (Coreboot)"
++msgstr "VGA 文字输出（Coreboot）"
++
++#: src/kcm_grub2.cpp:1063
++msgctxt "@title:window"
++msgid "Probing devices"
++msgstr "侦测装置中"
++
++#: src/kcm_grub2.cpp:1063
++msgctxt "@info:progress"
++msgid "Probing devices for their GRUB names..."
++msgstr "侦测装置在 GRUB 上的名称中..."
++
++#: src/kcm_grub2.cpp:1072
++msgctxt "@info"
++msgid "Failed to get GRUB device names."
++msgstr "取得 GRUB 装置名称失败。"
++
++#: src/kcm_grub2.cpp:1077
++msgctxt "@info"
++msgid "Helper returned malformed device list."
++msgstr "协助程式传回不正确的装置清单。"
++
++#: src/kcm_grub2.cpp:1130 src/kcm_grub2.cpp:1133
++msgctxt "@item:inlistbox Refers to screen resolution."
++msgid "Custom..."
++msgstr "自订..."
++
++#: src/kcm_grub2.cpp:1134
++msgctxt "@item:inlistbox"
++msgid "Unspecified"
++msgstr "未指定"
++
++#: src/kcm_grub2.cpp:1135
++msgctxt "@item:inlistbox"
++msgid "Boot in Text Mode"
++msgstr "以文字模式开机"
++
++#: src/kcm_grub2.cpp:1136
++msgctxt "@item:inlistbox"
++msgid "Keep GRUB's Resolution"
++msgstr "保持 GRUB 的分辨率"
++
++#: src/kcm_grub2.cpp:1162
++msgctxt "@info"
++msgid "The process could not be started."
++msgstr "无法启动行程。"
++
++#: src/kcm_grub2.cpp:1165
++msgctxt "@info"
++msgid "The process crashed."
++msgstr "行程已崩溃。"
++
++#: src/kcm_grub2.cpp:1172
++#, kde-format
++msgctxt "@info"
++msgid ""
++"Command: <command>%1</command><nl/>Error code: <numid>%2</numid><nl/>Error "
++"message:<nl/><message>%3</message>"
++msgstr ""
++"命令：<command>%1</command><nl/>错误代码：<numid>%2</numid><nl/>错误信息："
++"<nl/><message>%3</message>"
++
++#: src/qPkBackend.cpp:31
++msgctxt "This is when the transaction status is not known"
++msgid "Unknown state"
++msgstr "未知状态"
++
++#: src/qPkBackend.cpp:34
++msgctxt "transaction state, the daemon is in the process of starting"
++msgid "Waiting for service to start"
++msgstr "等待服务启动中"
++
++#: src/qPkBackend.cpp:37
++msgctxt "transaction state, the transaction is waiting for another to complete"
++msgid "Waiting for other tasks"
++msgstr "等待其它工作中"
++
++#: src/qPkBackend.cpp:40
++msgctxt "transaction state, just started"
++msgid "Running task"
++msgstr "执行工作中"
++
++#: src/qPkBackend.cpp:43
++msgctxt "transaction state, is querying data"
++msgid "Querying"
++msgstr "查询中"
++
++#: src/qPkBackend.cpp:46
++msgctxt "transaction state, getting data from a server"
++msgid "Getting information"
++msgstr "取得资讯中"
++
++#: src/qPkBackend.cpp:49
++msgctxt "transaction state, removing packages"
++msgid "Removing packages"
++msgstr "移除包中"
++
++#: src/qPkBackend.cpp:52
++msgctxt "transaction state, downloading package files"
++msgid "Downloading packages"
++msgstr "下载包中"
++
++#: src/qPkBackend.cpp:55
++msgctxt "transaction state, installing packages"
++msgid "Installing packages"
++msgstr "安装包中"
++
++#: src/qPkBackend.cpp:58
++msgctxt "transaction state, refreshing internal lists"
++msgid "Refreshing software list"
++msgstr "刷新软体清单"
++
++#: src/qPkBackend.cpp:61
++msgctxt "transaction state, installing updates"
++msgid "Updating packages"
++msgstr "更新包中"
++
++#: src/qPkBackend.cpp:64
++msgctxt "transaction state, removing old packages, and cleaning config files"
++msgid "Cleaning up packages"
++msgstr "清除包中"
++
++#: src/qPkBackend.cpp:67
++msgctxt "transaction state, obsoleting old packages"
++msgid "Obsoleting packages"
++msgstr "废弃旧包中"
++
++#: src/qPkBackend.cpp:70
++msgctxt "transaction state, checking the transaction before we do it"
++msgid "Resolving dependencies"
++msgstr "解决相依性问题中"
++
++#: src/qPkBackend.cpp:73
++msgctxt ""
++"transaction state, checking if we have all the security keys for the "
++"operation"
++msgid "Checking signatures"
++msgstr "检查签章中"
++
++#: src/qPkBackend.cpp:76
++msgctxt "transaction state, when we return to a previous system state"
++msgid "Rolling back"
++msgstr "恢复先前状态中"
++
++#: src/qPkBackend.cpp:79
++msgctxt "transaction state, when we're doing a test transaction"
++msgid "Testing changes"
++msgstr "测试变更中"
++
++#: src/qPkBackend.cpp:82
++msgctxt "transaction state, when we're writing to the system package database"
++msgid "Committing changes"
++msgstr "提交变更中"
++
++#: src/qPkBackend.cpp:85
++msgctxt "transaction state, requesting data from a server"
++msgid "Requesting data"
++msgstr "请求资料中"
++
++#: src/qPkBackend.cpp:88
++msgctxt "transaction state, all done!"
++msgid "Finished"
++msgstr "已完成"
++
++#: src/qPkBackend.cpp:91
++msgctxt "transaction state, in the process of cancelling"
++msgid "Cancelling"
++msgstr "取消中"
++
++#: src/qPkBackend.cpp:94
++msgctxt "transaction state, downloading metadata"
++msgid "Downloading repository information"
++msgstr "下载主目录资讯中"
++
++#: src/qPkBackend.cpp:97
++msgctxt "transaction state, downloading metadata"
++msgid "Downloading list of packages"
++msgstr "下载包清单中"
++
++#: src/qPkBackend.cpp:100
++msgctxt "transaction state, downloading metadata"
++msgid "Downloading file lists"
++msgstr "下载档案清单中"
++
++#: src/qPkBackend.cpp:103
++msgctxt "transaction state, downloading metadata"
++msgid "Downloading lists of changes"
++msgstr "下载变更清单中"
++
++#: src/qPkBackend.cpp:106
++msgctxt "transaction state, downloading metadata"
++msgid "Downloading groups"
++msgstr "下载群组中"
++
++#: src/qPkBackend.cpp:109
++msgctxt "transaction state, downloading metadata"
++msgid "Downloading update information"
++msgstr "下载更新资讯中"
++
++#: src/qPkBackend.cpp:112
++msgctxt "transaction state, repackaging delta files"
++msgid "Repackaging files"
++msgstr "重新打包文件中"
++
++#: src/qPkBackend.cpp:115
++msgctxt "transaction state, loading databases"
++msgid "Loading cache"
++msgstr "载入快取中"
++
++#: src/qPkBackend.cpp:118
++msgctxt "transaction state, scanning for running processes"
++msgid "Scanning installed applications"
++msgstr "扫描已安装应用程式中"
++
++#: src/qPkBackend.cpp:121
++msgctxt ""
++"transaction state, generating a list of packages installed on the system"
++msgid "Generating package lists"
++msgstr "产生包清单中"
++
++#: src/qPkBackend.cpp:124
++msgctxt "transaction state, when we're waiting for the native tools to exit"
++msgid "Waiting for package manager lock"
++msgstr "等待包管理员锁定中"
++
++#: src/qPkBackend.cpp:127
++msgctxt "waiting for user to type in a password"
++msgid "Waiting for authentication"
++msgstr "等待认证中"
++
++#: src/qPkBackend.cpp:130
++msgctxt "we are updating the list of processes"
++msgid "Updating the list of running applications"
++msgstr "更新正在执行的应用程式清单中"
++
++#: src/qPkBackend.cpp:133
++msgctxt "we are checking executable files in use"
++msgid "Checking for applications currently in use"
++msgstr "检查目前使用的应用程式中"
++
++#: src/qPkBackend.cpp:136
++msgctxt "we are checking for libraries in use"
++msgid "Checking for libraries currently in use"
++msgstr "检查目前使用的函式库中"
++
++#: src/qPkBackend.cpp:139
++msgctxt "we are copying package files to prepare to install"
++msgid "Copying files"
++msgstr "複製档案中"
++
++#: src/removeDlg.cpp:46
++msgctxt "@title:window"
++msgid "Remove Old Entries"
++msgstr "移除旧项目"
++
++#: src/removeDlg.cpp:60
++msgctxt "@title:window"
++msgid "Finding Old Entries"
++msgstr "寻找旧项目中"
++
++#: src/removeDlg.cpp:60
++msgctxt "@info:progress"
++msgid "Finding Old Entries..."
++msgstr "寻找旧项目中..."
++
++#: src/removeDlg.cpp:86
++#, kde-format
++msgctxt "@item:inlistbox"
++msgid "Kernel %1"
++msgstr "内核 %1"
++
++#: src/removeDlg.cpp:102
++msgctxt "@info"
++msgid "No removable entries were found."
++msgstr "没有找到可移除的项目。"
++
++#: src/removeDlg.cpp:124
++msgctxt "@info"
++msgid "Are you sure you want to remove the following packages?"
++msgstr "您确定您要移除以下的包吗？"
++
++#: src/removeDlg.cpp:148
++msgctxt "@title:window"
++msgid "Removing Old Entries"
++msgstr "移除旧项目中"
++
++#: src/removeDlg.cpp:161
++msgctxt "@info"
++msgid "Package removal failed."
++msgstr "移除包失败。"
++
++#. i18n: ectx: property (text), widget (QLabel, label)
++#: ui/convertDlg.ui:19
++msgctxt "@label:textbox"
++msgid "Image:"
++msgstr "图像："
++
++#. i18n: ectx: property (text), widget (QLabel, label_2)
++#: ui/convertDlg.ui:29
++msgctxt "@label:textbox"
++msgid "Convert To:"
++msgstr "转换为："
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
++#: ui/convertDlg.ui:41
++msgctxt "@title:group"
++msgid "Conversion Options"
++msgstr "转换选项"
++
++#. i18n: ectx: property (text), widget (QLabel, label_3)
++#: ui/convertDlg.ui:47
++msgctxt "@label:spinbox"
++msgid "Width:"
++msgstr "宽度："
++
++#. i18n: ectx: property (text), widget (QLabel, label_4)
++#: ui/convertDlg.ui:61
++msgctxt "@label:spinbox"
++msgid "Height:"
++msgstr "高度："
++
++#. i18n: ectx: property (text), widget (QLabel, label_5)
++#: ui/convertDlg.ui:75
++msgctxt "@option:check"
++msgid "Force resolution:"
++msgstr "强制设置分辨率："
++
++#. i18n: ectx: property (text), widget (QLabel, label_6)
++#: ui/convertDlg.ui:85
++msgctxt "@option:check"
++msgid "Set As GRUB Wallpaper:"
++msgstr "设为 GRUB 桌面："
++
++#. i18n: ectx: property (text), widget (QLabel, label)
++#: ui/installDlg.ui:17
++msgctxt "@label:listbox"
++msgid "Select partition to install/recover GRUB:"
++msgstr "选择要安装/恢复 GRUB 的分区："
++
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget_recover)
++#: ui/installDlg.ui:48
++msgctxt "@title:column"
++msgid "Partition"
++msgstr "分区"
++
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget_recover)
++#: ui/installDlg.ui:53
++msgctxt "@title:column"
++msgid "Mountpoint"
++msgstr "挂载点"
++
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget_recover)
++#: ui/installDlg.ui:58
++msgctxt "@title:column"
++msgid "Label"
++msgstr "标签"
++
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget_recover)
++#: ui/installDlg.ui:63
++msgctxt "@title:column"
++msgid "File System"
++msgstr "档案系统"
++
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget_recover)
++#: ui/installDlg.ui:68
++msgctxt "@title:column"
++msgid "Size"
++msgstr "大小"
++
++#. i18n: ectx: property (toolTip), widget (QCheckBox, checkBox_partition)
++#: ui/installDlg.ui:76
++msgctxt "@info:tooltip"
++msgid ""
++"Install the bootloader on the boot sector of the selected partition instead "
++"of the MBR(=Master Boot Sector). Not recommended."
++msgstr "安装启动加载器到选取的分区的开机磁区，而不是安装到 MBR。不建议如此。"
++
++#. i18n: ectx: property (text), widget (QCheckBox, checkBox_partition)
++#: ui/installDlg.ui:79
++msgctxt "@option:check"
++msgid "Install on partition instead of MBR (Advanced)"
++msgstr "安装在分区而非 MBR（进阶）"
++
++#. i18n: ectx: attribute (title), widget (QWidget, tab)
++#: ui/kcm_grub2.ui:21
++msgctxt "@title:tab Refers to settings."
++msgid "General"
++msgstr "一般"
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_timeout)
++#: ui/kcm_grub2.ui:27
++msgctxt "@title:group"
++msgid "Timeout"
++msgstr "逾时"
++
++#. i18n: ectx: property (text), widget (QCheckBox, checkBox_hiddenTimeout)
++#: ui/kcm_grub2.ui:35
++msgctxt "@option:check"
++msgid "Hide the menu for:"
++msgstr "隐藏选单多久："
++
++#. i18n: ectx: property (suffix), widget (QSpinBox, spinBox_hiddenTimeout)
++#. i18n: ectx: property (suffix), widget (QSpinBox, spinBox_timeout)
++#: ui/kcm_grub2.ui:45 ui/kcm_grub2.ui:144
++msgctxt "@label:spinbox seconds (suffix)"
++msgid "s"
++msgstr "秒"
++
++#. i18n: ectx: property (text), widget (QCheckBox, checkBox_hiddenTimeoutShowTimer)
++#: ui/kcm_grub2.ui:76
++msgctxt "@option:check"
++msgid "Show countdown timer"
++msgstr "显示倒数计时器"
++
++#. i18n: ectx: property (text), widget (QCheckBox, checkBox_timeout)
++#: ui/kcm_grub2.ui:83
++msgctxt "@option:check"
++msgid "Automatically boot the default entry after showing the menu"
++msgstr "显示选单后自动以预设的项目开机"
++
++#. i18n: ectx: property (text), widget (QRadioButton, radioButton_timeout0)
++#: ui/kcm_grub2.ui:106
++msgctxt "@option:radio"
++msgid "Immediately"
++msgstr "立即"
++
++#. i18n: ectx: property (text), widget (QRadioButton, radioButton_timeout)
++#: ui/kcm_grub2.ui:131
++msgctxt "@option:radio"
++msgid "After:"
++msgstr "多久之后："
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_entries)
++#: ui/kcm_grub2.ui:172
++msgctxt "@title:group"
++msgid "Generated Entries"
++msgstr "产生的项目"
++
++#. i18n: ectx: property (text), widget (QCheckBox, checkBox_recovery)
++#: ui/kcm_grub2.ui:178
++msgctxt "@option:check"
++msgid "Generate recovery entries"
++msgstr "产生救援的选项"
++
++#. i18n: ectx: property (text), widget (QCheckBox, checkBox_memtest)
++#: ui/kcm_grub2.ui:185
++msgctxt "@option:check"
++msgid "Generate memtest entries"
++msgstr "产生记忆体测试的选项"
++
++#. i18n: ectx: property (text), widget (QCheckBox, checkBox_osProber)
++#: ui/kcm_grub2.ui:192
++msgctxt "@option:check"
++msgid "Probe for operating systems"
++msgstr "侦测作业系统"
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_default)
++#: ui/kcm_grub2.ui:202
++msgctxt "@title:group"
++msgid "Default Entry"
++msgstr "预设项目"
++
++#. i18n: ectx: property (text), widget (QLabel, label_default)
++#: ui/kcm_grub2.ui:208
++msgctxt "@label:listbox"
++msgid "Default Entry:"
++msgstr "预设项目："
++
++#. i18n: ectx: property (text), widget (KPushButton, kpushbutton_remove)
++#: ui/kcm_grub2.ui:224
++msgctxt "@action:button"
++msgid "Remove Old Entries"
++msgstr "移除旧项目"
++
++#. i18n: ectx: property (text), widget (QCheckBox, checkBox_savedefault)
++#: ui/kcm_grub2.ui:233
++msgctxt "@option:check"
++msgid "The next booted entry will become default"
++msgstr "下一个开机项目会成为预设值"
++
++#. i18n: ectx: attribute (title), widget (QWidget, tab_3)
++#: ui/kcm_grub2.ui:244
++msgctxt "@title:tab"
++msgid "Appearance"
++msgstr "外观"
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_resolutions)
++#: ui/kcm_grub2.ui:250
++msgctxt "@title:group"
++msgid "Resolutions"
++msgstr "分辨率"
++
++#. i18n: ectx: property (text), widget (QLabel, label_gfxmode)
++#: ui/kcm_grub2.ui:256
++msgctxt "@label:listbox"
++msgid "GRUB:"
++msgstr "GRUB："
++
++#. i18n: ectx: property (text), widget (QLabel, label_gfxpayload)
++#: ui/kcm_grub2.ui:270
++msgctxt "@label:listbox"
++msgid "Linux Kernel:"
++msgstr "Linux 内核："
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_colors)
++#: ui/kcm_grub2.ui:287
++msgctxt "@title:group"
++msgid "Colors"
++msgstr "颜色"
++
++#. i18n: ectx: property (text), widget (QLabel, label_normalForeground)
++#: ui/kcm_grub2.ui:295
++msgctxt "@label:chooser"
++msgid "Normal Foreground (Text):"
++msgstr "正常前景（文字）："
++
++#. i18n: ectx: property (text), widget (QLabel, label_highlightForeground)
++#: ui/kcm_grub2.ui:305
++msgctxt "@label:chooser"
++msgid "Highlight Foreground (Text):"
++msgstr "突显的前景（文字）："
++
++#. i18n: ectx: property (text), widget (QLabel, label_normalBackground)
++#: ui/kcm_grub2.ui:319
++msgctxt "@label:chooser"
++msgid "Normal Background:"
++msgstr "正常背景："
++
++#. i18n: ectx: property (text), widget (QLabel, label_highlightBackground)
++#: ui/kcm_grub2.ui:329
++msgctxt "@label:chooser"
++msgid "Highlight Background:"
++msgstr "突显的背景："
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_background)
++#: ui/kcm_grub2.ui:344
++msgctxt "@title:group Refers to the image shown behind the boot menu."
++msgid "Background"
++msgstr "背景"
++
++#. i18n: ectx: property (text), widget (QLabel, label_background)
++#: ui/kcm_grub2.ui:350
++msgctxt "@label:textbox"
++msgid "Wallpaper:"
++msgstr "桌面："
++
++#. i18n: ectx: property (text), widget (KPushButton, kpushbutton_preview)
++#: ui/kcm_grub2.ui:362
++msgctxt "@action:button"
++msgid "Preview"
++msgstr "预览"
++
++#. i18n: ectx: property (text), widget (KPushButton, kpushbutton_create)
++#: ui/kcm_grub2.ui:369
++msgctxt "@action:button"
++msgid "Create"
++msgstr "建立"
++
++#. i18n: ectx: property (text), widget (QLabel, label_theme)
++#: ui/kcm_grub2.ui:378
++msgctxt "@label:textbox"
++msgid "Theme:"
++msgstr "主题："
++
++#. i18n: ectx: attribute (title), widget (QWidget, tab_2)
++#: ui/kcm_grub2.ui:405
++msgctxt "@title:tab Refers to settings."
++msgid "Advanced"
++msgstr "进阶"
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_linux)
++#: ui/kcm_grub2.ui:411
++msgctxt "@title:group"
++msgid "Linux Kernel Arguments"
++msgstr "Linux 内核参数"
++
++#. i18n: ectx: property (text), widget (QLabel, label_cmdlineDefault)
++#: ui/kcm_grub2.ui:417
++msgctxt "@label:textbox"
++msgid "Normal Entries:"
++msgstr "正常的项目："
++
++#. i18n: ectx: property (text), widget (KPushButton, kpushbutton_cmdlineDefaultSuggestions)
++#. i18n: ectx: property (text), widget (KPushButton, kpushbutton_cmdlineSuggestions)
++#. i18n: ectx: property (text), widget (KPushButton, kpushbutton_terminalSuggestions)
++#. i18n: ectx: property (text), widget (KPushButton, kpushbutton_terminalInputSuggestions)
++#. i18n: ectx: property (text), widget (KPushButton, kpushbutton_terminalOutputSuggestions)
++#: ui/kcm_grub2.ui:429 ui/kcm_grub2.ui:450 ui/kcm_grub2.ui:480
++#: ui/kcm_grub2.ui:501 ui/kcm_grub2.ui:522
++msgctxt "@action:button"
++msgid "Suggestions"
++msgstr "建议"
++
++#. i18n: ectx: property (text), widget (QLabel, label_cmdline)
++#: ui/kcm_grub2.ui:438
++msgctxt "@label:textbox"
++msgid "All Entries:"
++msgstr "所有的项目："
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_terminal)
++#: ui/kcm_grub2.ui:462
++msgctxt "@title:group Noun."
++msgid "Terminal"
++msgstr "终端"
++
++#. i18n: ectx: property (text), widget (QLabel, label_terminal)
++#: ui/kcm_grub2.ui:468
++msgctxt "@label:textbox Noun."
++msgid "Terminal:"
++msgstr "终端："
++
++#. i18n: ectx: property (text), widget (QLabel, label_terminalInput)
++#: ui/kcm_grub2.ui:489
++msgctxt "@label:textbox"
++msgid "Input Terminal:"
++msgstr "输入终端："
++
++#. i18n: ectx: property (text), widget (QLabel, label_terminalOutput)
++#: ui/kcm_grub2.ui:510
++msgctxt "@label:textbox"
++msgid "Output Terminal:"
++msgstr "输出终端："
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_other)
++#: ui/kcm_grub2.ui:534
++msgctxt "@title:group Refers to settings."
++msgid "Other"
++msgstr "其他"
++
++#. i18n: ectx: property (text), widget (QLabel, label_distributor)
++#: ui/kcm_grub2.ui:540
++msgctxt "@label:textbox"
++msgid "Distributor:"
++msgstr "发布者："
++
++#. i18n: ectx: property (text), widget (QLabel, label_serial)
++#: ui/kcm_grub2.ui:550
++msgctxt "@label:textbox"
++msgid "Serial Command:"
++msgstr "序列命令："
++
++#. i18n: ectx: property (text), widget (QLabel, label_initTune)
++#: ui/kcm_grub2.ui:560
++msgctxt "@label:textbox"
++msgid "Init Tune:"
++msgstr "初始化调整："
++
++#. i18n: ectx: property (text), widget (QLabel, label_uuid)
++#: ui/kcm_grub2.ui:570
++msgctxt "@option:check"
++msgid "Enable UUIDs:"
++msgstr "开启 UUID："
++
++#. i18n: ectx: property (title), widget (QGroupBox, groupBox_tools)
++#: ui/kcm_grub2.ui:596
++msgctxt "@title:group"
++msgid "Tools"
++msgstr "工具"
++
++#. i18n: ectx: property (text), widget (KPushButton, kpushbutton_install)
++#: ui/kcm_grub2.ui:608
++msgctxt "@action:button"
++msgid "Install/Recover Bootloader"
++msgstr "安装/恢复启动加载器"
++
++#. i18n: ectx: property (text), widget (QLabel, label)
++#: ui/removeDlg.ui:17
++msgctxt "@label:listbox"
++msgid "Select entries to remove:"
++msgstr "选择要移除的项目："
++
++#. i18n: ectx: property (toolTip), widget (QCheckBox, checkBox_headers)
++#: ui/removeDlg.ui:34
++msgctxt "@info:tooltip"
++msgid "Remove associated kernel header files."
++msgstr "移除相关的内核头文件。"
++
++#. i18n: ectx: property (text), widget (QCheckBox, checkBox_headers)
++#: ui/removeDlg.ui:37
++msgctxt "@option:check"
++msgid "Also remove associated old packages"
++msgstr "同时移除相关的旧包"
++
++#~ msgctxt "@info"
++#~ msgid "No valid GRUB2/BURG installation could be detected!"
++#~ msgstr "没侦测到任何合法的 GRUB2/BURG 安装。"
++
++#~ msgctxt "@action:button"
++#~ msgid "Reload Configuration"
++#~ msgstr "重新载入设置"
++
++#~ msgctxt "@item:inlistbox"
++#~ msgid "Image"
++#~ msgstr "图像"
++
++#~ msgctxt "@info"
++#~ msgid "Could not locate <command>%1</command> executable."
++#~ msgstr "找不到 <command>%1</command> 执行档。"
++
++#~ msgid "Path of the GRUB menu file."
++#~ msgstr "GRUB 选单文件路径。"
++
++#~ msgid "Path of the GRUB configuration file."
++#~ msgstr "GRUB 设置文件路径。"
++
++#~ msgid "Path of the GRUB environment file."
++#~ msgstr "GRUB 环境文件路径。"
++
++#~ msgid "Path of the GRUB memtest script."
++#~ msgstr "GRUB 记忆体测试文稿路径。"
++
++#~ msgctxt "@info"
++#~ msgid ""
++#~ "Some necessary GRUB configuration files are missing/invalid.<br/>Please "
++#~ "select an action:"
++#~ msgstr "有些必要的 GRUB 设置文件不见了，或是不正确。<br/>请选择一个动作："
++
++#~ msgctxt "@option:radio"
++#~ msgid "Recover GRUB from a previous installation"
++#~ msgstr "从前一次安装恢复 GRUB"
++
++#~ msgctxt "@option:radio"
++#~ msgid "Manually browse for GRUB configuration files"
++#~ msgstr "手动浏览选择 GRUB 设置文件"
++
++#~ msgctxt "@label:textbox"
++#~ msgid "GRUB Menu File:"
++#~ msgstr "GRUB 选单文件："
++
++#~ msgctxt "@label:textbox"
++#~ msgid "GRUB Environment File:"
++#~ msgstr "GRUB 环境文件："
++
++#~ msgctxt "@label:textbox"
++#~ msgid "GRUB Memtest Script:"
++#~ msgstr "GRUB 记忆体测试文稿："
++
++#~ msgctxt "@info"
++#~ msgid "This is your current kernel!<br/>Are you sure you want to remove it?"
++#~ msgstr "这是您目前在使用的内核！<br/>您确定要移除它吗？"
++
++#~ msgid "%1 GiB"
++#~ msgstr "%1 GB"

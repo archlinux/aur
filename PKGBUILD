@@ -11,9 +11,11 @@ conflicts=grub2-editor
 depends=('kdelibs4support' 'grub' 'kcmutils' 'kauth')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 source=("http://sourceforge.net/projects/kcm-grub2/files/kcm-grub2-$pkgver.tar.gz"
-        "port_to_kf5.patch")
+        "port_to_kf5.patch"
+        "l10n_zh-cn.patch")
 groups=('plasma')
 md5sums=('b3ff8fb938be8112dcc6e42b3e56efc6'
+         'SKIP'
          'SKIP')
 
 
@@ -21,6 +23,7 @@ prepare() {
   mkdir -p build
   cd kcm-grub2-$pkgver
   patch -p1 -i "$srcdir/port_to_kf5.patch"
+  patch -p1 -i "$srcdir/l10n_zh-cn.patch"
 }
 
 build() {
