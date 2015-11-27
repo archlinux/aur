@@ -1,7 +1,7 @@
 pkgbase = spotify32bit
 	pkgdesc = Last 32Bit version of proprietary peer-to-peer music streaming service
-	pkgver = 1.0.11.129
-	pkgrel = 2
+	pkgver = 1.0.17.75
+	pkgrel = 1
 	url = http://www.spotify.com
 	changelog = spotify.changelog
 	arch = i686
@@ -16,14 +16,15 @@ pkgbase = spotify32bit
 	depends = libxtst
 	depends = libx11
 	depends = libcurl-compat
+	depends = libxss
 	optdepends = desktop-file-utils: Adds URI support to compatible desktop environments
 	optdepends = ffmpeg-compat: Adds support for playback of local files
 	optdepends = libnotify: Adds desktop notifications
 	conflicts = spotify
 	options = !strip
-	source = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.11.129.g61510de3_i386.deb
+	source = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.17.75.g8f111100_i386.deb
 	source = spotify.protocol
-	md5sums = 4e467409f2de399e99d13cde84dc2f3d
+	md5sums = 843743f3706aeb65a122625c1183c859
 	md5sums = ef25ddc5b6bf8fe1a0d64cbd79e1f7b4
 
 pkgname = spotify32bit

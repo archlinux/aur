@@ -5,9 +5,9 @@
 # Contributor: EvanA <evan@thelinuxman.us>
 
 pkgname=spotify32bit
-pkgver=1.0.11.129
-_anotherpkgver=.g61510de3
-pkgrel=2
+pkgver=1.0.17.75
+_anotherpkgver=.g8f111100
+pkgrel=1
 pkgdesc="Last 32Bit version of proprietary peer-to-peer music streaming service"
 arch=('i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -19,10 +19,10 @@ conflicts=('spotify')
 source=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}${_anotherpkgver}_i386.deb"
 'spotify.protocol'
 )
-md5sums=('4e467409f2de399e99d13cde84dc2f3d'
+md5sums=('843743f3706aeb65a122625c1183c859'
 'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4')
 
-depends=("alsa-lib>=1.0.14" "glibc>=2.6" "openssl" "gconf" "nss" "systemd" "gtk2" "libxtst" "libx11" "libcurl-compat")
+depends=("alsa-lib>=1.0.14" "glibc>=2.6" "openssl" "gconf" "nss" "systemd" "gtk2" "libxtst" "libx11" "libcurl-compat" "libxss")
 optdepends=('desktop-file-utils: Adds URI support to compatible desktop environments'
 'ffmpeg-compat: Adds support for playback of local files'
 'libnotify: Adds desktop notifications')
