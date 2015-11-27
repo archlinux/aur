@@ -447,7 +447,7 @@ diff -Naur kcm-grub2-0.6.4/src/installDlg.cpp kcm-grub2-0.6.4-new2/src/installDl
 -            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), KDE_IS_VERSION(4,7,0) ? reply.errorDescription() : reply.data().value("errorDescription").toString());
 +            //TO BE FIXED
 +            //KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), KDE_IS_VERSION(4,7,0) ? reply.errorDescription() : reply.data().value("errorDescription").toString());
-+            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), " ", " ");
++            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), reply->data().value("errorDescription").toString());
          }
      }
      KDialog::slotButtonClicked(button);
