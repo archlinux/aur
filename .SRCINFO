@@ -1,0 +1,24 @@
+pkgbase = fwbuilder-qt5
+	pkgdesc = Object-oriented GUI and set of compilers for various firewall platforms. Qt5 version.
+	pkgver = 5.3.6
+	pkgrel = 1
+	url = http://www.fwbuilder.org/
+	install = fwbuilder.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxslt
+	depends = net-snmp
+	depends = qt5-base
+	provides = fwbuilder
+	conflicts = libfwbuilder
+	conflicts = fwbuilder
+	source = fwbuilder-5.3.6.tar.gz::https://github.com/UNINETT/fwbuilder/archive/v5.3.6.tar.gz
+	source = fwbuilder.xml
+	source = fwbuilder-gcc47.patch
+	md5sums = 4d375b8bb98442f94c9dfaabc274387b
+	md5sums = 520e08069addcdb946794458f49f3d10
+	md5sums = e603318d2874c0eb7674fc81b7b93ba8
+
+pkgname = fwbuilder-qt5
+

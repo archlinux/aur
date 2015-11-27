@@ -1,0 +1,13 @@
+Only in fwbuilder-5.0.1.3592: patches
+Only in fwbuilder-5.0.1.3592: .pc
+diff -upr fwbuilder-5.0.1.3592/src/libfwbuilder/src/fwbuilder/ThreadTools.h /var/tmp/build-root/home/abuild/rpmbuild/BUILD/fwbuilder-5.0.1.3592/src/libfwbuilder/src/fwbuilder/ThreadTools.h
+--- fwbuilder-5.0.1.3592/src/libfwbuilder/src/fwbuilder/ThreadTools.h	2011-12-08 02:02:07.000000000 +0100
++++ /var/tmp/build-root/home/abuild/rpmbuild/BUILD/fwbuilder-5.0.1.3592/src/libfwbuilder/src/fwbuilder/ThreadTools.h	2012-03-17 22:29:16.317275376 +0100
+@@ -31,6 +31,7 @@
+ 
+ #include <time.h> //for time_t definition
+ #include <pthread.h>
++#include <unistd.h>
+ 
+ #include <string>
+ #include <queue>
