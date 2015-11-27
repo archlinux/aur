@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-southpark
 	pkgdesc = Fortune quotes from South Park
-	pkgver = 1508060627
+	pkgver = 1511240651
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/South_Park
 	arch = any
