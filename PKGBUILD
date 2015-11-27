@@ -2,16 +2,17 @@
 
 _pkgbase=opus
 pkgname=lib32-$_pkgbase
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Codec designed for interactive speech and audio transmission over the Internet"
 arch=('x86_64')
 url="http://www.opus-codec.org/"
 license=('custom')
 depends=('lib32-glibc' 'opus')
+makedepends=('gcc-multilib')
 options=('!libtool')
 source=("http://downloads.xiph.org/releases/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
-sha256sums=('b9727015a58affcf3db527322bf8c4d2fcf39f5f6b8f15dbceca20206cbe1d95')
+sha256sums=('9b84ff56bd7720d5554103c557664efac2b8b18acc4bbcc234cb881ab9a3371e')
 
 build() {
   export CC='gcc -m32'
