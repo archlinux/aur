@@ -1,8 +1,11 @@
+#Maintainer : Frederic Bezies <fredbezies at gmail dot com>
+#Contributor : baskerville <nihilhill at gmail dot com>
+
 pkgname=youtube-dl-git
-pkgver=2015.11.24.r1.g7689413
+pkgver=2015.11.27.1.r0.g78a55d7
 pkgrel=1
 
-pkgdesc='A small command-line program to download videos from YouTube.com and a few more sites'
+pkgdesc='A small command-line program to download videos from YouTube.com and a few more sites - git version'
 url="http://rg3.github.io/youtube-dl"
 arch=('any')
 license=('custom')
