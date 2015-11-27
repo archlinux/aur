@@ -17,6 +17,9 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-parse_type>=0.3.4" # AUR
   "${_pyver}-six"             # COM
 )
+if [ "${_pyver}" = 'python2' ]; then
+  _pydepends+=('python2-enum34')
+fi
 depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
@@ -46,6 +49,9 @@ package() {
   cd "${_srcdir}"
   ${_pyver} setup.py install --root="${pkgdir}"
   install -Dpm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  if [ "${_pyver}" = 'python2' ]; then
+    mv "${pkgdir}/usr/bin/behave" "${pkgdir}/usr/bin/behave2"
+  fi
   set +u
 }
 set +u
