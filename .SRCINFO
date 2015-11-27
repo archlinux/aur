@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-2brokegirls
 	pkgdesc = Fortune quotes from 2 Broke Girls
-	pkgver = 1507152039
+	pkgver = 1511201900
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/2_Broke_Girls
 	arch = any
