@@ -3,8 +3,8 @@
 # Contributor: Tucos <baspape@gmail.com>
 
 pkgname=panda3d
-pkgver=1.9.0
-pkgrel=3
+pkgver=1.9.1
+pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -60,7 +60,7 @@ install='panda3d.install'
 source=("$url/download/panda3d-$pkgver/panda3d-$pkgver.tar.gz"
         'panda3d.install')
 md5sums=('3318f2ea070c46a93d736317f98f7da4'
-         '057269173f3c1987953302519bc744fa')
+         'a09747c400c85af456e91fd650a60038')
 JOBS=$(nproc)
 
 build() {
