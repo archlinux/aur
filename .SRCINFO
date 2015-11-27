@@ -1,6 +1,6 @@
 pkgbase = igprof-git
 	pkgdesc = A simple tool for measuring and analysing application memory and performance characteristics
-	pkgver = v5.9.15.r13.gb482572
+	pkgver = v5.9.16.r0.g96debaf
 	pkgrel = 1
 	url = http://igprof.org/
 	arch = i686
