@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-darkangel
 	pkgdesc = Fortune quotes from Dark Angel
-	pkgver = 1504021555
+	pkgver = 1511040948
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Dark_Angel
 	arch = any

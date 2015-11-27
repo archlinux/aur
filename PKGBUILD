@@ -1,5 +1,5 @@
 pkgname=fortune-mod-darkangel
-pkgver=1504021555
+pkgver=1511040948
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Dark Angel"
