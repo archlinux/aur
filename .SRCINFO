@@ -1,6 +1,6 @@
 pkgbase = cpu-x
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more (like CPU-Z)
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/X0rg/CPU-X
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = cpu-x
 	depends = libcpuid-git
 	depends = pciutils
 	depends = procps-ng
-	source = cpu-x-2.2.0.tar.gz::https://github.com/X0rg/CPU-X/archive/v2.2.0.tar.gz
-	md5sums = d0d454376b1e1bb7f37cb21543ee04e0
+	source = cpu-x-2.2.1.tar.gz::https://github.com/X0rg/CPU-X/archive/v2.2.1.tar.gz
+	md5sums = ce6141b4576d368d105ba0e8c5a39486
 
 pkgname = cpu-x
 
