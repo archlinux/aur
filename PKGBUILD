@@ -2,7 +2,7 @@
 
 pkgname=mongochef
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free universal database tool for developers and database administrators"
 arch=('i686' 'x86_64')
 url="http://3t.io/mongochef/"
@@ -40,6 +40,6 @@ package() {
   ## add application icon
   install -D -m 644 ${srcdir}/mc-512.png usr/share/pixmaps/${pkgname}.png
 
-  ## add licence
-  install -D -m 644 ${srcdir}/3T-EULA.txt usr/share/licences/${pkgname}/3T-EULA.txt
+  ## add license
+  install -D -m 644 ${srcdir}/3T-EULA.txt usr/share/licenses/${pkgname}/3T-EULA.txt
 }
