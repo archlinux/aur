@@ -1,0 +1,21 @@
+pkgbase = ceres-solver
+	pkgdesc = Solver for nonlinear least squares problems
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://code.google.com/p/ceres-solver/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-libs
+	makedepends = cmake
+	depends = google-glog>=0.3.4
+	depends = eigen>=3.2.7
+	depends = suitesparse>=4.4.5
+	depends = protobuf>=2.6.1
+	optdepends = openmp
+	options = staticlibs
+	source = http://ceres-solver.org/ceres-solver-1.11.0.tar.gz
+	sha256sums = 4d666cc33296b4c5cd77bad18ffc487b3223d4bbb7d1dfb342ed9a87dc9af844
+
+pkgname = ceres-solver
+
