@@ -3,8 +3,8 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=5.2.2
-pkgrel=2
+pkgver=5.3.0
+pkgrel=1
 pkgdesc="GUI for extract files from .mkv"
 arch=('any')
 url='http://hizo.fr/linux/mkv_extractor_gui'
@@ -22,7 +22,7 @@ conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
 install="${pkgname}.install"
 source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_${pkgver}.orig.tar.gz")
-sha1sums=('6cf50119f9b49a2d8060b0652f5831b051da9788')
+sha1sums=('57a08fc9ea9c1e45aea4d31490c74595fc769347')
 
 build() {
   cd mkv-extractor-qt5

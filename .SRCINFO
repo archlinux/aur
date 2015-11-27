@@ -1,7 +1,7 @@
 pkgbase = mkv-extractor-qt
 	pkgdesc = GUI for extract files from .mkv
-	pkgver = 5.2.2
-	pkgrel = 2
+	pkgver = 5.3.0
+	pkgrel = 1
 	url = http://hizo.fr/linux/mkv_extractor_gui
 	install = mkv-extractor-qt.install
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = mkv-extractor-qt
 	optdepends = ogmrip: subtitle conversion
 	conflicts = mkv-extractor-gui
 	replaces = mkv-extractor-gui
-	source = https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_5.2.2.orig.tar.gz
-	sha1sums = 6cf50119f9b49a2d8060b0652f5831b051da9788
+	source = https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_5.3.0.orig.tar.gz
+	sha1sums = 57a08fc9ea9c1e45aea4d31490c74595fc769347
 
 pkgname = mkv-extractor-qt
 
