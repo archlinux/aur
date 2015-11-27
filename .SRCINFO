@@ -35,7 +35,7 @@ pkgbase = octave-hg
 	depends = java-environment
 	optdepends = texinfo: for help-support in octave
 	optdepends = gnuplot: alternative plotting
-	provides = octave=
+	provides = octave=4.1.0
 	conflicts = octave
 	options = !emptydirs
 	options = !makeflags

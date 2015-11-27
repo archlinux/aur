@@ -19,6 +19,7 @@ makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gnuplot'
 optdepends=('texinfo: for help-support in octave'
 	    'gnuplot: alternative plotting')
 conflicts=('octave')
+provides=("octave=4.1.0")
 install=octave.install
 options=('!emptydirs' '!makeflags')
 _hgroot=http://hg.savannah.gnu.org/hgweb/
@@ -36,8 +37,6 @@ pkgver() {
   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d [])
   echo ${_appver}$(hg identify -n).$(hg identify -i)
 }
-
-provides=("octave=${_appver%+}")
 
 build() {
   cd $srcdir
