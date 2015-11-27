@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=l-smash-git
-pkgver=v2.3.0.147.gad4d50a
+pkgver=v2.9.1.22.g3408947
 pkgrel=1
 pkgdesc="MP4 muxer and other tools. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom:l-smash')
 depends=('glibc')
 makedepends=('git')
 provides=('l-smash' 'liblsmash.so')
-conflicts=('l-smash' 'liblsmash.so')
+conflicts=('l-smash')
 source=('git+https://github.com/l-smash/l-smash.git')
 sha1sums=('SKIP')
 
