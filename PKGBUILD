@@ -11,7 +11,7 @@ depends=(python3)
 makedepends=(make coreutils sed texinfo gzip auto-auto-complete)
 install=bfind.install
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(398981af6b5e178761bed29390a32a1cc8866f09c7771b0a3483ee08a457f61c)
+sha256sums=(2adf446212950b45c800380273f8f04fc3b2365b3e68ca53ac961966844f4c5e)
 
 _prefix=/usr
 
