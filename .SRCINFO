@@ -1,0 +1,14 @@
+pkgbase = menhir
+	pkgdesc = A LR(1) parser generator for the OCaml programming language
+	pkgver = 20151112
+	pkgrel = 1
+	url = http://cristal.inria.fr/~fpottier/menhir/
+	arch = i686
+	arch = x86_64
+	license = custom: QPL-1.0
+	depends = ocaml
+	source = http://cristal.inria.fr/~fpottier/menhir/menhir-20151112.tar.gz
+	md5sums = 51cfe8573ed11949dc0fa2c46dae47e2
+
+pkgname = menhir
+
