@@ -1,7 +1,7 @@
 pkgbase = scissy
 	pkgdesc = Lightweight and standalone git repository server
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abique/scissy
 	install = scissy.install
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = scissy
 	depends = re2
 	depends = mime-types
 	backup = etc/scissy/config.json
-	source = scissy::git://github.com/abique/scissy#tag=0.13.0
+	source = scissy::git://github.com/abique/scissy#tag=0.13.1
 	source = scissy.install
 	source = scissy.service
 	source = scissy.tmpfiles

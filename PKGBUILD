@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Bique <bique.alexandre@gmail.com>
 pkgname=scissy
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and standalone git repository server"
 arch=('i686' 'x86_64')
 url="https://github.com/abique/scissy"
 license=('MIT')
 depends=(git sqlite3 libgit2 gnutls protobuf xz cracklib re2 mime-types)
 source=(
-  scissy::git://github.com/abique/scissy#tag=0.13.0
+  scissy::git://github.com/abique/scissy#tag=$pkgver
   scissy.install
   scissy.service
   scissy.tmpfiles
