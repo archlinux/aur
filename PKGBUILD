@@ -11,7 +11,7 @@
 
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
-pkgver=11.1.0_devel.74002.55365a7
+pkgver=11.2.0_devel.74737.bc2470d
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -122,7 +122,7 @@ package_mesa-vdpau-git() {
 package_mesa-git () {
   pkgdesc="an open-source implementation of the OpenGL specification"
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'systemd' 'elfutils'
-           'libomxil-bellagio' 'libtxc_dxtn' 'llvm-libs-svn')
+           'libomxil-bellagio' 'libtxc_dxtn' 'llvm-libs-svn' 'libxvmc')
   optdepends=('nettle: for GLX-TLS support'
               'opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-git: for accelerated video playback'

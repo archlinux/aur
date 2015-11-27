@@ -1,5 +1,5 @@
 pkgbase = mesa-git
-	pkgver = 11.1.0_devel.74002.55365a7
+	pkgver = 11.2.0_devel.74737.bc2470d
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = i686
@@ -42,7 +42,7 @@ pkgname = opencl-mesa-git
 	depends = ocl-icd
 	depends = libclc
 	depends = nettle
-	depends = mesa-git=11.1.0_devel.74002.55365a7
+	depends = mesa-git=11.2.0_devel.74737.bc2470d
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-mesa=
 	conflicts = opencl-mesa
@@ -51,14 +51,14 @@ pkgname = opencl-mesa-git
 pkgname = libva-mesa-driver-git
 	pkgdesc = VA-API implementation for gallium
 	depends = nettle
-	depends = mesa-git=11.1.0_devel.74002.55365a7
+	depends = mesa-git=11.2.0_devel.74737.bc2470d
 	provides = libva-mesa-driver=
 	conflicts = libva-mesa-driver
 
 pkgname = mesa-vdpau-git
 	pkgdesc = Mesa VDPAU drivers
 	depends = nettle
-	depends = mesa-git=11.1.0_devel.74002.55365a7
+	depends = mesa-git=11.2.0_devel.74737.bc2470d
 	provides = mesa-vdpau=
 	conflicts = mesa-vdpau
 	replaces = mesa-vdpau
@@ -75,6 +75,7 @@ pkgname = mesa-git
 	depends = libomxil-bellagio
 	depends = libtxc_dxtn
 	depends = llvm-libs-svn
+	depends = libxvmc
 	optdepends = nettle: for GLX-TLS support
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	optdepends = mesa-vdpau-git: for accelerated video playback
@@ -91,7 +92,7 @@ pkgname = mesa-git
 
 pkgname = mesa-libgl-git
 	pkgdesc = Mesa 3-D graphics library
-	depends = mesa-git=11.1.0_devel.74002.55365a7
+	depends = mesa-git=11.2.0_devel.74737.bc2470d
 	provides = mesa-libgl=
 	provides = libgl=
 	conflicts = mesa-libgl
