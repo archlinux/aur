@@ -1,0 +1,14 @@
+pkgbase = libomxil-component-xvideo
+	pkgdesc = An opensource implementation of the OpenMAX Integration Layer API - XVideo component
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://omxil.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/omxil/components/libomxxvideo-0.1.tar.gz
+	md5sums = 853c9892f68a14c9a3ff94148701de60
+
+pkgname = libomxil-component-xvideo
+
