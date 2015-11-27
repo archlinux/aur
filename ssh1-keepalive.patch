@@ -1,0 +1,74 @@
+From b3d7661669a0f5255ede81f82c25951aeba9576c Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Sun, 9 Feb 2014 16:09:51 +0000
+Subject: Partial server keep-alive implementation for SSH1
+
+Bug: https://bugzilla.mindrot.org/show_bug.cgi?id=1712
+Last-Update: 2013-09-14
+
+Patch-Name: ssh1-keepalive.patch
+---
+ clientloop.c | 25 +++++++++++++++----------
+ ssh_config.5 |  5 ++++-
+ 2 files changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/clientloop.c b/clientloop.c
+index 77d5498..964353d 100644
+--- a/clientloop.c
++++ b/clientloop.c
+@@ -577,16 +577,21 @@ client_global_request_reply(int type, u_int32_t seq, void *ctxt)
+ static void
+ server_alive_check(void)
+ {
+-	if (packet_inc_alive_timeouts() > options.server_alive_count_max) {
+-		logit("Timeout, server %s not responding.", host);
+-		cleanup_exit(255);
++	if (compat20) {
++		if (packet_inc_alive_timeouts() > options.server_alive_count_max) {
++			logit("Timeout, server %s not responding.", host);
++			cleanup_exit(255);
++		}
++		packet_start(SSH2_MSG_GLOBAL_REQUEST);
++		packet_put_cstring("keepalive@openssh.com");
++		packet_put_char(1);     /* boolean: want reply */
++		packet_send();
++		/* Insert an empty placeholder to maintain ordering */
++		client_register_global_confirm(NULL, NULL);
++	} else {
++		packet_send_ignore(0);
++		packet_send();
+ 	}
+-	packet_start(SSH2_MSG_GLOBAL_REQUEST);
+-	packet_put_cstring("keepalive@openssh.com");
+-	packet_put_char(1);     /* boolean: want reply */
+-	packet_send();
+-	/* Insert an empty placeholder to maintain ordering */
+-	client_register_global_confirm(NULL, NULL);
+ }
+ 
+ /*
+@@ -648,7 +653,7 @@ client_wait_until_can_do_something(fd_set **readsetp, fd_set **writesetp,
+ 	 */
+ 
+ 	timeout_secs = INT_MAX; /* we use INT_MAX to mean no timeout */
+-	if (options.server_alive_interval > 0 && compat20) {
++	if (options.server_alive_interval > 0) {
+ 		timeout_secs = options.server_alive_interval;
+ 		server_alive_time = now + options.server_alive_interval;
+ 	}
+diff --git a/ssh_config.5 b/ssh_config.5
+index b840261..f7510b6 100644
+--- a/ssh_config.5
++++ b/ssh_config.5
+@@ -1414,7 +1414,10 @@ If, for example,
+ .Cm ServerAliveCountMax
+ is left at the default, if the server becomes unresponsive,
+ ssh will disconnect after approximately 45 seconds.
+-This option applies to protocol version 2 only.
++This option applies to protocol version 2 only; in protocol version
++1 there is no mechanism to request a response from the server to the
++server alive messages, so disconnection is the responsibility of the TCP
++stack.
+ .It Cm ServerAliveInterval
+ Sets a timeout interval in seconds after which if no data has been received
+ from the server,

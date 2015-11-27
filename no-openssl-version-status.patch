@@ -1,0 +1,62 @@
+From 0ca693a1acb3b62c1f7d7c1e776d3c160d7c3e84 Mon Sep 17 00:00:00 2001
+From: Kurt Roeckx <kurt@roeckx.be>
+Date: Sun, 9 Feb 2014 16:10:14 +0000
+Subject: Don't check the status field of the OpenSSL version
+
+There is no reason to check the version of OpenSSL (in Debian).  If it's
+not compatible the soname will change.  OpenSSH seems to want to do a
+check for the soname based on the version number, but wants to keep the
+status of the release the same.  Remove that check on the status since
+it doesn't tell you anything about how compatible that version is.
+
+Author: Colin Watson <cjwatson@debian.org>
+Bug-Debian: https://bugs.debian.org/93581
+Bug-Debian: https://bugs.debian.org/664383
+Bug-Debian: https://bugs.debian.org/732940
+Forwarded: not-needed
+Last-Update: 2014-10-07
+
+Patch-Name: no-openssl-version-status.patch
+---
+ openbsd-compat/openssl-compat.c         | 6 +++---
+ openbsd-compat/regress/opensslvertest.c | 1 +
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/openbsd-compat/openssl-compat.c b/openbsd-compat/openssl-compat.c
+index 63a660c..3f62403 100644
+--- a/openbsd-compat/openssl-compat.c
++++ b/openbsd-compat/openssl-compat.c
+@@ -36,7 +36,7 @@
+ /*
+  * OpenSSL version numbers: MNNFFPPS: major minor fix patch status
+  * We match major, minor, fix and status (not patch) for <1.0.0.
+- * After that, we acceptable compatible fix versions (so we
++ * After that, we accept compatible fix and status versions (so we
+  * allow 1.0.1 to work with 1.0.0). Going backwards is only allowed
+  * within a patch series.
+  */
+@@ -57,10 +57,10 @@ ssh_compatible_openssl(long headerver, long libver)
+ 	}
+ 	
+ 	/*
+-	 * For versions >= 1.0.0, major,minor,status must match and library
++	 * For versions >= 1.0.0, major,minor must match and library
+ 	 * fix version must be equal to or newer than the header.
+ 	 */
+-	mask = 0xfff0000fL; /* major,minor,status */
++	mask = 0xfff00000L; /* major,minor */
+ 	hfix = (headerver & 0x000ff000) >> 12;
+ 	lfix = (libver & 0x000ff000) >> 12;
+ 	if ( (headerver & mask) == (libver & mask) && lfix >= hfix)
+diff --git a/openbsd-compat/regress/opensslvertest.c b/openbsd-compat/regress/opensslvertest.c
+index 5d019b5..5847487 100644
+--- a/openbsd-compat/regress/opensslvertest.c
++++ b/openbsd-compat/regress/opensslvertest.c
+@@ -35,6 +35,7 @@ struct version_test {
+ 
+ 	/* built with 1.0.1b release headers */
+ 	{ 0x1000101fL, 0x1000101fL, 1},/* exact match */
++	{ 0x1000101fL, 0x10001010L, 1}, /* different status: ok */
+ 	{ 0x1000101fL, 0x1000102fL, 1},	/* newer library patch version: ok */
+ 	{ 0x1000101fL, 0x1000100fL, 1},	/* older library patch version: ok */
+ 	{ 0x1000101fL, 0x1000201fL, 1},	/* newer library fix version: ok */

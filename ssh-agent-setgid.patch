@@ -1,0 +1,40 @@
+From 991a1f68f57fd602f65b4ac936daf2695be33b21 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Sun, 9 Feb 2014 16:10:13 +0000
+Subject: Document consequences of ssh-agent being setgid in ssh-agent(1)
+
+Bug-Debian: http://bugs.debian.org/711623
+Forwarded: no
+Last-Update: 2013-06-08
+
+Patch-Name: ssh-agent-setgid.patch
+---
+ ssh-agent.1 | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/ssh-agent.1 b/ssh-agent.1
+index d0aa712..2a940d9 100644
+--- a/ssh-agent.1
++++ b/ssh-agent.1
+@@ -186,6 +186,21 @@ environment variable holds the agent's process ID.
+ .Pp
+ The agent exits automatically when the command given on the command
+ line terminates.
++.Pp
++In Debian,
++.Nm
++is installed with the set-group-id bit set, to prevent
++.Xr ptrace 2
++attacks retrieving private key material.
++This has the side-effect of causing the run-time linker to remove certain
++environment variables which might have security implications for set-id
++programs, including
++.Ev LD_PRELOAD ,
++.Ev LD_LIBRARY_PATH ,
++and
++.Ev TMPDIR .
++If you need to set any of these environment variables, you will need to do
++so in the program executed by ssh-agent.
+ .Sh FILES
+ .Bl -tag -width Ds
+ .It Pa $TMPDIR/ssh-XXXXXXXXXX/agent.\*(Ltppid\*(Gt

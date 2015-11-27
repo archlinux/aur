@@ -1,0 +1,41 @@
+From 9921536f50f50eb283dea50c77753eb0773d4258 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nicolas=20Valc=C3=A1rcel?= <nvalcarcel@ubuntu.com>
+Date: Sun, 9 Feb 2014 16:09:59 +0000
+Subject: Adjust scp quoting in verbose mode
+
+Tweak scp's reporting of filenames in verbose mode to be a bit less
+confusing with spaces.
+
+This should be revised to mimic real shell quoting.
+
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/89945
+Last-Update: 2010-02-27
+
+Patch-Name: scp-quoting.patch
+---
+ scp.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/scp.c b/scp.c
+index 593fe89..e39294e 100644
+--- a/scp.c
++++ b/scp.c
+@@ -190,8 +190,16 @@ do_local_cmd(arglist *a)
+ 
+ 	if (verbose_mode) {
+ 		fprintf(stderr, "Executing:");
+-		for (i = 0; i < a->num; i++)
+-			fprintf(stderr, " %s", a->list[i]);
++		for (i = 0; i < a->num; i++) {
++			if (i == 0)
++				fprintf(stderr, " %s", a->list[i]);
++			else
++				/*
++				 * TODO: misbehaves if a->list[i] contains a
++				 * single quote
++				 */
++				fprintf(stderr, " '%s'", a->list[i]);
++		}
+ 		fprintf(stderr, "\n");
+ 	}
+ 	if ((pid = fork()) == -1)

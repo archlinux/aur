@@ -1,0 +1,135 @@
+From 02a61bcb045503a5f3f7e274ac1f4524e30f87c8 Mon Sep 17 00:00:00 2001
+From: Richard Kettlewell <rjk@greenend.org.uk>
+Date: Sun, 9 Feb 2014 16:09:52 +0000
+Subject: Various keepalive extensions
+
+Add compatibility aliases for ProtocolKeepAlives and SetupTimeOut, supported
+in previous versions of Debian's OpenSSH package but since superseded by
+ServerAliveInterval.  (We're probably stuck with this bit for
+compatibility.)
+
+In batch mode, default ServerAliveInterval to five minutes.
+
+Adjust documentation to match and to give some more advice on use of
+keepalives.
+
+Author: Ian Jackson <ian@chiark.greenend.org.uk>
+Author: Matthew Vernon <matthew@debian.org>
+Author: Colin Watson <cjwatson@debian.org>
+Last-Update: 2015-08-19
+
+Patch-Name: keepalive-extensions.patch
+---
+ readconf.c    | 14 ++++++++++++--
+ ssh_config.5  | 21 +++++++++++++++++++--
+ sshd_config.5 |  3 +++
+ 3 files changed, 34 insertions(+), 4 deletions(-)
+
+diff --git a/readconf.c b/readconf.c
+index 85eea48..5c5890c 100644
+--- a/readconf.c
++++ b/readconf.c
+@@ -159,6 +159,7 @@ typedef enum {
+ 	oCanonicalizeFallbackLocal, oCanonicalizePermittedCNAMEs,
+ 	oStreamLocalBindMask, oStreamLocalBindUnlink, oRevokedHostKeys,
+ 	oFingerprintHash, oUpdateHostkeys, oHostbasedKeyTypes,
++	oProtocolKeepAlives, oSetupTimeOut,
+ 	oIgnoredUnknownOption, oDeprecated, oUnsupported
+ } OpCodes;
+ 
+@@ -288,6 +289,8 @@ static struct {
+ 	{ "updatehostkeys", oUpdateHostkeys },
+ 	{ "hostbasedkeytypes", oHostbasedKeyTypes },
+ 	{ "ignoreunknown", oIgnoreUnknown },
++	{ "protocolkeepalives", oProtocolKeepAlives },
++	{ "setuptimeout", oSetupTimeOut },
+ 
+ 	{ NULL, oBadOption }
+ };
+@@ -1299,6 +1302,8 @@ parse_int:
+ 		goto parse_flag;
+ 
+ 	case oServerAliveInterval:
++	case oProtocolKeepAlives: /* Debian-specific compatibility alias */
++	case oSetupTimeOut:	  /* Debian-specific compatibility alias */
+ 		intptr = &options->server_alive_interval;
+ 		goto parse_time;
+ 
+@@ -1858,8 +1863,13 @@ fill_default_options(Options * options)
+ 		options->rekey_interval = 0;
+ 	if (options->verify_host_key_dns == -1)
+ 		options->verify_host_key_dns = 0;
+-	if (options->server_alive_interval == -1)
+-		options->server_alive_interval = 0;
++	if (options->server_alive_interval == -1) {
++		/* in batch mode, default is 5mins */
++		if (options->batch_mode == 1)
++			options->server_alive_interval = 300;
++		else
++			options->server_alive_interval = 0;
++	}
+ 	if (options->server_alive_count_max == -1)
+ 		options->server_alive_count_max = 3;
+ 	if (options->control_master == -1)
+diff --git a/ssh_config.5 b/ssh_config.5
+index f7510b6..21d3e94 100644
+--- a/ssh_config.5
++++ b/ssh_config.5
+@@ -233,8 +233,12 @@ Valid arguments are
+ If set to
+ .Dq yes ,
+ passphrase/password querying will be disabled.
++In addition, the
++.Cm ServerAliveInterval
++option will be set to 300 seconds by default.
+ This option is useful in scripts and other batch jobs where no user
+-is present to supply the password.
++is present to supply the password,
++and where it is desirable to detect a broken network swiftly.
+ The argument must be
+ .Dq yes
+ or
+@@ -1425,8 +1429,15 @@ from the server,
+ will send a message through the encrypted
+ channel to request a response from the server.
+ The default
+-is 0, indicating that these messages will not be sent to the server.
++is 0, indicating that these messages will not be sent to the server,
++or 300 if the
++.Cm BatchMode
++option is set.
+ This option applies to protocol version 2 only.
++.Cm ProtocolKeepAlives
++and
++.Cm SetupTimeOut
++are Debian-specific compatibility aliases for this option.
+ .It Cm StreamLocalBindMask
+ Sets the octal file creation mode mask
+ .Pq umask
+@@ -1492,6 +1503,12 @@ Specifies whether the system should send TCP keepalive messages to the
+ other side.
+ If they are sent, death of the connection or crash of one
+ of the machines will be properly noticed.
++This option only uses TCP keepalives (as opposed to using ssh level
++keepalives), so takes a long time to notice when the connection dies.
++As such, you probably want
++the
++.Cm ServerAliveInterval
++option as well.
+ However, this means that
+ connections will die if the route is down temporarily, and some people
+ find it annoying.
+diff --git a/sshd_config.5 b/sshd_config.5
+index 68424f1..1269bbd 100644
+--- a/sshd_config.5
++++ b/sshd_config.5
+@@ -1443,6 +1443,9 @@ This avoids infinitely hanging sessions.
+ .Pp
+ To disable TCP keepalive messages, the value should be set to
+ .Dq no .
++.Pp
++This option was formerly called
++.Cm KeepAlive .
+ .It Cm TrustedUserCAKeys
+ Specifies a file containing public keys of certificate authorities that are
+ trusted to sign user certificates for authentication, or

@@ -1,0 +1,266 @@
+From 209c51110996719eab04236d72f776eed6bd8226 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Sun, 9 Feb 2014 16:09:58 +0000
+Subject: Allow harmless group-writability
+
+Allow secure files (~/.ssh/config, ~/.ssh/authorized_keys, etc.) to be
+group-writable, provided that the group in question contains only the file's
+owner.  Rejected upstream for IMO incorrect reasons (e.g. a misunderstanding
+about the contents of gr->gr_mem).  Given that per-user groups and umask 002
+are the default setup in Debian (for good reasons - this makes operating in
+setgid directories with other groups much easier), we need to permit this by
+default.
+
+Bug: https://bugzilla.mindrot.org/show_bug.cgi?id=1060
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=314347
+Last-Update: 2013-09-14
+
+Patch-Name: user-group-modes.patch
+---
+ auth-rhosts.c |  6 ++----
+ auth.c        |  9 +++-----
+ misc.c        | 69 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ misc.h        |  2 ++
+ platform.c    | 16 --------------
+ readconf.c    |  5 +++--
+ ssh.1         |  2 ++
+ ssh_config.5  |  2 ++
+ 8 files changed, 82 insertions(+), 29 deletions(-)
+
+diff --git a/auth-rhosts.c b/auth-rhosts.c
+index ee9e827..2ff2cff 100644
+--- a/auth-rhosts.c
++++ b/auth-rhosts.c
+@@ -271,8 +271,7 @@ auth_rhosts2_raw(struct passwd *pw, const char *client_user, const char *hostnam
+ 		return 0;
+ 	}
+ 	if (options.strict_modes &&
+-	    ((st.st_uid != 0 && st.st_uid != pw->pw_uid) ||
+-	    (st.st_mode & 022) != 0)) {
++	    !secure_permissions(&st, pw->pw_uid)) {
+ 		logit("Rhosts authentication refused for %.100s: "
+ 		    "bad ownership or modes for home directory.", pw->pw_name);
+ 		auth_debug_add("Rhosts authentication refused for %.100s: "
+@@ -298,8 +297,7 @@ auth_rhosts2_raw(struct passwd *pw, const char *client_user, const char *hostnam
+ 		 * allowing access to their account by anyone.
+ 		 */
+ 		if (options.strict_modes &&
+-		    ((st.st_uid != 0 && st.st_uid != pw->pw_uid) ||
+-		    (st.st_mode & 022) != 0)) {
++		    !secure_permissions(&st, pw->pw_uid)) {
+ 			logit("Rhosts authentication refused for %.100s: bad modes for %.200s",
+ 			    pw->pw_name, buf);
+ 			auth_debug_add("Bad file modes for %.200s", buf);
+diff --git a/auth.c b/auth.c
+index e6c094d..a99c475 100644
+--- a/auth.c
++++ b/auth.c
+@@ -422,8 +422,7 @@ check_key_in_hostfiles(struct passwd *pw, Key *key, const char *host,
+ 		user_hostfile = tilde_expand_filename(userfile, pw->pw_uid);
+ 		if (options.strict_modes &&
+ 		    (stat(user_hostfile, &st) == 0) &&
+-		    ((st.st_uid != 0 && st.st_uid != pw->pw_uid) ||
+-		    (st.st_mode & 022) != 0)) {
++		    !secure_permissions(&st, pw->pw_uid)) {
+ 			logit("Authentication refused for %.100s: "
+ 			    "bad owner or modes for %.200s",
+ 			    pw->pw_name, user_hostfile);
+@@ -485,8 +484,7 @@ auth_secure_path(const char *name, struct stat *stp, const char *pw_dir,
+ 		snprintf(err, errlen, "%s is not a regular file", buf);
+ 		return -1;
+ 	}
+-	if ((!platform_sys_dir_uid(stp->st_uid) && stp->st_uid != uid) ||
+-	    (stp->st_mode & 022) != 0) {
++	if (!secure_permissions(stp, uid)) {
+ 		snprintf(err, errlen, "bad ownership or modes for file %s",
+ 		    buf);
+ 		return -1;
+@@ -501,8 +499,7 @@ auth_secure_path(const char *name, struct stat *stp, const char *pw_dir,
+ 		strlcpy(buf, cp, sizeof(buf));
+ 
+ 		if (stat(buf, &st) < 0 ||
+-		    (!platform_sys_dir_uid(st.st_uid) && st.st_uid != uid) ||
+-		    (st.st_mode & 022) != 0) {
++		    !secure_permissions(&st, uid)) {
+ 			snprintf(err, errlen,
+ 			    "bad ownership or modes for directory %s", buf);
+ 			return -1;
+diff --git a/misc.c b/misc.c
+index ddd2b2d..1c063ea 100644
+--- a/misc.c
++++ b/misc.c
+@@ -50,8 +50,9 @@
+ #include <netdb.h>
+ #ifdef HAVE_PATHS_H
+ # include <paths.h>
+-#include <pwd.h>
+ #endif
++#include <pwd.h>
++#include <grp.h>
+ #ifdef SSH_TUN_OPENBSD
+ #include <net/if.h>
+ #endif
+@@ -60,6 +61,7 @@
+ #include "misc.h"
+ #include "log.h"
+ #include "ssh.h"
++#include "platform.h"
+ 
+ /* remove newline at end of string */
+ char *
+@@ -644,6 +646,71 @@ read_keyfile_line(FILE *f, const char *filename, char *buf, size_t bufsz,
+ 	return -1;
+ }
+ 
++/*
++ * return 1 if the specified uid is a uid that may own a system directory
++ * otherwise 0.
++ */
++int
++platform_sys_dir_uid(uid_t uid)
++{
++	if (uid == 0)
++		return 1;
++#ifdef PLATFORM_SYS_DIR_UID
++	if (uid == PLATFORM_SYS_DIR_UID)
++		return 1;
++#endif
++	return 0;
++}
++
++int
++secure_permissions(struct stat *st, uid_t uid)
++{
++	if (!platform_sys_dir_uid(st->st_uid) && st->st_uid != uid)
++		return 0;
++	if ((st->st_mode & 002) != 0)
++		return 0;
++	if ((st->st_mode & 020) != 0) {
++		/* If the file is group-writable, the group in question must
++		 * have exactly one member, namely the file's owner.
++		 * (Zero-member groups are typically used by setgid
++		 * binaries, and are unlikely to be suitable.)
++		 */
++		struct passwd *pw;
++		struct group *gr;
++		int members = 0;
++
++		gr = getgrgid(st->st_gid);
++		if (!gr)
++			return 0;
++
++		/* Check primary group memberships. */
++		while ((pw = getpwent()) != NULL) {
++			if (pw->pw_gid == gr->gr_gid) {
++				++members;
++				if (pw->pw_uid != uid)
++					return 0;
++			}
++		}
++		endpwent();
++
++		pw = getpwuid(st->st_uid);
++		if (!pw)
++			return 0;
++
++		/* Check supplementary group memberships. */
++		if (gr->gr_mem[0]) {
++			++members;
++			if (strcmp(pw->pw_name, gr->gr_mem[0]) ||
++			    gr->gr_mem[1])
++				return 0;
++		}
++
++		if (!members)
++			return 0;
++	}
++	return 1;
++}
++
+ int
+ tun_open(int tun, int mode)
+ {
+diff --git a/misc.h b/misc.h
+index 374c33c..89e1f75 100644
+--- a/misc.h
++++ b/misc.h
+@@ -135,4 +135,6 @@ char	*read_passphrase(const char *, int);
+ int	 ask_permission(const char *, ...) __attribute__((format(printf, 1, 2)));
+ int	 read_keyfile_line(FILE *, const char *, char *, size_t, u_long *);
+ 
++int	 secure_permissions(struct stat *st, uid_t uid);
++
+ #endif /* _MISC_H */
+diff --git a/platform.c b/platform.c
+index f35ec39..9a23e6e 100644
+--- a/platform.c
++++ b/platform.c
+@@ -197,19 +197,3 @@ platform_krb5_get_principal_name(const char *pw_name)
+ 	return NULL;
+ #endif
+ }
+-
+-/*
+- * return 1 if the specified uid is a uid that may own a system directory
+- * otherwise 0.
+- */
+-int
+-platform_sys_dir_uid(uid_t uid)
+-{
+-	if (uid == 0)
+-		return 1;
+-#ifdef PLATFORM_SYS_DIR_UID
+-	if (uid == PLATFORM_SYS_DIR_UID)
+-		return 1;
+-#endif
+-	return 0;
+-}
+diff --git a/readconf.c b/readconf.c
+index 5c5890c..5f6c37f 100644
+--- a/readconf.c
++++ b/readconf.c
+@@ -39,6 +39,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <pwd.h>
++#include <grp.h>
+ #ifdef HAVE_UTIL_H
+ #include <util.h>
+ #endif
+@@ -1579,8 +1581,7 @@ read_config_file(const char *filename, struct passwd *pw, const char *host,
+ 
+ 		if (fstat(fileno(f), &sb) == -1)
+ 			fatal("fstat %s: %s", filename, strerror(errno));
+-		if (((sb.st_uid != 0 && sb.st_uid != getuid()) ||
+-		    (sb.st_mode & 022) != 0))
++		if (!secure_permissions(&sb, getuid()))
+ 			fatal("Bad owner or permissions on %s", filename);
+ 	}
+ 
+diff --git a/ssh.1 b/ssh.1
+index df7ac86..c84196f 100644
+--- a/ssh.1
++++ b/ssh.1
+@@ -1371,6 +1371,8 @@ The file format and configuration options are described in
+ .Xr ssh_config 5 .
+ Because of the potential for abuse, this file must have strict permissions:
+ read/write for the user, and not writable by others.
++It may be group-writable provided that the group in question contains only
++the user.
+ .Pp
+ .It Pa ~/.ssh/environment
+ Contains additional definitions for environment variables; see
+diff --git a/ssh_config.5 b/ssh_config.5
+index 21d3e94..1d0c52b 100644
+--- a/ssh_config.5
++++ b/ssh_config.5
+@@ -1706,6 +1706,8 @@ The format of this file is described above.
+ This file is used by the SSH client.
+ Because of the potential for abuse, this file must have strict permissions:
+ read/write for the user, and not accessible by others.
++It may be group-writable provided that the group in question contains only
++the user.
+ .It Pa /etc/ssh/ssh_config
+ Systemwide configuration file.
+ This file provides defaults for those

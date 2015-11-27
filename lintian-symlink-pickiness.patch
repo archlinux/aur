@@ -1,0 +1,32 @@
+From 5919db7dc21a34c31be70170728c2838ff59b740 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Sun, 9 Feb 2014 16:10:08 +0000
+Subject: Fix picky lintian errors about slogin symlinks
+
+Apparently this breaks some SVR4 packaging systems, so upstream can't win
+either way and opted to keep the status quo.  We need this patch anyway.
+
+Bug: https://bugzilla.mindrot.org/show_bug.cgi?id=1728
+Last-Update: 2013-09-14
+
+Patch-Name: lintian-symlink-pickiness.patch
+---
+ Makefile.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 37cb023..f52f903 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -331,9 +331,9 @@ install-files:
+ 	$(INSTALL) -m 644 ssh-keysign.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-keysign.8
+ 	$(INSTALL) -m 644 ssh-pkcs11-helper.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-pkcs11-helper.8
+ 	-rm -f $(DESTDIR)$(bindir)/slogin
+-	ln -s ./ssh$(EXEEXT) $(DESTDIR)$(bindir)/slogin
++	ln -s ssh$(EXEEXT) $(DESTDIR)$(bindir)/slogin
+ 	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/slogin.1
+-	ln -s ./ssh.1 $(DESTDIR)$(mandir)/$(mansubdir)1/slogin.1
++	ln -s ssh.1 $(DESTDIR)$(mandir)/$(mansubdir)1/slogin.1
+ 
+ install-sysconf:
+ 	if [ ! -d $(DESTDIR)$(sysconfdir) ]; then \

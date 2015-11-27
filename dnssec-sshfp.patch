@@ -1,0 +1,94 @@
+From dbde51cd7abb931b2d8635230bd77c9ec3b75074 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Sun, 9 Feb 2014 16:10:01 +0000
+Subject: Force use of DNSSEC even if "options edns0" isn't in resolv.conf
+
+This allows SSHFP DNS records to be verified if glibc 2.11 is installed.
+
+Origin: vendor, https://cvs.fedoraproject.org/viewvc/F-12/openssh/openssh-5.2p1-edns.patch?revision=1.1&view=markup
+Bug: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=572049
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=572049
+Last-Update: 2010-04-06
+
+Patch-Name: dnssec-sshfp.patch
+---
+ dns.c                           | 14 +++++++++++++-
+ openbsd-compat/getrrsetbyname.c | 10 +++++-----
+ openbsd-compat/getrrsetbyname.h |  3 +++
+ 3 files changed, 21 insertions(+), 6 deletions(-)
+
+diff --git a/dns.c b/dns.c
+index f201b60..a406f58 100644
+--- a/dns.c
++++ b/dns.c
+@@ -206,6 +206,7 @@ verify_host_key_dns(const char *hostname, struct sockaddr *address,
+ {
+ 	u_int counter;
+ 	int result;
++	unsigned int rrset_flags = 0;
+ 	struct rrsetinfo *fingerprints = NULL;
+ 
+ 	u_int8_t hostkey_algorithm;
+@@ -229,8 +230,19 @@ verify_host_key_dns(const char *hostname, struct sockaddr *address,
+ 		return -1;
+ 	}
+ 
++	/*
++	 * Original getrrsetbyname function, found on OpenBSD for example,
++	 * doesn't accept any flag and prerequisite for obtaining AD bit in
++	 * DNS response is set by "options edns0" in resolv.conf.
++	 *
++	 * Our version is more clever and use RRSET_FORCE_EDNS0 flag.
++	 */
++#ifndef HAVE_GETRRSETBYNAME
++	rrset_flags |= RRSET_FORCE_EDNS0;
++#endif
+ 	result = getrrsetbyname(hostname, DNS_RDATACLASS_IN,
+-	    DNS_RDATATYPE_SSHFP, 0, &fingerprints);
++	    DNS_RDATATYPE_SSHFP, rrset_flags, &fingerprints);
++
+ 	if (result) {
+ 		verbose("DNS lookup error: %s", dns_result_totext(result));
+ 		return -1;
+diff --git a/openbsd-compat/getrrsetbyname.c b/openbsd-compat/getrrsetbyname.c
+index dc6fe05..e061a29 100644
+--- a/openbsd-compat/getrrsetbyname.c
++++ b/openbsd-compat/getrrsetbyname.c
+@@ -209,8 +209,8 @@ getrrsetbyname(const char *hostname, unsigned int rdclass,
+ 		goto fail;
+ 	}
+ 
+-	/* don't allow flags yet, unimplemented */
+-	if (flags) {
++	/* Allow RRSET_FORCE_EDNS0 flag only. */
++	if ((flags & !RRSET_FORCE_EDNS0) != 0) {
+ 		result = ERRSET_INVAL;
+ 		goto fail;
+ 	}
+@@ -226,9 +226,9 @@ getrrsetbyname(const char *hostname, unsigned int rdclass,
+ #endif /* DEBUG */
+ 
+ #ifdef RES_USE_DNSSEC
+-	/* turn on DNSSEC if EDNS0 is configured */
+-	if (_resp->options & RES_USE_EDNS0)
+-		_resp->options |= RES_USE_DNSSEC;
++	/* turn on DNSSEC if required  */
++	if (flags & RRSET_FORCE_EDNS0)
++		_resp->options |= (RES_USE_EDNS0|RES_USE_DNSSEC);
+ #endif /* RES_USE_DNSEC */
+ 
+ 	/* make query */
+diff --git a/openbsd-compat/getrrsetbyname.h b/openbsd-compat/getrrsetbyname.h
+index 1283f55..dbbc85a 100644
+--- a/openbsd-compat/getrrsetbyname.h
++++ b/openbsd-compat/getrrsetbyname.h
+@@ -72,6 +72,9 @@
+ #ifndef RRSET_VALIDATED
+ # define RRSET_VALIDATED	1
+ #endif
++#ifndef RRSET_FORCE_EDNS0
++# define RRSET_FORCE_EDNS0	0x0001
++#endif
+ 
+ /*
+  * Return codes for getrrsetbyname()

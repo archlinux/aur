@@ -1,0 +1,65 @@
+From d0d72d370d0f02c220401029af04065c88055a4c Mon Sep 17 00:00:00 2001
+From: Matthew Vernon <matthew@debian.org>
+Date: Sun, 9 Feb 2014 16:10:05 +0000
+Subject: Include the Debian version in our identification
+
+This makes it easier to audit networks for versions patched against security
+vulnerabilities.  It has little detrimental effect, as attackers will
+generally just try attacks rather than bothering to scan for
+vulnerable-looking version strings.  (However, see debian-banner.patch.)
+
+Forwarded: not-needed
+Last-Update: 2013-09-14
+
+Patch-Name: package-versioning.patch
+---
+ sshconnect.c | 4 ++--
+ sshd.c       | 2 +-
+ version.h    | 7 ++++++-
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/sshconnect.c b/sshconnect.c
+index 4aff104..2999061 100644
+--- a/sshconnect.c
++++ b/sshconnect.c
+@@ -524,10 +524,10 @@ send_client_banner(int connection_out, int minor1)
+ 	/* Send our own protocol version identification. */
+ 	if (compat20) {
+ 		xasprintf(&client_version_string, "SSH-%d.%d-%.100s\r\n",
+-		    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION);
++		    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_RELEASE);
+ 	} else {
+ 		xasprintf(&client_version_string, "SSH-%d.%d-%.100s\n",
+-		    PROTOCOL_MAJOR_1, minor1, SSH_VERSION);
++		    PROTOCOL_MAJOR_1, minor1, SSH_RELEASE);
+ 	}
+ 	if (roaming_atomicio(vwrite, connection_out, client_version_string,
+ 	    strlen(client_version_string)) != strlen(client_version_string))
+diff --git a/sshd.c b/sshd.c
+index 9ff9e8b..96e75c6 100644
+--- a/sshd.c
++++ b/sshd.c
+@@ -442,7 +442,7 @@ sshd_exchange_identification(int sock_in, int sock_out)
+ 	}
+ 
+ 	xasprintf(&server_version_string, "SSH-%d.%d-%.100s%s%s%s",
+-	    major, minor, SSH_VERSION,
++	    major, minor, SSH_RELEASE,
+ 	    *options.version_addendum == '\0' ? "" : " ",
+ 	    options.version_addendum, newline);
+ 
+diff --git a/version.h b/version.h
+index b58fbe1..bff2b3b 100644
+--- a/version.h
++++ b/version.h
+@@ -3,4 +3,9 @@
+ #define SSH_VERSION	"OpenSSH_6.9"
+ 
+ #define SSH_PORTABLE	"p1"
+-#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
++#define SSH_RELEASE_MINIMUM	SSH_VERSION SSH_PORTABLE
++#ifdef SSH_EXTRAVERSION
++#define SSH_RELEASE	SSH_RELEASE_MINIMUM " " SSH_EXTRAVERSION
++#else
++#define SSH_RELEASE	SSH_RELEASE_MINIMUM
++#endif

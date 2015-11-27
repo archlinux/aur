@@ -1,0 +1,172 @@
+From ace4bfab52b31a2833636a243ba150fdf0f48293 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Tue, 7 Oct 2014 13:22:41 +0100
+Subject: Restore TCP wrappers support
+
+Support for TCP wrappers was dropped in OpenSSH 6.7.  See this message
+and thread:
+
+  https://lists.mindrot.org/pipermail/openssh-unix-dev/2014-April/032497.html
+
+It is true that this reduces preauth attack surface in sshd.  On the
+other hand, this support seems to be quite widely used, and abruptly
+dropping it (from the perspective of users who don't read
+openssh-unix-dev) could easily cause more serious problems in practice.
+
+It's not entirely clear what the right long-term answer for Debian is,
+but it at least probably doesn't involve dropping this feature shortly
+before a freeze.
+
+Forwarded: not-needed
+Last-Update: 2014-10-07
+
+Patch-Name: restore-tcp-wrappers.patch
+---
+ configure.ac | 57 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ sshd.8       |  7 +++++++
+ sshd.c       | 25 +++++++++++++++++++++++++
+ 3 files changed, 89 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index df21693..4d55c46 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1448,6 +1448,62 @@ AC_ARG_WITH([skey],
+ 	]
+ )
+ 
++# Check whether user wants TCP wrappers support
++TCPW_MSG="no"
++AC_ARG_WITH([tcp-wrappers],
++	[  --with-tcp-wrappers[[=PATH]] Enable tcpwrappers support (optionally in PATH)],
++	[
++		if test "x$withval" != "xno" ; then
++			saved_LIBS="$LIBS"
++			saved_LDFLAGS="$LDFLAGS"
++			saved_CPPFLAGS="$CPPFLAGS"
++			if test -n "${withval}" && \
++			    test "x${withval}" != "xyes"; then
++				if test -d "${withval}/lib"; then
++					if test -n "${need_dash_r}"; then
++						LDFLAGS="-L${withval}/lib -R${withval}/lib ${LDFLAGS}"
++					else
++						LDFLAGS="-L${withval}/lib ${LDFLAGS}"
++					fi
++				else
++					if test -n "${need_dash_r}"; then
++						LDFLAGS="-L${withval} -R${withval} ${LDFLAGS}"
++					else
++						LDFLAGS="-L${withval} ${LDFLAGS}"
++					fi
++				fi
++				if test -d "${withval}/include"; then
++					CPPFLAGS="-I${withval}/include ${CPPFLAGS}"
++				else
++					CPPFLAGS="-I${withval} ${CPPFLAGS}"
++				fi
++			fi
++			LIBS="-lwrap $LIBS"
++			AC_MSG_CHECKING([for libwrap])
++			AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++#include <sys/types.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <tcpd.h>
++int deny_severity = 0, allow_severity = 0;
++				]], [[
++	hosts_access(0);
++				]])], [
++					AC_MSG_RESULT([yes])
++					AC_DEFINE([LIBWRAP], [1],
++						[Define if you want
++						TCP Wrappers support])
++					SSHDLIBS="$SSHDLIBS -lwrap"
++					TCPW_MSG="yes"
++				], [
++					AC_MSG_ERROR([*** libwrap missing])
++				
++			])
++			LIBS="$saved_LIBS"
++		fi
++	]
++)
++
+ # Check whether user wants to use ldns
+ LDNS_MSG="no"
+ AC_ARG_WITH(ldns,
+@@ -4928,6 +4984,7 @@ echo "                 KerberosV support: $KRB5_MSG"
+ echo "                   SELinux support: $SELINUX_MSG"
+ echo "                 Smartcard support: $SCARD_MSG"
+ echo "                     S/KEY support: $SKEY_MSG"
++echo "              TCP Wrappers support: $TCPW_MSG"
+ echo "              MD5 password support: $MD5_MSG"
+ echo "                   libedit support: $LIBEDIT_MSG"
+ echo "  Solaris process contract support: $SPC_MSG"
+diff --git a/sshd.8 b/sshd.8
+index dcf20f0..5afd10f 100644
+--- a/sshd.8
++++ b/sshd.8
+@@ -853,6 +853,12 @@ the user's home directory becomes accessible.
+ This file should be writable only by the user, and need not be
+ readable by anyone else.
+ .Pp
++.It Pa /etc/hosts.allow
++.It Pa /etc/hosts.deny
++Access controls that should be enforced by tcp-wrappers are defined here.
++Further details are described in
++.Xr hosts_access 5 .
++.Pp
+ .It Pa /etc/hosts.equiv
+ This file is for host-based authentication (see
+ .Xr ssh 1 ) .
+@@ -956,6 +962,7 @@ The content of this file is not sensitive; it can be world-readable.
+ .Xr ssh-keygen 1 ,
+ .Xr ssh-keyscan 1 ,
+ .Xr chroot 2 ,
++.Xr hosts_access 5 ,
+ .Xr login.conf 5 ,
+ .Xr moduli 5 ,
+ .Xr sshd_config 5 ,
+diff --git a/sshd.c b/sshd.c
+index 6b85e6c..186ad55 100644
+--- a/sshd.c
++++ b/sshd.c
+@@ -129,6 +129,13 @@
+ #include <Security/AuthSession.h>
+ #endif
+ 
++#ifdef LIBWRAP
++#include <tcpd.h>
++#include <syslog.h>
++int allow_severity;
++int deny_severity;
++#endif /* LIBWRAP */
++
+ #ifndef O_NOCTTY
+ #define O_NOCTTY	0
+ #endif
+@@ -2141,6 +2148,24 @@ main(int ac, char **av)
+ #ifdef SSH_AUDIT_EVENTS
+ 	audit_connection_from(remote_ip, remote_port);
+ #endif
++#ifdef LIBWRAP
++	allow_severity = options.log_facility|LOG_INFO;
++	deny_severity = options.log_facility|LOG_WARNING;
++	/* Check whether logins are denied from this host. */
++	if (packet_connection_is_on_socket()) {
++		struct request_info req;
++
++		request_init(&req, RQ_DAEMON, __progname, RQ_FILE, sock_in, 0);
++		fromhost(&req);
++
++		if (!hosts_access(&req)) {
++			debug("Connection refused by tcp wrapper");
++			refuse(&req);
++			/* NOTREACHED */
++			fatal("libwrap refuse returns");
++		}
++	}
++#endif /* LIBWRAP */
+ 
+ 	/* Log the connection. */
+ 	laddr = get_local_ipaddr(sock_in);

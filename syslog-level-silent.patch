@@ -1,0 +1,47 @@
+From 9e6bb8525886d99876eb43a3b39c96bdf3032146 Mon Sep 17 00:00:00 2001
+From: Jonathan David Amery <jdamery@ysolde.ucam.org>
+Date: Sun, 9 Feb 2014 16:09:54 +0000
+Subject: "LogLevel SILENT" compatibility
+
+"LogLevel SILENT" (-qq) was introduced in Debian openssh 1:3.0.1p1-1 to
+match the behaviour of non-free SSH, in which -q does not suppress fatal
+errors.  However, this was unintentionally broken in 1:4.6p1-2 and nobody
+complained, so we've dropped most of it.  The parts that remain are basic
+configuration file compatibility, and an adjustment to "Pseudo-terminal will
+not be allocated ..." which should be split out into a separate patch.
+
+Author: Matthew Vernon <matthew@debian.org>
+Author: Colin Watson <cjwatson@debian.org>
+Last-Update: 2013-09-14
+
+Patch-Name: syslog-level-silent.patch
+---
+ log.c | 1 +
+ ssh.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/log.c b/log.c
+index 32e1d2e..53e7b65 100644
+--- a/log.c
++++ b/log.c
+@@ -94,6 +94,7 @@ static struct {
+ 	LogLevel val;
+ } log_levels[] =
+ {
++	{ "SILENT",	SYSLOG_LEVEL_QUIET }, /* compatibility */
+ 	{ "QUIET",	SYSLOG_LEVEL_QUIET },
+ 	{ "FATAL",	SYSLOG_LEVEL_FATAL },
+ 	{ "ERROR",	SYSLOG_LEVEL_ERROR },
+diff --git a/ssh.c b/ssh.c
+index 3fd5a94..d99f7ef 100644
+--- a/ssh.c
++++ b/ssh.c
+@@ -1105,7 +1105,7 @@ main(int ac, char **av)
+ 	/* Do not allocate a tty if stdin is not a tty. */
+ 	if ((!isatty(fileno(stdin)) || stdin_null_flag) &&
+ 	    options.request_tty != REQUEST_TTY_FORCE) {
+-		if (tty_flag)
++		if (tty_flag && options.log_level != SYSLOG_LEVEL_QUIET)
+ 			logit("Pseudo-terminal will not be allocated because "
+ 			    "stdin is not a terminal.");
+ 		tty_flag = 0;

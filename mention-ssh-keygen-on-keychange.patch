@@ -1,0 +1,42 @@
+From 68580f4a03088e52e1d680389a35655c85613c7a Mon Sep 17 00:00:00 2001
+From: Scott Moser <smoser@ubuntu.com>
+Date: Sun, 9 Feb 2014 16:10:03 +0000
+Subject: Mention ssh-keygen in ssh fingerprint changed warning
+
+Bug: https://bugzilla.mindrot.org/show_bug.cgi?id=1843
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/686607
+Last-Update: 2015-09-08
+
+Patch-Name: mention-ssh-keygen-on-keychange.patch
+---
+ sshconnect.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/sshconnect.c b/sshconnect.c
+index 8adc943..4aff104 100644
+--- a/sshconnect.c
++++ b/sshconnect.c
+@@ -1078,9 +1078,13 @@ check_host_key(char *hostname, struct sockaddr *hostaddr, u_short port,
+ 			error("%s. This could either mean that", key_msg);
+ 			error("DNS SPOOFING is happening or the IP address for the host");
+ 			error("and its host key have changed at the same time.");
+-			if (ip_status != HOST_NEW)
++			if (ip_status != HOST_NEW) {
+ 				error("Offending key for IP in %s:%lu",
+ 				    ip_found->file, ip_found->line);
++				error("  remove with:");
++				error("  ssh-keygen -f \"%s\" -R %s",
++				    ip_found->file, ip);
++			}
+ 		}
+ 		/* The host key has changed. */
+ 		warn_changed_key(host_key);
+@@ -1088,6 +1092,8 @@ check_host_key(char *hostname, struct sockaddr *hostaddr, u_short port,
+ 		    user_hostfiles[0]);
+ 		error("Offending %s key in %s:%lu", key_type(host_found->key),
+ 		    host_found->file, host_found->line);
++		error("  remove with:");
++		error("  ssh-keygen -f \"%s\" -R %s", host_found->file, host);
+ 
+ 		/*
+ 		 * If strict host key checking is in use, the user will have

@@ -1,0 +1,29 @@
+From 99babbe6caea4ebf504fc3378012e0d6889a554e Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@ubuntu.com>
+Date: Sun, 9 Feb 2014 16:10:12 +0000
+Subject: Refer to ssh's Upstart job as well as its init script
+
+Forwarded: not-needed
+Last-Update: 2013-09-14
+
+Patch-Name: doc-upstart.patch
+---
+ sshd.8 | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/sshd.8 b/sshd.8
+index 2f4d4f3..42f1520 100644
+--- a/sshd.8
++++ b/sshd.8
+@@ -67,7 +67,10 @@ over an insecure network.
+ .Nm
+ listens for connections from clients.
+ It is normally started at boot from
+-.Pa /etc/init.d/ssh .
++.Pa /etc/init.d/ssh
++(or
++.Pa /etc/init/ssh.conf
++on systems using the Upstart init daemon).
+ It forks a new
+ daemon for each incoming connection.
+ The forked daemons handle

@@ -1,0 +1,111 @@
+From 781bef6cb1a423864072a07c08c9ae95c554b07a Mon Sep 17 00:00:00 2001
+From: Kees Cook <kees@debian.org>
+Date: Sun, 9 Feb 2014 16:10:06 +0000
+Subject: Add DebianBanner server configuration option
+
+Setting this to "no" causes sshd to omit the Debian revision from its
+initial protocol handshake, for those scared by package-versioning.patch.
+
+Bug-Debian: http://bugs.debian.org/562048
+Forwarded: not-needed
+Last-Update: 2015-08-19
+
+Patch-Name: debian-banner.patch
+---
+ servconf.c    | 9 +++++++++
+ servconf.h    | 2 ++
+ sshd.c        | 3 ++-
+ sshd_config.5 | 5 +++++
+ 4 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/servconf.c b/servconf.c
+index 8a5bd7b..fe3e311 100644
+--- a/servconf.c
++++ b/servconf.c
+@@ -169,6 +169,7 @@ initialize_server_options(ServerOptions *options)
+ 	options->ip_qos_bulk = -1;
+ 	options->version_addendum = NULL;
+ 	options->fingerprint_hash = -1;
++	options->debian_banner = -1;
+ }
+ 
+ /* Returns 1 if a string option is unset or set to "none" or 0 otherwise. */
+@@ -347,6 +348,8 @@ fill_default_server_options(ServerOptions *options)
+ 		options->fwd_opts.streamlocal_bind_unlink = 0;
+ 	if (options->fingerprint_hash == -1)
+ 		options->fingerprint_hash = SSH_FP_HASH_DEFAULT;
++	if (options->debian_banner == -1)
++		options->debian_banner = 1;
+ 	/* Turn privilege separation on by default */
+ 	if (use_privsep == -1)
+ 		use_privsep = PRIVSEP_NOSANDBOX;
+@@ -419,6 +422,7 @@ typedef enum {
+ 	sAuthenticationMethods, sHostKeyAgent, sPermitUserRC,
+ 	sStreamLocalBindMask, sStreamLocalBindUnlink,
+ 	sAllowStreamLocalForwarding, sFingerprintHash,
++	sDebianBanner,
+ 	sDeprecated, sUnsupported
+ } ServerOpCodes;
+ 
+@@ -565,6 +569,7 @@ static struct {
+ 	{ "streamlocalbindunlink", sStreamLocalBindUnlink, SSHCFG_ALL },
+ 	{ "allowstreamlocalforwarding", sAllowStreamLocalForwarding, SSHCFG_ALL },
+ 	{ "fingerprinthash", sFingerprintHash, SSHCFG_GLOBAL },
++	{ "debianbanner", sDebianBanner, SSHCFG_GLOBAL },
+ 	{ NULL, sBadOption, 0 }
+ };
+ 
+@@ -1850,6 +1855,10 @@ process_server_config_line(ServerOptions *options, char *line,
+ 			options->fingerprint_hash = value;
+ 		break;
+ 
++	case sDebianBanner:
++		intptr = &options->debian_banner;
++		goto parse_int;
++
+ 	case sDeprecated:
+ 		logit("%s line %d: Deprecated option %s",
+ 		    filename, linenum, arg);
+diff --git a/servconf.h b/servconf.h
+index b99b270..ba7b739 100644
+--- a/servconf.h
++++ b/servconf.h
+@@ -196,6 +196,8 @@ typedef struct {
+ 	char   *auth_methods[MAX_AUTH_METHODS];
+ 
+ 	int	fingerprint_hash;
++
++	int	debian_banner;
+ }       ServerOptions;
+ 
+ /* Information about the incoming connection as used by Match */
+diff --git a/sshd.c b/sshd.c
+index 96e75c6..7886d0e 100644
+--- a/sshd.c
++++ b/sshd.c
+@@ -442,7 +442,8 @@ sshd_exchange_identification(int sock_in, int sock_out)
+ 	}
+ 
+ 	xasprintf(&server_version_string, "SSH-%d.%d-%.100s%s%s%s",
+-	    major, minor, SSH_RELEASE,
++	    major, minor,
++	    options.debian_banner ? SSH_RELEASE : SSH_RELEASE_MINIMUM,
+ 	    *options.version_addendum == '\0' ? "" : " ",
+ 	    options.version_addendum, newline);
+ 
+diff --git a/sshd_config.5 b/sshd_config.5
+index 1269bbd..a5afbc3 100644
+--- a/sshd_config.5
++++ b/sshd_config.5
+@@ -528,6 +528,11 @@ or
+ .Dq no .
+ The default is
+ .Dq delayed .
++.It Cm DebianBanner
++Specifies whether the distribution-specified extra version suffix is
++included during initial protocol handshake.
++The default is
++.Dq yes .
+ .It Cm DenyGroups
+ This keyword can be followed by a list of group name patterns, separated
+ by spaces.
