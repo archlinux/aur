@@ -1,0 +1,17 @@
+proper memory address printf
+
+Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
+
+--- src/omx_maddec_component.c.orig	2015-11-27 11:35:13.591909600 +0100
++++ src/omx_maddec_component.c	2015-11-27 11:35:32.438400973 +0100
+@@ -86,8 +86,8 @@
+       return OMX_ErrorInsufficientResources;
+     }
+   }  else {
+-    DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %x Already Allocated\n",
+-              __func__, (int)openmaxStandComp->pComponentPrivate);
++    DEBUG(DEB_LEV_FUNCTION_NAME, "In %s, Error Component %p Already Allocated\n",
++              __func__, openmaxStandComp->pComponentPrivate);
+   }
+ 
+   omx_maddec_component_Private = openmaxStandComp->pComponentPrivate;
