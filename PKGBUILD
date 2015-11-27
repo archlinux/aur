@@ -1,6 +1,6 @@
 # Author: Martin Minka <martin dot minka at gmail dot com>
 pkgname=xtbackup
-pkgver=0.8.5
+pkgver=0.8.6
 asdkver=1.6.3
 pkgrel=1
 pkgdesc="PHP backup script/library with special drivers for MySQL, Amazon RDS and Amazon S3."
@@ -9,7 +9,7 @@ url="http://k2s.github.io/xtbackup/"
 license=('custom:UNLICENSE' 'Apache')
 depends=('php' 'php-sqlite')
 source=("https://github.com/k2s/xtbackup/archive/v${pkgver}.tar.gz" "https://github.com/amazonwebservices/aws-sdk-for-php/archive/${asdkver}.tar.gz")
-md5sums=('0ac64cb2250efaec784d764ee66caa49'
+md5sums=('08cb6382a2d627da4abad2eec3c1b49d'
          '6c6b4d4b3d181f8ef29ee7772836d9e1')
 build() {
   cd "$srcdir/xtbackup-${pkgver}"
