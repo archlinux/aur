@@ -59,8 +59,8 @@ optdepends=(# Pretty much required
 install='panda3d.install'
 source=("$url/download/panda3d-$pkgver/panda3d-$pkgver.tar.gz"
         'panda3d.install')
-md5sums=('3318f2ea070c46a93d736317f98f7da4'
-         'a09747c400c85af456e91fd650a60038')
+md5sums=('a09747c400c85af456e91fd650a60038'
+         '057269173f3c1987953302519bc744fa')
 JOBS=$(nproc)
 
 build() {
