@@ -1,7 +1,7 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=elm-platform
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Bundle of all core development tools for the Elm language."
 arch=('i686' 'x86_64')
 url="http://elm-lang.org"
@@ -16,10 +16,10 @@ source=(
   elm-reactor.zip::https://github.com/elm-lang/elm-reactor/archive/${pkgver}.zip
   elm-repl.zip::https://github.com/elm-lang/elm-repl/archive/${pkgver}.zip
 )
-sha256sums=('debc956f37b6d886eecda78d4145a2033c96a27cc3e704cae4dbce7769422768'
+sha256sums=('c43af1b31dc714ad8855559beedfc1aafc3c39a6c7a495803bf959d7fcb16504'
             '9a55965c8cdfbecb62c71f2474a49f0f40b7f356cf5400aaee841fc88c161962'
-            '78b2a31eb158b930fbce9a7723fb0f7cdc0bdff7d42f4a0db47fed2ebcc291f1'
-            '0fd2e8357eb8757e9b889023b84223d0b1059ae5493c44f3a6597c132d1db41f'
+            '82520c6d97ffde781149cf53e65e2fc81b3a39578912a0f053af9d9ccf26df2c'
+            '35d83d6c2d0b4590070cb219176fe8ad3e442b314f652b539b4980f6038937dc'
             '930fc39b361675909f755ec1badfed451552c106ca0cc6a8778155569f1a5d4d')
 
 prepare() {
