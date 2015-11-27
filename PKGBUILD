@@ -1,5 +1,5 @@
 pkgname=fortune-mod-willandgrace
-pkgver=1508300240
+pkgver=1511192024
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Will & Grace"

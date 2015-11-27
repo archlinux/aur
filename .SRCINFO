@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-willandgrace
 	pkgdesc = Fortune quotes from Will & Grace
-	pkgver = 1508300240
+	pkgver = 1511192024
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Will_&_Grace
 	arch = any
