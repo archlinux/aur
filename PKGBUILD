@@ -6,12 +6,10 @@ pkgdesc="UCloner is a backup/restore/clone tool. Modified for Arch Linux"
 arch=('any')
 url="https://code.google.com/p/ucloner"
 license=('GPL')
-depends=('pygtk' 'vte' 'squashfs-tools' 'zenity' 'rsync')
+depends=('pygtk' 'vte' 'squashfs-tools' 'zenity' 'rsync' 'polkit')
 optdepends=('jfsutils: Create jfs file system in ucloner.'
             'reiserfsprogs: Create reiserfs file system in ucloner.'
-            'xfsprogs: Create xfs file system in ucloner.'
-            'gksu: Access ucloner from application menu under GTK-base DE'
-            'kdesu: Access ucloner from application menu under KDE')
+            'xfsprogs: Create xfs file system in ucloner.')
 source=(
     'https://ucloner.googlecode.com/files/UCloner-10.10.2-beta1.tar.gz'
     'ucloner.sh'

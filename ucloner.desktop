@@ -2,7 +2,7 @@
 Categories=Utility;
 Comment[zh_CN]=Linux系统备份工具
 Comment=Linux system backup utility
-Exec=[ -f /usr/bin/gksu ] && exec gksu ucloner || exec kdesu ucloner
+Exec=pkexec ucloner
 GenericName[zh_CN]=
 GenericName=
 Icon=ucloner
