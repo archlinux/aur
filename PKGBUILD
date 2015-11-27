@@ -26,7 +26,7 @@ source_x86_64=('http://dl.ak.ankama.com/games/dofus2-beta/setup/setup-beta-trans
 md5sums=('91023d67a519421912b3d101ded7ca12'
          '0e797e4fcf39e1d06f68b51bfd215040'
          'f179eaa5e6e6674b1853cf826fc33c3a'
-         'a80f74d45dc98aed9cb8436b775bd0ad')
+         'fa976733b3be4df63e157ee6c3dd1186')
 md5sums_i686=('7dac81b01102aeafc0664e0e5e1d7106')
 md5sums_x86_64=('2daef0db4643b34688ba67793412f07b')
 
