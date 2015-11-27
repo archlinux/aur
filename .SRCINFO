@@ -1,0 +1,14 @@
+pkgbase = sncli-git
+	pkgdesc = Simplenote Command Line Interface
+	pkgver = 0.148.2b9a20d
+	pkgrel = 1
+	url = https://github.com/insanum/sncli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2-urwid
+	source = git://github.com/insanum/sncli.git
+	md5sums = SKIP
+
+pkgname = sncli-git
+
