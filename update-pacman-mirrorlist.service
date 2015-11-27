@@ -4,6 +4,7 @@ After=network-online.target
 
 [Service]
 ExecStart=/usr/bin/update-pacman-mirrorlist
+NoNewPrivileges=yes
 PrivateDevices=yes
 PrivateTmp=yes
 ProtectHome=yes
