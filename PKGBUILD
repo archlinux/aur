@@ -2,7 +2,7 @@
 
 _npmname=generator-aspnet
 pkgname=nodejs-generator-aspnet
-pkgver=0.0.80
+pkgver=0.0.91
 pkgrel=1
 pkgdesc="Yeoman generator for ASP.Net"
 arch=('any')
@@ -22,4 +22,4 @@ package() {
   rm -rf "$pkgdir"/usr/lib/node_modules/{grunt-cli,bower,yo}
 }
  
-sha256sums=('4a5f91ea9c48946932a4b7d7679a397818968c9df9f5c33a92008ff220f83171')
+sha256sums=('232888fda9d9369c0cb59a61487a747d35393806e7538572126ae35771265716')
