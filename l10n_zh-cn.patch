@@ -13,7 +13,7 @@ diff -Naur a/po/zh_CN/CMakeLists.txt b/po/zh_CN/CMakeLists.txt
 +++ b/po/zh_CN/CMakeLists.txt	2013-10-12 18:35:37.000000000 +0800
 @@ -0,0 +1,2 @@
 +file( GLOB _po_files *.po )
-+GETTEXT_PROCESS_PO_FILES( zh_TW ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( zh_CN ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
 diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 --- a/po/zh_CN/kcm-grub2.po	1970-01-01 08:00:00.000000000 +0800
 +++ b/po/zh_CN/kcm-grub2.po	2015-11-27 14:03:57.657121918 +0800
