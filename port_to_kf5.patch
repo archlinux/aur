@@ -19,7 +19,7 @@ diff -Naur kcm-grub2-0.6.4/CMakeLists.txt kcm-grub2-0.6.4-new2/CMakeLists.txt
 +include(FeatureSummary)
 +
 +find_package(Qt5 REQUIRED COMPONENTS Widgets)
-+find_package(KF5 REQUIRED COMPONENTS KDELibs4Support Solid) #CoreAddons  
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support Solid I18n) #CoreAddons  
 +
 +
  include(GRUBPaths)
@@ -275,7 +275,7 @@ diff -Naur kcm-grub2-0.6.4/src/CMakeLists.txt kcm-grub2-0.6.4-new2/src/CMakeList
  
  # Set Link Libraries
 -set(kcm_grub2_LINK_LIBS ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${KDE4_SOLID_LIBS})
-+set(kcm_grub2_LINK_LIBS KF5::KDELibs4Support KF5::KIOCore KF5::Solid)
++set(kcm_grub2_LINK_LIBS KF5::KDELibs4Support KF5::KIOCore KF5::Solid KF5::I18n)
  if(HAVE_IMAGEMAGICK)
      set(kcm_grub2_LINK_LIBS ${kcm_grub2_LINK_LIBS} ${ImageMagick_LIBRARIES})
  endif(HAVE_IMAGEMAGICK)

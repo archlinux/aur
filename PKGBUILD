@@ -8,7 +8,7 @@ url='https://ksmanis.wordpress.com/projects/grub2-editor/'
 license=('GPL')
 provides=grub2-editor
 conflicts=grub2-editor
-depends=('kdelibs4support' 'grub' 'kcmutils' 'kauth')
+depends=('kdelibs4support' 'grub' 'kcmutils' 'kauth' 'hwinfo' 'imagemagick')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 source=("http://sourceforge.net/projects/kcm-grub2/files/kcm-grub2-$pkgver.tar.gz"
         "port_to_kf5.patch"
