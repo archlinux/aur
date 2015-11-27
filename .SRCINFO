@@ -1,0 +1,14 @@
+pkgbase = libomxil-component-videosrc
+	pkgdesc = An opensource implementation of the OpenMAX Integration Layer API - VideoSrc component
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://omxil.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/omxil/components/libomxvideosrc-0.1.tar.gz
+	md5sums = 60ba58340f2e1e2056abc1d54e298cc0
+
+pkgname = libomxil-component-videosrc
+

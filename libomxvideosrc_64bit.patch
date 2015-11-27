@@ -1,0 +1,15 @@
+proper memory address printf
+
+Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
+
+--- src/omx_videosrc_component.c.orig	2015-11-27 10:06:56.937742429 +0100
++++ src/omx_videosrc_component.c	2015-11-27 10:07:34.457392193 +0100
+@@ -621,7 +621,7 @@
+       openmaxStandPort->bIsFullOfBuffers = OMX_FALSE;
+       if (openmaxStandPort->bBufferStateAllocated[i] & BUFFER_ALLOCATED) {
+         if(openmaxStandPort->pInternalBufferStorage[i]->pBuffer){
+-          DEBUG(DEB_LEV_PARAMS, "In %s freeing %i pBuffer=%x\n",__func__, (int)i, (int)openmaxStandPort->pInternalBufferStorage[i]->pBuffer);
++          DEBUG(DEB_LEV_PARAMS, "In %s freeing %i pBuffer=%p\n",__func__, (int)i, openmaxStandPort->pInternalBufferStorage[i]->pBuffer);
+           openmaxStandPort->pInternalBufferStorage[i]->pBuffer=NULL;
+           omx_videosrc_component_Private->bOutBufferMemoryMapped = OMX_FALSE;
+         }

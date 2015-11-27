@@ -1,0 +1,32 @@
+just some small fixes for unused variables
+
+Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
+
+--- src/omx_videosrc_component.c.orig	2015-11-27 10:15:37.092872434 +0100
++++ src/omx_videosrc_component.c	2015-11-27 10:16:21.985784048 +0100
+@@ -160,7 +160,6 @@
+  */
+ OMX_ERRORTYPE omx_videosrc_component_Destructor(OMX_COMPONENTTYPE *openmaxStandComp) {
+   omx_videosrc_component_PrivateType* omx_videosrc_component_Private = openmaxStandComp->pComponentPrivate;
+-  OMX_ERRORTYPE err = OMX_ErrorNone;
+   OMX_U32 i;
+ 
+   if(omx_videosrc_component_Private->videoSyncSem) {
+@@ -169,7 +168,7 @@
+     omx_videosrc_component_Private->videoSyncSem=NULL;
+   }
+ 
+-  err = uninit_device(omx_videosrc_component_Private);
++  uninit_device(omx_videosrc_component_Private);
+ 
+   if(omx_videosrc_component_Private->deviceHandle != -1) {
+     if(-1 == close(omx_videosrc_component_Private->deviceHandle)) {
+@@ -660,7 +659,7 @@
+   omx_videosrc_component_PrivateType* omx_videosrc_component_Private = (omx_videosrc_component_PrivateType*)omx_base_component_Private;
+   OMX_U8* pBuffer=NULL;
+   OMX_ERRORTYPE eError=OMX_ErrorNone;
+-  OMX_U32 numRetry=0,nBufferSize;
++  OMX_U32 numRetry=0,nBufferSize=0;
+   OMX_PARAM_PORTDEFINITIONTYPE sPortDef;
+   OMX_U32 nLocalBufferCountActual;
+   OMX_ERRORTYPE err;
