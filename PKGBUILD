@@ -8,7 +8,7 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
@@ -20,8 +20,10 @@ depends=(
       'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
       'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
       'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
-      'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so'
-      'libx265.so' 'libfdk-aac'
+      'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
+      'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
+      'libx264.so' 'libx265.so'
+      'libfdk-aac'
       )
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
@@ -35,7 +37,7 @@ conflicts=("$_name")
 source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2{,.asc}
         ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-md5sums=('99f31723326dfe1bfd1bc7521338f2d2'
+md5sums=('937a6573ba399cf3e6808c9c6ea3d6d6'
          'SKIP'
          '71be9bcd297cb9ce833bbc5d425c0470')
 
@@ -60,6 +62,7 @@ build() {
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
+    --enable-libdcadec \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
