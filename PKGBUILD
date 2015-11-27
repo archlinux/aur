@@ -1,5 +1,5 @@
 pkgname=fortune-mod-fullhouse
-pkgver=1511010254
+pkgver=1511092117
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Full House"
