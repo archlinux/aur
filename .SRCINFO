@@ -1,0 +1,16 @@
+pkgbase = evhttpclient-git
+	pkgdesc = An HTTP client in C++ that uses the libev event library.
+	pkgver = r6.8acdd49
+	pkgrel = 1
+	url = https://github.com/jspotter/evhttpclient
+	arch = x86_64
+	arch = i686
+	license = mixed
+	depends = libev
+	source = git+https://github.com/jspotter/evhttpclient.git
+	source = evhttpclient-unistd.patch
+	md5sums = SKIP
+	md5sums = 8bfd9d9082eb83c9569fe994ffec1a66
+
+pkgname = evhttpclient-git
+
