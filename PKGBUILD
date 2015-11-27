@@ -1,11 +1,11 @@
 # Contributor: vit01 (vitirk) <me@ii-net.tk>
 
 pkgname='iicli-modular'
-pkgver='0.3'
+pkgver='0.4'
 pkgdesc="simple gui client for ii network"
 pkgrel=1
 arch=('any')
-depends=('python2' 'python2-pyqt5' 'bash')
+depends=('python' 'python-pyqt5' 'bash')
 optdepends=('tk')
 makedepends=('git')
 license=('CC0')
