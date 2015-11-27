@@ -13,7 +13,7 @@
 pkgbase=virt-manager-git
 _pkgbase=virt-manager
 pkgname=(virt-install-git virt-manager-git)
-pkgver=1.2.1.r4693.601a82c
+pkgver=1.3.0.r4772.7ef1713
 pkgrel=1
 pkgdesc="Console user interface for managing virtual machines"
 arch=('any')
