@@ -2,13 +2,16 @@
 
 _plug=lsmashsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r804.03117ec
+pkgver=r822.3492099
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=167435'
 license=('LGPL')
-depends=('vapoursynth' 'l-smash-git')
+depends=('vapoursynth'
+         'ffmpeg'
+         'liblsmash.so'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
