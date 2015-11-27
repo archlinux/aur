@@ -1,0 +1,221 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2015-11-26 20:06:32.000000000 +0800
++++ b/CMakeLists.txt	2015-11-26 20:13:56.658390319 +0800
+@@ -1,9 +1,18 @@
+-cmake_minimum_required(VERSION 2.8.9)
++cmake_minimum_required(VERSION 2.8.16)
+ project(polkit-kde-kcmodules-1)
+ 
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 
+-find_package(KDE4 REQUIRED)
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++ 
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets)
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support I18n KCMUtils)
+ 
+ function(dbus_add_activation_system_service _sources)
+     pkg_search_module( DBUS dbus-1 )
+@@ -16,13 +25,12 @@
+     endforeach (_i ${ARGN})
+ endfunction(dbus_add_activation_system_service _sources)
+ 
+-set(POLKITQT-1_MIN_VERSION "0.103.0")
+-find_package(PolkitQt-1 REQUIRED)
++set(POLKITQT5-1_MIN_VERSION "0.103.0")
++find_package(PolkitQt5-1 REQUIRED)
+ 
+ include(FindPkgConfig)
+ 
+-include_directories(${KDE4_INCLUDES}
+-                    ${POLKITQT-1_INCLUDE_DIR}
++include_directories(${POLKITQT-1_INCLUDE_DIR}
+                     ${CMAKE_CURRENT_SOURCE_DIR}/common)
+ 
+ add_subdirectory(common)
+diff -Naur a/common/identitywidget.h b/common/identitywidget.h
+--- a/common/identitywidget.h	2015-11-26 20:06:32.000000000 +0800
++++ b/common/identitywidget.h	2015-11-26 20:13:56.659390334 +0800
+@@ -11,9 +11,10 @@
+ #ifndef IDENTITYWIDGET_H
+ #define IDENTITYWIDGET_H
+ 
+-#include <QtGui/QWidget>
++#include <QWidget>
+ 
+ #include <kdemacros.h>
++#include <KIcon>
+ 
+ namespace Ui {
+     class IdentityWidget;
+diff -Naur a/helper/CMakeLists.txt b/helper/CMakeLists.txt
+--- a/helper/CMakeLists.txt	2015-11-26 20:06:32.000000000 +0800
++++ b/helper/CMakeLists.txt	2015-11-26 20:13:56.659390334 +0800
+@@ -22,7 +22,7 @@
+                    DEPENDS polkit-kde-helper-policy-gen)
+ add_custom_target("actions for polkit-kde" ALL DEPENDS ${_output})
+ 
+-install(FILES ${_output} DESTINATION ${KDE4_AUTH_POLICY_FILES_INSTALL_DIR})
++install(FILES ${_output} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/polkit-1/actions)
+ 
+ #########
+ 
+@@ -39,7 +41,10 @@
+ 
+ kde4_add_executable(polkitkde1helper ${polkitkde1helper_SRCS})
+ 
+-target_link_libraries(polkitkde1helper ${KDE4_KDECORE_LIBS} ${QT_QTCORE_LIBRARY} ${QT_QTXML_LIBRARY} ${QT_QTDBUS_LIBRARY} ${POLKITQT-1_CORE_LIBRARY} polkitkdekcmodulesprivate)
++target_link_libraries(polkitkde1helper
++ KF5::KDELibs4Support
++ PolkitQt5-1::Core 
++polkitkdekcmodulesprivate)
+ 
+ install(TARGETS polkitkde1helper DESTINATION ${LIBEXEC_INSTALL_DIR})
+ 
+diff -Naur a/polkitactions/ActionWidget.h b/polkitactions/ActionWidget.h
+--- a/polkitactions/ActionWidget.h	2015-11-26 20:06:32.000000000 +0800
++++ b/polkitactions/ActionWidget.h	2015-11-26 20:13:56.659390334 +0800
+@@ -11,7 +11,7 @@
+ #ifndef ACTIONWIDGET_H
+ #define ACTIONWIDGET_H
+ 
+-#include <QtGui/QWidget>
++#include <QWidget>
+ #include "PKLAEntry.h"
+ #include <PolkitQt1/ActionDescription>
+ 
+diff -Naur a/polkitactions/CMakeLists.txt b/polkitactions/CMakeLists.txt
+--- a/polkitactions/CMakeLists.txt	2015-11-26 20:06:32.000000000 +0800
++++ b/polkitactions/CMakeLists.txt	2015-11-26 20:13:56.660390348 +0800
+@@ -16,12 +16,13 @@
+     explicitwidget.ui
+     actionwidget.ui)
+ 
+-kde4_add_plugin(kcm_polkitactions ${kcm_polkitactions_SRCS})
++add_library(kcm_polkitactions ${kcm_polkitactions_SRCS})
+ 
+ target_link_libraries(kcm_polkitactions
+-     ${KDE4_KDECORE_LIBS}
+-     ${KDE4_KDEUI_LIBRARY}
+-     ${POLKITQT-1_CORE_LIBRARY}
++     PolkitQt5-1::Core
++     KF5::KCMUtils
++     KF5::KDELibs4Support
++     KF5::I18n
+      polkitkdekcmodulesprivate
+ )
+ 
+diff -Naur a/polkitactions/PolkitActionsKCM.cpp b/polkitactions/PolkitActionsKCM.cpp
+--- a/polkitactions/PolkitActionsKCM.cpp	2015-11-26 20:06:32.000000000 +0800
++++ b/polkitactions/PolkitActionsKCM.cpp	2015-11-26 20:13:56.660390348 +0800
+@@ -27,23 +27,24 @@
+ #include <QDBusMetaType>
+ #include <QDBusPendingCall>
+ 
+-K_PLUGIN_FACTORY(KCMPolkitActionsFactory,
+-                 registerPlugin<PolkitActionsKCM>();
+-                )
++
++
++K_PLUGIN_FACTORY(KCMPolkitActionsFactory, registerPlugin<PolkitActionsKCM>();)
+ K_EXPORT_PLUGIN(KCMPolkitActionsFactory("kcm_polkitactions"))
+ 
++#include <PolkitActionsKCM.moc>
++
+ PolkitActionsKCM::PolkitActionsKCM(QWidget* parent, const QVariantList& args)
+-    : KCModule(KCMPolkitActionsFactory::componentData(), parent, args)
++    : KCModule(parent, args)
+     , m_ui(new Ui::PolkitActionsMainView)
+ {
+-    KAboutData *about =
+-        new KAboutData("kcm_polkitactions", "kcm_polkitactions", ki18n("Global system policy settings"),
+-                       "1.0.0", ki18n("A configuration for polkit-1 system administrators and policy priorities"),
+-                       KAboutData::License_GPL, ki18n("(c), 2009 Dario Freddi"),
+-                       ki18n("From this module, you can configure system administrators and priorities "
+-                             "for the policies defined in the Actions module"));
++    KAboutData* about = new KAboutData("kcm_polkitactions", i18n("Global system policy settings"), "1.0.0");
++    about->setShortDescription(i18n("A configuration for polkit-1 system administrators and policy priorities."));
++    about->setLicense(KAboutLicense::GPL);
+ 
+-    about->addAuthor(ki18n("Dario Freddi"), ki18n("Maintainer") , "drf@kde.org", "http://drfav.wordpress.com");
++    about->addAuthor("Dario Freddi", i18n("Maintainer"), "drf@kde.org");
++    
++    
+ 
+     setAboutData(about);
+ 
+diff -Naur a/polkitactions/kcm_polkitactions.desktop b/polkitactions/kcm_polkitactions.desktop
+--- a/polkitactions/kcm_polkitactions.desktop	2015-11-26 20:06:32.000000000 +0800
++++ b/polkitactions/kcm_polkitactions.desktop	2015-11-26 20:16:06.500246304 +0800
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Exec=kcmshell4 kcm_polkitactions
++Exec=kcmshell5 kcm_polkitactions
+ Icon=system-lock-screen
+ Type=Service
+ X-KDE-ServiceTypes=KCModule
+diff -Naur a/polkitconfig/CMakeLists.txt b/polkitconfig/CMakeLists.txt
+--- a/polkitconfig/CMakeLists.txt	2015-11-26 20:06:32.000000000 +0800
++++ b/polkitconfig/CMakeLists.txt	2015-11-26 20:13:56.660390348 +0800
+@@ -11,8 +11,10 @@
+ kde4_add_plugin(kcm_polkitconfig ${kcm_polkitconfig_SRCS})
+ 
+ target_link_libraries(kcm_polkitconfig  
+-     ${KDE4_KDECORE_LIBS}
+-     ${KDE4_KDEUI_LIBRARY}
++     PolkitQt5-1::Core
++     KF5::KCMUtils
++     KF5::KDELibs4Support
++     KF5::I18n
+      polkitkdekcmodulesprivate
+ )
+ 
+diff -Naur a/polkitconfig/kcm_polkitconfig.desktop b/polkitconfig/kcm_polkitconfig.desktop
+--- a/polkitconfig/kcm_polkitconfig.desktop	2015-11-26 20:06:32.000000000 +0800
++++ b/polkitconfig/kcm_polkitconfig.desktop	2015-11-26 20:16:15.467373458 +0800
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Exec=kcmshell4 kcm_polkitconfig
++Exec=kcmshell5 kcm_polkitconfig
+ Icon=system-lock-screen
+ Type=Service
+ X-KDE-ServiceTypes=KCModule
+diff -Naur a/polkitconfig/kcmpolkitconfig.cpp b/polkitconfig/kcmpolkitconfig.cpp
+--- a/polkitconfig/kcmpolkitconfig.cpp	2015-11-26 20:06:32.000000000 +0800
++++ b/polkitconfig/kcmpolkitconfig.cpp	2015-11-26 20:13:56.660390348 +0800
+@@ -31,17 +31,21 @@
+                 )
+ K_EXPORT_PLUGIN(KCMPolkitConfigFactory("kcm_polkitconfig"))
+ 
++#include <kcmpolkitconfig.moc>
++
+ KCMPolkitConfig::KCMPolkitConfig(QWidget* parent, const QVariantList& args)
+-    : KCModule(KCMPolkitConfigFactory::componentData(), parent, args)
++    : KCModule(parent, args)
+ {
+     KAboutData *about =
+-        new KAboutData("kcm_polkitconfig", "kcm_polkitconfig", ki18n("Global system policy settings"),
+-                       "1.0.0", ki18n("A configuration for polkit-1 system administrators and policy priorities"),
+-                       KAboutData::License_GPL, ki18n("(c), 2009 Dario Freddi"),
+-                       ki18n("From this module, you can configure system administrators and priorities "
+-                             "for the policies defined in the Actions module"));
+-
+-    about->addAuthor(ki18n("Dario Freddi"), ki18n("Maintainer") , "drf@kde.org",
++        new KAboutData("kcm_polkitconfig", i18n("Global system policy settings"),"1.0.0");
++        about->setShortDescription(i18n("A configuration for polkit-1 system administrators and policy priorities"));
++        about->setLicense(KAboutLicense::GPL);
++//, i18n("(c), 2009 Dario Freddi"),
++  //                     i18n("From this module, you can configure system 
++//administrators and priorities "
++  //                           "for the policies defined in the Actions module"));
++    
++    about->addAuthor("Dario Freddi", i18n("Maintainer") , "drf@kde.org",
+                      "http://drfav.wordpress.com");
+ 
+     setAboutData(about);
