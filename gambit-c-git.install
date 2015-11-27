@@ -12,4 +12,3 @@ post_upgrade() {
 pre_remove() {
   install-info --delete ${_iinfoargs}
 }
-
