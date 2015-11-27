@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybase="${_pybase//-/}"
-pkgver='3.5.6'
+pkgver='3.6.1'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('4b3bc9b2698ab8ce7eafdc7f013b828c96ed0b05d698bc780568b57a7094f57c')
+sha256sums=('383cbf481c1515ee22eb7153beba5bbea9fecb04e42fd2c4ddaa958ee6dc5ce7')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-

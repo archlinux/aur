@@ -1,14 +1,14 @@
 pkgbase = aws-eb-cli
 	pkgdesc = The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli
-	pkgver = 3.5.6
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/awsebcli
 	arch = any
 	license = Apache
 	makedepends = python
 	makedepends = python-distribute
-	source = https://pypi.python.org/packages/source/a/awsebcli/awsebcli-3.5.6.tar.gz
-	sha256sums = 4b3bc9b2698ab8ce7eafdc7f013b828c96ed0b05d698bc780568b57a7094f57c
+	source = https://pypi.python.org/packages/source/a/awsebcli/awsebcli-3.6.1.tar.gz
+	sha256sums = 383cbf481c1515ee22eb7153beba5bbea9fecb04e42fd2c4ddaa958ee6dc5ce7
 
 pkgname = aws-eb-cli
 	depends = python
