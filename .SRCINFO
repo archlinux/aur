@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-burnnotice
 	pkgdesc = Fortune quotes from Burn Notice
-	pkgver = 1509141621
+	pkgver = 1511100158
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Burn_Notice
 	arch = any

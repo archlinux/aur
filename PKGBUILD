@@ -1,5 +1,5 @@
 pkgname=fortune-mod-burnnotice
-pkgver=1509141621
+pkgver=1511100158
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Burn Notice"
