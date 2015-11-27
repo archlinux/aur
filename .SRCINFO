@@ -12,18 +12,18 @@ pkgbase = dofus-beta
 	depends = gtk2
 	depends = alsa-lib
 	backup = opt/ankama/dofus-beta/transition.conf
-	source = http://dl.ak.ankama.com/games/dofus2-beta/setup/setup-beta-transition-amd64.tar.gz
-	source = http://dl.ak.ankama.com/games/dofus2-beta/setup/setup-beta-transition-x86.tar.gz
 	source = dofus-beta.sh
 	source = dofus-beta.desktop
 	source = air-generic-launcher.sh
-	source = transition.conf.append
-	md5sums = d63b778424826a783ca3d5e28d5b3649
-	md5sums = a94dee7dd29de51525e47dee04ca5182
+	source = transition.conf
 	md5sums = 91023d67a519421912b3d101ded7ca12
 	md5sums = 0e797e4fcf39e1d06f68b51bfd215040
 	md5sums = f179eaa5e6e6674b1853cf826fc33c3a
-	md5sums = 0241708575069715d56b88b96dcbf7e8
+	md5sums = a80f74d45dc98aed9cb8436b775bd0ad
+	source_i686 = http://dl.ak.ankama.com/games/dofus2-beta/setup/setup-beta-transition-x86.tar.gz
+	md5sums_i686 = 7dac81b01102aeafc0664e0e5e1d7106
+	source_x86_64 = http://dl.ak.ankama.com/games/dofus2-beta/setup/setup-beta-transition-amd64.tar.gz
+	md5sums_x86_64 = 2daef0db4643b34688ba67793412f07b
 
 pkgname = dofus-beta
 

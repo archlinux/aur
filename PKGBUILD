@@ -13,40 +13,22 @@ license=('custom:Dofus License')
 install='dofus-beta.install'
 backup=('opt/ankama/dofus-beta/transition.conf')
 depends=('ankama-transition>=3.8.1-3' 'adobe-air-sdk')
-if [ "$CARCH" == 'x86_64' ]; then
-  depends+=('lib32-gtk2' 'lib32-alsa-lib')
-else
-  depends+=('gtk2' 'alsa-lib')
-fi
+depends_i686=('gtk2' 'alsa-lib')
+depends_x86_64=('lib32-gtk2' 'lib32-alsa-lib')
 
-source=('http://dl.ak.ankama.com/games/dofus2-beta/setup/setup-beta-transition-amd64.tar.gz'
-        'http://dl.ak.ankama.com/games/dofus2-beta/setup/setup-beta-transition-x86.tar.gz'
-        'dofus-beta.sh'
+source=('dofus-beta.sh'
         'dofus-beta.desktop'
         'air-generic-launcher.sh'
-        'transition.conf.append')
-md5sums=('d63b778424826a783ca3d5e28d5b3649'
-         'a94dee7dd29de51525e47dee04ca5182'
-         '91023d67a519421912b3d101ded7ca12'
+        'transition.conf')
+source_i686=('http://dl.ak.ankama.com/games/dofus2-beta/setup/setup-beta-transition-x86.tar.gz')
+source_x86_64=('http://dl.ak.ankama.com/games/dofus2-beta/setup/setup-beta-transition-amd64.tar.gz')
+
+md5sums=('91023d67a519421912b3d101ded7ca12'
          '0e797e4fcf39e1d06f68b51bfd215040'
          'f179eaa5e6e6674b1853cf826fc33c3a'
-         '0241708575069715d56b88b96dcbf7e8')
-# Skip this block if PKGBUILD is sourced by updpkgsums (pstree is used for this check,
-# and if not available, this check is skipped)
-if ! ( command -v pstree >/dev/null 2>&1 && \
-    pstree --show-parents $$ | grep -q updpkgsums ) ; then
-  # Remove source and md5sum for the wrong arch
-  if [ "$CARCH" == "x86_64" ];then
-    unset source[1] md5sums[1]
-  elif [ "$CARCH" == 'i686' ]; then
-    unset source[0] md5sums[0]
-  fi
-fi
-
-prepare() {
-  msg2 "Modifying transition configuration to use adl-based launchers"
-  cat 'transition.conf.append' >> 'DofusBeta/transition.conf'
-}
+         'a80f74d45dc98aed9cb8436b775bd0ad')
+md5sums_i686=('7dac81b01102aeafc0664e0e5e1d7106')
+md5sums_x86_64=('2daef0db4643b34688ba67793412f07b')
 
 package() {
   _installdir="$pkgdir/opt/ankama/dofus-beta"
@@ -59,7 +41,8 @@ package() {
   install -Dm644 'DofusBeta/share/icon/dofus-icon-128.png' "$pkgdir/usr/share/pixmaps/dofus-beta.png"
 
   msg2 'Installing main applications...'
-  mv "DofusBeta/"{bin,share,transition.conf} "$_installdir"
+  mv "DofusBeta/"{bin,share} "$_installdir"
+  install -Dm644 transition.conf "$_installdir"
 
   msg2 'Setting up game file permissions...'
   chgrp -R games $_installdir
