@@ -48,7 +48,7 @@ build() {
     --with-mpi \
     --with-petsc=$srcdir/download/PETSc/petsc-3.5.2/arch-linux2-c-debug \
     --disable-schwarz \
-    --disable-hpddm
+    --enable-hpddm
   make 
 }
 
