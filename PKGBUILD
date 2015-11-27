@@ -1,5 +1,5 @@
 pkgname=fortune-mod-californication
-pkgver=1508161758
+pkgver=1511131935
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Californication"

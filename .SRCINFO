@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-californication
 	pkgdesc = Fortune quotes from Californication
-	pkgver = 1508161758
+	pkgver = 1511131935
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Californication
 	arch = any
