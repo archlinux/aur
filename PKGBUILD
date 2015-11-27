@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+20757.b4f5962b3373
+pkgver=4.1.0+20765.a972a2dc2735
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -21,7 +21,6 @@ optdepends=('texinfo: for help-support in octave'
 conflicts=('octave')
 install=octave.install
 options=('!emptydirs' '!makeflags')
-provides=("octave=${_appver%+}")
 _hgroot=http://hg.savannah.gnu.org/hgweb/
 _hgrepo=octave
 
@@ -37,6 +36,8 @@ pkgver() {
   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d [])
   echo ${_appver}$(hg identify -n).$(hg identify -i)
 }
+
+provides=("octave=${_appver%+}")
 
 build() {
   cd $srcdir
