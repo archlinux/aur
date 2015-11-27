@@ -1,0 +1,14 @@
+pkgbase = tensor-git
+	pkgdesc = Matrix QML client
+	pkgver = r31.0aca50c
+	pkgrel = 1
+	url = http://www.matrix.org
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = qt5-base
+	source = git+https://github.com/davidar/tensor.git
+	sha1sums = SKIP
+
+pkgname = tensor-git
+
