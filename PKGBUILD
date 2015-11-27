@@ -1,17 +1,17 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=bfind
-pkgver=2
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="find alternative optimised for finding files rather then listing files"
 url="https://github.com/maandree/bfind"
 arch=(any)
 license=(GPL3)
 depends=(python3)
-makedepends=(make coreutils sed texinfo gzip)
+makedepends=(make coreutils sed texinfo gzip auto-auto-complete)
 install=bfind.install
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(54ffd0439d9f9f4579bed39aeaaa72d54f4a270e8961cbc07b67895e96a42cfd)
+sha256sums=(23e3f4fda397ad235399773f6f357e9a98ed2384881c12015d453192dbc1afc1)
 
 _prefix=/usr
 
