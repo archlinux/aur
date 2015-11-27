@@ -1,16 +1,16 @@
 pkgbase = ruby-sprockets
 	pkgdesc = Rack-based asset packaging system
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = http://getsprockets.org/
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-rack
-	noextract = sprockets-3.4.0.gem
+	noextract = sprockets-3.4.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sprockets-3.4.0.gem
-	sha1sums = c3c8bf462d71ad404accd028997b56d278cbc56b
+	source = https://rubygems.org/downloads/sprockets-3.4.1.gem
+	sha1sums = d793ca2e21cc15a11927fd2f299faf1c2cc96f68
 
 pkgname = ruby-sprockets
 
