@@ -1,0 +1,11 @@
+pkgbase = camlp4-git
+	pkgver = 4.02+6.r2.g074db4c
+	pkgrel = 1
+	url = https://github.com/ocaml/camlp4/tree/4.02
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+
+pkgname = camlp4-git
+
