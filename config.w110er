@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.2.2-1 Kernel Configuration
+# Linux/x86 4.2.6-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -406,6 +406,7 @@ CONFIG_NO_BOOTMEM=y
 # CONFIG_MBOBCAT is not set
 # CONFIG_MBULLDOZER is not set
 # CONFIG_MPILEDRIVER is not set
+# CONFIG_MSTEAMROLLER is not set
 # CONFIG_MJAGUAR is not set
 # CONFIG_MPSC is not set
 # CONFIG_MATOM is not set
@@ -417,6 +418,7 @@ CONFIG_NO_BOOTMEM=y
 CONFIG_MIVYBRIDGE=y
 # CONFIG_MHASWELL is not set
 # CONFIG_MBROADWELL is not set
+# CONFIG_MSKYLAKE is not set
 # CONFIG_GENERIC_CPU is not set
 # CONFIG_MNATIVE is not set
 CONFIG_X86_INTERNODE_CACHE_SHIFT=6

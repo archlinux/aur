@@ -19,7 +19,7 @@
 pkgbase=linux-w110er
 _srcname=linux-4.2
 pkgver=4.2.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -42,7 +42,7 @@ sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             '419f91fa4a6bb0d2c160ef6812341e5aac7e776550efe1d0958ae3b1ce0ea8ce'
             'SKIP'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            'b44e789a2c6d5109930617665d8d139b22cd292cf58dca49c230f21ecfea6ad5'
+            '7cbc5cb5fad3cacec8ac09b6e440613cc51b27c5b97f11d2451df55a74fb10ae'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 
