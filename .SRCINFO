@@ -1,5 +1,5 @@
 pkgbase = lib32-mesa-git
-	pkgver = 11.1.0_devel.74002.55365a7
+	pkgver = 11.2.0_devel.74737.bc2470d
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -62,6 +62,7 @@ pkgname = lib32-mesa-git
 	depends = lib32-wayland
 	depends = lib32-libtxc_dxtn
 	depends = mesa-git
+	depends = lib32-libxvmc
 	optdepends = nettle: for GLX_TLS support
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	optdepends = lib32-mesa-vdpau-git: for accelerated video playback

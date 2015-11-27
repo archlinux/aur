@@ -12,7 +12,7 @@
 
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git')
-pkgver=11.1.0_devel.74002.55365a7
+pkgver=11.2.0_devel.74737.bc2470d
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
@@ -108,7 +108,7 @@ package_lib32-mesa-vdpau-git() {
 package_lib32-mesa-git() {
   pkgdesc="an open-source implementation of the OpenGL specification (32-bit)"
   depends=('lib32-libdrm' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-systemd'
-           'lib32-elfutils' 'lib32-llvm-libs-svn' 'lib32-wayland' 'lib32-libtxc_dxtn' 'mesa-git')
+           'lib32-elfutils' 'lib32-llvm-libs-svn' 'lib32-wayland' 'lib32-libtxc_dxtn' 'mesa-git' 'lib32-libxvmc')
   optdepends=('nettle: for GLX_TLS support'
               'opengl-man-pages: for the OpenGL API man pages'
               'lib32-mesa-vdpau-git: for accelerated video playback')
