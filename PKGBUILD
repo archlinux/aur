@@ -2,10 +2,10 @@
 
 pkgname=dired
 pkgver=305
-pkgrel=8
+pkgrel=9
 pkgdesc="The very first filebrowser"
 arch=('i686' 'x86_64')
-url="http://www.sfr-fresh.com/linux/misc/old/"
+url="https://github.com/stefanhusmann/dired"
 license=('GPL')
 depends=('ncurses')
 source=("dired.zip::https://codeload.github.com/stefanhusmann/dired/zip/master")

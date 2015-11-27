@@ -1,8 +1,8 @@
 pkgbase = dired
 	pkgdesc = The very first filebrowser
 	pkgver = 305
-	pkgrel = 8
-	url = http://www.sfr-fresh.com/linux/misc/old/
+	pkgrel = 9
+	url = https://github.com/stefanhusmann/dired
 	arch = i686
 	arch = x86_64
 	license = GPL
