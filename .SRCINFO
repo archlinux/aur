@@ -1,6 +1,6 @@
 pkgbase = solar-python
 	pkgdesc = Solar data calculation and prediction library for Python
-	pkgver = 2.1.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/maandree/solar-python
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = solar-python
 	makedepends = make
 	makedepends = coreutils
 	makedepends = python3
+	makedepends = texinfo
 	depends = python3
-	source = https://github.com/maandree/solar-python/archive/2.1.1.tar.gz
-	sha256sums = e1abf24356b9b08a7b50a7ceb40f6d0a43350c74a5ac69dceb73f940b361189e
+	source = https://github.com/maandree/solar-python/archive/2.2.tar.gz
+	sha256sums = b35d1b6e1f3de9e78b610ac6febecd07ec28fc8bcad9a864afca9ae4cec1e109
 
 pkgname = solar-python
 
