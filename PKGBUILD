@@ -3,12 +3,12 @@ pkgname='rescepy-git'
 pkgver=47
 pkgrel=1
 pkgdesc='automated srr (rescene) verification and reconstruction.'
-url='https://github.com/d2yes/rescepy'
+url='https://github.com/dryes/rescepy'
 arch=('any')
 license=('MIT')
 depends=('cfv' 'python2' 'pyrescene-hg' 'unrar')
 makedepends=('git')
-source=('git://github.com/d2yes/rescepy.git')
+source=('git://github.com/dryes/rescepy.git')
 md5sums=('SKIP')
 
 pkgver() {
