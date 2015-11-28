@@ -33,5 +33,5 @@ package() {
   cd sdl2
   make install DESTDIR="${pkgdir}"
 
-  install -Dm644 sdl2/COPYING.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 COPYING.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
