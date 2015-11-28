@@ -1,4 +1,5 @@
 pkgbase = gmpc-git
+	pkgdesc = MPD client (Gtk2)
 	pkgver = release.11.8.16.r424.gab71845
 	pkgrel = 1
 	url = http://gmpclient.org/home
