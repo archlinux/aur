@@ -1,6 +1,6 @@
 pkgbase = tensor-git
 	pkgdesc = Matrix QML client
-	pkgver = r31.0aca50c
+	pkgver = r37.09370d4
 	pkgrel = 1
 	url = http://www.matrix.org
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 _pkgbase=tensor
 pkgname=${_pkgbase}-git
-pkgver=r31.0aca50c
+pkgver=r37.09370d4
 pkgrel=1
 pkgdesc='Matrix QML client'
 arch=('x86_64' 'i686')
@@ -35,7 +35,7 @@ build() {
 package() {
   cd ${srcdir}/${_pkgbase}
   mkdir -p $pkgdir/usr/bin
-  install -m755 matrix $pkgdir/usr/bin/matrix
+  install -m755 tensor $pkgdir/usr/bin/tensor
 }
 
 # vim:set ts=2 sw=2 et:
