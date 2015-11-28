@@ -1,7 +1,7 @@
 pkgname=irexec-systemd
 pkgver=1
 pkgrel=1
-pgkdesc='Service files for running irexec as systemd user service'
+pkgdesc='Service files for running irexec as systemd user service'
 arch=('any')
 url='https://github.com/muesli4/archlinux-packages'
 depends=('lirc')
