@@ -3,12 +3,12 @@ pkgname='nzbsubs-git'
 pkgver=16
 pkgrel=1
 pkgdesc='takes an nzb input and removes all non-subtitle files.'
-url='https://github.com/d2yes/nzbsubs'
+url='https://github.com/dryes/nzbsubs'
 arch=('any')
 license=('MIT')
 depends=('python2' 'python2-pynzb')
 makedepends=('git')
-source=('git://github.com/d2yes/nzbsubs.git')
+source=('git://github.com/dryes/nzbsubs.git')
 md5sums=('SKIP')
 
 pkgver() {
