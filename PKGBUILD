@@ -1,4 +1,6 @@
 # Maintainer: FireZ <firez199984@gmail.com>
+# !!IMPORTANT!! ONLY FOR RASPBERRY PI
+
 pkgname=waveshare35a
 pkgver=151020
 pkgrel=2
