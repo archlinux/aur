@@ -1,0 +1,32 @@
+complete -W '
+  -h --help
+  -V --version
+  setup datacenter server
+  volume snapshot
+  loadbalancer nic ipblock
+  drives image lan
+  list get show create
+  delete update attach detach
+  start stop reboot
+  -i --id --datacenterid
+  -n --name
+  -l --location
+  -d --description
+  -p --path
+  -r --ram
+  -c --cores
+  -a --availabilityzone
+  --bootVolume --bootCdrom
+  --volumeid --volumesize
+  --volumename --imageid
+  -b --bus
+  -s --size
+  --licencetype
+  --cpuHotPlug --cpuHotUnplug
+  --ramHotPlug --ramHotUnplug
+  --nicHotPlug --nicHotUnplug
+  --discVirtioHotPlug --discVirtioHotUnplug
+  --discScsiHotPlug --discScsiHotUnplug
+  --ip --dhcp --serverid --lan
+  --public --json
+  -f --force' profitbricks
