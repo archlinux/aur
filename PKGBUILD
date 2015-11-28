@@ -20,6 +20,7 @@ md5sums=('b3ff8fb938be8112dcc6e42b3e56efc6'
 
 
 prepare() {
+  rm -rf build
   mkdir -p build
   cd kcm-grub2-$pkgver
   patch -p1 -i "$srcdir/port_to_kf5.patch"

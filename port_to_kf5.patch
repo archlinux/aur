@@ -448,15 +448,13 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
          for (int i = 0; i < ui->treeWidget_recover->topLevelItemCount(); i++) {
              QRadioButton *radio = qobject_cast<QRadioButton *>(ui->treeWidget_recover->itemWidget(ui->treeWidget_recover->topLevelItem(i), 0));
              if (radio && radio->isChecked()) {
-@@ -102,7 +108,8 @@
+@@ -102,7 +108,4 @@
          installAction.setParentWidget(this);
  #endif
  
 -        if (installAction.authorize() != Action::Authorized) {
-+        //if (installAction.authorize() != Action::Authorized) {
-+        if (installAction.status() != Action::AuthorizedStatus) {
-             return;
-         }
+-            return;
+-        }
  
 @@ -112,19 +119,21 @@
          progressDlg.progressBar()->setMinimum(0);
@@ -468,10 +466,11 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 -        if (reply.succeeded()) {
 +        ExecuteJob* reply = installAction.execute();
 +        connect(reply, SIGNAL(actionPerformed(ActionReply)), &progressDlg, SLOT(hide()));
-+        if (reply == 0) {
++        if (reply->exec()) {
              KDialog *dialog = new KDialog(this, Qt::Dialog);
              dialog->setCaption(i18nc("@title:window", "Information"));
-             dialog->setButtons(KDialog::Ok | KDialog::Details);
+-            dialog->setButtons(KDialog::Ok | KDialog::Details);
++            dialog->setButtons(KDialog::None);
              dialog->setModal(true);
              dialog->setDefaultButton(KDialog::Ok);
              dialog->setEscapeButton(KDialog::Ok);
@@ -598,7 +597,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 -        KMessageBox::createKMessageBox(dialog, QMessageBox::Information, i18nc("@info", "Successfully saved GRUB settings."), QStringList(), QString(), 0, KMessageBox::Notify, reply.data().value("output").toString()); // krazy:exclude=qclasses
 +        //dialog->setDefaultButton(KDialog::Ok);
 +        //dialog->setEscapeButton(KDialog::Ok);
-+        QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::Ok);
++        QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::NoButton);
 +        KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully saved GRUB settings."), QStringList(), QString(), 0, KMessageBox::Notify, reply->data().value("output").toString()); // krazy:exclude=qclasses
          load();
      } else {
