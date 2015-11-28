@@ -1,0 +1,11 @@
+pkgbase = irexec-systemd
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/muesli4/archlinux-packages
+	arch = any
+	depends = lirc
+	source = irexec.service
+	md5sums = 0af6a4c94719b8fadff5e9a9d90ebd46
+
+pkgname = irexec-systemd
+
