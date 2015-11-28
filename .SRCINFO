@@ -1,0 +1,23 @@
+pkgbase = xavs
+	pkgdesc = XAVS is to implement high quality encoder and decoder of the Audio Video Standard of China (AVS).
+	pkgver = 0.1.55
+	pkgrel = 1
+	url = http://xavs.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = yasm
+	source = xavs-0.1.55.tar.gz::https://github.com/OpenMandrivaAssociation/xavs/raw/master/xavs-0.1.55.tar.xz
+	source = https://github.com/OpenMandrivaAssociation/xavs/raw/master/xavs-0.1.55-dont-strip-symbols.patch
+	source = https://github.com/pld-linux/xavs/raw/master/xavs-dynamic-xavs.patch
+	source = xavs-dup-asm.patch
+	source = xavs-x32-yasm.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = xavs
+
