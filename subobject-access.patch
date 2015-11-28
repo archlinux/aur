@@ -1,0 +1,15 @@
+--- a/mongo_wrapper_meta.c	2015-02-27 05:47:37.000000000 -0800
++++ b/mongo_wrapper_meta.c	2015-11-27 17:17:38.844792464 -0800
+@@ -212,7 +212,11 @@
+ bool
+ BsonIterSubObject(BSON_ITERATOR *it, BSON *b)
+ {
+-	/* TODO: Need to see the Meta Driver equalient for "bson_iterator_subobject" */
++	const uint8_t *buffer;
++	uint32_t len;
++
++	bson_iter_document(it, &len, &buffer);
++	bson_init_static(b, buffer, len);
+ 	return true;
+ }
+ 
