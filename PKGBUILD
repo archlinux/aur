@@ -1,6 +1,6 @@
 # Maintainer: Marcel Müller <neikos at neikos dot email>
 pkgname=rust-gallery
-pkgver=r4.d9ede58
+pkgver=r5.aea1f4b
 pkgrel=1
 pkgdesc="A simple and fast web gallery, meant for the command line."
 url="https://github.com/TheNeikos/rust-gallery"
