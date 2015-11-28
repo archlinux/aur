@@ -2,8 +2,8 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=cuda65
 _pkgname=cuda
-pkgver=6.5.14
-pkgrel=2
+pkgver=6.5.19
+pkgrel=1
 pkgdesc="NVIDIA's GPU programming toolkit (for compute capability < 2.0)"
 arch=('x86_64')
 url="http://www.nvidia.com/object/cuda_home.html"
@@ -18,7 +18,7 @@ install=cuda.install
 source=(http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_${pkgver}_linux_64.run
         cuda.sh
         cuda.conf)
-md5sums=( '90b1b8f77313600cc294d9271741f4da'
+md5sums=('74014042f92d3eade43af0da5f65935e'
          '7e5990e03eea90075f5a500e91a0c3d3'
          'ffe1e6fb7f97b23da28fd94a5fd7356d')
 
