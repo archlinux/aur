@@ -3,12 +3,12 @@ pkgname='clnns-git'
 pkgver=9
 pkgrel=1
 pkgdesc='searches and downloads from newznab providers on the command line.'
-url='https://github.com/d2yes/clnns'
+url='https://github.com/dryes/clnns'
 arch=('any')
 license=('MIT')
 depends=('python' 'python-feedparser')
 makedepends=('git')
-source=('git://github.com/d2yes/clnns.git')
+source=('git://github.com/dryes/clnns.git')
 md5sums=('SKIP')
 
 pkgver() {
