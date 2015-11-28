@@ -1,0 +1,13 @@
+pkgbase = visual-grep
+	pkgdesc = A GTK 3 based GUI for grep
+	pkgver = 0.21
+	pkgrel = 1
+	url = http://github.com/gnunn1/vgrep
+	arch = x86_64
+	license = MPL
+	depends = gtk3
+	source_x86_64 = https://github.com/gnunn1/vgrep/releases/download/0.21/vgrep.zip
+	md5sums_x86_64 = 3ba187abf9fd60d8a218a1006ab5b875
+
+pkgname = visual-grep
+
