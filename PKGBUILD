@@ -12,8 +12,7 @@ noextract=()
 validpgpkeys=()
 
 build() {
-	wget http://a.pomf.cat/uwpmej
-	mv uwpmej pscrot
+	mv ../pscrot .
 	chmod +x pscrot
 }
 check() {

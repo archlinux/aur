@@ -1,0 +1,39 @@
+#!/bin/sh
+pomf() {
+downpomf="https://a.pomf.cat/"
+uppomf="https://pomf.cat/upload.php"
+
+if test $# -lt 1 ; then
+    echo "Usage: `basename $0` FILE [FILE...]"
+    exit 1
+fi
+
+set=
+for f ; do
+    test "$set" || set -- ; set=1
+    set -- "$@" -F "files[]=@$f"
+done
+
+curl -fsSL "$@" "$uppomf" | jq -c -r --arg base "$downpomf" '$base + .files[].url'
+}
+ARGS=$1
+if [ `echo $ARGS | grep h` ]; then
+	echo "Usage: pscrot [hsfd]"
+	echo "-h: Shows this help screen"
+	echo "-s: Screenshot a selected region"
+	echo "-f: Screenshot focused window"
+	echo "-d: Delete image from local storage after uploaded"
+	echo "ex: pscrot sd <--Screenshot selection and delete after upload"
+	exit
+fi
+fn=`date | sed -e 's/ /-/g' | sed -e 's/:/\./g'`.png
+if [ `echo $ARGS | grep s` ]; then
+	scrot -s "$fn" && pomf $fn && mv -v $fn ~/Pictures/
+elif [ `echo $ARGS | grep f` ]; then
+	scrot -u "$fn" && pomf $fn && mv -v $fn ~/Pictures/
+else
+	scrot "$fn" && pomf $fn && mv -v $fn ~/Pictures/
+fi
+if [ `echo $ARGS | grep d` ]; then
+	rm -vf ~/Pictures/$fn
+fi
