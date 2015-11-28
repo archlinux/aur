@@ -1,12 +1,12 @@
 pkgbase = tr2latex
 	pkgdesc = Translate troff source to LaTeX
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ctan.org/tex-archive/support/tr2latex
 	install = tr2latex.install
 	arch = i686
 	arch = x86_64
-	license = publicdomain
+	license = custom:publicdomain
 	source = http://www.ctan.org/tex-archive/support/tr2latex.zip
 	source = tr2latex.install
 	md5sums = e5b6e9181ff76c7ad8d631feafce5123

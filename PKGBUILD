@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=tr2latex
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Translate troff source to LaTeX"
 arch=('i686' 'x86_64')
 url="http://www.ctan.org/tex-archive/support/tr2latex"
-license=('publicdomain')
+license=('custom:publicdomain')
 groups=()
 depends=()
 makedepends=()
@@ -44,5 +44,11 @@ package() {
   cd "$srcdir/$pkgname"
   make PREFIX="$pkgdir/usr" \
        TEXDIR="$pkgdir/usr/share/texmf-dist/tex/latex/$pkgname" install
+
+  ## a quick-and-ugly™ hack to create a license file:
+  sed '5,21!d' README > LICENSE
+  sed '24,33!d' README >> LICENSE
+  sed '52,56!d' README >> LICENSE
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
