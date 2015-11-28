@@ -20,7 +20,8 @@ pkgbase = pacmanager-bin
 	depends = perl-yaml
 	depends = perl-crypt-cbc
 	depends = perl-gtk2-unique
-	depends = perl-socket6 uuid
+	depends = perl-socket6
+        depends = uuid
 	source = https://contini.info/files/pac-4.5.5.7-all.deb
 	md5sums = 814be8e0e5bafb91bea034f21ac4317c
 
