@@ -24,14 +24,12 @@ md5sums_armv6h=('SKIP')
 md5sums_armv7h=('SKIP')
 
 pkgver() {
-  cd "$srcdir/opt/bin"
+  cd "$srcdir"
 
   # fix broken access rights
   chmod +r -R *
 
-  _date=$(./mediasrv --build 2>&1 | cut -d' ' -f3 | cut -b3- | tr -d -)
-  _time=$(./mediasrv --build 2>&1 | cut -d' ' -f4 | tr -d :)
-  echo -n $_date.$_time
+  strings opt/bin/mediasrv | egrep "[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}" -m1 | sed 's/[:-]//g;s/ /./g' | cut -b3-
 }
 
 package() {
