@@ -1,14 +1,14 @@
 # Maintainer: Alexander Schmidt <alex@treefish.org>
 
 pkgname=valentina-hg
-pkgver=r1859.df5229c86a28
-pkgrel=2
+pkgver=r2467.0d020896d25d
+pkgrel=1
 pkgdesc="Sewing pattern drafting tool aiming to remake the garment industry"
 arch=('i686' 'x86_64')
 url="http://valentinaproject.bitbucket.org"
 license=('GPL3')
 source=('hg+https://bitbucket.org/dismine/valentina')
-depends=('qt5-svg')
+depends=('qt5-svg' 'qt5-tools')
 makedepends=('mercurial' 'imagemagick')
 md5sums=('SKIP')
 
