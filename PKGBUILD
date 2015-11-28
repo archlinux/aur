@@ -25,13 +25,12 @@ install=ktorrent-frameworks-git.install
 pkgver() {
   cd ktorrent
   _ver="$(cat libktcore/ktversion.h | grep -m3 -e MAJOR -e MINOR -e RELEASE | cut -d '=' -f2 | grep -o "[[:digit:]]*" | paste -sd'.')"
-  echo -e "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   mkdir -p build
-  sed 's|ui.rc DESTINATION ${DATA_INSTALL_DIR}|ui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}|g' -i ktorrent/ktorrent/CMakeLists.txt \
-                                                                                           -i ktorrent/plugins/*/CMakeLists.txt
+  sed 's|ui.rc DESTINATION ${DATA_INSTALL_DIR}|ui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}|g' -i ktorrent/plugins/*/CMakeLists.txt
 }
 
 build() {
