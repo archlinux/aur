@@ -3,12 +3,12 @@ pkgname='rsigh-git'
 pkgver=5
 pkgrel=1
 pkgdesc='post encrypted files to usenet.'
-url='https://github.com/d2yes/rsigh'
+url='https://github.com/dryes/rsigh'
 arch=('any')
 license=('GPL')
 depends=('python' 'truecrypt' 'par2cmdline' 'rar' 'unrar' 'newsmangler-git')
 makedepends=('git')
-source=('git://github.com/d2yes/rsigh.git')
+source=('git://github.com/dryes/rsigh.git')
 md5sums=('SKIP')
 
 pkgver() {
