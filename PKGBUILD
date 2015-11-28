@@ -2,7 +2,7 @@
 pkgname=pinball-unofficial
 _realname=pinball
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Emilia Pinball Project Unofficial version 0.3.2 with 2 new tables"
 arch=('i686' 'x86_64')
 url="https://github.com/sergiomb2/pinball"
@@ -24,4 +24,6 @@ build() {
 package() {
   cd "${srcdir}/${_realname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  install -d ${pkgdir}/usr/share/applications
+  install -m644 -t ${pkgdir}/usr/share/applications/ ${_realname}.desktop
 }
