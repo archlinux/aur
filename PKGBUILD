@@ -4,7 +4,7 @@
 
 pkgname=softmaker-office-2016-bin
 pkgver=2016.748
-pkgrel=2
+pkgrel=3
 pkgdesc="Softmaker Office 2016, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
 arch=('x86_64' 'i686')
@@ -24,14 +24,14 @@ source=("http://www.softmaker.net/down/softmaker-office-${pkgver//./-}.tgz"
         "textmaker-2016.desktop")
 md5sums=('dfafef9fc0b03e29148a3ebded2e42f2'
          '5e698160b69670b71ca1306457e95fe0'
-         '9853d3b98ec799d16bf86617401b40fa'
+         '57766d7d252f42ce3bcb2ecc28dd97e9'
          '1f17766bb95adc0bc56a8b683ff888f6'
          '170313c9a4d692a78cd38b0e46b71a7b'
          '86b058133c52201abd98a2594849e77e'
          'b0cb162e83fb4f186b1fb458f12ddc00')
 sha512sums=('5f7923d60da08bbeb1394068ff2aa8daa17cf5ef9862a51ccfabbfdf8a65083bfe3e67c35b2ce02e1828abaab5fcb5cc48468387d35238ddaff60fd25cafa814'
             '47e08e91734692b77d17999ce32b974a7f3cede5082f0884b2d1546d6ce7204bfcf67d713de9148398834aca28626d033855703fa3e0e375879fb085a89a2251'
-            'd48d6b4e4350b1b47935a8fadef7be113e7718dbdb9d956df6325009f95a17711f075f8b154f3931c0880f2bff566f49ae989c3f5b0de9f956852e9d447c9034'
+            '44d7c55d69a1de7b665a507808618dc9ac81b8938f73cf63ad74cde6725d151e9322b4b25b48798d9f0c76d955e52de6fb97ef86b1c7c2adea56bc95dcd65c82'
             '96fc1950a23eb2faed83ddd317540d9ecc9fa46989dabe7325f0107eea1544ffa88adaf53f58fd050805c343b5fe9d698bc194cada9535411a64a4833f51fa10'
             '395786d38202e03fc6c06502200731ccc05d066c0467caa56e5ff7573933f3f5591da805d21919cbc0a7ec61cc0f7d95b37a49bc0c6ff0480ba26197f0d2abfb'
             'd347cb1bd87273b87e283a64ea7d78265dbb524f18f783840cb7d560e402acfc4cba1e6d7fb5fae83314c70fea1d47334f9615592021513fd6e3b8ce7550cdeb'
