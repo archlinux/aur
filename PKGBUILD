@@ -1,15 +1,24 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ffms2-git
-pkgver=2.21.33.gc1dc5ad
+pkgver=2.22.0.g129952a
 pkgrel=1
 pkgdesc="An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version)"
 url='https://github.com/FFMS/ffms2'
-arch=('x86_64' 'i686')
+arch=('i686' 'x86_64')
 license=('GPL')
-depends=('ffmpeg')
+depends=('gcc-libs'
+         'libavformat.so'
+         'libavcodec.so'
+         'libswscale.so'
+         'libavutil.so'
+         'libavresample.so'
+         )
 makedepends=('git')
-provides=('ffms2' 'vapoursynth-plugin-ffms2')
+provides=('libffms2.so'
+          'ffms2'
+          'vapoursynth-plugin-ffms2'
+          )
 conflicts=('ffms2')
 source=('git+https://github.com/FFMS/ffms2.git')
 sha1sums=('SKIP')
@@ -32,5 +41,5 @@ package() {
   cd ffms2
   make DESTDIR="${pkgdir}" install
   install -d "${pkgdir}/usr/lib/vapoursynth"
-  ln -s ../libffms2.so "${pkgdir}/usr/lib/vapoursynth/"
+  ln -s /usr/lib/libffms2.so "${pkgdir}/usr/lib/vapoursynth/"
 }
