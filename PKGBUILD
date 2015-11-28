@@ -2,7 +2,7 @@
 
 pkgname=osm-gps-map-gtk3
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ 3 library for showing OSM tiles"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://nzjrs.github.com/osm-gps-map/"
@@ -12,6 +12,8 @@ depends=('gtk3' 'libsoup')
 makedepends=('gnome-common' 'gtk-doc' 'gobject-introspection')
 optdepends=('python2-osmgpsmap: Python bindings')
 sha256sums=('027004459f2f29232d4ca0c914f835e6c06b720aef1daa9b470d9d5e1b71159b')
+provides=('osm-gps-map')
+conflicts=('osm-gps-map')
 
 package() {
   cd $srcdir/osm-gps-map-$pkgver
