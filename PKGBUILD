@@ -19,7 +19,7 @@ source=(
     xavs-x32-yasm.patch
     )
 md5sums=(
-    'SKIP'
+    '2986b9829e016e9800e50278469fdfae'
     '8ce1d21e378d234b949cb035c66d5655'
     'f6c2726fc2c11025b868952f389c0db3'
     'b39717e48edb5e8b8696e50d41c24ac0'
