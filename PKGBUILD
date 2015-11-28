@@ -1,18 +1,18 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: LUO, Jian <jian (dot) luo (dot) cn (at) gmail (dot) com >
 # Contributor: Ivan Sichmann Freitas <ivansichfreitas (at) gmail (dot) com>
 
 pkgname=pyclewn
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A Vim front-end to the gdb and pdb debuggers"
+url="http://pyclewn.sourceforge.net"
 license=('GPL2')
 arch=('any')
-url="http://pyclewn.sourceforge.net"
 depends=('python' 'vim>=7.4' 'gdb' 'python-pdb-clone')
 install=pyclewn.install
 source=(${pkgname}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('346b98a9e37957a5bf97b8901247f56fa8e38bddac38727867773cf4e78e555d6a85848c4c400d1faf1159ba61122cfd4931c95a67e3b2abdfaae7996beb4f1b')
+sha512sums=('ebf268fecba93e8a4ae331b19684975eade9f2d0d637a06e5078c77918169db2b13d15a0bf1d2e3722394627d0987fb61fde8dd80e53a80b794484b0b817f45b')
 
 package() {
   cd ${pkgname}-${pkgver}
