@@ -1,7 +1,7 @@
 pkgbase = python2-uritools
 	pkgdesc = RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for urlparse
-	pkgver = 0.12.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/uritools
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python2-uritools
 	depends = python2
 	depends = python2-ipaddress
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/u/uritools/uritools-0.12.0.tar.gz
-	md5sums = c913dbe0e03895c765f1ffcddaeed192
+	source = https://pypi.python.org/packages/source/u/uritools/uritools-1.0.1.tar.gz
+	md5sums = 64441f6ae24f4cbed1920feb5debea9f
 
 pkgname = python2-uritools
 

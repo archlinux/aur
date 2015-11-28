@@ -1,8 +1,9 @@
-# Maintainer: Bjoern Franke <bjo@nord-west.org>
+# Maintainer: Johannes Wienke <languitar@semipol.de>
+# Previous Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=python2-uritools
 _pypiname=uritools
-pkgver=0.12.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for urlparse"
 arch=('any')
 url="https://pypi.python.org/pypi/uritools"
@@ -11,7 +12,7 @@ makedepends=('python2-pip')
 depends=('python2' 'python2-ipaddress')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/u/${_pypiname}/${_pypiname}-$pkgver.tar.gz)
-md5sums=('c913dbe0e03895c765f1ffcddaeed192')
+md5sums=('64441f6ae24f4cbed1920feb5debea9f')
 
 package() {
   cd "$srcdir/$_pypiname-$pkgver"
