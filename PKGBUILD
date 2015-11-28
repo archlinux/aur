@@ -1,25 +1,24 @@
-# Maintainer: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
+
 pkgname=vim-r
-pkgver=0.9.9.7
-pkgrel=4
-pkgdesc="This plugin improves Vim's support for editing R code"
+pkgver=1.2.7
+pkgrel=1
+pkgdesc="Improves Vim's support for editing R code and integrates Vim with R"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=2628"
 license=('unknown')
 depends=('vim' 'tmux')
-makedepends=('unzip')
-source=("$pkgname-$pkgver.zip::http://www.vim.org/scripts/download_script.php?src_id=20996")
-noextract=("$_pkgname-$pkgver.zip")
-md5sums=('4485189412a413856cf0bc01d2b53dc4')
+optdepends=('pandoc: render output from markup files'
+            'vim-csv: inspect data.frames and matrices')
+install=('vim-r.install')
+source=("${pkgname}-${pkgver}.vmb::http://www.vim.org/scripts/download_script.php?src_id=23760")
+md5sums=('ae8386f2b3941e8565f8b5b7b7038ee3')
 
 package() {
-    mkdir -p "$pkgdir"/usr/share/vim/vimfiles
-    unzip -d "$pkgdir"/usr/share/vim/vimfiles "$srcdir"/$pkgname-$pkgver.zip
-
-    msg "***************************************************************"
-    msg "TODO:"
-    msg "Intall the R package VimCom: https://github.com/jalvesaq/VimCom"
-    msg "Add 'library(vimcom.plus)' to your ~/.Rprofile"
-    msg "***************************************************************"
-    msg ""
+  mkdir -p "${pkgdir}/usr/share/vim/vimfiles"
+  vim -c "UseVimball ${pkgdir}/usr/share/vim/vimfiles" -c q \
+    "${srcdir}/${pkgname}-${pkgver}.vmb"
+  rm "${pkgdir}/usr/share/vim/vimfiles/.VimballRecord"
+  rm "${pkgdir}/usr/share/vim/vimfiles/doc/tags"
 }
