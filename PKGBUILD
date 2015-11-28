@@ -30,7 +30,8 @@ build() {
 }
 
 package() {
-  make -C sdl2 DESTDIR="$pkgdir/" install
+  cd sdl2
+  make install DESTDIR="${pkgdir}"
 
   install -Dm644 sdl2/COPYING.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
