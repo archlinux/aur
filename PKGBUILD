@@ -3,8 +3,8 @@
 
 pkgname=lxdm-git
 _gitname=lxdm
-pkgver=0.5.2.r0.g1ff8969
-pkgrel=2
+pkgver=0.5.3.r0.gc731487
+pkgrel=1
 pkgdesc='Lightweight Display Manager (part of LXDE) - git checkout'
 arch=('i686' 'x86_64')
 url="http://blog.lxde.org/?p=531"

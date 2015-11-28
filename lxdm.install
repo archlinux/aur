@@ -8,9 +8,9 @@ post_install() {
     post_remove
 cat << EOF
 
-    >>> There're two custom themes for lxdm: ArchStripes and ArchDark
-    >>> You can configure them on /etc/lxdm/lxdm.conf in theme=theme_name
-    >>> The LXDM themes are localized in /usr/share/lxdm/themes
+>>> There're two custom themes for lxdm: ArchStripes and ArchDark
+>>> You can configure them on /etc/lxdm/lxdm.conf in theme=theme_name
+>>> The LXDM themes are localized in /usr/share/lxdm/themes
 
 EOF
 }
