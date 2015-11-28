@@ -1,6 +1,6 @@
 pkgbase = sogo
 	pkgver = 2.3.3a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sogo.nu/
 	arch = i686
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgname = sogo
 pkgname = sogo-openchange
 	pkgdesc = OpenChange module for SOGo
 	depends = sogo=2.3.3a
-	depends = openchange
+	depends = openchange-git
 
 pkgname = sogo-activesync
 	pkgdesc = ActiveSync module for SOGo

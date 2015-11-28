@@ -5,7 +5,7 @@ pkgname=('sogo'
          'sogo-openchange'
          'sogo-activesync')
 pkgver=2.3.3a
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -73,7 +73,7 @@ install=sogo.install
 
 package_sogo-openchange() {
 pkgdesc="OpenChange module for SOGo"
-depends=("sogo=${pkgver}" 'openchange')
+depends=("sogo=${pkgver}" 'openchange-git')
 
   cd "${srcdir}/SOGo-${pkgver}/OpenChange"
   sed 's@-Wall@-Wall -fobjc-exceptions@' -i GNUmakefile
