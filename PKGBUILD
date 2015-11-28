@@ -8,10 +8,10 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 epoch=1
-pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC and opencl)"
+pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL' 'custom:UNREDISTRIBUTABLE')
@@ -23,7 +23,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'frei0r-plugins' 'fribidi
          'libxv' 'mesa' 'openal' 'opencore-amr' 
          'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'rtmpdump' 'shine'
          'twolame' 'v4l-utils' 'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'xvidcore' 
-         'wavpack' 'zeromq' 'zlib' 'zvbi'
+         'wavpack' 'zeromq' 'zlib' 'zvbi' 'libdcadec.so'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvenc-api' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
@@ -36,7 +36,7 @@ source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc}
         'UNREDISTRIBUTABLE.txt'
         'ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('830ec647f7ad774fc0caf17ba47774bf5dee7a89cbd65894f364a87ba3ad21b2'
+sha256sums=('1bcf993a71839bb4a37eaa0c51daf315932b6dad6089f672294545cc51a5caf6'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
             '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a')
@@ -77,6 +77,7 @@ build() {
     --enable-libcdio \
     --enable-libcelt \
     --enable-libdc1394 \
+    --enable-libdcadec \
     --enable-libfaac \
     --enable-libfdk-aac \
     --enable-libfreetype \
