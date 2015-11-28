@@ -22,6 +22,8 @@ diff -Naur a/Makefile.meta b/Makefile.meta
  MONGO_INCLUDE = $(shell pkg-config --cflags libmongoc-1.0)
 -PG_CPPFLAGS = --std=c99 $(MONGO_INCLUDE) -I$(LIBJSON) -DMETA_DRIVER
 +PG_CPPFLAGS = --std=c99 $(MONGO_INCLUDE) $(LIBJSON_INCLUDE) -DMETA_DRIVER
- SHLIB_LINK = $(shell pkg-config --libs libmongoc-1.0)
+-SHLIB_LINK = $(shell pkg-config --libs libmongoc-1.0)
++SHLIB_LINK = $(shell pkg-config --libs libmongoc-1.0 json-c)
  
  OBJS = connection.o option.o mongo_wrapper_meta.o mongo_fdw.o mongo_query.o
+
