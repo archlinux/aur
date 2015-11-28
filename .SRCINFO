@@ -1,0 +1,25 @@
+pkgbase = gmpc-git
+	pkgver = release.11.8.16.r424.gab71845
+	pkgrel = 1
+	url = http://gmpclient.org/home
+	install = gmpc.install
+	arch = x86_64
+	arch = i686
+	makedepends = gob2
+	makedepends = intltool
+	makedepends = vala
+	makedepends = git
+	depends = libunique
+	depends = libmpd-git
+	depends = libsoup
+	depends = sqlite
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = libnotify
+	depends = glyr
+	conflicts = gmpc
+	source = gmpc-git::git://git.musicpd.org/master/gmpc.git
+	md5sums = SKIP
+
+pkgname = gmpc-git
+
