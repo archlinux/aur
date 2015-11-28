@@ -1,0 +1,11 @@
+pkgbase = xorg-startx-systemd
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/muesli4/archlinux-packages
+	arch = any
+	depends = xorg-xinit
+	source = startx.service
+	md5sums = 8867c87f0422db611c46c25b8112c976
+
+pkgname = xorg-startx-systemd
+

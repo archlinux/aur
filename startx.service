@@ -1,0 +1,13 @@
+[Unit]
+Description=startx as service
+
+[Service]
+ExecStart=/usr/bin/startx
+Restart=on-abort
+
+[Install]
+WantedBy=default.target
+
+
+
+
