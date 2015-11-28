@@ -1,0 +1,9 @@
+pre_install() {
+	echo "#waveshare35a" >>  /boot/config.txt
+	echo "dtoverlay=waveshare35a" >>  /boot/config.txt
+}
+
+pre_remove() {
+	sed -i '/#waveshare35a/d' /boot/config.txt
+	sed -i '/dtoverlay=waveshare35a/d' /boot/config.txt
+}
