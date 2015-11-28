@@ -1,6 +1,6 @@
 pkgbase = btcd
 	pkgver = 20151128
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/btcsuite
 	arch = i686
 	arch = x86_64

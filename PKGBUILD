@@ -3,7 +3,7 @@
 pkgbase=btcd
 pkgname=('btcd' 'btcwallet' 'btcgui')
 pkgver=20151128
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('git' 'go')
 groups=('btcsuite')
@@ -39,7 +39,9 @@ package_btcd() {
   done
 
   msg2 'Installing btcd...'
-  find "$srcdir/bin" -mindepth 1 -maxdepth 1 -type f ! -name "btcwallet*" \
+  find "$srcdir/bin" -mindepth 1 -maxdepth 1 -type f \
+       \( ! -name "btcwallet*"  \)                   \
+    -a \( ! -name "dropwtxmgr*" \)                   \
     -exec install -Dm 755 '{}' -t "$pkgdir/usr/bin" \;
 
   msg2 'Cleaning up pkgdir...'
@@ -59,7 +61,9 @@ package_btcwallet() {
   done
 
   msg2 'Installing btcwallet...'
-  install -Dm 755 "$srcdir/bin/btcwallet" -t "$pkgdir/usr/bin"
+  for _bin in btcwallet dropwtxmgr; do
+    install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
+  done
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
