@@ -10,7 +10,6 @@ arch=('arm' 'armv6h' 'armv7h')
 url="http://github.com/libretro/RetroArch"
 license=('GPL')
 depends=('ffmpeg' 'jack2' 'mesa' 'mesa-libgl' 'libusb' 'libxinerama' 'libxkbcommon' 'libxv' 'openal' 'python' 'sdl2')
-optdepends=('libretro-super-git: A collection of many libretro implementations.')
 makedepends=('git')
 provides=('retroarch' 'retroarch-git')
 conflicts=('retroarch')
@@ -36,5 +35,4 @@ build() {
 package() {
   cd "${_gitname}"
   make install DESTDIR="${pkgdir}"
-  install -m755 -t "${pkgdir}/usr/bin" "tools/retroarch-joyconfig"
 }

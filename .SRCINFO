@@ -19,7 +19,6 @@ pkgbase = retroarch-rbp-git
 	depends = python
 	depends = sdl2
 	makedepends = git
-	optdepends = libretro-super-git: A collection of many libretro implementations.
 	provides = retroarch
 	provides = retroarch-git
 	conflicts = retroarch
