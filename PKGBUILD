@@ -9,7 +9,9 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=167435'
 license=('LGPL')
 depends=('vapoursynth'
-         'ffmpeg'
+         'libavformat.so'
+         'libavcodec.so'
+         'libswscale.so'
          'liblsmash.so'
          )
 makedepends=('git')
