@@ -6,5 +6,5 @@ case "$ext" in
 	"prs" ) /opt/smoffice2016/presentations -S\""$@"\";;
 	"pps" ) /opt/smoffice2016/presentations -S\""$@"\";;
 	"ppsx" ) /opt/smoffice2016/presentations -S\""$@"\";;
-	* ) /opt/smoffice16/presentations "$@";;
+	* ) /opt/smoffice2016/presentations "$@";;
 esac
