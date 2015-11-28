@@ -7,6 +7,7 @@ pkgbase = sundtek
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7h
 	license = custom
 	optdepends = lib32-gcc-libs: FM Radio
 	optdepends = libpulse: FM Radio
@@ -22,6 +23,8 @@ pkgbase = sundtek
 	md5sums_x86_64 = SKIP
 	source_armv6h = installer_armsysvhf.tar.gz::http://sundtek.de/media/netinst/armsysvhf/installer.tar.gz?ARCH
 	md5sums_armv6h = SKIP
+	source_armv7h = installer_armsysvhf.tar.gz::http://sundtek.de/media/netinst/armsysvhf/installer.tar.gz?ARCH
+	md5sums_armv7h = SKIP
 
 pkgname = sundtek
 
