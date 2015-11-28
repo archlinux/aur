@@ -8,7 +8,7 @@
 
 _pack=symbolic
 pkgname=octave-$_pack
-pkgver=2.2.1
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Adds symbolic calculation features to GNU Octave. These include common Computer Algebra System tools such as algebraic operations, calculus, equation solving, Fourier and Laplace transforms, variable precision arithmetic and other features.  Interna [...]"
 arch=(any)
@@ -22,11 +22,13 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive"
-	'0001-Fix-configure-print-version-for-Python-3.patch')
+source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('42dcee03f527b61fdf74b11ea3420488'
-         'f00f13fe7ea65a4be3dcabb005050c80')
+md5sums=('1d61ec833d125d3e7ef6dea0c4c1ad05')
+
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
 
 _install_dir() {
 	src=$1
@@ -40,17 +42,10 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	tar xzf "$_archive"
-	(
-		cd "$_pack-$pkgver"
-		patch -p1 -i ../0001-Fix-configure-print-version-for-Python-3.patch
-	)
-	_archive_patched=$_pack-$pkgver-patched.tar.gz
-	tar czf "$_archive_patched" "$_pack-$pkgver"
-	octave -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
-		pkg install -verbose -nodeps $_archive_patched;
+		pkg install -verbose -nodeps $_archive;
 		EOF
 		)"
 }

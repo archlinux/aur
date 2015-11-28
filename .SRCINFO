@@ -1,17 +1,17 @@
 pkgbase = octave-symbolic
 	pkgdesc = Adds symbolic calculation features to GNU Octave. These include common Computer Algebra System tools such as algebraic operations, calculus, equation solving, Fourier and Laplace transforms, variable precision arithmetic and other features. Interna [...]
-	pkgver = 2.2.1
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = http://octave.sourceforge.net/symbolic/
 	install = octave-symbolic.install
 	arch = any
 	groups = octave-forge
 	license = custom
-	makedepends = python2-sympy>=0.7.5
-	makedepends = python2
-	noextract = symbolic-2.2.1.tar.gz
-	source = http://downloads.sourceforge.net/octave/symbolic-2.2.1.tar.gz
-	md5sums = 42dcee03f527b61fdf74b11ea3420488
+	makedepends = python-sympy>=0.7.5
+	makedepends = python
+	noextract = symbolic-2.2.3.tar.gz
+	source = http://downloads.sourceforge.net/octave/symbolic-2.2.3.tar.gz
+	md5sums = 1d61ec833d125d3e7ef6dea0c4c1ad05
 
 pkgname = octave-symbolic
 
