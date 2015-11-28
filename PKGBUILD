@@ -1,12 +1,12 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=yacreader
 pkgver=8.0
-pkgrel=2
+pkgrel=3
 pkgdesc=('A comic reader for cross-platform reading and managing your digital comic collection.')
 arch=('i686' 'x86_64')
 url="http://www.yacreader.com"
 license=('GPL3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-script' 'poppler-qt5' 'qt5-declarative' 'glu' 'libunarr-git' 'desktop-file-utils'  )
+depends=('qt5-base' 'qt5-multimedia' 'qt5-script' 'poppler-qt5' 'qt5-declarative' 'glu' 'libunarr-git' 'desktop-file-utils'  'qt5-quickcontrols')
 optdepends=(
     'qt5-imageformats: Support for extra image formats'
     'qrencode: YACReaderLibrary server info qr codes'
