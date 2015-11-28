@@ -9,7 +9,7 @@ url="http://github.com/gnunn1/vgrep"
 license=('MPL')
 depends=('gtk3')
 source_x86_64=(https://github.com/gnunn1/vgrep/releases/download/$pkgver/vgrep.zip)
-md5sums_x86_64=('3ba187abf9fd60d8a218a1006ab5b875')
+md5sums_x86_64=('0ddc8d3edee33f29a65c6a69c48141bc')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
