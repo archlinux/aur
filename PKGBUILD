@@ -2,13 +2,13 @@
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc-sim
-pkgver=20150910
+pkgver=20151128
 pkgrel=1
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://linuxcnc.org/"
-depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-libgnome' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx')
+depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-libgnome' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs')
 install=$pkgname.install
 _gitname='linuxcnc'
 source=($_gitname::'git://git.linuxcnc.org/git/linuxcnc.git' 'boost.patch')
@@ -26,7 +26,7 @@ pkgver() {
 build () {
   find . -iname fixpaths.py -o -iname checkglade|xargs perl -p -i -e "s/python/python2/"
   cd $srcdir/$_gitname/src
-  patch -p1 <../../boost.patch
+#  patch -p1 <../../boost.patch
 #  #This Makefile line fixes a seg fault due to changed CFLAGS
 # cp -PR $srcdir/Makefile $srcdir/$pkgname-$pkgver/src/Makefile
 #  #This fixes build for updated Python libraries
