@@ -1,0 +1,15 @@
+pkgbase = ft232r_prog
+	pkgdesc = A command-line interface for reconfiguring the FT232R chip
+	pkgver = 1.25
+	pkgrel = 1
+	url = http://www.rtr.ca/ft232r/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb-compat
+	depends = libftdi-compat
+	source = http://www.rtr.ca/ft232r/ft232r_prog-1.25.tar.gz
+	sha256sums = 31dde0188c23b7b8ea684ce29f11ef8f6ddd4c2899dd189786bd171b6616e4ee
+
+pkgname = ft232r_prog
+
