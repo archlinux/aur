@@ -3,7 +3,7 @@
 pkgname=thea-the-awakening-bin
 name=thea-the-awakening
 pkgver=unsported_build_3
-pkgrel=3
+pkgrel=4
 pkgdesc="A turn-based strategic survival game steeped in Slavic myth. -gratis unsuported linux build"
 arch=('i686' 'x86_64')
 url="http://steamcommunity.com/app/378720/discussions/0/490125737485986607"
@@ -22,7 +22,7 @@ sha256sums=('0556be387ea83460ff7b47b80c074bcfc66f915d31bac20c8f75144e39929a1c'
             '1259ef14c737ebc9ead6bd5d9914ca70ef2a0cac6ad9b15081cd6ac54f913520'
             'SKIP')
 
-#install=${name}.install
+install=${name}.install
 
 package() {
   install -d "${pkgdir}/opt/games/${name}"
