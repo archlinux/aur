@@ -30,7 +30,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  sed 's|DESTINATION ${DATA_INSTALL_DIR}/ktorrent|DESTINATION ${KXMLGUI_INSTALL_DIR}|g' -i ktorrent/ktorrent/CMakeLists.txt
+  sed 's|ui.rc DESTINATION ${DATA_INSTALL_DIR}|ui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}|g' -i ktorrent/ktorrent/CMakeLists.txt \
+                                                                                           -i ktorrent/plugins/*/CMakeLists.txt
 }
 
 build() {
