@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  CFLAGS="$CFLAGS -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host"
+  CFLAGS="$CFLAGS -I/opt/vc/include"
   ./configure --prefix=/usr --disable-vg --disable-opengl --disable-gles --disable-fbo --disable-egl --disable-x11 --disable-sdl --disable-sdl2 --disable-pulse --disable-oss --disable-ffmpeg --enable-neon --enable-dispmanx --enable-floathard --enable-udev
   make
 }
