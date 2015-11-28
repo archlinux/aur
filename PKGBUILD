@@ -2,14 +2,14 @@
 # Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
 pkgname=sope
-pkgver=2.3.2
+pkgver=2.3.3a
 pkgrel=1
 pkgdesc="application server used by SOGo"
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/files/downloads/SOGo/Sources/"
 license=('GPL')
 depends=('gnustep-base')
-makedepends=('gcc-objc')
+makedepends=('gcc-objc' 'libxml2' 'mariadb' 'openldap' 'openssl' 'postgresql')
 optdepends=('libxml2: parse XML coniguration files'
             'mariadb: run database server for sogo locally'
             'openldap: run directory server for sogo locally'
@@ -35,6 +35,6 @@ package() {
   make install DESTDIR="${pkgdir}"
 }
 
-sha256sums=('9d2072c6ee2b864d57d30f43079ff7c0921f8a94de066f32753337aef74e85d8'
+sha256sums=('9a1c31a407ff3a7584d2364e92976e3e9336c8ebaa47223bd9dde5a2be2f129c'
             '7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a')
 
