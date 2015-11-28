@@ -1,0 +1,40 @@
+# Maintainer: Julian Xhokaxhiu < info at julianxhokaxhiu dot com>
+# Original Package: Vítor Ferreira <vitor.dominor@gmail.com>
+pkgname=xboxdrv-rbp-git
+pkgver=0.8.8.3362c1ab
+pkgrel=1
+pkgdesc="An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers"
+arch=('arm' 'armv6h' 'armv7h')
+url="http://pingus.seul.org/~grumbel/xboxdrv/"
+license=('GPL3')
+depends=('libx11' 'dbus-glib' 'libusbx')
+makedepends=('git' 'scons' 'boost' 'pkg-config' 'libx11' 'dbus-glib' 'libusb')
+provides=('xboxdrv='$pkgver)
+conflicts=('xboxdrv')
+source=("${pkgname}::git://github.com/Grumbel/xboxdrv.git"
+         "xboxdrv.service"
+         "xboxdrv.conf")
+md5sums=('SKIP'
+         'c44dc13f6d34cd7fc61c87ecd8c3a547'
+         'c73bb9cf8ff763e7c477366472d19813')
+
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    ver=$(cat VERSION)
+    revision=$(git rev-list --count HEAD)
+    hash=$(git log --pretty=format:'%h' -n 1)
+    echo $ver.$revision.$hash
+}
+
+build() {
+    cd ${srcdir}/${pkgname}
+    make PREFIX=/usr
+}
+
+package() {
+    cd ${srcdir}/${pkgname}
+    make PREFIX=/usr DESTDIR="$pkgdir/" install
+
+    install -D -m755 "$srcdir/xboxdrv.service" "$pkgdir/usr/lib/systemd/system/xboxdrv.service"
+    install -D -m644 "$srcdir/xboxdrv.conf" "$pkgdir/etc/conf.d/xboxdrv"
+}
