@@ -8,8 +8,10 @@ pkgbase = solvespace-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	depends = fltk>=1.3.0
 	depends = libpng
+	depends = json-c
+	depends = glew
+	depends = gtkmm
 	source = solvespace-git::git+https://github.com/jwesthues/solvespace.git
 	sha256sums = SKIP
 

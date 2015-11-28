@@ -1,3 +1,4 @@
+# Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname='solvespace-git'
 pkgver=r581.0159a87
@@ -6,7 +7,8 @@ pkgdesc="SOLVESPACE is a parametric 3d CAD program."
 arch=('i686' 'x86_64')
 url='http://solvespace.com/'
 license=('GPL3')
-depends=('fltk>=1.3.0' 'libpng')
+depends=('libpng' 'json-c' 'glew' 'gtkmm')
+# awwm moved away from fltk
 makedepends=('git' 'cmake')
 source=('solvespace-git::git+https://github.com/jwesthues/solvespace.git')
 sha256sums=('SKIP')
@@ -17,11 +19,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+# -std=c++11 or -std=gnu++11
+
 build() {
   cd "$pkgname"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ../
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_CXX_FLAGS="-std=c++11" ../
   make
 }
 
