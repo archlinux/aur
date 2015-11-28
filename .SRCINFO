@@ -1,6 +1,6 @@
 pkgbase = qps-git
 	pkgdesc = Qt process manager
-	pkgver = r33.56d9096
+	pkgver = r34.52fa306
 	pkgrel = 1
 	url = https://github.com/QtDesktop/qps
 	arch = i686

@@ -2,7 +2,7 @@
 
 _pkgname=qps
 pkgname=$_pkgname-git
-pkgver=r33.56d9096
+pkgver=r34.52fa306
 pkgrel=1
 pkgdesc="Qt process manager"
 arch=("i686" "x86_64")
@@ -29,8 +29,4 @@ build() {
 package() {
     cd build
     make DESTDIR=$pkgdir install
-
-    # workaround upstream issue https://github.com/QtDesktop/qps/issues/11
-    cd $pkgdir/usr/bin
-    mv Project qps
 }
