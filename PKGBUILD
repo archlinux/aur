@@ -1,8 +1,8 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=join-python
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Join-calculus for Python"
 arch=(any)
 url="https://github.com/maandree/join-python"
@@ -11,7 +11,7 @@ install=join-python.install
 depends=(python3)
 makedepends=(texinfo)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=('9e463fe40789877e5e9a806f1111c077a29ea01bdc75d8c8913f876ff244b938')
+sha256sums=('aea1046c9a1c9040834613bc88215c757ec2a6fc9a88f0aae7fa6e05a4cffff7')
 
 
 build() {
