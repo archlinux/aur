@@ -1,7 +1,7 @@
 pkgbase = libsigcpp1.2
 	pkgdesc = A typesafe callback system for standard C++
 	pkgver = 1.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://libsigc.sourceforge.net/
 	arch = i686
 	arch = x86_64
