@@ -1,7 +1,17 @@
-diff -Naur kcm-grub2-0.6.4/CMakeLists.txt kcm-grub2-0.6.4-new2/CMakeLists.txt
---- kcm-grub2-0.6.4/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/CMakeLists.txt	2015-11-20 19:47:54.125760160 +0800
-@@ -4,28 +4,38 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
++++ b/CMakeLists.txt	2015-11-28 09:17:09.000000000 +0800
+@@ -1,31 +1,48 @@
++cmake_minimum_required( VERSION 2.8.12 )
++cmake_policy(SET CMP0002 OLD)
++cmake_policy(SET CMP0026 OLD)
++cmake_policy(SET CMP0054 OLD)
++cmake_policy(SET CMP0063 OLD)
++cmake_policy(SET CMP0064 OLD)
++
+ project(kcm-grub2)
+ set(KCM_GRUB2_VERSION_MAJOR "0")
+ set(KCM_GRUB2_VERSION_MINOR "5")
  set(KCM_GRUB2_VERSION_PATCH "8")
  set(KCM_GRUB2_VERSION "${KCM_GRUB2_VERSION_MAJOR}.${KCM_GRUB2_VERSION_MINOR}.${KCM_GRUB2_VERSION_PATCH}")
  
@@ -48,9 +58,9 @@ diff -Naur kcm-grub2-0.6.4/CMakeLists.txt kcm-grub2-0.6.4-new2/CMakeLists.txt
  macro_log_feature(QPACKAGEKIT_FOUND "QPackageKit" "Remove unneeded old entries (qpackagekit backend)" "http://www.packagekit.org/" FALSE "" "")
  macro_bool_to_01(QPACKAGEKIT_FOUND HAVE_QPACKAGEKIT)
  
-diff -Naur kcm-grub2-0.6.4/cmake/modules/FindMsgfmt.cmake kcm-grub2-0.6.4-new2/cmake/modules/FindMsgfmt.cmake
---- kcm-grub2-0.6.4/cmake/modules/FindMsgfmt.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/cmake/modules/FindMsgfmt.cmake	2015-11-20 19:51:20.376034023 +0800
+diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
+--- a/cmake/modules/FindMsgfmt.cmake	1970-01-01 08:00:00.000000000 +0800
++++ b/cmake/modules/FindMsgfmt.cmake	2015-11-28 09:04:04.000000000 +0800
 @@ -0,0 +1,28 @@
 +# - Try to find msgfmt 
 +# Once done this will define
@@ -80,9 +90,9 @@ diff -Naur kcm-grub2-0.6.4/cmake/modules/FindMsgfmt.cmake kcm-grub2-0.6.4-new2/c
 +
 +endif (MSGFMT_EXECUTABLE)
 +
-diff -Naur kcm-grub2-0.6.4/cmake/modules/MacroLogFeature.cmake kcm-grub2-0.6.4-new2/cmake/modules/MacroLogFeature.cmake
---- kcm-grub2-0.6.4/cmake/modules/MacroLogFeature.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/cmake/modules/MacroLogFeature.cmake	2015-11-20 11:22:10.000000000 +0800
+diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature.cmake
+--- a/cmake/modules/MacroLogFeature.cmake	1970-01-01 08:00:00.000000000 +0800
++++ b/cmake/modules/MacroLogFeature.cmake	2015-11-28 09:04:04.000000000 +0800
 @@ -0,0 +1,157 @@
 +# This file defines the Feature Logging macros.
 +#
@@ -241,9 +251,9 @@ diff -Naur kcm-grub2-0.6.4/cmake/modules/MacroLogFeature.cmake kcm-grub2-0.6.4-n
 +   ENDIF(_printSummary)
 +
 +ENDMACRO(MACRO_DISPLAY_FEATURE_LOG)
-diff -Naur kcm-grub2-0.6.4/other/kcm_grub2.desktop kcm-grub2-0.6.4-new2/other/kcm_grub2.desktop
---- kcm-grub2-0.6.4/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/other/kcm_grub2.desktop	2015-11-27 13:43:16.000000000 +0800
+diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
+--- a/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
++++ b/other/kcm_grub2.desktop	2015-11-28 09:04:04.000000000 +0800
 @@ -2,12 +2,12 @@
  Icon=system-reboot
  Type=Service
@@ -259,17 +269,9 @@ diff -Naur kcm-grub2-0.6.4/other/kcm_grub2.desktop kcm-grub2-0.6.4-new2/other/kc
  
  Name=GRUB2 Bootloader
  Name[bs]=GRUB2 pokretač sistemar
-diff -Naur kcm-grub2-0.6.4/po/CMakeLists.txt kcm-grub2-0.6.4-new2/po/CMakeLists.txt
---- kcm-grub2-0.6.4/po/CMakeLists.txt	2013-10-12 18:35:37.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/po/CMakeLists.txt	2015-11-20 19:44:37.577602005 +0800
-@@ -27,3 +27,4 @@
- add_subdirectory( tr )
- add_subdirectory( uk )
- add_subdirectory( zh_TW )
-+
-diff -Naur kcm-grub2-0.6.4/src/CMakeLists.txt kcm-grub2-0.6.4-new2/src/CMakeLists.txt
---- kcm-grub2-0.6.4/src/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/src/CMakeLists.txt	2015-11-20 19:34:42.687535742 +0800
+diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
++++ b/src/CMakeLists.txt	2015-11-28 09:04:04.000000000 +0800
 @@ -33,7 +33,7 @@
  endif(HAVE_QAPT)
  
@@ -279,9 +281,45 @@ diff -Naur kcm-grub2-0.6.4/src/CMakeLists.txt kcm-grub2-0.6.4-new2/src/CMakeList
  if(HAVE_IMAGEMAGICK)
      set(kcm_grub2_LINK_LIBS ${kcm_grub2_LINK_LIBS} ${ImageMagick_LIBRARIES})
  endif(HAVE_IMAGEMAGICK)
-diff -Naur kcm-grub2-0.6.4/src/helper/CMakeLists.txt kcm-grub2-0.6.4-new2/src/helper/CMakeLists.txt
---- kcm-grub2-0.6.4/src/helper/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/src/helper/CMakeLists.txt	2015-11-27 12:49:29.000000000 +0800
+diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
+--- a/src/convertDlg.cpp	2013-10-12 18:34:15.000000000 +0800
++++ b/src/convertDlg.cpp	2015-11-28 09:04:04.000000000 +0800
+@@ -50,11 +50,11 @@
+     QString writeFilter = QString("*%1|%5 (%1)\n*%2|%6 (%2)\n*%3 *%4|%7 (%3 %4)").arg(".png", ".tga", ".jpg", ".jpeg", KMimeType::mimeType("image/png")->comment(), KMimeType::mimeType("image/x-tga")->comment(), KMimeType::mimeType("image/jpeg")->comment());
+ 
+     ui->kurlrequester_image->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
+-    ui->kurlrequester_image->fileDialog()->setOperationMode(KFileDialog::Opening);
+-    ui->kurlrequester_image->fileDialog()->setFilter(readFilter);
++    ui->kurlrequester_image->fileDialog()->setAcceptMode(QFileDialog::AcceptOpen);
++    ui->kurlrequester_image->fileDialog()->setNameFilter(readFilter);
+     ui->kurlrequester_converted->setMode(KFile::File | KFile::LocalOnly);
+-    ui->kurlrequester_converted->fileDialog()->setOperationMode(KFileDialog::Saving);
+-    ui->kurlrequester_converted->fileDialog()->setFilter(writeFilter);
++    ui->kurlrequester_converted->fileDialog()->setAcceptMode(QFileDialog::AcceptSave);
++    ui->kurlrequester_converted->fileDialog()->setNameFilter(writeFilter);
+ }
+ ConvertDialog::~ConvertDialog()
+ {
+@@ -71,6 +71,7 @@
+ 
+ void ConvertDialog::slotButtonClicked(int button)
+ {
++    QRegularExpression getdirectory("\S*/");
+     if (button == KDialog::Ok) {
+         if (ui->kurlrequester_image->text().isEmpty() || ui->kurlrequester_converted->text().isEmpty()) {
+             KMessageBox::information(this, i18nc("@info", "Please fill in both <interface>Image</interface> and <interface>Convert To</interface> fields."));
+@@ -78,7 +79,7 @@
+         } else if (ui->spinBox_width->value() == 0 || ui->spinBox_height->value() == 0) {
+             KMessageBox::information(this, i18nc("@info", "Please fill in both <interface>Width</interface> and <interface>Height</interface> fields."));
+             return;
+-        } else if (!QFileInfo(ui->kurlrequester_converted->url().directory()).isWritable()) {
++        } else if (!QFileInfo(getdirectory.match(ui->kurlrequester_converted->url().toLocalFile()).captured(1)).isWritable()) {
+             KMessageBox::information(this, i18nc("@info", "You do not have write permissions in this directory, please select another destination."));
+             return;
+         }
+diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
+--- a/src/helper/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
++++ b/src/helper/CMakeLists.txt	2015-11-28 09:04:04.000000000 +0800
 @@ -8,7 +8,7 @@
  set(kcmgrub2helper_SRCS helper.cpp)
  
@@ -301,9 +339,9 @@ diff -Naur kcm-grub2-0.6.4/src/helper/CMakeLists.txt kcm-grub2-0.6.4-new2/src/he
 +install(TARGETS kcmgrub2helper DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
 +kauth_install_helper_files(kcmgrub2helper org.kde.kcontrol.kcmgrub2 root)
 +kauth_install_actions(org.kde.kcontrol.kcmgrub2 kcmgrub2.actions)
-diff -Naur kcm-grub2-0.6.4/src/helper/helper.cpp kcm-grub2-0.6.4-new2/src/helper/helper.cpp
---- kcm-grub2-0.6.4/src/helper/helper.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/src/helper/helper.cpp	2015-11-27 12:07:27.628398868 +0800
+diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
+--- a/src/helper/helper.cpp	2013-10-12 18:34:15.000000000 +0800
++++ b/src/helper/helper.cpp	2015-11-28 09:04:04.000000000 +0800
 @@ -59,8 +59,9 @@
  
      ActionReply reply;
@@ -379,9 +417,9 @@ diff -Naur kcm-grub2-0.6.4/src/helper/helper.cpp kcm-grub2-0.6.4-new2/src/helper
  
 -KDE4_AUTH_HELPER_MAIN("org.kde.kcontrol.kcmgrub2", Helper)
 +KAUTH_HELPER_MAIN("org.kde.kcontrol.kcmgrub2", Helper)
-diff -Naur kcm-grub2-0.6.4/src/installDlg.cpp kcm-grub2-0.6.4-new2/src/installDlg.cpp
---- kcm-grub2-0.6.4/src/installDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/src/installDlg.cpp	2015-11-20 22:03:17.110628739 +0800
+diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
+--- a/src/installDlg.cpp	2013-10-12 18:34:15.000000000 +0800
++++ b/src/installDlg.cpp	2015-11-28 09:30:15.226612873 +0800
 @@ -27,11 +27,17 @@
  #include <KMessageBox>
  #include <KProgressDialog>
@@ -420,17 +458,16 @@ diff -Naur kcm-grub2-0.6.4/src/installDlg.cpp kcm-grub2-0.6.4-new2/src/installDl
              return;
          }
  
-@@ -112,19 +119,25 @@
+@@ -112,19 +119,21 @@
          progressDlg.progressBar()->setMinimum(0);
          progressDlg.progressBar()->setMaximum(0);
          progressDlg.show();
 -        connect(installAction.watcher(), SIGNAL(actionPerformed(ActionReply)), &progressDlg, SLOT(hide()));
-+        //TO BE FIXED
-+        //connect(installAction.watcher(), SIGNAL(actionPerformed(ActionReply)), &progressDlg, SLOT(hide()));
  
 -        ActionReply reply = installAction.execute();
 -        if (reply.succeeded()) {
 +        ExecuteJob* reply = installAction.execute();
++        connect(reply, SIGNAL(actionPerformed(ActionReply)), &progressDlg, SLOT(hide()));
 +        if (reply == 0) {
              KDialog *dialog = new KDialog(this, Qt::Dialog);
              dialog->setCaption(i18nc("@title:window", "Information"));
@@ -438,22 +475,19 @@ diff -Naur kcm-grub2-0.6.4/src/installDlg.cpp kcm-grub2-0.6.4-new2/src/installDl
              dialog->setModal(true);
              dialog->setDefaultButton(KDialog::Ok);
              dialog->setEscapeButton(KDialog::Ok);
-+            QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::Ok);
 -            KMessageBox::createKMessageBox(dialog, QMessageBox::Information, i18nc("@info", "Successfully installed GRUB."), QStringList(), QString(), 0, KMessageBox::Notify, reply.data().value("output").toString()); // krazy:exclude=qclasses
-+            //TO BE FIXED
++            QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::Ok);
 +            KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully installed GRUB."), QStringList(), QString(), 0, KMessageBox::Notify, reply->data().value("output").toString()); // krazy:exclude=qclasses
 +            
          } else {
 -            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), KDE_IS_VERSION(4,7,0) ? reply.errorDescription() : reply.data().value("errorDescription").toString());
-+            //TO BE FIXED
-+            //KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), KDE_IS_VERSION(4,7,0) ? reply.errorDescription() : reply.data().value("errorDescription").toString());
 +            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), reply->data().value("errorDescription").toString());
          }
      }
      KDialog::slotButtonClicked(button);
-diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.cpp
---- kcm-grub2-0.6.4/src/kcm_grub2.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/src/kcm_grub2.cpp	2015-11-27 11:52:23.939163153 +0800
+diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
+--- a/src/kcm_grub2.cpp	2013-10-12 18:34:15.000000000 +0800
++++ b/src/kcm_grub2.cpp	2015-11-28 09:44:31.334294700 +0800
 @@ -35,7 +35,9 @@
  #include <kmountpoint.h>
  #include <KPluginFactory>
@@ -464,7 +498,7 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
  
  //Project
  #include "common.h"
-@@ -54,13 +56,20 @@
+@@ -54,13 +56,21 @@
  K_PLUGIN_FACTORY(GRUB2Factory, registerPlugin<KCMGRUB2>();)
  K_EXPORT_PLUGIN(GRUB2Factory("kcmgrub2"))
  
@@ -474,21 +508,23 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
 +KCMGRUB2::KCMGRUB2(QWidget *parent, const QVariantList &list) : KCModule(parent, list)
  {
      //Isn't KAboutData's second argument supposed to do this?
-     KGlobal::locale()->insertCatalog("kcm-grub2");
- 
--    KAboutData *about = new KAboutData("kcmgrub2", "kcm-grub2", ki18nc("@title", "KDE GRUB2 Bootloader Control Module"), KCM_GRUB2_VERSION, ki18nc("@title", "A KDE Control Module for configuring the GRUB2 bootloader."), KAboutData::License_GPL_V3, ki18nc("@info:credit", "Copyright (C) 2008-2013 Konstantinos Smanis"), KLocalizedString(), "http://ksmanis.wordpress.com/projects/grub2-editor/");
--    about->addAuthor(ki18nc("@info:credit", "Κonstantinos Smanis"), ki18nc("@info:credit", "Main Developer"), "konstantinos.smanis@gmail.com", "http://ksmanis.wordpress.com/");
+-    KGlobal::locale()->insertCatalog("kcm-grub2");
++    //The function is deprecated. TO BE FIXED
++    //KGlobal::locale()->insertCatalog("kcm-grub2");
++
 +    KAboutData* about = new KAboutData("kcmgrub2", i18n("KDE GRUB2 Bootloader Control Module"), KCM_GRUB2_VERSION);
 +    about->setShortDescription(i18n("A KDE Control Module for configuring the GRUB2 bootloader."));
 +    about->setLicense(KAboutLicense::GPL_V3);
 +    about->setHomepage("http://ksmanis.wordpress.com/projects/grub2-editor/");
-+
+ 
+-    KAboutData *about = new KAboutData("kcmgrub2", "kcm-grub2", ki18nc("@title", "KDE GRUB2 Bootloader Control Module"), KCM_GRUB2_VERSION, ki18nc("@title", "A KDE Control Module for configuring the GRUB2 bootloader."), KAboutData::License_GPL_V3, ki18nc("@info:credit", "Copyright (C) 2008-2013 Konstantinos Smanis"), KLocalizedString(), "http://ksmanis.wordpress.com/projects/grub2-editor/");
+-    about->addAuthor(ki18nc("@info:credit", "Κonstantinos Smanis"), ki18nc("@info:credit", "Main Developer"), "konstantinos.smanis@gmail.com", "http://ksmanis.wordpress.com/");
 +    about->addAuthor("Κonstantinos Smanis", i18n("Main Developer"), "konstantinos.smanis@gmail.com");
 +    
      setAboutData(about);
  
      ui = new Ui::KCMGRUB2;
-@@ -76,11 +85,8 @@
+@@ -76,20 +86,15 @@
  void KCMGRUB2::defaults()
  {
      Action defaultsAction("org.kde.kcontrol.kcmgrub2.defaults");
@@ -497,27 +533,25 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
 -    defaultsAction.setParentWidget(this);
 -#endif
 -
+-    ActionReply reply = defaultsAction.execute();
+-    processReply(reply);
+-    if (reply.succeeded()) {
 +    defaultsAction.setHelperId("org.kde.kcontrol.kcmgrub2");
-+/*
-     ActionReply reply = defaultsAction.execute();
-     processReply(reply);
-     if (reply.succeeded()) {
-@@ -90,6 +96,14 @@
-     } else {
-         KMessageBox::detailedError(this, i18nc("@info", "Failed to restore the default values."), reply.errorDescription());
-     }
-+*/
++    
 +    ExecuteJob *reply = defaultsAction.execute();
 +    if (!reply->exec())
 +        KMessageBox::detailedError(this, i18nc("@info", "Failed to restore the default values."), reply->errorString());
 +    else
-+        load();
-+        save();
-+        KMessageBox::information(this, i18nc("@info", "Successfully restored the default values."));
+         load();
+         save();
+         KMessageBox::information(this, i18nc("@info", "Successfully restored the default values."));
+-    } else {
+-        KMessageBox::detailedError(this, i18nc("@info", "Failed to restore the default values."), reply.errorDescription());
+-    }
  }
  void KCMGRUB2::load()
  {
-@@ -455,41 +469,41 @@
+@@ -455,41 +460,37 @@
      }
  
      Action saveAction("org.kde.kcontrol.kcmgrub2.save");
@@ -545,18 +579,15 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
      progressDlg.progressBar()->setMaximum(0);
      progressDlg.show();
 -    connect(saveAction.watcher(), SIGNAL(actionPerformed(ActionReply)), &progressDlg, SLOT(hide()));
-+    //TO BE FIXED
-+    //connect(saveAction.watcher(), SIGNAL(actionPerformed(ActionReply)), &progressDlg, SLOT(hide()));
- 
+-
 -    ActionReply reply = saveAction.execute();
 -    processReply(reply);
 -    if (reply.succeeded()) {
 -        KDialog *dialog = new KDialog(this, Qt::Dialog);
 -        dialog->setCaption(i18nc("@title:window", "Information"));
 -        dialog->setButtons(KDialog::Ok | KDialog::Details);
-+    //ActionReply reply = saveAction.execute();
-+    //processReply(reply);
 +    ExecuteJob *reply = saveAction.execute();
++    connect(reply, SIGNAL(actionPerformed(ActionReply)), &progressDlg, SLOT(hide()));
 +    if (reply->exec()) {
 +        QDialog *dialog = new QDialog(this, Qt::Dialog);
 +        dialog->setWindowTitle(i18nc("@title:window", "Information"));
@@ -576,7 +607,65 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
      }
  }
  
-@@ -956,18 +970,13 @@
+@@ -770,8 +771,8 @@
+     view->setRootIsDecorated(false);
+     ui->kcombobox_default->setView(view);
+ 
+-    ui->kpushbutton_install->setIcon(KIcon("system-software-update"));
+-    ui->kpushbutton_remove->setIcon(KIcon("list-remove"));
++    ui->kpushbutton_install->setIcon(QIcon("system-software-update"));
++    ui->kpushbutton_remove->setIcon(QIcon("list-remove"));
+     ui->kpushbutton_remove->setVisible(HAVE_QAPT || HAVE_QPACKAGEKIT);
+ 
+     QPixmap black(16, 16), transparent(16, 16);
+@@ -825,11 +826,11 @@
+     ui->kcombobox_highlightForeground->setCurrentIndex(ui->kcombobox_highlightForeground->findData("black"));
+     ui->kcombobox_highlightBackground->setCurrentIndex(ui->kcombobox_highlightBackground->findData("light-gray"));
+ 
+-    ui->kpushbutton_preview->setIcon(KIcon("image-png"));
+-    ui->kpushbutton_create->setIcon(KIcon("insert-image"));
++    ui->kpushbutton_preview->setIcon(QIcon("image-png"));
++    ui->kpushbutton_create->setIcon(QIcon("insert-image"));
+     ui->kpushbutton_create->setVisible(HAVE_IMAGEMAGICK);
+ 
+-    ui->kpushbutton_cmdlineDefaultSuggestions->setIcon(KIcon("tools-wizard"));
++    ui->kpushbutton_cmdlineDefaultSuggestions->setIcon(QIcon("tools-wizard"));
+     ui->kpushbutton_cmdlineDefaultSuggestions->setMenu(new KMenu(ui->kpushbutton_cmdlineDefaultSuggestions));
+     ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Quiet Boot"))->setData("quiet");
+     ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Show Splash Screen"))->setData("splash");
+@@ -838,7 +839,7 @@
+     ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off APIC"))->setData("noapic");
+     ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off Local APIC"))->setData("nolapic");
+     ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Single User Mode"))->setData("single");
+-    ui->kpushbutton_cmdlineSuggestions->setIcon(KIcon("tools-wizard"));
++    ui->kpushbutton_cmdlineSuggestions->setIcon(QIcon("tools-wizard"));
+     ui->kpushbutton_cmdlineSuggestions->setMenu(new KMenu(ui->kpushbutton_cmdlineSuggestions));
+     ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Quiet Boot"))->setData("quiet");
+     ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Show Splash Screen"))->setData("splash");
+@@ -847,19 +848,19 @@
+     ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off APIC"))->setData("noapic");
+     ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off Local APIC"))->setData("nolapic");
+     ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Single User Mode"))->setData("single");
+-    ui->kpushbutton_terminalSuggestions->setIcon(KIcon("tools-wizard"));
++    ui->kpushbutton_terminalSuggestions->setIcon(QIcon("tools-wizard"));
+     ui->kpushbutton_terminalSuggestions->setMenu(new KMenu(ui->kpushbutton_terminalSuggestions));
+     ui->kpushbutton_terminalSuggestions->menu()->addAction(i18nc("@action:inmenu", "PC BIOS && EFI Console"))->setData("console");
+     ui->kpushbutton_terminalSuggestions->menu()->addAction(i18nc("@action:inmenu", "Serial Terminal"))->setData("serial");
+     ui->kpushbutton_terminalSuggestions->menu()->addAction(i18nc("@action:inmenu 'Open' is an adjective here, not a verb. 'Open Firmware' is a former IEEE standard.", "Open Firmware Console"))->setData("ofconsole");
+-    ui->kpushbutton_terminalInputSuggestions->setIcon(KIcon("tools-wizard"));
++    ui->kpushbutton_terminalInputSuggestions->setIcon(QIcon("tools-wizard"));
+     ui->kpushbutton_terminalInputSuggestions->setMenu(new KMenu(ui->kpushbutton_terminalInputSuggestions));
+     ui->kpushbutton_terminalInputSuggestions->menu()->addAction(i18nc("@action:inmenu", "PC BIOS && EFI Console"))->setData("console");
+     ui->kpushbutton_terminalInputSuggestions->menu()->addAction(i18nc("@action:inmenu", "Serial Terminal"))->setData("serial");
+     ui->kpushbutton_terminalInputSuggestions->menu()->addAction(i18nc("@action:inmenu 'Open' is an adjective here, not a verb. 'Open Firmware' is a former IEEE standard.", "Open Firmware Console"))->setData("ofconsole");
+     ui->kpushbutton_terminalInputSuggestions->menu()->addAction(i18nc("@action:inmenu", "PC AT Keyboard (Coreboot)"))->setData("at_keyboard");
+     ui->kpushbutton_terminalInputSuggestions->menu()->addAction(i18nc("@action:inmenu", "USB Keyboard (HID Boot Protocol)"))->setData("usb_keyboard");
+-    ui->kpushbutton_terminalOutputSuggestions->setIcon(KIcon("tools-wizard"));
++    ui->kpushbutton_terminalOutputSuggestions->setIcon(QIcon("tools-wizard"));
+     ui->kpushbutton_terminalOutputSuggestions->setMenu(new KMenu(ui->kpushbutton_terminalOutputSuggestions));
+     ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu", "PC BIOS && EFI Console"))->setData("console");
+     ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu", "Serial Terminal"))->setData("serial");
+@@ -956,18 +957,13 @@
      return fileName;
  }
  
@@ -598,7 +687,7 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
  }
  QString KCMGRUB2::readFile(GrubFile grubFile)
  {
-@@ -992,13 +1001,13 @@
+@@ -992,13 +988,13 @@
          return stream.readAll();
      }
  
@@ -616,7 +705,7 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
  }
  void KCMGRUB2::readEntries()
  {
-@@ -1030,15 +1039,15 @@
+@@ -1030,15 +1026,15 @@
          return;
      }
  
@@ -637,7 +726,7 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
      }
  }
  void KCMGRUB2::readDevices()
-@@ -1051,28 +1060,25 @@
+@@ -1051,28 +1047,24 @@
      }
  
      Action probeAction("org.kde.kcontrol.kcmgrub2.probe");
@@ -650,6 +739,7 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
 -    if (probeAction.authorize() != Action::Authorized) {
 -        return;
 -    }
++    //TO BE FIXED
 +    //if (probeAction.authorize() != Action::Authorized) {
 +    //    return;
 +    //}
@@ -659,14 +749,13 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
      progressDlg.setModal(true);
      progressDlg.show();
 -    connect(probeAction.watcher(), SIGNAL(progressStep(int)), progressDlg.progressBar(), SLOT(setValue(int)));
-+    //TO BE FIXED
-+    //connect(probeAction.watcher(), SIGNAL(progressStep(int)), progressDlg.progressBar(), SLOT(setValue(int)));
- 
+-
 -    ActionReply reply = probeAction.execute();
 -    processReply(reply);
 -    if (reply.failed()) {
 -        KMessageBox::detailedError(this, i18nc("@info", "Failed to get GRUB device names."), reply.errorDescription());
 +    ExecuteJob *reply = probeAction.execute();
++    connect(reply, SIGNAL(progressStep(int)), progressDlg.progressBar(), SLOT(setValue(int)));
 +    if (!reply->exec()) {
 +        KMessageBox::detailedError(this, i18nc("@info", "Failed to get GRUB device names."), reply->errorString());
          return;
@@ -676,7 +765,7 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
      if (mountPoints.size() != grubPartitions.size()) {
          KMessageBox::error(this, i18nc("@info", "Helper returned malformed device list."));
          return;
-@@ -1086,19 +1092,15 @@
+@@ -1086,19 +1078,15 @@
  void KCMGRUB2::readResolutions()
  {
      Action probeVbeAction("org.kde.kcontrol.kcmgrub2.probevbe");
@@ -700,7 +789,7 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
  }
  
  void KCMGRUB2::sortResolutions()
-@@ -1140,7 +1142,7 @@
+@@ -1140,7 +1128,7 @@
          ui->kcombobox_gfxpayload->addItem(resolution, resolution);
      }
  }
@@ -709,7 +798,7 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
  void KCMGRUB2::processReply(ActionReply &reply)
  {
      if (reply.type() == ActionReply::Success || reply.type() == ActionReply::KAuthError) {
-@@ -1171,6 +1173,7 @@
+@@ -1171,6 +1159,7 @@
      reply.addData(QLatin1String("errorMessage"), errorMessage);
      reply.setErrorDescription(i18nc("@info", "Command: <command>%1</command><nl/>Error code: <numid>%2</numid><nl/>Error message:<nl/><message>%3</message>", reply.data().value(QLatin1String("command")).toStringList().join(QLatin1String(" ")), reply.errorCode(), errorMessage));
  }
@@ -717,21 +806,18 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.cpp kcm-grub2-0.6.4-new2/src/kcm_grub2.
  QString KCMGRUB2::parseTitle(const QString &line)
  {
      QChar ch;
-diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.h kcm-grub2-0.6.4-new2/src/kcm_grub2.h
---- kcm-grub2-0.6.4/src/kcm_grub2.h	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/src/kcm_grub2.h	2015-11-27 11:16:19.148928740 +0800
-@@ -23,6 +23,10 @@
+diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
+--- a/src/kcm_grub2.h	2013-10-12 18:34:15.000000000 +0800
++++ b/src/kcm_grub2.h	2015-11-28 09:44:34.802372938 +0800
+@@ -23,6 +23,7 @@
  
  //KDE
  #include <KCModule>
 +
-+#include <KGlobal>
-+#include <KIcon>
-+
  namespace KAuth
  {
      class ActionReply;
-@@ -89,7 +93,7 @@
+@@ -89,7 +90,7 @@
      QString convertToGRUBFileName(const QString &fileName);
      QString convertToLocalFileName(const QString &grubFileName);
  
@@ -740,9 +826,9 @@ diff -Naur kcm-grub2-0.6.4/src/kcm_grub2.h kcm-grub2-0.6.4-new2/src/kcm_grub2.h
      QString readFile(GrubFile grubFile);
      void readEntries();
      void readSettings();
-diff -Naur kcm-grub2-0.6.4/ui/kcm_grub2.ui kcm-grub2-0.6.4-new2/ui/kcm_grub2.ui
---- kcm-grub2-0.6.4/ui/kcm_grub2.ui	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/ui/kcm_grub2.ui	2015-11-26 10:49:13.930331993 +0800
+diff -Naur a/ui/kcm_grub2.ui b/ui/kcm_grub2.ui
+--- a/ui/kcm_grub2.ui	2013-10-12 18:34:15.000000000 +0800
++++ b/ui/kcm_grub2.ui	2015-11-28 09:04:04.000000000 +0800
 @@ -219,7 +219,7 @@
               </widget>
              </item>
@@ -826,39 +912,3 @@ diff -Naur kcm-grub2-0.6.4/ui/kcm_grub2.ui kcm-grub2-0.6.4-new2/ui/kcm_grub2.ui
     <class>KUrlRequester</class>
     <extends>QFrame</extends>
     <header>kurlrequester.h</header>
-diff -Naur kcm-grub2-0.6.4/src/convertDlg.cpp kcm-grub2-0.6.4-new2/src/convertDlg.cpp
---- kcm-grub2-0.6.4/src/convertDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ kcm-grub2-0.6.4-new2/src/convertDlg.cpp	2015-11-27 19:42:03.000000000 +0800
-@@ -50,11 +50,11 @@
-     QString writeFilter = QString("*%1|%5 (%1)\n*%2|%6 (%2)\n*%3 *%4|%7 (%3 %4)").arg(".png", ".tga", ".jpg", ".jpeg", KMimeType::mimeType("image/png")->comment(), KMimeType::mimeType("image/x-tga")->comment(), KMimeType::mimeType("image/jpeg")->comment());
- 
-     ui->kurlrequester_image->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
--    ui->kurlrequester_image->fileDialog()->setOperationMode(KFileDialog::Opening);
--    ui->kurlrequester_image->fileDialog()->setFilter(readFilter);
-+    ui->kurlrequester_image->fileDialog()->setAcceptMode(QFileDialog::AcceptOpen);
-+    ui->kurlrequester_image->fileDialog()->setNameFilter(readFilter);
-     ui->kurlrequester_converted->setMode(KFile::File | KFile::LocalOnly);
--    ui->kurlrequester_converted->fileDialog()->setOperationMode(KFileDialog::Saving);
--    ui->kurlrequester_converted->fileDialog()->setFilter(writeFilter);
-+    ui->kurlrequester_converted->fileDialog()->setAcceptMode(QFileDialog::AcceptSave);
-+    ui->kurlrequester_converted->fileDialog()->setNameFilter(writeFilter);
- }
- ConvertDialog::~ConvertDialog()
- {
-@@ -71,6 +71,7 @@
- 
- void ConvertDialog::slotButtonClicked(int button)
- {
-+    QRegularExpression getdirectory("\S*/");
-     if (button == KDialog::Ok) {
-         if (ui->kurlrequester_image->text().isEmpty() || ui->kurlrequester_converted->text().isEmpty()) {
-             KMessageBox::information(this, i18nc("@info", "Please fill in both <interface>Image</interface> and <interface>Convert To</interface> fields."));
-@@ -78,7 +79,7 @@
-         } else if (ui->spinBox_width->value() == 0 || ui->spinBox_height->value() == 0) {
-             KMessageBox::information(this, i18nc("@info", "Please fill in both <interface>Width</interface> and <interface>Height</interface> fields."));
-             return;
--        } else if (!QFileInfo(ui->kurlrequester_converted->url().directory()).isWritable()) {
-+        } else if (!QFileInfo(getdirectory.match(ui->kurlrequester_converted->url().toLocalFile()).captured(1)).isWritable()) {
-             KMessageBox::information(this, i18nc("@info", "You do not have write permissions in this directory, please select another destination."));
-             return;
-         }
