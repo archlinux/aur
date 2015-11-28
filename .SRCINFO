@@ -1,0 +1,13 @@
+pkgbase = lightdm-gdmflexiserver
+	pkgdesc = Dummy script for applications expecting gdm instead of lightdm
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = lightdm
+	conflicts = gdm
+	source = gdmflexiserver-fake.sh
+	md5sums = SKIP
+
+pkgname = lightdm-gdmflexiserver
+
