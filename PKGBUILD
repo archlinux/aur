@@ -22,12 +22,6 @@ pkgver() {
   echo "${_tag/release-}.r$_commits.$(hg identify -i)"
 }
 
-prepare() {
-  # reset build folder
-  rm -rf build
-  mkdir build
-}
-
 build() {
   cd sdl2
 
@@ -36,7 +30,7 @@ build() {
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir/" install
+  make -C sdl2 DESTDIR="$pkgdir/" install
 
   install -Dm644 sdl2/COPYING.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
