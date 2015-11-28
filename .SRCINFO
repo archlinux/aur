@@ -1,0 +1,43 @@
+pkgbase = openchange-git
+	pkgdesc = A portable, open source implementation of Microsoft Exchange server and Exchange protocols.
+	pkgver = 2.4_20151123
+	pkgrel = 1
+	url = http://www.openchange.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = ccache
+	makedepends = docbook-xsl
+	makedepends = libxslt
+	makedepends = python2-setuptools
+	makedepends = python2-pylons
+	depends = samba>=4.3.0
+	depends = libical
+	depends = sqlite3
+	depends = file
+	depends = boost
+	depends = python2
+	depends = libmariadbclient
+	depends = nanomsg>=0.5
+	depends = libmemcached>=1.0.18
+	optdepends = python2-pylons: Needed for OCSManager
+	optdepends = python2-waitress: Needed for OCSManager
+	optdepends = sogo-openchange: Groupware backend for OpenChange
+	provides = openchange
+	conflicts = openchange
+	replaces = openchange
+	options = !makeflags
+	source = openchange::git+https://github.com/openchange/openchange.git
+	source = ocsmanager.service
+	source = openchange-issue-249.patch
+	source = openchange-remove-server_id_str-1.patch
+	sha256sums = SKIP
+	sha256sums = 45bd19e2a5725a94692ae606086be6d57423375c9b1c0eb5322c6e09ef2b5fb3
+	sha256sums = e3cfd2455a52d4b68153b3d546c70edbde5cf024ebcec1088a923aedaa938834
+	sha256sums = 1281c59a5d0490d9b2091535191a0aac1ae04ebc6b48cf56bd4fca656c23b25b
+
+pkgname = openchange-git
+
