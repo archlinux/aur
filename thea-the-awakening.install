@@ -1,0 +1,15 @@
+post_install(){
+	echo "This is an UNSUPORTED build of the game as a GIFT to the linux community!"
+	echo "	-the buyable Windows version costs around 20€"
+	echo
+	echo "If you find any bugs pleas report them to http://steamcommunity.com/app/378720/discussions/0/490125737485986607"
+	echo
+	echo "Known Bugs:"
+	echo "	-Sticky keys; if you press any key it will stay pressed for ever!"
+	echo "	Workaround;"
+	echo "		- only use the mouse."
+	echo "		- to unstick sticked keys unfocus the game window."
+}
+
+post_install
+
