@@ -22,6 +22,8 @@ sha256sums=('0556be387ea83460ff7b47b80c074bcfc66f915d31bac20c8f75144e39929a1c'
             '1259ef14c737ebc9ead6bd5d9914ca70ef2a0cac6ad9b15081cd6ac54f913520'
             'SKIP')
 
+install=${name}$.install
+
 package() {
   install -d "${pkgdir}/opt/games/${name}"
   install -d "${pkgdir}/usr/share/applications"
@@ -32,3 +34,4 @@ package() {
 
   cp -a "Thea_Data" "${pkgdir}/opt/games/${name}"
 }
+
