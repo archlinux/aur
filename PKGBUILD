@@ -9,7 +9,7 @@ pkgdesc="Reference frontend for the libretro API."
 arch=('arm' 'armv6h' 'armv7h')
 url="http://github.com/libretro/RetroArch"
 license=('GPL')
-depends=('ffmpeg' 'jack2' 'mesa' 'mesa-libgl' 'libusb' 'libxinerama' 'libxkbcommon' 'libxv' 'openal' 'python' 'sdl2')
+depends=('ffmpeg' 'jack2' 'mesa' 'mesa-libgl' 'libusb' 'libxinerama' 'libxkbcommon' 'openal' 'python' 'sdl2')
 makedepends=('git')
 provides=('retroarch' 'retroarch-git')
 conflicts=('retroarch')
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-vg --disable-opengl --disable-gles --disable-fbo --disable-egl --enable-dispmanx --disable-x11 --disable-sdl2 --enable-floathard --enable-udev --disable-sdl --disable-pulse --disable-oss
   make
 }
 
