@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-  cd build
+  cd sdl2
 
   ./configure --host=armv7l-raspberry-linux-gnueabihf --disable-pulseaudio --disable-esd --disable-video-mir --disable-video-wayland --disable-video-x11 --disable-video-opengl
   make
