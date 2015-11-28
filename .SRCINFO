@@ -1,0 +1,13 @@
+pkgbase = buildgear
+	pkgdesc = A lightweight embedded firmware build tool
+	pkgver = 0.9.25
+	pkgrel = 1
+	url = http://buildgear.io/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	source = https://github.com/buildgear/buildgear/archive/v0.9.25.tar.gz
+	md5sums = 8420ab811870664fac25d4b648c2e0fe
+
+pkgname = buildgear
+
