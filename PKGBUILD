@@ -17,7 +17,7 @@ makedepends=('extra-cmake-modules'
              'python'
              'boost'
              )
-conflicts=('libktorrent')
+provides=('ktorrent')
 source=('git://anongit.kde.org/ktorrent.git#branch=frameworks')
 sha1sums=('SKIP')
 install=ktorrent-frameworks-git.install

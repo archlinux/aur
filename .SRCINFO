@@ -15,7 +15,7 @@ pkgbase = ktorrent-frameworks-git
 	depends = knotifyconfig
 	depends = libktorrent-frameworks-git
 	depends = kcmutils
-	conflicts = libktorrent
+	provides = ktorrent
 	source = git://anongit.kde.org/ktorrent.git#branch=frameworks
 	sha1sums = SKIP
 
