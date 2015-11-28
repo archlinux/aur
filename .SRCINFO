@@ -6,7 +6,7 @@ pkgbase = mcinstall
 	arch = x86_64
 	license = GPL
 	depends = bash
-	optdepends = java: if you want the server to use the already installed JRE instead of downloading one
+	optdepends = jre: if you want the server to use the already installed JRE instead of downloading one
 	source = mcinstall-1.0.3.tar.gz::https://github.com/iAndrewT/mcinstall/archive/1.0.3.tar.gz
 	md5sums = 56A52A9E54C2BEC71230D573439E6933
 

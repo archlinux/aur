@@ -7,7 +7,9 @@ arch=('x86_64')
 url="https://github.com/iandrewt/mcinstall"
 license=('GPL')
 depends=('bash')
-optdepends=('java: if you want the server to use the already installed JRE instead of downloading one')
+optdepends=('jre: if you want the server to use the already 
+installed JRE instead of downloading one')
+install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/iAndrewT/mcinstall/archive/$pkgver.tar.gz)
 md5sums=('56A52A9E54C2BEC71230D573439E6933')
 
