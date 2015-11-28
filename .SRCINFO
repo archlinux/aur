@@ -1,11 +1,11 @@
 pkgbase = qps-git
 	pkgdesc = Qt process manager
-	pkgver = r19.28449df
+	pkgver = r33.56d9096
 	pkgrel = 1
 	url = https://github.com/QtDesktop/qps
 	arch = i686
 	arch = x86_64
-	license = unknown
+	license = GPL
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools

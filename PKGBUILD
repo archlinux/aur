@@ -2,12 +2,12 @@
 
 _pkgname=qps
 pkgname=$_pkgname-git
-pkgver=r19.28449df
+pkgver=r33.56d9096
 pkgrel=1
 pkgdesc="Qt process manager"
 arch=("i686" "x86_64")
 url="https://github.com/QtDesktop/qps"
-license=("unknown")
+license=("GPL")
 depends=("qt5-x11extras" "libxkbcommon-x11" "hicolor-icon-theme")
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
@@ -29,4 +29,8 @@ build() {
 package() {
     cd build
     make DESTDIR=$pkgdir install
+
+    # workaround upstream issue https://github.com/QtDesktop/qps/issues/11
+    cd $pkgdir/usr/bin
+    mv Project qps
 }
