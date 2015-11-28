@@ -1,7 +1,7 @@
 # Maintainer: Erik Westrup <erik.westrup@gmail.com>
 pkgname=daemonize
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Run a program as a Unix daemon"
 arch=(i686 x86_64 armv7h)
 url="http://bmc.github.com/daemonize/"
