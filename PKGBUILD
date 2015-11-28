@@ -2,7 +2,7 @@
 
 pkgbase=btcd
 pkgname=('btcd' 'btcwallet' 'btcgui')
-pkgver=20150801
+pkgver=20151128
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'go')
@@ -30,26 +30,17 @@ package_btcd() {
 
   msg2 'Installing btcd license...'
   install -Dm 644 "$srcdir/src/github.com/btcsuite/btcd/LICENSE" \
-    "$pkgdir/usr/share/licenses/btcd/LICENSE"
+          -t "$pkgdir/usr/share/licenses/btcd"
 
   msg2 'Installing btcd docs...'
-  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcd/CHANGES" \
-    "$pkgdir/usr/share/doc/btcd/CHANGES"
-  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcd/README.md" \
-    "$pkgdir/usr/share/doc/btcd/README.md"
-  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcd/sample-btcd.conf" \
-    "$pkgdir/usr/share/doc/btcd/sample-btcd.conf"
+  for _doc in CHANGES README.md sample-btcd.conf; do
+    install -Dm 644 "$srcdir/src/github.com/btcsuite/btcd/$_doc" \
+            -t "$pkgdir/usr/share/doc/btcd"
+  done
 
   msg2 'Installing btcd...'
-  for _bin in addblock \
-              btcctl \
-              btcd \
-              dbtest \
-              dropafter \
-              findcheckpoint \
-              gencerts; do
-    install -Dm 755 "$srcdir/bin/$_bin" "$pkgdir/usr/bin/$_bin"
-  done
+  find "$srcdir/bin" -mindepth 1 -maxdepth 1 -type f ! -name "btcwallet*" \
+    -exec install -Dm 755 '{}' -t "$pkgdir/usr/bin" \;
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
@@ -62,15 +53,13 @@ package_btcwallet() {
   conflicts=('btcwallet')
 
   msg2 'Installing btcwallet docs...'
-  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/CHANGES" \
-    "$pkgdir/usr/share/doc/btcwallet/CHANGES"
-  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/README.md" \
-    "$pkgdir/usr/share/doc/btcwallet/README.md"
-  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/sample-btcwallet.conf" \
-    "$pkgdir/usr/share/doc/btcwallet/sample-btcwallet.conf"
+  for _doc in CHANGES README.md sample-btcwallet.conf; do
+    install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/$_doc" \
+            -t "$pkgdir/usr/share/doc/btcwallet"
+  done
 
   msg2 'Installing btcwallet...'
-  install -Dm 755 "$srcdir/bin/btcwallet" "$pkgdir/usr/bin/btcwallet"
+  install -Dm 755 "$srcdir/bin/btcwallet" -t "$pkgdir/usr/bin"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
@@ -87,15 +76,13 @@ package_btcgui() {
   GOPATH="$srcdir" go get -u github.com/btcsuite/btcgui/...
 
   msg2 'Installing btcgui docs...'
-  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcgui/CHANGES" \
-    "$pkgdir/usr/share/doc/btcgui/CHANGES"
-  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcgui/README.md" \
-    "$pkgdir/usr/share/doc/btcgui/README.md"
-  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcgui/sample-btcgui.conf" \
-    "$pkgdir/usr/share/doc/btcgui/sample-btcgui.conf"
+  for _doc in CHANGES README.md sample-btcgui.conf; do
+    install -Dm 644 "$srcdir/src/github.com/btcsuite/btcgui/$_doc" \
+            -t "$pkgdir/usr/share/doc/btcgui"
+  done
 
   msg2 'Installing btcgui...'
-  install -Dm 755 "$srcdir/bin/btcgui" "$pkgdir/usr/bin/btcgui"
+  install -Dm 755 "$srcdir/bin/btcgui" -t "$pkgdir/usr/bin"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
