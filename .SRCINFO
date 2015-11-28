@@ -1,10 +1,11 @@
 pkgbase = sdl2-rbp-git
 	pkgdesc = A library for portable low-level access to video, audio and input (development version)
-	pkgver = 2.0.3.84285c1d8ca4
+	pkgver = 2.0.3.r1304.84285c1d8ca4
 	pkgrel = 1
 	url = http://www.libsdl.org
-	arch = i686
-	arch = x86_64
+	arch = arm
+    arch = armv6h
+	arch = armv7h
 	license = ZLIB
 	makedepends = mercurial
 	makedepends = automake

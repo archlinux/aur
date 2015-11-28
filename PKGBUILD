@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu < info at julianxhokaxhiu dot com >
 
 pkgname=sdl2-rbp-git
-pkgver=2.0.3.84285c1d8ca4
+pkgver=2.0.3.r1304.84285c1d8ca4
 pkgrel=1
 pkgdesc="A library for portable low-level access to video, audio and input (development version)"
 arch=('arm' 'armv6h' 'armv7h')
