@@ -8,7 +8,7 @@ arch=('any')
 license=('MIT' 'GPL' 'Custom')
 depends=('python2' 'chromaprint' 'python2-numpy' 'unrar')
 makedepends=('mercurial' 'git')
-source=('hg+https://bitbucket.org/Gfy/pyrescene/' 'git://github.com/d2yes/rarlinux.git')
+source=('hg+https://bitbucket.org/Gfy/pyrescene/' 'git://github.com/dryes/rarlinux.git')
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
