@@ -23,6 +23,10 @@ md5sums_armv6h=('SKIP')
 
 pkgver() {
   cd "$srcdir/opt/bin"
+
+  # fix broken access rights
+  chmod +r -R *
+
   _date=$(./mediasrv --build 2>&1 | cut -d' ' -f3 | cut -b3- | tr -d -)
   _time=$(./mediasrv --build 2>&1 | cut -d' ' -f4 | tr -d :)
   echo -n $_date.$_time
