@@ -151,10 +151,10 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 # To build 32 bit multilib package on 64 bit system
 # makepkg -sCcf CARCH=any
 
-# Once installed with an activated license you can to enable and start the BLM service.
+# Once installed with an activated license you can enable and start the BLM service.
 
-# systemctl enable basis_lmgrd
-# systemctl start basis_lmgrd
+#   systemctl enable basis_lmgrd
+#   systemctl start basis_lmgrd
 
 # Try out your new Install in command line mode
 # cd /usr/local/basis/pro5; unset BBTERM; ./pro5
@@ -168,7 +168,7 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 # with the Basis install.
 # If you have license nags check the logs at /var/log/basis/
 # Check the status with
-# systemctl status basis_lmgrd
+#   systemctl status basis_lmgrd
 
 # The setup for a fully functioning Basis BBx Progression Pro/5 environment
 # is extensive and not covered here.
@@ -187,33 +187,35 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 
 set -u
 pkgname='basis-pro5'
-pkgver='15.00'
+pkgver='15.01'
 pkgrel='1'
 pkgdesc=('BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj')
 url='http://www.basis.com/'
 license=('custom')
-install="${pkgname}-install.sh" # I can find no way to get makepkg to delete this when done
 depends=('glibc')
-source=('basis_dummy_file') # this is to correct a bug in updpkgsums where at least one non arch source must exist so that arch sources can be better than md5
+options=('!docs' 'emptydirs' '!strip') # strip is so poorly implemented that it changes the content and date on executables, even when there's nothing to strip! What were they thinking?
+install="${pkgname}-install.sh" # I can find no way to get makepkg to delete this when done
+#_verwatch=("${url}availability" '<td class="revision".*">\([0-9\.]\+\).*' 'f') # Almost works
+source=('basis_dummy_file') # this is to correct a bug in updpkgsums where at least one non arch source must exist so makepkg can detect something other than md5sums
 
 _file='@::file://@' # convince the git submission that these files aren't on the web and don't need to be supplied
 # 32-bit Rev 15.00 Linux Kernel 2.6.17-1.2142_FC4+ AND glibc v2.3+
 # 10455xxxxblm111010.Z = BLM              Port 1045
 # 10455yyyy.Z          = Pro/5            Port 1045
 # 12455yyyy.Z          = Pro/5 DataServer Port 1245
-for _src in '104551200blm111010.Z' {10455,12455}'1500.Z'; do
+for _src in '104551200blm111010.Z' '104551501.Z' '124551500.Z'; do
   source_i686+=("${_file//@/${_src}}")
 done
 
 sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 sha256sums_i686=('8ef89b8e7425c19cf5c33a5fd78ed4f3cb03857d22b6f1bb2d38ef26c146b6a3'
-                 '056ad3d9c0a3fa0339f250d1f0723511e60650c415fb8c2549d9a08660fe2a32'
+                 '505080b9283ca5037453a844ea9781f047d5bfd6bcec2bd9a7e028497fb6dfdb'
                  '55052c4bcb1628017f051b18880de686c544144adf002dc2fdd1adc30b1e2e24')
 sha256sums_x86_64=('a37bb259b8bce8a3aca333e69ea678997e829b120ebd1ba52f569df025c131e7'
-                   'c6b782f980fa7fa07978de0559d8ca9312b58c61cb853f7ad34980b75b21630a'
+                   '42f1d5143249df9672069bc2d64754ccd17a573cfce756dd8caf5056e4f5abd9'
                    'fe1114e619755bed70255e08bad2f9830887cf336bb5f013cc271314dc631604')
 
-for _src in '604551200blm111010.Z' {60455,62455}'1500.Z'; do
+for _src in '604551200blm111010.Z' '604551501.Z' '624551500.Z'; do
   source_x86_64+=("${_file//@/${_src}}")
 done
 # 64-bit Rev 15.00 Linux Kernel v2.6+ and glibc v2.3+
@@ -235,8 +237,6 @@ else
   depends+=('lib32-glibc')
 fi
 
-options=('!docs' 'emptydirs' '!strip') # strip is so poorly implemented that it changes the content and date on executables, even when there's nothing to strip! What were they thinking?
-
 # _basefolder can be /usr/local or /usr/share
 # Whatever is chosen must have the same number of characters as /usr/local
 # Anything other than those two folders will require amending the install.
@@ -246,6 +246,7 @@ _basedir="${_basefolder}/basis"
 _servicefile='basis_lmgrd.service'
 
 # Approximate update frequency, yearly
+# 10455 has some old versions attached to it
 _vercheck() {
   curl -s -l "${url}availability" | grep -FA1 $'60455\n10455' | sed -e 's:<[^>]\+>::g' | grep '^[0-9]\+\.[0-9]\+$' | tr '.' ':' | LC_ALL=C sort -n | tr ':' '.' # 1>&2
 }
@@ -412,8 +413,8 @@ EOF
   chmod 777 "${pkgdir}${_logfolder}"
   # should we chown this on install?
 
-  # disable BLM CREATE ADD START STOP. We do all this.
-  # CREATE won't work because they can't fix the hash bang problem above.
+  # disable BLM CREATE ADD START STOP. We do all this here in PKGBUILD.
+  # CREATE won't work because they can't fix the hash bang problem fixed above.
   _outfile='scripts/BasisLicManager'
   if ! grep -ql 'Arch Linux' "${_outfile}"; then
     touch -r "${_outfile}" "${_outfile}.Arch"
@@ -599,10 +600,10 @@ EOF
   # where /usr/local is the normal install location.
   #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
   # I can't fix these /bin without sed negative lookbehind
-  #! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
+  #! pcre2grep -Ilr "(?<!usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 
-cat > "${install}" << EOF # "
+cat > "${install}" << EOF
 post_upgrade() {
   systemctl daemon-reload
   if systemctl -q is-enabled "${_servicefile}"; then
