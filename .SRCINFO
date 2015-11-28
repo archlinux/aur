@@ -1,4 +1,5 @@
 pkgbase = xorg-startx-systemd
+	pkgdesc = Service files for running startx as systemd user service
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/muesli4/archlinux-packages
