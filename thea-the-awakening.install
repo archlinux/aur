@@ -11,5 +11,3 @@ post_install(){
 	echo "		- to unstick sticked keys unfocus the game window."
 }
 
-post_install
-

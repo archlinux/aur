@@ -3,7 +3,7 @@
 pkgbase = thea-the-awakening-bin
 	pkgdesc = A turn-based strategic survival game steeped in Slavic myth. -gratis unsuported linux build
 	pkgver = unsported_build_3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://steamcommunity.com/app/378720/discussions/0/490125737485986607
 	arch = x86_64
 	license = custom: commercial
