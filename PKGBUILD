@@ -3,13 +3,13 @@ pkgname='autsmuxer-git'
 pkgver=32
 pkgrel=1
 pkgdesc='autsmuxer is effectively MKV2VOB for *NiX systems.'
-url='https://github.com/d2yes/autsmuxer'
+url='https://github.com/dryes/autsmuxer'
 arch=('any')
 license=('GPL')
 depends=('tsmuxer-ng' 'mkvtoolnix-cli' 'mencoder' 'aften' 'libdca')
 optdepends=('spdifconvert')
 makedepends=('git')
-source=('git://github.com/d2yes/autsmuxer.git')
+source=('git://github.com/dryes/autsmuxer.git')
 md5sums=('SKIP')
 
 pkgver() {
