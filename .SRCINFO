@@ -1,9 +1,10 @@
 pkgbase = freetype2-git
 	pkgdesc = TrueType font rendering library (from git)
-	pkgver = 2.6.1+p1+g30fe5e7
+	pkgver = 2.6.2+p0+g66cf29b
 	pkgrel = 1
 	epoch = 1
-	url = http://freetype.sourceforge.net
+	url = http://www.freetype.org/
+	install = freetype2.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -13,8 +14,8 @@ pkgbase = freetype2-git
 	depends = sh
 	depends = libpng
 	depends = harfbuzz
-	provides = freetype2=2.6.1+p1+g30fe5e7
 	provides = libfreetype.so
+	provides = freetype2=2.6.2+p0+g66cf29b
 	conflicts = freetype2
 	source = git://git.sv.gnu.org/freetype/freetype2.git
 	source = 0001-Enable-table-validation-modules.patch

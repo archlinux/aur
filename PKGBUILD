@@ -3,16 +3,19 @@
 
 pkgname=freetype2-git
 epoch=1
-pkgver=2.6.1+p1+g30fe5e7
+pkgver=2.6.2+p0+g66cf29b
 pkgrel=1
 pkgdesc="TrueType font rendering library (from git)"
 arch=(i686 x86_64)
 license=('GPL')
-url="http://freetype.sourceforge.net"
-# adding harfbuzz for improved OpenType features auto-hinting 
+url="http://www.freetype.org/"
+# adding harfbuzz for improved OpenType features auto-hinting
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=('zlib' 'bzip2' 'sh' 'libpng' 'harfbuzz')
 makedepends=('git')
+provides=('libfreetype.so' "freetype2=$pkgver")
+conflicts=('freetype2')
+install=freetype2.install
 source=(git://git.sv.gnu.org/freetype/freetype2.git
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
@@ -23,9 +26,7 @@ sha1sums=('SKIP'
           'e2d2b8c4847ab9cfd497179c7140835e99ece711'
           'ebe3d7a6fc41304a77c23cb56e94dc718146d963'
           '0a75db92c93c7a1576052348174fa510740d079f')
-
-provides=("freetype2=$pkgver" libfreetype.so)
-conflicts=("freetype2")
+validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 pkgver() {
   local _tag _count
@@ -39,15 +40,20 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/freetype2"
-  patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
-  patch -Np1 -i ../0003-Enable-subpixel-hinting.patch
-  patch -Np1 -i ../0004-Add-env-var-to-turn-off-subpixel-hinting.patch
+  patch -Np1 -i "${srcdir}/0001-Enable-table-validation-modules.patch"
+  patch -Np1 -i "${srcdir}/0002-Enable-subpixel-rendering.patch"
+
+  # https://bugs.archlinux.org/task/35274
+  patch -Np1 -i "${srcdir}/0003-Enable-subpixel-hinting.patch"
+  # Provide a way to disable the above patch at runtime.
+  # Hopefully just a temporary measure until fontconfig picks up
+  # the necessary configurables.
+  patch -Np1 -i "${srcdir}/0004-Add-env-var-to-turn-off-subpixel-hinting.patch"
+  ./autogen.sh
 }
 
 build() {
   cd "${srcdir}/freetype2"
-  ./autogen.sh
   ./configure --prefix=/usr --disable-static
   make
 }

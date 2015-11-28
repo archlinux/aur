@@ -1,0 +1,8 @@
+post_upgrade() {
+  if (( $(vercmp $2 2.5.4-3) < 0 )); then
+    cat <<MSG
+  Subpixel hinting can be disabled by adding FT2_NO_SUBPIXEL_HINTING=1
+  to your environment, for example /etc/environment or ~/.pam_environment .
+MSG
+  fi
+}
