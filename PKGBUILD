@@ -29,6 +29,7 @@ pkgver() {
 build() {
   cd "${_gitname}"
   ./configure --prefix=/usr --disable-vg --disable-opengl --disable-gles --disable-fbo --disable-egl --enable-dispmanx --disable-x11 --disable-sdl2 --enable-floathard --enable-udev --disable-sdl --disable-pulse --disable-oss
+  CFLAGS="$CFLAGS -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux"
   make
 }
 
