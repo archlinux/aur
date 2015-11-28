@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Network;
+Version=4.5.0
+Name=ThinLinc Client
+GenericName=Remote desktop application
+Comment=The ThinLinc client - a remote desktop application
+Exec=/usr/bin/tlclient
+Icon=/usr/share/tlclient/tlclient.png
+Terminal=false
+Type=Application
+NoDisplay=false
