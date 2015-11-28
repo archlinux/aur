@@ -1,0 +1,3 @@
+post_install() {
+ echo "Run 'linode configure' to login to your Linode account."
+}
