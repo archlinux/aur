@@ -1,0 +1,15 @@
+pkgbase = sortphotos
+	pkgdesc = A Python script that organizes photos and videos into folders
+	pkgver = 65.05eca3c
+	pkgrel = 1
+	url = https://github.com/andrewning/sortphotos
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	source = sortphotos::git+https://github.com/andrewning/sortphotos.git
+	md5sums = SKIP
+
+pkgname = sortphotos
+
