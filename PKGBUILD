@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  CFLAGS="$CFLAGS -I/opt/vc/include"
+  CFLAGS="$CFLAGS -I/opt/vc/include -L/opt/vc/lib"
   ./configure --prefix=/usr --disable-vg --disable-opengl --disable-gles --disable-fbo --disable-egl --disable-x11 --disable-sdl --disable-sdl2 --disable-pulse --disable-oss --disable-ffmpeg --enable-neon --enable-dispmanx --enable-floathard --enable-udev
   make
 }
