@@ -1,0 +1,14 @@
+pkgbase = pscrot
+	pkgdesc = Take screenshot with scrot and upload it to pomf.cat,pomf.se or any other pomf clone.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = curl
+	depends = jq
+	depends = scrot
+	provides = pscrot
+	conflicts = pscrot
+
+pkgname = pscrot
+
