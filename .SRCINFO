@@ -1,7 +1,7 @@
 pkgbase = pinball-unofficial
 	pkgdesc = The Emilia Pinball Project Unofficial version 0.3.2 with 2 new tables
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sergiomb2/pinball
 	arch = i686
 	arch = x86_64
