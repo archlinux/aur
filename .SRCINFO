@@ -1,13 +1,13 @@
 pkgbase = bus
 	pkgdesc = A simple daemonless system for broadcasting messages locally
-	pkgver = 3.1.4
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://github.com/maandree/bus
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = https://github.com/maandree/bus/archive/3.1.4.tar.gz
-	sha256sums = e1adc1abcf1c62edf229f46cb32be7e02d074c4ad42a092a533c07936b531df2
+	source = https://github.com/maandree/bus/archive/3.1.5.tar.gz
+	sha256sums = ddf0d00e30459a0e33bd90a2cb8c627c5b87216debd834ceb181435a2747cc42
 
 pkgname = bus
 
