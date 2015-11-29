@@ -1,14 +1,14 @@
 # Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname=gophervr
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A 3-D interface to Gopherspace"
 arch=('i686' 'x86_64')
 url="http://gopher.floodgap.com/gopher/gw?gopher://gopher.floodgap.com:70/1/gophervr"
 license=('GPL')
 depends=('lesstif')
-makedepends=('curl' 'tar' 'imake' 'patch')
+makedepends=('curl' 'tar' 'imake' 'patch' 'unzip')
 optdepends=('xterm: for telnet connections'
             'inetutils: for telnet connections'
             'xv: for image display'
@@ -24,7 +24,7 @@ md5sums=('1985131a840223fea895f46803650c8c'
 build() {
   cd $srcdir
   curl -O "gopher://gopher.floodgap.com:70/9/gophervr/gophervr-src.tar.gz"
-  tar xf "gophervr-src.tar.gz"
+  unzip "gophervr-src.tar.gz"
 
   cd $srcdir/gophervr
   patch libvogl/Makefile $srcdir/hershey_path.patch
