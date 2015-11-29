@@ -1,0 +1,19 @@
+pkgbase = libmdcpp-git
+	pkgdesc = Implementation of the Markdown markup language in CPP (library)
+	pkgver = r22.69da1b2
+	pkgrel = 1
+	url = https://github.com/sadhen/libmdcpp
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = boost-libs
+	provides = libmdcpp
+	conflicts = libmdcpp
+	source = git://github.com/sadhen/libmdcpp.git
+	md5sums = SKIP
+
+pkgname = libmdcpp-git
+
