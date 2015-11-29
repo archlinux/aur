@@ -7,7 +7,7 @@
 #
 
 pkgname=emacs25-git
-pkgver=25.0.50.r123428
+pkgver=25.0.50.r123594
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
@@ -53,6 +53,7 @@ build() {
     --with-sound=alsa 
     --without-gconf 
     --with-x-toolkit=gtk3 
+    --with-cairo
     --with-xft)
 
   ./configure ${_conf}
