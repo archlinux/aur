@@ -4,7 +4,7 @@
 
 pkgname=chrome-remote-desktop
 pkgver=47.0.2526.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
 arch=('i686' 'x86_64')
