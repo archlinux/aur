@@ -1,22 +1,32 @@
+diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
+--- a/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
++++ b/other/kcm_grub2.desktop	2015-11-29 19:25:37.569916141 +0800
+@@ -79,6 +79,7 @@
+ Comment[uk]=Налаштування завантажувача GRUB2
+ Comment[x-test]=xxCustomize the GRUB2 bootloaderxx
+ Comment[zh_TW]=自訂 GRUB2 開機載入器
++Comment[zh_CN]=自定义 GRUB2 启动加载器
+ X-KDE-Keywords=grub,boot,menu,entries,default,timeout,password,color,splash,image,bootloader
+ X-KDE-Keywords[ca]=grub,arrencada,menú,entrades,omissió,temps d'expiració,contrasenya,color,benvinguda,imatge,carregador d'arrencada
+ X-KDE-Keywords[ca@valencia]=grub,arrencada,menú,entrades,omissió,temps d'expiració,contrasenya,color,benvinguda,imatge,carregador d'arrencada
 diff -Naur a/po/CMakeLists.txt b/po/CMakeLists.txt
---- a/po/CMakeLists.txt	2015-11-27 13:49:04.338421322 +0800
-+++ b/po/CMakeLists.txt	2015-11-27 13:49:31.930507416 +0800
-@@ -26,5 +26,6 @@
+--- a/po/CMakeLists.txt	2013-10-12 18:35:37.000000000 +0800
++++ b/po/CMakeLists.txt	2015-11-29 19:24:54.589635487 +0800
+@@ -26,4 +26,5 @@
  add_subdirectory( sv )
  add_subdirectory( tr )
  add_subdirectory( uk )
 +add_subdirectory( zh_CN )
  add_subdirectory( zh_TW )
- 
 diff -Naur a/po/zh_CN/CMakeLists.txt b/po/zh_CN/CMakeLists.txt
 --- a/po/zh_CN/CMakeLists.txt	1970-01-01 08:00:00.000000000 +0800
-+++ b/po/zh_CN/CMakeLists.txt	2013-10-12 18:35:37.000000000 +0800
++++ b/po/zh_CN/CMakeLists.txt	2015-11-29 19:24:54.589635487 +0800
 @@ -0,0 +1,2 @@
 +file( GLOB _po_files *.po )
 +GETTEXT_PROCESS_PO_FILES( zh_CN ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
 diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 --- a/po/zh_CN/kcm-grub2.po	1970-01-01 08:00:00.000000000 +0800
-+++ b/po/zh_CN/kcm-grub2.po	2015-11-27 14:03:57.657121918 +0800
++++ b/po/zh_CN/kcm-grub2.po	2015-11-29 19:24:54.592968573 +0800
 @@ -0,0 +1,1085 @@
 +# Copyright (C) YEAR This_file_is_part_of_KDE
 +# This file is distributed under the same license as the PACKAGE package.
@@ -123,7 +133,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/installDlg.cpp:120 src/kcm_grub2.cpp:484
 +msgctxt "@title:window"
 +msgid "Information"
-+msgstr "资讯"
++msgstr "信息"
 +
 +#: src/installDlg.cpp:125
 +msgctxt "@info"
@@ -380,12 +390,12 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/kcm_grub2.cpp:1077
 +msgctxt "@info"
 +msgid "Helper returned malformed device list."
-+msgstr "协助程序传回不正确的设备清单。"
++msgstr "协助程序传回不正确的设备列表。"
 +
 +#: src/kcm_grub2.cpp:1130 src/kcm_grub2.cpp:1133
 +msgctxt "@item:inlistbox Refers to screen resolution."
 +msgid "Custom..."
-+msgstr "自订..."
++msgstr "自定义..."
 +
 +#: src/kcm_grub2.cpp:1134
 +msgctxt "@item:inlistbox"
@@ -405,12 +415,12 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/kcm_grub2.cpp:1162
 +msgctxt "@info"
 +msgid "The process could not be started."
-+msgstr "无法启动行程。"
++msgstr "无法启动进程。"
 +
 +#: src/kcm_grub2.cpp:1165
 +msgctxt "@info"
 +msgid "The process crashed."
-+msgstr "行程已崩溃。"
++msgstr "进程已崩溃。"
 +
 +#: src/kcm_grub2.cpp:1172
 +#, kde-format
@@ -435,12 +445,12 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:37
 +msgctxt "transaction state, the transaction is waiting for another to complete"
 +msgid "Waiting for other tasks"
-+msgstr "等待其它工作中"
++msgstr "等待其它任务中"
 +
 +#: src/qPkBackend.cpp:40
 +msgctxt "transaction state, just started"
 +msgid "Running task"
-+msgstr "执行工作中"
++msgstr "执行任务中"
 +
 +#: src/qPkBackend.cpp:43
 +msgctxt "transaction state, is querying data"
@@ -450,7 +460,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:46
 +msgctxt "transaction state, getting data from a server"
 +msgid "Getting information"
-+msgstr "取得资讯中"
++msgstr "取得信息中"
 +
 +#: src/qPkBackend.cpp:49
 +msgctxt "transaction state, removing packages"
@@ -470,7 +480,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:58
 +msgctxt "transaction state, refreshing internal lists"
 +msgid "Refreshing software list"
-+msgstr "刷新软体清单"
++msgstr "刷新软件列表"
 +
 +#: src/qPkBackend.cpp:61
 +msgctxt "transaction state, installing updates"
@@ -490,14 +500,14 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:70
 +msgctxt "transaction state, checking the transaction before we do it"
 +msgid "Resolving dependencies"
-+msgstr "解决相依性问题中"
++msgstr "解决依赖问题中"
 +
 +#: src/qPkBackend.cpp:73
 +msgctxt ""
 +"transaction state, checking if we have all the security keys for the "
 +"operation"
 +msgid "Checking signatures"
-+msgstr "检查签章中"
++msgstr "检查签名中"
 +
 +#: src/qPkBackend.cpp:76
 +msgctxt "transaction state, when we return to a previous system state"
@@ -517,7 +527,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:85
 +msgctxt "transaction state, requesting data from a server"
 +msgid "Requesting data"
-+msgstr "请求资料中"
++msgstr "请求数据中"
 +
 +#: src/qPkBackend.cpp:88
 +msgctxt "transaction state, all done!"
@@ -532,22 +542,22 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:94
 +msgctxt "transaction state, downloading metadata"
 +msgid "Downloading repository information"
-+msgstr "下载主目录资讯中"
++msgstr "下载主目录信息中"
 +
 +#: src/qPkBackend.cpp:97
 +msgctxt "transaction state, downloading metadata"
 +msgid "Downloading list of packages"
-+msgstr "下载包清单中"
++msgstr "下载包列表中"
 +
 +#: src/qPkBackend.cpp:100
 +msgctxt "transaction state, downloading metadata"
 +msgid "Downloading file lists"
-+msgstr "下载档案清单中"
++msgstr "下载文件列表中"
 +
 +#: src/qPkBackend.cpp:103
 +msgctxt "transaction state, downloading metadata"
 +msgid "Downloading lists of changes"
-+msgstr "下载变更清单中"
++msgstr "下载变更列表中"
 +
 +#: src/qPkBackend.cpp:106
 +msgctxt "transaction state, downloading metadata"
@@ -557,7 +567,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:109
 +msgctxt "transaction state, downloading metadata"
 +msgid "Downloading update information"
-+msgstr "下载更新资讯中"
++msgstr "下载更新信息中"
 +
 +#: src/qPkBackend.cpp:112
 +msgctxt "transaction state, repackaging delta files"
@@ -567,7 +577,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:115
 +msgctxt "transaction state, loading databases"
 +msgid "Loading cache"
-+msgstr "载入快取中"
++msgstr "载入缓存中"
 +
 +#: src/qPkBackend.cpp:118
 +msgctxt "transaction state, scanning for running processes"
@@ -578,7 +588,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +msgctxt ""
 +"transaction state, generating a list of packages installed on the system"
 +msgid "Generating package lists"
-+msgstr "产生包清单中"
++msgstr "产生包列表中"
 +
 +#: src/qPkBackend.cpp:124
 +msgctxt "transaction state, when we're waiting for the native tools to exit"
@@ -593,7 +603,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:130
 +msgctxt "we are updating the list of processes"
 +msgid "Updating the list of running applications"
-+msgstr "更新正在执行的应用程序清单中"
++msgstr "更新正在执行的应用程序列表中"
 +
 +#: src/qPkBackend.cpp:133
 +msgctxt "we are checking executable files in use"
@@ -608,7 +618,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:139
 +msgctxt "we are copying package files to prepare to install"
 +msgid "Copying files"
-+msgstr "複製档案中"
++msgstr "复制文件中"
 +
 +#: src/removeDlg.cpp:46
 +msgctxt "@title:window"
@@ -721,7 +731,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: ui/installDlg.ui:63
 +msgctxt "@title:column"
 +msgid "File System"
-+msgstr "档案系统"
++msgstr "文件系统"
 +
 +#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget_recover)
 +#: ui/installDlg.ui:68
@@ -735,7 +745,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +msgid ""
 +"Install the bootloader on the boot sector of the selected partition instead "
 +"of the MBR(=Master Boot Sector). Not recommended."
-+msgstr "安装启动加载器到选取的分区的开机磁区，而不是安装到 MBR。不建议如此。"
++msgstr "安装启动加载器到选取的分区的开机分区，而不是安装到 MBR。不建议如此。"
 +
 +#. i18n: ectx: property (text), widget (QCheckBox, checkBox_partition)
 +#: ui/installDlg.ui:79
@@ -753,7 +763,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: ui/kcm_grub2.ui:27
 +msgctxt "@title:group"
 +msgid "Timeout"
-+msgstr "逾时"
++msgstr "超时"
 +
 +#. i18n: ectx: property (text), widget (QCheckBox, checkBox_hiddenTimeout)
 +#: ui/kcm_grub2.ui:35
@@ -808,7 +818,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: ui/kcm_grub2.ui:185
 +msgctxt "@option:check"
 +msgid "Generate memtest entries"
-+msgstr "产生记忆体测试的选项"
++msgstr "产生内存测试的选项"
 +
 +#. i18n: ectx: property (text), widget (QCheckBox, checkBox_osProber)
 +#: ui/kcm_grub2.ui:192
@@ -1069,7 +1079,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#~ msgstr "GRUB 环境文件路径。"
 +
 +#~ msgid "Path of the GRUB memtest script."
-+#~ msgstr "GRUB 记忆体测试文稿路径。"
++#~ msgstr "GRUB 内存测试脚本路径。"
 +
 +#~ msgctxt "@info"
 +#~ msgid ""
@@ -1095,7 +1105,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +
 +#~ msgctxt "@label:textbox"
 +#~ msgid "GRUB Memtest Script:"
-+#~ msgstr "GRUB 记忆体测试文稿："
++#~ msgstr "GRUB 内存测试脚本："
 +
 +#~ msgctxt "@info"
 +#~ msgid "This is your current kernel!<br/>Are you sure you want to remove it?"
