@@ -1,8 +1,9 @@
 pkgbase = jxcore
 	pkgdesc = Evented IO for SpiderMonkey and V8 JavaScript
-	pkgver = v0.3.0.6.r159.g7b6866f
+	pkgver = v0.3.0.6.r198.gfa2dd55
 	pkgrel = 1
 	url = http://jxcore.io/
+	install = jxcore.install
 	arch = i686
 	arch = x86_64
 	license = common
@@ -10,9 +11,7 @@ pkgbase = jxcore
 	makedepends = python2
 	depends = openssl
 	depends = zlib
-	provides = npm
-	conflicts = nodejs
-	conflicts = npm
+	optdepends = npm
 	source = git+https://github.com/jxcore/jxcore
 	md5sums = SKIP
 
