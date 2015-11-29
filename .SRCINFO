@@ -1,0 +1,13 @@
+pkgbase = nrfjprog
+	pkgdesc = A tool for programming Nordic nRF51 MCU using J-Link
+	pkgver = 7.7.0
+	pkgrel = 1
+	url = http://www.nordicsemi.com
+	arch = x86_64
+	license = unknown
+	depends = jlink
+	source = NrfJProg_7_7_0_Linux.tar::https://www.nordicsemi.com/eng/nordic/download_resource/51392/3/37703953
+	md5sums = e642736f75f332b34673b52629413607
+
+pkgname = nrfjprog
+
