@@ -1,0 +1,15 @@
+pkgbase = python-orderedset
+	pkgdesc = An ordered set implementation in cython
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/orderedset/
+	arch = any
+	license = BSD
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/o/orderedset/orderedset-1.2.tar.gz
+	sha512sums = 1ad2abdd4a0fa7ae9c915ae7beb6f96a30280cf6a9bf39eed32a9109af53a464791111c96037ea37f2cef839b48410acc1098b475e8afa5de8b405ce3da06b61
+
+pkgname = python-orderedset
+
