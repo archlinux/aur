@@ -37,11 +37,10 @@ source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
 sha256sums=('SKIP'
-            '47e7e660041977fcf5bc0b111f238000f579d1a9cf0d17556a0477bc3a7582b8'
+            'ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
             'a76e7b6ccd8f49b51d22012887e1f0101db3bfe6aeebe1bc416b48da4e206b27'
             'c001f045e52ab82154b21125384dbc4f1d2437376fc65c5d83987051e42b5409')
-
 pkgver() {
     cd "$srcdir/$_gitname"
     echo "$(grep 'VERSION =' core/java/src/net/i2p/CoreVersion.java \
