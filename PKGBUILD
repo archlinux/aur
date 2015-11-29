@@ -3,7 +3,7 @@
 
 pkgname=dasom-git
 _pkgname=dasom
-pkgver=265.2300f58
+pkgver=306.84f3f47
 pkgrel=1
 pkgdesc="Dasom is an input method framework"
 arch=('any')
