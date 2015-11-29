@@ -12,7 +12,7 @@ pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="http://gitlab.org/gitlab-ce"
 license=('MIT')
-depends=('ruby2.1' 'git>=1.7.10' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.7' 'openssh' 'redis>=2.0' 'libxslt' 'icu55' 'nodejs' 'gitlab-workhorse=0.4.2')
+depends=('ruby2.1' 'git>=1.7.10' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.8' 'openssh' 'redis>=2.0' 'libxslt' 'icu55' 'nodejs' 'gitlab-workhorse=0.4.2')
 makedepends=('cmake')
 optdepends=(
 	'mariadb: database backend'

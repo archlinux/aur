@@ -11,7 +11,7 @@ pkgbase = gitlab
 	depends = ruby2.1
 	depends = git>=1.7.10
 	depends = ruby2.1-bundler>=1.5.2
-	depends = gitlab-shell=2.6.7
+	depends = gitlab-shell=2.6.8
 	depends = openssh
 	depends = redis>=2.0
 	depends = libxslt
