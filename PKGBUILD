@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=slime-git
-pkgver=2.15.24.gd4e1bd1
+pkgver=2.15.25.g4e9f2ed
 pkgrel=1
 pkgdesc="The Superior Lisp Interaction Mode for Emacs - from git"
 arch=('any')
