@@ -3,7 +3,7 @@
 # Contributor: Themaister    <maister@archlinux.us>
 
 pkgname=retroarch-rbp-git
-pkgver=1.2.2.3581.g3433a51
+pkgver=1.2.1.3640.g6c7da0e
 pkgrel=1
 pkgdesc="Reference frontend for the libretro API."
 arch=('arm' 'armv6h' 'armv7h')
@@ -28,9 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  export CFLAGS="$CFLAGS -I/opt/vc/include"
-  export LDFLAGS="${LDFLAGS//-Wl,--as-needed} -L/opt/vc/lib/ -lGLESv2 -lEGL -lopenmaxil -lbcm_host -lvcos -lvchiq_arm -lpthread"
-  ./configure --prefix=/usr --enable-neon --enable-dispmanx --enable-floathard --enable-udev
+  HAVE_VIDEOCORE=yes ./configure --prefix=/usr --enable-neon --enable-dispmanx --enable-floathard --enable-udev
   make
 }
 
