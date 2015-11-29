@@ -1,8 +1,8 @@
 # Maintainer: Frantic1048 <Archer@frantic1048.com>
 
 pkgname=kreogist-mu
-pkgver='0.9.1'
-pkgrel=2
+pkgver='0.9.2'
+pkgrel=1
 epoch=1
 pkgdesc="Fantastic cross-platform music manager.based on Qt5"
 changelog="kreogist-mu.changelog"
@@ -23,7 +23,7 @@ optdepends=(
 )
 changelog=$pkgname.changelog
 source=("https://github.com/frantic1048/mu-archlinux/releases/download/$pkgver/$pkgname-$pkgver-$arch.7z")
-md5sums=('bb879a7a837a7a6462a43e304c11db65')
+md5sums=('abbe752b7e9a608cbe52933267fefba7')
 
 package() {
   cd "$pkgname-$pkgver-$arch"

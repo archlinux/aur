@@ -1,7 +1,7 @@
 pkgbase = kreogist-mu
 	pkgdesc = Fantastic cross-platform music manager.based on Qt5
-	pkgver = 0.9.1
-	pkgrel = 2
+	pkgver = 0.9.2
+	pkgrel = 1
 	epoch = 1
 	url = https://kreogist.github.io/Mu/
 	changelog = kreogist-mu.changelog
@@ -16,8 +16,8 @@ pkgbase = kreogist-mu
 	optdepends = gst-plugins-good: good plugin libraries
 	optdepends = gst-plugins-bad: bad plugin libraries
 	optdepends = gst-plugins-ugly: ugly plugin libraries
-	source = https://github.com/frantic1048/mu-archlinux/releases/download/0.9.1/kreogist-mu-0.9.1-x86_64.7z
-	md5sums = bb879a7a837a7a6462a43e304c11db65
+	source = https://github.com/frantic1048/mu-archlinux/releases/download/0.9.2/kreogist-mu-0.9.2-x86_64.7z
+	md5sums = abbe752b7e9a608cbe52933267fefba7
 
 pkgname = kreogist-mu
 
