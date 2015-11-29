@@ -1,0 +1,21 @@
+[Unit]
+Description=Gitlab mailroom Worker
+Requires=gitlab-unicorn.service
+Wants=gitlab-unicorn.service
+After=gitlab-unicorn.service
+
+[Service]
+User=gitlab
+Group=gitlab
+Environment=RAILS_ENV=production PATH=/opt/ruby2.1/bin:/usr/bin
+WorkingDirectory=<DATADIR>
+SyslogIdentifier=gitlab-mailroom
+PIDFile=/run/gitlab/gitlab-mailroom.pid
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStart=<DATADIR>/bin/mail_room start
+ExecStop=<DATADIR>/bin/mail_room stop
+
+[Install]
+WantedBy=multi-user.target

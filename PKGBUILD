@@ -6,13 +6,13 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitlab
-pkgver=8.0.3
+pkgver=8.2.1
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="http://gitlab.org/gitlab-ce"
 license=('MIT')
-depends=('ruby2.1' 'git>=1.7.10' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.5' 'openssh' 'redis>=2.0' 'libxslt' 'icu' 'nodejs')
+depends=('ruby2.1' 'git>=1.7.10' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.7' 'openssh' 'redis>=2.0' 'libxslt' 'icu55' 'nodejs' 'gitlab-workhorse=0.4.2')
 makedepends=('cmake')
 optdepends=(
 	'mariadb: database backend'
@@ -33,6 +33,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	gitlab-unicorn.service
 	gitlab-sidekiq.service
 	gitlab-backup.service
+	gitlab-workhorse.service
+	gitlab-mailroom.service
 	gitlab-backup.timer
 	gitlab.target
 	gitlab.tmpfiles.d
@@ -45,10 +47,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	nginx-ssl.conf.example
 	lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('e247b3677ca86f43e665623c3a2602ab33843860537813fa64e3cd33b408698f0482e1ce437a4a30976b0656977f86890173ca044b7d07bfdfda3d269d311802'
+sha512sums=('af6f02a3d5b1d789089b0dcfce1ea59fc30621ccca6e62edc831e5c85731769bc387db9c8d3d261f09b6b8441a111500c13082d8a2bdb115d9e46542155ff2aa'
 	'5dd7a940eee6a84095478af514dcc98c4fc6c4a214de1ddfa4a1e727d4ba34984d66d51affd7844ffebb75fed8f781b38a0da80fba6a5b8fa832948ab39b2249'
-	'5596dd45dea18f0003305e9e6509745ba45a35937aa7b2ff5b21659a62426f9d889d60e337df9d5d7c4aeb6ba2223d1386036545806d358d294cbce105308aa0'
+	'3075372952421eecc34475ddd5dbaa02eae37e98ba1760437c1f171ebbc036de758364ca48c57349d06a40bb5c0ddbb070efd47352c12101096eae335e7c9c3c'
 	'c22439ee4cb34adf42de7619a2b83b02359cada38cbe99dd3031e6e72225ec4b2c2d6306331eadfc1c2044609b7a7e8bceddf7be213b5d4dbcaff86b35fe1ce7'
+	'6980dad2542f1923f84553799dd9787493762651adc8ae5ea22ba0a85422245bc4d8996690cd7e8346b391500cc2ea36e3593aeb6cd65d16be83fbec467e9c7a'
+	'ba4266709079f57e4e3d0e37a46e4ba2cac793ce0a4ac18d2edfe0b7fed8104a3a75bdea2997404a8f363b8017f3be2792745bbdaebf0d09cf78f825a56b0928'
 	'c11d2c59da8325551a465227096e8d39b0e4bcd5b1db21565cf3439e431838c04bc00aa6f07f4d493f3f47fd6b4e25aeb0fe0fc1a05756064706bf5708c960ec'
 	'c519a51d31300074ea12594fbcc8e9610d991ef04b1dac94d93a2b201df3465999cc7c6ac7f3896e02b117c2366d61dea1ef2f6b9cd7b18998385a7f26e5700f'
 	'7a0f649f030b24315cc97f23b704dd1879274304706cf1a1fa125772803a6e918a2fa249bed229b9384552a572452c56379c50f46d2fa8aa999dc71c1ee047e0'
@@ -57,8 +61,8 @@ sha512sums=('e247b3677ca86f43e665623c3a2602ab33843860537813fa64e3cd33b408698f048
 	'cd563238011696ba4a7fa1eff2c6604bda8d75c3e6bf9ecb6f0f22e68c9d782e49be3ce2eaad0c1b142116e2c7c59c9242936ba5797f02d5d0880f7e3004aa99'
 	'2388bfd485bb2abaf08e28ed09848ba5dec7eac058836506d2f9f0954cfc75c71da062cc9b503f8f571cdda97c8a696f8aca20cca129ab5146c21b14e1e3ac61'
 	'db768f60192f6adb466021776c3cdacc263954bc63dc0fb30d13ef20d4db2816d4d1875637984672373eb71c47e65bcdeac52ab5964796b6285519e9aa19c91b'
-	'5445f2d386ab18277772f42e175a4bf465dfcb448c0fa3d867302a5e018277438e295d238a62077c842b2c2225555b5b2f17a9194ab87e5d5c7e21e4e9c92366'
-	'78c90dc1a7ef969f6c94a004fa1038b6fb76b50c6f3de077b39d40e2a07550e274338d81e83e2280fbd8c2d66ece1706e44c78c785bbc029f9a8a79d3f1eb063'
+	'e2cb969128b91eec6d435954dad3f3d76c6f6467d5a118043d530b7fdcf8657b1724abe406a20fc60702fcae4b5d02a0a3c782dcbc518db436a6c7bf874beb2f'
+	'31d0ba225105f43f04befdf01cf8978b0cdfe4900d40e30c9427674b1ef70f534b44a8558a9474ae01b833f68d2e505f45faf9b70fdf2c8898b07cbb293ef779'
 	'c78b6f46abcf603d8db6e38cf50868e14145928422ddfe17c88e2f006b5b910dddf456ec5d6d724b250994530643963809688a98f7e12ebd5b5dabf7f96f0e06')
 
 _homedir="/var/lib/${pkgname}"
@@ -109,7 +113,7 @@ prepare() {
 	sed -e "s|production: unix:/var/run/redis/redis.sock|production: redis://localhost:6379|" \
 		config/resque.yml.example > config/resque.yml
 	msg2 "setting up systemd service files ..."
-	for __srv in gitlab-sidekiq.service gitlab-unicorn.service gitlab.logrotate gitlab.tmpfiles.d gitlab-backup.service; do
+	for __srv in gitlab-sidekiq.service gitlab-unicorn.service gitlab.logrotate gitlab.tmpfiles.d gitlab-backup.service gitlab-workhorse.service gitlab-mailroom.service; do
 		sed -i "s|<HOMEDIR>|${_homedir}|g" "${srcdir}/${__srv}"
 		sed -i "s|<DATADIR>|${_datadir}|g" "${srcdir}/${__srv}"
 		sed -i "s|<LOGDIR>|${_logdir}|g" "${srcdir}/${__srv}"
@@ -142,8 +146,7 @@ package() {
 		"${pkgdir}/usr/share/doc/${pkgname}" \
 		"${pkgdir}${_homedir}/www" \
 		"${pkgdir}${_homedir}/satellites" \
-		"${pkgdir}${_datadir}/www" \
-		"${pkgdir}${_datadir}/public/uploads"
+		"${pkgdir}${_datadir}/www"
 	ln -fs /run/gitlab "${pkgdir}${_homedir}/pids"
 	ln -fs /run/gitlab "${pkgdir}${_homedir}/sockets"
 	ln -fs ${_datadir}/log "${pkgdir}${_homedir}/log"
@@ -176,7 +179,7 @@ package() {
 	find "${pkgdir}${_datadir}/public/help/" -depth -type d -empty -exec rmdir {} \;
 
 	# Install systemd service files
-	for _file in gitlab-unicorn.service gitlab-sidekiq.service gitlab-backup.service gitlab-backup.timer gitlab.target; do
+	for _file in gitlab-unicorn.service gitlab-sidekiq.service gitlab-backup.service gitlab-backup.timer gitlab.target gitlab-workhorse.service gitlab-mailroom.service; do
 		install -Dm0644 "${srcdir}/${_file}" "${pkgdir}/usr/lib/systemd/system/${_file}"
 	done
 

@@ -1,8 +1,9 @@
 [Unit]
 Description=GitLab Sidekiq Worker
-Requires=redis.service
+Requires=redis.service gitlab-unicorn.service
 Wants=mysqld.service postgresql.service
-After=redis.service mysqld.service postgresql.service network.target
+After=redis.service mysqld.service postgresql.service network.target gitlab-unicorn.service
+JoinsNamespaceOf=gitlab-unicorn.service
 
 [Service]
 User=gitlab
@@ -21,7 +22,7 @@ ProtectHome=true
 # instead you can safely enable this security feature.
 #NoNewPrivileges=true
 
-ExecStart=/usr/bin/bundle-2.1 exec "sidekiq -q post_receive -q mailer -q system_hook -q project_web_hook -q gitlab_shell -q common -q default -q archive_repo -e production -L <LOGDIR>/sidekiq.log >> <LOGDIR>/sidekiq.log 2>&1"
+ExecStart=/usr/bin/bundle-2.1 exec "sidekiq -q post_receive -q mailer -q system_hook -q incoming_email -q project_web_hook -q gitlab_shell -q common -q default -q archive_repo -e production -L <LOGDIR>/sidekiq.log >> <LOGDIR>/sidekiq.log 2>&1"
 
 [Install]
 WantedBy=multi-user.target
