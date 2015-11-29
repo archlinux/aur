@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Icon=system-reboot
+Type=Application
+StartupNotify=true
+Terminal=false
+Exec=pkexec grub2-editor
+Name=GRUB2 Bootloader
+Name[zh_CN]=GRUB2 启动加载器
+Name[zh_TW]=GRUB2 開機載入器
+Comment=Customize the GRUB2 bootloader
+Comment[zh_TW]=自訂 GRUB2 開機載入器
+X-KDE-Keywords=grub,boot,menu,entries,default,timeout,password,color,splash,image,bootloader
+Categories=System;KDE;Qt;
