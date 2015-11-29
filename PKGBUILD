@@ -3,7 +3,7 @@
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
-pkgver=4.7.7
+pkgver=4.8.2
 pkgrel=1
 pkgdesc='Scheme R5RS interpreter and compiler (via C)'
 arch=('x86_64' 'i686')
@@ -12,11 +12,11 @@ license=('LGPL2.1' 'Apache')
 depends=('bash')
 install="$pkgname.install"
 options=('staticlibs')
-source=("http://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/it-}-v${pkgver//./_}.tgz")
-sha256sums=('7ddce550bf3ce54707a5a5a2e049cb823fbb44e5ded4112e0c93bb6c278804a9')
+source=("http://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/-c/-v}${pkgver//./_}-devel.tgz")
+sha256sums=('de3354b5a3cd0cca784ae671dc6c955cae4fbb0041d5a8185c09e91bf42b2c86')
 
 build() {
- cd "${pkgname/it-}-v${pkgver//./_}"
+ cd "${pkgname/-c/-v}${pkgver//./_}-devel"
 
   ./configure --prefix=/usr --docdir=/usr/share/doc/gambit-c \
     --infodir=/usr/share/info --libdir=/usr/lib/gambit-c \
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  make -C "${pkgname/it-}-v${pkgver//./_}" install DESTDIR="$pkgdir"
+  make -C "${pkgname/-c/-v}${pkgver//./_}-devel" install DESTDIR="$pkgdir"
 
   # /usr/bin/gsc conflicts with ghostscript
   mv "$pkgdir/usr/bin/gsc" "$pkgdir/usr/bin/gambitc"
