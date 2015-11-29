@@ -30,7 +30,7 @@ build() {
   cd "${_gitname}"
   CFLAGS="$CFLAGS -I/opt/vc/include"
   LDFLAGS="$LDFLAGS -L/opt/vc/lib"
-  ./configure --prefix=/usr --disable-vg --disable-opengl --disable-gles --disable-fbo --disable-egl --disable-x11 --disable-sdl --disable-sdl2 --disable-pulse --disable-oss --disable-ffmpeg --enable-neon --enable-dispmanx --enable-floathard --enable-udev
+  ./configure --prefix=/usr --disable-vg --disable-opengl --disable-gles --disable-fbo --disable-egl --disable-x11 --disable-sdl --disable-sdl2 --disable-pulse --disable-oss --disable-ffmpeg --enable-neon --enable-dispmanx --enable-floathard --enable-udev --enable-rpi --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib
   make
 }
 
