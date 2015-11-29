@@ -18,7 +18,11 @@ build() {
 
 package() {
   install -d "$pkgdir/usr/share/qqwry/"
+  install -d "$pkgdir/usr/share/licenses/qqwry"
   cp "$srcdir/app/qqwry.dat" "$pkgdir/usr/share/qqwry/"
+  # add license file
+  iconv -f gbk "$srcdir/app/License.txt" \
+        -o "$pkgdir/usr/share/licenses/qqwry/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
