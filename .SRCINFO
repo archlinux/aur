@@ -1,0 +1,18 @@
+pkgbase = arms-git
+	pkgdesc = ARMS: The Arch Regular Maintenance Script
+	pkgver = 1.0.0.r0.78fba94
+	pkgrel = 1
+	url = https://github.com/qguv/arms
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = sudo
+	optdepends = reflector: to automatically update the mirrorlist
+	optdepends = lostfiles: to locate files not managed by pacman (AUR)
+	provides = arms
+	conflicts = arms
+	source = arms::git+https://github.com/qguv/arms
+	md5sums = SKIP
+
+pkgname = arms-git
+
