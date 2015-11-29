@@ -4,7 +4,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="utext"
-pkgver="0.3.7"
+pkgver="0.3.8"
 pkgrel="1"
 pkgdesc="An application to work with markdown files."
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ license=('GPL3')
 depends=('python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'python-markdown' 'python-requests' 'wkhtmltopdf')
 makedepends=('python2-distutils-extra' 'python2-polib')
 provides=("${pkgname}")
-source=("https://launchpad.net/~atareao/+archive/ubuntu/${pkgname}/+files/${pkgname}_${pkgver}-0extras15.04.2.tar.xz")
-sha256sums=('ffe4ca87a676925768605d47b51559d09eec8eb92a4374d5afebd165aa6036f1')
+source=("https://launchpad.net/~atareao/+archive/ubuntu/${pkgname}/+files/${pkgname}_${pkgver}-0extras15.04.4.tar.xz")
+sha256sums=('f1314a707b7ea2aa0d5a6d75a9fbc7948c591f5eb1bc1791d98ee0260350e17f')
 install="${pkgname}.install"
 
 build() {
