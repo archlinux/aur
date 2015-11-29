@@ -4,7 +4,7 @@
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
 
-  <action id="org.freedesktop.policykit.pkexec.run-gparted">
+  <action id="org.freedesktop.policykit.pkexec.run-kndiswrapper">
     <description>Run KNDISWrapper</description>
     <description xml:lang="zh_CN">运行KNDISWrapper</description>
     <message>Authentication is required to run KNDISWrapper</message>
