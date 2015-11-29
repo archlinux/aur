@@ -1,6 +1,6 @@
 # Maintainer: Marc McIntosh <email@marcmcintosh.cninja>
 pkgname=jxcore
-pkgver=v0.3.0.6.r159.g7b6866f
+pkgver=v0.3.0.6.r198.gfa2dd55
 pkgrel=1
 pkgdesc="Evented IO for SpiderMonkey and V8 JavaScript"
 arch=('i686' 'x86_64')
@@ -9,13 +9,13 @@ license=('common')
 groups=()
 depends=('openssl' 'zlib')
 makedepends=('git' 'python2')
-optdepends=()
-provides=('npm')
-conflicts=('nodejs' 'npm')
+optdepends=('npm')
+provides=()
+conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=('jxcore.install')
 source=('git+https://github.com/jxcore/jxcore')
 noextract=()
 md5sums=('SKIP')
@@ -37,8 +37,10 @@ build() {
     --prefix=/usr \
     --engine-mozilla \
     --shared-openssl \
-    --shared-zlib 
+    --shared-zlib \
+    --without-npm
   make
+
 }
 
 package() {
