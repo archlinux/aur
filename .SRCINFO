@@ -1,6 +1,6 @@
 pkgbase = opendht-git
 	pkgdesc = A C++11 implementation of the Kademlia DHT (Distributed Hash Table)
-	pkgver = 20151108
+	pkgver = 20151120
 	pkgrel = 1
 	url = https://github.com/savoirfairelinux/opendht
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = opendht-git
 	depends = readline
 	provides = opendht
 	conflicts = opendht
-	source = git://github.com/savoirfairelinux/opendht#commit=cdec9b0d24cfcc4ee8be8323a0581f58cdc4eee2
+	source = git://github.com/savoirfairelinux/opendht#commit=0a4195ae08f7fb1a7a215eb0e7542f9ad33ca80d
 	sha256sums = SKIP
 
 pkgname = opendht-git
