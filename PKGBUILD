@@ -1,6 +1,6 @@
 # Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=anura-git
-pkgver=0.0.2160.gaada7d7
+pkgver=0.0.2288.g282c8b1
 pkgrel=1
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends."
 arch=(i686 x86_64)
@@ -12,12 +12,10 @@ optdepends=('frogatto-git: the default game module'
 makedepends=(git boost)
 source=('git+https://github.com/anura-engine/anura.git#branch=trunk'
         anura.sh
-        0001-Change-Makefile-to-enable-ccache-to-work.patch
-        0002-Fix-a-Linux-compilation-error.patch)
+        0001-Change-Makefile-to-enable-ccache-to-work.patch)
 md5sums=('SKIP'
          '15f4c03c2404bcfd7618b8f9e0c850ba'
-         '63fee48f8260aa1e51f7d4ab9bdb925f'
-         '39a6636cdfe007beb20b754820618601')
+         '63fee48f8260aa1e51f7d4ab9bdb925f')
 install=anura.install
 
 _gitname=anura
@@ -38,7 +36,6 @@ prepare() {
   cd $_gitname
 
   git apply ../0001-Change-Makefile-to-enable-ccache-to-work.patch
-  git apply ../0002-Fix-a-Linux-compilation-error.patch
 
   # use system boost headers
   rm -r external/include/boost

@@ -1,6 +1,6 @@
 pkgbase = anura-git
 	pkgdesc = A fully-featured game engine, the tech behind the spectacular Frogatto & Friends.
-	pkgver = 0.0.700.g84ac3cd
+	pkgver = 0.0.2288.g282c8b1
 	pkgrel = 1
 	url = https://github.com/anura-engine/anura
 	install = anura.install
@@ -21,10 +21,12 @@ pkgbase = anura-git
 	depends = boost-libs
 	optdepends = frogatto-git: the default game module
 	optdepends = box2d: box2d physics
-	source = git+https://github.com/anura-engine/anura.git
+	source = git+https://github.com/anura-engine/anura.git#branch=trunk
 	source = anura.sh
+	source = 0001-Change-Makefile-to-enable-ccache-to-work.patch
 	md5sums = SKIP
 	md5sums = 15f4c03c2404bcfd7618b8f9e0c850ba
+	md5sums = 63fee48f8260aa1e51f7d4ab9bdb925f
 
 pkgname = anura-git
 
