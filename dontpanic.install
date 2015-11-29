@@ -1,0 +1,8 @@
+
+post_install() {
+    echo "Update desktop database..."
+    update-desktop-database -q
+    echo
+    echo "Use at your own risk!"
+    echo
+}
