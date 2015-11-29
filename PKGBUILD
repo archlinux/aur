@@ -2,7 +2,7 @@
 
 pkgname=gnome-settings-daemon-backlight-toshiba
 _pkgname=gnome-settings-daemon
-pkgver=3.18.3
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with compatibility for toshiba backlight"
 arch=(i686 x86_64)
