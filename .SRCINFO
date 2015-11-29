@@ -1,7 +1,7 @@
 pkgbase = qgis
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats
-	pkgver = 2.12.0
-	pkgrel = 3
+	pkgver = 2.12.1
+	pkgrel = 1
 	url = http://qgis.org/
 	install = qgis.install
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = qgis
 	depends = python2-pygments
 	depends = python2-pytz
 	optdepends = gpsbabel: GPS Tool plugin
-	source = http://qgis.org/downloads/qgis-2.12.0.tar.bz2
-	md5sums = 099efb9482a67e3c57f54f4947986e39
+	source = http://qgis.org/downloads/qgis-2.12.1.tar.bz2
+	md5sums = b47a7e040341164fd2b8f7970055e3d0
 
 pkgname = qgis
 

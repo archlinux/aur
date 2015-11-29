@@ -1,4 +1,5 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 # Contributor: SaultDon <sault.don gmail>
 # Contributor: Lantald < lantald at gmx.com >
 # Contributor: Thomas Dziedzic < gostrc at gmail >
@@ -11,8 +12,8 @@
 # You will also need to install osgearth or fcgi, respectively, before building.
 
 pkgname=qgis
-pkgver=2.12.0
-pkgrel=3
+pkgver=2.12.1
+pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -24,7 +25,7 @@ makedepends=('cmake' 'txt2tags' 'perl')
 optdepends=('gpsbabel: GPS Tool plugin')
 install="$pkgname.install"
 source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('099efb9482a67e3c57f54f4947986e39')
+md5sums=('b47a7e040341164fd2b8f7970055e3d0')
 
 prepare() {
   cd $pkgname-$pkgver
