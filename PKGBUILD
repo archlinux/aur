@@ -1,6 +1,6 @@
 # Maintainer: nastypriest <priest@airmail.cc>
 pkgname=pscrot
-pkgver=1.0
+pkgver=1.1 #Added xclip dependency for outputting pomf link directly to clipboard.
 pkgrel=1
 pkgdesc="Take screenshot with scrot and upload it to pomf.cat,pomf.se or any other pomf clone."
 arch=(any)
