@@ -3,7 +3,7 @@
 
 _pkgname="frogr"
 pkgname="${_pkgname}-git"
-pkgver=0.10.3.g39cf974
+pkgver=0.11.29.g1739b2d
 pkgrel=1
 pkgdesc="A flickr remote organizer for GNOME"
 url="https://wiki.gnome.org/Apps/Frogr"
