@@ -1,8 +1,8 @@
 # Maintainer: Ordoe ordoe <aur@cach.co>
 
-pkgname=python-rtimulib-git
+pkgname=python-rtimulib
 _gitname=RTIMULib
-pkgver=121.b949681
+pkgver=7.2.1
 pkgrel=1
 pkgdesc="Python Binding for RTIMULib, a versatile IMU library."
 arch=('armv7h')
@@ -11,14 +11,8 @@ license=('BSD')
 depends=('python' 'python-setuptools')
 makedepends=('gcc')
 provides=('python-rtimulib')
-source=("git+https://github.com/RPI-Distro/${_gitname}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-	 cd "${srcdir}/${_gitname}"
-	 local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-	 printf "%s" "${ver//-/.}"
-}
+source=("https://github.com/RPi-Distro/${_gitname}/archive/V${pkgver}.tar.gz")
+sha256sums=('d8cc6c8c07633f4cd64f42fef80527033d3c8ed2a457fd6d003850450adb5b03')
 
 build() {
   cd "${srcdir}/${_gitname}/Linux/python/"
