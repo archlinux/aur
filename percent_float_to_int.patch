@@ -1,11 +1,11 @@
 --- xbacklight.c	2013-10-08 11:40:38.000000000 +0800
-+++ xbacklight.c	2015-11-29 14:39:46.453990196 +0800
++++ xbacklight.c	2015-11-29 17:53:54.254565462 +0800
 @@ -282,7 +282,7 @@
  		    max = values[1];
  
  		    if (op == Get) {
 -			printf ("%f\n", (cur - min) * 100 / (max - min));
-+			printf ("%d\n", (int)((cur - min) * 100 / (max - min)));
++			printf ("%.0f\n", (cur - min) * 100 / (max - min));
  		    } else {
  			set = value * (max - min) / 100;
  			switch (op) {
