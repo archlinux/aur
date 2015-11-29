@@ -1,0 +1,17 @@
+pkgbase = timegen
+	pkgdesc = Manipulate a radio controlled clock via speaker
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://bastianborn.de/radio-clock-hack
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = MPL
+	license = LGPL
+	makedepends = gcc
+	makedepends = unzip
+	source = http://bastianborn.de/static/dl/timegen-0.4-src.zip
+	sha256sums = 387bf28ee4ad24970686e4224928316c705281ef639a880f391303e56ef0496a
+
+pkgname = timegen
+
