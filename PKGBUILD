@@ -29,7 +29,7 @@ build() {
 
 package () {
 
-  install -Dm644 ${srcdir}/timegen /usr/bin/
+  sudo mv $srcdir/timegen /usr/bin/
 
 }
 
