@@ -9,8 +9,8 @@ depends=('qt5-base' 'ndiswrapper' 'polkit')
 makedepends=('qt5-tools')
 provides=kndiswrapper
 conflicts=kndiswrapper
-source=("http://ftp.riken.jp/Linux/momonga/development/source/SOURCES/kndiswrapper-${pkgver}.tgz" "qt5.patch")
-sha1sums=('SKIP' 'SKIP')
+source=("http://ftp.riken.jp/Linux/momonga/development/source/SOURCES/kndiswrapper-${pkgver}.tgz" "qt5.patch" "kndiswrapper.gui.policy")
+sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir/kndiswrapper-${pkgver}"
@@ -20,4 +20,5 @@ prepare() {
 package() {
   cd "$srcdir/kndiswrapper-${pkgver}"
   ./install.sh "$pkgdir"
+  install -Dm755 "${srcdir}/kndiswrapper.gui.policy" "$pkgdir/usr/share/polkit-1/actions/kndiswrapper.gui.policy"
 }

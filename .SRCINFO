@@ -9,11 +9,13 @@ pkgbase = kndiswrapper-qt5
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = ndiswrapper
-	depends = kde-cli-tools
+	depends = polkit
 	provides = kndiswrapper
 	conflicts = kndiswrapper
 	source = http://ftp.riken.jp/Linux/momonga/development/source/SOURCES/kndiswrapper-0.4.0.tgz
 	source = qt5.patch
+	source = kndiswrapper.gui.policy
+	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 
