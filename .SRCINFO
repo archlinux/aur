@@ -1,0 +1,31 @@
+pkgbase = gnuplot-nogui
+	pkgdesc = Plotting package which outputs to X11, files and others. Without wxgtk/qt.
+	pkgver = 5.0.0
+	pkgrel = 4
+	url = http://www.gnuplot.info
+	install = gnuplot.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = emacs
+	makedepends = texinfo
+	makedepends = texlive-core
+	makedepends = texlive-latexextra
+	depends = cairo
+	depends = libjpeg
+	depends = lua
+	depends = gd
+	depends = gnutls
+	depends = readline
+	provides = gnuplot
+	conflicts = gnuplot
+	conflicts = gnuplot-nox
+	replaces = gnuplot-notk
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.0.0.tar.gz
+	source = lua53_compat.patch
+	sha1sums = ca5163e3cb466b4aeb878f1173b0fe624367f08a
+	sha1sums = 9005fa9e4da91ceedb8ccd1d761866e7b064f8b1
+
+pkgname = gnuplot-nogui
+
