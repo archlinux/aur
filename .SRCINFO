@@ -1,0 +1,17 @@
+pkgbase = bossa-bin
+	pkgdesc = A GUI and command-line tool to upload to ATSAM microcontrollers
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.shumatech.com/web/products/bossa
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = libsm
+	source_i686 = http://downloads.sourceforge.net/project/b-o-s-s-a/1.2.1/bossa-i686-1.2.1.tgz
+	md5sums_i686 = baae688a2a5d4cab20e81b6fe63029fd
+	source_x86_64 = http://downloads.sourceforge.net/project/b-o-s-s-a/1.2.1/bossa-x86_64-1.2.1.tgz
+	md5sums_x86_64 = 745cb223437466c701d42da08829964b
+
+pkgname = bossa-bin
+
