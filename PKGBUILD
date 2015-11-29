@@ -17,6 +17,7 @@ source=(
     'ucloner.desktop'
     'ucloner.png'
     'modify_for_arch.patch'
+    'ucloner.gui.policy'
 )
 
 md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
@@ -24,7 +25,8 @@ md5sums=('b7bf49a5516cb9e00943e06e3e73adf2'
          '15efc60875b77125f8d5399797306955'
          '617b6d95bee5d2ca778d3887203cce53'
          '1f913fe9ca34481134bc36e1045e9a20'
-         '47c1f138ebb7b4ef961be9f9dccd543a')
+         '47c1f138ebb7b4ef961be9f9dccd543a'
+         '39121b9c5acfffe964d939025cc7014f')
 
 
 prepare() {
@@ -44,5 +46,6 @@ package() {
   install -Dm 755 "${srcdir}/ucloner-cmd.sh" "$pkgdir/usr/bin/ucloner-cmd"
   install -Dm 755 "${srcdir}/ucloner.desktop" "$pkgdir/usr/share/applications/ucloner.desktop"
   install -Dm 755 "${srcdir}/ucloner.png" "$pkgdir/usr/share/pixmaps/ucloner.png"
+  install -Dm 755 "${srcdir}/ucloner.gui.policy" "$pkgdir//usr/share/polkit-1/actions/ucloner.gui.policy"
 }
 
