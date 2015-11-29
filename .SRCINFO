@@ -1,0 +1,14 @@
+pkgbase = notefy
+	pkgdesc = Overly complicated CLI note keeper
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/parazyd/notefy
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = srm
+	source = https://projectarch.tk/pub/mirror/notefy/notefy-0.1.tar.gz
+	sha256sums = a9393d47de4cd7594f6a88f2cf465f138fe46e0af4b0a6479fa591f94e2cfef2
+
+pkgname = notefy
+
