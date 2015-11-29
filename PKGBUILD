@@ -13,7 +13,7 @@ groups=('xorg-apps' 'xorg')
 source=("http://xorg.freedesktop.org/archive/individual/app/xbacklight-${pkgver}.tar.bz2"
         'percent_float_to_int.patch')
 sha256sums=('17f6cf51a35eaa918abec36b7871d28b712c169312e22a0eaf1ffe8d6468362b'
-            'b5b776f63c0ed95fd0cb1bb84cb831002304960b0d552114d807c0ad6582857b')
+            '539cbee55216729e7ef5dbffbb4de20c98677278a6c461fe7e78c3bf3dcba3a8')
 
 build() {
     cd xbacklight-${pkgver}
