@@ -9,6 +9,7 @@ url='https://github.com/cdemoulins/pamixer'
 license=(GPL3)
 depends=(libpulse boost-libs)
 makedepends=(boost)
+conflicts=(pamixer)
 source=("pamixer-$pkgver.tar.gz::https://github.com/cdemoulins/pamixer/archive/$pkgver.tar.gz"
         'ignore_output_from_get_mute.patch')
 sha1sums=('ceb4e609a9cf3521040d52313c194757f30526c1'
