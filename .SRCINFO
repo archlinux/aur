@@ -1,6 +1,6 @@
 pkgbase = papirus-git
 	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE
-	pkgver = r256.0bff50a
+	pkgver = r260.8413a7a
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
