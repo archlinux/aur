@@ -1,0 +1,28 @@
+pkgbase = dasom-gtk-git
+	pkgdesc = GTK+ IM modules for Dasom
+	pkgver = 265.2300f58
+	pkgrel = 1
+	url = https://github.com/dasom-im/dasom-gtk
+	install = dasom-gtk-git.install
+	arch = any
+	license = GNU LGPL v3
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = glib2
+	makedepends = git
+	makedepends = dasom-git
+	depends = gtk2
+	depends = gtk3
+	depends = xorg-server-utils
+	depends = glib2
+	depends = dasom-git
+	optdepends = dconf-editor: For Editing Dasom IM Config
+	conflicts = dasom-gtk
+	options = !buildflags
+	source = dasom-gtk::git+https://github.com/dasom-im/dasom-gtk.git
+	md5sums = SKIP
+
+pkgname = dasom-gtk-git
+
