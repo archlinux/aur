@@ -43,7 +43,8 @@ prepare() {
       -i tools/settings_template_readonly.py
   
   # python2 shebang fixes
-  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc em++ scan-view
+  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc em++
+  sed '1s|python$|python2|' -i $srcdir/emscripten-fastcomp-clang/tools/scan-view/bin/scan-view
   cd $srcdir/emscripten-fastcomp
   
   # put clang source into the right place (http://git.io/i1GBkg)
