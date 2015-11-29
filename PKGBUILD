@@ -4,11 +4,11 @@
 
 pkgname='minitube-aur'
 pkgver='2.5.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A youtube client that does not need flash'
 replaces=('minitube')
 arch=('i686' 'x86_64')
-url='http://flavio.tordini.org/${pkgname}'
+url='http://flavio.tordini.org/minitube'
 license=('gpl3')
 install=${pkgname}.install
 depends=('phonon-qt5' 
