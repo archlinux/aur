@@ -28,9 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  export CFLAGS="$CFLAGS -I/opt/vc/include"
-  export LDFLAGS="${LDFLAGS//-Wl,--as-needed} -L/opt/vc/lib/ -lGLESv2 -lEGL -lopenmaxil -lbcm_host -lvcos -lvchiq_arm -lpthread"
-  ./configure --prefix=/usr --disable-vg --disable-opengl --disable-gles --disable-fbo --disable-egl --disable-x11 --disable-sdl --disable-sdl2 --disable-pulse --disable-oss --disable-ffmpeg --disable-freetype --enable-neon --enable-dispmanx --enable-floathard --enable-udev
+  HAVE_VIDEOCORE=yes ./configure --prefix=/usr --disable-vg --disable-opengl --disable-gles --disable-fbo --disable-egl --disable-x11 --disable-sdl --disable-sdl2 --disable-pulse --disable-oss --disable-ffmpeg --disable-freetype --enable-neon --enable-dispmanx --enable-floathard --enable-udev
   make
 }
 
