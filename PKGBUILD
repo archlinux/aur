@@ -4,30 +4,34 @@
 
 _pkgbasename=openal
 pkgname=lib32-$_pkgbasename
-pkgver=1.16.0
-pkgrel=1
+pkgver=1.17.0
+pkgrel=2
 pkgdesc="A cross-platform 3D audio library (32-bit)"
 arch=(x86_64)
 url="http://www.openal.org/"
 license=(LGPL)
 depends=(lib32-glibc $_pkgbasename)
-makedepends=(lib32-alsa-lib lib32-sdl lib32-libpulse lib32-portaudio pkgconfig cmake gcc-multilib)
-source=(http://kcat.strangesoft.net/openal-releases/openal-soft-$pkgver.tar.bz2)
-md5sums=('14db4b0d12f07252070b4fe5eb5911f6')
+makedepends=(lib32-alsa-lib pkgconfig cmake lib32-libpulse lib32-portaudio lib32-jack
+             git gcc-multilib)
+_commit=63567526b0a17449baf57053d11688aa277a7e40
+source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
+sha256sums=('SKIP')
+
+prepare() {
+  mkdir build
+}
 
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd $_pkgbasename-soft-$pkgver/build
-  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D LIB_SUFFIX=32 ..
+  cd build
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D LIB_SUFFIX=32 ../openal-soft
   make
 }
 
 package() {
-  cd $_pkgbasename-soft-$pkgver
   make -C build DESTDIR="$pkgdir/" install
-
   rm -rf "$pkgdir"/usr/{include,share,bin}
 }
