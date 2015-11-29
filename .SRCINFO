@@ -1,10 +1,9 @@
 pkgbase = qqwry
 	pkgdesc = IP to location data file qqwry.dat
-	pkgver = 20150426
+	pkgver = 20150625
 	pkgrel = 1
 	url = http://www.cz88.net/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom
 	makedepends = innoextract
 	source = http://update.cz88.net/soft/setup.zip
