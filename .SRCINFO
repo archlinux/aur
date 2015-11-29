@@ -1,0 +1,23 @@
+pkgbase = marketo-git
+	pkgdesc = A note-taking KDE application with the power of lightweight markup language
+	pkgver = r78.9837694
+	pkgrel = 1
+	url = https://github.com/sadhen/marketo
+	install = marketo.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = libmdcpp
+	depends = ktexteditor
+	depends = kdewebkit
+	depends = hicolor-icon-theme
+	provides = marketo
+	conflicts = marketo
+	source = git://github.com/sadhen/marketo.git
+	md5sums = SKIP
+
+pkgname = marketo-git
+
