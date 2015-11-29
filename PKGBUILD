@@ -19,11 +19,11 @@ source=("$pkgver.tar.gz::https://gitlab.com/hobarrera/$pkgname/repository/archiv
 sha256sums=('23c10f0381225ae13fd7efb5cd29a7d852dc52214650bee4cbc18032a46b3af4')
 
 build() {
-  cd "$srcdir"/caffeine-ng-v3.1-*
+  cd "$srcdir"/caffeine-ng-v${pkgver}-*
   python setup.py build
 }
 
 package() {
-  cd "$srcdir"/caffeine-ng-v3.1-*
+  cd "$srcdir"/caffeine-ng-v${pkgver}-*
   python setup.py install --root="$pkgdir"
 }
