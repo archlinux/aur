@@ -1,0 +1,24 @@
+pkgbase = dasom-qt-git
+	pkgdesc = QT IM modules for Dasom
+	pkgver = 265.2300f58
+	pkgrel = 1
+	url = https://github.com/dasom-im/dasom-qt
+	install = dasom-qt-git.install
+	arch = any
+	license = GNU LGPL v3
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = glib2
+	makedepends = git
+	makedepends = dasom-git
+	depends = xorg-server-utils
+	depends = glib2
+	depends = dasom-git
+	optdepends = dconf-editor: For Editing Dasom IM Config
+	conflicts = dasom-qt
+	options = !buildflags
+	source = dasom-qt::git+https://github.com/dasom-im/dasom-qt.git
+	md5sums = SKIP
+
+pkgname = dasom-qt-git
+
