@@ -2,8 +2,8 @@
 # Contributor: Sabart Otto <seberm at gmail dot com>
 
 pkgname=adminer
-pkgver=4.2.2
-pkgrel=2
+pkgver=4.2.3
+pkgrel=1
 pkgdesc="A full-featured MySQL management tool written in PHP."
 arch=('any')
 license=('Apache', 'GPL')
@@ -15,7 +15,7 @@ install=${pkgname}.install
 source=("${pkgname}.install"
         "https://www.adminer.org/static/download/${pkgver}/${pkgname}-${pkgver}.php") 
 sha256sums=('f3d2c8d2119cccf4d84d32ad2662300eecda62ffba7304505e563e192b5a10ef'
-            '4dced0c64dbeb0f6e9a27c4ec5838bbf5f33b82c368a8965b47ae3da6c9bcb2c')
+            '40e72c917aa4f5f19d39b7322322989fd3b752131821b9f13459ca765796957c')
 
 package() {
   _instdir=$pkgdir/usr/share/webapps/$pkgname
