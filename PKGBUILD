@@ -3,7 +3,7 @@
 
 pkgname=dasom-gtk-git
 _pkgname=dasom-gtk
-pkgver=265.2300f58
+pkgver=299.fbe88a0
 pkgrel=1
 pkgdesc="GTK+ IM modules for Dasom"
 arch=('any')

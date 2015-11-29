@@ -1,6 +1,6 @@
 pkgbase = dasom-gtk-git
 	pkgdesc = GTK+ IM modules for Dasom
-	pkgver = 265.2300f58
+	pkgver = 299.fbe88a0
 	pkgrel = 1
 	url = https://github.com/dasom-im/dasom-gtk
 	install = dasom-gtk-git.install
