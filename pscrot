@@ -28,11 +28,11 @@ if [ `echo $ARGS | grep h` ]; then
 fi
 fn=`date | sed -e 's/ /-/g' | sed -e 's/:/\./g'`.png
 if [ `echo $ARGS | grep s` ]; then
-	scrot -s "$fn" && pomf $fn && mv -v $fn ~/Pictures/
+	scrot -s "$fn" && pomf $fn | xclip -sel c; mv -v $fn ~/Pictures/
 elif [ `echo $ARGS | grep f` ]; then
-	scrot -u "$fn" && pomf $fn && mv -v $fn ~/Pictures/
+	scrot -u "$fn" && pomf "$fn" | xclip -sel c; mv -v $fn ~/Pictures/
 else
-	scrot "$fn" && pomf $fn && mv -v $fn ~/Pictures/
+	scrot "$fn" && pomf "$fn" | xclip -sel c; mv -v $fn ~/Pictures/
 fi
 if [ `echo $ARGS | grep d` ]; then
 	rm -vf ~/Pictures/$fn
