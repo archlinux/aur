@@ -4,9 +4,9 @@
 
 pkgname='minitube-aur'
 pkgver='2.5.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A youtube client that does not need flash'
-replaces=('minitube')
+conflicts=('minitube')
 arch=('i686' 'x86_64')
 url='http://flavio.tordini.org/minitube'
 license=('gpl3')
