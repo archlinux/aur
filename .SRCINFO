@@ -1,0 +1,15 @@
+pkgbase = rbenv-binstubs
+	pkgdesc = This rbenv plugin automatically runs rbenv rehash every time you install or uninstall a gem
+	pkgver = 1.0.0_76479aa
+	pkgrel = 1
+	url = https://github.com/rbenv/rbenv-gem-rehash
+	arch = any
+	license = custom:MIT
+	depends = rbenv
+	source = https://github.com/ianheggie/rbenv-binstubs/tarball/76479aa
+	source = LICENSE
+	sha512sums = e79960d02501c98a834b9f3d8eb9b10985996adaf6c0895390e6f6bedebfc6dcf3e20dcf17d172969885100549dd75d9f292efa97e93be9825f3573049559307
+	sha512sums = 2543d15dfdded6e42c36bc1a2ccfe593766bca01c82e3f4bfe5297b5050bf542defed8a7937cc93f2a6cc0fd35c5f6458e850e9f19a3a13102be5a3ba2045b1a
+
+pkgname = rbenv-binstubs
+
