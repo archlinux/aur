@@ -8,7 +8,7 @@ pkgbase = c0
 	arch = x86_64
 	arch = i686
 	license = GPL
-	depends = libpng>=1.6 zlib>=1.2 make>=4.0 gcc>=5.1 ncurses5-compat-libs>=6.0
+	depends = 'libpng' 'zlib' 'make' 'gcc' 'ncurses5-compat-libs'
 	provides = coin cc0
 	source = c0::http://c0.typesafety.net/dist/cc0-v0523-linux3.13.0-64bit-bin.tgz
 	md5sums = c58f4b8720785ccc4063d2f5f3209da0
