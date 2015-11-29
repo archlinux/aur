@@ -29,8 +29,7 @@ prepare() {
 }
 
 build() {
-	make -C "${srcdir}/${pkgname}" \
-		PREFIX=/usr/
+	make -C "${srcdir}/${pkgname}"
 }
 
 package() {

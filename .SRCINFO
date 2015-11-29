@@ -1,6 +1,6 @@
 pkgbase = sent-git
 	pkgdesc = Simple plain-text presentation tool
-	pkgver = r69.cc57a28
+	pkgver = r74.95af430
 	pkgrel = 1
 	url = http://tools.suckless.org/sent
 	arch = i686
