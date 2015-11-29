@@ -1,6 +1,6 @@
 pkgbase = diskscan
 	pkgdesc = CLI tool to scan block devices for unreadable sectors
-	pkgver = 0.18
+	pkgver = 0.19
 	pkgrel = 1
 	url = https://github.com/baruch/diskscan
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = diskscan
 	license = GPL3
 	makedepends = cmake
 	depends = python-yaml
-	source = https://codeload.github.com/baruch/diskscan/tar.gz/0.18
-	sha256sums = af65400c3dc97c09434e885458684fc9fadcd327575f733c2dd657e94ff2e406
+	source = https://codeload.github.com/baruch/diskscan/tar.gz/0.19
+	sha256sums = 92a7298af99043e1e584e4343040b6574b9229f44c122e1cbcb90ba478d928d1
 
 pkgname = diskscan
 

@@ -1,7 +1,7 @@
 # Maintainer: jdn06 <jdn06.jdn06@outlook.fr>
 
 pkgname=diskscan
-pkgver=0.18
+pkgver=0.19
 pkgrel=1
 pkgdesc="CLI tool to scan block devices for unreadable sectors"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 install=
 source=("https://codeload.github.com/baruch/$pkgname/tar.gz/$pkgver")
 
-sha256sums=('af65400c3dc97c09434e885458684fc9fadcd327575f733c2dd657e94ff2e406')
+sha256sums=('92a7298af99043e1e584e4343040b6574b9229f44c122e1cbcb90ba478d928d1')
 #sha256sums=(SKIP)
 
 prepare() {
