@@ -6,7 +6,7 @@
 
 pkgname=lib32-sdl-openglhq
 pkgver=1.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (with OpenGLHQ patch) (32-bit)"
 arch=('x86_64')
 url="https://libsdl.org"
@@ -70,6 +70,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd "SDL-${pkgver}"
+  ./autogen.sh
   ./configure --prefix=/usr --disable-nasm --enable-alsa \
               --with-x --disable-rpath --disable-static --libdir=/usr/lib32
   make
