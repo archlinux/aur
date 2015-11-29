@@ -1,0 +1,19 @@
+pkgbase = netbeans-es
+	pkgdesc = Netbeans IDE development platform in Spanish
+	pkgver = 8.0.1
+	pkgrel = 1
+	url = http://www.netbeans.org
+	install = netbeans.install
+	arch = any
+	license = CDDL
+	depends = java-environment
+	provides = netbeans
+	conflicts = netbeans
+	options = !strip
+	source = http://bits.netbeans.org/8.0.1/community/zip/netbeans-8.0.1-201409082112.zip
+	source = netbeans.desktop
+	md5sums = 898f4f7454f246d5b901b034bdc90e5b
+	md5sums = 954bdd8edfce8aaf93c82f260fb771ce
+
+pkgname = netbeans-es
+
