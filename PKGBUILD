@@ -6,7 +6,7 @@
 # Contributor: 325.15 - patch : Ninez 
 
 pkgname=nvidia-340xx-rt
-pkgver=340.93
+pkgver=340.96
 _extramodules=extramodules-4.1-rt
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-rt, 340xx legacy branch"
@@ -21,8 +21,8 @@ options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 source=(nv-drm.patch)
-md5sums_i686=('4a7edf6838a80c77a57fb6f6ec7f0437')
-md5sums_x86_64=('cb80e3f1cb6f2fb6e6eab35fad0884e4')
+md5sums_i686=('cb64b165b638671bcdc75bcf297b8d90')
+md5sums_x86_64=('7bdbcee13bade63227933d9217571882')
 md5sums=('79671a27131da619a33eb02ed0c2c031')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
