@@ -1,6 +1,6 @@
 pkgbase = gnome-settings-daemon-backlight-toshiba
 	pkgdesc = The GNOME Settings daemon with compatibility for toshiba backlight
-	pkgver = 3.18.1
+	pkgver = 3.18.3
 	pkgrel = 1
 	url = http://www.gnome.org
 	install = gnome-settings-daemon.install
@@ -32,9 +32,9 @@ pkgbase = gnome-settings-daemon-backlight-toshiba
 	provides = gnome-settings-daemon
 	conflicts = gnome-settings-daemon
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.18/gnome-settings-daemon-3.18.1.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.18/gnome-settings-daemon-3.18.3.tar.xz
 	source = toshiba.patch
-	sha256sums = fa621a17f1d132fe60461020b0dad20a9fab6b0e3e651628aaa53a8f6a6df2c0
+	sha256sums = 3071c7258f22684f7f64b7f735821e4cb25f59fc4665eb08e8d86b560e72fc6f
 	sha256sums = SKIP
 
 pkgname = gnome-settings-daemon-backlight-toshiba
