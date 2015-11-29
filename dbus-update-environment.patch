@@ -1,0 +1,36 @@
+diff -u -r xfce4-session-4.12.1/scripts/xinitrc.in xfce4-session-4.12.1-dbus/scripts/xinitrc.in
+--- xfce4-session-4.12.1/scripts/xinitrc.in	2015-03-16 08:29:52.000000000 +0100
++++ xfce4-session-4.12.1-dbus/scripts/xinitrc.in	2015-09-25 18:23:46.069944338 +0200
+@@ -132,7 +132,13 @@
+     export DBUS_SESSION_BUS_ADDRESS
+   else
+     echo "Could not find dbus-launch; Xfce will not work properly" >&2
+-    fi
++  fi
++else
++  if which dbus-update-activation-environment >/dev/null 2>&1; then
++    dbus-update-activation-environment --systemd --all
++  else
++    echo "Could not find dbus-update-activation-environment; Xfce will not work properly" >&2
++  fi
+ fi
+ 
+ # this is only necessary when running w/o xfce4-session
+diff -u -r xfce4-session-4.12.1/scripts/xinitrc.in.in xfce4-session-4.12.1-dbus/scripts/xinitrc.in.in
+--- xfce4-session-4.12.1/scripts/xinitrc.in.in	2014-10-20 07:23:02.000000000 +0200
++++ xfce4-session-4.12.1-dbus/scripts/xinitrc.in.in	2015-09-25 18:24:06.106572945 +0200
+@@ -132,7 +132,13 @@
+     export DBUS_SESSION_BUS_ADDRESS
+   else
+     echo "Could not find dbus-launch; Xfce will not work properly" >&2
+-    fi
++  fi
++else
++  if which dbus-update-activation-environment >/dev/null 2>&1; then
++    dbus-update-activation-environment --systemd --all
++  else
++    echo "Could not find dbus-update-activation-environment; Xfce will not work properly" >&2
++  fi
+ fi
+ 
+ # this is only necessary when running w/o xfce4-session
