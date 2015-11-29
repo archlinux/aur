@@ -6,7 +6,7 @@
 _zipname="GeckoCIRCUITS"
 pkgname="geckocircuits"
 pkgver=1.72.b51
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Circuit Simulator developed by PES/ETH Zürich"
 arch=('any')
 options=('!strip')
@@ -31,7 +31,7 @@ Type=Application
 Categories=Development;"
 
 _geckocircuits_sh="#!/bin/sh
-exec /usr/bin/java -jar '/opt/geckocircuits/GeckoCIRCUITS.jar' "$@""
+exec /usr/bin/java -jar '/opt/geckocircuits/GeckoCIRCUITS.jar' \"\$@\""
 
 build() {
     cd "${srcdir}"   
