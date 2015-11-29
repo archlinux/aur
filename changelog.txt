@@ -1,3 +1,6 @@
+Git commit 074ccf2
+	* Updates to README.
+
 Git commit f8a6316
 	* NEW: Haptics have been added
 	* Removed: udev rule -- appears to work without it when STEAM is
