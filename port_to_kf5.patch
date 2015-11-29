@@ -1,6 +1,6 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/CMakeLists.txt	2015-11-29 09:29:55.886941767 +0800
++++ b/CMakeLists.txt	2015-11-29 17:41:07.000000000 +0800
 @@ -1,31 +1,48 @@
 +cmake_minimum_required( VERSION 2.8.12 )
 +cmake_policy(SET CMP0002 OLD)
@@ -60,7 +60,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
 diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 --- a/cmake/modules/FindMsgfmt.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/FindMsgfmt.cmake	2015-11-29 09:29:55.886941767 +0800
++++ b/cmake/modules/FindMsgfmt.cmake	2015-11-29 17:41:07.000000000 +0800
 @@ -0,0 +1,28 @@
 +# - Try to find msgfmt 
 +# Once done this will define
@@ -92,7 +92,7 @@ diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 +
 diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature.cmake
 --- a/cmake/modules/MacroLogFeature.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/MacroLogFeature.cmake	2015-11-29 09:29:55.887941787 +0800
++++ b/cmake/modules/MacroLogFeature.cmake	2015-11-29 17:41:07.000000000 +0800
 @@ -0,0 +1,157 @@
 +# This file defines the Feature Logging macros.
 +#
@@ -253,7 +253,7 @@ diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature
 +ENDMACRO(MACRO_DISPLAY_FEATURE_LOG)
 diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
 --- a/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
-+++ b/other/kcm_grub2.desktop	2015-11-29 09:29:55.887941787 +0800
++++ b/other/kcm_grub2.desktop	2015-11-29 17:41:07.000000000 +0800
 @@ -2,12 +2,12 @@
  Icon=system-reboot
  Type=Service
@@ -271,7 +271,25 @@ diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
  Name[bs]=GRUB2 pokretač sistemar
 diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 --- a/src/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/CMakeLists.txt	2015-11-29 09:29:55.887941787 +0800
++++ b/src/CMakeLists.txt	2015-11-29 18:18:17.000000000 +0800
+@@ -13,14 +13,14 @@
+ 
+ # Set Sources
+ set(kcm_grub2_SRCS common.cpp entry.cpp installDlg.cpp kcm_grub2.cpp)
+-kde4_add_ui_files(kcm_grub2_SRCS ../ui/installDlg.ui ../ui/kcm_grub2.ui)
++ki18n_wrap_ui(kcm_grub2_SRCS ../ui/installDlg.ui ../ui/kcm_grub2.ui)
+ if(HAVE_IMAGEMAGICK)
+     set(kcm_grub2_SRCS ${kcm_grub2_SRCS} convertDlg.cpp)
+-    kde4_add_ui_files(kcm_grub2_SRCS ../ui/convertDlg.ui)
++    ki18n_wrap_ui(kcm_grub2_SRCS ../ui/convertDlg.ui)
+ endif(HAVE_IMAGEMAGICK)
+ if(HAVE_QAPT OR HAVE_QPACKAGEKIT)
+     set(kcm_grub2_SRCS ${kcm_grub2_SRCS} removeDlg.cpp)
+-    kde4_add_ui_files(kcm_grub2_SRCS ../ui/removeDlg.ui)
++    ki18n_wrap_ui(kcm_grub2_SRCS ../ui/removeDlg.ui)
+ endif(HAVE_QAPT OR HAVE_QPACKAGEKIT)
+ if(HAVE_QAPT)
+     if(QAPT_VERSION_MAJOR EQUAL 1)
 @@ -33,7 +33,7 @@
  endif(HAVE_QAPT)
  
@@ -281,9 +299,18 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
  if(HAVE_IMAGEMAGICK)
      set(kcm_grub2_LINK_LIBS ${kcm_grub2_LINK_LIBS} ${ImageMagick_LIBRARIES})
  endif(HAVE_IMAGEMAGICK)
+@@ -50,7 +50,7 @@
+ 
+ # Build & Link
+ include_directories(${kcm_grub2_INCLUDE_DIRS})
+-kde4_add_plugin(kcm_grub2 ${kcm_grub2_SRCS})
++add_library(kcm_grub2 MODULE ${kcm_grub2_SRCS})
+ target_link_libraries(kcm_grub2 ${kcm_grub2_LINK_LIBS})
+ 
+ # Install
 diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
 --- a/src/convertDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/convertDlg.cpp	2015-11-29 09:40:25.549517459 +0800
++++ b/src/convertDlg.cpp	2015-11-29 17:41:07.000000000 +0800
 @@ -50,11 +50,11 @@
      QString writeFilter = QString("*%1|%5 (%1)\n*%2|%6 (%2)\n*%3 *%4|%7 (%3 %4)").arg(".png", ".tga", ".jpg", ".jpeg", KMimeType::mimeType("image/png")->comment(), KMimeType::mimeType("image/x-tga")->comment(), KMimeType::mimeType("image/jpeg")->comment());
  
@@ -319,7 +346,7 @@ diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
          }
 diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 --- a/src/helper/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/CMakeLists.txt	2015-11-29 09:29:55.888941807 +0800
++++ b/src/helper/CMakeLists.txt	2015-11-29 17:41:07.000000000 +0800
 @@ -8,7 +8,7 @@
  set(kcmgrub2helper_SRCS helper.cpp)
  
@@ -341,7 +368,7 @@ diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 +kauth_install_actions(org.kde.kcontrol.kcmgrub2 kcmgrub2.actions)
 diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 --- a/src/helper/helper.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/helper.cpp	2015-11-29 09:31:09.083398179 +0800
++++ b/src/helper/helper.cpp	2015-11-29 17:41:07.000000000 +0800
 @@ -26,7 +26,7 @@
  
  //KDE
@@ -438,7 +465,7 @@ diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 +KAUTH_HELPER_MAIN("org.kde.kcontrol.kcmgrub2", Helper)
 diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 --- a/src/installDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.cpp	2015-11-29 10:14:08.595003734 +0800
++++ b/src/installDlg.cpp	2015-11-29 18:20:13.000000000 +0800
 @@ -26,24 +26,30 @@
  #include <kdeversion.h>
  #include <KMessageBox>
@@ -545,7 +572,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
      KDialog::slotButtonClicked(button);
 diff -Naur a/src/installDlg.h b/src/installDlg.h
 --- a/src/installDlg.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.h	2015-11-29 10:14:54.648987913 +0800
++++ b/src/installDlg.h	2015-11-29 17:41:07.000000000 +0800
 @@ -21,6 +21,7 @@
  //KDE
  #include <KDialog>
@@ -556,8 +583,8 @@ diff -Naur a/src/installDlg.h b/src/installDlg.h
  {
 diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 --- a/src/kcm_grub2.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.cpp	2015-11-29 10:37:18.246178328 +0800
-@@ -25,17 +25,18 @@
++++ b/src/kcm_grub2.cpp	2015-11-29 18:20:21.000000000 +0800
+@@ -25,17 +25,21 @@
  #include <QDesktopWidget>
  #include <QStandardItemModel>
  #include <QTreeView>
@@ -575,10 +602,13 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 -#include <KAuth/ActionWatcher>
 +#include <KAuth>
 +using namespace KAuth;
++
++#define TRANSLATION_DOMAIN "kcm-grub2"
++#include <klocalizedstring.h>
  
  //Project
  #include "common.h"
-@@ -54,13 +55,21 @@
+@@ -54,13 +58,21 @@
  K_PLUGIN_FACTORY(GRUB2Factory, registerPlugin<KCMGRUB2>();)
  K_EXPORT_PLUGIN(GRUB2Factory("kcmgrub2"))
  
@@ -604,7 +634,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      setAboutData(about);
  
      ui = new Ui::KCMGRUB2;
-@@ -76,20 +85,15 @@
+@@ -76,20 +88,15 @@
  void KCMGRUB2::defaults()
  {
      Action defaultsAction("org.kde.kcontrol.kcmgrub2.defaults");
@@ -631,7 +661,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  }
  void KCMGRUB2::load()
  {
-@@ -455,41 +459,40 @@
+@@ -455,41 +462,40 @@
      }
  
      Action saveAction("org.kde.kcontrol.kcmgrub2.save");
@@ -696,7 +726,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      }
  }
  
-@@ -770,8 +773,8 @@
+@@ -770,8 +776,8 @@
      view->setRootIsDecorated(false);
      ui->kcombobox_default->setView(view);
  
@@ -707,7 +737,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_remove->setVisible(HAVE_QAPT || HAVE_QPACKAGEKIT);
  
      QPixmap black(16, 16), transparent(16, 16);
-@@ -825,12 +828,12 @@
+@@ -825,12 +831,12 @@
      ui->kcombobox_highlightForeground->setCurrentIndex(ui->kcombobox_highlightForeground->findData("black"));
      ui->kcombobox_highlightBackground->setCurrentIndex(ui->kcombobox_highlightBackground->findData("light-gray"));
  
@@ -724,7 +754,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Quiet Boot"))->setData("quiet");
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Show Splash Screen"))->setData("splash");
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Disable Plymouth"))->setData("noplymouth");
-@@ -838,8 +841,8 @@
+@@ -838,8 +844,8 @@
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off APIC"))->setData("noapic");
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off Local APIC"))->setData("nolapic");
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Single User Mode"))->setData("single");
@@ -735,7 +765,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Quiet Boot"))->setData("quiet");
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Show Splash Screen"))->setData("splash");
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Disable Plymouth"))->setData("noplymouth");
-@@ -847,20 +850,20 @@
+@@ -847,20 +853,20 @@
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off APIC"))->setData("noapic");
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off Local APIC"))->setData("nolapic");
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Single User Mode"))->setData("single");
@@ -762,7 +792,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu", "PC BIOS && EFI Console"))->setData("console");
      ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu", "Serial Terminal"))->setData("serial");
      ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu 'Open' is an adjective here, not a verb. 'Open Firmware' is a former IEEE standard.", "Open Firmware Console"))->setData("ofconsole");
-@@ -956,18 +959,13 @@
+@@ -956,18 +962,13 @@
      return fileName;
  }
  
@@ -784,7 +814,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  }
  QString KCMGRUB2::readFile(GrubFile grubFile)
  {
-@@ -992,13 +990,13 @@
+@@ -992,13 +993,13 @@
          return stream.readAll();
      }
  
@@ -802,7 +832,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  }
  void KCMGRUB2::readEntries()
  {
-@@ -1030,15 +1028,15 @@
+@@ -1030,15 +1031,15 @@
          return;
      }
  
@@ -823,7 +853,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      }
  }
  void KCMGRUB2::readDevices()
-@@ -1051,28 +1049,33 @@
+@@ -1051,28 +1052,33 @@
      }
  
      Action probeAction("org.kde.kcontrol.kcmgrub2.probe");
@@ -869,15 +899,15 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 +        KMessageBox::detailedError(this, i18nc("@info", "Failed to get GRUB device names."), reply->errorString());
          return;
 -    }
+-    QStringList grubPartitions = reply.data().value("grubPartitions").toStringList();
 +    } else {
 +      progressDlg.hide();
 +}
--    QStringList grubPartitions = reply.data().value("grubPartitions").toStringList();
 +    QStringList grubPartitions = reply->data().value("grubPartitions").toStringList();
      if (mountPoints.size() != grubPartitions.size()) {
          KMessageBox::error(this, i18nc("@info", "Helper returned malformed device list."));
          return;
-@@ -1086,19 +1085,15 @@
+@@ -1086,19 +1092,15 @@
  void KCMGRUB2::readResolutions()
  {
      Action probeVbeAction("org.kde.kcontrol.kcmgrub2.probevbe");
@@ -901,16 +931,18 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  }
  
  void KCMGRUB2::sortResolutions()
-@@ -1140,7 +1135,7 @@
+@@ -1140,8 +1142,8 @@
          ui->kcombobox_gfxpayload->addItem(resolution, resolution);
      }
  }
 -
+-void KCMGRUB2::processReply(ActionReply &reply)
 +/*
- void KCMGRUB2::processReply(ActionReply &reply)
++void KCMGRUB2::processReply(ExecuteJob * reply)
  {
      if (reply.type() == ActionReply::Success || reply.type() == ActionReply::KAuthError) {
-@@ -1171,6 +1166,7 @@
+         return;
+@@ -1171,6 +1173,7 @@
      reply.addData(QLatin1String("errorMessage"), errorMessage);
      reply.setErrorDescription(i18nc("@info", "Command: <command>%1</command><nl/>Error code: <numid>%2</numid><nl/>Error message:<nl/><message>%3</message>", reply.data().value(QLatin1String("command")).toStringList().join(QLatin1String(" ")), reply.errorCode(), errorMessage));
  }
@@ -920,7 +952,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      QChar ch;
 diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
 --- a/src/kcm_grub2.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.h	2015-11-29 10:16:04.984488183 +0800
++++ b/src/kcm_grub2.h	2015-11-29 17:41:07.000000000 +0800
 @@ -20,9 +20,10 @@
  
  //Qt
@@ -944,7 +976,7 @@ diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
      void readSettings();
 diff -Naur a/ui/kcm_grub2.ui b/ui/kcm_grub2.ui
 --- a/ui/kcm_grub2.ui	2013-10-12 18:34:15.000000000 +0800
-+++ b/ui/kcm_grub2.ui	2015-11-29 09:55:25.564830744 +0800
++++ b/ui/kcm_grub2.ui	2015-11-29 17:41:07.000000000 +0800
 @@ -12,7 +12,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_6">

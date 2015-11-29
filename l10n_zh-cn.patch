@@ -340,7 +340,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +"@action:inmenu 'Open' is an adjective here, not a verb. 'Open Firmware' is a "
 +"former IEEE standard."
 +msgid "Open Firmware Console"
-+msgstr "开启韧体主控台"
++msgstr "开启固件主控台"
 +
 +#: src/kcm_grub2.cpp:860
 +msgctxt "@action:inmenu"
@@ -365,22 +365,22 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/kcm_grub2.cpp:1063
 +msgctxt "@title:window"
 +msgid "Probing devices"
-+msgstr "侦测装置中"
++msgstr "检测设备中"
 +
 +#: src/kcm_grub2.cpp:1063
 +msgctxt "@info:progress"
 +msgid "Probing devices for their GRUB names..."
-+msgstr "侦测装置在 GRUB 上的名称中..."
++msgstr "检测设备在 GRUB 上的名称中..."
 +
 +#: src/kcm_grub2.cpp:1072
 +msgctxt "@info"
 +msgid "Failed to get GRUB device names."
-+msgstr "取得 GRUB 装置名称失败。"
++msgstr "取得 GRUB 设备名称失败。"
 +
 +#: src/kcm_grub2.cpp:1077
 +msgctxt "@info"
 +msgid "Helper returned malformed device list."
-+msgstr "协助程式传回不正确的装置清单。"
++msgstr "协助程序传回不正确的设备清单。"
 +
 +#: src/kcm_grub2.cpp:1130 src/kcm_grub2.cpp:1133
 +msgctxt "@item:inlistbox Refers to screen resolution."
@@ -572,7 +572,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:118
 +msgctxt "transaction state, scanning for running processes"
 +msgid "Scanning installed applications"
-+msgstr "扫描已安装应用程式中"
++msgstr "扫描已安装应用程序中"
 +
 +#: src/qPkBackend.cpp:121
 +msgctxt ""
@@ -593,12 +593,12 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: src/qPkBackend.cpp:130
 +msgctxt "we are updating the list of processes"
 +msgid "Updating the list of running applications"
-+msgstr "更新正在执行的应用程式清单中"
++msgstr "更新正在执行的应用程序清单中"
 +
 +#: src/qPkBackend.cpp:133
 +msgctxt "we are checking executable files in use"
 +msgid "Checking for applications currently in use"
-+msgstr "检查目前使用的应用程式中"
++msgstr "检查目前使用的应用程序中"
 +
 +#: src/qPkBackend.cpp:136
 +msgctxt "we are checking for libraries in use"
@@ -814,7 +814,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +#: ui/kcm_grub2.ui:192
 +msgctxt "@option:check"
 +msgid "Probe for operating systems"
-+msgstr "侦测作业系统"
++msgstr "检测操作系统"
 +
 +#. i18n: ectx: property (title), widget (QGroupBox, groupBox_default)
 +#: ui/kcm_grub2.ui:202
@@ -1045,7 +1045,7 @@ diff -Naur a/po/zh_CN/kcm-grub2.po b/po/zh_CN/kcm-grub2.po
 +
 +#~ msgctxt "@info"
 +#~ msgid "No valid GRUB2/BURG installation could be detected!"
-+#~ msgstr "没侦测到任何合法的 GRUB2/BURG 安装。"
++#~ msgstr "没检测到任何合法的 GRUB2/BURG 安装。"
 +
 +#~ msgctxt "@action:button"
 +#~ msgid "Reload Configuration"
