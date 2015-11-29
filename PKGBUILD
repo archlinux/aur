@@ -3,8 +3,8 @@
 
 _pkgname=qbittorrent
 pkgname=${_pkgname}-qt5-git
-pkgver=3.3.0beta.r6164.g331219d
-pkgrel=3
+pkgver=3.3.0RC.r6386.gfd39efd
+pkgrel=1
 pkgdesc='A bittorrent client based on libtorrent-rasterbar. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://www.qbittorrent.org/'
@@ -58,8 +58,7 @@ build() {
 	cd ${srcdir}/build
 	
 	../qBittorrent/configure \
-		--prefix=/usr \
-		--with-qt5
+		--prefix=/usr
 	qmake-qt5 ../qBittorrent \
 		CONFIG+=release \
 		CONFIG+=c++14 \

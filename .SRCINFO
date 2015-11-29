@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-qt5-git
 	pkgdesc = A bittorrent client based on libtorrent-rasterbar. Qt5 UI. Development version.
-	pkgver = 3.3.0beta.r6164.g331219d
-	pkgrel = 3
+	pkgver = 3.3.0RC.r6386.gfd39efd
+	pkgrel = 1
 	url = http://www.qbittorrent.org/
 	install = qbittorrent-qt5-git.install
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = qbittorrent-qt5-git
 	depends = hicolor-icon-theme
 	depends = libtorrent-rasterbar
 	optdepends = python: for the search engine
-	provides = qbittorrent=3.3.0beta.r6164.g331219d
+	provides = qbittorrent=3.3.0RC.r6386.gfd39efd
 	conflicts = qbittorrent
 	conflicts = qbittorrent-git
 	source = git+https://github.com/qbittorrent/qBittorrent.git
