@@ -4,12 +4,11 @@
 
 
 pkgname=kokua-secondlife
-pkgver=3.8.4.37073
-_pkgver=3_8_4_37073
-_pkgprever=3.8.4
-pango_ver=1.36.8
+pkgver=3.8.6.37336
+_pkgver=3_8_6_37336
+_pkgprever=3.8.6
 
-pkgrel=2
+pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 url="http://www.kokuaviewer.org"
 license=('GPL')
@@ -22,38 +21,26 @@ conflicts=('kokua-bin')
 #http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_${_pkgver}_${CARCH}.tar.bz2"
 source_i686=("http://bitbucket.org/kokua/downloads/downloads/Kokua_${_pkgver}_i686.tar.bz2"
              'kokua-secondlife.desktop'
-             'kokua-secondlife.launcher'
-             "http://download.gnome.org/sources/pango/${pango_ver:0:4}/pango-${pango_ver}.tar.xz")
+             'kokua-secondlife.launcher')
         
 #"http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_64_${_pkgver}_${CARCH}.tar.bz2"
 source_x86_64=("http://bitbucket.org/kokua/downloads/downloads/Kokua_64_${_pkgver}_x86_64.tar.bz2"
 		'kokua-secondlife.desktop'
-		'kokua-secondlife.launcher'
-		"http://download.gnome.org/sources/pango/${pango_ver:0:4}/pango-${pango_ver}.tar.xz")
+		'kokua-secondlife.launcher')
 
-md5sums_i686=('e0e7e2a8981152594511d08709307de2'
+md5sums_i686=('4ae59494ed6d1bea5ae4a1a888e0d850'
               '3893a2c8ae9cb8e2adb4d7c47750029b'
-              'e12fd7bd333f4f810dec66f1be17c71c'
-              '217a9a753006275215fa9fa127760ece')
-md5sums_x86_64=('956c11edeefcdf296b9e00514b62ace7'
+              'e12fd7bd333f4f810dec66f1be17c71c')
+md5sums_x86_64=('279538f9636c538fa4af72231fc02952'
                 '3893a2c8ae9cb8e2adb4d7c47750029b'
-                'e12fd7bd333f4f810dec66f1be17c71c'
-                '217a9a753006275215fa9fa127760ece')
+                'e12fd7bd333f4f810dec66f1be17c71c')
 
 package() {
 # Workaround for http://sourceforge.net/p/team-purple/kokua/tickets/380/
-cd $srcdir/pango-${pango_ver}
-./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-included-modules=basic-fc
-make
-mkdir ../pango-install
-make -j1 DESTDIR=$(pwd)/../pango-install install
-cd ..
 if [ "$CARCH" = "i686" ]; then
-    cp -aiv pango-install/usr/lib/libpangoft2-1.0.so* Kokua_${_pkgver}_$CARCH/lib/
-    rm -v Kokua_${_pkgver}_$CARCH/lib/libgdk_pixbuf-2.0.so*
+    rm Kokua_${_pkgver}_$CARCH/lib/lib{pango,harfbuzz,gdk_pixbuf}*
 elif [ "$CARCH" = "x86_64" ]; then
-    cp -aiv pango-install/usr/lib/libpangoft2-1.0.so* Kokua_64_${_pkgver}_$CARCH/lib64/
-    rm -v Kokua_64_${_pkgver}_$CARCH/lib64/libgdk_pixbuf-2.0.so*
+    rm Kokua_64_${_pkgver}_$CARCH/lib64/lib{pango,harfbuzz,gdk_pixbuf}*
 fi
 
 cd $srcdir
