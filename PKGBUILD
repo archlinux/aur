@@ -4,7 +4,6 @@
 # Maintainer: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgbase=opencv
 pkgname=('opencv-contrib' 'opencv-samples-contrib')
 pkgver=3.0.0
 pkgrel=1
@@ -14,15 +13,15 @@ license=('BSD')
 url="http://opencv.org/"
 depends=('intel-tbb' 'openexr' 'xine-lib' 'libdc1394' 'gtkglext')
 makedepends=('cmake' 'python2-numpy' 'mesa' 'eigen2')
-optdepends=('opencv-contrib-samples'
+optdepends=('opencv-samples-contrib'
             'eigen2'
             'libcl: For coding with OpenCL'
             'python2-numpy: Python 2.x interface')
 
 conflicts=('opencv' 'opencv-samples')
 
-source=("$pkgbase-$pkgver::https://github.com/Itseez/opencv/archive/$pkgver.zip"
-        "$pkgbase-$pkgver-contrib::https://github.com/Itseez/opencv_contrib/archive/$pkgver.zip")
+source=("${pkgname%-contrib}-$pkgver::https://github.com/Itseez/opencv/archive/$pkgver.zip"
+        "${pkgname%-contrib}-$pkgver-contrib::https://github.com/Itseez/opencv_contrib/archive/$pkgver.zip")
 
 md5sums=('09004c275d8092cbdf5b61675cecd399'
          'ad5fc005890f1bda8a2ac899b4209ab9')
@@ -53,10 +52,10 @@ _cmakeopts=('-D WITH_OPENCL=ON'
 [[ "$CARCH" = 'x86_64' ]] && _cmakeopts+=('-D ENABLE_SSE3=OFF')
 
 build() {
-  cd "$srcdir/${pkgbase}-$pkgver"
+  cd "$srcdir/${pkgname%-contrib}-$pkgver"
 
   #Add contrib modules
-  _cmakeopts+=('-D OPENCV_EXTRA_MODULES_PATH=$srcdir/${pkgbase}_contrib-${pkgver}/modules $srcdir/${pkgbase}-$pkgver')
+  _cmakeopts+=("-D OPENCV_EXTRA_MODULES_PATH=$srcdir/${pkgname%-contrib}_contrib-${pkgver}/modules $srcdir/${pkgname%-contrib}-$pkgver")
 
   cmake ${_cmakeopts[@]} .
 
@@ -66,20 +65,20 @@ build() {
 package_opencv-contrib() {
   options=('staticlibs')
 
-  cd "$srcdir/${pkgbase}-$pkgver"
+  cd "$srcdir/${pkgname%-contrib}-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
   # install license file
-  install -Dm644 "$srcdir/${pkgbase}-$pkgver/LICENSE" \
+  install -Dm644 "$srcdir/${pkgname%-contrib}-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/${pkgname%-contrib}/LICENSE"
 
   cd "$pkgdir/usr/share"
 
   # separate samples package; also be -R friendly
   if [[ -d OpenCV/samples ]]; then
-    mv OpenCV/samples "$srcdir/${pkgbase}-samples"
-    mv OpenCV ${pkgbase} # otherwise folder naming is inconsistent
+    mv OpenCV/samples "$srcdir/${pkgname%-contrib}-samples"
+    mv OpenCV ${pkgname%-contrib} # otherwise folder naming is inconsistent
   elif [[ ! -d OpenCV ]]; then
     warning "Directory naming issue; samples package may not be built!"
   fi
@@ -93,7 +92,7 @@ package_opencv-samples-contrib() {
   mkdir -p "$pkgdir/usr/share/opencv"
   cp -r "$srcdir/opencv-samples" "$pkgdir/usr/share/opencv/samples"
   #Copy contrib samples
-  cp -rf "$srcdir/${pkgbase}_contrib-${pkgver}/samples" "$pkgdir/usr/share/opencv/samples"
+  cp -rf "$srcdir/${pkgname%-samples-contrib}_contrib-${pkgver}/samples" "$pkgdir/usr/share/opencv/samples"
 
   # install license file
   install -Dm644 "$srcdir/opencv-$pkgver/LICENSE" \

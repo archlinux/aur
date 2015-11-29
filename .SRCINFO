@@ -1,4 +1,4 @@
-pkgbase = opencv
+pkgbase = opencv-contrib
 	pkgdesc = Open Source Computer Vision Library including additional 'contrib' modules
 	pkgver = 3.0.0
 	pkgrel = 1
@@ -15,7 +15,7 @@ pkgbase = opencv
 	depends = xine-lib
 	depends = libdc1394
 	depends = gtkglext
-	optdepends = opencv-contrib-samples
+	optdepends = opencv-samples-contrib
 	optdepends = eigen2
 	optdepends = libcl: For coding with OpenCL
 	optdepends = python2-numpy: Python 2.x interface
