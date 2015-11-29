@@ -494,7 +494,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
          for (int i = 0; i < ui->treeWidget_recover->topLevelItemCount(); i++) {
              QRadioButton *radio = qobject_cast<QRadioButton *>(ui->treeWidget_recover->itemWidget(ui->treeWidget_recover->topLevelItem(i), 0));
              if (radio && radio->isChecked()) {
-@@ -98,33 +105,26 @@
+@@ -98,33 +105,28 @@
              KMessageBox::sorry(this, i18nc("@info", "Sorry, you have to select a partition with a proper name!"));
              return;
          }
@@ -525,8 +525,9 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 -            dialog->setCaption(i18nc("@title:window", "Information"));
 -            dialog->setButtons(KDialog::Ok | KDialog::Details);
 +        ExecuteJob* reply = installAction.execute();
-+        connect(reply, SIGNAL(actionPerformed(ActionReply)), &progressDlg, SLOT(hide()));
++        //connect(reply, SIGNAL(result()), &progressDlg, SLOT(hide()));
 +        if (reply->exec()) {
++            progressDlg.hide();
 +            QDialog *dialog = new QDialog(this, Qt::Dialog);
 +            dialog->setWindowTitle(i18nc("@title:window", "Information"));
              dialog->setModal(true);
@@ -537,6 +538,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 +            KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully installed GRUB."), QStringList(), QString(), 0, KMessageBox::Notify, reply->data().value("output").toString()); // krazy:exclude=qclasses
          } else {
 -            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), KDE_IS_VERSION(4,7,0) ? reply.errorDescription() : reply.data().value("errorDescription").toString());
++            progressDlg.hide();
 +            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), reply->data().value("errorDescription").toString());
          }
      }
@@ -674,22 +676,22 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 +    
 +    
 +    ExecuteJob *reply = saveAction.execute();
-+    connect(reply, SIGNAL(actionPerformed(ActionReply)), &progressDlg, SLOT(hide()));
-+    if (reply->exec()) {
++    //connect(reply, SIGNAL(result()), &progressDlg, SLOT(hide()));
++    reply->exec();
++    if (!reply->error()) {
++        progressDlg.hide();
 +        QDialog *dialog = new QDialog(this, Qt::Dialog);
 +        dialog->setWindowTitle(i18nc("@title:window", "Information"));
-+        //dialog->setButtons(KDialog::Ok | KDialog::Details);
          dialog->setModal(true);
 -        dialog->setDefaultButton(KDialog::Ok);
 -        dialog->setEscapeButton(KDialog::Ok);
 -        KMessageBox::createKMessageBox(dialog, QMessageBox::Information, i18nc("@info", "Successfully saved GRUB settings."), QStringList(), QString(), 0, KMessageBox::Notify, reply.data().value("output").toString()); // krazy:exclude=qclasses
-+        //dialog->setDefaultButton(KDialog::Ok);
-+        //dialog->setEscapeButton(KDialog::Ok);
 +        QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::NoButton);
 +        KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully saved GRUB settings."), QStringList(), QString(), 0, KMessageBox::Notify, reply->data().value("output").toString()); // krazy:exclude=qclasses
          load();
      } else {
 -        KMessageBox::detailedError(this, i18nc("@info", "Failed to save GRUB settings."), reply.errorDescription());
++        progressDlg.hide();
 +        KMessageBox::detailedError(this, i18nc("@info", "Failed to save GRUB settings."), reply->errorString());
      }
  }
@@ -821,7 +823,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      }
  }
  void KCMGRUB2::readDevices()
-@@ -1051,28 +1049,29 @@
+@@ -1051,28 +1049,33 @@
      }
  
      Action probeAction("org.kde.kcontrol.kcmgrub2.probe");
@@ -860,11 +862,16 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 +        progressDlg.show();
 +        
 +    ExecuteJob *reply = probeAction.execute();
-+    connect(reply, SIGNAL(progressStep(int)), mProgressBar, SLOT(setValue(int)));
-+    if (!reply->exec()) {
++    //connect(reply, SIGNAL(percent(int)), mProgressBar, SLOT(setValue(int)));
++    reply->exec();
++    if (reply->error()) {
++        progressDlg.hide();
 +        KMessageBox::detailedError(this, i18nc("@info", "Failed to get GRUB device names."), reply->errorString());
          return;
-     }
+-    }
++    } else {
++      progressDlg.hide();
++}
 -    QStringList grubPartitions = reply.data().value("grubPartitions").toStringList();
 +    QStringList grubPartitions = reply->data().value("grubPartitions").toStringList();
      if (mountPoints.size() != grubPartitions.size()) {
