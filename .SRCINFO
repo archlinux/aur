@@ -1,6 +1,6 @@
 pkgbase = geckocircuits
 	pkgdesc = Powerful Circuit Simulator developed by PES/ETH Zürich
-	pkgver = 1.72
+	pkgver = 1.72.b51
 	pkgrel = 1
 	url = http://www.gecko-simulations.com/geckocircuits.html
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = geckocircuits
 	provides = geckocircuits
 	options = !strip
 	source = http://www.gecko-simulations.com/downloads/GeckoCIRCUITS.zip
-	sha256sums = 49c0a70a5d659a5051e388ebc77a147750eb5ee85b12943ff0abcad8f5d13aea
+	sha256sums = 0779a3e71ae62111f439298c781846cd1affa86f91a2bf6014d2780e0d1a0000
 
 pkgname = geckocircuits
 
