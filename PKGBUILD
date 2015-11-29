@@ -26,7 +26,7 @@ package_python2-hmmlearn-git() {
     conflicts=('python2-hmmlearn')
 
     cd "$srcdir/hmmlearn"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python-hmmlearn-git() {
