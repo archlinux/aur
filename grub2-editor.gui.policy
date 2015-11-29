@@ -4,7 +4,7 @@
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
 
-  <action id="org.freedesktop.policykit.pkexec.run-gparted">
+  <action id="org.freedesktop.policykit.pkexec.run-grub2-editor">
     <description>Run Grub2 Editor</description>
     <description xml:lang="zh_CN">运行Grub2编辑器</description>
     <message>Authentication is required to run Grub2 Editor</message>
