@@ -1,0 +1,4881 @@
+diff -urN ./configure.in ./configure.in
+--- ./configure.in	2012-11-07 23:05:29 +0900
++++ ./configure.in	2012-11-07 23:30:28 +0900
+@@ -2876,6 +2876,11 @@
+ dnl Do this on all platforms, after everything else.
+ CheckWarnAll
+ 
++if test \( x$enable_video = xyes -a x$enable_video_opengl = xyes \) -o x$video_opengl = xyes; then
++    AC_DEFINE(SDL_VIDEO_DRIVER_OPENGLHQ)
++    SOURCES="$SOURCES $srcdir/src/video/openglhq/SDL*.c"
++fi
++
+ # Verify that we have all the platform specific files we need
+ 
+ if test x$enable_joystick = xyes; then
+diff -urN ./include/SDL_config.h.in ./include/SDL_config.h.in
+--- ./include/SDL_config.h.in	2012-11-07 23:05:31 +0900
++++ ./include/SDL_config.h.in	2012-11-07 23:30:28 +0900
+@@ -269,6 +269,7 @@
+ #undef SDL_VIDEO_DRIVER_GGI
+ #undef SDL_VIDEO_DRIVER_IPOD
+ #undef SDL_VIDEO_DRIVER_NANOX
++#undef SDL_VIDEO_DRIVER_OPENGLHQ
+ #undef SDL_VIDEO_DRIVER_OS2FS
+ #undef SDL_VIDEO_DRIVER_PHOTON
+ #undef SDL_VIDEO_DRIVER_PICOGUI
+diff -urN ./include/SDL_video.h ./include/SDL_video.h
+--- ./include/SDL_video.h	2012-11-07 23:05:32 +0900
++++ ./include/SDL_video.h	2012-11-07 23:30:28 +0900
+@@ -324,6 +324,14 @@
+ extern DECLSPEC SDL_Rect ** SDLCALL SDL_ListModes(SDL_PixelFormat *format, Uint32 flags);
+ 
+ /**
++ * If possible, retrieves the current resolution of the user's display. If this
++ * operation is supported and succeeds, the width and height are written to the
++ * values pointed to by the parameters and 1 is returned. If unsupported or
++ * unsuccessful, the pointed to values are not touched and 0 is returned.
++ */
++extern DECLSPEC int SDLCALL SDL_GetDesktopMode(int *width, int *height);
++
++/**
+  * Set up a video mode with the specified width, height and bits-per-pixel.
+  *
+  * If 'bpp' is 0, it is treated as the current display bits per pixel.
+diff -urN ./src/events/SDL_keyboard.c ./src/events/SDL_keyboard.c
+--- ./src/events/SDL_keyboard.c	2012-11-07 23:05:32 +0900
++++ ./src/events/SDL_keyboard.c	2012-11-07 23:19:00 +0900
+@@ -32,6 +32,7 @@
+ /* Global keystate information */
+ static Uint8  SDL_KeyState[SDLK_LAST];
+ static SDLMod SDL_ModState;
++static int SDL_UseLockKeys;
+ int SDL_TranslateUNICODE = 0;
+ 
+ static const char *keynames[SDLK_LAST];	/* Array of keycode names */
+@@ -71,6 +72,7 @@
+ 	video->InitOSKeymap(this);
+ 
+ 	SDL_EnableKeyRepeat(0, 0);
++	SDL_UseLockKeys = getenv ("SDL_DISABLE_LOCK_KEYS") == NULL;
+ 
+ 	/* Allow environment override to disable special lock-key behavior */
+ 	SDL_NoLockKeys = 0;
+@@ -401,6 +403,7 @@
+ 	SDL_Event event;
+ 	int posted, repeatable;
+ 	Uint16 modstate;
++	int use_lock_keys;
+ 
+ 	SDL_memset(&event, 0, sizeof(event));
+ 
+@@ -412,6 +415,7 @@
+ 	modstate = (Uint16)SDL_ModState;
+ 
+ 	repeatable = 0;
++	use_lock_keys = SDL_UseLockKeys;
+ 
+ 	if ( state == SDL_PRESSED ) {
+ 		keysym->mod = (SDLMod)modstate;
+@@ -419,6 +423,8 @@
+ 			case SDLK_UNKNOWN:
+ 				break;
+ 			case SDLK_NUMLOCK:
++				if (!use_lock_keys)
++					break;
+ 				modstate ^= KMOD_NUM;
+ 				if ( SDL_NoLockKeys & SDL_NLK_NUM )
+ 					break;
+@@ -427,6 +433,8 @@
+ 				keysym->mod = (SDLMod)modstate;
+ 				break;
+ 			case SDLK_CAPSLOCK:
++				if (!use_lock_keys)
++					break;
+ 				modstate ^= KMOD_CAPS;
+ 				if ( SDL_NoLockKeys & SDL_NLK_CAPS )
+ 					break;
+@@ -470,11 +478,15 @@
+ 			case SDLK_UNKNOWN:
+ 				break;
+ 			case SDLK_NUMLOCK:
++				if (!use_lock_keys)
++					break;
+ 				if ( SDL_NoLockKeys & SDL_NLK_NUM )
+ 					break;
+ 				/* Only send keydown events */
+ 				return(0);
+ 			case SDLK_CAPSLOCK:
++				if (!use_lock_keys)
++					break;
+ 				if ( SDL_NoLockKeys & SDL_NLK_CAPS )
+ 					break;
+ 				/* Only send keydown events */
+diff -urN ./src/events/SDL_mouse.c ./src/events/SDL_mouse.c
+--- ./src/events/SDL_mouse.c	2012-11-07 23:05:32 +0900
++++ ./src/events/SDL_mouse.c	2012-11-07 23:30:28 +0900
+@@ -109,6 +109,8 @@
+ 	SDL_MouseMaxY = (Sint16)maxY;
+ }
+ 
++void (*SDL_MouseFilter)(int relative, Sint16 *x, Sint16 *y) = NULL;
++
+ /* These are global for SDL_eventloop.c */
+ int SDL_PrivateMouseMotion(Uint8 buttonstate, int relative, Sint16 x, Sint16 y)
+ {
+@@ -122,6 +124,8 @@
+ 		buttonstate = SDL_ButtonState;
+ 	}
+ 
++	if (SDL_MouseFilter != NULL) SDL_MouseFilter(relative, &x, &y);
++
+ 	Xrel = x;
+ 	Yrel = y;
+ 	if ( relative ) {
+@@ -203,6 +207,8 @@
+ 
+ 	SDL_memset(&event, 0, sizeof(event));
+ 
++	if (SDL_MouseFilter != NULL) SDL_MouseFilter(0, &x, &y);
++
+ 	/* Check parameters */
+ 	if ( x || y ) {
+ 		ClipOffset(&x, &y);
+diff -urN ./src/main/macosx/SDLMain.m ./src/main/macosx/SDLMain.m
+--- ./src/main/macosx/SDLMain.m	2012-11-07 23:05:33 +0900
++++ ./src/main/macosx/SDLMain.m	2012-11-07 23:30:28 +0900
+@@ -354,6 +354,9 @@
+ /* Main entry point to executable - should *not* be SDL_main! */
+ int main (int argc, char **argv)
+ {
++	/* Enable multithreading as early as possible */
++ 	[NSThread detachNewThreadSelector:@selector(self) toTarget:[NSString string] withObject:nil];
++
+     /* Copy the arguments into a global variable */
+     /* This is passed if we are launched by double-clicking */
+     if ( argc >= 2 && strncmp (argv[1], "-psn", 4) == 0 ) {
+diff -urN ./src/thread/pthread/SDL_systhread.c ./src/thread/pthread/SDL_systhread.c
+--- ./src/thread/pthread/SDL_systhread.c	2012-11-07 23:05:34 +0900
++++ ./src/thread/pthread/SDL_systhread.c	2012-11-07 23:30:28 +0900
+@@ -44,7 +44,18 @@
+ 
+ static void *RunThread(void *data)
+ {
++#ifdef SDL_VIDEO_DRIVER_QUARTZ
++    extern void* QZ_allocPool();
++    extern void QZ_freePool(void *p);
++    void *pool = QZ_allocPool();
++#endif
++
+ 	SDL_RunThread(data);
++
++#ifdef SDL_VIDEO_DRIVER_QUARTZ
++    QZ_freePool(pool);
++#endif
++
+ 	pthread_exit((void*)0);
+ 	return((void *)0);		/* Prevent compiler warning */
+ }
+diff -urN ./src/thread/win32/SDL_sysmutex.c ./src/thread/win32/SDL_sysmutex.c
+--- ./src/thread/win32/SDL_sysmutex.c	2012-11-07 23:05:34 +0900
++++ ./src/thread/win32/SDL_sysmutex.c	2012-11-07 23:20:30 +0900
+@@ -30,7 +30,7 @@
+ 
+ 
+ struct SDL_mutex {
+-	HANDLE id;
++	CRITICAL_SECTION cs;
+ };
+ 
+ /* Create a mutex */
+@@ -42,12 +42,7 @@
+ 	mutex = (SDL_mutex *)SDL_malloc(sizeof(*mutex));
+ 	if ( mutex ) {
+ 		/* Create the mutex, with initial value signaled */
+-		mutex->id = CreateMutex(NULL, FALSE, NULL);
+-		if ( ! mutex->id ) {
+-			SDL_SetError("Couldn't create mutex");
+-			SDL_free(mutex);
+-			mutex = NULL;
+-		}
++		InitializeCriticalSection(&mutex->cs);
+ 	} else {
+ 		SDL_OutOfMemory();
+ 	}
+@@ -58,10 +53,7 @@
+ void SDL_DestroyMutex(SDL_mutex *mutex)
+ {
+ 	if ( mutex ) {
+-		if ( mutex->id ) {
+-			CloseHandle(mutex->id);
+-			mutex->id = 0;
+-		}
++		DeleteCriticalSection(&mutex->cs);
+ 		SDL_free(mutex);
+ 	}
+ }
+@@ -73,10 +65,7 @@
+ 		SDL_SetError("Passed a NULL mutex");
+ 		return -1;
+ 	}
+-	if ( WaitForSingleObject(mutex->id, INFINITE) == WAIT_FAILED ) {
+-		SDL_SetError("Couldn't wait on mutex");
+-		return -1;
+-	}
++	EnterCriticalSection(&mutex->cs);
+ 	return(0);
+ }
+ 
+@@ -87,9 +76,6 @@
+ 		SDL_SetError("Passed a NULL mutex");
+ 		return -1;
+ 	}
+-	if ( ReleaseMutex(mutex->id) == FALSE ) {
+-		SDL_SetError("Couldn't release mutex");
+-		return -1;
+-	}
++	LeaveCriticalSection(&mutex->cs);
+ 	return(0);
+ }
+diff -urN ./src/video/SDL_glfuncs.h ./src/video/SDL_glfuncs.h
+--- ./src/video/SDL_glfuncs.h	2012-11-07 23:05:34 +0900
++++ ./src/video/SDL_glfuncs.h	2012-11-07 23:36:45 +0900
+@@ -4,6 +4,7 @@
+ */
+ #define SDL_PROC_UNUSED(ret,func,params)
+ SDL_PROC_UNUSED(void,glAccum,(GLenum,GLfloat))
++SDL_PROC(void,glActiveTexture,(GLenum))
+ SDL_PROC_UNUSED(void,glAlphaFunc,(GLenum,GLclampf))
+ SDL_PROC_UNUSED(GLboolean,glAreTexturesResident,(GLsizei,const GLuint*,GLboolean*))
+ SDL_PROC_UNUSED(void,glArrayElement,(GLint))
+@@ -11,11 +12,11 @@
+ SDL_PROC(void,glBindTexture,(GLenum,GLuint))
+ SDL_PROC_UNUSED(void,glBitmap,(GLsizei,GLsizei,GLfloat,GLfloat,GLfloat,GLfloat,const GLubyte*))
+ SDL_PROC(void,glBlendFunc,(GLenum,GLenum))
+-SDL_PROC_UNUSED(void,glCallList,(GLuint))
++SDL_PROC(void,glCallList,(GLuint))
+ SDL_PROC_UNUSED(void,glCallLists,(GLsizei,GLenum,const GLvoid*))
+-SDL_PROC_UNUSED(void,glClear,(GLbitfield))
++SDL_PROC(void,glClear,(GLbitfield))
+ SDL_PROC_UNUSED(void,glClearAccum,(GLfloat,GLfloat,GLfloat,GLfloat))
+-SDL_PROC_UNUSED(void,glClearColor,(GLclampf,GLclampf,GLclampf,GLclampf))
++SDL_PROC(void,glClearColor,(GLclampf,GLclampf,GLclampf,GLclampf))
+ SDL_PROC_UNUSED(void,glClearDepth,(GLclampd))
+ SDL_PROC_UNUSED(void,glClearIndex,(GLfloat))
+ SDL_PROC_UNUSED(void,glClearStencil,(GLint))
+@@ -57,28 +58,28 @@
+ SDL_PROC_UNUSED(void,glColorPointer,(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer))
+ SDL_PROC_UNUSED(void,glCopyPixels,(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type))
+ SDL_PROC_UNUSED(void,glCopyTexImage1D,(GLenum target, GLint level, GLenum internalFormat, GLint x, GLint y, GLsizei width, GLint border))
+-SDL_PROC_UNUSED(void,glCopyTexImage2D,(GLenum target, GLint level, GLenum internalFormat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border))
++SDL_PROC(void,glCopyTexImage2D,(GLenum target, GLint level, GLenum internalFormat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border))
+ SDL_PROC_UNUSED(void,glCopyTexSubImage1D,(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width))
+-SDL_PROC_UNUSED(void,glCopyTexSubImage2D,(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height))
++SDL_PROC(void,glCopyTexSubImage2D,(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height))
+ SDL_PROC_UNUSED(void,glCullFace,(GLenum mode))
+-SDL_PROC_UNUSED(void,glDeleteLists,(GLuint list, GLsizei range))
+-SDL_PROC_UNUSED(void,glDeleteTextures,(GLsizei n, const GLuint *textures))
++SDL_PROC(void,glDeleteLists,(GLuint list, GLsizei range))
++SDL_PROC(void,glDeleteTextures,(GLsizei n, const GLuint *textures))
+ SDL_PROC_UNUSED(void,glDepthFunc,(GLenum func))
+ SDL_PROC_UNUSED(void,glDepthMask,(GLboolean flag))
+ SDL_PROC_UNUSED(void,glDepthRange,(GLclampd zNear, GLclampd zFar))
+ SDL_PROC(void,glDisable,(GLenum cap))
+ SDL_PROC_UNUSED(void,glDisableClientState,(GLenum array))
+ SDL_PROC_UNUSED(void,glDrawArrays,(GLenum mode, GLint first, GLsizei count))
+-SDL_PROC_UNUSED(void,glDrawBuffer,(GLenum mode))
++SDL_PROC(void,glDrawBuffer,(GLenum mode))
+ SDL_PROC_UNUSED(void,glDrawElements,(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices))
+-SDL_PROC_UNUSED(void,glDrawPixels,(GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels))
++SDL_PROC(void,glDrawPixels,(GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels))
+ SDL_PROC_UNUSED(void,glEdgeFlag,(GLboolean flag))
+ SDL_PROC_UNUSED(void,glEdgeFlagPointer,(GLsizei stride, const GLvoid *pointer))
+ SDL_PROC_UNUSED(void,glEdgeFlagv,(const GLboolean *flag))
+ SDL_PROC(void,glEnable,(GLenum cap))
+-SDL_PROC_UNUSED(void,glEnableClientState,(GLenum array))
++SDL_PROC(void,glEnableClientState,(GLenum array))
+ SDL_PROC(void,glEnd,(void))
+-SDL_PROC_UNUSED(void,glEndList,(void))
++SDL_PROC(void,glEndList,(void))
+ SDL_PROC_UNUSED(void,glEvalCoord1d,(GLdouble u))
+ SDL_PROC_UNUSED(void,glEvalCoord1dv,(const GLdouble *u))
+ SDL_PROC_UNUSED(void,glEvalCoord1f,(GLfloat u))
+@@ -92,7 +93,7 @@
+ SDL_PROC_UNUSED(void,glEvalPoint1,(GLint i))
+ SDL_PROC_UNUSED(void,glEvalPoint2,(GLint i, GLint j))
+ SDL_PROC_UNUSED(void,glFeedbackBuffer,(GLsizei size, GLenum type, GLfloat *buffer))
+-SDL_PROC_UNUSED(void,glFinish,(void))
++SDL_PROC(void,glFinish,(void))
+ SDL_PROC(void,glFlush,(void))
+ SDL_PROC_UNUSED(void,glFogf,(GLenum pname, GLfloat param))
+ SDL_PROC_UNUSED(void,glFogfv,(GLenum pname, const GLfloat *params))
+@@ -100,14 +101,14 @@
+ SDL_PROC_UNUSED(void,glFogiv,(GLenum pname, const GLint *params))
+ SDL_PROC_UNUSED(void,glFrontFace,(GLenum mode))
+ SDL_PROC_UNUSED(void,glFrustum,(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar))
+-SDL_PROC_UNUSED(GLuint,glGenLists,(GLsizei range))
++SDL_PROC(GLuint,glGenLists,(GLsizei range))
+ SDL_PROC(void,glGenTextures,(GLsizei n, GLuint *textures))
+ SDL_PROC_UNUSED(void,glGetBooleanv,(GLenum pname, GLboolean *params))
+ SDL_PROC_UNUSED(void,glGetClipPlane,(GLenum plane, GLdouble *equation))
+ SDL_PROC_UNUSED(void,glGetDoublev,(GLenum pname, GLdouble *params))
+ SDL_PROC_UNUSED(GLenum,glGetError,(void))
+ SDL_PROC_UNUSED(void,glGetFloatv,(GLenum pname, GLfloat *params))
+-SDL_PROC_UNUSED(void,glGetIntegerv,(GLenum pname, GLint *params))
++SDL_PROC(void,glGetIntegerv,(GLenum pname, GLint *params))
+ SDL_PROC_UNUSED(void,glGetLightfv,(GLenum light, GLenum pname, GLfloat *params))
+ SDL_PROC_UNUSED(void,glGetLightiv,(GLenum light, GLenum pname, GLint *params))
+ SDL_PROC_UNUSED(void,glGetMapdv,(GLenum target, GLenum query, GLdouble *v))
+@@ -180,7 +181,7 @@
+ SDL_PROC(void,glMatrixMode,(GLenum mode))
+ SDL_PROC_UNUSED(void,glMultMatrixd,(const GLdouble *m))
+ SDL_PROC_UNUSED(void,glMultMatrixf,(const GLfloat *m))
+-SDL_PROC_UNUSED(void,glNewList,(GLuint list, GLenum mode))
++SDL_PROC(void,glNewList,(GLuint list, GLenum mode))
+ SDL_PROC_UNUSED(void,glNormal3b,(GLbyte nx, GLbyte ny, GLbyte nz))
+ SDL_PROC_UNUSED(void,glNormal3bv,(const GLbyte *v))
+ SDL_PROC_UNUSED(void,glNormal3d,(GLdouble nx, GLdouble ny, GLdouble nz))
+@@ -219,7 +220,7 @@
+ SDL_PROC_UNUSED(void,glRasterPos2dv,(const GLdouble *v))
+ SDL_PROC_UNUSED(void,glRasterPos2f,(GLfloat x, GLfloat y))
+ SDL_PROC_UNUSED(void,glRasterPos2fv,(const GLfloat *v))
+-SDL_PROC_UNUSED(void,glRasterPos2i,(GLint x, GLint y))
++SDL_PROC(void,glRasterPos2i,(GLint x, GLint y))
+ SDL_PROC_UNUSED(void,glRasterPos2iv,(const GLint *v))
+ SDL_PROC_UNUSED(void,glRasterPos2s,(GLshort x, GLshort y))
+ SDL_PROC_UNUSED(void,glRasterPos2sv,(const GLshort *v))
+@@ -239,8 +240,8 @@
+ SDL_PROC_UNUSED(void,glRasterPos4iv,(const GLint *v))
+ SDL_PROC_UNUSED(void,glRasterPos4s,(GLshort x, GLshort y, GLshort z, GLshort w))
+ SDL_PROC_UNUSED(void,glRasterPos4sv,(const GLshort *v))
+-SDL_PROC_UNUSED(void,glReadBuffer,(GLenum mode))
+-SDL_PROC_UNUSED(void,glReadPixels,(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels))
++SDL_PROC(void,glReadBuffer,(GLenum mode))
++SDL_PROC(void,glReadPixels,(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels))
+ SDL_PROC_UNUSED(void,glRectd,(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2))
+ SDL_PROC_UNUSED(void,glRectdv,(const GLdouble *v1, const GLdouble *v2))
+ SDL_PROC_UNUSED(void,glRectf,(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2))
+@@ -252,11 +253,11 @@
+ SDL_PROC_UNUSED(GLint,glRenderMode,(GLenum mode))
+ SDL_PROC_UNUSED(void,glRotated,(GLdouble angle, GLdouble x, GLdouble y, GLdouble z))
+ SDL_PROC_UNUSED(void,glRotatef,(GLfloat angle, GLfloat x, GLfloat y, GLfloat z))
+-SDL_PROC_UNUSED(void,glScaled,(GLdouble x, GLdouble y, GLdouble z))
++SDL_PROC(void,glScaled,(GLdouble x, GLdouble y, GLdouble z))
+ SDL_PROC_UNUSED(void,glScalef,(GLfloat x, GLfloat y, GLfloat z))
+ SDL_PROC_UNUSED(void,glScissor,(GLint x, GLint y, GLsizei width, GLsizei height))
+ SDL_PROC_UNUSED(void,glSelectBuffer,(GLsizei size, GLuint *buffer))
+-SDL_PROC_UNUSED(void,glShadeModel,(GLenum mode))
++SDL_PROC(void,glShadeModel,(GLenum mode))
+ SDL_PROC_UNUSED(void,glStencilFunc,(GLenum func, GLint ref, GLuint mask))
+ SDL_PROC_UNUSED(void,glStencilMask,(GLuint mask))
+ SDL_PROC_UNUSED(void,glStencilOp,(GLenum fail, GLenum zfail, GLenum zpass))
+@@ -295,7 +296,7 @@
+ SDL_PROC_UNUSED(void,glTexCoordPointer,(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer))
+ SDL_PROC(void,glTexEnvf,(GLenum target, GLenum pname, GLfloat param))
+ SDL_PROC_UNUSED(void,glTexEnvfv,(GLenum target, GLenum pname, const GLfloat *params))
+-SDL_PROC_UNUSED(void,glTexEnvi,(GLenum target, GLenum pname, GLint param))
++SDL_PROC(void,glTexEnvi,(GLenum target, GLenum pname, GLint param))
+ SDL_PROC_UNUSED(void,glTexEnviv,(GLenum target, GLenum pname, const GLint *params))
+ SDL_PROC_UNUSED(void,glTexGend,(GLenum coord, GLenum pname, GLdouble param))
+ SDL_PROC_UNUSED(void,glTexGendv,(GLenum coord, GLenum pname, const GLdouble *params))
+@@ -305,17 +306,18 @@
+ SDL_PROC_UNUSED(void,glTexGeniv,(GLenum coord, GLenum pname, const GLint *params))
+ SDL_PROC_UNUSED(void,glTexImage1D,(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels))
+ SDL_PROC(void,glTexImage2D,(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels))
++SDL_PROC(void,glTexImage3D,(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels))
+ SDL_PROC_UNUSED(void,glTexParameterf,(GLenum target, GLenum pname, GLfloat param))
+ SDL_PROC_UNUSED(void,glTexParameterfv,(GLenum target, GLenum pname, const GLfloat *params))
+ SDL_PROC(void,glTexParameteri,(GLenum target, GLenum pname, GLint param))
+ SDL_PROC_UNUSED(void,glTexParameteriv,(GLenum target, GLenum pname, const GLint *params))
+ SDL_PROC_UNUSED(void,glTexSubImage1D,(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels))
+ SDL_PROC(void,glTexSubImage2D,(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels))
+-SDL_PROC_UNUSED(void,glTranslated,(GLdouble x, GLdouble y, GLdouble z))
++SDL_PROC(void,glTranslated,(GLdouble x, GLdouble y, GLdouble z))
+ SDL_PROC_UNUSED(void,glTranslatef,(GLfloat x, GLfloat y, GLfloat z))
+ SDL_PROC_UNUSED(void,glVertex2d,(GLdouble x, GLdouble y))
+ SDL_PROC_UNUSED(void,glVertex2dv,(const GLdouble *v))
+-SDL_PROC_UNUSED(void,glVertex2f,(GLfloat x, GLfloat y))
++SDL_PROC(void,glVertex2f,(GLfloat x, GLfloat y))
+ SDL_PROC_UNUSED(void,glVertex2fv,(const GLfloat *v))
+ SDL_PROC(void,glVertex2i,(GLint x, GLint y))
+ SDL_PROC_UNUSED(void,glVertex2iv,(const GLint *v))
+diff -urN ./src/video/SDL_sysvideo.h ./src/video/SDL_sysvideo.h
+--- ./src/video/SDL_sysvideo.h	2012-11-07 23:05:34 +0900
++++ ./src/video/SDL_sysvideo.h	2012-11-07 23:36:45 +0900
+@@ -63,6 +63,9 @@
+ 	 */
+ 	SDL_Rect **(*ListModes)(_THIS, SDL_PixelFormat *format, Uint32 flags);
+ 
++	/* Get the current resolution of the user's display. */
++	int (*GetDesktopMode)(_THIS, int *width, int *height);
++
+ 	/* Set the requested video mode, returning a surface which will be
+ 	   set to the SDL_VideoSurface.  The width and height will already
+ 	   be verified by ListModes(), and the video subsystem is free to
+@@ -413,6 +416,9 @@
+ #if SDL_VIDEO_DRIVER_DUMMY
+ extern VideoBootStrap DUMMY_bootstrap;
+ #endif
++//#if SDL_VIDEO_DRIVER_OPENGLHQ
++extern VideoBootStrap OPENGLHQ_bootstrap;
++//#endif
+ 
+ /* This is the current video device */
+ extern SDL_VideoDevice *current_video;
+diff -urN ./src/video/SDL_video.c ./src/video/SDL_video.c
+--- ./src/video/SDL_video.c	2012-11-07 23:05:34 +0900
++++ ./src/video/SDL_video.c	2012-11-07 23:36:45 +0900
+@@ -78,12 +78,12 @@
+ #if SDL_VIDEO_DRIVER_GAPI
+ 	&GAPI_bootstrap,
+ #endif
+-#if SDL_VIDEO_DRIVER_WINDIB
+-	&WINDIB_bootstrap,
+-#endif
+ #if SDL_VIDEO_DRIVER_DDRAW
+ 	&DIRECTX_bootstrap,
+ #endif
++#if SDL_VIDEO_DRIVER_WINDIB
++	&WINDIB_bootstrap,
++#endif
+ #if SDL_VIDEO_DRIVER_BWINDOW
+ 	&BWINDOW_bootstrap,
+ #endif
+@@ -129,6 +129,9 @@
+ #if SDL_VIDEO_DRIVER_DUMMY
+ 	&DUMMY_bootstrap,
+ #endif
++//#if SDL_VIDEO_DRIVER_OPENGLHQ
++	&OPENGLHQ_bootstrap,
++//#endif
+ 	NULL
+ };
+ 
+@@ -345,6 +348,24 @@
+ }
+ 
+ /*
++ * If possible, retrieves the current resolution of the user's display. If this
++ * operation is supported and succeeds, the width and height are written to the
++ * values pointed to by the parameters and 1 is returned. If unsupported or
++ * unsuccessful, the pointed to values are not touched and 0 is returned.
++ */
++int SDL_GetDesktopMode(int *width, int *height)
++{
++	SDL_VideoDevice *video = current_video;
++	SDL_VideoDevice *this  = current_video;
++
++	if (video && video->GetDesktopMode) {
++		return video->GetDesktopMode(this, width, height);
++	} else {
++		return 0;
++	}
++}
++
++/*
+  * Check to see if a particular video mode is supported.
+  * It returns 0 if the requested mode is not supported under any bit depth,
+  * or returns the bits-per-pixel of the closest available mode with the
+@@ -706,7 +727,7 @@
+ 	 */
+ 	SDL_VideoSurface = (mode != NULL) ? mode : prev_mode;
+ 
+-	if ( (mode != NULL) && (!is_opengl) ) {
++	if ( (mode != NULL) && (!is_opengl) && !(flags&0x40) ) {
+ 		/* Sanity check */
+ 		if ( (mode->w < width) || (mode->h < height) ) {
+ 			SDL_SetError("Video mode smaller than requested");
+diff -urN ./src/video/openglhq/Makefile ./src/video/openglhq/Makefile
+--- ./src/video/openglhq/Makefile	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/Makefile	2012-10-17 05:38:26 +0900
+@@ -0,0 +1,35 @@
++## Makefile.am for SDL using OpenGL hardware HQ scaling
++
++all: SDL_openglhq_pass1.h SDL_openglhq_pass2.h SDL_openglhq_pass3.h SDL_openglhq_table.h
++
++patch:
++	( cd ../../..; patch -sp1 < src/video/openglhq/SDL-1.2.diff && ./autogen.sh; )
++	touch patch
++
++clean:
++	-rm tablebuilder SDL_openglhq_pass1.h SDL_openglhq_pass2.h SDL_openglhq_pass3.h SDL_openglhq_table.h hexdump asciidump
++
++zip: clean
++	(cd ..; zip -9 ~/SDL-1.2-openglhq-`date +%Y-%m-%d`.zip openglhq/{Makefile,README,*.diff,*.c,*.h,*.ui,*.fp,*.dat,*.DLL})
++
++tablebuilder: tablebuilder.ui tablebuilder.ui.h
++	{ echo '#!/usr/bin/python'; echo 'from qtcanvas import *'; pyuic -x $<; } > tablebuilder
++	chmod 755 tablebuilder
++
++HOSTCC=gcc
++
++asciidump: asciidump.c
++	$(HOSTCC) -o $(@F) $<
++
++hexdump: hexdump.c
++	$(HOSTCC) -o $(@F) $<
++
++test: test.c
++	gcc -o test test.c `sdl-config --cflags` `sdl-config --libs`
++
++%.h: %.fp asciidump
++	./asciidump $< $@
++
++%.h: %.dat hexdump
++	./hexdump $< $@
++
+diff -urN ./src/video/openglhq/README ./src/video/openglhq/README
+--- ./src/video/openglhq/README	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/README	2012-10-17 10:42:18 +0900
+@@ -0,0 +1,333 @@
++OpenGL-HQ for SDL
++=================
++
++This readme documents version 2012-10-17 of OpenGL-HQ, if you got
++a later version there's a slim chance I forgot to update this :)
++The current version and screenshots can be downloaded from
++http://www.syntax-k.de/projekte/sdl-opengl-hq/
++
++OpenGL-HQ is a video "driver" for SDL that uses your graphics hardware
++to scale the output to any size you want. It was originally written for
++2D games/emulators like dosbox, scummvm or exult.
++
++WARNING: This is beta quality software. While it works nicely for me
++and several other people, expect bugs to be present. If something
++doesn't work, first check for a new version. Please mail me if you
++encounter anything that's not yet listed in the README.
++
++Features:
++ - uses your hardware to get fast scaling
++ - scales any 2D SDL program
++ - scales with any scaling factor, even fractional ones
++ - switches back to the native driver if an app tries to use OpenGL
++ - portable
++ - configurable like SDL
++ - see the screenshots at the URL above, really
++
++Requirements:
++ - a Radeon 9600, GeForce 5700 or higher with current driver;
++   OpenGL extension ARB_fragment_program must be hardware
++   accelerated, EXT_framebuffer_object is recommended
++   -- Note: Since 2012, the fragment programs may no longer be
++            compatible with an acutal 9600. In case of problems
++            use an older version of  *_pass3.fp
++ - OpenGL-support for your OS in SDL (which means Windows,
++   Linux/X11 or MacOS X)
++
++Limitations:
++ - may show bad performance with programs that already provide
++   high-resolution output or with high-quality driver settings
++   (Radeon 9600-9800 class chips are driven at their limits)
++ - might not work with FSAA enabled
++ - MacOS X untested (but should work)
++ - it has become very unlikely, but it is still possible that desktop
++   resolution is not autodetected correctly; use SDL_OPENGLHQ_FULLRES
++   in that case
++ - untested on non-x86 processors/non-mainstream graphics cards,
++   notably embedded/mobile platforms
++
++Bugs unlikely to be fixed, or of unknown origin:
++ - ATI's Triple-Buffering feature interferes with some apps; if you see
++   lockups or similar, try setting SDL_OPENGLHQ_DOUBLEBUF as shown below
++   -- needs to be confirmed against current drivers
++
++Bugs to be fixed:
++
++none known
++
++If you see any problems, CHECK THE TROUBLESHOOTING SECTION BELOW.
++If your problem is not solved there, please write as detailed as you can:
++Tell me what you did (exactly!), what you expected to happen, what
++happened instead, and include screen shots of the problem. Include any
++relevant config files as well (dosbox.conf for dosxbox, for example).
++
++
++
++
++How to use (Quickstart)
++=======================
++
++This is a MS Windows quickstart guide. Other systems adjust as needed.
++
++1) Copy SDL.DLL into the application's directory, overwriting the shipped
++   version
++
++2) Create a batch file (using Notepad) with these contents:
++
++set SDL_VIDEODRIVER=openglhq
++set SDL_OPENGLHQ_WINRES=800x600
++<name of your application>.exe
++
++3) Save the file as <name of your application>.bat in the same directory
++   as the EXE file is
++
++4) Double-click this batch file to start the application; Create a shortcut
++   or adjust existing shortcuts to use this batch file
++
++
++
++
++Configuration
++=============
++
++Configuration is done via environment variables (just like the rest of SDL). It
++is recommended to set these options in a batch file (see previous section). 
++
++SDL_VIDEODRIVER - set it to openglhq to use OpenGL-HQ
++SDL_OPENGLHQ_WINRES
++SDL_OPENGLHQ_FULLRES - set to a resolution like "960x720" to set the windowed/
++		       fullscreen size in all windowed/fullscreen modes; you may
++		       add a bit depth as in "960x720-16"; alternatively, you can
++		       specify a fixed scaling factor (like "2.5")
++		       default: windowed: "1", fullscreen: your desktop resolution
++SDL_OPENGLHQ_VIDEODRIVER - set to the name of your SDL video device (the one you'd
++			   normally use for SDL_VIDEODRIVER)
++SDL_OPENGLHQ_DOUBLEBUF - override application's choice of doublebuffering; if set
++               to 1, doublebuffering is always on, if set to 0, doublebuffering
++               is always off; if unset, the application's choice is respected
++SDL_OPENGLHQ_STATIC 
++SDL_OPENGLHQ_DYNAMIC - two parameters which tweak the HQ calculation; the defaults
++		       (static 10, dynamic 33) are fine in most cases; to optimize
++		       rendering, play with these values (static 0-255, dynamic 0-100)
++SDL_OPENGLHQ_SHOWFPS - print average FPS to the console every ten seconds; this
++                     only counts frames actually rendered. See FAQ below.
++SDL_OPENGLHQ_DATA - a directory with data files for OpenGL-HQ; You can use this
++                    to load your own fragment programs or edge detect table.
++                    Currently, you will have to read the source code for details.
++
++You must set SDL_VIDEODRIVER to get any effect at all. If you want windowed
++applications to be scaled, set SDL_OPENGLHQ_WINRES. Everything else is usually not
++neccessary, the settings are autodetected.
++
++If you want to set options for ALL SDL apps, you can do so:
++
++Windows: Control Panel -> System Properties -> Advanced -> Environment Variables
++Unix-like systems: add "export <name of evironment var>=<value>" to ~/.profile
++
++
++Performance
++===========
++
++To put it short: Absolutely great.
++
++On hardware barely meeting the minimal requirements, running a demanding
++protected-mode high-resolution SVGA program in DOSBox with frameskip 0 and
++scaling by a factor of 2, performance drops by just 20%.  At frameskip 4,
++performance difference is at 5-10%.
++
++At VGA resolution scaling by 4, the difference is reduced even more:
++12% performance loss at frameskip 0. Software scaling is far worse: Normal2x
++costs about 20%, advmame2x is at 25%, hq2x (not my optimized version, but the
++slower HiEnd3D version) about 40%.
++
++Above measurements done on a single-core Athlon 3700+. On a dual-core processor,
++there is no noticeable speed impact, since OpenGL-HQ uses a second core if
++available.
++
++
++Troubleshooting
++===============
++
++Q: Something doesn't work or looks weird.
++
++A: Check that you are running the latest official video drivers. It has not been
++   tested with hacked drivers, and old drivers are known to fail.
++
++Q: DosBox crashes.
++
++A: DosBox has bad error handling at video initialization. Until that's fixed,
++   a crash most probably means your hardware doesn't support OpenGL-HQ.
++
++Q: DosBox locks up when trying to go fullscreen
++
++A: ATI driver issue. Set "fulldouble=false" in your dosbox.conf, or set 
++   SDL_OPENGLHQ_DOUBLEBUF
++
++Q: Performance is terrible!
++
++A: You've probably set forced vsync-waiting in Catalsyst Control Center and your
++   app wants double buffering (like "fulldouble=true" in DosBox). On a Radeon
++   9600-9800 class chip, that's simply too much at higher resolutions. These
++   first fully programmable chips are used to their limits, so that's barely
++   surprising.
++
++Q: It works partly, but some video modes look exactly like before.
++Q: Output looks much worse than in your screenshots, blurry and not sharp at all.
++Q: WTF? I did everything as shown, and nothing changed?
++
++A: Disable all software scaling in your program. Many emulators default to some
++   kind of scaling, but OpenglHQ can only work with x1 (no) scaling. Moreover,
++   if the program's output is larger than the selected window size, the output
++   is scaled down using traditional bilinear filtering.
++
++Q: My mouse is slow! How can I speed it up?
++A: This should mostly be fixed in the last release, but your backend video driver
++   might change acceleration setting when grabbing the mouse. At least the x11
++   driver does that, and you can configure it using environment variables.
++
++Q: I only get 8 FPS! What crap is this software?
++A: The screen is not continuously rendered like in native 3D programs. If the
++   emulator/emulated program only updates the screen 8 times per second,
++   OpenGL-HQ will show just 8 FPS. If you want to test how fast OpenGL-HQ can
++   go on your machine, use a program that does frequent screen updates.
++
++For more help, contact me at info@syntax-k.de.
++
++Please DO NOT mail Sam Lantinga or the SDL team about this, they aren't involved in this
++in any way at all.
++
++
++
++Developer info
++==============
++
++If you are an application developer, you can use the "putenv" (POSIX) / "_putenv"
++(MSVC) call to change these settings from within your program. For example, if you
++want to enable openglhq, just use:
++
++  putenv("SDL_VIDEODRIVER=openglhq");
++
++Of course, to be a fair player, you'd want to save the old value of SDL_VIDEODRIVER
++first and set SDL_OPENGLHQ_VIDEODRIVER to that value, like this:
++
++void EnableOpenglHQ()
++{
++  static char entry[1024], *oldentry;
++  oldentry = getenv("SDL_VIDEODRIVER");
++  if (oldentry != NULL) {
++	strcpy(entry, "SDL_OPENGLHQ_VIDEODRIVER=");
++	strcat(entry, oldentry);
++	putenv(entry);
++  }
++  putenv("SDL_VIDEODRIVER=openglhq");
++}
++
++void DisableOpenglHQ()
++{
++  static char entry[1024], *oldentry;
++  oldentry = getenv("SDL_OPENGLHQ_VIDEODRIVER");
++  if (oldentry != NULL) {
++	strcpy(entry, "SDL_VIDEODRIVER=");
++	strcat(entry, oldentry);
++	putenv(entry);
++  } else {
++	putenv("SDL_VIDEODRIVER");
++  }
++}
++
++Do the same for other configuration variables. One exception is SDL_OPENGLHQ_DOUBLEBUF,
++this is intended for users only - developers should use the SDL_DOUBLEBUF flag as usual.
++
++I've included a DosBox patch for those that want to enable openglhq in
++dosbox.conf. It applies to a fairly old version of DOSBox, so you may want to
++use the DOSBox build from http://ykhwong.x-y.net/ instead, which is kept up to
++date and includes OpenGL-HQ support.
++
++
++
++
++How to compile
++==============
++
++This assumes you know how to compile C programs under a GNUish environment
++(Linux, MingW, MacOS X with extra GNU tools). If you never used "cvs", "patch"
++or "make" before, try to get a guide on these topics first. [some helpful soul
++please send me a link]
++
++First, get and extract a copy of the SDL-1.2.15 sources. Other versions have not
++been tested.
++
++Then, move the directory "openglhq" (the one this README is in) below src/video
++
++Then, patch SDL and create needed data files. cd into the SDL directory and run
++
++make -C src/video/openglhq
++
++Watch closely for errors! If you see any, check that you have a recent autoconf
++and automake installed, and that you are indeed using a clean source tree of
++SDL.
++
++Now run configuration:
++
++./configure
++
++Check that it found your OpenGL libraries and headers. If it doesn't, this code
++is automatically disabled. Check "./configure --help" to see how to tell SDL the
++location of your GL libraries and headers.
++
++Finally, compile and install:
++
++make && make install
++
++The resulting library should be a drop-in replacement for your existing
++libSDL.so/SDL.DLL. It should be binary compatible, meaning that none of the apps
++using it must be recompiled.
++
++
++
++
++License
++=======
++
++	SDL OpenGL-HQ - Simple DirectMedia Layer high quality hardware scaling
++        Copyright (C) 2005, 2006, 2012 JÃ¶rg Walter <info@syntax-k.de>
++
++	This library is free software; you can redistribute it and/or
++	modify it under the terms of the GNU Library General Public
++	License as published by the Free Software Foundation; either
++	version 2 of the License, or (at your option) any later version.
++
++	This library is distributed in the hope that it will be useful,
++	but WITHOUT ANY WARRANTY; without even the implied warranty of
++	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++	Library General Public License for more details.
++
++	You should have received a copy of the GNU Library General Public
++	License along with this library; if not, write to the Free
++	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++The SDL patch uses code published on the SDL mailing list in January 2005 for
++desktop resolution autodetect.
++
++Credits
++=======
++
++Many thanks to all VOGONS users who assited in testing and providing windows
++builds. Even more thanks to gulikoza from the VOGONS forums for porting the code
++to EXT_framebuffer_object.
++
++
++History
++=======
++
++2012-10-17  fix/improve math precision for modern screen resolutions, fix
++            partial screen update bug in (default) fast mode, add optional
++            FPS output
++2006-12-15  fix a subtle mouse movemement bug mainly observable in fullscreen
++            apps, improve API compatibility, reduce needless pixel copying,
++			working MacOS X support
++2006-11-22  fix 16-bit video modes on ATI cards, improve compilation sequence,
++            improve rendering accuracy and speed by reducing complexity
++2006-11-21  use EXT_framebuffer_object extension for rendering, fix threading
++            issues, improve performance, port to SDL-1.2, make 64-bit-clean
++
+diff -urN ./src/video/openglhq/SDL_ohqthread.h ./src/video/openglhq/SDL_ohqthread.h
+--- ./src/video/openglhq/SDL_ohqthread.h	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_ohqthread.h	2012-11-08 00:19:38 +0900
+@@ -0,0 +1,1127 @@
++/*
++ *  OpenGL-HQ rendering code Copyright (C) 2004-2005 JÃ¶rg Walter <jwalt@garni.ch>
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++ */
++/* $Id$ */
++/*---------------------------------------------------------------------
++  This code implements a hardware-accelerated, cross-platform OpenGL
++  based scaler quite similar to the well known Hq2x..Hq4x suite of
++  software scalers. The general idea is exactly the same, but nothing
++  else remains: in contrast to my software-hq2x scaler for dosbox, not
++  even the interpolation rules have been used. Instead, they were
++  designed from scratch to look well even on high scaling factors.
++
++  Some compromises had to be taken, and it is indeed possible that
++  my choice of rules don't fit some particular game. For this reason,
++  the built-in table can be overridden by placing a file called
++  "openglhq_table.dat" into the working directory. It will
++  be loaded instead of the shipped table. Use the tablebuilder to
++  edit the table file. Likewise, you can change the fragment programs
++  used by creating files called "openglhq_passN.fp" for
++  N = 1..3.
++
++  As with the software hq2x scaler, the difference calculation is
++  based on the algorithm described in
++  http://www.compuphase.com/cmetric.htm, and the edge threshold
++  calculation has entirely been conceived by me.
++
++  Limitations:
++
++  - None.
++
++  - No really, there are none.
++
++  - Believe me, absolutely none. Even performance is great, current
++    builds use about as much CPU as software normal2x scaling in dosbox,
++    and that's on a low-end Mobility Radeon 9700.
++
++  - Everything said applies to a Mobility Radeon 9700. Faster cards
++    might yield the previous statement untrue, I don't own an Nvidia
++    card, etc. While I tried to create a universal high-performance,
++    high-quality scaler, YMMV and Send Patches(tm).
++
++*/
++
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
++
++#include "SDL.h"
++#include "SDL_ohqvideo.h"
++
++#include <stdlib.h>
++#include <string.h>
++#include <stdio.h>
++#ifndef _MSC_VER
++#include <unistd.h>
++#endif
++#include <stdarg.h>
++#include <sys/types.h>
++#include <math.h>
++#include <fcntl.h>
++#include <assert.h>
++
++#ifndef _MSC_VER
++#include <pthread.h>
++#include <sys/time.h>
++#include <sys/resource.h>
++#endif
++#ifndef SCHED_IDLE
++#define SCHED_IDLE 5
++#endif
++
++#include "SDL_opengl.h"
++
++#ifndef APIENTRY
++#define APIENTRY
++#endif
++#ifndef O_BINARY
++#define O_BINARY (0)
++#endif
++
++#define OHQNAME(x) x
++/*SDL_OHQ_ ## x*/
++
++typedef void * (APIENTRY * OHQ_malloc_t) (int size, float readfreq, float writefreq, float priority);
++typedef void (APIENTRY * OHQ_free_t) (void *pointer);
++
++static OHQ_malloc_t OHQ_malloc = NULL;
++static OHQ_free_t OHQ_free = NULL;
++
++static PFNGLPIXELDATARANGENVPROC OHQNAME(glPixelDataRangeNV) = NULL;
++
++/* supported only on fairly recent video cards (somewhere around ATI Radeon 9500 or a similar NVidia card) */
++static PFNGLPROGRAMSTRINGARBPROC OHQNAME(glProgramStringARB) = NULL;
++static PFNGLBINDPROGRAMARBPROC OHQNAME(glBindProgramARB) = NULL;
++static PFNGLGENPROGRAMSARBPROC OHQNAME(glGenProgramsARB) = NULL;
++static PFNGLDELETEPROGRAMSARBPROC OHQNAME(glDeleteProgramsARB) = NULL;
++static PFNGLGETPROGRAMIVARBPROC OHQNAME(glGetProgramivARB) = NULL;
++static PFNGLPROGRAMLOCALPARAMETER4DARBPROC OHQNAME(glProgramLocalParameter4dARB) = NULL;
++static PFNGLPROGRAMENVPARAMETER4DARBPROC OHQNAME(glProgramEnvParameter4dARB) = NULL;
++static PFNGLCOLORTABLEEXTPROC OHQNAME(glColorTableEXT) = NULL;
++
++#include "SDL_openglhq_pass1.h"
++#include "SDL_openglhq_pass2.h"
++#include "SDL_openglhq_pass3.h"
++#include "SDL_openglhq_table.h"
++
++/* framebuffer object extension */
++#ifndef GL_EXT_framebuffer_object
++#define GL_EXT_framebuffer_object 1
++typedef void (APIENTRY * PFNGLGENFRAMEBUFFERSEXTPROC) (GLsizei n, GLuint *framebuffers);
++typedef void (APIENTRY * PFNGLBINDFRAMEBUFFEREXTPROC) (GLenum target, GLuint framebuffer);
++typedef void (APIENTRY * PFNGLFRAMEBUFFERTEXTURE2DEXTPROC) (GLenum target, GLenum attachment,
++                                                           GLenum textarget, GLuint texture, GLint level);
++typedef void (APIENTRY * PFNGLDELETEFRAMEBUFFERSEXTPROC) (GLsizei n, const GLuint *framebuffers);
++typedef GLenum (APIENTRY * PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC) (GLenum target);
++
++// Constants
++#define GL_FRAMEBUFFER_EXT                                  0x8D40
++#define GL_COLOR_ATTACHMENT0_EXT                            0x8CE0
++
++#define GL_FRAMEBUFFER_COMPLETE_EXT                         0x8CD5
++#define GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT            0x8CD6
++#define GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT    0x8CD7
++#define GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT            0x8CD9
++#define GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT               0x8CDA
++#define GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT           0x8CDB
++#define GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT           0x8CDC
++#define GL_FRAMEBUFFER_UNSUPPORTED_EXT                      0x8CDD
++#endif
++
++static PFNGLGENFRAMEBUFFERSEXTPROC OHQNAME(glGenFramebuffersEXT) = NULL;
++static PFNGLBINDFRAMEBUFFEREXTPROC OHQNAME(glBindFramebufferEXT) = NULL;
++static PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC OHQNAME(glCheckFramebufferStatusEXT) = NULL;
++static PFNGLFRAMEBUFFERTEXTURE2DEXTPROC OHQNAME(glFramebufferTexture2DEXT) = NULL;
++static PFNGLDELETEFRAMEBUFFERSEXTPROC OHQNAME(glDeleteFramebuffersEXT) = NULL;
++
++#define OHQ_RESOLUTION 16
++//#define OGL_DEBUG_HQ
++//#define OGL_DEBUG_HQ_MAX
++#define OHQ_FAST
++
++#define fmax(x,y) ((x)>(y)?(x):(y))
++#define fmin(x,y) ((x)<(y)?(x):(y))
++
++static int safe_semwait(SDL_sem *sem) {
++    while (SDL_SemWait(sem) != 0) SDL_Delay(1);
++    return 0;
++}
++#define SDL_SemWait safe_semwait
++
++static int int_log2 (int val) {
++    int log = 0;
++    while ((val >>= 1) != 0)
++    log++;
++    return log;
++}
++
++/* instead of a plain malloc, we try to be nice to DMA-using hardware */
++#define MALLOC_ALIGN 4096
++#define align_upwards(x) ((void *)((intptr_t)((x) + MALLOC_ALIGN - 1) & ~(MALLOC_ALIGN-1)))
++static void * APIENTRY default_malloc(int size, float readfreq, float writefreq, float priority) {
++    char *ptr = (char *)malloc(size+sizeof(void*)+MALLOC_ALIGN-1);
++    char *retval = (char *)align_upwards(ptr + sizeof(void*));
++    void **real_ptr = (void **)(retval-sizeof(void*));
++    *real_ptr = ptr;
++    return retval;
++}
++
++static void APIENTRY default_free(void *pointer) {
++    void **real_ptr = (void **)((char *)pointer-sizeof(void*));
++    free(*real_ptr);
++}
++
++static unsigned int LoadNativeFragmentProgram(_THIS, const char *program, const char *filename) {
++    GLuint name;
++    int errorPos, isNative, programFd;
++    char programString[65536] = "";
++    const char *dir;
++
++    OHQNAME(glGenProgramsARB)(1,&name);
++    OHQNAME(glBindProgramARB)(GL_FRAGMENT_PROGRAM_ARB,name);
++    if ((dir = getenv("SDL_OPENGLHQ_DATA")) != NULL) {
++        strcpy(programString,dir);
++        strcat(programString,filename);
++        strcat(programString,".fp");
++
++        if ((programFd = open(programString,O_RDONLY)) >= 0) {
++            read(programFd,programString,sizeof(programString));
++            close(programFd);
++            program = programString;
++        }
++    }
++    OHQNAME(glProgramStringARB)(GL_FRAGMENT_PROGRAM_ARB, GL_PROGRAM_FORMAT_ASCII_ARB, strlen(program), program);
++
++    this->hidden->real_video->glGetIntegerv(GL_PROGRAM_ERROR_POSITION_ARB, &errorPos);
++    OHQNAME(glGetProgramivARB)(GL_FRAGMENT_PROGRAM_ARB, GL_PROGRAM_UNDER_NATIVE_LIMITS_ARB, &isNative);
++    if (errorPos >= 0) {
++        SDL_SetError("OPENGLHQ: Failed to load fragment program: %s",this->hidden->real_video->glGetString(GL_PROGRAM_ERROR_STRING_ARB));
++        OHQNAME(glDeleteProgramsARB)(1,&name);
++        return 0;
++    } else if (!isNative) {
++        SDL_SetError("OPENGLHQ: Hardware doesn't support this fragment program");
++        OHQNAME(glDeleteProgramsARB)(1,&name);
++        return 0;
++    }
++    return name;
++}
++
++static double sign(double a) {
++    return (a < 0?-1:1);
++}
++
++/*
++ This function calculates what percentage of a rectangle intersected by a line lies near the center of the
++ cordinate system. It is mathematically exact, and well-tested for xcenter > 0 and ycenter > 0 (it's only
++ used that way). It should be correct for other cases as well, but well... famous last words :)
++*/
++static double intersect_any(double xcenter, double ycenter, double xsize, double ysize, double yoffset, double gradient) {
++    double g = fabs(gradient)*xsize/ysize;
++    double o = -((yoffset-ycenter) + gradient*xcenter)/ysize*sign(ycenter)*sign(yoffset)-g*0.5+0.5;
++    double yl = o, yr = o+g, xb = -o/g, xt = (1-o)/g;
++    double area = 1.0;
++
++    if (yl >= 1.0) xt = xb = area = 0.0;
++    else if (yl > 0.0) {
++        area = 1.0-yl;
++        xb = 0.0;
++    }
++    else if (yr <= 0.0) yl = yr = area = 1.0;
++    else yl = o+xb*g;
++
++    if (xt <= 0.0) yr = yl = area = 0.0;
++    else if (xt < 1.0) {
++        area *= xt;
++        yr = 1.0;
++    }
++    else if (xb >= 1.0) xb = xt = area = 1.0;
++    else xt = (yr-o)/g;
++
++    area -= (xt-xb)*(yr-yl)/2;
++
++    return area;
++}
++
++static double intersect_h(double xcenter, double ycenter, double xsize, double ysize) {
++    return fmax(0.0,fmin(1.0,(.55-fabs(xcenter)+xsize/2.0)/xsize));
++    //return fmax(0.0,fmin(1.0,(.50-fabs(xcenter)+xsize/2.0)/xsize));
++}
++
++static double intersect_any_h(double xcenter, double ycenter, double xsize, double ysize, double yoffset, double gradient) {
++    double hinside = intersect_h(xcenter,ycenter,xsize,ysize);
++    return hinside*hinside*intersect_any(xcenter,ycenter,xsize,ysize,yoffset,gradient);
++}
++
++static double intersect_v(double xcenter, double ycenter, double xsize, double ysize) {
++    return fmax(0.0,fmin(1.0,(.55-fabs(ycenter)+ysize/2.0)/ysize));
++    //return fmax(0.0,fmin(1.0,(.50-fabs(ycenter)+ysize/2.0)/ysize));
++}
++
++static double intersect_any_v(double xcenter, double ycenter, double xsize, double ysize, double yoffset, double gradient) {
++    double vinside = intersect_v(xcenter,ycenter,xsize,ysize);
++    return vinside*vinside*intersect_any(xcenter,ycenter,xsize,ysize,yoffset,gradient);
++}
++
++static double intersect_hv(double xcenter, double ycenter, double xsize, double ysize) {
++    double hinside = intersect_h(xcenter,ycenter,xsize,ysize);
++    double vinside = intersect_v(xcenter,ycenter,xsize,ysize);
++    return (1-hinside)*(1-vinside)+hinside*vinside;
++}
++
++/* FIXME: not sure if this is correct, but it is rare enough and most likely near enough. fixes welcome :) */
++static double intersect_any_hv(double xcenter, double ycenter, double xsize, double ysize, double yoffset, double gradient) {
++    double hvinside = intersect_hv(xcenter,ycenter,xsize,ysize);
++    return hvinside*hvinside*intersect_any(xcenter,ycenter,xsize,ysize,yoffset,gradient);
++}
++
++static double intersect_hvd(double xcenter, double ycenter, double xsize, double ysize) {
++    return intersect_h(xcenter,ycenter,xsize,ysize)*intersect_v(xcenter,ycenter,xsize,ysize);
++}
++
++static void setinterp(double xcenter, double ycenter, double percentage_inside, int i1, int i2, int i3, int o1, int o2, int o3, unsigned char *factors) {
++    double d0, d1, d2, d3, percentage_outside, totaldistance_i, totaldistance_o;
++    xcenter = fabs(xcenter);
++    ycenter = fabs(ycenter);
++    d0 = (1-xcenter)*(1-ycenter);
++    d1 = xcenter*(1-ycenter);
++    d2 = (1-xcenter)*ycenter;
++    d3 = xcenter*ycenter;
++    if (i1 && i2) i3 = 0;
++    if (o1 && o2) o3 = 0;
++    percentage_outside = 1.0-percentage_inside;
++    totaldistance_i = d0+i1*d1+i2*d2+i3*d3;
++    totaldistance_o = o1*d1+o2*d2+o3*d3+1e-12; /* +1e-12: prevent division by zero */
++
++    factors[1] = (unsigned char)(((d1/totaldistance_i*percentage_inside*i1)+(d1/totaldistance_o*percentage_outside*o1))*255+.5);
++    factors[2] = (unsigned char)(((d2/totaldistance_i*percentage_inside*i2)+(d2/totaldistance_o*percentage_outside*o2))*255+.5);
++    factors[3] = (unsigned char)(((d3/totaldistance_i*percentage_inside*i3)+(d3/totaldistance_o*percentage_outside*o3))*255+.5);
++    factors[0] = 255-factors[1]-factors[2]-factors[3];/*(unsigned char)((d0/totaldistance_i*percentage_inside)*255+.5);*/
++}
++
++/* Wanna have gcc fun? #define this as a macro, get a fast machine and go fetch a coffe or two. See how it is used to get an idea why.
++   I aborted compilation after 5 minutes of CPU time on an Athlon64 3700+. */
++static int swap_bits(int num, int bit1, int bit2) {
++    return ((num & ~(bit1|bit2))|((num&bit1)?bit2:0)|((num&bit2)?bit1:0));
++}
++
++/*
++static void WaitCommand(_THIS) {
++    if (this->hidden->busy) SDL_SemWait(this->hidden->render_thread_ack);
++    this->hidden->busy = 0;
++}
++*/
++
++static void SendAsyncCommand(_THIS, enum OGL_CMD command) {
++    if (this->hidden->busy) SDL_SemWait(this->hidden->render_thread_ack);
++    this->hidden->busy = 1;
++    this->hidden->cmd = command;
++    SDL_SemPost(this->hidden->render_thread_signal);
++}
++static int TryWaitCommand(_THIS) {
++    if (this->hidden->busy && SDL_SemTryWait(this->hidden->render_thread_ack) != 0) return 0;
++    this->hidden->busy = 0;
++    return 1;
++}
++
++static int SendSyncCommand(_THIS, enum OGL_CMD command) {
++
++    if (this->hidden->busy) SDL_SemWait(this->hidden->render_thread_ack);
++    this->hidden->busy = 1;
++    this->hidden->cmd = command;
++    SDL_SemPost(this->hidden->render_thread_signal);
++    SDL_SemWait(this->hidden->render_thread_ack);
++
++    this->hidden->busy = 0;
++    return (int)(this->hidden->status != OGL_ERROR);
++}
++
++static void Finish(_THIS, GLuint fbo) {
++    if (fbo) OHQNAME(glBindFramebufferEXT)(GL_FRAMEBUFFER_EXT, fbo);
++    this->hidden->real_video->glFinish();
++    
++    OHQNAME(glBindProgramARB)(GL_FRAGMENT_PROGRAM_ARB,0);
++    this->hidden->real_video->glDisable(GL_FRAGMENT_PROGRAM_ARB);
++    
++    this->hidden->real_video->glActiveTexture(GL_TEXTURE2);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_2D,0);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_3D,0);
++    this->hidden->real_video->glActiveTexture(GL_TEXTURE1);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_2D,0);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_3D,0);
++    this->hidden->real_video->glActiveTexture(GL_TEXTURE0);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_2D,0);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_3D,0);
++
++    this->hidden->real_video->glDisable(GL_TEXTURE_2D);
++    this->hidden->real_video->glDisable(GL_TEXTURE_3D);
++
++    this->hidden->real_video->glFinish();
++    if (fbo) OHQNAME(glBindFramebufferEXT)(GL_FRAMEBUFFER_EXT, 0);
++}
++
++static void DeinitOpenGL(_THIS) {
++    int i;
++
++    if (this->hidden->real_video->glFinish != NULL) {
++        Finish(this,0);
++		if (this->hidden->fbo[0]) {
++			Finish(this,this->hidden->fbo[0]);
++			Finish(this,this->hidden->fbo[1]);
++		}
++    }
++
++    for (i = 0; i < sizeof(this->hidden->program_name)/sizeof(this->hidden->program_name[0]); i++) {
++        if (this->hidden->program_name[i] != 0) {
++            OHQNAME(glDeleteProgramsARB)(1,&this->hidden->program_name[i]);
++            this->hidden->program_name[i] = 0;
++        }
++    }
++    if (this->hidden->texture[0] != 0) {
++        this->hidden->real_video->glDeleteTextures(4,this->hidden->texture);
++        this->hidden->real_video->glDeleteLists(this->hidden->pbuffer_displaylist, 1);
++        this->hidden->real_video->glDeleteLists(this->hidden->displaylist, 1);
++        this->hidden->texture[0] = 0;
++    }
++
++    if (this->hidden->fbo[0] != 0) {
++        OHQNAME(glDeleteFramebuffersEXT)(2, this->hidden->fbo);
++        this->hidden->fbo[0] = this->hidden->fbo[1] = 0;
++    }
++
++    if (this->hidden->framebuf != NULL) {
++        OHQ_free(this->hidden->framebuf);
++    }
++}
++
++static int showfps = 0;
++static int RenderFrame(_THIS, int ack) {
++    static time_t lasttime = 0;
++    static int framecnt = 0;
++#ifdef OHQ_FAST
++	static int lastx = 0, lasty = 0, lastex = 0, lastey = 0;
++	static int tmpx = 0, tmpy = 0, tmpex = 0, tmpey = 0;
++	int xe, ye, ox, oy, ocw, och, otw, oth;
++	int x = this->hidden->clip.x-1, y = this->hidden->clip.y-1, cw = this->hidden->clip.w+2, ch = this->hidden->clip.h+2, tw = this->hidden->width, th = this->hidden->height;
++	int dbuf = (this->hidden->flags&SDL_DOUBLEBUF) != 0;
++
++	if (dbuf) {
++		tmpx = fmin(x, lastx);
++		tmpy = fmin(y, lasty);
++		tmpex = fmax(x+cw, lastex);
++		tmpey = fmax(y+ch, lastey);
++		lastx = x;
++		lasty = y;
++		lastex = x+cw;
++		lastey = y+ch;
++		x = tmpx;
++		y = tmpy;
++		cw = tmpex-x;
++		ch = tmpey-y;
++	}
++
++    if (x < 0) x = 0;
++    if (y < 0) y = 0;
++    if (x+cw > this->hidden->width) cw = this->hidden->width-x;
++    if (y+ch > this->hidden->height) ch = this->hidden->height-y;
++
++#else
++	int dbuf = (this->hidden->flags&SDL_DOUBLEBUF) != 0;
++	int x = 0, y = 0, cw = this->hidden->width, ch = this->hidden->height, tw = cw, th = ch;
++#endif
++
++    this->hidden->real_video->glActiveTexture(GL_TEXTURE0);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_2D, this->hidden->texture[0]);
++    this->hidden->postponed = 0;
++    this->hidden->real_video->glTexSubImage2D(GL_TEXTURE_2D, 0, 0, y,
++            tw, ch, this->hidden->framebuf_format,
++            this->hidden->framebuf_datatype, (int)this->hidden->framebuf+y*this->hidden->pitch);
++
++    if (ack) SDL_SemPost(this->hidden->render_thread_ack);
++
++#ifdef OGL_DEBUG_HQ_MAX
++    GLubyte buffer[this->hidden->width*this->hidden->height*4];
++    int fd = open("framebuf.pam",O_WRONLY|O_CREAT|O_TRUNC|O_BINARY,0666);
++    sprintf((char *)buffer,"P7\nWIDTH %i\nHEIGHT %i\nMAXVAL 255\nDEPTH 4\nTUPLTYPE RGB_ALPHA\nENDHDR\n",this->hidden->width,this->hidden->height);
++    write(fd,buffer,strlen((char *)buffer));
++    write(fd,this->hidden->framebuf,this->hidden->pitch*this->hidden->height*2);
++    close(fd);
++#endif
++
++    /* align clip rectangle to reduce render errors due to rounding of coordinates, and add some padding */
++    // seems not neccessary anymore
++    xe = x+cw+30+2;
++	ye = y+ch+30+2;
++    ox = x-2;
++	oy = y-2;
++    ox = ((int)(x/30))*30;
++    oy = ((int)(y/30))*30;
++    xe = ((int)(xe/30))*30;
++    ye = ((int)(ye/30))*30;
++    if (ox < 0) ox = 0;
++    if (oy < 0) oy = 0;
++    if (xe > tw) xe = tw;
++    if (ye > th) ye = th;
++    ocw = xe-ox;
++    och = ye-oy;
++
++    otw = this->hidden->outwidth;
++    oth = this->hidden->outheight;
++    ox = floor(ox*otw/(double)tw);
++    oy = floor((th-oy-och)*oth/(double)th);
++    //oy = floor(oy*oth/(double)th);
++    ocw = ceil(ocw*otw/(double)tw);
++    och = ceil(och*oth/(double)th);
++
++    if (!this->hidden->nohq) {
++        this->hidden->real_video->glPushMatrix();
++        if (this->hidden->fbo[0]) {
++			OHQNAME(glBindFramebufferEXT)(GL_FRAMEBUFFER_EXT, this->hidden->fbo[0]);
++			this->hidden->real_video->glViewport(x,y,cw,ch);
++		} else {
++			// "failsafe" fallback for drivers without EXT_framebuffer_object, also see below
++			// Performance and visual experience is degraded, but still enjoyable.
++			if (!dbuf) {
++				this->hidden->real_video->glDrawBuffer(GL_BACK);
++				this->hidden->real_video->glReadBuffer(GL_BACK);
++			}
++			this->hidden->real_video->glViewport(ox,oy,cw,ch);
++		}
++
++        this->hidden->real_video->glTranslated(-1,-1,0);
++        this->hidden->real_video->glScaled(tw/(double)cw,th/(double)ch,1);
++        this->hidden->real_video->glTranslated(1.0-(x/(double)tw*2),1.0-(y/(double)th*2),0);
++
++        OHQNAME(glBindProgramARB)(GL_FRAGMENT_PROGRAM_ARB,this->hidden->program_name[0]);
++        OHQNAME(glProgramLocalParameter4dARB)(GL_FRAGMENT_PROGRAM_ARB, 0,
++            ((double)this->hidden->static_threshold)/255.0, 0.0,
++            0.0, ((double)this->hidden->dynamic_threshold)/100.0);
++        OHQNAME(glProgramEnvParameter4dARB)(GL_FRAGMENT_PROGRAM_ARB, 0,
++            //1.0d/this->hidden->texsize-1.0d/4096,
++			//1.0d/this->hidden->texsize-1.0d/4096,
++            1.0/this->hidden->texsize-1.0/4096,
++			1.0/this->hidden->texsize-1.0/4096,
++            this->hidden->texsize, this->hidden->texsize);
++        
++        this->hidden->real_video->glCallList(this->hidden->pbuffer_displaylist);
++        this->hidden->real_video->glFinish();
++
++        this->hidden->real_video->glBindTexture(GL_TEXTURE_2D,this->hidden->texture[1]);
++        if (this->hidden->fbo[0]) OHQNAME(glBindFramebufferEXT)(GL_FRAMEBUFFER_EXT, this->hidden->fbo[1]);
++		else this->hidden->real_video->glCopyTexSubImage2D(GL_TEXTURE_2D, 0, x, y, ox, oy, cw, ch);
++
++#ifdef OGL_DEBUG_HQ_MAX
++        fd = open("diff1.pam",O_WRONLY|O_CREAT|O_TRUNC|O_BINARY,0666);
++        sprintf((char *)buffer,"P7\nWIDTH %i\nHEIGHT %i\nMAXVAL 255\nDEPTH 4\nTUPLTYPE RGB_ALPHA\nENDHDR\n",this->hidden->width,this->hidden->height);
++        write(fd,buffer,strlen((char *)buffer));
++        this->hidden->real_video->glReadPixels(0,0,this->hidden->width,this->hidden->height,GL_RGBA,GL_UNSIGNED_BYTE,buffer);
++        write(fd,buffer,sizeof(buffer));
++        close(fd);
++#endif
++
++        OHQNAME(glBindProgramARB)(GL_FRAGMENT_PROGRAM_ARB,this->hidden->program_name[1]);
++        OHQNAME(glProgramLocalParameter4dARB)(GL_FRAGMENT_PROGRAM_ARB, 0,
++            ((double)this->hidden->static_threshold)/255.0, 0.0,
++            0.0, ((double)this->hidden->dynamic_threshold)/100.0);
++
++        this->hidden->real_video->glCallList(this->hidden->pbuffer_displaylist);
++        this->hidden->real_video->glFinish();
++
++        this->hidden->real_video->glBindTexture(GL_TEXTURE_2D,this->hidden->texture[0]);
++
++        this->hidden->real_video->glActiveTexture(GL_TEXTURE1);
++        this->hidden->real_video->glBindTexture(GL_TEXTURE_2D,this->hidden->texture[2]);
++
++        if (this->hidden->fbo[0]) OHQNAME(glBindFramebufferEXT)(GL_FRAMEBUFFER_EXT, 0);
++		else {
++			this->hidden->real_video->glCopyTexSubImage2D(GL_TEXTURE_2D, 0, x, y, ox, oy, cw, ch);
++			if (!dbuf) {
++				this->hidden->real_video->glDrawBuffer(GL_FRONT);
++				this->hidden->real_video->glReadBuffer(GL_FRONT);
++			}
++		}
++
++#ifdef OGL_DEBUG_HQ_MAX
++        fd = open("diff2.pam",O_WRONLY|O_CREAT|O_TRUNC|O_BINARY,0666);
++        sprintf((char *)buffer,"P7\nWIDTH %i\nHEIGHT %i\nMAXVAL 255\nDEPTH 4\nTUPLTYPE RGB_ALPHA\nENDHDR\n",this->hidden->width,this->hidden->height);
++        write(fd,buffer,strlen((char *)buffer));
++        this->hidden->real_video->glReadPixels(0,0,this->hidden->width,this->hidden->height,GL_RGBA,GL_UNSIGNED_BYTE,buffer);
++        write(fd,buffer,sizeof(buffer));
++        close(fd);
++#endif
++
++        this->hidden->real_video->glActiveTexture(GL_TEXTURE0);
++
++        OHQNAME(glBindProgramARB)(GL_FRAGMENT_PROGRAM_ARB,this->hidden->program_name[2]);
++        OHQNAME(glProgramEnvParameter4dARB)(GL_FRAGMENT_PROGRAM_ARB, 0,
++            //1.0d/this->hidden->texsize, 1.0d/this->hidden->texsize,
++            1.0/this->hidden->texsize, 1.0/this->hidden->texsize,
++            this->hidden->texsize, this->hidden->texsize);
++
++        this->hidden->real_video->glPopMatrix();
++    }
++
++    this->hidden->real_video->glViewport(ox,oy,ocw,och);
++    this->hidden->real_video->glPushMatrix();
++    this->hidden->real_video->glTranslated(-1,-1,0);
++    this->hidden->real_video->glScaled(otw/(double)ocw,oth/(double)och,1);
++    this->hidden->real_video->glTranslated(1.0-(ox/(double)otw*2),1.0-(oy/(double)oth*2),0);
++    this->hidden->real_video->glCallList(this->hidden->displaylist);
++    this->hidden->real_video->glPopMatrix();
++
++    if (dbuf) this->hidden->real_video->GL_SwapBuffers(this->hidden->real_video);
++
++    if (showfps) {
++        time_t now = time(NULL);
++        framecnt++;
++
++        if (lasttime == 0) {
++            lasttime = now;
++        } else if (now > lasttime+10) {
++            fprintf(stderr, "SDL OpenGL-HQ FPS: %li\n", framecnt/(now-lasttime));
++            lasttime = now;
++            framecnt = 0;
++        }
++    }
++    this->hidden->real_video->glFlush();
++
++    return 1;
++}
++
++static int InitOpenGL(_THIS) {
++    int w, h, bpp;
++    int border, x, y, texsize;
++    SDL_Surface *surface;
++    GLfloat tex_width, tex_height;
++    GLubyte *texture;
++    double xsize, ysize;
++    unsigned char table[4096] = SDL_openglhq_table_dat;
++	int has_fbo = 1;
++//	double adjust = 0;
++
++    showfps = getenv("SDL_OPENGLHQ_SHOWFPS") != NULL;
++
++    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);//(this->hidden->flags&SDL_DOUBLEBUF)!=0);
++    if (this->hidden->flags & SDL_FULLSCREEN) {
++       const char *res, *res2;
++       if ((res = getenv("SDL_OPENGLHQ_FULLRES")) != NULL) {
++           w = atoi(res);
++           res2 = strchr(res,'x');
++           if (res2 == NULL) {
++               double scale = strtod(res,NULL);
++               w = (int)(this->hidden->width*scale);
++               h = (int)(this->hidden->height*scale);
++               bpp = this->hidden->format.BitsPerPixel;
++           } else {
++               h = atoi(res2+1);
++               res = strchr(res,'-');
++               if (res != NULL) {
++                   bpp = atoi(res+1);
++               } else {
++                   bpp = this->hidden->format.BitsPerPixel;
++                   }
++           }
++       } else {
++           w = this->hidden->screen_width;
++           h = this->hidden->screen_height;
++           bpp = this->hidden->format.BitsPerPixel;
++       }
++    } else {
++       const char *res, *res2;
++       if ((res = getenv("SDL_OPENGLHQ_WINRES")) != NULL) {
++           w = atoi(res);
++           res2 = strchr(res,'x');
++           if (res2 == NULL) {
++               double scale = strtod(res,NULL);
++               w = (int)(this->hidden->width*scale);
++               h = (int)(this->hidden->height*scale);
++               bpp = this->hidden->format.BitsPerPixel;
++           } else {
++               h = atoi(res2+1);
++               res = strchr(res,'-');
++               if (res != NULL) {
++                   bpp = atoi(res+1);
++               } else {
++                   bpp = this->hidden->format.BitsPerPixel;
++           }
++               }
++       } else {
++           w = this->hidden->width;
++           h = this->hidden->height;
++           bpp = this->hidden->format.BitsPerPixel;
++       }
++    }
++
++    if (w <= 0 || h <= 0) {
++       SDL_SetError("Invalid mode specification in SDL_OPENGLHQ_WINRES/SDL_OPENGLHQ_FULLRES");
++       return 0;
++    }
++    if (w > this->hidden->screen_width || h > this->hidden->screen_height) {
++       w = this->hidden->screen_width;
++       h = this->hidden->screen_height;
++    }
++
++    surface = SDL_SetVideoMode(w,h,bpp,SDL_OPENGL|(this->hidden->flags&SDL_FULLSCREEN));
++    if (surface == NULL) {
++        SDL_SetError("OPENGLHQ: Can't open drawing surface, are you running in 16bpp (or higher) mode?");
++        return 0;
++    }
++    this->hidden->outwidth = surface->w;
++    this->hidden->outheight = surface->h;
++
++    if (this->hidden->max_texsize == 0) {
++        const char * gl_ext = (const char *)this->hidden->real_video->glGetString(GL_EXTENSIONS);
++
++        if (getenv("SDL_OPENGLHQ_STATIC") != NULL) this->hidden->static_threshold = atoi(getenv("SDL_OPENGLHQ_STATIC"));
++        else this->hidden->static_threshold = 10;
++        if (this->hidden->static_threshold > 255) this->hidden->static_threshold = 255;
++        if (this->hidden->static_threshold < 0) this->hidden->static_threshold = 0;
++        if (getenv("SDL_OPENGLHQ_DYNAMIC") != NULL) this->hidden->dynamic_threshold = atoi(getenv("SDL_OPENGLHQ_DYNAMIC"));
++        else this->hidden->dynamic_threshold = 33;
++        if (this->hidden->dynamic_threshold > 100) this->hidden->dynamic_threshold = 100;
++        if (this->hidden->dynamic_threshold < 0) this->hidden->dynamic_threshold = 0;
++
++        this->hidden->real_video->glGetIntegerv(GL_MAX_TEXTURE_SIZE, &this->hidden->max_texsize);
++        OHQNAME(glPixelDataRangeNV) = (PFNGLPIXELDATARANGENVPROC)SDL_GL_GetProcAddress("glPixelDataRangeNV");
++        OHQNAME(glColorTableEXT) = (PFNGLCOLORTABLEEXTPROC)SDL_GL_GetProcAddress("glColorTableEXT");
++
++        if (gl_ext != NULL && *gl_ext) {
++            this->hidden->has_pixel_data_range=(strstr(gl_ext,"GL_NV_pixel_data_range") != NULL) && OHQNAME(glPixelDataRangeNV) != NULL;
++            this->hidden->allow_paletted_texture=(strstr(gl_ext,"EXT_paletted_texture") != NULL) && OHQNAME(glColorTableEXT) != NULL;
++
++        }
++
++        if (this->hidden->has_pixel_data_range) {
++            OHQ_malloc = (OHQ_malloc_t)SDL_GL_GetProcAddress("wglAllocateMemoryNV");
++            if (OHQ_malloc == NULL) OHQ_malloc = (OHQ_malloc_t)SDL_GL_GetProcAddress("glXAllocateMemoryNV");
++            OHQ_free = (OHQ_free_t)SDL_GL_GetProcAddress("wglFreeMemoryNV");
++            if (OHQ_free == NULL) OHQ_free = (OHQ_free_t)SDL_GL_GetProcAddress("glXFreeMemoryNV");
++        }
++        if (OHQ_malloc == NULL) OHQ_malloc = (OHQ_malloc_t)default_malloc;
++        if (OHQ_free == NULL) OHQ_free = (OHQ_free_t)default_free;
++
++        OHQNAME(glProgramStringARB) = (PFNGLPROGRAMSTRINGARBPROC)SDL_GL_GetProcAddress("glProgramStringARB");
++        OHQNAME(glBindProgramARB) = (PFNGLBINDPROGRAMARBPROC)SDL_GL_GetProcAddress("glBindProgramARB");
++        OHQNAME(glGenProgramsARB) = (PFNGLGENPROGRAMSARBPROC)SDL_GL_GetProcAddress("glGenProgramsARB");
++        OHQNAME(glDeleteProgramsARB) = (PFNGLDELETEPROGRAMSARBPROC)SDL_GL_GetProcAddress("glDeleteProgramsARB");
++        OHQNAME(glGetProgramivARB) = (PFNGLGETPROGRAMIVARBPROC)SDL_GL_GetProcAddress("glGetProgramivARB");
++        OHQNAME(glProgramLocalParameter4dARB) = (PFNGLPROGRAMLOCALPARAMETER4DARBPROC)SDL_GL_GetProcAddress("glProgramLocalParameter4dARB");
++        OHQNAME(glProgramEnvParameter4dARB) = (PFNGLPROGRAMENVPARAMETER4DARBPROC)SDL_GL_GetProcAddress("glProgramEnvParameter4dARB");
++
++        if (!gl_ext || !*gl_ext || !((strstr(gl_ext,"ARB_fragment_program") != NULL) &&
++                OHQNAME(glProgramStringARB) && OHQNAME(glBindProgramARB) && OHQNAME(glGenProgramsARB) && OHQNAME(glDeleteProgramsARB) &&
++                OHQNAME(glGetProgramivARB) && OHQNAME(glProgramLocalParameter4dARB) && OHQNAME(glProgramEnvParameter4dARB))) {
++            SDL_SetError("OPENGLHQ: Video driver doesn't support fragment programs");
++            return 0;
++        }
++
++        OHQNAME(glGenFramebuffersEXT) = (PFNGLGENFRAMEBUFFERSEXTPROC)SDL_GL_GetProcAddress("glGenFramebuffersEXT");
++        OHQNAME(glBindFramebufferEXT) = (PFNGLBINDFRAMEBUFFEREXTPROC)SDL_GL_GetProcAddress("glBindFramebufferEXT");
++        OHQNAME(glCheckFramebufferStatusEXT) = (PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC)SDL_GL_GetProcAddress("glCheckFramebufferStatusEXT");
++        OHQNAME(glFramebufferTexture2DEXT) = (PFNGLFRAMEBUFFERTEXTURE2DEXTPROC)SDL_GL_GetProcAddress("glFramebufferTexture2DEXT");
++        OHQNAME(glDeleteFramebuffersEXT) = (PFNGLDELETEFRAMEBUFFERSEXTPROC)SDL_GL_GetProcAddress("glDeleteFramebuffersEXT");
++
++        if(!OHQNAME(glGenFramebuffersEXT) || !OHQNAME(glBindFramebufferEXT) ||
++            !OHQNAME(glFramebufferTexture2DEXT) || !OHQNAME(glDeleteFramebuffersEXT) ||
++			(strstr(gl_ext,"GL_EXT_framebuffer_object") == NULL)) {
++			has_fbo = 0;
++			fprintf(stderr, "OPENGLHQ: Video driver doesn't support framebuffer objects. Using slow fallback renderer.\n");
++        }
++
++    }
++
++    this->hidden->framebuf_format = GL_BGRA_EXT;
++    this->hidden->framebuf_datatype = GL_UNSIGNED_BYTE;
++    if (this->hidden->bpp == 8 && !this->hidden->allow_paletted_texture) {
++        this->hidden->bpp = this->hidden->format.BitsPerPixel;
++    }
++    if (this->hidden->bpp == 8) {
++        this->hidden->framebuf_format = GL_COLOR_INDEX8_EXT;
++        OHQNAME(glColorTableEXT)(GL_TEXTURE_2D,GL_RGBA8,256,GL_RGBA,GL_UNSIGNED_BYTE,this->hidden->pal);
++    } else if (this->hidden->bpp == 15) {
++        this->hidden->framebuf_format = GL_BGRA_EXT;
++        this->hidden->framebuf_datatype = GL_UNSIGNED_SHORT_1_5_5_5_REV;
++    } else if (this->hidden->bpp == 16) {
++        this->hidden->framebuf_format = GL_RGB;
++        this->hidden->framebuf_datatype = GL_UNSIGNED_SHORT_5_6_5;
++    } else {
++        this->hidden->bpp = 32;
++    }
++
++    texsize=this->hidden->texsize=2 << int_log2(this->hidden->width > this->hidden->height ? this->hidden->width : this->hidden->height);
++    texsize=this->hidden->texsize=2 << int_log2(this->hidden->width > this->hidden->height ? this->hidden->width : this->hidden->height);
++    tex_width=((GLfloat)(this->hidden->width)/(GLfloat)texsize);
++    tex_height=((GLfloat)(this->hidden->height)/(GLfloat)texsize);
++
++    if (texsize>this->hidden->max_texsize) {
++        SDL_SetError("OPENGLHQ: No support for texturesize of %d, falling back to surface",texsize);
++        return 0;
++    }
++
++    /* Create the texture and display list */
++    this->hidden->real_video->glMatrixMode(GL_PROJECTION);
++    this->hidden->real_video->glGenTextures(4,this->hidden->texture);
++
++    this->hidden->pitch=this->hidden->width*((this->hidden->bpp+7)/8);
++    this->hidden->framebuf = OHQ_malloc(this->hidden->pitch*this->hidden->height+MALLOC_ALIGN,0.0,1.0,1.0);;
++
++    if (this->hidden->has_pixel_data_range) {
++        OHQNAME(glPixelDataRangeNV)(GL_WRITE_PIXEL_DATA_RANGE_NV,this->hidden->width*this->hidden->height*4,this->hidden->framebuf);
++        this->hidden->real_video->glEnableClientState(GL_WRITE_PIXEL_DATA_RANGE_NV);
++    }
++
++    if ((this->hidden->program_name[0] = LoadNativeFragmentProgram(this, SDL_openglhq_pass1_fp,"SDL_openglhq_pass1")) == 0 ||
++        (this->hidden->program_name[1] = LoadNativeFragmentProgram(this, SDL_openglhq_pass2_fp,"SDL_openglhq_pass2")) == 0 ||
++        (this->hidden->program_name[2] = LoadNativeFragmentProgram(this, SDL_openglhq_pass3_fp,"SDL_openglhq_pass3")) == 0) {
++        SDL_SetError("OPENGLHQ: Hardware doesn't support this output");
++        return 0;
++    }
++
++    this->hidden->nohq = 1;
++    this->hidden->fbo[0] = this->hidden->fbo[1] = 0;
++    if (this->hidden->width < this->hidden->outwidth && this->hidden->height < this->hidden->outheight) {
++        this->hidden->nohq = 0;
++
++        this->hidden->real_video->glBindTexture(GL_TEXTURE_2D, this->hidden->texture[1]);
++        this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
++        this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
++        this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
++        this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
++        this->hidden->real_video->glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, texsize, texsize, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
++
++        this->hidden->real_video->glBindTexture(GL_TEXTURE_2D, this->hidden->texture[2]);
++        this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
++        this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
++        this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
++        this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
++        this->hidden->real_video->glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, texsize, texsize, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
++
++        if (has_fbo) {
++			OHQNAME(glGenFramebuffersEXT)(2, this->hidden->fbo);
++
++			OHQNAME(glBindFramebufferEXT)(GL_FRAMEBUFFER_EXT, this->hidden->fbo[0]);
++			OHQNAME(glFramebufferTexture2DEXT)(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, this->hidden->texture[1], 0);
++
++			OHQNAME(glBindFramebufferEXT)(GL_FRAMEBUFFER_EXT, this->hidden->fbo[1]);
++			OHQNAME(glFramebufferTexture2DEXT)(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, this->hidden->texture[2], 0);
++
++			OHQNAME(glBindFramebufferEXT)(GL_FRAMEBUFFER_EXT, 0);
++		}
++    }
++
++	if ((this->hidden->flags&SDL_DOUBLEBUF) == 0) {
++		this->hidden->real_video->glDrawBuffer(GL_FRONT);
++		this->hidden->real_video->glReadBuffer(GL_FRONT);
++	}
++	this->hidden->real_video->glActiveTexture(GL_TEXTURE2);
++    this->hidden->real_video->glEnable(GL_TEXTURE_3D);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_3D, this->hidden->texture[3]);
++    this->hidden->real_video->glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_COMBINE);
++    this->hidden->real_video->glTexEnvi(GL_TEXTURE_ENV,GL_COMBINE_RGB,GL_REPLACE);
++    this->hidden->real_video->glTexEnvi(GL_TEXTURE_ENV,GL_COMBINE_ALPHA,GL_REPLACE);
++    this->hidden->real_video->glTexEnvi(GL_TEXTURE_ENV,GL_SRC0_RGB,GL_TEXTURE0);
++    this->hidden->real_video->glTexEnvi(GL_TEXTURE_ENV,GL_OPERAND0_RGB,GL_SRC_COLOR);
++    this->hidden->real_video->glTexEnvi(GL_TEXTURE_ENV,GL_SRC0_ALPHA,GL_TEXTURE0);
++    this->hidden->real_video->glTexEnvi(GL_TEXTURE_ENV,GL_OPERAND0_ALPHA,GL_SRC_ALPHA);
++
++    texture = (GLubyte *)malloc(OHQ_RESOLUTION*OHQ_RESOLUTION*4096*4);
++    xsize = (double)this->hidden->width/(double)this->hidden->outwidth;
++    ysize = (double)this->hidden->height/(double)this->hidden->outheight;
++
++    /*
++    Table layout is a bit convoluted to be better processable in
++    fragment programs and to save space. Use the table builder
++    to modify it. If you are interested in details, read its source.
++    */
++    if (getenv("SDL_OPENGLHQ_DATA")) {
++        char file[4096];
++        int tablefd;
++        strcpy(file,getenv("SDL_OPENGLHQ_DATA"));
++        strcat(file,"openglhq_table.dat");
++        if ((tablefd = open(file,O_RDONLY|O_BINARY)) >= 0) {
++            read(tablefd,table,sizeof(table));
++            close(tablefd);
++        }
++    }
++
++#define R 1
++#define T 2
++#define RT 4
++#define RT2 8
++#define L 16
++#define LB2 32
++#define LT2 64
++#define LT 128
++#define LB 256
++#define B 512
++#define RB2 1024
++#define RB 2048
++
++#define NODIAG 0x90
++#define H 1
++#define V 2
++#define D 4
++
++#define hmirror(p) swap_bits(swap_bits(swap_bits(swap_bits(swap_bits(p,R,L),RT,LT),RT2,LT2),RB,LB),RB2,LB2)
++#define vmirror(p) swap_bits(swap_bits(swap_bits(swap_bits(swap_bits(p,T,B),RT,RB),RT2,RB2),LT,LB),LT2,LB2)
++#define NO_BORDER(x) ((b&(x)) == 0)
++#define IS_BORDER(x) ((b&(x)) == (x))
++#define SETINTERP(percentage_inside) setinterp(xcenter,ycenter,percentage_inside, \
++                        NO_BORDER(R),NO_BORDER(T),NO_BORDER(RT), \
++                        IS_BORDER(R),IS_BORDER(T),IS_BORDER(RT), \
++                        texture+((x+(border%16)*OHQ_RESOLUTION+y*16*OHQ_RESOLUTION+(border&~15)*OHQ_RESOLUTION*OHQ_RESOLUTION)*4))
++
++/*	if (getenv("SDL_OPENGLHQ_ADJUST"))
++		adjust = atof(getenv("SDL_OPENGLHQ_ADJUST"));
++	if (adjust == 0) adjust = 1.025; //1.0438 = ATI fglrx; 1.025 = generic
++*/
++#define adjust 1
++	//OHQNAME(glProgramEnvParameter4dARB)(GL_FRAGMENT_PROGRAM_ARB, 1, 1.0d/.875d, -(1.0d/.875d-1.0d)/2, .875/adjust, (1-.875/adjust)/2);
++	OHQNAME(glProgramEnvParameter4dARB)(GL_FRAGMENT_PROGRAM_ARB, 1, 1.0/.875, -(1.0/.875-1.0)/2, .875/adjust, (1-.875/adjust)/2);
++
++    for (border = 0; border < 4096; border++) {
++        for (y = 0; y < OHQ_RESOLUTION; y++) {
++            for (x = 0; x < OHQ_RESOLUTION; x++) {
++                double xcenter = fabs((((double)x)+.5)/(double)(OHQ_RESOLUTION)-.5)*adjust;
++                double ycenter = fabs((((double)y)+.5)/(double)(OHQ_RESOLUTION)-.5)*adjust;
++                int sx = (x < OHQ_RESOLUTION/2?-1:1);
++                int sy = (y < OHQ_RESOLUTION/2?-1:1);
++                int b = (sy > 0?(sx > 0?border:hmirror(border)):(sx > 0?vmirror(border):vmirror(hmirror(border))));
++
++                if ((table[b] & NODIAG) == NODIAG) {
++                    if (table[b] & H) {
++                        if (table[b] & V) {
++                            if (table[b] & D) SETINTERP(intersect_hvd(xcenter,ycenter,xsize,ysize));
++                            else SETINTERP(intersect_hv(xcenter,ycenter,xsize,ysize));
++                        } else {
++                            SETINTERP(intersect_h(xcenter,ycenter,xsize,ysize));
++                        }
++                    } else if (table[b] & V) {
++                        SETINTERP(intersect_v(xcenter,ycenter,xsize,ysize));
++                    } else {
++                        SETINTERP(1.0);
++                    }
++                } else {
++                    double yoff = (table[b]&4?1:-1)*(((table[b] >> 3) & 3) + 1)/4.0;
++                    double grad = (table[b]&32?1:-1)*(((table[b] >> 6) & 3) + 1)/2.0;
++                    if (table[b] & H) {
++                        if (table[b] & V) {
++                            SETINTERP(intersect_any_hv(xcenter,ycenter,xsize,ysize,yoff,grad));
++                        } else {
++                            SETINTERP(intersect_any_h(xcenter,ycenter,xsize,ysize,yoff,grad));
++                        }
++                    } else if (table[b] & V) {
++                        SETINTERP(intersect_any_v(xcenter,ycenter,xsize,ysize,yoff,grad));
++                    } else {
++                        SETINTERP(intersect_any(xcenter,ycenter,xsize,ysize,yoff,grad));
++                    }
++                }
++
++            }
++        }
++    }
++#ifdef OGL_DEBUG_HQ_MAX
++    int fd = open("texture.pam",O_WRONLY|O_CREAT|O_TRUNC|O_BINARY,0666);
++    sprintf((char *)table,"P7\nWIDTH %i\nHEIGHT %i\nMAXVAL 255\nDEPTH 4\nTUPLTYPE RGB_ALPHA\nENDHDR\n",16*OHQ_RESOLUTION,4096/16*OHQ_RESOLUTION);
++    write(fd,table,strlen((char *)table));
++    write(fd,texture,OHQ_RESOLUTION*OHQ_RESOLUTION*4096*4);
++    close(fd);
++#endif
++
++    this->hidden->real_video->glTexImage3D(GL_TEXTURE_3D, 0, GL_RGBA8, 16*OHQ_RESOLUTION, OHQ_RESOLUTION, 256, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture);
++    free(texture);
++    this->hidden->real_video->glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
++    this->hidden->real_video->glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
++    this->hidden->real_video->glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
++    this->hidden->real_video->glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
++    this->hidden->real_video->glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
++
++    this->hidden->real_video->glActiveTexture(GL_TEXTURE0);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_2D,this->hidden->texture[0]);
++    this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
++    this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
++    this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, (this->hidden->nohq?GL_LINEAR:GL_NEAREST));
++    this->hidden->real_video->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, (this->hidden->nohq?GL_LINEAR:GL_NEAREST));
++
++    this->hidden->real_video->glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, texsize, texsize, 0, this->hidden->framebuf_format, GL_UNSIGNED_BYTE, NULL);
++    this->hidden->real_video->glFinish();
++
++    this->hidden->real_video->glShadeModel(GL_FLAT);
++    this->hidden->real_video->glDisable(GL_DEPTH_TEST);
++    this->hidden->real_video->glDisable(GL_ALPHA_TEST);
++    this->hidden->real_video->glDisable(GL_STENCIL_TEST);
++    this->hidden->real_video->glDisable(GL_SCISSOR_TEST);
++    this->hidden->real_video->glDisable(GL_BLEND);
++    this->hidden->real_video->glDisable(GL_DITHER);
++    this->hidden->real_video->glDisable(GL_INDEX_LOGIC_OP);
++    this->hidden->real_video->glDisable(GL_COLOR_LOGIC_OP);
++    this->hidden->real_video->glDisable(GL_LIGHTING);
++    this->hidden->real_video->glDisable(GL_CULL_FACE);
++    this->hidden->real_video->glDisable(GL_FOG);
++    this->hidden->real_video->glEnable(GL_TEXTURE_2D);
++    if (this->hidden->nohq) {
++        this->hidden->real_video->glDisable(GL_FRAGMENT_PROGRAM_ARB);
++    } else {
++        this->hidden->real_video->glEnable(GL_FRAGMENT_PROGRAM_ARB);
++    }
++    this->hidden->real_video->glMatrixMode(GL_MODELVIEW);
++    this->hidden->real_video->glLoadIdentity();
++
++    this->hidden->pbuffer_displaylist = this->hidden->real_video->glGenLists(1);
++    this->hidden->real_video->glNewList(this->hidden->pbuffer_displaylist, GL_COMPILE);
++    this->hidden->real_video->glBegin(GL_QUADS);
++    this->hidden->real_video->glTexCoord2f(0,0); this->hidden->real_video->glVertex2f(-1.0f,-1.0f);
++    this->hidden->real_video->glTexCoord2f(tex_width,0); this->hidden->real_video->glVertex2f(1.0f, -1.0f);
++    this->hidden->real_video->glTexCoord2f(tex_width,tex_height); this->hidden->real_video->glVertex2f(1.0f, 1.0f);
++    this->hidden->real_video->glTexCoord2f(0,tex_height); this->hidden->real_video->glVertex2f(-1.0f, 1.0f);
++    this->hidden->real_video->glEnd();
++    this->hidden->real_video->glEndList();
++
++    this->hidden->displaylist = this->hidden->real_video->glGenLists(1);
++    this->hidden->real_video->glNewList(this->hidden->displaylist, GL_COMPILE);
++    this->hidden->real_video->glBindTexture(GL_TEXTURE_2D, this->hidden->texture[0]);
++    this->hidden->real_video->glBegin(GL_QUADS);
++    this->hidden->real_video->glTexCoord2f(0,tex_height); this->hidden->real_video->glVertex2f(-1.0f,-1.0f);
++    this->hidden->real_video->glTexCoord2f(tex_width,tex_height); this->hidden->real_video->glVertex2f(1.0f, -1.0f);
++    this->hidden->real_video->glTexCoord2f(tex_width,0); this->hidden->real_video->glVertex2f(1.0f, 1.0f);
++    this->hidden->real_video->glTexCoord2f(0,0); this->hidden->real_video->glVertex2f(-1.0f, 1.0f);
++    this->hidden->real_video->glEnd();
++    this->hidden->real_video->glEndList();
++    this->hidden->real_video->glFinish();
++    return 1;
++}
++
++static int RenderThread(void *data) {
++    SDL_VideoDevice *this = (SDL_VideoDevice *)data;
++    SDL_Rect **modes;
++    const char *driver;
++    this->hidden->status = OGL_DONE;
++    current_video = NULL;
++    if ((driver = getenv("SDL_OPENGLHQ_VIDEODRIVER")) != NULL && !strcmp(driver,"openglhq")) driver = NULL;
++    SDL_VideoInit(driver, 0);
++    if (current_video == NULL) {
++        SDL_SetError("Unable to initialize backend video device, check SDL_OPENGLHQ_VIDEODRIVER");
++        this->hidden->status = OGL_ERROR;
++    } else {
++        current_video->GL_LoadLibrary(current_video,NULL);
++        if (current_video->GetDesktopMode != NULL) {
++            current_video->GetDesktopMode(current_video,&this->hidden->screen_width,&this->hidden->screen_height);
++        } else {
++            modes = SDL_ListModes(NULL,SDL_OPENGL|SDL_FULLSCREEN);
++            if (((intptr_t)modes) != -1 && modes && *modes) {
++                this->hidden->screen_width = modes[0]->w;
++                this->hidden->screen_height = modes[0]->h;
++            }
++        }
++    }
++    SDL_SemPost(this->hidden->render_thread_ack);
++
++    while (SDL_SemWait(this->hidden->render_thread_signal) >= 0) {
++        if (this->hidden->postponed && this->hidden->cmd != OGL_FRAME) {
++                RenderFrame(this, 0);
++        }
++
++        this->hidden->status = OGL_DONE;
++
++        if (this->hidden->cmd == OGL_CALL) {
++            switch (this->hidden->call.type) {
++            case OGL_CALL_P:
++                this->hidden->call.func.p(this->hidden->real_video);
++                break;
++            case OGL_CALL_PII:
++                this->hidden->call.func.pii(this->hidden->real_video,(int)this->hidden->call.args[0],(int)this->hidden->call.args[1]);
++                break;
++            case OGL_CALL_PPP:
++                this->hidden->call.func.ppp(this->hidden->real_video,(const void*)this->hidden->call.args[0],(const void*)this->hidden->call.args[1]);
++                break;
++            case OGL_CALL_PP:
++                this->hidden->call.func.pp(this->hidden->real_video,(const void*)this->hidden->call.args[0]);
++                break;
++            case OGL_CALL_PPPIIII_P:
++                this->hidden->call.result = (intptr_t)this->hidden->call.func.pppiiii_p(this->hidden->real_video,(const void*)this->hidden->call.args[0],(const void*)this->hidden->call.args[1],
++                                    (int)this->hidden->call.args[2],(int)this->hidden->call.args[3],(int)this->hidden->call.args[4],(int)this->hidden->call.args[5]);
++                break;
++            case OGL_CALL_PP_I:
++                this->hidden->call.result = (intptr_t)this->hidden->call.func.pp_i(this->hidden->real_video,(const void*)this->hidden->call.args[0]);
++                break;
++            case OGL_CALL_P_I:
++                this->hidden->call.result = (intptr_t)this->hidden->call.func.p_i(this->hidden->real_video);
++                break;
++            case OGL_CALL_PI_I:
++                this->hidden->call.result = (intptr_t)this->hidden->call.func.pi_i(this->hidden->real_video,(int)this->hidden->call.args[0]);
++                break;
++            default:
++                this->hidden->status = OGL_ERROR;
++            }
++
++        } else if (this->hidden->cmd == OGL_INIT) {
++            if (!InitOpenGL(this)) {
++                this->hidden->status = OGL_ERROR;
++                DeinitOpenGL(this);
++            }
++
++#ifndef __WIN32__
++			// FIXME: ugly hack that probably only works on Linux, improves app responsiveness
++			setpriority(PRIO_PROCESS, getpid()+1, 19);
++			{  // This is a bit more portable (should work on any POSIX/pthreads system), but SCHED_IDLE is ineffective on unpatched Linux
++				struct sched_param param = { 0 };
++				pthread_setschedparam(pthread_self(), SCHED_IDLE, &param);
++			}
++#endif
++        } else if (this->hidden->cmd == OGL_DEINIT) {
++            DeinitOpenGL(this);
++
++        } else if (this->hidden->cmd == OGL_FRAME) {
++            if (!RenderFrame(this, 1)) this->hidden->status = OGL_ERROR;
++
++        } else if (this->hidden->cmd == OGL_PALETTE && this->hidden->allow_paletted_texture) {
++			this->hidden->real_video->glActiveTexture(GL_TEXTURE0);
++            OHQNAME(glColorTableEXT)(GL_TEXTURE_2D, GL_RGBA8, 256, GL_RGBA, GL_UNSIGNED_BYTE, this->hidden->pal);
++
++        } else if (this->hidden->cmd == OGL_NONE) {
++
++        } else if (this->hidden->cmd == OGL_QUIT) {
++            break;
++
++        } else {
++            this->hidden->status = OGL_ERROR;
++        }
++        SDL_SemPost(this->hidden->render_thread_ack);
++	}
++    SDL_VideoQuit();
++    SDL_SemPost(this->hidden->render_thread_ack);
++    return 0;
++}
++
++static void StartRenderThread(_THIS) {
++    this->hidden->cmd = OGL_DONE;
++    this->hidden->render_thread_signal = SDL_CreateSemaphore(0);
++    this->hidden->render_thread_ack = SDL_CreateSemaphore(0);
++    this->hidden->render_thread = SDL_CreateThread(&RenderThread,this);
++    SDL_SemWait(this->hidden->render_thread_ack);
++}
++
++static void ShutdownRenderThread(_THIS) {
++    if (this->hidden->render_thread != NULL) {
++        SendSyncCommand(this,OGL_DEINIT);
++        SendSyncCommand(this,OGL_QUIT);
++        SDL_WaitThread(this->hidden->render_thread, NULL);
++        SDL_DestroySemaphore(this->hidden->render_thread_signal);
++        SDL_DestroySemaphore(this->hidden->render_thread_ack);
++        this->hidden->render_thread = NULL;
++    }
++}
++
+diff -urN ./src/video/openglhq/SDL_ohqvideo.c ./src/video/openglhq/SDL_ohqvideo.c
+--- ./src/video/openglhq/SDL_ohqvideo.c	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_ohqvideo.c	2012-11-08 00:20:30 +0900
+@@ -0,0 +1,581 @@
++/*
++        SDL - Simple DirectMedia Layer OpenGL-HQ scaling
++    Copyright (C) 1997-2004 Sam Lantinga
++    Copyright (C) 2005 JÃ¶rg Walter <jwalt@garni.ch>
++
++        This library is free software; you can redistribute it and/or
++        modify it under the terms of the GNU Library General Public
++        License as published by the Free Software Foundation; either
++        version 2 of the License, or (at your option) any later version.
++
++        This library is distributed in the hope that it will be useful,
++        but WITHOUT ANY WARRANTY; without even the implied warranty of
++        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++        Library General Public License for more details.
++
++        You should have received a copy of the GNU Library General Public
++        License along with this library; if not, write to the Free
++        Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++        Sam Lantinga
++        slouken@libsdl.org
++*/
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id$";
++#endif
++
++/* SDL video driver implementation which outputs onto a scaled OpenGL-surface
++   with high quality scaling optimized for framebuffer based games
++*/
++
++#define TRACE //do { fprintf(stderr,"%s:%i: %p->%s(...)\n",__FILE__,__LINE__,SDL_ThreadID(),__FUNCTION__); } while (0)
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#include <fcntl.h>
++#ifndef _MSC_VER
++#include <unistd.h>
++#endif
++#include "SDL.h"
++#include "SDL_error.h"
++#include "SDL_video.h"
++#include "SDL_opengl.h"
++#include "../SDL_pixels_c.h"
++#include "../SDL_cursor_c.h"
++#include "../SDL_sysvideo.h"
++#include "../../events/SDL_events_c.h"
++#include "SDL_ohqvideo.h"
++
++#include "SDL_ohqthread.h"
++
++#ifndef SDL_memcpy
++#define SDL_memcpy memcpy
++#endif
++
++static void OHQ_MouseFilter(int relative, Sint16 *x, Sint16 *y);
++extern void (*SDL_MouseFilter)(int relative, Sint16 *x, Sint16 *y);
++static void (*OHQ_NextMouseFilter)(int relative, Sint16 *x, Sint16 *y) = (void *)-1;
++static SDL_VideoDevice* filter_video = NULL;
++static int OHQ_VideoInit(_THIS, SDL_PixelFormat *vformat);
++
++/* OHQ driver bootstrap functions */
++
++static int OHQ_Available(void)
++{
++    return 1;
++}
++
++static void OHQ_DeleteDevice(SDL_VideoDevice *device)
++{
++    free(device->hidden);
++    free(device);
++}
++
++static void OHQ_Call(_THIS, void (*func)(SDL_VideoDevice*))
++{
++    if (this->VideoInit != OHQ_VideoInit) {
++        func(this);
++    } else if (SDL_ThreadID() == SDL_GetThreadID(this->hidden->render_thread)) {
++        func(this->hidden->real_video);
++    } else {
++        this->hidden->call.type = OGL_CALL_P;
++        this->hidden->call.func.p = func;
++        SendSyncCommand(this,OGL_CALL);
++    }
++}
++
++static void OHQ_Call_ii(_THIS, void (*func)(SDL_VideoDevice*,int,int), int arg1, int arg2)
++{
++    if (this->VideoInit != OHQ_VideoInit) {
++        func(this,arg1,arg2);
++    } else if (SDL_ThreadID() == SDL_GetThreadID(this->hidden->render_thread)) {
++        func(this->hidden->real_video,arg1,arg2);
++    } else {
++        this->hidden->call.type = OGL_CALL_PII;
++        this->hidden->call.func.pii = func;
++        this->hidden->call.args[0] = (intptr_t)arg1;
++        this->hidden->call.args[1] = (intptr_t)arg2;
++        SendSyncCommand(this,OGL_CALL);
++    }
++}
++
++static void OHQ_Call_pp(_THIS, void (*func)(SDL_VideoDevice*,const void*,const void*), const void* arg1, const void* arg2)
++{
++    if (this->VideoInit != OHQ_VideoInit) {
++        func(this,arg1,arg2);
++    } else if (SDL_ThreadID() == SDL_GetThreadID(this->hidden->render_thread)) {
++        func(this->hidden->real_video,arg1,arg2);
++    } else {
++        this->hidden->call.type = OGL_CALL_PPP;
++        this->hidden->call.func.ppp = func;
++        this->hidden->call.args[0] = (intptr_t)arg1;
++        this->hidden->call.args[1] = (intptr_t)arg2;
++        SendSyncCommand(this,OGL_CALL);
++    }
++}
++
++static void OHQ_Call_p(_THIS, void (*func)(SDL_VideoDevice*,const void*), const void* arg1)
++{
++    if (this->VideoInit != OHQ_VideoInit) {
++        func(this,arg1);
++    } else if (SDL_ThreadID() == SDL_GetThreadID(this->hidden->render_thread)) {
++        func(this->hidden->real_video,arg1);
++    } else {
++        this->hidden->call.type = OGL_CALL_PP;
++        this->hidden->call.func.pp = func;
++        this->hidden->call.args[0] = (intptr_t)arg1;
++        SendSyncCommand(this,OGL_CALL);
++    }
++}
++
++static int OHQ_Call_p_i(_THIS, int (*func)(SDL_VideoDevice*,const void*), const void* arg1)
++{
++    if (this->VideoInit != OHQ_VideoInit) {
++        return func(this,arg1);
++    } else if (SDL_ThreadID() == SDL_GetThreadID(this->hidden->render_thread)) {
++        return func(this->hidden->real_video,arg1);
++    } else {
++        this->hidden->call.type = OGL_CALL_PP_I;
++        this->hidden->call.func.pp_i = func;
++        this->hidden->call.args[0] = (intptr_t)arg1;
++        SendSyncCommand(this,OGL_CALL);
++        return (int)this->hidden->call.result;
++    }
++}
++
++static int OHQ_Call__i(_THIS, int (*func)(SDL_VideoDevice*))
++{
++    if (this->VideoInit != OHQ_VideoInit) {
++        return func(this);
++    } else if (SDL_ThreadID() == SDL_GetThreadID(this->hidden->render_thread)) {
++        return func(this->hidden->real_video);
++    } else {
++        this->hidden->call.type = OGL_CALL_P_I;
++        this->hidden->call.func.p_i = func;
++        SendSyncCommand(this,OGL_CALL);
++        return (int)this->hidden->call.result;
++    }
++}
++
++static int OHQ_Call_i_i(_THIS, int (*func)(SDL_VideoDevice*,int), int arg1)
++{
++    if (this->VideoInit != OHQ_VideoInit) {
++        return func(this,arg1);
++    } else if (SDL_ThreadID() == SDL_GetThreadID(this->hidden->render_thread)) {
++        return func(this->hidden->real_video,arg1);
++    } else {
++        this->hidden->call.type = OGL_CALL_PI_I;
++        this->hidden->call.func.pi_i = func;
++        this->hidden->call.args[0] = (intptr_t)arg1;
++        SendSyncCommand(this,OGL_CALL);
++        return (int)this->hidden->call.result;
++    }
++}
++
++static void* OHQ_Call_ppiiii_p(_THIS, void* (*func)(SDL_VideoDevice*,const void*,const void*,int,int,int,int), const void* arg1, const void* arg2, int arg3, int arg4, int arg5, int arg6)
++{
++    if (this->VideoInit != OHQ_VideoInit) {
++        return func(this,arg1,arg2,arg3,arg4,arg5,arg6);
++    } else if (SDL_ThreadID() == SDL_GetThreadID(this->hidden->render_thread)) {
++        return func(this->hidden->real_video,arg1,arg2,arg3,arg4,arg5,arg6);
++    } else {
++        this->hidden->call.type = OGL_CALL_PPPIIII_P;
++        this->hidden->call.func.pppiiii_p = func;
++        this->hidden->call.args[0] = (intptr_t)arg1;
++        this->hidden->call.args[1] = (intptr_t)arg2;
++        this->hidden->call.args[2] = (intptr_t)arg3;
++        this->hidden->call.args[3] = (intptr_t)arg4;
++        this->hidden->call.args[4] = (intptr_t)arg5;
++        this->hidden->call.args[5] = (intptr_t)arg6;
++        SendSyncCommand(this,OGL_CALL);
++        return (void*)this->hidden->call.result;
++    }
++}
++
++#define SAVE_VIDEO { SDL_VideoDevice *saved_video = current_video; current_video = this->hidden->real_video;
++#define RESTORE_VIDEO current_video = saved_video; }
++#define SAVE_SCREEN { SDL_Surface *saved_screen = this->hidden->real_video->screen; this->hidden->real_video->screen = this->screen;
++#define RESTORE_SCREEN this->hidden->real_video->screen = saved_screen; }
++
++static int OHQ_VideoInit(_THIS, SDL_PixelFormat *vformat)
++{
++    const SDL_VideoInfo *vinfo;
++
++    SAVE_VIDEO;
++
++    StartRenderThread(this);
++    this->hidden->real_video = current_video;
++    vinfo = SDL_GetVideoInfo();
++    SDL_memcpy(vformat,(SDL_PixelFormat*)vinfo->vfmt,sizeof(*vinfo->vfmt));
++    SDL_memcpy((void *)&this->hidden->format,(SDL_PixelFormat*)vinfo->vfmt,sizeof(*vinfo->vfmt));
++
++    RESTORE_VIDEO;
++
++    return(0);
++}
++
++static void OHQ_SwitchOff(_THIS) {
++    static char env[1024] = "SDL_VIDEODRIVER=";
++    SendSyncCommand(this,OGL_NONE);
++    current_video = this->hidden->real_video;
++    strcat(env,current_video->name);
++    ShutdownRenderThread(this);
++    putenv(env);
++    SDL_VideoInit(NULL,0);
++    free(this->hidden);
++    SDL_memcpy(this, current_video, sizeof(*current_video));
++    current_video = this;
++    if (OHQ_NextMouseFilter != (void *)-1) {
++        SDL_MouseFilter = OHQ_NextMouseFilter;
++        OHQ_NextMouseFilter = (void *)-1;
++    }
++}
++
++static SDL_Rect **OHQ_ListModes(_THIS, SDL_PixelFormat *format, Uint32 flags) {
++    if (flags & SDL_OPENGL) {
++        OHQ_SwitchOff(this);
++        return current_video->ListModes(current_video, format, flags);
++    }
++    return (SDL_Rect **)(intptr_t)(format->BitsPerPixel == 8 && !this->hidden->allow_paletted_texture?0:-1);
++}
++
++static SDL_Surface *OHQ_SetVideoMode(_THIS, SDL_Surface *current, int width, int height, int bpp, Uint32 flags) {
++    if (flags & SDL_OPENGL) {
++        OHQ_SwitchOff(this);
++        return current_video->SetVideoMode(current_video,current,width,height,bpp,flags);
++    }
++
++    SDL_UnlockCursor();
++
++    SendSyncCommand(this,OGL_NONE);
++    filter_video = current_video;
++    SAVE_VIDEO;
++    if (!SendSyncCommand(this,OGL_DEINIT)) return NULL;
++    if (this->hidden->surface == NULL) {
++        this->hidden->surface = malloc(sizeof(*current));
++        SDL_memcpy((SDL_Surface *)this->hidden->surface,current,sizeof(*current));
++    }
++	flags &= ~(SDL_HWPALETTE|SDL_HWSURFACE|SDL_ASYNCBLIT);
++
++    // some video drivers can't handle odd widths properly
++    width = (width+1)&~1;
++
++    this->hidden->width = width;
++    this->hidden->height = height;
++    this->hidden->flags = flags;
++    if (getenv("SDL_OPENGLHQ_DOUBLEBUF")) {
++		if (getenv("SDL_OPENGLHQ_DOUBLEBUF")[0] == '1') this->hidden->flags |= SDL_DOUBLEBUF;
++    	else this->hidden->flags &= ~(SDL_DOUBLEBUF);
++	}
++    this->hidden->bpp = bpp;
++    this->hidden->postponed = 0;
++    if (!SendSyncCommand(this,OGL_INIT)) return NULL;
++    if (OHQ_NextMouseFilter == (void *)-1) {
++        OHQ_NextMouseFilter = SDL_MouseFilter;
++        SDL_MouseFilter = OHQ_MouseFilter;
++    }
++    bpp = this->hidden->bpp;
++
++    if (!SDL_ReallocFormat(current, bpp, (bpp==32?0xff0000:bpp==16?0xf800:0x7c00), (bpp==32?0xff00:bpp==16?0x7e0:0x3e0), (bpp==32?0xff:0x1f), 0)) {
++        return NULL;
++    }
++
++    current->w = this->hidden->width;
++    current->h = this->hidden->height;
++    current->pitch = this->hidden->pitch;
++    current->flags = flags|SDL_PREALLOC;
++    if (bpp == 8) current->flags |= SDL_HWPALETTE;
++    current->pixels = this->hidden->framebuf;
++    this->input_grab = this->hidden->real_video->input_grab;
++
++    this->hidden->clip.x = 0;
++    this->hidden->clip.y = 0;
++    this->hidden->clip.w = current->w;
++    this->hidden->clip.h = current->h;
++
++    RESTORE_VIDEO;
++
++    return current;
++}
++
++static void OHQ_UpdateMouse(_THIS) {
++    SAVE_VIDEO;
++    //SAVE_SCREEN;
++    OHQ_Call(this,this->hidden->real_video->UpdateMouse);
++    //RESTORE_SCREEN;
++    RESTORE_VIDEO;
++}
++
++static int OHQ_SetColors(_THIS, int firstcolor, int ncolors, SDL_Color *colors) {
++    int i, end = firstcolor+ncolors;
++    if (end > 256) return 0;
++    for (i = firstcolor; i < end; i++) {
++        this->hidden->pal[i].r = colors[i].r;
++        this->hidden->pal[i].g = colors[i].g;
++        this->hidden->pal[i].b = colors[i].b;
++        this->hidden->pal[i].a = 255;
++    }
++    SendSyncCommand(this,OGL_PALETTE);
++    return 1;
++}
++
++static int OHQ_FlipHWSurface(_THIS, SDL_Surface *surface)
++{
++TRACE;
++	if (!this->hidden->dirty) {
++		if (surface->flags&SDL_DOUBLEBUF) SDL_UpdateRect(surface, 0, 0, 0, 0);
++		return 0;
++	}
++	this->hidden->dirty = 0;
++    if (!TryWaitCommand(this)) {
++        this->hidden->postponed = 1;
++        return 0;
++    }
++
++    SAVE_VIDEO;
++    SendAsyncCommand(this,OGL_FRAME);
++    SDL_SemWait(this->hidden->render_thread_ack);
++    RESTORE_VIDEO;
++    return 0;
++}
++
++static void OHQ_UpdateRects(_THIS, int numrects, SDL_Rect *rects) {
++//TRACE;
++    int i, minx = this->hidden->width, miny = this->hidden->height, maxx = 0, maxy = 0;
++    if (!numrects) return;
++
++    if (this->hidden->postponed) {
++        minx = this->hidden->clip.x;
++        miny = this->hidden->clip.y;
++        maxx = minx+this->hidden->clip.w;
++        maxy = miny+this->hidden->clip.h;
++    }
++
++    for (i = 0; i < numrects; i++) {
++        if (rects[i].x < minx) minx = rects[i].x;
++        if (rects[i].y < miny) miny = rects[i].y;
++        if (rects[i].x+rects[i].w > maxx) maxx = rects[i].x+rects[i].w;
++        if (rects[i].y+rects[i].h > maxy) maxy = rects[i].y+rects[i].h;
++    }
++
++    this->hidden->clip.x = minx;
++    this->hidden->clip.y = miny;
++    this->hidden->clip.w = maxx-minx;
++    this->hidden->clip.h = maxy-miny;
++    this->hidden->dirty = 1;
++
++    if (!(this->screen->flags&SDL_DOUBLEBUF)) OHQ_FlipHWSurface(this, this->screen);
++    return;
++}
++
++static void OHQ_VideoQuit(_THIS) {
++    SAVE_VIDEO;
++    ShutdownRenderThread(this);
++    if (OHQ_NextMouseFilter != (void *)-1) {
++        SDL_MouseFilter = OHQ_NextMouseFilter;
++        OHQ_NextMouseFilter = (void *)-1;
++    }
++    RESTORE_VIDEO;
++}
++
++static int OHQ_AllocHWSurface(_THIS, SDL_Surface *surface)
++{
++    return -1;
++}
++
++static void OHQ_FreeHWSurface(_THIS, SDL_Surface *surface)
++{
++    return;
++}
++
++static int OHQ_LockHWSurface(_THIS, SDL_Surface *surface)
++{
++TRACE;
++    return 0;
++}
++
++static void OHQ_UnlockHWSurface(_THIS, SDL_Surface *surface)
++{
++TRACE;
++    if (surface->flags&SDL_DOUBLEBUF) SDL_UpdateRect(surface, 0, 0, 0, 0);
++    return;
++}
++
++
++static void OHQ_SetCaption(_THIS, const char *title, const char *icon) {
++    SAVE_VIDEO;
++    OHQ_Call_pp(this, (void (*)(SDL_VideoDevice*,const void*,const void*))this->hidden->real_video->SetCaption, title, icon);
++    RESTORE_VIDEO;
++}
++
++static void OHQ_SetIcon(_THIS, SDL_Surface *icon, Uint8 *mask) {
++    SAVE_VIDEO;
++    OHQ_Call_pp(this, (void (*)(SDL_VideoDevice*,const void*,const void*))this->hidden->real_video->SetIcon, icon, mask);
++    RESTORE_VIDEO;
++}
++
++static int OHQ_IconifyWindow(_THIS) {
++    int result;
++    SAVE_VIDEO;
++    result = OHQ_Call__i(this, this->hidden->real_video->IconifyWindow);
++    RESTORE_VIDEO;
++    return result;
++}
++
++static SDL_GrabMode OHQ_GrabInput(_THIS, SDL_GrabMode mode) {
++    int result;
++    SAVE_VIDEO;
++    result = OHQ_Call_i_i(this, this->hidden->real_video->GrabInput,mode);
++    current_video->input_grab = result;
++    RESTORE_VIDEO;
++    return result;
++}
++
++static int OHQ_GetWMInfo(_THIS, SDL_SysWMinfo *info) {
++    int result;
++    SAVE_VIDEO;
++    result = OHQ_Call_p_i(this, (int (*)(SDL_VideoDevice*,const void*))this->hidden->real_video->GetWMInfo, info);
++    RESTORE_VIDEO;
++    return result;
++}
++
++static void OHQ_FreeWMCursor(_THIS, WMcursor *cursor) {
++    SAVE_VIDEO;
++    OHQ_Call_p(this, (void (*)(SDL_VideoDevice*,const void*))this->hidden->real_video->FreeWMCursor, cursor);
++    RESTORE_VIDEO;
++}
++
++static WMcursor *OHQ_CreateWMCursor(_THIS, Uint8 *data, Uint8 *mask, int w, int h, int hot_x, int hot_y) {
++    void *result;
++    SAVE_VIDEO;
++    result = OHQ_Call_ppiiii_p(this, (void* (*)(SDL_VideoDevice*,const void*,const void*,int,int,int,int))this->hidden->real_video->CreateWMCursor, data, mask, w, h, hot_x, hot_y);
++    RESTORE_VIDEO;
++    return result;
++}
++
++static int OHQ_ShowWMCursor(_THIS, WMcursor *cursor) {
++    int result;
++    SAVE_VIDEO;
++    result = OHQ_Call_p_i(this, (int (*)(SDL_VideoDevice*,const void*))this->hidden->real_video->ShowWMCursor, cursor);
++    RESTORE_VIDEO;
++    return result;
++}
++
++static void OHQ_WarpWMCursor(_THIS, Uint16 x, Uint16 y) {
++    SAVE_VIDEO;
++    OHQ_Call_ii(this, (void (*)(SDL_VideoDevice*,int,int))this->hidden->real_video->WarpWMCursor, x*this->hidden->outwidth/this->hidden->width, y*this->hidden->outheight/this->hidden->height);
++    RESTORE_VIDEO;
++}
++
++static void OHQ_MoveWMCursor(_THIS, int x, int y) {
++    if (!this->hidden->real_video->MoveWMCursor) return;
++    SAVE_VIDEO;
++    OHQ_Call_ii(this, this->hidden->real_video->MoveWMCursor, x*this->hidden->outwidth/this->hidden->width, y*this->hidden->outheight/this->hidden->height);
++    RESTORE_VIDEO;
++}
++
++static void OHQ_CheckMouseMode(_THIS) {
++    SAVE_VIDEO;
++    OHQ_Call(this, this->hidden->real_video->CheckMouseMode);
++    RESTORE_VIDEO;
++}
++
++static void OHQ_InitOSKeymap(_THIS) {
++    SAVE_VIDEO;
++    OHQ_Call(this, this->hidden->real_video->InitOSKeymap);
++    RESTORE_VIDEO;
++}
++
++static void OHQ_MouseFilter(int relative, Sint16 *x, Sint16 *y)
++{
++    if (!relative) {
++        *x = (*x*filter_video->hidden->width)/filter_video->hidden->outwidth;
++        *y = (*y*filter_video->hidden->height)/filter_video->hidden->outheight;
++    }
++	if (OHQ_NextMouseFilter != NULL) OHQ_NextMouseFilter(relative,x,y);
++}
++
++static void OHQ_PumpEvents(_THIS) {
++    SAVE_VIDEO;
++
++#ifdef WIN32
++    OHQ_Call(this, this->hidden->real_video->PumpEvents);
++#else
++    this->hidden->real_video->PumpEvents(this->hidden->real_video);
++	if (this->hidden->postponed && !(this->hidden->postponed++ & 255) && TryWaitCommand(this)) SendSyncCommand(this,OGL_NONE);
++#endif
++
++    RESTORE_VIDEO;
++}
++
++static SDL_VideoDevice *OHQ_CreateDevice(int devindex)
++{
++    SDL_VideoDevice *this;
++
++    /* Initialize all variables that we clean on shutdown */
++    this = (SDL_VideoDevice *)malloc(sizeof(SDL_VideoDevice));
++    if (this) {
++        memset(this, 0, (sizeof *this));
++        this->hidden = (struct SDL_PrivateVideoData *)malloc((sizeof *this->hidden));
++    }
++    if ( (this == NULL) || (this->hidden == NULL) ) {
++        SDL_OutOfMemory();
++        if (this) free(this);
++        return(0);
++    }
++    memset(this->hidden, 0, (sizeof *this->hidden));
++
++    /* Set the function pointers */
++    this->VideoInit = OHQ_VideoInit;
++    this->ListModes = OHQ_ListModes;
++    this->SetVideoMode = OHQ_SetVideoMode;
++    this->ToggleFullScreen = NULL;
++    this->UpdateMouse = OHQ_UpdateMouse;
++    this->CreateYUVOverlay = NULL;
++    this->SetColors = OHQ_SetColors;
++    this->UpdateRects = OHQ_UpdateRects;
++    this->VideoQuit = OHQ_VideoQuit;
++    this->AllocHWSurface = OHQ_AllocHWSurface;
++    this->CheckHWBlit = NULL;
++    this->FillHWRect = NULL;
++    this->SetHWColorKey = NULL;
++    this->SetHWAlpha = NULL;
++    this->LockHWSurface = OHQ_LockHWSurface;
++    this->UnlockHWSurface = OHQ_UnlockHWSurface;
++    this->FlipHWSurface = OHQ_FlipHWSurface;
++    this->FreeHWSurface = OHQ_FreeHWSurface;
++    this->SetGamma = NULL;
++    this->GetGamma = NULL;
++    this->SetGammaRamp = NULL;
++    this->GetGammaRamp = NULL;
++    this->GL_LoadLibrary = NULL;
++    this->GL_GetProcAddress = NULL;
++    this->GL_GetAttribute = NULL;
++    this->GL_MakeCurrent = NULL;
++    this->GL_SwapBuffers = NULL;
++    this->SetCaption = OHQ_SetCaption;
++    this->SetIcon = OHQ_SetIcon;
++    this->IconifyWindow = OHQ_IconifyWindow;
++    this->GrabInput = OHQ_GrabInput;
++    this->GetWMInfo = OHQ_GetWMInfo;
++    this->FreeWMCursor = OHQ_FreeWMCursor;
++    this->CreateWMCursor = OHQ_CreateWMCursor;
++    this->ShowWMCursor = OHQ_ShowWMCursor;
++    this->WarpWMCursor = OHQ_WarpWMCursor;
++    this->MoveWMCursor = OHQ_MoveWMCursor;
++    this->CheckMouseMode = OHQ_CheckMouseMode;
++    this->InitOSKeymap = OHQ_InitOSKeymap;
++    this->PumpEvents = OHQ_PumpEvents;
++    this->free = OHQ_DeleteDevice;
++
++    this->info.wm_available = 1;
++
++    return this;
++}
++
++VideoBootStrap OPENGLHQ_bootstrap = {
++    "openglhq", "OpenGL-HQ scaling",
++    OHQ_Available, OHQ_CreateDevice
++};
+diff -urN ./src/video/openglhq/SDL_ohqvideo.h ./src/video/openglhq/SDL_ohqvideo.h
+--- ./src/video/openglhq/SDL_ohqvideo.h	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_ohqvideo.h	2012-10-16 22:40:42 +0900
+@@ -0,0 +1,134 @@
++/*
++	SDL - Simple DirectMedia Layer OpenGL-HQ scaling
++    Copyright (C) 2005 JÃ¶rg Walter <jwalt@garni.ch>
++	SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id$";
++#endif
++
++#ifndef _SDL_ohqvideo_h
++#define _SDL_ohqvideo_h
++
++#include <sys/types.h>
++#include <stdint.h>
++
++#include "SDL_mutex.h"
++#include "../SDL_sysvideo.h"
++#include "SDL_thread.h"
++
++/* Hidden "this" pointer for the video functions */
++#define _THIS	SDL_VideoDevice *this
++
++enum OGL_CMD {
++	OGL_NONE,
++	OGL_CALL,
++	OGL_INIT,
++	OGL_DEINIT,
++	OGL_FRAME,
++	OGL_PALETTE,
++	OGL_QUIT
++};
++
++enum OGL_STATUS {
++	OGL_DONE,
++	OGL_ERROR
++};
++
++/* Private display data */
++struct SDL_PrivateVideoData {
++	SDL_VideoDevice *real_video;
++	volatile SDL_Surface *volatile surface;
++	int screen_width, screen_height;
++
++	volatile int width;
++	volatile int height;
++	volatile int pitch;
++	volatile int outwidth;
++	volatile int outheight;
++	volatile int flags;
++	volatile int bpp;
++	volatile SDL_PixelFormat format;
++	volatile SDL_Rect clip;
++
++	int busy;
++
++	struct {
++	   enum {
++	       OGL_CALL_P,
++	       OGL_CALL_P_I,
++	       OGL_CALL_PP,
++	       OGL_CALL_PP_I,
++	       OGL_CALL_PI_I,
++	       OGL_CALL_PII,
++	       OGL_CALL_PPP,
++	       OGL_CALL_PPPIIII_P
++	   } type;
++	   intptr_t args[6];
++	   union {
++	       void (*p)(SDL_VideoDevice*);
++	       void (*pii)(SDL_VideoDevice*, int, int);
++	       void (*pp)(SDL_VideoDevice*, const void*);
++	       int (*pp_i)(SDL_VideoDevice*, const void*);
++	       int (*p_i)(SDL_VideoDevice *);
++	       int (*pi_i)(SDL_VideoDevice *, int);
++	       void (*ppp)(SDL_VideoDevice *, const void*, const void*);
++	       void* (*pppiiii_p)(SDL_VideoDevice *, const void*, const void*, int, int, int, int);
++	   } func;
++	   intptr_t result;
++	} call;
++
++	volatile GLenum framebuf_format;
++	volatile GLenum framebuf_datatype;
++
++	GLuint texture[4];
++	GLuint displaylist;
++	GLint texsize, max_texsize;
++	int has_pixel_data_range;
++	int allow_paletted_texture;
++
++	struct {
++	    GLubyte r, g, b, a;
++	} pal[256];
++
++	GLuint program_name[3];
++	GLuint fbo[2];
++	GLuint pbuffer_displaylist;
++
++	SDL_sem *render_thread_signal;
++	SDL_sem *render_thread_ack;
++	SDL_mutex *render_frame_lock;
++	SDL_Thread *render_thread;
++
++	void * volatile framebuf;
++	int static_threshold;
++	int dynamic_threshold;
++	volatile int postponed;
++	int nohq;
++	int dirty;
++
++	volatile enum OGL_CMD cmd;
++	volatile enum OGL_STATUS status;
++};
++
++#endif /* _SDL_ohqvideo_h */
+diff -urN ./src/video/openglhq/SDL_openglhq_pass1.fp ./src/video/openglhq/SDL_openglhq_pass1.fp
+--- ./src/video/openglhq/SDL_openglhq_pass1.fp	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_openglhq_pass1.fp	2012-10-16 22:40:42 +0900
+@@ -0,0 +1,81 @@
++!!ARBfp1.0
++
++#
++# Copyright (C) 2004 JÃ¶rg Walter <jwalt@garni.ch>
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, version 2 of the License.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++#
++
++TEMP pixel0, pixel1, pixel2, pixel3;
++ALIAS coord1 = pixel1;
++ALIAS coord2 = pixel2;
++ALIAS coord3 = pixel3;
++ALIAS rmean = pixel3;
++TEMP diff;
++
++PARAM pixel_size = program.env[0];
++ATTRIB coord0 = fragment.texcoord[0];
++OUTPUT res = result.color;
++
++PARAM coordmask = { 1, 0, 1, 0 };
++PARAM weight = { 1.884313725490196078431372549, 3.768627450980392156862745098, 2.822790287990196078431372548, 0 };
++PARAM mask = { 0.4710784313725490196078431372, 0, -0.4710784313725490196078431372, 0 };
++
++MAD coord1.xy, pixel_size, coordmask, coord0;
++MAD coord2.xy, pixel_size, coordmask.gbra, coord0;
++ADD coord3.xy, pixel_size, coord0;
++
++TEX pixel0.rgb, coord0, texture[0], 2D;
++TEX pixel1.rgb, coord1, texture[0], 2D;
++TEX pixel2.rgb, coord2, texture[0], 2D;
++TEX pixel3.rgb, coord3, texture[0], 2D;
++
++#
++#  Original formula, [0;255] per component, result range [0;764.83]:
++#  sqrt( (2+rmean/256)*r*r + 4*g*g + (2.99609375-rmean/256)*b*b )
++#  (see http://www.compuphase.com/cmetric.htm)
++#
++#  Formula used in software hq2x scaler, range [0;31] per component, result range [0;2161.31] clamped to [0;255]:
++#  (0.5+(2*rmean/2048))*r*r + g*g + (0.7490234375-(2*rmean/2048))*b*b
++#
++#  This code uses this formula, range [0;1] per component, result range [0;2161.31/255] clamped to [0;1]:
++#  (1.884313725490196078431372549+(2*rmean*0.4710784313725490196078431372))*r*r + 3.768627450980392156862745098*g*g + (2.822790287990196078431372548-(2*rmean*0.4710784313725490196078431372))*b*b
++#  (which means that the same trigger values can be used for both)
++#
++
++SUB diff.rgb, pixel0, pixel3;
++ADD rmean.a, pixel0.r, pixel3.r;
++MAD rmean.rgb, rmean.a, mask, weight;
++MUL diff.rgb, diff, diff;
++DP3_SAT res.b, rmean, diff;
++
++SUB diff.rgb, pixel0, pixel1;
++ADD rmean.a, pixel0.r, pixel1.r;
++MAD rmean.rgb, rmean.a, mask, weight;
++MUL diff.rgb, diff, diff;
++DP3_SAT res.r, rmean, diff;
++
++SUB diff.rgb, pixel0, pixel2;
++ADD rmean.a, pixel0.r, pixel2.r;
++MAD rmean.rgb, rmean.a, mask, weight;
++MUL diff.rgb, diff, diff;
++DP3_SAT res.g, rmean, diff;
++
++SUB diff.rgb, pixel1, pixel2;
++ADD rmean.a, pixel1.r, pixel2.r;
++MAD rmean.rgb, rmean.a, mask, weight;
++MUL diff.rgb, diff, diff;
++DP3_SAT res.a, rmean, diff;
++
++END
+diff -urN ./src/video/openglhq/SDL_openglhq_pass1.h ./src/video/openglhq/SDL_openglhq_pass1.h
+--- ./src/video/openglhq/SDL_openglhq_pass1.h	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_openglhq_pass1.h	2012-10-02 00:46:56 +0900
+@@ -0,0 +1,43 @@
++#define SDL_openglhq_pass1_fp \
++"!!ARBfp1.0\n" \
++"TEMP pixel0, pixel1, pixel2, pixel3;\n" \
++"ALIAS coord1 = pixel1;\n" \
++"ALIAS coord2 = pixel2;\n" \
++"ALIAS coord3 = pixel3;\n" \
++"ALIAS rmean = pixel3;\n" \
++"TEMP diff;\n" \
++"PARAM pixel_size = program.env[0];\n" \
++"ATTRIB coord0 = fragment.texcoord[0];\n" \
++"OUTPUT res = result.color;\n" \
++"PARAM coordmask = { 1, 0, 1, 0 };\n" \
++"PARAM weight = { 1.884313725490196078431372549, 3.768627450980392156862745098, 2.822790287990196078431372548, 0 };\n" \
++"PARAM mask = { 0.4710784313725490196078431372, 0, -0.4710784313725490196078431372, 0 };\n" \
++"MAD coord1.xy, pixel_size, coordmask, coord0;\n" \
++"MAD coord2.xy, pixel_size, coordmask.gbra, coord0;\n" \
++"ADD coord3.xy, pixel_size, coord0;\n" \
++"TEX pixel0.rgb, coord0, texture[0], 2D;\n" \
++"TEX pixel1.rgb, coord1, texture[0], 2D;\n" \
++"TEX pixel2.rgb, coord2, texture[0], 2D;\n" \
++"TEX pixel3.rgb, coord3, texture[0], 2D;\n" \
++"SUB diff.rgb, pixel0, pixel3;\n" \
++"ADD rmean.a, pixel0.r, pixel3.r;\n" \
++"MAD rmean.rgb, rmean.a, mask, weight;\n" \
++"MUL diff.rgb, diff, diff;\n" \
++"DP3_SAT res.b, rmean, diff;\n" \
++"SUB diff.rgb, pixel0, pixel1;\n" \
++"ADD rmean.a, pixel0.r, pixel1.r;\n" \
++"MAD rmean.rgb, rmean.a, mask, weight;\n" \
++"MUL diff.rgb, diff, diff;\n" \
++"DP3_SAT res.r, rmean, diff;\n" \
++"SUB diff.rgb, pixel0, pixel2;\n" \
++"ADD rmean.a, pixel0.r, pixel2.r;\n" \
++"MAD rmean.rgb, rmean.a, mask, weight;\n" \
++"MUL diff.rgb, diff, diff;\n" \
++"DP3_SAT res.g, rmean, diff;\n" \
++"SUB diff.rgb, pixel1, pixel2;\n" \
++"ADD rmean.a, pixel1.r, pixel2.r;\n" \
++"MAD rmean.rgb, rmean.a, mask, weight;\n" \
++"MUL diff.rgb, diff, diff;\n" \
++"DP3_SAT res.a, rmean, diff;\n" \
++"END\n" \
++
+diff -urN ./src/video/openglhq/SDL_openglhq_pass2.fp ./src/video/openglhq/SDL_openglhq_pass2.fp
+--- ./src/video/openglhq/SDL_openglhq_pass2.fp	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_openglhq_pass2.fp	2012-10-17 05:44:18 +0900
+@@ -0,0 +1,69 @@
++!!ARBfp1.0
++
++#
++# Copyright (C) 2004 JÃ¶rg Walter <jwalt@garni.ch>
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, version 2 of the License.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++#
++
++TEMP pixel0, pixel1, pixel2, pixel3;
++TEMP max;
++ALIAS coord0 = pixel0;
++ALIAS coord1 = pixel1;
++ALIAS coord2 = pixel2;
++TEMP min;
++TEMP current_trigger;
++
++PARAM pixel_size = program.env[0];
++PARAM trigger = program.local[0];
++ATTRIB coord3 = fragment.texcoord[0];
++
++PARAM coordmask = { 0, -1, 0, .0625 };
++PARAM factors = {  0.0627450980392157,  0.125490196078431,  0.250980392156863,   0.501960784313725 };
++PARAM const = { 65536, 0.1666666666666666, 1, 0 };
++ALIAS one_sixteenth = coordmask;
++
++SUB coord0.xy, coord3, pixel_size;
++MAD coord1.xy, pixel_size.y, coordmask, coord3;
++MAD coord2.xy, pixel_size.x, coordmask.gbra, coord3;
++
++TEX pixel0, coord0, texture[0], 2D;
++TEX pixel1, coord1, texture[0], 2D;
++TEX pixel2, coord2, texture[0], 2D;
++TEX pixel3, coord3, texture[0], 2D;
++
++MOV pixel1.r, pixel0.b;
++MOV pixel2.g, pixel0.a;
++
++ADD min, pixel1, pixel2;
++ADD min, min, pixel3;
++DP3 current_trigger.a, min, const.g;
++MUL_SAT current_trigger.a, current_trigger.a, trigger.a;
++MAX current_trigger.a, current_trigger.a, trigger.r;
++
++MUL current_trigger.a, current_trigger.a, const.r;
++MAD_SAT pixel1, pixel1, const.r, -current_trigger.a;
++MAD_SAT pixel2, pixel2, const.r, -current_trigger.a;
++MAD_SAT pixel3, pixel3, const.r, -current_trigger.a;
++
++# on a Radeon 9500, these three expand to 6 native insns
++#SLT pixel1, current_trigger.a, pixel1;
++#SLT pixel2, current_trigger.a, pixel2;
++#SLT pixel3, current_trigger.a, pixel3;
++
++DP4 result.color.a, pixel3, factors;
++MAD pixel2, pixel2, one_sixteenth.a, pixel1;
++DP4 result.color.rgb, pixel2, factors;
++
++END
+diff -urN ./src/video/openglhq/SDL_openglhq_pass2.h ./src/video/openglhq/SDL_openglhq_pass2.h
+--- ./src/video/openglhq/SDL_openglhq_pass2.h	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_openglhq_pass2.h	2012-10-02 00:46:56 +0900
+@@ -0,0 +1,39 @@
++#define SDL_openglhq_pass2_fp \
++"!!ARBfp1.0\n" \
++"TEMP pixel0, pixel1, pixel2, pixel3;\n" \
++"TEMP max;\n" \
++"ALIAS coord0 = pixel0;\n" \
++"ALIAS coord1 = pixel1;\n" \
++"ALIAS coord2 = pixel2;\n" \
++"TEMP min;\n" \
++"TEMP current_trigger;\n" \
++"PARAM pixel_size = program.env[0];\n" \
++"PARAM trigger = program.local[0];\n" \
++"ATTRIB coord3 = fragment.texcoord[0];\n" \
++"PARAM coordmask = { 0, -1, 0, .0625 };\n" \
++"PARAM factors = {  0.0627450980392157,  0.125490196078431,  0.250980392156863,   0.501960784313725 };\n" \
++"PARAM const = { 65536, 0.1666666666666666, 1, 0 };\n" \
++"ALIAS one_sixteenth = coordmask;\n" \
++"SUB coord0.xy, coord3, pixel_size;\n" \
++"MAD coord1.xy, pixel_size.x, coordmask, coord3;\n" \
++"MAD coord2.xy, pixel_size.x, coordmask.gbra, coord3;\n" \
++"TEX pixel0, coord0, texture[0], 2D;\n" \
++"TEX pixel1, coord1, texture[0], 2D;\n" \
++"TEX pixel2, coord2, texture[0], 2D;\n" \
++"TEX pixel3, coord3, texture[0], 2D;\n" \
++"MOV pixel1.r, pixel0.b;\n" \
++"MOV pixel2.g, pixel0.a;\n" \
++"ADD min, pixel1, pixel2;\n" \
++"ADD min, min, pixel3;\n" \
++"DP3 current_trigger.a, min, const.g;\n" \
++"MUL_SAT current_trigger.a, current_trigger.a, trigger.a;\n" \
++"MAX current_trigger.a, current_trigger.a, trigger.r;\n" \
++"MUL current_trigger.a, current_trigger.a, const.r;\n" \
++"MAD_SAT pixel1, pixel1, const.r, -current_trigger.a;\n" \
++"MAD_SAT pixel2, pixel2, const.r, -current_trigger.a;\n" \
++"MAD_SAT pixel3, pixel3, const.r, -current_trigger.a;\n" \
++"DP4 result.color.a, pixel3, factors;\n" \
++"MAD pixel2, pixel2, one_sixteenth.a, pixel1;\n" \
++"DP4 result.color.rgb, pixel2, factors;\n" \
++"END\n" \
++
+diff -urN ./src/video/openglhq/SDL_openglhq_pass3.fp ./src/video/openglhq/SDL_openglhq_pass3.fp
+--- ./src/video/openglhq/SDL_openglhq_pass3.fp	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_openglhq_pass3.fp	2012-10-17 10:04:12 +0900
+@@ -0,0 +1,115 @@
++!!ARBfp1.0
++
++#
++# Copyright (C) 2004 JÃ¶rg Walter <jwalt@garni.ch>
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, version 2 of the License.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++#
++
++TEMP coord1, coord2, coord3, pixel0;
++ALIAS pixel1 = coord1;
++ALIAS pixel2 = coord2;
++ALIAS pixel3 = coord3;
++TEMP diff;
++TEMP center_offset;
++TEMP factors;
++TEMP coord0;
++
++PARAM pixel_size = program.env[0];
++
++# 1/16, 1/2, 1-1/256, 1/512
++PARAM const = { .0625, .5, .99609375, .001953125 };
++
++ATTRIB coord0hw = fragment.texcoord[0];
++
++# 1/.875, (1/.875-1)/2, .875/adjust, (1-.875/adjust)/2
++#PARAM cap = { 1.142857142857142857127368540393064222371, -0.07142857142857143002735720305196309709572, .83825, .080875 };
++#PARAM cap = { 1.142857142857142857127368540393064222371, -0.07142857142857143002735720305196309709572, .875, .0625 };
++PARAM cap = program.env[1];
++
++# normalize coordinates to eliminate FP precision errors
++MUL center_offset.xy, coord0hw, pixel_size.abgr;
++FLR coord0.xy, center_offset;
++ADD coord0.xy, coord0, const.g;
++MUL coord0.xy, coord0, pixel_size;
++
++# sub-pixel offset
++FRC center_offset.xy, center_offset;
++
++# fetch interpolation mask coordinates
++TEX diff, coord0, texture[1], 2D;
++
++# calculate neighbour pixel coordinates
++SUB coord3.xy, center_offset, const.g;
++CMP coord3.xy, coord3, -pixel_size, pixel_size;
++ADD coord3.xy, coord0, coord3;
++MOV coord1.x, coord3;
++MOV coord1.y, coord0;
++MOV coord2.x, coord0;
++MOV coord2.y, coord3;
++
++# The interpolation mask 3D texture is arranged
++# as 16x1x256 masks like this:
++#
++#     +--+--+--+--                --+--+       +-> x
++#     |  |  |  |  ... 16 masks ...  |  |+      |\
++#     +--+--+--+--                --+--+|+     V \|
++#      +--+--+--+--                --+--+|     y   z
++#       +--+--+--+--                --+--+
++#              .
++#               . 256 masks
++#                .
++#
++# This is more robust across GPUs than an 1x1x4096 arrangement.
++
++# Clamp x offset to a reduced interval. This is required since
++# otherwise precision errors will make the final coordinate wrap
++# into the opposite end of the next mask.
++MAD_SAT center_offset.x, center_offset, cap.r, cap.g;
++MAD center_offset.x, center_offset, cap.b, cap.a;
++
++# This could be used if wrapping occurs on the z coordinate, which
++# should not happen. 
++#MAD center_offset.z, diff, const.b, const.a;
++
++# final coordinate calculation:
++# x = x_offset/16 + mask_x; y = y_offset; z = mask_z;
++MAD center_offset.x, center_offset, const, diff.a;
++MOV center_offset.z, diff;
++
++# fetch color values
++TEX pixel0, coord0, texture[0], 2D;
++TEX pixel1, coord1, texture[0], 2D;
++TEX pixel2, coord2, texture[0], 2D;
++TEX pixel3, coord3, texture[0], 2D;
++
++# fetch pixel weights from mask
++TEX factors, center_offset, texture[2], 3D;
++
++# apply mask factors
++MUL pixel0, pixel0, factors.r;
++MAD pixel0, pixel1, factors.g, pixel0;
++MAD pixel0, pixel2, factors.b, pixel0;
++MAD result.color, pixel3, factors.a, pixel0;
++
++# debugging
++#MOV result.color, pixel0;
++#MOV result.color, diff;
++#MOV result.color, factors;
++#MOV result.color.g, test.y;
++#MOV result.color.r, test.z;
++#SUB test.z, test, const.b;
++#CMP result.color.r, test.z, const.r, const.b;
++
++END
+diff -urN ./src/video/openglhq/SDL_openglhq_pass3.h ./src/video/openglhq/SDL_openglhq_pass3.h
+--- ./src/video/openglhq/SDL_openglhq_pass3.h	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_openglhq_pass3.h	2012-10-02 00:46:56 +0900
+@@ -0,0 +1,38 @@
++#define SDL_openglhq_pass3_fp \
++"!!ARBfp1.0\n" \
++"TEMP coord1, coord2, coord3, pixel0;\n" \
++"ALIAS pixel1 = coord1;\n" \
++"ALIAS pixel2 = coord2;\n" \
++"ALIAS pixel3 = coord3;\n" \
++"TEMP diff;\n" \
++"TEMP center_offset;\n" \
++"TEMP factors;\n" \
++"PARAM pixel_size = program.env[0];\n" \
++"PARAM const = { .0625, .5, .99609375, .001953125 };\n" \
++"ATTRIB coord0 = fragment.texcoord[0];\n" \
++"PARAM cap = program.env[1];\n" \
++"TEX diff, coord0, texture[1], 2D;\n" \
++"MUL center_offset.xy, coord0, pixel_size.abgr;\n" \
++"FRC center_offset.xy, center_offset;\n" \
++"SUB coord3.xy, center_offset, const.g;\n" \
++"CMP coord3.xy, coord3, -pixel_size, pixel_size;\n" \
++"ADD coord3.xy, coord0, coord3;\n" \
++"MOV coord1.x, coord3;\n" \
++"MOV coord1.y, coord0;\n" \
++"MOV coord2.x, coord0;\n" \
++"MOV coord2.y, coord3;\n" \
++"MAD_SAT center_offset.xy, center_offset, cap.r, cap.g;\n" \
++"MAD center_offset.xy, center_offset, cap.b, cap.a;\n" \
++"MAD center_offset.x, center_offset, const, diff.a;\n" \
++"MAD center_offset.z, diff, const.b, const.a;\n" \
++"TEX pixel0, coord0, texture[0], 2D;\n" \
++"TEX pixel1, coord1, texture[0], 2D;\n" \
++"TEX pixel2, coord2, texture[0], 2D;\n" \
++"TEX pixel3, coord3, texture[0], 2D;\n" \
++"TEX factors, center_offset, texture[2], 3D;\n" \
++"MUL pixel0, pixel0, factors.r;\n" \
++"MAD pixel0, pixel1, factors.g, pixel0;\n" \
++"MAD pixel0, pixel2, factors.b, pixel0;\n" \
++"MAD result.color, pixel3, factors.a, pixel0;\n" \
++"END\n" \
++
+diff -urN ./src/video/openglhq/SDL_openglhq_table.dat ./src/video/openglhq/SDL_openglhq_table.dat
+--- ./src/video/openglhq/SDL_openglhq_table.dat	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_openglhq_table.dat	2012-10-16 22:40:42 +0900
+@@ -0,0 +1 @@
++‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘$$‘’“”‘’L‘’“”‘’—‘’“”‘’L‘l“”‘$$‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘l“”‘’—‘ll”‘nL‘ll”‘$$‘’“”‘’L‘l“”‘’—‘ll”‘nL‘ll”‘$$‘’”‘’‘l“”‘–—‘’”‘’‘’“”‘’—‘’”‘’‘l“”‘’—‘’”‘’‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘ìì”‘ìì‘ìì”‘ìì‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘l“”‘’—‘lL”‘nL‘ll”‘nl‘’“”‘’L‘l“”‘’—‘lL”‘nL‘ll”‘’l‘’”‘’‘l“”‘’—‘’L”‘’L‘’“”‘’—‘’”‘’‘l“”‘’—‘’L”‘’L‘’“”‘’—‘’“”‘’L‘’“”è’è‘’“”‘’L‘’“”è’—‘’“”‘’Lh’“”è’è‘’“”‘’L‘’“”è’—‘’“”‘’L‘’“”è’è‘’“”‘’L‘’“”‘’—‘’L”‘’L‘’“”è’è‘’L”‘’L‘’“”è’—‘’“”‘’l‘l“”è’è‘ll”‘lL‘l“”èl—‘’“”‘’l‘l“”è’è‘ll”‘nL‘l“”è$—‘’“”‘’l‘l“”è’è‘’“”‘l‘’“”‘l—‘’“”‘’L‘l“”è’è‘’“”‘’‘’“”è’—‘’“”‘’L‘’“”‘’—HHHHHHHLHHH“HHH— ’ ” ’  ’ ” ’  ìì” ìì ì“” ì—‘’“”‘’L‘’“”‘’—HHHHHHHLH‘H“HHH— ’“” ’L ’ ” ’  ’ ” ’L ’“” ’L‘’“”‘’L‘l“”‘’—HHllHHlLHHl“HHl— ’ ” ’  l ” ’  l ” n  l“” nL‘’”‘’‘l“”‘’—HHHHHlHhH“HìlL ’“” ’ l ” ’  ’” ’ ’“” ’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘$$‘’“”‘’L‘’“”‘’—‘’L”‘’L‘’“”‘$$‘’L”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’L”‘’L‘’“”‘’—‘’“”‘’L‘l“”‘’—‘ll”‘nL‘ll”‘$$‘’“”‘’L‘l“”‘’—‘lh”‘nL‘ll”‘$$‘’”‘’‘l“”‘’—‘’”‘’‘’“”‘’—‘’”‘’‘l“”‘’—‘’”‘’‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘ì“”‘ìL‘ìì”‘ìì‘’L”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’L”‘’L‘’“”‘’—‘’“”‘’L‘l“”‘’—‘lL”‘nL‘ll”‘nl‘’“”‘’L‘l“”‘’—‘l“”‘nL‘lh”‘nl‘’”‘’‘l“”‘’—‘’L”‘’L‘’“”‘’—‘’”‘’‘l“”‘’—‘’”‘’L‘’—”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’L”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’L”‘’L‘’“”‘’—‘’L”‘’L‘’“”‘’—‘’“”‘’L‘’“”‘’—‘’“”‘’l‘l“”‘’—‘ll”‘lL‘l“”‘’—‘’“”‘’l‘l“”‘’—‘ll”‘nL‘l“”‘$—‘’“”‘’‘l“”‘’—‘’“”‘l‘’“”‘l—‘’L”‘’‘l“”‘’—‘’“”‘’‘’“”‘’—‘’“”‘’L‘’“”‘’—HHHHHHHLHH’“HHH—‘’“”‘’L‘’“”‘’—‘ìì”‘ìL‘ì“”‘ìL‘’“”‘’L‘’“”‘’—HHHLHHHLHHH“HHH—‘’L”‘’L‘’“”‘’—‘’L”‘’L‘’“”‘’L‘’“”‘’L‘l“”‘’—HHllHHlLHHl“HH–—‘’“”‘’L‘l“”‘’—‘ll”‘nL‘l“”‘n—‘’”‘’‘l“”‘’—HHHHHlHHH“HHl—‘’”‘’‘l“”‘’—‘’”‘’‘’“”‘’—‘’“”‘’Lh’“”‘’—‘’“”‘’lh’“”‘$$‘’“”‘’Lh’“”‘’—‘’“”‘’lh’“”‘$$‘’“”‘’Lh’“”‘’—‘’“”‘’lh’“”‘’—‘’“”‘’Lh’“”‘’—‘’“”‘’lh’“”‘’—‘’“”‘’—hl“”‘’—‘ll”‘nlhll”‘$$‘’“”‘’—hl“”‘’—‘ll”‘nlhll”‘$$‘’“”‘’—hl“”‘’—‘’“”‘’lh’“”‘’—‘’“”‘’—hl“”‘’—‘’“”‘’lh’“”‘’—‘’“”‘’Lh’“”‘’—‘’“”‘’Lh’“”‘’—‘’“”‘’Lh’“”‘’—‘ìì”‘ììhìì”‘ìì‘’“”‘’Lh’“”‘’—‘’“”‘’Lh’“”‘’—‘’“”‘’Lh’“”‘’—‘’“”‘’Lh’“”‘’—‘’“”‘’—hl“”‘’—‘ll”‘nlhll”‘nl‘’“”‘’—hl“”‘’—‘ll”‘nlhll”‘nl‘’“”‘’—hl“”‘’—‘’“”‘’—h’“”‘’—‘’“”‘’—hl“”‘’—‘’“”‘’—h’“”‘’—h’h”i’Lh’h”è’èh’h”l’Lh’“”l$—h’h”i’Lh’h”è’èh’h”i’Lh’“”è$—h’h”i’Lh’h”è’èh’h”l’Lh’“”‘’—h’l”i’Lh’h”è’èh’h”i’Lh’“”è’—h’h”i’lhlh”è’èhl”inlhl“”è$—h’h”i’lhlh”è’èhll”inlhl“”è$—h’h”i’lhlh”è’èh’h”i’hh’”è’—h’h”i’—hlh”è’èh’”i’hh’“”è’—h’L”i’Lh’h”i’hHhHhHlHLHhH“HlH—h’L”i’Lh’h”‘’hhìì”iììhì“”iìLh’L”i’Lh’h”i’hHhHhHlHLHhH“H•H—h’“”i’Lh’l”i’hh’h”i’Lh’“”i’—h’h”i’hhlh”i’hHhllHinHhl“Hin—h’h”i’hhlh”i’hhll”inlhl“”in—h’h”i’hhlh”i’hHhHhHiHhHhH“H‘H—h’ ”i’“hl ”i’hh’h”i’hh’“”i’—‘’Ì”‘’Ìh’“”•’—‘’“”‘’lh’“”‘$$‘’Ì”‘’Ìh’“”‘’—‘’“”‘’Lh’“”‘$$‘’Ì”‘’Ìh’“”‘’—‘’“”‘’Ìh’“”‘’—‘’Ì”‘’Ìh’“”‘’—‘’L”‘’Ìh’“”‘’—‘’“”‘’—hl“”‘’—‘ll”‘nlhll”‘$$‘’“”‘’—hl“”‘’—‘ll”‘n—hll”‘$$‘’“”‘’—hl“”‘’—‘’“”‘’—h’“”‘’—‘’“”‘’—hl“”‘’—‘’“”‘’—h’“”‘’—‘’Ì”‘’Ìh’“”‘’—‘’Ì”‘’Ìh’“”‘’—‘’Ì”‘’Ìh’“”‘’—‘ì“”‘ìÌhìì”‘ìì‘’Ì”‘’Ìh’“”‘’—‘’Ì”‘’Ìh’“”‘’—‘’Ì”‘’Ìh’“”‘’—‘’Ì”‘’Ìh’“”‘’—‘’“”‘’—hl“”‘’—‘ll”‘nlhll”‘nl‘’“”‘’—hl“”‘’—‘lì”‘n“hlì”‘nl‘’“”‘’—hl“”‘’—‘’“”‘’—h’“”‘’—‘’“”‘’—hl“”‘’—‘’ì”‘’Ìh’“”‘’—‘’Ì”‘’Ì‘’“”‘’—‘’“”l’Ì‘’“”l’—‘’Ì”‘’Ì‘’“”‘’—‘’“”‘’Ì‘’“”‘$—‘’Ì”‘’Ì‘’“”‘’—‘’“”l’Ì‘’“”l’—‘’Ì”‘’Ì‘’“”‘’—‘’“”‘’Ì‘’“”‘’—‘’“”‘’l‘l“”‘’—‘ll”‘nl‘l”‘$—‘’“”‘’l‘l“”‘’—‘l”‘nl‘l“”‘$—‘’“”‘’—‘l“”‘’—‘’”‘’—‘’“”‘’—‘’“”‘’—‘l“”‘’—‘’“”‘’—‘’“”‘’—‘’L”‘’L‘’“”‘’—HHHÌHlHÌHHl“HlL‘’L”‘’L‘’“”‘’—‘ìÌ”‘ìÌ‘ì“”‘ì—‘’L”‘’L‘’“”‘’—HHHÌHlHÌHHH“HlH—‘’Ì”‘’L‘’—”‘’—‘’Ì”‘’Ì‘’“”‘’—‘’“”‘’—‘l“”‘’—HHllHHnlHHl“HH’—‘’“”‘’—‘l“”‘’—‘ll”‘nl‘l“”‘n—‘’“”‘’—‘l“”‘’—HHH—HHH—HHH“HHH—‘’ ”‘’‘l“”‘’—‘’“”‘’—‘’“”‘’—
+\ No newline at end of file
+diff -urN ./src/video/openglhq/SDL_openglhq_table.h ./src/video/openglhq/SDL_openglhq_table.h
+--- ./src/video/openglhq/SDL_openglhq_table.h	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/SDL_openglhq_table.h	2012-10-02 00:46:56 +0900
+@@ -0,0 +1,258 @@
++#define SDL_openglhq_table_dat { \
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x6c,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x6c,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x96,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0xec,0xec,0x94,0x91,0xec,0xec,0x90,0x91,0xec,0xec,0x94,0x91,0xec,0xec,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x4c,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x4c,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x6c,0x94,0x91,0x92,0x6c,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0xe8,0x92,0xe8,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0xe8,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0xe8,0x92,0xe8,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0xe8,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0xe8,0x92,0xe8,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0xe8,0x92,0xe8,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0xe8,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x91,0x6c,0x93,0x94,0xe8,0x92,0xe8,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6c,0x4c,0x90,0x91,0x6c,0x93,0x94,0xe8,0x6c,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x91,0x6c,0x93,0x94,0xe8,0x92,0xe8,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x93,0x94,0xe8,0x24,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x91,0x6c,0x93,0x94,0xe8,0x92,0xe8,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x6c,0x04,0x90,0x91,0x92,0x93,0x94,0x91,0x6c,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0xe8,0x92,0xe8,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x04,0x90,0x91,0x92,0x93,0x94,0xe8,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x48,0x48,0x48,0x48,0x48,0x4c,0x48,0x48,0x48,0x93,0x48,0x48,0x48,0x97,\
++0x90,0x20,0x92,0x20,0x94,0x20,0x92,0x20,0x90,0x20,0x92,0x20,0x94,0x20,0x92,0x20,\
++0x90,0x20,0xec,0xec,0x94,0x20,0xec,0xec,0x90,0x20,0xec,0x93,0x94,0x20,0xec,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x48,0x48,0x48,0x48,0x48,0x4c,0x48,0x91,0x48,0x93,0x48,0x48,0x48,0x97,\
++0x90,0x20,0x92,0x93,0x94,0x20,0x92,0x4c,0x90,0x20,0x92,0x20,0x94,0x20,0x92,0x20,\
++0x90,0x20,0x92,0x20,0x94,0x20,0x92,0x4c,0x90,0x20,0x92,0x93,0x94,0x20,0x92,0x4c,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x6c,0x6c,0x48,0x48,0x6c,0x4c,0x48,0x48,0x6c,0x93,0x48,0x48,0x6c,0x97,\
++0x90,0x20,0x92,0x20,0x94,0x20,0x92,0x20,0x90,0x20,0x6c,0x20,0x94,0x20,0x92,0x20,\
++0x90,0x20,0x6c,0x20,0x94,0x20,0x6e,0x20,0x90,0x20,0x6c,0x93,0x94,0x20,0x6e,0x4c,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x48,0x04,0x48,0x48,0x6c,0x04,0x48,0x68,0x48,0x93,0x48,0xec,0x6c,0x4c,\
++0x90,0x20,0x92,0x93,0x94,0x20,0x92,0x04,0x90,0x20,0x6c,0x20,0x94,0x20,0x92,0x20,\
++0x90,0x20,0x92,0x04,0x94,0x20,0x92,0x04,0x90,0x20,0x92,0x93,0x94,0x20,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x6c,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x68,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x6c,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0xec,0x93,0x94,0x91,0xec,0x4c,0x90,0x91,0xec,0xec,0x94,0x91,0xec,0xec,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x4c,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x93,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x68,0x94,0x91,0x6e,0x6c,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x97,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6c,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x24,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x6c,0x04,0x90,0x91,0x92,0x93,0x94,0x91,0x6c,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x04,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x48,0x48,0x48,0x48,0x48,0x4c,0x48,0x48,0x92,0x93,0x48,0x48,0x48,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0xec,0xec,0x94,0x91,0xec,0x4c,0x90,0x91,0xec,0x93,0x94,0x91,0xec,0x4c,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x48,0x4c,0x48,0x48,0x48,0x4c,0x48,0x48,0x48,0x93,0x48,0x48,0x48,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x6c,0x6c,0x48,0x48,0x6c,0x4c,0x48,0x48,0x6c,0x93,0x48,0x48,0x96,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x4c,0x90,0x91,0x6c,0x93,0x94,0x91,0x6e,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x48,0x04,0x48,0x48,0x6c,0x04,0x48,0x48,0x48,0x93,0x48,0x48,0x6c,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x04,0x94,0x91,0x92,0x04,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x68,0x92,0x93,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x68,0x92,0x93,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,0x90,0x68,0x6c,0x6c,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,0x90,0x68,0x6c,0x6c,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0xec,0xec,0x94,0x91,0xec,0xec,0x90,0x68,0xec,0xec,0x94,0x91,0xec,0xec,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,0x90,0x68,0x6c,0x6c,0x94,0x91,0x6e,0x6c,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,0x90,0x68,0x6c,0x6c,0x94,0x91,0x6e,0x6c,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x68,0x94,0xe8,0x92,0xe8,\
++0x90,0x68,0x92,0x68,0x94,0x6c,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x6c,0x24,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x68,0x94,0xe8,0x92,0xe8,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0xe8,0x24,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x68,0x94,0xe8,0x92,0xe8,\
++0x90,0x68,0x92,0x68,0x94,0x6c,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x68,0x92,0x6c,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x68,0x94,0xe8,0x92,0xe8,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0xe8,0x92,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x6c,0x90,0x68,0x6c,0x68,0x94,0xe8,0x92,0xe8,\
++0x90,0x68,0x6c,0x90,0x94,0x69,0x6e,0x6c,0x90,0x68,0x6c,0x93,0x94,0xe8,0x24,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x6c,0x90,0x68,0x6c,0x68,0x94,0xe8,0x92,0xe8,\
++0x90,0x68,0x6c,0x6c,0x94,0x69,0x6e,0x6c,0x90,0x68,0x6c,0x93,0x94,0xe8,0x24,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x6c,0x90,0x68,0x6c,0x68,0x94,0xe8,0x92,0xe8,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x68,0x90,0x68,0x92,0x90,0x94,0xe8,0x92,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x97,0x90,0x68,0x6c,0x68,0x94,0xe8,0x92,0xe8,\
++0x90,0x68,0x92,0x90,0x94,0x69,0x92,0x68,0x90,0x68,0x92,0x93,0x94,0xe8,0x92,0x97,\
++0x90,0x68,0x92,0x4c,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x68,\
++0x48,0x68,0x48,0x68,0x48,0x6c,0x48,0x4c,0x48,0x68,0x48,0x93,0x48,0x6c,0x48,0x97,\
++0x90,0x68,0x92,0x4c,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x68,0x94,0x91,0x92,0x68,\
++0x90,0x68,0xec,0xec,0x94,0x69,0xec,0xec,0x90,0x68,0xec,0x93,0x94,0x69,0xec,0x4c,\
++0x90,0x68,0x92,0x4c,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x68,\
++0x48,0x68,0x48,0x68,0x48,0x6c,0x48,0x4c,0x48,0x68,0x48,0x93,0x48,0x95,0x48,0x97,\
++0x90,0x68,0x92,0x93,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x6c,0x94,0x69,0x92,0x68,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x69,0x92,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x68,0x90,0x68,0x6c,0x68,0x94,0x69,0x92,0x68,\
++0x48,0x68,0x6c,0x6c,0x48,0x69,0x6e,0x90,0x48,0x68,0x6c,0x93,0x48,0x69,0x6e,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x68,0x90,0x68,0x6c,0x68,0x94,0x69,0x92,0x68,\
++0x90,0x68,0x6c,0x6c,0x94,0x69,0x6e,0x6c,0x90,0x68,0x6c,0x93,0x94,0x69,0x6e,0x97,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x68,0x90,0x68,0x6c,0x68,0x94,0x69,0x92,0x68,\
++0x48,0x68,0x48,0x68,0x48,0x69,0x48,0x68,0x48,0x68,0x48,0x93,0x48,0x91,0x48,0x97,\
++0x90,0x68,0x92,0x20,0x94,0x69,0x92,0x93,0x90,0x68,0x6c,0x20,0x94,0x69,0x92,0x68,\
++0x90,0x68,0x92,0x68,0x94,0x69,0x92,0x68,0x90,0x68,0x92,0x93,0x94,0x69,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x95,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x68,0x92,0x93,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x4c,0x90,0x68,0x92,0x93,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,0x90,0x68,0x6c,0x6c,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x97,0x90,0x68,0x6c,0x6c,0x94,0x91,0x24,0x24,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0xec,0x93,0x94,0x91,0xec,0xcc,0x90,0x68,0xec,0xec,0x94,0x91,0xec,0xec,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,0x90,0x68,0x6c,0x6c,0x94,0x91,0x6e,0x6c,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0xec,0x94,0x91,0x6e,0x93,0x90,0x68,0x6c,0xec,0x94,0x91,0x6e,0x6c,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x68,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xec,0x94,0x91,0x92,0xcc,0x90,0x68,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x6c,0x92,0xcc,0x90,0x91,0x92,0x93,0x94,0x6c,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0xcc,0x90,0x91,0x92,0x93,0x94,0x91,0x24,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x6c,0x92,0xcc,0x90,0x91,0x92,0x93,0x94,0x6c,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0xcc,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,0x90,0x91,0x6c,0x90,0x94,0x91,0x24,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x6c,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x90,0x94,0x91,0x6e,0x6c,0x90,0x91,0x6c,0x93,0x94,0x91,0x24,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x90,0x94,0x91,0x92,0x97,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x48,0xcc,0x48,0x6c,0x48,0xcc,0x48,0x48,0x6c,0x93,0x48,0x6c,0x14,0x4c,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0xec,0xcc,0x94,0x91,0xec,0xcc,0x90,0x91,0xec,0x93,0x94,0x91,0xec,0x97,\
++0x90,0x91,0x92,0x4c,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x48,0xcc,0x48,0x6c,0x48,0xcc,0x48,0x48,0x48,0x93,0x48,0x6c,0x48,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0x4c,0x90,0x91,0x92,0x97,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0xcc,0x94,0x91,0x92,0xcc,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x6c,0x6c,0x48,0x48,0x6e,0x6c,0x48,0x48,0x6c,0x93,0x48,0x48,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x6c,0x6c,0x94,0x91,0x6e,0x6c,0x90,0x91,0x6c,0x93,0x94,0x91,0x6e,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x48,0x48,0x48,0x97,0x48,0x48,0x48,0x97,0x48,0x48,0x48,0x93,0x48,0x48,0x48,0x97,\
++0x90,0x91,0x92,0x20,0x94,0x91,0x92,0x04,0x90,0x91,0x6c,0x93,0x94,0x91,0x92,0x97,\
++0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,0x90,0x91,0x92,0x93,0x94,0x91,0x92,0x97,\
++}
+diff -urN ./src/video/openglhq/asciidump.c ./src/video/openglhq/asciidump.c
+--- ./src/video/openglhq/asciidump.c	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/asciidump.c	2012-10-16 22:40:42 +0900
+@@ -0,0 +1,51 @@
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++
++int main(int argc, char *argv[])
++{
++	FILE *dat, *hdr;
++	char buffer[256], *name;
++	int i;
++
++	if (argc != 3) {
++		fprintf(stderr,"wrong number of arguments\n");
++		exit(1);
++	}
++
++	dat = fopen(argv[1],"rb");
++	hdr = fopen(argv[2],"w");
++	if (dat == NULL || hdr == NULL) {
++		perror("file open");
++		exit(2);
++	}
++
++#if defined (_MSC_VER)
++	name = strrchr(argv[1],'\\');
++#else
++	name = strrchr(argv[1],'/');
++#endif
++	if (name == NULL) name=argv[1];
++	else name++;
++	name = strdup(name);
++
++	for (i = 0; name[i]; i++)
++		if (!((name[i]>='a' && name[i]<='z') || (name[i]>='A' && name[i]<='Z') || (name[i]>='0' && name[i]<='9')))
++			name[i] = '_';
++
++	fprintf(hdr,"#define %s \\\n", name);
++	while (!feof(dat) && fgets(buffer,256,dat)) {
++		buffer[strlen(buffer)-1] = 0;
++
++		name = buffer;
++		while (*name == ' ' || *name == '\t') name++;
++		if (*name == 0 || *name == '#') continue;
++		
++		fprintf(hdr,"\"%s\\n\" \\\n",name);
++	}
++	fprintf(hdr,"\n");
++	fclose(hdr);
++	fclose(dat);
++
++	return 0;
++}
+diff -urN ./src/video/openglhq/hexdump.c ./src/video/openglhq/hexdump.c
+--- ./src/video/openglhq/hexdump.c	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/hexdump.c	2012-10-16 22:40:42 +0900
+@@ -0,0 +1,48 @@
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++
++int main(int argc, char *argv[])
++{
++	FILE *dat, *hdr;
++	char buffer[16], *name;
++	int i;
++
++	if (argc != 3) {
++		fprintf(stderr,"wrong number of arguments\n");
++		exit(1);
++	}
++
++	dat = fopen(argv[1],"rb");
++	hdr = fopen(argv[2],"w");
++	if (dat == NULL || hdr == NULL) {
++		perror("file open");
++		exit(2);
++	}
++
++#if defined (_MSC_VER)
++	name = strrchr(argv[1],'\\');
++#else
++	name = strrchr(argv[1],'/');
++#endif
++	if (name == NULL) name=argv[1];
++	else name++;
++	name = strdup(name);
++
++	for (i = 0; name[i]; i++)
++		if (!((name[i]>='a' && name[i]<='z') || (name[i]>='A' && name[i]<='Z') || (name[i]>='0' && name[i]<='9')))
++			name[i] = '_';
++
++	fprintf(hdr,"#define %s { \\\n", name);
++	while (!feof(dat) && fread(buffer,16,1,dat)) {
++		for (i = 0; i < 16; i++) {
++			fprintf(hdr,"0x%02x,",(unsigned char)buffer[i]);
++		}
++		fprintf(hdr,"\\\n");
++	}
++	fprintf(hdr,"}\n");
++	fclose(hdr);
++	fclose(dat);
++
++	return 0;
++}
+diff -urN ./src/video/openglhq/tablebuilder.ui ./src/video/openglhq/tablebuilder.ui
+--- ./src/video/openglhq/tablebuilder.ui	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/tablebuilder.ui	2012-10-16 23:04:33 +0900
+@@ -0,0 +1,1038 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<ui version="4.0">
++ <author>JÃ¶rg Walter &lt;jwalt@garni.ch&gt;</author>
++ <comment>Builds scaling tables for the DosBox OpenGL-HQ renderer
++</comment>
++ <class>TableBuilder</class>
++ <widget class="QMainWindow" name="TableBuilder">
++  <property name="geometry">
++   <rect>
++    <x>0</x>
++    <y>0</y>
++    <width>762</width>
++    <height>516</height>
++   </rect>
++  </property>
++  <property name="windowTitle">
++   <string>DosBox OpenGL-HQ Table Builder</string>
++  </property>
++  <widget class="QWidget" name="widget">
++   <layout class="QGridLayout">
++    <item row="1" column="0">
++     <spacer name="spacer2">
++      <property name="orientation">
++       <enum>Qt::Horizontal</enum>
++      </property>
++      <property name="sizeType">
++       <enum>QSizePolicy::Expanding</enum>
++      </property>
++      <property name="sizeHint" stdset="0">
++       <size>
++        <width>44</width>
++        <height>20</height>
++       </size>
++      </property>
++     </spacer>
++    </item>
++    <item row="1" column="2">
++     <spacer name="spacer1">
++      <property name="orientation">
++       <enum>Qt::Horizontal</enum>
++      </property>
++      <property name="sizeType">
++       <enum>QSizePolicy::Expanding</enum>
++      </property>
++      <property name="sizeHint" stdset="0">
++       <size>
++        <width>43</width>
++        <height>20</height>
++       </size>
++      </property>
++     </spacer>
++    </item>
++    <item row="1" column="4">
++     <spacer name="spacer3">
++      <property name="orientation">
++       <enum>Qt::Horizontal</enum>
++      </property>
++      <property name="sizeType">
++       <enum>QSizePolicy::Expanding</enum>
++      </property>
++      <property name="sizeHint" stdset="0">
++       <size>
++        <width>44</width>
++        <height>20</height>
++       </size>
++      </property>
++     </spacer>
++    </item>
++    <item row="0" column="2">
++     <spacer name="spacer5">
++      <property name="orientation">
++       <enum>Qt::Vertical</enum>
++      </property>
++      <property name="sizeType">
++       <enum>QSizePolicy::Expanding</enum>
++      </property>
++      <property name="sizeHint" stdset="0">
++       <size>
++        <width>20</width>
++        <height>40</height>
++       </size>
++      </property>
++     </spacer>
++    </item>
++    <item row="1" column="3">
++     <widget class="QGroupBox" name="groupBox2">
++      <property name="sizePolicy">
++       <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
++        <horstretch>1</horstretch>
++        <verstretch>1</verstretch>
++       </sizepolicy>
++      </property>
++      <property name="title">
++       <string>Resulting Borders</string>
++      </property>
++      <layout class="QGridLayout">
++       <item row="2" column="0" colspan="2">
++        <layout class="QHBoxLayout">
++         <item>
++          <widget class="QCheckBox" name="dEnabled">
++           <property name="sizePolicy">
++            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
++             <horstretch>0</horstretch>
++             <verstretch>0</verstretch>
++            </sizepolicy>
++           </property>
++           <property name="text">
++            <string>diagonal:</string>
++           </property>
++          </widget>
++         </item>
++         <item>
++          <layout class="QHBoxLayout">
++           <item>
++            <widget class="QLabel" name="y0Label">
++             <property name="sizePolicy">
++              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
++               <horstretch>0</horstretch>
++               <verstretch>0</verstretch>
++              </sizepolicy>
++             </property>
++             <property name="text">
++              <string>Y&lt;sub&gt;0&lt;/sub&gt;</string>
++             </property>
++             <property name="wordWrap">
++              <bool>false</bool>
++             </property>
++            </widget>
++           </item>
++           <item>
++            <widget class="QSpinBox" name="dY0">
++             <property name="enabled">
++              <bool>false</bool>
++             </property>
++             <property name="sizePolicy">
++              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
++               <horstretch>0</horstretch>
++               <verstretch>0</verstretch>
++              </sizepolicy>
++             </property>
++             <property name="suffix">
++              <string>/4</string>
++             </property>
++             <property name="minimum">
++              <number>-4</number>
++             </property>
++             <property name="maximum">
++              <number>4</number>
++             </property>
++             <property name="singleStep">
++              <number>1</number>
++             </property>
++             <property name="value">
++              <number>0</number>
++             </property>
++            </widget>
++           </item>
++          </layout>
++         </item>
++         <item>
++          <layout class="QHBoxLayout">
++           <item>
++            <widget class="QLabel" name="gradientLabel">
++             <property name="sizePolicy">
++              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
++               <horstretch>0</horstretch>
++               <verstretch>0</verstretch>
++              </sizepolicy>
++             </property>
++             <property name="text">
++              <string>grad.</string>
++             </property>
++             <property name="wordWrap">
++              <bool>false</bool>
++             </property>
++            </widget>
++           </item>
++           <item>
++            <widget class="QSpinBox" name="dGrad">
++             <property name="enabled">
++              <bool>false</bool>
++             </property>
++             <property name="sizePolicy">
++              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
++               <horstretch>0</horstretch>
++               <verstretch>0</verstretch>
++              </sizepolicy>
++             </property>
++             <property name="suffix">
++              <string>/2</string>
++             </property>
++             <property name="minimum">
++              <number>-4</number>
++             </property>
++             <property name="maximum">
++              <number>4</number>
++             </property>
++            </widget>
++           </item>
++          </layout>
++         </item>
++        </layout>
++       </item>
++       <item row="4" column="0" colspan="2">
++        <layout class="QHBoxLayout">
++         <item>
++          <widget class="QPushButton" name="resultReset">
++           <property name="sizePolicy">
++            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
++             <horstretch>0</horstretch>
++             <verstretch>0</verstretch>
++            </sizepolicy>
++           </property>
++           <property name="text">
++            <string>&amp;Reset</string>
++           </property>
++           <property name="shortcut">
++            <string>Alt+R</string>
++           </property>
++          </widget>
++         </item>
++         <item>
++          <widget class="QPushButton" name="resultSave">
++           <property name="sizePolicy">
++            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
++             <horstretch>0</horstretch>
++             <verstretch>0</verstretch>
++            </sizepolicy>
++           </property>
++           <property name="text">
++            <string>&amp;Save</string>
++           </property>
++           <property name="shortcut">
++            <string>Alt+S</string>
++           </property>
++           <property name="autoDefault">
++            <bool>true</bool>
++           </property>
++           <property name="default">
++            <bool>true</bool>
++           </property>
++          </widget>
++         </item>
++        </layout>
++       </item>
++       <item row="3" column="0" colspan="2">
++        <layout class="QHBoxLayout">
++         <item>
++          <widget class="QLabel" name="textLabel1_2">
++           <property name="text">
++            <string>Mirror:</string>
++           </property>
++           <property name="wordWrap">
++            <bool>false</bool>
++           </property>
++          </widget>
++         </item>
++         <item>
++          <widget class="QCheckBox" name="hMirror">
++           <property name="text">
++            <string>H/V</string>
++           </property>
++          </widget>
++         </item>
++         <item>
++          <widget class="QCheckBox" name="hvMirror">
++           <property name="text">
++            <string>H+V</string>
++           </property>
++          </widget>
++         </item>
++        </layout>
++       </item>
++       <item row="0" column="0">
++        <widget class="QPushButton" name="vBorder">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>0</horstretch>
++           <verstretch>0</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string/>
++         </property>
++         <property name="checkable">
++          <bool>true</bool>
++         </property>
++         <property name="flat">
++          <bool>true</bool>
++         </property>
++        </widget>
++       </item>
++       <item row="1" column="1">
++        <widget class="QPushButton" name="hBorder">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>0</horstretch>
++           <verstretch>0</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string/>
++         </property>
++         <property name="checkable">
++          <bool>true</bool>
++         </property>
++         <property name="flat">
++          <bool>true</bool>
++         </property>
++        </widget>
++       </item>
++       <item row="1" column="0">
++        <widget class="QCanvasView" name="borderDisplay" native="true">
++         <property name="minimumSize">
++          <size>
++           <width>200</width>
++           <height>200</height>
++          </size>
++         </property>
++         <property name="maximumSize">
++          <size>
++           <width>200</width>
++           <height>200</height>
++          </size>
++         </property>
++        </widget>
++       </item>
++       <item row="0" column="1">
++        <widget class="QPushButton" name="dBorder">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
++           <horstretch>0</horstretch>
++           <verstretch>0</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="minimumSize">
++          <size>
++           <width>40</width>
++           <height>40</height>
++          </size>
++         </property>
++         <property name="maximumSize">
++          <size>
++           <width>40</width>
++           <height>40</height>
++          </size>
++         </property>
++         <property name="text">
++          <string/>
++         </property>
++         <property name="checkable">
++          <bool>true</bool>
++         </property>
++         <property name="flat">
++          <bool>true</bool>
++         </property>
++        </widget>
++       </item>
++      </layout>
++     </widget>
++    </item>
++    <item row="2" column="2">
++     <spacer name="spacer4">
++      <property name="orientation">
++       <enum>Qt::Vertical</enum>
++      </property>
++      <property name="sizeType">
++       <enum>QSizePolicy::Expanding</enum>
++      </property>
++      <property name="sizeHint" stdset="0">
++       <size>
++        <width>20</width>
++        <height>16</height>
++       </size>
++      </property>
++     </spacer>
++    </item>
++    <item row="1" column="1">
++     <widget class="QGroupBox" name="groupBox1">
++      <property name="sizePolicy">
++       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++        <horstretch>1</horstretch>
++        <verstretch>1</verstretch>
++       </sizepolicy>
++      </property>
++      <property name="title">
++       <string>Source Pixels</string>
++      </property>
++      <layout class="QGridLayout">
++       <item row="3" column="0" colspan="3">
++        <widget class="QPushButton" name="sourceReset">
++         <property name="text">
++          <string>Reset all</string>
++         </property>
++        </widget>
++       </item>
++       <item row="1" column="1">
++        <widget class="QPushButton" name="cColor">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>1</horstretch>
++           <verstretch>1</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>C</string>
++         </property>
++        </widget>
++       </item>
++       <item row="0" column="0">
++        <widget class="QPushButton" name="dhColor">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>1</horstretch>
++           <verstretch>1</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>DH</string>
++         </property>
++        </widget>
++       </item>
++       <item row="0" column="2">
++        <widget class="QPushButton" name="dColor">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>1</horstretch>
++           <verstretch>1</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>D</string>
++         </property>
++        </widget>
++       </item>
++       <item row="1" column="2">
++        <widget class="QPushButton" name="hColor">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>1</horstretch>
++           <verstretch>1</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>H</string>
++         </property>
++        </widget>
++       </item>
++       <item row="1" column="0">
++        <widget class="QPushButton" name="hbColor">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>1</horstretch>
++           <verstretch>1</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>HB</string>
++         </property>
++        </widget>
++       </item>
++       <item row="2" column="0">
++        <widget class="QPushButton" name="dbColor">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>1</horstretch>
++           <verstretch>1</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>DB</string>
++         </property>
++        </widget>
++       </item>
++       <item row="2" column="1">
++        <widget class="QPushButton" name="vbColor">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>1</horstretch>
++           <verstretch>1</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>VB</string>
++         </property>
++        </widget>
++       </item>
++       <item row="2" column="2">
++        <widget class="QPushButton" name="dvColor">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>1</horstretch>
++           <verstretch>1</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>DV</string>
++         </property>
++        </widget>
++       </item>
++       <item row="0" column="1">
++        <widget class="QPushButton" name="vColor">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>1</horstretch>
++           <verstretch>1</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>V</string>
++         </property>
++        </widget>
++       </item>
++      </layout>
++     </widget>
++    </item>
++   </layout>
++  </widget>
++  <widget class="QMenuBar" name="menubar">
++   <property name="geometry">
++    <rect>
++     <x>0</x>
++     <y>0</y>
++     <width>762</width>
++     <height>21</height>
++    </rect>
++   </property>
++   <widget class="QMenu" name="fileMenu">
++    <property name="title">
++     <string>&amp;File</string>
++    </property>
++    <addaction name="fileNewAction"/>
++    <addaction name="fileOpenAction"/>
++    <addaction name="fileSaveAction"/>
++    <addaction name="fileSaveAsAction"/>
++    <addaction name="separator"/>
++    <addaction name="fileExitAction"/>
++   </widget>
++   <addaction name="fileMenu"/>
++  </widget>
++  <action name="fileNewAction">
++   <property name="icon">
++    <iconset>
++     <normaloff>image1</normaloff>image1</iconset>
++   </property>
++   <property name="text">
++    <string>&amp;New</string>
++   </property>
++   <property name="iconText">
++    <string>New</string>
++   </property>
++   <property name="shortcut">
++    <string>Ctrl+N</string>
++   </property>
++   <property name="name" stdset="0">
++    <cstring>fileNewAction</cstring>
++   </property>
++  </action>
++  <action name="fileOpenAction">
++   <property name="icon">
++    <iconset>
++     <normaloff>image2</normaloff>image2</iconset>
++   </property>
++   <property name="text">
++    <string>&amp;Open...</string>
++   </property>
++   <property name="iconText">
++    <string>Open</string>
++   </property>
++   <property name="shortcut">
++    <string>Ctrl+O</string>
++   </property>
++   <property name="name" stdset="0">
++    <cstring>fileOpenAction</cstring>
++   </property>
++  </action>
++  <action name="fileSaveAction">
++   <property name="icon">
++    <iconset>
++     <normaloff>image3</normaloff>image3</iconset>
++   </property>
++   <property name="text">
++    <string>&amp;Save</string>
++   </property>
++   <property name="iconText">
++    <string>Save</string>
++   </property>
++   <property name="shortcut">
++    <string>Ctrl+S</string>
++   </property>
++   <property name="name" stdset="0">
++    <cstring>fileSaveAction</cstring>
++   </property>
++  </action>
++  <action name="fileSaveAsAction">
++   <property name="text">
++    <string>Save &amp;As...</string>
++   </property>
++   <property name="iconText">
++    <string>Save As</string>
++   </property>
++   <property name="shortcut">
++    <string/>
++   </property>
++   <property name="name" stdset="0">
++    <cstring>fileSaveAsAction</cstring>
++   </property>
++  </action>
++  <action name="fileExitAction">
++   <property name="text">
++    <string>E&amp;xit</string>
++   </property>
++   <property name="iconText">
++    <string>Exit</string>
++   </property>
++   <property name="shortcut">
++    <string/>
++   </property>
++   <property name="name" stdset="0">
++    <cstring>fileExitAction</cstring>
++   </property>
++  </action>
++ </widget>
++ <layoutdefault spacing="6" margin="11"/>
++ <customwidgets>
++  <customwidget>
++   <class>QCanvasView</class>
++   <extends>QWidget</extends>
++   <header>qcanvasview.h</header>
++  </customwidget>
++ </customwidgets>
++ <includes>
++  <include location="local">qcanvasview.h</include>
++ </includes>
++ <resources/>
++ <connections>
++  <connection>
++   <sender>fileNewAction</sender>
++   <signal>activated()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>file_new()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>-1</x>
++     <y>-1</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>fileExitAction</sender>
++   <signal>activated()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>close()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>-1</x>
++     <y>-1</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>sourceReset</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>sourceReset_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>resultReset</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>resultReset_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dEnabled</sender>
++   <signal>toggled(bool)</signal>
++   <receiver>dGrad</receiver>
++   <slot>setEnabled(bool)</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dEnabled</sender>
++   <signal>toggled(bool)</signal>
++   <receiver>dY0</receiver>
++   <slot>setEnabled(bool)</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>resultSave</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>resultSave_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dhColor</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>dhColor_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>vColor</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>vColor_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dColor</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>dColor_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>hbColor</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>hbColor_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>cColor</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>cColor_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>hColor</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>hColor_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dbColor</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>dbColor_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>vbColor</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>vbColor_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dvColor</sender>
++   <signal>clicked()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>dvColor_clicked()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>vBorder</sender>
++   <signal>toggled(bool)</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>result_changed()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dBorder</sender>
++   <signal>toggled(bool)</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>result_changed()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>hBorder</sender>
++   <signal>toggled(bool)</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>result_changed()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dEnabled</sender>
++   <signal>toggled(bool)</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>result_changed()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dY0</sender>
++   <signal>valueChanged(int)</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>result_changed()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>dGrad</sender>
++   <signal>valueChanged(int)</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>result_changed()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>fileOpenAction</sender>
++   <signal>activated()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>fileOpenAction_activated()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>-1</x>
++     <y>-1</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>fileSaveAction</sender>
++   <signal>activated()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>fileSaveAction_activated()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>-1</x>
++     <y>-1</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>fileSaveAsAction</sender>
++   <signal>activated()</signal>
++   <receiver>TableBuilder</receiver>
++   <slot>fileSaveAsAction_activated()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>-1</x>
++     <y>-1</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>20</x>
++     <y>20</y>
++    </hint>
++   </hints>
++  </connection>
++ </connections>
++</ui>
+diff -urN ./src/video/openglhq/test.c ./src/video/openglhq/test.c
+--- ./src/video/openglhq/test.c	1970-01-01 09:00:00 +0900
++++ ./src/video/openglhq/test.c	2012-10-16 22:40:42 +0900
+@@ -0,0 +1,77 @@
++#include <stdlib.h>
++#include "SDL.h"
++
++#define min(a,b) ((a)<(b)?(a):(b))
++#define max(a,b) ((a)>(b)?(a):(b))
++
++int main(int argc, char *argv[])
++{
++	int w = 0, h = 0;
++	int c1 = 0x00ffffff, c2 = 0x00000000, c3 = 0x00ff0000;
++	int once = 0;
++
++	if (argc > 1 && !strcmp(argv[0], "--once")) {
++		once = 1;
++		argv++;
++		argc--;
++	}
++	if (argc > 1) w = atoi(argv[1]);
++	if (argc > 2) h = atoi(argv[2]);
++	if (argc > 3) c1 = atoi(argv[3]);
++	if (argc > 4) c2 = atoi(argv[4]);
++	if (w <= 0) w = 160;
++	if (h <= 0) h = 120;
++
++	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_NOPARACHUTE) < 0) {
++		fprintf(stderr, "SDL error:  %s\n", SDL_GetError());
++		exit(1);
++	}
++	atexit(SDL_Quit);
++
++	SDL_Surface *display;
++#define SET(x,y,c) do { uint32_t *line = display->pixels+(y)*display->pitch; line[(x)] = (c); } while (0)
++
++	display = SDL_SetVideoMode(w, h, 0,0);//32, SDL_SWSURFACE);
++	if (display == NULL) {
++		fprintf(stderr, "SDL error: %s\n", SDL_GetError());
++		exit(1);
++	}
++
++	SDL_Event event;
++	int end = 0;
++	int mx = 0, my = 0, i;
++
++	while (!end) {
++		SDL_FillRect(display, NULL, c2);
++
++		SDL_Rect r = { 3, 0, w-3, 1 };
++		for (; r.y < h; r.y += 2, r.x += 2, r.w -= 2) SDL_FillRect(display, &r, c1);
++		r.x = 0;
++		r.y = 3;
++		r.w = 1;
++		r.h = h-3;
++		for (; r.x < w; r.x += 2, r.y += 2, r.h -= 2) SDL_FillRect(display, &r, c1);
++
++		for (i = 0; i < w && i < h; i++) SET(i, i, c1);
++
++		SET(mx, my, c3);
++		SDL_UpdateRect(display, max(0,mx-10), max(0,my-10), min(w-mx+10,20), min(h-my+10,20));
++
++		end = !SDL_WaitEvent(&event) || once;
++		switch (event.type) {
++		case SDL_QUIT:
++			end = 1;
++			break;
++		case SDL_MOUSEMOTION:
++			SET(mx, my, (mx&1 && my&1?c2:c1));
++			SDL_UpdateRect(display, max(0,mx-10), max(0,my-10), min(w-mx+10,20), min(h-my+10,20));
++			mx = event.motion.x;
++			my = event.motion.y;
++			break;
++		default:
++			break;
++		}
++	}
++
++	return 0;
++}
+diff -urN ./src/video/quartz/SDL_QuartzVideo.m ./src/video/quartz/SDL_QuartzVideo.m
+--- ./src/video/quartz/SDL_QuartzVideo.m	2012-11-07 23:05:35 +0900
++++ ./src/video/quartz/SDL_QuartzVideo.m	2012-11-07 23:36:45 +0900
+@@ -24,6 +24,18 @@
+ #include "SDL_QuartzVideo.h"
+ #include "SDL_QuartzWindow.h"
+ 
++/* functions called in RunThread */
++void* QZ_allocPool() {
++    NSAutoreleasePool	*pool = [[NSAutoreleasePool alloc] init];
++    return (void *)pool;
++}
++
++void QZ_freePool(void *p) {
++    NSAutoreleasePool	*pool = (NSAutoreleasePool *)p;
++    [pool release];
++}
++ 
++
+ /* These APIs aren't just deprecated; they're gone from the headers in the
+    10.7 SDK. If we're using a >= 10.7 SDK, but targeting < 10.7, then we
+    force these function declarations. */
+diff -urN ./src/video/wincommon/SDL_lowvideo.h ./src/video/wincommon/SDL_lowvideo.h
+--- ./src/video/wincommon/SDL_lowvideo.h	2012-11-07 23:05:35 +0900
++++ ./src/video/wincommon/SDL_lowvideo.h	2012-11-07 23:22:06 +0900
+@@ -67,6 +67,7 @@
+ 	SDL_VideoSurface &&						\
+ 	FULLSCREEN() && \
+ 	((SDL_VideoSurface->flags & SDL_OPENGL    ) != SDL_OPENGL    ) && \
++	((SDL_VideoSurface->flags & 0x40          ) != 0x40          ) && \
+ 	(SDL_strcmp(this->name, "directx") == 0)				\
+ )
+ 
+diff -urN ./src/video/wincommon/SDL_sysevents.c ./src/video/wincommon/SDL_sysevents.c
+--- ./src/video/wincommon/SDL_sysevents.c	2012-11-07 23:05:35 +0900
++++ ./src/video/wincommon/SDL_sysevents.c	2012-11-07 23:22:26 +0900
+@@ -643,7 +643,8 @@
+ 
+ 			hdc = BeginPaint(SDL_Window, &ps);
+ 			if ( current_video->screen &&
+-			     !(current_video->screen->flags & SDL_OPENGL) ) {
++			     !(current_video->screen->flags & SDL_OPENGL) &&
++			     !(current_video->screen->flags & 0x40) ) {
+ 				WIN_WinPAINT(current_video, hdc);
+ 			}
+ 			EndPaint(SDL_Window, &ps);
+diff -urN ./src/video/wincommon/SDL_syswm.c ./src/video/wincommon/SDL_syswm.c
+--- ./src/video/wincommon/SDL_syswm.c	2012-11-07 23:05:35 +0900
++++ ./src/video/wincommon/SDL_syswm.c	2012-11-07 23:36:45 +0900
+@@ -295,3 +295,15 @@
+ 		return(-1);
+ 	}
+ }
++
++int WIN_GetDesktopMode(_THIS, int *width, int *height)
++{
++	DEVMODE dm;
++	if (EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &dm)) {
++		*width = dm.dmPelsWidth;
++		*height = dm.dmPelsHeight;
++		return 1;
++	} else {
++		return 0;
++	}
++}
+diff -urN ./src/video/wincommon/SDL_syswm_c.h ./src/video/wincommon/SDL_syswm_c.h
+--- ./src/video/wincommon/SDL_syswm_c.h	2012-11-07 23:05:35 +0900
++++ ./src/video/wincommon/SDL_syswm_c.h	2012-11-07 23:36:45 +0900
+@@ -32,4 +32,4 @@
+ extern int WIN_IconifyWindow(_THIS);
+ extern SDL_GrabMode WIN_GrabInput(_THIS, SDL_GrabMode mode);
+ extern int WIN_GetWMInfo(_THIS, SDL_SysWMinfo *info);
+-
++extern int WIN_GetDesktopMode(_THIS, int *width, int *height);
+diff -urN ./src/video/windib/SDL_dibvideo.c ./src/video/windib/SDL_dibvideo.c
+--- ./src/video/windib/SDL_dibvideo.c	2012-11-07 23:05:35 +0900
++++ ./src/video/windib/SDL_dibvideo.c	2012-11-07 23:36:45 +0900
+@@ -176,6 +176,7 @@
+ 	/* Set the function pointers */
+ 	device->VideoInit = DIB_VideoInit;
+ 	device->ListModes = DIB_ListModes;
++	device->GetDesktopMode = WIN_GetDesktopMode;
+ 	device->SetVideoMode = DIB_SetVideoMode;
+ 	device->UpdateMouse = WIN_UpdateMouse;
+ 	device->SetColors = DIB_SetColors;
+diff -urN ./src/video/windx5/SDL_dx5video.c ./src/video/windx5/SDL_dx5video.c
+--- ./src/video/windx5/SDL_dx5video.c	2012-11-07 23:05:37 +0900
++++ ./src/video/windx5/SDL_dx5video.c	2012-11-07 23:36:45 +0900
+@@ -599,6 +599,7 @@
+ 	/* Set the function pointers */
+ 	device->VideoInit = DX5_VideoInit;
+ 	device->ListModes = DX5_ListModes;
++	device->GetDesktopMode = WIN_GetDesktopMode;
+ 	device->SetVideoMode = DX5_SetVideoMode;
+ 	device->UpdateMouse = WIN_UpdateMouse;
+ 	device->CreateYUVOverlay = DX5_CreateYUVOverlay;
+@@ -1030,6 +1031,9 @@
+ static void DX5_WindowUpdate(_THIS, int numrects, SDL_Rect *rects);
+ static void DX5_DirectUpdate(_THIS, int numrects, SDL_Rect *rects);
+ 
++/* Bah...HW surfaces won't work after OpenGL was active */
++static char OGL_WasUsed = 0;
++
+ SDL_Surface *DX5_SetVideoMode(_THIS, SDL_Surface *current,
+ 				int width, int height, int bpp, Uint32 flags)
+ {
+@@ -1065,8 +1069,9 @@
+ 
+ #ifndef NO_CHANGEDISPLAYSETTINGS
+ 	/* Unset any previous OpenGL fullscreen mode */
+-	if ( (current->flags & (SDL_OPENGL|SDL_FULLSCREEN)) ==
+-	                       (SDL_OPENGL|SDL_FULLSCREEN) ) {
++	if ( ((current->flags & (SDL_OPENGL|SDL_FULLSCREEN)) ==
++	                       (SDL_OPENGL|SDL_FULLSCREEN)) ||
++	      (current->flags & 0x40) ) {
+ 		ChangeDisplaySettings(NULL, 0);
+ 	}
+ #endif
+@@ -1077,11 +1082,12 @@
+ 	}
+ 
+ 	/* If we are setting a GL mode, use GDI, not DirectX (yuck) */
+-	if ( flags & SDL_OPENGL ) {
++	/* Sometimes this is usefull... */
++	if ( (flags & SDL_OPENGL) || (flags & 0x40) ) {
+ 		Uint32 Rmask, Gmask, Bmask;
+ 
+ 		/* Recalculate the bitmasks if necessary */
+-		if ( bpp == current->format->BitsPerPixel ) {
++		if ( (bpp == current->format->BitsPerPixel) || (flags & 0x40) ) {
+ 			video = current;
+ 		} else {
+ 			switch (bpp) {
+@@ -1248,10 +1254,13 @@
+ 		SDL_resizing = 0;
+ 
+ 		/* Set up for OpenGL */
+-		if ( WIN_GL_SetupWindow(this) < 0 ) {
+-			return(NULL);
+-		}
+-		video->flags |= SDL_OPENGL;
++		if ( flags & SDL_OPENGL ) {
++			if ( WIN_GL_SetupWindow(this) < 0 ) {
++				return(NULL);
++			}
++			OGL_WasUsed = 1;
++			video->flags |= SDL_OPENGL;
++		} else video->flags |= SDL_SWSURFACE|0x40;
+ 		return(video);
+ 	}
+ 
+@@ -1513,7 +1522,7 @@
+ 			}
+ 		}
+ 		dd_surface3 = NULL;
+-#if 0 /* FIXME: enable this when SDL consistently reports lost surfaces */
++#if 1 /* FIXME: enable this when SDL consistently reports lost surfaces */
+ 		if ( (flags & SDL_HWSURFACE) == SDL_HWSURFACE ) {
+ 			video->flags |= SDL_HWSURFACE;
+ 		} else {
+@@ -1649,7 +1658,7 @@
+ 		Flush the message loop or this can cause big problems later
+ 		Especially if the user decides to use dialog boxes or assert()!
+ 	*/
+-	WIN_FlushMessageQueue();
++	//WIN_FlushMessageQueue();
+ 
+ 	/* We're live! */
+ 	return(video);
+@@ -1658,6 +1667,7 @@
+ struct private_hwdata {
+ 	LPDIRECTDRAWSURFACE3 dd_surface;
+ 	LPDIRECTDRAWSURFACE3 dd_writebuf;
++	void *buffer;
+ };
+ 
+ static int DX5_AllocDDSurface(_THIS, SDL_Surface *surface, 
+@@ -1835,6 +1845,7 @@
+ 		}
+ 	}
+ 	surface->hwdata->dd_writebuf = dd_surface3;
++	surface->hwdata->buffer = NULL;
+ 
+ 	/* We're ready to go! */
+ 	return(0);
+@@ -2084,6 +2095,9 @@
+ 			((ddsd.dwWidth-surface->w)/2)*
+ 					surface->format->BytesPerPixel;
+ 	}
++	if ( !surface->hwdata->buffer && surface->pixels ) {
++		surface->hwdata->buffer = surface->pixels;
++	}
+ 	surface->pixels = ddsd.lpSurface;
+ 	return(0);
+ }
+@@ -2125,6 +2139,9 @@
+ 		if ( surface->hwdata->dd_surface != SDL_primary ) {
+ 			IDirectDrawSurface3_Release(surface->hwdata->dd_surface);
+ 		}
++		if ( surface->hwdata->buffer ) {
++			SDL_free(surface->hwdata->buffer);
++		}
+ 		SDL_free(surface->hwdata);
+ 		surface->hwdata = NULL;
+ 	}
+@@ -2401,8 +2418,9 @@
+ 	/* If we're fullscreen GL, we need to reset the display */
+ 	if ( this->screen != NULL ) {
+ #ifndef NO_CHANGEDISPLAYSETTINGS
+-		if ( (this->screen->flags & (SDL_OPENGL|SDL_FULLSCREEN)) ==
+-		                            (SDL_OPENGL|SDL_FULLSCREEN) ) {
++		if ( ((this->screen->flags & (SDL_OPENGL|SDL_FULLSCREEN)) ==
++		                            (SDL_OPENGL|SDL_FULLSCREEN)) ||
++		      (this->screen->flags & 0x40) ) {
+ 			ChangeDisplaySettings(NULL, 0);
+ 			ShowWindow(SDL_Window, SW_HIDE);
+ 		}
+diff -urN ./src/video/x11/SDL_x11modes.c ./src/video/x11/SDL_x11modes.c
+--- ./src/video/x11/SDL_x11modes.c	2012-11-07 23:05:38 +0900
++++ ./src/video/x11/SDL_x11modes.c	2012-11-07 23:36:45 +0900
+@@ -928,6 +928,13 @@
+ #endif /* SDL_VIDEO_DRIVER_X11_XRANDR */
+ }
+ 
++int X11_GetDesktopMode(_THIS, int *width, int *height)
++{
++	*width = DisplayWidth(SDL_Display, SDL_Screen);
++	*height = DisplayHeight(SDL_Display, SDL_Screen);
++	return 1;
++}
++
+ int X11_ResizeFullScreen(_THIS)
+ {
+     int x = 0, y = 0;
+diff -urN ./src/video/x11/SDL_x11modes_c.h ./src/video/x11/SDL_x11modes_c.h
+--- ./src/video/x11/SDL_x11modes_c.h	2012-11-07 23:05:38 +0900
++++ ./src/video/x11/SDL_x11modes_c.h	2012-11-07 23:36:46 +0900
+@@ -35,6 +35,7 @@
+ extern int X11_GetVideoModes(_THIS);
+ extern SDL_Rect **X11_ListModes(_THIS, SDL_PixelFormat *format, Uint32 flags);
+ extern void X11_FreeVideoModes(_THIS);
++extern int X11_GetDesktopMode(_THIS, int *width, int *height);
+ extern int X11_ResizeFullScreen(_THIS);
+ extern void X11_WaitMapped(_THIS, Window win);
+ extern void X11_WaitUnmapped(_THIS, Window win);
+diff -urN ./src/video/x11/SDL_x11video.c ./src/video/x11/SDL_x11video.c
+--- ./src/video/x11/SDL_x11video.c	2012-11-07 23:05:38 +0900
++++ ./src/video/x11/SDL_x11video.c	2012-11-07 23:36:46 +0900
+@@ -131,6 +131,7 @@
+ 		/* Set the function pointers */
+ 		device->VideoInit = X11_VideoInit;
+ 		device->ListModes = X11_ListModes;
++		device->GetDesktopMode = X11_GetDesktopMode;
+ 		device->SetVideoMode = X11_SetVideoMode;
+ 		device->ToggleFullScreen = X11_ToggleFullScreen;
+ 		device->UpdateMouse = X11_UpdateMouse;
+
