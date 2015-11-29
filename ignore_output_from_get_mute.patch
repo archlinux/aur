@@ -1,0 +1,10 @@
+--- pamixer.cc	2015-07-15 23:28:14.000000000 +0800
++++ pamixer.cc	2015-11-29 15:50:37.447452600 +0800
+@@ -165,7 +165,6 @@
+             cout << device.volume_percent << "\n" << flush;
+             ret = (device.volume_percent > 0 ? 0 : 1);
+         } else if (vm.count("get-mute")) {
+-            cout << boolalpha << device.mute << "\n" << flush;
+             ret = (device.mute ? 0 : 1);
+         } else {
+             if (vm.count("list-sinks")) {
