@@ -6,8 +6,8 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=38.3.0
-_pkgver=38.3.0-gnu1
+pkgver=38.4.0
+_pkgver=38.4.0-gnu1
 _pkgverbase=${pkgver%%.*}
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
@@ -33,17 +33,15 @@ source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2
         icecat.desktop
         icecat-safe.desktop
         vendor.js
-        freetype26.patch
-	0001-Bug-1194520-Add-a-system-header-wrapper-for-freetype.patch)
+        freetype26.patch)
 
-sha256sums=('08fe9724a84aef2182265b230c68fa37a36a5d93ffd5118ec0739718dc71a66e'
+sha256sums=('d7358b4fdf52691f6d2bafab6954fe529e52513ae8b38d45e3943d9753508a65'
             'SKIP'
             '4602066304f0bb10bdaea75405570d500dae3199b77b04a45167d423fdf9bf6f'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            'b9c440406644fde5097da8717f0b5e5e973d11ec4dd6d4a0570ca7094d96dc85'
-            '5371c4e73ef9620c2cf3e922cbf7e6ebecfe5b0d80df03ba0744ad61de7c1a25')
+            'b9c440406644fde5097da8717f0b5e5e973d11ec4dd6d4a0570ca7094d96dc85')
 
 validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
@@ -56,9 +54,7 @@ prepare() {
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1143411
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1194520
   patch -Np1 -i ../freetype26.patch
-  patch -Np1 -i ../0001-Bug-1194520-Add-a-system-header-wrapper-for-freetype.patch
 
   msg2 "Starting build..."
 
