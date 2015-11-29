@@ -1,0 +1,17 @@
+pkgbase = drmdecrypt-git
+	pkgdesc = DRM decrypting tool for Samsung TVs
+	pkgver = 1.0.r13.ge7f479f
+	pkgrel = 1
+	url = https://github.com/decke/drmdecrypt
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	provides = drmdecrypt
+	conflicts = drmdecrypt
+	source = drmdecrypt::git+https://github.com/decke/drmdecrypt.git
+	md5sums = SKIP
+
+pkgname = drmdecrypt-git
+
