@@ -2,7 +2,7 @@
 
 _pkgname=sent
 pkgname=${_pkgname}-git
-pkgver=r69.cc57a28
+pkgver=r74.95af430
 pkgrel=1
 pkgdesc="Simple plain-text presentation tool"
 arch=('i686' 'x86_64')
@@ -35,6 +35,7 @@ build() {
 
 package() {
 	make -C "${srcdir}/${pkgname}" \
+		PREFIX="/usr" \
 		DESTDIR="${pkgdir}" \
 		install
 }
