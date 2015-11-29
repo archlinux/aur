@@ -29,7 +29,7 @@ pkgver() {
 build() {
   cd "${_gitname}"
   export CFLAGS="$CFLAGS -I/opt/vc/include"
-  export LDFLAGS="$LDFLAGS -L/opt/vc/lib"
+  export LDFLAGS="${LDFLAGS//-Wl,--as-needed} -L/opt/vc/lib"
   ./configure --prefix=/usr --disable-vg --disable-opengl --disable-gles --disable-fbo --disable-egl --disable-x11 --disable-sdl --disable-sdl2 --disable-pulse --disable-oss --disable-ffmpeg --enable-neon --enable-dispmanx --enable-floathard --enable-udev
   make
 }
