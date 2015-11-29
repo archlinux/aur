@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  HAVE_VIDEOCORE=yes ./configure --prefix=/usr --enable-neon --enable-dispmanx --enable-floathard --enable-udev
+  ./configure --prefix=/usr --enable-neon --enable-dispmanx --enable-floathard --enable-udev
   make
 }
 
