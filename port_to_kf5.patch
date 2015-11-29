@@ -686,7 +686,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 -        dialog->setDefaultButton(KDialog::Ok);
 -        dialog->setEscapeButton(KDialog::Ok);
 -        KMessageBox::createKMessageBox(dialog, QMessageBox::Information, i18nc("@info", "Successfully saved GRUB settings."), QStringList(), QString(), 0, KMessageBox::Notify, reply.data().value("output").toString()); // krazy:exclude=qclasses
-+        QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::NoButton);
++        QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::Ok);
 +        KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully saved GRUB settings."), QStringList(), QString(), 0, KMessageBox::Notify, reply->data().value("output").toString()); // krazy:exclude=qclasses
          load();
      } else {
