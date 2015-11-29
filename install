@@ -1,14 +1,16 @@
 post_install()
 {
-	glib-compile-schemas /usr/share/glib-2.0/schemas || true
+	echo 'In the unlikely case that you are using a liquid-crystal display without a RGB subpixel layout, you need to reconfigure the rgba setting in Fontconfig and the rgba-order in GSettings.'
+	post_upgrade
 }
 
 post_upgrade()
 {
-	post_install
+	glib-compile-schemas /usr/share/glib-2.0/schemas || true
+	echo 'You most likely want to enable the new configuration by logging out and in again.'
 }
 
 post_remove()
 {
-	post_install
+	post_upgrade
 }
