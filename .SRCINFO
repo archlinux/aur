@@ -1,0 +1,19 @@
+pkgbase = xorg-xbacklight-lxhillwind-patch
+	pkgdesc = RandR-based backlight control application, with brightness represented as an integer.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	depends = xcb-util
+	conflicts = xorg-xbacklight
+	source = http://xorg.freedesktop.org/archive/individual/app/xbacklight-1.2.1.tar.bz2
+	source = percent_float_to_int.patch
+	sha256sums = 17f6cf51a35eaa918abec36b7871d28b712c169312e22a0eaf1ffe8d6468362b
+	sha256sums = b5b776f63c0ed95fd0cb1bb84cb831002304960b0d552114d807c0ad6582857b
+
+pkgname = xorg-xbacklight-lxhillwind-patch
+
