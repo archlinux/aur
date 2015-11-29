@@ -1,32 +1,31 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Pavol (Lopo) Hluchy <lopo AT losys DOT eu>
 
 pkgname=gitlab-workhorse
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="HTTP server to unload Git HTTP traffic from GitLab Rails app (Unicorn)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-workhorse"
 license=('MIT')
-depends=('gitlab')
 conflicts=('gitlab-git-http-server')
+replaces=('gitlab-git-http-server')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/${pkgname}/repository/archive.tar.gz?ref=${pkgver}"
-        "gitlab-workhorse.service")
-sha256sums=('1e260a6443ce09758028f1c65f48416680ee89fb9efad813097183b09aefabf5'
-            'c9634b8b49f2baa4cb3a71db561e32f7426539f129c826529a8b0d4788774113')
-_srcdir="${pkgname}-${pkgver}-5e28545e0441d02ae2734553bce17353ebf43b26"
+source=("${pkgname}-${pkgver}.tgz::https://gitlab.com/gitlab-org/gitlab-workhorse/repository/archive.tar.gz?ref=${pkgver}")
+sha512sums=('41ed8fb2b8e8a0a6584662a4b808e9e7f0380d8a736c340d813e61f220dffdbd141da6ff3b7465057b00df46a952110c6f3185937fd7bc7f169ccbb5bb882726')
+
 
 prepare() {
-    extract_loc=$(find ./ -maxdepth 1 -type d -name "${pkgname}-${pkgver}-*" )
-    [[ -h "${pkgname}-${pkgver}" ]] || ln -s "$extract_loc" "${pkgname}-${pkgver}"
+	ln -sf $(ls ${srcdir} | grep ${pkgname}-${pkgver}-* | grep -v .tgz) ${pkgname}-${pkgver}
 }
 
 build() {
-    cd "${_srcdir}"
-    make gitlab-workhorse
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make
 }
 
 package() {
-    install -Dm755 "${_srcdir}/gitlab-workhorse" "${pkgdir}/usr/bin/gitlab-workhorse"
-    install -Dm0644 gitlab-workhorse.service "${pkgdir}/usr/lib/systemd/system/gitlab-workhorse.service"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/gitlab-workhorse" "${pkgdir}/usr/bin/gitlab-workhorse"
 }
+
+# vim:set ts=4 sw=4 et:
