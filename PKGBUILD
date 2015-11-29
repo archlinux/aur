@@ -1,7 +1,7 @@
 # Maintainer: Jakub Luzny <jakub@luzny.cz>
 pkgname=lpcxpresso
-pkgver=7.9.2
-_build=493
+pkgver=8.0.0
+_build=526
 pkgrel=1
 pkgdesc="NXP LPC microcontroller development suite"
 url="https://www.lpcware.com/lpcxpresso"
@@ -10,9 +10,9 @@ license=('custom:EULA')
 depends_i686=('libusb-compat' 'gtk2' 'libxtst')
 depends_x86_64=('lib32-libusb-compat' 'lib32-gtk2' 'lib32-libxtst')
 options=(!strip)
-source=("https://s3.amazonaws.com/LPCXpresso7/Installer_LPCXpresso_${pkgver}_${_build}_Linux-x86.tar.gz"
+source=("https://s3.amazonaws.com/LPCXpresso8/Installer_LPCXpresso_${pkgver}_${_build}_Linux-x86.tar.gz"
         "lpcxpresso.desktop")
-md5sums=('c362e892973d7a3303b6aad4627f6ef0'
+md5sums=('ca11e7faa1dd6b589f4b7f7c8b1ba3ca'
          '9c6615c32b42bd5bfa72261a5dec569e')
 
          #libxtst, ncursers, systemd
