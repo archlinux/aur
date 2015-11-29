@@ -12,7 +12,7 @@ source=('neovim.desktop'
         'nvim-wrapper'
         'neovim.svg')
 md5sums=('c5b9b5db24db814376b6925ce0f9ad52'
-         '6a2aa98a447d3aa661e39c9b31c4aa7b'
+         'a02f97b7235810c52f98aed05eacf952'
          '2b271742492f200bcac78dbfe33caa3c')
 
 package() {

@@ -38,7 +38,30 @@ TERM_CMD = [
     '-x',
     'nvim',
 ]
+GTERM_PASSTHROUGH_OPTIONS = [
+    '--full-screen',
+    '--maximize',
+    '--profile',
+    '--working-directory',
+    '--display'
+]
 
+def processArgv():
+    argv = sys.argv[1:]
+    gtermOptions = []
+    nvimOptions = []
+
+    for arg in argv:
+        argParts = arg.split('=', 1)
+        if argParts[0] in GTERM_PASSTHROUGH_OPTIONS:
+            gtermOptions.append(arg)
+        else:
+            nvimOptions.append(arg)
+
+    return {
+        'gterm': gtermOptions,
+        'nvim': nvimOptions
+    }
 
 def main():
     """Run nvim inside gnome-terminal"""
@@ -56,11 +79,13 @@ def main():
         pass
     # launch nvim in a gnome-terminal instance
     if session_bus.name_has_owner(APP_ID):
+        options = processArgv()
+        cmd = [] + TERM_CMD[:-2] + options['gterm'] + TERM_CMD[-2:] + options['nvim']
         env = os.environ.copy()
         env['NVIM_TUI_ENABLE_CURSOR_SHAPE'] = '1'
         env['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
         with open(os.devnull, 'wb') as fnull:
-            subprocess.Popen(TERM_CMD + sys.argv[1:],
+            subprocess.Popen(cmd,
                              stdout=fnull,
                              stderr=fnull,
                              env=env)
