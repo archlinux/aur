@@ -1,22 +1,23 @@
-# Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
+# Maintainer: Anish Tondwalkar <anish@archlinux.info>
+# Copied from the MFC-J470W package created by Christoph Scholz <christoph.scholz@gmail.com>
 # Copied from the MFC-J5910DW package created by Libernux <dutchman55@gmx.com>
-pkgname="brother-mfc-j470dw"
+pkgname="brother-mfc-j475dw"
 pkgver="3.0.0"
 pkgrel=1
-pkgdesc="LPR and CUPS driver for the Brother MFC-J470DW"
+pkgdesc="LPR and CUPS driver for the Brother MFC-J475DW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=('cups')
 install="$pkgname.install"
 source=(
-	"http://www.brother.com/pub/bsc/linux/dlf/mfcj470dwlpr-$pkgver-$pkgrel.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/mfcj470dwcupswrapper-$pkgver-$pkgrel.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/mfcj475dwlpr-$pkgver-$pkgrel.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/mfcj475dwcupswrapper-$pkgver-$pkgrel.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
-md5sums=('eab34a8277bc57239cd155079ed36152'
-         '63d2f82f46592c876b49387b2ea4d797'
+md5sums=('b6f0fa886044ec7cf76406a9d4994778'
+         '209f65d472f15282bf866a8a84d0aac9'
          '97ad0cffd216059e9d1d3121899d8646'
          '5e87a3dc0f3e3438c088eda0f3565f0d')
 if test "$CARCH" == x86_64; then
