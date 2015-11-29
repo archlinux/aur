@@ -2,12 +2,12 @@
 pkgname=python-libusb1
 _pkgname=libusb1
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure python wrapper for libusb"
 arch=('any')
 url="https://github.com/vpelletier/${pkgname}"
 license=('GPL2')
-makedepends=('python-distutils-extra')
+makedepends=('python-distutils-extra' 'python-setuptools')
 depends=('python' 'libusbx')
 optdepends=()
 conflicts=("${pkgname}-git")

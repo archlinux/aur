@@ -1,12 +1,13 @@
 pkgbase = python-libusb1
 	pkgdesc = Pure python wrapper for libusb
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vpelletier/python-libusb1
 	changelog = changelog.txt
 	arch = any
 	license = GPL2
 	makedepends = python-distutils-extra
+	makedepends = python-setuptools
 	depends = python
 	depends = libusbx
 	conflicts = python-libusb1-git
