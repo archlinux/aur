@@ -2,7 +2,8 @@
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
 pkgname=gimp-git
-pkgver=20150626.g25a696c
+epoch=1
+pkgver=2.9.2.8.g4f9ec68
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ depends=('gtk2>2.24.10' 'lcms2>=2.2' 'libwmf>=0.2.8' 'webkitgtk2>=1.6.1' \
          'libgexiv2' 'librsvg>=2.16.1' 'libpng>=1.2.27' \
          'fontconfig>=2.2.0' 'desktop-file-utils' \
          'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'pygtk>=2.10.4' 'dbus-glib' 'gtk-doc' \
-         'gegl-git>=GEGL_0_3_0' 'openexr>=1.6.1' 'cairo>=1.12.2' 'python2' 'hicolor-icon-theme')
+         'gegl>=0.3.4' 'openexr>=1.6.1' 'cairo>=1.12.2' 'python2' 'hicolor-icon-theme')
 makedepends=('gutenprint>=5.0.0' 'intltool>=0.40.1' \
   'gnome-python>=2.16.2' 'poppler>=0.12.4' 'pkgconfig>=0.21' \
   'alsa-lib>=1.0.0' 'libtool>=2.2' 'autoconf>=2.54' 'automake>=1.10' \
@@ -38,9 +39,8 @@ noextract=()
 _gitname=gimp
 
 pkgver() {
-	cd $_gitname
-	GITREV=$(git describe --always|awk -F"-" '{print $NF}')
-	echo `date +%Y%m%d`.${GITREV}
+    cd $_gitname
+    git describe --always | sed -e 's/GIMP_//' -e 's/[_-]/./g'
 }
 
 build() {
