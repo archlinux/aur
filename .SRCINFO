@@ -10,6 +10,8 @@ pkgbase = python-slixmpp
 	depends = python>=3.4
 	depends = python-aiodns
 	depends = libidn
+	depends = python-pyasn1
+	depends = python-pyasn1-modules
 	provides = python-slixmpp
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/s/slixmpp/slixmpp-1.1.tar.gz
