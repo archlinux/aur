@@ -1,20 +1,20 @@
 pkgbase = nvidia-last-rt
 	pkgdesc = NVIDIA drivers for linux
-	pkgver = 355.11
-	pkgrel = 7
+	pkgver = 358.16
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = nvidia-libgl
-	makedepends = nvidia-utils=355.11
+	makedepends = nvidia-utils=358.16
 	makedepends = linux-rt
 	makedepends = linux-rt-headers>=4.1
 	makedepends = linux-rt-headers<4.2
 	options = !strip
-	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/355.11/NVIDIA-Linux-x86-355.11.run
+	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/358.16/NVIDIA-Linux-x86-358.16.run
 	md5sums_i686 = SKIP
-	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/355.11/NVIDIA-Linux-x86_64-355.11-no-compat32.run
+	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/358.16/NVIDIA-Linux-x86_64-358.16-no-compat32.run
 	md5sums_x86_64 = SKIP
 
 pkgname = nvidia-last-rt
@@ -22,6 +22,6 @@ pkgname = nvidia-last-rt
 	install = nvidia.install
 	depends = linux>=4.2
 	depends = linux<4.3
-	depends = nvidia-utils=355.11
+	depends = nvidia-utils=358.16
 	depends = libgl
 

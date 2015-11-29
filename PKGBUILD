@@ -5,9 +5,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-last-rt
-pkgver=355.11
+pkgver=358.16
 _extramodules=extramodules-4.1-rt
-pkgrel=7
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
