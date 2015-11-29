@@ -1,7 +1,8 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2012-01-02 01:38:26.000000000 +0800
-+++ b/CMakeLists.txt	2015-11-18 21:46:52.917654393 +0800
-@@ -2,27 +2,38 @@
++++ b/CMakeLists.txt	2015-11-29 21:00:48.519751223 +0800
+@@ -1,28 +1,39 @@
+ project(krename)
  
  
 +cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
@@ -44,7 +45,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
    MESSAGE("-- The tablib library was found. KRename will be built with tablib support.")
  ELSE(TAGLIB_FOUND)
    MESSAGE("-- The tablib library was not found. KRename will not be built with tablib support.")
-@@ -30,21 +40,25 @@
+@@ -30,21 +41,25 @@
  
  # Find exiv2
  set(EXIV2_MIN_VERSION "0.13") # AccessMode was added in 0.13
@@ -72,7 +73,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
    MESSAGE("-- The podofo library was found. KRename will be built with podofo support.")
  ELSE(LIBPODOFO_FOUND)
    MESSAGE("-- The podofo library was not found. KRename will not be built with podofo support.")
-@@ -52,10 +66,12 @@
+@@ -52,10 +67,12 @@
  ENDIF(LIBPODOFO_FOUND)
  
  # Find freetype
@@ -88,7 +89,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
    MESSAGE("-- The freetype library was not found. KRename will not be built with freetype support.")
 diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature.cmake
 --- a/cmake/modules/MacroLogFeature.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/MacroLogFeature.cmake	2015-11-18 21:46:53.037657015 +0800
++++ b/cmake/modules/MacroLogFeature.cmake	2015-11-29 21:00:48.519751223 +0800
 @@ -0,0 +1,157 @@
 +# This file defines the Feature Logging macros.
 +#
@@ -249,7 +250,25 @@ diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature
 +ENDMACRO(MACRO_DISPLAY_FEATURE_LOG)
 diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 --- a/src/CMakeLists.txt	2010-09-26 14:50:36.000000000 +0800
-+++ b/src/CMakeLists.txt	2015-11-18 21:46:53.037657015 +0800
++++ b/src/CMakeLists.txt	2015-11-29 21:00:48.519751223 +0800
+@@ -94,7 +94,7 @@
+ ENDIF(FREETYPE_FOUND)
+ 
+ 
+-kde4_add_ui_files( krename_SRCS 
++ki18n_wrap_ui( krename_SRCS 
+   customfilenamedlg.ui		
+   datetimepluginwidget.ui
+   dirsortpluginwidget.ui
+@@ -118,7 +118,7 @@
+   )
+ 
+ #kde4_automoc( ${krename_SRCS} )
+-kde4_add_executable(krename ${krename_SRCS})
++add_executable(krename ${krename_SRCS})
+ 
+ # find Nepomuk's libkmetadata
+ find_path(KMETADATA_INCLUDE_DIR NAMES kmetadata/kmetadata.h PATHS ${KDE4_INCLUDE_DIR})
 @@ -136,22 +136,20 @@
  
  IF(EXIV2_FOUND)
@@ -283,7 +302,7 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
      ${TAGLIB_LIBRARIES} )
 diff -Naur a/src/customdialog.cpp b/src/customdialog.cpp
 --- a/src/customdialog.cpp	2009-12-27 19:06:34.000000000 +0800
-+++ b/src/customdialog.cpp	2015-11-18 21:46:53.037657015 +0800
++++ b/src/customdialog.cpp	2015-11-29 21:00:48.523084616 +0800
 @@ -71,14 +71,14 @@
      m_widget.lineEditCustom->setText( krenameFilename );
      slotEnableControls();
@@ -303,7 +322,7 @@ diff -Naur a/src/customdialog.cpp b/src/customdialog.cpp
  }
 diff -Naur a/src/customdialog.h b/src/customdialog.h
 --- a/src/customdialog.h	2009-12-27 19:06:34.000000000 +0800
-+++ b/src/customdialog.h	2015-11-18 21:46:53.037657015 +0800
++++ b/src/customdialog.h	2015-11-29 21:00:48.523084616 +0800
 @@ -21,7 +21,9 @@
  #include <kdialog.h>
  #include "ui_customfilenamedlg.h"
@@ -317,7 +336,7 @@ diff -Naur a/src/customdialog.h b/src/customdialog.h
  class CustomDialog : public KDialog {
 diff -Naur a/src/datetimeplugin.h b/src/datetimeplugin.h
 --- a/src/datetimeplugin.h	2008-07-15 23:14:28.000000000 +0800
-+++ b/src/datetimeplugin.h	2015-11-18 21:46:53.037657015 +0800
++++ b/src/datetimeplugin.h	2015-11-29 21:00:48.523084616 +0800
 @@ -21,6 +21,7 @@
  #include "plugin.h"
  
@@ -328,7 +347,7 @@ diff -Naur a/src/datetimeplugin.h b/src/datetimeplugin.h
      class DateTimePluginWidget;
 diff -Naur a/src/dirsortplugin.h b/src/dirsortplugin.h
 --- a/src/dirsortplugin.h	2009-12-28 05:54:35.000000000 +0800
-+++ b/src/dirsortplugin.h	2015-11-18 21:46:53.037657015 +0800
++++ b/src/dirsortplugin.h	2015-11-29 21:00:48.523084616 +0800
 @@ -21,6 +21,8 @@
  #include "plugin.h"
  #include "ui_dirsortpluginwidget.h"
@@ -340,7 +359,7 @@ diff -Naur a/src/dirsortplugin.h b/src/dirsortplugin.h
      DirSortPlugin( PluginLoader* loader );
 diff -Naur a/src/exthistorycombo.cpp b/src/exthistorycombo.cpp
 --- a/src/exthistorycombo.cpp	2010-05-02 18:22:03.000000000 +0800
-+++ b/src/exthistorycombo.cpp	2015-11-18 21:46:53.040990421 +0800
++++ b/src/exthistorycombo.cpp	2015-11-29 21:00:48.523084616 +0800
 @@ -51,7 +51,7 @@
      QStringList history;
      QStringList completion;
@@ -361,7 +380,7 @@ diff -Naur a/src/exthistorycombo.cpp b/src/exthistorycombo.cpp
      groupGui.writeEntry("CompletionList", this->completionObject()->items());
 diff -Naur a/src/krenamefile.cpp b/src/krenamefile.cpp
 --- a/src/krenamefile.cpp	2011-12-31 23:58:07.000000000 +0800
-+++ b/src/krenamefile.cpp	2015-11-18 21:46:53.040990421 +0800
++++ b/src/krenamefile.cpp	2015-11-29 21:00:48.523084616 +0800
 @@ -76,6 +76,21 @@
      initFileDescription( m_src, src, eSplitMode, dot );
  }
@@ -386,7 +405,7 @@ diff -Naur a/src/krenamefile.cpp b/src/krenamefile.cpp
  {
 diff -Naur a/src/krenamefile.h b/src/krenamefile.h
 --- a/src/krenamefile.h	2011-12-31 23:58:07.000000000 +0800
-+++ b/src/krenamefile.h	2015-11-18 21:46:53.040990421 +0800
++++ b/src/krenamefile.h	2015-11-29 21:00:48.523084616 +0800
 @@ -24,6 +24,8 @@
  #include <kurl.h>
  #include <QPixmap>
@@ -408,7 +427,7 @@ diff -Naur a/src/krenamefile.h b/src/krenamefile.h
      /** Copy constructor
 diff -Naur a/src/krenameimpl.cpp b/src/krenameimpl.cpp
 --- a/src/krenameimpl.cpp	2011-12-31 23:58:07.000000000 +0800
-+++ b/src/krenameimpl.cpp	2015-11-18 21:46:53.040990421 +0800
++++ b/src/krenameimpl.cpp	2015-11-29 21:00:48.523084616 +0800
 @@ -88,7 +88,7 @@
  
  QWidget* KRenameImpl::launch( const QRect & rect, const KRenameFile::List & list, bool loadprofile )
@@ -447,7 +466,7 @@ diff -Naur a/src/krenameimpl.cpp b/src/krenameimpl.cpp
      KConfigGroup groupGui = config->group( QString("GUISettings") );
 diff -Naur a/src/krenameimpl.h b/src/krenameimpl.h
 --- a/src/krenameimpl.h	2009-05-27 01:23:20.000000000 +0800
-+++ b/src/krenameimpl.h	2015-11-18 21:46:53.040990421 +0800
++++ b/src/krenameimpl.h	2015-11-29 21:00:48.523084616 +0800
 @@ -23,6 +23,9 @@
  
  #include <kurl.h>
@@ -460,7 +479,7 @@ diff -Naur a/src/krenameimpl.h b/src/krenameimpl.h
  
 diff -Naur a/src/krenamemodel.cpp b/src/krenamemodel.cpp
 --- a/src/krenamemodel.cpp	2011-12-31 23:58:07.000000000 +0800
-+++ b/src/krenamemodel.cpp	2015-11-18 21:46:53.040990421 +0800
++++ b/src/krenamemodel.cpp	2015-11-29 21:00:48.526418008 +0800
 @@ -504,7 +504,7 @@
      {
          const KRenameFile& file = m_vector->at(index.row());
@@ -472,7 +491,7 @@ diff -Naur a/src/krenamemodel.cpp b/src/krenamemodel.cpp
        Icons are to large, so this is disabled
 diff -Naur a/src/krenameplugins.ui b/src/krenameplugins.ui
 --- a/src/krenameplugins.ui	2008-01-28 02:49:35.000000000 +0800
-+++ b/src/krenameplugins.ui	2015-11-18 21:46:53.040990421 +0800
++++ b/src/krenameplugins.ui	2015-11-29 21:00:48.526418008 +0800
 @@ -92,7 +92,7 @@
    <customwidget>
     <class>KTreeWidgetSearchLineWidget</class>
@@ -484,7 +503,7 @@ diff -Naur a/src/krenameplugins.ui b/src/krenameplugins.ui
   <resources/>
 diff -Naur a/src/krenamewindow.cpp b/src/krenamewindow.cpp
 --- a/src/krenamewindow.cpp	2010-09-15 21:55:28.000000000 +0800
-+++ b/src/krenamewindow.cpp	2015-11-18 21:46:53.040990421 +0800
++++ b/src/krenamewindow.cpp	2015-11-29 21:00:48.526418008 +0800
 @@ -160,7 +160,7 @@
      m_pageFilename->comboPrefixCustom->loadConfig();
      m_pageFilename->comboSuffixCustom->loadConfig();
@@ -505,7 +524,7 @@ diff -Naur a/src/krenamewindow.cpp b/src/krenamewindow.cpp
      groupGui.writeEntry( "Column0", this->previewColumnWidth( 0 ) );
 diff -Naur a/src/krenamewindow.h b/src/krenamewindow.h
 --- a/src/krenamewindow.h	2010-09-15 21:55:28.000000000 +0800
-+++ b/src/krenamewindow.h	2015-11-18 21:46:53.040990421 +0800
++++ b/src/krenamewindow.h	2015-11-29 21:00:48.526418008 +0800
 @@ -22,6 +22,7 @@
  #include "batchrenamer.h"
  
@@ -516,18 +535,27 @@ diff -Naur a/src/krenamewindow.h b/src/krenamewindow.h
  class KRenamePreviewModel;
 diff -Naur a/src/main.cpp b/src/main.cpp
 --- a/src/main.cpp	2011-12-31 23:59:26.000000000 +0800
-+++ b/src/main.cpp	2015-11-18 21:46:53.040990421 +0800
-@@ -28,6 +28,9 @@
++++ b/src/main.cpp	2015-11-29 21:02:58.652693134 +0800
+@@ -28,6 +28,10 @@
  #include <klocale.h>
  #include <kmessagebox.h>
  
-+#include <klocale.h>
 +#include <k4aboutdata.h>
++
++#include <klocalizedstring.h>
 +
  // Own includes
  #include "krenameimpl.h"
  
-@@ -55,7 +58,7 @@
+@@ -41,6 +45,7 @@
+ 
+ int main(int argc, char *argv[])
+ {
++    KLocalizedString::setApplicationDomain("krename");
+     KCmdLineOptions options;
+     options.add( "+[file]", ki18n("file will be added to the list of files for renaming") );
+     options.add( "r +[dir]", ki18n("add directory recursively") );
+@@ -55,7 +60,7 @@
      options.add( "test", ki18n("start KRename's selftest (developers only)") );
      // This option was never implemented in the KDE4 version:
      //options.add( "previewitems <num>",  ki18n("only show <num> preview items") );
@@ -536,7 +564,7 @@ diff -Naur a/src/main.cpp b/src/main.cpp
      KAboutData aboutData( "krename", "krename", ki18n("KRename"), VERSION, ki18n(
                                "<qt><p>KRename is a batch file renamer which can rename a "
                                "list of files based on a set of expressions.</p>"
-@@ -65,6 +68,16 @@
+@@ -65,6 +70,16 @@
                            KAboutData::License_GPL, ki18n("KRename Build:" __DATE__ " " __TIME__ )
                            , ki18n("(c) 2001-2012, Dominik Seichter\n"),
                            "http://www.krename.net", "domseichter@web.de" );
@@ -555,7 +583,7 @@ diff -Naur a/src/main.cpp b/src/main.cpp
                           "http://www.krename.net" );
 diff -Naur a/src/permissionsplugin.cpp b/src/permissionsplugin.cpp
 --- a/src/permissionsplugin.cpp	2008-10-10 01:07:58.000000000 +0800
-+++ b/src/permissionsplugin.cpp	2015-11-18 21:46:53.040990421 +0800
++++ b/src/permissionsplugin.cpp	2015-11-29 21:00:48.526418008 +0800
 @@ -23,6 +23,7 @@
  
  #include "ui_permissionspluginwidget.h"
@@ -566,7 +594,7 @@ diff -Naur a/src/permissionsplugin.cpp b/src/permissionsplugin.cpp
  // OS includes
 diff -Naur a/src/plugin.h b/src/plugin.h
 --- a/src/plugin.h	2011-12-31 23:58:07.000000000 +0800
-+++ b/src/plugin.h	2015-11-18 21:46:53.040990421 +0800
++++ b/src/plugin.h	2015-11-29 21:00:48.526418008 +0800
 @@ -21,6 +21,11 @@
  #include <QPixmap>
  #include <QString>
@@ -581,7 +609,7 @@ diff -Naur a/src/plugin.h b/src/plugin.h
  class PluginLoader;
 diff -Naur a/src/tokenhelpdialog.cpp b/src/tokenhelpdialog.cpp
 --- a/src/tokenhelpdialog.cpp	2012-01-01 00:30:11.000000000 +0800
-+++ b/src/tokenhelpdialog.cpp	2015-11-18 21:46:53.044323828 +0800
++++ b/src/tokenhelpdialog.cpp	2015-11-29 21:00:48.529751400 +0800
 @@ -88,8 +88,8 @@
      this->setButtons( KDialog::Close | KDialog::User1 ); 
      this->setButtonText( KDialog::User1, i18n("&Insert") ); 
@@ -613,7 +641,7 @@ diff -Naur a/src/tokenhelpdialog.cpp b/src/tokenhelpdialog.cpp
  
 diff -Naur a/src/tokenhelpdialog.h b/src/tokenhelpdialog.h
 --- a/src/tokenhelpdialog.h	2012-01-01 00:30:11.000000000 +0800
-+++ b/src/tokenhelpdialog.h	2015-11-18 21:46:53.044323828 +0800
++++ b/src/tokenhelpdialog.h	2015-11-29 21:00:48.529751400 +0800
 @@ -21,6 +21,7 @@
  #include <kdialog.h>
  
@@ -624,7 +652,7 @@ diff -Naur a/src/tokenhelpdialog.h b/src/tokenhelpdialog.h
  class QTreeWidgetItem;
 diff -Naur a/src/tokenhelpwidget.ui b/src/tokenhelpwidget.ui
 --- a/src/tokenhelpwidget.ui	2009-06-02 04:14:34.000000000 +0800
-+++ b/src/tokenhelpwidget.ui	2015-11-18 21:46:53.044323828 +0800
++++ b/src/tokenhelpwidget.ui	2015-11-29 21:00:48.529751400 +0800
 @@ -170,7 +170,7 @@
    <customwidget>
     <class>KTreeWidgetSearchLineWidget</class>
