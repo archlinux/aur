@@ -1,6 +1,6 @@
 pkgbase = lariza-git
 	pkgdesc = Simple WebKit2GTK+ Browser
-	pkgver = 15.02.3.g30034c3
+	pkgver = 15.09.5.g3fb92e0
 	pkgrel = 1
 	url = https://github.com/vain/lariza
 	install = lariza.install
