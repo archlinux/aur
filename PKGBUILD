@@ -1,15 +1,15 @@
-# Maintainer: Philipp Richter <richterphilipp.pops@gmail.com>
+# Maintainer: Sebastian Sonne <sebastiansonne at hush dot com>
 
 # git clone https://github.com/ValveSoftware/steamos_kernel.git
 # cd steamos_kernel
 # echo "$(git rev-parse --abbrev-ref HEAD).$(git log -n 1 --pretty=format:%h -- drivers/input/joystick/xpad.c)" | sed 's/-/./g'
 
-_xpadsteamoscommit='f5f73eb889cac32cbabfc40362fe5635a2255836'
-_xpadsteamossha512sum='88553d3efbd76f504c6086652a62f46bbde6ba881edfef453502cae044abfb805e748d5b95b8e5fa25f9b5cbe6c6f0c93602feb254e5ddb5bbf6bf859098bb58'
+_xpadsteamoscommit='89b6274b2c30c6db712c00ea47a602cc197fd39c'
+_xpadsteamossha512sum='bc018a77c2c4bceca5cd647816fab89c73b22c8a2a7d6b5f24965703253a69fe46b4ae91e5607fefe70671f6afd73b71c5244f24e0e88acd6a804ba55d3db3c0'
 
 _pkgbase='steamos-xpad'
 pkgname='steamos-xpad-dkms'
-pkgver='alchemist.3.10.f5f73eb'
+pkgver='2015.11.29'
 pkgrel='1'
 pkgdesc="xpad kernel module included with Valve's SteamOS"
 arch=('any')
