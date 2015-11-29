@@ -1,44 +1,63 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
-# Contributor:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: tocer <tocer.deng@gmail.com>
+# Maintainer: Marco Pompili <marcs.pompili@gmail.com>
 
 pkgname=v8
-# use http://omahaproxy.appspot.com/ to find stable v8 version
-pkgver=3.30.33.16
-pkgrel=2
-pkgdesc='Fast and modern Javascript engine'
-arch=(i686 x86_64)
-url='http://code.google.com/p/v8'
-license=(BSD)
-depends=(readline icu)
-makedepends=(python2 ninja)
-# unfortunately https://github.com/$pkgname/$pkgname does not contain all tags
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver-lite.tar.bz2
-        v8.pc)
-sha256sums=('a9eed0d858abe1999c1d4500039afd16feb5f8ee6ca1820eb467efafdccf2cf6'
+pkgver=4.9.92
+pkgrel=1
+pkgdesc="Fast and modern Javascript engine used in Google Chrome."
+arch=("i686" "x86_64")
+url="https://code.google.com/p/v8/"
+license=("BSD")
+depends=("readline" "icu" "libtinfo")
+makedepends=("python2" "python2-virtualenv" "ninja")
+source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
+        "gyp::git+https://chromium.googlesource.com/external/gyp"
+        "v8.pc")
+sha256sums=('SKIP'
+            'SKIP'
             '2b054309df9af9fb2e3e14527e88360b44745649b4866e592fb357ac90935f5d')
 
 case "$CARCH" in
-  x86_64) V8_ARCH='x64' ;;
-  i686) V8_ARCH='ia32' ;;
+  x86_64) V8_ARCH="x64" ;;
+  i686) V8_ARCH="ia32" ;;
 esac
 
 prepare() {
-  cd v8-$pkgver
+  msg2 "Creating Python Virtual Environment"
+  virtualenv2 -q venv
+  msg2 "Activating Python Virtual Environment"
+  source venv/bin/activate > /dev/null
+  msg2 "Installing dependencies in the Virtual Environment"
+  pip install gyp/ -q
+  pip install colorama -q
+  pip install pylint -q
+  pip install lazy-object-proxy -q
+  pip install singledispatch -q
+  pip install wrapt -q
 
-  find build/ test/ tools/ src/ -type f -exec \
-    sed -e 's_^#!/usr/bin/env python$_&2_' \
-        -e 's_^#!/usr/bin/python$_&2_' \
-        -e "s_'python'_'python2'_" -i {} \;
+  export PATH=`pwd`/depot_tools:"$PATH"
+  export GYP_GENERATORS=ninja
 
-  sed 's/\bpython\b/python2/' -i Makefile build/gyp/gyp
+  if [ ! -d "v8" ]; then
+    msg2 "Fetching V8 code"
+    yes | fetch v8
+  fi
+
+  cd v8
+
+  msg2 "Syncing"
+  gclient sync
+
+  git checkout tags/$pkgver
 
   sed "s/@VERSION@/$pkgver/g" -i "$srcdir/v8.pc"
 }
 
 build() {
-  cd v8-$pkgver
+  cd v8
 
   build/gyp_v8 -Dv8_enable_i18n_support=1 -Duse_system_icu=1 -Dconsole=readline -Dcomponent=shared_library -Dv8_target_arch=$V8_ARCH -Dwerror= -f ninja
 
@@ -46,16 +65,13 @@ build() {
 }
 
 check() {
-  cd v8-$pkgver
-
-  # the test fails https://code.google.com/p/v8/issues/detail?id=2899
-  rm test/intl/collator/default-locale.js
+  cd v8
 
   tools/run-tests.py --no-presubmit --outdir=out --buildbot --arch=$V8_ARCH --mode=Release # --progress=dots
 }
 
 package() {
-  cd v8-$pkgver
+  cd v8
 
   install -Dm755 out/Release/d8 "$pkgdir"/usr/bin/d8
   install -Dm755 out/Release/lib/libv8.so "$pkgdir"/usr/lib/libv8.so

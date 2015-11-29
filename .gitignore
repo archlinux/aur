@@ -1,0 +1,5 @@
+src/
+pkg/
+depot_tools/
+gyp/
+v8-*pkg.tar.xz
