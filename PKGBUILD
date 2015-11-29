@@ -3,7 +3,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=babl-git
-pkgver=BABL_0_1_12.28.gdf222a5
+pkgver=0.1.14.2.g746b5b6
 pkgrel=1
 pkgdesc="babl is a dynamic, any to any, pixel format translation library."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('LGPL3')
 groups=()
 depends=('glibc')
 makedepends=('git')
-provides=('babl')
+provides=("babl=${pkgver}")
 conflicts=('babl')
 replaces=()
 backup=()
@@ -41,5 +41,5 @@ package() {
 
 pkgver() {
   cd "${srcdir}/babl"
-  git describe --always | tr '-' '.'
+  git describe --always | sed -e 's/BABL_//g' -e 's/[_-]/./g'
 }
