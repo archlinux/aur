@@ -3,7 +3,7 @@
 
 _gemname=bootstrap-sass
 pkgname=ruby-${_gemname}
-pkgver=3.3.5.1
+pkgver=3.3.6
 pkgrel=1
 pkgdesc='Official Sass port of Bootstrap'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=("ruby-compass")
 source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
 options=(!strip)
-sha512sums=('32e4e77cd1d74ab748e29f22d74cc0261a0fc11db21f31b39de8a7f3cdec8bcb4fede105d8dc7f24b02273452e30bef87af40f7fac60b5b9bda13377326ff791')
+sha512sums=('e2b29acb5ffbfe7f3427fe2e0cd5675941f7d69491d1525f2d8583122efc7b31fd9a35d09834b42695c6f3c85da98abcc9170640be057f11b4602ff0b9090837')
 
 package() {
 	local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
