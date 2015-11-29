@@ -1,7 +1,8 @@
 pkgbase = gimp-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 20150626.g25a696c
+	pkgver = 2.9.2.8.g4f9ec68
 	pkgrel = 1
+	epoch = 1
 	url = http://www.gimp.org
 	install = gimp-git.install
 	arch = i686
@@ -36,7 +37,7 @@ pkgbase = gimp-git
 	depends = pygtk>=2.10.4
 	depends = dbus-glib
 	depends = gtk-doc
-	depends = gegl-git>=GEGL_0_3_0
+	depends = gegl>=0.3.4
 	depends = openexr>=1.6.1
 	depends = cairo>=1.12.2
 	depends = python2
