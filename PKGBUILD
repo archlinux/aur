@@ -2,17 +2,17 @@
 # Contributor: David Campbell <davekong@archlinux.us>
 
 pkgname=neuron
-pkgver=7.3
-pkgrel=8
+pkgver=7.4
+pkgrel=1
 pkgdesc="Empirically-based simulations of neurons and networks of neurons"
 arch=('i686' 'x86_64')
 url="http://www.neuron.yale.edu"
 license=('GPL')
 depends=('interviews' 'openmpi' 'python')
 optdepends=('python-numpy' 'python-scipy' 'mpich2')
-source=("http://www.neuron.yale.edu/ftp/neuron/versions/v$pkgver/nrn-$pkgver.tar.gz" "patch.diff")
+source=("http://www.neuron.yale.edu/ftp/neuron/versions/v$pkgver/nrn-$pkgver.tar.gz")
 options=('libtool')
-md5sums=('993e539cb8bf102ca52e9fefd644ab61' 'ba01405ea8ff911a3802459ac2c27b01')
+md5sums=('2c0bbee8a9e55d60fa26336f4ab7acbf')
 
 build() {
   cd "$srcdir/nrn-$pkgver"
@@ -21,10 +21,6 @@ build() {
   sed -i "s_ac\_pysetup='--home=\$(prefix)'_ac\_pysetup='--home=$pkgdir/usr'_g" "$srcdir/nrn-$pkgver/configure"
   sed -i 's_exec\_prefix="${prefix}/${host\_cpu}"_exec\_prefix="${prefix}"_g' "$srcdir/nrn-$pkgver/configure"
 
-  # Python 3 complains about a prototype (see http://www.neuron.yale.edu/phpbb/viewtopic.php?f=2&t=3060). 
-  # This part patches some code according to http://www.neuron.yale.edu/hg/neuron/nrn/rev/dce1de58303d.
-  patch -p1 < $srcdir/patch.diff
-	
   ./configure --prefix=/usr --libdir=/usr/lib --bindir=/usr/bin --with-paranrn --with-nrnpython=`which python`
   make 
 }
