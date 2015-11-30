@@ -1,12 +1,12 @@
 # Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=after-school
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="After School is a short videogame entirely handpainted on paper, using pencils and watercolors."
 arch=(i686 x86_64)
 url="http://ateliersento.itch.io/after-school"
 license=('custom')
-depends=(libgl)
+depends=(lib32-libgl lib32-gdk-pixbuf2 lib32-libxcursor lib32-libxrandr)
 makedepends=(unzip)
 source=(after-school.desktop
         after-school.png)
