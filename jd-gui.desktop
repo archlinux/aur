@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Java Decompiler JD-GUI
+Terminal=false
+Name=JD-GUI
+Exec=jd-gui
+Type=Application
+Icon=jd-gui
