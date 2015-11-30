@@ -7,8 +7,8 @@
 #
 
 pkgname=emacs25-git
-pkgver=25.0.50.r123594
-pkgrel=3
+pkgver=25.0.50.r123619
+pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -56,7 +56,7 @@ build() {
     --with-cairo
     --with-xft)
 
-  ./configure ${_conf}
+  ./configure ${_conf[@]}
 
   # Using "make" instead of "make bootstrap" makes incremental
   # compiling work. Less time recompiling. Yay! But if you may 
