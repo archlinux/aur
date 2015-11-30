@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libcintelhex-git
-pkgver=r150.0679008
+pkgver=r164.137212a
 pkgrel=1
 pkgdesc='A C library for parsing Intel HEX files'
 arch=(i686 x86_64)
