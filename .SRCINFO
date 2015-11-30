@@ -1,0 +1,26 @@
+pkgbase = eiciel-git
+	pkgdesc = GNOME 3 file ACL editor (Git version)
+	pkgver = 0.9.11.r54.29785ab
+	pkgrel = 1
+	url = http://rofi.roger-ferrer.org/eiciel/
+	install = eiciel-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = acl
+	depends = gtkmm3
+	depends = libnautilus-extension
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = nautilus: show ACLs in Nautilus' file property dialogs
+	optdepends = yelp: show help pages
+	provides = eiciel
+	conflicts = eiciel
+	options = !libtool
+	source = eiciel::git+git://github.com/rofirrim/eiciel.git
+	md5sums = SKIP
+
+pkgname = eiciel-git
+
