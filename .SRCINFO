@@ -1,6 +1,6 @@
 pkgbase = tup-git
 	pkgdesc = A fast, file-based build system
-	pkgver = 0.7.1.r8.g6238fb6
+	pkgver = 0.7.3.r77.g06178b9
 	pkgrel = 1
 	url = http://gittup.org/tup/index.html
 	install = tup.install
