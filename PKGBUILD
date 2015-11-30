@@ -8,21 +8,19 @@ license=('GPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://addons.mozilla.org/firefox/addon/$_plugin_id"
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/2464/foxyproxy_standard-${pkgver}-sm+tb+fx.xpi")
+sha256sums=('56dc7075233db41e4d50304762e8f7518b8ebd6c65eeefc9cb72699e290bf749')
 
 package() {
   cd $srcdir
-  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
-  local dstdir=$pkgdir/usr/lib/firefox/browser/extensions/${emid}
-  install -d $dstdir
-  #sed -i 's#<em:maxVersion>.*</em:maxVersion>#<em:maxVersion>11.*</em:maxVersion>#' install.rdf
-  rm *.xpi
-  mv * $dstdir
+  local _emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
+  test ! -z "${_emid}"
+  local _file=(*.xpi)
+  test "${#_file[@]}" -eq 1
+  install -Dpm644 "${_file}" "${pkgdir}/usr/lib/firefox/browser/extensions/${_emid}.xpi"
 }
-sha256sums=('56dc7075233db41e4d50304762e8f7518b8ebd6c65eeefc9cb72699e290bf749')
-
 
