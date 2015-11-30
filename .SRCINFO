@@ -1,8 +1,9 @@
 pkgbase = argparser
 	pkgdesc = Command line argument parser library, like getopt, except better.
 	pkgver = 5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/maandree/argparser
+	install = argparser.install
 	arch = any
 	license = AGPL3
 	makedepends = coreutils
