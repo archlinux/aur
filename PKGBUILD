@@ -28,11 +28,11 @@ build() {
   cd ${srcdir}
   chmod +x tws-latest-standalone-linux-x64.sh
   # Assumes no other Install4J packages are in use by user; if so, makepkg from dedicated user account
-  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts
-  ./tws-latest-standalone-linux-x64.sh -q
   majorVer=$(echo "$pkgver" | sed "s/\([0-9]\+\)\..*/\1/")
+  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer}
+  ./tws-latest-standalone-linux-x64.sh -q
   mv ${HOME}/Jts/${majorVer}/jars/*.jar ${srcdir}
-  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts
+  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer}
   cd ${srcdir}
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
