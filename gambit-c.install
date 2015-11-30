@@ -1,5 +1,5 @@
 _infodir=/usr/share/info
-_iinfoargs="$_infodir/gambit-c.info.gz $_infodir/dir"
+_iinfoargs="$_infodir/gambit.info.gz $_infodir/dir"
 
 post_install() {
   install-info $_iinfoargs
