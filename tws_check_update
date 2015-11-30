@@ -6,8 +6,8 @@
 #   2 =  Error
 
 DOWNLOAD_DIR="$HOME/.tws_scripts"
-FILE_MIRROR="unixmacosx_latest.jar"
-URL_MIRROR="http://download2.interactivebrokers.com/download"
+FILE_MIRROR="tws-latest-standalone-linux-x64.sh"
+URL_MIRROR="https://download2.interactivebrokers.com/installers/tws/latest-standalone"
 FILE_CUR="${DOWNLOAD_DIR}/${FILE_MIRROR}"
 
 get_perm_file_name()
@@ -32,7 +32,7 @@ if test -f "${FILE_CUR}" ; then
 	touch -r "${FILE_CUR}" "${FILE_MIRROR}"
 fi
 
-if wget --no-verbose -U x -N -P "${TDIR}" "${URL_MIRROR}/${FILE_MIRROR}" ;then 
+if wget --no-verbose -U x -N -P "${TDIR}" "${URL_MIRROR}/${FILE_MIRROR}" ;then
     if test "${FILE_MIRROR}" -nt "${FILE_CUR}" ; then
 	DST="$(get_perm_file_name "${FILE_MIRROR}")"
         mv "${FILE_MIRROR}" "${DOWNLOAD_DIR}/${DST}"
@@ -47,4 +47,3 @@ else
     echo "TWS update failed" 1>&2
     exit 2
 fi
-
