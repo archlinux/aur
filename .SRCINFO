@@ -1,5 +1,5 @@
 pkgbase = cloudstation-3.0
-	pkgdesc = Synology Cloud Station. Cloud Station allows you to sync files among your Synology NAS and computers
+	pkgdesc = Synology Cloud Station. This version is for DSM versions that only works with CloudStation 3.0 (DSM 4.2 on a DS209 for example)
 	pkgver = 3111
 	pkgrel = 1
 	url = http://www.synology.com
