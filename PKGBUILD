@@ -15,7 +15,7 @@ validpgpkeys=('E50EF6D35253C390580747781D3F7F8594C766C9') # Wabuo
 
 #The devolopers don't provide any checksums! Checksums generateed by me!
 sha256sums=('0556be387ea83460ff7b47b80c074bcfc66f915d31bac20c8f75144e39929a1c'
-            '16791fea2f377368ca9dae15f33d3a68d2450fdb6f4e4eb17a3fe5bc70636602'
+            'd613dcdbaf0dae16229ada565d065ea983dbbc63efac9aae1e5246561b2ead11'
             'SKIP')
 
 install=${name}.install
