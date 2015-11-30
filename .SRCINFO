@@ -1,7 +1,7 @@
 pkgbase = ruby-fog-aliyun
 	pkgdesc = As a FOG provider, fog-aliyun support aliyun OSS/ECS. It will support more aliyun services later.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fog/fog-aliyun
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = ruby-fog-aliyun
 	depends = ruby-fog-core
 	depends = ruby-fog-json
 	depends = ruby-ipaddress
+	depends = ruby-xml-simple
 	noextract = fog-aliyun-0.1.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/fog-aliyun-0.1.0.gem

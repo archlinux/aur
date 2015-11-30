@@ -3,12 +3,12 @@
 _gemname=fog-aliyun
 pkgname=ruby-$_gemname
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='As a FOG provider, fog-aliyun support aliyun OSS/ECS. It will support more aliyun services later.'
 arch=(any)
 url='https://github.com/fog/fog-aliyun'
 license=(MIT)
-depends=(ruby ruby-fog-core ruby-fog-json ruby-ipaddress)
+depends=(ruby ruby-fog-core ruby-fog-json ruby-ipaddress ruby-xml-simple)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
