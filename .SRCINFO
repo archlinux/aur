@@ -1,18 +1,19 @@
 pkgbase = crosstool-ng
 	pkgdesc = Versatile (cross-)toolchain generator
-	pkgver = 1.21.0
-	pkgrel = 2
+	pkgver = 1.22.0
+	pkgrel = 1
 	url = http://crosstool-ng.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = help2man
 	depends = make
 	depends = gperf
 	depends = wget
 	options = !makeflags
-	source = http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.21.0.tar.bz2
-	md5sums = 436c95ce91a9140fa03ddb32fc0db3f5
-	sha256sums = 67122ba42657da258f23de4a639bc49c6ca7fe2173b5efba60ce729c6cce7a41
+	source = http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.22.0.tar.bz2
+	md5sums = 23d5de6b95f86ad2674bcf6859b9664f
+	sha256sums = d6338a9b33f9d972167049bbe76e88b1e9248466a53df08dcfe8bcfe849d8d83
 
 pkgname = crosstool-ng
 
