@@ -2,16 +2,15 @@
 # Contributor: David Campbell <davekong@archlinux.us>
 
 pkgname=interviews
-pkgver=18
+pkgver=19
 pkgrel=1
 pkgdesc="GUI for neuron"
 arch=('i686' 'x86_64')
 url="http://www.neuron.yale.edu"
 license=('custom')
 depends=('libx11')
-source=("http://www.neuron.yale.edu/ftp/neuron/versions/v7.3/iv-$pkgver.tar.gz")
-options=('')
-md5sums=('faf5782b5bbe63f2f0049b212f429f50')
+source=("http://www.neuron.yale.edu/ftp/neuron/versions/v7.4/iv-$pkgver.tar.gz")
+md5sums=('79fde976b2c89590fb78854aa2c04101')
 
 build() {
   cd "$srcdir/iv-$pkgver"

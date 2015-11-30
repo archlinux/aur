@@ -1,14 +1,14 @@
 pkgbase = interviews
 	pkgdesc = GUI for neuron
-	pkgver = 18
+	pkgver = 19
 	pkgrel = 1
 	url = http://www.neuron.yale.edu
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libx11
-	source = http://www.neuron.yale.edu/ftp/neuron/versions/v7.3/iv-18.tar.gz
-	md5sums = faf5782b5bbe63f2f0049b212f429f50
+	source = http://www.neuron.yale.edu/ftp/neuron/versions/v7.4/iv-19.tar.gz
+	md5sums = 79fde976b2c89590fb78854aa2c04101
 
 pkgname = interviews
 
