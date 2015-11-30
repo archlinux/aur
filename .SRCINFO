@@ -1,7 +1,7 @@
 pkgbase = pstoedit-emf
 	pkgdesc = Translates PostScript and PDF graphics into other vector formats, with EMF support
 	pkgver = 3.70
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.pstoedit.net/
 	arch = i686
 	arch = x86_64

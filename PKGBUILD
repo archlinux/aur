@@ -3,7 +3,7 @@
 _pkgname=pstoedit
 pkgname=$_pkgname-emf
 pkgver=3.70
-pkgrel=0
+pkgrel=1
 pkgdesc="Translates PostScript and PDF graphics into other vector formats, with EMF support"
 arch=('i686' 'x86_64')
 url="http://www.pstoedit.net/"
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$srcdir/$_pkgname-$pkgver"
   make DESTDIR="${pkgdir}" install
 }
