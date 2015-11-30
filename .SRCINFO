@@ -1,16 +1,16 @@
 pkgbase = jabref
 	pkgdesc = GUI frontend for BibTeX, written in Java
-	pkgver = 2.11.1
+	pkgver = 3.0
 	pkgrel = 1
 	url = http://jabref.sourceforge.net/
 	arch = any
 	license = GPL
 	depends = java-runtime
 	optdepends = gsettings-desktop-schemas: For web search support
-	source = http://downloads.sourceforge.net/jabref/JabRef-2.11.1.jar
+	source = http://downloads.sourceforge.net/jabref/JabRef-3.0.jar
 	source = jabref.sh
 	source = jabref.desktop
-	sha256sums = 7c6174826390bb5842eae52b6e7aa4f31eee8ebeab2019ebdf26414f986732fd
+	sha256sums = aa0d202319cf99c509313d59c342a32cb323895d167d4a49011ad8c2593adc1e
 	sha256sums = 05b4ff3d9323a16d5e10b9d5266466573ee9a56e985c1e0896a68ea177e0c1d0
 	sha256sums = 9102977f437aad1fe4e8907331a0fc52c9c7d75328b3fde6163aa4eca93b00ca
 

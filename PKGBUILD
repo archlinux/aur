@@ -4,7 +4,7 @@
 # Contributor: Christian Storm <Christian.Storm@gmx.de>
 
 pkgname=jabref
-pkgver=2.11.1
+pkgver=3.0
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 source=(http://downloads.sourceforge.net/$pkgname/JabRef-${pkgver}.jar
         jabref.sh
         jabref.desktop)
-sha256sums=('7c6174826390bb5842eae52b6e7aa4f31eee8ebeab2019ebdf26414f986732fd'
+sha256sums=('aa0d202319cf99c509313d59c342a32cb323895d167d4a49011ad8c2593adc1e'
             '05b4ff3d9323a16d5e10b9d5266466573ee9a56e985c1e0896a68ea177e0c1d0'
             '9102977f437aad1fe4e8907331a0fc52c9c7d75328b3fde6163aa4eca93b00ca')
 
@@ -29,5 +29,5 @@ package() {
   sed -i "s/VERSION/${pkgver}/" ${pkgdir}/usr/bin/${pkgname}
 
   install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-  install -Dm644 images/JabRef-icon-48.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -Dm644 images/icons/JabRef-icon-48.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 }
