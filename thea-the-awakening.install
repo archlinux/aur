@@ -5,9 +5,8 @@ post_install(){
 	echo "If you find any bugs pleas report them to http://steamcommunity.com/app/378720/discussions/0/490125737485986607"
 	echo
 	echo "Known Bugs:"
-	echo "	-Sticky keys; if you press any key it will stay pressed for ever!"
-	echo "	Workaround;"
-	echo "		- only use the mouse."
-	echo "		- to unstick sticked keys unfocus the game window."
+	echo " -Sticky keys; if you press any key it will stay pressed for ever!"
+	echo " Workaround;"
+	echo " - only use the mouse."
+	echo " - to unstuck stuck keys unfocus the game window."
 }
-
