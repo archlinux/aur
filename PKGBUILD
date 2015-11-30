@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool-git
-pkgver=1.6.6.r269.gfe1519e
+pkgver=1.6.7.r499.gd1eb88b
 pkgrel=1
 pkgdesc='an in-memory database designed to store the most volatile and highly accessible web content'
 arch=(i686 x86_64)
@@ -15,8 +15,10 @@ source=(git://github.com/tarantool/tarantool.git
         git://github.com/tarantool/msgpuck.git
         git://github.com/rtsisyk/luafun.git
         git://github.com/tarantool/sophia.git#branch=current
-        git://github.com/tarantool/test-run.git)
+        git://github.com/tarantool/test-run.git
+        git://github.com/tarantool/small.git)
 sha1sums=('SKIP'
+          'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -38,6 +40,7 @@ build() {
   git config -f .gitmodules 'submodule.third_party/luafun.url' "$srcdir/luafun"
   git config -f .gitmodules 'submodule.sophia.url' "$srcdir/sophia"
   git config -f .gitmodules 'submodule.test-run.url' "$srcdir/test-run"
+  git config -f .gitmodules 'submodule.src/lib/small.url' "$srcdir/small"
   git submodule sync
   git submodule update
 

@@ -1,6 +1,6 @@
 pkgbase = tarantool-git
 	pkgdesc = an in-memory database designed to store the most volatile and highly accessible web content
-	pkgver = 1.6.6.r269.gfe1519e
+	pkgver = 1.6.7.r499.gd1eb88b
 	pkgrel = 1
 	url = http://www.tarantool.org
 	arch = i686
@@ -22,6 +22,8 @@ pkgbase = tarantool-git
 	source = git://github.com/rtsisyk/luafun.git
 	source = git://github.com/tarantool/sophia.git#branch=current
 	source = git://github.com/tarantool/test-run.git
+	source = git://github.com/tarantool/small.git
+	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
