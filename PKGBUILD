@@ -14,7 +14,7 @@ provides=()
 conflicts=('gis-weather-git')
 
 source=(${url}/files/gis-weather/${pkgver}/gis-weather_${pkgver}_all.deb/download)
-md5sums=('a47169f7820eba68e8b41fe448584001')
+md5sums=('a537781f344b396db8375a7a8aa41e17')
 
 package() {
   cd "$srcdir"

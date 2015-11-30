@@ -13,7 +13,7 @@ pkgbase = gis-weather
 	optdepends = librsvg
 	conflicts = gis-weather-git
 	source = http://sourceforge.net/projects/gis-weather/files/gis-weather/0.7.9/gis-weather_0.7.9_all.deb/download
-	md5sums = a47169f7820eba68e8b41fe448584001
+	md5sums = a537781f344b396db8375a7a8aa41e17
 
 pkgname = gis-weather
 
