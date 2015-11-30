@@ -28,11 +28,11 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgname
+  cd "$srcdir/$_pkgname"
   python setup.py build
 }
 
 package() {
-  cd $_pkgname
+  cd "$srcdir/$_pkgname"
   python setup.py install --root="$pkgdir"
 }
