@@ -8,7 +8,7 @@
 
 pkgname=emacs24-git
 pkgver=24.5.50.r116792
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Emacs. Official git stable 24 branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -55,7 +55,8 @@ build() {
     --with-x-toolkit=gtk3 
     --with-xft)
 
-  ./configure ${_conf}
+  ac_cv_lib_gif_EGifPutExtensionLast=yes \
+  ./configure ${_conf[@]}
 
   # Using "make" instead of "make bootstrap" makes incremental
   # compiling work. Less time recompiling. Yay! But if you may 
