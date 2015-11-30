@@ -1,0 +1,17 @@
+pkgbase = synkron
+	pkgdesc = A folder synchronization tool
+	pkgver = 1.6.2
+	pkgrel = 4
+	url = http://synkron.sourceforge.net/
+	install = synkron.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt4
+	source = http://downloads.sourceforge.net/synkron/Synkron-1.6.2-src.tar.gz
+	source = fix-install.patch
+	sha1sums = 0909caf101ed3d5b25235f22a83c6ca537f2b564
+	sha1sums = 1f1f344b62a4830cb7d79e72d315330d08da8937
+
+pkgname = synkron
+

@@ -1,0 +1,42 @@
+Index: Synkron.pro
+===================================================================
+--- Synkron.pro	(revision 198)
++++ Synkron.pro	(revision 199)
+@@ -43,6 +43,21 @@
+ unix:!macx {
+      DEFINES += USE_UNIX_TOUCH_COMMAND
+      TARGET = synkron
++     
++     isEmpty(prefix):prefix = /usr/local
++     isEmpty(PREFIX):PREFIX = $$prefix
++     BINDIR = $$PREFIX/bin
++     DATADIR = $$PREFIX/share
++
++     INSTALLS = target \
++                desktop \
++                pixmaps \
++
++     target.path = $$BINDIR
++     desktop.path = $$DATADIR/applications/
++     desktop.files += $${TARGET}.desktop
++     pixmaps.path = $$DATADIR/pixmaps/
++     pixmaps.files += images/Synkron128.png
+ }
+ macx {
+      # Comment the following line to use the NSFileManager class
+Index: synkron.desktop
+===================================================================
+--- synkron.desktop	(revision 0)
++++ synkron.desktop	(revision 199)
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Type=Application
++Icon=Synkron128
++Name=Synkron
++Comment=A folder synchronization tool
++Comment[ru]=Средство для синхронизации папок
++Comment[uk]=Засіб синхронізації тек
++Categories=Utility;
++Exec=synkron
++StartupNotify=false
++Terminal=false
