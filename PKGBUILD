@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 129583 2015-03-19 15:10:55Z fyan $
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: lily wilson <hotaru@thinkindifferent.net>
 
 _pkgbasename=openssl
 pkgname=lib32-$_pkgbasename-chacha20
@@ -7,7 +6,7 @@ _ver=1.0.2d
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=0
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with ChaCha20 support (32-bit)'
 arch=('x86_64')
 url='https://www.openssl.org'
