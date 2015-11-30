@@ -1,6 +1,6 @@
 pkgbase = ruby-fog
 	pkgdesc = brings clouds to you
-	pkgver = 1.31.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = http://github.com/fog/fog
 	arch = any
@@ -28,10 +28,10 @@ pkgbase = ruby-fog
 	depends = ruby-fog-terremark
 	depends = ruby-fog-vmfusion
 	depends = ruby-fog-voxel
-	noextract = fog-1.31.0.gem
+	noextract = fog-1.36.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-1.31.0.gem
-	sha512sums = 15fa011054b6eeb386e99d88b6131539015ae5a10b7cecfcbf813b48932f0b531b2dcb5521861ed9044fffbd6d7547b1bed72821729de127cc2aeba31c108832
+	source = https://rubygems.org/downloads/fog-1.36.0.gem
+	sha512sums = 30a8e0e363ae475d574c37ae9d05b29c3f3a95df7f475b38da2ad8e6f5667266aa0b1ec8e0daab33497c7e980e2484f71cfb5372d8496c35eedb4189da10d261
 
 pkgname = ruby-fog
 
