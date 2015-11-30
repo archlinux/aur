@@ -1,0 +1,4 @@
+firefox-extension-speed-dial-*
+*.xpi
+pkg/
+src/
