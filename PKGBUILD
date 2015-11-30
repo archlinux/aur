@@ -2,13 +2,14 @@
 
 pkgname=alarm
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Schedule an alarm for a program when starting it"
 url="https://github.com/maandree/alarm"
 arch=(i686 x86_64)
 license=(GPL3)
 depends=(glibc)
-makedepends=(make coreutils gcc glibc)
+makedepends=(make coreutils gcc glibc texinfo)
+install=alarm.install
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=(a8aa6f12591ce70beaa283214e0f1196dae6f78b7eb4b6e100b96b25627e6ae4)
 
