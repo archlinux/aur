@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=cmdipc
-pkgver=1.2.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="System V and POSIX IPC from the command line"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python3 python-posix_ipc python-sysv-ipc argparser)
 makedepends=(make sed zip texinfo)
 install=cmdipc.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(a02a934028d7c0e6b6eb4911bb70b29a01187eee748e571fd71c547086fe30d9)
+sha256sums=(1f1eb0e18678140ef7b0f1f30ae11ec8aef8357aec61fd67fb0129fe5bd8d70b)
 
 
 build() {
