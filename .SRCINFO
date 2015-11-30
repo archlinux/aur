@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-image-transport
 	pkgdesc = ROS - image_transport should always be used to subscribe to and publish images.
-	pkgver = 1.11.7
-	pkgrel = 2
+	pkgver = 1.11.8
+	pkgrel = 1
 	url = http://ros.org/wiki/image_transport
 	arch = any
 	license = BSD
@@ -21,7 +21,7 @@ pkgbase = ros-indigo-image-transport
 	depends = ros-indigo-roslib
 	depends = ros-indigo-message-filters
 	depends = ros-indigo-pluginlib
-	source = image_transport::git+https://github.com/ros-gbp/image_common-release.git#tag=release/indigo/image_transport/1.11.7-0
+	source = image_transport::git+https://github.com/ros-gbp/image_common-release.git#tag=release/indigo/image_transport/1.11.8-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-image-transport
