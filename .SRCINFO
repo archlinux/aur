@@ -1,0 +1,15 @@
+pkgbase = ruby-xml-simple
+	pkgdesc = A simple API for XML processing.
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/maik/xml-simple
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = xml-simple-1.1.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/xml-simple-1.1.5.gem
+	sha512sums = 30b8e9541d4047181df34f3558235aa2058f8fda26220a90bc811b3f438130a69d06c72b52ba4fe5caadf779195d3bf772253bdb70db5df238f5117c7362e97f
+
+pkgname = ruby-xml-simple
+
