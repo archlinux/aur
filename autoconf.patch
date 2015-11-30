@@ -1,0 +1,46 @@
+diff -up src/fvwm/configure.ac.orig src/fvwm/configure.ac
+--- src/fvwm/configure.ac.orig	2014-09-20 11:31:14.000000000 -0600
++++ src/fvwm/configure.ac	2015-11-30 00:31:50.000000000 -0700
+@@ -1,7 +1,7 @@
+ dnl Process this file with autoconf to produce a configure script.
+ dnl
+ AC_PREREQ(2.60)
+-AC_INIT(fvwm/fvwm.c)
++AC_INIT(fvwm, 2.6.6)
+ 
+ dnl should be "yes" only within the released distribution
+ ISRELEASED=no
+@@ -68,7 +68,8 @@ AC_SUBST(FVWMWORKERSLIST)
+ AC_SUBST(FVWMWORKERSLISTLONG)
+ AC_SUBST(MANPAGE_PREAMBLE)
+ 
+-AM_INIT_AUTOMAKE(fvwm, ${version})
++AC_CONFIG_SRCDIR(fvwm/fvwm.c)
++AM_INIT_AUTOMAKE
+ AM_CONFIG_HEADER(config.h)
+ 
+ # check for programs needed to build html docs
+diff -up src/fvwm/doc/commands/Makefile.am.orig src/fvwm/doc/commands/Makefile.am
+--- src/fvwm/doc/commands/Makefile.am.orig	2008-02-26 07:35:08.000000000 -0700
++++ src/fvwm/doc/commands/Makefile.am	2015-11-30 00:31:50.000000000 -0700
+@@ -17,7 +17,7 @@ clean:
+ distclean-local: clean
+ 
+ # All HTML output is generated from XML files.
+-%.html : $(srcdir)/%.xml $(srcdir)/../header.html $(srcdir)/../style.css
++*.html : $(srcdir)/%.xml $(srcdir)/../header.html $(srcdir)/../style.css
+ 	$(XSLTPROC) --path "$(top_builddir)/doc" --xinclude \
+ 		--stringparam profile.attribute output \
+ 		--stringparam profile.value html \
+diff -up src/fvwm/modules/FvwmGtk/Makefile.am.orig src/fvwm/modules/FvwmGtk/Makefile.am
+--- src/fvwm/modules/FvwmGtk/Makefile.am.orig	2015-11-30 00:50:09.000000000 -0700
++++ src/fvwm/modules/FvwmGtk/Makefile.am	2015-11-30 00:50:17.000000000 -0700
+@@ -32,7 +32,7 @@ FvwmGtk_DEPENDENCIES = $(top_builddir)/l
+ LDADD = -L$(top_builddir)/libs $(X_LIBS) -lfvwm \
+ 	$(X_PRE_LIBS) -lXext -lX11 $(X_EXTRA_LIBS) -lm \
+ 	$(GTK_LIBS) $(GDK_IMLIB_LIBS) \
+-	$(GNOME_LIBDIR) $(GNOMEUI_LIBS)
++	$(GNOME_LIBDIR) $(GNOMEUI_LIBS) -lglib-2.0
+ 
+ AM_CPPFLAGS = -I$(top_srcdir) $(Xft_CFLAGS) $(X_CFLAGS) \
+ 	$(GTK_CFLAGS) $(GDK_IMLIB_CFLAGS) $(GNOME_INCLUDEDIR)
