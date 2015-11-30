@@ -13,11 +13,13 @@ pkgbase = grub2-git
 	source = grub::git://git.savannah.gnu.org/grub.git#branch=master
 	source = grub-extras::git://git.savannah.nongnu.org/grub-extras.git
 	source = archlinux_grub_mkconfig_fixes.patch
+	source = i386_softdiv.patch
 	source = grub-doc.install
 	source = grub-notice.install
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 729168cd3df5b21cc613bf74a1f923bcf79ad3db99c1eb81e9be31aaf3211891
+	sha256sums = fb69d0e9d820365abd961e4c6b3d0e3b09e337f6a01c47ad67900708b5c9b598
 	sha256sums = 2723edf8401e45fc85fa94b57273ae5c9cf65d9ec531ddc616f3f3d87643e571
 	sha256sums = 90948b2035f806dc74fc878520e593a34f51e35e6f698391a6fe6eabf657bed2
 

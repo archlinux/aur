@@ -1,0 +1,26 @@
+diff --git a/gentpl.py b/gentpl.py
+index 76971d3..321c050 100644
+--- a/gentpl.py
++++ b/gentpl.py
+@@ -78,7 +78,7 @@ GROUPS["fdt"] = [ "arm64_efi", "arm_uboot", "arm_efi" ]
+ 
+ # Needs software helpers for division
+ # Must match GRUB_DIVISION_IN_SOFTWARE in misc.h
+-GROUPS["softdiv"] = GROUPS["arm"] + ["ia64_efi"]
++GROUPS["softdiv"] = GROUPS["arm"] + ["ia64_efi"] + GROUPS["i386"]
+ GROUPS["no_softdiv"]   = GRUB_PLATFORMS[:]
+ for i in GROUPS["softdiv"]: GROUPS["no_softdiv"].remove(i)
+ 
+diff --git a/include/grub/misc.h b/include/grub/misc.h
+index 2a9f87c..5024508 100644
+--- a/include/grub/misc.h
++++ b/include/grub/misc.h
+@@ -340,7 +340,7 @@ grub_uint64_t EXPORT_FUNC(grub_divmod64) (grub_uint64_t n,
+                                          grub_uint64_t *r);
+ 
+ /* Must match softdiv group in gentpl.py.  */
+-#if !defined(GRUB_MACHINE_EMU) && (defined(__arm__) || defined(__ia64__))
++#if !defined(GRUB_MACHINE_EMU) && (defined(__arm__) || defined(__ia64__) || defined(__i386__))
+ #define GRUB_DIVISION_IN_SOFTWARE 1
+ #else
+ #define GRUB_DIVISION_IN_SOFTWARE 0

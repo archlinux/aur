@@ -57,12 +57,14 @@ _wanted grub2-i386-qemu-git && makedepends+=('bdf-unifont')
 
 source+=(
 	archlinux_grub_mkconfig_fixes.patch
+	i386_softdiv.patch
 	grub-doc.install
 	grub-notice.install
 )
 
 sha256sums+=(
 	'729168cd3df5b21cc613bf74a1f923bcf79ad3db99c1eb81e9be31aaf3211891'
+	'fb69d0e9d820365abd961e4c6b3d0e3b09e337f6a01c47ad67900708b5c9b598'
 	'2723edf8401e45fc85fa94b57273ae5c9cf65d9ec531ddc616f3f3d87643e571'
 	'90948b2035f806dc74fc878520e593a34f51e35e6f698391a6fe6eabf657bed2'
 )
@@ -85,6 +87,7 @@ prepare() {
 
 	msg2 "Applying patches"
 	patch -p1 < "$srcdir/archlinux_grub_mkconfig_fixes.patch"
+	patch -p1 < "$srcdir/i386_softdiv.patch"
 
 	msg2 "Importing translations"
 	./linguas.sh
