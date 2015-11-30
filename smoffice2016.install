@@ -1,6 +1,6 @@
 do_update() {
-  update-mime-database /usr/share/mime > /dev/null
-  gtk-update-icon-cache -f -q /usr/share/icons/hicolor/
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+  update-mime-database usr/share/mime &> /dev/null
   update-desktop-database -q
 }
 
