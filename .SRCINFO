@@ -1,0 +1,26 @@
+pkgbase = visual-paradigm-community
+	pkgdesc = UML design application
+	pkgver = 2015.11.30
+	pkgrel = 1
+	url = http://www.visual-paradigm.com/download/community.jsp
+	install = visual-paradigm-community.install
+	arch = x86_64
+	license = custom
+	depends = java-environment-common
+	source = visual-paradigm-community-2015.11.30.tar.gz::http://www.visual-paradigm.com/downloads/vpce/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz
+	source = visual-paradigm-community.install
+	source = visual-paradigm.desktop
+	source = Visual_Paradigm_Fixed
+	source = visual-paradigm.png
+	source = LICENSE.txt
+	source = x-visual-paradigm.xml
+	sha256sums = 82cba7e374be4646feabe1be219712239414cdf35335d1bb350c5535401eab91
+	sha256sums = 61b4974588ec66e6d037aee0870cea97cf735586e5ea8e8e7b13091fe57c58ae
+	sha256sums = c2cf0bd2fdc2879b2ae4814e1be5b6cbd7e5aa4c1247f5d4bc8e677eb6a94952
+	sha256sums = c861d708eb446f94abbebb4028a2f15f7bc6840aa5df1ee81f7301aac0fd00a9
+	sha256sums = 41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15
+	sha256sums = cd30460cb1c29f9f42723197dbe72b2537aaed09cc2d44dcb3e6868fb5dbf12b
+	sha256sums = a3b898bc9c43cf54baa1c643c619ee172a8103cd15031d574380ca463eb1ec1c
+
+pkgname = visual-paradigm-community
+

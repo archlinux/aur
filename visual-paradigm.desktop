@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Visual Paradigm
+Exec=/usr/share/visual-paradigm-community/bin/Visual_Paradigm_Fixed
+Icon=visual-paradigm
+Categories=Application
+Name[en_US]=Visual Paradigm
+StartupWMClass=RV
+Categories=Development;
+MimeType=application/x-visual-paradigm
