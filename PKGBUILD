@@ -3,7 +3,7 @@
 
 pkgname=turses
 pkgver=0.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A Twitter client for the console"
 arch=('any')
 url="https://github.com/dialelo/turses"
@@ -14,8 +14,9 @@ md5sums=('9c3b1d3739a40698d7f92103ee8286ba')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    sed -i -e 's/future==0.14.3/future==0.15.2/' setup.py
+    sed -i -e 's/urwid==1.3.0/urwid==1.3.1/' setup.py
     sed -i -e 's/tweepy==3.3.0/tweepy==3.5.0/' setup.py
+    sed -i -e 's/future==0.14.3/future==0.15.2/' setup.py
 }
 
 package() {
