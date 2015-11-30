@@ -24,6 +24,7 @@ build() {
   cd "${srcdir}/"
   sed -i 's/__LINUX__/__GNUC__/' src/options.cpp
   sed -i 's/set(Boost_USE_STATIC_LIBS ON)/set(Boost_USE_STATIC_LIBS OFF)/' src/CMakeLists.txt
+  echo 'SET( CMAKE_EXE_LINKER_FLAGS "-lboost_system")' >> src/CMakeLists.txt
   mkdir -p build
   cd build
   cmake ../src -DCMAKE_INSTALL_PREFIX=/usr -DCLCC_VERSION_MAJOR=$_pkgver_major -DCLCC_VERSION_MINOR=$_pkgver_minor -DCLCC_VERSION_PATCH=$_pkgver_patch -DCLCC_VERSION_BUILD=$_pkgbuild
