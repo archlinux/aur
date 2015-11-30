@@ -1,4 +1,4 @@
-_file="passcheck"
+_file="crt-calibrator"
 
 infodir="usr/share/info"
 file="${_file}.info"

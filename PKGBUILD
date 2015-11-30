@@ -2,7 +2,7 @@
 
 pkgname=crt-calibrator
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CRT monitor calibrator utility for Linux VT"
 url="https://github.com/maandree/crt-calibrator"
 arch=(i686 x86_64)
