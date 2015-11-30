@@ -2,7 +2,7 @@
 
 pkgname=peazip-gtk2-portable
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NATIVE 64-BIT GTK2 archiver utility, portable version with few dependencies"
 arch=(x86_64)
 url=http://www.peazip.org/peazip-linux-64.html
@@ -32,7 +32,7 @@ package() {
     for i in arc/{arc,*.sfx}; do install -Dm755 $i "$_resdir"/$i; done
     for i in *.txt lang/* themes/{{nographic,seven}-embedded/*,*.7z} arc/arc.{ini,groups}
       do install -Dm644 $i "$_resdir"/$i; done
-    for i in 7z/{7z{,.so,Con.sfx,.sfx},Codecs/Rar29.so}; do install -Dm755 $i "$_resdir"/$i; done
+    for i in 7z/{7z{,.so,Con.sfx,.sfx},Codecs/Rar.so}; do install -Dm755 $i "$_resdir"/$i; done
     for i in quad/bcm upx/upx lpaq/lpaq8 paq/paq8o zpaq/zpaq; do install -Dm755 $i "$_resdir"/$i; done
     #
     chown -R $USER:users "$pkgdir$HOME/.peazip"
