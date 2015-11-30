@@ -2,15 +2,15 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=copyq-git
-pkgver=20140202
+pkgver=20151130
 pkgrel=1
 pkgdesc="Clipboard manager with searchable and editable history."
 url="https://github.com/hluk/CopyQ"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('qt4' 'libxtst')
+depends=('libxtst' 'qt5-script' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('copyq-plugin-itemweb-git')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'qt5-tools' 'qt5-svg')
 provides=('copyq')
 conflicts=('copyq')
 source=("${pkgname}::git+https://github.com/hluk/CopyQ.git")
@@ -25,9 +25,10 @@ pkgver() {
 build() {
     mkdir -p ${srcdir}/${pkgname}/build
     cd ${srcdir}/${pkgname}/build
-    cmake -DWITH_WEBKIT=0 \
+    cmake \
+        -DWITH_WEBKIT=0 \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+        -DWITH_QT5=TRUE \
         ${srcdir}/${pkgname}
     make
 }
