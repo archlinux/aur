@@ -1,16 +1,15 @@
 pkgbase = cub
 	pkgdesc = A flexible library of cooperative threadblock primitives and other utilities for CUDA kernel programming.
-	pkgver = 1.3.1
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = http://nvlabs.github.com/cub/
 	arch = any
 	license = New BSD
-	makedepends = git
 	optdepends = cuda
-	source = cub::git+https://github.com/NVlabs/cub.git#branch=1.3.1
+	source = https://github.com/NVlabs/cub/archive/1.4.1.zip
 	source = cub.pc
-	sha1sums = SKIP
-	sha1sums = cbb2a588943a2a850205ab2e2a107fd74f9491a6
+	sha256sums = f464eda366e4dfe0c1d9ae2a6bbc22c5804cf131f8a67974c01fae4ae8213e8b
+	sha256sums = de2d52cbdb9a81936c7cc519cc5a68c4c62012755c2ab3a07bba158a9d4626c4
 
 pkgname = cub
 
