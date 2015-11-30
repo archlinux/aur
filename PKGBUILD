@@ -4,7 +4,7 @@ pkgdesc="ROS - Packages for interfacing ROS with OpenCV, a library of programmin
 url='http://www.ros.org/wiki/vision_opencv'
 
 pkgname='ros-indigo-vision-opencv'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,8 @@ ros_makedepends=(ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-indigo-image-geometry
+ros_depends=(ros-indigo-opencv-apps
+  ros-indigo-image-geometry
   ros-indigo-cv-bridge)
 depends=(${ros_depends[@]})
 
