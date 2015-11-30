@@ -1,4 +1,4 @@
-\# Maintainer: Austin Haedicke
+# Maintainer: Austin Haedicke
 
 # If you find errors or have suggestions feel free to file an issue
 # or submit a pull request @ https://github.com/gtbjj/pkgbuild
@@ -7,7 +7,7 @@
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 
 pkgname=rakudo-star
-pkgver=2015.06
+pkgver=2015.11
 pkgrel=1
 pkgdesc="Rakudo Perl6 on MoarVM with additional modules"
 arch=('i686' 'x86_64')
