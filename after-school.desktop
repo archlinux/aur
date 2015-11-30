@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;
+Exec=/usr/bin/after-school
+Icon=after-school
+Terminal=false
+Type=Application
+Name=After School
+Comment=A short videogame entirely handpainted on paper, using pencils and watercolors.
