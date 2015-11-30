@@ -5,6 +5,7 @@ pkgbase = python-django-crispy-forms
 	url = https://github.com/maraujop/django-crispy-forms
 	arch = any
 	license = MIT
+	checkdepends = python-tox
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
