@@ -20,11 +20,11 @@ conflicts=('orbment')
 
 install='orbment-git.install'
 
-source=('git://github.com/Cloudef/orbment'
-        'git://github.com/Cloudef/chck'
-        'git://github.com/Cloudef/inihck')
+source=('git+https://github.com/Cloudef/orbment'
+        'git+https://github.com/Cloudef/chck'
+        'git+https://github.com/Cloudef/inihck')
 
-md5sums=('SKIP' 'SKIP' 'SKIP')
+sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 # Once this software becomes more stable these requirements will be dropped but
 # for the time being I recommend leaving them enabled so you may contribute
