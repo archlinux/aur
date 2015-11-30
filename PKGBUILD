@@ -7,7 +7,7 @@
 #
 
 pkgname=emacs25-git
-pkgver=25.0.50.r123619
+pkgver=25.0.50.r123621
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ url="http://www.gnu.org/software/emacs/"
 license=('GPL')
 depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 
 	 'gtk3' 'hicolor-icon-theme' 'desktop-file-utils'
-	 'alsa-lib' 'imagemagick' 'gnutls' 'pango')
+	 'alsa-lib' 'imagemagick' 'gnutls')
 makedepends=('git')
 conflicts=('emacs')
 provides=('emacs')
@@ -53,7 +53,6 @@ build() {
     --with-sound=alsa 
     --without-gconf 
     --with-x-toolkit=gtk3 
-    --with-cairo
     --with-xft)
 
   ./configure ${_conf[@]}
