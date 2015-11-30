@@ -8,9 +8,9 @@
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.3
-_patchname=patch-4.4-rc2
-pkgver=4.4rc2
-pkgrel=2
+_patchname=patch-4.4-rc3
+pkgver=4.4rc3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -27,7 +27,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
-            '04a2fe6ce8711a01617e459d6908bfbd7715a0e4106fbd05372e12ba7ad03158'
+            '41b73ce54efdde419218de2ca2b1bcc2bc135b5e33ab870e28eb328fca962855'
             'fd07e2d6ec71d2d87a977c4298f634fa1abfc75ddbd0d5b3ecf9befa7a4b82b4'
             '596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16'
             '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
