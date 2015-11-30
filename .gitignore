@@ -1,0 +1,12 @@
+# ignore everything
+*
+!.gitignore
+
+# except PKGBUILD needed files
+!PKGBUILD
+!*.install
+
+# common files
+!.SRCFILE
+!*.diff
+!*.patch
