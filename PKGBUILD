@@ -2,7 +2,7 @@
 pkgname=pmenu
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="Dynamic menu like dmenu for terminal written in Python without dependencies with optional sorting by usage, application launcher and CtrlP alternative."
+pkgdesc="A dynamic terminal-based menu inspired by dmenu written in Python without dependencies with an optional MRU ordering which could also be used as an application launcher and CtrlP alternative."
 url=https://github.com/sgtpep/pmenu
 arch=(any)
 license=(GPL3)
