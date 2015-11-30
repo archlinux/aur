@@ -1,11 +1,11 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  xF0E
 # Contributor: Sid Karunaratne <sid at karunaratne dot net>
 
 # Note: There is also a git version of this package build called
 # vowpal-wabbit-git that has python 2 support
 
 pkgname=vowpal_wabbit
-pkgver=7.10
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="Vowpal Wabbit is a machine learning system which pushes the frontier of ML with techniques such as online, hashing, allreduce, reductions, learning2search, active, and interactive learning. Includes extra utilities."
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ url='https://github.com/JohnLangford/vowpal_wabbit'
 license=('custom')
 depends=('boost')
 source=("https://github.com/JohnLangford/vowpal_wabbit/archive/${pkgver}.tar.gz")
-sha256sums=("8d9aeddd9a5b7d73264fe28264f05f2a2b6a8fa38f65b02081c6e40460604c36")
+sha256sums=("174609bb09eaeac150c08639a82713a2290442a42bc0b23d53943e9a0f22911b")
 provides=('vowpal-wabbit' 'vowpal-wabbit-git')
 conflicts=('vowpal-wabbit' 'vowpal-wabbit-git')
 
