@@ -1,12 +1,14 @@
 pkgbase = mongoclock
 	pkgdesc = Just a humongous clock for the terminal
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maandree/mongoclock
+	install = mongoclock.install
 	arch = any
 	license = GPL3
 	makedepends = linux-api-headers
 	makedepends = general-preprocessor
+	makedepends = texinfo
 	depends = glibc
 	depends = linux
 	source = https://github.com/maandree/mongoclock/archive/2.2.tar.gz

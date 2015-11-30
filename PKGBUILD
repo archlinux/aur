@@ -2,13 +2,14 @@
 
 pkgname=mongoclock
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Just a humongous clock for the terminal'
 arch=(any)
 url='https://github.com/maandree/mongoclock'
 license=('GPL3')
 depends=(glibc linux)
-makedepends=(linux-api-headers general-preprocessor)
+makedepends=(linux-api-headers general-preprocessor texinfo)
+install=mongoclock.install
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=(ae2298905a2f729679fddaeb732183b95607438af62dca02bdf5ae0a1b29e950)
 
