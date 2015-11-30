@@ -6,19 +6,16 @@
 
 pkgname=('opencv-contrib' 'opencv-samples-contrib')
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library including additional 'contrib' modules"
 arch=('i686' 'x86_64')
 license=('BSD')
 url="http://opencv.org/"
 depends=('intel-tbb' 'openexr' 'xine-lib' 'libdc1394' 'gtkglext')
 makedepends=('cmake' 'python2-numpy' 'mesa' 'eigen2')
-optdepends=('opencv-samples-contrib'
-            'eigen2'
+optdepends=('eigen2'
             'libcl: For coding with OpenCL'
             'python2-numpy: Python 2.x interface')
-
-conflicts=('opencv' 'opencv-samples')
 
 source=("${pkgname%-contrib}-$pkgver::https://github.com/Itseez/opencv/archive/$pkgver.zip"
         "${pkgname%-contrib}-$pkgver-contrib::https://github.com/Itseez/opencv_contrib/archive/$pkgver.zip")
@@ -64,6 +61,8 @@ build() {
 
 package_opencv-contrib() {
   options=('staticlibs')
+  provides=('opencv')
+  conflicts=('opencv')
 
   cd "$srcdir/${pkgname%-contrib}-$pkgver"
 
@@ -87,6 +86,8 @@ package_opencv-contrib() {
 package_opencv-samples-contrib() {
   pkgdesc+=" (samples)"
   depends=("opencv-contrib=$pkgver") # sample codes change with lib/API
+  provides=('opencv-samples')
+  conflicts=('opencv-samples')
   unset optdepends
 
   mkdir -p "$pkgdir/usr/share/opencv"
