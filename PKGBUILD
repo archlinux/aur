@@ -8,9 +8,9 @@ url="http://p.outlyer.net/vcs/"
 license=('LGPL')
 depends=('bash' 'ffmpeg' 'imagemagick')
 optdepends=(
-                'lsdvd: needed for DVD support'
-                            'perl: needed for DVD support'
-                                        )
+            'lsdvd: needed for DVD support'
+            'perl: needed for DVD support'
+            )
 backup=('etc/vcs.conf')
 
 source=("http://p.outlyer.net/vcs/files/vcs-${pkgver}.tar.gz")
