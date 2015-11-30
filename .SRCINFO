@@ -1,6 +1,6 @@
 pkgbase = vim-systemverilog-git
 	pkgdesc = SystemVerilog support for vim
-	pkgver = r12.ac744cf
+	pkgver = r17.27d89e8
 	pkgrel = 1
 	url = https://github.com/WeiChungWu/vim-SystemVerilog
 	arch = any

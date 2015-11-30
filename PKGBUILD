@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=vim-systemverilog-git
-pkgver=r12.ac744cf
+pkgver=r17.27d89e8
 pkgrel=1
 pkgdesc='SystemVerilog support for vim'
 arch=(any)
