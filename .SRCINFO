@@ -1,6 +1,6 @@
 pkgbase = ruby-fog-radosgw
-	pkgdesc = Fog backend for provisioning Ceph Radosgw.
-	pkgver = 0.0.3
+	pkgdesc = Fog backend for provisioning users on Ceph Radosgw - the Swift and S3 compatible REST API for Ceph.
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/fog/fog-radosgw
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-fog-radosgw
 	depends = ruby-fog-json
 	depends = ruby-fog-xml
 	depends = ruby-fog-core
-	noextract = fog-radosgw-0.0.3.gem
+	noextract = fog-radosgw-0.0.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-radosgw-0.0.3.gem
-	sha512sums = 6bc044e8eb9b9eaddc470405a4860ee3cb2e0360ad3885afb260a1f217ea01246d4dee964388d25d8fe3bbcad872a65c8678c71a88a4cc740fc41a1a7d41f6a8
+	source = https://rubygems.org/downloads/fog-radosgw-0.0.4.gem
+	sha512sums = 49e81f23af1ba95626437c2be0081c3b769253036ba4dd9c54cb25a03f184ac9bc0c6c1bd09d8a7c48804c9113e0114e1ef2e2647018dbb9c62768d7b8a5262f
 
 pkgname = ruby-fog-radosgw
 
