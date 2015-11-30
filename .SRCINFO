@@ -1,0 +1,16 @@
+pkgbase = chdkptp
+	pkgver = r690
+	pkgrel = 1
+	url = https://www.assembla.com/spaces/chdkptp
+	arch = x86_64
+	license = GPL
+	license = MIT
+	source = https://www.assembla.com/spaces/chdkptp/documents/bEQP3wxwir5ikeacwqEsg8/download/bEQP3wxwir5ikeacwqEsg8
+	source = chdkptp.sh
+	source = chdkptp-gui.sh
+	md5sums = 5832ba459c52f1cc045afdfb365dcb55
+	md5sums = d7946256ddd99be97592fd4df7d3ae86
+	md5sums = dbcda126bcdf108a8f20fe49d921cadc
+
+pkgname = chdkptp
+
