@@ -1,0 +1,23 @@
+pkgbase = dmenu-xyw-mouse-msel
+	pkgdesc = Dynamic X menu - with x, y, width, mouse and multiselect support
+	pkgver = 4.6
+	pkgrel = 1
+	url = http://tools.suckless.org/dmenu/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	provides = dmenu
+	conflicts = dmenu
+	source = http://dl.suckless.org/tools/dmenu-4.6.tar.gz
+	source = http://tools.suckless.org/dmenu/patches/dmenu-4.6-xyw.diff
+	source = http://tools.suckless.org/dmenu/patches/dmenu-4.6-mouse-support-msel.diff
+	sha256sums = 4a7a24008a621c3cd656155ad91ab8136db8f0d3b9ec56dafeec518cabda96b3
+	sha256sums = 70494bbc9df5c65101646a2a3040b1784c0d5db882aa185e2015dc035c550d70
+	sha256sums = db8659de2926dfe279b28864009ef7c545f4190ac98677ed30711df5c55b9dd4
+
+pkgname = dmenu-xyw-mouse-msel
+
