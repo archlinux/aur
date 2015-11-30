@@ -1,28 +1,26 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=wikiquote-fortune
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="Generate fortune cookies from Wikiquote"
 arch=('any')
 url="https://github.com/maandree/wikiquote-fortune"
 license=('GPL3')
 depends=('python' 'wget')
-makedepends=('coreutils')
+makedepends=('coreutils' 'make' 'texinfo')
 source=(https://github.com/maandree/wikiquote-fortune/archive/${pkgver}.tar.gz)
-sha256sums=(d4aec7f278c3ceff6effc19cdb31472dab7efc26de90d7d7e62f9009fb2aa382)
+sha256sums=(8bff426c4c1e5bb2a4254c87bdd74e037ba8944124fc540d94a3174bf626e8f6)
+
+
+build() {
+  cd "${srcdir}/wikiquote-fortune-${pkgver}"
+  make
+}
 
 
 package() {
   cd "${srcdir}/wikiquote-fortune-${pkgver}"
-  
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE COPYING "${pkgdir}/usr/share/licenses/${pkgname}"
-  
-  mkdir -p "${pkgdir}/usr/share/doc"
-  install -m644 README "${pkgdir}/usr/share/doc/${pkgname}"
-  
-  mkdir -p "${pkgdir}/usr/bin"
-  install -m755 wikiquote-fortune "${pkgdir}/usr/bin"
+  make install DESTDIR="${pkgdir}"
 }
 
