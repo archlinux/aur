@@ -11,20 +11,30 @@ license="GPL"
 depends=('kdelibs4support' 'cdemu-daemon>=2.0')
 provides=('kde-cdemu-manager')
 conflicts=('kde-cdemu-manager')
-makedepends=('cmake')
+makedepends=('cmake' 'kdoctools' 'qt5-tools' 'extra-cmake-modules')
 source=(http://www.kde-apps.org/CONTENT/content-files/99752-kde_cdemu-$pkgver.0.tar.bz2
-        port_to_kf5.patch)
+        port_to_kf5.patch
+        zh_CN.po)
 md5sums=('c0e56401e2c2f2c4652915a44af128b8'
-        '8d6c70628bbfd664efe0f1462708244d')
+        'SKIP'
+        'SKIP')
 
 prepare() {
   cd $srcdir/kde_cdemu
   patch -p1 < ../port_to_kf5.patch
+  cp ${srcdir}/zh_CN.po $srcdir/kde_cdemu/po
 }
 build() {
   cd $srcdir/kde_cdemu
-  mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` ..
+  mkdir -p build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DSYSCONF_INSTALL_DIR=/etc \
+    -DBUILD_TESTING=OFF \
+    ..
+    
   make
 }
 

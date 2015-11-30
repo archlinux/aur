@@ -1,6 +1,6 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2013-01-13 05:04:17.000000000 +0800
-+++ b/CMakeLists.txt	2015-10-11 14:37:38.701454938 +0800
++++ b/CMakeLists.txt	2015-11-30 20:24:59.296150854 +0800
 @@ -1,9 +1,17 @@
  cmake_minimum_required(VERSION 2.6)
  project(kde_cdemu)
@@ -24,7 +24,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
 diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 --- a/src/CMakeLists.txt	2010-09-05 06:47:43.000000000 +0800
-+++ b/src/CMakeLists.txt	2015-10-11 14:38:05.748120774 +0800
++++ b/src/CMakeLists.txt	2015-11-30 20:30:07.878598397 +0800
 @@ -3,20 +3,22 @@
  
  configure_file(kdecdemuversion.h.in ${PROJECT_BINARY_DIR}/kdecdemuversion.h)
@@ -43,8 +43,10 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
  
  set(kde_cdemu_SRCS main.cpp kdecdemu.cpp mainwindow.cpp cdemu.cpp messagebox.cpp)
  
- kde4_add_ui_files(kde_cdemu_SRCS mainwindow.ui)
- kde4_add_executable(kde_cdemu ${kde_cdemu_SRCS})
+-kde4_add_ui_files(kde_cdemu_SRCS mainwindow.ui)
+-kde4_add_executable(kde_cdemu ${kde_cdemu_SRCS})
++ki18n_wrap_ui(kde_cdemu_SRCS mainwindow.ui)
++add_executable(kde_cdemu ${kde_cdemu_SRCS})
  
 -target_link_libraries(kde_cdemu ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
 +target_link_libraries(kde_cdemu KF5::KDELibs4Support KF5::KIOCore Qt5::Widgets)
@@ -56,12 +58,13 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
  install(FILES kde_cdemu.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 diff -Naur a/src/main.cpp b/src/main.cpp
 --- a/src/main.cpp	2013-01-13 06:16:12.000000000 +0800
-+++ b/src/main.cpp	2015-10-11 14:37:38.701454938 +0800
-@@ -21,18 +21,22 @@
++++ b/src/main.cpp	2015-11-30 20:29:06.613459670 +0800
+@@ -21,18 +21,24 @@
  #include <KAboutData>
  #include <KCmdLineArgs>
  #include <KUniqueApplication>
-+#include <klocale.h>
++#include <klocalizedstring.h>
++//kdelibs4support
 +#include <k4aboutdata.h>
  
  #include "kdecdemu.h"
@@ -71,6 +74,7 @@ diff -Naur a/src/main.cpp b/src/main.cpp
  {
 -    KAboutData aboutData("kde_cdemu", "konqueror", ki18n("KDE CDEmu Manager"), KDE_CDEMU_VERSION, ki18n("A KDE Frontend to CDEmu"),
 -            KAboutData::License_GPL_V3, ki18n("Copyright (c) 2009-2013 Marcel Hasler"));
++    KLocalizedString::setApplicationDomain("kde_cdemu");
 +    K4AboutData aboutData("kde_cdemu", 0, ki18n("KDE CDEmu Manager"), KDE_CDEMU_VERSION, ki18n("A KDE Frontend to CDEmu"), K4AboutData::License_GPL_V3,
 +                         ki18n("Copyright (c) 2009-2013 Marcel Hasler"), KLocalizedString(), 
 +                          "http://kde-apps.org/content/show.php?content=99752&forumpage=5");
@@ -85,7 +89,7 @@ diff -Naur a/src/main.cpp b/src/main.cpp
  
 diff -Naur a/src/mainwindow.cpp b/src/mainwindow.cpp
 --- a/src/mainwindow.cpp	2013-01-13 05:14:30.000000000 +0800
-+++ b/src/mainwindow.cpp	2015-10-11 14:37:38.701454938 +0800
++++ b/src/mainwindow.cpp	2015-11-30 20:24:59.296150854 +0800
 @@ -32,6 +32,7 @@
  #include <KMessageBox>
  #include <KStandardAction>
