@@ -15,11 +15,7 @@ pkgname=(
 _extras=(
 	'lua'
 	'ntldr-img'
-
-	## does not build as of this writing because of missing floating point
-	## emulation routines (gtf_timngs in 915resolution.c)
-	## see: <https://savannah.gnu.org/bugs/?45310>
-	# '915resolution'
+	'915resolution'
 )
 
 options=()
@@ -31,7 +27,7 @@ _conf_emu=(--with-bootdir='/usr/lib')
 source=(grub::'git://git.savannah.gnu.org/grub.git#branch=master')
 sha256sums=('SKIP')
 
-pkgver=2.02+beta2+467+g7a21030
+pkgver=2.02+beta2+555+g6a46cbc
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader: the ultimate package (git snapshot)"
 arch=(i686 x86_64)
