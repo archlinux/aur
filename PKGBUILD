@@ -5,7 +5,7 @@
 _godver=4.3
 _badver=4.4
 pkgname=virtualbox-modules-pf
-pkgver=5.0.8
+pkgver=5.0.10
 pkgrel=1
 pkgdesc='Host linux-pf kernel modules for VirtualBox'
 arch=('i686' 'x86_64')
