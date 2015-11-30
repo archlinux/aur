@@ -3,7 +3,7 @@
 # Contributor: jebaum <jebaum at ucla dot edu>
 
 pkgname=fzf
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Command-line fuzzy finder"
 arch=('armv6h' 'i686' 'x86_64')
@@ -17,9 +17,11 @@ optdepends=('fish: fish keybindings'
 url="https://github.com/junegunn/fzf"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/junegunn/$pkgname/tar.gz/$pkgver
+        git+https://github.com/junegunn/$pkgname.wiki
         key-bindings.bash.patch
         key-bindings.zsh.patch)
-sha256sums=('1b352ded5e9ea1ed72c3d8b0e804382dfc9bfde7d734ae5e104aa3551d7ca1a7'
+sha256sums=('611cf1c2da6a7c0d5b582a203774c4d1145c55b601413eb1e7c03e9410bb6733'
+            'SKIP'
             'fc981d036d85d0b9a5e6ba65f84b1c0f86bcee2dabb09238e1edfa1f49a85b63'
             '0b89bf1d6d372b9a8d5927e58151157d42848086a252979006b89b72242c52e6')
 install=fzf.install
@@ -53,25 +55,35 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Installing documentation...'
-  for _doc in install uninstall README.md; do
-    install -Dm 644 $_doc "$pkgdir/usr/share/doc/fzf/$_doc"
+  for _doc in README.md install uninstall; do
+    install -Dm 644 $_doc -t "$pkgdir/usr/share/doc/fzf"
   done
 
+  msg2 'Installing wiki...'
+  cp -dpr --no-preserve=ownership "$srcdir/fzf.wiki" \
+    "$pkgdir/usr/share/doc/fzf/wiki"
+
   msg2 'Installing manual...'
-  install -Dm 644 "man/man1/fzf.1" "$pkgdir/usr/share/man/man1/fzf.1"
+  install -Dm 644 "man/man1/fzf.1" -t "$pkgdir/usr/share/man/man1"
 
   msg2 'Installing executables...'
-  install -Dm 755 "$srcdir/bin/fzf" "$pkgdir/usr/bin/fzf"
-  install -Dm 755 "bin/fzf-tmux" "$pkgdir/usr/bin/fzf-tmux"
+  install -Dm 755 "$srcdir/bin/fzf" -t "$pkgdir/usr/bin"
+  install -Dm 755 "bin/fzf-tmux" -t "$pkgdir/usr/bin"
 
   msg2 'Installing bash completion and keybindings...'
-  install -Dm 644 "shell/completion.bash" "$pkgdir/usr/share/bash-completion/completions/fzf"
+  install -Dm 644 "shell/completion.bash" \
+    "$pkgdir/usr/share/bash-completion/completions/fzf"
   install -Dm 755 "shell/key-bindings.bash" "$pkgdir/etc/profile.d/fzf.bash"
 
   msg2 'Installing fish keybindings...'
-  install -Dm 644 "shell/key-bindings.fish" "$pkgdir/usr/share/fish/functions/fzf.fish"
+  install -Dm 644 "shell/key-bindings.fish" \
+    "$pkgdir/usr/share/fish/functions/fzf.fish"
 
   msg2 'Installing zsh completion and keybindings...'
-  install -Dm 644 "shell/completion.zsh" "$pkgdir/usr/share/zsh/site-functions/_fzf"
+  install -Dm 644 "shell/completion.zsh" \
+    "$pkgdir/usr/share/zsh/site-functions/_fzf"
   install -Dm 755 "shell/key-bindings.zsh" "$pkgdir/etc/profile.d/fzf.zsh"
+
+  msg2 'Cleaning up pkgdir...'
+  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
