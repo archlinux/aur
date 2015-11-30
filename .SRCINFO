@@ -1,12 +1,12 @@
 pkgbase = papirus
-	pkgver = 20151117
+	pkgver = 20151130
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
 	options = !strip
-	source = papirus-pack-kde-20151117.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/9046be6d57ea40696d822e9d7b78f63c3a5f2fca.tar.gz
-	sha256sums = fbf6dc4179a95968382b94408ef53b77eeeaec97f6e9003a9058f2ef3ba683bc
+	source = papirus-pack-kde-20151130.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/ed973af12041821245ccda2d51cecf3b3dc2d987.tar.gz
+	sha256sums = 20516507fb9dfb2dbb4b718764681b6996fc476c5b4956342a684ad002693411
 
 pkgname = papirus
 	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE.
