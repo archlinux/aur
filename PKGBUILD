@@ -34,10 +34,9 @@ prepare() {
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
 
   # Fix console.py for new pyqt build system
-  sed -e '/from PyQt4.QtCore/ s/$/, QT_VERSION_STR/' \
+  sed -e '/from PyQt4.QtCore/ s/$/, QT_VERSION/' \
       -e '/import pyqtconfig/d' \
-      -e 's/pyqtconfig.*qt_version/QT_VERSION_STR/' \
-      -e 's/0x40700/"4.7.0"/' \
+      -e 's/pyqtconfig.*qt_version/QT_VERSION/' \
       -i python/console/console.py
 
   [[ -d build ]] || mkdir build
