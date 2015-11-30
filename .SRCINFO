@@ -1,0 +1,18 @@
+pkgbase = ruby-fog-dynect
+	pkgdesc = This library can be used as a module for `fog` or as standalone provider to use Dynect DNS in applications.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://github.com/fog/fog-dynect
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-fog-core
+	depends = ruby-fog-json
+	depends = ruby-fog-xml
+	noextract = fog-dynect-0.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-dynect-0.0.2.gem
+	sha512sums = 3f38c4b7cb2ee742c32ec1c21d2c79321a91aa48341afb1b2718173ca9707ae35db64a225c42b6fffa89ca70bf632d06ed41d41a50a94625bd1557b8987d3808
+
+pkgname = ruby-fog-dynect
+
