@@ -17,7 +17,7 @@ sha256sums=('fc2a2b3994d5ffb5d87fb3dceaa5f6855aca7a89c58533b12fd11b8fb5b623af')
 
 
 package() {
-  cd ${srcdir}/vcs-${pkgver}
+  cd "${srcdir}/vcs-${pkgver}"
   make DESTDIR="${pkgdir}" prefix=/usr install
-  install -D examples/vcs.conf.example ${pkgdir}/usr/share/doc/vcs/vcs.conf.example
+  install -D examples/vcs.conf.example "${pkgdir}/usr/share/doc/vcs/vcs.conf.example"
 }
