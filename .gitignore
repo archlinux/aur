@@ -3,3 +3,4 @@
 *.gz
 pkg
 src
+/tws-latest-standalone-linux-x64.sh
