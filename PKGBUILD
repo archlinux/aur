@@ -1,19 +1,3 @@
-package() {
-  cd $srcdir
-
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/doc/$pkgname
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  mkdir -p $pkgdir/usr/lib/rbenv/completions
-  mkdir -p $pkgdir/usr/lib/rbenv/libexec
-
-  install -m 644 ./README.md $pkgdir/usr/share/doc/$pkgname
-  install -m 644 ./LICENSE $pkgdir/usr/share/licenses/$pkgname
-  install -m 644 ./completions/* $pkgdir/usr/lib/rbenv/completions/
-  install -m 755 ./libexec/* $pkgdir/usr/lib/rbenv/libexec/
-
-  ln -s /usr/lib/rbenv/libexec/rbenv $pkgdir/usr/bin/
-}
 # Maintainer: Simon Kohlmeyer <simon.kohlmeyer@googlemail.com>
 pkgname=rbenv-git
 pkgver=0.4.0.r210.f0e8bdc
