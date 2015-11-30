@@ -6,6 +6,7 @@ pkgbase = amule-daemon
 	install = amule-daemon.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	makedepends = boost
 	depends = wxbase2.8
