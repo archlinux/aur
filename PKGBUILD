@@ -3,12 +3,12 @@
 _gemname=fog
 pkgname=ruby-$_gemname
 pkgver=1.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc='brings clouds to you'
 arch=(any)
 url='http://github.com/fog/fog'
 license=(MIT)
-depends=(ruby ruby-fog-core ruby-fog-json ruby-fog-xml ruby-ipaddress ruby-nokogiri ruby-fog-atmos ruby-fog-aws ruby-fog-brightbox ruby-fog-ecloud ruby-fog-google ruby-fog-local ruby-fog-powerdns ruby-fog-profitbricks ruby-fog-radosgw ruby-fog-riakcs ruby-fog-sakuracloud ruby-fog-serverlove ruby-fog-softlayer ruby-fog-storm_on_demand ruby-fog-terremark ruby-fog-vmfusion ruby-fog-voxel)
+depends=(ruby ruby-fog-aliyun ruby-fog-atmos ruby-fog-aws ruby-fog-brightbox ruby-fog-core ruby-fog-dynect ruby-fog-ecloud ruby-fog-google ruby-fog-json ruby-fog-local ruby-fog-powerdns ruby-fog-profitbricks ruby-fog-radosgw ruby-fog-riakcs ruby-fog-sakuracloud ruby-fog-serverlove ruby-fog-softlayer ruby-fog-storm_on_demand ruby-fog-terremark ruby-fog-vmfusion ruby-fog-voxel ruby-fog-xenserver ruby-ipaddress ruby-nokogiri)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
