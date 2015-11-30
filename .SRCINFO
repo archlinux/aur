@@ -1,15 +1,15 @@
 pkgbase = ruby-excon
-	pkgdesc = speed, persistence, http(s)
-	pkgver = 0.45.3
+	pkgdesc = EXtended http(s) CONnections
+	pkgver = 0.45.4
 	pkgrel = 1
 	url = https://github.com/geemus/excon
 	arch = any
 	license = MIT
 	makedepends = rubygems
 	depends = ruby
-	noextract = excon-0.45.3.gem
-	source = http://rubygems.org/downloads/excon-0.45.3.gem
-	sha512sums = f255f947a12250f1faf9f7887c735bacd949455b42c5c59cc0e03a543fb780d4af09de6b09364219dc0f79a44820e47da5553e8438d7af4afdc28b69281ff26e
+	noextract = excon-0.45.4.gem
+	source = http://rubygems.org/downloads/excon-0.45.4.gem
+	sha512sums = e723b974de1bd90fb4d3acc014788e553d41b936d6e18464b5b821444966eafb6f8ccaf559f939f096691fbfe3e771f508b20188d1216a86612116eef55d99c1
 
 pkgname = ruby-excon
 
