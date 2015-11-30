@@ -1,6 +1,6 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/CMakeLists.txt	2015-11-29 17:41:07.000000000 +0800
++++ b/CMakeLists.txt	2015-11-29 19:34:02.095314661 +0800
 @@ -1,31 +1,48 @@
 +cmake_minimum_required( VERSION 2.8.12 )
 +cmake_policy(SET CMP0002 OLD)
@@ -60,7 +60,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
 diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 --- a/cmake/modules/FindMsgfmt.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/FindMsgfmt.cmake	2015-11-29 17:41:07.000000000 +0800
++++ b/cmake/modules/FindMsgfmt.cmake	2015-11-29 19:34:02.095314661 +0800
 @@ -0,0 +1,28 @@
 +# - Try to find msgfmt 
 +# Once done this will define
@@ -92,7 +92,7 @@ diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 +
 diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature.cmake
 --- a/cmake/modules/MacroLogFeature.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/MacroLogFeature.cmake	2015-11-29 17:41:07.000000000 +0800
++++ b/cmake/modules/MacroLogFeature.cmake	2015-11-29 19:34:02.095314661 +0800
 @@ -0,0 +1,157 @@
 +# This file defines the Feature Logging macros.
 +#
@@ -251,32 +251,25 @@ diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature
 +   ENDIF(_printSummary)
 +
 +ENDMACRO(MACRO_DISPLAY_FEATURE_LOG)
-diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
---- a/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
-+++ b/other/kcm_grub2.desktop	2015-11-29 17:41:07.000000000 +0800
-@@ -2,12 +2,12 @@
- Icon=system-reboot
- Type=Service
- X-KDE-ServiceTypes=KCModule
--Exec=kcmshell4 kcm_grub2
-+Exec=kcmshell5 kcm_grub2
- 
- X-KDE-Library=kcm_grub2
- X-KDE-ParentApp=kcontrol
- 
--X-KDE-System-Settings-Parent-Category=startup-and-shutdown
-+X-KDE-System-Settings-Parent-Category=session
- 
- Name=GRUB2 Bootloader
- Name[bs]=GRUB2 pokretač sistemar
 diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 --- a/src/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/CMakeLists.txt	2015-11-29 18:18:17.000000000 +0800
-@@ -13,14 +13,14 @@
++++ b/src/CMakeLists.txt	2015-11-30 08:55:23.310779394 +0800
+@@ -1,7 +1,7 @@
+ add_subdirectory(helper)
+ 
+ # Set Include Directories
+-set(kcm_grub2_INCLUDE_DIRS ${KDE4_INCLUDES})
++# set(kcm_grub2_INCLUDE_DIRS ${KDE4_INCLUDES})
+ if(HAVE_IMAGEMAGICK)
+     set(kcm_grub2_INCLUDE_DIRS ${kcm_grub2_INCLUDE_DIRS} ${ImageMagick_INCLUDE_DIRS})
+ endif(HAVE_IMAGEMAGICK)
+@@ -12,15 +12,15 @@
+ endif(HAVE_QAPT)
  
  # Set Sources
- set(kcm_grub2_SRCS common.cpp entry.cpp installDlg.cpp kcm_grub2.cpp)
+-set(kcm_grub2_SRCS common.cpp entry.cpp installDlg.cpp kcm_grub2.cpp)
 -kde4_add_ui_files(kcm_grub2_SRCS ../ui/installDlg.ui ../ui/kcm_grub2.ui)
++set(kcm_grub2_SRCS common.cpp entry.cpp installDlg.cpp kcm_grub2.cpp widgets/regexpinputdialog.cpp)
 +ki18n_wrap_ui(kcm_grub2_SRCS ../ui/installDlg.ui ../ui/kcm_grub2.ui)
  if(HAVE_IMAGEMAGICK)
      set(kcm_grub2_SRCS ${kcm_grub2_SRCS} convertDlg.cpp)
@@ -310,7 +303,7 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
  # Install
 diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
 --- a/src/convertDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/convertDlg.cpp	2015-11-29 17:41:07.000000000 +0800
++++ b/src/convertDlg.cpp	2015-11-29 19:34:02.098647916 +0800
 @@ -50,11 +50,11 @@
      QString writeFilter = QString("*%1|%5 (%1)\n*%2|%6 (%2)\n*%3 *%4|%7 (%3 %4)").arg(".png", ".tga", ".jpg", ".jpeg", KMimeType::mimeType("image/png")->comment(), KMimeType::mimeType("image/x-tga")->comment(), KMimeType::mimeType("image/jpeg")->comment());
  
@@ -346,7 +339,7 @@ diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
          }
 diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 --- a/src/helper/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/CMakeLists.txt	2015-11-29 17:41:07.000000000 +0800
++++ b/src/helper/CMakeLists.txt	2015-11-29 19:34:02.098647916 +0800
 @@ -8,7 +8,7 @@
  set(kcmgrub2helper_SRCS helper.cpp)
  
@@ -368,7 +361,7 @@ diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 +kauth_install_actions(org.kde.kcontrol.kcmgrub2 kcmgrub2.actions)
 diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 --- a/src/helper/helper.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/helper.cpp	2015-11-29 17:41:07.000000000 +0800
++++ b/src/helper/helper.cpp	2015-11-29 19:34:02.098647916 +0800
 @@ -26,7 +26,7 @@
  
  //KDE
@@ -465,7 +458,7 @@ diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 +KAUTH_HELPER_MAIN("org.kde.kcontrol.kcmgrub2", Helper)
 diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 --- a/src/installDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.cpp	2015-11-29 18:20:13.000000000 +0800
++++ b/src/installDlg.cpp	2015-11-30 08:20:35.409755403 +0800
 @@ -26,24 +26,30 @@
  #include <kdeversion.h>
  #include <KMessageBox>
@@ -521,7 +514,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
          for (int i = 0; i < ui->treeWidget_recover->topLevelItemCount(); i++) {
              QRadioButton *radio = qobject_cast<QRadioButton *>(ui->treeWidget_recover->itemWidget(ui->treeWidget_recover->topLevelItem(i), 0));
              if (radio && radio->isChecked()) {
-@@ -98,33 +105,28 @@
+@@ -98,33 +105,35 @@
              KMessageBox::sorry(this, i18nc("@info", "Sorry, you have to select a partition with a proper name!"));
              return;
          }
@@ -551,28 +544,36 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 -            KDialog *dialog = new KDialog(this, Qt::Dialog);
 -            dialog->setCaption(i18nc("@title:window", "Information"));
 -            dialog->setButtons(KDialog::Ok | KDialog::Details);
-+        ExecuteJob* reply = installAction.execute();
-+        //connect(reply, SIGNAL(result()), &progressDlg, SLOT(hide()));
-+        if (reply->exec()) {
-+            progressDlg.hide();
-+            QDialog *dialog = new QDialog(this, Qt::Dialog);
-+            dialog->setWindowTitle(i18nc("@title:window", "Information"));
-             dialog->setModal(true);
+-            dialog->setModal(true);
 -            dialog->setDefaultButton(KDialog::Ok);
 -            dialog->setEscapeButton(KDialog::Ok);
 -            KMessageBox::createKMessageBox(dialog, QMessageBox::Information, i18nc("@info", "Successfully installed GRUB."), QStringList(), QString(), 0, KMessageBox::Notify, reply.data().value("output").toString()); // krazy:exclude=qclasses
-+            QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::Ok);
-+            KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully installed GRUB."), QStringList(), QString(), 0, KMessageBox::Notify, reply->data().value("output").toString()); // krazy:exclude=qclasses
++        ExecuteJob* reply = installAction.execute();
++        reply->exec();
++        
++        if (installAction.status() != Action::AuthorizedStatus ) {
++          progressDlg.hide();
++          return;
++        }
++        
++        //connect(reply, SIGNAL(result()), &progressDlg, SLOT(hide()));
++        progressDlg.hide();
++        if (reply->error()) {
++            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), reply->data().value("errorDescription").toString());
          } else {
 -            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), KDE_IS_VERSION(4,7,0) ? reply.errorDescription() : reply.data().value("errorDescription").toString());
 +            progressDlg.hide();
-+            KMessageBox::detailedError(this, i18nc("@info", "Failed to install GRUB."), reply->data().value("errorDescription").toString());
++            QDialog *dialog = new QDialog(this, Qt::Dialog);
++            dialog->setWindowTitle(i18nc("@title:window", "Information"));
++            dialog->setModal(true);
++            QDialogButtonBox *btnbox = new QDialogButtonBox(QDialogButtonBox::Ok);
++            KMessageBox::createKMessageBox(dialog, btnbox, QMessageBox::Information, i18nc("@info", "Successfully installed GRUB."), QStringList(), QString(), 0, KMessageBox::Notify, reply->data().value("output").toString()); // krazy:exclude=qclasses
          }
      }
      KDialog::slotButtonClicked(button);
 diff -Naur a/src/installDlg.h b/src/installDlg.h
 --- a/src/installDlg.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.h	2015-11-29 17:41:07.000000000 +0800
++++ b/src/installDlg.h	2015-11-29 19:34:02.098647916 +0800
 @@ -21,6 +21,7 @@
  //KDE
  #include <KDialog>
@@ -583,22 +584,30 @@ diff -Naur a/src/installDlg.h b/src/installDlg.h
  {
 diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 --- a/src/kcm_grub2.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.cpp	2015-11-29 18:20:21.000000000 +0800
-@@ -25,17 +25,21 @@
++++ b/src/kcm_grub2.cpp	2015-11-30 09:05:23.191029042 +0800
+@@ -20,22 +20,25 @@
+ 
+ //Own
+ #include "kcm_grub2.h"
+-
++#include "widgets/regexpinputdialog.h"
+ //Qt
  #include <QDesktopWidget>
  #include <QStandardItemModel>
  #include <QTreeView>
+-
 +#include <QMenu>
- 
++#include <QProgressBar>
  //KDE
  #include <KAboutData>
  #include <KDebug>
- #include <KInputDialog>
+-#include <KInputDialog>
 -#include <KMenu>
++//#include <KInputDialog>
  #include <KMessageBox>
  #include <kmountpoint.h>
  #include <KPluginFactory>
- #include <KProgressDialog>
+-#include <KProgressDialog>
 -#include <KAuth/ActionWatcher>
 +#include <KAuth>
 +using namespace KAuth;
@@ -608,7 +617,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  
  //Project
  #include "common.h"
-@@ -54,13 +58,21 @@
+@@ -54,13 +57,21 @@
  K_PLUGIN_FACTORY(GRUB2Factory, registerPlugin<KCMGRUB2>();)
  K_EXPORT_PLUGIN(GRUB2Factory("kcmgrub2"))
  
@@ -634,7 +643,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      setAboutData(about);
  
      ui = new Ui::KCMGRUB2;
-@@ -76,20 +88,15 @@
+@@ -76,20 +87,15 @@
  void KCMGRUB2::defaults()
  {
      Action defaultsAction("org.kde.kcontrol.kcmgrub2.defaults");
@@ -661,7 +670,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  }
  void KCMGRUB2::load()
  {
-@@ -455,41 +462,40 @@
+@@ -455,41 +461,39 @@
      }
  
      Action saveAction("org.kde.kcontrol.kcmgrub2.save");
@@ -708,8 +717,8 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 +    ExecuteJob *reply = saveAction.execute();
 +    //connect(reply, SIGNAL(result()), &progressDlg, SLOT(hide()));
 +    reply->exec();
++    progressDlg.hide();
 +    if (!reply->error()) {
-+        progressDlg.hide();
 +        QDialog *dialog = new QDialog(this, Qt::Dialog);
 +        dialog->setWindowTitle(i18nc("@title:window", "Information"));
          dialog->setModal(true);
@@ -721,12 +730,39 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
          load();
      } else {
 -        KMessageBox::detailedError(this, i18nc("@info", "Failed to save GRUB settings."), reply.errorDescription());
-+        progressDlg.hide();
 +        KMessageBox::detailedError(this, i18nc("@info", "Failed to save GRUB settings."), reply->errorString());
      }
  }
  
-@@ -770,8 +776,8 @@
+@@ -559,8 +563,11 @@
+ {
+     if (ui->kcombobox_gfxmode->currentIndex() == 0) {
+         bool ok;
+-        QRegExpValidator regExp(QRegExp("\\d{3,4}x\\d{3,4}(x\\d{1,2})?"), this);
+-        QString resolution = KInputDialog::getText(i18nc("@title:window", "Enter screen resolution"), i18nc("@label:textbox", "Please enter a GRUB resolution:"), QString(), &ok, this, &regExp);
++        //QRegExpValidator regExp(QRegExp("\\d{3,4}x\\d{3,4}(x\\d{1,2})?"), this);
++        QRegExp regExp("\\d{3,4}x\\d{3,4}(x\\d{1,2})?");
++        //regExp.setPatternSyntax(QRegExp::Wildcard);
++        //QString resolution = KInputDialog::getText(i18nc("@title:window", "Enter screen resolution"), i18nc("@label:textbox", "Please enter a GRUB resolution:"), QString(), &ok, this, &regExp);
++        QString resolution = RegExpInputDialog::getText(this, i18nc("@title:window", "Enter screen resolution"), i18nc("@label:textbox", "Please enter a GRUB resolution:"), QString(), regExp, &ok);
+         if (ok) {
+             if (!m_resolutions.contains(resolution)) {
+                 QString gfxpayload = ui->kcombobox_gfxpayload->itemData(ui->kcombobox_gfxpayload->currentIndex()).toString();
+@@ -581,8 +588,11 @@
+ {
+     if (ui->kcombobox_gfxpayload->currentIndex() == 0) {
+         bool ok;
+-        QRegExpValidator regExp(QRegExp("\\d{3,4}x\\d{3,4}(x\\d{1,2})?"), this);
+-        QString resolution = KInputDialog::getText(i18nc("@title:window", "Enter screen resolution"), i18nc("@label:textbox", "Please enter a Linux boot resolution:"), QString(), &ok, this, &regExp);
++        //QRegExpValidator regExp(QRegExp("\\d{3,4}x\\d{3,4}(x\\d{1,2})?"), this);
++        QRegExp regExp("\\d{3,4}x\\d{3,4}(x\\d{1,2})?");
++        //regExp.setPatternSyntax(QRegExp::Wildcard);
++        //QString resolution = KInputDialog::getText(i18nc("@title:window", "Enter screen resolution"), i18nc("@label:textbox", "Please enter a Linux boot resolution:"), QString(), &ok, this, &regExp);
++        QString resolution = RegExpInputDialog::getText(this, i18nc("@title:window", "Enter screen resolution"), i18nc("@label:textbox", "Please enter a GRUB resolution:"), QString(), regExp, &ok);
+         if (ok) {
+             if (!m_resolutions.contains(resolution)) {
+                 QString gfxmode = ui->kcombobox_gfxmode->itemData(ui->kcombobox_gfxmode->currentIndex()).toString();
+@@ -770,8 +780,8 @@
      view->setRootIsDecorated(false);
      ui->kcombobox_default->setView(view);
  
@@ -737,7 +773,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_remove->setVisible(HAVE_QAPT || HAVE_QPACKAGEKIT);
  
      QPixmap black(16, 16), transparent(16, 16);
-@@ -825,12 +831,12 @@
+@@ -825,12 +835,12 @@
      ui->kcombobox_highlightForeground->setCurrentIndex(ui->kcombobox_highlightForeground->findData("black"));
      ui->kcombobox_highlightBackground->setCurrentIndex(ui->kcombobox_highlightBackground->findData("light-gray"));
  
@@ -754,7 +790,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Quiet Boot"))->setData("quiet");
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Show Splash Screen"))->setData("splash");
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Disable Plymouth"))->setData("noplymouth");
-@@ -838,8 +844,8 @@
+@@ -838,8 +848,8 @@
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off APIC"))->setData("noapic");
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off Local APIC"))->setData("nolapic");
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Single User Mode"))->setData("single");
@@ -765,7 +801,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Quiet Boot"))->setData("quiet");
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Show Splash Screen"))->setData("splash");
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Disable Plymouth"))->setData("noplymouth");
-@@ -847,20 +853,20 @@
+@@ -847,20 +857,20 @@
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off APIC"))->setData("noapic");
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Turn Off Local APIC"))->setData("nolapic");
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Single User Mode"))->setData("single");
@@ -792,7 +828,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu", "PC BIOS && EFI Console"))->setData("console");
      ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu", "Serial Terminal"))->setData("serial");
      ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu 'Open' is an adjective here, not a verb. 'Open Firmware' is a former IEEE standard.", "Open Firmware Console"))->setData("ofconsole");
-@@ -956,18 +962,13 @@
+@@ -956,18 +966,13 @@
      return fileName;
  }
  
@@ -814,7 +850,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  }
  QString KCMGRUB2::readFile(GrubFile grubFile)
  {
-@@ -992,13 +993,13 @@
+@@ -992,13 +997,13 @@
          return stream.readAll();
      }
  
@@ -832,7 +868,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  }
  void KCMGRUB2::readEntries()
  {
-@@ -1030,15 +1031,15 @@
+@@ -1030,15 +1035,15 @@
          return;
      }
  
@@ -853,7 +889,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      }
  }
  void KCMGRUB2::readDevices()
-@@ -1051,28 +1052,33 @@
+@@ -1051,28 +1056,36 @@
      }
  
      Action probeAction("org.kde.kcontrol.kcmgrub2.probe");
@@ -864,8 +900,24 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 -    probeAction.setParentWidget(this);
 -#endif
 -    if (probeAction.authorize() != Action::Authorized) {
--        return;
--    }
++    
++    QProgressDialog progressDlg(this, Qt::Dialog);
++        progressDlg.setWindowTitle(i18nc("@title:window", "Probing devices"));
++        progressDlg.setLabelText(i18nc("@info:progress", "Probing devices for their GRUB names..."));
++        progressDlg.setCancelButton(0);
++        progressDlg.setModal(true);
++        QProgressBar * mProgressBar = new QProgressBar(this);
++        progressDlg.setBar(mProgressBar);
++        progressDlg.show();
++        
++    ExecuteJob *reply = probeAction.execute();
++    //connect(reply, SIGNAL(progressStep(int)), mProgressBar, SLOT(setValue(int)));
++    reply->exec();
++    
++    if (probeAction.status() != Action::AuthorizedStatus ) {
++        progressDlg.hide();
+         return;
+     }
 -
 -    KProgressDialog progressDlg(this, i18nc("@title:window", "Probing devices"), i18nc("@info:progress", "Probing devices for their GRUB names..."));
 -    progressDlg.setAllowCancel(false);
@@ -877,37 +929,22 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 -    processReply(reply);
 -    if (reply.failed()) {
 -        KMessageBox::detailedError(this, i18nc("@info", "Failed to get GRUB device names."), reply.errorDescription());
-+    //TO BE FIXED
-+    //if (probeAction.authorize() != Action::Authorized) {
-+    //    return;
-+    //}
-+
-+    QProgressDialog progressDlg(this, Qt::Dialog);
-+        progressDlg.setWindowTitle(i18nc("@title:window", "Probing devices"));
-+        progressDlg.setLabelText(i18nc("@info:progress", "Probing devices for their GRUB names..."));
-+        progressDlg.setCancelButton(0);
-+        progressDlg.setModal(true);
-+        QProgressBar * mProgressBar = new QProgressBar(this);
-+        progressDlg.setBar(mProgressBar);
-+        progressDlg.show();
-+        
-+    ExecuteJob *reply = probeAction.execute();
-+    //connect(reply, SIGNAL(percent(int)), mProgressBar, SLOT(setValue(int)));
-+    reply->exec();
++    
++    progressDlg.hide();
++    
 +    if (reply->error()) {
-+        progressDlg.hide();
 +        KMessageBox::detailedError(this, i18nc("@info", "Failed to get GRUB device names."), reply->errorString());
          return;
 -    }
 -    QStringList grubPartitions = reply.data().value("grubPartitions").toStringList();
-+    } else {
-+      progressDlg.hide();
-+}
++    }// else {
++     // progressDlg.hide();
++//}
 +    QStringList grubPartitions = reply->data().value("grubPartitions").toStringList();
      if (mountPoints.size() != grubPartitions.size()) {
          KMessageBox::error(this, i18nc("@info", "Helper returned malformed device list."));
          return;
-@@ -1086,19 +1092,15 @@
+@@ -1086,19 +1099,15 @@
  void KCMGRUB2::readResolutions()
  {
      Action probeVbeAction("org.kde.kcontrol.kcmgrub2.probevbe");
@@ -931,7 +968,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  }
  
  void KCMGRUB2::sortResolutions()
-@@ -1140,8 +1142,8 @@
+@@ -1140,8 +1149,8 @@
          ui->kcombobox_gfxpayload->addItem(resolution, resolution);
      }
  }
@@ -942,7 +979,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  {
      if (reply.type() == ActionReply::Success || reply.type() == ActionReply::KAuthError) {
          return;
-@@ -1171,6 +1173,7 @@
+@@ -1171,6 +1180,7 @@
      reply.addData(QLatin1String("errorMessage"), errorMessage);
      reply.setErrorDescription(i18nc("@info", "Command: <command>%1</command><nl/>Error code: <numid>%2</numid><nl/>Error message:<nl/><message>%3</message>", reply.data().value(QLatin1String("command")).toStringList().join(QLatin1String(" ")), reply.errorCode(), errorMessage));
  }
@@ -952,7 +989,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      QChar ch;
 diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
 --- a/src/kcm_grub2.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.h	2015-11-29 17:41:07.000000000 +0800
++++ b/src/kcm_grub2.h	2015-11-30 08:37:41.213556473 +0800
 @@ -20,9 +20,10 @@
  
  //Qt
@@ -974,9 +1011,121 @@ diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
      QString readFile(GrubFile grubFile);
      void readEntries();
      void readSettings();
+diff -Naur a/src/widgets/regexpinputdialog.cpp b/src/widgets/regexpinputdialog.cpp
+--- a/src/widgets/regexpinputdialog.cpp	1970-01-01 08:00:00.000000000 +0800
++++ b/src/widgets/regexpinputdialog.cpp	2015-11-30 08:45:44.177876373 +0800
+@@ -0,0 +1,57 @@
++#include <QtGui>
++#include "regexpinputdialog.h"
++
++RegExpInputDialog::RegExpInputDialog(QWidget *parent, Qt::WindowFlags flags) :
++QDialog(parent)
++{
++if(flags!=0) setWindowFlags(flags);
++QVBoxLayout *l=new QVBoxLayout(this);
++
++label=new QLabel(this);
++
++regExp=QRegExp("*");
++regExp.setPatternSyntax(QRegExp::Wildcard);
++validator=new QRegExpValidator(regExp);
++
++text=new QLineEdit(this);
++text->setValidator(validator);
++connect(text, SIGNAL(textChanged(QString)), this, SLOT(checkValid(QString)));
++
++buttonBox=new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel, Qt::Horizontal, this);
++connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
++connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
++
++l->addWidget(label);
++l->addWidget(text);
++l->addWidget(buttonBox);
++}
++
++void RegExpInputDialog::setTitle(const QString &title){ setWindowTitle(title); }
++void RegExpInputDialog::setLabelText(const QString &label){ this->label->setText(label); }
++void RegExpInputDialog::setText(const QString &text){ this->text->setText(text); }
++
++void RegExpInputDialog::setRegExp(const QRegExp &regExp){
++validator->setRegExp(regExp);
++checkValid(text->text());
++}
++
++QString RegExpInputDialog::getLabelText(){ return label->text(); }
++QString RegExpInputDialog::getText(){ return text->text(); }
++
++void RegExpInputDialog::checkValid(const QString &text){
++QString _text=QString(text);
++int pos=0;
++bool valid=validator->validate(_text, pos)==QRegExpValidator::Acceptable;
++buttonBox->button(QDialogButtonBox::Ok)->setEnabled(valid);
++}
++
++QString RegExpInputDialog::getText(QWidget *parent, const QString &title, const QString &label, const QString &text, const QRegExp &regExp, bool *ok, Qt::WindowFlags flags){
++RegExpInputDialog *r=new RegExpInputDialog(parent, flags);
++r->setTitle(title);
++r->setLabelText(label);
++r->setText(text);
++r->setRegExp(regExp);
++*ok=r->exec()==QDialog::Accepted;
++if(*ok) return r->getText();
++else return QString();
++}
+\ No newline at end of file
+diff -Naur a/src/widgets/regexpinputdialog.h b/src/widgets/regexpinputdialog.h
+--- a/src/widgets/regexpinputdialog.h	1970-01-01 08:00:00.000000000 +0800
++++ b/src/widgets/regexpinputdialog.h	2015-11-30 08:55:23.957460391 +0800
+@@ -0,0 +1,45 @@
++#ifndef REGEXPINPUTDIALOG_H
++#define REGEXPINPUTDIALOG_H
++
++#include <QDialog>
++#include <QLineEdit>
++#include <QDialogButtonBox>
++#include <QLabel>
++#include <QVBoxLayout>
++#include <QPushButton>
++
++class QLabel;
++class QLineEdit;
++class QDialogButtonBox;
++class QRegExpValidator;
++
++class RegExpInputDialog : public QDialog
++{
++Q_OBJECT
++public:
++explicit RegExpInputDialog(QWidget *parent = 0, Qt::WindowFlags=0);
++
++void setTitle(const QString &title);
++void setLabelText(const QString &label);
++void setText(const QString &text);
++void setRegExp(const QRegExp &regExp);
++
++QString getLabelText();
++QString getText();
++
++static QString getText(QWidget *parent, const QString &title, const QString &label, const QString &text, const QRegExp &regExp, bool *ok, Qt::WindowFlags flags=0);
++
++signals:
++
++private slots:
++void checkValid(const QString &text);
++
++private:
++QLabel *label;
++QLineEdit *text;
++QDialogButtonBox *buttonBox;
++QRegExp regExp;
++QRegExpValidator *validator;
++};
++
++#endif // REGEXPINPUTDIALOG_H
+\ No newline at end of file
 diff -Naur a/ui/kcm_grub2.ui b/ui/kcm_grub2.ui
 --- a/ui/kcm_grub2.ui	2013-10-12 18:34:15.000000000 +0800
-+++ b/ui/kcm_grub2.ui	2015-11-29 17:41:07.000000000 +0800
++++ b/ui/kcm_grub2.ui	2015-11-29 19:34:02.105314426 +0800
 @@ -12,7 +12,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_6">
