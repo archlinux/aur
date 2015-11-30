@@ -4,10 +4,10 @@ pkgdesc="ROS - The opencv_apps package, most of code is taken from https://githu
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-opencv-apps'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-nodelet
