@@ -2,9 +2,9 @@
 
 _gemname=fog-voxel
 pkgname=ruby-$_gemname
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
-pkgdesc='Module for the '\''fog'\'' gem to support Voxel.'
+pkgdesc='This library can be used as a module for fog or as standalone provider to use the Voxel in applications.'
 arch=(any)
 url='https://rubygems.org/gems/fog-voxel'
 license=(MIT)
@@ -12,7 +12,6 @@ depends=(ruby ruby-fog-core ruby-fog-xml)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('e1232709e32dd742c85da18074070a54c76d4ef5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -20,3 +19,4 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
+sha512sums=('3bd159c4b9128910b660563716fc7b1845e5530d3b16bb7dbf7b10e3edede79fb2a4eee2589a322e3e5c72e1339f2d9012b790e478778c0fe31390b4d9cf78da')
