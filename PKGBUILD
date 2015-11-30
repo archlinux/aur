@@ -3,14 +3,14 @@
 
 
 pkgname=imdb-cli
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Command line tool for retrieving IMDb movie information"
 arch=(any)
 license=('(L)GPL3')
 url="https://github.com/Booloki/imdb-cli"
 source=(https://github.com/Booloki/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('9e7afb2b96ddfc896a5037af12493a39')
+md5sums=('9ae891af5b9a9a96ff4bf579ce17f544')
 
 
 package() {
