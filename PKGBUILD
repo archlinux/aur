@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Neural networks package for Torch7'
 pkgname='torch7-nn-git'
-pkgver=r920.01bdc38
+pkgver=r948.9d7e5b9
 pkgrel=1
 makedepends='cmake'
 depends='torch7-git>=r819'
@@ -24,7 +24,7 @@ pkgver () {
 
 build () {
 	cd "${pkgname}"
-	cmake . -DCMAKE_BUILD_TYPE=Release
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
