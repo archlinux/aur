@@ -2,7 +2,7 @@
 
 pkgname=sylpheed-beta-iconmod
 pkgver=3.5.0rc
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight e-mail client. Latest official beta with the coonsden.com icon theme."
 arch=('i686' 'x86_64')
 url="http://sylpheed.sraoss.jp/en/"
@@ -35,6 +35,6 @@ package() {
 
 validpgpkeys=('8CF3A5AC417ADE72B0AA4A835024337CC00C2E26')
 
-md5sums=('05b3867dbd5e675a0515eb05201a1797'
+md5sums=('77a04e4b6b26608e1a8ccd2346e2d4dd'
          'SKIP'
          'f0fa7317216cf4f159f1cd1edfa1af39')
