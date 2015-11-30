@@ -1,7 +1,7 @@
 # Maintainer: lily wilson <hotaru@thinkindifferent.net>
 pkgname=libemf
 pkgver=1.0.7
-pkgrel=0
+pkgrel=1
 pkgdesc="ECMA-234 Metafile Library"
 arch=('i686' 'x86_64')
 url="http://libemf.sourceforge.net/"
@@ -11,7 +11,7 @@ sha256sums=('9f2fd8bb84e345978c7fc45a39e06fc6a44fee867a91ebe83433d3a34348fd21')
 
 build() {
   cd $srcdir/libEMF-$pkgver
-  ./configure --prefix=/usr/lib
+  ./configure --prefix=/usr
   make || return 1
 }
 
