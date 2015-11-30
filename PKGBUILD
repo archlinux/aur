@@ -1,12 +1,13 @@
 pkgname=kvirc-git
-pkgver=r5453.f5dc3c4
+pkgver=4.3.2.r5739.214f716
+_pkgver=4.3.2
 pkgrel=1
-pkgdesc="Qt4 based IRC-Client, compiled with kde4 support - Git Version"
+pkgdesc="Qt5 based IRC-Client, compiled with kde4 support - Git Version"
 arch=('i686' 'x86_64')
 url="http://www.kvirc.net"
 license=('GPL')
-depends=('qt5-base' 'glibc' 'openssl' 'zlib' 'perl')
-makedepends=('cmake' 'git'  'gettext')
+depends=('qt5-base' 'glibc' 'openssl' 'zlib' 'perl' 'qt5-multimedia' 'qt5-svg' 'qt5-x11extras' 'qt5-webkit' 'phonon-qt5' 'enchant' 'kcoreaddons' 'ki18n' 'kxmlgui' 'kwindowsystem' 'knotifications' 'kservice')
+makedepends=('python2' 'gettext' 'doxygen' 'extra-cmake-modules' 'zsh' 'cmake' 'git'  'gettext')
 conflicts=('kvirc4' 'kvirc')
 provides=('kvirc' 'kvirc4')
 source=("kvirc-git::git+https://github.com/kvirc/KVIrc.git")
@@ -14,8 +15,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 
 build() {
   cd "$pkgname"
