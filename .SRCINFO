@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-dynamic-edt-3d
 	pkgdesc = ROS - The dynamicEDT3D library implements an inrementally updatable Euclidean distance transform (EDT) in 3D.
-	pkgver = 1.6.8
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = http://octomap.github.io
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-dynamic-edt-3d
 	makedepends = ros-indigo-octomap
 	depends = ros-indigo-octomap
 	depends = ros-indigo-catkin
-	source = dynamic_edt_3d::git+https://github.com/ros-gbp/octomap-release.git#tag=release/indigo/dynamic_edt_3d/1.6.8-0
+	source = dynamic_edt_3d::git+https://github.com/ros-gbp/octomap-release.git#tag=release/indigo/dynamic_edt_3d/1.7.0-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-dynamic-edt-3d
