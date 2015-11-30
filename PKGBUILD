@@ -4,7 +4,7 @@
 pkgname=gogs-git-dev
 _pkgname=gogs
 _branch=develop
-pkgver=3148.e6b2a01
+pkgver=3166.9950f5a
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
