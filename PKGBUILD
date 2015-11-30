@@ -6,12 +6,12 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=227
-pkgrel=1
+pkgver=228
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
-makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux'
+makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
@@ -36,6 +36,16 @@ md5sums=('SKIP'
 
 prepare() {
   cd "${pkgbase/-selinux}"
+
+  # sd-ndisc: drop RA packets from non-link-local addresses
+  # https://github.com/systemd/systemd/commit/3ccd31635353
+  # https://github.com/systemd/systemd/issues/1866
+  git cherry-pick -n 3ccd31635353
+
+  # networkd: link - do not drop config for loopback device
+  # https://github.com/systemd/systemd/commit/e5d44b34cca3
+  # https://github.com/systemd/systemd/issues/2023
+  git cherry-pick -n e5d44b34cca3
 
   ./autogen.sh
 }
@@ -66,7 +76,7 @@ package_systemd-selinux() {
   pkgdesc="system and service manager with SELinux support"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd-selinux' 'libidn' 'lz4' 'pam-selinux' 'libseccomp'
+           'libgcrypt' 'libsystemd-selinux' 'libidn' 'lz4' 'pam-selinux' 'libelf' 'libseccomp'
            'util-linux-selinux' 'xz' 'audit' 'libselinux')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
