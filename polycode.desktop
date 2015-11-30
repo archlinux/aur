@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Polycode
+Comment=The IDE bundled with the Polycode framework.
+Exec=/opt/polycode/IDE/Polycode
+Path=/opt/polycode/IDE/
+Icon=polycode
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true
+MimeType=application/x-polycode;application/x-polycode-workspace;
