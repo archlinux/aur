@@ -1,14 +1,14 @@
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 
 pkgname=copyq-plugin-itemweb-git
-pkgver=20140126
+pkgver=20151130
 pkgrel=1
 pkgdesc="Clipboard manager with searchable and editable history. Itemweb plugin."
 url="https://github.com/hluk/CopyQ"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('qtwebkit' 'copyq-git')
-makedepends=('cmake' 'git')
+depends=('qt5-webkit' 'copyq-git')
+makedepends=('cmake' 'git' 'qt5-tools' 'qt5-svg')
 provides=('copyq-plugin-itemweb')
 conflicts=('copyq-plugin-itemweb')
 source=("${pkgname}::git+https://github.com/hluk/CopyQ.git")
@@ -22,8 +22,9 @@ pkgver() {
 build() {
     mkdir -p ${srcdir}/${pkgname}/build
     cd ${srcdir}/${pkgname}/build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DWITH_QT5=TRUE \
         ${srcdir}/${pkgname}
     make itemweb
 }
