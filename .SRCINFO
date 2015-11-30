@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-image-common
 	pkgdesc = ROS - Common code for working with images in ROS.
-	pkgver = 1.11.7
+	pkgver = 1.11.8
 	pkgrel = 1
 	url = http://www.ros.org/wiki/image_common
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-indigo-image-common
 	depends = ros-indigo-image-transport
 	depends = ros-indigo-camera-info-manager
 	depends = ros-indigo-polled-camera
-	source = image_common::git+https://github.com/ros-gbp/image_common-release.git#tag=release/indigo/image_common/1.11.7-0
+	source = image_common::git+https://github.com/ros-gbp/image_common-release.git#tag=release/indigo/image_common/1.11.8-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-image-common
