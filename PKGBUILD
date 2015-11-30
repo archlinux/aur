@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=redispp-git
-pkgver=r38.c55b002
+pkgver=r40.88b908a
 pkgrel=1
 pkgdesc='C++ client for Redis'
 arch=(i686 x86_64)

@@ -1,6 +1,6 @@
 pkgbase = redispp-git
 	pkgdesc = C++ client for Redis
-	pkgver = r38.c55b002
+	pkgver = r40.88b908a
 	pkgrel = 1
 	url = https://github.com/brianwatling/redispp
 	arch = i686
