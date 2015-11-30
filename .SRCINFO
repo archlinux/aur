@@ -1,0 +1,15 @@
+pkgbase = open-usp-tukubai
+	pkgdesc = An open source version of shell commands usp Tukubai.
+	pkgver = 2014061402
+	pkgrel = 1
+	url = https://uec.usp-lab.com/TUKUBAI/CGI/TUKUBAI.CGI
+	arch = any
+	license = custom:"MIT"
+	depends = python
+	source = https://uec.usp-lab.com/TUKUBAI/DOWNLOAD/open-usp-tukubai-2014061402.tar.bz2
+	source = https://gist.githubusercontent.com/MasWag/76a89b3c3056753d1d31/raw/7965251ff56c7f297849f6865e700c2d0f3c01c0/Makefile.patch
+	md5sums = be4f69734afd2bdc74d07fc705380c6e
+	md5sums = c4dc486deb9bf93fcaf5a8c139c57481
+
+pkgname = open-usp-tukubai
+
