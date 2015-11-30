@@ -1,6 +1,6 @@
 pkgbase = lemonbar-xft-git
 	pkgdesc = A lightweight xcb based bar with ported xft support.
-	pkgver = 231.2f66bb1
+	pkgver = 241.5bddcce
 	pkgrel = 1
 	url = https://github.com/krypt-n/bar
 	arch = i686
