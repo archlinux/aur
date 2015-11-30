@@ -7,6 +7,7 @@ pkgbase = stock_quote
 	license = GPL
 	depends = python
 	depends = python-numpy
+	depends = python-colorama
 	source = https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote.py
 	md5sums = c99244fc350e4bd169302667d2962d17
 
