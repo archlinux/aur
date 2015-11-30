@@ -1,0 +1,11 @@
+#!/bin/sh
+
+post_install() {
+  # ensure correct permissions
+  systemd-sysusers mailman.conf
+  chown -R mailman:mailman /var/lib/mailman
+}
+
+post_remove() {
+  userdel mailman
+}

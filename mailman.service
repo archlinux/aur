@@ -1,0 +1,16 @@
+[Unit]
+Description=GNU Mailing List Manager
+After=network.target
+
+[Service]
+User=mailman
+ExecStart=/usr/bin/mailman start
+ExecReload=/usr/bin/mailman restart
+ExecStop=/usr/bin/mailman stop
+StandardError=syslog
+Type=forking
+WorkingDirectory=/var/lib/mailman
+PIDFile=/var/lib/mailman/var/master.pid
+
+[Install]
+WantedBy=multi-user.target
