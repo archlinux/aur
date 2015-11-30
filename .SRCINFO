@@ -1,0 +1,20 @@
+pkgbase = rbenv-git
+	pkgdesc = Simple Ruby version manager
+	pkgver = 0.4.0.r210.f0e8bdc
+	pkgrel = 1
+	url = http://github.com/rbenv/rbenw
+	install = rbenv.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git gcc
+	depends = ruby
+	depends = bash
+	optdepends = ruby-build
+	provides = rbenv
+	conflicts = rbenv
+	source = git://github.com/rbenv/rbenv
+	md5sums = SKIP
+
+pkgname = rbenv-git
+
