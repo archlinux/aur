@@ -1,6 +1,6 @@
 pkgbase = intel-me-tools-git
 	pkgdesc = Tools for working with Intel ME
-	pkgver = r8.fc0b1c3
+	pkgver = r9.73b5624
 	pkgrel = 1
 	url = https://github.com/skochinsky/me-tools
 	arch = any

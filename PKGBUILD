@@ -1,7 +1,7 @@
 # Maintrainer: Anatol Pomozov
 
 pkgname=intel-me-tools-git
-pkgver=r8.fc0b1c3
+pkgver=r9.73b5624
 pkgrel=1
 pkgdesc='Tools for working with Intel ME'
 arch=(any)
