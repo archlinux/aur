@@ -1,6 +1,6 @@
 # Maintainer: rafaqzsu <rafaqzsu [at] gmail (dot) com>
 pkgname=cropgui-git
-pkgver=b3a00e
+pkgver=db8091
 pkgrel=1
 pkgdesc="A GTK GUI for lossless JPEG cropping (and rotating)"
 arch=('any')
@@ -16,11 +16,6 @@ md5sums=('SKIP')
 
 pkgver() {
   git describe --always | sed -e 's|-|.|g' -e '1s|^.||'
-}
-
-prepare() {
-  cd "${srcdir}"/$pkgname
-  git apply ../../python2.patch
 }
 
 package() {
