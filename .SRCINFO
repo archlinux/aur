@@ -1,8 +1,9 @@
 pkgbase = solar-python
 	pkgdesc = Solar data calculation and prediction library for Python
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maandree/solar-python
+	install = solar-python.install
 	arch = any
 	license = AGPL3
 	makedepends = make
