@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Synology Cloud Station
+Comment=Synology Cloud Station
+Exec=synology-cloud-station start
+Icon=/opt/Synology/CloudStation/images/ico_72_cloud_station.png
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;

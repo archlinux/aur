@@ -1,0 +1,5 @@
+pkg
+src
+cloudstation-*.pkg.tar.xz
+cloudstation-*.src.tar.gz
+CloudStation-Linux-Installer-*.tgz
