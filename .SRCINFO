@@ -1,8 +1,9 @@
 pkgbase = crt-calibrator
 	pkgdesc = CRT monitor calibrator utility for Linux VT
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/maandree/crt-calibrator
+	install = crt-calibrator.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -12,11 +13,12 @@ pkgbase = crt-calibrator
 	makedepends = glibc
 	makedepends = libdrm
 	makedepends = linux
+	makedepends = texinfo
 	depends = glibc
 	depends = libdrm
 	depends = linux
-	source = https://github.com/maandree/crt-calibrator/archive/1.2.tar.gz
-	sha256sums = f03c3236f57272de6046a258776d374dacb8f8e84c7b9a03e2895e505ea3e9e7
+	source = https://github.com/maandree/crt-calibrator/archive/1.3.tar.gz
+	sha256sums = 17bf4efafac1817d4bd8f2a1307e60365dc0a5847c45fa731ccd36490af01eee
 
 pkgname = crt-calibrator
 
