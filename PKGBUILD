@@ -8,8 +8,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-pkgver=2.27
-pkgrel=6
+pkgver=2.27.1
+pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
@@ -23,21 +23,13 @@ makedepends=('systemd' 'python' 'libselinux')
 license=('GPL2')
 options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
-source=("https://www.kernel.org/pub/linux/utils/util-linux/v2.27/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
-        "0001-libmount-monitor-don-t-check-for-regular-mtab.patch"
+source=("https://www.kernel.org/pub/linux/utils/util-linux/v${pkgver%.?}/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
         pam-{login,common,su})
-md5sums=('5b06bbda9309624ee7add15bc8d8ca22'
+md5sums=('3cd2698d1363a2c64091c2dadc974647'
          'SKIP'
-         'f9e06605db9107b9c4bb1c48059fe18e'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
          'fa85e5cce5d723275b14365ba71a8aad')
-
-prepare() {
-  cd "${pkgbase/-selinux}-$pkgver"
-
-  patch -Np1 <../0001-libmount-monitor-don-t-check-for-regular-mtab.patch
-}
 
 build() {
   cd "${pkgbase/-selinux}-$pkgver"
@@ -54,7 +46,6 @@ build() {
               --enable-write \
               --enable-mesg \
               --enable-libmount-force-mountinfo \
-              --enable-socket-activation \
               --with-selinux \
               --with-python=3
 
