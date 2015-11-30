@@ -1,5 +1,5 @@
 pkgname=wlc-git
-pkgver=r821.3b836aa
+pkgver=r822.359cfe7
 pkgrel=1
 
 pkgdesc='Wayland compositor library.'
@@ -22,7 +22,7 @@ conflicts=('wlc')
 source=('git://github.com/Cloudef/wlc'
         'git://github.com/Cloudef/chck')
 
-md5sums=('SKIP' 'SKIP')
+sha1sums=('SKIP' 'SKIP')
 
 options=('!debug' '!strip')
 
