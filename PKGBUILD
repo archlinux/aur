@@ -1,7 +1,8 @@
+# Maintainer: lily wilson <hotaru@thinkindifferent.net>
 _pkgbasename=nss
 pkgname=${_pkgbasename}-chacha20
 pkgver=3.20.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Mozilla Network Security Services with ChaCha20-Poly1305"
 arch=(i686 x86_64)
 url="http://www.mozilla.org/projects/security/pki/nss/"
