@@ -1,0 +1,22 @@
+pkgbase = libgraphqlparser
+	pkgdesc = A GraphQL query parser in C++ with C and C++ APIs
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/graphql/libgraphqlparser
+	arch = i386
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = python2-ctypesgen
+	provides = libgraphqlparser
+	conflicts = libgraphqlparser
+	options = !makeflags
+	source = libgraphqlparser-0.3.0.tar.gz::https://github.com/graphql/libgraphqlparser/archive/v0.3.0.tar.gz
+	md5sums = 5e3c1a8f561494475cecdabe1aaf1426
+	sha256sums = fa3d28fa6154077d8b3795e8d21f2946c16acf549e29c457ddc5c18427639f9c
+	sha384sums = 57844fbfd263007a51a00a4d7eef390172dfdea665aae125bfbdecf6f94f4fd4eb31f611350d99ee426ed9780492c1ce
+	sha512sums = a3ee1b1ca2bfb06b31f6117b746b06e463050a55add843aabe24d9bc445ff8cf3e5b2070fb0bb280415e5da7af497274d1dc68d50ae35904267fce791d9accb7
+
+pkgname = libgraphqlparser
+
