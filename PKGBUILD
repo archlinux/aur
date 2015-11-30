@@ -4,20 +4,20 @@
 pkgname=libcurl-compat
 _pkgname=curl
 pkgver=7.23.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An URL retrieval library (old version)"
 arch=('i686' 'x86_64')
 url="http://curl.haxx.se"
 license=('MIT')
 depends=('ca-certificates' 'gnutls' 'openssl' 'zlib')
-provides=('libcurl.so.3' 'libcurl.so.4.2.0' 'libcurl-gnutls.so.3' 'libcurl-gnutls.so.4.2.0')
 options=('strip')
+conflicts=('libcurl-gnutls')
 source=("http://curl.haxx.se/download/${_pkgname}-$pkgver.tar.gz")
 md5sums=('8e23151f569fb54afef093ac0695077d')
-install=curl-compat.install
+install=libcurl-compat.install
 
 build() {
-  config=" ./configure \
+  config="./configure \
       --prefix=/usr \
       --disable-ldap \
       --disable-ldaps \
