@@ -7,8 +7,8 @@
 #
 
 pkgname=emacs-git
-pkgver=25.1.50.r123388
-pkgrel=2
+pkgver=25.1.50.r123464
+pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -42,6 +42,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
+
   local _conf=(
     --prefix=/usr 
     --sysconfdir=/etc 
@@ -54,7 +55,7 @@ build() {
     --with-x-toolkit=gtk3 
     --with-xft)
 
-  ./configure ${_conf}
+  ./configure ${_conf[@]}
 
   # Using "make" instead of "make bootstrap" makes incremental
   # compiling work. Less time recompiling. Yay! But if you may 
