@@ -2,7 +2,7 @@
 # Maintainer: Xyne
 
 pkgname=abinit
-pkgver=7.4.2
+pkgver=7.10.5
 pkgrel=1
 pkgdesc="Full-featured atomic-scale first-principles simulation software."
 arch=('i686' 'x86_64')
@@ -23,5 +23,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('5755fbb98c419d2a460fae222967646b')
-sha256sums=('26fcc60e18071b7579843f43cbe44e79db50466dbaae8b862ad96a8986733f63')
+md5sums=('276db3ebad3f57952952b5235e5813cc')
+sha256sums=('e9376a3e34790bce90992f28e5fa8554b51ba467bf5709c7fd25d300e7c4f56a')
