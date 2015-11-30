@@ -150,7 +150,7 @@ build() {
 		mkdir -p "build-none"
 
 		cd "$srcdir/build-none"
-		../grub/configure \
+		../grub/configure --quiet \
 			--with-platform=none \
 			--program-prefix='' \
 			--prefix="/usr" \
