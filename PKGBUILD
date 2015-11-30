@@ -1,8 +1,8 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=s2n-git
-pkgver=r345.659ffa2
-_libressl_ver=2.2.1
+pkgver=r442.674df33
+_libressl_ver=2.3.1
 pkgrel=1
 pkgdesc='Implementation of the TLS/SSL protocols that is designed to be simple, small, fast, and with security as a priority'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=(git)
 source=(git://github.com/awslabs/s2n
        http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$_libressl_ver.tar.gz)
 sha1sums=('SKIP'
-          '593be19b80fe8245005bcb27392db04485703b28')
+          '37c765c6a452e1dd6c5ed368d618c05e5875715e')
 
 pkgver() {
   cd s2n
