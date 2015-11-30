@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=vim-crystal-git
-pkgver=r19.04dae4f
+pkgver=r135.aebaadb
 pkgrel=1
 pkgdesc='vim support for Crystal programming language'
 arch=(any)

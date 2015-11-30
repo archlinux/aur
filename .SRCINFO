@@ -1,6 +1,6 @@
 pkgbase = vim-crystal-git
 	pkgdesc = vim support for Crystal programming language
-	pkgver = r19.04dae4f
+	pkgver = r135.aebaadb
 	pkgrel = 1
 	url = https://github.com/rhysd/vim-crystal
 	arch = any
