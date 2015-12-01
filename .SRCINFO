@@ -1,14 +1,14 @@
 pkgbase = nodejs-generator-karma
 	pkgdesc = Yeoman generator for Karma
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/yeoman/generator-karma
 	arch = any
 	license = BSD
 	depends = nodejs-yeoman
-	noextract = generator-karma-1.0.0.tgz
-	source = http://registry.npmjs.org/generator-karma/-/generator-karma-1.0.0.tgz
-	sha1sums = 43f909c1677c66598d0acb126694a12d3175f8ad
+	noextract = generator-karma-1.0.1.tgz
+	source = http://registry.npmjs.org/generator-karma/-/generator-karma-1.0.1.tgz
+	sha1sums = b3ff10681bdbbf0a2aeea68dcda9a83b75de5df1
 
 pkgname = nodejs-generator-karma
 
