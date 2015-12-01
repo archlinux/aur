@@ -3,13 +3,13 @@
 
 pkgname=scscp
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for the Symbolic Computation Software Composibility Protocol"
 arch=('i686' 'x86_64')
 url="http://www.imcce.fr/Equipes/ASD/trip/scscp/"
 license=('custom')
 depends=('libxml2')
-source=(http://www.imcce.fr/Equipes/ASD/trip/scscp/download/scscp-$pkgver.tar.gz)
+source=(https://sourcesup.renater.fr/frs/download.php/file/4549/$pkgname-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
