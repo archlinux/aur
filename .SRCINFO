@@ -1,0 +1,33 @@
+pkgbase = decaf-emu-git
+	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
+	pkgver = r1058.0383843
+	pkgrel = 1
+	url = https://github.com/decaf-emu/decaf-emu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = zlib
+	depends = glfw
+	source = decaf-emu::git+https://github.com/decaf-emu/decaf-emu
+	source = git+https://github.com/kobalicek/asmjit
+	source = git+https://github.com/USCiLab/cereal
+	source = git+https://github.com/docopt/docopt.cpp
+	source = git+https://github.com/exjam/ovsocket
+	source = git+https://github.com/zeux/pugixml
+	source = git+https://github.com/exjam/spdlog
+	source = git+https://github.com/cginternals/glbinding
+	source = git+https://github.com/decaf-emu/gsl-lite
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = decaf-emu-git
+
