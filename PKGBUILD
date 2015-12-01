@@ -3,12 +3,12 @@
 
 pkgname=pip-tools
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools to keep your pinned Python dependencies fresh."
 arch=('any')
 url="https://github.com/nvie/pip-tools"
 license=('BSD')
-depends=('python-click' 'python-six')
+depends=('python-click' 'python-first' 'python-pip' 'python-six')
 source=("http://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         LICENSE.txt)
 md5sums=('f1771bee558b5abd8b206fdeb1e51d69'
