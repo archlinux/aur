@@ -1,3 +1,5 @@
-*
-!PKGBUILD
-!.gitignore
+*src.tar.*
+*pkg.tar.*
+src/
+pkg/
+express/
