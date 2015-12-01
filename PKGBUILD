@@ -3,12 +3,12 @@
 
 pkgname=torrents_dispatcher
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Dispatch your torrents between multiple torrent clients'
 arch=('any')
 url='https://github.com/Anthony25/torrents_dispatcher'
 license=('BSD')
-depends=('python-appdirs' 'python-bencodepy')
+depends=('python-appdirs' 'python-bencodepy' 'python-setuptools')
 source=("https://github.com/Anthony25/torrents_dispatcher/archive/${pkgver}.tar.gz")
 sha256sums=('1e63bc64bcf52c4e7d14eacdb109d6779029b449ed5392de8958b6aca0a1f636')
 
