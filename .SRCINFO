@@ -1,6 +1,6 @@
 pkgbase = wireframesketcher
 	pkgdesc = WireframeSketcher, wireframing tool for professionals (Trial)
-	pkgver = 4.4.8
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = http://wireframesketcher.com
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = wireframesketcher
 	depends = gtk2>=2.8.0
 	depends = webkitgtk2
 	depends = libxtst
-	source_i686 = http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-4.4.8_i386.deb
-	sha512sums_i686 = 7265375dc4f41f7082d6453bddc465f6c76fb99cf29dd7113edb00864a149344a55071905175a38aa5441b51a756ad518db597abed85ebe3ad1da34f2cc8a2a6
-	source_x86_64 = http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-4.4.8_amd64.deb
-	sha512sums_x86_64 = 3cff01253a729617cf3e19a9b23177217ed401c95e3d781dcaf5e1802c19e99955d4d33a4bee7b892a620ab17ce3167ae916c75a3ef3f504f836794c0696239e
+	source_i686 = http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-4.5.0_i386.deb
+	sha512sums_i686 = 24de99eb40056aef83616a2aff872a73c41edbbe2047c11333a63c6eb4698ee6cd01c53e0b14d8d46b6908f1e41ea3f746bae6fd22fda472167056e09308f301
+	source_x86_64 = http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-4.5.0_amd64.deb
+	sha512sums_x86_64 = e61c5acec7c739b2ebb48138e80e4a59371e4cc09a3cda77da6383e5aef1b6f827404c9fc276d27a07f16cfc1b63c1768dc7112e951bc82d8fd80efe8cdc74f2
 
 pkgname = wireframesketcher
 
