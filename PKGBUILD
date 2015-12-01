@@ -1,10 +1,10 @@
 # Maintainer: MartiMcFly martimcfly@autorisation.de
 
 pkgname=('zarafa-webaccess')
-pkgver=7.2.0
+pkgver=7.2.1
 _pkgmajver=7.2
-_pkgrev=${pkgver}-48204
-pkgrel=8
+_pkgrev=${pkgver}-51847
+pkgrel=1
 pkgdesc="Open Source Groupware Solution"
 arch=('any')
 url="http://www.zarafa.com/"
@@ -17,14 +17,16 @@ source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_
 	"nginx-ssl.example.conf"
 	"php-fpm.example.conf"
 	"zarafa-webaccess.conf"
-	"zarafa-webaccess.ini")
+	"zarafa-webaccess.ini"
+	"compress-static")
 
-md5sums=('7dc8a526b3eb83e6eb5bbc9d2215b501'
-         'bdb65922b267d27f4602026f3c55423f'
+md5sums=('861b2fec52ff792c6ea2bb5aeaed52aa'
+         '134126ee09b00d9bfa4e5279a39b5a50'
          '73451bc5c35072b22b0b2925c5920978'
          '7adcf5e023718421a5e8e07e5e9a2480'
          '38ce6fbf16357ded687db57d5ef581bd'
-         'daedd4114b213e9279806ee720eeb1ef')
+         'daedd4114b213e9279806ee720eeb1ef'
+         'd737d82dfab24adc516c001238a4119f')
 
 package() {
   # extract make task and run it
@@ -34,31 +36,34 @@ package() {
  
   # prepare application
   mkdir -p ${pkgdir}/usr/share/webapps
-  mv ${pkgdir}/usr/share/zarafa-webaccess ${pkgdir}/usr/share/webapps/zarafa-webaccess
-  mkdir -p ${pkgdir}/usr/share/webapps/zarafa-webaccess/plugins
-  rm ${pkgdir}/usr/share/webapps/zarafa-webaccess/zarafa-webaccess.conf
+  mv ${pkgdir}/usr/share/zarafa-webaccess ${pkgdir}/usr/share/webapps/${pkgname}
+  mkdir -p ${pkgdir}/usr/share/webapps/${pkgname}/plugins
+  rm ${pkgdir}/usr/share/webapps/${pkgname}/zarafa-webaccess.conf
   rm -rf ${pkgdir}/etc/zarafa
   
+  # compress for nginx
+  ${srcdir}/compress-static ${pkgdir}/usr/share/webapps/${pkgname}
+  
   # prepare library
-  mkdir -p ${pkgdir}/var/lib/zarafa-webaccess
-  mkdir -p ${pkgdir}/var/lib/zarafa-webaccess/tmp
-  mkdir -p ${pkgdir}/var/lib/zarafa-webaccess/tmp/attachements
-  mkdir -p ${pkgdir}/var/lib/zarafa-webaccess/tmp/session
+  mkdir -p ${pkgdir}/var/lib/${pkgname}
+  mkdir -p ${pkgdir}/var/lib/${pkgname}/tmp
+  mkdir -p ${pkgdir}/var/lib/${pkgname}/tmp/attachements
+  mkdir -p ${pkgdir}/var/lib/${pkgname}/tmp/session
   
   # prepare logging
-  mkdir -p ${pkgdir}/var/log/zarafa-webaccess
-  touch ${pkgdir}/var/log/zarafa-webaccess/debug.txt
-  ln -s /var/log/zarafa-webaccess/debug.txt ${pkgdir}/usr/share/webapps/zarafa-webaccess/debug.txt
+  mkdir -p ${pkgdir}/var/log/${pkgname}
+  touch ${pkgdir}/var/log/${pkgname}/debug.txt
+  ln -s /var/log/${pkgname}/debug.txt ${pkgdir}/usr/share/webapps/${pkgname}/debug.txt
 
   # prepare settings
-  mkdir -p ${pkgdir}/etc/webapps/zarafa-webaccess
-  cp ${srcdir}/php-fpm.example.conf ${pkgdir}/etc/webapps/zarafa-webaccess/
-  cp ${srcdir}/nginx-ssl.example.conf ${pkgdir}/etc/webapps/zarafa-webaccess/
-  cp ${srcdir}/nginx-location.conf ${pkgdir}/etc/webapps/zarafa-webaccess/
-  cp ${srcdir}/zarafa-${pkgver}/php-webclient-ajax/zarafa-webaccess.conf ${pkgdir}/etc/webapps/zarafa-webaccess/apache.example.conf
-  cp ${srcdir}/zarafa-${pkgver}/php-webclient-ajax/config.php.dist ${pkgdir}/etc/webapps/zarafa-webaccess/config.example.php
-  cp ${srcdir}/zarafa-${pkgver}/php-webclient-ajax/debug.php ${pkgdir}/etc/webapps/zarafa-webaccess/debug.example.php
-  ln -s /etc/webapps/zarafa-webaccess/config.php ${pkgdir}/usr/share/webapps/zarafa-webaccess/config.php
+  mkdir -p ${pkgdir}/etc/webapps/${pkgname}
+  cp ${srcdir}/php-fpm.example.conf ${pkgdir}/etc/webapps/${pkgname}/
+  cp ${srcdir}/nginx-ssl.example.conf ${pkgdir}/etc/webapps/${pkgname}/
+  cp ${srcdir}/nginx-location.conf ${pkgdir}/etc/webapps/${pkgname}/
+  cp ${srcdir}/zarafa-${pkgver}/php-webclient-ajax/zarafa-webaccess.conf ${pkgdir}/etc/webapps/${pkgname}/apache.example.conf
+  cp ${srcdir}/zarafa-${pkgver}/php-webclient-ajax/config.php.dist ${pkgdir}/etc/webapps/${pkgname}/config.example.php
+  cp ${srcdir}/zarafa-${pkgver}/php-webclient-ajax/debug.php ${pkgdir}/etc/webapps/${pkgname}/debug.example.php
+  ln -s /etc/webapps/${pkgname}/config.php ${pkgdir}/usr/share/webapps/${pkgname}/config.php
   
   # => php
   mkdir -p ${pkgdir}/etc/php/conf.d
@@ -69,6 +74,6 @@ package() {
   cp ${srcdir}/zarafa-webaccess.conf ${pkgdir}/etc/php/fpm.d
 
   # => fix pear path
-  sed -i 's$/usr/share/php/$/usr/share/pear/$' ${pkgdir}/etc/webapps/zarafa-webaccess/config.example.php
+  sed -i 's$/usr/share/php/$/usr/share/pear/$' ${pkgdir}/etc/webapps/${pkgname}/config.example.php
 
 }
