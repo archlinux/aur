@@ -1,14 +1,14 @@
 #Maintainer: M0Rf30
 
 pkgname=i2pd-git
-pkgver=1808.128a8f3
+pkgver=2020.da8a6a4
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('GPL2')
-depends=('crypto++' 'boost-libs')
-makedepends=('git' 'boost')
+depends=('boost-libs' 'openssl')
+makedepends=('git' 'boost' 'cmake')
 source=('i2pd::git+https://github.com/PurpleI2P/i2pd.git'
 	i2pd.service
 	i2p.conf
@@ -31,7 +31,7 @@ package(){
 
 pkgver() {
   cd i2pd
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git rev-list --count openssl).$(git rev-parse --short openssl)
 }
 
 md5sums=('SKIP'
