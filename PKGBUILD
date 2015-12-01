@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win32-git
-pkgver=3213.0a6625d
+pkgver=3217.6b348f6
 pkgrel=1
 pkgdesc="Carla win32 bridge"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ build() {
   export LDFLAGS="-static"
   ln -s ../../../VST3\ SDK source/includes/vst2
   sed -i 's/#if !PLATFORM_64/#if 0/' source/includes/vst2/base/source/fthread.cpp
-  make win32
+  make win32 HAVE_LIBLO=false
   export PATH=$_path
   export AR=$_ar
   export CC=$_cc
