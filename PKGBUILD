@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30 <morf3089@gmail.com>
 
 pkgname=opengts
-pkgver=2.5.8
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A full featured web-based GPS tracking system for your fleet of vehicles"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ package() {
   cp OpenGTS_Config.pdf ${pkgdir}/opt/opengts/
 }
 
-md5sums=('8ba0862e79b6614fdb1ea7302946cbf6'
+md5sums=('19afade1f331ae5b6510b7a8202a4a34'
          'eaa24afc6598fad65c0aed030ebf37c8'
          '841e957e78f0a617fe89e7c9bb66132d'
          '9e8981a8ad668801e8fa07405fa281f0')
