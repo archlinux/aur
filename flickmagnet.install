@@ -8,10 +8,14 @@ post_install() {
     chown flickmagnet:flickmagnet /srv/flickmagnet
 
     cat <<EOF
->>> Start the daemon with 'systemctl start flickmagnet'
-    It uses the "deluge" user with files stored in /srv/flickmagnet
 
->>> Give the daemon 10 minutes to find some content, then browse to http://localhost:42000/
+>>> Start the daemon with 'systemctl start flickmagnet'
+    It starts as the "flickmagnet" user, with files stored in /srv/flickmagnet
+
+>>> Give the daemon 10 minutes to find some content, then browse to:
+
+    http://localhost:42000/
+
 EOF
 }
 
@@ -25,11 +29,9 @@ post_remove() {
 }
 
 post_upgrade() {
-
-    echo -n ">>> Flick Magnet doesn't have graceful upgrades yet, delete user files to reinitialize: "
-    echo -n "rm -r ~/.config/flickmagnet/ ~/.cache/flickmagnet/ ~/.local/share/flickmagnet/ "
+    echo ">>> Flick Magnet doesn't have graceful upgrades yet, delete user files to reinitialize:"
+    echo "    rm -r ~/.config/flickmagnet/ ~/.cache/flickmagnet/ ~/.local/share/flickmagnet/"
 
     systemctl daemon-reload
-
 }
 
