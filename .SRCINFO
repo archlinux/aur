@@ -1,0 +1,20 @@
+pkgbase = xfce4-composite-editor
+	pkgdesc = Simple GUI to control the various Xfce4 WM tweaks that are not available via the "Window Manager Tweaks" control panel.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://gtk-apps.org/content/show.php/Xfce4-Composite-Editor?content=149523
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkg-config
+	makedepends = make
+	makedepends = autoconf
+	depends = gtk2
+	depends = libxfce4ui
+	depends = xfconf
+	optdepends = xfce-theme-manager: Theme manager allowing configuration of themes, window borders, controls, icons and cursors for Xfce.
+	source = https://dl.dropboxusercontent.com/s/kpqqgn2ty7iocgi/Xfwm4CompositeEditor-0.2.1.tar.gz
+	md5sums = 541fdd17a4d19166c7a362624a8ae453
+
+pkgname = xfce4-composite-editor
+
