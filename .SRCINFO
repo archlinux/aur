@@ -1,7 +1,7 @@
 pkgbase = bareos-x11
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
 	pkgver = 15.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = bareos-x11
 	optdepends = openssl: network encryption between daemons
 	source = https://github.com/bareos/bareos/archive/Release/15.2.2.tar.gz
 	source = PKGBUILD.common
-	sha256sums = e8f5b2c8635985abce68b057585db9d2b7abf3e394bc2b34cb3fbd6ebfed6d3b
-	sha256sums = 775965c5bf3c1f033da706a055625ff0de38e2f09d17d460bb290b53ad31dee7
+	sha256sums = 7c7e07c877956385870475382184d39df7232ecd9791c3a3942624473410da93
+	sha256sums = 8153e56e839ec2ceea275a3e49f0302994a8f5875b062f0f46c8e4df89b5a9e8
 
 pkgname = bareos-traymonitor
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Tray Monitor (QT)
@@ -32,5 +32,6 @@ pkgname = bareos-bat
 	install = bareos-bat.install
 	depends = bareos-common=15.2.2
 	depends = qt4
+	conflicts = alsa-utils
 	backup = etc/bareos/bat.conf
 
