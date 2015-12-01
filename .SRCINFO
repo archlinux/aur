@@ -1,7 +1,7 @@
 pkgbase = peazip-qt-build
 	pkgdesc = Free cross-platform file archiver (compiles from source)
-	pkgver = 5.9.0
-	pkgrel = 1
+	pkgver = 5.8.1
+	pkgrel = 3
 	url = http://peazip.org
 	install = peazip.install
 	arch = i686
@@ -14,12 +14,12 @@ pkgbase = peazip-qt-build
 	conflicts = peazip
 	conflicts = peazip-gtk2
 	conflicts = peazip-qt
-	source = https://github.com/giorgiotani/PeaZip/releases/download/5.9.0/peazip-5.9.0.src.zip
-	source = https://github.com/giorgiotani/PeaZip/releases/download/5.9.0/peazip_portable-5.9.0.LINUX.Qt.tar.gz
-	sha256sums = 65b78cb10b981924bb0df00f633ab0b52944398fdab75cf20597658a3823cef4
-	sha256sums = 58278738149a1cd1420a62d1899d3d5e410e62c4bcc3f5e81232257f7b4da6a3
-	sha512sums = a936a5c2e0344dd377deee4a7f5f4dc5e1646024080a7831ba367c1aac33bf8c0ff31798afc2a660699068e6f50b9a16fb56466d8f13541a03b9b48f8a8634e8
-	sha512sums = 05a692ee9050c99d17e3929c4b1dcb4b1024b6019bc38839c7fcf056320bc82c47fa1430cef4126ae64e09e00b7c0a3a6f16e9ea2d9276f61ad64ac8b5671b10
+	source = https://github.com/giorgiotani/PeaZip/releases/download/5.8.1/peazip-5.8.1.src.zip
+	source = https://github.com/giorgiotani/PeaZip/releases/download/5.8.1/peazip_portable-5.8.1.LINUX.Qt.tar.gz
+	sha256sums = aac16a76b3853ebd88cd69034771cadacf287ddb06392a1398dc6eec3472507e
+	sha256sums = 69c3be0c886f8b37bb1c5f03d4bdf6e0fc22aa0cbc52266713b5d20564790aef
+	sha512sums = 67b25442791f40277020673223a650fd31fcf808ac1a598e4dc5287497ff74b5513078ea4602f63f9465ceedf26083331f2a8d27c6320867c1ad58e31cb80bb4
+	sha512sums = 0ac1986b9a0776855bfe6d6bca52c4dd72a33778fcf8684ccd7c1d9f28fd80a1f77a60a08cdf8ecafdf48d7381b788c86f50e9c538d63f2b9b1dab49a52a3c40
 
 pkgname = peazip-qt-build
 
