@@ -19,7 +19,13 @@ source=(xdm-config
 	Xsession
 	config.sh
 	xdm-xfreq.service)
-md5sums=('SKIP')
+md5sums=('SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP')
 
 package() {
   mkdir -p ${pkgdir}/etc/xdm-xfreq

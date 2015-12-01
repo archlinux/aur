@@ -24,6 +24,12 @@ pkgbase = xdm-xfreq
 	source = config.sh
 	source = xdm-xfreq.service
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = xdm-xfreq
 
