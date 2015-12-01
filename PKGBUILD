@@ -1,8 +1,8 @@
 # Maintainer: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=whippet
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.2.4
+pkgrel=1
 pkgdesc="A launcher and xdg-open replacement for control freaks, utilizing dmenu. Opens file and URL objects with applications associated by name and/or mimetype. Applications and associations may be customized using an SQLite database."
 arch=('any')
 url="http://appstogo.mcfadzean.org.uk/linux.html#whippet"
@@ -10,7 +10,7 @@ license=('custom:MPL2')
 depends=('bash' 'dmenu' 'sqlite' 'libnotify' 'file')
 optdepends=('perl-file-mimeinfo: to better determine mimetypes' 'sqlitebrowser: to manage database' 'sudo: to run applications as root' 'gxmessage: to view .desktop files')
 source=("http://appstogo.mcfadzean.org.uk/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('c9749611d7b4248fb95912f36c38fcd2')
+md5sums=('961231d8e0833b1fe6c927c801b14844')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
