@@ -1,6 +1,6 @@
 pkgbase = relink
 	pkgdesc = A simple utility that modifies your symlinks
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/maandree/relink
 	install = relink.install
@@ -13,8 +13,8 @@ pkgbase = relink
 	depends = python3
 	depends = argparser
 	depends = coreutils
-	source = https://github.com/maandree/relink/archive/1.1.tar.gz
-	sha256sums = 45def302c0fe2e0d7376b519faacefc67c75feb10b694613cf38d784af1328fa
+	source = https://github.com/maandree/relink/archive/1.2.tar.gz
+	sha256sums = c1b8e6a5c3468a8ff80593f131f834ce5dd5914676a88a0c1b84a8a50d92b540
 
 pkgname = relink
 
