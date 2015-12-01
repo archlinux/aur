@@ -17,7 +17,7 @@ _gitroot="git://anongit.kde.org/yakuake.git"
 _gitname="yakuake"
 
 source=('copy_paste.patch')
-md5sums=('63ab645ca81a8c2913db0cf9eaab7d5d')
+md5sums=('88b237ded2a4b4a3917a7f989a660316')
 
 
 build() {

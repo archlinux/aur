@@ -1,4 +1,4 @@
-index 3c22019..e4b4822 100644
+index 3c22019..025299d 100644
 --- a/yakuake/app/terminal.cpp
 +++ b/yakuake/app/terminal.cpp
 @@ -24,6 +24,7 @@
@@ -9,13 +9,18 @@ index 3c22019..e4b4822 100644
  #include <KColorScheme>
  #include <kde_terminal_interface.h>
  #include <KLocalizedString>
-@@ -183,6 +184,16 @@ void Terminal::displayKPartLoadError()
+@@ -183,6 +184,21 @@ void Terminal::displayKPartLoadError()
      layout->setStretchFactor(label,5);
  }
  
 +void Terminal::paste()
 +{
 +    QApplication::postEvent(m_terminalWidget, new QKeyEvent(QEvent::KeyPress, Qt::Key_V, Qt::ShiftModifier|Qt::ControlModifier));
++}
++
++void Terminal::copy()
++{
++    QApplication::postEvent(m_terminalWidget, new QKeyEvent(QEvent::KeyPress, Qt::Key_C, Qt::ShiftModifier|Qt::ControlModifier));
 +}
 +
 +void Terminal::clear_scrollback()
@@ -26,7 +31,7 @@ index 3c22019..e4b4822 100644
  void Terminal::disableOffendingPartActions()
  {
      // This is an unwelcome stop-gap that will be removed once we can
-@@ -220,6 +231,14 @@ void Terminal::disableOffendingPartActions()
+@@ -220,6 +236,31 @@ void Terminal::disableOffendingPartActions()
  
          action = actionCollection->action("shrink-font");
          if (action) action->setEnabled(false);
@@ -35,21 +40,38 @@ index 3c22019..e4b4822 100644
 +        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_V));
 +        newAct->setEnabled(true);
 +
++        newAct = actionCollection->addAction("terminal-copy", this, SLOT(copy()));
++        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_C));
++        newAct->setEnabled(true);
++
 +        newAct = actionCollection->addAction("terminal-clear", this, SLOT(clear_scrollback()));
 +        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_K));
 +        newAct->setEnabled(true);
++
++        newAct = actionCollection->addAction("terminal-paste1", this, SLOT(paste()));
++        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_V));
++        newAct->setEnabled(true);
++
++        newAct = actionCollection->addAction("terminal-copy1", this, SLOT(copy()));
++        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_C));
++        newAct->setEnabled(true);
++
++        newAct = actionCollection->addAction("terminal-clear1", this, SLOT(clear_scrollback()));
++        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_K));
++        newAct->setEnabled(true);
++        
      }
  }
  
-diff --git a/app/terminal.h b/app/terminal.h
-index 23e70a0..59f2612 100644
+index 23e70a0..bdd5a23 100644
 --- a/yakuake/app/terminal.h
 +++ b/yakuake/app/terminal.h
-@@ -81,6 +81,8 @@ class Terminal : public QObject
+@@ -81,6 +81,9 @@ class Terminal : public QObject
          void overrideShortcut(QKeyEvent* event, bool& override);
          void silenceDetected();
          void activityDetected();
 +        void paste();
++        void copy();
 +        void clear_scrollback();
  
  
