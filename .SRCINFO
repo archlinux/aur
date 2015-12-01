@@ -1,0 +1,25 @@
+pkgbase = gr-dsd-git
+	pkgdesc = GNU Radio block for Digital Speech Decoder (DSD)
+	pkgver = r56.d2f0270
+	pkgrel = 1
+	url = https://github.com/argilo/gr-dsd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gnuradio
+	depends = boost
+	depends = libsndfile
+	depends = swig
+	depends = cppunit
+	depends = log4cpp
+	depends = python2
+	provides = gr-dsd
+	conflicts = gr-dsd
+	source = git+https://github.com/argilo/gr-dsd.git
+	sha256sums = SKIP
+
+pkgname = gr-dsd-git
+
