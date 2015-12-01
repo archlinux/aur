@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/dialelo/turses"
 license=('GPLv3')
 depends=('ncurses' 'python' 'python-future' 'python-setuptools' 'python-tweepy' 'python-urwid')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/dialelo/turses.git")
 sha1sums=('SKIP')
 

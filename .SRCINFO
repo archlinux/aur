@@ -5,6 +5,7 @@ pkgbase = turses-git
 	url = https://github.com/dialelo/turses
 	arch = any
 	license = GPLv3
+	makedepends = git
 	depends = ncurses
 	depends = python
 	depends = python-future
