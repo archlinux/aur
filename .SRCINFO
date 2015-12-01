@@ -1,7 +1,7 @@
 pkgbase = vlc-nightly
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot
-	pkgver = 3.0.0
-	pkgrel = 7
+	pkgver = 3.0.0v20151130
+	pkgrel = 1
 	url = http://www.videolan.org/vlc/
 	install = vlc-nightly.install
 	arch = i686
@@ -95,8 +95,8 @@ pkgbase = vlc-nightly
 	replaces = vlc-plugin
 	options = !libtool
 	options = !emptydirs
-	source = http://nightlies.videolan.org/build/source/vlc-3.0.0-20150928-0535.tar.xz
-	sha1sums = 5beef2d58844b6454a5703daedf1786821aac3e8
+	source = http://nightlies.videolan.org/build/source/vlc-3.0.0-20151130-0543.tar.xz
+	sha1sums = 2a908d0c2fded1d20b666a0eee201a5b5a0946cc
 
 pkgname = vlc-nightly
 
