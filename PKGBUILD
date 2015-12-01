@@ -15,7 +15,7 @@ depends=(python2)
 makedepends=(python2-distribute)
 provides=(gunicorn-python2)
 conflicts=(gunicorn-python2)
-source=("https://github.com/benoitc/${_pkgname}/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/benoitc/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('81899db60828fdd0377f1e6618859459af0cd151b70baf90ca3c76cabaf3cfe1')
 
 package() {

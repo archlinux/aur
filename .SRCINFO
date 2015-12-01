@@ -9,7 +9,7 @@ pkgbase = python2-gunicorn
 	depends = python2
 	provides = gunicorn-python2
 	conflicts = gunicorn-python2
-	source = https://github.com/benoitc/gunicorn/archive/19.4.1.tar.gz
+	source = python2-gunicorn-19.4.1.tar.gz::https://github.com/benoitc/gunicorn/archive/19.4.1.tar.gz
 	sha256sums = 81899db60828fdd0377f1e6618859459af0cd151b70baf90ca3c76cabaf3cfe1
 
 pkgname = python2-gunicorn
