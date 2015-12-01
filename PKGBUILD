@@ -2,7 +2,7 @@
 #
 pkgname=sortphotos
 pkgver=65.05eca3c
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python script that organizes photos and videos into folders"
 arch=('any')
 url="https://github.com/andrewning/sortphotos"
@@ -20,8 +20,8 @@ pkgver() {
 }
 
 prepare() {
-   cd "${srcdir}"/${pkgname}
-    patch -p1 -i ../${pkgname}.patch || return 1
+  cd "${srcdir}"/${pkgname}
+  patch -p1 -i ../${pkgname}.patch || return 1
 }
 
 package() {
