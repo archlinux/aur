@@ -1,8 +1,8 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=caffe-git
-pkgver=r3035.543afd3
-pkgrel=2
+pkgver=r3443.62ed0d2
+pkgrel=1
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 2 interface'
 arch=(x86_64)
 url='https://github.com/BVLC/caffe'
