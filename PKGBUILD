@@ -1,11 +1,11 @@
 # Maintainer: Denis Tikhomirov <dvtikhomirov@gmail.com>
 pkgname=mattext
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple matrix-style pager"
 arch=('i686' 'x86_64')
 url='https://github.com/dhurum/mattext'
-license=('BSD')
+license=('GPL3')
 depends=('ncurses' 'gcc-libs' 'libev')
 makedepends=('git' 'cmake' 'gzip')
 source=(https://github.com/dhurum/${pkgname}/archive/v${pkgver}.tar.gz)
