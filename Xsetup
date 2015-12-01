@@ -22,7 +22,17 @@ LOOP=true
 		unset LOOP
 		;;
 	99)
-		$XDM_XFREQ_SCREENSHOT_PATH $XDM_XFREQ_SCREENSHOT_ARGS &
+		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_SUBMENU ""
+		case "$?" in
+		143)
+			unset LOOP
+			;;
+		11)
+			if [ $XDM_XFREQ_SCREENSHOT_PATH ]; then
+				$XDM_XFREQ_SCREENSHOT_PATH $XDM_XFREQ_SCREENSHOT_ARGS &
+			fi
+			;;
+		esac
 		;;
 	11)
 		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_PWROFF ""
@@ -37,40 +47,40 @@ LOOP=true
 		;;
 	12)
 		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_HALT ""
-                case "$?" in
-                143)
-                        unset LOOP
-                        ;;
-                11)
+		case "$?" in
+		143)
+			unset LOOP
+			;;
+		11)
 			$XDM_XFREQ_HALT_CMD
 			;;
-                esac
-                ;;
+		esac
+		;;
 	13)
-                $XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_REBOOT ""
-                case "$?" in
-                143)
-                        unset LOOP
-                        ;;
-                11)
+		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_REBOOT ""
+		case "$?" in
+		143)
+			unset LOOP
+			;;
+		11)
 			$XDM_XFREQ_REBOOT_CMD
 			;;
-                esac
-                ;;
+		esac
+		;;
 	14)
 		$XDM_XFREQ_SLEEP_CMD
 		;;
 	15)
-                $XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_RESCUE ""
-                case "$?" in
-                143)
-                        unset LOOP
-                        ;;
-                11)
+		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_RESCUE ""
+		case "$?" in
+		143)
+			unset LOOP
+			;;
+		11)
 			$XDM_XFREQ_RESCUE_CMD
 			;;
-                esac
-                ;;
+		esac
+		;;
 	esac;
 done ) & echo $! > $XDM_XFREQ_BUTTONS_PID
 

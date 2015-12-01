@@ -26,6 +26,7 @@ XDM_XFREQ_BUTTONS_PWROFF="-buttons PowerOff?:11,Cancel?:12 -default Cancel? -tim
 XDM_XFREQ_BUTTONS_HALT="-buttons Halt?:11,Cancel?:12 -default Cancel? -timeout 6"
 XDM_XFREQ_BUTTONS_REBOOT="-buttons Reboot?:11,Cancel?:12 -default Cancel? -timeout 6"
 XDM_XFREQ_BUTTONS_RESCUE="-buttons Rescue?:11,Cancel?:12 -default Cancel? -timeout 6"
+XDM_XFREQ_BUTTONS_SUBMENU="-buttons \<\<:99,Screenshot:11"
 
 # Screenshot
 XDM_XFREQ_SCREENSHOT_PATH=scrot
