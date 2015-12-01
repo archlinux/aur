@@ -1,20 +1,30 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=teamviewer-quicksupport
-pkgver=10.0.46203
+pkgver=11.0.52520
 _pkgver_major=${pkgver%%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc='Teamviewer Quicksupport - All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com/'
 depends=('bash')
 options=('!strip')
-depends_i686=('gcc-libs' 'alsa-lib' 'freetype2' 'libxdamage' 'libxrandr' 'libxtst' 'zlib')
-depends_x86_64=('lib32-gcc-libs' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-libxdamage' 'lib32-libxrandr' 'lib32-libxtst' 'lib32-zlib')
+depends_x86_64=(
+	'lib32-fontconfig'
+	'lib32-libpng12'
+	'lib32-libsm'
+	'lib32-libxinerama'
+	'lib32-libxrender')
+depends_i686=(
+	'fontconfig'
+	'libpng12'
+	'libsm'
+	'libxinerama'
+	'libxrender')
 conflicts=('teamviewer')
 license=('custom')
 source=("teamviewer_qs-${pkgver}.tar.gz::http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_qs.tar.gz")
-sha256sums=('9d112d3dcb8056115fc2dabeaaab729ec19bdea5352ea7a2ca3858d6e26e1c96')
+sha256sums=('0f6b9ee146fcb64dd953d3dd82320d6574050105eec8923e3296ae28b10a27f1')
 
 prepare() {
 	cd teamviewerqs/
@@ -39,6 +49,12 @@ prepare() {
 build() {
 	cd teamviewerqs/
 
+	# set correct pathes in desktop file
+	sed -e "/^Exec=/c Exec=/opt/teamviewer/tv_bin/script/teamviewer" \
+		-e "/^Icon=/c Icon=/opt/teamviewer/tv_bin/desktop/teamviewer.png" \
+		< tv_bin/desktop/teamviewer.desktop.template \
+		> "${srcdir}"/teamviewer.desktop
+
 	# duh?!
 	sed -i '/UpdateBinaries/s/^/#/' tv_bin/script/tvw_main
 
@@ -55,9 +71,9 @@ package() {
 	install -d -m0755 "${pkgdir}"/usr/{bin,share/applications,share/licenses/${pkgname}}
 	ln -s /opt/teamviewer/tv_bin/script/teamviewer "${pkgdir}"/usr/bin/teamviewer
 	ln -s /opt/teamviewer/tv_bin/script/teamviewer "${pkgdir}"/usr/bin/quicksupport
-	ln -s /opt/teamviewer/tv_bin/desktop/teamviewer-teamviewer${_pkgver_major}.desktop \
-		"${pkgdir}"/usr/share/applications/teamviewer.desktop
 	ln -s /opt/teamviewer/doc/License.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+
+	install -D -m0755 "${srcdir}"/teamviewer.desktop "${pkgdir}"/usr/share/applications/teamviewer.desktop
 
 	install -d -m1777 "${pkgdir}"/var/lib/teamviewer
 	ln -s /var/lib/teamviewer "${pkgdir}"/opt/teamviewer/config
