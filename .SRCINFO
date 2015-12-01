@@ -1,6 +1,6 @@
 pkgbase = texlive-ewuthesis
 	pkgdesc = Style for Master's Thesis at Eastern Washington University
-	pkgver = 2015.11.25
+	pkgver = 2015.12.1
 	pkgrel = 1
 	url = https://github.com/oraac/texlive-ewuthesis
 	install = texlive-ewuthesis.install
