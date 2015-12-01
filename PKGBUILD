@@ -2,8 +2,8 @@
 # Contributor: Vinycius Maia <suportevg@uol.com.br>
 
 pkgname=firefox-extension-greasemonkey
-_file=319128
-pkgver=3.2
+_file=370452
+pkgver=3.6
 pkgrel=1
 pkgdesc="Customize the way a web page displays or behaves, by using small bits of JavaScript."
 arch=('any')
@@ -11,7 +11,7 @@ url="http://www.greasespot.net/"
 license=('MPL')
 depends=('firefox>=35.0')
 source=(https://addons.mozilla.org/firefox/downloads/file/$_file/greasemonkey-$pkgver.xpi)
-sha1sums=('3b9886af34665fa89d9476874e9e561931906f1e')
+sha1sums=('35b76e5cc77087ac1fc6b0400fc4d0ae57eb57d5')
 
 package() {
   cd "$srcdir"
