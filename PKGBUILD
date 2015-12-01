@@ -8,6 +8,8 @@ url='https://github.com/OpenRCT2/OpenRCT2'
 license=('GPL3')
 depends=('gtk-update-icon-cache' 'desktop-file-utils')
 makedepends=('git' 'cmake')
+conflicts=('openrct2')
+provides=('openrct2')
 options=('!buildflags')
 install=openrct2.install
 source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop'
