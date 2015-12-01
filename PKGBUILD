@@ -12,7 +12,7 @@ license=('AGPL3')
 depends=('php')
 makedepends=('gettext')
 install=("install")
-source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/zarafa-${pkgver}.tar.gz"
+source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}-51838/sourcecode/zarafa-${_pkgrev}.tar.gz"
 	"nginx-location.conf"
 	"nginx-ssl.example.conf"
 	"php-fpm.example.conf"
@@ -20,7 +20,7 @@ source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_
 	"zarafa-webaccess.ini"
 	"compress-static")
 
-md5sums=('861b2fec52ff792c6ea2bb5aeaed52aa'
+md5sums=('d281fd9f85562efc81802620673d682b'
          '134126ee09b00d9bfa4e5279a39b5a50'
          '73451bc5c35072b22b0b2925c5920978'
          '7adcf5e023718421a5e8e07e5e9a2480'
