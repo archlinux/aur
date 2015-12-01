@@ -1,0 +1,13 @@
+Only in sortphotos/.git: FETCH_HEAD
+diff -ur sortphotos/src/sortphotos.py sortphotos-updated/src/sortphotos.py
+--- sortphotos/src/sortphotos.py	2015-12-01 19:58:19.783401381 +0300
++++ sortphotos-updated/src/sortphotos.py	2015-12-01 20:35:49.783455929 +0300
+@@ -117,7 +117,7 @@
+     oldest_keys = []
+ 
+     # save src file
+-    src_file = data['SourceFile']
++    src_file = data['SourceFile'].encode('utf-8')
+ 
+     # ssetup tags to ignore
+     ignore_groups = ['ICC_Profile'] + additional_groups_to_ignore
