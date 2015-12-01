@@ -157,12 +157,12 @@ package() {
   done
  
   # => change running user for services
-  for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/{server.cfg,spooler.cfg}; do
+  for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/{dagent.cfg,server.cfg,spooler.cfg}; do
    sed -i -e "s/\(run_as_user\s*=\)\(.*$\)/\1 zarafa/" ${cfg}
    sed -i -e "s/\(run_as_group\s*=\)\(.*$\)/\1 zarafa/" ${cfg}
   done
   
-  for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/{dagent.cfg,gateway.cfg,ical.cfg}; do
+  for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/{gateway.cfg,ical.cfg}; do
    sed -i -e "s/\(run_as_user\s*=\)\(.*$\)/\1 http/" ${cfg}
    sed -i -e "s/\(run_as_group\s*=\)\(.*$\)/\1 http/" ${cfg}
   done
