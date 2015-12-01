@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=i2pd
-pkgver=0.10.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ package() {
     install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
 }
 
-md5sums=('4889026c2d051bacb24b67925f8ceada'
+md5sums=('3375da5f15cd2ce27c870f192f1885ad'
          'c37b5470c959e826be8eb40c8f1ece93'
          'b145e41e22806bd4ca4f4064ec4721a2'
          '862be388708f2b1bd5f727715ec7508d')
