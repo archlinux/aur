@@ -1,14 +1,15 @@
 # Maintainer: Cameron Banta <cbanta@gmail.com>
-# Contributor: Francesco Colista <francesco.colista@gmail.com>
+# Contributor: Francesco Colista <fcolista@alpinelinux.org>
 pkgname=lua-stringy
-pkgver=0.4.0
+pkgver=0.4-1
+_pkgver=${pkgver#-#.#}
 pkgrel=0
 pkgdesc="Lua string utility library"
 license=('MIT')
 arch=("i686" "x86_64")
 url="https://github.com/brentp/lua-projects/"
 depends=('lua')
-source=(https://github.com/brentp/${pkgname}/archive/v${pkgver}.zip)
+source="https://github.com/brentp/${pkgname}/archive/v${_pkgver}.tar.gz"
 
 build() {
 	local i
@@ -28,4 +29,4 @@ package() {
 	mkdir -p "$pkgdir"/$_lualibdir
 	cp stringy.so "$pkgdir"/$_lualibdir/
 }
-md5sums=('c1e8e8f024ed362af711d615284fd499')
+md5sums=('a603cc2a62ec9179a2a7f07c223f3d2c')
