@@ -6,7 +6,6 @@ pkgbase = gtkevemon-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gtkmm3
 	makedepends = git
 	depends = gtkmm3
 	depends = libxml2

@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/gtkevemon/gtkevemon/"
 license=('GPL3')
 depends=('gtkmm3' 'libxml2' 'openssl')
-makedepends=('gtkmm3' 'git')
+makedepends=('git')
 provides=('gtkevemon')
 source=(
     "git+https://github.com/gtkevemon/$_gitname/"
