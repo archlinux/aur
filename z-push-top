@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/share/webapps/z-push/z-push-top.php "$@"

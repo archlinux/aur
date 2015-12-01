@@ -4,7 +4,7 @@
 
 pkgname=z-push
 pkgver=2.2.5
-pkgrel=4
+pkgrel=6
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
@@ -26,7 +26,9 @@ source=("${pkgname}-${pkgver}.tar.gz::http://download.z-push.org/final/2.2/${pkg
 	"z-push.conf"
 	"nginx-location.conf"
 	"nginx-ssl.example.conf"
-	"php-fpm.example.conf")
+	"php-fpm.example.conf"
+	"z-push-admin"
+	"z-push-top")
 
 md5sums=('4a89b1a827ab7019d41e42179fc83094'
          '32a459bd61135b6c5e99e82e3a6b0007'
@@ -35,7 +37,9 @@ md5sums=('4a89b1a827ab7019d41e42179fc83094'
          'b61c194ee4e3e3bf8bfa6a72e6f38019'
          '9637d4164f85cb3fb9a886654645a46c'
          '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
-         '7adcf5e023718421a5e8e07e5e9a2480')
+         '7adcf5e023718421a5e8e07e5e9a2480'
+         '626a81889bebd6184d8f90deb00f6119'
+         'dfa0d3eceef2433ded6229b6611c5e02')
 
 package() {
     # according to https://wiki.archlinux.org/index.php/Web_application_package_guidelines
@@ -45,8 +49,8 @@ package() {
     rm ${pkgdir}/usr/share/webapps/z-push/config.php
 
     mkdir -p ${pkgdir}/usr/bin
-    ln -s /usr/share/webapps/z-push/z-push-admin.php ${pkgdir}/usr/bin/z-push-admin 
-    ln -s /usr/share/webapps/z-push/z-push-top.php ${pkgdir}/usr/bin/z-push-top 
+    cp ${srcdir}/z-push-admin ${pkgdir}/usr/bin
+    cp ${srcdir}/z-push-top ${pkgdir}/usr/bin
     
     mkdir -p ${pkgdir}/etc/webapps/z-push
     cp ${srcdir}/apache.example.conf ${pkgdir}/etc/webapps/z-push/
