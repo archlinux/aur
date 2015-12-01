@@ -1,7 +1,7 @@
 pkgbase = p54-firmware
 	pkgdesc = Firmware files for p54 driver
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wireless.wiki.kernel.org/en/users/Drivers/p54
 	arch = any
 	license = unknown

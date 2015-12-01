@@ -2,7 +2,7 @@
 
 pkgname=p54-firmware
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for p54 driver"
 arch=(any)
 url="https://wireless.wiki.kernel.org/en/users/Drivers/p54"
@@ -18,9 +18,9 @@ sha256sums=('3256a190f2b6853b396b2a1eefc01d194c865a4382ea2368fb3c931c16abca61'
             '4ec8da3c5e846a33790e2c7eb8ea4c3d0ecf901de8edf899fd2686ac83eebd4e')
 
 package() {
-    install -Dm0644 2.13.25.0.arm $pkgdir/lib/firmware/isl3886pci
-    install -Dm0644 2.13.1.0.lm86.arm $pkgdir/lib/firmware/isl3886usb
-    install -Dm0644 2.13.25.0.lm87.arm $pkgdir/lib/firmware/isl3887usb
-    install -Dm0644 2.19.0.0.a.14.arm $pkgdir/lib/firmware/3826.arm
+    install -Dm0644 2.13.25.0.arm $pkgdir/usr/lib/firmware/isl3886pci
+    install -Dm0644 2.13.1.0.lm86.arm $pkgdir/usr/lib/firmware/isl3886usb
+    install -Dm0644 2.13.25.0.lm87.arm $pkgdir/usr/lib/firmware/isl3887usb
+    install -Dm0644 2.19.0.0.a.14.arm $pkgdir/usr/lib/firmware/3826.arm
 }
-
+# vim:set ts=4 sts=4 sw=4 et :
