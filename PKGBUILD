@@ -4,7 +4,7 @@ pkgname=('zarafa-webaccess')
 pkgver=7.2.1
 _pkgmajver=7.2
 _pkgrev=${pkgver}-51847
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Groupware Solution"
 arch=('any')
 url="http://www.zarafa.com/"
@@ -21,7 +21,7 @@ source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_
 	"compress-static")
 
 md5sums=('d281fd9f85562efc81802620673d682b'
-         '134126ee09b00d9bfa4e5279a39b5a50'
+         'cd4ca8bec5346fd129661f54a0ae11b9'
          '73451bc5c35072b22b0b2925c5920978'
          '7adcf5e023718421a5e8e07e5e9a2480'
          '38ce6fbf16357ded687db57d5ef581bd'
