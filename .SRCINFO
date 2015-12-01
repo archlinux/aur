@@ -1,0 +1,15 @@
+pkgbase = latex-cvpr
+	pkgdesc = ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp and sig-alternate)
+	pkgver = 1.3.20051024
+	pkgrel = 1
+	url = http://www.acm.org/sigs/publications/proceedings-templates
+	install = texlive.install
+	arch = any
+	license = unknown
+	depends = texlive-core
+	conflicts = latex-template-acm
+	source = http://www.pamitc.org/cvpr15/files/cvpr2015AuthorKit.tgz
+	md5sums = 4369f672c35575edd15df20b37fc9dda
+
+pkgname = latex-cvpr
+
