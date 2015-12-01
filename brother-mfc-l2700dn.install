@@ -1,0 +1,11 @@
+post_install() {
+	post_upgrade;
+}
+
+post_upgrade() {
+  sudo ln -sf /opt/brother/Printers/MFCL2700DN/cupswrapper/brother_lpdwrapper_MFCL2700DN /usr/lib/cups/filter/
+  sudo ln -sf /opt/brother/Printers/MFCL2700DN/cupswrapper/brother-MFCL2700DN-cups-en.ppd /usr/share/ppd/cupsfilters/
+  echo "Restart CUPS (sudo systemctl restart org.cups.cupsd.service) to load the new files"
+  echo "You can now register your new printer using the web interface at:"
+  echo "  http://localhost:631/"
+}
