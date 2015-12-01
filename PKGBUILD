@@ -3,7 +3,7 @@
 
 _pkgname=baka-mplayer
 pkgname=${_pkgname}-git
-pkgver=2.0.3.r0.ge86cf13
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='A free and open source, cross-platform, libmpv based multimedia player. Qt5 build. Development version.'
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ optdepends=(
 	'mpv-git: for bleeding-edge mpv features'
 	'qt5-translations: for Qt5 dialog translations'
 	'youtube-dl: for remote video streaming'
+	'noto-fonts: for proper font support'
 )
 makedepends=('git' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}")
