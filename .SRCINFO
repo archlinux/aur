@@ -1,6 +1,6 @@
 pkgbase = openbazaar-server-git
 	pkgdesc = Server daemon for communication between client and OpenBazaar network
-	pkgver = 444.456c759
+	pkgver = 473.adf41d7
 	pkgrel = 1
 	url = http://openbazaar.org
 	install = openbazaar-server.install
