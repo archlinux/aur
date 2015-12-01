@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=15.11.30
+pkgver=15.12.01
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
@@ -14,19 +14,22 @@ provides=('qmplay2')
 makedepends=('make' 'gcc' 'git' 'pkg-config')
 source=('git+https://github.com/zaps166/QMPlay2')
 sha256sums=('SKIP')
+install=$pkgname.install
 
 pkgver()
 {
-    cat $srcdir/QMPlay2/src/qmplay2/headers/QMPlay2Core.hpp | grep QMPlay2Version | cut -c25-32
+	cat $srcdir/QMPlay2/src/qmplay2/headers/QMPlay2Core.hpp | grep QMPlay2Version | cut -c25-32
 }
 
 build()
 {
-    cd $srcdir/QMPlay2
-    NOTERM=1 SYSTEM_BUILD=1 ./compile_unix 0
+	cd $srcdir/QMPlay2
+	NOTERM=1 SYSTEM_BUILD=1 ./compile_unix 0
 }
 
 package()
 {
-    mv $srcdir/QMPlay2/app $pkgdir/usr
+	mv $srcdir/QMPlay2/app $pkgdir/usr
+	mkdir -p $pkgdir/usr/share/mime/packages
+	cp $srcdir/QMPlay2/src/gui/Unix/x-*.xml $pkgdir/usr/share/mime/packages
 }
