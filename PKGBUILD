@@ -5,12 +5,12 @@
 
 pkgname=jabref
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI frontend for BibTeX, written in Java"
 arch=('any')
 url="http://jabref.sourceforge.net/"
 license=('GPL')
-depends=('java-runtime')
+depends=('java-runtime>=8')
 optdepends=(
    'gsettings-desktop-schemas: For web search support'
 )

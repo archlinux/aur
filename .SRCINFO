@@ -1,11 +1,11 @@
 pkgbase = jabref
 	pkgdesc = GUI frontend for BibTeX, written in Java
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jabref.sourceforge.net/
 	arch = any
 	license = GPL
-	depends = java-runtime
+	depends = java-runtime>=8
 	optdepends = gsettings-desktop-schemas: For web search support
 	source = http://downloads.sourceforge.net/jabref/JabRef-3.0.jar
 	source = jabref.sh
