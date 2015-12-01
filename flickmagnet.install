@@ -1,23 +1,35 @@
 
 post_install() {
+    getent passwd flickmagnet &>/dev/null || {
+        echo -n ">>> Adding user... "
+        useradd --user-group --home /srv/flickmagnet -u 420 -s /bin/false flickmagnet
+        echo "done"
+    }
+    chown flickmagnet:flickmagnet /srv/flickmagnet
 
-    # create system user and group to run the daemon
-    getent group flickmagnet > /dev/null || groupadd -g 420 flickmagnet &>/dev/null
-    getent passwd flickmagnet > /dev/null || useradd -u 420 -g 420 -m -s /bin/false flickmagnet &>/dev/null
+    cat <<EOF
+>>> Start the daemon with 'systemctl start flickmagnet'
+    It uses the "deluge" user with files stored in /srv/flickmagnet
 
+>>> Give the daemon 10 minutes to find some content, then browse to http://localhost:42000/
+EOF
 }
 
 post_remove() {
-
-    # delete the system user and group
-    getent passwd flickmagnet > /dev/null && userdel -r flickmagnet &>/dev/null
-    getent group flickmagnet > /dev/null && groupdel flickmagnet &>/dev/null
-
+    getent passwd deluge &>/dev/null && {
+        echo -n ">>> Deleting user... "
+        userdel flickmagnet
+        groupdel flickmagnet
+        echo "done"
+    }
 }
 
 post_upgrade() {
 
-    echo "** Flick Magnet doesn't have graceful upgrades yet, delete user files to reinitialize:"
-    echo "rm -r ~/.config/flickmagnet/ ~/.cache/flickmagnet/ ~/.local/share/flickmagnet/"
+    echo -n ">>> Flick Magnet doesn't have graceful upgrades yet, delete user files to reinitialize: "
+    echo -n "rm -r ~/.config/flickmagnet/ ~/.cache/flickmagnet/ ~/.local/share/flickmagnet/ "
+
+    systemctl daemon-reload
 
 }
+
