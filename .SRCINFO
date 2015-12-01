@@ -17,8 +17,6 @@ pkgbase = openrct2-git
 	depends = lib32-curl
 	depends = lib32-jansson
 	depends = lib32-speexdsp
-	provides = openrct2
-	conflicts = openrct2
 	options = !buildflags
 	source = openrct2-git::git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop
 	source = https://openrct.net/launcher/libs/orctlibs.zip
