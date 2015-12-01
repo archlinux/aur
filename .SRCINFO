@@ -1,0 +1,25 @@
+pkgbase = oinut-git
+	pkgdesc = Animation Software for Linux.
+	pkgver = 20151109.g4aba7bf
+	pkgrel = 1
+	url = http://oinut.org/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = opencv
+	depends = zlib
+	depends = qtwebkit
+	depends = sane
+	depends = quazip-qt5
+	depends = qt5-svg
+	depends = qt5-multimedia
+	depends = qt5-base
+	optdepends = ffmpeg: import video and render video
+	provides = oinut
+	conflicts = oinut
+	source = git://github.com/purplehuman/oinut.git
+	sha256sums = SKIP
+
+pkgname = oinut-git
+
