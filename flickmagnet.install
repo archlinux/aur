@@ -28,7 +28,6 @@ post_remove() {
     getent passwd deluge &>/dev/null && {
         echo -n ">>> Deleting user... "
         userdel flickmagnet
-        groupdel flickmagnet
         echo "done"
     }
 }
