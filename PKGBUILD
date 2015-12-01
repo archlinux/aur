@@ -50,6 +50,7 @@ prepare() {
 		# Patch
 		sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
 		sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+		sed -i -e 's:5.6.0:5.7.0:g;s:5.5.0:5.6.0:g' configure.ac
 	fi
 }
 
@@ -58,14 +59,11 @@ build() {
 		cd "${srcdir}/${pkgname%%-*}-${pkgver:0:3}"
 
 		msg 'Generating necessary files...'
-		RCC=/usr/bin/rcc-qt4
 		./bootstrap
 
 		msg 'Done. Configuring VLC...'
 
 		# Config
-		[ ${CARCH} = 'x86_64' ] && CXXFLAGS="$CXXFLAGS -fPIC"
-
 		./configure --prefix=/usr \
 					--sysconfdir=/etc \
 					--disable-rpath \
@@ -79,7 +77,8 @@ build() {
 					--enable-upnp \
 					--enable-opus \
 					--enable-sftp \
-					--enable-fluidsynth
+					--enable-fluidsynth \
+					RCC=/usr/bin/rcc-qt4
 
 		msg 'Done. Starting make...'
 
