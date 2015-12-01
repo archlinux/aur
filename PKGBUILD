@@ -7,7 +7,7 @@ provides=networkmanager
 replaces=networkmanager
 conflicts=networkmanager
 
-pkgver=1.0.6
+pkgver=1.0.8
 pkgrel=3
 pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless 
 cards)"
@@ -32,7 +32,7 @@ makedepends=(intltool dhcpcd dhclient iptables gobject-introspection gtk-doc "pp
 checkdepends=(libx11 python-gobject python-dbus)
 source=(http://ftp.gnome.org/pub/gnome/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         NetworkManager.conf disable_set_hostname.patch disable_wifi_scan_when_connected.patch)
-sha256sums=('38ea002403e3b884ffa9aae25aea431d2a8420f81f4919761c83fb92648254bd'
+sha256sums=('8bb128950f8a79ff881afadb46dd55e16f952390cf7cb4e06063431e5144937f'
             '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
             'c14204de91e8b055982771aa11b57feee2fa42f04eee003e621252b320be1e31')
