@@ -1,0 +1,20 @@
+pkgbase = rtl_power_fftw-git
+	pkgdesc = Power spectrum for RTLSDR dongles
+	pkgver = r129.b14d624
+	pkgrel = 1
+	url = https://github.com/AD-Vega/rtl-power-fftw
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = rtl-sdr
+	depends = tclap
+	depends = fftw
+	provides = rtl_power_fftw
+	conflicts = rtl_power_fftw
+	source = git+https://github.com/AD-Vega/rtl-power-fftw.git
+	sha256sums = SKIP
+
+pkgname = rtl_power_fftw-git
+
