@@ -5,7 +5,7 @@
 pkgname=openchange
 _codename=VULCAN
 pkgver=2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A portable, open source implementation of Microsoft Exchange server \
 and Exchange protocols."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -23,12 +23,16 @@ options=(!makeflags)
 source=("https://github.com/openchange/openchange/archive/${pkgname}-${pkgver}-${_codename}.tar.gz"
         "ocsmanager.service"
         "openchange-provision-type-error.patch"
-        "openchange-issue-249.patch")
+        "openchange-issue-249.patch"
+        "openchange-remove-server_id_str-1.patch"
+        "openchange-add_SizedXid-1.patch")
 
 sha256sums=('46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e'
             '45bd19e2a5725a94692ae606086be6d57423375c9b1c0eb5322c6e09ef2b5fb3'
             '067d25b0442ab233f47fbfd32a56042fa161b3d0aa65081f222fddde3648c439'
-            'e3cfd2455a52d4b68153b3d546c70edbde5cf024ebcec1088a923aedaa938834')
+            'e3cfd2455a52d4b68153b3d546c70edbde5cf024ebcec1088a923aedaa938834'
+            '1281c59a5d0490d9b2091535191a0aac1ae04ebc6b48cf56bd4fca656c23b25b'
+            'f8012d91b1c1c382e6d480dd015230e59f07d9958ac63d57f65801b1dfc6b54a')
 
 # Used to be pkgname-pkgver-codename, but now we have two openchanges. WAT
 _srcsubdir="${pkgname}-${pkgname}-${pkgver}-${_codename}"
@@ -38,6 +42,8 @@ build() {
 
     patch -p1 < "${srcdir}/openchange-provision-type-error.patch"
     patch -p1 < "${srcdir}/openchange-issue-249.patch"
+    patch -p1 < "${srcdir}/openchange-remove-server_id_str-1.patch"
+    patch -p1 < "${srcdir}/openchange-add_SizedXid-1.patch"
 
     PYTHON_CALLERS="$(find ${srcdir}/${_srcsubdir} -name '*.py')
                     $(find ${srcdir}/${_srcsubdir} -name 'configure.ac')

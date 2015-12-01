@@ -1,0 +1,1728 @@
+--- openchange-2.3-VULCAN/libmapi/libmapi.h	2015-05-16 10:22:04.000000000 -0500
++++ openchange/libmapi/libmapi.h	2015-11-27 04:50:53.661470406 -0600
+@@ -290,6 +290,7 @@ struct AddressBookEntryId *get_AddressBo
+ struct OneOffEntryId	*get_OneOffEntryId(TALLOC_CTX *, struct Binary_r *);
+ struct PersistData      *get_PersistData(TALLOC_CTX *, struct Binary_r *);
+ struct PersistDataArray *get_PersistDataArray(TALLOC_CTX *, struct Binary_r *);
++struct SizedXid         *get_SizedXidArray(TALLOC_CTX *, struct Binary_r *, uint32_t *);
+ const char		*get_TypedString(struct TypedString *);
+ bool			set_mapi_SPropValue(TALLOC_CTX *, struct mapi_SPropValue *, const void *);
+ bool			set_mapi_SPropValue_proptag(TALLOC_CTX *, struct mapi_SPropValue *, uint32_t, const void *);
+--- openchange-2.3-VULCAN/libmapi/property.c	2015-05-16 10:22:04.000000000 -0500
++++ openchange/libmapi/property.c	2015-11-27 04:50:53.664803741 -0600
+@@ -3,6 +3,7 @@
+ 
+    Copyright (C) Julien Kerihuel 2005 - 2011.
+    Copyright (C) Gregory Schiro 2006
++   Copyright (C) Enrique J. Hernández 2015
+ 
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+@@ -20,6 +21,7 @@
+ 
+ #include "libmapi/libmapi.h"
+ #include "libmapi/libmapi_private.h"
++#include <gen_ndr/ndr_exchange.h>
+ #include <gen_ndr/ndr_property.h>
+ #include <param.h>
+ 
+@@ -1982,6 +1984,67 @@ _PUBLIC_ struct PersistDataArray *get_Pe
+ }
+ 
+ /**
++   \details Retrieve a SizedXid structure array from a binary blob. This structure is meant
++   to store the PredecessorChangeList property.
++
++   \param mem_ctx pointer to the memory context
++   \param bin pointer to the Binary_r structure with raw PredecessorChangeList property value
++   \param count_p pointer to the counter where the number of SizedXID structures are stored
++
++   \return Allocated SizedXID array structure on success, otherwise NULL
++
++   \note Developers must free the allocated SizedXID array when finished.
++ */
++_PUBLIC_ struct SizedXid *get_SizedXidArray(TALLOC_CTX *mem_ctx, struct Binary_r *bin, uint32_t *count_p)
++{
++	enum ndr_err_code	ndr_err_code;
++	struct ndr_pull		*ndr;
++	struct SizedXid		*sized_xid_list, sized_xid;
++	uint32_t		count;
++
++	/* Sanity checks */
++	if (!bin) return NULL;
++	if (!bin->cb) return NULL;
++	if (!bin->lpb) return NULL;
++
++	ndr = talloc_zero(mem_ctx, struct ndr_pull);
++	if (!ndr) return NULL;
++
++	count = 0;
++	sized_xid_list = talloc_zero_array(mem_ctx, struct SizedXid, 1);
++	if (!sized_xid_list) {
++		talloc_free(ndr);
++		return NULL;
++	}
++	ndr->offset = 0;
++	ndr->data = bin->lpb;
++	ndr->data_size = bin->cb;
++
++	ndr_set_flags(&ndr->flags, LIBNDR_FLAG_NOALIGN);
++	while (ndr->offset < ndr->data_size) {
++		ndr_err_code = ndr_pull_SizedXid(ndr, NDR_SCALARS, &sized_xid);
++		if (ndr_err_code != NDR_ERR_SUCCESS) goto error;
++
++		memcpy(&sized_xid_list[count], &sized_xid, sizeof(struct SizedXid));
++		count++;
++
++		sized_xid_list = talloc_realloc(mem_ctx, sized_xid_list, struct SizedXid, count + 1);
++		if (!sized_xid_list) goto error;
++	}
++	talloc_free(ndr);
++
++	if (count_p) {
++		*count_p = count;
++	}
++	return sized_xid_list;
++
++error:
++	talloc_free(sized_xid_list);
++	talloc_free(ndr);
++	return NULL;
++}
++
++/**
+    \details Return the effective value used in a TypedString
+    structure.
+ 
+--- openchange-2.3-VULCAN/testsuite/libmapi/mapi_property.c	2015-05-16 10:22:04.000000000 -0500
++++ openchange/testsuite/libmapi/mapi_property.c	2015-11-27 04:50:53.694803750 -0600
+@@ -272,6 +272,49 @@ START_TEST (test_push_PersistDataArray)
+ 
+ } END_TEST
+ 
++START_TEST (test_get_SizedXidArray) {
++	struct Binary_r		bin;
++	int			i;
++	struct SizedXid         *res;
++        uint32_t                count;
++	/* Empty SizedXid Array */
++	const uint8_t		case_0[] = {};
++	/* Predecessor Change List with a single change */
++	const uint8_t		case_1[] =
++		{0x14, 0xbb, 0x1c, 0x15, 0x82, 0x39, 0x31, 0x93, 0x41, 0xbf, 0x51, 0x52, 0x52, 0xd1, 0x2a,
++                 0xe8, 0xaa, 0x0, 0x0, 0x8, 0xd};
++	/* Predecessor Change List with two changes */
++	const uint8_t		 case_2[] =
++		{0x16, 0xa8, 0xc1, 0x14, 0x3, 0x7, 0x8d, 0xc3, 0x47, 0x9d, 0x9e, 0x5e, 0x84, 0xfd,
++                 0x4a, 0xad, 0x99, 0x0, 0x0, 0x0, 0x0, 0x0, 0x92, 0x14, 0xbb, 0x1c, 0x15, 0xb2, 0x39,
++                 0x31, 0x93, 0x41, 0xbf, 0x51, 0x52, 0x52, 0xd1, 0x2a, 0xe8, 0xaa, 0x0, 0x0, 0x8, 0xc};
++	const uint8_t		 *cases[] = {case_0, case_1, case_2};
++	const size_t		 cases_size[] = { sizeof(case_0)/sizeof(uint8_t),
++						  sizeof(case_1)/sizeof(uint8_t),
++						  sizeof(case_2)/sizeof(uint8_t) };
++	const uint32_t		 cases_count[] = {0, 1, 2};
++	const size_t		 cases_num = sizeof(cases)/sizeof(uint8_t*);
++
++	for (i = 0; i < cases_num; i++) {
++		bin.cb = cases_size[i];
++		bin.lpb = (uint8_t *) cases[i];
++		res = get_SizedXidArray(mem_ctx, &bin, &count);
++                if (cases_count[i]) {
++                        ck_assert(res != NULL);
++                        ck_assert_int_eq(count, cases_count[i]);
++                        if (count > 1) {
++                                ck_assert(!GUID_equal(&res[0].XID.NameSpaceGuid, &res[1].XID.NameSpaceGuid));
++                                ck_assert(res[0].XidSize > res[1].XidSize);
++                                ck_assert(res[0].XID.LocalId.length > res[1].XID.LocalId.length);
++
++                        }
++                } else {
++                        ck_assert(res == NULL);
++                }
++	}
++
++} END_TEST
++
+ // ^ unit tests ---------------------------------------------------------------
+ 
+ // v suite definition ---------------------------------------------------------
+@@ -339,6 +382,16 @@ static void get_PersistDataArray_teardow
+ 	talloc_free(mem_ctx);
+ }
+ 
++static void get_SizedXidArray_setup(void)
++{
++	mem_ctx = talloc_new(talloc_autofree_context());
++}
++
++static void get_SizedXidArray_teardown(void)
++{
++	talloc_free(mem_ctx);
++}
++
+ Suite *libmapi_property_suite(void)
+ {
+ 	Suite *s = suite_create("libmapi property");
+@@ -361,5 +414,10 @@ Suite *libmapi_property_suite(void)
+ 	tcase_add_test(tc, test_push_PersistDataArray);
+ 	suite_add_tcase(s, tc);
+ 
++	tc = tcase_create("get_SizedXidArray");
++	tcase_add_unchecked_fixture(tc, get_SizedXidArray_setup, get_SizedXidArray_teardown);
++	tcase_add_test(tc, test_get_SizedXidArray);
++	suite_add_tcase(s, tc);
++
+ 	return s;
+ }
+--- openchange-2.3-VULCAN/exchange.idl	2015-05-16 10:22:04.000000000 -0500
++++ openchange/exchange.idl	2015-11-27 04:50:53.654803738 -0600
+@@ -299,7 +299,7 @@ System Attendant Private Interface
+ 		[size_is(cb)] uint8		*lpb;
+ 	} Binary_r;
+ 
+-	typedef [public] struct {
++	typedef [public,noprint] struct {
+ 		uint32 dwLowDateTime;
+ 		uint32 dwHighDateTime;
+ 	} FILETIME;
+@@ -997,9 +997,14 @@ System Attendant Private Interface
+ 		[flag(NDR_BUFFERS)]uint8	lpb[cb];
+ 	} SBinary_short;
+ 
++	typedef [public,noprint,flag(NDR_NOALIGN)] struct {
++		uint32         cb;
++		[flag(NDR_BUFFERS)]uint8   lpb[cb];
++	} SBinary;
++
+ 	typedef [public] struct {
+ 		uint32 cValues;
+-		uint32 lpl[cValues]; 
++		uint32 lpl[cValues];
+ 	} mapi_MV_LONG_STRUCT;
+ 
+ 	typedef struct {
+@@ -1019,12 +1024,18 @@ System Attendant Private Interface
+ 		uint32 cValues;
+ 		mapi_LPWSTR strings[cValues];
+ 	} mapi_SLPSTRArrayW;
+-	
++
+ 	typedef [public] struct {
+ 		uint32		cValues;
+ 		SBinary_short	bin[cValues];
+ 	} mapi_SBinaryArray;
+ 
++	/* This structure is used by PidTagAdditionalRenEntryIds */
++	typedef [public] struct {
++		uint32		cValues;
++		SBinary		bin[cValues];
++	} mapi_SBinaryArray_32;
++
+ 	typedef [public] struct {
+ 		uint32		cValues;
+ 		GUID		lpguid[cValues];
+@@ -2172,12 +2183,16 @@ System Attendant Private Interface
+ 		[switch_is(1)] GLOBCNT	GLOBCNT;
+ 	} ShortTermID; /* MID, FID, CN */
+ 
+-	typedef [public,flag(NDR_NOALIGN)] struct {
+-		GUID			GUID;
+-		uint8			Size;
+-		uint8			Data[Size];
++	typedef [public,noprint,flag(NDR_NOALIGN)] struct {
++		GUID			NameSpaceGuid;
++		[flag(NDR_REMAINING)] DATA_BLOB LocalId;
+ 	} XID;
+ 
++	typedef [public,flag(NDR_NOALIGN)] struct {
++		uint8     XidSize;
++		[subcontext(0),subcontext_size(XidSize)] XID XID;
++	} SizedXid;
++
+ 	typedef [enum16bit] enum {
+ 		TABLE_CHANGED		=	0x1,
+ 		TABLE_ROW_ADDED		=	0x3,
+@@ -2962,7 +2977,7 @@ System Attendant Private Interface
+ 		TransferStatus_Done	= 0x0003
+ 	} TransferStatus;
+ 
+-	typedef [flag(NDR_NOALIGN)] struct {
++	typedef [noprint,flag(NDR_NOALIGN)] struct {
+ 		TransferStatus	TransferStatus;
+ 		uint16		InProgressCount;
+ 		uint16		TotalStepCount;
+@@ -3510,7 +3525,7 @@ System Attendant Private Interface
+ 
+ 	/*************************/
+ 	/* EcDoRpc Function 0x76 */
+-	typedef [flag(NDR_NOALIGN)] struct {
++	typedef [noprint,flag(NDR_NOALIGN)] struct {
+ 		uint32			StreamDataSize;
+ 		uint8			StreamData[StreamDataSize];
+ 	} SyncUploadStateStreamContinue_req;
+--- openchange-2.3-VULCAN/ndr_mapi.c	2015-05-16 10:22:04.000000000 -0500
++++ openchange/ndr_mapi.c	2015-11-27 04:43:25.725500067 -0600
+@@ -1,24 +1,25 @@
+-/* 
++/*
+    OpenChange implementation.
+ 
+    libndr mapi support
+ 
+    Copyright (C) Julien Kerihuel 2005-2014
+-   
++
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 3 of the License, or
+    (at your option) any later version.
+-   
++
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+-   
++
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include <ctype.h>
+ #include "libmapi/libmapi.h"
+ #include "libmapi/libmapi_private.h"
+ #include <ndr.h>
+@@ -2041,7 +2042,7 @@ _PUBLIC_ void ndr_print_SBinary_short(st
+ 		uint32_t _flags_save_STRUCT = ndr->flags;
+ 		ndr_set_flags(&ndr->flags, LIBNDR_FLAG_NOALIGN);
+ 		ndr->depth++;
+-		dump_data(0, r->lpb, r->cb);
++		ndr_dump_data(ndr, r->lpb, r->cb);
+ 		ndr->depth--;
+ 		ndr->flags = _flags_save_STRUCT;
+ 	}
+@@ -2060,6 +2061,114 @@ _PUBLIC_ void ndr_print_Binary_r(struct
+ 	}
+ }
+ 
++_PUBLIC_ void ndr_print_XID(struct ndr_print *ndr, const char *name, const struct XID *r)
++{
++	uint32_t	_flags_save_STRUCT = ndr->flags;
++	char		*guid_str;
++	char		*line;
++	int		i;
++
++	if (r == NULL) {
++		ndr->print(ndr, "%s: NULL", name);
++		return;
++	}
++
++	ndr_set_flags(&ndr->flags, LIBNDR_FLAG_NOALIGN);
++	guid_str = GUID_string(NULL, &r->NameSpaceGuid);
++	line = talloc_asprintf(NULL, " ");
++	for (i = 0; i < r->LocalId.length; i++) {
++		line = talloc_asprintf_append(line, "%02X ", r->LocalId.data[i]);
++	}
++	if (name) {
++		ndr->print(ndr, "%s: {%s}:%s", name, guid_str, line);
++	} else {
++		ndr->print(ndr, "{%s}:%s", guid_str, line);
++	}
++	talloc_free(guid_str);
++	talloc_free(line);
++	ndr->flags = _flags_save_STRUCT;
++}
++
++_PUBLIC_ void ndr_dump_data(struct ndr_print *ndr, const uint8_t *buf, int len)
++{
++	TALLOC_CTX *mem_ctx;
++	char *line = NULL;
++	int i=0, j=0, idx=0;
++
++	if (len<=0) return;
++
++	mem_ctx = talloc_named(NULL, 0, "ndr_dump_data");
++	if (!mem_ctx) return;
++
++	for (i=0;i<len;) {
++		idx = i;
++		if (i%16 == 0) {
++			if (i<len)  {
++				line = talloc_asprintf(mem_ctx, "[%04X] ", i);
++			}
++		}
++
++		line = talloc_asprintf_append(line, "%02X ", (int)buf[i]);
++		i++;
++		if (i%8 == 0) {
++			line = talloc_asprintf_append(line, "  ");
++		}
++		if (i%16 == 0) {
++			idx = i - 16;
++			for (j=0; j < 8; j++, idx++) {
++				line = talloc_asprintf_append(line, "%c", isprint(buf[idx]) ? buf[idx] : '.');
++			}
++
++			line = talloc_asprintf_append(line, " ");
++			for (j=8; j < 16; j++, idx++) {
++				line = talloc_asprintf_append(line, "%c", isprint(buf[idx]) ? buf[idx] : '.');
++			}
++			ndr->print(ndr, "%s", line);
++			talloc_free(line);
++		}
++	}
++
++	if (i%16) {
++		int n;
++
++		n = 16 - (i%16);
++		idx = i - (i%16);
++		if (n>8) {
++			line = talloc_asprintf_append(line, "  ");
++		}
++		while (n--) {
++			line = talloc_asprintf_append(line, "   ");
++		}
++		line = talloc_asprintf_append(line, "  ");
++		n = MIN(8,i%16);
++		for (j = 0; j < n; j++, idx++) {
++			line = talloc_asprintf_append(line, "%c", isprint(buf[idx]) ? buf[idx] : '.');
++		}
++		line = talloc_asprintf_append(line, " ");
++		n = (i%16) - n;
++		if (n>0) {
++			for (j = i - n; j < i + n; j++, idx++) {
++				line = talloc_asprintf_append(line, "%c", isprint(buf[idx]) ? buf[idx] : '.');
++			}
++		}
++		ndr->print(ndr, "%s", line);
++		talloc_free(line);
++	}
++}
++
++_PUBLIC_ void ndr_print_SBinary(struct ndr_print *ndr, const char *name, const struct SBinary *r)
++{
++	ndr->print(ndr, "%-25s: SBinary cb=%u", name, (unsigned)r->cb);
++	{
++		uint32_t _flags_save_STRUCT = ndr->flags;
++		ndr_set_flags(&ndr->flags, LIBNDR_FLAG_NOALIGN);
++		ndr->depth++;
++		ndr_dump_data(ndr, r->lpb, r->cb);
++		ndr->depth--;
++		ndr->flags = _flags_save_STRUCT;
++	}
++}
++
+ _PUBLIC_ void ndr_print_fuzzyLevel(struct ndr_print *ndr, const char *name, uint32_t r)
+ {
+ 	ndr_print_uint32(ndr, name, r);
+@@ -2779,3 +2888,22 @@ _PUBLIC_ enum ndr_err_code ndr_pull_Pers
+ 	}
+ 	return NDR_ERR_SUCCESS;
+ }
++
++_PUBLIC_ void ndr_print_FILETIME(struct ndr_print *ndr, const char *name, const struct FILETIME *r)
++{
++	TALLOC_CTX		*mem_ctx;
++	NTTIME			time;
++	const char		*date;
++
++	mem_ctx = talloc_named(NULL, 0, "FILETIME");
++	if (!mem_ctx) { ndr_print_string(ndr, name, "ERROR"); return; }
++	if (r == NULL) { ndr_print_string(ndr, name, "NULL"); return; }
++
++	time = r->dwHighDateTime;
++	time = time << 32;
++	time |= r->dwLowDateTime;
++	date = nt_time_string(mem_ctx, time);
++	ndr_print_string(ndr, name, date);
++
++	talloc_free(mem_ctx);
++}
+--- openchange-2.3-VULCAN/ndr_fasttransfer.c	1969-12-31 18:00:00.000000000 -0600
++++ openchange/ndr_fasttransfer.c	2015-11-27 04:43:25.725500067 -0600
+@@ -0,0 +1,678 @@
++/*
++  OpenChange implementation.
++
++  libndr mapi support
++
++  Copyright (C) Julien Kerihuel 2015
++
++  This program is free software; you can redistribute it and/or modify
++  it under the terms of the GNU General Public License as published by
++  the Free Software Foundation; either version 3 of the License, or
++  (at your option) any later version.
++
++  This program is distributed in the hope that it will be useful,
++  but WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++  GNU General Public License for more details.
++
++  You should have received a copy of the GNU General Public License
++  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++
++#include "libmapi/libmapi.h"
++#include "libmapi/libmapi_private.h"
++#include <ndr.h>
++#include "gen_ndr/ndr_exchange.h"
++#include "gen_ndr/ndr_property.h"
++#include "gen_ndr/ndr_exchange_debug.h"
++
++#if (!defined(NDR_COLOR))
++#define NDR_COLOR
++#define COLOR_BLACK
++#define COLOR_RED
++#define COLOR_GREEN
++#define COLOR_YELLOW
++#define COLOR_BLUE
++#define COLOR_MAGENTA
++#define COLOR_CYAN
++#define COLOR_WHITE
++#define COLOR_BOLD
++#define COLOR_INVERSE
++#define COLOR_BOLD_OFF
++#define COLOR_END
++#else
++#define COLOR_BLACK    "\x1b[30m"
++#define COLOR_RED      "\x1b[31m"
++#define COLOR_GREEN    "\x1b[32m"
++#define COLOR_YELLOW   "\x1b[33m"
++#define COLOR_BLUE     "\x1b[34m"
++#define COLOR_MAGENTA  "\x1b[35m"
++#define COLOR_CYAN     "\x1b[36m"
++#define COLOR_WHITE    "\x1b[37m"
++#define COLOR_BOLD     "\x1b[1m"
++#define COLOR_INVERSE  "\x1b[7m"
++#define COLOR_BOLD_OFF "\x1b[22m"
++#define COLOR_END      "\x1b[0m"
++#endif
++
++#define NDR_RED(s)     COLOR_RED     #s COLOR_END
++#define NDR_GREEN(s)   COLOR_GREEN   #s COLOR_END
++#define NDR_YELLOW(s)  COLOR_YELLOW  #s COLOR_END
++#define NDR_BLUE(s)    COLOR_BLUE    #s COLOR_END
++#define NDR_MAGENTA(s) COLOR_MAGENTA #s COLOR_END
++#define NDR_CYAN(s)    COLOR_CYAN    #s COLOR_END
++#define NDR_WHITE(s)   COLOR_WHITE   #s COLOR_END
++
++/* Make error checking from libndr calls compliant with FastTransfer
++ * buffer API calls which expects error to have a retval < 0. Set
++ * errno to libndr retval if needed afterwards */
++#define	NDR_CHECK_FT(call) do {					\
++	enum ndr_err_code _status;				\
++	_status = call;						\
++	if (unlikely(!NDR_ERR_CODE_IS_SUCCESS(_status))) {	\
++		errno = _status;				\
++		return -1;					\
++	}							\
++} while (0)
++
++/**
++ */
++static int ndr_print_marker(struct ndr_print *ndr, uint32_t marker)
++{
++	const char *val = NULL;
++	static bool noend = false;
++	static uint32_t _saved_depth = 0;
++
++	if (_saved_depth == 0) {
++		_saved_depth = ndr->depth;
++	}
++
++	ndr_set_flags(&ndr->flags, LIBNDR_PRINT_ARRAY_HEX);
++
++	/* Adjust ndr depth */
++	switch (marker) {
++	case EndFolder:
++	case EndMessage:
++	case EndEmbed:
++	case EndToRecip:
++	case EndAttach:
++	case IncrSyncStateEnd:
++		if (_saved_depth != ndr->depth) {
++			ndr->depth--;
++		}
++		break;
++	case IncrSyncChg:
++	case IncrSyncChgPartial:
++	case IncrSyncStateBegin:
++		if (noend == true) ndr->depth--;
++		break;
++	}
++
++	switch (marker) {
++		/* Folders */
++	case StartTopFld: val = NDR_YELLOW("StartTopFld"); break;
++	case StartSubFld: val = NDR_YELLOW("StartSubFld"); break;
++	case EndFolder: val = NDR_YELLOW("EndFolder"); break;
++		/* Messages and their parts */
++	case StartMessage: val = NDR_YELLOW("StartMessage"); break;
++	case StartFAIMsg: val = NDR_YELLOW("StartFAIMsg"); break;
++	case EndMessage: val = NDR_YELLOW("EndMessage"); break;
++	case StartEmbed: val = NDR_YELLOW("StartEmbed"); break;
++	case EndEmbed: val = NDR_YELLOW("EndEmbed"); break;
++	case StartRecip: val = NDR_YELLOW("StartRecip"); break;
++	case EndToRecip: val = NDR_YELLOW("EndToRecip"); break;
++	case NewAttach: val = NDR_YELLOW("NewAttach"); break;
++	case EndAttach: val = NDR_YELLOW("EndAttach"); break;
++		/* Synchronization download */
++	case IncrSyncChg: val = NDR_YELLOW("IncrSyncChg"); noend = true; break;
++	case IncrSyncChgPartial: val = NDR_YELLOW("IncrSyncChgPartial"); noend = true; break;
++	case IncrSyncDel: val = NDR_YELLOW("IncrSyncDel"); break;
++	case IncrSyncEnd: val = NDR_YELLOW("IncrSyncEnd"); break;
++	case IncrSyncRead: val = NDR_YELLOW("IncrSyncRead"); break;
++	case IncrSyncStateBegin: val = NDR_YELLOW("IncrSyncStateBegin"); noend = true; break;
++	case IncrSyncStateEnd: val = NDR_YELLOW("IncrSyncStateEnd"); break;
++	case IncrSyncProgressMode: val = NDR_YELLOW("IncrSyncProgressMode"); break;
++	case IncrSyncProgressPerMsg: val = NDR_YELLOW("IncrSyncProgressPerMsg"); break;
++	case IncrSyncMessage: val = NDR_YELLOW("IncrSyncMessage"); break;
++	case IncrSyncGroupInfo: val = NDR_YELLOW("IncrSyncGroupInfo"); break;
++		/* Special */
++	case FXErrorInfo: val = "FXErrorInfo"; break;
++	}
++	if (val == NULL) {
++		return -1;
++	}
++
++	ndr_print_enum(ndr, NDR_YELLOW(Marker), "ENUM", val, marker);
++
++	/* Adjust ndr depth */
++	switch (marker) {
++	case EndFolder:
++	case EndMessage:
++	case EndEmbed:
++	case EndToRecip:
++	case EndAttach:
++	case IncrSyncStateEnd:
++		if (_saved_depth != ndr->depth) {
++			ndr->depth--;
++		}
++		break;
++	default:
++		ndr->depth++;
++	}
++
++	return 0;
++}
++
++static void ndr_print_IDSET(struct ndr_print *ndr, const struct idset *idset,
++                            const char *label)
++{
++	struct globset_range *range;
++	uint32_t i;
++	char *guid_str;
++
++	ndr->print(ndr, "%s:", label);
++	ndr->depth++;
++	while (idset) {
++		if (idset->idbased) {
++			ndr->print(ndr, COLOR_CYAN "%.4x (%d elements):" COLOR_END, idset->repl.id, idset->range_count);
++		}
++		else {
++			guid_str = GUID_string(NULL, &idset->repl.guid);
++			ndr->print(ndr, COLOR_CYAN "{%s} (%d elements):" COLOR_END, guid_str, idset->range_count);
++			talloc_free(guid_str);
++		}
++
++		ndr->depth++;
++		range = idset->ranges;
++		for (i = 0; i < idset->range_count; i++) {
++			if (exchange_globcnt(range->low) > exchange_globcnt(range->high)) {
++				ndr->print(ndr, COLOR_BOLD COLOR_RED "Incorrect GLOBCNT range as high value is larger than low value" COLOR_END COLOR_END);
++			}
++			ndr->print(ndr, COLOR_CYAN "0x%.12" PRIx64 ":0x%.12" PRIx64 COLOR_END, range->low, range->high);
++			range = range->next;
++		}
++		ndr->depth--;
++
++		idset = idset->next;
++	}
++	ndr->depth--;
++
++}
++
++/**
++   \details Enhanced display of the PidTagAdditionalRenEntryIds
++   property content as described in [MS-OXOSFLD] section 2.2.4
++
++   This PT_MV_BINARY property is an array of SBinary values (bin.cb on
++   4 bytes) while MAPI properties generally use an array of
++   SBinary_short (bin.cb on 2 bytes)
++
++   \param ndr pointer to the ndr print structure
++   \param r pointer to the mapi_SBinaryArray_32 pulled structure
++   \param label the name of the property
++
++   \return void
++ */
++static void ndr_print_PidTagAdditionalRenEntryIds(struct ndr_print *ndr, const struct mapi_SBinaryArray_32 *r, const char *label)
++{
++	uint32_t	i;
++	const char	*folders[] = { COLOR_MAGENTA "Conflicts"       COLOR_END,
++				       COLOR_MAGENTA "Sync Issues"     COLOR_END,
++				       COLOR_MAGENTA "Local Failures"  COLOR_END,
++				       COLOR_MAGENTA "Server Failures" COLOR_END,
++				       COLOR_MAGENTA "Junk E-mail"     COLOR_END,
++				       COLOR_BOLD COLOR_RED "Suspicious ID" COLOR_END COLOR_END,
++				       NULL };
++	uint32_t	max = 5;
++
++	if (r == NULL) { ndr_print_null(ndr); return; }
++	ndr->print(ndr, "%s: ARRAY(%d)", label, (int)r->cValues);
++	ndr->depth++;
++	for (i = 0; i < r->cValues; i++) {
++		if (i < max) {
++			ndr_print_SBinary(ndr, folders[i], &r->bin[i]);
++		} else {
++			ndr_print_SBinary(ndr, folders[max], &r->bin[i]);
++		}
++	}
++	ndr->depth--;
++}
++
++/**
++   \details Enhanced display of the PidTagFreeBusyEntryIds
++   property content as described in [MS-OXOSFLD] Section 2.2.6
++
++   This PT_MV_BINARY property is an array of SBinary values (bin.cb on
++   4 bytes) while MAPI properties generally use an array of
++   SBinary_short (bin.cb on 2 bytes)
++
++   \param ndr pointer to the ndr print structure
++   \param r pointer to the mapi_SBinaryArray_32 pulled structure
++   \param label the name of the property
++
++   \return void
++ */
++static void ndr_print_PidTagFreeBusyEntryIds(struct ndr_print *ndr, const struct mapi_SBinaryArray_32 *r, const char *label)
++{
++	uint32_t	i;
++	const char	*entries[] = { COLOR_MAGENTA "Null"	  COLOR_END,
++				       COLOR_MAGENTA "Delegate Information Object EntryID"     COLOR_END,
++				       COLOR_MAGENTA "Free/Busy Message EntryID"  COLOR_END,
++				       COLOR_MAGENTA "Freebusy Data EntryID" COLOR_END,
++				       COLOR_BOLD COLOR_RED "Suspicious entry" COLOR_END COLOR_END,
++				       NULL };
++	uint32_t	max = 4;
++
++	if (r == NULL) { ndr_print_null(ndr); return; }
++	ndr->print(ndr, "%s: ARRAY(%d)", label, (int)r->cValues);
++	ndr->depth++;
++	for (i = 0; i < r->cValues; i++) {
++		if (i < max) {
++			ndr_print_SBinary(ndr, entries[i], &r->bin[i]);
++		} else {
++			ndr_print_SBinary(ndr, entries[max], &r->bin[i]);
++		}
++	}
++	ndr->depth--;
++}
++
++static int ndr_parse_ics_state(TALLOC_CTX *mem_ctx, struct ndr_print *ndr,
++                               struct ndr_pull *ndr_pull, uint32_t element)
++{
++	bool		idbased;
++	struct idset	*idset;
++	struct SBinary	PtypBinary;
++	DATA_BLOB	buffer;
++	const char	*name = NULL;
++
++	switch (element) {
++	case MetaTagIdsetGiven:   name = COLOR_BOLD NDR_CYAN(MetaTagIdsetGiven) COLOR_BOLD_OFF; break;
++	case MetaTagCnsetSeen:    name = COLOR_BOLD NDR_CYAN(MetaTagCnsetSeen) COLOR_BOLD_OFF; break;
++	case MetaTagCnsetSeenFAI: name = COLOR_BOLD NDR_CYAN(MetaTagCnsetSeenFAI) COLOR_BOLD_OFF; break;
++	case MetaTagCnsetRead:    name = COLOR_BOLD NDR_CYAN(MetaTagCnsetRead) COLOR_BOLD_OFF; break;
++	case MetaTagIdsetDeleted: name = COLOR_BOLD NDR_CYAN(MetaTagIdsetDeleted) COLOR_BOLD_OFF; break;
++	}
++
++	switch (element) {
++	case MetaTagIdsetGiven:
++	case MetaTagCnsetSeen:
++	case MetaTagCnsetSeenFAI:
++	case MetaTagCnsetRead:
++	case MetaTagIdsetDeleted:
++		NDR_CHECK_FT(ndr_pull_SBinary(ndr_pull, NDR_SCALARS, &PtypBinary));
++		buffer.length = PtypBinary.cb;
++		buffer.data = PtypBinary.lpb;
++		idbased = (element == MetaTagIdsetDeleted) ? true : false;
++		idset = IDSET_parse(mem_ctx, buffer, idbased);
++		ndr_print_IDSET(ndr, idset, name);
++		return 0;
++	default:
++		return -1;
++	}
++	return -1;
++}
++
++static int ndr_parse_property(TALLOC_CTX *mem_ctx, struct ndr_print *ndr,
++			      struct ndr_pull *ndr_pull, uint32_t element)
++{
++	struct XID			xid;
++	struct SizedXid			SizedXid;
++	struct ndr_pull			*_ndr_buffer;
++	struct mapi_SBinaryArray_32	binarray_32;
++	uint32_t			len;
++	char				*propValue;
++
++	switch (element) {
++	case PidTagChangeKey:
++	case PidTagSourceKey:
++		propValue = talloc_asprintf(mem_ctx, COLOR_BOLD NDR_MAGENTA(%s) COLOR_BOLD_OFF, get_proptag_name(element));
++		NDR_CHECK_FT(ndr_pull_uint32(ndr_pull, NDR_SCALARS, &len));
++		NDR_CHECK_FT((ndr_pull_subcontext_start(ndr_pull, &_ndr_buffer, 0, len)));
++		NDR_CHECK_FT(ndr_pull_XID(_ndr_buffer, NDR_SCALARS, &xid));
++		ndr_print_XID(ndr, propValue, &xid);
++		NDR_CHECK_FT(ndr_pull_subcontext_end(ndr_pull, _ndr_buffer, 4, -1));
++		return 0;
++	case PidTagPredecessorChangeList:
++		propValue = talloc_asprintf(mem_ctx, COLOR_BOLD NDR_MAGENTA(%s) COLOR_BOLD_OFF, get_proptag_name(element));
++		NDR_CHECK_FT(ndr_pull_uint32(ndr_pull, NDR_SCALARS, &len));
++		NDR_CHECK_FT((ndr_pull_subcontext_start(ndr_pull, &_ndr_buffer, 0, len)));
++		ndr->print(ndr, "%s:", propValue);
++		ndr->depth++;
++		while (_ndr_buffer->offset < _ndr_buffer->data_size) {
++			NDR_CHECK_FT(ndr_pull_SizedXid(_ndr_buffer, NDR_SCALARS, &SizedXid));
++			ndr_print_XID(ndr, NULL, &SizedXid.XID);
++		}
++		ndr->depth--;
++		NDR_CHECK_FT(ndr_pull_subcontext_end(ndr_pull, _ndr_buffer, 4, -1));
++		return 0;
++	case PidTagAdditionalRenEntryIds:
++		propValue = talloc_asprintf(mem_ctx, COLOR_BOLD NDR_MAGENTA(%s) COLOR_BOLD_OFF, get_proptag_name(element));
++		NDR_CHECK_FT(ndr_pull_mapi_SBinaryArray_32(ndr_pull, NDR_SCALARS, &binarray_32));
++		ndr_print_PidTagAdditionalRenEntryIds(ndr, &binarray_32, propValue);
++		return 0;
++	case PidTagFreeBusyEntryIds:
++		propValue = talloc_asprintf(mem_ctx, COLOR_BOLD NDR_MAGENTA(%s) COLOR_BOLD_OFF, get_proptag_name(element));
++		NDR_CHECK_FT(ndr_pull_mapi_SBinaryArray_32(ndr_pull, NDR_SCALARS, &binarray_32));
++		ndr_print_PidTagFreeBusyEntryIds(ndr, &binarray_32, propValue);
++		return 0;
++	default:
++		return -1;
++	}
++	return -1;
++}
++
++/* Parse namedPropInfo element which includes:
++     PytpGuid ((%x00 PytpInteger32) | (%x01 PtypString))
++   to set the name and kind of the parsed named property
++*/
++static int ndr_parse_namedproperty(TALLOC_CTX *mem_ctx, struct ndr_print *ndr,
++				   struct ndr_pull *ndr_pull, uint32_t element,
++				   char **named_prop)
++{
++	const char  *name;
++	struct GUID PytpGuid;
++	uint8_t	    ul_kind;
++	uint32_t    dispid;
++
++	if (!named_prop) {
++		return -1;
++	}
++
++	NDR_CHECK_FT(ndr_pull_GUID(ndr_pull, NDR_SCALARS, &PytpGuid));
++
++	NDR_CHECK_FT(ndr_pull_uint8(ndr_pull, NDR_SCALARS, &ul_kind));
++	if (ul_kind == MNID_ID) {
++		NDR_CHECK_FT(ndr_pull_uint32(ndr_pull, NDR_SCALARS, &dispid));
++		*named_prop = talloc_asprintf(mem_ctx, "(LID 0x%08x)", dispid);
++		if (!*named_prop) {
++			return -1;
++		}
++	} else if (ul_kind == MNID_STRING) {
++		uint32_t  _flags_save_string = ndr_pull->flags;
++		ndr_set_flags(&ndr_pull->flags, LIBNDR_FLAG_STR_NULLTERM);
++		NDR_CHECK_FT(ndr_pull_string(ndr_pull, NDR_SCALARS, &name));
++		ndr_pull->flags = _flags_save_string;
++		*named_prop = talloc_asprintf(mem_ctx, "(Name \"%s\")", name);
++		if (!*named_prop) {
++			return -1;
++		}
++	} else {
++		/* Incorrect named property type */
++		return -1;
++	}
++
++	return 0;
++}
++
++static int ndr_parse_propValue(TALLOC_CTX *mem_ctx, struct ndr_print *ndr,
++                               struct ndr_pull *ndr_pull, uint32_t element)
++{
++	uint16_t        PtypInteger16;
++	uint32_t        PtypInteger32;
++	double          PtypFloating64;
++	uint16_t         PtypBoolean;
++	int64_t         PtypInteger64;
++	struct FILETIME PtypTime;
++	struct GUID     PtypGuid;
++	const char      *PtypString;
++	const char      *PtypString8;
++	struct Binary_r PtypServerId;
++	struct SBinary PtypBinary;
++	const char      *_propValue;
++	char            *propValue, *named_prop;
++	int	        ret;
++	DATA_BLOB				datablob;
++
++	_propValue = get_proptag_name(element);
++	if (_propValue == NULL) {
++		propValue = talloc_asprintf(mem_ctx, COLOR_BOLD NDR_MAGENTA(0x%X) COLOR_BOLD_OFF, element);
++		if (!propValue) {
++			return -1;
++		}
++	} else {
++		propValue = talloc_asprintf(mem_ctx, COLOR_BOLD NDR_MAGENTA(%s) COLOR_BOLD_OFF, _propValue);
++		if (!propValue) {
++			return -1;
++		}
++	}
++
++	/* named property with propid > 0x8000 or known property */
++	if ((element >> 16) & 0x8000) {
++		ret = ndr_parse_namedproperty(mem_ctx, ndr, ndr_pull, element, &named_prop);
++		if (ret != 0) {
++			return ret;
++		}
++		propValue = talloc_asprintf_append(propValue, " %s", named_prop);
++	}
++
++	switch (element & 0xFFFF) {
++		/* fixedSizeValue */
++	case PT_SHORT:
++		NDR_CHECK_FT(ndr_pull_uint16(ndr_pull, NDR_SCALARS, &PtypInteger16));
++		ndr_print_uint16(ndr, propValue, PtypInteger16);
++		break;
++	case PT_LONG:
++		NDR_CHECK_FT(ndr_pull_uint32(ndr_pull, NDR_SCALARS, &PtypInteger32));
++		ndr_print_uint32(ndr, propValue, PtypInteger32);
++		break;
++		/* no support for PtypFloating32 0x0004 PT_FLOAT */
++	case PT_DOUBLE:
++		NDR_CHECK_FT(ndr_pull_double(ndr_pull, NDR_SCALARS, &PtypFloating64));
++		ndr_print_double(ndr, propValue, PtypFloating64);
++		break;
++		/* no support for PtypCurrency, 0x0006 PT_CURRENCY */
++		/* no support for PtypFloatingTime, 0x0007 PT_APPTIME */
++	case PT_BOOLEAN:
++		NDR_CHECK_FT(ndr_pull_uint16(ndr_pull, NDR_SCALARS, &PtypBoolean));
++		ndr_print_string(ndr, propValue, (const char *)((PtypBoolean == true) ? "True" : "False"));
++		//ndr_print_uint16(ndr, propValue, PtypBoolean);
++		break;
++	case PT_I8:
++		NDR_CHECK_FT(ndr_pull_dlong(ndr_pull, NDR_SCALARS, &PtypInteger64));
++		ndr_print_dlong(ndr, propValue, PtypInteger64);
++		break;
++	case PT_SYSTIME:
++		NDR_CHECK_FT(ndr_pull_FILETIME(ndr_pull, NDR_SCALARS, &PtypTime));
++		ndr_print_FILETIME(ndr, propValue, &PtypTime);
++		break;
++	case PT_CLSID:
++		NDR_CHECK_FT(ndr_pull_GUID(ndr_pull, NDR_SCALARS, &PtypGuid));
++		ndr_print_GUID(ndr, propValue, &PtypGuid);
++		break;
++		/* varSizeValue */
++	case PT_UNICODE:
++	{
++		uint32_t  _flags_save_string = ndr_pull->flags;
++		NDR_CHECK_FT(ndr_pull_uint32(ndr_pull, NDR_SCALARS, &PtypInteger32));
++		ndr_set_flags(&ndr_pull->flags, LIBNDR_FLAG_STR_NULLTERM);
++		NDR_CHECK_FT(ndr_pull_string(ndr_pull, NDR_SCALARS, &PtypString));
++		ndr_pull->flags = _flags_save_string;
++		ndr_print_string(ndr, propValue, PtypString);
++	}
++	break;
++	case PT_STRING8:
++	{
++		/* FIXME: probably need to pull uint32_t first */
++		uint32_t _flags_save_string = ndr_pull->flags;
++		ndr_set_flags(&ndr_pull->flags, LIBNDR_FLAG_STR_RAW8|LIBNDR_FLAG_STR_NULLTERM|LIBNDR_FLAG_STR_SIZE4);
++		NDR_CHECK_FT(ndr_pull_string(ndr_pull, NDR_SCALARS, &PtypString8));
++		ndr_pull->flags = _flags_save_string;
++		ndr_print_string(ndr, propValue, PtypString8);
++	}
++	break;
++	case PT_SVREID:
++		NDR_CHECK_FT(ndr_pull_Binary_r(ndr_pull, NDR_SCALARS, &PtypServerId));
++		ndr_print_Binary_r(ndr, propValue, &PtypServerId);
++		break;
++	case PT_BINARY:
++		NDR_CHECK_FT(ndr_pull_SBinary(ndr_pull, NDR_SCALARS, &PtypBinary));
++		ndr_print_SBinary(ndr, propValue, &PtypBinary);
++		break;
++	default:
++	{
++		uint32_t _flags_save_default = ndr_pull->flags;
++
++		ndr->print(ndr, COLOR_RED "Not supported: %s" COLOR_END, propValue);
++		ndr_set_flags(&ndr_pull->flags, LIBNDR_FLAG_REMAINING);
++		NDR_CHECK_FT(ndr_pull_DATA_BLOB(ndr_pull, NDR_SCALARS, &datablob));
++		ndr_pull->flags = _flags_save_default;
++		ndr_dump_data(ndr, datablob.data, datablob.length);
++	}
++	}
++	talloc_free(propValue);
++	return 0;
++}
++
++/**
++   \details Parse and Display Fast Transfer element. An element is either
++   a marker or a propvalue.
++
++   \param mem_ctx pointer to the memory context
++   \param ndr pointer to the ndr_print structure
++   \param ndr_pull pointer to the ndr_pull structure representing the fxbuffer
++
++   \return value >= 0 on success, otherwise -1
++*/
++static int ndr_parse_FastTransferElement(TALLOC_CTX *mem_ctx, struct ndr_print *ndr, struct ndr_pull *ndr_pull)
++{
++	uint32_t  element;
++	int       ret;
++
++	NDR_CHECK_FT(ndr_pull_uint32(ndr_pull, NDR_SCALARS, &element));
++
++	ret = ndr_print_marker(ndr, element);
++	if (ret == 0) return 0;
++
++	ret = ndr_parse_ics_state(mem_ctx, ndr, ndr_pull, element);
++	if (ret == 0) return 0;
++
++	ret = ndr_parse_property(mem_ctx, ndr, ndr_pull, element);
++	if (ret == 0) return 0;
++
++	ret = ndr_parse_propValue(mem_ctx, ndr, ndr_pull, element);
++	return ret;
++}
++
++/**
++   \details Parse and display Fast Transfer Stream
++
++   \param ndr pointer to the ndr_print structure
++   \param buf the FastTransfer Stream buffer to parse
++
++   \return 0 on success, otherwise -1
++*/
++static int ndr_parse_FastTransferStream(struct ndr_print *ndr, DATA_BLOB buf)
++{
++	TALLOC_CTX      *mem_ctx;
++	struct ndr_pull *ndr_pull;
++	int             ret = 0;
++	int             offset;
++
++	mem_ctx = talloc_named(NULL, 0, "FastTransferStream");
++	if (!mem_ctx) return -1;
++	if (buf.length == 0) return 0;
++
++	/* Map DATA_BLOB to ndr pull context */
++	ndr_pull = talloc_zero(mem_ctx, struct ndr_pull);
++	if (!ndr_pull) return -1;
++	ndr_pull->flags |= LIBNDR_FLAG_NOALIGN;
++	ndr_pull->current_mem_ctx = mem_ctx;
++	ndr_pull->data = buf.data;
++	ndr_pull->data_size = buf.length;
++	ndr_pull->offset = 0;
++
++	ndr_set_flags(&ndr_pull->flags, LIBNDR_FLAG_NOALIGN);
++	ndr_set_flags(&ndr->flags, LIBNDR_FLAG_NOALIGN);
++
++	while (ndr_pull->offset < ndr_pull->data_size -1) {
++		offset = ndr_parse_FastTransferElement(mem_ctx, ndr, ndr_pull);
++		if (offset < 0) {
++			ret = -1;
++			goto end;
++		}
++	}
++
++end:
++	talloc_free(mem_ctx);
++	return ret;
++}
++
++_PUBLIC_ void ndr_print_FastTransferSourceGetBuffer_repl(struct ndr_print *ndr, const char *name, const struct FastTransferSourceGetBuffer_repl *r)
++{
++	int res;
++
++	ndr_print_struct(ndr, name, "FastTransferSourceGetBuffer_repl");
++	if (r == NULL) { ndr_print_null(ndr); return; }
++	{
++		uint32_t _flags_save_STRUCT = ndr->flags;
++		ndr_set_flags(&ndr->flags, LIBNDR_FLAG_NOALIGN);
++		ndr->depth++;
++		ndr_print_TransferStatus(ndr, "TransferStatus", r->TransferStatus);
++		ndr_print_uint16(ndr, "InProgressCount", r->InProgressCount);
++		ndr_print_uint16(ndr, "TotalStepCount", r->TotalStepCount);
++		ndr_print_uint8(ndr, "Reserved", r->Reserved);
++		ndr_print_uint16(ndr, "TransferBufferSize", r->TransferBufferSize);
++		ndr_print_DATA_BLOB(ndr, "TransferBuffer", r->TransferBuffer);
++		res = ndr_parse_FastTransferStream(ndr, r->TransferBuffer);
++		if (res != 0) {
++			ndr_print_DATA_BLOB(ndr, "TransferBuffer", r->TransferBuffer);
++		}
++		ndr->depth--;
++		ndr->flags = _flags_save_STRUCT;
++	}
++}
++
++
++_PUBLIC_ void ndr_print_SyncUploadStateStreamContinue_req(struct ndr_print *ndr, const char *name, const struct SyncUploadStateStreamContinue_req *r)
++{
++	ndr_print_struct(ndr, name, "SyncUploadStateStreamContinue_req");
++	if (r == NULL) { ndr_print_null(ndr); return; }
++	{
++		uint32_t _flags_save_STRUCT = ndr->flags;
++		ndr_set_flags(&ndr->flags, LIBNDR_FLAG_NOALIGN);
++		ndr->depth++;
++		{
++			TALLOC_CTX	*mem_ctx;
++			struct idset	*idset;
++			DATA_BLOB	buffer;
++
++			mem_ctx = talloc_named(NULL, 0, "SyncUploadStateStreamContinue");
++			if (!mem_ctx) return;
++
++			buffer.length = r->StreamDataSize;
++			buffer.data = r->StreamData;
++			idset = IDSET_parse(mem_ctx, buffer, false);
++			ndr_print_IDSET(ndr, idset, name);
++			talloc_free(mem_ctx);
++		}
++
++		ndr->depth--;
++		ndr->flags = _flags_save_STRUCT;
++	}
++}
++
++/* Debug interface */
++_PUBLIC_ void ndr_print_FastTransferSourceGetBuffer(struct ndr_print *ndr, const char *name, int flags, const struct FastTransferSourceGetBuffer *r)
++{
++	ndr_print_struct(ndr, name, "FastTransferSourceGetBuffer");
++	if (r == NULL) { ndr_print_null(ndr); return; }
++	ndr->depth++;
++	if (flags & NDR_SET_VALUES) {
++		ndr->flags |= LIBNDR_PRINT_SET_VALUES;
++	}
++	if (flags & NDR_IN) {
++		ndr_print_struct(ndr, "in", "FastTransferSourceGetBuffer");
++		ndr->depth++;
++		ndr_print_DATA_BLOB(ndr, "data", r->in.data);
++		ndr_parse_FastTransferStream(ndr, r->in.data);
++		ndr->depth--;
++	}
++	if (flags & NDR_OUT) {
++		ndr_print_struct(ndr, "out", "FastTransferSourceGetBuffer");
++		ndr->depth++;
++		ndr_print_DATA_BLOB(ndr, "data", r->out.data);
++		ndr_parse_FastTransferStream(ndr, r->out.data);
++		ndr->depth--;
++	}
++	ndr->depth--;
++}
+--- openchange-2.3-VULCAN/Makefile	2015-05-16 10:22:04.000000000 -0500
++++ openchange/Makefile	2015-11-27 04:43:25.632164159 -0600
+@@ -136,7 +136,7 @@ re:: clean install
+ # IDL compilation rules
+ #################################################################
+ 
+-idl: gen_ndr gen_ndr/ndr_exchange.h gen_ndr/ndr_property.h gen_ndr/ndr_asyncemsmdb.h
++idl: gen_ndr gen_ndr/ndr_exchange.h gen_ndr/ndr_property.h gen_ndr/ndr_asyncemsmdb.h gen_ndr/ndr_exchange_debug.h
+ 
+ exchange.idl: properties_enum.h mapicodes_enum.h
+ 
+@@ -166,7 +166,7 @@ LIBMAPI_SO_VERSION = 0
+ 
+ libmapi:	idl					\
+ 		libmapi/version.h			\
+-		libmapi.$(SHLIBEXT).$(PACKAGE_VERSION)	
++		libmapi.$(SHLIBEXT).$(PACKAGE_VERSION)
+ 
+ libmapi-install:	libmapi			\
+ 			libmapi-installpc	\
+@@ -197,6 +197,7 @@ endif
+ 	rm -f gen_ndr/ndr_property*
+ 	rm -f gen_ndr/property.h
+ 	rm -f ndr_mapi.o ndr_mapi.po
++	rm -f ndr_fasttransfer.o ndr_fasttransfer.po
+ 	rm -f ndr_mapi.gcno ndr_mapi.gcda
+ 	rm -f *~
+ 	rm -f */*~
+@@ -227,8 +228,8 @@ endif
+ 
+ libmapi-installheader:
+ 	@echo "[*] install: libmapi headers"
+-	$(INSTALL) -d $(DESTDIR)$(includedir)/libmapi 
+-	$(INSTALL) -d $(DESTDIR)$(includedir)/libmapi/socket 
++	$(INSTALL) -d $(DESTDIR)$(includedir)/libmapi
++	$(INSTALL) -d $(DESTDIR)$(includedir)/libmapi/socket
+ 	$(INSTALL) -d $(DESTDIR)$(includedir)/gen_ndr
+ 	$(INSTALL) -m 0644 libmapi/libmapi.h $(DESTDIR)$(includedir)/libmapi/
+ 	$(INSTALL) -m 0644 libmapi/nspi.h $(DESTDIR)$(includedir)/libmapi/
+@@ -316,15 +317,18 @@ libmapi.$(SHLIBEXT).$(PACKAGE_VERSION):
+ 	libmapi/fxparser.po				\
+ 	libmapi/notif.po				\
+ 	libmapi/idset.po				\
+-	libmapi/oc_log.po			\
++	libmapi/oc_log.po				\
+ 	ndr_mapi.po					\
+ 	gen_ndr/ndr_exchange.po				\
+ 	gen_ndr/ndr_exchange_c.po			\
++	gen_ndr/ndr_exchange_debug.po			\
++	gen_ndr/ndr_exchange_debug_c.po			\
+ 	gen_ndr/ndr_asyncemsmdb.po			\
+ 	gen_ndr/ndr_asyncemsmdb_c.po			\
+ 	gen_ndr/ndr_property.po				\
++	ndr_fasttransfer.po				\
+ 	libmapi/socket/interface.po			\
+-	libmapi/socket/netif.po				
++	libmapi/socket/netif.po
+ 	@echo "Linking $@"
+ 	@$(CC) $(DSOOPT) $(CFLAGS) $(LDFLAGS) -Wl,-soname,libmapi.$(SHLIBEXT).$(LIBMAPI_SO_VERSION) -o $@ $^ $(LIBS)
+ 
+@@ -1441,6 +1445,7 @@ bin/openchange-testsuite: 	testsuite/tes
+ 				testsuite/mapiproxy/util/schema_migration.c		\
+ 				testsuite/libmapiproxy/openchangedb_logger.c		\
+ 				mapiproxy/libmapiproxy/backends/openchangedb_logger.c	\
++				testsuite/libmapi/mapi_idset.c				\
+ 				testsuite/libmapi/mapi_property.c			\
+ 				mapiproxy/libmapistore.$(SHLIBEXT).$(PACKAGE_VERSION)	\
+ 				mapiproxy/libmapiproxy.$(SHLIBEXT).$(PACKAGE_VERSION)
+@@ -1821,7 +1826,7 @@ etags:
+ ctags:
+ 	ctags `find $(srcdir) -name "*.[ch]"`
+ 
+-.PRECIOUS: exchange.h gen_ndr/ndr_exchange.h gen_ndr/ndr_exchange.c gen_ndr/ndr_exchange_c.c gen_ndr/ndr_exchange_c.h mapiproxy/libmapistore/gen_ndr/ndr_mapistore_notification.c mapiproxy/libmapistore/gen_ndr/mapistore_notification.h
++.PRECIOUS: exchange.h gen_ndr/ndr_exchange.h gen_ndr/ndr_exchange.c gen_ndr/ndr_exchange_c.c gen_ndr/ndr_exchange_c.h gen_ndr/ndr_exchange_debug.h gen_ndr/ndr_exchange_debug.c gen_ndr/ndr_exchange_debug_c.c gen_ndr/ndr_exchange_debug_c.h mapiproxy/libmapistore/gen_ndr/ndr_mapistore_notification.c mapiproxy/libmapistore/gen_ndr/mapistore_notification.h
+ 
+ test:: check
+ 
+--- openchange-2.3-VULCAN/gen_ndr/ndr_exchange_debug.h	1969-12-31 18:00:00.000000000 -0600
++++ openchange/gen_ndr/ndr_exchange_debug.h	2015-11-27 04:43:49.422820233 -0600
+@@ -0,0 +1,20 @@
++/* header auto-generated by pidl */
++
++#include <ndr.h>
++#include "gen_ndr/exchange_debug.h"
++
++#ifndef _HEADER_NDR_exchange_debug
++#define _HEADER_NDR_exchange_debug
++
++#define NDR_EXCHANGE_DEBUG_UUID "8ac6ad47-9cbb-4518-8b8d-38e755bfdf01"
++#define NDR_EXCHANGE_DEBUG_VERSION 0.0
++#define NDR_EXCHANGE_DEBUG_NAME "exchange_debug"
++#define NDR_EXCHANGE_DEBUG_HELPSTRING "Debug"
++extern const struct ndr_interface_table ndr_table_exchange_debug;
++#define NDR_FASTTRANSFERSOURCEGETBUFFER (0x00)
++
++#define NDR_EXCHANGE_DEBUG_CALL_COUNT (1)
++enum ndr_err_code ndr_push_FastTransferSourceGetBuffer(struct ndr_push *ndr, int flags, const struct FastTransferSourceGetBuffer *r);
++enum ndr_err_code ndr_pull_FastTransferSourceGetBuffer(struct ndr_pull *ndr, int flags, struct FastTransferSourceGetBuffer *r);
++void ndr_print_FastTransferSourceGetBuffer(struct ndr_print *ndr, const char *name, int flags, const struct FastTransferSourceGetBuffer *r);
++#endif /* _HEADER_NDR_exchange_debug */
+--- openchange-2.3-VULCAN/gen_ndr/ndr_exchange_debug.c	1969-12-31 18:00:00.000000000 -0600
++++ openchange/gen_ndr/ndr_exchange_debug.c	2015-11-27 04:43:49.422820233 -0600
+@@ -0,0 +1,105 @@
++/* parser auto-generated by pidl */
++
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
++#include <stdint.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <stdbool.h>
++#include <stdarg.h>
++#include <string.h>
++#include "gen_ndr/ndr_exchange_debug.h"
++
++#include <gen_ndr/ndr_exchange.h>
++_PUBLIC_ enum ndr_err_code ndr_push_FastTransferSourceGetBuffer(struct ndr_push *ndr, int flags, const struct FastTransferSourceGetBuffer *r)
++{
++	NDR_PUSH_CHECK_FN_FLAGS(ndr, flags);
++	if (flags & NDR_IN) {
++		{
++			uint32_t _flags_save_DATA_BLOB = ndr->flags;
++			ndr_set_flags(&ndr->flags, LIBNDR_FLAG_REMAINING);
++			NDR_CHECK(ndr_push_DATA_BLOB(ndr, NDR_SCALARS, r->in.data));
++			ndr->flags = _flags_save_DATA_BLOB;
++		}
++	}
++	if (flags & NDR_OUT) {
++		{
++			uint32_t _flags_save_DATA_BLOB = ndr->flags;
++			ndr_set_flags(&ndr->flags, LIBNDR_FLAG_REMAINING);
++			NDR_CHECK(ndr_push_DATA_BLOB(ndr, NDR_SCALARS, r->out.data));
++			ndr->flags = _flags_save_DATA_BLOB;
++		}
++	}
++	return NDR_ERR_SUCCESS;
++}
++
++_PUBLIC_ enum ndr_err_code ndr_pull_FastTransferSourceGetBuffer(struct ndr_pull *ndr, int flags, struct FastTransferSourceGetBuffer *r)
++{
++	NDR_PULL_CHECK_FN_FLAGS(ndr, flags);
++	if (flags & NDR_IN) {
++		ZERO_STRUCT(r->out);
++
++		{
++			uint32_t _flags_save_DATA_BLOB = ndr->flags;
++			ndr_set_flags(&ndr->flags, LIBNDR_FLAG_REMAINING);
++			NDR_CHECK(ndr_pull_DATA_BLOB(ndr, NDR_SCALARS, &r->in.data));
++			ndr->flags = _flags_save_DATA_BLOB;
++		}
++	}
++	if (flags & NDR_OUT) {
++		{
++			uint32_t _flags_save_DATA_BLOB = ndr->flags;
++			ndr_set_flags(&ndr->flags, LIBNDR_FLAG_REMAINING);
++			NDR_CHECK(ndr_pull_DATA_BLOB(ndr, NDR_SCALARS, &r->out.data));
++			ndr->flags = _flags_save_DATA_BLOB;
++		}
++	}
++	return NDR_ERR_SUCCESS;
++}
++
++static const struct ndr_interface_call exchange_debug_calls[] = {
++	{
++		"FastTransferSourceGetBuffer",
++		sizeof(struct FastTransferSourceGetBuffer),
++		(ndr_push_flags_fn_t) ndr_push_FastTransferSourceGetBuffer,
++		(ndr_pull_flags_fn_t) ndr_pull_FastTransferSourceGetBuffer,
++		(ndr_print_function_t) ndr_print_FastTransferSourceGetBuffer,
++		{ 0, NULL },
++		{ 0, NULL },
++	},
++	{ NULL, 0, NULL, NULL, NULL }
++};
++
++static const char * const exchange_debug_endpoint_strings[] = {
++	"ncacn_np:[\\pipe\\exchange_debug]", 
++};
++
++static const struct ndr_interface_string_array exchange_debug_endpoints = {
++	.count	= 1,
++	.names	= exchange_debug_endpoint_strings
++};
++
++static const char * const exchange_debug_authservice_strings[] = {
++	"host", 
++};
++
++static const struct ndr_interface_string_array exchange_debug_authservices = {
++	.count	= 1,
++	.names	= exchange_debug_authservice_strings
++};
++
++
++const struct ndr_interface_table ndr_table_exchange_debug = {
++	.name		= "exchange_debug",
++	.syntax_id	= {
++		{0x8ac6ad47,0x9cbb,0x4518,{0x8b,0x8d},{0x38,0xe7,0x55,0xbf,0xdf,0x01}},
++		NDR_EXCHANGE_DEBUG_VERSION
++	},
++	.helpstring	= NDR_EXCHANGE_DEBUG_HELPSTRING,
++	.num_calls	= 1,
++	.calls		= exchange_debug_calls,
++	.endpoints	= &exchange_debug_endpoints,
++	.authservices	= &exchange_debug_authservices
++};
++
+--- openchange-2.3-VULCAN/gen_ndr/ndr_exchange_debug_c.c	1969-12-31 18:00:00.000000000 -0600
++++ openchange/gen_ndr/ndr_exchange_debug_c.c	2015-11-27 04:44:20.707016372 -0600
+@@ -0,0 +1,101 @@
++/* client functions auto-generated by pidl */
++
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
++#include <stdio.h>
++#include <stdbool.h>
++#include <stdlib.h>
++#include <stdint.h>
++#include <stdarg.h>
++#include <string.h>
++#include <core/ntstatus.h>
++#include <tevent.h>
++#include <util/tevent_ntstatus.h>
++#include "gen_ndr/ndr_exchange_debug.h"
++#include "gen_ndr/ndr_exchange_debug_c.h"
++
++/* exchange_debug - client functions generated by pidl */
++
++struct dcerpc_FastTransferSourceGetBuffer_r_state {
++	TALLOC_CTX *out_mem_ctx;
++};
++
++static void dcerpc_FastTransferSourceGetBuffer_r_done(struct tevent_req *subreq);
++
++struct tevent_req *dcerpc_FastTransferSourceGetBuffer_r_send(TALLOC_CTX *mem_ctx,
++	struct tevent_context *ev,
++	struct dcerpc_binding_handle *h,
++	struct FastTransferSourceGetBuffer *r)
++{
++	struct tevent_req *req;
++	struct dcerpc_FastTransferSourceGetBuffer_r_state *state;
++	struct tevent_req *subreq;
++
++	req = tevent_req_create(mem_ctx, &state,
++				struct dcerpc_FastTransferSourceGetBuffer_r_state);
++	if (req == NULL) {
++		return NULL;
++	}
++
++	state->out_mem_ctx = talloc_new(state);
++	if (tevent_req_nomem(state->out_mem_ctx, req)) {
++		return tevent_req_post(req, ev);
++	}
++
++	subreq = dcerpc_binding_handle_call_send(state, ev, h,
++			NULL, &ndr_table_exchange_debug,
++			NDR_FASTTRANSFERSOURCEGETBUFFER, state->out_mem_ctx, r);
++	if (tevent_req_nomem(subreq, req)) {
++		return tevent_req_post(req, ev);
++	}
++	tevent_req_set_callback(subreq, dcerpc_FastTransferSourceGetBuffer_r_done, req);
++
++	return req;
++}
++
++static void dcerpc_FastTransferSourceGetBuffer_r_done(struct tevent_req *subreq)
++{
++	struct tevent_req *req =
++		tevent_req_callback_data(subreq,
++		struct tevent_req);
++	NTSTATUS status;
++
++	status = dcerpc_binding_handle_call_recv(subreq);
++	TALLOC_FREE(subreq);
++	if (tevent_req_nterror(req, status)) {
++		return;
++	}
++
++	tevent_req_done(req);
++}
++
++NTSTATUS dcerpc_FastTransferSourceGetBuffer_r_recv(struct tevent_req *req, TALLOC_CTX *mem_ctx)
++{
++	struct dcerpc_FastTransferSourceGetBuffer_r_state *state =
++		tevent_req_data(req,
++		struct dcerpc_FastTransferSourceGetBuffer_r_state);
++	NTSTATUS status;
++
++	if (tevent_req_is_nterror(req, &status)) {
++		tevent_req_received(req);
++		return status;
++	}
++
++	talloc_steal(mem_ctx, state->out_mem_ctx);
++
++	tevent_req_received(req);
++	return NT_STATUS_OK;
++}
++
++NTSTATUS dcerpc_FastTransferSourceGetBuffer_r(struct dcerpc_binding_handle *h, TALLOC_CTX *mem_ctx, struct FastTransferSourceGetBuffer *r)
++{
++	NTSTATUS status;
++
++	status = dcerpc_binding_handle_call(h,
++			NULL, &ndr_table_exchange_debug,
++			NDR_FASTTRANSFERSOURCEGETBUFFER, mem_ctx, r);
++
++	return status;
++}
++
+--- openchange-2.3-VULCAN/gen_ndr/ndr_exchange_debug_c.h	1969-12-31 18:00:00.000000000 -0600
++++ openchange/gen_ndr/ndr_exchange_debug_c.h	2015-11-27 04:44:20.723683499 -0600
+@@ -0,0 +1,23 @@
++#include <dcerpc.h>
++#include "gen_ndr/exchange_debug.h"
++#ifndef _HEADER_RPC_exchange_debug
++#define _HEADER_RPC_exchange_debug
++
++extern const struct ndr_interface_table ndr_table_exchange_debug;
++
++struct tevent_req *dcerpc_FastTransferSourceGetBuffer_r_send(TALLOC_CTX *mem_ctx,
++	struct tevent_context *ev,
++	struct dcerpc_binding_handle *h,
++	struct FastTransferSourceGetBuffer *r);
++NTSTATUS dcerpc_FastTransferSourceGetBuffer_r_recv(struct tevent_req *req, TALLOC_CTX *mem_ctx);
++NTSTATUS dcerpc_FastTransferSourceGetBuffer_r(struct dcerpc_binding_handle *h, TALLOC_CTX *mem_ctx, struct FastTransferSourceGetBuffer *r);
++/*
++ * The following functions are skipped because
++ * an [out] argument data is not a pointer or array:
++ *
++ * dcerpc_FastTransferSourceGetBuffer_send()
++ * dcerpc_FastTransferSourceGetBuffer_recv()
++ * dcerpc_FastTransferSourceGetBuffer()
++ */
++
++#endif /* _HEADER_RPC_exchange_debug */
+--- openchange-2.3-VULCAN/gen_ndr/exchange_debug.h	1969-12-31 18:00:00.000000000 -0600
++++ openchange/gen_ndr/exchange_debug.h	2015-11-27 04:43:46.766080299 -0600
+@@ -0,0 +1,29 @@
++/* header auto-generated by pidl */
++
++#ifndef _PIDL_HEADER_exchange_debug
++#define _PIDL_HEADER_exchange_debug
++
++#include <util/data_blob.h>
++#include <stdint.h>
++
++#include <core/ntstatus.h>
++
++#include <gen_ndr/ndr_misc.h>
++#include <gen_ndr/exchange.h>
++#ifndef _HEADER_exchange_debug
++#define _HEADER_exchange_debug
++
++
++struct FastTransferSourceGetBuffer {
++	struct {
++		DATA_BLOB data;/* [flag(LIBNDR_FLAG_REMAINING)] */
++	} in;
++
++	struct {
++		DATA_BLOB data;/* [flag(LIBNDR_FLAG_REMAINING)] */
++	} out;
++
++};
++
++#endif /* _HEADER_exchange_debug */
++#endif /* _PIDL_HEADER_exchange_debug */
+--- openchange-2.3-VULCAN/testsuite/libmapi/mapi_idset.c	1969-12-31 18:00:00.000000000 -0600
++++ openchange/testsuite/libmapi/mapi_idset.c	2015-11-27 04:43:25.752167469 -0600
+@@ -0,0 +1,233 @@
++/*
++   IDSET Unit Testing
++
++   OpenChange Project
++
++   Copyright (C) Enrique J. Hernández 2015
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "testsuite.h"
++#include "libmapi/libmapi.h"
++#include "libmapi/libmapi_private.h"
++#include <gen_ndr/ndr_exchange.h>
++
++/* Global test variables */
++static TALLOC_CTX *mem_ctx;
++
++// v Unit test ----------------------------------------------------------------
++
++START_TEST (test_IDSET_parse) {
++	DATA_BLOB		bin;
++	int			i;
++	struct idset		*res;
++	/* REPLID-based IDSET case (MetaTagIdsetDeleted) */
++	const uint8_t		case_0[] =
++		{0x1, 0x0, 0x6, 0x0, 0x0, 0x0, 0x1, 0x4, 0x2e, 0x05, 0x0, 0x0, 0x0, 0x1,
++		 0x4, 0x52, 0x35, 0x37, 0x50, 0x0};
++        /* A REPLID-based IDSET whose length is smaller than REPLGUID-based IDSET minimum length */
++	const uint8_t		case_1[] =
++		{0x1, 0x0, 0x5, 0x0, 0x0, 0x0, 0x1, 0x4, 0x52, 0x19, 0x1A, 0x50, 0x0};
++	/* REPLGUID-based IDSET case (MetaTagCnsetSeen) */
++	const uint8_t		 case_2[] =
++		{0x9b, 0xb9, 0xff, 0xb5, 0xf, 0x44, 0x77, 0x4f, 0xb4, 0x88, 0xc5, 0xc6, 0x70,
++		 0x2e, 0xe3, 0xa8, 0x4, 0x0, 0x0, 0x0, 0x0, 0x52, 0x0, 0xa5, 0x1, 0x51, 0x50, 0x0};
++	const uint8_t		 *cases[] = {case_0, case_1, case_2};
++	const size_t		 cases_size[] = { sizeof(case_0)/sizeof(uint8_t),
++						  sizeof(case_1)/sizeof(uint8_t),
++						  sizeof(case_2)/sizeof(uint8_t) };
++	const bool		 id_based[] = {true, true, false};
++	const uint32_t		 range_count[] = {2, 1, 1};
++	const size_t		 CASES_NUM = sizeof(cases)/sizeof(uint8_t*);
++
++	for (i = 0; i < CASES_NUM; i++) {
++		bin.length = cases_size[i];
++		bin.data = (uint8_t *) cases[i];
++		res = IDSET_parse(mem_ctx, bin, id_based[i]);
++		ck_assert(res != NULL);
++		ck_assert_int_eq(res->idbased, id_based[i]);
++		ck_assert_int_eq(res->single, false);
++		ck_assert_int_eq(res->range_count, range_count[i]);
++	}
++
++} END_TEST
++
++START_TEST (test_IDSET_includes_guid_glob) {
++        struct GUID       server_guid = GUID_random();
++        struct GUID       random_guid = GUID_random();
++        int               i;
++        struct idset      *idset_in;
++        struct rawidset   *rawidset_in;
++        const uint16_t    repl_id = 0x0001;
++        const uint64_t    ids[] = {0x180401000000,
++                                   0x190401000000,
++                                   0x1a0401000000,
++                                   0x1b0401000000,
++                                   0x500401000000,
++                                   0x520401000000,
++                                   0x530401000000,
++                                   0x710401000000};
++        const uint64_t    not_in_id = 0x2a0401000000;
++        const size_t      ids_size = sizeof(ids) / sizeof(uint64_t);
++
++        rawidset_in = RAWIDSET_make(mem_ctx, true, false);
++        ck_assert(rawidset_in != NULL);
++        for (i = 0; i < ids_size; i++) {
++                RAWIDSET_push_eid(rawidset_in, (ids[i] << 16) | repl_id);
++        }
++        ck_assert_int_eq(rawidset_in->count, ids_size);
++        rawidset_in->idbased = false;
++        rawidset_in->repl.guid = server_guid;
++        idset_in = RAWIDSET_convert_to_idset(mem_ctx, rawidset_in);
++        ck_assert(idset_in != NULL);
++
++        /* Case: All inserted elements in the range */
++        for (i = 0; i < ids_size; i++) {
++                ck_assert(IDSET_includes_guid_glob(idset_in, &server_guid, ids[i]));
++        }
++
++        /* Case: a different guid for the same id */
++        ck_assert(!IDSET_includes_guid_glob(idset_in, &random_guid, ids[0]));
++
++        /* Case: Not in range and different guid */
++        ck_assert(!IDSET_includes_guid_glob(idset_in, &random_guid, not_in_id));
++
++        /* Case: Not in range */
++        ck_assert(!IDSET_includes_guid_glob(idset_in, &server_guid, not_in_id));
++
++} END_TEST
++
++START_TEST (test_IDSET_remove_rawidset) {
++	const uint64_t		ids[] = {0x1d0401000000,
++					0x1e0401000000,
++					0x1f0401000000,
++					0x200401000000,
++					0x210401000000,
++					0x220401000000,
++					0x230401000000,
++					0x240401000000};
++	int			i;
++	size_t			ids_size = sizeof(ids)/sizeof(uint64_t);
++	struct idset		*idset_in;
++	uint16_t		repl_id = 0x0001;
++	struct globset_range	*range;
++	struct rawidset		*rawidset_in, *rawidset_rm_0, *rawidset_rm_1, *rawidset_rm_2;
++
++	/* Generate idsets */
++	rawidset_in = RAWIDSET_make(mem_ctx, true, false);
++	ck_assert(rawidset_in != NULL);
++	for (i = 0; i < ids_size; i++) {
++		RAWIDSET_push_eid(rawidset_in, (ids[i] << 16) | repl_id);
++	}
++
++	idset_in = RAWIDSET_convert_to_idset(mem_ctx, rawidset_in);
++	ck_assert(idset_in != NULL);
++
++	rawidset_rm_0 = RAWIDSET_make(mem_ctx, true, true);
++	ck_assert(rawidset_rm_0 != NULL);
++	RAWIDSET_push_eid(rawidset_rm_0, (ids[0] << 16) | repl_id);
++
++	rawidset_rm_1 = RAWIDSET_make(mem_ctx, true, true);
++	ck_assert(rawidset_rm_1 != NULL);
++	RAWIDSET_push_eid(rawidset_rm_1, (ids[ids_size - 1] << 16) | repl_id);
++
++	rawidset_rm_2 = RAWIDSET_make(mem_ctx, true, true);
++	ck_assert(rawidset_rm_2 != NULL);
++	RAWIDSET_push_eid(rawidset_rm_2, (ids[3] << 16) | repl_id);
++	RAWIDSET_push_eid(rawidset_rm_2, (ids[4] << 16) | repl_id);
++
++	/* Case: Remove first element */
++	IDSET_remove_rawidset(idset_in, rawidset_rm_0);
++
++	range = idset_in->ranges;
++	ck_assert_int_eq(idset_in->range_count, 1);
++	ck_assert_int_eq(range->low, ids[1]);
++	ck_assert_int_eq(range->high, ids[ids_size - 1]);
++
++	/* Case: Remove last element */
++	IDSET_remove_rawidset(idset_in, rawidset_rm_1);
++
++	ck_assert_int_eq(idset_in->range_count, 1);
++	ck_assert_int_eq(range->low, ids[1]);
++	ck_assert_int_eq(range->high, ids[ids_size - 2]);
++
++	/* Case: Remove middle elements (3rd & 4th in the original set) */
++	IDSET_remove_rawidset(idset_in, rawidset_rm_2);
++
++	ck_assert_int_eq(idset_in->range_count, 2);
++	ck_assert_int_eq(range->low, ids[1]);
++	ck_assert_int_eq(range->high, ids[2]);
++	range = range->next;
++	ck_assert_int_eq(range->low, ids[5]);
++	ck_assert_int_eq(range->high, ids[ids_size - 2]);
++
++} END_TEST
++
++// ^ unit tests ---------------------------------------------------------------
++
++// v suite definition ---------------------------------------------------------
++
++static void tc_IDSET_parse_setup(void)
++{
++	mem_ctx = talloc_new(talloc_autofree_context());
++}
++
++static void tc_IDSET_parse_teardown(void)
++{
++	talloc_free(mem_ctx);
++}
++
++static void tc_IDSET_includes_guid_glob_setup(void)
++{
++	mem_ctx = talloc_new(talloc_autofree_context());
++}
++
++static void tc_IDSET_remove_rawidset_setup(void)
++{
++	mem_ctx = talloc_new(talloc_autofree_context());
++}
++
++static void tc_IDSET_includes_guid_glob_teardown(void)
++{
++	mem_ctx = talloc_new(talloc_autofree_context());
++}
++
++static void tc_IDSET_remove_rawidset_teardown(void)
++{
++	talloc_free(mem_ctx);
++}
++
++Suite *libmapi_idset_suite(void)
++{
++	Suite *s = suite_create("libmapi idset");
++	TCase *tc;
++
++	tc = tcase_create("IDSET_parse");
++	tcase_add_checked_fixture(tc, tc_IDSET_parse_setup, tc_IDSET_parse_teardown);
++	tcase_add_test(tc, test_IDSET_parse);
++	suite_add_tcase(s, tc);
++
++	tc = tcase_create("IDSET_includes_guid_glob");
++	tcase_add_checked_fixture(tc, tc_IDSET_includes_guid_glob_setup, tc_IDSET_includes_guid_glob_teardown);
++	tcase_add_test(tc, test_IDSET_includes_guid_glob);
++	suite_add_tcase(s, tc);
++
++	tc = tcase_create("IDSET_remove_rawidset");
++	tcase_add_checked_fixture(tc, tc_IDSET_remove_rawidset_setup, tc_IDSET_remove_rawidset_teardown);
++	tcase_add_test(tc, test_IDSET_remove_rawidset);
++	suite_add_tcase(s, tc);
++
++	return s;
++}
