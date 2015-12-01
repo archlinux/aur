@@ -4,7 +4,7 @@
 
 pkgname=z-push
 pkgver=2.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
@@ -44,6 +44,10 @@ package() {
     cp ${srcdir}/htaccess ${pkgdir}/usr/share/webapps/z-push/.htaccess
     rm ${pkgdir}/usr/share/webapps/z-push/config.php
 
+    mkdir -p ${pkgdir}/usr/bin
+    ln -s /usr/share/webapps/z-push/z-push-admin.php ${pkgdir}/usr/bin/z-push-admin 
+    ln -s /usr/share/webapps/z-push/z-push-top.php ${pkgdir}/usr/bin/z-push-top 
+    
     mkdir -p ${pkgdir}/etc/webapps/z-push
     cp ${srcdir}/apache.example.conf ${pkgdir}/etc/webapps/z-push/
     cp ${srcdir}/php-fpm.example.conf ${pkgdir}/etc/webapps/z-push/
@@ -51,7 +55,7 @@ package() {
     cp ${srcdir}/nginx-location.conf ${pkgdir}/etc/webapps/z-push/
     cp ${srcdir}/${pkgname}-${pkgver}/config.php ${pkgdir}/etc/webapps/z-push/config.example.php
     ln -s /etc/webapps/z-push/config.php ${pkgdir}/usr/share/webapps/z-push/config.php
-
+    
     mkdir -p ${pkgdir}/etc/php/conf.d
     cp ${srcdir}/z-push.ini ${pkgdir}/etc/php/conf.d
 
