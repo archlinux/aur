@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=socket-relay
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A framework application for host multiplexion"
 arch=(any)
@@ -11,7 +11,7 @@ install=socket-relay.install
 depends=(python3)
 makedepends=(texinfo)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(c4268fc733440d679658cf3e8d37d7036bfaee6668bd6a109cddbac115498678)
+sha256sums=(492ba989528e7e3d2a025e784860b9c9c2c4b6981ddb9c7df620af0861ea9462)
 
 
 build() {
