@@ -1,8 +1,8 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 
 pkgname=gprof2dot
-pkgver=2015.02.03
-pkgrel=2
+pkgver=2015.12.1
+pkgrel=1
 pkgdesc="A Python script to convert the output from many profilers into a dot graph."
 arch=("any")
 url="http://jrfonseca.googlecode.com/"
@@ -11,7 +11,7 @@ depends=('python' 'python-setuptools')
 makedepends=('git')
 provides=(gprof2dot)
 source=("https://pypi.python.org/packages/source/g/gprof2dot/gprof2dot-$pkgver.tar.gz")
-md5sums=('b026772f1cc8f7f203143855e0316443')
+md5sums=('e23bf4e2f94db032750c193384b4165b')
 build() {
 cd "$srcdir/gprof2dot-$pkgver"
 python setup.py build
