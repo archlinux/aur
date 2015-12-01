@@ -1237,3 +1237,21 @@ diff -Naur a/ui/kcm_grub2.ui b/ui/kcm_grub2.ui
   </customwidgets>
   <resources/>
   <connections/>
+diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
+--- a/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
++++ b/other/kcm_grub2.desktop	2015-12-01 10:13:22.553310488 +0800
+@@ -2,12 +2,12 @@
+ Icon=system-reboot
+ Type=Service
+ X-KDE-ServiceTypes=KCModule
+-Exec=kcmshell4 kcm_grub2
++Exec=kcmshell5 kcm_grub2
+ 
+ X-KDE-Library=kcm_grub2
+ X-KDE-ParentApp=kcontrol
+ 
+-X-KDE-System-Settings-Parent-Category=startup-and-shutdown
++X-KDE-System-Settings-Parent-Category=session
+ 
+ Name=GRUB2 Bootloader
+ Name[bs]=GRUB2 pokretač sistemar
