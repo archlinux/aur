@@ -7,8 +7,8 @@
 
 _pkgbasename=gnutls
 pkgname=lib32-${_pkgbasename}28
-pkgver=3.3.17.1
-pkgrel=2
+pkgver=3.3.19
+pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (32-bit, legacy version)"
 arch=('x86_64')
 license=('GPL3' 'LGPL2.1')
@@ -18,7 +18,7 @@ provides=('lib32-libgnutls28')
 conflicts=('lib32-libgnutls28')
 makedepends=('gcc-multilib' 'lib32-libidn')
 source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/${_pkgbasename}-${pkgver}.tar.xz{,.sig})
-sha256sums=('b40f158030a92f450a07b20300a3996710ca19800848d9f6fd62493170c5bbb4'
+sha256sums=('888d8779b48f21959b33d4d9ad0b546e5ec3dea20abf0d9bb03869d56b1f44cf'
             'SKIP')
 validpgpkeys=(1F42418905D8206AA754CCDC29EE58B996865171)
 
