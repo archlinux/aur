@@ -6,7 +6,8 @@ _compile=0 # Default 0
 
 pkgname=vlc-plugin-fluidsynth
 pkgver=2.2.1
-pkgrel=4
+pkgrel=5
+pkgrel_status=+b1
 pkgdesc="FluidSynth plugin for VLC"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -20,11 +21,11 @@ replaces=("${pkgname}-git")
 install="notes.install"
 
 if [ "${_compile}" -eq 0 ]; then
-	source_i686=("${pkgname}_${pkgver}-${pkgrel}_i386.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}_i386.deb")
-	source_x86_64=("${pkgname}_${pkgver}-${pkgrel}_amd64.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
+	source_i686=("${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_i386.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_i386.deb")
+	source_x86_64=("${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_amd64.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_amd64.deb")
 
-	md5sums_i686=('221cc6cca2507ee5f5584b2f757f040c')
-	md5sums_x86_64=('fa948b33dda99e25a2f17feaa07a1b86')
+md5sums_i686=('4f98040fbb98ca8cf9d553322256ff00')
+md5sums_x86_64=('34cde3aabf6b4dd654977c4c8fcca67c')
 else
 	options=("!libtool" "!emptydirs")
 	source+=("git://git.videolan.org/${pkgname%%-*}/${pkgname%%-*}-${pkgver:0:3}.git")
