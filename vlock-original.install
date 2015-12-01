@@ -1,0 +1,11 @@
+post_install() {
+    echo -n 'Adding vlock group... '
+    groupadd -g 129 vlock && echo 'done.'
+
+    echo 'For certain features, your user must be in the "vlock" group.'
+}
+
+post_remove() {
+    echo -n 'Removing vlock group... '
+    groupdel vlock && echo 'done.'
+}

@@ -1,0 +1,15 @@
+pkgbase = vlock-original
+	pkgdesc = A small console locking program
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://cthulhu.c3d2.de/~toidinamai/vlock/vlock.html
+	install = vlock-original.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = pam
+	source = ftp://harrier.slackbuilds.org/misc/vlock-2.2.3.tar.gz
+	md5sums = 378175c7692a8f288e65fd4dbf8a38eb
+
+pkgname = vlock-original
+
