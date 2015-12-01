@@ -39,7 +39,7 @@ package() {
     cd "$_gitname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
     install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-    install -dm664 "$pkgdir/srv/$pkgname"
+    install -dm700 "$pkgdir/srv/$pkgname"
     install -Dm644 "$pkgname/examples/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
 
