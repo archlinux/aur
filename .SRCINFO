@@ -1,14 +1,14 @@
 pkgbase = chordii
-	pkgdesc = Program for generating guitar chord music sheets from text files
-	pkgver = 4.5.1
+	pkgdesc = Command line program for generating guitar chord music sheets from ChordPro text files
+	pkgver = 4.5.3
 	pkgrel = 1
 	url = http://www.vromans.org/johan/projects/Chordii
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = http://sourceforge.net/projects/chordii/files/chordii/4.5/chordii-4.5.1.tar.gz
-	md5sums = 72d404e25fa7e4d7a9f9d87fe93d25c4
+	source = http://sourceforge.net/projects/chordii/files/chordii/4.5/chordii-4.5.3.tar.gz
+	md5sums = 499c07df0f49c4d89d6f88523d11e711
 
 pkgname = chordii
 
