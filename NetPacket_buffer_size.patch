@@ -1,0 +1,23 @@
+Subject: Fix NetPacket buffer size by adapting its member types
+Author: Fabian Greffrath <fabian+debian@greffrath.com>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=762698
+
+--- a/main.c
++++ b/main.c
+@@ -273,11 +273,11 @@ NetInfo net_info[JNB_MAX_PLAYERS];
+ 
+ typedef struct
+ {
+-	unsigned long cmd;
+-	long arg;
+-	long arg2;
+-	long arg3;
+-	long arg4;
++	Uint32 cmd;
++	Sint32 arg;
++	Sint32 arg2;
++	Sint32 arg3;
++	Sint32 arg4;
+ } NetPacket;
+ 
+ #define NETPKTBUFSIZE (4 + 4 + 4 + 4 + 4)
