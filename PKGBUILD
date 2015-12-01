@@ -3,7 +3,7 @@
 
 pkgname=eq10q
 pkgver=2_beta7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An LV2 parametric equalizer audio plugin"
 arch=('i686' 'x86_64')
 url="http://eq10q.sourceforge.net/"
@@ -25,7 +25,7 @@ prepare() {
 build() {
   cd $pkgname-${pkgver//_/-}/build
 
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr/lib/lv2
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr/lib/lv2 -DCMAKE_CXX_STANDARD=11
   make
 }
 
