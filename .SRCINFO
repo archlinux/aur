@@ -1,0 +1,12 @@
+pkgbase = oysttyer-git
+	pkgdesc = interactive command-line Twitter client
+	pkgver = 134.c6ff39e
+	pkgrel = 1
+	url = https://github.com/oysttyer/oysttyer
+	arch = any
+	depends = perl
+	source = oysttyer-git::git+https://github.com/oysttyer/oysttyer.git
+	sha1sums = SKIP
+
+pkgname = oysttyer-git
+
