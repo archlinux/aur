@@ -1,6 +1,6 @@
 pkgbase = ruby-sequel
 	pkgdesc = The Database Toolkit for Ruby
-	pkgver = 4.28.0
+	pkgver = 4.29.0
 	pkgrel = 1
 	url = http://sequel.jeremyevans.net
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = ruby-sequel
 	provides = sequel
 	provides = ruby-sequel
 	conflicts = sequel
-	noextract = sequel-4.28.0.gem
-	source = https://rubygems.org/downloads/sequel-4.28.0.gem
-	sha256sums = e8b0672fc44844e4653a8b84b60cc13957251cd040e21c03e49549da4bbe48ee
+	noextract = sequel-4.29.0.gem
+	source = https://rubygems.org/downloads/sequel-4.29.0.gem
+	sha256sums = 7d3e0b58e8e28d8b0314f4ef743f071c05890ed7129c95948f8f71678a82ccbf
 
 pkgname = ruby-sequel
 
