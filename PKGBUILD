@@ -3,22 +3,20 @@
 
 pkgname=gimp-git
 epoch=1
-pkgver=2.9.2.8.g4f9ec68
+pkgver=2.9.2.18.gee8f0fe
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
 groups=()
-depends=('gtk2>2.24.10' 'lcms2>=2.2' 'libwmf>=0.2.8' 'webkitgtk2>=1.6.1' \
-         'libgexiv2' 'librsvg>=2.16.1' 'libpng>=1.2.27' \
-         'fontconfig>=2.2.0' 'desktop-file-utils' \
-         'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'pygtk>=2.10.4' 'dbus-glib' 'gtk-doc' \
-         'gegl>=0.3.4' 'openexr>=1.6.1' 'cairo>=1.12.2' 'python2' 'hicolor-icon-theme')
-makedepends=('gutenprint>=5.0.0' 'intltool>=0.40.1' \
-  'gnome-python>=2.16.2' 'poppler>=0.12.4' 'pkgconfig>=0.21' \
-  'alsa-lib>=1.0.0' 'libtool>=2.2' 'autoconf>=2.54' 'automake>=1.10' \
-  'libxslt' 'pango>=1.29.4' 'curl>=7.15.1' 'gettext' 'git')
+depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' 'webkitgtk2>=1.6.1' \
+                 'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils' \
+                 'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc' \
+                 'gegl-git>=0.3.4' 'openexr>=1.6.1')
+makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' \
+                   'gnome-python>=2.16.2' 'poppler>=0.12.4' \
+                   'alsa-lib>=1.0.0' 'libxslt')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
             'poppler-glib: for pdf support'
             'alsa-lib: for MIDI event controller module'
@@ -31,7 +29,7 @@ replaces=()
 backup=()
 install='gimp-git.install'
 source=(git://git.gnome.org/gimp
-		linux.gpl)
+	linux.gpl)
 md5sums=('SKIP'
          'bb27bc214261d36484093e857f015f38')
 noextract=()

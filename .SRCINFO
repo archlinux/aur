@@ -1,6 +1,6 @@
 pkgbase = gimp-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 2.9.2.8.g4f9ec68
+	pkgver = 2.9.2.18.gee8f0fe
 	pkgrel = 1
 	epoch = 1
 	url = http://www.gimp.org
@@ -9,39 +9,26 @@ pkgbase = gimp-git
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	makedepends = git
 	makedepends = gutenprint>=5.0.0
 	makedepends = intltool>=0.40.1
 	makedepends = gnome-python>=2.16.2
 	makedepends = poppler>=0.12.4
-	makedepends = pkgconfig>=0.21
 	makedepends = alsa-lib>=1.0.0
-	makedepends = libtool>=2.2
-	makedepends = autoconf>=2.54
-	makedepends = automake>=1.10
 	makedepends = libxslt
-	makedepends = pango>=1.29.4
-	makedepends = curl>=7.15.1
-	makedepends = gettext
-	makedepends = git
-	depends = gtk2>2.24.10
+	depends = pygtk
 	depends = lcms2>=2.2
 	depends = libwmf>=0.2.8
 	depends = webkitgtk2>=1.6.1
 	depends = libgexiv2
 	depends = librsvg>=2.16.1
-	depends = libpng>=1.2.27
-	depends = fontconfig>=2.2.0
 	depends = desktop-file-utils
 	depends = libexif>=0.6.15
 	depends = libart-lgpl>=2.3.19
-	depends = pygtk>=2.10.4
 	depends = dbus-glib
 	depends = gtk-doc
-	depends = gegl>=0.3.4
+	depends = gegl-git>=0.3.4
 	depends = openexr>=1.6.1
-	depends = cairo>=1.12.2
-	depends = python2
-	depends = hicolor-icon-theme
 	optdepends = gutenprint: for sophisticated printing only as gimp has built-in cups print support
 	optdepends = poppler-glib: for pdf support
 	optdepends = alsa-lib: for MIDI event controller module
