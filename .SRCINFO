@@ -6,18 +6,16 @@ pkgbase = gtkevemon-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gtkmm
+	makedepends = gtkmm3
 	makedepends = git
-	depends = gtkmm
+	depends = gtkmm3
 	depends = libxml2
 	depends = openssl
 	provides = gtkevemon
-	conflicts = gtkevemon
-	conflicts = gtkevemon-svn
-	conflicts = gtkevemon-hg
-	replaces = gtkevemon-hg
 	source = git+https://github.com/gtkevemon/gtkevemon/
-	sha512sums = SKIP
+	source = makefile.patch
+	sha256sums = SKIP
+	sha256sums = b8d42a5d59888c1a78fa4f80574fa3c6670ab8c665b931494fdc4d2e0f400791
 
 pkgname = gtkevemon-git
 

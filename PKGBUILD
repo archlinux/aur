@@ -9,10 +9,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/gtkevemon/gtkevemon/"
 license=('GPL3')
 depends=('gtkmm3' 'libxml2' 'openssl')
-makedepends=('gtkmm' 'git')
+makedepends=('gtkmm3' 'git')
 provides=('gtkevemon')
-conflicts=('gtkevemon' 'gtkevemon-svn' 'gtkevemon-hg')
-replaces=('gtkevemon-hg')
 source=(
     "git+https://github.com/gtkevemon/$_gitname/"
     makefile.patch
