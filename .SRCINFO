@@ -1,0 +1,14 @@
+pkgbase = qriollo
+	pkgdesc = El lenguaje más boludo del mundo
+	pkgver = 0.91
+	pkgrel = 0
+	url = http://qriollo.github.io
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = ghc
+	source = qriollo::git+https://github.com/qriollo/qriollo.git
+	md5sums = SKIP
+
+pkgname = qriollo
+
