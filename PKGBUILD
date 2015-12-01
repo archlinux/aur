@@ -20,7 +20,7 @@ source=(
 
 package() {
   mkdir -p "$pkgdir/usr/share"
-  install -D -m 644 "$srcdir/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW" "$pkgdir/usr/lib/cups/filter/brother_lpdwrapper_HLL2380DW"
+  install -D -m 755 "$srcdir/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW" "$pkgdir/usr/lib/cups/filter/brother_lpdwrapper_HLL2380DW"
   install -D -m 644 "$srcdir/opt/brother/Printers/HLL2380DW/cupswrapper/brother-HLL2380DW-cups-en.ppd" "$pkgdir/usr/share/cups/model/HLL2380DW.ppd"
 }
 
