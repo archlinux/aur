@@ -1,6 +1,6 @@
 pkgbase = kodi-git
 	pkgver = 20151130.558a8f1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kodi.tv
 	arch = i686
 	arch = x86_64
@@ -88,7 +88,7 @@ pkgname = kodi-git
 	depends = tinyxml
 	depends = yajl
 	depends = mesa
-	depends = dcadec-git
+	depends = libdcadec.so
 	optdepends = gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED
 	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support

@@ -19,7 +19,7 @@ pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git')
 _gitname='xbmc'
 pkgver=20151130.558a8f1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -97,7 +97,7 @@ package_kodi-git() {
     'bluez-libs' 'fribidi' 'glew' 'hicolor-icon-theme' 'libcdio'
     'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
     'libva' 'libxrandr' 'libxslt' 'lzo' 'sdl2' 'smbclient' 'taglib' 'tinyxml'
-    'yajl' 'mesa' 'dcadec-git'
+    'yajl' 'mesa' 'libdcadec.so'
   )
   optdepends=(
     'gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
