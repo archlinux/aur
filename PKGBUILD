@@ -3,12 +3,12 @@
 
 pkgname=check-manifest
 pkgver=0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Check MANIFEST.in in a Python package for completeness"
 arch=(any)
 url="https://github.com/mgedmin/check-manifest"
 license=('MIT')
-depends=('python' 'python-setuptools')
+depends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/c/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('0b7fbdcbc6311728b0dd24d07c9aff83c62394698b43c3bb59bd7af9880b7676')
 
