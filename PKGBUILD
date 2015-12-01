@@ -1,7 +1,7 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 pkgname=asix-ax88179-dkms
 pkgver=1.14.2
-pkgrel=1
+pkgrel=2
 
 _dirname=AX88179_178A_LINUX_DRIVER_v${pkgver}_SOURCE
 _modname=ax88179_178a
@@ -20,7 +20,7 @@ source=("http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v${
     "0001-No-date-time.patch"
 )
 md5sums=('6eff642a7dbe3e01a9f27f622bb86fc5'
-         'c579a67d6d7a53f2b4566e66b0db2cb7'
+         '514d0362d678e4ce67d40a6a23bbd8fd'
          'd6005a9e529a254e622b52c17134013f'
          '1f0152ac565eb09470fb8dfbb98433e2'
          '24a755ddaa8111dd2ce0ad898ab9d3f3'
