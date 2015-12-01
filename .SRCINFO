@@ -1,7 +1,7 @@
 pkgbase = teamviewer-beta
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings - beta version
-	pkgver = 11.0.51386
-	pkgrel = 3
+	pkgver = 11.0.52520
+	pkgrel = 1
 	url = http://www.teamviewer.com
 	install = teamviewer.install
 	arch = i686
@@ -10,20 +10,20 @@ pkgbase = teamviewer-beta
 	provides = teamviewer
 	conflicts = teamviewer
 	options = !strip
-	source_i686 = http://download.teamviewer.com/download/version_11x/teamviewer_11.0.51386_i386.deb
+	source_i686 = http://download.teamviewer.com/download/version_11x/teamviewer_11.0.52520_i386.deb
 	depends_i686 = fontconfig
 	depends_i686 = libpng12
 	depends_i686 = libsm
 	depends_i686 = libxinerama
 	depends_i686 = libxrender
-	sha256sums_i686 = ff03beed49fcadfc633b08e6cfa7a7043d7d109e355a7f336a35f75f2e3e3ca1
-	source_x86_64 = http://download.teamviewer.com/download/version_11x/teamviewer_11.0.51386_amd64.deb
+	sha256sums_i686 = 66f2444b660b87f2fdc1d19949b94bbd840982d51c3405e4a53799cd6a6c6090
+	source_x86_64 = http://download.teamviewer.com/download/version_11x/teamviewer_11.0.52520_amd64.deb
 	depends_x86_64 = lib32-fontconfig
 	depends_x86_64 = lib32-libpng12
 	depends_x86_64 = lib32-libsm
 	depends_x86_64 = lib32-libxinerama
 	depends_x86_64 = lib32-libxrender
-	sha256sums_x86_64 = e3e969d1bd20662b9065ddf146308241d08cdd876dee66de29be4a7603e571af
+	sha256sums_x86_64 = d862fe3f26bf05e7b7f5fd5972873b5d859e40059c7f41783865594fc58d38fd
 
 pkgname = teamviewer-beta
 

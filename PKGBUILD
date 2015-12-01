@@ -5,8 +5,8 @@
 # Contributor: Hilinus <itahilinus at hotmail dot it>
 
 pkgname=teamviewer-beta
-pkgver=11.0.51386
-pkgrel=3
+pkgver=11.0.52520
+pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings - beta version'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com'
@@ -29,8 +29,8 @@ depends_i686=(
 install=teamviewer.install
 source_x86_64=("http://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
 source_i686=("http://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
-sha256sums_x86_64=('e3e969d1bd20662b9065ddf146308241d08cdd876dee66de29be4a7603e571af')
-sha256sums_i686=('ff03beed49fcadfc633b08e6cfa7a7043d7d109e355a7f336a35f75f2e3e3ca1')
+sha256sums_x86_64=('d862fe3f26bf05e7b7f5fd5972873b5d859e40059c7f41783865594fc58d38fd')
+sha256sums_i686=('66f2444b660b87f2fdc1d19949b94bbd840982d51c3405e4a53799cd6a6c6090')
 
 prepare() {
 	tar -xf data.tar.bz2
