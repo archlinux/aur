@@ -1,6 +1,6 @@
 pkgbase = cvechecker
 	pkgdesc = a local CVE checker tool
-	pkgver = 3.5
+	pkgver = 3.6
 	pkgrel = 0
 	url = http://cvechecker.sourceforge.net/
 	install = cvechecker.install
@@ -14,8 +14,8 @@ pkgbase = cvechecker
 	depends = libxslt
 	provides = cvechecker
 	conflicts = cvechecker-svn
-	source = http://sourceforge.net/projects/cvechecker/files/cvechecker-3.5.tar.gz
-	md5sums = d8aa4dcdf11ad9c19521fbb96132074e
+	source = https://raw.githubusercontent.com/wiki/sjvermeu/cvechecker/releases/cvechecker-3.6.tar.gz
+	md5sums = e42482fa97bc9e73534fe37b45d1b1fb
 
 pkgname = cvechecker
 

@@ -1,8 +1,8 @@
-# Contributor: Francesco Colista <francesco.colista@gmail.com>
-# Maintainer: Francesco Colista <francesco.colista@gmail.com>
+# Contributor: Francesco Colista <fcolista@alpinelinux.org>
+# Maintainer: Francesco Colista <fcolista@alpinelinux.org>
 
 pkgname=cvechecker
-pkgver=3.5
+pkgver=3.6
 pkgrel=0
 pkgdesc="a local CVE checker tool"
 arch=('i686' 'x86_64')
@@ -19,20 +19,21 @@ options=()
 install='cvechecker.install'
 source=()
 noextract=()
-md5sums=('d8aa4dcdf11ad9c19521fbb96132074e')
-source="http://sourceforge.net/projects/cvechecker/files/$pkgname-$pkgver.tar.gz"
+md5sums=('e42482fa97bc9e73534fe37b45d1b1fb')
+source="https://raw.githubusercontent.com/wiki/sjvermeu/$pkgname/releases/$pkgname-$pkgver.tar.gz"
+
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr \
+	cd ${srcdir}/${pkgname}-${pkgver}
+	./configure --prefix=/usr \
 		--sysconfdir=/etc \
 		--localstatedir=/var \
 		--enable-sqlite3
-  make
+	make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make install DESTDIR=${pkgdir}
+	cd ${srcdir}/${pkgname}-${pkgver}
+	make install DESTDIR=${pkgdir}
 }
 
