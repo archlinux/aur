@@ -1,3 +1,4 @@
+# Contributor louipc base64:TG91aSBDaGFuZyA8bG91aXBjLmlzdEBnbWFpbC5jb20+
 pkgname="oysttyer-git"
 pkgver=134.c6ff39e
 pkgrel=1
