@@ -6,6 +6,7 @@ pkgdesc="interactive command-line Twitter client"
 url="https://github.com/oysttyer/oysttyer"
 arch=('any')
 depends=('perl')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/oysttyer/oysttyer.git")
 sha1sums=('SKIP')
 

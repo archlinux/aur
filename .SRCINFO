@@ -4,6 +4,7 @@ pkgbase = oysttyer-git
 	pkgrel = 1
 	url = https://github.com/oysttyer/oysttyer
 	arch = any
+	makedepends = git
 	depends = perl
 	source = oysttyer-git::git+https://github.com/oysttyer/oysttyer.git
 	sha1sums = SKIP
