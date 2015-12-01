@@ -41,7 +41,7 @@ package () {
   install -d "$pkgdir"/usr/share/doc/freediag/carsim_examples
   mv "$pkgdir"/usr/bin/*.db "$pkgdir"/usr/share/doc/freediag/carsim_examples
   mv "$pkgdir"/usr/doc/* "$pkgdir"/usr/share/doc/freediag
-  mv "$pkgdir"/usr/{A*,C*,O*,R*} "$pkgdir"/usr/share/doc/freediag
+  mv "$pkgdir"/usr/{A*,C*,R*} "$pkgdir"/usr/share/doc/freediag
   rm -r "$pkgdir"/usr/doc
 }
 
