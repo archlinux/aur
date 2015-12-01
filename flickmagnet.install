@@ -19,6 +19,11 @@ post_install() {
 EOF
 }
 
+
+pre_remove() {
+    systemctl stop flickmagnet
+}
+
 post_remove() {
     getent passwd deluge &>/dev/null && {
         echo -n ">>> Deleting user... "
