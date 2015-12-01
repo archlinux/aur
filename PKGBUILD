@@ -10,7 +10,7 @@ arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
-makedepends=('perl-module-build')
+makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-harness>=3.29')
 url="http://search.cpan.org/dist/${_pkgname}/"
 source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)

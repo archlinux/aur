@@ -7,7 +7,7 @@ pkgbase = perl-net-mpd
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-harness>=3.29
-	makedepends = perl-module-build
+	makedepends = perl-module-build-tiny
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/A/AB/ABERNDT/Net-MPD-0.05.tar.gz
