@@ -23,20 +23,21 @@ source=("https://git.fedorahosted.org/cgit/${pkgname}.git/snapshot/${pkgname}-${
 sha256sums=('00acf7949c3413053cb752fc5264b3fb6b7f165a68cf756f22ef7bee8d624450')
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    ./autogen.sh
-    ./configure --prefix=/usr      \
-                --sysconfdir=/etc  \
-                --libdir=/usr/lib  \
-                --sbindir=/usr/bin
+  cd "${pkgname}-${pkgver}"
+  ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libdir=/usr/lib \
+    --sbindir=/usr/bin
 
-    sed -i "s|@VERSION@|${pkgver}|" docs/${pkgname}{,chain}.1
-    make
+  sed -i "s|@VERSION@|${pkgver}|" docs/${pkgname}{,chain}.1
+  make
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
 
 # vi:set ts=2 sw=2 et:
