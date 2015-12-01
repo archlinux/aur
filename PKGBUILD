@@ -5,7 +5,7 @@
 # Maintainer:      Tyler Brock <tyler@mongodb.com>
 
 pkgname='mongo-c-driver'
-pkgver='1.2.1'
+pkgver='1.2.2'
 pkgrel='1'
 
 pkgdesc='The official MongoDB client library written in C.'
@@ -21,12 +21,12 @@ optdepends=(
     'libsasl>=2.1.6: sasl support'
     'openssl: ssl support'
 )
-source=("https://github.com/mongodb/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('08af2266bac3c9ae30cc4f834e8cf5bb0d9a2bf5094c03d4825ca2d367c987d9fa1504bece0fcbfbb42d20841efb2ad1babff87fbe01053039973ea693905728')
+source=("https://github.com/mongodb/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('236870dc3f3019ad315b46cca496ba90728e6c92f730553d390c84bbd09318887961712be1862c4e3591173db621dc83467cedcf981cfea7dcb6efb669500849')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./configure --prefix='/usr' CFLAGS='-pthread' LDFLAGS='-lpthread' --enable-man-pages=yes --with-libbson=system --enable-examples=no --enable-tests=no
+    ./autogen.sh --prefix='/usr' CFLAGS='-pthread' LDFLAGS='-lpthread' --enable-man-pages=yes --with-libbson=system --enable-examples=no --enable-tests=no
     make
 }
 
