@@ -3,7 +3,7 @@
 pkgname=qriollo
 binname=qr
 pkgver=0.91
-pkgrel=1
+pkgrel=2
 pkgdesc="El lenguaje más boludo del mundo"
 arch=('i686' 'x86_64')
 url="http://qriollo.github.io"
@@ -20,8 +20,8 @@ build() {
 package() {
     cd $pkgname
     install -Dm755 $binname "$pkgdir/usr/bin/$binname"
-    mkdir "$pkgdir/usr/share/qriollo"
     install -Dm555 Chamuyo.q "$pkgdir/usr/share/qriollo/Chamuyo.q"
+    export RUTA_QRIOLLO="$pkgdir/usr/share/qriollo"
 }
 
 post_install() {
