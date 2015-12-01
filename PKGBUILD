@@ -28,6 +28,7 @@ prepare() {
         mkdir "${srcdir}/build"
         cd "${srcdir}/${_gitname}"
         find ./ -type f -exec sed -i 's:#include <quazip/:#include <quazip5/:g' {} \;
+        sed -i 's:-lquazip-qt5:-lquazip5:g' oinut.pro
 }
 build() {
 	cd "${srcdir}/build"
