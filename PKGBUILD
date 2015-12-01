@@ -2,7 +2,7 @@
 # Contributor: Christopher Rogers <slaxemulator@gmail.com>
 
 pkgname=jnetmap
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Graphical network monitoring and documentation tool"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://rakudave.ch/jnetmap"
 license=('GPL3')
 depends=('java-runtime')
 source=(http://sourceforge.net/projects/$pkgname/files/jNetMap%20$pkgver/jNetMap-$pkgver.jar)
-sha256sums=('67a21c7fa3d82ca3c153587ab7187a0dcaac4f99344c796fab1e188ba58599c0')
+sha256sums=('d42a99918f55073736fc6c67efc0d59ec37a864cb9f6a516ff0a4a008c72ba5b')
 
 package() {
   cd "${srcdir}"
