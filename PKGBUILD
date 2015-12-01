@@ -7,25 +7,27 @@
 
 pkgname=vlock-original
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A small console locking program"
 url="http://cthulhu.c3d2.de/~toidinamai/vlock/vlock.html"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('pam')
 install=$pkgname.install
-source=("ftp://harrier.slackbuilds.org/misc/vlock-${pkgver}.tar.gz")
-md5sums=('378175c7692a8f288e65fd4dbf8a38eb')
+source=("git+git://repo.or.cz/vlock.git#tag=vlock-${pkgver}")
+md5sums=('SKIP')
 
 build() {
-    cd "$srcdir/vlock-$pkgver"
-    ./configure --prefix=/usr
+    cd "$srcdir/vlock"
+    ./configure --prefix=/usr --sbindir=/usr/bin
     make
 }
 
 package() {
-    cd "$srcdir/vlock-$pkgver"
+    cd "$srcdir/vlock"
     make DESTDIR="$pkgdir" VLOCK_GROUP=129 install
+
+    rm -rf "${pkgdir}/usr/sbin/"
 
     find "$pkgdir" -type f -name 'vlock*' -exec sh -c '
     dir=${0%/*}
