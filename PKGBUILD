@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=median
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Calculate the median values for a set of groups"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python3)
 makedepends=(make coreutils texinfo)
 install=$pkgname.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(f0dccd9ef39ee5885bd81f9b0f31a8bb7ff84e8939267aae6118361c33db09e6)
+sha256sums=(e988111e206ecfb7fae08218997f919179d25be6a88d9c8cbbc1388bb6e665d9)
 
 
 build() {

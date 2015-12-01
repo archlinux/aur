@@ -1,6 +1,6 @@
 pkgbase = median
 	pkgdesc = Calculate the median values for a set of groups
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/maandree/median
 	install = median.install
@@ -10,8 +10,8 @@ pkgbase = median
 	makedepends = coreutils
 	makedepends = texinfo
 	depends = python3
-	source = https://github.com/maandree/median/archive/1.1.tar.gz
-	sha256sums = f0dccd9ef39ee5885bd81f9b0f31a8bb7ff84e8939267aae6118361c33db09e6
+	source = https://github.com/maandree/median/archive/1.2.tar.gz
+	sha256sums = e988111e206ecfb7fae08218997f919179d25be6a88d9c8cbbc1388bb6e665d9
 
 pkgname = median
 
