@@ -1,0 +1,18 @@
+pkgbase = chirp-daily
+	pkgdesc = Daily build for GUI tool for programming ham radios; this pkgbuild is never out of date
+	pkgver = 20151201
+	pkgrel = 1
+	url = http://chirp.danplanet.com/
+	arch = any
+	license = GPL
+	depends = python2-lxml
+	depends = python2-pyserial
+	depends = desktop-file-utils
+	depends = pygtk
+	depends = curl
+	provides = chirp
+	conflicts = chirp
+	options = !emptydirs
+
+pkgname = chirp-daily
+
