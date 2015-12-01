@@ -1,0 +1,15 @@
+pkgbase = opendaylight
+	pkgdesc = OpenDaylight is leading the transformation to Open SDN.
+	pkgver = 0.3.2_Lithium_SR2
+	pkgrel = 1
+	url = https://www.opendaylight.org/
+	install = opendaylight.install
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = java-runtime
+	source = https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.3.2-Lithium-SR2/distribution-karaf-0.3.2-Lithium-SR2.tar.gz
+	sha256sums = 6430f977921f069e95f49f356500795fc18657b15a94e4f8893a5134f315f752
+
+pkgname = opendaylight
+
