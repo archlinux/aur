@@ -12,6 +12,7 @@ pkgbase = turses
 	depends = python2-tweepy-git
 	depends = python2-urwid
 	depends = python2-setuptools
+	conflicts = turses-git
 	source = https://github.com/dialelo/turses/archive/v0.3.1.tar.gz
 	md5sums = 9c3b1d3739a40698d7f92103ee8286ba
 
