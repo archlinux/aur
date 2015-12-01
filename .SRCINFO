@@ -1,0 +1,16 @@
+pkgbase = soil2-hg
+	pkgdesc = A tiny C library used primarily for uploading textures into OpenGL.
+	pkgver = r52.afce5f882d73
+	pkgrel = 1
+	url = https://bitbucket.org/SpartanJ/soil2
+	arch = i686
+	arch = x86_64
+	license = Public Domain
+	makedepends = mercurial
+	makedepends = premake
+	makedepends = sdl2
+	source = hg+https://bitbucket.org/SpartanJ/soil2
+	sha512sums = SKIP
+
+pkgname = soil2-hg
+
