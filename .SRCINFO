@@ -8,6 +8,7 @@ pkgbase = i2pd
 	arch = x86_64
 	license = GPL2
 	makedepends = boost
+	makedepends = cmake
 	depends = crypto++
 	depends = boost-libs
 	conflicts = i2pd-git
