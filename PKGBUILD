@@ -8,8 +8,8 @@
 
 _pack=splines
 pkgname=octave-$_pack
-pkgver=1.2.8
-pkgrel=3
+pkgver=1.2.9
+pkgrel=1
 pkgdesc="Additional spline functions."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -24,8 +24,8 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha1sums=('9b4824aa26b8b49c46fe6937e46a01a25451dcc5')
-md5sums=('ef569ae0257586e608bc0af54e811978')
+sha1sums=('35c845a158ab5601319baf937031c3eb995b9bbe')
+md5sums=('38433e0cef4cc084201e2993d3683c97')
 
 build() {
   cd "$srcdir"
