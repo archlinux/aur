@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=r-studio
-pkgver=3.7.1568
+pkgver=4.7.1568
 pkgrel=1
 pkgdesc="Undelete and data recovery software"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ source=(http://www.r-tt.com/downloads/RStudio3_$_arch.deb
         $pkgname.desktop
         $pkgname.png)
         
-md5sums=('cd445fd706497dfc987c59f29d12a3ec'
+md5sums=('c7d3b9f62863a9f737a48640dda5909a'
          '023626f715a2581768dac0c6de07ebae'
          '21f1baf671cd9c49c740d92b506203f9')
-[[ "$CARCH" == 'x86_64' ]] && md5sums[0]='7b8f37f4a62688a938c036eef974d568'
+[[ "$CARCH" == 'x86_64' ]] && md5sums[0]='55333be5559dc603766d68c7ca12744b'
 
 package() {
   cd $srcdir
@@ -30,3 +30,6 @@ package() {
   install -vDm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
 
+md5sums=('55333be5559dc603766d68c7ca12744b'
+         '023626f715a2581768dac0c6de07ebae'
+         '21f1baf671cd9c49c740d92b506203f9')
