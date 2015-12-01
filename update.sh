@@ -18,4 +18,5 @@ echo "Downloading ${FILE_i686}..."
 sed -i -e "s/_arch='ia32'; sha256sums=('.*/_arch='ia32'; sha256sums=('`curl -L ${FILE_URL}/${FILE_i686} | sha256sum | cut -d' ' -f1`');;/" PKGBUILD
 echo "Downloading ${FILE_x86_64}..."
 sed -i -e "s/_arch='x64' ; sha256sums=('.*/_arch='x64' ; sha256sums=('`curl -L ${FILE_URL}/${FILE_x86_64} | sha256sum | cut -d' ' -f1`');;/" PKGBUILD
+mksrcinfo
 echo "PKGBUILD updated!"
