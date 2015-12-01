@@ -11,8 +11,8 @@ sha1sums=SKIP
 
 source=("https://dl.dropboxusercontent.com/u/29821993/tunesviewer_1.5.3.tar.gz")
 
-depends=("python2>=2.6" "pygtk>=2.16" "python2-lxml>=2.0" "python2-notify" "python2-support>=0.90" "pywebkitgtk>=1.1.4" ")
-optdepends=("soundconverter>=1.0" "vlc>=1.0")
+depends=("python2" "pygtk" "python2-lxml" "python2-notify" "python2-support" "pywebkitgtk")
+optdepends=("soundconverter" "vlc")
 
 package() {
   mkdir -p $pkgdir/usr

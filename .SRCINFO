@@ -2,7 +2,7 @@ pkgbase = tunesviewer
 	pkgdesc = TunesViewer is a small, easy to use program to access iTunes-university media and podcasts in Linux.
 	pkgver = 1.5.3
 	pkgrel = 1
-	url = http://sourceforge.net/projects/tunesviewer
+	url = http://sourceforge.net/projects/tunesviewer/
 	arch = x86_64
 	arch = i686
 	depends = python2
@@ -13,5 +13,9 @@ pkgbase = tunesviewer
 	depends = pywebkitgtk
 	optdepends = soundconverter
 	optdepends = vlc
+	options = !strip
 	source = https://dl.dropboxusercontent.com/u/29821993/tunesviewer_1.5.3.tar.gz
+	sha1sums = SKIP
+
 pkgname = tunesviewer
+
