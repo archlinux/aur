@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20151112
+pkgver=20151130
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -16,6 +16,7 @@ depends=('hicolor-icon-theme'
          'python2'
          'python2-dnspython'
          'python2-ecdsa'
+         'python2-jsonrpclib'
          'python2-pbkdf2'
          'python2-protobuf'
          'python2-pyqt4'
@@ -59,6 +60,12 @@ prepare() {
   msg2 'Fixing Python version...'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
+
+  msg2 'Fixing app.fil...'
+  # plugins/labels.py → plugins/labels/labels.py
+  sed -i 's@plugins/labels.py@plugins/labels/labels.py@' app.fil
+  # plugins/virtualkeyboard.py → plugins/virtualkeyboard/qt.py
+  sed -i 's@plugins/virtualkeyboard.py@plugins/virtualkeyboard/qt.py@' app.fil
 }
 
 build() {
