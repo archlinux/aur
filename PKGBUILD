@@ -25,7 +25,3 @@ package() {
     echo "export RUTA_QRIOLLO=".:/usr/share/qriollo"" > qriollo.sh
     install qriollo.sh -Dm755 $pkgdir/etc/profile.d/qriollo.sh
 }
-
-post_install() {
-    qr
-}

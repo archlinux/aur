@@ -1,0 +1,4 @@
+post_install() {
+    echo "to make qr work, run \n\t source /etc/profile.d/qriollo.sh"
+    qr
+}
