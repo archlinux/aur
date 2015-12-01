@@ -1,7 +1,7 @@
 pkgbase = eiciel-git
 	pkgdesc = GNOME 3 file ACL editor (Git version)
 	pkgver = 0.9.11.r54.29785ab
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rofi.roger-ferrer.org/eiciel/
 	install = eiciel-git.install
 	arch = i686

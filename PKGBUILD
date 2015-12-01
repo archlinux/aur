@@ -5,7 +5,7 @@
 
 pkgname=eiciel-git
 pkgver=0.9.11.r54.29785ab
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME 3 file ACL editor (Git version)"
 arch=('i686' 'x86_64')
 url="http://rofi.roger-ferrer.org/eiciel/"
@@ -31,13 +31,9 @@ pkgver() {
   printf "%sr%s.%s" "$_ver" "$_rev" "$_hash"
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-  autoreconf -vif
-}
-          
 build() {
   cd "${pkgname%-git}"
+  autoreconf -vif
   ./configure --prefix=/usr
   make
 }
