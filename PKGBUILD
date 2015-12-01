@@ -3,7 +3,7 @@
 pkgname=qriollo
 binname=qr
 pkgver=0.91
-pkgrel=11
+pkgrel=12
 install=.INSTALL
 pkgdesc="El lenguaje más boludo del mundo"
 arch=('i686' 'x86_64')
