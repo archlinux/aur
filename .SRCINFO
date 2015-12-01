@@ -1,13 +1,16 @@
 pkgbase = pip-tools
 	pkgdesc = A set of tools to keep your pinned Python dependencies fresh.
-	pkgver = 0.3.6
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/nvie/pip-tools
 	arch = any
 	license = BSD
-	depends = python2
-	source = http://pypi.python.org/packages/source/p/pip-tools/pip-tools-0.3.6.tar.gz
-	md5sums = 931183954992b1f381aaff688be6a227
+	depends = python-click
+	depends = python-six
+	source = http://pypi.python.org/packages/source/p/pip-tools/pip-tools-1.2.0.tar.gz
+	source = LICENSE.txt
+	md5sums = f1771bee558b5abd8b206fdeb1e51d69
+	md5sums = b542fe20de254615b3ab48020bc73441
 
 pkgname = pip-tools
 
