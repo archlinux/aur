@@ -38,3 +38,5 @@ package() {
     cd "${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
+
+# vi:set ts=2 sw=2 et:
