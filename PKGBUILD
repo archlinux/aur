@@ -4,7 +4,7 @@
 
 pkgname=z-push
 pkgver=2.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
@@ -62,5 +62,5 @@ package() {
     mkdir -p ${pkgdir}/etc/php/fpm.d
     cp ${srcdir}/z-push.conf ${pkgdir}/etc/php/fpm.d
 
-    mkdir -p ${pkgdir}/var/{lib,log}/z-push
+    mkdir -p ${pkgdir}/var/log/z-push
 }
