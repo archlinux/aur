@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame2014-git
-pkgver=34999.6fa5b13
+pkgver=35008.6d370c1
 
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
