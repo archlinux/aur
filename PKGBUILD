@@ -1,13 +1,13 @@
 # Maintainer: Manuel Mendez <mmendez534@gmail.com>
 pkgname=bcc-git
 pkgver=v0.1.6.r134.4d97f7f
-pkgrel=1
+pkgrel=2
 pkgdesc="BPF Compiler Collection"
 arch=(x86_64 x86)
 url="https://github.com/iovisor/bcc"
 license=('Apache')
 depends=('python')
-makedepends=('git' 'cmake' 'python')
+makedepends=('git' 'clang' 'cmake' 'llvm' 'python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/iovisor/bcc')
