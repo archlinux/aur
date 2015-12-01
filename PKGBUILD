@@ -1,4 +1,4 @@
-# Maintainer:  Francesco Colista <francesco.colista@gmail.com>
+# Maintainer:  Francesco Colista <fcolista@alpinelinux.org>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=arcadia
@@ -14,7 +14,7 @@ optdepends=('ctags: other languages support'
             'xterm: termina integration'
 		    'ruby-debug: debug support')
 source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
-md5sums=('e12e52a2def29191bddbc03cc9e76bd9')
+md5sums=('d458d6208f229be446b6dcdbf1c127cd')
 build() {
   cd "$srcdir"
 }
