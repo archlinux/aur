@@ -3,7 +3,7 @@
 
 pkgname=qbittorrent-nogui
 _pkgname=qbittorrent
-pkgver=3.2.5
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A bittorrent client based on Qt4 toolkit and libtorrent-rasterbar, w/o gui"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('boost'
 conflicts=('qbittorrent-git-nogui')
 source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
         'qbittorrent.service')
-sha256sums=('98f69c7324276c7c144738eb36b21a2d28d7f01a327104568f020887626e822b'
+sha256sums=('ded08fcc1cf227700b81020395166541cd8c63efb2cbdfc97ac62be6458dbddb'
             '912bb191cd942131b23d6d6b9a53d2dbbcd86247c3236f68e62c2c1e13393942')
 
 build() {
