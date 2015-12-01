@@ -3,7 +3,7 @@
 pkgname=afterstep-git
 _name=AfterStep
 _pkgname=afterstep
-pkgver=2.2.12.r18.g4f62e0d
+pkgver=2.2.12.r19.g6518e9d
 pkgrel=1
 pkgdesc="A Window Manager based on NextStep Interface"
 arch=('i686' 'x86_64')
@@ -14,19 +14,12 @@ makedepends=('libxt')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!emptydirs' 'staticlibs')
-source=("$_pkgname::git+https://github.com/sashavasko/afterstep-devel.git"
-        desktop_entry.patch)
-md5sums=('SKIP'
-         '90cb380546b5d64208f13ab4f473f56d')
+source=("$_pkgname::git+https://github.com/bbidulock/afterstep-devel.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd $_pkgname
-  patch -p0 -i ../desktop_entry.patch
 }
 
 build() {
@@ -38,7 +31,7 @@ build() {
 package() {
   cd $_pkgname
   make DESTDIR="$pkgdir" install
-  install -Dm644 $_name.desktop "$pkgdir/usr/share/xsessions/$_name.desktop"
+  install -Dm644 $_name.desktop.final "$pkgdir/usr/share/xsessions/$_name.desktop"
   
   # fix permission
   chmod 644 "$pkgdir"/usr/lib/*.a
