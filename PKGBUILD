@@ -1,7 +1,7 @@
 # Maintainer: David McInnis<davidm@eagles.ewu.edu>
 
 pkgname=texlive-ewuthesis
-pkgver=2015.11.25
+pkgver=2015.12.01
 pkgrel=1
 pkgdesc="Style for Master's Thesis at Eastern Washington University"
 license=('LPPL')
@@ -10,7 +10,7 @@ depends=('texlive-core' 'texlive-htmlxml' 'texlive-plainextra' 'texlive-langextr
 url='https://github.com/oraac/texlive-ewuthesis'
 source=("ewuthesis.tgz::https://github.com/oraac/texlive-ewuthesis/blob/master/packaged/ewuthesis.tgz?raw=true")
 install=texlive-ewuthesis.install
-sha256sums=('1632d064d58b5ce25035d58408e007eb2e802e4c8677c410f8aa8c71346bc0c0')
+sha256sums=('c2c693d896c8e464da132da6d8a4e9a6bea38fb52a166fd8f5ed02f6bd932ad9')
 
 build() {
     cd "$srcdir/$pkgname"
