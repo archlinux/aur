@@ -1,0 +1,18 @@
+pkgbase = turses-git
+	pkgdesc = ncurses Twitter client
+	pkgver = 778.f0952f9
+	pkgrel = 1
+	url = https://github.com/dialelo/turses
+	arch = any
+	license = GPLv3
+	depends = ncurses
+	depends = python
+	depends = python-future
+	depends = python-setuptools
+	depends = python-tweepy
+	depends = python-urwid
+	source = turses-git::git+https://github.com/dialelo/turses.git
+	sha1sums = SKIP
+
+pkgname = turses-git
+
