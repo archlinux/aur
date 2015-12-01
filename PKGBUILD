@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=fraqtive
-pkgver=0.4.6
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Program for drawing Mandelbrot and Julia fractals"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('hicolor-icon-theme' 'qt4' 'glu' 'xdg-utils')
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('5b799a1da39de1e6aa28674e3c2a2359df630c42f9d9b3fa051dee0db4aace4c')
+sha256sums=('dbb21b5e6305cbf02c27aaedb12c5125ac873600bce10d12e88b2305a2083cd7')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
