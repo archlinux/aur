@@ -1,7 +1,7 @@
 pkgbase = qriollo
 	pkgdesc = El lenguaje más boludo del mundo
 	pkgver = 0.91
-	pkgrel = 8
+	pkgrel = 9
 	url = http://qriollo.github.io
 	arch = i686
 	arch = x86_64
