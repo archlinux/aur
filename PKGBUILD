@@ -20,6 +20,8 @@ build() {
 package() {
     cd $pkgname
     install -Dm755 $binname "$pkgdir/usr/bin/$binname"
+    mkdir "$pkgdir/usr/share/qriollo"
+    install -Dm555 Chamuyo.q "$pkgdir/usr/share/qriollo/Chamuyo.q"
 }
 
 post_install() {
