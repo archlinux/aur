@@ -1,0 +1,29 @@
+pkgbase = xdm-xfreq
+	pkgdesc = A customized XDM for XFreq
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/cyring/xdm-xfreq
+	install = xdm-xfreq.install
+	arch = any
+	license = GPL
+	depends = xorg-xdm
+	depends = xorg-xclock
+	depends = xorg-xmessage
+	depends = xfreq-git
+	optdepends = scrot
+	optdepends = imagemagick
+	optdepends = xorg-xsetroot
+	optdepends = numlockx
+	backup = etc/xdm-xfreq/Xresources
+	backup = etc/xdm-xfreq/config.sh
+	source = xdm-config
+	source = Xsetup
+	source = Xstartup
+	source = Xresources
+	source = Xsession
+	source = config.sh
+	source = xdm-xfreq.service
+	md5sums = SKIP
+
+pkgname = xdm-xfreq
+

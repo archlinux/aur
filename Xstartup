@@ -1,0 +1,21 @@
+#!/bin/sh
+source /etc/xdm-xfreq/config.sh
+
+# kill all and clean-up.
+if [ -r $XDM_XFREQ_GUI_PID ]; then
+	kill `cat $XDM_XFREQ_GUI_PID` > /dev/null 2>&1
+	rm $XDM_XFREQ_GUI_PID
+fi
+if [ -r $XDM_XFREQ_BUTTONS_PID ]; then
+#	kill `$XDM_XFREQ_BUTTONS_PID` > /dev/null 2>&1
+	killall $XDM_XFREQ_BUTTONS_PATH
+	rm $XDM_XFREQ_BUTTONS_PID
+fi
+if [ -r $XDM_XFREQ_CLOCK_PID ]; then
+	kill `cat $XDM_XFREQ_CLOCK_PID` > /dev/null 2>&1
+	rm $XDM_XFREQ_CLOCK_PID
+fi
+
+chown $USER /dev/console
+exec /usr/bin/sessreg  -a -w "/var/log/wtmp" -u "/run/utmp" \
+        -x "/etc/X11/xdm/Xservers" -l $DISPLAY -h "" $USER

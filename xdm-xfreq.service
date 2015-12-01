@@ -1,0 +1,9 @@
+[Unit]
+Description=X-Window Display Manager
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/bin/xdm -nodaemon -config /etc/X11/xdm/xdm-xfreq/xdm-config
+
+[Install]
+Alias=display-manager.service

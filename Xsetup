@@ -1,0 +1,79 @@
+#!/bin/sh
+source /etc/xdm-xfreq/config.sh
+
+if [ $XDM_XFREQ_KEYB_LED_PATH ]; then
+$XDM_XFREQ_KEYB_LED_PATH $XDM_XFREQ_KEYB_LED_ARGS
+fi
+if [ $XDM_XFREQ_BG_COLOR_PATH ]; then
+$XDM_XFREQ_BG_COLOR_PATH $XDM_XFREQ_BG_COLOR_ARGS
+fi
+if [ $XDM_XFREQ_BG_WALLPAPER_PATH ]; then
+$XDM_XFREQ_BG_WALLPAPER_PATH $XDM_XFREQ_BG_WALLPAPER_ARGS
+fi
+if [ $XDM_XFREQ_CLOCK_PATH ]; then
+$XDM_XFREQ_CLOCK_PATH $XDM_XFREQ_CLOCK_ARGS & echo $! > $XDM_XFREQ_CLOCK_PID
+fi
+
+LOOP=true
+( while [[ $LOOP && $XDM_XFREQ_BUTTONS_PATH ]]; do
+	$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_MENU "";
+	case "$?" in
+	143)
+		unset LOOP
+		;;
+	99)
+		$XDM_XFREQ_SCREENSHOT_PATH $XDM_XFREQ_SCREENSHOT_ARGS &
+		;;
+	11)
+		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_PWROFF ""
+		case "$?" in
+		143)
+			unset LOOP
+			;;
+		11)
+			$XDM_XFREQ_POWEROFF_CMD
+			;;
+		esac
+		;;
+	12)
+		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_HALT ""
+                case "$?" in
+                143)
+                        unset LOOP
+                        ;;
+                11)
+			$XDM_XFREQ_HALT_CMD
+			;;
+                esac
+                ;;
+	13)
+                $XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_REBOOT ""
+                case "$?" in
+                143)
+                        unset LOOP
+                        ;;
+                11)
+			$XDM_XFREQ_REBOOT_CMD
+			;;
+                esac
+                ;;
+	14)
+		$XDM_XFREQ_SLEEP_CMD
+		;;
+	15)
+                $XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_RESCUE ""
+                case "$?" in
+                143)
+                        unset LOOP
+                        ;;
+                11)
+			$XDM_XFREQ_RESCUE_CMD
+			;;
+                esac
+                ;;
+	esac;
+done ) & echo $! > $XDM_XFREQ_BUTTONS_PID
+
+if [ $XDM_XFREQ_GUI_PATH ]; then
+	$XDM_XFREQ_GUI_PATH $XDM_XFREQ_GUI_ARGS & echo $! > $XDM_XFREQ_GUI_PID
+fi

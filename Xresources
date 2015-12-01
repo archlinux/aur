@@ -1,0 +1,81 @@
+*Foreground:#cc4c00
+*Background:#2a0308
+
+!Xcursor.theme:whiteglass
+!Xcursor.theme:left_ptr
+
+xlogin*width:560
+!xlogin*height:192
+xlogin*login.translations: #override \
+	Ctrl<Key>R: restart-session()\n\
+	<Key>F1: set-session-argument(failsafe) finish-field()\n\
+        <Key>F2: set-session-argument(twm) finish-field()\n\
+        <Key>F3: set-session-argument(mwm) finish-field()\n\
+        <Key>F4: set-session-argument(awesome) finish-field()\n\
+        <Key>F5: set-session-argument(dwm) finish-field()\n\
+        <Key>F6: set-session-argument(startkde) finish-field()\n\
+	<Key>Delete: delete-character()\n\
+	<Key>Left: move-backward-character()\n\
+	<Key>Right: move-forward-character()\n\
+	<Key>Home: move-to-begining()\n\
+	<Key>End: move-to-end()\n\
+	Ctrl<Key>KP_Enter: set-session-argument(failsafe) finish-field()\n\
+	<Key>KP_Enter: set-session-argument() finish-field()\n\
+	Ctrl<Key>Return: set-session-argument(failsafe) finish-field()\n\
+	<Key>Return: set-session-argument() finish-field()\n\
+
+!xlogin*greeting: CLIENTHOST
+xlogin*greeting:[F1] FailSafe\040\040\040[F2] Twm\040\040\040[F3] Mwm\040\040\040[F4] Awesome\040\040\040[F5] Dwm\040\040\040[F6] Plasma
+!xlogin.Login.namePrompt:Login:\040\040\040
+xlogin*fail:Access denied
+xlogin*greetFont:-xos4-terminus-*-*-*-*-12-*-*-*-*-*-*-*
+xlogin*greetFace:Nasalization-8
+xlogin*font:-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+xlogin*face:Sans-9
+xlogin*promptFont:-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+xlogin.Login.promptFace:Nasalisation-9
+xlogin*failFont:-*-arial-*-i-*-*-*-*-*-*-*-*-*-*
+xlogin.Login.failFace:Nasalization-9:bold:italic
+xlogin*sepWidth:1
+xlogin*borderWidth:1
+xlogin*frameWidth:1
+xlogin*innerFramesWidth:2
+xlogin*shdColor:#404040
+xlogin*hiColor:#737373
+xlogin*background:#2a0308
+xlogin*foreground:white
+xlogin*greetColor:#cc4c00
+xlogin*failColor:yellow
+!xlogin*logoFileName:/usr/share/xdm/pixmaps/xorg.xpm
+xlogin*useShape:true
+xlogin*logoPadding:0
+
+!Xmessage*geometry:2304x32+0-0
+Xmessage*message.scrollVertical:never
+Xmessage*message.scrollHorizontal:never
+Xmessage*borderWidth:0
+Xmessage*Text.borderWidth:0
+Xmessage*Command.highlightThickness:1
+Xmessage*Command.internalWidth:12
+Xmessage*Command.internalHeight:4
+Xmessage*Command.shapeStyle:rectangle
+Xmessage*font:-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+Xmessage*Text.face:Nasalization-9
+
+!XClock*geometry:256x32-0-0
+XClock*analog:false
+XClock*strftime:%a %e %b\040\040\040%H:%M:%S
+XClock*update:1
+XClock*borderWidth:0
+!XClock*Command.internalHeight:8
+!XClock.width:64
+XClock*face:Alien Encounters
+
+!Chooser*geometry:256x128+0+0
+Chooser*allowShellResize:false
+Chooser*viewport.forceBars:false
+Chooser*label.font:-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+Chooser*label.face:Nasalization-9
+Chooser*label.label:XDMCP Host Menu from CLIENTHOST
+Chooser*list.face:Nasalization-9
+Chooser*Command.Face:Nasalization-9
