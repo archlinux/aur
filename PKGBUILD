@@ -2,6 +2,8 @@
 _nginx_ver_latest=1.9.5
 _nginx_ver_stable=1.8.0
 
+OPTIONS=(!strip debug) #nchan is still young, in case something goes wrong we want good coredumps
+
 _nginx_ver=$_nginx_ver_stable
 _pkgname=nginx
 
@@ -92,6 +94,8 @@ build() {
     --with-http_secure_link_module
     --with-debug
     --add-module="${srcdir}/nchan")
+
+  CFLAGS="$CFLAGS -ggdb" #make sure debug symbols are present
   
   ./configure ${CONFIGURE[@]} 
   make
