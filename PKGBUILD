@@ -1,7 +1,7 @@
 # Maintainer: Adrien Sohier <adrien.sohier@art-software.fr>
 
 pkgname=trash-py
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='A cli trash in python 3'
 arch=('any')

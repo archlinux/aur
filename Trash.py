@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# vim: foldlevel=0
 
 from math       import log
 from os         import environ, listdir, mkdir, stat, unlink
@@ -91,6 +90,11 @@ def restoreItems(ids):
         unlink(pathDir+"/{itemId}".format(itemId=item))
         print(_("Restored [{itemId}] {itemPath}").format(itemId=item, itemPath=path))
 
+def emptyTrash():
+    call(['rm', '-r', dataDir])
+    call(['rm', '-r', pathDir])
+    _checkTrashDir_
+
 def orderIds():
     notFound = 0
     for num, item in enumerate([int(i) for i in listdir(pathDir)]):
@@ -113,7 +117,7 @@ def orderIds():
 
 def showHelp():
     print(basename(argv[0])+" [put <path [path [...]]> | list | drop <id [id [...]]> | restore <id [id [...]]> | gc]")
-    print(_("\n- put:\t\tPut items to trash\n- list:\t\tList trashed items with their id\n- drop:\t\tDrop items from the trash\n- restore:\tRestore items from the trash to their original path\n- gc:\t\tReorder items"))
+    print(_("\n- put:\t\tPut items to trash\n- list:\t\tList trashed items with their id\n- drop:\t\tDrop items from the trash\n- empty:\tEmpty the trash.\n- restore:\tRestore items from the trash to their original path\n- gc:\t\tReorder items"))
 
 ##### Useful stuff #####
 def _checkTrashDir_():
@@ -145,6 +149,10 @@ if __name__ == "__main__":
     while len(args) > 0:
         arg = args[0]
         args = args[1:]
+
+        if arg == "empty":
+            emptyTrash()
+            break
         
         if arg == "put":
             putToTrash(args)
