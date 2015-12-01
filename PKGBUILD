@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=scrotty
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Screenshot program for Linux's TTY"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(linux glibc imagemagick)
 makedepends=(make coreutils glibc gcc texinfo)
 install=scrotty.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(a2f19969c84a9bd3751f4e04a9ada6ff6f0ef8b64028e63986ba317b55bdba1b)
+sha256sums=(b8e6e157b795807ca44ab0e6ac178d0f3071c0e8df513dc50dabb1bafb877514)
 
 
 build() {
