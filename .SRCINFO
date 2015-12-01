@@ -1,6 +1,6 @@
 pkgbase = yakuake-copy-paste-git
 	pkgdesc = A KDE konsole application with the look and feel of that in the Quake engine - GIT version (patched to use Alt+V for paste/Alt+K to clear scrollback)
-	pkgver = 20140827.1
+	pkgver = 20151201.1
 	pkgrel = 1
 	url = http://yakuake.kde.org
 	install = yakuake-copy-paste-git.install
