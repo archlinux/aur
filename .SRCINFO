@@ -1,6 +1,6 @@
 pkgbase = python-openid
 	pkgdesc = Python3 port of the python-openid library
-	pkgver = 3.0.6
+	pkgver = 3.0.9
 	pkgrel = 1
 	url = https://github.com/necaris/python3-openid
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-openid
 	makedepends = python-setuptools
 	depends = python-defusedxml
 	options = !emptydirs
-	source = https://github.com/necaris/python3-openid/archive/v3.0.6.tar.gz
-	sha256sums = 758e67fe097b021ced3148c1b790cfe8437db89c6cc8ade471aaadfcb9d205ab
+	source = https://github.com/necaris/python3-openid/archive/v3.0.9.tar.gz
+	sha256sums = 0e043d1f9402b5e00531813f7f4f0ac822c969fb21b13d6690a57ee6bd6f801a
 
 pkgname = python-openid
 
