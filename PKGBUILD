@@ -8,12 +8,16 @@
 # Multilib is required. Wine is not required.
 
 # TODO: Does not autostart with startxfce4. Maybe it works with gdm.
-# TODO: Fix 10.0.46203 or wait for new version
 
-# Test requirements
-# Test in i686 and x86_64
-# Test with root and two non root users. One non root user should start with a blank home dir.
-# Test with outgoing, incoming, and swap connections.
+# Test requirements, [X]=pass for most versions, [x]=pass for some versions, ?=not tested
+# [X] Works in i686 and x86_64
+# [X] Outgoing connections
+# [X] Incoming and swap connection on manual start
+# [x] Auto start and accept connections in text mode
+# [ ] Auto start and accept connections in graphics mode startxfce4
+# [?] Auto start and accept connections in graphics mode gdm
+# [ ] Transfer control from text TV server to graphics TV server when GUI is loaded startxfce4, requires auto start
+# [ ] Transfer clipboard
 
 set -u
 pkgname='teamviewer9'
@@ -25,7 +29,7 @@ pkgver=9.0.32150
 #pkgver=10.0.41499
 #pkgver=10.0.46203 # Patched to work in user (standalone) mode. Does not work with teamviewerd.service.
 #pkgver=11.0.50678
-pkgrel=1
+pkgrel=2
 _pkgver_major="${pkgver%%.*}"
 
 if [ "${pkgname%-quicksupport}" != "${pkgname}" ]; then
@@ -88,7 +92,8 @@ depends=('bash')
 depends_i686=('alsa-lib' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'libice' 'libsm' 'libxdamage' 'libxrandr' 'libxtst' 'pcre' 'zlib' 'libxinerama' 'libpng12' 'qt4')
 # From Debian: 'libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb' 'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst' 'util-linux'
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
-#conflicts=('teamviewer')
+provides=("teamviewer=${_pkgver_major}")
+conflicts=('teamviewer')
 options=('!strip')
 install="${pkgname%%[0-9]*}.install"
 _verwatch=('https://www.teamviewer.com/en/download/linux.aspx' '\s\+<span id="_ctl2_Version">v\([0-9\.]\+\)</span>.*' 'f')
@@ -276,8 +281,9 @@ check() {
     ./teamviewer_setup "${_checklibs}"
   fi
   cat '/tmp/teamviewer-PKGBUILD.tmp'
+  # 9.0.32150 shows a bogus dependency on libwine.so.1
   # 10.0.35002 beta shows a bogus dependency on libwine.so.2
-  if [ "${pkgver}" != '10.0.35002' ] && grep 'missing' '/tmp/teamviewer-PKGBUILD.tmp'; then
+  if [ "${pkgver}" != '10.0.35002' ] && [ "${pkgver}" != '9.0.32150' ] && grep 'missing' '/tmp/teamviewer-PKGBUILD.tmp'; then
     rm -f '/tmp/teamviewer-PKGBUILD.tmp'
     false
   fi

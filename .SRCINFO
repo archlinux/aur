@@ -1,13 +1,15 @@
 pkgbase = teamviewer9
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings
 	pkgver = 9.0.32150
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.teamviewer.com
 	install = teamviewer.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = bash
+	provides = teamviewer=9
+	conflicts = teamviewer
 	options = !strip
 	source = teamviewer_9.0.32150.i686.rpm::http://download.teamviewer.com/download/version_9x/teamviewer_linux.rpm
 	sha256sums = 12f00b1dff5e4fc2f49b50dd1e76a7c9fc6920f5d524a2d96879f0bfdc415aa7
