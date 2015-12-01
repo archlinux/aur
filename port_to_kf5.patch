@@ -1,6 +1,6 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/CMakeLists.txt	2015-11-29 19:34:02.095314661 +0800
++++ b/CMakeLists.txt	2015-12-01 10:15:01.000000000 +0800
 @@ -1,31 +1,48 @@
 +cmake_minimum_required( VERSION 2.8.12 )
 +cmake_policy(SET CMP0002 OLD)
@@ -60,7 +60,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
 diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 --- a/cmake/modules/FindMsgfmt.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/FindMsgfmt.cmake	2015-11-29 19:34:02.095314661 +0800
++++ b/cmake/modules/FindMsgfmt.cmake	2015-12-01 10:15:01.000000000 +0800
 @@ -0,0 +1,28 @@
 +# - Try to find msgfmt 
 +# Once done this will define
@@ -92,7 +92,7 @@ diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 +
 diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature.cmake
 --- a/cmake/modules/MacroLogFeature.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/MacroLogFeature.cmake	2015-11-29 19:34:02.095314661 +0800
++++ b/cmake/modules/MacroLogFeature.cmake	2015-12-01 10:15:01.000000000 +0800
 @@ -0,0 +1,157 @@
 +# This file defines the Feature Logging macros.
 +#
@@ -251,9 +251,27 @@ diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature
 +   ENDIF(_printSummary)
 +
 +ENDMACRO(MACRO_DISPLAY_FEATURE_LOG)
+diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
+--- a/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
++++ b/other/kcm_grub2.desktop	2015-12-01 10:15:01.000000000 +0800
+@@ -2,12 +2,12 @@
+ Icon=system-reboot
+ Type=Service
+ X-KDE-ServiceTypes=KCModule
+-Exec=kcmshell4 kcm_grub2
++Exec=kcmshell5 kcm_grub2
+ 
+ X-KDE-Library=kcm_grub2
+ X-KDE-ParentApp=kcontrol
+ 
+-X-KDE-System-Settings-Parent-Category=startup-and-shutdown
++X-KDE-System-Settings-Parent-Category=session
+ 
+ Name=GRUB2 Bootloader
+ Name[bs]=GRUB2 pokretač sistemar
 diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 --- a/src/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/CMakeLists.txt	2015-11-30 08:55:23.310779394 +0800
++++ b/src/CMakeLists.txt	2015-12-01 10:15:01.000000000 +0800
 @@ -1,7 +1,7 @@
  add_subdirectory(helper)
  
@@ -303,7 +321,7 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
  # Install
 diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
 --- a/src/convertDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/convertDlg.cpp	2015-11-29 19:34:02.098647916 +0800
++++ b/src/convertDlg.cpp	2015-12-01 10:15:01.000000000 +0800
 @@ -50,11 +50,11 @@
      QString writeFilter = QString("*%1|%5 (%1)\n*%2|%6 (%2)\n*%3 *%4|%7 (%3 %4)").arg(".png", ".tga", ".jpg", ".jpeg", KMimeType::mimeType("image/png")->comment(), KMimeType::mimeType("image/x-tga")->comment(), KMimeType::mimeType("image/jpeg")->comment());
  
@@ -339,7 +357,7 @@ diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
          }
 diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 --- a/src/helper/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/CMakeLists.txt	2015-11-29 19:34:02.098647916 +0800
++++ b/src/helper/CMakeLists.txt	2015-12-01 10:15:01.000000000 +0800
 @@ -8,7 +8,7 @@
  set(kcmgrub2helper_SRCS helper.cpp)
  
@@ -361,7 +379,7 @@ diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 +kauth_install_actions(org.kde.kcontrol.kcmgrub2 kcmgrub2.actions)
 diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 --- a/src/helper/helper.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/helper.cpp	2015-11-29 19:34:02.098647916 +0800
++++ b/src/helper/helper.cpp	2015-12-01 10:15:01.000000000 +0800
 @@ -26,7 +26,7 @@
  
  //KDE
@@ -458,8 +476,8 @@ diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 +KAUTH_HELPER_MAIN("org.kde.kcontrol.kcmgrub2", Helper)
 diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 --- a/src/installDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.cpp	2015-11-30 08:20:35.409755403 +0800
-@@ -26,24 +26,30 @@
++++ b/src/installDlg.cpp	2015-12-01 21:22:18.000000000 +0800
+@@ -26,24 +26,28 @@
  #include <kdeversion.h>
  #include <KMessageBox>
  #include <KProgressDialog>
@@ -467,12 +485,10 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 -using namespace KAuth;
 +
 +#include <KFormat>
-+#include <KIcon>
  #include <Solid/Device>
  #include <Solid/StorageAccess>
  #include <Solid/StorageVolume>
  
-+//#include <KGlobal>
 +#include <KAuth>
 +using namespace KAuth;
 +
@@ -489,23 +505,22 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
      enableButtonOk(false);
      setWindowTitle(i18nc("@title:window", "Install/Recover Bootloader"));
 -    setWindowIcon(KIcon("system-software-update"));
-+    setWindowIcon(QIcon("system-software-update"));
++    setWindowIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
      if (parent) {
          setInitialSize(parent->size());
      }
-@@ -66,8 +72,9 @@
+@@ -66,8 +70,8 @@
  
          QString uuidDir = "/dev/disk/by-uuid/", uuid = volume->uuid(), name;
          name = (QFile::exists((name = uuidDir + uuid)) || QFile::exists((name = uuidDir + uuid.toLower())) || QFile::exists((name = uuidDir + uuid.toUpper())) ? QFile::symLinkTarget(name) : QString());
 -        QTreeWidgetItem *item = new QTreeWidgetItem(ui->treeWidget_recover, QStringList() << QString() << name << partition->filePath() << volume->label() << volume->fsType() << KGlobal::locale()->formatByteSize(volume->size()));
 -        item->setIcon(1, KIcon(device.icon()));
 +        QTreeWidgetItem *item = new QTreeWidgetItem(ui->treeWidget_recover, QStringList() << QString() << name << partition->filePath() << volume->label() << volume->fsType() << format.formatByteSize(volume->size())); //KGlobal::locale()->
-+        //item->setIcon(1, QIcon(device.icon()));
-+        item->setIcon(1, KIcon(device.icon()));
++        item->setIcon(1, QIcon::fromTheme(device.icon()));
          item->setTextAlignment(5, Qt::AlignRight | Qt::AlignVCenter);
          ui->treeWidget_recover->addTopLevelItem(item);
          QRadioButton *radio = new QRadioButton(ui->treeWidget_recover);
-@@ -84,7 +91,7 @@
+@@ -84,7 +88,7 @@
  {
      if (button == KDialog::Ok) {
          Action installAction("org.kde.kcontrol.kcmgrub2.install");
@@ -514,7 +529,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
          for (int i = 0; i < ui->treeWidget_recover->topLevelItemCount(); i++) {
              QRadioButton *radio = qobject_cast<QRadioButton *>(ui->treeWidget_recover->itemWidget(ui->treeWidget_recover->topLevelItem(i), 0));
              if (radio && radio->isChecked()) {
-@@ -98,33 +105,35 @@
+@@ -98,33 +102,35 @@
              KMessageBox::sorry(this, i18nc("@info", "Sorry, you have to select a partition with a proper name!"));
              return;
          }
@@ -573,7 +588,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
      KDialog::slotButtonClicked(button);
 diff -Naur a/src/installDlg.h b/src/installDlg.h
 --- a/src/installDlg.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.h	2015-11-29 19:34:02.098647916 +0800
++++ b/src/installDlg.h	2015-12-01 10:15:01.000000000 +0800
 @@ -21,6 +21,7 @@
  //KDE
  #include <KDialog>
@@ -584,7 +599,7 @@ diff -Naur a/src/installDlg.h b/src/installDlg.h
  {
 diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 --- a/src/kcm_grub2.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.cpp	2015-11-30 09:05:23.191029042 +0800
++++ b/src/kcm_grub2.cpp	2015-12-01 21:24:49.000000000 +0800
 @@ -20,22 +20,25 @@
  
  //Own
@@ -768,8 +783,8 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  
 -    ui->kpushbutton_install->setIcon(KIcon("system-software-update"));
 -    ui->kpushbutton_remove->setIcon(KIcon("list-remove"));
-+    ui->kpushbutton_install->setIcon(QIcon("system-software-update"));
-+    ui->kpushbutton_remove->setIcon(QIcon("list-remove"));
++    ui->kpushbutton_install->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
++    ui->kpushbutton_remove->setIcon(QIcon::fromTheme(QStringLiteral("list-remove")));
      ui->kpushbutton_remove->setVisible(HAVE_QAPT || HAVE_QPACKAGEKIT);
  
      QPixmap black(16, 16), transparent(16, 16);
@@ -779,13 +794,13 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
  
 -    ui->kpushbutton_preview->setIcon(KIcon("image-png"));
 -    ui->kpushbutton_create->setIcon(KIcon("insert-image"));
-+    ui->kpushbutton_preview->setIcon(QIcon("image-png"));
-+    ui->kpushbutton_create->setIcon(QIcon("insert-image"));
++    ui->kpushbutton_preview->setIcon(QIcon::fromTheme(QStringLiteral("image-png")));
++    ui->kpushbutton_create->setIcon(QIcon::fromTheme(QStringLiteral("insert-image")));
      ui->kpushbutton_create->setVisible(HAVE_IMAGEMAGICK);
  
 -    ui->kpushbutton_cmdlineDefaultSuggestions->setIcon(KIcon("tools-wizard"));
 -    ui->kpushbutton_cmdlineDefaultSuggestions->setMenu(new KMenu(ui->kpushbutton_cmdlineDefaultSuggestions));
-+    ui->kpushbutton_cmdlineDefaultSuggestions->setIcon(QIcon("tools-wizard"));
++    ui->kpushbutton_cmdlineDefaultSuggestions->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
 +    ui->kpushbutton_cmdlineDefaultSuggestions->setMenu(new QMenu(ui->kpushbutton_cmdlineDefaultSuggestions));
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Quiet Boot"))->setData("quiet");
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Show Splash Screen"))->setData("splash");
@@ -796,7 +811,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_cmdlineDefaultSuggestions->menu()->addAction(i18nc("@action:inmenu", "Single User Mode"))->setData("single");
 -    ui->kpushbutton_cmdlineSuggestions->setIcon(KIcon("tools-wizard"));
 -    ui->kpushbutton_cmdlineSuggestions->setMenu(new KMenu(ui->kpushbutton_cmdlineSuggestions));
-+    ui->kpushbutton_cmdlineSuggestions->setIcon(QIcon("tools-wizard"));
++    ui->kpushbutton_cmdlineSuggestions->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
 +    ui->kpushbutton_cmdlineSuggestions->setMenu(new QMenu(ui->kpushbutton_cmdlineSuggestions));
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Quiet Boot"))->setData("quiet");
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Show Splash Screen"))->setData("splash");
@@ -807,14 +822,14 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_cmdlineSuggestions->menu()->addAction(i18nc("@action:inmenu", "Single User Mode"))->setData("single");
 -    ui->kpushbutton_terminalSuggestions->setIcon(KIcon("tools-wizard"));
 -    ui->kpushbutton_terminalSuggestions->setMenu(new KMenu(ui->kpushbutton_terminalSuggestions));
-+    ui->kpushbutton_terminalSuggestions->setIcon(QIcon("tools-wizard"));
++    ui->kpushbutton_terminalSuggestions->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
 +    ui->kpushbutton_terminalSuggestions->setMenu(new QMenu(ui->kpushbutton_terminalSuggestions));
      ui->kpushbutton_terminalSuggestions->menu()->addAction(i18nc("@action:inmenu", "PC BIOS && EFI Console"))->setData("console");
      ui->kpushbutton_terminalSuggestions->menu()->addAction(i18nc("@action:inmenu", "Serial Terminal"))->setData("serial");
      ui->kpushbutton_terminalSuggestions->menu()->addAction(i18nc("@action:inmenu 'Open' is an adjective here, not a verb. 'Open Firmware' is a former IEEE standard.", "Open Firmware Console"))->setData("ofconsole");
 -    ui->kpushbutton_terminalInputSuggestions->setIcon(KIcon("tools-wizard"));
 -    ui->kpushbutton_terminalInputSuggestions->setMenu(new KMenu(ui->kpushbutton_terminalInputSuggestions));
-+    ui->kpushbutton_terminalInputSuggestions->setIcon(QIcon("tools-wizard"));
++    ui->kpushbutton_terminalInputSuggestions->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
 +    ui->kpushbutton_terminalInputSuggestions->setMenu(new QMenu(ui->kpushbutton_terminalInputSuggestions));
      ui->kpushbutton_terminalInputSuggestions->menu()->addAction(i18nc("@action:inmenu", "PC BIOS && EFI Console"))->setData("console");
      ui->kpushbutton_terminalInputSuggestions->menu()->addAction(i18nc("@action:inmenu", "Serial Terminal"))->setData("serial");
@@ -823,7 +838,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      ui->kpushbutton_terminalInputSuggestions->menu()->addAction(i18nc("@action:inmenu", "USB Keyboard (HID Boot Protocol)"))->setData("usb_keyboard");
 -    ui->kpushbutton_terminalOutputSuggestions->setIcon(KIcon("tools-wizard"));
 -    ui->kpushbutton_terminalOutputSuggestions->setMenu(new KMenu(ui->kpushbutton_terminalOutputSuggestions));
-+    ui->kpushbutton_terminalOutputSuggestions->setIcon(QIcon("tools-wizard"));
++    ui->kpushbutton_terminalOutputSuggestions->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
 +    ui->kpushbutton_terminalOutputSuggestions->setMenu(new QMenu(ui->kpushbutton_terminalOutputSuggestions));
      ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu", "PC BIOS && EFI Console"))->setData("console");
      ui->kpushbutton_terminalOutputSuggestions->menu()->addAction(i18nc("@action:inmenu", "Serial Terminal"))->setData("serial");
@@ -989,7 +1004,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
      QChar ch;
 diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
 --- a/src/kcm_grub2.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.h	2015-11-30 08:37:41.213556473 +0800
++++ b/src/kcm_grub2.h	2015-12-01 10:15:01.000000000 +0800
 @@ -20,9 +20,10 @@
  
  //Qt
@@ -1013,7 +1028,7 @@ diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
      void readSettings();
 diff -Naur a/src/widgets/regexpinputdialog.cpp b/src/widgets/regexpinputdialog.cpp
 --- a/src/widgets/regexpinputdialog.cpp	1970-01-01 08:00:00.000000000 +0800
-+++ b/src/widgets/regexpinputdialog.cpp	2015-11-30 08:45:44.177876373 +0800
++++ b/src/widgets/regexpinputdialog.cpp	2015-12-01 10:15:01.000000000 +0800
 @@ -0,0 +1,57 @@
 +#include <QtGui>
 +#include "regexpinputdialog.h"
@@ -1075,7 +1090,7 @@ diff -Naur a/src/widgets/regexpinputdialog.cpp b/src/widgets/regexpinputdialog.c
 \ No newline at end of file
 diff -Naur a/src/widgets/regexpinputdialog.h b/src/widgets/regexpinputdialog.h
 --- a/src/widgets/regexpinputdialog.h	1970-01-01 08:00:00.000000000 +0800
-+++ b/src/widgets/regexpinputdialog.h	2015-11-30 08:55:23.957460391 +0800
++++ b/src/widgets/regexpinputdialog.h	2015-12-01 10:15:01.000000000 +0800
 @@ -0,0 +1,45 @@
 +#ifndef REGEXPINPUTDIALOG_H
 +#define REGEXPINPUTDIALOG_H
@@ -1125,7 +1140,7 @@ diff -Naur a/src/widgets/regexpinputdialog.h b/src/widgets/regexpinputdialog.h
 \ No newline at end of file
 diff -Naur a/ui/kcm_grub2.ui b/ui/kcm_grub2.ui
 --- a/ui/kcm_grub2.ui	2013-10-12 18:34:15.000000000 +0800
-+++ b/ui/kcm_grub2.ui	2015-11-29 19:34:02.105314426 +0800
++++ b/ui/kcm_grub2.ui	2015-12-01 10:15:01.000000000 +0800
 @@ -12,7 +12,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_6">
@@ -1237,21 +1252,3 @@ diff -Naur a/ui/kcm_grub2.ui b/ui/kcm_grub2.ui
   </customwidgets>
   <resources/>
   <connections/>
-diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
---- a/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
-+++ b/other/kcm_grub2.desktop	2015-12-01 10:13:22.553310488 +0800
-@@ -2,12 +2,12 @@
- Icon=system-reboot
- Type=Service
- X-KDE-ServiceTypes=KCModule
--Exec=kcmshell4 kcm_grub2
-+Exec=kcmshell5 kcm_grub2
- 
- X-KDE-Library=kcm_grub2
- X-KDE-ParentApp=kcontrol
- 
--X-KDE-System-Settings-Parent-Category=startup-and-shutdown
-+X-KDE-System-Settings-Parent-Category=session
- 
- Name=GRUB2 Bootloader
- Name[bs]=GRUB2 pokretač sistemar
