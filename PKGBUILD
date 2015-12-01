@@ -4,9 +4,12 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0
-_snapshot_=20150928-0535
-pkgrel=7
+pkgver=3.0.0v20151130
+_pkgver=3.0.0
+_snapshot_=20151130
+_snapver_=0543
+_nightly_=${_snapshot_}-${_snapver_}
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
 arch=("i686" "x86_64")
 url="http://www.videolan.org/vlc/"
@@ -60,7 +63,11 @@ replaces=("${_appname_}-plugin")
 #        "usr/share/${_appname_}/lua/http/dialogs/.hosts")
 options=("!libtool" "!emptydirs")
 install="${pkgname}.install"
-source=("http://nightlies.videolan.org/build/source/vlc-${pkgver}-${_snapshot_}.tar.xz")
+source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}.tar.xz")
+
+pkgver() {
+ printf 3.0.0v$_snapshot_
+} 
 
 build() {
 	cd "${_appname_}-3.0.0-git"
@@ -68,14 +75,14 @@ build() {
 	./bootstrap
 
 	# Patch
-	sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
 	sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
-
+  sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
 	# Config
 	[ ${CARCH} = 'x86_64' ] && CXXFLAGS="$CXXFLAGS -fPIC"
 
 	./configure --prefix=/usr \
 				--sysconfdir=/etc \
+        --enable-qt \
 				--disable-rpath \
 				--enable-faad \
 				--enable-nls \
@@ -104,4 +111,4 @@ package() {
 	done
 }
 
-sha1sums=('5beef2d58844b6454a5703daedf1786821aac3e8')
+sha1sums=('2a908d0c2fded1d20b666a0eee201a5b5a0946cc')
