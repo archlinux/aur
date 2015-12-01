@@ -1,0 +1,21 @@
+create_user() {
+  getent group inspircd &>/dev/null || groupadd -r -g 141 inspircd >/dev/null
+  getent passwd inspircd &>/dev/null || useradd -r -u 141 -g inspircd -d /var/lib/inspircd -s /bin/false inspircd >/dev/null
+}
+
+post_install() {
+  create_user
+  echo '==> You will need to create a config file for inspircd'
+  echo '==>   cp /usr/share/inspircd/examples/inspircd.conf.example /etc/inspircd/inspircd.conf'
+  echo '==> You will need to change the pidfile. To do this you can insert the following into your config.'
+  echo '==>   <pid file="/var/lib/inspircd/inspircd.pid">'
+  echo '==> Remember to use absolute paths in your config directory and not relative paths like you would do with a user-based inspircd install.'
+}
+
+post_upgrade() {
+  create_user
+}
+
+post_remove() {
+  getent passwd inspircd &>/dev/null && userdel inspircd
+}

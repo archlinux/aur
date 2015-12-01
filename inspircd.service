@@ -1,0 +1,17 @@
+[Unit]
+Description=InspIRCd IRC daemon
+Requires=network.target
+After=network.target
+ 
+[Service]
+Type=forking
+PIDFile=/var/lib/inspircd/inspircd.pid
+ExecStart=/usr/lib/inspircd/inspircd start
+ExecReload=/usr/lib/inspircd/inspircd rehash
+ExecStop=/usr/lib/inspircd/inspircd stop
+Restart=always
+User=inspircd
+Group=inspircd
+
+[Install]
+WantedBy=multi-user.target
