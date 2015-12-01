@@ -1,7 +1,7 @@
 pkgbase = turses
 	pkgdesc = A Twitter client for the console
 	pkgver = 0.3.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/dialelo/turses
 	arch = any
 	license = GPLv3
