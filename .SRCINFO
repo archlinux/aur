@@ -1,6 +1,6 @@
 pkgbase = slack
 	pkgdesc = Control your timer slack
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/maandree/slack
 	install = slack.install
@@ -15,8 +15,8 @@ pkgbase = slack
 	makedepends = auto-auto-complete
 	depends = glibc
 	depends = linux>=2.6.28
-	source = https://github.com/maandree/slack/archive/2.1.tar.gz
-	sha256sums = 5a50d2899eefca0a0454a28a1990472ce1f5ca79c8d3eb340165e54c14115028
+	source = https://github.com/maandree/slack/archive/2.2.tar.gz
+	sha256sums = 7459a54d2a360b25da60d99fb025cf6e04e5148d937ce8e6c2b7bd69eaf5931d
 
 pkgname = slack
 
