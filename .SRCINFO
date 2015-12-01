@@ -1,5 +1,5 @@
 pkgbase = qbittorrent-nogui
-	pkgdesc = A bittorrent client based on Qt4 toolkit and libtorrent-rasterbar, w/o gui
+	pkgdesc = A bittorrent client based on Qt5 toolkit and libtorrent-rasterbar, w/o gui
 	pkgver = 3.3.0
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
