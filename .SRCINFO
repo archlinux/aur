@@ -1,6 +1,6 @@
 pkgbase = libretro-scummvm-git
 	pkgdesc = libretro implementation of ScummVM.
-	pkgver = 69296.d87422a
+	pkgver = 69400.c3e719a
 	pkgrel = 1
 	url = https://github.com/libretro/scummvm
 	arch = i686
