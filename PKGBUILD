@@ -1,15 +1,15 @@
 #Maintainer: Ariel Popper <a at arielp dot com>
 
 pkgname='express-git'
-pkgver=0+263_d07544a
+pkgver=0+473_23ce92e
 pkgrel=1
-pkgdesc="EFL-based IRC Client which operates similar to the Terminology interface"
+pkgdesc="IRC client with enhanced media capabilities"
 arch=('i686' 'x86_64')
-url="https://git.enlightenment.org/devs/devilhorns/express.git/"
+url="https://git.enlightenment.org/apps/express.git/"
 license=("custom")
 makedepends=('git')
 depends=('elementary')
-source=("git+http://git.enlightenment.org/devs/devilhorns/express.git")
+source=("git+https://git.enlightenment.org/apps/express.git")
 md5sums=('SKIP')
 
 _gitname=express
@@ -31,3 +31,4 @@ package() {
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
 	install AUTHORS COPYING COPYING-PLAIN "$pkgdir/usr/share/licenses/$pkgname"
 }
+
