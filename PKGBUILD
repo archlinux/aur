@@ -1,7 +1,7 @@
 # Maintainer: Greg White <sgwhite-at-kupulau-dot-com>
 
 pkgname=yakuake-copy-paste-git
-pkgver=20140827.1
+pkgver=20151201
 pkgrel=1
 pkgdesc="A KDE konsole application with the look and feel of that in the Quake engine - GIT version (patched to use Alt+V for paste/Alt+K to clear scrollback)"
 arch=('i686' 'x86_64')
