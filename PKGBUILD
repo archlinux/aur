@@ -11,7 +11,7 @@
 #pkgbase=linux-libre         # Build stock kernel
 pkgbase=linux-libre-librem # Build kernel with a different name
 _pkgbasever=4.2-gnu
-_pkgver=4.2.4-gnu
+_pkgver=4.2.6-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -60,7 +60,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'https://github.com/purism/linux-librem/compare/master...purism:byd.patch')
 sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
-            'dc3df5f547a9ef51695dc6de7c40149e4d514777b4a3943557f01d8487bb2120'
+            'eeb789dc08b73958694db66763d263071591cb2f16a076acc521b044aaccac30'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -74,7 +74,7 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
-            'f5e547cb33a81a5ee711980a3378d14516e9159ec77d1101d53479cb291a2afd'
+            '8516a699054b78ed921bca546af3b955c10eb422ada14787a5b05a45bd193572'
             'SKIP'
             '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
             '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
@@ -84,7 +84,7 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
             'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
             'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a'
-            'e3ffaa97b7b58943c03a8f21e201181617bec88b988b7999e7c6da0152106056')
+            'fb4dc4f34def3116d3a64b3c2e75840cc7acfd54bebdaff7033527aad2a6ab91')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
