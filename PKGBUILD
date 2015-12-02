@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines')
 optdepends=('gnome-themes-standard: Required for the GTK3 theme'
             'ttf-droid: Font family for the Gnome Shell theme')
-source=("${_pkgname}::git+https://github.com/thegusproject/${_pkgname}.git")
+source=("${_pkgname}::git+https://github.com/thegusproject/zukitwo-manjaro.git")
 sha1sums=SKIP
 
 package() {
