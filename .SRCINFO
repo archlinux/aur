@@ -1,0 +1,22 @@
+pkgbase = tomate-gtk
+	pkgdesc = Tomate Pomodoro Timer (GTK+)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/eliostvs/tomate-gtk
+	install = tomate-gtk.install
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = python
+	depends = python-tomate
+	options = !emptydirs
+	source = https://github.com/eliostvs/tomate-gtk/archive/0.3.0.tar.gz
+	md5sums = 911d0dc1f8a3319336e6470dda29e940
+
+pkgname = tomate-gtk
+
