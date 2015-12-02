@@ -1570,7 +1570,7 @@ diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
      void readSettings();
 diff -Naur a/src/removeDlg.cpp b/src/removeDlg.cpp
 --- a/src/removeDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/removeDlg.cpp	2015-12-02 11:36:17.363839245 +0800
++++ b/src/removeDlg.cpp	2015-12-02 12:26:16.962737422 +0800
 @@ -28,7 +28,8 @@
  
  //KDE
@@ -1581,7 +1581,13 @@ diff -Naur a/src/removeDlg.cpp b/src/removeDlg.cpp
  
  //Project
  #include "entry.h"
-@@ -41,8 +42,17 @@
+@@ -36,13 +37,22 @@
+ //Ui
+ #include "ui_removeDlg.h"
+ 
+-RemoveDialog::RemoveDialog(const QList<Entry> &entries, QWidget *parent, Qt::WFlags flags) : KDialog(parent, flags)
++RemoveDialog::RemoveDialog(const QList<Entry> &entries, QWidget *parent, Qt::WindowFlags flags) : QDialog(parent, flags)
+ {
      QWidget *widget = new QWidget(this);
      ui = new Ui::RemoveDialog;
      ui->setupUi(widget);
