@@ -1,12 +1,12 @@
 # Maintainer: Salan54 <salan at fremenil dot com>
 # Created: 2013-03-17
-# QT4 version
+
 pkgname=zulucrypt
-pkgver=4.7.8
-pkgrel=3
+pkgver=4.8.0
+pkgrel=1
 _altpkgname=zuluCrypt
-pkgdesc="a cli and gui frontend to cryptsetup."
-url="http://mhogomchungu.github.io/zuluCrypt/"
+pkgdesc="A cli and gui frontend to cryptsetup"
+url="http://mhogomchungu.github.io/${_altpkgname}"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' 'libxkbcommon-x11' )
@@ -14,8 +14,8 @@ optdepends=('kwalletmanager: retrieve volume keys from kde kwallet')
 conflicts=('zulucrypt-git')
 makedepends=('cmake')
 options=('!buildflags')
-source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/${pkgver}/${_altpkgname}-${pkgver}.tar.bz2")
-md5sums=('8582b241dbe89f9b6a0edacaa98f1f9d')
+source=("${pkgver}.tar.gz::https://github.com/mhogomchungu/${_altpkgname}/archive/${pkgver}.tar.gz")
+md5sums=('f741858f6b3b7cfff638e1b01b1eac01')
 changelog=${pkgname}.changelog
 install=${pkgname}.install
 
@@ -30,9 +30,8 @@ build() {
 package() {
   echo "changelog updated"
   cp "${srcdir}/${_altpkgname}-${pkgver}"/changelog ../${pkgname}.changelog
-  cd "${srcdir}/${_altpkgname}-${pkgver}"
-  cd build
+  cd "${srcdir}/${_altpkgname}-${pkgver}/build"
   make DESTDIR="$pkgdir" install
+  mkdir -p ${pkgdir}/etc/modules-load.d
+  echo 'loop' > "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 }
- 
-# vim:set ts=2 sw=2 et:
