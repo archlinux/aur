@@ -19,7 +19,7 @@ pkgname=('php7'
 		 'php7-tidy'
 		 'php7-xsl')
 
-pkgver=7.0.0RC7
+pkgver=7.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -29,10 +29,10 @@ makedepends=('apache' 'imap' 'postgresql-libs' 'libldap' 'postfix'
 			 'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu'
 			 'curl' 'libxslt' 'openssl' 'db' 'gmp' 'systemd')
 
-source=("https://downloads.php.net/~ab/php-${pkgver}.tar.xz"
+source=("http://us2.php.net/distributions/php-${pkgver}.tar.xz"
 		'php.ini.patch' 'apache.conf'
 		'php-fpm.service' 'php-fpm.tmpfiles')
-md5sums=('5bb4e6b8bf969d2bd5ab222c60c52dad'
+md5sums=('394e4d6c517078ca3e23acf633c5ed27'
 		 'a75706c1d1d99cb4a34f660e696c7bd1'
 		 '3bdf401291d4de96caa33d053a000e46'
 		 'cc2940f5312ba42e7aa1ddfab74b84c4'
