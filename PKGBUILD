@@ -17,8 +17,43 @@ prepare() {
   patch -p1 -i $srcdir/qt5.patch
 }
 
+build() {
+  cd "$srcdir/kndiswrapper-${pkgver}"
+  mkdir -p build
+  cd build
+  qmake-qt5 ..
+  make
+  cd ..
+  cp -r translations ./build/
+  lrelease-qt5 ./build/translations/*.ts
+}
 package() {
   cd "$srcdir/kndiswrapper-${pkgver}"
-  ./install.sh "$pkgdir"
-  #install -Dm755 "${srcdir}/kndiswrapper.gui.policy" "$pkgdir/usr/share/polkit-1/actions/kndiswrapper.gui.policy"
+  #./install.sh "$pkgdir"
+  mkdir -p ${pkgdir}/usr/share/{kndiswrapper,applications,pixmaps}
+  mkdir -p ${pkgdir}/usr/bin
+  
+  cp "./icons/kndiswrapper.xpm" "${pkgdir}/usr/share/kndiswrapper/kndiswrapper.xpm"
+  cp "./icons/kndiswrapper.xpm" "${pkgdir}/usr/share/pixmaps/kndiswrapper.xpm"
+  cp build/kndiswrapper ${pkgdir}/usr/bin
+  chmod 755 "${pkgdir}/usr/bin/kndiswrapper"
+  cp "./translations/"*.qm "${pkgdir}/usr/share/kndiswrapper"
+  cp "./translations/cards_known_to_work.txt" "${pkgdir}/usr/share/kndiswrapper"
+  cat > "${pkgdir}/usr/share/applications/kndiswrapper.desktop" <<EOF
+[Desktop Entry]
+Encoding=UTF-8
+Name=kndiswrapper
+Name[de]=kndiswrapper
+GenericName=kndiswrapper
+GenericName[de]=kndiswrapper
+Comment=A GUI for ndiswrapper
+Comment[de]=Eine GUI fuer ndiswrapper.
+Exec=pkexec env DISPLAY=\$DISPLAY XAUTHORITY=\$XAUTHORITY kndiswrapper
+Icon=kndiswrapper
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Network;
+EOF
+
 }
