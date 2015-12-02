@@ -3,7 +3,7 @@
 pkgname="k810-conf"
 _pkgname="k810_conf"
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Logitech K810 Keyboard Configurator, change function keys (F-keys) behavior. Read USAGE at https://aur4.archlinux.org/cgit/aur.git/tree/README.md?h=k810-conf"
 arch=("i686" "x86_64")
 url="http://www.trial-n-error.de/posts/2012/12/31/logitech-k810-keyboard-configurator"
@@ -14,7 +14,7 @@ source=(
   "http://www.trial-n-error.de/static/articles/k810/$_pkgname-v$pkgver.tar.bz2"
   "10-k810-conf.rules")
 md5sums=('858a8de02d5b8db27e4da22833b54d20'
-         'aed33b3162e7c57a545191478dd71ba7')
+         'babd83a86abf11e0966cc9d20f592501')
 
 build() {
 	cd "$srcdir"
