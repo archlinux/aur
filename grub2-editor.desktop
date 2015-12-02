@@ -4,7 +4,7 @@ Icon=system-reboot
 Type=Application
 StartupNotify=true
 Terminal=false
-Exec=pkexec grub2-editor
+Exec=pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY kcmshell5 kcm_grub2
 Name=GRUB2 Bootloader
 Name[zh_CN]=GRUB2 启动加载器
 Name[zh_TW]=GRUB2 開機載入器

@@ -8,16 +8,16 @@ url='https://ksmanis.wordpress.com/projects/grub2-editor/'
 license=('GPL')
 provides=grub2-editor
 conflicts=grub2-editor
-depends=('kdelibs4support' 'grub' 'kcmutils' 'kauth' 'hwinfo' 'imagemagick')
+depends=('grub' 'hwinfo' 'imagemagick'
+         'qt5-base'
+         'kio' 'ki18n' 'kauth' 'kconfigwidgets' 'solid')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 source=("http://sourceforge.net/projects/kcm-grub2/files/kcm-grub2-$pkgver.tar.gz"
         "port_to_kf5.patch"
         "l10n_zh-cn.patch"
-        "grub2-editor.desktop"
-        "grub2-editor.gui.policy")
+        "grub2-editor.desktop")
 groups=('plasma')
 md5sums=('b3ff8fb938be8112dcc6e42b3e56efc6'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -47,9 +47,9 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
   install -dm755 "$pkgdir/usr/bin/"
-  echo "#!/bin/sh" > "$pkgdir/usr/bin/grub2-editor"
-  echo "exec kcmshell5 kcm_grub2" >> "$pkgdir/usr/bin/grub2-editor"
-  chmod +x "$pkgdir/usr/bin/grub2-editor"
+  #echo "#!/bin/sh" > "$pkgdir/usr/bin/grub2-editor"
+  #echo "exec kcmshell5 kcm_grub2" >> "$pkgdir/usr/bin/grub2-editor"
+  #chmod +x "$pkgdir/usr/bin/grub2-editor"
   install -Dm755 "$srcdir/grub2-editor.desktop" "$pkgdir/usr/share/applications/grub2-editor.desktop"
-  install -Dm755 "${srcdir}/grub2-editor.gui.policy" "$pkgdir/usr/share/polkit-1/actions/grub2-editor.gui.policy"
+  #install -Dm755 "${srcdir}/grub2-editor.gui.policy" "$pkgdir/usr/share/polkit-1/actions/grub2-editor.gui.policy"
 }
