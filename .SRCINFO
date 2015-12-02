@@ -1,0 +1,30 @@
+pkgbase = musescore-git
+	pkgdesc = Latest git-version of the sheet music editor MuseScore
+	pkgver = r9850.77e980d
+	pkgrel = 1
+	url = https://github.com/musescore/MuseScore
+	install = musescore.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = lame
+	makedepends = qt5-script
+	makedepends = texlive-core
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = libpulse
+	depends = portaudio
+	depends = qt5-quick1
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = shared-mime-info
+	optdepends = lame: MP3 export
+	conflicts = musescore
+	source = git+https://github.com/musescore/MuseScore.git#branch=master
+	md5sums = SKIP
+
+pkgname = musescore-git
+
