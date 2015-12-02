@@ -1,6 +1,6 @@
 pkgname=mingw-w64-librsvg
-pkgver=2.40.11
-pkgrel=2
+pkgver=2.40.12
+pkgrel=1
 pkgdesc="A SVG viewing library (mingw-w64)"
 arch=(any)
 url="https://live.gnome.org/LibRsvg"
@@ -9,7 +9,7 @@ makedepends=(mingw-w64-configure gdk-pixbuf2 intltool setconf)
 depends=(mingw-w64-gdk-pixbuf2 mingw-w64-pango mingw-w64-libcroco)
 options=(staticlibs !strip !buildflags)
 source=("http://ftp.gnome.org/pub/gnome/sources/librsvg/${pkgver%.*}/librsvg-$pkgver.tar.xz")
-sha256sums=('611ac0f544debd0c9bf1ef5509c990d218e83dd1d8c83297075c4b29796a2e02')
+sha256sums=('ffe40c4378bf3899f4d679a475726bab03a127a5bdccddec86404cc329ffb550')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
