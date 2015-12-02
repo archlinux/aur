@@ -1,0 +1,14 @@
+pkgbase = mc-solarized-git
+	pkgdesc = Solarized color scheme for Midnight Commander
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/nkulikov/mc-solarized-skin
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = mc
+	source = git://github.com/nkulikov/mc-solarized-skin.git
+	md5sums = SKIP
+
+pkgname = mc-solarized-git
+
