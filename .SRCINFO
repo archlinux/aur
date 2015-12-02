@@ -1,13 +1,21 @@
 pkgbase = teamviewer
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings
-	pkgver = 10.0.46203
+	pkgver = 11.0.52520
 	pkgrel = 1
 	url = http://www.teamviewer.com
 	install = teamviewer.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = bash
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = libxdamage
+	depends = libxtst 
+	depends = zlib
+	depends = freetype2
+	depends = libxrandr
+	depends = libice
+	depends = libsm
 	options = !strip
 
 pkgname = teamviewer
