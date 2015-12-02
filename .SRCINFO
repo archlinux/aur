@@ -1,0 +1,24 @@
+pkgbase = hawaii-workspace
+	pkgdesc = Applications for the Hawaii workspace
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://hawaiios.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = hawaii-git
+	license = GPL2
+	makedepends = git
+	makedepends = gdb
+	makedepends = extra-cmake-modules
+	makedepends = greenisland
+	depends = qt5-base
+	depends = qt5-quickcontrols
+	depends = polkit-qt5
+	options = debug
+	source = https://github.com/hawaii-desktop/hawaii-workspace/releases/download/v0.5.0/hawaii-workspace-0.5.0.tar.xz
+	sha1sums = 590cdd54dbcf0beaa73e21b65d9209ed59fb37dd
+
+pkgname = hawaii-workspace
+
