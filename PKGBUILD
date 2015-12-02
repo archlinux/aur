@@ -3,14 +3,13 @@
 pkgname=mingw-w64-dlib
 _pkgname=dlib
 pkgver=18.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. (mingw-w64)"
 arch=('any')
 url="http://www.dlib.net/"
 license=('Boost Software License')
 depends=('mingw-w64-crt')
-optdepends=('mingw-w64-cblas: for BLAS support'
-            'mingw-w64-lapack: for LAPACK support'
+optdepends=('mingw-w64-lapack: for BLAS and LAPACK support'
             'mingw-w64-libjpeg: for JPEG support'
             'mingw-w64-libpng: for PNG support'
             'mingw-w64-sqlite: for sqlite support')
