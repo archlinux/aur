@@ -1,0 +1,36 @@
+diff --git Release/tests/functional/http/client/outside_tests.cpp Release/tests/functional/http/client/outside_tests.cpp
+index e0f4498..679ca74 100644
+--- Release/tests/functional/http/client/outside_tests.cpp
++++ Release/tests/functional/http/client/outside_tests.cpp
+@@ -45,6 +45,7 @@ namespace tests { namespace functional { namespace http { namespace client {
+ SUITE(outside_tests)
+ {
+ 
++/*
+ TEST_FIXTURE(uri_address, outside_cnn_dot_com)
+ {
+     handle_timeout([]
+@@ -107,6 +108,7 @@ TEST_FIXTURE(uri_address, reading_google_stream)
+         VERIFY_ARE_EQUAL(strcmp((const char *) chars, "<!doctype html><html itemscope=\"\" itemtype=\"http://schema.org/WebPage\""), 0);
+     });
+ }
++*/
+ 
+ TEST_FIXTURE(uri_address, no_transfer_encoding_content_length)
+ {
+@@ -178,6 +180,7 @@ TEST(ignore_server_cert_invalid,
+ }
+ #endif
+ 
++/*
+ TEST_FIXTURE(uri_address, outside_ssl_json)
+ {
+     // Create URI for:
+@@ -247,6 +250,7 @@ TEST_FIXTURE(uri_address, outside_ssl_json)
+         }
+     });
+ }
++*/
+ 
+ } // SUITE(outside_tests)
+ 

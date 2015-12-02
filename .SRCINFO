@@ -1,0 +1,29 @@
+pkgbase = casablanca-git
+	pkgdesc = Modern asynchronous C++ API for cloud-based client-server communication
+	pkgver = r1490.78f8554
+	pkgrel = 1
+	url = http://casablanca.codeplex.com/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = boost
+	depends = openssl
+	optdepends = websocketpp: system instead of embedded
+	provides = casablanca
+	provides = cpprest
+	provides = cpprestsdk
+	conflicts = casablanca
+	conflicts = cpprest
+	conflicts = cpprestsdk
+	options = staticlibs
+	options = strip
+	source = casablanca-git::git://github.com/Microsoft/cpprestsdk.git
+	source = outside_tests.cpp.diff
+	sha256sums = SKIP
+	sha256sums = 7df9ca8fd425e4639c5d2a2abbb521cfadc7eaf07baffda7897435ae85a2993d
+
+pkgname = casablanca-git
+
