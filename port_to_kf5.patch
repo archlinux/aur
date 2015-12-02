@@ -1,13 +1,10 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/CMakeLists.txt	2015-12-02 11:10:26.547801320 +0800
-@@ -1,31 +1,49 @@
++++ b/CMakeLists.txt	2015-12-02 11:50:05.532223210 +0800
+@@ -1,31 +1,46 @@
 +cmake_minimum_required( VERSION 2.8.12 )
 +cmake_policy(SET CMP0002 OLD)
-+cmake_policy(SET CMP0026 OLD)
-+cmake_policy(SET CMP0054 OLD)
-+cmake_policy(SET CMP0063 OLD)
-+cmake_policy(SET CMP0064 OLD)
++cmake_policy(SET CMP0014 OLD)
 +
  project(kcm-grub2)
  set(KCM_GRUB2_VERSION_MAJOR "0")
@@ -61,7 +58,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
 diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 --- a/cmake/modules/FindMsgfmt.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/FindMsgfmt.cmake	2015-12-02 11:10:26.547801320 +0800
++++ b/cmake/modules/FindMsgfmt.cmake	2015-12-02 11:36:17.353838901 +0800
 @@ -0,0 +1,28 @@
 +# - Try to find msgfmt 
 +# Once done this will define
@@ -93,7 +90,7 @@ diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 +
 diff -Naur a/cmake/modules/MacroBoolTo01.cmake b/cmake/modules/MacroBoolTo01.cmake
 --- a/cmake/modules/MacroBoolTo01.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/MacroBoolTo01.cmake	2015-12-02 11:10:26.547801320 +0800
++++ b/cmake/modules/MacroBoolTo01.cmake	2015-12-02 11:36:17.353838901 +0800
 @@ -0,0 +1,20 @@
 +# MACRO_BOOL_TO_01( VAR RESULT0 ... RESULTN )
 +# This macro evaluates its first argument
@@ -117,7 +114,7 @@ diff -Naur a/cmake/modules/MacroBoolTo01.cmake b/cmake/modules/MacroBoolTo01.cma
 +ENDMACRO(MACRO_BOOL_TO_01)
 diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature.cmake
 --- a/cmake/modules/MacroLogFeature.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/MacroLogFeature.cmake	2015-12-02 11:10:26.547801320 +0800
++++ b/cmake/modules/MacroLogFeature.cmake	2015-12-02 11:36:17.353838901 +0800
 @@ -0,0 +1,157 @@
 +# This file defines the Feature Logging macros.
 +#
@@ -278,7 +275,7 @@ diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature
 +ENDMACRO(MACRO_DISPLAY_FEATURE_LOG)
 diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
 --- a/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
-+++ b/other/kcm_grub2.desktop	2015-12-02 11:10:26.547801320 +0800
++++ b/other/kcm_grub2.desktop	2015-12-02 11:36:17.353838901 +0800
 @@ -2,12 +2,12 @@
  Icon=system-reboot
  Type=Service
@@ -294,9 +291,212 @@ diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
  
  Name=GRUB2 Bootloader
  Name[bs]=GRUB2 pokretač sistemar
+diff -Naur a/po/ca/CMakeLists.txt b/po/ca/CMakeLists.txt
+--- a/po/ca/CMakeLists.txt	2013-10-12 18:34:24.000000000 +0800
++++ b/po/ca/CMakeLists.txt	2015-12-02 11:54:12.221819963 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( ca ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( ca ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/ca@valencia/CMakeLists.txt b/po/ca@valencia/CMakeLists.txt
+--- a/po/ca@valencia/CMakeLists.txt	2013-10-12 18:34:25.000000000 +0800
++++ b/po/ca@valencia/CMakeLists.txt	2015-12-02 11:54:12.261820650 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( ca@valencia ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( ca@valencia ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/cs/CMakeLists.txt b/po/cs/CMakeLists.txt
+--- a/po/cs/CMakeLists.txt	2013-10-12 18:34:26.000000000 +0800
++++ b/po/cs/CMakeLists.txt	2015-12-02 11:54:12.241820306 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( cs ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( cs ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/da/CMakeLists.txt b/po/da/CMakeLists.txt
+--- a/po/da/CMakeLists.txt	2013-10-12 18:34:29.000000000 +0800
++++ b/po/da/CMakeLists.txt	2015-12-02 11:54:12.138485196 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( da ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( da ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/de/CMakeLists.txt b/po/de/CMakeLists.txt
+--- a/po/de/CMakeLists.txt	2013-10-12 18:34:30.000000000 +0800
++++ b/po/de/CMakeLists.txt	2015-12-02 11:54:12.211819790 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( de ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( de ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/el/CMakeLists.txt b/po/el/CMakeLists.txt
+--- a/po/el/CMakeLists.txt	2013-10-12 18:34:31.000000000 +0800
++++ b/po/el/CMakeLists.txt	2015-12-02 11:54:12.178485884 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( el ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( el ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/es/CMakeLists.txt b/po/es/CMakeLists.txt
+--- a/po/es/CMakeLists.txt	2013-10-12 18:34:34.000000000 +0800
++++ b/po/es/CMakeLists.txt	2015-12-02 11:54:12.188486056 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( es ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( es ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/et/CMakeLists.txt b/po/et/CMakeLists.txt
+--- a/po/et/CMakeLists.txt	2013-10-12 18:34:35.000000000 +0800
++++ b/po/et/CMakeLists.txt	2015-12-02 11:54:12.368489151 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( et ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( et ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/fi/CMakeLists.txt b/po/fi/CMakeLists.txt
+--- a/po/fi/CMakeLists.txt	2013-10-12 18:34:37.000000000 +0800
++++ b/po/fi/CMakeLists.txt	2015-12-02 11:54:12.121818243 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( fi ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( fi ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/fr/CMakeLists.txt b/po/fr/CMakeLists.txt
+--- a/po/fr/CMakeLists.txt	2013-10-12 18:34:38.000000000 +0800
++++ b/po/fr/CMakeLists.txt	2015-12-02 11:54:12.271820822 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( fr ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( fr ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/ga/CMakeLists.txt b/po/ga/CMakeLists.txt
+--- a/po/ga/CMakeLists.txt	2013-10-12 18:34:40.000000000 +0800
++++ b/po/ga/CMakeLists.txt	2015-12-02 11:54:12.338488635 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( ga ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( ga ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/gl/CMakeLists.txt b/po/gl/CMakeLists.txt
+--- a/po/gl/CMakeLists.txt	2013-10-12 18:34:41.000000000 +0800
++++ b/po/gl/CMakeLists.txt	2015-12-02 11:54:12.331821854 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( gl ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( gl ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/hu/CMakeLists.txt b/po/hu/CMakeLists.txt
+--- a/po/hu/CMakeLists.txt	2013-10-12 18:34:46.000000000 +0800
++++ b/po/hu/CMakeLists.txt	2015-12-02 11:54:12.348488807 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( hu ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( hu ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/it/CMakeLists.txt b/po/it/CMakeLists.txt
+--- a/po/it/CMakeLists.txt	2013-10-12 18:34:50.000000000 +0800
++++ b/po/it/CMakeLists.txt	2015-12-02 11:54:12.068483992 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( it ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( it ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/lt/CMakeLists.txt b/po/lt/CMakeLists.txt
+--- a/po/lt/CMakeLists.txt	2013-10-12 18:34:55.000000000 +0800
++++ b/po/lt/CMakeLists.txt	2015-12-02 11:54:12.321821682 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( lt ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( lt ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/nb/CMakeLists.txt b/po/nb/CMakeLists.txt
+--- a/po/nb/CMakeLists.txt	2013-10-12 18:35:02.000000000 +0800
++++ b/po/nb/CMakeLists.txt	2015-12-02 11:54:12.088484337 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( nb ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( nb ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/nl/CMakeLists.txt b/po/nl/CMakeLists.txt
+--- a/po/nl/CMakeLists.txt	2013-10-12 18:35:05.000000000 +0800
++++ b/po/nl/CMakeLists.txt	2015-12-02 11:54:12.151818759 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( nl ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( nl ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/pa/CMakeLists.txt b/po/pa/CMakeLists.txt
+--- a/po/pa/CMakeLists.txt	2013-10-12 18:35:08.000000000 +0800
++++ b/po/pa/CMakeLists.txt	2015-12-02 11:54:12.278487603 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( pa ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( pa ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/pl/CMakeLists.txt b/po/pl/CMakeLists.txt
+--- a/po/pl/CMakeLists.txt	2013-10-12 18:35:10.000000000 +0800
++++ b/po/pl/CMakeLists.txt	2015-12-02 11:54:12.165152321 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( pl ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( pl ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/pt/CMakeLists.txt b/po/pt/CMakeLists.txt
+--- a/po/pt/CMakeLists.txt	2013-10-12 18:35:11.000000000 +0800
++++ b/po/pt/CMakeLists.txt	2015-12-02 11:54:12.201819619 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( pt ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( pt ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/pt_BR/CMakeLists.txt b/po/pt_BR/CMakeLists.txt
+--- a/po/pt_BR/CMakeLists.txt	2013-10-12 18:35:12.000000000 +0800
++++ b/po/pt_BR/CMakeLists.txt	2015-12-02 11:54:12.231820134 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( pt_BR ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( pt_BR ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/ro/CMakeLists.txt b/po/ro/CMakeLists.txt
+--- a/po/ro/CMakeLists.txt	2013-10-12 18:35:14.000000000 +0800
++++ b/po/ro/CMakeLists.txt	2015-12-02 11:54:12.315154900 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( ro ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( ro ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/ru/CMakeLists.txt b/po/ru/CMakeLists.txt
+--- a/po/ru/CMakeLists.txt	2013-10-12 18:35:15.000000000 +0800
++++ b/po/ru/CMakeLists.txt	2015-12-02 11:54:12.251820478 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( ru ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( ru ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/sk/CMakeLists.txt b/po/sk/CMakeLists.txt
+--- a/po/sk/CMakeLists.txt	2013-10-12 18:35:18.000000000 +0800
++++ b/po/sk/CMakeLists.txt	2015-12-02 11:54:12.298487947 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( sk ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( sk ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/sl/CMakeLists.txt b/po/sl/CMakeLists.txt
+--- a/po/sl/CMakeLists.txt	2013-10-12 18:35:19.000000000 +0800
++++ b/po/sl/CMakeLists.txt	2015-12-02 11:54:12.305154728 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( sl ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( sl ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/sv/CMakeLists.txt b/po/sv/CMakeLists.txt
+--- a/po/sv/CMakeLists.txt	2013-10-12 18:35:23.000000000 +0800
++++ b/po/sv/CMakeLists.txt	2015-12-02 11:54:12.378489323 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( sv ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( sv ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/tr/CMakeLists.txt b/po/tr/CMakeLists.txt
+--- a/po/tr/CMakeLists.txt	2013-10-12 18:35:28.000000000 +0800
++++ b/po/tr/CMakeLists.txt	2015-12-02 11:54:12.108484681 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( tr ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( tr ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/uk/CMakeLists.txt b/po/uk/CMakeLists.txt
+--- a/po/uk/CMakeLists.txt	2013-10-12 18:35:31.000000000 +0800
++++ b/po/uk/CMakeLists.txt	2015-12-02 11:54:12.358488979 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( uk ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( uk ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
+diff -Naur a/po/zh_TW/CMakeLists.txt b/po/zh_TW/CMakeLists.txt
+--- a/po/zh_TW/CMakeLists.txt	2013-10-12 18:35:37.000000000 +0800
++++ b/po/zh_TW/CMakeLists.txt	2015-12-02 11:54:12.288487775 +0800
+@@ -1,2 +1,2 @@
+ file( GLOB _po_files *.po )
+-GETTEXT_PROCESS_PO_FILES( zh_TW ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )
++GETTEXT_PROCESS_PO_FILES( zh_TW ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES  ${_po_files} )
 diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 --- a/src/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/CMakeLists.txt	2015-12-02 11:10:26.551134704 +0800
++++ b/src/CMakeLists.txt	2015-12-02 11:36:17.357172349 +0800
 @@ -1,7 +1,7 @@
  add_subdirectory(helper)
  
@@ -359,7 +559,7 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
  # Install
 diff -Naur a/src/common.cpp b/src/common.cpp
 --- a/src/common.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/common.cpp	2015-12-02 11:10:26.551134704 +0800
++++ b/src/common.cpp	2015-12-02 11:36:17.357172349 +0800
 @@ -66,7 +66,7 @@
                          return QString();
                      }
@@ -380,7 +580,7 @@ diff -Naur a/src/common.cpp b/src/common.cpp
                          default:
 diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
 --- a/src/convertDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/convertDlg.cpp	2015-12-02 11:10:26.551134704 +0800
++++ b/src/convertDlg.cpp	2015-12-02 11:36:17.357172349 +0800
 @@ -19,23 +19,34 @@
  #include "convertDlg.h"
  
@@ -473,7 +673,7 @@ diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
  }
 diff -Naur a/src/convertDlg.h b/src/convertDlg.h
 --- a/src/convertDlg.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/convertDlg.h	2015-12-02 11:10:26.551134704 +0800
++++ b/src/convertDlg.h	2015-12-02 11:36:17.360505797 +0800
 @@ -18,8 +18,8 @@
  #ifndef CONVERTDLG_H
  #define CONVERTDLG_H
@@ -507,7 +707,7 @@ diff -Naur a/src/convertDlg.h b/src/convertDlg.h
  private:
 diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 --- a/src/helper/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/CMakeLists.txt	2015-12-02 11:10:26.554468089 +0800
++++ b/src/helper/CMakeLists.txt	2015-12-02 11:36:17.360505797 +0800
 @@ -8,17 +8,17 @@
  set(kcmgrub2helper_SRCS helper.cpp)
  
@@ -533,7 +733,7 @@ diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 +kauth_install_actions(org.kde.kcontrol.kcmgrub2 kcmgrub2.actions)
 diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 --- a/src/helper/helper.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/helper.cpp	2015-12-02 11:10:26.554468089 +0800
++++ b/src/helper/helper.cpp	2015-12-02 11:36:17.360505797 +0800
 @@ -25,11 +25,12 @@
  #include <QDir>
  
@@ -642,7 +842,7 @@ diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 +KAUTH_HELPER_MAIN("org.kde.kcontrol.kcmgrub2", Helper)
 diff -Naur a/src/helper/helper.h b/src/helper/helper.h
 --- a/src/helper/helper.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/helper.h	2015-12-02 11:10:26.554468089 +0800
++++ b/src/helper/helper.h	2015-12-02 11:36:17.360505797 +0800
 @@ -17,9 +17,10 @@
  
  #ifndef HELPER_H
@@ -658,7 +858,7 @@ diff -Naur a/src/helper/helper.h b/src/helper/helper.h
  class Helper : public QObject
 diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 --- a/src/installDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.cpp	2015-12-02 11:10:46.861450254 +0800
++++ b/src/installDlg.cpp	2015-12-02 11:36:17.360505797 +0800
 @@ -21,36 +21,47 @@
  //Qt
  #include <QFile>
@@ -810,7 +1010,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
  }
 diff -Naur a/src/installDlg.h b/src/installDlg.h
 --- a/src/installDlg.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.h	2015-12-02 11:10:26.557801474 +0800
++++ b/src/installDlg.h	2015-12-02 11:36:17.360505797 +0800
 @@ -19,22 +19,22 @@
  #define INSTALLDLG_H
  
@@ -841,7 +1041,7 @@ diff -Naur a/src/installDlg.h b/src/installDlg.h
  };
 diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 --- a/src/kcm_grub2.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.cpp	2015-12-02 11:10:26.557801474 +0800
++++ b/src/kcm_grub2.cpp	2015-12-02 11:36:17.363839245 +0800
 @@ -20,22 +20,26 @@
  
  //Own
@@ -1345,7 +1545,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
              }
 diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
 --- a/src/kcm_grub2.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.h	2015-12-02 11:10:26.561134859 +0800
++++ b/src/kcm_grub2.h	2015-12-02 11:36:17.363839245 +0800
 @@ -20,9 +20,11 @@
  
  //Qt
@@ -1370,7 +1570,7 @@ diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
      void readSettings();
 diff -Naur a/src/removeDlg.cpp b/src/removeDlg.cpp
 --- a/src/removeDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/removeDlg.cpp	2015-12-02 11:10:26.561134859 +0800
++++ b/src/removeDlg.cpp	2015-12-02 11:36:17.363839245 +0800
 @@ -28,7 +28,8 @@
  
  //KDE
@@ -1465,7 +1665,7 @@ diff -Naur a/src/removeDlg.cpp b/src/removeDlg.cpp
      }
 diff -Naur a/src/removeDlg.h b/src/removeDlg.h
 --- a/src/removeDlg.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/removeDlg.h	2015-12-02 11:10:26.561134859 +0800
++++ b/src/removeDlg.h	2015-12-02 11:36:17.363839245 +0800
 @@ -22,8 +22,9 @@
  #define REMOVEDLG_H
  
@@ -1497,7 +1697,7 @@ diff -Naur a/src/removeDlg.h b/src/removeDlg.h
      void slotProgress(const QString &status, int percentage);
 diff -Naur a/src/widgets/regexpinputdialog.cpp b/src/widgets/regexpinputdialog.cpp
 --- a/src/widgets/regexpinputdialog.cpp	1970-01-01 08:00:00.000000000 +0800
-+++ b/src/widgets/regexpinputdialog.cpp	2015-12-02 11:10:26.561134859 +0800
++++ b/src/widgets/regexpinputdialog.cpp	2015-12-02 11:36:17.367172694 +0800
 @@ -0,0 +1,57 @@
 +#include <QtGui>
 +#include "regexpinputdialog.h"
@@ -1559,7 +1759,7 @@ diff -Naur a/src/widgets/regexpinputdialog.cpp b/src/widgets/regexpinputdialog.c
 \ No newline at end of file
 diff -Naur a/src/widgets/regexpinputdialog.h b/src/widgets/regexpinputdialog.h
 --- a/src/widgets/regexpinputdialog.h	1970-01-01 08:00:00.000000000 +0800
-+++ b/src/widgets/regexpinputdialog.h	2015-12-02 11:10:26.564468244 +0800
++++ b/src/widgets/regexpinputdialog.h	2015-12-02 11:36:17.367172694 +0800
 @@ -0,0 +1,45 @@
 +#ifndef REGEXPINPUTDIALOG_H
 +#define REGEXPINPUTDIALOG_H
@@ -1609,7 +1809,7 @@ diff -Naur a/src/widgets/regexpinputdialog.h b/src/widgets/regexpinputdialog.h
 \ No newline at end of file
 diff -Naur a/ui/kcm_grub2.ui b/ui/kcm_grub2.ui
 --- a/ui/kcm_grub2.ui	2013-10-12 18:34:15.000000000 +0800
-+++ b/ui/kcm_grub2.ui	2015-12-02 11:10:26.564468244 +0800
++++ b/ui/kcm_grub2.ui	2015-12-02 11:36:17.367172694 +0800
 @@ -12,7 +12,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_6">
