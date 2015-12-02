@@ -1,5 +1,5 @@
 post_install() {
-  update-desktop-database -q &> /dev/null
+  update-desktop-database -q
 }
 
 post_upgrade() {
@@ -9,4 +9,3 @@ post_upgrade() {
 post_remove() {
   post_install
 }
-
