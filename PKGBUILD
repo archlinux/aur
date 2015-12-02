@@ -17,7 +17,6 @@ package() {
     cd "${srcdir}/"
 
     install -d -m 755 "${pkgdir}/usr/share/themes/"
-    cp -r "${_pkgname}" "${pkgdir}/usr/share/themes/"
-    rm -r "${pkgdir}/usr/share/themes/${_pkgname}/.git"
+    cp -r zukitwo-manjaro "${pkgdir}/usr/share/themes/"
 }
 
