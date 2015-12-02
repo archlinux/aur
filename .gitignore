@@ -1,0 +1,7 @@
+pkg/
+src/
+pipdeptree-*.tar.gz
+pipdeptree-*.pkg.tar.xz
+pipdeptree-*.src.tar.gz
+.AURINFO
+
