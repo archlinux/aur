@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/lib/v8/d8
+/usr/lib/v8/d8 $*

@@ -6,7 +6,7 @@
 
 pkgname=v8
 pkgver=4.9.92
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=("i686" "x86_64")
 url="https://code.google.com/p/v8/"
@@ -20,7 +20,7 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
 sha256sums=('SKIP'
             'SKIP'
             '2b054309df9af9fb2e3e14527e88360b44745649b4866e592fb357ac90935f5d'
-            '332760b620368475605e848e4b00b6c6fec4ea783891561c8f6b23aad2b02d8a')
+            'cfd0712ee91d30b62e761da130e194c18f2b92a7f1654fb4af49f96ae9ce3e1b')
 
 case "$CARCH" in
   x86_64) V8_ARCH="x64" ;;
