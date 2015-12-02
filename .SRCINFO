@@ -1,0 +1,16 @@
+pkgbase = gtomb-git
+	pkgdesc = GUI wrapper for Tomb, the crypto undertaker
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/parazyd/gtomb
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	depends = zenity
+	depends = tomb
+	source = git://github.com/parazyd/gtomb
+	sha1sums = SKIP
+
+pkgname = gtomb-git
+
