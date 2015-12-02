@@ -1,6 +1,6 @@
 pkgbase = tageditor
 	pkgdesc = A tag editor with Qt GUI and command-line interface supporting MP4 (iTunes), ID3, Vorbis and Matroska.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/Martchus/tageditor
 	install = tageditor.install
@@ -14,8 +14,8 @@ pkgbase = tageditor
 	depends = tagparser
 	depends = desktop-file-utils
 	depends = xdg-utils
-	source = tageditor-1.2.0.tar.gz::https://github.com/Martchus/tageditor/archive/v1.2.0.tar.gz
-	sha256sums = 42b0c89667069007aec6b2e04f9bd5479c95c601f4d42c0bfd5d8fc5210fb10d
+	source = tageditor-1.2.1.tar.gz::https://github.com/Martchus/tageditor/archive/v1.2.1.tar.gz
+	sha256sums = d089b9e66616c39147b639639152c5848f59dafa2c0a9a77d0137fbed13a2af9
 
 pkgname = tageditor
 
