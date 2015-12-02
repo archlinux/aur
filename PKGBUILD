@@ -3,7 +3,7 @@
 
 pkgname=osu
 pkgver=20151201
-pkgrel=1
+pkgrel=2
 
 source=("http://m1.ppy.sh/r/osu!install.exe"
 	"directsound-latency.reg"
