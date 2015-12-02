@@ -1,12 +1,13 @@
 pkgbase = opencv-git
 	pkgdesc = Open Source Computer Vision Library
-	pkgver = 3.0.0.r1.g424c2bd
-	pkgrel = 2
+	pkgver = 3.0.0.r789.ga0f8645
+	pkgrel = 1
 	url = http://opencv.org/
 	changelog = ChangeLog
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = git
 	makedepends = cmake
@@ -15,7 +16,6 @@ pkgbase = opencv-git
 	makedepends = mesa
 	makedepends = eigen
 	depends = gstreamer0.10-base
-	depends = intel-tbb
 	depends = openexr
 	depends = xine-lib
 	depends = libdc1394
@@ -31,6 +31,9 @@ pkgbase = opencv-git
 	source = fsh.patch
 	md5sums = SKIP
 	md5sums = 752652494b42fd1532f52b789a85947f
+	depends_i686 = intel-tbb
+	depends_x86_64 = intel-tbb
+	depends_armv7h = intel-tbb
 
 pkgname = opencv-git
 

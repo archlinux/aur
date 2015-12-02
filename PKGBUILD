@@ -1,4 +1,5 @@
 # Maintainer: Valentin Churavy <v.churavy@gmail.com>
+# Contributor: Romain Reignier <rom.reignier@gmail.com> (ARM support)
 # Contributor: Fabien Dubosson <fabien.dubosson@gmail.com>
 # Contributor: David Manouchehri <david@davidmanouchehri.com>
 # Contributor: CHEN Xing <cxcxcxcx@gmail.com>
@@ -9,14 +10,17 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname="opencv-git"
-pkgver=3.0.0.r1.g424c2bd
-pkgrel=2
+pkgver=3.0.0.r789.ga0f8645
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library"
 url="http://opencv.org/"
 license=('BSD')
-arch=('i686' 'x86_64' 'armv7h')
-depends=('gstreamer0.10-base' 'intel-tbb' 'openexr'
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+depends=('gstreamer0.10-base' 'openexr'
          'xine-lib' 'libdc1394' 'gtkglext')
+depends_x86_64=('intel-tbb')
+depends_i686=('intel-tbb')
+depends_armv7h=('intel-tbb')
 makedepends=('git' 'cmake' 'python2-numpy' 'python-numpy' 'mesa' 'eigen')
 optdepends=('eigen'
             'libcl: For coding with OpenCL'
@@ -54,6 +58,12 @@ _cmakeopts=('-D WITH_OPENCL=ON'
 
 # all x64 CPUs support SSE2 but not SSE3
 [[ "$CARCH" = 'x86_64' ]] && _cmakeopts+=('-D ENABLE_SSE3=OFF')
+
+# NEON support only for armv7h
+[[ "$CARCH" = 'armv7h' ]] && _cmakeopts+=('-D ENABLE_NEON=ON')
+
+# intel-tbb not available for armv6h
+[[ "$CARCH" = 'armv6h' ]] && _cmakeopts+=('-D WITH_TBB=OFF')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"

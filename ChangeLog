@@ -1,3 +1,8 @@
+2015-12-02 Romain Reignier <rom.reignier@gmail.com>
+
+	* 3.0.0.r789.ga0f8645 :
+	Add armv6h architecture and NEON support for armv7h
+
 2015-06-10 Valentin Churavy <v.churavy@gmail.com>
 
 	* 3.0.0.r1.g424c2bd-2 :
