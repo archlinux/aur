@@ -1,0 +1,21 @@
+pkgbase = previous-svn
+	pkgdesc = NeXTSTEP Emulator
+	pkgver = r540
+	pkgrel = 1
+	url = http://previous.alternative-system.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = cmake
+	depends = sdl2
+	provides = previous
+	conflicts = previous
+	replaces = previous
+	source = previous::svn://svn.code.sf.net/p/previous/code/trunk
+	source = previous-icon.patch
+	md5sums = SKIP
+	md5sums = 0d1d1d6ceeae666ae590af1f8e518217
+
+pkgname = previous-svn
+
