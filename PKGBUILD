@@ -1,6 +1,6 @@
 # Maintainer : Antonio Orefice <kokoko3k@gmail.com>
 pkgname=gopreload-git
-pkgver=20131125
+pkgver=20151202
 pkgrel=1
 pkgdesc="Preloads files needed for given programs."
 arch=('any')
@@ -15,6 +15,7 @@ build() {
 	rm -R $srcdir/gopreload &>/dev/null || echo "No old repository found, proceding to git clone..."
 	git clone --depth 1 $_gitroot || return 1
 	cd $srcdir/gopreload/usr/share/gopreload/mapandlock.source
+	mv $srcdir/gopreload/README $srcdir/gopreload/usr/share/gopreload/README
 	./compile.sh && ./install.sh
 	rm -R  $srcdir/gopreload/usr/share/gopreload/mapandlock.source
 }
