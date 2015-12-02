@@ -7,7 +7,10 @@ pkgbase = davix-git
 	arch = i686
 	license = LGPL
 	makedepends = git
+	makedepends = cmake
 	depends = boost
+	depends = libxml2
+	depends = openssl
 	source = git+https://github.com/cern-it-sdc-id/davix.git
 	md5sums = SKIP
 

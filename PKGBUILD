@@ -7,8 +7,8 @@ pkgdesc="Davix aims to make the task of managing files over HTTP-based protocols
 arch=("x86_64" "i686")
 url="http://dmc.web.cern.ch/projects/davix/home"
 license=("LGPL")
-depends=("boost")
-makedepends=("git")
+depends=("boost" "libxml2" "openssl")
+makedepends=("git" "cmake")
 source=("git+https://github.com/cern-it-sdc-id/davix.git")
 md5sums=("SKIP")
 
