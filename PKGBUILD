@@ -23,8 +23,9 @@ build() {
 
 package() {
     cd gtomb
-    cp gtomb /usr/local/bin/gtomb
-    cp monmort.png /usr/local/bin/monmort.png
+    mkdir -p $pkgdir/usr/local/bin/
+    cp gtomb $pkgdir/usr/local/bin/gtomb
+    cp monmort.png $pkgdir/usr/local/bin/monmort.png
 
     echo -e "Edit /usr/local/bin/gtomb if your tomb executable path is different from /usr/local/bin/tomb"
 }
