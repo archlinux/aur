@@ -1,7 +1,7 @@
 pkgbase = bing-wallpaper-git
 	pkgdesc = Change wallpaper from Bing daily
 	pkgver = r10
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL3
 	makedepends = git

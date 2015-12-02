@@ -2,7 +2,7 @@
 
 pkgname=bing-wallpaper-git
 pkgver=r10
-pkgrel=1
+pkgrel=2
 pkgdesc="Change wallpaper from Bing daily"
 arch=(any)
 license=('GPL3')
