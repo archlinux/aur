@@ -100,9 +100,9 @@ diff -Naur a/kndiswrapper.pro b/kndiswrapper.pro
 diff -Naur a/src/kndiswrapper.cpp b/src/kndiswrapper.cpp
 --- a/src/kndiswrapper.cpp	2012-03-06 15:44:43.000000000 +0800
 +++ b/src/kndiswrapper.cpp	2015-11-25 18:39:59.147991774 +0800
-@@ -1,7 +1,7 @@
+@@ -1,7 +1,6 @@
  #include "kndiswrapper.h"
- #include <klocale.h>
+-#include <klocale.h>
  //
 -kndiswrapper::kndiswrapper( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 +kndiswrapper::kndiswrapper( QWidget * parent, Qt::WindowFlags f) : QDialog(parent, f)
