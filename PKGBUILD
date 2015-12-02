@@ -5,7 +5,7 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
@@ -32,7 +32,7 @@ provides=(
       'libswscale.so'
 )
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2)
-sha256sums=('830ec647f7ad774fc0caf17ba47774bf5dee7a89cbd65894f364a87ba3ad21b2')
+sha256sums=('1bcf993a71839bb4a37eaa0c51daf315932b6dad6089f672294545cc51a5caf6')
 
 build() {
   cd $_pkgbasename-$pkgver
@@ -73,6 +73,7 @@ build() {
     --enable-version3 \
     --enable-x11grab
 
+#    --enable-libdcadec \
 #    --enable-libopencore_amrnb \
 #    --enable-libopencore_amrwb \
 #    --enable-libopenjpeg \
