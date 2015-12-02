@@ -2,8 +2,8 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=v0.7.1.11.r0.g30dc9fa
-pkgrel=2
+pkgver=v0.7.1.12.r0.g942ebf7
+pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
 url="http://jasp-stats.org"
