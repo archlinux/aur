@@ -1,7 +1,7 @@
 pkgbase = bitcoin-qt-addrindex
 	pkgdesc = Bitcoin Core GUI P2P wallet with addrindex
-	pkgver = 0.11.1
-	pkgrel = 2
+	pkgver = 0.11.2
+	pkgrel = 1
 	url = https://github.com/btcdrak/bitcoin
 	arch = i686
 	arch = x86_64
@@ -30,8 +30,8 @@ pkgbase = bitcoin-qt-addrindex
 	conflicts = bitcoin-daemon
 	conflicts = bitcoin-qt
 	conflicts = bitcoin-tx
-	source = bitcoin-qt-addrindex-0.11.1.tar.gz::https://codeload.github.com/btcdrak/bitcoin/tar.gz/v0.11.1-addrindex
-	sha256sums = 790b32f073f979a252a413c4a2ea5d2d35454007fa8f41e90660b344a9241cf3
+	source = bitcoin-qt-addrindex-0.11.2.tar.gz::https://codeload.github.com/btcdrak/bitcoin/tar.gz/v0.11.2-addrindex
+	sha256sums = e3c3bd7b887b5486df8991c2ca651145b1bf50edec7f1bb5519e2dcc70cb076b
 
 pkgname = bitcoin-qt-addrindex
 
