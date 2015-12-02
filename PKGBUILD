@@ -3,7 +3,7 @@
 
 pkgname=coturn
 _portname=turnserver
-pkgver=4.5.0.2
+pkgver=4.5.0.3
 pkgrel=1
 pkgdesc="Free open source implementation of TURN and STUN Server"
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ install="$_portname.install"
 backup=("etc/turnserver.conf")
 source=(http://$_portname.open-sys.org/downloads/v$pkgver/$_portname-$pkgver.tar.gz $_portname.service $_portname.tmpfiles.d)
 
-sha256sums=('435241425002d0fe193090107fb3daa9b6abb138c4f7ed2ad242c4c16c1852ca'
-           '319030c1916d353bfc3375626cc7f60d6eeca762fe4fce354f010212902c49dc'
-           'fe7ed64dc6844aabdfa00b76134b22d69d9097bd3f77120d704d0ee08c036c21')
+sha256sums=('78726712058dcabb6df670fe02a51f9b30b4d82028d4dfa4f4bb0800c5924f83'
+            '319030c1916d353bfc3375626cc7f60d6eeca762fe4fce354f010212902c49dc'
+            'fe7ed64dc6844aabdfa00b76134b22d69d9097bd3f77120d704d0ee08c036c21')
 
 build() {
   cd "$srcdir/$_portname-$pkgver"
