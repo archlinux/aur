@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-tf2-eigen
+	pkgdesc = ROS - tf2_eigen.
+	pkgver = 0.5.12
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-tf2
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = eigen3
+	depends = ros-indigo-cmake-modules
+	depends = ros-indigo-tf2
+	depends = ros-indigo-geometry-msgs
+	source = tf2_eigen::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2_eigen/0.5.12-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-tf2-eigen
+
