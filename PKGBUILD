@@ -1,16 +1,16 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=redshift-adjust
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Script for manually adjusting the colour temperature with hotkeys"
 arch=(any)
 url="https://github.com/maandree/redshift-adjust"
 license=('GPL3')
 depends=(redshift bash coreutils)
-makedepends=(make coreutils)
+makedepends=(make coreutils texinfo)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(1a24d0d286ec0392aa080c886831b801327d7760a9322377c9e4dc4453c4b68b)
+sha256sums=(c004b2896dd92fae0bb8075f5c7cb7a0a4d68843d76341462530ada9dbfb73ed)
 
 
 build() {
