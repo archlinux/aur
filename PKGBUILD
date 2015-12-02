@@ -1,9 +1,11 @@
 # Maintainer: Yakir Sitbon <kingyes1 at gmail dot com>
-# Contributor: Alex Taber <aft dot pokemon at gmail dot com>
+# Contributor: Alucryd <alucryd at gmail dot com>
+# Contributor: Stas S <whats_up at tut dot by>
+# Contributor: Hilinus <itahilinus at hotmail dot it>
 
 pkgname=teamviewer
 pkgver=11.0.52520
-pkgrel=2
+pkgrel=1.1
 pkgdesc="All-In-One Software for Remote Support and Online Meetings"
 arch=('i686' 'x86_64')
 url="http://www.teamviewer.com"
@@ -31,16 +33,6 @@ package() {
   cd "${srcdir}"
 
 # Install
-  if [ -f /opt/teamviewer/logfiles ]
-    then
-      rm opt/teamviewer/logfiles
-  fi
-
-  if [ -f /opt/teamviewer/config ]
-    then
-      rm opt/teamviewer/config
-  fi
-
   cp -dr --no-preserve=ownership {etc,opt,usr,var} "${pkgdir}"/
 
 # Additional files
