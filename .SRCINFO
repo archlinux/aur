@@ -1,6 +1,6 @@
 pkgbase = go-mtpfs-git
 	pkgdesc = Simple tool for viewing MTP devices as FUSE filesystems
-	pkgver = 20141215
+	pkgver = 20150917
 	pkgrel = 1
 	url = http://github.com/hanwen/go-mtpfs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = go-mtpfs-git
 	license = BSD
 	makedepends = go>=1.3.0
 	makedepends = git
-	depends = libmtp
+	depends = libusb
 	depends = fuse
 	options = !strip
 	options = !emptydirs
