@@ -6,7 +6,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=46.0.2490.86
+pkgver=47.0.2526.73
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -22,18 +22,20 @@ makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
-            'kdeutils-kwalletmanager: for storing passwords in KWallet')
+            'kwallet: for storing passwords in KWallet')
 conflicts='chromium'
 options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
+        chromium-fix-print-preview-on-en_GB-locale.patch
         0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
         chromium-widevine.patch)
-sha256sums=('ee18d28ac80ff958e8a6c770bfc0d7d770b55452ed91a87f731e1b432a7d1d92'
+sha256sums=('6d66d01c8ddff6562ff13d30ed65ef0cdc2888d9e4924be615d576b7eb15f4f5'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
+            '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
             'd114def156d60d5f4c9e42f2955ba19bdebe38037a330ef947af24ace25db39d'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
@@ -59,6 +61,12 @@ prepare() {
 
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
   touch chrome/test/data/webui/i18n_process_css_test.html
+
+  # https://code.google.com/p/chromium/issues/detail?id=541273
+  sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
+
+  # https://code.google.com/p/chromium/issues/detail?id=480415
+  patch -Np1 -i ../chromium-fix-print-preview-on-en_GB-locale.patch
 
   # https://code.google.com/p/chromium/issues/detail?id=505226
   patch -d third_party/pdfium -Np1 <../0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
