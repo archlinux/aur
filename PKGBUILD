@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
@@ -25,7 +25,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('790b32f073f979a252a413c4a2ea5d2d35454007fa8f41e90660b344a9241cf3'
+sha256sums=('e3c3bd7b887b5486df8991c2ca651145b1bf50edec7f1bb5519e2dcc70cb076b'
             '8a56413f8946861390a9992411a3730bc085ee02b852c27371cacfa5ec50e939'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
@@ -39,7 +39,7 @@ install=bitcoin.install
 build() {
   cd "$srcdir/${pkgname%%-*}-$pkgver-addrindex"
 
-  msg 'Building...'
+  msg2 'Building...'
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -58,43 +58,42 @@ build() {
 package() {
   cd "$srcdir/${pkgname%%-*}-$pkgver-addrindex"
 
-  msg 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/${pkgname%%-*}/COPYING"
+  msg2 'Installing license...'
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
 
-  msg 'Installing man pages...'
+  msg2 'Installing man pages...'
   install -Dm 644 contrib/debian/manpages/bitcoind.1 \
-    "$pkgdir/usr/share/man/man1/bitcoind.1"
+    -t "$pkgdir/usr/share/man/man1"
   install -Dm 644 contrib/debian/manpages/bitcoin.conf.5 \
-    "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
+    -t "$pkgdir/usr/share/man/man5"
 
-  msg 'Installing documentation...'
+  msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
   for _doc in \
-    `find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n'` \
+    $(find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n') \
     release-notes; do
       cp -dpr --no-preserve=ownership doc/$_doc \
         "$pkgdir/usr/share/doc/bitcoin/$_doc"
   done
 
-  msg 'Installing bitcoin...'
+  msg2 'Installing bitcoin...'
   make DESTDIR="$pkgdir" install
 
-  msg 'Installing bitcoin.conf...'
-  install -Dm 600 "$srcdir/bitcoin.conf" "$pkgdir/etc/bitcoin/bitcoin.conf"
+  msg2 'Installing bitcoin.conf...'
+  install -Dm 600 "$srcdir/bitcoin.conf" -t "$pkgdir/etc/bitcoin"
 
-  msg 'Installing bitcoin.service...'
-  install -Dm 644 "$srcdir/bitcoin.service" \
-    "$pkgdir/usr/lib/systemd/system/bitcoin.service"
+  msg2 'Installing bitcoin.service...'
+  install -Dm 644 "$srcdir/bitcoin.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/bitcoin-reindex.service" \
-    "$pkgdir/usr/lib/systemd/system/bitcoin-reindex.service"
+    -t "$pkgdir/usr/lib/systemd/system"
 
-  msg 'Installing bitcoin.logrotate...'
+  msg2 'Installing bitcoin.logrotate...'
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
 
-  msg 'Installing bash completion...'
+  msg2 'Installing bash completion...'
   install -Dm 644 contrib/bitcoind.bash-completion \
     "$pkgdir/usr/share/bash-completion/completions/bitcoind"
 
-  msg 'Cleaning up pkgdir...'
+  msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
