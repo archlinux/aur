@@ -1,12 +1,11 @@
 pkgbase = liburlmatch
 	pkgdesc = Fast URL matcher library
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clbr/urlmatch
 	arch = i686
 	arch = x86_64
 	license = AGPL3
-	makedepends = git
 	options = libtool
 	options = staticlibs
 	source = liburlmatch-1.0.tar.gz::https://github.com/clbr/urlmatch/archive/v1.0.tar.gz
