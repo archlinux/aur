@@ -1,0 +1,15 @@
+pkgbase = rq
+	pkgdesc = Read plain-text files in blazing speed
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/maandree/rq
+	install = rq.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = texinfo
+	source = https://github.com/maandree/rq/archive/1.0.tar.gz
+	sha256sums = 3ed183d750197f79ffe88c359d1620504f8448349b6d308a76937537f2eec417
+
+pkgname = rq
+
