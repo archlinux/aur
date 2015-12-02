@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20151113.def87f1
+pkgver=20151202.344d446
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -39,6 +39,8 @@ depends=('desktop-file-utils'
          'uchardet'
          'libarchive'
          'libsoxr'
+         'v4l-utils'
+         'libvdpau'
          # 'vapoursynth'
          )
 license=('GPL2')
@@ -124,9 +126,6 @@ package() {
   install -Dm644 mpv/DOCS/edl-mpv.rst "${pkgdir}/usr/share/doc/mpv/edl-mpv.rst"
   install -Dm644 mpv/DOCS/client-api-changes.rst "${pkgdir}/usr/share/doc/mpv/client-api-changes.rst"
   install -Dm644 mpv/DOCS/contribute.md "${pkgdir}/usr/share/doc/mpv/contribute.md"
-
-  install -Dm644 mpv/etc/mpv.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mpv.svg"
-  install -Dm644 mpv/etc/mpv-symbolic.svg "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/mpv.svg"
 
   sed 's|/usr/local/etc/mpv.conf|/etc/mpv.conf|g' -i "${pkgdir}/usr/share/doc/mpv/example.conf"
 
