@@ -1,15 +1,13 @@
 pkgbase = apngopt
 	pkgdesc = Optimizes existing APNG animation
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://sourceforge.net/projects/apng/files/APNG_Optimizer/
 	arch = i686
 	arch = x86_64
 	license = zlib
-	source = http://downloads.sourceforge.net/project/apng/APNG_Optimizer/1.3/apngopt-1.3-src.zip
-	source = 001-missing-header.patch
-	md5sums = e2d2411ea9a704c5522dbcad482816f1
-	md5sums = cde7d050ce06a32956256a2e7ab992be
+	source = http://downloads.sourceforge.net/project/apng/APNG_Optimizer/1.4/apngopt-1.4-src.zip
+	md5sums = cb214b0b30b9b89ac25f41fb84ca5559
 
 pkgname = apngopt
 
