@@ -1,0 +1,19 @@
+pkgbase = vimiv-git
+	pkgdesc = An image viewer with vim-like keybindings
+	pkgver = 305af42
+	pkgrel = 1
+	url = https://github.com/karlch/vimiv
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python3
+	depends = python-gobject
+	depends = gtk3
+	depends = python-pillow
+	optdepends = imagemagick: for the optimization of images
+	provides = vimiv-git
+	source = vimiv-git::git+https://github.com/karlch/vimiv.git
+	md5sums = SKIP
+
+pkgname = vimiv-git
+
