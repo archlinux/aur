@@ -1,0 +1,17 @@
+pkgbase = horde3d
+	pkgdesc = A lightweight next-generation 3D rendering and animation engine.
+	pkgver = 1.0beta5
+	pkgrel = 1
+	url = http://www.horde3d.org/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	makedepends = cmake
+	makedepends = mesa
+	depends = gcc-libs
+	depends = libgl
+	source = Horde3D-482a4c2afb.tar.gz::https://github.com/horde3d/Horde3D/archive/482a4c2afb.tar.gz
+	sha1sums = ad8ed0038bc7d7f3d20e42ba7a9677a54d7ac11d
+
+pkgname = horde3d
+
