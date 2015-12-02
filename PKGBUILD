@@ -3,19 +3,18 @@
 
 pkgname=kcm-ufw
 pkgver=0.4.3
-pkgrel=3
-pkgdesc="KDE4 control module for Ufw(Uncomplicated Firewall)"
+pkgrel=4
+pkgdesc="KDE4 control module for UFW (Uncomplicated Firewall)"
 arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php/UFW+KControl+Module?content=137789"
 license=('GPL')
-depends=('ufw' 'kdebase-workspace' 'polkit-kde' 'openssl' 'python2' )
+depends=('ufw' 'kdebase-runtime' 'polkit-kde' 'openssl' 'python2' )
 makedepends=('automoc4' 'cmake' 'docbook-xml' 'docbook-xsl')
-source=("kcm_ufw-${pkgver}.tar.bz2::ftp://ftp.litnet.lt/gentoo/distfiles/kcm_ufw-${pkgver}.tar.bz2")
-# Additional sources mirrors: http://www.filewatcher.com/m/kcm_ufw-0.4.3.tar.bz2.766909-0.html
-md5sums=('97de867481948e3f54d76ca3678ffd2e')
+source=("${pkgname}.zip::https://github.com/youngunix/${pkgname}/archive/master.zip")
+sha256sums=('8654cf8263ec8915278ccf93a0eee5ef7773a4be39f6a26a595f8716606b364a')
 
 build() {
-    cd "${srcdir}/kcm_ufw-${pkgver}/"
+    cd "${pkgname}-master"
     if [ -d build ] ; then
         rm build -rf
     fi
@@ -27,7 +26,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/kcm_ufw-${pkgver}/build"
+    cd "${pkgname}-master/build"
     make DESTDIR="${pkgdir}" install || return 1
 }
 
