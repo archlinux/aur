@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=48.0.2560.0
+pkgver=48.0.2564.22
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -80,7 +80,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r7.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r0.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r1.patch'
         # Misc Patches
         'enable_vaapi_on_linux-r2.diff'
         # Patch from crbug (chromium bugtracker)
@@ -93,7 +93,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           # Patch form Gentoo
           'c24d14029714d2295f3220a7173a5a7362f578a2'
-          '8e828ffd7de532becdd30378cdcc8411575a7b0b'
+          '6c25b8e8b6bd17d64606dd14353c43a7728daf03'
           # Misc Patches
           'd114dc0d1d9379f1ab08fc015541922c34db21fa'
           # Patch from crbug (chromium bugtracker)
@@ -145,10 +145,10 @@ fi
 if [ "${_use_gtk3}" = "1" ]; then
   depends+=('gtk3')
   _launcher_gtk='GTK=3'
-  optdepends=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
+  optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
 elif [ "${_use_gtk3}" = "0" ]; then
   depends+=('gtk2')
-  optdepends=('libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)')
+  optdepends+=('libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)')
 fi
 
 # Need you use ccache?
@@ -358,14 +358,14 @@ fi
 # -Duse_system_opus=1        | https://code.google.com/p/webrtc/issues/detail?id=3077
 # -Duse_system_sqlite=1      | http://crbug.com/22208
 # -Duse_system_ssl=1         | http://crbug.com/58087
-# -Duse_system_openssl=1     | Use if use BoringSSL instead of SSL
 # -Duse_system_libsrtp       | https://crbug.com/501318
+# -Duse_system_libvpx=0      | http://crbug.com/494939
 # NOTE
+# -Duse_system_openssl=1     | Use if use BoringSSL instead of SSL
 # -Duse_system_libevent=0    | Need older version (<2.x.x)
 # -Duse_system_protobuf=0    | https://bugs.gentoo.org/show_bug.cgi?id=525560
 # -Duse_system_v8=0          | Possible broken in API/ABI if use a differen version
 # -Duse_system_libxnvctrl=0  | Because not exist in Arch (and not all users use nvidia)
-# -Duse_system_libvpx=0      | http://crbug.com/494939
 _use_system=('-Duse_system_expat=1'
              '-Duse_system_ffmpeg=1'
              '-Duse_system_flac=1'
@@ -423,7 +423,7 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo
   patch -p0 -i ../chromium-system-jinja-r7.patch
-  patch -p1 -i ../chromium-system-ffmpeg-r0.patch
+  patch -p1 -i ../chromium-system-ffmpeg-r1.patch
 
   # Misc Patches:
   patch -p1 -i ../enable_vaapi_on_linux-r2.diff
