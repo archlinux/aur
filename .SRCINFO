@@ -1,6 +1,6 @@
 pkgbase = ruby-actionview
 	pkgdesc = Rendering framework putting the V in MVC (part of Rails).
-	pkgver = 4.2.4
+	pkgver = 4.2.5
 	pkgrel = 1
 	url = http://www.rubyonrails.org
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-actionview
 	depends = ruby-activesupport
 	depends = ruby-builder
 	depends = ruby-erubis
-	noextract = actionview-4.2.4.gem
+	noextract = actionview-4.2.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/actionview-4.2.4.gem
-	sha1sums = 334ddc60724e4e1ff99e2170d2e435805d0ade0b
+	source = https://rubygems.org/downloads/actionview-4.2.5.gem
+	sha1sums = 1295aae8a8b5389b3e067ba937abecbd2a61eacf
 
 pkgname = ruby-actionview
 
