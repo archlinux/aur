@@ -1,14 +1,14 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 _gitname=terminaltables
-pkgname=${_gitname}-git
+pkgname=python-terminaltables-git
 pkgver=2.1.0
 pkgrel=1
 arch=('any')
 pkgdesc='Generate simple tables in terminals from a nested list of strings.'
 license=('MIT')
 makedepends=('git python-setuptools')
-provides=('terminaltables')
+provides=('python-terminaltables')
 url='https://github.com/Robpol86/terminaltables'
 source=("git+https://github.com/Robpol86/terminaltables.git")
 sha256sums=('SKIP')
