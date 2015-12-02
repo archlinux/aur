@@ -10,9 +10,7 @@ pkgbase = php-cs-fixer
 	makedepends = php-composer
 	depends = php>=5.3.6
 	source = https://github.com/FriendsOfPHP/PHP-CS-Fixer/archive/v1.10.1.tar.gz
-	source = php-cs-fixer.install
 	sha512sums = 3c85e269f6bd808314071de56040ffb4aac123b43ed488357fb52d2f66287b737743b9a0001d24e2be49248b5c6d91bf01a626b5f69329a7126989dc6bf3b3d6
-	sha512sums = 0eff98de88ad715939217f16138941bb3e9c8bb6e34d85db875c1fc0166e3fb4b0ec8dd9df5d9865c9f772621dc5a6aaf668d2ba8e26b632905bdaedf435feb5
 
 pkgname = php-cs-fixer
 
