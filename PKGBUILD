@@ -26,7 +26,7 @@ fi
 
 build() {
   cd "${srcdir}"
-  tar -xf data.tar.bz2
+  tar -jxf data.tar.bz2
 }
 
 package() {
