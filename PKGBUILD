@@ -1,6 +1,6 @@
 # Maintainer: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-browscap
-pkgver=6006
+pkgver=6010
 pkgrel=1
 pkgdesc="PHP browscap"
 url="http://browscap.org/"
