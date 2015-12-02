@@ -1,6 +1,6 @@
 pkgname=gpodder3
 _pkgname=gpodder
-pkgver=3.8.4
+pkgver=3.8.5
 pkgrel=1
 pkgdesc='A podcast receiver/catcher'
 license=('GPL3')
@@ -28,6 +28,6 @@ package() {
          -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|' \
     $(find $pkgdir/usr/lib/python2.7/site-packages/gpodder/ -name '*.py')
 }
-md5sums=('277de4e0d8c0cf5459e9c9cd45ab5cc6')
-sha1sums=('0f17a3fecdf61c79d1fe56fbcf14a262e46fc23e')
-sha256sums=('f61a69e7fcb252fa34efeb3975e94f0194ba0f141960bb5a3b9a6b89459a5732')
+md5sums=('df651a331c91ebd634c0d0b5ae8f7ea2')
+sha1sums=('787e7bd564ac0fd587c6fea7f17e473c4f8c4c34')
+sha256sums=('f331a9af942f554a5a387a86f22f4440e4c6e58d40765090bfebd3b8d9e9a98b')
