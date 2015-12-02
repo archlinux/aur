@@ -44,6 +44,6 @@ package() {
   install -Dm 755 "${srcdir}/ucloner-cmd.sh" "$pkgdir/usr/bin/ucloner-cmd"
   install -Dm 755 "${srcdir}/ucloner.desktop" "$pkgdir/usr/share/applications/ucloner.desktop"
   install -Dm 755 "${srcdir}/ucloner.png" "$pkgdir/usr/share/pixmaps/ucloner.png"
-  install -Dm 755 "${srcdir}/ucloner.gui.policy" "$pkgdir//usr/share/polkit-1/actions/ucloner.gui.policy"
+  #install -Dm 755 "${srcdir}/ucloner.gui.policy" "$pkgdir//usr/share/polkit-1/actions/ucloner.gui.policy"
 }
 
