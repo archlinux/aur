@@ -1,0 +1,15 @@
+pkgbase = davix-git
+	pkgdesc = Davix aims to make the task of managing files over HTTP-based protocols simple.
+	pkgver = R_0_5_0.r84.g9ddbd23
+	pkgrel = 1
+	url = http://dmc.web.cern.ch/projects/davix/home
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = git
+	depends = boost
+	source = git+https://github.com/cern-it-sdc-id/davix.git
+	md5sums = SKIP
+
+pkgname = davix-git
+
