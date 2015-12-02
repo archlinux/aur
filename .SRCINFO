@@ -1,6 +1,6 @@
 pkgbase = stock_quote
 	pkgdesc = python script for getting stock quotes from yahoo and calculting gains and losses
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/gps1539/stock_quote
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = stock_quote
 	depends = python-numpy
 	depends = python-colorama
 	source = https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote.py
-	md5sums = c99244fc350e4bd169302667d2962d17
+	md5sums = 9150489554a7c49532aa08bff4094127
 
 pkgname = stock_quote
 
