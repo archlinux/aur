@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=auto-auto-complete
-pkgver=7.1
+pkgver=7.2
 pkgrel=1
 pkgdesc='Autogenerate shell auto-completion scripts'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python3')
 makedepends=('make' 'sed' 'coreutils' 'python3' 'texinfo')
 install=auto-auto-complete.install
 source=(https://github.com/maandree/auto-auto-complete/archive/$pkgver.tar.gz)
-sha256sums=(02639d1031c28529d247765587fdbb7afd6bed3a75381eae4846c747555cf24e)
+sha256sums=(5e54025c6ef65dfff5ba976d23eb778a0936b0678763ebcd78359d460300301e)
 
 
 build() {
