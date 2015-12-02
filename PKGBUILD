@@ -3,7 +3,7 @@
 # Contributor: Massimiliano Brocchini <proc80@gmail.com>
 
 pkgname=rainlendar-lite
-pkgver=2.13
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="A desktop Calendar, ToDo list and Event list"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ provides=('rainlendar2')
 conflicts=('rainlendar-pro')
 source_x86_64=http://www.rainlendar.net/download/Rainlendar-Lite-$pkgver-amd64.tar.bz2
 source_i686=http://www.rainlendar.net/download/Rainlendar-Lite-$pkgver-i386.tar.bz2
-md5sums_i686=('c6185666358a1ef491a7ea22cef6b3d3')
-md5sums_x86_64=('14cf1ab85c6f60b719a6df92af0e5f66')
+md5sums_i686=('6e0db4ae76515e194667756ddd07e25a')
+md5sums_x86_64=('b004ec559af1ec7b03d6519012162a86')
 
 package() {
   cd "${srcdir}"
