@@ -6,7 +6,7 @@
 _pkgname=cjdns
 pkgname=$_pkgname-git
 pkgver=17.1.r72.g68693cc
-pkgrel=1
+pkgrel=2
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
 license=('GPL3')
@@ -20,12 +20,17 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url#branch=crashey")
-sha512sums=('SKIP')
+source=("git+$url#branch=crashey" 'seccomp-bind-getsockaddr.patch')
+sha512sums=('SKIP' '547db6c204c029375fa435414dc3a15d4df3cb6d73a65ad7c9476454dc1cc5ded6cf5cfca75ccd580ed98b2ca4508127572eb4bd2d4c7847015c94c014bd18a4')
 
 pkgver() {
   cd $_pkgname
   git describe --tags | sed 's|^[^-]*-v||;s|-|.r|;s|-|.|g'
+}
+
+prepare() {
+  cd $_pkgname
+  patch -p1 < ../seccomp-bind-getsockaddr.patch
 }
 
 build() {
