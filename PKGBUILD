@@ -4,7 +4,7 @@
 _pkgname=gale
 pkgname=gale-git
 epoch=1
-pkgver=1.1.r17.ge012127
+pkgver=1.1.r17.gaa4e000
 pkgrel=1
 pkgdesc="A distributed, real-time instant messaging system"
 arch=('i686' 'x86_64')
