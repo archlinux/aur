@@ -69,15 +69,15 @@ _kill_kill_line="yes"
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=e398317a086a78c0cf0004505eb8f56586e925b2
-_utdicver=20151002
-_zipcoderel=201510
+_mozcrev=95de40fa884d693172605e7283ec82233a908b29
+_utdicver=20151130
+_zipcoderel=201511
 _uimmozcrev=318.0562676
 
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.17.2123.102.20151002
+pkgver=2.17.2240.102.20151130
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -91,14 +91,16 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-${_zipcoderel}.zip
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
   mod-generate-mozc-ut.sh
+  adapt_mozc2.17.2240.102.patch
 )
 sha1sums=('SKIP'
-          'ec38640b36ab662cb1c5097d22557a85a1ea0f8e'
-          'cc1b87e31cde48de716851d0125018226368f908'
+          'd37a86d338b1bd16b42e117c81dc8923625b00b4'
+          '1673bfa2e29c4f2687b860da7f9c403c94bf3e00'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          '2c769c7e0aa8a8123abd23353371daa8dc20b753'
-          'f24f31bc8dac216c209b8ba6f79a128bf670c062'
-          '6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7')
+          '04e3f03d4933b20d865c887f7fa1d9dcc8a2bf1d'
+          '584df54e2a1419bec85ca5c70f2e0e585ee314b0'
+          '6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7'
+          '031654d8fb40225a6c193d89246b294256ae33f4')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
@@ -158,6 +160,8 @@ prepare() {
     fi
     # Extract license part of uim-mozc
     head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
+
+    patch -p2 -i "${srcdir}/adapt_mozc2.17.2240.102.patch"
 
   fi
 
