@@ -1,12 +1,13 @@
 pkgbase = drush-extensions
 	pkgdesc = Various Drush extensions
 	pkgver = 7.x
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/drush-ops/drush/
 	install = install
 	arch = any
 	groups = drupal
 	license = GPL
+	makedepends = git
 	depends = drush
 	source = install
 	source = http://ftp.drupal.org/files/projects/aegir-up-7.x-2.0-rc3.tar.gz
@@ -15,6 +16,8 @@ pkgbase = drush-extensions
 	source = http://ftp.drupal.org/files/projects/registry_rebuild-7.x-2.2.tar.gz
 	source = http://ftp.drupal.org/files/projects/drush-vagrant-7.x-2.0-rc4.tar.gz
 	source = http://ftp.drupal.org/files/projects/drush_entity-7.x-5.0-alpha2.tar.gz
+	source = buildmanager::git+https://github.com/WhiteHouse/buildmanager.git
+	source = drushsubtree::git+https://github.com/WhiteHouse/drushsubtree.git
 	md5sums = f68c7407446bc4dfe95fbe1741928a15
 	md5sums = 29bd5f0bab1911aca72708165590fd94
 	md5sums = 0ecb568037d3425c25f971234359c4eb
@@ -22,6 +25,8 @@ pkgbase = drush-extensions
 	md5sums = 6057703bd4a5bec81e397e19602e2756
 	md5sums = 8d735f9e8f864424f292d4866a70b8f1
 	md5sums = b121cc7779ba3fd346e4ca90fd6db19a
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = drush-aegir-up
 	pkgdesc = Blueprint provider for Drush Vagrant to build a local Aegir VMs
@@ -55,4 +60,14 @@ pkgname = drush-entity
 	pkgdesc = Query and manipulate entities directly.
 	url = https://www.drupal.org/project/drush-entity
 	depends = drush
+
+pkgname = drush-buildmanager
+	pkgdesc = Drush Make wrapper to simplify maintaining Drupal builds.
+	url = https://github.com/whitehouse/buildmanager
+	depends = drush
+
+pkgname = drush-subtree
+	pkgdesc = Integrate git-subtree with Drush Make for automated and efficient Drupal builds.
+	url = https://github.com/whitehouse/drushsubtree
+	depends = drush-buildmanager
 
