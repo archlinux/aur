@@ -2,7 +2,7 @@ post_install() {
   if ! php -i | grep 'PHP Archive support => enabled' >/dev/null 2>&1; then
     echo
     echo "Error: phar.so must be enabled in your php.ini"
-		echo
+    echo
     exit 1
   fi
 }
