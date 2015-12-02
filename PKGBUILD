@@ -2,7 +2,7 @@
 # Contributor: Miguel Revilla <yo@miguelrevilla.com>
 
 pkgname=libcutl
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A C++ utility library"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ depends=('gcc-libs')
 url="http://www.codesynthesis.com/projects/libcutl/"
 options=('!libtool')
 license=('MIT')
-source=("http://www.codesynthesis.com/download/libcutl/1.9/libcutl-${pkgver}.tar.bz2")
-md5sums=('54cf1f421a520e79dd06c436a8b968d3')
+source=("http://www.codesynthesis.com/download/libcutl/1.10/libcutl-${pkgver}.tar.bz2")
+md5sums=('462930494a5e7094ea14b00f3767f6af')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
