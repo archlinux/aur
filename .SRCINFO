@@ -1,6 +1,6 @@
 pkgbase = pp
 	pkgdesc = Page pager
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/maandree/pp
 	install = pp.install
@@ -9,8 +9,8 @@ pkgbase = pp
 	license = MIT
 	makedepends = texinfo
 	makedepends = auto-auto-complete
-	source = https://github.com/maandree/pp/archive/1.0.tar.gz
-	sha256sums = 458ce1a97f07c58c39547b8504fa97e60b2f1c5c3489e84c641e5a84a24fac05
+	source = https://github.com/maandree/pp/archive/1.0.1.tar.gz
+	sha256sums = cc56692bee9603cfb482e92ec5d76a9b794b138624ae09095c5b9ab129b7d8c3
 
 pkgname = pp
 

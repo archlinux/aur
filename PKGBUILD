@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=pp
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Page pager'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('texinfo' 'auto-auto-complete')
 install=pp.install
 source=(https://github.com/maandree/pp/archive/$pkgver.tar.gz)
-sha256sums=(458ce1a97f07c58c39547b8504fa97e60b2f1c5c3489e84c641e5a84a24fac05)
+sha256sums=(cc56692bee9603cfb482e92ec5d76a9b794b138624ae09095c5b9ab129b7d8c3)
 
 
 build() {
