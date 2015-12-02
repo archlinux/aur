@@ -2,7 +2,7 @@
 # Contributor: ValdikSS <iam@valdikss.org.ru>
 
 pkgname=osu
-pkgver=20150510
+pkgver=20151201
 pkgrel=1
 
 source=("http://m1.ppy.sh/r/osu!install.exe"
@@ -26,6 +26,7 @@ license=(custom)
 install=osu.install
 
 depends=(wine xterm winetricks)
+depends_x86_64=(lib32-alsa-lib)
 
 package() {
     cd "$srcdir"
