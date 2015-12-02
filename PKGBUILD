@@ -12,7 +12,7 @@ pkgname=(
 )
 pkgbase='drush-extensions'
 pkgver='7.x'
-pkgrel=2
+pkgrel=3
 pkgdesc="Various Drush extensions"
 arch=('any')
 url='http://github.com/drush-ops/drush/'
@@ -29,8 +29,8 @@ source=(
     'http://ftp.drupal.org/files/projects/registry_rebuild-7.x-2.2.tar.gz'
     'http://ftp.drupal.org/files/projects/drush-vagrant-7.x-2.0-rc4.tar.gz'
     'http://ftp.drupal.org/files/projects/drush_entity-7.x-5.0-alpha2.tar.gz'
-    'buildmanager::git+https://github.com/WhiteHouse/buildmanager.git'
-    'drushsubtree::git+https://github.com/WhiteHouse/drushsubtree.git'
+    'buildmanager'::'git+https://github.com/WhiteHouse/buildmanager.git'
+    'drushsubtree'::'git+https://github.com/WhiteHouse/drushsubtree.git'
 )
 md5sums=(
     'f68c7407446bc4dfe95fbe1741928a15'
@@ -95,7 +95,7 @@ package_drush-entity() {
     _package
 }
 package_drush-buildmanager() {
-    pkgver="$(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-list --count master)"
+    pkgver="$(git -C buildmanager log -1 --format="%cd" --date=short | sed 's|-||g').$(git -C buildmanager rev-list --count master)"
     pkgdesc='Drush Make wrapper to simplify maintaining Drupal builds.'
     url='https://github.com/whitehouse/buildmanager'
     depends=('drush')
@@ -103,7 +103,7 @@ package_drush-buildmanager() {
     _package
 }
 package_drush-subtree() {
-    pkgver="$(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-list --count master)"
+    pkgver="$(git -C drushsubtree log -1 --format="%cd" --date=short | sed 's|-||g').$(git -C drushsubtree rev-list --count master)"
     pkgdesc='Integrate git-subtree with Drush Make for automated and efficient Drupal builds.'
     url='https://github.com/whitehouse/drushsubtree'
     depends=('drush-buildmanager')
