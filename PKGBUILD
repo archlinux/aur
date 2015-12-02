@@ -25,6 +25,7 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 
+	# removes the need for nodejs-clean-css package
 	sed -i  "s/'--clean-css',//" doc/build.py
 }
 
@@ -61,6 +62,7 @@ package() {
 	
 	make DESTDIR="$pkgdir" install
 	install -D -m644 ../LICENSE.rst ${pkgdir}/usr/share/licenses/${_name}/LICENSE
+	install -D -m644 ../ChangeLog.rst ${pkgdir}/usr/share/doc/${_name}/ChangeLog.rst
 
 	# clean up
 	rm -rf ${pkgdir}/usr/share/doc/${_name}/{.buildinfo,.doctrees,_sources}
