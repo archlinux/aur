@@ -1,32 +1,28 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=wmbiff
-pkgver=0.4.27
+pkgver=0.4.28.20151026
 arch=('i686' 'x86_64')
-pkgrel=4
+pkgrel=1
 pkgdesc="WindowMaker dock app that displays the number of read and unread messages in up to five mailboxes."
 url="http://wmbiff.sourceforge.net/"
 license=("GPL")
 depends=('libxpm' 'gnutls')
 optdepends=('ruby: to run security.debian.rb')
-source=("http://downloads.sourceforge.net/wmbiff/wmbiff-0.4.27.tar.gz"
-	"libgnutls-config"
-	"gnutls.patch")
-md5sums=('50466b6e4a143cf4e55546b34d5792e6'
-         'e549721cfa4f39956f1f8c8c612e4e5e'
-         '74ec98339fde3534ed5a2761c84e8ea6')
+source=("${pkgname}-${pkgver}.tar.gz::http://windowmaker.org/dockapps/?download=wmbiff-0.4.28+20151026.tar.gz")
+md5sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -b -z .orig -i ../gnutls.patch
+  cd dockapps-*
+  autoreconf -fiv
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure LIBGNUTLS_CONFIG="$srcdir/libgnutls-config" --prefix=/usr --mandir=/usr/share/man
+  cd dockapps-*
+  ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd dockapps-*
   make DESTDIR="$pkgdir" install
 }
