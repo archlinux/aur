@@ -1,0 +1,22 @@
+pkgbase = kcm-servicemenus-frameworks
+	pkgdesc = KF5 System Settings module to manage service menus
+	pkgver = 0.4
+	pkgrel = 3
+	url = http://www.kde-look.org/content/show.php/Service+Menu+Manager?content=94996
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = kdoctools
+	makedepends = extra-cmake-modules
+	depends = kdelibs4support
+	depends = knewstuff
+	conflicts = kcm-servicemenus
+	replaces = kcm-servicemenus
+	source = kcm-servicemenus_0.4.tar.gz
+	source = port_to_kf5.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kcm-servicemenus-frameworks
+

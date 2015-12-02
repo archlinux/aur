@@ -1,0 +1,143 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2009-08-27 17:50:31.000000000 +0800
++++ b/CMakeLists.txt	2015-12-02 18:02:54.672819383 +0800
+@@ -1,10 +1,16 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 2.8)
+ PROJECT (kcm-servicemenus)
+-find_package(KDE4 REQUIRED)
+ 
+-add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS} )
+-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES})
+-LINK_DIRECTORIES(${QT_LIBRARY_DIR})
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets)
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support Archive NewStuff) # 
+ 
+ add_subdirectory(src)
+ add_subdirectory(po)
+\ No newline at end of file
+diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt	2009-08-27 16:36:47.000000000 +0800
++++ b/src/CMakeLists.txt	2015-12-02 18:02:56.312867166 +0800
+@@ -1,16 +1,12 @@
+-find_package(KDE4 REQUIRED)
+-include( KDE4Defaults )
+-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES})
+-
+ set(kcm_servicemenus-sources sm.cpp)
+ 
+-kde4_add_ui_files(kcm_servicemenus-sources 
++ki18n_wrap_ui(kcm_servicemenus-sources 
+    sm.ui
+ )
+ 
+-kde4_add_plugin(kcm_servicemenus ${kcm_servicemenus-sources})
++add_library(kcm_servicemenus MODULE ${kcm_servicemenus-sources})
+ 
+-target_link_libraries(kcm_servicemenus ${KDE4_KIO_LIBS} ${KDE4_KIO_LIBS} ${KDE4_KNEWSTUFF2_LIBS})
++target_link_libraries(kcm_servicemenus KF5::KDELibs4Support KF5::Archive KF5::NewStuff) # 
+ install(TARGETS kcm_servicemenus  DESTINATION ${PLUGIN_INSTALL_DIR} )
+ 
+ 
+diff -Naur a/src/kcm_servicemenus.desktop b/src/kcm_servicemenus.desktop
+--- a/src/kcm_servicemenus.desktop	2009-11-24 18:03:24.000000000 +0800
++++ b/src/kcm_servicemenus.desktop	2015-12-02 17:52:34.167974158 +0800
+@@ -1,11 +1,11 @@
+ [Desktop Entry]
+-Exec=kcmshell4 kcm_servicemenus
++Exec=kcmshell5 kcm_servicemenus
+ Icon=configure-toolbars.png
+ Type=Service
+ X-KDE-ServiceTypes=KCModule
+ X-KDE-Library=kcm_servicemenus
+ X-KDE-ParentApp=kcontrol
+-X-KDE-System-Settings-Parent-Category=advanced-user-settings
++X-KDE-System-Settings-Parent-Category=personalization
+ Name=Service Menu Manager
+ Comment=Manage service menus
+ X-KDE-Keywords=service menu
+diff -Naur a/src/sm.cpp b/src/sm.cpp
+--- a/src/sm.cpp	2009-09-15 00:55:09.000000000 +0800
++++ b/src/sm.cpp	2015-12-02 18:33:05.102992658 +0800
+@@ -47,7 +47,8 @@
+ #include <kio/job.h>
+ #include <kio/deletejob.h>
+ #include <kio/netaccess.h>
+-#include <knewstuff2/engine.h>
++//#include <knewstuff2/engine.h>
++#include <kns3/downloaddialog.h>
+ #include <kmessagebox.h>
+ #include <kstandarddirs.h>
+ #include <ktar.h>
+@@ -58,7 +59,10 @@
+ 
+ #include "sm.h"
+ 
+-
++//kdelibs4support
++#include <KUrl>
++#include <KIcon>
++#include <KConfigGroup>
+ 
+ //------------------------------------------------------------------------------
+ //--- init ---------------------------------------------------------------------
+@@ -67,9 +71,10 @@
+ K_PLUGIN_FACTORY(SmFactory, registerPlugin<sm>();)
+ K_EXPORT_PLUGIN(SmFactory("kcm_servicemenus"));
+ 
++#include <sm.moc>
+ 
+ sm::sm( QWidget *parent, const QVariantList &) 
+-	: KCModule(SmFactory::componentData(), parent)
++	: KCModule(parent)
+ 
+ {
+ 
+@@ -168,10 +173,12 @@
+ 
+ 	QStringList filesBeforeInstall = QDir( appsDir+"/kcm_servicemenus/downloads/" ).entryList( QDir::Files );
+ 
+-	KNS::Engine engine(this);
+-	if (engine.init("servicemenus.knsrc"))
+-		KNS::Entry::List entries = engine.downloadDialogModal(this); 
+-
++	//KNS::Engine engine(this);
++	//if (engine.init("servicemenus.knsrc"))
++	//	KNS::Entry::List entries = engine.downloadDialogModal(this); 
++        QPointer<KNS3::DownloadDialog> dialog(new KNS3::DownloadDialog("servicemenus.knsrc"));
++        dialog->exec();
++        
+ 	QStringList filesAfterInstall = QDir( appsDir+"/kcm_servicemenus/downloads/" ).entryList( QDir::Files );
+ 	for (QStringList::Iterator it = filesAfterInstall.begin(); it != filesAfterInstall.end(); ++it) {
+ 		if( !filesBeforeInstall.contains(*it) )
+@@ -448,8 +455,8 @@
+ 
+ 	QStringList ghnsTmpFiles = QDir(appsDir+"/knewstuff2-entries.registry/").entryList( QDir::Files );
+ 	QStringListIterator ghnsTmpFilesIterator(ghnsTmpFiles);
+-	bool stop = FALSE;
+-	while (ghnsTmpFilesIterator.hasNext() and stop == FALSE ) {
++	bool stop = false;
++	while (ghnsTmpFilesIterator.hasNext() and stop == false ) {
+ 		QString filePath= appsDir+"/knewstuff2-entries.registry/"+ghnsTmpFilesIterator.next();
+ 		QFile file(filePath);
+ 		if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+diff -Naur a/src/sm.h b/src/sm.h
+--- a/src/sm.h	2009-08-29 19:47:31.000000000 +0800
++++ b/src/sm.h	2015-12-02 17:45:47.199164212 +0800
+@@ -21,7 +21,7 @@
+ 
+ #ifndef MAIN_H
+ #define MAIN_H
+-#include <QtGui/QtGui>
++#include <QtGui>
+ #include <QMainWindow>
+ #include <kcmodule.h>
+ #include <KUrl>
