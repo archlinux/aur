@@ -1,0 +1,28 @@
+diff -uNr mozc.orig/src/unix/uim/mozc.cc mozc/src/unix/uim/mozc.cc
+--- mozc.orig/src/unix/uim/mozc.cc	2015-12-02 20:12:47.386430000 +0900
++++ mozc/src/unix/uim/mozc.cc	2015-12-02 20:14:46.780606804 +0900
+@@ -33,6 +33,7 @@
+ 
+ //#include <config.h>
+ 
++#include <cstddef>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -50,6 +51,7 @@
+ 
+ #include "base/port.h"
+ #include "base/util.h"
++#include "base/init_mozc.h"
+ #include "protocol/config.pb.h"
+ #include "protocol/commands.pb.h"
+ #include "client/client.h"
+@@ -1196,7 +1198,7 @@
+   argv[0] = (char *)name;
+   argv[1] =  NULL;
+ 
+-  InitGoogle((const char *)argv[0], &argc, (char ***)&argv, true);
++  mozc::InitMozc((const char *)argv[0], &argc, (char ***)&argv, true);
+   mozc::uim::install_keymap();
+ }
+ 
