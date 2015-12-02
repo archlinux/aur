@@ -1,6 +1,6 @@
 diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/CMakeLists.txt	2015-12-02 10:34:53.177790508 +0800
++++ b/CMakeLists.txt	2015-12-02 11:10:26.547801320 +0800
 @@ -1,31 +1,49 @@
 +cmake_minimum_required( VERSION 2.8.12 )
 +cmake_policy(SET CMP0002 OLD)
@@ -61,7 +61,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
 diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 --- a/cmake/modules/FindMsgfmt.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/FindMsgfmt.cmake	2015-12-02 07:47:37.319397015 +0800
++++ b/cmake/modules/FindMsgfmt.cmake	2015-12-02 11:10:26.547801320 +0800
 @@ -0,0 +1,28 @@
 +# - Try to find msgfmt 
 +# Once done this will define
@@ -93,7 +93,7 @@ diff -Naur a/cmake/modules/FindMsgfmt.cmake b/cmake/modules/FindMsgfmt.cmake
 +
 diff -Naur a/cmake/modules/MacroBoolTo01.cmake b/cmake/modules/MacroBoolTo01.cmake
 --- a/cmake/modules/MacroBoolTo01.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/MacroBoolTo01.cmake	2015-12-02 09:27:45.547285716 +0800
++++ b/cmake/modules/MacroBoolTo01.cmake	2015-12-02 11:10:26.547801320 +0800
 @@ -0,0 +1,20 @@
 +# MACRO_BOOL_TO_01( VAR RESULT0 ... RESULTN )
 +# This macro evaluates its first argument
@@ -117,7 +117,7 @@ diff -Naur a/cmake/modules/MacroBoolTo01.cmake b/cmake/modules/MacroBoolTo01.cma
 +ENDMACRO(MACRO_BOOL_TO_01)
 diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature.cmake
 --- a/cmake/modules/MacroLogFeature.cmake	1970-01-01 08:00:00.000000000 +0800
-+++ b/cmake/modules/MacroLogFeature.cmake	2015-12-02 07:47:37.319397015 +0800
++++ b/cmake/modules/MacroLogFeature.cmake	2015-12-02 11:10:26.547801320 +0800
 @@ -0,0 +1,157 @@
 +# This file defines the Feature Logging macros.
 +#
@@ -278,7 +278,7 @@ diff -Naur a/cmake/modules/MacroLogFeature.cmake b/cmake/modules/MacroLogFeature
 +ENDMACRO(MACRO_DISPLAY_FEATURE_LOG)
 diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
 --- a/other/kcm_grub2.desktop	2013-10-12 18:34:15.000000000 +0800
-+++ b/other/kcm_grub2.desktop	2015-12-02 07:47:37.319397015 +0800
++++ b/other/kcm_grub2.desktop	2015-12-02 11:10:26.547801320 +0800
 @@ -2,12 +2,12 @@
  Icon=system-reboot
  Type=Service
@@ -296,7 +296,7 @@ diff -Naur a/other/kcm_grub2.desktop b/other/kcm_grub2.desktop
  Name[bs]=GRUB2 pokretač sistemar
 diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 --- a/src/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/CMakeLists.txt	2015-12-02 10:33:15.198434259 +0800
++++ b/src/CMakeLists.txt	2015-12-02 11:10:26.551134704 +0800
 @@ -1,7 +1,7 @@
  add_subdirectory(helper)
  
@@ -359,7 +359,7 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
  # Install
 diff -Naur a/src/common.cpp b/src/common.cpp
 --- a/src/common.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/common.cpp	2015-12-02 09:47:48.285730635 +0800
++++ b/src/common.cpp	2015-12-02 11:10:26.551134704 +0800
 @@ -66,7 +66,7 @@
                          return QString();
                      }
@@ -380,7 +380,7 @@ diff -Naur a/src/common.cpp b/src/common.cpp
                          default:
 diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
 --- a/src/convertDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/convertDlg.cpp	2015-12-02 10:04:41.742924905 +0800
++++ b/src/convertDlg.cpp	2015-12-02 11:10:26.551134704 +0800
 @@ -19,23 +19,34 @@
  #include "convertDlg.h"
  
@@ -473,7 +473,7 @@ diff -Naur a/src/convertDlg.cpp b/src/convertDlg.cpp
  }
 diff -Naur a/src/convertDlg.h b/src/convertDlg.h
 --- a/src/convertDlg.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/convertDlg.h	2015-12-02 09:45:32.462924088 +0800
++++ b/src/convertDlg.h	2015-12-02 11:10:26.551134704 +0800
 @@ -18,8 +18,8 @@
  #ifndef CONVERTDLG_H
  #define CONVERTDLG_H
@@ -507,7 +507,7 @@ diff -Naur a/src/convertDlg.h b/src/convertDlg.h
  private:
 diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 --- a/src/helper/CMakeLists.txt	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/CMakeLists.txt	2015-12-02 09:48:08.989489809 +0800
++++ b/src/helper/CMakeLists.txt	2015-12-02 11:10:26.554468089 +0800
 @@ -8,17 +8,17 @@
  set(kcmgrub2helper_SRCS helper.cpp)
  
@@ -533,7 +533,7 @@ diff -Naur a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
 +kauth_install_actions(org.kde.kcontrol.kcmgrub2 kcmgrub2.actions)
 diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 --- a/src/helper/helper.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/helper.cpp	2015-12-02 10:27:45.735706641 +0800
++++ b/src/helper/helper.cpp	2015-12-02 11:10:26.554468089 +0800
 @@ -25,11 +25,12 @@
  #include <QDir>
  
@@ -642,7 +642,7 @@ diff -Naur a/src/helper/helper.cpp b/src/helper/helper.cpp
 +KAUTH_HELPER_MAIN("org.kde.kcontrol.kcmgrub2", Helper)
 diff -Naur a/src/helper/helper.h b/src/helper/helper.h
 --- a/src/helper/helper.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/helper/helper.h	2015-12-02 10:24:02.175524872 +0800
++++ b/src/helper/helper.h	2015-12-02 11:10:26.554468089 +0800
 @@ -17,9 +17,10 @@
  
  #ifndef HELPER_H
@@ -658,15 +658,15 @@ diff -Naur a/src/helper/helper.h b/src/helper/helper.h
  class Helper : public QObject
 diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
 --- a/src/installDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.cpp	2015-12-02 10:01:53.162869984 +0800
-@@ -21,36 +21,48 @@
++++ b/src/installDlg.cpp	2015-12-02 11:10:46.861450254 +0800
+@@ -21,36 +21,47 @@
  //Qt
  #include <QFile>
  #include <QRadioButton>
 -
 +#include <QPushButton>
  //KDE
- #include <kdeversion.h>
+-#include <kdeversion.h>
  #include <KMessageBox>
 -#include <KProgressDialog>
 -#include <KAuth/ActionWatcher>
@@ -719,7 +719,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
      Q_FOREACH(const Solid::Device &device, Solid::Device::listFromType(Solid::DeviceInterface::StorageAccess)) {
          if (!device.is<Solid::StorageAccess>() || !device.is<Solid::StorageVolume>()) {
              continue;
-@@ -66,12 +78,12 @@
+@@ -66,12 +77,12 @@
  
          QString uuidDir = "/dev/disk/by-uuid/", uuid = volume->uuid(), name;
          name = (QFile::exists((name = uuidDir + uuid)) || QFile::exists((name = uuidDir + uuid.toLower())) || QFile::exists((name = uuidDir + uuid.toUpper())) ? QFile::symLinkTarget(name) : QString());
@@ -735,7 +735,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
          ui->treeWidget_recover->setItemWidget(item, 0, radio);
      }
  }
-@@ -80,11 +92,10 @@
+@@ -80,11 +91,10 @@
      delete ui;
  }
  
@@ -749,7 +749,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
          for (int i = 0; i < ui->treeWidget_recover->topLevelItemCount(); i++) {
              QRadioButton *radio = qobject_cast<QRadioButton *>(ui->treeWidget_recover->itemWidget(ui->treeWidget_recover->topLevelItem(i), 0));
              if (radio && radio->isChecked()) {
-@@ -98,34 +109,35 @@
+@@ -98,34 +108,35 @@
              KMessageBox::sorry(this, i18nc("@info", "Sorry, you have to select a partition with a proper name!"));
              return;
          }
@@ -810,7 +810,7 @@ diff -Naur a/src/installDlg.cpp b/src/installDlg.cpp
  }
 diff -Naur a/src/installDlg.h b/src/installDlg.h
 --- a/src/installDlg.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/installDlg.h	2015-12-02 09:44:10.127876680 +0800
++++ b/src/installDlg.h	2015-12-02 11:10:26.557801474 +0800
 @@ -19,22 +19,22 @@
  #define INSTALLDLG_H
  
@@ -841,7 +841,7 @@ diff -Naur a/src/installDlg.h b/src/installDlg.h
  };
 diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
 --- a/src/kcm_grub2.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.cpp	2015-12-02 10:31:08.658232830 +0800
++++ b/src/kcm_grub2.cpp	2015-12-02 11:10:26.557801474 +0800
 @@ -20,22 +20,26 @@
  
  //Own
@@ -1345,7 +1345,7 @@ diff -Naur a/src/kcm_grub2.cpp b/src/kcm_grub2.cpp
              }
 diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
 --- a/src/kcm_grub2.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/kcm_grub2.h	2015-12-02 10:28:48.447547229 +0800
++++ b/src/kcm_grub2.h	2015-12-02 11:10:26.561134859 +0800
 @@ -20,9 +20,11 @@
  
  //Qt
@@ -1370,7 +1370,7 @@ diff -Naur a/src/kcm_grub2.h b/src/kcm_grub2.h
      void readSettings();
 diff -Naur a/src/removeDlg.cpp b/src/removeDlg.cpp
 --- a/src/removeDlg.cpp	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/removeDlg.cpp	2015-12-02 09:17:17.513325476 +0800
++++ b/src/removeDlg.cpp	2015-12-02 11:10:26.561134859 +0800
 @@ -28,7 +28,8 @@
  
  //KDE
@@ -1465,7 +1465,7 @@ diff -Naur a/src/removeDlg.cpp b/src/removeDlg.cpp
      }
 diff -Naur a/src/removeDlg.h b/src/removeDlg.h
 --- a/src/removeDlg.h	2013-10-12 18:34:15.000000000 +0800
-+++ b/src/removeDlg.h	2015-12-02 09:17:18.973360591 +0800
++++ b/src/removeDlg.h	2015-12-02 11:10:26.561134859 +0800
 @@ -22,8 +22,9 @@
  #define REMOVEDLG_H
  
@@ -1497,7 +1497,7 @@ diff -Naur a/src/removeDlg.h b/src/removeDlg.h
      void slotProgress(const QString &status, int percentage);
 diff -Naur a/src/widgets/regexpinputdialog.cpp b/src/widgets/regexpinputdialog.cpp
 --- a/src/widgets/regexpinputdialog.cpp	1970-01-01 08:00:00.000000000 +0800
-+++ b/src/widgets/regexpinputdialog.cpp	2015-12-02 07:47:37.329397266 +0800
++++ b/src/widgets/regexpinputdialog.cpp	2015-12-02 11:10:26.561134859 +0800
 @@ -0,0 +1,57 @@
 +#include <QtGui>
 +#include "regexpinputdialog.h"
@@ -1559,7 +1559,7 @@ diff -Naur a/src/widgets/regexpinputdialog.cpp b/src/widgets/regexpinputdialog.c
 \ No newline at end of file
 diff -Naur a/src/widgets/regexpinputdialog.h b/src/widgets/regexpinputdialog.h
 --- a/src/widgets/regexpinputdialog.h	1970-01-01 08:00:00.000000000 +0800
-+++ b/src/widgets/regexpinputdialog.h	2015-12-02 07:47:37.329397266 +0800
++++ b/src/widgets/regexpinputdialog.h	2015-12-02 11:10:26.564468244 +0800
 @@ -0,0 +1,45 @@
 +#ifndef REGEXPINPUTDIALOG_H
 +#define REGEXPINPUTDIALOG_H
@@ -1609,7 +1609,7 @@ diff -Naur a/src/widgets/regexpinputdialog.h b/src/widgets/regexpinputdialog.h
 \ No newline at end of file
 diff -Naur a/ui/kcm_grub2.ui b/ui/kcm_grub2.ui
 --- a/ui/kcm_grub2.ui	2013-10-12 18:34:15.000000000 +0800
-+++ b/ui/kcm_grub2.ui	2015-12-02 07:47:37.332730682 +0800
++++ b/ui/kcm_grub2.ui	2015-12-02 11:10:26.564468244 +0800
 @@ -12,7 +12,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_6">
