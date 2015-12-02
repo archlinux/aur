@@ -3,7 +3,7 @@
 
 pkgname=php-cs-fixer
 _pkgname=PHP-CS-Fixer
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible)."
 url="http://cs.sensiolabs.org/"
@@ -13,7 +13,7 @@ depends=("php>=5.3.6")
 makedepends=("php-box" "php-composer")
 install="${pkgname}.install"
 source=("https://github.com/FriendsOfPHP/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('f254c4ef887734456a7d9eea8054b2106f8acee759874dbdb5f5b79be8f7563f6c7d5cb430a54478695b9366ff8ebd1612deea82c514818f5c2868194c15a748')
+sha512sums=('ebd96e1304b03f8649ffe4557881f230b260d15ee2ce895bbac22eea43bd1338d05cc3cbca04be33c17b73c66c5183abd788060e855f190b4e31cf9e8c72012f')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
