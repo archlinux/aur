@@ -6,19 +6,21 @@
 
 pkgname=v8
 pkgver=4.9.92
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=("i686" "x86_64")
 url="https://code.google.com/p/v8/"
 license=("BSD")
 depends=("readline" "icu" "libtinfo")
-makedepends=("python2" "python2-virtualenv" "ninja")
+makedepends=("python2" "python2-virtualenv" "ninja" "git")
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
         "gyp::git+https://chromium.googlesource.com/external/gyp"
-        "v8.pc")
+        "v8.pc"
+        "d8")
 sha256sums=('SKIP'
             'SKIP'
-            '2b054309df9af9fb2e3e14527e88360b44745649b4866e592fb357ac90935f5d')
+            '2b054309df9af9fb2e3e14527e88360b44745649b4866e592fb357ac90935f5d'
+            '332760b620368475605e848e4b00b6c6fec4ea783891561c8f6b23aad2b02d8a')
 
 case "$CARCH" in
   x86_64) V8_ARCH="x64" ;;
@@ -73,17 +75,23 @@ check() {
 package() {
   cd v8
 
-  install -Dm755 out/Release/d8 "$pkgdir"/usr/bin/d8
-  install -Dm755 out/Release/lib/libv8.so "$pkgdir"/usr/lib/libv8.so
+  install -d $pkgdir/usr/lib/v8
+
+  install -Dm755 out/Release/d8 $pkgdir/usr/lib/v8/d8
+  install -Dm644 out/Release/natives_blob.bin $pkgdir/usr/lib/v8/natives_blob.bin
+  install -Dm755 out/Release/lib/libv8.so $pkgdir/usr/lib/v8/libv8.so
+  ln -s v8/libv8.so $pkgdir/usr/lib/libv8.so
+  install -Dm755 $srcdir/d8 $pkgdir/usr/bin/d8
+
 
   # V8 has several header files and ideally if it had its own folder in /usr/include
   # But doing it here will break all users. Ideally if they use provided pkgconfig file.
-  install -d "$pkgdir"/usr/include
-  install -Dm644 include/*.h "$pkgdir"/usr/include
+  install -d $pkgdir/usr/include
+  install -Dm644 include/*.h $pkgdir/usr/include
 
-  install -d "$pkgdir"/usr/lib/pkgconfig
-  install -m644 "$srcdir/v8.pc" "$pkgdir"/usr/lib/pkgconfig
+  install -d $pkgdir/usr/lib/pkgconfig
+  install -m644 $srcdir/v8.pc $pkgdir/usr/lib/pkgconfig
 
-  install -d "$pkgdir"/usr/share/licenses/v8
-  install -m644 LICENSE* "$pkgdir"/usr/share/licenses/v8
+  install -d $pkgdir/usr/share/licenses/v8
+  install -m644 LICENSE* $pkgdir/usr/share/licenses/v8
 }

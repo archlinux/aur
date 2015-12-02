@@ -1,7 +1,7 @@
 pkgbase = v8
 	pkgdesc = Fast and modern Javascript engine used in Google Chrome.
 	pkgver = 4.9.92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.google.com/p/v8/
 	arch = i686
 	arch = x86_64
@@ -9,15 +9,18 @@ pkgbase = v8
 	makedepends = python2
 	makedepends = python2-virtualenv
 	makedepends = ninja
+	makedepends = git
 	depends = readline
 	depends = icu
 	depends = libtinfo
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = gyp::git+https://chromium.googlesource.com/external/gyp
 	source = v8.pc
+	source = d8
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 2b054309df9af9fb2e3e14527e88360b44745649b4866e592fb357ac90935f5d
+	sha256sums = 332760b620368475605e848e4b00b6c6fec4ea783891561c8f6b23aad2b02d8a
 
 pkgname = v8
 
