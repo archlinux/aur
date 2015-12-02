@@ -16,6 +16,6 @@ sha1sums=SKIP
 package() {
   mkdir -p $pkgdir/usr/share/themes
   cd $srcdir
-  cp -r $pkgname-master $pkgdir/usr/share/themes/
+  cp -r $pkgname $pkgdir/usr/share/themes/
   chmod -R 755 $pkgdir/usr/share/themes/$pkgname
 }
