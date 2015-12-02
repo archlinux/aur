@@ -1,7 +1,7 @@
 pkgbase = pidgin-hg
 	pkgdesc = Multi-protocol instant messaging client. Latest mercurial build.
-	pkgver = latest
-	pkgrel = 4
+	pkgver = 37398.a9aa2aa0b1b6
+	pkgrel = 1
 	url = http://pidgin.im/
 	arch = i686
 	arch = x86_64
@@ -70,7 +70,7 @@ pkgname = libpurple-hg
 
 pkgname = finch-hg
 	pkgdesc = A ncurses-based messaging client
-	depends = libpurple-hg=latest-4
+	depends = libpurple-hg=37398.a9aa2aa0b1b6-1
 	depends = libx11
 	depends = python2
 	provides = finch

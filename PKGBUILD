@@ -4,8 +4,8 @@
 
 pkgname=('pidgin-hg' 'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=latest
-pkgrel=4
+pkgver=37398.a9aa2aa0b1b6
+pkgrel=1
 pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
