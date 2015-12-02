@@ -2,8 +2,8 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=duply
-_mainver=1.10
-pkgver=$_mainver.1
+_mainver=1.11
+pkgver=$_mainver
 pkgrel=1
 pkgdesc="A shell front end for duplicity. It manages backup job settings in profiles and allows to batch execute commands."
 arch=('any')
@@ -23,4 +23,4 @@ package() {
 }
 
 md5sums=('adcc36b695e44387747ecc70f0a35b72'
-         'b589f40ccbf3536e781aefe9b193e1ef')
+         '4de5b191f2fde0db94aca123f792f89c')
