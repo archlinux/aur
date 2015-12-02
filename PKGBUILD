@@ -1,7 +1,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo
 pkgver=1.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cairo vector graphics library (mingw-w64)"
 arch=(any)
 url="http://cairographics.org/"
@@ -9,6 +9,9 @@ license=("LGPL" "MPL")
 makedepends=(mingw-w64-configure mingw-w64-librsvg mingw-w64-poppler)
 depends=(mingw-w64-fontconfig mingw-w64-pixman mingw-w64-lzo mingw-w64-glib2)
 options=(!strip !buildflags staticlibs)
+provides=($pkgname-bootstrap)
+replaces=($pkgname-bootstrap)
+conflicts=($pkgname-bootstrap)
 source=("http://cairographics.org/releases/cairo-${pkgver}.tar.xz"
 "0009-standalone-headers.mingw.patch"
 "0026-create-argb-fonts.all.patch"
