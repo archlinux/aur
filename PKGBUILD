@@ -1,4 +1,5 @@
-# Maintainer : speps <speps at aur dot archlinux dot org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
@@ -7,7 +8,7 @@ _p=audacious
 _pkg=${_p}-plugins
 pkgname=${_p}2-plugins
 pkgver=3.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Plugins for Audacious. Gtk2 Version.'
 arch=('i686' 'x86_64')
 url='http://audacious-media-player.org/'
