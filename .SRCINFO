@@ -1,6 +1,6 @@
 pkgbase = mozc
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
-	pkgver = 2.17.2123.102
+	pkgver = 2.17.2240.102
 	pkgrel = 1
 	url = http://code.google.com/p/mozc/
 	arch = i686
@@ -14,12 +14,12 @@ pkgbase = mozc
 	depends = qt4
 	depends = ibus>=1.4.1
 	depends = zinnia
-	source = mozc::git+https://github.com/google/mozc.git#commit=e398317a086a78c0cf0004505eb8f56586e925b2
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201509.zip
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201509.zip
+	source = mozc::git+https://github.com/google/mozc.git#commit=95de40fa884d693172605e7283ec82233a908b29
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201511.zip
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201511.zip
 	sha1sums = SKIP
-	sha1sums = 134bd80b14d87386eec38710e999dc56fc34efc3
-	sha1sums = c3cd5e91ac4878e60c875076d7b3b37f087964d1
+	sha1sums = 04e3f03d4933b20d865c887f7fa1d9dcc8a2bf1d
+	sha1sums = 584df54e2a1419bec85ca5c70f2e0e585ee314b0
 
 pkgname = mozc
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
@@ -39,6 +39,6 @@ pkgname = ibus-mozc
 	arch = i686
 	arch = x86_64
 	groups = mozc-im
-	depends = mozc=2.17.2123.102
+	depends = mozc=2.17.2240.102
 	depends = ibus>=1.4.1
 

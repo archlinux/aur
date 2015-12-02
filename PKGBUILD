@@ -27,13 +27,13 @@ _bldtype=Release
 # http://zipcloud.ibsnet.co.jp/
 #*************************************************************
 
-_zipcoderel=201510
-_mozcrev=e398317a086a78c0cf0004505eb8f56586e925b2
+_zipcoderel=201511
+_mozcrev=95de40fa884d693172605e7283ec82233a908b29
 
 pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
-pkgver=2.17.2123.102
+pkgver=2.17.2240.102
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
@@ -46,8 +46,8 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
 )
 sha1sums=('SKIP'
-          '2c769c7e0aa8a8123abd23353371daa8dc20b753'
-          'f24f31bc8dac216c209b8ba6f79a128bf670c062')
+          '04e3f03d4933b20d865c887f7fa1d9dcc8a2bf1d'
+          '584df54e2a1419bec85ca5c70f2e0e585ee314b0')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
