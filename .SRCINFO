@@ -1,6 +1,6 @@
 pkgbase = php-cs-fixer
 	pkgdesc = Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible).
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = http://cs.sensiolabs.org/
 	install = php-cs-fixer.install
@@ -9,8 +9,8 @@ pkgbase = php-cs-fixer
 	makedepends = php-box
 	makedepends = php-composer
 	depends = php>=5.3.6
-	source = https://github.com/FriendsOfPHP/PHP-CS-Fixer/archive/v1.10.1.tar.gz
-	sha512sums = 3c85e269f6bd808314071de56040ffb4aac123b43ed488357fb52d2f66287b737743b9a0001d24e2be49248b5c6d91bf01a626b5f69329a7126989dc6bf3b3d6
+	source = https://github.com/FriendsOfPHP/PHP-CS-Fixer/archive/v1.10.2.tar.gz
+	sha512sums = f254c4ef887734456a7d9eea8054b2106f8acee759874dbdb5f5b79be8f7563f6c7d5cb430a54478695b9366ff8ebd1612deea82c514818f5c2868194c15a748
 
 pkgname = php-cs-fixer
 
