@@ -2,7 +2,7 @@
 
 _name=cppformat
 pkgname=${_name}-git
-pkgver=1.1.0.r393.gb64913b
+pkgver=2.0.0.r2.g48e2548
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
@@ -63,5 +63,5 @@ package() {
 	install -D -m644 ../LICENSE.rst ${pkgdir}/usr/share/licenses/${_name}/LICENSE
 
 	# clean up
-	rm -rf ${pkgdir}/usr/share/doc/${_name}/html/{.buildinfo,.doctrees,_sources}
+	rm -rf ${pkgdir}/usr/share/doc/${_name}/{.buildinfo,.doctrees,_sources}
 }
