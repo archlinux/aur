@@ -5,7 +5,7 @@
 
 pkgname=teamviewer
 pkgver=11.0.52520
-pkgrel=1
+pkgrel=1.1
 pkgdesc="All-In-One Software for Remote Support and Online Meetings"
 arch=('i686' 'x86_64')
 url="http://www.teamviewer.com"
@@ -26,7 +26,7 @@ fi
 
 build() {
   cd "${srcdir}"
-  tar -xf data.tar.gz
+  tar -xf data.tar.bz2
 }
 
 package() {
