@@ -1,7 +1,7 @@
 pkgbase = brother-mfc-l2700dn
-	pkgdesc = LPR and CUPS driver for the Brother MFC-L2700DN
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L2700DN printer
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-mfc-l2700dn.install
 	arch = i686
