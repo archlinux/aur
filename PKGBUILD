@@ -1,6 +1,6 @@
 # Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
 pkgname=all-repository-fonts
-pkgver=20151023
+pkgver=20151201
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -47,6 +47,7 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-freebanglafont'
          'ttf-freefont'
          'ttf-gentium'
+         'ttf-hack'
          'ttf-hanazono'
          'ttf-hannom'
          'ttf-inconsolata'

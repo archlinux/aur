@@ -1,6 +1,6 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
-	pkgver = 20151023
+	pkgver = 20151201
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
@@ -46,6 +46,7 @@ pkgbase = all-repository-fonts
 	depends = ttf-freebanglafont
 	depends = ttf-freefont
 	depends = ttf-gentium
+	depends = ttf-hack
 	depends = ttf-hanazono
 	depends = ttf-hannom
 	depends = ttf-inconsolata
