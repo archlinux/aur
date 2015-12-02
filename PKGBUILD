@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex-git
-pkgver=20151014
+pkgver=20151115
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
@@ -45,7 +45,7 @@ pkgver() {
 build() {
   cd ${pkgname%%-*}
 
-  msg 'Building...'
+  msg2 'Building...'
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -64,44 +64,43 @@ build() {
 package() {
   cd ${pkgname%%-*}
 
-  msg 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/${pkgname%%-*}/COPYING"
+  msg2 'Installing license...'
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
 
-  msg 'Installing man pages...'
+  msg2 'Installing man pages...'
   install -Dm 644 contrib/debian/manpages/bitcoind.1 \
-    "$pkgdir/usr/share/man/man1/bitcoind.1"
+    -t "$pkgdir/usr/share/man/man1"
   install -Dm 644 contrib/debian/manpages/bitcoin.conf.5 \
-    "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
+    -t "$pkgdir/usr/share/man/man5"
 
-  msg 'Installing documentation...'
+  msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
   for _doc in \
-    `find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n'` \
+    $(find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n') \
     release-notes; do
       cp -dpr --no-preserve=ownership doc/$_doc \
         "$pkgdir/usr/share/doc/bitcoin/$_doc"
   done
 
-  msg 'Installing bitcoin...'
+  msg2 'Installing bitcoin...'
   make DESTDIR="$pkgdir" install
 
-  msg 'Installing bitcoin.conf...'
-  install -Dm 600 "$srcdir/bitcoin.conf" "$pkgdir/etc/bitcoin/bitcoin.conf"
+  msg2 'Installing bitcoin.conf...'
+  install -Dm 600 "$srcdir/bitcoin.conf" -t "$pkgdir/etc/bitcoin"
 
-  msg 'Installing bitcoin.service...'
-  install -Dm 644 "$srcdir/bitcoin.service" \
-    "$pkgdir/usr/lib/systemd/system/bitcoin.service"
+  msg2 'Installing bitcoin.service...'
+  install -Dm 644 "$srcdir/bitcoin.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/bitcoin-reindex.service" \
-    "$pkgdir/usr/lib/systemd/system/bitcoin-reindex.service"
+    -t "$pkgdir/usr/lib/systemd/system"
 
-  msg 'Installing bitcoin.logrotate...'
+  msg2 'Installing bitcoin.logrotate...'
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
 
-  msg 'Installing bash completion...'
+  msg2 'Installing bash completion...'
   install -Dm 644 contrib/bitcoind.bash-completion \
     "$pkgdir/usr/share/bash-completion/completions/bitcoind"
 
-  msg 'Cleaning up pkgdir...'
+  msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
