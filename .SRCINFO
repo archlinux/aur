@@ -1,7 +1,7 @@
 pkgbase = polycode
 	pkgdesc = A C++ and Lua framework for building interactive applications.
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://polycode.org/
 	arch = i686
 	arch = x86_64
@@ -15,12 +15,8 @@ pkgbase = polycode
 	depends = glu
 	depends = openal
 	source = http://polycode.org/download/content/Polycode-0.8.4.zip
-	source = arch_link_fix_debug.diff
-	source = arch_link_fix_release.diff
 	source = polycode.desktop
 	md5sums = e42120831f8b84a0d374d4084c462b43
-	md5sums = fcea2ec5bd60406b93418ba9c2153e8c
-	md5sums = 31bd18ce087aa3f773219c28b98af834
 	md5sums = 1e8bd5317383fb390c7cf017cfc3fb11
 
 pkgname = polycode

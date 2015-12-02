@@ -3,7 +3,7 @@
 
 pkgname=polycode
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ and Lua framework for building interactive applications."
 arch=('i686' 'x86_64')
 url='http://polycode.org/'
@@ -11,12 +11,8 @@ license=('MIT')
 depends=('lua52' 'sdl' 'glu' 'openal')
 makedepends=('cmake' 'python2-ply' 'ninja' 'doxygen')
 source=('http://polycode.org/download/content/Polycode-0.8.4.zip'
-        'arch_link_fix_debug.diff'
-        'arch_link_fix_release.diff'
         'polycode.desktop')
 md5sums=('e42120831f8b84a0d374d4084c462b43'
-         'fcea2ec5bd60406b93418ba9c2153e8c'
-         '31bd18ce087aa3f773219c28b98af834'
          '1e8bd5317383fb390c7cf017cfc3fb11')
 
 prepare() {
@@ -50,8 +46,10 @@ build() {
     -DCMAKE_BUILD_TYPE=Debug \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 ../..
 
-  msg2 "Link fix patch for Arch (Debug)"
-  patch -p1 < $srcdir/arch_link_fix_debug.diff build.ninja
+  #Fixing linking for Arch
+  #Also changing unnecessary stuff for polyimport and polybuild
+  mv build.ninja broken.ninja
+  sed 's:LINK_FLAGS = -Wl:LINK_FLAGS = -lX11 -lxcb -Wl:' <broken.ninja > build.ninja
   ninja
   ninja install
 
@@ -63,8 +61,10 @@ build() {
   -DCMAKE_BUILD_TYPE=Release \
   -DPYTHON_EXECUTABLE=/usr/bin/python2 ../..
 
-  msg2 "Link fix patch for Arch (Release)"
-  patch -p1 < $srcdir/arch_link_fix_release.diff build.ninja
+  #Fixing linking for Arch
+  #Also changing unnecessary stuff for polyimport and polybuild
+  mv build.ninja broken.ninja
+  sed 's:LINK_FLAGS = -Wl:LINK_FLAGS = -lX11 -lxcb -Wl:' <broken.ninja > build.ninja
   ninja
   ninja install
 
