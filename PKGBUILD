@@ -3,17 +3,17 @@
 
 pkgname=xfce-theme-manager
 _pkgname=Xfce-Theme-Manager
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 pkgdesc="A theme manager allowing easy configuration of themes, window borders, controls, icons and cursors for Xfce."
 arch=('i686' 'x86_64')
-url="http://keithhedger.hostingsiteforfree.com/pages/apps.html#themeed"
+url="http://khapplications.darktech.org/pages/apps.html#themeed"
 license=("GPL3")
 depends=('gdk-pixbuf2' 'cairo' 'libxcursor' 'libxfce4ui')
 optdepends=('xfce4-composite-editor: A simple GUI to tweak xfwm, can be launched from xfce-theme-manager')
 makedepends=('pkg-config' 'make' 'autoconf')
-source=("http://keithhedger.hostingsiteforfree.com/zips/xfcethememanager/$_pkgname-${pkgver}.tar.gz")
-sha256sums=('fb9782c30bde3db988f98895ab5600d4d55b03dcc0fe4f2fd16216d4c95dfb11')
+source=("https://dl.dropboxusercontent.com/s/bh16k3am8q7zvat/$_pkgname-${pkgver}.tar.gz")
+sha256sums=('cfbf937a4029a4f36472b84f4bd939eb7f0f40e26f7010aa177a8431cb145fed')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
