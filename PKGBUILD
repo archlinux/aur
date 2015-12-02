@@ -1,7 +1,7 @@
 # Maintainer: Xentec <xentec at aix0 dot eu>
 
 pkgname=cppformat
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
@@ -9,11 +9,21 @@ url="http://cppformat.github.io"
 license=('BSD')
 
 depends=('gcc-libs')
-makedepends=('cmake')
+makedepends=('cmake' 'doxygen' 'nodejs-less' 'python-virtualenv')
+checkdepends=('gmock')
 conflicts=('cppformat-git')
 
+install=$pkgname.install
+
 source=("https://github.com/cppformat/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('d859f7e520629351294e194f0d1fb889b1edda9a44c139b126562107c1783142')
+sha256sums=('2f333779a0709cc28490a4ac0690ba9f64db52c2883a971997aab1c2fbd6f6af')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+
+	# removes the need for nodejs-clean-css package
+	sed -i  "s/'--clean-css',//" doc/build.py
+}
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -23,26 +33,34 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=1 \
+		-DFMT_TEST=0 \
 		-Wno-dev \
 		..
 
 	make
+	make doc
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	cd build
+	cd "$pkgname-$pkgver/build"
 
+	cmake \
+		-DFMT_TEST=1 \
+		-Wno-dev \
+		..
+
+	make
 	make test
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver/build"
 
-	sed -n '/License/{:a;n;/Documentation License/b;p;ba}' README.rst | tail -n +1 >> LICENSE
+	make DESTDIR="$pkgdir" install
+	install -D -m644 ../LICENSE.rst ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -D -m644 ../ChangeLog.rst ${pkgdir}/usr/share/doc/${pkgname}/ChangeLog.rst
 
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 format.h "${pkgdir}/usr/include/format.h"	
-	install -D -m755 build/libformat.so "$pkgdir/usr/lib/libformat.so"
+	# clean up
+	rm -rf ${pkgdir}/usr/share/doc/${pkgname}/{.buildinfo,.doctrees,_sources}
 }
 

@@ -1,0 +1,10 @@
+
+post_upgrade()
+{
+	if [[ $(vercmp 2.0.0 "$2") -eq 1 ]]; then
+		echo "BREAKING: libformat.so became libcppformat.so"
+		echo "          format.h was moved to cppformat/format.h"
+		echo " More breaking changes are documented in"
+		echo " /usr/share/doc/cppformat/ChangeLog.rst"
+	fi
+}
