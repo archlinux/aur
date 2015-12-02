@@ -1,6 +1,6 @@
 pkgbase = libwm-git
 	pkgdesc = A library for X windows manipulation.
-	pkgver = 1.0.r3.gae47478
+	pkgver = 1.0.r4.g208dfb8
 	pkgrel = 1
 	url = https://github.com/wmutils/libwm
 	arch = i686

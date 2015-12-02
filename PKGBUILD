@@ -3,7 +3,7 @@
 # Contributor: aksr <aksr at t-com dot me>
 # Maintainer: Ferdi265 <theferdi265@gmail.com>
 pkgname=libwm-git
-pkgver=1.0.r3.gae47478
+pkgver=1.0.r4.g208dfb8
 pkgrel=1
 pkgdesc="A library for X windows manipulation."
 url="https://github.com/wmutils/libwm"
