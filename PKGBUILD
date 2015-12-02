@@ -3,15 +3,15 @@
 # Contributor: Vladimir Koshelenko <koshelenko@rndavia.ru>
 
 pkgname=start-stop-daemon
-pkgver=1.17.25
+pkgver=1.17.26
 pkgrel=1
 pkgdesc='Start and stop system daemon programs'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='http://packages.debian.org/source/stable/dpkg'
 depends=('glibc')
-source=("http://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_$pkgver.tar.xz")
-md5sums=('e48fcfdb2162e77d72c2a83432d537ca')
+source=("http://http.debian.net/debian/pool/main/d/dpkg/dpkg_$pkgver.tar.xz")
+md5sums=('07911f1c575f196f108a3c19c5bd517e')
 
 build() {
   cd dpkg-$pkgver
