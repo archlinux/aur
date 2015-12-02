@@ -1,14 +1,14 @@
 pkgbase = thunderbird-sogo-connector-bin
 	pkgdesc = Thunderbird frontend for SOGo
 	pkgver = 31.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sogo.nu/downloads/frontends.html
 	arch = any
 	groups = office
 	license = GPL
 	license = LGPL
 	depends = thunderbird>=38
-	depends = thunderbird-lightning-bin
+	optdepends = thunderbird-lightning-bin
 	provides = sogo-connector=31.0.2
 	conflicts = sogo-connector-bin
 	replaces = sogo-connector-bin
