@@ -9,12 +9,13 @@ url="http://sourceforge.net/projects/tunesviewer/"
 options=('!strip')
 sha1sums=SKIP
 
-source=("https://dl.dropboxusercontent.com/u/29821993/tunesviewer_1.5.3.tar.gz")
+source=("http://tcpdiag.dl.sourceforge.net/project/tunesviewer/${pkgname}_${pkgver}.deb")
 
 depends=("python2" "pygtk" "python2-lxml" "python2-notify" "python2-support" "pywebkitgtk")
 optdepends=("soundconverter" "vlc")
 
 package() {
+  tar xvfJ data.tar.xz
   mkdir -p $pkgdir/usr
   cd $srcdir
   cp -r usr $pkgdir

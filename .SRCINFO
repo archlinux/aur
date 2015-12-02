@@ -14,7 +14,7 @@ pkgbase = tunesviewer
 	optdepends = soundconverter
 	optdepends = vlc
 	options = !strip
-	source = https://dl.dropboxusercontent.com/u/29821993/tunesviewer_1.5.3.tar.gz
+	source = http://tcpdiag.dl.sourceforge.net/project/tunesviewer/tunesviewer_1.5.3.deb
 	sha1sums = SKIP
 
 pkgname = tunesviewer
