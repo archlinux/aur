@@ -2,7 +2,7 @@
 Categories=Utility;
 Comment[zh_CN]=Linux系统备份工具
 Comment=Linux system backup utility
-Exec=pkexec ucloner
+Exec=pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ucloner
 GenericName[zh_CN]=
 GenericName=
 Icon=ucloner
