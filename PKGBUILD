@@ -1,6 +1,6 @@
 # Maintainer: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec
-pkgver=7.0.1
+pkgver=7.1.1
 pkgrel=1
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
@@ -12,7 +12,7 @@ source=(https://www.free-decompiler.com/flash/download/${pkgname}_${pkgver}.zip
         $pkgname
         $pkgname.desktop
         $pkgname.png)
-md5sums=('befa72ffa7aba6cf0a750930fbeb48d8'
+md5sums=('99703681a9c849e7fcecab1406355fde'
          '29a00ab7cb71ec337ed028493914009f'
          'b9da710cc2a4af62f1fa8690e0fb5553'
          'c6f354af3fdfe3f45623fb3949e23f8f')
