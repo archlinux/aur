@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code-oss
 	pkgdesc = Visual Studio Code for Linux, Open Source version
-	pkgver = 0.10.1
-	pkgrel = 3
+	pkgver = 0.10.3
+	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = visual-studio-code-oss
 	depends = gconf
 	provides = vscode-oss
 	conflicts = vscode-oss
-	source = https://github.com/Microsoft/vscode/archive/0.10.1.tar.gz
+	source = https://github.com/Microsoft/vscode/archive/0.10.3.tar.gz
 	source = visual-studio-code-oss.desktop
-	sha1sums = 4c9a4f2033c55bc2d8fd3efcfcb056fc446f235b
-	sha1sums = 203df5564574a251a00a1997b049104731528b6c
+	sha1sums = 3057799c2fe2beecbea874f52dbf62c79e144bc2
+	sha1sums = cd6694b63b96c597713f36754fb64f91410527be
 
 pkgname = visual-studio-code-oss
 
