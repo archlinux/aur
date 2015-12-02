@@ -33,11 +33,11 @@ build() {
             -DOVITO_BUILD_PLUGIN_NETCDF=on \
             -DOVITO_VIDEO_OUTPUT_SUPPORT=on \
             -DOVITO_BUILD_PLUGIN_SCRIPTING=on \
-            -DPYTHON_INCLUDE_DIR=/usr/include/python3.4m \
-            -DPYTHON_LIBRARY=/usr/lib/libpython3.4m.so \
+            -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m \
+            -DPYTHON_LIBRARY=/usr/lib/libpython3.5m.so \
             -DCMAKE_INSTALL_PREFIX:PATH=/usr \
             -DCMAKE_EXE_LINKER_FLAGS='-Wl,-rpath,/usr/lib/ovito'
-  make VERBOSE=yes
+  make -j1
 }
 
 package() {
