@@ -1,4 +1,4 @@
-# Maintainer: parazyd <parazyd at gmx dot com>
+# Maintainer: parazyd <parazyd AT dyne DOT org>
 pkgname=monkeysign-git
 pkgver=2.0.1.42.g461dbae
 pkgrel=1
