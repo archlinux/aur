@@ -1,6 +1,6 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=fairsoft
-pkgver=jul15p1
+pkgver=nov15p1
 pkgrel=1
 pkgdesc="Software collection provided by GSI/FAIR for analysis."
 arch=('x86_64')
@@ -44,8 +44,8 @@ source=("https://github.com/FairRootGroup/FairSoft/archive/${pkgver}.tar.gz"
 	'arch.conf'
 	'fairsoft.install')
 noextract=()
-md5sums=('ba06575c41988d27cb684126080536c8'
-         'd546737b7c15de7d71f6ea2090fa4b96'
+md5sums=('726e25d1b8f2ed040c5bc6d75bbd65b5'
+         '932f0e4d2d03c062de12651b278c947b'
          '748ceeb13cf954c4f732f93023ae879e')
 
 # Do not compress the package for installation
