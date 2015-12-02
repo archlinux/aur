@@ -10,12 +10,14 @@ license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines')
 optdepends=('gnome-themes-standard: Required for the GTK3 theme'
             'ttf-droid: Font family for the Gnome Shell theme')
-source=(https://github.com/THEGUSPROJECT/zukitwo-manjaro/blob/master/files/zukitwo-manjaro.zip?raw=true)
+source=("${_pkgname}::git+https://github.com/thegusproject/${_pkgname}.git")
 sha1sums=SKIP
 
 package() {
-  mkdir -p $pkgdir/usr/share/themes
-  cd $srcdir
-  cp -r $pkgname $pkgdir/usr/share/themes/
-  chmod -R 755 $pkgdir/usr/share/themes/$pkgname
+    cd "${srcdir}/"
+
+    install -d -m 755 "${pkgdir}/usr/share/themes/"
+    cp -r "${_pkgname}" "${pkgdir}/usr/share/themes/"
+    rm -r "${pkgdir}/usr/share/themes/${_pkgname}/.git"
 }
+
