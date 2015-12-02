@@ -12,11 +12,11 @@ options=('!strip')
 install=${pkgname}.install
 
 if [[ $CARCH == 'i686' ]]; then
-  source=("teamviewer_linux-${pkgver}.deb::http://download.teamviewer.com/download/teamviewer_i386.deb")
+  source=("teamviewer_linux-${pkgver}.deb::http://download.teamviewer.com/download/version_10x/teamviewer_i386.deb")
   md5sums=('cdcb6776e6a8c099c19be0c3ca01c50d')
   depends+=('alsa-lib' 'gcc-libs' 'libxdamage' 'libxtst' 'zlib' 'freetype2' 'libxrandr' 'libice' 'libsm')
 elif [[ $CARCH == 'x86_64' ]]; then
-  source=("teamviewer_linux_x64-${pkgver}.deb::http://download.teamviewer.com/download/teamviewer_amd64.deb")
+  source=("teamviewer_linux_x64-${pkgver}.deb::http://download.teamviewer.com/download/version_10x/teamviewer_amd64.deb")
   md5sums=('eecc1000d86ddebfe30a2ac41fdb3fe2')
   depends+=('lib32-gcc-libs' 'lib32-alsa-lib' 'lib32-libxtst' 'lib32-libxdamage' 'lib32-zlib' 'lib32-freetype2' 'lib32-libxrandr' 'lib32-libice' 'lib32-libsm' 'lib32-libxinerama')
 fi
