@@ -1,16 +1,16 @@
 # Maintainer: Martchus <martchus@gmx.net>
+_reponame=tagparser
 pkgname=tagparser
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="C++ library for reading and writing MP4 (iTunes), ID3, Vorbis and Matroska tags."
 license=('GPL')
 depends=('c++utilities')
 makedepends=('qt5-base')
-url="https://github.com/Martchus/tagparser"
-source=("tagparser-${pkgver}.tar.gz::https://github.com/Martchus/tagparser/archive/v${pkgver}.tar.gz")
-_reponame=tagparser
-sha256sums=('2190d5d3c3305554a070082f7e285a5f415865575a7280bb0d628b36030dae87')
+url="https://github.com/Martchus/${_reponame}"
+source=("tagparser-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('4b4f029170e934976f7619da3f89ffb34ce173dd6f36f3a9afe4cb1f37802af8')
 
 build() {
     cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
