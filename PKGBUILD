@@ -1,6 +1,7 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=(
+    'drush-extensions'
     'drush-aegir-up'
     'drush-drupal-up'
     'drush-hosts'
@@ -45,6 +46,21 @@ md5sums=(
 )
 
 
+package_drush-extensions() {
+    pkgver='7.x'
+    pkgdesc='Meta-package for drush extensions'
+    url='http://github.com/drush-ops/drush'
+    depends=(
+      'drush-aegir-up'
+      'drush-drupal-up'
+      'drush-hosts'
+      'drush-registry-rebuild'
+      'drush-vagrant'
+      'drush-entity'
+      'drush-buildmanager'
+      'drush-subtree'
+    )
+}
 package_drush-aegir-up() {
     pkgver=2.0_rc3
     pkgdesc='Blueprint provider for Drush Vagrant to build a local Aegir VMs'

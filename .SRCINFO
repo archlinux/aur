@@ -28,6 +28,18 @@ pkgbase = drush-extensions
 	md5sums = SKIP
 	md5sums = SKIP
 
+pkgname = drush-extensions
+	pkgdesc = Meta-package for drush extensions
+	url = http://github.com/drush-ops/drush
+	depends = drush-aegir-up
+	depends = drush-drupal-up
+	depends = drush-hosts
+	depends = drush-registry-rebuild
+	depends = drush-vagrant
+	depends = drush-entity
+	depends = drush-buildmanager
+	depends = drush-subtree
+
 pkgname = drush-aegir-up
 	pkgdesc = Blueprint provider for Drush Vagrant to build a local Aegir VMs
 	url = https://www.drupal.org/project/aegir_up
