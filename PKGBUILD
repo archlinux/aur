@@ -4,7 +4,7 @@
 
 pkgname=wmweather+
 pkgver=2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Downloads the National Weather Service METAR bulletins, ANV and MRF forecasts, and any weather map for display in a WindowMaker dockapp"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/wmweatherplus"
