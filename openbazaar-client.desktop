@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=OpenBazaar
+Comment=A Free Market for all. No Fees. No Restrictions.
+TryExec=openbazaar-client
+Exec=openbazaar-client
+Icon=openbazaar
+Type=Application
+Categories=Internet;Network;
+StartupNotify=false
+X-Desktop-File-Install-Version=0.22

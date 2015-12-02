@@ -3,6 +3,7 @@ pkgbase = openbazaar-client-git
 	pkgver = 713.bce8892
 	pkgrel = 1
 	url = http://openbazaar.org
+	install = openbazaar-client.install
 	arch = any
 	license = MIT
 	makedepends = git
@@ -13,8 +14,10 @@ pkgbase = openbazaar-client-git
 	options = !strip
 	source = openbazaar-client::git+https://github.com/OpenBazaar/OpenBazaar-Client.git
 	source = openbazaar-client.sh
+	source = openbazaar-client.desktop
 	md5sums = SKIP
 	md5sums = 0717c66b7078511c5af8ee11124df20c
+	md5sums = 98d84c6554060b6ac85f0783d2cac99d
 
 pkgname = openbazaar-client-git
 

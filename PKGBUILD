@@ -13,7 +13,9 @@ makedepends=(git npm)
 source=(
 	"${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Client.git"
 	"${_pkgname}.sh"
+        "${_pkgname}.desktop"
 )
+install=${_pkgname}.install
 options=('!strip')
 provides=(${_pkgname})
 replaces=(${_pkgname})
@@ -35,6 +37,10 @@ msg2 "Installing execution script"
   
 
   rm -rf $pkgdir/opt/${_pkgname}/.git
+
+msg2 "Installing icons and desktop menu entry"
+  install -Dm644 $srcdir/${_pkgname}/imgs/openbazaar-icon.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/openbazaar.png
+  install -Dm644 $srcdir/${_pkgname}.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
 }
 
 pkgver() {
@@ -42,5 +48,7 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
+
 md5sums=('SKIP'
-         '0717c66b7078511c5af8ee11124df20c')
+         '0717c66b7078511c5af8ee11124df20c'
+         '98d84c6554060b6ac85f0783d2cac99d')
