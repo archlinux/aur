@@ -4,6 +4,10 @@ _nginx_ver_stable=1.8.0
 
 OPTIONS=(!strip debug) #nchan is still young, in case something goes wrong we want good coredumps
 
+if [[ ! -z $MTUNE_GENERIC ]]; then
+  CFLAGS="${CFLAGS//mtune=native/mtune=generic}"
+fi
+
 _nginx_ver=$_nginx_ver_stable
 _pkgname=nginx
 
