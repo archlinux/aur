@@ -1,0 +1,14 @@
+pkgbase = cmusphinx-g2p-model-zh
+	pkgdesc = CMU Sphinx G2P model for Chinese
+	pkgver = 0.20120820
+	pkgrel = 1
+	url = http://sourceforge.net/projects/cmusphinx/files/G2P%20Models/
+	arch = any
+	license = custom
+	optdepends = openfst: fst model parsing
+	optdepends = phonetisaurus: command line g2p conversion
+	source = http://sourceforge.net/projects/cmusphinx/files/G2P%20Models/zh.tar.gz
+	sha256sums = d77d469a7d6444dec8d0ddfc07fe92ba34109e626a462196b55d7a3ffadf692f
+
+pkgname = cmusphinx-g2p-model-zh
+
