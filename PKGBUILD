@@ -1,13 +1,13 @@
 # Maintainer: leepesjee <lpeschier at xs4all dot nl>
 pkgname=cbflib
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An ANSI C library for accessing Crystallographic Binary and Image-supporting Files"
 arch=('i686' 'x86_64')
 url="http://www.bernstein-plus-sons.com/software/CBF/"
 makedepends=('wget')
 license=('GPL')
-source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/CBFlib_0.9.2/CBFlib-$pkgver.tar.gz)
+source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/CBFlib_0.9.5/CBFlib-$pkgver.tar.gz)
 md5sums=('6cab26809e5d4786aeac1d32f72d7683')
 
 prepare() {
