@@ -2,6 +2,7 @@ pkgbase = lpmlibs
 	pkgdesc = Adds 2 Neccessary PortMidi Library Files For jammr To Work
 	pkgver = 1
 	pkgrel = 1
+	url = http://sourceforge.net/projects/portmedia/
 	arch = i686
 	arch = x86_64
 	depends = portmidi

@@ -5,6 +5,7 @@ pkgver=1
 pkgrel=1
 pkgdesc="Adds 2 Neccessary PortMidi Library Files For jammr To Work"
 arch=('i686' 'x86_64')
+url="http://sourceforge.net/projects/portmedia/"
 options=('!strip')
 
 source=("https://github.com/THEGUSPROJECT/thegusproject.github.io/blob/master/assets/files/lpmlibs.zip?raw=true")
@@ -15,5 +16,6 @@ depends=("portmidi")
 package() {
   mkdir -p $pkgdir/usr/lib 
   cd $srcdir
-  cp -r usr/lib $pkgdir/usr/lib
+  cp usr/lib/libportmidi.so.0 $pkgdir/usr/lib/libportmidi.so.0
+  cp usr/lib/libporttime.so.0 $pkgdir/usr/lib/libporttime.so.0
 }
