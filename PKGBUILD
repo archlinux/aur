@@ -3,7 +3,7 @@
 pkgbase='swift'
 pkgname=('swift-im' 'swiften')
 pkgver=3.0beta2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://swift.im/"
 license=('GPL3')
