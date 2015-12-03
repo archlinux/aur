@@ -1,6 +1,6 @@
 pkgbase = freefem++-hg
 	pkgdesc = A PDE oriented language using the finite element method (Mercurial)
-	pkgver = 3.40.r3580.7210c9ea1fe0
+	pkgver = 3.42.r3583.98831903f376
 	pkgrel = 1
 	url = http://www.freefem.org/ff++/index.htm
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = freefem++-hg
 	depends = hdf5-cpp-fortran
 	depends = gsl
 	depends = openmpi
-	provides = freefem++=3.40
+	provides = freefem++=3.42
 	conflicts = freefem++
 	options = !makeflags
 	backup = etc/freefem++.pref
