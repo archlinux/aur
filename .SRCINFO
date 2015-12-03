@@ -1,10 +1,11 @@
 pkgbase = doi-open
 	pkgdesc = A simple script and desktop entry to handle DOI links.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/JP-Ellis/doi-open
 	arch = any
 	license = MIT
+	depends = xdg-utils
 	source = doi-open
 	source = doi-open.desktop
 	source = LICENSE

@@ -2,12 +2,12 @@
 
 pkgname=doi-open
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple script and desktop entry to handle DOI links."
 url="http://github.com/JP-Ellis/doi-open"
 arch=('any')
 license=('MIT')
-depends=()
+depends=('xdg-utils')
 source=("doi-open"
         "doi-open.desktop"
         "LICENSE")
