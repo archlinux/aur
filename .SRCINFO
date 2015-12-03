@@ -1,0 +1,14 @@
+pkgbase = cmusphinx-g2p-model-de
+	pkgdesc = CMU Sphinx G2P model for German
+	pkgver = 0.20120820
+	pkgrel = 1
+	url = http://sourceforge.net/projects/cmusphinx/files/G2P%20Models/
+	arch = any
+	license = custom
+	optdepends = openfst: fst model parsing
+	optdepends = phonetisaurus: command line g2p conversion
+	source = http://sourceforge.net/projects/cmusphinx/files/G2P%20Models/de.tar.gz
+	sha256sums = 92cc8541a9052574ce99c80be55205ba044d78401df6adbae934ef4184ff150c
+
+pkgname = cmusphinx-g2p-model-de
+
