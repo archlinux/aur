@@ -2,7 +2,7 @@
 
 pkgname=miv-git
 pkgver=20151124
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim plugin manager written in Haskell"
 arch=('i686' 'x86_64')
 makedepends=('haskell-stack')
@@ -11,6 +11,8 @@ license=('MIT')
 source=(git+https://github.com/itchyny/miv)
 sha256sums=('SKIP')
 options=('strip')
+provides=('miv')
+conflicts=('miv')
 
 pkgver() {
   cd ${pkgname%-git}
