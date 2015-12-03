@@ -1,12 +1,13 @@
 pkgbase = topbeat
 	pkgdesc = An open source server monitoring agent that stores metrics in Elasticsearch
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/products/beats
 	arch = i686
 	arch = x86_64
 	license = APACHE
 	makedepends = go>=1.5
+	makedepends = git
 	optdepends = elasticsearch: for running standalone installation
 	provides = topbeat
 	conflicts = topbeat

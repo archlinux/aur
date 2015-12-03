@@ -2,13 +2,13 @@
 
 pkgname=topbeat
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source server monitoring agent that stores metrics in Elasticsearch'
 arch=('i686' 'x86_64')
 url='https://www.elastic.co/products/beats'
 license=('APACHE')
 backup=("etc/$pkgname/$pkgname.yml")
-makedepends=('go>=1.5')
+makedepends=('go>=1.5' 'git')
 optdepends=('elasticsearch: for running standalone installation')
 options=('!strip')
 provides=("$pkgname")
@@ -22,7 +22,7 @@ prepare() {
     cd "$pkgname-$pkgver"
 
     # Perform some timestomping to avoid make warnings
-    _t="$(date -r Makefile)"
+    _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
     # Avoid installing extraneous configs
     sed -i '/[- ]win/d ; /[- ]darwin/d ; /[- ]binary/d' Makefile
     # Install the Linux config as default
