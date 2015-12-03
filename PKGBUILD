@@ -2,7 +2,7 @@
 
 _pkgfqdn=qtwayland
 pkgname=hawaii-qt5-wayland
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtWayland)"
 arch=('i686' 'x86_64' 'armv6hl' 'armv7hl')
@@ -16,9 +16,9 @@ makedepends=('git' 'gdb')
 options=('!libtool' 'debug')
 source=("http://download.qt-project.org/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqdn}-opensource-src-${pkgver}.tar.xz"
          "Update_wayland.xml_to_1.6.patch")
-md5sums=('34a8def020585b563fad9bfe9be49563'
+md5sums=('5312f2508f4856d8e60a1374070cec34'
          '604ecf79b3c3c3943fae9c792074a250')
-_ver=5.5.0
+_ver=5.5.1
 
 build() {
   cd ${_pkgfqdn}-opensource-src-${pkgver}
