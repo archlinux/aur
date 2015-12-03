@@ -1,0 +1,20 @@
+commit fd5e3fca19b954c31378fb34a1910a55e8daf12a
+Author:     Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+AuthorDate: Tue Sep 29 23:57:04 2015 +0200
+Commit:     Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+CommitDate: Tue Sep 29 23:57:04 2015 +0200
+
+    Import Qt5PlatformSupport libraries
+
+diff --git a/cmake/FindQt5PlatformSupport.cmake b/cmake/FindQt5PlatformSupport.cmake
+index 90a8438..2421c09 100644
+--- a/cmake/FindQt5PlatformSupport.cmake
++++ b/cmake/FindQt5PlatformSupport.cmake
+@@ -99,6 +99,7 @@ find_package_handle_standard_args(Qt5PlatformSupport
+ if(Qt5PlatformSupport_FOUND AND NOT TARGET Qt5PlatformSupport::Qt5PlatformSupport)
+     add_library(Qt5PlatformSupport::Qt5PlatformSupport UNKNOWN IMPORTED)
+     set_target_properties(Qt5PlatformSupport::Qt5PlatformSupport PROPERTIES
++	IMPORTED_LINK_DEPENDENT_LIBRARIES "${PKG_Qt5PlatformSupport_STATIC_LIBRARIES}"
+         IMPORTED_LOCATION "${Qt5PlatformSupport_LIBRARY}"
+         INTERFACE_COMPILE_OPTIONS "${Qt5PlatformSupport_DEFINITIONS}"
+         INTERFACE_INCLUDE_DIRECTORIES "${Qt5PlatformSupport_INCLUDE_DIR}"

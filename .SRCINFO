@@ -1,6 +1,6 @@
 pkgbase = greenisland
 	pkgdesc = Green Island: Qt-based compositor infrastructure for Wayland
-	pkgver = 0.6.0
+	pkgver = 0.6.92
 	pkgrel = 1
 	url = http://hawaiios.org
 	arch = i686
@@ -24,8 +24,10 @@ pkgbase = greenisland
 	depends = freetype2
 	conflicts = greenisland-git
 	options = debug
-	source = https://github.com/greenisland/greenisland/releases/download/v0.6.0/greenisland-0.6.0.tar.gz
-	sha1sums = 2d58e303a14b0590603e94e709be244bc8b80575
+	source = https://github.com/greenisland/greenisland/archive/v0.6.92.tar.gz
+	source = fix-build.patch
+	sha1sums = 019a0dcbfc142827305123493c113ea4ceb95c48
+	sha1sums = c03cf03e755ec3525bef7e70123c68c7d9fcf539
 
 pkgname = greenisland
 
