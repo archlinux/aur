@@ -1,0 +1,20 @@
+pkgbase = ewsgateway
+	pkgdesc = EWS Gateway allows you to access the Embedded Web Server (EWS) on several models of HP printers via USB under Linux.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/c0mm0ner/ewsgateway
+	arch = any
+	license = BSD
+	depends = python2
+	depends = tk
+	depends = python2-pyusb
+	optdepends = sudo: runtime privilege escalation
+	optdepends = gksudo: runtime privilege escalation
+	optdepends = kdesudo: runtime privilege escalation
+	optdepends = gksu: runtime privilege escalation
+	optdepends = kdesu: runtime privilege escalation
+	source = git://github.com/c0mm0ner/ewsgateway.git
+	md5sums = SKIP
+
+pkgname = ewsgateway
+
