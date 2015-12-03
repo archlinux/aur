@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=arxiv-open
+Comment=arXiv link handler
+Exec=/usr/bin/arxiv-open %u
+NoDisplay=true
+X-MultipleArgs=false
+MimeType=x-scheme-handler/arxiv;x-scheme-handler/arXiv;

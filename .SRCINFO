@@ -1,0 +1,16 @@
+pkgbase = arxiv-open
+	pkgdesc = A simple script and desktop entry to handle arXiv links.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/JP-Ellis/arxiv-open
+	arch = any
+	license = MIT
+	source = arxiv-open
+	source = arxiv-open.desktop
+	source = LICENSE
+	sha256sums = 76fc429d4b9e267094f99c7cdb58feec6f8cd6b1395069dd72db28571d7c384e
+	sha256sums = 199f8e78bc538f5b006329be43f6932c27c0c437344c351bb9ee4eb3a9ac9ee1
+	sha256sums = 16157e0292310978360f4cdc134fdec7207312320c99264f03901921fbfdbfa2
+
+pkgname = arxiv-open
+
