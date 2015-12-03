@@ -10,7 +10,6 @@ sed -i \
 
 sed -i \
     -e 's/^\(MOZCVER=.*\|DICVER=.*\|NICODIC=.*\)/#&/' \
-    -e 's/\$NICODIC/"\$NICODIC"/' \
     -e 's| KEN_ALL.CSV.r| ../../x-ken-all.csv|' \
     -e '/rm -f chimei\/\*.CSV*/d' \
     -e '/rm -f chimei\/\*.zip/d' \

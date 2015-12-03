@@ -31,7 +31,7 @@ pkgbase = mozc-ut
 	sha1sums = e0ba18e67c1be8e3cfb8ecb30760597b215da255
 	sha1sums = 04e3f03d4933b20d865c887f7fa1d9dcc8a2bf1d
 	sha1sums = 584df54e2a1419bec85ca5c70f2e0e585ee314b0
-	sha1sums = 6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7
+	sha1sums = c94c49cd3ef48dbe252c319c337d84888e743279
 	sha1sums = 031654d8fb40225a6c193d89246b294256ae33f4
 
 pkgname = mozc-ut

@@ -9,7 +9,7 @@ _ibus_mozc="yes"
 ## If you will be using uim, uncomment below.
 #_uim_mozc="yes"
 ## If applying patch for uim-mozc fails, try to uncomment below.
-_kill_kill_line="yes"
+#_kill_kill_line="yes"
 ## This will disable the 'kill-line' feature of uim-mozc.
 
 ## If you will be using mozc.el on Emacs, uncomment below.
@@ -99,7 +99,7 @@ sha1sums=('SKIP'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           '04e3f03d4933b20d865c887f7fa1d9dcc8a2bf1d'
           '584df54e2a1419bec85ca5c70f2e0e585ee314b0'
-          '6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7'
+          'c94c49cd3ef48dbe252c319c337d84888e743279'
           '031654d8fb40225a6c193d89246b294256ae33f4')
 
 
@@ -209,9 +209,10 @@ build() {
     python2 build_mozc.py gyp
   python2 build_mozc.py build -c $_bldtype $_targets
 
-  [[ "$_ibus_mozc" == "yes" ]] && \
-    sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' \
-           out_linux/${_bldtype}/gen/unix/ibus/mozc.xml
+  if [[ "$_ibus_mozc" == "yes" ]]; then
+      sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' \
+          out_linux/${_bldtype}/gen/unix/ibus/mozc.xml
+  fi
 
 }
 
