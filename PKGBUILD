@@ -3,46 +3,48 @@
 
 pkgname=pocketsphinx
 pkgver=5prealpha
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight speech recognition engine, specifically tuned for handheld and mobile devices, though it works equally well on the desktop.'
 arch=('i686' 'x86_64')
 url='http://cmusphinx.sourceforge.net'
-depends=('sphinxbase=5prealpha' 'python2' 'gstreamer0.10-base' 'gst-plugins-base-libs' 'libpulse' 'libsamplerate')
-license=('BSD-2')
+license=('BSD')
+makedepends=('swig')
+depends=('sphinxbase=5prealpha' 'python2' 'python' 'gstreamer0.10-base' 'gst-plugins-base-libs')
 source=("http://downloads.sourceforge.net/cmusphinx/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cmusphinx/pocketsphinx/master/LICENSE")
 md5sums=('e8402e90570935b26745d313c133b376'
          '93bfe6b712fe592d844ef581e1e53d47')
 options=('!libtool')
 
+prepare() {
+  cp -R "$pkgname-$pkgver" "$pkgname-$pkgver-py2"
+  cp -R "$pkgname-$pkgver" "$pkgname-$pkgver-py3"
+}
+
 build() {
-	cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver-py3"
+  ./configure --prefix=/usr
+  make
 
-	find -type f -exec sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' {} \;
-	find -type f -exec sed -i 's_/usr/bin/python_/usr/bin/python2_' {} \;
-	find -type f -exec sed -i 's_python -c_python2 -c_' {} \;
-	find -type f -exec sed -i 's_python-config_python2-config_' {} \;
-	find -type f -exec sed -i 's_cython_cython2_' {} \;
-
+	cd "../$pkgname-$pkgver-py2"
 	export PYTHON=/usr/bin/python2
-	export PYTHON_CONFIG=/usr/bin/python2-config
-
-	./autogen.sh \
-		--prefix=/usr \
-		--with-sphinxbase=auto \
-		--with-python=/usr/bin/python2
+  ./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd $pkgname-$pkgver
+	cd "$pkgname-$pkgver-py3"
 
 	make DESTDIR="$pkgdir" install
+
+  cd "../$pkgname-$pkgver-py2/swig"
+  make DESTDIR="$pkgdir" install
 
 	install -d -m755 "$pkgdir/usr/share/licenses/$pkgname"
 	install -D -m644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    libtool --finish "$pkgdir/usr/lib"
-    libtool --finish "$pkgdir/usr/lib/gstreamer-1.0"
-    libtool --finish "$pkgdir/usr/lib/python2.7/site-packages/pocketsphinx"
+  libtool --finish "$pkgdir/usr/lib"
+  libtool --finish "$pkgdir/usr/lib/gstreamer-1.0"
+  libtool --finish "$pkgdir/usr/lib/python2.7/site-packages/pocketsphinx"
+  libtool --finish "$pkgdir/usr/lib/python3.5/site-packages/pocketsphinx"
 }
