@@ -1,14 +1,14 @@
 pkgbase = locarna
 	pkgdesc = Global and Local Alignment of RNAs
-	pkgver = 1.8.1
-	pkgrel = 2
+	pkgver = 1.8.7
+	pkgrel = 1
 	url = http://www.bioinf.uni-freiburg.de/Software/LocARNA/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = viennarna2>=2.1.1
-	source = http://www.bioinf.uni-freiburg.de/Software/LocARNA/Releases/locarna-1.8.1.tar.gz
-	md5sums = 56c05712498523e36980cec78d06863b
+	depends = viennarna>=2.1.9
+	source = http://www.bioinf.uni-freiburg.de/Software/LocARNA/Releases/locarna-1.8.7.tar.gz
+	md5sums = f3f1291de791128ff8ce49a7c55d5a57
 
 pkgname = locarna
 
