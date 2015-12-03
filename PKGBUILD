@@ -2,7 +2,7 @@
 
 pkgname=teamviewer10
 pkgver=10.0.46203
-pkgrel=1
+pkgrel=1.1
 pkgdesc="All-In-One Software for Remote Support and Online Meetings"
 arch=('i686' 'x86_64')
 url="http://www.teamviewer.com"
