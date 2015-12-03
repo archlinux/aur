@@ -1,0 +1,230 @@
+diff -Naur a/po/CMakeLists.txt b/po/CMakeLists.txt
+--- a/po/CMakeLists.txt	2009-08-27 16:39:27.000000000 +0800
++++ b/po/CMakeLists.txt	2015-12-03 13:43:27.744500670 +0800
+@@ -13,6 +13,7 @@
+ 	
+ 	file(GLOB PO_FILES
+ 		./de.po
++		./zh_CN.po
+ 	)
+ 	
+ 	FOREACH(_poFile ${PO_FILES})
+diff -Naur a/po/zh_CN.po b/po/zh_CN.po
+--- a/po/zh_CN.po	1970-01-01 08:00:00.000000000 +0800
++++ b/po/zh_CN.po	2015-12-03 17:12:44.751213753 +0800
+@@ -0,0 +1,203 @@
++# Header entry was created by KBabel!
++#
++# , 2009.
++msgid ""
++msgstr ""
++"Project-Id-Version: \n"
++"Report-Msgid-Bugs-To: ohmygod19993 at gmail dot com\n"
++"POT-Creation-Date: 2009-09-14 19:04+0200\n"
++"PO-Revision-Date: 2015-12-04 19:05+0200\n"
++"Last-Translator: Lin Ziyun\n"
++"Language-Team: zh_CN <kde-i18n-doc@kde.org>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"X-Generator: Lokalize 1.0\n"
++"Plural-Forms: nplurals=2; plural=n != 1;\n"
++
++#. i18n: file: src/sm.ui:14
++#. i18n: ectx: property (windowTitle), widget (QWidget, smGui)
++#: obj-i486-linux-gnu/src/ui_sm.h:221 rc.cpp:3
++msgid "Service Menu Manager"
++msgstr "服务菜单管理器"
++
++#. i18n: file: src/sm.ui:27
++#. i18n: ectx: property (toolTip), widget (QPushButton, newButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:223 rc.cpp:6
++msgid "Get new menus from the Internet"
++msgstr "从因特网获取新菜单"
++
++#. i18n: file: src/sm.ui:30
++#. i18n: ectx: property (whatsThis), widget (QPushButton, newButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:226 rc.cpp:9
++msgid ""
++"You need to be connected to the Internet to use this action. A dialog will "
++"display a list of menus from the http://www.kde.org website. Clicking the "
++"Install button associated with a service menu will install this servie menu "
++"locally."
++msgstr ""
++"你需要连接到因特网以执行该动作。一个对话框会显示来自 http://www.kde.org "
++"的一系列菜单。点击与一个服务菜单相关联的安装按钮将安装该服务菜单。 "
++" "
++" "
++
++#. i18n: file: src/sm.ui:36
++#. i18n: ectx: property (text), widget (QPushButton, newButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:228 rc.cpp:12
++msgid "Get new service menus..."
++msgstr "获取新服务菜单..."
++
++#. i18n: file: src/sm.ui:43
++#. i18n: ectx: property (toolTip), widget (QPushButton, installButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:230 rc.cpp:15
++msgid "Install a menu archive file you already have locally"
++msgstr "从本地安装菜单归档文件"
++
++#. i18n: file: src/sm.ui:46
++#. i18n: ectx: property (whatsThis), widget (QPushButton, installButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:233 rc.cpp:18
++msgid ""
++"If you already have a menu archive locally, this button will unpack it and "
++"make it available for KDE applications"
++msgstr "如果本地有一个菜单归档，这个按钮可以解压并启用这个服务菜单。"
++
++#. i18n: file: src/sm.ui:52
++#. i18n: ectx: property (text), widget (QPushButton, installButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:235 rc.cpp:21
++msgid "Install service menu..."
++msgstr "安装服务菜单..."
++
++#. i18n: file: src/sm.ui:59
++#. i18n: ectx: property (toolTip), widget (QPushButton, removeButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:237 rc.cpp:24
++msgid "Remove the selected menu from your disk"
++msgstr "移除选中的菜单"
++
++#. i18n: file: src/sm.ui:62
++#. i18n: ectx: property (whatsThis), widget (QPushButton, removeButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:240 rc.cpp:27
++msgid "This will remove the selected menu from your disk."
++msgstr "将从本地移除选中的菜单。"
++
++#. i18n: file: src/sm.ui:68
++#. i18n: ectx: property (text), widget (QPushButton, removeButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:242 rc.cpp:30
++msgid "Remove service menu"
++msgstr "移除服务菜单"
++
++#. i18n: file: src/sm.ui:78
++#. i18n: ectx: property (text), widget (QPushButton, infoButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:243 rc.cpp:33
++msgid "Info"
++msgstr "信息"
++
++#. i18n: file: src/sm.ui:97
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
++#: obj-i486-linux-gnu/src/ui_sm.h:245 rc.cpp:39 src/sm.cpp:345
++msgid "Description"
++msgstr "描述"
++
++#. i18n: file: src/sm.ui:92
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
++#. i18n: file: src/sm.ui:139
++#. i18n: ectx: property (text), widget (QLabel, nameLabel)
++#. i18n: file: src/sm.ui:92
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
++#. i18n: file: src/sm.ui:139
++#. i18n: ectx: property (text), widget (QLabel, nameLabel)
++#: obj-i486-linux-gnu/src/ui_sm.h:246 obj-i486-linux-gnu/src/ui_sm.h:247
++#: rc.cpp:36 rc.cpp:42 src/sm.cpp:344
++msgid "Name"
++msgstr "名称"
++
++#. i18n: file: src/sm.ui:162
++#. i18n: ectx: property (text), widget (QPushButton, backButton)
++#: obj-i486-linux-gnu/src/ui_sm.h:248 rc.cpp:45
++msgid "Back"
++msgstr "返回"
++
++#. i18n: file: src/sm.ui:232
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget_2)
++#: obj-i486-linux-gnu/src/ui_sm.h:250 rc.cpp:54
++msgid "2"
++msgstr "2"
++
++#. i18n: file: src/sm.ui:227
++#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget_2)
++#: obj-i486-linux-gnu/src/ui_sm.h:251 rc.cpp:51
++msgid "1"
++msgstr "1"
++
++#. i18n: file: src/sm.ui:193
++#. i18n: ectx: attribute (label), widget (QWidget, page1)
++#: obj-i486-linux-gnu/src/ui_sm.h:252 rc.cpp:48
++msgid "About"
++msgstr "关于"
++
++#. i18n: file: src/sm.ui:249
++#. i18n: ectx: attribute (label), widget (QWidget, page2)
++#: obj-i486-linux-gnu/src/ui_sm.h:253 rc.cpp:57
++msgid "Desktop files"
++msgstr "Desktop文件"
++
++#. i18n: file: src/sm.ui:279
++#. i18n: ectx: attribute (label), widget (QWidget, Page3)
++#: obj-i486-linux-gnu/src/ui_sm.h:254 rc.cpp:60
++msgid "Bin files"
++msgstr "Bin文件"
++
++#: rc.cpp:61
++msgctxt "NAME OF TRANSLATORS"
++msgid "Your names"
++msgstr "Lin Ziyun"
++
++#: rc.cpp:62
++msgctxt "EMAIL OF TRANSLATORS"
++msgid "Your emails"
++msgstr "ohmygod19993 at gmail dot com"
++
++#: src/sm.cpp:161
++msgid "Drag or type service type URL"
++msgstr "拖拽或输入服务类型URL"
++
++#: src/sm.cpp:197
++msgid "Unable to find the service menu archive %1."
++msgstr "无法找到服务菜单归档 %1 。"
++
++#: src/sm.cpp:200
++msgid ""
++"Unable to download the serice menu archive;\n"
++"please check that address %1 is correct."
++msgstr ""
++"无法下载菜单归档:\n"
++"请检查地址 %1 是否正确。"
++
++#: src/sm.cpp:292 src/sm.cpp:332
++msgid "Please select an entry!"
++msgstr "请选择一个项目!"
++
++#: src/sm.cpp:346
++msgid "Author"
++msgstr "作者"
++
++#: src/sm.cpp:347
++msgid "Author Email"
++msgstr "作者的电子邮件"
++
++#: src/sm.cpp:348
++msgid "Version"
++msgstr "版本"
++
++#: src/sm.cpp:349 src/sm.cpp:383
++msgid "Homepage"
++msgstr "首页"
++
++#: src/sm.cpp:350
++msgid "License"
++msgstr "许可证"
++
++#~ msgid "Not available"
++#~ msgstr "Nicht vorhanden"
++
++#~ msgid "3"
++#~ msgstr "3"
+diff -Naur a/src/kcm_servicemenus.desktop b/src/kcm_servicemenus.desktop
+--- a/src/kcm_servicemenus.desktop	2009-11-24 18:03:24.000000000 +0800
++++ b/src/kcm_servicemenus.desktop	2015-12-03 13:43:00.138620451 +0800
+@@ -7,6 +7,8 @@
+ X-KDE-ParentApp=kcontrol
+ X-KDE-System-Settings-Parent-Category=advanced-user-settings
+ Name=Service Menu Manager
++Name[zh_CN]=服务菜单管理器
+ Comment=Manage service menus
++Comment[zh_CN]=管理服务菜单
+ X-KDE-Keywords=service menu
+ Categories=Qt;KDE;X-KDE-settings-looknfeel;

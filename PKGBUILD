@@ -5,19 +5,20 @@ pkgver=0.4
 pkgrel=3
 pkgdesc="KF5 System Settings module to manage service menus"
 arch=('i686' 'x86_64')
-depends=('kdelibs4support' 'knewstuff')
+depends=('kdelibs4support' 'knewstuff' 'ki18n')
 makedepends=('cmake' 'kdoctools' 'extra-cmake-modules')
 url="http://www.kde-look.org/content/show.php/Service+Menu+Manager?content=94996"
 license=('GPL')
 conflicts=kcm-servicemenus
 replaces=kcm-servicemenus
-source=(kcm-servicemenus_$pkgver.tar.gz port_to_kf5.patch)
-md5sums=('SKIP' 'SKIP')
+source=(kcm-servicemenus_$pkgver.tar.gz port_to_kf5.patch l10n_zh_cn.patch)
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   mkdir -p $srcdir/build
   cd $srcdir/kcm-servicemenus-$pkgver
   patch -p1 -i $srcdir/port_to_kf5.patch
+  patch -p1 -i $srcdir/l10n_zh_cn.patch
 }
 
 build() {

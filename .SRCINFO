@@ -11,10 +11,13 @@ pkgbase = kcm-servicemenus-frameworks
 	makedepends = extra-cmake-modules
 	depends = kdelibs4support
 	depends = knewstuff
+	depends = ki18n
 	conflicts = kcm-servicemenus
 	replaces = kcm-servicemenus
 	source = kcm-servicemenus_0.4.tar.gz
 	source = port_to_kf5.patch
+	source = l10n_zh_cn.patch
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 

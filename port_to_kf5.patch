@@ -19,7 +19,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 +include(FeatureSummary)
 +
 +find_package(Qt5 REQUIRED COMPONENTS Widgets)
-+find_package(KF5 REQUIRED COMPONENTS KDELibs4Support Archive NewStuff) # 
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support Archive NewStuff I18n)
  
  add_subdirectory(src)
  add_subdirectory(po)
@@ -43,7 +43,7 @@ diff -Naur a/src/CMakeLists.txt b/src/CMakeLists.txt
 +add_library(kcm_servicemenus MODULE ${kcm_servicemenus-sources})
  
 -target_link_libraries(kcm_servicemenus ${KDE4_KIO_LIBS} ${KDE4_KIO_LIBS} ${KDE4_KNEWSTUFF2_LIBS})
-+target_link_libraries(kcm_servicemenus KF5::KDELibs4Support KF5::Archive KF5::NewStuff) # 
++target_link_libraries(kcm_servicemenus KF5::KDELibs4Support KF5::Archive KF5::NewStuff KF5::I18n)
  install(TARGETS kcm_servicemenus  DESTINATION ${PLUGIN_INSTALL_DIR} )
  
  
@@ -77,7 +77,7 @@ diff -Naur a/src/sm.cpp b/src/sm.cpp
  #include <kmessagebox.h>
  #include <kstandarddirs.h>
  #include <ktar.h>
-@@ -58,7 +59,10 @@
+@@ -58,7 +59,13 @@
  
  #include "sm.h"
  
@@ -86,6 +86,9 @@ diff -Naur a/src/sm.cpp b/src/sm.cpp
 +#include <KUrl>
 +#include <KIcon>
 +#include <KConfigGroup>
++
++#define TRANSLATION_DOMAIN "kcm_servicemenus"
++#include <klocalizedstring.h>
  
  //------------------------------------------------------------------------------
  //--- init ---------------------------------------------------------------------
