@@ -7,14 +7,17 @@ pkgbase = swift
 	license = GPL3
 	makedepends = python2
 	makedepends = openssl
-	makedepends = qt5-base
 	makedepends = boost
+	makedepends = qt5-base
+	makedepends = qt5-multimedia
+	makedepends = qt5-webkit
+	makedepends = qt5-x11extras
 	source = http://swift.im/downloads/releases/swift-3.0beta2/swift-3.0beta2.tar.gz
-	md5sums = SKIP
+	sha256sums = 405380a30e91c41d48063f68feeea4f6c4f7a21f132a6cdee6c9e72c44d0d344
 
-pkgname = swift
-	pkgdesc = XMPP client written in C++ with Qt
-	depends = swiften=3.0beta2
+pkgname = swift-im
+	pkgdesc = XMPP client written in C++ with Qt and Swiften
+	depends = swiften
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-webkit
