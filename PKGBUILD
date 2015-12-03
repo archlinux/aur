@@ -1,7 +1,7 @@
 # Maintainer: PitBall
 
 pkgname=ryzom-client
-pkgver=0.12.0.r6418
+pkgver=0.12.0.r6502
 pkgrel=1
 pkgdesc="Ryzom is a Free to Play MMORPG .This version is for playing on an official server"
 arch=('i686' 'x86_64')
@@ -32,8 +32,14 @@ pkgver() {
 }
 
 build() {
+
     mkdir -p $srcdir/$_hg_name/build
     cd $srcdir/$_hg_name/build
+
+    # error in linking time "undefined reference to xml*"
+    for dir in georges gui ligo logic net pacs sound; do
+    sed 's/nelmisc/nelmisc ${LIBXML2_LIBRARIES}/' -i \
+         ../code/nel/src/$dir/CMakeLists.txt; done
 
    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release \
     -DWITH_RYZOM_SERVER=OFF -DWITH_RYZOM_CLIENT=ON \
