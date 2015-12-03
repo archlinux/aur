@@ -1,6 +1,6 @@
 pkgbase = kimtoy-frameworks-git
 	pkgdesc = Standalone input method panel. KF5 branch.
-	pkgver = 1.10.1
+	pkgver = 20150824.ga4464f6
 	pkgrel = 1
 	url = http://kde-apps.org/content/show.php/KIMToy?content=140967
 	install = kimtoy-frameworks-git.install

@@ -1,7 +1,7 @@
 # Maintainer: maz-1 <ohmygod19993 at gmail dot com>
 
 pkgname=kimtoy-frameworks-git
-pkgver=1.10.1
+pkgver=20150824.ga4464f6
 pkgdesc="Standalone input method panel. KF5 branch."
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -17,6 +17,12 @@ provides=kimtoy
 conflicts=kimtoy
 install=$pkgname.install
 source=("git+https://github.com/ahyangyi/kimtoy.git#branch=kf5")
+
+pkgver() {
+	cd "$srcdir/kimtoy"
+	echo "$(git show -s --format="%ci"|grep -oP '\d{4}-\d{2}-\d{2}'|sed 's:-::g').g$(git describe --always)"
+}
+
 
 prepare() {
   rm -rf build
