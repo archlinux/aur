@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [[ "$@" =~ ^doi:(//){0,1} ]]; then
+    xdg-open $(echo $@ | sed 's#doi:\(//\)\{0,1\}#https://dx.doi.org/#')
+else
+    echo "Provided link does not appear to be a valid DOI link." >&2
+fi

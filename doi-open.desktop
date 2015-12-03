@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=doi-open
+Comment=DOI link handler
+Exec=/usr/bin/doi-open %u
+NoDisplay=true
+X-MultipleArgs=false
+MimeType=x-scheme-handler/doi;

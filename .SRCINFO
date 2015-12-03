@@ -1,0 +1,16 @@
+pkgbase = doi-open
+	pkgdesc = A simple script and desktop entry to handle DOI links.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/JP-Ellis/doi-open
+	arch = any
+	license = MIT
+	source = doi-open
+	source = doi-open.desktop
+	source = LICENSE
+	sha256sums = f047573b5fd735f37f2e81159675c701e1fa63167f9cf519227e6712467640f9
+	sha256sums = e68a88da9ba901a7280fd9a24d0baa3b75aab5feafe94bc51007d99f36c4edd7
+	sha256sums = 16157e0292310978360f4cdc134fdec7207312320c99264f03901921fbfdbfa2
+
+pkgname = doi-open
+
