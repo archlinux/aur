@@ -3,13 +3,13 @@
 _pkgname=dexed-vst
 pkgname="${_pkgname}-git"
 pkgver=0.9.0.r112.39d3c28
-pkgrel=1
+pkgrel=2
 pkgdesc="A VST plugin synth closely modelled on the Yamaha DX7"
 arch=('i686' 'x86_64')
-url="http://plugin.org.uk/"
+url="http://asb2m10.github.io/dexed/"
 license=("GPL3")
 groups=('vst-plugins')
-depends=('alsa-lib' 'libxext' 'gcc-libs-multilib')
+depends=('alsa-lib' 'freetype2' 'libxext' 'gcc-libs-multilib')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
