@@ -24,21 +24,6 @@ build() {
     add_file "/etc/fonts/fonts.conf"
     add_file "/etc/fonts/conf.d/60-latin.conf"
 
-    map add_systemd_unit \
-        systemd-ask-password-plymouth.path \
-        systemd-ask-password-plymouth.service \
-        plymouth-halt.service \
-        plymouth-kexec.service \
-        plymouth-poweroff.service \
-        plymouth-quit-wait.service \
-        plymouth-quit.service \
-        plymouth-read-write.service \
-        plymouth-reboot.service \
-        plymouth-start.service \
-        plymouth-switch-root.service \
-	plymouth-start.path
-
-
     add_runscript
 }
 

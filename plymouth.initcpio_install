@@ -49,20 +49,6 @@ build() {
 	add_binary "$(readlink -e /lib/libnss_files.so.2)"
 	add_file /lib/libnss_files.so.2
 
-	map add_systemd_unit \
-		systemd-ask-password-plymouth.path \
-		systemd-ask-password-plymouth.service \
-		plymouth-halt.service \
-		plymouth-kexec.service \
-		plymouth-poweroff.service \
-		plymouth-quit-wait.service \
-		plymouth-quit.service \
-		plymouth-read-write.service \
-		plymouth-reboot.service \
-		plymouth-start.service \
-		plymouth-switch-root.service \
-		plymouth-start.path
-
 	add_runscript
 }
 
