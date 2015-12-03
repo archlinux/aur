@@ -1,6 +1,6 @@
 pkgbase = gtomb-git
 	pkgdesc = GUI wrapper for Tomb, the crypto undertaker
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/parazyd/gtomb
 	arch = any
