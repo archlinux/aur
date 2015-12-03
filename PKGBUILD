@@ -2,7 +2,7 @@
 
 pkgname=teamviewer
 pkgver=11.0.52520
-pkgrel=1.4
+pkgrel=1.5
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com'
@@ -29,11 +29,12 @@ sha256sums_x86_64=('d862fe3f26bf05e7b7f5fd5972873b5d859e40059c7f41783865594fc58d
 sha256sums_i686=('66f2444b660b87f2fdc1d19949b94bbd840982d51c3405e4a53799cd6a6c6090')
 
 prepare() {
-	tar -xf data.tar.bz2
+	tar -xf data.tar.bz
 }
 
 package() {
 	# Install
+	echo "If the install fails here, you need to uninstall Teamviewer 10"
 	cp -dr --no-preserve=ownership {etc,opt,usr,var} "${pkgdir}"/
 
 	# Additional files
