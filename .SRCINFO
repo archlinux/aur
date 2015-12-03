@@ -1,8 +1,8 @@
 pkgbase = hawaii-system-preferences
 	pkgdesc = Hawaii system preferences
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/hawaii-desktop
+	url = http://hawaiios.org
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -19,8 +19,8 @@ pkgbase = hawaii-system-preferences
 	conflicts = hawaii-system-preferences-git
 	replaces = hawaii-system-preferences
 	options = debug
-	source = https://github.com/hawaii-desktop/hawaii-system-preferences/archive/v0.4.0.tar.gz
-	md5sums = d88e031e7ed9be20e7559820a7649a4b
+	source = https://github.com/hawaii-desktop/hawaii-system-preferences/releases/download/v0.5.0/hawaii-system-preferences-0.5.0.tar.xz
+	sha1sums = d88e031e7ed9be20e7559820a7649a4b
 
 pkgname = hawaii-system-preferences
 
