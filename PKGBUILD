@@ -2,14 +2,14 @@
 
 pkgname=packetbeat
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch.'
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.elastic.co/products/beats/$pkgname"
 license=('APACHE')
 backup=("etc/$pkgname/$pkgname.yml")
 depends=('libpcap')
-makedepends=('go>=1.5')
+makedepends=('go>=1.5' 'git')
 optdepends=('elasticsearch: for running standalone installation')
 options=('!strip')
 provides=('packetbeat')
@@ -23,7 +23,7 @@ prepare() {
     cd "$pkgname-$pkgver"
 
     # Perform some timestomping to avoid make warnings
-    _t="$(date -r Makefile)"
+    _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
     # Remove win and darwin config installation
     sed -i '/[- ]win/d ; /[- ]darwin/d' Makefile
     # Replace Linux config filename
