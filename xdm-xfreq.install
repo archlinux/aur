@@ -5,7 +5,7 @@ To enable and start the Display Manager, execute:
   systemctl start xdm-xfreq
 The theme can be customized in the following files:
   /etc/xdm-xfreq/Xresources
-  /etc/xdm-xfreq/config.sh
+  /etc/xdm-xfreq/xdm-xfreq.rc
 EOF
 }
 

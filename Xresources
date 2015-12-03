@@ -22,8 +22,13 @@ Xcursor.theme:whiteglass
 
 !xlogin*width:560
 !xlogin*height:192
-!xlogin.Login.namePrompt:Login:\040\040\040
+!xlogin.Login.namePrompt:Login:
+!xlogin.Login.passwdPrompt:Password:
+!xlogin.Login.allowNullPasswd:false
+!xlogin.Login.echoPasswd:false
+!xlogin.Login.echoPasswdChar:*
 xlogin*fail:Access denied
+!xlogin.Login.failTimeout:10
 xlogin*greetFont:-xos4-terminus-*-*-*-*-12-*-*-*-*-*-*-*
 xlogin*greetFace:DejaVuSans-8
 xlogin*face:Sans-9

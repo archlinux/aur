@@ -9,12 +9,14 @@ if [[ $# > 0 && $# <3 ]]; then
 		I=1
 
 		if [[ $X == $I ]]; then
-			G="xlogin*greeting: [F1] (XSession)\\040\\040\\040"
+			G="xlogin*greeting: [F1] XSession*\\040\\040\\040"
 		else
 			G="xlogin*greeting: [F1] XSession\\040\\040\\040"
 		fi
 		echo "xlogin*login.translations: #override \\" > /var/run/xdm-xfreq-xdesktops
-		echo "    Ctrl<Key>R: restart-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
+		echo "    Ctrl<Key>R: abort-display()\n\\" >> /var/run/xdm-xfreq-xdesktops
+		echo "    Ctrl<Key>\\: abort-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
+		echo "    Ctrl<Key>C: restart-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    <Key>F1: set-session-argument() finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
 
 		for D in $P/*.desktop
@@ -24,9 +26,9 @@ if [[ $# > 0 && $# <3 ]]; then
 			R=`grep -w "Exec" $D | cut -d "=" -f 2`
 			if [[ $X == $I ]]; then
 				A=$R
-				G=$G"[F$I] ($N)\\040\\040\\040"
+				G=$G"[F$I] ${N}*\\040\\040\\040"
 			else
-				G=$G"[F$I] $N\\040\\040\\040"
+				G=$G"[F$I] ${N}\\040\\040\\040"
 			fi
 			echo "    <Key>F${I}: set-session-argument(${R}) finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		done
@@ -37,7 +39,7 @@ if [[ $# > 0 && $# <3 ]]; then
 		echo "    <Key>Home: move-to-begining()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    <Key>End: move-to-end()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    Ctrl<Key>KP_Enter: set-session-argument(failsafe) finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    <Key>KP_Enter: set-session-argument() finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
+		echo "    <Key>KP_Enter: set-session-argument($A) finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    Ctrl<Key>Return: set-session-argument(failsafe) finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    <Key>Return: set-session-argument($A) finish-field()" >> /var/run/xdm-xfreq-xdesktops
 		echo "" >> /var/run/xdm-xfreq-xdesktops

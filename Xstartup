@@ -1,5 +1,5 @@
 #!/bin/sh
-source /etc/xdm-xfreq/config.sh
+source /etc/xdm-xfreq/xdm-xfreq.rc
 
 # kill all and clean-up.
 if [ -r $XDM_XFREQ_GUI_PID ]; then

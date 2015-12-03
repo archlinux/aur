@@ -1,17 +1,17 @@
 #!/bin/sh
-source /etc/xdm-xfreq/config.sh
+source /etc/xdm-xfreq/xdm-xfreq.rc
 
 # provided by xlogin*login.translations:<Key>:set-session-argument()
 case $# in
 0)
 	session_argument="userhome"
-	;;
+;;
 1)
 	session_argument=$1
-	;;
+;;
 *)
 	session_argument="failsafe"
-	;;
+;;
 esac
 
 # redirect errors to a file in user's home directory if we can
@@ -53,11 +53,11 @@ userhome)
 			exec /bin/sh -l /etc/X11/xinit/xinitrc
 		fi
 	fi
-	;;
+;;
 failsafe)
 	exec /usr/bin/xterm -name login
-	;;
+;;
 *)
 	exec $session_argument
-	;;
+;;
 esac

@@ -1,89 +1,115 @@
 #!/bin/sh
 source /etc/xdm-xfreq/config.sh
 
-if [ $XDM_XFREQ_KEYB_LED_PATH ]; then
-$XDM_XFREQ_KEYB_LED_PATH $XDM_XFREQ_KEYB_LED_ARGS
-fi
-if [ $XDM_XFREQ_BG_COLOR_PATH ]; then
-$XDM_XFREQ_BG_COLOR_PATH $XDM_XFREQ_BG_COLOR_ARGS
-fi
-if [ $XDM_XFREQ_BG_WALLPAPER_PATH ]; then
-$XDM_XFREQ_BG_WALLPAPER_PATH $XDM_XFREQ_BG_WALLPAPER_ARGS
-fi
-if [ $XDM_XFREQ_CLOCK_PATH ]; then
-$XDM_XFREQ_CLOCK_PATH $XDM_XFREQ_CLOCK_ARGS & echo $! > $XDM_XFREQ_CLOCK_PID
+if [[ -v XDM_XFREQ_KEYB_LED_PATH ]]; then
+	$XDM_XFREQ_KEYB_LED_PATH $XDM_XFREQ_KEYB_LED_ARGS
 fi
 
-LOOP=true
-( while [[ $LOOP && $XDM_XFREQ_BUTTONS_PATH ]]; do
+if [[ -v XDM_XFREQ_BG_COLOR_PATH ]]; then
+	$XDM_XFREQ_BG_COLOR_PATH $XDM_XFREQ_BG_COLOR_ARGS
+fi
+
+if [[ -v XDM_XFREQ_BG_WALLPAPER_PATH ]]; then
+	$XDM_XFREQ_BG_WALLPAPER_PATH $XDM_XFREQ_BG_WALLPAPER_ARGS
+fi
+
+if [[ -v XDM_XFREQ_CLOCK_PATH ]]; then
+	$XDM_XFREQ_CLOCK_PATH $XDM_XFREQ_CLOCK_ARGS & echo $! > $XDM_XFREQ_CLOCK_PID
+fi
+
+if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
+  (
+    declare -i LOOP=1
+    while (( LOOP == 1 ))
+      do
 	$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_MENU "";
-	case "$?" in
-	143)
-		unset LOOP
-		;;
+	declare -i RC=$?
+	case $RC in
 	99)
 		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_SUBMENU ""
-		case "$?" in
-		143)
-			unset LOOP
-			;;
+		RC=$?
+		case $RC in
 		11)
-			if [ $XDM_XFREQ_SCREENSHOT_PATH ]; then
+			if [[ -v XDM_XFREQ_SCREENSHOT_PATH ]]; then
 				$XDM_XFREQ_SCREENSHOT_PATH $XDM_XFREQ_SCREENSHOT_ARGS &
 			fi
-			;;
-		esac
 		;;
+		*)
+			if (( $RC > 128 )); then
+				LOOP=0
+			fi
+		;;
+		esac
+	;;
 	11)
 		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_PWROFF ""
-		case "$?" in
-		143)
-			unset LOOP
-			;;
+		RC=$?
+		case $RC in
 		11)
 			$XDM_XFREQ_POWEROFF_CMD
-			;;
-		esac
 		;;
+		*)
+			if (( $RC > 128 )); then
+				LOOP=0
+			fi
+		;;
+		esac
+	;;
 	12)
 		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_HALT ""
-		case "$?" in
-		143)
-			unset LOOP
-			;;
+		RC=$?
+		case $RC in
 		11)
 			$XDM_XFREQ_HALT_CMD
-			;;
-		esac
 		;;
+		*)
+			if (( $RC > 128 )); then
+				LOOP=0
+			fi
+		;;
+		esac
+	;;
 	13)
 		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_REBOOT ""
-		case "$?" in
-		143)
-			unset LOOP
-			;;
+		RC=$?
+		case $RC in
 		11)
 			$XDM_XFREQ_REBOOT_CMD
-			;;
-		esac
 		;;
+		*)
+			if (( $RC > 128 )); then
+				LOOP=0
+			fi
+		;;
+		esac
+	;;
 	14)
 		$XDM_XFREQ_SLEEP_CMD
-		;;
+	;;
 	15)
 		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_RESCUE ""
-		case "$?" in
-		143)
-			unset LOOP
-			;;
+		RC=$?
+		case $RC in
 		11)
 			$XDM_XFREQ_RESCUE_CMD
-			;;
-		esac
 		;;
-	esac;
-done ) & echo $! > $XDM_XFREQ_BUTTONS_PID
+		*)
+			if (( $RC > 128 )); then
+				LOOP=0
+			fi
+		;;
+		esac
+	;;
+        *)
+		if (( $RC > 128 )); then
+			LOOP=0
+		fi
+	;;
+	esac
+      done
+  ) & echo $! > $XDM_XFREQ_BUTTONS_PID
+fi
 
-if [ $XDM_XFREQ_GUI_PATH ]; then
+if [[ -v XDM_XFREQ_GUI_PATH ]]; then
 	$XDM_XFREQ_GUI_PATH $XDM_XFREQ_GUI_ARGS & echo $! > $XDM_XFREQ_GUI_PID
 fi
