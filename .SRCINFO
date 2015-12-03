@@ -1,0 +1,16 @@
+pkgbase = quartus-lite-max
+	pkgdesc = MAX II, MAX V device support for Quartus Prime Lite Edition
+	pkgver = 15.1.0.185
+	pkgrel = 1
+	url = http://dl.altera.com/?edition=lite#tabs-2
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = quartus-lite
+	options = !strip
+	options = !upx
+	source = max-15.1.0.185.zip::http://download.altera.com/akdlm/software/acdsinst/15.1/185/ib_installers/max-15.1.0.185.qdz
+	md5sums = deacb97d4a14a952521b6f1dfbcb958f
+
+pkgname = quartus-lite-max
+
