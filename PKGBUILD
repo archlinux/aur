@@ -1,15 +1,18 @@
 # $Id$
-# Maintainer: Sébastien Luttringer
+# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+# Contributor: Sébastien Luttringer
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.3.1
-pkgrel=10
+pkgver=1.3.3
+pkgrel=1
+
 arch=('any')
 url='http://sphinx.pocoo.org/'
 license=('BSD')
+
 makedepends=(
   'python-setuptools'
   'python-docutils'
@@ -31,17 +34,11 @@ checkdepends=(
   'python-sphinx_rtd_theme' 'python2-sphinx_rtd_theme'
   'python2-mock'
 )
-source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"
-  '4c2f693cbf7ec40448e7237383880d701ede6c88.patch')
-md5sums=('8786a194acf9673464c5455b11fd4332'
-         '103a559a4e4a17d4dd9c3e2342486197')
+
+source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
+md5sums=('3800ffa038a1eedb5139f9c247e7ee2f')
 
 prepare() {
-  # https://github.com/sphinx-doc/sphinx/pull/1892
-  pushd Sphinx-$pkgver
-   patch -p1 -i "$srcdir"/4c2f693cbf7ec40448e7237383880d701ede6c88.patch
-  popd
-
   # souce duplication is required because makefile modify source code
   # setyp.py --build tricks don't works well
   cp -a Sphinx-$pkgver Sphinx-${pkgver}2
@@ -57,6 +54,7 @@ build() {
   msg2 'Python 3 version'
   cd "$srcdir"/Sphinx-$pkgver
   make PYTHON=python3 build
+
   msg2 'Python 2 version'
   cd "$srcdir"/Sphinx-${pkgver}2
   make PYTHON=python2 build

@@ -1,6 +1,6 @@
 pkgbase = python-sphinx
-	pkgver = 1.3.1
-	pkgrel = 10
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = BSD
@@ -26,10 +26,8 @@ pkgbase = python-sphinx
 	makedepends = python2-jinja
 	makedepends = python2-pygments
 	makedepends = python2-six
-	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.3.1.tar.gz
-	source = 4c2f693cbf7ec40448e7237383880d701ede6c88.patch
-	md5sums = 8786a194acf9673464c5455b11fd4332
-	md5sums = 103a559a4e4a17d4dd9c3e2342486197
+	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.3.3.tar.gz
+	md5sums = 3800ffa038a1eedb5139f9c247e7ee2f
 
 pkgname = python-sphinx
 	pkgdesc = Python3 documentation generator
