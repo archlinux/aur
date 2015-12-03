@@ -1,6 +1,6 @@
 pkgbase = ansible-git
 	pkgdesc = Radically simple IT automation platform
-	pkgver = 2.0.0.16937.5c7d717
+	pkgver = 2.1.17263.9b81c35
 	pkgrel = 1
 	url = http://www.ansible.com
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = ansible-git
 	depends = python2-paramiko
 	depends = python2-jinja
 	depends = python2-six
+	depends = python2-pexpect
 	optdepends = python2-passlib: crypt values for vars_prompt
 	provides = ansible
 	conflicts = ansible

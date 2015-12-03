@@ -11,13 +11,13 @@
 # Contributor: Michael DeHaan <michael@ansible.com>
 
 pkgname=ansible-git
-pkgver=2.0.0.16937.5c7d717
+pkgver=2.1.17263.9b81c35
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='http://www.ansible.com'
 license=('GPL3')
-depends=('python2' 'python2-yaml' 'python2-paramiko' 'python2-jinja' 'python2-six')
+depends=('python2' 'python2-yaml' 'python2-paramiko' 'python2-jinja' 'python2-six' 'python2-pexpect')
 makedepends=('git' 'asciidoc' 'fakeroot')
 optdepends=('python2-passlib: crypt values for vars_prompt')
 conflicts=('ansible')
