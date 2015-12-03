@@ -1,0 +1,12 @@
+[Unit]
+Description=Disable IME Autostart
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/share/imchooser/imchooser-helper disable
+
+[Install]
+WantedBy=multi-user.target
+

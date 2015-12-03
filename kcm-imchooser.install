@@ -1,0 +1,13 @@
+post_install() {
+  systemctl enable imchooser-helper
+  /usr/share/imchooser/imchooser-helper disable
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  systemctl disable imchooser-helper
+  /usr/share/imchooser/imchooser-helper enable
+}
