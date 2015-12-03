@@ -1,52 +1,42 @@
-# Maintainer: Kamil Śliwak <cameel2/at/gmail/com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Kamil Śliwak <cameel2/at/gmail/com>
 
 pkgname=mdbtools-git
-_gitname=mdbtools
 pkgver=0.7.r197.g3b6d88f
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of libraries and utilities for reading Microsoft Access database (MDB) files."
 arch=('i686' 'x86_64')
 url="https://github.com/brianb/mdbtools"
-depends=('gnome-doc-utils')
+depends=('gnome-doc-utils' 'libgnomeui')
 makedepends=('git' 'txt2man')
 provides=('mdbtools')
 conflicts=('mdbtools')
 license=('GPL')
-source=(
-	'git://github.com/brianb/mdbtools.git'
-	'gnome-doc-utils-fix.diff'
-)
-md5sums=(
-	'SKIP'
-	'b441e5f2de56b9a339593d83c9516cf6'
-)
+options=('!emptydirs')
+install=${pkgname}.install
+source=("${pkgname}::git://github.com/brianb/mdbtools.git")
+md5sums=('SKIP')
 
 pkgver() {
-	cd $srcdir/$_gitname
-
-	echo $(git describe --always | sed -r 's|([^-]*-g)|r\1|;s|-|.|g')
+  cd ${pkgname}
+  echo $(git describe --always | sed -r 's|([^-]*-g)|r\1|;s|-|.|g')
 }
 
 prepare() {
-	cd $srcdir/$_gitname
-
-	# A workaround for 'ENABLE_SK not defined' error. Does not seem to be fixed
-	# in master yet. See https://github.com/brianb/mdbtools/issues/37
-	patch $srcdir/$_gitname/configure.ac $startdir/gnome-doc-utils-fix.diff
-
-	autoreconf --install --force
-	./configure --prefix=/usr
+  cd ${pkgname}
+  autoreconf -fi
 }
 
 build() {
-	cd $srcdir/$_gitname
-
-	make
+  cd ${pkgname}
+  ./configure --prefix=/usr \
+    --disable-maintainer-mode \
+    --disable-dependency-tracking
+  make V=0
 }
 
 package(){
-	cd $srcdir/$_gitname
-
-	make DESTDIR="$pkgdir" install
-	install -Dm644 src/gmdb2/gmdb.desktop "$pkgdir"/usr/share/applications/gmdb.desktop
+  cd ${pkgname}
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "src/gmdb2/gmdb.desktop" "${pkgdir}/usr/share/applications/gmdb.desktop"
 }
