@@ -1,0 +1,23 @@
+pkgbase = rasmol-gtk
+	pkgdesc = A program for molecular graphics visualisation (aka openrasmol)
+	pkgver = 2.7.5.2
+	pkgrel = 1
+	url = http://www.openrasmol.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = imake
+	depends = neartree
+	depends = cqrlib
+	depends = cbflib
+	depends = vte
+	depends = gtk2
+	source = http://www.rasmol.org/software/RasMol_2.7.5.2.tar.gz
+	source = rasmol.png
+	source = rasmol.desktop
+	md5sums = d075ba3eb81604ccf7c0bea2a0039b7b
+	md5sums = 9eadcb6677c3b600a98e4a251612af15
+	md5sums = 8ae57862f7b03007778e2be49f84ff03
+
+pkgname = rasmol-gtk
+

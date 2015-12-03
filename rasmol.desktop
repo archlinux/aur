@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Science;Chemistry;Education
+Comment=Viewer for PDB and other Molecular Graphics
+Exec=rasmol-gtk
+GenericName=Molecular Graphics Visualisation Tool
+Icon=rasmol
+Name=RasMol
+Terminal=false
+Type=Application
