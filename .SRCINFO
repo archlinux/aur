@@ -1,0 +1,16 @@
+pkgbase = acarsdec
+	pkgdesc = Multi-channel ACARS decoder for rtl_sdr
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/acarsdec/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = rtl-sdr
+	depends = alsa-lib
+	depends = sqlite
+	source = http://downloads.sourceforge.net/project/acarsdec/acarsdec/3.2/acarsdec-3.2.tar.gz
+	sha256sums = 579a63f4f68618aee7de04e3ea1081ec7bd0f0853ea0debc3080a23f9b8f4a9f
+
+pkgname = acarsdec
+
