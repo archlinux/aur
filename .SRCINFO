@@ -1,15 +1,15 @@
 pkgbase = gtk-theme-windows10-dark
 	pkgdesc = GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines.
-	pkgver = 0.7.9
-	pkgrel = 2
+	pkgver = 0.8
+	pkgrel = 1
 	url = http://gnome-look.org/content/show.php/Windows+10+Theme?content=171327
 	arch = any
 	license = GPL
 	depends = gtk-engines
 	depends = gtk-engine-murrine
 	optdepends = gnome-themes-standard
-	source = windows10_dark.zip::https://github.com/Elbullazul/B00merang-Project/blob/master/Windows%2010%20Themes/Windows%2010%20Dark%20v0.7.9.zip?raw=true
-	sha1sums = 3fda6803c1fb158e3af5643b0eab368b6d308ef1
+	source = http://b00merang.weebly.com/uploads/1/6/8/1/16813022/windows_10_dark_v0.8.zip
+	sha1sums = 2726637ef04ff2f55524452ee26614c8196e0d76
 
 pkgname = gtk-theme-windows10-dark
 
