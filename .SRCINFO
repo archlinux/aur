@@ -1,6 +1,6 @@
 pkgbase = apache-mod_geoip2
 	pkgdesc = geoip interface module for apache.
-	pkgver = 1.2.8
+	pkgver = 1.2.10
 	pkgrel = 1
 	url = http://www.maxmind.com/app/mod_geoip
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = apache-mod_geoip2
 	makedepends = geoip
 	depends = apache
 	depends = geoip
-	source = http://geolite.maxmind.com/download/geoip/api/mod_geoip2/mod_geoip2_1.2.8.tar.gz
-	md5sums = adab5ca32be41980155e07c8c8bcfc87
+	source = https://github.com/maxmind/geoip-api-mod_geoip2/archive/1.2.10.tar.gz
+	md5sums = c2b564cfd2bcb8527304f20818f29443
 
 pkgname = apache-mod_geoip2
 
