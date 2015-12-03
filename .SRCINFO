@@ -22,6 +22,7 @@ pkgname = swift-im
 	depends = qt5-multimedia
 	depends = qt5-webkit
 	depends = qt5-x11extras
+	optdepends = qt5-svg: for SVG avatars
 
 pkgname = swiften
 	pkgdesc = XMPP library written in C++ with Boost
