@@ -1,6 +1,6 @@
 pkgbase = vivaldi-snapshot
 	pkgdesc = An advanced browser made with the power user in mind. (weekly snapshot)
-	pkgver = 1.0.334.3
+	pkgver = 1.0.340.7
 	pkgrel = 1
 	url = https://vivaldi.com
 	install = vivaldi.install
@@ -21,10 +21,10 @@ pkgbase = vivaldi-snapshot
 	optdepends = google-chrome: Widevine DRM Plugin
 	options = !strip
 	options = !zipman
-	source_i686 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.334.3-1.i386.rpm
-	sha256sums_i686 = a69f41a308503d83097032ba00f1fdd3c4e0c7b5893aca8185aaf5c77483ad10
-	source_x86_64 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.334.3-1.x86_64.rpm
-	sha256sums_x86_64 = 91667f358c83183219b1196117025dd1262b915b78c144a6ec28b50070e083dd
+	source_i686 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.340.7-1.i386.rpm
+	sha256sums_i686 = 6af3f6c0d9c3b0ac49cb041ea3d221534631b91cc72eacc680e1d995ca17ade5
+	source_x86_64 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.340.7-1.x86_64.rpm
+	sha256sums_x86_64 = b1e2e8f71f0e901bde43b7a04bcb8eee3dd55801fff68b2b1fce3c05f71e8273
 
 pkgname = vivaldi-snapshot
 
