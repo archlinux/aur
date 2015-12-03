@@ -28,7 +28,6 @@ prepare() {
 build() {
   cd ./CBFlib-$pkgver
   NOFORTRAN=yes make all
-  # the test suite gives comile errors I could not resolve
   make tests
   #make shared
 }
