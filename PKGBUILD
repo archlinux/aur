@@ -11,8 +11,6 @@ depends=('python2-ctypesgen')
 makedepends=('git' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/graphql/${pkgname}/archive/v${pkgver}.tar.gz")
 options=(!makeflags)    # parallel build fails
-conflicts=(libgraphqlparser)
-provides=(libgraphqlparser)
 md5sums=(5e3c1a8f561494475cecdabe1aaf1426)
 sha256sums=(fa3d28fa6154077d8b3795e8d21f2946c16acf549e29c457ddc5c18427639f9c)
 sha384sums=(57844fbfd263007a51a00a4d7eef390172dfdea665aae125bfbdecf6f94f4fd4eb31f611350d99ee426ed9780492c1ce)
@@ -22,6 +20,7 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   sed 's/COMMAND python/COMMAND python2/g' -i CMakeLists.txt
+  sed 's/AstNode.h/AstNode.h Ast.h AstVisitor.h/g' -i CMakeLists.txt
 }
 
 build() {
