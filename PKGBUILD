@@ -7,7 +7,7 @@ pkgdesc="A program for molecular graphics visualisation (aka openrasmol)"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.openrasmol.org/"
-depends=('neartree' 'neartree' 'cqrlib' 'cbflib' 'vte' 'gtk2')
+depends=('cvector' 'neartree' 'cqrlib' 'cbflib' 'vte' 'gtk2')
 makedepends=('imake')
 source=(http://www.rasmol.org/software/RasMol_${pkgver}.tar.gz
         rasmol.png
