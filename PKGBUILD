@@ -24,17 +24,14 @@ _error_log="errors.log"
 
 pkgver() {
   pushd ${startdir}/nchan > /dev/null
-  _nchan_ver=`git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`
-  if [[ $_nchan_ver =~ ^v[0-9] ]]; then
-    _nchan_ver=${_nchan_ver:1}
-  fi
+  _nchan_ver=`git describe --long --tags| sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'`
   popd > /dev/null
   echo "${_nginx_ver}.nchan${_nchan_ver}"
 }
 
 
 pkgname=nginx-nchan-git
-pkgver=1.8.0.nchan0.9.r9.g9866433
+pkgver=1.8.0.nchan0.9.r10.g82a4e4b
 pkgrel=1
 pkgdesc="Nginx + Nchan - a flexible pub/sub server (git version)"
 arch=('i686' 'x86_64')
