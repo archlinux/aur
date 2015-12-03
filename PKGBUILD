@@ -1,8 +1,8 @@
 # Contributor: Martin Corley <Martin.Corley@ed.ac.uk>
 
 pkgname=opensesame
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.0.4
+pkgrel=1
 pkgdesc="A graphical, open-source experiment builder for the social sciences, with ability to deploy on Android"
 arch=(any)
 url="http://www.cogsci.nl/software/opensesame"
@@ -28,7 +28,7 @@ optdepends=('psychopy: PsychoPy backend'
 options=(!emptydirs)
 #source=(http://files.cogsci.nl/software/opensesame/opensesame_${pkgver}-1.tar.g
 #python2.patch)
-source=("$pkgname-$pkgver"::'git://github.com/smathot/OpenSesame.git#tag=release/3.0.2'
+source=("$pkgname-$pkgver"::'git://github.com/smathot/OpenSesame.git#tag=release/3.0.4'
 python2.patch)
 md5sums=('SKIP'
          '3620ccb77431d68a968a6d17ed9c5568')
