@@ -3,54 +3,53 @@
 
 pkgname=sphinxbase
 pkgver=5prealpha
-pkgrel=1
+pkgrel=2
 pkgdesc='Common library for sphinx speech recognition.'
 url='http://cmusphinx.sourceforge.net/'
 arch=('i686' 'x86_64')
-license=('BSD-2')
-options=('!libtool')
-makedepends=('bison')
-depends=('python2' 'cython2' 'swig' 'lapack' 'alsa-lib' 'libpulse' 'libsamplerate')
+license=('BSD')
+makedepends=('bison' 'swig')
+depends=('lapack' 'libpulse' 'libsamplerate') #not sure if libsamplerate is needed
 source=("http://downloads.sourceforge.net/project/cmusphinx/${pkgname}/${pkgver}/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cmusphinx/sphinxbase/master/LICENSE")
 md5sums=('12acdeda1d597631947e5531463431f1'
          '469fd92fa8cd1d4ca7ee0fe7435af689')
-_pythondir="$pkgdir/usr/lib/python2.7/site-packages"
+options=('!libtool')
+
+prepare() {
+  cp -R "$pkgname-$pkgver" "$pkgname-$pkgver-py2"
+  cp -R "$pkgname-$pkgver" "$pkgname-$pkgver-py3"
+}
 
 build() {
-    cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver-py2"
 
-    msg2 "Reconfiguring project for Automake v1.15"
-    autoreconf -ivf > /dev/null
+  msg2 "Building Sphinxbase with Python 2 bindings..."
+  ./configure --prefix=/usr
+  make
 
-    msg2 "Setting python2 as the python installtion for ${pkgname}"
-
-    find -type f -exec sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' {} \;
-    find -type f -exec sed -i 's_/usr/bin/python_/usr/bin/python2_' {} \;
-    find -type f -exec sed -i 's_python -c_python2 -c_' {} \;
-    find -type f -exec sed -i 's_python-config_python2-config_' {} \;
-    find -type f -exec sed -i 's_cython_cython2_' {} \;
-
-    export PYTHON=/usr/bin/python2
-    export PYTHON_CONFIG=/usr/bin/python2-config
-
-    msg2 "Building..."
-
-     ./configure --prefix=/usr
-
-    make
+  cd "../$pkgname-$pkgver-py3"
+  msg2 "Building Sphinxbase with Python 3 bindings..."
+  export PYTHON=/usr/bin/python2
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-    cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver-py2"
 
-    install -d $_pythondir
-    PYTHONPATH=$_pythondir make DESTDIR="$pkgdir" install
+  msg2 "Installing Sphinxbase with Python 2 bindings"
+  make DESTDIR="$pkgdir/" install
 
-    install -d "$pkgdir/usr/share/licenses/$pkgname"
+  msg2 "Installing Python 3 bindings"
+  cd "../$pkgname-$pkgver-py3/swig"
+  make DESTDIR="$pkgdir/" install
 
-    install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 "${srcdir}/LICENSE" \
+                "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    libtool --finish "$pkgdir/usr/lib"
-    libtool --finish "$pkgdir/usr/lib/python2.7/site-packages/sphinxbase"
+  libtool --finish "$pkgdir/usr/lib"
+  libtool --finish "$pkgdir/usr/lib/python2.7/site-packages/sphinxbase"
+  libtool --finish "$pkgdir/usr/lib/python3.5/site-packages/sphinxbase"
 }
