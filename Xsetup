@@ -1,5 +1,5 @@
 #!/bin/sh
-source /etc/xdm-xfreq/config.sh
+source /etc/xdm-xfreq/xdm-xfreq.rc
 
 if [[ -v XDM_XFREQ_KEYB_LED_PATH ]]; then
 	$XDM_XFREQ_KEYB_LED_PATH $XDM_XFREQ_KEYB_LED_ARGS
