@@ -84,7 +84,7 @@ if [ "${_opt_Maintainer:=none}" = 'none' ]; then
   sleep 1
 fi
 
-_opt_VERSION='0.5'
+_opt_VERSION='0.6'
 _opt_AUR4='aur'
 
 # After August 8, these 3 time bomb lines can be removed and _opt_AUR4 can be gotten rid of altogether
@@ -281,6 +281,10 @@ fi
         '    };'|'    }')
           _var_thisfunc="${_var_thisfunc}${_var_line#    }"$'\n'
           # Some end braces are not functions
+          if [ ! -z "${_var_infunc}" ] && [ ! -z "${_var_PBfuncAll[${_var_infunc}]:-}" ]; then
+            echo "Warning: function ${_var_infunc}() defined multiple times"
+            [ "${returnv}" -ge 1 ] || returnv=1
+          fi
           if [ ! -z "${_var_infunc}" ]; then
             _var_PBfuncAll[${_var_infunc}]="${_var_thisfunc}"
             _var_PBftextAll[${_var_infunc}]="${_var_thisftext}"
@@ -453,13 +457,21 @@ _fn_findst_in_topords() {
       local _var_funcname
       for _var_funcname in "${!_var_PBftextArch[@]}"; do
         if [ "${_opt_PEDANTIC}" -ge 1 ]; then
-          if ! grep -qlF 'set -u' <<<"${_var_PBftextArch[${_var_funcname}]}" || ! grep -qlF 'set -u' <<<"${_var_PBftextAll[${_var_funcname}]}"; then
+          if ! grep -qlF 'set -u' <<<"${_var_PBftextArch[${_var_funcname}]}" || ! grep -qlF 'set +u' <<<"${_var_PBftextAll[${_var_funcname}]}"; then
             echo "Warning: function ${_var_funcname} should be surrounded by set -u and set +u"
             [ "${returnv}" -ge 1 ] || returnv=1
           fi
         fi
-        if [ "${_var_funcname}" = 'prepare' ] && grep -ql '^\s*make\|^\s*cmake' <<<"${_var_PBftextArch[${_var_funcname}]}"; then
+        if [ "${_var_funcname}" = 'prepare' ] && grep -ql '^\s*make' <<<"${_var_PBftextArch[${_var_funcname}]}"; then
           echo "Warning: make should be moved from ${_var_funcname}() into build() or possibly package()."
+          [ "${returnv}" -ge 1 ] || returnv=1
+        fi
+        if [ "${_var_funcname}" != 'prepare' ] && grep -ql '^\s*tar\|^\s*bsdtar\|^\s*unzip' <<<"${_var_PBftextArch[${_var_funcname}]}"; then
+          echo "Warning: tar,bsdtar,unzip should be moved from ${_var_funcname}() into prepare()."
+          [ "${returnv}" -ge 1 ] || returnv=1
+        fi
+        if [ "${_var_funcname}" != 'prepare' ] && grep -ql '^\s*cmake' <<<"${_var_PBftextArch[${_var_funcname}]}"; then
+          echo "Warning: cmake should be moved from ${_var_funcname}() into prepare()."
           [ "${returnv}" -ge 1 ] || returnv=1
         fi
         if [ "${_var_funcname}" != 'prepare' ] && grep -qlF './configure' <<<"${_var_PBftextArch[${_var_funcname}]}"; then
@@ -490,7 +502,7 @@ _fn_findst_in_topords() {
 #      rm -f "${_PKGBUILDtmp}"
 #      unset _PKGBUILDtmp
       if [ "${_opt_PEDANTIC}" -ge 1 ]; then
-        if ! grep -ql 'set -u' <<<"${_var_PBtop}" || ! grep -ql 'set +u' <<<"${_var_PBtop}"; then
+        if ! grep -ql '^set -u' <<<"${_var_PBtop}" || ! grep -ql '^set +u' <<<"${_var_PBtop}"; then
           echo 'Warning: surrounding the PKGBUILD with set -u, set +u will help catch script errors.'
           [ "${returnv}" -ge 1 ] || returnv=1
         fi
@@ -533,10 +545,11 @@ _fn_findst_in_topords() {
         fi
         # Perfectly legit and we can't detect it: if ! :; then false; fi
         # All I can do is color them red in mc PKGBUILD.syntax
-        #if grep -ql '^\s*false' 'PKGBUILD'; then
-        #  echo 'Warning: Your PKGBUILD contains a lone false and is unlikely to work'
-        #  [ "${returnv}" -ge 1 ] || returnv=1
-        #fi
+        # Here the best I can do is detect them intentionally non indented which is where I put them to be noticable.
+        if grep -ql '^false' 'PKGBUILD'; then
+          echo 'Warning: Your PKGBUILD contains a lone false and is unlikely to work'
+          [ "${returnv}" -ge 1 ] || returnv=1
+        fi
       fi
 
       # I'd like to recommend more $var to ${var} changes but I don't see a way to do it in grep.
@@ -599,7 +612,7 @@ _fn_findst_in_topords() {
               set -u
               source "${_var_pwd}/PKGBUILD"
               set +u
-              if declare -fF _pkgver >/dev/null; then
+              if declare -fF _vercheck >/dev/null; then
                 :
               elif [ "${#_verwatch[@]}" -eq 3 ]; then
                 :
@@ -626,7 +639,7 @@ _fn_findst_in_topords() {
               # A real getlinks would use an html decoder and not Cthulhu's sed+grep.
               # $1: l get link href (default), t get link text, f FTP listing or other no html
               declare -f -F _getlinks >/dev/null || _getlinks() {
-                # Easily improved Cthulhu madness: sed -e 's:\s\+$::g' -e 's:^\s\+::g' | tr '\n' ' ' | sed -e 's:<[^/]:\n&:g' | sed -e 's:\s\+$::g' |
+                # We don't handle links split across line. We can easily improve on the Cthulhu madness: sed -e 's:\s\+$::g' -e 's:^\s\+::g' | tr '\n' ' ' | sed -e 's:<[^/]:\n&:g' | sed -e 's:\s\+$::g' |
                 case "${1}" in
                 l) grep -F 'href=' | grep -o '<[aA] .*href=.*>' | sed -e 's/<[aA] /\n<a /g' | sed -ne 's/^<a .*href=["'"'"']\{0,1\}\([^ \t"'"'"'>]*\).*$/\1/p' -e '/^$/d';;
                 t) grep -F 'href=' | grep -o '<[aA] .*href=.*>' | sed -e 's/<[aA] /\n<a /g' | sed -ne 's/^<a [^>]*>\([^<]*\)<.*$/\1/p' -e '/^$/d';;
@@ -653,10 +666,12 @@ _fn_findst_in_topords() {
                 #local _pkgfile="${pkgname}-${pkgver}.tar.xz"
                 local _rv=1
                 [ "$1" -ne 0 ] && _rv=0
+                local _verfound=0
                 local _rvfile=''
                 local _remfile
                 local IFS=$'\n'
                 while read -r _remfile; do
+                  _verfound=1
                   local _vercmp
                   _vercmp="$(vercmp "${_remfile}" "${pkgver}")"
                   [ "$2" -ge 3 ] && printf '%-s %s\n' "${_vercmp}" "${_remfile}" 1>&2
@@ -666,6 +681,10 @@ _fn_findst_in_topords() {
                     _rv=0
                   fi
                 done < <(_vercheck)
+                #_vercheck 1>&2
+                if [ "${_verfound}" -eq 0 ]; then
+                  echo 'No version results' 1>&2
+                fi
                 [ "$2" -eq 1 -o "$2" -eq 4 ] && echo "${_rvfile}"
                 return ${_rv}
               }
@@ -1056,7 +1075,7 @@ _fn_findst_in_topords() {
     _var_push="$(git cherry -v 2>/dev/null)" # local cannot be on this line or we lose the return value
     if [ $? -ne 0 ]; then
       # We want to only generate this warning near the commit instead of after every step.
-      if [ "${_var_returnvbeforestaged}" -eq 0 ]; then
+      if [ "${_var_returnvbeforestaged}" -le 1 ]; then
         if [ "${returnv}" -eq 0 ]; then
           echo "Warning: You have not made your first push to create the ${_opt_AUR4^^} package. Maybe try 'git push origin master'"
         else
@@ -1152,11 +1171,11 @@ _fn_usage() {
 cat << EOF
 git-aurcheck ${_opt_VERSION} (C)2015 by severach for Arch Linux (GPL3+)
   -h crude help
-  -a from ~/build, check all packages with write access
-  -x= exclude package folders from -a scan. Ignored with -a.
+  -a from ~/build folder, check all packages with write access
+  -x= exclude package folders from -a scan. Ignored without -a.
   package[s] scan only specific packages. Exclusions dominate.
   -p pedantic, adds extra checks. Up to thrice for maximum pedantry.
-  -v check for new version with PKGBUILD _verurl related vars.
+  -v check for new version with PKGBUILD _verwatch.
   -t= change to target folder before starting. Useful for cron.
   -V= elevate new version warning to desired exit code. Numbers only.
 
