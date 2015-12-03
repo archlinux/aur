@@ -1,0 +1,30 @@
+commit 05cdf41dd6937fb02031727c8a5735aca70be439
+Author: Alexander Hirsch <1zeeky@gmail.com>
+Date:   Thu Feb 21 04:00:41 2013 +0100
+
+    add cmake install targets
+
+diff --git a/BtOgreConfig.cmake b/BtOgreConfig.cmake
+new file mode 100644
+index 0000000..d29444d
+--- /dev/null
++++ b/BtOgreConfig.cmake
+@@ -0,0 +1,2 @@
++find_path(BtOgre_INCLUDE_DIR BtOgreGP.h HINTS "/usr/include/BtOgre" "/usr/include")
++find_library(BtOgre_LIBRARY NAMES BtOgre libBtOgre HINTS "/usr/lib")
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4fe3d14..6d44be4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,3 +15,11 @@ include_directories(
+ 
+ add_library(BtOgre STATIC BtOgre.cpp)
+ target_link_libraries(BtOgre ${BULLET_LIBRARIES} ${OGRE_LIBRARIES})
++
++file(GLOB BtOgre_HEADERS "${PROJECT_SOURCE_DIR}/include/*.h")
++set_target_properties(BtOgre PROPERTIES PUBLIC_HEADER "${BtOgre_HEADERS}")
++
++install(TARGETS BtOgre
++  PUBLIC_HEADER DESTINATION include/BtOgre
++  ARCHIVE DESTINATION lib)
++install(FILES BtOgreConfig.cmake DESTINATION lib/cmake/BtOgre)

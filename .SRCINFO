@@ -1,0 +1,25 @@
+pkgbase = btogre
+	pkgdesc = A thin Bullet-Ogre connection.
+	pkgver = 6266297
+	pkgrel = 1
+	url = http://www.ogre3d.org/forums/viewtopic.php?f=5&t=46856
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = bullet
+	depends = ogre
+	source = git://github.com/nikki93/btogre.git#commit=6266297
+	source = cmake-targets.patch
+	source = BtOgre.cpp.patch
+	md5sums = SKIP
+	md5sums = 04de7ba58a645b96739e50092ae7a067
+	md5sums = b46331fc6ef646bc37426f3fe62f04c1
+	sha1sums = SKIP
+	sha1sums = b705573e40bf33f3ee76f08ebead2b67f577fa4c
+	sha1sums = 23c30bcff53457d4f0c76ce757830bb46d0afbbe
+
+pkgname = btogre
+

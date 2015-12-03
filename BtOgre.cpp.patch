@@ -1,0 +1,5 @@
+353c353,354
+< 			trimesh->addTriangle(vertexPos[0], vertexPos[1], vertexPos[2]);
+---
+>             // Create continuous mesh.
+> 			trimesh->addTriangle(vertexPos[0], vertexPos[1], vertexPos[2], true);
