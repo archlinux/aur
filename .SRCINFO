@@ -1,8 +1,8 @@
-pkgbase = hawaii-baseapps-git
-	pkgdesc = Hawaii base applications
+pkgbase = hawaii-workspace-git
+	pkgdesc = Hawaii workspace
 	pkgver = 20150516.c21ae64
 	pkgrel = 1
-	url = https://github.com/hawaii-desktop/hawaii-baseapps
+	url = https://github.com/hawaii-desktop/hawaii-workspace
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -12,15 +12,13 @@ pkgbase = hawaii-baseapps-git
 	makedepends = git
 	makedepends = gdb
 	makedepends = extra-cmake-modules
+	makedepends = greenisland-git
 	depends = qt5-base
 	depends = qt5-quickcontrols
 	depends = polkit-qt5
-	optdepends = weston: nested mode support
-	optdepends = pulseaudio: audio support
-	optdepends = networkmanager: networking support
 	options = debug
-	source = hawaii-baseapps::git://github.com/hawaii-desktop/hawaii-baseapps.git#branch=master
+	source = hawaii-workspace::git://github.com/hawaii-desktop/hawaii-workspace.git#branch=master
 	md5sums = SKIP
 
-pkgname = hawaii-baseapps-git
+pkgname = hawaii-workspace-git
 

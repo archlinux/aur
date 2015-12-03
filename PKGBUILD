@@ -1,23 +1,20 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
-pkgname=hawaii-baseapps-git
+pkgname=hawaii-workspace-git
 pkgver=20150516.c21ae64
 pkgrel=1
-pkgdesc="Hawaii base applications"
+pkgdesc="Hawaii workspace"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/hawaii-desktop/hawaii-baseapps"
+url="https://github.com/hawaii-desktop/hawaii-workspace"
 license=('GPL2')
 depends=('qt5-base' 'qt5-quickcontrols' 'polkit-qt5')
-optdepends=('weston: nested mode support'
-            'pulseaudio: audio support'
-            'networkmanager: networking support')
-makedepends=('git' 'gdb' 'extra-cmake-modules')
+makedepends=('git' 'gdb' 'extra-cmake-modules' 'greenisland-git')
 groups=('hawaii-git')
 options=('debug')
 
-_gitroot="git://github.com/hawaii-desktop/hawaii-baseapps.git"
+_gitroot="git://github.com/hawaii-desktop/hawaii-workspace.git"
 _gitbranch=master
-_gitname=hawaii-baseapps
+_gitname=hawaii-workspace
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
 
