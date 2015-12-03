@@ -1,12 +1,13 @@
 pkgbase = rasmol-gtk
 	pkgdesc = A program for molecular graphics visualisation (aka openrasmol)
 	pkgver = 2.7.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openrasmol.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = imake
+	depends = neartree
 	depends = neartree
 	depends = cqrlib
 	depends = cbflib

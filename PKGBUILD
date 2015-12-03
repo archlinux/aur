@@ -2,12 +2,12 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 pkgname=rasmol-gtk
 pkgver=2.7.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for molecular graphics visualisation (aka openrasmol)"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.openrasmol.org/"
-depends=('neartree' 'cqrlib' 'cbflib' 'vte' 'gtk2')
+depends=('neartree' 'neartree' 'cqrlib' 'cbflib' 'vte' 'gtk2')
 makedepends=('imake')
 source=(http://www.rasmol.org/software/RasMol_${pkgver}.tar.gz
         rasmol.png
