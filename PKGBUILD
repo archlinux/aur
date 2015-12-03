@@ -2,7 +2,7 @@
 # Contributor: Nabobalis <nabil dot freij at gmail dot com>
 pkgname=python2-sunpy
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
 url="http://www.sunpy.org/"
@@ -24,7 +24,7 @@ md5sums=('0abb5b6ce0365000e4bd8c8251344a10')
 package(){
   cd $srcdir/sunpy-$pkgver
   python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m644 ${srcdir}/sunpy-0.6.1/licenses/SUNPY.rst ${pkgdir}/usr/share/licenses/python2-sunpy
 }
 
 # vim:set ts=2 sw=2 et:
