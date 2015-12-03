@@ -1,0 +1,14 @@
+pkgbase = cvector
+	pkgdesc = An ANSI C implementation of dynamic arrays to provide an approximation to the C++ vector class
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = http://cvector.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/cvector/cvector/CVector-1.0.3/CVector-1.0.3.tar.gz
+	md5sums = 9de194c233e1a4a8223b5258a1d689fb
+
+pkgname = cvector
+
