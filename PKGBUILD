@@ -5,7 +5,7 @@
 _pkgname=kde-thumbnailer-apk
 pkgname=${_pkgname}-kf5
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Preview image generator plugin for Android Application Package files. KF5 Ver."                                                                                      
 arch=('i686' 'x86_64')                                                                       
 url="http://kde-apps.org/content/show.php?content=156421"                                                  
@@ -24,15 +24,16 @@ prepare() {
 }
 build() {
   cd "${srcdir}"/${_pkgname}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr 
+  cmake -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DSYSCONF_INSTALL_DIR=/etc \
+    -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  [[ $CARCH == x86_64 ]] && is64bit=64
   cd "${srcdir}"/${_pkgname}
-  install -dm755 "${pkgdir}/usr/lib/qt/plugins"
   make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}/usr/lib${is64bit}/plugins"/* "${pkgdir}/usr/lib/qt/plugins"
-  rmdir "${pkgdir}/usr/"{lib64/plugins,lib64}
 }

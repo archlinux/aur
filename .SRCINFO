@@ -1,7 +1,7 @@
 pkgbase = kde-thumbnailer-apk-kf5
 	pkgdesc = Preview image generator plugin for Android Application Package files. KF5 Ver.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kde-apps.org/content/show.php?content=156421
 	install = kde-thumbnailer-apk-kf5.install
 	arch = i686
