@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=fzf-extras-git
-pkgver=20150715
+pkgver=20151202
 pkgrel=1
 pkgdesc="Extra keybindings for fzf"
 arch=('any')
@@ -30,11 +30,11 @@ package() {
   cd ${pkgname%-git}
 
   msg2 'Installing documentation...'
-  install -Dm 644 README.md "$pkgdir/usr/share/doc/fzf-extras/README.md"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/fzf-extras"
 
   msg2 'Installing...'
   install -Dm 755 fzf-extras.sh "$pkgdir/etc/profile.d/fzf-extras.bash"
-  install -Dm 755 fzf-extras.zsh "$pkgdir/etc/profile.d/fzf-extras.zsh"
+  install -Dm 755 fzf-extras.zsh -t "$pkgdir/etc/profile.d"
 
   msg 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +

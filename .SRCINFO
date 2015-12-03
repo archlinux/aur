@@ -1,6 +1,6 @@
 pkgbase = fzf-extras-git
 	pkgdesc = Extra keybindings for fzf
-	pkgver = 20150715
+	pkgver = 20151202
 	pkgrel = 1
 	url = https://github.com/atweiden/fzf-extras
 	install = fzf-extras.install
