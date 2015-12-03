@@ -1,0 +1,22 @@
+pkgbase = gr-dab-git
+	pkgdesc = GNU Radio DAB (digital audio broadcasting) module
+	pkgver = r199.6856a8b
+	pkgrel = 1
+	url = https://github.com/andrmuel/gr-dab
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gnuradio
+	depends = boost
+	depends = swig
+	depends = cppunit
+	depends = python2
+	provides = gr-dab
+	conflicts = gr-dab
+	source = git+https://github.com/andrmuel/gr-dab.git
+	sha256sums = SKIP
+
+pkgname = gr-dab-git
+
