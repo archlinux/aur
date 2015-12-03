@@ -2,14 +2,14 @@
 
 pkgname=teamviewer
 pkgver=11.0.52520
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com'
 license=('custom')
 options=('!strip')
 provides=('teamviewer')
-conflicts=('teamviewer')
+conflicts=('teamviewer-beta')
 depends_x86_64=(
 	'lib32-fontconfig'
 	'lib32-libpng12'
