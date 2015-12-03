@@ -2,13 +2,13 @@
 
 pkgname=filebeat
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://www.elastic.co/products/beats'
 license=('APACHE')
 backup=("etc/$pkgname/$pkgname.yml")
-makedepends=('go>=1.5')
+makedepends=('go>=1.5' 'git')
 optdepends=('elasticsearch: for running standalone installation')
 install="$pkgname.install"
 options=('!strip')
@@ -27,7 +27,7 @@ prepare() {
     cd "$pkgname-$pkgver"
 
     # Perform some timestomping to avoid make warnings
-    _t="$(date -r Makefile)"
+    _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
     # Avoid installing extraneous configs
     sed -i '/[- ]win/d ; /[- ]darwin/d ; /[- ]binary/d' Makefile
     # Install the Linux config as default
