@@ -1,6 +1,6 @@
 # Maintainer: Michael Lojkovic <mikelojkovic@gmail.com>
 
-pkgname=gtk-theme-windows10-light
+pkgname=gtk-theme-windows10
 pkgver=0.8
 pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
