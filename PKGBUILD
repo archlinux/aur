@@ -1,6 +1,6 @@
 pkgname=dwm-git
 _pkgname=dwm
-pkgver=6.0.43.g14343e6
+pkgver=6.1
 pkgver(){
   cd $_pkgname
   git describe --tags |sed 's/-/./g'
@@ -11,7 +11,7 @@ url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=(zipman)
-depends=('libx11' 'libxinerama')
+depends=('libx11' 'libxinerama' 'libxft')
 makedepends=('git')
 install=dwm.install
 provides=('dwm')
