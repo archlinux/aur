@@ -1,6 +1,6 @@
 diff -Naur orig/premake4.lua new/premake4.lua
---- orig/premake4.lua	2015-03-30 20:36:54.198266614 +0200
-+++ new/premake4.lua	2015-03-30 20:35:40.191601000 +0200
+--- orig/premake4.lua	2014-05-19 10:42:14.000000000 +0200
++++ new/premake4.lua	2015-12-03 22:09:15.687935809 +0100
 @@ -30,7 +30,7 @@
  		}
  	else
