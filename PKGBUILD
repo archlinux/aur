@@ -2,10 +2,10 @@
 
 pkgname=rexdep
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Roughly extract dependency relation from source code"
 arch=('i686' 'x86_64')
-makedepends=('gcc' 'git' 'go' 'make')
+makedepends=('gcc' 'git' 'go' 'make' 'mercurial')
 url="https://github.com/itchyny/rexdep"
 license=('GPL')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/itchyny/$pkgname/tar.gz/v$pkgver)

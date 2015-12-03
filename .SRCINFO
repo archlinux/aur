@@ -1,7 +1,7 @@
 pkgbase = rexdep
 	pkgdesc = Roughly extract dependency relation from source code
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/itchyny/rexdep
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = rexdep
 	makedepends = git
 	makedepends = go
 	makedepends = make
+	makedepends = mercurial
 	options = !strip
 	options = !emptydirs
 	source = rexdep-0.0.3.tar.gz::https://codeload.github.com/itchyny/rexdep/tar.gz/v0.0.3
