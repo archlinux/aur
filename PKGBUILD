@@ -2,7 +2,7 @@
 #Contributor: Artem A Klevtsov <unikum.pm at gmail dot com>
 pkgname=qtnotifydaemon
 pkgver=1.0.14
-pkgrel=4
+pkgrel=5
 pkgdesc="Configurable and flexible Qt notification daemon"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/${pkgname}"
@@ -15,7 +15,6 @@ md5sums=('af57385fb4acb48ce1ad40aaac369a4e'
          'cf6d30e755839eb05b5d63c6754a8524'
          '70c283997217001b12ee7721d17491fc')
 install="${pkgname}.install"
-conflicts=('notification-daemon' 'xfce4-notifyd' 'notify-osd')
 provides=('notification-daemon' 'xfce4-notifyd' 'notify-osd')
 
 build()  {
