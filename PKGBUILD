@@ -2,12 +2,12 @@
 
 pkgname=arxiv-open
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple script and desktop entry to handle arXiv links."
 url="http://github.com/JP-Ellis/arxiv-open"
 arch=('any')
 license=('MIT')
-depends=()
+depends=('xdg-utils')
 source=("arxiv-open"
         "arxiv-open.desktop"
         "LICENSE")
