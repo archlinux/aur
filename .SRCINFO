@@ -1,0 +1,13 @@
+pkgbase = libflate
+	pkgdesc = Flate is a C template library used to deal with html code in CGI applications.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://flate.dead-inside.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://flate.dead-inside.org/libflate-2.0.1.tar.gz
+	md5sums = 840723fc6ab683f0cc87053890d41363
+
+pkgname = libflate
+
