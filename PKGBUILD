@@ -3,8 +3,8 @@
 # Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 # Created: 18/03/2011
 pkgname=autopanogiga
-pkgver=4.2.2
-_ver=422_2015-10-13
+pkgver=4.2.3
+_ver=423_2015-12-01
 pkgrel=1
 pkgdesc='The program for creating panoramic images (trial version).'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "$pkgname"
   "$pkgname.desktop"
 )
-md5sums=('1439aef12a8495822e091698ce0fd82b'
+md5sums=('23c46e39957c9d23701cd83e96793914'
          '60b7358a58c528a1e3589a82f2835bf5'
          'f5c58397f9d2df59c5fc7ee0db2f73af')
 

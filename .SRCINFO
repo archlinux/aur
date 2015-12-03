@@ -1,6 +1,6 @@
 pkgbase = autopanogiga
 	pkgdesc = The program for creating panoramic images (trial version).
-	pkgver = 4.2.2
+	pkgver = 4.2.3
 	pkgrel = 1
 	url = http://kolor.com/
 	install = autopanogiga.install
@@ -8,10 +8,10 @@ pkgbase = autopanogiga
 	arch = x86_64
 	license = custom: "commercial"
 	depends = qt5-multimedia
-	source = AutopanoGiga_Linux64_422_2015-10-13.tar.gz::http://download.kolor.com/apg/stable/linux64tar
+	source = AutopanoGiga_Linux64_423_2015-12-01.tar.gz::http://download.kolor.com/apg/stable/linux64tar
 	source = autopanogiga
 	source = autopanogiga.desktop
-	md5sums = 1439aef12a8495822e091698ce0fd82b
+	md5sums = 23c46e39957c9d23701cd83e96793914
 	md5sums = 60b7358a58c528a1e3589a82f2835bf5
 	md5sums = f5c58397f9d2df59c5fc7ee0db2f73af
 
