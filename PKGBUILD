@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-_ver=1.0.2d
+_ver=1.0.2e
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
@@ -18,7 +18,7 @@ source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz.asc"
         'no-rpath.patch'
         'ca-dir.patch')
-md5sums=('38dd619b2e77cbac69b99f52a053d25a'
+md5sums=('2218c1a6f807f7206c11eb3ee3a5ec80'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90')
