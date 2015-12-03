@@ -7,7 +7,7 @@ pkgname='ros-indigo-octovis'
 pkgver='1.7.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('GPLv2')
 
 ros_makedepends=(ros-indigo-octomap)
@@ -24,18 +24,13 @@ depends=(${ros_depends[@]}
 
 _tag=release/indigo/octovis/${pkgver}-${_pkgver_patch}
 _dir=octovis
-source=("${_dir}"::"git+https://github.com/ros-gbp/octomap-release.git"#tag=${_tag}
-        "qglviewer.patch")
-sha256sums=('SKIP'
-            '243eb07b901d3cbc52d940d67f7405c4b3283189917bbb857761a1eff3d62e30')
+source=("${_dir}"::"git+https://github.com/ros-gbp/octomap-release.git"#tag=${_tag})
+sha256sums=('SKIP')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
-
-  # Apply patch
-  git -C ${srcdir}/${_dir} apply ${srcdir}/qglviewer.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
@@ -43,6 +38,13 @@ build() {
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+
+  # QGLViewer is currently wrongly installed to /usr/local, which FindQGLViewer.cmake
+  # does not handle.
+  QGLViewer_INCLUDE_DIR=/usr/include/QGLViewer
+  if [[ -d "/usr/local/include/QGLViewer" ]]; then
+    QGLViewer_INCLUDE_DIR=/usr/local/include/QGLViewer
+  fi
 
   # Build project
   cmake ${srcdir}/${_dir} \
@@ -53,6 +55,7 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
+        -DQGLViewer_INCLUDE_DIR="${QGLViewer_INCLUDE_DIR}" \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-octovis
 	pkgdesc = ROS - octovis is visualization tool for the OctoMap library based on Qt and libQGLViewer.
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://octomap.github.io
 	arch = any
 	license = GPLv2
@@ -16,9 +16,7 @@ pkgbase = ros-indigo-octovis
 	depends = qt4
 	depends = libqglviewer-qt4
 	source = octovis::git+https://github.com/ros-gbp/octomap-release.git#tag=release/indigo/octovis/1.7.0-0
-	source = qglviewer.patch
 	sha256sums = SKIP
-	sha256sums = 243eb07b901d3cbc52d940d67f7405c4b3283189917bbb857761a1eff3d62e30
 
 pkgname = ros-indigo-octovis
 
