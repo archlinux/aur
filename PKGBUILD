@@ -29,6 +29,7 @@ sha256sums_x86_64=('d862fe3f26bf05e7b7f5fd5972873b5d859e40059c7f41783865594fc58d
 sha256sums_i686=('66f2444b660b87f2fdc1d19949b94bbd840982d51c3405e4a53799cd6a6c6090')
 
 prepare() {
+	echo "If the install fails, you need to uninstall Teamviewer 10"
 	tar -xf data.tar.bz2
 }
 
