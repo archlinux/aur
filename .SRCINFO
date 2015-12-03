@@ -1,0 +1,34 @@
+pkgbase = kimtoy-frameworks-git
+	pkgdesc = Standalone input method panel. KF5 branch.
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/KIMToy?content=140967
+	install = kimtoy-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = fcitx
+	makedepends = scim
+	makedepends = dbus-c++
+	makedepends = ibus
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = kdelibs4support
+	depends = ki18n
+	depends = kio
+	depends = knewstuff
+	depends = karchive
+	depends = kconfigwidgets
+	depends = plasma-framework
+	optdepends = fcitx: fcitx support
+	optdepends = scim: scim support
+	optdepends = dbus-c++: scim support
+	optdepends = ibus: ibus support
+	provides = kimtoy
+	conflicts = kimtoy
+	source = git+https://github.com/ahyangyi/kimtoy.git#branch=kf5
+	md5sums = SKIP
+
+pkgname = kimtoy-frameworks-git
+

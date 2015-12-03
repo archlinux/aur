@@ -1,0 +1,11 @@
+post_upgrade() {
+  update-mime-database usr/share/mime &> /dev/null
+}
+
+post_install() {
+  post_upgrade
+}
+
+post_remove() {
+  post_upgrade
+}
