@@ -1,15 +1,16 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=valinor
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate Project Files to Debug ELF files"
-url="https://github.com/ARMmbed/intelhex"
+url="https://github.com/ARMmbed/valinor"
 depends=('python'
          'python-pip'
          'python-yaml'
          'python-jinja'
          'python-colorama'
          'pyocd'
+         'project-generator'
          )
 optdepends=()
 license=('Apache')
