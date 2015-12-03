@@ -1,5 +1,5 @@
 pkgname='python-pythonz-bd'
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Python installation manager supporting CPython, Stackless, PyPy and Jython (berdario branch)"
 url="https://github.com/berdario/pythonz"
@@ -16,4 +16,4 @@ package() {
   python3 setup.py install --prefix=/usr --root="$pkgdir"
 }
 
-md5sums=('8f5f94461b2547716654ab720fc2d18b')
+md5sums=('9d35cb47fc07e834957473ee41f2d4ae')
