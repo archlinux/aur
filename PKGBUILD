@@ -1,45 +1,48 @@
-# Maintainer: Yakir Sitbon <kingyes1 at gmail dot com>
-# Contributor: Alucryd <alucryd at gmail dot com>
-# Contributor: Stas S <whats_up at tut dot by>
-# Contributor: Hilinus <itahilinus at hotmail dot it>
+# Maintainer: Alex Taber <aft dot pokemon at gmail dot com>
 
 pkgname=teamviewer
 pkgver=11.0.52520
-pkgrel=1.1
-pkgdesc="All-In-One Software for Remote Support and Online Meetings"
+pkgrel=1.3
+pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
-url="http://www.teamviewer.com"
+url='http://www.teamviewer.com'
 license=('custom')
-depends=('alsa-lib' 'gcc-libs' 'libxdamage' 'libxtst' 'zlib' 'freetype2' 'libxrandr' 'libice' 'libsm')
 options=('!strip')
-install=${pkgname}.install
+provides=('teamviewer')
+conflicts=('teamviewer')
+depends_x86_64=(
+	'lib32-fontconfig'
+	'lib32-libpng12'
+	'lib32-libsm'
+	'lib32-libxinerama'
+	'lib32-libxrender')
+depends_i686=(
+	'fontconfig'
+	'libpng12'
+	'libsm'
+	'libxinerama'
+	'libxrender')
+install=teamviewer.install
+source_x86_64=("http://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
+source_i686=("http://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
+sha256sums_x86_64=('d862fe3f26bf05e7b7f5fd5972873b5d859e40059c7f41783865594fc58d38fd')
+sha256sums_i686=('66f2444b660b87f2fdc1d19949b94bbd840982d51c3405e4a53799cd6a6c6090')
 
-if [[ $CARCH == 'i686' ]]; then
-  source=("teamviewer_linux-${pkgver}.deb::http://download.teamviewer.com/download/teamviewer_i386.deb")
-  md5sums=('69520c11b4db8700617b5344cb8d4daa')
-  depends+=('alsa-lib' 'gcc-libs' 'libxdamage' 'libxtst' 'zlib' 'freetype2' 'libxrandr' 'libice' 'libsm')
-elif [[ $CARCH == 'x86_64' ]]; then
-  source=("teamviewer_linux_x64-${pkgver}.deb::http://download.teamviewer.com/download/teamviewer_amd64.deb")
-  md5sums=('233d98a671d9ae6376c7265a3db2031f')
-  depends+=('lib32-gcc-libs' 'lib32-alsa-lib' 'lib32-libxtst' 'lib32-libxdamage' 'lib32-zlib' 'lib32-freetype2' 'lib32-libxrandr' 'lib32-libice' 'lib32-libsm' 'lib32-libxinerama')
-fi
-
-build() {
-  cd "${srcdir}"
-  tar -jxf data.tar.bz2
+prepare() {
+	tar -xf data.tar.bz2
 }
 
 package() {
-  cd "${srcdir}"
+	# Install
+	cp -dr --no-preserve=ownership {etc,opt,usr,var} "${pkgdir}"/
 
-# Install
-  cp -dr --no-preserve=ownership {etc,opt,usr,var} "${pkgdir}"/
-
-# Additional files
-  rm "${pkgdir}"/opt/teamviewer/tv_bin/xdg-utils/xdg-email
-  install -dm 755 "${pkgdir}"/usr/{lib/systemd/system,share/applications,share/licenses/teamviewer}
-  install -m 644 "${pkgdir}"/opt/teamviewer/tv_bin/script/teamviewerd.service "${pkgdir}"/usr/lib/systemd/system/teamviewerd.service
-  ln -s /opt/teamviewer/tv_bin/desktop/teamviewer-teamviewer10.desktop "${pkgdir}"/usr/share/applications/teamviewer.desktop
-  ln -s /opt/teamviewer/License.txt "${pkgdir}"/usr/share/licenses/teamviewer/LICENSE
+	# Additional files
+	rm "${pkgdir}"/opt/teamviewer/tv_bin/xdg-utils/xdg-email
+	install -D -m0644 "${pkgdir}"/opt/teamviewer/tv_bin/script/teamviewerd.service \
+		"${pkgdir}"/usr/lib/systemd/system/teamviewerd.service
+	install -d -m0755 "${pkgdir}"/usr/{share/applications,share/licenses/teamviewer}
+	ln -s /opt/teamviewer/tv_bin/desktop/teamviewer-teamviewer${pkgver%%.*}.desktop \
+		"${pkgdir}"/usr/share/applications/teamviewer.desktop
+	ln -s /opt/teamviewer/License.txt \
+		"${pkgdir}"/usr/share/licenses/teamviewer/LICENSE
 }
-
