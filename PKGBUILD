@@ -1,5 +1,5 @@
-# Maintainer: Jon Wilson <bugs@pandorica.net>
-# Contributor: Spyros Stathopoulos <foucault.online[at]gmail[dot]com>
+# Maintainer: Spyros Stathopoulos <foucault.online[at]gmail[dot]com>
+# Contributor: Jon Wilson <bugs@pandorica.net>
 # Contributor: Andrwe Lord Weber <lord-weber-andrwe [at] andrwe [dot] org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: James Rayner <james@archlinux.org>
@@ -8,7 +8,7 @@
 pkgname=conky-lua-nv
 _pkgname=conky
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -16,34 +16,28 @@ license=('GPL3' 'BSD')
 replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky' 'conky-lua')
-depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51' 'librsvg')
-makedepends=('docbook2x' 'libxnvctrl' 'tolua++' 'perl-xml-libxml' 'docbook-xml' 'docbook-xsl' 'cmake')
+depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools'
+         'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51' 'librsvg' 'tolua++')
+makedepends=('docbook2x' 'libxnvctrl' 'perl-xml-libxml'
+             'docbook-xml' 'docbook-xsl' 'cmake')
 optdepends=('nvidia: for GT4xx and newer GPUs',
   'nvidia-340xx: for G8x, G9x, GT2xx GPUS',
   'nvidia-304xx: for GeForce 6/7 GPUs')
 source=(https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz
-        ascii.patch)
+        ascii.patch
+        fix_build.patch)
 sha1sums=('97b59ec1daf54126b30516e8663a9cf1f218d8ae'
-          '96cdbc38e8706c8a3120601983df5c7265716128')
+          '96cdbc38e8706c8a3120601983df5c7265716128'
+          '3ef0f96772410f975e815087509db9537edcd6e2')
 options=('!strip' 'debug')
 install=('conky-lua-nv.install')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   patch -p1 -i ../ascii.patch
+  patch -p1 -i ../fix_build.patch
 
   cd cmake
-  # -lXext must come *after* -lXNVCtrl
-  sed -i -e \
-    's/set(conky_libs ${conky_libs} ${XNVCtrl_LIB})/set(conky_libs ${XNVCtrl_LIB} ${conky_libs})/' \
-    ConkyPlatformChecks.cmake
-  sed -i -e \
-    's/pkg_search_module(LUA REQUIRED lua5.2 lua-5.2 lua>=5.1 lua5.1 lua-5.1)/pkg_search_module(LUA REQUIRED lua=5.1 lua5.1 lua-5.1)/' \
-    ConkyPlatformChecks.cmake
-  sed -i -e \
-    's/include(CheckIncludeFile)/include(CheckIncludeFiles)/' \
-    ConkyPlatformChecks.cmake
-
 }
 
 build() {
