@@ -1,0 +1,14 @@
+pkgbase = cmusphinx-g2p-model-nl
+	pkgdesc = CMU Sphinx G2P model for Dutch
+	pkgver = 0.20120820
+	pkgrel = 1
+	url = http://sourceforge.net/projects/cmusphinx/files/G2P%20Models/
+	arch = any
+	license = custom
+	optdepends = openfst: fst model parsing
+	optdepends = phonetisaurus: command line g2p conversion
+	source = http://sourceforge.net/projects/cmusphinx/files/G2P%20Models/nl.tar.gz
+	sha256sums = 1093656507276c85934750740eb305715e220983483bbaeab186d44f18ca2e28
+
+pkgname = cmusphinx-g2p-model-nl
+
