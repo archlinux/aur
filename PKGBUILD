@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sly-git
-pkgver=1.0.0.beta.156.g5ec1b93
+pkgver=1.0.0.beta.157.g8496df4
 pkgrel=1
 pkgdesc="Common Lisp IDE for Emacs. Fork of slime."
 arch=('any')
@@ -21,11 +21,19 @@ pkgver() {
   echo $(git describe --tags | sed 's|-|.|g')
 }
 
+prepare() {
+  cd "$srcdir"/"$_gitname/contrib"
+  mv sly-fancy.el doof1
+  mv sly-stickers.el doof2
+}
+  
 build() {
-  LANG=C
   cd "$srcdir"/"$_gitname"
-  make --debug
- }
+  make
+  cd "$srcdir"/"$_gitname/contrib"
+  mv doof1 sly-fancy.el
+  mv doof2 sly-stickers.el 
+}
 
 package() {
   cd "$srcdir/$_gitname"
