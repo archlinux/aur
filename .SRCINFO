@@ -1,0 +1,16 @@
+pkgbase = shape
+	pkgdesc = A farsi/arabic shaping preprocessor for troff.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://litcave.rudi.ir/dir.html
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = neatroff
+	source = http://litcave.rudi.ir/shape.tar.gz
+	md5sums = a880e3c269bf0f30d4f2559d065929f0
+	sha1sums = 1b0d305f2f36305fa6e15fd394fd8dfe44016575
+	sha256sums = 05b147225c8bdc7e103865c74ff2e5fb34ba9fa819c1c9e651d3772ffd0346aa
+
+pkgname = shape
+
