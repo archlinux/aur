@@ -3,7 +3,7 @@
 
 _pkgname=openssl
 pkgname=${_pkgname}-chacha20
-_ver=1.0.2d
+_ver=1.0.2e
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
@@ -19,15 +19,15 @@ optdepends=('ca-certificates')
 options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
-        "https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
-        'no-rpath.patch'
-        'ca-dir.patch'
+	"https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
+	'no-rpath.patch'
+	'ca-dir.patch'
 	'openssl__chacha20_poly1305_cf.patch')
-md5sums=('38dd619b2e77cbac69b99f52a053d25a'
-         'SKIP'
-         'dc78d3d06baffc16217519242ce92478'
-         '3bf51be3a1bbd262be46dc619f92aa90'
-	 '4d0375669574f12e7eeae9f46a17a493')
+sha256sums=('e23ccafdb75cfcde782da0151731aa2185195ac745eea3846133f2e05c0e0bff'
+	'SKIP'
+	'754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
+	'9e8126f3a748f4c1d6fe34d4436de72b16a40e97a6d18234d2e88caa179d50c4'
+	'cc320a8c0cdb5c723da53d78afd32d1da1d5bc6650c9fb301e164c45738ea0b7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 prepare() {
