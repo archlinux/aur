@@ -1,0 +1,21 @@
+pkgbase = csdr-git
+	pkgdesc = A simple DSP library and command-line tool for Software Defined Radio
+	pkgver = r29.0fd32aa
+	pkgrel = 1
+	url = https://github.com/simonyiszk/csdr
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	depends = fftw
+	optdepends = rtl-sdr: csdr-fm script
+	optdepends = mplayer: csdr-fm script
+	optdepends = python2: csdr-fm script
+	provides = csdr
+	conflicts = csdr
+	source = git+https://github.com/simonyiszk/csdr.git
+	sha256sums = SKIP
+
+pkgname = csdr-git
+
