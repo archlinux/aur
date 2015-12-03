@@ -18,7 +18,7 @@ source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz.asc"
         'no-rpath.patch'
         'ca-dir.patch')
-md5sums=('2218c1a6f807f7206c11eb3ee3a5ec80'
+md5sums=('5262bfa25b60ed9de9f28d5d52d77fc5'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90')
