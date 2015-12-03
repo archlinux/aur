@@ -1,7 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Apkawa <apkawa at gmail dot com>
 pkgname=django-docs
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="Docs for Django's release"
 arch=('any')
