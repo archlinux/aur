@@ -1,15 +1,15 @@
 pkgbase = gtk-theme-windows10
 	pkgdesc = GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines.
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gnome-look.org/content/show.php/Windows+10+Theme?content=171327
 	arch = any
 	license = GPL
 	depends = gtk-engines
 	depends = gtk-engine-murrine
 	optdepends = gnome-themes-standard
-	source = windows10_light.zip::http://gnome-look.org/content/download.php?content=171327&id=1&tan=61148233
-	sha1sums = 6263928f192df1731af0f45e13244a1cd3e4c05a
+	source = http://b00merang.weebly.com/uploads/1/6/8/1/16813022/windows_10_light_v0.8.zip
+	sha1sums = 8710f97415ec950da5971a88f1615b5b050b69d1
 
 pkgname = gtk-theme-windows10
 
