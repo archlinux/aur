@@ -1,28 +1,23 @@
-# Maintainer: Boohbah <boohbah at gmail.com>
-# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Jason Chu <jason@archlinux.org>
+# Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-hg
-pkgver=3.4.0.b1.r87577.1fed50c8ea62
+pkgver=3.5.1.rc1.r99422.01397c11ebb8
 pkgrel=1
-_pybasever=3.4
-pkgdesc="Next generation of the python high-level scripting language (hg version)"
+_pybasever=3.6
+_pkgname=cpython
+pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'mercurial')
 optdepends=('tk: for tkinter' 'sqlite')
-provides=("python=${_pybasever}" 'python3' 'python-pip')
-replaces=('python3' 'python-pip')
-conflicts=('python' 'python-pip')
-#options=('!makeflags')
-source=("$pkgname"::'hg+http://hg.python.org/cpython')
-md5sums=('SKIP')
+options=(debug !strip !makeflags)
+source=(hg+https://hg.python.org/cpython)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   printf "%s.r%s.%s" \
       "$(hg tags | awk 'NR==2 {print $1}' | sed -E 's/^v//;s/([a-z])/.\1/')" \
       "$(hg identify -n)" \
@@ -30,20 +25,20 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
 
-  # Ensure that we are using the system copy of various libraries 
-  # (expat, zlib and libffi), rather than copies shipped in the tarball
-  rm -r Modules/expat
-  rm -r Modules/zlib
-  rm -r Modules/_ctypes/{darwin,libffi}*
+  # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
+  # rather than copies shipped in the tarball
+  rm -rf Modules/expat
+  rm -rf Modules/zlib
+  rm -rf Modules/_ctypes/{darwin,libffi}*
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   ./configure --prefix=/usr \
               --enable-shared \
@@ -58,31 +53,24 @@ build() {
   make
 }
 
-check() {
-  cd "${srcdir}/${pkgname}"
-  LD_LIBRARY_PATH="${srcdir}/${pkgname}":${LD_LIBRARY_PATH} \
-     "${srcdir}/${pkgname}/python" -m test.regrtest -x test_posixpath test_logging
-}
-
 package() {
-  cd "${srcdir}/${pkgname}"
-  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgname}"
+  # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
+  make DESTDIR="${pkgdir}" altinstall maninstall
 
-  # Why are these not done by default...
-  ln -sf python3               "${pkgdir}"/usr/bin/python
-  ln -sf python3-config        "${pkgdir}"/usr/bin/python-config
-  ln -sf idle3                 "${pkgdir}"/usr/bin/idle
-  ln -sf pydoc3                "${pkgdir}"/usr/bin/pydoc
-  ln -sf pip3                  "${pkgdir}"/usr/bin/pip
-  ln -sf python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python3.1
-  ln -sf python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python.1
+  # Work around a conflict with 3.4 the 'python' package.
+  rm "${pkgdir}/usr/lib/libpython3.so"
+  rm "${pkgdir}/usr/share/man/man1/python3.1"
 
   # Fix FS#22552
   ln -sf ../../libpython${_pybasever}m.so \
     "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m/libpython${_pybasever}m.so"
 
+  # Fix pycairo build
+  ln -sf python3.6m-config "${pkgdir}/usr/bin/python3.6-config"
+
   # Clean-up reference to build directory
-  sed -i "s|${srcdir}/${pkgname}||" "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m/Makefile"
+  sed -i "s|$srcdir/${_pkgname}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m/Makefile"
 
   # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

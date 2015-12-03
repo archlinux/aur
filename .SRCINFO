@@ -1,6 +1,6 @@
 pkgbase = python-hg
-	pkgdesc = Next generation of the python high-level scripting language (hg version)
-	pkgver = 3.4.0.b1.r87577.1fed50c8ea62
+	pkgdesc = Next generation of the python high-level scripting language
+	pkgver = 3.5.1.rc1.r99422.01397c11ebb8
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686
@@ -19,15 +19,11 @@ pkgbase = python-hg
 	depends = zlib
 	optdepends = tk: for tkinter
 	optdepends = sqlite
-	provides = python=3.4
-	provides = python3
-	provides = python-pip
-	conflicts = python
-	conflicts = python-pip
-	replaces = python3
-	replaces = python-pip
-	source = python-hg::hg+http://hg.python.org/cpython
-	md5sums = SKIP
+	options = debug
+	options = !strip
+	options = !makeflags
+	source = hg+https://hg.python.org/cpython
+	sha256sums = SKIP
 
 pkgname = python-hg
 
