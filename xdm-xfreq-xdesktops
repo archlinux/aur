@@ -15,7 +15,7 @@ if [[ $# > 0 && $# <3 ]]; then
 		fi
 		echo "xlogin*login.translations: #override \\" > /var/run/xdm-xfreq-xdesktops
 		echo "    Ctrl<Key>R: abort-display()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    Ctrl<Key>\\: abort-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
+		echo "    Ctrl<Key>S: abort-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    Ctrl<Key>C: restart-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    <Key>F1: set-session-argument() finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
 
