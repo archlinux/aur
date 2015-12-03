@@ -1,14 +1,14 @@
 pkgbase = ostorybook
 	pkgdesc = Open Source Novel Writing Software for Novelists, Authors and Creative Writers
-	pkgver = 4.10.0
+	pkgver = 4.10.1
 	pkgrel = 1
 	url = http://sourceforge.net/projects/ostorybook/
 	arch = any
 	license = GPL
 	depends = java-runtime-headless=8
 	options = !strip
-	source = http://master.dl.sourceforge.net/project/ostorybook/oStorybook-4.10.0-linux.bin
-	sha256sums = fa576fa2dfc0ece478a376674e6f606fe56c6c6d5776b0be19ee2f5f30e5c291
+	source = http://master.dl.sourceforge.net/project/ostorybook/oStorybook-4.10.1-linux.bin
+	sha256sums = 6991e226905c6fda5caccc6b7956491d8fa61b3cfff631ca10744c3f0d5a42d3
 
 pkgname = ostorybook
 
