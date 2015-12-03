@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=1.2.398.r6849.4b9264c
+pkgver=1.2.400.r6884.6ec288e
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -47,7 +47,7 @@ depends=('python2'
          'python2-flask-login>=0.3.2'
          'python2-pyparsing>=2.0.3'
          'python2-pyscss>=1.3.4'
-         'python2-pytvmaze>=1.3.5'
+         'python2-pytvmaze>=1.3.7'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
