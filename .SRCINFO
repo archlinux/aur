@@ -1,7 +1,7 @@
 pkgbase = cmusphinx-g2p-model-en-us-nostress
 	pkgdesc = CMU Sphinx G2P model for American English (unstressed)
 	pkgver = 0.20140715
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/cmusphinx/files/G2P%20Models/
 	arch = any
 	license = custom
