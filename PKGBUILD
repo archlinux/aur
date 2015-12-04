@@ -1,6 +1,6 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
 pkgname=otf-inconsolata-g-powerline-git
-pkgver=r71.39c99c0
+pkgver=r98.6ac4c01
 pkgrel=1
 pkgdesc="Inconsolata-g for Powerline"
 arch=('any')
