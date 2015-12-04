@@ -16,12 +16,12 @@ source=(http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/download/source/gl_p
 md5sums=('738065023c500584346d1351a02c6f90')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/gl_presenter-$pkgver
   qmake-qt4 -Wnone
   make
 }
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/gl_presenter-$pkgver
   mkdir -p $pkgdir/usr/bin
   mv gl_presenter $pkgdir/usr/bin/.
   ln $pkgdir/usr/bin/gl_presenter $pkgdir/usr/bin/glpresenter
