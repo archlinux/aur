@@ -3,13 +3,11 @@
 pkgname=('jdk-devel-docs' 'javafx-devel-docs')
 _major=9
 #_minor=1
-_build=b94
-_date=25_nov_2015
-_date_fx=24_nov_2015
+_build=95
 _pkgver=$_major
-pkgver=${_major}${_build}
+pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
-#pkgver=${_major}u${_minor}.${_build}
+#pkgver=${_major}u${_minor}.b${_build}
 pkgrel=1
 arch=('any')
 url="https://jdk$_major.java.net/"
@@ -17,11 +15,11 @@ license=('custom:Oracle BSD')
 optdepends=("java-runtime>=$_major: Run the examples"
             "java-environment>=$_major: Compile and run the examples")
 options=('!strip')
-source=("http://download.java.net/jdk$_major/archive/$_build/binaries/jdk-$_pkgver-ea-docs-$_build-all-$_date.zip"
-        "http://download.java.net/jdk$_major/archive/$_build/binaries/javafx-$_pkgver-ea-apidocs-$_build-$_date_fx.zip"
+source=("http://download.java.net/jdk$_major/archive/$_build/binaries/jdk-$_pkgver-docs-all.zip"
+        "http://download.java.net/jdk$_major/archive/$_build/binaries/javafx-${_pkgver}-ea+${_build}_doc.zip"
         'LICENSE')
-md5sums=('4f423ed11c4979de2940454e7089bca7'
-         'd61163a716f8a54e9d02fa8f653b0100'
+md5sums=('7fd4655d4fc6cd673883540e7be7bc76'
+         '29f323356cca395306f87fd1637e6890'
          'f09947a67691a2d78d20a3885889981c')
 
 package_jdk-devel-docs() {
