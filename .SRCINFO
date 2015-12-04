@@ -12,6 +12,7 @@ pkgbase = swift-language-bin
 	depends = libutil-linux
 	depends = libbsd
 	depends = clang
+	depends = libtinfo
 	conflicts = lldb
 	options = !strip
 	source = https://swift.org/builds/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-01-b/swift-2.2-SNAPSHOT-2015-12-01-b-ubuntu15.10.tar.gz
