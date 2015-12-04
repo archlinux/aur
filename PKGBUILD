@@ -3,7 +3,7 @@
 pkgname=steam-wrapper-git
 _gitname=steam-wrapper
 pkgdesc="Steam wrapper for common operations (git version)"
-pkgver=0.1.9.r64.817d01c
+pkgver=0.2.0.r76.13ea9ee
 pkgrel=1
 arch=('i686' 'x86_64')
 optdepends=('steam-native: Native runtime library support' \
@@ -18,26 +18,25 @@ source=("${_gitname}::git+${url}#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	printf "%s.r%s.%s" "$(awk -F '=' \
-                '{if (/^wrapper_version=/) {print $2}}' \
-                'steam-wrapper')" \
-                "$(git rev-list --count HEAD)" \
-                "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  printf "%s.r%s.%s" "$(awk -F '=' \
+    '{if (/^wrapper_version=/) {print $2}}' \
+    'steam-wrapper')" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+  cd "$srcdir/$_gitname"
 
-	# Install the script
-	install -Dm 755 "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+  # Install the script
+  install -Dm 755 "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+    # Install the desktop file
+  install -Dm644 "${_gitname}.desktop" \
+          "${pkgdir}/usr/share/applications/${_gitname}.desktop"
 
-	# Install the desktop file
-	install -Dm644 "${_gitname}.desktop" \
-                "${pkgdir}/usr/share/applications/${_gitname}.desktop"
-
-	# Install the default configuration
-	install -Dm 644 "${_gitname}.conf" \
-                "${pkgdir}/etc/${_gitname}/${_gitname}.conf"
+    # Install the default configuration
+  install -Dm 644 "${_gitname}.conf" \
+          "${pkgdir}/etc/${_gitname}/${_gitname}.conf"
 }
 
