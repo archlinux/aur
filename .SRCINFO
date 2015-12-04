@@ -12,10 +12,8 @@ pkgbase = mackerel-agent-git
 	backup = etc/mackerel-agent/mackerel-agent.conf
 	source = mackerel-agent-git::git+https://github.com/mackerelio/mackerel-agent.git
 	source = mackerel-agent.service
-	source = mackerel-agent.conf
 	sha1sums = SKIP
 	sha1sums = 0f31c458aabc5ce69a5f7ba42ae89ae4ab9df967
-	sha1sums = 3fe77f612f4e06908c1bee43fa99f395726d1040
 
 pkgname = mackerel-agent-git
 

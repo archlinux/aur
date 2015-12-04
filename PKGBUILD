@@ -1,6 +1,6 @@
 # Maintainer: Takashi Inoue <inoue@pitan.org>
 pkgname=mackerel-agent-git
-pkgver=0.24.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="A revolutionary new kind of application performance management"
 arch=('i686' 'x86_64')
@@ -11,8 +11,7 @@ conflicts=('mackerel-agent')
 makedepends=('go' 'git')
 backup=('etc/mackerel-agent/mackerel-agent.conf')
 source=("$pkgname"::'git+https://github.com/mackerelio/mackerel-agent.git'
-        'mackerel-agent.service'
-        'mackerel-agent.conf')
+        'file://mackerel-agent.service')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -40,12 +39,15 @@ check() {
 
 package() {
   install -Dm755 "$srcdir/$pkgname/build/mackerel-agent" "$pkgdir/usr/bin/mackerel-agent"
-  install -Dm644 "$srcdir/mackerel-agent.conf" "$pkgdir/etc/mackerel-agent/mackerel-agent.conf"
+  install -Dm644 "$srcdir/$pkgname/mackerel-agent.sample.conf" "$pkgdir/etc/mackerel-agent/mackerel-agent.conf"
+  sed -i "s/^# pidfile/pidfile/" "$pkgdir/etc/mackerel-agent/mackerel-agent.conf"
+  sed -i "s/^# root/root/" "$pkgdir/etc/mackerel-agent/mackerel-agent.conf"
+  sed -i "s/^# verbose/verbose/" "$pkgdir/etc/mackerel-agent/mackerel-agent.conf"
+  sed -i "s/^# apikey/apikey/" "$pkgdir/etc/mackerel-agent/mackerel-agent.conf"
   install -Dm644 "$srcdir/mackerel-agent.service" "$pkgdir/usr/lib/systemd/system/mackerel-agent.service"
 
   mkdir -p "$pkgdir/var/lib/mackerel-agent"
 }
 
 sha1sums=('SKIP'
-          '0f31c458aabc5ce69a5f7ba42ae89ae4ab9df967'
-          '3fe77f612f4e06908c1bee43fa99f395726d1040')
+          '0f31c458aabc5ce69a5f7ba42ae89ae4ab9df967')
