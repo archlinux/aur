@@ -24,19 +24,12 @@ build() {
   python2 setup.py build
 }
 
-check() {
-  cd "$srcdir/pathtools-$pkgver"
-  python setup.py test
-
-  cd "$srcdir/pathtools-$pkgver-py2"
-  python2 setup.py test
-}
-
 package_python-pathtools() {
   depends=('python')
 
   cd "$srcdir/pathtools-$pkgver"
   python setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_python2-pathtools() {
@@ -44,6 +37,7 @@ package_python2-pathtools() {
 
   cd "$srcdir/pathtools-$pkgver-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:ts=2:sw=2:et:
