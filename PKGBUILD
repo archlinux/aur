@@ -3,7 +3,7 @@
 pkgname=swift-language-bin
 pkgver=2.2.2015.12.01
 pkgrel=1
-pkgdesc="The swift programming language"
+pkgdesc="The Swift programming language, the binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache2')

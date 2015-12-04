@@ -1,5 +1,5 @@
 pkgbase = swift-language-bin
-	pkgdesc = The swift programming language
+	pkgdesc = The Swift programming language, the binary drops from the official website
 	pkgver = 2.2.2015.12.01
 	pkgrel = 1
 	url = https://swift.org
