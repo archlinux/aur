@@ -20,7 +20,7 @@ source=(${pkgname}-${pkgver}.tar.gz::http://sourceforge.net/projects/${pkgname}/
 
 build() {
   mkdir -p "${srcdir}"/${pkgname}-${pkgver}/build
-	export JAVA_HOME=/usr/lib/jvm/default/
+  export JAVA_HOME=/usr/lib/jvm/default/
   cd "${srcdir}"/${pkgname}-${pkgver}/build
   ln -sf ../CMakeLists.txt
   cmake -G "Unix Makefiles" \
