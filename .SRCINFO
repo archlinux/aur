@@ -1,0 +1,10 @@
+pkgbase = vim-arduino-syntax-git
+	pkgver = 83f766d
+	pkgrel = 1
+	arch = any
+	depends = vim
+	source = git://github.com/sudar/vim-arduino-syntax.git
+	md5sums = SKIP
+
+pkgname = vim-arduino-syntax-git
+
