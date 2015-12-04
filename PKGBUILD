@@ -3,23 +3,22 @@
 pkgname=javafx-devel-samples
 _major=9
 #_minor=1
-_build=b94
-_date_fx=24_nov_2015
+_build=95
 _pkgver=$_major
-pkgver=${_major}${_build}
+pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
-#pkgver=${_major}u${_minor}.${_build}
+#pkgver=${_major}u${_minor}.b${_build}
 pkgrel=1
 pkgdesc="Demos and samples for JavaFX"
 arch=('any')
 url="https://jdk$_major.java.net/"
 license=('custom:Oracle BSD')
 optdepends=("java-runtime>=$_major: Run the examples"
-            "java-environment>=$_major: Compile and run the examples from source")
+            "java-environment>=$_major: Compile and run the examples")
 options=('!strip')
-source=("http://download.java.net/jdk$_major/archive/$_build/binaries/javafx_samples-$_pkgver-ea-$_build-linux-$_date_fx.zip"
+source=("http://download.java.net/jdk$_major/archive/$_build/binaries/javafx-${_pkgver}-ea+${_build}_linux-x86_demo.zip"
         'OTN-Early-Adopter-License-Terms.txt')
-md5sums=('cadb63dbb8867a0ba9095acea5669411'
+md5sums=('aa59151439f8c52bea064105288ac405'
          'f09947a67691a2d78d20a3885889981c')
 
 package() {
