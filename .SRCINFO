@@ -9,6 +9,7 @@ pkgbase = xdm-xfreq
 	depends = xorg-xdm
 	depends = xorg-xclock
 	depends = xorg-xmessage
+	depends = xorg-xdpyinfo
 	optdepends = xfreq-git
 	optdepends = scrot
 	optdepends = imagemagick
