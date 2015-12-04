@@ -7,7 +7,7 @@ pkgdesc="A Lite image scanning application. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://www.kde.org/applications/graphics/skanlite'
 license=('GPL')
-depends=('libksane-git'
+depends=('libksane'
          'kio'
          )
 makedepends=('extra-cmake-modules'
@@ -17,7 +17,8 @@ makedepends=('extra-cmake-modules'
              'python'
              )
 conflicts=('skanlite'
-           'skanlite-frameworks-git')
+           'skanlite-frameworks-git'
+           )
 source=('git://anongit.kde.org/skanlite')
 sha1sums=('SKIP')
 
