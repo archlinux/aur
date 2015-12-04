@@ -4,7 +4,7 @@
 # Contributor: Julien Machiels
 
 pkgname=waifu2x-converter-cpp-cuda-git
-pkgver=r383.fa270a5
+pkgver=r413.6dbdc24
 pkgrel=1
 pkgdesc="Image Super-Resolution for Anime-Style-Art. (re-implementation in C++ using OpenCV). with CUDA support (GIT Version)"
 arch=('i686' 'x86_64')
@@ -44,4 +44,6 @@ build() {
 
 package() {
   make -C build DESTDIR=${pkgdir} install
+
+  install -Dm644 waifu2x-converter-cpp/LICENSE "${pkgdir}/usr/share/licenses/waifu2x-converter-cpp-cuda-git/LICENSE"
 }
