@@ -1,14 +1,14 @@
 pkgbase = php-deprecation-detector
 	pkgdesc = static code analyzer for your project's source code to find usages of deprecated methods, classes and interfaces
-	pkgver = 0.1.0.alpha2
+	pkgver = 0.1.0.alpha3
 	pkgrel = 2
 	url = https://github.com/sensiolabs-de/deprecation-detector
 	arch = any
 	license = MIT
 	depends = php>=5.3.9
-	source = deprecation-detector-0.1.0-alpha2.phar::https://github.com/sensiolabs-de/deprecation-detector/releases/download/0.1.0-alpha2/deprecation-detector.phar
-	source = https://raw.github.com/sensiolabs-de/deprecation-detector/0.1.0-alpha2/LICENSE
-	sha256sums = f6943b698f30eaeb37a7903801d84454a404a6fe4cb4493e936a14dc8c7960db
+	source = deprecation-detector-0.1.0-alpha3.phar::https://github.com/sensiolabs-de/deprecation-detector/releases/download/0.1.0-alpha3/deprecation-detector.phar
+	source = https://raw.github.com/sensiolabs-de/deprecation-detector/0.1.0-alpha3/LICENSE
+	sha256sums = 2b60aa93145547ce483117af0482c28591b7829e4fe2cadee303ee552dc2a682
 	sha256sums = SKIP
 
 pkgname = php-deprecation-detector

@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 _basename="deprecation-detector"
-_tag="0.1.0-alpha2"
+_tag="0.1.0-alpha3"
 pkgname="php-${_basename}"
 pkgver=${_tag/\-/\.}
 pkgrel=2
@@ -16,7 +16,7 @@ source=(
     "https://raw.github.com/sensiolabs-de/deprecation-detector/${_tag}/LICENSE"
 )
 sha256sums=(
-    "f6943b698f30eaeb37a7903801d84454a404a6fe4cb4493e936a14dc8c7960db"
+    "2b60aa93145547ce483117af0482c28591b7829e4fe2cadee303ee552dc2a682"
     "SKIP"
 )
 
