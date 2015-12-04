@@ -1,0 +1,12 @@
+pkgbase = pacping
+	pkgdesc = Compare response times of Arch Linux mirrors
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/nightsense/pacping
+	arch = any
+	license = GPL3
+	source = https://github.com/nightsense/pacping/archive/1.1.tar.gz
+	sha256sums = 58ac29ad913c58e3d2cef39ac18da57f7a424af791fce6c0c07d6a5e15a39287
+
+pkgname = pacping
+
