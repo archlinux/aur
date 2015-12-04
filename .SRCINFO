@@ -1,7 +1,7 @@
 pkgbase = gedit-latex
 	pkgdesc = Gedit plugin that provides features to ease the edition of LaTeX documents
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Gedit/LaTeXPlugin
 	install = gschemas.install
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = gedit-latex
 	depends = texlive-core
 	depends = python-gobject
 	depends = python-dbus
+	depends = python-latex
 	conflicts = gedit-latex-plugin
 	replaces = gedit-latex-plugin
 	source = http://ftp.gnome.org/pub/GNOME/sources/gedit-latex/3.8/gedit-latex-3.8.0.tar.xz
