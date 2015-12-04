@@ -48,7 +48,7 @@ XDM_XFREQ_SCREENSAVER[5]=1500
 
 # XFreq
 XDM_XFREQ_GUI_PATH=xfreq-gui
-XDM_XFREQ_GUI_ARGS="-D 0 -f 0x994c00 -l 1 -w 1 -n 1 -N 1 -I 0x1000 -U 0x21 -g 0:0x0+540-48,1:0x0-24+16,2:0x0+24+16,3:0x0+540+16,4:0x0+24-48,5:0x0-24-48"
+XDM_XFREQ_GUI_ARGS="-D 0 -f 0x994c00 -l 1 -w 1 -n 1 -N 1 -I 0x1000 -U 0x21 -g 0:0x0+24-48,1:0x0-24+16,2:0x0+24+16,3:0x0+540+16,4:0x0-24-48,5:0x0+540-48"
 XDM_XFREQ_GUI_PID=/var/run/xdm-xfreq-gui.pid
 
 # PowerOff
