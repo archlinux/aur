@@ -1,12 +1,13 @@
-# Maintainer: Jesse Jaara <gmail.com: jesse.jaara>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=libass-git
-pkgver=0.12.0.260.gb2f4d9a
+pkgver=0.12.0.291.g0de70b3
 pkgrel=1
-pkgdesc="A portable library for SSA/ASS subtitles rendering"
+pkgdesc="A portable library for SSA/ASS subtitles rendering. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://code.google.com/p/libass'
-license=('BSD')
+license=('custom::ISC')
 depends=('fontconfig'
          'fribidi'
          )
@@ -15,7 +16,7 @@ makedepends=('git'
              )
 provides=('libass')
 conflicts=('libass')
-source=('libass::git://github.com/libass/libass.git')
+source=('git+https://github.com/libass/libass.git')
 sha1sums=('SKIP')
 
 pkgver() {
@@ -36,6 +37,6 @@ build() {
 
 package() {
   cd libass
-  make DESTDIR="${pkgdir}/" install
+  make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
