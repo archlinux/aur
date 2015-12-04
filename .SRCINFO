@@ -1,18 +1,21 @@
 pkgbase = pacmarge
 	pkgdesc = A tool for automatically merging .pacnew files
-	pkgver = 0.r10.6b8956b
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/foutrelis/pacmarge
 	install = pacmarge.install
 	arch = any
 	license = ISC
 	makedepends = asciidoc
+	depends = bash
 	depends = pacman
+	depends = git
+	depends = coreutils
+	depends = sed
 	depends = diffutils
 	depends = patch
-	depends = git
-	source = git+https://github.com/foutrelis/pacmarge.git
-	sha256sums = SKIP
+	source = pacmarge-1.tar.gz::https://github.com/foutrelis/pacmarge/archive/v1.tar.gz
+	sha256sums = 75591848d74834042e61268a4d3c3530885413f7c90a772ca17f0b56d122bb1f
 
 pkgname = pacmarge
 
