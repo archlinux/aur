@@ -8,6 +8,7 @@ pkgdesc="A simple wrapper around make to make it's output more readable."
 arch=('any')
 url="http://bre.klaki.net/programs/colormake/"
 license=('GPL2')
+conflicts=('colormake-git')
 depends=('bash' 'perl')
 source=("${url}${pkgname}-${pkgver}.tar.gz")
 sha256sums=('000c629c84342c1224764e99e97ae9814ec6a7b9be0bc5922f2433db0d09c57e')
