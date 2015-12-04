@@ -5,7 +5,7 @@
 
 _pkgname=xorg-xinit
 pkgname=xorg-xinit-git
-pkgver=1.3.4.r8.gc5e40f5
+pkgver=1.3.4.r9.g281b314
 pkgrel=1
 epoch=1
 pkgdesc="X.Org initialisation program "
