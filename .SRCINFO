@@ -1,0 +1,16 @@
+pkgbase = ruby-logging
+	pkgdesc = Logging is a flexible logging library for use in Ruby programs
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://rubygems.org/gems/logging
+	arch = any
+	depends = ruby
+	depends = ruby-little-plugger>=1.1
+	depends = ruby-multi_json>=1.10
+	noextract = logging-2.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/logging-2.0.0.gem
+	sha512sums = cddd1a8fb083662c60ac06adfd3a1ddb3db19bd249ddddee7580a16c15f3c2886abb367113affd43c7dcb7fd9358fd334f812815a4fdf55b674ba086792d482e
+
+pkgname = ruby-logging
+
