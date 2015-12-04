@@ -50,7 +50,7 @@ build() {
 
 package() {
   cd "$srcdir/build"
-  mkdir -p "$pkgdir/opt"
+  mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
   cp -R Ninja-ReleaseAssert "$pkgdir/opt/swift"
   ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} "$pkgdir/usr/bin"
 }
