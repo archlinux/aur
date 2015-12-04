@@ -1,14 +1,14 @@
 pkgbase = crmngr
 	pkgdesc = crmngr is a tool to aid with the management of a r10k-style control repository.
-	pkgver = 0.10.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/vshn/crmngr
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.python.org/packages/source/c/crmngr/crmngr-0.10.3.tar.gz
-	md5sums = d6d6fd62b4c328caff0edf872f30a51a
+	source = https://pypi.python.org/packages/source/c/crmngr/crmngr-1.0.0.tar.gz
+	md5sums = fbe973f4969dba522c33c9b466a020cf
 
 pkgname = crmngr
 
