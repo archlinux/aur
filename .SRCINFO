@@ -1,6 +1,6 @@
 pkgbase = xdm-xfreq
 	pkgdesc = A customized XDM for XFreq
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = http://github.com/cyring/xdm-xfreq
 	install = xdm-xfreq.install

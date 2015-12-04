@@ -58,6 +58,6 @@ failsafe)
 	exec /usr/bin/xterm -name login
 ;;
 *)
-	exec $session_argument
+	exec /bin/sh -ls -c "$session_argument"
 ;;
 esac
