@@ -20,6 +20,9 @@ source=("http://packages.linuxmint.com/pool/main/n/nemo-terminal/${pkgname}_${pk
 sha256sums=('17eb327a6065f52384dc344c83f1b97e75170989420be1138b2d01d09d2852eb')
 
 package() {
+  # Python2 fix
+  find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
+
   install -d ${pkgdir}/usr/share/nemo-python/extensions
   install -d ${pkgdir}/usr/share/glib-2.0/schemas
   install -d ${pkgdir}/usr/share/nemo-terminal
