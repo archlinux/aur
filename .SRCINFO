@@ -1,18 +1,19 @@
 pkgbase = python3-xcpf
 	pkgdesc = Xyne's common Pacman functions, for internal use.
-	pkgver = 2015.11.21
+	pkgver = 2015.12.4.1
 	pkgrel = 1
 	url = http://xyne.archlinux.ca/projects/python3-xcpf
 	arch = any
 	license = GPL
 	depends = python3
 	depends = pyalpm
-	source = http://xyne.archlinux.ca/projects/python3-xcpf/src/python3-xcpf-2015.11.21.tar.xz
-	source = http://xyne.archlinux.ca/projects/python3-xcpf/src/python3-xcpf-2015.11.21.tar.xz.sig
-	md5sums = acc032d3711b293b1526654f73cdd148
-	md5sums = 69fd3ac626d7f6af2486268ff4edbc44
-	sha512sums = 6ce813857d26568a1ba8de81ab59ff5312b7089391f969ecf5beb102208b2d97fe4d269e8cb2b45c252f15405c02d352ec4f41540c32701c6a088f439879bb45
-	sha512sums = ddbd9698cf12ee4197370d5f5a7a98916b4cd24406d5d64404ebdc02b94113ab3ed4a1422eff6ec3f2d9f248878c8127c54a352811931c091bfa3d089dbaf792
+	optdepends = rsync: Retrieve ABS files via rsync.
+	source = http://xyne.archlinux.ca/projects/python3-xcpf/src/python3-xcpf-2015.12.4.1.tar.xz
+	source = http://xyne.archlinux.ca/projects/python3-xcpf/src/python3-xcpf-2015.12.4.1.tar.xz.sig
+	md5sums = 804e2e4cfd78f1cb1fadf0a1821fd0b5
+	md5sums = ef96fbe7ac3a00a3f37cee752618dccb
+	sha512sums = 730766096065e6219a0e6e00fd02ec1e972272768149fa588cb7445a5fc5e038d856acc0474ee7b453e71bfe6536157eaf8dc04a7d26461bf5b2ee4e0b9e63f4
+	sha512sums = 4d361150680ea2629747ec4e5fdf57b843357d543e0123726fda560968dce8aa505066969bee80b6a1c7acc45cd60fae9109d71d5d8ee87d0eda84cfbd1062d9
 
 pkgname = python3-xcpf
 
