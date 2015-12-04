@@ -2,7 +2,7 @@
 
 _pkgbasename=openssl
 pkgname=lib32-$_pkgbasename-chacha20
-_ver=1.0.2d
+_ver=1.0.2e
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
@@ -23,11 +23,11 @@ source=("https://www.openssl.org/source/${_pkgbasename}-${_ver}.tar.gz"
         'ca-dir.patch'
         'openssl__chacha20_poly1305_cf.patch')
 validpgpkeys=(8657ABB260F056B1E5190839D9C4D26D0E604491)
-md5sums=('38dd619b2e77cbac69b99f52a053d25a'
+md5sums=('5262bfa25b60ed9de9f28d5d52d77fc5'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90'
-         '4d0375669574f12e7eeae9f46a17a493')
+         '534359a2ce88cd2da618afe509557330')
 
 prepare() {
 	cd $srcdir/$_pkgbasename-$_ver
