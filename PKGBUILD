@@ -1,8 +1,8 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=bash-xyne-common_functions
 pkgver=2012
-pkgrel=2
-pkgdesc='Xyne'"'"'s commonly used bash functions.'
+pkgrel=3
+pkgdesc='Bash functions that Xyne used ages ago and hasn'"'"'t touched in years.'
 arch=(any)
 license=(GPL)
 url="http://xyne.archlinux.ca/projects/bash-xyne-common_functions"

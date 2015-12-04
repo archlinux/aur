@@ -1,7 +1,7 @@
 pkgbase = bash-xyne-common_functions
-	pkgdesc = Xyne's commonly used bash functions.
+	pkgdesc = Bash functions that Xyne used ages ago and hasn't touched in years.
 	pkgver = 2012
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xyne.archlinux.ca/projects/bash-xyne-common_functions
 	arch = any
 	license = GPL
