@@ -1,0 +1,14 @@
+pkgbase = ruby-little-plugger
+	pkgdesc = LittlePlugger is a module that provides Gem based plugin management.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://gemcutter.org/gems/little-plugger
+	arch = any
+	depends = ruby
+	noextract = little-plugger-1.1.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/little-plugger-1.1.4.gem
+	sha512sums = 79b26509c56084a93997e011870de085f9e5222d631bf410c9bb2a361949e80f3d8be279b26b6c405dd47aedbea72089de212990ae0906f7493a3e8edfa8cb87
+
+pkgname = ruby-little-plugger
+
