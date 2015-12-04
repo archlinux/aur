@@ -45,7 +45,7 @@ build() {
     # Patch to use python2
     find . -type f -print0 | xargs -0 sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/env python2/g'
     # Release build
-    LDFLAGS='-ldl -lpthread' python2 utils/build-script -R
+    LDFLAGS='-ldl -lpthread' python2 utils/build-script -p -R
 }
 
 package() {
