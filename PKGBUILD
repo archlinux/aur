@@ -3,11 +3,12 @@
 # PKGBUILD copied from https://github.com/greigdp/msp430-mspds
 pkgname=mspds
 pkgver=3.05.01.01
-pkgrel=1
+pkgrel=2
 pkgdesc="MSP430 Debug Stack. Contains a dynamic link library as well as embedded firmware that runs on the MSP-FET430UIF or the eZ430 emulators."
 arch=('i686' 'x86_64')
 url="http://processors.wiki.ti.com/index.php/MSPDS_Open_Source_Package"
-license=('custom:TI Open Source')
+# Licenses were found in "Manifest MSPDebugStack OS Package.pdf" from the mspds source archive.
+license=('custom:TI BSD' 'custom:IAR BSD' 'custom: TI TSPA')
 group=('msp430')
 depends=('hidapi' 'boost')
 makedepends=('unzip' 'dos2unix')
@@ -22,12 +23,13 @@ sha256sums=('181418a33400567fa19e411f16df340a2869dd87e941e517732280004ee0fed7'
 prepare() {
     unzip slac460n.zip
     find ./MSPDebugStack_OS_Package/ -type f -exec dos2unix -q '{}' \;
+    # This hidapi patch allows us to build mspds from the hidapi Archlinux package rather than the v0.7 source.
     patch -p1 -d MSPDebugStack_OS_Package < ../hidapi.patch
 }
 
 build() {
     cd "$srcdir/MSPDebugStack_OS_Package"
-    # The -j flag is the number of parallel jobs to run, adjust accordningly for yourself
+    # The -j flag is the number of parallel jobs to run, adjust accordningly.
     make -j 3
 }
 
