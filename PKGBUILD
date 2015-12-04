@@ -1,14 +1,14 @@
 # Maintainer: Theo Tosini <theo.tosini@theoduino.me>
 pkgname=swift-language-git
-pkgver=swift.2.2.SNAPSHOT.2015.12.01.b.r232.g273ad25
+pkgver=swift.2.2.SNAPSHOT.2015.12.01.b.r258.g3de382e
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
 url="https://swift.org/"
 license=('apache2')
 groups=()
-depends=()
-makedepends=('git' 'ninja')
+depends=('icu' 'libedit' 'libxml2' 'swig' 'python2' 'libbsd')
+makedepends=('git' 'ninja' 'cmake' 'clang')
 provides=()
 conflicts=()
 replaces=()
@@ -36,7 +36,7 @@ md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-    cd "$pkgname/swift"
+    cd "$srcdir/swift"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -45,12 +45,14 @@ build() {
     # Patch to use python2
     find . -type f -print0 | xargs -0 sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/env python2/g'
     # Release build
-    python2 utils/build-script -R
+    LDFLAGS='-ldl -lpthread' python2 utils/build-script -R
 }
 
 package() {
   cd "$srcdir/build"
-  cp -R Ninja-ReleaseAssert $pkgdir/opt/swift
+  mkdir -p '$pkgdir/opt'
+  cp -R Ninja-ReleaseAssert '$pkgdir/opt/swift'
+  ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} '$pkgdir/usr/bin'
 }
 
 # vim:set ts=2 sw=2 et:
