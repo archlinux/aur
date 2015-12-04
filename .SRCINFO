@@ -7,6 +7,7 @@ pkgbase = acestream-proxy-player
 	license = GPL
 	depends = python-psutil
 	depends = python-urllib3
+	depends = python-notify2
 	optdepends = acestream-proxy
 	optdepends = vlc
 	provides = acestream-proxy-player
