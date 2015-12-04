@@ -1,6 +1,6 @@
 pkgbase = qemu-spice
 	pkgdesc = Latest stable QEMU with KVM spice usbredir virtfs smartcard seccomp iscsi tpm glusterfs fdt and RDMA live migration
-	pkgver = 2.4.0.1
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = http://wiki.qemu.org/Index.html
 	install = qemu-spice.install
@@ -49,9 +49,9 @@ pkgbase = qemu-spice
 	replaces = qemu-kvm-spice
 	options = !strip
 	backup = etc/qemu/target-x86_64.conf
-	source = http://wiki.qemu.org/download/qemu-2.4.0.1.tar.bz2
+	source = http://wiki.qemu.org/download/qemu-2.4.1.tar.bz2
 	source = 65-kvm.rules
-	md5sums = c99445164e77184a9ba2e7dbf7ed5c29
+	md5sums = a895e93ec1dafc34bc64ed676f0d55a6
 	md5sums = b316a066d2f1bb57d8f5b7ea1d0d1caf
 
 pkgname = qemu-spice
