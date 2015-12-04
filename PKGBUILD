@@ -29,7 +29,7 @@ prepare() {
   cd kcm-grub2-$pkgver
   patch -p1 -i "$srcdir/port_to_kf5.patch"
   patch -p1 -i "$srcdir/l10n_zh-cn.patch"
-  sed -i 's:^Exec=.*$:Exec=pkexec env DISPLAY=\$DISPLAY XAUTHORITY=\$XAUTHORITY kcmshell5 kcm_grub2:g' other/kcm_grub2.desktop
+  #sed -i 's:^Exec=.*$:Exec=pkexec env DISPLAY=\$DISPLAY XAUTHORITY=\$XAUTHORITY kcmshell5 kcm_grub2:g' other/kcm_grub2.desktop
 }
 
 build() {
