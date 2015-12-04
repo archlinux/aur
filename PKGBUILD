@@ -1,15 +1,15 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libdvdnav-git
-pkgver=5.0.2.4.g5fb9197
+pkgver=5.0.3.4.g8a270d6
 pkgrel=1
 pkgdesc="Library to navigate DVD disks. (GIT version)"
 arch=('i686' 'x86_64')
-url="http://dvdnav.mplayerhq.hu"
+url='http://dvdnav.mplayerhq.hu'
 license=('GPL2')
 depends=('libdvdread-git')
 makedepends=('git')
-provides=('libdvdnav')
+provides=('libdvdnav' 'libdvdnav.so')
 conflicts=('libdvdnav')
 source=("git://git.videolan.org/libdvdnav.git")
 sha1sums=('SKIP')
