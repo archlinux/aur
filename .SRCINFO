@@ -1,7 +1,7 @@
 pkgbase = tp-battery-mode
 	pkgdesc = Module to manage the battery mode (lifetime/runtime) of your Thinkpad
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DreaminginCodeZH/tp-battery-mode
 	arch = x86_64
 	arch = i686
