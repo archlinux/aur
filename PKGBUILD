@@ -37,8 +37,8 @@ prepare() {
 	patch -p0 -i $srcdir/no-rpath.patch
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
-	# Modified Cloudflare patch
-	# https://raw.githubusercontent.com/as-com/sslconfig/e492c718f330170a728271979e2710f01e9d128d/patches/openssl__chacha20_poly1305_cf.patch
+	# Cloudflare patch
+	# https://github.com/cloudflare/sslconfig/blob/master/patches/openssl__chacha20_poly1305_cf.patch
 	patch -p1 -i $srcdir/openssl__chacha20_poly1305_cf.patch
 }
 
