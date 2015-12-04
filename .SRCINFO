@@ -1,6 +1,6 @@
 pkgbase = libaacs-git
 	pkgdesc = Advanced Access Content System. (GIT version)
-	pkgver = 0.8.0.7.g7780e4d
+	pkgver = 0.8.1.31.gc6dc792
 	pkgrel = 1
 	url = http://www.videolan.org/developers/libaacs.html
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = libaacs-git
 	makedepends = bison
 	depends = libgcrypt
 	provides = libaacs
+	provides = libaacs.so
 	conflicts = libaacs
 	source = git://git.videolan.org/libaacs.git
 	sha1sums = SKIP
