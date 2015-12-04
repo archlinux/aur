@@ -3,7 +3,7 @@ Description=SickRage Daemon
 After=network.target
 
 [Service]
-Restart=always
+Restart=on-success
 User=sickrage
 Group=sickrage
 #Type=forking

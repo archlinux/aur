@@ -5,14 +5,14 @@
 # In case of upgrade errors:
 #     error: failed to commit transaction (conflicting files)
 #     sickrage-git: /opt/sickrage/... exists in filesystem
-# Try to remove all or most of the conflicting files:
+# Remove the conflicting files manually. The following will remove all or most of the conflicting files:
 #     # rm -rf /opt/sickrage/{contrib/,contributing.md,COPYING.txt,gui/,lib/,runscripts/,sickbeard/,SickBeard.py,sickrage/,tests/}
 # Use at your own risk!
 
 
 _pkgname=sickrage
 pkgname=$_pkgname-git
-pkgver=4.1.0.r0.g533d8c1
+pkgver=4.1.0.2.r354.gfc4d505
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
@@ -36,7 +36,7 @@ source=("$pkgname::git://github.com/SiCKRAGETV/SickRage.git"
         'sickrage.service'
         'sickrage.tmpfile')
 md5sums=('SKIP'
-         '9c03e4b2ed134981afefc643cac2c282'
+         '70a920d85e5e28d9e920d3fb90247f25'
          'f7a12df978d649da4e77d88e03f50252')
 
 pkgver() {
