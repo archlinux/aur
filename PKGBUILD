@@ -2,7 +2,7 @@
 
 _version=2.2-SNAPSHOT-2015-12-01-b
 
-pkgname=swift-language-bin
+pkgname=swift-bin
 pkgver=${_version//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language, the binary drops from the official website"
