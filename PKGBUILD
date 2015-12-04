@@ -12,5 +12,6 @@ source=("https://github.com/nightsense/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('ef33b8530c099c46ef047d760f79ac0ce9a9b6fb3064ddf3a4d0d4261e49288d')
 
 package() {
-  install -D -m 755 fuji "${pkgdir}/usr/bin/fuji"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -D -m 755 fuji "${pkgdir}/usr/bin/fuji"
 }
