@@ -3,7 +3,7 @@
 # PKGBUILD copied from https://github.com/greigdp/msp430-mspds
 pkgname=mspds
 pkgver=3.05.01.01
-pkgrel=2
+pkgrel=3
 pkgdesc="MSP430 Debug Stack. Contains a dynamic link library as well as embedded firmware that runs on the MSP-FET430UIF or the eZ430 emulators."
 arch=('i686' 'x86_64')
 url="http://processors.wiki.ti.com/index.php/MSPDS_Open_Source_Package"
