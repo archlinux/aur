@@ -4,8 +4,8 @@
 # Contributor: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 
 pkgname=spotify-beta
-pkgver=1.0.17.75
-_anotherpkgver=g8f111100
+pkgver=1.0.19.106
+_anotherpkgver=gb8a7150f
 pkgrel=1
 pkgdesc="A proprietary peer-to-peer music streaming service"
 arch=('x86_64' 'i686')
@@ -22,8 +22,8 @@ source=('spotify.protocol')
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}_amd64.deb")
 source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}_i386.deb")
 sha256sums=('af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3')
-sha256sums_x86_64=('65ad49871a5f281aa7248690c0379fc18c17c063ab640590bbfa7edc02cb223f')
-sha256sums_i686=('480d8791d4de95f43ba95e4c5d31fc5a02662c6e041c3eb45f481a5ef6bd39b0')
+sha256sums_x86_64=('be6b99329bb2fccdc9d77bc949dd463576fdb40db7f56195b4284bd348c470be')
+sha256sums_i686=('128b5d04dda8a052802fb9e664a996250569696fac359e94ea35043472f5dbcb')
 
 package() {
     cd "${srcdir}"
