@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'libgit2')
 depends=('libgit2')
 options=('!strip' '!emptydirs')
-source=("https://github.com/voidus/$pkgname/archive/$pkgver.zip")
+source=("https://github.com/voidus/$pkgname/archive/${pkgver#r*.}.zip")
 sha256sums=('c7fe90812868cd1b2a0eeaa708a0a5fbba92a9d7bada76092a2b360aa46ab7f5')
 
 prepare() {
@@ -21,15 +21,15 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-${pkgver#r*.}"
 
   GOPATH="$srcdir" go build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-${pkgver#r*.}"
 
-  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/git-lab"
+  install -Dm755 "$pkgname-${pkgver#r*.}" "$pkgdir/usr/bin/git-lab"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
