@@ -1,14 +1,14 @@
 pkgbase = phpmetrics
 	pkgdesc = A static analysis tool for PHP
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = http://www.phpmetrics.org/
 	install = phpmetrics.install
 	arch = any
 	license = MIT
 	depends = php
-	source = https://github.com/Halleck45/PhpMetrics/raw/v1.6.2/build/phpmetrics.phar
-	source = https://raw.githubusercontent.com/Halleck45/PhpMetrics/v1.6.2/LICENSE
+	source = https://github.com/Halleck45/PhpMetrics/raw/v1.7.0/build/phpmetrics.phar
+	source = https://raw.githubusercontent.com/Halleck45/PhpMetrics/v1.7.0/LICENSE
 	sha512sums = 57feb0bdaa9d36e9a95e45c2d72fb0ddbda90b0412c1cb1914383eb47cdb3ef049039b41629889125539cd8615cf80fe6a7b3700fc0ae9fb0f538a1c42b023f0
 	sha512sums = be822058c3c747ff43933ef66163ae99ed3901f8633f561811ada1d7d761309188301ae6ace33d3f53195793f0a500462ee666c7089faa2c80b6d9809a1b61b3
 
