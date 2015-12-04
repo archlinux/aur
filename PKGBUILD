@@ -5,12 +5,11 @@ _pkgname=jdk
 pkgname=jdk-devel
 _major=9
 #_minor=1
-_build=b94
-_date=25_nov_2015
+_build=95
 _pkgver=$_major
-pkgver=${_major}${_build}
+pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
-#pkgver=${_major}u${_minor}.${_build}
+#pkgver=${_major}u${_minor}.b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
 arch=('i686' 'x86_64')
@@ -52,16 +51,16 @@ source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-source_i686=("http://download.java.net/jdk$_major/archive/$_build/binaries/$_pkgname-$_pkgver-ea-bin-$_build-linux-i586-$_date.tar.gz")
-source_x86_64=("http://download.java.net/jdk$_major/archive/$_build/binaries/$_pkgname-$_pkgver-ea-bin-$_build-linux-x64-$_date.tar.gz")
+source_i686=("http://download.java.net/jdk$_major/archive/$_build/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
+source_x86_64=("http://download.java.net/jdk$_major/archive/$_build/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'ffc22a6191545b1a37d68987581f2ca7'
          '3af000b3c67545579cf3aceef93c9fc8'
          '003bb22b96f9b29f61de47190f843791'
          '419f27776d367e0c06c76dac6f6c3485'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_i686=('4f423ed11c4979de2940454e7089bca7')
-md5sums_x86_64=('d61163a716f8a54e9d02fa8f653b0100')
+md5sums_i686=('9889383d8743eb266f149097973a8c36')
+md5sums_x86_64=('627e2591abf22858277f9230f83b296f')
 
 package() {
     cd ${_pkgname}1.${_major}.0
