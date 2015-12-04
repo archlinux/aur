@@ -1,5 +1,5 @@
 pkgbase = python-data
-	pkgdesc = Python wrappers for calling LaTeX/building LaTeX documents
+	pkgdesc = Work with unicode/non-unicode data from files or strings uniformly.
 	pkgver = 0.4
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/latex/0.4
