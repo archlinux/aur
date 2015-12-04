@@ -1,0 +1,33 @@
+--- a/install_service	2013-09-21 16:14:12.767315670 +0300
++++ b/install_service	2013-09-21 16:15:01.437640075 +0300
+@@ -34,6 +34,8 @@
+     /usr/lib/lsb/install_initd /etc/init.d/${service}
+ elif [ -x /sbin/chkconfig ] ; then
+     /sbin/chkconfig --add ${service}
++elif [ -x /usr/bin/systemctl ]; then
++    echo "This system is using systemd. Assuming AUR package with .service files"
+ else
+     echo "Cannot find /usr/sbin/update-rc.d, /usr/lib/lsb/install_initd or /sbin/chkconfig. "
+     echo "Please make sure that ${service} is started automatically at boot."
+--- a/remove_service	2013-09-21 16:15:08.935387292 +0300
++++ b/remove_service	2013-09-21 16:15:46.527174878 +0300
+@@ -32,6 +32,8 @@
+     /usr/lib/lsb/remove_initd /etc/init.d/${service}
+ elif [ -x /sbin/chkconfig ]; then
+     /sbin/chkconfig --del ${service}
++elif [ -x /usr/bin/systemctl ]; then
++    echo "This system is using systemd. Assuming AUR package with .service files"
+ else
+     echo "Cannot find /usr/lib/lsb/remove_initd or /sbin/chkconfig. "
+     echo "Please make sure that ${service} is removed from the system startup scripts."
+--- a/service
++++ b/service
+@@ -13,6 +13,8 @@ if [ -x /sbin/service ] ; then
+     exec /sbin/service $1 $2
+ elif [ -x /usr/sbin/service ] ; then
+     exec /usr/sbin/service $1 $2
++elif [ -x /usr/bin/systemctl ] ; then
++    exec /usr/bin/systemctl $2 ${1}.service
+ else
+     exec /etc/init.d/$1 $2
+ fi

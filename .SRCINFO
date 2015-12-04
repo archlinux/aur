@@ -1,0 +1,30 @@
+pkgbase = thinlinc-server
+	pkgdesc = Cendio ThinLinc Linux Remote Desktop Server
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = http://www.cendio.com/
+	install = thinlinc-server.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = python2
+	depends = net-tools
+	depends = procps-ng
+	depends = xorg-xauth
+	depends = pcsclite
+	depends = java-environment
+	source = tl-4.5.0-server.zip
+	source = tlwebaccess.service
+	source = tlwebadm.service
+	source = vsmagent.service
+	source = vsmserver.service
+	source = service.patch
+	sha256sums = 449d9480637918f0d4dcb09a2b5428a58a1458c25d8b2c545fedf4f8e45bd9a0
+	sha256sums = 430bcbc959ab363a270fd830c9db8caa057dfbfde69beb6193958c282bd03f7d
+	sha256sums = cbbf364b9303ff55a7fef434bddab7533f95b8228f045e232fd1c83b78a9a842
+	sha256sums = b64dcb2ecfb38120a3314b14c114fbf79ecdf699984db7addadd3aec644165da
+	sha256sums = 3e0fdaeca38f4750c9b369a65b7b3c84dff996e9997dbb02dbfe16dc78a09849
+	sha256sums = 635a76ce5f501608ac77b3a396faee57c4bfba82ade2d38d37e657d147a745fd
+
+pkgname = thinlinc-server
+

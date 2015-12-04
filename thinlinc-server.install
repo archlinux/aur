@@ -1,0 +1,4 @@
+post_install()
+{
+    PYTHON=/usr/bin/python2 /opt/thinlinc/sbin/tl-setup
+}

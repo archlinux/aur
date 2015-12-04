@@ -1,0 +1,8 @@
+[Unit]
+Description=ThinLinc Web Administration
+
+[Service]
+Type=simple
+PIDFile=/var/run/tlwebadm.pid
+ExecStart=/opt/thinlinc/sbin/tlwebadm
+
