@@ -4,14 +4,14 @@
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 
 pkgname=mitmproxy
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
 license=('GPL')
 depends=('python2-netlib' 'python2-pyasn1' 'python2-pyparsing' 
-         'python2-configargparse' 'python2-tornado'
+         'python2-configargparse' 'python2-tornado' 'python2-watchdog'
          'python2-pyperclip' 'python2-blinker' 'python2-setuptools'
          'python2-urwid' 'python2-lxml' 'python2-pillow'
          'python2-html2text' 'python2-construct' 'python2-click')
