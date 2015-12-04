@@ -8,7 +8,7 @@ pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
-depends=('blas' 'lapack' 'arpack' 'fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi')
+depends=('blas' 'lapack' 'arpack' 'fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi' 'python')
 makedepends=('mercurial' 'gcc-fortran' 'texlive-core')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')

@@ -19,6 +19,7 @@ pkgbase = freefem++-hg
 	depends = hdf5-cpp-fortran
 	depends = gsl
 	depends = openmpi
+	depends = python
 	provides = freefem++=3.42
 	conflicts = freefem++
 	options = !makeflags
