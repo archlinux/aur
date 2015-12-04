@@ -10,12 +10,19 @@ license=('apache')
 depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo')
 conflicts=('lldb')
 options=('!strip')
+validpgpkeys=('7463A81A4B2EEA1B551FFBCFD441C977412B37AD')
 
 _version=2.2
 _snapshot=SNAPSHOT-2015-12-01-b
 
-source=("https://swift.org/builds/ubuntu1510/swift-${_version}-${_snapshot}/swift-${_version}-${_snapshot}-ubuntu15.10.tar.gz")
-sha256sums=('04d62c13a50bb6c3003676fe7521c9e28bc7bc38e42524330595e80a6df24806')
+source=(
+  "https://swift.org/builds/ubuntu1510/swift-${_version}-${_snapshot}/swift-${_version}-${_snapshot}-ubuntu15.10.tar.gz"
+  "https://swift.org/builds/ubuntu1510/swift-${_version}-${_snapshot}/swift-${_version}-${_snapshot}-ubuntu15.10.tar.gz.sig"
+)
+sha256sums=(
+  '04d62c13a50bb6c3003676fe7521c9e28bc7bc38e42524330595e80a6df24806'
+  '8a36d98da7c8e264900b8da116a80e351ceb3d01d961e414a633da40f9557934'
+)
 
 package() {
     tar -C "$pkgdir" -xf "swift-${_version}"*.tar.gz --strip 1
