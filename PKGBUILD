@@ -1,17 +1,17 @@
-# Maintainer: Beneldr <beneldr (dot) aur (at) gmail (dot) com>
+# Contributor: Beneldr <beneldr (dot) aur (at) gmail (dot) com>
 
 pkgname=attic
 pkgver=0.16
 pkgrel=1
-pkgdesc="A deduplicating backup program for efficient and secure backups."
+pkgdesc='A deduplicating backup program for efficient and secure backups.'
 arch=('i686' 'x86_64')
-url="https://attic-backup.org/"
+url='https://attic-backup.org/'
 license=('BSD')
 depends=('openssl' 'python-msgpack')
 optdepends=('python-llfuse: Mounting backups as a FUSE filesystem')
 makedepends=('python-sphinx')
-source=(https://pypi.python.org/packages/source/A/Attic/Attic-$pkgver.tar.gz)
-md5sums=('9c767c883f7f48bf95e7e5307ce6b5ea')
+source=("https://pypi.python.org/packages/source/A/Attic/Attic-${pkgver}.tar.gz")
+sha256sums=('6650cd28072101c2e05941e77b93a62f91da6179785e4e4b4880916c469bba2c')
 
 build() {
   cd "$srcdir/Attic-$pkgver/docs"
