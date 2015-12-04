@@ -3,13 +3,13 @@
 
 pkgname=gedit-latex
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gedit plugin that provides features to ease the edition of LaTeX documents"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Gedit/LaTeXPlugin"
 license=('GPL')
 groups=()
-depends=(gedit rubber texlive-core python-gobject python-dbus)
+depends=(gedit rubber texlive-core python-gobject python-dbus python-latex)
 makedepends=(cairo gettext atk intltool libpeas gtk3 glib2)
 provides=()
 conflicts=(gedit-latex-plugin)
