@@ -1,6 +1,6 @@
 pkgbase = ruby-eventmachine
 	pkgdesc = Ruby/EventMachine library
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = http://rubyeventmachine.com
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = ruby-eventmachine
 	license = Ruby
 	license = GPL
 	depends = ruby
-	noextract = eventmachine-1.0.7.gem
+	noextract = eventmachine-1.0.8.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/eventmachine-1.0.7.gem
-	sha1sums = 4e6fe81a3e424e8d6f53d4774364fa0d47da27fb
+	source = https://rubygems.org/downloads/eventmachine-1.0.8.gem
+	sha512sums = 55bfb8a22149495ca70913e6df6b9861cf0e10a512cdd25579064a816eb7e365bd0a03a1219ed23ed99772b9b312e3ce137781cb0890e31fbb5e5f542ba5ef70
 
 pkgname = ruby-eventmachine
 
