@@ -1,7 +1,7 @@
 pkgbase = warsow-beta
 	pkgdesc = Free online multiplayer competitive FPS based on the Qfusion engine
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.warsow.gg/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = warsow-beta
 	makedepends = imagemagick
 	makedepends = gendesk
 	makedepends = cmake
-	depends = warsow-data
+	depends = warsow-beta-data
 	depends = sdl2
 	depends = libjpeg
 	depends = libpng
