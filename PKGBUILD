@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=arm-frc-linux-gnueabi-wpilib-git
-pkgver=1175.97a7716
+pkgver=1246.5c82146
 pkgrel=1
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
@@ -22,22 +22,16 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-prepare() {
-  cd "$srcdir/allwpilib"
-  git submodule update --init --recursive
-}
-
 build() {
   cd "$srcdir/allwpilib"
-  ./gradlew wpilibcZip
+  ./gradlew :wpilibc:build
 }
 
 package() {
   cd "$srcdir/allwpilib/wpilibc/build"
-  mkdir -p $pkgdir/usr/arm-frc-linux-gnueabi/share
+  mkdir -p $pkgdir/usr/arm-frc-linux-gnueabi
 
-  yes A | unzip -d $pkgdir/usr/arm-frc-linux-gnueabi wpilibc.zip
-  mv $pkgdir/usr/arm-frc-linux-gnueabi/docs $pkgdir/usr/arm-frc-linux-gnueabi/share/doc
+  yes A | unzip -d $pkgdir/usr/arm-frc-linux-gnueabi wpilibc-development.zip
 
   install -Dm644 ../../wpilibj/BSD_License_for_WPILib_code.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
