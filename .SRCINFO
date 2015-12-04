@@ -1,0 +1,15 @@
+pkgbase = holo-run-scripts
+	pkgdesc = Holo plugin for running custom provisioning scripts
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://holocm.org
+	install = holo-run-scripts.install
+	arch = any
+	license = GPL3
+	makedepends = perl
+	depends = HOLO_API_VERSION=1
+	source = https://github.com/holocm/holo-run-scripts/archive/v1.0.tar.gz
+	md5sums = 9b6c1e7878cb789d53cf8028de2b3474
+
+pkgname = holo-run-scripts
+

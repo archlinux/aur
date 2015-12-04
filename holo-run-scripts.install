@@ -1,0 +1,9 @@
+post_install() {
+    holo apply
+}
+post_upgrade() {
+    holo apply
+}
+post_remove() {
+    holo apply
+}
