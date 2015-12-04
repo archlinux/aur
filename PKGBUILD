@@ -3,7 +3,8 @@
 # Contributor: 
 
 pkgname='umplayer'
-pkgver='0.95'
+pkgver='0.98.2'
+_sver='4.2'
 pkgrel='1'
 pkgdesc='An alternative to SMPlayer'
 arch=('i686' 'x86_64')
@@ -12,20 +13,16 @@ license=('GPL')
 depends=('qt4' 
 	 'hicolor-icon-theme')
 install=${pkgname}.install
-# optdepends=('')
-# makedepends=('')
-
+source=("http://download.opensuse.org/repositories/home:/zhonghuaren/Fedora_23/i686/${pkgname}-${pkgver}-${_sver}.${CARCH}.rpm")
 if [[ $CARCH = x86_64 ]]; then
-  source=("http://sourceforge.net/projects/umplayer/files/UMPlayer-0.95/xUbuntu_11.04/${pkgname}_${pkgver}_amd64.deb")
-  md5sums=('fad31c6fe6ae3f2f010e01710131da0b')
+  md5sums=('b30d3d191918db98ba3b67c6e36625d8')
 else
-  source=("http://sourceforge.net/projects/umplayer/files/UMPlayer-0.95/xUbuntu_11.04/${pkgname}_${pkgver}_i386.deb")
-  md5sums=('821f6b8136f8fb7ac450b897358cada9')
+  md5sums=('cab5b5537e6d22cf4c42d06fbc7e3ce3')
 fi
 
 build() {
   cd ${srcdir}
-  bsdtar -xf data.tar.gz -C .
+  bsdtar -xf "${pkgname}-${pkgver}-${_sver}.${CARCH}.rpm" -C .
 }
 
 package() {
