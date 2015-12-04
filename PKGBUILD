@@ -7,7 +7,7 @@
 pkgname=nvidia-last-rt
 pkgver=358.16
 _extramodules=extramodules-4.1-rt
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -41,6 +41,9 @@ package() {
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
+        
+    install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
+        "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-modeset.ko"
 
     if [[ "$CARCH" = "x86_64" ]]; then
         install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
