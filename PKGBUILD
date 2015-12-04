@@ -1,6 +1,6 @@
 # Maintainer: Theo Tosini <theo.tosini@theoduino.me>
 pkgname=swift-language-git
-pkgver=swift.2.2.SNAPSHOT.2015.12.01.b.r258.g3de382e
+pkgver=swift.2.2.SNAPSHOT.2015.12.01.b.r260.gd079068
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -50,9 +50,9 @@ build() {
 
 package() {
   cd "$srcdir/build"
-  mkdir -p '$pkgdir/opt'
-  cp -R Ninja-ReleaseAssert '$pkgdir/opt/swift'
-  ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} '$pkgdir/usr/bin'
+  mkdir -p "$pkgdir/opt"
+  cp -R Ninja-ReleaseAssert "$pkgdir/opt/swift"
+  ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} "$pkgdir/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:
