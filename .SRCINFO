@@ -1,16 +1,15 @@
 pkgbase = nemo-compare
 	pkgdesc = Context menu comparison extension for Nemo file manager
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/linuxmint/nemo-extensions
 	install = nemo-compare.install
 	arch = any
 	license = GPL3
 	depends = nemo>=1
 	depends = nemo-python>=1.0
-	depends = python-xdg
-	depends = python2
-	depends = meld
+	depends = python2-xdg
+	depends = pygtk
 	optdepends = kdiff3: Additional comparison options (preferred diff, three-way, multi-compare)
 	optdepends = diffuse: Additional comparison options (preferred diff, three-way, multi-compare)
 	optdepends = kompare: Additional comparison options (preferred diff, three-way, multi-compare)
