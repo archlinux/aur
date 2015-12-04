@@ -1,0 +1,19 @@
+pkgbase = ruby-em-winrm
+	pkgdesc = EventMachine based, asynchronous parallel WinRM client
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://github.com/schisamo/em-winrm
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-eventmachine>1.0.0
+	depends = ruby-mixlib-log>=1.3.0
+	depends = ruby-uuidtools>2.1.1
+	depends = ruby-winrm>1.3.0
+	noextract = em-winrm-0.7.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/em-winrm-0.7.0.gem
+	sha512sums = 7f931faf270f6a01956f711e85a673d70c373660d5636e19c4083ccbc129aae596e98d1b1e21465178feb8c69f6b12edc79cdb82682a8533b8a142d8cd57500a
+
+pkgname = ruby-em-winrm
+
