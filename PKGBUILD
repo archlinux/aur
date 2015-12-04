@@ -8,6 +8,7 @@ pkgdesc="A simple wrapper around make to make it's output more readable"
 arch=('i686' 'x86_64')
 url="https://github.com/pagekite/Colormake"
 license=('GPL')
+conflicts=('colormake')
 depends=('perl')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/pagekite/Colormake.git")

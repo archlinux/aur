@@ -8,6 +8,7 @@ pkgbase = colormake-git
 	license = GPL
 	makedepends = git
 	depends = perl
+	conflicts = colormake
 	source = colormake-git::git+https://github.com/pagekite/Colormake.git
 	md5sums = SKIP
 
