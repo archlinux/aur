@@ -1,0 +1,12 @@
+#!/bin/sh
+
+export PATH=/usr/lib/jvm/java-7-jre/jre/bin:/usr/lib/jvm/java-7-openjdk/jre/bin:$PATH
+
+PMS_JARS="update.jar:ums.jar"
+
+if [ "x$UMS_MAX_MEMORY" = "x" ]; then
+  UMS_MAX_MEMORY=768M
+fi
+
+cd /opt/umsjava7
+exec java $JAVA_OPTS -Xmx$UMS_MAX_MEMORY -Xss2048k -Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=true -Djna.nosys=true -classpath "$PMS_JARS" net.pms.PMS "$@"

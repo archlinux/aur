@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Universal Media Server (Java 7)
+GenericName=Media Server
+Comment=A DLNA-compliant UPnP Media Server.
+Exec=ums
+Icon=umsjava7
+Terminal=false
+StartupNotify=false
+Categories=Java;AudioVideo;Video;

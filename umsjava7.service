@@ -1,0 +1,9 @@
+[Unit]
+Description=Universal Media Server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ums
+
+[Install]
+WantedBy=default.target

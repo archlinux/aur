@@ -1,0 +1,34 @@
+pkgbase = umsjava7
+	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 7.
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = http://www.universalmediaserver.com/
+	install = umsjava7.install
+	arch = any
+	license = GPL2
+	makedepends = unzip
+	depends = mplayer
+	depends = ffmpeg
+	depends = mencoder
+	depends = tsmuxer-ng
+	depends = libmediainfo
+	depends = java-runtime=7
+	depends = desktop-file-utils
+	optdepends = vlc: Internet video/audio support
+	optdepends = dcraw: thumbnails creation support
+	provides = ums: Universal Media Server
+	backup = opt/umsjava7/UMS.conf
+	backup = opt/umsjava7/WEB.conf
+	source = http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-5.3.1-Java7.tgz
+	source = umsjava7.desktop
+	source = umsjava7.service
+	source = umsjava7.install
+	source = ums
+	sha512sums = 9bd2c71a6bd10d0b710bd7d48113ab693001246b0d2779ceb728c355209ec9cbeefa75724f4fa06e222267f7e951f602b1ae37b8d10dcf5f38ccd2068bd05a7e
+	sha512sums = 580080b4d8b831803f2c2dfe46bb69996374fb3659b0cd495563ac09b5fdd09634cf20767fe0caa08d5dfbb70767683e00222a2a829b558cc17ea806c8ef6090
+	sha512sums = 00e57bd860b34068f76a8deb10676e58e935f325b136c89979e108f60f0ed0f1cea0c04925bb57af47db7a5bbc69b13c9568c62b0add99ffbb1654e93aa48233
+	sha512sums = f995d6fbebf08e88bf2e1675c626e7be88c27f615891f0b4108375b2c8a57881c238b7109f2c0d48ec22105670f33c408ce48ecb9a17cc8db326ffd1a3419803
+	sha512sums = 87ef64f372b361c4b5ec29c267c69255aed5974988bc7339c6e0f22d66de546180d087987fbe24b7285cbc348743c8ae5b2b3b1cc0e6ce89ebfea1fcbec096f1
+
+pkgname = umsjava7
+
