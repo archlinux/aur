@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xorg-twm-git
-pkgver=1.0.9.r0.gb52e404
+pkgver=1.0.9.r3.gc5abcb6
 pkgrel=1
 pkgdesc="Tab Window Manager for the X Window System"
 arch=(i686 x86_64)
