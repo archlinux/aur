@@ -1,6 +1,6 @@
 #!/bin/bash
 
-basepath="/opt/warsow"
+basepath="/opt/warsow-beta"
 
 ${basepath}/wsw_server \
   +set fs_basepath ${basepath} \
