@@ -1,6 +1,6 @@
 # Maintainer: Theo Tosini <theo.tosini@theoduino.me>
 pkgname=swift-language-git
-pkgver=swift.2.2.SNAPSHOT.2015.12.01.b.r260.gd079068
+pkgver=swift.2.2.SNAPSHOT.2015.12.01.b.r289.gc959ce2
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('apache2')
 groups=()
 depends=('icu' 'libedit' 'libxml2' 'swig' 'python2' 'libbsd')
 makedepends=('git' 'ninja' 'cmake' 'clang')
-provides=()
-conflicts=()
+provides=('swift-language')
+conflicts=('swift-language-bin')
 replaces=()
 backup=()
 options=()
