@@ -1,11 +1,12 @@
+# Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=spectacle-git
-pkgver=r123.26ede97
+pkgver=r142.8549eb4
 pkgrel=1
 pkgdesc='The new screenshot capture utility, replaces KSnapshot'
 arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/spectacle'
+url='https://projects.kde.org/projects/kde/kdegraphics/spectacle'
 license=('LGPL')
 depends=('kio' 'libkscreen' 'xcb-util-cursor' 'libkipi-git')
 makedepends=('extra-cmake-modules' 'git')
@@ -13,7 +14,7 @@ conflicts=('spectacle' 'kscreengenie' 'kdegraphics-ksnapshot')
 replaces=('kscreengenie' 'kdegraphics-ksnapshot')
 provides=('spectacle')
 install=${pkgname}.install
-source=('git://anongit.kde.org/spectacle.git')
+source=("spectacle::git://anongit.kde.org/spectacle.git")
 md5sums=('SKIP')
 
 pkgver() {
