@@ -7,7 +7,7 @@ pkgdesc="The Swift programming language, the binary drops from the official webs
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2', 'libutil-linux' 'libbsd', 'clang')
+depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang')
 conflicts=('lldb')
 options=('!strip')
 
