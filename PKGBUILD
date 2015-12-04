@@ -4,10 +4,10 @@
 
 _pkgbasename=openssl
 pkgname=openssl098
-_ver=0.9.8zg
+_ver=0.9.8zh
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]*/.${_ver//[0-9.]/}}
-pkgrel=2
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (0.9.8 branch)'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -22,6 +22,10 @@ validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 source=("https://www.openssl.org/source/${_pkgbasename}-${_ver}.tar.gz"{,.asc}
         'no-rpath.patch'
         'ca-dir.patch')
+sha256sums=('f1d9f3ed1b85a82ecf80d0e2d389e1fda3fca9a4dba0bf07adbf231e1a5e2fd6'
+            'SKIP'
+            '754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
+            '9e8126f3a748f4c1d6fe34d4436de72b16a40e97a6d18234d2e88caa179d50c4')
 
 build() {
 	cd "${srcdir}/${_pkgbasename}-${_ver}"
@@ -52,7 +56,3 @@ package() {
 	ln -s ${_pkgbasename} "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('06500060639930e471050474f537fcd28ec934af92ee282d78b52460fbe8f580'
-            'SKIP'
-            '754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
-            '9e8126f3a748f4c1d6fe34d4436de72b16a40e97a6d18234d2e88caa179d50c4')
