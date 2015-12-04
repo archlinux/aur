@@ -1,6 +1,6 @@
 pkgbase = sogo
 	pkgver = 2.3.3a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sogo.nu/
 	arch = i686
 	arch = x86_64
@@ -13,12 +13,10 @@ pkgbase = sogo
 	options = !strip
 	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-2.3.3a.tar.gz
 	source = sogo_configure.patch
-	source = UI_MailPartViewers_GNUmakefile.patch
 	source = sogo.service
 	source = sogo.confd
 	sha256sums = cc0ed55f30ef889d8d7f2d55b48066a501e9285317e0dfc63e0a12235a68382c
 	sha256sums = e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1
-	sha256sums = ef6ab2829d35c2abb5529ee8ea9a4cc541913b0a82bc91f4c9fa21c65d44a4aa
 	sha256sums = 0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c
 	sha256sums = 8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7
 
@@ -46,7 +44,7 @@ pkgname = sogo
 pkgname = sogo-openchange
 	pkgdesc = OpenChange module for SOGo
 	depends = sogo=2.3.3a
-	depends = openchange-git
+	depends = openchange
 
 pkgname = sogo-activesync
 	pkgdesc = ActiveSync module for SOGo

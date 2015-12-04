@@ -5,7 +5,7 @@ pkgname=('sogo'
          'sogo-openchange'
          'sogo-activesync')
 pkgver=2.3.3a
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -18,7 +18,6 @@ options=('!strip')
 source=(
   http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz
   sogo_configure.patch
-  UI_MailPartViewers_GNUmakefile.patch
   sogo.service
   sogo.confd
 )
@@ -26,7 +25,6 @@ source=(
 prepare() {
   cd "$srcdir/SOGo-${pkgver}"
   patch configure ../sogo_configure.patch
-  patch -p1 < ../UI_MailPartViewers_GNUmakefile.patch
 }
 
 build() {
@@ -73,7 +71,7 @@ install=sogo.install
 
 package_sogo-openchange() {
 pkgdesc="OpenChange module for SOGo"
-depends=("sogo=${pkgver}" 'openchange-git')
+depends=("sogo=${pkgver}" 'openchange')
 
   cd "${srcdir}/SOGo-${pkgver}/OpenChange"
   sed 's@-Wall@-Wall -fobjc-exceptions@' -i GNUmakefile
@@ -90,7 +88,6 @@ depends=("sogo=${pkgver}" 'libwbxml')
 
 sha256sums=('cc0ed55f30ef889d8d7f2d55b48066a501e9285317e0dfc63e0a12235a68382c'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
-            'ef6ab2829d35c2abb5529ee8ea9a4cc541913b0a82bc91f4c9fa21c65d44a4aa'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
 
