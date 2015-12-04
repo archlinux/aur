@@ -4,22 +4,26 @@
 # (Contributor) Nick B <Shirakawasuna at gmail _dot_com>
 # (Maintainer) moostik <mooostik_at_gmail.com>
 pkgname=qelectrotech
-pkgver=0.4
-pkgrel=3
+pkgver=0.5
+pkgrel=1
 pkgdesc="An electric diagram editor"
 arch=('i686' 'x86_64')
 url="http://qelectrotech.tuxfamily.org/"
 install='qelectrotech.install'
 license=('GPL2')
-depends=('qt4' 'shared-mime-info')
-md5sums=('3699e5718e0adc361511513c9f1f7ea1')
-source=(http://download.tuxfamily.org/qet/tags/20150220/${pkgname}-${pkgver}-src.tar.gz)
+depends=('qt5-svg' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info' 'xdg-utils')
+md5sums=('6fdf6d0a9fa7437e3555d5a940e1a1e3' '757db940a4e189b9b0aae59131cb26d0')
+source=("http://download.tuxfamily.org/qet/tags/20151127/${pkgname}-${pkgver}-src.tar.gz" 'install-dir.patch')
+
+prepare() {
+	cd ${srcdir}/${pkgname}-${pkgver}-src
+	patch -p1 < $startdir/install-dir.patch
+}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}-src
-  sed -i s,usr\/local,usr,g qelectrotech.pro
-  qmake-qt4
-  make
+  qmake-qt5
+  make -j8
 }
 
 package() {
