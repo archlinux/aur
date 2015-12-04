@@ -1,0 +1,32 @@
+pkgbase = python-latex
+	pkgdesc = Python wrappers for calling LaTeX/building LaTeX documents
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/latex/0.6.1
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = latex-0.6.1.tar.gz::https://github.com/mbr/latex/archive/0.6.1.tar.gz
+	md5sums = b6748b7c06e400a0fef3aee1f46013f4
+
+pkgname = python-latex
+	depends = python
+	depends = python-setuptools
+	depends = python-data
+	depends = python-tempdir
+	depends = python-future
+	depends = python-shutilwhich
+	depends = python-six
+
+pkgname = python2-latex
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-data
+	depends = python2-tempdir
+	depends = python2-future
+	depends = python2-shutilwhich
+	depends = python2-six
+
