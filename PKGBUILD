@@ -16,7 +16,7 @@ makedepends=('git'
              'libaacs'
              )
 optdepends=('libaacs: Enable AACS decryption')
-provides=('libbluray' 'libbluyay.so')
+provides=('libbluray' 'libbluray.so')
 conflicts=('libbluray')
 source=('git+http://git.videolan.org/git/libbluray.git'
         'git://git.videolan.org/libudfread.git')
