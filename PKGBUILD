@@ -2,7 +2,7 @@
 
 pkgname=vim-arduino-syntax-git
 _pkgname=vim-arduino-syntax
-pkgver=83f766d
+pkgver=r17.83f766d
 pkgrel=1
 url=https://github.com/sudar/vim-arduino-syntax
 pkgdesc="Arduino syntax files for Vim"
@@ -10,6 +10,11 @@ arch=(any)
 depends=(vim)
 source=("git://github.com/sudar/vim-arduino-syntax.git")
 md5sums=(SKIP)
+
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
     cd "${srcdir}/${_pkgname}"
