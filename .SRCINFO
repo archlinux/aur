@@ -7,6 +7,7 @@ pkgbase = colormake
 	license = GPL2
 	depends = bash
 	depends = perl
+	conflicts = colormake-git
 	source = http://bre.klaki.net/programs/colormake/colormake-0.9.tar.gz
 	sha256sums = 000c629c84342c1224764e99e97ae9814ec6a7b9be0bc5922f2433db0d09c57e
 
