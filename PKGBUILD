@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A script to automatically maintain your VCS-based AUR packages for you"
 arch=(any)
 license=(GPL2)
-url=https://github.com/ianbrunelli/aurupbot
+url=https://github.com/brunelli/aurupbot
 depends=(curl git namcap pkgbuild-introspection)
 optdepends=("libnotify: send desktop notifications"
             "s-nail: send reports using the mail command")
