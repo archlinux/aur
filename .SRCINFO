@@ -21,7 +21,7 @@ pkgbase = sickrage2-git
 	source = sickrage.service
 	source = sickrage.tmpfile
 	md5sums = SKIP
-	md5sums = 9c03e4b2ed134981afefc643cac2c282
+	md5sums = 70a920d85e5e28d9e920d3fb90247f25
 	md5sums = f7a12df978d649da4e77d88e03f50252
 
 pkgname = sickrage2-git

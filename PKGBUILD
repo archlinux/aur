@@ -35,7 +35,7 @@ source=("$pkgname::git://github.com/SickRage/SickRage.git"
         'sickrage.service'
         'sickrage.tmpfile')
 md5sums=('SKIP'
-         '9c03e4b2ed134981afefc643cac2c282'
+         '70a920d85e5e28d9e920d3fb90247f25'
          'f7a12df978d649da4e77d88e03f50252')
 
 pkgver() {
