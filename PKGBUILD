@@ -34,6 +34,7 @@ conflicts=('afick-gui')
 }
 
 package_afick-gui() {
+pkgdesc="A security tool similar to tripwire with tk GUI"
 depends=('perl-tk')
 conflicts=('afick')
 

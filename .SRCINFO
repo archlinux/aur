@@ -15,6 +15,7 @@ pkgname = afick
 	conflicts = afick-gui
 
 pkgname = afick-gui
+	pkgdesc = A security tool similar to tripwire with tk GUI
 	depends = perl-tk
 	conflicts = afick
 
