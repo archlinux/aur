@@ -12,7 +12,7 @@ post_install() {
   update-desktop-database -q
   update-mime-database /usr/share/mime
   msg "This is NOT A STABLE RELEASE!
-  Scores created with this dev-build may be incompatible with other releases of MuseScore!"
+        Scores created with this dev-build may be incompatible with other releases of MuseScore!"
   msg "It's possible to install this dev-version alongside a stable release."
   msg "to execute git version use command: 'musescore-git'
   "

@@ -1,5 +1,4 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Cristian Maureira <saint@archlinux.cl>
 # Contributor: Dr.Egg <rwhite@archlinux.us>
@@ -40,13 +39,11 @@ pkgver() {
 
 build() {
   cd MuseScore
-
+  make revision
   make PREFIX='/usr' SUFFIX="-git" LABEL="Git Build" release
 }
 
 package() {
   cd MuseScore/build.release
-
   make DESTDIR="${pkgdir}" SUFFIX="-git" LABEL="Git Build" install
 }
-
