@@ -1,10 +1,11 @@
 # Maintainer: leepesjee <lpeschier at xs4all dot nl>
 pkgname=cbflib
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="An ANSI C library for accessing Crystallographic Binary and Image-supporting Files"
 arch=('i686' 'x86_64')
 url="http://www.bernstein-plus-sons.com/software/CBF/"
+depends=('hdf5')
 makedepends=('wget')
 license=('GPL')
 source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/CBFlib_0.9.5/CBFlib-$pkgver.tar.gz)
@@ -29,7 +30,7 @@ build() {
   cd ./CBFlib-$pkgver
   NOFORTRAN=yes make all
   make tests
-  #make shared
+  make shared
 }
 
 package() {

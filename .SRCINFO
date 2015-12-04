@@ -1,12 +1,13 @@
 pkgbase = cbflib
 	pkgdesc = An ANSI C library for accessing Crystallographic Binary and Image-supporting Files
 	pkgver = 0.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bernstein-plus-sons.com/software/CBF/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = wget
+	depends = hdf5
 	source = http://sourceforge.net/projects/cbflib/files/cbflib/CBFlib_0.9.5/CBFlib-0.9.5.tar.gz
 	md5sums = 6cab26809e5d4786aeac1d32f72d7683
 
