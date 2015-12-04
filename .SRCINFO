@@ -1,14 +1,20 @@
 pkgbase = afick
 	pkgdesc = A security tool similar to tripwire
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = http://afick.sourceforge.net/
 	arch = any
 	license = GPL
-	depends = perl
+	makedepends = perl-tk
 	backup = etc/afick.conf
-	source = http://sourceforge.net/projects/afick/files/afick/3.5.0/afick-3.5.0.tgz
-	md5sums = fc388425d401c7c8126572c7cc9cd87b
+	source = http://sourceforge.net/projects/afick/files/afick/3.5.1/afick-3.5.1.tgz
+	md5sums = 0cbd139c80b69d27a1c70cb200944862
 
 pkgname = afick
+	depends = perl
+	conflicts = afick-gui
+
+pkgname = afick-gui
+	depends = perl-tk
+	conflicts = afick
 
