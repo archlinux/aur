@@ -4,14 +4,14 @@
 
 pkgname="turbovnc"
 pkgdesc="An optimized version of TightVNC"
-pkgver=1.2.3
+pkgver=2.0.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.turbovnc.org/"
 license=('GPL')
-makedepends=('libjpeg-turbo' 'cmake' 'rsync')
-depends=('libxaw' 'libxt' 'libxcursor')
-sha256sums=('44d19ea293a72d097733251d70adfe020da245cc84ff121e4232e0cd30a1a368'
+makedepends=('cmake' 'rsync')
+depends=('libxaw' 'libxt' 'libxcursor' 'libjpeg-turbo-java' )
+sha256sums=('1b97cab4b84c37592e75ac08944ef091ff5ba34df46328b1b07ac17f8b1224e6'
             'ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b')
 conflicts=('turbovnc-bin' 'tigervnc' 'tigervnc-svn' 'tightvnc')
 replaces=('turbovnc-bin')
@@ -19,9 +19,17 @@ source=(${pkgname}-${pkgver}.tar.gz::http://sourceforge.net/projects/${pkgname}/
         vncserver.service)
 
 build() {
-  mkdir "${srcdir}"/${pkgname}-${pkgver}/build
+  mkdir -p "${srcdir}"/${pkgname}-${pkgver}/build
+	export JAVA_HOME=/usr/lib/jvm/default/
   cd "${srcdir}"/${pkgname}-${pkgver}/build
-  cmake -G "Unix Makefiles" -DTJPEG_LIBRARY=/usr/lib/libturbojpeg.so -DCMAKE_INSTALL_PREFIX=/usr -DTVNC_DOCDIR=/usr/share/doc/${pkgname} ../
+  ln -sf ../CMakeLists.txt
+  cmake -G "Unix Makefiles" \
+        -DTJPEG_LIBRARY=/usr/lib/libturbojpeg.so     \
+        -DTJPEG_JNILIBRARY=/usr/lib/libturbojpeg.so  \
+        -DCMAKE_INSTALL_PREFIX=/usr                  \
+        -DTVNC_DOCDIR=/usr/share/doc/${pkgname}      \
+        -DTJPEG_JAR=/usr/share/classes/turbojpeg.jar \
+        ../
   make
 }
 
