@@ -24,8 +24,8 @@ prepare () {
 }
 
 package () {
-  cd "$srcdir"/lua-$pkgver
   for _arch in ${_architectures}; do
+    cp -r "$srcdir"/lua-$pkgver "$srcdir"/build-${_arch} && pushd "$srcdir"/build-${_arch}
     make -j1 CC=${_arch}-gcc \
       MYCFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" \
       AR="${_arch}-ar rcu" \
