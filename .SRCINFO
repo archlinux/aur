@@ -1,0 +1,12 @@
+pkgbase = eyeware
+	pkgdesc = 'The Lord of the Rings'-based diceware passphrase generator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nightsense/eyeware
+	arch = any
+	license = GPL3
+	source = https://github.com/nightsense/eyeware/archive/1.0.tar.gz
+	sha256sums = 8731252aede1b5b7fd2baa091a5a02b0fe5b4690fe7273ddd10f0b0a7575627a
+
+pkgname = eyeware
+
