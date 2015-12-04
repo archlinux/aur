@@ -13,13 +13,9 @@ depends=('grub' 'hwinfo' 'imagemagick'
          'kio' 'ki18n' 'kauth' 'kconfigwidgets' 'solid')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 source=("http://sourceforge.net/projects/kcm-grub2/files/kcm-grub2-$pkgver.tar.gz"
-        "port_to_kf5.patch"
-        "l10n_zh-cn.patch"
-        "grub2-editor.desktop")
+        "https://patch-diff.githubusercontent.com/raw/maz-1/grub2-editor/pull/1.diff")
 groups=('plasma')
 md5sums=('b3ff8fb938be8112dcc6e42b3e56efc6'
-         'SKIP'
-         'SKIP'
          'SKIP')
 
 
@@ -27,9 +23,7 @@ prepare() {
   rm -rf build
   mkdir -p build
   cd kcm-grub2-$pkgver
-  patch -p1 -i "$srcdir/port_to_kf5.patch"
-  patch -p1 -i "$srcdir/l10n_zh-cn.patch"
-  #sed -i 's:^Exec=.*$:Exec=pkexec env DISPLAY=\$DISPLAY XAUTHORITY=\$XAUTHORITY kcmshell5 kcm_grub2:g' other/kcm_grub2.desktop
+  patch -p1 -i "$srcdir/1.diff"
 }
 
 build() {
@@ -47,6 +41,4 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-  install -dm755 "$pkgdir/usr/bin/"
-  #install -Dm755 "$srcdir/grub2-editor.desktop" "$pkgdir/usr/share/applications/grub2-editor.desktop"
 }

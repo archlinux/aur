@@ -22,12 +22,8 @@ pkgbase = grub2-editor-frameworks
 	provides = grub2-editor
 	conflicts = grub2-editor
 	source = http://sourceforge.net/projects/kcm-grub2/files/kcm-grub2-0.6.4.tar.gz
-	source = port_to_kf5.patch
-	source = l10n_zh-cn.patch
-	source = grub2-editor.desktop
+	source = https://patch-diff.githubusercontent.com/raw/maz-1/grub2-editor/pull/1.diff
 	md5sums = b3ff8fb938be8112dcc6e42b3e56efc6
-	md5sums = SKIP
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = grub2-editor-frameworks
