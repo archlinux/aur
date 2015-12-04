@@ -1,0 +1,28 @@
+pkgbase = aeskulap-bin
+	pkgdesc = Medical image viewer and DICOM client. Binary package and libs extracted from Debian.
+	pkgver = 0.2.2_beta1
+	pkgrel = 7
+	url = http://www.nongnu.org/aeskulap
+	install = aeskulap.install
+	arch = x86_64
+	license = GPL
+	depends = libglademm
+	depends = gconfmm
+	depends = hicolor-icon-theme
+	depends = libtiff
+	provides = aeskulap=0.2.2_beta1
+	conflicts = aeskulap
+	noextract = aeskulap_0.2.2b1-11_amd64.deb
+	noextract = libdcmtk2_3.6.0-12_amd64.deb
+	noextract = libwrap0_7.6.q-25_amd64.deb
+	source = http://ftp.debian.org/debian/pool/main/a/aeskulap/aeskulap_0.2.2b1-11_amd64.deb
+	source = aeskulap.install
+	source = http://ftp.debian.org/debian/pool/main/d/dcmtk/libdcmtk2_3.6.0-12_amd64.deb
+	source = http://ftp.debian.org/debian/pool/main/t/tcp-wrappers/libwrap0_7.6.q-25_amd64.deb
+	md5sums = 95dc57332fc5c5f75256640c742c92c0
+	md5sums = 9fb089824cc31ee06b5032ee0378f89e
+	md5sums = f746079bb40587de32d18d87d69d6e5a
+	md5sums = 073e608b96d8e7fc9dbf6ecfc65fe07b
+
+pkgname = aeskulap-bin
+
