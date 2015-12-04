@@ -1,0 +1,13 @@
+pkgbase = fuji
+	pkgdesc = A simple usb drive mounter
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nightsense/fuji
+	arch = any
+	license = GPL3
+	optdepends = ntfs-3g: for ntfs formatting/mounting
+	source = https://github.com/nightsense/fuji/archive/1.0.tar.gz
+	sha256sums = 41310047e634c4be5471d0470b7e862b7f27158fdc6afd2fc1a17fbc8b6da79a
+
+pkgname = fuji
+
