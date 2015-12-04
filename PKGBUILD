@@ -3,7 +3,7 @@
 pkgname=pacmarge
 pkgver=0.r10.6b8956b
 pkgrel=1
-pkgdesc="A tool to automatically merge .pacnew files (hopefully correctly!)"
+pkgdesc="A tool for automatically merging .pacnew files"
 arch=('any')
 url="https://github.com/foutrelis/pacmarge"
 license=('ISC')

@@ -1,5 +1,5 @@
 pkgbase = pacmarge
-	pkgdesc = A tool to automatically merge .pacnew files (hopefully correctly!)
+	pkgdesc = A tool for automatically merging .pacnew files
 	pkgver = 0.r10.6b8956b
 	pkgrel = 1
 	url = https://github.com/foutrelis/pacmarge
