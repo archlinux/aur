@@ -1,13 +1,12 @@
 pkgbase = hipchat
 	pkgdesc = Persistent group chat using XMPP
 	pkgver = 2.2.1388
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hipchat.com/linux
 	install = hipchat.install
 	arch = i686
 	arch = x86_64
 	license = unknown
-	depends = qt5-base
 	depends = libltdl
 	depends = mesa
 	depends = libxslt
