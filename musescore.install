@@ -1,8 +1,4 @@
 post_install() {
-  gtk-update-icon-cache -fqt /usr/share/icons/hicolor
-  update-desktop-database -q
-  update-mime-database /usr/share/mime
-
   msg() {
     ALL_OFF="\e[1;0m"
     BOLD="\e[1;1m"
@@ -12,19 +8,22 @@ post_install() {
     ${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
   }
 
-  msg "This is NOT A STABLE RELEASE!"
-  msg "Scores created with this dev-build may be incompatible with other releases of MuseScore!"
-  msg "You can install this dev-version alongside a stable release"
+  gtk-update-icon-cache -fqt /usr/share/icons/hicolor
+  update-desktop-database -q
+  update-mime-database /usr/share/mime
+  msg "This is NOT A STABLE RELEASE!
+  Scores created with this dev-build may be incompatible with other releases of MuseScore!"
+  msg "It's possible to install this dev-version alongside a stable release."
   msg "to execute git version use command: 'musescore-git'
   "
 }
 
 post_upgrade() {
-  gtk-update-icon-cache -fqt /usr/share/icons/hicolor
-  update-desktop-database -q
-  update-mime-database /usr/share/mime
+  post_install
 }
 
 post_remove() {
-  post_upgrade
+  gtk-update-icon-cache -fqt /usr/share/icons/hicolor
+  update-desktop-database -q
+  update-mime-database /usr/share/mime
 }
