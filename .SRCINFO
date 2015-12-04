@@ -1,0 +1,15 @@
+pkgbase = ruby-nori
+	pkgdesc = XML to Hash translator
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/savonrb/nori
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = nori-2.6.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nori-2.6.0.gem
+	sha512sums = bec947e4c05437d373cf13fe04368d9caf54bd3c97d152a042ae348a81df4698ed769fa75f0fc14ca3f86f4f8da8ea5ce3d1f7cf43a1e64b8d58f7ca39ef5b45
+
+pkgname = ruby-nori
+
