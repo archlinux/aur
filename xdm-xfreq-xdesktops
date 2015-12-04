@@ -1,30 +1,36 @@
 #!/bin/sh
 
-if [[ $# > 0 && $# <3 ]]; then
-	if [[ $# == 2 ]]; then
-		X=$2
-	fi
-	P=$1
-	if [[ $P && -d $P ]]; then
-		I=1
-
-		if [[ $X == $I ]]; then
+declare -i X=0
+case $# in
+3)
+	declare K=$3
+;&
+2)
+	X=$2
+;&
+1)
+	declare P=$1
+	if [[ $P == "--help" ]]; then
+		echo "Usage: $(basename $0) XSessionDir [DesktopNum] [AbortKey]"
+		exit 0
+	elif [ -d $P ]; then
+		declare G
+		declare -i I=1
+		if (( $X == $I )); then
 			G="xlogin*greeting: [F1] XSession*\\040\\040\\040"
 		else
 			G="xlogin*greeting: [F1] XSession\\040\\040\\040"
 		fi
 		echo "xlogin*login.translations: #override \\" > /var/run/xdm-xfreq-xdesktops
-		echo "    Ctrl<Key>R: abort-display()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    Ctrl<Key>S: abort-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    Ctrl<Key>C: restart-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    <Key>F1: set-session-argument() finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
 
+		declare D A
 		for D in $P/*.desktop
 		do
-			I=$((I + 1))
-			N=`grep "Name=" $D | cut -d "=" -f 2`
-			R=`grep -w "Exec" $D | cut -d "=" -f 2`
-			if [[ $X == $I ]]; then
+			I=$(( I + 1 ))
+			declare N=$(grep "Name=" $D | cut -d "=" -f 2)
+			declare R=$(grep -w "Exec" $D | cut -d "=" -f 2)
+			if (( $X == $I )); then
 				A=$R
 				G=$G"[F$I] ${N}*\\040\\040\\040"
 			else
@@ -32,7 +38,11 @@ if [[ $# > 0 && $# <3 ]]; then
 			fi
 			echo "    <Key>F${I}: set-session-argument(${R}) finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		done
-
+		if [[ -v K && $K == "AbortKey" ]]; then
+			echo "    Ctrl<Key>R: abort-display()\n\\" >> /var/run/xdm-xfreq-xdesktops
+			echo "    Ctrl<Key>S: abort-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
+			echo "    Ctrl<Key>C: restart-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
+		fi
 		echo "    <Key>Delete: delete-character()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    <Key>Left: move-backward-character()\n\\" >> /var/run/xdm-xfreq-xdesktops
 		echo "    <Key>Right: move-forward-character()\n\\" >> /var/run/xdm-xfreq-xdesktops
@@ -44,5 +54,15 @@ if [[ $# > 0 && $# <3 ]]; then
 		echo "    <Key>Return: set-session-argument($A) finish-field()" >> /var/run/xdm-xfreq-xdesktops
 		echo "" >> /var/run/xdm-xfreq-xdesktops
 		echo $G >> /var/run/xdm-xfreq-xdesktops
+		exit 0
+	else
+		echo "$(basename $0): cannot access $P: No such directory."
+		exit 2
 	fi
-fi
+;;
+*)
+	echo "$(basename $0): Malformed options."
+	echo "Try '$(basename $0) --help' for more information."
+	exit 1
+;;
+esac

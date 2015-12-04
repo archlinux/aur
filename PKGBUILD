@@ -36,6 +36,6 @@ package() {
   mkdir -p ${pkgdir}/etc/X11/xdm/xdm-xfreq
   cp Xsession Xsetup Xstartup xdm-config ${pkgdir}/etc/X11/xdm/xdm-xfreq
   chmod 0755 ${pkgdir}/etc/X11/xdm/xdm-xfreq/{Xsession,Xsetup,Xstartup}
-  install -Dm755 ${srcdir}/xdm-xfreq-xdesktops ${pkgdir}/usr/bin/xdm-xfreq-xdesktops
+  install -Dm755 ${srcdir}/xdm-xfreq-xdesktops ${pkgdir}/usr/lib/systemd/scripts/xdm-xfreq-xdesktops
   install -Dm0644 ${srcdir}/xdm-xfreq.service ${pkgdir}/usr/lib/systemd/system/xdm-xfreq.service
 }

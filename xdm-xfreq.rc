@@ -4,6 +4,10 @@
 # XDM_XFREQ_KEYB_LED_PATH=numlockx
 # XDM_XFREQ_KEYB_LED_ARGS=""
 
+# Screen settings
+XDM_XFREQ_SCREEN_SET_PATH=xset
+XDM_XFREQ_SCREEN_SET_ARGS="dpms"
+
 # Background color
 XDM_XFREQ_BG_COLOR_PATH=xsetroot
 XDM_XFREQ_BG_COLOR_ARGS="-solid darkred"
@@ -26,11 +30,19 @@ XDM_XFREQ_BUTTONS_PWROFF="-buttons PowerOff?:11,Cancel?:12 -default Cancel? -tim
 XDM_XFREQ_BUTTONS_HALT="-buttons Halt?:11,Cancel?:12 -default Cancel? -timeout 6"
 XDM_XFREQ_BUTTONS_REBOOT="-buttons Reboot?:11,Cancel?:12 -default Cancel? -timeout 6"
 XDM_XFREQ_BUTTONS_RESCUE="-buttons Rescue?:11,Cancel?:12 -default Cancel? -timeout 6"
-XDM_XFREQ_BUTTONS_SUBMENU="-buttons \<\<:99,Screenshot:11"
+XDM_XFREQ_BUTTONS_SUBMENU="-buttons \<\<:99,Screenshot:11,ScreenSaver5=min:20,ScreenSaver=7min:21,ScreenSaver=10min:22,ScreenSaver=12min:23,ScreenSaver=15min:24,ScreenSaver=20min:25"
 
 # Screenshot
 XDM_XFREQ_SCREENSHOT_PATH=scrot
 XDM_XFREQ_SCREENSHOT_ARGS="-d 6 /tmp/%Y%m%d-%H%M%S-\$wx\$h.png"
+
+# Screen saver timeout
+XDM_XFREQ_SCREENSAVER[0]=300
+XDM_XFREQ_SCREENSAVER[1]=420
+XDM_XFREQ_SCREENSAVER[2]=600
+XDM_XFREQ_SCREENSAVER[3]=720
+XDM_XFREQ_SCREENSAVER[4]=900
+XDM_XFREQ_SCREENSAVER[5]=1500
 
 # XFreq
 XDM_XFREQ_GUI_PATH=xfreq-gui
