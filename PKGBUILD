@@ -1,6 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 # Contributor: Mateusz Loskot <mateusz@loskot.net>
 pkgname=colormake-git
+_pkgname=colormake
 pkgver=r33.05688ab
 pkgrel=1
 pkgdesc="A simple wrapper around make to make it's output more readable"
@@ -21,8 +22,7 @@ prepare() {
 	cd $srcdir/$pkgname
 
 	# adjust scripts to colormake.pl path
-	sed -i 's#colormake.pl#/usr/share/colormake/colormake.pl#g' \
-		colormake{,-short} clmake*
+	sed -i 's#colormake.pl#/usr/share/colormake/colormake.pl#g' colormake
 }
 
 package() { 
@@ -32,19 +32,19 @@ package() {
 	install -dm755 $pkgdir/usr/bin
 	install -m755 colormake colormake-short clmake clmake-short $pkgdir/usr/bin
 
-	install -Dm755 colormake.pl $pkgdir/usr/share/$pkgname/colormake.pl
+	install -Dm755 colormake.pl $pkgdir/usr/share/$_pkgname/colormake.pl
 
 	# man page
 	install -Dm644 colormake.1 $pkgdir/usr/share/man/man1/colormake.1
 
 	# documentation
-	install -dm755 $pkgdir/usr/share/doc/$pkgname
+	install -dm755 $pkgdir/usr/share/doc/$_pkgname
 	install -m644 \
 		AUTHORS \
 		BUGS \
 		ChangeLog \
 		README.md \
-		$pkgdir/usr/share/doc/$pkgname
+		$pkgdir/usr/share/doc/$_pkgname
 }
 
 
