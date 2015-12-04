@@ -1,32 +1,36 @@
-# This PKGBUILD is maintained at: https://github.com/majewsky/system-configuration/tree/master/holo
 pkgname='holo'
-pkgver=0.9.0
-pkgrel=2
+_actual_pkgver=1.0-beta.2
+pkgver=${_actual_pkgver//-/}
+pkgrel=3
 pkgdesc='Minimalistic configuration management'
 arch=('i686' 'x86_64')
 url='http://holocm.org'
-license=('GPL2')
+license=('GPL3')
 depends=(
-    # 'git'    # TODO: uncomment this for 0.10 release where holo uses git-diff for file diffs
-    'fakeroot' # required for holo-build
-    'pacman'   # required for holo-build pacman generator (and pulls in other required tools, e.g. bsdtar and xz)
-    'shadow'   # required for holo users/groups provisioning
+    'git' # holo-files uses git-diff for file diffs
 )
 makedepends=('go' 'perl')
-source=("https://github.com/holocm/holo/releases/download/v${pkgver}/holo-${pkgver}.tar.gz")
-md5sums=('b14333d0c83a58938a6c1b2b45db55ee')
+provides=(
+    "holo-files=${pkgver}" # required for holo-build packages that have a holo-files dependency when there are files below /usr/share/holo/files
+    'HOLO_API_VERSION=1'
+)
+backup=(
+    'etc/holorc'
+)
+source=("https://github.com/holocm/${pkgname}/archive/v${_actual_pkgver}.tar.gz")
+md5sums=('c4e35e16a5069f05ac9144545bb196bf')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${_actual_pkgver}"
     make
 }
 
 check() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${_actual_pkgver}"
     make check
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${_actual_pkgver}"
     make install DESTDIR="${pkgdir}"
 }
