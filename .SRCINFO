@@ -1,0 +1,15 @@
+pkgbase = ruby-rubyntlm_0.4.0
+	pkgdesc = Ruby/NTLM provides message creator and parser for the NTLM authentication.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/winrb/rubyntlm
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = rubyntlm-0.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rubyntlm-0.4.0.gem
+	sha512sums = 33a845b3b898d5e45ef51d4c3ab9a928789d2506c9854dedac2afb71b639abd91054c89357a0f33f975984172b8b7bf58c22a6ec50e4ab423d3269910284151e
+
+pkgname = ruby-rubyntlm_0.4.0
+
