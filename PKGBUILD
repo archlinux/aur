@@ -1,7 +1,9 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
+_version=2.2-SNAPSHOT-2015-12-01-b
+
 pkgname=swift-language-bin
-pkgver=2.2.2015.12.01
+pkgver=${_version//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language, the binary drops from the official website"
 arch=('x86_64')
@@ -12,12 +14,9 @@ conflicts=('lldb')
 options=('!strip')
 validpgpkeys=('7463A81A4B2EEA1B551FFBCFD441C977412B37AD')
 
-_version=2.2
-_snapshot=SNAPSHOT-2015-12-01-b
-
 source=(
-  "https://swift.org/builds/ubuntu1510/swift-${_version}-${_snapshot}/swift-${_version}-${_snapshot}-ubuntu15.10.tar.gz"
-  "https://swift.org/builds/ubuntu1510/swift-${_version}-${_snapshot}/swift-${_version}-${_snapshot}-ubuntu15.10.tar.gz.sig"
+  "https://swift.org/builds/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz"
+  "https://swift.org/builds/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
 )
 sha256sums=(
   '04d62c13a50bb6c3003676fe7521c9e28bc7bc38e42524330595e80a6df24806'
