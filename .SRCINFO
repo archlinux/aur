@@ -1,0 +1,23 @@
+pkgbase = ruby-winrm
+	pkgdesc = Ruby library for Windows Remote Management
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = https://github.com/WinRb/WinRM
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	depends = ruby-builder>=2.1.2
+	depends = ruby-gssapi>1.2
+	depends = ruby-gyoku>1.0
+	depends = ruby-httpclient>=2.2
+	depends = ruby-logging>=1.6.1
+	depends = ruby-nori>=2.0
+	depends = ruby-rubyntlm>=0.4.0
+	depends = ruby-uuidtools>=2.1.2
+	noextract = winrm-1.3.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/winrm-1.3.6.gem
+	sha512sums = 09459103f566b353eebeee64a7258e63573eb91f638cc1ac22c269e2c7d839ba209e8520d55235bbf786c1c0d4fd969f5a09090055823f9e025230ed4adeb388
+
+pkgname = ruby-winrm
+
