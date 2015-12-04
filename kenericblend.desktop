@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+Name=Blender Documents (Keneric)
+Name[x-test]=xxBlender Documentsxx
+
+X-KDE-ServiceTypes=ThumbCreator
+MimeType=application/x-blender;
+
+X-KDE-Library=keneric
+CacheThumbnail=true
