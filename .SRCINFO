@@ -1,0 +1,17 @@
+pkgbase = holo-build
+	pkgdesc = Cross-distribution system package compiler
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://holocm.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = perl
+	depends = fakeroot
+	depends = pacman
+	source = https://github.com/holocm/holo-build/releases/download/v1.0/holo-build-1.0.tar.gz
+	md5sums = 85be847194797b8df01a43876794aa22
+
+pkgname = holo-build
+
