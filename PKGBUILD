@@ -2,7 +2,7 @@
 # Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=vim-pydyn-xclip
-pkgver=7.4.884
+pkgver=7.4.944
 _versiondir=74
 pkgrel=1
 pkgdesc='Vi Improved with dynamic python (python/dyn, python3/dyn) and clipboard support'
@@ -16,7 +16,7 @@ conflicts=('vim-minimal' 'vim' 'vim-python3' 'gvim' 'gvim-python3')
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
         archlinux.vim)
-sha1sums=('9ffcf8ac1207684c2165d6d4a821d01ad7b1fff5'
+sha1sums=('a670bd0a8417363d757341e1435474b42dd3ca75'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 

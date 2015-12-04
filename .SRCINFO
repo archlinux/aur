@@ -1,6 +1,6 @@
 pkgbase = vim-pydyn-xclip
 	pkgdesc = Vi Improved with dynamic python (python/dyn, python3/dyn) and clipboard support
-	pkgver = 7.4.884
+	pkgver = 7.4.944
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = vim-pydyn-xclip
 	makedepends = ruby
 	makedepends = libxt
 	makedepends = lua
-	depends = vim-runtime=7.4.884-1
+	depends = vim-runtime=7.4.944-1
 	depends = gpm
 	depends = ruby
 	depends = lua
@@ -27,10 +27,10 @@ pkgbase = vim-pydyn-xclip
 	conflicts = vim-python3
 	conflicts = gvim
 	conflicts = gvim-python3
-	source = vim-7.4.884.tar.gz::http://github.com/vim/vim/archive/v7.4.884.tar.gz
+	source = vim-7.4.944.tar.gz::http://github.com/vim/vim/archive/v7.4.944.tar.gz
 	source = vimrc
 	source = archlinux.vim
-	sha1sums = 9ffcf8ac1207684c2165d6d4a821d01ad7b1fff5
+	sha1sums = a670bd0a8417363d757341e1435474b42dd3ca75
 	sha1sums = 15ebf3f48693f1f219fe2d8edb7643683139eb6b
 	sha1sums = 94f7bb87b5d06bace86bc4b3ef1372813b4eedf2
 
