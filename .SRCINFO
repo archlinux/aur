@@ -22,7 +22,6 @@ pkgbase = musescore-git
 	depends = qt5-tools
 	depends = shared-mime-info
 	optdepends = lame: MP3 export
-	conflicts = musescore
 	source = git+https://github.com/musescore/MuseScore.git#branch=master
 	md5sums = SKIP
 

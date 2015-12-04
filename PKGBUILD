@@ -27,7 +27,7 @@ makedepends=('cmake'
 	'qt5-script'
 	'texlive-core')
 optdepends=('lame: MP3 export')
-conflicts=('musescore')
+conflicts=('')
 install='musescore.install'
 
 source=("git+$url.git#branch=$_branch")
@@ -41,12 +41,12 @@ pkgver() {
 build() {
   cd MuseScore
 
-  make PREFIX='/usr' release
+  make PREFIX='/usr' SUFFIX="-git" LABEL="Git Build" release
 }
 
 package() {
   cd MuseScore/build.release
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" SUFFIX="-git" LABEL="Git Build" install
 }
 
