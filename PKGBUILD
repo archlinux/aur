@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=46.0.2490.80
+pkgver=47.0.2526.73
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -20,12 +20,13 @@ makedepends=('python2' 'python2-ply' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
-            'kdeutils-kwalletmanager: for storing passwords in KWallet')
+            'kwallet: for storing passwords in KWallet')
 options=('!strip')
 install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         inox.desktop
+        chromium-fix-print-preview-on-en_GB-locale.patch
         0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
         chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-autofill-download-manager.patch
@@ -41,27 +42,34 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/launcher-branding.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-missing-key-warning.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-translation-lang-fetch.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-update-pings.patch)
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-update-pings.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/chromium-sandbox-pie.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-new-avatar-menu.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-first-run-behaviour.patch)
         
-sha256sums=('fe8610294664b44fdf80d9d0ed140158783474e7ae889e3a34ed32d24913fe3f'
+sha256sums=('6d66d01c8ddff6562ff13d30ed65ef0cdc2888d9e4924be615d576b7eb15f4f5'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
+            '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
             'd114def156d60d5f4c9e42f2955ba19bdebe38037a330ef947af24ace25db39d'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
-            'f36d0212121a4a0751e52bdfbc27c5535b925983b90d342a2d067f4fa7c13711'
-            'f28a6d92f2f2ee3a69694468019a59718a8328c28be22c0db23671f376f786f2'
-            '06a2e21f8ab2dc259d261036ded190aed23ca44a351dd9a66b879a465306f8c4'
-            '5ce34040124a201286f59b8d58559671d542d6994d17dc35287dbff36d5bce23'
-            '9ace9483fc37bbf9ab59b4e58a05c18e66078c29e9e40044e36fc9117bd55bfd'
+            '79401ba0d780cb459a32824729abb7976b5f1b45623cd2896c0f0198a7f77764'
+            '59ebf0ff2227eea507bf113c8f6ff4768dd168b6fa7cc2195172d2757a5df807'
+            '878bd25d728df2bed46e5b50b5c79849f30d9b8e6d39b1e5d95d37c910c8f9a3'
+            '81f5f881e10d974b2a770b68e8becc25db22781252e85d0b7323f2c1236190a1'
+            '64b5e27c57017b80c3e1471d0ee9fd45901392beb9ffe69fb4362f701eccc6ae'
             '2aec3f9a8a3f9f64caf1fdaae797a617199739c8b0ead1e176aba1bcfffcc389'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
             'b081462f645ffab7aaf2c310761c269329d3d22a36cf463dd0ba5ebb3da2141e'
             'fc6b8f673cabfa3ce1cba535b6c872cdd41e815fc0c9a6468ac5fa7b5fbe3ce3'
-            '74e2c96f847ae24a56e5eff46a390e175e2e95c056c7dd9ef76139cad0364854'
+            'd2861c60acfdb710cf8b114ef1c3484011102cfef813c480d460002305ebcc0f'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
-            '5f4ba0846bc38d2fb7c0546974c69fb37f4235bb5a60233a7cb44f515e466a79'
-            'e94dd87a3c28cdee7fde1c05d0ad2b76dd72a60819dde0401ef66828ac492bf2')
+            '0362593751abc09bbf2244109c93068fc9a40a51ba4dbd17bb2b107ff50d7dce'
+            'e94dd87a3c28cdee7fde1c05d0ad2b76dd72a60819dde0401ef66828ac492bf2'
+            'cd0d2b665f9d39f7c25929f8e1b85b9a391b4a5a8a70d005cd815bbf2bb4e548'
+            '9e37751dca4a2b60681ba14119bc3839685ae420686664de7dfc4245f9eeff3c'
+            'c47efe038f502d4fe2b66e59347b01c58ee8739a8d8f050c6c1cc60752d24f13')
 
 # We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
 # instructions on how to build the toolchain from source don't work that well
@@ -78,6 +86,12 @@ prepare() {
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
   touch chrome/test/data/webui/i18n_process_css_test.html
   
+  # https://code.google.com/p/chromium/issues/detail?id=541273
+  sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
+
+  # https://code.google.com/p/chromium/issues/detail?id=480415
+  patch -Np1 -i ../chromium-fix-print-preview-on-en_GB-locale.patch
+
   # https://code.google.com/p/chromium/issues/detail?id=505226
   patch -d third_party/pdfium -Np1 <../0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
 
@@ -90,19 +104,22 @@ prepare() {
     patch -Np1
 
   # Apply Inox patches
-  patch -p1 < ../disable-autofill-download-manager.patch
-  patch -p1 < ../disable-google-url-tracker.patch
-  patch -p1 < ../disable-default-extensions.patch
-  patch -p1 < ../modify-default-prefs.patch
-  patch -p1 < ../disable-notification-promo-fetch.patch
-  patch -p1 < ../restore-classic-ntp.patch
-  patch -p1 < ../disable-google-ipv6-probes.patch
-  patch -p1 < ../disable-gcm-status-check.patch
-  patch -p1 < ../add-duckduckgo-search-engine.patch
-  patch -p1 < ../branding.patch
-  patch -p1 < ../disable-missing-key-warning.patch
-  patch -p1 < ../disable-translation-lang-fetch.patch
-  patch -p1 < ../disable-update-pings.patch
+  patch -Np1 -i ../disable-autofill-download-manager.patch
+  patch -Np1 -i ../disable-google-url-tracker.patch
+  patch -Np1 -i ../disable-default-extensions.patch
+  patch -Np1 -i ../modify-default-prefs.patch
+  patch -Np1 -i ../disable-notification-promo-fetch.patch
+  patch -Np1 -i ../restore-classic-ntp.patch
+  patch -Np1 -i ../disable-google-ipv6-probes.patch
+  patch -Np1 -i ../disable-gcm-status-check.patch
+  patch -Np1 -i ../add-duckduckgo-search-engine.patch
+  patch -Np1 -i ../branding.patch
+  patch -Np1 -i ../disable-missing-key-warning.patch
+  patch -Np1 -i ../disable-translation-lang-fetch.patch
+  patch -Np1 -i ../disable-update-pings.patch
+  patch -Np1 -i ../chromium-sandbox-pie.patch
+  patch -Np1 -i ../disable-new-avatar-menu.patch
+  patch -Np1 -i ../disable-first-run-behaviour.patch
   
   # Remove bundled ICU; its header files appear to get picked up instead of
   # the system ones, leading to errors during the final link stage
@@ -123,7 +140,7 @@ prepare() {
   
   # Patch Inox launcher
   cd "$srcdir/chromium-launcher-$_launcher_ver"
-  patch -p1 < ../launcher-branding.patch
+  patch -Np1 -i ../launcher-branding.patch
 }
 
 build() {
@@ -162,7 +179,7 @@ build() {
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
-    -Duse_system_libvpx=0
+    -Duse_system_libvpx=1
     -Duse_system_libxml=0
     -Duse_system_snappy=1
     -Duse_system_xdg_utils=1
@@ -188,6 +205,7 @@ build() {
     -Denable_print_preview=0
     -Dtracing_like_official_build=1
     -Dfieldtrial_testing_like_official_build=1
+    -Dfastbuild=1
     )
 
   if (( ! $_build_nacl )); then
