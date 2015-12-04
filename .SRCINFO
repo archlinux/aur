@@ -1,0 +1,14 @@
+pkgbase = ical2html
+	pkgdesc = Utilities to filter, merge, and generate HTML from ical files
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://www.w3.org/Tools/Ical2html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libical
+	source = http://www.w3.org/Tools/Ical2html/ical2html-2.1.tar.gz
+	md5sums = bf0bb0e590aef266694b66a741d86191
+
+pkgname = ical2html
+
