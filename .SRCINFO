@@ -1,0 +1,14 @@
+pkgbase = clonepkg
+	pkgdesc = Clones AUR packages with Git
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/atweiden/clonepkg
+	arch = any
+	license = UNLICENSE
+	depends = git
+	depends = perl
+	source = clonepkg-0.0.1.tar.gz::https://codeload.github.com/atweiden/clonepkg/tar.gz/0.0.1
+	sha256sums = 48d0126b3e0da87b1da478415715b88a74009c383f528037ea7480765ce0044c
+
+pkgname = clonepkg
+
