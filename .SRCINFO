@@ -1,26 +1,26 @@
 pkgbase = python-keystoneauth
 	pkgdesc = Authentication Library for OpenStack Identity
-	pkgver = 1.2.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/openstack/keystoneauth
 	arch = any
 	license = Apache
 	makedepends = python-pbr>=1.8
 	makedepends = python2-pbr>=1.8
-	source = https://pypi.python.org/packages/source/k/keystoneauth1/keystoneauth1-1.2.0.tar.gz
-	sha256sums = e8386dc8b0f17d439e1f2f4e6a8ef64fe0f2b81938b2f0b13f80042bb98e2b85
+	source = https://pypi.python.org/packages/source/k/keystoneauth1/keystoneauth1-2.0.0.tar.gz
+	sha256sums = 47af0be2693134efea6f5a4b2a1b68430ffd535ea81b5aaafa17cc8a9c3a7fad
 
 pkgname = python-keystoneauth
 	depends = python-iso8601>=0.1.9
-	depends = python-requests>=2.5.2
+	depends = python-requests>=2.8.1
 	depends = python-six>=1.9.0
 	depends = python-stevedore>=1.5.0
-	provides = python-keystoneauth1=1.2.0-1
+	provides = python-keystoneauth1=2.0.0-1
 
 pkgname = python2-keystoneauth
 	depends = python2-iso8601>=0.1.9
-	depends = python2-requests>=2.5.2
+	depends = python2-requests>=2.8.1
 	depends = python2-six>=1.9.0
 	depends = python2-stevedore>=1.5.0
-	provides = python2-keystoneauth1=1.2.0-1
+	provides = python2-keystoneauth1=2.0.0-1
 
