@@ -1,7 +1,7 @@
 # Maintainer: Simon Kohlmeyer <simon.kohlmeyer@gmail.com
 
 pkgname=git-gitlab
-pkgver=f5392cabaf5e9d97b2e33390ab77f05367924379
+pkgver=r72.c17290b182b5a5df866a57dfacee93f6b2055d8c
 pkgrel=1
 pkgdesc="gitlab command line interface"
 arch=('x86_64' 'i686')
@@ -10,14 +10,14 @@ license=('MIT')
 makedepends=('go' 'libgit2')
 depends=('libgit2')
 options=('!strip' '!emptydirs')
-source=("https://github.com/numa08/$pkgname/archive/$pkgver.zip")
-sha256sums=('eaa2b26f4e1c332631beff2413a5a9cae33fc6c9383f7ca66a232ba975a53abf')
+source=("https://github.com/voidus/$pkgname/archive/$pkgver.zip")
+sha256sums=('c7fe90812868cd1b2a0eeaa708a0a5fbba92a9d7bada76092a2b360aa46ab7f5')
 
 prepare() {
   export GOPATH="$srcdir"
   go get github.com/codegangsta/cli
   go get github.com/plouc/go-gitlab-client
-  go get gopkg.in/libgit2/git2go.v22
+  go get gopkg.in/libgit2/git2go.v23
 }
 
 build() {
