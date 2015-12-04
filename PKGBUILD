@@ -19,30 +19,30 @@ conflicts=('libjpeg' 'turbojpeg' 'libjpeg-turbo')
 replaces=('libjpeg' 'turbojpeg' 'libjpeg-turbo')
 
 build() {
-	cd "${srcdir}/${_srcname}-${pkgver}"
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   INCLUDES="-I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux"
   export CFLAGS="${CFLAGS} ${INCLUDES}"
 
   autoreconf -fiv
-	./configure --prefix=/usr --with-java --with-jpeg8 --mandir=/usr/share/man
-	make -j1
+  ./configure --prefix=/usr --with-java --with-jpeg8 --mandir=/usr/share/man
+  make -j1
 }
 
 check() {
-	cd "${srcdir}/${_srcname}-${pkgver}"
-	make test
+  cd "${srcdir}/${_srcname}-${pkgver}"
+  make test
 }
 
 package() {
-	cd "${srcdir}/${_srcname}-${pkgver}"
-	make \
-		DESTDIR="${pkgdir}" \
-		docdir="/usr/share/doc/${_srcname}" \
-		exampledir="/usr/share/doc/${_srcname}" \
-		install
+  cd "${srcdir}/${_srcname}-${pkgver}"
+  make \
+    DESTDIR="${pkgdir}" \
+    docdir="/usr/share/doc/${_srcname}" \
+    exampledir="/usr/share/doc/${_srcname}" \
+    install
 
-	install -d "${pkgdir}/usr/share/licenses/libjpeg-turbo"
-	ln -t "${pkgdir}/usr/share/licenses/libjpeg-turbo" -s ../../doc/libjpeg-turbo/README{,-turbo.txt}
-	install -m644 jpegint.h "${pkgdir}/usr/include" # required by other software
+  install -d "${pkgdir}/usr/share/licenses/libjpeg-turbo"
+  ln -t "${pkgdir}/usr/share/licenses/libjpeg-turbo" -s ../../doc/libjpeg-turbo/README{,-turbo.txt}
+  install -m644 jpegint.h "${pkgdir}/usr/include" # required by other software
 }
