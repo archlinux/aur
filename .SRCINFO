@@ -1,0 +1,22 @@
+pkgbase = python-tempdir
+	pkgdesc = Python wrappers for manipulating temp directories
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/tempdir/0.6
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/t/tempdir/tempdir-0.6.tar.gz
+	md5sums = 93890c11a7101ae55eebf77b86c75a05
+
+pkgname = python-tempdir
+	depends = python
+	depends = python-setuptools
+
+pkgname = python2-tempdir
+	depends = python2
+	depends = python2-setuptools
+
