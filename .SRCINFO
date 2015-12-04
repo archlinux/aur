@@ -1,5 +1,5 @@
 pkgbase = python-shutilwhich
-	pkgdesc = Python wrappers for calling LaTeX/building LaTeX documents
+	pkgdesc = Backport of shutil.which
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/latex/1.1.0
@@ -7,16 +7,10 @@ pkgbase = python-shutilwhich
 	license = custom
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
 	source = shutilwhich-1.1.0.tar.gz::https://github.com/mbr/shutilwhich/archive/1.1.0.tar.gz
 	md5sums = 8a5a43077e8af4d027dfb7b88827022b
 
 pkgname = python-shutilwhich
 	depends = python
 	depends = python-setuptools
-
-pkgname = python2-shutilwhich
-	depends = python2
-	depends = python2-setuptools
 
