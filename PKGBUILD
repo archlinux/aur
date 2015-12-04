@@ -11,7 +11,7 @@
 
 _pkgname=sickrage2
 pkgname=$_pkgname-git
-pkgver=4.2.0.2.r2.gea24e7b
+pkgver=4.2.1.01.r4.gc575707
 pkgrel=1
 pkgdesc="Automatic torrent/nzb video library manager for TV shows"
 arch=('any')
