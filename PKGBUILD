@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer:  Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Simone Sclavi 'Ito' <darkhado@gmail.com>
 
