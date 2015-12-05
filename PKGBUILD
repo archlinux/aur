@@ -1,13 +1,13 @@
-# Maintainer: EFE KANDEMIR  <817c0d3r@gmail.com>
+# Maintainer: Blood iron  <8100d1r0n@riseup.net>
 pkgname=archlinuxinfo
 pkgver=2
 pkgrel=4
 pkgdesc="C program to display system infomation alongside the Arch Linux logo"
 arch=('any')
-url="https://github.com/817c0d3r/Logo"
-license=('GPL')
+url="https://github.com/8100d1r0n/logo"
+license=('GPL2')
 depends=("gcc")
-source=(https://raw.githubusercontent.com/817c0d3r/Logo/master/${pkgname}.c)
+source=(https://raw.githubusercontent.com/8100d1r0n/logo/master/${pkgname}.c)
 sha512sums=('SKIP')
 package() {
 	msg "Compile..."
