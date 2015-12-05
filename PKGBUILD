@@ -2,7 +2,7 @@
 # Maintainer: rich_o <aurua@riseup.net>
 
 pkgname="ncmpcpp-git"
-pkgver=1948.43a6b81
+pkgver=1975.79d2863
 pkgrel=1
 epoch=1
 pkgdesc="An almost exact clone of ncmpc with some new features." 
@@ -16,7 +16,7 @@ optdepends=('curl: fetch lyrics'
             'fftw: frequency spectrum mode visualization')
 conflicts=('ncmpcpp' 'ncmpcpp-xdg-config' 'ncmpcpp-xdg-config-git' 'ncmpcpp-color')
 install=${pkgname}.install
-source=("git+git://repo.or.cz/ncmpcpp.git")
+source=("git+https://github.com/arybczak/ncmpcpp")
 md5sums=('SKIP')
 
 pkgver() {

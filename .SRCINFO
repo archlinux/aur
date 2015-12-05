@@ -1,6 +1,6 @@
 pkgbase = ncmpcpp-git
 	pkgdesc = An almost exact clone of ncmpc with some new features.
-	pkgver = 1948.43a6b81
+	pkgver = 1975.79d2863
 	pkgrel = 1
 	epoch = 1
 	url = http://unkart.ovh.org/ncmpcpp/
@@ -22,7 +22,7 @@ pkgbase = ncmpcpp-git
 	conflicts = ncmpcpp-xdg-config
 	conflicts = ncmpcpp-xdg-config-git
 	conflicts = ncmpcpp-color
-	source = git+git://repo.or.cz/ncmpcpp.git
+	source = git+https://github.com/arybczak/ncmpcpp
 	md5sums = SKIP
 
 pkgname = ncmpcpp-git
