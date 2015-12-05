@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='GStreamer Python 2 overrides for the gobject-introspection-based pygst bindings (Git version)'
 arch=('i686' 'x86_64' 'armv6h')
 license=('LGPL')
-depends=('gstreamer' 'python2' 'gobject-introspection')
+depends=('gstreamer' 'python2' 'gobject-introspection' 'python2-gobject')
 url='http://gstreamer.freedesktop.org/modules/gst-python.html'
 
 provides=(gst-python2)
