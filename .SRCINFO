@@ -1,7 +1,7 @@
 pkgbase = libmill
 	pkgdesc = Go-style concurrency in C
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = http://libmill.org/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = libmill
 	makedepends = gcc
 	depends = pkgconfig
 	options = !buildflags
-	source = https://github.com/sustrik/libmill/archive/1.1.tar.gz
-	sha256sums = 96da50744f93675501b0479b4564c15224bbaa88b9165e5948a53d6cad39d8ac
+	source = https://github.com/sustrik/libmill/archive/1.2.tar.gz
+	sha256sums = e2b4cc82a5855a8af09748ff35865267a0ccebbf6d311ae30dd7b3901f9cf94e
 
 pkgname = libmill
 
