@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=zimg-git
-pkgver=2.0.1.22.g1aa2811
+pkgver=2.0.1.24.g0d08c8e
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('i686' 'x86_64')
@@ -36,6 +36,4 @@ build() {
 package(){
   make -C zimg DESTDIR="${pkgdir}" install
   rm -fr "${pkgdir}/usr/lib/zimg"
-
-  install -Dm644 zimg/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
