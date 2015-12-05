@@ -1,3 +1,5 @@
+# Maintainer: tjbp <archlinux@tjbp.net>
+
 pkgname='wkhtmltopdf-alpha'
 pkgver='0.13'
 pkgrel='1'
