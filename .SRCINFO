@@ -1,14 +1,14 @@
 pkgbase = python-oslo-i18n
 	pkgdesc = Oslo i18n library
-	pkgver = 2.7.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/openstack/oslo.i18n
 	arch = any
 	license = Apache
 	makedepends = python-pbr>=1.8
 	makedepends = python2-pbr>=1.8
-	source = https://pypi.python.org/packages/source/o/oslo.i18n/oslo.i18n-2.7.0.tar.gz
-	sha256sums = 9f510fd251510ca670ef876783a1727f67fe7a27595d772057273d33e4664f86
+	source = https://pypi.python.org/packages/source/o/oslo.i18n/oslo.i18n-3.0.0.tar.gz
+	sha256sums = f49a0511f495d9328bd1216588ac5b03dda8be2502d1078af115550d040beb2e
 
 pkgname = python-oslo-i18n
 	depends = python-pbr>=1.6
