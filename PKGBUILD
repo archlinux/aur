@@ -3,8 +3,8 @@
 # Contributor: Alexandru Ianu <alexandru.ianu@gmail.com>
 
 pkgname=steam-native
-pkgver=1.0.0.50
-pkgrel=16
+pkgver=1.0.0.51
+pkgrel=1
 pkgdesc="Sets a native runtime environment for Steam by default, adds a Steam runtime launcher for compatibility."
 arch=('i686' 'x86_64')
 url='http://steampowered.com/'
@@ -23,12 +23,39 @@ sha256sums=('8ce140660b4c6295ff0e580a02cebafce1ed22828561304e3f99ee78b8cfdb5d'
 sha256sums_x86_64=('b56b9da85e5647ef2b8013d14378b30917d7701cd61b27ba6a39045ab5ecc529')
 
 depends=('steam' 'networkmanager')
-depends_i686=('openal' 'gtk2' 'libgcrypt15' 'libnl' 'libpng12' 'gconf' 'nss' 'libpulse' 'libxss')
-depends_x86_64=('lib32-openal' 'lib32-gtk2' 'lib32-libgcrypt15' 'lib32-libnl' 'lib32-libpng12' 'lib32-gconf' 'lib32-nss' 'lib32-libpulse' 'lib32-libxss' 'lib32-gnutls28')
+depends_i686=('openal' 'gtk2' 'libgcrypt15' 'libnl' 'libpng12' 'gconf' 'nss' 'libpulse' 'libxss' 'gnutls28')
+depends_x86_64=('lib32-openal' 'lib32-gtk2' 'lib32-libgcrypt15' 'lib32-libnl' 'lib32-libpng12' 'lib32-gconf'
+	'lib32-nss' 'lib32-libpulse' 'lib32-libxss' 'lib32-gnutls28')
 
-optdepends=('mono: game dependency' 'mono-addins: game dependency')
-optdepends_i686=('libappindicator-gtk2: needed if tray icon not working (Gnome)' 'libappindicator-gtk3: needed if tray icon not working (Gnome)' 'sdl: game dependency' 'sdl_image: game dependency' 'sdl_mixer: game dependency' 'sdl2: game dependency' 'sdl2_image: game dependency' 'tcp_wrappers-libs: game dependency' 'speex: game dependency' 'gperftools: game dependency' 'libcurl-gnutls: game dependency')
-optdepends_x86_64=('lib32-libappindicator-gtk2: needed if tray icon not working (Gnome)' 'lib32-libappindicator-gtk3: needed if tray icon not working (Gnome)' 'lib32-sdl: game dependency' 'lib32-sdl_image: game dependency' 'lib32-sdl_mixer: game dependency' 'lib32-sdl2: game dependency' 'lib32-sdl2_image: game dependency' 'lib32-tcp_wrappers-libs: game dependency' 'lib32-speex: game dependency' 'lib32-gperftools: game dependency' 'lib32-libcurl-gnutls: game dependency' 'lib32-glew1.10: gmae dependency')
+optdepends=('mono: game dependency'
+	'mono-addins: game dependency'
+	'libcurl-gnutls: game dependency'
+	'glew1.10: game dependency')
+optdepends_i686=('libappindicator-gtk2: needed if tray icon not working (Gnome)'
+	'libappindicator-gtk3: needed if tray icon not working (Gnome)'
+	'sdl: game dependency'
+	'sdl_image: game dependency'
+	'sdl_mixer: game dependency'
+	'sdl2: game dependency'
+	'sdl2_image: game dependency'
+	'tcp_wrappers-libs: game dependency'
+	'speex: game dependency'
+	'gperftools: game dependency'
+	'rtmpdump: game dependency')
+optdepends_x86_64=('lib32-libappindicator-gtk2: needed if tray icon not working (Gnome)'
+	'lib32-libappindicator-gtk3: needed if tray icon not working (Gnome)'
+	'lib32-sdl: game dependency'
+	'lib32-sdl_image: game dependency'
+	'lib32-sdl_mixer: game dependency'
+	'lib32-sdl2: game dependency'
+	'lib32-sdl2_image: game dependency'
+	'lib32-tcp_wrappers-libs: game dependency'
+	'lib32-speex: game dependency'
+	'lib32-gperftools: game dependency'
+	'lib32-rtmpdump: game dependency'
+	'lib32-libcurl-gnutls: game dependency'
+	'lib32-glew1.10: game dependency'
+	'steam-libs: additional libraries')
 
 provides=('libudev.so.0')
 provides_x86_64=('lib32-libudev.so.0' 'lib32-networkmanager=0.9.8.10' 'lib32-libnm-glib=0.9.8.10')

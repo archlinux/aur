@@ -46,8 +46,8 @@ post_install() {
 post_upgrade() {
 	if [ $(vercmp "$2" '1.0.0.50-12') -le 0 ]; then
 		if grep -q 'LD_LIBRARY_PATH=/usr/lib' /etc/environment; then
-			note 'Library path set by prior package version was removed since it is not needed anymore'
 			sed -i '/LD_LIBRARY_PATH/d' /etc/environment
+			note 'Library path set by prior package version has been removed since it is not needed anymore'
 			RESTART=1
 		fi
 	fi
