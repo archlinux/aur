@@ -1,23 +1,25 @@
 pkgbase = bauerbill
 	pkgdesc = Extension of Powerpill with AUR and ABS support.
-	pkgver = 2015.12.4.3
+	pkgver = 2015.12.5
 	pkgrel = 1
 	url = http://xyne.archlinux.ca/projects/bauerbill
 	arch = any
 	license = GPL
-	depends = python3
-	depends = powerpill
-	depends = python3-xcpf
-	depends = python3-aur
-	depends = pm2ml
 	depends = pbget
+	depends = pm2ml
+	depends = powerpill
+	depends = python-xdg
+	depends = python3
+	depends = python3-aur
+	depends = python3-memoizedb
+	depends = python3-xcpf
 	backup = etc/bauerbill/bauerbill.json
-	source = http://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2015.12.4.3.tar.xz
-	source = http://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2015.12.4.3.tar.xz.sig
-	md5sums = 5891b1713519808408fb6e103525e256
-	md5sums = 4e77e8b9fa6f1f2fb6cfcf76fe663101
-	sha512sums = ef0afa4a40447f12b1b88802bf94e860445bade87da796843bbeb47c5799c4a0b4c2203c3c816606810021889f6757573453ed81bcc711306055f15514f3c565
-	sha512sums = 03e1502bab098668457db49a6095ca9fc9b283650199c650669fc2a72259f2b0b7976f060f251bb52dee88d07acf3a5e067547215d6e95b0bc84d9a439ab110f
+	source = http://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2015.12.5.tar.xz
+	source = http://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2015.12.5.tar.xz.sig
+	md5sums = afb88e1f6a7cb3b192c535bc0a50b93e
+	md5sums = c7890ef34364b3221afe7bb052a42d2c
+	sha512sums = cfeb38f0292e2fd4ce0eacec41fae9f11d054452ccba63c67349f75aec3e3a64741cac86b2b7496690721babc6caeb77c198cd28d5ac723b6505862d2f6f97c2
+	sha512sums = d424295984b2913e473e9e3825e88eac0a530e7366e93ae48d3e542d3ab88afcfc34018338fef836ab019bda64bd0307ed232450f7591648ec06b5c557059285
 
 pkgname = bauerbill
 
