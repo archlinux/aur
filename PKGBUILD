@@ -1,3 +1,4 @@
+# Maintainer: yaroslav <proninyaroslav@mail.ru>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Rorschach <r0rschach@lavabit.com>
 
