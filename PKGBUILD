@@ -59,10 +59,10 @@ build() {
 
 	export CFLAGS="-Wno-error"
 	git clone https://boringssl.googlesource.com/boringssl
-	cd boringssl
-	mkdir build && cd build && cmake ../ && make && cd ../
+	cd ${srcdir}/boringssl
+	mkdir build && cd build && cmake ../ && make && cd ${srcdir}/boringssl
 	mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
-	cp build/crypto/libcrypto.a build/ssl/libssl.a .openssl/lib && cd ..
+	cp ${srcdir}/boringssl/build/crypto/libcrypto.a ${srcdir}/boringssl/build/ssl/libssl.a .openssl/lib && cd ..
 
 	cd $_src_dir
 
@@ -92,7 +92,7 @@ build() {
 		--with-pcre-jit \
 		--with-stream
 
-	touch ../boringssl/.openssl/include/openssl/ssl.h
+	touch ${srcdir}/boringssl/.openssl/include/openssl/ssl.h
 	patch -p0 < ../openssl.patch
 
 	make
