@@ -1,0 +1,85 @@
+diff -Naur rubrica2-2.0.2~/configure rubrica2-2.0.2/configure
+--- rubrica2-2.0.2~/configure	2009-01-25 01:31:39.000000000 -0600
++++ rubrica2-2.0.2/configure	2009-01-25 01:31:43.000000000 -0600
+@@ -21139,7 +21139,7 @@
+ 	     && mktime_test ((time_t) (60 * 60 * 24))))
+ 	return 1;
+ 
+-      for (j = 1; 0 < j; j *= 2)
++      for (j = 1; 0 < j; j <<= 2)
+ 	if (! bigtime_test (j))
+ 	  return 1;
+       if (! bigtime_test (j - 1))
+diff -Naur rubrica2-2.0.2~/interface/MainWindow.glade rubrica2-2.0.2/interface/MainWindow.glade
+--- rubrica2-2.0.2~/interface/MainWindow.glade	2009-01-25 01:31:39.000000000 -0600
++++ rubrica2-2.0.2/interface/MainWindow.glade	2009-01-25 01:31:43.000000000 -0600
+@@ -84,7 +84,7 @@
+             <child>
+               <widget class="GtkMenuItem" id="menuitem2">
+                 <property name="visible">True</property>
+-                <property name="label">_Modifica</property>
++                <property name="label">_Edit</property>
+                 <property name="use_underline">True</property>
+                 <child>
+                   <widget class="GtkMenu" id="menuitem2_menu">
+@@ -173,7 +173,7 @@
+             <child>
+               <widget class="GtkMenuItem" id="menuitem4">
+                 <property name="visible">True</property>
+-                <property name="label">A_iuto</property>
++                <property name="label">_Help</property>
+                 <property name="use_underline">True</property>
+                 <child>
+                   <widget class="GtkMenu" id="menuitem4_menu">
+diff -Naur rubrica2-2.0.2~/Makefile.in rubrica2-2.0.2/Makefile.in
+--- rubrica2-2.0.2~/Makefile.in	2009-01-25 01:31:39.000000000 -0600
++++ rubrica2-2.0.2/Makefile.in	2009-01-25 01:32:12.000000000 -0600
+@@ -69,7 +69,7 @@
+ 	"$(DESTDIR)$(schemadir)"
+ desktopDATA_INSTALL = $(INSTALL_DATA)
+ mimeDATA_INSTALL = $(INSTALL_DATA)
+-schemaDATA_INSTALL = $(INSTALL_DATA)
++schemaDATA_INSTALL = gconf-merge-schema
+ DATA = $(desktop_DATA) $(mime_DATA) $(schema_DATA)
+ RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
+   distclean-recursive maintainer-clean-recursive
+@@ -419,12 +419,12 @@
+ 	done
+ install-schemaDATA: $(schema_DATA)
+ 	@$(NORMAL_INSTALL)
+-	test -z "$(schemadir)" || $(MKDIR_P) "$(DESTDIR)$(schemadir)"
++	test -z "$(schemadir)" || $(MKDIR_P) "$(DESTDIR)$(datadir)/gconf/schemas"
+ 	@list='$(schema_DATA)'; for p in $$list; do \
+ 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+ 	  f=$(am__strip_dir) \
+-	  echo " $(schemaDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(schemadir)/$$f'"; \
+-	  $(schemaDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(schemadir)/$$f"; \
++	  echo " $(schemaDATA_INSTALL) '$(DESTDIR)$(datadir)/gconf/schemas/$$f' '$$d$$p'"; \
++	  $(schemaDATA_INSTALL) "$(DESTDIR)$(datadir)/gconf/schemas/$$f" "$$d$$p"; \
+ 	done
+ 
+ uninstall-schemaDATA:
+diff -Naur rubrica2-2.0.2~/rubrica2.desktop.in rubrica2-2.0.2/rubrica2.desktop.in
+--- rubrica2-2.0.2~/rubrica2.desktop.in	2009-01-25 01:31:39.000000000 -0600
++++ rubrica2-2.0.2/rubrica2.desktop.in	2009-01-25 01:31:43.000000000 -0600
+@@ -1,16 +1,12 @@
+ [Desktop Entry]
++Version=1.0
+ Name=Rubrica Addressbook
+-_Name=Rubrica Addressbook
+ Comment=Manage contacts and addresses
+ Comment[it]=Gestore di contatti e indirizzi
+-_Comment=Manage contacts and addresses
+-MimeType=application/x-rubrica
+-Patterns=*.rub;*.RUB;
++MimeType=application/x-rubrica;
+ Exec=@PACKAGE_NAME@
+-Icon=stock_addressbook.png
++Icon=/usr/share/pixmaps/@PACKAGE_NAME@/48x48/rubrica.png
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;Office;
++Categories=GNOME;Office;
+ StartupNotify=true
+-Encoding=UTF-8
+-
