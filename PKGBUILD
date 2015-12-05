@@ -6,7 +6,7 @@
 
 pkgname=freeimage
 pkgver=3.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:FIPL')
