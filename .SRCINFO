@@ -1,0 +1,17 @@
+pkgbase = scappit
+	pkgdesc = Simple screen capture and annotation
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://scappit.ohwg.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-x11extras
+	options = strip
+	source = https://github.com/ohwgiles/scappit/archive/v0.1.zip
+	md5sums = ecb851ca619ad22de822e19f1bd0715d
+
+pkgname = scappit
+
