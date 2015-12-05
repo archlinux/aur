@@ -1,0 +1,5 @@
+post_install(){
+  echo "==> Renamed to neatmailx to avoid conflict with other mailx packages."
+  echo "    To use mailx you need to edit 'config.h'."
+}
+

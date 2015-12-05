@@ -1,0 +1,23 @@
+pkgbase = mailx-git
+	pkgdesc = A small mailx clone, optimized to handle large mbox files.
+	pkgver = r134.8d4e5b7
+	pkgrel = 1
+	url = http://repo.or.cz/w/mailx.git
+	install = mailx-git.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	optdepends = pop3-git: A simple pop3 mail client.
+	optdepends = smtp-git: A simple smtp mail sender.
+	source = mailx-git::git://repo.or.cz/mailx.git
+	source = config.h
+	md5sums = SKIP
+	md5sums = 7972f21dfbe0d3dcaee90bc217edd389
+	sha1sums = SKIP
+	sha1sums = 0f67056328d0a8542984db302caa4fbc68fc7cc0
+	sha256sums = SKIP
+	sha256sums = 7a6fcea1421ba128941c4f3c8598dbb1285ae84daf3315288e6c891902aae47d
+
+pkgname = mailx-git
+
