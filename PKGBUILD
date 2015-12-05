@@ -1,14 +1,15 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Mark Coolen <mark.coolen@gmail.com>
+# Maintainer: SanskritFritz (gmail)
 
 pkgname=berusky2
 pkgver=0.10
-pkgrel=1
-pkgdesc="A logic game based on the puzzle game Sokoban"
+pkgrel=2
+pkgdesc="A logic game based on the puzzle game Sokoban."
 arch=('i686' 'x86_64')
 url="http://www.anakreon.cz/en/"
 license=('GPL')
-depends=('sdl_image' 'mesa' 'berusky2-data')
+depends=('glu' 'libvorbis' 'freealut' 'sdl_image' 'mesa' 'berusky2-data')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('3c2d5217f7a61a6fbc13d689b88ec4e4')
 
