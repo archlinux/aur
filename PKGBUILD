@@ -2,7 +2,7 @@
 # Original Package: Kerrick Staley <mail@kerrickstaley.com>
 
 pkgname=gst-python2-git
-pkgver=1.3.0.1.1272.59784c2
+pkgver=1.7.0.1.1304.4097d3d
 pkgrel=1
 pkgdesc='GStreamer Python 2 overrides for the gobject-introspection-based pygst bindings (Git version)'
 arch=('i686' 'x86_64' 'armv6h')
