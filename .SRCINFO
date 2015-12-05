@@ -1,0 +1,18 @@
+pkgbase = ttf-roboto-mono-powerline-git
+	pkgdesc = RobotoMono for Powerline
+	pkgver = r98.6ac4c01
+	pkgrel = 1
+	url = https://github.com/powerline/fonts
+	install = ttf-roboto-mono-powerline-git.install
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = powerline-fonts
+	conflicts = powerline-fonts-git
+	source = git://github.com/powerline/fonts.git
+	md5sums = SKIP
+
+pkgname = ttf-roboto-mono-powerline-git
+
