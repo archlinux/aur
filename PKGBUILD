@@ -3,7 +3,7 @@
 
 _pkgname=Pim
 pkgname=pim
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Python image viewer with vim-like keybindings"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/Narrat/Pim"
 license=('MIT')
 depends=('python-gobject')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Narrat/Pim/archive/$pkgver.tar.gz")
-sha256sums=('0abfd609ce5d9e0a2054a05e1747209c49b8f1a8bcc50e7eb0c8fa4eebdeeb7d')
+sha256sums=('0faf022a565b46394a9acfe9d8bc1eb4a976c9f3ac17fc4e883168c1c548b5d3')
 
 
 package() {
