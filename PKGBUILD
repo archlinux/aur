@@ -28,10 +28,10 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  python2 setup.py build
+  python setup.py build
 
   cd "$srcdir/$_pkgname2"
-  python setup.py build
+  python2 setup.py build
 }
 
 package_python-qtpy-git() {
