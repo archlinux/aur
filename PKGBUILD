@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=kipart
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package for generating multi-unit schematic symbols for KiCad from a CSV file"
 url="https://github.com/xesscorp/KiPart"
 depends=('python'
@@ -22,6 +22,9 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 
+    python setup.py install --root="$pkgdir" --optimize=1
+
+    # https://wiki.archlinux.org/index.php/Python_package_guidelines
+    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
 }
 
