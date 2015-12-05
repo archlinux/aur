@@ -1,7 +1,7 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
 pkgname=ttf-droid-sans-mono-dotted-powerline-git
-pkgver=r78.97dc451
-pkgrel=2
+pkgver=r98.6ac4c01
+pkgrel=1
 pkgdesc="Droid Sans Mono for Powerline (Dotted Zero)"
 arch=('any')
 url=('https://github.com/powerline/fonts')
