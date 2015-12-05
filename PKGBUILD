@@ -1,6 +1,6 @@
 # Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 pkgname=jasp-rbundle
-pkgver=2015.09.04
+pkgver=2015.12.02
 pkgrel=1
 pkgdesc="A bundle of R packages needed by JASP desktop"
 url="http://cran.r-project.org/"
