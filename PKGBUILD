@@ -30,7 +30,7 @@ package() {
   cd glew-${pkgver}
 
   make GLEW_DEST="${pkgdir}/usr" install
-  rm -rf "${pkgdir}"/usr/{bin,include,lib32/{libGLEW.{a,so},pkgconfig}}
+  rm -rf "${pkgdir}"/usr/{bin,include,lib/{libGLEW.{a,so},pkgconfig}}
 
   install -dm 755 "${pkgdir}"/usr/share/licenses/glew1.10
   install -m 644 LICENSE.txt "${pkgdir}"/usr/share/licenses/glew1.10/
