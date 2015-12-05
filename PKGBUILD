@@ -1,6 +1,6 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
 pkgname=ttf-monofur-powerline-git
-pkgver=r71.39c99c0
+pkgver=r98.6ac4c01
 pkgrel=1
 pkgdesc="Monofur for Powerline"
 arch=('any')
