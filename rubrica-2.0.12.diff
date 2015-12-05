@@ -1,0 +1,35 @@
+--- src/rubrica2-2.0.12/interface/MainWindow.glade	2010-06-20 08:23:49.000000000 -0400
++++ src2/rubrica2-2.0.12/interface/MainWindow.glade	2015-12-05 02:34:39.435638633 -0500
+@@ -84,7 +84,7 @@
+             <child>
+               <widget class="GtkMenuItem" id="menuitem2">
+                 <property name="visible">True</property>
+-                <property name="label">_Modifica</property>
++                <property name="label">_Edit</property>
+                 <property name="use_underline">True</property>
+                 <child>
+                   <widget class="GtkMenu" id="menuitem2_menu">
+@@ -173,7 +173,7 @@
+             <child>
+               <widget class="GtkMenuItem" id="menuitem4">
+                 <property name="visible">True</property>
+-                <property name="label">A_iuto</property>
++                <property name="label">_Help</property>
+                 <property name="use_underline">True</property>
+                 <child>
+                   <widget class="GtkMenu" id="menuitem4_menu">
+--- src/rubrica2-2.0.12/rubrica2.desktop.in	2011-12-03 13:48:41.000000000 -0500
++++ src2/rubrica2-2.0.12/rubrica2.desktop.in	2015-12-05 02:34:39.422305298 -0500
+@@ -3,10 +3,10 @@
+ Name[it]=Rubrica
+ Comment[en]=Manage contacts and addresses
+ Comment[it]=Gestore di contatti per GNOME
+-MimeType=application/x-rubrica
++MimeType=application/x-rubrica;
+ Patterns=*.rub;*.RUB;
+ Exec=rubrica2
+-Icon=stock_addressbook.png
++Icon=rubrica2
+ Terminal=false
+ Type=Application
+ Categories=GNOME;Application;Office;

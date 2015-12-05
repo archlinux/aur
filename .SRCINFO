@@ -1,7 +1,7 @@
 pkgbase = rubrica
-	pkgdesc = An addressbook manager for the GNOME desktop
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgdesc = An address book manager for the GNOME desktop
+	pkgver = 2.0.12
+	pkgrel = 1
 	url = http://rubrica.berlios.de/
 	install = rubrica.install
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = rubrica
 	depends = gconf
 	depends = shared-mime-info
 	options = !libtool
-	source = http://download.berlios.de/rubrica/rubrica2-2.0.2.tar.bz2
-	source = rubrica-2.0.2.diff
-	md5sums = a3b57d15d8ccd5bcc1a0c5be29ae08bc
-	md5sums = 7fdf967461a8a56c92883746b6f412e8
+	source = http://downloads.sourceforge.net/project/rubrica.berlios/rubrica2-2.0.12.tar.bz2
+	source = rubrica-2.0.12.diff
+	md5sums = 582b9e8c4ca9b17f83afa5a3d5842bc9
+	md5sums = 7219902d5722841342cf3186f18211db
 
 pkgname = rubrica
 
