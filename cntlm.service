@@ -6,7 +6,7 @@ After=network.target
 Type=forking
 ExecStart=/usr/bin/cntlm -P /run/cntlm.pid
 PIDFile=/run/cntlm.pid
-ExecStop= killall -9 cntlm
+ExecStop= /usr/bin/killall -9 cntlm
 
 [Install]
 WantedBy=multi-user.target
