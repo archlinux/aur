@@ -1,6 +1,6 @@
 pkgbase = mackerel-agent-git
 	pkgdesc = A revolutionary new kind of application performance management
-	pkgver = 0.17.1
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/mackerelio/mackerel-agent
 	arch = i686
