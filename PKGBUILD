@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.0.0b1.r546.g2c5568e
+pkgver=3.0.0b1.r593.g50f5f28
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -24,10 +24,6 @@ pkgver() {
 prepare() {
   rm -rf $_pkgname3
   cp -a $_pkgname2 $_pkgname3
-
-  # Patch Python/Python2
-  cd $_pkgname2
-  sed -i 's|#![ ]*/usr/bin/env python[ \t\r]*$|#!/usr/bin/env python2|' spyderlib/utils/external/pickleshare.py
 }
 
 build() {
@@ -49,6 +45,7 @@ package_spyder-git() {
            'python2-pylint'
            'python2-pep8 '
            'python2-psutil'
+           'python2-qtawesome'
 
            'python2-pyzmq'
            'desktop-file-utils'
@@ -88,6 +85,7 @@ package_spyder3-git() {
            'python-pylint'
            'pep8'
            'python-psutil'
+           'python-qtawesome'
 
            'python-pyzmq'
            'desktop-file-utils'
