@@ -1,7 +1,7 @@
 
 pkgname="cntlm"
 pkgver=0.92.3
-pkgrel=3
+pkgrel=4
 license=('GPL2')
 pkgdesc="An NTLM, NTLM2SR, and NTLMv2 authenticating HTTP proxy"
 arch=('i686' 'x86_64')
