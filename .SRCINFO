@@ -1,6 +1,6 @@
 pkgbase = ttf-literation-mono-powerline-git
 	pkgdesc = Literation Mono Powerline
-	pkgver = r71.39c99c0
+	pkgver = r98.6ac4c01
 	pkgrel = 1
 	url = https://github.com/powerline/fonts
 	install = ttf-literation-mono-powerline-git.install
