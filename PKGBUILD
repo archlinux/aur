@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=remctl
-pkgver=3.9
-pkgrel=2
+pkgver=3.10
+pkgrel=1
 pkgdesc="Tool for running commands on remote hosts using Kerberos authentication"
 arch=(i686 x86_64)
 url="http://www.eyrie.org/~eagle/software/remctl/"
@@ -19,7 +19,7 @@ source=("http://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
         "remctl.service"
         "remctl@.service"
         "remctl.socket")
-sha256sums=('7652a38008386a2cab4ba6f596ab0620a83a2b076dd56e74d01bbb9cddaed20e'
+sha256sums=('cf32c522aec1c888913d6d10e2077b479039a5d9eb5492a28a096637aaebaadb'
             'SKIP'
             '9801df9c99570fe92c0e215add2e05882a679127914e593055020cc7bee0d1e7'
             '7c04784c70919439025cfda57d7af8f264184c0d6078b42ee7440154392c1082'
