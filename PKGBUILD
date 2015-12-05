@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2
-pkgver=0.0.3
+pkgver=0.0.3.1
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ depends=('gtk-update-icon-cache' 'desktop-file-utils')
 makedepends=('git' 'cmake')
 options=('!buildflags')
 install=openrct2.install
-source=('https://github.com/OpenRCT2/OpenRCT2/archive/v0.0.3.tar.gz'
+source=('https://github.com/OpenRCT2/OpenRCT2/archive/v0.0.3.1.tar.gz'
         'https://openrct.net/launcher/libs/orctlibs.zip'
         'openrct2'
         'openrct2.desktop')
-sha256sums=('50a55a2ab48a4df26a32d17ee9c72e7310eba6537ed839ee81de2220afe79d80'
+sha256sums=('036f40d98fd444b08ed0d04f61e7f9f2a4175c5938830a78abb1582b2081f9ab'
             '0a7b5ea46e9cb4b19000b69690eae0b75929752f7db192c78bd7ffb61d696835'
             '2cead106464f257d64c74333280ee6bf4056167cc69840371e81a77e64858989'
             'b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d')
