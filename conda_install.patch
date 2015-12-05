@@ -1,5 +1,5 @@
---- pkgs/conda-3.18.3-py27_0/lib/python2.7/site-packages/conda/install.py.old	2015-11-25 10:38:17.119321873 +0100
-+++ pkgs/conda-3.18.3-py27_0/lib/python2.7/site-packages/conda/install.py	2015-11-25 10:39:58.968221913 +0100
+--- a/pkgs/conda-3.18.3-py27_0/lib/python2.7/site-packages/conda/install.py	2015-11-25 10:38:17.119321873 +0100
++++ b/pkgs/conda-3.18.3-py27_0/lib/python2.7/site-packages/conda/install.py	2015-11-25 10:39:58.968221913 +0100
 @@ -257,21 +257,23 @@
      return res
  

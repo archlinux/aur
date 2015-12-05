@@ -3,7 +3,7 @@
 
 pkgname=anaconda2
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing."
 arch=('x86' 'x86_64')
 url="https://store.continuum.io/cshop/anaconda/"
@@ -17,7 +17,7 @@ options=(!strip libtool)
 sha256sums=('49d19834da06b1b82b6fa85bc647d2e78fa5957d0cbae3ccd6c695a541befa6b'
             '2807b1f1ff261b9b9cf77ab68123f7c9ee0c261a0d36cb9ed851dee5ee8d19ff'
             'f8e9bd8b719e6cada2b835e7477dd336632efe86782c0933570c79ef8a103525'
-            '88db08ed1dbd9ffaaeac769487fe28acad9601d0081cddb852353ddc59835da5')
+            '0d96fe52ef08e04106122e195ef57e3f38de2a5f9896c36faa6f05b30e88382b')
 _pythonver='2.7.10-2'
 _condaver='3.18.3'
 
