@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=libpassphrase
-pkgver=1428445396
+pkgver=1449331105
 pkgrel=1
 pkgdesc="Personalisable library for TTY passphrase reading"
 url="https://github.com/GNU-Pony/libpassphrase"
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(make coreutils gcc texinfo gzip)
 install=libpassphrase.install
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(6c721c89aeac150a990591193f73e6625a54fbd5e79d709c0adddc3b5ba4c5ca)
+sha256sums=(76044a7af93dd6a956c6fb9a13af711a2c90b260420a2bf1b272d624deefafb7)
 
 
 build() {
@@ -30,16 +30,20 @@ build() {
 	options+=( PASSPHRASE_DEDICATED ) # Enable use of dedicated keys
 	options+=( DEFAULT_INSERT )       # Use insert mode as default
 	options+=( PASSPHRASE_INVALID )   # Prevent duplication of non-initialised memory
-	## see `info libpassphrase configuring` for details
+	options+=( PASSPHRASE_METER )     # Enable strength meter for new passphrases
+	## see `info '(libpassphrase)' configuring` for details
 	
 	star_char="*"
 	text_empty="(empty)"
 	text_not_empty="(not empty)"
+	text_strength="Strength:"
 	
 	make PKGNAME="${pkgname}" OPTIONS="${options[*]}"   \
 	     PASSPHRASE_STAR_CHAR="${star_char}"            \
 	     PASSPHRASE_TEXT_EMPTY="${text_empty}"          \
-	     PASSPHRASE_TEXT_NOT_EMPTY="${text_not_empty}"
+	     PASSPHRASE_TEXT_NOT_EMPTY="${text_not_empty}"  \
+	     PASSPHRASE_TEXT_STRENGTH="${text_strength}"
+	## it is also possible to add PASSPHRASE_STRENGTH_LIMITS_HEADER
 }
 
 package() {
