@@ -1,0 +1,13 @@
+pkgbase = sct
+	pkgdesc = Set color temperature
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.tedunangst.com/flak/post/sct-set-color-temperature
+	arch = i686
+	arch = x86_64
+	license = Public Domain
+	source = http://www.tedunangst.com/flak/files/sct.c
+	md5sums = 1d110264e8a13f7f9259643c2fa402b4
+
+pkgname = sct
+
