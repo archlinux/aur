@@ -1,0 +1,18 @@
+pkgbase = ttf-hack-powerline-git
+	pkgdesc = Hack for Powerline
+	pkgver = r98.6ac4c01
+	pkgrel = 1
+	url = https://github.com/powerline/fonts
+	install = ttf-hack-powerline-git.install
+	arch = any
+	license = custom:SIL OFL, v1.1 + Bitstream License
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = powerline-fonts
+	conflicts = powerline-fonts-git
+	source = git://github.com/powerline/fonts.git
+	md5sums = SKIP
+
+pkgname = ttf-hack-powerline-git
+
