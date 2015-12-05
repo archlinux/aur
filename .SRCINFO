@@ -1,6 +1,6 @@
 pkgbase = gtox-git
 	pkgdesc = a GTK-based tox-client
-	pkgver = alpha.r196.g7562b24
+	pkgver = alpha.r200.gbcb85a9
 	pkgrel = 1
 	url = https://github.com/KoKuToru/gTox.git
 	install = gTox.install
