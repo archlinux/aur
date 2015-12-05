@@ -1,14 +1,13 @@
 pkgbase = conky19-lua-nv
 	pkgdesc = An advanced system monitor for X based on torsmo with lua and nvidia enabled
 	pkgver = 1.9.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://conky.sourceforge.net/
 	install = conky-lua-nv.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = pkgconfig
-	makedepends = tolua++
 	makedepends = libxnvctrl
 	makedepends = docbook2x
 	makedepends = docbook-xml
@@ -23,6 +22,7 @@ pkgbase = conky19-lua-nv
 	depends = libxdamage
 	depends = imlib2
 	depends = lua51
+	depends = tolua++
 	optdepends = nvidia: for GT4xx and newer GPUs,
 	optdepends = nvidia-340xx: for G8x, G9x, GT2xx GPUS,
 	optdepends = nvidia-304xx: for GeForce 6/7 GPUs
@@ -34,7 +34,9 @@ pkgbase = conky19-lua-nv
 	backup = etc/conky/conky.conf
 	backup = etc/conky/conky_no_x11.conf
 	source = https://github.com/brndnmtthws/conky/archive/1.9.0.tar.gz
+	source = fix_build.patch
 	md5sums = b13f2c7d52e18d94bfbfcd5157406db7
+	md5sums = 1cdccf70c8e4acb691a0dab785d5f6fc
 
 pkgname = conky19-lua-nv
 

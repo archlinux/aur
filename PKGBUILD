@@ -8,7 +8,7 @@
 pkgname=conky19-lua-nv
 _pkgname=conky
 pkgver=1.9.0
-pkgrel=8
+pkgrel=9
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="http://conky.sourceforge.net/"
@@ -16,20 +16,27 @@ license=('custom')
 replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky' 'conky-lua')
-depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51')
-makedepends=('pkgconfig' 'tolua++' 'libxnvctrl' 'docbook2x' 'docbook-xml' 'docbook-xsl')
+depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'glib2'
+         'libxdamage' 'imlib2' 'lua51' 'tolua++')
+makedepends=('pkgconfig' 'libxnvctrl' 'docbook2x' 'docbook-xml' 'docbook-xsl')
 optdepends=('nvidia: for GT4xx and newer GPUs',
   'nvidia-340xx: for G8x, G9x, GT2xx GPUS',
   'nvidia-304xx: for GeForce 6/7 GPUs')
 backup=(etc/conky/conky.conf etc/conky/conky_no_x11.conf)
-source=(https://github.com/brndnmtthws/${_pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('b13f2c7d52e18d94bfbfcd5157406db7')
+source=("https://github.com/brndnmtthws/${_pkgname}/archive/${pkgver}.tar.gz"
+        'fix_build.patch')
+md5sums=('b13f2c7d52e18d94bfbfcd5157406db7'
+         '1cdccf70c8e4acb691a0dab785d5f6fc')
 install="conky-lua-nv.install"
+
+prepare() {
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  sed -i '/#include <curl\/types.h>/d' ${srcdir}/${_pkgname}-${pkgver}/src/ccurl_thread.c
+  patch -p1 -i ../fix_build.patch
+}
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
-
-  sed -i '/#include <curl\/types.h>/d' ${srcdir}/${_pkgname}-${pkgver}/src/ccurl_thread.c
   ./autogen.sh
   LUA51_LIBS='-llua5.1 -lm' LUA51_CFLAGS='-I/usr/include/lua5.1' \
   LUA_LIBS='-llua5.1 -lm' LUA_CFLAGS="-I/usr/include/lua5.1" \
