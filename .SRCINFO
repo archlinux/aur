@@ -1,7 +1,7 @@
 pkgbase = cntlm
 	pkgdesc = An NTLM, NTLM2SR, and NTLMv2 authenticating HTTP proxy
 	pkgver = 0.92.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bseb/cntlm
 	arch = i686
 	arch = x86_64
