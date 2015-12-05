@@ -1,7 +1,7 @@
 pkgbase = legend-of-kyrandia-2
 	pkgdesc = A classic adventure game from Abandonia, played in ScummVM.
 	pkgver = 2.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.abandonia.com/en/games/292/Legend+of+Kyrandia+2+-+Hand+of+Fate,+The.html
 	install = kyrandia2.install
 	arch = any

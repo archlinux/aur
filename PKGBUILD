@@ -3,7 +3,7 @@
 
 pkgname="legend-of-kyrandia-2"
 pkgver="2.0"
-pkgrel=7
+pkgrel=8
 pkgdesc="A classic adventure game from Abandonia, played in ScummVM."
 url='http://www.abandonia.com/en/games/292/Legend+of+Kyrandia+2+-+Hand+of+Fate,+The.html'
 arch=('any')
@@ -17,7 +17,7 @@ _pkgabbrev="Kyrandia2"
 _exe="kyra2"
 _icon="HAND.ICO"
 
-build() {
+package() {
 	mkdir -p -m755 "$pkgdir/opt/scummvm/$_pkgabbrev"
 	cp -ar $srcdir/HOFCD/CD/HOF_CD/* "$pkgdir/opt/scummvm/$_pkgabbrev"
 	cp -arL $srcdir/kyra.dat $pkgdir/opt/scummvm/$_pkgabbrev/KYRA.DAT
