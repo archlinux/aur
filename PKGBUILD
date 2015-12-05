@@ -1,35 +1,27 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=acestream-proxy-player
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Aceproxy Player allows you to open Ace Stream links with a Media Player of your choice"
-arch=('any')
+arch=("any")
 url="https://github.com/jonian/acestream-proxy-player"
-license=('GPL')
-groups=()
-depends=('python-psutil' 'python-urllib3' 'python-notify2')
-makedepends=()
-optdepends=('acestream-proxy' 'vlc')
-provides=('acestream-proxy-player')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+license=("GPL")
+depends=("python-psutil" "python-urllib3" "python-notify2")
+optdepends=("acestream-proxy" "vlc")
+provides=("acestream-proxy-player")
 source=("https://github.com/jonian/acestream-proxy-player/archive/v$pkgver.tar.gz")
-noextract=()
-md5sums=('SKIP')
+md5sums=("SKIP")
 
 package() {
   mkdir -p "$pkgdir/opt"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/applications"
 
-  cp -a "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/aceproxy-player"
+  cp -a "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
 
-  update-desktop-database "$pkgdir/opt/aceproxy-player"
+  update-desktop-database "$pkgdir/opt/$pkgname"
 
-  ln -s "/opt/aceproxy-player/aceproxy-player.py" "$pkgdir/usr/bin/aceproxy-player"
-  mv "$pkgdir/opt/aceproxy-player/aceproxy-player.desktop" "$pkgdir/usr/share/applications/aceproxy-player.desktop"
+  ln -s "/opt/$pkgname/aceproxy-player.py" "$pkgdir/usr/bin/aceproxy-player"
+  mv "$pkgdir/opt/$pkgname/aceproxy-player.desktop" "$pkgdir/usr/share/applications/aceproxy-player.desktop"
 }
+
