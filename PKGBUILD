@@ -3,7 +3,7 @@
 
 pkgname=cbmc-bin
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
 url="http://www.cprover.org/cbmc/"
@@ -20,7 +20,6 @@ fi
 
 package() {
     install -D "${srcdir}/cbmc" "${pkgdir}/usr/bin/cbmc"
-    install -D "${srcdir}/hw-cbmc" "${pkgdir}/usr/bin/hw-cbmc"
     install -D "${srcdir}/goto-cc" "${pkgdir}/usr/bin/goto-cc"
     install -D "${srcdir}/goto-instrument" "${pkgdir}/usr/bin/goto-instrument"
     install -D -m644\
