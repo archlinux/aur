@@ -17,7 +17,7 @@ url="http://gnutls.org/"
 depends=('zlib' 'nettle' 'p11-kit' 'libtasn1' $_pkgbasename)
 provides=('libgnutls28')
 conflicts=('libgnutls28')
-makedepends=('gcc' 'libidn')
+makedepends=('libidn')
 source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/${_pkgbasename}-${pkgver}.tar.xz{,.sig})
 sha256sums=('888d8779b48f21959b33d4d9ad0b546e5ec3dea20abf0d9bb03869d56b1f44cf'
             'SKIP')
