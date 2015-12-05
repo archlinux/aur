@@ -1,28 +1,43 @@
 # Maintainer: THEGUSPROJECT <gus@thegusproject.xyz>
 
 pkgname=jammr
-pkgver=1
+pkgver=1.2.6
 pkgrel=1
-pkgdesc="jammr lets you play with musicians over the internet."
-arch=('i686' 'x86_64')
+pkgdesc="jammr lets you play with musicians over the internet"
+arch=("i686" "x86_64")
 url="https://www.jammr.net/"
-options=('!strip')
+license=("GPL2")
+depends=("libvorbis" "libogg" "libstdc++296" "portaudio" "portmidi" "qt5-base")
+makedepends=("qt5-base" "portmidi")
+options=("!emptydirs")
+source=("https://codeload.github.com/stefanha/wahjam/tar.gz/${pkgname}-${pkgver}")
+md5sums=("380874966a852279ac0403dee38262f2")
 
-source_x86_64=("http://jammr.net/static/jammr-client_amd64.deb")
-md5sums_x86_64=('282de730400029e5ed749e93e71e8caf')
+build() {
+  cd wahjam-jammr-${pkgver}
 
-source_i686=("http://jammr.net/static/jammr-client_i386.deb")
-md5sums_i686=('54c63f14b40814fd3845d44423ef1ba3')
-
-depends=("libvorbis" "libogg" "libstdc++296" "portaudio" "portmidi" "qt5-base" "lpmlibs")
+  qmake-qt5 QTCLIENT_TARGET=jammr \
+                 JAMMR_API_URL="https://jammr.net/api/" \
+                 JAMMR_REGISTER_URL="https://jammr.net/accounts/register/" \
+                 JAMMR_UPGRADE_URL="https://jammr.net/pricing.html" \
+                 JAMMR_UPDATE_URL="https://jammr.net/static/latest-linux.txt" \
+                 JAMMR_DOWNLOAD_URL="https://jammr.net/download.html" \
+                 VERSION=${pkgver} \
+                 APPNAME=jammr \
+                 ORGNAME=jammr \
+                 ORGDOMAIN=jammr.net \
+                 USE_LIBPORTTIME=1
+  make
+}
 
 package() {
-  tar xvfJ data.tar.xz
-  mkdir -p $pkgdir/usr 
   mkdir -p $pkgdir/usr/bin
-  cd $srcdir
-  cp -r usr $pkgdir
-  cp -r bin/jammr $pkgdir/usr/bin/jammr
+  mkdir -p $pkgdir/usr/share/icons
+  mkdir -p $pkgdir/usr/share/applications
+  cd $srcdir/wahjam-jammr-${pkgver}
+  cp -r qtclient/jammr $pkgdir/usr/bin/jammr
+  cp -r debian/jammr.svg $pkgdir/usr/share/icons
+  cp -r debian/jammr.desktop $pkgdir/usr/share/applications
   chmod -R 755 $pkgdir/usr/bin/jammr
   chmod -R 755 $pkgdir/usr/share/applications/jammr.desktop
 }
