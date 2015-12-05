@@ -2,7 +2,7 @@
 
 pkgname=opendaylight
 _PkgName=OpenDaylight
-pkgver=0.3.2_Lithium_SR2
+pkgver=0.3.3_Lithium_SR3
 pkgrel=1
 pkgdesc="OpenDaylight is leading the transformation to Open SDN."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=()
 options=()
 install=${pkgname}.install
 source=(https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/${pkgver//_/-}/distribution-karaf-${pkgver//_/-}.tar.gz)
-sha256sums=('6430f977921f069e95f49f356500795fc18657b15a94e4f8893a5134f315f752')
+sha256sums=('01a6b6a49a13378f0ad04a259be7b5b176d287771014e2f5e5fb394365f00414')
 
 package() {
   mkdir -p "$pkgdir"/opt
