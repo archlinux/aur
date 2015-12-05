@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=StarMade
+GenericName=StarMade
+Comment=StarMade is a voxel-based 3D sandbox space shooter.
+Exec=starmade
+Icon=starmade
+Terminal=false
+Type=Application
+Categories=Game;
