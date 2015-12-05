@@ -6,7 +6,7 @@
 
 pkgname=inox
 pkgver=47.0.2526.73
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('i686' 'x86_64')
@@ -55,7 +55,7 @@ sha256sums=('6d66d01c8ddff6562ff13d30ed65ef0cdc2888d9e4924be615d576b7eb15f4f5'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
             '79401ba0d780cb459a32824729abb7976b5f1b45623cd2896c0f0198a7f77764'
             '59ebf0ff2227eea507bf113c8f6ff4768dd168b6fa7cc2195172d2757a5df807'
-            '878bd25d728df2bed46e5b50b5c79849f30d9b8e6d39b1e5d95d37c910c8f9a3'
+            '2f5d18666b4a4101a6c42fbeaaa0421b4d346da6825ee02f58e4ae7ebb993db1'
             '81f5f881e10d974b2a770b68e8becc25db22781252e85d0b7323f2c1236190a1'
             '64b5e27c57017b80c3e1471d0ee9fd45901392beb9ffe69fb4362f701eccc6ae'
             '2aec3f9a8a3f9f64caf1fdaae797a617199739c8b0ead1e176aba1bcfffcc389'
