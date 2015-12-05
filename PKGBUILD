@@ -10,7 +10,7 @@ source=('cntlm-0.92.3.tar.gz'
 	    'cntlm.service')
 backup=('etc/cntlm.conf')
 md5sums=('0d7fcfbfbef0546306b896be246caa88'
-		'36f88f6ebde5d1c57d9847fedcf71b84')
+		'3d0641122bef4ee93d5dfd8ec1a10230')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
