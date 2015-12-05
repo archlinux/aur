@@ -35,7 +35,7 @@ build() {
 
 package_qtcurve-utils-git() {
     depends=('libx11')
-    conflicts=qtcurve-{utils,kde4}
+    conflicts="qtcurve-utils qtcurve-kde4"
     provides="qtcurve-utils"
     cd ${_pkgbase}/build/lib/utils
     make DESTDIR="$pkgdir" install
