@@ -4,7 +4,7 @@
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
 pkgver=3.4.6
-pkgrel=7
+pkgrel=8
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
 url='https://zookeeper.apache.org/'
@@ -25,8 +25,8 @@ source=(${_closest}/${_app_path}
         systemd_tmpfiles.d_zookeeper.conf)
 
 sha256sums=('01b3938547cd620dc4c93efe07c0360411f4a66962a70500b163b59014046994'
-            '0235413122567a4810ce4aeb8b4b41a749ca69b1ee79e1d225b811febd92dfed'
-            '6727641f542b3a483c31cdbda30101ac41397b725c6b3e706932f04bc51af907'
+            'b59e0641de1951ad149ca39df5b5ec37dc6229f1aa987b0ed9d7e82e570be9ed'
+            'a3fd2566648f57c0cdd75cd48b7b60fa55eb59ee67dd716de1e1aa6a57823b88'
             'e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa'
             '99fff5b04623889b0010c74c2dc3a4be29e7770fe2c7e15da51f7442a28c6580')
 

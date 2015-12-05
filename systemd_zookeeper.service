@@ -12,7 +12,6 @@ ExecStart=/usr/bin/java \
   -cp /usr/share/java/zookeeper/* \
   -Dlog4j.configuration=file:/etc/zookeeper/log4j.properties \
   -Dcom.sun.management.jmxremote \
-  -Dcom.sun.management.jmxremote.local.only=false \
   org.apache.zookeeper.server.quorum.QuorumPeerMain \
   /etc/zookeeper/zoo.cfg
 
