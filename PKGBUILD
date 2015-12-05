@@ -1,8 +1,13 @@
-#Maintainer : Frederic Bezies <fredbezies at gmail dot com>
+#Maintainer  : flu
+#Contributor : Frederic Bezies <fredbezies at gmail dot com>
 #Contributor : baskerville <nihilhill at gmail dot com>
+#Contributor : Smola
 
-pkgname=youtube-dl-git
-pkgver=2015.11.27.1.r38.g22d7368
+_name=youtube-dl
+_branch=master
+
+pkgname=$_name-git
+pkgver=2015.12.05.0bc4ee6
 pkgrel=1
 
 pkgdesc='A small command-line program to download videos from YouTube.com and a few more sites - git version'
@@ -12,29 +17,28 @@ license=('custom')
 
 depends=('python' 'python-setuptools')
 makedepends=('git')
-
 optdepends=('ffmpeg: for video post-processing')
 
-provides=('youtube-dl')
-conflicts=('youtube-dl')
+provides=("$_name")
+conflicts=("$_name")
 
-source=('git://github.com/rg3/youtube-dl.git')
+source=("https://github.com/rg3/$_name/archive/$_branch.zip")
+sha512sums=(SKIP)
 
-md5sums=('SKIP')
-
-pkgver() {
-	cd youtube-dl
-	git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+pkgver() { 
+  DATE=$(date +%Y.%m.%d)
+  HASH=$(git ls-remote -h https://github.com/rg3/$_name $_branch | cut -c1-7)
+  echo $DATE.$HASH
 }
 
 prepare() {
-	cd youtube-dl
+	cd $_name-$_branch
 	sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
         sed -i ':etc/fish/completions:d' setup.py
 }
 
 package() {
-	cd youtube-dl
+	cd $_name-$_branch
 
 	python devscripts/bash-completion.py
 	python setup.py install --root="$pkgdir" --optimize=1
