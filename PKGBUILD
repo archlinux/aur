@@ -2,7 +2,7 @@
 
 _pkgbasename=libpng
 pkgname=lib32-libpng15
-pkgver=1.5.24
+pkgver=1.5.25
 pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files (32-bit, 1.5 branch)"
 arch=('x86_64')
@@ -15,9 +15,9 @@ options=('!libtool')
 validpgpkeys=('8048643BA2C840F4F92A195FF54984BFA16C640F')
 source=("http://downloads.sourceforge.net/sourceforge/libpng/libpng-${pkgver}.tar.xz"{,.asc}
         "http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-${pkgver}-apng.patch.gz")
-sha256sums=('b92e3474f3136b5d9443ba92822154ebc2573fc6feead90d364ee9ebc3741be2'
+sha256sums=('1224db3a8df90ce1b07ee67327e6846484450d05b9315a1d56fcc9772c0a51ca'
             'SKIP'
-            '830ebd4f2d58f9b7b9e6e9e686d0da3f027e4760a761d78f108479fad54f46af')
+            '0c0af7419fe34583f15083926261812dd20b034a267aa1a5613f6b1e0133573a')
 
 build() {
 	export CC="gcc -m32"
