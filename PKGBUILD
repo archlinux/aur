@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/allwpilib"
-  ./gradlew :wpilibc:build
+  ./gradlew wpilibcZip
 }
 
 package() {
