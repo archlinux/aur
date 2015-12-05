@@ -4,7 +4,7 @@
 pkgname=memsource-editor
 _pkg=MemsourceEditor
 _platform=ubuntu-12.04
-pkgver=4.173
+pkgver=5.175
 pkgrel=1
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
         "memsource"
         "license.desktop")
 
-sha256sums=('509b52d1490a05820935571db08313363f54c0a24b7fadbc53416d5ed7127583'
+sha256sums=('09a8b628ec29339dcdb2c559eb0375e7e4815a5f90b7dcfdac64e225a476fb08'
             '943056f6643f110d94663e4bbf1650850d49ea0adb48cc0355ad5b4f6112da24'
             '94fff65cc3a6cfbc79d4f7bdb6ef1c3855a032e52932de6051867a1f99119257'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
