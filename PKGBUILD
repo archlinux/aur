@@ -31,16 +31,13 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/"
   install -dm755 "${pkgdir}/usr/share/man/man1/"
   install -dm755 "${pkgdir}/usr/include/${_pkgname}"
-  install -m644 library/flif.h "${pkgdir}/usr/include/${_pkgname}"
   install -m755 flif viewflif "${pkgdir}/usr/bin"
-	install -m755 libflif_dec.so "${pkgdir}/usr/lib/"
-	install -m755 libflif.so "${pkgdir}/usr/lib/"
-	install -m 644 library/*.h "${pkgdir}/usr/include/${_pkgname}"
-	install -m 644 ../doc/flif.1 "${pkgdir}/usr/share/man/man1"
-	install -m 755 ../tools/gif2flif "${pkgdir}/usr/bin"
-	install -m 755 ../tools/apng2flif "${pkgdir}/usr/bin"
-
-
+  install -m755 libflif_dec.so "${pkgdir}/usr/lib/"
+  install -m755 libflif.so "${pkgdir}/usr/lib/"
+  install -m 644 library/*.h "${pkgdir}/usr/include/${_pkgname}"
+  install -m 644 ../doc/flif.1 "${pkgdir}/usr/share/man/man1"
+  install -m 755 ../tools/gif2flif "${pkgdir}/usr/bin"
+  install -m 755 ../tools/apng2flif "${pkgdir}/usr/bin"
   cd "$srcdir/${_pkgname}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
