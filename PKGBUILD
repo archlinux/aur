@@ -15,7 +15,7 @@ install=rubrica.install
 source=(http://downloads.sourceforge.net/project/rubrica.berlios/rubrica2-2.0.12.tar.bz2
 	rubrica-2.0.12.diff)
 md5sums=('582b9e8c4ca9b17f83afa5a3d5842bc9'
-         '7219902d5722841342cf3186f18211db')
+         'e2731e3d8b3978cece90aedb458e59ec')
 
 build() {
   cd "$srcdir/rubrica2-$pkgver"
