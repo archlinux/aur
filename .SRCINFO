@@ -1,14 +1,14 @@
 pkgbase = python-oslo-utils
 	pkgdesc = Oslo Utility library
-	pkgver = 2.8.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/openstack/oslo.utils
 	arch = any
 	license = Apache
 	makedepends = python-pbr>=1.8
 	makedepends = python2-pbr>=1.8
-	source = https://pypi.python.org/packages/source/o/oslo.utils/oslo.utils-2.8.0.tar.gz
-	sha256sums = 010bba0b3578f9ed9880f4868539c18efab95ca912f56cec509dd568c4968086
+	source = https://pypi.python.org/packages/source/o/oslo.utils/oslo.utils-3.0.0.tar.gz
+	sha256sums = d25ec322e8692b50d76562332bd23e5b57e829ce0e6916dd191a12edf6ca92b0
 
 pkgname = python-oslo-utils
 	depends = python-pbr>=1.6
