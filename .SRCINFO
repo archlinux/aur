@@ -1,6 +1,6 @@
 pkgbase = ttf-ubuntu-mono-derivative-powerline-git
 	pkgdesc = Ubuntu Mono derivative Powerline
-	pkgver = r71.39c99c0
+	pkgver = r98.6ac4c01
 	pkgrel = 1
 	url = https://github.com/powerline/fonts
 	install = ttf-ubuntu-mono-derivative-powerline-git.install
