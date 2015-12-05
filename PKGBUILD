@@ -13,9 +13,9 @@ license=('custom')
 depends=('openssl' 'glibc' 'qt4')
 		
 source_x86_64=("${pkgname}-${pkgver}.${incrver}.ubuntu13-64.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu13-64.tar.gz")
-md5sums_x86_64=('')
+md5sums_x86_64=('dbc351b0082d00581d9889cc71aa70a2')
 source_i686=("${pkgname}-${pkgver}.${incrver}.ubuntu13.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu13.tar.gz")
-md5sums_i686=('')
+md5sums_i686=('8c4aa8a386e9a0e9cd160a24bc95d9d3')
 options=('!strip')
 
 package() {
