@@ -45,7 +45,7 @@ source=( "nginx.conf"
 		"nginx.logrotate"
 		"nginx.service"
 		"http://nginx.org/download/nginx-$pkgver.tar.gz"
-		"https://dn-4679kun.qbox.me/openssl.patch"
+		"openssl.patch"
 )
 
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
