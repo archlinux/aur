@@ -63,34 +63,34 @@
 -;extension=php_pdo_sqlite.dll
 -;extension=php_pgsql.dll
 -;extension=php_shmop.dll
-+;extension=php_bz2.so
-+;extension=php_curl.so
-+;extension=php_fileinfo.so
-+;extension=php_gd2.so
-+;extension=php_gettext.so
-+;extension=php_gmp.so
-+;extension=php_intl.so
-+;extension=php_imap.so
-+;extension=php_interbase.so
-+;extension=php_ldap.so
-+;extension=php_mbstring.so
-+;extension=php_exif.so       ; Must be after mbstring as it depends on it
-+;extension=php_mysqli.so
-+;extension=php_oci8_12c.so   ; Use with Oracle Database 12c Instant Client
-+;extension=php_openssl.so
-+;extension=php_pdo_firebird.so
-+;extension=php_pdo_mysql.so
-+;extension=php_pdo_oci.so
-+;extension=php_pdo_odbc.so
-+;extension=php_pdo_pgsql.so
-+;extension=php_pdo_sqlite.so
-+;extension=php_pgsql.so
-+;extension=php_shmop.so
++;extension=bz2.so
++;extension=curl.so
++;extension=fileinfo.so
++;extension=gd2.so
++;extension=gettext.so
++;extension=gmp.so
++;extension=intl.so
++;extension=imap.so
++;extension=interbase.so
++;extension=ldap.so
++;extension=mbstring.so
++;extension=exif.so       ; Must be after mbstring as it depends on it
++;extension=mysqli.so
++;extension=oci8_12c.so   ; Use with Oracle Database 12c Instant Client
++;extension=openssl.so
++;extension=pdo_firebird.so
++;extension=pdo_mysql.so
++;extension=pdo_oci.so
++;extension=pdo_odbc.so
++;extension=pdo_pgsql.so
++;extension=pdo_sqlite.so
++;extension=pgsql.so
++;extension=shmop.so
  
  ; The MIBS data available in the PHP distribution must be installed.
  ; See http://www.php.net/manual/en/snmp.installation.php
 -;extension=php_snmp.dll
-+;extension=php_snmp.so
++;extension=snmp.so
  
 -;extension=php_soap.dll
 -;extension=php_sockets.dll
@@ -98,12 +98,12 @@
 -;extension=php_tidy.dll
 -;extension=php_xmlrpc.dll
 -;extension=php_xsl.dll
-+;extension=php_soap.so
-+;extension=php_sockets.so
-+;extension=php_sqlite3.so
-+;extension=php_tidy.so
-+;extension=php_xmlrpc.so
-+;extension=php_xsl.so
++;extension=soap.so
++;extension=sockets.so
++;extension=sqlite3.so
++;extension=tidy.so
++;extension=xmlrpc.so
++;extension=xsl.so
  
  ;;;;;;;;;;;;;;;;;;;
  ; Module Settings ;

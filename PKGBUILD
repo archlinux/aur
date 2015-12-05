@@ -20,7 +20,7 @@ pkgname=('php7'
 		 'php7-xsl')
 
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
@@ -33,7 +33,7 @@ source=("http://us2.php.net/distributions/php-${pkgver}.tar.xz"
 		'php.ini.patch' 'apache.conf'
 		'php-fpm.service' 'php-fpm.tmpfiles')
 md5sums=('394e4d6c517078ca3e23acf633c5ed27'
-		 'a75706c1d1d99cb4a34f660e696c7bd1'
+		 '3def4d1897c38fb15f7d61b63682a71d'
 		 '3bdf401291d4de96caa33d053a000e46'
 		 'cc2940f5312ba42e7aa1ddfab74b84c4'
 		 'c60343df74f8e1afb13b084d5c0e47ed')
@@ -275,6 +275,7 @@ package_php7-embed() {
 package_php7-pear() {
     pkgdesc='PHP Extension and Application Repository'
     depends=("php=${pkgver}")
+	conflicts=('php-pear')
     backup=('etc/php/pear.conf')
 
     cd ${srcdir}/build-pear
