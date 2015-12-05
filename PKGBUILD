@@ -4,7 +4,7 @@
 
 pkgname=steam-native
 pkgver=1.0.0.51
-pkgrel=1
+pkgrel=2
 pkgdesc="Sets a native runtime environment for Steam by default, adds a Steam runtime launcher for compatibility."
 arch=('i686' 'x86_64')
 url='http://steampowered.com/'
@@ -30,7 +30,8 @@ depends_x86_64=('lib32-openal' 'lib32-gtk2' 'lib32-libgcrypt15' 'lib32-libnl' 'l
 optdepends=('mono: game dependency'
 	'mono-addins: game dependency'
 	'libcurl-gnutls: game dependency'
-	'glew1.10: game dependency')
+	'glew1.10: game dependency'
+	'steam-libs: additional libraries')
 optdepends_i686=('libappindicator-gtk2: needed if tray icon not working (Gnome)'
 	'libappindicator-gtk3: needed if tray icon not working (Gnome)'
 	'sdl: game dependency'
@@ -54,14 +55,13 @@ optdepends_x86_64=('lib32-libappindicator-gtk2: needed if tray icon not working 
 	'lib32-gperftools: game dependency'
 	'lib32-rtmpdump: game dependency'
 	'lib32-libcurl-gnutls: game dependency'
-	'lib32-glew1.10: game dependency'
-	'steam-libs: additional libraries')
+	'lib32-glew1.10: game dependency')
 
-provides=('libudev.so.0')
-provides_x86_64=('lib32-libudev.so.0' 'lib32-networkmanager=0.9.8.10' 'lib32-libnm-glib=0.9.8.10')
+provides=('libudev.so.0' 'libudev0')
+provides_x86_64=('lib32-libudev.so.0' 'lib32-libudev0' 'lib32-networkmanager=0.9.8.10' 'lib32-libnm-glib=0.9.8.10' 'lib32-libnm-glib46=0.9.8.10')
 
-conflicts=('libudev.so.0')
-conflicts_x86_64=('lib32-libudev.so.0' 'lib32-networkmanager' 'lib32-libnm-glib46')
+conflicts=('libudev.so.0' 'libudev0')
+conflicts_x86_64=('lib32-libudev.so.0' 'lib32-libudev0' 'lib32-networkmanager' 'lib32-libnm-glib46')
 
 package() {
 	case "${CARCH}" in
