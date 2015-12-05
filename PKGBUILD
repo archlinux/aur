@@ -1,30 +1,21 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=devdocs-git
-pkgver=r1002.de1c879
-pkgrel=4
+pkgver=r1033.ddf87bb
+pkgrel=1
 pkgdesc="API Documentation Browser"
-arch=('any')
+arch=("any")
 url="http://devdocs.io"
-license=('GPL')
-groups=()
-depends=('ruby' 'ruby-bundler' 'curl' 'nodejs' 'coffee-script')
-makedepends=('git')
-optdepends=()
-provides=('devdocs-git')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+license=("GPL")
+depends=("ruby" "ruby-bundler" "curl" "nodejs" "coffee-script")
+makedepends=("git")
+provides=("devdocs-git")
 source=("$pkgname::git+https://github.com/Thibaut/devdocs" "devdocs-server.sh" "devdocs-cli.sh" "devdocs.service")
-noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
   cd "$srcdir/$pkgname"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed "s/\([^-]*-g\)/r\1/;s/-/./g" ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
