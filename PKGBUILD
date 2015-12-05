@@ -4,30 +4,30 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=glom
-pkgver=1.28.5
-pkgrel=2
+pkgver=1.30.0
+pkgrel=1
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
 url="http://www.glom.org/"
 license=('GPL')
-depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python2-gobject'
+depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python-gobject'
          'libepc' 'goocanvasmm' 'gtksourceviewmm' 'evince' 'postgresql')
 makedepends=('intltool' 'python-sphinx' 'boost' 'itstool' 'libgda-postgres'
              'libgda-mysql')
 install=$pkgname.install
 changelog=$pkgname.changelog
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('4a94fb638028c9999f7bf5c4ebad6e1667ed595b940cd94124d17174392fe814')
+sha256sums=('219dac37aa12a2219ed99828269faddc86af8118444602158c5cf594cd3b8cf0')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
 
-  ./configure --prefix=/usr \
+  ./configure \
+    --prefix=/usr \
     --with-postgres-utils=/usr/bin \
     --disable-scrollkeeper \
     --disable-update-mime-database \
-    --disable-static \
-    PYTHON=python2
+    --disable-static
   make
 }
 
