@@ -6,7 +6,7 @@
 
 pkgname=mplayer-vaapi
 pkgver=36265
-pkgrel=17
+pkgrel=18
 pkgdesc="A movie player, compiled with vaapi support"
 arch=('i686' 'x86_64')
 url="http://gitorious.org/vaapi/mplayer"
@@ -26,7 +26,8 @@ source=(http://pkgbuild.com/~foutrelis/sources/$pkgname/$pkgname-$pkgver.tar.xz{
         cdio-includes.patch
         tweak-desktop-file.patch
         subreader-fix-srt-parsing.patch
-        include-samba-4.0.patch)
+        include-samba-4.0.patch
+        ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch)
 options=('!buildflags' '!emptydirs')
 install=mplayer-vaapi.install
 sha256sums=('5747c28c30c15d1000fb655a8abaa4b22483746d0e82775b27466948ae0c549a'
@@ -34,7 +35,8 @@ sha256sums=('5747c28c30c15d1000fb655a8abaa4b22483746d0e82775b27466948ae0c549a'
             '72e6c654f9733953ad2466d0ea1a52f23e753791d8232d90f13293eb1b358720'
             '5a09fb462729a4e573568f9e8c1f57dbe7f69c0b68cfa4f6d70b3e52c450d93b'
             '8b6cd325d89ff8bce3662c6aaa9b61b8e6163c6574e09b575426a1eed02b8ad3'
-            '169eb47b3b838ea95e50c871bdbbfb6fe0b9349b054da830f55f3b4d5055e4f3')
+            '169eb47b3b838ea95e50c871bdbbfb6fe0b9349b054da830f55f3b4d5055e4f3'
+            '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a')
 validpgpkeys=('86CFFCA918CF3AF47147588051E8B148A9999C34')
 
 
@@ -49,6 +51,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/41588
   patch -Np1 -i "$srcdir/include-samba-4.0.patch"
+
+  # https://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=6540fe04a3f9a11ba7084a49b3ee5fa2fc5b32ab
+  patch -d ffmpeg -Np1 -i "$srcdir/ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch"
 }
 
 build() {
