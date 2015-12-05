@@ -1,4 +1,4 @@
-#  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+#  Maintainer: Arthur Țițeică <arthur dot titeica at gmail>
 
 pkgname=simp_le-git
 _pkgname=simp_le
