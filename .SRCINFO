@@ -1,15 +1,15 @@
 pkgbase = ruby-einhorn
 	pkgdesc = Language-independent shared socket manager
-	pkgver = 0.5.7
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/stripe/einhorn
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = einhorn-0.5.7.gem
+	noextract = einhorn-0.6.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/einhorn-0.5.7.gem
-	sha256sums = 40e0d5041968029523affc5f0479457af59d56583f6d835d2337fa15bdf254d2
+	source = https://rubygems.org/downloads/einhorn-0.6.4.gem
+	sha256sums = 89540e55b54b29ed7d846230e52e3178beef1c5a9962131131df3bac7acd541f
 
 pkgname = ruby-einhorn
 

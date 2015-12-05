@@ -1,9 +1,10 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: gem2arch (https://github.com/anatol/gem2arch)
 
 _gemname=einhorn
 pkgname=ruby-$_gemname
-pkgver=0.5.7
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Language-independent shared socket manager'
 arch=('any')
@@ -13,7 +14,7 @@ depends=('ruby')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=('40e0d5041968029523affc5f0479457af59d56583f6d835d2337fa15bdf254d2')
+sha256sums=('89540e55b54b29ed7d846230e52e3178beef1c5a9962131131df3bac7acd541f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -23,5 +24,3 @@ package() {
   install -Dm644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
