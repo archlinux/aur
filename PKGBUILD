@@ -2,7 +2,7 @@
 # Contributor: Bitwig GmbH <support at bitwig dot com>
 
 pkgname='bitwig-studio-demo'
-pkgver='1.3.4'
+pkgver='1.3.5'
 pkgrel='1'
 pkgdesc='Music production system for production, remixing and performance'
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('bitwig-studio')
 conflicts=('bitwig-studio-demo-rc')
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${pkgver}/bitwig-studio-${pkgver}.deb")
-md5sums=('a65021046bddab8105c5b33b5fcb1bed')
+md5sums=('ff4fe682f0f36098cd867c75a5be109c')
 
 package() {
   # Create pkgdir folders
