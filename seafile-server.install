@@ -29,12 +29,9 @@ pre_install() {
     deactivate
 }
 
-#pacman complains if these functions don't exist, so we might as well
-#appease it.
 
-## arg 1:  the new package version
 post_install() {
-    echo " " > /dev/null
+    systemctl daemon-reload
 }
 
 ## arg 1:  the new package version
@@ -72,7 +69,7 @@ pre_upgrade() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-    echo " " > /dev/null
+    post_install
 }
 
 ## arg 1:  the old package version
@@ -83,4 +80,5 @@ pre_remove() {
 ## arg 1:  the old package version
 post_remove() {
     rm -rf /usr/lib/seafile/seafileenv
+    post_install
 }
