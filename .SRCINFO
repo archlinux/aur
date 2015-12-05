@@ -1,6 +1,6 @@
 pkgbase = otf-sauce-code-powerline-git
 	pkgdesc = Sauce Code Powerline
-	pkgver = r71.39c99c0
+	pkgver = r98.6ac4c01
 	pkgrel = 1
 	url = https://github.com/powerline/fonts
 	install = otf-sauce-code-powerline-git.install
