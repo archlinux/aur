@@ -1,6 +1,6 @@
 pkgbase = ttf-droid-sans-mono-slashed-powerline-git
 	pkgdesc = Droid Sans Mono for Powerline (Slashed Zero)
-	pkgver = r78.97dc451
+	pkgver = r98.6ac4c01
 	pkgrel = 1
 	url = https://github.com/powerline/fonts
 	install = ttf-droid-sans-mono-slashed-powerline-git.install

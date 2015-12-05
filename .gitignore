@@ -1,4 +1,5 @@
-/fonts/
-/pkg/
-/src/
-*.xz
+/*
+!/.SRCINFO
+!/.gitignore
+!/PKGBUILD
+!/ttf-droid-sans-mono-slashed-powerline-git.install
