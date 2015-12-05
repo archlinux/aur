@@ -1,6 +1,6 @@
 pkgbase = kaffeine-git
 	pkgdesc = Multimedia player for KDE4
-	pkgver = r1005.500e25f
+	pkgver = r1023.4a1a90e
 	pkgrel = 1
 	url = http://kaffeine.kde.org
 	install = kaffeine-git.install

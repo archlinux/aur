@@ -2,7 +2,7 @@
 # Contributor Tondu < thomas.gastine at wanadoo dot fr >
 # Contributor: buddabrod < buddabrod at gmail dot com >
 pkgname=kaffeine-git
-pkgver=r1005.500e25f
+pkgver=r1023.4a1a90e
 pkgrel=1
 pkgdesc="Multimedia player for KDE4"
 arch=('i686' 'x86_64')
