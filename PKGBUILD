@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
 url="https://github.com/jordansissel/${_gemname}"
-license=('Apache License (2.0)')
+license=('MIT')
 depends=(ruby ruby-cabin ruby-backports ruby-arr-pm ruby-clamp
          ruby-childprocess)
 options=(!emptydirs)
