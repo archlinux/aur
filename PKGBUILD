@@ -1,6 +1,6 @@
 # Maintainer: Ricardo Catalinas Jiménez <r@untroubled.be>
 
-pkgname=procmeter3
+pkgname=procmeter3-svn
 pkgver=r394
 pkgrel=1
 pkgdesc='A system status monitor for Linux with X-Windows, displays system resource usage in multiple graphs'
