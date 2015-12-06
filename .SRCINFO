@@ -1,0 +1,22 @@
+pkgbase = rtlsdr-airband-git
+	pkgdesc = RTLSDR AM demodulator, support multiple channels per dongle
+	pkgver = r65.89d5dc1
+	pkgrel = 1
+	url = https://github.com/szpajder/RTLSDR-Airband
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = rtl-sdr
+	depends = fftw
+	depends = libvorbis
+	depends = lame
+	depends = libshout
+	depends = libconfig
+	provides = rtlsdr-airband
+	conflicts = rtlsdr-airband
+	source = rtlsdr-airband::git+https://github.com/szpajder/RTLSDR-Airband.git#branch=unstable
+	sha256sums = SKIP
+
+pkgname = rtlsdr-airband-git
+
