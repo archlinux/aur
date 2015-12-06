@@ -10,6 +10,7 @@ license=('SIL Open Font License 1.1')
 url="https://github.com/EbenSorkin/Merriweather"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('git')
+conflicts=('ttf-google-fonts-git')
 install=("${_pkgname}.install")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
