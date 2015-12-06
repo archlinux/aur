@@ -3,7 +3,7 @@
 
 pkgname=libkcompactdisc
 pkgver=15.08.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for interfacing with CDs"
 url='https://projects.kde.org/projects/kde/kdemultimedia/libkcompactdisc'
 arch=('i686' 'x86_64')
