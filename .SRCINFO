@@ -1,7 +1,7 @@
 pkgbase = octave-io
 	pkgdesc = Input/Output in external formats.
 	pkgver = 2.2.11
-	pkgrel = 2
+	pkgrel = 1
 	url = http://octave.sourceforge.net/io/
 	install = octave-io.install
 	arch = any
