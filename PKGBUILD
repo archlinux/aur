@@ -14,7 +14,8 @@ makedepends=('dos2unix' 'gendesk' 'mesa')
 provides=("dosbox")
 conflicts=("dosbox")
 
-source=('http://ykhwong.x-y.net/downloads/dosbox/patch/source.7z'
+source=('https://www.dropbox.com/s/lf4yo4sqc3fl9kv/source.7z'
+        #'http://ykhwong.x-y.net/downloads/dosbox/patch/source.7z'
         '0001-fix_missing_stdlib_include.patch'
         '0002-fix_gcc_51_stumbling_over_lambda.patch'
         '0003-intel-tbb-needs-new-cpp-std-and-ld-lookup.patch'
