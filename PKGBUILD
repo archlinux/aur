@@ -2,7 +2,7 @@
 
 pkgname=cppcheck-nox
 _pkgname=cppcheck
-pkgver=1.70
+pkgver=1.71
 pkgrel=1
 pkgdesc="A tool for static C/C++ code analysis without the GUI"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python-pygments')
 makedepends=('docbook-xsl' 'python')
 optdepends=('pcre: searching regex with cppcheck')
 source=(https://github.com/danmar/cppcheck/archive/${pkgver}.tar.gz)
-sha256sums=('4095de598b5cce9a06e90458a90f46e0307baeaab8a947dae73f287eda3c171f')
+sha256sums=('49f8d44516a1534eb01e3cc8300d60c3577c5e4339336defaf213d08ff914f1b')
 
 build() {
    cd "${_pkgname}-${pkgver}"
