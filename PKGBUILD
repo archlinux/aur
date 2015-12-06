@@ -3,7 +3,7 @@
 
 pkgname=dasom-qt-git
 _pkgname=dasom-qt
-pkgver=249.b6f741b
+pkgver=1.2.24c488c
 pkgrel=1
 pkgdesc="QT IM modules for Dasom"
 arch=('any')
@@ -20,7 +20,7 @@ install=$pkgname.install
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	echo "$(git tag | sort -V | tail -1).$(git rev-parse --short HEAD)"
 }
 
 build() {

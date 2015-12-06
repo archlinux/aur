@@ -1,6 +1,6 @@
 pkgbase = dasom-qt-git
 	pkgdesc = QT IM modules for Dasom
-	pkgver = 265.2300f58
+	pkgver = 1.2.24c488c
 	pkgrel = 1
 	url = https://github.com/dasom-im/dasom-qt
 	install = dasom-qt-git.install
