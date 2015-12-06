@@ -2,7 +2,7 @@
 
 pkgname=mlite
 pkgver=0.2.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful classes originating from MeeGo Touch"
 arch=('i686' 'x86_64')
 url="http://github.com/nemomobile/mlite"
