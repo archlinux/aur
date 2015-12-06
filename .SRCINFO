@@ -1,0 +1,22 @@
+pkgbase = haskell-hdbc
+	pkgdesc = Haskell Database Connectivity Library.
+	pkgver = 2.4.0.1
+	pkgrel = 1
+	url = https://github.com/hdbc/hdbc
+	install = haskell-hdbc.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = ghc=7.10.2
+	depends = haskell-mtl
+	depends = haskell-old-locale
+	depends = haskell-old-time
+	depends = haskell-text
+	depends = haskell-utf8-string
+	depends = haskell-convertible
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/HDBC/2.4.0.1/HDBC-2.4.0.1.tar.gz
+	sha256sums = 7a3ee21c41e716111c4a3742a66eb448683719a9384afbf7021c5942ac73d2ad
+
+pkgname = haskell-hdbc
+
