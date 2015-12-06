@@ -23,7 +23,7 @@ build() {
 }
 
 check() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/flex-2.5.39
 
   # these tests are incompatible with latest bison
   sed -i -e '/test-bison-yylloc/d' -e '/test-bison-yylval/d' tests/Makefile.in
