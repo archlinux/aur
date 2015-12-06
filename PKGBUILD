@@ -4,7 +4,7 @@
 
 pkgname=splix
 pkgver=2.0.0
-pkgrel=12
+pkgrel=13
 pkgdesc="CUPS drivers for SPL (Samsung Printer Language) printers"
 arch=('i686' 'x86_64')
 url="http://splix.ap2c.org/"
