@@ -45,11 +45,11 @@ package() {
   cd "$srcdir/$_gitname/src"
 
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  mkdir -p "$pkgdir/bin/"
+  mkdir -p "$pkgdir/usr/bin/"
 
-  cp ./*.bin "$pkgdir/bin/"
+  cp ./*.bin "$pkgdir/usr/bin/"
 
-  cd  "$pkgdir/bin/"
+  cd  "$pkgdir/usr/bin/"
   for i in $(ls ".")
   do
     chmod +x $i
