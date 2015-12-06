@@ -1,21 +1,19 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-luigi
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Workflow mgmgt + task scheduling + dependency resolution"
 arch=('any')
-depends=('python2'
-         'python2-python-daemon'
-         'python2-tornado')
+depends=('python2' 'python2-python-daemon' 'python2-tornado')
 makedepends=('python2-setuptools')
 optdepends=('python2-mechanize: for debugging Hadoop jobs more easily')
 url="https://github.com/spotify/luigi"
 license=('Apache')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/l/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('06258afcfcdd2f829167450fd5fed604')
-sha256sums=('0ec3d719f0287290af8d90a9de0d7772c54732d8e917dabcaacb44ac6c141866')
+md5sums=('625b7609fd6566fb14c25c8f2592d95f')
+sha256sums=('678eb30789f43e32e4f001592fd0f607c6e012d56a00fd7e82f6c9e500db4b4c')
 provides=('luigi' 'python2-luigi')
 conflicts=('luigi')
 
