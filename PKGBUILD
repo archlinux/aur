@@ -1,7 +1,7 @@
 # Maintainer: Luca Béla Palkovics <luca.bela.palkovics@gmail.com>
 
 pkgrel=1
-pkgver=alpha.r204.ge317c9d
+pkgver=alpha.r211.gf4fd672
 pkgname=('gtox-git')
 pkgdesc="a GTK-based tox-client"
 url="https://github.com/KoKuToru/gTox.git"
