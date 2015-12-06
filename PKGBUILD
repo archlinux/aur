@@ -4,7 +4,7 @@
 
 pkgname=swig
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('i686' 'x86_64')
 url="http://www.swig.org/"
