@@ -17,6 +17,7 @@ source=("${_pkgname}"::"git+https://github.com/dasom-im/${_pkgname}.git")
 md5sums=('SKIP')
 options=(!buildflags)
 install=$pkgname.install
+groups=('dasom')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
