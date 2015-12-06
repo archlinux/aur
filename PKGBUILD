@@ -50,7 +50,7 @@ optdepends=('xorg-xauth: X11 forwarding'
 checkdepends=('gdb')
 provides=('openssh'
           'openssh-hpn')
-conflicts=('openssh' 
+conflicts=('openssh'
            'openssh-hpn')
 source=('git+https://github.com/rapier1/openssh-portable'
         'http://www.eworm.de/download/linux/openssh-tests-scp.patch'
