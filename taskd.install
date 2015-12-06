@@ -10,11 +10,3 @@ post_install() {
     fi
 
 }
-
-post_remove() {
-    # Delete the taskd username and group if they exist
-    [[ $(getent passwd taskd) ]] && userdel taskd
-    [[ $(getent group taskd) ]] && groupdel taskd
-    echo "The 'taskd' user and group have been removed."
-    echo "/var/lib/taskd must be removed manually."
-}
