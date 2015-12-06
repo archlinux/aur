@@ -17,7 +17,7 @@ source=(http://downloads.sourceforge.net/sourceforge/flex/flex-2.5.39.tar.xz)
 md5sums=('477679c37ff8b28248a9b05f1da29a82')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname-2.5.39
   ./configure --prefix=/usr
   make
 }
