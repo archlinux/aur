@@ -1,6 +1,6 @@
 pkgbase = dasom-jeongeum-git
 	pkgdesc = dasom-jeongeum is a Korean engine based on libhangul
-	pkgver = 268.b5a8524
+	pkgver = 1.1.fd25af
 	pkgrel = 1
 	url = https://github.com/dasom-im/dasom-jeongeum
 	install = dasom-jeongeum-git.install

@@ -3,7 +3,7 @@
 
 pkgname=dasom-jeongeum-git
 _pkgname=dasom-jeongeum
-pkgver=268.b5a8524
+pkgver=1.1.fd25af
 pkgrel=1
 pkgdesc="dasom-jeongeum is a Korean engine based on libhangul"
 arch=('any')
@@ -20,7 +20,7 @@ install=$pkgname.install
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	echo "$(git tag | sort -V | tail -1).$(git rev-parse --short HEAD)"
 }
 
 build() {
