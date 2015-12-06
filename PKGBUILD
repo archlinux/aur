@@ -1,7 +1,7 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 # Based on package by: Denis Saintilma <1068des@gmail.com>
 pkgname=plexpy
-pkgver=1.2.11
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('plexpy-git')
 provides=("plexpy")
 install=('plexpy.install')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/drzoidberg33/plexpy/archive/v$pkgver.tar.gz" 'plexpy.service' 'plexpy.install' 'welcome.html.patch')
-sha256sums=('726db19a948c51ec5c6b12c046184ca6fa7676d98b32baccbae11a53e55c7c96'
+sha256sums=('400f3595423411ae32098906d683ee0420c6f161de159064fe969fd5612ab718'
          '007682d19b8573fed06d4f2017080519c6f26793aafba38f01f349627a6b36d5'
          '447c8e08beca653775a7a5d8743c395e058c4c149f864b14a084ff684f6081f8'
          'a9c1319185172379ae3bcfd01b4860b4405ffbac3165307c54e084251043ef9f')
