@@ -1,6 +1,6 @@
 #Maintainer: Ovi Chis ovi@ovios.org
 pkgname=tgt
-pkgver=1.0.61
+pkgver=1.0.62
 pkgrel=1
 pkgdesc="iSCSI Target STGT for Arch Linux"
 arch=('x86_64' 'i686')
