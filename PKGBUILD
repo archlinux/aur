@@ -3,7 +3,7 @@
 
 pkgname=dasom-gtk-git
 _pkgname=dasom-gtk
-pkgver=299.fbe88a0
+pkgver=1.2.c496bd
 pkgrel=1
 pkgdesc="GTK+ IM modules for Dasom"
 arch=('any')
@@ -20,7 +20,7 @@ install=$pkgname.install
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	echo "$(git tag | sort -V | tail -1).$(git rev-parse --short HEAD)"
 }
 
 build() {
