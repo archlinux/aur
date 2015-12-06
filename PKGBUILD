@@ -2,7 +2,7 @@
 pkgname=opencollada
 pkgver=20150702
 _commit=3335ac164e68b2512a40914b14c74db260e6ff7d # Magic blender commit
-pkgrel=2
+pkgrel=3
 pkgdesc="Stream based reader and writer library for COLLADA files"
 arch=(i686 x86_64)
 url="https://github.com/KhronosGroup/OpenCOLLADA"
