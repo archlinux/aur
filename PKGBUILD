@@ -1,4 +1,5 @@
 # Maintainer: Carl George < arch at cgtx dot us >
+# Contributor: XZS < d dot f dot fischer at web dot de >
 # Contributor: Janne Haapsaari < haaja at iki dot fi >
 # Contributor: Christopher Krooß < didi2002 at web dot de >
 
@@ -20,6 +21,15 @@ install="gschemas.install"
 source=("https://github.com/${_author}/${_extname}/archive/extensions.gnome.org-v${pkgver}.tar.gz")
 noextract=()
 sha256sums=('50bd242f3f6e6089137957c175462475d10a2e39f6014184b792248ed7708084')
+
+prepare() {
+    cd "${srcdir}/${_extname}-extensions.gnome.org-v${pkgver}"
+    grep -lZr logo.svg | while IFS= read -rd $'\0' file
+    do
+      sed -i 's/\(logo\.\)svg/\1png/' "$file"
+    done
+    convert media/logo.{svg,png}
+}
 
 build() {
     cd "${srcdir}/${_extname}-extensions.gnome.org-v${pkgver}"
