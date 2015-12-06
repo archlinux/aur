@@ -2,15 +2,15 @@
 #
 
 pkgname=backupd
-pkgdesc="Compressed and encrypted backups with 7zip and GPG"
-pkgver=0.1
-pkgrel=2
+pkgdesc="Compressed and encrypted backups with xz and GPG"
+pkgver=0.2
+pkgrel=1
 arch=('any')
 url="https://github.com/gustawho/backupd"
 license=("GPL3")
-depends=('p7zip')
+depends=('pigz')
 source=("http://gustawho.x10.mx/packages/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('a04bbafc4b2658727fe0d33a214471912864b682865c8115b2700bc80380e1bf04a96ab6090a160192dbd1a05292bff2776c3dcf7c2de1db6394d9ab56daa48a')
+sha512sums=('c7ad3ef074ef0fcb22f1d63ff2bedbf02e61aa15d1ab7c8f698279cbc5a929e61dee799fea15b6ee90963fc389206b41fa120d2039b9ddf318f86ef3e93ae2cb')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
