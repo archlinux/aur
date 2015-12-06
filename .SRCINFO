@@ -1,5 +1,5 @@
 pkgbase = pyfa-singularity
-	pkgdesc = EVE Online Fitting Assistant
+	pkgdesc = EVE Online Fitting Assistant singularity pre-release versions
 	pkgver = 986018
 	pkgrel = 1
 	url = http://github.com/DarkFenX/Pyfa
