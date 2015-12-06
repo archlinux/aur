@@ -1,7 +1,7 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=wasteland2 #-gog ???
-pkgver=2.0.0.2
+pkgver=2.2.0.4
 pkgrel=1
 pkgdesc="The Director's Cut of the sequel to an adventure in post-nuclear America"
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ source=("${pkgname}.desktop"
 # bsdtar doesn't seem to like this .sh
 noextract=("gog_wasteland_2_director_s_cut_${pkgver}.sh")
 sha256sums=("1400b3e11c34cbfc57e3b5cba9501a3319ddb57f066d9d09bb7799a59fb0efc0"
-            "6c0a7d606bd8677c999d2b546d9a0f474cfbfe9c7d7eb882d458e6a77f738430")
+            "5746e6e66349de3505b329bd6949c1434ae43ec7b0d98790144903fa9b79e34a")
 
 # Disable compression of the package
 PKGEXT='.pkg.tar'
