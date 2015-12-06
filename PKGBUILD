@@ -3,7 +3,7 @@
 # Contributor: Boris Shomodjvarac <shomodj AT gmail DOT com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 pkgname=dbschema
-pkgver=7.1.0
+pkgver=7.1.0.4329
 pkgrel=1
 pkgdesc='Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ package(){
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
-sha1sums=('a5145d0718c0b52e07bc42a40141c388b8f5e08a'
-          '8b073fd8d750f92cd5012d9d13c374a978966e2f'
-          'd609bda2b0ffd70b011a6b1f9ab51d62dd1f9ad4'
-          'df167fa32d22d7200f6645fef9b54b14e8ac6815')
+sha512sums=('9ec772e33809b24d9cf08c715e5a3370beb75051723150f7d3c97ff090decb1bef479283e8ffeb65bb48852194095eb5c646b5fa7461c9a81f6b2ba72623c02e'
+            '14aa7735e4ab9e3305b7d6d10e4db56ecaddccd53dc545165260a6098c238e6afc072d9fc8d02f419f5f1e46bd117ff61be5ed42c45572de439d83d0644b790a'
+            'b0f62b502a758fdfb550cc1dc91237b37b0e5b0ceadbad9c76dd67cba20756e786573f2c99fe185bea115f5d97f8beaac42b834e1b0be6f0bdaafff711987b09'
+            'bd69df33d839cf87430da26e97b6bd2a8f9f1bbf7f29f474e8ba540c9ceb2bbea19e684a8d6c4e9b4db32ed1e0e5762a8b28419e3079aa4e4d55ae3d04c1ba14')
