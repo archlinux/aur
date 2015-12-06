@@ -1,0 +1,9 @@
+post_install() {
+  ln -s subliminal3 /usr/bin/subliminal
+  echo "subliminal3 is now symlinked to /usr/bin/subliminal"
+}
+
+post_remove() {
+  echo "Removing symlinks..."
+  rm /usr/bin/subliminal
+}

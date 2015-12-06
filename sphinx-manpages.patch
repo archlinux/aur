@@ -1,0 +1,12 @@
+diff -aur subliminal/docs/Makefile subliminal.new/docs/Makefile
+--- subliminal/docs/Makefile	2015-12-06 09:41:35.804836605 +0100
++++ subliminal.new/docs/Makefile	2015-12-06 09:41:58.257760875 +0100
+@@ -2,7 +2,7 @@
+ #
+ 
+ # You can set these variables from the command line.
+-SPHINXOPTS    = -n -W
++SPHINXOPTS    = -n
+ SPHINXBUILD   = sphinx-build
+ PAPER         =
+ BUILDDIR      = _build

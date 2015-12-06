@@ -1,6 +1,6 @@
 pkgbase = subliminal-git
 	pkgdesc = Python library and CLI tool for searching and downloading subtitles.
-	pkgver = 1.0.2.r733.769b16d
+	pkgver = 1.1.0.r761.d62a09b
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Diaoul/subliminal
@@ -8,9 +8,20 @@ pkgbase = subliminal-git
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-sphinx
 	makedepends = gettext
+	source = subliminal::git+https://github.com/Diaoul/subliminal.git#branch=develop
+	source = sphinx-manpages.patch
+	md5sums = SKIP
+	md5sums = d63a79b506a7d4adea15112fe46f321b
+
+pkgname = python-subliminal-git
+	pkgdesc = Python library and CLI tool for searching and downloading subtitles. (python3 version)
+	install = python-subliminal-git.install
 	depends = python-beautifulsoup4>=4.2.0
 	depends = python-guessit>=0.9.1
+	depends = python-guessit<2.0
 	depends = python-requests>=2.0
 	depends = python-enzyme>=0.4.1
 	depends = python-dogpile.cache>=0.5.4
@@ -20,17 +31,37 @@ pkgbase = subliminal-git
 	depends = python-babelfish>=0.5.2
 	depends = python-chardet>=2.3.0
 	depends = python-stevedore>=1.0.0
+	optdepends = python-subliminal-git-docs: package manpages
+	provides = subliminal-git
 	provides = subliminal
-	provides = python-subliminal-git
 	conflicts = subliminal
-	conflicts = python-subliminal-git
-	source = subliminal::git+https://github.com/Diaoul/subliminal.git#branch=develop
-	md5sums = SKIP
+	replaces = subliminal-git
 
-pkgname = subliminal-git
+pkgname = python2-subliminal-git
+	pkgdesc = Python library and CLI tool for searching and downloading subtitles. (python2 version)
+	install = python2-subliminal-git.install
+	depends = python2-beautifulsoup4>=4.2.0
+	depends = python2-guessit>=0.9.1
+	depends = python2-guessit<2.0
+	depends = python2-requests>=2.0
+	depends = python2-enzyme>=0.4.1
+	depends = python2-dogpile.cache>=0.5.4
+	depends = python2-click>=4.0
+	depends = python2-pysrt>=1.0.1
+	depends = python2-six>=1.9.0
+	depends = python2-babelfish>=0.5.2
+	depends = python2-chardet>=2.3.0
+	depends = python2-stevedore>=1.0.0
+	optdepends = python-subliminal-git-docs: package manpages
+	provides = subliminal-git
+	provides = subliminal
+	conflicts = subliminal
 
 pkgname = nautilus-subliminal-git
 	pkgdesc = An extension for Nautilus to download subtitles.
 	depends = subliminal-git
-	depends = python-nautilus
+	depends = python2-nautilus
+
+pkgname = python-subliminal-git-docs
+	pkgdesc = Manpages for Subliminal.
 
