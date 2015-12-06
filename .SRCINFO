@@ -1,0 +1,25 @@
+pkgbase = pyfa-singularity
+	pkgdesc = EVE Online Fitting Assistant
+	pkgver = 986018
+	pkgrel = 1
+	url = http://github.com/DarkFenX/Pyfa
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = python2
+	depends = wxpython
+	depends = python2-sqlalchemy
+	depends = python2-dateutil
+	depends = python2-requests
+	depends = python2-urllib3
+	optdepends = python2-matplotlib: for graph plotting
+	optdepends = python2-numpy: for graph plotting
+	source = https://github.com/DarkFenX/Pyfa/releases/download/singularity-986018/pyfa-singularity-986018-linux.zip
+	source = pyfa.desktop
+	source = pyfa-start.sh
+	md5sums = 21b6b12d2de9e76c14790a0b4bbf0356
+	md5sums = eb5f7ee8402082b596b262b4229bb9f4
+	md5sums = 61b12c903d49964bd4327ba8debd8166
+
+pkgname = pyfa-singularity
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=986018
+Encoding=UTF-8
+Name=Pyfa [singularity]
+Comment=Python Fitting Assistant
+Exec=/usr/bin/pyfa-singularity
+Terminal=false
+Icon=pyfa-singularity
+Type=Application
+Categories=Application;Game;
