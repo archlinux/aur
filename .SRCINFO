@@ -1,6 +1,6 @@
 pkgbase = python2-guessit-git
 	pkgdesc = A library for guessing information from video files.
-	pkgver = 0.11.1.r940.4993486
+	pkgver = 2.0.r191.bbf35e0
 	pkgrel = 1
 	url = https://github.com/wackou/guessit
 	arch = any
@@ -8,22 +8,35 @@ pkgbase = python2-guessit-git
 	makedepends = git
 	makedepends = python2-setuptools
 	makedepends = python-setuptools
+	makedepends = python2-pytest-runner
+	makedepends = python-pytest-runner
+	makedepends = python-sphinx
+	options = zipman
 	source = guessit::git+https://github.com/wackou/guessit
 	md5sums = SKIP
 
 pkgname = python2-guessit-git
-	depends = python2-babelfish>=0.5.4
-	depends = python2-stevedore>=1.0.0
-	depends = python2-requests>=2.0
+	pkgdesc = A library for guessing information from video files. (python2 version)
+	depends = python2-babelfish>=0.5.5
+	depends = python2-rebulk>=0.6.4
+	depends = python2-regex
 	depends = python2-dateutil>=2.1
+	depends = python2-argparse
+	depends = python2-ordereddict
+	optdepends = python-guessit-git-docs: package manpages
 	provides = python2-guessit=${pkgver}
 	conflicts = python2-guessit
 
 pkgname = python-guessit-git
-	depends = python-babelfish>=0.5.4
-	depends = python-stevedore>=1.0.0
-	depends = python-requests>=2.0
-	depends = python-dateutil>=2.1
+	pkgdesc = A library for guessing information from video files. (python3 version)
+	depends = python-babelfish>=0.5.5
+	depends = python-rebulk>=0.6.4
+	depends = python-regex
+	depends = python-dateutil
+	optdepends = python-guessit-git-docs: package manpages
 	provides = python-guessit=${pkgver}
 	conflicts = python-guessit
+
+pkgname = python-guessit-git-docs
+	pkgdesc = Manpages for python-guessit-git.
 
