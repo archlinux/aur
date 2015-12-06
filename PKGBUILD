@@ -1,20 +1,21 @@
-# Maintainer: Tim Reddehase <robustus@rightsrestricted.com>
+# Maintainer: Eugen Kuksa <eugenk@cs.uni-bremen.de>
 
 pkgname=hets
-pkgver=0.99_1441029199
-pkgrel=2
+pkgver=0.99_1449218850
+pkgrel=1
 
-pkgdesc="A parsing, static analysis and proof management tool incorporating various provers and different specification languages, thus providing a tool for heterogeneous specifications. Logic translations are first-class citizens."
+pkgdesc="A parsing, static analysis and proof management tool incorporating various provers and different specification languages."
 
-url="http://www.informatik.uni-bremen.de/agbkb/forschung/formal_methods/CoFI/hets/index_e.htm"
-arch=('x86_64')
-license='custom:hets-license'
-depends=('ghc' 'udrawgraph' 'tcl' 'tk' 'spass' 'ncurses' 'pellet' 'cairo' 'glib2' 'gtk2' 'gettext' 'fontconfig' 'libglade' 'darwin' 'eprover')
+url="http://hets.eu"
+arch=('i686' 'x86_64')
+license=('custom:hets-license')
+depends=('ghc>=6.8.2' 'udrawgraph>=3.1.1' 'tcl' 'tk' 'spass' 'eprover' 'darwin' 'hets-lib' 'ncurses' 'pellet' 'cairo' 'glib2' 'gtk2' 'gettext' 'fontconfig' 'libglade')
 optdepends=('isabelle')
 provides=('hets')
 conflicts=('hets')
-sha1sums=('ec09b17e0016245a4487263fb1e2c0ca07affd56')
-source=("http://ontohub.rightsrestricted.com/hets/binaries/hets-${pkgver}.tar.gz")
+sha1sums=('110b5fd11533f75790f56c61c5036c103cd560a1')
+
+source=("http://www.informatik.uni-bremen.de/~eugenk/archlinux-aur/hets/hets-${pkgver}.tar.gz")
 package() {
   cd ${srcdir}
 
