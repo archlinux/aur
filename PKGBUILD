@@ -3,7 +3,7 @@
 pkgname=acmetool-git
 pkgver=20151206
 pkgrel=1
-pkgdesc=""
+pkgdesc="Acmetool is an easy-to-use command line tool for automatically acquiring certificates from ACME servers (such as Let's Encrypt)"
 arch=(i686 x86_64)
 url="https://github.com/hlandau/acme"
 license=('MIT')
