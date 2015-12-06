@@ -25,7 +25,7 @@ build()
 {
   cd ${_pkgname}-${pkgver}
   patch -p1 < ../qglviewer.patch
-  qmake -o Makefile ${_pkgname}-${pkgver}.pro || return 1
+  qmake PREFIX=/usr/local -o Makefile ${_pkgname}-${pkgver}.pro || return 1
   
   make \
     CFLAGS="-pipe ${CFLAGS} -D_REENTRANT -Wall -W -fPIC \$(DEFINES)" \
