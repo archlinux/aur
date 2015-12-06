@@ -1,6 +1,6 @@
 pkgbase = python2-babelfish-git
 	pkgdesc = A module to work with countries and languages.
-	pkgver = 0.5.5.r95.7d79ed6
+	pkgver = 0.5.6.r95.7d79ed6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Diaoul/babelfish
@@ -9,14 +9,20 @@ pkgbase = python2-babelfish-git
 	makedepends = git
 	makedepends = python2-setuptools
 	makedepends = python-setuptools
+	makedepends = python-sphinx
+	options = zipman
 	source = babelfish::git+https://github.com/Diaoul/babelfish.git
 	md5sums = SKIP
 
 pkgname = python2-babelfish-git
-	provides = python2-babelfish=0.5.5.r95.7d79ed6
+	optdepends = python-babelfish-git-docs: package manpages
+	provides = python2-babelfish=0.5.6.r95.7d79ed6
 	conflicts = python2-babelfish
 
 pkgname = python-babelfish-git
-	provides = python-babelfish=0.5.5.r95.7d79ed6
+	optdepends = python-babelfish-git-docs: package manpages
+	provides = python-babelfish=0.5.6.r95.7d79ed6
 	conflicts = python-babelfish
+
+pkgname = python-babelfish-git-docs
 
