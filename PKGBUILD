@@ -5,11 +5,12 @@
 
 pkgname=simple-backup
 pkgver=1.2.3b.r0.ga2c4e54
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple backup script using rsync'
 arch=('any')
 url="https://github.com/Fuxino"
 license=('GPL')
+makedepends=('git')
 depends=('rsync')
 optdepends=('libnotify: display desktop notifications')
 install=${pkgname}.install
