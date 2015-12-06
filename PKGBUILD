@@ -1,7 +1,7 @@
 # Maintainer: nic96 <jeromyreimer at gmail dot com>
 
 pkgname=voxelands-bin
-pkgver=1508.01
+pkgver=1510.01
 pkgrel=1
 pkgdesc="A fork of Minetest, an Infiniminer/Minecraft inspired game"
 arch=(x86_64)
