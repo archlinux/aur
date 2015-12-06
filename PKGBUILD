@@ -10,7 +10,7 @@
 
 _pkgname=angband
 pkgname=angband-ncurses
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)"
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ makedepends=('python-docutils'
 			'autoconf' 'automake')
 conflicts=('angband' 'angband-git')
 source=(
-  #"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
-  "http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-${pkgver}.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
+#  "http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-${pkgver}.tar.gz"
 )
 
 prepare() {
@@ -58,4 +58,4 @@ package() {
   install -Dm644 copying.txt "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
 
-sha256sums=('1752d22a164bb073b9a7be322a2b607b06a4c919c073d012c010a61578081ce8')
+sha256sums=('93f95444304d5178d23569dbd3dbe1eb29747201d353c676206f26b5bec4667c')
