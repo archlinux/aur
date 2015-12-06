@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/gustawho/backupd"
 license=("GPL3")
 depends=('pigz')
+optdepends=('davfs2: WebDAV support')
 source=("http://gustawho.x10.mx/packages/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('c7ad3ef074ef0fcb22f1d63ff2bedbf02e61aa15d1ab7c8f698279cbc5a929e61dee799fea15b6ee90963fc389206b41fa120d2039b9ddf318f86ef3e93ae2cb')
 
