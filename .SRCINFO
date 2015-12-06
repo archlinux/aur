@@ -1,6 +1,6 @@
 pkgbase = dasom-git
 	pkgdesc = Dasom is a multilingual input method framework
-	pkgver = 1.2-9-g002629d
+	pkgver = 1.2.g002629d
 	pkgrel = 1
 	url = https://github.com/dasom-im/dasom
 	install = dasom-git.install

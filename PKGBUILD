@@ -3,7 +3,7 @@
 
 pkgname=dasom-git
 _pkgname=dasom
-pkgver=1.2-9-g002629d
+pkgver=1.2.g002629d
 pkgrel=1
 pkgdesc="Dasom is a multilingual input method framework"
 arch=('any')
@@ -20,7 +20,7 @@ install=$pkgname.install
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	echo "$(git describe --tag)"
+	echo "$(git tag | sort -V | tail -1).$(git rev-parse --short HEAD)"
 }
 
 build() {
