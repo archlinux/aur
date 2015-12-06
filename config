@@ -1,0 +1,15 @@
+#Example config file for my_backup
+
+# WARNING: Values should NOT be quoted, e.g. use inputs=/some/dir instead of inputs="/some/dir"
+
+#Input directories. Use a comma to separate items
+inputs=/home/my_home,/etc
+
+#Output directory
+backup_dir=/media/Backup
+
+#Exclude patterns. Use a comma to separate items
+exclude=.gvfs,.cache*,[Cc]ache*,.thumbnails*,[Tt]rash*,*.backup*,*~,.dropbox*
+
+#Number of snapshots to keep (default: keep all)
+keep=

@@ -1,0 +1,17 @@
+pkgbase = simple-backup
+	pkgdesc = Simple backup script using rsync
+	pkgver = 1.2.3b.r0.ga2c4e54
+	pkgrel = 1
+	url = https://github.com/Fuxino
+	install = simple-backup.install
+	arch = any
+	license = GPL
+	depends = rsync
+	optdepends = libnotify: display desktop notifications
+	source = git+https://github.com/Fuxino/simple-backup.git
+	source = config
+	sha256sums = SKIP
+	sha256sums = d8b88cbb4e6d9cae68c1605496880065337484dff8ee4c06dce2578357e95574
+
+pkgname = simple-backup
+
