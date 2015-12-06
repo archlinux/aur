@@ -1,6 +1,6 @@
 # Maintainer: rafaqzsu <rafaqzsu [at] gmail (dot) com>
 pkgname=cropgui-git
-pkgver=db8091
+pkgver=349125
 pkgrel=1
 pkgdesc="A GTK GUI for lossless JPEG cropping (and rotating)"
 arch=('any')
