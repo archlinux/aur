@@ -9,14 +9,22 @@ pkgbase = python2-enzyme-git
 	makedepends = git
 	makedepends = python2-setuptools
 	makedepends = python-setuptools
+	makedepends = python-sphinx
 	source = enzyme::git+https://github.com/Diaoul/enzyme.git
 	md5sums = SKIP
 
 pkgname = python2-enzyme-git
+	pkgdesc = Python module to parse metadata in video files. (python2 version)
+	optdepends = python-enzyme-git-docs: package manpages
 	provides = python2-enzyme=0.4.2.r21.9572bea
 	conflicts = python2-enzyme
 
 pkgname = python-enzyme-git
+	pkgdesc = Python module to parse metadata in video files. (python3 version)
+	optdepends = python-enzyme-git-docs: package manpages
 	provides = python-enzyme=0.4.2.r21.9572bea
 	conflicts = python-enzyme
+
+pkgname = python-enzyme-git-docs
+	pkgdesc = Manpages for python-enzyme-git.
 
