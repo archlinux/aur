@@ -1,0 +1,18 @@
+pkgbase = flex-android
+	pkgdesc = Flex for building Android. 2.6 doesn't play well when building.
+	pkgver = android
+	pkgrel = 1
+	url = http://flex.sourceforge.net
+	install = flex.install
+	arch = any
+	license = custom
+	depends = glibc
+	depends = m4
+	depends = sh
+	provides = flex
+	conflicts = flex
+	source = http://downloads.sourceforge.net/sourceforge/flex/flex-2.5.39.tar.xz
+	md5sums = 477679c37ff8b28248a9b05f1da29a82
+
+pkgname = flex-android
+
