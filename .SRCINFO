@@ -1,5 +1,5 @@
 pkgbase = linux-libre-grsec
-	pkgver = 4.2.6_gnu.201511122040
+	pkgver = 4.2.6_gnu.201511282239
 	pkgrel = 1
 	url = https://grsecurity.net/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = linux-libre-grsec
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2-gnu/linux-libre-4.2-gnu.tar.xz.sign
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.6-gnu/patch-4.2-gnu-4.2.6-gnu.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.2.6-gnu/patch-4.2-gnu-4.2.6-gnu.xz.sign
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.2.6-201511122040.patch
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.2.6-201511122040.patch.sig
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.2.6-201511282239.patch
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.2.6-201511282239.patch.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -29,6 +29,7 @@ pkgbase = linux-libre-grsec
 	source = config.armv7h
 	source = linux.preset
 	source = change-default-console-loglevel.patch
+	source = btrfs-overflow.patch
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
 	source = https://repo.parabola.nu/other/rcn-libre-grsec/patches/4.2.6/rcn-libre-grsec-4.2.6-armv7-x3.patch
 	source = https://repo.parabola.nu/other/rcn-libre-grsec/patches/4.2.6/rcn-libre-grsec-4.2.6-armv7-x3.patch.sig
@@ -44,7 +45,7 @@ pkgbase = linux-libre-grsec
 	sha256sums = SKIP
 	sha256sums = eeb789dc08b73958694db66763d263071591cb2f16a076acc521b044aaccac30
 	sha256sums = SKIP
-	sha256sums = fbfd60db515a0e3dc063ee946d85f2d71e33abaf126f70a25a8bf223d300f4ff
+	sha256sums = 2feaae512652fa6eb18e1d40110bfcc56ad4993d4ae4775cb7f89337d3d11f98
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -52,11 +53,12 @@ pkgbase = linux-libre-grsec
 	sha256sums = SKIP
 	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
 	sha256sums = SKIP
-	sha256sums = 04a4059e421cac00490e9c803d3451eb93163d855cb4c1cdd5e80b6fc537d8d3
-	sha256sums = c49761ea39fe2147797a9fc12e81fee2d149b47594dbd3c1f781022c88cf20bd
-	sha256sums = a1b7ba31d02cd1b516cb40c4d455b71efe7c598037c969a9c52dbd7e08cfb517
+	sha256sums = 5f6eecdd710485b1e228e4eaae4159de83ecf2fdefff9b9bd68f07b7c1538e14
+	sha256sums = f21b7c1f4a05b0a86b798e678eb670b201f322e23fb5db9a3036f7c7f6feeab9
+	sha256sums = d1c8417ad4f5e541f63c47fb632f81f2753cc71228d3bcfe87a6a0c04f380f1f
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 82efb1d533b579e8ea6103456e76ace1f749c9f055b0eaf95b980dc9ae544e5f
 	sha256sums = 61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc
 	sha256sums = d0035c2183afa3be70e2f8744a065f98146faa97dc04b5ffd8f23db9b4f9a68b
 	sha256sums = SKIP
@@ -80,20 +82,20 @@ pkgname = linux-libre-grsec
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = gradm: to configure and enable Role Based Access Control (RBAC)
 	optdepends = paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically
-	provides = linux-grsec=4.2.6.201511122040
+	provides = linux-grsec=4.2.6.201511282239
 	conflicts = 
 	replaces = linux-grsec
 	backup = etc/mkinitcpio.d/linux-libre-grsec.preset
 
 pkgname = linux-libre-grsec-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-grsec kernel
-	provides = linux-grsec-headers=4.2.6.201511122040
+	provides = linux-grsec-headers=4.2.6.201511282239
 	conflicts = 
 	replaces = linux-grsec-headers
 
 pkgname = linux-libre-grsec-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-grsec kernel
-	provides = linux-grsec-docs=4.2.6.201511122040
+	provides = linux-grsec-docs=4.2.6.201511282239
 	conflicts = 
 	replaces = linux-grsec-docs
 
