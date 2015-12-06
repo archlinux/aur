@@ -1,4 +1,5 @@
-# Maintainer: Maxwell Pray a.k.a. Synthead <synthead1@gmail.com>
+# Maintainer: jerry73204 <jerry73204@gmail.com>
+# Previous maintainer: Maxwell Pray a.k.a. Synthead <synthead1@gmail.com>
 # Contributor: Jens Pranaitis <jens@jenux.homelinux.org>
 # Contributor: Michal Krenek <mikos@sg1.cz>
 
