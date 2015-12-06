@@ -6,14 +6,15 @@
 _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat')
-pkgver=227
-pkgrel=1
-arch=('i686' 'x86_64')
+pkgver=228
+pkgrel=3
+arch=('i686' 'x86_64' 'armv7h')
 url="http://www.freedesktop.org/wiki/Software/systemd"
-makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
+makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-libre-api-headers'
-             'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
+             'python-lxml' 'quota-tools' 'shadow' 'git')
+[ "$CARCH" != "armv7h" ] && makedepends+=('gnu-efi-libs')
 options=('strip' 'debug')
 source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         #'0001-adds-TCP-Stealth-support-to-systemd.patch::https://gnunet.org/sites/default/files/systemd-knock-patch.diff'
@@ -33,10 +34,20 @@ md5sums=('SKIP'
          '1b3aa3a0551b08af9305d33f85b5c2fc'
          '36ee74767ac8734dede1cbd0f4f275d7'
          '9b9f4a58e4c4009bf5290c5b297600c3'
-         '489e79ba87d2ebdd3cb4ef460a21bd00')
+         'd37895215ef74e172c594aebe1ba23cb')
 
 prepare() {
   cd "$_pkgbase"
+
+  # sd-ndisc: drop RA packets from non-link-local addresses
+  # https://github.com/systemd/systemd/commit/3ccd31635353
+  # https://github.com/systemd/systemd/issues/1866
+  git cherry-pick -n 3ccd31635353
+
+  # networkd: link - do not drop config for loopback device
+  # https://github.com/systemd/systemd/commit/e5d44b34cca3
+  # https://github.com/systemd/systemd/issues/2023
+  git cherry-pick -n e5d44b34cca3
 
   # Rename "Linux" -> "GNU/Linux"
   patch -Np1 -i "$srcdir/gnu+linux.patch"
@@ -57,19 +68,27 @@ build() {
 
   local timeservers=({0..3}.arch.pool.ntp.org)
 
+  if [ "$CARCH" = "armv7h" ]; then
+    LDFLAGS+=" -Wl,-fuse-ld=bfd"
+    CFLAGS+=" -fno-lto"
+    CXXFLAGS+=" -fno-lto"
+  else
+    extra=--enable-gnuefi
+  fi
+
   ./configure \
       --libexecdir=/usr/lib \
       --localstatedir=/var \
       --sysconfdir=/etc \
       --enable-lz4 \
       --enable-compat-libs \
-      --enable-gnuefi \
       --enable-tcp-stealth \
       --disable-audit \
       --disable-ima \
       --with-sysvinit-path= \
       --with-sysvrcnd-path= \
-      --with-ntp-servers="${timeservers[*]}"
+      --with-ntp-servers="${timeservers[*]}" \
+      $extra
 
   make
 }
@@ -78,7 +97,7 @@ package_systemd-knock() {
   pkgdesc="system and service manager with support for stealth TCP sockets (Parabola rebranded)"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' "libsystemd=$pkgver" 'libidn' 'lz4' 'pam' 'libseccomp'
+           'libgcrypt' "libsystemd=$pkgver" 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')

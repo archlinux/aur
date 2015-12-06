@@ -1,9 +1,10 @@
 pkgbase = systemd-knock
-	pkgver = 227
-	pkgrel = 1
+	pkgver = 228
+	pkgrel = 3
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	makedepends = acl
 	makedepends = cryptsetup
 	makedepends = docbook-xsl
@@ -11,6 +12,7 @@ pkgbase = systemd-knock
 	makedepends = lz4
 	makedepends = xz
 	makedepends = pam
+	makedepends = libelf
 	makedepends = intltool
 	makedepends = iptables
 	makedepends = kmod
@@ -24,11 +26,11 @@ pkgbase = systemd-knock
 	makedepends = python-lxml
 	makedepends = quota-tools
 	makedepends = shadow
-	makedepends = gnu-efi-libs
 	makedepends = git
+	makedepends = gnu-efi-libs
 	options = strip
 	options = debug
-	source = git://github.com/systemd/systemd.git#tag=v227
+	source = git://github.com/systemd/systemd.git#tag=v228
 	source = https://repo.parabola.nu/other/knock/patches/systemd/0001-adds-TCP-Stealth-support-to-systemd-221.patch
 	source = https://repo.parabola.nu/other/systemd-knock/splash-parabola.bmp
 	source = initcpio-hook-udev
@@ -45,7 +47,7 @@ pkgbase = systemd-knock
 	md5sums = 1b3aa3a0551b08af9305d33f85b5c2fc
 	md5sums = 36ee74767ac8734dede1cbd0f4f275d7
 	md5sums = 9b9f4a58e4c4009bf5290c5b297600c3
-	md5sums = 489e79ba87d2ebdd3cb4ef460a21bd00
+	md5sums = d37895215ef74e172c594aebe1ba23cb
 
 pkgname = systemd-knock
 	pkgdesc = system and service manager with support for stealth TCP sockets (Parabola rebranded)
@@ -61,10 +63,11 @@ pkgname = systemd-knock
 	depends = hwids
 	depends = libcap
 	depends = libgcrypt
-	depends = libsystemd=227
+	depends = libsystemd=228
 	depends = libidn
 	depends = lz4
 	depends = pam
+	depends = libelf
 	depends = libseccomp
 	depends = util-linux
 	depends = xz
@@ -74,9 +77,9 @@ pkgname = systemd-knock
 	optdepends = systemd-knock-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=227
-	provides = udev=227
-	provides = systemd=227
+	provides = systemd-tools=228
+	provides = udev=228
+	provides = systemd=228
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -118,14 +121,14 @@ pkgname = libsystemd-knock
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=227
+	provides = libsystemd=228
 	conflicts = libsystemd
 
 pkgname = systemd-knock-sysvcompat
 	pkgdesc = sysvinit compat for systemd-knock
 	license = GPL2
 	depends = systemd-knock
-	provides = systemd-sysvcompat=227
+	provides = systemd-sysvcompat=228
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
