@@ -1,0 +1,16 @@
+pkgbase = zxing-cpp-git
+	pkgdesc = A command-line tool to decode QRCode
+	pkgver = r35.5ce91bb
+	pkgrel = 1
+	url = https://github.com/glassechidna/zxing-cpp
+	arch = any
+	license = apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = cppunit
+	provides = zxing-cpp
+	source = zxing-cpp-git::git+https://github.com/glassechidna/zxing-cpp.git
+	sha512sums = SKIP
+
+pkgname = zxing-cpp-git
+
