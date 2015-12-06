@@ -3,7 +3,7 @@
 pkgbase=phonon-gstreamer
 pkgname=('phonon-qt4-gstreamer' 'phonon-qt5-gstreamer')
 pkgver=4.8.2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
 license=('LGPL')
