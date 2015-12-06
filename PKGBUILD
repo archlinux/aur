@@ -19,7 +19,7 @@ package() {
   cd "${srcdir}"/pyfa || return 1
 
   install -d "${pkgdir}"/usr/bin || return 1
-  install -d "${pkgdir}"/usr/share/{applications,pixmaps,pyfa} || return 1
+  install -d "${pkgdir}"/usr/share/{applications,pixmaps,${pkgname}} || return 1
 
   cp -R "${srcdir}"/pyfa/* "${pkgdir}"/usr/share/${pkgname} || return 1
   
