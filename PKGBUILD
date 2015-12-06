@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-examples-git
-pkgver=snapshot.2015.05.r64.gc7ff155
+pkgver=snapshot.2015.05.r126.g3d70af7
 pkgrel=1
 pkgdesc="Examples for Magnum OpenGL graphics engine (Git version)"
 arch=('i686' 'x86_64')
@@ -25,16 +25,16 @@ build() {
     cmake "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_AUDIO=ON \
-        -DWITH_BULLET=ON \
-        -DWITH_CUBEMAP=ON \
-        -DWITH_MOTIONBLUR=ON \
-        -DWITH_PRIMITIVES=ON \
-        -DWITH_PICKING=ON \
-        -DWITH_TEXT=ON \
-        -DWITH_TEXTUREDTRIANGLE=ON \
-        -DWITH_TRIANGLE=ON \
-        -DWITH_VIEWER=ON
+        -DWITH_AUDIO_EXAMPLE=ON \
+        -DWITH_BULLET_EXAMPLE=ON \
+        -DWITH_CUBEMAP_EXAMPLE=ON \
+        -DWITH_MOTIONBLUR_EXAMPLE=ON \
+        -DWITH_PRIMITIVES_EXAMPLE=ON \
+        -DWITH_PICKING_EXAMPLE=ON \
+        -DWITH_TEXT_EXAMPLE=ON \
+        -DWITH_TEXTUREDTRIANGLE_EXAMPLE=ON \
+        -DWITH_TRIANGLE_EXAMPLE=ON \
+        -DWITH_VIEWER_EXAMPLE=ON
     make
 }
 
