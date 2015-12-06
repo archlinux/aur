@@ -1,17 +1,19 @@
 pkgbase = python-regex
-	pkgdesc = Alternative regular expression module
-	pkgver = 0.1.20150318
+	pkgdesc = Alternative python regular expression module.
+	pkgver = 2015.11.22
 	pkgrel = 1
-	url = https://code.google.com/p/mrab-regex-hg/
-	arch = i686
-	arch = x86_64
-	license = custom
-	makedepends = python-distribute
-	depends = python
-	conflicts = python-regex-hg
+	epoch = 1
+	url = https://bitbucket.org/mrabarnett/mrab-regex
+	arch = any
+	license = Python
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	options = !emptydirs
-	source = http://ftp.de.debian.org/debian/pool/main/p/python-regex/python-regex_0.1.20150318.orig.tar.gz
-	sha512sums = 13c61c96075f4d6c25782a79283fbfb3174fd04f4455cc3cfec8520d149d5463354ef72c3bf4b0faad1e6a4a141b28611d2d76c3d1bf69213434053935f74bca
+	source = https://pypi.python.org/packages/source/r/regex/regex-2015.11.22.tar.gz
+	md5sums = 0bd2c23059f99cbaf9046000d51d3de7
 
 pkgname = python-regex
+	pkgdesc = Alternative python regular expression module. (python3 version)
+	depends = python
+	conflicts = python-regex-hg
 
