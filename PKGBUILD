@@ -5,7 +5,7 @@ _pkgname2=python2-qtpy
 pkgbase=$_pkgname-git
 pkgname=($_pkgname-git $_pkgname2-git)
 pkgver=0.1.2.r24.gd336f1b
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a uniform layer to support PyQt4, PyQt5 and PySide with a single codebase"
 arch=('any')
 url="https://github.com/spyder-ide/qtpy"
@@ -49,8 +49,8 @@ package_python2-qtpy-git() {
   depends=('python2-pyqt5')
   optdepends=('python2-pyqt4: Qt-Python bindings'
               'python2-pyside: Qt-Python bindings')
-  provides=($_pkgname)
-  conflicts=($_pkgname)
+  provides=($_pkgname2)
+  conflicts=($_pkgname2)
 
   cd $_pkgname2
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
