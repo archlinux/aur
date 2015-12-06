@@ -33,7 +33,7 @@ package_python2-guessit-git() {
     'python2-argparse' 'python2-enzyme'
   )
   conflicts=('python2-guessit')
-  provides=('python2-guessit')
+  provides=("python2-guessit=${pkgver}")
   pkgdesc="A library for guessing information from video files. (python2 version)"
   optdepends=('python-guessit-git-docs: package manpages'
 	      'python2-guess-language: for language guessing')
@@ -50,7 +50,7 @@ package_python-guessit-git() {
     'python-enzyme'
   )
   conflicts=('python-guessit')
-  provides=('python-guessit')
+  provides=("python-guessit=${pkgver}")
   pkgdesc="A library for guessing information from video files. (python3 version)"
   optdepends=('python-guessit-git-docs: package manpages'
 	      'python-guess-language: for language guessing')

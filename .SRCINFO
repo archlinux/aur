@@ -30,7 +30,7 @@ pkgname = python2-guessit-git
 	depends = python2-enzyme
 	optdepends = python-guessit-git-docs: package manpages
 	optdepends = python2-guess-language: for language guessing
-	provides = python2-guessit
+	provides = python2-guessit=1.0.3.r941.fefbf31
 	conflicts = python2-guessit
 
 pkgname = python-guessit-git
@@ -42,7 +42,7 @@ pkgname = python-guessit-git
 	depends = python-enzyme
 	optdepends = python-guessit-git-docs: package manpages
 	optdepends = python-guess-language: for language guessing
-	provides = python-guessit
+	provides = python-guessit=1.0.3.r941.fefbf31
 	conflicts = python-guessit
 
 pkgname = python-guessit-git-docs
