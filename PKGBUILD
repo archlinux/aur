@@ -4,7 +4,7 @@
 
 pkgname=flex
 pkgver=android
-pkgrel=1
+pkgrel=2
 pkgdesc="Flex for building Android. 2.6 doesn't play well when building."
 arch=('i686' 'x86_64')
 url="http://flex.sourceforge.net"
@@ -38,6 +38,6 @@ package() {
   ln -s flex ${pkgdir}/usr/bin/lex
 
   install -Dm644 COPYING \
-  	$pkgdir/usr/share/licenses/$pkgname/license.txt
+  	$pkgdir/usr/share/licenses/flex-2.5.39/license.txt
 }
 
