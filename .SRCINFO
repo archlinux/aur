@@ -1,0 +1,32 @@
+pkgbase = python2-rebulk-git
+	pkgdesc = Python library that performs advanced searches in strings.
+	pkgver = 0.6.5.r149.91b27cc
+	pkgrel = 1
+	url = https://github.com/Toilal/rebulk
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	makedepends = python-pytest-runner
+	makedepends = python2-pytest-runner
+	options = zipman
+	source = rebulk::git+https://github.com/Toilal/rebulk.git
+	md5sums = SKIP
+
+pkgname = python2-rebulk-git
+	pkgdesc = Python library that performs advanced searches in strings. (python2 version)
+	depends = python2-six
+	depends = python2-regex
+	depends = python2-ordereddict
+	provides = python2-rebulk=0.6.5.r149.91b27cc
+	conflicts = python2-rebulk
+
+pkgname = python-rebulk-git
+	pkgdesc = Python library that performs advanced searches in strings. (python3 version)
+	depends = python-six
+	depends = python-regex
+	provides = python-rebulk=0.6.5.r149.91b27cc
+	conflicts = python-rebulk
+
