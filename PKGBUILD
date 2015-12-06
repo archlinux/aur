@@ -1,6 +1,6 @@
 # Maintainer: Kaan Genç  <aur@kaangenc.me>
 pkgname=libcsv
-pkgver=3.0.3
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A small, simple and fast CSV library written in pure ANSI C89 that can read and write CSV data."
 arch=('i686' 'x86_64')
