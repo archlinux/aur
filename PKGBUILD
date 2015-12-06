@@ -1,13 +1,13 @@
 # Maintainer: Theo Tosini <theo.tosini@theoduino.me>
 pkgname=swift-language-git
-pkgver=swift.2.2.SNAPSHOT.2015.12.01.b.r289.gc959ce2
+pkgver=swift.2.2.SNAPSHOT.2015.12.01.b.r537.g072a459
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
 url="https://swift.org/"
 license=('apache2')
 groups=()
-depends=('icu' 'libedit' 'libxml2' 'swig' 'python2' 'libbsd')
+depends=('icu' 'libedit' 'libxml2' 'swig' 'python2' 'libbsd' 'ncurses' )
 makedepends=('git' 'ninja' 'cmake' 'clang')
 provides=('swift-language')
 conflicts=('swift-language-bin')
@@ -43,9 +43,16 @@ pkgver() {
 build() {
     cd "$srcdir/swift"
     # Patch to use python2
-    find . -type f -print0 | xargs -0 sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/env python2/g'
+    find "$srcdir" -type f -print0 | xargs -0 sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/env python2/g'
+    # Fix /usr/include error
+    find "$srcdir" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     # Release build
-    LDFLAGS='-ldl -lpthread' python2 utils/build-script -p -R
+    LDFLAGS='-ldl -lpthread' python2 utils/build-script -b -p --foundation --xctest -R
+}
+
+check() {
+  cd "$srcdir/swift"
+  python2 utils/build-script -t
 }
 
 package() {
