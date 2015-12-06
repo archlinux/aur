@@ -8,12 +8,19 @@ arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
 license=('LGPL')
 makedepends=('gst-plugins-base' 'cmake' 'automoc4' 'phonon-qt4' 'phonon-qt5')
-source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/src/phonon-backend-gstreamer-${pkgver}.tar.xz")
-md5sums=('ce441035dc5a00ffaac9a64518ab5c62')
+source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/src/phonon-backend-gstreamer-${pkgver}.tar.xz"
+        "phonon-gstreamer-gst15_include_dirs.patch")
+md5sums=('ce441035dc5a00ffaac9a64518ab5c62'
+         'c4a3d5230b07d4d84a8f05a8575c69aa')
 
 prepare() {
   mkdir build-qt4
   mkdir build-qt5
+
+  cd phonon-backend-gstreamer-${pkgver}
+
+  # https://bugzilla.redhat.com/show_bug.cgi?id=1239790
+  patch -Np1 -i ../phonon-gstreamer-gst15_include_dirs.patch
 }
 
 build() {
