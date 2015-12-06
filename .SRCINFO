@@ -1,7 +1,7 @@
 pkgbase = haskell-hdbc
 	pkgdesc = Haskell Database Connectivity Library.
 	pkgver = 2.4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hdbc/hdbc
 	install = haskell-hdbc.install
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = haskell-hdbc
 	license = BSD3
 	depends = ghc=7.10.2
 	depends = haskell-mtl
-	depends = haskell-old-locale
 	depends = haskell-old-time
 	depends = haskell-text
 	depends = haskell-utf8-string

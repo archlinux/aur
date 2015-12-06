@@ -3,14 +3,13 @@
 _hkgname=HDBC
 pkgname=haskell-hdbc
 pkgver=2.4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Haskell Database Connectivity Library."
 url="https://github.com/hdbc/hdbc"
 license=("BSD3")
 arch=('i686' 'x86_64')
-depends=("ghc=7.10.2" "haskell-mtl" "haskell-old-locale"
-         "haskell-old-time" "haskell-text" "haskell-utf8-string"
-         "haskell-convertible")
+depends=("ghc=7.10.2" "haskell-mtl" "haskell-old-time"
+         "haskell-text" "haskell-utf8-string" "haskell-convertible")
 options=('staticlibs')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
