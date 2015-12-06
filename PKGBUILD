@@ -37,8 +37,8 @@
 # please use the official OpenSSH distribution instead.
 
 pkgname=openssh-hpn-git
-pkgver=7.1.P1.r0.g3d385de
-pkgrel=1
+pkgver=7.1.P1.r27.g764931d
+pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='http://www.psc.edu/networking/projects/hpn-ssh/'
 license=('custom:BSD')
@@ -76,7 +76,7 @@ install=$pkgname.install
 pkgver() {
   cd openssh-portable/
 
-  if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
+  if GITTAG="$(git describe --abbrev=0 2>/dev/null)"; then
     echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
   else
     echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
