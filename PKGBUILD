@@ -1,4 +1,5 @@
-# Maintainer: Jonathan Yantis <yantis@yantis.net>
+# Maintainer: Björn Wiedenmann <archlinux@xorxor.de>
+# Contributor: Jonathan Yantis <yantis@yantis.net>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Caspar Verhey <caspar at verhey dot net>
@@ -12,10 +13,33 @@
 # https://aur.archlinux.org/packages/op/openssh-git/PKGBUILD
 # https://aur.archlinux.org/packages/op/openssh-hpn/PKGBUILD
 
+# IMPORTANT SECURITY NOTE:
+# This PKGBUILD does NOT (!!!) follow the upstream
+# OpenSSH-Portable distribution (at
+# https://github.com/openssh/openssh-portable ) but rather a
+# fork which is maintained by rapier (primarily for Gentoo
+# Linux I believe). The fork includes the HPN patches and can be
+# found at https://github.com/rapier1/openssh-portable
+#
+# Since I do NOT maintain this fork in any way, but merely
+# package it for Arch Linux, there is absolutely no warranty for
+# this code. It is very possible that the current version of the
+# fork still contains open security bugs which have already been
+# fixed in upstream OpenSSH.
+#
+# USE THIS PKGBUILD AT YOUR OWN RISK AND ONLY IF YOU FULLY
+# UNDERSTAND THE SECURITY IMPLICATIONS OF NOT USING THE MOST
+# RECENT OFFICIAL OPENSSH !
+#
+# Consider yourself warned.
+#
+# If security is paramount for you or in case of any doubt,
+# please use the official OpenSSH distribution instead.
+
 pkgname=openssh-hpn-git
 pkgver=7.1.P1.r0.g3d385de
 pkgrel=1
-pkgdesc='A Secure SHell server/client with High Performance patch'
+pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='http://www.psc.edu/networking/projects/hpn-ssh/'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
@@ -46,6 +70,8 @@ sha256sums=('SKIP'
             'c5ed9fa629f8f8dbf3bae4edbad4441c36df535088553fe82695c52d7bde30aa'
             'de14363e9d4ed92848e524036d9e6b57b2d35cc77d377b7247c38111d2a3defd'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
+
+install=$pkgname.install
 
 pkgver() {
   cd openssh-portable/
