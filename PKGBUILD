@@ -1,10 +1,10 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname=ruby-httparty
-pkgver=0.13.5
+pkgver=0.13.7
 pkgrel=1
 pkgdesc="Makes http fun! Also, makes consuming restful web services dead easy."
 arch=('any')
-url="https://rubygems.org/gems/multi_xml"
+url="https://rubygems.org/gems/httparty"
 license=('MIT')
 depends=('ruby' 'ruby-json' 'ruby-multi_xml')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
