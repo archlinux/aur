@@ -1,6 +1,6 @@
 pkgbase = xpra-winswitch
 	pkgdesc = Modified version of xpra by Winswitch
-	pkgver = 0.15.8
+	pkgver = 0.15.9
 	pkgrel = 1
 	url = http://xpra.org/
 	install = xpra-winswitch.install
@@ -18,15 +18,16 @@ pkgbase = xpra-winswitch
 	depends = libvpx
 	depends = xf86-video-dummy
 	depends = libwebp
+	depends = libxkbfile
 	optdepends = x264: Codec
 	provides = parti-all
 	conflicts = parti-all
 	backup = etc/xpra/xpra.conf
 	backup = etc/xpra/xorg.conf
-	source = https://xpra.org/src/xpra-0.15.8.tar.xz
+	source = https://xpra.org/src/xpra-0.15.9.tar.xz
 	source = xpra-winswitch.install
 	source = xpra@.service
-	sha256sums = e6ca124c89cfa81c8ee69dd2d746cdb0b4d896af6b369e60abc50d2fd2d2a0d2
+	sha256sums = bdf51ae3d4114050ff23f7a88fc10af0eb55dd6f74412a6b2c10efeaf6499116
 	sha256sums = 1b1f8c58e1e8e5aa9816bffb1611a8a704a482ddfe789512159d5727035468f0
 	sha256sums = b882f72380ca6bdee9580e839440dd5bd3523b9db804095887127b9cce6cfaf2
 
