@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=repoman
-pkgver=2013.7
+pkgver=2015
 pkgrel=1
 pkgdesc='The pacman of repository managers.'
 arch=(any)
@@ -9,16 +9,16 @@ url="http://xyne.archlinux.ca/projects/repoman"
 depends=(python3)
 backup=(etc/repoman/json/urls.json)
 source=(
-  http://xyne.archlinux.ca/projects/repoman/src/repoman-2013.7.tar.xz
-  http://xyne.archlinux.ca/projects/repoman/src/repoman-2013.7.tar.xz.sig
+  http://xyne.archlinux.ca/projects/repoman/src/repoman-2015.tar.xz
+  http://xyne.archlinux.ca/projects/repoman/src/repoman-2015.tar.xz.sig
 )
 sha512sums=(
-  895a59155c1bbde7ea7fe7c0b8525d18db29e2468b412d465ff772070d73944d77915daad34bc26b9a9ab91ca19fb796e33eb647b7d43398e0d89dd465a5993a
-  56ed454884cb8d96ba2017eabc672ec08095055991704f5844ee7be2a20055ec4392986f31ccc03452753b7988ba2261be2a39135ae665ab9169a46e30ef69bb
+  9e1654d0556f41e80061bdd2d12a9ab7c7f0b56524e4f02f41212ed3f5e651f40b9b53917a805e3676cef9db88a8e20b8c6dc06af9b101604b1f80c75fb38f30
+  3c7cc57298bd2599258e94325366672b325e54a0d7d6da7f3d0f56f6c14d78cf08554ec4d27b932e6f7f480c3bbb17dac5e3d9c3945ca44db26e3719fd763528
 )
 md5sums=(
-  39c1650d3e60222c585e9fb13a226cc5
-  5b405ebde4c9bf774053da1650b527eb
+  3ee2a159276cbe6a0020d659e487ddbc
+  dbac960ad0cd2886efaeb448ec98f269
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
