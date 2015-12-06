@@ -1,6 +1,6 @@
 pkgbase = letsencrypt-git
 	pkgdesc = A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
-	pkgver = 3815.df8cd3e
+	pkgver = 4233.591d8a2
 	pkgrel = 1
 	url = https://letsencrypt.org/
 	arch = any
@@ -16,7 +16,13 @@ pkgbase = letsencrypt-git
 	depends = python-virtualenv
 	depends = pkg-config
 	provides = letsencrypt
+	provides = letsencrypt-nginx
+	provides = letsencrypt-apache
+	provides = letshelp-letsencrypt
 	conflicts = letsencrypt
+	conflicts = letsencrypt-nginx
+	conflicts = letsencrypt-apache
+	conflicts = letshelp-letsencrypt
 	source = letsencrypt::git+https://github.com/letsencrypt/letsencrypt
 	md5sums = SKIP
 
