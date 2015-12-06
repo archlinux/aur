@@ -8,7 +8,6 @@ pkgrel=2
 arch=('any')
 url="https://github.com/gustawho/backupd"
 license=("GPL3")
-makedepends=('git')
 depends=('p7zip')
 source=("http://gustawho.x10.mx/packages/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('7c7be8b9f180db252e9d8a3ffa27d2685cd6c590dd3d33b236c0a1d3720a675ffba01b7822a2c01f1b560c01c845d268c8a0e462879f94db3c88a48a25a1a55b')
