@@ -11,7 +11,7 @@ makedepends=('cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gS644/$pkgname/archive/$pkgver.tar.gz")
 
 #git+https://github.com/gS644/liblogcpp.git")
-md5sums=('68b863fb7bcb545cb99f5cd604f95f5c')
+md5sums=('dc376fa2a96ad105f2ef49f3abf006f7')
 
 
 build() {
