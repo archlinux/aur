@@ -19,10 +19,8 @@ source=(
   "https://swift.org/builds/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz"
   "https://swift.org/builds/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
 )
-sha256sums=(
-  '04d62c13a50bb6c3003676fe7521c9e28bc7bc38e42524330595e80a6df24806'
-  '8a36d98da7c8e264900b8da116a80e351ceb3d01d961e414a633da40f9557934'
-)
+sha256sums=('04d62c13a50bb6c3003676fe7521c9e28bc7bc38e42524330595e80a6df24806'
+            'SKIP')
 
 package() {
     tar -C "$pkgdir" -xf "swift-${_version}"*.tar.gz --strip 1
