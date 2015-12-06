@@ -28,6 +28,15 @@ pkgver() {
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$_gitname"
+  grep -lZr logo.svg | while IFS= read -rd $'\0' file
+  do
+    sed -i 's/\(logo\.\)svg/\1png/' "$file"
+  done
+  convert media/logo.{svg,png}
+}
+
 build() {
   cd "$_gitname"
   make _build
