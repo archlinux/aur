@@ -1,7 +1,7 @@
 pkgbase = octopi-git
 	pkgdesc = A powerful Pacman frontend using Qt5 libs
-	pkgver = 0.8.0.r993.28ce670
-	pkgrel = 2
+	pkgver = 0.8.0.r1008.e6fdecb
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/aarnt/octopi
 	install = octopi-git.install
@@ -41,8 +41,8 @@ pkgbase = octopi-git
 	source = winicon.patch
 	md5sums = SKIP
 	md5sums = 722f6b5f44661a1c97070b7775311fed
-	md5sums = 367837af65c3d6a0e29662226c300f78
-	md5sums = b40e6534da1c6b33b3b19d671476f8aa
+	md5sums = 96e3d342c19515b752b10322737f249f
+	md5sums = a0e53f3ee4bd1830a46cc305b720200b
 	md5sums = c71b9f9d80333d359f5a11e22446c5d0
 	md5sums = 84388e82f3088ccbca0b5392f864ea90
 
