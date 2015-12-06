@@ -1,0 +1,59 @@
+diff --git quote_text.c quote_text.c
+index 5a3db7a..52db241 100755
+--- quote_text.c
++++ quote_text.c
+@@ -23,15 +23,29 @@
+  *
+  */
+ 
+-#include "internal.h"
+-#include "version.h"
+-#include "pidginstock.h"
+-#include "gtkutils.h"
+-#include "gtkimhtml.h"
+-//#include "debug.h"
++#include <locale.h>
++#include <glib.h>
+ 
+-#define PLUGIN_ID "gtk-quotetext"
+-#define QUOTE_VERSION "0.9.3"
++#ifdef ENABLE_NLS
++#  ifndef __APPLE_CC__
++#    define __APPLE_CC__ 0
++#  endif
++#  include <libintl.h>
++#  undef printf
++#  define _(String) ((const char *)dgettext(PACKAGE, String))
++#  ifdef gettext_noop
++#    define N_(String) gettext_noop (String)
++#  else
++#    define N_(String) (String)
++#  endif
++#else
++#  define N_(String) (String)
++#  ifndef _
++#    define _(String) ((const char *)String)
++#  endif
++#  define ngettext(Singular, Plural, Number) ((Number == 1) ? ((const char *)Singular) : ((const char *)Plural))
++#  define dngettext(Domain, Singular, Plural, Number) ((Number == 1) ? ((const char *)Singular) : ((const char *)Plural))
++#endif
+ 
+ /* config.h may define PURPLE_PLUGINS; protect the definition here so that we
+  * don't get complaints about redefinition when it's not necessary. */
+@@ -51,6 +65,16 @@
+ # include <config.h>
+ #endif
+ 
++#include <string.h>
++#include "version.h"
++#include "gtkutils.h"
++#include "pidginstock.h"
++#include "gtkimhtml.h"
++//#include "debug.h"
++
++#define PLUGIN_ID "gtk-quotetext"
++#define QUOTE_VERSION "0.9.3"
++
+ static void quote_button_press(GtkWidget *button, PidginConversation *gtkconv){
+ 	GtkIMHtml *imhtml = GTK_IMHTML(gtkconv->imhtml);
+ 	GtkTextBuffer *buffer = imhtml->text_buffer;
