@@ -1,0 +1,11 @@
+--- data/interfaces/default/welcome.html	2015-12-06 13:52:55.157678848 +0100
++++ data/interfaces/default/welcome_new.html	2015-12-06 13:52:26.117956848 +0100
+@@ -169,7 +169,7 @@
+                     <input type="checkbox" name="launch_browser" id="launch_browser" value="1" ${config['launch_browser']}>
+                     <input type="checkbox" name="refresh_users_on_startup" id="refresh_users_on_startup" value="1" ${config['refresh_users_on_startup']}>
+                     <input type="checkbox" name="first_run_complete" id="first_run_complete" value="1" checked>
+-                    <input type="checkbox" name="check_github" id="check_github" value="1" checked>
++                    <input type="checkbox" name="check_github" id="check_github" value="0" checked>
+                 </div>
+             </div>
+             <!-- Required fields but hidden -->
