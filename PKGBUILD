@@ -10,7 +10,7 @@ url="https://github.com/gustawho/backupd"
 license=("GPL3")
 depends=('p7zip')
 source=("http://gustawho.x10.mx/packages/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('7c7be8b9f180db252e9d8a3ffa27d2685cd6c590dd3d33b236c0a1d3720a675ffba01b7822a2c01f1b560c01c845d268c8a0e462879f94db3c88a48a25a1a55b')
+sha512sums=('a04bbafc4b2658727fe0d33a214471912864b682865c8115b2700bc80380e1bf04a96ab6090a160192dbd1a05292bff2776c3dcf7c2de1db6394d9ab56daa48a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
