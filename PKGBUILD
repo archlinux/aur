@@ -1,14 +1,14 @@
 # Maintainer: Ranndom <Ranndom@rnndm.xyz>
 
 pkgname=bitlbee-discord-git
-pkgver=25.0d2866c
+pkgver=45.b899973
 pkgrel=1
 pkgdesc="Bitlbee plugin for Discord"
 arch=('i686' 'x86_64')
 url="https://github.com/sm00th/bitlbee-discord"
 license=('GPL')
 depends=('bitlbee')
-makedepends=('git')
+makedepends=('git' 'libwebsockets-git')
 source=("git+https://github.com/sm00th/bitlbee-discord")
 sha256sums=('SKIP')
 
