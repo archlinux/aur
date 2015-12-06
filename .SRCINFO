@@ -1,6 +1,6 @@
 pkgbase = magnum-plugins-git
 	pkgdesc = Plugins for Magnum graphics engine (Git version)
-	pkgver = snapshot.2015.05.r22.g8b68e4b
+	pkgver = snapshot.2015.05.r156.g80d7c4c
 	pkgrel = 1
 	url = http://mosra.cz/blog/magnum.php
 	arch = i686
