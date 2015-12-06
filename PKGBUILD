@@ -4,7 +4,7 @@
 pkgname=xsd
 pkgver=4.0.0
 _pkgver=4.0.0+dep
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, cross-platform W3C XML Schema to C++ data binding compiler"
 arch=('i686' 'x86_64')
 url="http://www.codesynthesis.com/products/xsd"
