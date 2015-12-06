@@ -5,8 +5,8 @@
 
 pkgname=mcomix-git
 _gitname=mcomix
-pkgver=r1396.9ed169d
-pkgrel=2
+pkgver=r1412.492cfba
+pkgrel=1
 pkgdesc="A user-friendly, customizable image viewer specifically designed to handle comic books"
 arch=('any')
 url="https://github.com/benoit-pierre/mcomix"
