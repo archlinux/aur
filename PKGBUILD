@@ -29,6 +29,7 @@ check() {
 package_python2-babelfish-git() {
   provides=(python2-babelfish=${pkgver})
   conflicts=(python2-babelfish)
+  pkgdesc="A module to work with countries and languages. (python2 version)"
   optdepends=('python-babelfish-git-docs: package manpages')
   cd ${srcdir}/${_gitname}
   python2 setup.py install --root="${pkgdir}/" --optimize=1
@@ -41,6 +42,7 @@ package_python2-babelfish-git() {
 package_python-babelfish-git() {
   provides=(python-babelfish=${pkgver})
   conflicts=(python-babelfish)
+  pkgdesc="A module to work with countries and languages. (python3 version)"
   optdepends=('python-babelfish-git-docs: package manpages')
   cd ${srcdir}/${_gitname}
   python3 setup.py install --root="${pkgdir}/" --optimize=1
@@ -51,6 +53,7 @@ package_python-babelfish-git() {
 }
 
 package_python-babelfish-git-docs() {
+  pkgdesc="Manpages for python-babelfish-git."
   cd ${srcdir}/${_gitname}/docs
   make man
   install -v -m755 -d "${pkgdir}/usr/share/man/man1"
