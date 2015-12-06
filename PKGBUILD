@@ -5,7 +5,7 @@ _pkgname2=python2-qtawesome
 pkgbase=$_pkgname-git
 pkgname=($_pkgname-git $_pkgname2-git)
 pkgver=0.2.0.r4.gcdacb25
-pkgrel=1
+pkgrel=2
 pkgdesc="Enables iconic fonts such as Font Awesome and Elusive Icons in PyQt and PySide applications"
 arch=('any')
 url="https://github.com/spyder-ide/qtawesome"
@@ -45,8 +45,8 @@ package_python-qtawesome-git() {
 
 package_python2-qtawesome-git() {
   depends=('python2-qtpy')
-  provides=($_pkgname)
-  conflicts=($_pkgname)
+  provides=($_pkgname2)
+  conflicts=($_pkgname2)
 
   cd $_pkgname2
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
