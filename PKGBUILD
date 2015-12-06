@@ -14,6 +14,7 @@ conflicts=('lldb' 'swift-language-git')
 options=('!strip')
 validpgpkeys=('7463A81A4B2EEA1B551FFBCFD441C977412B37AD')
 provides=('swift-language')
+replaces=('swift-language-bin')
 
 source=(
   "https://swift.org/builds/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz"
