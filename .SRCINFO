@@ -1,7 +1,7 @@
 pkgbase = bing-wallpaper-git
 	pkgdesc = Change wallpaper from Bing daily
 	pkgver = r10
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = bing-wallpaper-git
 	source = bing-wallpaper-autostart.sh
 	source = bing-wallpaper.desktop
 	md5sums = SKIP
-	md5sums = b84e976323ea41d5c53c71384bd281a8
+	md5sums = 6b530d42e0c7f817e4a36376ea0ad6e2
 	md5sums = 1e65c7c30461dcc752f4766e5a14bc76
 
 pkgname = bing-wallpaper-git
