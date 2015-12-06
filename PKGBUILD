@@ -1,12 +1,12 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pbget
 pkgver=2015.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Retrieve PKGBUILDs and local source files from Git, ABS and the AUR for makepkg.'
 arch=(any)
 license=(GPL)
 url="http://xyne.archlinux.ca/projects/pbget"
-depends=(python3 python3-xcpf python3-aur)
+depends=(pm2ml python3 python3-aur python3-xcpf)
 source=(
   http://xyne.archlinux.ca/projects/pbget/src/pbget-2015.12.4.tar.xz
   http://xyne.archlinux.ca/projects/pbget/src/pbget-2015.12.4.tar.xz.sig
