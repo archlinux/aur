@@ -1,0 +1,12 @@
+pkgbase = acmetool-git
+	pkgver = 20151206
+	pkgrel = 1
+	url = https://github.com/hlandau/acme
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+
+pkgname = acmetool-git
+
