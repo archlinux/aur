@@ -1,6 +1,6 @@
 pkgbase = magnum-examples-git
 	pkgdesc = Examples for Magnum OpenGL graphics engine (Git version)
-	pkgver = snapshot.2015.05.r30.gb27164a
+	pkgver = snapshot.2015.05.r126.g3d70af7
 	pkgrel = 1
 	url = http://mosra.cz/blog/magnum.php
 	arch = i686
