@@ -1,7 +1,7 @@
 # Contributor: Alabin Artem <kirpicheff@yandex.ru>
 # Contributor: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup-client-no-gui
-pkgver=1.4.9.1
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="Client Server backup system"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ conflicts=('urbackup-client')
 source=("https://hndl.urbackup.org/Client/${pkgver}/urbackup-client-${pkgver}.tar.gz"
         'urbackup-client.service')
 
-md5sums=('7ba6122789591e2e21b35453774b8f94'
+md5sums=('e64284645cbc5767affb1db7d5bb007d'
          '1eb3db6d0e3bf40976bf7058290c62e1')
 
 build() {
