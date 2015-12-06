@@ -3,7 +3,7 @@
 pkgname=qt5-feedback
 pkgver=0.0.0.20150918
 _commit=28ca62414901502189ea28ef2efd551386187619
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Tactile Feedback Add-on Module"
 arch=('i686' 'x86_64')
 url="https://github.com/qtproject/qtfeedback"
