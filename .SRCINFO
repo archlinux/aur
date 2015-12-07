@@ -1,7 +1,7 @@
 pkgbase = smartscope-beta
 	pkgdesc = SmartScope App (Beta version)
 	pkgver = 2015.1203.20.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lab-nation.com/
 	arch = x86_64
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = smartscope-beta
 	depends = libusb
 	provides = smartscope
 	conflicts = smartscope
-	source = smartscope-beta.deb::https://www.lab-nation.com/package/smartscope/2015/1203/20/25/linux/get
+	source = smartscope-beta.deb::https://www.lab-nation.com/package/smartscope/linux/latest_unstable/get
 	source = smartscope.sh
-	md5sums = 3862a6ad8a6a280ee5a2ae485a61506b
+	md5sums = SKIP
 	md5sums = 3d877cb9f75a3ef8887e1f81b69e8007
 
 pkgname = smartscope-beta
