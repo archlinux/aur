@@ -4,7 +4,7 @@
 pkgname=systemd-vgaswitcheroo-units
 pkgver=1.2
 pkgrel=2
-pkgdesc="Disable discrete GPU at boot for AMD/NVIDIA & Intel dual stuff"
+pkgdesc="Disable discrete GPU at boot for AMD/NVIDIA & Intel dual stuff. This is based on the old AUR package that was not migrated to AUR4."
 arch=('any')
 # Based on https://github.com/fredoche/vgaswitcheroo_systemd
 url="https://github.com/astrohckr/systemd-vgaswitcheroo-units"
