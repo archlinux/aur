@@ -15,6 +15,7 @@ sha256sums=('e280ed9233877b63ad0a0c8fb04d2c35dc6a29b3312151ee21a15b5932fef79b')
 build() {
   cd "$pkgname-$pkgver"
 
+  CXXFLAGS+=' -std=c++11'
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
