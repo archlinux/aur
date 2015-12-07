@@ -1,0 +1,15 @@
+pkgbase = ritchie-git
+	pkgdesc = the power of C language and the convenience of a high level language
+	pkgver = 0.r186.87330bd
+	pkgrel = 1
+	url = https://github.com/riolet/ritchie
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	provides = ritchie
+	source = git://github.com/riolet/ritchie.git
+	md5sums = SKIP
+
+pkgname = ritchie-git
+
