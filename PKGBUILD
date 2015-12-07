@@ -15,16 +15,19 @@ makedepends=('cmake' 'desktop-file-utils' 'ffmpeg' 'freetype2' 'imagemagick'
              'openal' 'subversion' 'wxgtk')
 makedepends_i686=('nasm')
 options=('!emptydirs')
-source=("vbam::svn+http://svn.code.sf.net/p/vbam/code/trunk#revision=1465")
-sha256sums=('SKIP')
+source=("vbam::svn+http://svn.code.sf.net/p/vbam/code/trunk#revision=1465"
+        'cxx11-fixes.patch')
+sha256sums=('SKIP'
+            '610d770bfcea8da990cddc33c6360b572bc20683b216ab1e6f23424e9d494417')
+
+prepare() {
+  cd vbam
+  patch -Np1 -i ../cxx11-fixes.patch
+  mkdir build
+}
 
 build() {
-  cd vbam
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
+  cd vbam/build
 
   _cmakeargs="-DCMAKE_BUILD_TYPE='Release' \
               -DCMAKE_INSTALL_PREFIX='/usr' \
