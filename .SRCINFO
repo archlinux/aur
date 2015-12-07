@@ -1,0 +1,18 @@
+pkgbase = python2-rabbyt
+	pkgdesc = A sprite library for Python with game development in mind
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://arcticpaint.com/projects/rabbyt
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pyrex
+	depends = python2
+	depends = mesa
+	depends = glu
+	conflicts = python-rabbyt-old
+	source = http://pypi.python.org/packages/source/R/Rabbyt/Rabbyt-0.8.3.zip
+	md5sums = bb603a5cb02f3a8bb2e674f60e62de2c
+
+pkgname = python2-rabbyt
+
