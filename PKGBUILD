@@ -14,16 +14,16 @@ makedepends=('git')
 provides=(fpm)
 conflicts=(fpm)
 options=(!emptydirs)
-source=("${pkgname%-*}::git+https://github.com/jordansissel/${_gemname}.git")
+source=("${_gemname%-*}::git+https://github.com/jordansissel/${_gemname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-}"
+  cd "$srcdir/${_gemname%-}"
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/${pkgname%-*}
+  cd $srcdir/${_gemname%-*}
   sed -i 's/"clamp", "~> 0.6"/"clamp", ">= 0.6"/' fpm.gemspec
   sed -i "s/VERSION = \"1.4.0\"/VERSION = \"$pkgver\"/g" lib/fpm/version.rb
   gem build fpm.gemspec > /dev/null 2>&1
