@@ -1,15 +1,16 @@
 # Maintainer: Alex Talker <alextalker at openmailbox dot org>
 # Original maintainer: Simonas Racinas <racinas at icloud.com>
 pkgname=visual-paradigm-community
-pkgver=2015.12.08
+pkgver=20151201
 pkgrel=1
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
 arch=('x86_64')
 depends=('java-environment-common')
 install=visual-paradigm-community.install
+_baseurl="http://www.visual-paradigm.com/downloads/vpce"
 license=('custom')
-source=("${pkgname}-${pkgver//_/-}.tar.gz::http://www.visual-paradigm.com/downloads/vpce/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz"
+source=("${pkgname}.tar.gz::$_baseurl/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz"
 	'visual-paradigm-community.install'
 	'visual-paradigm.desktop'
 	'Visual_Paradigm_Fixed'
@@ -23,6 +24,11 @@ sha256sums=('a17e711a906e7c94c65bf5d5b035281b35300f9783a4d1a24f93d4f46125fe81'
 	'41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
 	'cd30460cb1c29f9f42723197dbe72b2537aaed09cc2d44dcb3e6868fb5dbf12b'
 	'a3b898bc9c43cf54baa1c643c619ee172a8103cd15031d574380ca463eb1ec1c')
+
+pkgver(){
+    curl -I -L "$_baseurl/" | grep -Pio '[0-9]{8}' | head -1
+}
+
 package() {
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/licenses/visual-paradigm-community-edition/"

@@ -1,13 +1,13 @@
 pkgbase = visual-paradigm-community
 	pkgdesc = UML design application
-	pkgver = 2015.12.08
+	pkgver = 20151201
 	pkgrel = 1
 	url = http://www.visual-paradigm.com/download/community.jsp
 	install = visual-paradigm-community.install
 	arch = x86_64
 	license = custom
 	depends = java-environment-common
-	source = visual-paradigm-community-2015.12.08.tar.gz::http://www.visual-paradigm.com/downloads/vpce/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz
+	source = visual-paradigm-community.tar.gz::http://www.visual-paradigm.com/downloads/vpce/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz
 	source = visual-paradigm-community.install
 	source = visual-paradigm.desktop
 	source = Visual_Paradigm_Fixed
