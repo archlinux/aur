@@ -4,15 +4,15 @@ _name="oslo.serialization"
 _module="${_name/./-}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.0.0"
+pkgver="2.1.0"
 pkgrel="1"
 pkgdesc="Oslo Serialization library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('4d858cc15e40958072c1711890f9bb9e9f67c5cc9437683ac42113a59361d3c2')
+source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('8f8cb079e285a878dc176189edd7dced278d2419cc4d3e262f6669650f851643')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
