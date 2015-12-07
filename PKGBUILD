@@ -10,7 +10,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.8rc2
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -75,7 +75,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   alsa-lib        lib32-alsa-lib
   libxcomposite   lib32-libxcomposite
   mesa            lib32-mesa
-  #mesa-libgl      lib32-mesa-libgl
+  libgl           lib32-libgl
   libcl           lib32-libcl
   libxslt         lib32-libxslt
   libpulse        lib32-libpulse
@@ -83,6 +83,9 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   gtk3            lib32-gtk3
   samba
   opencl-headers
+  dri2proto
+  dri3proto
+  xf86driproto
 )
 
 optdepends=(
@@ -133,6 +136,8 @@ prepare()
     patch -p1 < ../sni_support.patch
 
     patch -p1 -R < ../keybindings.patch
+
+    autoreconf -f
 
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 
