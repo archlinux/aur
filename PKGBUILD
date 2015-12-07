@@ -1,5 +1,5 @@
 pkgname=smartscope-beta
-pkgver=2015.1203.0.21
+pkgver=2015.1203.20.25
 pkgrel=1
 pkgdesc="SmartScope App (Beta version)"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ _pkgver=$(echo ${pkgver} | sed 's@\.@/@g')
 
 source=("$pkgname.deb::https://www.lab-nation.com/package/smartscope/${_pkgver}/linux/get"
         'smartscope.sh')
-md5sums=('8c43c7d61ab9f445422eb47e9ecbd4a7'
+md5sums=('3862a6ad8a6a280ee5a2ae485a61506b'
          '3d877cb9f75a3ef8887e1f81b69e8007')
 
 package() {
