@@ -2,14 +2,14 @@
 
 set -u
 pkgname='git-aurcheck'
-pkgver=0.6
+pkgver=0.61
 pkgrel=1
 pkgdesc='a helper like namcap that checks and offers solutions for common problems in git submissions to the AUR'
 arch=('any')
 license=('GPL')
 depends=('bash' 'pkgbuild-introspection' 'git' 'pcre2')
 source=("${pkgname}.sh")
-sha256sums=('787ddd91cda92277963b74c0c97c9b36f1916a224413de04a051170f427a2285')
+sha256sums=('26ddef095ebf96007ca0f53f0f13a9a9c75339f1bc8e9cb5fe71e112760547e8')
 
 #install='installfoo'; source+=("${install}") # generate errors for us to detect
 #changelog='changefoo'; source+=("${changelog}")

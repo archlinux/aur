@@ -84,7 +84,7 @@ if [ "${_opt_Maintainer:=none}" = 'none' ]; then
   sleep 1
 fi
 
-_opt_VERSION='0.6'
+_opt_VERSION='0.61'
 _opt_AUR4='aur'
 
 # After August 8, these 3 time bomb lines can be removed and _opt_AUR4 can be gotten rid of altogether
@@ -562,7 +562,8 @@ _fn_findst_in_topords() {
       _var_tempdir="$(basename "$0")" # mksrcinfo doesn't let us specify a target file
       _var_tempdir="$(mktemp -p '/tmp' -d "${_var_tempdir}.XXXXX")" # ^C always breaks at curl version check which leaves this folder. Making the folder in /tmp allows to get out of cleaning it up. It also eliminates changes to the build folders timestamps during update checks.
       if pushd "${_var_tempdir}" >/dev/null; then
-        if mksrcinfo "${_var_pwd}/PKGBUILD"; then
+        ln -s "${_var_pwd}/PKGBUILD"
+        if mksrcinfo; then
           # Use the updated .SRCINFO if we can get it
           # Every reader here must be copied below
           _var_install="$(sed -ne 's:^\tinstall = \(.\+\)$:\1:p' '.SRCINFO')"
@@ -576,7 +577,7 @@ _fn_findst_in_topords() {
           IFS=$'\n' read -r -d '' -a _var_provides    < <(sed -ne 's:^\tprovides = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
           IFS=$'\n' read -r -d '' -a _var_pkgvernew   < <(sed -ne 's:^\tpkgver = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
           IFS=$'\n' read -r -d '' -a _var_pkgrelnew   < <(sed -ne 's:^\tpkgrel = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
-          if [ ! -s "${_var_pwd}/.SRCINFO" ] || [ "$(md5sum < '.SRCINFO')" != "$(md5sum < "${_var_pwd}/.SRCINFO")" ]; then
+          if [ ! -s "${_var_pwd}/.SRCINFO" ] || [ "$(grep -v '^#' '.SRCINFO' | md5sum)" != "$(grep -v '^#' "${_var_pwd}/.SRCINFO" | md5sum)" ]; then
             echo ".SRCINFO is missing or out of date. Try 'mksrcinfo'"
             [ "${returnv}" -ge 2 ] || returnv=2
             _var_gitadds+=('.SRCINFO') # this is the first add so no dups possible
