@@ -2,11 +2,11 @@
 
 pkgname=douban.fm
 pkgver=0.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="a tiny and smart cli player of douban.fm based on Python"
 url="https://github.com/taizilongxu/douban.fm"
-depends=('python2' 'python2-termcolor' 'python2-requests' 'python2-pillow' 'mplayer' 'python2-setuptools')
-makedepends=()
+depends=('python2' 'python2-termcolor' 'python2-requests' 'python2-pillow' 'mplayer' 'python2-pip')
+makedepends=('python2-setuptools')
 optdepends=('libnotify: for desktop notification')
 license=('MIT')
 arch=('any')
