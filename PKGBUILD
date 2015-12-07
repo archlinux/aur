@@ -2,7 +2,7 @@
 
 _pkgbase=quodlibet
 pkgname=exfalso
-pkgver=3.4.1
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
@@ -17,8 +17,9 @@ install=exfalso.install
 _base_src="${_pkgbase}-${pkgver}.tar.gz"
 _base_url="https://bitbucket.org/lazka/${_pkgbase}-files/raw/default/releases"
 source=("${_base_url}/${_base_src}" "${_base_url}/${_base_src}.sig")
-_checksum="$(curl -s "${_base_url}/${_base_src}.sha256" | cut -d " " -f1)"
-sha256sums=("${_checksum}" 'SKIP')
+#_checksum="$(curl -s "${_base_url}/${_base_src}.sha256" | cut -d " " -f1)"
+#sha256sums=("${_checksum}" 'SKIP')
+sha256sums=('8098fee78279d5881e820e8a8c09ebc74704339780a35dab9ab3b411d28b63f4' 'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
 
 build () {
