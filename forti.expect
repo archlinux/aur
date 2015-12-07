@@ -1,0 +1,24 @@
+#!/usr/bin/expect -f
+set force_conservative 0  ;
+if {$force_conservative} {
+    set send_slow {1 .1}
+    proc send {ignore arg} {
+            sleep .1
+            exp_send -s -- $arg
+    }
+}
+set timeout -1
+spawn /usr/bin/bash
+match_max 100000
+send -- "cd $env(INSTALLPATH)\r"
+send -- "./forticlientsslvpn_cli --server $env(VPNIP):$env(VPNPORT) --vpnuser $env(VPNUSER)"
+expect -exact "./forticlientsslvpn_cli --server $env(VPNIP):$env(VPNPORT) --vpnuser $env(VPNUSER)"
+send -- "\r"
+expect -exact "\r
+Password for VPN:"
+send -- "$env(VPNPASS)\r"
+expect -exact "\r
+STATUS::Setting up the tunnel\r
+STATUS::Connecting...\r"
+send -- "Y\r"
+expect eof
