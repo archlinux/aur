@@ -3,7 +3,7 @@
 
 pkgname=fcitx-anthy
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fcitx Wrapper for anthy."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
