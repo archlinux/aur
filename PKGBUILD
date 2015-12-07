@@ -10,7 +10,7 @@ url='https://github.com/theopolis/uefi-firmware-parser'
 depends=(python2)
 makedepends=(python2-setuptools)
 source=(uefi-firmware-parser-$pkgver.zip::https://github.com/theopolis/uefi-firmware-parser/archive/v$pkgver.zip)
-sha1sums=('18530e96d0f0beb6f4d5437a03afa9317959c6b7')
+sha1sums=('fc638612744f51ad25eb038dac64de4a21e9c368')
 
 prepare() {
   cd uefi-firmware-parser-$pkgver
