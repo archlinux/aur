@@ -5,7 +5,7 @@
 pkgname=compass-icon-theme
 pkgver=1.3.8
 pkgrel=1
-pkgdesc='The alternative icon theme for the .nitrux Operating System'
+pkgdesc='The alternative icon theme for Nitrux OS'
 url='http://nitrux.in/store/artwork-store/compass-icon-theme/'
 license=('cc-by-nc-nd-4.0')
 depends=('librsvg')
