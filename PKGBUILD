@@ -2,7 +2,7 @@
 
 pkgname=arena-tracker
 pkgver=3.23
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="Tracks your Hearthstone Arena matches and cards"
 arch=('any')
@@ -20,7 +20,7 @@ conflicts=(arena-tracker)
 #options=()
 #install=
 #changelog=
-source=("http://www.strits.dk/files/arena-tracker.tar.gz")
+source=("http://www.strits.dk/files/$pkgname-$pkgver.tar.gz")
 #noextract=()
 #validpgpkeys=()
 
@@ -44,10 +44,12 @@ source=("http://www.strits.dk/files/arena-tracker.tar.gz")
 
 package() {
 	install -dm755 $pkgdir/opt/$pkgname/
+	install -dm755 $pkgdir/usr/share/applications/
 	install -d $pkgdir/usr/bin/
 	install -m755 $srcdir/$pkgname $pkgdir/opt/$pkgname/$pkgname
+	install -m755 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 	cp -R $srcdir/HSCards $pkgdir/opt/$pkgname/HSCards
 	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	ln -s "/opt/$pkgname/HSCards/" "$pkgdir/usr/bin/"
 }
-md5sums=('db89d6343bcf63425fad6d55f743240d')
+md5sums=('8f88284f035849823c802cd5ffb6525c')
