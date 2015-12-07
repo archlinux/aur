@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PCGen
+Comment=An RPG Character Generator.
+Exec=/usr/bin/pcgen %f
+Icon=pcgen
+Terminal=false
+Type=Application
+Categories=Games
+MimeType=application/x-pcgen
