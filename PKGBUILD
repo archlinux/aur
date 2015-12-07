@@ -2,7 +2,7 @@
 
 pkgname=fcitx-unikey
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fcitx Wrapper for unikey"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
