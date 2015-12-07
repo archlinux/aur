@@ -1,7 +1,7 @@
 # Maintainer: Bertrand Lacoste <bertrandlacoste at gmail dot com>
 # Contributor: Tim Langlois <langlois at cs dot cornell dot edu>
 pkgname=hypre
-pkgver=2.10.0b
+pkgver=2.10.1
 _suffix='babel'
 ## Use the source from petsc website, suffixed by _p1. Also change the source and checksums.
 #_suffix='p1'
@@ -12,7 +12,7 @@ url="http://acts.nersc.gov/hypre"
 license=('lgpl')
 depends=('gcc-libs' 'gcc-fortran' 'openmpi' 'blas' 'lapack' 'superlu')
 source=(http://computation.llnl.gov/project/linear_solvers/download/${pkgname}-${pkgver}-${_suffix}.tar.gz)
-md5sums=('b0d876cb6958e024c24c05af1c257e24')
+md5sums=('80e835a052ffa70c45bdc9023fc55777')
 # mirror
 #source=(http://ftp.mcs.anl.gov/pub/petsc/externalpackages/hypre-2.10.0b-p1.tar.gz)
 #md5sums=('7aa49089176c8bef7f51a0234264f952')
