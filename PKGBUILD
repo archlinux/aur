@@ -6,7 +6,7 @@
 
 pkgname=ibus-pinyin
 pkgver=1.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Pinyin (Chinese) input method for the IBus framework'
 arch=('i686' 'x86_64')
 license=('GPL')
