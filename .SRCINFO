@@ -27,6 +27,7 @@ pkgbase = gvfs-nosystemd
 	makedepends = libnfs
 	makedepends = libgdata
 	provides = gvfs
+	conflicts = gvfs
 	source = http://ftp.gnome.org/pub/gnome/sources/gvfs/1.26/gvfs-1.26.2.tar.xz
 	sha256sums = 695b6e0f3de5ac2cb4d188917edef3f13299328150a2413f1a7131d9b2d48d18
 

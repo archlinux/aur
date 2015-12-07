@@ -13,6 +13,7 @@ makedepends=(avahi dbus fuse intltool libarchive libcdio-paranoia libgphoto2 lib
              libbluray libgudev libnfs libgdata)
 url="http://www.gnome.org"
 groups=(gnome)
+conflicts=($_pkgbase)
 provides=($_pkgbase)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz)
 sha256sums=('695b6e0f3de5ac2cb4d188917edef3f13299328150a2413f1a7131d9b2d48d18')
