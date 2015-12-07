@@ -2,12 +2,12 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libsub
 pkgver=1.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="a small C++ library to read and write subtitles in a few different formats (currently STL, SubRip and DCP)"
 arch=('i686' 'x86_64')
 url="http://carlh.net/libsub"
 license=('GPL')
-depends=('openssl' 'libxml++>=2.6' 'xmlsec' 'openjpeg>=1.5.0' 'openjpeg<=1.5.2'  'libdcp>=1.2.8' 'libcxml>=0.15.0' 'libsigc++>=2.0' 'boost-libs>=1.45')
+depends=('openssl' 'libxml++>=2.6' 'xmlsec' 'openjpeg>=1.5.0' 'openjpeg<=1.5.2'  'libdcp>=1.2.10' 'libcxml>=0.15.0' 'libsigc++>=2.0' 'boost-libs>=1.45')
 makedepends=('python2' 'boost>=1.45')
 provides=('libsub')
 conflicts=('libsub')
