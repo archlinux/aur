@@ -15,6 +15,10 @@ sha256sums=('443a2ff3fcb42a915609f1779000390c640a6d7fd19ad8816e6161053696f5ee')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  # glibmm 2.46 uses C++11 features
+  CXXFLAGS+=' -std=c++11'
+
   ./configure --prefix=/usr
   make
 }
