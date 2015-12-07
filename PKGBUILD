@@ -3,7 +3,7 @@
 _gitname=El-General
 _pkgname=ElGeneral
 pkgname=('elgeneral-icon-theme')
-pkgver=1.3
+pkgver=1.3.0.1
 pkgrel=1
 pkgdesc="An icon theme for Plasma Desktop"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 options=('!strip')
 conflicts=('elgeneral-icon-theme-git')
 source=("v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('84b2fe1f64c872ff99032188b85c498e303285eb29026e765c8627220c16bf84')
+sha256sums=('22aee67e72713c0efa5a4a4030c8b854313d1dfc1c918ccebbfa917a521a1737')
 
 package() {
     install -d ${pkgdir}/usr/share/icons
