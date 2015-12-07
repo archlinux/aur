@@ -1,6 +1,6 @@
 pkgbase = beamer-theme-m-git
 	pkgdesc = A modern LaTeX Beamer theme
-	pkgver = 20150824
+	pkgver = 20151206
 	pkgrel = 1
 	url = https://github.com/matze/mtheme
 	install = mtheme.install
