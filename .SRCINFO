@@ -1,13 +1,14 @@
 pkgbase = python-pythonz-bd
 	pkgdesc = Python installation manager supporting CPython, Stackless, PyPy and Jython (berdario branch)
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/berdario/pythonz
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
+	depends = python-resumable-urlretrieve
 	conflicts = python-pythonz
 	source = https://pypi.python.org/packages/source/p/pythonz-bd/pythonz-bd-1.10.2.tar.gz
 	md5sums = 9d35cb47fc07e834957473ee41f2d4ae
