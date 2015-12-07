@@ -24,6 +24,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  CXXFLAGS+=' -std=c++11'
   ./configure --prefix=/usr
   make
 }
