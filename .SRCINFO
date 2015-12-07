@@ -1,0 +1,23 @@
+pkgbase = shinysdr-git
+	pkgdesc = SDR receiver built on GNU Radio with a web-based UI and plugins
+	pkgver = r1040.57890d3
+	pkgrel = 1
+	url = https://github.com/kpreid/shinysdr
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gnuradio-osmosdr
+	depends = python2-twisted
+	depends = python2-pyephem
+	depends = python2-txws
+	optdepends = gr-air-modes-git: for receiving ADS-B, aircraft transponders
+	optdepends = multimon-ng-git: for receiving APRS
+	optdepends = gr-dsd-git: for receiving digital voice modes supported by DSD
+	provides = shinysdr
+	conflicts = shinysdr
+	source = git+https://github.com/kpreid/shinysdr.git
+	sha256sums = SKIP
+
+pkgname = shinysdr-git
+
