@@ -3,7 +3,7 @@
 # Contributor: Arthur Vuillard <arthur@hashbang.fr>
 
 pkgname='python-pew'
-pkgver=0.1.16
+pkgver=0.1.18
 pkgrel=1
 pkgdesc="Python Env Wrapper, a set of tools to manage multiple virtual environments"
 url="https://github.com/berdario/pew"
@@ -33,12 +33,8 @@ package() {
 
   install -D -m644 $_scripts_path/complete.zsh \
     "$pkgdir/usr/share/zsh/site-functions/_pew"
-
-  # Some files are not really necessary.
-  #py_dir=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
-  #rm -r "${pkgdir}${py_dir}/pew/complete_scripts"
 }
 
-md5sums=('be1466a0c0338fe0621dc4b77fe752cc')
+md5sums=('ae383c7aa97f3a94d69931634039543b')
 
 # vim:set ts=2 sw=2 et:
