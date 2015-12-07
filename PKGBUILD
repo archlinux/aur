@@ -14,7 +14,19 @@ arch=('i686' 'x86_64')
 url="https://github.com/QtCurve/${_pkgbase}"
 license=('LGPL')
 groups=('qtcurve')
-makedepends=(cmake automoc4 gtk2 qt4 qt5-{svg,x11extras} git kdebase-runtime)
+makedepends=('automoc4'
+	'cmake'
+	'extra-cmake-modules'
+	'git'
+	'gtk2'
+	'kconfigwidgets'
+	'kdebase-runtime'
+	'kdelibs4support'
+	'kdoctools'
+	'kxmlgui'
+	'qt4'
+	'qt5-svg'
+	'qt5-x11extras')
 source=("${_pkgbase}::git://anongit.kde.org/${_pkgbase}.git")
 md5sums=('SKIP')
 
