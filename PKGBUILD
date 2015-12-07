@@ -11,41 +11,46 @@
 # Contributor: djnm <nmihalich [at} gmail dott com>
 
 pkgname=dwarffortress-spacefox
-pkgver=0.40.24
-_dfver=40_24
-_sfver=40.24
-_df_unfuck=dwarf_fortress_unfuck
-pkgrel=3
+pkgver=0.42.02
+_dfver=42_02
+_sfver=42.02
+_ufver=0.42.02
+pkgrel=1
 pkgdesc="A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack.  Does not replace other dwarffortress packages."
 arch=(i686 x86_64)
 url="http://www.bay12forums.com/smf/index.php?topic=129219.0"
 install="dwarffortress-sf.install"
 license=('custom:dwarffortress-sf')
-depends=(gcc-libs glew glu gtk2 libsndfile libxdamage ncurses openal sdl_image sdl_ttf cmake)
-makedepends=(unrar unzip git)
-if [[ $CARCH == 'x86_64' ]]; then
-  depends=(gcc-libs-multilib lib32-glew lib32-glu lib32-gtk2 lib32-libsndfile lib32-libxdamage lib32-ncurses lib32-openal lib32-sdl_image lib32-sdl_ttf)
-  optdepends=('lib32-nvidia-utils: If you have nvidia graphics'
-              'lib32-catalyst-utils: If you have ATI graphics'
-              'lib32-alsa-lib: for alsa sound'
-              'lib32-libpulse: for pulse sound')
+makedepends=(unrar unzip git cmake)
+depends_i686=(glew glu gtk2 libsndfile libxdamage ncurses openal sdl_image sdl_ttf)
+depends_x86_64=(lib32-glew lib32-glu lib32-gtk2 lib32-libsndfile lib32-libxdamage lib32-ncurses lib32-openal lib32-sdl_image lib32-sdl_ttf)
+optdepends=('nvidia-utils: If you have nvidia graphics'
+            'catalyst-utils: If you have ATI graphics'
+            'alsa-lib: for alsa sound'
+            'libpulse: for pulse sound')
+if test "$CARCH" == "x86_64"; then
+    optdepends=('lib32-nvidia-utils: If you have nvidia graphics'
+                'lib32-catalyst-utils: If you have ATI graphics'
+                'lib32-alsa-lib: for alsa sound'
+                'lib32-libpulse: for pulse sound')
 fi
+
 backup=('opt/df_linux-sf/data/init/colors.txt'
         'opt/df_linux-sf/data/init/init.txt'
         'opt/df_linux-sf/data/init/d_init.txt'
         'opt/df_linux-sf/data/init/interface.txt')
 
-source=("http://www.bay12games.com/dwarves/df_${_dfver}_linux.tar.bz2"
-        "git://github.com/fricy/Spacefox.git#tag=${_sfver}"
-        "git://github.com/svenstaro/${_df_unfuck}.git"
+source=("df.tar.bz2::http://www.bay12games.com/dwarves/df_${_dfver}_linux.tar.bz2"
+        "spacefox.zip::https://github.com/fricy/Spacefox/archive/${_sfver}.zip"
+        "unfuck.zip::https://github.com/svenstaro/dwarf_fortress_unfuck/archive/${_ufver}.zip"
         "dwarffortress-sf"
         "dwarffortress-sf.desktop"
         "dwarffortress-sf.png"
         "LICENSE-sf")
 
-md5sums=('2804697e63b1bb9f6d0513a6fe42f7dc'
-         'SKIP'
-         'SKIP'
+md5sums=('802aaf29810be2fb78120a1171dfbc6d'
+         '1f58b274ffd835dad352e5cdfe0ebd06'
+         'a9b8667d6c3f376f83768f420ef5a058'
          '53c9d5bfcb35281c81b78fea23da0698'
          '60de2d654998220f426bbe41f2e57471'
          'b1d51f82400073af9bb179e34a9209d0'
@@ -54,42 +59,40 @@ md5sums=('2804697e63b1bb9f6d0513a6fe42f7dc'
 
 _installname=df_linux-sf
 
+
 build() {
-  cd "$srcdir/$_df_unfuck"
+  # build df unfuck
+  cd "$srcdir/dwarf_fortress_unfuck-${_ufver}"
   mkdir -p build && cd build
   cmake ..
   make
 }
 
 package() {
-
   cd $srcdir/df_linux
   install -dm755 $pkgdir/opt/
   install -dm775 -o root -g games $pkgdir/opt/${_installname}
+
+  # cp df
   cp -r $srcdir/df_linux/* $pkgdir/opt/${_installname}/
-  cp -rf $srcdir/Spacefox/* $pkgdir/opt/${_installname}/ # copy tileset
 
-  find $pkgdir/opt/${_installname} -type d -exec chmod 755 {} +
-  find $pkgdir/opt/${_installname} -type f -exec chmod 644 {} +
+  # cp tileset
+  cp -rf $srcdir/Spacefox-${_sfver}/* $pkgdir/opt/${_installname}/
 
-  install -Dm755 $srcdir/dwarffortress-sf $pkgdir/usr/bin/dwarffortress-sf
-
-  chmod 755 $pkgdir/opt/${_installname}/libs/Dwarf_Fortress
-  
-  install -Dm755 $srcdir/${_df_unfuck}/build/libgraphics.so $pkgdir/opt/${_installname}/libs/libgraphics.so
-  ln -s /usr/lib32/libpng.so $pkgdir/opt/${_installname}/libs/libpng.so.3
+  # fix libs
+  install -Dm755 $srcdir/dwarf_fortress_unfuck-${_ufver}/build/libgraphics.so $pkgdir/opt/${_installname}/libs/libgraphics.so
+  #ln -s /usr/lib32/libpng.so $pkgdir/opt/${_installname}/libs/libpng.so.3
   rm $pkgdir/opt/${_installname}/libs/{libgcc_s.so.1,libstdc++.so.6}
 
+  # permissions
+  find $pkgdir/opt/${_installname} -type d -exec chmod 755 {} +
+  find $pkgdir/opt/${_installname} -type f -exec chmod 644 {} +
+  chown -R root:games $pkgdir/opt/${_installname}
+
   install -d -m775 -o root -g games $pkgdir/opt/${_installname}/data/save
-
-  chown -R root:games $pkgdir/opt/${_installname}/data
-  find $pkgdir/opt/${_installname}/data -type d -exec chmod 775 {} +
-  find $pkgdir/opt/${_installname}/data -type f -exec chmod 664 {} +
-  chown root:games $pkgdir/opt/${_installname}
-
+  install -Dm755 $srcdir/dwarffortress-sf $pkgdir/usr/bin/dwarffortress-sf
   install -Dm644 $srcdir/dwarffortress-sf.desktop $pkgdir/usr/share/applications/dwarffortress-sf.desktop
-  install -Dm644 $srcdir/dwarffortress-sf.png     $pkgdir/usr/share/pixmaps/dwarffortress-sf.png
-
+  install -Dm644 $srcdir/dwarffortress-sf.png $pkgdir/usr/share/pixmaps/dwarffortress-sf.png
   install -Dm644 $srcdir/df_linux/readme.txt $pkgdir/usr/share/licenses/dwarffortress-spacefox/readme.txt
   install -Dm644 $srcdir/LICENSE-sf $pkgdir/usr/share/licenses/dwarffortress-spacefox/LICENSE-sf
 }
