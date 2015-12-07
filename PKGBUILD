@@ -5,15 +5,15 @@ _name="oslo.utils"
 _module="${_name/./-}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="3.0.0"
+pkgver="3.1.0"
 pkgrel="1"
 pkgdesc="Oslo Utility library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d25ec322e8692b50d76562332bd23e5b57e829ce0e6916dd191a12edf6ca92b0')
+source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('cd3bd9880d88a141b3bf56b94f50b906bba4b212c7ee7a7f165eccf5edf2f258')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
@@ -36,7 +36,6 @@ package_python-oslo-utils() {
         "python-monotonic>=0.3"
         "python-pytz>=2013.6"
         "python-netaddr>=0.7.12"
-        "python-netifaces>=0.10.4"
         "python-debtcollector>=0.3.0"
     )
     cd "${srcdir}/${_name}-${pkgver}"
@@ -53,7 +52,6 @@ package_python2-oslo-utils() {
         "python2-monotonic>=0.3"
         "python2-pytz>=2013.6"
         "python2-netaddr>=0.7.12"
-        "python2-netifaces>=0.10.4"
         "python2-debtcollector>=0.3.0"
     )
     cd "${srcdir}/${_name}-${pkgver}-python2"
