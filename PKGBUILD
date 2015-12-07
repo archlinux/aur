@@ -2,7 +2,7 @@
 # Old Maintainer: Viliam Pucik <viliam.pucik[at]gmail[dot]com>
 # Old Author: jevv
 pkgname=hpmyroom
-pkgver=10.4.0.0168
+pkgver=10.4.0.0174
 pkgrel=1
 pkgdesc="HP MyRoom a collaborative conferencing meetings software"
 url="https://www.myroom.hpe.com"
@@ -15,8 +15,8 @@ depends_x86_64=('lib32-attr' 'lib32-bzip2' 'lib32-expat' 'lib32-flac' 'lib32-fon
 
 source_i686=("${url}/downloadfiles/${pkgname}_v${pkgver}_i386.deb")
 source_x86_64=("${url}/downloadfiles/${pkgname}_v${pkgver}_amd64.deb")
-sha256sums_i686=('1d06eb1ac151e6f1a2b454b4e73b393055c8ef28dc66437e3638c633881f986e')
-sha256sums_x86_64=('4d96ba579673350a84d1a8dd2358580f3b2b0de211b041ecbf9366d7b87093a6')
+sha256sums_i686=('bd7743a12e478e9a70d9fbe375b378a6b7c45453173c9b3e96d192728cfb88aa')
+sha256sums_x86_64=('b22f43c78550b90b2183b56d7d67e9df1b1cf60dc5d0f0cfb76136cdd6cdaa12')
 
 [[ "$CARCH" = "i686" ]] && _debarch='i386'
 [[ "$CARCH" = "x86_64" ]] && _debarch='amd64'
