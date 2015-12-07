@@ -7,6 +7,8 @@ pkgdesc='A terminal multiplexer, with patched true color support'
 url='http://tmux.github.io/'
 arch=('i686' 'x86_64')
 license=('BSD')
+conflicts=('tmux')
+provides=('tmux')
 depends=('ncurses' 'libevent' 'libutempter')
 source=(https://github.com/tmux/tmux/releases/download/$pkgver/tmux-$pkgver.tar.gz
 	ncurses6-xterm-standout.patch
