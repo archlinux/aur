@@ -21,7 +21,7 @@ source=(
   # The mapping-ISOLatin1Accent.txt file is identical in all occurrences in the Solr repo across the head of all its supported branches (3-5.x)
 )
 md5sums=('ea3f8918a37f5d581def933921870e2d'
-         '304538fdbbb7f32e8858cf1d661f8ea6'
+         'b3806096d1e43de09ca8c49c4c601159'
          '9f3c8a60a4f09327fad22aeff082c2b3')
 
 prepare() {
