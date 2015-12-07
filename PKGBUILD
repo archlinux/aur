@@ -4,12 +4,12 @@
 _pkgname=symfony-installer
 pkgname=symfony-installer-bin
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Symfony Installer"
 url="https://github.com/symfony/symfony-installer"
 license=('MIT')
 arch=('any')
-depends=('php')
+depends=('php>=5.4.0')
 provides=('symfony-installer')
 conflicts=('symfony-installer')
 source=($_pkgname::http://symfony.com/installer)
