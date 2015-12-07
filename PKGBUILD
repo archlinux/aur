@@ -2,7 +2,7 @@
 
 pkgname=voxelands-bin
 pkgver=1510.01
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of Minetest, an Infiniminer/Minecraft inspired game"
 arch=(x86_64)
 url="http://www.voxelands.com/"
@@ -12,7 +12,7 @@ replaces=('minetest-classic')
 provides=('minetest-classic' 'voxelands')
 conflicts=('minetest-classic' 'minetest-classic-next-git' 'voxelands-next-git' 'voxelands')
 source=("http://www.voxelands.com/downloads/voxelands-${pkgver}-ubuntu-x86_64.deb")
-md5sums=('6ee6624ed650c51854303b240703743c')
+md5sums=('0780fc8dd87f32b5b307fde8ed28c29f')
 
 build() {
     cd ${srcdir}
