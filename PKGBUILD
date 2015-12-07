@@ -4,7 +4,7 @@
 
 _pkgname=appstream-glib
 pkgname=${_pkgname}-git
-pkgver=appstream.glib.0.5.4.r5.g0f0c7a9
+pkgver=0.5.4.r5.g0f0c7a9
 pkgrel=1
 pkgdesc="Provides GObjects and helper methods to make it easy to read and write AppStream metadata (git version)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
 
-  git describe --always| sed 's|^appstrea_glib_||;s|\([^-].\)-|\1-r|;s|[-_]|\.|g'
+  git describe --always| sed 's|^appstream_glib_||;s|\([^-].\)-|\1-r|;s|[-_]|\.|g'
 }
 
 build() {
