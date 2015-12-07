@@ -1,0 +1,142 @@
+pre_install() {
+	SPLUNK_HOME="/opt/splunk"
+	
+	group_exists=no
+	# Try to test for group existence in a 'modern' fashion
+	if which getent >/dev/null; then
+		if getent group splunk >/dev/null; then
+			group_exists=yes
+		fi
+	# or fall back
+	elif grep '^splunk:' /etc/group >/dev/null; then
+		group_exists=yes
+	fi
+	
+	if [ "${group_exists}"x = nox ]; then
+		groupadd splunk
+	fi
+	if id splunk > /dev/null 2>&1; then
+		: #user already exists
+	else
+		useradd -c "Splunk Server" -d $SPLUNK_HOME -s /bin/bash -g splunk splunk
+	fi
+}
+
+post_install() {
+	SPLUNK_HOME="/opt/splunk"
+	
+	if [ ! -f "$SPLUNK_HOME/etc/splunk-launch.conf" ]; then
+		sed "s%# SPLUNK_HOME=.*%SPLUNK_HOME=$SPLUNK_HOME%g" "$SPLUNK_HOME/etc/splunk-launch.conf.default" > "$SPLUNK_HOME/etc/splunk-launch.conf"
+	fi
+	
+	# Build the post-install message in steps:
+	touch "$SPLUNK_HOME/ftr"
+	echo "-------------------------------------------------------------------------" > "$SPLUNK_HOME/ftr"
+	echo "Splunk has been installed in:" >> "$SPLUNK_HOME/ftr"
+	echo "	$SPLUNK_HOME" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "To start Splunk, run the command:" >> "$SPLUNK_HOME/ftr"
+	echo "	$SPLUNK_HOME/bin/splunk start" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "To use the Splunk web interface, point your browser to:" >> "$SPLUNK_HOME/ftr"
+	echo "	http://$HOSTNAME:8000" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "Complete documentation is at http://docs.splunk.com/Documentation/Splunk" >> "$SPLUNK_HOME/ftr"
+	echo "-------------------------------------------------------------------------" >> "$SPLUNK_HOME/ftr"
+	
+	echo "Splunk has been installed to $SPLUNK_HOME"
+	echo "You can start Splunk by running 'systemctl start splunk'"
+	
+	chown -R splunk:splunk "$SPLUNK_HOME"
+}
+
+pre_upgrade() {
+	SPLUNK_HOME="/opt/splunk"
+	echo "Attempting to stop the installed Splunk Server..."
+	$SPLUNK_HOME/bin/splunk stop
+	systemctl stop splunk
+	
+	group_exists=no
+	# Try to test for group existence in a 'modern' fashion
+	if which getent >/dev/null; then
+		if getent group splunk >/dev/null; then
+			group_exists=yes
+		fi
+	# or fall back
+	elif grep '^splunk:' /etc/group >/dev/null; then
+		group_exists=yes
+	fi
+	
+	if [ "${group_exists}"x = nox ]; then
+		groupadd splunk
+	fi
+	if id splunk > /dev/null 2>&1; then
+		: #user already exists
+	else
+		useradd -c "Splunk Server" -d $SPLUNK_HOME -s /bin/bash -g splunk splunk
+	fi
+}
+
+post_upgrade() {
+	SPLUNK_HOME="/opt/splunk"
+	
+	# Build the post-upgrade message in steps:
+	touch "$SPLUNK_HOME/ftr"
+	echo "-------------------------------------------------------------------------" > "$SPLUNK_HOME/ftr"
+	echo "Splunk has been updated in:" >> "$SPLUNK_HOME/ftr"
+	echo "	$SPLUNK_HOME" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "To start Splunk, run the command:" >> "$SPLUNK_HOME/ftr"
+	echo "	$SPLUNK_HOME/bin/splunk start" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "To use the Splunk web interface, point your browser to:" >> "$SPLUNK_HOME/ftr"
+	echo "	http://$HOSTNAME:8000" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "" >> "$SPLUNK_HOME/ftr"
+	echo "Complete documentation is at http://docs.splunk.com/Documentation/Splunk" >> "$SPLUNK_HOME/ftr"
+	echo "-------------------------------------------------------------------------" >> "$SPLUNK_HOME/ftr"
+	
+	echo "Splunk has been upgraded in $SPLUNK_HOME"
+	echo "Run 'systemctl start splunk' to complete the upgrade."
+	
+	chown -R splunk:splunk "$SPLUNK_HOME"
+}
+
+pre_remove() {
+	SPLUNK_HOME="/opt/splunk"
+	echo "Attempting to stop the installed Splunk Server..."
+	$SPLUNK_HOME/bin/splunk stop
+	systemctl stop splunk
+}
+
+post_remove() {
+	SPLUNK_HOME="/opt/splunk"
+	
+	# Remove any remaining files
+	rm -rf $SPLUNK_HOME
+	
+	# Remove splunk user/group if there are no other splunk packages
+	if [ `pacman -Q | grep splunk | wc -l` -eq 1 ]; then
+		if id splunk > /dev/null 2>&1; then
+			userdel -r splunk
+		fi
+		
+		group_exists=no
+		# Try to test for group existence in a 'modern' fashion
+		if which getent >/dev/null; then
+			if getent group splunk >/dev/null; then
+				group_exists=yes
+			fi
+		# or fall back
+		elif grep '^splunk:' /etc/group >/dev/null; then
+			group_exists=yes
+		fi
+		
+		if [ "${group_exists}"x = yesx ]; then
+			groupdel splunk
+		fi
+	fi
+}
