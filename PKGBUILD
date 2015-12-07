@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=sophia
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Modern embeddable transactional key-value storage"
 arch=('any')
