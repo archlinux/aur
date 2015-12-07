@@ -1,0 +1,6 @@
+src
+pkg
+tunefish-v*-linux*-vst24.tar.gz
+tunefish4-vst-bin-*.tar.xz
+tunefish4-vst-bin-*.src.tar.gz
+.AURINFO
