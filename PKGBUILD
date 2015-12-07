@@ -2,9 +2,9 @@
 # Maintainer: Jason Edson <jaysonedson@gmail.com>
 # Contributor: judd <jvinet@zeroflux.org>
 
-pkgname=flex
-pkgver=android
-pkgrel=2
+pkgname=flex-android
+pkgver=9999
+pkgrel=3
 pkgdesc="Flex for building Android. 2.6 doesn't play well when building."
 arch=('i686' 'x86_64')
 url="http://flex.sourceforge.net"
