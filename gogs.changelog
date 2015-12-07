@@ -1,3 +1,18 @@
+2015-12-07
+
+	* V0.7.33
+	Bug fix: LDAP search with non-ascii characters does not work #1139
+	Bug fix: Delete repository does not remove its stars #2042
+	Bug fix: Diff is not showing full content when has super long one line #2071
+	Bug fix: Cannot create pull request on Windows #2093
+	Improvement: Able to disable wiki/issues/pull requests of repository #1829
+	Improvement: Able to trigger test webhook in web UI #1857
+	Improvement: Able to batch delete system notices #2052
+	Improvement: Able to delete repository in admin panel #2063
+	Features: Support repository wiki #270
+	Features: Support issue links are rendered for external tracker #890
+	Features: Add more APIs: public keys #976
+
 2015-11-21
 
 	* V0.7.19
