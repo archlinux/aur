@@ -2,7 +2,7 @@
 
 pkgname=ganv
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive Gtkmm canvas widget for graph-based interfaces"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/$pkgname/"
