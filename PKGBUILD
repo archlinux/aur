@@ -1,15 +1,15 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=rexdep
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Roughly extract dependency relation from source code"
 arch=('i686' 'x86_64')
 makedepends=('gcc' 'git' 'go' 'make' 'mercurial')
 url="https://github.com/itchyny/rexdep"
 license=('GPL')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/itchyny/$pkgname/tar.gz/v$pkgver)
-sha256sums=('a7726a7521401917b3457f851d7774365d0866f3399b1b9d3320f195b6162f8e')
+sha256sums=('fa823a0d30d5db697afe4fde34ad18813200bc861b47e92b41c88224ce7d6b98')
 options=('!strip' '!emptydirs')
 
 build() {
