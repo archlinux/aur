@@ -9,13 +9,14 @@ url="http://nitrux.in/store/nitrux-icon-theme/"
 arch=('any')
 license=('custom:Creative Commons')
 source=("http://nitrux.in/downloads/files/free/${pkgname}-${pkgver}.tar.gz")
+source=("https://launchpad.net/~nitrux-team/+archive/ubuntu/nitrux-artwork/+files/${pkgname}_${pkgver}.tar.gz")
 depends=('librsvg')
 options=(!strip)
-md5sums=('92159c055be19200f288c93626a4902a')
+md5sums=('92c680071d5c41f80ad324072db1a428')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/icons"
-  cp -r "${srcdir}/Nitrux" "${pkgdir}/usr/share/icons/${pkgname}"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/Nitrux" "${pkgdir}/usr/share/icons/${pkgname}"
   find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 '{}' \;
   find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 '{}' \;
 
