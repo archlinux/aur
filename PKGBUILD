@@ -31,7 +31,7 @@ build() {
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install --debug --backtrace --verbose -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $srcdir/$pkgname/$_gemname-$pkgver.gem > /dev/null 2>&1
+  gem install --ignore-dependencies --no-user-install --debug --backtrace --verbose -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $srcdir/$_gemname/$_gemname-$pkgver.gem > /dev/null 2>&1
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
