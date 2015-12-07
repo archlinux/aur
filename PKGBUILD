@@ -14,7 +14,7 @@ makedepends=('git')
 provides=(fpm)
 conflicts=(fpm)
 options=(!emptydirs)
-source=("${pkgname%-*}::git+https://github.com/jordansissel/${pkgname}.git")
+source=("${pkgname%-*}::git+https://github.com/jordansissel/${_gemname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
