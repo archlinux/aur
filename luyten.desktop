@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=0.4.4
+Name=luyten
+Comment=An Open Source Java Decompiler Gui for Procyon
+Path=/opt/luyten/
+Exec=luyten
+Terminal=false
+Categories=Java;Development;
