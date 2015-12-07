@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=sqlite3pp-git
-pkgver=r43.fc0ca86
+pkgver=r55.5a4e595
 pkgrel=1
 pkgdesc="C++ wrapper of SQLite3 API"
 arch=('i686' 'x86_64')
@@ -16,14 +16,14 @@ pkgver() {
 }
 
 build() {
-  cd "sqlite3pp/sqlite3pp/src"
+  cd "sqlite3pp/src"
   cxx='c++ -std=c++11 -fPIC -shared'
   ${cxx} -o libsqlite3pp.so    sqlite3pp.cpp
   ${cxx} -o libsqlite3ppext.so sqlite3ppext.cpp
 }
 
 package() {
-  cd "sqlite3pp/sqlite3pp/src"
+  cd "sqlite3pp/src"
 
   # Headers
   install -d "$pkgdir/usr/include/"
