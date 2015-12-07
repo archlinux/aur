@@ -1,19 +1,19 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=giada
-pkgver=0.10.2
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="A looper, drum machine, sequencer, live sampler and plugin host"
 arch=('i686' 'x86_64')
 url="http://www.giadamusic.com/"
 license=('GPL3')
-depends=('fltk' 'jack' 'libpulse' 'libxpm' 'rtmidi')
+depends=('fltk' 'jansson' 'libpulse' 'libxpm' 'rtmidi')
 source=("${pkgname}-${pkgver}-src.tar.gz::http://www.giadamusic.com/download/grab/source"
         'http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip'
         "$pkgname.desktop"
         "$pkgname.png")
 install="$pkgname.install"
-md5sums=('90f15313393b3bd11b6fe958665aed93'
+md5sums=('fcc8d495d15b96e59e9a45349041da0f'
          '1ac422ebb4aa2e86061278412c347b55'
          '06238158680470ab01fbbeb33353e58e'
          'f9b6e4233890720af50c536c4b2c92c0')
