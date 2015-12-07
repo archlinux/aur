@@ -4,7 +4,7 @@
 _pkgname=symfony-installer
 pkgname=symfony-installer-bin
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The Symfony Installer"
 url="https://github.com/symfony/symfony-installer"
 license=('MIT')
@@ -19,7 +19,7 @@ install="$_pkgname.install"
 
 package() {
   install -dm755 "$pkgdir/opt/$_pkgname/"
-  cp -a "$srcdir/$_pkgname" "$pkgdir/opt/$_pkgname/symfony"
+  install -D "$srcdir/$_pkgname" "$pkgdir/opt/$_pkgname/symfony"
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/opt/$_pkgname/symfony" "$pkgdir/usr/bin/symfony"
 }
