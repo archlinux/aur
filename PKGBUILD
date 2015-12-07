@@ -1,6 +1,6 @@
 # Maintainer: Denis Saintilma <1068des@gmail.com>
 pkgname=plexpy-git
-pkgver=1.2.7.r0.81b22a8
+pkgver=1.2.13.r0.fc0be6b
 pkgrel=1
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
@@ -28,9 +28,9 @@ pkgver() {
 package() {
         cd "${srcdir}/${pkgname%-VCS}"
         install -Dm755 PlexPy.py "${pkgdir}/opt/plexpy/PlexPy.py"
-        install -Dm644 pylintrc  "${pkgdir}/opt/plexpy/"
+        install -Dm644 pylintrc CHANGELOG.md  "${pkgdir}/opt/plexpy/"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/plexpy/LICENSE"
-
+	
         cp -a data/ lib/ plexpy/ "${pkgdir}/opt/plexpy/"
 
         install -Dm644 "${srcdir}/plexpy.service" "${pkgdir}/usr/lib/systemd/system/plexpy.service"
