@@ -1,15 +1,12 @@
-# Maintainer: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
-# https://github.com/zizzfizzix/pkgbuilds
-
 pkgname=cloudprint-cups-git
 pkgver=20140308.130.gbf67714
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Google Cloud Print driver for CUPS, allows printing to printers hosted on Google Cloud Print.'
 arch=('any')
 url='https://github.com/simoncadman/CUPS-Cloud-Print'
 license=('GPL3')
-depends=('python2-pycups' 'python2-httplib2')
+depends=('python2-pycups' 'python2-httplib2' 'python2-six')
 makedepends=('cups' 'git')
 provides=('cloudprint-cups' 'cupscloudprint')
 conflicts=('cloudprint-cups' 'cupscloudprint')
