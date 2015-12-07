@@ -1,7 +1,7 @@
 # Maintainer: Silvio Fricke <silvio.fricke@gmail.com>
 pkgname=forticlientsslvpn-systemd
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="systemd service for fortiClient SSLVPN"
 arch=('any')
 license=('GPL')
@@ -34,5 +34,5 @@ package() {
 }
 
 md5sums=('e233ab6c985244d9ec7e0f06ee0edb89'
-         'b615bce30f3363e7294a3ab178176166'
+         '9f6a04533f66f1ca9035d576fed4aeae'
          'c2039ad66bcf27286ff402dc661371fc')

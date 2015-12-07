@@ -11,8 +11,8 @@ set timeout -1
 spawn /usr/bin/bash
 match_max 100000
 send -- "cd $env(INSTALLPATH)\r"
-send -- "./forticlientsslvpn_cli --server $env(VPNIP):$env(VPNPORT) --vpnuser $env(VPNUSER)"
-expect -exact "./forticlientsslvpn_cli --server $env(VPNIP):$env(VPNPORT) --vpnuser $env(VPNUSER)"
+send -- "./forticlientsslvpn_cli --server $env(VPNIP):$env(VPNPORT) --vpnuser $env(VPNUSER) --keepalive"
+expect -exact "./forticlientsslvpn_cli --server $env(VPNIP):$env(VPNPORT) --vpnuser $env(VPNUSER) --keepalive"
 send -- "\r"
 expect -exact "\r
 Password for VPN:"
