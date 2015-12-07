@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://code.google.com/p/osd-lyrics/"
 license=('GPL3')
 depends=('gtk2' 'dbus-glib' 'curl' 'libnotify' 'libmpd' 'xmms2'
-         'desktop-file-utils' 'hicolor-icon-theme')
+         'desktop-file-utils' 'hicolor-icon-theme' 'sqlite')
 makedepends=('intltool')
 install=$pkgname.install
 source=("http://osd-lyrics.googlecode.com/files/$pkgname-$pkgver.tar.gz")
