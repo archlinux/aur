@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool-git
-pkgver=1.6.7.r499.gd1eb88b
+pkgver=1.6.7.r506.g013ea67
 pkgrel=1
 pkgdesc='an in-memory database designed to store the most volatile and highly accessible web content'
 arch=(i686 x86_64)
