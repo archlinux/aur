@@ -1,6 +1,6 @@
 pkgbase = mopidy-dirble
 	pkgdesc = Mopidy extension for Dirble open radio directory
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
@@ -9,11 +9,10 @@ pkgbase = mopidy-dirble
 	depends = mopidy>=1.0
 	depends = python2-pykka>=1.1
 	depends = python2-setuptools
-	depends = python2-pycountry
 	depends = python2-requests
 	provides = mopidy-dirble
-	source = https://github.com/mopidy/mopidy-dirble/archive/v1.1.2.tar.gz
-	md5sums = 7bdc834816e4ce187a499f7bbae6f3d7
+	source = https://github.com/mopidy/mopidy-dirble/archive/v1.2.0.tar.gz
+	md5sums = 136000b57f3716b9863e43d4d05812d7
 
 pkgname = mopidy-dirble
 
