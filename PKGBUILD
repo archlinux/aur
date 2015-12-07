@@ -3,7 +3,7 @@
 _gitname=El-General
 _pkgname=ElGeneral
 pkgname=('elgeneral-icon-theme-git')
-pkgver=r34.3c2e7bf
+pkgver=r42.27372d1
 pkgrel=1
 pkgdesc="An icon theme for Plasma Desktop"
 arch=('any')
