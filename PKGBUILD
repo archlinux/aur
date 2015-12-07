@@ -1,7 +1,7 @@
 # Contributor: Kozec <kozec.at.kozec.dot.com>
 
 pkgname=python-sqlparse-git
-pkgver=0.1.9.27.geebde5b
+pkgver=0.1.18.32.g7b80406
 pkgrel=1
 pkgdesc="Non-validating SQL parser for Python. Git version"
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ pkgver() {
     git describe | sed 's/^v//;s/-/./g;s/_/./g;'
 }
 
-build() {
+package() {
   cd $srcdir/sqlparse
   python2.7 setup.py install --root=$pkgdir/ --optimize=1 || return 1
 }
