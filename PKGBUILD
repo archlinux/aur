@@ -40,6 +40,7 @@ build() {
                 -DENABLE_ASM_SCALERS='TRUE'"
   fi
 
+  CXXFLAGS+=' -std=c++11 -fpermissive'
   cmake .. ${_cmakeargs}
   make
 }
