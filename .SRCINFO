@@ -6,6 +6,7 @@ pkgbase = shout-irc
 	install = install
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
 	backup = etc/shout-irc/config.js
 	source = https://github.com/erming/shout/archive/v0.52.0.tar.gz

@@ -8,6 +8,7 @@ url='http://shout-irc.com/'
 arch=('any')
 license=('MIT')
 depends=('nodejs')
+makedepends=('npm')
 install=install
 backup=('etc/shout-irc/config.js')
 source=(
