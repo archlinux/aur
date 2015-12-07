@@ -37,7 +37,7 @@ package_papirus-plasma-theme-git() {
     options=('!strip')
     optdepends=()
     makedepends=('git')
-    conflicts=('papirus-plasma-theme')
+    conflicts=('plasma-theme-papirus')
     install -dm755 ${pkgdir}/usr/share/plasma/desktoptheme
     cp -r ${srcdir}/${_pkgname}/plasma-themes/papirus* ${pkgdir}/usr/share/plasma/desktoptheme/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -142,7 +142,7 @@ package_libreoffice-papirus-theme-git() {
     depends=()
     optdepends=('libreoffice' 'libreoffice-fresh-rpm')
     makedepends=('git')
-    conflicts=('libreoffice-papirus-theme' 'libreoffice-fresh-rpm-papirus-theme')
+    conflicts=('libreoffice-style-papirus' 'libreoffice-papirus-theme' 'libreoffice-fresh-rpm-papirus-theme')
     install -Dm644 -t "${pkgdir}/usr/lib/libreoffice/share/config/" ${srcdir}/${_pkgname}/libreoffice-icons/*.zip
     install -Dm644 -t "${pkgdir}/opt/libreoffice5.0/share/config/"  ${srcdir}/${_pkgname}/libreoffice-icons/*.zip
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -155,6 +155,7 @@ package_papirus-kmail-theme-git() {
     depends=('kmail')
     optdepends=()
     makedepends=('git')
+    conflicts=('papirus-kmail-theme')
     install -dm755 ${pkgdir}/usr/share/messageviewer/themes
     cp -r ${srcdir}/${_pkgname}/kmail-theme/papirus* ${pkgdir}/usr/share/messageviewer/themes/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
