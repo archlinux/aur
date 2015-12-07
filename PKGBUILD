@@ -3,12 +3,14 @@
 _pkgname="birdie"
 pkgname="${_pkgname}-git"
 pkgver=1.1+git.21.gf235c55
-pkgrel=1
+pkgrel=2
 pkgdesc="Twitter client for Linux"
 arch=('i686' 'x86_64')
 url="http://birdieapp.github.io"
 license=('GPL3')
-depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'python2-requests' 'python2-requests-oauthlib' 'pygtksourceview2' 'python2-pillow' 'gtksourceview3' 'webkitgtk' 'python2-socksipy-branch')
+depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'python2-requests' 
+'python2-requests-oauthlib' 'pygtksourceview2' 'python2-pillow' 
+'gtksourceview3' 'webkitgtk' 'python2-socksipy-branch' 'python2-gobject')
 makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection')
 options=('!libtool')
 conflicts=('birdie' 'birdie-bzr')
