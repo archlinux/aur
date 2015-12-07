@@ -1,7 +1,7 @@
 pkgbase = cjdns-git
 	pkgdesc = A routing engine designed for security, scalability, speed and ease of use
-	pkgver = 17.1.r72.g68693cc
-	pkgrel = 2
+	pkgver = 17.1.r83.g486ec91
+	pkgrel = 1
 	url = https://github.com/cjdelisle/cjdns
 	arch = i686
 	arch = x86_64
@@ -21,9 +21,7 @@ pkgbase = cjdns-git
 	options = !strip
 	options = !buildflags
 	source = git+https://github.com/cjdelisle/cjdns#branch=crashey
-	source = seccomp-bind-getsockaddr.patch
 	sha512sums = SKIP
-	sha512sums = 547db6c204c029375fa435414dc3a15d4df3cb6d73a65ad7c9476454dc1cc5ded6cf5cfca75ccd580ed98b2ca4508127572eb4bd2d4c7847015c94c014bd18a4
 
 pkgname = cjdns-git
 
