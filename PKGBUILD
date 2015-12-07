@@ -8,14 +8,14 @@ pkgdesc="The KDE version of the Nitrux OS Icons"
 url="http://nitrux.in/store/nitrux-for-kde/"
 arch=('any')
 license=('Creative Commons')
-source=("http://nitrux.in/downloads/files/free/${pkgname}-${pkgver}.tar.gz")
+source=("https://launchpad.net/~nitrux-team/+archive/ubuntu/nitrux-artwork/+files/${pkgname}_${pkgver}.tar.gz")
 depends=('librsvg')
 options=(!strip)
-md5sums=('f6157a19e14de09cd6f6f11a5db5f018')
+md5sums=('b938bf54023229dc855d34965c295c03')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/icons"
-  cp -r "${srcdir}/Nitrux" "${pkgdir}/usr/share/icons/${pkgname}"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/Nitrux" "${pkgdir}/usr/share/icons/${pkgname}"
   find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 '{}' \;
   find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 '{}' \;
 
