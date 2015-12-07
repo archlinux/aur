@@ -5,15 +5,15 @@ _name="oslo.i18n"
 _module="${_name/./-}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="3.0.0"
+pkgver="3.1.0"
 pkgrel="1"
 pkgdesc="Oslo i18n library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f49a0511f495d9328bd1216588ac5b03dda8be2502d1078af115550d040beb2e')
+source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('1c82d9e3acd821015990fd111750fd949a5276ed6561a16e0a39d69e7145dbd8')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
