@@ -1,7 +1,7 @@
 #Maintainer : Grigory Mishchenko <grishkokot[at]gmail[dot]com>
 
 pkgname=menu-cache-git
-pkgver=1.0.0.5.ge9ece4a
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Caching mechanism for freedesktop.org compliant menus'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ _gitname="menu-cache"
 
 pkgver() {
     cd $_gitname
-    git describe --always | sed 's|-|.|g'
+    git describe | sed 's/^v//;s/-/./g'
 }
 
 build() {
