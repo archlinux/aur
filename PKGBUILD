@@ -1,7 +1,7 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 pkgname=rocker-compose-bin
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Docker composition tool with idempotency features for deploying apps composed of multiple containers"
 depends=( )
 arch=('x86_64')
@@ -10,7 +10,7 @@ options=( )
 source=(
   "https://github.com/grammarly/rocker-compose/releases/download/${pkgver}/rocker-compose-${pkgver}_linux_amd64.tar.gz"
   "https://raw.githubusercontent.com/grammarly/rocker-compose/master/LICENSE"
-  "https://raw.githubusercontent.com/alkersan/rocker-compose/master/completion/zsh/_rocker-compose"
+  "https://raw.githubusercontent.com/grammarly/rocker-compose/master/completion/zsh/_rocker-compose"
 )
 url="https://github.com/grammarly/rocker-compose"
 license="Apache"
