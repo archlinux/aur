@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/cotire-*-any.pkg.tar.xz
+/cotire-*.tar.gz
