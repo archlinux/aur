@@ -1,7 +1,7 @@
 # Maintainer: Denis Saintilma <1068des@gmail.com>
 pkgname=plexpy-git
 pkgver=1.2.13.r0.fc0be6b
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/drzoidberg33/plexpy"
@@ -9,6 +9,7 @@ license=('GPL')
 depends=('python2')
 makedepends=('git')
 provides=("plexpy")
+conflicts=('plexpy')
 install=('plexpy-git.install')
 source=("$pkgname::git+https://github.com/drzoidberg33/plexpy/" 'plexpy.service' 'plexpy-git.install' 'welcome.html.patch')
 md5sums=('SKIP'
