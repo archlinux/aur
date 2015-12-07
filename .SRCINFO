@@ -1,0 +1,21 @@
+pkgbase = cado-nfs-git
+	pkgdesc = Implementation of the Number Field Sieve (NFS) algorithm for factoring integers
+	pkgver = 20151205.bb92b56
+	pkgrel = 1
+	url = http://cado-nfs.gforge.inria.fr/
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = inetutils
+	depends = gmp
+	depends = python
+	depends = sqlite
+	provides = cado-nfs
+	conflicts = cado-nfs
+	source = git://scm.gforge.inria.fr/cado-nfs/cado-nfs.git
+	md5sums = SKIP
+
+pkgname = cado-nfs-git
+
