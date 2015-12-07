@@ -1,6 +1,6 @@
 pkgbase = sophia-git
 	pkgdesc = Modern embeddable transactional key-value storage
-	pkgver = r272.60851aa
+	pkgver = r410.179c0cb
 	pkgrel = 1
 	url = https://github.com/pmwkaa/sophia
 	arch = any
