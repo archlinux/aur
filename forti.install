@@ -1,4 +1,8 @@
 ## arg 1:  the new package version
 post_install() {
 	echo "please change the configuration file '/etc/forti.conf'"
+	echo ""
+	echo "if your vpn isn't signed from a official CA you have to set"
+	echo "    invalid_peer_cert_action=0"
+	echo "in /opt/fortinet/forticlientsslvpn/helper/config"
 }

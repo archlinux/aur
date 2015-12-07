@@ -1,7 +1,7 @@
 # Maintainer: Silvio Fricke <silvio.fricke@gmail.com>
 pkgname=forticlientsslvpn-systemd
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="systemd service for fortiClient SSLVPN"
 arch=('any')
 license=('GPL')
