@@ -5,7 +5,7 @@ pkgbase=gvfs-nosystemd
 _pkgbase=gvfs
 pkgname=$pkgbase
 pkgver=1.26.2
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 license=(LGPL)
 makedepends=(avahi dbus fuse intltool libarchive libcdio-paranoia libgphoto2 libimobiledevice
@@ -14,7 +14,7 @@ makedepends=(avahi dbus fuse intltool libarchive libcdio-paranoia libgphoto2 lib
 url="http://www.gnome.org"
 groups=(gnome)
 conflicts=($_pkgbase)
-provides=($_pkgbase)
+provides=($_pkgbase=$pkgver)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz)
 sha256sums=('695b6e0f3de5ac2cb4d188917edef3f13299328150a2413f1a7131d9b2d48d18')
 
@@ -55,8 +55,8 @@ package_gvfs-nosystemd() {
   make DESTDIR="$pkgdir" install
 
   cd "$pkgdir"
-  rm usr/lib/gvfs/gvfsd-{smb,smb-browse,afc,gphoto2,mtp,google}
-  rm usr/share/gvfs/mounts/{smb,smb-browse,afc,gphoto2,mtp,google}.mount
+  rm usr/lib/gvfs/gvfsd-{smb,smb-browse,afc,gphoto2,mtp}
+  rm usr/share/gvfs/mounts/{smb,smb-browse,afc,gphoto2,mtp}.mount
   rm usr/share/glib-2.0/schemas/org.gnome.system.smb.gschema.xml
   rm usr/share/GConf/gsettings/gvfs-smb.convert
 }
