@@ -1,8 +1,23 @@
 #!/bin/bash
-# This script is meant to be run manually by the maintainers
+# This script is meant to be used by the maintainers to keep the EULA up to
+# date.  It can also be used as a pre-push hook to automate things:
+#
+#     ln -s -f ../../update-eula  .git/hooks/pre-push
+#
+URL="https://unity3d.com/legal/eula"
 
-curl "https://unity3d.com/legal/eula" \
+# Refer users to the original EULA
+echo -e "*** for an up-to-date EULA refer to ($URL) ***\n\n" > EULA
+
+# Download updated EULA, convert to plain text
+curl -s $URL \
   | xmllint --html --xpath "//section[@id='content']" - 2> /dev/null \
   | elinks -dump \
-  | sed '/Quick jump/,$d' > EULA
+  | sed '/Quick jump/,$d' >> EULA
+
+# Check for changes (pre-push hook)
+if [ -n "$(git diff EULA)" ]; then
+  echo "EULA has changed."
+  exit 1
+fi
 
