@@ -5,7 +5,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=ejabberd-git
-pkgver=15.04
+pkgver=15.11
 pkgrel=1
 pkgdesc="Jabber server written in Erlang"
 arch=('x86_64' 'i686')
@@ -38,11 +38,11 @@ source=("${pkgname%%-git}-$pkgver::git+https://github.com/processone/ejabberd"
 	"git+https://github.com/davisp/jiffy"
 	"git+https://github.com/cmullaparthi/ibrowse"
 	"git+https://github.com/esl/lhttpc"
-	"git+https://github.com/eproxus/meck"
+	"git+https://github.com/eproxus/meck#tag=0.8.2"
 	"esip::git+https://github.com/processone/p1_sip"
 	"git+https://github.com/basho/riak_pb"
 	"riakc::git+https://github.com/basho/riak-erlang-client"
-	"protobuffs::git+https://github.com/basho/erlang_protobuffs.git#tag=0.8"
+	"protobuffs::git+https://github.com/basho/erlang_protobuffs.git#tag=0.8.2"
 	"git+https://github.com/processone/p1_utils"
 	"ehyperloglog::git+https://github.com/vaxelfel/eHyperLogLog.git"
 	"rebar_elixir_plugin::git+https://github.com/yrashk/rebar_elixir_plugin"
@@ -117,7 +117,7 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --enable-all
   make debug=true
-  make -C doc
+  #make -C doc
 }
 
 package() {
