@@ -1,7 +1,7 @@
 
 # Maintainer: Matteo De Carlo <matteo.dek AT gmail DOT com>
 pkgname=pencil-android-lollipop-stencils-git
-pkgver=1.0.0.r2.g1a913c4
+pkgver=1.0.0.r3.ge573ed9
 pkgrel=1
 pkgdesc="Collection of common Android Lollipop UI elements for Pencil. All in vector format."
 arch=(any)
