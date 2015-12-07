@@ -2,7 +2,7 @@
 
 pkgname=wolfenstein3d
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Wolfenstein 3D, cult first person shooter video game from id Software and Apogee"
 arch=(any)
 url="http://www.idsoftware.com/games/wolfenstein/wolf3d/"
@@ -38,7 +38,9 @@ build() {
     unzip 1wolf14.zip -d install
     cp setup.cfg install/
     dosbox -conf dosbox-install.conf
+}
 
+package() {
     install -d ${pkgdir}/opt/wolfenstein3d
     install -m 0644 install/wolf3d/* ${pkgdir}/opt/wolfenstein3d/
     install -m 0644 dosbox.conf ${pkgdir}/opt/wolfenstein3d/dosbox.conf
