@@ -5,10 +5,8 @@
 # https://github.com/michaellass/AUR
 
 pkgname=keepassx2
-pkgver=2.0beta2
+pkgver=2.0
 pkgrel=1
-_dlver=2.0-beta2
-_dlno=115
 pkgdesc="Crossplatform port of Windows' application  ''KeePass Password Safe''"
 arch=('i686' 'x86_64')
 url="https://www.keepassx.org/dev/"
@@ -18,15 +16,15 @@ makedepends=('intltool' 'cmake')
 conflicts=('keepassx' 'keepassx2-git')
 options=(!emptydirs)
 install=keepassx2.install
-source=("https://www.keepassx.org/dev/attachments/download/${_dlno}/keepassx-${_dlver}.tar.gz")
-sha256sums=('5828261226c441856bd12e2f4f73af1a5fc3b1981b2cff40fbc2403e344f4e52')
+source=("https://www.keepassx.org/releases/${pkgver}/keepassx-${pkgver}.tar.gz")
+sha256sums=('0eb40fac3a44d8283dfc1ee28cc6de5c660b22ab975472de82c2b04675c822e6')
 
 _cmake_keys="-DCMAKE_INSTALL_PREFIX=/usr
              -DCMAKE_INSTALL_LIBDIR=/usr/lib
              -DCMAKE_BUILD_TYPE=Release"
 
 build() {
-	cd "${srcdir}/keepassx-${_dlver}"
+	cd "${srcdir}/keepassx-${pkgver}"
 
 	if [[ -d build ]]; then
 		rm -rf build
@@ -38,6 +36,6 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/keepassx-${_dlver}/build"
+	cd "${srcdir}/keepassx-${pkgver}/build"
 	make DESTDIR="${pkgdir}" install
 }
