@@ -1,0 +1,17 @@
+post_install() {
+    echo -e '\E[1;34m'
+    echo "<==== INFORMATION ====>"
+    echo " "
+    echo "* systemd-vgaswitcheroo-units is now installed."
+    echo " "
+    echo "* Activate it by issuing the following command as root:"
+    echo "*   # systemctl enable vgaswitcheroo"
+    echo " "
+    echo "* In order to function properly, debugfs needs to be in your '/etc/fstab' and"
+    echo "* the module 'radeon' should be blacklisted in '/etc/modprobe.conf'."
+    echo "* If your PC hangs on shutdown/reboot, try disabling 'vgaswitcheroo_stop.sh' by"
+    echo "* erasing the ExecStop-line in '/usr/lib/systemd/system/vgaswitcheroo.service'"
+    echo " "
+    echo "* NOTE: This will only work if you are running the open source nouveau or radeon drivers"
+tput sgr0 
+} 

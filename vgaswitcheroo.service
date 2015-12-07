@@ -1,0 +1,11 @@
+[Unit]
+Description=Deactivate the discrete GPU on boot
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/vgaswitcheroo_start.sh
+ExecStop=/usr/bin/vgaswitcheroo_stop.sh
+
+[Install]
+WantedBy=multi-user.target
