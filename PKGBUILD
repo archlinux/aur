@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=i3-vim-syntax-git
-pkgver=r20.92c4e73
+pkgver=r23.a74c9bc
 pkgrel=1
 pkgdesc="Vim syntax for i3 window manager config"
 arch=('any')

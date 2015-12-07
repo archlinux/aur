@@ -1,6 +1,6 @@
 pkgbase = i3-vim-syntax-git
 	pkgdesc = Vim syntax for i3 window manager config
-	pkgver = r20.92c4e73
+	pkgver = r23.a74c9bc
 	pkgrel = 1
 	url = https://github.com/PotatoesMaster/i3-vim-syntax
 	arch = any
