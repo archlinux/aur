@@ -3,7 +3,7 @@
 
 pkgname=osdlyrics
 pkgver=0.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A lyric show compatible with various media players"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/osd-lyrics/"
