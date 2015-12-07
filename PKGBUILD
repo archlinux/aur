@@ -5,7 +5,7 @@
 
 pkgname=libopenshot-audio
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-quality audio editing and playback library used by libopenshot."
 arch=('i686' 'x86_64')
 url="http://openshot.org/"
