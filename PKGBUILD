@@ -63,7 +63,7 @@ md5sums_i686=('9889383d8743eb266f149097973a8c36')
 md5sums_x86_64=('627e2591abf22858277f9230f83b296f')
 
 package() {
-    cd ${_pkgname}1.${_major}.0
+    cd ${_pkgname}-${_major}
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
