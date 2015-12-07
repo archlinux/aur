@@ -1,0 +1,17 @@
+pkgbase = python-ahkab
+	pkgdesc = A SPICE-like electronic circuit simulator written in Python
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://ahkab.github.io/ahkab/
+	arch = any
+	license = GPL2
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-sympy
+	depends = python-tabulate
+	optdepends = python-matplotlib: plotting
+	source = ahkab-0.18.tar.gz::https://github.com/ahkab/ahkab/archive/v0.18.tar.gz
+	md5sums = 9f82ed50cf654e87437713a87ced4f1f
+
+pkgname = python-ahkab
+
