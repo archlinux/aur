@@ -1,0 +1,19 @@
+pkgbase = python-txws
+	pkgdesc = Twisted WebSockets
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/MostAwesomeDude/txWS
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/MostAwesomeDude/txWS.git#tag=0.9.1
+	sha256sums = SKIP
+
+pkgname = python-txws
+	depends = python-twisted
+	depends = python-six
+
+pkgname = python2-txws
+	depends = python2-twisted
+	depends = python2-six
+
