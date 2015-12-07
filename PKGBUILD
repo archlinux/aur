@@ -1,5 +1,5 @@
 #!/bin/zsh
-_nchan_ver=0.903
+_nchan_ver=0.904
 _nginx_ver=1.8.0
 
 _nchan_tag="v${_nchan_ver}"
