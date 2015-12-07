@@ -2,8 +2,8 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=eq10q
-pkgver=2_beta7.1
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="An LV2 parametric equalizer audio plugin"
 arch=('i686' 'x86_64')
 url="http://eq10q.sourceforge.net/"
@@ -11,11 +11,11 @@ license=('GPL3')
 groups=('lv2-plugins')
 depends=('fftw' 'gtkmm' 'lv2')
 makedepends=('cmake')
-source=("http://download.sourceforge.net/project/eq10q/$pkgname-${pkgver//_/-}.tar.gz")
-md5sums=('a40e5c09d1a8bc4e1e60f91508593436')
+source=("http://download.sourceforge.net/project/eq10q/$pkgname-${pkgver}.tar.gz")
+md5sums=('adb14399be61348146e8fee5595e725d')
 
 prepare() {
-  cd $pkgname-${pkgver//_/-}
+  cd "$pkgname-${pkgver}"
   [ -d build ] || mkdir build
 
   # strip local path
@@ -23,14 +23,14 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-${pkgver//_/-}/build
+  cd "$pkgname-${pkgver}/build"
 
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr/lib/lv2 -DCMAKE_CXX_STANDARD=11
   make
 }
 
 package() {
-  cd $pkgname-${pkgver//_/-}/build
+  cd "$pkgname-${pkgver}/build"
 
   make DESTDIR="$pkgdir" install
 }
