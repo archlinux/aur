@@ -32,6 +32,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+  CXXFLAGS+=' -std=c++11'
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --disable-schemas-compile
   make
