@@ -2,7 +2,7 @@
 # Contributor: Stefan J. Betz <info@stefan-betz.net>
 pkgname='pius'
 pkgver='2.2.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='PGP Individual UID Signer (PIUS)'
 arch=('any')
 url='http://www.phildev.net/pius/'

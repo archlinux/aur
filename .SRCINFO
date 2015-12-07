@@ -1,7 +1,7 @@
 pkgbase = pius
 	pkgdesc = PGP Individual UID Signer (PIUS)
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.phildev.net/pius/
 	install = pius.install
 	arch = any
