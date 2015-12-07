@@ -13,7 +13,7 @@ conflicts=('husk-git')
 backup=('etc/husk/addr_groups.conf'
         'etc/husk/husk.conf'
         'etc/husk/interfaces.conf')
-source=("https://github.com/fukawi2/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fukawi2/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('0219ea53c0c95318d6b2c58b21fc0692')
 
 prepare() {

@@ -15,7 +15,7 @@ pkgbase = husk
 	backup = etc/husk/addr_groups.conf
 	backup = etc/husk/husk.conf
 	backup = etc/husk/interfaces.conf
-	source = https://github.com/fukawi2/husk/archive/v0.9.13.tar.gz
+	source = husk-0.9.13.tar.gz::https://github.com/fukawi2/husk/archive/v0.9.13.tar.gz
 	md5sums = 0219ea53c0c95318d6b2c58b21fc0692
 
 pkgname = husk
