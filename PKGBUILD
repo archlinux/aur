@@ -3,19 +3,19 @@
 # Contributor: Martin F. Schumann
 
 pkgname=unvanquished
-pkgver=0.45.0
+pkgver=0.46.0
 pkgrel=1
 
 _gitver="archlinux/${pkgver}-${pkgrel}"
-_gitdir="${pkgname/u/U}-${_gitver/\//-}"
+_unvanquished="${pkgname/u/U}-${_gitver/\//-}"
 
-_depver="4"
+_naclsdkver="4"
 if test "$CARCH" == "x86_64"; then
-	_depbasename=linux64-${_depver}
+	_naclsdkname=linux64
 else
-	_depbasename=linux32-${_depver}
+	_naclsdkname=linux32
 fi
-_depname="${_depbasename}.tar.bz2"
+_naclsdk="${_naclsdkname}-${_naclsdkver}"
 
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans. Monthly alpha release.'
 arch=('x86_64' 'i686')
@@ -34,17 +34,21 @@ options=('emptydirs' '!strip')
 backup=('etc/conf.d/unvanquished.conf' 'etc/unvanquished/server.cfg' 'etc/unvanquished/maprotation.cfg')
 install='unvanquished.install'
 source=("https://github.com/Unvanquished/Unvanquished/archive/${_gitver}.tar.gz"
-        'unvanquished.install' "https://dl.unvanquished.net/deps/${_depname}")
+        'unvanquished.install' "https://dl.unvanquished.net/deps/${_naclsdk}.tar.bz2")
+
+prepare() {
+	cd "${srcdir}"
+
+	ln -sfr "${_naclsdk}" -t "${_unvanquished}/daemon/external_deps"
+}
 
 build() {
-	cd "${srcdir}/${_gitdir}"
-
-	cp -r "${srcdir}/${_depbasename}" daemon/external_deps/
+	cd "${srcdir}/${_unvanquished}"
 
 	mkdir -p build
 	cd build
 
-	cmake -D BUILD_GAME_NACL=OFF -D BUILD_GAME_NATIVE_DLL=OFF -D BUILD_GAME_NATIVE_EXE=OFF ..
+	cmake -D BUILD_CGAME=OFF -D BUILD_SGAME=OFF ..
 	make
 }
 
@@ -65,12 +69,12 @@ package() {
 	               var/lib/unvanquished-server/game
 
 	# install content
-	cd "${srcdir}/${_gitdir}"
+	cd "${srcdir}/${_unvanquished}"
 
 	install -m 644 debian/unvanquished.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
 	install -m 644 COPYING.txt             "${pkgdir}/usr/share/licenses/unvanquished/"
 
-	cd "${srcdir}/${_gitdir}/build"
+	cd "${srcdir}/${_unvanquished}/build"
 
 	install -m 755 daemon                  "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 daemonded               "${pkgdir}/usr/lib/unvanquished/"
@@ -80,7 +84,7 @@ package() {
 	install -m 755 nacl_loader             "${pkgdir}/usr/lib/unvanquished/"
 
 	# install starters and dedicated server config
-	cd "${srcdir}/${_gitdir}/archlinux"
+	cd "${srcdir}/${_unvanquished}/archlinux"
 
 	install -m 755 unvanquished.sh         "${pkgdir}/usr/bin/unvanquished"
 	install -m 755 unvanquished-tty.sh     "${pkgdir}/usr/bin/unvanquished-tty"
@@ -100,7 +104,7 @@ package() {
 	ln -s ../../../../etc/unvanquished/maprotation.cfg .
 }
 
-md5sums=('6b6dc4554ee71046cf0edbdd1aaa3286'
+md5sums=('05c9c4b9f10f93a9d727b09f0e1b4f2f'
          'a5246cf3bed53798ddc4d95c6b8c1b37')
 if test "$CARCH" == "x86_64"; then
 	md5sums+=('2ba12c71625919ddc282172b74fa4887')
