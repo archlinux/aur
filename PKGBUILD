@@ -2,7 +2,7 @@
 
 pkgname=fcitx-sunpinyin
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fcitx Wrapper for sunpinyin, Statistical Language Model based pinyin IME by Sun"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
