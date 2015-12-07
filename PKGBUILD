@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=mlite
-pkgver=0.2.17
-pkgrel=2
+pkgver=0.2.18
+pkgrel=1
 pkgdesc="Useful classes originating from MeeGo Touch"
 arch=('i686' 'x86_64')
 url="http://github.com/nemomobile/mlite"
