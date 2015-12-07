@@ -1,6 +1,6 @@
 pkgbase = mongo-c-driver
 	pkgdesc = The official MongoDB client library written in C.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = http://www.mongodb.org/display/DOCS/C+Language+Center
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = mongo-c-driver
 	optdepends = python: documentation
 	optdepends = libsasl>=2.1.6: sasl support
 	optdepends = openssl: ssl support
-	source = https://github.com/mongodb/mongo-c-driver/archive/1.2.2.tar.gz
-	sha512sums = 236870dc3f3019ad315b46cca496ba90728e6c92f730553d390c84bbd09318887961712be1862c4e3591173db621dc83467cedcf981cfea7dcb6efb669500849
+	source = https://github.com/mongodb/mongo-c-driver/archive/1.2.3.tar.gz
+	sha512sums = 3eb6f9b72b5e72306405c2d1118082e141509aec1477dac0a1ec75879d45b81abe4a61b999e5c0747f1dd719d7b3a05907fea9e1865cf9d557c6c30391eae569
 
 pkgname = mongo-c-driver
 
