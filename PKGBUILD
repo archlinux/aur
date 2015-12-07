@@ -2,7 +2,7 @@
 
 pkgname=kdeplasma-applets-playbar2
 _name=PlayBar2
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Mpris2 Client for Plasma5"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('plasma-framework' 'plasma-workspace' 'kdeclarative' 'kglobalaccel'
     'kconfigwidgets' 'kxmlgui' 'kwindowsystem')
 makedepends=('kdoctools' 'extra-cmake-modules')
 source=("https://github.com/audoban/${_name}/archive/v${pkgver}.tar.gz")
-md5sums=('e3e69ab4719764856033247ef4170942')
+md5sums=('5d3e9b623e7f6b542a94d544a362978a')
 
 prepare() {
     mkdir -p build
