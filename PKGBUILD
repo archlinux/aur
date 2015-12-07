@@ -21,6 +21,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+  CXXFLAGS+=' -std=c++11'
   python2 waf configure --prefix=/usr
   python2 waf $MAKEFLAGS
 }
