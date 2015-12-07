@@ -1,0 +1,23 @@
+pkgbase = stackless-python2
+	pkgdesc = Python is a high-level scripting language. Stackless is an experimental implementation that supports continuations, generators, microthreads, and coroutines.
+	pkgver = 2.7.9
+	pkgrel = 1
+	url = http://www.stackless.com
+	arch = i686
+	arch = x86_64
+	license = python
+	makedepends = python2
+	depends = bzip2
+	depends = expat
+	depends = gdbm
+	depends = libffi
+	depends = openssl
+	depends = zlib
+	optdepends = tk: for tkinter
+	provides = python2=2.7.9
+	conflicts = python2
+	source = http://www.stackless.com/binaries/stackless-279-export.tar.xz
+	md5sums = 35307558796389aa51d96b0bc83f6f6f
+
+pkgname = stackless-python2
+
