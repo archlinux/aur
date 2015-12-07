@@ -2,7 +2,7 @@
 # Contributor: Tom Richards <tom [at] tomrichards [dot] net>
 
 pkgname=caddy-git
-pkgver=r526.a2be7b4
+pkgver=r885.41bdd77
 pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform"
 arch=('any')
