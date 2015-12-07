@@ -1,7 +1,7 @@
 pkgbase = wolfenstein3d
 	pkgdesc = Wolfenstein 3D, cult first person shooter video game from id Software and Apogee
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.idsoftware.com/games/wolfenstein/wolf3d/
 	arch = any
 	license = custom
