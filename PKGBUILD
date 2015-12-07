@@ -5,7 +5,7 @@
 
 pkgname=goocanvasmm
 pkgver=1.90.11
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ wrappers for goocanvas'
 arch=('i686' 'x86_64')
 url='http://ftp.gnome.org/pub/gnome/sources/goocanvasmm/'
