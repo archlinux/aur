@@ -1,0 +1,10 @@
+--- a/libocpf/lex.l	2015-05-16 08:22:04.000000000 -0700
++++ b/libocpf/lex.l	2015-12-07 10:25:28.545736920 -0800
+@@ -29,7 +29,6 @@
+ #include "libocpf/lex.h"
+ 
+ #define	YY_EXTRA_TYPE	struct ocpf_context *
+-#define	YY_NO_UNPUT
+ 
+ static void unterminated(struct ocpf_context *, const char *, unsigned int);
+ 
