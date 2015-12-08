@@ -14,7 +14,7 @@ $ journalctl | grep hidraw
 
 ```
 
-**Use udev rules** (Automatically set when connected)
+**Use udev rules** (Automatically set when K810 is connected)
 
 ```
 # edit /etc/udev/rules.d/10-k810-conf.rules
