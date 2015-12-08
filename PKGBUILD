@@ -14,9 +14,7 @@ conflicts=('git')
 provides=('git')
 install=git-git.install
 source=(git://github.com/git/git.git)
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+md5sums=('SKIP')
 _gitname=git
 
 pkgver() {
@@ -44,8 +42,4 @@ build() {
 package() {
  cd "$_gitname"
  make DESTDIR="$pkgdir" install install-doc
-
-  # git-daemon via systemd socket activation
-  install -D -m 644 "$srcdir"/git-daemon@.service "$pkgdir"/usr/lib/systemd/system/git-daemon@.service
-  install -D -m 644 "$srcdir"/git-daemon.socket "$pkgdir"/usr/lib/systemd/system/git-daemon.socket
 }
