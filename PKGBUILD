@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.13.0.r4.gf194832
+pkgver=3.13.0.r102.g70624e1
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
@@ -80,7 +80,8 @@ build() {
 	export PYTHON="/usr/bin/python2"
 	sed -i 's:python -c:python2 -c:g' configure
 
-	# add --enable-new-addrbook to the options to use the new address book
+	# add --enable-alternate-addressbook to the options to use the
+	# new/alternate address book
 	# do not forget to add claws-contacts to the dependencies then
 	./configure --disable-maintainer-mode \
 		--prefix=/usr \
