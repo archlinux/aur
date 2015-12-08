@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd /opt/fs2_open
+
+if [ -x /opt/fs2_open/fs2_open_3.7.3 ]; then
+	/opt/fs2_open/fs2_open_3.7.3 "$@"
+else
+	 /opt/fs2_open/fs2_open_3.7.3_DEBUG "$@"
+fi
