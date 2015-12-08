@@ -4,7 +4,7 @@
 
 pkgname=dwarftherapist-git
 epoch=1
-pkgver=31.0.0_14_g4e6c78e
+pkgver=33.0.0_r0_g72e768f
 pkgrel=1
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/splintermind/Dwarf-Therapist"
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('qt5-declarative' 'hicolor-icon-theme')
 makedepends=('git' 'texlive-latexextra')
 install="dwarftherapist.install"
-source=($pkgname::git+https://github.com/splintermind/Dwarf-Therapist.git
+source=($pkgname::git+"https://github.com/splintermind/Dwarf-Therapist.git#branch=DF2016"
        'dwarftherapist.desktop'
        'dwarftherapist.install')
 md5sums=('SKIP'
@@ -22,7 +22,11 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed -e 's:v::' -e 's/-/_/g'
+  _curtag="$(git rev-list --tags --max-count=1)"
+  _tagver="$(git describe --tags $_curtag | sed 's:^v::')"
+  _commits="$(git log v${_tagver}..HEAD --oneline | wc -l)"
+  _sha="$(git rev-parse --short HEAD)"
+  printf "%s_r%s_g%s" $_tagver $_commits $_sha | sed 's:-:_:g'
 }
 
 build() {
