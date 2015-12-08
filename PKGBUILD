@@ -1,7 +1,7 @@
 # Maintainer: Pavol (Lopo) Hluchy <lopo AT losys DOT eu>
 
 pkgname=gitlab-ci
-pkgver=8.0.3
+pkgver=8.0.5
 pkgrel=1
 pkgdesc="Continuous integration server for gitlabhq | Coordinator"
 arch=('i686' 'x86_64')
@@ -25,15 +25,15 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlab-ci/archive/
 	gitlab-ci-sidekiq.service
 	gitlab-ci.tmpfiles.d
 	gitlab-ci.logrotate
-	apache2.4.conf.example
-	apache2.4-ssl.conf.example
 	apache.conf.example
 	apache-ssl.conf.example
+	apache2.2.conf.example
+	apache2.2-ssl.conf.example
 	nginx-ssl.conf.example
 	lighttpd.conf.example
 	)
 install='gitlab-ci.install'
-sha512sums=('c0fcaae82a36cd0f8b07c01ecd4bc2a7d1b0d736e34015b39260c56293465b356997f419d2c9c2636c8930898486da0036aadeb156d54232ead945fae2051754'
+sha512sums=('19df31c817c6da0d6295b749d272496cd673dc7acc3223718d8ed1698882412e77c8de63a9d19faa9cee885e462d800dd76b75f6740283965be4c90b42466e4a'
 	'30cf8ad2a26f0f6d87cb230c69668f8d7b15329af21985349bbc2c8eb3560ccbc82dd173e65be41aa71246b2426fc123f43d45b103371ce47a56d9ba7bda46bc'
 	'ea24c7fe19789c82dde144713076c185c258afb103ec35dd3a68320dee8dfc4cb1e9fe0f1045af17798eb8ad9115a4d710d4f6c825d2530a2f60e9f721b7ec40'
 	'1dd9bf5d4d30831397b25e2b6af37167653146aa2dcda489dd66c1d23dac45009f02a520dbcd608cc6b730032ef669d0deb78f20c2f7986567bc5c01a4b5f345'
@@ -166,7 +166,7 @@ package() {
 	install -Dm644 "${srcdir}/gitlab-ci.logrotate" "${pkgdir}/etc/logrotate.d/gitlab-ci"
 
 	# Install webserver config temmplates
-	for __cfg in apache2.4 apache2.4-ssl apache apache-ssl nginx-ssl lighttpd; do
+	for __cfg in apache apache-ssl apache2.2 apache2.2-ssl nginx-ssl lighttpd; do
 		install -m644 "${srcdir}/${__cfg}.conf.example" "${pkgdir}${_etcdir}"
 	done
 }

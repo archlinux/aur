@@ -4,18 +4,17 @@
 #  mod_proxy
 #  mod_proxy_http
 <VirtualHost *:80>
-	ServerName gitlab.example.com
+	ServerName gitlabci.example.com
 	ServerSignature Off
 
 	ProxyPreserveHost On
 
 	<Location />
-		# New authorization commands for apache 2.4 and up
-		# http://httpd.apache.org/docs/2.4/upgrading.html#access
-		Require all granted
+		Order deny,allow
+		Allow from all
 
 		ProxyPassReverse http://127.0.0.1:8081
-		ProxyPassReverse http://gitlab.example.com/
+		ProxyPassReverse http://gitlabci.example.com/
 	</Location>
 
 	#apache equivalent of nginx try files
@@ -35,8 +34,8 @@
 	ErrorDocument 503 /deploy.html
 
 	LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b" common_forwarded
-	ErrorLog  /var/log/httpd/logs/gitlab.example.com_error.log
-	CustomLog /var/log/httpd/logs/gitlab.example.com_forwarded.log common_forwarded
-	CustomLog /var/log/httpd/logs/gitlab.example.com_access.log combined env=!dontlog
-	CustomLog /var/log/httpd/logs/gitlab.example.com.log combined
+	ErrorLog  /var/log/httpd/logs/gitlabci.example.com_error.log
+	CustomLog /var/log/httpd/logs/gitlabci.example.com_forwarded.log common_forwarded
+	CustomLog /var/log/httpd/logs/gitlabci.example.com_access.log combined env=!dontlog
+	CustomLog /var/log/httpd/logs/gitlabci.example.com.log combined
 </VirtualHost>
