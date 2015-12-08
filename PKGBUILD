@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -33,6 +33,7 @@ source=("$pkgname.service"
         'nginx.systemd.conf'
         'php-fpm.conf'
         'php-fpm.systemd.conf'
+        'php.ini'
         'sudoers'
 )
 md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
@@ -42,6 +43,7 @@ md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
          '75535f9870f06c540f513262a9b7b1ab'
          '496b1fa2533d1306318115e2b02984bd'
          'f9ae0c781a7ccefc63329daaf81fca36'
+         '0b53c23730e511946859d4e3c7fff982'
          '0dab31966eada66adb159355ed814a54')
 
 #~ pkgver() {
