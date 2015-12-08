@@ -11,7 +11,6 @@ license=('custom')
 depends=('bash' 'pcre' 'ecodmsclient')
 options=('!strip')
 install=${pkgname}.install
-PKGEXT='.pkg.tar'
 
 source_i686=("ecoice-${pkgver}_i386.deb::http://www.ecodms.de/ecodms_140832/trusty/ecoice-14.08-11_i386.deb")
 source_x86_64=("ecoice-${pkgver}_amd64.deb::http://www.ecodms.de/ecodms_140864/trusty/ecoice-14.08-11_amd64.deb")
