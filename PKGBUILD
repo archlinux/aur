@@ -2,14 +2,14 @@
 
 pkgname=gtk-theme-windows10-dark
 pkgver=0.8.sp1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
 url="http://gnome-look.org/content/show.php/Windows+10+Theme?content=171327"
 license=('GPL')
 depends=('gtk-engines' 'gtk-engine-murrine')
 optdepends=('gnome-themes-standard')
-source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.8/Windows.10.Icons.v0.2.1.zip")
+source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.8/Windows.10.Dark.v0.8.SP1.zip")
 sha1sums=('9666fb30f84c982b599864fa857a556eb65f00ed')
 
 package() {
