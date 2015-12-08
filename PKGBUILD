@@ -4,7 +4,7 @@
 _pkg=mongo-cxx-driver
 _subpkg=legacy
 pkgname=${_pkg}-${_subpkg}
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Official MongoDB C++ driver (legacy).'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("https://github.com/mongodb/${_pkg}/archive/${_subpkg}-${pkgver//_/-}.ta
 conflicts=("mongodb<2.6.0")
 options=("staticlibs")
 provides=("mongo-cxx-driver")
-sha512sums=('76a4ee07b135665f49761cf578b401cfe62fc1b645838f18f595ed5a18fb48c18a38c018d22faaed6f32f152bcf3b52bf0c7bb9614c66e999d527324822e55b1')
+sha512sums=('c7f65d03bacf54ceced745c3b810e0b53f4b42ed3378dfc0a0a975d486ee10154307739f86a7c1df7be683c57462f91e44f8764a22233c6b177ae13c08ec3495')
 
 package() {
   cd ${pkgname}-${pkgver//_/-}
@@ -29,4 +29,3 @@ package() {
     --sharedclient \
     install
 }
-
