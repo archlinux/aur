@@ -1,7 +1,7 @@
 # Maintainer: Oliver Bandel < oliver _at_ first . in - berlin . de >
 # orig Contributor: Denis Wernert <denis@wernert.info>
 pkgname=ocaml-csv
-pkgver=1.3.4
+pkgver=1.4.2
 pkgrel=2
 pkgdesc="OCaml CSV parsing library"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('ocaml')
 makedepends=('ocaml' 'ocaml-findlib')
 builddepends=('ocaml')
-source=(https://github.com/Chris00/ocaml-csv/releases/download/1.3.3/csv-$pkgver.tar.gz)
-md5sums=('a84556e6c7b86961b4e9fb7519fce9fd')
+source=(https://github.com/Chris00/ocaml-csv/releases/download/$pkgver/csv-$pkgver.tar.gz)
+md5sums=('0f2afb105766713eda762a3e461b49f2')
 options=(!libtool !strip zipman)
 
 build() {
