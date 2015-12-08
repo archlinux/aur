@@ -1,7 +1,7 @@
 # Maintainer: Andy Crowd <andy_crowd@ainsdata.se>
 pkgname=lsdsk
-pkgver=2.0.1
-pkgrel=4
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Search in *.desktop for content in Exec and Categories/Name."
 arch=(any)
 depends=(bash)
@@ -9,7 +9,7 @@ makedepends=('git')
 source=("lsdsk::git+https://github.com/AndyCrowd/lsdsk.git")
 license=('GPL2')
 md5sums=('SKIP')
-url=("https://github.com/AndyCrowd/")
+url=("https://github.com/AndyCrowd/lsdsk/blob/master/lsdsk")
 
 package() {
   install -d "$pkgdir/usr/bin"
