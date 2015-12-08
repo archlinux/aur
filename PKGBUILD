@@ -13,7 +13,7 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs4' 'libkexiv2_4' 'libkdcraw4' 'libkipi4' 'libksane4' 'liblqr'
              'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt4-gstreamer' 'imagemagick' 'eigen' 
-	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface4' 'libkgeomap4' 'libmediawiki')
+	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface4' 'libkgeomap4' 'libmediawiki' 'clang')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha1sums=('08bbded5433e442dce8ac00eb301606ef0924e8c')
 
@@ -24,7 +24,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
-    -DBUILD_tests=OFF
+    -DBUILD_tests=OFF \
+    -DCMAKE_C_COMPILER=clang # Fix build with flex 2.6
   make
 }
 
