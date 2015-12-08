@@ -1,7 +1,7 @@
 
 pkgname=kaku-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation music client"
 # TODO: add 32 bit
 arch=('x86_64')
@@ -24,7 +24,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/kaku"
   mkdir -p "${pkgdir}/usr/bin"
   cp -R "${srcdir}/Kaku-linux64"/* "${pkgdir}/usr/share/kaku"
-  ln -s "../share/kaku/Kaku" "${pkgdir}/usr/bin/kaku"
+  ln -s "/usr/share/kaku/Kaku" "${pkgdir}/usr/bin/kaku"
   install -Dm644 "${srcdir}/kaku.png" "${pkgdir}/usr/share/icons/kaku.png"
   install -Dm644 "${srcdir}/kaku.desktop" "${pkgdir}/usr/share/applications/kaku.desktop"
 }
