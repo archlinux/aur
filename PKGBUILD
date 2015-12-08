@@ -6,7 +6,7 @@
 pkgname=spotify-beta
 pkgver=1.0.19.106
 _anotherpkgver=gb8a7150f
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary peer-to-peer music streaming service"
 arch=('x86_64' 'i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
