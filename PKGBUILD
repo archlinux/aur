@@ -1,7 +1,7 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=python2-pwntools
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The CTF framework used by Gallopsled in every CTF"
 arch=('any')
 url="https://github.com/Gallopsled/pwntools/"
@@ -33,4 +33,10 @@ package() {
   cd "${srcdir}/${_repodir}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   install -D -m 644 LICENSE-pwntools.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # rename binaries to avoid filename confliction
+  for bin in "${pkgdir}/usr/bin/"*; do
+    msg "rename binary ${bin##*/} to pwn-${bin##*/}"
+    mv "$bin" "${bin%/*}/pwn-${bin##*/}"
+  done
 }
