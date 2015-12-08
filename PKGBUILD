@@ -1,7 +1,7 @@
 # Maintainer: George Ornbo <george@shapeshed.com>
 
-pkgname=st-solarized-dark
-pkgver=0.5
+pkgname=st
+pkgver=0.6
 pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
@@ -10,17 +10,17 @@ depends=('libxext' 'libxft')
 makedepends=('ncurses')
 url="http://st.suckless.org"
 source=(http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz
-        http://st.suckless.org/patches/st-0.5-no-bold-colors.diff
-        http://st.suckless.org/patches/st-solarized-light.diff)
+        http://st.suckless.org/patches/st-$pkgver-no-bold-colors.diff
+        http://st.suckless.org/patches/st-$pkgver-solarized-dark.diff)
 
-md5sums=('4f8ae2737120a8cba34b23c6020fe51e' 
-         '18c28fc0ff19de6c2e4a58a711c91b15'
-         '5e27e1fb2831af457519a345ef477af3')
+md5sums=('1a926f450b4eacb7e2f5ac5b8ffea7c8' 
+         '318bffa6a563970754554694107b1ca1'
+         'cd75677133a2d6b3111fec5ae1b466bd')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
   patch -p1 -i ../st-$pkgver-no-bold-colors.diff
-  patch -p1 -i ../st-solarized-light.diff
+  patch -p1 -i ../st-$pkgver-solarized-dark.diff
   cp config.def.h config.h
   sed -i 's/Liberation Mono:pixelsize=12:antialias=false:autohint=false/Inconsolata:pixelsize=16:antialias=true:autohint=true/' config.h 
 }
