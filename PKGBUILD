@@ -43,9 +43,9 @@ package () {
 	_commit_hash=`git rev-parse HEAD`
 	install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	if [[ -x code/fs2_open_3.7.3 ]]; then
-		install -D -m755 code/fs2_open_3.7.3 "$pkgdir/opt/fs2_open/fs2_open_3.7.3_$_commit_hash"
+		install -D -m755 code/fs2_open_3.7.3 "$pkgdir/opt/fs2_open/fs2_open_3.7.3_${_commit_hash:0:7}"
 	else
-		install -D -m755 code/fs2_open_3.7.3_DEBUG "$pkgdir/opt/fs2_open/fs2_open_3.7.3_DEBUG_$_commit_hash"
+		install -D -m755 code/fs2_open_3.7.3_DEBUG "$pkgdir/opt/fs2_open/fs2_open_3.7.3_DEBUG_${_commit_hash:0:7}"
 	fi
 }
 
