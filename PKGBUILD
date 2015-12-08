@@ -3,7 +3,7 @@
 
 pkgname=libbson
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A BSON utility library.'
 arch=('i686' 'x86_64')
 url='http://www.mongodb.org/display/DOCS/C+Language+Center'
@@ -15,7 +15,7 @@ sha512sums=('bdc55edf32e33d4991fd210b61a94d18428a58dbcd57294edcf9b7173cd7bdffebf
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./autogen.sh --prefix=/usr --enable-man-pages=yes --enable-static=yes
+    ./autogen.sh --prefix=/usr --enable-static=yes
     make
 }
 
