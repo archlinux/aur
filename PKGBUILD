@@ -14,7 +14,7 @@ url="https://micheleg.github.io/dash-to-dock/"
 _giturl="git+https://github.com/micheleg/dash-to-dock/"
 license=('GPL')
 depends=('dconf')
-makedepends=('intltool')
+makedepends=('intltool' 'imagemagick')
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
