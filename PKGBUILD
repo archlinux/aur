@@ -3,8 +3,8 @@
 
 _pkgname=python-wifi
 pkgname=python-wifi
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="A Python module that provides read and write access to a wireless network card's capabilities using the Linux Wireless Extensions."
 arch=('any')
 url="https://pypi.python.org/pypi/python-wifi"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-distribute')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('f9d520a8c17b0dfffce95a8a7efba7dd')
+md5sums=('033227169230286a63b9c059e7465c77')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
