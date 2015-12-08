@@ -1,0 +1,15 @@
+post_install() {
+  echo "adding symlinks"
+  sudo ln -s /usr/lib/libpcre.so.1.2.5 /usr/lib/libpcre.so.3
+  sudo ln -s /opt/ecodms/ecoice/libhpdf-2.3.0-dev.so /usr/lib/libhpdf-2.3.0-dev.so
+  echo "run /opt/ecodms/ecoice/ecoice.sh to execute it"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  rm /usr/lib/libhpdf-2.3.0-dev.so
+  rm /usr/lib/libpcre.so.3
+}
