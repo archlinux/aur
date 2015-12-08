@@ -1,6 +1,6 @@
 
 pkgname=kaku-bin
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="The next generation music client"
 # TODO: add 32 bit
@@ -12,7 +12,7 @@ options=(!strip)
 depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'python2' 'gvfs' 'xdg-utils' 'desktop-file-utils')
 conflicts=('kaku')
 
-md5sums=('61ef3e5ea03a3f50460c3e9d6baccf97'
+md5sums=('5423d95c6096e6bbc59765bdaeb4d9eb'
          '4da31bb76a5352d2310a332d7972be4a'
          'abbb6affbdd10243d96892edc5dd68ac')
 source=(
@@ -21,11 +21,10 @@ source=(
   "kaku.desktop")
 
 package() {
-  rm "${srcdir}/Kaku-linux-x64/.DS_Store"
   mkdir -p "${pkgdir}/usr/share/kaku"
   mkdir -p "${pkgdir}/usr/bin"
-  cp -R "${srcdir}/Kaku-linux-x64"/* "${pkgdir}/usr/share/kaku"
-  ln -s "${pkgdir}/usr/share/kaku/Kaku" "${pkgdir}/usr/bin/kaku"
+  cp -R "${srcdir}/Kaku-linux64"/* "${pkgdir}/usr/share/kaku"
+  ln -s "../share/kaku/Kaku" "${pkgdir}/usr/bin/kaku"
   install -Dm644 "${srcdir}/kaku.png" "${pkgdir}/usr/share/icons/kaku.png"
   install -Dm644 "${srcdir}/kaku.desktop" "${pkgdir}/usr/share/applications/kaku.desktop"
 }
