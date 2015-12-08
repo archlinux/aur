@@ -1,3 +1,9 @@
+Git commit 054e35d
+	* Correct wrongly mapped right pad
+
+Git commit d3af617
+	* Add support for wired mode (usb connected only)
+
 Git commit 074ccf2
 	* Updates to README.
 
