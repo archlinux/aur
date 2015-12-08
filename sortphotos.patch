@@ -1,7 +1,12 @@
-Only in sortphotos/.git: FETCH_HEAD
 diff -ur sortphotos/src/sortphotos.py sortphotos-updated/src/sortphotos.py
---- sortphotos/src/sortphotos.py	2015-12-01 19:58:19.783401381 +0300
-+++ sortphotos-updated/src/sortphotos.py	2015-12-01 20:35:49.783455929 +0300
+--- sortphotos/src/sortphotos.py	2015-12-08 11:14:30.349901492 +0300
++++ sortphotos-updated/src/sortphotos.py	2015-12-08 11:15:58.469900678 +0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # encoding: utf-8
+ """
+ sortphotos.py
 @@ -117,7 +117,7 @@
      oldest_keys = []
  
