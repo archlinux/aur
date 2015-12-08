@@ -7,36 +7,9 @@
 #
 #Module dependencies
 # mod_rewrite
-# mod_ssl
 # mod_proxy
 # mod_proxy_http
-# mod_headers
-
-# This section is only needed if you want to redirect http traffic to https.
-# You can live without it but clients will have to type in https:// to reach gitlab.
 <VirtualHost *:80>
-  ServerName YOUR_SERVER_FQDN
-  ServerSignature Off
-
-  RewriteEngine on
-  RewriteCond %{HTTPS} !=on
-  RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [NE,R,L]
-</VirtualHost>
-
-<VirtualHost *:443>
-  SSLEngine on
-  #strong encryption ciphers only
-  #see ciphers(1) http://www.openssl.org/docs/apps/ciphers.html
-  SSLProtocol all -SSLv2 -SSLv3
-  SSLHonorCipherOrder on
-#  SSLCipherSuite "ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS"
-  SSLCipherSuite "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA"
-  Header add Strict-Transport-Security: "max-age=15768000;includeSubdomains"
-  SSLCompression Off
-  SSLCertificateFile /etc/httpd/ssl.crt/YOUR_SERVER_FQDN.crt
-  SSLCertificateKeyFile /etc/httpd/ssl.key/YOUR_SERVER_FQDN.key
-  SSLCACertificateFile /etc/httpd/ssl.crt/your-ca.crt
-
   ServerName YOUR_SERVER_FQDN
   ServerSignature Off
 
@@ -47,9 +20,8 @@
   AllowEncodedSlashes NoDecode
 
   <Location />
-    # New authorization commands for apache 2.4 and up
-    # http://httpd.apache.org/docs/2.4/upgrading.html#access
-    Require all granted
+    Order deny,allow
+    Allow from all
 
     #Allow forwarding to gitlab-workhorse
     ProxyPassReverse http://127.0.0.1:8181
@@ -76,8 +48,6 @@
   RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f [OR]
   RewriteCond %{REQUEST_URI} ^/uploads
   RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [P,QSA,NE]
-  RequestHeader set X_FORWARDED_PROTO 'https'
-  RequestHeader set X-Forwarded-Ssl on
 
   # needed for downloading attachments
   DocumentRoot /usr/share/webapps/gitlab/public
