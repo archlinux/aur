@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 license=('custom:fs2_open')
 depends=('libjpeg' 'libpng' 'libtheora' 'libvorbis' 'lua51' 'mesa' 'openal' 'sdl')
 makedepends=('subversion')
+conflicts=('fs2_open')
 provides=('fs2_open')
 install=fs2_open-svn.install
 source=('fs2_open-svn')
