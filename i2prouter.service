@@ -1,7 +1,6 @@
 [Unit]
 Description=Invisible Internet Project
 After=network.target
-RequiresOverridable=tlsdate.service ntpd.service
 
 [Service]
 Type=forking
