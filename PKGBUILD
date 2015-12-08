@@ -10,7 +10,7 @@
 pkgname=engrampa-thunar
 _pkgname=engrampa
 pkgver=1.12.0
-_pkgver1.12
+_pkgver=1.12
 pkgrel=1
 pkgdesc="Archive manipulator for MATE without Caja dependency (GTK2 version)"
 url="http://mate-desktop.org"
