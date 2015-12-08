@@ -2,8 +2,8 @@
 
 pkgname=pyhoca-cli
 pkgver=0.5.0.2
-pkgrel=1
-pkgdesc="Python 2.x module providing X2Go client API"
+pkgrel=2
+pkgdesc="Command line X2Go client written in Python"
 url="http://www.x2go.org/"
 arch=('any')
 license=('AGPL')
