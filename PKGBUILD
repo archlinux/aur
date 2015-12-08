@@ -9,7 +9,7 @@ pkgdesc="Electronic schematic and printed circuit board (PCB) design tools - git
 arch=('i686' 'x86_64')
 url="http://iut-tice.ujf-grenoble.fr/kicad/"
 license=('GPL')
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python')
+depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-docs-bzr: for documentation'
             'kicad-library-bzr: for footprints')
