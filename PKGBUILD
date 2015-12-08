@@ -3,7 +3,7 @@
 # Contributor: Techlive Zheng <techlivezheng@gmail.com>
 
 pkgname=google-musicmanager
-pkgver=1.0.221.5230_r0
+pkgver=1.0.243.1116_r0
 pkgrel=1
 pkgdesc="A simple application for adding the music files on your computer to your Google Music library"
 arch=('i686' 'x86_64')
@@ -21,9 +21,9 @@ optdepends=('log4cxx')
 options=(!strip)
 install=${pkgname}.install
 source_i686=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_i386.deb")
-md5sums_i686=('54648a52a04b0113145f14e69d254ee8')
-md5sums_x86_64=('e8305efe6035e12b06ea02620896a67e')
 source_x86_64=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_amd64.deb")
+md5sums_i686=('d8a6a144e2ee7fc475e02c04745a442d')
+md5sums_x86_64=('4537c0f2bdf57eee7d576b7b0a42d083')
 
 build() {
   tar -xvf data.tar.lzma
