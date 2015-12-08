@@ -17,6 +17,11 @@ makedepends=('kdepimlibs4' 'libkexiv2_4' 'libkdcraw4' 'libkipi4' 'libksane4' 'li
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha1sums=('08bbded5433e442dce8ac00eb301606ef0924e8c')
 
+prepare() {
+# Fix compilation with clang
+  sed -e '/fno-tree-pre/d' -i $pkgname-$pkgver/core/CMakeLists.txt
+}
+
 build() {
   mkdir build
   cd build
