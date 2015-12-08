@@ -3,7 +3,7 @@
 
 _pkgname=python-wifi
 pkgname=python2-wifi
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A Python module that provides read and write access to a wireless network card's capabilities using the Linux Wireless Extensions."
 arch=('any')
@@ -13,11 +13,9 @@ depends=('python2')
 makedepends=('python2-distribute')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('f9d520a8c17b0dfffce95a8a7efba7dd')
+md5sums=('033227169230286a63b9c059e7465c77')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  # fix unicode error
-  sed -i '/author = \"R/c\    author = \"Roman Joost\",' "${srcdir}/${_pkgname}-${pkgver}/setup.py"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
