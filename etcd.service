@@ -1,16 +1,16 @@
 [Unit]
-Description=etcd
+Description=etcd key-value store
+Documentation=https://github.com/coreos/etcd
 
 [Service]
 User=etcd
-PermissionsStartOnly=true
+Type=notify
 Environment=ETCD_DATA_DIR=/var/lib/etcd
-Environment=ETCD_NAME=%H
-Environment=ETCD_INITIAL_CLUSTER=%H=http://localhost:2380,%H=http://localhost:7001
-EnvironmentFile=-/etc/conf.d/etcd
+Environment=ETCD_NAME=%m
 ExecStart=/usr/bin/etcd
 Restart=always
 RestartSec=10s
+LimitNOFILE=40000
 
 [Install]
 WantedBy=multi-user.target
