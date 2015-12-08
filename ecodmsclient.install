@@ -1,0 +1,13 @@
+post_install() {
+  echo "Execute /opt/ecodms/ecodmsclient/ecodmsconmgr.sh to connect to the server"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  rm -rf /opt/ecodms/ecodmsclient
+}
+
+# vim: ts=2 sw=2 et:
