@@ -1,6 +1,6 @@
 pkgname=bliss-git
 _gitname=bliss
-pkgver=0.3.0
+pkgver=0.6.0
 pkgrel=2
 pkgdesc="A music analyzer library"
 arch=('i686' 'x86_64')
