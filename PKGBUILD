@@ -1,14 +1,14 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=wolfssl
-pkgver=3.6.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='Embedded SSL Library for Applications, Devices, IoT, and the Cloud'
 arch=(i686 x86_64)
 license=(GPL)
 url='https://www.wolfssl.com/'
 source=(https://github.com/wolfSSL/wolfssl/archive/v$pkgver.tar.gz)
-sha1sums=('70477370f1ebbfddc49ec49723d50a74753f9118')
+sha1sums=('2674ab52099a01ff95ef9a4f392058f96730e254')
 
 build() {
   cd $pkgname-$pkgver
