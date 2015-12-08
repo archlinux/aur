@@ -13,8 +13,12 @@ depends=('git' 'asciidoc' 'gettext' 'openssl' 'expat' 'xmlto' 'curl' 'zlib' 'per
 conflicts=('git')
 provides=('git')
 install=git-git.install
-source=(git://github.com/git/git.git)
-md5sums=('SKIP')
+source=("git://github.com/git/git.git"
+        git-daemon@.service
+        git-daemon.socket)
+md5sums=('SKIP'
+         '042524f942785772d7bd52a1f02fe5ae'
+         'f67869315c2cc112e076f0c73f248002')
 _gitname=git
 
 pkgver() {
@@ -42,4 +46,8 @@ build() {
 package() {
  cd "$_gitname"
  make DESTDIR="$pkgdir" install install-doc
+
+  # git-daemon via systemd socket activation
+  install -D -m 644 "$srcdir"/git-daemon@.service "$pkgdir"/usr/lib/systemd/system/git-daemon@.service
+  install -D -m 644 "$srcdir"/git-daemon.socket "$pkgdir"/usr/lib/systemd/system/git-daemon.socket
 }
