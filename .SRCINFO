@@ -1,0 +1,25 @@
+pkgbase = sdrangel-git
+	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube
+	pkgver = r608.205fee6
+	pkgrel = 1
+	url = https://github.com/f4exb/sdrangel
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gnuradio-osmosdr
+	depends = boost
+	depends = fftw
+	depends = log4cpp
+	depends = pkg-config
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-multimedia
+	provides = sdrangel
+	conflicts = sdrangel
+	source = git+https://github.com/f4exb/sdrangel.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = sdrangel-git
+
