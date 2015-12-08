@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 pkgname=git-big-picture
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Visualization tool for Git repositories"
 arch=('x86_64')
