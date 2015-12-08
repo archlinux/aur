@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=myAgilePomodoro
+Comment=Time management software that brings you the best of Agile practices and the Pomodoro Technique, written in Java
+Exec=my-agile-pomodoro
+Icon=my-agile-pomodoro
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Office;Java;TrayIcon;
