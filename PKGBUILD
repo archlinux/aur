@@ -15,10 +15,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install=$pkgname.install
 source=("$_pkgname"::"git+https://github.com/drush-ops/$_pkgname.git"
-        "errors.$_pkgname.ini"
         "req.$_pkgname.ini")
 md5sums=('SKIP'
-         '2c661b0268411ad82e33ca314424637a'
          'fd34300a8ce7ca8e826cb8b9a5ed2b89')
 
 pkgver() {
@@ -52,7 +50,7 @@ check() {
 
 package() {
   # Install PHP configuration files
-  for conf in errors gd mysqli pdo_mysql req; do
+  for conf in gd mysqli pdo_mysql req; do
     install -Dm644 "$conf.$_pkgname.ini" "$pkgdir/etc/php/conf.d/$conf.$_pkgname.ini"
   done
 
