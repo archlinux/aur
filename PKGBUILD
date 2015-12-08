@@ -3,7 +3,7 @@
 
 pkgname=sphinxbase
 pkgver=5prealpha
-pkgrel=2
+pkgrel=3
 pkgdesc='Common library for sphinx speech recognition.'
 url='http://cmusphinx.sourceforge.net/'
 arch=('i686' 'x86_64')
@@ -17,6 +17,13 @@ md5sums=('12acdeda1d597631947e5531463431f1'
 options=('!libtool')
 
 prepare() {
+  cd "$pkgname-$pkgver"
+
+  msg2 "Reconfiguring project for Automake v1.15"
+  autoreconf -ivf > /dev/null
+
+  cd ..
+
   cp -R "$pkgname-$pkgver" "$pkgname-$pkgver-py2"
   cp -R "$pkgname-$pkgver" "$pkgname-$pkgver-py3"
 }
