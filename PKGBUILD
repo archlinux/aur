@@ -2,7 +2,7 @@
 
 _pkgname=ocenaudio
 pkgname="$_pkgname-bin"
-pkgver=3.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ conflicts=("$_pkgname")
 install=("$_pkgname.install")
 if [[ $CARCH == 'i686' ]]; then
   _arch=32
-  sha256sums=('3b4ca5529f5bdc992c27b8551b36ae80bfe52d633902fcb2d7c7ae47d20e519e')
+  sha256sums=('ce2efe35d3dede50eaeb2a36fa46d757ae720cce0b25f152c20526ff6c653b1b')
 elif [[ $CARCH == 'x86_64' ]]; then
+  sha256sums=('7f85d726b3a0b6699df22cacc61e6822b275e0346b3951ed8026befadd1fa51f')
   _arch=64
-  sha256sums=('6d038f22385a81e0bd47a802e964bdc77c1dde875732d0f86895c93e985df587')
 fi
 
 source=("http://www.ocenaudio.com.br/downloads/ocenaudio_debian${_arch}.deb"

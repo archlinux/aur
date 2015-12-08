@@ -1,6 +1,6 @@
 pkgbase = ocenaudio-bin
 	pkgdesc = Cross-platform, easy to use, fast and functional audio editor
-	pkgver = 3.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://www.ocenaudio.com.br/
 	install = ocenaudio.install
