@@ -1,7 +1,7 @@
 pkgname=('python2-linux-gpib')
 _pkgname=('linux-gpib')
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A support package for GPIB (IEEE 488) hardware - Python 2 bindings'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
