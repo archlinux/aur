@@ -3,7 +3,7 @@
 _ver=1.12
 _pkgbase=mate-session-manager
 pkgname=(${_pkgbase}-upower)
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=1
 pkgdesc="The MATE Session Handler (GTK2 version) with upower (i.e. no-systemd) support"
 url="http://mate-desktop.org"
@@ -18,11 +18,10 @@ optdepends=('mdm-nosystemd: The MDM Display Manager with consolekit support for 
             'orca: Screen reader for blind or visually impaired individuals'
             'xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales')
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
-provides=(${_pkgbase})
-replaces=(${_pkgbase})
+provides=(${_pkgbase}=$pkgver)
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha256sums=('6f5bb06b23d035b5e0ee84f3302090843e3e4defad3860ff2b5e1fcc4d273f45')
+sha256sums=('2bad592d7dc0e6807f347bba1580c7c9f5d880aeedee2293d4c8947ab439e7e2')
 install=${_pkgbase}.install
 
 build() {

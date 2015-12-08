@@ -1,6 +1,6 @@
 pkgbase = mate-session-manager-upower
 	pkgdesc = The MATE Session Handler (GTK2 version) with upower (i.e. no-systemd) support
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = http://mate-desktop.org
 	install = mate-session-manager.install
@@ -25,12 +25,11 @@ pkgbase = mate-session-manager-upower
 	optdepends = onboard: On-screen keyboard useful for mobility impaired users
 	optdepends = orca: Screen reader for blind or visually impaired individuals
 	optdepends = xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales
-	provides = mate-session-manager
+	provides = mate-session-manager=1.12.1
 	conflicts = mate-session-manager
 	conflicts = mate-session-manager-gtk3
-	replaces = mate-session-manager
-	source = http://pub.mate-desktop.org/releases/1.12/mate-session-manager-1.12.0.tar.xz
-	sha256sums = 6f5bb06b23d035b5e0ee84f3302090843e3e4defad3860ff2b5e1fcc4d273f45
+	source = http://pub.mate-desktop.org/releases/1.12/mate-session-manager-1.12.1.tar.xz
+	sha256sums = 2bad592d7dc0e6807f347bba1580c7c9f5d880aeedee2293d4c8947ab439e7e2
 
 pkgname = mate-session-manager-upower
 
