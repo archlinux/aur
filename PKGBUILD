@@ -18,12 +18,24 @@ depends=("alsa-lib>=1.0.14" "glibc>=2.6" "openssl" "gconf" "nss" "systemd" "gtk2
 optdepends=('desktop-file-utils: Adds URI support to compatible desktop environments'
             'ffmpeg-compat: Adds support for playback of local files'
             'libnotify: Adds desktop notifications')
-source=('spotify.protocol')
+source=('spotify.protocol' 'spotify.desktop')
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}_amd64.deb")
 source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}_i386.deb")
-sha256sums=('af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3')
+sha256sums=('af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3'\
+	'44ae606a73613540922b06af6adc5c5a5e69c6151788902d26ffb08fe17187c2')
 sha256sums_x86_64=('be6b99329bb2fccdc9d77bc949dd463576fdb40db7f56195b4284bd348c470be')
 sha256sums_i686=('128b5d04dda8a052802fb9e664a996250569696fac359e94ea35043472f5dbcb')
+
+scale_factor=''
+
+prepare() {
+    cd "${srcdir}"
+    if [ -n "$scale_factor" ]; then
+	sed -i "s/{}/--force-device-scale-factor=${scale_factor} /g" spotify.desktop
+    else
+        sed -i "s/{}//g" spotify.desktop
+    fi
+}
 
 package() {
     cd "${srcdir}"
@@ -33,7 +45,7 @@ package() {
     install -d "${pkgdir}/usr/share/"
     install -d "${pkgdir}"/usr/share/applications
     install -d "${pkgdir}"/usr/share/pixmaps
-    install "${pkgdir}"/usr/share/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
+    install spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
     install "${pkgdir}"/usr/share/spotify/icons/spotify-linux-512.png "${pkgdir}"/usr/share/pixmaps/spotify-client.png
 
     rm "${pkgdir}"/usr/bin/spotify
@@ -49,3 +61,4 @@ package() {
         install -Dm644 "${srcdir}/spotify.protocol" "${pkgdir}/usr/share/kde4/services/spotify.protocol"
     fi
 }
+
