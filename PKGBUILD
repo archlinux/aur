@@ -2,7 +2,7 @@
 
 pkgname=nodejs-cleaver
 _npmname=cleaver
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Generate Markdown presentations and slideshows in record time"
 arch=('any')
