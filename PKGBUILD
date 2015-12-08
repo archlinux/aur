@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=streem
-pkgver=201512
+pkgver=201601
 pkgrel=1
 pkgdesc="Stream based concurrent scripting language"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ makedepends=('bison' 'flex' 'gcc' 'make')
 url="https://github.com/matz/streem"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/matz/$pkgname/tar.gz/$pkgver)
-sha256sums=('543f652c163ef7afb189f12798f4b8f7a7d4fbc36b41c5cc201d625d651e632d')
+sha256sums=('ed7ea43ddfbb66da07f855c34dad709013f04ba17c9b30713f06b7ecaf09f757')
 install=streem.install
 
 build() {
