@@ -1,8 +1,8 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer: Maxime Vincent <maxime.vince@gmail.com>
 
 pkgname=wolfssl
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Embedded SSL Library for Applications, Devices, IoT, and the Cloud'
 arch=(i686 x86_64)
 license=(GPL)
@@ -17,8 +17,7 @@ build() {
               --disable-fasthugemath --disable-bump \
               --enable-opensslextra --enable-fortress \
               --enable-keygen --enable-certgen \
-              --disable-debug --disable-ecc \
-              --disable-ntru --disable-examples
+              --disable-debug --disable-ntru --disable-examples
   make
 }
 
