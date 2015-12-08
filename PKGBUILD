@@ -1,9 +1,9 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=remmina-plugin-rdesktop
-pkgver=1.1.1.0
-pkgrel=2
-_builderver=1.1.0.0
+pkgver=1.2.0.0
+pkgrel=1
+_builderver=1.2.0.0
 pkgdesc="A protocol plugin for Remmina to open a RDP connection with rdesktop."
 arch=('i686' 'x86_64')
 url="http://www.muflone.com/${pkgname}/"
@@ -13,8 +13,8 @@ makedepends=('pkg-config' 'cmake')
 install="${pkgname}.install"
 source=("remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
         "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0d41d50731ae25dfa1e66394cfa489d598cf491d36dbaf44d72ad921589e0960'
-            '8e2881a8a481e0db095064230b5c21be2d8b5e809eb5cf36f028916f9c24e164')
+sha256sums=('c3cb8201943b00d7475922055a68dd86ec163a01e1f578aae32427ab2427121e'
+            '6c93e29319caf691499a3ce579313763922f0d2f57041bec54579a9ef2e59c95')
 
 build() {
   [ -d build ] && rm -rf build
