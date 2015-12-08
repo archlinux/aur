@@ -3,7 +3,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=9.0.r201.g43eb861
+pkgver=9.0.r254.gfd07c0e
 pkgrel=1
 pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
 arch=('i686' 'x86_64')
@@ -12,14 +12,20 @@ install=codelite-git.install
 license=('GPL')
 depends=('wxgtk' 'curl' 'webkitgtk2' 'libssh' 'xterm' 'python2' 'libedit' 'ncurses' 'valgrind')
 makedepends=('pkgconfig' 'cmake')
-optdepends=('graphviz: callgraph visualization'
-            'lldb-svn: debugger used by the lldb plugin')
+optdepends=(
+  'graphviz: callgraph visualization'
+  'lldb: debugger used by the lldb plugin'
+)
 conflicts=('codelite' 'codelite-bin' 'codelite4-svn')
 provides=('codelite')
-source=(git://github.com/eranif/codelite.git
-        http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
-md5sums=('SKIP'
-         '093485fcae62073ca8d0ba6ff3a5cb69')
+source=(
+  git://github.com/eranif/codelite.git
+  http://repos.codelite.org/wxCrafterLibs/wxgui.zip
+)
+md5sums=(
+  'SKIP'
+  '093485fcae62073ca8d0ba6ff3a5cb69'
+)
 noextract=('wxgui.zip')
 
 
