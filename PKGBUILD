@@ -10,7 +10,7 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url='https://github.com/coreos/etcd'
 license=('Apache')
 makedepends=('go')
-backup=('etc/conf.d/etcd')
+backup=('etc/conf.d/etcd' 'usr/lib/systemd/system/etcd.service')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/coreos/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
