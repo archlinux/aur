@@ -75,7 +75,7 @@ fi
 
 # Add trilinos support
 if [ "${TRILINOS_DIR}" ]; then
-	CONFOPTS="${CONFOPTS} --with-ml=1"
+	CONFOPTS="${CONFOPTS} --with-ml-dir=${TRILINOS_DIR}"
 	# Add boost support (may be useful for trilinos)
 	#CONFOPTS="${CONFOPTS} --with-boost=1"
 fi
