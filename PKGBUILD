@@ -3,7 +3,7 @@
 # Contributor: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=cockpit-git
-pkgver=0.83.r7.ge9a7f3f
+pkgver=0.86.r17.g16a63fd
 pkgrel=1
 pkgdesc='A systemd web based user interface for Linux servers'
 arch=(i686 x86_64)
