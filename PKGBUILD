@@ -3,7 +3,7 @@
 
 pkgname=fs2_open-git
 pkgver=3.7.3
-pkgrel=11334
+pkgrel=20151208
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
