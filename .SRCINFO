@@ -1,6 +1,6 @@
 pkgbase = rr
 	pkgdesc = a nondeterministic debugger
-	pkgver = 4.0.1
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = http://rr-project.org/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = rr
 	depends = libpfm4
 	depends = libdisasm
 	depends = python2-pexpect
-	source = https://github.com/mozilla/rr/archive/4.0.1.tar.gz
-	sha1sums = 6500d2e648b6470f3d70a0e67558da76e305926d
+	source = https://github.com/mozilla/rr/archive/4.0.3.tar.gz
+	sha1sums = d41f76d1207fbc153a50dee93f7a9383d8b5e597
 
 pkgname = rr
 
