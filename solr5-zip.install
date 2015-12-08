@@ -1,0 +1,8 @@
+post_install() {
+  post_upgrade "$1"
+}
+
+post_upgrade() {
+  echo 'If used with solr-undertow, set solr.undertow.solrWarFile in the conf file (e.g. /etc/solr/default.conf)'
+  echo "to the path of the solr zip file (i.e. /usr/share/java/lib/solr/solr-$1.zip)."
+}
