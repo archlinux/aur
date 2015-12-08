@@ -1,9 +1,9 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=remmina-plugin-webkit
-pkgver=1.1.1.0
-pkgrel=2
-_builderver=1.1.0.0
+pkgver=1.2.0.0
+pkgrel=1
+_builderver=1.2.0.0
 pkgdesc="A protocol plugin for Remmina to launch a GTK+ Webkit browser."
 arch=('i686' 'x86_64')
 url="http://www.muflone.com/${pkgname}/"
@@ -13,8 +13,8 @@ makedepends=('pkg-config' 'cmake')
 install="${pkgname}.install"
 source=("remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
         "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0d41d50731ae25dfa1e66394cfa489d598cf491d36dbaf44d72ad921589e0960'
-            '3e1dded975047560e6dd02274e083999c96ba6b7bdcb3ca92bfd4cebd7fc147f')
+sha256sums=('c3cb8201943b00d7475922055a68dd86ec163a01e1f578aae32427ab2427121e'
+            '62582cc9227121bd23060e6435efe8be2bea12c1db6c03ba435472d028b593b7')
 
 build() {
   [ -d build ] && rm -rf build
