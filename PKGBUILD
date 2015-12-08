@@ -2,14 +2,14 @@
 
 pkgname=customizepkg-git
 _pkgname=customizepkg
-pkgver=34.1c635e8
+pkgver=51.6cf63cb
 pkgrel=1
 pkgdesc="A tool to modify automatically PKGBUILD" 
 url="https://github.com/ava1ar/customizepkg" 
 license=('GPL')
 arch=('any')
 depends=('bash' 'diffutils') 
-privides=('customizepkg')
+provides=('customizepkg')
 conflicts=('customizepkg' 'customizepkg-ald' 'customizepkg-patching' 'customizepkg-scripting')
 optdepends=(
 	'vim: for vimdiff'
