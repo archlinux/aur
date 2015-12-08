@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/coreos/${pkgname}/archi
         "${pkgname}.service"
         "${pkgname}.conf")
 md5sums=('0b1ea3843801d896a0009bb2eb66f432'
-         'dabe32f9e766b935c075b832672b2a79'
+         '1ccf13f8b80f10e21e92361a4dea1a44'
          'bd315606b36e519c578db34722b57622')
 
 build() {
