@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-git
 	pkgdesc = A video processing framework with simplicity in mind. (GIT version)
-	pkgver = r28.40.g5d3860e
+	pkgver = r29.0.g9080b2e
 	pkgrel = 1
 	url = http://www.vapoursynth.com
 	install = vapoursynth-git.install

@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r28.40.g5d3860e
+pkgver=r29.0.g9080b2e
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('i686' 'x86_64')
@@ -37,10 +37,6 @@ pkgver() {
 
 prepare() {
   cd vapoursynth
-
-  git submodule init
-  git submodule update
-
   mkdir -p doc/_static
 
   ./autogen.sh
@@ -51,15 +47,19 @@ build() {
   ./configure --prefix=/usr \
               --enable-imwri
   make
-  make -C doc man
+  make -C doc html man
 }
 
 package() {
   cd vapoursynth
   make DESTDIR="${pkgdir}" install
+
   install -Dm644 doc/_build/man/vapoursynth.3 "${pkgdir}/usr/share/man/man3/vapoursynth.3"
   install -Dm644 doc/_build/man/vspipe.1 "${pkgdir}/usr/share/man/man1/vspipe.1"
-  install -Dm644 ../vapoursynth.xml "${pkgdir}/usr/share/mime/packages/vapoursynth.xml"
+  (cd doc/_build/html; for i in $(find . -type f); do install -Dm644 ${i} "${pkgdir}/usr/share/doc/vapoursynth/${i}"; done)
+
+  install -Dm644 "${srcdir}/vapoursynth.xml" "${pkgdir}/usr/share/mime/packages/vapoursynth.xml"
+
   install -Dm644 ofl.txt "${pkgdir}/usr/share/licenses/${pkgname}/ofl.txt"
-  install -Dm644 ../wtfpl.txt "${pkgdir}/usr/share/licenses/${pkgname}/wtfpl.txt"
+  install -Dm644 "${srcdir}/wtfpl.txt" "${pkgdir}/usr/share/licenses/${pkgname}/wtfpl.txt"
 }
