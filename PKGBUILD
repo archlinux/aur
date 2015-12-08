@@ -5,7 +5,7 @@
 # Note: only x86_64 is supported.  The PKGBUILD for version 13.01.0 is the
 # latest that supports i686.
 pkgname=bcalc
-pkgver=15.10.0
+pkgver=15.12.0
 pkgrel=1
 pkgdesc='Double-dummy solver for bridge (the card game).'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 source=("${url}/download/bcalc_linuxpkgdevel_09.tar.gz"
         "${url}/download/bcalc${pkgver//./}_linux_x86-64.tar.gz")
 md5sums=('32ebb622ae7ef95626279a0dfc877964'
-         '807fc80b48a2fee7a4e89f09842a865a')
+         '178b8f22fa8aec26a15d68732553a484')
 
 package() {
 	cd $srcdir
