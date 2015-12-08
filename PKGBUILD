@@ -2,7 +2,7 @@
 # Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 pkgname=cloudstation-beta
-pkgver=4055
+pkgver=4062
 pkgrel=1
 pkgdesc="Cloud Station Drive allows you to sync files among your Synology NAS and computers"
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ conflicts=('cloudstation')
 install=cloudstation.install
 
 source_x86_64=(http://global.download.synology.com/download/Tools/CloudStation/4.0-${pkgver}/Ubuntu/Installer/x86_64/synology-cloud-station-drive-${pkgver}.x86_64.deb)
-sha256sums_x86_64=('010c67db99887b152a392504406aa00d78607cc29851121cb2baf398c2786137')
+sha256sums_x86_64=('dffa32057f33165abd5bc043f7339e5c26635ea253c0b8107ba358f4d1013470')
 source_i686=(http://global.download.synology.com/download/Tools/CloudStation/4.0-${pkgver}/Ubuntu/Installer/i686/synology-cloud-station-drive-${pkgver}.i686.deb)
-sha256sums_i686=('825886e0498c84007263c493ff16d1e9c18f8c7e5fa9e475e9c1ab556f38d675')
+sha256sums_i686=('c76f38e2546c874275c7ab33aa88c8f29a3f1669362397b13435a3fa84f77e95')
 
 prepare() {
     cd "${srcdir}"
