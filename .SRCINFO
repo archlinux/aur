@@ -1,6 +1,6 @@
 pkgbase = dcadec-git
 	pkgdesc = DTS Coherent Acoustics decoder with support for HD extensions
-	pkgver = r207.2a9186e
+	pkgver = r258.0fb1fa4
 	pkgrel = 1
 	url = https://github.com/foo86/dcadec.git
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = dcadec-git
 	makedepends = git
 	depends = glibc
 	provides = dcadec
+	provides = libdcadec.so
+	conflicts = dcadec
 	source = git://github.com/foo86/dcadec.git
 	md5sums = SKIP
 
