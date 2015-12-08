@@ -8,5 +8,4 @@ This also sets the font to [Inconsolata][3] 16.
 [2]: http://ethanschoonover.com/solarized
 [3]: http://www.levien.com/type/myfonts/inconsolata.html
 
-=======
 This also sets the font to Inconsolata 16.
