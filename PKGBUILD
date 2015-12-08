@@ -3,9 +3,9 @@
 _git=5c3714e1484eede40144ac0d2f198c11349cb4f8
 _repo=papirus-pack-kde
 pkgbase=papirus
-pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' )
+pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' 'papirus-plasma-theme' )
 pkgver=20151208
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
@@ -143,3 +143,10 @@ package_yakuake-skin-papirus() {
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 } 
+
+
+package_papirus-plasma-theme(){
+    pkgdesc="This is fake package, please install \`plasma-theme-papirus\`"
+    depends=('plasma-theme-papirus')
+    echo This is fake package, please install '`plasma-theme-papirus`'
+}
