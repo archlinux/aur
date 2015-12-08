@@ -55,8 +55,8 @@ package_gvfs-nosystemd() {
   make DESTDIR="$pkgdir" install
 
   cd "$pkgdir"
-  rm usr/lib/gvfs/gvfsd-{smb,smb-browse,afc,gphoto2,mtp}
-  rm usr/share/gvfs/mounts/{smb,smb-browse,afc,gphoto2,mtp}.mount
+  rm usr/lib/gvfs/gvfsd-{smb,smb-browse,afc,gphoto2,mtp,google}
+  rm usr/share/gvfs/mounts/{smb,smb-browse,afc,gphoto2,mtp,google}.mount
   rm usr/share/glib-2.0/schemas/org.gnome.system.smb.gschema.xml
   rm usr/share/GConf/gsettings/gvfs-smb.convert
 }
