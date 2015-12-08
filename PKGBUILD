@@ -15,8 +15,8 @@ provides=('git')
 install=git-git.install
 source=(git://github.com/git/git.git)
 md5sums=('SKIP'
-         '042524f942785772d7bd52a1f02fe5ae'
-         '38c2f495f52a7afa5a0f25127050efc4')
+         'SKIP'
+         'SKIP')
 _gitname=git
 
 pkgver() {
