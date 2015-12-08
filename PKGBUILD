@@ -1,8 +1,8 @@
 # Mantainer maz-1 < ohmygod19993 at gmail dot com >
 pkgname=grub2-editor-frameworks
-pkgver=0.6.4
+pkgver=20151208.g1e4ae87
 pkgrel=1
-pkgdesc="A KDE Control Module for configuring the GRUB2 bootloader.Unofficial KF5 port."
+pkgdesc="A KDE Control Module for configuring the GRUB2 bootloader. Unofficial KF5 port."
 arch=('i686' 'x86_64')
 url='https://github.com/maz-1/grub2-editor'
 license=('GPL')
@@ -12,23 +12,24 @@ depends=('grub' 'hwinfo' 'imagemagick'
          'qt5-base'
          'kio' 'ki18n' 'kauth' 'kconfigwidgets' 'solid')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools')
-source=("http://sourceforge.net/projects/kcm-grub2/files/kcm-grub2-$pkgver.tar.gz"
-        "https://patch-diff.githubusercontent.com/raw/maz-1/grub2-editor/pull/1.diff")
+optdepends=('os-prober: Create entries for other operating systems')
+source=("git+https://github.com/maz-1/grub2-editor.git")
 groups=('plasma')
-md5sums=('b3ff8fb938be8112dcc6e42b3e56efc6'
-         'SKIP')
+md5sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/grub2-editor"
+  echo "$(git show -s --format="%ci"|grep -oP '\d{4}-\d{2}-\d{2}'|sed 's:-::g').g$(git describe --always)"
+}
 
 prepare() {
   rm -rf build
   mkdir -p build
-  cd kcm-grub2-$pkgver
-  patch -p1 -i "$srcdir/1.diff"
 }
 
 build() {
   cd build
-  cmake ../kcm-grub2-$pkgver \
+  cmake ../grub2-editor \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
