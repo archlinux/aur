@@ -1,7 +1,7 @@
-#Maintainer  : flu
-#Contributor : Frederic Bezies <fredbezies at gmail dot com>
-#Contributor : baskerville <nihilhill at gmail dot com>
-#Contributor : Smola
+# Maintainer  : flu
+# Contributor : Frederic Bezies <fredbezies at gmail dot com>
+# Contributor : baskerville <nihilhill at gmail dot com>
+# Contributor : Smola
 
 _name=youtube-dl
 _branch=master
@@ -32,18 +32,18 @@ pkgver() {
 }
 
 prepare() {
-	cd $_name-$_branch
-	sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
-        sed -i ':etc/fish/completions:d' setup.py
+  cd $_name-$_branch
+  sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
+  sed -i ':etc/fish/completions:d' setup.py
 }
 
 package() {
-	cd $_name-$_branch
+ cd $_name-$_branch
 
-	python devscripts/bash-completion.py
-	python setup.py install --root="$pkgdir" --optimize=1
+ python devscripts/bash-completion.py
+ python setup.py install --root="$pkgdir" --optimize=1
 
-	mv "$pkgdir"/usr/share/bash-completion/completions/youtube-dl.bash-completion \
-	   "$pkgdir"/usr/share/bash-completion/completions/youtube-dl
-	install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+ mv "$pkgdir"/usr/share/bash-completion/completions/youtube-dl.bash-completion \
+    "$pkgdir"/usr/share/bash-completion/completions/youtube-dl
+ install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
