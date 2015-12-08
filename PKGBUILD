@@ -1,8 +1,8 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
-pkgver=0.11.22
-pkgrel=3
+pkgver=0.12.20
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
@@ -11,8 +11,8 @@ conflicts=('factorio-demo')
 depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
 source=(factorio.desktop
         LICENSE)
-md5sums=('5cacd198a3156c157a482aeab368e9a1'
-         '22fce67d66c080fa5c89ab437b3d8724')
+sha256sums=('5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815'
+            '67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21')
 if test "$CARCH" == i686; then
   __factorio_arch=i386
 elif test "$CARCH" == x86_64; then
