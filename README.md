@@ -8,7 +8,7 @@ k810-conf
 **Manually**
 
 ```
-$ journalctl | grep hidraw
+$ journalctl -k | grep hidraw
 > hid-generic 0005:046D:B319.0004: input,hidraw3: BLUETOOTH HID v12.02 Keyboard [Logitech K810] on 00:1a:7d:da:71:11
 # k810-conf -d /dev/hidraw3 -f on    # replace hidraw3 with your own value from above
 
