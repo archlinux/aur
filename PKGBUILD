@@ -15,14 +15,17 @@ options=()
 makedepends=('intltool')
 provides=('networkmanager-sstp')
 source=(http://sourceforge.net/projects/sstp-client/files/network-manager-sstp/${pkgver}-${pkgrel}/${_pkgname}-${pkgver}.tar.bz2)
-md5sums=('8d39c54195e428974bfcf87524751fe5')
+sha512sums=('7bdfd7f526ef7a4f50b450bca02ecc4b52aff5663633e8ad953ecb8eaedfe9d2d26a8ae3cb7b286150313c10c6fac4d8e2481c9fa09381ccd6c6c515989a9585')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
 
-  ./configure --prefix=/usr --sysconfdir=/etc \
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
     --libexecdir=/usr/lib/networkmanager \
     --with-pppd-plugin-dir=/usr/lib/pppd/2.4.7 \
+    --libdir=/usr/lib \
     --enable-more-warnings=yes
 
   make
