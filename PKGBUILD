@@ -2,7 +2,7 @@
 
 _npmname=npm-cache
 pkgname=nodejs-$_npmname
-pkgver=0.3.7
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="A command line utility that caches dependencies installed via npm."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('760e27c4e8737e82461ad0b4e54f3dbeb95f33a5d66a8e240bdb68bb488b5701')
+sha256sums=('db4d65203b20fd717b2bc088a2a8df4f131c3e57403d4ac3ca76606b7595ad1d')
 options=('!emptydirs')
 
 package() {
