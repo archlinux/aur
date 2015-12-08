@@ -4,12 +4,12 @@
 # - veger 
 pkgname=capt-src
 pkgver=2.70
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon CAPT Printer Driver for Linux. Compiled from source code."
 arch=('i686' 'x86_64')
 url='http://support-asia.canon-asia.com/'
 license=('custom')
-depends=('cups' 'libglade' 'libxml2' 'popt')
+depends=('cups' 'libglade' 'libxml2' 'popt' 'ghostscript')
 [ "${CARCH}" == "x86_64" ] && depends=('cups' 'libglade' 'lib32-libxml2' 'lib32-popt' 'lib32-gcc-libs')
 optdepends=('gtk2: for gui')
 install=${pkgname}.install
