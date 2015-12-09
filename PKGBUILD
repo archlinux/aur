@@ -2,18 +2,17 @@
 
 _target=msp430-elf
 pkgname="${_target}-gdb"
-pkgver=7.10
-pkgrel=3
-pkgdesc="The GNU Debugger for ${_target}."
+pkgver=7.10.1
+pkgrel=1
+pkgdesc="The GNU Debugger for the ${_target} target."
 arch=('x86_64' 'x86')
 url="https://www.gnu.org/software/gdb/download/"
 license=('GPL')
 groups=('devel')
 depends=("python2")
-options=('strip')
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz"
         fix-dwarf2read.patch)
-sha256sums=('7ebdaa44f9786ce0c142da4e36797d2020c55fa091905ac5af1846b5756208a8'
+sha256sums=('25c72f3d41c7c8554d61cacbeacd5f40993276d2ccdec43279ac546e3993d6d5'
             '94dbe29525a65b0427548551f2a8c17fd1bfb58dcfeac0a57e14b7b1ab2cccb5')
 
 prepare() {
@@ -37,7 +36,7 @@ build() {
   
   cd "$srcdir/gdb-$pkgver/gdb-build"
 
-	# build gdb
+  # build gdb
   ../configure \
     --prefix=/usr \
     --without-guile \
