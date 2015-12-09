@@ -10,7 +10,7 @@ EnvironmentFile=/opt/crashplan/bin/run.conf
 WorkingDirectory=/opt/crashplan
 ExecStart=/opt/crashplan/bin/CrashPlanEngine start
 ExecStop=/opt/crashplan/bin/CrashPlanEngine stop
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
