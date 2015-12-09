@@ -12,7 +12,7 @@ XDM_XFREQ_SCREEN_SET_ARGS="dpms"
 
 # Background color
 XDM_XFREQ_BG_COLOR_PATH=xsetroot
-XDM_XFREQ_BG_COLOR_ARGS="-solid '#2a0308'"
+XDM_XFREQ_BG_COLOR_ARGS="-solid #2a0308"
 
 # Background picture
 # XDM_XFREQ_BG_WALLPAPER_PATH=display
