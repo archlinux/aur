@@ -2,8 +2,8 @@
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=gitkraken
-pkgrel=2
-pkgver=0.3.2
+pkgrel=1
+pkgver=0.4
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
 provides=('gitkraken')
@@ -14,7 +14,7 @@ makedepends=()
 backup=()
 install=''
 source=("https://release.gitkraken.com/linux/gitkraken-amd64.tar.gz" "GitKraken.desktop" "gitkraken.png")
-md5sums=('66c1cf80ac4f36487ecd61a7d29a3c52'
+md5sums=('9d8d131063f00e751a65274b22568cab'
          '765148843d302e15d80ddd0041efc957'
          'fcac914c0044d1e5831ce46b88c37ec5')
 
