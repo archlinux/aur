@@ -104,6 +104,7 @@ Button1 = c	: frame		: f.function "raise-and-resize"
 #
 "F1" =		: all		: f.function "run-app"
 "r" = c		: all		: f.function "run-app"
+"p" = c		: all		: f.exec "scrot /tmp/%Y%m%d-%H%M%S-\$wx\$h.png"
 
 #
 # Menus
@@ -140,6 +141,40 @@ menu "sysops"
 ""		f.nop
 }
 
+menu "screensaver"
+{
+""		f.nop
+"   Default"	f.exec "xset s default"
+" 5 minutes"	f.exec "xset s 300 300"
+" 7 minutes"	f.exec "xset s 420 420"
+"10 minutes"	f.exec "xset s 600 600"
+"12 minutes"	f.exec "xset s 720 720"
+"15 minutes"	f.exec "xset s 900 900"
+"20 minutes"	f.exec "xset s 1500 1500"
+""		f.nop
+}
+
+menu "screenoff"
+{
+""		f.nop
+"   Disable"	f.exec "xset dpms 0 0 0"
+" 5 minutes"	f.exec "xset dpms 300 300 300"
+" 7 minutes"	f.exec "xset dpms 420 420 420"
+"10 minutes"	f.exec "xset dpms 600 600 600"
+"12 minutes"	f.exec "xset dpms 720 720 720"
+"15 minutes"	f.exec "xset dpms 900 900 900"
+"20 minutes"	f.exec "xset dpms 1500 1500 1500"
+""		f.nop
+}
+
+menu "settings"
+{
+""		f.nop
+"Screen Saver"	f.menu "screensaver"
+"Screen Off"	f.menu "screenoff"
+""		f.nop
+}
+
 menu "twmops"
 {
 ""		f.nop
@@ -154,6 +189,7 @@ menu "leftops"
 ""		f.nop
 "Window"	f.menu "winops"
 "System"	f.menu "sysops"
+"Settings"	f.menu "settings"
 "Manager"	f.menu "twmops"
 ""		f.nop
 }
