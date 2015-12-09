@@ -2,7 +2,7 @@
 pkgname=geant4-ensdfstatedata
 _dataname="G4ENSDFSTATE"
 _foldername="G4ENSDFSTATE"
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Nuclei properties from the Evaluated Nuclear Structure Data Files"
 url="http://geant4.cern.ch/"
@@ -14,8 +14,8 @@ depends=('geant4>=10.0.0')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('0c153d96c74e3856288b450436a5e4db'
-         'c4b5ed94865eeacb2845a08cc1941892')
+md5sums=('a2e88f2c626141e4be4587c838832707'
+         'a15282cacbcb37280ffcc756670b33c2')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
