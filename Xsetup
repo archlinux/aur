@@ -1,6 +1,14 @@
 #!/bin/sh
 source /etc/xdm-xfreq/xdm-xfreq.rc
 
+function PopUp ()
+{
+	$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $* "" &
+	PID=$!
+	echo $PID > $XDM_XFREQ_BUTTONS_PID
+	wait $PID
+}
+
 if [[ -v XDM_XFREQ_KEYB_LED_PATH ]]; then
 	$XDM_XFREQ_KEYB_LED_PATH $XDM_XFREQ_KEYB_LED_ARGS
 fi
@@ -20,13 +28,14 @@ fi
 if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
   (
     declare -i LOOP=1
+    declare -i RC=0
     while (( LOOP == 1 ))
       do
-	$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_MENU "";
-	declare -i RC=$?
+	PopUp $XDM_XFREQ_BUTTONS_MENU
+	RC=$?
 	case $RC in
 	99)
-		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_SUBMENU ""
+		PopUp $XDM_XFREQ_BUTTONS_SUBMENU
 		RC=$?
 		case $RC in
 		11)
@@ -48,7 +57,7 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 		esac
 	;;
 	11)
-		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_PWROFF ""
+		PopUp $XDM_XFREQ_BUTTONS_PWROFF
 		RC=$?
 		case $RC in
 		11)
@@ -62,7 +71,7 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 		esac
 	;;
 	12)
-		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_HALT ""
+		PopUp $XDM_XFREQ_BUTTONS_HALT
 		RC=$?
 		case $RC in
 		11)
@@ -76,7 +85,7 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 		esac
 	;;
 	13)
-		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_REBOOT ""
+		PopUp $XDM_XFREQ_BUTTONS_REBOOT
 		RC=$?
 		case $RC in
 		11)
@@ -93,7 +102,7 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 		$XDM_XFREQ_SLEEP_CMD
 	;;
 	15)
-		$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $XDM_XFREQ_BUTTONS_RESCUE ""
+		PopUp $XDM_XFREQ_BUTTONS_RESCUE
 		RC=$?
 		case $RC in
 		11)
@@ -113,7 +122,7 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 	;;
 	esac
       done
-  ) & echo $! > $XDM_XFREQ_BUTTONS_PID
+  ) &
 fi
 
 if [[ -v XDM_XFREQ_GUI_PATH ]]; then

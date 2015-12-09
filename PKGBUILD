@@ -7,8 +7,8 @@ pkgdesc="A customized XDM for XFreq"
 arch=(any)
 license=('GPL')
 url="http://github.com/cyring/xdm-xfreq"
-depends=('xfreq-git' 'xorg-xdm' 'xorg-xclock' 'xorg-xmessage' 'xorg-xdpyinfo' 'gawk')
-optdepends=('scrot' 'imagemagick' 'xorg-xsetroot' 'xorg-twm' 'numlockx' 'xdg-utils')
+depends=('xfreq-git' 'xorg-xdm' 'xorg-xclock' 'xorg-xmessage' 'xorg-xsetroot' 'xorg-xdpyinfo' 'xorg-twm' 'xdg-utils' 'scrot' 'dmenu' 'gawk')
+optdepends=('imagemagick' 'numlockx')
 backup=(etc/xdm-xfreq/Xresources
 	etc/xdm-xfreq/xdm-xfreq.rc
 	etc/xdm-xfreq/xdm-config

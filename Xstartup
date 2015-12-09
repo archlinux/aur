@@ -7,8 +7,7 @@ if [ -r $XDM_XFREQ_GUI_PID ]; then
 	rm $XDM_XFREQ_GUI_PID
 fi
 if [ -r $XDM_XFREQ_BUTTONS_PID ]; then
-#	kill $(cat $XDM_XFREQ_BUTTONS_PID) > /dev/null 2>&1
-	killall $XDM_XFREQ_BUTTONS_PATH
+	kill $(cat $XDM_XFREQ_BUTTONS_PID) > /dev/null 2>&1
 	rm $XDM_XFREQ_BUTTONS_PID
 fi
 if [ -r $XDM_XFREQ_CLOCK_PID ]; then
