@@ -2,13 +2,13 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=kicad-bzr
-pkgver=r4835
+pkgver=r6346
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://iut-tice.ujf-grenoble.fr/kicad/"
 license=('GPL')
-depends=('glew' 'wxgtk' 'hicolor-icon-theme' 'desktop-file-utils' 'boost-libs')
+depends=('glew' 'wxgtk' 'hicolor-icon-theme' 'desktop-file-utils' 'boost-libs' 'glm')
 makedepends=('cmake' 'bzr' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-docs-bzr: for documentation' 
             'kicad-library-bzr: for footprints'
@@ -37,6 +37,7 @@ build() {
   # -DKICAD_SCRIPTING=ON -DKICAD_SCRIPTING_MODULES=ON ?
   # -DKICAD_SCRIPTING_WXPYTHON=ON ?
   cmake ../.. -DCMAKE_BUILD_TYPE=Release \
+              -DKICAD_REPO_NAME=stable \
               -DCMAKE_INSTALL_PREFIX=/usr \
               -DKICAD_SKIP_BOOST=ON \
               -DBUILD_GITHUB_PLUGIN=ON

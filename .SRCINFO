@@ -1,6 +1,6 @@
 pkgbase = kicad-bzr
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = r4835
+	pkgver = r6346
 	pkgrel = 1
 	url = http://iut-tice.ujf-grenoble.fr/kicad/
 	install = kicad.install
@@ -17,6 +17,7 @@ pkgbase = kicad-bzr
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = boost-libs
+	depends = glm
 	optdepends = kicad-docs-bzr: for documentation
 	optdepends = kicad-library-bzr: for footprints
 	optdepends = git: github pcb plugin
