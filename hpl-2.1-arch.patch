@@ -29,9 +29,12 @@ index b1c6401..997177b 100644
  #
  # ----------------------------------------------------------------------
  # - F77 / C interface --------------------------------------------------
-@@ -168,13 +176,13 @@
+@@ -166,15 +174,15 @@
+ # - Compilers / linkers - Optimization flags ---------------------------
+ # ----------------------------------------------------------------------
  #
- CC           = mpicc
+-CC           = mpicc
++CC           = $(MPI_BIN)/mpicc
  CCNOOPT      = $(HPL_DEFS)
 -CCFLAGS      = $(HPL_DEFS) -fomit-frame-pointer -O3 -funroll-loops -W -Wall
 +CCFLAGS      = $(HPL_DEFS) $(CFLAGS) -fomit-frame-pointer -O3 -funroll-loops -W -Wall
@@ -39,8 +42,9 @@ index b1c6401..997177b 100644
  # On some platforms,  it is necessary  to use the Fortran linker to find
  # the Fortran internals used in the BLAS library.
  #
- LINKER       = mpif77
+-LINKER       = mpif77
 -LINKFLAGS    = $(CCFLAGS)
++LINKER       = $(MPI_BIN)/mpif77
 +LINKFLAGS    = $(CCFLAGS) -Wl,--as-needed
  #
  ARCHIVER     = ar
