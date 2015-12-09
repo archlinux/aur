@@ -1,0 +1,5 @@
+*.pkg.tar.xz
+/pkg/
+/src/
+/s25client/
+/s25rttr_*.tar.bz2
