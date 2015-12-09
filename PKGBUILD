@@ -1,7 +1,7 @@
 # Maintainer: renek <aur@spaceshore.net>
 _pkgname=aiosasl
 pkgname=python-${_pkgname}
-pkgver=0.1.0
+pkgver=0.1
 pkgrel=1
 pkgdesc="Pure-python, protocol-agnostic SASL implementation for asyncio"
 arch=('any')
