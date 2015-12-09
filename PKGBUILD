@@ -3,7 +3,7 @@
 # Maintainer: Michael Bentlage <Mi.Bentlage at gmail dot com>
 pkgname=systemd-vgaswitcheroo-units
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Disable discrete GPU at boot for AMD/NVIDIA & Intel dual stuff. This is based on the old AUR package that was not migrated to AUR4."
 arch=('any')
 # Based on https://github.com/fredoche/vgaswitcheroo_systemd
@@ -23,4 +23,4 @@ package() {
 
 md5sums=('a01b63dacaa632b03cd2bfe1832f4d31'
          '4919673009c0a5c54322a1a9624801e9'
-         'bb23032dab1bc88369d77ef94d4b9642')
+         'fcbb48340873f67f4ad493a96ef951a4')
