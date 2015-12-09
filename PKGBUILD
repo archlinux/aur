@@ -1,6 +1,4 @@
-# Maintainer: AJSlye @forum.manjaro.org / Bernhard Landauer <oberon@manjaro.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Antonio Rojas
+# Maintainer: AJSlye (jameskittsmiller@gmail.com) / Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=plasma-wallpaper-snow
 pkgver=r5.89d9d94
