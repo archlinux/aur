@@ -8,7 +8,7 @@ pkgdesc="Nuclei properties from the Evaluated Nuclear Structure Data Files"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-depends=('geant4>=10.0.0')
+depends=('geant4>=10.2.0')
 #it cannot be optdepend since we require the geant4.sh file to exist
 #to setup the environment variable
 install="${pkgname}.install"
