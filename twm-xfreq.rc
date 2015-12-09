@@ -36,7 +36,7 @@ Color
 	BorderColor "chocolate"
 	{
 #		"Clock"			"#dfdfdf"
-		"PopUp"			"#2a0308"
+#		"PopUp"			"#2a0308"
 		"TWM Icon Manager"	"#2a0308"
 	}
 	BorderTileBackground		"#2a0308"
@@ -88,6 +88,7 @@ Button3 = m	: window|icon	: f.function "move-or-raise"
 
 Button1 =	: title		: f.function "move-or-raise"
 Button2 =	: title		: f.raiselower
+Button3 = c	: title		: f.delete
 
 Button1 =	: icon		: f.function "move-or-iconify"
 Button2 =	: icon		: f.iconify
@@ -133,9 +134,9 @@ menu "sysops"
 "Hibernate"	f.exec "systemctl hibernate"
 "Hybrid-sleep"	f.exec "systemctl hybrid-sleep"
 ""		f.nop
-"Rescue"	f.exec "(xmessage -buttons Rescue:11,Cancel:99 -default Cancel -timeout 30 -fg '#dfdfdf' -bg '#2a0308' -bd chocolate -geometry -16-32 -fn -misc-fixed-*-*-*-*-15-*-*-*-*-*-*-* -name PopUp 'Enter rescue mode ?';if [[ $? == 11 ]]; then systemctl rescue; fi) &"
-"Reboot"	f.exec "(xmessage -buttons Reboot:11,Cancel:99 -default Cancel -timeout 30 -fg '#dfdfdf' -bg '#2a0308' -bd chocolate -geometry -16-32 -fn -misc-fixed-*-*-*-*-15-*-*-*-*-*-*-* -name PopUp 'Shut down and reboot the system ?';if [[ $? == 11 ]]; then systemctl reboot; fi) &"
-"PowerOff"	f.exec "(xmessage -buttons PowerOff:11,Cancel:99 -default Cancel -timeout 30 -fg '#dfdfdf' -bg '#2a0308' -bd chocolate -geometry -16-32 -fn -misc-fixed-*-*-*-*-15-*-*-*-*-*-*-* -name PopUp 'Shut down and power-off the system ?';if [[ $? == 11 ]]; then systemctl poweroff; fi) &"
+"Rescue"	f.exec "(xmessage -buttons Rescue:11,Cancel:99 -default Cancel -timeout 30 -fg '#dfdfdf' -bg '#2a0308' -bd '#dfdfdf' -geometry -16-32 -fn -misc-fixed-*-*-*-*-15-*-*-*-*-*-*-* -name PopUp 'Enter rescue mode ?';if [[ $? == 11 ]]; then systemctl rescue; fi) &"
+"Reboot"	f.exec "(xmessage -buttons Reboot:11,Cancel:99 -default Cancel -timeout 30 -fg '#dfdfdf' -bg '#2a0308' -bd '#dfdfdf' -geometry -16-32 -fn -misc-fixed-*-*-*-*-15-*-*-*-*-*-*-* -name PopUp 'Shut down and reboot the system ?';if [[ $? == 11 ]]; then systemctl reboot; fi) &"
+"PowerOff"	f.exec "(xmessage -buttons PowerOff:11,Cancel:99 -default Cancel -timeout 30 -fg '#dfdfdf' -bg '#2a0308' -bd '#dfdfdf' -geometry -16-32 -fn -misc-fixed-*-*-*-*-15-*-*-*-*-*-*-* -name PopUp 'Shut down and power-off the system ?';if [[ $? == 11 ]]; then systemctl poweroff; fi) &"
 ""		f.nop
 }
 

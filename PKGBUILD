@@ -1,14 +1,14 @@
 # Maintainer: CyrIng <xfreq[at]cyring[dot]fr>
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=xdm-xfreq
-pkgver=0.8
-pkgrel=3
+pkgver=0.9
+pkgrel=1
 pkgdesc="A customized XDM for XFreq"
 arch=(any)
 license=('GPL')
 url="http://github.com/cyring/xdm-xfreq"
-depends=('xorg-xdm' 'xorg-xclock' 'xorg-xmessage' 'xorg-xdpyinfo' 'gawk')
-optdepends=('xfreq-git' 'scrot' 'imagemagick' 'xorg-xsetroot' 'xorg-twm' 'numlockx' 'xdg-utils')
+depends=('xfreq-git' 'xorg-xdm' 'xorg-xclock' 'xorg-xmessage' 'xorg-xdpyinfo' 'gawk')
+optdepends=('scrot' 'imagemagick' 'xorg-xsetroot' 'xorg-twm' 'numlockx' 'xdg-utils')
 backup=(etc/xdm-xfreq/Xresources
 	etc/xdm-xfreq/xdm-xfreq.rc
 	etc/xdm-xfreq/xdm-config
