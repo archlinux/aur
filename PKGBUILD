@@ -3,8 +3,8 @@
 # Parts adapted from: Muflone/freeoffice@aur
 
 pkgname=softmaker-office-2016-bin
-pkgver=2016.748
-pkgrel=4
+pkgver=2016.749
+pkgrel=1
 pkgdesc="Softmaker Office 2016, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
 arch=('x86_64' 'i686')
@@ -22,14 +22,14 @@ source=("http://www.softmaker.net/down/softmaker-office-${pkgver//./-}.tgz"
         "planmaker-2016.desktop"
         "presentations-2016.desktop"
         "textmaker-2016.desktop")
-md5sums=('dfafef9fc0b03e29148a3ebded2e42f2'
+md5sums=('c4234cdd69eeae296487d457f9c82842'
          '5e698160b69670b71ca1306457e95fe0'
          '57766d7d252f42ce3bcb2ecc28dd97e9'
          '1f17766bb95adc0bc56a8b683ff888f6'
          '60bab207799f6f92192d158840f3e5aa'
          '86b058133c52201abd98a2594849e77e'
          'b0cb162e83fb4f186b1fb458f12ddc00')
-sha512sums=('5f7923d60da08bbeb1394068ff2aa8daa17cf5ef9862a51ccfabbfdf8a65083bfe3e67c35b2ce02e1828abaab5fcb5cc48468387d35238ddaff60fd25cafa814'
+sha512sums=('8a19542c7148c66842d6d2866845df9a4b18ff74e99435289a562408c62eeda19cfdf0fe04f1c007b57b143edac024698d911b0582f495a0e7aec5c463aecbf9'
             '47e08e91734692b77d17999ce32b974a7f3cede5082f0884b2d1546d6ce7204bfcf67d713de9148398834aca28626d033855703fa3e0e375879fb085a89a2251'
             '44d7c55d69a1de7b665a507808618dc9ac81b8938f73cf63ad74cde6725d151e9322b4b25b48798d9f0c76d955e52de6fb97ef86b1c7c2adea56bc95dcd65c82'
             '96fc1950a23eb2faed83ddd317540d9ecc9fa46989dabe7325f0107eea1544ffa88adaf53f58fd050805c343b5fe9d698bc194cada9535411a64a4833f51fa10'
@@ -57,16 +57,20 @@ package() {
       ln -s "/opt/smoffice2016/icons/tml_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/smoffice2016-textmaker.png"
 
       install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes"
-      ln -s "/opt/smoffice2016/icons/pmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd.png"
-      ln -s "/opt/smoffice2016/icons/prd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prd.png"
-      ln -s "/opt/smoffice2016/icons/tmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd.png"
+      ln -s "/opt/smoffice2016/icons/pmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd16.png"
+      ln -s "/opt/smoffice2016/icons/prd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prd16.png"
+      ln -s "/opt/smoffice2016/icons/tmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd16.png"
     done
 
-install -d "${pkgdir}/usr/share/mime/packages"
-install -m 644 -t "${pkgdir}/usr/share/mime/packages" "${pkgdir}/opt/smoffice2016/mime/softmaker-office-2016.xml"
+  install -d "${pkgdir}/usr/share/mime/packages"
 
-install -d "${pkgdir}/usr/share/applications"
-install -m 644 -t "${pkgdir}/usr/share/applications" "${srcdir}/planmaker-2016.desktop"
-install -m 644 -t "${pkgdir}/usr/share/applications" "${srcdir}/presentations-2016.desktop"
-install -m 644 -t "${pkgdir}/usr/share/applications" "${srcdir}/textmaker-2016.desktop"
+  # Set the mime types to use generic icons
+  sed "s/icon/generic-icon/g;s/application-x-tmd/x-office-document/g;s/application-x-pmd/x-office-spreadsheet/g;s/application-x-prd/x-office-presentation/g" "${pkgdir}/opt/smoffice2016/mime/softmaker-office-2016.xml" > "${pkgdir}/usr/share/mime/packages/softmaker-office-2016.xml" 
+  # The line below would set generic icons for various file types to the Softmaker style, to use it, uncomment it and comment the line above.
+  #sed -r "s/icon/generic-icon/g;s/application-x-(tmd|pmd|prd)/&16/g" "${pkgdir}/opt/smoffice2016/mime/softmaker-office-2016.xml" > "${pkgdir}/usr/share/mime/packages/softmaker-office-2016.xml"
+
+  install -d "${pkgdir}/usr/share/applications"
+  install -m 644 -t "${pkgdir}/usr/share/applications" "${srcdir}/planmaker-2016.desktop"
+  install -m 644 -t "${pkgdir}/usr/share/applications" "${srcdir}/presentations-2016.desktop"
+  install -m 644 -t "${pkgdir}/usr/share/applications" "${srcdir}/textmaker-2016.desktop"
 }
