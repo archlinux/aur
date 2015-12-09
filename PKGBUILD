@@ -52,7 +52,7 @@ _BFQ_enable_=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.3
-pkgver=4.3
+pkgver=4.3.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -65,8 +65,8 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patc
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.3.0-v7r8"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-#"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-#"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
@@ -80,6 +80,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.3.patch"
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.3.0.patch")
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
+            'SKIP'
+            '82caff48806796418f445d0a87698abedfaaccfdc7b63059166b788e0cfd144b'
             'SKIP'
             '229ce657a994e2cb5d329bbbf38b83f8941fa4f047151303968cc79797284bfb'
             'a383132ff11f53bc01a2bb1ab474e641774a2caa328bd4df01da117d981bdf37'
@@ -100,7 +102,7 @@ prepare() {
 	cd "${_srcname}"
 
 	# add upstream patch
-	#patch -p1 -i "${srcdir}/patch-${pkgver}"
+	patch -p1 -i "${srcdir}/patch-${pkgver}"
 
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
