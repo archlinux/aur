@@ -1,0 +1,13 @@
+diff --git a/include/autoconf.h b/include/autoconf.h
+index 79a8712..91f3eec 100644
+--- a/include/autoconf.h
++++ b/include/autoconf.h
+@@ -170,7 +170,7 @@
+ 
+ #define CONFIG_SKB_COPY	//for amsdu
+ 
+-//#define CONFIG_LED
++#define CONFIG_LED
+ #ifdef CONFIG_LED
+ 	#define CONFIG_SW_LED
+ 	#ifdef CONFIG_SW_LED
