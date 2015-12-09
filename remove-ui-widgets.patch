@@ -1,0 +1,84 @@
+diff -ru virt-viewer-3.0.orig/src/virt-viewer-window.c virt-viewer-3.0/src/virt-viewer-window.c
+--- virt-viewer-3.0.orig/src/virt-viewer-window.c	2015-12-08 20:48:35.660683590 -0500
++++ virt-viewer-3.0/src/virt-viewer-window.c	2015-12-08 20:48:54.070648495 -0500
+@@ -477,9 +477,6 @@
+         virt_viewer_display_set_monitor(priv->display, -1);
+         virt_viewer_display_set_fullscreen(priv->display, FALSE);
+     }
+-    ViewAutoDrawer_SetActive(VIEW_AUTODRAWER(priv->layout), FALSE);
+-    gtk_widget_show(menu);
+-    gtk_widget_hide(priv->toolbar);
+     gtk_widget_set_size_request(GTK_WIDGET(priv->window), -1, -1);
+     gtk_window_unfullscreen(GTK_WINDOW(priv->window));
+
+@@ -1057,43 +1054,6 @@
+     gtk_widget_set_no_show_all(priv->toolbar, TRUE);
+     gtk_toolbar_set_style(GTK_TOOLBAR(priv->toolbar), GTK_TOOLBAR_BOTH_HORIZ);
+
+-    /* Close connection */
+-    button = GTK_WIDGET(gtk_tool_button_new_from_stock(GTK_STOCK_CLOSE));
+-    gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(button), _("Disconnect"));
+-    gtk_widget_show(GTK_WIDGET(button));
+-    gtk_toolbar_insert(GTK_TOOLBAR(priv->toolbar), GTK_TOOL_ITEM (button), 0);
+-    g_signal_connect(button, "clicked", G_CALLBACK(virt_viewer_window_menu_file_quit), self);
+-
+-    /* USB Device selection */
+-    button = gtk_image_new_from_icon_name("virt-viewer-usb",
+-                                          GTK_ICON_SIZE_INVALID);
+-    button = GTK_WIDGET(gtk_tool_button_new(button, NULL));
+-    gtk_tool_button_set_label(GTK_TOOL_BUTTON(button), _("USB device selection"));
+-    gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(button), _("USB device selection"));
+-    gtk_toolbar_insert(GTK_TOOLBAR(priv->toolbar), GTK_TOOL_ITEM(button), 0);
+-    g_signal_connect(button, "clicked", G_CALLBACK(virt_viewer_window_menu_file_usb_device_selection), self);
+-    priv->toolbar_usb_device_selection = button;
+-    gtk_widget_show_all(button);
+-
+-    /* Send key */
+-    button = GTK_WIDGET(gtk_tool_button_new(NULL, NULL));
+-    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(button), "preferences-desktop-keyboard-shortcuts");
+-    gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(button), _("Send key combination"));
+-    gtk_widget_show(GTK_WIDGET(button));
+-    gtk_toolbar_insert(GTK_TOOLBAR(priv->toolbar), GTK_TOOL_ITEM(button), 0);
+-    g_signal_connect(button, "clicked", G_CALLBACK(virt_viewer_window_toolbar_send_key), self);
+-    gtk_widget_set_sensitive(button, FALSE);
+-    priv->toolbar_send_key = button;
+-
+-    /* Leave fullscreen */
+-    button = GTK_WIDGET(gtk_tool_button_new_from_stock(GTK_STOCK_LEAVE_FULLSCREEN));
+-    gtk_tool_button_set_label(GTK_TOOL_BUTTON(button), _("Leave fullscreen"));
+-    gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(button), _("Leave fullscreen"));
+-    gtk_tool_item_set_is_important(GTK_TOOL_ITEM(button), TRUE);
+-    gtk_widget_show(GTK_WIDGET(button));
+-    gtk_toolbar_insert(GTK_TOOLBAR(priv->toolbar), GTK_TOOL_ITEM(button), 0);
+-    g_signal_connect(button, "clicked", G_CALLBACK(virt_viewer_window_toolbar_leave_fullscreen), self);
+-
+     priv->layout = ViewAutoDrawer_New();
+
+     ViewAutoDrawer_SetActive(VIEW_AUTODRAWER(priv->layout), FALSE);
+@@ -1101,9 +1061,13 @@
+     ViewOvBox_SetUnder(VIEW_OV_BOX(priv->layout), GTK_WIDGET(priv->notebook));
+     ViewAutoDrawer_SetOffset(VIEW_AUTODRAWER(priv->layout), -1);
+     ViewAutoDrawer_SetFill(VIEW_AUTODRAWER(priv->layout), FALSE);
+-    ViewAutoDrawer_SetOverlapPixels(VIEW_AUTODRAWER(priv->layout), 1);
++    ViewAutoDrawer_SetOverlapPixels(VIEW_AUTODRAWER(priv->layout), 0);
+     ViewAutoDrawer_SetNoOverlapPixels(VIEW_AUTODRAWER(priv->layout), 0);
+     gtk_widget_show(priv->layout);
++
++    gtk_widget_show(priv->toolbar);
++    ViewAutoDrawer_SetActive(VIEW_AUTODRAWER(priv->layout), TRUE);
++    ViewAutoDrawer_Close(VIEW_AUTODRAWER(priv->layout));
+ }
+
+ VirtViewerNotebook*
+diff -ru virt-viewer-3.0.orig/src/virt-viewer.xml virt-viewer-3.0/src/virt-viewer.xml
+--- virt-viewer-3.0.orig/src/virt-viewer.xml	2015-12-08 20:48:35.660683590 -0500
++++ virt-viewer-3.0/src/virt-viewer.xml	2015-12-08 20:48:54.070648495 -0500
+@@ -13,7 +13,7 @@
+         <property name="can_focus">False</property>
+         <child>
+           <object class="GtkMenuBar" id="top-menu">
+-            <property name="visible">True</property>
++            <property name="visible">False</property>
+             <property name="can_focus">False</property>
+             <child>
+               <object class="GtkMenuItem" id="menu-file">
