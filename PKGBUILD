@@ -18,7 +18,7 @@ optdepends=('glib2: needed for graphical tools'
             'libglade>=2.6.4: needed for graphical tools'
             'tk>=8.4.9: needed for graphical tools')
 makedepends=('java-environment' 'bwidget>=1.8' 'gtk2>=2.8' 'glib2'
-             'libglade>=2.6.4' 'tk>=8.4.9')
+             'libglade>=2.6.4' 'swig' 'tk>=8.4.9')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
 # Use patchs from git tree to be able to grab 0012-Make-the-SWIG-files-compatible-with-SWIG-3.patch

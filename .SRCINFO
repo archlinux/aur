@@ -13,6 +13,7 @@ pkgbase = setools
 	makedepends = gtk2>=2.8
 	makedepends = glib2
 	makedepends = libglade>=2.6.4
+	makedepends = swig
 	makedepends = tk>=8.4.9
 	depends = flex
 	depends = bison
