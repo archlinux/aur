@@ -1,6 +1,6 @@
 pkgbase = mnemosyne-bzr
 	pkgdesc = A flash-card tool with a sophisticated card review algorithm (latest development snapshot)
-	pkgver = 2.3.5rc1+r1907
+	pkgver = 2.3.5+r1915
 	pkgrel = 1
 	url = http://www.mnemosyne-proj.org
 	install = mnemosyne-bzr.install
