@@ -1,7 +1,7 @@
 # Maintainer: Harry Jeffery <harry|@|exec64|.|co|.|uk>
 # Contributor: Alex Jordan <alexander3223098@gmail.com>
 pkgname=zerotier-one
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Creates virtual Ethernet networks of almost unlimited size."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ groups=()
 depends=("gcc-libs")
 makedepends=()
 source=("https://github.com/zerotier/ZeroTierOne/archive/$pkgver.tar.gz")
-sha1sums=('de1dfb3ecc3bcbdea38388f51e91ac5927eba2b6')
+sha1sums=('c28e7467fe7a74d2b2ba2acd8c6f8955d37dde25')
 
 build() {
   cd "$srcdir/ZeroTierOne-$pkgver"
