@@ -26,7 +26,7 @@ prepare() {
             VER_HM=$(grep 'version = ' $DIR/$EXT.info | tail -n1 | cut -f2 -d\")
             if [[ "$VER_HM" < "$VER_DO" ]]; then
                 msg2 "  Fetching $EXT..."
-                drush dl $EXT --yes --destination=$TYPE &>/dev/null
+                drush dl --default-major=7 $EXT --yes --destination=$TYPE &>/dev/null
             fi
         done
     done
