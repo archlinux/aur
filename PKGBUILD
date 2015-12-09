@@ -1,12 +1,13 @@
 # Maintainer: Oleg Plakhotniuk <olegus8@gmail.com>
 pkgname=toothris
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Smooth Tetris clone with a few surprises."
 arch=('any')
 url="http://www.toothris.org"
 license=('GPL3')
-depends=('python2-pygame' 'python2-opengl' 'stackless-python2' 'python-rabbyt')
+depends=('python2-pygame' 'python2-opengl' 'stackless-python2' \
+         'python2-rabbyt')
 makedepends=('git' 'python2-pygame')
 source=("git+https://github.com/toothris/toothris#tag=${pkgver}"
         "toothris-run")
