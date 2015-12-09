@@ -1,7 +1,7 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.01.02
-_pkgver=10.01.p02
+pkgver=10.2.0
+_pkgver=10.02
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=2.8.2'
@@ -33,13 +33,14 @@ depends=('cmake>=2.8.2'
          'glu'
          'soxt'
          'mesa'
-         'clhep')
+        )
 replaces=('geant4-deb')
 optdepends=('java-environment: for histogram visualizations and
 analysis'
   'tcsh: for C Shell support'
   'python: for G4Python support'
   'geant4-abladata: Data files for nuclear shell effects in INCL/ABLA hadronic mode'
+  'geant4-ensdfstatedata: Nuclei properties from the Evaluated Nuclear Structure Data Files'
   'geant4-ledata: Data files for low energy electromagnetic processes'
   'geant4-levelgammadata: Data files for photon evaporation'
   'geant4-neutronhpdata: Neutron data files with thermal cross sections'
@@ -54,23 +55,13 @@ license=('custom: http://geant4.cern.ch/license/')
 options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${pkgname}.${_pkgver}.tar.gz"
-  "Geant4InterfaceOptions.patch"
   "${pkgname}.install")
-md5sums=('6a7c088f684262d9f792dcaaf1cd55d1'
-         'cc428f31958c6e036cb01c0220b3fd83'
-         'c3652d79011cd3fab2e1081e22f9f513')
+md5sums=('ce96232e6301562f483e0409a1079541'
+         '8b7f137c5f36006a8589d717059b5464')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
 PKGEXT='.pkg.tar'
-
-prepare() {
-  cd ${srcdir}/${pkgname}.${_pkgver}/cmake/Modules/
-#  patch -Np1 Geant4InterfaceOptions.cmake < ${srcdir}/Geant4InterfaceOptions.patch
-}
-
-## Geant4 Build Options
-## http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/ch02s03.html
 
 build() {
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
@@ -78,28 +69,27 @@ build() {
   env -i \
     QT_SELECT=5 \
     PATH=/usr/bin \
-    cmake -Wno-dev \
-    -DCMAKE_BUILD_TYPE=Release \
+    cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DGEANT4_BUILD_MULTITHREADED=ON \
+    -DGEANT4_INSTALL_DATA=OFF \
     -DGEANT4_USE_GDML=ON \
     -DGEANT4_USE_G3TOG4=ON \
     -DGEANT4_USE_QT=ON \
     -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
     -DGEANT4_USE_XM=ON \
-    -DGEANT4_BUILD_MULTITHREADED=ON \
-    -DGEANT4_USE_SYSTEM_CLHEP=ON \
     -DGEANT4_USE_OPENGL_X11=ON \
     -DGEANT4_USE_INVENTOR=ON \
     -DGEANT4_USE_RAYTRACER_X11=ON \
+    -DGEANT4_USE_SYSTEM_CLHEP=OFF \
     -DGEANT4_USE_SYSTEM_EXPAT=ON \
     -DGEANT4_USE_SYSTEM_ZLIB=ON \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     ../${pkgname}.${_pkgver}
 
   make
 
-  ##  -DGEANT4_BUILD_CXXSTD=c++11 \
-  ## this presents issues with some random number generation routines.
 }
 
 package() {
@@ -111,15 +101,16 @@ package() {
 
   msg "Removing wrongly set environment variables"
 
-  variables=("G4LEDATA" \
-    "G4LEVELGAMMADATA" \
-    "G4NEUTRONHPDATA" \
-    "G4NEUTRONXSDATA" \
-    "G4PIIDATA" \
-    "G4RADIOACTIVEDATA" \
-    "G4REALSURFACEDATA" \
-    "G4SAIDXSDATA" \
-    "G4ABLADATA" )
+  variables=("G4NEUTRONHPDATA" \
+                 "G4LEDATA" \
+                 "G4LEVELGAMMADATA" \
+                 "G4RADIOACTIVEDATA" \
+                 "G4NEUTRONXSDATA" \
+                 "G4PIIDATA" \
+                 "G4REALSURFACEDATA" \
+                 "G4SAIDXSDATA" \
+                 "G4ABLADATA" \
+                 "G4ENSDFSTATEDATA")
 
   for _varname in ${variables[*]}
   do
