@@ -9,7 +9,7 @@ pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/plexinc/plex-media-player'
-depends=('mpv' 'qt5-webengine >= 5.6' 'libcec')
+depends=('mpv' 'qt5-webengine>=5.6' 'libcec')
 makedepends=('cmake')
 install='plex-media-player.install'
 source=("$pkgname-$pkgver-$_gitver.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${pkgver}-${_gitver}.tar.gz"
