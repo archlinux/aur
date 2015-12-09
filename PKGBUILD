@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=4.2
+pkgver=r1310.6c8cd33
 pkgrel=1
 pkgdesc="Netmap is a framework for high speed network packet I/O."
 arch=('any')
@@ -18,29 +18,19 @@ replaces=()
 backup=()
 options=()
 install="netmap.install"
-source=("netmap.install")
+source=("netmap.install" "git+https://github.com/luigirizzo/netmap")
 noextract=()
-md5sums=("047aa5adec4c52ddbf86d12dbf300f71")
+md5sums=("047aa5adec4c52ddbf86d12dbf300f71" "SKIP")
 
-_gitroot="https://github.com/luigirizzo/netmap"
-_gitname="netmap"
+pkgver() {
+        cd "$srcdir/${pkgname%-git}"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-    # Download the latest netmap code from the public repository
-    cd "$srcdir"
-    msg "Connecting to GIT server...."
-    if [[ -d "$_gitname" ]]; then
-        cd "$_gitname" && git pull origin
-        msg "The local files are updated."
-    else
-        git clone "$_gitroot" "$_gitname"
-        cd "$srcdir/$_gitname"
-    fi
-    msg "GIT checkout done or server timeout"
-
+    msg "Downloading kernel sources..."
     # Download kernel sources using ABS, checking that the version is the
     # same as the running kernel
-    msg "Downloading kernel sources..."
     mkdir -p $srcdir/abs
     cd $srcdir/abs
     ABSROOT=. abs core/linux
@@ -62,11 +52,11 @@ build() {
     # drivers. Note however that the kernel modules are built against the
     # running kernel, and not against the downloaded sources.
     msg "Starting to build netmap"
-    cd "$srcdir/$_gitname/LINUX"
-    ./configure --kernel-sources=$srcdir/abs/core/linux/src/linux-$KMAJVER --no-drivers=virtio_net.c,e1000
+    cd "$srcdir/netmap/LINUX"
+    ./configure --kernel-sources=$srcdir/abs/core/linux/src/linux-$KMAJVER
     make || return 1
     # Build pkt-gen and vale-ctl
-    cd "$srcdir/$_gitname/examples"
+    cd "$srcdir/netmap/examples"
     make clean  # amend for existing .o
     make pkt-gen vale-ctl || return 1
     msg "Build complete"
@@ -79,24 +69,24 @@ package() {
 
     # Install the netmap module into the extramodules-VERSION directory
     mkdir -p "$pkgdir/usr/lib/modules/extramodules-${KVER2}"
-    cp "$srcdir/$_gitname/LINUX/netmap.ko" "$pkgdir/usr/lib/modules/extramodules-${KVER2}"
+    cp "$srcdir/netmap/LINUX/netmap.ko" "$pkgdir/usr/lib/modules/extramodules-${KVER2}"
 
     # Install pkt-gen and valectl into /usr/bin
     mkdir -p "$pkgdir/usr/bin"
-    cp "$srcdir/$_gitname/examples/pkt-gen" "$pkgdir/usr/bin"
-    cp "$srcdir/$_gitname/examples/vale-ctl" "$pkgdir/usr/bin"
+    cp "$srcdir/netmap/examples/pkt-gen" "$pkgdir/usr/bin"
+    cp "$srcdir/netmap/examples/vale-ctl" "$pkgdir/usr/bin"
 
     # Install the netmap public headers
     mkdir -p "$pkgdir/usr/include/net"
-    cp "$srcdir/$_gitname/sys/net/netmap.h" "$srcdir/$_gitname/sys/net/netmap_user.h" "$pkgdir/usr/include/net"
+    cp "$srcdir/netmap/sys/net/netmap.h" "$srcdir/netmap/sys/net/netmap_user.h" "$pkgdir/usr/include/net"
 
     # Install the netmap man page
     mkdir -p "$pkgdir/usr/share/man/man4"
-    cp "$srcdir/$_gitname/share/man/man4/netmap.4" "$pkgdir/usr/share/man/man4"
+    cp "$srcdir/netmap/share/man/man4/netmap.4" "$pkgdir/usr/share/man/man4"
     gzip "$pkgdir/usr/share/man/man4/netmap.4"
 
     #Find and install the modified NIC drivers
-    cd "$srcdir/$_gitname/LINUX"
+    cd "$srcdir/netmap/LINUX"
     DRIVERS=$(find . -name "*.ko" -and ! -name "netmap.ko")
     if [ -n "$DRIVERS" ]; then
         mkdir -p "$pkgdir/usr/lib/modules/extramodules-${KVER2}/netmap-drivers"
