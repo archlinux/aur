@@ -9,7 +9,7 @@
 pkgname=orientdb-community
 
 ## PKGBUILD:pkgver is not allowed to contain colons, hyphens or whitespace
-pkgversion=2.1.3
+pkgversion=2.1.7
 #pkgrc=rc2
 pkgrc=
 #pkgsuffix=-$pkgrc
@@ -18,7 +18,7 @@ pkgsuffix=
 pkgver=$pkgversion
 
 pkgtmp=
-pkgrel=2
+pkgrel=1
 #epoch=1
 pkgdesc="OrientDB Graph-Document NoSQL - Community Edition"
 arch=('any')
@@ -43,14 +43,14 @@ changelog=""
 # server2.sh and shutdown2.sh are versions more suited to systemd usage.
 #
 source=(
-  "http://orientdb.com/download.php?email=unknown@unknown.com&file=orientdb-community-${pkgversion}${pkgsuffix}.tar.gz"
+  "orientdb-community-${pkgversion}${pkgsuffix}.tar.gz::http://orientdb.com/download.php?email=unknown@unknown.com&file=orientdb-community-${pkgversion}${pkgsuffix}.tar.gz&os=linux"
   'orientdb.service'
   'server2.sh'
   'shutdown2.sh'
 )
 
 md5sums=(
-  '4c90eec15ae214addd19d8aa8812e99d'
+  '7b9736383d2e1bd00810a45da03311ec'
   '2845ee26c2b4a370fde6ada6815b5eeb'
   '4a5fe9143276adf167dbb7ae46a4f3f2'
   'e9482fd3b41fc56af333365c6287b5a6'
