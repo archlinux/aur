@@ -1,0 +1,94 @@
+diff --git a/setup/Make.Linux_PII_CBLAS_gm b/setup/Make.Linux_PII_CBLAS_gm
+index b1c6401..997177b 100644
+--- a/setup/Make.Linux_PII_CBLAS_gm
++++ b/setup/Make.Linux_PII_CBLAS_gm
+@@ -56,6 +56,14 @@ LN_S         = ln -s
+ MKDIR        = mkdir
+ RM           = /bin/rm -f
+ TOUCH        = touch
++
++LBITS := $(shell getconf LONG_BIT)
++ifeq ($(LBITS),64)
++  SYSLIBDIR=/usr/lib64
++else
++  SYSLIBDIR=/usr/lib
++endif
++
+ #
+ # ----------------------------------------------------------------------
+ # - Platform identifier ------------------------------------------------
+@@ -92,9 +100,9 @@ MPlib        =
+ # header files,  LAlib  is defined  to be the name of  the library to be
+ # used. The variable LAdir is only used for defining LAinc and LAlib.
+ #
+-LAdir        = $(HOME)/netlib/ARCHIVES/Linux_PII
++LAdir        = $(SYSLIBDIR)/
+ LAinc        =
+-LAlib        = $(LAdir)/libcblas.a $(LAdir)/libatlas.a
++LAlib        = -L$(LAdir) -lcblas
+ #
+ # ----------------------------------------------------------------------
+ # - F77 / C interface --------------------------------------------------
+@@ -168,13 +176,13 @@
+ #
+ CC           = mpicc
+ CCNOOPT      = $(HPL_DEFS)
+-CCFLAGS      = $(HPL_DEFS) -fomit-frame-pointer -O3 -funroll-loops -W -Wall
++CCFLAGS      = $(HPL_DEFS) $(CFLAGS) -fomit-frame-pointer -O3 -funroll-loops -W -Wall
+ #
+ # On some platforms,  it is necessary  to use the Fortran linker to find
+ # the Fortran internals used in the BLAS library.
+ #
+ LINKER       = mpif77
+-LINKFLAGS    = $(CCFLAGS)
++LINKFLAGS    = $(CCFLAGS) -Wl,--as-needed
+ #
+ ARCHIVER     = ar
+ ARFLAGS      = r
+diff --git a/testing/ptest/HPL_pdinfo.c b/testing/ptest/HPL_pdinfo.c
+index e24530e..fd1ec80 100644
+--- a/testing/ptest/HPL_pdinfo.c
++++ b/testing/ptest/HPL_pdinfo.c
+@@ -48,6 +48,8 @@
+  * Include files
+  */
+ #include "hpl.h"
++#include <stdlib.h>
++#include <string.h>
+ 
+ #ifdef STDC_HEADERS
+ void HPL_pdinfo
+@@ -275,6 +277,8 @@ void HPL_pdinfo
+    char                       * lineptr;
+    int                        error=0, fid, i, j, lwork, maxp, nprocs,
+                               rank, size;
++   char                       * confdir = NULL;
++   char                       conffile[1024] = {0};
+ /* ..
+  * .. Executable Statements ..
+  */
+@@ -291,14 +295,22 @@ void HPL_pdinfo
+  */
+    if( rank == 0 )
+    {
++      if ( ( confdir = getenv("MPI_SYSCONFIG") ) == NULL )
++         strcpy(conffile, "/etc");
++      else
++         strncpy(conffile, confdir, 1023);
++
++      strncat(conffile, "/hpl/HPL.dat", 1023);
++
+ /*
+  * Open file and skip data file header
+  */
+-      if( ( infp = fopen( "HPL.dat", "r" ) ) == NULL )
++      if( ( infp = fopen( "HPL.dat", "r" ) ) == NULL &&
++          ( infp = fopen( conffile, "r" ) ) == NULL )
+       { 
+          HPL_pwarn( stderr, __LINE__, "HPL_pdinfo",
+                     "cannot open file HPL.dat" );
+-         error = 1; goto label_error;
++         exit( 1 );
+       }
+ 
+       (void) fgets( line, HPL_LINE_MAX - 2, infp );
