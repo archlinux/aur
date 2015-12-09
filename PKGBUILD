@@ -1,7 +1,7 @@
 # Maintainer: Erdbeerkaese <erbeerkaese dot arch at gmail dot com>
 
 pkgname=starsector
-pkgver=0.7a_RC10
+pkgver=0.7.1a_RC5
 pkgrel=1
 pkgdesc="A single-player sandbox style space role-playing game with strategic elements."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ http://s3.amazonaws.com/fractalsoftworks/starsector/starsector_linux-${pkgver//_
 ${pkgname}.pdf::http://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
 starsector.sh
 starsector.desktop)
-sha256sums=('c01847cbb1e26faafd47157c3d657a13fd3f79fdcfd804cf92d24a5e54727556'
+sha256sums=('da1ae46bd75364882216b3af2ca4d94157e6c68c009fecb4af5658e082aefb08'
             '0d9a2382e1c15e3d471b88eb3770c68f5dd93edc81710e511fd892def9f2ab16'
             'd0588ccc3eefe399d764144246718344ff5603396130028a798fc1609d4d0286'
             'becc92483d9599672b75d8b00216a64dd8fda38cfcfccd8e735238aa0ce6d8b6')
