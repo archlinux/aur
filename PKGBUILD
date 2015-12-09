@@ -5,17 +5,12 @@
 pkgname=yoono
 _altpkgname=yoono-desktop
 pkgver=1.8.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to connect to all your social networks and IM services"
 arch=('i686' 'x86_64')
 url="http://www.yoono.com"
 license=('custom:yoono')
-
-if [ "$CARCH" = "i686" ]; then
-  depends=('xulrunner')
-elif [ "$CARCH" = "x86_64" ]; then
-  depends=('lib32-xulrunner')
-fi
+depends=('xulrunner')
 
 source=("http://cdn.yoono.com/desktop/${_altpkgname}-${pkgver}.tar.bz2"
         "yoono"
