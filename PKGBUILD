@@ -2,7 +2,7 @@
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=xdm-xfreq
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A customized XDM for XFreq"
 arch=(any)
 license=('GPL')
@@ -47,5 +47,5 @@ package() {
   chmod 0755 ${pkgdir}/etc/X11/xdm/xdm-xfreq/{Xsession,Xsetup,Xstartup}
   install -Dm755 ${srcdir}/xdm-xfreq-xdesktops ${pkgdir}/usr/lib/systemd/scripts/xdm-xfreq-xdesktops
   install -Dm0644 ${srcdir}/xdm-xfreq.service ${pkgdir}/usr/lib/systemd/system/xdm-xfreq.service
-  install -Dm0644 ${srcdir}/twm-xfreq.desktop ${pkgdir} ${pkgdir}/usr/share/xsessions/twm-xfreq.desktop
+  install -Dm0644 ${srcdir}/twm-xfreq.desktop ${pkgdir}/usr/share/xsessions/twm-xfreq.desktop
 }
