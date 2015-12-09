@@ -6,11 +6,8 @@ case $# in
 0)
 	session_argument="userhome"
 ;;
-1)
-	session_argument=$1
-;;
 *)
-	session_argument="failsafe"
+	session_argument=$*
 ;;
 esac
 
@@ -58,6 +55,10 @@ failsafe)
 	exec /usr/bin/xterm -name login
 ;;
 *)
+	resources=$HOME/.Xresources
+	if [ -r "$resources" ]; then
+		/usr/bin/xrdb -load "$resources"
+	fi
 	exec /bin/sh -ls -c "$session_argument"
 ;;
 esac
