@@ -2,7 +2,7 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=libwbxml
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Library and Tools to parse, encode and handle WBXML documents"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('expat')
 makedepends=('cmake' 'check')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('ceeb6ffd71b636dfdb7bddce9f5eddc2907823cb5f1ba2918a66833e225b5d02')
+sha256sums=('8057998042b8a724328346a50c326010ba011a40e18e2df7043e87498a679c28')
 
 prepare() {
   cd ${srcdir}/libwbxml-${pkgver}
