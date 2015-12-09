@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=4.2
+_basekernel=4.3
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.7
+pkgver=${_basekernel}.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -18,11 +18,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         'config.x86_64'
         'menu.lst'
         'preset')
-sha512sums=('a87bbce3c0c6d810a41bbba1c0dcaae80dc38dded9f8571e97fa4ee5a468d655daf52d260911412f7c7da3171a5114e89d63da14b1753b9a3eb2cc38fd89b9ee' 'SKIP'
-            '81fb9e1cc914920c55addbca182c0f6cef6fcc1105613606e13815f186ff2d6c19c3edeff17e597524fb7b003ac23f2ec62edf28048d3204913d798e34802c60' 'SKIP'
-            'd74d9e201d466fc6b7507f1bd33c68a0f1da60f4ca36cdc39dc5fc7287f4f425ba93fbf28b60b63f2e58a0abd99eaf813f2280f2e455245aad06249856c777c0'
-            '4331bd2dea4bfd04990ff3040f6601e50e930a07f77f7678d0661a4536e536602a95bef1d626e8a7961a7de460f23c068face304fc5d6535b6d6f69fe127a666'
-            '810e1e1cd67b172f29db6c1a3caed8050bb3ff86db1d49abcebd76b5ea70622deefb587cc914d1819df78525ce433564f71533822244a286373fc0f7605e6dde'
+sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056d4ddd9c0f129f570f5d1f6df5c20385aec5f6a2e0755edc1e2f5f93e2c6bc' 'SKIP'
+            '840e93d795f8a07224de06628199d9c84e571db800d3f1d03fced7869e1d0be7c17d33f3451beef39a4eee480df6e8571cb53836dc29bc6059598d876589a64a' 'SKIP'
+            '7c3a72e34be59085c73c6acccd93acfb084464d46a98ec48eb3909f00140aa1ba8219c38be3fcd18959e82e61f90ead2f8aabe4d3c26b79ad3968c4851626242'
+            'ca8c88369eb05d8a5d051247bd99978d697915561bda61ec9f34d7f98fd2ef0d0183b53f56b6cdfe9a0dec37b969f841f33be297e556e81e66f05e0f5c7192b7'
+            '2beaa01dc9679a66ccbbca0f4abeb0f77956651e3f83f114030b2ef344a16240124a549ccee2588b6a1179be6a66b4a8dc931e2c15c4d5282afeb85bb6ada210'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
