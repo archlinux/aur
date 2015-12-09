@@ -3,7 +3,7 @@
 
 pkgname=softmaker-office-2012-bin
 pkgver=2012.702
-pkgrel=2
+pkgrel=3
 pkgdesc="Softmaker Office 2012, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
 arch=('x86_64' 'i686')
@@ -53,6 +53,14 @@ package() {
 
    mkdir -p "${pkgdir}"/usr/share/mime/packages
    install -Dm644 "${pkgdir}/opt/smoffice2012/mime/softmaker-office-2012.xml" "${pkgdir}/usr/share/mime/packages"
+   # To set icons to generic style, uncomment the lines below
+   #sed -i -r "/mime-type type=\"application\/x-(tmd|tmv)\"/a\ \ \ \ \ \ \ <generic-icon name=\"x-office-document\"\ \/>" "${pkgdir}/usr/share/mime/packages/softmaker-office-2012.xml"
+   #sed -i -r "/mime-type type=\"application\/x-(pmd|pmv)\"/a\ \ \ \ \ \ \ <generic-icon name=\"x-office-spreadsheet\"\ \/>" "${pkgdir}/usr/share/mime/packages/softmaker-office-2012.xml"
+   #sed -i -r "/mime-type type=\"application\/x-(prd|prv|prs|)\"/a\ \ \ \ \ \ \ <generic-icon name=\"x-office-presentation\"\ \/>" "${pkgdir}/usr/share/mime/packages/softmaker-office-2012.xml"
+   # To use Softmaker-style icons, while you have set the alternative link names below, use the following lines instead
+   #sed -i -r "/mime-type type=\"application\/x-(tmd|tmv)\"/a\ \ \ \ \ \ \ <generic-icon name=\"application-x-tmd12\"\ \/>" "${pkgdir}/usr/share/mime/packages/softmaker-office-2012.xml"
+   #sed -i -r "/mime-type type=\"application\/x-(pmd|pmv)\"/a\ \ \ \ \ \ \ <generic-icon name=\"application-x-pmd12\"\ \/>" "${pkgdir}/usr/share/mime/packages/softmaker-office-2012.xml"
+   #sed -i -r "/mime-type type=\"application\/x-(prd|prv|prs|)\"/a\ \ \ \ \ \ \ <generic-icon name=\"application-x-prd12\"\ \/>" "${pkgdir}/usr/share/mime/packages/softmaker-office-2012.xml"
 
    for size in 16 32 48
     do
@@ -63,8 +71,16 @@ package() {
 
       install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes"
       ln -s "/opt/smoffice2012/icons/pmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd.png"
+      ln -s "/opt/smoffice2012/icons/pmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmv.png"
       ln -s "/opt/smoffice2012/icons/prd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prd.png"
+      ln -s "/opt/smoffice2012/icons/prd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prv.png"
+      ln -s "/opt/smoffice2012/icons/prd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prs.png"
       ln -s "/opt/smoffice2012/icons/tmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd.png"
+      ln -s "/opt/smoffice2012/icons/tmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmv.png"
+      # To avoid conflicting icon names (FreeOffice), comment the lines above, uncomment the lines below
+      #ln -s "/opt/smoffice2012/icons/pmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd12.png"
+      #ln -s "/opt/smoffice2012/icons/prd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prd12.png"
+      #ln -s "/opt/smoffice2012/icons/tmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd12.png"
     done
 
    install -Dm644 "${srcdir}/license.txt" "${pkgdir}/usr/share/licenses/softmaker-office-bin/license.txt"
