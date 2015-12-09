@@ -1,0 +1,79 @@
+diff -rup revit07-20070804-orig/src/media_access/media_access_ewf.c revit07-20070804/src/media_access/media_access_ewf.c
+--- revit07-20070804-orig/src/media_access/media_access_ewf.c	2007-03-10 12:25:33.000000000 +0300
++++ revit07-20070804/src/media_access/media_access_ewf.c	2012-10-21 22:52:14.408667044 +0300
+@@ -64,7 +64,7 @@ int media_access_ewf_type_test( char * c
+ 	}
+ 	for( iterator = 0; iterator < number_of_files; iterator++ )
+ 	{
+-		if( libewf_check_file_signature( filenames[ iterator ] ) == 0 )
++		if( libewf_check_file_signature( filenames[ iterator ], NULL ) == 0 )
+ 		{
+ 			return( 0 );
+ 		}
+@@ -77,7 +77,7 @@ int media_access_ewf_type_test( char * c
+  */
+ int media_access_ewf_open( media_access_handle_t *handle, char * const filenames[], int number_of_files )
+ {
+-	LIBEWF_HANDLE *ewf_handle = NULL;
++	libewf_handle_t *ewf_handle = NULL;
+ 
+ 	if( handle == NULL )
+ 	{
+@@ -112,7 +112,7 @@ int media_access_ewf_open( media_access_
+  */
+ ssize_t media_access_ewf_read_random( media_access_handle_t *handle, unsigned char *buffer, size_t size, off_t offset )
+ {
+-	LIBEWF_HANDLE *ewf_handle = NULL;
++	libewf_handle_t *ewf_handle = NULL;
+ 	ssize_t read_count        = 0;
+ 
+ 	if( handle == NULL )
+@@ -133,7 +133,7 @@ ssize_t media_access_ewf_read_random( me
+ 
+ 		return( -1 );
+ 	}
+-	ewf_handle = (LIBEWF_HANDLE *) handle->handle;
++	ewf_handle = (libewf_handle_t *) handle->handle;
+ 	read_count = libewf_read_random( ewf_handle, (void *) buffer, size, offset );
+ 
+ 	if( read_count == -1 )
+@@ -150,7 +150,7 @@ ssize_t media_access_ewf_read_random( me
+  */
+ int media_access_ewf_close( media_access_handle_t *handle )
+ {
+-	LIBEWF_HANDLE *ewf_handle = NULL;
++	libewf_handle_t *ewf_handle = NULL;
+ 
+ 	if( handle == NULL )
+ 	{
+@@ -164,7 +164,7 @@ int media_access_ewf_close( media_access
+ 
+ 		return( -1 );
+ 	}
+-	ewf_handle = (LIBEWF_HANDLE *) handle->handle;
++	ewf_handle = (libewf_handle_t *) handle->handle;
+ 
+ 	libewf_close( ewf_handle );
+ 	free( handle );
+@@ -176,7 +176,8 @@ int media_access_ewf_close( media_access
+  */
+ off_t media_access_ewf_size( media_access_handle_t *handle )
+ {
+-	LIBEWF_HANDLE *ewf_handle = NULL;
++	libewf_handle_t *ewf_handle = NULL;
++    size64_t *media_size      = NULL;
+ 
+ 	if( handle == NULL )
+ 	{
+@@ -190,9 +191,9 @@ off_t media_access_ewf_size( media_acces
+ 
+ 		return( 0 );
+ 	}
+-	ewf_handle = (LIBEWF_HANDLE *) handle->handle;
++	ewf_handle = (libewf_handle_t *) handle->handle;
+ 
+-	return( (off_t) libewf_get_media_size( ewf_handle ) );
++	return( (off_t) libewf_get_media_size( ewf_handle, media_size ) );
+ }
+ 
+ #endif /* HAVE_LIBEWF */
