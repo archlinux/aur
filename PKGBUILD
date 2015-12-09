@@ -3,14 +3,14 @@
 
 pkgname=inkblot
 pkgver=0.99.9
-pkgrel=2
+pkgrel=3
 _maintainer=alexandre-mbm
 pkgdesc="Inkblot reports on the remaining ink levels in a wide variety of USB and Parallel connected printers."
 arch=('i686' 'x86_64')
 url="https://github.com/${_maintainer}/${pkgname}"
 license=('GPL')
 depends=('libinklevel' 'libieee1284')
-makedepends=('libinklevel' 'libieee1284')
+makedepends=('libdbus' 'atk' 'cairo' 'dbus-glib' 'freetype2' 'gconf' 'gdk-pixbuf2' 'gnome-vfs' 'gtk2' 'harfbuzz' 'harfbuzz-icu' 'libart-lgpl' 'libbonobo' 'libbonoboui' 'libdrm' 'libglade' 'libgnome' 'libgnomecanvas' 'libgnome-keyring' 'libgnomeui' 'libpng' 'libxml2' 'orbit2' 'pango' 'pixman' 'python-dbus-common' 'perl-xml-parser')
 source=("https://github.com/${_maintainer}/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('eadeafc4a5621d684287fa1ac6aa65d3')
 
