@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=folly-git
-pkgver=0.57.0.r209.g442584e
+pkgver=0.57.0.r245.g750d49c
 pkgrel=1
 pkgdesc='Folly is an open-source C++ library developed and used at Facebook'
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ prepare() {
   find -name '*.py' -exec sed -i 's|^#!/usr/bin/env python$|#!/usr/bin/env python2|' {} \;
 
   cd test
-  ln -s "$srcdir"/gtest-1.6.0
+  ln -sf "$srcdir"/gtest-1.6.0
 }
 
 build() {
