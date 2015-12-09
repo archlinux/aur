@@ -1,0 +1,18 @@
+pkgbase = gst-gtklaunch-1.0
+	pkgdesc = A utility for testing and controlling live GStreamer 1.0 pipelines. It will inspect the specified pipeline to create the GTK GUI automagically using introspection
+	pkgver = 2015.12.9
+	pkgrel = 1
+	url = https://github.com/UbiCastTeam/gst-gtklaunch-1.0
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = xdot
+	depends = graphviz
+	source = git+https://github.com/UbiCastTeam/gst-gtklaunch-1.0.git
+	sha512sums = SKIP
+
+pkgname = gst-gtklaunch-1.0
+
