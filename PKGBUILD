@@ -2,7 +2,7 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=danbooru-client
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Application to access Danbooru-based image boards. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('extra-cmake-modules'
              'python'
              )
 source=("https://www.dennogumi.org/releases/danbooru-client-${pkgver}.tar.xz")
-sha1sums=('e3c4fc2c2934f8c2423b9270b8efad5aa963a3d9')
+sha1sums=('33fd5dffcedacaadb7baef8840bbc7eb2c3a18e2')
 install=danbooru-client.install
 
 prepare() {
