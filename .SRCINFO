@@ -1,7 +1,7 @@
 pkgbase = paraview
 	pkgdesc = Parallel Visualization Application using VTK
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.paraview.org
 	arch = i686
 	arch = x86_64
@@ -28,9 +28,11 @@ pkgbase = paraview
 	source = http://paraview.org/files/v4.4/ParaView-v4.4.0-source.tar.gz
 	source = paraview.png
 	source = paraview.desktop
+	source = paraview_32bit.patch
 	sha1sums = 276fc91f2a7aec72b7740c5312b560cc76157370
 	sha1sums = a2dff014e1235dfaa93cd523286f9c97601d3bbc
 	sha1sums = 1f94c8ff79bb2bd2c02d6b403ea1f4599616531b
+	sha1sums = c25134330c582371e1009b51445cdb435144b53f
 
 pkgname = paraview
 
