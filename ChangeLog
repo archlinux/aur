@@ -1,5 +1,8 @@
 2014-06-08 FoolEcho <foolecho at gmail dot com>
 
+	* 4.2.3-2 :
+	Changes in the url in order not to break the package version when an upstream update occurs (suggested by Niluge_KiWi).
+
 	* 4.2.3 :
 	Update.
 
