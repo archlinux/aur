@@ -1,12 +1,17 @@
-Arch Linux package for the Nagios server-side NRPE plugin
+Arch Linux package for the Nagios Server NRPE plugin (installed on the
+monitoring machine).
 
 To updated version:
 - Check http://sourceforge.net/projects/nagios/files/
         http://sourceforge.net/projects/nagios/files/nrpe-2.x/
   for new version.
-
 - Update PKGBUILD pkgver
 - Run `makepkg -g` and copy MD5 sum to PKGBUILD
 - Run `makepkg`
-- Run `makepkg --source` and upload the nagios-nrpe-plugin-*.src.tar.gz file.
-- Commit to git and tag v2.14-1
+- `git commit`
+- `git release`, which does:
+
+    $ mksrcinfo
+    $ git tag-release
+    $ git push origin --tags    # github
+    $ git push aur              # aur4

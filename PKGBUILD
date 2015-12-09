@@ -4,8 +4,8 @@
 
 pkgname=nagios-nrpe-plugin
 pkgver=2.15
-pkgrel=4
-pkgdesc="The Nagios NRPE server side plugin."
+pkgrel=5
+pkgdesc="The Nagios Server NRPE plugin (install on the monitoring machine)."
 license=('GPL')
 arch=('any')
 url="http://www.nagios.org"
