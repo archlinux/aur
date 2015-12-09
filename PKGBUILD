@@ -9,14 +9,12 @@ arch=('any')
 license=('BSD')
 depends=('python2' 'tk' 'python2-pyusb')
 optdepends=('sudo: runtime privilege escalation'
-	    'gksudo: runtime privilege escalation'
 	    'kdesudo: runtime privilege escalation'
 	    'gksu: runtime privilege escalation'
 	    'kdesu: runtime privilege escalation')
 
-source=("git://github.com/c0mm0ner/ewsgateway.git")
-
-md5sums=('SKIP')
+source=("https://github.com/c0mm0ner/ewsgateway/archive/v1.0.1.tar.gz")
+md5sums=('0848ad12589943294e0acbdca30b2b21')
 
 build() {
 	cd $srcdir/$pkgname/
