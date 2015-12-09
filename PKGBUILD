@@ -3,7 +3,7 @@
 _pkgbase=git
 pkgbase=git-git
 pkgname=('git-git')
-pkgver=v2.6.3.r469.ge5da865
+pkgver=v2.6.4.r442.g545299f
 pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('i686' 'x86_64')
