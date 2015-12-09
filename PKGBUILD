@@ -3,7 +3,7 @@
 
 pkgname=perl-text-autoformat
 _cpanname=Text-Autoformat
-pkgver=1.72
+pkgver=1.74
 pkgrel=1
 pkgdesc="A Perl module for automatic text wrapping and reformatting"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl-text-reform')
 options=('!emptydirs')
 source=(https://cpan.metacpan.org/authors/id/N/NE/NEILB/${_cpanname}-${pkgver}.tar.gz)
-md5sums=('ebb9d3b1c74776870d65d2b66046876e')
+md5sums=('2c147571940dddec4974ca8cd5ddc57f')
 
 build() {
   cd "$srcdir/${_cpanname}-${pkgver}"
