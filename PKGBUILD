@@ -4,7 +4,7 @@ pkg_base=dogecoin
 pkgname=('dogecoin-daemon')
 pkgver=1.10.0
 _git_branch=master
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://dogecoin.com/'
 makedepends=('boost' 'automoc4' 'protobuf')
@@ -30,6 +30,7 @@ package_dogecoin-daemon() {
   depends=(boost-libs openssl)
   cd $srcdir/$pkg_base-$_git_branch
   install -Dm755 src/$pkg_base'd' $pkgdir/usr/bin/$pkg_base'd'
+  install -Dm755 src/$pkg_base'-cli' $pkgdir/usr/bin/$pkg_base'-cli'
   install -Dm644 contrib/debian/examples/$pkg_base.conf $pkgdir/usr/share/doc/$pkgname/examples/$pkg_base.conf
   install -Dm644 contrib/debian/manpages/$pkg_base'd.1' $pkgdir/usr/share/man/man1/$pkg_base'd.1'
   install -Dm644 contrib/debian/manpages/$pkg_base.conf.5 $pkgdir/usr/share/man/man5/$pkg_base.conf.5
