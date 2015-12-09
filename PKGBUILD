@@ -40,7 +40,7 @@ _accesskey_ver="2.0.3"
 _accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom-dev
-pkgver=1.9.6
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="Development version of lightweight HTTP server and IMAP/POP3 proxy server with standard, additional and 3d party modules"
 arch=('i686' 'x86_64')
@@ -94,7 +94,7 @@ md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
          '845cab784b50f1666bbf89d7435ac7af'
          '79031b58828462dec53a9faed9ddb36a'
          '6696dc228a567506bca3096b5197c9db'
-         'f6899825e7a8deadba4948ff84515ad6'
+         '1a6a725f52ea082f689003deb9da4ded'
          '6d28dfd6cef1f130a1df97d61425798c'
          '3d4ec04bbc16c3b555fa20392c1119d1'
          '68a1af12d5c1218fb2b3e05ed7ff6f0c'
