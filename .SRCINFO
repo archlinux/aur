@@ -1,6 +1,6 @@
 pkgbase = arm-frc-linux-gnueabi-wpilib-git
 	pkgdesc = The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain
-	pkgver = 1246.5c82146
+	pkgver = 1248.8b0f19a
 	pkgrel = 1
 	url = https://usfirst.collab.net/sf/projects/wpilib/
 	arch = i686
@@ -17,8 +17,6 @@ pkgbase = arm-frc-linux-gnueabi-wpilib-git
 	options = staticlibs
 	options = !emptydirs
 	source = git+https://usfirst.collab.net/gerrit/allwpilib
-	source = git+git://github.com/PeterJohnson/ntcore
-	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = arm-frc-linux-gnueabi-wpilib-git
