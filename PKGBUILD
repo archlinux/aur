@@ -19,9 +19,9 @@ source=(
     "tracks.zip::https://github.com/TracksApp/tracks/zipball/v${pkgver}")
 install="${pkgname}.install"
 sha256sums=('d6a762be317e3753d50aca29a953cd5c8ef0aae6ddabd5807124e2e41ba46f48'
-            '31f09cd39b632c91dd47e92780d29e84e2173abe268f0286de14f6126e1ba018'
-            'f9e9524e89748f11e797a09f53ea201ec9438a62465fdfa3cfbc4e9cfbb86ce4')
-_tracks_archive_path='TracksApp-tracks-f98d32c'
+            '9decac0239505dcbd8cdbde1d105939a4388a243f570f83c4dfee1e709517418'
+            'dbe6e1e940305e8d5ce7d794d26bfd69a4740f7176a76df4aecb7d69927d1762')
+_tracks_archive_path='TracksApp-tracks-4070f4e'
 
 prepare() {
     cd "${srcdir}/${_tracks_archive_path}"
