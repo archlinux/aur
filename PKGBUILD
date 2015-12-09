@@ -3,7 +3,7 @@
 
 pkgname=qemu-user-static
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation, statically linked."
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -13,10 +13,10 @@ optdepends=('binfmt-support: to allow handling foreign ELF binaries and executin
 conflicts=()
 _arch=i386
 [ "$CARCH" = 'x86_64' ] && _arch=amd64
-_debsrc=${pkgname}_${pkgver}+dfsg-4_${_arch}.deb
+_debsrc=${pkgname}_${pkgver}+dfsg-5_${_arch}.deb
 source=(http://ftp.debian.org/debian/pool/main/q/qemu/${_debsrc})
-sha1sums=('b57637bb2d78ce21f7ed1b62e89617bee3681ba8')
-[ "$CARCH" = 'i686' ] && sha1sums=('74846b3f7a7bd3f45ea7fb6ec61fcad45b351374')
+sha1sums=('2f72ea33379feb6936e2e72ebcf3497c69fbe252')
+[ "$CARCH" = 'i686' ] && sha1sums=('e52e3540e67b5b921dcfd3d02565abc9e4e91285')
 
 prepare() {
   cd "$srcdir"
