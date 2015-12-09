@@ -2,7 +2,7 @@
 
 pkgname='ovirt-engine-cli'
 pkgver='4.0.0.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='oVirt Engine Command Line Interface'
 arch=('any')
 url='http://www.ovirt.org/CLI'
@@ -12,8 +12,8 @@ makedepends=('python2' 'python2-setuptools' 'python2-ply' 'python2-kitchen')
 license=('ASL 2.0')
 source=("http://resources.ovirt.org/pub/ovirt-master-snapshot/src/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 	"add_password_option.patch")
-sha256sums=("7702351f8a38413fa2e25fc583e6aeb2b5ce331bc4632633b6a757ccffd8ffa5"
-	    "a973931155cefd35ad5686b0a6cfe3ae595c2bfbb8ecaa152790b10966013370")
+sha256sums=('7c59ed16c27cbee35610b9477b043f99a799bae973ab41ffc5cbf3d443218c95'
+            'a973931155cefd35ad5686b0a6cfe3ae595c2bfbb8ecaa152790b10966013370')
 
 prepare() {
   cd "${srcdir}/${pkgname}/src/ovirtcli/infrastructure"
