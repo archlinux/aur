@@ -1,0 +1,16 @@
+pkgbase = tsung
+	pkgdesc = Erlang-based open-source multi-protocol distributed load testing tool
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = http://tsung.erlang-projects.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = erlang
+	depends = gnuplot
+	depends = perl
+	source = http://tsung.erlang-projects.org/dist/tsung-1.6.0.tar.gz
+	md5sums = ecefc861c2e0c1f99da459261559055a
+
+pkgname = tsung
+
