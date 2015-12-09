@@ -1,16 +1,16 @@
 pkgbase = quickrdp
 	pkgdesc = Connection manager program for your remote desktop, telnet, SSH or VNC connections.
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
-	url = http://quickrdp.sourceforge.net/
+	url = https://github.com/arnestig/quickrdp
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = wxgtk
 	depends = curl
 	optdepends = rdesktop: remote desktop support
-	source = http://downloads.sourceforge.net/quickrdp/quickrdp-2.4.1-src.tar.gz
-	md5sums = c678fa0bb9a7e3459b2bfed6520b865b
+	source = quickrdp-2.4.2.tar.gz::https://github.com/arnestig/quickrdp/archive/2.4.2.tar.gz
+	md5sums = 92f6c355d1945ab8856ba2baa88aecac
 
 pkgname = quickrdp
 
