@@ -2,15 +2,16 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-toolz
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="A set of utility functions for iterators, functions, and dictionaries."
 arch=('any')
 url="https://pypi.python.org/pypi/toolz"
 license=('BSD')
 depends=('python')
+makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/t/toolz/toolz-$pkgver.tar.gz")
-sha256sums=('56b2fc25d48337c39a30545ae28d643df28a2d63be12aae3c1336edc485098b1')
+sha256sums=('43c2c9e5e7a16b6c88ba3088a9bfc82f7db8e13378be7c78d6c14a5f8ed05afd')
 
 
 package() {
