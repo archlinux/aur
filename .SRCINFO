@@ -1,0 +1,19 @@
+pkgbase = s25rttr-nightly-bin
+	pkgdesc = Settlers II remake (Needs a copy of the original game!)
+	pkgver = 20151130
+	pkgrel = 1
+	url = http://www.siedler25.org/
+	install = s25rttr-nightly-bin.install
+	arch = x86_64
+	license = GPL3
+	depends = sdl
+	depends = sdl_mixer
+	source = http://www.siedler25.org/uploads/nightly/s25rttr_20151130-cde29735625178cf4b627e42a44367443452a967_linux.x86_64.tar.bz2
+	source = rttr
+	source = s25rttr-nightly-bin.install
+	sha256sums = 96d2d08a05a4f8db8ba3bf741307d7b1ed96f3cde3134f1ef61264fbfc6dfe1b
+	sha256sums = 985b0e88823e3b7d525cedfb602bb249217dc0e5271223b2a810ef37c1908fdb
+	sha256sums = 774aaaafc556ccd3334ee0129267382117ec5e178095377a4676cbcf00845489
+
+pkgname = s25rttr-nightly-bin
+

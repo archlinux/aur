@@ -1,0 +1,4 @@
+post_install() {
+  echo ">>> You need to populate /usr/share/s25rttr/S2/ with an existing copy"
+  echo ">>> of The Settlers II"
+}
