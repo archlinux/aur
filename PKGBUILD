@@ -45,21 +45,22 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=1.4.9.r21.g6d3d464
+pkgver=1.4.10.r23.g5b7ca39
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows and Linux, builds server or client'
 arch=('i686' 'x86_64')
 url='http://www.urbackup.org/'
 license=('GPL')
-depends=('crypto++')
-makedepends=('python3' 'autoconf')
-provides=("${_pkgname}")
+depends=('crypto++' 'fuse')
+makedepends=('python3' 'autoconf' 'git')
+provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
+install=("${_pkgname}.install")
+_verwatch=("${url/http/https}/download.html" 'https://hndl\.urbackup\.org/Server/[0-9\.]\+/urbackup-server-\([0-9\.]\+\)\.tar\.gz' 'l')
 source=('git+https://github.com/uroni/urbackup_backend.git' 'git+https://github.com/uroni/urbackup_frontend_wx.git' 'urbackup-client.service')
 sha256sums=('SKIP'
             'SKIP'
             'e4c40d10909417cd04898388bab41aa6434375b62944183f132e606ed71f70b2')
-install=("${_pkgname}.install")
 _srcdir='urbackup_backend'
 if [ "${_opt_BuildClient}" -ne 0 ]; then
   unset install
@@ -69,6 +70,36 @@ if [ "${_opt_BuildClient}" -ne 0 ]; then
 else
   optdepends=('btrfs-progs: compressed and subvolume assisted backups')
 fi
+
+_fn_getversion() {
+  set > z
+  export _urverdone='x'
+  declare -gA _urversion
+  local _branch="$(git branch)"
+  _branch="${_branch##\* }"
+
+  local _line
+  local _build
+  while read -r _line; do
+    _line="${_line//\"/}"
+    _line="${_line//,/}"
+    _line="${_line//\{/}"
+    _line="${_line//\}/}"
+    if [ ! -z "${_line}" ]; then
+      case "${_line}" in
+      [a-z]*':') _build="${_line%%:}";;
+      [a-z]*': '[0-9\.]*)
+        local _val="${_line##[a-z]*: }"
+        local _key="${_line%%: [0-9\.]*}"
+        _urversion["${_build}.${_key}"]="${_val}"
+        ;;
+      esac
+      echo "${_line}" 1>&2
+    fi
+  done < <(curl -s "http://buildserver.urbackup.org/urbackup_build_version_${_branch}.json")
+  _urversion['server.full_rev']="${_urversion[server.full]} Rev. $(git rev-parse HEAD)"
+  unset _key _val _build _line _branch
+}
 
 pkgver() {
   set -u
@@ -91,6 +122,8 @@ prepare() {
   set -u
   cd "${srcdir}/${_srcdir}"
   git reset --hard
+
+  _fn_getversion
   # Some patches
   sed -i -e 's:$PREFIX/sbin/:$PREFIX/bin/:g' start_urbackup_{client,server}
   sed -i -e 's:/sbin/btrfs:/usr/bin/btrfs:g' 'snapshot_helper/main.cpp'
@@ -98,15 +131,32 @@ prepare() {
   sed -i -e 's,L"C:\\\\urbackup",\n#ifdef _WIN32\n&\n#else\nL"/urbackup"\n#endif\n,g' 'urbackupserver/server_settings.cpp' # Irksome bug!
 
   # fix the build scripts
+  #sed -i -e 's:response.readall():response.read():g' 'build/replace_versions.py' # python was always a bad choice for these text replacements. As of Python 3.5 this script doesn't work at all and read() is not a proper replacement for readall().
+  #sed is the right tool for this job.
+
+  sed -i -e 's:\$version_short\$'":${_urversion[server.short]} Arch Linux:g" 'urbackupserver/www/index.htm'
+  sed -i -e 's:\$version_short\$'":${_urversion[server.short]}:g" 'urbackupserver_installer_win/urbackup_server.nsi' 'urbackupserver_installer_win/generate_msi.bat'
+  sed -i -e 's:\$version_full\$'":${_urversion[server.full_rev]}:g" 'urbackupserver/www/index.htm'
+  sed -i -e 's:\$version_full_numeric\$'":${_urversion[server.full_numeric]}:g" 'urbackupserver_installer_win/urbackup_server.wxs'
+  # replace_in_file("urbackupserver_installer_win/urbackup_server.wxi", "$product_id$", str(uuid.uuid1())) Don't need this!
+
   cp -p 'build_server.sh' 'build_server.Arch.sh'
   cp -p 'build_client.sh' 'build_client.Arch.sh'
   sed -i -e '# Block make so makepkg -e so works properly' \
          -e 's:^make:exit 0\n#&:g' \
          -e "# We'll do git reset so we can make a few changes afterwards" \
          -e 's:^git reset:#&:g' \
+         -e "# Version updates are now done here in PKGBUILD" \
+         -e 's:^python3 :#&:g' \
     'build_server.Arch.sh' 'build_client.Arch.sh'
+
   if [ "${_opt_BuildClient}" -ne 0 ]; then
     ln -sf '../urbackup_frontend_wx' 'client'
+
+    sed -i -e 's:\$version_short\$'":${_urversion[client.short]}:g" 'client_version.h' 'client/urbackup.nsi' 'client/urbackup_update.nsi' 'client/urbackup_notray.nsi' 'client/build_msi.bat'
+    sed -i -e 's:\$version_full_numeric\$'":${_urversion[client.full_numeric]}:g" 'client/urbackup.wxs'
+    # replace_in_file("client/urbackup.wxi", "$product_id$", str(uuid.uuid1())) # Don't need this!
+
     if [ "${_opt_Headless}" -eq 0 ]; then
       sed -i -e '# Fix configure line' \
              -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --localstatedir="/var":g' \
@@ -131,8 +181,8 @@ prepare() {
 build() {
   set -u
   cd "${srcdir}/${_srcdir}"
-  make -s -j $(nproc)
-  make dist
+  make -s -j "$(nproc)"
+  make -s -j "$(nproc)" dist
   set +u
 }
 
@@ -140,10 +190,10 @@ package() {
   set -u
   cd "${srcdir}/${_srcdir}"
 
-  make DESTDIR="${pkgdir}" install
+  make -s DESTDIR="${pkgdir}" install
 
   if [ "${_opt_BuildClient}" -ne 0 ]; then
-    install -Dm755 "${srcdir}/urbackup-client.service" -t "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm644 "${srcdir}/urbackup-client.service" -t "${pkgdir}/usr/lib/systemd/system/"
     sed -i -e 's:/usr/sbin/:/usr/bin/:g' "${pkgdir}/usr/lib/systemd/system/urbackup-client.service"
     install -Dm644 "docs/start_urbackup_client.1" -t "${pkgdir}/usr/share/man/man1/"
     install -Dm644 "docs/urbackup_client.1" -t "${pkgdir}/usr/share/man/man1/"
@@ -164,13 +214,18 @@ package() {
     install -Dpm644 docs/{start_urbackup_server,urbackup_srv}.1 -t "${pkgdir}/usr/share/man/man1/"
   fi
 
-# Ensure there are no forbidden paths. Comment these out as you find or need exceptions. (git-aurcheck)
-  ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
-  # ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}" # This fails over
-  # ! grep -alqr "/usr/local" "${pkgdir}" || echo "${}" # This fails over
-  ! test -d "${pkgdir}/usr/sbin" || echo "${}"
-  ! test -d "${pkgdir}/usr/local" || echo "${}"
   set +u
+  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
+  #! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
+  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
+  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
+  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
+  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
+  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
+  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
+  #! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
+  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
+  #! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 set +u
 # vim: ts=2
