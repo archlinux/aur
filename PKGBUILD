@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 121750 2014-11-03 16:11:38Z anatolik $
 # Maintainer: Anatol Pomozov
 # Contributor: Byron Clark <byron@theclarkfamily.name>
 
@@ -8,7 +7,7 @@
 # the binding from the language specific managers python2-thrift, perl-thrift, ruby-thrift, ...
 
 pkgname=thrift-git
-pkgver=0.9.2.r4362.d6ca81b
+pkgver=0.9.3.r4462.52de5ca
 pkgrel=1
 pkgdesc='Scalable cross-language services framework for IPC/RPC'
 arch=(i686 x86_64)
@@ -24,7 +23,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd thrift
-  echo 0.9.2.r$(git rev-list --count master).$(git rev-parse --short master)
+  echo 0.9.3.r$(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
