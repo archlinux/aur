@@ -3,8 +3,8 @@
 
 pkgname=python-dask
 _pkgname=dask
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.7.5
+pkgrel=1
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
 url="https://dask.readthedocs.org/"
@@ -13,7 +13,7 @@ depends=('python' 'python-numpy' 'python-dill' 'python-pandas' 'python-toolz' 'p
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=(https://pypi.python.org/packages/source/d/dask/dask-$pkgver.tar.gz)
-sha256sums=('733834fc78aee8423c616349f225f197cfcf6451c3bf0a4fdeb412bca57b59b3')
+sha256sums=('2b8a67e452d06a3eed5cd8f7e45d05ee90e540f766a971c6809fd2e3c7974117')
 
 #check() {
 #  cd "$srcdir/$_pkgname-$pkgver"
