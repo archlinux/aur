@@ -1,16 +1,16 @@
 # Maintainer: renek <aur@spaceshore.net>
 _pkgname=aiosasl
 pkgname=python-${_pkgname}
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Pure-python, protocol-agnostic SASL implementation for asyncio"
+pkgdesc="A pure python generic asyncio SASL library"
 arch=('any')
 url="https://github.com/horazont/aiosasl"
 license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/horazont/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('212cf60d6d5fea7fc4a6c292b9ef0eb66e179c86cd6f27f64c222df30114280e3fd2faedf464e57accd578224e53ada8b6e5c4b2b752d3beffafc9a9cd2c5b31')
+sha512sums=('04caf45970c50150ac64a6988c59feaf9503babd964fa5bfd7ce72cd300787f758942886472b960aa26fb50a7e49990a20b0d5e5090a5d3e2862bd056de101ea')
 
 package() {
     cd "$_pkgname-$pkgver"
