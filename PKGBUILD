@@ -1,7 +1,7 @@
 # Maintainer: sen <sen@archlinux.us>
 pkgname=chrome-cntp
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome / Chromium extension that provides a customizable New Tab Page. Offers: RSS Feeds, Weather Forecast, Notes and Bookmarks"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -17,4 +17,5 @@ package() {
 
   install -Dm644 CNTP.crx "$pkgdir/usr/share/CNTP/CNTP.crx"
   install -Dm644 jajbaigdfabgadnbmogpoichmgogbjmo.json "$pkgdir/usr/share/chromium/extensions/jajbaigdfabgadnbmogpoichmgogbjmo.json"
+  install -Dm644 jajbaigdfabgadnbmogpoichmgogbjmo.json "$pkgdir/usr/share/google-chrome/extensions/jajbaigdfabgadnbmogpoichmgogbjmo.json"
 }
