@@ -1,11 +1,11 @@
 pkgname=kndiswrapper-qt5
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Frontend for ndiswrapper'
 url='http://kde-apps.org/content/show.php/KNDISWrapper?content=86885'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('qt5-base' 'ndiswrapper' 'polkit')
+depends=('qt5-base' 'ndiswrapper')
 makedepends=('qt5-tools')
 provides=kndiswrapper
 conflicts=kndiswrapper
@@ -48,7 +48,7 @@ GenericName=kndiswrapper
 GenericName[de]=kndiswrapper
 Comment=A GUI for ndiswrapper
 Comment[de]=Eine GUI fuer ndiswrapper.
-Exec=pkexec env DISPLAY=\$DISPLAY XAUTHORITY=\$XAUTHORITY kndiswrapper
+Exec=kndiswrapper
 Icon=kndiswrapper
 Terminal=false
 Type=Application

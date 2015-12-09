@@ -1,6 +1,6 @@
 diff -Naur a/install.sh b/install.sh
 --- a/install.sh	2012-03-06 15:44:43.000000000 +0800
-+++ b/install.sh	2015-11-25 19:04:15.423650061 +0800
++++ b/install.sh	2015-12-09 17:16:50.755868557 +0800
 @@ -1,11 +1,12 @@
  #!/bin/bash
 -
@@ -74,20 +74,18 @@ diff -Naur a/install.sh b/install.sh
  [Desktop Entry]
  Encoding=UTF-8
  Name=kndiswrapper
-@@ -51,8 +61,8 @@
- GenericName[de]=kndiswrapper
+@@ -52,7 +62,7 @@
  Comment=A GUI for ndiswrapper
  Comment[de]=Eine GUI fuer ndiswrapper.
--Exec=/usr/bin/kndiswrapper
+ Exec=/usr/bin/kndiswrapper
 -Icon=/usr/share/kndiswrapper/kndiswrapper.png
-+Exec=pkexec env DISPLAY=\$DISPLAY XAUTHORITY=\$XAUTHORITY kndiswrapper
 +Icon=kndiswrapper
  Terminal=false
  Type=Application
  StartupNotify=true
 diff -Naur a/kndiswrapper.pro b/kndiswrapper.pro
 --- a/kndiswrapper.pro	2012-03-06 15:44:43.000000000 +0800
-+++ b/kndiswrapper.pro	2015-11-25 18:21:39.739143125 +0800
++++ b/kndiswrapper.pro	2015-12-09 17:16:50.755868557 +0800
 @@ -4,7 +4,7 @@
  #
  #-------------------------------------------------
@@ -99,17 +97,19 @@ diff -Naur a/kndiswrapper.pro b/kndiswrapper.pro
  TEMPLATE = app
 diff -Naur a/src/kndiswrapper.cpp b/src/kndiswrapper.cpp
 --- a/src/kndiswrapper.cpp	2012-03-06 15:44:43.000000000 +0800
-+++ b/src/kndiswrapper.cpp	2015-11-25 18:39:59.147991774 +0800
-@@ -1,7 +1,6 @@
++++ b/src/kndiswrapper.cpp	2015-12-09 18:02:43.402730822 +0800
+@@ -1,7 +1,8 @@
  #include "kndiswrapper.h"
 -#include <klocale.h>
++#include <QDebug>
++#include <unistd.h>
  //
 -kndiswrapper::kndiswrapper( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 +kndiswrapper::kndiswrapper( QWidget * parent, Qt::WindowFlags f) : QDialog(parent, f)
  {
  	//setupUi(this);
  
-@@ -35,12 +35,12 @@
+@@ -35,19 +36,35 @@
  	disablenetconf=false;
  	invokeSetup=false;
          debug=false;
@@ -128,7 +128,33 @@ diff -Naur a/src/kndiswrapper.cpp b/src/kndiswrapper.cpp
  		}
  	}
  
-@@ -173,9 +173,9 @@
+-        QString rootcheck = (QString)getenv("HOME");
+-        if (rootcheck != "/root"){
++        if (getuid() != 0){
+             if (!disablerootcheck){
+-                QMessageBox::information(this,"DEBUG","You have to be root to run this programm.\nTry --disablerootcheck for testing.");
++                QStringList SuCandidates;
++                QString SuCmd; 
++                SuCandidates << "kdesu" << "gksu" << "kdesudo" << "gksudo";
++                for (int i=0;i<SuCandidates.count();++i) {
++                    QString rval;
++                    rval = QStandardPaths::findExecutable(SuCandidates[i]);
++                    if (QFileInfo(rval).isExecutable()) {
++                        SuCmd = SuCandidates[i];
++                        break;
++                    }
++                }
++                if (SuCmd != QString()) {
++                    QProcess process;
++                    process.startDetached(SuCmd+QString(" ")+QCoreApplication::applicationFilePath());
++                    //process.waitForFinished(-1);
++                } else {
++                    QMessageBox::information(this,"DEBUG","You have to be root to run this programm.\nTry --disablerootcheck for testing.");
++                }
+                 exit(0);
+             }
+         }
+@@ -173,9 +190,9 @@
          QString launcher;
          launcher = "kdesu ";
          launcher = launcher + "\"kndiswrapper ";
@@ -143,8 +169,16 @@ diff -Naur a/src/kndiswrapper.cpp b/src/kndiswrapper.cpp
          launcher = launcher + "\" &";
 diff -Naur a/src/kndiswrapper.h b/src/kndiswrapper.h
 --- a/src/kndiswrapper.h	2012-03-06 15:44:43.000000000 +0800
-+++ b/src/kndiswrapper.h	2015-11-25 18:22:43.935141388 +0800
-@@ -26,7 +26,7 @@
++++ b/src/kndiswrapper.h	2015-12-09 17:43:30.160769769 +0800
+@@ -19,6 +19,7 @@
+ #include <QFont>
+ #include <QDir>
+ #include <QAction>
++#include <QStandardPaths>
+ //#include <cstdlib>
+ //#include <cstring>
+ #include "ui_kndiswrapper.h"
+@@ -26,7 +27,7 @@
  class kndiswrapper : public QDialog, public Ui::kndiswrapper{
  	Q_OBJECT
  public:
