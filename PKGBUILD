@@ -3,52 +3,34 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=fspcc
-pkgver=1.8
-pkgrel=2
+pkgver=r514.6f4a84a
+pkgrel=1
 pkgdesc="An FSP compiler and LTS analysis tool"
 arch=('any')
-url=
 license=('GPL3')
 groups=()
 depends=('bash')
 optdepends=('graphviz: visualizing compiled LTS' 'xv: visualizing compiled LTS')
 makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-md5sums=()
+source=("git+https://github.com/vmaffione/fspc.git")
+md5sums=("SKIP")
 
-_gitroot="https://github.com/vmaffione/fspc.git"
-_gitname="fspc"
+_swname=fspc
+
+pkgver() {
+        cd "$srcdir/${_swname}"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-    # Download the latest netmap code from the public repository
-    cd "$srcdir"
-    msg "Connecting to GIT server...."
-    if [[ -d "$_gitname" ]]; then
-        cd "$_gitname" && git pull origin
-        msg "The local files are updated."
-    else
-        git clone "$_gitroot" "$_gitname"
-        cd "$srcdir/$_gitname"
-    fi
-    msg "GIT checkout done or server timeout"
-
-    msg "Starting to build fspc"
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/${_swname}"
     autoreconf --install
     ./configure || return 1
     make OPTIMIZE=-O2 || return 1 
-    msg "Build complete"
 }
 
 package() {
-    cd "$srcdir/$_gitname/src"
+    cd "$srcdir/${_swname}/src"
     mkdir -p "$pkgdir/usr/bin"
     cp fspcc "$pkgdir/usr/bin"
     cp ltsee "$pkgdir/usr/bin"
