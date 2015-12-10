@@ -26,7 +26,6 @@ package() {
     # fix rights and ownership
     chown -R http:http usr/share/webapps/${_pkgname}
     chown -R http:http var/lib/${_pkgname}
-    chown -R http:http etc/webapps/${_pkgname}
 
     # php.ini
     install -dm0755 $pkgdir/etc/php/conf.d/
