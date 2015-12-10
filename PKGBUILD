@@ -1,12 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sxemacs-git
 pkgver=22.1.15.239.gfd2c930
-pkgrel=1
+pkgrel=2
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
 url="http://www.sxemacs.org/"
 license=('GPL')
-depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 'compface' 'libpulse' 'libxaw' 'postgresql-libs' 'sox' 'openmotif')
+depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 'compface' 'libpulse' 'libxaw' 'postgresql-libs' 'sox' 'openmotif' 'openssl')
 makedepends=('git' 'texinfo' 'xbitmaps')
 provides=('sxemacs')
 conflicts=('sxemacs' 'xemacs')
@@ -28,7 +28,7 @@ build() {
   cd build
   ../${_gitname}/autogen.sh 
   LIBS="$LIBS -ldl -fPIC" CFLAGS="$CFLAGS -I/usr/include/freetype2" \
-      ../${_gitname}/configure --prefix=/usr
+      ../${_gitname}/configure --prefix=/usr --with-openssl
   make
 }
 
