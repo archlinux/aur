@@ -1,0 +1,32 @@
+--- old/cmake/Modules/GetVersionInfo.cmake	2015-11-25 14:12:22.000000000 -0500
++++ new/cmake/Modules/GetVersionInfo.cmake	2015-12-07 17:48:36.550139947 -0500
+@@ -22,12 +22,6 @@
+     STRING(REPLACE "-" "_" LCB_VERSION "${LCB_VERSION}")
+     MESSAGE(STATUS "Sanitized VERSION=${LCB_VERSION}")
+     RUNGIT(LCB_VERSION_CHANGESET rev-parse HEAD)
+-
+-    EXECUTE_PROCESS(
+-        COMMAND echo ${LCB_VERSION}
+-        COMMAND awk -F. "{printf \"0x%0.2d%0.2d%0.2d\", $1, $2, $3}"
+-        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+-        OUTPUT_VARIABLE LCB_VERSION_HEX)
+ ENDIF()
+ 
+ IF(LCB_VERSION)
+@@ -47,9 +41,13 @@
+ IF (NOT LCB_VERSION_CHANGESET)
+     SET(LCB_VERSION_CHANGESET "0xdeadbeef")
+ ENDIF()
+-IF (NOT LCB_VERSION_HEX)
+-    SET(LCB_VERSION_HEX 0x020504)
+-ENDIF()
++
++# Hex version
++EXECUTE_PROCESS(
++    COMMAND echo ${LCB_VERSION}
++    COMMAND awk -F. "{printf \"0x%0.2d%0.2d%0.2d\", $1, $2, $3}"
++    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
++    OUTPUT_VARIABLE LCB_VERSION_HEX)
+ 
+ # Now parse the version string
+ STRING(REPLACE "." ";" LCB_VERSION_LIST "${LCB_VERSION}")
