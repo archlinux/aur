@@ -2,7 +2,7 @@
 
 pkgname=cppformat
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
 url="http://cppformat.github.io"
