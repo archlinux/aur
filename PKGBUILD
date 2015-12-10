@@ -3,7 +3,7 @@
 pkgname=gdal-curl
 _pkgname=gdal
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster geospatial data formats with curl and podofo (PDF) support"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
