@@ -2,7 +2,7 @@
 pkgname=openni2
 pkgver=2.2beta2
 _pkgver=2.2-beta2
-pkgrel=5
+pkgrel=6
 pkgdesc="Open source SDK used for the development of 3D sensing middleware libraries and applications"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenNI/OpenNI2"
