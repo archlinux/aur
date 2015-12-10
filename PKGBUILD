@@ -5,8 +5,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=47.0.2526.73
-pkgrel=2
+pkgver=47.0.2526.80
+pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-new-avatar-menu.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-first-run-behaviour.patch)
         
-sha256sums=('6d66d01c8ddff6562ff13d30ed65ef0cdc2888d9e4924be615d576b7eb15f4f5'
+sha256sums=('b107148323a3b641eae29bfeda298183c0d1c110ef96a04a13f329015d614d05'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
