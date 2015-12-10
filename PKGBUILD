@@ -1,11 +1,11 @@
-# See AUR interface to contact current maintainer.
+# Maintainer: Monika Schrenk <moni@random-access.org>
 
 # Read http://thelinuxrain.com/articles/memo-note-taking-unix-style
 # for some tips on how to use this.
 
 pkgname=memo-notes-git
-pkgver=1.6.r144
-pkgrel=2
+pkgver=1.6.r147
+pkgrel=1
 pkgdesc="memo: A CLI note taking application."
 arch=('i686' 'x86_64')
 url="http://www.getmemo.org/"
