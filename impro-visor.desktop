@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Improvisation Advisor
+GenericName=Jazz Improvisation Advisor for the Improviser
+GenericName[fr]=Aide et entrainement à l'improvisation jazz
+Exec=impro-visor
+Icon=impro-visor
+Comment=Jazz Improvisation Advisor for the Improviser
+Comment[fr]=Aide et entrainement à l'improvisation jazz
+Terminal=false
+Categories=AudioVideo;Audio;Education;Midi;Sequencer;Music;Java;

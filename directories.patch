@@ -1,0 +1,14 @@
+diff -aur imp/Directories.java imp-fixed/Directories.java
+--- imp/Directories.java	2012-05-09 20:39:40.000000000 +0300
++++ imp-fixed/Directories.java	2012-09-07 03:35:40.000000000 +0300
+@@ -30,9 +30,7 @@
+ /**
+  * name of where Impro-Visor files will be stored in the user's directory.
+  */
+-public static String improHome = "impro-visor-version-"
+-        + ImproVisor.version
+-        + "-files";
++public static String improHome = ".impro-visor";
+ /**
+  * Standard sub-directory for vocabulary
+  */
