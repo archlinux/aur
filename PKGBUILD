@@ -3,7 +3,7 @@
 
 pkgname=firefox-extension-downthemall
 pkgver=2.0.18
-pkgrel=4
+pkgrel=5
 pkgdesc="A Download Manager extension for Firefox with advanced capabilities"
 arch=('any')
 url="http://www.downthemall.net/"
@@ -12,7 +12,7 @@ depends=('firefox')
 # source=("https://code.downthemall.net/releases/downthemall-$pkgver.xpi")
 # md5sums=("$(curl -sL ${source/.xpi/.md5} | cut -d ' ' -f1)")
 source=("downthemall-${pkgver}-${pkgrel}-sm+fx.xpi::https://addons.cdn.mozilla.net/user-media/addons/201/downthemall-${pkgver}-sm+fx.xpi")
-md5sums=('6d23f4ec928701fea55de1d0968bf0aa')
+md5sums=('df7263ea080fa37a8c12b060e8535c76')
 
 package() {
   # Variables
