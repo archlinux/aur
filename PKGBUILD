@@ -3,7 +3,7 @@
 
 pkgname=palemoon-atom-bin
 pkgver=25.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency - i686 Intel Atom optimised version"
 arch=('i686')
 url="http://linux.palemoon.org/"
