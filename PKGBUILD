@@ -6,7 +6,7 @@
 pkgname=musescore-git
 pkgver=r9850.77e980d
 _branch=master
-pkgrel=1
+pkgrel=2
 pkgdesc='Latest git-version of the sheet music editor MuseScore'
 arch=('i686' 'x86_64')
 url='https://github.com/musescore/MuseScore'

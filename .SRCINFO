@@ -1,7 +1,7 @@
 pkgbase = musescore-git
 	pkgdesc = Latest git-version of the sheet music editor MuseScore
 	pkgver = r9850.77e980d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/musescore/MuseScore
 	install = musescore.install
 	arch = i686
