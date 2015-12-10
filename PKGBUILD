@@ -23,18 +23,21 @@ md5sums=("SKIP")
 # }
 
 package() {
-    cd "$srcdir/NionSwift_python3.4m_0.5.7"
-    echo "`ls`"
-    mkdir -p $pkgdir/usr/local
-    cp -R NionSwift $pkgdir/usr/local/
-    echo "startdir $startdir"
-    echo "pkgdir $pkgdir"
-    echo "`ls $startdir`"
+    # cd "$srcdir/NionSwift_python3.4m_0.5.7"
+    # echo "`ls`"
+    mkdir -p $pkgdir/usr/local/
+    cp -Rax $srcdir/NionSwift_python3.4m_0.5.7/ $pkgdir/usr/local/
+    mv $pkgdir/usr/local/NionSwift_python3.4m_0.5.7/ $pkgdir/usr/local/NionSwift
+    # cp -R NionSwift $pkgdir/usr/local/
+    # echo "startdir $startdir"
+    # echo "pkgdir $pkgdir"
+    # echo "`ls $startdir`"
 
     mkdir -p $pkgdir/usr/share/{applications,pixmaps}
     install -Dm644 $startdir/nionswift.desktop $pkgdir/usr/share/applications/
     install -Dm644 $startdir/nionswift.png $pkgdir/usr/share/pixmaps/
 
     mkdir -p $pkgdir/usr/bin
-    ln -s $pkgdir/usr/local/NionSwift $pkgdir/usr/bin/NionSwift
+    ln -s $pkgdir/usr/local/NionSwift/NionSwift $pkgdir/usr/bin/NionSwift
+    chmod +x $pkgdir/usr/local/NionSwift/NionSwift
 }
