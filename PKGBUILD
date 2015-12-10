@@ -15,13 +15,13 @@ options=(!strip)
 url="http://www.jetbrains.com/${_pkgname}"
 license=('custom')
 optdepends=(
-  'gdb: native debugger'
-  'cmake: native build system'
+  'java-runtime: native JRE (Edit PKGBUILD to remove bundled JRE)'
+  'gdb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
+  'cmake: native build system (You may want to edit PKGBUILD to remove the bundled one)'
   'gcc: GNU compiler'
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
   'gtest: C++ testing'
-  'java-environment: native JRE (Edit PKGBUILD to remove bundled JRE)'
 )
 source=("https://download.jetbrains.com/cpp/${_pkgname}-${_pkgver}.tar.gz")
 sha512sums=('056f1f618d16dbfb380ef9760e56a38a428c5b57ce7010ec9bde0afa4c4063cfda5a1768fb338fc06271e7b35865cf4860eea4641bc7071e0820da9d9f1c674e')
@@ -37,12 +37,12 @@ package() {
   #rm -r "${pkgdir}/opt/${pkgname}/bin/gdb"
 
   if [[ $CARCH = 'i686' ]]; then
-     rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
-     rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
   fi
   if [[ $CARCH = 'x86_64' ]]; then
-     rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so"
-     rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier"
   fi
 
 (
