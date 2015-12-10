@@ -29,7 +29,7 @@ build() {
 
 package() {
   cd "$_gitname"
-  make DESTDIR="$pkgdir" install
+  make PREFIX="$pkgdir"/usr install
   mkdir -p "$pkgdir"/usr/share/metastore/examples
   install -m755 examples/* "$pkgdir"/usr/share/metastore/examples
 }
