@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RecettesCuisine
+Icon=/usr/share/recettescuisine/logo.png
+Exec=recettescuisine
+NoDisplay=false
+Categories=Office;
+StartupNotify=false
+Terminal=false
+Name[fr_FR]=RecettesCuisine
