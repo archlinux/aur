@@ -1,6 +1,6 @@
 # Maintainer: Eric Richter <richter.eric.r@gmail.com>
 pkgname=ripright
-pkgver=0.9
+pkgver=0.11
 pkgrel=1
 pkgdesc="A minimal automatic CD ripper and tagging utility"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('ripright')
 #install=${pkgname}
 source=("http://www.mcternan.me.uk/ripright/software/$pkgname-$pkgver.tar.gz")
-md5sums=('1ab4feab25ae9f886ba9811eb586044d')
+md5sums=('51719e181ef7a852f5b854d4f43a56c6')
 
 build() {
 	cd $pkgname-$pkgver
