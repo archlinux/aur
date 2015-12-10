@@ -11,7 +11,7 @@
 # https://github.com/alerque/aur/tree/master/git-annex-bin
 
 pkgname=git-annex-bin
-pkgver=5.20151116
+pkgver=5.20151208
 pkgrel=1
 pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'arm')
@@ -37,21 +37,21 @@ _file_x86_64="git-annex-standalone-amd64-${pkgver}.tar.gz"
 _url_x86_64="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz"
 source_x86_64=("${_file_x86_64}::${_url_x86_64}"
                "${_file_x86_64}.sig::${_url_x86_64}.sig")
-sha256sums_x86_64=('5aaa8ae32d3c982f904689ca9fa924be2223b513210f26c3d01d8615b13e8aef'
+sha256sums_x86_64=('5a2d3952b6870a8bd135d5d6933279029f7b4e0e822e11fd0273d3382b903dd2'
                    'SKIP')
 
 _file_i686="git-annex-standalone-i386-${pkgver}.tar.gz"
 _url_i686="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz"
 source_i686=("${_file_i686}::${_url_i686}"
              "${_file_i686}.sig::${_url_i686}.sig")
-sha256sums_i686=('4779e21232474c2b6e3085c9de7d24c1782fd4a036399c5b0e3b0f519ae9d35c'
+sha256sums_i686=('f7e5606a20541dd83043be69ae8f35b1c5453d89a30d47c956aa2f8fcb75dbae'
                  'SKIP')
 
 _file_armv6h="git-annex-standalone-armel-${pkgver}.tar.gz"
 _url_armv6h="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz"
 source_armv6h=("${_file_armv6h}::${_url_armv6h}"
                "${_file_armv6h}.sig::${_url_armv6h}.sig")
-sha256sums_armv6h=('d08963cda541559d724866dd8129149bd6002f333603889b24b556f97e7f11d5'
+sha256sums_armv6h=('5dacdacc2c62e8d9cba2edb687c2fcd4658d0c8e3bfe587aa1c4e2067698c70e'
                    'SKIP')
 
 source_arm=(${source_armv6h[@]})
