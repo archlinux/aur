@@ -44,8 +44,9 @@ package() {
     local _py_site_pkg="$(python -c 'import site; print(site.getsitepackages()[0])')"
     local _py_dir="$pkgdir"/"$_py_site_pkg"/qfc
 
-    install -dm755 "$_py_dir"
-    install -m644 qfc/*.{py,pyc} "$_py_dir"
+    install -dm755 "$_py_dir"/{,__pycache__}
+    install -m644 qfc/*.py "$_py_dir"
+    install -m644 qfc/__pycache__/*.pyc "$_py_dir"/__pycache__
     install -Dm755 bin/qfc "$_bin_dir"/qfc
     install -Dm644 bin/qfc.sh "$_share_dir"/qfc.sh
     install -Dm644 LICENSE "$_license_dir"/LICENSE
