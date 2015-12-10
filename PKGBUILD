@@ -6,7 +6,7 @@
 
 pkgname=monotone
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A free distributed version control system'
 arch=('i686' 'x86_64')
 url='https://code.monotone.ca/p/monotone'
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('pcre' 'lua' 'botan-stable' 'sqlite3' 'libidn' 'zlib')
 makedepends=('boost')
 provides=('monotone')
-conflicts=('monotone' 'monotone-snapshot')
+conflicts=('monotone-snapshot')
 install=monotone.install
 source=("http://www.monotone.ca/downloads/1.1/monotone-${pkgver}.tar.bz2")
 sha1sums=('2b97559b252decaee3a374b81bf714cf33441ba3')
