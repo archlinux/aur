@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sxemacs-git
-pkgver=22.1.15.220.g6ea51f3
+pkgver=22.1.15.239.gfd2c930
 pkgrel=1
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
@@ -15,11 +15,6 @@ md5sums=('SKIP')
 install=sxemacs.install
 _gitname="sxemacs"
 options=('!libtool' '!makeflags')
-
-prepare() {
-  cd "$srcdir/${_gitname}/src"
-  sed -i '204,217d' sxe-utils.h
-}
 
 pkgver() {
   cd "$srcdir/${_gitname}"
