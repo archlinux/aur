@@ -2,7 +2,7 @@
 
 pkgname=hdf4-nonetcdf
 pkgver=4.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose library and file format for storing scientific data. (NetCDF disabled)"
 arch=('i686' 'x86_64')
 url="http://www.hdfgroup.org/hdf4.html"
