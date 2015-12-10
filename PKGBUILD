@@ -2,7 +2,7 @@
 _pkgname=talking-clock
 pkgname=talking-clock-git
 pkgver=15
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly configurable clock written in bash with soundpack and voice options."
 arch=('any')
 url="http://github.com/stormdragon2976/talking-clock"
@@ -20,7 +20,7 @@ optdepends=('espeak: TTS support'
 'yad: for talking-clock-gui to work')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+git://github.com/stormdragon2976/talking-clock.git")
+source=("git+https://github.com/stormdragon2976/${_pkgname}.git")
 md5sums=("SKIP")
 
 pkgver()
