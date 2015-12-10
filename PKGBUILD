@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-frameworks-git
-pkgver=4.3.0.r2177.e206819
+pkgver=5.0.0.r2195.b451535
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ license=('GPL')
 depends=('libktorrent-frameworks-git'
          'knotifyconfig'
          'kcmutils'
+         'kcrash'
          'kdelibs4support'
          )
 makedepends=('extra-cmake-modules'
