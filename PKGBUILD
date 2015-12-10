@@ -8,12 +8,12 @@
 
 pkgname=python2-matplotlib-noqt
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A python plotting library, making publication quality plots"
 arch=('i686' 'x86_64')
 url='http://matplotlib.org'
 license=('custom')
-depends=('python2-pytz' 'python2-numpy' 'python2-cairo' 'python2-dateutil' 'python2-pyparsing')
+depends=('python2-pytz' 'python2-numpy' 'python2-cairo' 'python2-dateutil' 'python2-pyparsing' 'python2-cycler')
 makedepends=('python2-pytz' 'python2-numpy' 'tk' 'python2-cairo' 'python2-dateutil'
     'python2-gobject' 'python2-pyparsing' 'pygtk' 'python-six' 'ghostscript' 'texlive-bin')
 optdepends=('python-gobject: for GTK3Agg/GTK3Cairo backend'
