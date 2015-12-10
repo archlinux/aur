@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application, from git
-	pkgver = 2.36.0.r20.g94f3ba6
+	pkgver = 2.45.0.r100.g9ab8581
 	pkgrel = 1
 	url = http://calibre-ebook.com/
 	install = calibre.install
@@ -38,6 +38,7 @@ pkgbase = calibre-git
 	depends = python2-pygments
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
+	depends = optipng
 	optdepends = ipython2: to use calibre-debug
 	optdepends = udisks: required for mounting certain devices
 	provides = calibre
