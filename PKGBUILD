@@ -3,7 +3,7 @@
 pkgname=boomaga-qt5
 _name=boomaga
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="is a virtual printer for viewing a document before printing it out using the physical printer - no KDE version"
 arch=('i686' 'x86_64')
 url="http://opendesktop.org/content/show.php/Boomaga?content=156779&PHPSESSID=6a26cbb183629b8e10911b98dc4a631a"
@@ -13,7 +13,7 @@ makedepends=('cmake')
 conflicts=('boomaga')
 source="${_name}-${pkgver}.tar.gz::https://github.com/Boomaga/${_name}/archive/v${pkgver}.tar.gz" 
 
-md5sums=('ff29951837c789fe521221938b474ad2')
+md5sums=('725715dcced52e976b743196cee4243c')
 
 build() {
    cd $srcdir/${_name}-$pkgver
@@ -28,4 +28,3 @@ package() {
     make "DESTDIR=$pkgdir" install
   install -D -m755 $srcdir/$_name-$pkgver/scripts/installPrinter.sh ${pkgdir}/usr/bin/
    }
-md5sums=('725715dcced52e976b743196cee4243c')
