@@ -4,7 +4,7 @@
 
 pkgname=gazebo
 pkgver=6.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -30,10 +30,6 @@ sha256sums=('0460f1c706f609b6ff0e61a71bdd3cac2d55d714147edc01609b5226e7fb2904')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # Fix gdal includes
-  msg "Applying gdal includes fix..."
-  find . -type f -exec sed -i 's|include <gdal/|include <|g' {} \;
 
   # Create build directory
   mkdir -p build && cd build
