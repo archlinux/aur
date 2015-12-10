@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=cgicc
 pkgver=3.2.16
-pkgrel=4
+pkgrel=5
 pkgdesc="C++ library that simplifies the creation of CGI applications"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/cgicc/"
