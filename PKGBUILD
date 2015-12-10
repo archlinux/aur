@@ -3,7 +3,7 @@
 # Contributor: David Gippner davidgippner at googlemail dot com
 pkgbase=gregorio
 pkgname=$pkgbase
-pkgver=3.0.3
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Command-line tool to typeset Gregorian chant"
 url=http://gregorio-project.github.io
@@ -13,8 +13,8 @@ depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra
 conflicts=("gregorio-svn" "gregorio-git" "gregoriotex")
 provides=("gregorio")
 install=gregorio.install
-source=("https://github.com/gregorio-project/gregorio/releases/download/v3.0.3/gregorio-3.0.3.tar.gz")
-sha256sums=("4634c2ad1fcb44e7dc9301770f28314204a876558fdd1851b919f061c24b3508")
+source=("https://github.com/gregorio-project/gregorio/releases/download/v4.0.0/gregorio-4.0.0.tar.bz2")
+sha256sums=("c7839d6cda9e9b59adc7e5623abb5d8781343a48d00d87865efae55db9d7c2f4")
 
 
 prepare() {
