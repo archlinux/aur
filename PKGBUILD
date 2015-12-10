@@ -9,7 +9,7 @@ PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
 pkgver=5.2.2f1+20151018
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 license=('custom')
