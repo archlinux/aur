@@ -21,7 +21,7 @@ depends=('git' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'python2' 'gvfs' 'xdg-
 conflicts=('atom-editor-beta')
 install=$pkgname.install
 
-md5sums=('edb7a8b0a9eb4deb12c9143ca2d8b33a'
+md5sums=('790a451fdacc258aded78900246cc38b'
          'bec6d0ab5edca667f726dd84540626aa')
 source=("atom-amd64-v${_ver}-${_beta}.deb::https://github.com/atom/atom/releases/download/v${_ver}-${_beta}/atom-amd64.deb"
          atom-python.patch)
