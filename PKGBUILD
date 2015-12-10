@@ -1,8 +1,9 @@
 # $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=npm2
-pkgver=2.14.10
+pkgver=2.14.13
 pkgrel=1
 pkgdesc='A package manager for javascript'
 arch=('any')
