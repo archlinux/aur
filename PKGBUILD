@@ -2,7 +2,7 @@
 
 pkgname=xplot
 pkgver=0.90.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Reads from a xpl file to generate plots"
 arch=('i686' 'x86_64')
 url="http://www.xplot.org/"
@@ -15,7 +15,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix=${pkgdir}/usr
-  sed -e "s|mandir = \$(exec_prefix)/man/man1|mandir = \$(exec_prefix)/share/man|" -i Makefile
+  sed -e "s|mandir = \$(exec_prefix)/man/man1|mandir = \$(exec_prefix)/share/man/man1|" -i Makefile
   make
 }
 

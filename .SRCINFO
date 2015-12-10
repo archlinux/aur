@@ -1,7 +1,7 @@
 pkgbase = xplot
 	pkgdesc = Reads from a xpl file to generate plots
 	pkgver = 0.90.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.xplot.org/
 	arch = i686
 	arch = x86_64
