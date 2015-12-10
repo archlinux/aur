@@ -1,22 +1,21 @@
 # Maintainer: Anthony DeStefano <adx@fastmail.fm> 
 
 pkgname=flrig
-pkgver=1.3.22
+pkgver=1.3.23
 pkgrel=1
 pkgdesc="Amateur Radio Transceiver Control Program"
 arch=('i686' 'x86_64')
-url="http://www.w1hkj.com/flrig-help/index.html"
+url="http://www.w1hkj.com/"
 license=('GPL')
 depends=('fltk')
 optdepends=( )
-source=(http://w1hkj.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(http://downloads.sourceforge.net/project/fldigi/$pkgname/$pkgname-$pkgver.tar.gz)
 
 build() {
 	cd "$srcdir"
 	cd $pkgname-$pkgver
 
-	CFLAGS='-g' CXXFLAGS='-g' ./configure --prefix=/usr \
-		--enable-tls
+	CFLAGS='-g' CXXFLAGS='-g' ./configure --prefix=/usr
 	make ASCIIDOC_ICONS_DIR=/etc/asciidoc/images/icons/
 }
 
@@ -32,5 +31,5 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-md5sums=('a000cd2dff7f90ba7aba4b45644fdcbd')
-sha512sums=('51525de330ead7dd5f79d447dc53c6710a99faa4550c06fe3a80e6e504f67bd0a40fbd4befb907ee8770d7a69831ab993f1553e9ecb44e96d8140cc8471b3235')
+md5sums=('c87fe55a68c8e92b624d572554f674e4')
+sha512sums=('8ccadbd699b053936ef7e9263a843304b4df97194c8bb3b4d07012b424ebe156a5fb960ce893967a7114c4ee2d21c6b0d43c18a50ddaa4f03ee8c912d8b8d281')
