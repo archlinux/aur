@@ -4,11 +4,11 @@
 
 pkgname=balloons
 pkgver=0.1.8.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Tile based platform puzzle game."
 url="http://sourceforge.net/projects/balloons-ng/"
 arch=('i686' 'x86_64')
-depends=('sdl_ttf' 'sdl_mixer')
+depends=('sdl_ttf' 'sdl_mixer' 'sdl_image')
 source=("http://downloads.sourceforge.net/$pkgname-ng/$pkgname-0.1.8-3-src.tar.gz"
         "scoreList.diff" "balloons.desktop" "HIGH.DAT")
 license=('GPL')
