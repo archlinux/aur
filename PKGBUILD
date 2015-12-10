@@ -2,6 +2,20 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
+# Compile ONLY probed modules
+# As of mainline 2.6.32, running with this option will only build the modules
+# that you currently have probed in your system VASTLY reducing the number of
+# modules built and the build time to do it.
+#
+# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD will call it directly to probe all the modules you have logged!
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
+
 pkgbase=linux-bcm4350               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.3
@@ -29,8 +43,8 @@ sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
             '82caff48806796418f445d0a87698abedfaaccfdc7b63059166b788e0cfd144b'
             'SKIP'
-            '596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16'
-            '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
+            'f4084c6d43abc40819f4535f827d3d8e643d25e67fedf0bab46346ead8c08b84'
+            '98caa62b4759f6ae180660cc1be4aeda7198e50fb7cf51aee4e677ae6ee2d19e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '7a3763a7dcdfada7edda636860ee125e270a9542d70c496edf9850c02a25baad'
@@ -84,6 +98,18 @@ prepare() {
 
   # get kernel version
   make prepare
+
+  ### Optionally load needed modules for the make localmodconfig
+	# See https://aur.archlinux.org/packages/modprobed-db
+	if [ -n "$_localmodcfg" ]; then
+		msg "If you have modprobed-db installed, running it in recall mode now"
+		if [ -e /usr/bin/modprobed-db ]; then
+			[[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
+			sudo /usr/bin/modprobed-db recall
+		fi
+		msg "Running Steven Rostedt's make localmodconfig now"
+		make localmodconfig
+	fi
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
