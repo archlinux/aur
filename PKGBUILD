@@ -2,6 +2,7 @@
 
 _pkgname="light"
 pkgname="${_pkgname}-browser"
+pkgdesc="Light, a light browser."
 _pkgver=42
 pkgver=${_pkgver}.0
 pkgrel=1
