@@ -53,7 +53,7 @@
 _bldtype=Release
 
 _zipcode_rel=201511
-_mozcver=2.17.2102.102
+_mozcver=2.17.2106.102
 _utdicver=20151130
 _protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
 _gyp_rev=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
