@@ -2,7 +2,7 @@
 # Contributor: Andreas Wagner <AndreasBWagner@pointfree.net>
 
 pkgname=vim-vimwiki-dev-git
-pkgver=2.1.r178.g854219f
+pkgver=2.2.r13.g9be9688
 pkgrel=1
 pkgdesc='Personal Wiki for Vim; dev branch'
 arch=('any')
@@ -15,7 +15,8 @@ conflicts=('vim-vimwiki')
 provides=('vim-vimwiki')
 install=vimdoc.install
 source=('git+https://github.com/vimwiki/vimwiki.git#branch=dev' license.txt)
-md5sums=('SKIP' 'e19fa0689d06a724fc8ddfe824ef2680')
+sha256sums=('SKIP'
+            '0870512ee7459a1caa7476a9df38585de4b309bc0ec90eaf5e8dc053af0eff53')
 
 pkgver() {
 	cd vimwiki
