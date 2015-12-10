@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
 
 pkgname='telegraf'
-pkgver='0.2.2'
+pkgver='0.2.4'
 pkgrel='1'
 epoch=
 pkgdesc='Server-level metric gathering agent for InfluxDB'
@@ -24,7 +24,7 @@ source=("https://github.com/influxdb/telegraf/archive/$pkgtar"
         "$pkgname.install")
 changelog=
 noextract=()
-md5sums=('769a9243f95193e0c692315ce3bd78be'
+md5sums=('0630c660e18d9106379ae0c7d36388b7'
          'SKIP')
 
 prepare()
@@ -44,10 +44,9 @@ prepare()
 build() 
 {
   echo "Building $pkgname version=${pkgver} ..."
-  cd "$GOPATH/src/github.com/influxdb/telegraf"
-  #make
   cd $TELEGRAFPATCH
-  godep go build -o telegraf -ldflags="-X main.Version=$pkgver" cmd/telegraf/telegraf.go
+  go get ./...
+  go build -o telegraf -ldflags="-X main.Version=$pkgver" cmd/telegraf/telegraf.go
 }
 package()
 {
