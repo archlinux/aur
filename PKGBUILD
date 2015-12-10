@@ -13,7 +13,7 @@ depends=('php')
 makedepends=('php-pear')
 source=("http://download.pear.php.net/package/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('55a9fe753d58a0241294706c433afe2a7d49903d8f7aca6c19ab7f6533147747')
+sha256sums=('ddd45001261a76504db8b419861d13b3a95934aa7e7cf6dabc1477e293239a66')
 
 package() {
   pear install -P ${pkgdir} ${srcdir}/${_pkgname}-${pkgver}.tgz
