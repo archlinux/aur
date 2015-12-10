@@ -1,4 +1,4 @@
-_kernel_version=4.2.6-zen-grsec-00757-g18cf437-dirty
+_kernel_version=4.2.7-grsec-grsec+
 
 _r="\033[00;31m"
 _y="\033[00;33m"
