@@ -1,11 +1,11 @@
-# See AUR interface to contact current maintainer.
+# Maintainer: Monika Schrenk <moni@random-access.org>
 
 # Read http://thelinuxrain.com/articles/memo-note-taking-unix-style
 # for some tips on how to use this.
 
 pkgname=memo-notes
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="memo: A CLI note taking application."
 arch=('i686' 'x86_64')
 url="http://www.getmemo.org/"
@@ -21,7 +21,6 @@ prepare() {
          -e 's/^\(PREFIX=\/usr\)\/local/\1/' \
          -e '/^LDFLAGS=/d' \
     Makefile
-#
 }
 
 build() {
