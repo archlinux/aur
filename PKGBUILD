@@ -1,8 +1,8 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=greenpak-designer-dev
-pkgver=5.01
-pkgrel=5
+pkgver=5.02
+pkgrel=4
 pkgdesc="GreenPAK1-4 Designer"
 arch=('i686' 'x86_64')
 url="http://www.silego.com/softdoc/software.html"
@@ -12,7 +12,7 @@ options=('!strip')
 install=${pkgname}.install
 
 source=("http://www.silego.com/uploads/resources/GP1-4_Designer_v${pkgver}.00${pkgrel}_LNX_Setup.zip")
-sha256sums=('41668325ce26c3b6d593553bece4a67296d15e561d6329f11ccc975e73a16bef')
+sha256sums=('602252572a31681bfc615e9e580779cda7137e965198bd3255665e32fe9a7ef5')
 
 if [[ $CARCH == 'i686' ]]; then
   _arch='i386'
@@ -22,8 +22,8 @@ fi
 
 package() {
   # Extract the proper package
-  ar p greenpak-designer-dev_${pkgver}-${pkgrel}_${_arch}.deb data.tar.gz | \
-    tar -xz --exclude="usr/share/doc-base" --exclude="usr/share/lintian" -C "${pkgdir}"/
+  ar p greenpak-designer-dev_${pkgver}-${pkgrel}_${_arch}.deb data.tar.xz | \
+    tar -xJ --exclude="usr/share/doc-base" --exclude="usr/share/lintian" -C "${pkgdir}"/
 
   # Shuffle some files
   mv "${pkgdir}"/lib/* "${pkgdir}"/usr/lib/
