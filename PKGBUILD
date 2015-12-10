@@ -1,9 +1,9 @@
 # Contributor: Evan Teitelman <teitelmanevan at gmail dot com>
 # Contributor: Ari Mizrahi <codemunchies@gmail.com>
-# Maintainer: CRT <cirkit@koderoot.net>
+# Maintainer: CRT <cirkit@kode.email>
 
 pkgname=ntopng
-pkgver=2.0
+pkgver=2.2
 pkgrel=1
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686')
@@ -15,8 +15,8 @@ depends=('redis' 'libxml2' 'geoip' 'libpcap' 'libnet' 'lua' 'zeromq' 'gd'
 source=("http://sourceforge.net/projects/ntop/files/$pkgname/$pkgname-$pkgver.tar.gz"
         ntopng@.service)
 
-md5sums=('f8a20b91372d5daf17ecc6225759010e'
-         'ca5208df1d80a8b28606d6a64e508902')
+md5sums=('c4144be7ff306ebfea1c4368aca066c4'
+         'ca5208df1d80a8b28606d6a64e508902')	
 
 build() {
   cd "$srcdir/ntopng-$pkgver"
