@@ -1,7 +1,8 @@
 # Maintainer: Konstantin Stepanov <me@kstep.me>
 pkgname=systemd-cron-next
-pkgver=1.0.0.rc1
-pkgrel=3
+pkgver=1.0.0.rc2
+_gitver=1.0.0-rc2
+pkgrel=1
 pkgdesc="systemd generator to generate timers/services from crontab and anacrontab files"
 url="https://github.com/systemd-cron/systemd-cron-next"
 arch=('any')
@@ -10,11 +11,11 @@ depends=('systemd')
 makedepends=('rust')
 provides=('cron' 'anacron')
 replaces=('cron' 'anacron')
-source=('https://github.com/systemd-cron/systemd-cron-next/archive/v1.0.0-rc1.zip')
-md5sums=('a7d5415795cd166d258f72e5cebcfaee')
+source=("https://github.com/systemd-cron/systemd-cron-next/archive/v${_gitver}.zip")
+md5sums=('2784d761ddd1e0a2ebcca48984281145')
 
 build() {
-    cd "$srcdir/systemd-cron-next-1.0.0-rc1"
+    cd "${srcdir}/${pkgname}-${_gitver}"
     if which multirust; then
         multirust override stable
     fi
@@ -23,7 +24,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/systemd-cron-next-1.0.0-rc1"
-    sed -i -e 's/^install: build$/install:/' Makefile
+    cd "${srcdir}/${pkgname}-${_gitver}"
     make install
 }
