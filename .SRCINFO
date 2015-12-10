@@ -1,6 +1,6 @@
 pkgbase = qspectrumanalyzer
 	pkgdesc = Spectrum analyzer for RTL-SDR (GUI for rtl_power based on PyQtGraph)
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/xmikos/qspectrumanalyzer
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = qspectrumanalyzer
 	depends = python-pyqt4
 	depends = python-pyqtgraph
 	depends = rtl-sdr
-	source = https://github.com/xmikos/qspectrumanalyzer/archive/v1.1.1.tar.gz
-	md5sums = f6b5e64cba5bed1e755221fad199c4cd
+	optdepends = rtl_power_fftw-git: alternative rtl_power implementation using FFTW library
+	source = https://github.com/xmikos/qspectrumanalyzer/archive/v1.2.0.tar.gz
+	sha256sums = 62cdcdb5bfb8a206f01db01048467a7a47fa2f3e75ace5e8d32e4b5751a7216b
 
 pkgname = qspectrumanalyzer
 
