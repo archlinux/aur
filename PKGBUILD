@@ -4,7 +4,7 @@
 
 pkgname=fmit
 pkgver=1.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Free Music Instrument Tuner"
 arch=('i686' 'x86_64')
 url="https://github.com/gillesdegottex/fmit"
