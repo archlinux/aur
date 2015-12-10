@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.13.0.r102.g70624e1
+pkgver=3.13.0.r104.g0000265
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
@@ -94,8 +94,7 @@ build() {
 		--enable-crash-dialog \
 		--enable-pgpmime-plugin \
 		--enable-spamassassin-plugin \
-		--enable-bogofilter-plugin \
-		--enable-appdata
+		--enable-bogofilter-plugin
 		#--help
 	make
 
