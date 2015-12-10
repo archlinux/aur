@@ -1,7 +1,7 @@
 pkgname=kelbt
 pkgver=0.16
 pkgrel=1
-pkgdesc="Backend for generating LALR parsers."
+pkgdesc="Tool for generating LALR parsers."
 arch=('i686' 'x86_64')
 url="http://www.complang.org/"
 license=('GPL')
