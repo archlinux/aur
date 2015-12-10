@@ -1,13 +1,14 @@
 # $Id$
 # Maintainer: Pedro Martinez-Julia <pedromj@um.es>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 
 pkgname=python-matplotlib-noqt
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="A python plotting library, making publication quality plots"
 arch=('i686' 'x86_64')
 url='http://matplotlib.org'
@@ -25,7 +26,7 @@ optdepends=('python-gobject: for GTK3Agg/GTK3Cairo backend'
     'texlive-bin: usetex dependencies'
     'python-tornado: for webagg backend')
 source=("https://github.com/matplotlib/matplotlib/archive/v$pkgver.tar.gz")
-sha512sums=('4aebbda31934bedbee5206b783e5cbe07db17367d50117a50bb80b7ea4aad987ec225958bed58885c561f00582c309d6e8c0a69861d3b4210a09b2d63975d2aa')
+sha512sums=('017797c139383e1878cbd4b5595c192f2dedf649e2d268d4bad5421e4a955f3da6d1c9011ce29d6f3487709bb3a8592693d8914335f9f95254a2e267e7ea1cf5')
 
 prepare() {
    cp -a matplotlib-${pkgver} matplotlib-${pkgver}-py3
