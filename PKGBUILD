@@ -1,18 +1,18 @@
 # Contributor: <maxmusterm@gmail.com> 
 
 pkgname=cuda-z
-_relver=231
-pkgver=0.9
-pkgrel=2
+_relver=251
+pkgver=0.10
+pkgrel=1
 pkgdesc="CUDA Information Utility."
 url="http://cuda-z.sourceforge.net/"
 license="GPL2"
 arch=("x86_64")
 depends=("cuda-toolkit" "qt4")
 source=("http://downloads.sourceforge.net/cuda-z/cuda-z-${pkgver}.zip")
-sha1sums=('bab558d46765b2e1d763df670c979a3b5033eb6a')
+sha256sums=('c8033016a79d437f93a9fbce50da24fa931fe4959998e196f4070461e186eff1')
 
-build(){
+prepare(){
   cd ${srcdir}/${pkgname}-${pkgver}/
 
   # Support for sm_10 dropped in CUDA 6.5
@@ -28,6 +28,10 @@ build(){
   sed -i 's/\/usr\/local\/cuda/\/opt\/cuda/g' ./bld/bin/pkg-linux.sh
   sed -i 's/\/opt\/cuda-toolkit\/lib/\/opt\/cuda\/lib\
     unix:LIBPATH += \/opt\/cuda-toolkit\/lib64/' cuda-z.pro
+}
+
+build(){
+  cd ${srcdir}/${pkgname}-${pkgver}/
 
   qmake
 
