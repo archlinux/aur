@@ -8,7 +8,7 @@
 
 pkgname=botan-stable
 pkgver=1.10.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Crypto library written in C++'
 license=('BSD')
 arch=('x86_64' 'i686')
