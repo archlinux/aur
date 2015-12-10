@@ -187,33 +187,13 @@ set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
 pkgver='5.5.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
-install='hylafax.install'
+url='http://hylafax.sourceforge.net/'
 license=('custom:SGI')
 depends=('dash' 'libtiff' 'pam' 'ghostscript' 'gsfonts' 'sharutils' 'jbigkit' 'lcms2' 'smtp-server') # 'cron'
 # BASE64 is the default so HylaFAX+ doesn't need uuencode but I put it in anyways to placate configure and the bin finder in faxsetup!
-url='http://hylafax.sourceforge.net/'
-provides=('hylafax')
-conflicts=('hylafax')
-# backup=(var/spool/hylafax/bin/{faxrcvd,notify})
-#	'var/spool/hylafax/etc/hosts.hfaxd') # This is better handled with a .default file.
-source=("http://downloads.sourceforge.net/hylafax/${_pkgnick}-${pkgver}.tar.gz"
-        hylafax.{timer,service}
-        'fmfix.pl'
-        'faxq.service'
-        'hfaxd.service'
-        'faxgetty@.service'
-        'sendfaxvsi-1.0.tgz')
-sha256sums=('15ccb66d076d1bc399eb2358291fe33b64ddeca23ccdbb691b75039b5ef5ee2e'
-            'ad13d5171f5a8eb55a5773fc429dcef8418db90a8742cec18484534e86198da8'
-            '7b481d783f3c18303acd7d650321313302401e780616dce1f80b71a210bb58cf'
-            'c9e9ad380aa50282125d2693e1ce7b65dedf4f5df22032a3fa60fbd1a75c87d9'
-            '55505ff501e36281aa2b9c85fe0609d9cd04428a4b6d36e2754919411b615d2d'
-            'be96cf8c5fc14fde96c7d37dc9ba2e604aeebe57ce8d5c95dd7567d7e794f3b0'
-            '3f4cddd872be106041ecc460b7d738a5612668f447c783d5c9e71d9c1b7f62bb'
-            'e80c6ffcb5f48bc1bf746b12d40abb94fe5ae79558edfad9c509ade6778cf2cf')
 optdepends=('avantfax: manage HylaFAX+ through web browser'
             #'HERMESfax: manage HylaFAX+ through web browser' # Way too old
             't38modem: sip/voip fax modem pool interface'
@@ -226,6 +206,27 @@ optdepends=('avantfax: manage HylaFAX+ through web browser'
             #'WinPrint-Hylafax-for-Windows: (Windows) print to fax'
             #'Hylafax-support: iFax Solutions can help configure your fax system'
 )
+provides=('hylafax')
+conflicts=('hylafax')
+# backup=(var/spool/hylafax/bin/{faxrcvd,notify})
+install='hylafax.install'
+#	'var/spool/hylafax/etc/hosts.hfaxd') # This is better handled with a .default file.
+_verwatch=("${url}" 'news/\([0-9\.]\+\)\.php' 'l')
+source=("http://downloads.sourceforge.net/hylafax/${_pkgnick}-${pkgver}.tar.gz"
+        hylafax.{timer,service}
+        'fmfix.pl'
+        'faxq.service'
+        'hfaxd.service'
+        'faxgetty@.service'
+        'sendfaxvsi-1.0.tgz')
+sha256sums=('15ccb66d076d1bc399eb2358291fe33b64ddeca23ccdbb691b75039b5ef5ee2e'
+            'ad13d5171f5a8eb55a5773fc429dcef8418db90a8742cec18484534e86198da8'
+            '7b481d783f3c18303acd7d650321313302401e780616dce1f80b71a210bb58cf'
+            'cff7250310dd278554be61ca25539a9ee6da663e14562bdbc9914df4527ff14b'
+            '55505ff501e36281aa2b9c85fe0609d9cd04428a4b6d36e2754919411b615d2d'
+            'be96cf8c5fc14fde96c7d37dc9ba2e604aeebe57ce8d5c95dd7567d7e794f3b0'
+            '3f4cddd872be106041ecc460b7d738a5612668f447c783d5c9e71d9c1b7f62bb'
+            'e80c6ffcb5f48bc1bf746b12d40abb94fe5ae79558edfad9c509ade6778cf2cf')
 # 'sambafax'
 # 'gfax: fax from Gnome (X)'
 
@@ -258,7 +259,7 @@ _pkginit() {
 }
 _pkginit
 
-build() {
+prepare() {
   set -u
   cd "${srcdir}/${_pkgnick}-${pkgver}"
 
@@ -416,9 +417,15 @@ build() {
   sed -s -i -e 's|\(emsg = fxStr::format("Unable to open scheduler FIFO: %s\)\(",\)$|\1 (try running faxsetup)\2|g' \
       'hfaxd/FIFO.c++'
   #exit 1
+  set +u
+}
+
+build() {
+  set -u
+  cd "${srcdir}/${_pkgnick}-${pkgver}"
   make -s # -j $(nproc) # hylafax is not multi threaded make compatible
   cd "${srcdir}/sendfaxvsi-1.0"
-  sh -u make.sh
+  sh -u 'make.sh'
   set +u
 }
 
@@ -428,7 +435,7 @@ package() {
   make INSTALLROOT="${pkgdir}" install
 
   # My crude VSI-FAX tag support
-  install -D -m 755 "${srcdir}/sendfaxvsi-1.0/sendfaxvsi" "${pkgdir}/usr/bin/sendfaxvsi"
+  install -Dpm755 "${srcdir}/sendfaxvsi-1.0/sendfaxvsi" "${pkgdir}/usr/bin/sendfaxvsi"
 
   # Thanks to mc I can see that these files have the wrong permissions.
   chmod 644 "${pkgdir}/var/spool/hylafax/bin/"*.ps
@@ -456,8 +463,8 @@ package() {
   # My fixer tool to get rid of the glyph metrics warning. Look above for where sed hacks this in.
   # Alternate solution: ftp://ftp.hylafax.org/contrib/fontmap/fontmap.pl
   # Alternate solution: configure --with-AFM=no (seems supported only in HylaFAX, not HylaFAX+)
-  install -D -m 744 "${srcdir}/fmfix.pl" "${pkgdir}/var/spool/hylafax/bin"
-  # install -D -m 744 "${srcdir}/hylafax.cron.daily" "${pkgdir}/etc/cron.daily/hylafax" # all systemd now
+  install -Dpm744 "${srcdir}/fmfix.pl" "${pkgdir}/var/spool/hylafax/bin"
+  # install -Dm744 "${srcdir}/hylafax.cron.daily" "${pkgdir}/etc/cron.daily/hylafax" # all systemd now
 
   # Install user selected hosts. Duplicate Samba's technique of making 
   # foo.default as part of the package leaving foo to be user modified. 
@@ -522,5 +529,16 @@ EOF
   install -d -m755 "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants"
   # ln -s '../hylafax.timer' "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants/hylafax.timer" # better done in install with systemctl enable
   set +u
+  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
+  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
+  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
+  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
+  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
+  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
+  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
+  #! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
+  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
+  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
+  #! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 set +u

@@ -1,5 +1,0 @@
-#!/bin/sh
-# HylaFAX+
-
-/usr/bin/faxqclean
-/usr/bin/faxcron -rcv 30
