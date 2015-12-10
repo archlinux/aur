@@ -6,7 +6,7 @@
 
 pkgname=omniorb417
 pkgver=4.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A CORBA object request broker for C++ and Python. Legacy version."
 arch=('i686' 'x86_64')
 url="http://omniorb.sourceforge.net/"
