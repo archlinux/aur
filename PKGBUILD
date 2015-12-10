@@ -3,7 +3,7 @@
 
 pkgname='tong'
 pkgver='1.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Tetris meets Pong, with more twists than a contortionist club's secret handshake"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/tong/"
