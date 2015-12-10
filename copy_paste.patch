@@ -48,17 +48,17 @@ index 3c22019..025299d 100644
 +        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_K));
 +        newAct->setEnabled(true);
 +
-+        newAct = actionCollection->addAction("terminal-paste1", this, SLOT(paste()));
-+        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_V));
-+        newAct->setEnabled(true);
++//        newAct = actionCollection->addAction("terminal-paste1", this, SLOT(paste()));
++//        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_V));
++//        newAct->setEnabled(true);
 +
-+        newAct = actionCollection->addAction("terminal-copy1", this, SLOT(copy()));
-+        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_C));
-+        newAct->setEnabled(true);
++//        newAct = actionCollection->addAction("terminal-copy1", this, SLOT(copy()));
++//        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_C));
++//        newAct->setEnabled(true);
 +
-+        newAct = actionCollection->addAction("terminal-clear1", this, SLOT(clear_scrollback()));
-+        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_K));
-+        newAct->setEnabled(true);
++//        newAct = actionCollection->addAction("terminal-clear1", this, SLOT(clear_scrollback()));
++//        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_K));
++//        newAct->setEnabled(true);
 +        
      }
  }
