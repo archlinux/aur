@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=qmapshack
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plan your next outdoor trip'
 arch=('x86_64')
 url='https://bitbucket.org/maproom/qmapshack/'
