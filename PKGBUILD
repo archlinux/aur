@@ -1,7 +1,7 @@
 pkgname=prismatik
 _sname=Lightpack
 pkgver=5.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A controler for usb driven LED backlights."
 arch=('i686' 'x86_64')
 url="https://github.com/woodenshark/Lightpack"
@@ -9,6 +9,7 @@ license=('GPL3')
 depends=('qt5-serialport' 'libxkbcommon-x11')
 makedepends=('git' 'libusb' 'pkg-config')
 provides=('lightpack' 'prismatik')
+conflicts=('prismatik-git')
 install='prismatik.install'
 source=(
     "https://github.com/woodenshark/${_sname}/archive/${pkgver}.tar.gz"
