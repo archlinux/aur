@@ -1,4 +1,5 @@
 # Mantainer: Jens Staal <staal1978@gmail.com>
+# Contributor : ackalker
 # Modified from open_watcom: Felix Stirlitz <m.p.isaev@yandex.com>
 # adjust the configuration below to change options
 pkgname=openwatcom-v2
@@ -60,8 +61,8 @@ rtsource=true                  # Runtime library source
 3s=true                        # Stack calling convention libraries
 cplusplus=true	               # C++ support
 EOF
-	./open-watcom-2_0-f77-linux-x86 -i -dDstDir="$pkgdir/opt/watcom" -dOWDir="/opt/watcom" -f="$_tmpnam"
-	./open-watcom-2_0-c-linux-x86 -i -dDstDir="$pkgdir/opt/watcom" -dOWDir="/opt/watcom" -f="$_tmpnam"
+	TERM=linux ./open-watcom-2_0-f77-linux-x86 -i -dDstDir="$pkgdir/opt/watcom" -dOWDir="/opt/watcom" -f="$_tmpnam"
+	TERM=linux ./open-watcom-2_0-c-linux-x86 -i -dDstDir="$pkgdir/opt/watcom" -dOWDir="/opt/watcom" -f="$_tmpnam"
 	install -d "$pkgdir/usr/share/licenses/watcom"
 	install -Dm644 "$pkgdir/opt/watcom/license.txt" "$pkgdir/usr/share/licenses/watcom/license.txt"
 	_pkgdirsane="$(echo "$pkgdir" | sed -e 's,[\[^$.+*\\?],\\&,g')"
