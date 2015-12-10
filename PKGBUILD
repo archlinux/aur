@@ -5,7 +5,7 @@
 #PKGEXT=.pkg.tar
 
 pkgname=clion
-pkgver=1.2.1
+pkgver=1.2.2
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
@@ -20,9 +20,10 @@ optdepends=(
   'gcc: GNU compiler'
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
+  'gtest: C++ testing'
 )
 source=("https://download.jetbrains.com/cpp/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('38876b0d087d9f78d8663136a4169e39bf170d27d243a43a9b28560aa0e4f7d8')
+sha256sums=('dae9a29517f30eb83fdeb2538514b915c830cbf8ed9c0c2d3a2db39232730f95')
 noextract=("${pkgname}-${_pkgver}.tar.gz")
 
 package() {
@@ -35,12 +36,12 @@ package() {
   #rm -r "${pkgdir}/opt/${pkgname}/bin/gdb"
 
   if [[ $CARCH = 'i686' ]]; then
-   rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
-   rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
   fi
   if [[ $CARCH = 'x86_64' ]]; then
-   rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so"
-   rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier"
   fi
 
 (
