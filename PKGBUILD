@@ -2,10 +2,7 @@
 
 pkgname=eigen3topython-git
 _name=eigen3topython
-pkgver=20150611
-pkgver() {
-  date +%Y%m%d
-}
+pkgver=r46.c9a8ade
 pkgrel=1
 pkgdesc="Bidirectional bridge between NumPy and Eigen 3."
 arch=('i686' 'x86_64')
@@ -16,6 +13,14 @@ makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'python2-pybindgen')
 provides=('eigen3topython')
 source=("${_name}::git+https://github.com/jorisv/Eigen3ToPython")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_name}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 build()
 {
