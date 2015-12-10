@@ -1,8 +1,8 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
 replaces=graylog2-server
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
 url="https://www.graylog.org/"
@@ -17,16 +17,27 @@ source=(
 	graylog-tmpfiles.conf
 	graylog.service
 )
-sha256sums=('24a4b6fb730c08c7a3699a5848f264553283f4424e6057897a779ef05bf3ae77'
+sha256sums=('260152ed40730beab24a41e975d06a6ee491b787a97160e2b07f01d2d910d2e1'
             'SKIP'
             'SKIP')
 
 package() {
 	cd "$srcdir/$pkgname-${pkgver}"
 
-	mkdir -p $pkgdir/usr/lib/graylog/{spool,plugin,data/journal}
-	chown nobody: -R $pkgdir/usr/lib/graylog/*/
+	mkdir -p $pkgdir/var/lib/graylog/{spool,data/journal,log}
+	chown nobody: -R $pkgdir/var/lib/graylog/
 
+	mkdir -p $pkgdir/usr/lib/graylog/data/
+	for d in spool data/journal log; do
+		ln -s /var/lib/graylog/$d $pkgdir/usr/lib/graylog/$d
+	done
+
+	mkdir -p $pkgdir/usr/lib/graylog/{data/contentpacks,plugin}
+	cp data/contentpacks/* $pkgdir/usr/lib/graylog/data/contentpacks/
+	cp plugin/* $pkgdir/usr/lib/graylog/plugin/
+
+	install -Dm644 lib/sigar/sigar.jar "$pkgdir/usr/lib/graylog/lib/sigar/sigar.jar"
+	cp -p lib/sigar/libsigar-{amd64,x86}-linux.so "$pkgdir/usr/lib/graylog/lib/sigar/"
 	install -Dm644 graylog.jar "$pkgdir/usr/lib/graylog/server.jar"
 	install -Dm644 "$srcdir/graylog-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/graylog-server.conf"
 	install -Dm644 "$srcdir/graylog.service" "$pkgdir/usr/lib/systemd/system/graylog.service"
