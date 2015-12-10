@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CRON-O-METER
+Comment=A fully featured nutrition and biomarker tracking tool
+Icon=cronometer
+Exec=cronometer
+Categories=Office;
+Terminal=false
+Type=Application
