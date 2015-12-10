@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=metastore-git
 _gitname=metastore
-pkgver=r63.efce687
-pkgrel=2
+pkgver=r104.d32bae9
+pkgrel=1
 pkgdesc="Store and restore metadata from a filesystem."
 arch=(i686 x86_64)
 url="http://david.hardeman.nu/software.php#metastore"
