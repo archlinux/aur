@@ -1,0 +1,13 @@
+pkgbase = light-browser
+	pkgver = 42.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/lightfirefox/
+	arch = x86_64
+	license = unknown
+	makedepends = rpmextract
+	noextract = light-42.0.en-US.linux-x86_64.rpm
+	source = http://downloads.sourceforge.net/project/lightfirefox/42/light-42.0.en-US.linux-x86_64.rpm
+	md5sums = 7ef6a53af0473f6f2f61f2750b25fe53
+
+pkgname = light-browser
+
