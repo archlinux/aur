@@ -1,6 +1,6 @@
 pkgname=python-gdal
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Geospatial Data Abstraction Library for Python 3'
 url='https://pypi.python.org/pypi/GDAL/'
 arch=('any')
