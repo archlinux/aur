@@ -1,4 +1,5 @@
 #
+AutoRaise               { "TWM Icon Manager" "Clock" "PopUp" "Terminal" "Print" "Dialog" "Navigator" "Mail" "Msgcompose" "XFreq-Gui" "chromium" "filezilla" "vlc" "skype" }
 BorderWidth		1
 ButtonIndent		2
 # ClientBorderWidth
@@ -69,7 +70,14 @@ Function "move-or-iconify"	{ f.move f.deltastop f.iconify }
 Function "raise-and-focus"	{ f.raise f.focus }
 Function "raise-and-move"	{ f.raise f.move }
 Function "raise-and-resize"	{ f.raise f.resize }
-Function "run-app"		{ f.exec "dmenu_run -b -nb '#2a0308' -nf white -sb chocolate" }
+Function "run-app"
+{
+	f.exec "dmenu_run -b -nb '#2a0308' -nf white -sb chocolate"
+}
+Function "screenshot-root"
+{
+	f.exec "scrot --silent --delay 1 --exec 'xmessage -buttons Close -timeout 15 -fg \"#dfdfdf\" -bg \"#2a0308\" -bd \"#dfdfdf\" -geometry -16-32 -fn -misc-fixed-*-*-*-*-15-*-*-*-*-*-*-* -name PopUp $f &' '/tmp/%Y%m%d-%H%M%S-\$wx\$h.png'"
+}
 
 #
 # Mouse buttons bindings.
@@ -96,15 +104,15 @@ Button2 =	: icon		: f.iconify
 Button1 =	: iconmgr	: f.iconify
 Button2 =	: iconmgr	: f.iconify
 
-Button1 =	: frame		: f.function "raise-and-move"
-Button1 = c	: frame		: f.function "raise-and-resize"
+Button1 =	: frame|frame	: f.function "raise-and-move"
+Button1 = c	: frame|frame	: f.function "raise-and-resize"
 
 #
 # Keyboard bindings.
 #
-"F1" =		: all		: f.function "run-app"
-"r" = c		: all		: f.function "run-app"
-"p" = c		: all		: f.exec "scrot /tmp/%Y%m%d-%H%M%S-\$wx\$h.png"
+"F1" =		: root		: f.function "run-app"
+"r" = c		: root		: f.function "run-app"
+"p" = c		: root		: f.function "screenshot-root"
 
 #
 # Menus

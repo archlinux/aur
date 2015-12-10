@@ -1,7 +1,7 @@
 # Maintainer: CyrIng <xfreq[at]cyring[dot]fr>
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=xdm-xfreq
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="A customized XDM for XFreq"
 arch=(any)
