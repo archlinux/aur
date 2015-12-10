@@ -6,10 +6,10 @@
 pkgbase=(virtualbox-zen-modules)
 pkgname=(virtualbox-zen-host-modules virtualbox-zen-guest-modules)
 pkgver=5.0.10
-pkgrel=2
-arch=('i686' 'x86_64')
+pkgrel=3
+arch=("i686" "x86_64")
 url='http://virtualbox.org'
-license=('GPL')
+license=("GPL")
 makedepends=("linux-zen-headers" "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
 _extramodules=extramodules-4.2-zen
@@ -46,7 +46,7 @@ package_virtualbox-zen-guest-modules() {
 	#_Gpkgdesc='Guest kernel modules for VirtualBox running under Linux-ck.'
 	#pkgdesc="${_Gpkgdesc}"
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-zen.'
-	license=('GPL')
+	license=("GPL")
 	provides=("virtualbox-guest-modules")
 	depends=('linux-zen>=4.1' 'linux-zen<4.3')
 	install=guest.install
