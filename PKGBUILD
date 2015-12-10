@@ -5,9 +5,9 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.3
-pkgver=4.3
+pkgver=4.3.1
 pkgrel=1
-_toipatch=tuxonice-for-linux-head-4.3.0-rc7-2015-11-01.patch
+_toipatch=tuxonice-for-linux-head-4.3.0-2015-11-07.patch
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -15,8 +15,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -28,12 +28,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            '0f0adf7f4aebc11278352596906182144bd43ffac5207ab6888e03f68ead65fb'
-            '7dd79c051e2caecc35c37f1e2d65836156bdf8d879c102d7b6343d13d3f19233'
+            '82caff48806796418f445d0a87698abedfaaccfdc7b63059166b788e0cfd144b'
+            'SKIP'
+            '5d9d7aefa33b239279456fa8a8cd4de2d9ee4601f9f432b718c9bfdb7ce2925b'
+            '8c1ba876b2291c58269f7232b291e369daa925ba904b45636af4e80c0f73ced5'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '8c270194a0ab5deea628880f42443dff0932d445f1aa6aec6a295924a18b7643'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7b82218d17001ab54691552fd87f38482afa4a2923cfdab104381ca0efce8ae0')
+            '1d52d29e88235511bfae5f105c5d6d02fc1a1864a1050c4133a452d0fbf8d7c2')
 validpgpkeys=(
             'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
             '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -45,7 +47,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
