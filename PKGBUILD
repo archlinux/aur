@@ -3,12 +3,12 @@
 
 pkgname=sportstracker
 pkgver=7.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for people who want to track their sporting activities"
 arch=('any')
 url="http://www.saring.de/sportstracker/"
 license=('GPL')
-depends=('java-environment')
+depends=('java-environment' 'java-openjfx')
 source=(http://downloads.sourceforge.net/sportstracker/SportsTracker-$pkgver-bin.zip
         sportstracker.sh
         sportstracker.desktop)
