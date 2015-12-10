@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=npiet
-pkgver=1.3c
+pkgver=1.3d
 pkgrel=1
 pkgdesc="An interpreter for piet programs. Also includes npietedit and npiet-foogol"
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ license=('GPL')
 depends=('libpng' 'gd' 'giflib')
 optdepends=('tk: for npietedit')
 source=("http://www.bertnase.de/npiet/$pkgname-$pkgver.tar.gz")
-md5sums=('5ffebad903a93d28ef5d9cb5c1554633')
-sha1sums=('f809c5b63a552a0ffcf89505b5f2b6f28a061e2f')
-sha256sums=('cd12d5e8c0b670c3689730a02179475d9f8c7f4534d372a91e41616173da0c65')
+md5sums=('bb1c8c66a6859cd758bffad87da7a091')
+sha1sums=('75b0858c427873e662adb0243289c53dcd868d7f')
+sha256sums=('62aeabec58b672e8bfc8024183103462d8c7ca93bff7b6803c5d7bdd45c864c5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -21,9 +21,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  # FIXME: broken Makefile
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/man/man1"
   make DESTDIR="$pkgdir" install
 
   # Provide some examples
