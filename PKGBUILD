@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=npiet
 pkgver=1.3d
-pkgrel=1
+pkgrel=2
 pkgdesc="An interpreter for piet programs. Also includes npietedit and npiet-foogol"
 arch=('i686' 'x86_64')
 url="http://www.bertnase.de/npiet/"
@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" MANDIR="/usr/share/man/man1" install
 
   # Provide some examples
   for i in examples/*
