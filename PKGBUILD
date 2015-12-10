@@ -4,7 +4,7 @@
 
 pkgname=slurm-llnl
 pkgver=15.08.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Linux Utility for Resource Management"
 arch=('i686' 'x86_64')
 url="http://www.schedmd.com"
