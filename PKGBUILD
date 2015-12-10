@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fbvis-git
-pkgver=0.r13.2284d60
+pkgver=r21.58caabc
 pkgrel=1
 epoch=
 pkgdesc="A small framebuffer image viewer, it does not use external libraries."
@@ -13,8 +13,8 @@ depends=('')
 makedepends=('git')
 optdepends=()
 checkdepends=()
-provides=()
-conflicts=()
+provides=('fbvis')
+conflicts=('fbvis')
 replaces=()
 backup=()
 options=()
@@ -36,7 +36,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/" install
   install -Dm755 fbvis  $pkgdir/usr/bin/fbvis
   install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
 }
