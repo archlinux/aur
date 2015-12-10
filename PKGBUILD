@@ -6,12 +6,13 @@ set -u
 pkgname='html2text-with-utf8'
 _pkgname='html2text'
 pkgver='1.3.2a'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A HTML to text converter with utf-8 patch'
 arch=('i686' 'x86_64')
 url='http://www.mbayer.de/html2text'
 license=('GPL2')
 depends=('gcc-libs')
+makedepends=('patch')
 conflicts=('html2text')
 source=("http://www.mbayer.de/html2text/downloads/${_pkgname}-${pkgver}.tar.gz"
   "http://www.mbayer.de/html2text/downloads/patch-utf8-${_pkgname}-${pkgver}.diff")
