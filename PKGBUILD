@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/tgbdual_libretro.info" "${pkgdir}/usr/lib/libretro/libretro-tgbdual.info"
-  install -Dm644 "${_gitname}/tgbdual_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-tgbdual.so"
+  install -Dm644 "${srcdir}/tgbdual_libretro.info" "${pkgdir}/usr/lib/libretro/tgbdual_libretro.info"
+  install -Dm644 "${_gitname}/tgbdual_libretro.so" "${pkgdir}/usr/lib/libretro/tgbdual_libretro.so"
 }
