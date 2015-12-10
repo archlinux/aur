@@ -3,7 +3,7 @@
 
 pkgname=libnotifymm
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ wrappers for libnotify"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -14,7 +14,7 @@ sha256sums=('bfe4b4411265d5bf437408735a37b6ad8e4da772eec1e2aa18792745e6a60954')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  CXXFLAGS="$CXXFLAGS -std=c++11" ./configure --prefix=/usr
   make
 }
 
