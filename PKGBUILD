@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Stepanov <me@kstep.me>
 pkgname=systemd-cron-next
 pkgver=1.0.0.rc1
-pkgrel=2
+pkgrel=3
 pkgdesc="systemd generator to generate timers/services from crontab and anacrontab files"
 url="https://github.com/systemd-cron/systemd-cron-next"
 arch=('any')
@@ -24,5 +24,6 @@ build() {
 
 package() {
     cd "$srcdir/systemd-cron-next-1.0.0-rc1"
+    sed -i -e 's/^install: build$/install:/' Makefile
     make install
 }
