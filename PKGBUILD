@@ -1,4 +1,5 @@
-# Maintainer: Brottweiler <brott@oc.tc>
+# Maintainer:  swalladge <swalladge at gmail dot com>
+# Contributor: Brottweiler <brott@oc.tc>
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=openspades-git
