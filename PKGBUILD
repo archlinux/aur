@@ -2,12 +2,12 @@
 
 pkgname=openrtm-aist
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The RT-Middleware provides a common platform for Robot Technology (RT)"
 arch=('i686' 'x86_64')
 url="http://www.openrtm.org"
 license=('GPL')
-depends=('omniorb416' 'ace')
+depends=('omniorb417' 'ace')
 makedepends=('python2')
 source=("http://www.openrtm.org/pub/OpenRTM-aist/cxx/${pkgver}/OpenRTM-aist-${pkgver}.tar.bz2")
 md5sums=('1d030c4972618f2f1e81cf83286af1d0')
@@ -21,7 +21,7 @@ build() {
 	sed -i "s,env python *$,env python2,g" \
 		$(find . -type f -and -iname "*.py")
 	sed -i "s,env python *$,env python2,g" \
-		$(find . -type f -and -name "*rtm-skelwrapper")
+		$(find . -type f -and \( -name "*rtm-skelwrapper" -or -name "*rtc-template" \))
 	sed -i "s,/usr/bin/python *$,/usr/bin/env python2,g" $(find . -iname "*.py")
 
 	make
