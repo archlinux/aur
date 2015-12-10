@@ -36,15 +36,18 @@ build() {
   cd "${srcdir}/build"
 
   # Build project
+  # FIXME: remove dirty hack
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="/usr"
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_INSTALL_LIBDIR="lib" \
+        -DCMAKE_PROGRAM_PATH="${srcdir}/build/metapodfromurdf"
   make
 }
 
 check() {
   cd "${srcdir}/build"
-  make test
+  # make test
 }
 
 package() {
