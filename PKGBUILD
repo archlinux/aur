@@ -10,8 +10,7 @@ url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip !upx)
 depends=('xdg-utils' 'glibc' 'python2')
-optdepends=('insync-nautilus: file-manager integration for nautilus'
-            'sni-qt: To show the icon in Plasma 5 tray')
+optdepends=('insync-nautilus: file-manager integration for nautilus')
 arch=('i686' 'x86_64')
 source=('insync.service')
 source_i686=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-trusty_i386.deb")
