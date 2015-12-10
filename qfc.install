@@ -1,0 +1,3 @@
+post_install() {
+    echo "To use qfc, source the library from /usr/share/qfc/qfc.sh"
+}
