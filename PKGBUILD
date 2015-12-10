@@ -2,7 +2,7 @@
 
 pkgname=packetbeat
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch.'
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.elastic.co/products/beats/$pkgname"
@@ -16,11 +16,11 @@ provides=('packetbeat')
 conflicts=('packetbeat-bin')
 source=("https://github.com/elastic/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('4bd68dc83437fd75d7d78e757f6b2f142200af3440a884b569a20eda8658155f'
+sha256sums=('94d02ce0e4a7a292a5873bd985e6431d75763c55c9412c8e623ced9894765717'
             '09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "beats-$pkgver"
 
     # Perform some timestomping to avoid make warnings
     _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
@@ -37,12 +37,12 @@ prepare() {
 
     # Workaround to place extracted release into GOPATH
     mkdir -p "$srcdir/gopath/src/github.com/elastic"
-    ln -sf "$srcdir/$pkgname-$pkgver" \
+    ln -sf "$srcdir/beats-$pkgver" \
         "$srcdir/gopath/src/github.com/elastic/$pkgname"
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/beats-$pkgver"
 
     # Needs to be an environment variable for various go subcommands of make.
     export GOPATH="$srcdir/gopath"
@@ -50,13 +50,13 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/beats-$pkgver"
 
     mkdir -p "$pkgdir/etc/$pkgname"
 
     make PREFIX="$pkgdir/etc/$pkgname" install-cfg
 
-    install -D -m755 "$pkgname-$pkgver" \
+    install -D -m755 "beats-$pkgver" \
                      "$pkgdir/usr/bin/$pkgname"
     install -D -m644 "$srcdir/$pkgname.service" \
                      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
