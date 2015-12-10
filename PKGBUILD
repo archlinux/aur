@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h')
 url="http://veracrypt.codeplex.com/"
 license=('custom')
 depends=('fuse' 'libsm' 'device-mapper')
-makedepends=('nasm' 'webkitgtk2' 'glu' 'gstreamer0.10-base-plugins')
+makedepends=('nasm' 'wxgtk' 'webkitgtk2' 'glu' 'gstreamer0.10-base-plugins')
 install='veracrypt.install'
 source=("${pkgname}_${pkgver}_Source.tar.bz2::http://sourceforge.net/projects/${pkgname}/files/${_pkgname} ${pkgver}/${pkgname}_${pkgver}_Source.tar.bz2/download"
 	"${pkgname}_${pkgver}_Source.tar.bz2.sig::http://sourceforge.net/projects/${pkgname}/files/${_pkgname} ${pkgver}/${pkgname}_${pkgver}_Source.tar.bz2.sig/download"
