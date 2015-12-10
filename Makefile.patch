@@ -1,0 +1,4 @@
+12c12
+< 	$(CC) $(CFLAGS) flate.c -c -I.
+---
+> 	$(CC) $(CFLAGS) flate.c -c -I. -fPIC
