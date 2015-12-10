@@ -38,6 +38,6 @@ package() {
     install -Dm644 $startdir/nionswift.png $pkgdir/usr/share/pixmaps/
 
     mkdir -p $pkgdir/usr/bin
-    ln -s $pkgdir/usr/local/NionSwift/NionSwift $pkgdir/usr/bin/NionSwift
     chmod +x $pkgdir/usr/local/NionSwift/NionSwift
+    ln -s $pkgdir/usr/local/NionSwift/NionSwift $pkgdir/usr/bin/NionSwift
 }
