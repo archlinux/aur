@@ -2,7 +2,7 @@
 # Maintainer: Victor Häggqvist <victor@snilius.com>
 
 pkgname=giti
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A python command line tool fetching getting .gitignore files"
 url="https://github.com/victorhaggqvist/giti"
@@ -12,7 +12,7 @@ depends=('python' 'python-requests')
 makedepends=('python-setuptools')
 
 source=(https://github.com/victorhaggqvist/giti/archive/v${pkgver}.zip)
-sha512sums=('ff0974a500da64f332607ad743a0aef3ab098b25ad7ecf7f53449e2d352d79e2fd81913414a3807ecd843a536a2299a5c6138d9d5b9ec6f67a3893086033d864')
+sha512sums=('b0949f771b91d0fa77ffc0f5041211851492c682cf65c87606338c8cb25b172b9fa05f065a0b4c665d96d4c419aa79147f56bdf34b82b4f908b4d80a67153ad6')
 
 build() {
   cd "$srcdir/giti-${pkgver}"
