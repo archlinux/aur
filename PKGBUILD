@@ -18,17 +18,11 @@ package() {
     cd "$pkgdir"
     install -dm0755 usr/share/webapps
     install -dm0755 var/lib/${_pkgname}
-    install -dm0755 etc/webapps/${_pkgname}
     cp -a "$srcdir"/${_pkgname} usr/share/webapps/${_pkgname}
 
     # move data in var
     ln -s ../../../var/lib/moodle usr/share/webapps/moodledata
     
-    # mode config to /etc/webapps
-    mv usr/share/webapps/moodle/config-dist.php ${pkgdir}/etc/webapps/${_pkgname}/config-dist.php
-    touch ${pkgdir}/etc/webapps/${_pkgname}/config.php
-    ln -s ../../../../etc/webapps/${_pkgname}/config.php usr/share/webapps/${_pkgname}
-
     # fix rights and ownership
     chown -R http:http usr/share/webapps/${_pkgname}
     chown -R http:http var/lib/${_pkgname}
@@ -36,5 +30,5 @@ package() {
 
     # php.ini
     install -dm0755 $pkgdir/etc/php/conf.d/
-    echo 'open_basedir = ${open_basedir}:/usr/share/webapps/moodle:/usr/share/webapps/moodledata:/var/lib/moodle:/etc/webapps/moodle' > $pkgdir/etc/php/conf.d/${_pkgname}.ini
+    echo 'open_basedir = ${open_basedir}:/usr/share/webapps/moodle:/usr/share/webapps/moodledata:/var/lib/moodle' > $pkgdir/etc/php/conf.d/${_pkgname}.ini
 }
