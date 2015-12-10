@@ -1,5 +1,4 @@
 # Maintainer : Frederic Bezies < fredbezies at gmail dot com >
-#
 # Contributor: Alexej Magura <agm2819*gmail*>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: TDY <tdy@gmx.com>
@@ -7,14 +6,15 @@
 pkgname=faangband
 _pkgname=FAangband
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An Angband variant set in the First Age of Tolkien's Silmarillion world"
 arch=('i686' 'x86_64')
 url="http://angband.oook.cz/faangband/"
 license=('GPL' 'custom')
 depends=('sdl_image' 'sdl_mixer' 'sdl_ttf')
 source=("https://github.com/NickMcConnell/FAangband/archive/master.zip")
-md5sums=('20d91f8a59e2d964036ce9ef1ab1eef8')
+md5sums=('efc81e8bcf5f733e0ca253715ab0b2c7')
+
 
 build() {
     cd "$srcdir/FAangband-master"
@@ -49,4 +49,3 @@ package() {
 
 }
 
-md5sums=('ad5c773d3ffa059e56a8f16c1dc7f7e1')
