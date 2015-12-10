@@ -1,7 +1,7 @@
  # Maintainer: saxonbeta <saxonbeta at gmail dot com>
 pkgname=whatsapp-desktop-git
 _pkgname=Sup-for-WhatsApp
-pkgver=20151208
+pkgver=20151105.d7501ae
 pkgrel=1
 pkgdesc="Simple & beautiful (Unofficial) desktop client for WhatsApp"
 arch=('i686' 'x86_64')
