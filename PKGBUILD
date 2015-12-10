@@ -1,6 +1,6 @@
 # Contributor: Sonic-Y3k <sonic.y3k@googlemail.com>
 
-pkgbase=python-user-agents
+pkgbase=python2-user-agents
 pkgname=('python-user-agents' 'python2-user-agents')
 pkgver=1.0.1
 pkgrel=1 
