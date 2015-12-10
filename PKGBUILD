@@ -17,7 +17,7 @@ depends=('gcc-libs' 'sh' 'asio')
 makedepends=('python2' 'asio' 'git')
 provides=('botan-stable')
 validpgpkeys=('621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC')
-source=("http://botan.randombit.net/releases/Botan-${pkgver}.tgz"{,.asc})
+source=("https://botan.randombit.net/releases/Botan-${pkgver}.tgz"{,.asc})
 sha256sums+=('6b67b14746410461fe4a8ce6a625e7eef789243454fe30eab7329d5984be4163'
            'c37766426b09f6103e7f14713c88e09ff053df645352457bf45069e83deb47a0')
 
