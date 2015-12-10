@@ -1,11 +1,11 @@
 pkgname=cantata-git
-pkgver=1.5.2.r5592.9ab375f
+pkgver=1.9.50.r5999.0b415b2
 pkgrel=1
-pkgdesc="Qt5 client for the Music Player Daemon (MPD) - git version."
+pkgdesc="Qt5 graphical client for Music Player Daemon (MPD) - git version."
 arch=('i686' 'x86_64')
 url="https://github.com/cdrummond/cantata"
 license=('GPL3')
-depends=('qt5-multimedia' 'qt5-svg' 'libmtp' 'libcddb' 'libmusicbrainz5' 'mpg123'
+depends=('qt5-multimedia' 'qt5-svg' 'libmtp' 'libcddb' 'libmusicbrainz5' 'mpg123' 'vlc' #(HTTP_STREAM_PLAYBACK)
          'taglib-extras' 'hicolor-icon-theme' 'cdparanoia' 'speex' 'media-player-info' 'udisks2')
 optdepends=('perl-uri: dynamic playlist'
             'mpd: playback'
@@ -19,7 +19,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  printf "1.5.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.9.50.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -36,8 +36,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_HTTP_STREAM_PLAYBACK=ON \
-    -DENABLE_KDE=OFF -DENABLE_QT5=ON \
-    -DENABLE_UDISKS2=ON
+    -DENABLE_KDE=OFF
   make
 }
 
