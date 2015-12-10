@@ -9,6 +9,7 @@ url="http://david.hardeman.nu/software.php#metastore"
 license=(GPL)
 provides=(metastore)
 conflicts=(metastore)
+depends=(libbsd)
 makedepends=(git)
 source=(git+https://github.com/przemoc/metastore)
 md5sums=(SKIP)
