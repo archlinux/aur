@@ -6,7 +6,7 @@ pkgdesc="Program developed by Nion Co. for interfacing with electron microscopes
 arch=('i686' 'x86_64')
 url="http://nion.com/swift/"
 license=('GPL')
-depends=('qt5-base' 'qt5-svg' 'python' 'python-numpy' 'python-scipy')
+depends=('qt5-base' 'qt5-svg' 'python' 'python-numpy' 'python-scipy', 'python34')
 makedepend=('unzip')
 # install=$pkgname.install
 source=("${pkgname}.zip::http://nion.com/swift/files/NionSwift_Linux_x64_python3.4m_0.5.7.zip")
@@ -27,10 +27,10 @@ package() {
     mkdir -p $pkgdir/usr/local
     cp -R $srcdir/NionSwift $pkgdir/usr/local/
 
-    mkdir -p $pkgdir/usr/share/{applications,pixmaps}
+    # mkdir -p $pkgdir/usr/share/{applications,pixmaps}
     install -Dm644 $startdir/nionswift.desktop $pkgdir/usr/share/applications/
     install -Dm644 $startdir/nionswift.png $pkgdir/usr/share/pixmaps/
 
-    mkdir -p $pkgdir/usr/bin
+    # mkdir -p $pkgdir/usr/bin
     ln -s /usr/local/NionSwift/NionSwift $pkgdir/usr/bin/NionSwift
 }
