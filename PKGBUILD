@@ -2,7 +2,7 @@
 
 _pkgname=roundcube-rcmcarddav
 pkgname="${_pkgname}-git"
-pkgver=20150903
+pkgver=20151119
 pkgrel=1
 pkgdesc="This plugin allows users to export their contacts via CardDAV"
 arch=('any')
