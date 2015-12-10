@@ -1,8 +1,8 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 
 pkgname=hrpsys-base
-pkgver=315.6.0
-pkgrel=2
+pkgver=315.8.0
+pkgrel=1
 pkgdesc="Basic RT components and utilities to control robots using OpenRTM"
 arch=('i686' 'x86_64')
 url="https://github.com/fkanehiro/hrpsys-base"
@@ -11,7 +11,7 @@ depends=('openhrp3' 'openrtm-aist-python' 'libxml2' 'sdl' 'opencv' 'qhull' 'glew
 optdepends=()
 makedepends=('cmake' 'doxygen')
 source=("https://github.com/fkanehiro/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('9cc0c1a6147b65b38f16f53533826dbabd083aae172f0f6ab06760825f5144fe')
+sha256sums=('96951b21fb7e4415229726fc8046f922b71708dd4585f2f60816a9fc9f883494')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
