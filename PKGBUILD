@@ -5,8 +5,8 @@
 pkgbase=linux-bcm4350               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.3
-pkgver=4.3
-pkgrel=2
+pkgver=4.3.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -14,8 +14,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -26,6 +26,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0003-HID-multitouch-Do-not-fetch-initial-feature-reports-for-Win8-devices.patch')
 
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
+            'SKIP'
+            '82caff48806796418f445d0a87698abedfaaccfdc7b63059166b788e0cfd144b'
             'SKIP'
             '596958c9c4b632fdf5e0cdc677859dccac4304ad07a217c9bcb0e4fa58dbea16'
             '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
@@ -45,11 +47,11 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-  
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -57,10 +59,10 @@ prepare() {
 
   #add support for Broadcom 4350 wifi adapter
   patch -p1 -i "${srcdir}/0001-bcm4350.patch"
-  
+
   # prevent intel graffics to fail on skylake
   patch -p1 -i "${srcdir}/0002-Add-DC6-disabling-as-a-power-well.patch"
-  
+
   patch -p1 -i "${srcdir}/0003-HID-multitouch-Do-not-fetch-initial-feature-reports-for-Win8-devices.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
@@ -157,7 +159,7 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 _package-headers() {
