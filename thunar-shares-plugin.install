@@ -1,0 +1,5 @@
+post_install() {
+  echo "** Required reading for thunar-shares-plugin:"
+  echo "** https://wiki.archlinux.org/index.php/samba#Creating_usershare_path"
+  echo ""
+}
