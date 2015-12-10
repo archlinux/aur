@@ -7,7 +7,7 @@ pkgver=15.08.1
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//_/-}
 # this will substituet any udnerscores (_) with hyphens
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64')
 url="http://www.schedmd.com"
