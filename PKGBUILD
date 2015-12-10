@@ -51,6 +51,7 @@ build()
 
 package()
 {
+  depends=("mingw-w64-blas")
   for _arch in ${_architectures}; do
     cd "$srcdir/lapack-${pkgver}/build-${_arch}-static"
     make install DESTDIR="$pkgdir"
