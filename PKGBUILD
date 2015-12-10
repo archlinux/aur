@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=godot-bin
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel."
 arch=("i686" "x86_64")
 url="http://www.godotengine.org"
@@ -10,8 +10,8 @@ provides=("godot-bin")
 conflicts=("godot" "godot-git")
 replaces=("godot" "godot-git")
 source=("godot.desktop" "icons.tar.gz")
-source_i686+=("http://www.godotengine.org:81/godot_x11-"$pkgver"stable.32")
-source_x86_64+=("http://www.godotengine.org:81/godot_x11-"$pkgver"stable.64")
+source_i686+=("https://bintray.com/artifact/download/punto/godot-relese/godot_x11-"$pkgver"stable.32")
+source_x86_64+=("https://bintray.com/artifact/download/punto/godot-relese/godot_x11-"$pkgver"stable.64")
 md5sums=("SKIP" "SKIP")
 md5sums_i686=("SKIP")
 md5sums_x86_64=("SKIP")
