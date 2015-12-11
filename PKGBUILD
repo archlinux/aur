@@ -1,7 +1,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.6.6679
+pkgver=1.8.6.6691
 pkgrel=1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (alpha version)"
 url="http://www.singularityviewer.org/"
@@ -17,10 +17,10 @@ source_i686=("http://files.streamgrid.net/singularity/SingularityAlpha-i686-$pkg
 source_x86_64=("http://files.streamgrid.net/singularity/SingularityAlpha-x86_64-$pkgver.tar.bz2"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-md5sums_i686=('a22f28c79dfad5bb336dfd03f55f4805'
+md5sums_i686=('81eccb3c99a8952cc8e17a947a3e939e'
               'ff7aa34dcd7548e3acdb3c2d44ae6604'
               'eb596f5cf7b6f2d0c55c0082fb99a905')
-md5sums_x86_64=('fbab8950cf5bee3e6cd3a83e0a9f0e39'
+md5sums_x86_64=('72a94cb190252845be8e969dba543e51'
                 'ff7aa34dcd7548e3acdb3c2d44ae6604'
                 'eb596f5cf7b6f2d0c55c0082fb99a905')
 
