@@ -10,7 +10,8 @@ show_help() {
 	cat <<-END
 		usage: potato [-i] [-m] [-w m] [-b m] [-h]
 		    -s: simple output. Intended for use in scripts
-		    When enabled, potato outputs one line for each minute, and doesn't print the bell character (ascii 007)
+		        When enabled, potato outputs one line for each minute, and doesn't print the bell character
+		        (ascii 007)
 
 		    -m: mute -- don't play sounds when work/break is over
 		    -w m: let work periods last m minutes (default is 25)
@@ -58,7 +59,7 @@ do
 		sleep 1m
 	done
 
-	! $mute && aplay /usr/share/sounds/speech-dispatcher/test.wav &>/dev/null
+	! $MUTE && aplay /usr/share/sounds/speech-dispatcher/test.wav &>/dev/null
 
 	if $INTERACTIVE; then
 		echo -e "\a"
@@ -71,7 +72,7 @@ do
 		printf "$time_left" $i "pause"
 		sleep 1m
 	done
-	! $mute && aplay /usr/share/sounds/speech-dispatcher/test.wav &>/dev/null
+	! $MUTE && aplay /usr/share/sounds/speech-dispatcher/test.wav &>/dev/null
 	if $INTERACTIVE; then
 		echo -e "\a"
 		echo "Pause over"

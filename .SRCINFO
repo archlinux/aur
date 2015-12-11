@@ -1,6 +1,6 @@
 pkgbase = potato
 	pkgdesc = A pomodoro timer for the shell
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/Bladtman242/potato
 	arch = any
