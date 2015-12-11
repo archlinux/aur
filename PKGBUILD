@@ -2,14 +2,16 @@
 pkgname=systemd-cron-next
 pkgver=1.0.0.rc3
 _gitver=1.0.0-rc3
-pkgrel=4
+pkgrel=5
 pkgdesc="systemd generator to generate timers/services from crontab and anacrontab files"
 url="https://github.com/systemd-cron/systemd-cron-next"
-arch=('any')
-license=('GPL3')
+arch=('i686' 'x86_64')
+license=('MIT')
 depends=('systemd>=217' 'run-parts')
+optdepends=('smtp-forwarder: sending emails')
 makedepends=('rust>=1.4.0' 'cargo>=0.6.0')
 provides=('cron' 'anacron')
+conflicts=('cron' 'anacron')
 replaces=('cron' 'anacron')
 source=("https://github.com/systemd-cron/systemd-crontab-generator/archive/v${_gitver}.zip")
 md5sums=('4e6b09e929ce98caee088dd22b86f96a')
