@@ -8,7 +8,7 @@
 # the MIT-supported one, simply download that file to this directory, rename it
 # to CrashPlanPROe_$pkgver_Linux.tgz and run makepkg.
 pkgname=crashplan-proe
-pkgver=3.7.0
+pkgver=4.3.4
 pkgrel=1
 pkgdesc="An online/offsite backup solution (enterprise edition)"
 url="http://www.crashplan.com"
