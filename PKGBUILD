@@ -6,7 +6,7 @@
 pkgname=rtorrent-color
 _pkgname="rtorrent"
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Ncurses BitTorrent client based on libTorrent with color patch."
 url="http://rakshasa.github.io/rtorrent/"
 arch=("i686" "x86_64")
