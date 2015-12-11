@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.3.0-1 Kernel Configuration
+# Linux/x86 4.3.2-1 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -194,7 +194,7 @@ CONFIG_EPOLL=y
 CONFIG_SIGNALFD=y
 CONFIG_TIMERFD=y
 CONFIG_EVENTFD=y
-# CONFIG_BPF_SYSCALL is not set
+CONFIG_BPF_SYSCALL=y
 CONFIG_SHMEM=y
 CONFIG_AIO=y
 CONFIG_ADVISE_SYSCALLS=y
