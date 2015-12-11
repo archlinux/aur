@@ -1,7 +1,7 @@
 pkgbase = rsound
 	pkgdesc = Simple solution for streaming PCM data from client to server in real time.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/Themaister/RSound
 	arch = i686
 	arch = x86_64
