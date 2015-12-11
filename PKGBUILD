@@ -3,17 +3,15 @@
 
 pkgname=grim-fandango
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Grim Fandango Remastered - GOG version"
 arch=('i686' 'x86_64')
 url="http://grimremastered.com/"
 license=('custom: commercial')
-depends=('libxcursor' 'gcc-libs' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
+depends_i686=('libxcursor' 'gcc-libs' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
+depends_x86_64=('lib32-libxcursor' 'lib32-gcc-libs' 'lib32-alsa-lib' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-mesa')
 
-if test "$CARCH" == x86_64; then
-depends=('lib32-libxcursor' 'lib32-gcc-libs' 'lib32-alsa-lib' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-mesa')
-fi
-
+# The install size is close to 6GB, so don't bother with xz.
 PKGEXT=.pkg.tar
 source=(${pkgname}.desktop
         ${pkgname})
