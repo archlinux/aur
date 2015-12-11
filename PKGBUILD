@@ -9,12 +9,12 @@
 _pkgname=vim-qt
 pkgname=$_pkgname-qt5-git
 pkgver=20130201.47.ge1ebbe8
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental Qt GUI for Vim. Built against Qt5."
 arch=("i686" "x86_64")
 url="https://bitbucket.org/equalsraf/vim-qt"
 license=("unknown" "custom:vim")
-depends=("gpm" "gawk" "qt5-base" "libxkbcommon-x11" "hicolor-icon-theme" "gtk-update-icon-cache")
+depends=("gpm" "gawk" "qt5-base" "libxkbcommon-x11" "gtk-update-icon-cache" "desktop-file-utils")
 optdepends=("lua: Lua interpreter" "python: Python 3 interpreter" "python2: Python 2 interpreter"
             "ruby: Ruby interpreter")
 makedepends=("git" "lua" "python" "python2" "ruby")
@@ -23,11 +23,11 @@ provides=("$_pkgname" "$_pkgname-git" "qvim"
           "xxd")
 conflicts=("$_pkgname" "$_pkgname-git" "qvim"
            "vim-runtime" "vim" "vim-minimal" "vim-python3" "gvim" "gvim-python3")
-install=vim-qt-git.install
+install=vim-qt-qt5-git.install
 source=("git+https://github.com/equalsraf/vim-qt.git"
         "vim-qt.desktop")
 sha256sums=("SKIP"
-            "ad2fe7c3d8436d2f62e251b9081512e37726c024ed4aac9534764749904f68d6")
+            "0ff453488a4b04b6364e6a6a8fd17cf0bfe66ef2c19fd39cc9263d99845a0db5")
 
 pkgver() {
     cd $_pkgname
