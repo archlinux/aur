@@ -13,6 +13,6 @@ md5sums=('9611215259c816cfb25d30c5becf8c96')
 
 package()
 {
-	mkdir -p $pkgdir/usr/share/dictd
-	cp spa-eng/spa-eng.{dict.dz,index} $pkgdir/usr/share/dictd/
+	mkdir -p "$pkgdir/usr/share/dictd"
+	cp spa-eng/spa-eng.{dict.dz,index} "$pkgdir/usr/share/dictd/"
 }
