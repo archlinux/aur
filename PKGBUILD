@@ -2,14 +2,14 @@
 
 pkgname=mystuff
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Create a custom menu in a popup window"
 url="http://www.kornelix.com/mystuff"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
-source=("http://www.kornelix.com/uploads/1/3/0/3/13035936/$pkgname-$pkgver.tar.gz")
-md5sums=('d20c2f5fb90e1f875804cc10877cb977')
+source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
+md5sums=('84fffbaf77714450f67a113d8e133084')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
