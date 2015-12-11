@@ -2,10 +2,7 @@
 
 pkgname=rbdyn-git
 _name=rbdyn
-pkgver=20150821
-pkgver() {
-  date +%Y%m%d
-}
+pkgver=r314.034b547
 pkgrel=1
 pkgdesc="A set of classes and functions to model the dynamics of rigid body systems."
 arch=('i686' 'x86_64')
@@ -16,6 +13,14 @@ makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'boost' 'python2-pybindgen')
 provides=('rbdyn')
 source=("${_name}::git+https://github.com/jorisv/RBDyn")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_name}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 build()
 {
