@@ -1,25 +1,23 @@
-#Contributor: Panagiotis Papadopoulos pano_90 AT gmx DOT net 
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Panagiotis Papadopoulos pano_90 AT gmx DOT net 
+
 pkgname=libbs2b
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bauer stereophonic-to-binaural DSP effect library"
 arch=('i686' 'x86_64')
-url=http://bs2b.sourceforge.net
+url='http://bs2b.sourceforge.net'
 license=('GPL')
-depends=()
-makedepends=()
 source=(http://downloads.sourceforge.net/bs2b/$pkgname-$pkgver.tar.gz)
-md5sums=('2c3351f1785364107aabc44f67d33d84')
+sha1sums=('a71318211611a00bd3d595b0830d2188938ff89d')
 
 build() {
-
-cd $srcdir/$pkgname-$pkgver
-./configure --prefix=/usr
-make || return 1
-
+  cd "${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-cd $srcdir/$pkgname-$pkgver
-make DESTDIR=$pkgdir install  || return 1
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
