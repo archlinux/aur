@@ -1,8 +1,8 @@
 pkgbase = newspost
 	pkgdesc = A usenet binary autoposter for unix
 	pkgver = 2.1.1
-	pkgrel = 3
-	url = http://newspost.unixcab.org/
+	pkgrel = 4
+	url = http://newspost.unixcab.org
 	arch = i686
 	arch = x86_64
 	license = GPL

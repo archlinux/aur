@@ -3,9 +3,9 @@
 
 pkgname=newspost
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A usenet binary autoposter for unix"
-url="http://newspost.unixcab.org/"
+url='http://newspost.unixcab.org'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc')
