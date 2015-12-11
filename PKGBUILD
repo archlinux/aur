@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <Stefan-Husmann@t-online.de>
 pkgname=emacs-ess
-pkgver=15.09.1
-_pkgver=15.09-1
+pkgver=15.09.2
+_pkgver=15.09-2
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for Statistical Analysis"
 url="http://ess.r-project.org/"
@@ -12,7 +12,7 @@ replaces=('ess')
 provides=('ess')
 install=ess.install
 source=("http://ess.r-project.org/downloads/ess/ess-${_pkgver}.tgz")
-md5sums=('24a0007e36161904700a754698d0c52a')
+md5sums=('ad76c0f4494216135555c34d190dc096')
 options=('!makeflags')
 
 build() {
