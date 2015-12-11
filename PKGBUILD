@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=dnsbalancer
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon to balance UDP DNS requests over DNS servers"
 arch=('x86_64')
 url="https://github.com/LanetNetwork/${pkgname}"
@@ -21,7 +21,7 @@ sha256sums=(
 	)
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-git"
 
 	git submodule update --init --recursive
 
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}/build"
+	cd "${srcdir}/${pkgname}-git/build"
 	make install
 	install -Dm0644 ../${pkgname}.conf.sample ${pkgdir}/etc/${pkgname}/${pkgname}.conf.sample
 	install -Dm0644 ../../${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
