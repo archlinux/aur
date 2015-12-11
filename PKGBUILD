@@ -6,7 +6,7 @@
 pkgname=keepassx-git
 _gitname=keepassx
 pkgver=2.0.beta2.r83.g0c36c40
-pkgrel=1
+pkgrel=2
 pkgdesc="It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassx/keepassx"
@@ -24,15 +24,30 @@ pkgver() {
     git describe --long | sed 's/^FOO-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd ${_gitname}
+    mkdir -p build
+}
+
 build() {
-    cd "${_gitname}"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_BINDIR=/usr/bin -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_VERBOSE_MAKEFILE=OFF -DWITH_GUI_TESTS=ON
+    cd "${_gitname}/build"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_BINDIR=/usr/bin \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_VERBOSE_MAKEFILE=OFF \
+        -DWITH_GUI_TESTS=ON \
+        -DCMAKE_BUILD_TYPE=Release ..
     make
 }
 
+#check() {
+#    cd "${_gitname}/build"
+#    make test
+#}
+
 package() {
-    cd "${_gitname}"
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    cd "${_gitname}/build"
+    make DESTDIR="${pkgdir}" install
 }
 
 
