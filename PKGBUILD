@@ -3,12 +3,20 @@
 pkgbase="lib32-wxwidgets-light"
 pkgname=('lib32-wxbase-light' 'lib32-wxgtk-light' 'lib32-wxcommon-light')
 pkgver=3.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!) (32 bits)"
 arch=('x86_64')
-url="http://wxwidgets.org"
+url='http://wxwidgets.org'
 license=('custom:wxWindows')
-makedepends=('lib32-gcc-libs' 'git' 'lib32-glu' 'lib32-gtk2' 'lib32-libsm' 'lib32-sdl' 'lib32-expat' 'lib32-zlib')
+makedepends=('lib32-gcc-libs'
+             'git'
+             'lib32-glu'
+             'lib32-gtk2'
+             'lib32-libsm'
+             'lib32-sdl'
+             'lib32-expat'
+             'lib32-zlib'
+             )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
         'lib32-make-abicheck-non-fatal.patch'
         'lib32-wxwidgets-collision.patch'
