@@ -1,0 +1,22 @@
+From ae450f06f12f302a3de1fd2d18ed9027520728f8 Mon Sep 17 00:00:00 2001
+From: Smith AR <audoban@openmailbox.org>
+Date: Tue, 8 Dec 2015 20:43:36 -0500
+Subject: [PATCH] Fixed CMakeLists.txt DataEngine
+
+---
+ engine/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/engine/CMakeLists.txt b/engine/CMakeLists.txt
+index b5f7355..9506756 100644
+--- a/engine/CMakeLists.txt
++++ b/engine/CMakeLists.txt
+@@ -29,7 +29,7 @@ target_link_libraries( plasma_engine_playbar
+ )
+ 
+ install(TARGETS plasma_engine_playbar
+-		DESTINATION ${KDE_INSTALL_LIBDIR}/qt5/plugins/plasma/dataengine)
++		DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/dataengine)
+ 
+ install(FILES plasma-dataengine-playbar.desktop
+ 		DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
