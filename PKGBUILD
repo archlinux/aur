@@ -1,7 +1,7 @@
 pkgname=python2-rtshell
 _name=rtshell
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell commands for managing RT-Middleware running on OpenRTM-aist"
 url="https://github.com/gbiggs/rtshell"
 depends=('python2' 'openrtm-aist-python' 'python2-rtctree')
@@ -21,6 +21,9 @@ build() {
   expect -c "spawn python2 setup.py build;
              expect -re \".*Generate documentation?.*\" { send \"n\r\" };
              interact;"
+
+  # Fix for Python 2
+  sed -i "s:PYTHON_COMMAND=python:PYTHON_COMMAND=python2:g" data/shell_support
 }
 
 package() {
