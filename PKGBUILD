@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
  
 pkgname=cura-git
-pkgver=15.06.03.785.g1a4a396
+pkgver=15.06.03.841.gfa7a434
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   chmod +x "$pkgdir/usr/bin/cura_app.py"
-  ln -s "$pkgdir/usr/bin/cura_app.py" "$pkgdir/usr/bin/cura"
+  ln -s "cura_app.py" "$pkgdir/usr/bin/cura"
 }
 
 # vim:set ts=2 sw=2 et:

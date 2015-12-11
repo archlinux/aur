@@ -1,6 +1,6 @@
 pkgbase = cura-git
 	pkgdesc = A full software solution for 3D printing aimed at RepRaps and the Ultimaker.
-	pkgver = 15.06.03.785.g1a4a396
+	pkgver = 15.06.03.841.gfa7a434
 	pkgrel = 1
 	url = https://github.com/daid/Cura
 	arch = i686
