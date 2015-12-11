@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.42.r3590.813f21c8fd53
+pkgver=3.42.r3597.437dfc85a013
 _pkgver=3.42
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
@@ -48,7 +48,7 @@ build() {
     --enable-download \
     --with-mpi \
     --with-petsc=$srcdir/download/PETSc/petsc-3.5.2/arch-linux2-c-debug \
-    --enable-hpddm 
+    --disable-hpddm 
   make 
 }
 
