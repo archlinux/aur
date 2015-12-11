@@ -1,8 +1,9 @@
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Diogo Leal <estranho@diogoleal.com>
 
 pkgname=arc
 pkgver=5.21p
-pkgrel=2
+pkgrel=3
 pkgdesc="Arc file archiver and compressor. Long since superceeded by zip/unzip but useful if have old .arc files need to unpack."
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/arc'
