@@ -2,12 +2,12 @@
 
 pkgname=kulic
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="2d shooting game"
 url=('http://hippo.nipax.cz/download.cz.php?id=59')
-arch=('i686')
+arch=('i686' 'x86_64')
 license=('GPL-2')
-depends=('allegro' 'libjpeg')
+depends=('allegro4' 'libjpeg')
 source=("http://hippo.nipax.cz/src/${pkgname}-${pkgver}.tar.gz")
 md5sums=('16aff4bded3ae1c6712ca71d4d429730')
 
@@ -15,6 +15,7 @@ build() {
 cd $srcdir/${pkgname}-${pkgver}
 # some patching needed here
 #sed -i 's/iostream.h/iostream/' src/*.c*
+ln -sf /usr/share/automake-1.15/depcomp depcomp
 ./configure --prefix=/usr
 make
 }
