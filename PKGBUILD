@@ -19,7 +19,7 @@ _localmodcfg=
 pkgbase=linux-bcm4350               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.3
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -41,7 +41,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            '82caff48806796418f445d0a87698abedfaaccfdc7b63059166b788e0cfd144b'
+            'a96b8a4e90887dea82066b4d804ac193700c200b6c0075fecba0b691b0240a5e'
             'SKIP'
             'f4084c6d43abc40819f4535f827d3d8e643d25e67fedf0bab46346ead8c08b84'
             '98caa62b4759f6ae180660cc1be4aeda7198e50fb7cf51aee4e677ae6ee2d19e'
