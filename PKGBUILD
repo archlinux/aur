@@ -26,9 +26,7 @@ source_i686=("${_srcurl}/${_file}-i686.tar.bz2" "${_srcsum}/${_filesum}-i686.txt
 source_x86_64=("${_srcurl}/${_file}-x86_64.tar.bz2" "${_srcsum}/${_filesum}-x86_64.txt")
 _srcsum_i686="$(curl -s "${_srcsum}/${_filesum}-i686.checksums" | grep "${_filesum}-i686.tar.bz2" | grep sha512 | cut -d " " -f1)" 
 _srcsum_x86_64="$(curl -s "${_srcsum}/${_filesum}-x86_64.checksums" | grep "${_filesum}-x86_64.tar.bz2" | grep sha512 | cut -d " " -f1)" 
-sha512sums=('SKIP' 'SKIP' 'SKIP')
-sha512sums_i686=("${_srcsum_i686}" 'SKIP')
-sha512sums_x86_64=("${_srcsum_x86_64}" 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
 
 pkgver() {
