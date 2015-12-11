@@ -1,0 +1,145 @@
+diff -Nur gnome-python-extras-2.25.3.old/gdl/gdl.defs gnome-python-extras-2.25.3/gdl/gdl.defs
+--- gnome-python-extras-2.25.3.old/gdl/gdl.defs	2008-12-12 03:06:29.000000000 +0200
++++ gnome-python-extras-2.25.3/gdl/gdl.defs	2009-11-17 00:54:03.141234153 +0200
+@@ -46,13 +46,6 @@
+   (gtype-id "GDL_TYPE_DOCK_ITEM")
+ )
+ 
+-(define-object DockNotebook
+-  (in-module "Gdl")
+-  (parent "GdlDockItem")
+-  (c-name "GdlDockNotebook")
+-  (gtype-id "GDL_TYPE_DOCK_NOTEBOOK")
+-)
+-
+ (define-object Dock
+   (in-module "Gdl")
+   (parent "GdlDockObject")
+@@ -60,13 +53,6 @@
+   (gtype-id "GDL_TYPE_DOCK")
+ )
+ 
+-(define-object DockPaned
+-  (in-module "Gdl")
+-  (parent "GdlDockItem")
+-  (c-name "GdlDockPaned")
+-  (gtype-id "GDL_TYPE_DOCK_PANED")
+-)
+-
+ (define-object DockPlaceholder
+   (in-module "Gdl")
+   (parent "GdlDockObject")
+@@ -74,12 +60,6 @@
+   (gtype-id "GDL_TYPE_DOCK_PLACEHOLDER")
+ )
+ 
+-(define-object DockTablabel
+-  (in-module "Gdl")
+-  (parent "GtkBin")
+-  (c-name "GdlDockTablabel")
+-  (gtype-id "GDL_TYPE_DOCK_TABLABEL")
+-)
+ 
+ (ifdef HAVE_GDL_0_7
+ 
+@@ -590,18 +570,6 @@
+   (return-type "gboolean")
+ )
+ 
+-(define-method get_ui
+-  (of-object "GdlDockLayout")
+-  (c-name "gdl_dock_layout_get_ui")
+-  (return-type "GtkWidget*")
+-)
+-
+-(define-method get_items_ui
+-  (of-object "GdlDockLayout")
+-  (c-name "gdl_dock_layout_get_items_ui")
+-  (return-type "GtkWidget*")
+-)
+-
+ (define-method get_layouts_ui
+   (of-object "GdlDockLayout")
+   (c-name "gdl_dock_layout_get_layouts_ui")
+@@ -682,21 +650,6 @@
+ 
+ 
+ 
+-;; From gdl-dock-notebook.h
+-
+-(define-function gdl_dock_notebook_new
+-  (c-name "gdl_dock_notebook_new")
+-  (is-constructor-of "GdlDockNotebook")
+-  (return-type "GtkWidget*")
+-)
+-
+-(define-function gdl_dock_notebook_get_type
+-  (c-name "gdl_dock_notebook_get_type")
+-  (return-type "GType")
+-)
+-
+-
+-
+ ;; From gdl-dock-object.h
+ 
+ (define-function gdl_dock_object_get_type
+@@ -848,24 +801,6 @@
+ 
+ 
+ 
+-;; From gdl-dock-paned.h
+-
+-(define-function gdl_dock_paned_get_type
+-  (c-name "gdl_dock_paned_get_type")
+-  (return-type "GType")
+-)
+-
+-(define-function gdl_dock_paned_new
+-  (c-name "gdl_dock_paned_new")
+-  (is-constructor-of "GdlDockPaned")
+-  (return-type "GtkWidget*")
+-  (properties
+-    '("orientation")
+-  )
+-)
+-
+-
+-
+ ;; From gdl-dock-placeholder.h
+ 
+ (define-function gdl_dock_placeholder_get_type
+@@ -896,34 +831,6 @@
+ 
+ 
+ 
+-;; From gdl-dock-tablabel.h
+-
+-(define-function gdl_dock_tablabel_new
+-  (c-name "gdl_dock_tablabel_new")
+-  (is-constructor-of "GdlDockTablabel")
+-  (return-type "GtkWidget*")
+-  (properties
+-    '("item")
+-  )
+-)
+-
+-(define-function gdl_dock_tablabel_get_type
+-  (c-name "gdl_dock_tablabel_get_type")
+-  (return-type "GType")
+-)
+-
+-(define-method activate
+-  (of-object "GdlDockTablabel")
+-  (c-name "gdl_dock_tablabel_activate")
+-  (return-type "none")
+-)
+-
+-(define-method deactivate
+-  (of-object "GdlDockTablabel")
+-  (c-name "gdl_dock_tablabel_deactivate")
+-  (return-type "none")
+-)
+-
+ ;; From gdl-icons.h
+ 
+ (ifdef HAVE_GDL_0_7
