@@ -1,15 +1,15 @@
 pkgbase = opensesame-pygaze-git
 	pkgdesc = eyetracking plugins for OpenSesame
-	pkgver = 0.6.0a6.72fbf96
+	pkgver = 0.6.0a7.da70465
 	pkgrel = 1
-	url = https://github.com/esdalmaijer/PyGaze
+	url = https://github.com/smathot/PyGaze
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = opensesame
 	provides = opensesame-pygaze
-	source = opensesame-pygaze-git::git://github.com/esdalmaijer/PyGaze.git
+	source = opensesame-pygaze-git::git://github.com/smathot/PyGaze.git
 	md5sums = SKIP
 
 pkgname = opensesame-pygaze-git
