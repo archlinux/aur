@@ -1,0 +1,15 @@
+pkgbase = python2-yubico
+	pkgdesc = Pure-python library for interacting with Yubikeys
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/Yubico/python-yubico
+	arch = any
+	license = GPL
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2-pyusb>=1.0.0
+	source = https://github.com/Yubico/python-yubico/archive/python-yubico-1.3.1.tar.gz
+	sha256sums = 80a51a2eccde17724b7da3b04558e81ec49f94cc29dc1c13ab51a594d50a6b4a
+
+pkgname = python2-yubico
+
