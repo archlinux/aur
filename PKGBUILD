@@ -4,7 +4,7 @@
 pkgname=newlisp-devel
 _pkgname=newlisp
 pkgver=10.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A LISP like, general purpose scripting language. Ongoing development version."
 url="http://www.newlisp.org"
 license=('GPL3')
@@ -16,7 +16,6 @@ conflicts=('newlisp')
 options=('docs' '!makeflags')
 source=("http://www.newlisp.org/downloads/development/inprogress/${_pkgname}-$pkgver.tgz")
 md5sums=('be91449fb6b71fec928df15767213ac9')
-install=$_pkgname.install
 
 prepare() {
   cd $srcdir/$_pkgname-$pkgver
@@ -37,6 +36,6 @@ package() {
   install -d $pkgdir/usr/bin
   install -d $pkgdir/usr/share/man/man1
   make bindir=$pkgdir/usr/bin mandir=$pkgdir/usr/share/man \
-    datadir=$pkgdir/usr/share install
-  rm $pkgdir/usr/bin/$_pkgname
+       datadir=$pkgdir/usr/share install
+  ln -sf $pkgdir/usr/bin/newlisp-10.?.? $pkgdir/usr/bin/newlisp
 }
