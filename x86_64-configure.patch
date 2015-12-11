@@ -1,0 +1,17 @@
+--- configure	2013-01-06 01:50:56.000000000 +0000
++++ configure.new	2015-12-11 10:14:12.588619177 +0000
+@@ -11247,6 +11247,13 @@
+                 USE_OPENSSL=yes
+                 ;;
+ 
++            x86_64)
++                COMMON_CFLAGS="$COMMON_CFLAGS -DUSE_OPENSSL"
++                COMMON_LDFLAGS="$COMMON_LDFLAGS"
++                LIBSSL="crypto"
++                USE_OPENSSL=yes
++                ;;
++
+             arm)
+                 COMMON_CFLAGS="$COMMON_CFLAGS -DUSE_LIBDES $CFLAGS -I`pwd`/../3rdparty/des-4.04b"
+                 COMMON_LDFLAGS="$COMMON_LDFLAGS $LDFLAGS -L`pwd`/../3rdparty/des-4.04b -ldes"
+
