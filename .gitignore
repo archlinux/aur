@@ -1,0 +1,5 @@
+pkg/
+src/
+terminaltables/
+*.tar.xz
+*.log
