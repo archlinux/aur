@@ -1,9 +1,9 @@
 # Maintainer: Jozef Riha <jose1711 gmail com>
 
 pkgname=soundsort
-arch=('i686')
+arch=('i686' 'x86_64')
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 license=('GPL')
 pkgdesc="utility that analyzes the audio-files you feed it and does a suggestion on their order by analyzing how the songs are actually sounding"
 url="http://www.vanheusden.com/soundsort/"
