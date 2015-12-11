@@ -1,0 +1,17 @@
+--- Phalanx-XXII/io.c
++++ phalanx-XXIII/io.c
+@@ -36,13 +36,11 @@
+   if( color(B[s]) == Color ) G[0].mtrl += Values[ B[s]>>4 ];
+   else G[0].xmtrl += Values[ B[s]>>4 ];
+ 
+-/* busted! S.A.
+ G[0].castling = 0;
+ if( B[E1]!=WK || B[A1]!=WR ) G[0].castling |= WLONG;
+ if( B[E1]!=WK || B[H1]!=WR ) G[0].castling |= WSHORT;
+ if( B[E8]!=BK || B[A8]!=BR ) G[0].castling |= BLONG;
+ if( B[E8]!=BK || B[H8]!=BR ) G[0].castling |= BSHORT;
+-*/
+ 
+ G[0].rule50 = 0;
+ 
+

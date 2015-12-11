@@ -1,0 +1,118 @@
+Index: phalanx-XXIII/makefile
+===================================================================
+--- phalanx-XXIII.orig/makefile
++++ phalanx-XXIII/makefile
+@@ -15,10 +15,8 @@ CFLAGS = -O0 -Wall -fomit-frame-pointer
+ ### -DSHOW_FORCED_MOVES
+ ### -DPBOOK_FILE=\"pbook.phalanx\"
+ ### -DSBOOK_FILE=\"sbook.phalanx\"
+-### -DLEARN_FILE=\"learn.phalanx\"
+ ### -DPBOOK_DIR=\"/usr/local/lib\"
+ ### -DSBOOK_DIR=\"/usr/local/lib\"
+-### -DLEARN_DIR=\"/var/local/lib\"
+ ### -DQCAPSONLY
+ 
+ DEFINES = -DGNUFUN 
+Index: phalanx-XXIII/phalanx.c
+===================================================================
+--- phalanx-XXIII.orig/phalanx.c
++++ phalanx-XXIII/phalanx.c
+@@ -325,8 +325,17 @@ EcoDir = get_book_file(EcoDir,ENV_ECO,EC
+ Eco = fopen(EcoDir,"rb");
+ if( Flag.learn )
+ {
++	char learn_dir[128];
++	struct stat st;
++
++	sprintf(learn_dir, "%s/.phalanx", getenv("HOME"));
++
++	if(stat(learn_dir, &st) || !S_ISDIR(st.st_mode)) {
++		mkdir(learn_dir, 0755);
++	}
++	
+ 	LbookDir
+-	= get_book_file(LbookDir,ENV_LEARN,LEARN_DIR,LEARN_FILE,R_OK|W_OK);
++	= get_book_file(LbookDir,ENV_LEARN,learn_dir,LEARN_FILE,R_OK|W_OK);
+ 	Learn.f = fopen(LbookDir,"r+");
+ 	if( Learn.f == NULL )
+ 	{
+@@ -334,7 +343,7 @@ if( Flag.learn )
+ 		int b[LFSZ];
+ 		char filename[256];
+ 		memset( b, 0, LFSZ*sizeof(int) );
+-  		sprintf(filename,"./%s",LEARN_FILE);
++  		sprintf(filename,"%s/%s", learn_dir, LEARN_FILE);
+ 		free( LbookDir );
+ 		LbookDir = strdup( filename );
+ 		Learn.f = fopen(LbookDir,"w+");
+Index: phalanx-XXIII/phalanx.h
+===================================================================
+--- phalanx-XXIII.orig/phalanx.h
++++ phalanx-XXIII/phalanx.h
+@@ -186,7 +186,7 @@ tdist;
+ #define PBOOK_FILE "pbook.phalanx"
+ #endif
+ #ifndef PBOOK_DIR
+-#define PBOOK_DIR "/usr/local/lib/phalanx"
++#define PBOOK_DIR "/usr/share/phalanx"
+ #endif
+ 
+ /* secondary (binary, large, generated from pgn) book */
+@@ -194,22 +194,19 @@ tdist;
+ #define SBOOK_FILE "sbook.phalanx"
+ #endif
+ #ifndef SBOOK_DIR
+-#define SBOOK_DIR "/usr/local/lib/phalanx"
++#define SBOOK_DIR "/usr/share/phalanx"
+ #endif
+ 
+ #ifndef ECO_FILE
+ #define ECO_FILE "eco.phalanx"
+ #endif
+ #ifndef ECO_DIR
+-#define ECO_DIR "/usr/local/lib/phalanx"
++#define ECO_DIR "/usr/share/phalanx"
+ #endif
+ 
+ #ifndef LEARN_FILE
+ #define LEARN_FILE "learn.phalanx"
+ #endif
+-#ifndef LEARN_DIR
+-#define LEARN_DIR "/var/local/lib/phalanx"
+-#endif
+ 
+ #define ENV_PBOOK "PHALANXPBOOKDIR"
+ #define ENV_SBOOK "PHALANXSBOOKDIR"
+Index: phalanx-XXIII/xphalanx
+===================================================================
+--- /dev/null
++++ phalanx-XXIII/xphalanx
+@@ -0,0 +1,27 @@
++#! /bin/sh
++#
++# Run xboard with phalanx as chess program.
++#
++# Copyright (c) 1999, 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
++#
++# Author: Steffen Winterfeldt <wfeldt@suse.de>
++#
++# Fixed for Phalanx: Pavel Janik ml. <Pavel.Janik@suse.cz>
++
++[ "$DISPLAY" ] || {
++  echo >&2 "This is not a text mode application!"
++  exit 63
++}
++
++emsg="You\'ll have to install package \'xboard\' first to run xphalanx."
++
++which xboard >/dev/null 2>&1 || {
++  if tty -s ; then
++    sh -c "echo >&2 $emsg"
++  else
++    xterm +sb -T "xphalanx error" -bg white -fg red -e sh -c "echo $emsg ; read"
++  fi
++  exit 42
++}
++
++exec xboard -fcp phalanx -scp phalanx "$@"
+
