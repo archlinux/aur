@@ -3,11 +3,16 @@
 
 pkgname=czmqpp-git
 pkgver=20150212
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ wrapper for czmq"
 arch=('i686' 'x86_64')
-depends=('czmq-git' 'zeromq')
-makedepends=('autoconf' 'gcc' 'git' 'make' 'pkg-config')
+makedepends=('autoconf'
+             'czmq-git'
+             'gcc'
+             'git'
+             'make'
+             'pkg-config'
+             'zeromq')
 url="https://github.com/zeromq/czmqpp"
 license=('LGPL3')
 source=(git+https://github.com/zeromq/czmqpp)
@@ -23,7 +28,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
 
-  msg 'Building...'
+  msg2 'Building...'
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -39,9 +44,9 @@ build() {
 package() {
   cd ${pkgname%-git}
 
-  msg 'Installing...'
+  msg2 'Installing...'
   make DESTDIR="$pkgdir" install
 
-  msg 'Cleaning up pkgdir...'
+  msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
