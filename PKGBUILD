@@ -6,7 +6,7 @@
 
 pkgname=geany-plugins-gtk3
 _pkgname=geany-plugins
-pkgver=1.25
+pkgver=1.26
 pkgrel=1
 pkgdesc='Plugins for Geany'
 arch=('x86_64' 'i686')
@@ -19,15 +19,8 @@ optdepends=('hspell: hebrew spell checker')
 provides=geany-plugins
 conflicts=geany-plugins
 install="${_pkgname}.install"
-source=("http://plugins.geany.org/${_pkgname}/${_pkgname}-$pkgver.tar.bz2"
-        'libgit2-0.23.patch')
-sha256sums=('5c13ac1e173284462248ed2faae389a72364c5aa1538de628d2aaa7d286e244b'
-            '2af198f08efd247f9c6cfa94e8d9836dbb1d6e3c74fbad8decba0c051c1473db')
-
-prepare() {
-  cd "${_pkgname}-$pkgver"
-  patch -p1 -i ../libgit2-0.23.patch
-}
+source=("http://plugins.geany.org/${_pkgname}/${_pkgname}-$pkgver.tar.bz2")
+md5sums=('024aa0b95a038188cb467dbada5a1bf5')
 
 build() {
   cd "${_pkgname}-$pkgver"
