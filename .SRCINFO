@@ -1,7 +1,7 @@
 pkgbase = wxpython-light
 	pkgdesc = A wxWidgets GUI toolkit for Python (GNOME/GStreamer free!)
 	pkgver = 3.0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.wxpython.org
 	arch = i686
 	arch = x86_64

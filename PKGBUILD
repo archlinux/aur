@@ -3,13 +3,19 @@
 
 pkgname=wxpython-light
 pkgver=3.0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A wxWidgets GUI toolkit for Python (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
 license=('custom:wxWindows')
-url="http://www.wxpython.org"
-depends=('wxgtk-light' 'python2-opengl' 'python2-cairo')
-makedepends=('git' 'svn' 'mesa')
+url='http://www.wxpython.org'
+depends=('wxgtk-light'
+         'python2-opengl'
+         'python2-cairo'
+         )
+makedepends=('git'
+             'svn'
+             'mesa'
+             )
 provides=('wxpython')
 conflicts=('wxpython')
 source=("git+https://github.com/wxWidgets/wxPython.git#tag=wxPy-${pkgver}"
