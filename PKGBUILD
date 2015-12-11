@@ -1,7 +1,7 @@
 # Contributor: mutlu_inek <mutlu_inek@yahoo.de>
 pkgname=qsynergy
 pkgver=0.9.1
-pkgrel=1
+pkgrel=4
 pkgdesc="Qt gui for Synergy which lets you remotely control other computers."
 url="http://www.volker-lanz.de/en/software/qsynergy/"
 license=(GPL)

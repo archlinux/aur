@@ -1,12 +1,12 @@
 pkgbase = qsynergy
 	pkgdesc = Qt gui for Synergy which lets you remotely control other computers.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 4
 	url = http://www.volker-lanz.de/en/software/qsynergy/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = qt
+	depends = qt4
 	depends = synergy
 	source = http://sourceforge.net/projects/qsynergy/files/0.9.1/qsynergy-0.9.1.tar.gz
 	md5sums = 17d8989668016185b859332aacf9e7df
