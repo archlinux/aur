@@ -5,7 +5,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
 pkgver=4.14.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -39,7 +39,7 @@ package_digikam() {
   depends=('kdebase-runtime' 'kdepimlibs4' 'libgphoto2' 'opencv' 'liblqr'
            'libkipi4' 'libkexiv2_4' 'libkdcraw4' 'libkface4' 'libkgeomap4' 'lensfun' 
 	   'libpgf' 'libbaloo4')
-  optdepends=('kipi-plugins: more tools and plugins' 'kdebase-workspace: Theme configuration dialog')
+  optdepends=('kipi-plugins: more tools and plugins')
   install=digikam.install
 
   cd build/core
