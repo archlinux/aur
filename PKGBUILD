@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3' 'xdg-utils')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('fd48ca7cf17c5f6d5e17776352f53217')
+md5sums=('d4ec4228185d7baf77ef68a99d17f27a')
 options=('!emptydirs')
 
 build() {
