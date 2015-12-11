@@ -2,7 +2,7 @@
 pkgname=systemd-cron-next
 pkgver=1.0.0.rc3
 _gitver=1.0.0-rc3
-pkgrel=2
+pkgrel=3
 pkgdesc="systemd generator to generate timers/services from crontab and anacrontab files"
 url="https://github.com/systemd-cron/systemd-cron-next"
 arch=('any')
@@ -19,7 +19,7 @@ build() {
     if which multirust; then
         multirust override stable
     fi
-    ./configure --prefix="/usr"
+    ./configure --prefix="/usr" --confdir="/etc"
     DESTDIR="${pkgdir}" make build
 }
 
