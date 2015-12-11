@@ -2,7 +2,7 @@
 
 pkgname=lockee-git
 _gitname=Lockee
-pkgver=1.0.0.r0.ge2ba3b0
+pkgver=1.0.0.r3.g1c08804
 pkgrel=1
 pkgdesc="Temporary encrypted file lockers on the web"
 arch=('any')
@@ -25,8 +25,9 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_gitname}"
 
-  # Bumping sqlite3 dependencie to 3.0.x 
-  sed -i 's/2.1.1/3.0.x/g' package.json
+  # Bumping the sqlite3 and node-sass dependencies 
+  sed -i 's/2.1.1/3.x/g' package.json
+  sed -i 's/3.0.0-alpha.0/3.x/g' package.json
 
   # Fix path in service file
   sed -i 's|share/lockee|lib/node_modules/Lockee|g' lockee.service
