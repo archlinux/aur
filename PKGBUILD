@@ -12,7 +12,7 @@ pkgname=('qemu-git'
          'qemu-block-rbd-git'
          'qemu-block-gluster-git'
          'qemu-guest-agent-git')
-pkgver=2.5.r41275.g9e07142
+pkgver=2.5.0.r42679.3fd3c4b
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -44,7 +44,7 @@ spapr-rtas.bin u-boot.e500)
 
 pkgver() {
 	cd "${srcdir}/$_gitname"
-	echo "2.5.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+	echo "$(git describe | sed 's/^v//' | cut -c -5).r$(git rev-list --count master).$(git log -1 --format=%h)"
 }
 
 build() {
