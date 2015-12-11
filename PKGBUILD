@@ -1,7 +1,8 @@
-# Maintainer: jmf <jmf at mesecons dot net>
+# Maintainer: Glen Dsouza <glen@teameos.org>
+# Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 pkgname=fgdata-git
-pkgver=20150829
+pkgver=20151212
 pkgrel=1
 _gitname="fgdata"
 pkgdesc="Base data for the flightgear flight simulator."
@@ -13,6 +14,10 @@ provides=('fgdata-git')
 conflicts=('flightgear-data')
 source=(git://git.code.sf.net/p/flightgear/fgdata#branch=next)
 md5sums=('SKIP')
+
+pkgver() {
+  echo "$(date +"%Y%m%d")"
+}
 
 prepare(){
 	cd ${srcdir}/${_gitname}
