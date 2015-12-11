@@ -1,7 +1,7 @@
 pkgbase = mkclean
 	pkgdesc = Clean up and optimize MKV files
 	pkgver = 0.8.7
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.matroska.org/downloads/mkclean.html
 	arch = armv6h
 	arch = i686
