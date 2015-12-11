@@ -14,6 +14,6 @@ md5sums=('476f304c0b6c0901e67b05daf8bc215e')
 
 package()
 {
-	mkdir -p $pkgdir/usr/share/dictd
-	cp deu-eng/deu-eng.{dict.dz,index} $pkgdir/usr/share/dictd/
+	mkdir -p "$pkgdir/usr/share/dictd"
+	cp deu-eng/deu-eng.{dict.dz,index} "$pkgdir/usr/share/dictd/"
 }
