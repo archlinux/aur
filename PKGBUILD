@@ -3,10 +3,10 @@
 
 pkgname=pydance
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="python ddr game"
 url="http://icculus.org/pyddr/"
-arch=('i686')
+arch=('i686' 'x86_64')
 license=('GPL')
 depends=('python2-pygame')
 source=(http://icculus.org/pyddr/$pkgname-$pkgver.tar.gz
