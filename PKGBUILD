@@ -1,5 +1,5 @@
 pkgname=mingw-w64-python2-bin
-pkgver=2.7.10
+pkgver=2.7.11
 _pybasever=27
 pkgrel=1
 pkgdesc="A high-level scripting language (native MSVC version) (mingw-w64)"
@@ -13,8 +13,8 @@ makedepends=('wine' 'mingw-w64-tools' 'mingw-w64-binutils')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.python.org/ftp/python/${pkgver}/python-${pkgver}.msi"
         "http://www.python.org/ftp/python/${pkgver}/python-${pkgver}.amd64.msi")
-md5sums=('4ba2c79b103f6003bc4611c837a08208'
-         '35f5c301beab341f6f6c9785939882ee')
+md5sums=('241bf8e097ab4e1047d9bb4f59602095'
+         '25acca42662d4b02682eee0df3f3446d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
