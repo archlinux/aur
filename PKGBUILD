@@ -1,9 +1,9 @@
-# Maintainer:  respiranto         <respiranto@icloud.com>
+# Maintainer:  Einhard Leichtfuß  <respiranto@icloud.com>
 # Contributor: Jan Keith Darunday <jkcdarunday@gmail.com>
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
 pkgver=20151129_205827
-pkgrel=1
+pkgrel=2
 pkgdesc="The Free On-line Dictionary of Computing for dictd et al."
 arch=('any')
 url="http://foldoc.org/"
@@ -43,6 +43,6 @@ build()
 
 package()
 {
-	mkdir -p $pkgdir/usr/share/dictd
-	cp foldoc.{dict.dz,index} $pkgdir/usr/share/dictd/
+	mkdir -p "$pkgdir/usr/share/dictd"
+	cp foldoc.{dict.dz,index} "$pkgdir/usr/share/dictd/"
 }
