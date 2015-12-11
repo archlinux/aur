@@ -3,7 +3,7 @@
 
 pkgname=aften
 pkgver=0.0.8
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="Audio encoder which generates compressed audio streams based on ATSC A/52 specification."
 url="http://aften.sourceforge.net/"
