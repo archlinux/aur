@@ -9,12 +9,12 @@
 _pkgname=vim-qt
 pkgname=$_pkgname-git
 pkgver=20130201.45.ge1eb3b8
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental Qt GUI for Vim"
 arch=("i686" "x86_64")
 url="https://bitbucket.org/equalsraf/vim-qt"
 license=("unknown" "custom:vim")
-depends=("gpm" "gawk" "qt4" "hicolor-icon-theme" "gtk-update-icon-cache")
+depends=("gpm" "gawk" "qt4" "gtk-update-icon-cache")
 optdepends=("lua: Lua interpreter" "python: Python 3 interpreter" "python2: Python 2 interpreter"
             "ruby: Ruby interpreter")
 makedepends=("git" "lua" "python" "python2" "ruby")
@@ -27,7 +27,7 @@ install=vim-qt-git.install
 source=("git+https://github.com/equalsraf/vim-qt.git"
         "vim-qt.desktop")
 sha256sums=("SKIP"
-            "ad2fe7c3d8436d2f62e251b9081512e37726c024ed4aac9534764749904f68d6")
+            "0ff453488a4b04b6364e6a6a8fd17cf0bfe66ef2c19fd39cc9263d99845a0db5")
 
 pkgver() {
     cd $_pkgname
@@ -52,11 +52,11 @@ build() {
       --with-features=huge \
       --enable-cscope \
       --enable-multibyte \
-      --enable-perlinterp=yes \
+      --enable-luainterp=dynamic \
+      --enable-perlinterp=dynamic \
       --enable-pythoninterp=dynamic \
       --enable-python3interp=dynamic \
-      --enable-rubyinterp=dynamic \
-      --enable-luainterp=dynamic
+      --enable-rubyinterp=dynamic
 
     make
 
@@ -73,7 +73,7 @@ package() {
     install -D -m644 src/qt/icons/vim-qt.png  $pkgdir/usr/share/icons/hicolor/64x64/apps/vim-qt.png
 
     # add link 'qvim'
-    cd $pkgdir/usr/bin ; ln -s vim qvim
+    cd $pkgdir/usr/bin ; ln -sf vim qvim
 
     # remove ex / view and corresponding main pages (normally provided by package 'vi' on Arch Linux)
     cd $pkgdir/usr/bin ; rm ex view
