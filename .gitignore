@@ -1,0 +1,4 @@
+dnsbalancer-git/
+*.tar.xz
+pkg
+src
