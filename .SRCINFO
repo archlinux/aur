@@ -1,7 +1,7 @@
 pkgbase = popstation_md
 	pkgdesc = Play PSX Games in Sony PSP, Multiple Disk Games
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dark-alex.org/
 	arch = i686
 	arch = x86_64
