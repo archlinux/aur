@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
 
 pkgname=symfony-installer
-pkgver=1.3.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='The Symfony installer.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('php')
 makedepends=('php-box' 'php-composer')
 source=("https://github.com/symfony/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1cc311a055c8e3b48a38392bab7685fffc36f4479b10baeae555d25d08260de4')
+sha256sums=('22b77a2c7f83f9611cd6cd7a7019e462afd8dcc757c5294400277a14a5ff15cb')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
