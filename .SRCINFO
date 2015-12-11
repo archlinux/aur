@@ -1,7 +1,7 @@
 pkgbase = hlextract
 	pkgdesc = Extract Tool and Lib for open Half-Life and other games package formats
 	pkgver = 2.4.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://nemesis.thewavelength.net/index.php?c=108
 	arch = i686
 	arch = x86_64

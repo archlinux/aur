@@ -3,10 +3,10 @@
 
 pkgname=hlextract
 pkgver=2.4.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Extract Tool and Lib for open Half-Life and other games package formats"
 arch=('i686' 'x86_64')
-url="http://nemesis.thewavelength.net/index.php?c=108"
+url='http://nemesis.thewavelength.net/index.php?c=108'
 license=('GPL' 'LGPL')
 provides=('hlextract' 'hllib')
 makedepends=('git')
