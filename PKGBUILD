@@ -1,5 +1,5 @@
-# Maintainer:  respiranto <respiranto@icloud.com>
-# Contributor: akane      <grangerspit@gmail.com> <xmpp:heiß@neko.im>
+# Maintainer: Einhard Leichtfuß <respiranto@icloud.com>
+# Contributor: akane <grangerspit@gmail.com> <xmpp:heiß@neko.im>
 pkgname=dict-freedict-eng-deu
 pkgver=0.3.6
 pkgrel=6
