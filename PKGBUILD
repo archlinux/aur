@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-xwidget-git
-pkgver=25.0.50.r123441
+pkgver=25.1.50.r123558
 pkgrel=1
 pkgdesc="The famous editor from xwidget_mvp branch"
 arch=('i686' 'x86_64')
@@ -21,9 +21,8 @@ _gitname="emacs"
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  printf "%s.r%s" \
-    "$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')" \
-    "$(git rev-list --count HEAD)"
+  _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
+  printf "%s.r%s" "$(echo $_mainver)" "$(git rev-list --count HEAD)"
 }
 
 build() {
@@ -46,6 +45,7 @@ build() {
 
 package() {
   cd "$srcdir"/"$_gitname"
+  _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
   make DESTDIR=$pkgdir install
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
@@ -63,5 +63,5 @@ package() {
   chmod 775 "$pkgdir"/var/games/emacs
   chmod 664 "$pkgdir"/var/games/emacs/*
   # and another perm fix
-  chmod o+r $pkgdir/usr/lib/emacs/25.0.50/x86_64-unknown-linux-gnu/update-game-score
+  chmod o+r $pkgdir/usr/lib/emacs/$_mainver/x86_64-unknown-linux-gnu/update-game-score
 }
