@@ -1,0 +1,17 @@
+pkgbase = rrootage
+	pkgdesc = rRootage is an abstract shooter, created by Kenta Cho and ported to Linux by Evil Mr Henry.
+	pkgver = 0.23a
+	pkgrel = 1
+	url = http://rrootage.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = custom:rrootage
+	depends = libbulletml
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/rrootage/rRootage-0.23a.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/r/rrootage/rrootage_0.23a-9.diff.gz
+	sha1sums = 8b63bfe17fd311ade6983ec99ec53e44cb8ee3f1
+	sha1sums = 0674a153ccbd9bdb8e675cbe9c6b2ed79ee53361
+
+pkgname = rrootage
+
