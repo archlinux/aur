@@ -1,4 +1,4 @@
-pkgbase = firefox-manager
+pkgbase = firefox-pass-manager
 	pkgdesc = Replace the default Firefox and Thunderbird password manager with zx2c4's pass
 	pkgver = 20150923.490260d
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = firefox-manager
 	source = pass-manager::git+https://github.com/gekmihesg/pass-manager.git
 	sha1sums = SKIP
 
-pkgname = firefox-manager
+pkgname = firefox-pass-manager
 

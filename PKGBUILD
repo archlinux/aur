@@ -1,7 +1,7 @@
 # Maintainer: gabrielsimoes <simoes.sgabriel@gmail.com>
 
 _pkgname="pass-manager"
-pkgname="firefox-${pass-manager}"
+pkgname="firefox-${_pkgname}"
 pkgver=20150923.490260d
 pkgrel=1
 pkgdesc="Replace the default Firefox and Thunderbird password manager with zx2c4's pass"
