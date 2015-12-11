@@ -1,6 +1,6 @@
 pkgbase = mopidy-mopify
 	pkgdesc = A web client that uses external web services to provide additional features and a more “complete” music experience.
-	pkgver = 1.5.7
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = https://github.com/dirkgroenen/mopidy-mopify
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mopidy-mopify
 	depends = python2
 	depends = mopidy>=1.0.0
 	depends = python2-configobj
-	source = https://pypi.python.org/packages/source/M/Mopidy-Mopify/Mopidy-Mopify-1.5.7.tar.gz
-	md5sums = 66f24a963aa20e26c79e127d65573300
+	source = https://pypi.python.org/packages/source/M/Mopidy-Mopify/Mopidy-Mopify-1.5.8.tar.gz
+	md5sums = eaae9d43a4dd30ca49d6c4505c6ca9bd
 
 pkgname = mopidy-mopify
 
