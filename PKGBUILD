@@ -4,7 +4,7 @@
 
 pkgname=gtk-theme-iris-dark-git
 _pkgname=iris-dark
-pkgver=89.504f7f9
+pkgver=94.6af34fd
 pkgrel=1
 pkgdesc="A flat theme that uses varying shades and tones to create distinction and a modern experience. It supports Gtk 3.10, Gtk 3.12 and Gtk 2 (using the Murrine engine)."
 arch=('any')
