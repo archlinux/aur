@@ -2,12 +2,12 @@
 
 pkgname=mongochef
 pkgver=3.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A free universal database tool for developers and database administrators"
 arch=('i686' 'x86_64')
 url="http://3t.io/mongochef/"
 license=("custom")
-depends=('java-runtime>=1.8')
+depends=('java-runtime>=8')
 makedepends=('unzip')
 provides=('mongochef')
 
