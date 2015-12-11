@@ -2,7 +2,7 @@
 
 pkgname=lockee
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Temporary encrypted file lockers on the web"
 arch=('any')
 url="https://github.com/hbons/Lockee"
@@ -16,8 +16,9 @@ sha256sums=('241c555d4422b53ba144c55e4ac749c7a1b86e813537473666e8397d6d30d739')
 prepare() {
   cd "${srcdir}/${pkgname^}-${pkgver}"
 
-  # Bumping sqlite3 dependencie to 3.0.x 
-  sed -i 's/2.1.1/3.0.x/g' package.json
+  # Bumping the sqlite3 and node-sass dependencies 
+  sed -i 's/2.1.1/3.x/g' package.json
+  sed -i 's/3.0.0-alpha.0/3.x/g' package.json
 
   # Fix path in service file
   sed -i 's|share/lockee|lib/node_modules/Lockee|g' "${pkgname}.service"
