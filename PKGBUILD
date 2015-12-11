@@ -1,8 +1,14 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 # Contributor: David Mougey <imapiekindaguy at gmail dot com>
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
+# Set this variable to anything to disable translations.
+# Or specify the two-letter language code of the translation you wish to keep.
+_localepurge=
+
 pkgname=sigil-git
-pkgver=0.8.901.r43.g2570281
+pkgver=0.9.1.r40.g449aed1
 pkgrel=1
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
@@ -25,7 +31,7 @@ install=sigil.install
 source=("${pkgname%-git}"::"git+${url}"
         "0001-Set-environment-variable-for-Sigil-dictionaries.patch")
 sha256sums=('SKIP'
-            '94bc03892a30506308c67bba11dc7e9e375447fa1b42f328850771dd80d4df36')
+            '8a1d6085c1ba2c2a919581096af20d0851a6a7a70c4c001a3d30881a511e52c6')
 
 prepare() {
     cd "${srcdir}/${pkgname%-git}"
@@ -33,6 +39,14 @@ prepare() {
     # Upstream would prefer we *manually* set this env var when using the
     # build option "-DINSTALL_BUNDLED_DICTS=0"
     patch -p1 < ../0001-Set-environment-variable-for-Sigil-dictionaries.patch
+
+    if [[ "${_localepurge}" != "" ]]; then
+        for trans in src/Resource_Files/ts/*; do
+            if [[ "$(basename $trans | sed -r 's/(_.*)_.*/\1/g')" != "sigil_${_localepurge}" ]]; then
+                rm $trans
+            fi
+        done
+    fi
 }
 
 pkgver() {
@@ -63,4 +77,8 @@ package() {
         install -D -m 0644 ../src/Resource_Files/icon/app_icon_${_pic}.png \
             "${pkgdir}"/usr/share/icons/hicolor/${_pic}x${_pic}/apps/sigil.png
     done
+
+    # Compile python bytecode
+    python -m compileall "${pkgdir}"/usr/share/sigil/{plugin_launchers/python/,python3lib}
+    python -O -m compileall "${pkgdir}"/usr/share/sigil/{plugin_launchers/python/,python3lib}
 }

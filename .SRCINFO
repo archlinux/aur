@@ -1,6 +1,6 @@
 pkgbase = sigil-git
 	pkgdesc = A WYSIWYG ebook editor
-	pkgver = 0.8.901.r43.g2570281
+	pkgver = 0.9.1.r40.g449aed1
 	pkgrel = 1
 	url = https://github.com/Sigil-Ebook/Sigil
 	install = sigil.install
@@ -31,7 +31,7 @@ pkgbase = sigil-git
 	source = sigil::git+https://github.com/Sigil-Ebook/Sigil
 	source = 0001-Set-environment-variable-for-Sigil-dictionaries.patch
 	sha256sums = SKIP
-	sha256sums = 94bc03892a30506308c67bba11dc7e9e375447fa1b42f328850771dd80d4df36
+	sha256sums = 8a1d6085c1ba2c2a919581096af20d0851a6a7a70c4c001a3d30881a511e52c6
 
 pkgname = sigil-git
 
