@@ -2,10 +2,10 @@
 pkgname=libtsm-patched-git
 _gitname=libtsm
 pkgver=0.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Terminal-emulator State Machine. Patched flavor (using patches from http://github.com/Aetf/libtsm)"
 arch=('i686' 'x86_64')
-url="http://www.fredesktop.org/wiki/Software/kmscon/$_gitname"
+url="http://www.freedesktop.org/wiki/Software/kmscon/$_gitname"
 license=('MIT')
 depends=(glibc)
 makedepends=('git' 'libxkbcommon')
