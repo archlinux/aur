@@ -3,7 +3,7 @@
 pkgbase="wxwidgets2.8-light"
 pkgname=('wxbase2.8-light' 'wxgtk2.8-light' 'wxcommon2.8-light')
 pkgver=2.8.12.1
-pkgrel=8
+pkgrel=9
 pkgdesc="wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"

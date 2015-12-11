@@ -1,7 +1,7 @@
 pkgbase = wxwidgets2.8-light
 	pkgdesc = wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!)
 	pkgver = 2.8.12.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://wxwidgets.org
 	arch = i686
 	arch = x86_64
