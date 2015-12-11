@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname=acquisition-plus
-pkgver=0.3c
+pkgver=0.3f
 pkgrel=1
 pkgdesc="Inventory management tool for Path of Exile"
 url="https://github.com/Novynn/acquisitionplus"
@@ -14,7 +14,7 @@ install='acquisition.install'
 source=("https://github.com/Novynn/acquisitionplus/archive/${pkgver}-PLUS.tar.gz"
         "acquisition.desktop")
 
-sha256sums=('6e29752d93cdb9253b1a380bdaa8331b324f8f72babb29c1f12a32bcd1464aeb'
+sha256sums=('c5809b29ad3fc0f850fb5510e5cd0e0820318ee4f1916a1e58e478aa3045b1f7'
             '556e8a764ecaf9ac4b9b7f6b6340c7bff7aae9c1b179fc0601d93886bc810e81')
 
 prepare() {
