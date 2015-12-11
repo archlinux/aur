@@ -21,6 +21,11 @@ build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   PYTHON=python2 CFLAGS="${CFLAGS} $(pkg-config --cflags --libs gmodule-2.0)" ./configure --prefix=/usr --enable-python || return 1
   make || return 1
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+
   make DESTDIR=${pkgdir} install || return 1
 }
 
