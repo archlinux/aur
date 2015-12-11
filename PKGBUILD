@@ -4,12 +4,14 @@
 
 pkgname=uhub
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A hub for the ADC network."
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://www.uhub.org/"
-depends=('python2' 'libsystemd')
+url='http://www.uhub.org'
+depends=('python2'
+         'libsystemd'
+         )
 makedepends=('cmake')
 source=("http://www.extatic.org/downloads/uhub/${pkgname}-${pkgver}-src.tar.bz2"
         'uhub.service'
@@ -48,9 +50,9 @@ package() {
   install -Dm644 "uhub-${pkgver}/doc/users.conf" "${pkgdir}/etc/uhub/users.conf"
   touch "${pkgdir}/etc/uhub/motd.txt"
 
-  install -Dm644 ../uhub.service "${pkgdir}/usr/lib/systemd/system/uhub.service"
-  install -Dm644 ../uhub.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/uhub.conf"
-  install -Dm644 ../uhub.sysuser "${pkgdir}/usr/lib/sysusers.d/uhub.conf"
+  install -Dm644 "${srcdir}/uhub.service" "${pkgdir}/usr/lib/systemd/system/uhub.service"
+  install -Dm644 "${srcdir}/uhub.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/uhub.conf"
+  install -Dm644 "${srcdir}/uhub.sysuser" "${pkgdir}/usr/lib/sysusers.d/uhub.conf"
 
   install -Dm644 "uhub-${pkgver}/doc/init.d.RedHat/etc/logrotate.d/uhub" "${pkgdir}/etc/logrotate.d/uhub"
 
