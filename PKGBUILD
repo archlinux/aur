@@ -2,7 +2,7 @@
 pkgname=radicale
 _pkgname=Radicale
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Simple Calendar Server"
 arch=any
 url="http://www.radicale.org/"

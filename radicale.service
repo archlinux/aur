@@ -4,7 +4,7 @@ After=syslog.target network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/radicale
+ExecStart=/usr/bin/radicale -f
 User=radicale
 Group=radicale
 
