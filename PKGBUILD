@@ -2,7 +2,7 @@
 
 pkgname=qtftp-qt5
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt bindings for FTP"
 arch=('i686' 'x86_64')
 url='https://github.com/qtproject/qtftp/'
