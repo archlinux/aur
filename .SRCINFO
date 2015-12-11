@@ -1,8 +1,8 @@
 pkgbase = popstation
 	pkgdesc = Play PSX Games in Sony PSP, One Disc Games
 	pkgver = 1.0.0
-	pkgrel = 2
-	url = http://dark-alex.org/
+	pkgrel = 3
+	url = http://dark-alex.org
 	arch = i686
 	arch = x86_64
 	license = GPL
