@@ -1,12 +1,13 @@
 pkgbase = tibia
 	pkgdesc = A fast-paced free massively multiplayer online role-playing game.
-	pkgver = 1082
+	pkgver = 1090
 	pkgrel = 1
 	url = http://www.tibia.com
 	install = tibia.install
 	arch = x86_64
 	license = custom
 	makedepends = python-html2text
+	makedepends = gendesk
 	depends = lib32-glu
 	depends = lib32-mesa
 	provides = tibia
