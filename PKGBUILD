@@ -1,7 +1,7 @@
 # Maintainer: vorpalblade77@gmail.com
 pkgname=python-steamcontroller-git
 _pkgname=steamcontroller
-pkgver=054e35d
+pkgver=a8c0b8a
 pkgrel=1
 pkgdesc="Standalone userland driver for the Steam controller"
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ makedepends=('python-distutils-extra')
 depends=('python-libusb1')
 optdepends=('python-pyside: Required for sc-gyro-plot.py'
 	'python-pyqtgraph: Required for sc-gyro-plot.py'
-	'steamcontroller-udev: udev rules for the controller'
 	'steam: udev rules for the controller')
 provides=('steamcontroller')
 conflicts=("${_pkgname}")

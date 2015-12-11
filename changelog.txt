@@ -1,3 +1,8 @@
+Git commits db7b12a->a8c0b8a
+	* Simple example script (sc-callbacks.py)
+	* Default mouse scale slightly reduced
+	* Callback modes (not user visible, for the most part)
+
 Git commit 054e35d
 	* Correct wrongly mapped right pad
 
