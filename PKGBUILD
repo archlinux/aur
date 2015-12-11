@@ -3,7 +3,7 @@
 
 pkgname=grive2
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source Linux client for Google Drive"
 arch=('i686' 'x86_64')
 url="https://mastersoft24.github.io/Grive2"
