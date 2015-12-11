@@ -3,12 +3,18 @@
 pkgbase="wxwidgets-light"
 pkgname=('wxbase-light' 'wxgtk-light' 'wxcommon-light')
 pkgver=3.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
-url="http://wxwidgets.org"
+url='http://wxwidgets.org'
 license=('custom:wxWindows')
-makedepends=('git' 'glu' 'bash' 'gtk2' 'libsm' 'libgl')
+makedepends=('git'
+             'glu'
+             'bash'
+             'gtk2'
+             'libsm'
+             'libgl'
+             )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
         'config.conf'
         'wx-config.sh'
@@ -19,6 +25,10 @@ sha1sums=('SKIP'
           'dfe38650c655395b90bf082b5734c4093508bfa3')
 
 prepare() {
+
+  export CC=clang
+  export CXX=clang++
+  
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
   patch -d wxwidgets -Np1 -i ../make-abicheck-non-fatal.patch
