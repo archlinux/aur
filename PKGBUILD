@@ -7,7 +7,7 @@
 
 pkgname=unzip-iconv
 pkgver=6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Unpacks .zip archives such as those made by PKZIP. With iconv patch for -O / -I goodness."
 arch=('i686' 'x86_64')
 url='http://www.info-zip.org/UnZip.html'

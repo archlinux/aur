@@ -1,7 +1,7 @@
 pkgbase = unzip-iconv
 	pkgdesc = Unpacks .zip archives such as those made by PKZIP. With iconv patch for -O / -I goodness.
 	pkgver = 6.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.info-zip.org/UnZip.html
 	arch = i686
 	arch = x86_64
