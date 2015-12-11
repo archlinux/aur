@@ -1,7 +1,7 @@
 pkgbase = mkvalidator
 	pkgdesc = Validator for MKV files
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.matroska.org/downloads/mkvalidator.html
 	arch = armv6h
 	arch = i686

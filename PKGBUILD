@@ -3,12 +3,12 @@
 
 pkgname=mkvalidator
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Validator for MKV files"
 arch=('armv6h' 'i686' 'x86_64')
-url="http://www.matroska.org/downloads/mkvalidator.html"
+url='http://www.matroska.org/downloads/mkvalidator.html'
 license=('BSD')
-source=(http://sourceforge.net/projects/matroska/files/mkvalidator/mkvalidator-${pkgver}.tar.bz2)
+source=("http://sourceforge.net/projects/matroska/files/mkvalidator/mkvalidator-${pkgver}.tar.bz2")
 sha1sums=('e18682430caa02b6b2022b8a1811ff8ac02e861a')
 options=(!makeflags)
 
