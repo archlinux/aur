@@ -1,11 +1,11 @@
 [Desktop Entry]
-Type=Application
-Name=Firefox Nightly – Safe Mode
-GenericName=Web Browser – Safe Mode
-GenericName[fr]=Navigateur web – Mode sans échec
-Icon=firefox-nightly
+Name=Firefox Nightly - Safe Mode
+GenericName=Web Browser - Safe Mode
+Comment=Browse the World Wide Web - Safe Mode
 Exec=firefox-nightly -safe-mode %u
 Terminal=false
-MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
-Categories=Network;X-WebBroswer;
+Type=Application
+Icon=firefox-nightly-icon
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
 StartupNotify=false
