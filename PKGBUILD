@@ -2,12 +2,12 @@
 
 pkgname=redeemer
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="3d shooting game"
 url=('http://hippo.nipax.cz/download.cz.php?id=65')
-arch=('i686')
+arch=('i686' 'x86_64')
 license=("GPL-2")
-depends=('allegro')
+depends=('glu' 'sdl_image')
 source=("http://hippo.nipax.cz/src/${pkgname}-src.tar.gz" "redeemer.desktop")
 md5sums=('ad8e5344ac4278c393828e8046867418'
          '8f117d6f1823ecc5b334b270beeaf514')
