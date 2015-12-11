@@ -2,7 +2,7 @@
 pkgname=phreeqc
 pkgver=3.3.3
 _pkgsvn=10424
-pkgrel=1
+pkgrel=2
 pkgdesc="PHREEQC - A Computer Program for Speciation, Batch-Reaction, One-Dimensional Transport, and Inverse Geochemical Calculations"
 arch=('i686' 'x86_64')
 url="http://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/"
@@ -25,12 +25,12 @@ source=("ftp://brrftp.cr.usgs.gov/pub/charlton/phreeqc/phreeqc-$pkgver-$_pkgsvn.
         "https://raw.githubusercontent.com/jaalto/project-emacs--folding-mode/master/folding.el")
 md5sums=('b4b1f11e5855d3b034473ec51c76f7cc'
          '8facd6e784cd1985b2c57c092b753002'
-         '198df23100e18efddc1aa7b5fec393b4'
+         '81a6827b2d0d1d2675cbf4e117095208'
          'd262512bd4a19a68805914d35f8f9019')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-$_pkgsvn"
-  ./configure --prefix=/usr/bin
+  ./configure --prefix=/usr
   make -j8 CCFLAGS="-O3 -Wall -ansi -pedantic -DHAVE_ISFINITE -DNDEBUG -mtune=native"
 }
 
