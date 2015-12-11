@@ -18,5 +18,12 @@ package() {
   ln -s ../../../lib/node_modules/jscs/LICENSE \
      "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \;
+  # Clean up
+  find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \; \
+       -or -name ".*" -type f -exec rm '{}' \; \
+       -or -name "benchmark" -type d -prune -exec rm -r '{}' \; \
+       -or -name "man" -type d -prune -exec rm -r '{}' \; \
+       -or -name "test" -type d -prune -exec rm -r '{}' \; \
+       -or -name "tests" -type d -prune -exec rm -r '{}' \;
+  rm -r "${pkgdir}"/usr/lib/node_modules/jscs/node_modules/JSV/jsdoc-toolkit
 }
