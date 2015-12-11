@@ -1,17 +1,24 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=adchpp
-pkgver=2.11.2
-pkgrel=3
+pkgver=2.12.0
+pkgrel=1
 pkgdesc="ADCH++ is a hub software for the ADC network."
-url="http://adchpp.sourceforge.net/"
+url='http://adchpp.sourceforge.net'
 arch=('i686' 'x86_64')
 license=("GPL")
-depends=('ruby' 'python2' 'boost-libs') # 'lua51' 'lua51-filesystem' 'lua51-socket'
-makedepends=('scons' 'swig' 'bzr' 'asciidoc')
+depends=('ruby'
+         'python2'
+         'boost-libs'
+         ) # 'lua51' 'lua51-filesystem' 'lua51-socket'
+makedepends=('scons'
+             'swig'
+             'bzr'
+             'asciidoc'
+             )
 backup=('etc/adchpp/Script.xml'
         'etc/adchpp/adchpp.xml')
-source=("http://downloads.sourceforge.net/project/adchpp/Releases/ADCH%2B%2B%202.11/${pkgver}/adchpp_${pkgver}_source.tar.gz"
+source=("http://downloads.sourceforge.net/project/adchpp/Releases/ADCH%2B%2B%202.12/${pkgver}/adchpp_${pkgver}_source.tar.gz"
         'adchpp.sh'
         'adchpp.service'
         'adchpp.tmpfile'
@@ -20,7 +27,7 @@ source=("http://downloads.sourceforge.net/project/adchpp/Releases/ADCH%2B%2B%202
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.11.0-fix_cflags.patch'
         'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch'
         'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_log_path.patch')
-sha1sums=('3157b94af61a9893f34acaf73d2287311e89dd9e'
+sha1sums=('257bb2eb5f69dd87f83a8624169628cf19d7412a'
           'd903e8241dec8e6c96b741f52a43a75894471cf7'
           'b834071b7bd39effcdc6bdeaa61f3e877757583b'
           'd8c98ccc13ffda1c68bd1d356f51ae99dd1a5ba2'
@@ -76,9 +83,7 @@ package() {
   install -Dm755 ../adchpp.sh "${pkgdir}/usr/bin/adchpp"
   install -Dm755 "build/release-default-${_arch}/bin/adchppd" "${pkgdir}/usr/lib/adchpp/adchpp"
 
-  pushd "build/release-default-${_arch}/bin" &> /dev/null
-  for i in $(find . -maxdepth 1 -type f -name "*.so"); do install -Dm755 "${i}" "${pkgdir}/usr/lib/adchpp/${i}"; done
-  popd &> /dev/null
+  (cd "build/release-default-${_arch}/bin"; for i in $(find . -maxdepth 1 -type f -name "*.so"); do install -Dm755 "${i}" "${pkgdir}/usr/lib/adchpp/${i}"; done)
 
   install -Dm755 linux/generate_certs.sh "${pkgdir}/usr/share/adchpp/generate_certs.sh"
 
@@ -87,14 +92,10 @@ package() {
   install -Dm644 etc/adchpp.xml "${pkgdir}/etc/adchpp/adchpp.xml"
   install -Dm644 etc/Script.xml "${pkgdir}/etc/adchpp/Script.xml"
 
-  pushd plugins/Script/examples &> /dev/null
-  for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/adchpp/scripts/${i}"; done
-  popd &> /dev/null
+  (cd plugins/Script/examples &> /dev/null; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/adchpp/scripts/${i}"; done)
   for i in $(find pyutil rbutil -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/adchpp/${i}"; done
 
-  pushd build/docs &> /dev/null
-  for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/adchpp/${i}"; done
-  popd &> /dev/null
+  (cd build/docs; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/adchpp/${i}"; done)
 
   install -Dm644 ../adchpp.service "${pkgdir}/usr/lib/systemd/system/adchpp.service"
   install -Dm644 ../adchpp.tmpfile "${pkgdir}/usr/lib/tmpfiles.d/adchpp.conf"
