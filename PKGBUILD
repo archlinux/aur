@@ -1,4 +1,4 @@
-# Maintainer:  respiranto                  <respiranto@icloud.com>
+# Maintainer: Einhard Leichtfuß <respiranto@icloud.com>
 # Contributor: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
 pkgname=dict-gcide
 pkgver=0.48.1
