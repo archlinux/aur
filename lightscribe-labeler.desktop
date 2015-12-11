@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Name=Labeler
+Comment=LightScribe Simple Labeler
+Encoding=UTF-8
+Exec=lightscribe-labeler
+Icon=lightscribe-labeler
+Type=Application
+Icon=lightscribe-labeler.png
+Categories=Application;AudioVideo;
+Terminal=false
