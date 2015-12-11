@@ -2,7 +2,7 @@
 
 pkgname=pugixml
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Light-weight, simple and fast XML parser for C++ with XPath support"
 url='http://pugixml.org'
 arch=('x86_64' 'i686' 'armv7h')
