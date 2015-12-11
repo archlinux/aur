@@ -2,11 +2,11 @@
 
 [Desktop Entry]
 Name=NetBeans IDE
+GenericName=Integrated Development Environment
 Comment=A Java (SE) IDE
 Icon=/usr/share/netbeans/nb/netbeans.png
-Exec=/usr/share/netbeans/bin/netbeans --laf GTK
+Exec=/usr/bin/netbeans
 Terminal=false
 Type=Application
 Categories=Development;
 StartupNotify=true
-GenericName=

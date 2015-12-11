@@ -43,4 +43,4 @@ package() {
 }
 
 sha1sums=('2f9b5537788e141d629e04a6b968ea33d7f0d8ee'
-          '6d0c6259d693a345f2f7fd48153ccebe6836c084')
+          '88c86c3d8c3349ac3b3822166b4d22b792e54bb8')
