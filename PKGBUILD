@@ -3,9 +3,9 @@
 
 pkgname=libdes
 pkgver=4.04b
-pkgrel=1
+pkgrel=2
 pkgdesc="library for DES encryption"
-arch=('i686')
+arch=('i686' 'x86_64')
 url="http://linux.maruhn.com/sec/libdes.html"
 license=('custom')
 depends=('glibc')
