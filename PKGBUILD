@@ -1,5 +1,5 @@
-# Maintainer:  respiranto         <respiranto@icloud.com>
-# Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
+# Maintainer: Einhard Leichtfuß <respiranto@icloud.com>
+# Contributor: Enrico Morelli <morelli@cerm.unifi.it>
 # Contributor: Andrew Engelbrecht <sudoman@ninthfloor.org>
 pkgname=dict-wn
 pkgver=3.0
