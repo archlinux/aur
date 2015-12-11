@@ -2,15 +2,36 @@
 
 pkgname=lsi-msm
 pkgver=15.05.01.00
-pkgrel=1
+pkgrel=2
 pkgdesc="LSI Logic MegaRAID Storage Manager Suite"
 arch=('i686' 'x86_64')
 url='http://www.avagotech.com/products/server-storage'
 license=('custom:LSI' 'Custom:TOG')
-depends=('libxtst' 'alsa-lib' 'libnet' 'unixodbc' 'net-snmp' 'perl-net-snmp' 'perl-term-readkey' 'xdg-utils')
-depends_i686=('libxi' 'libxft' 'libpng12' 'libxinerama' 'libjpeg6-turbo') # 'xerces-c'
-depends_x86_64=('lib32-libxi' 'lib32-libxft' 'lib32-libpng12' 'lib32-libxinerama' 'lib32-libjpeg6-turbo') # 'lib32-xerces-c'
-makedepends=('icu' 'openslp' 'sqlite')
+depends=('libxtst'
+         'alsa-lib'
+         'libnet'
+         'unixodbc'
+         'net-snmp'
+         'perl-net-snmp'
+         'perl-term-readkey'
+         'xdg-utils'
+         )
+depends_i686=('libxi'
+              'libxft'
+              'libpng12'
+              'libxinerama'
+              'libjpeg6-turbo'
+              ) # 'xerces-c'
+depends_x86_64=('lib32-libxi'
+                'lib32-libxft'
+                'lib32-libpng12'
+                'lib32-libxinerama'
+                'lib32-libjpeg6-turbo'
+                ) # 'lib32-xerces-c'
+makedepends=('icu'
+             'openslp'
+             'sqlite'
+             )
 
 DLAGENTS=('https::/usr/bin/wget -c -t 3 --waitretry=3 -O %o %u'
           'http::/usr/bin/curl -qb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')

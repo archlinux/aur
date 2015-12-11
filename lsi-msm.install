@@ -23,7 +23,7 @@ ${green}==>${all_off} ${bold}For open 'LSI MegaRAID Storage Manager' client:
 _instructions_update() {
     printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}\n"
   if [  -f /etc/snmp/snmpd.conf ]; then
-printf "${green}==>${all_off} ${bold}The file «/etc/snmp/snmpd.conf» not found.
+printf "${green}==>${all_off} ${bold}The file «/etc/snmp/snmpd.conf» not found.${all_off}
   ${blue}->${all_off} Please Create and put this content:
      '${bold}pass .1.3.6.1.4.1.3582 /usr/bin/lsi_mrdsnmpmain${all_off}'
      before start/restart the '${bold}LSI MegaRAID SNMP Agent${all_off}' service.\n"
