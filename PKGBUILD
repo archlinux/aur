@@ -5,7 +5,7 @@
 
 pkgname=thc-ipv6-git
 _pkgname=${pkgname/-git}
-pkgver=3.0.15.e5f1616
+pkgver=3.1.17.b592009
 pkgrel=1
 pkgdesc='Complete tool set to attack the inherent protocol weaknesses of IPv6 and ICMP6'
 url='https://thc.org/thc-ipv6/'
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(cat CHANGES|grep -E 'v[0-9\.]{3,}'| cut -d' ' -f1|cut -dv -f2|sort|tail -n1)" \
+  printf "%s.%s.%s" "$(cat CHANGES|grep -E '^v[0-9\.]{3,}'|sed -r 's|^v([0-9\.]{3,}).*|\1|g'|sort|tail -n1)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
