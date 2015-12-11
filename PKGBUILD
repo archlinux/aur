@@ -7,7 +7,8 @@ pkgdesc="Aria2 Web UI in pure HTML/CSS/Javascirpt"
 arch=(any)
 url="https://github.com/ziahamza/webui-aria2"
 license=("MIT")
-makedepends=("git" "aria2c-daemon")
+depends=("aria2c-daemon")
+makedepends=("git")
 provides=("webui-aria2")
 conflicts=("webui-aria2")
 
