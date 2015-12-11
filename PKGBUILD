@@ -4,21 +4,30 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=zeromq-git
-pkgver=20150708
+pkgver=20151211
 pkgrel=1
 pkgdesc="ZeroMQ core engine in C++"
 arch=('i686' 'x86_64')
-depends=('gcc-libs' 'libpgm' 'libsodium' 'util-linux')
-makedepends=('autoconf' 'automake' 'gcc' 'git' 'libtool' 'make' 'pkg-config')
+makedepends=('autoconf'
+             'automake'
+             'gcc'
+             'gcc-libs'
+             'git'
+             'libpgm'
+             'libsodium'
+             'libtool'
+             'make'
+             'pkg-config'
+             'util-linux')
 url="https://github.com/zeromq/libzmq"
 license=('LGPL3')
+options=('staticlibs')
 source=(${pkgname%-git}::git+https://github.com/zeromq/libzmq
         https://raw.githubusercontent.com/zeromq/cppzmq/master/zmq.hpp)
 sha256sums=('SKIP'
             'SKIP')
 provides=('zeromq')
 conflicts=('zeromq')
-options=('staticlibs')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -28,7 +37,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
 
-  msg 'Building...'
+  msg2 'Building...'
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -46,22 +55,21 @@ build() {
 package() {
   cd ${pkgname%-git}
 
-  msg 'Installing license...'
-  install -Dm 644 COPYING        "$pkgdir/usr/share/licenses/zeromq/COPYING"
-  install -Dm 644 COPYING.LESSER "$pkgdir/usr/share/licenses/zeromq/COPYING.LESSER"
+  msg2 'Installing license...'
+  install -Dm 644 "COPYING"{,.LESSER} -t "$pkgdir/usr/share/licenses/zeromq"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   make DESTDIR="$pkgdir" install
 
-  msg 'Installing zmq.hpp...'
-  install -Dm 644 "$srcdir/zmq.hpp" "$pkgdir/usr/include/zmq.hpp"
+  msg2 'Installing zmq.hpp...'
+  install -Dm 644 "$srcdir/zmq.hpp" -t "$pkgdir/usr/include"
 
-  msg 'Renaming binary...'
-  for _bin in `find "$pkgdir/usr/bin" -type f -printf '%f\n'`; do
+  msg2 'Renaming binaries...'
+  for _bin in $(find "$pkgdir/usr/bin" -type f -printf '%f\n'); do
     mv "$pkgdir/usr/bin/$_bin" "$pkgdir/usr/bin/zmq_$_bin"
   done
 
-  msg 'Cleaning up pkgdir...'
+  msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
