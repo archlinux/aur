@@ -1,6 +1,6 @@
 # Maintainer: Peter Lamby <peterlamby@web.de>
 pkgname=sonarqube-lts
-pkgver=4.5.4
+pkgver=4.5.6
 pkgrel=1
 pkgdesc='An open platform to manage code quality'
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ depends=('java-runtime>=7')
 conflicts=('sonar' 'sonarqube')
 options=('!strip')
 install=sonarqube-lts.install
-source=('http://downloads.sonarsource.com/sonarqube/sonarqube-4.5.4.zip'
+source=("https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-${pkgver}.zip"
         'sonarqube.service'
         'sonar.sh.patch')
-md5sums=('59c454a0fa62fe1fe6c269616770b288'
+md5sums=('3b372503944e1b21138d605d85cbf025'
          'e98cb43f4f6b9af33312fa1d8aba88e3'
          '2b443049eede589adc4ad451197f1c10')
 
