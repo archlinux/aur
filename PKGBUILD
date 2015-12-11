@@ -3,12 +3,12 @@
 _hkgname=convertible
 pkgname=haskell-convertible
 pkgver=1.1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Typeclasses and instances for converting between types."
 url="http://hackage.haskell.org/package/convertible"
 license=("BSD3")
 arch=('i686' 'x86_64')
-depends=("ghc=7.10.2" "haskell-mtl" "haskell-old-time"
+depends=("ghc=7.10.3" "haskell-mtl" "haskell-old-time"
          "haskell-text" "haskell-old-locale")
 options=('staticlibs')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
