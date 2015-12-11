@@ -5,7 +5,7 @@ _pkgname=papirus-pack-kde
 pkgbase=papirus-git
 pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git'
          'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git')
-pkgver=r330.669c22f
+pkgver=r346.45cc4c7
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE"
 arch=('any')
@@ -14,8 +14,6 @@ license=('CCPL:by-sa')
 options=('!strip')
 makedepends=('git')
 depends=('plasma-desktop')
-optdepends=('papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git'
-            'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git')
 conflicts=('papirus')
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -26,6 +24,9 @@ pkgver(){
 }
 
 package_papirus-git() {
+    depends=('papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git'
+             'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'libreoffice-papirus-theme-git')
+    optdepends=('bomi-skin-papirus-git' 'papirus-kmail-theme-git')
     install -dm755 ${pkgdir}/usr/share/plasma/look-and-feel
     cp -r ${srcdir}/${_pkgname}/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
