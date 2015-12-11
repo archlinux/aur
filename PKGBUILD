@@ -3,7 +3,7 @@
 
 pkgname=tk-matchentry
 pkgver=0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Entry widget with advanced auto-completion capability"
 depends=('tk' 'perl-tk')
 arch=('any')
@@ -20,7 +20,7 @@ build() {
 
 package() {
 	cd $srcdir/Tk-MatchEntry-$pkgver
-	make DESTDIR=$startdir/pkg/ install
+	make DESTDIR=$pkgdir install
 	# remove perllocal.pod and .packlist
 	find $pkgdir -name perllocal.pod -delete
 	find $pkgdir -name .packlist -delete
