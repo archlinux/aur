@@ -9,6 +9,7 @@ epoch=1
 arch=('i686' 'x86_64')
 url="http://www.google.com/chrome"
 license=('custom:chrome')
+depends=('gcc-libs')
 conflicts=('chromium-pepper-flash-dev')
 provides=('pepper-flash')
 source=(${pkgname}-license.html::https://www.google.com/chrome/intl/en/eula_text.html)
