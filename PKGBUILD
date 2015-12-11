@@ -3,12 +3,12 @@
 _hkgname=HDBC-sqlite3
 pkgname=haskell-hdbc-sqlite3
 pkgver=2.3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Sqlite v3 driver for HDBC"
 url=https://github.com/hdbc/hdbc-sqlite3
 license=("BSD3")
 arch=('i686' 'x86_64')
-depends=("ghc=7.10.2" "haskell-hdbc" "haskell-mtl" "haskell-utf8-string" "sqlite")
+depends=("ghc=7.10.3" "haskell-hdbc" "haskell-mtl" "haskell-utf8-string" "sqlite")
 options=('staticlibs')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
