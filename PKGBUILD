@@ -2,10 +2,10 @@
 pkgname=libtsm-git
 _gitname=libtsm
 pkgver=0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal-emulator State Machine"
 arch=('i686' 'x86_64')
-url="http://www.fredesktop.org/wiki/Software/kmscon/$_gitname"
+url="http://www.freedesktop.org/wiki/Software/kmscon/$_gitname"
 license=('MIT')
 depends=(glibc)
 makedepends=('git' 'libxkbcommon')
