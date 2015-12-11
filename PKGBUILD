@@ -2,7 +2,7 @@
 
 pkgname=soprano-qt5-git
 pkgver=v2.9.3.90.g3e00d37
-pkgrel=3
+pkgrel=4
 pkgdesc="A library which provides a highly usable object-oriented C++/Qt5 framework for RDF data"
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
