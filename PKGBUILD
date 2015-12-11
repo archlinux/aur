@@ -2,7 +2,7 @@
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="SUMO is an open source, highly portable, microscopic and continuous road traffic simulation package designed to handle large road networks"
 arch=('i686' 'x86_64')
@@ -10,18 +10,16 @@ url="http://${pkgbase}-sim.org"
 license=('GPL')
 depends=('gcc-libs' 'glibc' 'fox' 'xerces-c' 'glu' 'libgl')
 makedepends=('make' 'gcc' 'help2man')
-source=("http://www.dlr.de/ts/en/Portaldata/16/Resources/Projekte/SUMO/sumo-src-${pkgver}.zip")
-sha256sums=('7706784ab2ffd763ead9602bb5e069262898a96de45534859424a4795da1de39')
-
-source+=("${pkgbase}.desktop"
-         "${pkgbase}.sh"
-         "${pkgbase}.install")
-sha256sums+=('0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
-             '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f'
-             'eeb0e9f85d72f06937462ceac90cc7f5bb55b56022472c476c137ee95b9fa56b')
-             
-source+=("http://www.dlr.de/ts/en/Portaldata/16/Resources/Projekte/SUMO/sumo-doc-${pkgver}.zip")
-sha256sums+=('3001981f819430f4758600ba99f02c0949cd9963656d31638640265c7ad5b6ac')
+source=("http://prdownloads.sourceforge.net/sumo/sumo-src-${pkgver}.tar.gz?download"
+        "http://prdownloads.sourceforge.net/sumo/sumo-doc-${pkgver}.tar.gz?download"
+        "${pkgbase}.desktop"
+        "${pkgbase}.sh"
+        "${pkgbase}.install")
+sha256sums=('b959eb9aa705e6029764756225185c2602101180fa2f51233976385ff05bf88e'
+            '6c21cd8faf9665400ec3e09c4eb384f4985e84bb9b7b4801d83b33b974ea30ef'
+            '0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
+            '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f'
+            'eeb0e9f85d72f06937462ceac90cc7f5bb55b56022472c476c137ee95b9fa56b')
              
 prepare() {
     cd ${srcdir}/${pkgbase}-${pkgver}
