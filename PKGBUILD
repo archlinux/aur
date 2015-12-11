@@ -1,8 +1,8 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-text-csv-xs'
-pkgver='1.19'
+pkgver='1.20'
 pkgrel='1'
 pkgdesc="comma-separated values manipulation routines"
 arch=('i686' 'x86_64')
@@ -11,9 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/Text-CSV_XS'
-source=('http://search.cpan.org/CPAN/authors/id/H/HM/HMBRAND/Text-CSV_XS-1.19.tgz')
-md5sums=('d25bb37e43a836a3f396faf387307548')
-_distdir="Text-CSV_XS-1.19"
+source=('http://search.cpan.org/CPAN/authors/id/H/HM/HMBRAND/Text-CSV_XS-1.20.tgz')
+md5sums=('c593604ccbf486a08353ffc9336e490e')
+sha512sums=('bd21753bc91685927aa205d81d96548563354690545b27a4344ff91fd3442acbb9e6480dc63744a7bb8fa273ad53a4d81ba4d08073b0654df7770274a76bc528')
+_distdir="Text-CSV_XS-1.20"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
