@@ -1,7 +1,7 @@
 # Maintainer: Harry Jeffery <harry|@|exec64|.|co|.|uk>
 
 pkgname=imv
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Image viewer for Wayland and X11"
 url="http://github.com/eXeC64/imv"
@@ -10,6 +10,11 @@ license=('GPL')
 depends=(
   'freeimage'
   'sdl2'
+  'sdl2_ttf'
+  'fontconfig'
+)
+optdepends=(
+  'cmocka: for running unit tests'
 )
 conflicts=('renameutils')
 source=("$pkgname::git+https://github.com/eXeC64/imv.git#tag=v${pkgver}")
