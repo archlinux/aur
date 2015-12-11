@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=15.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for improving image files made with a digital camera"
 url="http://www.kornelix.com/fotoxx"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('dcraw' 'gtk3' 'gimp-ufraw' 'perl-image-exiftool>=0.8.6')
 makedepends=('xdg-utils')
 optdepends=('mashup: for composing pages to print from within fotoxx' 
   'brasero: for burning')
-source=("http://www.kornelix.com/uploads/1/3/0/3/13035936/$pkgname-$pkgver.tar.gz")
+source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
 md5sums=('142c193e0d522bbbcd42111c657fdc19')
 install=fotoxx.install
 
