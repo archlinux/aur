@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 
 # Written by: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # License: GPLv3
