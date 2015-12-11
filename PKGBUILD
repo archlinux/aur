@@ -1,19 +1,19 @@
 # Maintainer: Duru Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=0xdbe-eap
 _pkgname=0xdbe
-pkgver=143.1040.1
+pkgver=143.1301.4
 _buildver=$pkgver
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64') # not 'any' because of fsnotifier
-url="http://www.jetbrains.com/dbe/"
+url="https://confluence.jetbrains.com/display/DBE/0xDBE+1.0+EAP"
 backup=("usr/share/${_pkgname}/bin/${_pkgname}.vmoptions" "usr/share/${_pkgname}/bin/${_pkgname}64.vmoptions")
 license=('Commercial')
 depends=('java-environment' 'giflib')
 source=("http://download.jetbrains.com/dbe/${_pkgname}-${_buildver}.tar.gz" \
         "${_pkgname}.sh" \
         "${_pkgname}.desktop")
-md5sums=('4743bcdebdd62f6f1489ead429993467'
+md5sums=('f82191827ba65d431601f3c71b9f05f3'
          '864c5bb6071568a1a9f26573e090207b'
          'e520ed91c5c0578cc93df0cd7e03166b')
 package() {
@@ -34,8 +34,9 @@ package() {
 
   install -D -m755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -D -m644 "$srcdir/0xDBE-$_buildver/bin/${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
+  install -D -m644 "$srcdir/0xDBE-$_buildver/bin/product.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
   
   install -d -m755 "$pkgdir/usr/share/licenses/${_pkgname}"
   install -D -m644 "$srcdir"/0xDBE-${_buildver}/license/* "$pkgdir"/usr/share/licenses/${_pkgname}
 }
+
