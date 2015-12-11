@@ -1,5 +1,5 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-pegex'
 pkgver='0.60'
@@ -8,7 +8,7 @@ pkgdesc="Acmeist PEG Parser Framework"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-yaml-libyaml' 'perl-file-sharedir')
+depends=('perl-yaml-libyaml' 'perl-file-sharedir-install')
 makedepends=()
 url='https://metacpan.org/release/Pegex'
 source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Pegex-0.60.tar.gz')
