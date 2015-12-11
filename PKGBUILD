@@ -1,6 +1,6 @@
 pkgname=python2-rtshell
 _name=rtshell
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Shell commands for managing RT-Middleware running on OpenRTM-aist"
 url="https://github.com/gbiggs/rtshell"
@@ -9,7 +9,7 @@ makedepends=('python2' 'python2-setuptools' 'expect')
 license=('EPLv1.0')
 arch=('any')
 source=("https://github.com/gbiggs/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('3a459a8aea23539d2ab4378dfb044afba71e129a905c71b9c9e904fb9239dba6')
+sha256sums=('e2db912fccd0ae3fa24e2d3e32c0b9bb86ab5133db5b8d018d3201422e3acbd8')
 
 # FIXME: doc not properly generated
 # FIXME: probably some dependencies missing
