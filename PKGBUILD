@@ -1,14 +1,14 @@
 # Contributor, Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=findwild
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
 pkgdesc="A program to find files with a nice gtk interface"
 url="http://www.kornelix.com/findwild"
-source=("http://www.kornelix.com/uploads/1/3/0/3/13035936/$pkgname-$pkgver.tar.gz")
-md5sums=('3fc03be068e55e4a491e36a5767dc0be')
+source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
+md5sums=('f2d5e674d9de9283cc6b8783351bb9e8')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
