@@ -2,9 +2,9 @@
 
 pkgname=bennugd-core
 pkgver=325
-pkgrel=1
+pkgrel=2
 pkgdesc="a programming language to create games (Fenix successor) - core"
-arch=('i686')
+arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/bennugd/"
 license=('GPL')
 depends=('libdes' 'openssl')
@@ -15,7 +15,7 @@ build() {
   cd $srcdir/bennugd-code-${pkgver}/core
   chmod +x ./configure
   ./configure --prefix=/usr
-  find . -name Makefile -print0 | xargs -0 sed -i 's/--as-needed//'
+  #find . -name Makefile -print0 | xargs -0 sed -i 's/--as-needed//'
   make
 }
 
