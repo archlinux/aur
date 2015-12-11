@@ -1,25 +1,36 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=zapm
-pkgver=0.8.1
+pkgver=0.8.3
+_pkgver=083
 pkgrel=1
 pkgdesc="A science fiction roguelike, Nethack in space."
 arch=("i686" "x86_64")
 url="http://zapm.org/"
 license=("unknown")
 depends=("ncurses")
-[ "$CARCH" == "x86_64" ] && depends=("lib32-ncurses")
-source=("http://zapm.org/zapm-$pkgver.linux.tar.gz"
-        "launcher")
-md5sums=('c0f10ad593be7c22d6da336cf8de9cbc'
-         'bf4b75ae17d4c95fabcda50bae47fa80')
+source=("http://nethack.devnull.net/software/zapm-$_pkgver-src.tgz")
+md5sums=("4759b924a506cc0674cfb9aa2ca69866")
+
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i 's|  grow|  this->grow|' Util.h
+  sed -i 's|-flat_namespace||' Makefile
+}
+
+build() {
+  cd $pkgname-$pkgver
+  # double quoting needed to make #defines happy
+  make ZAPMOWNER='root:games' GAMEDIR='"/usr/share/games/zapm"' \
+    DATADIR='"/usr/share/games/zapm/data"' zapm-multiuser
+}
 
 package() {
-  cd "$srcdir/$pkgname"
-  mkdir -p "$pkgdir/usr/share/zapm"
-  sed -i 's|libpanel.so.5|libpanelw.so\x00|g' zapm
-  cp -r * "$pkgdir/usr/share/zapm"
-  chown -R root:games "$pkgdir/usr/share/zapm/user"
-  chmod -R 775 "$pkgdir/usr/share/zapm/user"
-  install -D "$srcdir/launcher" "$pkgdir/usr/bin/$pkgname"
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" ZAPMOWNER='root:games' \
+    GAMEDIR="$pkgdir/usr/share/games/zapm" \
+    DATADIR="$pkgdir/usr/share/games/zapm/data" install
+  install -d "$pkgdir/usr/bin/"
+  ln -s /usr/share/games/zapm/zapm "$pkgdir/usr/bin/zapm"
 }
+
