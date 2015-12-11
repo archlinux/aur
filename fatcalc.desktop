@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FatCalc
+Comment=simple body fat calculator
+Icon=fatcalc
+Exec=fatcalc
+Categories=Office;
+Terminal=false
+Type=Application
