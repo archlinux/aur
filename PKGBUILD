@@ -3,12 +3,12 @@
 
 pkgname=blackshades-svn
 pkgver=r110
-pkgrel=1
+pkgrel=2
 pkgdesc="A game where you control a psychic bodyguard, and try to protect the VIP from hordes of would-be assassins"
-arch=('i686')
+arch=('i686' 'x86_64')
 url="http://icculus.org/blackshades/"
 license=('uDevGame')
-depends=('sdl' 'sdl_image' 'openal' 'libvorbis' 'mesa' 'freealut')
+depends=('sdl' 'sdl_image' 'openal' 'libvorbis' 'mesa' 'freealut' 'glu')
 makedepends=('subversion')
 source=(blackshades::svn://svn.icculus.org/blackshades/trunk/ blackshades.patch)
 md5sums=('SKIP'
