@@ -15,7 +15,7 @@ source=("https://dl-ssl.google.com/android/repository/google_m2repository_${pkgv
 	"source.properties")
 
 sha1sums=('c1b67b7e5b10d46dcffd3b2c560ead6d24f8224d'
-          '14716d37e650c9b50c8a82b3d2feb299a777c395')
+          'b1729ad0850ddab19335885fdda7d7d1cfa5be59')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/extras/google/"
