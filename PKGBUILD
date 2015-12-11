@@ -1,7 +1,8 @@
-# Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
+# Maintainer: Glen Dsouza <glen@teameos.org>
 # Contributor: jmf <jmf at mesecons dot net>
+# Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 pkgname=flightgear-git
-pkgver=20151210
+pkgver=20151212
 pkgrel=1
 _gitname=flightgear
 pkgdesc="An open-source, multi-platform flight simulator"
