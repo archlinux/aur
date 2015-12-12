@@ -2,7 +2,7 @@
 # Contributor: Earnestly
 
 pkgname=antimony-git
-pkgver=0.8.0b.r223.g24899a4
+pkgver=0.9.0b.r72.ge1117fe
 pkgrel=1
 pkgdesc="Graph-based 3D CSG CAD modeller"
 url="http://www.mattkeeter.com/projects/antimony/3/"
@@ -31,7 +31,7 @@ build() {
 
     sed -i 's|\(executable.path =\).*|\1 /usr/bin|' app/app.pro
     sed -i 's|\(nodes_folder.path =\).*|\1  /usr/share/antimony/sb/nodes|' app/app.pro
-    sed -i 's|\(fab_folder.path =\).*|\1 /usr/lib/python3.4/site-packages/fab|' app/app.pro
+    sed -i 's|\(fab_folder.path =\).*|\1 /usr/lib/python3.5/site-packages/fab|' app/app.pro
     sed -i 's|return path.join("/");|return "/usr/share/antimony/sb/nodes";|' app/src/app/app.cpp
 
     mkdir -p build
@@ -46,9 +46,9 @@ check() {
     return 0
     mkdir -p tests
     cd tests
-    qmake-qt5 PREFIX="/usr" ../qt/antimony-tests.pro
+    qmake-qt5 PREFIX="/usr" ../lib/fab/fab-tests.pro
+    qmake-qt5 PREFIX="/usr" ../lib/graph/graph-tests.pro
     make
-    # failure involving QNetworkAccessManager
 }
 
 package() {
