@@ -2,8 +2,8 @@
 
 pkgname=prepare_gnat_util
 pkgver=1
-pkgrel=1
-pkgdesc="Provides libgnat-5.2.so required by gnat_util."
+pkgrel=2
+pkgdesc="Provides libgnat-5.3.so required by gnat_util."
 
 options=('!emptydirs')
 
@@ -27,8 +27,8 @@ build()
 package() 
 {
   mkdir -p  $pkgdir/usr/lib
-  ln -s  /usr/lib/libgnat-5.so   $pkgdir/usr/lib/libgnat-5.2.so
-  ln -s  /usr/lib/libgnarl-5.so  $pkgdir/usr/lib/libgnarl-5.2.so
+  ln -s  /usr/lib/libgnat-5.so   $pkgdir/usr/lib/libgnat-5.3.so
+  ln -s  /usr/lib/libgnarl-5.so  $pkgdir/usr/lib/libgnarl-5.3.so
 }
 
 
