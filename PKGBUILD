@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 pkgname=pavumeter
 pkgver=0.9.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple GTK volume meter for the PulseAudio sound server"
 arch=(i686 x86_64)
 url="http://git.0pointer.de/pavumeter.git"
@@ -23,7 +23,7 @@ md5sums=('SKIP'
 build() {
   cd ${srcdir}/${pkgname}
   ./autogen.sh
-  ./configure --prefix=/usr
+  CXXFLAGS="$CXXFLAGS -std=c++11" ./configure --prefix=/usr
   make || return 1
 }
 
