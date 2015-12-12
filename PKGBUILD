@@ -1,4 +1,4 @@
-# Maintainer: gS644 <lauseb644@gmail.com>
+# Maintainer: Sebastian Lau <archlinux@slau.info>
 # Contributor: TBA
 
 pkgname=kodi-standalone-socket-activation
@@ -9,7 +9,7 @@ arch=('any')
 url="https://wiki.archlinux.org/index.php/Kodi#Socket_activation"
 license=('GPL')
 depends=('systemd' 'kodi')
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/gS644/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/nullptrT/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('27dd5f78af24bca54069605caa592b16198f0dddfa77e9efe88108508a0983e0')
 
 package() {
