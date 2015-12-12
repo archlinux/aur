@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win32-git
 pkgver=3222.3f9bd01
-pkgrel=1
+pkgrel=2
 pkgdesc="Carla win32 bridge"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
@@ -63,10 +63,11 @@ package() {
   cp bin/*.exe "$pkgdir/usr/lib/carla/"
   cp bin/*.dll "$pkgdir/usr/lib/carla/"
   mkdir -p "$pkgdir/usr/lib/lv2/carla.lv2"
-  cp bin/*.exe "$pkgdir/usr/lib/lv2/carla.lv2/"
-  cp bin/*.dll "$pkgdir/usr/lib/lv2/carla.lv2/"
   mkdir -p "$pkgdir/usr/lib/vst/carla.vst"
-  cp bin/*.exe "$pkgdir/usr/lib/vst/carla.vst/"
-  cp bin/*.dll "$pkgdir/usr/lib/vst/carla.vst/"
+  cd "$pkgdir/usr/lib/carla"
+  ln -sr *.exe ../lv2/carla.lv2/
+  ln -sr *.exe ../vst/carla.vst/
+  ln -sr *.dll ../lv2/carla.lv2/
+  ln -sr *.dll ../vst/carla.vst/
 }
 
