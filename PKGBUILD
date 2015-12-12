@@ -3,16 +3,16 @@
 
 pkgname=lenmus
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free program to learn music"
 arch=('i686' 'x86_64')
 url="http://lenmus.sourceforge.net/en/phonascus/intro"
 license=('GPL')
 depends=('portmidi' 'freetype2' 'wxgtk2.8' 'sqlite3' 'boost-libs' 'liblomse>=0.14.0')
 optdepends=('timidity++: for sound without external midi player')
-makedepends=('bzr' 'boost' 'unittestpp')
+makedepends=('boost' 'unittestpp' 'cmake>=2.8')
 
-source=("http://downloads.sourceforge.net/lenmus/${pkgname}_${pkgver}.tar.gz"
+source=("https://launchpad.net/lenmus/trunk/${pkgver}/+download/${pkgname}_${pkgver}.tar.gz"
         'cmake-boost.patch'
 	'cmake-find.patch'
 	'cmake-wxgtk.patch'
