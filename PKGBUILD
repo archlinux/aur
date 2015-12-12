@@ -13,7 +13,7 @@ install='osbuddy.install'
 source=(http://cdn.rsbuddy.com/live/f/loader/OSBuddy.jar osbuddy osbuddy.desktop osbuddy.png osbuddy.install LICENSE)
 noextract=("${source[@]%%::*}")
 md5sums=('61ed8172507131e64f77fcd5c8e1e880'
-         'c4cfc33a6e67e67d5a618d309f04f679'
+         'ef94b41052c080e214edac34c673c197'
          '96ee5f2ec6e827516b9e557c08729cde'
          '5edc1b9aef7d753402180df474bb391f'
          '72577c1b6eca8aebfeee9ca14db7a8f6'
