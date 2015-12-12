@@ -1,4 +1,4 @@
- # Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Dylan <dylan@flickmag.net>
 
 pkgname=python-daemonocle
 pkgver=0.8
@@ -29,3 +29,4 @@ package() {
   cd "$srcdir/daemonocle-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
+
