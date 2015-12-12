@@ -11,7 +11,9 @@ depends=('gcc-libs'
          'glibc'
          )
 makedepends=('git')
-provides=('zimg')
+provides=('zimg'
+          'libzimg.so'
+          )
 conflicts=('zimg' 'vapoursynth-plugin-zimg' 'vapoursynth-plugin-zimg-git')
 source=('git+https://github.com/sekrit-twc/zimg.git')
 sha1sums=('SKIP')

@@ -10,6 +10,7 @@ pkgbase = zimg-git
 	depends = gcc-libs
 	depends = glibc
 	provides = zimg
+	provides = libzimg.so
 	conflicts = zimg
 	conflicts = vapoursynth-plugin-zimg
 	conflicts = vapoursynth-plugin-zimg-git
