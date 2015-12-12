@@ -4,7 +4,7 @@
 _pkgname=libmp4v2
 pkgname=lib32-$_pkgname
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MPEG-4 library (32 bit)"
 arch=('x86_64')
 url="http://code.google.com/p/mp4v2/"
