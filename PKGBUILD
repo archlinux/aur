@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win64-git
-pkgver=3217.6b348f6
+pkgver=3222.3f9bd01
 pkgrel=1
 pkgdesc="Carla win64 bridge"
 arch=('i686' 'x86_64')
@@ -65,5 +65,11 @@ package() {
   mkdir -p "$pkgdir/usr/lib/carla"
   cp bin/*.exe "$pkgdir/usr/lib/carla/"
   cp bin/*.dll "$pkgdir/usr/lib/carla/"
+  mkdir -p "$pkgdir/usr/lib/lv2/carla.lv2"
+  cp bin/*.exe "$pkgdir/usr/lib/lv2/carla.lv2/"
+  cp bin/*.dll "$pkgdir/usr/lib/lv2/carla.lv2/"
+  mkdir -p "$pkgdir/usr/lib/vst/carla.vst"
+  cp bin/*.exe "$pkgdir/usr/lib/vst/carla.vst/"
+  cp bin/*.dll "$pkgdir/usr/lib/vst/carla.vst/"
 }
 
