@@ -2,7 +2,7 @@
 
 pkgname=anticube2-git
 pkgver=f13b180
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive first person puzzle game based on Tesseract"
 arch=('i686' 'x86_64')
 url="http://quadropolis.us/node/4182"
@@ -14,7 +14,7 @@ md5sums=(SKIP)
 _gitname='Anticube2'
 _exec='anticube2'
 _name='Anticube 2'
-_categories='Game;'
+_categories='Game;LogicGame'
 
 pkgver() {
   cd ${_gitname}
