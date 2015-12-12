@@ -7,23 +7,23 @@
 
 pkgname=lib32-taglib
 _pkgname=taglib
-pkgver=1.9.1
-
+pkgver=1.10
 pkgrel=1
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats, lib32"
 arch=('x86_64')
 url="http://developer.kde.org/~wheeler/taglib.html"
 license=('LGPL' 'MPL')
-depends=('sh' 'lib32-zlib' 'gcc-libs-multilib' 'taglib')
-makedepends=('cmake' 'pkg-config')
+depends=('lib32-zlib')
+makedepends=('cmake')
 options=('!libtool')
 source=("http://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
-md5sums=('0d35df96822bbd564c5504cb3c2e4d86')
+md5sums=('5b4441a15423b046dd92a096e09ea22c')
 
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd "${srcdir}"
-  mkdir build
   cd build
   cmake ../${_pkgname}-${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/build
+  cd build
   make DESTDIR="${pkgdir}" install
   cd "$pkgdir/usr"
   rm -rf {bin,include,share}/
