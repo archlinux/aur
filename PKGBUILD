@@ -12,12 +12,13 @@
 
 _pkgname=sickrage
 pkgname=$_pkgname-git
-pkgver=4.1.0.2.r354.gfc4d505
+pkgver=4.1.0.2.r370.g4da36fb
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
 license=('GPL3')
+#unrar
 makedepends=('git')
 depends=('python2-mako' 'python2-cheetah')
 #            'deluge: supported torrent client'
@@ -36,7 +37,7 @@ source=("$pkgname::git://github.com/SiCKRAGETV/SickRage.git"
         'sickrage.service'
         'sickrage.tmpfile')
 md5sums=('SKIP'
-         '70a920d85e5e28d9e920d3fb90247f25'
+         'd55285ca7b6e6b01413f3a9e46cc0c4d'
          'f7a12df978d649da4e77d88e03f50252')
 
 pkgver() {
@@ -44,8 +45,18 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+#prepare() {
+#  cd $pkgname
+#  sed -i 's/UnRAR2/unrar2/g' lib/unrar2/test_UnRAR2.py
+#}
+#
+#check() {
+#  cd $pkgname/lib/unrar2
+#  PYTHONPATH="$(pwd)/..:$PYTHONPATH" python2 test_UnRAR2.py
+#}
+
 package() {
-  # The "source" sickrage install type does not include the .git folder (git repository files)
+  # The sickrage "SOURCE" install type does not have the .git folder (git repository files)
   install -dm755 "$pkgdir/opt/sickrage"
   cp -rp $pkgname/* "$pkgdir/opt/sickrage"
  
