@@ -4,7 +4,7 @@
 pkgname=evince-no-gnome
 _pkgname=evince
 pkgver=3.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3 document viewer, complete features, no gnome"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
