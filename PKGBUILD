@@ -44,7 +44,7 @@ package() {
   cd img/icons
   for _icon in *.png; do
     _size=$(sed 's|^[^-]*-||;s|\.png||' <<< "$_icon")
-    install -Dm644 "$_icon" "$pkgdir/usr/share/icons/hicolor/$_size/apps/$_pkgname.png"
+    install -Dm644 "$_icon" "$pkgdir/usr/share/icons/hicolor/$_size/apps/$pkgname.png"
   done
-  install -Dm644 $pkgname.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+  install -Dm644 $pkgname.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 }
