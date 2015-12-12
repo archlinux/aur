@@ -2,7 +2,7 @@
 # Sat Dec 12 18:06:37 UTC 2015
 pkgbase = python2-toxcore
 	pkgdesc = Python binding for ToxCore
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/abbat/pytoxcore
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = python2-toxcore
 	makedepends = python2
 	depends = toxcore
 	depends = python2
-	source = git+https://github.com/abbat/pytoxcore.git#tag=v0.0.16
+	source = git+https://github.com/abbat/pytoxcore.git#tag=v0.0.17
 	sha512sums = SKIP
 
 pkgname = python2-toxcore

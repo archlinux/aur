@@ -1,7 +1,7 @@
 # Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 
 pkgname=python2-toxcore
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="Python binding for ToxCore"
 arch=('i686' 'x86_64')
