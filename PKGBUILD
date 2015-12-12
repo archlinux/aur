@@ -4,8 +4,8 @@
 
 _pkgbasename=openal
 pkgname=lib32-$_pkgbasename
-pkgver=1.17.0
-pkgrel=2
+pkgver=1.17.1
+pkgrel=1
 pkgdesc="A cross-platform 3D audio library (32-bit)"
 arch=(x86_64)
 url="http://www.openal.org/"
@@ -13,7 +13,7 @@ license=(LGPL)
 depends=(lib32-glibc $_pkgbasename)
 makedepends=(lib32-alsa-lib pkgconfig cmake lib32-libpulse lib32-portaudio lib32-jack
              git gcc-multilib)
-_commit=63567526b0a17449baf57053d11688aa277a7e40
+_commit=14df326876d92f63c9c007da3c0434fba47c30b8
 source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
 sha256sums=('SKIP')
 
