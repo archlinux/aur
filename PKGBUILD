@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('gtkmm3' 'gettext' 'desktop-file-utils' 'gtk-update-icon-cache' 'gstreamermm' 'flatbuffers' 'toxcore' 'util-linux')
 makedepends=('git' 'cmake' 'librsvg')
 source=("${pkgname%-git}::git+https://github.com/KoKuToru/gTox.git#branch=AUR"
-        "audio-git::git+https://github.com/Tox/Sounds.git")
+        "audio-git::git+https://github.com/Tox/Sounds.git#commit=1a21216e29b5c85fb1dc2c9672f9c16a09a9a0e2")
 conflicts=('gtox')
 install="gTox.install"
 
