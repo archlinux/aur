@@ -62,8 +62,7 @@ build() {
         --enable-ha --enable-vici --enable-swanctl --enable-systemd --enable-ext-auth \
         --disable-mysql --disable-ldap -enable-cmd --enable-forecast --enable-connmark \
 	--enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
-	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-nm \
-	--enable-unity 
+	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity 
 #	--enable-ruby-gems --enable-python-eggs
   make
 }
