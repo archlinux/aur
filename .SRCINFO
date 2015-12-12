@@ -1,6 +1,6 @@
 pkgbase = playtime-git
 	pkgdesc = Pretty-print media file duration indices
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/2ion/playtime
 	arch = any

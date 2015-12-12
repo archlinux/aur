@@ -1,6 +1,6 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=playtime-git
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Pretty-print media file duration indices"
 arch=('any')
