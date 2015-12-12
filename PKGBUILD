@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 255736 2015-12-10 08:33:35Z tpowa $
+# $Id: PKGBUILD 255790 2015-12-11 10:02:47Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-c720       # Build kernel with a different name
 _srcname=linux-4.3
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            '82caff48806796418f445d0a87698abedfaaccfdc7b63059166b788e0cfd144b'
+            'a96b8a4e90887dea82066b4d804ac193700c200b6c0075fecba0b691b0240a5e'
             'SKIP'
             '56a56f6b0d8edaa6f58342ab9d54392503dfa6ca884a0b936cbf0206604758d2'
             'a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7'
