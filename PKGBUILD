@@ -2,7 +2,7 @@
 pkgname=radicale
 _pkgname=Radicale
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Simple Calendar Server"
 arch=any
 url="http://www.radicale.org/"
@@ -19,7 +19,7 @@ source=(
 )
 md5sums=('e29e51df14bc8ca5a580998d5d592285'
          '7d6a8ecdcb02f43780d106d8946338b3'
-         'f3abb0343e66a4045128b93184205d3e'
+         '62af2e07ad32a0fcece32fae68e92daf'
          '5613eec93efc5ef2ef68abd124fb6b61')
 optdepends=(
   'python-pam: For PAM authentication'
