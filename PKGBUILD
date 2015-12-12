@@ -4,7 +4,7 @@
 _pkgname=libmodplug
 pkgname=lib32-${_pkgname}
 pkgver=0.8.8.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A MOD playing library (32 bit)"
 arch=('x86_64')
 url="http://modplug-xmms.sourceforge.net/"
