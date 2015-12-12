@@ -1,6 +1,6 @@
 # Maintainer: xomachine <xomachiner@gmail.com>
 pkgname=termit-git
-pkgver=version.2.5.0.r137.gc53f3c5
+pkgver=2.5.0.r137.gc53f3c5
 pkgrel=1
 pkgdesc="Terminal emulator based on VTE library with Lua scripting"
 conflicts=("termit")
@@ -16,7 +16,7 @@ pkgver() {
   _pkgname=$(echo $pkgname | sed -e 's/-git$//')
   cd "$srcdir/$_pkgname"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/version\.//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
