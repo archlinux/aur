@@ -4,7 +4,7 @@ _pkgbase=git
 pkgbase=git-git
 pkgname=('git-git')
 pkgver=v2.7.0.rc0.r20.g4b9ab0e
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('i686' 'x86_64')
 url='http://git-scm.com/'
@@ -45,7 +45,7 @@ build() {
 
 package() {
  cd "$_gitname"
- make DESTDIR="$pkgdir" install install-doc install-html
+ make DESTDIR="$pkgdir" install install-doc
 
   # git-daemon via systemd socket activation
   install -D -m 644 "$srcdir"/git-daemon@.service "$pkgdir"/usr/lib/systemd/system/git-daemon@.service
