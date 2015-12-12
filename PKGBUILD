@@ -2,7 +2,7 @@
 #Contributor: Artem A Klevtsov <unikum.pm at gmail dot com>
 pkgname=qtnotifydaemon
 pkgver=1.0.14
-pkgrel=5
+pkgrel=6
 pkgdesc="Configurable and flexible Qt notification daemon"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/${pkgname}"
