@@ -3,7 +3,7 @@
 pkgbase = lua51bind
 	pkgdesc = A library that helps you create bindings between C++ and Lua51
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rasterbar.com/products/luabind.html
 	arch = i686
 	arch = x86_64

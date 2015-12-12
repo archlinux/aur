@@ -3,7 +3,7 @@
 luaver=5.1
 pkgname=lua${luaver//.}bind
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that helps you create bindings between C++ and Lua51"
 arch=('i686' 'x86_64')
 url="http://www.rasterbar.com/products/luabind.html"
