@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gtk2
-pkgver=2.24.28
+pkgver=2.24.29
 pkgrel=1
 pkgdesc="GTK+ is a multi-platform toolkit (v2) (mingw-w64)"
 arch=(any)
@@ -18,16 +18,13 @@ depends=(
   'mingw-w64-cairo>=1.6'
   'mingw-w64-gdk-pixbuf2>=2.21.0')
 options=(!strip !buildflags staticlibs)
-source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
-        'gtk2-bug-753691-fix-parallel-installation.patch')
-sha256sums=("b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656"
-            '6c74279653fdeed9a5c79a13f1593460398e8409a850eddfe437c333f60be8be')
+source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
+sha256sums=("0741c59600d3d810a223866453dc2bbb18ce4723828681ba24aa6519c37631b8")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
-  patch -p1 < "${srcdir}/${source[1]}"
   for _arch in ${_architectures}; do
     msg "Building for ${_arch}"
     rm "${srcdir}/gtk+-${pkgver}/gtk/gtk.def"
