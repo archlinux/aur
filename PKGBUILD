@@ -8,7 +8,7 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-utils-lts"
-pkgver=0.6.5.3_4.1.13_1
+pkgver=0.6.5.3_4.1.14_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("i686" "x86_64")
