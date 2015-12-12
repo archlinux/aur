@@ -6,6 +6,8 @@ After=network.target
 Restart=on-success
 User=sickrage
 Group=sickrage
+WorkingDirectory=/opt/sickrage
+
 #Type=forking
 #PIDFile=/run/sickrage/sickrage.pid
 #ExecStart=/usr/bin/env python2 /opt/sickrage/SickBeard.py --quiet --daemon --nolaunch --pidfile=/run/sickrage/sickrage.pid --config /opt/sickrage/config.ini --datadir /opt/sickrage

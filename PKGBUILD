@@ -11,12 +11,13 @@
 
 _pkgname=sickrage2
 pkgname=$_pkgname-git
-pkgver=4.2.1.01.r4.gc575707
+pkgver=4.2.1.05.r2.gb5b45cb
 pkgrel=1
 pkgdesc="Automatic torrent/nzb video library manager for TV shows"
 arch=('any')
 url="https://github.com/SickRage/SickRage"
 license=('GPL3')
+#unrar
 makedepends=('git')
 depends=('python2-mako' 'python2-cheetah')
 #            'deluge: supported torrent client'
@@ -35,7 +36,7 @@ source=("$pkgname::git://github.com/SickRage/SickRage.git"
         'sickrage.service'
         'sickrage.tmpfile')
 md5sums=('SKIP'
-         '70a920d85e5e28d9e920d3fb90247f25'
+         'd55285ca7b6e6b01413f3a9e46cc0c4d'
          'f7a12df978d649da4e77d88e03f50252')
 
 pkgver() {
@@ -43,8 +44,18 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+#prepare() {
+#  cd $pkgname
+#  sed -i 's/UnRAR2/unrar2/g' lib/unrar2/test_UnRAR2.py
+#}
+#
+#check() {
+#  cd $pkgname/lib/unrar2
+#  PYTHONPATH="$(pwd)/..:$PYTHONPATH" python2 test_UnRAR2.py
+#}
+
 package() {
-  # The "source" sickrage install type does not include the .git folder (git repository files)
+  # The sickrage "SOURCE" install type does not have the .git folder (git repository files)
   install -dm755 "$pkgdir/opt/sickrage"
   cp -rp $pkgname/* "$pkgdir/opt/sickrage"
  
