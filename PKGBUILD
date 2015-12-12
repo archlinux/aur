@@ -2,7 +2,7 @@
 # Contributor: Cedric Staub <cs+aur {at} cssx.cc>
 
 pkgname=episoder
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A simple TV show episode reminder"
 arch=('any')
@@ -12,15 +12,15 @@ depends=('python2-pysqlite'
          'python2-yaml'
          'python2-sqlalchemy'
          'tvdb_api')
-source=(https://github.com/cockroach/${pkgname}/archive/v${pkgver//./_}.tar.gz)
-sha256sums=('9bc1f5949544b8f28c4c25b9f649aea6ce7c27ab990ca8e17ab250e9a7c80190')
+source=(https://github.com/cockroach/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('57f4c1fb9833f434d2f31220810386f484b5ce147fb99250950c83b9ebe152de')
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver//./_}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver//./_}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}"
 }
