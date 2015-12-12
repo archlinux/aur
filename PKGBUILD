@@ -9,8 +9,8 @@
 # -SNI support (see https://bugs.winehq.org/show_bug.cgi?id=38409 )
 
 pkgname=wine-gaming-nine
-pkgver=1.8rc2
-pkgrel=2
+pkgver=1.8rc3
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -24,7 +24,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         sni_support.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('ba8d5d97cad36728508ea9d7d1bb31af2f37a713'
+sha1sums=('071e2a11c94c7fd8963fa3e51c29537d828f5841'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'f3febb8836f38320742a546c667106608d4c4395'
@@ -121,9 +121,37 @@ if [[ $CARCH == i686 ]]; then
     conflicts=('wine')
 else
     makedepends=(${makedepends[@]} ${_depends[@]})
-    provides=("wine=$pkgver" "wine-wow64=$pkgver")
-    conflicts=('wine' 'wine-wow64')
+    provides=("wine=$pkgver" "wine-wow64=$pkgver" "wine-staging=$pkgver")
+    conflicts=('wine' 'wine-wow64' 'wine-staging')
 fi
+
+#Needed for testing gcc version
+check_gcc()
+{
+    curver=($(gcc -dumpversion | sed 's/\./ /g'))
+    minver=(5 3 0)
+
+    for ((i=${#curver[@]}; i<${#minver[@]}; i++))
+    do
+        curver[i]=0
+    done
+
+    for ((i=0; i<${#curver[@]}; i++))
+    do
+        if [[ -z ${minver[i]} ]]
+        then
+            minver[i]=0
+        fi
+
+        if [ "${curver[i]}" -lt "${minver[i]}" ]; then
+            return 1
+        elif [ "${curver[i]}" -gt "${minver[i]}" ]; then
+            return 0
+        fi
+    done
+
+    return 0
+}
 
 prepare()
 {
@@ -141,9 +169,12 @@ prepare()
 
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 
-    # Remove once https://bugs.winehq.org/show_bug.cgi?id=38653 is resolved
-    export CFLAGS="${CFLAGS/-O2/} -O0"
-    export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
+    if [ ! check_gcc ]; then
+        # https://bugs.winehq.org/show_bug.cgi?id=38653 fixed sinced GCC 5.3.0
+        echo "GCC Version <5.3.0 detected, using -O0 flag... You should upgrade!"
+        export CFLAGS="${CFLAGS/-O2/} -O0"
+        export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
+    fi
 
     # These additional CPPFLAGS solve FS#27662 and FS#34195
     export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
