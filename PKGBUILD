@@ -2,7 +2,7 @@
 # Original maintainer: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 pkgname=watchman
 pkgver=4.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ sha256sums=('d8998df9795951d49dce9df82da11eeba384934d5d9d3f0ea2d543a9837e2ddb')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --without-python
   make
 }
 
