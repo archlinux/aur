@@ -8,7 +8,7 @@ pkgdesc="bash script to handle pass storages in a convenient way"
 arch=('any')
 url='https://github.com/carnager/rofi-pass'
 license=('GPL')
-depends=('xdg-utils' 'rofi-git' 'pass' 'xdotool' 'xclip')
+depends=('xdg-utils' 'rofi' 'pass' 'xdotool' 'xclip')
 optdepends=('passed-git: change fieldnames in password files')
 
 install=('rofi-pass.install')
