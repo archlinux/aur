@@ -3,14 +3,13 @@
 # Contributor: Mamut Ghiunhan <venerix [at] gmail [dot] com> (Previous Maintainer)
 
 pkgname=nvidia-lts-ck
-pkgver=355.11
+pkgver=358.16
 _extramodules=extramodules-4.1-lts-ck
-pkgrel=6
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-lts-ck"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-lts-ck>=4.1' 'linux-lts-ck<4.2' "nvidia-utils=$pkgver" 'nvidia-libgl')
-makedepends=('linux-lts-ck-headers>=4.1' 'linux-lts-ck-headers<4.2')
+makedepends=("nvidia-utils=$pkgver" "nvidia-libgl=$pkgver" 'linux-lts>=4.1.11' 'linux-lts-headers>=4.1.11')
 provides=('nvidia')
 groups=('lts-ck-generic')
 license=('custom')
@@ -19,8 +18,8 @@ options=(!strip)
 
 source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums_i686=('94ce6b879581b931b84d83a9111040b9a5aa9306b012b4380cd93f6ffede3066')
-sha256sums_x86_64=('0fcc6a62a05fc11344aff375faaca56b358ee1252f6b2c98c00d628ea3d0f842')
+sha256sums_i686=('d3a2842cbfb1163e20c658fbfaf5a235d5c9f035cd2d657f15df8a14b3fe80b1')
+sha256sums_x86_64=('4f0f02d1eb123128d133a5fd00a5ff129b2ac0482f552e15eafa8baa943321f7')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -35,8 +34,11 @@ build() {
 }
 
 package() {
+  depends=('linux-lts>=4.1.11' "nvidia-utils=$pkgver" 'libgl')
   install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
     "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia.ko"
+  install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
+    "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia-modeset.ko"
   if [[ $CARCH = x86_64 ]]; then
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
       "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia-uvm.ko"
