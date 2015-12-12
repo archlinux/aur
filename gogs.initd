@@ -1,0 +1,70 @@
+#!/usr/bin/openrc-run
+# Apache License 2015
+
+user="${user:-gogs}"
+group="${group:-gogs}"
+pidfile="${pidfile:-/run/${SVCNAME}.pid}"
+basedir="${basedir:-/usr/share/gogs}"
+daemon="${daemon:-gogs}"
+daemon_opts="${daemon_opts:-web}"
+logfile="${logfile:-${basedir}/${SVCNAME}.log}"
+defaultconf="${defaultconf:-${basedir}/conf/app.ini}"
+customconf="${conffile:-${basedir}/custom/conf/app.ini}"
+startwait=${startwait:-500}
+timeout=${timeout:-1000}
+
+depend() {
+	need gogs net localmount
+	use logger mysql sqlite3 postgresql tidb pam cert
+	after bootmisc
+}
+
+start_pre() {
+	if [ ! -r "${customconf}" ] ; then
+		einfo "Cannot read custom configuration file '${customconf}'"
+		if [ ! -r "${defaultconf}" ] ; then
+			eerror "Cannot read default configuration file '${defaultconf}'"
+			return 1
+		else
+			einfo "Falling back to '${defaultconf}'"
+		fi
+	fi
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+
+	sh -c "start-stop-daemon \
+		--start \
+		--user ${user} \
+		--group ${group} \
+		--background \
+		--make-pidfile \
+		--pidfile=${pidfile} \
+		--wait=${startwait} \
+		--stderr=${logfile} \
+		--stdout=${logfile} \
+		--exec ${basedir}/${daemon} \
+		${daemon_opts}"
+	local i=0
+	while [ ! -f ${pidfile} ] && [ $i -le ${timeout} ]; do
+		sleep 1
+		i=$(($i + 1000))
+	done
+
+	[ $timeout -gt $i ]
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+
+	start-stop-daemon \
+		${DEBUG:+"--verbose"} \
+		--stop \
+		--exec "${basedir}"/gogs \
+		--pidfile "${pidfile}"
+	eend $?
+	rm -f $PIDFILE
+	return 0;
+}
