@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.42.r3597.437dfc85a013
-_pkgver=3.42
+pkgver=3.43.r3597.437dfc85a013
+_pkgver=3.43
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
-depends=('blas' 'lapack' 'arpack' 'fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi' 'python')
+depends=('blas' 'lapack' 'arpack' 'fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi')
 makedepends=('mercurial' 'gcc-fortran' 'texlive-core')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
@@ -48,7 +48,7 @@ build() {
     --enable-download \
     --with-mpi \
     --with-petsc=$srcdir/download/PETSc/petsc-3.5.2/arch-linux2-c-debug \
-    --disable-hpddm 
+    --disable-hpddm --disable-schwarz
   make 
 }
 
@@ -59,7 +59,7 @@ check() {
 
 package() {
   cd "$srcdir/ff++"
-  make -d DESTDIR="$pkgdir" install
+  make -d DESTDIR="$pkgdir" install || true
   install -Dm644 examples++/freefem++.pref $pkgdir/etc/freefem++.pref
   find $pkgdir/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
   # remove unneeded files
