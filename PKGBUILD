@@ -5,7 +5,7 @@ pkgname=modelio-bin
 
 # Version
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 #epoch=
 
 # Generic
@@ -16,8 +16,8 @@ license=('GPL3')
 #groups=()
 
 # Dependencies
-#depends=()
-#optdepends=()
+depends=('libxtst' 'libstdc++5' 'webkitgtk2' 'glib2')
+optdepends=('atk' 'gtk2' 'cairo')
 #makedepends=()
 #checkdepends=()
 
