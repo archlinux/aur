@@ -1,7 +1,7 @@
 # Contributor: Sapphira Armageddos <shadowkyogre.public+aur@gmail.com>
 pkgname=magicseteditor
 pkgver=2.0.0
-pkgrel=11
+pkgrel=12
 pkgdesc="A program to help create Magic: the Gathering cards and sets. Comes with no game support."
 arch=('i686' 'x86_64')
 url="http://magicseteditor.sourceforge.net"
