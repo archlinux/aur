@@ -31,7 +31,6 @@ while getopts :sw:b:m opt; do
 	;;
 	w)
 		WORK=$OPTARG
-		echo lol
 	;;
 	b)
 		PAUSE=$OPTARG

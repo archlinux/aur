@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=potato
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="A pomodoro timer for the shell"
 arch=('any')
@@ -13,7 +13,7 @@ install=
 changelog=
 source=(potato.sh LICENSE)
 noextract=()
-md5sums=('8d6f4462e71e0a77f0f4dbbabf74f65d'
+md5sums=('e6bfd8b6eb2717bace7a865898a93c07'
          '1ddcbd2862764b43d75fb1e484bf8912')
 
 package() {
