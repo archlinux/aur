@@ -5,7 +5,7 @@
 _pkgname=musicbrainz
 pkgname=lib32-${_pkgname}
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The second generation incarnation of the CD Index (32 bit)"
 arch=('x86_64')
 url="http://www.musicbrainz.org/index.html"
