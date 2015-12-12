@@ -8,7 +8,7 @@ pkgdesc='simple platform independent theme'
 arch=('any')
 url='http://sixsixfive.deviantart.com/art/Glare-494114516'
 license=('CCBYSA4')
-makedepends=('sed' 'p7zip' 'bc' 'make' 'findutils' 'git')
+makedepends=('sed' 'p7zip' 'bc' 'make' 'findutils' 'git' 'imagemagick')
 source=("${pkgbase}::git+https://github.com/sixsixfive/Glare.git")
 sha256sums=('SKIP')
 
@@ -79,21 +79,20 @@ package_glare-themes() {
 	fi
 #KDEStuff
 	cd ${pkgdir}/usr/share/color-schemes
-	ln -s ../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYang.colors
-	ln -s ../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYin.colors
+	ln -sv ../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYang.colors
+	ln -sv ../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYin.colors
 	cd ${pkgdir}/usr/share/apps/color-schemes
-	ln -s ../../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYang.colors
-	ln -s ../../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYin.colors
+	ln -sv ../../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYang.colors
+	ln -sv ../../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYin.colors
 	cd ${pkgdir}/usr/share/aurorae/themes
-	ln -s ../../themes/Glare/EXTRAS/WinDecos/Glare-default/Aurorae/Glare
+	ln -sv ../../themes/Glare/EXTRAS/WinDecos/Glare-default/Aurorae/Glare
 #otherstuff
 	install -Dm0644 ${pkgdir}/usr/share/themes/Glare/EXTRAS/Winamp2.xSkin/Glare-qmmp.wsz ${pkgdir}/usr/share/qmmp/skins/Glare-qmmp.wsz
 	install -Dm0644 ${pkgdir}/usr/share/themes/Glare/EXTRAS/Winamp2.xSkin/Glare.wsz ${pkgdir}/usr/share/audacious/Skins/Glare.wsz
 	cd ${pkgdir}/usr/share/lxqt/themes
-	ln -s ../../themes/Glare/EXTRAS/LXQtTheme/Glare
-	install -d ${pkgdir}/usr/share/slim/themes
+	ln -sv ../../themes/Glare/EXTRAS/LXQtTheme/Glare
 	cd ${pkgdir}/usr/share/slim/themes
-	ln -s ../../themes/Glare/EXTRAS/SLiMTheme/GlareSimple
+	ln -sv ../../themes/Glare/EXTRAS/SLiMTheme/GlareSimple
 	cd ${pkgdir}/usr/lib/palemoon/browser/extensions
-	ln -s ../../../../share/themes/Glare/EXTRAS/PaleMoonFixes/Glare.xpi Glare@ssfgh.com.xpi
+	ln -sv ../../../../share/themes/Glare/EXTRAS/PaleMoonFixes/Glare.xpi Glare@ssfgh.com.xpi
 }
