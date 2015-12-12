@@ -3,7 +3,7 @@
 # Contributor: jebaum <jebaum at ucla dot edu>
 
 pkgname=fzf-git
-pkgver=20151209
+pkgver=20151213
 pkgrel=1
 pkgdesc="Command-line fuzzy finder"
 arch=('armv6h' 'i686' 'x86_64')
@@ -43,12 +43,6 @@ prepare() {
 
   msg2 'Making fzf key-bindings.zsh source zsh completions...'
   patch -p1 < "$srcdir/key-bindings.zsh.patch"
-
-  msg2 'Removing instances of "source ~/.fzf.bash"...'
-  sed -i 's@source ~/.fzf.bash;\s@@' shell/key-bindings.bash
-
-  msg2 'Removing instances of "source ~/.fzf.zsh"...'
-  sed -i 's@source ~/.fzf.zsh;\s@@' shell/key-bindings.zsh
 }
 
 build() {
