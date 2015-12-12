@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+###great! now we need to build everything until they split build...
 	cd ${pkgbase//-git/}/Kvantum/style-qt4
 	/usr/lib/qt4/bin/qmake
 	make
@@ -43,7 +44,8 @@ build() {
 package_qt5-style-kvantum() {
 	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
-	conflicts=("${pkgname}" "${pkgname}-git=${pkgver}")
+	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
+	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='SVG theme engine for Qt5'
 	depends=('qt5-base' 'qt5-svg' 'qt5-x11extras' 'libxext')	
 	install -Dm0644 ${srcdir}/${pkgbase//-git/}/Kvantum/style/libkvantum.so ${pkgdir}/usr/lib/qt/plugins/styles/libkvantum.so
@@ -52,7 +54,8 @@ package_qt5-style-kvantum() {
 package_qt4-style-kvantum() {
 	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
-	conflicts=("${pkgname}" "${pkgname}-git=${pkgver}")
+	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
+	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='SVG theme engine for Qt4'
 	depends=('qt4' 'libxext')
 	install -Dm0644 ${srcdir}/${pkgbase//-git/}/Kvantum/style-qt4/libkvantum.so ${pkgdir}/usr/lib/qt4/plugins/styles/libkvantum.so
@@ -61,8 +64,9 @@ package_qt4-style-kvantum() {
 package_kvantum-manager() {
 	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
-	conflicts=("${pkgname}" "${pkgname}-git=${pkgver}")
-	pkgdesc='An easy way to configure the Kvantum engine'
+	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
+	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
+	pkgdesc='An easy way to configure the Kvantum theme engine(Qt5 build)'
 	depends=('qt5-base' 'libxext')
 	install -Dm0755 $srcdir/${pkgbase//-git/}/Kvantum/kvantumpreview/kvantumpreview ${pkgdir}/usr/bin/kvantumpreview
 	install -Dm0755 $srcdir/${pkgbase//-git/}/Kvantum/kvantummanager/kvantummanager ${pkgdir}/usr/bin/kvantummanager
@@ -76,6 +80,7 @@ package_kvantum-themes() {
 	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
 	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
+	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='default Kvantum themes'
 	cd ${srcdir}/${pkgbase//-git/}/Kvantum/themes
 	_dirs="$(find kvthemes -mindepth 1 -maxdepth 1 -type d|cut -d"/" -f2)"
@@ -89,7 +94,8 @@ package_kvantum-themes() {
 package_kvantum-kde-colorschemes() {
 	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
-	conflicts=("${pkgname}" "${pkgname}-git=${pkgver}")
+	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
+	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='default Kvantum KDE color schemes'
 	install -d ${pkgdir}/usr/share/color-schemes
 	mv $srcdir/${pkgbase//-git/}/Kvantum/color/Kvantum.colors ${pkgdir}/usr/share/color-schemes
