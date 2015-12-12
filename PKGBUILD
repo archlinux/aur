@@ -1,6 +1,6 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=rmilter
-pkgver=1.6.5
+pkgver=1.6.7
 pkgrel=1
 epoch=
 pkgdesc="Another sendmail milter for different mail checks."
@@ -10,8 +10,7 @@ license=('BSD')
 depends=('openssl' 'pcre' 'libmilter' 'opendkim')
 makedepends=('cmake' 'pkgconfig' 'bison' 'flex')
 
-backup=('etc/rmilter/rmilter-grey.conf'
-		'etc/rmilter/rmilter.conf')
+backup=('etc/rmilter/rmilter-grey.conf')
 
 install=rmilter.install
 
@@ -19,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/vstakhov/${pkg
         "${pkgname}.service"
 )
 
-sha256sums=('f5486a090e245fe1b35b96535a26145df0274603b849f0c1ee771970173d5e00'
+sha256sums=('d8312be6ab79cf42fd28a85c4eda3868e20a4d182f06c1491ce8cdc8c2bed8df'
             'c53ae6a6c323440e0f1f1d22a985878f3022300402bbee0b99109fe8dfc39c14'
 )
 
