@@ -8,14 +8,15 @@
 # Contributor: dieghen89 <dieghen89 at gmail dot com>
 
 pkgname=cherokee-git
-pkgver=1.2.104.r5816
-pkgrel=2
-pkgdesc="A very fast, flexible and easy to configure Web Server"
+pkgver=1.2.104.r5817
+pkgrel=1
+pkgdesc="A very fast, flexible and easy to configure Web Server. "
 arch=('i686' 'x86_64')
 url="http://www.cherokee-project.com/"
 license=('GPL2')
 depends=('openssl' 'pcre' 'python2')
-makedepends=('libldap' 'pam' 'libmariadbclient' 'php-fpm' 'ffmpeg' 'geoip' 'rrdtool')
+makedepends=('git' 'libldap' 'pam' 'libmariadbclient' 
+             'php-fpm' 'ffmpeg' 'geoip' 'rrdtool')
 optdepends=('libldap: ldap validator'
             'pam: pam validator' 
 	    'php-fpm: php5 support'
