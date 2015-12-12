@@ -1,0 +1,12 @@
+diff -u -r kde-workspace-4.11.22/startkde.cmake kde-workspace-4.11.22-dbus/startkde.cmake
+--- kde-workspace-4.11.22/startkde.cmake	2015-09-25 19:04:25.415328264 +0200
++++ kde-workspace-4.11.22-dbus/startkde.cmake	2015-09-25 19:06:06.115118584 +0200
+@@ -272,6 +272,8 @@
+ # D-Bus autolaunch is broken
+ if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+     eval `dbus-launch --sh-syntax --exit-with-session`
++else
++    dbus-update-activation-environment --systemd --all
+ fi
+ if $qdbus >/dev/null 2>/dev/null; then
+     : # ok
