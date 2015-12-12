@@ -1,5 +1,5 @@
 pkgname=mingw-w64-python-bin
-pkgver=3.5.0
+pkgver=3.5.1
 _pybasever=35
 pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
@@ -16,9 +16,9 @@ source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win3
         "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz")
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-md5sums=('6701f6eba0697949bc9031e887e27b32'
-         '09a9bcabcbf8c616c21b1e5a6eaa9129'
-         'a56c0c0b45d75a0ec9c6dee933c41c36')
+md5sums=('ff73508d29676f272c6e248d651480c5'
+         '78414a7111fbacadfb889437c88f0fc6'
+         'be78e48cdfc1a7ad90efff146dce6cfe')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
