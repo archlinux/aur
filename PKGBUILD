@@ -7,6 +7,7 @@ pkgdesc="The advanced Doom engine in version 2x that supports DOOM, Heretic and 
 url="http://dengine.net/"
 arch=('x86_64')
 license=('GPL2')
+conflicts=('i686-doomsday2-unstable')
 depends=('qt5-base' 'qt5-x11extras' 'sdl2_net' 'sdl2_mixer' 'fmodex' 'wxpython' 'assimp')
 makedepends=('imagemagick')
 optdepends=('doom1-wad: Doom shareware', 
