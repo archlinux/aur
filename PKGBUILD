@@ -1,13 +1,13 @@
 # Maintainer: Xwang <xwaang1976@gmail.com>
 pkgname=openmodelica-git
 pkgver=1.9.3.dev.r415.gc674c6b
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
 
-depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'qtwebkit' 'sundials26' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs')
+depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials26' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg')
 
 makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost' 'clang' 'cmake' 'jre7-openjdk' 'antlr2' 'subversion' 'lib32-expat' 'lib32-ncurses' 'lib32-readline')
 
