@@ -6,8 +6,8 @@
 
 pkgname=conky-nvidia
 _pkgname=conky
-pkgver=1.10.0
-pkgrel=5
+pkgver=1.10.1
+pkgrel=1
 pkgdesc='Lightweight system monitor for X'
 provides=('conky')
 conflicts=('conky')
@@ -18,18 +18,15 @@ makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db' 'perl-xml-libxml' 'perl-
 depends=('glib2' 'curl' 'lua' 'wireless_tools' 'libxml2' 'libxft' 'libxdamage' 'imlib2' 'libxnvctrl')
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz"
         'ascii.patch'
-        'lua53.patch'
-        'curl.patch')
-sha1sums=('d5863420150150002947180d0ee96c9ef56c43b1'
+        'lua53.patch')
+sha1sums=('97b59ec1daf54126b30516e8663a9cf1f218d8ae'
           '96cdbc38e8706c8a3120601983df5c7265716128'
-          'a3a74542b6524e5663ad37aaba292b48e8bea3b1'
-          '1c066b439a1e7166d733fb710faa9bf08b81ce4c')
+          'a3a74542b6524e5663ad37aaba292b48e8bea3b1')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	patch -p1 -i ../ascii.patch # db2x_manxml fails on non-ascii chars
 	patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
-	patch -p1 -i ../curl.patch # https://github.com/bagder/curl/issues/342
 }
 
 build() {
