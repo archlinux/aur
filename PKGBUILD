@@ -4,8 +4,8 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=0.9.85
-pkgrel=4
+pkgver=90.0.0
+pkgrel=1
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -20,13 +20,13 @@ options=('!strip' 'staticlibs')
 # 64bit
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
-sha1sums_x86_64=('3f439229dfc55a5473f95dc59d304c20ba91975b'
+sha1sums_x86_64=('67f49403b8c708a745d410f36f2fe28e658b6e92'
                  '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
 
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
-sha1sums_i686=('eccae329216cdc48404ce97bc80f8ea628c59c96'
+sha1sums_i686=('2c41fc498f72c283a7f0ded30654c490d713e756'
                '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
 
 prepare() {
@@ -93,8 +93,6 @@ package() {
   find "$pkgdir/opt/$pkgname" -name "*.html" -print0 | xargs -0 chmod -x
   find "$pkgdir/opt/$pkgname" -name "*.json" -print0 | xargs -0 chmod -x
   find "$pkgdir/opt/$pkgname" -name "*_test.py" -print0 | xargs -0 chmod +x
-  find "$pkgdir/opt/$pkgname/lib/protorpc" -name "*.py" -print0 | \
-    xargs -0 chmod -x
 
 }
 
