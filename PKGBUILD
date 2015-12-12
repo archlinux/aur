@@ -14,7 +14,7 @@ install=$pkgname.install
 source=(http://downloads.sourceforge.net/sourceforge/hypervideoconve/hypervc-${pkgver}-qt4-generic.tar.bz2)
 md5sums=('7a1048363d3a0462fd7c35e86834df69')
 
-build() {
+package() {
   cd "${srcdir}/hypervcinstall-qt4"
 
   install -v -D -m 0755 hypervc ${pkgdir}/usr/bin/hypervc
