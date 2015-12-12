@@ -2,7 +2,7 @@
 pkgbase=libvariant
 pkgname=libvariant
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ dynamically typed composable object library with de/serializers"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/gallen/libvariant"
@@ -10,11 +10,11 @@ license=('GPL')
 depends=('libxml2' 'libyaml' 'curl')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.bz2::https://bitbucket.org/gallen/${pkgname}/get/${pkgver}.tar.bz2")
+noextract=("${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('004789d04a728f36065ca80ba166d0d897158b4164f2b8e3def0916f8bf509f7')
 
 prepare() {
-  local extractdir="$(dirname $(tar -f ${pkgname}-${pkgver}.tar.bz2 --list | head -n1))"
-  mv "${extractdir}" "${pkgname}-${pkgver}"
+  tar -x --strip-components=1 --one-top-level -f ${pkgname}-${pkgver}.tar.bz2
   mkdir -p "${pkgname}-${pkgver}/build"
 }
 
