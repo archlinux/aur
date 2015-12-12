@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Lau <archlinux _at_ slau _dot_ me>
+# Maintainer: Sebastian Lau <archlinux _at_ slau _dot_ info>
 # Contributor:  Wessel Dirksen "p-we" <wdirksen at gmail dot com>
 # Contributer: American_Jesus <american.jesus.pt AT gmail DOT com>
 
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('grub')
 install='grub2-theme-arch-suse.install'
 
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/gS644/grub2-theme-arch-suse/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/nullptrT/grub2-theme-arch-suse/archive/v${pkgver}.tar.gz"
         "grub2-theme-arch-suse.install")
 
 md5sums=('9ddf9b38301a6040367def78e3280185'
