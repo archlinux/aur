@@ -1,0 +1,36 @@
+diff -uprNEBZ --suppress-blank-empty a/screencloud/cmake/modules/FindQuaZip.cmake b/screencloud/cmake/modules/FindQuaZip.cmake
+--- a/screencloud/cmake/modules/FindQuaZip.cmake	2015-11-16 03:23:29.536136000 -0600
++++ b/screencloud/cmake/modules/FindQuaZip.cmake	2015-11-16 03:27:13.890465223 -0600
+@@ -11,12 +11,16 @@ IF (QUAZIP_INCLUDE_DIR)
+   SET(QUAZIP_FIND_QUIETLY TRUE)
+ ENDIF (QUAZIP_INCLUDE_DIR)
+
+-FIND_PATH(QUAZIP_INCLUDE_DIR quazip/quazip.h
++# QuaZip Qt 5
++# FIND_PATH(QUAZIP_INCLUDE_DIR quazip/quazip.h
++FIND_PATH(QUAZIP_INCLUDE_DIR quazip5/quazip.h
+ ${CMAKE_INCLUDE_PATH}
+ ${CMAKE_INSTALL_PREFIX}/include
+ )
+
+-FIND_LIBRARY(QUAZIP_LIBRARY NAMES quazip )
++# QuaZip Qt 5
++# FIND_LIBRARY(QUAZIP_LIBRARY NAMES quazip )
++FIND_LIBRARY(QUAZIP_LIBRARY NAMES quazip5)
+
+ # handle the QUIETLY and REQUIRED arguments and set QUAZIP_FOUND to TRUE if
+ # all listed variables are TRUE
+diff -uprNEBZ --suppress-blank-empty a/screencloud/src/plugin/pluginmanager.h b/screencloud/src/plugin/pluginmanager.h
+--- a/screencloud/src/plugin/pluginmanager.h	2015-11-16 03:24:10.286318000 -0600
++++ b/screencloud/src/plugin/pluginmanager.h	2015-11-16 03:28:10.470713876 -0600
+@@ -24,8 +24,8 @@
+ #include <QNetworkAccessManager>
+ #include <QNetworkRequest>
+ #include <QNetworkReply>
+-#include <quazip/quazipfile.h>
+-#include <quazip/quazip.h>
++#include <quazip5/quazipfile.h>
++#include <quazip5/quazip.h>
+ #include <utils/network.h>
+ #include <QDomDocument>
+ #include <QInputDialog>
