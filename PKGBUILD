@@ -5,7 +5,7 @@
 
 pkgname=qalculate-gtk-nognome
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ frontend for libqalculate, without gnome dependencies"
 arch=('i686' 'x86_64')
 url="http://qalculate.sourceforge.net/"
