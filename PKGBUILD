@@ -3,7 +3,7 @@
 #Former maintainer: Gui||aume <michaudg at gmail.com>
 
 pkgname=ceph-deploy
-pkgver=1.5.28
+pkgver=1.5.30
 pkgrel=1
 arch=(any)
 pkgdesc="Deploy Ceph with minimal infrastructure, using just SSH access"
