@@ -1,0 +1,16 @@
+pkgbase = purple-gammu
+	pkgdesc = Purple Gammu, an SMS protocol for libpurple clients (pidgin)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/kaptoxic/purple-gammu
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = gammu
+	depends = libpurple
+	optdepends = pidgin
+	source = repo::git+https://github.com/kaptoxic/purple-gammu.git
+	sha512sums = SKIP
+
+pkgname = purple-gammu
+
