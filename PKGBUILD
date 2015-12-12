@@ -5,7 +5,7 @@
 
 pkgname=libcompizconfig
 pkgver=0.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiz configuration system library"
 arch=('i686' 'x86_64')
 url="http://www.compiz.org"
