@@ -8,8 +8,8 @@ url="https://github.com/gS644/liblogcpp"
 license=('LGPL2.1')
 depends=()
 makedepends=('cmake') #'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gS644/$pkgname/archive/$pkgver.tar.gz")
-#source=("git+https://github.com/gS644/liblogcpp.git")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nullptrT/$pkgname/archive/$pkgver.tar.gz")
+#source=("git+https://github.com/nullptrT/liblogcpp.git")
 md5sums=('31e11e85eebf07023c86d592b0539bf5')
 
 
