@@ -4,7 +4,7 @@
 _pkgname=libofa
 pkgname=lib32-${_pkgname}
 pkgver=0.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc="An open-source audio fingerprint by MusicIP (32 bit)"
 arch=('x86_64')
 url="http://code.google.com/p/musicip-libofa/"
