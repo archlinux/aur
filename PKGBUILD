@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=acestream-launcher
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=2
 pkgdesc="Acestream Launcher allows you to open Acestream links with a Media Player of your choice"
 arch=("any")
@@ -21,7 +21,7 @@ package() {
 
   update-desktop-database "$pkgdir/opt/$pkgname"
 
-  ln -s "/opt/$pkgname/acestream-launcher.py" "$pkgdir/usr/bin/acestream-launcher"
+  ln -s "/opt/$pkgname/acestream_launcher.py" "$pkgdir/usr/bin/acestream-launcher"
   mv "$pkgdir/opt/$pkgname/acestream-launcher.desktop" "$pkgdir/usr/share/applications/acestream-launcher.desktop"
 }
 
