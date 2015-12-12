@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.3
-_zenpatch=ba33c50226fd1307c7bb9c6796716c7a18bb1562
-pkgver=4.3.1
+_zenpatch=426b23475331641cc6b8d9ce8cd0fb1c81750d3a
+pkgver=4.3.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -25,12 +25,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            '82caff48806796418f445d0a87698abedfaaccfdc7b63059166b788e0cfd144b'
+            'a96b8a4e90887dea82066b4d804ac193700c200b6c0075fecba0b691b0240a5e'
             'SKIP'
             '50606bbba04edd6b82e8c106fd5c00c9abf2506d04c988b808caad49c440895f'
             'be2e0b44732d16d7999bf33736d0d2cb94d92aab21511f3764f7cb97414906ef'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'a5cea92f9b2b04ee91f233a47063e1609eb99eeb067ae6c166f07da787bcbe60'
+            '36d179cc78afdbdf6292ece15c2655c1505bad52fbf90fe520962ae0c454ea60'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
