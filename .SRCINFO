@@ -1,6 +1,6 @@
 pkgbase = motioneye
 	pkgdesc = web-based user interface for motion
-	pkgver = 0.28.3
+	pkgver = 0.29
 	pkgrel = 1
 	url = https://github.com/ccrisan/motioneye/
 	install = motioneye.install
@@ -19,8 +19,8 @@ pkgbase = motioneye
 	depends = python2-pillow
 	options = emptydirs
 	backup = etc/motioneye/motioneye.conf
-	source = https://pypi.python.org/packages/source/m/motioneye/motioneye-0.28.3.tar.gz
-	md5sums = 4a34b29bbe8214a287350809faaa8361
+	source = https://pypi.python.org/packages/source/m/motioneye/motioneye-0.29.tar.gz
+	md5sums = 1aada558a0f2aa0c6bff32efffd95137
 
 pkgname = motioneye
 
