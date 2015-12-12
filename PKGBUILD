@@ -2,11 +2,11 @@
 
 pkgname=gnat_util
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides internal GNAT compiler components in a library which is used by (at least) ASIS and GNATColl."
 
-_islver=0.14.1
-_basedir=gcc-5.2.0
+_islver=0.15
+_basedir=gcc-5.3.0
 
 options=('!emptydirs')
 
@@ -20,13 +20,13 @@ makedepends=('binutils>=2.25' 'libmpc' 'gcc-ada' 'doxygen')
 
 
 source=(http://sourceforge.net/projects/gnatutil/files/5.1.0/gnat_util-5.1.0.tar.gz
-        ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.2.0/gcc-5.2.0.tar.bz2
+        ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.3.0/gcc-5.3.0.tar.bz2
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         pr66035.patch)
 
 md5sums=('4a7a6642bc5c3dfe67bfacf2d14206cc'
-         'a51bcfeb3da7dd4c623e27207ed43467'
-         '118d1a379abf7606a3334c98a8411c79'
+         'c9616fd448f980259c31de613e575719'
+         '8428efbbc6f6e2810ce5c1ba73ecf98c'
          '5b980076cd5fcbc3aff6014f306282dd')
 
 
@@ -34,7 +34,6 @@ prepare()
 {
   ## Prepare for gcc-ada build (note: much of this section is derived from the gcc PKGBUILD).
   #
-
   cd ${srcdir}/${_basedir}
 
   # link isl for in-tree build
@@ -46,13 +45,13 @@ prepare()
   # Arch Linux installs x86_64 libraries /lib
   [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
-  echo 5.2.0 > gcc/BASE-VER
+  echo 5.3.0 > gcc/BASE-VER
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66035
-  patch -p1 -i ${srcdir}/pr66035.patch
+#  patch -p1 -i ${srcdir}/pr66035.patch
 
   mkdir ${srcdir}/gcc-build 
 }
@@ -63,7 +62,6 @@ build()
 {
   ## Build gcc-ada (note: much of this section is derived from the gcc PKGBUILD).
   #
-
   cd ${srcdir}/gcc-build
 
   # using -pipe causes spurious test-suite failures
@@ -84,8 +82,8 @@ build()
       --enable-lto --enable-plugin --enable-install-libiberty \
       --with-linker-hash-style=gnu --enable-gnu-indirect-function \
       --disable-multilib --disable-werror \
-      --enable-checking=release \
-      --with-default-libstdcxx-abi=gcc4-compatible
+      --enable-checking=release
+#      --with-default-libstdcxx-abi=gcc4-compatible
 
   make
 
@@ -95,7 +93,7 @@ build()
 
   cd "$srcdir/$pkgname-$pkgver"
 
-  export GCC_SRC_BASE="$srcdir/gcc-5.2.0"
+  export GCC_SRC_BASE="$srcdir/gcc-5.3.0"
   export GCC_BLD_BASE="$srcdir/gcc-build"
 
   make
