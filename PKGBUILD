@@ -2,7 +2,7 @@
 
 pkgname=ib-tws
 pkgver=954.2o
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
@@ -21,7 +21,7 @@ md5sums=('e1cae2de592add7133bb08123e8db1ad'
          '9205b5eade96d69f8e470cc52c30db4a'
          'c95eeb41fec3aae6ad5e82703a39060c'
          'ffa9fcfb623850e5c9e796040bdbd052'
-         'ec5f1c447b83f3530c1b727fab98e7fc')
+         'c1e03e05c0c5f6b4a1d99e9c4f9dbb0b')
 
 
 build() {
@@ -31,6 +31,17 @@ build() {
   majorVer=$(echo "$pkgver" | sed "s/\([0-9]\+\)\..*/\1/")
   rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer}
   ./tws-latest-standalone-linux-x64.sh -q
+
+  # as of 954.2o the installer runs TWS, even after unattended install!
+  # so we need to install, wait to kill off the nuisance process, and continue
+  while true
+  do
+    pkill -f $HOME/Jts
+    if [ $? -eq 0 ]; then
+      break
+    fi
+  done
+
   mv ${HOME}/Jts/${majorVer}/jars/*.jar ${srcdir}
   rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer}
   cd ${srcdir}
