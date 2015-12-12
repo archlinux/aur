@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Modelio
+Version=3.4.1
+Comment=The opensource modeling environment
+Exec=/opt/modelio/modelio
+Icon=/opt/modelio/icon.xpm
+Type=Application
+Categories=Development;UML;
