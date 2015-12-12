@@ -2,4 +2,6 @@
 
 !PKGBUILD
 !.SRCINFO
+!watchman.tmpfiles
+!watchman.install
 !.gitignore
