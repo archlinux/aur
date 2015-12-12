@@ -6,7 +6,6 @@ After=network.target
 Restart=on-success
 User=sickrage
 Group=sickrage
-WorkingDirectory=/opt/sickrage
 
 #Type=forking
 #PIDFile=/run/sickrage/sickrage.pid
