@@ -5,7 +5,7 @@
 pkgname=lib32-libcdio
 _pkgname=libcdio
 pkgver=0.93
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Compact Disc Input and Control Library (32-bit)"
 arch=("x86_64")
 license=('GPL3')
@@ -13,10 +13,9 @@ url="http://www.gnu.org/software/libcdio/"
 depends=('gcc-libs-multilib>=4.4.2' "libcdio")
 options=('!libtool')
 install=libcdio.install
-source=(http://ftp.gnu.org/gnu/libcdio/${_pkgname}-${pkgver}.tar.gz{,.sig}
-        libcdio-0.83-linking.patch)
+source=("http://ftp.gnu.org/gnu/libcdio/${_pkgname}-${pkgver}.tar.gz"
+        "libcdio-0.83-linking.patch")
 md5sums=('d154476feaac5a7b5f180e83eaf3d689'
-         'SKIP'
          '5a7f50209c03d5919d5b932f07871af7')
 
 prepare() {
