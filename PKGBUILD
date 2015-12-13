@@ -1,12 +1,12 @@
 # Maintainer: Florian Albertz <flo.albertz@gmail.com>
 pkgname="archci"
 pkgver="1.4.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='A script to create AppContainer Images from Arch Linux packages(Repo or Aur)'
 arch=('any')
 url='https://github.com/PaulAvery/archci'
 license=('BSD')
-depends=('bash' 'nodejs' 'pacman' 'pacaur' 'coreutils' 'rkt' 'gnupg' 'arch-install-scripts' 'sudo')
+depends=('bash' 'nodejs' 'pacman' 'pacaur' 'coreutils' 'rkt' 'gnupg' 'arch-install-scripts' 'sudo' 'actool-git')
 makedepends=('npm')
 source=('archci.sh' 'LICENSE')
 sha256sums=('8a7bd6e2f056f76b4a978bd26f76a7f9e1354742a576864d6ddf32299cd75894'

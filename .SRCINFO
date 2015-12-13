@@ -1,7 +1,7 @@
 pkgbase = archci
 	pkgdesc = A script to create AppContainer Images from Arch Linux packages(Repo or Aur)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PaulAvery/archci
 	arch = any
 	license = BSD
@@ -15,6 +15,7 @@ pkgbase = archci
 	depends = gnupg
 	depends = arch-install-scripts
 	depends = sudo
+	depends = actool-git
 	source = archci.sh
 	source = LICENSE
 	sha256sums = SKIP
