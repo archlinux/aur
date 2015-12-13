@@ -1,10 +1,10 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=1cc1f4bcb4fd5a2e935308fcbb972eec319555f5
+_git=d4b022d7f02506db4d281e9e9476ac7d111e4864
 _repo=papirus-pack-kde
 pkgbase=papirus
 pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' 'papirus-plasma-theme' )
-pkgver=20151212
+pkgver=20151213
 pkgrel=1
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
@@ -12,7 +12,7 @@ license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('73efabac884d37a9454519043ca91550764f7c8ea34bdee866a0e059573dc524')
+sha256sums=('3c7eae8746ec648803d087a5cdda51bd0a64be0f3ec1e66a48e3add2d5f531a3')
 
 package_papirus() {
     pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
