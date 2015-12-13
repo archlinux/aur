@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="NVIDIA drivers for linux-lts310-ck"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-makedepends=("nvidia-utils=$pkgver" "nvidia-libgl=$pkgver" 'linux-lts-310-ck' 'linux-lts310-ck-headers')
+makedepends=("nvidia-utils=$pkgver" "nvidia-libgl=$pkgver" 'linux-lts310-ck' 'linux-lts310-ck-headers')
 provides=('nvidia')
 license=('custom')
 install=nvidia-lts310-ck.install
