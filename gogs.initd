@@ -15,7 +15,7 @@ timeout=${timeout:-1000}
 
 depend() {
 	need gogs net localmount
-	use logger mysql sqlite3 postgresql tidb pam cert
+	use logger mysql sqlite3 postgresql tidb pam cert nginx memcache redis
 	after bootmisc
 }
 

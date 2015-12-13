@@ -1,0 +1,12 @@
+post_install() {
+	echo " ==> Add Gogs to system startup wtih 'rc-update add gogs default'"
+	echo " ==> Edit /etc/conf.d/gogs to change paths if required"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure to 'rc-update del gogs default'"
+}
