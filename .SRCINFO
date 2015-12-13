@@ -1,13 +1,15 @@
 pkgbase = elisp-es
 	pkgdesc = An introduction to Emacs lisp (Spanish translation)
 	pkgver = 20091212
-	pkgrel = 5
+	pkgrel = 6
 	url = https://savannah.nongnu.org/git/?group=elisp-es
 	arch = any
 	license = GPL
 	makedepends = texinfo
 	source = http://hg.savannah.gnu.org/hgweb/elisp-es/archive/1e8e9d693256.tar.gz
+	source = dircategory.patch
 	md5sums = 6725111113858ec9a7f79923ad691585
+	md5sums = d235e09260336f73f530a9e94bde858e
 
 pkgname = elisp-es
 

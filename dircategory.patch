@@ -1,0 +1,16 @@
+diff -c a/elisp-es-1e8e9d693256/emacs-lisp-intro-es.texi b/elisp-es-1e8e9d693256/emacs-lisp-intro-es.texi
+--- a/elisp-es-1e8e9d693256/emacs-lisp-intro-es.texi	2015-12-12 23:55:13.000000000 -0600
++++ b/elisp-es-1e8e9d693256/emacs-lisp-intro-es.texi	2015-12-12 23:56:28.000000000 -0600
+@@ -229,9 +229,7 @@
+ @c @end direntry
+ @dircategory Emacs
+ @direntry
+-* Emacs Lisp Intro: (eintr).
+-  		Una Introducción sencilla a la programación en 
+-Emacs Lisp.
++* Introducción a Emacs lisp: (eintr-es).  Una Introducción sencilla a la programación en Emacs Lisp.
+ @end direntry
+ 
+ 
+
+Diff finished.  Sat Dec 12 23:56:52 2015

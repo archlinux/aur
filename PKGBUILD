@@ -2,18 +2,20 @@
 pkgname=elisp-es
 pkgver=20091212
 _pkgver=1e8e9d693256
-pkgrel=5
+pkgrel=6
 pkgdesc="An introduction to Emacs lisp (Spanish translation)"
 arch=('any')
 url="https://savannah.nongnu.org/git/?group=elisp-es"
 license=('GPL')
 makedepends=('texinfo')
-source=(http://hg.savannah.gnu.org/hgweb/$pkgname/archive/$_pkgver.tar.gz)
-md5sums=('6725111113858ec9a7f79923ad691585')
+source=(http://hg.savannah.gnu.org/hgweb/$pkgname/archive/$_pkgver.tar.gz
+        dircategory.patch)
+md5sums=('6725111113858ec9a7f79923ad691585'
+         'd235e09260336f73f530a9e94bde858e')
 
 prepare() {
-  cd "$srcdir/$pkgname-$_pkgver"
-  sed -i 's/* Emacs Lisp Intro: (eintr)./* Introducción a Emacs lisp: (eintr-es)./g' emacs-lisp-intro-es.texi
+  cd "$srcdir/"
+  patch -p1 -i dircategory.patch
 }
 
 build() {
