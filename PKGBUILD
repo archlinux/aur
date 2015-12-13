@@ -2,7 +2,7 @@
 
 pkgname=lastfm
 pkgver=2.1.30
-pkgrel=8
+pkgrel=9
 pkgdesc="The official Last.fm desktop application suite"
 arch=('any')
 url="http://www.last.fm/"
