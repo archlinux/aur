@@ -1,11 +1,11 @@
 pkgname=brlcad
-pkgver=7.24.2
-pkgrel=1
+pkgver=7.24.1
+pkgrel=2
 pkgdesc='An extensive 3D solid modeling system.'
 url='http://brlcad.org'
 license=('LGPL' 'BSD' 'custom:BDL')
 arch=('i686' 'x86_64')
-depends=('qt5-base')
+depends=('qt5-base' 'libxft')
 makedepends=('cmake')
 install="${pkgname}.install"
 source=('build.patch' "http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
@@ -25,7 +25,8 @@ build() {
     mkdir "${srcdir}/${pkgname}-build"
     cd "${srcdir}/${pkgname}-build"
     cmake -Wno-dev "${srcdir}/${pkgname}-${pkgver}" "-DCMAKE_INSTALL_PREFIX=${_pkgprefix}" \
-        -DBRLCAD_ENABLE_COMPILER_WARNINGS=OFF -DBRLCAD_ENABLE_STRICT=OFF -DCMAKE_BUILD_TYPE=Release \
+        -DBRLCAD_ENABLE_COMPILER_WARNINGS=OFF -DBRLCAD_ENABLE_STRICT=OFF \
+        -DCMAKE_BUILD_TYPE=Release -DBRLCAD_FLAGS_DEBUG=OFF -DENABLE_OPENGL=ON \
         -DBRLCAD_BUNDLED_LIBS=ON -DBRLCAD_PNG=SYSTEM -DBRLCAD_ZLIB=SYSTEM
     make
 }
