@@ -169,10 +169,8 @@ build() {
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
         "../${_pkgname}"
 
-    # Must run this target independently, or else docs/cmake_install.cmake will fail.
-    make ocaml_doc
-
     make
+    make ocaml_doc
 }
 
 package_llvm-svn() {
