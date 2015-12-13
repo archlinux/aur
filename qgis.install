@@ -1,13 +1,11 @@
-## arg 1:  the new package version
 post_install() {
-	/usr/bin/update-desktop-database -q
+  update-desktop-database -q
 }
-## arg 1:  the new package version
-## arg 2:  the old package version
+
 post_upgrade() {
-	/usr/bin/update-desktop-database -q
+  post_install
 }
-## arg 1:  the old package version
+
 post_remove() {
-	/usr/bin/update-desktop-database -q
+  post_install
 }
