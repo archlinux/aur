@@ -51,9 +51,6 @@ build() {
 	elif [ "${CARCH}" == 'i686' ]; then
 		openssltarget='linux-elf'
 		optflags=''
-	elif [ "${CARCH}" == 'armv6h' ]; then
-		openssltarget='linux-armv4'
-		optflags=''
 	fi
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
