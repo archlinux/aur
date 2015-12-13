@@ -1,14 +1,13 @@
-# Maintainer: George Eleftheriou <eleftg>
+# Maintainer: Xwang <xwaang1976@gmail.com>
 # Contributor: George Eleftheriou <eleftg>
  
 pkgname=su2
 pkgver=4.0.0
-pkgrel=1
-pkgdesc="open-source collection of software tools written in C++ for performing Partial Differential Equation (PDE) analysis and solving PDE-constrained optimization problems"
+pkgrel=3
+pkgdesc="Open-source collection of software tools written in C++ for performing Partial Differential Equation (PDE) analysis and solving PDE-constrained optimization problems"
 url="http://su2.stanford.edu/index.html"
 license=('LGPL')
-depends=('lapack' 'jsoncpp' 'cgns' 'zlib' 'openmpi' 'bzip2'
-         'hdf5-openmpi')
+depends=('python' 'jsoncpp' 'cgns' 'hdf5-openmpi')
 makedepends=('git')
 arch=('any')
 source=("git+https://github.com/su2code/SU2#tag=v${pkgver}"
