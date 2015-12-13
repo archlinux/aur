@@ -2,7 +2,7 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 everelname="frostline"
 everelver=1.0
@@ -29,6 +29,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
-md5sums=('18838494917917a7f25c03593b7485f9'
-         '322d2772ad72f95c705f7c3d88b4bfb8'
+md5sums=('3b40e87f0160889a7f0f6fb41b826460'
+         '9d75797c8be35b201b077ee0efe229a5'
          '9937192cfce7f5e16e9cf26086f1899c')
