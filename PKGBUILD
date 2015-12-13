@@ -80,10 +80,16 @@ package() {
 
   make -C build DESTDIR="$pkgdir" install
 
-  # install some freedesktop.org compatibility
+  # install desktop files and icons
   install -Dm644 debian/{qgis,qbrowser}.desktop -t "$pkgdir/usr/share/applications/"
-  install -Dm644 debian/qgis-icon512x512.png "$pkgdir/usr/share/pixmaps/qgis.png"
-  install -Dm644 debian/qbrowser-icon512x512.png "$pkgdir/usr/share/pixmaps/qbrowser.png"
+  for icon in qgis-icon{,-16x16,-60x60} qbrowser-icon{,-60x60}; do
+    local _resolution="${icon##*-}"
+    [[ "$_resolution" == "icon" ]] && _resolution="512x512"
+    install -Dm644 images/icons/$icon.png "$pkgdir/usr/share/icons/hicolor/$_resolution/apps/${icon%%-*}.png"
+  done
+  for icon in {qgis,qbrowser}_icon; do
+    install -Dm644 images/icons/$icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${icon%%_*}.svg"
+  done
   install -Dm644 images/icons/qgis-mime-icon.png "$pkgdir/usr/share/pixmaps/qgis-mime.png"
 
   # TODO: these aren't working for some reason, ie, .qgs files are not opened by QGIS...
