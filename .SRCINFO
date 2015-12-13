@@ -1,6 +1,6 @@
 pkgbase = python-grip-git
 	pkgdesc = Preview GitHub Markdown files like Readme locally before committing them.
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/joeyespo/grip
 	arch = any
