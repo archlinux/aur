@@ -19,13 +19,13 @@ source=(${_pkgname}::'git+https://github.com/xyl0n/iris-light.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "${srcdir}/${_pkgname}"
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  install -dm755 "${pkgdir}/usr/share/themes/${_pkgname}"
-  rm -rf {.git,CREDITS,LICENSE,README,README.md}
-  cp -dpr --no-preserve=ownership . "${pkgdir}/usr/share/themes/${_pkgname}/"
+	cd "${srcdir}/${_pkgname}"
+	install -dm755 "${pkgdir}/usr/share/themes/${_pkgname}"
+	rm -rf {.git,CREDITS,LICENSE,README,README.md}
+	cp -dpr --no-preserve=ownership . "${pkgdir}/usr/share/themes/${_pkgname}/"
 }
