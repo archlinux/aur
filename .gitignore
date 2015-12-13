@@ -1,0 +1,4 @@
+kore/
+pkg/
+src/
+*.tar.xz
