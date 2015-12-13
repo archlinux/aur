@@ -42,6 +42,8 @@ package-get-new-package-lists- Forces downloading master package lists from the
                                servers, even if they appear up to date
 package-info                 - Info on package(s) in repos
 package-install              - Install package(s) from repos
+package-install-re           - Install package(s) from repos, even if already
+                               installed (re-install)
 package-search               - Search for package(s) in repos
 package-sysupgrade           - Upgrade any out of date packages
                                do not install

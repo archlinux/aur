@@ -2,8 +2,8 @@
 # * Namcap warns that dependencies pacman and pkgfile are not needed, but these scripts obviously depend on them
 
 pkgname=pacman-helper
-pkgver=0.2
-pkgrel=2
+pkgver=0.21
+pkgrel=1
 pkgdesc='Pacman helper scripts for those who can not remember the options'
 arch=('any')
 license=('GPL2')
@@ -19,6 +19,7 @@ source=('package-cache-clean'
         'package-info'
         'package-info-installed'
         'package-install'
+        'package-install-re'
         'package-installed-check'
         'package-installed-dependency'
         'package-installed-explicit'
@@ -41,10 +42,11 @@ md5sums=('95aaa3ed60c3c3e9686227746287b024'
          '127e85489e1ad4cfd1fcb33a84d6ca72'
          '0a44ceaa56ec290052baf4e8ca8ad10c'
          'd3fd28a5d6228138340aaaeade5f9a54'
-         '59f1d71dfcdd8e491cd85974924762ce'
+         'f1eabb52bf2eed3e2f2dd5dbcafa3557'
          '539cfdfc41e577788aeb7bed1ac0627d'
          'c63fd5f18f8a15ba95944fd7b62a8e16'
          '88649a226d8c060b363e30aed01e088d'
+         '56c1293859d1bc90ffc69ae2b932bc01'
          '5b9e295fa325e2d6bdf77dea0cb6fa96'
          '95c1c5317fe1ad822047a3821236cce3'
          '12f6deeb7e1f9ce3a56dde033cf4b8de'
@@ -74,6 +76,7 @@ package() {
   install -Dm755 package-info "${pkgdir}/usr/bin/package-info"
   install -Dm755 package-info-installed "${pkgdir}/usr/bin/package-info-installed"
   install -Dm755 package-install "${pkgdir}/usr/bin/package-install"
+  install -Dm755 package-install-re "${pkgdir}/usr/bin/package-install-re"
   install -Dm755 package-installed-check "${pkgdir}/usr/bin/package-installed-check"
   install -Dm755 package-installed-dependency "${pkgdir}/usr/bin/package-installed-dependency"
   install -Dm755 package-installed-explicit "${pkgdir}/usr/bin/package-installed-explicit"
