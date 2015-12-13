@@ -1,4 +1,5 @@
-# Maintainer: George Eleftheriou <eleftg>
+# Maintainer: Xwang <xwaang1976@gmail.com>
+# Contributor: George Eleftheriou <eleftg>
 # Contributor: Andrew Fischer <andrew_at_apastron.co>
 
 pkgname=openfoam
@@ -6,24 +7,30 @@ pkgname=openfoam
 # The distributors package name
 _distpkgname=OpenFOAM
 
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=2
 pkgdesc="The open source CFD toolbox"
 arch=("any")
 url="http://www.openfoam.com"
 license=("GPL")
 depends=('bzip2' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal')
-source=("http://downloads.sourceforge.net/foam/${_distpkgname}-${pkgver}.tgz"
-        "decomp-options.patch"
-        "paraFoam.patch"
-        "scotch-options.patch"
-        "settings.patch")
+source=("http://downloads.sourceforge.net/foam/${_distpkgname}-${pkgver}.tgz")
+#        "decomp-options.patch"
+#        "paraFoam.patch"
+#        "scotch-options.patch"
+#        "settings.patch")
 install="${pkgname}.install"
-sha256sums=('aac4c9e2cc1b54724292add3e182ebf923a0929978e3b5ba524c97ce75477706'
-            '3faef066228df77bad5b329bf251fc057dc5dac3b749d5bcd292438f89a546b7'
-            'cdd8c599f34cc967e6fb75b7da5f337aa7b56b19cf0871ebf608af6507abe07c'
-            'bbf370e411dc7fd95c3d823dac3534d4312fe90c0365b596aa2a3ed016463819'
-            '9f36415505d71d86a7f18624f8ed9888f8fa7af09833b0dd215477ddca57302f')
+#sha256sums=('SKIP'
+#            '3faef066228df77bad5b329bf251fc057dc5dac3b749d5bcd292438f89a546b7'
+#            'cdd8c599f34cc967e6fb75b7da5f337aa7b56b19cf0871ebf608af6507abe07c'
+#            'bbf370e411dc7fd95c3d823dac3534d4312fe90c0365b596aa2a3ed016463819'
+#            '9f36415505d71d86a7f18624f8ed9888f8fa7af09833b0dd215477ddca57302f')
+            
+md5sums=('fefa399a5c0cbe33fbabb65be17ea617')
+#         'SKIP'
+#         'SKIP'
+#         'SKIP'
+#         'SKIP')            
 
 prepare() {
   # Extract the current version and major of paraview and of scotch for use in the system preferences
@@ -44,9 +51,9 @@ prepare() {
   cp ${srcdir}/scotch.sh ${srcdir}/${_distpkgname}-${pkgver}/etc/config || return 1
 
   # Patch for archlinux parmetis, paraview and openmpi paths, and scotch link lines
-  patch -p1 < ${srcdir}/decomp-options.patch
-  patch -p1 < ${srcdir}/paraFoam.patch
-  patch -p1 < ${srcdir}/scotch-options.patch
+  #patch -p1 < ${srcdir}/decomp-options.patch
+  #patch -p1 < ${srcdir}/paraFoam.patch
+  #patch -p1 < ${srcdir}/scotch-options.patch
 }
 
 build() {
