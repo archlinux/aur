@@ -22,8 +22,10 @@ source=(xdm-config
 	twm-xfreq.desktop
 	twm-xfreq.rc
 	twm-xfreq.Xresources
-	start-twm-xfreq)
+	start-twm-xfreq
+	chocolate.rc)
 md5sums=('SKIP'
+	 'SKIP'
 	 'SKIP'
 	 'SKIP'
 	 'SKIP'
