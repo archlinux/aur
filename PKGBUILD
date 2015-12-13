@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar-server
 pkgname=${_pkgname}-git
-pkgver=473.adf41d7
+pkgver=526.1d28f56
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -10,20 +10,21 @@ url="http://openbazaar.org"
 license=('MIT')
 depends=(
 	gnupg
-	python2-protobuf
-	python2-twisted
-	python2-txjson-rpc
-	python2-txrudp
-	python2-pyelliptic
-	python2-pystun
+	python2-autobahn
 	python2-bitcoin
 	python2-gnupg-isis
-	python2-pynacl
-	python2-txrestapi
-	python2-autobahn
-	python2-obelisk
+	python2-libbitcoinclient
+	python2-libnacl-git
+	python2-protobuf
+	python2-pyelliptic
+	python2-pystun
 	python2-requests
 	python2-service-identity
+	python2-twisted
+	python2-txaio
+	python2-txjson-rpc
+	python2-txrestapi
+	python2-txrudp
 )
 
 makedepends=(git)
