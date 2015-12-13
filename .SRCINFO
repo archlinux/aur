@@ -1,7 +1,7 @@
 pkgbase = catalyst-generator
 	pkgdesc = AMD/ATI drivers. Generator of catalyst-{kernver} packages with fglrx module inside.
 	pkgver = 15.9
-	pkgrel = 3
+	pkgrel = 8
 	url = http://www.amd.com
 	install = catalyst-generator.install
 	arch = i686
@@ -12,9 +12,11 @@ pkgbase = catalyst-generator
 	depends = gcc>4.0.0
 	depends = make
 	depends = patch
-	depends = linux-lts>=3.0
-	depends = linux-lts<4.2
-	depends = linux-lts-headers
+	depends = linux>=3.0
+	depends = linux<4.4
+	depends = linux-headers
+	optdepends = linux-headers: to build the fglrx module for the linux kernel
+	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
 	provides = catalyst=15.9
 	conflicts = catalyst-test
 	conflicts = catalyst-hook
@@ -35,15 +37,12 @@ pkgbase = catalyst-generator
 	source = completion-zsh
 	source = lano1106_fglrx_intel_iommu.patch
 	source = lano1106_kcl_agp_13_4.patch
-	source = lano1106_fglrx-13.8_proc.patch
-	source = cold-fglrx-3.14-current_euid.patch
 	source = fglrx_gpl_symbol.patch
-	source = fglrx_3.17rc6-no_hotplug.patch
-	source = ubuntu_buildfix_kernel_4.0.patch
-	source = ubuntu_buildfix_kernel_4.1.patch
-	source = ubuntu_buildfix_kernel_4.2.patch
-	source = 4.2-fglrx-has_fpu.patch
-	source = 4.2-kolasa-fpu_save_init.patch
+	source = 4.3-kolasa-seq_printf.patch
+	source = 4.3-gentoo-mtrr.patch
+	source = 4.2-amd-from_crimson_15.11.patch
+	source = crimson_i686_xg.patch
+	source = grsec_arch.patch
 	md5sums = d2de2df6946b452c266a3c892e6e46ff
 	md5sums = 543e818f543f2897beca49101226e460
 	md5sums = a555dc9a3eb062d7ca4efbf7e0713a3a
@@ -54,15 +53,12 @@ pkgbase = catalyst-generator
 	md5sums = 12a8452f4de07a96115a398b6931743d
 	md5sums = 5184b94a2a40216a67996999481dd9ee
 	md5sums = c5156eddf81c8a1719b160d05a2e8d67
-	md5sums = 2ab4837233de42332753882445373d7b
-	md5sums = ba33b6ef10896d3e1b5e4cd96390b771
 	md5sums = ef97fc080ce7e5a275fe0c372bc2a418
-	md5sums = 67a22f624bae95a76638ce269392cb01
-	md5sums = 880d5e59554cda382f74206c202942be
-	md5sums = 982451bcc1fa1ee3da53ffa481d65581
-	md5sums = 88832af8d6769aa51fa9b266a74394e0
-	md5sums = ed7748a593d6b894269f8c7856b7ae50
-	md5sums = dd51495a1d8f2d1042f04a783bf01e08
+	md5sums = 0e0666e95d1d590a7a83192805679485
+	md5sums = 98828e3eeaec2b3795e584883cc1b746
+	md5sums = fd2851026228ca72124972d1ea0335ea
+	md5sums = 6cdbaf5f71d867d225721a0369413616
+	md5sums = 570e0a70aa97edcc5934e3203542d8d6
 
 pkgname = catalyst-generator
 
