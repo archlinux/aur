@@ -21,7 +21,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=3.8.0svn_r253144
+pkgver=3.8.0svn_r255458
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -46,7 +46,9 @@ source=(
     'clang::svn+http://llvm.org/svn/llvm-project/cfe/trunk'
     'clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
     'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
-    llvm-Config-llvm-config.h
+    'llvm-Config-llvm-config.h'
+    '0001-add-gcc-abi_tag-support.patch'
+    '0002-Fix-handling-of-abi_tag-attribute-on-namespaces.patch'
 )
 
 sha256sums=(
@@ -55,6 +57,8 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
+    'cea6130d231f17e3c98f12f4f7a308879fe69a2d49907127f4ad725d2f88ab6b'
+    '3d19adbd6fe0f4ec4511b7dd3db472c8019aa08b8970059892bd6761c51996c9'
 )
 
 #
@@ -139,6 +143,11 @@ prepare() {
     sed -e 's|^\([[:blank:]]*DESTINATION[[:blank:]]\+\)docs/html|\1share/doc|' \
         -e 's|^\([[:blank:]]*DESTINATION[[:blank:]]\+\)docs/ocaml/html|\1share/doc/ocaml|' \
         -i docs/CMakeLists.txt
+
+    # https://llvm.org/bugs/show_bug.cgi?id=23529
+    # http://reviews.llvm.org/D12834
+    patch -N -p1 -d tools/clang -i "${srcdir}/0001-add-gcc-abi_tag-support.patch"
+    patch -N -p1 -d tools/clang -i "${srcdir}/0002-Fix-handling-of-abi_tag-attribute-on-namespaces.patch"
 
     mkdir -p "${srcdir}/build"
 }
