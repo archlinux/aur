@@ -10,8 +10,8 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGFILE as closely as possible matches core's binutils 2.25-5
-#    * Core's binutils 2.25-5 binutils-e9c1bdad.patch is omitted
+#    * This PKGFILE as closely as possible matches core's binutils 2.25.1-3
+#    * Core's binutils 2.25.1-3 binutils-e9c1bdad.patch is omitted
 #       * It is git commit e9c1bdad
 #    * All namcap warnings and errors are identical, other than:
 #       * Warning zlib is no longer a dependency
@@ -22,14 +22,14 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.25.r84222.533edc1
+pkgver=2.26.r85898.67dd2c2
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL')
 groups=('base-devel')
-depends=('glibc>=2.20' 'zlib')
+depends=('glibc>=2.22' 'zlib')
 makedepends=('git')
 checkdepends=('dejagnu' 'bc')
 provides=('binutils')
@@ -62,6 +62,7 @@ build() {
     --with-bugurl=https://bugs.archlinux.org/ \
     --enable-threads --enable-shared --with-pic \
     --enable-ld=default --enable-gold --enable-plugins \
+    --enable-deterministic-archives \
     --disable-werror --disable-gdb
 
   # check the host environment and makes sure all the necessary tools are available
