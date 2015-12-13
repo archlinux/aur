@@ -8,7 +8,7 @@ pkgrel=5
 _pkgcommit=723
 pkgdesc="A free program to learn music"
 arch=('i686' 'x86_64')
-url="http://lenmus.sourceforge.net/en/phonascus/intro"
+url="http://www.lenmus.org/en/phonascus/intro"
 license=('GPL')
 depends=('portmidi' 'wxgtk' 'sqlite3' 'boost-libs')
 optdepends=('timidity++: for sound without external midi player')
@@ -27,11 +27,6 @@ md5sums=('f8a033fb566fb1bd9b2b2bfecddf06fe'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  #patch < "${srcdir}/cmake-boost.patch" || return 1
-  #patch -p0 < "${srcdir}/cmake-find.patch" || return 1
-  #patch -p0 < "${srcdir}/cmake-freetype.patch" || return 1
-  #patch -p0 < "${srcdir}/cmake-wxgtk.patch" || return 1
 
   cd "$srcdir"
   rm -rf build
