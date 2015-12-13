@@ -1,0 +1,24 @@
+diff --git a/dlls/wined3d/directx.c b/dlls/wined3d/directx.c
+index cbff989..f992f50 100644
+--- a/dlls/wined3d/directx.c
++++ b/dlls/wined3d/directx.c
+@@ -1881,6 +1881,7 @@ cards_amd_binary[] =
+     /* Southern Islands */
+     {"HD 7900",                     CARD_AMD_RADEON_HD7900},
+     {"HD 7800",                     CARD_AMD_RADEON_HD7800},
++    {"HD 7700M",                    CARD_AMD_RADEON_HD7700M},
+     {"HD 7700",                     CARD_AMD_RADEON_HD7700},
+     /* Northern Islands */
+     {"HD 6970",                     CARD_AMD_RADEON_HD6900},
+diff --git a/dlls/wined3d/wined3d_private.h b/dlls/wined3d/wined3d_private.h
+index 65f7a74..4800c59 100644
+--- a/dlls/wined3d/wined3d_private.h
++++ b/dlls/wined3d/wined3d_private.h
+@@ -1615,6 +1615,7 @@ enum wined3d_pci_device
+     CARD_AMD_RADEON_HD6900          = 0x6719,
+     CARD_AMD_RADEON_HD7660D         = 0x9901,
+     CARD_AMD_RADEON_HD7700          = 0x683d,
++    CARD_AMD_RADEON_HD7700M         = 0x682d,
+     CARD_AMD_RADEON_HD7800          = 0x6819,
+     CARD_AMD_RADEON_HD7900          = 0x679a,
+     CARD_AMD_RADEON_HD8600M         = 0x6660,

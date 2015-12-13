@@ -7,30 +7,35 @@
 # -Heap allocation perfomance improvement patch
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -SNI support (see https://bugs.winehq.org/show_bug.cgi?id=38409 )
+# -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
 pkgver=1.8rc3
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         30-win32-aliases.conf
+        hd7700m_support.patch
         heap_perf.patch
         keybindings.patch
         mipmap.patch
-        nine-1.7.53.patch
+        nine-1.8rc2.patch
         sni_support.patch
+        steam.patch
         wbemprox_query_v2.patch
         )
 sha1sums=('071e2a11c94c7fd8963fa3e51c29537d828f5841'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
+          '8fa4b03f68f18b4de80f10c7a43c0e99a5cb017c'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'f3febb8836f38320742a546c667106608d4c4395'
           'c3096fccbac23e520d03f592db7f23350cbbc0bc'
-          '83d666e677b9ae3caed648de7c6107dfc080f9ec'
-          'd3684daae415ed2d481fe01443580cf1a2d556ef'
+          '2ef0002b9db25f6014cca83c5176e3fad60e4233'
+          '8193eadee7de2a4d89abe7ca8dff43e877878a52'
+          'a7da16c5fac7d74c665e7a76bddbcd6c8333830b'
           'e26d369e9964657b481ac4b7b18c575786ec9c8c'
           )
 
@@ -157,11 +162,13 @@ prepare()
 {
     cd wine-patched-staging-$_pkgbasever
 
-    patch -p1 < ../nine-1.7.53.patch
+    patch -p1 < ../nine-1.8rc2.patch
+    patch -p1 < ../steam.patch
     patch -p1 < ../mipmap.patch
     patch -p1 < ../heap_perf.patch
     patch -p1 < ../wbemprox_query_v2.patch
     patch -p1 < ../sni_support.patch
+    patch -p1 < ../hd7700m_support.patch
 
     patch -p1 -R < ../keybindings.patch
 
@@ -202,6 +209,7 @@ build()
             --without-gstreamer \
             --enable-win64 \
             --with-xattr \
+            --with-d3dadapter \
             --disable-tests
         # Gstreamer was disabled for FS#33655
 
@@ -223,6 +231,7 @@ build()
         --without-gstreamer \
         --with-xattr \
         --disable-tests \
+        --with-d3dadapter \
         "${_wine32opts[@]}"
 
     # These additional flags solve FS#23277
