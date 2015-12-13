@@ -4,8 +4,8 @@
 
 pkgname=bash-git-prompt-git
 _pkgname=bash-git-prompt
-pkgver=2.3.5.r249.2a6b20c
-pkgrel=2
+pkgver=2.3.5.r406.2d9ec22
+pkgrel=1
 pkgdesc="Informative git prompt for bash and fish (git version)"
 arch=('any')
 url="https://github.com/magicmonty/bash-git-prompt"
@@ -23,7 +23,8 @@ md5sums=('SKIP'
          '879555792d1b4c0ddef7cd81b0a3e35c')
 install='bash-git-prompt.install'
 
-pkgrel() {
+pkgver() {
+  cd ${srcdir}/${_pkgname}
   echo $(cat bash-git-prompt.rb | grep url | sed 's|.*archive/||' | sed 's|.tar.gz"$||').r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
