@@ -13,7 +13,7 @@
 
 pkgname=terminator-trunk
 _pkgname=terminator
-pkgver=0.98.r1645
+pkgver=0.98.r1701
 pkgrel=1
 pkgdesc='Terminal emulator that supports tabs and grids (bzr trunk developmental version)'
 arch=('any')
@@ -21,7 +21,7 @@ url='http://gnometerminator.blogspot.fr/p/introduction.html'
 license=('GPL2')
 # Note: the package named 'vte3' is actually vte for GTK 3
 # and terminator seems to require vte for GTK 2
-depends=('vte' 'pygtk' 'dbus-glib' 'xdg-utils' 'python2-notify' 'python2-keybinder2')
+depends=('vte' 'pygtk' 'dbus-glib' 'xdg-utils' 'python2-notify' 'python2-keybinder2' 'python2-psutil')
 makedepends=('desktop-file-utils' 'gettext' 'intltool' 'bzr')
 provides=('terminator')
 conflicts=('terminator' 'terminator-trunk-mod')
