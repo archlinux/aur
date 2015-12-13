@@ -2,7 +2,7 @@
 
 pkgbase='glare-themes-git'
 pkgname=('glare-themes')
-pkgver=2015.12.12
+pkgver=2015.12.13
 pkgrel=1
 pkgdesc='simple platform independent theme'
 arch=('any')
@@ -30,7 +30,7 @@ EOF
 		[Yy])
 			bash x-changecolor.sh;;
 		*)
-			printf "\nskipped\n";;
+			bash x-changecolor.sh -c "#407dec";;
 	esac
 }
 
