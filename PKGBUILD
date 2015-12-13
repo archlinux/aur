@@ -49,7 +49,7 @@ validpgpkeys=('0864B51BD36BBC39D548DDA7CB147F331607AC45')
 #}
 
 package() {
-  cd ${srcdir}/src
+#  cd ${srcdir}/src
   install -D -m755 "${srcdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -D -m644 "${srcdir}/usr/share/veracrypt/doc/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/License.txt"
   install -D -m644 "${srcdir}/usr/share/pixmaps/veracrypt.xpm" "${pkgdir}/usr/share/pixmaps/veracrypt.xpm"
