@@ -7,7 +7,7 @@
 
 pkgname=devtools-namcapgit
 _pkgname=devtools
-pkgver=20150606
+pkgver=20151129
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers (uses namcap-git)'
 arch=('any')
@@ -20,7 +20,7 @@ source=("https://sources.archlinux.org/other/$_pkgname/$_pkgname-$pkgver.tar.gz"
 validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'
               '4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC'
               '86CFFCA918CF3AF47147588051E8B148A9999C34')
-md5sums=('4be74d0efc3e7572689b99a5242f368d'
+md5sums=('86fe057b7180ce0247338e64f1a8722c'
          'SKIP')
 
 prepare() {
