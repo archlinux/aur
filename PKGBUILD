@@ -10,23 +10,23 @@ url="http://pcc.ludd.ltu.se/"
 license=('custom:BSD')
 conflicts=('pcc-libs-cvs')
 source=("http://pcc.ludd.ltu.se/ftp/pub/pcc-releases/${pkgname}-${pkgver}.tgz"
-        "license")
+	"license")
 md5sums=('360c157bbf6a7a931c4760ccf4ad704a'
-         '51f6cc02b26af53f26cfe87494ca5c87')
+	'51f6cc02b26af53f26cfe87494ca5c87')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgname}-${pkgver}
 
-  ./configure \
-    --prefix=/usr
+	./configure \
+	--prefix=/usr
 
-  make CC=gcc
+	make CC=gcc
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgname}-${pkgver}
 
-  make DESTDIR=${pkgdir} install
+	make DESTDIR=${pkgdir} install
 
-  install -D -m0644 ../license ${pkgdir}/usr/share/licenses/${pkgname}/license
+	install -D -m0644 ../license ${pkgdir}/usr/share/licenses/${pkgname}/license
 }
