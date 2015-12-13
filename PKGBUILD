@@ -18,15 +18,15 @@ source=(${_pkgname}::'git+https://github.com/satya164/elegance-colors.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "${srcdir}/${_pkgname}"
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 
 build() {
-  make -C "${srcdir}/${_pkgname}"
+	make -C "${srcdir}/${_pkgname}"
 }
 
 package() {
-  make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" install
+	make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" install
 }
