@@ -17,28 +17,28 @@ source=("${pkgname}"::"git+https://github.com/bup/bup.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "${srcdir}/${pkgname}"
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}"
 
-    # Fixing numerous false invocations since python2 is needed
-    find . -type f -exec sed -i -e '1s/env python\b/env python2/' {} +
+	# Fixing numerous false invocations since python2 is needed
+	find . -type f -exec sed -i -e '1s/env python\b/env python2/' {} +
 
-    sed -i -e 's/bup_find_prog python\b/bup_find_prog python2/' \
-           -e 's/MF_PATH_INCLUDE PYTHON python\b/MF_PATH_INCLUDE PYTHON python2/' \
-           config/configure
+	sed -i -e 's/bup_find_prog python\b/bup_find_prog python2/' \
+	-e 's/MF_PATH_INCLUDE PYTHON python\b/MF_PATH_INCLUDE PYTHON python2/' \
+	config/configure
 
-    sed -i -e 's/PYTHON=python\b/PYTHON=python2/' -e '/docs-available/d' Makefile
+	sed -i -e 's/PYTHON=python\b/PYTHON=python2/' -e '/docs-available/d' Makefile
 
-    sed -i -e 's/python\b -c/python2 -c/' t/{lib,test-meta,test-ls}.sh
+	sed -i -e 's/python\b -c/python2 -c/' t/{lib,test-meta,test-ls}.sh
 }
 
 build() {
-    make -C "${srcdir}/${pkgname}" all import-docs
+	make -C "${srcdir}/${pkgname}" all import-docs
 }
 
 # Checking routine fails because of unknown reason!
@@ -48,5 +48,5 @@ build() {
 #}
 
 package() {
-    make -C "${srcdir}/${pkgname}" DESTDIR="${pkgdir}" install
+	make -C "${srcdir}/${pkgname}" DESTDIR="${pkgdir}" install
 }
