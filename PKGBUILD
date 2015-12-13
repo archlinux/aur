@@ -60,6 +60,7 @@ build() {
     --disable-mga \
     --disable-ass-internal \
     --disable-cdparanoia \
+    --disable-smb \
     --enable-xvmc \
     --enable-radio \
     --enable-radio-capture \
