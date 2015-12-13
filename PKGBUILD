@@ -1,8 +1,9 @@
 # Maintainer: valvetime <valvetimepackages@gmail.com>
 
 pkgname=osmo-tetra-sq5bpf-git
-pkgver=45334836f6bdbbc67765b8c4b7960d7c112e971d
+pkgver=20151213
 pkgrel=1
+epoch=2
 pkgdesc="TETRA receiver / decoder (sq5bpf's fork). Uses gnuradio. See http://www.rtl-sdr.com/rtl-sdr-tutorial-listening-tetra-radio-channels/ for usage instructions."
 arch=('any')
 url="https://github.com/sq5bpf/osmo-tetra-sq5bpf"
@@ -95,6 +96,9 @@ package() {
 #I am sorry to offend the linux gods by creating a top level directory, but unfortunately telive refuses to cooperate nicely otherwise
 mkdir -p $pkgdir/tetra
 cd $srcdir
-cp -r "osmo-tetra-sq5bpf" "$pkgdir/tetra"
+cp -r "osmo-tetra-sq5bpf-git" "$pkgdir/tetra"
+
+#make it writeable by members of group wheel (aka sudoers on most setups)
+chown  -R :wheel /$pkgdir/tetra
 
 }
