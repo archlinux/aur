@@ -2,7 +2,7 @@
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=xdm-xfreq
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A customized XDM for XFreq"
 arch=(any)
 license=('GPL')
@@ -42,7 +42,7 @@ package() {
   cp chocolate.rc ${pkgdir}/etc/xdm-xfreq/theme
   cp xdm-xfreq.rc xdm-config twm-xfreq.rc twm-xfreq.Xresources ${pkgdir}/etc/xdm-xfreq
   chmod 0755 ${pkgdir}/etc/xdm-xfreq/xdm-xfreq.rc
-  ln -s ${pkgdir}/etc/xdm-xfreq/theme/chocolate.rc ${pkgdir}/etc/xdm-xfreq/xdm-theme.rc
+  ln -s /etc/xdm-xfreq/theme/chocolate.rc ${pkgdir}/etc/xdm-xfreq/xdm-theme.rc
   mkdir -p ${pkgdir}/etc/X11/xdm/xdm-xfreq
   cp Xsession Xsetup Xstartup ${pkgdir}/etc/X11/xdm/xdm-xfreq
   chmod 0755 ${pkgdir}/etc/X11/xdm/xdm-xfreq/{Xsession,Xsetup,Xstartup}
