@@ -6,12 +6,14 @@
 
 pkgname=doomsday
 pkgver=1.15.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('qt5-base' 'qt5-x11extras' 'sdl2_net' 'sdl2_mixer' 'fmodex' 'wxpython' 'assimp')
+conflicts=('doomsday2-unstable' 'i686-doomsday2-unstable')
+depends=('qt5-base' 'qt5-x11extras' 'sdl2_net' 'sdl2_mixer' 'fmodex' 
+'wxpython' 'assimp' 'fluidsynth')
 makedepends=('imagemagick')
 optdepends=('doom1-wad: Doom shareware', 
             'heretic1-wad: Heretic shareware', 
@@ -42,7 +44,8 @@ build() {
     # Generate makefiles using qmake
     mkdir -p "${srcdir}/doomsday-stable-${pkgver}/build"
     cd "${srcdir}/doomsday-stable-${pkgver}/build"
-    qmake-qt5 -r ../doomsday/doomsday.pro CONFIG+="deng_fmod release"
+    qmake-qt5 -r ../doomsday/doomsday.pro CONFIG+="deng_fmod 
+deng_fluidsynth release"
 
     # Build
     make $MAKEFLAGS
@@ -64,4 +67,8 @@ EOF
     # Look for WADs in /usr/share/games/doom by default
     mkdir -p "${pkgdir}/etc/doomsday"
     echo "iwaddir: /usr/share/games/doom" > "${pkgdir}/etc/doomsday/paths"
+    # For Music
+    echo "To obtain music work properly, in options set show taskbar go \ 
+	  to sound options of the engine and go to path /usr/share/soundfonts and \ 
+          choose your soundfont"
 }
