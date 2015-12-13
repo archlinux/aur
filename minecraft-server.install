@@ -3,33 +3,33 @@ SERVER_ROOT="/srv/minecraft"
 
 _update() {
 	getent group "${USER}" &>/dev/null
-    if [ $? -ne 0 ]; then
-    	echo -e "\e[34;1m==>\e[39;1m Adding ${USER} system group... \e[0m"
+	if [ $? -ne 0 ]; then
+		echo -e "\e[34;1m==>\e[39;1m Adding ${USER} system group... \e[0m"
 		groupadd -r ${USER} 1>/dev/null
 	fi
 
 	getent passwd "${USER}" &>/dev/null
 	if [ $? -ne 0 ]; then
-    	echo -e "\e[34;1m==>\e[39;1m Adding ${USER} system user... \e[0m"
+		echo -e "\e[34;1m==>\e[39;1m Adding ${USER} system user... \e[0m"
 		useradd -r -g ${USER} -d "${SERVER_ROOT}" ${USER} 1>/dev/null
 	fi
 
-    chown -R ${USER}:${USER} "${SERVER_ROOT}"
+	chown -R ${USER}:${USER} "${SERVER_ROOT}"
 
 	echo -e "\e[34;1m==>\e[39;1m NOTE: The world data is stored under ${SERVER_ROOT} and the server runs \e[0m"
-    echo -e "\e[34;1m==>\e[39;1m as ${USER} user to increase security. \e[0m"
-    echo -e "\e[34;1m==>\e[39;1m NOTE: Use the minecraft script under /usr/bin/minecraftd to start, stop or backup the server \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m as ${USER} user to increase security. \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m NOTE: Use the minecraft script under /usr/bin/minecraftd to start, stop or backup the server \e[0m"
 	echo -e "\e[34;1m==>\e[39;1m and the configuration file under /etc/conf.d/minecraft to adjust it to your liking. \e[0m"
-    echo -e "\e[34;1m==>\e[39;1m NOTE: For the server to start you have to accept the EULA in ${SERVER_ROOT}/eula.txt \e[0m"
-    echo -e "\e[34;1m==>\e[39;1m which is generated after the first server start. \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m NOTE: For the server to start you have to accept the EULA in ${SERVER_ROOT}/eula.txt \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m which is generated after the first server start. \e[0m"
 }
 
 post_install() {
-    _update
+	_update
 }
 
 post_upgrade() {
-    _update
+	_update
 }
 
 pre_remove() {
@@ -50,6 +50,6 @@ post_remove() {
 	fi
 
 	# Notifying the user of kept dirs
-    [ -d ${SERVER_ROOT} ] && chown root:root ${SERVER_ROOT} && echo -e "\e[34;1m==>\e[39;1m NOTE: Game saves in ${SERVER_ROOT} were kept on your system.\e[0m"
-    [ -d /etc/conf.d/minecraft ] && echo -e "\e[34;1m==>\e[39;1m NOTE: Your configuration file /etc/conf.d/minecraft was kept on your system.\e[0m"
+	[ -d ${SERVER_ROOT} ] && chown root:root ${SERVER_ROOT} && echo -e "\e[34;1m==>\e[39;1m NOTE: Game saves in ${SERVER_ROOT} were kept on your system.\e[0m"
+	[ -d /etc/conf.d/minecraft ] && echo -e "\e[34;1m==>\e[39;1m NOTE: Your configuration file /etc/conf.d/minecraft was kept on your system.\e[0m"
 }
