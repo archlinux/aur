@@ -1,0 +1,62 @@
+From 6118a23a23df87a64a72894c7d0a4a204d059bb7 Mon Sep 17 00:00:00 2001
+From: Adrian Hunter <adrian.hunter@intel.com>
+Date: Tue, 24 Mar 2015 15:40:37 +0200
+Subject: [PATCH 2/5] PM / QoS: Add pm_qos_cancel_request_lazy() that doesn't
+ sleep
+
+Add pm_qos_cancel_request_lazy() which is convenient for
+contexts that may not sleep.
+
+Signed-off-by: Adrian Hunter <adrian.hunter@intel.com>
+---
+ include/linux/pm_qos.h |  2 ++
+ kernel/power/qos.c     | 20 ++++++++++++++++++++
+ 2 files changed, 22 insertions(+)
+
+diff --git a/include/linux/pm_qos.h b/include/linux/pm_qos.h
+index 0f65d36..ff59753 100644
+--- a/include/linux/pm_qos.h
++++ b/include/linux/pm_qos.h
+@@ -126,6 +126,8 @@ void pm_qos_update_request(struct pm_qos_request *req,
+ 			   s32 new_value);
+ void pm_qos_update_request_timeout(struct pm_qos_request *req,
+ 				   s32 new_value, unsigned long timeout_us);
++void pm_qos_cancel_request_lazy(struct pm_qos_request *req,
++				unsigned int timeout_us);
+ void pm_qos_remove_request(struct pm_qos_request *req);
+ 
+ int pm_qos_request(int pm_qos_class);
+diff --git a/kernel/power/qos.c b/kernel/power/qos.c
+index 97b0df7..ac131cb 100644
+--- a/kernel/power/qos.c
++++ b/kernel/power/qos.c
+@@ -517,6 +517,26 @@ void pm_qos_update_request_timeout(struct pm_qos_request *req, s32 new_value,
+ }
+ 
+ /**
++ * pm_qos_cancel_request_lazy - cancels an existing qos request lazily.
++ * @req : handle to list element holding a pm_qos request to use
++ * @timeout_us: the delay before cancelling this qos request in usecs.
++ *
++ * After timeout_us, this qos request is cancelled.
++ */
++void pm_qos_cancel_request_lazy(struct pm_qos_request *req,
++				unsigned int timeout_us)
++{
++	if (!req)
++		return;
++	if (WARN(!pm_qos_request_active(req),
++		 "%s called for unknown object.", __func__))
++		return;
++
++	schedule_delayed_work(&req->work, usecs_to_jiffies(timeout_us));
++}
++EXPORT_SYMBOL_GPL(pm_qos_cancel_request_lazy);
++
++/**
+  * pm_qos_remove_request - modifies an existing qos request
+  * @req: handle to request list element
+  *
+-- 
+2.6.2
+

@@ -1,0 +1,41 @@
+From b77ff80bcc954545d4d3e2d637af3857ba70170c Mon Sep 17 00:00:00 2001
+From: Dong Aisheng <b29396@freescale.com>
+Date: Wed, 24 Jun 2015 21:28:48 +0200
+Subject: [PATCH 1/5] mmc: sdhci: get runtime pm when sdio irq is enabled
+
+SDIO cards may need clock to send the card interrupt to host.
+Thus, we get runtime pm when sdio irq is enabled to prevent the clock
+resource is released and put it when sdio irq is disabled.
+
+Signed-off-by: Dong Aisheng <b29396@freescale.com>
+---
+ drivers/mmc/host/sdhci.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index fbc7efd..3eaa3e7 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -1731,7 +1731,8 @@ static void sdhci_enable_sdio_irq(struct mmc_host *mmc, int enable)
+ 	struct sdhci_host *host = mmc_priv(mmc);
+ 	unsigned long flags;
+ 
+-	sdhci_runtime_pm_get(host);
++	if (enable)
++		sdhci_runtime_pm_get(host);
+ 
+ 	spin_lock_irqsave(&host->lock, flags);
+ 	if (enable)
+@@ -1742,7 +1743,8 @@ static void sdhci_enable_sdio_irq(struct mmc_host *mmc, int enable)
+ 	sdhci_enable_sdio_irq_nolock(host, enable);
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ 
+-	sdhci_runtime_pm_put(host);
++	if (!enable)
++		sdhci_runtime_pm_put(host);
+ }
+ 
+ static int sdhci_do_start_signal_voltage_switch(struct sdhci_host *host,
+-- 
+2.6.2
+

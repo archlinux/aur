@@ -1,0 +1,178 @@
+From 6d4deb1b05a4082b1c6810fef93d87023c892c7b Mon Sep 17 00:00:00 2001
+From: Adrian Hunter <adrian.hunter@intel.com>
+Date: Tue, 24 Mar 2015 15:40:38 +0200
+Subject: [PATCH 3/5] mmc: sdhci: Support maximum DMA latency request via PM
+ QOS
+
+Add support for setting a maximum DMA latency via the
+PM QOS framework.
+
+Drivers can set host->dma_latency to the desired value
+otherwise the initial value (PM_QOS_DEFAULT_VALUE)
+will result in no PM QOS request being added.
+
+It may be that there isn't time between consecutive
+I/O requests to reach deeper C-states. To address
+that the driver can set host->lat_cancel_delay which
+is the delay before cancelling the DMA latency request
+when it is known that there is another request on
+the way.
+
+Signed-off-by: Adrian Hunter <adrian.hunter@intel.com>
+---
+ drivers/mmc/host/sdhci.c | 57 +++++++++++++++++++++++++++++++++++++++++++++++-
+ drivers/mmc/host/sdhci.h |  7 ++++++
+ 2 files changed, 63 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 3eaa3e7..7d7ec8c 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -722,6 +722,45 @@ static void sdhci_set_timeout(struct sdhci_host *host, struct mmc_command *cmd)
+ 	}
+ }
+ 
++static bool sdhci_pm_qos_use_dma_latency(struct sdhci_host *host)
++{
++	return host->dma_latency != PM_QOS_DEFAULT_VALUE;
++}
++
++static void sdhci_pm_qos_set_dma_latency(struct sdhci_host *host,
++					 struct mmc_request *mrq)
++{
++	if (sdhci_pm_qos_use_dma_latency(host) && mrq->data &&
++	    (host->flags & (SDHCI_USE_SDMA | SDHCI_USE_ADMA))) {
++		pm_qos_update_request(&host->pm_qos_req, host->dma_latency);
++		host->pm_qos_set = true;
++	}
++}
++
++static void sdhci_pm_qos_unset(struct sdhci_host *host)
++{
++	unsigned int delay;
++
++	if (host->pm_qos_set) {
++		host->pm_qos_set = false;
++		delay = host->consecutive_req ? host->lat_cancel_delay : 0;
++		pm_qos_cancel_request_lazy(&host->pm_qos_req, delay);
++	}
++}
++
++static void sdhci_pm_qos_add(struct sdhci_host *host)
++{
++	if (sdhci_pm_qos_use_dma_latency(host))
++		pm_qos_add_request(&host->pm_qos_req, PM_QOS_CPU_DMA_LATENCY,
++				   PM_QOS_DEFAULT_VALUE);
++}
++
++static void sdhci_pm_qos_remove(struct sdhci_host *host)
++{
++	if (pm_qos_request_active(&host->pm_qos_req))
++		pm_qos_remove_request(&host->pm_qos_req);
++}
++
+ static void sdhci_prepare_data(struct sdhci_host *host, struct mmc_command *cmd)
+ {
+ 	u8 ctrl;
+@@ -1363,6 +1402,8 @@ static void sdhci_request(struct mmc_host *mmc, struct mmc_request *mrq)
+ 
+ 	sdhci_runtime_pm_get(host);
+ 
++	sdhci_pm_qos_set_dma_latency(host, mrq);
++
+ 	/* Firstly check card presence */
+ 	present = sdhci_do_get_cd(host);
+ 
+@@ -1386,6 +1427,7 @@ static void sdhci_request(struct mmc_host *mmc, struct mmc_request *mrq)
+ 	}
+ 
+ 	host->mrq = mrq;
++	host->consecutive_req = 0;
+ 
+ 	if (!present || host->flags & SDHCI_DEVICE_DEAD) {
+ 		host->mrq->cmd->error = -ENOMEDIUM;
+@@ -2164,7 +2206,12 @@ static void sdhci_pre_req(struct mmc_host *mmc, struct mmc_request *mrq,
+ {
+ 	struct sdhci_host *host = mmc_priv(mmc);
+ 
+-	mrq->data->host_cookie = COOKIE_UNMAPPED;
++	host->consecutive_req = 1;
++
++	if (mrq->data->host_cookie) {
++		mrq->data->host_cookie = COOKIE_UNMAPPED;
++		return;
++	}
+ 
+ 	if (host->flags & SDHCI_REQ_USE_DMA)
+ 		sdhci_pre_dma_transfer(host, mrq->data);
+@@ -2232,6 +2279,8 @@ static void sdhci_tasklet_finish(unsigned long param)
+ 
+ 	host = (struct sdhci_host*)param;
+ 
++	sdhci_pm_qos_unset(host);
++
+ 	spin_lock_irqsave(&host->lock, flags);
+ 
+         /*
+@@ -2862,6 +2911,7 @@ struct sdhci_host *sdhci_alloc_host(struct device *dev,
+ 
+ 	host = mmc_priv(mmc);
+ 	host->mmc = mmc;
++	host->dma_latency = PM_QOS_DEFAULT_VALUE;
+ 
+ 	return host;
+ }
+@@ -3357,6 +3407,8 @@ int sdhci_add_host(struct sdhci_host *host)
+ 	 */
+ 	mmc->max_blk_count = (host->quirks & SDHCI_QUIRK_NO_MULTIBLOCK) ? 1 : 65535;
+ 
++	sdhci_pm_qos_add(host);
++
+ 	/*
+ 	 * Init tasklets.
+ 	 */
+@@ -3420,6 +3472,7 @@ reset:
+ #endif
+ untasklet:
+ 	tasklet_kill(&host->finish_tasklet);
++	sdhci_pm_qos_remove(host);
+ 
+ 	return ret;
+ }
+@@ -3476,6 +3529,8 @@ void sdhci_remove_host(struct sdhci_host *host, int dead)
+ 
+ 	host->adma_table = NULL;
+ 	host->align_buffer = NULL;
++
++	sdhci_pm_qos_remove(host);
+ }
+ 
+ EXPORT_SYMBOL_GPL(sdhci_remove_host);
+diff --git a/drivers/mmc/host/sdhci.h b/drivers/mmc/host/sdhci.h
+index 9d4aa31..e8eda43 100644
+--- a/drivers/mmc/host/sdhci.h
++++ b/drivers/mmc/host/sdhci.h
+@@ -19,6 +19,7 @@
+ #include <linux/io.h>
+ 
+ #include <linux/mmc/host.h>
++#include <linux/pm_qos.h>
+ 
+ /*
+  * Controller registers
+@@ -427,6 +428,12 @@ struct sdhci_host {
+ 	struct mmc_host *mmc;	/* MMC structure */
+ 	u64 dma_mask;		/* custom DMA mask */
+ 
++	struct pm_qos_request pm_qos_req;
++	int dma_latency;
++	int lat_cancel_delay;
++	int consecutive_req;
++	bool pm_qos_set;
++
+ #if defined(CONFIG_LEDS_CLASS) || defined(CONFIG_LEDS_CLASS_MODULE)
+ 	struct led_classdev led;	/* LED control */
+ 	char led_name[32];
+-- 
+2.6.2
+
