@@ -30,7 +30,7 @@ md5sums_i686=('37719a454031368c201cc4bc925aaeee')
 md5sums_x86_64=('8d16ebfdb462b06f8e861bad19dad002')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
-#source_x86_64=('http://mirror.pcbeta.com/google/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_48.0.2564.10_amd64.deb')
+#source_x86_64=('http://mirror.pcbeta.com/google/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_48.0.2564.22-1_amd64.deb')
 #md5sums_x86_64=('8d16ebfdb462b06f8e861bad19dad002')
 
 package() {
