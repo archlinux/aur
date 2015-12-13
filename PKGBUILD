@@ -1,25 +1,25 @@
 # Maintainer: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot
-pkgver=1.3.0_744_g75a25c4
+pkgver=1.3.0_883_g2a31708
 pkgrel=1
 pkgdesc="A high quality voice chat program. (snapshot build)"
 arch=('i686' 'x86_64')
 url="http://mumble.info/"
 license=('BSD')
-depends=('qt4' 'opus' 'speex' 'libpulse' 'avahi' 'protobuf')
+depends=('qt5-base' 'opus' 'speex' 'libpulse' 'avahi' 'protobuf')
 makedepends=('boost')
 provides=('mumble')
 conflicts=('mumble')
 install=mumble.install
 source=("http://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
-sha256sums=('a82f6b548dd3b39989baaeb6c8dc50b25ea2082fc553cfd083122f42e911e60c')
+sha256sums=('ad25bb66873f825f91f1ed06c6599db532dd26a6b82691819c7c757637154e31')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
 
-    qmake-qt4 main.pro \
-      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update no-speechd qt4-legacy-compat" \
+    qmake-qt5 main.pro \
+      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update no-speechd" \
       DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
 
     make release
@@ -46,7 +46,7 @@ package() {
     # celt 7
     install -m755 -D ./release/libcelt0.so.0.7.0 $pkgdir/usr/lib/mumble/libcelt0.so.0.7.0
     ln -s libcelt0.so.0.7.0 $pkgdir/usr/lib/mumble/libcelt0.so.0.7
-    
+
     # plugins
     install -m755 -D ./release/plugins/liblink.so $pkgdir/usr/lib/mumble/plugins/liblink.so
     install -m755 -D ./release/plugins/libmanual.so $pkgdir/usr/lib/mumble/plugins/libmanual.so
@@ -58,4 +58,3 @@ package() {
     install -m644 -D ./icons/mumble.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/mumble.svg
     install -m644 -D ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
