@@ -20,8 +20,8 @@ validpgpkeys=('3E70692EE3DB8BDDA5991C90615F366D944B4826') # Germar Reitze
 # https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 
 prepare() {
-	cd "$_pkgname-$pkgver"
-	patch -Np1 -i "$srcdir/Fix_bug_473-AttributeError.patch"
+	cd "$_pkgname-$pkgver/common"
+	patch -i "$srcdir/Fix_bug_473-AttributeError.patch"
 }
 
 build() {
