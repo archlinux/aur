@@ -17,21 +17,21 @@ source=("${pkgname}"::'git+https://github.com/NitruxSA/flattr-icons.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "${srcdir}/${pkgname}"
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}"
 
-  install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
-  install -dm755 "${pkgdir}"/usr/share/icons/Flattr
-  install -dm755 "${pkgdir}"/usr/share/icons/Flattr\ Dark
+	install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
+	install -dm755 "${pkgdir}"/usr/share/icons/Flattr
+	install -dm755 "${pkgdir}"/usr/share/icons/Flattr\ Dark
 
-  cp -dpr --no-preserve=ownership ./Flattr/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/
-  cp -dpr --no-preserve=ownership ./Flattr "${pkgdir}"/usr/share/icons/
-  cp -dpr --no-preserve=ownership ./Flattr\ Dark "${pkgdir}"/usr/share/icons/
-  cp -dpr --no-preserve=ownership ./tools "${pkgdir}"/usr/share/icons/Flattr/
+	cp -dpr --no-preserve=ownership ./Flattr/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/
+	cp -dpr --no-preserve=ownership ./Flattr "${pkgdir}"/usr/share/icons/
+	cp -dpr --no-preserve=ownership ./Flattr\ Dark "${pkgdir}"/usr/share/icons/
+	cp -dpr --no-preserve=ownership ./tools "${pkgdir}"/usr/share/icons/Flattr/
 
-  rm "${pkgdir}"/usr/share/icons/Flattr/LICENSE
+	rm "${pkgdir}"/usr/share/icons/Flattr/LICENSE
 }
