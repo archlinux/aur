@@ -14,7 +14,7 @@ url='https://github.com/vitalif/grive2'
 license=('GPL2')
 depends=('yajl' 'curl' 'libgcrypt' 'boost-libs' 'gcc-libs' 'json-c' 'expat')
 optdepends=("cppunit: unit tests"
-			"binutils: backtrace and libiberty")
+	"binutils: backtrace and libiberty")
 makedepends=('cmake' 'git' 'boost')
 provides=('grive')
 conflicts=('grive')
@@ -22,23 +22,23 @@ source=("${pkgname}"::"git+https://github.com/vitalif/grive2")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "${srcdir}/${pkgname}"
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    rm -rf build
-    mkdir build
-    cd build
+	cd "${srcdir}/${pkgname}"
+	rm -rf build
+	mkdir build
+	cd build
 
-    cmake .. -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_EXE_LINKER_FLAGS=-ljson-c
+	cmake .. -DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_EXE_LINKER_FLAGS=-ljson-c
 
-    make
+	make
 }
 
 package() {
-    make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
+	make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
 }
