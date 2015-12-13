@@ -20,7 +20,7 @@
 
 pkgname=ghc7.6-bin
 pkgver=7.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Binary version of legacy GHC. Compatible with Haskell Platform 2013.2'
 arch=('i686' 'x86_64')
 url='http://www.haskell.org/ghc/'
