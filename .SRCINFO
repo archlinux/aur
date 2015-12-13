@@ -1,6 +1,6 @@
 pkgbase = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = linux-ice
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.3.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.3.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.3.1.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.3.1.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.3.2.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.3.2.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
@@ -24,7 +24,7 @@ pkgbase = linux-ice
 	source = http://tuxonice.net/downloads/all/tuxonice-for-linux-head-4.3.0-2015-11-07.patch.bz2
 	sha256sums = 4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae
 	sha256sums = SKIP
-	sha256sums = 82caff48806796418f445d0a87698abedfaaccfdc7b63059166b788e0cfd144b
+	sha256sums = a96b8a4e90887dea82066b4d804ac193700c200b6c0075fecba0b691b0240a5e
 	sha256sums = SKIP
 	sha256sums = 5d9d7aefa33b239279456fa8a8cd4de2d9ee4601f9f432b718c9bfdb7ce2925b
 	sha256sums = 8c1ba876b2291c58269f7232b291e369daa925ba904b45636af4e80c0f73ced5
@@ -41,23 +41,23 @@ pkgname = linux-ice
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-ice=4.3.1
-	provides = linux=4.3.1
+	provides = kernel26-ice=4.3.2
+	provides = linux=4.3.2
 	conflicts = kernel26-ice
 	replaces = kernel26-ice
 	backup = etc/mkinitcpio.d/linux-ice.preset
 
 pkgname = linux-ice-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ice kernel
-	provides = kernel26-ice-headers=4.3.1
-	provides = linux-headers=4.3.1
+	provides = kernel26-ice-headers=4.3.2
+	provides = linux-headers=4.3.2
 	conflicts = kernel26-ice-headers
 	replaces = kernel26-ice-headers
 
 pkgname = linux-ice-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-ice kernel
-	provides = kernel26-ice-docs=4.3.1
-	provides = linux-docs=4.3.1
+	provides = kernel26-ice-docs=4.3.2
+	provides = linux-docs=4.3.2
 	conflicts = kernel26-ice-docs
 	replaces = kernel26-ice-docs
 
