@@ -1,33 +1,41 @@
 # Maintainer: pezcurrel <pezcurrel [at] tiscali.it>
 # Maintainer: <kontakt.zuf [at] gmail.com>
 # Maintainer: Eric Bélanger <eric [at] archlinux.org>
-# Maintainer: Lukas Jirkovsky <l.jirkovsky [at] gmail.com>
+# Contributor: Lukas Jirkovsky <l.jirkovsky [at] gmail.com>
 
 pkgname=geeqie-lirc
-pkgver=1.1
-pkgrel=3
-pkgdesc="A lightweight image browser and viewer (fork of GQview) - with LIRC enabled"
+_pkgname=geeqie
+pkgver=1.2.2
+pkgrel=1
+pkgdesc="A lightweight image browser and viewer with remote (LIRC) support"
 arch=('i686' 'x86_64')
-url="http://geeqie.sourceforge.net/"
-license=('GPL3')
-depends=('exiv2' 'gtk2' 'lcms' 'desktop-file-utils' 'lirc-utils')
-makedepends=('git' 'intltool' 'doxygen' 'gnome-doc-utils')
-optdepends=('librsvg: SVG rendering')
-replaces=('gqview' 'gqview-devel')
+url="http://www.geeqie.org/"
+license=('GPL2')
+depends=('exiv2' 'gtk2' 'lcms' 'lirc' 'desktop-file-utils')
+makedepends=('intltool' 'doxygen' 'gnome-doc-utils' 'git')
+optdepends=('librsvg: SVG rendering'
+	    'fbida: for jpeg rotation'
+	    'exiv2: for tiff and png rotation')
 conflicts=('geeqie' 'geeqie-git')
 provides=('geeqie')
 install=geeqie.install
-source=( "http://downloads.sourceforge.net/project/geeqie/geeqie/geeqie-1.1/geeqie-1.1.tar.gz" )
-md5sums=( 'e63351988625c84b0fd80bc4eefd923b' )
+source=(http://www.geeqie.org/${_pkgname}-${pkgver}.tar.xz
+        fix-fullscreen.patch)
+sha1sums=('9dd094707d7bf7389eb62a218ff7bc86339fc995'
+          'dab15bbda9b329f663276b25bf1989b410596644')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  patch -p1 -i ../fix-fullscreen.patch
+}
 
 build() {
-	cd "${srcdir}/geeqie-1.1"
-	CPPFLAGS="-D_FILE_OFFSET_BITS=64" ./configure --prefix=/usr --enable-lirc
-	make
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  ./configure --prefix=/usr --enable-lirc
+  make
 }
 
 package(){
-	cd "$srcdir/geeqie-1.1"
-	install -d -m755 "${pkgdir}/usr/share/doc/geeqie-1.1/html"
-	make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
