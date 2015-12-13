@@ -12,7 +12,7 @@ url='https://github.com/vitalif/grive2'
 license=('GPL2')
 depends=('yajl' 'curl' 'libgcrypt' 'boost-libs' 'gcc-libs' 'json-c' 'expat')
 optdepends=("cppunit: unit tests"
-			"binutils: backtrace and libiberty")
+	"binutils: backtrace and libiberty")
 makedepends=('cmake' 'boost')
 conflicts=('grive-git')
 source=("https://github.com/vitalif/grive2/archive/v${pkgver}.tar.gz")
@@ -20,15 +20,15 @@ md5sums=('1306dcf567535c0696187c6a2b354c29')
 
 build() {
 	cd "${srcdir}/${pkgname}2-${pkgver}"
-    rm -rf build
-    mkdir build
-    cd build
+	rm -rf build
+	mkdir build
+	cd build
 
-    cmake .. -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_EXE_LINKER_FLAGS=-ljson-c
+	cmake .. -DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_EXE_LINKER_FLAGS=-ljson-c
 
-    make
+	make
 }
 
 package() {
