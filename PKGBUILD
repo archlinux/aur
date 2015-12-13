@@ -64,4 +64,4 @@ pkgver() {
 
 md5sums=('SKIP'
          '884b0f2fa1458ab997f8fc6a8bd1f563'
-         '6e8afd740cdec723fbf6eda0f3626397')
+         '67a77354fd72d2bd1ce27026f9099c66')
