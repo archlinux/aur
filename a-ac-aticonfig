@@ -1,0 +1,6 @@
+# /etc/acpi/events/ac
+# Called when the user connects ac power to us
+# 
+
+event=ac_adapter
+action=/etc/acpi/ati-powermode.sh "%e"

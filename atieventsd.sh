@@ -3,13 +3,13 @@
 . /etc/rc.conf
 . /etc/rc.d/functions
 
-ATID_PID=`pidof -o %PPID /usr/sbin/atieventsd`
+ATID_PID=`pidof -o %PPID /usr/bin/atieventsd`
 
 case "$1" in
   start)
     rc=0
     stat_busy "Starting ATI Events Daemon"
-    [ -z "$ATID_PID" ] && /usr/sbin/atieventsd
+    [ -z "$ATID_PID" ] && /usr/bin/atieventsd
     rc=$(($rc+$?))
     if [ $rc -gt 0 ]; then
       stat_fail
@@ -36,6 +36,6 @@ case "$1" in
     $0 start
     ;;
   *)
-    echo "usage: $0 {start|stop|restart}"  
+    echo "usage: $0 {start|stop|restart}"
 esac
 exit 0

@@ -1,0 +1,16 @@
+--- 15.10/common/lib/modules/fglrx/build_mod/firegl_public.c	2013-01-15 22:33:27.000000000 +0100
++++ 15.10b/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-10-31 20:56:09.934455950 +0100
+@@ -2904,10 +2904,12 @@
+         KCL_PUB_InterruptHandlerWrap,
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,22)
+         ((useMSI) ? (SA_INTERRUPT) : (SA_SHIRQ)),
+-#else
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(4,1,0)
+         //when MSI enabled. keep irq disabled when calling the action handler,
+         //exclude this IRQ from irq balancing (only on one CPU) 
+         ((useMSI) ? (IRQF_DISABLED | IRQF_NOBALANCING) : (IRQF_SHARED)),    
++#else
++        ((useMSI) ? (0x0) : (IRQF_SHARED)),
+ #endif
+         dev_name,
+         context);

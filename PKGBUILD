@@ -24,13 +24,13 @@
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=31
+pkgrel=32
 pkgdesc="AMD/ATI legacy drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.2' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'netkit-bsd-finger' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('linux>=3.0' 'linux<4.4' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4' 'gcc49')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -64,12 +64,16 @@ source=(
     catalyst.sh
     atieventsd.sh
     atieventsd.service
+    ati-powermode.sh
+    a-ac-aticonfig
+    a-lid-aticonfig
     catalyst.conf
     arch-fglrx-authatieventsd_new.patch
     hook-fglrx
     ati_make.sh
     makefile_compat.patch
     catalyst-hook.service
+    
     3.5-do_mmap.patch
     arch-fglrx-3.7.patch
     gentoo_linux-3.10-proc.diff
@@ -79,22 +83,32 @@ source=(
     cold-fglrx-3.14-current_euid.patch
     fglrx_gpl_symbol.patch
     kolasa-3.19-get_cpu_var.patch
-    kolasa_4.0-cr4-strn.patch
-    kolasa_4.1_remove-IRQF_DISABLED.patch
-    arch-fglrx-acpi_handle.patch)
+    
+    ubuntu_buildfix_kernel_4.0.patch
+    ubuntu_buildfix_kernel_4.1.patch
+    arch-fglrx-acpi_handle.patch
+    4.2-ubuntu_buildfix_kernel_4.2-modified.patch
+    4.2-fglrx-has_fpu.patch
+    4.2-kolasa-fpu_save_init.patch
+    4.3-kolasa-seq_printf.patch
+    4.3-gentoo-mtrr.patch)
 
 md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
-	 '769d233666d4353f514b5d7ff035f6b6'
+	 '82c4e97854c020ad147a9122805a8936'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
-         'f729bf913613f49b0b9759c246058a87'
-	 'bccf181a981ff429fe66f6ca5c3ea75a'
+         '9d9ea496eadf7e883d56723d65e96edf'
+	 'b79e144932616221f6d01c4b05dc9306'
+	 '514899437eb209a1d4670df991cdfc10'
+	 '80fdfbff93d96a1dfca2c7f684be8cc1'
+	 '9054786e08cf3ea2a549fe22d7f2cd92'
 	 '3e19c2285c76f4cb92108435a1e9c302'
 	 'b3ceefeb97c609037845f65d0956c4f0'
          '9126e1ef0c724f8b57d3ac0fe77efe2f'
 	 '62239156a9656c6f41e89a879578925c'
 	 '3e1b82bd69774ea808da69c983d6a43b'
 	 'a64e2eae5addc6d670911ccf94b8cda4'
+
 	 'a450e2e3db61994b09e9d99d95bee837'
 	 'ff60c162b46e21e9810a722718023451'
 	 '5872d95907a93ada44982e355e91e59d'
@@ -104,9 +118,15 @@ md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 'ba33b6ef10896d3e1b5e4cd96390b771'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '3aa45013515b724a71bbd8e01f98ad99'
-	 'dee3df1c5d3ed87363f4304da917fc00'
-	 '81a9e38dee025151cccb7e5db2362cfb'
-	 '645422762125052a0f13ecd03d7bf9dd')
+	 
+	 '40aaf97acae268f8f7949e0fecb926d9'
+	 '34f818673aec1eb2edb5f913b071ba08'
+	 '645422762125052a0f13ecd03d7bf9dd'
+	 '65ec204c8013fb5dc6aa624563c14512'
+	 'ae67dff6c218e028443dff6eacb26485'
+	 'ccfdf4784735a742c53bdc1309f49a51'
+	 'cdea2b2055df7d843b6096615e82d030'
+	 '98828e3eeaec2b3795e584883cc1b746')
 
 
 build() {
@@ -227,9 +247,13 @@ package() {
       install -m644 usr/share/applications/*.desktop ${pkgdir}/usr/share/applications
 
     # ACPI example files
-      install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
-      sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
-      install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+#       install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
+#       sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
+#       install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+    # lets check our own files - V
+      install -m755 ${srcdir}/ati-powermode.sh ${pkgdir}/etc/acpi
+      install -m644 ${srcdir}/a-ac-aticonfig ${pkgdir}/etc/acpi/events
+      install -m644 ${srcdir}/a-lid-aticonfig ${pkgdir}/etc/acpi/events
 
     # Add ATI Events Daemon launcher
       install -m755 ${srcdir}/atieventsd.sh ${pkgdir}/etc/rc.d/atieventsd
@@ -272,9 +296,14 @@ package() {
 #      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
 #	since 3.19 not only i686 needs gpl symbol - V
       patch -Np1 -i ../fglrx_gpl_symbol.patch
-      patch -Np1 -i ../kolasa_4.0-cr4-strn.patch
-      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.0.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.1.patch
       patch -Np1 -i ../arch-fglrx-acpi_handle.patch
+      patch -Np1 -i ../4.2-ubuntu_buildfix_kernel_4.2-modified.patch
+      patch -Np1 -i ../4.2-fglrx-has_fpu.patch
+      patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
+      patch -Np1 -i ../4.3-kolasa-seq_printf.patch
+      patch -Np1 -i ../4.3-gentoo-mtrr.patch
 
     # Prepare modules source files
       _archdir=x86_64

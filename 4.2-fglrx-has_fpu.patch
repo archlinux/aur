@@ -1,0 +1,20 @@
+--- 15.11/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-11-08 17:46:13.157284759 +0100
++++ 15.11b/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-11-08 18:03:26.426797430 +0100
+@@ -6152,6 +6152,7 @@
+      */
+     struct task_struct *cur_task = current;
+     preempt_disable();
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,2,0)
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0)
+     /* The thread structure is changed with the commit below for kernel 3.3:
+      * https://github.com/torvalds/linux/commit/7e16838d94b566a17b65231073d179bc04d590c8
+@@ -6160,6 +6161,9 @@
+ #else
+     if (cur_task->thread.has_fpu)
+ #endif
++#else
++    if (cur_task->thread.fpu.fpregs_active)
++#endif
+         __save_init_fpu(cur_task);
+     else
+         clts();
