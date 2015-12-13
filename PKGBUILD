@@ -12,8 +12,7 @@ url="http://dengine.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 conflicts=('doomsday2-unstable' 'i686-doomsday2-unstable')
-depends=('qt5-base' 'qt5-x11extras' 'sdl2_net' 'sdl2_mixer' 'fmodex' 
-'wxpython' 'assimp' 'fluidsynth')
+depends=('qt5-base' 'qt5-x11extras' 'sdl2_net' 'sdl2_mixer' 'fmodex' 'wxpython' 'assimp' 'fluidsynth')
 makedepends=('imagemagick')
 optdepends=('doom1-wad: Doom shareware', 
             'heretic1-wad: Heretic shareware', 
@@ -68,7 +67,5 @@ EOF
     mkdir -p "${pkgdir}/etc/doomsday"
     echo "iwaddir: /usr/share/games/doom" > "${pkgdir}/etc/doomsday/paths"
     # For Music
-    echo "To obtain music work properly, in options set show taskbar go \ 
-	  to sound options of the engine and go to path /usr/share/soundfonts and \ 
-          choose your soundfont"
+    echo "To obtain music work properly, in options set show taskbar go to sound options of the engine and go to path /usr/share/soundfonts and choose your soundfont"
 }
