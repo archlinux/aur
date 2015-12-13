@@ -12,9 +12,9 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Edenhofer/semt/archiv
 md5sums=('e9d1ab41f5122a2bcbf79937cbcfad0c')
 
 build() {
-    make -C "${srcdir}/${pkgname}-${pkgver}" all
+	make -C "${srcdir}/${pkgname}-${pkgver}" all
 }
 
 package() {
-    make -C "${srcdir}/${pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
+	make -C "${srcdir}/${pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
 }
