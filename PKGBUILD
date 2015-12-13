@@ -1,11 +1,11 @@
 pkgname=brlcad
 pkgver=7.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An extensive 3D solid modeling system.'
 url='http://brlcad.org'
 license=('LGPL' 'BSD' 'custom:BDL')
 arch=('i686' 'x86_64')
-depends=('qt5-base' 'libxft')
+depends=('libgl' 'libxft' 'libxi')
 makedepends=('cmake')
 install="${pkgname}.install"
 source=('build.patch' "http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
