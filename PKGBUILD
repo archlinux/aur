@@ -7,8 +7,8 @@
 _name=tomb
 pkgbase="${_name}-git"
 pkgname=("${_name}-git" "${_name}-kdf-git")
-pkgver=2.1.r1.ge79aaa9
-pkgrel=2
+pkgver=2.1.1.r18.ga0997cb
+pkgrel=1
 pkgdesc="simple tool to manage encrypted storage"
 arch=('any')
 url="http://tomb.dyne.org/"
@@ -44,7 +44,7 @@ package_tomb-git() {
     cd "${_name}"
     make DESTDIR="${pkgdir}" PREFIX=/usr install
 
-    cd "extras/po"
+    cd "extras/translations"
     make DESTDIR="${pkgdir}" PREFIX=/usr install
 
     install -Dm644 "${srcdir}/_${_name}" "${pkgdir}/usr/share/zsh/site-functions/_${_name}"
