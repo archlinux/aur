@@ -20,8 +20,9 @@ pkgver(){
 }
 
 package() {
-    install -d ${pkgdir}/usr/share/icons
-    cp -r ${srcdir}/${_gitname}/${_pkgname} ${pkgdir}/usr/share/icons/${_pkgname}
+    install -d ${pkgdir}/usr/share/icons/
+    cp -r ${srcdir}/${_gitname}/${_pkgname}* ${pkgdir}/usr/share/icons/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+    find ${pkgdir}/usr -type f -name '.directory' -delete
 } 
