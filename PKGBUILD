@@ -7,30 +7,31 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGFILE as closely as possible matches extra's binutils 7.9.1-1
+#    * This PKGFILE as closely as possible matches extra's binutils 7.10.1-1
 #    * Installs some things to /usr/$CHOST/... {/usr/x86_64-unknown-linux-gnu/...) rather than /usr/...
 #       * Investigating to determine if this is desired, or if they need to be moved
 
 pkgname=gdb-trunk
 _pkgname=binutils-gdb
-pkgver=r84247.4931af2
+pkgver=7.10.1.r85899.39040bb
 pkgrel=1
 pkgdesc='The GNU Debugger'
-arch=('i686' 'x86_64')
-url="http://www.gnu.org/software/gdb/"
-license=('GPL3')
-depends=('ncurses' 'expat' 'python2' 'xz' 'guile')
-makedepends=('texinfo' 'git')
-provides=('gdb')
-conflicts=('gdb')
-backup=('etc/gdb/gdbinit')
+arch=(i686 x86_64)
+url='http://www.gnu.org/software/gdb/'
+license=(GPL3)
+depends=(ncurses expat python xz guile)
+makedepends=(texinfo git)
+provides=(gdb)
+conflicts=(gdb)
+backup=(etc/gdb/gdbinit)
 install=gdb.install
-source=('git://sourceware.org/git/binutils-gdb.git')
+source=(git://sourceware.org/git/binutils-gdb.git)
 sha1sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  # There are locations in source with versions, but they don't seem to be updated as often as the ChangeLog.  i.e. In GDB 7.10.1, the *only* mention of that version is in ChangeLog.
+  echo $(cat gdb/ChangeLog | grep GDB | grep -i released | head -n 1 | sed "s| released\.$||" | sed "s|.*GDB ||").r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
@@ -43,10 +44,9 @@ prepare() {
 build() {
   cd $_pkgname
   
-  # guile support has a severe bug https://sourceware.org/bugzilla/show_bug.cgi?id=17247
   ./configure --prefix=/usr --disable-nls \
     --with-system-readline \
-    --with-python=/usr/bin/python2 \
+    --with-python=/usr/bin/python3 \
     --with-system-gdbinit=/etc/gdb/gdbinit \
     --disable-binutils
   make
