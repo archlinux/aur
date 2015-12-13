@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: lily wilson <lily@lily.ml>
 
 _pkgname=openssl
 pkgname=${_pkgname}102
