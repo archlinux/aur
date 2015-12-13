@@ -9,24 +9,23 @@
 # Contributor: lano1106 (patch to improve jacob's patch)
 # Contributor: zoopp
 # Contributor: Cold (current_euid patch)
-# Contributor: ubuntu (parts of 4.0, 4.1 and 4.2 kernel patches)
-# Contributor: kolasa (part of 4.2 kernel patches)
+# Contributor: kolasa (part of 4.3 kernel patches)
+# Contributor: gentoo (part of 4.3 kernel patches)
 
 
 pkgname=catalyst-hook
 pkgver=15.9
-pkgrel=2
+pkgrel=8
 _amdver=15.201.1151
 pkgdesc="AMD/ATI drivers. Auto re-compile fglrx module while shutdown/reboot."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux-lts>=3.0' 'linux-lts<4.2' 'linux-lts-headers')
-# optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
+depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.4' 'linux-headers')
+optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-daemon' 'catalyst' 'catalyst-generator' 'catalyst-dkms')
 provides=("catalyst=${pkgver}")
-replaces=('catalyst')
 install=${pkgname}.install
 
 url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
@@ -42,12 +41,11 @@ source=(
     lano1106_fglrx_intel_iommu.patch
     lano1106_kcl_agp_13_4.patch
     fglrx_gpl_symbol.patch
-    ubuntu_buildfix_kernel_4.0.patch
-    ubuntu_buildfix_kernel_4.1.patch
-    ubuntu_buildfix_kernel_4.2.patch
-    4.2-fglrx-has_fpu.patch
-    4.2-kolasa-fpu_save_init.patch
-    ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch)
+    4.3-kolasa-seq_printf.patch
+    4.3-gentoo-mtrr.patch
+    4.2-amd-from_crimson_15.11.patch
+    crimson_i686_xg.patch
+    grsec_arch.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
          '9126e1ef0c724f8b57d3ac0fe77efe2f'
@@ -58,12 +56,11 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '5184b94a2a40216a67996999481dd9ee'
 	 'c5156eddf81c8a1719b160d05a2e8d67'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
-	 '880d5e59554cda382f74206c202942be'
-	 '982451bcc1fa1ee3da53ffa481d65581'
-	 '88832af8d6769aa51fa9b266a74394e0'
-	 'ed7748a593d6b894269f8c7856b7ae50'
-	 'dd51495a1d8f2d1042f04a783bf01e08'
-	 '2f7d42fde403a1b4a22e5db8de738d0f')
+	 '0e0666e95d1d590a7a83192805679485'
+	 '98828e3eeaec2b3795e584883cc1b746'
+	 'fd2851026228ca72124972d1ea0335ea'
+	 '6cdbaf5f71d867d225721a0369413616'
+	 '570e0a70aa97edcc5934e3203542d8d6')
 
 
 build() {
@@ -81,15 +78,12 @@ package() {
       patch -Np1 -i ../makefile_compat.patch
       patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
       patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
-#      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
-#	since 3.19 not only i686 needs gpl symbol - V
-      patch -Np1 -i ../fglrx_gpl_symbol.patch
-      patch -Np1 -i ../ubuntu_buildfix_kernel_4.0.patch
-      patch -Np1 -i ../ubuntu_buildfix_kernel_4.1.patch
-      patch -Np1 -i ../ubuntu_buildfix_kernel_4.2.patch
-      patch -Np1 -i ../4.2-fglrx-has_fpu.patch
-      patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
-      patch -Np1 -i ../ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
+      patch -Np1 -i ../4.2-amd-from_crimson_15.11.patch
+      patch -Np1 -i ../4.3-kolasa-seq_printf.patch
+      patch -Np1 -i ../4.3-gentoo-mtrr.patch
+      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
+      test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
+      patch -Np1 -i ../grsec_arch.patch
 
     # Prepare modules source files
       _archdir=x86_64
