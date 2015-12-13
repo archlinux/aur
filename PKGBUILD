@@ -10,13 +10,13 @@
 
 pkgname=hipchat
 pkgver=2.2.1388
-pkgrel=2
+pkgrel=3
 pkgdesc="Persistent group chat using XMPP"
 arch=('i686' 'x86_64')
 url="https://www.hipchat.com/linux"
 license=('unknown')
 depends=('libltdl' 'mesa' 'libxslt' 'hicolor-icon-theme'
-         'libxcomposite' 'libpulse' 'gstreamer0.10' 'gstreamer0.10-base')
+         'libxcomposite' 'libpulse' 'gstreamer0.10' 'gstreamer0.10-base' 'xcb-util-keysyms')
 install='hipchat.install'
 # remove pkg in basename to avoid confusing AUR helpers such as packer
 source=(${pkgname}-${pkgver}-$CARCH.tar.xz::http://downloads.hipchat.com/linux/arch/$CARCH/${pkgname}-${pkgver}-$CARCH.pkg.tar.xz)
