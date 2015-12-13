@@ -1,25 +1,8 @@
 post_install() {
   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
   update-desktop-database -q
-
-  cat << _EOF
-
-  ==> Kitematic install/upgrade note:
-  ------------------------------------------------------------------------------
-    Linux support for Kitematic is not yet official.
-
-    This AUR package solely installs a binary build from the linux-support branch
-    at https://github.com/zedtux/kitematic and adds a .desktop file and icon.
-
-    For the rest you are on your own ;)
-    See:
-      - https://github.com/kitematic/kitematic/wiki/Early-Linux-Support
-      - https://github.com/kitematic/kitematic/issues/49
-
-_EOF
 }
 
 post_upgrade() {
   post_install $1
 }
-
