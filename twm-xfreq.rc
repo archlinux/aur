@@ -1,6 +1,6 @@
 #
-AutoRaise               { "TWM Icon Manager" "Clock" "PopUp" "Terminal" "Print" "Dialog" "Navigator" "Mail" "Msgcompose" "XFreq-Gui" "chromium" "filezilla" "vlc" "skype" }
-BorderWidth		1
+AutoRaise               { "TWM Icon Manager" "Clock" "PopUp" "Terminal" "XFreq-Gui" }
+BorderWidth		4
 ButtonIndent		2
 # ClientBorderWidth
 DecorateTransients
@@ -34,7 +34,7 @@ TitlePadding		8
 
 Color
 {
-	BorderColor "chocolate"
+	BorderColor "#2a0308"
 	{
 #		"Clock"			"#dfdfdf"
 #		"PopUp"			"#2a0308"
@@ -95,17 +95,18 @@ Button2 = m	: window|icon	: f.iconify
 Button3 = m	: window|icon	: f.function "move-or-raise"
 
 Button1 =	: title		: f.function "move-or-raise"
-Button2 =	: title		: f.raiselower
-Button3 = c	: title		: f.delete
+Button2 =	: title		: f.fullzoom
+Button3 =	: title		: f.menu "winops"
 
 Button1 =	: icon		: f.function "move-or-iconify"
 Button2 =	: icon		: f.iconify
 
 Button1 =	: iconmgr	: f.iconify
-Button2 =	: iconmgr	: f.iconify
+Button2 =	: iconmgr	: f.fullzoom
 
-Button1 =	: frame|frame	: f.function "raise-and-move"
-Button1 = c	: frame|frame	: f.function "raise-and-resize"
+Button1 =	: frame		: f.function "raise-and-move"
+Button2 =	: frame		: f.hzoom
+Button3 =	: frame		: f.function "raise-and-resize"
 
 #
 # Keyboard bindings.
@@ -120,16 +121,16 @@ Button1 = c	: frame|frame	: f.function "raise-and-resize"
 menu "winops"
 {
 ""		f.nop
+"Fullzoom"	f.fullzoom
 "Iconify"	f.iconify
 "Resize"	f.resize
 "Move"		f.move
+""		f.nop
 "Raise"		f.raise
 "Lower"		f.lower
-""		f.nop
 "Focus"		f.focus
 "Unfocus"	f.unfocus
-"Show Iconmgr"	f.showiconmgr
-"Hide Iconmgr"	f.hideiconmgr
+"AutoRaise"	f.autoraise
 ""		f.nop
 "Kill"		f.destroy
 "Delete"	f.delete
@@ -175,9 +176,16 @@ menu "screenoff"
 ""		f.nop
 }
 
+menu "iconmgr"
+{
+"    Show    "	f.showiconmgr
+"    Hide    "	f.hideiconmgr
+}
+
 menu "settings"
 {
 ""		f.nop
+"Icon Manager"	f.menu "iconmgr"
 "Screen Saver"	f.menu "screensaver"
 "Screen Off"	f.menu "screenoff"
 ""		f.nop
@@ -216,7 +224,7 @@ menu "rightops"
 "Applications"	f.title
 ""		f.nop
 "Run..."	f.function "run-app"
-"XFreq"		f.exec "xfreq-gui -D 0 -f 0x994c00 -l 1 -g 0:0x0+640-64,1:0x0-64+64,2:0x0+64+64,3:0x0+640+64,4:0x0+64-64,5:0x0-64-136 &"
+"XFreq"		f.exec "xfreq-gui &"
 "Clock"		f.exec "xclock -digital -twentyfour -update 1 -strftime '%a %e %b %H:%M:%S' -bg '#2a0308' -fg white -geometry 175x26-0+0 -fa DejaVuSans-9:bold -name Clock &"
 "Terminal"	f.menu "termops"
 "Internet"	f.exec "$(grep -w 'Exec' /usr/share/applications/$(xdg-settings get default-web-browser)|cut -d '=' -f 2) &"

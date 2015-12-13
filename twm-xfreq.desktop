@@ -2,6 +2,6 @@
 Encoding=UTF-8
 Name=Twm for XFreq
 Comment=Tab Window Manager
-Exec="xrdb -load /etc/xdm-xfreq/twm-xfreq.Xresources; twm -f /etc/xdm-xfreq/twm-xfreq.rc"
+Exec=start-twm-xfreq
 Icon=twm
 Type=XSession

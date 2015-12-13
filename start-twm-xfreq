@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xrdb -load /etc/xdm-xfreq/twm-xfreq.Xresources
+
+twm -f /etc/xdm-xfreq/twm-xfreq.rc

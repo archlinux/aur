@@ -1,13 +1,13 @@
 # Maintainer: CyrIng <xfreq[at]cyring[dot]fr>
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=xdm-xfreq
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="A customized XDM for XFreq"
 arch=(any)
 license=('GPL')
 url="http://github.com/cyring/xdm-xfreq"
-depends=('xfreq-git' 'xorg-xdm' 'xorg-xclock' 'xorg-xmessage' 'xorg-xsetroot' 'xorg-xdpyinfo' 'xorg-twm' 'xdg-utils' 'scrot' 'dmenu' 'gawk')
+depends=('xfreq-git' 'xorg-xdm' 'xorg-xclock' 'xorg-xmessage' 'xorg-xsetroot' 'xorg-xdpyinfo' 'xorg-twm' 'xdg-utils' 'xterm' 'scrot' 'dmenu' 'gawk')
 optdepends=('imagemagick' 'numlockx')
 backup=(etc/xdm-xfreq/Xresources
 	etc/xdm-xfreq/xdm-xfreq.rc
@@ -25,8 +25,10 @@ source=(xdm-config
 	xdm-xfreq.service
 	twm-xfreq.desktop
 	twm-xfreq.rc
-	twm-xfreq.Xresources)
+	twm-xfreq.Xresources
+	start-twm-xfreq)
 md5sums=('SKIP'
+	 'SKIP'
 	 'SKIP'
 	 'SKIP'
 	 'SKIP'
@@ -48,4 +50,5 @@ package() {
   install -Dm755 ${srcdir}/xdm-xfreq-xdesktops ${pkgdir}/usr/lib/systemd/scripts/xdm-xfreq-xdesktops
   install -Dm0644 ${srcdir}/xdm-xfreq.service ${pkgdir}/usr/lib/systemd/system/xdm-xfreq.service
   install -Dm0644 ${srcdir}/twm-xfreq.desktop ${pkgdir}/usr/share/xsessions/twm-xfreq.desktop
+  install -Dm755 ${srcdir}/start-twm-xfreq ${pkgdir}/usr/bin/start-twm-xfreq
 }
