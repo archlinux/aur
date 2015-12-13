@@ -25,13 +25,24 @@ pkgver() {
 build() {
   cd sdl2
 
-  ./configure --host=armv7l-raspberry-linux-gnueabihf --disable-pulseaudio --disable-esd --disable-video-mir --disable-video-wayland --disable-video-x11 --disable-video-opengl
-  make
+  ./configure --host=armv7l-raspberry-linux-gnueabihf --enable-sdl-dlopen \
+    --disable-arts --disable-esd --disable-nas \
+    --enable-alsa \
+    --disable-pulseaudio \
+    --disable-video-wayland \
+    --without-x --disable-video-x11 --disable-x11-shared \
+    --disable-video-x11-xcursor --disable-video-x11-xinerama \
+    --disable-video-x11-xinput --disable-video-x11-xrandr \
+    --disable-video-x11-scrnsaver --disable-video-x11-xshape \
+    --disable-video-x11-vm --disable-video-opengl \
+    --disable-video-directfb --enable-video-opengles \
+    --enable-video-dummy \
+    --disable-rpath
+  make CFLAGS="-I/opt/vc/include -I/usr/include -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux $CFLAGS"
 }
 
 package() {
   cd sdl2
   make install DESTDIR="${pkgdir}"
-
-  install -Dm644 COPYING.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 COPYING.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
