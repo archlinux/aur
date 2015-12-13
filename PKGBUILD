@@ -6,15 +6,11 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGBUILD as closely as possible matches core's gcc 5.1.0-5
-#    * The many test suite failures ("UNRESOLVED:", "FAIL:") occur during building core's 5.1.0-5, so the problem is upstream from here
-#    * Core's 5.1.0-5 pr65882.patch is omitted, because it is git commit 1774df35
-#    * Core's 5.1.0-5 pr66647.patch is omitted, because it is git commit fa4f365b
-#    * Core's 5.1.0-5 pr66035.patch is omitted, because it is git commit 635e1b2f, slightly modified
-#    * gcc.libstdc++-v3.python.dot.fix.patch is added, to fix an accidentical misnaming of gdb.py
-#    * All namcap warnings are identical, as of 6.0.0.r140049.cab0d20, except:
+#    * This PKGBUILD as closely as possible matches core's gcc 5.3.0-2
+#    * All namcap warnings are essentially identical, as of 6.0.0.r143486.3afbcf4, except:
 #       * Error of a missing custom license directory of /usr/share/licenses/gcc*-git
-#       * Symlink /usr/lib/bfd-plugins/liblto_plugin.so points to non-existing /usr/lib/gcc/x86_64-unknown-linux-gnu/6.0.0.r140049.cab0d20/liblto_plugin.so
+#       * Symlink /usr/lib/bfd-plugins/liblto_plugin.so points to non-existing /usr/lib/gcc/x86_64-pc-linux-gnu/6.0.0.r140049.cab0d20/liblto_plugin.so -- will be fixing this
+#       * gcc-go-git gives a "Referenced library 'libgo.so.8' is an uninstalled dependency -- will be looking into this
 #    * _pkgver_base is hard coded at the moment to 6.0.0; can't parse from source at that point
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
@@ -36,19 +32,26 @@ makedepends=('binutils>=2.25' 'libmpc' 'gcc-ada' 'doxygen' 'git')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
 source=(git://gcc.gnu.org/git/gcc.git
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        gcc.libstdc++-v3.python.dot.fix.patch
-        gcc.isl.0.15.patch
-        gcc.isl.0.15.includes.patch)
+        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
 md5sums=('SKIP'
-         '8428efbbc6f6e2810ce5c1ba73ecf98c'
-         '7de06deb9ee0c10454219a319e62e4dc'
-         '7069b4d1f9413a04ce4cfba039b1b0ba'
-         '6daf2d3f9365a0e768bdaaa1595b18f6')
+         '8428efbbc6f6e2810ce5c1ba73ecf98c')
 
 _basedir=${_pkgname}
 
-_libdir="usr/lib/gcc/$CHOST/$_pkgver_base"
+# CHOST is in the form <architecture>-<vendor>-<operatingSystem>-<cLibrary>
+# Arch currently reports CHOST with vendor "unknown".  GCC expected this until recently, and on my machine is expecting "pc".
+# Core's gcc and this package define arch to only be 'i686' or 'x86_64', so this workaround should work for whatever architecture is expected to be given.
+# It is unknown to me if gcc will see everyone running arch as vendor "pc", or if it will see "softfloat", "hardfloat", or "unknown" here.
+# (You may have to change the value of _CHOST.)
+# Rather than having an else cause an error, I'm letting it go through, on the hopes that whatever is defined might work.
+_CHOST=${CHOST}
+if [[ "${CHOST}" == 'x86_64-unknown-linux-gnu' ]]; then
+  _CHOST='x86_64-pc-linux-gnu'
+elif [[ "${CHOST}" == 'i686-unknown-linux-gnu' ]]; then
+  _CHOST='i686-pc-linux-gnu'
+fi
+
+_libdir="usr/lib/gcc/$_CHOST/$_pkgver_base"
 
 pkgver() {
   cd ${srcdir}/gcc
@@ -69,15 +72,6 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-
-  # Submitted upstream - Fixes misnaming of gdb.py file due to addition of libstdc++fs library
-  patch -p0 -i ${srcdir}/gcc.libstdc++-v3.python.dot.fix.patch
-
-  # https://gcc.gnu.org/ml/gcc-patches/2015-07/msg01162.html
-  patch -p1 -i ${srcdir}/gcc.isl.0.15.patch
-
-  # https://gcc.gnu.org/ml/gcc-patches/2015-07/msg01507.html
-  patch -p1 -i ${srcdir}/gcc.isl.0.15.includes.patch
 
   mkdir ${srcdir}/gcc-build
 }
@@ -103,13 +97,12 @@ build() {
       --enable-lto --enable-plugin --enable-install-libiberty \
       --with-linker-hash-style=gnu --enable-gnu-indirect-function \
       --disable-multilib --disable-werror \
-      --enable-checking=release \
-      --with-default-libstdcxx-abi=gcc4-compatible
+      --enable-checking=release
 
   make
   
   # make documentation
-  make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+  make -C $_CHOST/libstdc++-v3/doc doc-man-doxygen
 }
 
 check() {
@@ -128,7 +121,7 @@ package_gcc-libs-git()
 {
   pkgdesc="Runtime libraries shipped by GCC (developmental version)"
   groups=('base')
-  depends=('glibc>=2.21')
+  depends=('glibc>=2.22')
   provides=('gcc-libs')
   conflicts=('gcc-libs')
   options=('!emptydirs' '!strip')
@@ -136,7 +129,7 @@ package_gcc-libs-git()
 
   cd ${srcdir}/gcc-build
   
-  make -C $CHOST/libgcc DESTDIR=${pkgdir} install-shared
+  make -C $_CHOST/libgcc DESTDIR=${pkgdir} install-shared
   rm ${pkgdir}/${_libdir}/libgcc_eh.a
   
   for lib in libatomic \
@@ -148,23 +141,23 @@ package_gcc-libs-git()
              libsanitizer/{a,l,ub}san \
              libstdc++-v3/src \
              libvtv; do
-    make -C $CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
+    make -C $_CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
   done
 
   [[ $CARCH == "x86_64" ]] && \
-    make -C $CHOST/libsanitizer/tsan DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
+    make -C $_CHOST/libsanitizer/tsan DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
 
-  make -C $CHOST/libobjc DESTDIR=${pkgdir} install-libs
+  make -C $_CHOST/libobjc DESTDIR=${pkgdir} install-libs
 
-  make -C $CHOST/libstdc++-v3/po DESTDIR=${pkgdir} install
+  make -C $_CHOST/libstdc++-v3/po DESTDIR=${pkgdir} install
 
-  make -C $CHOST/libmpx DESTDIR=${pkgdir} install
+  make -C $_CHOST/libmpx DESTDIR=${pkgdir} install
   rm ${pkgdir}/usr/lib/libmpx.spec
 
   for lib in libgomp \
              libitm \
              libquadmath; do
-    make -C $CHOST/$lib DESTDIR=${pkgdir} install-info
+    make -C $_CHOST/$lib DESTDIR=${pkgdir} install-info
   done
 
   # Install Runtime Library Exception
@@ -190,13 +183,13 @@ package_gcc-git()
   install -m755 -t $pkgdir/usr/bin/ gcc/gcov{,-tool}
   install -m755 -t $pkgdir/${_libdir}/ gcc/{cc1,cc1plus,collect2,lto1}
 
-  make -C $CHOST/libgcc DESTDIR=${pkgdir} install
+  make -C $_CHOST/libgcc DESTDIR=${pkgdir} install
   rm ${pkgdir}/usr/lib/libgcc_s.so*
   
-  make -C $CHOST/libstdc++-v3/src DESTDIR=${pkgdir} install
-  make -C $CHOST/libstdc++-v3/include DESTDIR=${pkgdir} install
-  make -C $CHOST/libstdc++-v3/libsupc++ DESTDIR=${pkgdir} install
-  make -C $CHOST/libstdc++-v3/python DESTDIR=${pkgdir} install
+  make -C $_CHOST/libstdc++-v3/src DESTDIR=${pkgdir} install
+  make -C $_CHOST/libstdc++-v3/include DESTDIR=${pkgdir} install
+  make -C $_CHOST/libstdc++-v3/libsupc++ DESTDIR=${pkgdir} install
+  make -C $_CHOST/libstdc++-v3/python DESTDIR=${pkgdir} install
 
   make DESTDIR=${pkgdir} install-libcc1
   install -d $pkgdir/usr/share/gdb/auto-load/usr/lib
@@ -209,18 +202,18 @@ package_gcc-git()
   
   make -C lto-plugin DESTDIR=${pkgdir} install
   install -dm755 ${pkgdir}/usr/lib/bfd-plugins/
-  ln -s /usr/lib/gcc/$CHOST/${pkgver}/liblto_plugin.so \
+  ln -s /usr/lib/gcc/$_CHOST/${pkgver}/liblto_plugin.so \
     ${pkgdir}/usr/lib/bfd-plugins/
 
-  make -C $CHOST/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
+  make -C $_CHOST/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
     install-nodist_cilkincludeHEADERS
-  make -C $CHOST/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
+  make -C $_CHOST/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
     install-nodist_libsubincludeHEADERS
-  make -C $CHOST/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-  make -C $CHOST/libquadmath DESTDIR=${pkgdir} install-nodist_libsubincludeHEADERS
-  make -C $CHOST/libsanitizer DESTDIR=${pkgdir} install-nodist_{saninclude,toolexeclib}HEADERS
-  make -C $CHOST/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-  make -C $CHOST/libmpx DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+  make -C $_CHOST/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+  make -C $_CHOST/libquadmath DESTDIR=${pkgdir} install-nodist_libsubincludeHEADERS
+  make -C $_CHOST/libsanitizer DESTDIR=${pkgdir} install-nodist_{saninclude,toolexeclib}HEADERS
+  make -C $_CHOST/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+  make -C $_CHOST/libmpx DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
 
   make -C libiberty DESTDIR=${pkgdir} install
   # install PIC version of libiberty
@@ -266,7 +259,7 @@ EOF
   chmod 755 $pkgdir/usr/bin/c{8,9}9
 
   # install the libstdc++ man pages
-  make -C $CHOST/libstdc++-v3/doc DESTDIR=$pkgdir doc-install-man
+  make -C $_CHOST/libstdc++-v3/doc DESTDIR=$pkgdir doc-install-man
 
   # Install Runtime Library Exception
   install -d ${pkgdir}/usr/share/licenses/gcc/
@@ -286,9 +279,9 @@ package_gcc-fortran-git()
   cd ${srcdir}/gcc-build
   # install-myexeclibLTLIBRARIES omitted because it was removed upstream
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=40267
-  make -C $CHOST/libgfortran DESTDIR=$pkgdir install-cafexeclibLTLIBRARIES \
+  make -C $_CHOST/libgfortran DESTDIR=$pkgdir install-cafexeclibLTLIBRARIES \
     install-{toolexeclibDATA,nodist_fincludeHEADERS}
-  make -C $CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
+  make -C $_CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
   make -C gcc DESTDIR=$pkgdir fortran.install-{common,man,info}
   install -Dm755 gcc/f951 $pkgdir/${_libdir}/f951
 
@@ -308,7 +301,7 @@ package_gcc-objc-git()
   conflicts=('gcc-objc')
 
   cd ${srcdir}/gcc-build
-  make DESTDIR=$pkgdir -C $CHOST/libobjc install-headers
+  make DESTDIR=$pkgdir -C $_CHOST/libobjc install-headers
   install -dm755 $pkgdir/${_libdir}
   install -m755 gcc/cc1obj{,plus} $pkgdir/${_libdir}/
 
@@ -355,7 +348,7 @@ package_gcc-go-git()
   install=gcc-go.install
 
   cd ${srcdir}/gcc-build
-  make -C $CHOST/libgo DESTDIR=$pkgdir install-exec-am
+  make -C $_CHOST/libgo DESTDIR=$pkgdir install-exec-am
   make -C gcc DESTDIR=$pkgdir go.install-{common,man,info}
   install -Dm755 gcc/go1 $pkgdir/${_libdir}/go1
 
