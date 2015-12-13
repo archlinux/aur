@@ -65,8 +65,8 @@ pre_remove() {
 }
 
 post_remove() {
-    # Removing obsolete dir
-    rm -rf /var/run/munge
+	# Removing obsolete dir
+	rm -rf /var/run/munge
 
 	# Notifying the user of kept dirs and change owner
 	[ -d /etc/munge ] && chown root:root -R /etc/munge && echo -e "\e[34;1m==>\e[39;1m NOTE: Custom configuration-file(s) in /etc/munge/ were kept on your system.\e[0m"

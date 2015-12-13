@@ -9,15 +9,15 @@ url="https://github.com/dun/munge/wiki"
 license=('GPL3' 'LGPL3')
 depends=('openssl')
 optdepends=("zlib: zlib compression support"
-			"bzip2: bzip2 compression support")
+	"bzip2: bzip2 compression support")
 makedepends=('git')
 provides=('munge')
 conflicts=('munge')
 install=$pkgname.install
 source=("${pkgname}"::"git+https://github.com/dun/munge.git"
-		"arch_munge.init")
+	"arch_munge.init")
 md5sums=('SKIP'
-		 '668942f323275199d35db5a534d9a80e')
+	'668942f323275199d35db5a534d9a80e')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -28,10 +28,10 @@ build() {
 	cd "${srcdir}/${pkgname}"
 
 	./configure \
-		--prefix=/usr \
-		--sbindir=/usr/bin	\
-		--localstatedir=/var	\
-		--sysconfdir=/etc
+	--prefix=/usr \
+	--sbindir=/usr/bin	\
+	--localstatedir=/var	\
+	--sysconfdir=/etc
 
 	make
 }
