@@ -43,8 +43,7 @@ build() {
     # Generate makefiles using qmake
     mkdir -p "${srcdir}/doomsday-stable-${pkgver}/build"
     cd "${srcdir}/doomsday-stable-${pkgver}/build"
-    qmake-qt5 -r ../doomsday/doomsday.pro CONFIG+="deng_fmod 
-deng_fluidsynth release"
+    qmake-qt5 -r ../doomsday/doomsday.pro CONFIG+="deng_fmod deng_fluidsynth release"
 
     # Build
     make $MAKEFLAGS
