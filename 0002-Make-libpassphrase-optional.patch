@@ -1,0 +1,144 @@
+From 5b110e7aaac8d20559eba96f2a9d0dbae2b83dc9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mattias=20Andr=C3=A9e?= <maandree@member.fsf.org>
+Date: Mon, 7 Dec 2015 08:02:01 +0100
+Subject: [PATCH 2/2] Make libpassphrase optional
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Mattias Andrée <maandree@member.fsf.org>
+---
+ ChangeLog      |  5 +++++
+ configure.in   | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ lib/xgetpass.c | 16 +++++++++-------
+ 3 files changed, 64 insertions(+), 7 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index bc43385..fd7389b 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,8 @@
++2015-12-07  Mattias Andrée  <maandree@member.fsf.org>
++
++	* lib/xgetpass.c: Make libpassphrase optional.
++	* configure.in: Likewise.
++
+ 2015-12-05  Mattias Andrée  <maandree@member.fsf.org>
+ 
+ 	* lib/xgetpass.c: Add ability to use libpassphrase>=1449331105 instead of getpass.
+diff --git a/configure.in b/configure.in
+index a55f125..b752e18 100644
+--- a/configure.in
++++ b/configure.in
+@@ -253,6 +253,9 @@ AC_ARG_WITH(audit,
+ AC_ARG_WITH(libpam,
+ 	[AC_HELP_STRING([--with-libpam], [use libpam for PAM support @<:@default=yes if found@:>@])],
+ 	[with_libpam=$withval], [with_libpam=maybe])
++AC_ARG_WITH(libpassphrase,
++	[AC_HELP_STRING([--with-libpassphrase], [use libpassphrase support @<:@default=yes if found@:>@])],
++	[with_libpassphrase=$withval], [with_libpassphrase=maybe])
+ AC_ARG_WITH(selinux,
+ 	[AC_HELP_STRING([--with-selinux], [use SELinux support @<:@default=yes if found@:>@])],
+ 	[with_selinux=$withval], [with_selinux=maybe])
+@@ -581,6 +584,52 @@ else
+ 	AC_MSG_RESULT(yes)
+ fi
+ 
++AC_SUBST(LIBPASSPHRASE)
++if test "$with_libpassphrase" != "no"; then
++	dnl passphrase_read has always existed
++	AC_CHECK_LIB(passphrase, passphrase_read,
++	             [passphrase_lib="yes"], [passphrase_lib="no"])
++	if test "$passphrase_lib$with_libpassphrase" = "noyes" ; then
++		AC_MSG_ERROR(libpassphrase not found)
++	fi
++
++	LIBPASSPHRASE="-lpassphrase"
++	passphrase_read2_function="no"
++	dnl passphrase_read2 was, along with other used functions, introduced in libpassphrase=1449331105
++
++	AC_CHECK_LIB(passphrase, passphrase_read2,
++	             [passphrase_read2_function="yes"], [])
++
++	if test "$passphrase_read2_function$with_libpassphrase" = "noyes" ; then
++		AC_MSG_ERROR(Only version 1449331105 and later of libpassphrase are supported)
++	fi
++
++	passphrase_header_found=no
++	AC_CHECK_HEADERS(passphrase.h,
++	                 [ passphrase_header_found=yes ; break ], [],
++	                 [ #include <passphrase.h> ] )
++	if test "$passphrase_header_found$with_libpassphrase" = "noyes" ; then
++	                AC_MSG_ERROR(libpassphrase header not found)
++	fi
++
++	if test "$passphrase_lib$passphrase_header_found$passphrase_read2_function" = "yesyesyes" ; then
++		with_libpassphrase="yes"
++	else
++		with_libpassphrase="no"
++		unset LIBPASSPHRASE
++	fi
++fi
++
++if test "$with_libpassphrase" = "yes"; then
++	save_libs="$LIBS"
++	LIBS="$LIBS $LIBPASSPHRASE"
++
++	AC_DEFINE(USE_LIBPASSPHRASE, 1, [Define to support libpassphrase])
++	AM_CONDITIONAL(USE_LIBPASSPHRASE, [true])
++else
++	AM_CONDITIONAL(USE_LIBPASSPHRASE, [false])
++fi
++
+ if test "$enable_acct_tools_setuid" != "no"; then
+ 	if test "$with_libpam" != "yes"; then
+ 		if test "$enable_acct_tools_setuid" = "yes"; then
+@@ -670,6 +719,7 @@ echo
+ echo "	auditing support:		$with_audit"
+ echo "	CrackLib support:		$with_libcrack"
+ echo "	PAM support:			$with_libpam"
++echo "	libpassphrase support:		$with_libpassphrase"
+ if test "$with_libpam" = "yes"; then
+ echo "	suid account management tools:	$enable_acct_tools_setuid"
+ fi
+diff --git a/lib/xgetpass.c b/lib/xgetpass.c
+index a44ffc0..4efa33d 100644
+--- a/lib/xgetpass.c
++++ b/lib/xgetpass.c
+@@ -32,13 +32,16 @@
+ #ident "$Id$"
+ 
+ #include <unistd.h>
+-#include <passphrase.h>
+-#include <fcntl.h>
+-#include <errno.h>
+-#include <stdio.h>
++#ifdef USE_LIBPASSPHRASE
++# include <passphrase.h>
++# include <fcntl.h>
++# include <errno.h>
++# include <stdio.h>
++#endif
+ 
+ char *xgetpass (const char *prompt, int is_new)
+ {
++#ifdef USE_LIBPASSPHRASE
+ 	int fd, saved_errno;
+ 	char *pass;
+ 
+@@ -58,10 +61,9 @@ char *xgetpass (const char *prompt, int is_new)
+ 	passphrase_reenable_echo1 (fd);
+ 	errno = saved_errno;
+ 	return pass;
+-
+-	/*
++#else
+ 	return getpass (prompt);
+ 	(void) is_new;
+-	*/
++#endif
+ }
+ 
+-- 
+2.6.3
+
