@@ -26,8 +26,8 @@ arch=('i686' 'x86_64')
 url='http://www.haskell.org/ghc/'
 license=('custom')
 # libffi might be needed in the future: http://hackage.haskell.org/trac/ghc/ticket/4496
-depends=('perl' 'gmp4' 'gcc') # 'libffi')
-makedepends=('perl' 'libxslt' 'docbook-xsl')
+depends=('perl' 'gmp4' 'gcc' 'ncurses5-compat-libs') # 'libffi')
+makedepends=('perl' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
 checkdepends=('python2')
 install='ghc.install'
 # keep this otherwise a lot of tests will show as unexpected failures... need to investigate why using -jn for n > 1 does this...
