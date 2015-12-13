@@ -117,6 +117,20 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${_pkgname}"
 
+    # Building with any already installed on the system LLVM OCaml bindings is very error-prone.
+    # The problems almost certainly arise from incompatibilities between the installed system-wide
+    # bindings and the newly built ones. Unfortunately, the OCAMLPATH environment variable doesn't
+    # allow overriding the search path set in the system configuration file, only adding to it.
+    # Even same version bindings cause problems in certain circumstances, so let's play safe.
+    ocamlfind query llvm >/dev/null 2>&1 && {
+        error 'Incompatible LLVM OCaml bindings installed.'
+        plain 'Building with already installed on the system LLVM OCaml bindings is not supported.'
+        plain 'Please either uninstall any currently installed llvm-ocaml* package before building,'
+        plain 'or, __preferably__, build in a clean chroot, as described on the Arch Linux wiki:'
+        plain 'https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_Clean_Chroot'
+        exit 1
+    }
+
     svn export --force "${srcdir}/clang" tools/clang
     svn export --force "${srcdir}/clang-tools-extra" tools/clang/tools/extra
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
@@ -156,15 +170,6 @@ build() {
         "../${_pkgname}"
 
     # Must run this target independently, or else docs/cmake_install.cmake will fail.
-    # Also, we must check that there isn't an incompatible llvm-ocaml package installed,
-    # or else the build will fail with "inconsistent assumptions over interface" errors.
-    [[ $(ocamlfind query -format %v llvm 2>/dev/null | tr - _) =~ (${pkgver}|^$) ]] || {
-        error 'Incompatible LLVM OCaml bindings installed.'
-        plain 'Please either uninstall any currently installed llvm-ocaml* package before building,'
-        plain 'or, __preferably__, build in a clean chroot, as described on the Arch Linux wiki:'
-        plain 'https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_Clean_Chroot'
-        exit 1
-    }
     make ocaml_doc
 
     make
