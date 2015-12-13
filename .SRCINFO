@@ -17,6 +17,7 @@ pkgbase = doomsday
 	depends = wxpython
 	depends = assimp
 	depends = fluidsynth
+	depends = soundfont-fluid
 	optdepends = doom1-wad: Doom shareware,
 	optdepends = heretic1-wad: Heretic shareware,
 	optdepends = hexen1-wad: Hexen shareware

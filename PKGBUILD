@@ -12,7 +12,7 @@ url="http://dengine.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 conflicts=('doomsday2-unstable' 'i686-doomsday2-unstable')
-depends=('qt5-base' 'qt5-x11extras' 'sdl2_net' 'sdl2_mixer' 'fmodex' 'wxpython' 'assimp' 'fluidsynth')
+depends=('qt5-base' 'qt5-x11extras' 'sdl2_net' 'sdl2_mixer' 'fmodex' 'wxpython' 'assimp' 'fluidsynth' 'soundfont-fluid' )
 makedepends=('imagemagick')
 optdepends=('doom1-wad: Doom shareware', 
             'heretic1-wad: Heretic shareware', 
