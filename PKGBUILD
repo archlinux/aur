@@ -2,12 +2,12 @@
 
 pkgname=airvpn-bin
 pkgver=2.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, stable version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
 license=(GPL3)
-depends=(gksu mono openvpn)
+depends=(gksu 'mono<=4.0.5.1' openvpn)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 provides=('airvpn')
 conflicts=('airvpn' 'airvpn-beta-bin')
