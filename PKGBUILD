@@ -1,7 +1,7 @@
 # Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
 pkgname=panoply-nodesktop
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc='NetCDF, HDF and GRIB Data Viewer by NASA GISS (no freedesktop.org support)'
 arch=('any')
 url='http://www.giss.nasa.gov/tools/panoply/'
@@ -21,7 +21,7 @@ source=("http://www.giss.nasa.gov/tools/panoply/PanoplyJ-${pkgver}.zip"
         'LICENSES'
         'panoply-script.patch')
 noextract=()
-sha1sums=('2f359fb984d626e8ff0faa63570225ecaec426d2'
+sha1sums=('aed13d0bf22f7a3d12bcd9c88534d4ad2f5399ef'
           'a83855747414873269e21aaff1a53d13ab5de304'
           '707208d062922b5426303238870e0dd269257697')
 
