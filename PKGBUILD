@@ -15,27 +15,27 @@ source=("${_pkgname}"::"git+https://github.com/letsencrypt/letsencrypt")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "${srcdir}/${_pkgname}"
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_pkgname}"
 
-    virtualenv -p python2 venv
-    ./venv/bin/pip install -r py26reqs.txt acme/ . letsencrypt-apache/ letsencrypt-nginx/ letshelp-letsencrypt/
-    virtualenv -p python2 --relocatable venv
+	virtualenv -p python2 venv
+	./venv/bin/pip install -r py26reqs.txt acme/ . letsencrypt-apache/ letsencrypt-nginx/ letshelp-letsencrypt/
+	virtualenv -p python2 --relocatable venv
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_pkgname}"
 
-    # Moving the complete virtual environment and source to /opt
-    mkdir -p "${pkgdir}"/opt/letsencrypt
-    cp -dpr --no-preserve=ownership ./* "${pkgdir}"/opt/letsencrypt
+	# Moving the complete virtual environment and source to /opt
+	mkdir -p "${pkgdir}"/opt/letsencrypt
+	cp -dpr --no-preserve=ownership ./* "${pkgdir}"/opt/letsencrypt
 
-    # Link to the executables
-    mkdir -p "${pkgdir}"/usr/bin
-    ln -s /opt/letsencrypt/venv/bin/letsencrypt "${pkgdir}"/usr/bin/letsencrypt
-    ln -s /opt/letsencrypt/venv/bin/letsencrypt-renewer "${pkgdir}"/usr/bin/letsencrypt-renewer
+	# Link to the executables
+	mkdir -p "${pkgdir}"/usr/bin
+	ln -s /opt/letsencrypt/venv/bin/letsencrypt "${pkgdir}"/usr/bin/letsencrypt
+	ln -s /opt/letsencrypt/venv/bin/letsencrypt-renewer "${pkgdir}"/usr/bin/letsencrypt-renewer
 }
