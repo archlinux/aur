@@ -3,9 +3,9 @@
 pkgname=shadowvpn
 _pkgname=ShadowVPN
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, safe VPN based on libsodium"
-arch=('i686' 'x86_64' 'armv5' 'armv7')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/rains31/${_pkgname}"
 license=('MIT')
 depends=('sh' 'libsodium')
