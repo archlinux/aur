@@ -4,8 +4,8 @@
 
 _pkgname=mailnag
 pkgname=$_pkgname-git
-pkgver=20151122.r512.0a9551f
-pkgrel=2
+pkgver=20151213.r515.a23b83f
+pkgrel=1
 pkgdesc='An extensible mail notification daemon'
 arch=('any')
 url='https://github.com/pulb/mailnag'
