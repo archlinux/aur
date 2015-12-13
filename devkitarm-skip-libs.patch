@@ -1,7 +1,7 @@
 diff -Naur buildscripts/build-devkit.sh buildscripts.no-libs/build-devkit.sh
---- buildscripts/build-devkit.sh	2015-02-16 01:53:37.000000000 +0100
-+++ buildscripts.no-libs/build-devkit.sh	2015-02-22 11:19:40.545502408 +0100
-@@ -226,7 +226,7 @@
+--- buildscripts/build-devkit.sh	2015-12-13 01:14:48.000000000 +0100
++++ buildscripts.no-libs/build-devkit.sh	2015-12-13 14:07:28.118134277 +0100
+@@ -228,7 +228,7 @@
  fi
  
  cd "$SRCDIR"
@@ -10,7 +10,7 @@ diff -Naur buildscripts/build-devkit.sh buildscripts.no-libs/build-devkit.sh
  do
  	echo $archive
  	if [ ! -f $archive ]; then
-@@ -244,16 +244,6 @@
+@@ -246,16 +246,6 @@
  extract_and_patch newlib $NEWLIB_VER gz
  extract_and_patch gdb $GDB_VER bz2
  
@@ -29,7 +29,7 @@ diff -Naur buildscripts/build-devkit.sh buildscripts.no-libs/build-devkit.sh
  	destdir=$(echo $archive | sed -e 's/\(.*\)-src-\(.*\)\.tar\.bz2/\1-\2/' )
 diff -Naur buildscripts/dkarm-eabi/scripts/build-crtls.sh buildscripts.no-libs/dkarm-eabi/scripts/build-crtls.sh
 --- buildscripts/dkarm-eabi/scripts/build-crtls.sh	2015-02-15 17:25:19.000000000 +0100
-+++ buildscripts.no-libs/dkarm-eabi/scripts/build-crtls.sh	2015-02-22 11:21:07.943233856 +0100
++++ buildscripts.no-libs/dkarm-eabi/scripts/build-crtls.sh	2015-12-13 14:07:28.121467658 +0100
 @@ -22,40 +22,3 @@
  $MAKE CRT=ds_arm9
  $MAKE CRT=ds_cart
