@@ -1,18 +1,18 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap
-pkgver=0.3.3
-pkgrel=8
+pkgver=0.4.2
+pkgrel=1
 pkgdesc='Implementation of an ICAP server'
 arch=(i686 x86_64)
 url='http://c-icap.sourceforge.net/'
 license=('GPL' 'LGPL')
-source=("http://downloads.sourceforge.net/project/c-icap/c-icap/0.3.x/c_icap-${pkgver}.tar.gz"
+source=("http://downloads.sourceforge.net/project/c-icap/c-icap/0.4.x/c_icap-${pkgver}.tar.gz"
         'c-icap.conf'
         'c-icap.service'
         'tmpfiles.d'
         'logrotate')
-sha256sums=('9fc0d7166e65b748138b750f1cba27933aab6ac201fbe2279ab9d7a9c24c7131'
-            'cdaf71c5f1446c831d1cb9ce3fec9c0b9b13663e82135c6ea7fa05e51c82f804'
+sha256sums=('b138c7d7d9828d54c3307bcfe7b4917911266593832ffc26a60df9a0dfd2511e'
+            'a2859a3f2bab1d96ae3a6364853a65c3985a0c336dab385294b977ecca336fc3'
             '313ae1b3ff52597158d3a914702d60b16248a8fb8f934e91644f63ad373e6375'
             '485fa1649ad1a63f6f2ec46eb0c8100d8756be0ba99df2cf23aa2fc70f14b27d'
             '07d5d98801feb0b20fe3cbbf9f7d00148cbda7b2e9e2bc07d859c1c5aa154926')
