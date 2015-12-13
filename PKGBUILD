@@ -1,8 +1,8 @@
 # Maintainer: XavierCLL
 
 pkgname=python2-pynio
-pkgver=1.5.0_beta
-_pkgver=1.5.0-beta
+pkgver=1.4.1
+_pkgver=1.4.1
 pkgrel=1
 pkgdesc="PyNIO is a Python programming language module that allows read and/or write access to a variety of data formats using an interface modelled on netCDF."
 url="http://www.pyngl.ucar.edu/Nio.shtml"
@@ -11,8 +11,9 @@ arch=('i686' 'x86_64')
 depends=('netcdf' 'hdf5' 'hdf-eos2' 'hdf-eos5' 'hdf4-nonetcdf' 'python2' 'g2clib' 'gdal')
 makedepends=('glibc' 'gcc' 'gcc-fortran' 'libjpeg' 'jasper' 'zlib' 'unzip')
 provides=('pynio')
-source=(http://www.pyngl.ucar.edu/Training/SEA2015/PyNIO-${_pkgver}.tar.gz)
-md5sums=('88c64d1196ce820a5a172cf1c0cce781')
+#source=(http://www.pyngl.ucar.edu/Training/SEA2015/PyNIO-${_pkgver}.tar.gz)
+source=(PyNIO-${_pkgver}.tar.gz::https://www.earthsystemgrid.org/download/fileDownload.htm?logicalFileId=b5e91de8-b95f-11e0-a567-00c0f03d5b7c)
+md5sums=('eec7b6b7ed960de253632d0636d0cc2d')
 
 package() {
   
@@ -39,6 +40,7 @@ package() {
   sed -i "s|hdf/||g" libsrc/NclHDF.c
   sed -i "s|LIBRARIES.append('iconv')|#LIBRARIES.append('iconv')|g" setup.py
   
+  python2 setup.py build --fcompiler gfortran
   python2 setup.py install --root=${pkgdir}
 
   rm -rf ncarg/data/
