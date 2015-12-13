@@ -12,12 +12,11 @@ depends=('gtk2' 'desktop-file-utils' 'nss' 'libxt' 'dbus-glib' 'alsa-lib')
 optdepends=('gtk3: GTK+3 support')
 install=${pkgname}.install
 arch=('i686' 'x86_64')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${_pkgver}/${pkgname/firefox}-${pkgver}.en-US.linux-${CARCH}.rpm")
-if [[ "${CARCH}" == "x86_64" ]]; then
-	md5sums=('7ef6a53af0473f6f2f61f2750b25fe53')
-elif [[ "${CARCH}" == "i686" ]]; then
-	md5sums=('12616880597e1bcb5f3973376bd35d19')
-fi
+source_x86_64=("http://downloads.sourceforge.net/project/${pkgname}/${_pkgver}/${pkgname/firefox}-${pkgver}.en-US.linux-x86_64.rpm")
+md5sums_x86_64=('7ef6a53af0473f6f2f61f2750b25fe53')
+
+source_i686=("http://downloads.sourceforge.net/project/${pkgname}/${_pkgver}/${pkgname/firefox}-${pkgver}.en-US.linux-i686.rpm")
+md5sums_i686=('12616880597e1bcb5f3973376bd35d19')
 
 build()
 {
