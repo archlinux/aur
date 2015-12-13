@@ -1,0 +1,29 @@
+--- a/common/config.py	2015-09-28 16:20:10.000000000 -0400
++++ b/common/config.py	2015-12-13 13:17:53.828658802 -0500
+@@ -28,8 +28,8 @@ except ImportError:
+     import getpass
+     pwd = None
+ 
+-import configfile
+ import tools
++import configfile
+ import logger
+ import mount
+ import sshtools
+--- a/common/tools.py	2015-09-28 16:20:10.000000000 -0400
++++ b/common/tools.py	2015-12-13 13:19:51.636515881 -0500
+@@ -1169,5 +1169,13 @@ class SetupUdev(object):
+             return
+         self.iface.clean()
+ 
+-if keyring is None and keyring_warn:
++    def __log_keyring_warning():
++    from time import sleep
++    sleep(0.1)
+     logger.warning('import keyring failed')
++
++if keyring is None and keyring_warn:
++    #delay warning to give logger some time to import
++    import _thread
++    _thread.start_new_thread(__log_keyring_warning, ())
++    # logger.warning('import keyring failed')
