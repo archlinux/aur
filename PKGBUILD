@@ -12,8 +12,8 @@ source=("${pkgname}-${pkgver}.zip"::"https://github.com/Edenhofer/fakepkg/archiv
 md5sums=('e1adf60094cfe6fd3ae9c7058a45a1ad')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-    install -D -m755 "${pkgname}"       "${pkgdir}/usr/bin/${pkgname}"
-    install -D -m644 "man/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+	install -D -m755 "${pkgname}"       "${pkgdir}/usr/bin/${pkgname}"
+	install -D -m644 "man/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
