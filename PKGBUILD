@@ -1,6 +1,6 @@
 # Maintainer: valvetime <valvetimepackages@gmail.com>
 pkgname=tetra-codec
-pkgver=20151213_2
+pkgver=20151213_3
 pkgrel=1
 epoch=1
 pkgdesc="installer script for TETRA codecs , based on https://github.com/sq5bpf/install-tetra-codec/. This PKGBUILD does not contain source code or binaries from ETSI, it 
@@ -193,7 +193,7 @@ package() {
 
 
 # create /tetra and copy the binaries to there
-cd /home/david/builds/tetra/install-tetra-codecs/src/tmp/codec/c-code
+cd $srcdir/tmp/codec/c-code
 mkdir -p $pkgdir/tetra/bin
 cp ccoder cdecoder scoder sdecoder $pkgdir/tetra/bin
 
