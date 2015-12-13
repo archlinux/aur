@@ -1,0 +1,12 @@
+pkgbase = actool-git
+	pkgdesc = Build AppContainer Images
+	pkgver = r798.bf62629
+	pkgrel = 1
+	url = https://github.com/appc/spec
+	arch = any
+	license = Apache
+	makedepends = go
+	source = git+https://github.com/appc/spec.git
+	sha256sums = SKIP
+
+pkgname = actool-git
